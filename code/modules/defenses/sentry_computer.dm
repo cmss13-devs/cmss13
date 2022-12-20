@@ -81,6 +81,8 @@
 	transceiver.forceMove(src)
 	transceiver.set_frequency(SENTRY_FREQ)
 	transceiver.config(list(RADIO_CHANNEL_SENTY=1))
+	voice.name = "Laptop [serial_number]"
+	voice.forceMove(src)
 
 	RegisterSignal(src, COMSIG_SENTRY_ENGAGED_ALERT, .proc/handle_engaged)
 
@@ -89,6 +91,8 @@
 	QDEL_NULL(cell)
 	qdel(cam_background)
 	qdel(cam_screen)
+	qdel(transceiver)
+	qdel(voice)
 
 /obj/item/device/sentry_computer/proc/has_los(var/atom/watcher, var/atom/target)
 	var/list/turf/path = getline2(watcher, target, include_from_atom = FALSE)
@@ -121,42 +125,9 @@
 	INVOKE_ASYNC(src, .proc/send_message, message)
 
 /obj/item/device/sentry_computer/proc/send_message(var/message)
-	world.log << "sending [message]"
-	transceiver.talk_into(voice, "[message]", RADIO_CHANNEL_SENTY)
-	/*
-	var/datum/radio_frequency/frequency = SSradio.return_frequency(SENTRY_FREQ)
+	if(transceiver)
+		transceiver.talk_into(voice, "[message]", RADIO_CHANNEL_SENTY)
 
-	if(!frequency)
-		return
-
-	var/target_zs = transceiver.get_target_zs(frequency)
-
-	Broadcast_Message(
-		frequency,
-		null,
-		0,
-		"",
-		src,
-		message,
-		src.name,
-		null,
-		src.name,
-		src.name,
-		RADIO_FILTER_TYPE_ALL,
-		0,
-		target_zs,
-		frequency,
-		"says",
-		null,
-		RADIO_VOLUME_QUIET)
-
-	var/datum/signal/status_signal = new
-	status_signal.source = src
-	status_signal.transmission_method = 1
-	status_signal.data["message"] = message
-
-	frequency.post_signal(src, status_signal)
-*/
 /obj/item/device/sentry_computer/attack_hand(mob/user)
 	if(setup)
 		if(!on)
@@ -183,6 +154,7 @@
 				cell.use(energy_cost)
 			else
 				icon_state = "sentrycomp_op"
+				on = FALSE
 
 /obj/item/device/sentry_computer/attackby(var/obj/item/object, mob/user)
 	if(istype(object, /obj/item/cell))
@@ -210,27 +182,29 @@
 /obj/item/device/sentry_computer/proc/register(var/tool, mob/user, var/sentry_gun)
 	if (do_after(user, 2, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
 		var/obj/structure/machinery/defenses/sentry/sentry = sentry_gun
-		sentry.linked_laptop = src
 		pair_sentry(sentry)
 		to_chat(user, SPAN_NOTICE("\The [sentry] has been encrypted."))
-		send_message("[sentry] added to [src]")
+		var/message = "[sentry] added to [src]"
+		INVOKE_ASYNC(src, .proc/send_message, message)
 
 /obj/item/device/sentry_computer/proc/unregister(var/tool, mob/user, var/sentry_gun)
 	var/obj/structure/machinery/defenses/sentry/sentry = sentry_gun
 	if(sentry.linked_laptop == src)
 		if (do_after(user, 2, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
-			sentry.linked_laptop = null
 			unpair_sentry(sentry)
 			to_chat(user, SPAN_NOTICE("\The [sentry] has been decrypted."))
-			send_message("[sentry] removed from to [src]")
+			var/message = "[sentry] removed from from [src]"
+			INVOKE_ASYNC(src, .proc/send_message, message)
 	else
 		to_chat(user, SPAN_WARNING("\The [sentry] is already encrypted by laptop [sentry.linked_laptop.serial_number]."))
 
 /obj/item/device/sentry_computer/proc/pair_sentry(var/obj/structure/machinery/defenses/sentry/target)
+	target.linked_laptop = src
 	paired_sentry +=list(target)
 	update_static_data_for_all_viewers()
 
 /obj/item/device/sentry_computer/proc/unpair_sentry(var/obj/structure/machinery/defenses/sentry/target)
+	target.linked_laptop = null
 	paired_sentry -=list(target)
 	update_static_data_for_all_viewers()
 
@@ -239,7 +213,7 @@
 
 /obj/item/device/sentry_computer/ui_status(mob/user, datum/ui_state/state)
 	. = ..()
-	if(on == FALSE)
+	if(!on)
 		return UI_CLOSE
 	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 		return UI_UPDATE
@@ -327,6 +301,7 @@
 		if(paired_sentry[sentry_index])
 			var/result = paired_sentry[sentry_index].update_choice(usr, action, params["selection"])
 			if(result)
+				playsound(src, get_sfx("terminal_type"), 25, FALSE)
 				return TRUE
 			switch(action)
 				if("set-camera")
@@ -347,6 +322,7 @@
 	switch(action)
 		if("screen-state")
 			screen_state = params["state"]
+			return FALSE
 		if("clear-camera")
 			current = null
 			playsound(src, get_sfx("terminal_type"), 25, FALSE)
@@ -391,11 +367,10 @@
 
 	var/list/visible_turfs = list()
 	range_turfs.Cut()
-	var/area/A
+
 	for(var/turf/visible_turf in guncamera_zone)
 		range_turfs += visible_turf
-		A = visible_turf.loc
-		if(!A.lighting_use_dynamic || visible_turf.lighting_lumcount >= 1)
+		if(!visible_turf.loc.lighting_use_dynamic || visible_turf.lighting_lumcount >= 1)
 			visible_turfs += visible_turf
 
 	var/list/bbox = get_bbox_of_atoms(visible_turfs)

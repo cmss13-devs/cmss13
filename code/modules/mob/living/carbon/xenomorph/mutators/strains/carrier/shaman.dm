@@ -67,6 +67,8 @@
 	action_type = XENO_ACTION_ACTIVATE
 
 /datum/action/xeno_action/activable/sacrifice_egg/action_cooldown_check()
+	if(!owner) //fires when action is assigned
+		return FALSE
 	var/mob/living/carbon/Xenomorph/Carrier/xeno = owner
 	var/datum/behavior_delegate/carrier_shaman/xeno_behavior = xeno.behavior_delegate
 	if(!istype(xeno_behavior))

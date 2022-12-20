@@ -107,9 +107,6 @@
 	specialty = "military police"
 	flags_atom = NO_SNOW_TYPE
 
-/obj/item/clothing/under/marine/mp/cadet
-	name = "MP cadet jumpsuit"
-
 /obj/item/clothing/under/marine/warden
 	name = "military warden jumpsuit"
 	desc = "Standard-issue Military Warden uniform. It has shards of light Kevlar to help protect against stabbing weapons and bullets."
@@ -406,6 +403,27 @@
 	icon_state = "BO_jumpsuit"
 	worn_state = "BO_jumpsuit"
 	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
+//=========================//USCM Survivors\\================================\\
+//=======================================================================\\
+
+/obj/item/clothing/under/marine/reconnaissance
+	name = "USCM reconnaissance uniform"
+	desc = "Primarily used during reconnaissance."
+	icon_state = "recon_marine"
+	worn_state = "recon_marine"
+	flags_atom = NO_SNOW_TYPE
+
+/obj/item/clothing/under/marine/reconnaissance/Initialize(mapload)
+	. = ..()
+	var/R = rand(1,4)
+	switch(R) //this is no longer shitcode, courtesy of stan_albatross
+		if(1)
+			roll_suit_sleeves(FALSE)
+		if(2)
+			roll_suit_jacket(FALSE)
+		if(3)
+			cut_suit_jacket(FALSE)
+
 
 //=========================//RESPONDERS\\================================\\
 //=======================================================================\\
@@ -488,7 +506,7 @@
 	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
 	has_sensor = UNIFORM_HAS_SENSORS
 	sensor_faction = FACTION_UPP
-	suit_restricted = list(/obj/item/clothing/suit/storage/marine/faction/UPP, /obj/item/clothing/suit/gimmick/jason, /obj/item/clothing/suit/storage/snow_suit/soviet)
+	suit_restricted = list(/obj/item/clothing/suit/storage/marine/faction/UPP, /obj/item/clothing/suit/gimmick/jason, /obj/item/clothing/suit/storage/snow_suit/soviet, /obj/item/clothing/suit/storage/snow_suit/survivor)
 	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
 
 /obj/item/clothing/under/marine/veteran/UPP/medic
@@ -613,6 +631,13 @@
 	flags_atom = NO_SNOW_TYPE|NO_NAME_OVERRIDE //Let's make them keep their original name.
 	flags_jumpsuit = FALSE
 	suit_restricted = null
+
+/obj/item/clothing/under/marine/ucf_clown
+	name = "\improper UCF uniform"
+	desc = "A Unified Clown Federation combat uniform. Features the latest in anti-mime technology."
+	icon_state = "clown"
+	worn_state = "clown"
+	flags_atom = NO_SNOW_TYPE|NO_NAME_OVERRIDE //Let's make them keep their original name.
 
 /obj/item/clothing/under/pizza
 	name = "pizza delivery uniform"

@@ -9,7 +9,7 @@
  */
 
 
-obj/structure/windoor_assembly
+/obj/structure/windoor_assembly
 	icon = 'icons/obj/structures/doors/windoor.dmi'
 
 	name = "Windoor Assembly"
@@ -25,7 +25,7 @@ obj/structure/windoor_assembly
 	var/secure = ""		//Whether or not this creates a secure windoor
 	var/state = "01"	//How far the door assembly has progressed in terms of sprites
 
-obj/structure/windoor_assembly/New(Loc, start_dir=NORTH, constructed=0)
+/obj/structure/windoor_assembly/New(Loc, start_dir=NORTH, constructed=0)
 	..()
 	if(constructed)
 		state = "01"
@@ -37,7 +37,7 @@ obj/structure/windoor_assembly/New(Loc, start_dir=NORTH, constructed=0)
 			setDir(NORTH)
 
 
-obj/structure/windoor_assembly/Destroy()
+/obj/structure/windoor_assembly/Destroy()
 	density = 0
 	. = ..()
 
@@ -60,10 +60,7 @@ obj/structure/windoor_assembly/Destroy()
 					if(do_after(user, 40 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 						if(!src || !WT.isOn()) return
 						to_chat(user, SPAN_NOTICE(" You dissasembled the windoor assembly!"))
-						new /obj/item/stack/sheet/glass/reinforced(get_turf(src), 5)
-						if(secure)
-							new /obj/item/stack/rods(get_turf(src), 4)
-						qdel(src)
+						deconstruct()
 				else
 					to_chat(user, SPAN_NOTICE(" You need more welding fuel to dissassemble the windoor assembly."))
 					return
@@ -249,7 +246,12 @@ obj/structure/windoor_assembly/Destroy()
 	//Update to reflect changes(if applicable)
 	update_icon()
 
-
+/obj/structure/windoor_assembly/deconstruct(disassembled = TRUE)
+	if(disassembled)
+		new /obj/item/stack/sheet/glass/reinforced(get_turf(src), 5)
+		if(secure)
+			new /obj/item/stack/rods(get_turf(src), 4)
+	return ..()
 //Rotates the windoor assembly clockwise
 /obj/structure/windoor_assembly/verb/revrotate()
 	set name = "Rotate Windoor Assembly"

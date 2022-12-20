@@ -1,0 +1,43 @@
+{
+	"map_name": "LV-522 Chance's Claim",
+	"map_path": "map_files/LV522_Chances_Claim",
+	"map_file": "LV522_Chances_Claim.dmm",
+    "weather_holder": "/datum/weather_ss_map_holder/lv522_chances_claim",
+    "survivor_types": [
+        "/datum/equipment_preset/survivor/forecon/standard"
+    ],
+	"synth_survivor_types": [
+        "/datum/equipment_preset/synth/survivor/forecon"
+    ],
+	"CO_survivor_types": [
+        "/datum/equipment_preset/survivor/forecon/major"
+    ],
+    "defcon_triggers": [
+        3300,
+        2100,
+        1450,
+        580,
+        0.0
+    ],
+    "survivor_message": "You are USCM Force Reconnaissance (FORECON) marine from the USS Hanyut, stranded on this planet after your team was wiped out while investigating the distress signal. With your pilot dead along with the majority of your unit, you and your team have been running and gunning to survive... until now.",
+    "announce_text": "Pan-Pan. This is the commanding officer of the USS Hanyut, USCMC FORECON. We are currently grounded on planet LV-522 in the immediate area of Chance's Claim. We are unable to contact the Hanyut and our dropships are unable to take off at this time. We are requesting assistance from any nearby vessels; this broadcast is set to repeat every 24 hours.",
+    "map_item_type": "/obj/item/map/lv522_map",
+	"monkey_types": [
+        "neaera",
+        "stok"
+    ],
+    "traits": [{ "Ground": true }],
+    "xvx_hives": {
+        "xeno_hive_alpha": 0,
+        "xeno_hive_bravo": 0,
+        "xeno_hive_charlie": 0,
+        "xeno_hive_delta": 0
+    },
+	"gamemodes": [
+        "Distress Signal",
+        "Hunter Games",
+        "Hive Wars",
+        "Faction Clash",
+        "Infection"
+    ]
+}

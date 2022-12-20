@@ -643,6 +643,43 @@
 		anchored = !anchored
 		to_chat(user, "You [anchored ? "wrench" : "unwrench"] \the [src].")
 
+/obj/structure/machinery/portable_atmospherics/hydroponics/get_examine_text(mob/user)
+	. = ..()
+	var/hydro_info = show_hydro_info(user)
+	if(hydro_info)
+		. += hydro_info
+
+/obj/structure/machinery/portable_atmospherics/hydroponics/proc/show_hydro_info(mob/user as mob)
+	var/info = ""
+	if(seed && !dead)
+		info += "[src] has " + SPAN_HELPFUL("[seed.display_name]") +" planted.\n"
+		if(plant_health <= (seed.endurance / 2))
+			info += "The plant looks " + SPAN_RED("unhealthy") + ".\n"
+	else
+		info += "[src] is empty.\n"
+	info += "Water: [round(waterlevel,0.1)]/100\n"
+	info += "Nutrient: [round(nutrilevel,0.1)]/10\n"
+	if(weedlevel >= 5)
+		info += "[src] is " + SPAN_WARNING("filled with weeds!\n")
+	if(pestlevel >= 5)
+		info += "[src] is " + SPAN_WARNING("filled with tiny worms!\n")
+
+	return info
+
+/obj/structure/machinery/portable_atmospherics/hydroponics/soil/show_hydro_info(mob/user as mob)
+	var/info = ..()
+	var/turf/T = loc
+	var/area/A = T.loc
+	var/light_available
+	if(A)
+		if(A.lighting_use_dynamic)
+			light_available = max(0,min(10,T.lighting_lumcount)-5)
+		else
+			light_available =  5
+
+	info += "The tray's sensor suite is reporting a light level of [light_available] lumens.\n"
+	return info
+
 /obj/structure/machinery/portable_atmospherics/hydroponics/attack_hand(mob/user as mob)
 
 	if(istype(usr,/mob/living/silicon))
@@ -652,33 +689,8 @@
 		harvest(user)
 	else if(dead)
 		remove_dead(user)
-
 	else
-		if(seed && !dead)
-			to_chat(usr, "[src] has \blue [seed.display_name] \black planted.")
-			if(plant_health <= (seed.endurance / 2))
-				to_chat(usr, "The plant looks \red unhealthy.")
-		else
-			to_chat(usr, "[src] is empty.")
-		to_chat(usr, "Water: [round(waterlevel,0.1)]/100")
-		to_chat(usr, "Nutrient: [round(nutrilevel,0.1)]/10")
-		if(weedlevel >= 5)
-			to_chat(usr, "[src] is \red filled with weeds!")
-		if(pestlevel >= 5)
-			to_chat(usr, "[src] is \red filled with tiny worms!")
-
-		if(!istype(src,/obj/structure/machinery/portable_atmospherics/hydroponics/soil))
-
-			var/turf/T = loc
-			var/area/A = T.loc
-			var/light_available
-			if(A)
-				if(A.lighting_use_dynamic)
-					light_available = max(0,min(10,T.lighting_lumcount)-5)
-				else
-					light_available =  5
-
-			to_chat(usr, "The tray's sensor suite is reporting a light level of [light_available] lumens.")
+		to_chat(usr, show_hydro_info(user))
 
 /obj/structure/machinery/portable_atmospherics/hydroponics/verb/close_lid()
 	set name = "Toggle Tray Lid"
@@ -725,7 +737,7 @@
 	icon = 'icons/obj/structures/machinery/hydroponics.dmi'
 	icon_state = "soil"
 	density = 0
-	use_power = 0
+	use_power = USE_POWER_NONE
 	draw_warnings = 0
 
 /obj/structure/machinery/portable_atmospherics/hydroponics/soil/attackby(var/obj/item/O as obj, var/mob/user as mob)

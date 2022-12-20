@@ -13,7 +13,7 @@
 	var/playsleepseconds = 0.0
 	var/list/storedinfo = list()
 	var/list/timestamp = list()
-	var/list/known_languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE, LANGUAGE_RUSSIAN, LANGUAGE_WELTRAUMDEUTSCH, LANGUAGE_NEOSPANISH, LANGUAGE_CHINESE)
+	var/list/known_languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE, LANGUAGE_RUSSIAN, LANGUAGE_GERMAN, LANGUAGE_SPANISH, LANGUAGE_CHINESE)
 	var/canprint = 1
 	flags_atom = FPRINT|CONDUCT|USES_HEARING
 	throwforce = 2
@@ -199,7 +199,7 @@
 			playing = 0
 			var/turf/T = get_turf(src)
 			for(var/mob/O in hearers(world_view_size-1, T))
-				O.show_message("<font color=Maroon><B>[src]</B>: Playback stopped.</font>",2)
+				O.show_message("<font color=Maroon><B>[src]</B>: Playback stopped.</font>", SHOW_MESSAGE_AUDIBLE)
 			icon_state = "taperecorderidle"
 			return
 		else

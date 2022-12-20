@@ -97,7 +97,7 @@
 
 	var/mob/living/carbon/human/locked_to_mob = null	// If the item uses flag MOB_LOCK_ON_PICKUP, this is the mob owner reference.
 
-	var/list/equip_sounds//Sounds played when this item is equipped
+	var/list/equip_sounds //Sounds played when this item is equipped
 	var/list/unequip_sounds //Same but when unequipped
 
 	 ///Vision impairing effect if worn on head/mask/glasses.
@@ -148,22 +148,22 @@
 	return ..()
 
 /obj/item/ex_act(severity, explosion_direction)
+	var/msg = pick("is destroyed by the blast!", "is obliterated by the blast!", "shatters as the explosion engulfs it!", "disintegrates in the blast!", "perishes in the blast!", "is mangled into uselessness by the blast!")
+	explosion_throw(severity, explosion_direction)
 	switch(severity)
 		if(0 to EXPLOSION_THRESHOLD_LOW)
 			if(prob(5))
 				if(!indestructible)
-					qdel(src)
-			else
-				explosion_throw(severity, explosion_direction)
+					visible_message(SPAN_DANGER(SPAN_UNDERLINE("\The [src] [msg]")))
+					deconstruct(FALSE)
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			if(prob(50))
 				if(!indestructible)
-					qdel(src)
-			else
-				explosion_throw(severity, explosion_direction)
+					deconstruct(FALSE)
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
 			if(!indestructible)
-				qdel(src)
+				visible_message(SPAN_DANGER(SPAN_UNDERLINE("\The [src] [msg]")))
+				deconstruct(FALSE)
 
 /obj/item/mob_launch_collision(var/mob/living/L)
 	forceMove(L.loc)
@@ -199,7 +199,7 @@ cases. Override_icon_state should be a list.*/
 			if(MAP_WHISKEY_OUTPOST, MAP_DESERT_DAM, MAP_BIG_RED, MAP_KUTJEVO)
 				icon_state = new_icon_state ? new_icon_state : "d_" + icon_state
 				item_state = new_item_state ? new_item_state : "d_" + item_state
-			if(MAP_PRISON_STATION, MAP_PRISON_STATION_V3)
+			if(MAP_PRISON_STATION, MAP_PRISON_STATION_V3, MAP_LV522_CHANCES_CLAIM)
 				icon_state = new_icon_state ? new_icon_state : "c_" + icon_state
 				item_state = new_item_state ? new_item_state : "c_" + item_state
 		if(new_protection)
@@ -310,7 +310,7 @@ cases. Override_icon_state should be a list.*/
 		qdel(src)
 
 	SEND_SIGNAL(src, COMSIG_ITEM_DROPPED, user)
-	if(dropsound && (src.loc.z))
+	if(dropsound && (src.loc?.z))
 		playsound(src, dropsound, dropvol, drop_vary)
 	src.do_drop_animation(user)
 
@@ -744,7 +744,7 @@ cases. Override_icon_state should be a list.*/
 
 /obj/item/proc/showoff(mob/user)
 	for (var/mob/M in view(user))
-		M.show_message("[user] holds up [src]. <a HREF=?src=\ref[M];lookitem=\ref[src]>Take a closer look.</a>",1)
+		M.show_message("[user] holds up [src]. <a HREF=?src=\ref[M];lookitem=\ref[src]>Take a closer look.</a>", SHOW_MESSAGE_VISIBLE)
 
 /mob/living/carbon/verb/showoff()
 	set name = "Show Held Item"

@@ -1,0 +1,43 @@
+{
+    "map_name": "New Varadero",
+    "map_path": "map_files/New_Varadero",
+    "map_file": "New_Varadero.dmm",
+
+    "survivor_types": [
+        "/datum/equipment_preset/survivor/scientist/lv",
+        "/datum/equipment_preset/survivor/doctor/lv",
+        "/datum/equipment_preset/survivor/chaplain/lv",
+        "/datum/equipment_preset/survivor/engineer/lv",
+        "/datum/equipment_preset/survivor/trucker/lv",
+        "/datum/equipment_preset/survivor/security/lv",
+        "/datum/equipment_preset/survivor/colonial_marshal/lv"
+    ],
+
+    "defcon_triggers": [
+        3300,
+        2100,
+        1450,
+        580,
+        0.0
+    ],
+    "survivor_message": "You are an UA employee on the island outpost of New Varadero, it is vital that you do all that you can to contain the outbreak, or at least survive.",
+    "map_item_type": "/obj/item/map/new_varadero",
+    "announce_text": "A manual distress signal has been received from United American outpost New Varadero. A response team from the ###SHIPNAME### will be dispatched shortly to investigate.\nDesgination: Radio survey station\n\nPop: 98\nTemp: 95F : 35C ext\nRanking officer: Maj. Afric Zimmerman\nTelecommunications array: Repair required\n\nNo further information available at this time.",
+    "monkey_types": [
+        "farwa"
+    ],
+    "traits": [{ "Ground": true }],
+    "xvx_hives": {
+        "xeno_hive_alpha": 0,
+        "xeno_hive_bravo": 0,
+        "xeno_hive_charlie": 0,
+        "xeno_hive_delta": 0
+    },
+    "gamemodes": [
+        "Distress Signal",
+        "Hunter Games",
+        "Hive Wars",
+        "Faction Clash",
+        "Infection"
+    ]
+}

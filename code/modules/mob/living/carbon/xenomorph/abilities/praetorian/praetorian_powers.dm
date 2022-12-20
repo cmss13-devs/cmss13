@@ -31,7 +31,7 @@
 			if(istype(S, /obj/structure/window/framed))
 				var/obj/structure/window/framed/W = S
 				if(!W.unslashable)
-					W.shatter_window(TRUE)
+					W.deconstruct(disassembled = FALSE)
 
 			if(S.opacity)
 				blocked = TRUE
@@ -196,6 +196,39 @@
 	buffed = FALSE
 
 ///////// OPPRESSOR POWERS
+
+/datum/action/xeno_action/activable/tail_stab/tail_seize/use_ability(atom/targetted_atom)
+	var/mob/living/carbon/Xenomorph/stabbing_xeno = owner
+
+	if(!action_cooldown_check())
+		return FALSE
+
+	if(!stabbing_xeno.check_state())
+		return FALSE
+
+	if (world.time <= stabbing_xeno.next_move)
+		return FALSE
+
+	if(!check_and_use_plasma_owner())
+		return FALSE
+
+	stabbing_xeno.visible_message(SPAN_XENODANGER("\The [stabbing_xeno] uncoils and wildly throws out its tail!"), SPAN_XENODANGER("You uncoil your tail wildly in front of you!"))
+
+	var/obj/item/projectile/hook_projectile = new /obj/item/projectile(stabbing_xeno.loc, create_cause_data(initial(stabbing_xeno.caste_type), stabbing_xeno))
+
+	var/datum/ammo/ammoDatum = GLOB.ammo_list[/datum/ammo/xeno/oppressor_tail]
+
+	hook_projectile.generate_bullet(ammoDatum, bullet_generator = stabbing_xeno)
+	hook_projectile.bound_beam = hook_projectile.beam(stabbing_xeno, "oppressor_tail", 'icons/effects/beam.dmi', 1 SECONDS, 5)
+
+	hook_projectile.fire_at(targetted_atom, stabbing_xeno, stabbing_xeno, ammoDatum.max_range, ammoDatum.shell_speed)
+	playsound(stabbing_xeno, 'sound/effects/oppressor_tail.ogg', 40, FALSE)
+
+	apply_cooldown()
+	xeno_attack_delay(stabbing_xeno)
+	..()
+	return
+
 /datum/action/xeno_action/activable/prae_abduct/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/X = owner
 
@@ -249,7 +282,7 @@
 		to_chat(X, SPAN_XENOWARNING("You don't have any room to do your abduction!"))
 		return
 
-	X.visible_message(SPAN_XENODANGER("[X] prepares to fire its resin spurs at [A]!"), SPAN_XENODANGER("You prepare to fire your resin spurs at [A]!"))
+	X.visible_message(SPAN_XENODANGER("\The [X]'s segmented tail starts coiling..."), SPAN_XENODANGER("You begin coiling your tail, aiming towards \the [A]..."))
 	X.emote("roar")
 
 	var/throw_target_turf = get_step(X.loc, facing)
@@ -257,7 +290,7 @@
 	X.frozen = TRUE
 	X.update_canmove()
 	if(!do_after(X, windup, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, numticks = 1))
-		to_chat(X, SPAN_XENOWARNING("You cancel your abduct."))
+		to_chat(X, SPAN_XENOWARNING("You relax your tail."))
 		apply_cooldown()
 
 		for (var/obj/effect/xenomorph/xeno_telegraph/XT in telegraph_atom_list)
@@ -276,6 +309,7 @@
 	X.update_canmove()
 
 	playsound(get_turf(X), 'sound/effects/bang.ogg', 25, 0)
+	X.visible_message(SPAN_XENODANGER("\The [X] suddenly uncoils its tail, firing it towards [A]!"), SPAN_XENODANGER("You uncoil your tail, sending it out towards \the [A]!"))
 
 	var/list/targets = list()
 	for (var/turf/target_turf in turflist)
@@ -284,21 +318,21 @@
 				continue
 
 			targets += H
-
 	if (LAZYLEN(targets) == 1)
-		to_chat(X, SPAN_XENOHIGHDANGER("You hit one target! You will slow it."))
+		X.balloon_alert(X, "your tail catches and slows one target!", text_color = "#51a16c")
 	else if (LAZYLEN(targets) == 2)
-		to_chat(X, SPAN_XENOHIGHDANGER("You hit two targets! You will daze and root them!"))
+		X.balloon_alert(X, "your tail catches and roots two targets!", text_color = "#51a16c")
 	else if (LAZYLEN(targets) >= 3)
-		to_chat(X, SPAN_XENOHIGHDANGER("You hit 3 or more targets! You will stun them!"))
+		X.balloon_alert(X, "your tail catches and stuns [LAZYLEN(targets)] targets!", text_color = "#51a16c")
 
 	for (var/mob/living/carbon/H in targets)
-		to_chat(H, SPAN_XENOHIGHDANGER("You are pulled toward [X]!"))
+		X.visible_message(SPAN_XENODANGER("\The [X]'s hooked tail coils itself around [H]!"), SPAN_XENODANGER("Your hooked tail coils itself around [H]!"))
 
-		H.KnockDown(0.2)
+		H.apply_effect(0.2, WEAKEN)
 
 		if (LAZYLEN(targets) == 1)
 			new /datum/effects/xeno_slow(H, X, , ,25)
+			H.apply_effect(1, SLOW)
 		else if (LAZYLEN(targets) == 2)
 
 			H.frozen = TRUE
@@ -309,18 +343,29 @@
 			addtimer(CALLBACK(GLOBAL_PROC, .proc/unroot_human, H), get_xeno_stun_duration(H, 25))
 			to_chat(H, SPAN_XENOHIGHDANGER("[X] has pinned you to the ground! You cannot move!"))
 
-			H.SetDazed(2)
+			H.set_effect(2, DAZE)
 		else if (LAZYLEN(targets) >= 3)
-			H.KnockDown(get_xeno_stun_duration(H, 1.3))
+			H.apply_effect(get_xeno_stun_duration(H, 1.3), WEAKEN)
 			to_chat(H, SPAN_XENOHIGHDANGER("You are slammed into the other victims of [X]!"))
 
 
 		shake_camera(H, 10, 1)
+
+		var/obj/effect/beam/tail_beam = X.beam(H, "oppressor_tail", 'icons/effects/beam.dmi', 0.5 SECONDS, 8)
+		var/image/tail_image = image('icons/effects/status_effects.dmi', "hooked")
+		H.overlays += tail_image
+
 		H.throw_atom(throw_target_turf, get_dist(throw_target_turf, H)-1, SPEED_VERY_FAST)
+
+		qdel(tail_beam) // hook beam catches target, throws them back, is deleted (throw_atom has sleeps), then hook beam catches another target, repeat
+		addtimer(CALLBACK(src, /datum/action/xeno_action/activable/prae_abduct/proc/remove_tail_overlay, H, tail_image), 0.5 SECONDS) //needed so it can actually be seen as it gets deleted too quickly otherwise.
 
 	apply_cooldown()
 	..()
 	return
+
+/datum/action/xeno_action/activable/prae_abduct/proc/remove_tail_overlay(var/mob/living/carbon/human/overlayed_human, var/image/tail_image)
+	overlayed_human.overlays -= tail_image
 
 /datum/action/xeno_action/activable/oppressor_punch/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/X = owner
@@ -380,8 +425,6 @@
 
 
 	shake_camera(H, 2, 1)
-
-
 
 	apply_cooldown()
 	..()
@@ -469,7 +512,7 @@
 
 			xeno_throw_human(H, X, facing, fling_dist)
 
-			H.KnockDown(get_xeno_stun_duration(H, 0.5))
+			H.apply_effect(get_xeno_stun_duration(H, 0.5), WEAKEN)
 			new /datum/effects/xeno_slow(H, X, ttl = get_xeno_stun_duration(H, 25))
 
 	..()
@@ -686,14 +729,14 @@
 
 	if(!xeno_smashed)
 		if (stun_duration > 0)
-			T.KnockDown(stun_duration)
+			T.apply_effect(stun_duration, WEAKEN)
 		X.visible_message(SPAN_XENODANGER("[X] trips [A] with it's tail!"), SPAN_XENODANGER("You trip [A] with your tail!"))
 		X.spin_circle()
 		X.emote("tail")
 		to_chat(T, SPAN_XENOHIGHDANGER("You are swept off your feet by [X]!"))
 
 	if (daze_duration > 0)
-		T.Daze(daze_duration)
+		T.apply_effect(daze_duration, DAZE)
 
 	apply_cooldown()
 	..()
@@ -856,12 +899,12 @@
 		targetXeno.visible_message(SPAN_BOLDNOTICE("[X] points at [targetXeno], and it spasms as it recuperates unnaturally quickly!"))	//marines probably should know if a xeno gets rejuvenated
 		targetXeno.xeno_jitter(1 SECONDS) //it might confuse them as to why the queen got up half a second after being AT rocketed, and give them feedback on the Praetorian rejuvenating
 		targetXeno.flick_heal_overlay(3 SECONDS, "#F5007A") //therefore making the Praetorian a priority target
-		targetXeno.SetKnockedout(0)
-		targetXeno.SetStunned(0)
-		targetXeno.SetKnockeddown(0)
-		targetXeno.SetDazed(0)
-		targetXeno.SetSlowed(0)
-		targetXeno.SetSuperslowed(0)
+		targetXeno.set_effect(0, PARALYZE)
+		targetXeno.set_effect(0, STUN)
+		targetXeno.set_effect(0, WEAKEN)
+		targetXeno.set_effect(0, DAZE)
+		targetXeno.set_effect(0, SLOW)
+		targetXeno.set_effect(0, SUPERSLOW)
 		use_plasma = TRUE
 	if (use_plasma)
 		use_plasma_owner()

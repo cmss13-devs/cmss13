@@ -52,8 +52,9 @@
 	//control_freak = 1
 
 	var/received_irc_pm = -99999
-	var/irc_admin			//IRC admin that spoke with them last.
-	var/mute_irc = 0
+
+	var/talked_at = 0 //Won't let someone say something again in under a second.
+	var/talked_sum = 0 // running sum of chars spoke in past 5 minutes
 
 
 		////////////////////////////////////

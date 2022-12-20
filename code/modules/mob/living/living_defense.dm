@@ -8,8 +8,8 @@
 	flash_pain()
 
 	if (stun_amount)
-		Stun(stun_amount)
-		KnockDown(stun_amount)
+		apply_effect(stun_amount, STUN)
+		apply_effect(stun_amount, WEAKEN)
 		apply_effect(STUTTER, stun_amount)
 		apply_effect(EYE_BLUR, stun_amount)
 
@@ -185,6 +185,8 @@
 		return TRUE
 	if(fire_stacks > 0)
 		adjust_fire_stacks(-0.5, min_stacks = 0) //the fire is consumed slowly
+	if(current_weather_effect_type)
+		adjust_fire_stacks(-SSweather.weather_event_instance.fire_smothering_strength, min_stacks = 0)
 
 /mob/living/fire_act()
 	TryIgniteMob(2)

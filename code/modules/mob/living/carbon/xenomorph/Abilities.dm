@@ -6,8 +6,13 @@
 	action_type = XENO_ACTION_ACTIVATE //doesn't really need a macro
 
 /datum/action/xeno_action/onclick/build_tunnel/can_use_action()
+	if(!owner)
+		return FALSE
 	var/mob/living/carbon/Xenomorph/X = owner
-	if(X.tunnel_delay) return FALSE
+	if(!istype(X))
+		return FALSE
+	if(X.tunnel_delay)
+		return FALSE
 	return ..()
 
 /datum/action/xeno_action/onclick/build_tunnel/use_ability(atom/A)
@@ -22,6 +27,10 @@
 	var/turf/T = X.loc
 	if(!istype(T)) //logic
 		to_chat(X, SPAN_XENOWARNING("You can't do that from there."))
+		return
+
+	if(SSticker?.mode?.hardcore)
+		to_chat(X, SPAN_XENOWARNING("A certain presence is preventing you from digging tunnels here."))
 		return
 
 	if(!T.can_dig_xeno_tunnel() || !is_ground_level(T.z))

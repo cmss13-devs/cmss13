@@ -71,14 +71,45 @@
 	if(A > upper) return 0
 	return 1
 
+/// Gives X position on pixel grid of an object, accounting for offsets
+/proc/get_pixel_position_x(atom/subject, relative = FALSE)
+	. = subject.pixel_x + subject.base_pixel_x
+	if(!relative)
+		. += world.icon_size * subject.x
 
-/proc/Get_Angle(atom/start,atom/end)//For beams.
+	if(ismob(subject)) // Mobs use baked in icon_size due to eg. Xenos only using a visual size
+		var/mob/mob_subject = subject
+		. += (mob_subject.icon_size - world.icon_size) / 2
+
+	else if(ismovable(subject)) // Other movables we assume use bound_height/width collision boxes
+		var/atom/movable/big_subject = subject
+		. += (big_subject.bound_width  - world.icon_size) / 2
+
+/// Gives Y position on pixel grid of an object, accounting for offsets
+/proc/get_pixel_position_y(atom/subject, relative = FALSE)
+	. = subject.pixel_y + subject.base_pixel_y
+	if(!relative)
+		. += world.icon_size * subject.y
+
+	if(ismob(subject)) // Mobs use baked in icon_size due to eg. Xenos only using a visual size
+		var/mob/mob_subject = subject
+		. += (mob_subject.icon_size - world.icon_size) / 2
+
+	else if(ismovable(subject)) // Other movables we assume use bound_height/width collision boxes
+		var/atom/movable/big_subject = subject
+		. += (big_subject.bound_height  - world.icon_size) / 2
+
+/proc/Get_Angle(atom/start,atom/end, var/tile_bound = FALSE)//For beams.
 	if(!start || !end) return 0
 	if(!start.z || !end.z) return 0 //Atoms are not on turfs.
-	var/dy
 	var/dx
-	dy=(32*end.y+end.pixel_y)-(32*start.y+start.pixel_y)
-	dx=(32*end.x+end.pixel_x)-(32*start.x+start.pixel_x)
+	var/dy
+	if(tile_bound)
+		dy=end.y-start.y
+		dx=end.x-start.x
+	else
+		dy = get_pixel_position_y(end) - get_pixel_position_y(start)
+		dx = get_pixel_position_x(end) - get_pixel_position_x(start)
 	if(!dy)
 		return (dx>=0)?90:270
 	.=arctan(dx/dy)
@@ -1410,7 +1441,7 @@ var/global/image/action_purple_power_up
 	else if (zone == "r_foot") return "right foot"
 	else return zone
 
-proc/get_true_location(var/atom/loc)
+/proc/get_true_location(var/atom/loc)
 	var/atom/subLoc = loc
 	while(subLoc.z == 0)
 		if (istype(subLoc.loc, /atom))
@@ -1767,9 +1798,6 @@ var/list/WALLITEMS = list(
 	if(user.client.eye == user)
 		user.face_atom(src)
 	return TRUE
-
-//datum may be null, but it does need to be a typed var
-#define NAMEOF(datum, X) (#X || ##datum.##X)
 
 #define VARSET_CALLBACK(datum, var, var_value) CALLBACK(GLOBAL_PROC, /proc/___callbackvarset, ##datum, NAMEOF(##datum, ##var), ##var_value)
 

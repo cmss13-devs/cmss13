@@ -13,10 +13,10 @@
 
 /obj/structure/machinery/hologram
 	anchored = 1
-	use_power = 1
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 5
 	active_power_usage = 100
-	var/obj/effect/overlay/hologram//The projection itself. If there is one, the instrument is on, off otherwise.
+	var/obj/effect/overlay/hologram //The projection itself. If there is one, the instrument is on, off otherwise.
 
 /obj/structure/machinery/hologram/ex_act(severity)
 	switch(severity)
@@ -128,7 +128,7 @@ For the other part of the code, check silicon say.dm. Particularly robot talk.*/
 		var/name_used = M.GetVoice()
 		//This communication is imperfect because the holopad "filters" voices and is only designed to connect to the master only.
 		var/rendered = "<i><span class='game say'>Holopad received, <span class='name'>[name_used]</span> [verb], <span class='message'>\"[text]\"</span></span></i>"
-		master.show_message(rendered, 2)
+		master.show_message(rendered, SHOW_MESSAGE_AUDIBLE)
 	return
 
 /obj/structure/machinery/hologram/holopad/proc/create_holo(mob/living/silicon/ai/A, turf/T = loc)
@@ -143,7 +143,7 @@ For the other part of the code, check silicon say.dm. Particularly robot talk.*/
 	icon_state = "holopad1"
 	A.holo = src
 	master = A//AI is the master.
-	use_power = 2//Active power usage.
+	use_power = USE_POWER_ACTIVE//Active power usage.
 	return 1
 
 /obj/structure/machinery/hologram/holopad/clear_holo()
@@ -156,7 +156,7 @@ For the other part of the code, check silicon say.dm. Particularly robot talk.*/
 	master = null//Null the master, since no-one is using it now.
 	SetLuminosity(0)			//pad lighting (hologram lighting will be handled automatically since its owner was deleted)
 	icon_state = "holopad0"
-	use_power = 1//Passive power usage.
+	use_power = USE_POWER_IDLE//Passive power usage.
 	return 1
 
 /obj/structure/machinery/hologram/holopad/process()

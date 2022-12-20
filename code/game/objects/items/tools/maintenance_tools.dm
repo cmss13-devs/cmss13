@@ -379,7 +379,7 @@
 				to_chat(user, SPAN_DANGER("Your eyes sting a little."))
 				E.damage += rand(1, 2)
 				if(E.damage > 12)
-					H.eye_blurry += rand(3,6)
+					H.AdjustEyeBlur(3,6)
 			if(0)
 				to_chat(user, SPAN_WARNING("Your eyes burn."))
 				E.damage += rand(2, 4)
@@ -387,7 +387,7 @@
 					E.damage += rand(4,10)
 			if(-1)
 				to_chat(user, SPAN_WARNING("Your thermals intensify [src]'s glow. Your eyes itch and burn severely."))
-				H.eye_blurry += rand(12,20)
+				H.AdjustEyeBlur(12,20)
 				E.damage += rand(12, 16)
 		if(safety<2)
 

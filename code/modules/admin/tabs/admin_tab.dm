@@ -5,7 +5,7 @@
 	if(!admin_holder)
 		return
 
-	if(alert("Confirm deadmin? This procedure can be reverted at any time and will not carry over to next round, but you will lose all your admin powers in the meantime.", , "Yes", "No") == "No")
+	if(alert("Confirm deadmin? This procedure can be reverted at any time and will not carry over to next round, but you will lose all your admin powers in the meantime.", , "Yes", "No") != "Yes")
 		return
 
 	message_staff("[src] de-admined themselves.")
@@ -196,7 +196,7 @@
 	if(alert("This will sleep ALL mobs within your view range (for Administration purposes). Are you sure?",,"Yes","Cancel") == "Cancel")
 		return
 	for(var/mob/living/M in view(usr.client))
-		M.KnockOut(3) // prevents them from exiting the screen range
+		M.apply_effect(3, PARALYZE) // prevents them from exiting the screen range
 		M.sleeping = 9999999 //if they're not, sleep them and add the sleep icon, so other marines nearby know not to mess with them.
 		M.AddSleepingIcon()
 

@@ -140,8 +140,8 @@
 	for(var/turf/turf in locs)
 		for(var/mob/living/M in turf)
 			M.apply_damage(DOOR_CRUSH_DAMAGE, BRUTE)
-			M.SetStunned(5)
-			M.SetKnockeddown(5)
+			M.set_effect(5, STUN)
+			M.set_effect(5, WEAKEN)
 			M.emote("pain")
 			var/turf/location = loc
 			if(istype(location, /turf))
@@ -182,25 +182,25 @@
 		if(M && istype(M))
 			M.count_niche_stat(STATISTICS_NICHE_DESTRUCTION_DOORS, 1)
 			SEND_SIGNAL(M, COMSIG_MOB_DESTROY_AIRLOCK, src)
-		destroy_airlock()
+		to_chat(loc, SPAN_DANGER("[src] blows apart!"))
+		deconstruct(FALSE)
+		playsound(src, 'sound/effects/metal_crash.ogg', 25, 1)
+
 		return TRUE
 
 	return FALSE
 
-/obj/structure/machinery/door/airlock/sandstone/runed/destroy_airlock()
+/obj/structure/machinery/door/airlock/sandstone/runed/deconstruct(disassembled = TRUE)
 	if(!src)
 		return
-	var/turf/T = get_turf(src)
 
-	to_chat(loc, SPAN_DANGER("[src] blows apart!"))
-
-	new /obj/item/stack/sheet/mineral/sandstone/runed(T)
-	new /obj/item/stack/sheet/mineral/sandstone/runed(T)
-	new /obj/item/stack/sheet/mineral/sandstone/runed(T)
-	new /obj/item/stack/sheet/mineral/sandstone/runed(T)
-
-	playsound(src, 'sound/effects/metal_crash.ogg', 25, 1)
-	qdel(src)
+	if(!disassembled)
+		var/turf/T = get_turf(src)
+		new /obj/item/stack/sheet/mineral/sandstone/runed(T)
+		new /obj/item/stack/sheet/mineral/sandstone/runed(T)
+		new /obj/item/stack/sheet/mineral/sandstone/runed(T)
+		new /obj/item/stack/sheet/mineral/sandstone/runed(T)
+	return ..()
 
 /obj/structure/machinery/door/airlock/sandstone/runed/ex_act(severity, explosion_direction)
 	var/exp_damage = severity * EXPLOSION_DAMAGE_MULTIPLIER_DOOR

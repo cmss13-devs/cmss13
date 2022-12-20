@@ -21,6 +21,8 @@
 	max_heat_protection_temperature = HELMET_max_heat_protection_temperature
 	siemens_coefficient = 0.7
 	w_class = SIZE_MEDIUM
+	pickupsound = "armorequip"
+	dropsound = "armorequip"
 
 /obj/item/clothing/head/helmet/verb/hidehair()
 	set name = "Toggle Hair"
@@ -299,6 +301,9 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	/obj/item/clothing/head/headband = "headbandgreen",
 	/obj/item/clothing/head/headband/tan = "headbandtan",
 	/obj/item/clothing/head/headband/red = "headbandred",
+	/obj/item/clothing/head/headband/brown = "helmet_headbandbrown",
+	/obj/item/clothing/head/headband/gray = "helmet_headbandgray",
+	/obj/item/clothing/head/headband/squad = HELMET_GARB_RELAY_ICON_STATE,
 	/obj/item/tool/candle = "candle",
 	/obj/item/clothing/mask/facehugger/lamarr = "lamarr",
 	/obj/item/toy/crayon/red = "crayonred",
@@ -347,7 +352,6 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	flags_inventory = BLOCKSHARPOBJ
 	flags_inv_hide = HIDEEARS
 	var/flags_marine_helmet = HELMET_SQUAD_OVERLAY|HELMET_GARB_OVERLAY|HELMET_DAMAGE_OVERLAY
-	var/obj/item/storage/internal/pockets
 	var/helmet_bash_cooldown = 0
 
 	var/specialty = "M10 pattern marine" //Give them a specialty var so that they show up correctly in vendors.
@@ -356,6 +360,12 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
 	)
+
+	var/obj/item/storage/internal/helmet/pockets
+	var/storage_slots = 2 // keep in mind, one slot is reserved for garb items
+	var/storage_slots_reserved_for_garb = 1
+	var/storage_max_w_class = SIZE_TINY // can hold tiny items only, EXCEPT for glasses & metal flask.
+	var/storage_max_storage_space = 4
 
 	//speciality does NOTHING if you have NO_NAME_OVERRIDE
 
@@ -372,11 +382,13 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 		select_gamemode_skin(type,null,new_protection)
 
 	helmet_overlays = list() //To make things simple.
-	pockets = new/obj/item/storage/internal(src)
-	pockets.storage_slots = 2
-	pockets.max_w_class = SIZE_TINY //can hold tiny items only, EXCEPT for glasses & metal flask.
+
+	pockets = new(src)
+	pockets.storage_slots = HAS_FLAG(flags_marine_helmet, HELMET_GARB_OVERLAY) ? storage_slots + storage_slots_reserved_for_garb : storage_slots
+	pockets.slots_reserved_for_garb = HAS_FLAG(flags_marine_helmet, HELMET_GARB_OVERLAY) ? storage_slots_reserved_for_garb : 0
+	pockets.max_w_class = storage_max_w_class
 	pockets.bypass_w_limit = GLOB.allowed_helmet_items
-	pockets.max_storage_space = 3
+	pockets.max_storage_space = storage_max_storage_space
 
 	camera = new /obj/structure/machinery/camera(src)
 	camera.network = list(CAMERA_NET_OVERWATCH)
@@ -437,13 +449,28 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	// we have to add overlays to that.
 	helmet_overlays = list() // Rebuild our list every time
 	if(pockets && pockets.contents.len && (flags_marine_helmet & HELMET_GARB_OVERLAY))
-		helmet_overlays += "helmet_band"
+		var/list/above_band_layer = list()
+		var/list/below_band_layer = list()
+		var/has_helmet_band = FALSE
 		for(var/obj/O in pockets.contents)
 			if(GLOB.allowed_helmet_items[O.type])
+				var/has_band = !HAS_FLAG(O.flags_obj, OBJ_NO_HELMET_BAND)
+				if(has_band)
+					has_helmet_band = TRUE
 				if(GLOB.allowed_helmet_items[O.type] == HELMET_GARB_RELAY_ICON_STATE)
-					helmet_overlays += "helmet_[O.icon_state]"
+					if(has_band)
+						above_band_layer += "helmet_[O.icon_state]"
+					else
+						below_band_layer += "helmet_[O.icon_state]"
 				else
-					helmet_overlays += GLOB.allowed_helmet_items[O.type]
+					if(has_band)
+						above_band_layer += GLOB.allowed_helmet_items[O.type]
+					else
+						below_band_layer += GLOB.allowed_helmet_items[O.type]
+		if(has_helmet_band)
+			helmet_overlays = above_band_layer + list("helmet_band") + below_band_layer
+		else
+			helmet_overlays = above_band_layer + below_band_layer
 
 	if(ismob(loc))
 		var/mob/M = loc
@@ -610,7 +637,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 
 /obj/item/clothing/head/helmet/marine/grenadier
 	name = "\improper M3-G4 grenadier helmet"
-	desc = "Pairs with the M3-G4 heavy grenadier plating. A distant cousin of the experimental B18 defensive helmet."
+	desc = "Pairs with the M3-G4 heavy grenadier plating. A distant cousin of the experimental B18 defensive helmet. Comes with inbuilt ear blast protection."
 	icon_state = "grenadier_helmet"
 	item_state = "grenadier_helmet"
 	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
@@ -619,6 +646,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_rad = CLOTHING_ARMOR_HIGH
 	armor_internaldamage = CLOTHING_ARMOR_HIGH
+	clothing_traits = list(TRAIT_EAR_PROTECTION)
 	unacidable = TRUE
 	anti_hug = 6
 	specialty = "M3-G4 grenadier"
@@ -640,6 +668,17 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	max_heat_protection_temperature = FIRESUIT_max_heat_protection_temperature
 	specialty = "M35 pyrotechnician"
 	flags_item = MOB_LOCK_ON_EQUIP|NO_CRYO_STORE
+
+/obj/item/clothing/head/helmet/marine/M3T
+	name = "\improper M3-T bombardier helmet"
+	icon_state = "sadar_helmet"
+	desc = "A custom-built helmet for explosive weaponry users. Comes with inbuilt ear blast protection, firing a rocket launcher without this is not recommended."
+	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
+	armor_bomb = CLOTHING_ARMOR_HIGH
+	specialty = "M3-T bombardier"
+	flags_inventory = BLOCKSHARPOBJ
+	clothing_traits = list(TRAIT_EAR_PROTECTION)
+	unacidable = TRUE
 
 /obj/item/clothing/head/helmet/marine/pilot
 	name = "\improper M30 tactical helmet"
@@ -966,7 +1005,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	item_state = "upp_ushanka_civi"
 	original_state = "upp_ushanka_civi"
 
-obj/item/clothing/head/helmet/marine/veteran/van_bandolier
+/obj/item/clothing/head/helmet/marine/veteran/van_bandolier
 	name = "pith helmet"
 	desc = "A stylish pith helmet, made from space-age materials. Lightweight, breathable, cool, and protective."
 	icon_state = "van_bandolier"

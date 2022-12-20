@@ -34,7 +34,7 @@
 	*/
 
 	anchored = 1.0
-	use_power = 1
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 2
 	active_power_usage = 4
 
@@ -173,6 +173,7 @@
 	use_power(5)
 	icon_state = initial(icon_state) + "1"
 	add_fingerprint(user)
+	to_chat(user, SPAN_NOTICE("You press \the [name] button."))
 
 	switch(normaldoorcontrol)
 		if(CONTROL_NORMAL_DOORS)

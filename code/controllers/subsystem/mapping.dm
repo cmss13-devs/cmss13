@@ -36,7 +36,7 @@ SUBSYSTEM_DEF(mapping)
 /datum/controller/subsystem/mapping/Initialize(timeofday)
 	HACK_LoadMapConfig()
 	if(initialized)
-		return
+		return SS_INIT_SUCCESS
 
 	for(var/i in ALL_MAPTYPES)
 		var/datum/map_config/MC = configs[i]
@@ -59,7 +59,8 @@ SUBSYSTEM_DEF(mapping)
 		var/datum/map_config/MC = configs[maptype]
 		if(MC.perf_mode)
 			GLOB.perf_flags |= MC.perf_mode
-	return ..()
+
+	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/mapping/proc/wipe_reservations(wipe_safety_delay = 100)
 	if(clearing_reserved_turfs || !initialized)			//in either case this is just not needed.

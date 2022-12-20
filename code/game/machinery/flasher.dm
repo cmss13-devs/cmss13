@@ -72,7 +72,7 @@
 		if (istype(O, /mob/living/carbon/Xenomorph))//So aliens don't get flashed (they have no external eyes)/N
 			continue
 
-		O.KnockDown(strength)
+		O.apply_effect(strength, WEAKEN)
 		if (istype(O, /mob/living/carbon/human))
 			var/mob/living/carbon/human/H = O
 			var/datum/internal_organ/eyes/E = H.internal_organs_by_name["eyes"]
@@ -105,11 +105,11 @@
 		src.anchored = !src.anchored
 
 		if (!src.anchored)
-			user.show_message(text(SPAN_DANGER("[src] can now be moved.")))
+			user.show_message(text(SPAN_DANGER("[src] can now be moved.")), SHOW_MESSAGE_VISIBLE)
 			src.overlays.Cut()
 
 		else if (src.anchored)
-			user.show_message(text(SPAN_DANGER("[src] is now secured.")))
+			user.show_message(text(SPAN_DANGER("[src] is now secured.")), SHOW_MESSAGE_VISIBLE)
 			src.overlays += "[base_state]-s"
 
 /obj/structure/machinery/flasher_button/attack_remote(mob/user as mob)

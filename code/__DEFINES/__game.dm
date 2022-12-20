@@ -37,6 +37,8 @@
 #define MAP_ICE_COLONY_V3 "Shivas Snowball" //Ice Rework, low pop enabled.
 #define MAP_HAUNTED_HOUSE_V2 "Haunted House V2"
 #define MAP_RUNTIME "USS Runtime"
+#define MAP_LV522_CHANCES_CLAIM "LV-522 Chance's Claim" // Highpop Only
+#define MAP_NEW_VARADERO "New Varadero"//ice colony underground but as its own map
 
 #define PLAYERCOUNT_LOWPOP_MAP_LIMIT 130 // number of players before we switch to lowpop maps only (LV, BR, Prison)
 
@@ -88,12 +90,14 @@
 
 //Preference toggles//
 //toggles_sound
-#define SOUND_ADMINHELP	1
-#define SOUND_MIDI		2
-#define SOUND_AMBIENCE	4
-#define SOUND_LOBBY		8
-#define SOUND_INTERNET	16
-#define SOUND_REBOOT	32
+#define SOUND_ADMINHELP (1<<0)
+#define SOUND_MIDI (1<<1)
+#define SOUND_AMBIENCE (1<<2)
+#define SOUND_LOBBY	(1<<3)
+#define SOUND_INTERNET (1<<4)
+#define SOUND_REBOOT (1<<5)
+#define SOUND_ADMIN_MEME (1<<6)
+#define SOUND_ADMIN_ATMOSPHERIC	(1<<7)
 
 //toggles_chat
 #define CHAT_OOC			(1<<0)
@@ -146,7 +150,7 @@
 
 #define TOGGLES_LANGCHAT_DEFAULT (LANGCHAT_SEE_EMOTES)
 
-#define TOGGLES_SOUND_DEFAULT (SOUND_ADMINHELP|SOUND_MIDI|SOUND_AMBIENCE|SOUND_LOBBY|SOUND_INTERNET)
+#define TOGGLES_SOUND_DEFAULT (SOUND_ADMINHELP|SOUND_MIDI|SOUND_AMBIENCE|SOUND_LOBBY|SOUND_INTERNET|SOUND_ADMIN_MEME|SOUND_ADMIN_ATMOSPHERIC)
 
 #define TOGGLES_FLASHING_DEFAULT (FLASH_ROUNDSTART|FLASH_ROUNDEND|FLASH_CORPSEREVIVE|FLASH_ADMINPM|FLASH_UNNEST)
 
@@ -208,9 +212,6 @@
 #define ALARM_WARNING_READY	(1<<3)
 #define ALARM_WARNING_DOWN	(1<<4)
 #define ALARM_LOCKDOWN		(1<<5)
-
-//some arbitrary defines to be used by self-pruning global lists. (see master_controller)
-#define PROCESS_KILL 26	//Used to trigger removal from a processing list
 
 //=================================================
 #define HOSTILE_STANCE_IDLE 1
@@ -402,6 +403,13 @@
 #define CHAT_SAY_DELAY_SPAM 10
 #define CHAT_OOC_DELAY      5
 #define CHAT_OOC_DELAY_SPAM 10
+
+/// Max characters per minute allowed to speak
+#define CHAT_CPM_ALLOWED  1500
+/// Minimum character length counted for a single message
+#define CHAT_CPM_MINIMUM  50
+/// Buffer period over which speaking budget is considered
+#define CHAT_CPM_PERIOD   5 MINUTES
 
 // Decorator Priorities
 #define DECORATOR_USUAL 0

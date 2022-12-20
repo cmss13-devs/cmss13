@@ -117,8 +117,8 @@
 		s.start()
 		M.visible_message(SPAN_WARNING("[src] beeps and sends a shock through [M]'s body!"))
 		//Stun and knock out, scream in pain
-		M.Stun(2)
-		M.KnockDown(2)
+		M.apply_effect(2, STUN)
+		M.apply_effect(2, WEAKEN)
 		if(M.pain.feels_pain)
 			M.emote("scream")
 		//Apply a bit of burn damage
@@ -254,7 +254,7 @@
 	SIGNAL_HANDLER
 
 	var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags
-	if(ammo_flags & (AMMO_ROCKET|AMMO_ENERGY|AMMO_XENO_ACID)) //<--- These will auto uncloak.
+	if(ammo_flags & (AMMO_ROCKET|AMMO_ENERGY|AMMO_ACIDIC)) //<--- These will auto uncloak.
 		decloak(H) //Continue on to damage.
 	else if(prob(20))
 		decloak(H)

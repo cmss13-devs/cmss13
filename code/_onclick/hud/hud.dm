@@ -18,6 +18,7 @@
 	var/atom/movable/screen/r_hand_hud_object
 	var/atom/movable/screen/l_hand_hud_object
 	var/atom/movable/screen/action_intent
+	var/atom/movable/screen/mov_intent/move_intent
 	var/atom/movable/screen/alien_plasma_display
 	var/atom/movable/screen/alien_armor_display
 	var/atom/movable/screen/locate_leader
@@ -59,7 +60,7 @@
 
 	var/list/atom/movable/screen/plane_master/plane_masters = list() // see "appearance_flags" in the ref, assoc list of "[plane]" = object
 	///Assoc list of controller groups, associated with key string group name with value of the plane master controller ref
-	var/list/obj/plane_master_controller/plane_master_controllers = list()
+	var/list/atom/movable/plane_master_controller/plane_master_controllers = list()
 
 	var/list/static_inventory = list() //the screen objects which are static
 	var/list/toggleable_inventory = list() //the screen objects which can be hidden
@@ -82,8 +83,8 @@
 		if(owner.client)
 			instance.backdrop(mymob)
 
-	for(var/mytype in subtypesof(/obj/plane_master_controller))
-		var/obj/plane_master_controller/controller_instance = new mytype(null,src)
+	for(var/mytype in subtypesof(/atom/movable/plane_master_controller))
+		var/atom/movable/plane_master_controller/controller_instance = new mytype(null,src)
 		plane_master_controllers[controller_instance.name] = controller_instance
 
 /datum/hud/Destroy()
@@ -112,6 +113,7 @@
 	r_hand_hud_object = null
 	l_hand_hud_object = null
 	action_intent = null
+	move_intent = null
 	alien_plasma_display = null
 	alien_armor_display = null
 	locate_leader = null
@@ -280,6 +282,18 @@
 	using.screen_loc = ui_datum.ui_acti
 	static_inventory += using
 	action_intent = using
+
+/datum/hud/proc/draw_mov_intent(var/datum/custom_hud/ui_datum, var/ui_alpha, var/ui_color)
+	var/atom/movable/screen/using = new /atom/movable/screen/mov_intent()
+	using.icon = ui_datum.ui_style_icon
+	using.screen_loc = ui_datum.ui_movi
+	if(ui_alpha)
+		using.alpha = ui_alpha
+	if(ui_color)
+		using.color = ui_color
+	using.icon_state = (mymob.m_intent == MOVE_INTENT_RUN ? "running" : "walking")
+	static_inventory += using
+	move_intent = using
 
 /datum/hud/proc/draw_drop(var/datum/custom_hud/ui_datum, var/ui_alpha, var/ui_color)
 	var/atom/movable/screen/using = new /atom/movable/screen/drop()

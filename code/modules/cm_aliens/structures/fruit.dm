@@ -56,7 +56,7 @@
 	timer_id = addtimer(CALLBACK(src, .proc/mature), time_to_mature * W.fruit_growth_multiplier, TIMER_UNIQUE | TIMER_STOPPABLE)
 	. = ..()
 	// Need to do it here because baseline initialize override the icon through config.
-	icon = 'icons/mob/hostiles/fruits.dmi'
+	icon = 'icons/mob/xenos/fruits.dmi'
 
 /obj/effect/alien/resin/fruit/proc/on_weed_expire()
 	SIGNAL_HANDLER
@@ -76,7 +76,7 @@
 
 /obj/effect/alien/resin/fruit/bullet_act(obj/item/projectile/P)
 	var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags
-	if(ammo_flags & (AMMO_XENO_ACID|AMMO_XENO_TOX))
+	if(ammo_flags & (AMMO_XENO))
 		return
 	qdel(src)
 	. = ..()
@@ -321,9 +321,10 @@
 /obj/item/reagent_container/food/snacks/resin_fruit
 	name = XENO_FRUIT_LESSER
 	desc = "A strange fruit that you could eat.. if you REALLY wanted to. Its roots seem to twitch every so often."
-	icon = 'icons/mob/hostiles/fruits.dmi'
+	icon = 'icons/mob/xenos/fruits.dmi'
 	icon_state = "fruit_lesser_item"
-	w_class = SIZE_LARGE
+	w_class = SIZE_MEDIUM
+	storage_cost = SIZE_LARGE
 	bitesize = 2
 	var/mob/living/carbon/Xenomorph/bound_xeno //Drone linked to this fruit
 	var/fruit_type = /obj/effect/alien/resin/fruit

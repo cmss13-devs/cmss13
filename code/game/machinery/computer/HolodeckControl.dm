@@ -69,7 +69,7 @@
 				to_chat(user, SPAN_WARNING("You need a better grip to do that!"))
 				return
 			M.forceMove(loc)
-			M.KnockDown(5)
+			M.apply_effect(5, WEAKEN)
 			user.visible_message(SPAN_DANGER("[user] puts [M] on the table."))
 		return
 
@@ -147,7 +147,7 @@
 				to_chat(user, SPAN_WARNING("You need a better grip to do that!"))
 				return
 			M.forceMove(loc)
-			M.KnockDown(5)
+			M.apply_effect(5, WEAKEN)
 			for(var/obj/structure/machinery/scoreboard/X in machines)
 				if(X.id == id)
 					X.score(side, 3)// 3 points for dunking a mob
@@ -192,7 +192,7 @@
 	var/eventstarted = 0
 
 	anchored = 1.0
-	use_power = 1
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 2
 	active_power_usage = 6
 	power_channel = POWER_CHANNEL_ENVIRON

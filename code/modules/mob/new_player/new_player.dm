@@ -20,6 +20,7 @@
 	if(ready)
 		readied_players--
 	GLOB.new_player_list -= src
+	GLOB.dead_mob_list -= src
 	return ..()
 
 /mob/new_player/verb/new_player_panel()
@@ -118,7 +119,9 @@
 			if(alert(src,"Are you sure you wish to observe? When you observe, you will not be able to join as marine. It might also take some time to become a xeno or responder!","Player Setup","Yes","No") == "Yes")
 				if(!client)
 					return TRUE
-				var/mob/dead/observer/observer = new()
+				if(!client.prefs?.preview_dummy)
+					client.prefs.update_preview_icon()
+				var/mob/dead/observer/observer = new /mob/dead/observer(get_turf(pick(GLOB.latejoin)), client.prefs.preview_dummy)
 				observer.set_lighting_alpha_from_pref(client)
 				spawning = TRUE
 				observer.started_as_observer = TRUE
@@ -276,7 +279,7 @@
 			if(C.player_data && C.player_data.playtime_loaded && length(C.player_data.playtimes) == 0)
 				msg_admin_niche("NEW PLAYER: <b>[key_name(character, 1, 1, 0)] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];ahelp=adminmoreinfo;extra=\ref[C]'>?</A>)</b>. IP: [character.lastKnownIP], CID: [character.computer_id]")
 			if(C.player_data && C.player_data.playtime_loaded && ((round(C.get_total_human_playtime() DECISECONDS_TO_HOURS, 0.1)) <= 5))
-				msg_sea("NEW PLAYER: <b>[key_name(character, 0, 1, 0)] has less than 5 hours as a human. Current role: [get_actual_job_name(character)] - Current location: [get_area(character)]")
+				msg_sea("NEW PLAYER: <b>[key_name(character, 0, 1, 0)]</b> only has [(round(C.get_total_human_playtime() DECISECONDS_TO_HOURS, 0.1))] hours as a human. Current role: [get_actual_job_name(character)] - Current location: [get_area(character)]")
 
 	character.client.init_verbs()
 	qdel(src)
@@ -381,9 +384,6 @@
 	new_character.job = job
 	new_character.name = real_name
 	new_character.voice = real_name
-
-	if(client.prefs.disabilities)
-		new_character.disabilities |= NEARSIGHTED
 
 	// Update the character icons
 	// This is done in set_species when the mob is created as well, but

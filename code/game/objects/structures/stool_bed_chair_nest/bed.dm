@@ -40,16 +40,20 @@
 		else
 			icon_state = "[base_bed_icon]_down"
 
-obj/structure/bed/Destroy()
+/obj/structure/bed/Destroy()
 	if(buckled_bodybag)
 		unbuckle()
 	. = ..()
 
 /obj/structure/bed/ex_act(var/power)
 	if(power >= EXPLOSION_THRESHOLD_VLOW)
+		deconstruct(FALSE)
+
+/obj/structure/bed/deconstruct(disassembled = TRUE)
+	if(!disassembled)
 		if(!isnull(buildstacktype))
 			new buildstacktype(get_turf(src), buildstackamount)
-		qdel(src)
+	return ..()
 
 /obj/structure/bed/afterbuckle(mob/M)
 	. = ..()

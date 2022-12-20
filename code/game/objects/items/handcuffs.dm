@@ -197,7 +197,7 @@
 		var/turf/p_loc_m = C.loc
 		playsound(src.loc, 'sound/weapons/handcuffs.ogg', 25, 1, 6)
 		for(var/mob/O in viewers(user, null))
-			O.show_message(SPAN_DANGER("<B>[user] is trying to put restraints on [C]!</B>"), 1)
+			O.show_message(SPAN_DANGER("<B>[user] is trying to put restraints on [C]!</B>"), SHOW_MESSAGE_VISIBLE)
 		spawn(30)
 			if(!C)	return
 			if(p_loc == user.loc && p_loc_m == C.loc)

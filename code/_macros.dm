@@ -19,8 +19,6 @@
 
 #define CanPhysicallyInteractWith(user, target) CanInteractWith(user, target, GLOB.physical_state)
 
-#define QDEL_NULL_LIST(x) if(x) { for(var/y in x) { qdel(y) }}; if(x) {x.Cut(); x = null } // Second x check to handle items that LAZYREMOVE on qdel.
-
 #define DROP_NULL(x) if(x) { x.dropInto(loc); x = null; }
 
 #define ARGS_DEBUG log_debug("[__FILE__] - [__LINE__]") ; for(var/arg in args) { log_debug("\t[log_info_line(arg)]") }
@@ -74,6 +72,8 @@
 
 // Inverse direction, taking into account UP|DOWN if necessary.
 #define REVERSE_DIR(dir) ( ((dir & 85) << 1) | ((dir & 170) >> 1) )
+
+#define POSITIVE(val) max(val, 0)
 
 #define GENERATE_DEBUG_ID "[rand(0, 9)][rand(0, 9)][rand(0, 9)][rand(0, 9)][pick(alphabet_lowercase)][pick(alphabet_lowercase)][pick(alphabet_lowercase)][pick(alphabet_lowercase)]"
 

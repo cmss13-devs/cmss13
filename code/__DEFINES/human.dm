@@ -146,13 +146,14 @@
 #define SYNTH_COLONY_GEN_TWO	"First Generation Colonial Synthetic"
 #define SYNTH_COLONY_GEN_ONE	"Second Generation Colonial Synthetic"
 #define SYNTH_COMBAT	"Combat Synthetic"
+#define SYNTH_INFILTRATOR	"Infiltrator Synthetic"
 #define SYNTH_WORKING_JOE	"Working Joe"
 #define SYNTH_GEN_ONE	"First Generation Synthetic"
 #define SYNTH_GEN_TWO	"Second Generation Synthetic"
 #define SYNTH_GEN_THREE	"Third Generation Synthetic"
 
 #define PLAYER_SYNTHS list(SYNTH_GEN_ONE, SYNTH_GEN_TWO, SYNTH_GEN_THREE)
-#define SYNTH_TYPES list(SYNTH_COLONY, SYNTH_COMBAT, SYNTH_WORKING_JOE, SYNTH_GEN_ONE, SYNTH_GEN_TWO, SYNTH_GEN_THREE)
+#define SYNTH_TYPES list(SYNTH_COLONY, SYNTH_COLONY_GEN_ONE, SYNTH_COLONY_GEN_TWO, SYNTH_COMBAT, SYNTH_INFILTRATOR, SYNTH_WORKING_JOE, SYNTH_GEN_ONE, SYNTH_GEN_TWO, SYNTH_GEN_THREE)
 
 // Human religion defines
 #define RELIGION_PROTESTANT		 		"Christianity (Protestant)"

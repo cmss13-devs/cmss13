@@ -11,7 +11,7 @@
 The local population warned you about establishing a base in the jungles of LV-624...
 Hold the outpost for one hour until the distress beacon can be broadcast to the remaining Dust Raiders!
 Coordinate your team and prepare defenses, whatever wiped out the patrols is en-route!
-Count on your Gunnery Seargent, and your Honor Guard Squad Leader to assist you!
+Count on your Lieutenant Commander, and your Honor Guard Squad Leader to assist you!
 Stay alive, and Godspeed, commander!"}
 
 	announce_entry_message(mob/living/carbon/human/H)
@@ -62,7 +62,7 @@ Make the USCM proud!"}
 	gear_preset = /datum/equipment_preset/wo/cmp
 
 	generate_entry_message(mob/living/carbon/human/H)
-		. = {"The Commander is the best hope for this outpost! At least in your eyes. You two have saved each-other's asses enough times to testify to that, and have been together for longer than anyone cares to remember. You're his left-hand man, behind the Gunnery Sergeant. You two are men. Manly men.
+		. = {"The Commander is the best hope for this outpost! At least in your eyes. You two have saved each-other's asses enough times to testify to that, and have been together for longer than anyone cares to remember. You're his left-hand man, behind the Lieutenant Commander. You two are men. Manly men.
 Your veterans have lived enough years that they are able to command others using the overwatch consoles, but the young ones are still fresh out of boot camp - it's your job to shape 'em up into proper soldiers!
 You must lead his Honor guard, his elite unit of marines, to protect the commander, and ensure victory!
 "}

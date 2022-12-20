@@ -37,12 +37,12 @@
 				if(halloss > 100)
 					visible_message(SPAN_WARNING("\The [src] slumps to the ground, too weak to continue fighting."), \
 					SPAN_WARNING("You slump to the ground, you're in too much pain to keep going."))
-					KnockOut(10)
+					apply_effect(10, PARALYZE)
 					setHalLoss(99)
 
 		//UNCONSCIOUS. NO-ONE IS HOME
 		if(regular_update && ((getOxyLoss() > 50)))
-			KnockOut(3)
+			apply_effect(3, PARALYZE)
 
 		if((src.species.flags & HAS_HARDCRIT) && HEALTH_THRESHOLD_CRIT > health)
 			var/already_in_crit = FALSE
@@ -82,16 +82,16 @@
 			eye_blind = 0
 			if(stat == CONSCIOUS) //even with 'eye-less' vision, unconsciousness makes you blind
 				blinded = 0
-			eye_blurry = 0
+			SetEyeBlur(0)
 		else if(!has_eyes())           //Eyes cut out? Permablind.
 			eye_blind =  1
 			blinded =    1
-			eye_blurry = 1
+			// we don't need to blur vision if they are blind...
 		else if(eye_blind)		       //Blindness, heals slowly over time
 			eye_blind =  max(eye_blind - 1, 0)
 			blinded =    1
 		else if(eye_blurry)	           //Blurry eyes heal slowly
-			eye_blurry = max(eye_blurry - 1, 0)
+			ReduceEyeBlur(1)
 
 		//Ears
 		if(ear_deaf) //Deafness, heals slowly over time
@@ -123,7 +123,7 @@
 
 		if(paralyzed)
 			speech_problem_flag = 1
-			KnockDown(1)
+			apply_effect(1, WEAKEN)
 			silent = 1
 			blinded = 1
 			use_me = 0
@@ -132,10 +132,10 @@
 
 		if(drowsyness)
 			drowsyness = max(0,drowsyness - 2)
-			eye_blurry = max(2, eye_blurry)
+			EyeBlur(2)
 			if(drowsyness > 10 && prob(5))
 				sleeping++
-				KnockOut(5)
+				apply_effect(5, PARALYZE)
 
 		confused = max(0, confused - 1)
 

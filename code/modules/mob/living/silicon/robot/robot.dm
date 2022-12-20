@@ -466,7 +466,7 @@ var/list/robot_verbs_default = list(
 			updatehealth()
 			add_fingerprint(user)
 			for(var/mob/O in viewers(user, null))
-				O.show_message(text(SPAN_DANGER("[user] has fixed some of the dents on [src]!")), 1)
+				O.show_message(text(SPAN_DANGER("[user] has fixed some of the dents on [src]!")), SHOW_MESSAGE_VISIBLE)
 		else
 			to_chat(user, "Need more welding fuel!")
 			return
@@ -480,7 +480,7 @@ var/list/robot_verbs_default = list(
 			apply_damage(-30, BURN)
 			updatehealth()
 			for(var/mob/O in viewers(user, null))
-				O.show_message(text(SPAN_DANGER("[user] has fixed some of the burnt wires on [src]!")), 1)
+				O.show_message(text(SPAN_DANGER("[user] has fixed some of the burnt wires on [src]!")), SHOW_MESSAGE_VISIBLE)
 
 	else if (HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))	// crowbar means open or close the cover
 		if(opened)
@@ -622,7 +622,7 @@ var/list/robot_verbs_default = list(
 		if(M.attack_sound)
 			playsound(loc, M.attack_sound, 25, 1)
 		for(var/mob/O in viewers(src, null))
-			O.show_message(SPAN_DANGER("<B>[M]</B> [M.attacktext] [src]!"), 1)
+			O.show_message(SPAN_DANGER("<B>[M]</B> [M.attacktext] [src]!"), SHOW_MESSAGE_VISIBLE)
 		last_damage_data = create_cause_data(initial(M.name), M)
 		M.attack_log += text("\[[time_stamp()]\] <font color='red'>attacked [key_name(src)]</font>")
 		src.attack_log += text("\[[time_stamp()]\] <font color='orange'>was attacked by [key_name(M)]</font>")
@@ -638,7 +638,7 @@ var/list/robot_verbs_default = list(
 	if(opened && !wiresexposed && (!isRemoteControlling(user)))
 		var/datum/robot_component/cell_component = components["power cell"]
 		if(cell)
-			cell.updateicon()
+			cell.update_icon()
 			cell.add_fingerprint(user)
 			user.put_in_active_hand(cell)
 			to_chat(user, "You remove \the [cell].")

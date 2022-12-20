@@ -62,32 +62,6 @@
 	if(healthscan)
 		. += SPAN_NOTICE("The [src.name] offers assisted medical scan, for ease of usage with minimal training. Present the target in front of the scanner to scan.")
 
-/obj/structure/machinery/cm_vending/sorted/medical/vend_succesfully(var/list/L, var/mob/living/carbon/human/H, var/turf/T)
-	if(stat & IN_USE)
-		return
-
-	stat |= IN_USE
-	if(LAZYLEN(L))
-		if(vend_delay)
-			overlays += image(icon, icon_state + "_vend")
-			if(vend_sound)
-				playsound(loc, vend_sound, 25, 1, 2)
-			sleep(vend_delay)
-		var/prod_path = L[3]
-		var/obj/item/IT
-		IT = new prod_path(T)
-
-		IT.add_fingerprint(usr)
-
-		L[2]--
-	else
-		to_chat(H, SPAN_WARNING("ERROR: L is missing. Please report this to admins."))
-		overlays += image(icon, icon_state + "_deny")
-		sleep(15)
-	update_icon()
-	stat &= ~IN_USE
-	return
-
 /obj/structure/machinery/cm_vending/sorted/medical/attackby(var/obj/item/I, var/mob/user)
 	if(stat == WORKING && LAZYLEN(chem_refill) && (istype(I, /obj/item/reagent_container/hypospray/autoinjector) || istype(I, /obj/item/reagent_container/glass/bottle))) // only if we are completely fine and working
 		if(!hacked)
@@ -364,8 +338,20 @@
 	)
 	stack_refill = list(
 		/obj/item/stack/medical/bruise_pack,
-		/obj/item/stack/medical/ointment,
-		/obj/item/stack/medical/splint
+		/obj/item/stack/medical/splint,
+		/obj/item/stack/medical/ointment
+	)
+
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited
+	desc = "Wall-mounted Medical Equipment Dispenser. This version is more limited than standard USCM NanoMeds."
+
+	chem_refill = list(
+		/obj/item/reagent_container/hypospray/autoinjector/skillless,
+		/obj/item/reagent_container/hypospray/autoinjector/skillless/tramadol
+	)
+	stack_refill = list(
+		/obj/item/stack/medical/bruise_pack,
+		/obj/item/stack/medical/ointment
 	)
 
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med/lifeboat

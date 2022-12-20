@@ -22,7 +22,7 @@
 	if (..(C))
 		C.network = network
 
-/obj/item/circuitboard/computer/security/deconstruct(var/obj/structure/machinery/computer/security/C)
+/obj/item/circuitboard/computer/security/disassemble(var/obj/structure/machinery/computer/security/C)
 	if (..(C))
 		network = C.network
 
@@ -164,7 +164,7 @@
 	if (..(SC))
 		SC.can_order_contraband = contraband_enabled
 
-/obj/item/circuitboard/computer/supplycomp/deconstruct(var/obj/structure/machinery/computer/supplycomp/SC)
+/obj/item/circuitboard/computer/supplycomp/disassemble(var/obj/structure/machinery/computer/supplycomp/SC)
 	if (..(SC))
 		contraband_enabled = SC.can_order_contraband
 
@@ -179,7 +179,7 @@
 		SCV.spent = spent
 		SCV.tank_unlocked = tank_unlocked
 
-/obj/item/circuitboard/computer/supplycomp/vehicle/deconstruct(var/obj/structure/machinery/computer/supplycomp/vehicle/SCV)
+/obj/item/circuitboard/computer/supplycomp/vehicle/disassemble(var/obj/structure/machinery/computer/supplycomp/vehicle/SCV)
 	if (..(SCV))
 		spent = SCV.spent
 		tank_unlocked = SCV.tank_unlocked

@@ -7,7 +7,7 @@
 	result_amount = 2
 	mob_react = FALSE
 
-datum/chemical_reaction/adrenaline
+/datum/chemical_reaction/adrenaline
 	name = "Epinephrine"
 	id = "adrenaline"
 	result = "adrenaline"

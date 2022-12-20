@@ -1,5 +1,6 @@
 #define TANK_MAX_RELEASE_PRESSURE (3*ONE_ATMOSPHERE)
 #define TANK_DEFAULT_RELEASE_PRESSURE 24
+#define TANK_MIN_RELEASE_PRESSURE 0
 
 /obj/item/tank
 	name = "tank"
@@ -83,11 +84,12 @@
 /obj/item/tank/ui_data(mob/user)
 	var/list/data = list()
 
-	data["tank_pressure"] = round(pressure)
-	data["release_pressure"] = round(distribute_pressure ? distribute_pressure : 0)
-	data["default_release_pressure"] = round(TANK_DEFAULT_RELEASE_PRESSURE)
-	data["max_release_pressure"] = round(TANK_MAX_RELEASE_PRESSURE)
-
+	data["tankPressure"] = round(pressure)
+	data["tankMaxPressure"] = round(pressure_full)
+	data["ReleasePressure"] = round(distribute_pressure)
+	data["defaultReleasePressure"] = round(TANK_DEFAULT_RELEASE_PRESSURE)
+	data["maxReleasePressure"] = round(TANK_MAX_RELEASE_PRESSURE)
+	data["minReleasePressure"] = round(TANK_MIN_RELEASE_PRESSURE)
 
 	var/mask_connected = FALSE
 	var/using_internal = FALSE
@@ -109,30 +111,33 @@
 	if(.)
 		return
 
-	if("dist_p")
-		if("dist_p" == "reset")
-			src.distribute_pressure = TANK_DEFAULT_RELEASE_PRESSURE
-		else if("dist_p" == "max")
-			src.distribute_pressure = TANK_MAX_RELEASE_PRESSURE
-		else
-			var/cp = text2num("dist_p")
-			src.distribute_pressure += cp
-		src.distribute_pressure = min(max(round(src.distribute_pressure), 0), TANK_MAX_RELEASE_PRESSURE)
-		. = TRUE
-
-	if("stat")
-		if(istype(loc,/mob/living/carbon))
-			var/mob/living/carbon/location = loc
-			if(location.internal == src)
-				location.internal = null
-				to_chat(usr, SPAN_NOTICE("You close the tank release valve."))
-			else
-				if(location.wear_mask && (location.wear_mask.flags_inventory & ALLOWINTERNALS))
-					location.internal = src
-					to_chat(usr, SPAN_NOTICE("You open \the [src]'s valve."))
-				else
-					to_chat(usr, SPAN_NOTICE("You need something to connect to \the [src]."))
+	switch(action)
+		if("pressure")
+			var/tgui_pressure = params["pressure"]
+			if(tgui_pressure == "reset")
+				src.distribute_pressure = TANK_DEFAULT_RELEASE_PRESSURE
+			else if(tgui_pressure == "max")
+				src.distribute_pressure = TANK_MAX_RELEASE_PRESSURE
+			else if(tgui_pressure == "min")
+				src.distribute_pressure = TANK_MIN_RELEASE_PRESSURE
+			else if(text2num(tgui_pressure) != null)
+				pressure = text2num(tgui_pressure)
+			src.distribute_pressure = min(max(round(src.distribute_pressure), 0), TANK_MAX_RELEASE_PRESSURE)
 			. = TRUE
+
+		if("valve")
+			if(istype(loc,/mob/living/carbon))
+				var/mob/living/carbon/location = loc
+				if(location.internal == src)
+					location.internal = null
+					to_chat(usr, SPAN_NOTICE("You close the tank release valve."))
+				else
+					if(location.wear_mask && (location.wear_mask.flags_inventory & ALLOWINTERNALS))
+						location.internal = src
+						to_chat(usr, SPAN_NOTICE("You open \the [src]'s valve."))
+					else
+						to_chat(usr, SPAN_NOTICE("You need something to connect to \the [src]."))
+				. = TRUE
 
 /obj/item/tank/return_air()
 	return list(gas_type, temperature, pressure)

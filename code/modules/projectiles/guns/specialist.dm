@@ -540,7 +540,6 @@
 	else
 		. += SPAN_NOTICE("It is empty.")
 
-
 obj/item/weapon/gun/launcher/grenade/update_icon()
 	..()
 	var/GL_sprite = base_gun_icon

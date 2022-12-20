@@ -1,7 +1,7 @@
 {
     "map_name": "USS Almayer",
-    "map_path": "map_files/USS_Almayer",
-    "map_file": "USS_Almayer.dmm",
+    "map_path": "map_files/USS_Wayfinder",
+    "map_file": "USS_Wayfinder.dmm",
     "traits": [{"Marine Main Ship": true}],
 	    "nightmare": {
         "scenario": "maps/Nightmare/maps/USS_Almayer/scenario.json",

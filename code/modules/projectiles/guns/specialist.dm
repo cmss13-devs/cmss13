@@ -23,8 +23,9 @@
 	if(!has_aimed_shot)
 		return
 	var/dat = ""
-	dat += SPAN_NOTICE("This weapon has an unique ability, Aimed Shot, allowing it to deal great damage after a windup.")
+	dat += SPAN_NOTICE("This weapon has an unique ability, Aimed Shot, allowing it to deal great damage after a windup. ")
 	dat += SPAN_BOLDNOTICE("Additionally, the aimed shot can be sped up with a tracking laser, which is enabled by default but may be disabled.")
+	. += dat
 
 /obj/item/weapon/gun/rifle/sniper/Initialize(mapload, spawn_empty)
 	if(has_aimed_shot)

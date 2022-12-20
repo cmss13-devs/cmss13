@@ -41209,6 +41209,15 @@
 /obj/item/reagent_container/food/drinks/cans/souto/classic{
 	pixel_x = 9
 	},
+/obj/structure/window/reinforced{
+	dir = 1;
+	layer = 2.7;
+	tag = "icon-rwindow (NORTH)"
+	},
+/obj/structure/window/reinforced{
+	dir = 8;
+	health = 80
+	},
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile";
 	tag = "icon-sterile"
@@ -54418,6 +54427,10 @@
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/book/manual/medical_diagnostics_manual,
 /obj/item/device/megaphone,
+/obj/structure/machinery/door/window/eastright{
+	dir = 8;
+	req_access_txt = "19"
+	},
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile";
 	tag = "icon-sterile"
@@ -63270,6 +63283,10 @@
 	phone_category = "Almayer";
 	phone_id = "Medical Lower";
 	pixel_x = 23
+	},
+/obj/structure/machinery/door/window/eastright{
+	dir = 1;
+	req_access_txt = "8"
 	},
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile";
@@ -77246,6 +77263,10 @@
 	pixel_x = 20;
 	tag = "icon-triagedecalbottomleft"
 	},
+/obj/structure/machinery/door/window/eastright{
+	dir = 2;
+	req_access_txt = "8"
+	},
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile";
 	tag = "icon-sterile"
@@ -80083,6 +80104,11 @@
 	pixel_y = 5
 	},
 /obj/item/tool/pen,
+/obj/structure/window/reinforced{
+	dir = 8;
+	health = 80
+	},
+/obj/structure/window/reinforced,
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile";
 	tag = "icon-sterile"

@@ -1,6 +1,3 @@
-
-
-
 /*
 FIRE ALARM
 */
@@ -11,15 +8,11 @@ FIRE ALARM
 	icon_state = "fire0"
 	var/detecting = 1.0
 	var/working = 1.0
-	var/time = 10.0
-	var/timing = 0.0
-	var/lockdownbyai = 0
 	anchored = 1.0
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 2
 	active_power_usage = 6
 	power_channel = POWER_CHANNEL_ENVIRON
-	var/last_process = 0
 	var/wiresexposed = 0
 	var/buildstage = 2 // 2 = complete, 1 = no wires,  0 = circuit gone
 
@@ -43,13 +36,14 @@ FIRE ALARM
 	if(wiresexposed)
 		switch(buildstage)
 			if(2)
-				icon_state="fire_b2"
+				icon_state = "fire_b2"
 			if(1)
-				icon_state="fire_b1"
+				icon_state = "fire_b1"
 			if(0)
-				icon_state="fire_b0"
-
+				icon_state = "fire_b0"
 		return
+
+	icon_state = "fire0"
 
 	if(stat & BROKEN)
 		icon_state = "firex"
@@ -100,6 +94,7 @@ FIRE ALARM
 					if (C.use(5))
 						to_chat(user, SPAN_NOTICE("You wire \the [src]."))
 						buildstage = 2
+						update_icon()
 						return
 					else
 						to_chat(user, SPAN_WARNING("You need 5 pieces of cable to do wire \the [src]."))
@@ -127,7 +122,6 @@ FIRE ALARM
 					qdel(src)
 		return
 
-	//src.alarm() // why was this even a thing?
 	..()
 	return
 
@@ -139,73 +133,16 @@ FIRE ALARM
 	if(user.stat || inoperable())
 		return
 
-	if (buildstage != 2)
+	if (buildstage != 2 || wiresexposed)
 		return
 
-	user.set_interaction(src)
-	var/area/A = src.loc
-	var/d1
-	var/d2
-	if (istype(user, /mob/living/carbon/human) || isRemoteControlling(user))
-		A = A.loc
+	var/area/A = src.loc.loc
 
-		if (A.flags_alarm_state & ALARM_WARNING_FIRE)
-			d1 = text("<A href='?src=\ref[];reset=1'>Reset - Lockdown</A>", src)
-		else
-			d1 = text("<A href='?src=\ref[];alarm=1'>Alarm - Lockdown</A>", src)
-		if (src.timing)
-			d2 = text("<A href='?src=\ref[];time=0'>Stop Time Lock</A>", src)
-		else
-			d2 = text("<A href='?src=\ref[];time=1'>Initiate Time Lock</A>", src)
-		var/second = round(src.time) % 60
-		var/minute = (round(src.time) - second) / 60
-		var/dat = "<HTML><HEAD></HEAD><BODY><TT>[d1]\n<HR>The current alert level is: [get_security_level()]</b><br><br>\nTimer System: [d2]<BR>\nTime Left: [(minute ? "[minute]:" : null)][second] <A href='?src=\ref[src];tp=-30'>-</A> <A href='?src=\ref[src];tp=-1'>-</A> <A href='?src=\ref[src];tp=1'>+</A> <A href='?src=\ref[src];tp=30'>+</A>\n</TT></BODY></HTML>"
-		show_browser(user, dat, "Fire Alarm", "firealarm")
+	if (A.flags_alarm_state & ALARM_WARNING_FIRE)
+		reset()
 	else
-		A = A.loc
-		if (A.flags_alarm_state & ALARM_WARNING_FIRE)
-			d1 = text("<A href='?src=\ref[];reset=1'>[]</A>", src, stars("Reset - Lockdown"))
-		else
-			d1 = text("<A href='?src=\ref[];alarm=1'>[]</A>", src, stars("Alarm - Lockdown"))
-		if (src.timing)
-			d2 = text("<A href='?src=\ref[];time=0'>[]</A>", src, stars("Stop Time Lock"))
-		else
-			d2 = text("<A href='?src=\ref[];time=1'>[]</A>", src, stars("Initiate Time Lock"))
-		var/second = round(src.time) % 60
-		var/minute = (round(src.time) - second) / 60
-		var/dat = "<HTML><HEAD></HEAD><BODY><TT>[d1]\n<HR><b>The current alert level is: [stars(get_security_level())]</b><br><br>\nTimer System: [d2]<BR>\nTime Left: [(minute ? text("[]:", minute) : null)][second] <A href='?src=\ref[src];tp=-30'>-</A> <A href='?src=\ref[src];tp=-1'>-</A> <A href='?src=\ref[src];tp=1'>+</A> <A href='?src=\ref[src];tp=30'>+</A>\n</TT></BODY></HTML>"
-		show_browser(user, dat, "**Fire Alarm**", "firealarm")
-	return
+		alarm()
 
-/obj/structure/machinery/firealarm/Topic(href, href_list)
-	..()
-	if (usr.stat || inoperable())
-		return
-
-	if (buildstage != 2)
-		return
-
-	if ((usr.contents.Find(src) || ((get_dist(src, usr) <= 1) && istype(src.loc, /turf))) || (isRemoteControlling(usr)))
-		usr.set_interaction(src)
-		if (href_list["reset"])
-			src.reset()
-		else if (href_list["alarm"])
-			src.alarm()
-		else if (href_list["time"])
-			src.timing = text2num(href_list["time"])
-			last_process = world.timeofday
-			//START_PROCESSING(SSobj, src)
-		else if (href_list["tp"])
-			var/tp = text2num(href_list["tp"])
-			src.time += tp
-			src.time = min(max(round(src.time), 0), 120)
-
-		src.updateUsrDialog()
-
-		src.add_fingerprint(usr)
-	else
-		close_browser(usr, "firealarm")
-		return
 	return
 
 /obj/structure/machinery/firealarm/proc/reset()
@@ -228,7 +165,6 @@ FIRE ALARM
 		return
 	A.firealert()
 	update_icon()
-	//playsound(src.loc, 'sound/ambience/signal.ogg', 50, 0)
 	return
 
 /obj/structure/machinery/firealarm/Initialize(mapload, dir, building)

@@ -751,13 +751,13 @@
 	new /obj/flamer_fire(sourceturf, create_cause_data("chemical fire", source_mob?.resolve()), R, radius, FALSE, flameshape)
 	addtimer(CALLBACK(GLOBAL_PROC, /proc/playsound, sourceturf, 'sound/weapons/gun_flamethrower1.ogg', 25, 1), 0.5 SECONDS)
 
-turf/proc/reset_chemexploded()
+/turf/proc/reset_chemexploded()
 	chemexploded = FALSE
 
 //*****************************************************************************************************/
 
 // Convenience proc to create a reagents holder for an atom
 // Max vol is maximum volume of holder
-atom/proc/create_reagents(var/max_vol)
+/atom/proc/create_reagents(var/max_vol)
 	reagents = new/datum/reagents(max_vol)
 	reagents.my_atom = src

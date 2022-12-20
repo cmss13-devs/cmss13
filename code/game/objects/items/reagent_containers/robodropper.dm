@@ -46,7 +46,7 @@
 						trans = src.reagents.trans_to(safe_thing, amount_per_transfer_from_this)
 
 						for(var/mob/O in viewers(world_view_size, user))
-							O.show_message(SPAN_DANGER("<B>[user] tries to squirt something into [target]'s eyes, but fails!</B>"), 1)
+							O.show_message(SPAN_DANGER("<B>[user] tries to squirt something into [target]'s eyes, but fails!</B>"), SHOW_MESSAGE_VISIBLE)
 						spawn(5)
 							src.reagents.reaction(safe_thing, TOUCH)
 
@@ -59,7 +59,7 @@
 
 
 				for(var/mob/O in viewers(world_view_size, user))
-					O.show_message(SPAN_DANGER("<B>[user] squirts something into [target]'s eyes!</B>"), 1)
+					O.show_message(SPAN_DANGER("<B>[user] squirts something into [target]'s eyes!</B>"), SHOW_MESSAGE_VISIBLE)
 				src.reagents.reaction(target, TOUCH)
 
 				var/mob/M = target
@@ -89,7 +89,7 @@
 				return
 
 			var/trans = target.reagents.trans_to(src, amount_per_transfer_from_this)
-			
+
 			if(!trans)
 				to_chat(user, SPAN_DANGER("You fail to remove reagents from [target]."))
 				return

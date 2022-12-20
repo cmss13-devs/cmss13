@@ -1150,7 +1150,7 @@
 		return ..()
 
 
-obj/item/storage/belt/gun/m44/lever_action/verb/detach_holster()
+/obj/item/storage/belt/gun/m44/lever_action/verb/detach_holster()
 	set category = "Object"
 	set name = "Detach revolver holster"
 	set src in usr

@@ -173,7 +173,7 @@
 	to_chat(M, isXeno(M) ? SPAN_XENODANGER("You are pushed back by the sudden impact!") : SPAN_HIGHDANGER("You are pushed back by the sudden impact!"), null, 4, CHAT_TYPE_TAKING_HIT)
 	step(M, Get_Compass_Dir(P.z ? P : P.firer, M))
 
-/datum/ammo/proc/burst(atom/target, obj/item/projectile/P, damage_type = BRUTE, range = 1, damage_div = 2, show_message = 1) //damage_div says how much we divide damage
+/datum/ammo/proc/burst(atom/target, obj/item/projectile/P, damage_type = BRUTE, range = 1, damage_div = 2, show_message = SHOW_MESSAGE_VISIBLE) //damage_div says how much we divide damage
 	if(!target || !P) return
 	for(var/mob/living/carbon/M in orange(range,target))
 		if(P.firer == M)
@@ -1743,7 +1743,7 @@
 /datum/ammo/bullet/sniper/elite/set_bullet_traits()
 	. = ..()
 	LAZYADD(traits_to_give, list(
-	    BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_penetrating)
+		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_penetrating)
 	))
 
 /datum/ammo/bullet/sniper/elite/on_hit_mob(mob/M,obj/item/projectile/P)
@@ -2832,27 +2832,27 @@
 	bonus_projectiles_amount = 0
 
 /datum/ammo/xeno/bone_chips/spread/short_range
-    name = "small bone chips"
+	name = "small bone chips"
 
-    max_range = 3 // Very short range
+	max_range = 3 // Very short range
 
 /datum/ammo/xeno/bone_chips/spread/runner_skillshot
-    name = "bone chips"
+	name = "bone chips"
 
-    scatter = 0
-    max_range = 5
-    damage = 10
-    shrapnel_chance = 0
+	scatter = 0
+	max_range = 5
+	damage = 10
+	shrapnel_chance = 0
 
 /datum/ammo/xeno/bone_chips/spread/runner/on_hit_mob(mob/M, obj/item/projectile/P)
-    if(iscarbon(M))
-        var/mob/living/carbon/C = M
-        if((HAS_FLAG(C.status_flags, XENO_HOST) && HAS_TRAIT(C, TRAIT_NESTED)) || C.stat == DEAD)
-            return
-    if(isHumanStrict(M) || isXeno(M))
-        playsound(M, 'sound/effects/spike_hit.ogg', 25, 1, 1)
-        if(M.slowed < 6)
-            M.apply_effect(6, SLOW)
+	if(iscarbon(M))
+		var/mob/living/carbon/C = M
+		if((HAS_FLAG(C.status_flags, XENO_HOST) && HAS_TRAIT(C, TRAIT_NESTED)) || C.stat == DEAD)
+			return
+	if(isHumanStrict(M) || isXeno(M))
+		playsound(M, 'sound/effects/spike_hit.ogg', 25, 1, 1)
+		if(M.slowed < 6)
+			M.apply_effect(6, SLOW)
 
 /datum/ammo/xeno/oppressor_tail
 	name = "tail hook"
@@ -3236,7 +3236,7 @@
 				for(var/obj/item/reagent_container/food/drinks/cans/souto/S in P.contents)
 					M.put_in_active_hand(S)
 					for(var/mob/O in viewers(world_view_size, P)) //find all people in view.
-						O.show_message(SPAN_DANGER("[M] catches the [S]!"), 1) //Tell them the can was caught.
+						O.show_message(SPAN_DANGER("[M] catches the [S]!"), SHOW_MESSAGE_VISIBLE) //Tell them the can was caught.
 					return //Can was caught.
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M

@@ -405,7 +405,7 @@
 /obj/structure/machinery/defenses/sentry/premade/power_off()
 	return
 
-obj/structure/machinery/defenses/sentry/premade/damaged_action()
+/obj/structure/machinery/defenses/sentry/premade/damaged_action()
 	return
 
 /obj/structure/machinery/defenses/sentry/premade/dumb

@@ -37,21 +37,21 @@
 			if (do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 				open =! open
 				var/msg_open_status = "[open ? "open" : "close"]"
-				user.show_message(SPAN_NOTICE("You [msg_open_status	] the service panel."))
+				user.show_message(SPAN_NOTICE("You [msg_open_status	] the service panel."), SHOW_MESSAGE_VISIBLE)
 			return
 		if (HAS_TRAIT(W, TRAIT_TOOL_MULTITOOL) && open == 1 && !l_hacking)
-			user.show_message(text(SPAN_DANGER("Now attempting to reset internal memory, please hold.")), 1)
+			user.show_message(text(SPAN_DANGER("Now attempting to reset internal memory, please hold.")), SHOW_MESSAGE_VISIBLE)
 			l_hacking = 1
 			if (do_after(usr, 100, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 				if (prob(40))
 					l_setshort = 1
 					l_set = 0
-					user.show_message(text(SPAN_DANGER("Internal memory reset.  Please give it a few seconds to reinitialize.")), 1)
+					user.show_message(text(SPAN_DANGER("Internal memory reset.  Please give it a few seconds to reinitialize.")), SHOW_MESSAGE_VISIBLE)
 					sleep(80)
 					l_setshort = 0
 					l_hacking = 0
 				else
-					user.show_message(text(SPAN_DANGER("Unable to reset internal memory.")), 1)
+					user.show_message(text(SPAN_DANGER("Unable to reset internal memory.")), SHOW_MESSAGE_VISIBLE)
 					l_hacking = 0
 			else	l_hacking = 0
 			return

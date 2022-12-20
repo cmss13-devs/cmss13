@@ -227,7 +227,7 @@
 		if(M.attack_sound)
 			playsound(loc, M.attack_sound, 25, 1)
 		for(var/mob/O in viewers(src, null))
-			O.show_message(SPAN_DANGER("<B>[M]</B> [M.attacktext] [src]!"), 1)
+			O.show_message(SPAN_DANGER("<B>[M]</B> [M.attacktext] [src]!"), SHOW_MESSAGE_VISIBLE)
 		last_damage_data = create_cause_data(initial(M.name), M)
 		M.attack_log += text("\[[time_stamp()]\] <font color='red'>attacked [key_name(src)]</font>")
 		src.attack_log += text("\[[time_stamp()]\] <font color='orange'>was attacked by [key_name(M)]</font>")
@@ -1102,32 +1102,32 @@
 	show_browser(src, dat, "Crew Manifest", "manifest", "size=400x750")
 
 /mob/living/carbon/human/verb/view_objective_memory()
-    set name = "View objectives"
-    set category = "IC"
+	set name = "View objectives"
+	set category = "IC"
 
-    if(!mind)
-        to_chat(src, "The game appears to have misplaced your mind datum.")
-        return
+	if(!mind)
+		to_chat(src, "The game appears to have misplaced your mind datum.")
+		return
 
-    if(!skillcheck(usr, SKILL_INTEL, SKILL_INTEL_TRAINED) || faction != FACTION_MARINE && !(faction in FACTION_LIST_WY))
-        to_chat(usr, SPAN_WARNING("You have no access to the [MAIN_SHIP_NAME] intel network."))
-        return
+	if(!skillcheck(usr, SKILL_INTEL, SKILL_INTEL_TRAINED) || faction != FACTION_MARINE && !(faction in FACTION_LIST_WY))
+		to_chat(usr, SPAN_WARNING("You have no access to the [MAIN_SHIP_NAME] intel network."))
+		return
 
-    mind.view_objective_memories(src)
+	mind.view_objective_memories(src)
 
 /mob/living/carbon/human/verb/view_research_objective_memory()
-    set name = "View research objectives"
-    set category = "IC"
+	set name = "View research objectives"
+	set category = "IC"
 
-    if(!mind)
-        to_chat(src, "The game appears to have misplaced your mind datum.")
-        return
+	if(!mind)
+		to_chat(src, "The game appears to have misplaced your mind datum.")
+		return
 
-    if(!skillcheck(usr, SKILL_RESEARCH, SKILL_RESEARCH_TRAINED) || faction != FACTION_MARINE && !(faction in FACTION_LIST_WY))
-        to_chat(usr, SPAN_WARNING("You have no access to the [MAIN_SHIP_NAME] research network."))
-        return
+	if(!skillcheck(usr, SKILL_RESEARCH, SKILL_RESEARCH_TRAINED) || faction != FACTION_MARINE && !(faction in FACTION_LIST_WY))
+		to_chat(usr, SPAN_WARNING("You have no access to the [MAIN_SHIP_NAME] research network."))
+		return
 
-    mind.view_research_objective_memories(src)
+	mind.view_research_objective_memories(src)
 
 /mob/living/carbon/human/verb/purge_objective_memory()
 	set name = "Reset view objectives"
@@ -1645,14 +1645,14 @@
 	if(can_break_cuffs) //Don't want to do a lot of logic gating here.
 		to_chat(usr, SPAN_DANGER("You attempt to break [restraint]. (This will take around 5 seconds and you need to stand still)"))
 		for(var/mob/O in viewers(src))
-			O.show_message(SPAN_DANGER("<B>[src] is trying to break [restraint]!</B>"), 1)
+			O.show_message(SPAN_DANGER("<B>[src] is trying to break [restraint]!</B>"), SHOW_MESSAGE_VISIBLE)
 		if(!do_after(src, 50, INTERRUPT_NO_NEEDHAND^INTERRUPT_RESIST, BUSY_ICON_HOSTILE))
 			return
 
 		if(!restraint || buckled)
 			return
 		for(var/mob/O in viewers(src))
-			O.show_message(SPAN_DANGER("<B>[src] manages to break [restraint]!</B>"), 1)
+			O.show_message(SPAN_DANGER("<B>[src] manages to break [restraint]!</B>"), SHOW_MESSAGE_VISIBLE)
 		to_chat(src, SPAN_WARNING("You successfully break [restraint]."))
 		say(pick(";RAAAAAAAARGH!", ";HNNNNNNNNNGGGGGGH!", ";GWAAAAAAAARRRHHH!", "NNNNNNNNGGGGGGGGHH!", ";AAAAAAARRRGH!" ))
 		if(handcuffed)
@@ -1672,7 +1672,7 @@
 		if(!restraint || buckled)
 			return // time leniency for lag which also might make this whole thing pointless but the server
 		for(var/mob/O in viewers(src))//                                         lags so hard that 40s isn't lenient enough - Quarxink
-			O.show_message(SPAN_DANGER("<B>[src] manages to remove [restraint]!</B>"), 1)
+			O.show_message(SPAN_DANGER("<B>[src] manages to remove [restraint]!</B>"), SHOW_MESSAGE_VISIBLE)
 		to_chat(src, SPAN_NOTICE(" You successfully remove [restraint]."))
 		drop_inv_item_on_ground(restraint)
 

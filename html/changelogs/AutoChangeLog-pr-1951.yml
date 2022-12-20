@@ -1,8 +1,0 @@
-author: "stanalbatross"
-delete-after: True
-changes:
-  - balance: "halved the sniper sentry's range to 10 tiles"
-  - balance: "reduced the sniper sentry's accuracy by 20%"
-  - balance: "reduced the sniper sentry's delay between shots from 2s to 1.25s"
-  - balance: "reduced the plasma sentry's range to 10 tiles"
-  - balance: "reduced the plasma sentry's delay between shots from 10s to 7s"

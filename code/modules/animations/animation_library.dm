@@ -83,12 +83,12 @@ Instead of being uniform, it starts out a littler slower, goes fast in the middl
 	animate(pixel_x = x_o, pixel_y = y_o, time = speed, easing = CIRCULAR_EASING|EASE_OUT)
 
 //Basic megaman-like animation. No bells or whistles, but looks nice. Could work for Predator relay device, for example.
-proc/animation_teleport_quick_out(atom/A, speed = 10)
+/proc/animation_teleport_quick_out(atom/A, speed = 10)
 	animate(A, transform = matrix(0, 4, MATRIX_SCALE), alpha = 0, time = speed, easing = BACK_EASING)
 	return speed
 
 //We want to make sure to reset color here as it can be changed by other animations.
-proc/animation_teleport_quick_in(atom/A, speed = 10)
+/proc/animation_teleport_quick_in(atom/A, speed = 10)
 	A.transform = matrix(0, 4, MATRIX_SCALE)
 	A.alpha = 0 //Start with transparency, just in case.
 	animate(A, alpha = 255, transform = null, color = "#FFFFFF", time = speed, easing = BACK_EASING)
@@ -103,7 +103,7 @@ Can look good elsewhere as well.*/
 	I.flick_overlay(A,9)
 	return speed*3
 
-proc/animation_teleport_magic_in(atom/A, speed = 6)
+/proc/animation_teleport_magic_in(atom/A, speed = 6)
 	A.transform = matrix(0,3.5, MATRIX_SCALE)
 	A.alpha = 0
 	animate(A, alpha = 255, color = "#FFFF00", time = speed, easing = BACK_EASING)
@@ -113,7 +113,7 @@ proc/animation_teleport_magic_in(atom/A, speed = 6)
 	I.flick_overlay(A,10)
 
 //A spooky teleport for evil dolls, horrors, and whatever else. Halloween type stuff.
-proc/animation_teleport_spooky_out(atom/A, speed = 6, sleep_duration = 0)
+/proc/animation_teleport_spooky_out(atom/A, speed = 6, sleep_duration = 0)
 	animate(A, transform = matrix() * 1.5, color = "#551a8b", time = speed, easing = BACK_EASING)
 	animate(transform = matrix() * 0.2, alpha = 100, color = "#000000", time = speed, easing = BACK_EASING)
 	animate(alpha = 0, time = speed)
@@ -121,7 +121,7 @@ proc/animation_teleport_spooky_out(atom/A, speed = 6, sleep_duration = 0)
 	I.flick_overlay(A,9,RESET_COLOR|RESET_ALPHA|TILE_BOUND)
 	return speed*3
 
-proc/animation_teleport_spooky_in(atom/A, speed = 4)
+/proc/animation_teleport_spooky_in(atom/A, speed = 4)
 	A.transform *= 1.2
 	A.alpha = 0
 	animate(A, alpha = 255, color = "#551a8b", time = speed)
@@ -130,7 +130,7 @@ proc/animation_teleport_spooky_in(atom/A, speed = 4)
 	I.flick_overlay(A,10)*/
 
 //Regular fadeout disappear, for most objects.
-proc/animation_destruction_fade(atom/A, speed = 12)
+/proc/animation_destruction_fade(atom/A, speed = 12)
 	A.flags_atom |= NOINTERACT
 	A.mouse_opacity = 0 //We don't want them to click this while the animation is still playing.
 	A.density = 0 //So it doesn't block anything.
@@ -140,7 +140,7 @@ proc/animation_destruction_fade(atom/A, speed = 12)
 	return speed
 
 //Fadeout when something gets hit. Not completely done yet, as offset doesn't want to cooperate.
-proc/animation_destruction_knock_fade(atom/A, speed = 7, x_n = rand(10,18), y_n = rand(10,18))
+/proc/animation_destruction_knock_fade(atom/A, speed = 7, x_n = rand(10,18), y_n = rand(10,18))
 	A.flags_atom |= NOINTERACT
 	A.mouse_opacity = 0
 	A.density = 0
@@ -152,7 +152,7 @@ proc/animation_destruction_knock_fade(atom/A, speed = 7, x_n = rand(10,18), y_n 
 
 /*
 //Work in progress animation. Needs byond 511 parallel animation to look nice.
-proc/animation_destruction_long_fade(atom/A, speed = 4, x_n = 4, y_n = 4)
+/proc/animation_destruction_long_fade(atom/A, speed = 4, x_n = 4, y_n = 4)
 	A.flags_atom |= NOINTERACT
 	A.mouse_opacity = 0
 	A.density = 0

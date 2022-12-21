@@ -9,7 +9,7 @@
 	Use the button in the upper left corner to\n\
 	change the direction of built objects."
 	var/objholder = null
-	var/atom/selected_object = /obj/structure/closet/
+	var/atom/selected_object = /obj/structure/closet
 	var/list/copied_vars = list()
 
 	var/list/ignore_vars = list("old_turf", "loc", "ckey", "key", "vars", "verbs", \

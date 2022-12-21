@@ -1,4 +1,4 @@
-var/global/datum/chemical_data/chemical_data = new /datum/chemical_data/
+var/global/datum/chemical_data/chemical_data = new /datum/chemical_data
 
 /datum/chemical_data
 	var/rsc_credits = 0

@@ -126,6 +126,7 @@ var/list/robot_verbs_default = list(
 		cell_component.installed = 1
 
 	add_robot_verbs()
+	add_language(LANGUAGE_APOLLO, 1)
 
 /mob/living/silicon/robot/proc/init()
 	aiCamera = new/obj/item/device/camera/siliconcam/robot_camera(src)

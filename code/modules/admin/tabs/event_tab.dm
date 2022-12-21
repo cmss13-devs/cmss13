@@ -601,6 +601,9 @@
 			var/datum/language/apollo = GLOB.all_languages[LANGUAGE_APOLLO]
 			for(var/mob/living/silicon/decoy/ship_ai/AI in ai_mob_list)
 				apollo.broadcast(AI, input)
+			for(var/mob/M in (GLOB.human_mob_list + GLOB.dead_mob_list))
+				if(M.hear_apollo())
+					playsound_client(M.client, sound('sound/misc/interference.ogg'), M, vol = 45)
 			message_staff("[key_name_admin(src)] has created an AI Apollo report")
 			log_admin("AI Apollo report: [input]")
 		else

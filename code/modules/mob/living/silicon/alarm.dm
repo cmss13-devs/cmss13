@@ -17,7 +17,6 @@
 
 /mob/living/silicon/Initialize()
 	. = ..()
-	add_language(LANGUAGE_APOLLO, 1)
 
 /mob/living/silicon/proc/triggerAlarm(var/class, area/A, list/cameralist, var/source)
 	var/list/alarmlist = alarms[class]

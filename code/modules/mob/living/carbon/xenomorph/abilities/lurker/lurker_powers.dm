@@ -99,7 +99,7 @@
 
 // VAMPIRE LURKER
 
-/datum/action/xeno_action/activable/pounce/rush/additional_effects(mob/living/living_target) //pounce effects
+/datum/action/xeno_action/activable/pounce/rush/post_pounce_additional_effects(mob/living/living_target) //pounce effects
 	var/mob/living/carbon/target = living_target
 	var/mob/living/carbon/Xenomorph/xeno = owner
 	target.apply_effect(5, DAZE)

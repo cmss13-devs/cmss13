@@ -1098,7 +1098,7 @@ var/datum/controller/supply/supply_controller = new()
 			temp += "This one has body scanners, sleepers, WeyMeds.. why the fuck aren't these on the supply list? Why are they here to begin with?<BR>"
 		if(11 to 15)
 			temp += "You know, this place is a real fuckin' massive safety hazard. Nobody does maintenance on this part of the ship.<BR>"
-			temp += "Ever since that CLF operation cost us half the damn cargo hold, nothin' here quite works properly.<BR>"
+			temp += "Ever since that colony operation in Schomberg cost us half the damn cargo hold, nothin' here quite works properly.<BR>"
 			temp += "Mechanical arms dropping crates in random places, from way too high up, knockin' shelves over.. it's fuckin' embarrassin'!<BR>"
 			temp += "I pity the damn' scrappers that'll be trying to salvage something from this junkyard of a ship once it's scuttled.<BR>"
 		if(16 to 20)

@@ -1,5 +1,0 @@
-author: "carlarctg"
-delete-after: True
-changes:
-  - bugfix: "Fixes blood and footprints blocking weed clearing."
-  - bugfix: "Hitting a turf with any item will first check if the item has weeds on it, and attack them if so. You probably shouldn't be able to pry up floor tiles while the floortile is covered in alien resin.."

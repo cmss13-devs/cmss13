@@ -45,7 +45,7 @@
 
 	attackby(obj/item/W as obj, mob/user as mob)
 		if(W.sharp == IS_SHARP_ITEM_BIG)
-			user.show_message(SPAN_NOTICE("You make planks out of \the [src]!"), 1)
+			user.show_message(SPAN_NOTICE("You make planks out of \the [src]!"), SHOW_MESSAGE_VISIBLE)
 			for(var/i=0,i<2,i++)
 				var/obj/item/stack/sheet/wood/NG = new (user.loc)
 				for (var/obj/item/stack/sheet/wood/G in user.loc)
@@ -157,7 +157,7 @@
 		user.attack_log += text("\[[time_stamp()]\] <font color='red'>Used the [src.name] on [key_name(M)]</font>")
 		msg_admin_attack("[key_name(user)] used the [src.name] on [key_name(M)] in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z]).", user.loc.x, user.loc.y, user.loc.z)
 
-		M.eye_blurry += force/7
+		M.EyeBlur(force/7)
 		if(prob(20))
 			M.apply_effect(force/6, PARALYZE)
 			M.apply_effect(force/15, WEAKEN)

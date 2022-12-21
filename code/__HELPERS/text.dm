@@ -219,7 +219,7 @@
 
 //Used in preferences' SetFlavorText and human's set_flavor verb
 //Previews a string of len or less length
-proc/TextPreview(var/string,var/len=40)
+/proc/TextPreview(var/string,var/len=40)
 	var/string_length = length(string)
 	if(!string_length)
 		return "\[...\]"
@@ -228,7 +228,7 @@ proc/TextPreview(var/string,var/len=40)
 	else
 		return "[copytext(string, 1, len - 3)]..."
 
-proc/strip_improper(input_text)
+/proc/strip_improper(input_text)
 	return replacetext(replacetext(input_text, "\proper", ""), "\improper", "")
 
 // Used to remove the string shortcuts for a clean transfer

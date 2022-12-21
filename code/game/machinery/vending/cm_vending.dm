@@ -858,7 +858,7 @@ GLOBAL_LIST_INIT(cm_vending_gear_corresponding_types_list, list(
 
 //---helper procs
 
-proc/vendor_user_inventory_list(var/vendor, mob/user, var/cost_index=2, var/priority_index=5)
+/proc/vendor_user_inventory_list(var/vendor, mob/user, var/cost_index=2, var/priority_index=5)
 	. = list()
 	// default list format
 	//	(
@@ -911,7 +911,7 @@ proc/vendor_user_inventory_list(var/vendor, mob/user, var/cost_index=2, var/prio
 		var/last_category = .[last_index]
 		last_category["items"] += list(display_item)
 
-proc/vendor_inventory_ui_data(var/vendor, mob/user)
+/proc/vendor_inventory_ui_data(var/vendor, mob/user)
 	. = list()
 	var/obj/structure/machinery/cm_vending/vending_machine = vendor
 	var/list/ui_listed_products = vending_machine.get_listed_products(user)
@@ -923,7 +923,7 @@ proc/vendor_inventory_ui_data(var/vendor, mob/user)
 		ui_categories += list(p_amount)
 	.["stock_listing"] = ui_categories
 
-proc/vendor_user_ui_data(var/obj/structure/machinery/cm_vending/vending_machine, mob/user)
+/proc/vendor_user_ui_data(var/obj/structure/machinery/cm_vending/vending_machine, mob/user)
 	if(vending_machine.vend_flags & VEND_LIMITED_INVENTORY)
 		return vendor_inventory_ui_data(vending_machine, user)
 
@@ -964,7 +964,7 @@ proc/vendor_user_ui_data(var/obj/structure/machinery/cm_vending/vending_machine,
 	.["stock_listing"] = stock_values
 	.["current_m_points"] = points
 
-proc/vendor_successful_vend(var/obj/structure/machinery/cm_vending/vendor, var/list/itemspec, var/mob/living/carbon/human/user)
+/proc/vendor_successful_vend(var/obj/structure/machinery/cm_vending/vendor, var/list/itemspec, var/mob/living/carbon/human/user)
 	if(vendor.stat & IN_USE)
 		return
 	vendor.stat |= IN_USE
@@ -1033,7 +1033,7 @@ proc/vendor_successful_vend(var/obj/structure/machinery/cm_vending/vendor, var/l
 	vendor.stat &= ~IN_USE
 	vendor.update_icon()
 
-proc/handle_vend(var/obj/structure/machinery/cm_vending/vendor, var/list/listed_products, var/mob/living/carbon/human/vending_human)
+/proc/handle_vend(var/obj/structure/machinery/cm_vending/vendor, var/list/listed_products, var/mob/living/carbon/human/vending_human)
 	if(vendor.vend_flags & VEND_USE_VENDOR_FLAGS)
 		return TRUE
 	var/can_buy_flags = listed_products[4]

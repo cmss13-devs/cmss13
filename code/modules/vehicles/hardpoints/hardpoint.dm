@@ -187,7 +187,7 @@
 	buff_applied = TRUE
 
 //removing buffs
-obj/item/hardpoint/proc/remove_buff(var/obj/vehicle/multitile/V)
+/obj/item/hardpoint/proc/remove_buff(var/obj/vehicle/multitile/V)
 	if(!buff_applied)
 		return
 	if(LAZYLEN(type_multipliers))
@@ -645,5 +645,5 @@ obj/item/hardpoint/proc/remove_buff(var/obj/vehicle/multitile/V)
 /obj/item/hardpoint/proc/set_mf_use_trt(var/use)
 	use_mz_trt_offsets = use
 
-obj/item/hardpoint/get_applying_acid_time()
+/obj/item/hardpoint/get_applying_acid_time()
 	return 10 SECONDS //you are not supposed to be able to easily combat-melt irreplaceable things.

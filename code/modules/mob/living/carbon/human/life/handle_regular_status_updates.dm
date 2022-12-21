@@ -82,16 +82,16 @@
 			eye_blind = 0
 			if(stat == CONSCIOUS) //even with 'eye-less' vision, unconsciousness makes you blind
 				blinded = 0
-			eye_blurry = 0
+			SetEyeBlur(0)
 		else if(!has_eyes())           //Eyes cut out? Permablind.
 			eye_blind =  1
 			blinded =    1
-			eye_blurry = 1
+			// we don't need to blur vision if they are blind...
 		else if(eye_blind)		       //Blindness, heals slowly over time
 			eye_blind =  max(eye_blind - 1, 0)
 			blinded =    1
 		else if(eye_blurry)	           //Blurry eyes heal slowly
-			eye_blurry = max(eye_blurry - 1, 0)
+			ReduceEyeBlur(1)
 
 		//Ears
 		if(ear_deaf) //Deafness, heals slowly over time
@@ -132,7 +132,7 @@
 
 		if(drowsyness)
 			drowsyness = max(0,drowsyness - 2)
-			eye_blurry = max(2, eye_blurry)
+			EyeBlur(2)
 			if(drowsyness > 10 && prob(5))
 				sleeping++
 				apply_effect(5, PARALYZE)

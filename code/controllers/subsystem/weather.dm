@@ -4,7 +4,6 @@ SUBSYSTEM_DEF(weather)
 	name          = "Weather"
 	wait          = 5 SECONDS
 	priority      = SS_PRIORITY_LIGHTING
-	flags         = SS_NO_TICK_CHECK
 
 	// Tracking vars for controller state
 	var/is_weather_event = FALSE			// Is there a weather event going on right now?
@@ -43,7 +42,7 @@ SUBSYSTEM_DEF(weather)
 		var/weathertype = SSmapping.configs[GROUND_MAP].weather_holder
 		map_holder = new weathertype
 		setup_weather_areas()
-	return ..()
+	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/weather/proc/setup_weather_areas()
 	weather_areas = list()

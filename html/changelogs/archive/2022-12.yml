@@ -602,3 +602,104 @@
   - rscadd: Corporate Security radio renamed to Corporate, changed corporate equipment
       presets to use it also.
   - rscadd: Added Japanese to all corporate presets, including survivors.
+2022-12-19:
+  Huffie56:
+  - rscadd: Added an ATM in brig and move the med vendor in brig infirmary
+  ThePiachu:
+  - bugfix: Fixed the DME file order again.
+  carlarctg:
+  - imageadd: 'Added attachment sprites for every bayonet type.
+
+      balance:The CMB revolver has received a complete overhaul. It has completely
+      refreshed alien isolation sounds, has gotten a complete stat pass, and now fires
+      by default hollowpoint rounds (Like in Isolation!)
+
+      add:The S&W ''model 48'' revolver is very powerful, but also inaccurate. You
+      will be able to focus on your shots better if you do some cool tricks with it
+      first?
+
+      add:Nagant: Shrapnel shot has unique handful sprites.
+
+      add:BR blasters have USCM pistol placeholder inhands.'
+  - bugfix: Fixes blood and footprints blocking weed clearing.
+  - bugfix: Hitting a turf with any item will first check if the item has weeds on
+      it, and attack them if so. You probably shouldn't be able to pry up floor tiles
+      while the floortile is covered in alien resin..
+  harryob:
+  - bugfix: you are now gentle with the reagent tanks.
+  realforest2001:
+  - bugfix: Fixes crit burrowers being able to move while burrowed still.
+  stanalbatross:
+  - balance: crusher AOE slashes will no longer reduce the cooldown of their shield
+      ability even more
+  - balance: increased the plasma cost of a few crusher abilities
+2022-12-20:
+  CometBlaze:
+  - bugfix: Terminals will now spawn on the correct side of SMESes
+  - bugfix: Round start broken SMESes will now function as expected once repaired
+  Morrow:
+  - balance: Removes groundside nanomeds refilling splints and skilless injectors.
+  - balance: Nerfs non-med APC nanomeds to basic groundside level.
+  carlarctg:
+  - bugfix: Fixes a runtime in specialist.dm
+  diegoflores31:
+  - rscadd: Added a new strain for lurker "Vampire".
+  - rscadd: 'Vampire Lurker exchanges all of your abilities for a fast paced combat
+      style more focused into dealing damage and
+
+      mobility.'
+  - rscadd: 'Active 1 : Rush . Pounces for a maximun of 4 tiles and slashes the objetive
+      once on impact . applying a screenshake and daze to the target . Landing this
+      ability reduces the cooldown by half. (cooldown 6 seconds)'
+  - rscadd: 'Active 2 . Flurry : unleashes a 1X3 slash at the targeted direction that
+      slows your enemies on impact healing you by 30 hp . (cooldown 3 seconds)'
+  - rscadd: 'Active 3 : Tail Jab : Attacks your enemies from a maximun of  2 tiles
+      away while dealing a small amount of damage ( 20)  and knocking them down .
+      if you attack a enemy that is on critical state it will deal 80 damage with
+      penetration and heal you by 150 hp. (cooldown 7 seconds)'
+  stanalbatross:
+  - refactor: refactored show_message to use defines over magic numbers
+  - refactor: cleaned up megaphone code a bit
+  - admin: disabled the "x cut a wire" message as wires (cables) are unimportant
+  - balance: reduced the amount of monomolecular acid in spitter tailstab to 2u, reduced
+      the amount of monomolecular acid in boiler tailstab to 6u.
+  - balance: halved the sniper sentry's range to 10 tiles
+  - balance: reduced the sniper sentry's accuracy by 20%
+  - balance: reduced the sniper sentry's delay between shots from 2s to 1.25s
+  - balance: reduced the plasma sentry's range to 10 tiles
+  - balance: reduced the plasma sentry's delay between shots from 10s to 7s
+2022-12-21:
+  Crowbar764:
+  - bugfix: fixed un-meltable incendiary ammo on New Varadero
+  Morrow:
+  - rscadd: MPs will now start at LCPL for the first 10 hours of playtime.
+  - rscdel: MP Cadet is removed.
+  ThePiachu:
+  - qol: Acid Runner and Hedgehog Ravager now get a HUD bar representing how much
+      acid and how many shards they have stored.
+  - qol: Now you won't even try transferring plasma to xenos that don't use plasma,
+      saving you the effort and letting you know you misclicked.
+  carlarctg:
+  - code_imp: Removed deprecated typecheck on human updatehealth()
+  fira:
+  - code_imp: Updated the Master Controller from /tg/
+  - code_imp: Database subsystems now load early, letting players join during game
+      initialization.
+  - code_imp: Rewrote speech spam filter, using a character budget over time. Old
+      one wouldn't let you speak during init. Yes, you should still be able to use
+      copypastas (within reason)
+  - code_imp: Changed error handling to work during static init, so early errors can
+      be displayed in STUI instead of forgotten.
+  stanalbatross:
+  - bugfix: hotfixed rolling your sleeves while your jacket was down breaking chat
+  - rscadd: ported TG's eye blurriness effects
+  - code_imp: made all instances of eye_blurry modification use the proper procs
+  - code_imp: changed obj/plane_master_controller to atom/movable/plane_master_controller.
+      Same logic as obj/screen being changed.
+  - rscadd: charger crushers, upon charging welding fuel tanks, will now cause them
+      to explode
+  - admin: ported the filter editor from tgstation, it is a VV dropdown option.
+  - code_imp: converted 1500 instances of 4 spaces being used instead of tabs to tabs
+  - rscdel: Removed ten unused nanoui templates. Don't worry, they'll all be going
+      away soon.
+  - code_imp: fixed most instances of types not having a starting / in the codebase

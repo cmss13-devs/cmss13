@@ -213,11 +213,11 @@
 	for(var/obj/item/I as anything in typesof(item_type))
 		items += list(list(initial(I.name), 0, I, null, VENDOR_ITEM_REGULAR))
 
-/obj/structure/machinery/cm_vending/clothing/super_snowflake/verb/add_items_to_vendor()
-	set name = "Add Items To Vendor"
-	set category = "Object"
-	set src in oview(1)
+/obj/structure/machinery/cm_vending/clothing/super_snowflake/get_vv_options()
+	. = ..()
+	. += "<option value='?_src_=vars;add_items_to_vendor=\ref[src]'>Add Items To Vendor</option>"
 
+/obj/structure/machinery/cm_vending/clothing/super_snowflake/proc/add_items_to_vendor()
 	if(!check_rights(R_MOD))
 		to_chat(usr, SPAN_WARNING("This option isn't for you."))
 		return

@@ -1,0 +1,4 @@
+author: "carlarctg"
+delete-after: True
+changes:
+  - admin: "Adds a festivizer to christmas that paints things red or green. Usable by both humans and xenomorphs."

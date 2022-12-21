@@ -1,11 +1,14 @@
 import { useBackend } from '../backend';
-import { Button, LabeledList, Section, Slider, Flex } from '../components';
+import { Button, LabeledList, Section, Slider, Flex, Box } from '../components';
 import { Window } from '../layouts';
 
 export const AcidVest = (_props, context) => {
   const { act, data } = useBackend(context);
 
-  const configList = data.configList;
+  const damageList = data.configList.Damage;
+  const vitalsList = data.configList.Vitals;
+  const conditionsList = data.configList.Conditions;
+
   const injectLogic = data.inject_logic;
   const injectThreshold = data.inject_damage_threshold;
   const injectAmount = data.inject_amount;
@@ -13,7 +16,7 @@ export const AcidVest = (_props, context) => {
   const Ormode = injectLogic === 'OR' ? true : false;
 
   return (
-    <Window width={400} height={800}>
+    <Window width={400} height={550} theme="ntos">
       <Window.Content scrollable>
         <Section>
           <LabeledList>
@@ -53,36 +56,72 @@ export const AcidVest = (_props, context) => {
           </LabeledList>
         </Section>
         <Section title="Configuration">
-          <Flex direction="column" grow>
-            {
-              // the code you are about to see..
-              // may be disturbing to some
-              // small children and those unfamiliar with SS13 are advised to look away
-              // as we witness FOUR LEVELS OF LIST NESTING
-              // data list -> config list -> category list -> entry list -> entry data
-            }
-            {Object.keys(configList).map((category) => (
-              <Flex.Item key={category}>
-                <Section title={category}>
-                  <Flex direction="column" grow>
-                    {Object.keys(configList[category]).map((entry) => (
-                      <Flex.Item key={entry}>
-                        <Button.Checkbox
-                          content={entry}
-                          checked={!!entry[1]}
-                          onClick={() =>
-                            act('configurate', {
-                              config_type: category,
-                              config_value: entry[2],
-                            })
-                          }
-                        />
-                      </Flex.Item>
-                    ))}
-                  </Flex>
-                </Section>
-              </Flex.Item>
-            ))}
+          <Flex direction="row" grow>
+            <Flex.Item>
+              <Section title="Damage">
+                <Flex direction="column" grow>
+                  {Object.keys(damageList).map((category) => (
+                    <Flex.Item key={category}>
+                      <Button.Checkbox
+                        fontSize="1.2rem"
+                        content={category}
+                        checked={!!damageList[category]['flag']}
+                        onClick={() =>
+                          act('configurate', {
+                            config_type: 'Damage',
+                            config_value: damageList[category]['value'],
+                          })
+                        }
+                      />
+                    </Flex.Item>
+                  ))}
+                </Flex>
+              </Section>
+            </Flex.Item>
+            <Box width="10px" />
+            <Flex.Item>
+              <Section title="Conditions">
+                <Flex direction="column" grow>
+                  {Object.keys(conditionsList).map((category) => (
+                    <Flex.Item key={category}>
+                      <Button.Checkbox
+                        fontSize="1.2rem"
+                        content={category}
+                        checked={!!conditionsList[category]['flag']}
+                        onClick={() =>
+                          act('configurate', {
+                            config_type: 'Conditions',
+                            config_value: conditionsList[category]['value'],
+                          })
+                        }
+                      />
+                    </Flex.Item>
+                  ))}
+                </Flex>
+              </Section>
+            </Flex.Item>
+            <Box width="10px" />
+            <Flex.Item>
+              <Section title="Vitals">
+                <Flex direction="column" grow>
+                  {Object.keys(vitalsList).map((category) => (
+                    <Flex.Item key={category}>
+                      <Button.Checkbox
+                        fontSize="1.2rem"
+                        content={category}
+                        checked={!!vitalsList[category]['flag']}
+                        onClick={() =>
+                          act('configurate', {
+                            config_type: 'Vitals',
+                            config_value: vitalsList[category]['value'],
+                          })
+                        }
+                      />
+                    </Flex.Item>
+                  ))}
+                </Flex>
+              </Section>
+            </Flex.Item>
           </Flex>
         </Section>
       </Window.Content>

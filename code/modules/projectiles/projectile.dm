@@ -376,9 +376,7 @@
 	// Explosive ammo always explodes on the turf of the clicked target
 	// So does ammo that's flagged to always hit the target
 	if(((ammo_flags & AMMO_EXPLOSIVE) || (ammo_flags & AMMO_HITS_TARGET_TURF)) && T == target_turf)
-		ammo.on_hit_turf(T,src)
-		T?.bullet_act(src)
-		return TRUE
+		hit_turf = TRUE
 
 	for(var/atom/movable/clone/C in T) //Handle clones if there are any
 		if(isobj(C.mstr) && handle_object(C.mstr))
@@ -443,7 +441,7 @@
 	if((MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_ATTACK_DEAD) && L.stat == DEAD) || (L in permutated))
 		return FALSE
 	permutated |= L
-	if((ammo.flags_ammo_behavior & (AMMO_XENO_ACID|AMMO_XENO_TOX|AMMO_XENO_BONE)) && L.stat == DEAD) //xeno ammo is NEVER meant to hit or damage dead people. If you want to add a xeno ammo that DOES then make a new flag that makes it ignore this check.
+	if((ammo.flags_ammo_behavior & AMMO_XENO) && L.stat == DEAD) //xeno ammo is NEVER meant to hit or damage dead people. If you want to add a xeno ammo that DOES then make a new flag that makes it ignore this check.
 		return FALSE
 
 	var/hit_chance = L.get_projectile_hit_chance(src)
@@ -746,7 +744,7 @@
 	if(lying && src != P.original)
 		return FALSE
 	var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags
-	if(ammo_flags & (AMMO_XENO_ACID|AMMO_XENO_TOX))
+	if(ammo_flags & AMMO_XENO)
 		if((status_flags & XENO_HOST) && HAS_TRAIT(src, TRAIT_NESTED))
 			return FALSE
 
@@ -883,10 +881,22 @@
 	if( damage > 0 && !(ammo_flags & AMMO_IGNORE_ARMOR) )
 		var/armor //Damage types don't correspond to armor types. We are thus merging them.
 		switch(P.ammo.damage_type)
-			if(BRUTE) armor = ammo_flags & AMMO_ROCKET ? getarmor_organ(organ, ARMOR_BOMB) : getarmor_organ(organ, ARMOR_BULLET)
-			if(BURN) armor = ammo_flags & AMMO_ENERGY ? getarmor_organ(organ, ARMOR_ENERGY) : getarmor_organ(organ, ARMOR_BIO)
-			if(TOX, OXY, CLONE) armor = getarmor_organ(organ, ARMOR_BIO)
-			else armor = getarmor_organ(organ, ARMOR_ENERGY) //Won't be used, but just in case.
+			if(BRUTE)
+				if(ammo_flags & AMMO_ROCKET)
+					armor = getarmor_organ(organ, ARMOR_BOMB)
+				else
+					armor = getarmor_organ(organ, ARMOR_BULLET)
+			if(BURN)
+				if(ammo_flags & AMMO_ENERGY)
+					armor = getarmor_organ(organ, ARMOR_ENERGY)
+				else if(ammo_flags & AMMO_LASER)
+					armor = getarmor_organ(organ, ARMOR_LASER)
+				else
+					armor = getarmor_organ(organ, ARMOR_BIO)
+			if(TOX, OXY, CLONE)
+				armor = getarmor_organ(organ, ARMOR_BIO)
+			else
+				armor = getarmor_organ(organ, ARMOR_ENERGY) //Won't be used, but just in case.
 
 		damage_result = armor_damage_reduction(GLOB.marine_ranged, damage, armor, P.ammo.penetration)
 
@@ -1072,7 +1082,7 @@
 /turf/closed/wall/almayer/research/containment/bullet_act(obj/item/projectile/P)
 	if(P)
 		var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags
-		if(ammo_flags & AMMO_XENO_ACID)
+		if(ammo_flags & AMMO_ACIDIC)
 			return //immune to acid spit
 	. = ..()
 

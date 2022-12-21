@@ -227,7 +227,7 @@
 					return
 				new /obj/item/stack/sheet/metal(src.loc)
 				for(var/mob/M as anything in viewers(src))
-					M.show_message(SPAN_NOTICE("\The [src] has been cut apart by [user] with [WT]."), 3, "You hear welding.", 2)
+					M.show_message(SPAN_NOTICE("\The [src] has been cut apart by [user] with [WT]."), SHOW_MESSAGE_VISIBLE, "You hear welding.", SHOW_MESSAGE_AUDIBLE)
 				qdel(src)
 				return
 		if(material == MATERIAL_WOOD)
@@ -262,7 +262,7 @@
 		welded = !welded
 		update_icon()
 		for(var/mob/M as anything in viewers(src))
-			M.show_message(SPAN_WARNING("[src] has been [welded?"welded shut":"unwelded"] by [user.name]."), 3, "You hear welding.", 2)
+			M.show_message(SPAN_WARNING("[src] has been [welded?"welded shut":"unwelded"] by [user.name]."), SHOW_MESSAGE_VISIBLE, "You hear welding.", SHOW_MESSAGE_AUDIBLE)
 	else
 		if(isXeno(user))
 			var/mob/living/carbon/Xenomorph/opener = user

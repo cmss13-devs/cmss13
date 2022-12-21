@@ -150,7 +150,7 @@
 
 	deletepicture()
 
-obj/item/device/camera/siliconcam/proc/getsource()
+/obj/item/device/camera/siliconcam/proc/getsource()
 	if(ismob(src.loc))
 		var/mob/M = src.loc
 		if(isRemoteControlling(M))

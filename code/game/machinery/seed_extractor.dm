@@ -6,7 +6,7 @@
 	density = 1
 	anchored = 1
 
-obj/structure/machinery/seed_extractor/attackby(var/obj/item/O as obj, var/mob/user as mob)
+/obj/structure/machinery/seed_extractor/attackby(var/obj/item/O as obj, var/mob/user as mob)
 
 	// Fruits and vegetables.
 	if(istype(O, /obj/item/reagent_container/food/snacks/grown) || istype(O, /obj/item/grown))

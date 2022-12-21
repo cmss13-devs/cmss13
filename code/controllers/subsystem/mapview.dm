@@ -1,7 +1,7 @@
 SUBSYSTEM_DEF(mapview)
 	name          = "Mapview"
 	wait          = 1 MINUTES
-	flags         = SS_POST_FIRE_TIMING | SS_DISABLE_FOR_TESTING
+	flags         = SS_POST_FIRE_TIMING
 	runlevels     = RUNLEVEL_GAME | RUNLEVEL_POSTGAME
 	priority      = SS_PRIORITY_MAPVIEW
 	init_order    = SS_INIT_MAPVIEW
@@ -12,7 +12,7 @@ SUBSYSTEM_DEF(mapview)
 
 /datum/controller/subsystem/mapview/Initialize(start_timeofday)
 	RegisterSignal(SSdcs, COMSIG_GLOB_MODE_PRESETUP, .proc/pre_round_start)
-	return ..()
+	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/mapview/proc/pre_round_start()
 	SIGNAL_HANDLER

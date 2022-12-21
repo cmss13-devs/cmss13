@@ -28403,7 +28403,6 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/l_f_p)
 "bRH" = (
-/obj/effect/landmark/start/cadet_police,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig/cryo)
 "bRK" = (
@@ -36550,8 +36549,8 @@
 /turf/open/floor/plating,
 /area/almayer/hull/lower_hull/l_f_p)
 "dls" = (
-/obj/structure/sign/safety/medical{
-	pixel_x = -17
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+	pixel_x = -30
 	},
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile";
@@ -39393,7 +39392,6 @@
 	pixel_x = 2;
 	tag = "icon-E"
 	},
-/obj/effect/landmark/start/cadet_police,
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
 	pixel_y = 1;
@@ -39678,7 +39676,6 @@
 /obj/structure/machinery/cryopod/right{
 	pixel_y = 6
 	},
-/obj/effect/landmark/start/cadet_police,
 /turf/open/floor/almayer{
 	icon_state = "cargo";
 	tag = "icon-bluecorner (NORTH)"
@@ -52911,7 +52908,6 @@
 /area/almayer/squads/req)
 "krS" = (
 /obj/structure/machinery/camera/autoname/almayer{
-	dir = 1;
 	name = "ship-grade camera";
 	tag = ""
 	},
@@ -52989,11 +52985,6 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
 	tag = "icon-N"
-	},
-/obj/structure/machinery/camera/autoname/almayer{
-	dir = 1;
-	name = "ship-grade camera";
-	tag = "icon-camera (NORTH)"
 	},
 /obj/structure/closet/secure_closet/guncabinet/red,
 /obj/item/weapon/gun/rifle/l42a,
@@ -53198,7 +53189,6 @@
 	},
 /obj/structure/machinery/cm_vending/sorted/marine_food,
 /obj/structure/machinery/camera/autoname/almayer{
-	dir = 8;
 	name = "ship-grade camera";
 	tag = "icon-camera (EAST)"
 	},
@@ -55270,8 +55260,8 @@
 	dir = 4;
 	tag = "icon-intact-supply (EAST)"
 	},
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
-	pixel_y = 25
+/obj/structure/machinery/atm{
+	pixel_y = 32
 	},
 /turf/open/floor/almayer{
 	dir = 4;
@@ -61227,7 +61217,7 @@
 /area/almayer/squads/bravo)
 "odD" = (
 /obj/structure/machinery/camera/autoname/almayer{
-	dir = 4;
+	dir = 8;
 	name = "ship-grade camera";
 	tag = ""
 	},
@@ -65481,16 +65471,6 @@
 	tag = "icon-sterile_green_side (NORTH)"
 	},
 /area/almayer/medical/medical_science)
-"pYq" = (
-/obj/structure/machinery/cm_vending/clothing/staff_officer{
-	density = 0;
-	pixel_x = -30;
-	},
-/turf/open/floor/almayer{
-	icon_state = "bluefull";
-	tag = "icon-bluefull"
-	},
-/area/almayer/living/bridgebunks)
 "pYu" = (
 /obj/item/tool/warning_cone{
 	pixel_x = -12;
@@ -78187,6 +78167,21 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/hallways/hangar)
+"vsI" = (
+/obj/structure/closet/secure_closet/guncabinet/riot_control,
+/obj/item/weapon/shield/riot,
+/obj/item/weapon/shield/riot,
+/obj/item/weapon/shield/riot,
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	tag = "icon-S"
+	},
+/obj/structure/machinery/camera/autoname/almayer{
+	name = "ship-grade camera";
+	tag = ""
+	},
+/turf/open/floor/plating/almayer,
+/area/almayer/shipboard/brig/armory)
 "vsJ" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
 	dir = 1;
@@ -79133,6 +79128,9 @@
 /area/almayer/command/cic)
 "vOd" = (
 /obj/structure/machinery/optable,
+/obj/structure/sign/safety/medical{
+	pixel_x = -17
+	},
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile";
 	tag = "icon-sterile"
@@ -85092,7 +85090,7 @@
 /area/almayer/squads/charlie)
 "yiX" = (
 /obj/structure/machinery/camera/autoname/almayer{
-	dir = 1;
+	dir = 8;
 	name = "ship-grade camera";
 	tag = ""
 	},
@@ -97231,7 +97229,7 @@ ahE
 wcn
 nBc
 lrq
-mAr
+vsI
 uqo
 xoS
 lrq
@@ -104165,7 +104163,7 @@ aRq
 bHG
 ceK
 sxD
-pYq
+bhJ
 bMh
 ayP
 aES
@@ -104774,7 +104772,7 @@ lcy
 iTw
 ceK
 sxD
-pYq
+bhJ
 bMh
 nis
 aES
@@ -105383,7 +105381,7 @@ wVB
 psa
 ceK
 sxD
-pYq
+bhJ
 bMh
 brS
 aES
@@ -105992,7 +105990,7 @@ jUb
 qjz
 ceK
 sxD
-pYq
+bhJ
 bMh
 gCP
 aES

@@ -1330,7 +1330,7 @@
 	icon_state = "sun"
 	item_state = "sun"
 
-obj/item/clothing/gloves/marine/fluff/jedijas
+/obj/item/clothing/gloves/marine/fluff/jedijas
 	name = "Fists of Mandalore"
 	desc = "If Mandalore was a person, these would be it's fists...  DONOR ITEM"
 	icon_state = "marine-white"

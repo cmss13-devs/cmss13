@@ -1052,6 +1052,21 @@
 	new /obj/item/ammo_magazine/pistol/heavy/super/highimpact/ap(src)
 	new /obj/item/ammo_magazine/pistol/heavy/super/highimpact/ap(src)
 
+/obj/item/storage/belt/gun/m4a3/highpower/fill_preset_inventory()
+	handle_item_insertion(new /obj/item/weapon/gun/pistol/highpower())
+	for(var/i = 1 to storage_slots - 1)
+		new /obj/item/ammo_magazine/pistol/highpower(src)
+
+/obj/item/storage/belt/gun/m4a3/highpower/black/fill_preset_inventory()
+	handle_item_insertion(new /obj/item/weapon/gun/pistol/highpower/black())
+	for(var/i = 1 to storage_slots - 1)
+		new /obj/item/ammo_magazine/pistol/highpower/black(src)
+
+/obj/item/storage/belt/gun/m4a3/highpower/tactical/fill_preset_inventory()
+	handle_item_insertion(new /obj/item/weapon/gun/pistol/highpower/tactical())
+	for(var/i = 1 to storage_slots - 1)
+		new /obj/item/ammo_magazine/pistol/highpower/black(src)
+
 /obj/item/storage/belt/gun/m44
 	name = "\improper M276 pattern M44 holster rig"
 	desc = "The M276 is the standard load-bearing equipment of the USCM. It consists of a modular belt with various clips. This version is for the M44 magnum revolver, along with six small pouches for speedloaders. It smells faintly of hay."
@@ -1135,7 +1150,7 @@
 		return ..()
 
 
-obj/item/storage/belt/gun/m44/lever_action/verb/detach_holster()
+/obj/item/storage/belt/gun/m44/lever_action/verb/detach_holster()
 	set category = "Object"
 	set name = "Detach revolver holster"
 	set src in usr

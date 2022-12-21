@@ -121,7 +121,7 @@ Defined in conflicts.dm of the #defines folder.
 	*/
 	if(G.attachments[slot])
 		var/obj/item/attachable/A = G.attachments[slot]
-		A.Detach(G)
+		A.Detach(detaching_gub = G)
 
 	if(ishuman(loc))
 		var/mob/living/carbon/human/M = src.loc
@@ -166,30 +166,32 @@ Defined in conflicts.dm of the #defines folder.
 		// Apply bullet traits from attachment to gun's current projectile
 		G.in_chamber.apply_bullet_trait(L)
 
-/obj/item/attachable/proc/Detach(var/obj/item/weapon/gun/G)
-	if(!istype(G)) return //Guns only
+/obj/item/attachable/proc/Detach(var/mob/user, var/obj/item/weapon/gun/detaching_gub)
+	if(!istype(detaching_gub)) return //Guns only
+
+	detaching_gub.on_detach(user)
 
 	if(flags_attach_features & ATTACH_ACTIVATION)
-		activate_attachment(G, null, TRUE)
+		activate_attachment(detaching_gub, null, TRUE)
 
-	G.attachments[slot] = null
-	G.recalculate_attachment_bonuses()
+	detaching_gub.attachments[slot] = null
+	detaching_gub.recalculate_attachment_bonuses()
 
-	for(var/X in G.actions)
+	for(var/X in detaching_gub.actions)
 		var/datum/action/DA = X
 		if(DA.target == src)
 			qdel(X)
 			break
 
-	forceMove(get_turf(G))
+	forceMove(get_turf(detaching_gub))
 
 	if(sharp)
-		G.sharp = 0
+		detaching_gub.sharp = 0
 
 	for(var/trait in gun_traits)
-		REMOVE_TRAIT(G, trait, TRAIT_SOURCE_ATTACHMENT(slot))
+		REMOVE_TRAIT(detaching_gub, trait, TRAIT_SOURCE_ATTACHMENT(slot))
 	for(var/entry in traits_to_give)
-		if(!G.in_chamber)
+		if(!detaching_gub.in_chamber)
 			break
 		var/list/L
 		if(istext(entry))
@@ -197,7 +199,7 @@ Defined in conflicts.dm of the #defines folder.
 		else
 			L = list(entry) + traits_to_give[entry]
 		// Remove bullet traits of attachment from gun's current projectile
-		G.in_chamber._RemoveElement(L)
+		detaching_gub.in_chamber._RemoveElement(L)
 
 /obj/item/attachable/ui_action_click(mob/living/user, obj/item/weapon/gun/G)
 	activate_attachment(G, user)
@@ -316,13 +318,15 @@ Defined in conflicts.dm of the #defines folder.
 	name = "\improper Type 80 bayonet"
 	icon_state = "upp_bayonet"
 	item_state = "combat_knife"
-	desc = "The standard-issue bayonet of the UPP, its dulled from heavy use."
+	attach_icon = "upp_bayonet_a"
+	desc = "The standard-issue bayonet of the UPP, it's dulled from heavy use."
 
 /obj/item/attachable/bayonet/upp
 	name = "\improper Type 80 bayonet"
 	desc = "The standard-issue bayonet of the UPP, the Type 80 is balanced to also function as an effective throwing knife."
 	icon_state = "upp_bayonet"
 	item_state = "combat_knife"
+	attach_icon = "upp_bayonet_a"
 	throwforce = MELEE_FORCE_TIER_10 //doubled by throwspeed to 100
 	throw_speed = SPEED_REALLY_FAST
 	throw_range = 7
@@ -332,10 +336,12 @@ Defined in conflicts.dm of the #defines folder.
 	name = "\improper M8 cartridge bayonet"
 	desc = "A back issue USCM approved exclusive for Boots subscribers found in issue #255 'Inside the Night Raider - morale breaking alternatives with 2nd LT. Juliane Gerd'. A pressurized tube runs along the inside of the blade, and a button allows one to inject compressed CO2 into the stab wound. It feels cheap to the touch. Faulty even."
 	icon_state = "c02_knife"
+	attach_icon = "c02_bayonet_a"
 	var/filled = FALSE
 
 /obj/item/attachable/bayonet/c02/update_icon()
 	icon_state = "c02_knife[filled ? "-f" : ""]"
+	attach_icon = "c02_bayonet[filled ? "-f" : ""]_a"
 
 /obj/item/attachable/bayonet/c02/attackby(obj/item/W, mob/user)
 	if(istype(W, /obj/item/c02_cartridge))
@@ -499,9 +505,9 @@ Defined in conflicts.dm of the #defines folder.
 	..()
 	G.attachable_offset["muzzle_x"] = 27
 
-/obj/item/attachable/mateba/Detach(obj/item/weapon/gun/G)
+/obj/item/attachable/mateba/Detach(var/mob/user, var/obj/item/weapon/gun/detaching_gub)
 	..()
-	G.attachable_offset["muzzle_x"] = 20
+	detaching_gub.attachable_offset["muzzle_x"] = 20
 
 /obj/item/attachable/mateba/dark
 	icon_state = "mateba_medium_a"
@@ -742,9 +748,9 @@ Defined in conflicts.dm of the #defines folder.
 	. = ..()
 	G.AddElement(/datum/element/drop_retrieval/gun, retrieval_slot)
 
-/obj/item/attachable/magnetic_harness/Detach(var/obj/item/weapon/gun/G)
+/obj/item/attachable/magnetic_harness/Detach(var/mob/user, var/obj/item/weapon/gun/detaching_gub)
 	. = ..()
-	G.RemoveElement(/datum/element/drop_retrieval/gun, retrieval_slot)
+	detaching_gub.RemoveElement(/datum/element/drop_retrieval/gun, retrieval_slot)
 
 /obj/item/attachable/magnetic_harness/lever_sling
 	name = "R4T magnetic sling" //please don't make this attachable to any other guns...
@@ -765,10 +771,10 @@ Defined in conflicts.dm of the #defines folder.
 	G.attachable_offset["under_y"] = 12
 
 
-/obj/item/attachable/magnetic_harness/lever_sling/Detach(var/obj/item/weapon/gun/G)
+/obj/item/attachable/magnetic_harness/lever_sling/Detach(var/mob/user, var/obj/item/weapon/gun/detaching_gub)
 	. = ..()
-	G.attachable_offset["under_x"] = 24
-	G.attachable_offset["under_y"] = 16
+	detaching_gub.attachable_offset["under_x"] = 24
+	detaching_gub.attachable_offset["under_y"] = 16
 
 /obj/item/attachable/magnetic_harness/lever_sling/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
 	. = ..()
@@ -915,6 +921,13 @@ Defined in conflicts.dm of the #defines folder.
 	icon_state = "slavicscope"
 	attach_icon = "slavicscope"
 	desc = "Oppa! How did you get this off glorious Stalin weapon? Blyat, put back on and do job tovarish. Yankee is not shoot self no?"
+
+/obj/item/attachable/scope/variable_zoom/eva
+	name = "RX-M5 EVA telescopic variable scope"
+	icon_state = "rxfm5_eva_scope"
+	attach_icon = "rxfm5_eva_scope_a"
+	desc = "A civilian-grade scope that can be switched between short and long range magnification, intended for use in extraterrestrial scouting. Looks ridiculous on a pistol."
+	aim_speed_mod = 0
 
 #undef ZOOM_LEVEL_2X
 #undef ZOOM_LEVEL_4X
@@ -1703,9 +1716,9 @@ Defined in conflicts.dm of the #defines folder.
 		R.flags_equip_slot &= ~SLOT_WAIST //Can't wear it on the belt slot with stock on when we attach it first time.
 
 // When taking it off we want to undo everything not statwise
-/obj/item/attachable/stock/revolver/Detach(var/obj/item/weapon/gun/G)
+/obj/item/attachable/stock/revolver/Detach(var/mob/user, var/obj/item/weapon/gun/detaching_gub)
 	..()
-	var/obj/item/weapon/gun/revolver/m44/R = G
+	var/obj/item/weapon/gun/revolver/m44/R = detaching_gub
 	if(!istype(R))
 		return 0
 
@@ -2347,9 +2360,9 @@ Defined in conflicts.dm of the #defines folder.
 	scatter_mod = SCATTER_AMOUNT_TIER_9
 	recoil_mod = RECOIL_AMOUNT_TIER_5
 
-/obj/item/attachable/bipod/Detach(obj/item/weapon/gun/G)
+/obj/item/attachable/bipod/Detach(var/mob/user, var/obj/item/weapon/gun/detaching_gub)
 	if(bipod_deployed)
-		undeploy_bipod(G)
+		undeploy_bipod(detaching_gub)
 	..()
 
 /obj/item/attachable/bipod/update_icon()
@@ -2472,3 +2485,17 @@ Defined in conflicts.dm of the #defines folder.
 	burst_mod = BURST_AMOUNT_TIER_2
 
 	accuracy_unwielded_mod = -HIT_ACCURACY_MULT_TIER_4
+
+/obj/item/attachable/eva_doodad
+	name = "RXF-M5 EVA beam projector"
+	desc = "A strange little doodad that projects an invisible beam that the EVA pistol's actual laser travels in, used as a focus that slightly weakens the laser's intensity. Or at least that's what the manual said.."
+	icon_state = "rxfm5_eva_doodad"
+	attach_icon = "rxfm5_eva_doodad_a"
+	slot = "under"
+
+/obj/item/attachable/eva_doodad/New()
+	..()
+	accuracy_mod = HIT_ACCURACY_MULT_TIER_5
+	accuracy_unwielded_mod = HIT_ACCURACY_MULT_TIER_5
+	damage_mod -= BULLET_DAMAGE_MULT_TIER_4
+

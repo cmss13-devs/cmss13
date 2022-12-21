@@ -37,7 +37,7 @@ and organ transplant code which may come in handy in future but haven't been edi
 	time = 3 SECONDS
 	repeat_step	= TRUE
 
-datum/surgery_step/repair_organs/repeat_step_criteria(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+/datum/surgery_step/repair_organs/repeat_step_criteria(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	for(var/datum/internal_organ/IO as anything in surgery.affected_limb.internal_organs)
 		if(IO.damage > 0 && IO.robotic != ORGAN_ROBOT)
 			return TRUE
@@ -80,7 +80,7 @@ datum/surgery_step/repair_organs/repeat_step_criteria(mob/user, mob/living/carbo
 			user.affected_message(target,
 				SPAN_NOTICE("You finish treating [target]'s damaged [I.name]."),
 				SPAN_NOTICE("[user] finishes treating your damaged [I.name]."),
-				SPAN_NOTICE("[user] finishes treating [target]'s damaged [I.name]."))		
+				SPAN_NOTICE("[user] finishes treating [target]'s damaged [I.name]."))
 
 			user.count_niche_stat(STATISTICS_NICHE_SURGERY_ORGAN_REPAIR)
 			I.rejuvenate()
@@ -92,8 +92,8 @@ datum/surgery_step/repair_organs/repeat_step_criteria(mob/user, mob/living/carbo
 		SPAN_WARNING("Your hand slips, bruising [target]'s organs and contaminating \his [surgery.affected_limb.cavity]!"),
 		SPAN_WARNING("[user]'s hand slips, bruising your organs and contaminating your [surgery.affected_limb.cavity]!"),
 		SPAN_WARNING("[user]'s hand slips, bruising [target]'s organs and contaminating \his [surgery.affected_limb.cavity]!"))
-	
-	var/dam_amt = 2	
+
+	var/dam_amt = 2
 	switch(tool_type)
 		if(/obj/item/stack/medical/bruise_pack)
 			dam_amt = 5

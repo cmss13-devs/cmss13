@@ -306,7 +306,7 @@
 		SPAN_ADMIN("SDQL combined querys took [DisplayTimeText(end_time_total)] to complete.")) + combined_refs
 
 GLOBAL_LIST_INIT(sdql2_queries, GLOB.sdql2_queries || list())
-GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/statclick/sdql2_vv_all, new(null, "VIEW VARIABLES (all)", null))
+GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/effect/statclick/sdql2_vv_all, new(null, "VIEW VARIABLES (all)", null))
 
 /datum/sdql2_query
 	var/list/query_tree
@@ -336,8 +336,8 @@ GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/statclick/sdql2_vv_all, new(null, "VIEW
 	var/obj_count_finished
 
 	//Statclick
-	var/obj/statclick/SDQL2_delete/delete_click
-	var/obj/statclick/SDQL2_action/action_click
+	var/obj/effect/statclick/SDQL2_delete/delete_click
+	var/obj/effect/statclick/SDQL2_action/action_click
 
 /datum/sdql2_query/New(list/tree, SU = FALSE, admin_interact = TRUE, _options = SDQL2_OPTIONS_DEFAULT, finished_qdel = FALSE)
 	if(IsAdminAdvancedProcCall() || !LAZYLEN(tree))
@@ -1206,7 +1206,7 @@ GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/statclick/sdql2_vv_all, new(null, "VIEW
 	return query_list
 
 
-/obj/statclick/SDQL2_delete/Click()
+/obj/effect/statclick/SDQL2_delete/Click()
 	if(!CLIENT_IS_STAFF(usr.client))
 		message_admins("[key_name_admin(usr)] non-staff clicked on a statclick! ([src])")
 		log_admin("non-staff clicked on a statclick! ([src])")
@@ -1214,7 +1214,7 @@ GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/statclick/sdql2_vv_all, new(null, "VIEW
 	var/datum/sdql2_query/Q = target
 	Q.delete_click()
 
-/obj/statclick/SDQL2_action/Click()
+/obj/effect/statclick/SDQL2_action/Click()
 	if(!CLIENT_IS_STAFF(usr.client))
 		message_admins("[key_name_admin(usr)] non-staff clicked on a statclick! ([src])")
 		log_admin("non-staff clicked on a statclick! ([src])")
@@ -1222,10 +1222,10 @@ GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/statclick/sdql2_vv_all, new(null, "VIEW
 	var/datum/sdql2_query/Q = target
 	Q.action_click()
 
-/obj/statclick/sdql2_vv_all
+/obj/effect/statclick/sdql2_vv_all
 	name = "VIEW VARIABLES"
 
-/obj/statclick/sdql2_vv_all/Click()
+/obj/effect/statclick/sdql2_vv_all/Click()
 	if(!CLIENT_IS_STAFF(usr.client))
 		message_admins("[key_name_admin(usr)] non-staff clicked on a statclick! ([src])")
 		log_admin("non-staff clicked on a statclick! ([src])")

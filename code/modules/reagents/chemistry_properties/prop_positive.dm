@@ -136,7 +136,7 @@
 	if(potency > CREATE_MAX_TIER_1)
 		M.stuttering = max(M.stuttering - POTENCY_MULTIPLIER_MEDIUM * potency, 0)
 		M.confused = max(M.confused - POTENCY_MULTIPLIER_MEDIUM * potency, 0)
-		M.eye_blurry = max(M.eye_blurry - POTENCY_MULTIPLIER_MEDIUM * potency, 0)
+		M.ReduceEyeBlur(POTENCY_MULTIPLIER_MEDIUM * potency)
 		M.drowsyness = max(M.drowsyness - POTENCY_MULTIPLIER_MEDIUM * potency, 0)
 		M.dizziness = max(M.dizziness - POTENCY_MULTIPLIER_MEDIUM * potency, 0)
 		M.jitteriness = max(M.jitteriness - POTENCY_MULTIPLIER_MEDIUM * potency, 0)
@@ -284,7 +284,7 @@
 	if(!ishuman(M))
 		return
 	M.apply_internal_damage(-potency, "eyes")
-	M.eye_blurry = max(M.eye_blurry-POTENCY_MULTIPLIER_VHIGH*potency , 0)
+	M.ReduceEyeBlur(POTENCY_MULTIPLIER_VHIGH*potency)
 	M.eye_blind = max(M.eye_blind-POTENCY_MULTIPLIER_VHIGH*potency , 0)
 
 /datum/chem_property/positive/oculopeutic/process_overdose(mob/living/M, var/potency = 1)

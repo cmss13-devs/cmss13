@@ -38,6 +38,13 @@
 #define RUST_G (__rust_g || __detect_rust_g())
 #endif
 
+// Handle 515 call() -> call_ext() changes
+#if DM_VERSION >= 515
+#define RUSTG_CALL call_ext
+#else
+#define RUSTG_CALL call
+#endif
+
 /**
  * This proc generates a cellular automata noise grid which can be used in procedural generation methods.
  *
@@ -99,3 +106,35 @@
 #define rustg_sql_disconnect_pool(handle) call(RUST_G, "sql_disconnect_pool")(handle)
 #define rustg_sql_check_query(job_id) call(RUST_G, "sql_check_query")("[job_id]")
 
+#define rustg_time_microseconds(id) text2num(RUSTG_CALL(RUST_G, "time_microseconds")(id))
+#define rustg_time_milliseconds(id) text2num(RUSTG_CALL(RUST_G, "time_milliseconds")(id))
+#define rustg_time_reset(id) RUSTG_CALL(RUST_G, "time_reset")(id)
+
+/proc/rustg_unix_timestamp()
+	return text2num(RUSTG_CALL(RUST_G, "unix_timestamp")())
+
+#define rustg_raw_read_toml_file(path) json_decode(RUSTG_CALL(RUST_G, "toml_file_to_json")(path) || "null")
+
+/proc/rustg_read_toml_file(path)
+	var/list/output = rustg_raw_read_toml_file(path)
+	if (output["success"])
+		return json_decode(output["content"])
+	else
+		CRASH(output["content"])
+
+#define rustg_raw_toml_encode(value) json_decode(RUSTG_CALL(RUST_G, "toml_encode")(json_encode(value)))
+
+/proc/rustg_toml_encode(value)
+	var/list/output = rustg_raw_toml_encode(value)
+	if (output["success"])
+		return output["content"]
+	else
+		CRASH(output["content"])
+
+#define rustg_url_encode(text) RUSTG_CALL(RUST_G, "url_encode")("[text]")
+#define rustg_url_decode(text) RUSTG_CALL(RUST_G, "url_decode")(text)
+
+#ifdef RUSTG_OVERRIDE_BUILTINS
+	#define url_encode(text) rustg_url_encode(text)
+	#define url_decode(text) rustg_url_decode(text)
+#endif

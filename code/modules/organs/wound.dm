@@ -245,11 +245,11 @@
 
 /* EXTERNAL ORGAN LOSS **/
 /datum/wound/lost_limb
-    damage_type = CUT
-    stages = list("ripped stump" = 65, "bloody stump" = 50, "clotted stump" = 25, "scarred stump" = 0)
+	damage_type = CUT
+	stages = list("ripped stump" = 65, "bloody stump" = 50, "clotted stump" = 25, "scarred stump" = 0)
 
-    can_merge(var/datum/wound/other)
-        return 0 //cannot be merged
+	can_merge(var/datum/wound/other)
+		return 0 //cannot be merged
 
 /datum/wound/lost_limb/small
-    stages = list("ripped stump" = 40, "bloody stump" = 30, "clotted stump" = 15, "scarred stump" = 0)
+	stages = list("ripped stump" = 40, "bloody stump" = 30, "clotted stump" = 15, "scarred stump" = 0)

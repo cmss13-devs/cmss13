@@ -1,0 +1,4 @@
+author: "Molto"
+delete-after: True
+changes:
+  - rscadd: "Added the operation name to the marines status tab"

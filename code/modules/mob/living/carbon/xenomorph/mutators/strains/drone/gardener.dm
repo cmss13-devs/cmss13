@@ -394,23 +394,11 @@
 	bound_xeno.overlays -= fruit_sac_overlay_icon
 	fruit_sac_overlay_icon.overlays.Cut()
 
-	/*//var/image/image_to_add
-	if(bound_xeno.stat == DEAD)
-		fruit_sac_overlay_icon.icon_state = "Gardener Drone Knocked Down[fruit_on_cooldown ? "_spent" : ""]"
-	else if(bound_xeno.lying)
-		if((bound_xeno.resting || bound_xeno.sleeping) && (!bound_xeno.knocked_down && !bound_xeno.knocked_out && bound_xeno.health > 0))
-			fruit_sac_overlay_icon.icon_state = "Gardener Drone Sleeping[fruit_on_cooldown ? "_spent" : ""]"
-		else
-			fruit_sac_overlay_icon.icon_state = "Gardener Drone Knocked Down[fruit_on_cooldown ? "_spent" : ""]"
-	else
-		fruit_sac_overlay_icon.icon_state = "Gardener Drone Walking[fruit_on_cooldown ? "_spent" : ""]"*/
-
 	fruit_sac_overlay_icon.icon_state = bound_xeno.icon_state + "[fruit_on_cooldown ? "_spent" : ""]"
 
 	var/fruit_sac_color = initial(bound_xeno.selected_fruit.gardener_sac_color)
 
 	fruit_sac_overlay_icon.color = fruit_sac_color
-	//fruit_sac_overlay_icon.overlays += image_to_add
 	bound_xeno.overlays += fruit_sac_overlay_icon
 
 /*

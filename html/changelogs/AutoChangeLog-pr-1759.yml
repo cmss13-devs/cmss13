@@ -1,0 +1,10 @@
+author: "ThePiachu"
+delete-after: True
+changes:
+  - rscadd: "Added an automated ammo box management system to various vendors stocking bulk ammo and grenades. It will automatically combine ammo magazine into boxes, and divide boxes into individual magazines (or grenades, MRE packets, etc.). The boxes will appear at the bottom of the vendor (yes, this also includes the regular grenade boxes that used to be higher)."
+  - qol: "Cargo will no longer need to pack individual vended ammo magazines into boxes thanks to the ammo box management system. Your chains have been broken!"
+  - qol: "Requisitions vendor now stocks 3-packs of grenades as well as individual HEDP grenades."
+  - qol: "Requisitions ammo vendor now can vend a lot more individual magazines (actual number of magazines remains unchanged, just the ammo boxes have been consolidated into magazines)."
+  - qol: "Requisition vendors now vend to floor when they are not vending to the front desks. This will make filling crates of ammo boxes or rappels easier."
+  - code_imp: "Minor changes to code around some ammo boxes to remove one phantom box and prevent intermediate box types from being indexed when they shouldn't be."
+  - code_imp: "Refactored the code that checks whether items are in mint enough condition to re-stock."

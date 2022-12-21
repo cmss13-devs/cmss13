@@ -98,8 +98,9 @@ var/const/CLF_ENGI_FREQ	= 1273
 var/const/CLF_MED_FREQ	= 1274
 var/const/CLF_CCT_FREQ	= 1275
 
-var/const/AI_FREQ 		= 1500
-var/const/CCT_FREQ		= 1350//TEMP FOR USE IN MAKING SURE THE OTHERS ARE IN THE RIGHT PLACES
+var/const/MIN_FREQ 		= 1460 // ------------------------------------------------------
+var/const/PUB_FREQ 		= 1461
+var/const/MAX_FREQ 		= 1468 // ------------------------------------------------------
 
 //USCM High Command (USCM 1470-1499)
 var/const/HC_FREQ		= 1471
@@ -125,14 +126,10 @@ var/const/DELTA_FREQ 	= 1494
 var/const/ECHO_FREQ 	= 1495
 var/const/CRYO_FREQ		= 1496
 
-var/const/MIN_FREQ 		= 1460 // ------------------------------------------------------
-
-var/const/PUB_FREQ 		= 1461
-
-var/const/MAX_FREQ 		= 1468 // ------------------------------------------------------
-
 //Civilian channels
 var/const/COLONY_FREQ	= 1469
+
+var/const/AI_FREQ 		= 1500
 
 var/const/MAX_FREE_FREQ = 1599 // -------------------------------------------------
 
@@ -197,7 +194,7 @@ var/list/radiochannels = list(
 #define CLF_FREQS list(CLF_FREQ, CLF_CMD_FREQ, CLF_ENGI_FREQ, CLF_MED_FREQ, CLF_CCT_FREQ)
 
 // PMC Frequencies
-#define PMC_FREQS list(PMC_FREQ, PMC_CMD_FREQ, PMC_ENGI_FREQ, PMC_MED_FREQ, PMC_CCT_FREQ, WY_WO_FREQ)
+#define PMC_FREQS list(PMC_FREQ, PMC_CMD_FREQ, PMC_ENGI_FREQ, PMC_MED_FREQ, PMC_CCT_FREQ, WY_WO_FREQ, WY_FREQ)
 
 //Depts - used for colors in headset.dm, as well as deciding what the marine comms tower can listen into
 #define DEPT_FREQS list(COMM_FREQ, MED_FREQ, ENG_FREQ, SEC_FREQ, ALPHA_FREQ, BRAVO_FREQ, CHARLIE_FREQ, DELTA_FREQ, ECHO_FREQ, CRYO_FREQ, REQ_FREQ, JTAC_FREQ, INTEL_FREQ, WY_FREQ)

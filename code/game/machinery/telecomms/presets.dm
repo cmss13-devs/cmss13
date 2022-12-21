@@ -161,7 +161,7 @@
 	icon_state = "relay"
 	id = "UPP Relay"
 	hide = TRUE
-	freq_listening = list(UPP_FREQ, UPP_CMD_FREQ, UPP_ENGI_FREQ, UPP_MED_FREQ, UPP_CCT_FREQ, UPP_KDO_FREQ)
+	freq_listening = UPP_FREQS
 	var/faction_shorthand = "UPP"
 
 /obj/structure/machinery/telecomms/relay/preset/tower/faction/Initialize(mapload, ...)
@@ -172,11 +172,11 @@
 	return ..()
 
 /obj/structure/machinery/telecomms/relay/preset/tower/faction/clf
-	freq_listening = list(CLF_FREQ, CLF_CMD_FREQ, CLF_ENGI_FREQ, CLF_MED_FREQ, CLF_CCT_FREQ)
+	freq_listening = CLF_FREQS
 	faction_shorthand = "CLF"
 
 /obj/structure/machinery/telecomms/relay/preset/tower/faction/pmc
-	freq_listening = list(PMC_FREQ, PMC_CMD_FREQ, PMC_ENGI_FREQ, PMC_MED_FREQ, PMC_CCT_FREQ, WY_FREQ)
+	freq_listening = PMC_FREQS
 	faction_shorthand = "PMC"
 
 /obj/structure/machinery/telecomms/relay/preset/tower/faction/colony
@@ -252,11 +252,11 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 				if(FACTION_SURVIVOR)
 					freq_listening |= COLONY_FREQ
 				if(FACTION_CLF)
-					freq_listening |= list(CLF_FREQ, CLF_CMD_FREQ, CLF_ENGI_FREQ, CLF_MED_FREQ, CLF_CCT_FREQ)
+					freq_listening |= CLF_FREQS
 				if(FACTION_UPP)
-					freq_listening |= list(UPP_FREQ, UPP_CMD_FREQ, UPP_ENGI_FREQ, UPP_MED_FREQ, UPP_CCT_FREQ, UPP_KDO_FREQ)
+					freq_listening |= UPP_FREQS
 				if(FACTION_WY,FACTION_PMC)
-					freq_listening |= list(PMC_FREQ, PMC_CMD_FREQ, PMC_ENGI_FREQ, PMC_MED_FREQ, PMC_CCT_FREQ, WY_FREQ)
+					freq_listening |= PMC_FREQS
 				if(FACTION_YAUTJA)
 					to_chat(user, SPAN_WARNING("You decide to leave the human machine alone."))
 					return

@@ -45154,6 +45154,9 @@
 "gSi" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/computer/security/almayer_network,
+/obj/item/storage/box/tapes{
+	pixel_x = -16
+	},
 /turf/open/floor/almayer,
 /area/almayer/shipboard/brig/processing)
 "gSj" = (
@@ -65478,16 +65481,6 @@
 	tag = "icon-sterile_green_side (NORTH)"
 	},
 /area/almayer/medical/medical_science)
-"pYq" = (
-/obj/structure/machinery/cm_vending/clothing/staff_officer{
-	density = 0;
-	pixel_x = -30;
-	},
-/turf/open/floor/almayer{
-	icon_state = "bluefull";
-	tag = "icon-bluefull"
-	},
-/area/almayer/living/bridgebunks)
 "pYu" = (
 /obj/item/tool/warning_cone{
 	pixel_x = -12;
@@ -78610,15 +78603,6 @@
 "vAG" = (
 /turf/open/floor/almayer,
 /area/almayer/shipboard/brig/chief_mp_office)
-"vAI" = (
-/obj/structure/machinery/cryopod/right{
-	pixel_y = 6
-	},
-/turf/open/floor/almayer{
-	icon_state = "cargo";
-	tag = "icon-bluecorner (NORTH)"
-	},
-/area/almayer/shipboard/brig/cryo)
 "vAQ" = (
 /obj/structure/machinery/light,
 /obj/structure/sink{
@@ -96022,9 +96006,9 @@ eRL
 mLJ
 pWG
 gaJ
-vAI
+eyg
 gCI
-vAI
+eyg
 gaJ
 heQ
 lMc
@@ -100482,7 +100466,7 @@ cRc
 rPC
 wcn
 vxM
-vAI
+eyg
 giZ
 gTl
 vxM
@@ -101295,7 +101279,7 @@ tRX
 uzm
 vxM
 eyg
-vAI
+eyg
 oWI
 vxM
 nNv
@@ -104165,7 +104149,7 @@ aRq
 bHG
 ceK
 sxD
-pYq
+bhJ
 bMh
 ayP
 aES
@@ -104774,7 +104758,7 @@ lcy
 iTw
 ceK
 sxD
-pYq
+bhJ
 bMh
 nis
 aES
@@ -105383,7 +105367,7 @@ wVB
 psa
 ceK
 sxD
-pYq
+bhJ
 bMh
 brS
 aES
@@ -105992,7 +105976,7 @@ jUb
 qjz
 ceK
 sxD
-pYq
+bhJ
 bMh
 gCP
 aES

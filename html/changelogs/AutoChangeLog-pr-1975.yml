@@ -1,6 +1,0 @@
-author: "stanalbatross"
-delete-after: True
-changes:
-  - rscadd: "ported TG's eye blurriness effects"
-  - code_imp: "made all instances of eye_blurry modification use the proper procs"
-  - code_imp: "changed obj/plane_master_controller to atom/movable/plane_master_controller. Same logic as obj/screen being changed."

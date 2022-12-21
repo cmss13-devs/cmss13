@@ -668,3 +668,38 @@
   - balance: reduced the sniper sentry's delay between shots from 2s to 1.25s
   - balance: reduced the plasma sentry's range to 10 tiles
   - balance: reduced the plasma sentry's delay between shots from 10s to 7s
+2022-12-21:
+  Crowbar764:
+  - bugfix: fixed un-meltable incendiary ammo on New Varadero
+  Morrow:
+  - rscadd: MPs will now start at LCPL for the first 10 hours of playtime.
+  - rscdel: MP Cadet is removed.
+  ThePiachu:
+  - qol: Acid Runner and Hedgehog Ravager now get a HUD bar representing how much
+      acid and how many shards they have stored.
+  - qol: Now you won't even try transferring plasma to xenos that don't use plasma,
+      saving you the effort and letting you know you misclicked.
+  carlarctg:
+  - code_imp: Removed deprecated typecheck on human updatehealth()
+  fira:
+  - code_imp: Updated the Master Controller from /tg/
+  - code_imp: Database subsystems now load early, letting players join during game
+      initialization.
+  - code_imp: Rewrote speech spam filter, using a character budget over time. Old
+      one wouldn't let you speak during init. Yes, you should still be able to use
+      copypastas (within reason)
+  - code_imp: Changed error handling to work during static init, so early errors can
+      be displayed in STUI instead of forgotten.
+  stanalbatross:
+  - bugfix: hotfixed rolling your sleeves while your jacket was down breaking chat
+  - rscadd: ported TG's eye blurriness effects
+  - code_imp: made all instances of eye_blurry modification use the proper procs
+  - code_imp: changed obj/plane_master_controller to atom/movable/plane_master_controller.
+      Same logic as obj/screen being changed.
+  - rscadd: charger crushers, upon charging welding fuel tanks, will now cause them
+      to explode
+  - admin: ported the filter editor from tgstation, it is a VV dropdown option.
+  - code_imp: converted 1500 instances of 4 spaces being used instead of tabs to tabs
+  - rscdel: Removed ten unused nanoui templates. Don't worry, they'll all be going
+      away soon.
+  - code_imp: fixed most instances of types not having a starting / in the codebase

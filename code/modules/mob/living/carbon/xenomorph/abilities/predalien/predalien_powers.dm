@@ -148,7 +148,8 @@
 		carbon.apply_armoured_damage(get_xeno_damage_slash(carbon, base_damage + damage_scale * behavior.kills), ARMOR_MELEE, BRUTE, "chest", 20)
 
 		xeno.animation_attack_on(carbon)
-		xeno.flick_attack_overlay(carbon, "slash")
+		xeno.spin_circle()
+		xeno.flick_attack_overlay(carbon, "tail")
 
 	xeno.frozen = 0
 	xeno.anchored = 0

@@ -182,19 +182,19 @@
 
 /mob/verb/eastface()
 	set hidden = 1
-	return facedir(EAST)
+	return faceDir(EAST)
 
 /mob/verb/westface()
 	set hidden = 1
-	return facedir(WEST)
+	return faceDir(WEST)
 
 /mob/verb/northface()
 	set hidden = 1
-	return facedir(NORTH)
+	return faceDir(NORTH)
 
 /mob/verb/southface()
 	set hidden = 1
-	return facedir(SOUTH)
+	return faceDir(SOUTH)
 
 
 /mob/verb/northfaceperm()

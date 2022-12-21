@@ -42951,7 +42951,7 @@
 /obj/item/device/healthanalyzer,
 /obj/item/device/healthanalyzer,
 /obj/item/device/healthanalyzer,
-/obj/structure/surface/table/reinforced/prison,
+/obj/structure/surface/rack,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green";
 	tag = "icon-sterile"
@@ -77077,7 +77077,6 @@
 	},
 /area/almayer/lifeboat_pumps/south1)
 "vcv" = (
-/obj/structure/surface/table/reinforced/prison,
 /obj/item/storage/firstaid/fire{
 	pixel_x = 6;
 	pixel_y = 6
@@ -77087,6 +77086,7 @@
 	pixel_y = 3
 	},
 /obj/item/storage/firstaid/adv,
+/obj/structure/surface/rack,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green";
 	tag = "icon-sterile"

@@ -1413,7 +1413,7 @@
 	indestructible = 1
 	muzzle_flash = null
 
-	current_mag = /obj/item/ammo_magazine/rifle/dart
+	current_mag = /obj/item/ammo_magazine/rifle/dart/explosive
 	attachable_allowed = list(/obj/item/attachable/magnetic_harness)
 	matter = list("metal" = 6000)
 
@@ -1429,11 +1429,12 @@
 
 /obj/item/weapon/gun/rifle/sharp/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_10
+	fire_delay = FIRE_DELAY_TIER_2
 	accuracy_mult = BASE_ACCURACY_MULT
 	scatter = SCATTER_AMOUNT_NONE
 	damage_mult = BASE_BULLET_DAMAGE_MULT
 	recoil = RECOIL_OFF
+	burst_amount = 0
 
 /obj/item/weapon/gun/rifle/sharp/unique_action(mob/user)
 	track(user)
@@ -1441,29 +1442,28 @@
 /obj/item/weapon/gun/rifle/sharp/proc/track(mob/user)
 	var/mob/living/carbon/human/M = user
 
-	var/count = 0
-	var/max_count = 5
+	var/max_count = 5 //max number of tracking on user's screen
 	var/target
 	var/direction = -1
 	var/atom/areaLoc = null
 	var/output = FALSE
-	while(GLOB.sharp_tracked_mob_list.len > max_count)
+
+	var/x = GLOB.sharp_tracked_mob_list.len - max_count
+	for(var/i=0,i<x,++i)
 		popleft(GLOB.sharp_tracked_mob_list)
 
-	for(var/mob/living/mob_tracked as anything in GLOB.sharp_tracked_mob_list) // help we get qdel'ed mobs here AHHHHHHHHH
-		if(istype(mob_tracked, /mob))
-			if(count < max_count)
-				if(M.z == mob_tracked.z)
-					var/dist = get_dist(M,mob_tracked)
-					target = dist
-					direction = get_dir(M,mob_tracked)
-					areaLoc = loc
+	for(var/mob/living/mob_tracked as mob in GLOB.sharp_tracked_mob_list)
+		if(!QDELETED(mob_tracked))
+			if(M.z == mob_tracked.z)
+				var/dist = get_dist(M,mob_tracked)
+				target = dist
+				direction = get_dir(M,mob_tracked)
+				areaLoc = loc
 
-				if(target < 900)
-					output = TRUE
-					var/areaName = get_area_name(areaLoc)
-					to_chat(M, SPAN_NOTICE("\The [mob_tracked] is [target > 10 ? "approximately <b>[round(target, 10)]</b>" : "<b>[target]</b>"] paces <b>[dir2text(direction)]</b> in <b>[areaName]</b>."))
-					count++
+			if(target < 900)
+				output = TRUE
+				var/areaName = get_area_name(areaLoc)
+				to_chat(M, SPAN_NOTICE("\The [mob_tracked] is [target > 10 ? "approximately <b>[round(target, 10)]</b>" : "<b>[target]</b>"] paces <b>[dir2text(direction)]</b> in <b>[areaName]</b>."))
 	if(!output)
 		to_chat(M, SPAN_NOTICE("There is nothing currently tracked."))
 
@@ -1481,4 +1481,5 @@
 
 //make this pickable at GL locker maybe? only 1 item etc....section...
 // Fix fucking ammo inspect and maybe the weird in chamber insert
-//shrapnel divide by 0 issue
+// Crash @ explosion due to callback of qdel'ed object rework maybe. DO AT THE MINE LOCATION MAYBE IF !QDEL'ED??
+// DEAD MOBS ISSUE CLAYMORE CHECK, CURRENTLY DDOESNT BLOW UP CHANGE LAYER??? 

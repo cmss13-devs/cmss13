@@ -252,7 +252,7 @@
 	name = "sharp dart shrapnel"
 	desc = "It looks like a used 9X-E Sticky Explosive Dart, useless now."
 	icon = 'icons/obj/items/weapons/projectiles.dmi'
-	icon_state = "sonicharpoon" //to fix NEED SPRITE
+	icon_state = "sonicharpoon"
 	sharp = IS_SHARP_ITEM_BIG
 	w_class = SIZE_SMALL
 	edge = 1
@@ -262,9 +262,9 @@
 	var/count = 1
 	garbage = TRUE
 
-/obj/item/sharp/Initialize()
+/obj/item/sharp/Initialize(mapload, dir)
 	. = ..()
-	if(prob(50))
+	if(dir && dir <= 6)
 		turn_object(90)
 	else
 		turn_object(270)

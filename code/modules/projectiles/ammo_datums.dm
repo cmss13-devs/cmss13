@@ -3375,13 +3375,13 @@
 	drop_dart(P.loc, P)
 
 /datum/ammo/rifle/dart/on_hit_turf(turf/T, obj/item/projectile/P)
-	drop_dart(T)
+	drop_dart(T, P)
 
 /datum/ammo/rifle/dart/do_at_max_range(obj/item/projectile/P)
 	drop_dart(P.loc, P)
 
 /datum/ammo/rifle/dart/proc/drop_dart(var/loc, obj/item/projectile/P)
-	new embed_object(loc)
+	new embed_object(loc, P.dir)
 
 /datum/ammo/rifle/dart/explosive
 	name = "9X-E sticky explosive dart"
@@ -3389,8 +3389,8 @@
 /datum/ammo/rifle/dart/explosive/on_hit_mob(mob/living/M, obj/item/projectile/P)
 	if(!M || M == P.firer) return
 	var/mob/shooter = P.firer
+	shake_camera(M, 2, 1)
 	if(shooter && ismob(shooter))
-		shake_camera(M, 2, 1) // to fix need xeno size check lol
 		if(!M.get_target_lock(shooter.faction_group))
 			addtimer(CALLBACK(src, .proc/delayed_explosion, P, M, shooter), 1 SECONDS)
 
@@ -3405,7 +3405,7 @@
 	else
 		addtimer(CALLBACK(dart, /obj/item/explosive/mine/sharp.proc/deploy_mine, shooter), 3 SECONDS)
 	if(dart)
-		addtimer(CALLBACK(dart, /obj/item/explosive/mine/sharp.proc/disarm), 1 MINUTES)
+		addtimer(CALLBACK(dart, /obj/item/explosive/mine/sharp.proc/disarm), 1 MINUTES) // If we do the above to prevent stacking on the same tile, maybe we should disarm instead so we dont callback a qdel'ed object?
 
 /datum/ammo/rifle/dart/explosive/proc/delayed_explosion(obj/item/projectile/P, mob/M, mob/shooter)
 	if(istype(M, /mob))
@@ -3415,7 +3415,6 @@
 /datum/ammo/rifle/dart/track
 	name = "9X-T sticky tracker dart"
 	icon_state = "sonicharpoon_tracker"
-	flags_ammo_behavior = AMMO_SPECIAL_EMBED|AMMO_NO_DEFLECT|AMMO_STRIKES_SURFACEONL|AMMO_HITS_TARGET_TURF
 	embed_object = /obj/item/sharp/track
 	var/tracker_timer = 1 MINUTES
 
@@ -3431,13 +3430,8 @@
 /datum/ammo/rifle/dart/flechette
 	name = "9X-F flechette dart"
 	icon_state = "sonicharpoon_flechette"
-	flags_ammo_behavior = AMMO_SPECIAL_EMBED|AMMO_NO_DEFLECT|AMMO_STRIKES_SURFACEONL|AMMO_HITS_TARGET_TURF
 	embed_object = /obj/item/sharp/flechette
-
 	shrapnel_type = /datum/ammo/bullet/shotgun/flechette_spread
-	var/shrapnel_count = 40
-	var/direct_hit_shrapnel = 8
-	var/dispersion_angle = 20
 
 /datum/ammo/rifle/dart/flechette/on_hit_mob(mob/living/M, obj/item/projectile/P)
 	if(!M || M == P.firer) return
@@ -3445,37 +3439,25 @@
 	shake_camera(M, 2, 1)
 	if(shooter && ismob(shooter))
 		if(!M.get_target_lock(shooter.faction_group))
-			create_shrapnel(M.loc, min(direct_hit_shrapnel, shrapnel_count), P.dir, dispersion_angle, shrapnel_type, P.weapon_cause_data, FALSE, 100)
-			shrapnel_count -= direct_hit_shrapnel
-			if(shrapnel_count)
-				create_shrapnel(M.loc, shrapnel_count, P.dir, dispersion_angle ,shrapnel_type, P.weapon_cause_data, FALSE, 0)
-			apply_explosion_overlay(M.loc)
+			create_flechette(M.loc, P)
+
+/datum/ammo/rifle/dart/flechette/on_pointblank(mob/living/M, obj/item/projectile/P)
+	if(!M) return
+	P.dir = get_dir(P.firer, M)
 
 /datum/ammo/rifle/dart/flechette/on_hit_obj(obj/O, obj/item/projectile/P)
-	/*create_shrapnel(O.loc, min(direct_hit_shrapnel, shrapnel_count), P.dir, dispersion_angle, shrapnel_type, P.weapon_cause_data, FALSE, 100)
-	shrapnel_count -= direct_hit_shrapnel
-	if(shrapnel_count)
-		create_shrapnel(O.loc, shrapnel_count, P.dir, dispersion_angle ,shrapnel_type, P.weapon_cause_data, FALSE, 0)
-	apply_explosion_overlay(O.loc)*/
 	create_flechette(O.loc, P)
 
 /datum/ammo/rifle/dart/flechette/on_hit_turf(turf/T, obj/item/projectile/P)
-	/*create_shrapnel(T, min(direct_hit_shrapnel, shrapnel_count), P.dir, dispersion_angle, shrapnel_type, P.weapon_cause_data, FALSE, 100)
-	shrapnel_count -= direct_hit_shrapnel
-	if(shrapnel_count)
-		create_shrapnel(T, shrapnel_count, P.dir, dispersion_angle ,shrapnel_type, P.weapon_cause_data, FALSE, 0)
-	apply_explosion_overlay(T)*/
 	create_flechette(T, P)
 
 /datum/ammo/rifle/dart/flechette/do_at_max_range(obj/item/projectile/P)
-	/*create_shrapnel(P.loc, min(direct_hit_shrapnel, shrapnel_count), P.dir, dispersion_angle, shrapnel_type, P.weapon_cause_data, FALSE, 100)
-	shrapnel_count -= direct_hit_shrapnel
-	if(shrapnel_count)
-		create_shrapnel(P.loc, shrapnel_count, P.dir, dispersion_angle, shrapnel_type, P.weapon_cause_data, FALSE, 0)
-	apply_explosion_overlay(P.loc)*/
 	create_flechette(P.loc, P)
 
 /datum/ammo/rifle/dart/flechette/proc/create_flechette(var/loc, obj/item/projectile/P)
+	var/shrapnel_count = 40
+	var/direct_hit_shrapnel = 8
+	var/dispersion_angle = 20
 	create_shrapnel(loc, min(direct_hit_shrapnel, shrapnel_count), P.dir, dispersion_angle, shrapnel_type, P.weapon_cause_data, FALSE, 100)
 	shrapnel_count -= direct_hit_shrapnel
 	if(shrapnel_count)

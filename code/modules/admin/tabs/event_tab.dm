@@ -586,7 +586,7 @@
 	if(!admin_holder || !(admin_holder.rights & R_MOD))
 		to_chat(src, "Only administrators may use this command.")
 		return
-	var/input = input(usr, "This is a standard message from the ship's AI. It uses Almayer General channel and won't be heard by humans without access to Almayer General channel (headset or intercom). Check with online staff before you send this. Do not use html.", "What?", "") as message|null
+	var/input = input(usr, "This is a broadcast from the ship AI to Working Joes and Maintenance Drones. Do not use html.", "What?", "") as message|null
 	if(!input)
 		return FALSE
 
@@ -602,7 +602,7 @@
 			for(var/mob/living/silicon/decoy/ship_ai/AI in ai_mob_list)
 				apollo.broadcast(AI, input)
 			for(var/mob/M in (GLOB.human_mob_list + GLOB.dead_mob_list))
-				if(M.hear_apollo())
+				if(M.hear_apollo())//Only plays sound to mobs and not observers, to reduce spam.
 					playsound_client(M.client, sound('sound/misc/interference.ogg'), M, vol = 45)
 			message_staff("[key_name_admin(src)] has created an AI Apollo report")
 			log_admin("AI Apollo report: [input]")

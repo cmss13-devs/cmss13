@@ -368,7 +368,7 @@
 	reload_sound = 'sound/weapons/handling/m41_reload.ogg'
 	unload_sound = 'sound/weapons/handling/m41_unload.ogg'
 	current_mag = /obj/item/ammo_magazine/rifle/incendiary
-	var/iff_enabled = TRUE
+
 	accepted_ammo = list(
 		/obj/item/ammo_magazine/rifle,
 		/obj/item/ammo_magazine/rifle/extended,
@@ -424,8 +424,14 @@
 	auto_retrieval_slot = WEAR_J_STORE
 	map_specific_decoration = TRUE
 
+	actions_types = list(
+						/datum/action/item_action/m46c/toggle_lethal_mode,
+						/datum/action/item_action/m46c/toggle_id_lock
+						)
+
 	var/mob/living/carbon/human/linked_human
 	var/is_locked = TRUE
+	var/iff_enabled = TRUE
 
 /obj/item/weapon/gun/rifle/m46c/Initialize(mapload, ...)
 	. = ..()
@@ -463,7 +469,7 @@
 	. = ..()
 	if(is_locked && linked_human && linked_human != user)
 		if(linked_human.is_revivable() || linked_human.stat != DEAD)
-			to_chat(user, SPAN_WARNING("[icon2html(src)] Trigger locked by [src]. Unauthorized user."))
+			to_chat(user, SPAN_WARNING("[icon2html(src, usr)] Trigger locked by [src]. Unauthorized user."))
 			playsound(loc,'sound/weapons/gun_empty.ogg', 25, 1)
 			return FALSE
 
@@ -473,35 +479,82 @@
 
 /obj/item/weapon/gun/rifle/m46c/pickup(user)
 	if(!linked_human)
-		src.name_after_co(user, src)
-		to_chat(usr, SPAN_NOTICE("[icon2html(src)] You pick up \the [src], registering yourself as its owner."))
+		name_after_co(user)
+		to_chat(usr, SPAN_NOTICE("[icon2html(src, usr)] You pick up \the [src], registering yourself as its owner."))
 	..()
 
-/obj/item/weapon/gun/rifle/m46c/verb/toggle_lock()
-	set category = "Weapons"
-	set name = "Toggle Lock"
-	set src in usr
+//---ability actions--\\
 
-	if(usr != linked_human)
-		to_chat(usr, SPAN_WARNING("[icon2html(src)] Action denied by [src]. Unauthorized user."))
+/datum/action/item_action/m46c/action_activate()
+	var/obj/item/weapon/gun/rifle/m46c/G = holder_item
+	if(!ishuman(owner))
+		return
+	var/mob/living/carbon/human/H = owner
+	if(H.is_mob_incapacitated() || G.get_active_firearm(H, FALSE) != holder_item)
 		return
 
+/datum/action/item_action/m46c/update_button_icon()
+	return
+
+/datum/action/item_action/m46c/toggle_lethal_mode/New(Target, obj/item/holder)
+	. = ..()
+	name = "Toggle IFF"
+	action_icon_state = "iff_toggle_on"
+	button.name = name
+	button.overlays.Cut()
+	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)
+
+/datum/action/item_action/m46c/toggle_lethal_mode/action_activate()
+	. = ..()
+	var/obj/item/weapon/gun/rifle/m46c/G = holder_item
+	G.toggle_iff(usr)
+	if(G.iff_enabled)
+		action_icon_state = "iff_toggle_on"
+	else
+		action_icon_state = "iff_toggle_off"
+	button.overlays.Cut()
+	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)
+
+/datum/action/item_action/m46c/toggle_id_lock/New(Target, obj/item/holder)
+	. = ..()
+	name = "Toggle ID lock"
+	action_icon_state = "id_lock_locked"
+	button.name = name
+	button.overlays.Cut()
+	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)
+
+/datum/action/item_action/m46c/toggle_id_lock/action_activate()
+	. = ..()
+	var/obj/item/weapon/gun/rifle/m46c/G = holder_item
+	G.toggle_lock()
+	if(G.is_locked)
+		action_icon_state = "id_lock_locked"
+	else
+		action_icon_state = "id_lock_unlocked"
+	button.overlays.Cut()
+	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)
+
+
+// -- ability actions procs -- \\
+
+/obj/item/weapon/gun/rifle/m46c/proc/toggle_lock(mob/user)
+	if(linked_human && usr != linked_human)
+		to_chat(usr, SPAN_WARNING("[icon2html(src, usr)] Action denied by [src]. Unauthorized user."))
+		return
+	else if(!linked_human)
+		name_after_co(usr)
+
 	is_locked = !is_locked
-	to_chat(usr, SPAN_NOTICE("[icon2html(src)] You [is_locked? "lock": "unlock"] [src]."))
+	to_chat(usr, SPAN_NOTICE("[icon2html(src, usr)] You [is_locked? "lock": "unlock"] [src]."))
 	playsound(loc,'sound/machines/click.ogg', 25, 1)
 
-
-/obj/item/weapon/gun/rifle/m46c/verb/toggle_iff()
-	set category = "Weapons"
-	set name = "Toggle IFF"
-	set src in usr
-
+/obj/item/weapon/gun/rifle/m46c/proc/toggle_iff(mob/user)
 	if(is_locked && linked_human && usr != linked_human)
-		to_chat(usr, SPAN_WARNING("[icon2html(src)] Action denied by [src]. Unauthorized user."))
+		to_chat(usr, SPAN_WARNING("[icon2html(src, usr)] Action denied by [src]. Unauthorized user."))
 		return
 
 	iff_enabled = !iff_enabled
-	to_chat(usr, SPAN_NOTICE("[icon2html(src)] You [iff_enabled? "enable": "disable"] the IFF on [src]."))
+	to_chat(usr, SPAN_NOTICE("[icon2html(src, usr)] You [iff_enabled? "enable": "disable"] the IFF on [src]."))
 	playsound(loc,'sound/machines/click.ogg', 25, 1)
 
 	recalculate_attachment_bonuses()
@@ -519,7 +572,7 @@
 		flags_gun_features &= ~GUN_BURST_ON //Gun loses some combat ability in return for IFF, as well as burst fire mode
 
 
-/obj/item/weapon/gun/rifle/m46c/proc/name_after_co(var/mob/living/carbon/human/H, var/obj/item/weapon/gun/rifle/m46c/I)
+/obj/item/weapon/gun/rifle/m46c/proc/name_after_co(var/mob/living/carbon/human/H)
 	linked_human = H
 	RegisterSignal(linked_human, COMSIG_PARENT_QDELETING, .proc/remove_idlock)
 

@@ -509,7 +509,7 @@
 	name = "\improper C92 pattern 'Festivizer' decorator"
 	desc = "State of the art, WY-brand, high tech... ah who are we kidding, it's just a festivizer. You spot a label on it that says: <i> Attention: This device does not cover item in festive wire, but rather paints it a festive color. </i> What a rip!"
 	icon = 'icons/obj/items/marine-items_christmas.dmi'
-	icon_state = "barbed_wire"
+	icon_state = "festive_wire"
 
 /obj/item/toy/festivizer/get_examine_text(mob/user)
 	. = ..()
@@ -535,7 +535,3 @@
 /obj/item/toy/festivizer/xeno
 	name = "strange resin-covered festivizer decorator"
 	desc = "This bizarre festivizer is covered in goopy goop and schmuck. Ew! It's so sticky, *anything* could grab onto it! Grab it and touch other things to festivize them!"
-
-/obj/item/toy/festivizer/xeno/Initialize(mapload, ...)
-	. = ..()
-	color = pick("red", "green")

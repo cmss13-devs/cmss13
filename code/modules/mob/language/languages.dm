@@ -166,16 +166,16 @@
 	var/message_body = "<span class='message'>broadcasts, \"[message]\"</span></span></i>"
 	GLOB.STUI.game.Add("\[[time_stamp()]]<font color='#FFFF00'>APOLLO: [key_name(speaker)] : [message]</font><br>")
 	GLOB.STUI.processing |= STUI_LOG_GAME_CHAT
-	for (var/mob/ghost in GLOB.dead_mob_list)
-		if(!istype(M,/mob/new_player) && !istype(M,/mob/living/brain)) //No meta-evesdropping
-			ghost.show_message("<span class='[colour]'>[message_start] [message_body]</span>", SHOW_MESSAGE_VISIBLE)
+	for (var/mob/dead in GLOB.dead_mob_list)
+		if(!istype(dead,/mob/new_player) && !istype(dead,/mob/living/brain)) //No meta-evesdropping
+			dead.show_message("<span class='[colour]'>[message_start] [message_body]</span>", SHOW_MESSAGE_VISIBLE)
 
 	for (var/mob/living/listener in GLOB.alive_mob_list)
 
 		if (!listener.hear_apollo())
 			continue
 		else if(isAI(listener))
-			message_start = "<i><span class='game say'>[name], <a href='byond://?src=\ref[S];track2=\ref[S];track=\ref[speaker];trackname=[html_encode(speaker.name)]'><span class='name'>[speaker.name]</span></a>"
+			message_start = "<i><span class='game say'>[name], <a href='byond://?src=\ref[listener];track2=\ref[listener];track=\ref[speaker];trackname=[html_encode(speaker.name)]'><span class='name'>[speaker.name]</span></a>"
 
 		listener.show_message("<span class='[colour]'>[message_start] [message_body]</span>", SHOW_MESSAGE_VISIBLE)
 

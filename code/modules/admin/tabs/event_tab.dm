@@ -586,7 +586,7 @@
 	if(!admin_holder || !(admin_holder.rights & R_MOD))
 		to_chat(src, "Only administrators may use this command.")
 		return
-	var/input = tgui_input_text(usr, "This is a broadcast from the ship AI to Working Joes and Maintenance Drones. Do not use html.", "What?", "") as message|null
+	var/input = tgui_input_text(usr, "This is a broadcast from the ship AI to Working Joes and Maintenance Drones. Do not use html.", "What?", "")
 	if(!input)
 		return FALSE
 
@@ -600,7 +600,7 @@
 				apollo.broadcast(AI, input)
 			for(var/mob/listener in (GLOB.human_mob_list + GLOB.dead_mob_list))
 				if(listener.hear_apollo())//Only plays sound to mobs and not observers, to reduce spam.
-					playsound_client(M.client, sound('sound/misc/interference.ogg'), M, vol = 45)
+					playsound_client(listener.client, sound('sound/misc/interference.ogg'), listener, vol = 45)
 			message_staff("[key_name_admin(src)] has created an AI Apollo report")
 			log_admin("AI Apollo report: [input]")
 

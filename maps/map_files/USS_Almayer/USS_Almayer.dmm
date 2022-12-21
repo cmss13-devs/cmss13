@@ -5543,7 +5543,7 @@
 /area/almayer/hallways/aft_hallway)
 "apm" = (
 /obj/structure/machinery/line_nexter{
-	dir = 1;
+	dir = 3;
 	id = "MTline"
 	},
 /turf/open/floor/almayer,
@@ -22516,13 +22516,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/l_m_p)
-"byb" = (
-/turf/open/floor/almayer{
-	dir = 8;
-	icon_state = "sterile_green_corner";
-	tag = "icon-sterile_green_corner (WEST)"
-	},
-/area/almayer/medical/lower_medical_lobby)
 "byc" = (
 /obj/structure/machinery/bioprinter{
 	stored_metal = 125
@@ -24536,6 +24529,9 @@
 	},
 /area/almayer/medical/lower_medical_lobby)
 "bER" = (
+/obj/structure/bed/chair/wheelchair{
+	dir = 4
+	},
 /obj/structure/bed/chair/wheelchair{
 	dir = 4
 	},
@@ -38883,6 +38879,17 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/hull/lower_hull/l_a_s)
+"epU" = (
+/obj/structure/machinery/line_nexter{
+	dir = 4;
+	id = "MTline"
+	},
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "sterile_green_corner";
+	tag = "icon-sterile_green_corner (WEST)"
+	},
+/area/almayer/medical/lower_medical_lobby)
 "eqk" = (
 /mob/living/simple_animal/mouse/brown,
 /turf/open/floor/almayer{
@@ -44870,6 +44877,16 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/lifeboat_pumps/south1)
+"gVM" = (
+/obj/structure/machinery/iv_drip,
+/obj/structure/machinery/iv_drip,
+/obj/structure/machinery/iv_drip,
+/obj/structure/machinery/iv_drip,
+/turf/open/floor/almayer{
+	icon_state = "dark_sterile";
+	tag = "icon-sterile"
+	},
+/area/almayer/medical/lower_medical_lobby)
 "gWE" = (
 /obj/structure/disposalpipe/segment,
 /obj/effect/landmark/start/marine/spec/alpha,
@@ -45784,10 +45801,11 @@
 /turf/open/floor/plating,
 /area/almayer/medical/medical_science)
 "hpN" = (
-/obj/structure/machinery/light,
+/obj/structure/barricade/handrail/medical,
 /turf/open/floor/almayer{
+	dir = 10;
 	icon_state = "sterile_green_side";
-	tag = "icon-sterile"
+	tag = "icon-sterile_green_side (SOUTHWEST)"
 	},
 /area/almayer/medical/lower_medical_lobby)
 "hpY" = (
@@ -48752,6 +48770,15 @@
 	tag = "icon-silver"
 	},
 /area/almayer/command/cichallway)
+"iJK" = (
+/obj/structure/barricade/handrail/medical{
+	dir = 4
+	},
+/turf/open/floor/almayer{
+	icon_state = "dark_sterile";
+	tag = "icon-sterile"
+	},
+/area/almayer/medical/lower_medical_lobby)
 "iJS" = (
 /obj/structure/machinery/cm_vending/gear/rto{
 	density = 0;
@@ -56268,6 +56295,15 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
+/obj/item/storage/firstaid/o2{
+	pixel_x = 3;
+	pixel_y = 3
+	},
+/obj/item/storage/firstaid/fire{
+	pixel_x = 6;
+	pixel_y = 6
+	},
+/obj/item/storage/firstaid/adv,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green";
 	tag = "icon-sterile"
@@ -63518,13 +63554,6 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/engineering/upper_engineering)
-"pjw" = (
-/turf/open/floor/almayer{
-	dir = 10;
-	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (SOUTHWEST)"
-	},
-/area/almayer/medical/lower_medical_lobby)
 "pjC" = (
 /obj/structure/machinery/autolathe,
 /turf/open/floor/almayer{
@@ -66402,6 +66431,7 @@
 "qyD" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/recharger,
+/obj/structure/machinery/light,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_side";
 	tag = "icon-sterile"
@@ -67375,13 +67405,6 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/hull/upper_hull/u_a_p)
-"qWg" = (
-/obj/structure/machinery/iv_drip,
-/turf/open/floor/almayer{
-	icon_state = "dark_sterile";
-	tag = "icon-sterile"
-	},
-/area/almayer/medical/lower_medical_lobby)
 "qWt" = (
 /obj/structure/disposalpipe/segment{
 	dir = 8;
@@ -68635,6 +68658,22 @@
 	tag = "icon-test_floor4"
 	},
 /area/almayer/engineering/upper_engineering)
+"ryg" = (
+/obj/structure/machinery/camera/autoname/almayer{
+	dir = 4;
+	name = "ship-grade camera";
+	tag = "icon-camera (WEST)"
+	},
+/obj/structure/machinery/line_nexter{
+	dir = 4;
+	id = "MTline"
+	},
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "sterile_green_side";
+	tag = "icon-sterile_green_side (WEST)"
+	},
+/area/almayer/medical/lower_medical_lobby)
 "ryt" = (
 /obj/structure/pipes/standard/manifold/visible,
 /turf/open/floor/almayer{
@@ -69841,6 +69880,23 @@
 	tag = "icon-bluecorner (NORTH)"
 	},
 /area/almayer/living/cryo_cells)
+"rXm" = (
+/obj/structure/surface/table/almayer,
+/obj/item/roller,
+/obj/item/roller,
+/obj/item/roller,
+/obj/item/roller,
+/obj/item/roller,
+/obj/item/tool/extinguisher,
+/obj/item/tool/extinguisher,
+/obj/item/tool/extinguisher,
+/obj/item/tool/extinguisher,
+/obj/item/tool/extinguisher,
+/turf/open/floor/almayer{
+	icon_state = "dark_sterile";
+	tag = "icon-sterile"
+	},
+/area/almayer/medical/lower_medical_lobby)
 "rXv" = (
 /obj/structure/machinery/door/airlock/almayer/maint,
 /obj/structure/disposalpipe/segment{
@@ -70077,21 +70133,13 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/l_m_p)
 "sdg" = (
-/obj/structure/surface/table/almayer,
-/obj/item/roller,
-/obj/item/roller,
-/obj/item/roller,
-/obj/item/roller,
-/obj/item/roller,
-/obj/item/tool/extinguisher,
-/obj/item/tool/extinguisher,
-/obj/item/tool/extinguisher,
-/obj/item/tool/extinguisher,
-/obj/item/tool/extinguisher,
+/obj/structure/barricade/handrail/medical,
+/obj/structure/barricade/handrail/medical{
+	dir = 4
+	},
 /turf/open/floor/almayer{
-	dir = 8;
-	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (WEST)"
+	icon_state = "dark_sterile";
+	tag = "icon-sterile"
 	},
 /area/almayer/medical/lower_medical_lobby)
 "sdl" = (
@@ -77074,22 +77122,6 @@
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/south1)
-"vcv" = (
-/obj/item/storage/firstaid/fire{
-	pixel_x = 6;
-	pixel_y = 6
-	},
-/obj/item/storage/firstaid/o2{
-	pixel_x = 3;
-	pixel_y = 3
-	},
-/obj/item/storage/firstaid/adv,
-/obj/structure/surface/rack,
-/turf/open/floor/almayer{
-	icon_state = "sterile_green";
-	tag = "icon-sterile"
-	},
-/area/almayer/medical/lower_medical_lobby)
 "vcE" = (
 /turf/open/floor/almayer{
 	icon_state = "mono"
@@ -80352,14 +80384,6 @@
 	tag = "icon-rasputin3"
 	},
 /area/almayer/powered/agent)
-"wpk" = (
-/obj/structure/machinery/iv_drip,
-/turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (NORTH)"
-	},
-/area/almayer/medical/lower_medical_lobby)
 "wpz" = (
 /obj/item/device/radio/intercom{
 	freerange = 1;
@@ -107401,13 +107425,13 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
 aaa
 aaa
 aaa
@@ -107604,13 +107628,13 @@ ajY
 aaa
 bdH
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
 aaa
 aaa
 aaa
@@ -107807,12 +107831,12 @@ ajZ
 aaa
 bdH
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
 bdH
 aaa
 aaa
@@ -108010,13 +108034,13 @@ ajZ
 aaa
 bdH
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
 aaa
 aaa
 aaa
@@ -108213,13 +108237,13 @@ ajZ
 aaY
 bdH
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
 aaa
 aaa
 aaa
@@ -108416,13 +108440,13 @@ ajZ
 aaY
 bdH
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
 aaa
 aaa
 aaa
@@ -108619,13 +108643,13 @@ ajZ
 aaY
 bdH
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
 aaa
 aaa
 aaa
@@ -108822,13 +108846,13 @@ ajZ
 aaY
 bdH
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
 aaa
 aaa
 aaa
@@ -109025,13 +109049,13 @@ ajZ
 aaY
 bdH
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
 aaa
 aaa
 aaa
@@ -109227,14 +109251,14 @@ aag
 ajZ
 aaY
 bdH
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
 aaa
 aaa
 aaa
@@ -109430,14 +109454,14 @@ aag
 ajZ
 aaY
 bdH
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
 aaa
 aaa
 aaa
@@ -109639,7 +109663,7 @@ aaa
 aaa
 aaa
 aaa
-aaa
+bdH
 aaa
 aaa
 aaa
@@ -110215,7 +110239,7 @@ baZ
 baZ
 gKm
 bei
-vcv
+gen
 bei
 fiB
 baZ
@@ -110417,9 +110441,9 @@ bei
 vie
 baZ
 mgg
-bei
-gen
-bei
+dUi
+gVM
+tzx
 dss
 baZ
 aZZ
@@ -110618,11 +110642,11 @@ bei
 bei
 bei
 oWf
-baZ
-wpk
-dUi
-qWg
-tzx
+hju
+imo
+vQj
+imo
+dRS
 bER
 baZ
 bLT
@@ -110821,12 +110845,12 @@ imo
 imo
 imo
 imo
-hju
-imo
-vQj
-imo
-dRS
-bER
+baZ
+tLO
+bei
+lsh
+bei
+bwR
 baZ
 bGT
 bHH
@@ -111024,12 +111048,12 @@ btU
 bei
 bei
 xKe
-baZ
-tLO
+cVm
+xtb
 bei
-lsh
+hiv
 bei
-bwR
+gEA
 baZ
 bUe
 cbR
@@ -111228,11 +111252,11 @@ btU
 bei
 xKe
 cVm
-xtb
-bei
-hiv
-bei
-gEA
+njg
+nfM
+dDJ
+nfM
+xpE
 baZ
 iRx
 bHc
@@ -111430,12 +111454,12 @@ btU
 bei
 bei
 qyD
+baZ
 cVm
-njg
-nfM
-dDJ
-nfM
-xpE
+sab
+baZ
+sab
+cVm
 baZ
 buH
 bHc
@@ -111633,12 +111657,12 @@ bei
 bei
 bei
 hpN
-baZ
-cVm
-sab
-baZ
-sab
-cVm
+ryg
+vSn
+vSn
+bsj
+vSn
+epU
 baZ
 buH
 bHc
@@ -111835,13 +111859,13 @@ ben
 bei
 bei
 bei
-pjw
-mvI
-vSn
-bsj
+bei
+bei
+bei
+iJK
 sdg
-bsj
-byb
+rXm
+oWf
 baZ
 oLv
 bHc

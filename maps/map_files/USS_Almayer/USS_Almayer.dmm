@@ -37042,6 +37042,13 @@
 /area/almayer/hull/upper_hull/u_f_s)
 "dDJ" = (
 /obj/structure/surface/table/reinforced/prison,
+/obj/structure/transmitter{
+	dir = 8;
+	name = "Medical Telephone";
+	phone_category = "Almayer";
+	phone_id = "Medical Lower";
+	pixel_x = 23
+	},
 /turf/open/floor/almayer{
 	icon_state = "sterile_green";
 	tag = "icon-sterile"
@@ -45765,7 +45772,6 @@
 /turf/open/floor/plating,
 /area/almayer/medical/medical_science)
 "hpN" = (
-/obj/structure/machinery/computer/crew,
 /obj/structure/machinery/light,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_side";
@@ -46191,9 +46197,9 @@
 	},
 /area/almayer/powered/agent)
 "hAI" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 5;
-	tag = "icon-intact-supply (NORTHEAST)"
+/obj/structure/pipes/standard/manifold/hidden/supply{
+	dir = 8;
+	tag = "icon-map-supply (WEST)"
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -46212,6 +46218,7 @@
 	req_access_txt = "20";
 	req_one_access = null
 	},
+/obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer{
 	icon_state = "test_floor4";
 	tag = "icon-test_floor4"
@@ -54446,9 +54453,7 @@
 	},
 /area/almayer/medical/containment)
 "lmN" = (
-/obj/structure/surface/table/reinforced/prison,
-/obj/item/book/manual/medical_diagnostics_manual,
-/obj/item/device/megaphone,
+/obj/structure/machinery/computer/crew,
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile";
 	tag = "icon-sterile"
@@ -56155,6 +56160,12 @@
 	tag = "icon-silvercorner"
 	},
 /area/almayer/command/cichallway)
+"lTD" = (
+/obj/structure/pipes/vents/scrubber{
+	dir = 4
+	},
+/turf/open/floor/almayer,
+/area/almayer/medical/lower_medical_medbay)
 "lTE" = (
 /obj/structure/surface/table/almayer,
 /obj/item/storage/bible{
@@ -59782,9 +59793,6 @@
 	},
 /area/almayer/hallways/aft_hallway)
 "nyt" = (
-/obj/structure/sign/nosmoking_2{
-	pixel_x = 28
-	},
 /obj/structure/machinery/light{
 	dir = 4;
 	tag = "icon-tube1 (EAST)"
@@ -62337,6 +62345,9 @@
 	pixel_x = -5;
 	pixel_y = 10
 	},
+/obj/structure/sign/nosmoking_2{
+	pixel_x = -28
+	},
 /turf/open/floor/almayer,
 /area/almayer/living/briefing)
 "oEE" = (
@@ -63313,12 +63324,8 @@
 	icon_state = "triagedecaltopright";
 	tag = "icon-triagedecaltopright"
 	},
-/obj/structure/transmitter{
-	dir = 8;
-	name = "Medical Telephone";
-	phone_category = "Almayer";
-	phone_id = "Medical Lower";
-	pixel_x = 23
+/obj/structure/sign/nosmoking_2{
+	pixel_x = 28
 	},
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile";
@@ -69603,9 +69610,6 @@
 	pixel_x = 7;
 	pixel_y = 11
 	},
-/obj/structure/sign/nosmoking_2{
-	pixel_x = -28
-	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -75250,6 +75254,10 @@
 	tag = "icon-sterile_green_side (EAST)"
 	},
 /area/almayer/medical/hydroponics)
+"url" = (
+/obj/structure/pipes/standard/simple/hidden/supply,
+/turf/open/floor/almayer,
+/area/almayer/medical/lower_medical_medbay)
 "urx" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4;
@@ -77585,6 +77593,13 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/squads/bravo)
+"viY" = (
+/obj/structure/pipes/standard/simple/hidden/supply,
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/medical/lower_medical_medbay)
 "vjb" = (
 /obj/structure/sign/safety/restrictedarea{
 	pixel_x = -17
@@ -82568,6 +82583,10 @@
 	tag = "icon-test_floor4"
 	},
 /area/almayer/hull/lower_hull/l_a_p)
+"xnA" = (
+/obj/structure/pipes/standard/manifold/hidden/supply,
+/turf/open/floor/almayer,
+/area/almayer/medical/lower_medical_medbay)
 "xnR" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
 	dir = 1;
@@ -83092,6 +83111,12 @@
 	},
 /turf/open/floor/plating,
 /area/almayer/living/port_emb)
+"xxx" = (
+/obj/structure/pipes/vents/pump{
+	dir = 4
+	},
+/turf/open/floor/almayer,
+/area/almayer/medical/lower_medical_medbay)
 "xxI" = (
 /obj/structure/cargo_container{
 	icon_state = "WY 1,0";
@@ -115033,9 +115058,9 @@ bgw
 rmd
 grP
 vGH
-hYP
-qxL
 xqA
+qxL
+hYP
 jAI
 wEM
 hYn
@@ -115236,9 +115261,9 @@ bgw
 mYI
 oYA
 gRp
-mEz
-obx
 nfH
+obx
+mEz
 beA
 dwb
 tUv
@@ -115854,7 +115879,7 @@ keY
 iBi
 kan
 uxv
-uxv
+lTD
 uxv
 kan
 buH
@@ -116054,10 +116079,10 @@ xKV
 rES
 gTq
 hAI
-iBi
+viY
 hAU
-uxv
-uxv
+url
+xnA
 pIw
 kan
 buH
@@ -116260,7 +116285,7 @@ okV
 jiD
 kan
 gMY
-uxv
+xxx
 gMY
 kan
 buH

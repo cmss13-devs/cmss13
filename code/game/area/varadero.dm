@@ -68,11 +68,11 @@
 	icon_state = "comms4"
 
 /area/varadero/exterior/eastbeach
-	name = "New Vadero - East Beach"
+	name = "New Varadero - East Beach"
 	icon_state = "varadero1"
 
 /area/varadero/exterior/eastocean
-	name = "New Vadero - East Ocean"
+	name = "New Varadero - East Ocean"
 	is_resin_allowed = FALSE
 	flags_area = AREA_NOTUNNEL
 	icon_state = "varadero2"

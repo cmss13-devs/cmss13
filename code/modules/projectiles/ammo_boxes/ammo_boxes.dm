@@ -310,7 +310,7 @@
 			return
 		if(AM.flags_magazine & AMMUNITION_REFILLABLE)
 			if(AM.flags_magazine & AMMUNITION_CANNOT_REMOVE_BULLETS)
-				to_chat(user, SPAN_WARNING("You can't remove ammo from \the [ammo_dumping]!"))
+				to_chat(user, SPAN_WARNING("You can't remove ammo from \the [AM]!"))
 				return
 			if(default_ammo != AM.default_ammo)
 				to_chat(user, SPAN_WARNING("Those aren't the same rounds. Better not mix them up."))

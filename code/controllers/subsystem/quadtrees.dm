@@ -14,7 +14,7 @@ SUBSYSTEM_DEF(quadtree)
 	for(var/i in 1 to length(cur_quadtrees))
 		R = RECT(world.maxx/2,world.maxy/2, world.maxx, world.maxy)
 		new_quadtrees[i] = QTREE(R, i)
-	return ..()
+	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/quadtree/stat_entry(msg)
 	msg = "QT:[length(cur_quadtrees)]"

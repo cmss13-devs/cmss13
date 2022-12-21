@@ -15,7 +15,7 @@
 	t += SPAN_DANGER("Pressure: [air_info[3]]kPa\n")
 	t += SPAN_NOTICE("Gas Type: [air_info[1]]\n")
 
-	usr.show_message(t, 1)
+	usr.show_message(t, SHOW_MESSAGE_VISIBLE)
 
 
 /client/proc/cmd_admin_robotize(var/mob/M in GLOB.mob_list)
@@ -129,7 +129,7 @@
 /client/proc/cmd_debug_make_powernets()
 	set category = "Debug"
 	set name = "Generate Powernets"
-	if(alert("Are you sure you want to do this?",, "Yes", "No") == "No") return
+	if(alert("Are you sure you want to do this?",, "Yes", "No") != "Yes") return
 	makepowernets()
 	message_staff("[key_name_admin(src)] has remade the powernets. makepowernets() called.", 0)
 

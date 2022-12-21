@@ -347,7 +347,7 @@
 	name = "\improper USCM patch"
 	desc = "A fire-resistant shoulder patch, worn by the men and women of the United States Colonial Marines."
 	icon_state = "uscmpatch"
-	jumpsuit_hide_states = (UNIFORM_SLEEVE_ROLLED|UNIFORM_SLEEVE_CUT|UNIFORM_JACKET_REMOVED)
+	jumpsuit_hide_states = (UNIFORM_SLEEVE_CUT|UNIFORM_JACKET_REMOVED)
 
 /obj/item/clothing/accessory/patch/falcon
 	name = "\improper Falling Falcons patch"
@@ -602,7 +602,7 @@
 	icon_state = "unathiharness2"
 	hold = /obj/item/storage/internal/accessory/knifeharness/duelling
 
-obj/item/storage/internal/accessory/knifeharness/duelling
+/obj/item/storage/internal/accessory/knifeharness/duelling
 	storage_slots = 2
 	max_storage_space = 2
 	can_hold = list(

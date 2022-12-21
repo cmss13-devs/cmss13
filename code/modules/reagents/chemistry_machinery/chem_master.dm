@@ -5,7 +5,7 @@
 	icon = 'icons/obj/structures/machinery/science_machines.dmi'
 	icon_state = "mixer0"
 	var/base_state = "mixer"
-	use_power = 1
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 20
 	layer = BELOW_OBJ_LAYER //So bottles/pills reliably appear above it
 	var/req_skill = SKILL_MEDICAL
@@ -46,10 +46,10 @@
 	switch(severity)
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			if (prob(50))
-				qdel(src)
+				deconstruct(FALSE)
 				return
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
-			qdel(src)
+			deconstruct(FALSE)
 			return
 
 
@@ -276,7 +276,7 @@
 				P.update_icon()
 
 				if(href_list["store"])
-					connected.add_item(P)
+					connected.add_local_item(P)
 				else if(!Adjacent(usr) || !usr.put_in_hands(P))
 					P.forceMove(loc)
 
@@ -321,7 +321,7 @@
 			attack_hand(user)
 			return
 
-		connected.add_item(loaded_pill_bottle)
+		connected.add_local_item(loaded_pill_bottle)
 		loaded_pill_bottle = null
 
 	// Connecting a smartfridge

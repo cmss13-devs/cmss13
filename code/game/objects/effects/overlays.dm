@@ -69,8 +69,8 @@
 		pixel_x = dist_x * 32
 		pixel_y = dist_y * 32
 
-		var/offset_x = actual_pointed_atom?.pixel_x || 0
-		var/offset_y = actual_pointed_atom?.pixel_y || 0
+		var/offset_x = actual_pointed_atom ? get_pixel_position_x(actual_pointed_atom, relative = TRUE) : 0
+		var/offset_y = actual_pointed_atom ? get_pixel_position_y(actual_pointed_atom, relative = TRUE) : 0
 
 		animate(src, pixel_x = offset_x, pixel_y = offset_y, time = glide_time, easing = QUAD_EASING)
 
@@ -83,8 +83,11 @@
 /obj/effect/overlay/temp/point/big/greyscale
 	icon_state = "big_arrow_grey"
 
-/obj/effect/overlay/temp/point/big/greyscale
+/obj/effect/overlay/temp/point/big/observer
 	icon_state = "big_arrow_grey"
+	color = "#1c00f6"
+	invisibility = INVISIBILITY_OBSERVER
+	plane = GHOST_PLANE
 
 /obj/effect/overlay/temp/point/big/queen
 	icon_state = "big_arrow_grey"
@@ -255,7 +258,7 @@
 
 
 /obj/effect/overlay/temp/gib_animation/xeno
-	icon = 'icons/mob/hostiles/Effects.dmi'
+	icon = 'icons/mob/xenos/effects.dmi'
 	effect_duration = 10
 
 /obj/effect/overlay/temp/gib_animation/xeno/Initialize(mapload, mob/source_mob, gib_icon, new_icon)
@@ -279,6 +282,6 @@
 
 /obj/effect/overlay/temp/acid_pool_splash
 	name = "acid splash"
-	icon = 'icons/mob/hostiles/Effects.dmi'
-	icon_state = "acidpoolsplash"
+	icon = 'icons/mob/xenos/effects.dmi'
+	icon_state = "pool_splash"
 	effect_duration = 10 SECONDS

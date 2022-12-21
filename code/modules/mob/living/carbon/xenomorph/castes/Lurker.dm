@@ -51,11 +51,8 @@
 	tackle_min = 2
 	tackle_max = 6
 
+	icon_xeno = 'icons/mob/xenos/lurker.dmi'
 	icon_xenonid = 'icons/mob/xenonids/lurker.dmi'
-
-/mob/living/carbon/Xenomorph/Lurker/Initialize(mapload, mob/living/carbon/Xenomorph/oldXeno, h_number)
-	icon_xeno = get_icon_from_source(CONFIG_GET(string/alien_lurker))
-	. = ..()
 
 /datum/behavior_delegate/lurker_base
 	name = "Base Lurker Behavior Delegate"
@@ -109,6 +106,7 @@
 	if (LPA && istype(LPA))
 		LPA.knockdown = TRUE // pounce knocks down
 		LPA.freeze_self = TRUE
+	bound_xeno.stealth = TRUE
 	can_go_invisible = FALSE
 	invis_start_time = world.time
 
@@ -117,6 +115,7 @@
 	if (LPA && istype(LPA))
 		LPA.knockdown = FALSE // pounce no longer knocks down
 		LPA.freeze_self = FALSE
+	bound_xeno.stealth = FALSE
 
 	// SLIGHTLY hacky because we need to maintain lots of other state on the lurker
 	// whenever invisibility is on/off CD and when it's active.

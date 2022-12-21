@@ -56,7 +56,7 @@
 
 	if(M.nutrition + (holder.nutriment_factor * level) >= NUTRITION_MAX)
 		M.nutrition = NUTRITION_MAX
-		holder.volume = 0
+		return
 	else
 		M.nutrition += holder.nutriment_factor * level
 
@@ -538,7 +538,7 @@
 	M.reagents.remove_all_type(/datum/reagent/ethanol, potency, 0, 1)
 	M.stuttering = max(M.stuttering - POTENCY_MULTIPLIER_MEDIUM * potency, 0)
 	M.confused = max(M.confused - POTENCY_MULTIPLIER_MEDIUM * potency, 0)
-	M.eye_blurry = max(M.eye_blurry - POTENCY_MULTIPLIER_MEDIUM * potency, 0)
+	M.ReduceEyeBlur(POTENCY_MULTIPLIER_MEDIUM * potency)
 	M.drowsyness = max(M.drowsyness - POTENCY_MULTIPLIER_MEDIUM * potency, 0)
 	M.dizziness = max(M.dizziness - POTENCY_MULTIPLIER_MEDIUM * potency, 0)
 	M.jitteriness = max(M.jitteriness - POTENCY_MULTIPLIER_MEDIUM * potency, 0)

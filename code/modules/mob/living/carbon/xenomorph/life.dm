@@ -26,6 +26,7 @@
 		update_canmove()
 		update_icons()
 		handle_luminosity()
+		handle_blood()
 
 		if(behavior_delegate)
 			behavior_delegate.on_life()
@@ -140,6 +141,17 @@
 			if(strength > recovery_new)
 				recovery_new = strength
 
+	// Also cap the auras
+	for(var/capped_aura in received_phero_caps)
+		switch(capped_aura)
+			if("frenzy")
+				frenzy_new = min(frenzy_new, received_phero_caps[capped_aura])
+			if("warding")
+				warding_new = min(warding_new, received_phero_caps[capped_aura])
+			if("recovery")
+				recovery_new = min(recovery_new, received_phero_caps[capped_aura])
+
+
 /mob/living/carbon/Xenomorph/handle_regular_status_updates(regular_update = TRUE)
 	if(regular_update && health <= 0 && (!caste || (caste.fire_immunity & FIRE_IMMUNITY_NO_IGNITE) || !on_fire)) //Sleeping Xenos are also unconscious, but all crit Xenos are under 0 HP. Go figure
 		var/turf/T = loc
@@ -182,11 +194,7 @@
 
 		if(regular_update)
 			if(eye_blurry)
-				overlay_fullscreen("eye_blurry", /atom/movable/screen/fullscreen/impaired, 5)
-				src.eye_blurry--
-				src.eye_blurry = max(0, src.eye_blurry)
-			else
-				clear_fullscreen("eye_blurry")
+				src.ReduceEyeBlur(1)
 
 			handle_statuses()//natural decrease of stunned, knocked_down, etc...
 			handle_interference()
@@ -485,7 +493,8 @@ Make sure their actual health updates immediately.*/
 				else
 					handle_crit()
 				next_grace_time = world.time + grace_time
-	med_hud_set_health()
+	if(!gibbing)
+		med_hud_set_health()
 
 /mob/living/carbon/Xenomorph/proc/handle_crit()
 	if(stat == DEAD || gibbing)

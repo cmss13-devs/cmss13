@@ -21,15 +21,18 @@
 
 /obj/structure/showcase/proc/explode()
 	src.visible_message(SPAN_DANGER("<B>[src] blows apart!</B>"), null, null, 1)
-	var/turf/Tsec = get_turf(src)
+	deconstruct(FALSE)
 
-	new /obj/item/stack/sheet/metal(Tsec)
-	new /obj/item/stack/rods(Tsec)
-	new /obj/item/stack/rods(Tsec)
+/obj/structure/showcase/deconstruct(disassembled = TRUE)
+	if(!disassembled)
+		var/turf/Tsec = get_turf(src)
 
-	new /obj/effect/spawner/gibspawner/robot(Tsec)
+		new /obj/item/stack/sheet/metal(Tsec)
+		new /obj/item/stack/rods(Tsec)
+		new /obj/item/stack/rods(Tsec)
 
-	qdel(src)
+		new /obj/effect/spawner/gibspawner/robot(Tsec)
+	return ..()
 
 /obj/structure/showcase/proc/healthcheck()
 	if(health <= 0)
@@ -39,9 +42,9 @@
 	switch(severity)
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			if(prob(50))
-				qdel(src)
+				deconstruct(FALSE)
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
-			qdel(src)
+			deconstruct(FALSE)
 
 /obj/structure/target
 	name = "shooting target"
@@ -73,12 +76,12 @@
 
 //ICE COLONY RESEARCH DECORATION-----------------------//
 //Most of icons made by ~Morrinn
-obj/structure/xenoautopsy
+/obj/structure/xenoautopsy
 	name = "Research thingies"
 	icon = 'icons/obj/structures/props/alien_autopsy.dmi'
 	icon_state = "jarshelf_9"
 
-obj/structure/xenoautopsy/jar_shelf
+/obj/structure/xenoautopsy/jar_shelf
 	name = "jar shelf"
 	icon_state = "jarshelf_0"
 	var/randomise = 1 //Random icon
@@ -87,27 +90,27 @@ obj/structure/xenoautopsy/jar_shelf
 		if(randomise)
 			icon_state = "jarshelf_[rand(0,9)]"
 
-obj/structure/xenoautopsy/tank
+/obj/structure/xenoautopsy/tank
 	name = "cryo tank"
 	icon_state = "tank_empty"
 	desc = "It is empty."
 
-obj/structure/xenoautopsy/tank/broken
+/obj/structure/xenoautopsy/tank/broken
 	name = "cryo tank"
 	icon_state = "tank_broken"
 	desc = "Something broke it..."
 
-obj/structure/xenoautopsy/tank/alien
+/obj/structure/xenoautopsy/tank/alien
 	name = "cryo tank"
 	icon_state = "tank_alien"
 	desc = "There is something big inside..."
 
-obj/structure/xenoautopsy/tank/hugger
+/obj/structure/xenoautopsy/tank/hugger
 	name = "cryo tank"
 	icon_state = "tank_hugger"
 	desc = "There is something spider-like inside..."
 
-obj/structure/xenoautopsy/tank/larva
+/obj/structure/xenoautopsy/tank/larva
 	name = "cryo tank"
 	icon_state = "tank_larva"
 	desc = "There is something worm-like inside..."
@@ -140,6 +143,7 @@ obj/structure/xenoautopsy/tank/larva
 	unacidable = TRUE
 	health = null
 	layer = TURF_LAYER
+	plane = FLOOR_PLANE
 	density = 0
 	opacity = 0
 

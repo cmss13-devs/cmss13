@@ -6,7 +6,7 @@
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_1
 	xeno_cooldown = 140
-	plasma_cost = 5
+	plasma_cost = 20
 	// Config options
 	distance = 9
 	knockdown = TRUE
@@ -40,7 +40,7 @@
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_2
 	xeno_cooldown = 180
-	plasma_cost = 20
+	plasma_cost = 30
 
 	var/damage = 65
 
@@ -67,7 +67,7 @@
 	macro_path = /datum/action/xeno_action/verb/verb_crusher_charge
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_3
-	plasma_cost = 20
+	plasma_cost = 50
 	xeno_cooldown = 12 SECONDS
 	var/shield_amount = 200
 
@@ -131,7 +131,9 @@
 			Xeno.stop_pulling()
 
 	if(Xeno.is_mob_incapacitated())
-		var/lol = get_ranged_target_turf(charge_dir,momentum/2)
+		if(!momentum)
+			return
+		var/lol = get_ranged_target_turf(Xeno, charge_dir, momentum/2)
 		INVOKE_ASYNC(Xeno, /atom/movable.proc/throw_atom, lol, momentum/2, SPEED_FAST, null, TRUE)
 		stop_momentum()
 		return

@@ -186,14 +186,12 @@ export class Changelog extends Component {
           {'Current project maintainers can be found '}
           <a href="https://github.com/orgs/cmss13-devs/people">here</a>
           {', recent GitHub contributors can be found '}
-          <a href="https://github.com/cmss13-devs/cmss13/pulse/monthly">
-            here
-          </a>
+          <a href="https://github.com/cmss13-devs/cmss13/pulse/monthly">here</a>
           .
         </p>
         <p>
           {'You can also join our discord '}
-          <a href="https://discord.gg/paDBMsC4mm">here</a>.
+          <a href="https://discord.gg/cmss13">here</a>.
         </p>
         {dateDropdown}
       </Section>

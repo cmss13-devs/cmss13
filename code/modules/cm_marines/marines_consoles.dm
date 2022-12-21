@@ -666,7 +666,7 @@
 	desc = "Used to monitor active health sensors built into the wearer's uniform.  You can see that the console highlights ship areas with BLUE and remote locations with RED."
 	icon_state = "crew"
 	density = TRUE
-	use_power = 1
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 250
 	active_power_usage = 500
 	var/faction = FACTION_MARINE
@@ -888,7 +888,6 @@ GLOBAL_LIST_EMPTY_TYPED(crewmonitor, /datum/crewmonitor)
 				JOB_CHIEF_POLICE = 20,
 				JOB_WARDEN = 21,
 				JOB_POLICE = 22,
-				JOB_POLICE_CADET = 23,
 				// 30-39: MedSci
 				JOB_CMO = 30,
 				JOB_RESEARCHER = 31,

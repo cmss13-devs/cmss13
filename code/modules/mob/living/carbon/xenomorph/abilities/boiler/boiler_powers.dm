@@ -38,7 +38,7 @@
 				if(istype(S, /obj/structure/window/framed))
 					var/obj/structure/window/framed/W = S
 					if(!W.unslashable)
-						W.shatter_window(TRUE)
+						W.deconstruct(disassembled = FALSE)
 
 				if(S.opacity)
 					should_stop = TRUE
@@ -294,7 +294,7 @@
 /datum/ammo/xeno/acid_shotgun
 	name = "acid ball"
 	ping = null
-	flags_ammo_behavior = AMMO_SKIPS_ALIENS|AMMO_STOPPED_BY_COVER|AMMO_IGNORE_ARMOR|AMMO_XENO_ACID
+	flags_ammo_behavior = AMMO_SKIPS_ALIENS|AMMO_STOPPED_BY_COVER|AMMO_IGNORE_ARMOR|AMMO_ACIDIC
 	bonus_projectiles_type = /datum/ammo/xeno/acid_shotgun/spread
 
 /datum/ammo/xeno/acid_shotgun/New()
@@ -322,4 +322,4 @@
 	var/target = ..()
 	if(iscarbon(target))
 		var/mob/living/carbon/carbon_target = target
-		carbon_target.reagents.add_reagent("molecularacid", 10)
+		carbon_target.reagents.add_reagent("molecularacid", 6)

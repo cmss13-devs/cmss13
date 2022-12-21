@@ -473,17 +473,6 @@
 	icon_state = "laptop_on"
 	desc = "The screen is stuck on some sort of boot-loop in terrible garish green. All the text is in Rusoek, a creole language spawned out of the borders of UA and UPP space from some Korean settlements."
 
-//Here because man there is no general item props file
-
-/obj/item/prop/laz_top
-	name = "lazertop"
-	icon = 'icons/obj/structures/props/server_equipment.dmi'
-	icon_state = "laptop-gun"
-	item_state = ""
-	desc = "A Rexim RXF-M5 EVA pistol compressed down into a laptop! Also known as the Laz-top. Part of a line of discreet assassination weapons developed for Greater Argentina and the United States covert programs respectively."
-	w_class = SIZE_SMALL
-	garbage = TRUE
-
 //biomass turbine
 
 /obj/structure/prop/turbine //maybe turn this into an actual power generation device? Would be cool!
@@ -607,6 +596,15 @@
 
 /obj/structure/prop/invuln/ex_act(severity, direction)
 	return
+
+/obj/structure/prop/invuln/static_corpse
+
+/obj/structure/prop/invuln/static_corpse/afric_zimmer
+	name = "Maj. Afric Zimmerman"
+	desc = "What remains of Maj. Afric Zimmerman. Their entire head is missing. Someone shed a tear."
+	icon = 'icons/obj/structures/props/64x64.dmi'
+	icon_state = "afric_zimmerman"
+	density = 0
 
 /obj/structure/prop/invuln/lifeboat_hatch_placeholder
 	density = 0

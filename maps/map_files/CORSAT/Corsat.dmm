@@ -1543,8 +1543,8 @@
 /obj/item/ammo_magazine/shotgun/buckshot,
 /obj/item/ammo_magazine/shotgun,
 /obj/item/weapon/gun/shotgun/combat,
-/obj/item/weapon/gun/shotgun/pump/cmb,
-/obj/item/weapon/gun/shotgun/pump/cmb,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
 /turf/open/floor/corsat{
 	dir = 5;
 	icon_state = "red"
@@ -2147,7 +2147,7 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/obj/structure/machinery/sleeper{
+/obj/structure/machinery/medical_pod/sleeper{
 	flags_atom = 18
 	},
 /turf/open/floor/corsat{
@@ -2420,7 +2420,10 @@
 	},
 /area/corsat/omega/checkpoint)
 "agS" = (
-/obj/structure/machinery/computer/teleporter_console/corsat,
+/obj/structure/machinery/computer/teleporter_console/corsat{
+	dir = 8
+	},
+/obj/structure/surface/table/reinforced,
 /turf/open/floor/corsat{
 	dir = 4;
 	icon_state = "purplewhite"
@@ -4100,7 +4103,10 @@
 /turf/open/floor/wood,
 /area/corsat/gamma/residential/lounge)
 "alz" = (
-/obj/structure/machinery/computer/teleporter_console/corsat,
+/obj/structure/machinery/computer/teleporter_console/corsat{
+	dir = 1
+	},
+/obj/structure/surface/table/reinforced,
 /turf/open/floor/corsat{
 	icon_state = "purplewhite"
 	},
@@ -22220,7 +22226,7 @@
 /obj/structure/window/reinforced/toughened{
 	dir = 1
 	},
-/obj/item/weapon/gun/shotgun/pump/cmb,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
 /turf/open/floor{
 	icon_state = "asteroidplating";
 	tag = "icon-asteroidplating"
@@ -22774,7 +22780,7 @@
 	},
 /area/corsat/gamma/engineering/atmos)
 "biE" = (
-/obj/structure/machinery/bodyscanner,
+/obj/structure/machinery/medical_pod/bodyscanner,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "greenwhite"
@@ -25217,7 +25223,7 @@
 /turf/open/floor/wood,
 /area/corsat/gamma/residential/east)
 "bpW" = (
-/obj/structure/machinery/bodyscanner,
+/obj/structure/machinery/medical_pod/bodyscanner,
 /turf/open/floor/corsat{
 	icon_state = "lightplate"
 	},
@@ -28904,7 +28910,7 @@
 	},
 /area/corsat/gamma/medbay)
 "bAI" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited{
 	name = "Emergency NanoMed";
 	pixel_x = 30;
 	req_access = null
@@ -28941,7 +28947,7 @@
 	},
 /area/corsat/omega/complex)
 "bAO" = (
-/obj/structure/machinery/sleeper,
+/obj/structure/machinery/medical_pod/sleeper,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "greenwhite"
@@ -38063,6 +38069,9 @@
 /area/corsat/gamma/residential/east)
 "dex" = (
 /obj/structure/surface/table/reinforced,
+/obj/structure/machinery/camera/autoname{
+	network = list("sigma")
+	},
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "purplewhite"
@@ -44387,7 +44396,7 @@
 	},
 /area/corsat/gamma/engineering/core)
 "hBp" = (
-/obj/structure/machinery/sleeper{
+/obj/structure/machinery/medical_pod/sleeper{
 	flags_atom = 18
 	},
 /turf/open/floor/corsat{
@@ -45578,9 +45587,6 @@
 	},
 /area/corsat/sigma/southeast/generator)
 "iqE" = (
-/obj/structure/machinery/camera/autoname{
-	network = list("sigma")
-	},
 /obj/structure/surface/table/reinforced,
 /obj/structure/machinery/computer/security{
 	network = list("gamma")
@@ -52979,7 +52985,7 @@
 /obj/item/ammo_magazine/shotgun,
 /obj/item/ammo_magazine/shotgun/incendiary,
 /obj/item/weapon/gun/shotgun/combat,
-/obj/item/weapon/gun/shotgun/pump/cmb,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "red"
@@ -59236,7 +59242,7 @@
 	},
 /area/corsat/gamma/residential/west)
 "sxB" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited{
 	name = "Emergency NanoMed";
 	pixel_y = 30;
 	req_access = null

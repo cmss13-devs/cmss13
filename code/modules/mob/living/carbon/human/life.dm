@@ -34,7 +34,7 @@
 	//No need to update all of these procs if the guy is dead.
 	if(!in_stasis)
 		if(stat != DEAD)
-			if(life_tick % 3 == 0 || failed_last_breath) //First, resolve location and get a breath
+			if(life_tick % 3 == 0) //First, resolve location and get a breath
 				breathe() //Only try to take a breath every 3 ticks, unless suffocating
 
 			//Chemicals in the body

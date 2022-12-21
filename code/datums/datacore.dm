@@ -325,7 +325,7 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 	locked += L
 
 
-proc/get_id_photo(var/mob/living/carbon/human/H)
+/proc/get_id_photo(var/mob/living/carbon/human/H)
 	var/icon/preview_icon = null
 
 	//var/g = "m"

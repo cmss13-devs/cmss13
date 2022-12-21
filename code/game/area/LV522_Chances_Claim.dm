@@ -250,7 +250,7 @@
 	ceiling = CEILING_GLASS
 
 /area/lv522/indoors/a_block/dorm_north
-	name = "A-Block - Northen Shared Dorms"
+	name = "A-Block - Northern Shared Dorms"
 	icon_state = "fitness"
 
 /area/lv522/indoors/a_block/bridges

@@ -4,7 +4,7 @@
 	icon_state = "bigscanner"
 	anchored = 1
 	density = 1
-	use_power = 1
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 30
 	active_power_usage = 200
 	power_channel = POWER_CHANNEL_EQUIP
@@ -185,13 +185,13 @@
 						toner = 0
 			if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 				if(prob(50))
-					qdel(src)
+					deconstruct(FALSE)
 				else
 					if(toner > 0)
 						new /obj/effect/decal/cleanable/blood/oil(get_turf(src))
 						toner = 0
 			if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
-				qdel(src)
+				deconstruct(FALSE)
 		return
 
 /obj/structure/machinery/photocopier/proc/copy(obj/item/paper/original)

@@ -135,6 +135,8 @@
 	disabilities = 0
 	drowsyness = 0
 	hallucination = 0
+	jitteriness = 0
+	dizziness = 0
 
 	// restore all of a human's blood
 	if(ishuman(src))
@@ -184,7 +186,7 @@
 	// fix blindness and deafness
 	blinded = 0
 	eye_blind = 0
-	eye_blurry = 0
+	SetEyeBlur(0)
 	SetEarDeafness(0)
 	ear_damage = 0
 	paralyzed = 0

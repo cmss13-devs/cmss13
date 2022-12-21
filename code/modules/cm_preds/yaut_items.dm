@@ -166,8 +166,8 @@
 	..()
 
 /obj/item/clothing/yautja_cape/Destroy()
-	remove_from_missing_pred_gear(src)
-	return ..()
+	. = ..()
+	remove_from_missing_pred_gear(src) // after due to item handling calling dropped()
 
 /obj/item/clothing/yautja_cape/ceremonial
 	name = PRED_YAUTJA_CEREMONIAL_CAPE
@@ -769,7 +769,7 @@
 				for(var/mob/O in viewers(H, null))
 					if(O == H)
 						continue
-					O.show_message(SPAN_WARNING("[icon2html(src, O)] <B>[H] gets caught in \the [src].</B>"), 1)
+					O.show_message(SPAN_WARNING("[icon2html(src, O)] <B>[H] gets caught in \the [src].</B>"), SHOW_MESSAGE_VISIBLE)
 			else if(isanimal(AM) && !istype(AM, /mob/living/simple_animal/parrot))
 				armed = FALSE
 				var/mob/living/simple_animal/SA = AM

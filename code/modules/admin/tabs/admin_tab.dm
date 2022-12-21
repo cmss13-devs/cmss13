@@ -5,7 +5,7 @@
 	if(!admin_holder)
 		return
 
-	if(alert("Confirm deadmin? This procedure can be reverted at any time and will not carry over to next round, but you will lose all your admin powers in the meantime.", , "Yes", "No") == "No")
+	if(alert("Confirm deadmin? This procedure can be reverted at any time and will not carry over to next round, but you will lose all your admin powers in the meantime.", , "Yes", "No") != "Yes")
 		return
 
 	message_staff("[src] de-admined themselves.")

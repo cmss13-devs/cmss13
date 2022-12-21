@@ -15,7 +15,7 @@
 	var/list/click_border_start = new/list() 		//In slotless storage, stores areas where clicking will refer to the associated item
 	var/list/click_border_end = new/list()
 	var/list/hearing_items							//A list of items that use hearing for the purpose of performance
-	var/max_w_class = SIZE_SMALL 					//Max size of objects that this object can store (in effect only if can_hold isn't set)
+	var/max_w_class = SIZE_SMALL 					//Max size of objects that this object can store
 	var/max_storage_space = 14 						//The sum of the storage costs of all the items in this storage item.
 	var/storage_slots = 7 							//The number of storage slots in this container.
 	var/atom/movable/screen/storage/boxes = null
@@ -523,6 +523,16 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 
 	return attempt_item_insertion(W, FALSE, user)
 
+/obj/item/storage/equipped(mob/user, slot, silent)
+	if ((storage_flags & STORAGE_ALLOW_EMPTY))
+		if(!isXeno(user))
+			verbs |= /obj/item/storage/verb/empty_verb
+			verbs |= /obj/item/storage/verb/toggle_click_empty
+		else
+			verbs -= /obj/item/storage/verb/empty_verb
+			verbs -= /obj/item/storage/verb/toggle_click_empty
+	..()
+
 /obj/item/storage/proc/attempt_item_insertion(obj/item/W as obj, prevent_warning = FALSE, mob/user as mob)
 	if(!can_be_inserted(W))
 		return
@@ -608,6 +618,61 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 		remove_from_storage(I, T)
 	user.visible_message(SPAN_NOTICE("[user] empties \the [src]."),
 		SPAN_NOTICE("You empty \the [src]."))
+	if (use_sound)
+		playsound(loc, use_sound, 25, TRUE, 3)
+
+/obj/item/storage/verb/shake_verb()
+	set name = "Shake"
+	set category = "Object"
+	set src in usr
+	var/mob/user_mob = usr
+	shake(user_mob, get_turf(user_mob))
+
+/obj/item/storage/proc/shake(var/mob/user, var/turf/tile)
+	if(!(storage_flags & STORAGE_ALLOW_EMPTY))
+		return
+
+	if(user.l_hand != src && user.r_hand != src && user.back != src)
+		return
+
+	if(user.is_mob_incapacitated())
+		return
+
+	if (!isturf(tile) || get_dist(src, tile) > 1)
+		tile = get_turf(src)
+
+	if (use_sound)
+		playsound(loc, use_sound, 25, TRUE, 3)
+
+	if(!length(contents))
+		if(prob(25) && isXeno(user))
+			user.drop_inv_item_to_loc(src, tile)
+			user.visible_message(SPAN_NOTICE("[user] shakes \the [src] off."),
+				SPAN_NOTICE("You shake \the [src] off."))
+		else
+			user.visible_message(SPAN_NOTICE("[user] shakes \the [src] but nothing falls out."),
+				SPAN_NOTICE("You shake \the [src] but nothing falls out. It feels empty."))
+		return
+
+	if(!allowed(user))
+		user.visible_message(SPAN_NOTICE("[user] shakes \the [src] but nothing falls out."),
+			SPAN_NOTICE("You shake \the [src] but nothing falls out. Access denied."))
+		return
+
+	if(!prob(75))
+		user.visible_message(SPAN_NOTICE("[user] shakes \the [src] but nothing falls out."),
+			SPAN_NOTICE("You shake \the [src] but nothing falls out."))
+		return
+
+	storage_close(user)
+	var/obj/item/item_obj
+	if(storage_flags & STORAGE_USING_FIFO_DRAWING)
+		item_obj = contents[1]
+	else
+		item_obj = contents[contents.len]
+	remove_from_storage(item_obj, tile)
+	user.visible_message(SPAN_NOTICE("[user] shakes \the [src] and \a [item_obj] falls out."),
+		SPAN_NOTICE("You shake \the [src] and \a [item_obj] falls out."))
 
 /obj/item/storage/proc/dump_ammo_to(obj/item/ammo_magazine/ammo_dumping, mob/user, var/amount_to_dump = 5) //amount_to_dump should never actually need to be used as default value
 	if(user.action_busy)
@@ -674,6 +739,7 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 	if (!(storage_flags & STORAGE_ALLOW_EMPTY))
 		verbs -= /obj/item/storage/verb/empty_verb
 		verbs -= /obj/item/storage/verb/toggle_click_empty
+		verbs -= /obj/item/storage/verb/shake_verb
 
 	boxes = new
 	boxes.name = "storage"

@@ -295,7 +295,7 @@
 			var/reason = input(usr, "What is the purpose of Echo Squad?", "Activation Reason")
 			if(!reason)
 				return
-			if(alert(usr, "Confirm activation of Echo Squad for [reason]", "Confirm Activation", "Yes", "No") == "No") return
+			if(alert(usr, "Confirm activation of Echo Squad for [reason]", "Confirm Activation", "Yes", "No") != "Yes") return
 			var/datum/squad/marine/echo/echo_squad = locate() in RoleAuthority.squads
 			if(!echo_squad)
 				visible_message(SPAN_BOLDNOTICE("ERROR: Unable to locate Echo Squad database."))

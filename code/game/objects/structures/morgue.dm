@@ -42,10 +42,8 @@
 		if(0 to EXPLOSION_THRESHOLD_LOW)
 			if(prob(95))
 				return
-	for(var/atom/movable/A in src)
-		A.forceMove(loc)
-		ex_act(severity)
-	qdel(src)
+	contents_explosion(severity)
+	deconstruct(FALSE)
 
 /obj/structure/morgue/attack_hand(mob/user)
 	toggle_morgue(user)
@@ -145,7 +143,7 @@
 	O.forceMove(loc)
 	if(user != O)
 		for(var/mob/B in viewers(user, 3))
-			B.show_message(SPAN_DANGER("[user] stuffs [O] into [src]!"), 1)
+			B.show_message(SPAN_DANGER("[user] stuffs [O] into [src]!"), SHOW_MESSAGE_VISIBLE)
 			if(B.stat==DEAD)
 				bloody = TRUE
 				update_icon()

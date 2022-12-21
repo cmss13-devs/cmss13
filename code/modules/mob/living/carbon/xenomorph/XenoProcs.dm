@@ -122,6 +122,8 @@
 			. += "Construction Placement: LEADERS"
 		else if(hive.construction_allowed == NORMAL_XENO)
 			. += "Construction Placement: ANYONE"
+		else if(hive.construction_allowed == XENO_NOBODY)
+			. += "Construction Placement: NOBODY"
 		else
 			. += "Construction Placement: QUEEN"
 
@@ -129,6 +131,8 @@
 			. += "Special Structure Destruction: LEADERS"
 		else if(hive.destruction_allowed == NORMAL_XENO)
 			. += "Special Structure Destruction: BUILDERS and LEADERS"
+		else if(hive.construction_allowed == XENO_NOBODY)
+			. += "Construction Placement: NOBODY"
 		else
 			. += "Special Structure Destruction: QUEEN"
 
@@ -339,7 +343,7 @@
 		if(istype(O, /obj/structure/surface/table) || istype(O, /obj/structure/surface/rack) || istype(O, /obj/structure/window_frame))
 			var/obj/structure/S = O
 			visible_message(SPAN_DANGER("[src] plows straight through [S]!"), null, null, 5)
-			S.destroy() //We want to continue moving, so we do not reset throwing.
+			S.deconstruct() //We want to continue moving, so we do not reset throwing.
 		else
 			O.hitby(src) //This resets throwing.
 	else
@@ -683,12 +687,14 @@
 	to_chat(src, SPAN_XENONOTICE("You start tracking the [target.mark_meaning.name] resin mark."))
 	to_chat(src, SPAN_INFO("shift click the compass to watch the mark, alt click to stop tracking"))
 
-/mob/living/carbon/Xenomorph/proc/stop_tracking_resin_mark(destroyed) //tracked_marker shouldnt be nulled outside this PROC!! >:C
+/mob/living/carbon/Xenomorph/proc/stop_tracking_resin_mark(destroyed, var/silent = FALSE) //tracked_marker shouldnt be nulled outside this PROC!! >:C
 	var/atom/movable/screen/mark_locator/ML = hud_used.locate_marker
 	ML.overlays.Cut()
-	if(destroyed)
-		to_chat(src, SPAN_XENONOTICE("The [tracked_marker.mark_meaning.name] resin mark has ceased to exist."))
-	else
-		to_chat(src, SPAN_XENONOTICE("You stop tracking the [tracked_marker.mark_meaning.name] resin mark."))
-	tracked_marker.xenos_tracking -= src
+	if(!silent)
+		if(destroyed)
+			to_chat(src, SPAN_XENONOTICE("The [tracked_marker.mark_meaning.name] resin mark has ceased to exist."))
+		else
+			to_chat(src, SPAN_XENONOTICE("You stop tracking the [tracked_marker.mark_meaning.name] resin mark."))
+	if(tracked_marker)
+		tracked_marker.xenos_tracking -= src
 	tracked_marker = null

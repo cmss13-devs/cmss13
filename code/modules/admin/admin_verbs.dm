@@ -136,7 +136,8 @@ var/list/admin_verbs_major_event = list(
 	/client/proc/cmd_fun_fire_ob,
 	/client/proc/map_template_upload,
 	/client/proc/enable_podlauncher,
-	/client/proc/change_taskbar_icon
+	/client/proc/change_taskbar_icon,
+	/client/proc/change_weather
 )
 var/list/admin_verbs_spawn = list(
 	/datum/admins/proc/spawn_atom,
@@ -168,6 +169,7 @@ var/list/admin_verbs_debug = list(
 	/client/proc/reload_admins,
 	/client/proc/reload_whitelist,
 	/client/proc/restart_controller,
+	/client/proc/debug_controller,
 	/client/proc/cmd_debug_toggle_should_check_for_win,
 	/client/proc/enable_debug_verbs,
 	/client/proc/toggledebuglogs,
@@ -419,7 +421,7 @@ var/list/roundstart_mod_verbs = list(
 		if(!msg)
 			return
 		for (var/mob/V in hearers(mob.control_object))
-			V.show_message("<b>[mob.control_object.name]</b> says: \"" + msg + "\"", 2)
+			V.show_message("<b>[mob.control_object.name]</b> says: \"" + msg + "\"", SHOW_MESSAGE_AUDIBLE)
 
 
 /client/proc/toggle_log_hrefs()

@@ -1,0 +1,4 @@
+author: "Segrain"
+delete-after: True
+changes:
+  - bugfix: "Folding metal barricades no longer get a christmas miracle of invisibility."

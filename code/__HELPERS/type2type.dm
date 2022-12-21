@@ -194,6 +194,20 @@
 		if(SOUTHWEST)	return 225
 		else			return null
 
+//returns a number to be used to index lists; based off dmi direction ordering: 1:SOUTH(2) 2:NORTH(1) 3:EAST(4) 4:WEST(8) etc...
+
+/proc/dir2indexnum(var/D)
+	switch(D)
+		if(NORTH)		return 2
+		if(SOUTH)		return 1
+		if(EAST)		return 3
+		if(WEST)		return 4
+		if(NORTHEAST)	return 7
+		if(SOUTHEAST)	return 5
+		if(NORTHWEST)	return 8
+		if(SOUTHWEST)	return 6
+		else			return null
+
 //Converts a blend_mode constant to one acceptable to icon.Blend()
 /proc/blendMode2iconMode(blend_mode)
 	switch(blend_mode)

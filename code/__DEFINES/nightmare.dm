@@ -21,13 +21,13 @@
 #define NIGHTMARE_STATUS_DONE 2
 
 // Nightmare task execution results
-#define NIGHTMARE_TASK_OK     0
-#define NIGHTMARE_TASK_ASYNC  1
-#define NIGHTMARE_TASK_ERROR  2
+#define NIGHTMARE_TASK_OK	 	0
+#define NIGHTMARE_TASK_ASYNC	1
+#define NIGHTMARE_TASK_ERROR	2
 
 // Nightmare task behavior flags
 
 /// This task can not be executed
-#define NIGHTMARE_TASKFLAG_DISABLED  (1<<0)
+#define NIGHTMARE_TASKFLAG_DISABLED	(1<<0)
 /// This task can only be executed once
-#define NIGHTMARE_TASKFLAG_ONESHOT   (1<<1)
+#define NIGHTMARE_TASKFLAG_ONESHOT	(1<<1)

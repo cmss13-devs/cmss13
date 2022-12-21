@@ -85,10 +85,10 @@ h1.alert, h2.alert		{color: #000000;}
 
 .helpful				{color: #368f31;}
 
-.scanner			{color: #ff0000;}
-.scannerb			{color: #ff0000;	font-weight: bold;}
-.scannerburn	{color: #ffa500;}
-.scannerburnb	{color: #ffa500;	font-weight: bold;}
+.scanner				{color: #ff0000;}
+.scannerb				{color: #ff0000;	font-weight: bold;}
+.scannerburn			{color: #ffa500;}
+.scannerburnb			{color: #ffa500;	font-weight: bold;}
 .rose					{color: #ff5050;}
 .info					{color: #0000CC;}
 .debuginfo				{color: #493D26;	font-style: italic;}
@@ -104,7 +104,7 @@ h1.alert, h2.alert		{color: #000000;}
 .avoidharm				{color:	#72a0e5;	font-weight: bold;}
 .highdanger				{color: #ff0000;	font-weight: bold; font-size: 3;}
 .xenohighdanger			{color: #2a623d; 	font-weight: bold; font-size: 3;}
-.xenoannounce           {color: #1a472a;    font-family: book-antiqua; font-weight: bold; font-style: italic; font-size: 3;}
+.xenoannounce			{color: #1a472a;	font-family: book-antiqua; font-weight: bold; font-style: italic; font-size: 3;}
 .yautjabold				{color: #800080;	font-weight: bold;}
 .yautjaboldbig			{color: #800080;	font-weight: bold; font-size: 3;}
 

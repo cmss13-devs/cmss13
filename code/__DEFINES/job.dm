@@ -17,10 +17,10 @@
 #define JOB_SQUAD_ENGI					"Squad Combat Technician"
 #define JOB_SQUAD_MEDIC					"Squad Hospital Corpsman"
 #define JOB_SQUAD_SPECIALIST			"Squad Weapons Specialist"
-#define JOB_SQUAD_RTO       			"Squad Radio Telephone Operator"
+#define JOB_SQUAD_RTO					"Squad Radio Telephone Operator"
 #define JOB_SQUAD_SMARTGUN				"Squad Smartgunner"
 #define JOB_SQUAD_ROLES					/datum/timelock/squad
-#define JOB_SQUAD_ROLES_LIST            list(JOB_SQUAD_MARINE, JOB_SQUAD_LEADER, JOB_SQUAD_ENGI, JOB_SQUAD_MEDIC, JOB_SQUAD_SPECIALIST, JOB_SQUAD_SMARTGUN, JOB_SQUAD_RTO)
+#define JOB_SQUAD_ROLES_LIST			list(JOB_SQUAD_MARINE, JOB_SQUAD_LEADER, JOB_SQUAD_ENGI, JOB_SQUAD_MEDIC, JOB_SQUAD_SPECIALIST, JOB_SQUAD_SMARTGUN, JOB_SQUAD_RTO)
 
 var/global/list/job_squad_roles = JOB_SQUAD_ROLES_LIST
 
@@ -34,11 +34,11 @@ var/global/list/job_squad_roles = JOB_SQUAD_ROLES_LIST
 #define JOB_DOCTOR						"Doctor"
 #define JOB_NURSE						"Nurse"
 #define JOB_RESEARCHER					"Researcher"
-#define JOB_MEDIC_ROLES                 /datum/timelock/medic
-#define JOB_MEDIC_ROLES_LIST            list(JOB_SQUAD_MEDIC, JOB_CMO, JOB_DOCTOR, JOB_NURSE, JOB_RESEARCHER)
+#define JOB_MEDIC_ROLES					/datum/timelock/medic
+#define JOB_MEDIC_ROLES_LIST			list(JOB_SQUAD_MEDIC, JOB_CMO, JOB_DOCTOR, JOB_NURSE, JOB_RESEARCHER)
 
 #define JOB_CORPORATE_LIAISON			"Corporate Liaison"
-#define JOB_MESS_SERGEANT   			"Mess Technician"
+#define JOB_MESS_SERGEANT				"Mess Technician"
 #define JOB_SYNTH						"Synthetic"
 #define JOB_WORKING_JOE					"Working Joe"
 
@@ -46,7 +46,7 @@ var/global/list/job_squad_roles = JOB_SQUAD_ROLES_LIST
 #define JOB_XO							"Executive Officer"
 #define JOB_SO							"Staff Officer"
 #define JOB_COMMAND_ROLES				/datum/timelock/command
-#define JOB_COMMAND_ROLES_LIST          list(JOB_CO, JOB_XO, JOB_SO)
+#define JOB_COMMAND_ROLES_LIST			list(JOB_CO, JOB_XO, JOB_SO)
 var/global/list/job_command_roles = JOB_COMMAND_ROLES_LIST
 
 #define JOB_PILOT						"Pilot Officer"
@@ -58,29 +58,29 @@ var/global/list/job_command_roles = JOB_COMMAND_ROLES_LIST
 #define JOB_POLICE						"Military Police"
 #define JOB_WARDEN						"Military Warden"
 #define JOB_CHIEF_POLICE				"Chief MP"
-#define JOB_POLICE_ROLES                /datum/timelock/mp
-#define JOB_POLICE_ROLES_LIST           list(JOB_POLICE_CADET, JOB_POLICE, JOB_WARDEN, JOB_CHIEF_POLICE)
+#define JOB_POLICE_ROLES				/datum/timelock/mp
+#define JOB_POLICE_ROLES_LIST			list(JOB_POLICE_CADET, JOB_POLICE, JOB_WARDEN, JOB_CHIEF_POLICE)
 
 #define JOB_SEA							"Senior Enlisted Advisor"
 
 #define JOB_CHIEF_ENGINEER				"Chief Engineer"
 #define JOB_MAINT_TECH					"Maintenance Technician"
 #define JOB_ORDNANCE_TECH				"Ordnance Technician"
-#define JOB_ENGINEER_ROLES              /datum/timelock/engineer
-#define JOB_ENGINEER_ROLES_LIST         list(JOB_SQUAD_ENGI, JOB_MAINT_TECH, JOB_ORDNANCE_TECH, JOB_CHIEF_ENGINEER)
+#define JOB_ENGINEER_ROLES				/datum/timelock/engineer
+#define JOB_ENGINEER_ROLES_LIST			list(JOB_SQUAD_ENGI, JOB_MAINT_TECH, JOB_ORDNANCE_TECH, JOB_CHIEF_ENGINEER)
 
 #define JOB_CHIEF_REQUISITION			"Requisitions Officer"
 #define JOB_CARGO_TECH					"Cargo Technician"
-#define JOB_REQUISITION_ROLES           /datum/timelock/requisition
-#define JOB_REQUISITION_ROLES_LIST      list(JOB_CHIEF_REQUISITION, JOB_CARGO_TECH)
+#define JOB_REQUISITION_ROLES			/datum/timelock/requisition
+#define JOB_REQUISITION_ROLES_LIST		list(JOB_CHIEF_REQUISITION, JOB_CARGO_TECH)
 
 #define JOB_MARINE_RAIDER						"Marine Raider"
 #define JOB_MARINE_RAIDER_SL					"Marine Raider Team Lead"
 #define JOB_MARINE_RAIDER_CMD					"Marine Raider Platoon Lead"
 #define JOB_MARINE_RAIDER_ROLES_LIST			list(JOB_MARINE_RAIDER, JOB_MARINE_RAIDER_SL, JOB_MARINE_RAIDER_CD)
 
-#define JOB_HUMAN_ROLES                 /datum/timelock/human
-#define JOB_XENO_ROLES                  /datum/timelock/xeno
+#define JOB_HUMAN_ROLES					/datum/timelock/human
+#define JOB_XENO_ROLES					/datum/timelock/xeno
 
 #define JOB_STOWAWAY					"Stowaway"
 
@@ -91,15 +91,15 @@ var/global/list/job_command_roles = JOB_COMMAND_ROLES_LIST
 // Used to add a timelock to a job. Will be passed onto derivatives
 #define AddTimelock(Path, timelockList) \
 ##Path/setup_requirements(var/list/L){\
-    L += timelockList;\
-    . = ..(L);\
+	L += timelockList;\
+	. = ..(L);\
 }
 
 // Used to add a timelock to a job. Will be passed onto derivates. Will not include the parent's timelocks.
 #define OverrideTimelock(Path, timelockList) \
 ##Path/setup_requirements(var/list/L){\
-    L = timelockList;\
-    . = ..(L);\
+	L = timelockList;\
+	. = ..(L);\
 }
 
 //-------------WO roles---------------
@@ -146,12 +146,12 @@ var/global/list/job_command_roles = JOB_COMMAND_ROLES_LIST
 #define JOB_PMC_SNIPER					"PMC Weapons Specialist" //Renamed from Sharpshooter to specialist as it uses specialist skills.
 #define JOB_PMC_CREWMAN					"PMC Crewman"
 #define JOB_PMC_NINJA					"PMC Ninja"
-#define JOB_PMC_XENO_HANDLER            "PMC Xeno Handler"
+#define JOB_PMC_XENO_HANDLER			"PMC Xeno Handler"
 #define JOB_PMC_COMMANDO				"PMC Commando"
 #define JOB_PMC_LEADER					"PMC Leader"
 #define JOB_PMC_LEAD_INVEST				"PMC Lead Investigator"
 #define JOB_PMC_DIRECTOR				"PMC Site Director"
-#define JOB_PMC_SYNTH                   "PMC Support Synthetic"
+#define JOB_PMC_SYNTH					"PMC Support Synthetic"
 
 //-------- WY Goons --------//
 #define JOB_WY_GOON						"WY Corporate Security"
@@ -170,7 +170,7 @@ var/global/list/job_command_roles = JOB_COMMAND_ROLES_LIST
 #define JOB_CONTRACTOR_COVMED				"VAIMS Medical Specialist"
 #define JOB_CONTRACTOR_COVENG				"VAISO Engineering Specialist"
 #define JOB_CONTRACTOR_COVMG				"VAISO Automatic Rifleman"
-#define JOB_CONTRACTOR_COVTL            	"VAISO Team Leader"
+#define JOB_CONTRACTOR_COVTL				"VAISO Team Leader"
 #define JOB_CONTRACTOR_COVSYN				"VAISO Support Synthetic"
 
 //-------- UPP --------//
@@ -260,24 +260,24 @@ var/global/list/job_command_roles = JOB_COMMAND_ROLES_LIST
 
 #define DUTCH_JOB_LIST					list(JOB_DUTCH_ARNOLD, JOB_DUTCH_RIFLEMAN, JOB_DUTCH_MINIGUNNER, JOB_DUTCH_FLAMETHROWER, JOB_DUTCH_MEDIC)
 
-#define JOB_PREDATOR                    "Predator"
-#define JOB_XENOMORPH                   "Xenomorph"
-#define JOB_XENOMORPH_QUEEN             "Queen"
+#define JOB_PREDATOR					"Predator"
+#define JOB_XENOMORPH					"Xenomorph"
+#define JOB_XENOMORPH_QUEEN				"Queen"
 
 // For colouring the ranks in the statistics menu
-#define JOB_PLAYTIME_TIER_1         (10 HOURS)
-#define JOB_PLAYTIME_TIER_2         (25 HOURS)
-#define JOB_PLAYTIME_TIER_3         (70 HOURS)
-#define JOB_PLAYTIME_TIER_4         (175 HOURS)
+#define JOB_PLAYTIME_TIER_1		(10 HOURS)
+#define JOB_PLAYTIME_TIER_2		(25 HOURS)
+#define JOB_PLAYTIME_TIER_3		(70 HOURS)
+#define JOB_PLAYTIME_TIER_4		(175 HOURS)
 
-#define XENO_NO_AGE     -1
+#define XENO_NO_AGE	-1
 #define XENO_NORMAL		0
 #define XENO_MATURE		1
 #define XENO_ELDER		2
 #define XENO_ANCIENT	3
 #define XENO_PRIME	4
 
-#define JOB_OBSERVER                    "Observer" // For monthly time tracking
+#define JOB_OBSERVER					"Observer" // For monthly time tracking
 
 #define TIMELOCK_JOB(role_id, hours) new/datum/timelock(role_id, hours, role_id)
 

@@ -81,9 +81,9 @@ require only minor tweaks.
 )
 
 // Camera lock flags
-#define CAMERA_LOCK_SHIP    (1<<0)
-#define CAMERA_LOCK_GROUND  (1<<1)
-#define CAMERA_LOCK_ADMIN (1<<2)
+#define CAMERA_LOCK_SHIP	(1<<0)
+#define CAMERA_LOCK_GROUND	(1<<1)
+#define CAMERA_LOCK_ADMIN	(1<<2)
 
 //Reserved/Transit turf type
 #define RESERVED_TURF_TYPE /turf/open/space/basic			//What the turf is when not being used

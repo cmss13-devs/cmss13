@@ -3,7 +3,7 @@
 #define FREE_CHAN_END 1016
 #define INITIAL_SOUNDSCAPE_COOLDOWN 20
 
-#define EAR_DEAF_MUTE 			1
+#define EAR_DEAF_MUTE			1
 
 #define VOLUME_SFX 1
 #define VOLUME_AMB 2
@@ -21,7 +21,7 @@
 #define ITEM_EQUIP_VOLUME 50
 
 //Reserved channels
-#define SOUND_CHANNEL_VOX           1017
+#define SOUND_CHANNEL_VOX			1017
 #define SOUND_CHANNEL_MUSIC 		1018
 #define SOUND_CHANNEL_AMBIENCE 		1019
 #define SOUND_CHANNEL_WALKMAN 		1020
@@ -61,7 +61,7 @@
 
 #define AMBIENCE_SHIP 'sound/ambience/shipambience.ogg'
 #define AMBIENCE_JUNGLE 'sound/ambience/ambienceLV624.ogg'
-#define AMBIENCE_RIVER  'sound/ambience/ambienceriver.ogg'
+#define AMBIENCE_RIVER	'sound/ambience/ambienceriver.ogg'
 #define AMBIENCE_MALL 'sound/ambience/medbay1.ogg'
 #define AMBIENCE_CAVE 'sound/ambience/desert.ogg'
 #define AMBIENCE_YAUTJA 'sound/ambience/yautja_ship.ogg'

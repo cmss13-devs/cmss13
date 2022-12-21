@@ -86,21 +86,21 @@
 
 // ORDERS
 #define COMMAND_ORDER_RANGE		7
-#define COMMAND_ORDER_COOLDOWN 	800
-#define COMMAND_ORDER_MOVE 		"move"
-#define COMMAND_ORDER_FOCUS 	"focus"
-#define COMMAND_ORDER_HOLD 		"hold"
+#define COMMAND_ORDER_COOLDOWN	800
+#define COMMAND_ORDER_MOVE		"move"
+#define COMMAND_ORDER_FOCUS		"focus"
+#define COMMAND_ORDER_HOLD		"hold"
 
-#define ORDER_HOLD_MAX_LEVEL    15
+#define ORDER_HOLD_MAX_LEVEL	15
 #define ORDER_HOLD_CALC_LEVEL	20
-#define ORDER_MOVE_MAX_LEVEL    50
-#define ORDER_FOCUS_MAX_LEVEL   50
+#define ORDER_MOVE_MAX_LEVEL	50
+#define ORDER_FOCUS_MAX_LEVEL	50
 
 //Human Overlays Indexes used in update_icons/////////
 #define UNDERWEAR_LAYER			41
 #define UNDERSHIRT_LAYER		40
 #define MUTANTRACE_LAYER		39
-#define FLAY_LAYER 				38 //For use by Hunter Flay
+#define FLAY_LAYER				38	//For use by Hunter Flay
 #define DAMAGE_LAYER			37
 #define UNIFORM_LAYER			36
 #define TAIL_LAYER				35	//bs12 specific. this hack is probably gonna come back to haunt me
@@ -120,15 +120,15 @@
 #define FACIAL_LAYER			21
 #define EARS_LAYER				20
 #define FACEMASK_LAYER			19
-#define HEADSHOT_LAYER			18 //Unrevivable headshot overlays, suicide/execution.
+#define HEADSHOT_LAYER			18	//Unrevivable headshot overlays, suicide/execution.
 #define HEAD_LAYER				17
 #define HEAD_SQUAD_LAYER		16
 #define HEAD_GARB_LAYER_2		15	// These actual defines are unused but this space within the overlays list is
-#define HEAD_GARB_LAYER_3		14	//  |
-#define HEAD_GARB_LAYER_4		13	//  |
+#define HEAD_GARB_LAYER_3		14	//	|
+#define HEAD_GARB_LAYER_4		13	//	|
 #define HEAD_GARB_LAYER_5		12	// End here
 #define HEAD_GARB_LAYER			11
-#define BACK_FRONT_LAYER        10 // For backpacks when mob is facing north
+#define BACK_FRONT_LAYER		10	// For backpacks when mob is facing north
 #define COLLAR_LAYER			9
 #define HANDCUFF_LAYER			8
 #define LEGCUFF_LAYER			7
@@ -137,7 +137,7 @@
 #define BURST_LAYER				4	//Chestburst overlay
 #define TARGETED_LAYER			3	//for target sprites when held at gun point, and holo cards.
 #define FIRE_LAYER				2	//If you're on fire		//BS12: Layer for the target overlay from weapon targeting system
-#define EFFECTS_LAYER			1  //If you're hit by an acid DoT
+#define EFFECTS_LAYER			1	//If you're hit by an acid DoT
 #define TOTAL_LAYERS			41
 //////////////////////////////////
 
@@ -156,11 +156,11 @@
 #define SYNTH_TYPES list(SYNTH_COLONY, SYNTH_COLONY_GEN_ONE, SYNTH_COLONY_GEN_TWO, SYNTH_COMBAT, SYNTH_INFILTRATOR, SYNTH_WORKING_JOE, SYNTH_GEN_ONE, SYNTH_GEN_TWO, SYNTH_GEN_THREE)
 
 // Human religion defines
-#define RELIGION_PROTESTANT		 		"Christianity (Protestant)"
+#define RELIGION_PROTESTANT				"Christianity (Protestant)"
 #define RELIGION_CATHOLIC				"Christianity (Catholic)"
-#define RELIGION_ORTHODOX		 		"Christianity (Orthodox)"
-#define RELIGION_MORMONISM			 	"Christianity (Mormonism)"
-#define RELIGION_CHRISTIANITY_OTHER 	"Christianity (Other)"
+#define RELIGION_ORTHODOX				"Christianity (Orthodox)"
+#define RELIGION_MORMONISM				"Christianity (Mormonism)"
+#define RELIGION_CHRISTIANITY_OTHER	"Christianity (Other)"
 #define RELIGION_JUDAISM				"Judaism"
 #define RELIGION_SHIA					"Islam (Shia)"
 #define RELIGION_SUNNI					"Islam (Sunni)"

@@ -3,7 +3,7 @@
 	return FALSE;\
 }\
 ##path/is_datum_protected(){\
-    return TRUE;\
+	return TRUE;\
 }\
 ##Path/CanProcCall(procname){\
 	return FALSE;\

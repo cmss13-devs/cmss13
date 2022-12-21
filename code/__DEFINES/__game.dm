@@ -1,8 +1,8 @@
 #define RANGE_TURFS(RADIUS, CENTER) \
-  block( \
-    locate(max(CENTER.x-(RADIUS),1),          max(CENTER.y-(RADIUS),1),          CENTER.z), \
-    locate(min(CENTER.x+(RADIUS),world.maxx), min(CENTER.y+(RADIUS),world.maxy), CENTER.z) \
-  )
+	block( \
+	locate(max(CENTER.x-(RADIUS),1),		max(CENTER.y-(RADIUS),1),		CENTER.z), \
+	locate(min(CENTER.x+(RADIUS),world.maxx), min(CENTER.y+(RADIUS),world.maxy), CENTER.z) \
+	)
 
 //Admin perms are in global.dm.
 
@@ -30,7 +30,7 @@
 #define MAP_PRISON_STATION "Fiorina Cellblocks"
 #define MAP_PRISON_STATION_V3 "Fiorina Science Annex"
 #define MAP_WHISKEY_OUTPOST "Whiskey Outpost" // Unused
-#define MAP_DESERT_DAM "Trijent Dam"  // Highpop only
+#define MAP_DESERT_DAM "Trijent Dam" // Highpop only
 #define MAP_SOROKYNE_STRATA "Sorokyne Strata"
 #define MAP_CORSAT "CORSAT" // Highpop only
 #define MAP_KUTJEVO "Kutjevo Refinery"
@@ -109,14 +109,14 @@
 #define CHAT_ATTACKLOGS		(1<<6)
 #define CHAT_DEBUGLOGS		(1<<7)
 #define CHAT_LOOC			(1<<8)
-#define CHAT_GHOSTRADIO 	(1<<9)
-#define SHOW_TYPING 		(1<<10)
-#define CHAT_FFATTACKLOGS 	(1<<11)
+#define CHAT_GHOSTRADIO		(1<<9)
+#define SHOW_TYPING			(1<<10)
+#define CHAT_FFATTACKLOGS	(1<<11)
 #define CHAT_GHOSTHIVEMIND	(1<<12)
 #define CHAT_NICHELOGS		(1<<13)
 
 //toggles_ghost
-#define GHOST_HEALTH_SCAN  (1<<0)
+#define GHOST_HEALTH_SCAN	(1<<0)
 
 //toggles_flashing
 #define FLASH_ROUNDSTART		(1<<0)
@@ -172,18 +172,18 @@
 // and the time before it leaves again
 // note that this is multiplied by 10 in the shuttle controller. Hence, this is not defined in deciseconds but in real seconds
 
-#define DOCK_ATTEMPT_TIMEOUT 			20 SECONDS	//how long in ticks we wait before assuming the docking controller is broken or blown up.
+#define DOCK_ATTEMPT_TIMEOUT			20 SECONDS	//how long in ticks we wait before assuming the docking controller is broken or blown up.
 #define DROPSHIP_WARMUP_TIME			10 SECONDS
 #define DROPSHIP_DROP_MSG_DELAY			30 SECONDS
 #define DROPSHIP_TRANSIT_DURATION		100 SECONDS	// 100 seconds
-#define DROPSHIP_CORSAT_DURATION		30 SECONDS  // 30 seconds
+#define DROPSHIP_CORSAT_DURATION		30 SECONDS	// 30 seconds
 #define ELEVATOR_TRANSIT_DURATION		5 SECONDS	// 5 seconds
 #define TRANSIT_POD_TRANSIT_DURATION	30 SECONDS 	// 30 seconds
 #define DROPSHIP_CRASH_TRANSIT_DURATION	3 MINUTES	// 180 seconds. 3 minutes
-#define ERT_SHUTTLE_TRANSIT_DURATION    30 SECONDS	// what are these comments for
+#define ERT_SHUTTLE_TRANSIT_DURATION	30 SECONDS	// what are these comments for
 
-#define SHUTTLE_RECHARGE  2 MINUTES // 2 minutes
-#define ELEVATOR_RECHARGE 15 SECONDS  // 15 seconds
+#define SHUTTLE_RECHARGE	2 MINUTES // 2 minutes
+#define ELEVATOR_RECHARGE	15 SECONDS// 15 seconds
 
 //Shuttle moving status
 //#define SHUTTLE_IDLE		0
@@ -206,7 +206,7 @@
 #define SEC_LEVEL_DELTA	3
 
 //Alarm levels.
-#define ALARM_WARNING_FIRE 	(1<<0)
+#define ALARM_WARNING_FIRE	(1<<0)
 #define ALARM_WARNING_ATMOS	(1<<1)
 #define ALARM_WARNING_EVAC	(1<<2)
 #define ALARM_WARNING_READY	(1<<3)
@@ -396,15 +396,15 @@
 // Defines for shuttles (primarily to separate dropships and elevators)
 #define SHUTTLE_DROPSHIP 1
 #define SHUTTLE_ELEVATOR 2
-#define SHUTTLE_GROUND   3
+#define SHUTTLE_GROUND	 3
 
 // Misc game defines
 #define EXTINGUISHER_WATER_USE_AMT	5 // Amount of water consumed by extinguisher per use //why is this a define let alone a GLOBAL define oh my good lord
 
 // Chat delay amounts
-#define CHAT_SAY_DELAY      2
+#define CHAT_SAY_DELAY	2
 #define CHAT_SAY_DELAY_SPAM 10
-#define CHAT_OOC_DELAY      5
+#define CHAT_OOC_DELAY	5
 #define CHAT_OOC_DELAY_SPAM 10
 
 // Decorator Priorities

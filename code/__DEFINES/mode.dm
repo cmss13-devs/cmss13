@@ -1,13 +1,13 @@
 //=================================================
 //Self-destruct, nuke, and evacuation.
-#define EVACUATION_TIME_LOCK 			1 HOURS
-#define DISTRESS_TIME_LOCK 				6 MINUTES
-#define SHUTTLE_TIME_LOCK 				15 MINUTES
-#define SHUTTLE_LOCK_COOLDOWN 			10 MINUTES
+#define EVACUATION_TIME_LOCK			1 HOURS
+#define DISTRESS_TIME_LOCK				6 MINUTES
+#define SHUTTLE_TIME_LOCK				15 MINUTES
+#define SHUTTLE_LOCK_COOLDOWN			10 MINUTES
 #define MONORAIL_LOCK_COOLDOWN			3 MINUTES
-#define SHUTTLE_LOCK_TIME_LOCK 			1 MINUTES
-#define EVACUATION_AUTOMATIC_DEPARTURE 	10 MINUTES //All pods automatically depart in 10 minutes, unless they are full or unable to launch for some reason.
-#define EVACUATION_ESTIMATE_DEPARTURE 	((evac_time + EVACUATION_AUTOMATIC_DEPARTURE - world.time) * 0.1)
+#define SHUTTLE_LOCK_TIME_LOCK			1 MINUTES
+#define EVACUATION_AUTOMATIC_DEPARTURE	10 MINUTES //All pods automatically depart in 10 minutes, unless they are full or unable to launch for some reason.
+#define EVACUATION_ESTIMATE_DEPARTURE	((evac_time + EVACUATION_AUTOMATIC_DEPARTURE - world.time) * 0.1)
 
 #define EVACUATION_STATUS_STANDING_BY 0
 #define EVACUATION_STATUS_INITIATING 1
@@ -27,11 +27,10 @@
 #define LIFEBOAT_INACTIVE 0
 #define LIFEBOAT_ACTIVE 1
 
-#define XENO_ROUNDSTART_PROGRESS_AMOUNT 			2
-#define XENO_ROUNDSTART_PROGRESS_TIME_1 			0
-#define XENO_ROUNDSTART_PROGRESS_TIME_2 			15 MINUTES
+#define XENO_ROUNDSTART_PROGRESS_AMOUNT			2
+#define XENO_ROUNDSTART_PROGRESS_TIME_1			0
+#define XENO_ROUNDSTART_PROGRESS_TIME_2			15 MINUTES
 //=================================================
-
 
 #define IS_MODE_COMPILED(MODE) (ispath(text2path("/datum/game_mode/"+(MODE))))
 
@@ -43,12 +42,12 @@
 #define MODE_PREDATOR			(1<<1)
 #define MODE_NO_LATEJOIN		(1<<2)
 #define MODE_HAS_FINISHED		(1<<3)
-#define MODE_FOG_ACTIVATED 		(1<<4)
+#define MODE_FOG_ACTIVATED		(1<<4)
 #define MODE_INFECTION			(1<<5)
 #define MODE_HUMAN_ANTAGS		(1<<6)
-#define MODE_NO_SPAWN 			(1<<7) // Disables marines from spawning in normally
+#define MODE_NO_SPAWN			(1<<7) // Disables marines from spawning in normally
 #define MODE_XVX				(1<<8) // Affects several castes for XvX, as well as other things (e.g. spawnpool)
-#define MODE_NEW_SPAWN 			(1<<9) // Enables the new spawning, only works for Distress currently
+#define MODE_NEW_SPAWN			(1<<9) // Enables the new spawning, only works for Distress currently
 #define MODE_DS_LANDED			(1<<10)
 #define MODE_BASIC_RT			(1<<11)
 #define MODE_RANDOM_HIVE		(1<<12)// Makes Join-as-Xeno choose a hive to join as pooled larva at random rather than at user's input..
@@ -65,7 +64,7 @@
 #define MODE_NO_COMBAT_CAS			(1<<6) /// Prevents POs and DCCs from creating combat CAS equipment
 #define MODE_LZ_PROTECTION			(1<<7) /// Prevents the LZ from being mortared
 
-#define ROUNDSTATUS_FOG_DOWN 		1
+#define ROUNDSTATUS_FOG_DOWN		1
 #define ROUNDSTATUS_PODDOORS_OPEN	2
 
 #define LATEJOIN_MARINES_PER_LATEJOIN_LARVA 3
@@ -78,11 +77,11 @@
 #define TOGGLE_MIDDLE_MOUSE_CLICK			(1<<2) // This toggles whether selected ability for xeno uses middle mouse clicking or shift clicking
 #define TOGGLE_DIRECTIONAL_ATTACK			(1<<3) // This toggles whether attacks for xeno use directional attacks
 #define TOGGLE_AUTO_EJECT_MAGAZINE_OFF		(1<<4) // This toggles whether guns with auto ejectors will not auto eject their magazines
-                                                   // MUTUALLY EXCLUSIVE TO TOGGLE_AUTO_EJECT_MAGAZINE_TO_HAND
+													// MUTUALLY EXCLUSIVE TO TOGGLE_AUTO_EJECT_MAGAZINE_TO_HAND
 #define TOGGLE_AUTO_EJECT_MAGAZINE_TO_HAND	(1<<5) // This toggles whether guns with auto ejectors will cause you to unwield your gun and put the empty magazine in your hand
-                                                   // MUTUALLY EXCLUSIVE TO TOGGLE_AUTO_EJECT_MAGAZINE
+													// MUTUALLY EXCLUSIVE TO TOGGLE_AUTO_EJECT_MAGAZINE
 #define TOGGLE_EJECT_MAGAZINE_TO_HAND		(1<<6) // This toggles whether manuallyejecting magazines from guns will cause you to unwield your gun
-                                                   // and put the empty magazine in your hand
+													// and put the empty magazine in your hand
 #define TOGGLE_AUTOMATIC_PUNCTUATION		(1<<7) // Whether your sentences will automatically be punctuated with a period
 #define TOGGLE_COMBAT_CLICKDRAG_OVERRIDE	(1<<8) // Whether disarm/harm intents cause clicks to trigger immediately when the mouse button is depressed.
 #define TOGGLE_ALTERNATING_DUAL_WIELD		(1<<9) // Whether dual-wielding fires both guns at once or swaps between them.
@@ -90,8 +89,8 @@
 #define TOGGLE_MEMBER_PUBLIC				(1<<11) //determines if you get a byond logo by your name in ooc if you're a member or not
 #define TOGGLE_OOC_FLAG						(1<<12) // determines if your country flag appears by your name in ooc chat
 #define TOGGLE_MIDDLE_MOUSE_SWAP_HANDS		(1<<13) //Toggle whether middle click swaps your hands
-#define TOGGLE_AMBIENT_OCCLUSION            (1<<14) // toggles if ambient occlusion is turned on or off
-#define TOGGLE_VEND_ITEM_TO_HAND            (1<<15) // This toggles whether items from vendors will be automatically put into your hand.
+#define TOGGLE_AMBIENT_OCCLUSION			(1<<14) // toggles if ambient occlusion is turned on or off
+#define TOGGLE_VEND_ITEM_TO_HAND			(1<<15) // This toggles whether items from vendors will be automatically put into your hand.
 
 //=================================================
 #define SHOW_ITEM_ANIMATIONS_NONE				0 //Do not show any item pickup animations
@@ -132,20 +131,20 @@ var/global/list/ROLES_CIC			= list(JOB_CO, JOB_XO, JOB_SO, JOB_WO_CO, JOB_WO_XO)
 var/global/list/ROLES_AUXIL_SUPPORT	= list(JOB_INTEL, JOB_PILOT, JOB_DROPSHIP_CREW_CHIEF, JOB_CREWMAN, JOB_WO_CHIEF_POLICE, JOB_WO_SO, JOB_WO_CREWMAN, JOB_WO_POLICE, JOB_WO_PILOT)
 var/global/list/ROLES_MISC			= list(JOB_SYNTH, JOB_WORKING_JOE, JOB_SEA, JOB_CORPORATE_LIAISON, JOB_MESS_SERGEANT, JOB_WO_CORPORATE_LIAISON, JOB_WO_SYNTH)
 var/global/list/ROLES_POLICE		= list(JOB_CHIEF_POLICE, JOB_WARDEN, JOB_POLICE, JOB_POLICE_CADET)
-var/global/list/ROLES_ENGINEERING 	= list(JOB_CHIEF_ENGINEER, JOB_ORDNANCE_TECH, JOB_MAINT_TECH, JOB_WO_CHIEF_ENGINEER, JOB_WO_ORDNANCE_TECH)
-var/global/list/ROLES_REQUISITION 	= list(JOB_CHIEF_REQUISITION, JOB_CARGO_TECH, JOB_WO_CHIEF_REQUISITION, JOB_WO_REQUISITION)
-var/global/list/ROLES_MEDICAL 	  	= list(JOB_CMO, JOB_RESEARCHER, JOB_DOCTOR, JOB_NURSE, JOB_WO_CMO, JOB_WO_RESEARCHER, JOB_WO_DOCTOR)
-var/global/list/ROLES_MARINES	  	= list(JOB_SQUAD_LEADER, JOB_SQUAD_RTO, JOB_SQUAD_SPECIALIST, JOB_SQUAD_SMARTGUN, JOB_SQUAD_MEDIC, JOB_SQUAD_ENGI, JOB_SQUAD_MARINE)
-var/global/list/ROLES_SQUAD_ALL	  	= list(SQUAD_MARINE_1, SQUAD_MARINE_2, SQUAD_MARINE_3, SQUAD_MARINE_4, SQUAD_MARINE_5, SQUAD_MARINE_CRYO)
+var/global/list/ROLES_ENGINEERING	= list(JOB_CHIEF_ENGINEER, JOB_ORDNANCE_TECH, JOB_MAINT_TECH, JOB_WO_CHIEF_ENGINEER, JOB_WO_ORDNANCE_TECH)
+var/global/list/ROLES_REQUISITION	= list(JOB_CHIEF_REQUISITION, JOB_CARGO_TECH, JOB_WO_CHIEF_REQUISITION, JOB_WO_REQUISITION)
+var/global/list/ROLES_MEDICAL		= list(JOB_CMO, JOB_RESEARCHER, JOB_DOCTOR, JOB_NURSE, JOB_WO_CMO, JOB_WO_RESEARCHER, JOB_WO_DOCTOR)
+var/global/list/ROLES_MARINES		= list(JOB_SQUAD_LEADER, JOB_SQUAD_RTO, JOB_SQUAD_SPECIALIST, JOB_SQUAD_SMARTGUN, JOB_SQUAD_MEDIC, JOB_SQUAD_ENGI, JOB_SQUAD_MARINE)
+var/global/list/ROLES_SQUAD_ALL		= list(SQUAD_MARINE_1, SQUAD_MARINE_2, SQUAD_MARINE_3, SQUAD_MARINE_4, SQUAD_MARINE_5, SQUAD_MARINE_CRYO)
 
-var/global/list/ROLES_XENO	  		= list(JOB_XENOMORPH_QUEEN, JOB_XENOMORPH)
+var/global/list/ROLES_XENO			= list(JOB_XENOMORPH_QUEEN, JOB_XENOMORPH)
 var/global/list/ROLES_WHITELISTED	= list(JOB_SYNTH_SURVIVOR, JOB_CO_SURVIVOR, JOB_PREDATOR)
 var/global/list/ROLES_SPECIAL		= list(JOB_SURVIVOR)
 
-var/global/list/ROLES_REGULAR_ALL 	= ROLES_CIC+ ROLES_POLICE + ROLES_AUXIL_SUPPORT + ROLES_MISC + ROLES_ENGINEERING + ROLES_REQUISITION + ROLES_MEDICAL + ROLES_MARINES + ROLES_SPECIAL + ROLES_WHITELISTED + ROLES_XENO - ROLES_WO
-var/global/list/ROLES_FACTION_CLASH = ROLES_REGULAR_ALL - ROLES_XENO - ROLES_SPECIAL - ROLES_WHITELISTED + JOB_PREDATOR
+var/global/list/ROLES_REGULAR_ALL	= ROLES_CIC+ ROLES_POLICE + ROLES_AUXIL_SUPPORT + ROLES_MISC + ROLES_ENGINEERING + ROLES_REQUISITION + ROLES_MEDICAL + ROLES_MARINES + ROLES_SPECIAL + ROLES_WHITELISTED + ROLES_XENO - ROLES_WO
+var/global/list/ROLES_FACTION_CLASH	= ROLES_REGULAR_ALL - ROLES_XENO - ROLES_SPECIAL - ROLES_WHITELISTED + JOB_PREDATOR
 
-var/global/list/ROLES_UNASSIGNED  	= list(JOB_SQUAD_MARINE)
+var/global/list/ROLES_UNASSIGNED	= list(JOB_SQUAD_MARINE)
 var/global/list/ROLES_WO			= list(JOB_WO_CO, JOB_WO_XO, JOB_WO_CORPORATE_LIAISON, JOB_WO_SYNTH, JOB_WO_CHIEF_POLICE, JOB_WO_SO, JOB_WO_CREWMAN, JOB_WO_POLICE, JOB_WO_PILOT, JOB_WO_CHIEF_ENGINEER, JOB_WO_ORDNANCE_TECH, JOB_WO_CHIEF_REQUISITION, JOB_WO_REQUISITION, JOB_WO_CMO, JOB_WO_DOCTOR, JOB_WO_RESEARCHER, JOB_WO_SQUAD_MARINE, JOB_WO_SQUAD_MEDIC, JOB_WO_SQUAD_ENGINEER, JOB_WO_SQUAD_SMARTGUNNER, JOB_WO_SQUAD_SPECIALIST, JOB_WO_SQUAD_LEADER)
 //Role lists used for switch() checks in show_blurb_uscm(). Cosmetic, determines ex. "Engineering, USS Almayer", "2nd Bat. 'Falling Falcons'" etc.
 #define BLURB_USCM_COMBAT JOB_CO, JOB_XO, JOB_SO, JOB_WO_CO, JOB_WO_XO, JOB_CREWMAN, JOB_WO_CHIEF_POLICE, JOB_WO_SO, JOB_WO_CREWMAN, JOB_WO_POLICE, JOB_SEA,\
@@ -159,8 +158,8 @@ var/global/list/ROLES_WO			= list(JOB_WO_CO, JOB_WO_XO, JOB_WO_CORPORATE_LIAISON
 
 //=================================================
 
-#define WHITELIST_NORMAL 	"Normal"
-#define WHITELIST_COUNCIL 	"Council"
+#define WHITELIST_NORMAL	"Normal"
+#define WHITELIST_COUNCIL	"Council"
 #define WHITELIST_LEADER	"Leader"
 
 var/global/list/whitelist_hierarchy = list(WHITELIST_NORMAL, WHITELIST_COUNCIL, WHITELIST_LEADER)
@@ -179,7 +178,7 @@ var/global/list/whitelist_hierarchy = list(WHITELIST_NORMAL, WHITELIST_COUNCIL, 
 #define WHITELIST_COMMANDER_COUNCIL			(1<<6)
 ///Old holders of COMMANDER_COUNCIL for 3 months
 #define WHITELIST_COMMANDER_COUNCIL_LEGACY	(1<<7)
-#define WHITELIST_COMMANDER_LEADER 			(1<<8)
+#define WHITELIST_COMMANDER_LEADER			(1<<8)
 
 #define WHITELIST_SYNTHETIC					(1<<9)
 #define WHITELIST_SYNTHETIC_COUNCIL			(1<<10)

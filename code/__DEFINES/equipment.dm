@@ -1,28 +1,27 @@
 //FLAGS BITMASK
 
-
 //==========================================================================================
 
 //flags_atom
 
-#define NOINTERACT                (1<<0)  // You can't interact with it, at all. Useful when doing certain animations.
-#define FPRINT                    (1<<1)  // takes a fingerprint
-#define CONDUCT                   (1<<2)  // conducts electricity (metal etc.)
-#define ON_BORDER                 (1<<3)  // 'border object'. item has priority to check when entering or leaving
-#define NOBLOODY                  (1<<4)  // Don't want a blood overlay on this one.
-#define DIRLOCK                   (1<<5)  // movable atom won't change direction when Moving()ing. Useful for items that have several dir states.
-#define NOREACT                   (1<<6)  //Reagents dont' react inside this container.
-#define OPENCONTAINER             (1<<7)  //is an open container for chemistry purposes
-#define RELAY_CLICK               (1<<8)  //This is used for /obj/ that relay your clicks via handle_click(), mostly for MGs ~Art
-#define ITEM_UNCATCHABLE          (1<<9)  // The item can't be caught out of the air.
-#define NO_NAME_OVERRIDE          (1<<10) // Used for nonstandard marine clothing to ignore 'specialty' var.
-#define NO_SNOW_TYPE              (1<<11) // Used for armors or uniforms that don't have a snow icon state.
-#define INVULNERABLE              (1<<12)
-#define CAN_BE_SYRINGED           (1<<13) // syringes can inject or drain reagents in this even if it isn't an OPENCONTAINER
-#define CAN_BE_DISPENSED_INTO     (1<<14) // Chem dispenser can dispense in this even if it isn't an OPENCONTAINER
-#define INITIALIZED               (1<<15) // Initialized by SSatoms.
-#define ATOM_DECORATED            (1<<16) // Has run Decorate() as part of subsystem init
-#define USES_HEARING		      (1<<17) // Whether or not the object uses hearing
+#define NOINTERACT				(1<<0)	// You can't interact with it, at all. Useful when doing certain animations.
+#define FPRINT					(1<<1)	// takes a fingerprint
+#define CONDUCT					(1<<2)	// conducts electricity (metal etc.)
+#define ON_BORDER				(1<<3)	// 'border object'. item has priority to check when entering or leaving
+#define NOBLOODY				(1<<4)	// Don't want a blood overlay on this one.
+#define DIRLOCK					(1<<5)	// movable atom won't change direction when Moving()ing. Useful for items that have several dir states.
+#define NOREACT					(1<<6)	//Reagents dont' react inside this container.
+#define OPENCONTAINER			(1<<7)	//is an open container for chemistry purposes
+#define RELAY_CLICK				(1<<8)	//This is used for /obj/ that relay your clicks via handle_click(), mostly for MGs ~Art
+#define ITEM_UNCATCHABLE		(1<<9)	// The item can't be caught out of the air.
+#define NO_NAME_OVERRIDE		(1<<10) // Used for nonstandard marine clothing to ignore 'specialty' var.
+#define NO_SNOW_TYPE			(1<<11) // Used for armors or uniforms that don't have a snow icon state.
+#define INVULNERABLE			(1<<12)
+#define CAN_BE_SYRINGED			(1<<13) // syringes can inject or drain reagents in this even if it isn't an OPENCONTAINER
+#define CAN_BE_DISPENSED_INTO	(1<<14) // Chem dispenser can dispense in this even if it isn't an OPENCONTAINER
+#define INITIALIZED				(1<<15) // Initialized by SSatoms.
+#define ATOM_DECORATED			(1<<16) // Has run Decorate() as part of subsystem init
+#define USES_HEARING			(1<<17) // Whether or not the object uses hearing
 //==========================================================================================
 
 #define HANDLE_BARRIER_CHANCE 1
@@ -33,7 +32,7 @@
 //clothing specific stuff uses flags_inventory.
 
 #define NODROP					(1<<0)	// Cannot be dropped/unequipped at all, only deleted.
-#define NOBLUDGEON  			(1<<1)	// when an item has this it produces no "X has been hit by Y with Z" message with the default handler
+#define NOBLUDGEON				(1<<1)	// when an item has this it produces no "X has been hit by Y with Z" message with the default handler
 #define NOSHIELD				(1<<2)	// weapon not affected by shield (does nothing currently)
 #define DELONDROP				(1<<3)	// Deletes on drop instead of falling on the floor.
 #define TWOHANDED				(1<<4)	// The item is twohanded.
@@ -49,7 +48,6 @@
 
 //==========================================================================================
 
-
 //flags_inv_hide
 //Bit flags for the flags_inv_hide variable, which determine when a piece of clothing hides another. IE a helmet hiding glasses.
 
@@ -58,14 +56,13 @@
 #define HIDEJUMPSUIT	(1<<2)
 #define HIDESHOES		(1<<3)
 #define HIDEMASK		(1<<4)
-#define HIDEEARS		(1<<5)		//(ears means headsets and such)
-#define HIDEEYES		(1<<6)		//(eyes means glasses)
-#define HIDELOWHAIR		(1<<7)		// temporarily removes the user's facial hair overlay.
-#define HIDETOPHAIR		(1<<8)		// temporarily removes the user's hair overlay. Leaves facial hair.
-#define HIDEALLHAIR		(1<<9)		// temporarily removes the user's hair, facial and otherwise.
-#define HIDETAIL 		(1<<10)
+#define HIDEEARS		(1<<5)	//(ears means headsets and such)
+#define HIDEEYES		(1<<6)	//(eyes means glasses)
+#define HIDELOWHAIR		(1<<7)	// temporarily removes the user's facial hair overlay.
+#define HIDETOPHAIR		(1<<8)	// temporarily removes the user's hair overlay. Leaves facial hair.
+#define HIDEALLHAIR		(1<<9)	// temporarily removes the user's hair, facial and otherwise.
+#define HIDETAIL		(1<<10)
 #define HIDEFACE		(1<<11)	//Dictates whether we appear as unknown.
-
 
 //==========================================================================================
 
@@ -89,7 +86,7 @@
 
 //SUITS AND HELMETS====================================================================================
 //To successfully stop taking all pressure damage you must have both a suit and head item with this flag.
-#define BLOCKSHARPOBJ 	(1<<8)  //From /tg: prevents syringes, parapens and hypos if the external suit or helmet (if targeting head) has this flag. Example: space suits, biosuit, bombsuits, thick suits that cover your body.
+#define BLOCKSHARPOBJ 	(1<<8)	//From /tg: prevents syringes, parapens and hypos if the external suit or helmet (if targeting head) has this flag. Example: space suits, biosuit, bombsuits, thick suits that cover your body.
 #define NOPRESSUREDMAGE (1<<9) //This flag is used on the flags variable for SUIT and HEAD items which stop pressure damage.
 #define BLOCK_KNOCKDOWN (1<<10) //Suits only. Wearing this will stop you from being pushed over.
 #define SMARTGUN_HARNESS (1<<11) // Whether wearing this suit grants you the ability to fire a smartgun
@@ -97,19 +94,19 @@
 
 
 //VISION IMPAIRMENT LEVELS===========================================================================
-#define VISION_IMPAIR_NONE		0	//No visual impairment
+#define VISION_IMPAIR_NONE			0	//No visual impairment
 /// 1 tile of partial impairment
-#define VISION_IMPAIR_MIN               1
+#define VISION_IMPAIR_MIN			1
 /// 2 tiles of partial impairment
-#define VISION_IMPAIR_WEAK              2
+#define VISION_IMPAIR_WEAK			2
 /// 3 tiles of partial impairment
-#define VISION_IMPAIR_MED               3
+#define VISION_IMPAIR_MED			3
 /// 1 tile of full and 2 of partial impairment
-#define VISION_IMPAIR_HIGH              4
+#define VISION_IMPAIR_HIGH			4
 /// 2 tiles of full and 2 of partial impairment
-#define VISION_IMPAIR_STRONG            5
+#define VISION_IMPAIR_STRONG		5
 /// 3 tiles of full and 2 of partial impairment (original one)
-#define VISION_IMPAIR_MAX               6
+#define VISION_IMPAIR_MAX			6
 //VISION IMPAIRMENT LEVELS===========================================================================
 
 
@@ -149,20 +146,20 @@
 //===========================================================================================
 
 //ITEM INVENTORY SLOT BITMASKS
-#define SLOT_OCLOTHING 		(1<<0)
-#define SLOT_ICLOTHING 		(1<<1)
-#define SLOT_HANDS 			(1<<2)
-#define SLOT_EYES 			(1<<3)
-#define SLOT_EAR 			(1<<4)
-#define SLOT_FACE 			(1<<5)
-#define SLOT_HEAD 			(1<<6)
-#define SLOT_FEET 			(1<<7)
-#define SLOT_ID 			(1<<8)
+#define SLOT_OCLOTHING		(1<<0)
+#define SLOT_ICLOTHING		(1<<1)
+#define SLOT_HANDS			(1<<2)
+#define SLOT_EYES			(1<<3)
+#define SLOT_EAR			(1<<4)
+#define SLOT_FACE			(1<<5)
+#define SLOT_HEAD			(1<<6)
+#define SLOT_FEET			(1<<7)
+#define SLOT_ID				(1<<8)
 #define SLOT_WAIST			(1<<9)
-#define SLOT_BACK 			(1<<10)
-#define SLOT_STORE 			(1<<11)	//this is to allow items with a w_class of 3 or 4 to fit in pockets.
+#define SLOT_BACK			(1<<10)
+#define SLOT_STORE			(1<<11)	//this is to allow items with a w_class of 3 or 4 to fit in pockets.
 #define SLOT_NO_STORE		(1<<12)	//this is to deny items with a w_class of 2 or 1 to fit in pockets.
-#define SLOT_LEGS 			(1<<13)
+#define SLOT_LEGS			(1<<13)
 #define SLOT_ACCESSORY		(1<<14)
 #define SLOT_SUIT_STORE		(1<<15)	//this allows items to be stored in the suit slot regardless of suit
 //=================================================
@@ -192,25 +189,25 @@
 #define WEAR_IN_BACK		"in_back"
 #define WEAR_IN_JACKET		"in_jacket"
 #define WEAR_IN_ACCESSORY	"in_accessory"
-#define WEAR_IN_BELT        "in_belt"
-#define WEAR_IN_SCABBARD    "in_scabbard"
-#define WEAR_IN_J_STORE     "in_j_store"
-#define WEAR_IN_HELMET      "in_helmet"
-#define WEAR_IN_L_STORE     "in_l_store"
-#define WEAR_IN_R_STORE     "in_r_store"
+#define WEAR_IN_BELT		"in_belt"
+#define WEAR_IN_SCABBARD	"in_scabbard"
+#define WEAR_IN_J_STORE		"in_j_store"
+#define WEAR_IN_HELMET		"in_helmet"
+#define WEAR_IN_L_STORE		"in_l_store"
+#define WEAR_IN_R_STORE		"in_r_store"
 #define WEAR_IN_SHOES		"in_shoes"
 
 // Contained Sprites
 #define WORN_LHAND	"_lh"
 #define WORN_RHAND	"_rh"
 #define WORN_LSTORE	"_ls"
-#define WORN_RSTORE "_rs"
-#define WORN_SSTORE "_ss"
-#define WORN_LEAR 	"_le"
-#define WORN_REAR 	"_re"
-#define WORN_HEAD 	"_he"
-#define WORN_UNDER 	"_un"
-#define WORN_SUIT 	"_su"
+#define WORN_RSTORE	"_rs"
+#define WORN_SSTORE	"_ss"
+#define WORN_LEAR	"_le"
+#define WORN_REAR	"_re"
+#define WORN_HEAD	"_he"
+#define WORN_UNDER	"_un"
+#define WORN_SUIT	"_su"
 #define WORN_GLOVES	"_gl"
 #define WORN_SHOES	"_sh"
 #define WORN_EYES	"_ey"
@@ -276,7 +273,7 @@ GLOBAL_LIST_INIT(slot_to_contained_sprite_shorthand, list(
 //slot-related
 
 //The list of slots by priority. equip_to_appropriate_slot() uses this list. Doesn't matter if a mob type doesn't have a slot.
-#define DEFAULT_SLOT_PRIORITY  list( \
+#define DEFAULT_SLOT_PRIORITY	list( \
 		WEAR_BACK,\
 		WEAR_ID,\
 		WEAR_BODY,\
@@ -350,36 +347,36 @@ GLOBAL_LIST_INIT(slot_to_contained_sprite_shorthand, list(
 //=================================================
 
 //=================================================
-#define SPACE_HELMET_min_cold_protection_temperature 	2.0 //what min_cold_protection_temperature is set to for space-helmet quality headwear. MUST NOT BE 0.
-#define SPACE_SUIT_min_cold_protection_temperature 		2.0 //what min_cold_protection_temperature is set to for space-suit quality jumpsuits or suits. MUST NOT BE 0.
-#define SPACE_SUIT_max_heat_protection_temperature 		5000	//These need better heat protect, but not as good heat protect as firesuits.
-#define FIRESUIT_max_heat_protection_temperature 		30000 //what max_heat_protection_temperature is set to for firesuit quality headwear. MUST NOT BE 0.
-#define FIRE_HELMET_max_heat_protection_temperature 	30000 //for fire helmet quality items (red and white hardhats)
-#define HELMET_min_cold_protection_temperature 			175	//For normal helmets
-#define HELMET_max_heat_protection_temperature 			600	//For normal helmets
-#define ARMOR_min_cold_protection_temperature 			200	//For armor
-#define ARMOR_max_heat_protection_temperature 			600	//For armor
+#define SPACE_HELMET_min_cold_protection_temperature	2.0 //what min_cold_protection_temperature is set to for space-helmet quality headwear. MUST NOT BE 0.
+#define SPACE_SUIT_min_cold_protection_temperature		2.0 //what min_cold_protection_temperature is set to for space-suit quality jumpsuits or suits. MUST NOT BE 0.
+#define SPACE_SUIT_max_heat_protection_temperature		5000	//These need better heat protect, but not as good heat protect as firesuits.
+#define FIRESUIT_max_heat_protection_temperature		30000 //what max_heat_protection_temperature is set to for firesuit quality headwear. MUST NOT BE 0.
+#define FIRE_HELMET_max_heat_protection_temperature		30000 //for fire helmet quality items (red and white hardhats)
+#define HELMET_min_cold_protection_temperature			175	//For normal helmets
+#define HELMET_max_heat_protection_temperature			600	//For normal helmets
+#define ARMOR_min_cold_protection_temperature			200	//For armor
+#define ARMOR_max_heat_protection_temperature			600	//For armor
 
-#define GLOVES_min_cold_protection_temperature 			175	//For some gloves (black and)
-#define GLOVES_max_heat_protection_temperature 			650	//For some gloves
-#define SHOE_min_cold_protection_temperature 			175	//For gloves
-#define SHOE_max_heat_protection_temperature 			650	//For gloves
+#define GLOVES_min_cold_protection_temperature			175	//For some gloves (black and)
+#define GLOVES_max_heat_protection_temperature			650	//For some gloves
+#define SHOE_min_cold_protection_temperature			175	//For gloves
+#define SHOE_max_heat_protection_temperature			650	//For gloves
 
-#define ICE_PLANET_min_cold_protection_temperature 		175 //For the ice planet map protection from the elements.
+#define ICE_PLANET_min_cold_protection_temperature		175 //For the ice planet map protection from the elements.
 //=================================================
 
 //=================================================
-#define ACCESSORY_SLOT_UTILITY  "Utility"
-#define ACCESSORY_SLOT_ARMBAND  "Armband"
-#define ACCESSORY_SLOT_RANK     "Rank"
-#define ACCESSORY_SLOT_DECOR    "Decor"
-#define ACCESSORY_SLOT_MEDAL    "Medal"
+#define ACCESSORY_SLOT_UTILITY	"Utility"
+#define ACCESSORY_SLOT_ARMBAND	"Armband"
+#define ACCESSORY_SLOT_RANK		"Rank"
+#define ACCESSORY_SLOT_DECOR	"Decor"
+#define ACCESSORY_SLOT_MEDAL	"Medal"
 #define ACCESSORY_SLOT_PONCHO	"Ponchos"
-#define ACCESSORY_SLOT_ARMOR_C  "Chest armor"			//Used for uniform armour inserts.
-#define ACCESSORY_SLOT_ARMOR_A  "Arm armor"
-#define ACCESSORY_SLOT_ARMOR_L  "Leg armor"
-#define ACCESSORY_SLOT_ARMOR_S  "Armor storage"
-#define ACCESSORY_SLOT_ARMOR_M  "Misc armor"
+#define ACCESSORY_SLOT_ARMOR_C	"Chest armor"			//Used for uniform armour inserts.
+#define ACCESSORY_SLOT_ARMOR_A	"Arm armor"
+#define ACCESSORY_SLOT_ARMOR_L	"Leg armor"
+#define ACCESSORY_SLOT_ARMOR_S	"Armor storage"
+#define ACCESSORY_SLOT_ARMOR_M	"Misc armor"
 #define ACCESSORY_SLOT_HELM_C	"Helmet cover"
 //=================================================
 
@@ -426,7 +423,6 @@ var/global/list/uniform_categories = list(
 )
 //=================================================
 
-
 // SMARTPACK RELATED
 #define SMARTPACK_MAX_POWER_STORED		200
 
@@ -437,7 +433,6 @@ var/global/list/uniform_categories = list(
 #define AUTOLATHE_START_PRINTING	1
 #define AUTOLATHE_QUEUED			2
 
-
 // Storage flags
 #define STORAGE_ALLOW_EMPTY					(1<<0)	// Whether the storage object has the 'empty' verb, which dumps all the contents on the floor
 #define STORAGE_QUICK_EMPTY					(1<<1)	// Whether the storage object can quickly be emptied (no delay)
@@ -447,7 +442,7 @@ var/global/list/uniform_categories = list(
 #define STORAGE_USING_FIFO_DRAWING			(1<<5)	// Wether the storage object can have items in it's leftmost slot be drawn
 #define STORAGE_CLICK_EMPTY					(1<<6)	// Whether you can click to empty an item
 #define STORAGE_CLICK_GATHER				(1<<7)	// Whether it is possible to use this storage object in an inverse way,
-										   			// so you can have the item in your hand and click items on the floor to pick them up
+													// so you can have the item in your hand and click items on the floor to pick them up
 #define STORAGE_SHOW_FULLNESS				(1<<8)	// Whether our storage object on hud changes color when full
 #define STORAGE_CONTENT_NUM_DISPLAY			(1<<9)	// Whether the storage object groups contents of the same type and displays them as a number. Only works for slot-based storage objects.
 #define STORAGE_GATHER_SIMULTAENOUSLY		(1<<10)	// Whether the storage object can pick up all the items in a tile
@@ -457,7 +452,6 @@ var/global/list/uniform_categories = list(
 #define STORAGE_FLAGS_BOX					(STORAGE_FLAGS_DEFAULT^STORAGE_ALLOW_EMPTY)
 #define STORAGE_FLAGS_BAG					(STORAGE_QUICK_GATHER|STORAGE_QUICK_EMPTY|STORAGE_CLICK_GATHER|STORAGE_FLAGS_DEFAULT)
 #define STORAGE_FLAGS_POUCH					(STORAGE_FLAGS_DEFAULT|STORAGE_ALLOW_DRAWING_METHOD_TOGGLE)
-
 
 //Radios
 #define RADIO_FILTER_TYPE_ALL					0

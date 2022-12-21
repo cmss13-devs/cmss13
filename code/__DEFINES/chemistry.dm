@@ -61,13 +61,13 @@
 #define REAGENT_CANCEL			"cancel"
 
 //Reagent generation classifications
-#define CHEM_CLASS_NONE             0 //Default. Chemicals not used in the chem generator
-#define CHEM_CLASS_BASIC            1 //Chemicals that can be dispensed directly from the dispenser (iron, oxygen)
-#define CHEM_CLASS_COMMON           2 //Chemicals which recipe is commonly known and made (bicaridine, alkysine, salt)
-#define CHEM_CLASS_UNCOMMON         3 //Chemicals which recipe is uncommonly known and made (spacedrugs, foaming agent)
-#define CHEM_CLASS_RARE             4 //Chemicals without a recipe but can be obtained on the Almayer, or requires rare components
-#define CHEM_CLASS_SPECIAL          5 //Chemicals without a recipe and can't be obtained on the Almayer, or requires special components
-#define CHEM_CLASS_ULTRA            6 //Randomly generated chemicals
+#define CHEM_CLASS_NONE			0 //Default. Chemicals not used in the chem generator
+#define CHEM_CLASS_BASIC		1 //Chemicals that can be dispensed directly from the dispenser (iron, oxygen)
+#define CHEM_CLASS_COMMON		2 //Chemicals which recipe is commonly known and made (bicaridine, alkysine, salt)
+#define CHEM_CLASS_UNCOMMON		3 //Chemicals which recipe is uncommonly known and made (spacedrugs, foaming agent)
+#define CHEM_CLASS_RARE			4 //Chemicals without a recipe but can be obtained on the Almayer, or requires rare components
+#define CHEM_CLASS_SPECIAL		5 //Chemicals without a recipe and can't be obtained on the Almayer, or requires special components
+#define CHEM_CLASS_ULTRA		6 //Randomly generated chemicals
 
 //chem effect flags, used to quickly check if the mob has a chem that provides a special effect
 #define CHEM_EFFECT_RESIST_FRACTURE		(1<<0)
@@ -90,16 +90,16 @@
 #define REAGENT_SCANNABLE		(1<<1) // Whether the reagent shows up on health analysers.
 #define REAGENT_NOT_INGESTIBLE	(1<<2) // Whether the reagent canNOT be ingested and must be delivered through injection. Used by electrogenetic property.
 #define REAGENT_CANNOT_OVERDOSE	(1<<3) // Whether the reagent canNOT trigger its overdose effects. Used by regulating property. For ordinary reagents with no overdose effect, instead keep var/overdose at 0.
-#define REAGENT_TYPE_STIMULANT  (1<<4)
+#define REAGENT_TYPE_STIMULANT	(1<<4)
 #define REAGENT_NO_GENERATION	(1<<5) // Reagent doesn't randomly generate in chemicals
 
 /*
 	properties defines
 */
 //Negative
-#define PROPERTY_HYPOXEMIC 			"hypoxemic"
-#define PROPERTY_TOXIC 				"toxic"
-#define PROPERTY_CORROSIVE 			"corrosive"
+#define PROPERTY_HYPOXEMIC			"hypoxemic"
+#define PROPERTY_TOXIC				"toxic"
+#define PROPERTY_CORROSIVE			"corrosive"
 #define PROPERTY_BIOCIDIC			"biocidic"
 #define PROPERTY_HEMOLYTIC			"hemolytic"
 #define PROPERTY_HEMORRAGING		"hemorrhaging"
@@ -108,24 +108,24 @@
 #define PROPERTY_INTRAVENOUS		"intravenous"
 #define PROPERTY_NEPHROTOXIC		"nephrotoxic"
 #define PROPERTY_PNEUMOTOXIC		"pneumotoxic"
-#define PROPERTY_OCULOTOXIC 		"oculotoxic"
-#define PROPERTY_CARDIOTOXIC 		"cardiotoxic"
+#define PROPERTY_OCULOTOXIC			"oculotoxic"
+#define PROPERTY_CARDIOTOXIC		"cardiotoxic"
 #define PROPERTY_NEUROTOXIC			"neurotoxic"
 #define PROPERTY_HYPERMETABOLIC		"hypermetabolic"
 //Neutral
-#define PROPERTY_NUTRITIOUS 		"nutritious"
+#define PROPERTY_NUTRITIOUS			"nutritious"
 #define PROPERTY_KETOGENIC			"ketogenic"
-#define PROPERTY_PAINING 			"paining"
-#define PROPERTY_NEUROINHIBITING 	"neuroinhibiting"
+#define PROPERTY_PAINING			"paining"
+#define PROPERTY_NEUROINHIBITING	"neuroinhibiting"
 #define PROPERTY_ALCOHOLIC			"alcoholic"
 #define PROPERTY_HALLUCINOGENIC		"hallucinogenic"
 #define PROPERTY_RELAXING			"relaxing"
 #define PROPERTY_HYPERTHERMIC		"hyperthermic"
 #define PROPERTY_HYPOTHERMIC		"hypothermic"
 #define PROPERTY_BALDING			"balding"
-#define PROPERTY_FLUFFING 			"fluffing"
-#define PROPERTY_ALLERGENIC 		"allergenic"
-#define PROPERTY_CRYOMETABOLIZING 	"cryometabolizing"
+#define PROPERTY_FLUFFING			"fluffing"
+#define PROPERTY_ALLERGENIC			"allergenic"
+#define PROPERTY_CRYOMETABOLIZING	"cryometabolizing"
 #define PROPERTY_EUPHORIC			"euphoric"
 #define PROPERTY_EMETIC				"emetic"
 #define PROPERTY_PSYCHOSTIMULATING	"psychostimulating"
@@ -138,9 +138,9 @@
 #define PROPERTY_ANTITOXIC			"anti-toxic"
 #define PROPERTY_ANTICORROSIVE		"anti-corrosive"
 #define PROPERTY_NEOGENETIC			"neogenetic"
-#define PROPERTY_REPAIRING 			"repairing"
-#define PROPERTY_HEMOGENIC 			"hemogenic"
-#define PROPERTY_NERVESTIMULATING 	"nerve-stimulating"
+#define PROPERTY_REPAIRING			"repairing"
+#define PROPERTY_HEMOGENIC			"hemogenic"
+#define PROPERTY_NERVESTIMULATING	"nerve-stimulating"
 #define PROPERTY_MUSCLESTIMULATING	"muscle-stimulating"
 #define PROPERTY_PAINKILLING		"painkilling"
 #define PROPERTY_HEPATOPEUTIC		"hepatopeutic"
@@ -149,8 +149,8 @@
 #define PROPERTY_OCULOPEUTIC		"oculopeutic"
 #define PROPERTY_CARDIOPEUTIC		"cardiopeutic"
 #define PROPERTY_NEUROPEUTIC		"neuropeutic"
-#define PROPERTY_BONEMENDING 		"bonemending"
-#define PROPERTY_FLUXING 			"fluxing"
+#define PROPERTY_BONEMENDING		"bonemending"
+#define PROPERTY_FLUXING			"fluxing"
 #define PROPERTY_NEUROCRYOGENIC		"neurocryogenic"
 #define PROPERTY_CRYSTALLIZATION	"crystallization"
 #define PROPERTY_PHOTOSENSITIVE		"photosensitive"
@@ -173,10 +173,10 @@
 #define PROPERTY_DNA_DISINTEGRATING	"DNA-Disintegrating"
 #define PROPERTY_REGULATING			"regulating"
 #define PROPERTY_CIPHERING			"ciphering"
-#define PROPERTY_CIPHERING_PREDATOR "cross-ciphering"
+#define PROPERTY_CIPHERING_PREDATOR	"cross-ciphering"
 #define PROPERTY_FIRE_PENETRATING	"fire-penetrating"
 //Admin Only Properties
-#define PROPERTY_ORGAN_HEALING "organ-healing"
+#define PROPERTY_ORGAN_HEALING		"organ-healing"
 #define PROPERTY_CROSSMETABOLIZING	"cross-metabolizing"
 #define PROPERTY_EMBRYONIC			"embryonic"
 #define PROPERTY_TRANSFORMING		"transforming"
@@ -221,13 +221,13 @@
 #define PROPERTY_TYPE_METABOLITE		32
 #define PROPERTY_TYPE_ANOMALOUS			64
 #define PROPERTY_TYPE_UNADJUSTABLE		128
-#define PROPERTY_TYPE_CATALYST 			256
+#define PROPERTY_TYPE_CATALYST			256
 #define PROPERTY_TYPE_COMBUSTIBLE		512
 
 // Defines for pain applied pr tick by chems
-#define PROPERTY_PAINING_PAIN 		0.5
-#define PROPERTY_PAINING_PAIN_OD 	1
-#define PROPERTY_DEFIBRILLATING_PAIN_OD	1
+#define PROPERTY_PAINING_PAIN				0.5
+#define PROPERTY_PAINING_PAIN_OD			1
+#define PROPERTY_DEFIBRILLATING_PAIN_OD		1
 #define PROPERTY_CARDIOPEUTIC_PAIN_CRITICAL	3
 
 // Injectors
@@ -263,4 +263,4 @@
 #define POTENCY_MULTIPLIER_EXTREME			10
 
 //used in speed_modifier component
-#define HUMAN_STAMINA_MULTIPLIER 			5
+#define HUMAN_STAMINA_MULTIPLIER			5

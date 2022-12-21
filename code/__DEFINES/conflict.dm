@@ -1,8 +1,8 @@
 //Grab levels
 #define GRAB_PASSIVE	0
 #define GRAB_AGGRESSIVE	1
-#define GRAB_CARRY      2
-#define GRAB_CHOKE      3
+#define GRAB_CARRY		2
+#define GRAB_CHOKE		3
 
 //Ammo defines for gun/projectile related things.
 
@@ -11,26 +11,26 @@
 #define HEADSHOT_OVERLAY_MEDIUM "medium_headshot"
 #define HEADSHOT_OVERLAY_HEAVY "heavy_headshot"
 
-#define AMMO_EXPLOSIVE 			(1<<0)
-#define AMMO_ACIDIC 			(1<<1)
+#define AMMO_EXPLOSIVE			(1<<0)
+#define AMMO_ACIDIC				(1<<1)
 #define AMMO_XENO				(1<<2)
 #define AMMO_LASER				(1<<3)
-#define AMMO_ENERGY 			(1<<4)
+#define AMMO_ENERGY				(1<<4)
 #define AMMO_ROCKET				(1<<5)
 #define AMMO_SNIPER				(1<<6)
 #define AMMO_ANTISTRUCT			(1<<7) // Primarily for railgun but can be implemented for other projectiles that are for antitank and antistructure (wall/machine)
-#define AMMO_SKIPS_ALIENS 		(1<<8)
+#define AMMO_SKIPS_ALIENS		(1<<8)
 #define AMMO_IGNORE_ARMOR		(1<<9)
 #define AMMO_IGNORE_RESIST		(1<<10)
 #define AMMO_BALLISTIC			(1<<11)
 #define AMMO_IGNORE_COVER		(1<<12)
-//                              (1<<13) unused, previously was AMMO_SCANS_NEARBY
+//							(1<<13) unused, previously was AMMO_SCANS_NEARBY
 #define AMMO_STOPPED_BY_COVER	(1<<14)
 #define AMMO_SPECIAL_EMBED		(1<<15)
 #define AMMO_STRIKES_SURFACE	(1<<16) // If the projectile hits a dense turf it'll do on_hit_turf on the turf just in front of the turf instead of on the turf itself
 #define AMMO_HITS_TARGET_TURF	(1<<17) // Whether or not the bullet hits the target that was clicked or if it keeps travelling
 #define AMMO_ALWAYS_FF			(1<<18)
-//                              (1<<19) unused, previously was AMMO_HOMING
+//							(1<<19) unused, previously was AMMO_HOMING
 /// Can't be deflected
 #define AMMO_NO_DEFLECT			(1<<20)
 ///Can only hit people with criminal status
@@ -39,9 +39,9 @@
 // NOTE: Don't add flags past 1<<23, it'll break things due to BYOND limitations. You can usually use a Component instead.
 
 /// Projectile is shrpanel which allow it to skip some collisions
-#define PROJECTILE_SHRAPNEL     (1<<0)
+#define PROJECTILE_SHRAPNEL	(1<<0)
 /// Apply additional effects upon hitting clicked target
-#define PROJECTILE_BULLSEYE     (1<<1)
+#define PROJECTILE_BULLSEYE	(1<<1)
 
 //Gun defines for gun related thing. More in the projectile folder.
 #define GUN_CAN_POINTBLANK		(1<<0)
@@ -49,7 +49,7 @@
 #define GUN_UNUSUAL_DESIGN		(1<<2)
 #define GUN_SILENCED			(1<<3)
 #define GUN_AUTOMATIC			(1<<4)
-#define GUN_INTERNAL_MAG		(1<<5)  // If checking for ammo with current.mag you have to check it against numerical values, as booleans will not trigger.
+#define GUN_INTERNAL_MAG		(1<<5)	// If checking for ammo with current.mag you have to check it against numerical values, as booleans will not trigger.
 #define GUN_AUTO_EJECTOR		(1<<6)
 #define GUN_AMMO_COUNTER		(1<<7)
 #define GUN_BURST_ON			(1<<8)
@@ -60,8 +60,8 @@
 #define GUN_WIELDED_FIRING_ONLY	(1<<13)
 #define GUN_HAS_FULL_AUTO		(1<<14)
 #define GUN_FULL_AUTO_ON		(1<<15)
-#define GUN_ONE_HAND_WIELDED	(1<<16) //removes unwielded accuracy and scatter penalties (not recoil)
-#define GUN_ANTIQUE 			(1<<17)
+#define GUN_ONE_HAND_WIELDED	(1<<16)	//removes unwielded accuracy and scatter penalties (not recoil)
+#define GUN_ANTIQUE				(1<<17)
 #define GUN_RECOIL_BUILDUP		(1<<18)
 /// Whether the gun has been fired by its current user (reset upon `dropped()`)
 #define GUN_SUPPORT_PLATFORM	(1<<19) /// support weapon, bipod will grant IFF
@@ -75,18 +75,18 @@
 #define ATTACH_PROJECTILE	4 //for attachments that fire bullets
 #define ATTACH_RELOADABLE	8
 #define ATTACH_WEAPON		16 //is a weapon that fires stuff
-#define ATTACH_MELEE        32 //This attachment should activate if you attack() with it attached.
+#define ATTACH_MELEE		32 //This attachment should activate if you attack() with it attached.
 
 //Ammo magazine defines, for flags_magazine
 
-#define AMMUNITION_REFILLABLE   (1<<0)
-#define AMMUNITION_HANDFUL      (1<<1)
-#define AMMUNITION_HANDFUL_BOX  (1<<2) //for dump_ammo_to(), boxes of handfuls like shotgun shell boxes
-#define AMMUNITION_HIDE_AMMO    (1<<3)
+#define AMMUNITION_REFILLABLE	(1<<0)
+#define AMMUNITION_HANDFUL		(1<<1)
+#define AMMUNITION_HANDFUL_BOX	(1<<2)	//for dump_ammo_to(), boxes of handfuls like shotgun shell boxes
+#define AMMUNITION_HIDE_AMMO	(1<<3)
 
 //Slowdown from various armors.
-#define SHOES_SLOWDOWN -1.0			// How much shoes slow you down by default. Negative values speed you up
-#define SLOWDOWN_ARMOR_NONE         0
+#define SHOES_SLOWDOWN 				-1.0// How much shoes slow you down by default. Negative values speed you up
+#define SLOWDOWN_ARMOR_NONE			0
 #define SLOWDOWN_ARMOR_VERY_LIGHT	0.20
 #define SLOWDOWN_ARMOR_LIGHT		0.35
 #define SLOWDOWN_ARMOR_MEDIUM		0.55
@@ -128,7 +128,7 @@
 #define EXPLOSION_PRONE_MULTIPLIER	0.5 //prone mobs receive less damage from explosions
 
 //Explosion damage multipliers for different objects
-#define EXPLOSION_DAMAGE_MULTIPLIER_DOOR     	15
+#define EXPLOSION_DAMAGE_MULTIPLIER_DOOR	15
 #define EXPLOSION_DAMAGE_MULTIPLIER_WALL		15
 #define EXPLOSION_DAMAGE_MULTIPLIER_WINDOW		10
 
@@ -137,7 +137,7 @@
 
 //Melee weapons and xenos do more damage to resin structures
 #define RESIN_MELEE_DAMAGE_MULTIPLIER	8.2
-#define RESIN_XENO_DAMAGE_MULTIPLIER    4
+#define RESIN_XENO_DAMAGE_MULTIPLIER	4
 
 #define RESIN_EXPLOSIVE_MULTIPLIER 0.85
 
@@ -199,18 +199,18 @@
 //=================================================
 
 //Health of various items
-#define HEALTH_WALL 						3000
-#define HEALTH_WALL_REINFORCED 				9000
-#define HEALTH_WALL_XENO 					900
+#define HEALTH_WALL							3000
+#define HEALTH_WALL_REINFORCED				9000
+#define HEALTH_WALL_XENO					900
 #define HEALTH_WALL_XENO_WEAK				100
-#define HEALTH_WALL_XENO_THICK 				1350
-#define HEALTH_WALL_XENO_MEMBRANE 			300
-#define HEALTH_WALL_XENO_REFLECTIVE 		300
-#define HEALTH_WALL_XENO_MEMBRANE_THICK 	600
+#define HEALTH_WALL_XENO_THICK				1350
+#define HEALTH_WALL_XENO_MEMBRANE			300
+#define HEALTH_WALL_XENO_REFLECTIVE			300
+#define HEALTH_WALL_XENO_MEMBRANE_THICK		600
 
-#define HEALTH_DOOR 		    1200
-#define HEALTH_DOOR_XENO 	    600
-#define HEALTH_DOOR_XENO_THICK 	900
+#define HEALTH_DOOR				1200
+#define HEALTH_DOOR_XENO		600
+#define HEALTH_DOOR_XENO_THICK	900
 
 #define HEALTH_RESIN_PILLAR 2200
 #define HEALTH_RESIN_XENO_ACID_PILLAR 300
@@ -219,20 +219,20 @@
 #define HEALTH_RESIN_XENO_STICKY 45
 #define HEALTH_RESIN_XENO_FAST 30
 
-#define THROWFORCE_COEFF            0.02 // Coefficient of throwforce when calculating damage from an atom colliding with a mob
-#define MOB_SIZE_COEFF              20 // Coefficient of mobsize when calculating damage from a mob colliding with a dense atom
-#define THROW_SPEED_DENSE_COEFF     0.2 // Coefficient of throwspeed when calculating damage from a mob colliding with a dense atom
-#define THROW_SPEED_IMPACT_COEFF    0.05 // Coefficient of throwspeed when calculating damage from an atom colliding with a mob
+#define THROWFORCE_COEFF			0.02 // Coefficient of throwforce when calculating damage from an atom colliding with a mob
+#define MOB_SIZE_COEFF				20 // Coefficient of mobsize when calculating damage from a mob colliding with a dense atom
+#define THROW_SPEED_DENSE_COEFF		0.2 // Coefficient of throwspeed when calculating damage from a mob colliding with a dense atom
+#define THROW_SPEED_IMPACT_COEFF	0.05 // Coefficient of throwspeed when calculating damage from an atom colliding with a mob
 
-#define THROW_MODE_OFF      0
-#define THROW_MODE_NORMAL   1
-#define THROW_MODE_HIGH     2
+#define THROW_MODE_OFF		0
+#define THROW_MODE_NORMAL	1
+#define THROW_MODE_HIGH		2
 
 #define XENO_ACID_BARRICADE_DAMAGE 8
 #define XENO_ACID_HMG_DAMAGE 10
 
 #define MOLOTOV_POTENCY_MAX 20
-#define MOLOTOV_TIME_MAX    20
+#define MOLOTOV_TIME_MAX	20
 
 #define GUN_LOW_AMMO_PERCENTAGE 0.25 // A gun filled with this percentage of it's total ammo or lower is considered to have low ammo
 
@@ -244,5 +244,5 @@
 #define HUNTER_FIRE_RESIST_AMOUNT -25
 
 // Organ damage chance
-#define DMG_ORGAN_DAM_PROB_MULT (2/9)   // The multiplier to damage when calculating organ damage probability
-#define BRUTE_ORGAN_DAM_PROB_MULT (0.05) // The multiplier to existing brute damage when calculating organ damage probability
+#define DMG_ORGAN_DAM_PROB_MULT (2/9)	// The multiplier to damage when calculating organ damage probability
+#define BRUTE_ORGAN_DAM_PROB_MULT (0.05)// The multiplier to existing brute damage when calculating organ damage probability

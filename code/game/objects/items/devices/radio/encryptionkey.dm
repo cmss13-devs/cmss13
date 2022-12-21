@@ -14,7 +14,7 @@
 
 /obj/item/device/encryptionkey/binary
 	icon_state = "binary_key"
-	translate_apollo = 1
+	translate_apollo = TRUE
 
 
 

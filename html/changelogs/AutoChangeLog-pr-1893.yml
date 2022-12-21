@@ -1,0 +1,5 @@
+author: "RenaRenaRe"
+delete-after: True
+changes:
+  - rscadd: "Fire penetration now works with OT grenades and other chemical fires, not just as flamer fuel."
+  - rscadd: "Ravagers are now a dummy option in the demolition simulator."

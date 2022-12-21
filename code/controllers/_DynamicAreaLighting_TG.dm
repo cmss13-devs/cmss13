@@ -9,7 +9,7 @@
 	much less costly than using overlays or objects.
 
 	Unlike sd_DAL however it uses a queueing system. Everytime we call a change to opacity or luminosity
-	(through SetOpacity() or SetLuminosity()) we are  simply updating variables and scheduling certain lights/turfs for an
+	(through SetOpacity() or SetLuminosity()) we are	simply updating variables and scheduling certain lights/turfs for an
 	update. Actual updates are handled periodically by the lighting_controller. This carries additional overheads, however it
 	means that each thing is changed only once per lighting_controller.processing_interval ticks. Allowing for greater control
 	over how much priority we'd like lighting updates to have. It also makes it possible for us to simply delay updates by
@@ -140,8 +140,8 @@ GLOBAL_LIST_INIT(comp2table, list(
 
 /atom
 	var/datum/light_source/light
-	var/trueLuminosity = 0  // Typically 'luminosity' squared.  The builtin luminosity must remain linear.
-	                        // We may read it, but NEVER set it directly.
+	var/trueLuminosity = 0	// Typically 'luminosity' squared.	The builtin luminosity must remain linear.
+							// We may read it, but NEVER set it directly.
 
 //Movable atoms with opacity when they are constructed will trigger nearby lights to update
 //Movable atoms with luminosity when they are constructed will create a light_source automatically
@@ -267,7 +267,7 @@ GLOBAL_LIST_INIT(comp2table, list(
 
 /turf/proc/build_lighting_area(const/tag, const/level)
 	var/area/Area = loc
-	var/area/A = new Area.type()    // create area if it wasn't found
+	var/area/A = new Area.type()	// create area if it wasn't found
 	// replicate vars
 	for(var/V in Area.vars)
 		switch(V)

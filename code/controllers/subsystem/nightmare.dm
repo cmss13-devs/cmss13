@@ -1,11 +1,11 @@
 GLOBAL_SUBTYPE_PATHS_LIST_INDEXED(nightmare_node_map, /datum/nmnode, id)
 
 SUBSYSTEM_DEF(nightmare)
-	name       = "Nightmare"
-	init_order = SS_INIT_NIGHTMARE
-	flags = SS_NO_FIRE
+	name		= "Nightmare"
+	init_order	= SS_INIT_NIGHTMARE
+	flags		= SS_NO_FIRE
 
-	var/stat = NIGHTMARE_STATUS_STANDBY
+	var/stat	= NIGHTMARE_STATUS_STANDBY
 	var/start_time = 0
 
 	/// List of nightmare context types, mapped to their instance
@@ -135,4 +135,3 @@ SUBSYSTEM_DEF(nightmare)
 		return new nodetype(parsed)
 	else
 		CRASH("Tried to instanciate an invalid node type")
-

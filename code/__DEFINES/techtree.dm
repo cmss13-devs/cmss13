@@ -2,8 +2,8 @@
 #define TREE_ACCESS_VIEW 2
 
 // Tree Flags
-#define TREE_FLAG_MARINE (1<<0)
-#define TREE_FLAG_XENO  (1<<1)
+#define TREE_FLAG_MARINE	(1<<0)
+#define TREE_FLAG_XENO		(1<<1)
 
 // Trees
 #define TREE_NONE "Undefined"
@@ -41,14 +41,14 @@
 #define TIER_FLAG_TRANSITORY (1<<0)
 
 #define TECH_TIER_GAMEPLAY list(\
-    /datum/tier/free,\
-    /datum/tier/one,\
-    /datum/tier/one_transition_two,\
-    /datum/tier/two,\
-    /datum/tier/two_transition_three,\
-    /datum/tier/three,\
-    /datum/tier/three_transition_four,\
-    /datum/tier/four\
+	/datum/tier/free,\
+	/datum/tier/one,\
+	/datum/tier/one_transition_two,\
+	/datum/tier/two,\
+	/datum/tier/two_transition_three,\
+	/datum/tier/three,\
+	/datum/tier/three_transition_four,\
+	/datum/tier/four\
 )
 
 // Droppods

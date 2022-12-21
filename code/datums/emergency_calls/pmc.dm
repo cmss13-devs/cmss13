@@ -14,12 +14,10 @@
 	var/max_synths = 1
 	var/synths = 0
 
-
 /datum/emergency_call/pmc/New()
 	..()
 	arrival_message = "[MAIN_SHIP_NAME], this is USCSS Royce responding to your distress call. We are boarding. Any hostile actions will be met with lethal force."
 	objectives = "Secure the Corporate Liaison and the [MAIN_SHIP_NAME]'s Commanding Officer, and eliminate any hostile threats. Do not damage Wey-Yu property."
-
 
 /datum/emergency_call/pmc/create_member(datum/mind/M, var/turf/override_spawn_loc)
 	var/turf/spawn_loc = override_spawn_loc ? override_spawn_loc : get_spawn_point()
@@ -58,7 +56,6 @@
 
 	addtimer(CALLBACK(GLOBAL_PROC, .proc/to_chat, mob, SPAN_BOLD("Objectives:</b> [objectives]")), 1 SECONDS)
 
-
 /datum/emergency_call/pmc/print_backstory(mob/living/carbon/human/M)
 	if(isHumanStrict(M))
 		to_chat(M, SPAN_BOLD("You were born [pick(75;"in Europe", 15;"in Asia", 10;"on Mars")] to a [pick(75;"well-off", 15;"well-established", 10;"average")] family."))
@@ -70,13 +67,12 @@
 		to_chat(M, SPAN_BOLD("You were programmed with standard synthetic skills as per facility and geneva protocol."))
 		to_chat(M, SPAN_BOLD("Throughout your service, you gained recognition as a capable unit and your model was given equipment upgrades which USCM models lack."))
 		to_chat(M, SPAN_BOLD("You were given all available information about the xenomorph threat apart from classified data reserved for special employees."))
-	to_chat(M, SPAN_BOLD("You are part of  Weyland-Yutani Task Force Oberon that arrived in 2182 following the UA withdrawl of the Neroid Sector."))
+	to_chat(M, SPAN_BOLD("You are part of Weyland-Yutani Task Force Oberon that arrived in 2182 following the UA withdrawl of the Neroid Sector."))
 	to_chat(M, SPAN_BOLD("Task-force Oberon is stationed aboard the USCSS Royce, a powerful Weyland-Yutani cruiser that patrols the outer edges of the Neroid Sector. "))
 	to_chat(M, SPAN_BOLD("Under the directive of Weyland-Yutani board member Johan Almric, you act as private security for Weyland-Yutani science teams."))
 	to_chat(M, SPAN_BOLD("The USCSS Royce contains a crew of roughly two hundred PMCs, and one hundred scientists and support personnel."))
 	to_chat(M, SPAN_BOLD("Ensure no damage is incurred against Weyland-Yutani. Make sure the CL is safe."))
 	to_chat(M, SPAN_BOLD("Deny Weyland-Yutani's involvement and do not trust the UA/USCM forces."))
-
 
 /datum/emergency_call/pmc/platoon
 	name = "Weyland-Yutani PMC (Platoon)"
@@ -122,7 +118,7 @@
 	if(H.client)
 		H.client.change_view(world_view_size)
 
-	if(!leader && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_LEADER) && check_timelock(H.client, JOB_SQUAD_LEADER, time_required_for_job))       //First one spawned is always the leader.
+	if(!leader && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_LEADER) && check_timelock(H.client, JOB_SQUAD_LEADER, time_required_for_job))		//First one spawned is always the leader.
 		leader = H
 		to_chat(H, SPAN_ROLE_HEADER("You are a Weyland-Yutani PMC Squad Leader!"))
 		arm_equipment(H, /datum/equipment_preset/pmc/pmc_lead_investigator, TRUE, TRUE)

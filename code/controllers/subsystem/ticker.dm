@@ -77,7 +77,7 @@ SUBSYSTEM_DEF(ticker)
 			totalPlayersReady = 0
 			for(var/i in GLOB.new_player_list)
 				var/mob/new_player/player = i
-				if(player.ready) // TODO: port this     == PLAYER_READY_TO_PLAY)
+				if(player.ready) // TODO: port this	 == PLAYER_READY_TO_PLAY)
 					++totalPlayersReady
 			if(time_left < 0 || delay_start)
 				return
@@ -189,7 +189,6 @@ SUBSYSTEM_DEF(ticker)
 
 	if(GLOB.perf_flags & PERF_TOGGLE_LAZYSS)
 		apply_lazy_timings()
-
 
 	if(CONFIG_GET(flag/autooocmute))
 		ooc_allowed = FALSE
@@ -312,7 +311,6 @@ SUBSYSTEM_DEF(ticker)
 		if(GAME_STATE_FINISHED)
 			Master.SetRunLevel(RUNLEVEL_POSTGAME)
 
-
 /datum/controller/subsystem/ticker/proc/GetTimeLeft()
 	if(isnull(SSticker.time_left))
 		return round(max(0, start_at - world.time) / 10)
@@ -325,7 +323,6 @@ SUBSYSTEM_DEF(ticker)
 	else
 		time_left = newtime
 
-
 /datum/controller/subsystem/ticker/proc/load_mode()
 	var/mode = trim(file2text("data/mode.txt"))
 	if(mode)
@@ -334,11 +331,9 @@ SUBSYSTEM_DEF(ticker)
 		GLOB.master_mode = "Extended"
 	log_game("Saved mode is '[GLOB.master_mode]'")
 
-
 /datum/controller/subsystem/ticker/proc/save_mode(the_mode)
 	fdel("data/mode.txt")
 	WRITE_FILE(file("data/mode.txt"), the_mode)
-
 
 /datum/controller/subsystem/ticker/proc/Reboot(reason, delay)
 	set waitfor = FALSE
@@ -457,11 +452,11 @@ SUBSYSTEM_DEF(ticker)
 	 * SScellauto: can't touch this because it would directly affect explosion spread speed
 	 */
 
-	SSquadtree?.wait           = 0.8 SECONDS // From 0.5, relevant based on player movement speed (higher = more error in sound location, motion detector pings, sentries target acquisition)
-	SSlighting?.wait           = 0.6 SECONDS // From 0.4, same but also heavily scales on player/scene density (higher = less frequent lighting updates which is very noticeable as you move)
-	SSstatpanels?.wait         = 1.5 SECONDS // From 0.6, refresh rate mainly matters for ALT+CLICK turf contents (which gens icons, intensive)
-	SSsoundscape?.wait         =   2 SECONDS // From 1, soudscape triggering checks, scales on player count
-	SStgui?.wait               = 1.2 SECONDS // From 0.9, UI refresh rate
+	SSquadtree?.wait			= 0.8 SECONDS // From 0.5, relevant based on player movement speed (higher = more error in sound location, motion detector pings, sentries target acquisition)
+	SSlighting?.wait			= 0.6 SECONDS // From 0.4, same but also heavily scales on player/scene density (higher = less frequent lighting updates which is very noticeable as you move)
+	SSstatpanels?.wait			= 1.5 SECONDS // From 0.6, refresh rate mainly matters for ALT+CLICK turf contents (which gens icons, intensive)
+	SSsoundscape?.wait			= 2 SECONDS // From 1, soudscape triggering checks, scales on player count
+	SStgui?.wait				= 1.2 SECONDS // From 0.9, UI refresh rate
 
 	log_debug("Switching to lazy Subsystem timings for performance")
 

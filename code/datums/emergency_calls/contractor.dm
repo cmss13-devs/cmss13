@@ -3,18 +3,16 @@
 	mob_max = 7
 	probability = 20
 
-	max_engineers =  1
+	max_engineers = 1
 	max_medics = 1
 	max_heavies = 1
 	var/max_synths = 1
 	var/synths = 0
 
-
 /datum/emergency_call/contractors/New()
 	..()
 	arrival_message = "[MAIN_SHIP_NAME], this is USCSS Inheritor with Vanguard's Arrow Incorporated, Primary Operations; we are responding to your distress call and boarding in accordance with the Military Aid Act of 2177, authenticication code Lima-18153. "
 	objectives = "Ensure the survival of the [MAIN_SHIP_NAME], eliminate any hostiles, and assist the crew in any way possible."
-
 
 /datum/emergency_call/contractors/create_member(datum/mind/M, var/turf/override_spawn_loc)
 	var/turf/spawn_loc = override_spawn_loc ? override_spawn_loc : get_spawn_point()
@@ -53,7 +51,6 @@
 
 	addtimer(CALLBACK(GLOBAL_PROC, .proc/to_chat, mob, SPAN_BOLD("Objectives:</b> [objectives]")), 1 SECONDS)
 
-
 /datum/emergency_call/contractors/print_backstory(mob/living/carbon/human/M)
 	if(isHumanStrict(M))
 		to_chat(M, SPAN_BOLD("You were born [pick(60;"in the United States", 20;"on Earth", 20;"on a colony")] to a [pick(75;"average", 15;"poor", 10;"well-established")] family."))
@@ -72,7 +69,6 @@
 	to_chat(M, SPAN_BOLD("The USCSS Inheritor is staffed with crew of roughly three hundred military contractors, and fifty support personnel."))
 	to_chat(M, SPAN_BOLD("Assist the USCMC Force of the [MAIN_SHIP_NAME] however you can."))
 	to_chat(M, SPAN_BOLD("As a side-objective, VAI has been hired by an unknown benefactor to engage in corporate espionage and sabotage against Weyland-Yutani, avoid direct conflict; you aren't VAISO; but attempt to recover Wey-Yu secrets and plans if possible."))
-
 
 /datum/emergency_call/contractors/platoon
 	name = "Military Contractors (Platoon) (Friendly)"
@@ -119,7 +115,7 @@
 	if(H.client)
 		H.client.change_view(world_view_size)
 
-	if(!leader && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_LEADER) && check_timelock(H.client, JOB_SQUAD_LEADER, time_required_for_job))       //First one spawned is always the leader.
+	if(!leader && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_LEADER) && check_timelock(H.client, JOB_SQUAD_LEADER, time_required_for_job))		//First one spawned is always the leader.
 		leader = H
 		to_chat(H, SPAN_ROLE_HEADER("You are a Covert Contractor Team Leader of Vanguard's Arrow Incorporated!"))
 		arm_equipment(H, /datum/equipment_preset/contractor/covert/leader, TRUE, TRUE)
@@ -146,4 +142,3 @@
 	print_backstory(H)
 
 	addtimer(CALLBACK(GLOBAL_PROC, .proc/to_chat, H, SPAN_BOLD("Objectives:</b> [objectives]")), 1 SECONDS)
-

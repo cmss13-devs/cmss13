@@ -50,7 +50,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "High Altitude"
 	icon_state = "blue"
 
-/area/start            // will be unused once kurper gets his login interface patch done
+/area/start			// will be unused once kurper gets his login interface patch done
 	name = "start area"
 	icon_state = "start"
 	ceiling = CEILING_MAX
@@ -64,20 +64,20 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 // CENTCOM
 
 /area/centcom
-	name = "\improper abandoned  Centcom"
+	name = "\improper abandoned	Centcom"
 	icon_state = "centcom"
 	requires_power = 0
 	statistic_exempt = TRUE
 	ceiling = CEILING_METAL
 
 /area/centcom/control
-	name = "\improper abandoned  Centcom Control"
+	name = "\improper abandoned	Centcom Control"
 
 /area/centcom/living
-	name = "\improper abandoned  Centcom Living Quarters"
+	name = "\improper abandoned	Centcom Living Quarters"
 
 /area/tdome
-	name = "\improper abandoned  Thunderdome"
+	name = "\improper abandoned	Thunderdome"
 	icon_state = "thunder"
 	requires_power = 0
 	flags_area = AREA_NOTUNNEL
@@ -85,17 +85,17 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	ceiling = CEILING_METAL
 
 /area/tdome/tdome1
-	name = "\improper abandoned  Thunderdome (Team 1)"
+	name = "\improper abandoned	Thunderdome (Team 1)"
 	icon_state = "green"
 
 /area/tdome/tdome2
-	name = "\improper abandoned  Thunderdome (Team 2)"
+	name = "\improper abandoned	Thunderdome (Team 2)"
 	icon_state = "yellow"
 
 /area/tdome/tdomeadmin
-	name = "\improper abandoned  Thunderdome (Admin.)"
+	name = "\improper abandoned	Thunderdome (Admin.)"
 	icon_state = "purple"
 
 /area/tdome/tdomeobserve
-	name = "\improper abandoned  Thunderdome (Observer.)"
+	name = "\improper abandoned	Thunderdome (Observer.)"
 	icon_state = "purple"

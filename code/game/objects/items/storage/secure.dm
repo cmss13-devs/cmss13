@@ -8,7 +8,7 @@
  */
 
 // -----------------------------
-//         Generic Item
+//		 Generic Item
 // -----------------------------
 /obj/item/storage/secure
 	name = "secstorage"
@@ -119,7 +119,7 @@
 	return
 
 // -----------------------------
-//        Secure Briefcase
+//		Secure Briefcase
 // -----------------------------
 /obj/item/storage/secure/briefcase
 	name = "secure briefcase"
@@ -150,7 +150,7 @@
 	add_fingerprint(user)
 
 // -----------------------------
-//        Secure Safe
+//		Secure Safe
 // -----------------------------
 
 /obj/item/storage/secure/safe

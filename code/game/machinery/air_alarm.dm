@@ -616,7 +616,7 @@ Pressure: <span class='dl[pressure_dangerlevel]'>[environment_pressure]</span>kP
 	else
 		dat += "<a href='?src=\ref[src];rcon=[RCON_YES]'>On</a></td>"
 
-	//Hackish, I know.  I didn't feel like bothering to rework all of this.
+	//Hackish, I know.	I didn't feel like bothering to rework all of this.
 	dat += "<td align=\"center\"><b>Thermostat:</b><br><a href='?src=\ref[src];temperature=1'>[target_temperature - T0C]C</a></td></table>"
 
 	return dat
@@ -726,12 +726,12 @@ Nitrous Oxide
 
 		if (AALARM_SCREEN_MODE)
 			output += "<a href='?src=\ref[src];screen=[AALARM_SCREEN_MAIN]'>Main menu</a><br><b>Air machinery mode for the area:</b><ul>"
-			var/list/modes = list(AALARM_MODE_SCRUBBING   = "Filtering - Scrubs out contaminants",\
+			var/list/modes = list(AALARM_MODE_SCRUBBING	= "Filtering - Scrubs out contaminants",\
 				AALARM_MODE_REPLACEMENT = SET_CLASS("Replace Air - Siphons out air while replacing", INTERFACE_BLUE),\
-				AALARM_MODE_PANIC       = SET_CLASS("Panic - Siphons air out of the room", INTERFACE_RED),\
-				AALARM_MODE_CYCLE       = SET_CLASS("Cycle - Siphons air before replacing", INTERFACE_RED),\
-				AALARM_MODE_FILL        = SET_CLASS("Fill - Shuts off scrubbers and opens vents", INTERFACE_GREEN),\
-				AALARM_MODE_OFF         = SET_CLASS("Off - Shuts off vents and scrubbers", INTERFACE_BLUE)
+				AALARM_MODE_PANIC		= SET_CLASS("Panic - Siphons air out of the room", INTERFACE_RED),\
+				AALARM_MODE_CYCLE		= SET_CLASS("Cycle - Siphons air before replacing", INTERFACE_RED),\
+				AALARM_MODE_FILL		= SET_CLASS("Fill - Shuts off scrubbers and opens vents", INTERFACE_GREEN),\
+				AALARM_MODE_OFF			= SET_CLASS("Off - Shuts off vents and scrubbers", INTERFACE_BLUE)
 			)
 			for (var/m=1,m<=modes.len,m++)
 				if (mode==m)
@@ -758,10 +758,10 @@ table tr:first-child th:first-child { border: none;}
 <TR><th></th><th class=dl2>min2</th><th class=dl1>min1</th><th class=dl1>max1</th><th class=dl2>max2</th></TR>
 "}
 			var/list/gases = list(
-				"oxygen"         = "O<sub>2</sub>",
-				"carbon dioxide" = "CO<sub>2</sub>",
-				"phoron"         = "Toxin",
-				"other"          = "Other",)
+				"oxygen"			= "O<sub>2</sub>",
+				"carbon dioxide"	= "CO<sub>2</sub>",
+				"phoron"			= "Toxin",
+				"other"				= "Other",)
 
 			var/list/selected
 			for (var/g in gases)
@@ -950,7 +950,7 @@ table tr:first-child th:first-child { border: none;}
 
 	switch(buildstage)
 		if(2)
-			if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER))  // Opening that Air Alarm up.
+			if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER))	// Opening that Air Alarm up.
 				//to_chat(user, "You pop the Air Alarm's maintence panel open.")
 				wiresexposed = !wiresexposed
 				to_chat(user, "The wires have been [wiresexposed ? "exposed" : "unexposed"]")
@@ -1038,7 +1038,7 @@ table tr:first-child th:first-child { border: none;}
 	. = ..()
 	req_one_access = list(ACCESS_CIVILIAN_ENGINEERING)
 	TLV["oxygen"] =			list(-1.0, -1.0,-1.0,-1.0) // Partial pressure, kpa
-	TLV["carbon dioxide"] = list(-1.0, -1.0,   5,  10) // Partial pressure, kpa
+	TLV["carbon dioxide"] = list(-1.0, -1.0,	5,	10) // Partial pressure, kpa
 	TLV["phoron"] =			list(-1.0, -1.0, 0.2, 0.5) // Partial pressure, kpa
 	TLV["other"] =			list(-1.0, -1.0, 0.5, 1.0) // Partial pressure, kpa
 	TLV["pressure"] =		list(0,ONE_ATMOSPHERE*0.10,ONE_ATMOSPHERE*1.40,ONE_ATMOSPHERE*1.60) /* kpa */

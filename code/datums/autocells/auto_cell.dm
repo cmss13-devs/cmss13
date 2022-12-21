@@ -6,11 +6,11 @@
 */
 
 // No neighbors
-#define NEIGHBORS_NONE     0
+#define NEIGHBORS_NONE		0
 // Cardinal neighborhood
-#define NEIGHBORS_CARDINAL 1
+#define NEIGHBORS_CARDINAL	1
 // Ordinal neighborhood
-#define NEIGHBORS_ORDINAL  2
+#define NEIGHBORS_ORDINAL	2
 // Note that NEIGHBORS_CARDINAL | NEIGHBORS_ORDINALS gives you all 8 surrounding neighbors
 
 /datum/automata_cell

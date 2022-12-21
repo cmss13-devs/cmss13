@@ -9,7 +9,7 @@
 #define SQUAD_MARINE_4					"Delta"
 #define SQUAD_MARINE_5					"Echo"
 #define SQUAD_MARINE_CRYO				"Foxtrot"
-#define SQUAD_SOF					"SOF"
+#define SQUAD_SOF						"SOF"
 
 // Job name defines
 #define JOB_SQUAD_MARINE				"Squad Rifleman"
@@ -28,7 +28,7 @@ var/global/list/job_squad_roles = JOB_SQUAD_ROLES_LIST
 #define JOB_PASSENGER					"Passenger"
 #define JOB_SURVIVOR					"Survivor"
 #define JOB_SYNTH_SURVIVOR				"Synth Survivor"
-#define JOB_CO_SURVIVOR				"Commanding Officer Survivor"
+#define JOB_CO_SURVIVOR					"Commanding Officer Survivor"
 
 #define JOB_CMO							"Chief Medical Officer"
 #define JOB_DOCTOR						"Doctor"
@@ -58,8 +58,8 @@ var/global/list/job_command_roles = JOB_COMMAND_ROLES_LIST
 #define JOB_WARDEN						"Military Warden"
 #define JOB_CHIEF_POLICE				"Chief MP"
 
-#define JOB_POLICE_ROLES                /datum/timelock/mp
-#define JOB_POLICE_ROLES_LIST           list(JOB_POLICE, JOB_WARDEN, JOB_CHIEF_POLICE)
+#define JOB_POLICE_ROLES				/datum/timelock/mp
+#define JOB_POLICE_ROLES_LIST			list(JOB_POLICE, JOB_WARDEN, JOB_CHIEF_POLICE)
 
 #define JOB_SEA							"Senior Enlisted Advisor"
 
@@ -74,10 +74,10 @@ var/global/list/job_command_roles = JOB_COMMAND_ROLES_LIST
 #define JOB_REQUISITION_ROLES			/datum/timelock/requisition
 #define JOB_REQUISITION_ROLES_LIST		list(JOB_CHIEF_REQUISITION, JOB_CARGO_TECH)
 
-#define JOB_MARINE_RAIDER						"Marine Raider"
-#define JOB_MARINE_RAIDER_SL					"Marine Raider Team Lead"
-#define JOB_MARINE_RAIDER_CMD					"Marine Raider Platoon Lead"
-#define JOB_MARINE_RAIDER_ROLES_LIST			list(JOB_MARINE_RAIDER, JOB_MARINE_RAIDER_SL, JOB_MARINE_RAIDER_CD)
+#define JOB_MARINE_RAIDER				"Marine Raider"
+#define JOB_MARINE_RAIDER_SL			"Marine Raider Team Lead"
+#define JOB_MARINE_RAIDER_CMD			"Marine Raider Platoon Lead"
+#define JOB_MARINE_RAIDER_ROLES_LIST	list(JOB_MARINE_RAIDER, JOB_MARINE_RAIDER_SL, JOB_MARINE_RAIDER_CD)
 
 #define JOB_HUMAN_ROLES					/datum/timelock/human
 #define JOB_XENO_ROLES					/datum/timelock/xeno
@@ -158,20 +158,20 @@ var/global/list/job_command_roles = JOB_COMMAND_ROLES_LIST
 #define JOB_WY_GOON_LEAD				"WY Corporate Security Lead"
 
 //---- Contractors ----//
-#define JOB_CONTRACTOR						"VAIPO Mercenary"
-#define JOB_CONTRACTOR_ST					"VAIPO Mercenary"
-#define JOB_CONTRACTOR_MEDIC				"VAIMS Medical Specialist"
-#define JOB_CONTRACTOR_ENGI					"VAIPO Engineering Specialist"
-#define JOB_CONTRACTOR_MG					"VAIPO Automatic Rifleman"
-#define JOB_CONTRACTOR_TL					"VAIPO Team Leader"
-#define JOB_CONTRACTOR_SYN					"VAIPO Support Synthetic"
-#define JOB_CONTRACTOR_COV					"VAISO Mercenary"
-#define JOB_CONTRACTOR_COVST				"VAISO Mercenary"
-#define JOB_CONTRACTOR_COVMED				"VAIMS Medical Specialist"
-#define JOB_CONTRACTOR_COVENG				"VAISO Engineering Specialist"
-#define JOB_CONTRACTOR_COVMG				"VAISO Automatic Rifleman"
-#define JOB_CONTRACTOR_COVTL				"VAISO Team Leader"
-#define JOB_CONTRACTOR_COVSYN				"VAISO Support Synthetic"
+#define JOB_CONTRACTOR					"VAIPO Mercenary"
+#define JOB_CONTRACTOR_ST				"VAIPO Mercenary"
+#define JOB_CONTRACTOR_MEDIC			"VAIMS Medical Specialist"
+#define JOB_CONTRACTOR_ENGI				"VAIPO Engineering Specialist"
+#define JOB_CONTRACTOR_MG				"VAIPO Automatic Rifleman"
+#define JOB_CONTRACTOR_TL				"VAIPO Team Leader"
+#define JOB_CONTRACTOR_SYN				"VAIPO Support Synthetic"
+#define JOB_CONTRACTOR_COV				"VAISO Mercenary"
+#define JOB_CONTRACTOR_COVST			"VAISO Mercenary"
+#define JOB_CONTRACTOR_COVMED			"VAIMS Medical Specialist"
+#define JOB_CONTRACTOR_COVENG			"VAISO Engineering Specialist"
+#define JOB_CONTRACTOR_COVMG			"VAISO Automatic Rifleman"
+#define JOB_CONTRACTOR_COVTL			"VAISO Team Leader"
+#define JOB_CONTRACTOR_COVSYN			"VAISO Support Synthetic"
 
 //-------- UPP --------//
 #define JOB_UPP							"UPP Private"
@@ -252,11 +252,11 @@ var/global/list/job_command_roles = JOB_COMMAND_ROLES_LIST
 #define TIS_JOB_LIST					list(JOB_TIS_SA, JOB_TIS_IO)
 
 //-------- DUTCH'S DOZEN --------//
-#define JOB_DUTCH_ARNOLD "Dutch's Dozen - Dutch"
-#define JOB_DUTCH_RIFLEMAN "Dutch's Dozen - Rifleman"
-#define JOB_DUTCH_MINIGUNNER "Dutch's Dozen - Minigunner"
-#define JOB_DUTCH_FLAMETHROWER "Dutch's Dozen - Flamethrower"
-#define JOB_DUTCH_MEDIC "Dutch's Dozen - Medic"
+#define JOB_DUTCH_ARNOLD				"Dutch's Dozen - Dutch"
+#define JOB_DUTCH_RIFLEMAN				"Dutch's Dozen - Rifleman"
+#define JOB_DUTCH_MINIGUNNER			"Dutch's Dozen - Minigunner"
+#define JOB_DUTCH_FLAMETHROWER			"Dutch's Dozen - Flamethrower"
+#define JOB_DUTCH_MEDIC					"Dutch's Dozen - Medic"
 
 #define DUTCH_JOB_LIST					list(JOB_DUTCH_ARNOLD, JOB_DUTCH_RIFLEMAN, JOB_DUTCH_MINIGUNNER, JOB_DUTCH_FLAMETHROWER, JOB_DUTCH_MEDIC)
 
@@ -270,12 +270,12 @@ var/global/list/job_command_roles = JOB_COMMAND_ROLES_LIST
 #define JOB_PLAYTIME_TIER_3		(70 HOURS)
 #define JOB_PLAYTIME_TIER_4		(175 HOURS)
 
-#define XENO_NO_AGE	-1
+#define XENO_NO_AGE		-1
 #define XENO_NORMAL		0
 #define XENO_MATURE		1
 #define XENO_ELDER		2
 #define XENO_ANCIENT	3
-#define XENO_PRIME	4
+#define XENO_PRIME		4
 
 #define JOB_OBSERVER					"Observer" // For monthly time tracking
 

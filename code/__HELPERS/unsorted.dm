@@ -1279,7 +1279,7 @@ var/global/image/action_purple_power_up
 	//Takes: Area. Optional: turf type to leave behind.
 	//Returns: Nothing.
 	//Notes: Attempts to move the contents of one area to another area.
-	//       Movement based on lower left corner. Tiles that do not fit
+	//		Movement based on lower left corner. Tiles that do not fit
 	//		 into the new area will not be moved.
 
 	if(!A || !src) return 0
@@ -1454,14 +1454,14 @@ var/global/image/action_purple_power_up
 
 /proc/reverse_nearby_direction(direction)
 	switch(direction)
-		if(NORTH) 		return list(SOUTH,     SOUTHEAST, SOUTHWEST)
-		if(NORTHEAST) 	return list(SOUTHWEST, SOUTH,     WEST)
-		if(EAST) 		return list(WEST,      SOUTHWEST, NORTHWEST)
-		if(SOUTHEAST) 	return list(NORTHWEST, NORTH,     WEST)
-		if(SOUTH) 		return list(NORTH,     NORTHEAST, NORTHWEST)
-		if(SOUTHWEST) 	return list(NORTHEAST, NORTH,     EAST)
-		if(WEST) 		return list(EAST,      NORTHEAST, SOUTHEAST)
-		if(NORTHWEST) 	return list(SOUTHEAST, SOUTH,     EAST)
+		if(NORTH) 		return list(SOUTH,	 SOUTHEAST, SOUTHWEST)
+		if(NORTHEAST) 	return list(SOUTHWEST, SOUTH,	 WEST)
+		if(EAST) 		return list(WEST,	  SOUTHWEST, NORTHWEST)
+		if(SOUTHEAST) 	return list(NORTHWEST, NORTH,	 WEST)
+		if(SOUTH) 		return list(NORTH,	 NORTHEAST, NORTHWEST)
+		if(SOUTHWEST) 	return list(NORTHEAST, NORTH,	 EAST)
+		if(WEST) 		return list(EAST,	  NORTHEAST, SOUTHEAST)
+		if(NORTHWEST) 	return list(SOUTHEAST, SOUTH,	 EAST)
 
 /*
 Checks if that loc and dir has a item on the wall
@@ -1845,7 +1845,7 @@ var/list/WALLITEMS = list(
 		return
 	targetmob.hear_say(message, verb, language, "", italics, sourcemob) // proxies speech itself to the mob
 	if(targetmob && targetmob.client && targetmob.client.prefs && !targetmob.client.prefs.lang_chat_disabled \
-	   && !targetmob.ear_deaf && targetmob.say_understands(sourcemob, language))
+		&& !targetmob.ear_deaf && targetmob.say_understands(sourcemob, language))
 		sourcemob.langchat_display_image(targetmob) // strap langchat display on
 #endif // ifdef OBJECTS_PROXY_SPEECH
 

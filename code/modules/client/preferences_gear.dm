@@ -7,12 +7,12 @@ var/global/list/gear_datums = list()
 	return 1
 
 /datum/gear
-	var/display_name         // Name/index.
-	var/path                 // Path to item.
-	var/cost                 // Number of points used.
-	var/slot                 // Slot to equip to.
-	var/list/allowed_roles   // Roles that can spawn with this item.
-	var/whitelisted          // Term to check the whitelist for..
+	var/display_name		// Name/index.
+	var/path				// Path to item.
+	var/cost				// Number of points used.
+	var/slot				// Slot to equip to.
+	var/list/allowed_roles	// Roles that can spawn with this item.
+	var/whitelisted			// Term to check the whitelist for..
 	var/list/allowed_origins
 
 // This is sorted both by slot and alphabetically! Don't fuck it up!

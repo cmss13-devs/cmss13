@@ -13,15 +13,15 @@ SUBSYSTEM_DEF(projectiles)
 
 	/*
 	 * Scheduling notes:
-	 *  We have three different types of projectile collisions:
+	 *	We have three different types of projectile collisions:
 	 *
-	 *   1. Travel hit: moving the bullet resulted in a scan collision.
-	 *      This can be resolved immediately, on Subsystem time.
-	 *   2. Passive hit: something else triggered Collide/Crossed()
-	 *      -- This is scheduled on caller time for simplicity. --
-	 *      It includes impacts as a direct result of firing the gun.
-	 *   3. Chain hit: Collide/Crossed() is triggered on SS time.
-	 *      This can happen eg. if a rocket knocks someone on a bullet.
+	 *	1. Travel hit: moving the bullet resulted in a scan collision.
+	 *		This can be resolved immediately, on Subsystem time.
+	 *	2. Passive hit: something else triggered Collide/Crossed()
+	 *		-- This is scheduled on caller time for simplicity. --
+	 *		It includes impacts as a direct result of firing the gun.
+	 *	3. Chain hit: Collide/Crossed() is triggered on SS time.
+	 *		This can happen eg. if a rocket knocks someone on a bullet.
 	 *
 	 * Aside from performance, this can matter for order of operations.
 	 */

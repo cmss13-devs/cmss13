@@ -1,9 +1,9 @@
 var/list/weather_notify_objects = list()
 
 SUBSYSTEM_DEF(weather)
-	name          = "Weather"
-	wait          = 5 SECONDS
-	priority      = SS_PRIORITY_LIGHTING
+	name			= "Weather"
+	wait			= 5 SECONDS
+	priority		= SS_PRIORITY_LIGHTING
 
 	// Tracking vars for controller state
 	var/is_weather_event = FALSE			// Is there a weather event going on right now?

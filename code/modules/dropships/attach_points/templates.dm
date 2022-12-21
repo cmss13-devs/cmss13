@@ -6,40 +6,40 @@
 	icon_state = "equip_base_l_wing"
 	attach_id = 1
 	dir = WEST
-	firing_arc_min = -3
-	firing_arc_max =  3
-	transverse     = -3
-	long           =  0
+	firing_arc_min	= -3
+	firing_arc_max	= 3
+	transverse		= -3
+	long			= 0
 
 /obj/effect/attach_point/weapon/dropship1/left_fore
 	name = "port fore weapon attach point"
 	attach_id = 2
 	dir = NORTH
-	firing_arc_min = -6
-	firing_arc_max =  0
-	transverse     =  0
-	long           =  0
+	firing_arc_min	= -6
+	firing_arc_max	= 0
+	transverse		= 0
+	long			= 0
 
 /obj/effect/attach_point/weapon/dropship1/right_fore
 	name = "starboard fore weapon attach point"
 	attach_id = 3
 	dir = NORTH
-	firing_arc_min =  0
-	firing_arc_max =  6
-	transverse     =  0
-	long           =  0
+	firing_arc_min	= 0
+	firing_arc_max	= 6
+	transverse		= 0
+	long			= 0
 
 /obj/effect/attach_point/weapon/dropship1/right_wing
 	name = "starboard wing weapon attach point"
 	icon_state = "equip_base_r_wing";
 	attach_id = 4
 	dir = EAST
-	firing_arc_min = -3
-	firing_arc_max =  3
-	transverse     =  3
-	long           =  0
+	firing_arc_min	= -3
+	firing_arc_max	= 3
+	transverse		= 3
+	long			= 0
 
-/obj/effect/attach_point/weapon/dropship2
+/obj/effect/attach_poi nt/weapon/dropship2
 	ship_tag = DROPSHIP_TAG_TEMPLATE2
 
 /obj/effect/attach_point/weapon/dropship2/left_wing
@@ -48,37 +48,37 @@
 	attach_id = 1
 	dir = WEST
 	firing_arc_min = -3
-	firing_arc_max =  3
-	transverse     = -3
-	long           =  0
+	firing_arc_max =	3
+	transverse	 = -3
+	long			=	0
 
 /obj/effect/attach_point/weapon/dropship2/left_fore
 	name = "port fore weapon attach point"
 	attach_id = 2
 	dir = NORTH
 	firing_arc_min = -6
-	firing_arc_max =  0
-	transverse     =  0
-	long           =  0
+	firing_arc_max =	0
+	transverse	 =	0
+	long			=	0
 
 /obj/effect/attach_point/weapon/dropship2/right_fore
 	name = "starboard fore weapon attach point"
 	attach_id = 3
 	dir = NORTH
-	firing_arc_min =  0
-	firing_arc_max =  6
-	transverse     =  0
-	long           =  0
+	firing_arc_min =	0
+	firing_arc_max =	6
+	transverse	 =		0
+	long			=	0
 
 /obj/effect/attach_point/weapon/dropship2/right_wing
 	name = "starboard wing weapon attach point"
 	icon_state = "equip_base_r_wing";
 	attach_id = 4
 	dir = EAST
-	firing_arc_min = -3
-	firing_arc_max =  3
-	transverse     =  3
-	long           =  0
+	firing_arc_min =	-3
+	firing_arc_max =	3
+	transverse	 =		3
+	long			=	0
 
 /obj/effect/attach_point/crew_weapon
 	name = "crew compartment attach point"

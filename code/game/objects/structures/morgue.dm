@@ -81,7 +81,6 @@
 	playsound(loc, 'sound/items/Deconstruct.ogg', 25, 1)
 	update_icon()
 
-
 /obj/structure/morgue/attackby(obj/item/P, mob/user)
 	if(istype(P, /obj/item/weapon/zombie_claws))
 		attack_hand()
@@ -104,7 +103,6 @@
 	if(user.is_mob_incapacitated(TRUE))
 		return
 	toggle_morgue(user)
-
 
 /*
  * Morgue tray
@@ -159,7 +157,6 @@
 	update_icon()
 	. = ..()
 
-
 /*
  * Crematorium
  */
@@ -173,7 +170,6 @@
 	morgue_type = "crema"
 	var/cremating = 0
 	var/id = 1
-
 
 /obj/structure/morgue/crematorium/toggle_morgue(mob/user)
 	if(cremating)
@@ -192,7 +188,6 @@
 		icon_state = "[morgue_type]_active"
 	else
 		..()
-
 
 /obj/structure/morgue/crematorium/proc/cremate(mob/user)
 	set waitfor = 0
@@ -233,7 +228,6 @@
 		update_icon()
 		playsound(src.loc, 'sound/machines/ding.ogg', 25, 1)
 
-
 /*
  * Crematorium tray
  */
@@ -242,7 +236,6 @@
 	name = "crematorium tray"
 	desc = "Apply body before burning."
 	icon_state = "cremat"
-
 
 /*
  * Crematorium switch
@@ -257,25 +250,22 @@
 	else
 		to_chat(user, SPAN_DANGER("Access denied."))
 
-
-
 /*
  * Sarcophagus
  */
 
 /obj/structure/morgue/sarcophagus
-    name = "sarcophagus"
-    desc = "Used to store predators."
-    icon_state = "sarcophagus1"
-    morgue_type = "sarcophagus"
-    tray_path = /obj/structure/morgue_tray/sarcophagus
-
+	name = "sarcophagus"
+	desc = "Used to store predators."
+	icon_state = "sarcophagus1"
+	morgue_type = "sarcophagus"
+	tray_path = /obj/structure/morgue_tray/sarcophagus
 
 /*
  * Sarcophagus tray
  */
 
 /obj/structure/morgue_tray/sarcophagus
-    name = "sarcophagus tray"
-    desc = "Apply corpse before closing."
-    icon_state = "sarcomat"
+	name = "sarcophagus tray"
+	desc = "Apply corpse before closing."
+	icon_state = "sarcomat"

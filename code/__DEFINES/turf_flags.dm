@@ -11,6 +11,6 @@
 #define TURF_ORGANIC				(1<<0)
 
 
-#define REMOVE_CROWBAR     (1<<0)
-#define BREAK_CROWBAR      (1<<1)
-#define REMOVE_SCREWDRIVER (1<<2)
+#define REMOVE_CROWBAR		(1<<0)
+#define BREAK_CROWBAR		(1<<1)
+#define REMOVE_SCREWDRIVER	(1<<2)

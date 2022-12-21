@@ -12,7 +12,7 @@
 
 	flags_equip_slot = SLOT_EAR
 	inherent_traits = list(TRAIT_ITEM_EAR_EXCLUSIVE)
-	var/translate_binary = FALSE
+	var/translate_apollo = FALSE
 	var/translate_hive = FALSE
 	var/maximum_keys = 3
 	var/list/initial_keys //Typepaths of objects to be created at initialisation.
@@ -78,7 +78,7 @@
 
 /obj/item/device/radio/headset/handle_message_mode(mob/living/M as mob, message, channel)
 	if (channel == RADIO_CHANNEL_SPECIAL)
-		if (translate_binary)
+		if (translate_apollo)
 			var/datum/language/apollo = GLOB.all_languages[LANGUAGE_APOLLO]
 			apollo.broadcast(M, message)
 		if (translate_hive)
@@ -176,7 +176,7 @@
 		SSradio.remove_object(src, radiochannels[ch_name])
 		secure_radio_connections[ch_name] = null
 	channels = list()
-	translate_binary = FALSE
+	translate_apollo = FALSE
 	translate_hive = FALSE
 	syndie = FALSE
 
@@ -190,8 +190,8 @@
 			channels[ch_name] = key.channels[ch_name]
 		for(var/tracking_option in key.tracking_options)
 			tracking_options[tracking_option] = key.tracking_options[tracking_option]
-		if(key.translate_binary)
-			translate_binary = TRUE
+		if(key.translate_apollo)
+			translate_apollo = TRUE
 		if(key.translate_hive)
 			translate_hive = TRUE
 		if(key.syndie)

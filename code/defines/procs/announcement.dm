@@ -82,13 +82,17 @@
 	announcement_helper(message, title, targets, sound_to_play)
 
 //AI announcement that uses talking into comms
-/proc/ai_announcement(var/message, var/sound_to_play = sound('sound/misc/interference.ogg'))
-	for(var/mob/M in (GLOB.human_mob_list + GLOB.dead_mob_list))
-		if(isobserver(M) || ishuman(M) && is_mainship_level(M.z))
-			playsound_client(M.client, sound_to_play, M, vol = 45)
+/proc/ai_announcement(var/message, var/sound_to_play = sound('sound/misc/interference.ogg'), var/apollo = FALSE)
+	if(!apollo)
+		for(var/mob/M in (GLOB.human_mob_list + GLOB.dead_mob_list))
+			if(isobserver(M) || ishuman(M) && is_mainship_level(M.z))
+				playsound_client(M.client, sound_to_play, M, vol = 45)
 
 	for(var/mob/living/silicon/decoy/ship_ai/AI in ai_mob_list)
 		INVOKE_ASYNC(AI, TYPE_PROC_REF(/mob/living/silicon/decoy/ship_ai, say), message)
+
+		for(var/mob/living/silicon/decoy/ship_ai/AI in ai_mob_list)
+			INVOKE_ASYNC(AI, /mob/living/silicon/decoy/ship_ai.proc/say, message, 1)
 
 /proc/ai_silent_announcement(var/message, var/channel_prefix, bypass_cooldown = FALSE)
 	if(!message)

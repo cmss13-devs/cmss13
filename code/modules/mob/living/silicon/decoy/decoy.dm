@@ -40,7 +40,7 @@
 	addtimer(CALLBACK(GLOBAL_PROC, PROC_REF(explosion), loc, -1, 0, 8, 12), 2 SECONDS)
 	return ..()
 
-/mob/living/silicon/decoy/say(message, new_sound) //General communication across the ship.
+/mob/living/silicon/decoy/say(message, var/language = 2) //General communication across the ship.
 	if(stat || !message)
 		return FALSE
 
@@ -53,7 +53,7 @@
 		if("broadcast") message_mode = "headset"
 		else message = copytext(message, 3)
 
-	ai_headset.talk_into(src, message, message_mode, "states", languages[1])
+	ai_headset.talk_into(src, message, message_mode, "states", languages[language])
 	return TRUE
 
 /mob/living/silicon/decoy/parse_message_mode(message)

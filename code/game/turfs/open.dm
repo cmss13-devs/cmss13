@@ -453,13 +453,13 @@
 		var/mob/unlucky_mob = AM
 		var/turf/target_turf = get_random_turf_in_range(AM.loc, 3, 0)
 		var/datum/launch_metadata/LM = new()
-		LM.target = A
+		LM.target = target_turf
 		LM.range = get_dist(AM.loc, target_turf)
 		LM.speed = SPEED_FAST
 		LM.thrower = unlucky_mob
 		LM.spin = TRUE
 		LM.pass_flags = NO_FLAGS
-		to_chat(rivermob, SPAN_WARNING("The ocean currents sweep you off your feet and throw you away!"))
+		to_chat(unlucky_mob, SPAN_WARNING("The ocean currents sweep you off your feet and throw you away!"))
 		unlucky_mob.launch_towards(LM)
 		return
 

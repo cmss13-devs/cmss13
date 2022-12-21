@@ -491,12 +491,12 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 			var/new_layer = S.bleed_layer - 1
 			S.changing_layer(new_layer)
 
-	for(var/mob/living/M in loc) //Deal bonus damage if someone's caught directly in initial stream
-		if(M.stat == DEAD)
+	for(var/mob/living/ignited_morb in loc) //Deal bonus damage if someone's caught directly in initial stream
+		if(ignited_morb.stat == DEAD)
 			continue
 
-		if(ishuman(M))
-			var/mob/living/carbon/human/H = M //fixed :s
+		if(ishuman(ignited_morb))
+			var/mob/living/carbon/human/H = ignited_morb //fixed :s
 
 			if(weapon_cause_data)
 				var/mob/user = weapon_cause_data.resolve_mob()
@@ -519,31 +519,32 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 				if(weapon_cause_data.cause_name)
 					H.track_shot_hit(weapon_cause_data.cause_name, H)
 
-		var/fire_intensity_resistance = M.check_fire_intensity_resistance()
+		var/fire_intensity_resistance = ignited_morb.check_fire_intensity_resistance()
 		var/firedamage = max(burn_dam - fire_intensity_resistance, 0)
 		if(!firedamage)
 			continue
 
-		var/sig_result = SEND_SIGNAL(M, COMSIG_LIVING_FLAMER_FLAMED, tied_reagent)
+		var/sig_result = SEND_SIGNAL(ignited_morb, COMSIG_LIVING_FLAMER_FLAMED, tied_reagent)
 
 		if(!(sig_result & COMPONENT_NO_IGNITE))
 			switch(fire_variant)
 				if(FIRE_VARIANT_TYPE_B) //Armor Shredding Greenfire, super easy to pat out. 50 duration -> 10 stacks (1 pat/resist)
-					M.TryIgniteMob(round(tied_reagent.durationfire / 5), tied_reagent)
+					ignited_morb.TryIgniteMob(round(tied_reagent.durationfire / 5), tied_reagent)
 				else
-					M.TryIgniteMob(tied_reagent.durationfire, tied_reagent)
+					ignited_morb.TryIgniteMob(tied_reagent.durationfire, tied_reagent)
 
 		if(sig_result & COMPONENT_NO_BURN)
 			continue
 
-		M.last_damage_data = weapon_cause_data
-		M.apply_damage(firedamage, BURN)
+		ignited_morb.last_damage_data = weapon_cause_data
+		ignited_morb.apply_damage(firedamage, BURN)
+		animation_flash_color(ignited_morb, tied_reagent.burncolor) //pain hit flicker
 
 		var/msg = "Augh! You are roasted by the flames!"
-		if (isXeno(M))
-			to_chat(M, SPAN_XENODANGER(msg))
+		if (isXeno(ignited_morb))
+			to_chat(ignited_morb, SPAN_XENODANGER(msg))
 		else
-			to_chat(M, SPAN_HIGHDANGER(msg))
+			to_chat(ignited_morb, SPAN_HIGHDANGER(msg))
 
 		if(weapon_cause_data)
 			var/mob/SM = weapon_cause_data.resolve_mob()

@@ -29,7 +29,7 @@
 	qdel(cam_screen)
 
 /obj/item/device/sentry_computer
-	name = "Sentry Computer"
+	name = "sentry computer"
 	desc = "A laptop loaded with sentry control software."
 	icon = 'icons/obj/structures/props/sentrycomp.dmi'
 	icon_state = "sentrycomp_cl"

@@ -1,0 +1,4 @@
+author: "Crowbar764"
+delete-after: True
+changes:
+  - bugfix: "fixed a runtime with ballistic goggles"

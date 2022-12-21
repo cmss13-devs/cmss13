@@ -52496,7 +52496,6 @@
 /area/almayer/squads/req)
 "krS" = (
 /obj/structure/machinery/camera/autoname/almayer{
-	dir = 1;
 	name = "ship-grade camera";
 	tag = ""
 	},
@@ -52574,11 +52573,6 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
 	tag = "icon-N"
-	},
-/obj/structure/machinery/camera/autoname/almayer{
-	dir = 1;
-	name = "ship-grade camera";
-	tag = "icon-camera (NORTH)"
 	},
 /obj/structure/closet/secure_closet/guncabinet/red,
 /obj/item/weapon/gun/rifle/l42a,
@@ -52783,7 +52777,6 @@
 	},
 /obj/structure/machinery/cm_vending/sorted/marine_food,
 /obj/structure/machinery/camera/autoname/almayer{
-	dir = 8;
 	name = "ship-grade camera";
 	tag = "icon-camera (EAST)"
 	},
@@ -61086,7 +61079,7 @@
 /area/almayer/squads/bravo)
 "odD" = (
 /obj/structure/machinery/camera/autoname/almayer{
-	dir = 4;
+	dir = 8;
 	name = "ship-grade camera";
 	tag = ""
 	},
@@ -78010,6 +78003,21 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/hallways/hangar)
+"vsI" = (
+/obj/structure/closet/secure_closet/guncabinet/riot_control,
+/obj/item/weapon/shield/riot,
+/obj/item/weapon/shield/riot,
+/obj/item/weapon/shield/riot,
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	tag = "icon-S"
+	},
+/obj/structure/machinery/camera/autoname/almayer{
+	name = "ship-grade camera";
+	tag = ""
+	},
+/turf/open/floor/plating/almayer,
+/area/almayer/shipboard/brig/armory)
 "vsJ" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
 	dir = 1;
@@ -84940,7 +84948,7 @@
 /area/almayer/squads/charlie)
 "yiX" = (
 /obj/structure/machinery/camera/autoname/almayer{
-	dir = 1;
+	dir = 8;
 	name = "ship-grade camera";
 	tag = ""
 	},
@@ -97079,7 +97087,7 @@ ahE
 wcn
 nBc
 lrq
-mAr
+vsI
 uqo
 xoS
 lrq

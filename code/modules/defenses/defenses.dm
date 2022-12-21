@@ -162,7 +162,7 @@
 		if(friendly_faction(user.faction))
 			var/obj/item/device/multitool/tool = O
 			if(length(tool.encryption_keys) > 0)
-				if(linked_laptop == null)
+				if(!linked_laptop)
 					// register
 					var/key_found = FALSE
 					for(var/i in tool.encryption_keys)

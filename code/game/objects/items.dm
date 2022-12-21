@@ -97,7 +97,7 @@
 
 	var/mob/living/carbon/human/locked_to_mob = null	// If the item uses flag MOB_LOCK_ON_PICKUP, this is the mob owner reference.
 
-	var/list/equip_sounds//Sounds played when this item is equipped
+	var/list/equip_sounds //Sounds played when this item is equipped
 	var/list/unequip_sounds //Same but when unequipped
 
 	 ///Vision impairing effect if worn on head/mask/glasses.
@@ -744,7 +744,7 @@ cases. Override_icon_state should be a list.*/
 
 /obj/item/proc/showoff(mob/user)
 	for (var/mob/M in view(user))
-		M.show_message("[user] holds up [src]. <a HREF=?src=\ref[M];lookitem=\ref[src]>Take a closer look.</a>",1)
+		M.show_message("[user] holds up [src]. <a HREF=?src=\ref[M];lookitem=\ref[src]>Take a closer look.</a>", SHOW_MESSAGE_VISIBLE)
 
 /mob/living/carbon/verb/showoff()
 	set name = "Show Held Item"

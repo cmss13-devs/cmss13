@@ -267,7 +267,7 @@
 	if(owner.chem_effect_flags & CHEM_EFFECT_ORGAN_STASIS)
 		return
 	if(organ_status >= ORGAN_BRUISED)
-		owner.eye_blurry = 20
+		owner.SetEyeBlur(20)
 	if(organ_status >= ORGAN_BROKEN)
 		owner.eye_blind = 20
 

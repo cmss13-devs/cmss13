@@ -1,0 +1,4 @@
+author: "ThePiachu"
+delete-after: True
+changes:
+  - bugfix: "Fixed a super snowflake admin proc appearing where it doesn't belong."

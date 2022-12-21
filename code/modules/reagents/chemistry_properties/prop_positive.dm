@@ -124,7 +124,7 @@
 	name = PROPERTY_NERVESTIMULATING
 	code = "NST"
 	description = "Increases neuron communication speed across synapses resulting in improved reaction time, awareness and muscular control."
-	rarity = PROPERTY_UNCOMMON
+	rarity = PROPERTY_RARE
 	category = PROPERTY_TYPE_STIMULANT
 	value = 3
 
@@ -136,7 +136,7 @@
 	if(potency > CREATE_MAX_TIER_1)
 		M.stuttering = max(M.stuttering - POTENCY_MULTIPLIER_MEDIUM * potency, 0)
 		M.confused = max(M.confused - POTENCY_MULTIPLIER_MEDIUM * potency, 0)
-		M.eye_blurry = max(M.eye_blurry - POTENCY_MULTIPLIER_MEDIUM * potency, 0)
+		M.ReduceEyeBlur(POTENCY_MULTIPLIER_MEDIUM * potency)
 		M.drowsyness = max(M.drowsyness - POTENCY_MULTIPLIER_MEDIUM * potency, 0)
 		M.dizziness = max(M.dizziness - POTENCY_MULTIPLIER_MEDIUM * potency, 0)
 		M.jitteriness = max(M.jitteriness - POTENCY_MULTIPLIER_MEDIUM * potency, 0)
@@ -157,7 +157,7 @@
 	name = PROPERTY_MUSCLESTIMULATING
 	code = "MST"
 	description = "Stimulates neuromuscular junctions increasing the force of muscle contractions, resulting in increased strength. High doses might exhaust the cardiac muscles."
-	rarity = PROPERTY_UNCOMMON
+	rarity = PROPERTY_RARE
 	category = PROPERTY_TYPE_STIMULANT
 
 /datum/chem_property/positive/musclestimulating/process(mob/living/M, var/potency = 1)
@@ -284,7 +284,7 @@
 	if(!ishuman(M))
 		return
 	M.apply_internal_damage(-potency, "eyes")
-	M.eye_blurry = max(M.eye_blurry-POTENCY_MULTIPLIER_VHIGH*potency , 0)
+	M.ReduceEyeBlur(POTENCY_MULTIPLIER_VHIGH*potency)
 	M.eye_blind = max(M.eye_blind-POTENCY_MULTIPLIER_VHIGH*potency , 0)
 
 /datum/chem_property/positive/oculopeutic/process_overdose(mob/living/M, var/potency = 1)

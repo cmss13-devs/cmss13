@@ -1,7 +1,7 @@
 /*
-obj/effect/landmark/desertdam
+/obj/effect/landmark/desertdam
 	icon = 'icons/misc/mark.dmi'
-obj/effect/landmark/desertdam/river_blocker
+/obj/effect/landmark/desertdam/river_blocker
 	name = "toxic river blocker"
 	icon_state = "spawn_event"
 
@@ -281,7 +281,7 @@ var/global/east_riverstart = 0
 	var/id = null
 	var/active = 0
 	anchored = 1.0
-	use_power = POWER_USE_IDLE_POWER
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 2
 	active_power_usage = 4
 	unslashable = TRUE

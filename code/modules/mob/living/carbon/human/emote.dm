@@ -756,10 +756,10 @@
 				M.show_message(message)
 
 
-		if(m_type & 1)
+		if(m_type & SHOW_MESSAGE_VISIBLE)
 			for (var/mob/O in get_mobs_in_view(world_view_size,src))
 				O.show_message(message, m_type)
-		else if(m_type & 2)
+		else if(m_type & SHOW_MESSAGE_AUDIBLE)
 			for (var/mob/O in (hearers(src.loc, null)|get_mobs_in_view(world_view_size,src)))
 				O.show_message(message, m_type)
 

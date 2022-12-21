@@ -212,7 +212,7 @@
 	icon_state = "shower"
 	density = 0
 	anchored = 1
-	use_power = POWER_USE_NO_POWER
+	use_power = USE_POWER_NONE
 	var/on = 0
 	var/obj/effect/mist/mymist = null
 	var/ismist = 0				//needs a var so we can make it linger~
@@ -480,7 +480,7 @@
 	if(ishuman(user))
 		user:update_inv_gloves()
 	for(var/mob/V in viewers(src, null))
-		V.show_message(SPAN_NOTICE("[user] washes their hands using \the [src]."))
+		V.show_message(SPAN_NOTICE("[user] washes their hands using \the [src]."), SHOW_MESSAGE_VISIBLE)
 
 
 /obj/structure/sink/attackby(obj/item/O as obj, mob/user as mob)

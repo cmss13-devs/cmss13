@@ -426,7 +426,7 @@
 		valid_count++
 
 	// This is the heal
-	if(!X.on_fire)
+	if(!xeno.on_fire)
 		xeno.gain_health(Clamp(valid_count * lifesteal_per_marine, 0, max_lifesteal))
 
 	xeno.frozen = 0

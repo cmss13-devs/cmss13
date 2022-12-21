@@ -1,32 +1,4 @@
 #define DEFAULT_MAP_SIZE 15
-// can we refactor out the camera information to a datum? It would be really cool.
-/datum/camera_holder
-	// Stuff needed to render the map
-	var/map_name
-	var/atom/movable/screen/map_view/cam_screen
-	var/atom/movable/screen/background/cam_background
-
-	/// The turf where the camera was last updated.
-	var/turf/last_camera_turf
-
-	/// All turfs within range of the currently active camera
-	var/list/range_turfs = list()
-
-/datum/camera_holder/proc/Setup(var/mapName)
-	map_name = mapName
-	cam_screen = new
-	cam_screen.name = "screen"
-	cam_screen.assigned_map = map_name
-	cam_screen.del_on_map_removal = FALSE
-	cam_screen.screen_loc = "[map_name]:1,1"
-	cam_background = new
-	cam_background.assigned_map = map_name
-	cam_background.del_on_map_removal = FALSE
-
-/datum/camera_holder/Destroy(force, ...)
-	. = ..(force)
-	qdel(cam_background)
-	qdel(cam_screen)
 
 /obj/item/device/sentry_computer
 	name = "sentry computer"
@@ -106,7 +78,7 @@
 	return TRUE
 
 /obj/item/device/sentry_computer/proc/setup(var/obj/structure/surface/target)
-	if (do_after(usr, 2, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
+	if (do_after(usr, 10, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
 		setup = TRUE
 		usr.drop_inv_item_to_loc(src, target.loc)
 	else
@@ -192,7 +164,7 @@
 		var/obj/item/device/multitool/tool = object
 		var/id = tool.serial_number
 		playsound(src, get_sfx("terminal_type"), 25, FALSE)
-		if (do_after(usr, 2, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
+		if (do_after(usr, 10, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
 			if(tool.remove_encryption_key(serial_number))
 				to_chat(user, SPAN_NOTICE("You unload the encryption key to the [tool]."))
 				registered_tools -= list(id)
@@ -204,7 +176,7 @@
 		..()
 
 /obj/item/device/sentry_computer/proc/register(var/tool, mob/user, var/sentry_gun)
-	if (do_after(user, 2, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
+	if (do_after(user, 10, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
 		var/obj/structure/machinery/defenses/sentry/sentry = sentry_gun
 		pair_sentry(sentry)
 		to_chat(user, SPAN_NOTICE("\The [sentry] has been encrypted."))
@@ -214,7 +186,7 @@
 /obj/item/device/sentry_computer/proc/unregister(var/tool, mob/user, var/sentry_gun)
 	var/obj/structure/machinery/defenses/sentry/sentry = sentry_gun
 	if(sentry.linked_laptop == src)
-		if (do_after(user, 2, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
+		if (do_after(user, 10, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
 			unpair_sentry(sentry)
 			to_chat(user, SPAN_NOTICE("\The [sentry] has been decrypted."))
 			var/message = "[sentry] removed from from [src]"
@@ -268,7 +240,7 @@
 		sentry_holder["index"] = index
 		sentry_holder["name"] = sentrygun.name
 		sentry_holder["health_max"] = sentrygun.health_max
-		index += 1
+		index++
 
 		for(var/i in sentrygun.choice_categories)
 			sentry_holder["selection_menu"] += list(list("[i]", sentrygun.choice_categories[i]))
@@ -292,7 +264,7 @@
 		var/obj/structure/machinery/defenses/defence = sentry
 		if(current == defence)
 			.["camera_target"] = index
-		index += 1
+		index++
 
 		sentry_holder["area"] = get_area(defence)
 		sentry_holder["active"] = defence.turned_on

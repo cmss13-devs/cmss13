@@ -524,7 +524,7 @@
 		return
 	target.color = (pick("red", "green"))
 	target.visible_message(SPAN_GREEN("\The [target] has been festivized by [user]! Merry Christmas!"))
-	to_chat(user, SPAN_GREEN("You festivize \the [target]! Merry christmas!"))
+	to_chat(user, SPAN_GREEN("You festivize \the [target]! Merry Christmas!"))
 	if(prob(5))
 		playsound(target, 'sound/voice/alien_queen_xmas.ogg', 25, TRUE)
 
@@ -533,8 +533,8 @@
 	return XENO_NONCOMBAT_ACTION
 
 /obj/item/toy/festivizer/xeno
-	name = "strange 'Festivizer' decorator"
-	desc = "This bizarre festivizer is covered in goopy goop and schmuck. Ew! It's so sticky, anything could grab onto it! Grab it and touch other things to festivize them!"
+	name = "strange resin-covered festivizer decorator"
+	desc = "This bizarre festivizer is covered in goopy goop and schmuck. Ew! It's so sticky, *anything* could grab onto it! Grab it and touch other things to festivize them!"
 
 /obj/item/toy/festivizer/xeno/Initialize(mapload, ...)
 	. = ..()

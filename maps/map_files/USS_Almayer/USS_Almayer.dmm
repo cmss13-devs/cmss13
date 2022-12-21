@@ -24498,19 +24498,38 @@
 /area/almayer/hallways/hangar)
 "bEP" = (
 /obj/item/storage/box/gloves{
-	pixel_x = -5;
-	pixel_y = -5
+	pixel_x = 7;
+	pixel_y = -2;
+	layer = 3.2
 	},
+/obj/structure/surface/table/reinforced/prison,
 /obj/item/storage/box/gloves{
-	pixel_x = 5;
-	pixel_y = 5
+	pixel_x = 7;
+	pixel_y = 2
 	},
 /obj/item/storage/box/masks{
-	pixel_x = -5;
-	pixel_y = 5
+	pixel_x = -7;
+	pixel_y = -2;
+	layer = 3.2
 	},
-/obj/item/storage/box/masks,
-/obj/structure/surface/table/reinforced/prison,
+/obj/item/storage/box/gloves{
+	pixel_x = 7;
+	pixel_y = 2;
+	layer = 3.1
+	},
+/obj/item/storage/box/gloves{
+	pixel_x = 7;
+	pixel_y = 6
+	},
+/obj/item/storage/box/masks{
+	pixel_x = -7;
+	pixel_y = 2;
+	layer = 3.1
+	},
+/obj/item/storage/box/masks{
+	pixel_x = -7;
+	pixel_y = 6
+	},
 /turf/open/floor/almayer{
 	icon_state = "sterile_green";
 	tag = "icon-sterile"
@@ -24532,13 +24551,6 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/squads/bravo)
-"bET" = (
-/obj/structure/machinery/iv_drip,
-/turf/open/floor/almayer{
-	icon_state = "sterile_green_side";
-	tag = "icon-sterile"
-	},
-/area/almayer/medical/lower_medical_lobby)
 "bEU" = (
 /turf/open/floor/almayer{
 	dir = 1;
@@ -56568,19 +56580,8 @@
 /area/almayer/living/briefing)
 "mgg" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/item/storage/box/gloves{
-	pixel_x = 5;
-	pixel_y = 12
-	},
-/obj/item/storage/box/masks{
-	pixel_x = 5
-	},
 /obj/structure/closet/secure_closet/surgical{
 	pixel_y = 30
-	},
-/obj/item/reagent_container/glass/minitank{
-	pixel_x = -7;
-	pixel_y = 4
 	},
 /turf/open/floor/almayer{
 	icon_state = "sterile_green";
@@ -56807,6 +56808,10 @@
 /obj/item/reagent_container/hypospray,
 /obj/item/reagent_container/hypospray,
 /obj/structure/surface/table/reinforced/prison,
+/obj/item/reagent_container/glass/minitank{
+	pixel_x = -9;
+	pixel_y = 4
+	},
 /turf/open/floor/almayer{
 	icon_state = "sterile_green";
 	tag = "icon-sterile"
@@ -80347,6 +80352,14 @@
 	tag = "icon-rasputin3"
 	},
 /area/almayer/powered/agent)
+"wpk" = (
+/obj/structure/machinery/iv_drip,
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "sterile_green_side";
+	tag = "icon-sterile_green_side (NORTH)"
+	},
+/area/almayer/medical/lower_medical_lobby)
 "wpz" = (
 /obj/item/device/radio/intercom{
 	freerange = 1;
@@ -105971,7 +105984,7 @@ aaa
 aaa
 aaa
 aaa
-aaa
+bdH
 aaa
 aaa
 aaa
@@ -106170,7 +106183,7 @@ aaa
 aaa
 aaa
 aaa
-aaa
+bdH
 aaa
 aaa
 aaa
@@ -106374,11 +106387,11 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+bdH
+bdH
+bdH
+bdH
+bdH
 aaa
 aaa
 aaa
@@ -106576,12 +106589,12 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
 aaa
 aaa
 aaa
@@ -106780,11 +106793,11 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+bdH
+bdH
+bdH
+bdH
+bdH
 aaa
 aaa
 aaa
@@ -106983,11 +106996,11 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+bdH
+bdH
+bdH
+bdH
+bdH
 aaa
 aaa
 aaa
@@ -107186,11 +107199,11 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+bdH
+bdH
+bdH
+bdH
+bdH
 aaa
 aaa
 aaa
@@ -107800,7 +107813,7 @@ aaa
 aaa
 aaa
 aaa
-aaa
+bdH
 aaa
 aaa
 aaa
@@ -109997,8 +110010,8 @@ aYt
 aYt
 tGh
 baZ
-fiB
-dss
+hCE
+inS
 lYq
 mkJ
 bEP
@@ -110200,11 +110213,11 @@ qOf
 bqH
 baZ
 baZ
-hCE
+gKm
 bei
 vcv
 bei
-inS
+fiB
 baZ
 bGR
 bHB
@@ -110407,7 +110420,7 @@ mgg
 bei
 gen
 bei
-bER
+dss
 baZ
 aZZ
 aYC
@@ -110606,7 +110619,7 @@ bei
 bei
 oWf
 baZ
-gKm
+wpk
 dUi
 qWg
 tzx
@@ -110813,7 +110826,7 @@ imo
 vQj
 imo
 dRS
-bET
+bER
 baZ
 bGT
 bHH

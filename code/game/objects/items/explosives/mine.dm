@@ -324,7 +324,7 @@
 	return FALSE
 
 /obj/item/explosive/mine/sharp/attackby(obj/item/W, mob/user)
-	return ..()
+	return
 
 /obj/item/explosive/mine/sharp/set_tripwire()
 	if(!active && !tripwire)
@@ -353,8 +353,7 @@
 /obj/item/explosive/mine/sharp/attack_self(mob/living/user)
 	if(disarmed)
 		return
-	else 
-		return ..()
+	. = ..()
 
 /obj/item/explosive/mine/sharp/deploy_mine(var/mob/user)
 	if(disarmed)

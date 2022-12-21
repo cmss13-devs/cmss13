@@ -255,7 +255,7 @@
 	icon_state = "sonicharpoon"
 	sharp = IS_SHARP_ITEM_BIG
 	w_class = SIZE_SMALL
-	edge = 1
+	edge = TRUE
 	force = 0
 	throwforce = 0
 	var/damage_on_move = 3

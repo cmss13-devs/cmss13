@@ -3351,7 +3351,7 @@
 	ping = null //no bounce off.
 	damage_type = BRUTE
 	shrapnel_type = /obj/item/sharp
-	flags_ammo_behavior = AMMO_SPECIAL_EMBED|AMMO_NO_DEFLECT|AMMO_STRIKES_SURFACEONL|AMMO_HITS_TARGET_TURF
+	flags_ammo_behavior = AMMO_SPECIAL_EMBED|AMMO_NO_DEFLECT|AMMO_STRIKES_SURFACE_ONLY|AMMO_HITS_TARGET_TURF
 	icon_state = "sonicharpoon"
 	var/embed_object = /obj/item/sharp/explosive
 

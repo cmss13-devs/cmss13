@@ -121,8 +121,7 @@
 		SetEarDeafness(1)
 
 	if (src.eye_blurry > 0)
-		src.eye_blurry--
-		src.eye_blurry = max(0, src.eye_blurry)
+		src.ReduceEyeBlur(1)
 
 	if (src.druggy > 0)
 		src.druggy--
@@ -223,11 +222,6 @@
 			overlay_fullscreen("blind", /atom/movable/screen/fullscreen/blind)
 		else
 			clear_fullscreen("blind")
-
-		if (eye_blurry)
-			overlay_fullscreen("eye_blurry", /atom/movable/screen/fullscreen/impaired, 5)
-		else
-			clear_fullscreen("eye_blurry")
 
 		if(druggy)
 			overlay_fullscreen("high", /atom/movable/screen/fullscreen/high)

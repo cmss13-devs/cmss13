@@ -114,6 +114,15 @@
 	switch(action)
 		if("print")
 			var/recipe = params["recipe_id"]
+			var/valid_recipe = FALSE
+			for(var/datum/bioprinter_recipe/product_recipes in products)
+				if(product_recipes.type == text2path(recipe))
+					valid_recipe = TRUE
+					break
+			if(!valid_recipe)
+				log_admin("[key_name(usr)] attempted to print an invalid recipe ([recipe]) on \the [src].")
+				message_staff("[key_name(usr)] attempted to print an invalid recipe ([recipe]) on \the [src].")
+				return FALSE
 			var/datum/bioprinter_recipe/recipe_datum = new recipe
 			stored_metal -= recipe_datum.metal
 			to_chat(usr, SPAN_NOTICE("\The [src] is now printing the selected organ. Please hold."))

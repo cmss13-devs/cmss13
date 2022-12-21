@@ -87,7 +87,7 @@
 
 	if(message)
 		log_emote("[name]/[key] : [message]")
-		if(m_type & 1)
+		if(m_type & SHOW_MESSAGE_VISIBLE)
 			for(var/mob/O in viewers(src, null))
 				O.show_message(message, m_type)
 		else
@@ -106,7 +106,7 @@
 
 	log_emote("[name]/[key] : [message]")
 	for(var/mob/O in hearers(src, null))
-		O.show_message(message, 2)
+		O.show_message(message, SHOW_MESSAGE_AUDIBLE)
 
 
 /mob/living/carbon/Xenomorph/Larva/emote(var/act, var/m_type = 1, var/message = null, player_caused)

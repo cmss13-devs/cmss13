@@ -3,7 +3,7 @@
 	icon = 'icons/obj/structures/machinery/computer.dmi'
 	density = FALSE
 	anchored = TRUE
-	use_power = 1
+	use_power = USE_POWER_IDLE
 	layer = BELOW_OBJ_LAYER
 	idle_power_usage = 300
 	active_power_usage = 300
@@ -17,9 +17,6 @@
 	. = ..()
 	if(processing)
 		start_processing()
-
-/obj/structure/machinery/computer/Initialize()
-	. = ..()
 	power_change()
 
 /obj/structure/machinery/computer/initialize_pass_flags(var/datum/pass_flags_container/PF)

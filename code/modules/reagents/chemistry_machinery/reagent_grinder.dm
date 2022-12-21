@@ -5,7 +5,7 @@
 	layer = ABOVE_TABLE_LAYER
 	density = 0
 	anchored = 0
-	use_power = 1
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 5
 	active_power_usage = 100
 	var/inuse = 0
@@ -193,7 +193,7 @@
 		P.icon_state = "bottle-1" // Default bottle
 		beaker.reagents.trans_id_to(P, id, P.reagents.maximum_volume)
 		P.name = "[P.reagents.get_master_reagent_name()] bottle"
-		linked_storage.add_item(P)
+		linked_storage.add_local_item(P)
 	else if(href_list["dispose"])
 		var/id = href_list["dispose"]
 		beaker.reagents.del_reagent(id)

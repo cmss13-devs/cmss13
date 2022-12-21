@@ -24,7 +24,7 @@
 	evolution_allowed = FALSE
 	fire_immunity = FIRE_IMMUNITY_NO_DAMAGE|FIRE_IMMUNITY_NO_IGNITE
 	caste_desc = "The biggest and baddest xeno. The Queen controls the hive and plants eggs"
-	spit_types = list(/datum/ammo/xeno/toxin/queen, /datum/ammo/xeno/acid/medium)
+	spit_types = list(/datum/ammo/xeno/toxin/queen, /datum/ammo/xeno/acid/spatter)
 	can_hold_facehuggers = 0
 	can_hold_eggs = CAN_HOLD_ONE_HAND
 	acid_level = 2
@@ -150,21 +150,24 @@
 	X.reset_view()
 	return
 
-/mob/hologram/queen/proc/turf_weed_only(var/mob/self, var/turf/T)
+/mob/hologram/queen/proc/turf_weed_only(var/mob/self, var/turf/crossing_turf)
 	SIGNAL_HANDLER
 
-	if(!T)
+	if(!crossing_turf)
 		return COMPONENT_TURF_DENY_MOVEMENT
 
-	if(istype(T, /turf/closed/wall))
-		var/turf/closed/wall/W = T
-		if(W.hull)
+	if(istype(crossing_turf, /turf/closed/wall))
+		var/turf/closed/wall/crossing_wall = crossing_turf
+		if(crossing_wall.hull)
 			return COMPONENT_TURF_DENY_MOVEMENT
 
-	var/list/turf_area = range(3, T)
+	var/list/turf_area = range(3, crossing_turf)
 
-	var/obj/effect/alien/weeds/W = locate() in turf_area
-	if(W && HIVE_ALLIED_TO_HIVE(W.hivenumber, hivenumber))
+	var/obj/effect/alien/weeds/nearby_weeds = locate() in turf_area
+	if(nearby_weeds && HIVE_ALLIED_TO_HIVE(nearby_weeds.hivenumber, hivenumber))
+		var/obj/effect/alien/crossing_turf_weeds = locate() in crossing_turf
+		if(crossing_turf_weeds)
+			crossing_turf_weeds.update_icon() //randomizes the icon of the turf when crossed over*/
 		return COMPONENT_TURF_ALLOW_MOVEMENT
 
 	return COMPONENT_TURF_DENY_MOVEMENT
@@ -760,6 +763,7 @@
 	if(hive.living_xeno_queen == src)
 		hive.xeno_queen_timer = world.time + XENO_QUEEN_DEATH_DELAY
 		hive.banished_ckeys   = list() // Reset the banished ckey list
+	icon = queen_standing_icon
 	return ..()
 
 

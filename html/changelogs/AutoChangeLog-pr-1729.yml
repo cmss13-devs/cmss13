@@ -1,5 +1,0 @@
-author: "fira"
-delete-after: True
-changes:
-  - code_imp: "Refactored part of pixel placement calculations for beams."
-  - bugfix: "Beams from/to xenos in particular should now properly attach to them visually."

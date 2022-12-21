@@ -124,7 +124,7 @@
 	name = PROPERTY_NERVESTIMULATING
 	code = "NST"
 	description = "Increases neuron communication speed across synapses resulting in improved reaction time, awareness and muscular control."
-	rarity = PROPERTY_UNCOMMON
+	rarity = PROPERTY_RARE
 	category = PROPERTY_TYPE_STIMULANT
 	value = 3
 
@@ -136,7 +136,7 @@
 	if(potency > CREATE_MAX_TIER_1)
 		M.stuttering = max(M.stuttering - POTENCY_MULTIPLIER_MEDIUM * potency, 0)
 		M.confused = max(M.confused - POTENCY_MULTIPLIER_MEDIUM * potency, 0)
-		M.eye_blurry = max(M.eye_blurry - POTENCY_MULTIPLIER_MEDIUM * potency, 0)
+		M.ReduceEyeBlur(POTENCY_MULTIPLIER_MEDIUM * potency)
 		M.drowsyness = max(M.drowsyness - POTENCY_MULTIPLIER_MEDIUM * potency, 0)
 		M.dizziness = max(M.dizziness - POTENCY_MULTIPLIER_MEDIUM * potency, 0)
 		M.jitteriness = max(M.jitteriness - POTENCY_MULTIPLIER_MEDIUM * potency, 0)
@@ -157,7 +157,7 @@
 	name = PROPERTY_MUSCLESTIMULATING
 	code = "MST"
 	description = "Stimulates neuromuscular junctions increasing the force of muscle contractions, resulting in increased strength. High doses might exhaust the cardiac muscles."
-	rarity = PROPERTY_UNCOMMON
+	rarity = PROPERTY_RARE
 	category = PROPERTY_TYPE_STIMULANT
 
 /datum/chem_property/positive/musclestimulating/process(mob/living/M, var/potency = 1)
@@ -196,20 +196,21 @@
 /datum/chem_property/positive/painkilling/process(mob/living/M, var/potency = 1, delta_time)
 	if(!..())
 		return
-
-	M.pain.apply_pain_reduction(PAIN_REDUCTION_MULTIPLIER * potency)
+	var/effective_potency = (CHECK_BITFIELD(M.disabilities, OPIATE_RECEPTOR_DEFICIENCY) ? potency * 0.25 : potency)
+	M.pain.apply_pain_reduction(PAIN_REDUCTION_MULTIPLIER * effective_potency)
 
 /datum/chem_property/positive/painkilling/process_overdose(mob/living/M, var/potency = 1, delta_time)
 	if(!..())
 		return
-
-	M.pain.apply_pain_reduction(PAIN_REDUCTION_MULTIPLIER * potency)
-	M.hallucination = max(M.hallucination, potency) //Hallucinations and tox damage
-	M.apply_damage(0.5 *  potency * delta_time, TOX)
+	var/effective_potency = (CHECK_BITFIELD(M.disabilities, OPIATE_RECEPTOR_DEFICIENCY) ? potency * 0.25 : potency)
+	M.pain.apply_pain_reduction(PAIN_REDUCTION_MULTIPLIER * effective_potency)
+	M.hallucination = max(M.hallucination, effective_potency) //Hallucinations and tox damage
+	M.apply_damage(0.5 *  effective_potency * delta_time, TOX)
 
 /datum/chem_property/positive/painkilling/process_critical(mob/living/M, var/potency = 1)
-	M.apply_internal_damage(POTENCY_MULTIPLIER_HIGH * potency, "liver")
-	M.apply_damage(potency, BRAIN)
+	var/effective_potency = (CHECK_BITFIELD(M.disabilities, OPIATE_RECEPTOR_DEFICIENCY) ? potency * 0.25 : potency)
+	M.apply_internal_damage(POTENCY_MULTIPLIER_HIGH * effective_potency, "liver")
+	M.apply_damage(effective_potency, BRAIN)
 	M.apply_damage(3, OXY)
 
 /datum/chem_property/positive/hepatopeutic
@@ -283,7 +284,7 @@
 	if(!ishuman(M))
 		return
 	M.apply_internal_damage(-potency, "eyes")
-	M.eye_blurry = max(M.eye_blurry-POTENCY_MULTIPLIER_VHIGH*potency , 0)
+	M.ReduceEyeBlur(POTENCY_MULTIPLIER_VHIGH*potency)
 	M.eye_blind = max(M.eye_blind-POTENCY_MULTIPLIER_VHIGH*potency , 0)
 
 /datum/chem_property/positive/oculopeutic/process_overdose(mob/living/M, var/potency = 1)

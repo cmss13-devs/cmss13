@@ -5,11 +5,11 @@ GLOBAL_LIST_INIT(cm_vending_gear_smartgun, list(
 		list("Essential Smartgunner Set", 0, /obj/item/storage/box/m56_system, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
 
 		list("SMARTGUN AMMUNITION", 0, null, null, null),
-		list("M56 Smartgun Drum", 15, /obj/item/ammo_magazine/smartgun, null, VENDOR_ITEM_MANDATORY),
+		list("M56 Smartgun Drum", 15, /obj/item/ammo_magazine/smartgun, null, VENDOR_ITEM_RECOMMENDED),
 
 		list("SMARTGUN EXTRA UTILITIES (CHOOSE 1)", 0, null, null, null),
 		list("Burst Fire Assembly", 0, /obj/item/attachable/burstfire_assembly, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_REGULAR),
-		list("High-Capacity Power Cell", 0, /obj/item/cell/high, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
+		list("High-Capacity Power Cell", 0, /obj/item/cell/high, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_RECOMMENDED),
 
 		list("GUN ATTACHMENTS (CHOOSE 1)", 0, null, null, null),
 		list("Laser Sight", 0, /obj/item/attachable/lasersight, MARINE_CAN_BUY_ATTACHMENT, VENDOR_ITEM_REGULAR),
@@ -54,13 +54,11 @@ GLOBAL_LIST_INIT(cm_vending_gear_smartgun, list(
 	desc = "An automated gear rack for Squad Smartgunners."
 	icon_state = "sg_gear"
 	show_points = TRUE
-	use_points = TRUE
 	vendor_role = list(JOB_SQUAD_SMARTGUN)
 	req_access = list(ACCESS_MARINE_SMARTPREP)
 
-/obj/structure/machinery/cm_vending/gear/smartgun/Initialize(mapload, ...)
-	. = ..()
-	listed_products = GLOB.cm_vending_gear_smartgun
+/obj/structure/machinery/cm_vending/gear/smartgun/get_listed_products(var/mob/user)
+	return GLOB.cm_vending_gear_smartgun
 
 //------------CLOTHING VENDOR---------------
 

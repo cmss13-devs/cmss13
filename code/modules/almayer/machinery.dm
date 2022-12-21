@@ -82,7 +82,7 @@
 
 	density = 0
 	anchored = 1
-	use_power = 1
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 20
 
 	icon = 'icons/obj/structures/machinery/computer.dmi'
@@ -141,7 +141,7 @@
 	unacidable = TRUE
 	density = 1
 	anchored = 1
-	use_power = 1
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 20
 	var/list/current_viewers = list()
 
@@ -296,7 +296,7 @@
 
 /obj/structure/prop/almayer/ship_memorial/centcomm
 	name = "slab of remembrance"
-	desc = "A memorial to all Development Team members that have retired from working on CM. No mentor names are present."
+	desc = "A memorial to all Maintainer Team members that have retired from working on CM. No mentor names are present."
 
 
 /obj/structure/prop/almayer/ship_memorial/centcomm/admin
@@ -403,7 +403,7 @@
 
 	density = 1
 	anchored = 1
-	use_power = 1
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 20
 
 //What is this even doing? Why is it making a new item?

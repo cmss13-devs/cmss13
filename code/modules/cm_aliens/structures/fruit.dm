@@ -76,7 +76,7 @@
 
 /obj/effect/alien/resin/fruit/bullet_act(obj/item/projectile/P)
 	var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags
-	if(ammo_flags & (AMMO_XENO_ACID|AMMO_XENO_TOX))
+	if(ammo_flags & (AMMO_XENO))
 		return
 	qdel(src)
 	. = ..()
@@ -323,7 +323,8 @@
 	desc = "A strange fruit that you could eat.. if you REALLY wanted to. Its roots seem to twitch every so often."
 	icon = 'icons/mob/xenos/fruits.dmi'
 	icon_state = "fruit_lesser_item"
-	w_class = SIZE_LARGE
+	w_class = SIZE_MEDIUM
+	storage_cost = SIZE_LARGE
 	bitesize = 2
 	var/mob/living/carbon/Xenomorph/bound_xeno //Drone linked to this fruit
 	var/fruit_type = /obj/effect/alien/resin/fruit

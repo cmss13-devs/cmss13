@@ -202,7 +202,7 @@ FLOOR SAFES
 			to_chat(user, "Hold [I] in one of your hands while you manipulate the dial.")
 			return
 
-obj/structure/safe/ex_act(severity)
+/obj/structure/safe/ex_act(severity)
 	return
 
 //FLOOR SAFES

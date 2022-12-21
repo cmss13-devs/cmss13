@@ -170,7 +170,6 @@
 				acid_core.inject_logic = ACID_LOGIC_OR
 			. = TRUE
 		if("configurate")
-			message_admins("configurating with config value of [params["config_value"]] and config type of [params["config_type"]]")
 			var/flag_value = params["config_value"]
 			switch(params["config_type"])
 				if("Damage")

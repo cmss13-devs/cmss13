@@ -308,4 +308,6 @@ for it but just ignore it.
 	var/obj/item/device/radio/headset/dongle = get_type_in_ears(/obj/item/device/radio/headset)
 	if (dongle && dongle.translate_binary)
 		return TRUE
+	if(isSynth(src))
+		return TRUE
 	return FALSE

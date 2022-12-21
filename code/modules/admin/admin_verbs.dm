@@ -315,8 +315,10 @@ var/list/roundstart_mod_verbs = list(
 		add_verb(src, clan_verbs)
 
 /client/proc/add_admin_whitelists()
-	if(CLIENT_IS_STAFF(src) || CLIENT_HAS_RIGHTS(src, R_MENTOR))
+	if(CLIENT_HAS_RIGHTS(src, R_MENTOR))
 		RoleAuthority.roles_whitelist[ckey] |= WHITELIST_MENTOR
+	if(CLIENT_IS_STAFF(src))
+		RoleAuthority.roles_whitelist[ckey] |= WHITELIST_JOE
 
 /client/proc/remove_admin_verbs()
 	remove_verb(src, list(

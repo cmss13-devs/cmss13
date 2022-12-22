@@ -1,4 +1,0 @@
-author: "fira"
-delete-after: True
-changes:
-  - bugfix: "Fix notably Flare Gun ignoring targets when striking the targeted ground location."

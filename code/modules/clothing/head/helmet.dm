@@ -1005,7 +1005,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	item_state = "upp_ushanka_civi"
 	original_state = "upp_ushanka_civi"
 
-obj/item/clothing/head/helmet/marine/veteran/van_bandolier
+/obj/item/clothing/head/helmet/marine/veteran/van_bandolier
 	name = "pith helmet"
 	desc = "A stylish pith helmet, made from space-age materials. Lightweight, breathable, cool, and protective."
 	icon_state = "van_bandolier"

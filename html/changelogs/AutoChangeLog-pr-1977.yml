@@ -1,5 +1,0 @@
-author: "CometBlaze"
-delete-after: True
-changes:
-  - bugfix: "Terminals will now spawn on the correct side of SMESes"
-  - bugfix: "Round start broken SMESes will now function as expected once repaired"

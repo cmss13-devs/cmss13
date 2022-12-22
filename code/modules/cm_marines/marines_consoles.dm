@@ -888,7 +888,6 @@ GLOBAL_LIST_EMPTY_TYPED(crewmonitor, /datum/crewmonitor)
 				JOB_CHIEF_POLICE = 20,
 				JOB_WARDEN = 21,
 				JOB_POLICE = 22,
-				JOB_POLICE_CADET = 23,
 				// 30-39: MedSci
 				JOB_CMO = 30,
 				JOB_RESEARCHER = 31,

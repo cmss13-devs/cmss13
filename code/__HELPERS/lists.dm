@@ -32,7 +32,7 @@
 		return "[output][and_text][input[index]]"
 
 //Returns list element or null. Should prevent "index out of bounds" error.
-proc/listgetindex(var/list/list,index)
+/proc/listgetindex(var/list/list,index)
 	if(istype(list) && list.len)
 		if(isnum(index))
 			if(InRange(index,1,list.len))
@@ -49,7 +49,7 @@ proc/listgetindex(var/list/list,index)
 	return 0
 
 //Removes any null entries from the list
-proc/listclearnulls(list/list)
+/proc/listclearnulls(list/list)
 	if(istype(list))
 		while(null in list)
 			list -= null
@@ -502,6 +502,40 @@ proc/listclearnulls(list/list)
 	for(var/path in subtypesof(prototype))
 		L += new path()
 	return L
+
+///replaces reverseList ~Carnie
+/proc/reverse_range(list/inserted_list, start = 1, end = 0)
+	if(inserted_list.len)
+		start = start % inserted_list.len
+		end = end % (inserted_list.len + 1)
+		if(start <= 0)
+			start += inserted_list.len
+		if(end <= 0)
+			end += inserted_list.len + 1
+
+		--end
+		while(start < end)
+			inserted_list.Swap(start++, end--)
+
+	return inserted_list
+
+///Converts a bitfield to a list of numbers (or words if a wordlist is provided)
+/proc/bitfield_to_list(bitfield = 0, list/wordlist)
+	var/list/return_list = list()
+	if(islist(wordlist))
+		var/max = min(wordlist.len, 24)
+		var/bit = 1
+		for(var/i in 1 to max)
+			if(bitfield & bit)
+				return_list += wordlist[i]
+			bit = bit << 1
+	else
+		for(var/bit_number = 0 to 23)
+			var/bit = 1 << bit_number
+			if(bitfield & bit)
+				return_list += bit
+
+	return return_list
 
 //Copies a list, and all lists inside it recusively
 //Does not copy any other reference type

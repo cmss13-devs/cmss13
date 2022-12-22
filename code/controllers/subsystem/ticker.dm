@@ -54,7 +54,7 @@ SUBSYSTEM_DEF(ticker)
 	var/key = SAFEPICK(all_music)
 	if(key)
 		login_music = file(all_music[key])
-	return ..()
+	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/ticker/fire(resumed = FALSE)
 	switch(current_state)

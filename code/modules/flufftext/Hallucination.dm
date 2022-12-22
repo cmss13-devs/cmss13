@@ -11,7 +11,7 @@ Gunshots/explosions/opening doors/less rare audio (done)
 
 */
 
-mob/living/carbon/var
+/mob/living/carbon/var
 	image/halimage
 	image/halbody
 	obj/halitem
@@ -19,7 +19,7 @@ mob/living/carbon/var
 	handling_hal = 0
 	hal_crit = 0
 
-mob/living/carbon/proc/handle_hallucinations()
+/mob/living/carbon/proc/handle_hallucinations()
 	if(handling_hal)
 		return
 	handling_hal = 1
@@ -221,7 +221,7 @@ mob/living/carbon/proc/handle_hallucinations()
 
 	return start_txt + mocktxt + end_txt + "</TT></BODY></HTML>"
 
-proc/check_panel(mob/M)
+/proc/check_panel(mob/M)
 	if (istype(M, /mob/living/carbon/human) || isRemoteControlling(M))
 		if(M.hallucination < 15)
 			return 1
@@ -315,7 +315,7 @@ proc/check_panel(mob/M)
 						my_target << sound(pick('sound/weapons/genhit1.ogg', 'sound/weapons/genhit2.ogg', 'sound/weapons/genhit3.ogg'))
 						my_target.show_message(SPAN_DANGER("<B>[my_target] has been attacked with [weapon_name] by [src.name] </B>"), SHOW_MESSAGE_VISIBLE)
 						my_target.halloss += 8
-						if(prob(20)) my_target.eye_blurry += 3
+						if(prob(20)) my_target.AdjustEyeBlur(3)
 						if(prob(33))
 							if(!locate(/obj/effect/overlay) in my_target.loc)
 								fake_blood(my_target)

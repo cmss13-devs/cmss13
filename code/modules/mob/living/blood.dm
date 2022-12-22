@@ -42,7 +42,7 @@
 					oxyloss += 3
 			if(BLOOD_VOLUME_BAD to BLOOD_VOLUME_OKAY)
 				if(eye_blurry < 50)
-					eye_blurry += 6
+					AdjustEyeBlur(6)
 				if(oxyloss < 50)
 					oxyloss += 10
 				oxyloss += 2

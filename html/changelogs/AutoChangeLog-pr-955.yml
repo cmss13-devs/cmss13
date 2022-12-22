@@ -1,8 +1,0 @@
-author: "diegoflores31"
-delete-after: True
-changes:
-  - rscadd: "Added a new strain for lurker \"Vampire\"."
-  - rscadd: "Vampire Lurker exchanges all of your abilities for a fast paced combat style more focused into dealing damage and\nmobility."
-  - rscadd: "Active 1 : Rush . Pounces for a maximun of 4 tiles and slashes the objetive once on impact . applying a screenshake and daze to the target . Landing this ability reduces the cooldown by half. (cooldown 6 seconds)"
-  - rscadd: "Active 2 . Flurry : unleashes a 1X3 slash at the targeted direction that slows your enemies on impact healing you by 30 hp . (cooldown 3 seconds)"
-  - rscadd: "Active 3 : Tail Jab : Attacks your enemies from a maximun of  2 tiles away while dealing a small amount of damage ( 20)  and knocking them down . if you attack a enemy that is on critical state it will deal 80 damage with penetration and heal you by 150 hp. (cooldown 7 seconds)"

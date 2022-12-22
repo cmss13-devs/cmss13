@@ -247,6 +247,7 @@ body
 
 /atom/get_vv_options()
 	. = ..()
+	. += "<option value='?_src_=vars;[VV_HK_EDIT_FILTERS]=\ref[src]'>Edit Filters</option>"
 	. += "<option value='?_src_=vars;enablepixelscaling=\ref[src]'>Enable Pixel Scaling</option>"
 
 /turf/get_vv_options()
@@ -268,7 +269,7 @@ body
 	. += "<option value='?_src_=vars;setmatrix=\ref[src]'>Set Base Matrix</option>"
 	. += "<option value>-----OBJECT-----</option>"
 	. += "<option value='?_src_=vars;delall=\ref[src]'>Delete all of type</option>"
-	
+
 /obj/structure/machinery/get_vv_options()
 	. = ..()
 	. += "<option value='?_src_=vars;toggle_needs_power=\ref[src]'>Toggle needing power</option>"
@@ -527,16 +528,16 @@ body
 	else if(href_list["toggle_needs_power"])
 		if(!check_rights(R_VAREDIT))
 			return
-		
+
 		var/obj/structure/machinery/O = locate(href_list["toggle_needs_power"])
 		if(!istype(O))
 			to_chat(usr, "This can only be used on instances of type /obj/structure/machinery")
 			return
-		
+
 		O.needs_power = !O.needs_power
 		O.power_change()
 		message_staff("[key_name(src, TRUE)] has toggled needs_power to [O.needs_power] on [O] in [O.loc.loc] ([O.x],[O.y],[O.z]).", O.x, O.y, O.z)
-	
+
 	else if(href_list["enablepixelscaling"])
 		if(!check_rights(R_DEBUG|R_VAREDIT))
 			return
@@ -546,6 +547,16 @@ body
 			return
 
 		A.enable_pixel_scaling()
+
+	else if(href_list[VV_HK_EDIT_FILTERS])
+		if(!check_rights(R_DEBUG|R_VAREDIT))
+			return
+
+		var/atom/A = locate(href_list[VV_HK_EDIT_FILTERS])
+		if(!istype(A, /atom))
+			return
+
+		open_filter_editor(A)
 
 	else if(href_list["explode"])
 		if(!check_rights(R_DEBUG))
@@ -1114,5 +1125,10 @@ body
 		if(!istype(DAT, /datum))
 			return
 		src.debug_variables(DAT)
+	if(href_list["add_items_to_vendor"])
+		var/obj/structure/machinery/cm_vending/clothing/super_snowflake/vendor = locate(href_list["add_items_to_vendor"])
+		if(!istype(vendor))
+			return
+		vendor.add_items_to_vendor()
 
 	return

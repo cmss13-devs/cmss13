@@ -108,6 +108,7 @@
 			if(R.receive_range(display_freq, level) > -1 && OBJECTS_CAN_REACH(loc, radio_loc))
 				radios += R
 
+	/* Currently unused, but leaving incase someone revives agents or another use for it.
 	// --- Broadcast to antag radios! ---
 	else if(data == RADIO_FILTER_TYPE_ANTAG_RADIOS)
 		for(var/antag_freq in ANTAG_FREQS)
@@ -116,6 +117,7 @@
 				var/atom/loc = R.loc
 				if(R.receive_range(display_freq, level) > -1 && OBJECTS_CAN_REACH(loc, radio_loc))
 					radios += R
+	*/
 
 	// --- Broadcast to ALL radio devices ---
 	else

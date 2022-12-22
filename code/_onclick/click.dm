@@ -280,7 +280,7 @@
 	if(!specific_direction)
 		specific_direction = direction
 
-	faceDir(direction, specific_direction)
+	face_dir(direction, specific_direction)
 
 
 

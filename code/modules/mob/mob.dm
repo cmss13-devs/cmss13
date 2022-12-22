@@ -709,7 +709,7 @@ note dizziness decrements automatically in the mob's Life() proc.
 
 	return canmove
 
-/mob/proc/faceDir(var/ndir, var/specific_dir)
+/mob/proc/face_dir(var/ndir, var/specific_dir)
 	if(!canface())	return 0
 	if(dir != ndir)
 		flags_atom &= ~DIRLOCK
@@ -727,12 +727,12 @@ note dizziness decrements automatically in the mob's Life() proc.
 
 /mob/proc/set_face_dir(var/newdir)
 	if(SEND_SIGNAL(src, COMSIG_MOB_SET_FACE_DIR, newdir) & COMPONENT_CANCEL_SET_FACE_DIR)
-		faceDir(newdir)
+		face_dir(newdir)
 		return
 
 	if(newdir == dir && flags_atom & DIRLOCK)
 		flags_atom &= ~DIRLOCK
-	else if (faceDir(newdir))
+	else if (face_dir(newdir))
 		flags_atom |= DIRLOCK
 
 

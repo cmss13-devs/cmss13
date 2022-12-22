@@ -423,9 +423,9 @@
 		var/datum/action/xeno_action/activable/prae_abduct/abduct_action = get_xeno_action_by_type(oppressor_user, /datum/action/xeno_action/activable/prae_abduct)
 		var/datum/action/xeno_action/activable/tail_lash/tail_lash_action = get_xeno_action_by_type(oppressor_user, /datum/action/xeno_action/activable/tail_lash)
 		if(abduct_action && abduct_action.action_cooldown_check())
-			abduct_action.reduce_cooldown(50)
+			abduct_action.reduce_cooldown(5 SECONDS)
 		if(tail_lash_action && tail_lash_action.action_cooldown_check())
-			tail_lash_action.reduce_cooldown(50)
+			tail_lash_action.reduce_cooldown(5 SECONDS)
 	else
 		target_carbon.apply_armoured_damage(get_xeno_damage_slash(target_carbon, damage), ARMOR_MELEE, BRUTE, target_limb? target_limb.name : "chest")
 		step_away(target_carbon, oppressor_user, 2)

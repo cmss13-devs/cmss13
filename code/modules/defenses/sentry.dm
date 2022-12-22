@@ -38,7 +38,7 @@
 	// action list is configurable for all subtypes, this is just an example
 	choice_categories = list(
 		SENTRY_CATEGORY_ROF = list(ROF_SINGLE, ROF_BURST, ROF_FULL_AUTO),
-		SENTRY_CATEGORY_IFF = list(FACTION_USCM, FACTION_WY, FACTION_HUMAN),
+		SENTRY_CATEGORY_IFF = list(FACTION_USCM, FACTION_WEYLAND, FACTION_HUMAN),
 	)
 
 	selected_categories = list(
@@ -149,7 +149,7 @@
 	switch(selection)
 		if(FACTION_USCM)
 			faction_group = FACTION_LIST_MARINE
-		if(FACTION_WY)
+		if(FACTION_WEYLAND)
 			faction_group = FACTION_LIST_MARINE_WY
 		if(FACTION_HUMAN)
 			faction_group = FACTION_LIST_HUMANOID
@@ -527,7 +527,7 @@
 
 /obj/structure/machinery/defenses/sentry/premade/deployable/colony/Initialize()
 	..()
-	choice_categories[SENTRY_CATEGORY_IFF] = list(FACTION_COLONY, FACTION_WY)
+	choice_categories[SENTRY_CATEGORY_IFF] = list(FACTION_COLONY, FACTION_WEYLAND)
 	selected_categories[SENTRY_CATEGORY_IFF] = FACTION_COLONY
 
 //the turret inside the shuttle sentry deployment system
@@ -560,7 +560,7 @@
 	handheld_type = /obj/item/defenses/handheld/sentry/dmr
 
 	choice_categories = list(
-		SENTRY_CATEGORY_IFF = list(FACTION_USCM, FACTION_WY, FACTION_HUMAN),
+		SENTRY_CATEGORY_IFF = list(FACTION_USCM, FACTION_WEYLAND, FACTION_HUMAN),
 	)
 
 	selected_categories = list(

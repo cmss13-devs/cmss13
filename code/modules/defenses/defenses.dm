@@ -101,6 +101,10 @@
 	power_off_action()
 	update_icon()
 
+/obj/structure/machinery/defenses/proc/identify()
+	playsound(loc, 'sound/machines/twobeep.ogg', 50, 1)
+
+
 /obj/structure/machinery/defenses/start_processing()
 	if(!machine_processing)
 		machine_processing = TRUE

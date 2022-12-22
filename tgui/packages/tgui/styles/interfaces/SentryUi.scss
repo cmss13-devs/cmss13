@@ -68,6 +68,11 @@ $large-text: 1.5rem;
     }
   }
 
+  .ShowAllFlex {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
   .SentryBox {
     border: 2px solid $light;
   }
@@ -86,12 +91,24 @@ $large-text: 1.5rem;
   }
 
   .SentryCard {
+    height: 100%;
+    width: 270px;
+    margin: 2px;
+    padding: 2px;
     span {
       font-size: $large-text;
       display: block;
       width: 100%;
       white-space: normal;
       word-wrap: break-word;
+    }
+    .Title {
+      display: inline-block;
+      width: 270px;
+      padding: 6px;
+    }
+    .GunFlex {
+      width: 270px;
     }
   }
 

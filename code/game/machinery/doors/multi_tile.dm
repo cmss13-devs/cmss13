@@ -340,6 +340,12 @@
 /obj/structure/machinery/door/airlock/multi_tile/elevator/freight
 	name = "\improper Freight Elevator Hatch"
 
+/obj/structure/machinery/door/airlock/multi_tile/elevator_3wide
+	icon = 'icons/obj/structures/doors/3x1_elevator.dmi'
+	icon_state = "door_closed"
+	width = 3
+	openspeed = 5
+	name = "\improper Freight Elevator Hatch"
 
 /obj/structure/machinery/door/airlock/multi_tile/elevator/access
 	icon = 'icons/obj/structures/doors/4x1_elevator_access.dmi'

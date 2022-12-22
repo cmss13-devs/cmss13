@@ -63,6 +63,11 @@
 	soundscape_interval = 20
 	flags_area = AREA_NOTUNNEL
 
+/area/wayfinder/command/officer_prep
+	name = "\improper Officer Preperation"
+	icon_state = "airoom"
+	fake_zlevel = 3 // upperdeck
+
 /area/wayfinder/command/cichallway
 	name = "\improper Secure Command Hallway"
 	icon_state = "airoom"

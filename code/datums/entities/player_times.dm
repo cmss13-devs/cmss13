@@ -83,28 +83,6 @@ BSQL_PROTECT_DATUM(/datum/entity/player_time)
 /datum/entity/player/ui_state(mob/user)
 	return GLOB.always_state
 
-/datum/entity/player/proc/ui_interact(mob/user, ui_key = "playtime", var/datum/nanoui/ui = null, force_open = FALSE)
-	if(!user.client || !playtime_loaded || LAZYACCESS(playtime_data, "loading"))
-		return
-
-	if(!LAZYACCESS(playtime_data, "loaded"))
-		load_timestat_data()
-
-	ui = nanomanager.try_update_ui(user, src, ui_key, ui, playtime_data, force_open)
-
-	if(!ui)
-		ui = new(user, src, ui_key, "playtime.tmpl", "Playtimes", 450, 700, null, -1)
-		ui.set_initial_data(playtime_data)
-		ui.open()
-		ui.set_auto_update(FALSE)
-
-/datum/entity/player/Topic(href, href_list)
-	var/mob/user = usr
-	user.set_interaction(src)
-	if(href_list["switchCategory"])
-		LAZYSET(playtime_data, "category", href_list["switchCategory"])
-	nanomanager.update_uis(src)
-
 /datum/entity/player/proc/load_timestat_data()
 	if(!playtime_loaded || !RoleAuthority || LAZYACCESS(playtime_data, "loading")) // Need roleauthority to be up to see which job is xeno-related
 		return

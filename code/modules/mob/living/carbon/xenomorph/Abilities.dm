@@ -134,7 +134,7 @@
 		if(hugger.stat != DEAD)
 			hugger.die()
 
-	playsound(xeno.loc, xeno.screech_sound_effect, 75, 0, status = 0)
+	playsound(xeno.loc, pick(xeno.screech_sound_effect_list), 75, 0, status = 0)
 	xeno.visible_message(SPAN_XENOHIGHDANGER("[xeno] emits an ear-splitting guttural roar!"))
 	xeno.create_shriekwave() //Adds the visual effect. Wom wom wom
 

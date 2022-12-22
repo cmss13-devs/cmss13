@@ -159,6 +159,8 @@
 #define TRAIT_SPOTTER_LAZED "t_spotter_lazed"
  /// If the mob has ear protection. Protects from external ear damage effects. Includes explosions, firing the RPG, screeching DEAFNESS only, and flashbangs.
 #define TRAIT_EAR_PROTECTION "t_ear_protection"
+ /// If the mob is Santa. Enough said.
+#define TRAIT_SANTA "t_santa"
 
 // -- ability traits --
  /// Xenos with this trait cannot have plasma transfered to them

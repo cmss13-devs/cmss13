@@ -1,5 +1,0 @@
-author: "carlarctg"
-delete-after: True
-changes:
-  - rscadd: "Added more tips of the round, and removed outdated, useless, or redundant ones."
-  - rscadd: "Added a button to get a random round tip in character gameplay settings."

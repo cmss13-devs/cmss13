@@ -16,7 +16,7 @@ export const Sentencing = (props, context) => {
 
   return (
     <Window theme="weyland" width={780} height={725}>
-      <Window.Content>
+      <Window.Content scrollable>
         <PageComponent />
       </Window.Content>
     </Window>
@@ -117,7 +117,7 @@ const NewReport = (props, context) => {
           px="2rem"
           textAlign="center"
           mr="1rem"
-          onClick={() => act('set_menu', { new_menu: 'main' })}
+          onClick={() => act('scrap_report')}
         />
 
         <h1>Incident Report</h1>
@@ -278,7 +278,7 @@ const Charges = (props, context) => {
         })}
         <Flex justify="center" mt=".75rem">
           <Button
-            content="new charge"
+            content="New Charge"
             px="2rem"
             py=".25rem"
             mb=".5rem"

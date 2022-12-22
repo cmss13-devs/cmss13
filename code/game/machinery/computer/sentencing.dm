@@ -23,19 +23,19 @@
 		ui.set_autoupdate(FALSE)
 
 /obj/structure/machinery/computer/sentencing/ui_data(mob/user)
-	. = list()
+	var/list/data = list()
 
-	.["current_menu"] = current_menu
+	data["current_menu"] = current_menu
 
 	if (incident)
-		.["suspect_name"] = incident.criminal_name
-		.["summary"] = incident.notes
+		data["suspect_name"] = incident.criminal_name
+		data["summary"] = html_decode(incident.notes)
 
 		// Sentence.
 		if(incident.brig_sentence < PERMABRIG_SENTENCE)
-			.["sentence"] = "[incident.brig_sentence] minutes"
+			data["sentence"] = "[incident.brig_sentence] minutes"
 		else
-			.["sentence"] = "PERMA BRIGGED"
+			data["sentence"] = "PERMA BRIGGED"
 
 		// Current charges.
 		var/list/current_charges = list()
@@ -46,39 +46,43 @@
 			current_charge["special_punishment"] = L.special_punishment
 			current_charge["ref"] = "\ref[L]"
 			current_charges += list(current_charge)
-		.["current_charges"] = current_charges
+		data["current_charges"] = current_charges
 
 		// Witnesses.
 		var/list/witnesses = list()
 		for(var/W as anything in incident.witnesses)
 			var/list/witness = list()
 			witness["name"] = W
-			witness["notes"] = incident.witnesses[W]
+			witness["notes"] = html_decode(incident.witnesses[W])
 			witness["ref"] = "\ref[W]"
 			witnesses += list(witness)
-		.["witnesses"] = witnesses
+		data["witnesses"] = witnesses
 
 		// Evidence.
 		var/list/evidence = list()
 		for(var/E as anything in incident.evidence)
 			var/list/object = list()
 			object["name"] = E
-			object["notes"] = incident.evidence[E]
+			object["notes"] = html_decode(incident.evidence[E])
 			object["ref"] = "\ref[E]"
 			evidence += list(object)
-		.["evidence"] = evidence
+		data["evidence"] = evidence
+
+	return data
 
 /obj/structure/machinery/computer/sentencing/ui_static_data()
-	. = list()
+	var/list/data = list()
 
-	.["laws"] = list()
-	.["laws"] += list(create_law_data("Minor Laws", SSlaw_init.minor_law))
-	.["laws"] += list(create_law_data("Major Laws", SSlaw_init.major_law))
-	.["laws"] += list(create_law_data("Capital Laws", SSlaw_init.capital_law))
-	.["laws"] += list(create_law_data("Optional Laws", SSlaw_init.optional_law))
+	data["laws"] = list()
+	data["laws"] += list(create_law_data("Minor Laws", SSlaw_init.minor_law))
+	data["laws"] += list(create_law_data("Major Laws", SSlaw_init.major_law))
+	data["laws"] += list(create_law_data("Capital Laws", SSlaw_init.capital_law))
+	data["laws"] += list(create_law_data("Optional Laws", SSlaw_init.optional_law))
+
+	return data
 
 /obj/structure/machinery/computer/sentencing/proc/create_law_data(label, list/laws)
-	. = list()
+	var/list/data = list()
 
 	var/list/formatted_laws = list()
 	for(var/datum/law/L as anything in laws)
@@ -90,8 +94,10 @@
 		law["ref"] = "\ref[L]"
 		formatted_laws += list(law)
 
-	.["label"] = label
-	.["laws"] = formatted_laws
+	data["label"] = label
+	data["laws"] = formatted_laws
+
+	return data
 
 /obj/structure/machinery/computer/sentencing/ui_act(action, params)
 	. = ..()
@@ -104,31 +110,27 @@
 		if ("set_menu")
 			current_menu = params["new_menu"]
 
-		if("new_report")
+		if ("scrap_report")
+			qdel(incident)
+			incident = null
+			current_menu = "main"
+
+		if ("new_report")
 			incident = new()
 			current_menu = "incident_report"
 
 		if ("new_charge")
-			if (!incident)
-				return TRUE
-
 			var/datum/law/L = locate(params["law"])
 			incident.charges += L
 			incident.refresh_sentences()
 			current_menu = "incident_report"
 
 		if ("remove_charge")
-			if (!incident)
-				return TRUE
-
 			var/datum/law/L = locate(params["charge"])
 			incident.charges -= L
 			incident.refresh_sentences()
 
 		if ("set_suspect")
-			if (!incident)
-				return TRUE
-
 			var/obj/item/card/id/id = usr.get_active_hand()
 			if (istype(id))
 				if (incident && id.registered_name)
@@ -139,17 +141,11 @@
 				to_chat(usr, SPAN_INFO("You need the suspect ID in your hand, or grab them and use the terminal."))
 
 		if ("edit_summary")
-			if (!incident)
-				return TRUE
-
-			var/notes = strip_html((input(usr, "Describe the incident","Incident Report", html_decode(incident.notes)) as message), MAX_PAPER_MESSAGE_LEN)
-			if(notes != null && incident)
+			var/notes = tgui_input_text(usr, "Describe the incident", "Incident Report", html_decode(incident.notes), multiline = TRUE)
+			if(!isnull(notes) && incident)
 				incident.notes = notes
 
 		if ("add_witness")
-			if (!incident)
-				return TRUE
-
 			var/obj/item/card/id/id = usr.get_active_hand()
 			if (istype(id))
 				if (incident && id.registered_name)
@@ -159,25 +155,16 @@
 				to_chat(usr, SPAN_INFO("You need the witness ID in your hand."))
 
 		if ("edit_witness_notes")
-			if (!incident)
-				return TRUE
-
 			var/witness = locate(params["witness"])
 
-			var/notes = strip_html((input(usr, "Summarize what the witness said","Witness Report", html_decode(incident.witnesses[witness])) as message), MAX_PAPER_MESSAGE_LEN)
-			if(notes != null && incident)
+			var/notes = tgui_input_text(usr, "Summarize what the witness said", "Witness Report", html_decode(incident.witnesses[witness]), multiline = TRUE)
+			if(!isnull(notes) && incident)
 				incident.witnesses[witness] = notes
 
 		if ("remove_witness")
-			if (!incident)
-				return TRUE
-
 			incident.witnesses -= locate(params["witness"])
 
-		if("add_evidence")
-			if (!incident)
-				return TRUE
-
+		if ("add_evidence")
 			var/obj/O = usr.get_active_hand()
 			if(istype(O))
 				incident.evidence += O
@@ -186,25 +173,16 @@
 				to_chat(usr, SPAN_INFO("You need the evidence in your hand."))
 
 		if ("edit_evidence_notes")
-			if (!incident)
-				return TRUE
-
 			var/evidence = locate(params["evidence"])
 
-			var/notes = strip_html((input(usr, "Describe the relevance of this evidence:","Evidence Report", html_decode(incident.evidence[evidence])) as message), MAX_PAPER_MESSAGE_LEN)
-			if (notes != null && incident)
+			var/notes = tgui_input_text(usr, "Describe the relevance of this evidence", "Evidence Report", html_decode(incident.evidence[evidence]), multiline = TRUE)
+			if (!isnull(notes) && incident)
 				incident.evidence[evidence] = notes
 
 		if ("remove_evidence")
-			if (!incident)
-				return TRUE
-
 			incident.evidence -= locate(params["evidence"])
 
 		if ("export")
-			if (!incident)
-				return TRUE
-
 			if (print_incident_report())
 				incident = null
 				current_menu = "main"

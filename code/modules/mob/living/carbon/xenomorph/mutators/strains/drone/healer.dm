@@ -34,7 +34,7 @@
 	drone.selected_fruit = /obj/effect/alien/resin/fruit
 	drone.tackle_chance_modifier -= 10
 	mutator_update_actions(drone)
-	apply_behavior_holder(drone)
+	apply_behavior_delegate(drone)
 	mutator_set.recalculate_actions(description, flavor_description)
 	drone.recalculate_health()
 	drone.recalculate_damage()

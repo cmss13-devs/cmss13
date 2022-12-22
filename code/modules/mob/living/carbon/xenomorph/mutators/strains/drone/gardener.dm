@@ -30,7 +30,7 @@
 	drone.selected_fruit = /obj/effect/alien/resin/fruit/greater
 	drone.max_placeable = 6
 	mutator_update_actions(drone)
-	apply_behavior_holder(drone)
+	apply_behavior_delegate(drone)
 	// Also change the primacy value for our place construction ability (because we want it in the same place but have another primacy ability)
 	for(var/datum/action/xeno_action/action in drone.actions)
 		if(istype(action, /datum/action/xeno_action/activable/place_construction))

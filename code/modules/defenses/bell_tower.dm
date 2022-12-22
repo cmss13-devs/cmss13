@@ -18,11 +18,11 @@
 	can_be_near_defense = TRUE
 
 	choice_categories = list(
-		"IFF STATUS" = list("USMC", "WY", "HUMAN"),
+		SENTRY_CATEGORY_IFF = list(FACTION_USCM, FACTION_WY, FACTION_HUMAN),
 	)
 
 	selected_categories = list(
-		"IFF STATUS" = "USMC",
+		SENTRY_CATEGORY_IFF = FACTION_USCM,
 	)
 
 

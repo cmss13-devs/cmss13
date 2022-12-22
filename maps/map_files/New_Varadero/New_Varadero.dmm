@@ -24296,9 +24296,7 @@
 /obj/structure/barricade/handrail/wire{
 	layer = 3.1
 	},
-/obj/item/ammo_magazine/handful/shotgun/incendiary{
-	unacidable = 1
-	},
+/obj/item/ammo_magazine/handful/shotgun/incendiary,
 /turf/open/floor/wood,
 /area/varadero/interior/bunks)
 "uIl" = (

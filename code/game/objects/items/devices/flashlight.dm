@@ -272,6 +272,8 @@
 	var/on_damage = 7
 	var/ammo_datum = /datum/ammo/flare
 
+	/// Whether to use flame overlays for this flare type
+	var/show_flame = TRUE
 	/// Tint for the greyscale flare flame
 	var/flame_tint = "#ddbbbb"
 	/// Color correction, added to the whole flame overlay
@@ -290,15 +292,16 @@
 	. = ..()
 	if(on)
 		icon_state = "[initial(icon_state)]-on"
-		var/image/flame = image('icons/obj/items/lighting.dmi', src, "flare_flame")
-		flame.color = flame_tint
-		flame.appearance_flags = KEEP_APART|RESET_COLOR|RESET_TRANSFORM
-		var/image/flame_base = image('icons/obj/items/lighting.dmi', src, "flare_flame")
-		flame_base.color = flame_base_tint
-		flame_base.appearance_flags = KEEP_APART|RESET_COLOR
-		flame_base.blend_mode = BLEND_ADD
-		flame.overlays += flame_base
-		overlays += flame
+		if(show_flame)
+			var/image/flame = image('icons/obj/items/lighting.dmi', src, "flare_flame")
+			flame.color = flame_tint
+			flame.appearance_flags = KEEP_APART|RESET_COLOR|RESET_TRANSFORM
+			var/image/flame_base = image('icons/obj/items/lighting.dmi', src, "flare_flame")
+			flame_base.color = flame_base_tint
+			flame_base.appearance_flags = KEEP_APART|RESET_COLOR
+			flame_base.blend_mode = BLEND_ADD
+			flame.overlays += flame_base
+			overlays += flame
 	else if(burnt_out)
 		icon_state = "[initial(icon_state)]-empty"
 	else
@@ -408,6 +411,7 @@
 	invisibility = 101 //Can't be seen or found, it's "up in the sky"
 	mouse_opacity = 0
 	brightness_on = 7 //Way brighter than most lights
+	show_flame = FALSE
 
 /obj/item/device/flashlight/flare/on/illumination/Initialize()
 	. = ..()
@@ -430,6 +434,7 @@
 	brightness_on = 7
 	anchored = 1//can't be picked up
 	ammo_datum = /datum/ammo/flare/starshell
+	show_flame = FALSE
 
 /obj/item/device/flashlight/flare/on/starshell_ash/Initialize(mapload, ...)
 	if(mapload)

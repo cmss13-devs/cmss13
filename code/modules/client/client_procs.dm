@@ -52,6 +52,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	/client/proc/toggle_vend_item_to_hand,
 	/client/proc/switch_item_animations,
 	/client/proc/toggle_admin_sound_types,
+	/client/proc/receive_random_tip,
 	/client/proc/set_eye_blur_type,
 ))
 

@@ -519,6 +519,9 @@
 	. = ..()
 	if(!target.Adjacent(user))
 		return
+	if(ismob(target) || isVehicle(target))
+		to_chat(user, SPAN_NOTICE("\The [src] is not able to festivize lifeforms or vehicles for safety concerns."))
+		return
 	if(target.color)
 		to_chat(user, SPAN_NOTICE("\The [target] is already colored, don't be greedy!"))
 		return

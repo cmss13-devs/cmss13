@@ -101,12 +101,8 @@ BSQL_PROTECT_DATUM(/datum/entity/player_time)
 /datum/entity/player/Topic(href, href_list)
 	var/mob/user = usr
 	user.set_interaction(src)
-
-    if(href_list["switchCategory"])
-        LAZYSET(playtime_data, "category", href_list["switchCategory"])
-
-
-
+	if(href_list["switchCategory"])
+		LAZYSET(playtime_data, "category", href_list["switchCategory"])
 	nanomanager.update_uis(src)
 
 /datum/entity/player/proc/load_timestat_data()
@@ -160,5 +156,5 @@ BSQL_PROTECT_DATUM(/datum/entity/player_time)
 		else
 			LAZYADD(marine_playtimes, list(PT.get_nanoui_data()))
 
-    LAZYSET(playtime_data, "loading", FALSE)
-    LAZYSET(playtime_data, "loaded", TRUE)
+	LAZYSET(playtime_data, "loading", FALSE)
+	LAZYSET(playtime_data, "loaded", TRUE)

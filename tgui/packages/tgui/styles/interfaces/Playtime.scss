@@ -1,17 +1,20 @@
+@use '../base.scss';
+
 .PlaytimeInterface {
   td {
     padding: 0;
-    height: 32px;
+    height: 34px;
   }
   table {
     border: 1px solid white;
     border-radius: 4px;
   }
+
   tr {
     border-bottom: 1px solid white;
   }
-  .PlaytimeRow {
-    height: 32px;
+  tr:nth-child(even) {
+    background-color: rgba(base.$color-bg, 0.5);
   }
   .AwardIcon {
     max-height: 32px;

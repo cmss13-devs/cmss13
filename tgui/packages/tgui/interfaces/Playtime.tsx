@@ -35,7 +35,7 @@ const PlaytimeRow = (props: { data: PlaytimeRecord }, context) => {
         <span className="LabelSpan">{props.data.job}</span>
       </TableCell>
       <TableCell>
-        <span className="TimeSpan">{props.data.playtime.toFixed(1)}</span>
+        <span className="TimeSpan">{props.data.playtime.toFixed(1)} hr</span>
       </TableCell>
     </>
   );

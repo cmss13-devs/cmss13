@@ -26,7 +26,7 @@
 	density = 1
 	layer = BELOW_OBJ_LAYER
 
-	use_power = 1
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 10
 	var/vend_power_usage = 150 //actuators and stuff
 
@@ -724,7 +724,7 @@
 		return
 
 	for(var/mob/O in hearers(src, null))
-		O.show_message("<span class='game say'><span class='name'>[src]</span> beeps, \"[message]\"</span>",2)
+		O.show_message("<span class='game say'><span class='name'>[src]</span> beeps, \"[message]\"</span>", SHOW_MESSAGE_AUDIBLE)
 	return
 
 /obj/structure/machinery/vending/power_change()

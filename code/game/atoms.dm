@@ -1,6 +1,5 @@
 
 /atom
-	var/name_label /// Labels put onto the atom by a hand labeler. usually in the format "[initial(name)] ([name_label])"
 	var/desc_lore = null
 
 	plane = GAME_PLANE
@@ -64,7 +63,7 @@
 	var/do_initialize = SSatoms.initialized
 	if(do_initialize != INITIALIZATION_INSSATOMS)
 		args[1] = do_initialize == INITIALIZATION_INNEW_MAPLOAD
-		if(SSatoms.InitAtom(src, args))
+		if(SSatoms.InitAtom(src, FALSE, args))
 			//we were deleted
 			return
 
@@ -128,6 +127,9 @@ directive is properly returned.
 /atom/proc/is_open_container()
 	return flags_atom & OPENCONTAINER
 
+/atom/proc/is_open_container_or_can_be_dispensed_into()
+	return flags_atom & OPENCONTAINER || flags_atom & CAN_BE_DISPENSED_INTO
+
 /atom/proc/can_be_syringed()
 	return flags_atom & CAN_BE_SYRINGED
 
@@ -189,6 +191,7 @@ directive is properly returned.
 		log_debug("Attempted to create an examine block with no strings! Atom : [src], user : [user]")
 		return
 	to_chat(user, examine_block(examine_strings.Join("\n")))
+	SEND_SIGNAL(src, COMSIG_PARENT_EXAMINE, user, examine_strings)
 
 /atom/proc/get_examine_text(mob/user)
 	. = list()
@@ -356,7 +359,10 @@ Parameters are passed from New.
 // EFFECTS
 /atom/proc/extinguish_acid()
 	for(var/datum/effects/acid/A in effects_list)
-		qdel(A)
+		if(A.cleanse_acid())
+			qdel(A)
+			return TRUE
+	return FALSE
 
 // Movement
 /atom/proc/add_temp_pass_flags(flags_to_add)

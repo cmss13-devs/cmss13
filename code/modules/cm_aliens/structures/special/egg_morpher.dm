@@ -34,7 +34,7 @@
 		var/obj/item/clothing/mask/facehugger/F
 		var/chance = 60
 		visible_message(SPAN_XENOWARNING("The chittering mass of tiny aliens is trying to escape [src]!"))
-		for(var/i in 0 to stored_huggers)
+		for(var/i in 1 to stored_huggers)
 			if(prob(chance))
 				F = new(loc, linked_hive.hivenumber)
 				step_away(F,src,1)
@@ -106,6 +106,20 @@
 			stored_huggers = min(huggers_to_grow_max, stored_huggers + 1)
 			qdel(F)
 		else to_chat(user, SPAN_XENOWARNING("This child is dead."))
+		return
+	//refill egg morpher from an egg
+	if(istype(I, /obj/item/xeno_egg))
+		var/obj/item/xeno_egg/egg = I
+		if(stored_huggers >= huggers_to_grow_max)
+			to_chat(user, SPAN_XENOWARNING("\The [src] is full of children."))
+			return
+		if(user)
+			visible_message(SPAN_XENOWARNING("[user] slides a facehugger out of \the [egg] into \the [src]."), \
+				SPAN_XENONOTICE("You place the child from an egg into \the [src]."))
+			user.temp_drop_inv_item(egg)
+		stored_huggers = min(huggers_to_grow_max, stored_huggers + 1)
+		playsound(src.loc, "sound/effects/alien_egg_move.ogg", 25)
+		qdel(egg)
 		return
 	return ..(I, user)
 
@@ -190,7 +204,7 @@
 		return
 	if(world.time - user.timeofdeath < 3 MINUTES)
 		var/time_left = round((user.timeofdeath + 3 MINUTES - world.time) / 10)
-		to_chat(user, SPAN_WARNING("You ghosted too recently. You cannot become a facehugger until ([time_left] seconds has passed)"))
+		to_chat(user, SPAN_WARNING("You ghosted too recently. You cannot become a facehugger until 3 minutes have passed ([time_left] seconds remaining)."))
 		return
 	if(!stored_huggers)
 		to_chat(user, SPAN_WARNING("\The [src] doesn't have any facehuggers to inhabit."))
@@ -211,7 +225,7 @@
 		to_chat(user, SPAN_WARNING("\The [src] cannot support more facehuggers! Limit: <b>[current_hugger_count]/[playable_hugger_limit]</b>"))
 		return
 
-	if(alert(user, "Are you sure you want to become a facehugger?", "Confirmation", "Yes", "No") == "No")
+	if(alert(user, "Are you sure you want to become a facehugger?", "Confirmation", "Yes", "No") != "Yes")
 		return
 
 	var/mob/living/carbon/Xenomorph/Facehugger/hugger = new /mob/living/carbon/Xenomorph/Facehugger(loc, null, linked_hive.hivenumber)

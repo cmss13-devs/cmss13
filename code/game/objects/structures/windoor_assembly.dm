@@ -9,7 +9,7 @@
  */
 
 
-obj/structure/windoor_assembly
+/obj/structure/windoor_assembly
 	icon = 'icons/obj/structures/doors/windoor.dmi'
 
 	name = "Windoor Assembly"
@@ -25,7 +25,7 @@ obj/structure/windoor_assembly
 	var/secure = ""		//Whether or not this creates a secure windoor
 	var/state = "01"	//How far the door assembly has progressed in terms of sprites
 
-obj/structure/windoor_assembly/New(Loc, start_dir=NORTH, constructed=0)
+/obj/structure/windoor_assembly/New(Loc, start_dir=NORTH, constructed=0)
 	..()
 	if(constructed)
 		state = "01"
@@ -37,7 +37,7 @@ obj/structure/windoor_assembly/New(Loc, start_dir=NORTH, constructed=0)
 			setDir(NORTH)
 
 
-obj/structure/windoor_assembly/Destroy()
+/obj/structure/windoor_assembly/Destroy()
 	density = 0
 	. = ..()
 

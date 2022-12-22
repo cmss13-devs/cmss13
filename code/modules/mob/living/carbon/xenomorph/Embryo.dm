@@ -197,7 +197,7 @@
 	victim.emote("scream")
 	if(prob(50)) //dont want them passing out too quick D:
 		victim.pain.apply_pain(PAIN_CHESTBURST_STRONG)  //ow that really hurts larvie!
-	var/message = SPAN_HIGHDANGER( pick("ITS IN YOUR INSIDES!", "ITS GNAWING YOU!", "MAKE IT STOP!", "YOU ARE GOING TO DIE!", "ITS TEARING YOU APART!"))
+	var/message = SPAN_HIGHDANGER( pick("IT'S IN YOUR INSIDES!", "IT'S GNAWING YOU!", "MAKE IT STOP!", "YOU ARE GOING TO DIE!", "IT'S TEARING YOU APART!"))
 	to_chat(victim, message)
 	addtimer(CALLBACK(src, .proc/cause_unbearable_pain, victim), rand(1, 3) SECONDS, TIMER_UNIQUE)
 

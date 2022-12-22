@@ -1,14 +1,27 @@
 /*
 	Custom runtime handling
-
-	Right now, only used to run a script that posts the runtimes to gitlab
 */
 
-// Used to store hashes for runtimes that've occured. Runtimes will not be reported twice
-var/global/runtime_hashes = list()
+
+// /world/Error might be called during early static init, in which case we don't have
+// GLOB and STUI facilities yet. Initializer expressions for the following globals may not
+// even have been ran yet! In such a case we just log them to globals and let
+// MC-init-time SSearlyruntimes pick them up.
+
+GLOBAL_REAL(runtime_hashes, /list)
+GLOBAL_REAL(early_init_runtimes, /list)
+GLOBAL_REAL_VAR(early_init_runtimes_count)
 
 /world/Error(var/exception/E)
 	..()
+	if(!runtime_hashes)
+		runtime_hashes = list()
+	if(!early_init_runtimes)
+		early_init_runtimes = list()
+	if(!early_init_runtimes_count)
+		early_init_runtimes_count = 0
+	if(!SSearlyruntimes?.initialized)
+		early_init_runtimes_count++
 
 	// Runtime was already reported once
 	var/hash = md5("[E.name]@[E.file]@[E.line]")
@@ -16,26 +29,18 @@ var/global/runtime_hashes = list()
 		runtime_hashes[hash]++
 		// Repeat runtimes aren't logged every time
 		if(!(runtime_hashes[hash] % 100))
-			GLOB.STUI.runtime.Add("\[[time_stamp()]]RUNTIME: [E.name] - [E.file]@[E.line] ([runtime_hashes[hash]] total)<br>")
+			var/text = "\[[time_stamp()]]RUNTIME: [E.name] - [E.file]@[E.line] ([runtime_hashes[hash]] total)"
+			if(GLOB?.STUI?.runtime)
+				GLOB.STUI.runtime.Add(text)
+			else
+				early_init_runtimes.Add(text)
 		return
 	runtime_hashes[hash] = 1
 
-	// Log it in STUI
-	GLOB.STUI.runtime.Add("\[[time_stamp()]]RUNTIME: [E.name] - [E.file]@[E.line]<br>")
-	GLOB.STUI.processing |= STUI_LOG_RUNTIME
-
-	// Report the runtime on gitlab if the script is enabled
-	if(!CONFIG_GET(flag/report_runtimes))
-		return
-
-	// Ensure that all the information is wrapped properly as separate arguments
-	var/name = replacetext(E.name, "\"", "\\\"")
-	var/file = replacetext(E.file, "\"", "\\\"")
-	var/line = replacetext("[E.line]", "\"", "\\\"")
-
-	var/desc = replacetext(E.desc, "\"", "\\\"")
-	// This is converted back into a newline by the script
-	desc = replacetext(desc, "\n", ";")
-
-	var/command = "handle_runtime.bat \"[name]\" \"[file]\" \"[line]\" \"[desc]\""
-	shell(command)
+	// Log it
+	var/text = "\[[time_stamp()]]RUNTIME: [E.name] - [E.file]@[E.line]"
+	if(GLOB?.STUI?.runtime)
+		GLOB.STUI.runtime.Add(text)
+		GLOB.STUI.processing |= STUI_LOG_RUNTIME
+	else
+		early_init_runtimes.Add(text)

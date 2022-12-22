@@ -18,8 +18,8 @@
 	return
 
 /obj/structure/largecrate/proc/unpack()
-	for(var/obj/O in contents)
-		O.forceMove(loc)
+	for(var/atom/movable/A in contents)
+		A.forceMove(loc)
 	playsound(src, unpacking_sound, 35)
 	deconstruct(TRUE)
 
@@ -322,7 +322,7 @@
 					/obj/item/weapon/gun/revolver/small = /obj/item/ammo_magazine/revolver/small,
 					/obj/item/weapon/gun/revolver/cmb = /obj/item/ammo_magazine/revolver/cmb,
 					/obj/item/weapon/gun/shotgun/merc = /obj/item/ammo_magazine/handful/shotgun/buckshot,
-					/obj/item/weapon/gun/shotgun/pump/cmb = /obj/item/ammo_magazine/handful/shotgun/buckshot,
+					/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb = /obj/item/ammo_magazine/handful/shotgun/buckshot,
 					/obj/item/weapon/gun/shotgun/double = /obj/item/ammo_magazine/handful/shotgun/buckshot,
 					/obj/item/weapon/gun/shotgun/double/with_stock = /obj/item/ammo_magazine/handful/shotgun/buckshot,
 					/obj/item/weapon/gun/smg/mp27 = /obj/item/ammo_magazine/smg/mp27,
@@ -531,7 +531,7 @@
 		new /obj/item/weapon/gun/smg/mac15(src)
 		new /obj/item/ammo_magazine/smg/mac15(src)
 		new /obj/item/ammo_magazine/smg/mac15(src)
-	new /obj/item/weapon/gun/shotgun/pump/cmb(src)
+	new /obj/item/weapon/gun/shotgun/pump/dual_tube/cmb(src)
 	new /obj/item/ammo_magazine/shotgun(src)
 	new /obj/item/ammo_magazine/shotgun/buckshot(src)
 	new /obj/item/weapon/gun/revolver/m44(src)

@@ -1,3 +1,5 @@
+// LOADOUT ITEMS GO HERE
+
 var/global/list/gear_datums = list()
 
 /proc/populate_gear_list()
@@ -679,4 +681,10 @@ var/global/list/gear_datums = list()
 	display_name = "PDT/L Kit"
 	path = /obj/item/storage/box/pdt_kit
 	cost = 3
+	slot = WEAR_IN_BACK
+
+/datum/gear/tape_recorder
+	display_name = "WY Tape Recorder"
+	path = /obj/item/device/taperecorder/colony/loadout
+	cost = 4
 	slot = WEAR_IN_BACK

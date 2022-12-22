@@ -385,10 +385,6 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 	if(inoperable())
 		return
 
-	if(!allowed(user))
-		to_chat(user, SPAN_WARNING("Access denied!"))
-		return
-
 	tgui_interact(user)
 
 /obj/structure/machinery/self_destruct/console/tgui_interact(mob/user, datum/tgui/ui)
@@ -402,8 +398,6 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 	if(inoperable())
 		return UI_CLOSE
 
-	if(!allowed(user))
-		return UI_CLOSE
 
 /obj/structure/machinery/self_destruct/console/ui_data(mob/user)
 	var/list/data = list()

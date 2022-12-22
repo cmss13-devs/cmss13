@@ -165,7 +165,7 @@ const NewReport = (props, context) => {
 
 const NewCharge = (props, context) => {
   const { data, act } = useBackend(context);
-  const { current_charges, laws } = data;
+  const { laws } = data;
   const [chargeCategory, setChargeCategory] = useLocalState(
     context,
     'chargeCategory',
@@ -197,41 +197,29 @@ const NewCharge = (props, context) => {
         </Tabs>
 
         <Section>
-          {laws[chargeCategory].laws.map((law, i) => {
-            // Disable the button if this charge is already added.
-            let disabled = false;
-            current_charges.map((charge, i) => {
-              if (charge.ref === law.ref) {
-                disabled = true;
-                return;
-              }
-            });
-
-            return (
-              <Section key={i} title={law.name}>
-                <Box mb=".75rem" italic>
-                  {law.desc}
-                </Box>
-                <LabeledList>
-                  <LabeledList.Item label="Sentence">
-                    {law.brig_time} minutes
+          {laws[chargeCategory].laws.map((law, i) => (
+            <Section key={i} title={law.name}>
+              <Box mb=".75rem" italic>
+                {law.desc}
+              </Box>
+              <LabeledList>
+                <LabeledList.Item label="Sentence">
+                  {law.brig_time} minutes
+                </LabeledList.Item>
+                {law.special_punishment && (
+                  <LabeledList.Item label="Extra">
+                    {law.special_punishment}
                   </LabeledList.Item>
-                  {law.special_punishment && (
-                    <LabeledList.Item label="Extra">
-                      {law.special_punishment}
-                    </LabeledList.Item>
-                  )}
-                </LabeledList>
-                <Button
-                  content="Add Charge"
-                  bold
-                  mt="1rem"
-                  disabled={disabled}
-                  onClick={() => act('new_charge', { law: law.ref })}
-                />
-              </Section>
-            );
-          })}
+                )}
+              </LabeledList>
+              <Button
+                content="Add Charge"
+                bold
+                mt="1rem"
+                onClick={() => act('new_charge', { law: law.ref })}
+              />
+            </Section>
+          ))}
         </Section>
       </Section>
     </>

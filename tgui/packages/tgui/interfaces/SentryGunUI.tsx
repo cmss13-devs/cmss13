@@ -226,8 +226,9 @@ const EmptyDisplay = (_, context) => {
         </Stack.Item>
         <Stack.Item>
           <span>
-            Connect the multitool with the laptop to load the encryption keys.
-            Then connect the multitool to a sentry gun to continue.
+            Connect the Security Access Tuner with the laptop to load the
+            encryption keys. Then connect the Security Access Tuner to a sentry
+            gun to continue.
           </span>
         </Stack.Item>
       </Stack>

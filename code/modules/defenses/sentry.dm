@@ -37,13 +37,13 @@
 
 	// action list is configurable for all subtypes, this is just an example
 	choice_categories = list(
-		"RATE OF FIRE" = list("SINGLE", "BURST", "FULL-AUTO"),
-		"IFF STATUS" = list("USCM", "WY", "HUMAN"),
+		SENTRY_CATEGORY_ROF = list(ROF_SINGLE, ROF_BURST, ROF_FULL_AUTO),
+		SENTRY_CATEGORY_IFF = list(FACTION_USCM, FACTION_WY, FACTION_HUMAN),
 	)
 
 	selected_categories = list(
-		"RATE OF FIRE" = "SINGLE",
-		"IFF STATUS" = "USCM",
+		SENTRY_CATEGORY_ROF = ROF_SINGLE,
+		SENTRY_CATEGORY_IFF = FACTION_USCM,
 	)
 
 /obj/structure/machinery/defenses/sentry/Initialize()
@@ -132,9 +132,9 @@
 	if(category in selected_categories)
 		selected_categories[category] = selection
 		switch(category)
-			if("IFF STATUS")
+			if(SENTRY_CATEGORY_IFF)
 				handle_iff(selection)
-			if("RATE OF FIRE")
+			if(SENTRY_CATEGORY_ROF)
 				handle_rof(selection)
 				return TRUE
 		return TRUE
@@ -147,27 +147,27 @@
 	// do your switch case here to implement action and selection
 /obj/structure/machinery/defenses/sentry/proc/handle_iff(var/selection)
 	switch(selection)
-		if("USCM")
+		if(FACTION_USCM)
 			faction_group = FACTION_LIST_MARINE
-		if("WY")
+		if(FACTION_WY)
 			faction_group = FACTION_LIST_MARINE_WY
-		if("HUMAN")
+		if(FACTION_HUMAN)
 			faction_group = FACTION_LIST_HUMANOID
-		if("COLONY")
+		if(FACTION_COLONY)
 			faction_group = list(FACTION_MARINE, FACTION_COLONIST)
 
 
 /obj/structure/machinery/defenses/sentry/proc/handle_rof(var/level)
 	switch(level)
-		if("SINGLE")
+		if(ROF_SINGLE)
 			burst = 1
 			accuracy_mult = 1
 			fire_delay = 4
-		if("BURST")
+		if(ROF_BURST)
 			burst = 3
 			accuracy_mult = 0.6
 			fire_delay = 12
-		if("FULL-AUTO")
+		if(ROF_FULL_AUTO)
 			burst = 1
 			accuracy_mult = 0.5
 			fire_delay = 0.5
@@ -481,8 +481,8 @@
 
 /obj/structure/machinery/defenses/sentry/premade/Initialize()
 	..()
-	if(selected_categories["IFF STATUS"])
-		selected_categories["IFF STATUS"] = "USCM"
+	if(selected_categories[SENTRY_CATEGORY_IFF])
+		selected_categories[SENTRY_CATEGORY_IFF] = FACTION_USCM
 
 /obj/structure/machinery/defenses/sentry/premade/get_examine_text(mob/user)
 	. = ..()
@@ -527,8 +527,8 @@
 
 /obj/structure/machinery/defenses/sentry/premade/deployable/colony/Initialize()
 	..()
-	choice_categories["IFF STATUS"] = list("COLONY", "WY")
-	selected_categories["IFF STATUS"] = "COLONY"
+	choice_categories[SENTRY_CATEGORY_IFF] = list(FACTION_COLONY, FACTION_WY)
+	selected_categories[SENTRY_CATEGORY_IFF] = FACTION_COLONY
 
 //the turret inside the shuttle sentry deployment system
 /obj/structure/machinery/defenses/sentry/premade/dropship
@@ -560,11 +560,11 @@
 	handheld_type = /obj/item/defenses/handheld/sentry/dmr
 
 	choice_categories = list(
-		"IFF STATUS" = list("USMC", "WY", "HUMAN"),
+		SENTRY_CATEGORY_IFF = list(FACTION_USCM, FACTION_WY, FACTION_HUMAN),
 	)
 
 	selected_categories = list(
-		"IFF STATUS" = "USMC",
+		SENTRY_CATEGORY_IFF = FACTION_USCM,
 	)
 
 

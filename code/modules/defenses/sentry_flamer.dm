@@ -10,13 +10,13 @@
 	health_max = 200
 
 	choice_categories = list(
-		"RATE OF FIRE" = list("SINGLE", "FULL-AUTO"),
-		"IFF STATUS" = list("USMC", "WY", "HUMAN"),
+		SENTRY_CATEGORY_ROF = list(ROF_SINGLE, ROF_FULL_AUTO),
+		SENTRY_CATEGORY_IFF = list(FACTION_USCM, FACTION_WY, FACTION_HUMAN),
 	)
 
 	selected_categories = list(
-		"RATE OF FIRE" = "SINGLE",
-		"IFF STATUS" = "USMC",
+		SENTRY_CATEGORY_ROF = ROF_SINGLE,
+		SENTRY_CATEGORY_IFF = FACTION_USCM,
 	)
 
 /obj/structure/machinery/defenses/sentry/flamer/Initialize()
@@ -25,10 +25,10 @@
 /obj/structure/machinery/defenses/sentry/flamer/handle_rof(var/level)
 	burst = 1
 	switch(level)
-		if("SINGLE")
+		if(ROF_SINGLE)
 			accuracy_mult = 1
 			fire_delay = 4
-		if("FULL-AUTO")
+		if(ROF_FULL_AUTO)
 			accuracy_mult = 0.1
 			fire_delay = 0.5
 

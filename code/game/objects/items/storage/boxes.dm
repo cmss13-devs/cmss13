@@ -374,6 +374,25 @@
 	new /obj/item/handcuffs/zip(src)
 	new /obj/item/handcuffs/zip(src)
 
+/obj/item/storage/box/tapes
+	name = "box of regulation tapes"
+	desc = "A box full of magnetic tapes for tape recorders. Contains 10 hours and 40 minutes of recording space!"
+
+/obj/item/storage/box/tapes/fill_preset_inventory()
+	new /obj/item/tape/regulation(src)
+	new /obj/item/tape/regulation(src)
+	new /obj/item/tape/regulation(src)
+	new /obj/item/tape/regulation(src)
+	new /obj/item/tape/regulation(src)
+	new /obj/item/tape/regulation(src)
+	new /obj/item/tape/regulation(src)
+	new /obj/item/tape/regulation(src)
+	new /obj/item/tape/regulation(src)
+	new /obj/item/tape/regulation(src)
+	new /obj/item/tape/regulation(src)
+	new /obj/item/tape/regulation(src)
+	new /obj/item/tape/regulation(src)
+	new /obj/item/tape/regulation(src)
 
 /obj/item/storage/box/mousetraps
 	name = "box of Pest-B-Gon mousetraps"
@@ -507,7 +526,7 @@
 	desc = "A secure box holding five M20 anti-personnel proximity mines."
 	icon_state = "minebox"
 	w_class = SIZE_MEDIUM
-	max_storage_space = 8
+	max_storage_space = 10
 	can_hold = list(/obj/item/explosive/mine)
 
 /obj/item/storage/box/explosive_mines/fill_preset_inventory()

@@ -21,6 +21,11 @@ var/list/reboot_sfx = file2list("config/reboot_sfx.txt")
 	internal_tick_usage = 0.2 * world.tick_lag
 	hub_password = "kMZy3U5jJHSiBQjr"
 
+#ifdef BYOND_TRACY
+	#warn BYOND_TRACY is enabled
+	prof_init()
+#endif
+
 	//logs
 	var/date_string = time2text(world.realtime, "YYYY/MM-Month/DD-Day")
 	var/year_string = time2text(world.realtime, "YYYY")
@@ -49,6 +54,7 @@ var/list/reboot_sfx = file2list("config/reboot_sfx.txt")
 	jobban_loadbanfile()
 	LoadBans()
 	load_motd()
+	load_tm_message()
 	load_mode()
 	loadShuttleInfoDatums()
 	populate_gear_list()
@@ -248,6 +254,11 @@ var/world_topic_spam_protect_time = world.timeofday
 /world/proc/load_motd()
 	join_motd = file2text("config/motd.txt")
 
+/world/proc/load_tm_message()
+	var/datum/getrev/revdata = GLOB.revdata
+	if(revdata.testmerge.len)
+		current_tms = revdata.GetTestMergeInfo()
+
 /world/proc/update_status()
 	//Note: Hub content is limited to 254 characters, including limited HTML/CSS.
 	var/s = ""
@@ -276,7 +287,7 @@ var/failed_old_db_connections = 0
 // 	return 1
 
 var/datum/BSQL_Connection/connection
-proc/setup_database_connection()
+/proc/setup_database_connection()
 
 	if(failed_db_connections > FAILED_DB_CONNECTION_CUTOFF)	//If it failed to establish a connection more than 5 times in a row, don't bother attempting to conenct anymore.
 		return 0
@@ -323,3 +334,21 @@ proc/setup_database_connection()
 /world/proc/incrementMaxZ()
 	maxz++
 	//SSmobs.MaxZChanged()
+
+/** For initializing and starting byond-tracy when BYOND_TRACY is defined
+ *	byond-tracy is a useful profiling tool that allows the user to view the CPU usage and execution time of procs as they run.
+*/
+/world/proc/prof_init()
+	var/lib
+
+	switch(world.system_type)
+		if(MS_WINDOWS)
+			lib = "prof.dll"
+		if(UNIX)
+			lib = "libprof.so"
+		else
+			CRASH("unsupported platform")
+
+	var/init = call(lib, "init")()
+	if("0" != init)
+		CRASH("[lib] init error: [init]")

@@ -25,7 +25,7 @@
 #define DELTA		4
 #define ECHO		5
 #define CRYO		6
-#define MARSOC		7
+#define SOF		7
 #define NOSQUAD 	8
 
 var/list/armormarkings = list()
@@ -126,6 +126,8 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	sprite_sheets = list(SPECIES_MONKEY = 'icons/mob/humans/species/monkeys/onmob/suit_monkey_1.dmi')
 	time_to_unequip = 20
 	time_to_equip = 20
+	pickup_sound = "armorequip"
+	drop_sound = "armorequip"
 	equip_sounds = list('sound/handling/putting_on_armor1.ogg')
 	var/armor_variation = 0
 
@@ -502,7 +504,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 
 /obj/item/clothing/suit/storage/marine/light/vest
 	name = "\improper M3-VL pattern ballistics vest"
-	desc = "Up until 2189 USCM non-combat personnel were issued non-standardized ballistics vests, though the lack of IMP compatibility and suit lamps proved time and time again inefficient. This modified M3-L shell is the result of a 6-year R&D program; It provides utility, protection, AND comfort to all USCM non-combat personnel."
+	desc = "Up until 2182 USCM non-combat personnel were issued non-standardized ballistics vests, though the lack of IMP compatibility and suit lamps proved time and time again inefficient. This modified M3-L shell is the result of a 6-year R&D program; It provides utility, protection, AND comfort to all USCM non-combat personnel."
 	icon_state = "VL"
 	flags_atom = NO_SNOW_TYPE|NO_NAME_OVERRIDE
 	flags_marine_armor = ARMOR_LAMP_OVERLAY //No squad colors when wearing this since it'd look funny.
@@ -549,16 +551,17 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	flags_atom = NO_SNOW_TYPE|NO_NAME_OVERRIDE
 
 /obj/item/clothing/suit/storage/marine/heavy
-	name = "\improper M3-H pattern heavy armor"
-	desc = "A heavier version of the standard M3 pattern armor, cladded with additional plates. It sacrifices speed for more durability."
-	specialty = "\improper M3-H pattern heavy"
+	name = "\improper M3-EOD pattern heavy armor"
+	desc = "A heavier version of the standard M3 pattern armor, the armor is primarily designed to withstand ballistic, explosive, and internal damage, with the drawback of increased bulk and thus reduced movement speed, alongside little additional protection from standard blunt force impacts and none from biological threats."
+	desc_lore = "This configuration of the iconic armor was developed during the Canton War in 2160 between the UPP and USCM - Designed in response to a need for higher protection for ComTechs assigned as EODs during the conflict, this is the pinnacle of protection for your average marine. The shoulders and kneepads have both been expanded upon heavily, covering up the arteries on each limb. A special spall liner was developed for this suit, with the same technology being used in the M70 Flak Jacket being developed at the same time."
+	specialty = "\improper M3-EOD pattern"
 	icon_state = "H1"
 	armor_variation = 6
 	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
-	armor_bullet = CLOTHING_ARMOR_HIGH
-	armor_bomb = CLOTHING_ARMOR_MEDIUMHIGH
-	armor_bio = CLOTHING_ARMOR_HIGH
-	armor_rad = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_bullet = CLOTHING_ARMOR_HIGHPLUS
+	armor_bomb = CLOTHING_ARMOR_HIGHPLUS
+	armor_bio = CLOTHING_ARMOR_MEDIUM
+	armor_rad = CLOTHING_ARMOR_MEDIUM
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
 	storage_slots = 2
 	slowdown = SLOWDOWN_ARMOR_LOWHEAVY
@@ -965,9 +968,9 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 
 #undef FULL_CAMOUFLAGE_ALPHA
 
-/obj/item/clothing/suit/storage/marine/marsoc
-	name = "\improper MARSOC commando armor"
-	desc = "A heavily customized suit of M3 armor. Used by MARSOC operators."
+/obj/item/clothing/suit/storage/marine/sof
+	name = "\improper SOF Armor"
+	desc = "A heavily customized suit of M3 armor. Used by Marine Raiders."
 	icon_state = "marsoc"
 	armor_melee = CLOTHING_ARMOR_HIGH
 	armor_bullet = CLOTHING_ARMOR_HIGH
@@ -1027,6 +1030,26 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUMLOW
 	slowdown = SLOWDOWN_ARMOR_VERY_LIGHT
 	item_state_slots = list(WEAR_JACKET = "pmc_sniper")
+
+/obj/item/clothing/suit/storage/marine/veteran/PMC/light/corporate
+	name = "\improper M1 pattern corporate security armor"
+	desc = "A basic vest with a Weyland-Yutani badge on the right breast. This is commonly worn by low-level guards protecting Weyland-Yutani facilities."
+	icon = 'icons/mob/humans/onmob/contained/wy_goons.dmi'
+	icon_state = "armor"
+	item_state = "armor"
+	item_state_slots = null
+	contained_sprite = TRUE
+
+	flags_armor_protection = BODY_FLAG_CHEST
+	flags_cold_protection = BODY_FLAG_CHEST
+	flags_heat_protection = BODY_FLAG_CHEST
+
+	slowdown = SLOWDOWN_ARMOR_NONE // only protects chest, but enables rapid movement
+
+/obj/item/clothing/suit/storage/marine/veteran/PMC/light/corporate/lead
+	desc = "A basic vest with a Weyland-Yutani badge on the right breast. This variant is worn by low-level guards that have elevated in rank due to 'good conduct in the field', also known as corporate bootlicking."
+	icon_state = "lead_armor"
+	item_state = "lead_armor"
 
 /obj/item/clothing/suit/storage/marine/veteran/PMC/leader
 	name = "\improper M4 pattern PMC leader armor"

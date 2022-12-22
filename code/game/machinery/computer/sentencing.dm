@@ -435,7 +435,7 @@
 				incident.evidence = L
 		if("add_charge")
 			var/datum/law/L = locate(href_list["law"])
-			if(alert(usr, "Are you sure you want to add [L.name]?", "Confirmation", "Yes", "No") == "No")
+			if(alert(usr, "Are you sure you want to add [L.name]?", "Confirmation", "Yes", "No") != "Yes")
 				return
 
 			incident.charges += L

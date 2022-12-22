@@ -23,6 +23,7 @@
 	var/consumed_icon_state = "fruit_spent"
 
 	var/glow_color = "#17991b80"
+	var/gardener_sac_color = "#17991B"
 
 	var/mob/living/carbon/Xenomorph/bound_xeno // Drone linked to this fruit
 	var/fruit_type = /obj/item/reagent_container/food/snacks/resin_fruit
@@ -56,7 +57,7 @@
 	timer_id = addtimer(CALLBACK(src, .proc/mature), time_to_mature * W.fruit_growth_multiplier, TIMER_UNIQUE | TIMER_STOPPABLE)
 	. = ..()
 	// Need to do it here because baseline initialize override the icon through config.
-	icon = 'icons/mob/hostiles/fruits.dmi'
+	icon = 'icons/mob/xenos/fruits.dmi'
 
 /obj/effect/alien/resin/fruit/proc/on_weed_expire()
 	SIGNAL_HANDLER
@@ -76,7 +77,7 @@
 
 /obj/effect/alien/resin/fruit/bullet_act(obj/item/projectile/P)
 	var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags
-	if(ammo_flags & (AMMO_XENO_ACID|AMMO_XENO_TOX))
+	if(ammo_flags & (AMMO_XENO))
 		return
 	qdel(src)
 	. = ..()
@@ -215,6 +216,7 @@
 	var/shield_decay = 10
 	fruit_type = /obj/item/reagent_container/food/snacks/resin_fruit/unstable
 	glow_color = "#17997280"
+	gardener_sac_color = "#179973"
 
 /obj/effect/alien/resin/fruit/unstable/consume_effect(mob/living/carbon/Xenomorph/recipient, var/do_consume = TRUE)
 	if(mature && recipient && !QDELETED(recipient))
@@ -240,6 +242,7 @@
 	consumed_icon_state = "fruit_spent_2"
 	fruit_type = /obj/item/reagent_container/food/snacks/resin_fruit/spore
 	glow_color = "#99461780"
+	gardener_sac_color = "#994617"
 
 /obj/effect/alien/resin/fruit/spore/consume_effect(mob/living/carbon/Xenomorph/recipient, var/do_consume = TRUE)
 	if(mature && recipient && !QDELETED(recipient))
@@ -278,6 +281,7 @@
 	flags = CAN_CONSUME_AT_FULL_HEALTH
 	fruit_type = /obj/item/reagent_container/food/snacks/resin_fruit/speed
 	glow_color = "#9559ca80"
+	gardener_sac_color = "#5B248C"
 	var/speed_buff_amount = 0.4
 	var/speed_duration = 15 SECONDS
 
@@ -303,7 +307,7 @@
 	consumed_icon_state = "fruit_spent_2"
 	flags = CAN_CONSUME_AT_FULL_HEALTH
 	fruit_type = /obj/item/reagent_container/food/snacks/resin_fruit/plasma
-	glow_color = "#287A90"
+	gardener_sac_color = "#287A90"
 	var/plasma_amount = 240
 	var/plasma_time = 15
 	var/time_between_plasmas = 3
@@ -321,9 +325,10 @@
 /obj/item/reagent_container/food/snacks/resin_fruit
 	name = XENO_FRUIT_LESSER
 	desc = "A strange fruit that you could eat.. if you REALLY wanted to. Its roots seem to twitch every so often."
-	icon = 'icons/mob/hostiles/fruits.dmi'
+	icon = 'icons/mob/xenos/fruits.dmi'
 	icon_state = "fruit_lesser_item"
-	w_class = SIZE_LARGE
+	w_class = SIZE_MEDIUM
+	storage_cost = SIZE_LARGE
 	bitesize = 2
 	var/mob/living/carbon/Xenomorph/bound_xeno //Drone linked to this fruit
 	var/fruit_type = /obj/effect/alien/resin/fruit

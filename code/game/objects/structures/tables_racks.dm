@@ -20,7 +20,7 @@
 	throwpass = 1	//You can throw objects over this, despite it's density.")
 	climbable = 1
 	breakable = 1
-	parts = /obj/item/frame/table
+	var/parts = /obj/item/frame/table
 	debris = list(/obj/item/frame/table)
 
 	var/sheet_type = /obj/item/stack/sheet/metal
@@ -54,8 +54,8 @@
 		PF.flags_can_pass_all = PASS_OVER|PASS_AROUND|PASS_TYPE_CRAWLER|PASS_CRUSHER_CHARGE
 	flags_can_pass_all_temp = PASS_UNDER
 
-/obj/structure/surface/table/destroy(deconstruct)
-	if(deconstruct)
+/obj/structure/surface/table/deconstruct(disassembled = TRUE)
+	if(disassembled)
 		if(parts)
 			new parts(loc)
 	else
@@ -63,7 +63,7 @@
 			if(prob(50))
 				new /obj/item/stack/rods(loc)
 		new sheet_type(src)
-	qdel(src)
+	return ..()
 
 /obj/structure/surface/table/proc/update_adjacent(location)
 	if(!location) location = src //location arg is used to correctly update neighbour tables when deleting a table.
@@ -78,7 +78,7 @@
 		var/mob/living/carbon/Xenomorph/M = O
 		if(!M.stat) //No dead xenos jumpin on the bed~
 			visible_message(SPAN_DANGER("[O] plows straight through [src]!"))
-			destroy()
+			deconstruct()
 
 /obj/structure/surface/table/Destroy()
 	var/tableloc = loc
@@ -267,7 +267,7 @@
 			var/mob/living/M = G.grabbed_thing
 			if(user.a_intent == INTENT_HARM)
 				if(user.grab_level > GRAB_AGGRESSIVE)
-					if (prob(15))	M.KnockDown(5)
+					if (prob(15))	M.apply_effect(5, WEAKEN)
 					M.apply_damage(8, def_zone = "head")
 					user.visible_message(SPAN_DANGER("[user] slams [M]'s face against [src]!"),
 					SPAN_DANGER("You slam [M]'s face against [src]!"))
@@ -277,7 +277,7 @@
 					return
 			else if(user.grab_level >= GRAB_AGGRESSIVE)
 				M.forceMove(loc)
-				M.KnockDown(5)
+				M.apply_effect(5, WEAKEN)
 				user.visible_message(SPAN_DANGER("[user] throws [M] on [src]."),
 				SPAN_DANGER("You throw [M] on [src]."))
 		return
@@ -289,7 +289,7 @@
 		if(do_after(user, 50 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 			user.visible_message(SPAN_NOTICE("[user] disassembles [src]."),
 			SPAN_NOTICE("You disassemble [src]."))
-			destroy(1)
+			deconstruct(TRUE)
 		return
 
 	if((W.flags_item & ITEM_ABSTRACT) || isrobot(user))
@@ -300,7 +300,7 @@
 			playsound(src.loc, 'sound/weapons/wristblades_hit.ogg', 25, 1)
 			user.visible_message(SPAN_DANGER("[user] slices [src] apart!"),
 				SPAN_DANGER("You slice [src] apart!"))
-			destroy()
+			deconstruct()
 		else
 			to_chat(user, SPAN_WARNING("You slice at the table, but only claw it up a little."))
 		return
@@ -584,6 +584,12 @@
 	table_prefix = "alm"
 	parts = /obj/item/frame/table/almayer
 
+/obj/structure/surface/table/reinforced/cloth
+	name = "cloth table"
+	desc = "A fancy cloth-topped wooden table, bolted to the floor. Fit for formal occasions."
+	icon_state = "cloth"
+	table_prefix = "cloth"
+
 /*
  * Racks
  */
@@ -599,7 +605,7 @@
 	breakable = 1
 	climbable = 1
 	health = 100
-	parts = /obj/item/frame/rack
+	var/parts = /obj/item/frame/rack
 	debris = list(/obj/item/frame/rack)
 
 /obj/structure/surface/rack/initialize_pass_flags(var/datum/pass_flags_container/PF)
@@ -625,7 +631,7 @@
 
 /obj/structure/surface/rack/attackby(obj/item/W, mob/user, click_data)
 	if(HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
-		destroy(1)
+		deconstruct(TRUE)
 		playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
 		return
 	if((W.flags_item & ITEM_ABSTRACT) || isrobot(user))
@@ -638,18 +644,18 @@
 		var/mob/living/carbon/Xenomorph/M = O
 		if(!M.stat) //No dead xenos jumpin on the bed~
 			visible_message(SPAN_DANGER("[O] plows straight through [src]!"))
-			destroy()
+			deconstruct()
 
-/obj/structure/surface/rack/destroy(deconstruct)
-	if(deconstruct)
+/obj/structure/surface/rack/deconstruct(disassembled = TRUE)
+	if(disassembled)
 		if(parts)
 			new parts(loc)
 	else
 		new /obj/item/stack/sheet/metal(loc)
 	density = 0
-	qdel(src)
+	return ..()
 
 /obj/structure/surface/rack/ex_act(severity, direction)
 	. = ..()
 	if(.)
-		destroy(FALSE)
+		deconstruct(FALSE)

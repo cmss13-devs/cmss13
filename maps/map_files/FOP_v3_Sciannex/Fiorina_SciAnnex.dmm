@@ -1326,7 +1326,7 @@
 /obj/structure/closet/secure_closet/guncabinet{
 	req_access = null
 	},
-/obj/item/weapon/gun/shotgun/pump/cmb,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
 /obj/item/ammo_magazine/shotgun/buckshot,
 /obj/item/ammo_magazine/shotgun/buckshot,
 /obj/item/clothing/under/marine/ua_riot,
@@ -3620,7 +3620,7 @@
 /area/fiorina/oob)
 "cbe" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/item/weapon/gun/shotgun/pump/cmb,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
 /turf/open/floor/prison{
 	icon_state = "yellowfull"
 	},
@@ -4310,7 +4310,7 @@
 /area/fiorina/station/medbay)
 "cwU" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/item/weapon/gun/shotgun/pump/cmb,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "sterile_white";
@@ -6972,7 +6972,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/station/medbay)
 "ecF" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited{
 	pixel_y = 32
 	},
 /turf/open/floor/prison{
@@ -8188,13 +8188,6 @@
 /obj/item/prop/helmetgarb/riot_shield,
 /turf/open/floor/prison,
 /area/fiorina/station/security)
-"eSH" = (
-/obj/effect/spawner/random/sentry/midchance,
-/turf/open/floor/prison{
-	dir = 6;
-	icon_state = "yellow"
-	},
-/area/fiorina/station/lowsec)
 "eSZ" = (
 /obj/structure/bed/roller,
 /turf/open/floor/prison{
@@ -8387,6 +8380,13 @@
 	tag = "icon-floor_plate"
 	},
 /area/fiorina/lz/near_lzI)
+"eXC" = (
+/obj/structure/machinery/recharge_station,
+/turf/open/floor/prison{
+	dir = 5;
+	icon_state = "whitepurple"
+	},
+/area/fiorina/station/research_cells)
 "eXP" = (
 /obj/structure/machinery/door/poddoor/almayer{
 	density = 0;
@@ -8714,7 +8714,6 @@
 /area/fiorina/station/park)
 "fgU" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/effect/spawner/random/sentry/midchance,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/power_ring)
 "fhc" = (
@@ -9782,7 +9781,7 @@
 /turf/open/floor/wood,
 /area/fiorina/station/park)
 "fMk" = (
-/obj/item/weapon/gun/shotgun/pump/cmb,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/prison{
 	icon_state = "floor_plate";
@@ -10091,6 +10090,13 @@
 	icon_state = "bluefull"
 	},
 /area/fiorina/station/power_ring)
+"fWD" = (
+/obj/structure/machinery/recharge_station,
+/turf/open/floor/prison{
+	dir = 5;
+	icon_state = "darkbrown2"
+	},
+/area/fiorina/maintenance)
 "fWL" = (
 /obj/structure/barricade/handrail{
 	dir = 1;
@@ -13305,13 +13311,9 @@
 /area/fiorina/station/flight_deck)
 "hTr" = (
 /obj/structure/closet,
-/obj/item/clothing/under/marine{
-	desc = "A Unified Clown Federation combat uniform. Features the latest in anti-mime technology.";
-	icon_state = "clown";
-	name = "\improper UCF uniform"
-	},
 /obj/item/clothing/mask/gas/clown_hat,
 /obj/effect/spawner/random/gun/shotgun/midchance,
+/obj/item/clothing/under/marine/ucf_clown,
 /turf/open/floor/plating/prison,
 /area/fiorina/maintenance)
 "hTs" = (
@@ -16962,7 +16964,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/maintenance)
 "kbb" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med,
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited,
 /turf/closed/wall/r_wall/prison_unmeltable,
 /area/fiorina/tumor/aux_engi)
 "kbg" = (
@@ -23401,7 +23403,7 @@
 /obj/structure/prop/invuln{
 	desc = "Its eyes follow you around through the ice.";
 	dir = 4;
-	icon = 'icons/mob/hostiles/queen.dmi';
+	icon = 'icons/mob/xenos/queen.dmi';
 	icon_state = "Normal Queen Knocked Down";
 	layer = 2.5;
 	name = "frozen creature";
@@ -23413,7 +23415,6 @@
 /area/fiorina/tumor/ice_lab)
 "nNJ" = (
 /obj/structure/surface/rack,
-/obj/effect/spawner/random/sentry/midchance,
 /turf/open/floor/plating/prison,
 /area/fiorina/maintenance)
 "nOw" = (
@@ -23474,7 +23475,7 @@
 	},
 /area/fiorina/tumor/ice_lab)
 "nQq" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med,
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited,
 /turf/closed/wall/prison,
 /area/fiorina/station/medbay)
 "nQN" = (
@@ -23565,7 +23566,7 @@
 /obj/structure/prop/invuln{
 	desc = "It is slimy.";
 	dir = 4;
-	icon = 'icons/mob/hostiles/sentinel.dmi';
+	icon = 'icons/mob/xenos/sentinel.dmi';
 	icon_state = "Normal Sentinel Knocked Down";
 	layer = 2.5;
 	name = "frozen creature";
@@ -23575,7 +23576,7 @@
 /obj/structure/prop/invuln{
 	desc = "He knows something that you don't.";
 	dir = 4;
-	icon = 'icons/mob/hostiles/larva.dmi';
+	icon = 'icons/mob/xenos/larva.dmi';
 	icon_state = "Larva Sleeping";
 	layer = 2.5;
 	name = "frozen creature";
@@ -24043,7 +24044,7 @@
 /obj/structure/prop/invuln{
 	desc = "The underside softly pulses.";
 	dir = 4;
-	icon = 'icons/mob/hostiles/xenonid_crab.dmi';
+	icon = 'icons/mob/xenos/xenonid_crab.dmi';
 	icon_state = "facehugger_thrown";
 	layer = 2.5;
 	name = "frozen creature";
@@ -24053,7 +24054,7 @@
 /obj/structure/prop/invuln{
 	desc = "The underside softly pulses.";
 	dir = 4;
-	icon = 'icons/mob/hostiles/xenonid_crab.dmi';
+	icon = 'icons/mob/xenos/xenonid_crab.dmi';
 	icon_state = "facehugger_thrown";
 	layer = 2.5;
 	name = "frozen creature";
@@ -24063,7 +24064,7 @@
 /obj/structure/prop/invuln{
 	desc = "The underside softly pulses.";
 	dir = 4;
-	icon = 'icons/mob/hostiles/xenonid_crab.dmi';
+	icon = 'icons/mob/xenos/xenonid_crab.dmi';
 	icon_state = "facehugger_thrown";
 	layer = 2.5;
 	name = "frozen creature";
@@ -24073,7 +24074,7 @@
 /obj/structure/prop/invuln{
 	desc = "The underside softly pulses.";
 	dir = 4;
-	icon = 'icons/mob/hostiles/xenonid_crab.dmi';
+	icon = 'icons/mob/xenos/xenonid_crab.dmi';
 	icon_state = "facehugger_thrown";
 	layer = 2.5;
 	name = "frozen creature";
@@ -27011,17 +27012,6 @@
 	},
 /turf/open/floor/prison,
 /area/fiorina/station/security/wardens)
-"qet" = (
-/obj/structure/machinery/light/double/blue{
-	dir = 4;
-	pixel_x = 10;
-	pixel_y = 13
-	},
-/obj/effect/spawner/random/sentry/midchance,
-/turf/open/floor/corsat{
-	icon_state = "plate"
-	},
-/area/fiorina/station/flight_deck)
 "qeu" = (
 /obj/structure/toilet{
 	pixel_y = 4
@@ -28075,7 +28065,7 @@
 	},
 /area/fiorina/lz/near_lzI)
 "qHG" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited{
 	pixel_y = 25
 	},
 /turf/open/floor/plating/plating_catwalk,
@@ -28514,7 +28504,7 @@
 	},
 /area/fiorina/station/power_ring)
 "qUe" = (
-/obj/item/weapon/gun/shotgun/pump/cmb,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
 /obj/item/ammo_casing/shell{
 	icon_state = "shell_9_1"
 	},
@@ -28869,7 +28859,7 @@
 	},
 /area/fiorina/station/security)
 "rfd" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med,
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited,
 /turf/closed/wall/prison,
 /area/fiorina/tumor/ice_lab)
 "rfo" = (
@@ -31856,7 +31846,7 @@
 /obj/structure/closet/secure_closet/guncabinet{
 	req_access = null
 	},
-/obj/item/weapon/gun/shotgun/pump/cmb,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
 /obj/item/ammo_magazine/shotgun/buckshot,
 /obj/item/ammo_magazine/shotgun/buckshot,
 /obj/item/storage/belt/shotgun,
@@ -36721,7 +36711,7 @@
 /area/fiorina/station/civres_blue)
 "vVu" = (
 /obj/structure/surface/rack,
-/obj/item/ammo_box/magazine/smg/nailgun,
+/obj/item/ammo_box/magazine/nailgun,
 /turf/open/floor/prison{
 	icon_state = "darkbrownfull2";
 	tag = "icon-darkbrownfull2"
@@ -39936,6 +39926,13 @@
 	icon_state = "greenblue"
 	},
 /area/fiorina/station/botany)
+"xTe" = (
+/obj/structure/machinery/recharge_station,
+/turf/open/floor/prison{
+	dir = 9;
+	icon_state = "blue"
+	},
+/area/fiorina/station/power_ring)
 "xTi" = (
 /obj/structure/stairs/perspective{
 	dir = 8;
@@ -64028,7 +64025,7 @@ eLu
 cME
 cME
 eLu
-cEB
+fWD
 uJM
 gfo
 goz
@@ -76052,7 +76049,7 @@ mcc
 avl
 kqC
 avl
-eSH
+iUy
 kqC
 ggp
 xri
@@ -82337,7 +82334,7 @@ cAW
 cAW
 jmG
 cKa
-ikq
+eXC
 vII
 vII
 vII
@@ -83055,7 +83052,7 @@ lAS
 qvL
 xcJ
 jjg
-xoF
+xTe
 beV
 rQP
 rev
@@ -85322,7 +85319,7 @@ roY
 roY
 mPW
 vvM
-qet
+tet
 eyz
 qGn
 tet

@@ -4,7 +4,7 @@
 	desc = "A large automated 3D printer for producing runtime errors."
 	density = 1
 	anchored = 1
-	use_power = 1
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 20
 	icon = 'icons/obj/structures/machinery/drone_fab.dmi'
 	icon_state = "drone_fab_idle"
@@ -213,7 +213,8 @@
 	PC.update_icon()
 
 
-/// WARNING: IF YOU DECIDE TO READD THIS, GIVE THE HARDPOINTS POINT COSTS
+// WARNING: IF YOU DECIDE TO READD THIS, GIVE THE HARDPOINTS POINT COSTS
+/// Fabricator for individual tank parts
 /obj/structure/machinery/part_fabricator/tank
 	name = "vehicle part fabricator"
 	desc = "A large automated 3D printer for producing vehicle parts."

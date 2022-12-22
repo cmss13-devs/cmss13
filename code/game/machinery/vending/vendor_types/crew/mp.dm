@@ -41,7 +41,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_military_police, list(
 	name = "\improper ColMarTech Military Police Equipment Rack"
 	desc = "An automated rack hooked up to a colossal storage of Military Police standard-issue equipment."
 	req_access = list(ACCESS_MARINE_BRIG)
-	vendor_role = list(JOB_POLICE, JOB_POLICE_CADET)
+	vendor_role = list(JOB_POLICE)
 
 /obj/structure/machinery/cm_vending/clothing/military_police/get_listed_products(var/mob/user)
 	return GLOB.cm_vending_clothing_military_police
@@ -57,7 +57,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_military_police_warden, list(
 		list("Satchel", 0, /obj/item/storage/backpack/satchel/sec, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_MANDATORY),
 
 		list("PERSONAL SIDEARM (Take ALL)", 0, null, null, null),
-		list("M4A3 Custom Pistol ", 0, /obj/item/storage/belt/gun/m4a3/commander, MARINE_CAN_BUY_BELT, VENDOR_ITEM_RECOMMENDED),
+		list("M4A3 Service Pistol ", 0, /obj/item/storage/belt/gun/m4a3/full, MARINE_CAN_BUY_BELT, VENDOR_ITEM_RECOMMENDED),
 		list("Mod 88 Pistol", 0, /obj/item/storage/belt/gun/m4a3/mod88, MARINE_CAN_BUY_BELT, VENDOR_ITEM_RECOMMENDED),
 		list("M44 Revolver", 0, /obj/item/storage/belt/gun/m44/mp, MARINE_CAN_BUY_BELT, VENDOR_ITEM_RECOMMENDED),
 

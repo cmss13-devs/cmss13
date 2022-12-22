@@ -88,6 +88,24 @@ var/global/list/gear_datums = list()
 	slot = WEAR_HEAD
 	allowed_origins = USCM_ORIGINS
 
+/datum/gear/cmheadbandbrown
+	display_name = "USCM Headband (Brown)"
+	path = /obj/item/clothing/head/headband/brown
+	cost = 3
+	slot = WEAR_HEAD
+
+/datum/gear/cmheadbandgray
+	display_name = "USCM Headband (Gray)"
+	path = /obj/item/clothing/head/headband/gray
+	cost = 3
+	slot = WEAR_HEAD
+
+/datum/gear/cmheadbandsquad
+	display_name = "USCM Headband (Squad)"
+	path = /obj/item/clothing/head/headband/squad
+	cost = 3
+	slot = WEAR_HEAD
+
 /datum/gear/cmheadset
 	display_name = "USCM Earpiece"
 	path = /obj/item/clothing/head/headset
@@ -135,13 +153,13 @@ var/global/list/gear_datums = list()
 	slot = WEAR_EYES
 
 /datum/gear/thugshades
-	display_name = "Shades"
+	display_name = "BiMex Personal Shades"
 	path = /obj/item/clothing/glasses/sunglasses/big
 	cost = 2
 	slot = WEAR_EYES
 
 /datum/gear/sunglasses
-	display_name = "Sunglasses"
+	display_name = "Cheap Sunglasses"
 	path = /obj/item/clothing/glasses/sunglasses
 	cost = 2
 	slot = WEAR_EYES
@@ -239,34 +257,74 @@ var/global/list/gear_datums = list()
 	slot = WEAR_EYES
 
 /datum/gear/tacticalmask
-	display_name = "Tactical Mask (Gray)"
+	display_name = "Face Wrap (Gray)"
 	path = /obj/item/clothing/mask/rebreather/scarf/tacticalmask
 	slot = WEAR_FACE
 	cost = 2
 
 /datum/gear/tacticalmasktan
-	display_name = "Tactical Mask (Tan)"
+	display_name = "Face Wrap (Tan)"
 	path = /obj/item/clothing/mask/rebreather/scarf/tacticalmask/tan
 	slot = WEAR_FACE
 	cost = 2
 
-/datum/gear/tacticalmaskgreen
-	display_name = "Tactical Mask (Red)"
+/datum/gear/tacticalmaskred
+	display_name = "Face Wrap (Red)"
 	path = /obj/item/clothing/mask/rebreather/scarf/tacticalmask/red
 	slot = WEAR_FACE
 	cost = 2
 
-/datum/gear/tacticalmaskblack
-	display_name = "Tactical Mask (Green)"
+/datum/gear/tacticalmaskgreeen
+	display_name = "Face Wrap (Green)"
 	path = /obj/item/clothing/mask/rebreather/scarf/tacticalmask/green
 	slot = WEAR_FACE
 	cost = 2
 
-
+/datum/gear/tacticalmasksquad
+	display_name = "Face Wrap (Squad)"
+	path =/obj/item/clothing/mask/rebreather/scarf/tacticalmask/squad
+	slot = WEAR_FACE
+	cost = 2
 
 /datum/gear/tacticalmaskblack
-	display_name = "Tactical Mask (Green)"
-	path = /obj/item/clothing/mask/rebreather/scarf/tacticalmask/green
+	display_name = "Face Wrap (Black)"
+	path = /obj/item/clothing/mask/rebreather/scarf/tacticalmask/black
+	slot = WEAR_FACE
+	cost = 2
+//
+/datum/gear/tornscarfclassic
+	display_name = "Scarf (Grey)"
+	path = /obj/item/clothing/mask/rebreather/tornscarf
+	slot = WEAR_FACE
+	cost = 2
+
+/datum/gear/tornscarfgreen
+	display_name = "Scarf (Green)"
+	path = /obj/item/clothing/mask/rebreather/tornscarf/green
+	slot = WEAR_FACE
+	cost = 2
+
+/datum/gear/tornscarfwhite
+	display_name = "Scarf (White)"
+	path = /obj/item/clothing/mask/rebreather/tornscarf/snow
+	slot = WEAR_FACE
+	cost = 2
+
+/datum/gear/tornscarfdesert
+	display_name = "Scarf (Desert)"
+	path = /obj/item/clothing/mask/rebreather/tornscarf/desert
+	slot = WEAR_FACE
+	cost = 2
+
+/datum/gear/tornscarfurban
+	display_name = "Scarf (Urban)"
+	path = /obj/item/clothing/mask/rebreather/tornscarf/urban
+	slot = WEAR_FACE
+	cost = 2
+
+/datum/gear/tornscarfblack
+	display_name = "Scarf (Black)"
+	path = /obj/item/clothing/mask/rebreather/tornscarf/black
 	slot = WEAR_FACE
 	cost = 2
 //
@@ -335,6 +393,20 @@ var/global/list/gear_datums = list()
 	path = /obj/item/storage/box/m43
 	slot = WEAR_IN_BACK
 	cost = 4
+
+/datum/gear/m4a3_custom
+	display_name = "M4A3 Custom Pistol"
+	path = /obj/item/weapon/gun/pistol/m4a3/custom
+	slot = WEAR_IN_BACK
+	cost = 4
+	allowed_origins = USCM_ORIGINS
+
+/datum/gear/m44_custom_revolver
+	display_name = "M44 Custom Revolver"
+	path = /obj/item/weapon/gun/revolver/m44/custom
+	slot = WEAR_IN_BACK
+	cost = 7
+	allowed_origins = USCM_ORIGINS
 
 /datum/gear/jungle_boots
 	display_name = "Jungle Pattern Combat Boots"
@@ -559,6 +631,48 @@ var/global/list/gear_datums = list()
 	display_name = "Weyland-Yutani IPA"
 	path = /obj/item/reagent_container/food/drinks/cans/beer
 	cost = 2
+	slot = WEAR_IN_BACK
+
+/datum/gear/flask
+	display_name = "Metal Flask"
+	path = /obj/item/reagent_container/food/drinks/flask
+	cost = 2
+	slot = WEAR_IN_BACK
+
+/datum/gear/flask_canteen
+	display_name = "Canteen"
+	path = /obj/item/reagent_container/food/drinks/flask/canteen
+	cost = 2
+	slot = WEAR_IN_BACK
+
+/datum/gear/flask_uscm
+	display_name = "USCM Flask"
+	path = /obj/item/reagent_container/food/drinks/flask/marine
+	cost = 2
+	slot = WEAR_IN_BACK
+
+/datum/gear/flask_wy
+	display_name = "WY Flask"
+	path = /obj/item/reagent_container/food/drinks/flask/weylandyutani
+	cost = 2
+	slot = WEAR_IN_BACK
+
+/datum/gear/flask_det
+	display_name = "Leather Flask"
+	path = /obj/item/reagent_container/food/drinks/flask/detflask
+	cost = 2
+	slot = WEAR_IN_BACK
+
+/datum/gear/flask_bar
+	display_name = "Black Leather Flask"
+	path = /obj/item/reagent_container/food/drinks/flask/barflask
+	cost = 2
+	slot = WEAR_IN_BACK
+
+/datum/gear/flask_vacuum
+	display_name = "Vacuum Flask"
+	path = /obj/item/reagent_container/food/drinks/flask/vacuumflask
+	cost = 3 //they're too cool for 2 points
 	slot = WEAR_IN_BACK
 
 /datum/gear/pdt_kit

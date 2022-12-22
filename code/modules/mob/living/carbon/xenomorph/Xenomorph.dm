@@ -57,6 +57,9 @@
 
 	var/obj/item/iff_tag/iff_tag = null
 
+	var/static/list/walking_state_cache = list()
+	var/has_walking_icon_state = FALSE
+
 	//////////////////////////////////////////////////////////////////
 	//
 	//		Core Stats
@@ -129,6 +132,7 @@
 	var/acid_level = 0
 
 	// Mutator-related and other important vars
+	var/mutation_icon_state = null
 	var/mutation_type = null
 	var/datum/mutator_set/individual_mutators/mutators = new
 
@@ -173,8 +177,8 @@
 	/// xenomorph type is given upon spawn
 	var/base_actions
 
-	// Mark tracking --
-	var/obj/effect/alien/resin/marker/tracked_marker = null //this is the resin mark that is currently being tracked by the xeno
+	/// this is the resin mark that is currently being tracked by the xeno
+	var/obj/effect/alien/resin/marker/tracked_marker
 
 	//////////////////////////////////////////////////////////////////
 	//
@@ -197,6 +201,7 @@
 	var/regeneration_multiplier = 1
 	var/speed_modifier = 0
 	var/phero_modifier = 0
+	var/received_phero_caps = list()
 	var/acid_modifier = 0
 	var/weed_modifier = 0
 	var/evasion_modifier = 0
@@ -238,6 +243,13 @@
 
 	var/pounce_distance = 0
 
+	// Life reduction variables.
+	var/life_stun_reduction = -1.5
+	var/life_knockdown_reduction = -1.5
+	var/life_knockout_reduction = -1.5
+	var/life_daze_reduction = -1.5
+	var/life_slow_reduction = -1.5
+
 
 	//////////////////////////////////////////////////////////////////
 	//
@@ -252,13 +264,15 @@
 	// 		an easily modularizable way. So, here you go.
 	//
 	//////////////////////////////////////////////////////////////////
-	var/weedwalking_activated = 0 //Hivelord's weedwalking
-	var/tunnel = 0
-	var/burrow = 0
-	var/fortify = 0
-	var/crest_defense = 0
-	var/agility = 0		// 0 - upright, 1 - all fours
-	var/ripping_limb = 0
+	var/weedwalking_activated = FALSE //Hivelord's weedwalking
+	var/tunnel = FALSE
+	var/stealth = FALSE // for check on lurker invisibility
+	var/burrow = FALSE
+	var/fortify = FALSE
+	var/crest_defense = FALSE
+	var/agility = FALSE		// 0 - upright, 1 - all fours
+	var/ripping_limb = FALSE
+	var/steelcrest = FALSE
 	// Related to zooming out (primarily queen and boiler)
 	var/devour_timer = 0 // The world.time at which we will regurgitate our currently-vored victim
 	var/extra_build_dist = 0 // For drones/hivelords. Extends the maximum build range they have
@@ -269,7 +283,6 @@
 	var/selected_mark // If leader what mark you will place when you make one
 	var/datum/ammo/xeno/ammo = null //The ammo datum for our spit projectiles. We're born with this, it changes sometimes.
 	var/tunnel_delay = 0
-	var/steelcrest = FALSE
 	var/list/available_fruits = list() // List of placeable the xenomorph has access to.
 	var/list/current_fruits = list() // If we have current_fruits that are limited, e.g. fruits
 	var/max_placeable = 0 // Limit to that amount
@@ -293,7 +306,6 @@
 	var/warding_aura = 0
 	var/recovery_aura = 0
 	var/ignore_aura = FALSE // ignore a specific pherom, input type
-
 
 	//////////////////////////////////////////////////////////////////
 	//
@@ -324,6 +336,7 @@
 	var/list/overlays_standing[X_TOTAL_LAYERS]
 
 	var/atom/movable/vis_obj/xeno_wounds/wound_icon_carrier
+	var/atom/movable/vis_obj/xeno_pack/backpack_icon_carrier
 
 /mob/living/carbon/Xenomorph/Initialize(mapload, mob/living/carbon/Xenomorph/oldXeno, h_number)
 	var/area/A = get_area(src)
@@ -334,6 +347,7 @@
 	vis_contents += wound_icon_carrier
 
 	if(oldXeno)
+		set_movement_intent(oldXeno.m_intent)
 		hivenumber = oldXeno.hivenumber
 		nicknumber = oldXeno.nicknumber
 		life_kills_total = oldXeno.life_kills_total
@@ -361,13 +375,13 @@
 
 	mutators.xeno = src
 
-	update_icon_source()
-
 	if(caste_type && GLOB.xeno_datum_list[caste_type])
 		caste = GLOB.xeno_datum_list[caste_type]
 	else
 		to_world("something went very wrong")
 		return
+
+	update_icon_source()
 
 	acid_splash_cooldown = caste.acid_splash_cooldown
 
@@ -475,6 +489,7 @@
 		hive.hive_ui.update_all_xeno_data()
 
 	job = caste.caste_type // Used for tracking the caste playtime
+	Decorate()
 
 	RegisterSignal(src, COMSIG_MOB_SCREECH_ACT, .proc/handle_screech_act)
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_XENO_SPAWN, src)
@@ -554,7 +569,8 @@
 		name_client_postfix = client.xeno_postfix ? ("-"+client.xeno_postfix) : ""
 		age_xeno()
 	full_designation = "[name_client_prefix][nicknumber][name_client_postfix]"
-	color = in_hive.color
+	if(!HAS_TRAIT(src, TRAIT_NO_COLOR))
+		color = in_hive.color
 
 	var/age_display = show_age_prefix ? age_prefix : ""
 	var/name_display = ""
@@ -638,7 +654,7 @@
 	if(isXeno(user))
 		var/mob/living/carbon/Xenomorph/xeno = user
 		if(hivenumber != xeno.hivenumber)
-			. += "It appears to belong to [hive?.prefix ? "the [hive.prefix]" : "a different "]hive."
+			. += "It appears to belong to [hive?.name ? "the [hive.name]" : "a different hive"]."
 
 	if(isXeno(user) || isobserver(user))
 		if(mutation_type != "Normal")
@@ -650,6 +666,10 @@
 /mob/living/carbon/Xenomorph/Destroy()
 	GLOB.living_xeno_list -= src
 	GLOB.xeno_mob_list -= src
+
+	if(tracked_marker)
+		tracked_marker.xenos_tracking -= src
+		tracked_marker = null
 
 	if(mind)
 		mind.name = name //Grabs the name when the xeno is getting deleted, to reference through hive status later.
@@ -685,6 +705,9 @@
 
 	vis_contents -= wound_icon_carrier
 	QDEL_NULL(wound_icon_carrier)
+	if(backpack_icon_carrier)
+		vis_contents -= backpack_icon_carrier
+		QDEL_NULL(backpack_icon_carrier)
 
 	QDEL_NULL(iff_tag)
 
@@ -728,7 +751,7 @@
 		var/mob/living/carbon/human/H = puller
 		if(H.ally_of_hivenumber(hivenumber))
 			return TRUE
-		puller.KnockDown(rand(caste.tacklestrength_min,caste.tacklestrength_max))
+		puller.apply_effect(rand(caste.tacklestrength_min,caste.tacklestrength_max), WEAKEN)
 		playsound(puller.loc, 'sound/weapons/pierce.ogg', 25, 1)
 		puller.visible_message(SPAN_WARNING("[puller] tried to pull [src] but instead gets a tail swipe to the head!"))
 		return FALSE
@@ -943,6 +966,15 @@
 		current_aura = null
 		to_chat(src, SPAN_XENOWARNING("You lose your pheromones."))
 
+	// Also recalculate received pheros now
+	for(var/capped_aura in received_phero_caps)
+		switch(capped_aura)
+			if("frenzy")
+				frenzy_new = min(frenzy_new, received_phero_caps[capped_aura])
+			if("warding")
+				warding_new = min(warding_new, received_phero_caps[capped_aura])
+			if("recovery")
+				recovery_new = min(recovery_new, received_phero_caps[capped_aura])
 
 /mob/living/carbon/Xenomorph/proc/recalculate_maturation()
 	evolution_threshold =  caste.evolution_threshold
@@ -965,7 +997,7 @@
 
 /mob/living/carbon/Xenomorph/resist_fire()
 	adjust_fire_stacks(XENO_FIRE_RESIST_AMOUNT, min_stacks = 0)
-	KnockDown(4, TRUE)
+	apply_effect(4, WEAKEN)
 	visible_message(SPAN_DANGER("[src] rolls on the floor, trying to put themselves out!"), \
 		SPAN_NOTICE("You stop, drop, and roll!"), null, 5)
 
@@ -987,13 +1019,13 @@
 	var/displaytime = max(1, round(breakouttime / 600)) //Minutes
 	to_chat(src, SPAN_WARNING("You attempt to remove [legcuffed]. (This will take around [displaytime] minute(s) and you need to stand still)"))
 	for(var/mob/O in viewers(src))
-		O.show_message(SPAN_DANGER("<B>[usr] attempts to remove [legcuffed]!</B>"), 1)
+		O.show_message(SPAN_DANGER("<B>[usr] attempts to remove [legcuffed]!</B>"), SHOW_MESSAGE_VISIBLE)
 	if(!do_after(src, breakouttime, INTERRUPT_NO_NEEDHAND^INTERRUPT_RESIST, BUSY_ICON_HOSTILE))
 		return
 	if(!legcuffed || buckled)
 		return // time leniency for lag which also might make this whole thing pointless but the server
 	for(var/mob/O in viewers(src))//                                         lags so hard that 40s isn't lenient enough - Quarxink
-		O.show_message(SPAN_DANGER("<B>[src] manages to remove [legcuffed]!</B>"), 1)
+		O.show_message(SPAN_DANGER("<B>[src] manages to remove [legcuffed]!</B>"), SHOW_MESSAGE_VISIBLE)
 	to_chat(src, SPAN_NOTICE(" You successfully remove [legcuffed]."))
 	drop_inv_item_on_ground(legcuffed)
 

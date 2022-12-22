@@ -18,6 +18,31 @@
 	icon = 'icons/obj/structures/props/drill.dmi'
 	icon_state = "drill"
 	bound_height = 96
+	var/on = FALSE//if this is set to on by default, the drill will start on, doi
+
+/obj/structure/prop/dam/drill/attackby(obj/item/W, mob/user)
+	. = ..()
+	if(isXeno(user))
+		return
+	else if (ishuman(user) && istype(W, /obj/item/tool/wrench))
+		on = !on
+		visible_message("You wrench the controls of \the [src]. The drill jumps to life." , "[user] wrenches the controls of \the [src]. The drill jumps to life.")
+
+		update()
+
+/obj/structure/prop/dam/drill/proc/update()
+	icon_state = "thumper[on ? "-on" : ""]"
+	if(on)
+		SetLuminosity(3)
+		playsound(src, 'sound/machines/turbine_on.ogg')
+	else
+		SetLuminosity(0)
+		playsound(src, 'sound/machines/turbine_off.ogg')
+	return
+
+/obj/structure/prop/dam/drill/Initialize()
+	. = ..()
+	update()
 
 /obj/structure/prop/dam/truck
 	name = "truck"
@@ -448,17 +473,6 @@
 	icon_state = "laptop_on"
 	desc = "The screen is stuck on some sort of boot-loop in terrible garish green. All the text is in Rusoek, a creole language spawned out of the borders of UA and UPP space from some Korean settlements."
 
-//Here because man there is no general item props file
-
-/obj/item/prop/laz_top
-	name = "lazertop"
-	icon = 'icons/obj/structures/props/server_equipment.dmi'
-	icon_state = "laptop-gun"
-	item_state = ""
-	desc = "A Rexim RXF-M5 EVA pistol compressed down into a laptop! Also known as the Laz-top. Part of a line of discreet assassination weapons developed for Greater Argentina and the United States covert programs respectively."
-	w_class = SIZE_SMALL
-	garbage = TRUE
-
 //biomass turbine
 
 /obj/structure/prop/turbine //maybe turn this into an actual power generation device? Would be cool!
@@ -582,6 +596,15 @@
 
 /obj/structure/prop/invuln/ex_act(severity, direction)
 	return
+
+/obj/structure/prop/invuln/static_corpse
+
+/obj/structure/prop/invuln/static_corpse/afric_zimmer
+	name = "Maj. Afric Zimmerman"
+	desc = "What remains of Maj. Afric Zimmerman. Their entire head is missing. Someone shed a tear."
+	icon = 'icons/obj/structures/props/64x64.dmi'
+	icon_state = "afric_zimmerman"
+	density = 0
 
 /obj/structure/prop/invuln/lifeboat_hatch_placeholder
 	density = 0
@@ -738,6 +761,36 @@
 	name = "M1 pattern festive needle torus"
 	desc = "In 2140 after a two different sub levels of the São Luís Bay Underground Habitat burned out (evidence points to a Bladerunner incident, but local police denies such claims) due to actual wreaths made with REAL needles, these have been issued ever since. They're made of ''''''pine'''''' scented poly-kevlon. According to the grunts from the American Corridor, during the SACO riots, protestors would pack these things into pillow cases, forming rudimentary body armor against soft point ballistics."
 	icon_state = "wreath"
+/obj/structure/prop/vehicles
+	name = "van"
+	desc = "An old van, seems to be broken down."
+	icon = 'icons/obj/structures/props/vehicles.dmi'
+	icon_state = "van"
+	bound_height = 64
+	bound_width = 64
+	unslashable = TRUE
+	unacidable = TRUE
+
+/obj/structure/prop/vehicles/crawler
+	name = "colony crawler"
+	desc = "It is a tread bound crawler used in harsh conditions. Supplied by Orbital Blue International; 'Your friends, in the Aerospace business.' A subsidiary of Weyland Yutani."
+	icon_state = "crawler"
+	density = 1
+
+//overhead prop sets
+
+/obj/structure/prop/invuln/overhead
+	layer = ABOVE_FLY_LAYER
+	icon = 'icons/obj/structures/props/overhead_ducting.dmi'
+	icon_state = "flammable_pipe_1"
+
+/obj/structure/prop/invuln/overhead/flammable_pipe
+	name = "dense fuel line"
+	desc = "Likely to be incredibly flammable."
+	density = TRUE
+
+/obj/structure/prop/invuln/overhead/flammable_pipe/fly
+	density = FALSE
 
 
 /obj/structure/prop/static_tank
@@ -868,7 +921,7 @@
 			update_health(W.force)
 		return
 
-	if(W.sharp || W.edge || istype(W, /obj/item/tool/pen) || istype(W, /obj/item/tool/hand_labeler))
+	if(W.sharp || W.edge || HAS_TRAIT(W, TRAIT_TOOL_PEN) || istype(W, /obj/item/tool/hand_labeler))
 		var/action_msg
 		var/time_multiplier
 		if(W.sharp || W.edge)

@@ -76,15 +76,14 @@
 /obj/structure/machinery/deployable/barrier/proc/explode()
 
 	visible_message(SPAN_DANGER("<B>[src] blows apart!</B>"))
-	var/turf/Tsec = get_turf(src)
-
-/*	var/obj/item/stack/rods/ =*/
-	new /obj/item/stack/rods(Tsec)
-
 	var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 	s.set_up(3, 1, src)
 	s.start()
 
+	deconstruct(FALSE)
 	explosion(src.loc,-1,-1,0)
-	if(src)
-		qdel(src)
+
+/obj/structure/machinery/deployable/barrier/deconstruct(disassembled = TRUE)
+	if(!disassembled)
+		new /obj/item/stack/rods(loc)
+	return ..()

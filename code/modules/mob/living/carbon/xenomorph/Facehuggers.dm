@@ -7,7 +7,7 @@
 /obj/item/clothing/mask/facehugger
 	name = "facehugger"
 	desc = "It has some sort of a tube at the end of its tail."
-	icon = 'icons/mob/hostiles/Effects.dmi'
+	icon = 'icons/mob/xenos/effects.dmi'
 	icon_state = "facehugger"
 	item_state = "facehugger"
 	w_class = SIZE_TINY //Note: can be picked up by aliens unlike most other items of w_class below 4
@@ -37,8 +37,8 @@
 	/// the nearest human before dying
 	var/jumps_left = 2
 
-	var/icon_xeno = 'icons/mob/hostiles/Effects.dmi'
-	var/icon_xenonid = 'icons/mob/xenonids/facehugger.dmi'
+	var/icon_xeno = 'icons/mob/xenos/effects.dmi'
+	var/icon_xenonid = 'icons/mob/xenonids/xenonid_crab.dmi'
 
 /obj/item/clothing/mask/facehugger/Initialize(mapload, hive)
 	. = ..()
@@ -158,7 +158,7 @@
 /obj/item/clothing/mask/facehugger/bullet_act(obj/item/projectile/P)
 	..()
 	var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags
-	if(ammo_flags & (AMMO_XENO_ACID|AMMO_XENO_TOX))
+	if(ammo_flags & (AMMO_XENO))
 		return //Xeno spits ignore huggers.
 	if(P.damage)
 		die()
@@ -268,7 +268,7 @@
 		playsound(loc, H.gender == "male" ? 'sound/misc/facehugged_male.ogg' : 'sound/misc/facehugged_female.ogg' , 25, 0)
 	if(!sterile)
 		if(!H.species || !(H.species.flags & IS_SYNTHETIC)) //synthetics aren't paralyzed
-			H.KnockOut(MIN_IMPREGNATION_TIME * 0.5 * knockout_mod, TRUE) //THIS MIGHT NEED TWEAKS
+			H.apply_effect(MIN_IMPREGNATION_TIME * 0.5 * knockout_mod, PARALYZE) //THIS MIGHT NEED TWEAKS
 
 	addtimer(CALLBACK(src, .proc/impregnate, H), rand(MIN_IMPREGNATION_TIME, MAX_IMPREGNATION_TIME))
 

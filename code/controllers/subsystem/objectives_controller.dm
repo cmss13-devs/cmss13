@@ -53,6 +53,8 @@ SUBSYSTEM_DEF(objectives)
 	RegisterSignal(SSdcs, COMSIG_GLOB_MODE_POSTSETUP, .proc/post_round_start)
 	RegisterSignal(SSdcs, COMSIG_GLOB_DS_FIRST_LANDED, .proc/on_marine_landing)
 
+	return SS_INIT_SUCCESS
+
 /datum/controller/subsystem/objectives/fire(resumed = FALSE)
 	if(!resumed)
 		current_active_run = processing_objectives.Copy()

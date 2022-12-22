@@ -30,7 +30,7 @@
 				else if(gender && gender == "male")
 					NP = "Mr. "
 				else
-					NP = ""
+					NP = "Mx. " //inclusivity win!
 		return NP
 	else
 		return P.name

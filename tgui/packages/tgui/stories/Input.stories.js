@@ -5,17 +5,7 @@
  */
 
 import { useLocalState } from '../backend';
-import {
-  Box,
-  DraggableControl,
-  Icon,
-  Input,
-  Knob,
-  LabeledList,
-  NumberInput,
-  Section,
-  Slider,
-} from '../components';
+import { Box, DraggableControl, Icon, Input, Knob, LabeledList, NumberInput, Section, Slider } from '../components';
 
 export const meta = {
   title: 'Input',

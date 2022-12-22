@@ -7,7 +7,7 @@
 	level = 1		// underfloor
 	layer = UNDERFLOOR_OBJ_LAYER
 	anchored = 1
-	use_power = 1
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 0
 	var/obj/item/device/radio/beacon/Beacon
 

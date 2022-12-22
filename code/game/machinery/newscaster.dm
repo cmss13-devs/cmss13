@@ -160,12 +160,12 @@ var/list/obj/structure/machinery/newscaster/allCasters = list() //Global list th
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			src.isbroken=1
 			if(prob(50))
-				qdel(src)
+				deconstruct(FALSE)
 			else
 				src.update_icon() //can't place it above the return and outside the if-else. or we might get runtimes of null.update_icon() if(prob(50)) goes in.
 			return
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
-			qdel(src)
+			deconstruct(FALSE)
 			return
 	return
 
@@ -700,23 +700,23 @@ var/list/obj/structure/machinery/newscaster/allCasters = list() //Global list th
 	if (src.isbroken)
 		playsound(src.loc, 'sound/effects/hit_on_shattered_glass.ogg', 25, 1)
 		for (var/mob/O in hearers(5, src.loc))
-			O.show_message("<EM>[user.name]</EM> further abuses the shattered [src.name].")
+			O.show_message("<EM>[user.name]</EM> further abuses the shattered [src.name].", SHOW_MESSAGE_VISIBLE)
 	else
 		if(!(I.flags_item & NOBLUDGEON) && I.force)
 			if(I.force <15)
 				for (var/mob/O in hearers(5, src.loc))
-					O.show_message("[user.name] hits the [src.name] with the [I.name] with no visible effect." )
+					O.show_message("[user.name] hits the [src.name] with the [I.name] with no visible effect.", SHOW_MESSAGE_VISIBLE)
 					playsound(src.loc, 'sound/effects/Glasshit.ogg', 25, 1)
 			else
 				src.hitstaken++
 				if(src.hitstaken==3)
 					for (var/mob/O in hearers(5, src.loc))
-						O.show_message("[user.name] smashes the [src.name]!" )
+						O.show_message("[user.name] smashes the [src.name]!", SHOW_MESSAGE_VISIBLE)
 					src.isbroken=1
 					playsound(src.loc, 'sound/effects/Glassbr3.ogg', 50, 1)
 				else
 					for (var/mob/O in hearers(5, src.loc))
-						O.show_message("[user.name] forcefully slams the [src.name] with the [I.name]!" )
+						O.show_message("[user.name] forcefully slams the [src.name] with the [I.name]!", SHOW_MESSAGE_VISIBLE)
 					playsound(src.loc, 'sound/effects/Glasshit.ogg', 25, 1)
 		else
 			to_chat(user, "<FONT COLOR='blue'>This does nothing.</FONT>")
@@ -765,7 +765,7 @@ var/list/obj/structure/machinery/newscaster/allCasters = list() //Global list th
 	var/scribble=""
 	var/scribble_page = null
 
-obj/item/newspaper/attack_self(mob/user as mob)
+/obj/item/newspaper/attack_self(mob/user as mob)
 	..()
 	if(!ishuman(user))
 		to_chat(user, "The paper is full of intelligible symbols!")
@@ -847,7 +847,7 @@ obj/item/newspaper/attack_self(mob/user as mob)
 	onclose(human_user, "newspaper_main")
 
 
-obj/item/newspaper/Topic(href, href_list)
+/obj/item/newspaper/Topic(href, href_list)
 	var/mob/living/U = usr
 	..()
 	if ((src in U.contents) || ( istype(loc, /turf) && in_range(src, U) ))
@@ -879,8 +879,8 @@ obj/item/newspaper/Topic(href, href_list)
 			src.attack_self(src.loc)
 
 
-obj/item/newspaper/attackby(obj/item/W as obj, mob/user as mob)
-	if(istype(W, /obj/item/tool/pen))
+/obj/item/newspaper/attackby(obj/item/W as obj, mob/user as mob)
+	if(HAS_TRAIT(W, TRAIT_TOOL_PEN))
 		if(src.scribble_page == src.curr_page)
 			to_chat(user, "<FONT COLOR='blue'>There's already a scribble in this page... You wouldn't want to make things too cluttered, would you?</FONT>")
 		else
@@ -933,7 +933,7 @@ obj/item/newspaper/attackby(obj/item/W as obj, mob/user as mob)
 	var/turf/T = get_turf(src)                      //Who the fuck uses spawn(600) anyway, jesus christ
 	if(channel)
 		for(var/mob/O in hearers(world_view_size-1, T))
-			O.show_message("<span class='newscaster'><EM>[src.name]</EM> beeps, \"Breaking news from [channel]!\"</span>",2)
+			O.show_message("<span class='newscaster'><EM>[src.name]</EM> beeps, \"Breaking news from [channel]!\"</span>", SHOW_MESSAGE_AUDIBLE)
 		src.alert = 1
 		src.update_icon()
 		spawn(30 SECONDS)
@@ -942,6 +942,6 @@ obj/item/newspaper/attackby(obj/item/W as obj, mob/user as mob)
 		playsound(src.loc, 'sound/machines/twobeep.ogg', 25, 1)
 	else
 		for(var/mob/O in hearers(world_view_size-1, T))
-			O.show_message("<span class='newscaster'><EM>[src.name]</EM> beeps, \"Attention! Wanted issue distributed!\"</span>",2)
+			O.show_message("<span class='newscaster'><EM>[src.name]</EM> beeps, \"Attention! Wanted issue distributed!\"</span>", SHOW_MESSAGE_AUDIBLE)
 		playsound(src.loc, 'sound/machines/warning-buzzer.ogg', 25, 1)
 	return

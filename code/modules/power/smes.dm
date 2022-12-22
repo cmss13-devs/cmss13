@@ -10,7 +10,7 @@
 	icon_state = "smes"
 	density = 1
 	anchored = 1
-	use_power = 0
+	use_power = USE_POWER_NONE
 	directwired = 0
 
 	var/loaddemand = 0		//For use in restore()
@@ -167,11 +167,13 @@
 	//Direction the terminal will face to
 	var/tempDir = get_dir(user, src)
 	switch(tempDir)
-		if (NORTHEAST, SOUTHEAST)
-			tempDir = EAST
-		if (NORTHWEST, SOUTHWEST)
-			tempDir = WEST
-	var/turf/tempLoc = get_step(src, reverse_direction(tempDir))
+		if (NORTHEAST, NORTHWEST)
+			tempDir = NORTH
+		if (SOUTHEAST, SOUTHWEST)
+			tempDir = SOUTH
+	var/turf/tempLoc = get_step(user, user.dir)
+	if(user.dir == tempDir)
+		tempLoc = user.loc
 	if (istype(tempLoc, /turf/open/space))
 		to_chat(user, SPAN_WARNING("You can't build a terminal on space."))
 		return 1
@@ -184,6 +186,7 @@
 		terminal = new /obj/structure/machinery/power/terminal(tempLoc)
 		terminal.setDir(tempDir)
 		terminal.master = src
+		start_processing()
 		return 0
 	return 1
 
@@ -224,7 +227,7 @@
 	if(istype(W, /obj/item/stack/cable_coil) && !terminal && !building_terminal)
 		building_terminal = 1
 		var/obj/item/stack/cable_coil/CC = W
-		if (CC.get_amount() <= 10)
+		if (CC.get_amount() < 10)
 			to_chat(user, SPAN_WARNING("You need more cables."))
 			building_terminal = 0
 			return 0
@@ -362,7 +365,7 @@
 	if(is_ground_level(z))
 		if(prob(1)) //explosion
 			for(var/mob/M as anything in viewers(src))
-				M.show_message(SPAN_DANGER("\The [src.name] is making strange noises!"), 3, SPAN_DANGER("You hear sizzling electronics."), 2)
+				M.show_message(SPAN_DANGER("\The [src.name] is making strange noises!"), SHOW_MESSAGE_VISIBLE, SPAN_DANGER("You hear sizzling electronics."), SHOW_MESSAGE_AUDIBLE)
 			sleep(10*pick(4,5,6,7,10,14))
 			var/datum/effect_system/smoke_spread/smoke = new /datum/effect_system/smoke_spread()
 			smoke.set_up(1, 0, src.loc)

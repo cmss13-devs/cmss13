@@ -127,7 +127,7 @@
 	health = max(0, health - severity / 2)
 	if(health <= 0)
 		visible_message(SPAN_WARNING("\The [src] disintegrates into useless pile of scrap under the damage it suffered."))
-		qdel(src)
+		deconstruct(TRUE)
 
 /// Populate traits_to_give in this proc
 /obj/item/hardpoint/proc/set_bullet_traits()
@@ -187,7 +187,7 @@
 	buff_applied = TRUE
 
 //removing buffs
-obj/item/hardpoint/proc/remove_buff(var/obj/vehicle/multitile/V)
+/obj/item/hardpoint/proc/remove_buff(var/obj/vehicle/multitile/V)
 	if(!buff_applied)
 		return
 	if(LAZYLEN(type_multipliers))
@@ -645,5 +645,5 @@ obj/item/hardpoint/proc/remove_buff(var/obj/vehicle/multitile/V)
 /obj/item/hardpoint/proc/set_mf_use_trt(var/use)
 	use_mz_trt_offsets = use
 
-obj/item/hardpoint/get_applying_acid_time()
+/obj/item/hardpoint/get_applying_acid_time()
 	return 10 SECONDS //you are not supposed to be able to easily combat-melt irreplaceable things.

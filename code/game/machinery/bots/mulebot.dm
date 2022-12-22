@@ -303,7 +303,7 @@
 
 			if("cellremove")
 				if(open && cell && !usr.get_active_hand())
-					cell.updateicon()
+					cell.update_icon()
 					usr.put_in_active_hand(cell)
 					cell.add_fingerprint(usr)
 					cell = null
@@ -754,8 +754,8 @@
 			else
 				src.visible_message(SPAN_DANGER("[src] knocks over [M]!"))
 				M.stop_pulling()
-				M.Stun(8)
-				M.KnockDown(5)
+				M.apply_effect(8, STUN)
+				M.apply_effect(5, WEAKEN)
 				M.lying = 1
 	..()
 

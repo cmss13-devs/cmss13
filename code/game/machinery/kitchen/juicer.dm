@@ -7,7 +7,7 @@
 	density = FALSE
 	anchored = FALSE
 	wrenchable = TRUE
-	use_power = 1
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 5
 	active_power_usage = 100
 	var/obj/item/reagent_container/beaker = null

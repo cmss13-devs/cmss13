@@ -212,7 +212,7 @@
 	icon_state = "shower"
 	density = 0
 	anchored = 1
-	use_power = 0
+	use_power = USE_POWER_NONE
 	var/on = 0
 	var/obj/effect/mist/mymist = null
 	var/ismist = 0				//needs a var so we can make it linger~
@@ -480,7 +480,7 @@
 	if(ishuman(user))
 		user:update_inv_gloves()
 	for(var/mob/V in viewers(src, null))
-		V.show_message(SPAN_NOTICE("[user] washes their hands using \the [src]."))
+		V.show_message(SPAN_NOTICE("[user] washes their hands using \the [src]."), SHOW_MESSAGE_VISIBLE)
 
 
 /obj/structure/sink/attackby(obj/item/O as obj, mob/user as mob)
@@ -499,9 +499,9 @@
 		if(B.bcell)
 			if(B.bcell.charge > 0 && B.status == 1)
 				flick("baton_active", src)
-				user.Stun(10)
+				user.apply_effect(10, STUN)
 				user.stuttering = 10
-				user.KnockDown(10)
+				user.apply_effect(10, WEAKEN)
 				if(isrobot(user))
 					var/mob/living/silicon/robot/R = user
 					R.cell.charge -= 20

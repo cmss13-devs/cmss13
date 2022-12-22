@@ -61,6 +61,19 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 
 	var/announce_hacked = TRUE
 
+	//Resin constructions that will be SMUSHED by closing doors
+	var/static/list/resin_door_shmushereds = list(
+		/obj/effect/resin_construct/door,
+		/obj/structure/mineral_door/resin,
+		/obj/structure/bed/nest,
+		/obj/effect/alien/resin/spike,
+		/obj/effect/alien/resin/acid_pillar,
+		/obj/effect/alien/resin/shield_pillar,
+		/obj/item/explosive/grenade/alien/acid,
+		/obj/structure/alien/movable_wall,
+		/turf/closed/wall/resin,
+	)
+
 /obj/structure/machinery/door/airlock/Destroy()
 	QDEL_NULL_LIST(attached_signallers)
 	return ..()
@@ -107,31 +120,28 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 		if(M && istype(M))
 			M.count_niche_stat(STATISTICS_NICHE_DESTRUCTION_DOORS, 1)
 			SEND_SIGNAL(M, COMSIG_MOB_DESTROY_AIRLOCK, src)
-		destroy_airlock()
+		to_chat(loc, SPAN_DANGER("[src] blows apart!"))
+		deconstruct(FALSE)
+		playsound(src, 'sound/effects/metal_crash.ogg', 25, 1)
 		return TRUE
 
 	return FALSE
 
-/obj/structure/machinery/door/airlock/proc/destroy_airlock()
-	if(!src || unacidable)
-		return
-	var/turf/T = get_turf(src)
-
-	to_chat(loc, SPAN_DANGER("[src] blows apart!"))
-	if(width == 1)
-		new /obj/item/stack/rods(T)
-		new /obj/item/stack/cable_coil/cut(T)
-		new /obj/effect/spawner/gibspawner/robot(T)
-		new /obj/effect/decal/cleanable/blood/oil(T)
-	else // big airlock, big debris
-		for(var/turf/DT in locs) // locs = covered by airlock bounding box
-			new /obj/item/stack/rods(DT)
-			new /obj/item/stack/cable_coil/cut(DT)
-			new /obj/effect/spawner/gibspawner/robot(DT)
-			new /obj/effect/decal/cleanable/blood/oil(DT)
-
-	playsound(src, 'sound/effects/metal_crash.ogg', 25, 1)
-	qdel(src)
+// no, i don't know why this provides stuff if you shoot it apart vs disassembling
+/obj/structure/machinery/door/airlock/deconstruct(disassembled = TRUE)
+	if(!disassembled)
+		if(width == 1)
+			new /obj/item/stack/rods(loc)
+			new /obj/item/stack/cable_coil/cut(loc)
+			new /obj/effect/spawner/gibspawner/robot(loc)
+			new /obj/effect/decal/cleanable/blood/oil(loc)
+		else // big airlock, big debris
+			for(var/turf/DT in locs) // locs = covered by airlock bounding box
+				new /obj/item/stack/rods(DT)
+				new /obj/item/stack/cable_coil/cut(DT)
+				new /obj/effect/spawner/gibspawner/robot(DT)
+				new /obj/effect/decal/cleanable/blood/oil(DT)
+	return ..()
 
 /obj/structure/machinery/door/airlock/ex_act(severity, explosion_direction, datum/cause_data/cause_data)
 	var/exp_damage = severity * EXPLOSION_DAMAGE_MULTIPLIER_DOOR
@@ -680,7 +690,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 
 				msg_admin_niche("[key_name(user)] deconstructed [src] in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z])")
 				SEND_SIGNAL(user, COMSIG_MOB_DISASSEMBLE_AIRLOCK, src)
-				qdel(src)
+				deconstruct()
 				return
 
 		else if(arePowerSystemsOn() && C.pry_capable != IS_PRY_CAPABLE_FORCE)
@@ -747,8 +757,8 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 				M.apply_damage(DOOR_CRUSH_DAMAGE, BRUTE)
 			else
 				M.apply_damage(DOOR_CRUSH_DAMAGE, BRUTE)
-				M.SetStunned(5)
-				M.SetKnockeddown(5)
+				M.set_effect(5, STUN)
+				M.set_effect(5, WEAKEN)
 				if(ishuman(M))
 					var/mob/living/carbon/human/H = M
 					if(H.pain.feels_pain)
@@ -756,6 +766,8 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 			var/turf/location = loc
 			if(istype(location, /turf))
 				location.add_mob_blood(M)
+
+	break_resin_objects()
 
 	use_power(360)	//360 W seems much more appropriate for an actuator moving an industrial door capable of crushing people
 	if(istype(src, /obj/structure/machinery/door/airlock/glass))
@@ -820,3 +832,33 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 	if(isWireCut(AIRLOCK_WIRE_IDSCAN) || (maint_all_access && check_access_list(list(ACCESS_MARINE_MAINT))))
 		return TRUE
 	return ..(M)
+
+/obj/structure/machinery/door/airlock/proc/break_resin_objects()
+	var/list/things_to_shmush = locs
+	for(var/turf/i in things_to_shmush)
+		things_to_shmush |= i.contents
+	for(var/x in things_to_shmush)
+		for(var/i in resin_door_shmushereds)
+			if(istype(x,i)) 								//I would like to just use a if(locate() in ) here but Im not gonna add every child to GLOB.resin_door_shmushereds so it works
+				playsound(loc, "alien_resin_break", 25)
+				visible_message(SPAN_WARNING("The [src.name] closes on the [x], shmushing it!"))
+				if(isturf(x))
+					var/turf/closed/wall/resin_wall_to_destroy = x
+					resin_wall_to_destroy.dismantle_wall()
+				else
+					qdel(x)
+				break
+
+/obj/structure/machinery/door/airlock/handle_tail_stab(var/mob/living/carbon/Xenomorph/xeno)
+	if(isElectrified() && arePowerSystemsOn())
+		var/datum/effect_system/spark_spread/sparks = new /datum/effect_system/spark_spread
+		sparks.set_up(5, 1, src)
+		sparks.start()
+		xeno.apply_effect(1, WEAKEN)
+
+	playsound(src, 'sound/effects/metalhit.ogg', 50, TRUE)
+	xeno.visible_message(SPAN_XENOWARNING("\The [xeno] strikes \the [src] with its tail!"), SPAN_XENOWARNING("You strike \the [src] with your tail!"))
+	xeno.emote("tail")
+	var/damage = xeno.melee_damage_upper * TAILSTAB_AIRLOCK_DAMAGE_MULTIPLIER
+	take_damage(damage, xeno)
+	return TAILSTAB_COOLDOWN_NORMAL

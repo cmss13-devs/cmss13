@@ -611,7 +611,7 @@
 	name = "Weyland-Yutani PMC (Site Director)"
 	flags = EQUIPMENT_PRESET_EXTRA
 
-	languages = list(LANGUAGE_ENGLISH, LANGUAGE_RUSSIAN, LANGUAGE_JAPANESE, LANGUAGE_WELTRAUMDEUTSCH, LANGUAGE_NEOSPANISH, LANGUAGE_CHINESE)
+	languages = ALL_HUMAN_LANGUAGES
 
 	assignment = JOB_PMC_DIRECTOR
 	rank = JOB_PMC_DIRECTOR
@@ -651,7 +651,7 @@
 		name = "Weyland-Yutani PMC (Support Synthetic)"
 		flags = EQUIPMENT_PRESET_EXTRA
 
-		languages = list(LANGUAGE_ENGLISH, LANGUAGE_RUSSIAN, LANGUAGE_JAPANESE, LANGUAGE_YAUTJA, LANGUAGE_XENOMORPH, LANGUAGE_WELTRAUMDEUTSCH, LANGUAGE_NEOSPANISH, LANGUAGE_CHINESE)
+		languages = ALL_SYNTH_LANGUAGES
 
 		skills = /datum/skills/synthetic
 		idtype = /obj/item/card/id/data
@@ -691,31 +691,41 @@
 		H.allow_gun_usage = FALSE
 
 /datum/equipment_preset/pmc/synth/load_gear(mob/living/carbon/human/H)
-		var/obj/item/clothing/under/marine/veteran/PMC/PMC = new()
-		var/obj/item/clothing/accessory/storage/webbing/W = new()
-		PMC.attach_accessory(H, W)
-		H.equip_to_slot_or_del(PMC, WEAR_BODY)
+		H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/PMC, WEAR_BODY)
+		H.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/surg_vest/equipped, WEAR_ACCESSORY)
+		H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/PMC/light/synth, WEAR_JACKET)
+		H.equip_to_slot_or_del(new /obj/item/weapon/melee/telebaton, WEAR_IN_JACKET)
+		H.equip_to_slot_or_del(new /obj/item/tool/surgery/synthgraft, WEAR_IN_JACKET)
+		H.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/nailgun, WEAR_IN_JACKET)
 
 		H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/PMC, WEAR_HEAD)
 		H.equip_to_slot_or_del(new headset_type, WEAR_L_EAR)
-		H.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health(H), WEAR_EYES)
+		H.equip_to_slot_or_del(new /obj/item/clothing/glasses/night/experimental_mesons, WEAR_EYES)
 		H.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/PMC, WEAR_FACE)
 
-		H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/PMC/light/synth, WEAR_JACKET)
 		H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/PMC, WEAR_HANDS)
 		H.equip_to_slot_or_del(new /obj/item/clothing/shoes/veteran/PMC/knife, WEAR_FEET)
 
-		H.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack, WEAR_BACK)
+		H.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/smartpack/white, WEAR_BACK)
 		H.equip_to_slot_or_del(new /obj/item/roller, WEAR_IN_BACK)
+		H.equip_to_slot_or_del(new /obj/item/roller/surgical, WEAR_IN_BACK)
 		H.equip_to_slot_or_del(new /obj/item/tool/extinguisher/mini, WEAR_IN_BACK)
-		H.equip_to_slot_or_del(new /obj/item/weapon/melee/telebaton, WEAR_IN_BACK)
-		H.equip_to_slot_or_del(new /obj/item/tool/crowbar, WEAR_IN_BACK)
-
-		H.equip_to_slot_or_del(new /obj/item/storage/belt/medical/full/with_suture_and_graft, WEAR_WAIST)
-		H.equip_to_slot_or_del(new /obj/item/device/healthanalyzer(H), WEAR_IN_BELT)
 		H.equip_to_slot_or_del(new /obj/item/device/defibrillator/upgraded, WEAR_IN_BACK)
+		H.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/nailgun, WEAR_IN_BACK)
+		new /obj/item/clothing/suit/auto_cpr(H.back)
 
-		H.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/synth, WEAR_L_STORE)
+		H.equip_to_slot_or_del(new /obj/item/storage/belt/medical/lifesaver/full/dutch, WEAR_WAIST)
+		H.equip_to_slot_or_del(new /obj/item/weapon/gun/smg/nailgun/compact, WEAR_J_STORE)
+
+		H.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/tactical, WEAR_L_STORE)
+		H.equip_to_slot_or_del(new /obj/item/tool/screwdriver/tactical, WEAR_IN_L_STORE)
+		H.equip_to_slot_or_del(new /obj/item/tool/crowbar/tactical, WEAR_IN_L_STORE)
+		H.equip_to_slot_or_del(new /obj/item/tool/wirecutters/tactical, WEAR_IN_L_STORE)
+		H.equip_to_slot_or_del(new /obj/item/tool/wrench, WEAR_IN_L_STORE)
+		H.equip_to_slot_or_del(new /obj/item/stack/cable_coil, WEAR_IN_L_STORE)
+		H.equip_to_slot_or_del(new /obj/item/stack/cable_coil, WEAR_IN_L_STORE)
+		H.equip_to_slot_or_del(new /obj/item/device/multitool, WEAR_IN_L_STORE)
+		H.equip_to_slot_or_del(new /obj/item/tool/weldingtool/hugetank, WEAR_IN_L_STORE)
 		H.equip_to_slot_or_del(new /obj/item/storage/pouch/construction/full_barbed_wire, WEAR_R_STORE)
 
 /datum/equipment_preset/pmc/synth/hvh

@@ -15,14 +15,14 @@
 		user.cell.charge -= 30
 
 		playsound(M.loc, 'sound/weapons/Egloves.ogg', 25, 1, 4)
-		M.KnockDown(5)
+		M.apply_effect(5, WEAKEN)
 		if (M.stuttering < 5)
 			M.stuttering = 5
-		M.Stun(5)
+		M.apply_effect(5, STUN)
 
 		for(var/mob/O in viewers(M, null))
 			if (O.client)
-				O.show_message(SPAN_DANGER("<B>[user] has prodded [M] with an electrically-charged arm!</B>"), 1, SPAN_DANGER("You hear someone fall"), 2)
+				O.show_message(SPAN_DANGER("<B>[user] has prodded [M] with an electrically-charged arm!</B>"), SHOW_MESSAGE_VISIBLE, SPAN_DANGER("You hear someone fall"), SHOW_MESSAGE_AUDIBLE)
 
 /obj/item/robot/overdrive
 	name = "overdrive"

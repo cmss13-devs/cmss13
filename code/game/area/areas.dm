@@ -46,6 +46,9 @@
 	// Weather
 	var/weather_enabled = TRUE	// Manual override for weather if set to false
 
+	// Fishing
+	var/fishing_loot = /datum/fish_loot_table
+
 	// Ambience sounds
 	var/list/soundscape_playlist = list() //Clients in this area will hear one of the sounds in this list from time to time
 	var/soundscape_interval = INITIAL_SOUNDSCAPE_COOLDOWN //The base interval between each soundscape.
@@ -433,8 +436,8 @@
 		var/mob/living/carbon/human/H = M
 		if((istype(H.shoes, /obj/item/clothing/shoes/magboots) && (H.shoes.flags_inventory & NOSLIPPING)))
 			return
-		H.AdjustStunned(5)
-		H.AdjustKnockeddown(5)
+		H.adjust_effect(5, STUN)
+		H.adjust_effect(5, WEAKEN)
 
 	to_chat(M, "Gravity!")
 

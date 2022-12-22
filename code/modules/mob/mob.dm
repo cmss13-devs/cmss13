@@ -89,6 +89,11 @@
 	hud_list = new
 	for(var/hud in hud_possible)
 		var/image/I = image('icons/mob/hud/hud.dmi', src, "")
+		switch(hud)
+			if(ID_HUD,WANTED_HUD)
+				I = image('icons/mob/hud/sec_hud.dmi', src, "")
+			if(HUNTER_CLAN,HUNTER_HUD)
+				I = image('icons/mob/hud/hud_yautja.dmi', src, "")
 		I.appearance_flags |= NO_CLIENT_COLOR|KEEP_APART|RESET_COLOR
 		hud_list[hud] = I
 
@@ -98,19 +103,19 @@
 	if(!client || !client.prefs)	return
 
 	if (type)
-		if(type & 1 && (sdisabilities & DISABILITY_BLIND || blinded) )//Vision related
-			if (!alt)
+		if(type & SHOW_MESSAGE_VISIBLE && (sdisabilities & DISABILITY_BLIND || blinded) )//Vision related
+			if(!alt)
 				return
 			else
 				msg = alt
 				type = alt_type
-		if (type & 2 && (sdisabilities & DISABILITY_DEAF || ear_deaf))//Hearing related
-			if (!alt)
+		if(type & SHOW_MESSAGE_AUDIBLE && (sdisabilities & DISABILITY_DEAF || ear_deaf))//Hearing related
+			if(!alt)
 				return
 			else
 				msg = alt
 				type = alt_type
-				if (type & 1 && (sdisabilities & DISABILITY_BLIND))
+				if (type & SHOW_MESSAGE_VISIBLE && (sdisabilities & DISABILITY_BLIND))
 					return
 	if(message_flags == CHAT_TYPE_OTHER || client.prefs && (message_flags & client.prefs.chat_display_preferences) > 0) // or logic between types
 		if(stat == UNCONSCIOUS)
@@ -139,7 +144,7 @@
 			msg = self_message
 			if(flags & CHAT_TYPE_TARGETS_ME)
 				flags = CHAT_TYPE_BEING_HIT
-		M.show_message( msg, 1, blind_message, 2, flags)
+		M.show_message( msg, SHOW_MESSAGE_VISIBLE, blind_message, SHOW_MESSAGE_AUDIBLE, flags)
 		CHECK_TICK
 
 	for(var/obj/vehicle/V in orange(max_distance))
@@ -149,7 +154,7 @@
 				msg = self_message
 				if(flags & CHAT_TYPE_TARGETS_ME)
 					flags = CHAT_TYPE_BEING_HIT
-			M.show_message( msg, 1, blind_message, 2, flags)
+			M.show_message( msg, SHOW_MESSAGE_VISIBLE, blind_message, SHOW_MESSAGE_AUDIBLE, flags)
 		CHECK_TICK
 
 
@@ -158,12 +163,12 @@
 // message_affected: "Y does something to you!"
 // message_viewer: "X does something to Y!"
 /mob/proc/affected_message(mob/affected, message_mob, message_affected, message_viewer)
-	src.show_message(message_mob, 1)
+	src.show_message(message_mob, SHOW_MESSAGE_VISIBLE)
 	if(src != affected)
-		affected.show_message(message_affected, 1)
+		affected.show_message(message_affected, SHOW_MESSAGE_VISIBLE)
 	for(var/mob/V in viewers(7, src))
 		if(V != src && V != affected)
-			V.show_message(message_viewer, 1)
+			V.show_message(message_viewer, SHOW_MESSAGE_VISIBLE)
 
 // Show a message to all mobs in sight of this atom
 // Use for objects performing visible actions
@@ -173,13 +178,22 @@
 	var/view_dist = 7
 	if(max_distance) view_dist = max_distance
 	for(var/mob/M as anything in viewers(view_dist, src))
-		M.show_message(message, 1, blind_message, 2, message_flags)
+		M.show_message(message, SHOW_MESSAGE_VISIBLE, blind_message, SHOW_MESSAGE_AUDIBLE, message_flags)
+
+// Show a message to all mobs in earshot of this atom
+// Use for objects performing only audible actions
+// message is output to anyone who can see, e.g. "The [src] does something!"
+/atom/proc/audible_message(message, max_distance, message_flags = CHAT_TYPE_OTHER)
+	var/hear_dist = 7
+	if(max_distance) hear_dist = max_distance
+	for(var/mob/M as anything in hearers(hear_dist, src.loc))
+		M.show_message(message, 2, message_flags = message_flags)
 
 /atom/proc/ranged_message(message, blind_message, max_distance, message_flags = CHAT_TYPE_OTHER)
 	var/view_dist = 7
 	if(max_distance) view_dist = max_distance
 	for(var/mob/M in orange(view_dist, src))
-		M.show_message(message, 1, blind_message, 2, message_flags)
+		M.show_message(message, SHOW_MESSAGE_VISIBLE, blind_message, SHOW_MESSAGE_AUDIBLE, message_flags)
 
 
 /mob/proc/findname(msg)
@@ -189,10 +203,11 @@
 	return 0
 
 /mob/proc/movement_delay()
-	if(!legcuffed)
-		. = 2 + CONFIG_GET(number/run_speed)
-	else
-		. = 7 + CONFIG_GET(number/walk_speed)
+	switch(m_intent)
+		if(MOVE_INTENT_RUN)
+			. = 2 + CONFIG_GET(number/run_speed)
+		if(MOVE_INTENT_WALK)
+			. = 7 + CONFIG_GET(number/walk_speed)
 	. += speed
 	move_delay = .
 
@@ -214,10 +229,16 @@
 		equip_to_slot_if_possible(W, slot, 0) // equiphere
 
 /mob/proc/put_in_any_hand_if_possible(obj/item/W as obj, del_on_fail = 0, disable_warning = 1, redraw_mob = 1)
-	if(equip_to_slot_if_possible(W, WEAR_L_HAND, 1, del_on_fail, disable_warning, redraw_mob))
-		return 1
-	else if(equip_to_slot_if_possible(W, WEAR_R_HAND, 1, del_on_fail, disable_warning, redraw_mob))
-		return 1
+	if(hand)
+		if(equip_to_slot_if_possible(W, WEAR_L_HAND, 1, del_on_fail, disable_warning, redraw_mob))
+			return 1
+		else if(equip_to_slot_if_possible(W, WEAR_R_HAND, 1, del_on_fail, disable_warning, redraw_mob))
+			return 1
+	else
+		if(equip_to_slot_if_possible(W, WEAR_R_HAND, 1, del_on_fail, disable_warning, redraw_mob))
+			return 1
+		else if(equip_to_slot_if_possible(W, WEAR_L_HAND, 1, del_on_fail, disable_warning, redraw_mob))
+			return 1
 	return 0
 
 //This is a SAFE proc. Use this instead of equip_to_slot()!
@@ -350,10 +371,10 @@
 	//Squad Leaders and above have reduced cooldown and get a bigger arrow
 	if(check_improved_pointing())
 		recently_pointed_to = world.time + 10
-		new /obj/effect/overlay/temp/point/big(T, src)
+		new /obj/effect/overlay/temp/point/big(T, src, A)
 	else
 		recently_pointed_to = world.time + 50
-		new /obj/effect/overlay/temp/point(T, src)
+		new /obj/effect/overlay/temp/point(T, src, A)
 	visible_message("<b>[src]</b> points to [A]", null, null, 5)
 	return TRUE
 
@@ -758,7 +779,7 @@ note dizziness decrements automatically in the mob's Life() proc.
 			visible_implants += O
 	return visible_implants
 
-mob/proc/yank_out_object()
+/mob/proc/yank_out_object()
 	set category = "Object"
 	set name = "Yank out object"
 	set desc = "Remove an embedded item at the cost of bleeding and pain."
@@ -858,22 +879,22 @@ mob/proc/yank_out_object()
 
 /mob/living/proc/handle_stunned()
 	if(stunned)
-		AdjustStunned(-1)
+		adjust_effect(-1, STUN)
 	return stunned
 
 /mob/living/proc/handle_dazed()
 	if(dazed)
-		AdjustDazed(-1)
+		adjust_effect(-1, DAZE)
 	return dazed
 
 /mob/living/proc/handle_slowed()
 	if(slowed)
-		AdjustSlowed(-1)
+		adjust_effect(-1, SLOW)
 	return slowed
 
 /mob/living/proc/handle_superslowed()
 	if(superslowed)
-		AdjustSuperslowed(-1)
+		adjust_effect(-1, SUPERSLOW)
 	return superslowed
 
 
@@ -922,6 +943,7 @@ mob/proc/yank_out_object()
 /mob/proc/set_skills(skills_path)
 	if(skills)
 		qdel(skills)
+		skills = null
 	if(!skills_path)
 		skills = null
 	else

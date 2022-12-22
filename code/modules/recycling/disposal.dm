@@ -37,6 +37,12 @@
 	update()
 	start_processing()
 
+/obj/structure/machinery/disposal/Destroy()
+	if(contents.len)
+		eject()
+	trunk = null
+	return ..()
+
 /obj/structure/machinery/disposal/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
 	if (PF)
@@ -293,19 +299,14 @@
 	switch(severity)
 		if(0 to EXPLOSION_THRESHOLD_LOW)
 			if(prob(25))
-				qdel(src)
+				deconstruct(FALSE)
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			if(prob(60))
-				qdel(src)
+				deconstruct(FALSE)
 			return
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
-			qdel(src)
+			deconstruct(FALSE)
 			return
-
-/obj/structure/machinery/disposal/Destroy()
-	if(contents.len)
-		eject()
-	. = ..()
 
 //Update the icon & overlays to reflect mode & status
 /obj/structure/machinery/disposal/proc/update()
@@ -337,7 +338,7 @@
 //Timed process, charge the gas reservoir and perform flush if ready
 /obj/structure/machinery/disposal/process()
 	if(stat & BROKEN) //Nothing can happen if broken
-		update_use_power(0)
+		update_use_power(USE_POWER_NONE)
 		return
 
 	flush_count++
@@ -354,7 +355,7 @@
 		flush()
 
 	if(mode != 1) //If off or ready, no need to charge
-		update_use_power(1)
+		update_use_power(USE_POWER_IDLE)
 	else if(disposal_pressure >= SEND_PRESSURE)
 		mode = 2 //If full enough, switch to ready mode
 		update()
@@ -724,8 +725,8 @@
 
 //Call to break the pipe, will expel any holder inside at the time then delete the pipe
 //Remains : set to leave broken pipe pieces in place
-/obj/structure/disposalpipe/proc/broken(var/remains = 0)
-	if(remains)
+/obj/structure/disposalpipe/deconstruct(disassembled = TRUE)
+	if(disassembled)
 		for(var/D in cardinal)
 			if(D & dpdir)
 				var/obj/structure/disposalpipe/broken/P = new(loc)
@@ -750,7 +751,7 @@
 		if(H && H.loc)
 			expel(H, T, 0)
 
-	QDEL_IN(src, 2)
+	QDEL_IN(src, 2) // doesn't call parent because of all this snowflakery
 
 //Pipe affected by explosion
 /obj/structure/disposalpipe/ex_act(severity)
@@ -765,7 +766,7 @@
 			healthcheck()
 			return
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
-			broken(0)
+			deconstruct(FALSE)
 			return
 
 //Test health for brokenness
@@ -773,9 +774,9 @@
 	if(SSmapping.configs[GROUND_MAP].map_name == MAP_WHISKEY_OUTPOST)
 		return
 	if(health < -2)
-		broken(0)
+		deconstruct(FALSE)
 	else if(health < 1)
-		broken(1)
+		deconstruct(TRUE)
 
 //Attack by item. Weldingtool: unfasten and convert to obj/disposalconstruct
 /obj/structure/disposalpipe/attackby(var/obj/item/I, var/mob/user)
@@ -1245,6 +1246,10 @@
 /obj/structure/disposalpipe/trunk/LateInitialize()
 	. = ..()
 	getlinked()
+
+/obj/structure/disposalpipe/trunk/Destroy()
+	linked = null
+	return ..()
 
 /obj/structure/disposalpipe/trunk/proc/getlinked()
 	linked = null

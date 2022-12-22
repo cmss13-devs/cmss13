@@ -1,7 +1,5 @@
 /**
  * Multitool -- A multitool is used for hacking electronic devices.
- * TO-DO -- Using it as a power measurement tool for cables etc. Nannek.
- *
  */
 
 /obj/item/device/multitool
@@ -9,8 +7,8 @@
 	desc = "A small handheld tool used to override various machine functions. Primarily used to pulse Airlock and APC wires on a shortwave frequency. It contains a small data buffer as well."
 	icon_state = "multitool"
 	item_state = "multitool"
-	pickupsound = 'sound/handling/multitool_pickup.ogg'
-	dropsound = 'sound/handling/multitool_drop.ogg'
+	pickup_sound = 'sound/handling/multitool_pickup.ogg'
+	drop_sound = 'sound/handling/multitool_drop.ogg'
 	flags_atom = FPRINT|CONDUCT
 	force = 5.0
 	w_class = SIZE_SMALL

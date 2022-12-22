@@ -1,8 +1,3 @@
-//*******************************************************************************
-//MEDICAL
-//*******************************************************************************/
-
-
 /datum/supply_packs/medical
 	name = "medical crate"
 	contains = list(
@@ -23,7 +18,7 @@
 					/obj/item/storage/pill_bottle/peridaxon,
 					/obj/item/storage/box/pillbottles
 					)
-	cost = RO_PRICE_VERY_CHEAP
+	cost = 20
 	containertype = /obj/structure/closet/crate/medical
 	containername = "medical crate"
 	group = "Medical"
@@ -41,7 +36,7 @@
 					/obj/item/storage/firstaid/adv,
 					/obj/item/storage/firstaid/adv
 					)
-	cost = RO_PRICE_VERY_CHEAP
+	cost = 20
 	containertype = /obj/structure/closet/crate/medical
 	containername = "medical crate"
 	group = "Medical"
@@ -54,7 +49,7 @@
 			/obj/item/storage/box/bodybags,
 			/obj/item/storage/box/bodybags
 			)
-	cost = RO_PRICE_VERY_CHEAP
+	cost = 20
 	containertype = /obj/structure/closet/crate/medical
 	containername = "body bag crate"
 	group = "Medical"
@@ -66,52 +61,25 @@
 			/obj/item/bodybag/cryobag,
 			/obj/item/bodybag/cryobag
 			)
-	cost = RO_PRICE_NORMAL
+	cost = 40
 	containertype = /obj/structure/closet/crate/medical
 	containername = "stasis bag crate"
 	group = "Medical"
 
 /datum/supply_packs/surgery
-	name = "surgery crate (x2 surgical trays)"
+	name = "surgery crate(tray,anesthetic,surgeon gear)"
 	contains = list(
 					/obj/item/storage/surgical_tray,
-					/obj/item/storage/surgical_tray
-					)
-	cost = RO_PRICE_CHEAP
-	containertype = /obj/structure/closet/crate/secure/surgery
-	containername = "surgery crate"
-	access = ACCESS_MARINE_MEDBAY
-	group = "Medical"
-
-/datum/supply_packs/anesthetic
-	name = "anesthetic crate (x4 masks, x4 tanks)"
-	contains = list(
-					/obj/item/clothing/mask/breath/medical,
-					/obj/item/clothing/mask/breath/medical,
-					/obj/item/clothing/mask/breath/medical,
 					/obj/item/clothing/mask/breath/medical,
 					/obj/item/tank/anesthetic,
-					/obj/item/tank/anesthetic,
-					/obj/item/tank/anesthetic,
-					/obj/item/tank/anesthetic
-					)
-	cost = RO_PRICE_CHEAP
-	containertype = /obj/structure/closet/crate/secure/surgery
-	containername = "surgery crate"
-	access = ACCESS_MARINE_MEDBAY
-	group = "Medical"
-
-/datum/supply_packs/sterile
-	name = "sterile equipment crate"
-	contains = list(
-					/obj/item/clothing/under/rank/medical/green,
 					/obj/item/clothing/under/rank/medical/green,
 					/obj/item/storage/box/masks,
 					/obj/item/storage/box/gloves
 					)
-	cost = RO_PRICE_VERY_CHEAP
-	containertype = /obj/structure/closet/crate/medical
-	containername = "sterile equipment crate"
+	cost = 30
+	containertype = /obj/structure/closet/crate/secure/surgery
+	containername = "surgery crate"
+	access = ACCESS_MARINE_MEDBAY
 	group = "Medical"
 
 /datum/supply_packs/upgraded_medical_kits

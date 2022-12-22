@@ -52,8 +52,9 @@
 	//control_freak = 1
 
 	var/received_irc_pm = -99999
-	var/irc_admin			//IRC admin that spoke with them last.
-	var/mute_irc = 0
+
+	var/talked_at = 0 //Won't let someone say something again in under a second.
+	var/talked_sum = 0 // running sum of chars spoke in past 5 minutes
 
 
 		////////////////////////////////////
@@ -90,8 +91,8 @@
 	/// our current tab
 	var/stat_tab
 
-	/// whether our browser is ready or not yet
-	var/statbrowser_ready = FALSE
+	///Our object window datum. It stores info about and handles behavior for the object tab
+	var/datum/object_window_info/obj_window
 
 	/// list of all tabs
 	var/list/panel_tabs = list()

@@ -18,24 +18,24 @@
 	keystone = TRUE
 	behavior_delegate_type = /datum/behavior_delegate/ravager_berserker
 
-/datum/xeno_mutator/berserker/apply_mutator(datum/mutator_set/individual_mutators/MS)
+/datum/xeno_mutator/berserker/apply_mutator(datum/mutator_set/individual_mutators/mutator_set)
 	. = ..()
 	if (. == 0)
 		return
 
-	var/mob/living/carbon/Xenomorph/Ravager/R = MS.xeno
-	R.mutation_type = RAVAGER_BERSERKER
-	R.plasma_max = 0
-	R.health_modifier -= XENO_HEALTH_MOD_MED
-	R.armor_modifier += XENO_ARMOR_MOD_VERYSMALL
-	R.speed_modifier += XENO_SPEED_FASTMOD_TIER_3
+	var/mob/living/carbon/Xenomorph/Ravager/ravager = mutator_set.xeno
+	ravager.mutation_type = RAVAGER_BERSERKER
+	ravager.plasma_max = 0
+	ravager.health_modifier -= XENO_HEALTH_MOD_MED
+	ravager.armor_modifier += XENO_ARMOR_MOD_VERYSMALL
+	ravager.speed_modifier += XENO_SPEED_FASTMOD_TIER_3
+	ravager.received_phero_caps["frenzy"] = 2.9 // Moderate
+	mutator_update_actions(ravager)
+	mutator_set.recalculate_actions(description, flavor_description)
 
-	mutator_update_actions(R)
-	MS.recalculate_actions(description, flavor_description)
+	apply_behavior_holder(ravager)
 
-	apply_behavior_holder(R)
-
-	R.recalculate_everything()
+	ravager.recalculate_everything()
 
 // Mutator delegate for Berserker ravager
 /datum/behavior_delegate/ravager_berserker
@@ -52,7 +52,7 @@
 
 	// Eviscerate config
 	var/rage_lock_duration = 10 SECONDS      // 10 seconds of max rage
-	var/rage_cooldown_duration = 6 SECONDS  // 6 seconds of NO rage.
+	var/rage_cooldown_duration = 7 SECONDS  // 7 seconds of NO rage.
 
 	// State for tracking rage
 	var/rage = 0
@@ -147,7 +147,7 @@
 	if (next_slash_buffed)
 		to_chat(bound_xeno, SPAN_XENOHIGHDANGER("You significantly strengthen your attack, slowing [A]!"))
 		to_chat(A, SPAN_XENOHIGHDANGER("You feel a sharp pain as [bound_xeno] slashes you, slowing you down!"))
-		A.SetSuperslowed(get_xeno_stun_duration(A, 6))
+		A.apply_effect(get_xeno_stun_duration(A, 6), SUPERSLOW)
 		next_slash_buffed = FALSE
 
 	return original_damage

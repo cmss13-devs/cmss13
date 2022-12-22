@@ -157,7 +157,7 @@
 /atom/movable/proc/handle_internal_lifeform(mob/lifeform_inside_me)
 	. = return_air()
 
-///---CLONE---///
+//---CLONE---//
 
 /atom/movable/clone
 	var/atom/movable/mstr = null //Used by clones for referral

@@ -24,7 +24,7 @@
 		return
 
 	X.emote("roar")
-	L.KnockDown(2)
+	L.apply_effect(2, WEAKEN)
 	X.visible_message(SPAN_XENODANGER("[X] overruns [H], brutally trampling them underfoot!"), SPAN_XENODANGER("You brutalize [H] as you crush them underfoot!"))
 
 	H.apply_armoured_damage(get_xeno_damage_slash(H, direct_hit_damage), ARMOR_MELEE, BRUTE)
@@ -89,7 +89,7 @@
 		to_chat(H, SPAN_XENOHIGHDANGER("You are slowed as [X] knocks you off balance!"))
 
 		if(H.mob_size < MOB_SIZE_BIG)
-			H.KnockDown(get_xeno_stun_duration(H, 0.2))
+			H.apply_effect(get_xeno_stun_duration(H, 0.2), WEAKEN)
 
 		H.apply_armoured_damage(get_xeno_damage_slash(H, damage), ARMOR_MELEE, BRUTE)
 		H.last_damage_data = create_cause_data(X.caste_type, X)
@@ -100,7 +100,7 @@
 
 		new effect_type_base(H, X, , , get_xeno_stun_duration(H, effect_duration))
 		if(H.mob_size < MOB_SIZE_BIG)
-			H.KnockDown(get_xeno_stun_duration(H, 0.2))
+			H.apply_effect(get_xeno_stun_duration(H, 0.2), WEAKEN)
 		to_chat(H, SPAN_XENOHIGHDANGER("You are slowed as [X] knocks you off balance!"))
 
 	apply_cooldown()
@@ -134,7 +134,7 @@
 		to_chat(Human, SPAN_XENOHIGHDANGER("You are BRUTALLY crushed and stomped on by [Xeno]!!!"))
 		shake_camera(Human, 10, 2)
 		if(Human.mob_size < MOB_SIZE_BIG)
-			Human.KnockDown(get_xeno_stun_duration(Human, 0.2))
+			Human.apply_effect(get_xeno_stun_duration(Human, 0.2), WEAKEN)
 
 		Human.apply_armoured_damage(get_xeno_damage_slash(Human, damage), ARMOR_MELEE, BRUTE,"chest", 3)
 		Human.apply_armoured_damage(15, BRUTE) // random
@@ -180,8 +180,8 @@
 	xeno.explosivearmor_modifier += 1000
 	xeno.recalculate_armor()
 
-	addtimer(CALLBACK(src, .proc/remove_explosion_immunity), 25, TIMER_UNIQUE)
-	addtimer(CALLBACK(src, .proc/remove_shield), 70, TIMER_UNIQUE)
+	addtimer(CALLBACK(src, .proc/remove_explosion_immunity), 25, TIMER_UNIQUE|TIMER_OVERRIDE)
+	addtimer(CALLBACK(src, .proc/remove_shield), 70, TIMER_UNIQUE|TIMER_OVERRIDE)
 
 	apply_cooldown()
 	..()
@@ -223,6 +223,7 @@
 	to_chat(Xeno, SPAN_XENONOTICE("You will [will_charge] charge when moving."))
 	if(activated)
 		RegisterSignal(Xeno, COMSIG_MOVABLE_MOVED, .proc/handle_movement)
+		RegisterSignal(Xeno, COMSIG_MOB_KNOCKED_DOWN, .proc/handle_movement)
 		RegisterSignal(Xeno, COMSIG_ATOM_DIR_CHANGE, .proc/handle_dir_change)
 		RegisterSignal(Xeno, COMSIG_XENO_RECALCULATE_SPEED, .proc/update_speed)
 		RegisterSignal(Xeno, COMSIG_XENO_STOP_MOMENTUM, .proc/stop_momentum)
@@ -234,6 +235,7 @@
 		stop_momentum()
 		UnregisterSignal(Xeno, list(
 			COMSIG_MOVABLE_MOVED,
+			COMSIG_MOB_KNOCKED_DOWN,
 			COMSIG_ATOM_DIR_CHANGE,
 			COMSIG_XENO_RECALCULATE_SPEED,
 			COMSIG_MOVABLE_ENTERED_RIVER,

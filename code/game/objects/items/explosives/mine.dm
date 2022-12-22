@@ -159,6 +159,7 @@
 	if(customizable && assembly_stage == ASSEMBLY_LOCKED)
 		if(isigniter(detonator.a_right) && isigniter(detonator.a_left))
 			set_tripwire()
+			use_dir = TRUE
 			return
 		else
 			..()
@@ -213,7 +214,6 @@
 
 	if(!customizable)
 		create_shrapnel(loc, 12, dir, angle, , cause_data)
-		sleep(2) //so that shrapnel has time to hit mobs before they are knocked over by the explosion
 		cell_explosion(loc, 60, 20, EXPLOSION_FALLOFF_SHAPE_LINEAR, dir, cause_data)
 		qdel(src)
 	else

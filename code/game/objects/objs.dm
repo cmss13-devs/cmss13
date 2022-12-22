@@ -27,9 +27,10 @@
 
 	var/flags_obj = NO_FLAGS
 
+	var/renamedByPlayer = FALSE //set when a player uses a pen on a renamable object
+
 /obj/Initialize(mapload, ...)
 	. = ..()
-	GLOB.object_list += src
 	if(garbage)
 		add_to_garbage(src)
 
@@ -38,8 +39,11 @@
 		unbuckle()
 	. = ..()
 	remove_from_garbage(src)
-	GLOB.object_list -= src
 
+// object is being physically reduced into parts
+/obj/proc/deconstruct(disassembled = TRUE)
+	density = 0
+	qdel(src)
 
 /obj/item/proc/is_used_on(obj/O, mob/user)
 
@@ -52,7 +56,7 @@
 
 /obj/item/proc/get_examine_line(mob/user)
 	if(blood_color)
-		. = SPAN_WARNING("[icon2html(src, user)] [gender==PLURAL?"some":"a"] <font color='[blood_color]'>stained</font> [src]")
+		. = SPAN_WARNING("[icon2html(src, user)] [gender==PLURAL?"some":"a"] <font color='[blood_color]'>stained</font> [src.name]")
 	else
 		. = "[icon2html(src, user)] \a [src]"
 
@@ -331,6 +335,8 @@
 	else if(use_spritesheet(bodytype, slot, mob_state))
 		spritesheet = TRUE
 		mob_icon = sprite_sheets[bodytype]
+	else if(contained_sprite)
+		mob_icon = icon
 	else if(LAZYISIN(item_icons, slot))
 		mob_icon = item_icons[slot]
 	else

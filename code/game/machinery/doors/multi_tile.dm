@@ -267,7 +267,7 @@
 		for(var/atom/movable/atom_movable in self_turf)
 			if(ismob(atom_movable) && !isobserver(atom_movable))
 				var/mob/mob = atom_movable
-				mob.KnockDown(5)
+				mob.apply_effect(5, WEAKEN)
 				to_chat(mob, SPAN_HIGHDANGER("\The [src] shoves you out!"))
 			else if(isobj(atom_movable))
 				var/obj/object = atom_movable
@@ -307,7 +307,7 @@
 		for(var/atom/movable/atom_movable in near_turf)
 			if(ismob(atom_movable) && !isobserver(atom_movable))
 				var/mob/mob = atom_movable
-				mob.Stun(10)
+				mob.apply_effect(10, STUN)
 				to_chat(mob, SPAN_HIGHDANGER("You get sucked into space!"))
 			else if(isobj(atom_movable))
 				var/obj/object = atom_movable

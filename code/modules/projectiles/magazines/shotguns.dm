@@ -28,6 +28,13 @@ var/list/shotgun_boxes_12g = list(
 	handful_state = "slug_shell"
 	transfer_handful_amount = 5
 
+/obj/item/ammo_magazine/shotgun/attack_self(mob/user)
+	if(current_rounds == 0)
+		new /obj/item/stack/sheet/cardboard(user.loc)
+		qdel(src)
+	else
+		return ..()
+
 /obj/item/ammo_magazine/shotgun/slugs//for distinction on weapons that can't take child objects but still take slugs.
 
 /obj/item/ammo_magazine/shotgun/incendiary
@@ -124,10 +131,10 @@ also doesn't really matter. You can only reload them with handfuls.
 
 /obj/item/ammo_magazine/internal/shotgun/cmb
 	default_ammo = /datum/ammo/bullet/shotgun/buckshot
-	max_rounds = 8
+	max_rounds = 4
 
 /obj/item/ammo_magazine/internal/shotgun/cmb/m3717
-	max_rounds = 10
+	max_rounds = 5
 
 //-------------------------------------------------------
 

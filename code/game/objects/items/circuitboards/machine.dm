@@ -81,7 +81,7 @@ to destroy them and players will be able to make replacements.
 	build_path = /obj/structure/machinery/power/port_gen/pacman/mrs
 
 
-obj/item/circuitboard/machine/rdserver
+/obj/item/circuitboard/machine/rdserver
 	name = "Circuit Board (R&D Server)"
 	build_path = /obj/structure/machinery/r_n_d/server
 

@@ -4,7 +4,6 @@ import { Window } from '../layouts';
 
 const PAGES = {
   'main': () => MainMenu,
-  'import_report': () => ImportReport,
   'incident_report': () => NewReport,
   'new_charge': () => NewCharge,
 };
@@ -32,73 +31,32 @@ const MainMenu = (props, context) => {
       justify="center"
       align="center"
       height="100%"
-      fontFamily="monospace"
       color="darkgrey"
       fontSize="2rem"
-      mt="-4rem"
+      mt="-3rem"
       bold>
-      <Box>Jurisdictional Automated System</Box>
-      <Box mb="2rem">WY-DOS Executive</Box>
-      <Box>Version 5.8.4</Box>
-      <Box>Copyright © 2182, Weyland Yutani Corp.</Box>
-
-      <Flex mt="5rem">
-        <Button
-          content="Import Incident"
-          width="30vw"
-          height="100%"
-          textAlign="center"
-          fontSize="1.5rem"
-          p="1rem"
-          mr="2rem"
-          onClick={() => act('set_menu', { new_menu: 'import_report' })}
-        />
-
-        <Button
-          content="New Report"
-          width="30vw"
-          height="100%"
-          textAlign="center"
-          fontSize="1.5rem"
-          p="1rem"
-          onClick={() => act('new_report')}
-        />
-      </Flex>
-    </Flex>
-  );
-};
-
-const ImportReport = (props, context) => {
-  const { act } = useBackend(context);
-
-  return (
-    <Flex
-      direction="column"
-      justify="center"
-      align="center"
-      height="100%"
-      fontFamily="monospace"
-      color="darkgrey"
-      fontSize="2rem"
-      mt="-4rem"
-      bold>
-      <Box>
-        XS-2 Scanner:{' '}
-        <Box inline color="green">
-          Online
-        </Box>
+      <Box fontFamily="monospace">Jurisdictional Automated System</Box>
+      <Box mb="2rem" fontFamily="monospace">
+        WY-DOS Executive
       </Box>
-      <Box fontSize="1.5rem" my="2rem">
-        Insert incident report paper
-      </Box>
+      <Box fontFamily="monospace">Version 5.8.4</Box>
+      <Box fontFamily="monospace">Copyright © 2182, Weyland Yutani Corp.</Box>
+
       <Button
-        content="Cancel"
+        content="New Report"
+        width="30vw"
         textAlign="center"
         fontSize="1.5rem"
-        width="30vw"
         p="1rem"
-        onClick={() => act('set_menu', { new_menu: 'main' })}
+        mt="5rem"
+        onClick={() => act('new_report')}
       />
+      <Box fontSize="2rem" mt="1rem">
+        OR
+      </Box>
+      <Box fontSize="1.5rem" mt="1rem">
+        scan an existing report
+      </Box>
     </Flex>
   );
 };
@@ -106,7 +64,6 @@ const ImportReport = (props, context) => {
 const NewReport = (props, context) => {
   const { data, act } = useBackend(context);
   const { suspect_name, summary, sentence, current_charges } = data;
-
   const canExport = suspect_name && current_charges.length;
 
   return (

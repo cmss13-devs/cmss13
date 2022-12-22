@@ -215,7 +215,7 @@
 
 /obj/structure/machinery/computer/sentencing/attackby(var/obj/item/O, var/mob/user)
 	if (istype(O, /obj/item/paper/incident))
-		if (current_menu == "import_report" || current_menu == "main")
+		if (current_menu == "main")
 			var/obj/item/paper/incident/paper = O
 			user.temp_drop_inv_item(paper)
 			paper.forceMove(loc)
@@ -227,7 +227,7 @@
 		else
 			to_chat(user, SPAN_ALERT("A report is already in progress."))
 
-	else if (istype(O, /obj/item/paper/) && (current_menu == "import_report" || current_menu == "main"))
+	else if (istype(O, /obj/item/paper/) && current_menu == "main")
 		to_chat(user, SPAN_ALERT("This console only accepts authentic incident reports. Copies are invalid."))
 
 	else if (istype(O, /obj/item/grab))

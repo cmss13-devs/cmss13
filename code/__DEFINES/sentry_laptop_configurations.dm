@@ -1,5 +1,5 @@
 #define FACTION_USCM "USCM"
-#define FACTION_WY "WY"
+#define FACTION_WEYLAND "WY"
 #define FACTION_HUMAN "HUMAN"
 #define FACTION_COLONY "COLONY"
 

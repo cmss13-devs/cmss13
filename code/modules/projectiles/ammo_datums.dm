@@ -3399,13 +3399,12 @@
 	if(locate(/obj/item/explosive/mine) in get_turf(loc)) // TO FIX MID SOLUTION?
 		signal_explosion = TRUE
 	var/obj/item/explosive/mine/sharp/dart = new /obj/item/explosive/mine/sharp(loc)
-	// if no darts on tile, don't arm, disarm instead.
+	// if no darts on tile, don't arm, explode instead.
 	if(signal_explosion)
 		INVOKE_ASYNC(dart, /obj/item/explosive/mine/sharp.proc/prime, shooter)
 	else
-		addtimer(CALLBACK(dart, /obj/item/explosive/mine/sharp.proc/deploy_mine, shooter), 3 SECONDS)
-	if(dart)
-		addtimer(CALLBACK(dart, /obj/item/explosive/mine/sharp.proc/disarm), 1 MINUTES) // If we do the above to prevent stacking on the same tile, maybe we should disarm instead so we dont callback a qdel'ed object?
+		addtimer(CALLBACK(dart, /obj/item/explosive/mine/sharp.proc/deploy_mine, shooter), 3 SECONDS, TIMER_DELETE_ME)
+		addtimer(CALLBACK(dart, /obj/item/explosive/mine/sharp.proc/disarm), 1 MINUTES, TIMER_DELETE_ME)
 
 /datum/ammo/rifle/dart/explosive/proc/delayed_explosion(obj/item/projectile/P, mob/M, mob/shooter)
 	if(istype(M, /mob))

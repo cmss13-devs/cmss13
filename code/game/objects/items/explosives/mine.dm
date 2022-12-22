@@ -150,7 +150,7 @@
 
 	if(!customizable)
 		set_tripwire()
-		return;
+		return
 
 	if(!detonator)
 		active = TRUE
@@ -358,10 +358,4 @@
 /obj/item/explosive/mine/sharp/deploy_mine(var/mob/user)
 	if(disarmed)
 		return
-	if(!hard_iff_lock && user)
-		iff_signal = user.faction
-
-	cause_data = create_cause_data(initial(name), user)
-	anchored = TRUE
-	activate_sensors()
-	update_icon()
+	. = ..()

@@ -2,7 +2,7 @@
  * Paper
  * also scraps of paper
  */
- 
+
 #define MAX_FIELDS 51
 
 /obj/item/paper
@@ -11,8 +11,8 @@
 	icon = 'icons/obj/items/paper.dmi'
 	icon_state = "paper"
 	item_state = "paper"
-	pickupsound = 'sound/handling/paper_pickup.ogg'
-	dropsound = 'sound/handling/paper_drop.ogg'
+	pickup_sound = 'sound/handling/paper_pickup.ogg'
+	drop_sound = 'sound/handling/paper_drop.ogg'
 	throwforce = 0
 	w_class = SIZE_TINY
 	throw_speed = SPEED_FAST
@@ -98,7 +98,7 @@
 
 /obj/item/paper/attack_self(mob/living/user)
 	..()
-	examine(user)
+	read_paper(user)
 
 /obj/item/paper/attack_remote(var/mob/living/silicon/ai/user as mob)
 	var/dist
@@ -335,7 +335,7 @@
 
 		var/obj/item/i = usr.get_active_hand() // Check to see if he still got that darn pen, also check if he's using a crayon or pen.
 		var/iscrayon = 0
-		if(!istype(i, /obj/item/tool/pen))
+		if(!HAS_TRAIT(i, TRAIT_TOOL_PEN))
 			if(!istype(i, /obj/item/toy/crayon))
 				return
 			iscrayon = 1
@@ -357,7 +357,7 @@
 		show_browser(usr, "<BODY class='paper'>[info_links][stamps]</BODY>", name, name) // Update the window
 
 		update_icon()
-
+		playsound(src, "paper_writing", 15, TRUE)
 
 /obj/item/paper/attackby(obj/item/P, mob/user)
 	..()
@@ -385,8 +385,8 @@
 		B.attach_doc(P, user, TRUE)
 		user.put_in_hands(B)
 
-	else if(istype(P, /obj/item/tool/pen) || istype(P, /obj/item/toy/crayon))
-		if(istype(P, /obj/item/tool/pen))
+	else if(HAS_TRAIT(P, TRAIT_TOOL_PEN) || istype(P, /obj/item/toy/crayon))
+		if(HAS_TRAIT(P, TRAIT_TOOL_PEN))
 			var/obj/item/tool/pen/p = P
 			if(!p.on)
 				to_chat(user, SPAN_NOTICE("Your pen is not on!"))

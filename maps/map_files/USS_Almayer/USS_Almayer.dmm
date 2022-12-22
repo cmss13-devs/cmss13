@@ -45111,6 +45111,9 @@
 "gSi" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/computer/security/almayer_network,
+/obj/item/storage/box/tapes{
+	pixel_x = -16
+	},
 /turf/open/floor/almayer,
 /area/almayer/shipboard/brig/processing)
 "gSj" = (
@@ -78609,15 +78612,6 @@
 "vAG" = (
 /turf/open/floor/almayer,
 /area/almayer/shipboard/brig/chief_mp_office)
-"vAI" = (
-/obj/structure/machinery/cryopod/right{
-	pixel_y = 6
-	},
-/turf/open/floor/almayer{
-	icon_state = "cargo";
-	tag = "icon-bluecorner (NORTH)"
-	},
-/area/almayer/shipboard/brig/cryo)
 "vAQ" = (
 /obj/structure/machinery/light,
 /obj/structure/sink{
@@ -96036,9 +96030,9 @@ eRL
 mLJ
 pWG
 gaJ
-vAI
+eyg
 gCI
-vAI
+eyg
 gaJ
 heQ
 lMc
@@ -100496,7 +100490,7 @@ cRc
 rPC
 wcn
 vxM
-vAI
+eyg
 giZ
 gTl
 vxM
@@ -101309,7 +101303,7 @@ tRX
 uzm
 vxM
 eyg
-vAI
+eyg
 oWI
 vxM
 nNv

@@ -66,10 +66,10 @@ FIRE ALARM
 	if(prob(50/severity)) alarm()
 	..()
 
-/obj/structure/machinery/firealarm/attackby(obj/item/W as obj, mob/user as mob)
+/obj/structure/machinery/firealarm/attackby(obj/item/held_object as obj, mob/user as mob)
 	src.add_fingerprint(user)
 
-	if (HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER) && buildstage == 2)
+	if (HAS_TRAIT(held_object, TRAIT_TOOL_SCREWDRIVER) && buildstage == 2)
 		wiresexposed = !wiresexposed
 		update_icon()
 		return
@@ -77,21 +77,21 @@ FIRE ALARM
 	if(wiresexposed)
 		switch(buildstage)
 			if(2)
-				if (HAS_TRAIT(W, TRAIT_TOOL_MULTITOOL))
+				if (HAS_TRAIT(held_object, TRAIT_TOOL_MULTITOOL))
 					src.detecting = !( src.detecting )
 					if (src.detecting)
 						user.visible_message(SPAN_DANGER("[user] has reconnected [src]'s detecting unit!"), "You have reconnected [src]'s detecting unit.")
 					else
 						user.visible_message(SPAN_DANGER("[user] has disconnected [src]'s detecting unit!"), "You have disconnected [src]'s detecting unit.")
-				else if (HAS_TRAIT(W, TRAIT_TOOL_WIRECUTTERS))
+				else if (HAS_TRAIT(held_object, TRAIT_TOOL_WIRECUTTERS))
 					user.visible_message(SPAN_DANGER("[user] has cut the wires inside \the [src]!"), "You have cut the wires inside \the [src].")
 					playsound(src.loc, 'sound/items/Wirecutter.ogg', 25, 1)
 					buildstage = 1
 					update_icon()
 			if(1)
-				if(istype(W, /obj/item/stack/cable_coil))
-					var/obj/item/stack/cable_coil/C = W
-					if (C.use(5))
+				if(istype(held_object, /obj/item/stack/cable_coil))
+					var/obj/item/stack/cable_coil/cable = held_object
+					if (cable.use(5))
 						to_chat(user, SPAN_NOTICE("You wire \the [src]."))
 						buildstage = 2
 						update_icon()
@@ -99,7 +99,7 @@ FIRE ALARM
 					else
 						to_chat(user, SPAN_WARNING("You need 5 pieces of cable to do wire \the [src]."))
 						return
-				else if(HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))
+				else if(HAS_TRAIT(held_object, TRAIT_TOOL_CROWBAR))
 					to_chat(user, "You pry out the circuit!")
 					playsound(src.loc, 'sound/items/Crowbar.ogg', 25, 1)
 					spawn(20)
@@ -108,13 +108,13 @@ FIRE ALARM
 						buildstage = 0
 						update_icon()
 			if(0)
-				if(istype(W, /obj/item/circuitboard/firealarm))
+				if(istype(held_object, /obj/item/circuitboard/firealarm))
 					to_chat(user, "You insert the circuit!")
-					qdel(W)
+					qdel(held_object)
 					buildstage = 1
 					update_icon()
 
-				else if(HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
+				else if(HAS_TRAIT(held_object, TRAIT_TOOL_WRENCH))
 					to_chat(user, "You remove the fire alarm assembly from the wall!")
 					var/obj/item/frame/fire_alarm/frame = new /obj/item/frame/fire_alarm()
 					frame.forceMove(user.loc)
@@ -136,9 +136,9 @@ FIRE ALARM
 	if (buildstage != 2 || wiresexposed)
 		return
 
-	var/area/A = src.loc.loc
+	var/area/area = get_area(src)
 
-	if (A.flags_alarm_state & ALARM_WARNING_FIRE)
+	if (area.flags_alarm_state & ALARM_WARNING_FIRE)
 		reset()
 	else
 		alarm()
@@ -148,22 +148,22 @@ FIRE ALARM
 /obj/structure/machinery/firealarm/proc/reset()
 	if (!( src.working ))
 		return
-	var/area/A = src.loc
-	A = A.loc
-	if (!( istype(A, /area) ))
+	var/area/area = get_area(src)
+
+	if (!( istype(area, /area) ))
 		return
-	A.firereset()
+	area.firereset()
 	update_icon()
 	return
 
 /obj/structure/machinery/firealarm/proc/alarm()
 	if (!( src.working ))
 		return
-	var/area/A = src.loc
-	A = A.loc
-	if (!( istype(A, /area) ))
+	var/area/area = get_area(src)
+
+	if (!( istype(area, /area) ))
 		return
-	A.firealert()
+	area.firealert()
 	update_icon()
 	return
 

@@ -508,3 +508,34 @@
 							/obj/item/toy/prize/odysseus					= 1,
 							/obj/item/toy/prize/phazon						= 1
 							)
+
+/obj/item/toy/festivizer
+	name = "\improper C92 pattern 'Festivizer' decorator"
+	desc = "State of the art, WY-brand, high tech... ah who are we kidding, it's just a festivizer. You spot a label on it that says: <i> Attention: This device does not cover item in festive wire, but rather paints it a festive color. </i> What a rip!"
+	icon = 'icons/obj/items/marine-items_christmas.dmi'
+	icon_state = "festive_wire"
+
+/obj/item/toy/festivizer/get_examine_text(mob/user)
+	. = ..()
+	. += SPAN_BOLDNOTICE("You see another label on \the [src] that says: <i> INCLUDES SUPPORT FOR FOREIGN BIOFORMS! </i> You're not sure you like the sound of that..")
+
+/obj/item/toy/festivizer/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
+	. = ..()
+	if(!target.Adjacent(user))
+		return
+	if(target.color)
+		to_chat(user, SPAN_NOTICE("\The [target] is already colored, don't be greedy!"))
+		return
+	target.color = (pick("red", "green"))
+	target.visible_message(SPAN_GREEN("\The [target] has been festivized by [user]! Merry Christmas!"))
+	to_chat(user, SPAN_GREEN("You festivize \the [target]! Merry Christmas!"))
+	if(prob(5))
+		playsound(target, 'sound/voice/alien_queen_xmas.ogg', 25, TRUE)
+
+/obj/item/toy/festivizer/attack_alien(mob/living/carbon/Xenomorph/M)
+	attack_hand(M) //xenos can use them too.
+	return XENO_NONCOMBAT_ACTION
+
+/obj/item/toy/festivizer/xeno
+	name = "strange resin-covered festivizer decorator"
+	desc = "This bizarre festivizer is covered in goopy goop and schmuck. Ew! It's so sticky, *anything* could grab onto it! Grab it and touch other things to festivize them!"

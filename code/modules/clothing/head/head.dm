@@ -287,9 +287,9 @@
 	update_icon()
 
 /obj/item/clothing/head/cmcap/update_icon()
-    if(ismob(loc))
-        var/mob/M = loc
-        M.update_inv_head()
+	if(ismob(loc))
+		var/mob/M = loc
+		M.update_inv_head()
 
 /obj/item/clothing/head/cmcap/get_mob_overlay(mob/user_mob, slot)
 	var/image/ret = ..()

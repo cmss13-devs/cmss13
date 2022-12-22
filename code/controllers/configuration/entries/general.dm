@@ -488,8 +488,6 @@ This maintains a list of ip addresses that are able to bypass topic filtering.
 
 /datum/config_entry/flag/ooc_country_flags
 
-/datum/config_entry/flag/report_runtimes
-
 /datum/config_entry/flag/record_rounds
 
 /datum/config_entry/str_list/lobby_art_images
@@ -525,3 +523,15 @@ This maintains a list of ip addresses that are able to bypass topic filtering.
 /datum/config_entry/string/adminhelp_webhook_name
 
 /datum/config_entry/string/adminhelp_ahelp_link
+
+/// logs all timers in buckets on automatic bucket reset (Useful for timer debugging)
+/datum/config_entry/flag/log_timers_on_bucket_reset
+
+/datum/config_entry/number/hard_deletes_overrun_threshold
+	integer = FALSE
+	min_val = 0
+	default = 0.5
+
+/datum/config_entry/number/hard_deletes_overrun_limit
+	default = 0
+	min_val = 0

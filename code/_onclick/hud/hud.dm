@@ -60,7 +60,7 @@
 
 	var/list/atom/movable/screen/plane_master/plane_masters = list() // see "appearance_flags" in the ref, assoc list of "[plane]" = object
 	///Assoc list of controller groups, associated with key string group name with value of the plane master controller ref
-	var/list/obj/plane_master_controller/plane_master_controllers = list()
+	var/list/atom/movable/plane_master_controller/plane_master_controllers = list()
 
 	var/list/static_inventory = list() //the screen objects which are static
 	var/list/toggleable_inventory = list() //the screen objects which can be hidden
@@ -83,8 +83,8 @@
 		if(owner.client)
 			instance.backdrop(mymob)
 
-	for(var/mytype in subtypesof(/obj/plane_master_controller))
-		var/obj/plane_master_controller/controller_instance = new mytype(null,src)
+	for(var/mytype in subtypesof(/atom/movable/plane_master_controller))
+		var/atom/movable/plane_master_controller/controller_instance = new mytype(null,src)
 		plane_master_controllers[controller_instance.name] = controller_instance
 
 /datum/hud/Destroy()

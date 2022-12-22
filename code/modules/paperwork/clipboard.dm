@@ -53,7 +53,7 @@
 		to_chat(user, SPAN_NOTICE("You clip the [W] onto \the [src]."))
 		update_icon()
 
-	else if(istype(toppaper) && istype(W, /obj/item/tool/pen))
+	else if(istype(toppaper) && HAS_TRAIT(W, TRAIT_TOOL_PEN))
 		toppaper.attackby(W, usr)
 		update_icon()
 
@@ -101,7 +101,7 @@
 		else if(href_list["addpen"])
 			if(!haspen)
 				var/obj/item/tool/pen/W = usr.get_active_hand()
-				if(istype(W, /obj/item/tool/pen))
+				if(HAS_TRAIT(W, TRAIT_TOOL_PEN))
 					if(usr.drop_held_item())
 						W.forceMove(src)
 						haspen = W
@@ -114,7 +114,7 @@
 
 				var/obj/item/I = usr.get_active_hand()
 
-				if(istype(I, /obj/item/tool/pen))
+				if(HAS_TRAIT(I, TRAIT_TOOL_PEN))
 
 					P.attackby(I, usr)
 

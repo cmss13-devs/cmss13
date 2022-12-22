@@ -1116,7 +1116,7 @@
 
 /obj/item/weapon/gun/launcher/rocket/anti_tank/disposable/proc/fold(mob/user)
 	var/obj/item/prop/folded_anti_tank_sadar/F = new /obj/item/prop/folded_anti_tank_sadar(src.loc)
-	F.set_name_label(name_label)
+	transfer_label_component(F)
 	qdel(src)
 	user.put_in_active_hand(F)
 
@@ -1153,7 +1153,7 @@
 
 /obj/item/prop/folded_anti_tank_sadar/proc/unfold(mob/user)
 	var/obj/item/weapon/gun/launcher/rocket/anti_tank/disposable/F = new /obj/item/weapon/gun/launcher/rocket/anti_tank/disposable(src.loc)
-	F.set_name_label(name_label)
+	transfer_label_component(F)
 	qdel(src)
 	user.put_in_active_hand(F)
 

@@ -76,12 +76,12 @@
 
 //ICE COLONY RESEARCH DECORATION-----------------------//
 //Most of icons made by ~Morrinn
-obj/structure/xenoautopsy
+/obj/structure/xenoautopsy
 	name = "Research thingies"
 	icon = 'icons/obj/structures/props/alien_autopsy.dmi'
 	icon_state = "jarshelf_9"
 
-obj/structure/xenoautopsy/jar_shelf
+/obj/structure/xenoautopsy/jar_shelf
 	name = "jar shelf"
 	icon_state = "jarshelf_0"
 	var/randomise = 1 //Random icon
@@ -90,27 +90,27 @@ obj/structure/xenoautopsy/jar_shelf
 		if(randomise)
 			icon_state = "jarshelf_[rand(0,9)]"
 
-obj/structure/xenoautopsy/tank
+/obj/structure/xenoautopsy/tank
 	name = "cryo tank"
 	icon_state = "tank_empty"
 	desc = "It is empty."
 
-obj/structure/xenoautopsy/tank/broken
+/obj/structure/xenoautopsy/tank/broken
 	name = "cryo tank"
 	icon_state = "tank_broken"
 	desc = "Something broke it..."
 
-obj/structure/xenoautopsy/tank/alien
+/obj/structure/xenoautopsy/tank/alien
 	name = "cryo tank"
 	icon_state = "tank_alien"
 	desc = "There is something big inside..."
 
-obj/structure/xenoautopsy/tank/hugger
+/obj/structure/xenoautopsy/tank/hugger
 	name = "cryo tank"
 	icon_state = "tank_hugger"
 	desc = "There is something spider-like inside..."
 
-obj/structure/xenoautopsy/tank/larva
+/obj/structure/xenoautopsy/tank/larva
 	name = "cryo tank"
 	icon_state = "tank_larva"
 	desc = "There is something worm-like inside..."

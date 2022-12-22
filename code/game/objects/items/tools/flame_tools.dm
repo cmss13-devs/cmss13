@@ -64,7 +64,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		if(!flavor_text)
 			flavor_text = SPAN_NOTICE("[usr] lights [src].")
 		for(var/mob/O in viewers(usr, null))
-			O.show_message(flavor_text, 1)
+			O.show_message(flavor_text, SHOW_MESSAGE_VISIBLE)
 		SetLuminosity(CANDLE_LUM)
 		update_icon()
 		START_PROCESSING(SSobj, src)

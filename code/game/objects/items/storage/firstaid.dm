@@ -641,7 +641,7 @@
 	maptext_label = "Pc"
 
 //---------PILL PACKETS---------
-obj/item/storage/pill_bottle/packet
+/obj/item/storage/pill_bottle/packet
 	name = "\improper pill packet"
 	desc = "Contains pills. Once you take them out, they don't go back in."
 	icon_state = "pill_packet"

@@ -45,7 +45,7 @@
 	icon_state = "map_on"
 
 
-obj/structure/pipes/binary/passive_gate
+/obj/structure/pipes/binary/passive_gate
 	icon = 'icons/obj/pipes/passive_gate.dmi'
 	icon_state = "map"
 	name = "pressure regulator"

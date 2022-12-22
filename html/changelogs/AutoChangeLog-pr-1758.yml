@@ -1,5 +1,0 @@
-author: "Morrow"
-delete-after: True
-changes:
-  - balance: "Removes groundside nanomeds refilling splints and skilless injectors."
-  - balance: "Nerfs non-med APC nanomeds to basic groundside level."

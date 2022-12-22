@@ -126,7 +126,7 @@
 			if(!imp)	continue
 			if(istype(imp, /obj/item/implant/loyalty))
 				for (var/mob/O in viewers(M, null))
-					O.show_message(SPAN_DANGER("[M] has been implanted by the [src.name]."), 1)
+					O.show_message(SPAN_DANGER("[M] has been implanted by the [src.name]."), SHOW_MESSAGE_VISIBLE)
 
 				if(imp.implanted(M))
 					imp.forceMove(M)

@@ -124,7 +124,7 @@
 	return
 
 /datum/species/proc/handle_npc(var/mob/living/carbon/human/H)
-    return
+	return
 
 /datum/species/proc/create_organs(var/mob/living/carbon/human/H) //Handles creation of mob organs and limbs.
 	for(var/L in H.limbs) //In case of pre-existing limbs/organs, we remove the old ones.

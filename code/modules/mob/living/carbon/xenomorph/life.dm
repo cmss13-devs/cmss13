@@ -194,11 +194,7 @@
 
 		if(regular_update)
 			if(eye_blurry)
-				overlay_fullscreen("eye_blurry", /atom/movable/screen/fullscreen/impaired, 5)
-				src.eye_blurry--
-				src.eye_blurry = max(0, src.eye_blurry)
-			else
-				clear_fullscreen("eye_blurry")
+				src.ReduceEyeBlur(1)
 
 			handle_statuses()//natural decrease of stunned, knocked_down, etc...
 			handle_interference()

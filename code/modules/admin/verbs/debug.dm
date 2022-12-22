@@ -314,7 +314,7 @@ GLOBAL_PROTECT(AdminProcCallSpamPrevention)
 	t += SPAN_DANGER("Pressure: [air_info[3]]kPa\n")
 	t += SPAN_NOTICE("Gas Type: [air_info[1]]\n")
 
-	usr.show_message(t, 1)
+	usr.show_message(t, SHOW_MESSAGE_VISIBLE)
 
 
 /client/proc/cmd_admin_robotize(var/mob/M in GLOB.mob_list)

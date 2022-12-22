@@ -87,9 +87,6 @@
 	get_target(target)
 	return TRUE
 
-/obj/structure/machinery/defenses/sentry/proc/identify()
-	playsound(loc, 'sound/machines/twobeep.ogg', 50, 1)
-
 /obj/structure/machinery/defenses/sentry/proc/set_range()
 	if(omni_directional)
 		range_bounds = RECT(x, y, 8, 8)

@@ -123,7 +123,30 @@ const GunMenu = (props: { data: SentrySpec }, context) => {
   const round_rep =
     props.data.rounds !== undefined ? props.data.rounds.toFixed(0) : undefined;
   return (
-    <Flex direction="column">
+    <Flex direction="column" className="GunFlex">
+      <Flex.Item>
+        <Box className="EngagedBox">
+          <Flex justify="space-between">
+            <Flex.Item>
+              <Button
+                disabled={props.data.camera_available === 0}
+                icon="video"
+                onClick={() => act('set-camera', { index: props.data.index })}
+              />
+            </Flex.Item>
+            <Flex.Item>
+              {props.data.active === 0 && <span>Offline</span>}
+              {props.data.active === 1 && <span>Online</span>}
+            </Flex.Item>
+            <Flex.Item>
+              <Button
+                icon="bullhorn"
+                onClick={() => act('ping', { index: props.data.index })}
+              />
+            </Flex.Item>
+          </Flex>
+        </Box>
+      </Flex.Item>
       <Flex.Item>
         <Box
           className={classes([
@@ -163,12 +186,6 @@ const GunMenu = (props: { data: SentrySpec }, context) => {
           </Box>
         </Flex.Item>
       )}
-      <Flex.Item>
-        <Box className="EngagedBox">
-          {props.data.active === 0 && <span>Offline</span>}
-          {props.data.active === 1 && <span>Online</span>}
-        </Box>
-      </Flex.Item>
       {props.data.engaged !== undefined && (
         <Flex.Item>
           <Box
@@ -196,23 +213,6 @@ const GunMenu = (props: { data: SentrySpec }, context) => {
           </Box>
         </Flex.Item>
       )}
-      <Flex.Item>
-        <Stack>
-          <Stack.Item>
-            <Button
-              disabled={props.data.camera_available === 0}
-              icon="video"
-              onClick={() => act('set-camera', { index: props.data.index })}
-            />
-          </Stack.Item>
-          <Stack.Item>
-            <Button
-              icon="bullhorn"
-              onClick={() => act('ping', { index: props.data.index })}
-            />
-          </Stack.Item>
-        </Stack>
-      </Flex.Item>
     </Flex>
   );
 };
@@ -353,7 +353,7 @@ const ShowSentryCard = (props: { data: SentrySpec }, context) => {
   return (
     <Stack vertical className={classes(['SentryCard', 'SentryBox'])}>
       <Stack.Item align="center">
-        <span>
+        <span className="Title">
           {displayName}: {sanitiseArea(props.data.area)}
         </span>
       </Stack.Item>
@@ -366,7 +366,7 @@ const ShowSentryCard = (props: { data: SentrySpec }, context) => {
 
 const ShowAllSentry = (props: { data: SentrySpec[] }, context) => {
   return (
-    <Flex>
+    <Flex className="ShowAllFlex">
       {props.data.map((x) => (
         <Flex.Item key={x.index}>
           <ShowSentryCard data={x} />
@@ -473,8 +473,8 @@ export const SentryGunUI = (_, context) => {
       : (selectedSentry ?? 0) < sentrySpecs.length;
 
   return (
-    <Window theme="crtyellow" height={700} width={680} scrollable>
-      <Window.Content className="SentryGun">
+    <Window theme="crtyellow" height={700} width={680}>
+      <Window.Content className="SentryGun" scrollable>
         <Flex justify="space-between" align-items="center">
           <Flex.Item>
             <SentryTabMenu

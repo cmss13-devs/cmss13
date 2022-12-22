@@ -290,10 +290,17 @@
 	icon_state = "exoarmor"
 	fake_zlevel = 2
 
+/area/wayfinder/hallways/lower_overlook
+	name = "\improper Lower Fore Hallway"
+	icon_state = "hangar"
+	fake_zlevel = 2 // lowerdeck
+	soundscape_playlist = SCAPE_PL_HANGAR
+	soundscape_interval = 35
+
 /area/wayfinder/living/tankerbunks
 	name = "\improper Vehicle Crew Bunks"
 	icon_state = "livingspace"
-	fake_zlevel = 2
+	fake_zlevel = 3
 
 /area/wayfinder/squads/tankdeliveries
 	name = "\improper Vehicle ASRS"

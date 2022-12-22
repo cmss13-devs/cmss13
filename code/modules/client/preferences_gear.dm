@@ -686,5 +686,5 @@ var/global/list/gear_datums = list()
 /datum/gear/tape_recorder
 	display_name = "WY Tape Recorder"
 	path = /obj/item/device/taperecorder/colony/loadout
-	cost = 4
+	cost = 3
 	slot = WEAR_IN_BACK

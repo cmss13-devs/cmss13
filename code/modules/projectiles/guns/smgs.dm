@@ -120,6 +120,9 @@
 	scatter_unwielded = SCATTER_AMOUNT_TIER_6
 	damage_mult =  BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_7
 
+/obj/item/weapon/gun/smg/m39/elite/whiteout//for the whiteout HEAP mag, nothing else
+	current_mag = /obj/item/ammo_magazine/smg/m39/heap
+
 //-------------------------------------------------------
 //M5, a classic SMG used in a lot of action movies.
 
@@ -270,9 +273,9 @@
 			playsound(src, 'sound/weapons/handling/gun_jam_click.ogg', 35, TRUE)
 			to_chat(user, SPAN_WARNING("Your gun is jammed! Mash Unique-Action to unjam it!"))
 		return
-	else if(prob(ppsh_mag.jam_chance))
+	else if(prob(ppsh_mag?.jam_chance))
 		jammed = TRUE
-		playsound(src, 'sound/weapons/handling/gun_jam_initial_click.ogg', 35, TRUE)
+		playsound(src, 'sound/weapons/handling/gun_jam_initial_click.ogg', 50, FALSE)
 		user.visible_message(SPAN_DANGER("[src] makes a noticeable clicking noise!"), SPAN_HIGHDANGER("Your gun suddenly jams and refuses to fire! Mash Unique-Action to unjam it."))
 		return
 	else
@@ -282,7 +285,7 @@
 	if(jammed)
 		if(prob(15))
 			to_chat(user, SPAN_GREEN("You succesfully unjam \the [src]!"))
-			playsound(src, 'sound/weapons/handling/gun_jam_rack_success.ogg', 35, TRUE)
+			playsound(src, 'sound/weapons/handling/gun_jam_rack_success.ogg', 50, FALSE)
 			jammed = FALSE
 			cock_cooldown += 1 SECONDS //so they dont accidentally cock a bullet away
 		else
@@ -450,7 +453,7 @@
 
 /obj/item/weapon/gun/smg/fp9000
 	name = "\improper FN FP9000 Submachinegun"
-	desc = "An older design, but one that's stood the test of time and still sees common use today. Fires fast armor piercing rounds at a high rate."
+	desc = "An old design, but one that's stood the test of time. A leaked and unencrypted 3D-printing pattern alongside an extremely robust and reasonably cheap to manufacture frame have ensured this weapon be a mainstay of rim colonies and private security firms for over a century."
 	icon_state = "fp9000"
 	item_state = "fp9000"
 
@@ -483,7 +486,6 @@
 	S.Attach(src)
 	update_attachable(S.slot)
 
-
 /obj/item/weapon/gun/smg/fp9000/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 18,"rail_x" = 20, "rail_y" = 21, "under_x" = 26, "under_y" = 16, "stock_x" = 22, "stock_y" = 16)
 
@@ -501,8 +503,8 @@
 	recoil_unwielded = RECOIL_AMOUNT_TIER_5
 
 /obj/item/weapon/gun/smg/fp9000/pmc
-	name = "\improper FN FP9000 Submachinegun"
-	desc = "A variant of the FP9000 SMG that appears to feature some special modifications for elite forces."
+	name = "\improper FN FP9000/2 Submachinegun"
+	desc = "Despite the rather ancient design, the FN FP9K sees frequent use in PMC teams due to its extreme reliability and versatility, allowing it to excel in any situation, especially due to the fact that they use the patented, official version of the gun, which has recieved several upgrades and tuning to its design over time."
 	icon_state = "fp9000_pmc"
 	item_state = "fp9000_pmc"
 	random_spawn_chance = 100

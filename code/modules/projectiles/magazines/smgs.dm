@@ -36,6 +36,12 @@
 	icon_state = "m39_le"
 	default_ammo = /datum/ammo/bullet/smg/rubber
 
+/obj/item/ammo_magazine/smg/m39/heap
+	name = "\improper M39 HEAP magazine (10x20mm)"
+	desc = "A 10x20mm caseless armor-piercing high-explosive submachinegun magazine. The bullet tips are made out of a special explosive, designed to penetrate armor then detonate for maximum soft-tissue damage."
+	icon_state = "m39_heap"
+	default_ammo = /datum/ammo/bullet/smg/heap
+
 /obj/item/ammo_magazine/smg/m39/penetrating
 	name = "\improper M39 wall-piercing magazine (10x20mm)"
 	desc = "A 10x20mm caseless wall-piercing bullet submachinegun magazine, containing wall-piercing bullets. Designed to penetrate straight through objects and walls."
@@ -109,32 +115,6 @@
 			current_rounds = capacity
 		max_rounds = capacity
 		random_magazine = FALSE
-
-/obj/item/ammo_magazine/smg/mp27/twenty
-	name = "\improper MP27 20-round magazine (4.6x30mm)"
-	desc = "A 20-round 4.6mm magazine for the MP27. Fires large, heavy bullets that have noticeable punch for an SMG but also have equally noticeable scatter and a loss of accuracy. Due to a factory blueprint mixup, 20, 30, and 40-round magazines were all manufactured and sold in the same boxes, leading to a class act lawsuit that bankrupted the company."
-	caliber = "4.6x30mm"
-	icon_state = "mp7_20"
-	bonus_overlay = "mp7_20_overlay"
-	max_rounds = 20
-	random_magazine = FALSE
-
-/obj/item/ammo_magazine/smg/mp27/thirty
-	name = "\improper MP27 30-round magazine (4.6x30mm)"
-	desc = "A 30-round 4.6mm magazine for the MP27. Fires large, heavy bullets that have noticeable punch for an SMG but also have equally noticeable scatter and a loss of accuracy. Due to a factory blueprint mixup, 20, 30, and 40-round magazines were all manufactured and sold in the same boxes, leading to a class act lawsuit that bankrupted the company."
-	caliber = "4.6x30mm"
-	icon_state = "mp7_30"
-	bonus_overlay = "mp7_40_overlay"
-	max_rounds = 30
-	random_magazine = FALSE
-
-/obj/item/ammo_magazine/smg/mp27/forty
-	name = "\improper MP27 40-round magazine (4.6x30mm)"
-	desc = "A 40-round 4.6mm magazine for the MP27. Fires large, heavy bullets that have noticeable punch for an SMG but also have equally noticeable scatter and a loss of accuracy. Due to a factory blueprint mixup, 20, 30, and 40-round magazines were all manufactured and sold in the same boxes, leading to a class act lawsuit that bankrupted the company."
-	caliber = "4.6x30mm"
-	icon_state = "mp7_40"
-	max_rounds = 40
-	random_magazine = FALSE
 
 //-------------------------------------------------------
 //PPSH //Based on the PPSh-41.

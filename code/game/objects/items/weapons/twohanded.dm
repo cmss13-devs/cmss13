@@ -311,7 +311,6 @@
 /obj/item/weapon/melee/twohanded/breacher/synth
 	name = "\improper B5 Breaching Hammer"
 	desc = "This 100-pound monstrosity of a sledgehammer is made of solid tungsten carbide, and packs enough force in its swing to take down walls with ease. It can punch through steel and concrete, hit like a truck, and is utterly unusable by anyone who isn't superhuman."
-	icon = 'icons/obj/items/experimental_tools.dmi'
 	icon_state = "syn_breacher"
 	item_state = "syn_breacher"
 	force_wielded = MELEE_FORCE_VERY_STRONG

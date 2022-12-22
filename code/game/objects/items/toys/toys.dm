@@ -525,7 +525,8 @@
 	if(target.color)
 		to_chat(user, SPAN_NOTICE("\The [target] is already colored, don't be greedy!"))
 		return
-	target.color = (pick("red", "green"))
+	var/red = prob(50)
+	target.color = list(1,0,0,0, 0,1,0,0, 0,0,1,0, 0,0,0,1, red? 0.2 : 0,!red? 0.2 : 0,0,0)
 	target.visible_message(SPAN_GREEN("\The [target] has been festivized by [user]! Merry Christmas!"))
 	to_chat(user, SPAN_GREEN("You festivize \the [target]! Merry Christmas!"))
 	if(prob(5))

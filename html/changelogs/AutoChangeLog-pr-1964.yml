@@ -1,4 +1,0 @@
-author: "realforest2001"
-delete-after: True
-changes:
-  - bugfix: "Fixes crit burrowers being able to move while burrowed still."

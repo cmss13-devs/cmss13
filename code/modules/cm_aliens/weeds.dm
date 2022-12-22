@@ -155,7 +155,7 @@
 
 
 /obj/effect/alien/weeds/Crossed(atom/movable/atom_movable)
-	if(!ismob(atom_movable))
+	if(!isliving(atom_movable))
 		return
 	var/mob/living/crossing_mob = atom_movable
 

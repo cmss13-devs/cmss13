@@ -50,7 +50,7 @@
 			playsound(user.loc, 'sound/weapons/pierce.ogg', 25, TRUE)
 			user.visible_message(SPAN_WARNING("\The [user] tried to strap \the [src] onto [target_mob] but instead gets a tail swipe to the head!"))
 			return FALSE
-	
+
 	user.visible_message(SPAN_NOTICE("\The [user] starts strapping \the [src] onto [target_mob]."), \
 	SPAN_NOTICE("You start strapping \the [src] onto [target_mob]."), null, 5, CHAT_TYPE_FLUFF_ACTION)
 	if(!do_after(user, HUMAN_STRIP_DELAY * user.get_skill_duration_multiplier(), INTERRUPT_ALL, BUSY_ICON_GENERIC, target_mob, INTERRUPT_MOVED, BUSY_ICON_GENERIC))
@@ -132,7 +132,7 @@
 				return FALSE
 	return TRUE
 
-obj/item/storage/backpack/empty(mob/user, turf/T)
+/obj/item/storage/backpack/empty(mob/user, turf/T)
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
 		if(H.back == src && !worn_accessible && !content_watchers) //Backpack on back needs to be opened; if it's already opened, it can be emptied immediately.
@@ -144,7 +144,7 @@ obj/item/storage/backpack/empty(mob/user, turf/T)
 	..()
 
 //Returns true if the user's id matches the lock's
-obj/item/storage/backpack/proc/compare_id(var/mob/living/carbon/human/H)
+/obj/item/storage/backpack/proc/compare_id(var/mob/living/carbon/human/H)
 	var/obj/item/card/id/card = H.wear_id
 	if(!card || locking_id.registered_name != card.registered_name)
 		return FALSE

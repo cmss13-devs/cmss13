@@ -34,6 +34,8 @@
 	var/muzzle_flash_lum = 3
 
 	var/fire_sound 		= 'sound/weapons/Gunshot.ogg'
+	 /// If fire_sound is null, it will pick a sound from the list here instead.
+	var/list/fire_sounds = list('sound/weapons/Gunshot.ogg', 'sound/weapons/gun_uzi.ogg')
 	var/firesound_volume = 60 //Volume of gunshot, adjust depending on volume of shot
 	 ///Does our gun have a unique empty mag sound? If so use instead of pitch shifting.
 	var/fire_rattle		= null
@@ -259,6 +261,7 @@
 	GLOB.gun_list += src
 	if(auto_retrieval_slot)
 		AddElement(/datum/element/drop_retrieval/gun, auto_retrieval_slot)
+	update_icon() //for things like magazine overlays
 
 /obj/item/weapon/gun/proc/set_gun_attachment_offsets()
 	attachable_offset = null
@@ -888,8 +891,8 @@ User can be passed as null, (a gun reloading itself for instance), so we need to
 	else if(user.client?.prefs?.toggle_prefs & TOGGLE_HELP_INTENT_SAFETY && (user.a_intent == INTENT_HELP))
 		if (world.time % 3) // Limits how often this message pops up, saw this somewhere else and thought it was clever
 			//Absolutely SCREAM this at people so they don't get killed by it
-			to_chat(user, SPAN_WARNING("Help intent safety is on! Switch to another intent to fire your weapon."))
-			playsound(loc,'sound/weapons/gun_empty.ogg', 25, 1)
+			to_chat(user, SPAN_HIGHDANGER("Help intent safety is on! Switch to another intent to fire your weapon."))
+			click_empty(user)
 		return FALSE
 	else if(user.gun_mode && !(A in target))
 		PreFire(A,user,params) //They're using the new gun system, locate what they're aiming at.
@@ -1227,7 +1230,12 @@ and you're good to go.
 		var/obj/item/projectile/projectile_to_fire = load_into_chamber(user)
 		if(projectile_to_fire) //We actually have a projectile, let's move on.
 			user.visible_message(SPAN_WARNING("[user] pulls the trigger!"))
-			var/actual_sound = (active_attachable && active_attachable.fire_sound) ? active_attachable.fire_sound : fire_sound
+			var/actual_sound
+			if(active_attachable && active_attachable.fire_sound)
+				actual_sound = active_attachable.fire_sound
+			else if(!isnull(fire_sound))
+				actual_sound = fire_sound
+			else actual_sound = pick(fire_sounds)
 			var/sound_volume = (flags_gun_features & GUN_SILENCED && !active_attachable) ? 25 : 60
 			playsound(user, actual_sound, sound_volume, 1)
 			simulate_recoil(2, user)
@@ -1516,6 +1524,8 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 //This proc applies some bonus effects to the shot/makes the message when a bullet is actually fired.
 /obj/item/weapon/gun/proc/apply_bullet_effects(obj/item/projectile/projectile_to_fire, mob/user, bullets_fired = 1, reflex = 0, dual_wield = 0)
 	var/actual_sound = fire_sound
+	if(isnull(fire_sound))
+		actual_sound = pick(fire_sounds)
 	if(projectile_to_fire.ammo && projectile_to_fire.ammo.sound_override)
 		actual_sound = projectile_to_fire.ammo.sound_override
 

@@ -25,6 +25,7 @@ var/datum/controller/subsystem/database_query_manager/SSdatabase
 	name          = "Database QM"
 	wait		  = 1
 	init_order    = SS_INIT_DATABASE
+	init_stage    = INITSTAGE_EARLY
 	priority      = SS_PRIORITY_DATABASE // Low prio SS_TICKER
 	flags         = SS_TICKER
 
@@ -59,6 +60,7 @@ var/datum/controller/subsystem/database_query_manager/SSdatabase
 	set waitfor=0
 	connection = settings.create_connection()
 	connection.keep()
+	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/database_query_manager/stat_entry(msg)
 	var/text = (connection && connection.status == DB_CONNECTION_READY) ? ("READY") : ("PREPPING")

@@ -31,7 +31,7 @@
 			return
 
 		for(var/mob/V in viewers(src, null))
-			V.show_message(text(SPAN_NOTICE("[user] sticks \a [O] into \the [src].")))
+			V.show_message(text(SPAN_NOTICE("[user] sticks \a [O] into \the [src].")), SHOW_MESSAGE_VISIBLE)
 
 		brainmob = O:brainmob
 		O:brainmob = null

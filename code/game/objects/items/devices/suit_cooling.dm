@@ -94,7 +94,7 @@
 /obj/item/device/suit_cooling_unit/proc/turn_off()
 	if (ismob(src.loc))
 		var/mob/M = src.loc
-		M.show_message("\The [src] clicks and whines as it powers down.", 2)	//let them know in case it's run out of power.
+		M.show_message("\The [src] clicks and whines as it powers down.", SHOW_MESSAGE_AUDIBLE)	//let them know in case it's run out of power.
 	on = 0
 	updateicon()
 

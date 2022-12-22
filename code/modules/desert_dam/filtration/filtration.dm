@@ -1,7 +1,7 @@
 /*
-obj/effect/landmark/desertdam
+/obj/effect/landmark/desertdam
 	icon = 'icons/misc/mark.dmi'
-obj/effect/landmark/desertdam/river_blocker
+/obj/effect/landmark/desertdam/river_blocker
 	name = "toxic river blocker"
 	icon_state = "spawn_event"
 

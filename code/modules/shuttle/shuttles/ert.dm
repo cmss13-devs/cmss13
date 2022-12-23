@@ -38,26 +38,25 @@
 /obj/docking_port/mobile/emergency_response/ert1
 	name = "ERT Shuttle 1"
 	id = "ert1"
-	preferred_direction = NORTH
+	preferred_direction = SOUTH
 	port_direction = NORTH
 
 // ERT Shuttle 2
 /obj/docking_port/mobile/emergency_response/ert2
-	name = "ERT Shuttle 2"
+	name = "PMC Shuttle"
 	id = "ert2"
 	preferred_direction = NORTH
 	port_direction = NORTH
 
 // ERT Shuttle 3
 /obj/docking_port/mobile/emergency_response/ert3
-	name = "ERT Shuttle 3"
+	name = "UPP Shuttle"
 	id = "ert3"
 	preferred_direction = WEST
 	port_direction = NORTH
 
 // Generic ERT Dock
 /obj/docking_port/stationary/emergency_response
-	name   = "ERT docking port"
 	width  = 7
 	height = 13
 
@@ -79,19 +78,19 @@
 
 // These are docking ports not on the almayer
 /obj/docking_port/stationary/emergency_response/idle_port1
-	name = "Base ERT1"
+	name = "Response Station Landing Pad 1"
 	dir = NORTH
 	id = "base-ert1"
 	roundstart_template = /datum/map_template/shuttle/ert1
 
 /obj/docking_port/stationary/emergency_response/idle_port2
-	name = "Base ERT2"
+	name = "Response Station Landing Pad 2"
 	dir = NORTH
 	id = "base-ert2"
 	roundstart_template = /datum/map_template/shuttle/ert2
 
 /obj/docking_port/stationary/emergency_response/idle_port3
-	name = "Base ERT3"
+	name = "Response Station Landing Pad 3"
 	dir = NORTH
 	id = "base-ert3"
 	roundstart_template = /datum/map_template/shuttle/ert3

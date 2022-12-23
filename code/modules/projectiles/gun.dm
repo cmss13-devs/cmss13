@@ -7,8 +7,8 @@
 	icon = 'icons/obj/items/weapons/guns/gun.dmi'
 	icon_state = ""
 	item_state = "gun"
-	pickupsound = "gunequip"
-	dropsound = "gunrustle"
+	pickup_sound = "gunequip"
+	drop_sound = "gunrustle"
 	pickupvol = 7
 	dropvol = 15
 	matter = null

@@ -15,7 +15,7 @@ Moving through pipes is noisy and entering/leaving the vents has a noticeable vi
 If a fellow alien is stunned, be sure to drag them to safety.
 On help intent, click a xenomorph who is on fire to pat them out. This works on marines too!
 Frenzy increases your speed and damage, Recovery increases your health regeneration, and Warding increases the time you have until you bleed out in critical health.
-Turn off your night vision to see light offscreen. This lets you know if a marine is nearby, but make sure they don't have Night-Vision goggles.
+Remember that, as a Xenomorph, you can fully disable your night-vision. This helps put into perspective how hidden your position is to marines onscreen.
 You can devour bursted corpses in order to transport them to the Spawn Pool or Egg Morpher easier.
 The bigger you are, the more time it'll take to enter a tunnel.
 Drag yourself onto a hole in a wall as a medium-sized or smaller xeno to pass through it.
@@ -24,3 +24,13 @@ If you have difficulty clicking marines, try using Directional Slashing, though 
 You can diagonally pounce through the corners of fire as a Lurker or Runner without getting ignited.
 When playing as xeno, consider aiming at the limbs instead of the chest. Marine armour doesn't protect the arms and legs as well as it does the body.
 As xeno, you can break Night-Vision goggles that some marines wear on their helmets. Just aim for the head and slash until the goggles shatter.
+Pounces are ineffective on marines who are laying down.
+You may rest inmediately during a pounce to pounce straight through mobs. It's not very practical or useful though.
+Pouncing someone who is buckled to a chair will still stun them, but you won't jump into their tile and they will not be knocked to the grund.
+Starshell dust from said grenades is just as meltable as normal flares.
+You can join the hive as a living facehugger by clicking on the hive's eggmorpher. This works on other hives too..
+Playable facehuggers can leap onto targets with a one-second windup, but this will only infect them if they are adjacent to it.  Otherwise, it will simply knock them down for a small duration.
+As a facehugger, you cannot talk in hivemind, but you can still open Hive Status and overwatch your sisters. This can be useful if you're locating other facehuggers, flanker castes, or trying to learn from experienced facehugger players.
+Shift-clicking the Queen indicator will tell you what area you are in, on the map.
+Resisting on a water tile will inmediately put out fires. Make sure you're alone though - It's usually better to let a friendly Xenomorph pat you out than it is to expose yourself to open water.
+You can filter out the Xenomorphs displayed in hive status by health, allowing you to look only for wounded sisters.

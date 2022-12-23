@@ -213,9 +213,6 @@
 #define ALARM_WARNING_DOWN	(1<<4)
 #define ALARM_LOCKDOWN		(1<<5)
 
-//some arbitrary defines to be used by self-pruning global lists. (see master_controller)
-#define PROCESS_KILL 26	//Used to trigger removal from a processing list
-
 //=================================================
 #define HOSTILE_STANCE_IDLE 1
 #define HOSTILE_STANCE_ALERT 2
@@ -406,6 +403,13 @@
 #define CHAT_SAY_DELAY_SPAM 10
 #define CHAT_OOC_DELAY      5
 #define CHAT_OOC_DELAY_SPAM 10
+
+/// Max characters per minute allowed to speak
+#define CHAT_CPM_ALLOWED  1500
+/// Minimum character length counted for a single message
+#define CHAT_CPM_MINIMUM  50
+/// Buffer period over which speaking budget is considered
+#define CHAT_CPM_PERIOD   5 MINUTES
 
 // Decorator Priorities
 #define DECORATOR_USUAL 0

@@ -12,6 +12,21 @@
 	if(hand)	return r_hand
 	else		return l_hand
 
+/mob/proc/get_hands()
+	if(hand)
+		return list(l_hand, r_hand)
+	else
+		return list(r_hand, l_hand)
+
+//Sad that this will cause some overhead, but the alias seems necessary
+//*I* may be happy with a million and one references to "indexes" but others won't be
+/mob/proc/is_holding(obj/item/I)
+	return get_held_index_of_item(I)
+
+/mob/proc/get_held_index_of_item(obj/item/I)
+	var/list/handen = get_hands()
+	return handen.Find(I)
+
 //Puts the item into your l_hand if possible and calls all necessary triggers/updates. returns 1 on success.
 /mob/proc/put_in_l_hand(var/obj/item/W)
 	if(lying)

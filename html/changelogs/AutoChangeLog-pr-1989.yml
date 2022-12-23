@@ -1,4 +1,0 @@
-author: "ThePiachu"
-delete-after: True
-changes:
-  - qol: "Acid Runner and Hedgehog Ravager now get a HUD bar representing how much acid and how many shards they have stored."

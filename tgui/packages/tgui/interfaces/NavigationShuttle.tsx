@@ -18,6 +18,7 @@ interface NavigationProps {
   max_flight_duration: number;
   max_refuel_duration: number;
   max_engine_start_duration: number;
+  locked_down: 0 | 1;
 }
 
 const CancelLaunchButton = (_, context) => {
@@ -180,21 +181,34 @@ const DoorControls = (_, context) => {
   const { data, act } = useBackend<NavigationProps>(context);
   const in_flight = data.shuttle_mode === 'called';
   const disable_door_controls = in_flight;
+  const disable_normal_control = data.locked_down === 1;
   return (
     <Section
       title="Door Controls"
       buttons={
-        <Button
-          disabled={disable_door_controls}
-          onClick={() => act('lockdown')}
-          icon="triangle-exclamation">
-          Lockdown
-        </Button>
+        <>
+          {data.locked_down === 0 && (
+            <Button
+              disabled={disable_door_controls}
+              onClick={() => act('lockdown')}
+              icon="triangle-exclamation">
+              Lockdown
+            </Button>
+          )}
+          {data.locked_down === 1 && (
+            <Button
+              disabled={disable_door_controls}
+              onClick={() => act('unlock')}
+              icon="triangle-exclamation">
+              Lift Lockdown
+            </Button>
+          )}
+        </>
       }>
       <Stack className="DoorControlStack">
         <Stack.Item>
           <Button
-            disabled={disable_door_controls}
+            disabled={disable_normal_control || disable_door_controls}
             onClick={() => act('open')}
             icon="door-open">
             Force Open
@@ -202,26 +216,10 @@ const DoorControls = (_, context) => {
         </Stack.Item>
         <Stack.Item>
           <Button
-            disabled={disable_door_controls}
+            disabled={disable_normal_control || disable_door_controls}
             onClick={() => act('close')}
             icon="door-closed">
             Force Close
-          </Button>
-        </Stack.Item>
-        <Stack.Item>
-          <Button
-            disabled={disable_door_controls}
-            onClick={() => act('lock')}
-            icon="lock">
-            Lock
-          </Button>
-        </Stack.Item>
-        <Stack.Item>
-          <Button
-            disabled={disable_door_controls}
-            onClick={() => act('unlock')}
-            icon="lock-open">
-            Unlock
           </Button>
         </Stack.Item>
       </Stack>

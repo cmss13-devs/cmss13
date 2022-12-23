@@ -23,7 +23,7 @@
 			doors += list(air)
 
 /obj/docking_port/mobile/emergency_response/enterTransit()
-	control_doors("force-lock")
+	control_doors("force-lock-launch")
 	..()
 
 /obj/docking_port/mobile/emergency_response/proc/control_doors(var/action)
@@ -39,6 +39,19 @@
 				INVOKE_ASYNC(i, /obj/structure/machinery/door/airlock.proc/lock)
 			if("unlock")
 				INVOKE_ASYNC(i, /obj/structure/machinery/door/airlock.proc/unlock)
+			if("force-lock-launch")
+				INVOKE_ASYNC(src, .proc/lockdown_door_launch, i)
+
+/obj/docking_port/mobile/emergency_response/proc/lockdown_door_launch(var/obj/structure/machinery/door/airlock/air)
+	for(var/mob/blocking_mob in air.loc) // Bump all mobs outta the way for outside airlocks of shuttles
+		if(isliving(blocking_mob))
+			to_chat(blocking_mob, SPAN_HIGHDANGER("You get thrown back as the dropship doors slam shut!"))
+			blocking_mob.apply_effect(4, WEAKEN)
+			for(var/turf/T in orange(1, air)) // Forcemove to a non shuttle turf
+				if(!istype(T, /turf/open/shuttle) && !istype(T, /turf/closed/shuttle))
+					blocking_mob.forceMove(T)
+					break
+	lockdown_door(air)
 
 /obj/docking_port/mobile/emergency_response/proc/lockdown_door(var/obj/structure/machinery/door/airlock/air)
 	air.safe=0

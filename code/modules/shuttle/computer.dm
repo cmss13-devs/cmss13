@@ -95,10 +95,10 @@
 
 /obj/structure/machinery/computer/shuttle/ert/ui_static_data(mob/user)
 	. = ..(user)
-	var/obj/docking_port/mobile/emergency_response/ert = SSshuttle.getShuttle(shuttleId)
-	.["max_flight_duration"] = ert.callTime / 10
-	.["max_refuel_duration"] = ert.rechargeTime / 10
-	.["max_engine_start_duration"] = ert.ignitionTime / 10
+	var/obj/docking_port/mobile/shuttle = SSshuttle.getShuttle(shuttleId)
+	.["max_flight_duration"] = shuttle.callTime / 10
+	.["max_refuel_duration"] = shuttle.rechargeTime / 10
+	.["max_engine_start_duration"] = shuttle.ignitionTime / 10
 
 /obj/structure/machinery/computer/shuttle/ert/ui_data(mob/user)
 	var/obj/docking_port/mobile/emergency_response/ert = SSshuttle.getShuttle(shuttleId)
@@ -106,6 +106,14 @@
 	. = list()
 	.["shuttle_mode"] = ert.mode
 	.["flight_time"] = ert.timeLeft(0)
+
+	var/door_count = length(ert.doors)
+	var/locked_count = 0
+	for(var/obj/structure/machinery/door/airlock/air as anything in ert.doors)
+		if(air.locked)
+			locked_count++
+	.["locked_down"] = door_count == locked_count
+
 	if(ert.destination)
 		.["target_destination"] = ert.destination.name
 

@@ -1373,17 +1373,14 @@
 	)
 	has_gamemode_skin = TRUE
 
-/obj/item/storage/belt/gun/smartpistol/full
-	var/has_gun = TRUE
-
 /obj/item/storage/belt/gun/smartpistol/full/fill_preset_inventory()
-	if(has_gun)
-		handle_item_insertion(new /obj/item/weapon/gun/pistol/smart())
+	handle_item_insertion(new /obj/item/weapon/gun/pistol/smart())
 	for(var/i = 1 to storage_slots - 1)
 		new /obj/item/ammo_magazine/pistol/smart(src)
 
-/obj/item/storage/belt/gun/smartpistol/full/no_gun
-	has_gun = FALSE
+/obj/item/storage/belt/gun/smartpistol/full_nogun/fill_preset_inventory()
+	for(var/i = 1 to storage_slots - 1)
+		new /obj/item/ammo_magazine/pistol/smart(src)
 
 /obj/item/storage/belt/gun/flaregun
 	name = "\improper M276 pattern M82F flare gun holster rig"

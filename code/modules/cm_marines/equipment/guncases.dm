@@ -40,7 +40,7 @@
 	storage_slots = 2
 
 /obj/item/storage/box/guncase/smartpistol/fill_preset_inventory()
-	new /obj/item/storage/belt/gun/smartpistol/full/no_gun(src)
+	new /obj/item/storage/belt/gun/smartpistol/full_nogun(src)
 	new /obj/item/weapon/gun/pistol/smart(src)
 
 //------------

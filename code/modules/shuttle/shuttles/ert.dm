@@ -2,6 +2,9 @@
 	ERT Shuttles
 */
 
+#define ERT_SHUTTLE_DEFAULT_CALLTIME 300
+#define ERT_SHUTTLE_DEFAULT_RECHARGE 900
+
 // Base ERT Shuttle
 /obj/docking_port/mobile/emergency_response
 	name = "ERT Shuttle"
@@ -9,6 +12,8 @@
 	area_type = /area/shuttle/ert
 	width = 7
 	height = 13
+	callTime = ERT_SHUTTLE_DEFAULT_CALLTIME // 30s flight time
+	rechargeTime = ERT_SHUTTLE_DEFAULT_RECHARGE // 90s cooldown to recharge
 	var/list/doors = list()
 
 /obj/docking_port/mobile/emergency_response/Initialize(mapload)
@@ -20,7 +25,7 @@
 /obj/docking_port/mobile/emergency_response/enterTransit()
 	..()
 	control_doors("close")
-	control_doors("lock")
+	control_doors("force-lock")
 
 /obj/docking_port/mobile/emergency_response/proc/control_doors(var/action)
 	for(var/i in doors)
@@ -29,29 +34,38 @@
 				INVOKE_ASYNC(i, /obj/structure/machinery/door/airlock.proc/open)
 			if("close")
 				INVOKE_ASYNC(i, /obj/structure/machinery/door/airlock.proc/close)
+			if("force-lock")
+				INVOKE_ASYNC(src, .proc/lockdown_door, i)
 			if("lock")
 				INVOKE_ASYNC(i, /obj/structure/machinery/door/airlock.proc/lock)
 			if("unlock")
 				INVOKE_ASYNC(i, /obj/structure/machinery/door/airlock.proc/unlock)
 
+/obj/docking_port/mobile/emergency_response/proc/lockdown_door(var/obj/structure/machinery/door/airlock/air)
+	air.safe=0
+	air.unlock()
+	air.close()
+	air.lock()
+	air.safe=1
+
 // ERT Shuttle 1
 /obj/docking_port/mobile/emergency_response/ert1
-	name = "ERT Shuttle 1"
-	id = "ert1"
+	name = "Response Shuttle"
+	id = MOBILE_SHUTTLE_ID_ERT1
 	preferred_direction = SOUTH
 	port_direction = NORTH
 
 // ERT Shuttle 2
 /obj/docking_port/mobile/emergency_response/ert2
 	name = "PMC Shuttle"
-	id = "ert2"
+	id = MOBILE_SHUTTLE_ID_ERT2
 	preferred_direction = NORTH
 	port_direction = NORTH
 
 // ERT Shuttle 3
 /obj/docking_port/mobile/emergency_response/ert3
 	name = "UPP Shuttle"
-	id = "ert3"
+	id = MOBILE_SHUTTLE_ID_ERT3
 	preferred_direction = WEST
 	port_direction = NORTH
 

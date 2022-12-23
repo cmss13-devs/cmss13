@@ -1,3 +1,5 @@
+#define KEYBOARD_SOUND_VOLUME 5
+
 /obj/structure/machinery/computer/shuttle
 	name = "shuttle console"
 	desc = "A shuttle control computer."
@@ -84,7 +86,8 @@
 /obj/structure/machinery/computer/shuttle/ert/tgui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if (!ui)
-		ui = new(user, src, "NavigationShuttle", name)
+		var/obj/docking_port/mobile/shuttle = SSshuttle.getShuttle(shuttleId)
+		ui = new(user, src, "NavigationShuttle", "[shuttle.name] Navigation Computer")
 		ui.open()
 
 /obj/structure/machinery/computer/shuttle/ert/ui_state(mob/user)
@@ -94,6 +97,11 @@
 	var/obj/docking_port/mobile/emergency_response/ert = SSshuttle.getShuttle(shuttleId)
 	var/list/docks = SSshuttle.stationary
 	. = list()
+	.["shuttle_mode"] = ert.mode
+	.["flight_time"] = ert.timeLeft(0)
+	if(ert.destination)
+		.["target_destination"] = ert.destination.name
+
 	.["destinations"]=list()
 	for(var/obj/docking_port/stationary/emergency_response/dock in docks)
 		var/can_dock = ert.canDock(dock)
@@ -109,12 +117,14 @@
 	. = ..()
 	if(.)
 		return
+	var/soundId = pick(1,2,3,4,5,6)
 	var/obj/docking_port/mobile/emergency_response/ert = SSshuttle.getShuttle(shuttleId)
 	switch(action)
 		if("move")
 			var/dockId = params["target"]
 			var/list/local_data = ui_data(usr)
 			var/found = FALSE
+			playsound(loc, "sound/machines/terminal_button0[soundId].ogg", KEYBOARD_SOUND_VOLUME, 1)
 			for(var/i in local_data["destinations"])
 				if(i["id"] == dockId)
 					found = TRUE
@@ -122,18 +132,29 @@
 			if(!found)
 				log_admin("[key_name(usr)] may be attempting a href dock exploit on [src] with target location \"[dockId]\"")
 				return
+			to_chat(usr, SPAN_NOTICE("You begin the launch sequence."))
 			var/obj/docking_port/stationary/dock = SSshuttle.getDock(dockId)
 			ert.request(dock)
+			return TRUE
+		if("button-push")
+			playsound(loc, "sound/machines/computer_typing[soundId].ogg", KEYBOARD_SOUND_VOLUME, 1)
+			return FALSE
 		if("open")
+			playsound(loc, "sound/machines/terminal_button0[soundId].ogg", KEYBOARD_SOUND_VOLUME, 1)
 			ert.control_doors("open")
 		if("close")
+			playsound(loc, "sound/machines/terminal_button0[soundId].ogg", KEYBOARD_SOUND_VOLUME, 1)
 			ert.control_doors("close")
 		if("lockdown")
+			playsound(loc, "sound/machines/terminal_button0[soundId].ogg", KEYBOARD_SOUND_VOLUME, 1)
+			ert.control_doors("unlock")
 			ert.control_doors("close")
 			ert.control_doors("lock")
 		if("lock")
+			playsound(loc, "sound/machines/terminal_button0[soundId].ogg", KEYBOARD_SOUND_VOLUME, 1)
 			ert.control_doors("lock")
 		if("unlock")
+			playsound(loc, "sound/machines/terminal_button0[soundId].ogg", KEYBOARD_SOUND_VOLUME, 1)
 			ert.control_doors("unlock")
 
 /obj/structure/machinery/computer/shuttle/ert/attack_hand(mob/user)

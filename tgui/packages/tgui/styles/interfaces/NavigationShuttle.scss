@@ -6,4 +6,44 @@
   .Button {
     font-size: 2rem;
   }
+  .Section {
+    font-size: 2rem;
+    .Section__buttons {
+      .Button {
+        font-size: 1.5rem;
+      }
+    }
+  }
+  .DestinationSelector {
+    .Stack__item {
+      margin-bottom: -0.4em;
+    }
+    .Button {
+      border-radius: 0;
+      width: 100%;
+      font-size: 1.5rem;
+    }
+    .Button__content {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+  }
+  .DoorControlStack {
+    .Button {
+      font-size: 1.5rem;
+    }
+  }
+  .LaunchCountdown {
+    span {
+      font-size: 1.5rem;
+    }
+  }
+  .InFlightCountdown {
+    span {
+      font-size: 1.5rem;
+    }
+  }
+}
+.Test {
+  border: 1px solid red;
 }

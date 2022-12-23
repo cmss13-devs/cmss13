@@ -119,11 +119,16 @@
 
 	.["destinations"]=list()
 	for(var/obj/docking_port/stationary/emergency_response/dock in docks)
+		var/dock_reserved = FALSE
+		for(var/obj/docking_port/mobile/other_shuttle in SSshuttle.mobile)
+			if(dock == other_shuttle.destination)
+				dock_reserved = TRUE
+				break
 		var/can_dock = ert.canDock(dock)
 		var/list/dockinfo = list(
 			"id"=dock.id,
 			"name"=dock.name,
-			"available"=can_dock == SHUTTLE_CAN_DOCK,
+			"available"=can_dock == SHUTTLE_CAN_DOCK && !dock_reserved,
 			"error"=can_dock,
 		)
 		.["destinations"] += list(dockinfo)
@@ -161,27 +166,22 @@
 		if("open")
 			if(ert.mode == SHUTTLE_CALL || ert.mode == SHUTTLE_RECALL)
 				return TRUE
-			playsound(loc, "sound/machines/terminal_button0[soundId].ogg", KEYBOARD_SOUND_VOLUME, 1)
 			ert.control_doors("open")
 		if("close")
 			if(ert.mode == SHUTTLE_CALL || ert.mode == SHUTTLE_RECALL)
 				return TRUE
-			playsound(loc, "sound/machines/terminal_button0[soundId].ogg", KEYBOARD_SOUND_VOLUME, 1)
 			ert.control_doors("close")
 		if("lockdown")
 			if(ert.mode == SHUTTLE_CALL || ert.mode == SHUTTLE_RECALL)
 				return TRUE
-			playsound(loc, "sound/machines/terminal_button0[soundId].ogg", KEYBOARD_SOUND_VOLUME, 1)
 			ert.control_doors("force-lock")
 		if("lock")
 			if(ert.mode == SHUTTLE_CALL || ert.mode == SHUTTLE_RECALL)
 				return TRUE
-			playsound(loc, "sound/machines/terminal_button0[soundId].ogg", KEYBOARD_SOUND_VOLUME, 1)
 			ert.control_doors("lock")
 		if("unlock")
 			if(ert.mode == SHUTTLE_CALL || ert.mode == SHUTTLE_RECALL)
 				return TRUE
-			playsound(loc, "sound/machines/terminal_button0[soundId].ogg", KEYBOARD_SOUND_VOLUME, 1)
 			ert.control_doors("unlock")
 
 /obj/structure/machinery/computer/shuttle/ert/attack_hand(mob/user)

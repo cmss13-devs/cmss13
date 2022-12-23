@@ -166,7 +166,7 @@
 				to_chat(usr, SPAN_WARNING("\The [dock] is currently in use."))
 				return TRUE
 			ert.request(dock)
-			to_chat(usr, SPAN_NOTICE("You begin the launch sequence."))
+			to_chat(usr, SPAN_NOTICE("You begin the launch sequence to [dock]."))
 			return TRUE
 		if("button-push")
 			playsound(loc, "sound/machines/computer_typing[soundId].ogg", KEYBOARD_SOUND_VOLUME, 1)

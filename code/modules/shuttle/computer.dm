@@ -156,9 +156,17 @@
 				log_admin("[key_name(usr)] may be attempting a href dock exploit on [src] with target location \"[dockId]\"")
 				to_chat(usr, SPAN_WARNING("The [dockId] dock is not available at this time."))
 				return
-			to_chat(usr, SPAN_NOTICE("You begin the launch sequence."))
 			var/obj/docking_port/stationary/dock = SSshuttle.getDock(dockId)
+			var/dock_reserved = FALSE
+			for(var/obj/docking_port/mobile/other_shuttle in SSshuttle.mobile)
+				if(dock == other_shuttle.destination)
+					dock_reserved = TRUE
+					break
+			if(dock_reserved)
+				to_chat(usr, SPAN_WARNING("\The [dock] is currently in use."))
+				return TRUE
 			ert.request(dock)
+			to_chat(usr, SPAN_NOTICE("You begin the launch sequence."))
 			return TRUE
 		if("button-push")
 			playsound(loc, "sound/machines/computer_typing[soundId].ogg", KEYBOARD_SOUND_VOLUME, 1)

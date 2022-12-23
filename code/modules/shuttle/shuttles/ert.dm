@@ -23,9 +23,8 @@
 			doors += list(air)
 
 /obj/docking_port/mobile/emergency_response/enterTransit()
-	..()
-	control_doors("close")
 	control_doors("force-lock")
+	..()
 
 /obj/docking_port/mobile/emergency_response/proc/control_doors(var/action)
 	for(var/i in doors)
@@ -59,14 +58,14 @@
 /obj/docking_port/mobile/emergency_response/ert2
 	name = "PMC Shuttle"
 	id = MOBILE_SHUTTLE_ID_ERT2
-	preferred_direction = NORTH
+	preferred_direction = SOUTH
 	port_direction = NORTH
 
 // ERT Shuttle 3
 /obj/docking_port/mobile/emergency_response/ert3
 	name = "UPP Shuttle"
 	id = MOBILE_SHUTTLE_ID_ERT3
-	preferred_direction = WEST
+	preferred_direction = SOUTH
 	port_direction = NORTH
 
 // Generic ERT Dock

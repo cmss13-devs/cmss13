@@ -93,6 +93,13 @@
 /obj/structure/machinery/computer/shuttle/ert/ui_state(mob/user)
 	return GLOB.not_incapacitated_and_adjacent_strict_state
 
+/obj/structure/machinery/computer/shuttle/ert/ui_static_data(mob/user)
+	. = ..(user)
+	var/obj/docking_port/mobile/emergency_response/ert = SSshuttle.getShuttle(shuttleId)
+	.["max_flight_duration"] = ert.callTime / 10
+	.["max_refuel_duration"] = ert.rechargeTime / 10
+	.["max_engine_start_duration"] = ert.ignitionTime / 10
+
 /obj/structure/machinery/computer/shuttle/ert/ui_data(mob/user)
 	var/obj/docking_port/mobile/emergency_response/ert = SSshuttle.getShuttle(shuttleId)
 	var/list/docks = SSshuttle.stationary
@@ -121,6 +128,9 @@
 	var/obj/docking_port/mobile/emergency_response/ert = SSshuttle.getShuttle(shuttleId)
 	switch(action)
 		if("move")
+			if(ert.mode != SHUTTLE_IDLE)
+				to_chat(usr, SPAN_WARNING("You can't move to a new destination whilst in transit."))
+				return TRUE
 			var/dockId = params["target"]
 			var/list/local_data = ui_data(usr)
 			var/found = FALSE
@@ -131,6 +141,7 @@
 					break
 			if(!found)
 				log_admin("[key_name(usr)] may be attempting a href dock exploit on [src] with target location \"[dockId]\"")
+				to_chat(usr, SPAN_WARNING("The [dockId] dock is not available at this time."))
 				return
 			to_chat(usr, SPAN_NOTICE("You begin the launch sequence."))
 			var/obj/docking_port/stationary/dock = SSshuttle.getDock(dockId)
@@ -140,20 +151,28 @@
 			playsound(loc, "sound/machines/computer_typing[soundId].ogg", KEYBOARD_SOUND_VOLUME, 1)
 			return FALSE
 		if("open")
+			if(ert.mode == SHUTTLE_CALL || ert.mode == SHUTTLE_RECALL)
+				return TRUE
 			playsound(loc, "sound/machines/terminal_button0[soundId].ogg", KEYBOARD_SOUND_VOLUME, 1)
 			ert.control_doors("open")
 		if("close")
+			if(ert.mode == SHUTTLE_CALL || ert.mode == SHUTTLE_RECALL)
+				return TRUE
 			playsound(loc, "sound/machines/terminal_button0[soundId].ogg", KEYBOARD_SOUND_VOLUME, 1)
 			ert.control_doors("close")
 		if("lockdown")
+			if(ert.mode == SHUTTLE_CALL || ert.mode == SHUTTLE_RECALL)
+				return TRUE
 			playsound(loc, "sound/machines/terminal_button0[soundId].ogg", KEYBOARD_SOUND_VOLUME, 1)
-			ert.control_doors("unlock")
-			ert.control_doors("close")
-			ert.control_doors("lock")
+			ert.control_doors("force-lock")
 		if("lock")
+			if(ert.mode == SHUTTLE_CALL || ert.mode == SHUTTLE_RECALL)
+				return TRUE
 			playsound(loc, "sound/machines/terminal_button0[soundId].ogg", KEYBOARD_SOUND_VOLUME, 1)
 			ert.control_doors("lock")
 		if("unlock")
+			if(ert.mode == SHUTTLE_CALL || ert.mode == SHUTTLE_RECALL)
+				return TRUE
 			playsound(loc, "sound/machines/terminal_button0[soundId].ogg", KEYBOARD_SOUND_VOLUME, 1)
 			ert.control_doors("unlock")
 

@@ -1,5 +1,5 @@
 import { useBackend, useSharedState } from '../backend';
-import { Box, Button, Icon, Flex, Section, Stack } from '../components';
+import { Box, Button, Icon, Flex, Section, Stack, ProgressBar } from '../components';
 import { Window } from '../layouts';
 
 interface DockingPort {
@@ -15,6 +15,9 @@ interface NavigationProps {
   shuttle_mode: string;
   target_destination?: string;
   flight_time: number;
+  max_flight_duration: number;
+  max_refuel_duration: number;
+  max_engine_start_duration: number;
 }
 
 const CancelLaunchButton = (_, context) => {
@@ -105,9 +108,20 @@ const ShuttleRecharge = (_, context) => {
   return (
     <Section title="Refueling in progress">
       <div className="LaunchCountdown">
-        <span>
-          Ready to launch in <u>T-{data.flight_time}s</u>.
-        </span>
+        <Stack vertical>
+          <Stack.Item>
+            <span>
+              Ready to launch in <u>T-{data.flight_time}s</u>.
+            </span>
+          </Stack.Item>
+          <Stack.Item>
+            <ProgressBar
+              maxValue={data.max_refuel_duration}
+              value={data.flight_time}>
+              T-{data.flight_time}s
+            </ProgressBar>
+          </Stack.Item>
+        </Stack>
       </div>
     </Section>
   );
@@ -118,23 +132,45 @@ const LaunchCountdown = (_, context) => {
   return (
     <Section title="Launch in progress">
       <div className="LaunchCountdown">
-        <span>
-          Launching in <u>T-{data.flight_time}s</u> to {data.target_destination}
-          .
-        </span>
+        <Stack vertical>
+          <Stack.Item>
+            <span>
+              Launching in <u>T-{data.flight_time}s</u> to{' '}
+              {data.target_destination}.
+            </span>
+          </Stack.Item>
+          <Stack.Item>
+            <ProgressBar
+              maxValue={data.max_engine_start_duration}
+              value={data.flight_time}>
+              T-{data.flight_time}s
+            </ProgressBar>
+          </Stack.Item>
+        </Stack>
       </div>
     </Section>
   );
 };
 
-const InFlightCountdown = (props, context) => {
+const InFlightCountdown = (_, context) => {
   const { data } = useBackend<NavigationProps>(context);
   return (
     <Section title={`In flight: ${data.target_destination}`}>
       <div className="InFlightCountdown">
-        <span>
-          Time until landing: <u>T-{data.flight_time}s</u>.
-        </span>
+        <Stack vertical>
+          <Stack.Item>
+            <span>
+              Time until landing: <u>T-{data.flight_time}s</u>.
+            </span>
+          </Stack.Item>
+          <Stack.Item>
+            <ProgressBar
+              maxValue={data.max_flight_duration}
+              value={data.flight_time}>
+              T-{data.flight_time}s
+            </ProgressBar>
+          </Stack.Item>
+        </Stack>
       </div>
     </Section>
   );
@@ -196,7 +232,7 @@ const DoorControls = (_, context) => {
 export const NavigationShuttle = (props, context) => {
   const { data } = useBackend<NavigationProps>(context);
   return (
-    <Window theme="crtgreen" width={700}>
+    <Window theme="crtgreen" height={500} width={700}>
       <Window.Content className="NavigationMenu">
         {data.shuttle_mode === 'idle' && <DestionationSelection />}
         {data.shuttle_mode === 'igniting' && <LaunchCountdown />}

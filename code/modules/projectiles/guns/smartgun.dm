@@ -238,7 +238,7 @@
 
 /datum/action/item_action/smartgun/toggle_lethal_mode/New(Target, obj/item/holder)
 	. = ..()
-	name = "Toggle Lethal Mode"
+	name = "Toggle IFF"
 	action_icon_state = "iff_toggle_on"
 	button.name = name
 	button.overlays.Cut()

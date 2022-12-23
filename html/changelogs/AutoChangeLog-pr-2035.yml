@@ -1,0 +1,5 @@
+author: "fira"
+delete-after: True
+changes:
+  - bugfix: "Increased contrast and fixed adjustment on flare flames."
+  - rscadd: "Flares shot by flare gun will now align on landing similar to thrown ones."

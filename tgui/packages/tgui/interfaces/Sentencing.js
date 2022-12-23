@@ -68,28 +68,31 @@ const NewReport = (props, context) => {
 
   return (
     <>
-      <Flex mb=".25rem" align="center">
-        <Button.Confirm
-          icon="arrow-left"
-          px="2rem"
-          textAlign="center"
-          mr="1rem"
-          onClick={() => act('scrap_report')}
-        />
+      <Section>
+        <Flex align="center">
+          <Button.Confirm
+            icon="arrow-left"
+            px="2rem"
+            textAlign="center"
+            mr="1rem"
+            tooltip="Delete report"
+            onClick={() => act('scrap_report')}
+          />
 
-        <h1>Incident Report</h1>
+          <h1>Incident Report</h1>
 
-        <Button
-          content="Export"
-          icon="print"
-          ml="auto"
-          px="2rem"
-          bold
-          tooltip={canExport ? '' : 'Missing suspect or charges'}
-          disabled={!canExport}
-          onClick={() => act('export')}
-        />
-      </Flex>
+          <Button
+            content="Export"
+            icon="print"
+            ml="auto"
+            px="2rem"
+            bold
+            tooltip={canExport ? '' : 'Missing suspect or charges'}
+            disabled={!canExport}
+            onClick={() => act('export')}
+          />
+        </Flex>
+      </Section>
       <Section>
         <LabeledList>
           <LabeledList.Item label="Suspect">
@@ -131,16 +134,18 @@ const NewCharge = (props, context) => {
 
   return (
     <>
-      <Flex mb=".25rem" align="center">
-        <Button
-          icon="arrow-left"
-          px="2rem"
-          textAlign="center"
-          mr="1rem"
-          onClick={() => act('set_menu', { new_menu: 'incident_report' })}
-        />
-        <h1>New Charge</h1>
-      </Flex>
+      <Section>
+        <Flex align="center">
+          <Button
+            icon="arrow-left"
+            px="2rem"
+            textAlign="center"
+            mr="1rem"
+            onClick={() => act('set_menu', { new_menu: 'incident_report' })}
+          />
+          <h1>New Charge</h1>
+        </Flex>
+      </Section>
       <Section>
         <Tabs fluid textAlign="center">
           {laws.map((category, i) => (

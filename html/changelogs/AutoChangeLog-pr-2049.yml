@@ -1,0 +1,4 @@
+author: "Stalkerino"
+delete-after: True
+changes:
+  - bugfix: "renamed lethal mode to IFF on the M46C and the M56"

@@ -83,7 +83,7 @@
 	if(display_additional_stats)
 		message += SPAN_INFO("Its display reads - Kills: [kills] | Shots: [shots].")
 	if(length(nickname) > 0)
-		message += SPAN_INFO("It has been assigned the name: [nickname]")
+		message += SPAN_INFO("\nIt has been assigned the name: [nickname]")
 	. += message
 
 /obj/structure/machinery/defenses/proc/power_on()

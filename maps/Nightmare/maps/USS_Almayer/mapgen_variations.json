@@ -1,0 +1,6 @@
+[
+	{ "type": "branch", "nodes": [
+		{ "type": "map_insert",  "landmark": "spiders_disposals", "path": "standalone/spiders_disposals.dmm" },
+		{ "type": "map_insert",  "landmark": "rats_disposals",    "path": "standalone/rats_disposals.dmm" }
+	], "chance": 0.2 }
+]

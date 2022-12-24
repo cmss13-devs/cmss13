@@ -172,6 +172,9 @@
 	desc = "A small lighting fixture."
 	light_type = /obj/item/light_bulb/bulb
 
+/obj/structure/machinery/light/small/broken/Initialize()
+	. = ..()
+	broken()
 
 /obj/structure/machinery/light/double
 	icon_state = "ptube1"

@@ -4689,14 +4689,13 @@
 	},
 /area/almayer/living/pilotbunks)
 "anb" = (
-/obj/structure/machinery/conveyor{
-	id = "lower_garbage"
+/obj/structure/disposalpipe/segment,
+/obj/effect/decal/cleanable/cobweb2/dynamic,
+/obj/structure/disposalpipe/junction{
+	dir = 1
 	},
-/turf/open/floor/almayer{
-	dir = 4;
-	icon_state = "plating_striped";
-	tag = "icon-plating_striped (EAST)"
-	},
+/obj/structure/largecrate/random/secure,
+/turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/l_m_p)
 "anc" = (
 /turf/open/floor/almayer{
@@ -4827,13 +4826,9 @@
 	},
 /area/almayer/medical/upper_medical)
 "ant" = (
-/obj/structure/window/reinforced{
-	dir = 8;
-	health = 80
-	},
-/obj/structure/machinery/light{
-	dir = 4;
-	tag = "icon-tube1 (EAST)"
+/obj/effect/decal/cleanable/spiderling_remains,
+/mob/living/simple_animal/mouse/brown{
+	name = "rat"
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -20417,33 +20412,17 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_x = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+/obj/structure/prop/almayer{
+	desc = "This is straight up, no frills, an USCM droppod that has some-fucking-how found its way into the ship's maintenance. You don't even want to think about how.";
+	name = "battered USCM droppod";
+	icon = 'icons/obj/structures/droppod_32x64.dmi';
+	icon_state = "techpod_open"
 	},
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_x = 12;
-	pixel_y = 12;
-	projectile_coverage = 0;
-	unacidable = 1
-	},
-/obj/structure/largecrate/random/secure,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
 	},
-/area/almayer/hull/lower_hull/l_a_p)
+/area/almayer/hull/lower_hull/l_m_p)
 "bof" = (
 /obj/structure/pipes/vents/scrubber{
 	dir = 4
@@ -28852,6 +28831,22 @@
 "bTA" = (
 /turf/open/floor/almayer,
 /area/almayer/squads/delta)
+"bTB" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/largecrate/random/case/small,
+/obj/structure/largecrate/random/mini/ammo{
+	pixel_x = 3;
+	pixel_y = 9
+	},
+/obj/item/spacecash/c20{
+	pixel_x = 1;
+	pixel_y = 15
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/hull/lower_hull/l_m_p)
 "bTC" = (
 /obj/structure/pipes/vents/scrubber{
 	dir = 4
@@ -33134,6 +33129,11 @@
 	},
 /turf/closed/wall/almayer,
 /area/almayer/hull/lower_hull/l_m_p)
+"ckE" = (
+/obj/structure/surface/rack,
+/obj/item/tank/phoron,
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/hull/lower_hull/l_m_p)
 "ckI" = (
 /obj/structure/disposalpipe/segment,
 /obj/item/device/radio/intercom{
@@ -35900,6 +35900,20 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/lifeboat_pumps/south1)
+"cZg" = (
+/obj/structure{
+	health = 150;
+	icon = 'icons/obj/pipes/pipes.dmi';
+	icon_state = "intact-scrubbers";
+	indestructible = 1;
+	layer = 4.5;
+	pixel_x = 5;
+	projectile_coverage = 0;
+	unacidable = 1;
+	dir = 8
+	},
+/turf/closed/wall/almayer/outer,
+/area/almayer/hull/lower_hull/l_m_p)
 "cZh" = (
 /obj/structure/window/framed/almayer,
 /obj/structure/machinery/door/poddoor/shutters/almayer/open{
@@ -36057,6 +36071,27 @@
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/lifeboat_pumps/south2)
+"dcC" = (
+/obj/structure{
+	health = 150;
+	icon = 'icons/obj/pipes/pipes.dmi';
+	icon_state = "intact-scrubbers";
+	indestructible = 1;
+	layer = 4.5;
+	projectile_coverage = 0;
+	unacidable = 1;
+	pixel_y = -1
+	},
+/obj/structure/largecrate/supply/generator,
+/obj/item/computer3_part/toybox{
+	pixel_y = 9;
+	pixel_x = -6
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/hull/lower_hull/l_m_p)
 "dcP" = (
 /obj/structure/machinery/body_scanconsole{
 	dir = 8
@@ -37252,6 +37287,13 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/hull/upper_hull/u_f_p)
+"dAd" = (
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/hull/lower_hull/l_a_p)
 "dAq" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /obj/structure/disposalpipe/segment{
@@ -38260,6 +38302,10 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/hull/upper_hull/u_m_p)
+"dWt" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/hull/lower_hull/l_m_p)
 "dWw" = (
 /turf/open/floor/almayer{
 	dir = 8;
@@ -38484,14 +38530,12 @@
 /area/almayer/hull/lower_hull/l_a_p)
 "ebY" = (
 /obj/structure/surface/rack,
-/obj/effect/spawner/random/toolbox,
-/obj/effect/spawner/random/toolbox,
-/obj/effect/spawner/random/toolbox,
-/obj/effect/spawner/random/tool,
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
+/obj/structure/window/reinforced{
+	dir = 4
 	},
+/obj/effect/spawner/random/tech_supply,
+/obj/effect/spawner/random/tech_supply,
+/turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/l_m_p)
 "eco" = (
 /obj/structure/sign/safety/restrictedarea{
@@ -38985,6 +39029,26 @@
 	tag = "icon-red"
 	},
 /area/almayer/shipboard/brig/perma)
+"eki" = (
+/obj/effect/decal/cleanable/blood/oil,
+/obj/structure/disposalpipe/segment,
+/obj/structure{
+	dir = 4;
+	health = 150;
+	icon = 'icons/obj/pipes/pipes.dmi';
+	icon_state = "intact-scrubbers";
+	indestructible = 1;
+	layer = 4.5;
+	pixel_x = -14;
+	pixel_y = 13;
+	projectile_coverage = 0;
+	unacidable = 1
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/hull/lower_hull/l_m_p)
 "eko" = (
 /obj/structure/largecrate/random/secure,
 /turf/open/floor/plating/plating_catwalk,
@@ -39478,6 +39542,15 @@
 	dir = 9
 	},
 /area/almayer/command/lifeboat)
+"esY" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4;
+	icon_state = "pipe-c";
+	tag = "icon-pipe-c (NORTH)"
+	},
+/obj/structure/largecrate/random/barrel/yellow,
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/hull/lower_hull/l_a_p)
 "etf" = (
 /turf/open/floor/almayer{
 	dir = 1;
@@ -40398,6 +40471,16 @@
 	},
 /turf/open/floor/plating,
 /area/almayer/hull/lower_hull/l_f_p)
+"eNO" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/light/small/broken{
+	dir = 4
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/hull/lower_hull/l_m_p)
 "eNP" = (
 /obj/item/device/radio/intercom{
 	freerange = 1;
@@ -41031,6 +41114,24 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/squads/alpha)
+"fbf" = (
+/obj/effect/decal/cleanable/generic,
+/obj/structure{
+	health = 150;
+	icon = 'icons/obj/pipes/pipes3.dmi';
+	icon_state = "manifold";
+	indestructible = 1;
+	layer = 5.1;
+	projectile_coverage = 0;
+	unacidable = 1;
+	pixel_y = 3
+	},
+/obj/item/ammo_box/magazine/shotgun/beanbag/empty,
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/hull/lower_hull/l_m_p)
 "fbo" = (
 /obj/structure/machinery/door_control{
 	id = "kitchen2";
@@ -41680,6 +41781,16 @@
 	tag = "icon-sterile_green_side (EAST)"
 	},
 /area/almayer/medical/lower_medical_medbay)
+"frt" = (
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/hull/lower_hull/l_m_p)
 "frz" = (
 /obj/structure/machinery/door/airlock/almayer/secure/reinforced{
 	name = "\improper Exterior Airlock";
@@ -42785,6 +42896,14 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/living/briefing)
+"fOo" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/largecrate/random/barrel/green,
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/hull/lower_hull/l_a_p)
 "fOz" = (
 /obj/structure/target{
 	name = "punching bag"
@@ -43019,6 +43138,7 @@
 	projectile_coverage = 0;
 	unacidable = 1
 	},
+/obj/structure/largecrate/random/case/double,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -43795,14 +43915,8 @@
 	},
 /area/almayer/medical/lower_medical_medbay)
 "glM" = (
-/obj/structure/window/reinforced{
-	dir = 8;
-	health = 80
-	},
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
-	},
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/l_m_p)
 "glU" = (
 /obj/structure/bed/chair/office/dark,
@@ -45151,6 +45265,13 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/hallways/hangar)
+"gRT" = (
+/obj/structure/window/framed/almayer,
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/hull/lower_hull/l_a_p)
 "gSi" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/computer/security/almayer_network,
@@ -45230,6 +45351,24 @@
 	tag = "icon-green"
 	},
 /area/almayer/living/grunt_rnr)
+"gUi" = (
+/obj/effect/decal/cleanable/blood,
+/obj/structure{
+	health = 150;
+	icon = 'icons/obj/pipes/pipes.dmi';
+	icon_state = "intact-scrubbers";
+	indestructible = 1;
+	layer = 4.5;
+	projectile_coverage = 0;
+	unacidable = 1;
+	dir = 6;
+	pixel_y = -3
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/hull/lower_hull/l_m_p)
 "gUv" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
@@ -45292,6 +45431,30 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/lifeboat_pumps/south1)
+"gVQ" = (
+/obj/structure{
+	health = 150;
+	icon = 'icons/obj/pipes/pipes.dmi';
+	icon_state = "intact-scrubbers";
+	indestructible = 1;
+	layer = 4.5;
+	pixel_x = -4;
+	projectile_coverage = 0;
+	unacidable = 1;
+	dir = 5
+	},
+/obj/structure/janitorialcart,
+/obj/item/stack/cable_coil/blue{
+	pixel_y = 6;
+	pixel_x = -9;
+	name = "flight wire";
+	desc = "Flight wire, utilized by pilot officers to do... flight... stuff. At least, that's what that PO told you they do when he ordered you to grab some. Ten months ago."
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/hull/lower_hull/l_m_p)
 "gWE" = (
 /obj/structure/disposalpipe/segment,
 /obj/effect/landmark/start/marine/spec/alpha,
@@ -45465,6 +45628,11 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/living/tankerbunks)
+"gZP" = (
+/obj/structure/machinery/light/small,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/hull/lower_hull/l_a_p)
 "haq" = (
 /turf/closed/wall/almayer,
 /area/almayer/hull/lower_hull/l_a_p)
@@ -46734,6 +46902,13 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/hallways/hangar)
+"hCw" = (
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/hull/lower_hull/l_m_p)
 "hCS" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/paper_bin/uscm{
@@ -47850,6 +48025,14 @@
 	tag = "icon-red (NORTH)"
 	},
 /area/almayer/shipboard/brig/general_equipment)
+"iet" = (
+/obj/structure/closet/emcloset,
+/obj/item/tank/anesthetic,
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/hull/lower_hull/l_m_p)
 "ieu" = (
 /obj/structure/window/reinforced{
 	dir = 4;
@@ -48525,6 +48708,19 @@
 	tag = "icon-silvercorner (EAST)"
 	},
 /area/almayer/command/cichallway)
+"iut" = (
+/obj/structure{
+	health = 150;
+	icon = 'icons/obj/pipes/pipes.dmi';
+	icon_state = "intact-scrubbers";
+	indestructible = 1;
+	layer = 4.5;
+	pixel_x = -4;
+	projectile_coverage = 0;
+	unacidable = 1
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/hull/lower_hull/l_m_p)
 "iuu" = (
 /obj/structure/surface/table/almayer,
 /obj/item/clothing/head/hardhat/orange{
@@ -48696,12 +48892,15 @@
 	},
 /area/almayer/squads/delta)
 "ixP" = (
-/obj/structure/closet/firecloset,
+/obj/structure/machinery/conveyor_switch{
+	id = "lower_garbage"
+	},
+/obj/effect/decal/cleanable/vomit,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
 	},
-/area/almayer/hull/lower_hull/l_m_p)
+/area/almayer/hull/lower_hull/l_a_p)
 "ixQ" = (
 /obj/structure/surface/table/almayer,
 /obj/item/paper_bin/uscm,
@@ -48989,20 +49188,30 @@
 	},
 /area/almayer/engineering/upper_engineering)
 "iFm" = (
-/obj/structure/machinery/light{
-	dir = 1;
-	tag = "icon-tube1 (NORTH)"
+/obj/structure/window/reinforced{
+	dir = 1
 	},
-/obj/structure/disposaloutlet,
-/obj/structure/disposalpipe/trunk{
-	dir = 4;
-	tag = "icon-pipe-t (EAST)"
+/obj/structure/surface/table/almayer,
+/obj/structure/disposalpipe/segment,
+/obj/effect/decal/cleanable/vomit,
+/obj/item/cell/crap/empty{
+	name = "iron sight battery";
+	desc = "Holy shit, you finally found one! Now report back to your sergeant private, it's been a few years since they ordered you to fetch one; You're getting an ass whooping for sure."
 	},
-/turf/open/floor/almayer{
-	dir = 4;
-	icon_state = "plating_striped";
-	tag = "icon-plating_striped (EAST)"
+/obj/item/reagent_container/food/drinks/cup{
+	pixel_x = 11
 	},
+/obj/structure/sign/poster/clf{
+	desc = "What the fuck is this god damn CLF propaganda doing here? Tear it out off now. NOW.";
+	name = "treacherous poster";
+	pixel_x = -26
+	},
+/obj/item/device/cassette_tape/lz{
+	pixel_x = -8;
+	pixel_y = -3;
+	desc = "It ain't me, it ain't me! I ain't no senator's son, no!"
+	},
+/turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/l_m_p)
 "iFn" = (
 /turf/open/floor/almayer{
@@ -49086,12 +49295,17 @@
 /turf/open/shuttle/escapepod,
 /area/almayer/evacuation/pod3)
 "iGK" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4;
-	icon_state = "pipe-c"
+/obj/structure/machinery/conveyor{
+	id = "lower_garbage";
+	dir = 4
 	},
-/obj/structure/largecrate/random/barrel/yellow,
-/turf/open/floor/plating/plating_catwalk,
+/obj/structure/sign/catclock{
+	pixel_y = 32
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
 /area/almayer/hull/lower_hull/l_m_p)
 "iGN" = (
 /obj/effect/decal/warning_stripes{
@@ -49986,35 +50200,16 @@
 /turf/open/floor/wood/ship,
 /area/almayer/squads/req)
 "jbb" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
+/obj/structure/prop/holidays/string_lights{
+	pixel_y = -11;
+	name = "M0A1 pattern festive bulb strings";
+	desc = "Festive bulb strings, still hanged up from last last last last last year's Christmas. You're pretty sure these are an earlier pattern that was recalled due to sudden ignition concerns.."
 	},
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_x = 12;
-	projectile_coverage = 0;
-	unacidable = 1
+/obj/structure/window/framed/almayer,
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
 	},
-/obj/structure{
-	health = 150;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact-scrubbers";
-	indestructible = 1;
-	layer = 4.5;
-	pixel_x = 12;
-	pixel_y = 12;
-	projectile_coverage = 0;
-	unacidable = 1
-	},
-/obj/structure/sign/safety/water{
-	pixel_x = 8;
-	pixel_y = 32
-	},
-/turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/l_m_p)
 "jbq" = (
 /obj/structure/window/framed/almayer/hull,
@@ -50352,6 +50547,21 @@
 	},
 /turf/closed/wall/almayer,
 /area/almayer/living/cryo_cells)
+"jhh" = (
+/obj/structure/surface/rack,
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/effect/spawner/random/attachment,
+/obj/item/reagent_container/food/snacks/upp,
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/hull/lower_hull/l_m_p)
 "jhn" = (
 /turf/open/floor/almayer{
 	dir = 1;
@@ -51187,6 +51397,16 @@
 	tag = "icon-bluecorner (NORTH)"
 	},
 /area/almayer/hull/lower_hull/l_f_s)
+"jFv" = (
+/obj/effect/decal/cleanable/dirt,
+/mob/living/simple_animal/mouse/gray{
+	name = "rat"
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/hull/lower_hull/l_m_p)
 "jFE" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/simple/hidden/supply,
@@ -51953,6 +52173,10 @@
 	tag = "icon-silver (NORTH)"
 	},
 /area/almayer/command/computerlab)
+"jVF" = (
+/obj/structure/disposalpipe/segment,
+/turf/closed/wall/almayer,
+/area/almayer/hull/lower_hull/l_m_p)
 "jWr" = (
 /obj/structure/machinery/light{
 	dir = 4;
@@ -52652,7 +52876,10 @@
 	},
 /area/almayer/medical/lower_medical_lobby)
 "knK" = (
-/obj/structure/kitchenspike,
+/obj/structure/kitchenspike{
+	name = "bloody meat spike";
+	desc = "A meat spike. It's utilized to hang animals up and skin them to easily collect their meat. What this is doing near Disposals you have no clue. There's brown fur and blood on it..."
+	},
 /obj/effect/decal/cleanable/blood/gibs,
 /obj/structure/machinery/light,
 /turf/open/floor/plating/plating_catwalk,
@@ -52798,6 +53025,11 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/engineering/engineering_workshop)
+"kqh" = (
+/obj/structure/surface/rack,
+/obj/item/storage/box/mousetraps,
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/hull/lower_hull/l_m_p)
 "kqt" = (
 /obj/structure/machinery/door/poddoor/almayer/open{
 	dir = 4;
@@ -53115,6 +53347,25 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/upper_hull/u_f_p)
+"kwL" = (
+/obj/structure/janitorialcart,
+/obj/structure{
+	dir = 4;
+	health = 150;
+	icon = 'icons/obj/pipes/pipes.dmi';
+	icon_state = "intact-scrubbers";
+	indestructible = 1;
+	layer = 4.5;
+	pixel_x = -14;
+	pixel_y = 13;
+	projectile_coverage = 0;
+	unacidable = 1
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/hull/lower_hull/l_m_p)
 "kwQ" = (
 /obj/item/tool/warning_cone{
 	pixel_y = 16
@@ -53369,6 +53620,20 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/medical/medical_science)
+"kCF" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/item/device/assembly/mousetrap,
+/mob/living/simple_animal/mouse/white{
+	health = 0
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/hull/lower_hull/l_m_p)
 "kCS" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer,
@@ -53700,15 +53965,11 @@
 /turf/open/floor/almayer,
 /area/almayer/lifeboat_pumps/south2)
 "kKX" = (
-/obj/structure/machinery/conveyor{
-	id = "lower_garbage"
-	},
-/obj/structure/plasticflaps,
-/turf/open/floor/almayer{
-	dir = 4;
-	icon_state = "plating_striped";
-	tag = "icon-plating_striped (EAST)"
-	},
+/obj/structure/disposalpipe/segment,
+/obj/structure/closet/crate/trashcart,
+/obj/item/storage/box/lightstick/red,
+/obj/item/storage/box/lights/mixed,
+/turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/l_m_p)
 "kLk" = (
 /obj/structure/machinery/cm_vending/clothing/rto/bravo{
@@ -53951,6 +54212,16 @@
 	tag = "icon-test_floor4"
 	},
 /area/almayer/hull/upper_hull/u_f_p)
+"kQL" = (
+/obj/structure/surface/table/almayer,
+/obj/effect/spawner/random/toy,
+/obj/effect/spawner/random/toy,
+/obj/item/device/flashlight/lamp/green{
+	pixel_x = -11;
+	pixel_y = 12
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/hull/lower_hull/l_m_p)
 "kRd" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -54120,16 +54391,22 @@
 	},
 /area/almayer/living/pilotbunks)
 "kUt" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4;
-	icon_state = "pipe-c"
+/obj/structure{
+	health = 150;
+	icon = 'icons/obj/pipes/pipes.dmi';
+	icon_state = "intact-scrubbers";
+	indestructible = 1;
+	layer = 4.5;
+	pixel_x = 12;
+	projectile_coverage = 0;
+	unacidable = 1
 	},
-/obj/structure/surface/rack,
-/obj/item/frame/table,
-/obj/item/frame/table,
-/obj/item/frame/table,
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/hull/lower_hull/l_m_p)
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/hull/lower_hull/l_a_p)
 "kUH" = (
 /obj/effect/landmark/shuttle_loc/marine_crs/dropship,
 /turf/open/floor/almayer,
@@ -54586,6 +54863,18 @@
 	tag = "icon-red"
 	},
 /area/almayer/shipboard/brig/processing)
+"lgb" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/pipes/standard/tank/oxygen{
+	desc = "What the hell is this doing next to disposals? You see scratches and muck all over it. Nasty!"
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/hull/lower_hull/l_m_p)
 "lgK" = (
 /obj/structure/machinery/cm_vending/clothing/senior_officer{
 	density = 0;
@@ -55022,16 +55311,24 @@
 	},
 /area/almayer/lifeboat_pumps/south1)
 "lra" = (
-/obj/structure/machinery/door/airlock/almayer/engineering{
-	name = "\improper Disposals"
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/disposalpipe/segment{
+	dir = 4
 	},
-/obj/structure/disposalpipe/junction{
-	dir = 8;
-	icon_state = "pipe-j2"
+/obj/structure/kitchenspike{
+	name = "bloody meat spike";
+	desc = "A meat spike. It's utilized to hang animals up and skin them to easily collect their meat. What this is doing near Disposals you have no clue. There's brown fur and blood on it..."
+	},
+/obj/structure/sign/safety/distribution_pipes{
+	pixel_x = 8;
+	pixel_y = 32
+	},
+/obj/structure/machinery/light/small/broken{
+	dir = 1
 	},
 /turf/open/floor/almayer{
-	icon_state = "test_floor4";
-	tag = "icon-test_floor4"
+	icon_state = "plate";
+	tag = "icon-sterile"
 	},
 /area/almayer/hull/lower_hull/l_m_p)
 "lrb" = (
@@ -55315,6 +55612,16 @@
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/north1)
+"lvR" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/largecrate/random/barrel/green,
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/hull/lower_hull/l_m_p)
 "lvZ" = (
 /obj/structure/window/framed/almayer,
 /obj/structure/machinery/door/poddoor/almayer/locked{
@@ -55953,6 +56260,16 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/offices)
+"lHn" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/item/device/assembly/mousetrap/armed,
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/hull/lower_hull/l_m_p)
 "lHu" = (
 /turf/open/floor/almayer{
 	dir = 8;
@@ -56496,6 +56813,20 @@
 	tag = "icon-red (NORTHWEST)"
 	},
 /area/almayer/lifeboat_pumps/south1)
+"lWO" = (
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/blood/gibs/robot,
+/obj/structure/sign/poster{
+	desc = "YOU ALWAYS KNOW A WORKING JOE. YOU ALWAYS KNOW A WORKING JOE. YOU ALWAYS KNOW A WORKING JOE. YOU ALWAYS KNOW A WORKING JOE. YOU ALWAYS KNOW A WORKING JOE.";
+	icon_state = "poster11";
+	name = "YOU ALWAYS KNOW A WORKING JOE.";
+	pixel_x = 27;
+	serial_number = 11
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/hull/lower_hull/l_a_p)
 "lXg" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/recharger,
@@ -56536,6 +56867,17 @@
 "lYA" = (
 /turf/closed/wall/almayer/outer,
 /area/almayer/hull/upper_hull/u_m_s)
+"lYP" = (
+/obj/structure/machinery/conveyor{
+	id = "lower_garbage";
+	dir = 4
+	},
+/obj/item/newspaper,
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/hull/lower_hull/l_m_p)
 "lYZ" = (
 /obj/structure/surface/table/almayer,
 /obj/item/storage/toolbox/mechanical/green{
@@ -58053,6 +58395,16 @@
 "mJu" = (
 /turf/open/floor/almayer/uscm/directional,
 /area/almayer/command/cic)
+"mJA" = (
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/hull/lower_hull/l_a_p)
 "mJP" = (
 /obj/structure/machinery/cm_vending/gear/rto{
 	density = 0;
@@ -58236,6 +58588,15 @@
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/south2)
+"mMy" = (
+/obj/effect/decal/cleanable/cobweb2/dynamic,
+/obj/structure/largecrate/supply/medicine/iv,
+/obj/item/reagent_container/food/drinks/flask/detflask{
+	pixel_x = -3;
+	pixel_y = 9
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/hull/lower_hull/l_m_p)
 "mMP" = (
 /obj/effect/landmark/start/intel,
 /turf/open/floor/plating/plating_catwalk,
@@ -58348,6 +58709,19 @@
 	tag = "icon-green (NORTH)"
 	},
 /area/almayer/hallways/aft_hallway)
+"mOR" = (
+/obj/effect/decal/cleanable/blood/oil,
+/obj/structure/largecrate/random/barrel/white,
+/obj/structure/machinery/light/small,
+/obj/item/storage/fancy/candle_box{
+	pixel_x = -1;
+	pixel_y = 15
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/hull/lower_hull/l_m_p)
 "mOU" = (
 /obj/structure/machinery/light/small{
 	dir = 4;
@@ -58563,9 +58937,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/starboard_hallway)
 "mUn" = (
-/obj/structure/machinery/conveyor_switch{
-	id = "lower_garbage"
-	},
+/obj/effect/decal/cleanable/generic,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -58876,6 +59248,22 @@
 	tag = "icon-test_floor4"
 	},
 /area/almayer/living/gym)
+"nbp" = (
+/obj/structure{
+	health = 150;
+	icon = 'icons/obj/pipes/pipes3.dmi';
+	icon_state = "manifold";
+	indestructible = 1;
+	layer = 5.1;
+	projectile_coverage = 0;
+	unacidable = 1;
+	dir = 4
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/hull/lower_hull/l_m_p)
 "nbB" = (
 /obj/structure/closet/secure_closet/freezer/fridge/full,
 /turf/open/floor/almayer{
@@ -58883,6 +59271,28 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/living/grunt_rnr)
+"nbZ" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/pipes/standard/tank/nitrogen{
+	desc = "Someone's somehow managed to cut a hole into this tank and put a tube with a valve on it at mouth-level. For some reason. The tank feels hollow to the touch, obviously from the imperfections in the hole leaking the nitrogen out.";
+	icon_state = "co2_map";
+	actual_icon_state = "co2_map"
+	},
+/obj/structure/machinery/light/small{
+	dir = 1;
+	tag = "icon-bulb1 (NORTH)"
+	},
+/obj/structure/sign/safety/distribution_pipes{
+	pixel_x = 8;
+	pixel_y = 32
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/hull/lower_hull/l_m_p)
 "ncB" = (
 /obj/structure/machinery/chem_master{
 	vial_maker = 1
@@ -59041,6 +59451,18 @@
 /obj/structure/largecrate/random/barrel/yellow,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/upper_hull/u_f_s)
+"nfN" = (
+/obj/structure/surface/table/almayer,
+/obj/effect/decal/cleanable/vomit,
+/obj/effect/spawner/random/toy,
+/obj/item/reagent_container/food/drinks/sillycup{
+	pixel_x = -12
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/hull/lower_hull/l_m_p)
 "nfS" = (
 /obj/item/reagent_container/food/snacks/wrapped/chunk,
 /obj/structure/surface/rack,
@@ -59140,6 +59562,13 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/hull/upper_hull/u_a_p)
+"nhp" = (
+/obj/effect/decal/cleanable/flour,
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/hull/lower_hull/l_m_p)
 "nhx" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/toy/deck{
@@ -59328,10 +59757,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure/sign/safety/distribution_pipes{
-	pixel_x = 8;
-	pixel_y = 32
-	},
+/obj/structure/largecrate/random/barrel/red,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/l_a_p)
 "nka" = (
@@ -61006,6 +61432,10 @@
 	tag = "icon-green"
 	},
 /area/almayer/hallways/starboard_hallway)
+"nWA" = (
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/hull/lower_hull/l_a_p)
 "nXm" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 1
@@ -61456,6 +61886,10 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/medical/containment)
+"ojj" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/hull/lower_hull/l_a_p)
 "ojF" = (
 /obj/structure/machinery/cm_vending/clothing/rto/charlie{
 	density = 0;
@@ -61626,6 +62060,26 @@
 	tag = "icon-silvercorner"
 	},
 /area/almayer/command/cichallway)
+"omi" = (
+/obj/structure/closet/crate/freezer/cooler/oj{
+	name = "cooler box";
+	desc = "You will not find a cooler box anywhere else. Used for freezing beers to crack open with the boys on a warm evening. This one seems to be painted orange and filled with orange juice. Huh..."
+	},
+/obj/item/reagent_container/food/drinks/bottle/orangejuice,
+/obj/item/reagent_container/food/drinks/bottle/orangejuice,
+/obj/item/reagent_container/food/drinks/bottle/orangejuice,
+/obj/item/reagent_container/food/drinks/bottle/orangejuice,
+/obj/item/reagent_container/food/drinks/bottle/orangejuice,
+/obj/item/reagent_container/food/drinks/bottle/orangejuice,
+/obj/item/reagent_container/food/drinks/bottle/orangejuice,
+/obj/item/reagent_container/food/drinks/bottle/orangejuice,
+/obj/item/reagent_container/food/drinks/bottle/orangejuice,
+/obj/item/reagent_container/food/drinks/bottle/orangejuice,
+/obj/item/reagent_container/food/drinks/bottle/orangejuice,
+/obj/item/reagent_container/food/drinks/bottle/orangejuice,
+/obj/item/reagent_container/food/drinks/bottle/orangejuice,
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/hull/lower_hull/l_m_p)
 "omo" = (
 /obj/structure/window/framed/almayer/white,
 /turf/open/floor/plating,
@@ -62522,6 +62976,19 @@
 	tag = "icon-containment_corner_variant_2"
 	},
 /area/almayer/medical/containment/cell)
+"oFo" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/disposalpipe/segment,
+/obj/effect/decal/cleanable/vomit,
+/obj/effect/spawner/random/gun/pistol/lowchance,
+/obj/item/paper_bin/uscm,
+/obj/item/tool/pen/red/clicky,
+/obj/item/toy/gun{
+	pixel_x = 2;
+	pixel_y = 10
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/hull/lower_hull/l_m_p)
 "oFG" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -63404,6 +63871,21 @@
 /obj/structure/bed,
 /turf/open/floor/wood/ship,
 /area/almayer/shipboard/brig/chief_mp_office)
+"pbK" = (
+/obj/structure{
+	dir = 4;
+	health = 150;
+	icon = 'icons/obj/pipes/pipes.dmi';
+	icon_state = "intact-scrubbers";
+	indestructible = 1;
+	layer = 4.5;
+	pixel_x = -14;
+	pixel_y = 13;
+	projectile_coverage = 0;
+	unacidable = 1
+	},
+/turf/closed/wall/almayer/outer,
+/area/almayer/hull/lower_hull/l_m_p)
 "pbV" = (
 /turf/open/floor/almayer{
 	dir = 1;
@@ -64879,11 +65361,15 @@
 	},
 /area/almayer/hull/lower_hull/l_f_s)
 "pNG" = (
-/obj/structure/disposalpipe/segment{
+/obj/structure/machinery/conveyor{
+	id = "lower_garbage";
 	dir = 4
 	},
-/obj/structure/largecrate/random/case/double,
-/turf/open/floor/plating/plating_catwalk,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
 /area/almayer/hull/lower_hull/l_m_p)
 "pNM" = (
 /obj/structure/platform{
@@ -66388,7 +66874,9 @@
 	},
 /area/almayer/living/briefing)
 "quv" = (
-/obj/structure/pipes/standard/tank/oxygen,
+/obj/structure/pipes/standard/tank/oxygen{
+	desc = "What the hell is this doing next to disposals? You see scratches and muck all over it. Nasty!"
+	},
 /obj/structure/sign/safety/med_cryo{
 	pixel_x = -6;
 	pixel_y = 32
@@ -66773,6 +67261,16 @@
 	tag = "icon-sterile_green_side (EAST)"
 	},
 /area/almayer/medical/operating_room_four)
+"qDU" = (
+/obj/structure/machinery/door/airlock/almayer/engineering/glass{
+	name = "\improper Disposals";
+	dir = 2
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/hull/lower_hull/l_m_p)
 "qEk" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
@@ -66889,6 +67387,19 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/medical/operating_room_two)
+"qGT" = (
+/obj/structure/surface/rack,
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/effect/spawner/random/tech_supply,
+/obj/effect/spawner/random/tech_supply,
+/obj/item/device/healthanalyzer{
+	icon_state = "golden_health";
+	desc = "A health analyzer, but it has REAL gold plating. Real FAKE gold plating."
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/hull/lower_hull/l_m_p)
 "qHg" = (
 /turf/open/floor/almayer{
 	dir = 1;
@@ -67239,11 +67750,11 @@
 	},
 /area/almayer/shipboard/brig/lobby)
 "qNy" = (
-/obj/structure/largecrate/random/barrel/red,
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
-	},
+/obj/structure/surface/rack,
+/obj/item/frame/table,
+/obj/item/frame/table,
+/obj/item/frame/table,
+/turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/l_m_p)
 "qNG" = (
 /obj/structure/disposalpipe/segment{
@@ -67508,6 +68019,25 @@
 	tag = "icon-cargo_arrow (NORTH)"
 	},
 /area/almayer/squads/charlie_delta_shared)
+"qUz" = (
+/obj/structure/machinery/conveyor{
+	id = "lower_garbage";
+	dir = 4
+	},
+/obj/effect/decal/cleanable/molten_item,
+/obj/item/device/analyzer/plant_analyzer,
+/obj/item/reagent_container/glass/rag{
+	pixel_x = 8;
+	pixel_y = 6
+	},
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/hull/lower_hull/l_a_p)
 "qUH" = (
 /obj/item/clothing/under/colonist/clf,
 /obj/item/storage/bag/plasticbag,
@@ -67881,6 +68411,23 @@
 	tag = "icon-orange (NORTH)"
 	},
 /area/almayer/engineering/upper_engineering)
+"rcU" = (
+/obj/structure{
+	health = 150;
+	icon = 'icons/obj/pipes/pipes.dmi';
+	icon_state = "intact-scrubbers";
+	indestructible = 1;
+	layer = 4.5;
+	pixel_x = 5;
+	projectile_coverage = 0;
+	unacidable = 1;
+	dir = 8
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/hull/lower_hull/l_m_p)
 "rde" = (
 /obj/structure/sign/prop1,
 /turf/closed/wall/almayer,
@@ -70749,6 +71296,23 @@
 	tag = "icon-bluecorner (NORTH)"
 	},
 /area/almayer/hull/lower_hull/l_m_s)
+"spu" = (
+/obj/effect/decal/cleanable/generic,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/pipes/standard/tank/air{
+	desc = "Seemingly a component of the USS Almayer's air system that vents breathable air all over the ship. It's right next to the Disposals room, for some fucking reason. No wonder the ship always smells like shit."
+	},
+/obj/structure/sign/safety/distribution_pipes{
+	pixel_x = 8;
+	pixel_y = 32
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/hull/lower_hull/l_m_p)
 "spF" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/flora/pottedplant{
@@ -71937,10 +72501,19 @@
 /area/almayer/shipboard/brig/main_office)
 "sQU" = (
 /obj/structure/disposalpipe/segment{
-	dir = 8;
-	icon_state = "pipe-c"
+	dir = 4
 	},
-/turf/open/floor/plating/plating_catwalk,
+/obj/structure/largecrate/supply/floodlights,
+/obj/item/toy/prize/ripley{
+	pixel_y = 19;
+	pixel_x = -3;
+	name = "promotional powerloader figurine";
+	desc = "A promotional powerloader figurine, seems to be made entirely out of metal. Strange."
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
 /area/almayer/hull/lower_hull/l_m_p)
 "sRD" = (
 /obj/structure/surface/table/almayer,
@@ -73994,6 +74567,13 @@
 	tag = "icon-test_floor4"
 	},
 /area/almayer/living/port_emb)
+"tIB" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/hull/lower_hull/l_m_p)
 "tIK" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "NS-center";
@@ -74361,7 +74941,10 @@
 	name = "General Listening Channel";
 	pixel_y = -28
 	},
-/obj/structure/kitchenspike,
+/obj/structure/kitchenspike{
+	name = "bloody meat spike";
+	desc = "A meat spike. It's utilized to hang animals up and skin them to easily collect their meat. What this is doing near Disposals you have no clue. There's brown fur and blood on it..."
+	},
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/grunt_rnr)
@@ -74850,6 +75433,24 @@
 /obj/item/frame/table,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/l_a_p)
+"ucb" = (
+/obj/structure/machinery/conveyor{
+	id = "lower_garbage";
+	dir = 4
+	},
+/obj/structure/disposaloutlet,
+/obj/structure/disposaloutlet{
+	dir = 4
+	},
+/obj/structure/disposalpipe/trunk{
+	dir = 2
+	},
+/obj/effect/decal/cleanable/cobweb2/dynamic,
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/hull/lower_hull/l_m_p)
 "ucw" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 10;
@@ -75091,11 +75692,12 @@
 	},
 /area/almayer/hull/lower_hull/l_a_s)
 "uim" = (
-/obj/structure/largecrate/random/secure,
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
+/obj/structure/prop/holidays/string_lights{
+	pixel_y = -11;
+	name = "M0A1 pattern festive bulb strings";
+	desc = "Festive bulb strings, still hanged up from last last last last last year's Christmas. You're pretty sure these are an earlier pattern that was recalled due to sudden ignition concerns.."
 	},
+/turf/closed/wall/almayer,
 /area/almayer/hull/lower_hull/l_m_p)
 "uiT" = (
 /turf/open/floor/almayer{
@@ -75115,11 +75717,21 @@
 	},
 /area/almayer/command/cichallway)
 "ujA" = (
-/obj/structure/disposalpipe/segment{
-	dir = 1;
-	icon_state = "pipe-c"
+/obj/structure/surface/rack,
+/obj/structure/window/reinforced{
+	dir = 4
 	},
-/turf/closed/wall/almayer,
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/effect/spawner/random/tech_supply,
+/obj/effect/spawner/random/tech_supply,
+/obj/effect/spawner/random/tech_supply,
+/obj/item/stack/sheet/wood/large_stack,
+/turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/l_m_p)
 "ujV" = (
 /obj/structure/machinery/vending/dinnerware,
@@ -75365,6 +75977,17 @@
 	icon_state = "cargo_arrow"
 	},
 /area/almayer/living/offices)
+"upT" = (
+/obj/structure/machinery/conveyor{
+	id = "lower_garbage";
+	dir = 4
+	},
+/obj/structure/plasticflaps,
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/hull/lower_hull/l_m_p)
 "uqa" = (
 /obj/structure/surface/rack,
 /obj/effect/spawner/random/toolbox,
@@ -75685,15 +76308,12 @@
 	},
 /area/almayer/lifeboat_pumps/south1)
 "uvs" = (
-/obj/structure/machinery/conveyor{
-	id = "lower_garbage"
+/obj/structure/disposalpipe/segment,
+/obj/structure/machinery/gravity_generator{
+	name = "ring light";
+	desc = "This fashionable ring light casts an even light onto the recipient, perfect for makeup or photo shoots! The cable on this one seems to have been chewed off. Damn rats!"
 	},
-/obj/structure/machinery/recycler,
-/turf/open/floor/almayer{
-	dir = 4;
-	icon_state = "plating_striped";
-	tag = "icon-plating_striped (EAST)"
-	},
+/turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/l_m_p)
 "uvt" = (
 /obj/structure/machinery/light,
@@ -76230,7 +76850,13 @@
 	},
 /area/almayer/shipboard/brig/general_equipment)
 "uFt" = (
-/obj/structure/largecrate/random/case/double,
+/obj/structure/machinery/conveyor{
+	id = "lower_garbage";
+	dir = 4
+	},
+/obj/structure/machinery/light/small/broken{
+	dir = 1
+	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -76282,6 +76908,35 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/engineering/upper_engineering)
+"uGf" = (
+/obj/effect/decal/cleanable/blood,
+/obj/structure{
+	health = 150;
+	icon = 'icons/obj/pipes/pipes.dmi';
+	icon_state = "intact-scrubbers";
+	indestructible = 1;
+	layer = 4.5;
+	pixel_x = -4;
+	projectile_coverage = 0;
+	unacidable = 1;
+	dir = 8
+	},
+/obj/structure{
+	health = 150;
+	icon = 'icons/obj/pipes/pipes.dmi';
+	icon_state = "intact-scrubbers";
+	indestructible = 1;
+	layer = 4.5;
+	pixel_x = 5;
+	projectile_coverage = 0;
+	unacidable = 1;
+	dir = 8
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/hull/lower_hull/l_m_p)
 "uGw" = (
 /obj/structure/surface/table/almayer,
 /obj/item/reagent_container/food/drinks/cans/souto/diet/lime{
@@ -78363,6 +79018,17 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/grunt_rnr)
+"vwJ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	icon_state = "pipe-c"
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/hull/lower_hull/l_m_p)
 "vwN" = (
 /obj/item/clothing/gloves/botanic_leather{
 	name = "leather gloves"
@@ -79038,10 +79704,12 @@
 	},
 /area/almayer/squads/charlie)
 "vMn" = (
-/obj/structure/disposalpipe/segment{
+/obj/structure/machinery/recycler,
+/obj/structure/machinery/conveyor{
+	id = "lower_garbage";
 	dir = 4
 	},
-/obj/structure/largecrate/random/barrel/blue,
+/obj/effect/decal/cleanable/cobweb2/dynamic,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -79640,6 +80308,28 @@
 	tag = "icon-orange (NORTH)"
 	},
 /area/almayer/engineering/lower_engineering)
+"vWM" = (
+/obj/structure/disposalpipe/segment,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure{
+	health = 150;
+	icon = 'icons/obj/pipes/pipes.dmi';
+	icon_state = "intact-scrubbers";
+	indestructible = 1;
+	layer = 4.5;
+	pixel_x = 5;
+	projectile_coverage = 0;
+	unacidable = 1;
+	dir = 8
+	},
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/hull/lower_hull/l_m_p)
 "vXQ" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 1;
@@ -82337,6 +83027,13 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/hull/upper_hull/u_a_p)
+"xdv" = (
+/obj/item/tool/wet_sign{
+	pixel_x = -3;
+	pixel_y = 2
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/hull/lower_hull/l_m_p)
 "xet" = (
 /turf/closed/shuttle/escapepod{
 	icon_state = "wall10";
@@ -82934,6 +83631,24 @@
 	allow_construction = 0
 	},
 /area/almayer/hallways/starboard_hallway)
+"xpP" = (
+/obj/structure/largecrate/random/barrel/green,
+/obj/item/trash/plate{
+	pixel_y = 17
+	},
+/obj/item/reagent_container/food/snacks/toastedsandwich{
+	pixel_y = 25;
+	name = "fungus-covered sandwich"
+	},
+/obj/item/reagent_container/food/snacks/grown/mushroom/libertycap{
+	pixel_y = 20;
+	pixel_x = -4
+	},
+/obj/item/reagent_container/food/snacks/grown/mushroom/angel{
+	pixel_y = 21
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/hull/lower_hull/l_m_p)
 "xpT" = (
 /obj/structure/pipes/vents/pump{
 	dir = 8
@@ -83069,6 +83784,13 @@
 	tag = "icon-orange (EAST)"
 	},
 /area/almayer/hull/upper_hull/u_a_s)
+"xtJ" = (
+/obj/structure/window/framed/almayer,
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/hull/lower_hull/l_m_p)
 "xuc" = (
 /obj/structure/surface/table/almayer,
 /obj/item/tool/extinguisher,
@@ -83342,6 +84064,14 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/hull/upper_hull/u_a_s)
+"xxY" = (
+/obj/structure/disposalpipe/segment,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/hull/lower_hull/l_m_p)
 "xxZ" = (
 /obj/structure/reagent_dispensers/fueltank,
 /turf/open/floor/almayer{
@@ -84262,10 +84992,11 @@
 	},
 /area/almayer/living/briefing)
 "xRE" = (
-/obj/structure/disposalpipe/segment{
+/obj/structure/machinery/conveyor{
+	id = "lower_garbage";
 	dir = 4
 	},
-/obj/structure/largecrate/random/barrel/green,
+/obj/structure/plasticflaps,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -84900,6 +85631,36 @@
 	},
 /turf/open/floor/plating,
 /area/almayer/shipboard/brig/perma)
+"yeh" = (
+/obj/structure{
+	health = 150;
+	icon = 'icons/obj/pipes/pipes.dmi';
+	icon_state = "intact-scrubbers";
+	indestructible = 1;
+	layer = 4.5;
+	pixel_x = -4;
+	projectile_coverage = 0;
+	unacidable = 1;
+	dir = 9
+	},
+/obj/structure/largecrate/random/mini/med{
+	pixel_x = 5;
+	pixel_y = -3
+	},
+/obj/structure/largecrate/random/mini/med{
+	pixel_x = -12;
+	pixel_y = -3
+	},
+/obj/structure/largecrate/random/mini/chest{
+	pixel_y = 8;
+	pixel_x = -2
+	},
+/obj/structure/machinery/light/small,
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/hull/lower_hull/l_m_p)
 "yeo" = (
 /obj/structure/machinery/cm_vending/clothing/dress,
 /turf/open/floor/wood/ship,
@@ -126002,7 +126763,7 @@ yhQ
 yhQ
 yhQ
 yhQ
-yhQ
+cZg
 yhQ
 yhQ
 yhQ
@@ -126197,21 +126958,21 @@ clJ
 bVn
 clY
 bSJ
-fiq
+ucb
 iFm
-anb
-anb
+oFo
+jVF
 anb
 kKX
 uvs
-ixP
-fiq
-kUt
+tbK
+vWM
 hGZ
-tbK
-tbK
-sQU
-ebY
+hGZ
+hGZ
+xxY
+bVi
+oDf
 yhQ
 aaa
 aab
@@ -126400,20 +127161,20 @@ clJ
 clg
 clY
 bSJ
-fiq
-wUS
-tbK
-tbK
-bfc
+upT
+frt
+tIB
+qDU
+lHn
 ant
-glM
+oed
 mUn
-fiq
-suT
-oed
-oed
-oed
-uim
+rcU
+hCw
+dWt
+mOU
+kqh
+oDf
 qNy
 yhQ
 aaa
@@ -126603,17 +127364,17 @@ clK
 clg
 bVy
 bSJ
-fiq
-fiq
-fiq
-fiq
+uFt
+mUn
+qGT
+uim
 lra
-ujA
-fiq
-fiq
-fiq
-jbb
-uNW
+oDf
+iet
+yhQ
+yhQ
+yhQ
+yhQ
 yhQ
 yhQ
 yhQ
@@ -126807,21 +127568,21 @@ clg
 clY
 bSJ
 iGK
-tbK
-tbK
-tbK
+hCw
+ebY
+jbb
 sQU
-wUS
-hGZ
-tbK
-tbK
-sQU
-oDf
+glM
+mOR
 yhQ
-aaa
-aaa
-aaa
-aaa
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
 aaa
 aab
 aaa
@@ -127010,21 +127771,21 @@ bVo
 clY
 bSJ
 pNG
-oed
-oed
-oed
-oed
+nhp
+nfN
+jbb
+bob
 oDf
-mOU
-oDf
-oed
-oed
-uFt
+bTB
 yhQ
-aaa
-aaa
-aaa
-aaa
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
 aaa
 aab
 aaa
@@ -127212,22 +127973,22 @@ bSJ
 bSJ
 bSJ
 bSJ
-scI
-oed
+lYP
+jFv
+kQL
+jbb
+lvR
+gUi
+dcC
 yhQ
-yhQ
-yhQ
-yhQ
-yhQ
-yhQ
-yhQ
-yhQ
-yhQ
-yhQ
-aaa
-aaa
-aaa
-aaa
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
 aaa
 aab
 aaa
@@ -127415,22 +128176,22 @@ clL
 bVn
 clZ
 bSJ
-dGz
-cAH
-vTK
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+qUz
+ixP
+jhh
+uim
+spu
+nbp
+gVQ
+yhQ
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
 aaa
 aab
 aaa
@@ -127619,21 +128380,21 @@ clg
 clZ
 bSJ
 xRE
-ebO
-vTK
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+mJA
+tIB
+qDU
+kCF
+xdv
+uGf
+yhQ
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
 aaa
 aab
 aaa
@@ -127822,21 +128583,21 @@ clg
 acp
 bSJ
 vMn
-vuR
-vTK
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+lWO
+ujA
+fiq
+nbZ
+iut
+fbf
+yhQ
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
 aaa
 aab
 aaa
@@ -128024,22 +128785,22 @@ clL
 bVm
 clZ
 bSJ
-bob
-emG
-vTK
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+haq
+gRT
+xtJ
+fiq
+lgb
+iut
+yeh
+yhQ
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
 aaa
 aab
 aaa
@@ -128227,14 +128988,14 @@ bSJ
 bSJ
 bSJ
 bSJ
-cJP
-vuR
-vTK
-aaa
-aaa
-aaa
-aaa
-aaa
+esY
+nWA
+tbK
+eki
+vwJ
+mUn
+xpP
+yhQ
 aaa
 aaa
 aaa
@@ -128430,14 +129191,14 @@ bSJ
 clM
 clS
 bSJ
-nOG
-vuR
-vTK
-aaa
-aaa
-aaa
-aaa
-aaa
+dGz
+cAH
+eNO
+kwL
+ckE
+omi
+mMy
+yhQ
 aaa
 aaa
 aaa
@@ -128634,13 +129395,13 @@ clg
 bVq
 bSJ
 njT
-ydx
-vTK
-aaa
-aaa
-aaa
-aaa
-aaa
+dAd
+yhQ
+pbK
+yhQ
+yhQ
+yhQ
+yhQ
 aaa
 aaa
 aaa
@@ -128836,7 +129597,7 @@ bSJ
 bSJ
 bSJ
 bSJ
-nOG
+fOo
 cAH
 vTK
 aaa
@@ -129040,7 +129801,7 @@ oFV
 bVq
 bSJ
 fTx
-lGr
+kUt
 vTK
 aaa
 aaa
@@ -129446,7 +130207,7 @@ bSJ
 bSJ
 bSJ
 wGi
-woG
+gZP
 vTK
 aaa
 aaa
@@ -130054,7 +130815,7 @@ jGR
 jGR
 oqu
 bSJ
-vuR
+ojj
 vuR
 vuR
 vuR

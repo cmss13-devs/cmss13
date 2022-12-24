@@ -327,9 +327,9 @@
 	reload_delay = 100
 
 //-------------------------------------------------------
-//M9 SHARP Rifle
+//P9 SHARP Rifle
 
-/obj/item/ammo_magazine/rifle/dart
+/obj/item/ammo_magazine/rifle/sharp
 	name = "sharp rifle magazine"
 	icon_state = "sharprifle"
 	item_state = "sharprifle"
@@ -337,22 +337,24 @@
 	matter = list("metal" = 10000)
 	w_class = SIZE_MEDIUM
 	max_rounds = 10
-	default_ammo = /datum/ammo/rifle/dart/explosive
+	default_ammo = /datum/ammo/rifle/sharp/explosive
 	gun_type = /obj/item/weapon/gun/rifle/sharp
 	flags_magazine = NO_FLAGS
 
-/obj/item/ammo_magazine/rifle/dart/explosive
-	name = "\improper 9X-E sticky explosive dart magazine"
+	description_ammo = "darts"
+
+/obj/item/ammo_magazine/rifle/sharp/explosive
+	name = "\improper 9X-E Sticky Explosive Dart Magazine"
 	desc = "A specialized sticky explosive dart magazine."
 
-/obj/item/ammo_magazine/rifle/dart/track
-	name = "\improper 9X-T sticky tracking dart magazine"
+/obj/item/ammo_magazine/rifle/sharp/track
+	name = "\improper 9X-T Sticky Tracking Dart Magazine"
 	icon_state = "sharprifle_tracker"
-	default_ammo = /datum/ammo/rifle/dart/track
+	default_ammo = /datum/ammo/rifle/sharp/track
 	desc = "A specialized tracking dart magazine."
 
-/obj/item/ammo_magazine/rifle/dart/flechette
-	name = "\improper 9X-F flechette dart magazine"
+/obj/item/ammo_magazine/rifle/sharp/flechette
+	name = "\improper 9X-F Flechette Dart Magazine"
 	icon_state = "sharprifle_flechette"
-	default_ammo = /datum/ammo/rifle/dart/flechette
+	default_ammo = /datum/ammo/rifle/sharp/flechette
 	desc = "A specialized flechette dart magazine."

@@ -338,7 +338,8 @@
 	set waitfor = 0
 	if(!cause_data)
 		cause_data = create_cause_data(initial(name), user)
-	cell_explosion(loc, 50, 25, EXPLOSION_FALLOFF_SHAPE_LINEAR, CARDINAL_ALL_DIRS, cause_data)
+	cell_explosion(loc, 75, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, CARDINAL_ALL_DIRS, cause_data)
+	playsound(loc, 'sound/weapons/gun_sharp_explode.ogg', 35)
 	qdel(src)
 
 /obj/item/explosive/mine/sharp/disarm()
@@ -358,4 +359,13 @@
 /obj/item/explosive/mine/sharp/deploy_mine(var/mob/user)
 	if(disarmed)
 		return
-	. = ..()
+	if(!hard_iff_lock && user)
+		iff_signal = user.faction
+
+	cause_data = create_cause_data(initial(name), user)
+	anchored = TRUE
+	if(user)
+		user.drop_inv_item_on_ground(src)
+	setDir(user ? user.dir : dir) //The direction it is planted in is the direction the user faces at that time
+	activate_sensors()
+	update_icon()

@@ -1406,14 +1406,14 @@
 	desc = "A experimental harpoon launcher rifle manufactured by Armat Systems. It's specialized for specific ammo types out of a 10-round magainze, best used for area denial and disruption."
 	icon_state = "sharprifle"
 	item_state = "sharp"
-	fire_sound = "gun_pulse" // to fix
+	fire_sound = 'sound/weapons/gun_sharp.ogg' // to fix
 	reload_sound = 'sound/weapons/handling/m41_reload.ogg' // to fix
 	unload_sound = 'sound/weapons/handling/m41_unload.ogg' // to fix
 	unacidable = TRUE
 	indestructible = 1
 	muzzle_flash = null
 
-	current_mag = /obj/item/ammo_magazine/rifle/dart/explosive
+	current_mag = /obj/item/ammo_magazine/rifle/sharp/explosive
 	attachable_allowed = list(/obj/item/attachable/magnetic_harness)
 	matter = list("metal" = 6000)
 
@@ -1442,7 +1442,7 @@
 /obj/item/weapon/gun/rifle/sharp/proc/track(mob/user)
 	var/mob/living/carbon/human/M = user
 
-	var/max_count = 5 //max number of tracking on user's screen
+	var/max_count = 5 //max number of tracking
 	var/target
 	var/direction = -1
 	var/atom/areaLoc = null
@@ -1472,14 +1472,19 @@
 /obj/item/weapon/gun/rifle/sharp/able_to_fire(mob/living/user)
 	. = ..()
 	if (. && istype(user))
-		if(!skillcheck(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_ALL) && user.skills.get_skill_level(SKILL_SPEC_WEAPONS) != SKILL_SPEC_GRENADIER)
+		if(!skillcheck(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_ALL) && user.skills.get_skill_level(SKILL_SPEC_WEAPONS) != SKILL_SPEC_SCOUT)
 			to_chat(user, SPAN_WARNING("You don't seem to know how to use \the [src]..."))
 			return FALSE
 
 /obj/item/weapon/gun/rifle/sharp/cock()
 	return
 
-//make this pickable at GL locker maybe? only 1 item etc....section...
-// Fix fucking ammo inspect and maybe the weird in chamber insert
-// Crash @ explosion due to callback of qdel'ed object rework maybe. DO AT THE MINE LOCATION MAYBE IF !QDEL'ED??
-// DEAD MOBS ISSUE CLAYMORE CHECK, CURRENTLY DDOESNT BLOW UP CHANGE LAYER??? 
+// DEAD MOBS ISSUE CLAYMORE CHECK, CURRENTLY DDOESNT BLOW UP CHANGE LAYER??? and check if only active ones?
+// explosion damage
+//flechette too strong
+//check for mobs when explosion mine arms then blow
+// burst  fire explode delay? (maybe verb on mag)
+// xeno melee on disarmed mines....(turn off)
+// double check 360 on claymore
+// crate claymore interaction
+// can pick up claymore b4 armed lmao (freeze when shoot on int and anchor)

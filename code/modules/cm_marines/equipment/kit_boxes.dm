@@ -71,25 +71,17 @@
 
 /obj/item/storage/box/spec/scout
 	name = "\improper Scout equipment case"
-	desc = "A large case containing an M4RA battle rifle, M3-S light armor and helmet, M4RA battle sight, M68 thermal cloak, V3 reactive thermal tarp, improved scout laser designator, ammunition and additional pieces of equipment.\nDrag this sprite onto yourself to open it up! NOTE: You cannot put items back inside this case."
+	desc = "A large case containing a M4RA battle rifle or a P9 SHARP rifle, M3-S light armor and helmet, M4RA battle sight, M68 thermal cloak, V3 reactive thermal tarp, improved scout laser designator, ammunition and additional pieces of equipment.\nDrag this sprite onto yourself to open it up! NOTE: You cannot put items back inside this case."
 	kit_overlay = "scout"
 
 /obj/item/storage/box/spec/scout/fill_preset_inventory()
 	new /obj/item/clothing/suit/storage/marine/M3S(src)
 	new /obj/item/clothing/head/helmet/marine/scout(src)
 	new /obj/item/clothing/glasses/night/M4RA(src)
-	new /obj/item/ammo_magazine/rifle/m4ra(src)
-	new /obj/item/ammo_magazine/rifle/m4ra(src)
-	new /obj/item/ammo_magazine/rifle/m4ra(src)
-	new /obj/item/ammo_magazine/rifle/m4ra(src)
-	new /obj/item/ammo_magazine/rifle/m4ra/incendiary(src)
-	new /obj/item/ammo_magazine/rifle/m4ra/incendiary(src)
-	new /obj/item/ammo_magazine/rifle/m4ra/impact(src)
-	new /obj/item/ammo_magazine/rifle/m4ra/impact(src)
 	new /obj/item/weapon/gun/pistol/vp78(src)
 	new /obj/item/ammo_magazine/pistol/vp78(src)
 	new /obj/item/ammo_magazine/pistol/vp78(src)
-	new /obj/item/weapon/gun/rifle/m4ra(src)
+	new /obj/item/spec_kit/scout_weapon_selector(src)
 	new /obj/item/storage/backpack/marine/satchel/scout_cloak(src)
 	new /obj/item/bodybag/tarp/reactive/scout(src)
 	new /obj/item/explosive/plastic(src)
@@ -100,6 +92,33 @@
 	else
 		new /obj/item/device/binoculars/range/designator/scout(src)
 
+/obj/item/storage/box/spec/scout/m4ra
+	desc = "A large case containing an M4RA battle rifle."
+
+/obj/item/storage/box/spec/scout/m4ra/fill_preset_inventory()
+	new /obj/item/ammo_magazine/rifle/m4ra(src)
+	new /obj/item/ammo_magazine/rifle/m4ra(src)
+	new /obj/item/ammo_magazine/rifle/m4ra(src)
+	new /obj/item/ammo_magazine/rifle/m4ra(src)
+	new /obj/item/ammo_magazine/rifle/m4ra/incendiary(src)
+	new /obj/item/ammo_magazine/rifle/m4ra/incendiary(src)
+	new /obj/item/ammo_magazine/rifle/m4ra/impact(src)
+	new /obj/item/ammo_magazine/rifle/m4ra/impact(src)
+	new /obj/item/weapon/gun/rifle/m4ra(src)
+
+/obj/item/storage/box/spec/scout/sharp
+	desc = "A large case containing an P9 SHARP Rifle."
+
+/obj/item/storage/box/spec/scout/sharp/fill_preset_inventory()
+	new /obj/item/ammo_magazine/rifle/sharp/explosive(src)
+	new /obj/item/ammo_magazine/rifle/sharp/explosive(src)
+	new /obj/item/ammo_magazine/rifle/sharp/explosive(src)
+	new /obj/item/ammo_magazine/rifle/sharp/explosive(src)
+	new /obj/item/ammo_magazine/rifle/sharp/flechette(src)
+	new /obj/item/ammo_magazine/rifle/sharp/flechette(src)
+	new /obj/item/ammo_magazine/rifle/sharp/track(src)
+	new /obj/item/ammo_magazine/rifle/sharp/track(src)
+	new /obj/item/weapon/gun/rifle/sharp(src)
 
 /obj/item/storage/box/spec/pyro
 	name = "\improper Pyrotechnician equipment case"
@@ -255,6 +274,31 @@
 		ID.set_assignment((user.assigned_squad ? (user.assigned_squad.name + " ") : "") + ID.assignment + " ([specialist_assignment])")
 		GLOB.data_core.manifest_modify(user.real_name, WEAKREF(user), ID.assignment)
 		return TRUE
+	return FALSE
+
+//Scout weapon selector snowflake
+/obj/item/spec_kit/scout_weapon_selector
+	name = "\improper Scout weapon case"
+	desc = "A large case with the option of the M4RA Battle Rifle and the P9 SHARP Rifle."
+
+/obj/item/spec_kit/scout_weapon_selector/can_use(mob/living/carbon/human/user)
+	return TRUE
+
+/obj/item/spec_kit/scout_weapon_selector/select_and_spawn(mob/living/carbon/human/user)
+	var/scout_selection = tgui_input_list(usr, "Select your weapon", "Weapon Selection", list("M4RA battle Rifle", "P9 SHARP Rifle"))
+	if(!scout_selection || QDELETED(src))
+		return FALSE
+	var/turf/T = get_turf(loc)
+	var/obj/item/storage/box/spec/weapon_box
+	switch(scout_selection)
+		if("M4RA battle Rifle")
+			weapon_box = new /obj/item/storage/box/spec/scout/m4ra(T)
+			user.put_in_hands(weapon_box)
+			return TRUE
+		if("P9 SHARP Rifle")
+			weapon_box = new /obj/item/storage/box/spec/scout/sharp(T)
+			user.put_in_hands(weapon_box)
+			return TRUE
 	return FALSE
 
 

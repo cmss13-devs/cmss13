@@ -1511,9 +1511,9 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 		playsound(user, 'sound/weapons/gun_empty.ogg', 25, 1, 5) //5 tile range
 	else
 		playsound(src, 'sound/weapons/gun_empty.ogg', 25, 1, 5)
-	if(!message)
-		return
-	balloon_alert(user, "*click*")
+
+	if(message && (world.time % 3))
+		balloon_alert(user, "*click*")
 
 /obj/item/weapon/gun/proc/display_ammo(mob/user)
 	// Do not display ammo if you have an attachment

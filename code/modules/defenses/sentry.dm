@@ -128,34 +128,21 @@
 
 	return TRUE
 
-/obj/structure/machinery/defenses/sentry/proc/update_choice(mob/user, var/category, var/selection)
+/obj/structure/machinery/defenses/sentry/update_choice(mob/user, var/category, var/selection)
+	. = ..()
+	if(.)
+		return
 	if(category in selected_categories)
 		selected_categories[category] = selection
 		switch(category)
-			if(SENTRY_CATEGORY_IFF)
-				handle_iff(selection)
 			if(SENTRY_CATEGORY_ROF)
 				handle_rof(selection)
 				return TRUE
-		return TRUE
 	else
 		if(category == "nickname")
 			nickname = selection
 			return TRUE
 	return FALSE
-
-	// do your switch case here to implement action and selection
-/obj/structure/machinery/defenses/sentry/proc/handle_iff(var/selection)
-	switch(selection)
-		if(FACTION_USCM)
-			faction_group = FACTION_LIST_MARINE
-		if(FACTION_WEYLAND)
-			faction_group = FACTION_LIST_MARINE_WY
-		if(FACTION_HUMAN)
-			faction_group = FACTION_LIST_HUMANOID
-		if(FACTION_COLONY)
-			faction_group = list(FACTION_MARINE, FACTION_COLONIST)
-
 
 /obj/structure/machinery/defenses/sentry/proc/handle_rof(var/level)
 	switch(level)

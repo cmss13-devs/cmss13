@@ -76,14 +76,10 @@
 	desc = "They seem to pulse slightly with an inner life"
 	icon_state = "eggs"
 	var/amount_grown = 0
-	var/inert = FALSE
-
 /obj/effect/spider/eggcluster/Initialize(mapload, ...)
 	. = ..()
 	pixel_x = rand(3,-3)
 	pixel_y = rand(3,-3)
-	if(!inert)
-		return
 	START_PROCESSING(SSobj, src)
 
 /obj/effect/spider/eggcluster/Destroy()
@@ -97,10 +93,6 @@
 		for(var/i=0, i<num, i++)
 			new /obj/effect/spider/spiderling(src.loc)
 		qdel(src)
-
-/obj/effect/spider/eggcluster/inert
-	desc = "All the eggs seem to be hatched, nothing's getting out of these anymore. You're not sure if to be thankful or not.."
-	inert = TRUE
 
 /obj/effect/spider/spiderling
 	name = "spiderling"
@@ -204,28 +196,12 @@
 	desc = "Something wrapped in silky spider web"
 	icon_state = "cocoon1"
 	health = 60
-	var/fill_from_loc = FALSE
-	 ///Used to typecheck objects inside. Can be instanced!
-	var/list/fill_type_whitelist
 
-/obj/effect/spider/cocoon/Initialize(mapload, ...)
-	. = ..()
-	icon_state = pick("cocoon1","cocoon2","cocoon3")
-
-	if(fill_from_loc)		// if closed, any item at the crate's loc is put in the contents
-		for(var/atom/movable/atom_to_fill in src.loc)
-			if(fill_type_whitelist && !is_type_in_list(atom_to_fill, fill_type_whitelist))
-				continue
-			if(atom_to_fill.density || atom_to_fill.anchored || atom_to_fill == src)
-				continue
-			atom_to_fill.forceMove(src)
+	New()
+		icon_state = pick("cocoon1","cocoon2","cocoon3")
 
 /obj/effect/spider/cocoon/Destroy()
 	visible_message(SPAN_DANGER("[src] splits open."))
 	for(var/atom/movable/A in contents)
 		A.forceMove(loc)
 	. = ..()
-
-/obj/effect/spider/cocoon/map_fill_crate
-	fill_from_loc = TRUE
-	fill_type_whitelist = list(/mob/living, /obj/item)

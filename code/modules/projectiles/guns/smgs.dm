@@ -286,7 +286,7 @@
 						)
 	random_spawn_chance = 33
 	random_spawn_rail = list(
-							/obj/item/attachable/reflex/
+							/obj/item/attachable/reflex
 							)
 	random_spawn_under = list(
 							/obj/item/attachable/lasersight

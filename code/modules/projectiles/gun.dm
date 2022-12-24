@@ -892,7 +892,8 @@ User can be passed as null, (a gun reloading itself for instance), so we need to
 		if (world.time % 3) // Limits how often this message pops up, saw this somewhere else and thought it was clever
 			//Absolutely SCREAM this at people so they don't get killed by it
 			to_chat(user, SPAN_HIGHDANGER("Help intent safety is on! Switch to another intent to fire your weapon."))
-			click_empty(user)
+			balloon_alert(user, "help intent safety is on!")
+			click_empty(user, FALSE)
 		return FALSE
 	else if(user.gun_mode && !(A in target))
 		PreFire(A,user,params) //They're using the new gun system, locate what they're aiming at.
@@ -1504,12 +1505,15 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 					return
 	return TRUE
 
-/obj/item/weapon/gun/proc/click_empty(mob/user)
+/obj/item/weapon/gun/proc/click_empty(mob/user, var/message = TRUE)
 	if(user)
 		to_chat(user, SPAN_WARNING("<b>*click*</b>"))
 		playsound(user, 'sound/weapons/gun_empty.ogg', 25, 1, 5) //5 tile range
 	else
 		playsound(src, 'sound/weapons/gun_empty.ogg', 25, 1, 5)
+	if(!message)
+		return
+	balloon_alert(user, "*click*")
 
 /obj/item/weapon/gun/proc/display_ammo(mob/user)
 	// Do not display ammo if you have an attachment

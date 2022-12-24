@@ -816,3 +816,22 @@
       #V compared to USCM :V) using V/M/N/J/U General/T Commando'
   - rscadd: CLF channels are A Med/B Engi/C Cmd/D CCT/G General
   - rscadd: PMC channels are E Engi/F Med/P General/O CCT/Z Cmd /K Whiteout
+2022-12-24:
+  SpartanBobby:
+  - bugfix: fixed a misplaced wall in CIC cryo
+  Stalkerino:
+  - bugfix: renamed lethal mode to IFF on the M46C and the M56
+  carlarctg:
+  - rscdel: Removed almost all the PMC corpses from all the maps. Replaced them with
+      W-Y Security Guards (goons)
+  - rscadd: Sprinkled some soul in some nightmare inserts that hosted these PMC corpses
+      because i cannot help myself. For example the LV crash and hydro holds have
+      some wooden barricades, the big red admin hold got some mostly-empty M41 magazine
+      boxes.
+  - rscadd: Almost all of the PMC corpse spawns' NSG 23s and magazines were replaced
+      with corpo M41s equipped with rubber bullets. Where relevant, there are also
+      normal magazines that can be picked up, such as the big red offices crashed
+      ship.
+  fira:
+  - bugfix: Increased contrast and fixed adjustment on flare flames.
+  - rscadd: Flares shot by flare gun will now align on landing similar to thrown ones.

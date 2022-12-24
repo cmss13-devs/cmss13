@@ -1,4 +1,0 @@
-author: "SpartanBobby"
-delete-after: True
-changes:
-  - bugfix: "fixed a misplaced wall in CIC cryo"

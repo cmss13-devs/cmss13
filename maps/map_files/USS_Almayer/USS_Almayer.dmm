@@ -45448,7 +45448,7 @@
 	pixel_y = 6;
 	pixel_x = -9;
 	name = "flight wire";
-	desc = "Flight wire, utilized by pilot officers to do... flight... stuff. At least, that's what that PO told you they do when he ordered you to grab some. Ten months ago."icon='icons/obj/structures/machinery/power.dmi';
+	desc = "Flight wire, utilized by pilot officers to do... flight... stuff. At least, that's what that PO told you they do when he ordered you to grab some. Ten months ago.";
 	icon_state = "coil";
 	color = "#0000FF";
 	icon = 'icons/obj/structures/machinery/power.dmi'

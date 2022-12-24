@@ -493,7 +493,7 @@
 
 /obj/item/weapon/gun/rifle/m46c/verb/toggle_iff()
 	set category = "Weapons"
-	set name = "Toggle Lethal Mode"
+	set name = "Toggle IFF"
 	set src in usr
 
 	if(is_locked && linked_human && usr != linked_human)

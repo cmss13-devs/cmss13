@@ -221,7 +221,7 @@
 		else
 			to_chat(user, SPAN_NOTICE(" The MMI must go in after everything else!"))
 
-	if (istype(W, /obj/item/tool/pen))
+	if (HAS_TRAIT(W, TRAIT_TOOL_PEN))
 		var/t = stripped_input(user, "Enter new robot name", src.name, src.created_name, MAX_NAME_LEN)
 		if (!t)
 			return

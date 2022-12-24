@@ -448,7 +448,7 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/marine/shared/alpha_bravo/yellow
 	icon = 'icons/obj/structures/doors/2x1prepdoor_bravo.dmi'
 
-/obj/structure/machinery/door/airlock/multi_tile/almayer/marine/shared/charlie_delta/
+/obj/structure/machinery/door/airlock/multi_tile/almayer/marine/shared/charlie_delta
 	name = "\improper Charlie-Delta Squads Preparations"
 	icon = 'icons/obj/structures/doors/2x1prepdoor_charlie.dmi'
 	req_one_access = list(ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_CARGO, ACCESS_MARINE_CHARLIE, ACCESS_MARINE_DELTA)

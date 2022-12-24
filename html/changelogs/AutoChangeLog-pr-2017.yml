@@ -1,4 +1,0 @@
-author: "stanalbatross"
-delete-after: True
-changes:
-  - rscdel: "removed nanoui functionality from TTVs. They were already nonfunctional, this just makes it so you can't open a nonfunctional UI with them."

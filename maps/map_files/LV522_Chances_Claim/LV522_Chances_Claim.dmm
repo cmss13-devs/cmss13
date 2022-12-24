@@ -32960,7 +32960,7 @@
 "ooh" = (
 /obj/structure/surface/table/almayer,
 /obj/item/clothing/head/beret/eng,
-/obj/item/ammo_box/magazine/smg/nailgun/empty{
+/obj/item/ammo_box/magazine/nailgun/empty{
 	pixel_x = -6;
 	pixel_y = 12
 	},
@@ -48407,7 +48407,7 @@
 /area/lv522/oob)
 "ukp" = (
 /obj/structure/surface/table/almayer,
-/obj/item/ammo_box/magazine/smg/nailgun/empty{
+/obj/item/ammo_box/magazine/nailgun/empty{
 	pixel_y = 5
 	},
 /turf/open/floor/prison,

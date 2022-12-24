@@ -2270,7 +2270,7 @@
 	accuracy = HIT_ACCURACY_TIER_3
 	damage_falloff = DAMAGE_FALLOFF_TIER_8
 
-/datum/ammo/energy/yautja/
+/datum/ammo/energy/yautja
 	headshot_state	= HEADSHOT_OVERLAY_MEDIUM
 	accurate_range = 12
 	shell_speed = AMMO_SPEED_TIER_3
@@ -3207,6 +3207,9 @@
 
 /datum/ammo/flare/proc/drop_flare(var/turf/T, obj/item/projectile/fired_projectile, var/mob/firer)
 	var/obj/item/device/flashlight/flare/G = new flare_type(T)
+	var/matrix/rotation = matrix()
+	rotation.Turn(fired_projectile.angle - 90)
+	G.apply_transform(rotation)
 	G.visible_message(SPAN_WARNING("\A [G] bursts into brilliant light nearby!"))
 	return G
 

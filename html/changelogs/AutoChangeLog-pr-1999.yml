@@ -1,8 +1,0 @@
-author: "Huffie56"
-delete-after: True
-changes:
-  - bugfix: "change position of camera in synth closet."
-  - bugfix: "change position of camera in laundry room"
-  - bugfix: "change position of camera in Brig armory"
-  - bugfix: "change position of camera in perma cell section"
-  - bugfix: "change position of camera in upper engi north of CE office"

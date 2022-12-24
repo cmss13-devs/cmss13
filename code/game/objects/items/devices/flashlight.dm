@@ -275,7 +275,7 @@
 	/// Whether to use flame overlays for this flare type
 	var/show_flame = TRUE
 	/// Tint for the greyscale flare flame
-	var/flame_tint = "#ddbbbb"
+	var/flame_tint = "#ffcccc"
 	/// Color correction, added to the whole flame overlay
 	var/flame_base_tint = "#ff0000"
 	// "But, why are there two colors?"

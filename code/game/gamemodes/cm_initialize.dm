@@ -723,7 +723,7 @@ Additional game mode variables.
 	//Set up attachment vendor contents related to Marine count
 	for(var/i in GLOB.cm_vending_vendors)
 		var/obj/structure/machinery/cm_vending/sorted/CVS = i
-		CVS.populate_product_list(scale)
+		CVS.populate_product_list_and_boxes(scale)
 
 	//Scale the amount of cargo points through a direct multiplier
 	supply_controller.points = round(supply_controller.points * scale)

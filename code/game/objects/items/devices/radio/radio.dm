@@ -371,9 +371,6 @@
 
 		if(!position || !(receive_z in level))
 			return -1
-	if(freq in ANTAG_FREQS)
-		if(!(src.syndie))//Checks to see if it's allowed on that frequency, based on the encryption keys
-			return -1
 	if (!on)
 		return -1
 	if (!freq) //received on main frequency

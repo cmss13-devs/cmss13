@@ -264,3 +264,15 @@
 
 //used in speed_modifier component
 #define HUMAN_STAMINA_MULTIPLIER 			5
+
+/*
+	Chemical explosions/fires
+*/
+#define CHEM_FIRE_PENETRATION_THRESHOLD	10 //The minimum amount of a fire penetrating chemical required to turn a fire into fire penetrating
+#define CHEM_FIRE_STAR_THRESHOLD		30 //An intensity greater than this will cause a fire to be star shape
+#define CHEM_FIRE_IRREGULAR_THRESHOLD	15
+#define CHEM_FIRE_PHOSPHORUS_PER_RADIUS	10 //Amount of phosphorus that equals 1 radius of white phosphorus smoke
+#define EXPLOSION_PHORON_THRESHOLD		10 //The minimum amount of phoron required to turn shrapnel into incendiary shrapnel
+#define EXPLOSION_MIN_FALLOFF			25
+#define EXPLOSION_BASE_SHARDS			4
+#define INCENDIARY_SHARDS_MAX_REDUCTION	4 //The maximum amount of shards is divided by this number if the shards are incendiary

@@ -489,6 +489,7 @@
 		hive.hive_ui.update_all_xeno_data()
 
 	job = caste.caste_type // Used for tracking the caste playtime
+	Decorate()
 
 	RegisterSignal(src, COMSIG_MOB_SCREECH_ACT, .proc/handle_screech_act)
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_XENO_SPAWN, src)

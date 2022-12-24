@@ -1,6 +1,5 @@
 
 /atom
-	var/name_label /// Labels put onto the atom by a hand labeler. usually in the format "[initial(name)] ([name_label])"
 	var/desc_lore = null
 
 	plane = GAME_PLANE
@@ -192,6 +191,7 @@ directive is properly returned.
 		log_debug("Attempted to create an examine block with no strings! Atom : [src], user : [user]")
 		return
 	to_chat(user, examine_block(examine_strings.Join("\n")))
+	SEND_SIGNAL(src, COMSIG_PARENT_EXAMINE, user, examine_strings)
 
 /atom/proc/get_examine_text(mob/user)
 	. = list()

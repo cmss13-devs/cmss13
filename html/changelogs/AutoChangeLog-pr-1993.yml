@@ -1,5 +1,0 @@
-author: "Morrow"
-delete-after: True
-changes:
-  - rscadd: "MPs will now start at LCPL for the first 10 hours of playtime."
-  - rscdel: "MP Cadet is removed."

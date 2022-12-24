@@ -503,14 +503,14 @@
 		if(istype(src,/obj/structure/machinery/m56d_hmg/auto)) // we don't want to charge it to the point of downgrading it (:
 			var/obj/item/device/m2c_gun/HMG = new(src.loc)
 			HMG.health = src.health
-			HMG.set_name_label(name_label)
+			transfer_label_component(HMG)
 			HMG.rounds = src.rounds //Inherent the amount of ammo we had.
 			HMG.update_icon()
 			qdel(src)
 		else
 			var/obj/item/device/m56d_gun/HMG = new(src.loc) // note: find a better way than a copy pasted else statement
 			HMG.health = src.health
-			HMG.set_name_label(name_label)
+			transfer_label_component(HMG)
 			HMG.rounds = src.rounds //Inherent the amount of ammo we had.
 			HMG.has_mount = TRUE
 			HMG.update_icon()

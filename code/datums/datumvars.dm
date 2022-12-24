@@ -1125,5 +1125,10 @@ body
 		if(!istype(DAT, /datum))
 			return
 		src.debug_variables(DAT)
+	if(href_list["add_items_to_vendor"])
+		var/obj/structure/machinery/cm_vending/clothing/super_snowflake/vendor = locate(href_list["add_items_to_vendor"])
+		if(!istype(vendor))
+			return
+		vendor.add_items_to_vendor()
 
 	return

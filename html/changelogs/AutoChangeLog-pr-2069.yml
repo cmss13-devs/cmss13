@@ -1,0 +1,7 @@
+author: "stanalbatross"
+delete-after: True
+changes:
+  - bugfix: "fixed examining vehicle parts not returning anything"
+  - bugfix: "fixed vendors being able to vend to your hand while you are not adjacent to them"
+  - bugfix: "fixed hardpoint removal list staying on your screen if you tried to x out of it"
+  - bugfix: "people with vehicle skill but without engi skill can now also see hardpoint integrity"

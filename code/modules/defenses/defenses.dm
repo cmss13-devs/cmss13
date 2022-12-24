@@ -104,6 +104,30 @@
 /obj/structure/machinery/defenses/proc/identify()
 	playsound(loc, 'sound/machines/twobeep.ogg', 50, 1)
 
+/obj/structure/machinery/defenses/proc/update_choice(mob/user, var/category, var/selection)
+	. = FALSE
+	if(category in selected_categories)
+		selected_categories[category] = selection
+		switch(category)
+			if(SENTRY_CATEGORY_IFF)
+				handle_iff(selection)
+				return TRUE
+	else
+		if(category == "nickname")
+			nickname = selection
+			return TRUE
+
+/obj/structure/machinery/defenses/proc/handle_iff(var/selection)
+	switch(selection)
+		if(FACTION_USCM)
+			faction_group = FACTION_LIST_MARINE
+		if(FACTION_WEYLAND)
+			faction_group = FACTION_LIST_MARINE_WY
+		if(FACTION_HUMAN)
+			faction_group = FACTION_LIST_HUMANOID
+		if(FACTION_COLONY)
+			faction_group = list(FACTION_MARINE, FACTION_COLONIST)
+
 
 /obj/structure/machinery/defenses/start_processing()
 	if(!machine_processing)

@@ -16,6 +16,7 @@ interface SentrySpec {
   selection_state: SelectedState[];
   selection_menu: SelectionState[];
   rounds?: number;
+  max_rounds?: number;
   name: string;
   area: string;
   active: 0 | 1;
@@ -158,7 +159,7 @@ const GunMenu = (props: { data: SentrySpec }, context) => {
           </span>
         </Box>
       </Flex.Item>
-      {props.data.rounds !== undefined && (
+      {props.data.rounds !== undefined && props.data.max_rounds !== undefined && (
         <Flex.Item>
           <Box className="EngagedBox">
             <Stack>
@@ -172,7 +173,8 @@ const GunMenu = (props: { data: SentrySpec }, context) => {
                 align="center"
                 className={classes([
                   'AmmoBoundingBox',
-                  props.data.rounds < 100 && 'AmmoBoundingBoxWarning',
+                  props.data.max_rounds * 0.2 > props.data.rounds &&
+                    'AmmoBoundingBoxWarning',
                 ])}>
                 {round_rep && (
                   <span>

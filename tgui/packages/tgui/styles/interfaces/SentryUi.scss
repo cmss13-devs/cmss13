@@ -93,8 +93,8 @@ $large-text: 1.5rem;
   .SentryCard {
     height: 100%;
     width: 270px;
-    margin: 2px;
-    padding: 2px;
+    margin-left: 2px;
+    margin-right: 2px;
     span {
       font-size: $large-text;
       display: block;

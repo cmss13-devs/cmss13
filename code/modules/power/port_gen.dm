@@ -338,8 +338,9 @@ display round(lastgen) and phorontank amount
 	power_gen = 15000
 	time_per_sheet = 120
 	board_path = /obj/item/circuitboard/machine/pacman/super
-	overheat()
-		explosion(src.loc, 3, 3, 3, -1)
+
+/obj/structure/machinery/power/port_gen/pacman/super/overheat()
+	explosion(src.loc, 3, 3, 3, -1)
 
 /obj/structure/machinery/power/port_gen/pacman/mrs
 	name = "M.R.S.P.A.C.M.A.N.-type Portable Generator"
@@ -348,5 +349,6 @@ display round(lastgen) and phorontank amount
 	power_gen = 40000
 	time_per_sheet = 150
 	board_path = /obj/item/circuitboard/machine/pacman/mrs
-	overheat()
-		explosion(src.loc, 4, 4, 4, -1)
+
+/obj/structure/machinery/power/port_gen/pacman/mrs/overheat()
+	explosion(src.loc, 4, 4, 4, -1)

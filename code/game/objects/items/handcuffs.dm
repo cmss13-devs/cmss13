@@ -95,11 +95,9 @@
 	cuff_sound = 'sound/weapons/cablecuff.ogg'
 	cuff_delay = 20
 
-	place_handcuffs(mob/living/carbon/target, mob/user)
-		..()
-		flags_item |= DELONDROP
-
-
+/obj/item/handcuffs/zip/place_handcuffs(mob/living/carbon/target, mob/user)
+	..()
+	flags_item |= DELONDROP
 
 /obj/item/handcuffs/cable
 	name = "cable restraints"

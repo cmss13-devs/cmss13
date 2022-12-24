@@ -14,172 +14,172 @@
 	var/force_teleport = 1 //if false, teleport will use Move() proc (dense objects will prevent teleportation)
 
 
-	New(ateleatom, adestination, aprecision=0, afteleport=1, aeffectin=null, aeffectout=null, asoundin=null, asoundout=null)
-		..()
-		if(!Init(arglist(args)))
-			return 0
-		return 1
+/datum/teleport/New(ateleatom, adestination, aprecision=0, afteleport=1, aeffectin=null, aeffectout=null, asoundin=null, asoundout=null)
+	..()
+	if(!Init(arglist(args)))
+		return 0
+	return 1
 
-	proc/Init(ateleatom,adestination,aprecision,afteleport,aeffectin,aeffectout,asoundin,asoundout)
-		if(!setTeleatom(ateleatom))
-			return 0
-		if(!setDestination(adestination))
-			return 0
-		if(!setPrecision(aprecision))
-			return 0
-		setEffects(aeffectin,aeffectout)
-		setForceTeleport(afteleport)
-		setSounds(asoundin,asoundout)
-		return 1
+/datum/teleport/proc/Init(ateleatom,adestination,aprecision,afteleport,aeffectin,aeffectout,asoundin,asoundout)
+	if(!setTeleatom(ateleatom))
+		return 0
+	if(!setDestination(adestination))
+		return 0
+	if(!setPrecision(aprecision))
+		return 0
+	setEffects(aeffectin,aeffectout)
+	setForceTeleport(afteleport)
+	setSounds(asoundin,asoundout)
+	return 1
 
 	//must succeed
-	proc/setPrecision(aprecision)
-		if(isnum(aprecision))
-			precision = aprecision
-			return 1
-		return 0
+/datum/teleport/proc/setPrecision(aprecision)
+	if(isnum(aprecision))
+		precision = aprecision
+		return 1
+	return 0
 
 	//must succeed
-	proc/setDestination(atom/adestination)
-		if(istype(adestination))
-			destination = adestination
-			return 1
-		return 0
+/datum/teleport/proc/setDestination(atom/adestination)
+	if(istype(adestination))
+		destination = adestination
+		return 1
+	return 0
 
 	//must succeed in most cases
-	proc/setTeleatom(atom/movable/ateleatom)
-		if(istype(ateleatom, /obj/effect))
-			qdel(ateleatom)
-			return 0
-		if(istype(ateleatom))
-			teleatom = ateleatom
-			return 1
+/datum/teleport/proc/setTeleatom(atom/movable/ateleatom)
+	if(istype(ateleatom, /obj/effect))
+		qdel(ateleatom)
 		return 0
+	if(istype(ateleatom))
+		teleatom = ateleatom
+		return 1
+	return 0
 
 	//custom effects must be properly set up first for instant-type teleports
 	//optional
-	proc/setEffects(datum/effect_system/aeffectin=null,datum/effect_system/aeffectout=null)
-		effectin = istype(aeffectin) ? aeffectin : null
-		effectout = istype(aeffectout) ? aeffectout : null
-		return 1
+/datum/teleport/proc/setEffects(datum/effect_system/aeffectin=null,datum/effect_system/aeffectout=null)
+	effectin = istype(aeffectin) ? aeffectin : null
+	effectout = istype(aeffectout) ? aeffectout : null
+	return 1
 
 	//optional
-	proc/setForceTeleport(afteleport)
-		force_teleport = afteleport
-		return 1
+/datum/teleport/proc/setForceTeleport(afteleport)
+	force_teleport = afteleport
+	return 1
 
 	//optional
-	proc/setSounds(asoundin=null,asoundout=null)
-		soundin = isfile(asoundin) ? asoundin : null
-		soundout = isfile(asoundout) ? asoundout : null
-		return 1
+/datum/teleport/proc/setSounds(asoundin=null,asoundout=null)
+	soundin = isfile(asoundin) ? asoundin : null
+	soundout = isfile(asoundout) ? asoundout : null
+	return 1
 
 	//placeholder
-	proc/teleportChecks()
-		return 1
+/datum/teleport/proc/teleportChecks()
+	return 1
 
-	proc/playSpecials(atom/location,datum/effect_system/effect,sound)
-		if(location)
-			if(effect)
-				spawn(-1)
-					src = null
-					effect.attach(location)
-					effect.start()
-			if(sound)
-				spawn(-1)
-					src = null
-					playsound(location, sound, 50, 1)
-		return
+/datum/teleport/proc/playSpecials(atom/location,datum/effect_system/effect,sound)
+	if(location)
+		if(effect)
+			spawn(-1)
+				src = null
+				effect.attach(location)
+				effect.start()
+		if(sound)
+			spawn(-1)
+				src = null
+				playsound(location, sound, 50, 1)
+	return
 
-	//do the monkey dance
-	proc/doTeleport()
+//do the monkey dance
+/datum/teleport/proc/doTeleport()
 
-		var/turf/destturf
-		var/turf/curturf = get_turf(teleatom)
-		var/area/destarea = get_area(destination)
-		if(precision)
-			var/list/posturfs = circlerangeturfs(destination,precision)
-			destturf = SAFEPICK(posturfs)
-		else
-			destturf = get_turf(destination)
+	var/turf/destturf
+	var/turf/curturf = get_turf(teleatom)
+	var/area/destarea = get_area(destination)
+	if(precision)
+		var/list/posturfs = circlerangeturfs(destination,precision)
+		destturf = SAFEPICK(posturfs)
+	else
+		destturf = get_turf(destination)
 
-		if(!destturf || !curturf)
-			return 0
-
-		playSpecials(curturf,effectin,soundin)
-
-		var/obj/structure/bed/chair/C = null
-		if(isliving(teleatom))
-			var/mob/living/L = teleatom
-			if(L.buckled)
-				C = L.buckled
-		if(force_teleport)
-			teleatom.forceMove(destturf)
-			playSpecials(destturf,effectout,soundout)
-		else
-			if(teleatom.Move(destturf))
-				playSpecials(destturf,effectout,soundout)
-		if(C)
-			C.forceMove(destturf)
-
-		destarea.Entered(teleatom)
-
-		return 1
-
-	proc/teleport()
-		if(teleportChecks())
-			return doTeleport()
+	if(!destturf || !curturf)
 		return 0
+
+	playSpecials(curturf,effectin,soundin)
+
+	var/obj/structure/bed/chair/C = null
+	if(isliving(teleatom))
+		var/mob/living/L = teleatom
+		if(L.buckled)
+			C = L.buckled
+	if(force_teleport)
+		teleatom.forceMove(destturf)
+		playSpecials(destturf,effectout,soundout)
+	else
+		if(teleatom.Move(destturf))
+			playSpecials(destturf,effectout,soundout)
+	if(C)
+		C.forceMove(destturf)
+
+	destarea.Entered(teleatom)
+
+	return 1
+
+/datum/teleport/proc/teleport()
+	if(teleportChecks())
+		return doTeleport()
+	return 0
 
 /datum/teleport/instant //teleports when datum is created
 
-	New(ateleatom, adestination, aprecision=0, afteleport=1, aeffectin=null, aeffectout=null, asoundin=null, asoundout=null)
-		if(..())
-			teleport()
-		return
+/datum/teleport/instant/New(ateleatom, adestination, aprecision=0, afteleport=1, aeffectin=null, aeffectout=null, asoundin=null, asoundout=null)
+	if(..())
+		teleport()
+	return
 
 
 /datum/teleport/instant/science
 
-	setEffects(datum/effect_system/aeffectin,datum/effect_system/aeffectout)
-		if(!aeffectin || !aeffectout)
-			var/datum/effect_system/spark_spread/aeffect = new
-			aeffect.set_up(5, 1, teleatom)
-			effectin = effectin || aeffect
-			effectout = effectout || aeffect
-			return 1
+/datum/teleport/instant/science/setEffects(datum/effect_system/aeffectin,datum/effect_system/aeffectout)
+	if(!aeffectin || !aeffectout)
+		var/datum/effect_system/spark_spread/aeffect = new
+		aeffect.set_up(5, 1, teleatom)
+		effectin = effectin || aeffect
+		effectout = effectout || aeffect
+		return 1
+	else
+		return ..()
+
+/datum/teleport/instant/science/setPrecision(aprecision)
+	..()
+	if(istype(teleatom, /obj/item/storage/backpack/holding))
+		precision = rand(1,100)
+
+	var/list/bagholding = teleatom.search_contents_for(/obj/item/storage/backpack/holding)
+	if(bagholding.len)
+		precision = max(rand(1,100)*bagholding.len,100)
+		if(istype(teleatom, /mob/living))
+			var/mob/living/MM = teleatom
+			to_chat(MM, SPAN_WARNING("The Bluespace interface on your Bag of Holding interferes with the teleport!"))
+	return 1
+
+/datum/teleport/instant/science/teleportChecks()
+	if(istype(teleatom, /obj/item/disk/nuclear)) // Don't let nuke disks get teleported --NeoFite
+		teleatom.visible_message(SPAN_DANGER("<B>The [teleatom] bounces off of the portal!</B>"))
+		return 0
+
+	if(length(teleatom.search_contents_for(/obj/item/disk/nuclear)))
+		if(istype(teleatom, /mob/living))
+			var/mob/living/MM = teleatom
+			MM.visible_message(SPAN_DANGER("<B>The [MM] bounces off of the portal!</B>"),SPAN_DANGER("Something you are carrying seems to be unable to pass through the portal. Better drop it if you want to go through."))
 		else
-			return ..()
-
-	setPrecision(aprecision)
-		..()
-		if(istype(teleatom, /obj/item/storage/backpack/holding))
-			precision = rand(1,100)
-
-		var/list/bagholding = teleatom.search_contents_for(/obj/item/storage/backpack/holding)
-		if(bagholding.len)
-			precision = max(rand(1,100)*bagholding.len,100)
-			if(istype(teleatom, /mob/living))
-				var/mob/living/MM = teleatom
-				to_chat(MM, SPAN_WARNING("The Bluespace interface on your Bag of Holding interferes with the teleport!"))
-		return 1
-
-	teleportChecks()
-		if(istype(teleatom, /obj/item/disk/nuclear)) // Don't let nuke disks get teleported --NeoFite
 			teleatom.visible_message(SPAN_DANGER("<B>The [teleatom] bounces off of the portal!</B>"))
+		return 0
+
+	if(is_admin_level(destination.z))
+		if(length(teleatom.search_contents_for(/obj/item/storage/backpack/holding)))
+			teleatom.visible_message(SPAN_DANGER("<B>The Bag of Holding bounces off of the portal!</B>"))
 			return 0
 
-		if(length(teleatom.search_contents_for(/obj/item/disk/nuclear)))
-			if(istype(teleatom, /mob/living))
-				var/mob/living/MM = teleatom
-				MM.visible_message(SPAN_DANGER("<B>The [MM] bounces off of the portal!</B>"),SPAN_DANGER("Something you are carrying seems to be unable to pass through the portal. Better drop it if you want to go through."))
-			else
-				teleatom.visible_message(SPAN_DANGER("<B>The [teleatom] bounces off of the portal!</B>"))
-			return 0
-
-		if(is_admin_level(destination.z))
-			if(length(teleatom.search_contents_for(/obj/item/storage/backpack/holding)))
-				teleatom.visible_message(SPAN_DANGER("<B>The Bag of Holding bounces off of the portal!</B>"))
-				return 0
-
-		return 1
+	return 1

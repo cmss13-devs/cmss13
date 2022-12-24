@@ -19,8 +19,8 @@
 	desc = "A wrench with many common uses. Can be usually found in your hand."
 	icon = 'icons/obj/items/items.dmi'
 	icon_state = "wrench"
-	pickupsound = 'sound/handling/wrench_pickup.ogg'
-	dropsound = 'sound/handling/wrench_drop.ogg'
+	pickup_sound = 'sound/handling/wrench_pickup.ogg'
+	drop_sound = 'sound/handling/wrench_drop.ogg'
 	flags_atom = FPRINT|CONDUCT
 	flags_equip_slot = SLOT_WAIST
 	force = 5.0
@@ -39,8 +39,8 @@
 	desc = "You can be totally screwy with this."
 	icon = 'icons/obj/items/items.dmi'
 	icon_state = "screwdriver"
-	pickupsound = 'sound/handling/multitool_pickup.ogg'
-	dropsound = 'sound/handling/screwdriver_drop.ogg'
+	pickup_sound = 'sound/handling/multitool_pickup.ogg'
+	drop_sound = 'sound/handling/screwdriver_drop.ogg'
 	flags_atom = FPRINT|CONDUCT
 	flags_equip_slot = SLOT_WAIST | SLOT_EAR | SLOT_FACE
 	force = 5.0
@@ -119,8 +119,8 @@
 	icon = 'icons/obj/items/items.dmi'
 	icon_state = "cutters"
 	item_state = "cutters"
-	pickupsound = 'sound/handling/wirecutter_pickup.ogg'
-	dropsound = 'sound/handling/wirecutter_drop.ogg'
+	pickup_sound = 'sound/handling/wirecutter_pickup.ogg'
+	drop_sound = 'sound/handling/wirecutter_drop.ogg'
 	flags_atom = FPRINT|CONDUCT
 	flags_equip_slot = SLOT_WAIST
 	force = 6.0
@@ -157,8 +157,8 @@
 	name = "blowtorch"
 	icon = 'icons/obj/items/items.dmi'
 	icon_state = "welder"
-	pickupsound = 'sound/handling/weldingtool_pickup.ogg'
-	dropsound = 'sound/handling/weldingtool_drop.ogg'
+	pickup_sound = 'sound/handling/weldingtool_pickup.ogg'
+	drop_sound = 'sound/handling/weldingtool_drop.ogg'
 	flags_atom = FPRINT|CONDUCT
 	flags_equip_slot = SLOT_WAIST
 
@@ -379,7 +379,7 @@
 				to_chat(user, SPAN_DANGER("Your eyes sting a little."))
 				E.damage += rand(1, 2)
 				if(E.damage > 12)
-					H.eye_blurry += rand(3,6)
+					H.AdjustEyeBlur(3,6)
 			if(0)
 				to_chat(user, SPAN_WARNING("Your eyes burn."))
 				E.damage += rand(2, 4)
@@ -387,7 +387,7 @@
 					E.damage += rand(4,10)
 			if(-1)
 				to_chat(user, SPAN_WARNING("Your thermals intensify [src]'s glow. Your eyes itch and burn severely."))
-				H.eye_blurry += rand(12,20)
+				H.AdjustEyeBlur(12,20)
 				E.damage += rand(12, 16)
 		if(safety<2)
 
@@ -463,8 +463,8 @@
 	desc = "Used to remove floors and to pry open doors."
 	icon = 'icons/obj/items/items.dmi'
 	icon_state = "crowbar"
-	pickupsound = 'sound/handling/crowbar_pickup.ogg'
-	dropsound = 'sound/handling/crowbar_drop.ogg'
+	pickup_sound = 'sound/handling/crowbar_pickup.ogg'
+	drop_sound = 'sound/handling/crowbar_drop.ogg'
 	flags_atom = FPRINT|CONDUCT
 	flags_equip_slot = SLOT_WAIST
 	force = 5.0

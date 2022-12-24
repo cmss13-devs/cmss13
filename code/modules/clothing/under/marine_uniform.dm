@@ -107,9 +107,6 @@
 	specialty = "military police"
 	flags_atom = NO_SNOW_TYPE
 
-/obj/item/clothing/under/marine/mp/cadet
-	name = "MP cadet jumpsuit"
-
 /obj/item/clothing/under/marine/warden
 	name = "military warden jumpsuit"
 	desc = "Standard-issue Military Warden uniform. It has shards of light Kevlar to help protect against stabbing weapons and bullets."

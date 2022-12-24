@@ -16,8 +16,6 @@
 	flags_atom = FPRINT|OPENCONTAINER
 	transparent = TRUE
 
-	var/label_text = ""
-
 	var/list/can_be_placed_into = list(
 		/obj/structure/machinery/chem_master/,
 		/obj/structure/machinery/chem_dispenser/,
@@ -38,7 +36,7 @@
 		/obj/structure/machinery/disposal,
 		/mob/living/simple_animal/cow,
 		/mob/living/simple_animal/hostile/retaliate/goat,
-		/obj/structure/machinery/sleeper,
+		/obj/structure/machinery/medical_pod/sleeper,
 		/obj/structure/machinery/smartfridge/,
 		/obj/structure/machinery/biogenerator,
 		/obj/structure/machinery/reagent_analyzer,
@@ -69,18 +67,17 @@
 		update_icon()
 
 /obj/item/reagent_container/glass/afterattack(obj/target, mob/user , flag)
-
 	if(!reagents)
 		create_reagents(volume)
 
-	if(!is_open_container() || !flag)
+	if(!is_open_container_or_can_be_dispensed_into() || !flag)
 		return
 
 	for(var/type in src.can_be_placed_into)
 		if(istype(target, type))
 			return
 
-	if(ismob(target) && target.reagents && reagents.total_volume && user.a_intent == INTENT_HARM && splashable)
+	if(is_open_container() && ismob(target) && target.reagents && reagents.total_volume && user.a_intent == INTENT_HARM && splashable)
 		to_chat(user, SPAN_NOTICE("You splash the solution onto [target]."))
 		playsound(target, 'sound/effects/slosh.ogg', 25, 1)
 
@@ -119,23 +116,26 @@
 
 			to_chat(user, SPAN_NOTICE("You fill [src] with [trans] units of the contents of [target]."))
 		else
-			if(reagents && !reagents.total_volume)
-				to_chat(user, SPAN_WARNING("[src] is empty."))
-				return
+			if(is_open_container_or_can_be_dispensed_into())
+				if(reagents && !reagents.total_volume)
+					to_chat(user, SPAN_WARNING("[src] is empty."))
+					return
 
-			if(D.reagents.total_volume >= D.reagents.maximum_volume)
-				to_chat(user, SPAN_WARNING("[D] is full."))
-				return
+				if(D.reagents.total_volume >= D.reagents.maximum_volume)
+					to_chat(user, SPAN_WARNING("[D] is full."))
+					return
 
-			var/trans = reagents.trans_to(D, D:amount_per_transfer_from_this)
+				var/trans = reagents.trans_to(D, D:amount_per_transfer_from_this)
 
-			if(!trans)
-				to_chat(user, SPAN_DANGER("You fail to add reagents to [target]."))
-				return
+				if(!trans)
+					to_chat(user, SPAN_DANGER("You fail to add reagents to [target]."))
+					return
 
-			to_chat(user, SPAN_NOTICE("You fill [D] with [trans] units of the contents of [src]."))
+				to_chat(user, SPAN_NOTICE("You fill [D] with [trans] units of the contents of [src]."))
+			else
+				to_chat(user, SPAN_WARNING("You must open the container first!"))
 
-	else if(target.is_open_container() && target.reagents) //Something like a glass. Player probably wants to transfer TO it.
+	else if(is_open_container() && target.is_open_container() && target.reagents) //Something like a glass. Player probably wants to transfer TO it.
 
 		if(!reagents.total_volume)
 			to_chat(user, SPAN_WARNING("[src] is empty."))
@@ -156,7 +156,7 @@
 	else if(istype(target, /obj/structure/machinery/smartfridge))
 		return
 
-	else if((reagents.total_volume) && (user.a_intent == INTENT_HARM) && splashable)
+	else if(is_open_container() && (reagents.total_volume) && (user.a_intent == INTENT_HARM) && splashable)
 		to_chat(user, SPAN_NOTICE("You splash the solution onto [target]."))
 		playsound(target, 'sound/effects/slosh.ogg', 25, 1)
 		reagents.reaction(target, TOUCH)
@@ -165,23 +165,29 @@
 		return
 
 /obj/item/reagent_container/glass/attackby(obj/item/W as obj, mob/user as mob)
-	if(istype(W, /obj/item/tool/pen) || istype(W, /obj/item/device/flashlight/pen))
-		var/tmp_label = sanitize(input(user, "Enter a label for [name]","Label", label_text))
+	if(HAS_TRAIT(W, TRAIT_TOOL_PEN))
+		var/prior_label_text
+		var/datum/component/label/labelcomponent = src.GetComponent(/datum/component/label)
+		if(labelcomponent)
+			prior_label_text = labelcomponent.label_name
+		var/tmp_label = sanitize(input(user, "Enter a label for [name]","Label", prior_label_text))
+		if(tmp_label == "" || !tmp_label)
+			if(labelcomponent)
+				labelcomponent.remove_label()
+				user.visible_message(SPAN_NOTICE("[user] removes the label from \the [src]."), \
+				SPAN_NOTICE("You remove the label from \the [src]."))
+				return
+			else
+				return
 		if(length(tmp_label) > MAX_NAME_LEN)
 			to_chat(user, SPAN_WARNING("The label can be at most [MAX_NAME_LEN] characters long."))
 		else
 			user.visible_message(SPAN_NOTICE("[user] labels [src] as \"[tmp_label]\"."), \
 			SPAN_NOTICE("You label [src] as \"[tmp_label]\"."))
-			label_text = tmp_label
-			update_name_label()
+			AddComponent(/datum/component/label, tmp_label)
+			playsound(src, "paper_writing", 15, TRUE)
 	else
 		. = ..()
-
-/obj/item/reagent_container/glass/proc/update_name_label()
-	if(label_text == "")
-		name = base_name
-	else
-		name = "[base_name] ([label_text])"
 
 /obj/item/reagent_container/glass/beaker
 	name = "beaker"
@@ -254,7 +260,7 @@
 		/obj/item/storage/secure/safe,
 		/obj/structure/machinery/iv_drip,
 		/obj/structure/machinery/disposal,
-		/obj/structure/machinery/sleeper,
+		/obj/structure/machinery/medical_pod/sleeper,
 		/obj/structure/machinery/smartfridge/,
 		/obj/structure/machinery/biogenerator,
 		/obj/structure/machinery/reagent_analyzer,
@@ -522,11 +528,11 @@
 	icon_state = "pressurized_reagent_container"
 	item_state = "anesthetic"
 	amount_per_transfer_from_this = 0
-	possible_transfer_amounts = list(0)
+	possible_transfer_amounts = null
 	volume = 480
 	splashable = FALSE
 	w_class = SIZE_MASSIVE
-	flags_atom = CAN_BE_DISPENSED_INTO|OPENCONTAINER
+	flags_atom = CAN_BE_DISPENSED_INTO
 	matter = list("glass" = 2000)
 
 /obj/item/reagent_container/glass/pressurized_canister/Initialize()

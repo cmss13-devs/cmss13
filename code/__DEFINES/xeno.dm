@@ -139,8 +139,6 @@
 
 /// Multiplicative. The amount of damage xenos do to weeds.
 #define WEED_XENO_DAMAGEMULT 0.25
-/// Multiplicative. The slowdown that other xenos from different hives suffer. Also applies to sticky resin.
-#define WEED_XENO_SPEED_MULT 1
 
 #define WEED_HEALTH_STANDARD 5
 #define WEED_HEALTH_HARDY    10
@@ -664,5 +662,8 @@
 #define TAILSTAB_COOLDOWN_NORMAL 1
 #define TAILSTAB_COOLDOWN_HIGH 1.5
 #define TAILSTAB_COOLDOWN_VERY_HIGH 2
+
+#define TAILSTAB_MOB_DAMAGE_MULTIPLIER 1.2
+#define TAILSTAB_AIRLOCK_DAMAGE_MULTIPLIER 2
 
 #define FRENZY_DAMAGE_MULTIPLIER	2

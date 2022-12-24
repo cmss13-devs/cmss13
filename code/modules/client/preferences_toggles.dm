@@ -272,7 +272,8 @@
 		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_dualwield'>Toggle Alternate-Fire Dual Wielding</a><br>",
 		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_middle_mouse_swap_hands'>Toggle Middle Mouse Swapping Hands</a><br>",
 		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_vend_item_to_hand'>Toggle Vendors Vending to Hands</a><br>",
-		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/switch_item_animations'>Toggle Item Animations</a><br>"
+		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/switch_item_animations'>Toggle Item Animations</a><br>",
+		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_admin_sound_types'>Toggle Admin Sound Types</a><br>"
 	)
 
 	var/dat = ""
@@ -395,6 +396,42 @@
 			to_chat(src, SPAN_BOLDNOTICE("You will no longer see item animations."))
 			prefs.save_preferences()
 			return "Off"
+
+/client/proc/toggle_admin_sound_types()
+	//Entirely for code readability.
+	var/meme_toggle = prefs.toggles_sound & SOUND_ADMIN_MEME ? TRUE : FALSE
+	var/atmospheric_toggle = prefs.toggles_sound & SOUND_ADMIN_ATMOSPHERIC ? TRUE : FALSE
+	var/result = tgui_alert(src, "Which sound type do you want to toggle? Meme sounds are currently [meme_toggle ? "enabled" : "disabled"], Atmospheric sounds are currently [atmospheric_toggle ? "enabled" : "disabled"].", "Toggle MIDI/Internet sound type to play", list("Meme", "Atmospheric"))
+	if(result == "Meme")
+		prefs.toggles_sound ^= SOUND_ADMIN_MEME
+		//Update the variables so it doesn't output the outdated toggle.
+		meme_toggle = prefs.toggles_sound & SOUND_ADMIN_MEME ? TRUE : FALSE
+		to_chat(src, SPAN_NOTICE("You will [meme_toggle ? "now" : "no longer"] hear meme admin sounds."))
+	if(result == "Atmospheric")
+		prefs.toggles_sound ^= SOUND_ADMIN_ATMOSPHERIC
+		//Ditto.
+		atmospheric_toggle = prefs.toggles_sound & SOUND_ADMIN_ATMOSPHERIC ? TRUE : FALSE
+		to_chat(src, SPAN_NOTICE("You will [atmospheric_toggle ? "now" : "no longer"] hear atmospheric admin sounds."))
+
+/client/proc/receive_random_tip()
+	var/picked_type = tgui_alert(src, "What kind of tip?", "Tip Type", list("Marine", "Xenomorph", "Meta")) //no memetips for them joker imp
+	var/message
+	var/static/list/types_to_pick = list(
+		"Marine" = "strings/marinetips.txt",
+		"Xenomorph" = "strings/xenotips.txt",
+		"Meta" = "strings/metatips.txt"
+	)
+	var/list/tip_list = file2list(types_to_pick[picked_type])
+	if(length(types_to_pick[picked_type]))
+		message = SAFEPICK(tip_list)
+	else
+		CRASH("receive_random_tip() failed: empty list")
+
+	if(message)
+		to_chat(src, SPAN_PURPLE("<b>Random Tip: </b>[html_encode(message)]"))
+		return TRUE
+	else
+		CRASH("receive_random_tip() failed: null message")
 
 //------------ GHOST PREFERENCES ---------------------------------
 

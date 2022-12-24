@@ -10,6 +10,8 @@
 	wrenchable = TRUE
 
 /obj/structure/machinery/cm_vending/sorted/marine_food/populate_product_list(var/scale)
+	if(listed_products && listed_products.len)
+		return
 	listed_products = list(
 		list("PREPARED MEALS", -1, null, null),
 		list("USCM Prepared Meal (Chicken)", 15, /obj/item/reagent_container/food/snacks/mre_pack/meal5, VENDOR_ITEM_REGULAR),

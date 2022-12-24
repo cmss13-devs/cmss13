@@ -225,14 +225,16 @@
 	burst_amount = BURST_AMOUNT_TIER_2
 	accuracy_mult = BASE_ACCURACY_MULT
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_2
-	scatter = SCATTER_AMOUNT_TIER_4 + SCATTER_AMOUNT_TIER_10 * 0.5
-	burst_scatter_mult = SCATTER_AMOUNT_TIER_8 + SCATTER_AMOUNT_TIER_10 * 0.5
+	scatter = SCATTER_AMOUNT_TIER_4 + (SCATTER_AMOUNT_TIER_10 * 0.5)
+	burst_scatter_mult = SCATTER_AMOUNT_TIER_8 + (SCATTER_AMOUNT_TIER_10 * 0.5)
 	scatter_unwielded = SCATTER_AMOUNT_TIER_4 + SCATTER_AMOUNT_TIER_10
 	damage_mult = BASE_BULLET_DAMAGE_MULT
 	recoil_unwielded = RECOIL_AMOUNT_TIER_5
 
 //-------------------------------------------------------
 //PPSH //Based on the PPSh-41.
+
+#define PPSH_UNJAM_CHANCE 25
 
 /obj/item/weapon/gun/smg/ppsh
 	name = "\improper PPSh-17b submachinegun"
@@ -272,25 +274,29 @@
 		if(world.time % 3)
 			playsound(src, 'sound/weapons/handling/gun_jam_click.ogg', 35, TRUE)
 			to_chat(user, SPAN_WARNING("Your gun is jammed! Mash Unique-Action to unjam it!"))
+			user.balloon_alert_to_viewers("*click*", "*jammed*")
 		return
 	else if(prob(ppsh_mag?.jam_chance))
 		jammed = TRUE
 		playsound(src, 'sound/weapons/handling/gun_jam_initial_click.ogg', 50, FALSE)
 		user.visible_message(SPAN_DANGER("[src] makes a noticeable clicking noise!"), SPAN_HIGHDANGER("Your gun suddenly jams and refuses to fire! Mash Unique-Action to unjam it."))
+		user.balloon_alert_to_viewers("*click*", "your gun jams!")
 		return
 	else
 		. = ..()
 
 /obj/item/weapon/gun/smg/ppsh/unique_action(mob/user)
 	if(jammed)
-		if(prob(15))
+		if(prob(PPSH_UNJAM_CHANCE))
 			to_chat(user, SPAN_GREEN("You succesfully unjam \the [src]!"))
 			playsound(src, 'sound/weapons/handling/gun_jam_rack_success.ogg', 50, FALSE)
 			jammed = FALSE
 			cock_cooldown += 1 SECONDS //so they dont accidentally cock a bullet away
+			balloon_alert(user, "*unjammed!*")
 		else
 			to_chat(user, SPAN_NOTICE("You start wildly racking the bolt back and forth attempting to unjam \the [src]!"))
 			playsound(src, "gun_jam_rack", 50, FALSE)
+			balloon_alert(user, "*rack*")
 		return
 	. = ..()
 
@@ -322,13 +328,13 @@
 
 /obj/item/weapon/gun/smg/mac15
 	name = "\improper MAC-15 submachinegun"
-	desc = "A cheap, reliable design and manufacture make this ubiquitous submachinegun useful despite the age. Includes proprietary 'full-auto' mode, banned in several Geneva Suggestions rim-wide."
+	desc = "A cheap, reliable design and manufacture make this ubiquitous submachinegun useful despite the age." //Includes proprietary 'full-auto' mode, banned in several Geneva Suggestions rim-wide.
 	icon_state = "mac15"
 	item_state = "mac15"
 
 	fire_sound = 'sound/weapons/gun_mac15.ogg'
 	current_mag = /obj/item/ammo_magazine/smg/mac15
-	flags_gun_features = GUN_ANTIQUE|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_HAS_FULL_AUTO|GUN_FULL_AUTO_ON|GUN_FULL_AUTO_ONLY
+	flags_gun_features = GUN_ANTIQUE|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED //|GUN_HAS_FULL_AUTO|GUN_FULL_AUTO_ON|GUN_FULL_AUTO_ONLY commented out until better fullauto code
 
 	attachable_allowed = list(
 						//Barrel
@@ -355,9 +361,11 @@
 /obj/item/weapon/gun/smg/mac15/set_gun_config_values()
 	..()
 
+	/* commented out until better fullauto code
 	fa_delay = FIRE_DELAY_TIER_10
 	fa_scatter_peak = FULL_AUTO_SCATTER_PEAK_TIER_7
 	fa_max_scatter = SCATTER_AMOUNT_TIER_3
+	*/
 
 	fire_delay = FIRE_DELAY_TIER_10
 	accuracy_mult = BASE_ACCURACY_MULT
@@ -369,15 +377,17 @@
 //-------------------------------------------------------
 //	DAS REAL UZI
 
+#define UZI_UNJAM_CHANCE 25
+
 /obj/item/weapon/gun/smg/uzi
 	name = "\improper UZI"
-	desc = "Exported to over 90 countries, somehow this relic has managed to end up here. Couldn't be simpler to use. Turn on burst mode for maximum firepower."
+	desc = "Exported to over 90 countries, somehow this relic has managed to end up here. Couldn't be simpler to use."
 	icon_state = "uzi"
 	item_state = "uzi"
 	flags_equip_slot = SLOT_WAIST
 	fire_sound = 'sound/weapons/gun_uzi.ogg'
 	current_mag = /obj/item/ammo_magazine/smg/uzi
-	flags_gun_features = GUN_ANTIQUE|GUN_CAN_POINTBLANK|GUN_HAS_FULL_AUTO|GUN_FULL_AUTO_ON|GUN_FULL_AUTO_ONLY
+	flags_gun_features = GUN_ANTIQUE|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED //|GUN_HAS_FULL_AUTO|GUN_FULL_AUTO_ON|GUN_FULL_AUTO_ONLY commented out until better fullauto code
 
 	attachable_allowed = list(
 						//Barrel
@@ -399,23 +409,24 @@
 	aim_slowdown = SLOWDOWN_ADS_QUICK
 	var/jammed = FALSE
 
-
 /obj/item/weapon/gun/smg/uzi/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 28, "muzzle_y" = 20,"rail_x" = 12, "rail_y" = 22, "under_x" = 22, "under_y" = 16, "stock_x" = 22, "stock_y" = 16)
 
 /obj/item/weapon/gun/smg/uzi/set_gun_config_values()
 	..()
 
+	/* commented out until better fullauto code
 	fa_delay = FIRE_DELAY_TIER_9
 	fa_scatter_peak = FULL_AUTO_SCATTER_PEAK_TIER_5
 	fa_max_scatter = SCATTER_AMOUNT_TIER_5
+	*/
 
 	fire_delay = FIRE_DELAY_TIER_9
 	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_2
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_2
 	scatter = SCATTER_AMOUNT_TIER_6
 	scatter_unwielded = SCATTER_AMOUNT_TIER_3
-	damage_mult = BASE_BULLET_DAMAGE_MULT - BULLET_DAMAGE_MULT_TIER_1
+	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_2
 	recoil_unwielded = RECOIL_AMOUNT_TIER_5
 
 // The UZI can also jam, though it's less likely.
@@ -426,27 +437,33 @@
 		if(world.time % 3)
 			playsound(src, 'sound/weapons/handling/gun_jam_click.ogg', 35, TRUE)
 			to_chat(user, SPAN_WARNING("Your gun is jammed! Mash Unique-Action to unjam it!"))
+			user.balloon_alert_to_viewers("*click*", "*jammed*")
 		return
 	else if(prob(uzi_mag.jam_chance))
 		jammed = TRUE
 		playsound(src, 'sound/weapons/handling/gun_jam_initial_click.ogg', 35, TRUE)
 		user.visible_message(SPAN_DANGER("[src] makes a noticeable clicking noise!"), SPAN_HIGHDANGER("Your gun suddenly jams and refuses to fire! Mash Unique-Action to unjam it."))
+		user.balloon_alert_to_viewers("*click*", "your gun jams!")
 		return
 	else
 		. = ..()
 
 /obj/item/weapon/gun/smg/uzi/unique_action(mob/user)
 	if(jammed)
-		if(prob(25))
+		if(prob(UZI_UNJAM_CHANCE))
 			to_chat(user, SPAN_GREEN("You succesfully unjam \the [src]!"))
 			playsound(src, 'sound/weapons/handling/gun_jam_rack_success.ogg', 35, TRUE)
 			jammed = FALSE
 			cock_cooldown += 1 SECONDS //so they dont accidentally cock a bullet away
+			balloon_alert(user, "*unjammed!*")
 		else
 			to_chat(user, SPAN_NOTICE("You start wildly racking the bolt back and forth attempting to unjam \the [src]!"))
 			playsound(src, "gun_jam_rack", 50, FALSE)
+			balloon_alert(user, "*rack*")
 		return
 	. = ..()
+
+#undef UZI_UNJAM_CHANCE
 
 //-------------------------------------------------------
 //FP9000 //Based on the FN P90

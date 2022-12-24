@@ -119,6 +119,9 @@
 //-------------------------------------------------------
 //PPSH //Based on the PPSh-41.
 
+#define PPSH_STICK_MAGAZINE_JAM_CHANCE 0.1
+#define PPSH_DRUM_MAGAZINE_JAM_CHANCE 1
+
 /obj/item/ammo_magazine/smg/ppsh
 	name = "\improper PPSh-17b stick magazine (7.62x25mm)"
 	desc = "A stick magazine for the PPSh submachinegun. Less ammo than the iconic drum magazine, but the latter causes feeding and handling issues. Your call which one's better."
@@ -130,7 +133,7 @@
 	default_ammo = /datum/ammo/bullet/smg/ppsh
 	var/bonus_mag_aim_slowdown = 0
 	var/bonus_mag_wield_delay = 0
-	var/jam_chance = 0.1
+	var/jam_chance = PPSH_STICK_MAGAZINE_JAM_CHANCE
 	var/new_item_state = "ppsh17b"
 
 /obj/item/ammo_magazine/smg/ppsh/extended
@@ -142,7 +145,7 @@
 	w_class = SIZE_MEDIUM
 	bonus_mag_aim_slowdown = SLOWDOWN_ADS_QUICK_MINUS
 	bonus_mag_wield_delay = WIELD_DELAY_VERY_FAST
-	jam_chance = 1
+	jam_chance = PPSH_DRUM_MAGAZINE_JAM_CHANCE
 	new_item_state = "ppsh17b_d"
 
 //-------------------------------------------------------
@@ -165,6 +168,9 @@
 //-------------------------------------------------------
 // the real UZI
 
+#define UZI_NORMAL_MAGAZINE_JAM_CHANCE 0
+#define UZI_EXTENDED_MAGAZINE_JAM_CHANCE 1
+
 /obj/item/ammo_magazine/smg/uzi
 	name = "\improper UZI magazine (9x21mm)"
 	desc = "A magazine for the UZI. Seems pretty small, huh? Anything larger caused feeding errors."
@@ -172,7 +178,7 @@
 	icon_state = "uzi"
 	max_rounds = 25
 	gun_type = /obj/item/weapon/gun/smg/uzi
-	var/jam_chance
+	var/jam_chance = UZI_NORMAL_MAGAZINE_JAM_CHANCE
 
 /obj/item/ammo_magazine/smg/uzi/extended
 	name = "\improper UZI extended magazine (9x21mm)"
@@ -180,8 +186,7 @@
 	icon_state = "uzi_extended"
 	bonus_overlay = "uzi_ext"
 	max_rounds = 32
-	jam_chance = 1
-
+	jam_chance = UZI_EXTENDED_MAGAZINE_JAM_CHANCE
 
 //-------------------------------------------------------
 //FP9000 //Based on the FN P90

@@ -307,6 +307,7 @@
 	flags_item = TWOHANDED
 	flags_equip_slot = SLOT_BACK
 	attack_verb = list("pulverized", "smashed", "thwacked", "crushed", "hammered", "wrecked")
+	var/really_heavy = FALSE
 
 /obj/item/weapon/melee/twohanded/breacher/synth
 	name = "\improper B5 Breaching Hammer"
@@ -314,6 +315,7 @@
 	icon_state = "syn_breacher"
 	item_state = "syn_breacher"
 	force_wielded = MELEE_FORCE_VERY_STRONG
+	really_heavy = TRUE
 
 /obj/item/weapon/melee/twohanded/breacher/synth/pickup(mob/user)
 	if(!(HAS_TRAIT(user, TRAIT_SUPER_STRONG)))

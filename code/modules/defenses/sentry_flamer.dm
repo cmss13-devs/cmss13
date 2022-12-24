@@ -19,9 +19,6 @@
 		SENTRY_CATEGORY_IFF = FACTION_USCM,
 	)
 
-/obj/structure/machinery/defenses/sentry/flamer/Initialize()
-	. = ..()
-
 /obj/structure/machinery/defenses/sentry/flamer/handle_rof(var/level)
 	burst = 1
 	switch(level)

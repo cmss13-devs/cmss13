@@ -529,4 +529,4 @@
 // sentry laptop
 #define COMSIG_SENTRY_ENGAGED_ALERT "signal_sentry_engaged"
 #define COMSIG_SENTRY_LOW_AMMO_ALERT "signal_sentry_low_ammo"
-#define COMSIG_SENTRY_EMPTY_AMMO_ALERT "signal_sentry_low_ammo"
+#define COMSIG_SENTRY_EMPTY_AMMO_ALERT "signal_sentry_empty_ammo"

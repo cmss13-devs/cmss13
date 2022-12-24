@@ -548,7 +548,7 @@
 	name = "solaris ridge colony wall"
 	icon = 'icons/turf/walls/solaris/solaris.dmi'
 	icon_state = "solaris_interior"
-	desc = "Tough looking walls that have been blasted by sand since they day they were erected. A testament to human willpower."
+	desc = "Tough looking walls that have been blasted by sand since the day they were erected. A testament to human willpower."
 	walltype = WALL_SOLARIS
 
 /turf/closed/wall/solaris/reinforced

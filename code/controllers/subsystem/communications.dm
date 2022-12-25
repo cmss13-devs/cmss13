@@ -107,6 +107,7 @@ var/const/HC_FREQ = 1471
 var/const/SOF_FREQ = 1472
 
 //Ship department channels
+var/const/SENTRY_FREQ = 1480
 var/const/COMM_FREQ = 1481
 var/const/MED_FREQ = 1482
 var/const/ENG_FREQ = 1483
@@ -145,6 +146,7 @@ var/list/radiochannels = list(
 	RADIO_CHANNEL_ENGI = ENG_FREQ,
 	RADIO_CHANNEL_MP = SEC_FREQ,
 	RADIO_CHANNEL_REQ = REQ_FREQ,
+	RADIO_CHANNEL_SENTY = SENTRY_FREQ,
 	RADIO_CHANNEL_JTAC = JTAC_FREQ,
 	RADIO_CHANNEL_INTEL = INTEL_FREQ,
 
@@ -238,6 +240,7 @@ SUBSYSTEM_DEF(radio)
 		"[AI_FREQ]" = "airadio",
 		"[SEC_FREQ]" = "secradio",
 		"[ENG_FREQ]" = "engradio",
+		"[SENTRY_FREQ]" = "sentryradio"
 		"[MED_FREQ]" = "medradio",
 		"[REQ_FREQ]" = "supradio",
 		"[JTAC_FREQ]" = "jtacradio",

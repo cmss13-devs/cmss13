@@ -1,7 +1,7 @@
-#define SENTRY_FIREANGLE 135
-#define SENTRY_RANGE 5
-#define SENTRY_MUZZLELUM 3
-
+#define SENTRY_FIREANGLE 	135
+#define SENTRY_RANGE 		5
+#define SENTRY_MUZZLELUM	3
+#define SENTRY_ENGAGED_TIMEOUT 60
 /obj/structure/machinery/defenses/sentry
 	name = "\improper UA 571-C sentry gun"
 	icon = 'icons/obj/structures/machinery/defenses/sentry.dmi'
@@ -31,6 +31,8 @@
 
 	var/obj/item/device/sentry_computer/linked_laptop = null
 	var/nickname = ""
+
+	var/broadcast_timer = null
 
 	// action list is configurable for all subtypes, this is just an example
 	var/list/choice_categories = list(
@@ -188,7 +190,7 @@
 					var/obj/item = tool.encryption_keys[i]
 					if(istype(item, /obj/item/device/sentry_computer))
 						var/obj/item/device/sentry_computer/computer = item
-						to_chat(usr, SPAN_WARNING("Attempting link"))
+						to_chat(usr, SPAN_NOTICE("Attempting link"))
 						computer.register(tool, user, src)
 						key_found = TRUE
 						break
@@ -298,6 +300,13 @@
 
 	if(targets.len)
 		addtimer(CALLBACK(src, PROC_REF(get_target)), fire_delay)
+
+	if(!broadcast_timer && linked_laptop)
+		SEND_SIGNAL(linked_laptop, COMSIG_ENGAGED_ALERT)
+		broadcast_timer = addtimer(CALLBACK(src, .proc/reset_broadcast_timer), SENTRY_ENGAGED_TIMEOUT)
+
+/obj/structure/machinery/defenses/sentry/proc/reset_broadcast_timer()
+	broadcast_timer = null
 
 /obj/structure/machinery/defenses/sentry/proc/actual_fire(var/atom/A)
 	var/obj/item/projectile/new_projectile = new(src, create_cause_data(initial(name), owner_mob, src))

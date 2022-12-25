@@ -28115,7 +28115,6 @@
 	pixel_x = 1;
 	tag = "icon-SE-out"
 	},
-/obj/structure/machinery/door/firedoor/border_only/almayer,
 /obj/structure/machinery/door/airlock/multi_tile/almayer/marine/charlie{
 	dir = 1
 	},
@@ -33342,7 +33341,6 @@
 	},
 /area/almayer/squads/delta)
 "clp" = (
-/obj/structure/machinery/door/firedoor/border_only/almayer,
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4;
 	tag = "icon-intact-supply (EAST)"
@@ -41049,6 +41047,9 @@
 	pixel_y = 1;
 	tag = "icon-NW-out"
 	},
+/obj/structure/machinery/firealarm{
+	pixel_y = 28
+	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -46330,6 +46331,12 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/living/briefing)
+"hss" = (
+/turf/open/floor/almayer{
+	icon_state = "test_floor4";
+	tag = "icon-test_floor4"
+	},
+/area/almayer/squads/delta)
 "hsW" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -47450,6 +47457,15 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/hallways/repair_bay)
+"hTc" = (
+/obj/structure/machinery/firealarm{
+	pixel_y = 28
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/squads/delta)
 "hTf" = (
 /obj/structure/machinery/portable_atmospherics/hydroponics,
 /turf/open/floor/almayer{
@@ -64136,6 +64152,15 @@
 	tag = "icon-green"
 	},
 /area/almayer/hallways/aft_hallway)
+"pvJ" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/almayer{
+	icon_state = "test_floor4";
+	tag = "icon-test_floor4"
+	},
+/area/almayer/squads/charlie)
 "pvK" = (
 /obj/structure/filingcabinet,
 /turf/open/floor/almayer{
@@ -67889,6 +67914,9 @@
 	icon_state = "E";
 	pixel_x = 1;
 	tag = "icon-E"
+	},
+/obj/structure/machinery/firealarm{
+	pixel_y = 28
 	},
 /turf/open/floor/almayer{
 	dir = 8;
@@ -75451,6 +75479,10 @@
 	},
 /area/almayer/hallways/port_hallway)
 "uqA" = (
+/obj/structure/machinery/firealarm{
+	dir = 8;
+	pixel_x = -24
+	},
 /turf/open/floor/almayer{
 	dir = 10;
 	icon_state = "orange";
@@ -129488,12 +129520,12 @@ bJC
 bJC
 bJC
 qFG
-cib
+pvJ
 bQD
 bJC
 bJC
 bSJ
-moM
+hss
 clp
 hfQ
 bSJ
@@ -131726,7 +131758,7 @@ bJC
 bJC
 bJC
 bSJ
-clK
+hTc
 bUr
 ycd
 sAc

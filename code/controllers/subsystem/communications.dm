@@ -73,7 +73,6 @@ var/const/YAUT_FREQ = 1205
 var/const/DUT_FREQ = 1210
 
 var/const/VAI_FREQ = 1215
-var/const/SUP_FREQ = 1354
 
 //WY Channels (1230-1249)
 var/const/WY_FREQ = 1231

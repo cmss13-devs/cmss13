@@ -1,4 +1,0 @@
-author: "stanalbatross"
-delete-after: True
-changes:
-  - code_imp: "fixed all trailing slashes at the ends of paths in the codebase"

@@ -690,3 +690,30 @@
 	icon_state = "pestspray"
 	item_state_slots = list(WEAR_AS_GARB = "canteen") //PLACEHOLDER
 	w_class = SIZE_SMALL
+
+/obj/item/prop/helmetgarb/cat_ears
+	name = "Cat Ears"
+	desc = "The USCM antidepression team used to issue this attachment to soldiers in order to boost morale among the marines. Discontinued after a scientific analysis proved them useless."
+	icon_state = "cat_ears%SQUAD%"
+
+	var/static/list/valid_icon_states
+
+/obj/item/prop/helmetgarb/cat_ears/Initialize(mapload, ...)
+	. = ..()
+	if(!valid_icon_states)
+		valid_icon_states = icon_states(icon)
+	adapt_to_squad(item = src)
+
+/obj/item/prop/helmetgarb/cat_ears/pickup(mob/user, silent)
+	. = ..()
+	adapt_to_squad(user, src)
+
+/obj/item/prop/helmetgarb/cat_ears/proc/adapt_to_squad(mob/user, obj/item)
+	var/squad_color = ""
+	var/mob/living/carbon/human/wearer = user
+	var/obj/item/prop/helmetgarb/ears = item
+	if(istype(wearer) && wearer.assigned_squad)
+		var/squad_name = lowertext(wearer.assigned_squad.name)
+		if("cat_ears[squad_name]" in valid_icon_states)
+			squad_color = squad_name
+	ears.icon_state = replacetext(initial(icon_state), "%SQUAD%", squad_color)

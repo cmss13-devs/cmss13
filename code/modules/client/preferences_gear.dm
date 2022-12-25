@@ -1361,6 +1361,12 @@ GLOBAL_LIST_EMPTY(roles_with_gear)
 	display_name = "Suntex-Sightware rounded shades, sunset"
 	path = /obj/item/clothing/glasses/sunglasses/hippie/sunset
 
+/datum/gear/cat_ears
+	display_name = "Cat ears (Squad)"
+	path = /obj/item/prop/helmetgarb/cat_ears
+	cost = 3
+	slot = WEAR_IN_BACK
+
 /datum/gear/eyewear/sunglasses/hippie_shades/nightblue
 	display_name = "Suntex-Sightware rounded shades, nightblue"
 	path = /obj/item/clothing/glasses/sunglasses/hippie/nightblue

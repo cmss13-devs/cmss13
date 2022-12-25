@@ -6,6 +6,8 @@
 	idtype = /obj/item/card/id/data
 	faction = FACTION_CONTRACTOR
 
+	flags = EQUIPMENT_PRESET_EXTRA
+
 /datum/equipment_preset/contractor/New()
 	. = ..()
 	access = get_all_accesses() + get_all_centcom_access()

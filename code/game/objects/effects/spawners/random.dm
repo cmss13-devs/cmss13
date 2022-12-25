@@ -241,7 +241,6 @@
 	item_to_spawn()
 		return pick(/obj/item/defenses/handheld/tesla_coil,\
 					/obj/item/defenses/handheld/planted_flag,\
-					/obj/item/defenses/handheld/bell_tower,\
 					/obj/item/defenses/handheld/sentry,\
 					/obj/item/defenses/handheld/sentry/flamer)
 

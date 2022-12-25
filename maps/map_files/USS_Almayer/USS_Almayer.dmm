@@ -22059,10 +22059,6 @@
 	},
 /area/shuttle/drop2/sulaco)
 "bvi" = (
-/obj/structure/platform{
-	dir = 1;
-	pixel_y = -27
-	},
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin5";
@@ -22094,10 +22090,6 @@
 /area/shuttle/drop1/sulaco)
 "bvo" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
-/obj/structure/platform{
-	dir = 1;
-	pixel_y = -27
-	},
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin5";
 	tag = "icon-rasputin5"
@@ -35868,6 +35860,16 @@
 	tag = "icon-test_floor4"
 	},
 /area/almayer/engineering/engine_core)
+"cZK" = (
+/obj/structure/platform{
+	dir = 1;
+	pixel_y = 5
+	},
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin15";
+	tag = "icon-rasputin15"
+	},
+/area/shuttle/drop2/sulaco)
 "daj" = (
 /obj/structure/machinery/iv_drip,
 /turf/open/floor/almayer{
@@ -53685,6 +53687,16 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/upper_hull/u_a_p)
+"kMD" = (
+/obj/structure/platform{
+	dir = 1;
+	pixel_y = 5
+	},
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin15";
+	tag = "icon-rasputin15"
+	},
+/area/shuttle/drop1/sulaco)
 "kMH" = (
 /obj/structure/machinery/door/window/brigdoor/southright{
 	id = "Cell 1";
@@ -103449,7 +103461,7 @@ bka
 bpl
 bka
 bvi
-bpl
+cZK
 oRU
 bpl
 bpl
@@ -103652,7 +103664,7 @@ blJ
 blJ
 fSp
 bvi
-bpl
+cZK
 bpl
 bpl
 bpl
@@ -103855,7 +103867,7 @@ bka
 bpl
 bka
 bvi
-bpl
+cZK
 oRU
 bpl
 bpl
@@ -107915,7 +107927,7 @@ btQ
 bpq
 btQ
 bvo
-bpq
+kMD
 bwr
 bpq
 bpq
@@ -108118,7 +108130,7 @@ blP
 blP
 bAy
 bvo
-bpq
+kMD
 bpq
 bpq
 bpq
@@ -108321,7 +108333,7 @@ btQ
 bpq
 btQ
 bvo
-bpq
+kMD
 bwr
 bpq
 bpq

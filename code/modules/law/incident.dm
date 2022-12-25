@@ -11,11 +11,7 @@
 	var/brig_sentence = 0 // How long do they stay in the brig on the station, PERMABRIG_SENTENCE minutes = permabrig
 	var/time_served = 0  // How long have they served of this sentence already
 	var/time_to_release = 0 // What time are they set to be released, for jail
-	var/active_timer = FALSE
-
-	var/sentence_served = FALSE
-
-	var/pardoned = FALSE
+	var/status = 0 // Bitflags. Options in brig_system.dm.
 
 /datum/crime_incident/proc/refresh_sentences()
 	brig_sentence = calculate_sentence()
@@ -32,9 +28,12 @@
 			sentence_length = L.brig_time
 
 	sentence_length += optional_time
-	
-	if(sentence_length > PERMABRIG_SENTENCE)
+
+	if(sentence_length >= PERMABRIG_SENTENCE)
 		sentence_length = PERMABRIG_SENTENCE
+		status |= BRIG_SENTENCE_PERMA
+	else
+		status &= ~BRIG_SENTENCE_PERMA
 
 	return sentence_length
 

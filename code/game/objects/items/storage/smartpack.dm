@@ -200,20 +200,22 @@
 	playsound(loc, 'sound/mecha/mechmove04.ogg', 25, TRUE)
 	to_chat(user, SPAN_INFO("The current charge reads [battery_charge]/[SMARTPACK_MAX_POWER_STORED]"))
 	update_icon(user)
+	user.add_filter("synth_protective_form", 1, list("type" = "outline", "color" = "#fcfcfc71", "size" = 1))
 
 	addtimer(CALLBACK(src, .proc/protective_form_cooldown, user), protective_form_cooldown)
 
-/obj/item/storage/backpack/marine/smartpack/proc/protective_form_cooldown(var/mob/living/carbon/human/H)
+/obj/item/storage/backpack/marine/smartpack/proc/protective_form_cooldown(var/mob/living/carbon/human/user)
 	activated_form = FALSE
 	flags_item &= ~NODROP
 	flags_inventory &= ~CANTSTRIP
-	H.melee_allowed = saved_melee_allowed
-	H.allow_gun_usage = saved_gun_allowed
-	LAZYREMOVE(H.brute_mod_override, src)
-	LAZYREMOVE(H.burn_mod_override, src)
-	to_chat(H, SPAN_DANGER("[name] beeps, \"The protection wears off.\""))
+	user.melee_allowed = saved_melee_allowed
+	user.allow_gun_usage = saved_gun_allowed
+	LAZYREMOVE(user.brute_mod_override, src)
+	LAZYREMOVE(user.burn_mod_override, src)
+	to_chat(user, SPAN_DANGER("[name] beeps, \"The protection wears off.\""))
 	playsound(loc, 'sound/mecha/mechmove04.ogg', 25, TRUE)
-	update_icon(H)
+	update_icon(user)
+	user.remove_filter("synth_protective_form")
 
 
 /obj/item/storage/backpack/marine/smartpack/proc/immobile_form(mob/user)
@@ -232,11 +234,13 @@
 		user.frozen = TRUE
 		to_chat(user, SPAN_DANGER("[name] beeps, \"You are anchored in place and cannot be moved.\""))
 		to_chat(user, SPAN_INFO("The current charge reads [battery_charge]/[SMARTPACK_MAX_POWER_STORED]"))
+		user.add_filter("synth_immobile_form", 1, list("type" = "outline", "color" = "#fcfcfcff", "size" = 1))
 	else
 		user.status_flags |= CANPUSH
 		user.anchored = FALSE
 		user.unfreeze()
 		to_chat(user, SPAN_DANGER("[name] beeps, \"You can now move again.\""))
+		user.remove_filter("synth_immobile_form")
 
 	playsound(loc, 'sound/mecha/mechmove04.ogg', 25, TRUE)
 	update_icon(user)

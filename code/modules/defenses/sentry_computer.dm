@@ -211,6 +211,10 @@
 	UnregisterSignal(target, COMSIG_SENTRY_LOW_AMMO_ALERT)
 	UnregisterSignal(target, COMSIG_SENTRY_EMPTY_AMMO_ALERT)
 
+	if(current == target)
+		current = null
+		update_active_camera()
+
 /obj/item/device/sentry_computer/proc/attempted_link(mob/linker)
 	playsound(loc, 'sound/machines/twobeep.ogg', 50, 1)
 

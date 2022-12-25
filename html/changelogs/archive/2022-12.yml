@@ -835,3 +835,24 @@
   fira:
   - bugfix: Increased contrast and fixed adjustment on flare flames.
   - rscadd: Flares shot by flare gun will now align on landing similar to thrown ones.
+2022-12-25:
+  Casper:
+  - refactor: MP JAS computer now uses TGUI
+  Morrow:
+  - bugfix: Fixes goon corpse headset preset
+  ThePiachu:
+  - qol: Xenos without plasma won't try building special structures anymore.
+  - code_imp: Made a variable have a more descriptive name.
+  stanalbatross:
+  - bugfix: fixed examining vehicle parts not returning anything
+  - bugfix: fixed vendors being able to vend to your hand while you are not adjacent
+      to them
+  - bugfix: fixed hardpoint removal list staying on your screen if you tried to x
+      out of it
+  - bugfix: people with vehicle skill but without engi skill can now also see hardpoint
+      integrity
+  - code_imp: fixed all trailing slashes at the ends of paths in the codebase
+  - balance: deep ocean water on NV will now toss you around and massively slow you
+      down to discourage you from going in it
+  - balance: added an extra flank route to the predship cave on NV
+  - bugfix: made the big LZ doors on NV visible again

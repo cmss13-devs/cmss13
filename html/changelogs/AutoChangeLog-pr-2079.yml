@@ -1,0 +1,4 @@
+author: "Stalkerino"
+delete-after: True
+changes:
+  - spellcheck: "fixed a typo when a larva spawns in the spawn pool"

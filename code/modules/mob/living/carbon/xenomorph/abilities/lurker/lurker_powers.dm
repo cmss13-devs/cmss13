@@ -191,11 +191,11 @@
 	var/list/turf/path = getline2(xeno, target, include_from_atom = FALSE)
 	for(var/turf/path_turf as anything in path)
 		if(path_turf.density)
-			to_chat(xeno, SPAN_WARNING("There's something blocking you from stricking!"))
+			to_chat(xeno, SPAN_WARNING("There's something blocking you from striking!"))
 			return
 		var/atom/barrier = path_turf.handle_barriers(A = xeno , pass_flags = (PASS_MOB_THRU_XENO|PASS_OVER_THROW_MOB|PASS_TYPE_CRAWLER))
 		if(barrier != path_turf)
-			to_chat(xeno, SPAN_WARNING("There's something blocking you from stricking!"))
+			to_chat(xeno, SPAN_WARNING("There's something blocking you from striking!"))
 			return
 		for(var/obj/structure/current_structure in path_turf)
 			if(istype(current_structure, /obj/structure/window/framed))

@@ -579,8 +579,8 @@
 
 		selected_cas_signal.linked_cam.view_directly(usr)
 		give_action(usr, /datum/action/human_action/cancel_view)
-		RegisterSignal(usr, COMSIG_MOB_RESET_VIEW, .proc/remove_from_view)
-		RegisterSignal(usr, COMSIG_MOB_RESISTED, .proc/remove_from_view)
+		RegisterSignal(usr, COMSIG_MOB_RESET_VIEW, PROC_REF(remove_from_view))
+		RegisterSignal(usr, COMSIG_MOB_RESISTED, PROC_REF(remove_from_view))
 		firemission_envelope.apply_upgrade(usr)
 		to_chat(usr, "You peek through the guidance camera.")
 

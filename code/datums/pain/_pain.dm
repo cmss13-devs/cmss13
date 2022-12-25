@@ -194,12 +194,12 @@
 				activate_horrible()
 
 	if(new_level >= PAIN_LEVEL_SEVERE)
-		RegisterSignal(source_mob, COMSIG_MOB_DRAGGED, .proc/oxyloss_drag, override = TRUE)
-		RegisterSignal(source_mob, COMSIG_MOB_DEVOURED, .proc/handle_devour, override = TRUE)
-		RegisterSignal(source_mob, COMSIG_MOVABLE_PRE_THROW, .proc/oxy_kill, override = TRUE)
+		RegisterSignal(source_mob, COMSIG_MOB_DRAGGED, PROC_REF(oxyloss_drag), override = TRUE)
+		RegisterSignal(source_mob, COMSIG_MOB_DEVOURED, PROC_REF(handle_devour), override = TRUE)
+		RegisterSignal(source_mob, COMSIG_MOVABLE_PRE_THROW, PROC_REF(oxy_kill), override = TRUE)
 
 	last_level = new_level
-	addtimer(CALLBACK(src, .proc/before_update), PAIN_UPDATE_FREQUENCY)
+	addtimer(CALLBACK(src, PROC_REF(before_update)), PAIN_UPDATE_FREQUENCY)
 
 /datum/pain/proc/decrease_pain_level()
 	level_updating = TRUE
@@ -237,7 +237,7 @@
 		))
 
 	last_level = new_level
-	addtimer(CALLBACK(src, .proc/before_update), PAIN_UPDATE_FREQUENCY)
+	addtimer(CALLBACK(src, PROC_REF(before_update)), PAIN_UPDATE_FREQUENCY)
 
 /datum/pain/proc/before_update()
 	level_updating = FALSE
@@ -300,7 +300,7 @@
 
 /datum/pain/proc/oxy_kill(mob/living/source)
 	SIGNAL_HANDLER
-	INVOKE_ASYNC(source, /mob.proc/death, source.last_damage_data)
+	INVOKE_ASYNC(source, TYPE_PROC_REF(/mob, death), source.last_damage_data)
 
 /datum/pain/Destroy()
 	. = ..()

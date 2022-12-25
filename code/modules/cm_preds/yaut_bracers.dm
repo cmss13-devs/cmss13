@@ -518,8 +518,8 @@
 
 		cloaked = TRUE
 
-		RegisterSignal(M, COMSIG_HUMAN_EXTINGUISH, .proc/wrapper_fizzle_camouflage)
-		RegisterSignal(M, COMSIG_HUMAN_PRE_BULLET_ACT, .proc/bullet_hit)
+		RegisterSignal(M, COMSIG_HUMAN_EXTINGUISH, PROC_REF(wrapper_fizzle_camouflage))
+		RegisterSignal(M, COMSIG_HUMAN_PRE_BULLET_ACT, PROC_REF(bullet_hit))
 
 		cloak_timer = world.time + 1.5 SECONDS
 
@@ -773,7 +773,7 @@
 		return FALSE
 
 	inject_timer = TRUE
-	addtimer(CALLBACK(src, .proc/injectors_ready), 2 MINUTES)
+	addtimer(CALLBACK(src, PROC_REF(injectors_ready)), 2 MINUTES)
 
 	to_chat(caller, SPAN_NOTICE("You feel a faint hiss and a crystalline injector drops into your hand."))
 	var/obj/item/reagent_container/hypospray/autoinjector/yautja/O = new(caller)
@@ -814,7 +814,7 @@
 		return FALSE
 
 	healing_capsule_timer = TRUE
-	addtimer(CALLBACK(src, .proc/healing_capsule_ready), 4 MINUTES)
+	addtimer(CALLBACK(src, PROC_REF(healing_capsule_ready)), 4 MINUTES)
 
 	to_chat(caller, SPAN_NOTICE("You feel your bracer churn as it pops out a healing capsule."))
 	var/obj/item/tool/surgery/healing_gel/O = new(caller)

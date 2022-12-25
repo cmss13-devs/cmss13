@@ -131,7 +131,7 @@ Transition is animated but instant by default.**/
 		return
 
 	//Sort the matrix packages by priority.
-	client_color_matrices = sortTim(client_color_matrices, /proc/cmp_filter_data_priority, TRUE)
+	client_color_matrices = sortTim(client_color_matrices, GLOBAL_PROC_REF(cmp_filter_data_priority), TRUE)
 
 	var/list/final_matrix
 

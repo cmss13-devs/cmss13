@@ -16,7 +16,7 @@
 	RegisterSignal(SSdcs, list(
 		COMSIG_GLOB_MARINE_DEATH,
 		COMSIG_GLOB_XENO_DEATH
-	), .proc/handle_mob_deaths)
+	), PROC_REF(handle_mob_deaths))
 
 /datum/cm_objective/recover_corpses/Destroy()
 	corpses = null
@@ -49,13 +49,13 @@
 		return
 
 	LAZYDISTINCTADD(corpses, dead_mob)
-	RegisterSignal(dead_mob, COMSIG_PARENT_QDELETING, .proc/handle_corpse_deletion)
-	RegisterSignal(dead_mob, COMSIG_LIVING_REJUVENATED, .proc/handle_mob_revival)
+	RegisterSignal(dead_mob, COMSIG_PARENT_QDELETING, PROC_REF(handle_corpse_deletion))
+	RegisterSignal(dead_mob, COMSIG_LIVING_REJUVENATED, PROC_REF(handle_mob_revival))
 
 	if (isXeno(dead_mob))
-		RegisterSignal(dead_mob, COMSIG_XENO_REVIVED, .proc/handle_mob_revival)
+		RegisterSignal(dead_mob, COMSIG_XENO_REVIVED, PROC_REF(handle_mob_revival))
 	else
-		RegisterSignal(dead_mob, COMSIG_HUMAN_REVIVED, .proc/handle_mob_revival)
+		RegisterSignal(dead_mob, COMSIG_HUMAN_REVIVED, PROC_REF(handle_mob_revival))
 
 
 /datum/cm_objective/recover_corpses/proc/handle_mob_revival(mob/living/carbon/revived_mob)

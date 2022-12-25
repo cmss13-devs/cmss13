@@ -175,7 +175,7 @@
 	adapt_to_squad()
 
 /obj/item/clothing/mask/rebreather/scarf/tacticalmask/squad/equipped(mob/user, slot, silent)
-	RegisterSignal(user, COMSIG_SET_SQUAD, .proc/update_clothing_icon, TRUE)
+	RegisterSignal(user, COMSIG_SET_SQUAD, PROC_REF(update_clothing_icon), TRUE)
 	adapt_to_squad()
 	return ..()
 

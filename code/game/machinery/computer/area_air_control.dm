@@ -15,7 +15,7 @@
 	New()
 		..()
 		//So the scrubbers have time to spawn
-		addtimer(CALLBACK(src, .proc/scanscrubbers), 10)
+		addtimer(CALLBACK(src, PROC_REF(scanscrubbers)), 10)
 
 	attack_remote(var/mob/user as mob)
 		return src.attack_hand(user)

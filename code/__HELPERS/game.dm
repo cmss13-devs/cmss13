@@ -331,4 +331,4 @@ proc
 /proc/flick_overlay_to_clients(image/image_to_show, list/show_to, duration)
 	for(var/client/add_to in show_to)
 		add_to.images += image_to_show
-	addtimer(CALLBACK(GLOBAL_PROC, /proc/remove_images_from_clients, image_to_show, show_to), duration, TIMER_CLIENT_TIME)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(remove_images_from_clients), image_to_show, show_to), duration, TIMER_CLIENT_TIME)

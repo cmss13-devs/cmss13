@@ -23,7 +23,7 @@
 	return FALSE
 
 /datum/effects/tethering/on_apply_effect()
-	RegisterSignal(affected_atom, COMSIG_MOVABLE_MOVED, .proc/moved)
+	RegisterSignal(affected_atom, COMSIG_MOVABLE_MOVED, PROC_REF(moved))
 
 /datum/effects/tethering/Destroy()
 	if(tethered)
@@ -85,9 +85,9 @@
 	return FALSE
 
 /datum/effects/tethered/on_apply_effect()
-	RegisterSignal(affected_atom, COMSIG_MOVABLE_PRE_MOVE, .proc/check_move)
+	RegisterSignal(affected_atom, COMSIG_MOVABLE_PRE_MOVE, PROC_REF(check_move))
 	if (resistable)
-		RegisterSignal(affected_atom, COMSIG_MOB_RESISTED, .proc/resist_callback)
+		RegisterSignal(affected_atom, COMSIG_MOB_RESISTED, PROC_REF(resist_callback))
 
 // affected is always going to be the same as affected_atom
 /datum/effects/tethered/proc/check_move(var/dummy, var/turf/target)
@@ -120,7 +120,7 @@
 	if (isnull(tether))
 		return
 
-	INVOKE_ASYNC(src, .proc/resisted)
+	INVOKE_ASYNC(src, PROC_REF(resisted))
 
 /datum/effects/tethered/proc/resisted()
 	to_chat(affected_atom, SPAN_DANGER("You attempt to break out of your tether to [tether.affected_atom]. (This will take around [resist_time/10] seconds and you need to stand still)"))

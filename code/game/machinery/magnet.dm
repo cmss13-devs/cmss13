@@ -38,7 +38,7 @@
 
 	SSradio.add_object(src, freq, RADIO_MAGNETS)
 
-	INVOKE_ASYNC(src, .proc/magnetic_process)
+	INVOKE_ASYNC(src, PROC_REF(magnetic_process))
 
 /obj/structure/machinery/magnetic_module
 	// update the invisibility and icon
@@ -122,7 +122,7 @@
 					on = !on
 
 					if(on)
-						INVOKE_ASYNC(src, .proc/magnetic_process)
+						INVOKE_ASYNC(src, PROC_REF(magnetic_process))
 
 
 
@@ -303,7 +303,7 @@
 
 			radio_connection.post_signal(src, signal, filter = RADIO_MAGNETS)
 
-			addtimer(CALLBACK(src, .proc/updateUsrDialog), 1)
+			addtimer(CALLBACK(src, PROC_REF(updateUsrDialog)), 1)
 
 		if(href_list["operation"])
 			switch(href_list["operation"])
@@ -326,7 +326,7 @@
 				if("togglemoving")
 					moving = !moving
 					if(moving)
-						INVOKE_ASYNC(src, .proc/MagnetMove)
+						INVOKE_ASYNC(src, PROC_REF(MagnetMove))
 
 
 		updateUsrDialog()

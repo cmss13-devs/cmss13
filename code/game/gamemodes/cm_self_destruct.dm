@@ -128,7 +128,7 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 		evac_status = EVACUATION_STATUS_IN_PROGRESS //Cannot cancel at this point. All shuttles are off.
 		spawn() //One of the few times spawn() is appropriate. No need for a new proc.
 			ai_announcement("WARNING: Evacuation order confirmed. Launching escape pods.", 'sound/AI/evacuation_confirmed.ogg')
-			addtimer(CALLBACK(src, .proc/launch_lifeboats), 10 SECONDS) // giving some time to board lifeboats
+			addtimer(CALLBACK(src, PROC_REF(launch_lifeboats)), 10 SECONDS) // giving some time to board lifeboats
 			var/datum/shuttle/ferry/marine/evacuation_pod/P
 			var/L[] = new
 			var/i

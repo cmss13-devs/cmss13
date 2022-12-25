@@ -50,7 +50,7 @@
 
 			var/datum/action/xeno_action/activable/cleave/cAction = get_xeno_action_by_type(linked_xeno, /datum/action/xeno_action/activable/cleave)
 			if (istype(cAction))
-				addtimer(CALLBACK(cAction, /datum/action/xeno_action/activable/cleave.proc/remove_buff), 7, TIMER_UNIQUE)
+				addtimer(CALLBACK(cAction, TYPE_PROC_REF(/datum/action/xeno_action/activable/cleave, remove_buff)), 7, TIMER_UNIQUE)
 
 /datum/xeno_shield/vanguard/proc/notify_xeno()
 	var/mob/living/carbon/Xenomorph/X = linked_xeno

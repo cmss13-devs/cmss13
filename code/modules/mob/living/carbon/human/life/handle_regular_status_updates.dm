@@ -21,7 +21,7 @@
 					if(prob(3))
 						fake_attack(src)
 					if(!handling_hal)
-						INVOKE_ASYNC(src, /mob/living/carbon.proc/handle_hallucinations)
+						INVOKE_ASYNC(src, TYPE_PROC_REF(/mob/living/carbon, handle_hallucinations))
 
 				if(hallucination <= 2)
 					hallucination = 0
@@ -67,7 +67,7 @@
 					if((mind.active && client != null) || immune_to_ssd) //This also checks whether a client is connected, if not, sleep is not reduced.
 						sleeping = max(sleeping - 1, 0)
 				if(prob(2) && health && !hal_crit)
-					addtimer(CALLBACK(src, .proc/emote, "snore"))
+					addtimer(CALLBACK(src, PROC_REF(emote), "snore"))
 			blinded = 1
 			stat = UNCONSCIOUS
 		else

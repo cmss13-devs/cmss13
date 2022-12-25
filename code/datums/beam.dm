@@ -49,8 +49,8 @@
 	visuals.icon = icon
 	visuals.icon_state = icon_state
 	Draw()
-	RegisterSignal(origin, COMSIG_MOVABLE_MOVED, .proc/redrawing)
-	RegisterSignal(target, COMSIG_MOVABLE_MOVED, .proc/redrawing)
+	RegisterSignal(origin, COMSIG_MOVABLE_MOVED, PROC_REF(redrawing))
+	RegisterSignal(target, COMSIG_MOVABLE_MOVED, PROC_REF(redrawing))
 
 /**
  * Triggered by signals set up when the beam is set up. If it's still sane to create a beam, it removes the old beam, creates a new one. Otherwise it kills the beam.
@@ -172,7 +172,7 @@
  */
 /atom/proc/beam(atom/BeamTarget, icon_state="b_beam", icon='icons/effects/beam.dmi', time = BEAM_INFINITE_DURATION, maxdistance = INFINITY, beam_type=/obj/effect/ebeam, always_turn = TRUE)
 	var/datum/beam/newbeam = new(src, BeamTarget, icon, icon_state, time, maxdistance, beam_type, always_turn)
-	INVOKE_ASYNC(newbeam, /datum/beam/.proc/Start)
+	INVOKE_ASYNC(newbeam, TYPE_PROC_REF(/datum/beam, Start))
 	return newbeam
 
 /proc/zap_beam(var/atom/source, var/zap_range, var/damage, var/list/blacklistmobs)

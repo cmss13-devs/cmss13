@@ -138,7 +138,7 @@
 /obj/item/clothing/accessory/medal/on_attached(obj/item/clothing/S, mob/living/user, silent)
 	. = ..()
 	if(.)
-		RegisterSignal(S, COMSIG_ITEM_PICKUP, .proc/remove_medal)
+		RegisterSignal(S, COMSIG_ITEM_PICKUP, PROC_REF(remove_medal))
 
 /obj/item/clothing/accessory/medal/proc/remove_medal(var/obj/item/clothing/C, var/mob/user)
 	SIGNAL_HANDLER
@@ -217,9 +217,9 @@
 
 			if(!H.stat && H.pain.feels_pain)
 				if(prob(35))
-					INVOKE_ASYNC(H, /mob.proc/emote, "pain")
+					INVOKE_ASYNC(H, TYPE_PROC_REF(/mob, emote), "pain")
 				else
-					INVOKE_ASYNC(H, /mob.proc/emote, "me", 1, "winces.")
+					INVOKE_ASYNC(H, TYPE_PROC_REF(/mob, emote), "me", 1, "winces.")
 
 	if(U.can_attach_accessory(src) && user.drop_held_item())
 		U.attach_accessory(H, src, TRUE)

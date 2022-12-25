@@ -82,7 +82,7 @@
 /obj/item/clothing/head/beret/cm/squadberet/equipped(mob/user, slot)
 	. = ..()
 	self_set()
-	RegisterSignal(user, COMSIG_SET_SQUAD, .proc/self_set, TRUE)
+	RegisterSignal(user, COMSIG_SET_SQUAD, PROC_REF(self_set), TRUE)
 
 /obj/item/clothing/head/beret/cm/squadberet/dropped(mob/user)
 	. = ..()
@@ -176,7 +176,7 @@
 	adapt_to_squad()
 
 /obj/item/clothing/head/headband/squad/equipped(mob/user, slot, silent)
-	RegisterSignal(user, COMSIG_SET_SQUAD, .proc/update_clothing_wrapper, TRUE)
+	RegisterSignal(user, COMSIG_SET_SQUAD, PROC_REF(update_clothing_wrapper), TRUE)
 	adapt_to_squad()
 	return ..()
 

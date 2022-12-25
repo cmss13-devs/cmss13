@@ -127,7 +127,7 @@
 				if(!do_after(user, 2 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC)) //Timed opening.
 					to_chat(H, SPAN_WARNING("You were interrupted!"))
 					return FALSE
-				RegisterSignal(user, COMSIG_MOVABLE_PRE_MOVE, .proc/storage_close) //Continue along the proc and allow opening if not locked; close on movement.
+				RegisterSignal(user, COMSIG_MOVABLE_PRE_MOVE, PROC_REF(storage_close)) //Continue along the proc and allow opening if not locked; close on movement.
 			else if(H.back == src) //On back and doing timed actions?
 				return FALSE
 	return TRUE
@@ -459,7 +459,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	internal_transmitter.relay_obj = src
 	internal_transmitter.phone_category = "RTO"
 	internal_transmitter.enabled = FALSE
-	RegisterSignal(internal_transmitter, COMSIG_TRANSMITTER_UPDATE_ICON, .proc/check_for_ringing)
+	RegisterSignal(internal_transmitter, COMSIG_TRANSMITTER_UPDATE_ICON, PROC_REF(check_for_ringing))
 	GLOB.radio_packs += src
 
 /obj/item/storage/backpack/marine/satchel/rto/proc/check_for_ringing()
@@ -676,8 +676,8 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 		to_chat(H, SPAN_WARNING("Your cloak is malfunctioning and can't be enabled right now!"))
 		return
 
-	RegisterSignal(H, COMSIG_GRENADE_PRE_PRIME, .proc/cloak_grenade_callback)
-	RegisterSignal(H, COMSIG_HUMAN_EXTINGUISH, .proc/wrapper_fizzle_camouflage)
+	RegisterSignal(H, COMSIG_GRENADE_PRE_PRIME, PROC_REF(cloak_grenade_callback))
+	RegisterSignal(H, COMSIG_HUMAN_EXTINGUISH, PROC_REF(wrapper_fizzle_camouflage))
 
 	camo_active = TRUE
 	H.visible_message(SPAN_DANGER("[H] vanishes into thin air!"), SPAN_NOTICE("You activate your cloak's camouflage."), max_distance = 4)
@@ -732,7 +732,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	if(anim)
 		anim(H.loc, H,'icons/mob/mob.dmi', null, "uncloak", null, H.dir)
 
-	addtimer(CALLBACK(src, .proc/allow_shooting, H), 1.5 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(allow_shooting), H), 1.5 SECONDS)
 
 // This proc is to cancel priming grenades in /obj/item/explosive/grenade/attack_self()
 /obj/item/storage/backpack/marine/satchel/scout_cloak/proc/cloak_grenade_callback(mob/user)

@@ -138,7 +138,7 @@
 /mob/living/carbon/human/IgniteMob()
 	. = ..()
 	if((. & IGNITE_IGNITED) && !stat && pain.feels_pain)
-		INVOKE_ASYNC(src, /mob.proc/emote, "scream")
+		INVOKE_ASYNC(src, TYPE_PROC_REF(/mob, emote), "scream")
 
 /mob/living/proc/ExtinguishMob()
 	if(on_fire)

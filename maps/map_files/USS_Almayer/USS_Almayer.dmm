@@ -14102,7 +14102,6 @@
 	},
 /area/almayer/squads/alpha)
 "aPo" = (
-/obj/structure/machinery/door/firedoor/border_only/almayer,
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4;
 	tag = "icon-intact-supply (EAST)"
@@ -14778,7 +14777,6 @@
 	pixel_y = 1;
 	tag = "icon-NE-out"
 	},
-/obj/structure/machinery/door/firedoor/border_only/almayer,
 /turf/open/floor/almayer{
 	icon_state = "test_floor4";
 	tag = "icon-test_floor4"
@@ -20286,7 +20284,6 @@
 	},
 /area/shuttle/drop2/sulaco)
 "bnA" = (
-/obj/structure/machinery/door/firedoor/border_only/almayer,
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4;
 	tag = "icon-intact-supply (EAST)"
@@ -34636,6 +34633,15 @@
 	tag = "icon-wall6"
 	},
 /area/almayer/evacuation/pod2)
+"cuY" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/almayer{
+	icon_state = "test_floor4";
+	tag = "icon-test_floor4"
+	},
+/area/almayer/squads/alpha)
 "cvb" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 6;
@@ -129476,7 +129482,7 @@ aLT
 aLT
 aLT
 bwe
-ozq
+cuY
 aPo
 aLT
 aLT

@@ -397,8 +397,8 @@ const SentryCamera = (props: { sentry_data: SentrySpec[] }, context) => {
   const sentry_name = sentry?.name ?? 'Unknown';
   const sentry_area = sentry?.area ?? 'Unknown';
   return (
-    <Stack vertical className="SentryCameraStack">
-      <Stack.Item>
+    <Flex direction="column" align="stretch" className="SentryCameraStack">
+      <Flex.Item>
         <Flex justify="space-between" className="TitleBox" align="center">
           <Flex.Item>
             <Box width={5} />
@@ -412,17 +412,24 @@ const SentryCamera = (props: { sentry_data: SentrySpec[] }, context) => {
             <Button onClick={() => act('clear-camera')}>Close</Button>
           </Flex.Item>
         </Flex>
-      </Stack.Item>
-      <Stack.Item>
-        <ByondUi
-          className="CameraBox"
-          params={{
-            id: data.mapRef,
-            type: 'map',
-          }}
-        />
-      </Stack.Item>
-    </Stack>
+      </Flex.Item>
+      <Flex.Item>
+        <Box height={1} />
+      </Flex.Item>
+      <Flex.Item>
+        <Flex justify="center">
+          <Flex.Item>
+            <ByondUi
+              className="CameraBox"
+              params={{
+                id: data.mapRef,
+                type: 'map',
+              }}
+            />
+          </Flex.Item>
+        </Flex>
+      </Flex.Item>
+    </Flex>
   );
 };
 
@@ -434,19 +441,28 @@ const SentryTabMenu = (
   },
   context
 ) => {
+  const { data, act } = useBackend<SentryData>(context);
   return (
     <Tabs fill>
       {props.sentrySpecs.map((x, index) => (
         <Tabs.Tab
           key={x.index}
           selected={props.selected === index}
-          onClick={() => props.setSelected(index)}>
+          onClick={() => {
+            props.setSelected(index);
+            if (data.camera_target) {
+              act('set-camera', { index: x.index });
+            }
+          }}>
           {x.nickname.length === 0 ? x.index : x.nickname}
         </Tabs.Tab>
       ))}
       <Tabs.Tab
         selected={props.selected === undefined}
-        onClick={() => props.setSelected(undefined)}>
+        onClick={() => {
+          props.setSelected(undefined);
+          act('clear-camera');
+        }}>
         All
       </Tabs.Tab>
     </Tabs>

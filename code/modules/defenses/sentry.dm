@@ -24,7 +24,6 @@
 	var/sentry_range = SENTRY_RANGE
 
 	has_camera = TRUE
-	camera_range = 7
 
 	var/damage_mult = 1
 	var/accuracy_mult = 1

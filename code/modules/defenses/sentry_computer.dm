@@ -53,7 +53,7 @@
 	transceiver.forceMove(src)
 	transceiver.set_frequency(SENTRY_FREQ)
 	transceiver.config(list(RADIO_CHANNEL_SENTY=1))
-	voice.name = "Laptop [serial_number]"
+	voice.name = "[name]:[serial_number]"
 	voice.forceMove(src)
 
 /obj/item/device/sentry_computer/Destroy()
@@ -90,10 +90,14 @@
 	on = FALSE
 	icon_state = "sentrycomp_cl"
 	STOP_PROCESSING(SSobj, src)
+	playsound(src,  'sound/machines/terminal_off.ogg', 25, FALSE)
 
 /obj/item/device/sentry_computer/MouseDrop(atom/dropping, mob/user)
 	teardown()
 	usr.put_in_any_hand_if_possible(src, disable_warning = TRUE)
+
+/obj/item/device/sentry_computer/emp_act(severity)
+	return TRUE
 
 /obj/item/device/sentry_computer/proc/handle_engaged(var/obj/structure/machinery/defenses/sentry/sentrygun)
 	var/displayname = sentrygun.name
@@ -130,6 +134,7 @@
 			icon_state = "sentrycomp_on"
 			on = TRUE
 			START_PROCESSING(SSobj, src)
+			playsound(src,  'sound/machines/terminal_on.ogg', 25, FALSE)
 		else
 			tgui_interact(user)
 	else
@@ -151,6 +156,7 @@
 			else
 				icon_state = "sentrycomp_op"
 				on = FALSE
+				playsound(src,  'sound/machines/terminal_off.ogg', 25, FALSE)
 
 /obj/item/device/sentry_computer/attackby(var/obj/item/object, mob/user)
 	if(istype(object, /obj/item/cell))
@@ -166,10 +172,10 @@
 		playsound(src, get_sfx("terminal_type"), 25, FALSE)
 		if (do_after(usr, 10, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
 			if(tool.remove_encryption_key(serial_number))
-				to_chat(user, SPAN_NOTICE("You unload the encryption key to the [tool]."))
+				to_chat(user, SPAN_NOTICE("You unload the encryption key to \the [tool]."))
 				registered_tools -= list(id)
 			else
-				to_chat(user, SPAN_NOTICE("You load an encryption key to the [tool]."))
+				to_chat(user, SPAN_NOTICE("You load an encryption key to \the [tool]."))
 				registered_tools += list(id)
 				tool.load_encryption_key(serial_number, src)
 	else
@@ -194,6 +200,18 @@
 	else
 		to_chat(user, SPAN_WARNING("\The [sentry] is already encrypted by laptop [sentry.linked_laptop.serial_number]."))
 
+/obj/item/device/sentry_computer/proc/sentry_destroyed(var/sentry_gun)
+	var/obj/structure/machinery/defenses/sentry/sentry = sentry_gun
+	if(sentry.linked_laptop == src)
+		unpair_sentry(sentry)
+	var/displayname = sentry.name
+	if(length(sentry.nickname) > 0)
+		displayname = sentry.nickname
+	var/areaname = get_area(sentry)
+	var/message = "[displayname]:[areaname] lost contact."
+	INVOKE_ASYNC(src, .proc/send_message, message)
+	playsound(src,  'sound/machines/buzz-two.ogg', 25, FALSE)
+
 /obj/item/device/sentry_computer/proc/pair_sentry(var/obj/structure/machinery/defenses/sentry/target)
 	target.linked_laptop = src
 	paired_sentry +=list(target)
@@ -201,7 +219,7 @@
 	RegisterSignal(target, COMSIG_SENTRY_ENGAGED_ALERT, .proc/handle_engaged)
 	RegisterSignal(target, COMSIG_SENTRY_LOW_AMMO_ALERT, .proc/handle_low_ammo)
 	RegisterSignal(target, COMSIG_SENTRY_EMPTY_AMMO_ALERT, .proc/handle_empty_ammo)
-
+	RegisterSignal(target, COMSIG_SENTRY_DESTROYED_ALERT, .proc/sentry_destroyed)
 
 /obj/item/device/sentry_computer/proc/unpair_sentry(var/obj/structure/machinery/defenses/sentry/target)
 	target.linked_laptop = null
@@ -210,6 +228,7 @@
 	UnregisterSignal(target, COMSIG_SENTRY_ENGAGED_ALERT)
 	UnregisterSignal(target, COMSIG_SENTRY_LOW_AMMO_ALERT)
 	UnregisterSignal(target, COMSIG_SENTRY_EMPTY_AMMO_ALERT)
+	UnregisterSignal(target, COMSIG_SENTRY_DESTROYED_ALERT)
 
 	if(current == target)
 		current = null
@@ -311,18 +330,12 @@
 		if(paired_sentry[sentry_index])
 			var/result = paired_sentry[sentry_index].update_choice(usr, action, params["selection"])
 			if(result)
-				playsound(src, get_sfx("terminal_type"), 25, FALSE)
+				playsound(src, get_sfx("terminal_button"), 25, FALSE)
 				return TRUE
 			switch(action)
 				if("set-camera")
 					current = paired_sentry[sentry_index]
-					if(current.placed)
-						playsound(src, get_sfx("terminal_type"), 25, FALSE)
-						update_active_camera()
-						return TRUE
-				if("clear-camera")
-					current = null
-					playsound(src, get_sfx("terminal_type"), 25, FALSE)
+					playsound(src, get_sfx("terminal_button"), 25, FALSE)
 					update_active_camera()
 					return TRUE
 				if("ping")
@@ -335,13 +348,14 @@
 			return FALSE
 		if("clear-camera")
 			current = null
-			playsound(src, get_sfx("terminal_type"), 25, FALSE)
+			playsound(src, get_sfx("terminal_button"), 25, FALSE)
 			update_active_camera()
 			return TRUE
 
 
 /obj/item/device/sentry_computer/proc/show_camera_static()
 	cam_screen.vis_contents.Cut()
+	last_camera_turf = null
 	cam_background.icon_state = "scanline2"
 	cam_background.fill_rect(1, 1, DEFAULT_MAP_SIZE, DEFAULT_MAP_SIZE)
 
@@ -387,7 +401,8 @@
 	var/list/bbox = get_bbox_of_atoms(visible_turfs)
 	var/size_x = bbox[3] - bbox[1] + 1
 	var/size_y = bbox[4] - bbox[2] + 1
-
+	cam_screen.icon = null
+	cam_screen.icon_state = "clear"
 	cam_screen.vis_contents = visible_turfs
 	cam_background.icon_state = "clear"
 	cam_background.fill_rect(1, 1, size_x, size_y)

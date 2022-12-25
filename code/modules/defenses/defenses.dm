@@ -37,7 +37,6 @@
 	var/nickname = ""
 	var/obj/item/device/sentry_computer/linked_laptop = null
 	var/has_camera = FALSE
-	var/camera_range = 0
 	var/list/choice_categories = list()
 
 	var/list/selected_categories = list()
@@ -362,6 +361,7 @@
 
 	if(health <= 0 && stat != DEFENSE_DESTROYED)
 		stat |= DEFENSE_DESTROYED
+		SEND_SIGNAL(src, COMSIG_SENTRY_DESTROYED_ALERT, src)
 		destroyed_action()
 		return
 

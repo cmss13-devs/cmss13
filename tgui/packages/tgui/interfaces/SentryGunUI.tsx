@@ -340,7 +340,7 @@ const SentryGunStatus = (props: { data: SentrySpec }, context) => {
           </Flex.Item>
         </Flex>
       </Stack.Item>
-      <Stack.Item className="TitleBox">
+      <Stack.Item>
         <GunMenu data={props.data} />
       </Stack.Item>
     </Stack>
@@ -397,11 +397,16 @@ const SentryCamera = (props: { sentry_data: SentrySpec[] }, context) => {
   const sentry_name = sentry?.name ?? 'Unknown';
   const sentry_area = sentry?.area ?? 'Unknown';
   return (
-    <Stack vertical>
+    <Stack vertical className="SentryCameraStack">
       <Stack.Item>
-        <Flex justify="space-between">
+        <Flex justify="space-between" className="TitleBox" align="center">
           <Flex.Item>
-            {sentry_name}: {sentry_area}
+            <Box width={5} />
+          </Flex.Item>
+          <Flex.Item>
+            <span>
+              {getSanitisedName(sentry_name)}: {sanitiseArea(sentry_area)}
+            </span>
           </Flex.Item>
           <Flex.Item>
             <Button onClick={() => act('clear-camera')}>Close</Button>
@@ -483,7 +488,7 @@ export const SentryGunUI = (_, context) => {
       : (selectedSentry ?? 0) < sentrySpecs.length;
 
   return (
-    <Window theme="crtyellow" height={700} width={680}>
+    <Window theme="crtyellow" height={700} width={700}>
       <Window.Content className="SentryGun" scrollable>
         <Stack vertical>
           <Stack.Item>

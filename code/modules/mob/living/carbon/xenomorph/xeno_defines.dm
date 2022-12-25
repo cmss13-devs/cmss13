@@ -266,8 +266,10 @@
 	var/need_round_end_check = FALSE
 
 	//Joining as Facehugger vars
-	var/hugger_timelock = 15 MINUTES //You can only join as a hugger 15 minutes into the round
-	var/playable_hugger_limit = 0 //How many huggers can the hive support
+	/// When can huggers join the round
+	var/hugger_timelock = 15 MINUTES
+	/// How many huggers can the hive support
+	var/playable_hugger_limit = 0
 
 /datum/hive_status/New()
 	mutators.hive = src

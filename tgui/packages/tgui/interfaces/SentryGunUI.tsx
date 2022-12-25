@@ -124,7 +124,11 @@ const GunMenu = (props: { data: SentrySpec }, context) => {
   const round_rep =
     props.data.rounds !== undefined ? props.data.rounds.toFixed(0) : undefined;
   return (
-    <Flex direction="column" className="GunFlex">
+    <Flex
+      direction="column"
+      className="GunFlex"
+      align="stretch"
+      justify="center">
       <Flex.Item>
         <Box className="EngagedBox">
           <Flex justify="space-between">
@@ -162,14 +166,17 @@ const GunMenu = (props: { data: SentrySpec }, context) => {
       {props.data.rounds !== undefined && props.data.max_rounds !== undefined && (
         <Flex.Item>
           <Box className="EngagedBox">
-            <Stack>
-              <Stack.Item align="center">
+            <Flex justify="center">
+              <Flex.Item align="center">
                 <span>Rounds Remaining</span>
-              </Stack.Item>
-              <Stack.Item align="center">
+              </Flex.Item>
+              <Flex.Item>
+                <Box width={1} />
+              </Flex.Item>
+              <Flex.Item align="center">
                 <Icon name="play" />
-              </Stack.Item>
-              <Stack.Item
+              </Flex.Item>
+              <Flex.Item
                 align="center"
                 className={classes([
                   'AmmoBoundingBox',
@@ -183,8 +190,8 @@ const GunMenu = (props: { data: SentrySpec }, context) => {
                     {round_rep}
                   </span>
                 )}
-              </Stack.Item>
-            </Stack>
+              </Flex.Item>
+            </Flex>
           </Box>
         </Flex.Item>
       )}
@@ -341,7 +348,7 @@ const SentryGunStatus = (props: { data: SentrySpec }, context) => {
 };
 
 const ShowSingleSentry = (props: { data: SentrySpec }, context) => {
-  const [showConfig, setShowConfig] = useLocalState(context, 'showConf', true);
+  const [showConfig] = useLocalState(context, 'showConf', true);
   return (
     <>
       {showConfig && <SentryGunConfiguration data={props.data} />}
@@ -367,9 +374,9 @@ const ShowSentryCard = (props: { data: SentrySpec }, context) => {
   );
 };
 
-const ShowAllSentry = (props: { data: SentrySpec[] }, context) => {
+const ShowAllSentry = (props: { data: SentrySpec[] }, _) => {
   return (
-    <Flex className="ShowAllFlex">
+    <Flex align="space-between" wrap>
       {props.data.map((x) => (
         <Flex.Item key={x.index}>
           <ShowSentryCard data={x} />
@@ -423,7 +430,7 @@ const SentryTabMenu = (
   context
 ) => {
   return (
-    <Tabs>
+    <Tabs fill>
       {props.sentrySpecs.map((x, index) => (
         <Tabs.Tab
           key={x.index}
@@ -478,47 +485,52 @@ export const SentryGunUI = (_, context) => {
   return (
     <Window theme="crtyellow" height={700} width={680}>
       <Window.Content className="SentryGun" scrollable>
-        <Flex justify="space-between" align-items="center">
-          <Flex.Item>
-            <SentryTabMenu
-              sentrySpecs={sentrySpecs}
-              selected={selectedSentry}
-              setSelected={setSelectedSentry}
-            />
-          </Flex.Item>
-          <Flex.Item align="center">
-            <PowerLevel />
-          </Flex.Item>
-        </Flex>
-
-        {data.screen_state === 0 && (
-          <div>
-            <TimedCallback
-              time={1.5}
-              callback={() => act('screen-state', { state: 1 })}
-            />
-            <div className="TopPanelSlide" />
-            <div className="BottomPanelSlide" />
-          </div>
-        )}
-        {data.camera_target === null && (
-          <>
-            {!validSelection && <EmptyDisplay />}
-            {validSelection && (
+        <Stack vertical>
+          <Stack.Item>
+            <Flex justify="space-between" align-items="center">
+              <Flex.Item>
+                <SentryTabMenu
+                  sentrySpecs={sentrySpecs}
+                  selected={selectedSentry}
+                  setSelected={setSelectedSentry}
+                />
+              </Flex.Item>
+              <Flex.Item align="center">
+                <PowerLevel />
+              </Flex.Item>
+            </Flex>
+          </Stack.Item>
+          <Stack.Item>
+            {data.screen_state === 0 && (
+              <div>
+                <TimedCallback
+                  time={1.5}
+                  callback={() => act('screen-state', { state: 1 })}
+                />
+                <div className="TopPanelSlide" />
+                <div className="BottomPanelSlide" />
+              </div>
+            )}
+            {data.camera_target === null && (
               <>
-                {selectedSentry !== undefined && (
-                  <ShowSingleSentry data={sentrySpecs[selectedSentry]} />
-                )}
-                {selectedSentry === undefined && (
-                  <ShowAllSentry data={sentrySpecs} />
+                {!validSelection && <EmptyDisplay />}
+                {validSelection && (
+                  <>
+                    {selectedSentry !== undefined && (
+                      <ShowSingleSentry data={sentrySpecs[selectedSentry]} />
+                    )}
+                    {selectedSentry === undefined && (
+                      <ShowAllSentry data={sentrySpecs} />
+                    )}
+                  </>
                 )}
               </>
             )}
-          </>
-        )}
-        {data.camera_target !== null && (
-          <SentryCamera sentry_data={sentrySpecs} />
-        )}
+            {data.camera_target !== null && (
+              <SentryCamera sentry_data={sentrySpecs} />
+            )}
+          </Stack.Item>
+        </Stack>
       </Window.Content>
     </Window>
   );

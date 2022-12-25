@@ -68,11 +68,6 @@ $large-text: 1.5rem;
     }
   }
 
-  .ShowAllFlex {
-    display: flex;
-    flex-wrap: wrap;
-  }
-
   .SentryBox {
     border: 2px solid $light;
   }
@@ -152,6 +147,10 @@ $large-text: 1.5rem;
     align-items: center;
   }
 
+  .Tab {
+    height: 2.5rem;
+  }
+
   .Tab__text {
     font-size: $large-text;
   }
@@ -222,6 +221,9 @@ $large-text: 1.5rem;
 
   .TitleText {
     text-align: center;
+    span {
+      font-size: 1.5rem;
+    }
   }
 
   .SelectionFlexItem {

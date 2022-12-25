@@ -22396,7 +22396,7 @@
 /area/shuttle/drop2/sulaco)
 "bwr" = (
 /obj/effect/decal/warning_stripes,
-/obj/effect/attach_point/crew_weapon/dropship2,
+/obj/effect/attach_point/crew_weapon/dropship1,
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15";
 	tag = "icon-rasputin15"
@@ -23497,8 +23497,8 @@
 	},
 /area/shuttle/drop1/sulaco)
 "bAy" = (
-/obj/effect/attach_point/crew_weapon/dropship2,
 /obj/effect/decal/warning_stripes,
+/obj/effect/attach_point/crew_weapon/dropship1,
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin3";
 	tag = "icon-rasputin3"
@@ -42904,8 +42904,8 @@
 /turf/open/floor/almayer,
 /area/almayer/lifeboat_pumps/north1)
 "fSp" = (
-/obj/effect/attach_point/crew_weapon/dropship1,
 /obj/effect/decal/warning_stripes,
+/obj/effect/attach_point/crew_weapon/dropship2,
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin3";
 	tag = "icon-rasputin3"
@@ -63043,8 +63043,8 @@
 	},
 /area/almayer/living/gym)
 "oRU" = (
-/obj/effect/attach_point/crew_weapon/dropship1,
 /obj/effect/decal/warning_stripes,
+/obj/effect/attach_point/crew_weapon/dropship2,
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15";
 	tag = "icon-rasputin15"

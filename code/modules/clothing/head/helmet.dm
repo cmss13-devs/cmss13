@@ -292,6 +292,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	/obj/item/prop/helmetgarb/flair_uscm = "flair_uscm",
 	/obj/item/prop/helmetgarb/bullet_pipe = "bullet_pipe",
 	/obj/item/prop/helmetgarb/spacejam_tickets = "tickets_to_space_jam",
+	/obj/item/prop/helmetgarb/cat_ears = HELMET_GARB_RELAY_ICON_STATE,
 
 	// MISC
 	/obj/item/tool/pen = "helmet_pen_black",

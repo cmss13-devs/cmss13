@@ -615,6 +615,12 @@ var/global/list/gear_datums = list()
 	cost = 1
 	slot = WEAR_IN_BACK
 
+/datum/gear/cat_ears
+	display_name = "Cat ears (Squad)"
+	path = /obj/item/prop/helmetgarb/cat_ears
+	cost = 3
+	slot = WEAR_IN_BACK
+
 /datum/gear/spacejam_tickets
 	display_name = "Authentic Tickets to Space Jam"
 	path = /obj/item/prop/helmetgarb/spacejam_tickets

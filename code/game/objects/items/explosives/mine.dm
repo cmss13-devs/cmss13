@@ -338,7 +338,7 @@
 	set waitfor = 0
 	if(!cause_data)
 		cause_data = create_cause_data(initial(name), user)
-	cell_explosion(loc, 75, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, CARDINAL_ALL_DIRS, cause_data)
+	cell_explosion(loc, 100, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, CARDINAL_ALL_DIRS, cause_data)
 	playsound(loc, 'sound/weapons/gun_sharp_explode.ogg', 35)
 	qdel(src)
 
@@ -363,9 +363,13 @@
 		iff_signal = user.faction
 
 	cause_data = create_cause_data(initial(name), user)
-	anchored = TRUE
 	if(user)
 		user.drop_inv_item_on_ground(src)
 	setDir(user ? user.dir : dir) //The direction it is planted in is the direction the user faces at that time
 	activate_sensors()
 	update_icon()
+	for(var/mob/living/carbon/mob in range(1, src))
+		src.try_to_prime(mob)
+
+/obj/item/explosive/mine/sharp/attack_alien()
+	return

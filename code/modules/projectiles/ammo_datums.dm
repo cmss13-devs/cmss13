@@ -3404,12 +3404,13 @@
 	if(signal_explosion)
 		INVOKE_ASYNC(dart, /obj/item/explosive/mine/sharp.proc/prime, shooter)
 	else
+		dart.anchored = TRUE
 		addtimer(CALLBACK(dart, /obj/item/explosive/mine/sharp.proc/deploy_mine, shooter), 3 SECONDS, TIMER_DELETE_ME)
 		addtimer(CALLBACK(dart, /obj/item/explosive/mine/sharp.proc/disarm), 1 MINUTES, TIMER_DELETE_ME)
 
 /datum/ammo/rifle/sharp/explosive/proc/delayed_explosion(obj/item/projectile/P, mob/M, mob/shooter)
 	if(istype(M, /mob))
-		var/explosion_size = 75
+		var/explosion_size = 100
 		var/falloff_size = 50
 		var/cause_data = create_cause_data("P9 SHARP Rifle", shooter)
 		cell_explosion(get_turf(M), explosion_size, falloff_size, EXPLOSION_FALLOFF_SHAPE_LINEAR, P.dir, cause_data)
@@ -3458,8 +3459,8 @@
 	create_flechette(P.loc, P)
 
 /datum/ammo/rifle/sharp/flechette/proc/create_flechette(var/loc, obj/item/projectile/P)
-	var/shrapnel_count = 20
-	var/direct_hit_shrapnel = 5
+	var/shrapnel_count = 8
+	var/direct_hit_shrapnel = 3
 	var/dispersion_angle = 50
 	create_shrapnel(loc, min(direct_hit_shrapnel, shrapnel_count), P.dir, dispersion_angle, shrapnel_type, P.weapon_cause_data, FALSE, 100)
 	shrapnel_count -= direct_hit_shrapnel

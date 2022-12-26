@@ -1434,7 +1434,7 @@
 	scatter = SCATTER_AMOUNT_NONE
 	damage_mult = BASE_BULLET_DAMAGE_MULT
 	recoil = RECOIL_OFF
-	burst_amount = 0
+	burst_amount = 0 //just incase
 
 /obj/item/weapon/gun/rifle/sharp/unique_action(mob/user)
 	track(user)
@@ -1479,12 +1479,9 @@
 /obj/item/weapon/gun/rifle/sharp/cock()
 	return
 
-// DEAD MOBS ISSUE CLAYMORE CHECK, CURRENTLY DDOESNT BLOW UP CHANGE LAYER??? and check if only active ones?
-// explosion damage
-//flechette too strong
-//check for mobs when explosion mine arms then blow
-// burst  fire explode delay? (maybe verb on mag)
-// xeno melee on disarmed mines....(turn off)
-// double check 360 on claymore
-// crate claymore interaction
-// can pick up claymore b4 armed lmao (freeze when shoot on int and anchor)
+/obj/item/weapon/gun/rifle/sharp/toggle_burst(var/mob/user)
+
+	playsound(user, 'sound/weapons/handling/gun_burst_toggle.ogg', 15, 1)
+	//wip? switch proc async on ammo datum maybe?
+
+// burst  fire explode delay? (maybe verb on mag)				todo?

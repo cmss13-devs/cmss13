@@ -469,6 +469,7 @@ Additional game mode variables.
 
 	new_xeno.ghostize(FALSE) //Make sure they're not getting a free respawn.
 	xeno_candidate_mind.transfer_to(new_xeno, TRUE)
+	new_xeno.SetSleeping(0) // ghosting sleeps, but they got a new mind! wake up! (/mob/living/verb/ghost())
 
 	new_xeno.mind_initialize()
 	new_xeno.mind.player_entity = setup_player_entity(xeno_candidate_mind.ckey)
@@ -723,7 +724,7 @@ Additional game mode variables.
 	//Set up attachment vendor contents related to Marine count
 	for(var/i in GLOB.cm_vending_vendors)
 		var/obj/structure/machinery/cm_vending/sorted/CVS = i
-		CVS.populate_product_list(scale)
+		CVS.populate_product_list_and_boxes(scale)
 
 	//Scale the amount of cargo points through a direct multiplier
 	supply_controller.points = round(supply_controller.points * scale)

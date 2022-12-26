@@ -31,14 +31,14 @@
 
 	//SOUND VARS
 	///Sound to be played when item is picked up
-	var/pickupsound
+	var/pickup_sound
 	///Volume of pickup sound
 	var/pickupvol = 15
 	///Whether the pickup sound will vary in pitch/frequency
 	var/pickup_vary = TRUE
 
 	///Sound to be played when item is dropped
-	var/dropsound
+	var/drop_sound
 	///Volume of drop sound
 	var/dropvol = 15
 	///Whether the drop sound will vary in pitch/frequency
@@ -97,7 +97,7 @@
 
 	var/mob/living/carbon/human/locked_to_mob = null	// If the item uses flag MOB_LOCK_ON_PICKUP, this is the mob owner reference.
 
-	var/list/equip_sounds//Sounds played when this item is equipped
+	var/list/equip_sounds //Sounds played when this item is equipped
 	var/list/unequip_sounds //Same but when unequipped
 
 	 ///Vision impairing effect if worn on head/mask/glasses.
@@ -310,8 +310,8 @@ cases. Override_icon_state should be a list.*/
 		qdel(src)
 
 	SEND_SIGNAL(src, COMSIG_ITEM_DROPPED, user)
-	if(dropsound && (src.loc?.z))
-		playsound(src, dropsound, dropvol, drop_vary)
+	if(drop_sound && (src.loc?.z))
+		playsound(src, drop_sound, dropvol, drop_vary)
 	src.do_drop_animation(user)
 
 	appearance_flags &= ~NO_CLIENT_COLOR //So saturation/desaturation etc. effects affect it.
@@ -321,8 +321,8 @@ cases. Override_icon_state should be a list.*/
 	SHOULD_CALL_PARENT(TRUE)
 	SEND_SIGNAL(src, COMSIG_ITEM_PICKUP, user)
 	setDir(SOUTH)//Always rotate it south. This resets it to default position, so you wouldn't be putting things on backwards
-	if(pickupsound && !silent && src.loc?.z)
-		playsound(src, pickupsound, pickupvol, pickup_vary)
+	if(pickup_sound && !silent && src.loc?.z)
+		playsound(src, pickup_sound, pickupvol, pickup_vary)
 	do_pickup_animation(user)
 
 // called when this item is removed from a storage item, which is passed on as S. The loc variable is already set to the new destination before this is called.
@@ -744,7 +744,7 @@ cases. Override_icon_state should be a list.*/
 
 /obj/item/proc/showoff(mob/user)
 	for (var/mob/M in view(user))
-		M.show_message("[user] holds up [src]. <a HREF=?src=\ref[M];lookitem=\ref[src]>Take a closer look.</a>",1)
+		M.show_message("[user] holds up [src]. <a HREF=?src=\ref[M];lookitem=\ref[src]>Take a closer look.</a>", SHOW_MESSAGE_VISIBLE)
 
 /mob/living/carbon/verb/showoff()
 	set name = "Show Held Item"

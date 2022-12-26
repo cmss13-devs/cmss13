@@ -67,6 +67,12 @@
 #define COMSIG_TOPIC "handle_topic"
 /// from datum ui_act (usr, action)
 #define COMSIG_UI_ACT "COMSIG_UI_ACT"
+///from base of atom/attackby(): (/obj/item, /mob/living, params)
+#define COMSIG_PARENT_ATTACKBY "atom_attackby"
+///Return this in response if you don't want afterattack to be called
+	#define COMPONENT_NO_AFTERATTACK (1<<0)
+///from base of atom/examine(): (/mob, list/examine_text)
+#define COMSIG_PARENT_EXAMINE "atom_examine"
 
 /// fires on the target datum when an element is attached to it (/datum/element)
 #define COMSIG_ELEMENT_ATTACH "element_attach"
@@ -144,6 +150,9 @@
 /// From base of /mob/proc/set_face_dir(): (newdir)
 #define COMSIG_MOB_SET_FACE_DIR "mob_set_face_dir"
 	#define COMPONENT_CANCEL_SET_FACE_DIR (1<<0)
+
+/// From /obj/effect/alien/weeds/Crossed(atom/movable/AM)
+#define COMSIG_MOB_WEEDS_CROSSED "mob_weeds_crossed"
 
 #define COMSIG_MOB_TAKE_DAMAGE "mob_take_damage"
 #define COMSIG_XENO_TAKE_DAMAGE "xeno_take_damage"
@@ -418,6 +427,7 @@
 /// From /obj/item/projectile/scan_a_turf(): (turf/target)
 #define COMSIG_BULLET_PRE_HANDLE_TURF "bullet_pre_handle_turf"
 	#define COMPONENT_BULLET_PASS_THROUGH (1<<0)
+#define COMSIG_BULLET_TERMINAL "bullet_terminal"
 
 /// For any additional things that should happen when a xeno's melee_attack_additional_effects_self() proc is called
 #define COMSIG_XENO_SLASH_ADDITIONAL_EFFECTS_SELF "xeno_slash_additional_effects_self"

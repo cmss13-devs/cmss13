@@ -163,7 +163,7 @@
 		return .
 	var/mob/living/carbon/Xenomorph/X = AM
 	if(istype(X) && !X.ally_of_hivenumber(hivenumber))
-		X.next_move_slowdown = X.next_move_slowdown + (slow_amt * WEED_XENO_SPEED_MULT)
+		X.next_move_slowdown = X.next_move_slowdown + slow_amt
 		return .
 
 /obj/effect/alien/resin/spike
@@ -230,8 +230,8 @@
 	health = HEALTH_RESIN_XENO_FAST
 	var/speed_amt = 0.7
 
-	Crossed(atom/movable/AM)
-		return
+/obj/effect/alien/resin/sticky/fast/Crossed(atom/movable/AM)
+	return
 
 
 //xeno marker :0)

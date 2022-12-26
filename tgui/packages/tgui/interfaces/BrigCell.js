@@ -7,7 +7,7 @@ export const BrigCell = (props, context) => {
   const { viewing_incident, incidents } = data;
 
   return (
-    <Window theme="weyland" width={450} height={445}>
+    <Window theme="weyland" width={450} height={450}>
       <Window.Content scrollable>
         <Flex justify="center" mt="2rem" mb=".5rem">
           <Button

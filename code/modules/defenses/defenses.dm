@@ -35,6 +35,7 @@
 
 	// Defence Laptop
 	var/nickname = ""
+	var/encryptable = TRUE
 	var/obj/item/device/sentry_computer/linked_laptop = null
 	var/has_camera = FALSE
 	var/list/choice_categories = list()
@@ -186,7 +187,7 @@
 			to_chat(user, SPAN_WARNING("You don't have the training to do this."))
 			return
 
-		if(friendly_faction(user.faction))
+		if(friendly_faction(user.faction) && encryptable)
 			var/obj/item/device/multitool/tool = O
 			if(length(tool.encryption_keys) > 0)
 				if(!linked_laptop)

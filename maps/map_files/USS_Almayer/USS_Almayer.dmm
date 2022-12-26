@@ -19274,11 +19274,11 @@
 	name = "dropship intercom";
 	pixel_y = 24
 	},
-/obj/structure/bed/chair/dropship/vehicle{
-	pixel_x = 8
-	},
-/obj/structure/bed/chair/dropship/vehicle{
+/obj/structure/bed/chair/vehicle/breakable{
 	pixel_x = -8
+	},
+/obj/structure/bed/chair/vehicle/breakable{
+	pixel_x = 8
 	},
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15";
@@ -19343,10 +19343,10 @@
 	name = "dropship intercom";
 	pixel_y = 24
 	},
-/obj/structure/bed/chair/dropship/vehicle{
+/obj/structure/bed/chair/vehicle/breakable{
 	pixel_x = 8
 	},
-/obj/structure/bed/chair/dropship/vehicle{
+/obj/structure/bed/chair/vehicle/breakable{
 	pixel_x = -8
 	},
 /turf/open/shuttle/dropship{
@@ -21692,10 +21692,10 @@
 	},
 /area/shuttle/drop1/sulaco)
 "btQ" = (
-/obj/structure/bed/chair/dropship/vehicle{
+/obj/structure/bed/chair/vehicle/breakable{
 	pixel_x = 8
 	},
-/obj/structure/bed/chair/dropship/vehicle{
+/obj/structure/bed/chair/vehicle/breakable{
 	pixel_x = -8
 	},
 /turf/open/shuttle/dropship{
@@ -21704,11 +21704,11 @@
 	},
 /area/shuttle/drop1/sulaco)
 "btR" = (
-/obj/structure/bed/chair/dropship/vehicle{
-	pixel_x = 8
-	},
-/obj/structure/bed/chair/dropship/vehicle{
+/obj/structure/bed/chair/vehicle/breakable{
 	pixel_x = -8
+	},
+/obj/structure/bed/chair/vehicle/breakable{
+	pixel_x = 8
 	},
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15";
@@ -23421,11 +23421,11 @@
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med{
 	pixel_x = 30
 	},
-/obj/structure/bed/chair/dropship/vehicle{
-	pixel_x = 8
-	},
-/obj/structure/bed/chair/dropship/vehicle{
+/obj/structure/bed/chair/vehicle/breakable{
 	pixel_x = -8
+	},
+/obj/structure/bed/chair/vehicle/breakable{
+	pixel_x = 8
 	},
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15";
@@ -64663,6 +64663,18 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/squads/charlie_delta_shared)
+"pHY" = (
+/obj/structure/bed/chair/vehicle/breakable{
+	pixel_x = 8
+	},
+/obj/structure/bed/chair/vehicle/breakable{
+	pixel_x = -8
+	},
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin15";
+	tag = "icon-rasputin15"
+	},
+/area/shuttle/drop2/sulaco)
 "pIf" = (
 /obj/structure/disposalpipe/junction{
 	dir = 8;
@@ -64959,10 +64971,10 @@
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med{
 	pixel_x = -30
 	},
-/obj/structure/bed/chair/dropship/vehicle{
+/obj/structure/bed/chair/vehicle/breakable{
 	pixel_x = 8
 	},
-/obj/structure/bed/chair/dropship/vehicle{
+/obj/structure/bed/chair/vehicle/breakable{
 	pixel_x = -8
 	},
 /turf/open/shuttle/dropship{
@@ -78589,11 +78601,11 @@
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med{
 	pixel_x = -30
 	},
-/obj/structure/bed/chair/dropship/vehicle{
-	pixel_x = 8
-	},
-/obj/structure/bed/chair/dropship/vehicle{
+/obj/structure/bed/chair/vehicle/breakable{
 	pixel_x = -8
+	},
+/obj/structure/bed/chair/vehicle/breakable{
+	pixel_x = 8
 	},
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15";
@@ -80439,10 +80451,10 @@
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med{
 	pixel_x = 30
 	},
-/obj/structure/bed/chair/dropship/vehicle{
+/obj/structure/bed/chair/vehicle/breakable{
 	pixel_x = 8
 	},
-/obj/structure/bed/chair/dropship/vehicle{
+/obj/structure/bed/chair/vehicle/breakable{
 	pixel_x = -8
 	},
 /turf/open/shuttle/dropship{
@@ -103035,7 +103047,7 @@ baI
 baI
 bfN
 bhW
-btR
+pHY
 blI
 btR
 bpl

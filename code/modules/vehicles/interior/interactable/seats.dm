@@ -315,6 +315,17 @@
 	var/buckle_offset_y = 0
 	var/mob_old_y = 0
 
+/obj/structure/bed/chair/vehicle/breakable
+	name = "passenger seat"
+	desc = "A sturdy chair with a brace that lowers over your body. Prevents being flung around in vehicle during crash being injured as a result. Fasten your seatbelts, kids! Fix with welding tool in case of damage."
+	icon = 'icons/obj/vehicles/interiors/general.dmi'
+	icon_state = "vehicle_seat"
+	var/chair_state = DROPSHIP_CHAIR_UNFOLDED
+	buildstacktype = 0
+	picked_up_item = null
+	unslashable = FALSE
+	unacidable = FALSE
+
 /obj/structure/bed/chair/vehicle/Initialize()
 	. = ..()
 	chairbar = image('icons/obj/vehicles/interiors/general.dmi', "vehicle_bars")

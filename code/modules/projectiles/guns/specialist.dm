@@ -1424,6 +1424,8 @@
 	flags_item = TWOHANDED|NO_CRYO_STORE
 	map_specific_decoration = TRUE
 
+	var/explosion_delay_sharp = FALSE
+
 /obj/item/weapon/gun/rifle/sharp/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 17,"rail_x" = 12, "rail_y" = 20, "under_x" = 23, "under_y" = 13, "stock_x" = 24, "stock_y" = 13)
 
@@ -1479,9 +1481,13 @@
 /obj/item/weapon/gun/rifle/sharp/cock()
 	return
 
-/obj/item/weapon/gun/rifle/sharp/toggle_burst(var/mob/user)
-
+/obj/item/weapon/gun/rifle/sharp/toggle_burst(mob/user)
+	switch_mode(user)
 	playsound(user, 'sound/weapons/handling/gun_burst_toggle.ogg', 15, 1)
-	//wip? switch proc async on ammo datum maybe?
+	to_chat(user, SPAN_NOTICE("[icon2html(src, user)] You [explosion_delay_sharp ? "<B>enable</b>" : "<B>disable</b>"] [src]'s delayed fire mode. Explosive ammo will blow up in [explosion_delay_sharp ? "five seconds" : "one second"]."))
 
-// burst  fire explode delay? (maybe verb on mag)				todo?
+/obj/item/weapon/gun/rifle/sharp/proc/switch_mode(mob/user)
+	if(explosion_delay_sharp)
+		explosion_delay_sharp = FALSE
+	else
+		explosion_delay_sharp = TRUE

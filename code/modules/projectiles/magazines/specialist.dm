@@ -349,12 +349,12 @@
 
 /obj/item/ammo_magazine/rifle/sharp/track
 	name = "\improper 9X-T Sticky Tracking Dart Magazine"
+	desc = "A specialized tracking dart magazine."
 	icon_state = "sharprifle_tracker"
 	default_ammo = /datum/ammo/rifle/sharp/track
-	desc = "A specialized tracking dart magazine."
 
 /obj/item/ammo_magazine/rifle/sharp/flechette
 	name = "\improper 9X-F Flechette Dart Magazine"
+	desc = "A specialized flechette dart magazine."
 	icon_state = "sharprifle_flechette"
 	default_ammo = /datum/ammo/rifle/sharp/flechette
-	desc = "A specialized flechette dart magazine."

@@ -3393,7 +3393,11 @@
 	if(shooter && ismob(shooter))
 		if(!M.get_target_lock(shooter.faction_group))
 			playsound(get_turf(M), 'sound/weapons/gun_sharp_explode.ogg', 35)
-			addtimer(CALLBACK(src, .proc/delayed_explosion, P, M, shooter), 1 SECONDS)
+			var/obj/item/weapon/gun/rifle/sharp/weapon = P.shot_from
+			if(weapon && weapon.explosion_delay_sharp)
+				addtimer(CALLBACK(src, .proc/delayed_explosion, P, M, shooter), 5 SECONDS)
+			else
+				addtimer(CALLBACK(src, .proc/delayed_explosion, P, M, shooter), 1 SECONDS)
 
 /datum/ammo/rifle/sharp/explosive/drop_dart(var/loc, obj/item/projectile/P, var/mob/shooter)
 	var/signal_explosion = FALSE

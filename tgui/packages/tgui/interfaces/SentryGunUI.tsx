@@ -527,20 +527,22 @@ export const SentryGunUI = (_, context) => {
     <Window theme="crtyellow" height={700} width={700}>
       <Window.Content className="SentryGun" scrollable>
         <Stack vertical>
-          <Stack.Item>
-            <Flex justify="space-between" align-items="center">
-              <Flex.Item>
-                <SentryTabMenu
-                  sentrySpecs={sentrySpecs}
-                  selected={selectedSentry}
-                  setSelected={setSelectedSentry}
-                />
-              </Flex.Item>
-              <Flex.Item align="center">
-                <PowerLevel />
-              </Flex.Item>
-            </Flex>
-          </Stack.Item>
+          {data.sentry.length > 0 && (
+            <Stack.Item>
+              <Flex justify="space-between" align-items="center">
+                <Flex.Item>
+                  <SentryTabMenu
+                    sentrySpecs={sentrySpecs}
+                    selected={selectedSentry}
+                    setSelected={setSelectedSentry}
+                  />
+                </Flex.Item>
+                <Flex.Item align="center">
+                  <PowerLevel />
+                </Flex.Item>
+              </Flex>
+            </Stack.Item>
+          )}
           <Stack.Item>
             {data.screen_state === 0 && (
               <div>

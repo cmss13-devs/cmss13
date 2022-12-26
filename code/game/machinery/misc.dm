@@ -51,12 +51,12 @@
 	name = "server rack"
 	icon_state = "rackframe"
 
-	update_icon()
-		//overlays.Cut()
-		return
+/obj/structure/machinery/computer3/server/rack/update_icon()
+	//overlays.Cut()
+	return
 
-	attack_hand() // Racks have no screen, only AI can use them
-		return
+/obj/structure/machinery/computer3/server/rack/attack_hand() // Racks have no screen, only AI can use them
+	return
 
 
 /obj/structure/machinery/lapvend

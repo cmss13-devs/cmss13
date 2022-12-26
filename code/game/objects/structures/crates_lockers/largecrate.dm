@@ -217,34 +217,34 @@
 
 /obj/structure/largecrate/random/barrel
 	name = "blue barrel"
-	desc = "A blue storage barrel"
+	desc = "A blue storage barrel."
 	icon_state = "barrel_blue"
 	parts_type = /obj/item/stack/sheet/metal
 	unpacking_sound = 'sound/effects/metalhit.ogg'
 
 /obj/structure/largecrate/random/barrel/blue
 	name = "blue barrel"
-	desc = "A blue storage barrel"
+	desc = "A blue storage barrel."
 	icon_state = "barrel_blue"
 
 /obj/structure/largecrate/random/barrel/red
 	name = "red barrel"
-	desc = "A red storage barrel"
+	desc = "A red storage barrel."
 	icon_state = "barrel_red"
 
 /obj/structure/largecrate/random/barrel/green
 	name = "green barrel"
-	desc = "A green storage barrel"
+	desc = "A green storage barrel."
 	icon_state = "barrel_green"
 
 /obj/structure/largecrate/random/barrel/yellow
 	name = "yellow barrel"
-	desc = "A yellow storage barrel"
+	desc = "A yellow storage barrel."
 	icon_state = "barrel_yellow"
 
 /obj/structure/largecrate/random/barrel/white
 	name = "white barrel"
-	desc = "A white storage barrel"
+	desc = "A white storage barrel."
 	icon_state = "barrel_white"
 
 /obj/structure/largecrate/random/secure

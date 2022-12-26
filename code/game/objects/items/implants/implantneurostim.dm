@@ -126,8 +126,8 @@
 /obj/item/implanter/neurostim
 	name = "implanter"
 
-	New()
-		src.imp = new /obj/item/implant/neurostim(src)
-		..()
-		update()
-		return
+/obj/item/implanter/neurostim/New()
+	src.imp = new /obj/item/implant/neurostim(src)
+	..()
+	update()
+	return

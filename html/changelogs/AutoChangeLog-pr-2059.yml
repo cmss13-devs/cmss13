@@ -1,6 +1,0 @@
-author: "stanalbatross"
-delete-after: True
-changes:
-  - balance: "deep ocean water on NV will now toss you around and massively slow you down to discourage you from going in it"
-  - balance: "added an extra flank route to the predship cave on NV"
-  - bugfix: "made the big LZ doors on NV visible again"

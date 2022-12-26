@@ -115,11 +115,18 @@ const TitleSection = (props: { data: SentrySpec }, context) => {
 };
 
 const GunMenu = (props: { data: SentrySpec }, context) => {
-  const { act } = useBackend<SentryData>(context);
+  const { data, act } = useBackend<SentryData>(context);
   const isEngaged = props.data.engaged !== undefined && props.data.engaged > 1;
   const iff_info = props.data.selection_state.find(
     (x) => x[0].localeCompare('IFF STATUS') === 0
   )?.[1];
+
+  const [_, setSelectedSentry] = useLocalState<undefined | number>(
+    context,
+    'selected',
+    0
+  );
+
   const isCritical = props.data.health < props.data.health_max * 0.2;
   const round_rep =
     props.data.rounds !== undefined ? props.data.rounds.toFixed(0) : undefined;
@@ -136,7 +143,11 @@ const GunMenu = (props: { data: SentrySpec }, context) => {
               <Button
                 disabled={props.data.camera_available === 0}
                 icon="video"
-                onClick={() => act('set-camera', { index: props.data.index })}
+                onClick={() => {
+                  act('set-camera', { index: props.data.index });
+                  data.camera_target = `${props.data.index - 1}`;
+                  setSelectedSentry(props.data.index - 1);
+                }}
               />
             </Flex.Item>
             <Flex.Item>
@@ -254,7 +265,7 @@ const InputGroup = (
   },
   context
 ) => {
-  const { data, act } = useBackend<SentryData>(context);
+  const { act } = useBackend<SentryData>(context);
   const [categoryValue, setCategoryValue] = useLocalState(
     context,
     `${props.index} ${props.category}`,
@@ -288,7 +299,7 @@ const InputGroup = (
 };
 
 const SentryGunConfiguration = (props: { data: SentrySpec }, context) => {
-  const [showConfig, setShowConfig] = useLocalState(context, 'showConf', true);
+  const [_, setShowConfig] = useLocalState(context, 'showConf', true);
   return (
     <Stack vertical>
       <Stack.Item className="TitleBox">
@@ -324,19 +335,19 @@ const SentryGunConfiguration = (props: { data: SentrySpec }, context) => {
 };
 
 const SentryGunStatus = (props: { data: SentrySpec }, context) => {
-  const [showConfig, setShowConfig] = useLocalState(context, 'showConf', true);
+  const [_, setShowConfig] = useLocalState(context, 'showConf', true);
   return (
     <Stack vertical>
       <Stack.Item className="TitleBox">
         <Flex justify="space-between" align-items="center">
           <Flex.Item>
-            <Box width={13} />
+            <Box width={6} />
           </Flex.Item>
           <Flex.Item>
             <TitleSection data={props.data} />
           </Flex.Item>
           <Flex.Item align="center">
-            <Button onClick={() => setShowConfig(true)}>Configuration</Button>
+            <Button onClick={() => setShowConfig(true)}>Config</Button>
           </Flex.Item>
         </Flex>
       </Stack.Item>
@@ -386,7 +397,12 @@ const ShowAllSentry = (props: { data: SentrySpec[] }, _) => {
   );
 };
 
-const SentryCamera = (props: { sentry_data: SentrySpec[] }, context) => {
+const SentryCamera = (
+  props: {
+    sentry_data: SentrySpec[];
+  },
+  context
+) => {
   const { data, act } = useBackend<SentryData>(context);
   const { sentry_data } = props;
   const sentry = sentry_data.find((x) => {

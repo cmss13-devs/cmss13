@@ -79,6 +79,10 @@
 	if(!check_state())
 		return
 
+	if (SEND_SIGNAL(target_xeno, COMSIG_XENO_PRE_HEAL) & COMPONENT_CANCEL_XENO_HEAL)
+		to_chat(src, SPAN_XENOWARNING("You cannot apply salve to a burning sister!"))
+		return
+
 	if(!isturf(loc))
 		to_chat(src, SPAN_WARNING("You can't apply your regenerative resin from here!"))
 		return

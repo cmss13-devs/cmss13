@@ -1,9 +1,8 @@
 // Sentence states
 #define BRIG_SENTENCE_ACTIVE (1<<0) // Is the timer currently running?
-#define BRIG_SENTENCE_PAUSED (1<<1) // Is the timer currently paused?
-#define BRIG_SENTENCE_SERVED (1<<2) // Has the sentence served it's time?
-#define BRIG_SENTENCE_PARDONED (1<<3) // Has the sentence been pardoned?
-#define BRIG_SENTENCE_PERMA (1<<4) // Is this sentence a permabrig sentence?
+#define BRIG_SENTENCE_SERVED (1<<1) // Has the sentence served it's time?
+#define BRIG_SENTENCE_PARDONED (1<<2) // Has the sentence been pardoned?
+#define BRIG_SENTENCE_PERMA (1<<3) // Is this sentence a permabrig sentence?
 
 /obj/structure/machinery/brig_cell
 	name = "\improper Cell Controller"
@@ -19,7 +18,6 @@
 	var/id = null     		// id of door it controls.
 	var/picture_state		// icon_state of alert picture, if not displaying text/numbers
 	var/list/obj/structure/machinery/targets = list() // A list of World objects this machine controls.
-
 	var/list/obj/item/paper/incident/incident_reports = list()
 	var/obj/item/paper/incident/active_report = null // The report currently ticking down the clock.
 	var/obj/item/paper/incident/viewed_report = null // The report currently being viewed.
@@ -77,19 +75,20 @@
 		var/list/incident_data = list()
 
 		incident_data["suspect"] = incident.criminal_name
+		incident_data["active"] = (incident.status & BRIG_SENTENCE_ACTIVE)
 		incident_data["ref"] = "\ref[paper]"
 
 		data["incidents"] += list(incident_data)
 
-	data["can_pardon"] = FALSE
 	// Does this user have the ability to pardon?
-	if(ishuman(user))
-		var/mob/living/carbon/human/H = user
-		if((H.get_paygrade(1) in GLOB.co_paygrades) || (H.get_paygrade(1) in GLOB.highcom_paygrades) || (H.get_paygrade(1) == "PvI"))
-			message_admins("Can pardon!")
-			data["can_pardon"] = TRUE
-		else
-			message_admins("can't pardon")
+	data["can_pardon"] = FALSE
+	if (ishuman(user))
+		var/mob/living/carbon/human/human = user
+		var/obj/item/card/id/id_card = human.get_idcard()
+
+		if (id_card)
+			if ((id_card.paygrade in GLOB.co_paygrades) || (id_card.paygrade in GLOB.highcom_paygrades) || (id_card.paygrade == "PvI"))
+				data["can_pardon"] = TRUE
 
 	return data
 
@@ -182,7 +181,9 @@
 	log_admin("[key_name(user)] has pardoned [viewed_report.incident.criminal_name] for [viewed_report.incident.charges_to_string()].")
 	ai_silent_announcement("BRIG REPORT: [viewed_report.incident.criminal_name] has been pardoned for [viewed_report.incident.charges_to_string()].")
 
-	timer_end()
+	// If this is the active timer, end it.
+	if (viewed_report.incident.status & BRIG_SENTENCE_ACTIVE)
+		timer_end()
 
 
 // Start the timer.

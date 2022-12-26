@@ -1,6 +1,6 @@
 import { useBackend } from '../backend';
 import { Window } from '../layouts';
-import { NoticeBox, Flex, ProgressBar, Button, LabeledList, Divider } from '../components';
+import { Box, ColorBox, NoticeBox, Flex, ProgressBar, Button, LabeledList, Divider } from '../components';
 
 export const BrigCell = (props, context) => {
   const { data, act } = useBackend(context);
@@ -8,10 +8,10 @@ export const BrigCell = (props, context) => {
 
   return (
     <Window theme="weyland" width={450} height={445}>
-      <Window.Content>
+      <Window.Content scrollable>
         <Flex justify="center" mt="2rem" mb=".5rem">
           <Button
-            content="Toggle Doors"
+            content="Toggle Shutters"
             height="100%"
             mr="1rem"
             px="2rem"
@@ -30,20 +30,32 @@ export const BrigCell = (props, context) => {
         <Divider />
 
         <Flex direction="column" justify="center" align="center" width="auto">
-          {!viewing_incident &&
-            incidents.map((incident, i) => (
-              <Button
-                key={i}
-                textAlign="center"
-                minWidth="15rem"
-                p=".5rem"
-                my=".5rem"
-                onClick={() =>
-                  act('set_viewed_incident', { incident: incident.ref })
-                }>
-                {incident.suspect}
-              </Button>
-            ))}
+          {!viewing_incident && (
+            <>
+              <h1>Incidents:</h1>
+              <Flex align="center">
+                <ColorBox color="green" />
+                <Box inline px="1rem">
+                  Active
+                </Box>
+              </Flex>
+
+              {incidents.map((incident, i) => (
+                <Button
+                  key={i}
+                  textAlign="center"
+                  minWidth="15rem"
+                  p=".5rem"
+                  my=".5rem"
+                  color={incident.active ? 'green' : ''}
+                  onClick={() =>
+                    act('set_viewed_incident', { incident: incident.ref })
+                  }>
+                  {incident.suspect}
+                </Button>
+              ))}
+            </>
+          )}
         </Flex>
 
         {!!viewing_incident && <IncidentDetails />}
@@ -63,6 +75,7 @@ const IncidentDetails = (props, context) => {
     active,
     status_class,
     status_text,
+    can_pardon,
   } = data;
 
   return (
@@ -171,16 +184,18 @@ const IncidentDetails = (props, context) => {
             </>
           )}
 
-          <Button.Confirm
-            content="Pardon"
-            tooltip="Pardon"
-            icon="gavel"
-            px="2rem"
-            py=".25rem"
-            mt="1rem"
-            height="100%"
-            onClick={() => act('pardon')}
-          />
+          {!!can_pardon && (
+            <Button.Confirm
+              content="Pardon"
+              tooltip="Pardon"
+              icon="gavel"
+              px="2rem"
+              py=".25rem"
+              mt="1rem"
+              height="100%"
+              onClick={() => act('pardon')}
+            />
+          )}
         </Flex>
       )}
     </>

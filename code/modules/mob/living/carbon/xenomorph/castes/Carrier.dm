@@ -48,6 +48,7 @@
 	plasma_types = list(PLASMA_PURPLE)
 
 	drag_delay = 6 //pulling a big dead xeno is hard
+	var/huggers_reserved = 0
 
 	mob_size = MOB_SIZE_BIG
 	tier = 2
@@ -65,6 +66,12 @@
 		/datum/action/xeno_action/onclick/place_trap, //2nd macro
 		/datum/action/xeno_action/activable/throw_hugger, //3rd macro
 		/datum/action/xeno_action/activable/retrieve_egg, //4th macro
+		/datum/action/xeno_action/onclick/set_hugger_reserve,
+		)
+	
+	inherent_verbs = list(
+		/mob/living/carbon/Xenomorph/proc/rename_tunnel,
+		/mob/living/carbon/Xenomorph/proc/set_hugger_reserve_for_morpher,
 		)
 	mutation_type = CARRIER_NORMAL
 
@@ -303,3 +310,28 @@
 	if(!istype(E)) //something else in our hand
 		to_chat(src, SPAN_WARNING("You need an empty hand to grab one of your stored eggs!"))
 		return
+
+/mob/living/carbon/Xenomorph/Carrier/attack_ghost(mob/dead/observer/user)
+	. = ..() //Do a view printout as needed just in case the observer doesn't want to join as a Hugger but wants info
+	join_as_facehugger_from_this(user)
+
+/mob/living/carbon/Xenomorph/Carrier/proc/join_as_facehugger_from_this(mob/dead/observer/user)
+	if(!huggers_max) //Eggsac, Shaman don't have huggers, do nothing!
+		return
+	if(stat == DEAD)
+		to_chat(user, SPAN_WARNING("\The [src] is dead and all their huggers died with it."))
+		return
+	if(!huggers_cur)
+		to_chat(user, SPAN_WARNING("\The [src] doesn't have any facehuggers to inhabit."))
+		return
+	if(huggers_cur <= huggers_reserved)
+		to_chat(user, SPAN_WARNING("\The [src] has reserved the remaining facehuggers for themselves."))
+		return
+	if(!GLOB.hive_datum[hivenumber].can_spawn_as_hugger(user))
+		return
+	//Need to check again because time passed due to the confirmation window
+	if(!huggers_cur)
+		to_chat(user, SPAN_WARNING("\The [src] doesn't have any facehuggers to inhabit."))
+		return
+	GLOB.hive_datum[hivenumber].spawn_as_hugger(user, src)
+	huggers_cur--

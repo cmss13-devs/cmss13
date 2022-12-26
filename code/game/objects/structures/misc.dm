@@ -86,9 +86,9 @@
 	icon_state = "jarshelf_0"
 	var/randomise = 1 //Random icon
 
-	New()
-		if(randomise)
-			icon_state = "jarshelf_[rand(0,9)]"
+/obj/structure/xenoautopsy/jar_shelf/New()
+	if(randomise)
+		icon_state = "jarshelf_[rand(0,9)]"
 
 /obj/structure/xenoautopsy/tank
 	name = "cryo tank"

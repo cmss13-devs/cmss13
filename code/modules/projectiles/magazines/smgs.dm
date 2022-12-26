@@ -111,8 +111,7 @@
 		base_mag_icon = "mp7_[capacity]"
 		icon_state = "mp7_[capacity]"
 		bonus_overlay = "mp7_[capacity]_overlay"
-		if(current_rounds == max_rounds) // support for map-instancing a mag to be half empty
-			current_rounds = capacity
+		current_rounds = capacity
 		max_rounds = capacity
 		random_magazine = FALSE
 

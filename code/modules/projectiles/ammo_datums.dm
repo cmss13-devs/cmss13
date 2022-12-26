@@ -976,7 +976,7 @@
 
 /datum/ammo/bullet/smg/ppsh
 	name = "crude submachinegun bullet"
-	damage = 28
+	damage = 26
 	accurate_range = 7
 	effective_range_max = 7
 	penetration = ARMOR_PENETRATION_TIER_2

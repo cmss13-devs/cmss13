@@ -320,6 +320,48 @@
 	icon_state = "officechair_dark"
 	anchored = 0
 
+/obj/structure/bed/chair/dropship/vehicle
+	name = "passenger seat"
+	desc = "A sturdy chair with a brace that lowers over your body. Prevents being flung around in vehicle during crash being injured as a result. Fasten your seatbelts, kids! Fix with welding tool in case of damage."
+	icon = 'icons/obj/vehicles/interiors/general.dmi'
+	icon_state = "vehicle_seat"
+	var/image/chairbar = null
+	var/broken = FALSE
+	var/chair_state = DROPSHIP_CHAIR_UNFOLDED
+	buildstacktype = 0
+	picked_up_item = null
+
+	unslashable = FALSE
+	unacidable = FALSE
+
+	var/buckle_offset_x = 0
+	var/mob_old_x = 0
+	var/buckle_offset_y = 0
+	var/mob_old_y = 0
+
+/obj/structure/bed/chair/dropship/vehicle/Initialize()
+	. = ..()
+	chairbar = image('icons/obj/vehicles/interiors/general.dmi', "vehicle_bars")
+	chairbar.layer = ABOVE_MOB_LAYER
+
+	addtimer(CALLBACK(src, .proc/setup_buckle_offsets), 1 SECONDS)
+
+	handle_rotation()
+
+/obj/structure/bed/chair/dropship/vehicle/proc/setup_buckle_offsets()
+	if(pixel_x != 0)
+		buckle_offset_x = pixel_x
+	if(pixel_y != 0)
+		buckle_offset_y = pixel_y
+
+/obj/structure/bed/chair/dropship/vehicle/handle_rotation()
+	if(dir == NORTH)
+		layer = FLY_LAYER
+	else
+		layer = BELOW_MOB_LAYER
+	if(buckled_mob)
+		buckled_mob.setDir(dir)
+
 /obj/structure/bed/chair/dropship
 	picked_up_item = null
 

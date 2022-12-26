@@ -19274,23 +19274,11 @@
 	name = "dropship intercom";
 	pixel_y = 24
 	},
-/obj/structure/bed/chair/vehicle{
-	pixel_x = -8
-	},
-/obj/structure/bed/chair/vehicle{
+/obj/structure/bed/chair/dropship/vehicle{
 	pixel_x = 8
 	},
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15";
-	tag = "icon-rasputin15"
-	},
-/area/shuttle/drop2/sulaco)
-"bka" = (
-/obj/structure/bed/chair/vehicle{
+/obj/structure/bed/chair/dropship/vehicle{
 	pixel_x = -8
-	},
-/obj/structure/bed/chair/vehicle{
-	pixel_x = 8
 	},
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15";
@@ -19355,10 +19343,10 @@
 	name = "dropship intercom";
 	pixel_y = 24
 	},
-/obj/structure/bed/chair/vehicle{
+/obj/structure/bed/chair/dropship/vehicle{
 	pixel_x = 8
 	},
-/obj/structure/bed/chair/vehicle{
+/obj/structure/bed/chair/dropship/vehicle{
 	pixel_x = -8
 	},
 /turf/open/shuttle/dropship{
@@ -21704,10 +21692,10 @@
 	},
 /area/shuttle/drop1/sulaco)
 "btQ" = (
-/obj/structure/bed/chair/vehicle{
+/obj/structure/bed/chair/dropship/vehicle{
 	pixel_x = 8
 	},
-/obj/structure/bed/chair/vehicle{
+/obj/structure/bed/chair/dropship/vehicle{
 	pixel_x = -8
 	},
 /turf/open/shuttle/dropship{
@@ -21716,10 +21704,10 @@
 	},
 /area/shuttle/drop1/sulaco)
 "btR" = (
-/obj/structure/bed/chair/vehicle{
+/obj/structure/bed/chair/dropship/vehicle{
 	pixel_x = 8
 	},
-/obj/structure/bed/chair/vehicle{
+/obj/structure/bed/chair/dropship/vehicle{
 	pixel_x = -8
 	},
 /turf/open/shuttle/dropship{
@@ -23430,14 +23418,14 @@
 	},
 /area/shuttle/drop2/sulaco)
 "bAn" = (
-/obj/structure/bed/chair/vehicle{
-	pixel_x = -8
-	},
-/obj/structure/bed/chair/vehicle{
-	pixel_x = 8
-	},
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med{
 	pixel_x = 30
+	},
+/obj/structure/bed/chair/dropship/vehicle{
+	pixel_x = 8
+	},
+/obj/structure/bed/chair/dropship/vehicle{
+	pixel_x = -8
 	},
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15";
@@ -64968,14 +64956,14 @@
 	},
 /area/almayer/shipboard/port_missiles)
 "pQn" = (
-/obj/structure/bed/chair/vehicle{
-	pixel_x = 8
-	},
-/obj/structure/bed/chair/vehicle{
-	pixel_x = -8
-	},
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med{
 	pixel_x = -30
+	},
+/obj/structure/bed/chair/dropship/vehicle{
+	pixel_x = 8
+	},
+/obj/structure/bed/chair/dropship/vehicle{
+	pixel_x = -8
 	},
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15";
@@ -78598,14 +78586,14 @@
 	},
 /area/almayer/hallways/hangar)
 "vAx" = (
-/obj/structure/bed/chair/vehicle{
-	pixel_x = -8
-	},
-/obj/structure/bed/chair/vehicle{
-	pixel_x = 8
-	},
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med{
 	pixel_x = -30
+	},
+/obj/structure/bed/chair/dropship/vehicle{
+	pixel_x = 8
+	},
+/obj/structure/bed/chair/dropship/vehicle{
+	pixel_x = -8
 	},
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15";
@@ -80448,14 +80436,14 @@
 	},
 /area/almayer/living/bridgebunks)
 "wnx" = (
-/obj/structure/bed/chair/vehicle{
-	pixel_x = 8
-	},
-/obj/structure/bed/chair/vehicle{
-	pixel_x = -8
-	},
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med{
 	pixel_x = 30
+	},
+/obj/structure/bed/chair/dropship/vehicle{
+	pixel_x = 8
+	},
+/obj/structure/bed/chair/dropship/vehicle{
+	pixel_x = -8
 	},
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15";
@@ -103047,11 +103035,11 @@ baI
 baI
 bfN
 bhW
-bka
+btR
 blI
-bka
+btR
 bpl
-bka
+btR
 bpl
 vAx
 bvh
@@ -103252,11 +103240,11 @@ bfO
 bhX
 bjZ
 bpl
-bka
+btR
 bpl
-bka
+btR
 bpl
-bka
+btR
 bjX
 nUF
 bpl
@@ -103455,11 +103443,11 @@ bfP
 bhY
 btR
 bpl
-bka
+btR
 bpl
-bka
+btR
 bpl
-bka
+btR
 bvi
 cZK
 oRU
@@ -103859,13 +103847,13 @@ bch
 bdS
 bfR
 bia
-bka
+btR
 bpl
-bka
+btR
 bpl
-bka
+btR
 bpl
-bka
+btR
 bvi
 cZK
 oRU
@@ -104064,11 +104052,11 @@ bfS
 bib
 bjZ
 bpl
-bka
+btR
 bpl
-bka
+btR
 bpl
-bka
+btR
 bjX
 nUF
 bxN
@@ -104265,11 +104253,11 @@ baI
 baI
 bfT
 bic
-bka
+btR
 bkk
-bka
+btR
 bpl
-bka
+btR
 bpl
 bAn
 bvj

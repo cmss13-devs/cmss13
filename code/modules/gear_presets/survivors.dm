@@ -1289,3 +1289,206 @@
 	H.equip_to_slot_or_del(new /obj/item/tool/crowbar(H), WEAR_IN_BACK)
 
 	..()
+
+// ----- Generic USMC Survivors
+
+/datum/equipment_preset/survivor/trucker/usmc //Trucker
+	name = "Survivor - USCM Cargo Technician (CT)"
+	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
+
+	access = list(ACCESS_MARINE_CARGO, ACCESS_MARINE_PREP)
+	assignment = JOB_CARGO_TECH
+	rank = JOB_CARGO_TECH
+	paygrade = "ME2"
+	role_comm_title = "CT"
+	skills = /datum/skills/civilian/survivor/trucker
+
+/datum/equipment_preset/survivor/trucker/usmc/load_gear(mob/living/carbon/human/H)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/ct(H), WEAR_L_EAR)
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/cargotech(H), WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine(H), WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/yellow(H), WEAR_HANDS)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/beanie(H), WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/medium(H), WEAR_R_STORE)
+	add_random_survivor_equipment(H)
+	add_survivor_weapon(H)
+	add_survivor_weapon_pistol(H)
+	..()
+
+
+/datum/equipment_preset/survivor/doctor/usmc //doctor
+	name = "Survivor - USCM Doctor"
+	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
+
+	access = list(ACCESS_MARINE_MEDBAY, ACCESS_MARINE_CHEMISTRY, ACCESS_MARINE_MORGUE)
+	assignment = JOB_DOCTOR
+	rank = JOB_DOCTOR
+	paygrade = "MO1"
+	role_comm_title = "Doc"
+	skills = /datum/skills/civilian/survivor/doctor
+
+
+/datum/equipment_preset/survivor/doctor/usmc/load_gear(mob/living/carbon/human/H)
+
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/doc(H), WEAR_L_EAR)
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/medical/green(H), WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/labcoat(H), WEAR_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/white(H), WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/latex(H), WEAR_HANDS)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/surgery/green(H), WEAR_HEAD)
+	add_random_survivor_medical_gear(H)
+	add_random_survivor_equipment(H)
+	add_survivor_weapon(H)
+	add_survivor_weapon_pistol(H)
+
+/datum/equipment_preset/survivor/engineer/usmc // Engieer
+	name = "Survivor - USCM Maintenance Technician (MT)"
+	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
+
+	access = list(
+		ACCESS_MARINE_ENGINEERING,
+		ACCESS_CIVILIAN_ENGINEERING,
+		ACCESS_MARINE_MAINT
+	)
+	assignment = JOB_MAINT_TECH
+	rank = JOB_MAINT_TECH
+	paygrade = "ME2"
+	role_comm_title = "MT"
+	skills = /datum/skills/civilian/survivor/engineer
+
+/datum/equipment_preset/survivor/engineer/usmc/load_gear(mob/living/carbon/human/H)
+
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mt(H), WEAR_L_EAR)
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/engi(H), WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/hazardvest(H), WEAR_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/hardhat/orange(H), WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine(H), WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/yellow(H), WEAR_HANDS)
+
+	add_random_survivor_equipment(H)
+	add_survivor_weapon(H)
+	add_survivor_weapon_pistol(H)
+
+/datum/equipment_preset/survivor/engineer/usmc/load_rank(mob/living/carbon/human/H)
+	if(H.client)
+		if(get_job_playtime(H.client, rank) < JOB_PLAYTIME_TIER_1)
+			return "ME1"
+	return paygrade
+
+/datum/equipment_preset/survivor/security/usmc // Security
+	name = "Survivor - USCM Military Police (MP)"
+	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
+
+	access = list(
+		ACCESS_MARINE_BRIG,
+		ACCESS_MARINE_BRIDGE,
+		ACCESS_MARINE_DROPSHIP,
+		ACCESS_MARINE_LOGISTICS,
+		ACCESS_MARINE_PREP,
+		ACCESS_MARINE_MEDBAY,
+		ACCESS_MARINE_MORGUE,
+		ACCESS_MARINE_ALPHA,
+		ACCESS_MARINE_BRAVO,
+		ACCESS_MARINE_CHARLIE,
+		ACCESS_MARINE_DELTA,
+		ACCESS_MARINE_ENGINEERING,
+		ACCESS_MARINE_MAINT,
+		ACCESS_MARINE_OT
+	)
+	assignment = JOB_POLICE
+	rank = JOB_POLICE
+	paygrade = "ME5"
+	role_comm_title = "MP"
+	skills = /datum/skills/civilian/survivor/marshal
+
+/datum/equipment_preset/survivor/security/usmc/load_gear(mob/living/carbon/human/H)
+
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mmpo(H), WEAR_L_EAR)
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/mp(H), WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine(H), WEAR_HANDS)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/MP(H), WEAR_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/sechud(H), WEAR_EYES)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/beret/marine/mp(H), WEAR_HEAD)
+	add_random_survivor_equipment(H)
+	add_survivor_weapon(H)
+	add_survivor_weapon_pistol(H)
+
+/datum/equipment_preset/survivor/security/usmc/load_rank(mob/living/carbon/human/human)
+	if(human.client && get_job_playtime(human.client, rank) < JOB_PLAYTIME_TIER_1)
+		return "ME3"
+	return paygrade
+
+/datum/equipment_preset/survivor/usmc/commander // Colonial Supervisor
+	name = "USCM Executive Officer (XO)"
+	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
+
+	idtype = /obj/item/card/id/silver
+	assignment = JOB_XO
+	rank = JOB_XO
+	paygrade = "MO3"
+	role_comm_title = "XO"
+	minimum_age = 35
+	skills = /datum/skills/XO
+
+/datum/equipment_preset/survivor/usmc/commander/New()
+	. = ..()
+	access = get_all_marine_access()
+
+/datum/equipment_preset/survivor/usmc/commander/load_gear(mob/living/carbon/human/H)
+
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom/cdrcom(H), WEAR_L_EAR)
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/bridge(H), WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/jacket/marine/service(H), WEAR_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/dress/commander(H), WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/beret/cm(H), WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(H), WEAR_R_STORE)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/pistol/command(H), WEAR_L_STORE)
+	H.equip_to_slot_or_del(new /obj/item/device/binoculars/range/designator(H), WEAR_L_HAND)
+	add_random_survivor_equipment(H)
+	add_survivor_weapon(H)
+	add_survivor_weapon_pistol(H)
+
+/datum/equipment_preset/survivor/usmc/so // Colonial Supervisor
+	name = "Survivor - USCM Staff Officer (SO)"
+	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
+
+	idtype = /obj/item/card/id/silver
+	access = list(ACCESS_MARINE_COMMANDER, ACCESS_MARINE_BRIDGE, ACCESS_MARINE_BRIG, ACCESS_MARINE_DROPSHIP, ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_MEDBAY)
+	assignment = JOB_SO
+	rank = JOB_SO
+	paygrade = "MO1"
+	role_comm_title = "SO"
+	minimum_age = 25
+	skills = /datum/skills/SO
+
+/datum/equipment_preset/survivor/usmc/so/load_gear(mob/living/carbon/human/H)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom(H), WEAR_L_EAR)
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/bridge(H), WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/cmcap/ro(H), WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(H), WEAR_L_STORE)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(H), WEAR_R_STORE)
+	H.equip_to_slot_or_del(new /obj/item/device/binoculars/range(H), WEAR_L_HAND)
+	add_random_survivor_equipment(H)
+	add_survivor_weapon(H)
+	add_survivor_weapon_pistol(H)
+
+/datum/equipment_preset/survivor/chaplain/usmc // Chaplain
+	name = "Survivor - USMC Chaplain"
+	assignment = "Chaplain"
+	skills = /datum/skills/civilian/survivor/chaplain
+	flags = EQUIPMENT_PRESET_START_OF_ROUND
+	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_BRIG, ACCESS_CIVILIAN_COMMAND)
+
+/datum/equipment_preset/survivor/chaplain/usmc/load_gear(mob/living/carbon/human/H)
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine(H), WEAR_BODY)
+	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
+		add_ice_colony_survivor_equipment(H)
+	H.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/satchel(H), WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/cmcap(H), WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/holidaypriest(H), WEAR_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/storage/bible/booze(H.back), WEAR_IN_BACK)
+
+	..()

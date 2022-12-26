@@ -4,13 +4,15 @@
     "map_file": "New_Varadero.dmm",
 
     "survivor_types": [
-        "/datum/equipment_preset/survivor/scientist/lv",
-        "/datum/equipment_preset/survivor/doctor/lv",
-        "/datum/equipment_preset/survivor/chaplain/lv",
-        "/datum/equipment_preset/survivor/engineer/lv",
-        "/datum/equipment_preset/survivor/trucker/lv",
-        "/datum/equipment_preset/survivor/security/lv",
-        "/datum/equipment_preset/survivor/colonial_marshal/lv"
+        "/datum/equipment_preset/survivor/trucker/usmc",
+        "/datum/equipment_preset/survivor/doctor/usmc",
+        "/datum/equipment_preset/survivor/chaplain/usmc",
+        "/datum/equipment_preset/survivor/engineer/usmc",
+        "/datum/equipment_preset/survivor/corporate",
+        "/datum/equipment_preset/survivor/security/usmc"
+    ],
+    "CO_survivor_types": [
+        "/datum/equipment_preset/survivor/usmc/commander"
     ],
 
     "defcon_triggers": [

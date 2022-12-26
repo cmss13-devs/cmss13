@@ -265,7 +265,7 @@ var/global/cas_tracking_id_increment = 0	//this var used to assign unique tracki
 //////////////////////////
 //Reports player logouts//
 //////////////////////////
-proc/display_roundstart_logout_report()
+/proc/display_roundstart_logout_report()
 	var/msg = FONT_SIZE_LARGE("<b>Roundstart logout report\n\n")
 	for(var/i in GLOB.living_mob_list)
 		var/mob/living/L = i

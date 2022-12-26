@@ -241,6 +241,10 @@
 	name = "data terminal [label]"
 	objective = new /datum/cm_objective/retrieve_data/terminal(src)
 
+///Disabled explosions due to issues with the Objectives UI should it be destroyed.
+/obj/structure/machinery/computer/objective/ex_act(severity)
+	return
+
 /obj/structure/machinery/computer/objective/Destroy()
 	objective?.terminal = null
 	qdel(objective)

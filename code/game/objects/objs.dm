@@ -27,6 +27,8 @@
 
 	var/flags_obj = NO_FLAGS
 
+	var/renamedByPlayer = FALSE //set when a player uses a pen on a renamable object
+
 /obj/Initialize(mapload, ...)
 	. = ..()
 	if(garbage)

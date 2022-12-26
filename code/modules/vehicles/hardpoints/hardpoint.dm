@@ -187,7 +187,7 @@
 	buff_applied = TRUE
 
 //removing buffs
-obj/item/hardpoint/proc/remove_buff(var/obj/vehicle/multitile/V)
+/obj/item/hardpoint/proc/remove_buff(var/obj/vehicle/multitile/V)
 	if(!buff_applied)
 		return
 	if(LAZYLEN(type_multipliers))
@@ -336,13 +336,11 @@ obj/item/hardpoint/proc/remove_buff(var/obj/vehicle/multitile/V)
 	return
 
 //examining a hardpoint
-/obj/item/hardpoint/get_examine_text(mob/user, var/integrity_only = FALSE)
-	if(!integrity_only)
-		return ..()
+/obj/item/hardpoint/get_examine_text(mob/user)
 	. = ..()
 	if(health <= 0)
 		. += "It's busted!"
-	else if(isobserver(user) || (ishuman(user) && skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED)))
+	else if(isobserver(user) || (ishuman(user) && (skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED) || skillcheck(user, SKILL_VEHICLE, SKILL_VEHICLE_CREWMAN))))
 		. += "It's at [round(get_integrity_percent(), 1)]% integrity!"
 
 //reloading hardpoint - take mag from backup clips and replace current ammo with it. Will change in future. Called via weapons loader
@@ -645,5 +643,5 @@ obj/item/hardpoint/proc/remove_buff(var/obj/vehicle/multitile/V)
 /obj/item/hardpoint/proc/set_mf_use_trt(var/use)
 	use_mz_trt_offsets = use
 
-obj/item/hardpoint/get_applying_acid_time()
+/obj/item/hardpoint/get_applying_acid_time()
 	return 10 SECONDS //you are not supposed to be able to easily combat-melt irreplaceable things.

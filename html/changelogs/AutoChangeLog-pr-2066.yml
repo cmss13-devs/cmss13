@@ -1,0 +1,5 @@
+author: "stanalbatross"
+delete-after: True
+changes:
+  - refactor: "changed the botany machines to tgui"
+  - rscdel: "removed the 5s cooldown on every action using the botany machines. Research should not be limited by arbitrary long cooldowns with these."

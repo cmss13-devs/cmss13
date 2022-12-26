@@ -602,7 +602,7 @@
 	icon_state = "unathiharness2"
 	hold = /obj/item/storage/internal/accessory/knifeharness/duelling
 
-obj/item/storage/internal/accessory/knifeharness/duelling
+/obj/item/storage/internal/accessory/knifeharness/duelling
 	storage_slots = 2
 	max_storage_space = 2
 	can_hold = list(
@@ -772,12 +772,13 @@ obj/item/storage/internal/accessory/knifeharness/duelling
 /obj/item/storage/box/holobadge
 	name = "holobadge box"
 	desc = "A box claiming to contain holobadges."
-	New()
-		new /obj/item/clothing/accessory/holobadge(src)
-		new /obj/item/clothing/accessory/holobadge(src)
-		new /obj/item/clothing/accessory/holobadge(src)
-		new /obj/item/clothing/accessory/holobadge(src)
-		new /obj/item/clothing/accessory/holobadge/cord(src)
-		new /obj/item/clothing/accessory/holobadge/cord(src)
-		..()
-		return
+
+/obj/item/storage/box/holobadge/New()
+	new /obj/item/clothing/accessory/holobadge(src)
+	new /obj/item/clothing/accessory/holobadge(src)
+	new /obj/item/clothing/accessory/holobadge(src)
+	new /obj/item/clothing/accessory/holobadge(src)
+	new /obj/item/clothing/accessory/holobadge/cord(src)
+	new /obj/item/clothing/accessory/holobadge/cord(src)
+	..()
+	return

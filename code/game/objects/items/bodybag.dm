@@ -89,24 +89,29 @@
 			name = "[bag_name] (empty)"
 
 /obj/structure/closet/bodybag/attackby(obj/item/W, mob/user)
-	if (istype(W, /obj/item/tool/pen))
-		var/t = stripped_input(user, "What would you like the label to be?", name, null, MAX_MESSAGE_LEN)
-		if (user.get_active_hand() != W)
+	if(HAS_TRAIT(W, TRAIT_TOOL_PEN))
+		var/prior_label_text
+		var/datum/component/label/labelcomponent = src.GetComponent(/datum/component/label)
+		if(labelcomponent)
+			prior_label_text = labelcomponent.label_name
+		var/tmp_label = sanitize(input(user, "Enter a label for [name]","Label", prior_label_text))
+		if(tmp_label == "" || !tmp_label)
+			to_chat(user, SPAN_NOTICE("You're going to need to use wirecutters to remove the label."))
 			return
-		if (!in_range(src, user) && src.loc != user)
-			return
-		if (t)
-			src.name = "body bag - "
-			src.name += t
-			src.overlays += image(src.icon, "bodybag_label")
+		if(length(tmp_label) > MAX_NAME_LEN)
+			to_chat(user, SPAN_WARNING("The label can be at most [MAX_NAME_LEN] characters long."))
 		else
-			src.name = "body bag"
-	//..() //Doesn't need to run the parent. Since when can fucking bodybags be welded shut? -Agouri
+			user.visible_message(SPAN_NOTICE("[user] labels [src] as \"[tmp_label]\"."), \
+			SPAN_NOTICE("You label [src] as \"[tmp_label]\"."))
+			AddComponent(/datum/component/label, tmp_label)
+			playsound(src, "paper_writing", 15, TRUE)
 		return
 	else if(HAS_TRAIT(W, TRAIT_TOOL_WIRECUTTERS))
 		to_chat(user, SPAN_NOTICE("You cut the tag off the bodybag."))
-		src.name = "body bag"
 		src.overlays.Cut()
+		var/datum/component/label/labelcomponent = src.GetComponent(/datum/component/label)
+		if(labelcomponent)
+			labelcomponent.remove_label()
 		return
 	else if(istype(W, /obj/item/weapon/zombie_claws))
 		open()

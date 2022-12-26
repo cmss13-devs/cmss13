@@ -169,7 +169,7 @@
 	GLOB.STUI.processing |= STUI_LOG_GAME_CHAT
 	for (var/mob/M in GLOB.dead_mob_list)
 		if(!istype(M,/mob/new_player) && !istype(M,/mob/living/brain)) //No meta-evesdropping
-			M.show_message("[message_start] [message_body]", 2)
+			M.show_message("[message_start] [message_body]", SHOW_MESSAGE_AUDIBLE)
 
 	for (var/mob/living/S in GLOB.alive_mob_list)
 
@@ -180,7 +180,7 @@
 		else if (!S.binarycheck())
 			continue
 
-		S.show_message("[message_start] [message_body]", 2)
+		S.show_message("[message_start] [message_body]", SHOW_MESSAGE_AUDIBLE)
 
 	var/list/listening = hearers(1, src)
 	listening -= src

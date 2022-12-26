@@ -29,7 +29,7 @@
 			.["fail_with"] = "You've used the multi-broadcast system too recently, wait [round(multibroadcast_cooldown / 10)] more seconds."
 		return
 
-	if(length(message) >= 2 && (message[1] == "." || message[1] == ":"))
+	if(length(message) >= 2 && (message[1] == "." || message[1] == ":" || message[1] == "#"))
 		var/channel_prefix = copytext(message, 1, 3)
 		if(channel_prefix in department_radio_keys)
 			.["message_and_language"] = copytext(message, 3)
@@ -160,7 +160,7 @@
 
 			for(var/mob/living/M in hearers(message_range, src))
 				if(M != src)
-					M.show_message(SPAN_NOTICE("[src] talks into [used_radios.len ? used_radios[1] : "the radio."]"))
+					M.show_message(SPAN_NOTICE("[src] talks into [used_radios.len ? used_radios[1] : "the radio."]"), SHOW_MESSAGE_VISIBLE)
 			if(isHumanSynthStrict(src))
 				playsound(src.loc, 'sound/effects/radiostatic.ogg', 15, 1)
 

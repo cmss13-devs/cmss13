@@ -414,7 +414,7 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 
 /obj/item/weapon/gun/proc/attach_to_gun(mob/user, obj/item/attachable/attachment)
 	if(!can_attach_to_gun(user, attachment))
-		return
+		return FALSE
 
 	user.visible_message(SPAN_NOTICE("[user] begins attaching [attachment] to [src]."),
 	SPAN_NOTICE("You begin attaching [attachment] to [src]."), null, 4)
@@ -426,6 +426,10 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 			attachment.Attach(src)
 			update_attachable(attachment.slot)
 			playsound(user, 'sound/handling/attachment_add.ogg', 15, 1, 4)
+			return TRUE
+
+/obj/item/weapon/gun/proc/on_detach(obj/item/attachable/attachment)
+	return
 
 /obj/item/weapon/gun/proc/update_attachables() //Updates everything. You generally don't need to use this.
 	//overlays.Cut()
@@ -659,7 +663,7 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 
 	usr.visible_message(SPAN_NOTICE("[usr] strips [attachment] from [src]."),
 	SPAN_NOTICE("You strip [attachment] from [src]."), null, 4)
-	attachment.Detach(src)
+	attachment.Detach(usr, src)
 
 	playsound(src, 'sound/handling/attachment_remove.ogg', 15, 1, 4)
 	update_icon()

@@ -1,4 +1,0 @@
-author: "carlarctg"
-delete-after: True
-changes:
-  - admin: "Fixed toggling admin sound types' confirmation message using the non-updated value."

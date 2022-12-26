@@ -51,7 +51,8 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	/client/proc/toggle_middle_mouse_swap_hands,
 	/client/proc/toggle_vend_item_to_hand,
 	/client/proc/switch_item_animations,
-	/client/proc/toggle_admin_sound_types
+	/client/proc/toggle_admin_sound_types,
+	/client/proc/receive_random_tip
 ))
 
 /client/Topic(href, href_list, hsrc)
@@ -696,3 +697,8 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	set hidden = TRUE
 
 	init_verbs()
+
+/client/proc/open_filter_editor(atom/in_atom)
+	if(admin_holder)
+		admin_holder.filteriffic = new /datum/filter_editor(in_atom)
+		admin_holder.filteriffic.tgui_interact(mob)

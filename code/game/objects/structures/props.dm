@@ -921,7 +921,7 @@
 			update_health(W.force)
 		return
 
-	if(W.sharp || W.edge || istype(W, /obj/item/tool/pen) || istype(W, /obj/item/tool/hand_labeler))
+	if(W.sharp || W.edge || HAS_TRAIT(W, TRAIT_TOOL_PEN) || istype(W, /obj/item/tool/hand_labeler))
 		var/action_msg
 		var/time_multiplier
 		if(W.sharp || W.edge)

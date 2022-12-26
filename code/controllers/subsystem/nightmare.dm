@@ -25,7 +25,7 @@ SUBSYSTEM_DEF(nightmare)
 	load_map_config(NIGHTMARE_CTX_SHIP, SHIP_MAP)
 	for(var/context_name in contexts)
 		resolve_nodes(context_name, NIGHTMARE_ACT_SCENARIO)
-	return ..()
+	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/nightmare/proc/resolve_nodes(context_name, scope)
 	var/datum/nmcontext/context = contexts[context_name]

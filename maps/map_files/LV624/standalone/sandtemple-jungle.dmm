@@ -340,10 +340,6 @@
 	},
 /turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/jungle/south_west_jungle)
-"Wc" = (
-/obj/structure/flora/jungle/vines,
-/turf/closed/wall/strata_ice/jungle,
-/area/lv624/ground/jungle/south_west_jungle)
 "Wp" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 3
@@ -416,7 +412,7 @@ oA
 aq
 "}
 (4,1,1) = {"
-Wc
+vt
 vt
 LV
 LV

@@ -426,6 +426,7 @@
 		return
 
 	UnregisterSignal(attached_item, COMSIG_PARENT_QDELETING)
+	UnregisterSignal(attached_item, COMSIG_ITEM_EQUIPPED)
 	qdel(activation)
 	attached_item = null
 

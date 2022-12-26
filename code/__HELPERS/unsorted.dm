@@ -1441,7 +1441,7 @@ var/global/image/action_purple_power_up
 	else if (zone == "r_foot") return "right foot"
 	else return zone
 
-proc/get_true_location(var/atom/loc)
+/proc/get_true_location(var/atom/loc)
 	var/atom/subLoc = loc
 	while(subLoc.z == 0)
 		if (istype(subLoc.loc, /atom))
@@ -1798,9 +1798,6 @@ var/list/WALLITEMS = list(
 	if(user.client.eye == user)
 		user.face_atom(src)
 	return TRUE
-
-//datum may be null, but it does need to be a typed var
-#define NAMEOF(datum, X) (#X || ##datum.##X)
 
 #define VARSET_CALLBACK(datum, var, var_value) CALLBACK(GLOBAL_PROC, /proc/___callbackvarset, ##datum, NAMEOF(##datum, ##var), ##var_value)
 

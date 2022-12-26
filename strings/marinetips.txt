@@ -20,14 +20,14 @@ A lack of supplies at the FOB can cost you the round. Make sure to unpack supply
 More dakka is not good when it is directed towards your teammates.
 Never place barricades facing each other - Not only does this block bullets, both barricades are damaged at once if one is slashed!
 An FOB is as strong as its weakest part. Secure all flanks, remember that walls can be pried open.
-Flamethrowers: Green fire is weak and should be used for weed clearing. Queens and Ravagers are flameproof. Most flamethrower damage comes from the initial burst, not the flame on the ground. Don't forget you have an underbarrel extinguisher.
+Flamethrowers: Green fire is weak but has a lot of utility, such as melting through armor and being instantly extinguishable. Queens and Ravagers are flameproof. Most flamethrower damage comes from the initial burst, not the flame on the ground. Don't forget you have an underbarrel extinguisher.
 CPR extends the defib timer on dead marines. It can be done by clicking the dead marine on help intent with an open hand. Make sure to get the rhythm correct!
 If the main push is stagnating and the area is congested, try to coordinate with a few others and go to a different area.
 When pushing into an area, check the flanks. Especially so in caves.
 Examine your gun and click [See combat statistics] to view information such as damage for your weapon.
 Xenomorphs who resist while on fire are stunned for some time and emit light. Use that time to catch up and finish them off!
 When you have shrapnel embedded, take out your boot knife and use it in your hand to rip them out of your body.
-If your weapon has a bayonet, you can manually pry open unpowered doors by clicking on them with the gun. Click on the door again to close it.
+If your weapon has a bayonet, you can manually pry open unpowered doors by clicking on them with the gun. Click on the door again to close it. UPP bayonets can pry them open quicker.
 Items on the floor can be shot. Shoot a misthrown HEDP away to save your buddies!
 You can hold a bayonet or throwing knife on your mask slot. Always be prepared.
 Xenomorphs can't apply huggers to marines if they're on fire.
@@ -35,7 +35,6 @@ Dragging a Nanomed onto yourself instantly gives a Health Analyzer report. Alway
 Splints slow you down. Remove them after your bones are healed by using the Remove Your Splints verb.
 Blood loss can lead to hunger, which can slow you down. Make sure you're always full after taking a beating.
 Resin structures are weaker to melee than they are to bullets. Take out your knives!
-You can grab items from second-level storage, such as a splint in a first-aid kit inside a satchel.
 Researchers can make pressurized canister pouches, which can contain up to 480 reagents, and contain custom injectors that can be easily used by privates.
 When fighting xenomorphs, don't aim for the head - It won't increase damage against anyone but your fellow marines.
 Don't forget to set the Anti-Aircraft Gun!
@@ -64,3 +63,25 @@ Put .w or :w before your message to whisper. Another way to whisper is to use th
 For Vehicle Crewmen : it is often safer to repair the parts of your APC or tank inside the vehicle than outside it.
 It is almost always faster to do surgery manually than in the autodoc.
 To check your skills, go to the IC tab and click "view skills".
+The U7 underbarrel shotgun can instantly break down both resin doors and mechanical airlocks, and it's not bad at breaking walls down either.
+You can find breaching charges in Requisitions or the Squad Engineer vendor. They function like C4, but can be deployed and explode much quicker, and release powerful shrapnel on the opposite side. They require minor engineering knowledge, which can be obtained from pamphlets.
+Armor piercing ammunition does less damage to unarmored targets.
+You can insert empty pill bottles into ChemMasters before creating pills to have them automatically inserted.
+Nurses can practice a full range of surgeries on Professor DUMMY. Ask the gods to give you one if you see (or are) a nurse practicing.
+Drinks from the hot drinks machine warm you up.
+Be careful! Barricades block grenades, and indeed all thrown items, from the front if they're barbed up.
+Painkillers do not stack. Only the strongest has any effect.
+Intel Officers can be put in a squad by going to CIC and requesting it.
+Any marine can perform CPR. On dead marines, this will increase the time they have until they become unrevivable.
+If you've been pounced on and your squad is unloading into the target, you can hit the 'rest' button to stay down so you don't get filled with lead after getting up.
+You can check the landing zone as a marine in the status panel.
+Functioning night vision goggles can be recharged with batteries. Broken night vision goggles can be repaired by an Engineer with a screwdriver. Not the loadout ones though, those are unfixable and unchargeable.
+You can put a pistol belt on your suit slot. (Just grab a rifle instead..)
+Alt-clicking the Squad Leader tracker lets you track your fireteam leader instead.
+Armor has a randomized reduction in effectiveness, and does not protect the digits. Take the wiki damage values as a best case scenario.
+You can click on your Security Access Tuner (multitool) in your hand to locate the area's APC if there is one.
+Clicking on your sprite with help intent will let you check your body, seeing where your fractures and other wounds are.
+Armor has insulative properties - taking it off will help you cool off and take less damage faster if you've been set on fire.
+Both foldable cades & plasteel cades if loosened and folded down can be transported in crates! In this way, you can use the crate as a portable breach-repair kit, or dragged (or carried via Powerloader) to an unsecure area for quick defensive set up.
+The fuel tank pouch doesn't just carry fuel for an incinerator- they can also carry full-size extinguishers. Toolbelts & tool pouches also may hold miniature extinguishers.
+The M2C heavy machinegunner belt rig can also carry C4, breaching charges, and most tools.

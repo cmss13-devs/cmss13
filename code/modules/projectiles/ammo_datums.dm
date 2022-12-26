@@ -3365,8 +3365,8 @@
 /datum/ammo/rifle/sharp/on_embed(var/mob/embedded_mob, var/obj/limb/target_organ)
 	if(!ishuman(embedded_mob))
 		return
-	var/mob/living/carbon/human/H = embedded_mob
-	if(H.species.flags & NO_SHRAPNEL)
+	var/mob/living/carbon/human/humano = embedded_mob
+	if(humano.species.flags & NO_SHRAPNEL)
 		return
 	if(istype(target_organ))
 		target_organ.embed(new embed_object)

@@ -1,5 +1,5 @@
 import { classes } from 'common/react';
-import { useBackend, useLocalState } from '../backend';
+import { useBackend, useLocalState, useSharedState } from '../backend';
 import { Box, ByondUi, Button, Flex, Icon, Input, ProgressBar, Stack, Tabs } from '../components';
 import { Window } from '../layouts';
 import { TimedCallback } from './common/TimedCallback';
@@ -88,7 +88,11 @@ const SelectionMenu = (props: { data: SentrySpec }, context) => {
   );
 };
 
-const getSanitisedName = (name: string) => name.substring(0, name.length - 11);
+const getSanitisedName = (name: string) =>
+  name
+    .split(' ')
+    .slice(0, 2)
+    .join(' ');
 const sanitiseArea = (name: string) =>
   name.substring(name.includes('the') ? 4 : 0).trim();
 
@@ -121,7 +125,7 @@ const GunMenu = (props: { data: SentrySpec }, context) => {
     (x) => x[0].localeCompare('IFF STATUS') === 0
   )?.[1];
 
-  const [_, setSelectedSentry] = useLocalState<undefined | number>(
+  const [_, setSelectedSentry] = useSharedState<undefined | number>(
     context,
     'selected',
     0
@@ -299,7 +303,7 @@ const InputGroup = (
 };
 
 const SentryGunConfiguration = (props: { data: SentrySpec }, context) => {
-  const [_, setShowConfig] = useLocalState(context, 'showConf', true);
+  const [_, setShowConfig] = useSharedState(context, 'showConf', true);
   return (
     <Stack vertical>
       <Stack.Item className="TitleBox">
@@ -335,7 +339,7 @@ const SentryGunConfiguration = (props: { data: SentrySpec }, context) => {
 };
 
 const SentryGunStatus = (props: { data: SentrySpec }, context) => {
-  const [_, setShowConfig] = useLocalState(context, 'showConf', true);
+  const [_, setShowConfig] = useSharedState(context, 'showConf', true);
   return (
     <Stack vertical>
       <Stack.Item className="TitleBox">
@@ -359,7 +363,7 @@ const SentryGunStatus = (props: { data: SentrySpec }, context) => {
 };
 
 const ShowSingleSentry = (props: { data: SentrySpec }, context) => {
-  const [showConfig] = useLocalState(context, 'showConf', true);
+  const [showConfig] = useSharedState(context, 'showConf', true);
   return (
     <>
       {showConfig && <SentryGunConfiguration data={props.data} />}
@@ -468,6 +472,8 @@ const SentryTabMenu = (
             props.setSelected(index);
             if (data.camera_target) {
               act('set-camera', { index: x.index });
+            } else {
+              act('ui-interact');
             }
           }}>
           {x.nickname.length === 0 ? x.index : x.nickname}
@@ -508,11 +514,9 @@ export const SentryGunUI = (_, context) => {
     return { ...data.sentry[x], ...data.sentry_static[x] };
   });
 
-  const [selectedSentry, setSelectedSentry] = useLocalState<undefined | number>(
-    context,
-    'selected',
-    sentrySpecs.length > 0 ? 0 : undefined
-  );
+  const [selectedSentry, setSelectedSentry] = useSharedState<
+    undefined | number
+  >(context, 'selected', sentrySpecs.length > 0 ? 0 : undefined);
 
   const validSelection =
     sentrySpecs.length === 0

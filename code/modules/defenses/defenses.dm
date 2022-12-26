@@ -197,6 +197,7 @@
 						if(istype(item, /obj/item/device/sentry_computer))
 							var/obj/item/device/sentry_computer/computer = item
 							to_chat(usr, SPAN_NOTICE("Attempting link to [item.name] [computer.serial_number]."))
+							playsound(src, 'sound/machines/scanning.ogg', 25, FALSE)
 							computer.register(tool, user, src)
 							key_found = TRUE
 							break

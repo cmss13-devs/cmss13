@@ -169,7 +169,7 @@
 	else if(istype(object, /obj/item/device/multitool))
 		var/obj/item/device/multitool/tool = object
 		var/id = tool.serial_number
-		playsound(src, get_sfx("terminal_type"), 25, FALSE)
+		playsound(src, 'sound/machines/keyboard2.ogg', 25, FALSE)
 		if (do_after(usr, 10, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
 			if(tool.remove_encryption_key(serial_number))
 				to_chat(user, SPAN_NOTICE("You unload the encryption key to \the [tool]."))
@@ -183,10 +183,10 @@
 
 /obj/item/device/sentry_computer/proc/register(var/tool, mob/user, var/sentry_gun)
 	if (do_after(user, 10, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
-		var/obj/structure/machinery/defenses/sentry/sentry = sentry_gun
-		pair_sentry(sentry)
-		to_chat(user, SPAN_NOTICE("\The [sentry] has been encrypted."))
-		var/message = "[sentry] added to [src]"
+		var/obj/structure/machinery/defenses/defence = sentry_gun
+		pair_sentry(defence)
+		to_chat(user, SPAN_NOTICE("\The [defence] has been encrypted."))
+		var/message = "[defence] added to [src]"
 		INVOKE_ASYNC(src, .proc/send_message, message)
 
 /obj/item/device/sentry_computer/proc/unregister(var/tool, mob/user, var/sentry_gun)
@@ -212,7 +212,7 @@
 	INVOKE_ASYNC(src, .proc/send_message, message)
 	playsound(src,  'sound/machines/buzz-two.ogg', 25, FALSE)
 
-/obj/item/device/sentry_computer/proc/pair_sentry(var/obj/structure/machinery/defenses/sentry/target)
+/obj/item/device/sentry_computer/proc/pair_sentry(var/obj/structure/machinery/defenses/target)
 	target.linked_laptop = src
 	paired_sentry +=list(target)
 	update_static_data_for_all_viewers()
@@ -221,7 +221,7 @@
 	RegisterSignal(target, COMSIG_SENTRY_EMPTY_AMMO_ALERT, .proc/handle_empty_ammo)
 	RegisterSignal(target, COMSIG_SENTRY_DESTROYED_ALERT, .proc/sentry_destroyed)
 
-/obj/item/device/sentry_computer/proc/unpair_sentry(var/obj/structure/machinery/defenses/sentry/target)
+/obj/item/device/sentry_computer/proc/unpair_sentry(var/obj/structure/machinery/defenses/target)
 	target.linked_laptop = null
 	paired_sentry -=list(target)
 	update_static_data_for_all_viewers()
@@ -351,6 +351,9 @@
 			playsound(src, get_sfx("terminal_button"), 25, FALSE)
 			update_active_camera()
 			return TRUE
+		if("ui-interact")
+			playsound(src, get_sfx("terminal_button"), 25, FALSE)
+			return FALSE
 
 
 /obj/item/device/sentry_computer/proc/show_camera_static()

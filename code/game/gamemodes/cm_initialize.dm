@@ -469,6 +469,7 @@ Additional game mode variables.
 
 	new_xeno.ghostize(FALSE) //Make sure they're not getting a free respawn.
 	xeno_candidate_mind.transfer_to(new_xeno, TRUE)
+	new_xeno.SetSleeping(0) // ghosting sleeps, but they got a new mind! wake up! (/mob/living/verb/ghost())
 
 	new_xeno.mind_initialize()
 	new_xeno.mind.player_entity = setup_player_entity(xeno_candidate_mind.ckey)

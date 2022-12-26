@@ -7,8 +7,8 @@
 
 // Trees
 #define TREE_NONE "Undefined"
-#define TREE_MARINE "Marine Tech Tree"
-#define TREE_XENO "Xenomorph Tech Tree"
+#define TREE_MARINE "Marine"
+#define TREE_XENO "Xenomorph"
 
 #define INITIAL_STARTING_POINTS 0
 

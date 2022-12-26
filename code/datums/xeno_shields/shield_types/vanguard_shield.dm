@@ -4,7 +4,6 @@
 	var/explosive_armor_amount = XENO_EXPOSIVEARMOR_MOD_VERYLARGE
 	amount = 800
 
-
 /datum/xeno_shield/vanguard/on_hit(damage)
 	notify_xeno()
 
@@ -49,11 +48,10 @@
 			qdel(src)
 
 /datum/xeno_shield/vanguard/proc/notify_xeno()
-	var/mob/living/carbon/Xenomorph/X = linked_xeno
-	if (!istype(X))
+	if (!istype(linked_xeno))
 		return
 
-	if (X.mutation_type == PRAETORIAN_VANGUARD)
-		var/datum/behavior_delegate/praetorian_vanguard/BD = X.behavior_delegate
+	if (linked_xeno.mutation_type == PRAETORIAN_VANGUARD)
+		var/datum/behavior_delegate/praetorian_vanguard/BD = linked_xeno.behavior_delegate
 		if (istype(BD))
 			BD.last_combat_time = world.time

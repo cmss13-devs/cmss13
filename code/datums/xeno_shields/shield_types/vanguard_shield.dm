@@ -16,10 +16,9 @@
 		return ..(damage)
 
 /datum/xeno_shield/vanguard/Destroy()
-	if (linked_xeno && istype(linked_xeno, /mob/living/carbon/Xenomorph))
-		var/mob/living/carbon/Xenomorph/X = linked_xeno
-		X.explosivearmor_modifier -= explosive_armor_amount
-		X.recalculate_armor()
+	if (linked_xeno)
+		linked_xeno.explosivearmor_modifier -= explosive_armor_amount
+		linked_xeno.recalculate_armor()
 
 	return ..()
 
@@ -39,18 +38,15 @@
 		sleep(0.4 SECONDS)
 
 	if (amount <= 0)
-		if (linked_xeno && istype(linked_xeno, /mob/living/carbon/Xenomorph))
-			var/mob/living/carbon/Xenomorph/X = linked_xeno
-
-			if (QDELETED(X) || !istype(X))
+		if (linked_xeno)
+			if (QDELETED(linked_xeno) || !istype(linked_xeno))
 				return
 
-			qdel(src)
-			X.overlay_shields()
-
+			linked_xeno.overlay_shields()
 			var/datum/action/xeno_action/activable/cleave/cAction = get_xeno_action_by_type(linked_xeno, /datum/action/xeno_action/activable/cleave)
 			if (istype(cAction))
 				addtimer(CALLBACK(cAction, /datum/action/xeno_action/activable/cleave.proc/remove_buff), 7, TIMER_UNIQUE)
+			qdel(src)
 
 /datum/xeno_shield/vanguard/proc/notify_xeno()
 	var/mob/living/carbon/Xenomorph/X = linked_xeno

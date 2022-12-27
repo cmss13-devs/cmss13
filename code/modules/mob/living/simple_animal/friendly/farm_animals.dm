@@ -161,7 +161,7 @@
 	icon_living = "chick"
 	icon_dead = "chick_dead"
 	icon_gib = "chick_gib"
-	speak = list("Cherp.","Cherp?","Chirrup.","Cheep!")
+	speak = list("Chirp.","Chirp?","Chirrup.","Cheep!")
 	speak_emote = list("cheeps")
 	emote_hear = list("cheeps")
 	emote_see = list("pecks at the ground","flaps its tiny wings")
@@ -176,8 +176,35 @@
 	health = 1
 	var/amount_grown = 0
 	mob_size = MOB_SIZE_SMALL
+	
+/mob/living/simple_animal/cheeps //Cheeps is not a subtype of chick, so he never grows up. Aww.
+	name = "Chef Cheeps"
+	desc = "Adorable! Look at his tiny hat!"
+	icon_state = "cheeps"
+	icon_living = "cheeps"
+	icon_dead = "cheeps_dead"
+	icon_gib = "chick_gib"
+	speak = list("Chirp.","Chirp?","Chirrup.","Cheep!")
+	speak_emote = list("cheeps")
+	emote_hear = list("cheeps")
+	emote_see = list("pecks at the ground","flaps his tiny wings", "tries to keep his hat from covering his eyes")
+	speak_chance = 2
+	turns_per_move = 2
+	meat_type = /obj/item/reagent_container/food/snacks/meat
+	meat_amount = 1
+	response_help  = "pets"
+	response_disarm = "gently pushes aside"
+	response_harm   = "kicks"
+	attacktext = "kicks"
+	health = 1
+	mob_size = MOB_SIZE_SMALL
 
 /mob/living/simple_animal/chick/New()
+	..()
+	pixel_x = rand(-6, 6)
+	pixel_y = rand(0, 10)
+	
+/mob/living/simple_animal/cheeps/New()
 	..()
 	pixel_x = rand(-6, 6)
 	pixel_y = rand(0, 10)

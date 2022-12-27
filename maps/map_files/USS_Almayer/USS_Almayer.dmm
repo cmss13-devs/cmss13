@@ -14201,9 +14201,7 @@
 	},
 /area/almayer/medical/medical_science)
 "aPK" = (
-/obj/structure/sign/nosmoking_1{
-	pixel_y = 30
-	},
+/obj/structure/sign/nosmoking_1,
 /turf/closed/wall/almayer,
 /area/almayer/squads/alpha)
 "aPM" = (
@@ -14407,9 +14405,7 @@
 /turf/open/floor/almayer,
 /area/almayer/squads/alpha_bravo_shared)
 "aQN" = (
-/obj/structure/sign/nosmoking_1{
-	pixel_y = 30
-	},
+/obj/structure/sign/nosmoking_1,
 /turf/closed/wall/almayer,
 /area/almayer/squads/bravo)
 "aQP" = (
@@ -28234,9 +28230,7 @@
 /turf/open/floor/wood/ship,
 /area/almayer/shipboard/sea_office)
 "bQZ" = (
-/obj/structure/sign/nosmoking_1{
-	pixel_y = 30
-	},
+/obj/structure/sign/nosmoking_1,
 /turf/closed/wall/almayer,
 /area/almayer/squads/charlie)
 "bRa" = (
@@ -28715,9 +28709,7 @@
 /turf/open/floor/almayer,
 /area/almayer/squads/charlie_delta_shared)
 "bSL" = (
-/obj/structure/sign/nosmoking_1{
-	pixel_y = 30
-	},
+/obj/structure/sign/nosmoking_1,
 /turf/closed/wall/almayer,
 /area/almayer/squads/delta)
 "bSN" = (

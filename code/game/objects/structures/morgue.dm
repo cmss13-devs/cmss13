@@ -274,11 +274,11 @@
  */
 
 /obj/structure/morgue/sarcophagus
-    name = "sarcophagus"
-    desc = "Used to store predators."
-    icon_state = "sarcophagus1"
-    morgue_type = "sarcophagus"
-    tray_path = /obj/structure/morgue_tray/sarcophagus
+	name = "sarcophagus"
+	desc = "Used to store predators."
+	icon_state = "sarcophagus1"
+	morgue_type = "sarcophagus"
+	tray_path = /obj/structure/morgue_tray/sarcophagus
 
 
 /*
@@ -286,6 +286,6 @@
  */
 
 /obj/structure/morgue_tray/sarcophagus
-    name = "sarcophagus tray"
-    desc = "Apply corpse before closing."
-    icon_state = "sarcomat"
+	name = "sarcophagus tray"
+	desc = "Apply corpse before closing."
+	icon_state = "sarcomat"

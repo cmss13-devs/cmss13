@@ -105,8 +105,8 @@
 	icon = 'icons/obj/structures/doors/blastdoors_shutters.dmi'
 	unacidable = TRUE
 
-	ex_act(severity) //immune to explosions
-		return
+/obj/structure/machinery/door/poddoor/shutters/transit/ex_act(severity) //immune to explosions
+	return
 
 /obj/structure/machinery/door/poddoor/shutters/transit/open
 	density = FALSE
@@ -119,8 +119,9 @@
 	icon_state = "shutter0"
 	open_layer = PODDOOR_CLOSED_LAYER
 	closed_layer = PODDOOR_CLOSED_LAYER
-	ex_act(severity)
-		return
+
+/obj/structure/machinery/door/poddoor/shutters/almayer/pressure/ex_act(severity)
+	return
 
 /obj/structure/machinery/door/poddoor/shutters/almayer/uniform_vendors
 	name = "\improper Uniform Vendor Shutters"

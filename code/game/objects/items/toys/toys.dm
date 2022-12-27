@@ -144,15 +144,15 @@
 	icon_state = "snappop"
 	w_class = SIZE_TINY
 
-	launch_impact(atom/hit_atom)
-		..()
-		var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
-		s.set_up(3, 1, src)
-		s.start()
-		new /obj/effect/decal/cleanable/ash(src.loc)
-		src.visible_message(SPAN_DANGER("The [src.name] explodes!"),SPAN_DANGER("You hear a snap!"))
-		playsound(src, 'sound/effects/snap.ogg', 25, 1)
-		qdel(src)
+/obj/item/toy/snappop/launch_impact(atom/hit_atom)
+	..()
+	var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
+	s.set_up(3, 1, src)
+	s.start()
+	new /obj/effect/decal/cleanable/ash(src.loc)
+	src.visible_message(SPAN_DANGER("The [src.name] explodes!"),SPAN_DANGER("You hear a snap!"))
+	playsound(src, 'sound/effects/snap.ogg', 25, 1)
+	qdel(src)
 
 /obj/item/toy/snappop/Crossed(H as mob|obj)
 	if((ishuman(H))) //i guess carp and shit shouldn't set them off

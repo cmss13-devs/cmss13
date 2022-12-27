@@ -457,64 +457,64 @@
 	unacidable = TRUE
 	var/working = 0
 
-	attack_hand(mob/user)
-		if(inoperable(MAINT))
-			return
-		if(user.lying || user.stat)
-			return
-		if(ismaintdrone(usr) || \
-			istype(usr, /mob/living/carbon/Xenomorph))
-			to_chat(usr, SPAN_DANGER("You don't have the dexterity to do this!"))
-			return
-		if(working)
-			to_chat(user, SPAN_DANGER("Wait for it to recharge first."))
-			return
-
-		var/remove_max = 10
-		var/turf/T = src.loc
-		if(T)
-			to_chat(user, SPAN_DANGER("You turn on the recycler."))
-			var/removed = 0
-			for(var/i, i < remove_max, i++)
-				for(var/obj/O in T)
-					if(istype(O,/obj/structure/closet/crate))
-						var/obj/structure/closet/crate/C = O
-						if(C.contents.len)
-							to_chat(user, SPAN_DANGER("[O] must be emptied before it can be recycled"))
-							continue
-						new /obj/item/stack/sheet/metal(get_step(src,dir))
-						O.forceMove(get_turf(locate(84,237,2))) //z.2
-//						O.forceMove(get_turf(locate(30,70,1)) )//z.1
-						removed++
-						break
-					else if(istype(O,/obj/item))
-						var/obj/item/I = O
-						if(I.anchored)
-							continue
-						O.forceMove(get_turf(locate(84,237,2))) //z.2
-//						O.forceMove(get_turf(locate(30,70,1)) )//z.1
-						removed++
-						break
-				for(var/mob/M in T)
-					if(istype(M,/mob/living/carbon/Xenomorph))
-						var/mob/living/carbon/Xenomorph/X = M
-						if(!X.stat == DEAD)
-							continue
-						X.forceMove(get_turf(locate(84,237,2))) //z.2
-//						X.forceMove(get_turf(locate(30,70,1)) )//z.1
-						removed++
-						break
-				if(removed && !working)
-					playsound(loc, 'sound/effects/meteorimpact.ogg', 25, 1)
-					working = 1 //Stops the sound from repeating
-				if(removed >= remove_max)
-					break
-
-		working = 1
-		addtimer(VARSET_CALLBACK(src, working, FALSE), 10 SECONDS)
-
-	ex_act(severity)
+/obj/structure/machinery/wo_recycler/attack_hand(mob/user)
+	if(inoperable(MAINT))
 		return
+	if(user.lying || user.stat)
+		return
+	if(ismaintdrone(usr) || \
+		istype(usr, /mob/living/carbon/Xenomorph))
+		to_chat(usr, SPAN_DANGER("You don't have the dexterity to do this!"))
+		return
+	if(working)
+		to_chat(user, SPAN_DANGER("Wait for it to recharge first."))
+		return
+
+	var/remove_max = 10
+	var/turf/T = src.loc
+	if(T)
+		to_chat(user, SPAN_DANGER("You turn on the recycler."))
+		var/removed = 0
+		for(var/i, i < remove_max, i++)
+			for(var/obj/O in T)
+				if(istype(O,/obj/structure/closet/crate))
+					var/obj/structure/closet/crate/C = O
+					if(C.contents.len)
+						to_chat(user, SPAN_DANGER("[O] must be emptied before it can be recycled"))
+						continue
+					new /obj/item/stack/sheet/metal(get_step(src,dir))
+					O.forceMove(get_turf(locate(84,237,2))) //z.2
+//						O.forceMove(get_turf(locate(30,70,1)) )//z.1
+					removed++
+					break
+				else if(istype(O,/obj/item))
+					var/obj/item/I = O
+					if(I.anchored)
+						continue
+					O.forceMove(get_turf(locate(84,237,2))) //z.2
+//						O.forceMove(get_turf(locate(30,70,1)) )//z.1
+					removed++
+					break
+			for(var/mob/M in T)
+				if(istype(M,/mob/living/carbon/Xenomorph))
+					var/mob/living/carbon/Xenomorph/X = M
+					if(!X.stat == DEAD)
+						continue
+					X.forceMove(get_turf(locate(84,237,2))) //z.2
+//						X.forceMove(get_turf(locate(30,70,1)) )//z.1
+					removed++
+					break
+			if(removed && !working)
+				playsound(loc, 'sound/effects/meteorimpact.ogg', 25, 1)
+				working = 1 //Stops the sound from repeating
+			if(removed >= remove_max)
+				break
+
+	working = 1
+	addtimer(VARSET_CALLBACK(src, working, FALSE), 10 SECONDS)
+
+/obj/structure/machinery/wo_recycler/ex_act(severity)
+	return
 
 
 ////////////////////

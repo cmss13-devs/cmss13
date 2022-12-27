@@ -55,75 +55,12 @@
 	</script>
 	"}
 
-	var/turf/user_turf = get_turf(user)
-
 	dat += "<center><b>Search:</b> <input type='text' id='filter' value='' onkeyup='updateSearch();' style='width:300px;'></center>"
 	dat += "<table id='marine_list' border='2px' style='width: 100%; border-collapse: collapse;' align='center'><tr>"
 	dat += "<th>Name</th><th>Squad</th><th>Role</th><th>State</th><th>Location</th><th>Distance</th></tr>"
-	for(var/datum/squad/S in RoleAuthority.squads)
-		var/list/squad_roles = ROLES_MARINES.Copy()
-		for(var/i in squad_roles)
-			squad_roles[i] = ""
-		var/misc_roles = ""
-
-		for(var/X in S.marines_list)
-			if(!X)
-				continue //just to be safe
-			var/mob_name = "unknown"
-			var/mob_state = ""
-			var/squad = "None"
-			var/role = "unknown"
-			var/dist = "<b>???</b>"
-			var/area_name = "<b>???</b>"
-			var/mob/living/carbon/human/H
-			if(ishuman(X))
-				H = X
-				mob_name = H.real_name
-				var/area/A = get_area(H)
-				var/turf/M_turf = get_turf(H)
-				if(A)
-					area_name = sanitize_area(A.name)
-
-				if(H.undefibbable)
-					continue
-
-				if(H.job)
-					role = H.job
-				else if(istype(H.wear_id, /obj/item/card/id)) //decapitated marine is mindless,
-					var/obj/item/card/id/ID = H.wear_id		//we use their ID to get their role.
-					if(ID.rank)
-						role = ID.rank
-
-				if(M_turf)
-					var/area/mob_area = M_turf.loc
-					var/area/user_area = user_turf.loc
-					if(M_turf.z == user_turf.z && mob_area.fake_zlevel == user_area.fake_zlevel)
-						dist = "[get_dist(H, user)] ([dir2text_short(get_dir(user, H))])"
-
-				if(H.assigned_squad)
-					squad = H.assigned_squad.name
-
-				switch(H.stat)
-					if(CONSCIOUS)
-						mob_state = "Conscious"
-					if(UNCONSCIOUS)
-						if(H.health < 0)
-							mob_state = "<b>Critical</b>"
-						else
-							mob_state = "Unconscious"
-					if(DEAD)
-						mob_state = "<b>Dead</b>"
-
-			var/marine_infos = "<tr><td>[mob_name]</a></td><td>[squad]</td><td>[role]</td><td>[mob_state]</td><td>[area_name]</td><td>[dist]</td></tr>"
-			if(role in squad_roles)
-				squad_roles[role] += marine_infos
-			else
-				misc_roles += marine_infos
-
-		for(var/i in squad_roles)
-			dat += squad_roles[i]
-		dat += misc_roles
-
+	for(var/datum/squad/current_squad in RoleAuthority.squads)
+		var/datum/squad_overwatch_info/info = current_squad.get_squad_overwatch_info(user = user)
+		dat += info.squad_sorted_text_crew_monitor
 	dat += "</table>"
 	dat += "<br><hr>"
 	return dat

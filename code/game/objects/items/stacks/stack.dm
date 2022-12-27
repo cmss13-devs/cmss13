@@ -377,7 +377,8 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 	var/title = "ERROR"
 	var/list/recipes = null
 	var/req_amount = 1
-	New(title, recipes, req_amount = 1)
-		src.title = title
-		src.recipes = recipes
-		src.req_amount = req_amount
+
+/datum/stack_recipe_list/New(title, recipes, req_amount = 1)
+	src.title = title
+	src.recipes = recipes
+	src.req_amount = req_amount

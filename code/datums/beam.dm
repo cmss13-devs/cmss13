@@ -154,9 +154,10 @@
 	mouse_opacity = FALSE
 
 	var/tmp/atom/BeamSource
-	Initialize()
-		..()
-		QDEL_IN(src, 10)
+
+/obj/effect/overlay/beam/Initialize()
+	..()
+	QDEL_IN(src, 10)
 
 /**
  * This is what you use to start a beam. Example: origin.Beam(target, args). **Store the return of this proc if you don't set maxdist or time, you need it to delete the beam.**

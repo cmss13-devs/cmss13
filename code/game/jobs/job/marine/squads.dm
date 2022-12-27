@@ -765,3 +765,248 @@
 		update_free_mar()
 	target.hud_set_squad()
 	return
+
+//A consolidated information about the squad
+//pre-formatted for the Ovarwatch Console, the Squad Monitor, and the Groundside Operations computer
+/datum/squad_overwatch_info
+	var/leader_count = 0
+	var/rto_count = 0
+	var/spec_count = 0
+	var/medic_count = 0
+	var/engi_count = 0
+	var/smart_count = 0
+	var/marine_count = 0
+	var/living_count = 0
+
+	var/almayer_count = 0
+	var/SSD_count = 0
+	var/helmetless_count = 0
+
+
+	//Formatted for the Overwatch Console
+	var/squad_sorted_text_overwatch = ""
+	var/living_sorted_text_overwatch = ""
+
+	//Formatted for the Squad Monitor
+	var/squad_sorted_text_crew_monitor = ""
+
+	//Formatted for the Groundside Operations Computer
+	var/squad_sorted_text_groundside_operations = ""
+
+/**
+ * A proc for printing info for the Ovarwatch Console, the Squad Monitor, and the Groundside Operations computer
+ * 
+ * Arguments:
+ * * z_hidden_overwatch - ignores a Z-level (Overwatch Console)
+ * * marine_filter - ignored marines (Overwatch Console)
+ * * marine_filter_enabled - if the filter is enabled (Overwatch Console)
+ * * dead_hidden - whether to hide dead marines (Overwatch Console)
+ * * user - user of the device, used to determine distance between them and squad members (Squad Monitor)
+ * * z_hidden_groundside_ops - TRUE means we won't display user information if they are not on the ground (Groundside Operations)
+*/
+/datum/squad/proc/get_squad_overwatch_info(var/z_hidden_overwatch = OVERWATCH_HIDE_NONE, var/list/marine_filter = list(), var/marine_filter_enabled = TRUE, var/dead_hidden = FALSE, var/mob/user = null, z_hidden_groundside_ops = FALSE)
+	var/datum/squad_overwatch_info/info = new()
+
+	var/leader_text_overwatch = ""
+	var/rto_text_overwatch = ""
+	var/spec_text_overwatch = ""
+	var/medic_text_overwatch = ""
+	var/engi_text_overwatch = ""
+	var/smart_text_overwatch = ""
+	var/marine_text_overwatch = ""
+	var/misc_text_overwatch = ""
+
+	var/conscious_text_overwatch = ""
+	var/unconscious_text_overwatch = ""
+	var/dead_text_overwatch = ""
+
+	var/leader_text_crew_monitor = ""
+	var/rto_text_crew_monitor = ""
+	var/spec_text_crew_monitor = ""
+	var/medic_text_crew_monitor = ""
+	var/engi_text_crew_monitor = ""
+	var/smart_text_crew_monitor = ""
+	var/marine_text_crew_monitor = ""
+	var/misc_text_crew_monitor = ""
+
+	var/leader_text_groundside_operations = ""
+	var/rto_text_groundside_operations = ""
+	var/spec_text_groundside_operations = ""
+	var/medic_text_groundside_operations = ""
+	var/engi_text_groundside_operations = ""
+	var/smart_text_groundside_operations = ""
+	var/marine_text_groundside_operations = ""
+	var/misc_text_groundside_operations = ""
+
+	var/SL_z //z level of the Squad Leader
+	if(squad_leader)
+		var/turf/SL_turf = get_turf(squad_leader)
+		SL_z = SL_turf.z
+
+	for(var/marine in marines_list)
+		if(!marine)
+			continue //just to be safe
+		var/mob_name = "unknown"
+		var/mob_state = ""
+		var/role = "unknown"
+		var/act_sl = ""
+		var/fteam = ""
+		var/dist = "<b>???</b>"
+		var/area_name = "<b>???</b>"
+		var/mob/living/carbon/human/human_marine
+
+		var/is_filtered = FALSE
+		if(marine && ("\ref[marine]" in marine_filter))
+			is_filtered = TRUE
+
+		if(ishuman(marine))
+			human_marine = marine
+			mob_name = human_marine.real_name
+			var/area/marine_area = get_area(human_marine)
+			var/turf/marine_turf = get_turf(human_marine)
+			if(!marine_turf)
+				continue
+			if(marine_area)
+				area_name = sanitize_area(marine_area.name)
+
+			switch(z_hidden_overwatch)
+				if(OVERWATCH_HIDE_ALMAYER)
+					if(is_mainship_level(marine_turf.z))
+						continue
+				if(OVERWATCH_HIDE_GROUND)
+					if(is_ground_level(marine_turf.z))
+						continue
+
+			if(human_marine.job)
+				role = human_marine.job
+			else if(istype(human_marine.wear_id, /obj/item/card/id)) //decapitated marine is mindless,
+				var/obj/item/card/id/ID = human_marine.wear_id		//we use their ID to get their role.
+				if(ID.rank) role = ID.rank
+
+			if(user)
+				var/turf/user_turf = get_turf(user)
+				if(marine_turf)
+					var/area/mob_area = marine_turf.loc
+					var/area/user_area = user_turf.loc
+					if(marine_turf.z == user_turf.z && mob_area.fake_zlevel == user_area.fake_zlevel)
+						dist = "[get_dist(human_marine, user)] ([dir2text_short(get_dir(user, human_marine))])"
+			else if(squad_leader)
+				if(human_marine == squad_leader)
+					dist = "<b>N/A</b>"
+					if(name == SQUAD_SOF)
+						if(human_marine.job == JOB_MARINE_RAIDER_CMD)
+							act_sl = " (direct command)"
+						else if(human_marine.job != JOB_MARINE_RAIDER_SL)
+							act_sl = " (acting TL)"
+					else if(human_marine.job != JOB_SQUAD_LEADER)
+						act_sl = " (acting SL)"
+				else if(marine_turf && (marine_turf.z == SL_z))
+					dist = "[get_dist(human_marine, squad_leader)] ([dir2text_short(get_dir(squad_leader, human_marine))])"
+
+			if(is_filtered && marine_filter_enabled)
+				continue
+
+			switch(human_marine.stat)
+				if(CONSCIOUS)
+					mob_state = "Conscious"
+					info.living_count++
+					conscious_text_overwatch += "<tr><td><A href='?src=\ref[src];operation=use_cam;cam_target=\ref[human_marine]'>[mob_name]</a></td><td>[role][act_sl]</td><td>[mob_state]</td><td>[area_name]</td><td>[dist]</td><td><A class='[is_filtered ? "green" : "red"]' href='?src=\ref[src];operation=filter_marine;squaddie=\ref[human_marine]'>[is_filtered ? "Show" : "Hide"]</a></td></tr>"
+
+				if(UNCONSCIOUS)
+					mob_state = "<b>Unconscious</b>"
+					info.living_count++
+					unconscious_text_overwatch += "<tr><td><A href='?src=\ref[src];operation=use_cam;cam_target=\ref[human_marine]'>[mob_name]</a></td><td>[role][act_sl]</td><td>[mob_state]</td><td>[area_name]</td><td>[dist]</td><td><A class='[is_filtered ? "green" : "red"]' href='?src=\ref[src];operation=filter_marine;squaddie=\ref[human_marine]'>[is_filtered ? "Show" : "Hide"]</a></td></tr>"
+
+				if(DEAD)
+					if(dead_hidden)
+						continue
+					mob_state = SET_CLASS("DEAD", INTERFACE_RED)
+					dead_text_overwatch += "<tr><td><A href='?src=\ref[src];operation=use_cam;cam_target=\ref[human_marine]'>[mob_name]</a></td><td>[role][act_sl]</td><td>[mob_state]</td><td>[area_name]</td><td>[dist]</td><td><A class='[is_filtered ? "green" : "red"]' href='?src=\ref[src];operation=filter_marine;squaddie=\ref[human_marine]'>[is_filtered ? "Show" : "Hide"]</a></td></tr>"
+
+			if(!istype(human_marine.head, /obj/item/clothing/head/helmet/marine))
+				mob_state += SET_CLASS(" <b>(NO HELMET)</b>", INTERFACE_ORANGE)
+				info.helmetless_count++
+
+			if(!human_marine.key || !human_marine.client)
+				if(human_marine.stat != DEAD)
+					mob_state += " (SSD)"
+					info.SSD_count++
+
+			if(!is_ground_level(marine_turf.z))
+				info.almayer_count++
+				if(z_hidden_groundside_ops)
+					continue
+
+			if(human_marine.assigned_fireteam)
+				fteam = " [human_marine.assigned_fireteam]"
+
+		else //listed marine was deleted or gibbed, all we have is their name
+			if(dead_hidden)
+				continue
+			if(z_hidden_overwatch) //gibbed marines are neither on the colony nor on the almayer
+				continue
+			for(var/datum/data/record/t in GLOB.data_core.general)
+				if(t.fields["name"] == marine)
+					role = t.fields["real_rank"]
+					break
+			mob_state = SET_CLASS("DEAD", INTERFACE_RED)
+			mob_name = marine
+
+			dead_text_overwatch += "<tr><td><A href='?src=\ref[src];operation=use_cam;cam_target=\ref[human_marine]'>[mob_name]</a></td><td>[role][act_sl]</td><td>[mob_state]</td><td>[area_name]</td><td>[dist]</td><td><A class='[is_filtered ? "green" : "red"]' href='?src=\ref[src];operation=filter_marine;squaddie=\ref[human_marine]'>[is_filtered ? "Show" : "Hide"]</a></td></tr>"
+
+
+		var/marine_infos_overwatch = "<tr><td><A href='?src=\ref[src];operation=use_cam;cam_target=\ref[human_marine]'>[mob_name]</a></td><td>[role][act_sl][fteam]</td><td>[mob_state]</td><td>[area_name]</td><td>[dist]</td><td><A class='[is_filtered ? "green" : "red"]' href='?src=\ref[src];operation=filter_marine;squaddie=\ref[human_marine]'>[is_filtered ? "Show" : "Hide"]</a></td></tr>"
+
+		var/marine_infos_crew_monitor = "<tr><td>[mob_name]</a></td><td>[name]</td><td>[role]</td><td>[mob_state]</td><td>[area_name]</td><td>[dist]</td></tr>"
+
+		var/marine_infos_groundside_operations = "<tr><td><A href='?src=\ref[src];operation=use_cam;cam_target=\ref[human_marine]'>[mob_name]</a></td><td>[role][act_sl]</td><td>[mob_state]</td><td>[area_name]</td></tr>"
+
+		switch(role)
+			if(JOB_SQUAD_LEADER)
+				leader_text_overwatch += marine_infos_overwatch
+				leader_text_crew_monitor += marine_infos_crew_monitor
+				leader_text_groundside_operations += marine_infos_groundside_operations
+				info.leader_count++
+			if(JOB_SQUAD_RTO)
+				rto_text_overwatch += marine_infos_overwatch
+				rto_text_crew_monitor += marine_infos_crew_monitor
+				rto_text_groundside_operations += marine_infos_groundside_operations
+				info.rto_count++
+			if(JOB_SQUAD_SPECIALIST)
+				spec_text_overwatch += marine_infos_overwatch
+				spec_text_crew_monitor += marine_infos_crew_monitor
+				spec_text_groundside_operations += marine_infos_groundside_operations
+				info.spec_count++
+			if(JOB_SQUAD_MEDIC)
+				medic_text_overwatch += marine_infos_overwatch
+				medic_text_crew_monitor += marine_infos_crew_monitor
+				medic_text_groundside_operations += marine_infos_groundside_operations
+				info.medic_count++
+			if(JOB_SQUAD_ENGI)
+				engi_text_overwatch += marine_infos_overwatch
+				engi_text_crew_monitor += marine_infos_crew_monitor
+				engi_text_groundside_operations += marine_infos_groundside_operations
+				info.engi_count++
+			if(JOB_SQUAD_SMARTGUN)
+				smart_text_overwatch += marine_infos_overwatch
+				smart_text_crew_monitor += marine_infos_crew_monitor
+				smart_text_groundside_operations += marine_infos_groundside_operations
+				info.smart_count++
+			if(JOB_SQUAD_MARINE)
+				marine_text_overwatch += marine_infos_overwatch
+				marine_text_crew_monitor += marine_infos_crew_monitor
+				marine_text_groundside_operations += marine_infos_groundside_operations
+				info.marine_count++
+			else
+				misc_text_overwatch += marine_infos_overwatch
+				misc_text_crew_monitor += marine_infos_crew_monitor
+				misc_text_groundside_operations += marine_infos_groundside_operations
+
+		info.squad_sorted_text_overwatch = leader_text_overwatch + rto_text_overwatch + spec_text_overwatch + medic_text_overwatch + engi_text_overwatch + smart_text_overwatch + marine_text_overwatch + misc_text_overwatch
+		info.living_sorted_text_overwatch = conscious_text_overwatch + unconscious_text_overwatch + dead_text_overwatch
+
+		info.squad_sorted_text_crew_monitor = leader_text_crew_monitor + rto_text_crew_monitor + spec_text_crew_monitor + medic_text_crew_monitor + engi_text_crew_monitor + smart_text_crew_monitor + marine_text_crew_monitor + misc_text_crew_monitor
+
+		info.squad_sorted_text_groundside_operations = leader_text_groundside_operations + rto_text_crew_monitor + spec_text_crew_monitor + medic_text_crew_monitor + engi_text_crew_monitor + smart_text_crew_monitor + marine_text_crew_monitor + misc_text_crew_monitor
+
+	return info

@@ -230,8 +230,8 @@
 	health = HEALTH_RESIN_XENO_FAST
 	var/speed_amt = 0.7
 
-	Crossed(atom/movable/AM)
-		return
+/obj/effect/alien/resin/sticky/fast/Crossed(atom/movable/AM)
+	return
 
 
 //xeno marker :0)

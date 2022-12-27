@@ -1121,7 +1121,11 @@ and you're good to go.
 			targloc = get_turf(target)
 
 		projectile_to_fire.original = target
-		target = simulate_scatter(projectile_to_fire, target, curloc, targloc, user, bullets_fired)
+
+		// turf-targeted projectiles are fired without scatter, because proc would raytrace them further away
+		var/ammo_flags = projectile_to_fire.ammo.flags_ammo_behavior | projectile_to_fire.projectile_override_flags
+		if(!(ammo_flags & AMMO_HITS_TARGET_TURF))
+			target = simulate_scatter(projectile_to_fire, target, curloc, targloc, user, bullets_fired)
 
 		var/bullet_velocity = projectile_to_fire?.ammo?.shell_speed + velocity_add
 

@@ -194,26 +194,26 @@
 	max_w_class = SIZE_LARGE
 	max_storage_space = 28
 
-	attackby(obj/item/W as obj, mob/user as mob)
-		if(crit_fail)
-			to_chat(user, SPAN_DANGER("The Bluespace generator isn't working."))
-			return
-		if(istype(W, /obj/item/storage/backpack/holding) && !W.crit_fail)
-			to_chat(user, SPAN_DANGER("The Bluespace interfaces of the two devices conflict and malfunction."))
-			qdel(W)
-			return
-		..()
+/obj/item/storage/backpack/holding/attackby(obj/item/W as obj, mob/user as mob)
+	if(crit_fail)
+		to_chat(user, SPAN_DANGER("The Bluespace generator isn't working."))
+		return
+	if(istype(W, /obj/item/storage/backpack/holding) && !W.crit_fail)
+		to_chat(user, SPAN_DANGER("The Bluespace interfaces of the two devices conflict and malfunction."))
+		qdel(W)
+		return
+	..()
 
-	proc/failcheck(mob/user as mob)
-		if (prob(src.reliability)) return 1 //No failure
-		if (prob(src.reliability))
-			to_chat(user, SPAN_DANGER("The Bluespace portal resists your attempt to add another item.")) //light failure
-		else
-			to_chat(user, SPAN_DANGER("The Bluespace generator malfunctions!"))
-			for (var/obj/O in src.contents) //it broke, delete what was in it
-				qdel(O)
-			crit_fail = 1
-			icon_state = "brokenpack"
+/obj/item/storage/backpack/holding/proc/failcheck(mob/user as mob)
+	if (prob(src.reliability)) return 1 //No failure
+	if (prob(src.reliability))
+		to_chat(user, SPAN_DANGER("The Bluespace portal resists your attempt to add another item.")) //light failure
+	else
+		to_chat(user, SPAN_DANGER("The Bluespace generator malfunctions!"))
+		for (var/obj/O in src.contents) //it broke, delete what was in it
+			qdel(O)
+		crit_fail = 1
+		icon_state = "brokenpack"
 
 
 //==========================//JOKE PACKS\\================================\\

@@ -306,6 +306,7 @@
 		/mob/living/carbon/Xenomorph/Queen/proc/set_orders,
 		/mob/living/carbon/Xenomorph/Queen/proc/hive_message,
 		/mob/living/carbon/Xenomorph/proc/rename_tunnel,
+		/mob/living/carbon/Xenomorph/proc/set_hugger_reserve_for_morpher,
 	)
 
 	var/list/mobile_abilities = list(
@@ -762,6 +763,7 @@
 	if(hive.living_xeno_queen == src)
 		hive.xeno_queen_timer = world.time + XENO_QUEEN_DEATH_DELAY
 		hive.banished_ckeys   = list() // Reset the banished ckey list
+	icon = queen_standing_icon
 	return ..()
 
 

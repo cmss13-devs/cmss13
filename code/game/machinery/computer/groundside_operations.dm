@@ -99,87 +99,14 @@
 	if(!current_squad)
 		dat += "No Squad selected!<BR>"
 	else
-		var/leader_text = ""
-		var/spec_text = ""
-		var/medic_text = ""
-		var/engi_text = ""
-		var/smart_text = ""
-		var/marine_text = ""
-		var/misc_text = ""
-		var/living_count = 0
-		var/almayer_count = 0
-		var/SSD_count = 0
-		var/helmetless_count = 0
-
-		for(var/X in current_squad.marines_list)
-			if(!X)
-				continue //just to be safe
-			var/mob_name = "unknown"
-			var/mob_state = ""
-			var/role = "unknown"
-			var/act_sl = ""
-			var/area_name = "<b>???</b>"
-			var/mob/living/carbon/human/H
-			if(ishuman(X))
-				H = X
-				mob_name = H.real_name
-				var/area/A = get_area(H)
-				var/turf/M_turf = get_turf(H)
-				if(A)
-					area_name = sanitize_area(A.name)
-
-				if(H.job)
-					role = H.job
-				else if(istype(H.wear_id, /obj/item/card/id)) //decapitated marine is mindless,
-					var/obj/item/card/id/ID = H.wear_id		//we use their ID to get their role.
-					if(ID.rank)
-						role = ID.rank
-
-				switch(H.stat)
-					if(CONSCIOUS)
-						mob_state = "Conscious"
-						living_count++
-					if(UNCONSCIOUS)
-						mob_state = "<b>Unconscious</b>"
-						living_count++
-					else
-						continue
-
-				if(!is_ground_level(M_turf.z))
-					almayer_count++
-					continue
-
-				if(!istype(H.head, /obj/item/clothing/head/helmet/marine))
-					helmetless_count++
-					continue
-
-				if(!H.key || !H.client)
-					SSD_count++
-					continue
-
-			var/marine_infos = "<tr><td><A href='?src=\ref[src];operation=use_cam;cam_target=\ref[H]'>[mob_name]</a></td><td>[role][act_sl]</td><td>[mob_state]</td><td>[area_name]</td></tr>"
-			switch(role)
-				if(JOB_SQUAD_LEADER)
-					leader_text += marine_infos
-				if(JOB_SQUAD_SPECIALIST)
-					spec_text += marine_infos
-				if(JOB_SQUAD_MEDIC)
-					medic_text += marine_infos
-				if(JOB_SQUAD_ENGI)
-					engi_text += marine_infos
-				if(JOB_SQUAD_SMARTGUN)
-					smart_text += marine_infos
-				if(JOB_SQUAD_MARINE)
-					marine_text += marine_infos
-				else
-					misc_text += marine_infos
+		var/datum/squad_overwatch_info/info = current_squad.get_squad_overwatch_info(z_hidden_groundside_ops = TRUE)
 
 		dat += "<b>Total: [current_squad.marines_list.len] Deployed</b><BR>"
-		dat += "<b>Marines detected: [living_count] ([helmetless_count] no helmet, [SSD_count] SSD, [almayer_count] on Almayer)</b><BR>"
+		dat += "<b>Marines detected: [info.living_count] ([info.helmetless_count] no helmet, [info.SSD_count] SSD, [info.almayer_count] on Almayer)</b><BR>"
 		dat += "<center><b>Search:</b> <input type='text' id='filter' value='' onkeyup='updateSearch();' style='width:300px;'></center>"
 		dat += "<table id='marine_list' border='2px' style='width: 100%; border-collapse: collapse;' align='center'><tr>"
 		dat += "<th>Name</th><th>Role</th><th>State</th><th>Location</th></tr>"
-		dat += leader_text + spec_text + medic_text + engi_text + smart_text + marine_text + misc_text
+		dat += info.squad_sorted_text_groundside_operations
 		dat += "</table>"
 	dat += "<br><hr>"
 	dat += "<A href='?src=\ref[src];operation=refresh'>Refresh</a><br>"
@@ -295,7 +222,7 @@
 			var/reason = input(usr, "What is the purpose of Echo Squad?", "Activation Reason")
 			if(!reason)
 				return
-			if(alert(usr, "Confirm activation of Echo Squad for [reason]", "Confirm Activation", "Yes", "No") == "No") return
+			if(alert(usr, "Confirm activation of Echo Squad for [reason]", "Confirm Activation", "Yes", "No") != "Yes") return
 			var/datum/squad/marine/echo/echo_squad = locate() in RoleAuthority.squads
 			if(!echo_squad)
 				visible_message(SPAN_BOLDNOTICE("ERROR: Unable to locate Echo Squad database."))

@@ -4,7 +4,7 @@ SUBSYSTEM_DEF(stats_collector)
 	wait      = 30 SECONDS
 	priority  = SS_PRIORITY_PAGER_STATUS
 	runlevels = RUNLEVELS_DEFAULT | RUNLEVEL_LOBBY
-	flags     = SS_KEEP_TIMING
+	flags     = SS_KEEP_TIMING | SS_NO_INIT
 
 	var/stat_ticks = 0
 	var/players_counter = 0

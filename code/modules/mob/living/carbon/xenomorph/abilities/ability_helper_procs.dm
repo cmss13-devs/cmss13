@@ -371,4 +371,8 @@
 		to_chat(src, SPAN_WARNING("You can't transfer plasma to \the [target]."))
 		return FALSE
 
+	if(target.plasma_max == XENO_NO_PLASMA)
+		to_chat(src, SPAN_WARNING("\The [target] doesn't use plasma."))
+		return FALSE
+
 	return TRUE

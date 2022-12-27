@@ -123,13 +123,13 @@
 	on = 1
 	in_use = 1
 	luminosity = 6
-	use_power = POWER_USE_NO_POWER
+	use_power = USE_POWER_NONE
 
-	attack_hand()
-		return
+/obj/structure/machinery/floodlight/landing/attack_hand()
+	return
 
-	attackby()
-		return
+/obj/structure/machinery/floodlight/landing/attackby()
+	return
 
 /obj/structure/machinery/floodlight/landing/floor
 	icon_state = "floor_flood01"

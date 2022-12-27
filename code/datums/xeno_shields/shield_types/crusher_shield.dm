@@ -7,4 +7,4 @@
 		return 0
 	return ..(damage)
 
-	
+

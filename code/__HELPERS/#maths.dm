@@ -95,7 +95,7 @@ var/list/sqrtTable = list(1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 4, 4, 4, 
 	return rotated_point
 
 // Round up
-proc/n_ceil(var/num)
+/proc/n_ceil(var/num)
 	if(isnum(num))
 		return round(num)+1
 

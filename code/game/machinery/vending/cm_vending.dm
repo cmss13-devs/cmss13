@@ -7,6 +7,9 @@
 #define VEND_INSTANCED_CATEGORY (1<<6)
 #define VEND_FACTION_THEMES (1<<7)
 #define VEND_USE_VENDOR_FLAGS (1<<8)
+//Whether or not to load ammo boxes depending on ammo loaded into the vendor
+//Only relevant in big vendors, like Requisitions or Squad Prep
+#define VEND_LOAD_AMMO_BOXES (1<<9)
 
 /obj/structure/machinery/cm_vending
 	name = "\improper Theoretical Marine selector"
@@ -156,6 +159,166 @@ GLOBAL_LIST_EMPTY(vending_products)
 	else
 		to_chat(user, SPAN_WARNING("You have restored access restrictions in [src]."))
 	return
+
+
+//Called when we vend something
+/obj/structure/machinery/cm_vending/proc/update_derived_ammo_and_boxes(var/list/item_being_vended)
+	if(!LAZYLEN(item_being_vended))
+		return
+
+	update_derived_from_ammo(item_being_vended)
+	update_derived_from_boxes(item_being_vended[3])
+
+//Called when we add something in
+/obj/structure/machinery/cm_vending/proc/update_derived_ammo_and_boxes_on_add(var/list/item_being_added)
+	if(!LAZYLEN(item_being_added))
+		return
+	update_derived_from_ammo(item_being_added)
+	//We are ADDING a box, so need to INCREASE the number of magazines rather than subtracting it
+	update_derived_from_boxes(item_being_added[3], TRUE)
+
+/obj/structure/machinery/cm_vending/proc/update_derived_from_ammo(var/list/base_ammo_item, var/add_box = FALSE)
+	if(!LAZYLEN(base_ammo_item))
+		return
+	//Item is a vented magazine / grenade / whatever, update all dependent boxes
+	var/datum/item_to_multiple_box_pairing/item_to_box_mapping = GLOB.item_to_box_mapping.get_item_to_box_mapping(base_ammo_item[3])
+	if(!item_to_box_mapping)
+		return
+	var/list/topic_listed_products = get_listed_products(usr)
+	for(var/datum/item_box_pairing/item_box_pairing as anything in item_to_box_mapping.item_box_pairings)
+		for(var/list/product in topic_listed_products)
+			if(product[3] == item_box_pairing.box)
+				//We recalculate the amount of boxes we ought to have based on how many magazines we have
+				product[2] = round(base_ammo_item[2] / item_box_pairing.items_in_box)
+				break
+
+/obj/structure/machinery/cm_vending/proc/update_derived_from_boxes(var/obj/item/box_being_added_or_removed, var/add_box = FALSE)
+	var/datum/item_box_pairing/item_box_pairing = GLOB.item_to_box_mapping.get_box_to_item_mapping(box_being_added_or_removed)
+	if(!item_box_pairing)
+		return
+	//Item is a vented box, update base ammo count
+	//and then update all the relevant boxes based on the new item count by calling this function again with the ammo parameter
+	var/list/topic_listed_products = get_listed_products(usr)
+	for(var/list/product in topic_listed_products)
+		if(product[3] == item_box_pairing.item)
+			if(add_box)
+				//We increase the amount of available magazines based on how many magazines we vended in a box
+				product[2] = product[2] + item_box_pairing.items_in_box
+			else
+				//We lower the amount of available magazines based on how many magazines we vended in a box
+				product[2] = max(product[2] - item_box_pairing.items_in_box, 0) //Just in case some shenanigans happen
+
+			//After we update the magazines, we update the connected boxes
+			//Just in case we have a small ammo box and a big ammo box (like say, grenades do)
+			update_derived_from_ammo(product)
+			return
+
+//A proc that checks all the items if they can be restocked
+//AKA if a mag is full, an ammo box is full, flamer mags having the correct fluid and so on
+/obj/structure/machinery/cm_vending/proc/check_if_item_is_good_to_restock(obj/item/item_to_stock, mob/user)
+	. = FALSE //Item is NOT good to restock
+
+	//Guns handling
+	if(isgun(item_to_stock))
+		var/obj/item/weapon/gun/G = item_to_stock
+		if(G.in_chamber || (G.current_mag && !istype(G.current_mag, /obj/item/ammo_magazine/internal)) || (istype(G.current_mag, /obj/item/ammo_magazine/internal) && G.current_mag.current_rounds > 0) )
+			to_chat(user, SPAN_WARNING("[G] is still loaded. Unload it before you can restock it."))
+			return
+		for(var/obj/item/attachable/A in G.contents) //Search for attachments on the gun. This is the easier method
+			if((A.flags_attach_features & ATTACH_REMOVABLE) && !(is_type_in_list(A, G.starting_attachment_types))) //There are attachments that are default and others that can't be removed
+				to_chat(user, SPAN_WARNING("[G] has non-standard attachments equipped. Detach them before you can restock it."))
+				return
+	//various stacks handling
+	else if(istype(item_to_stock, /obj/item/stack/folding_barricade))
+		var/obj/item/stack/folding_barricade/B = item_to_stock
+		if(B.amount != 3)
+			to_chat(user, SPAN_WARNING("[B]s are being stored in [SPAN_HELPFUL("stacks of 3")] for convenience. Add to \the [B] stack to make it a stack of 3 before restocking."))
+			return
+	//M94 flare packs handling
+	else if(istype(item_to_stock, /obj/item/storage/box/m94))
+		var/obj/item/storage/box/m94/flare_pack = item_to_stock
+		if(flare_pack.contents.len < flare_pack.max_storage_space)
+			to_chat(user, SPAN_WARNING("\The [item_to_stock] is not full."))
+			return
+		var/flare_type
+		if(istype(item_to_stock, /obj/item/storage/box/m94/signal))
+			flare_type = /obj/item/device/flashlight/flare/signal
+		else
+			flare_type = /obj/item/device/flashlight/flare
+		for(var/obj/item/device/flashlight/flare/F in flare_pack.contents)
+			if(F.fuel < 1)
+				to_chat(user, SPAN_WARNING("Some flares in \the [F] are used."))
+				return
+			if(F.type != flare_type)
+				to_chat(user, SPAN_WARNING("Some flares in \the [F] are not of the correct type."))
+				return
+	//Machete holsters handling
+	else if(istype(item_to_stock, /obj/item/storage/large_holster/machete))
+		var/obj/item/weapon/melee/claymore/mercsword/machete/mac = locate(/obj/item/weapon/melee/claymore/mercsword/machete) in item_to_stock
+		if(!mac)
+			if(user)
+				to_chat(user, SPAN_WARNING("\The [item_to_stock] is empty."))
+			return FALSE
+	//Machete holsters handling
+	else if(istype(item_to_stock, /obj/item/clothing/suit/storage/marine))
+		var/obj/item/clothing/suit/storage/marine/AR = item_to_stock
+		if(AR.pockets && AR.pockets.contents.len)
+			if(user)
+				to_chat(user, SPAN_WARNING("\The [AR] has something inside it. Empty it before restocking."))
+			return FALSE
+	//magazines handling
+	else if(istype(item_to_stock, /obj/item/ammo_magazine))
+		//flamer fuel tanks handling
+		if(istype(item_to_stock, /obj/item/ammo_magazine/flamer_tank))
+			var/obj/item/ammo_magazine/flamer_tank/FT = item_to_stock
+			if(FT.flamer_chem != initial(FT.flamer_chem))
+				to_chat(user, SPAN_WARNING("\The [FT] contains non-standard fuel."))
+				return
+		var/obj/item/ammo_magazine/A = item_to_stock
+		if(A.current_rounds < A.max_rounds)
+			to_chat(user, SPAN_WARNING("\The [A] isn't full. You need to fill it before you can restock it."))
+			return
+	//magazine ammo boxes handling
+	else if(istype(item_to_stock, /obj/item/ammo_box/magazine))
+		var/obj/item/ammo_box/magazine/A = item_to_stock
+		//shotgun shells ammo boxes handling
+		if(A.handfuls)
+			var/obj/item/ammo_magazine/AM = locate(/obj/item/ammo_magazine) in item_to_stock.contents
+			if(!AM)
+				to_chat(user, SPAN_WARNING("Something is wrong with \the [A], tell a coder."))
+				return
+			if(AM.current_rounds != AM.max_rounds)
+				to_chat(user, SPAN_WARNING("\The [A] isn't full. You need to fill it before you can restock it."))
+				return
+		else if(A.contents.len < A.num_of_magazines)
+			to_chat(user, SPAN_WARNING("[A] is not full."))
+			return
+		else
+			for(var/obj/item/ammo_magazine/M in A.contents)
+				if(M.current_rounds != M.max_rounds)
+					to_chat(user, SPAN_WARNING("Not all magazines in \the [A] are full."))
+					return
+	//loose rounds ammo box handling
+	else if(istype(item_to_stock, /obj/item/ammo_box/rounds))
+		var/obj/item/ammo_box/rounds/A = item_to_stock
+		if(A.bullet_amount < A.max_bullet_amount)
+			to_chat(user, SPAN_WARNING("[A] is not full."))
+			return
+	//Marine armor handling
+	else if(istype(item_to_stock, /obj/item/clothing/suit/storage/marine))
+		var/obj/item/clothing/suit/storage/marine/AR = item_to_stock
+		if(AR.pockets && AR.pockets.contents.len)
+			if(user)
+				to_chat(user, SPAN_WARNING("\The [AR] has something inside it. Empty it before restocking."))
+			return FALSE
+	//Marine helmet handling
+	else if(istype(item_to_stock, /obj/item/clothing/head/helmet/marine))
+		var/obj/item/clothing/head/helmet/marine/H = item_to_stock
+		if(H.pockets && H.pockets.contents.len)
+			if(user)
+				to_chat(user, SPAN_WARNING("\The [H] has something inside it. Empty it before restocking."))
+			return FALSE
+	return TRUE //Item IS good to restock!
 
 //------------MAINTENANCE PROCS---------------
 
@@ -644,7 +807,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 
 /obj/structure/machinery/cm_vending/sorted/Initialize()
 	. = ..()
-	populate_product_list(1.2)
+	populate_product_list_and_boxes(1.2)
 	cm_build_inventory(get_listed_products(), 1, 3)
 	corresponding_types_list = GLOB.cm_vending_gear_corresponding_types_list
 	GLOB.cm_vending_vendors += src
@@ -654,8 +817,32 @@ GLOBAL_LIST_EMPTY(vending_products)
 	return ..()
 
 //this proc, well, populates product list based on roundstart amount of players
+/obj/structure/machinery/cm_vending/sorted/proc/populate_product_list_and_boxes(var/scale)
+	populate_product_list(scale)
+	if(vend_flags & VEND_LOAD_AMMO_BOXES)
+		populate_ammo_boxes()
+	return
+
+//this proc, well, populates product list based on roundstart amount of players
 /obj/structure/machinery/cm_vending/sorted/proc/populate_product_list(var/scale)
 	return
+
+/obj/structure/machinery/cm_vending/sorted/proc/populate_ammo_boxes()
+	var/list/tmp_list = list()
+	for(var/list/L as anything in listed_products)
+		if(!L[3])
+			continue
+		var/datum/item_to_multiple_box_pairing/IMBP = GLOB.item_to_box_mapping.get_item_to_box_mapping(L[3])
+		if(!IMBP)
+			continue
+		for(var/datum/item_box_pairing/IBP as anything in IMBP.item_box_pairings)
+			tmp_list += list(list(initial(IBP.box.name), round(L[2] / IBP.items_in_box), IBP.box, VENDOR_ITEM_REGULAR))
+
+	//Putting Ammo and other boxes on the bottom of the list as per player preferences
+	if(tmp_list.len > 0)
+		listed_products += list(list("BOXES", -1, null, null))
+		for(var/list/L as anything in tmp_list)
+			listed_products += list(L)
 
 /obj/structure/machinery/cm_vending/sorted/ui_static_data(mob/user)
 	. = ..(user)
@@ -711,6 +898,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 			user.visible_message(SPAN_NOTICE("[user] stocks [src] with \a [R[1]]."),
 			SPAN_NOTICE("You stock [src] with \a [R[1]]."))
 			R[2]++
+			update_derived_ammo_and_boxes_on_add(R)
 			updateUsrDialog()
 			return //We found our item, no reason to go on.
 
@@ -720,7 +908,6 @@ GLOBAL_LIST_EMPTY(vending_products)
 	if(corresponding_types_list.Find(unusual_path))
 		return corresponding_types_list[unusual_path]
 	return
-
 
 //------------GEAR VENDORS---------------
 //For vendors with their own points available
@@ -858,7 +1045,7 @@ GLOBAL_LIST_INIT(cm_vending_gear_corresponding_types_list, list(
 
 //---helper procs
 
-proc/vendor_user_inventory_list(var/vendor, mob/user, var/cost_index=2, var/priority_index=5)
+/proc/vendor_user_inventory_list(var/vendor, mob/user, var/cost_index=2, var/priority_index=5)
 	. = list()
 	// default list format
 	//	(
@@ -911,7 +1098,7 @@ proc/vendor_user_inventory_list(var/vendor, mob/user, var/cost_index=2, var/prio
 		var/last_category = .[last_index]
 		last_category["items"] += list(display_item)
 
-proc/vendor_inventory_ui_data(var/vendor, mob/user)
+/proc/vendor_inventory_ui_data(var/vendor, mob/user)
 	. = list()
 	var/obj/structure/machinery/cm_vending/vending_machine = vendor
 	var/list/ui_listed_products = vending_machine.get_listed_products(user)
@@ -923,7 +1110,7 @@ proc/vendor_inventory_ui_data(var/vendor, mob/user)
 		ui_categories += list(p_amount)
 	.["stock_listing"] = ui_categories
 
-proc/vendor_user_ui_data(var/obj/structure/machinery/cm_vending/vending_machine, mob/user)
+/proc/vendor_user_ui_data(var/obj/structure/machinery/cm_vending/vending_machine, mob/user)
 	if(vending_machine.vend_flags & VEND_LIMITED_INVENTORY)
 		return vendor_inventory_ui_data(vending_machine, user)
 
@@ -964,7 +1151,7 @@ proc/vendor_user_ui_data(var/obj/structure/machinery/cm_vending/vending_machine,
 	.["stock_listing"] = stock_values
 	.["current_m_points"] = points
 
-proc/vendor_successful_vend(var/obj/structure/machinery/cm_vending/vendor, var/list/itemspec, var/mob/living/carbon/human/user)
+/proc/vendor_successful_vend(var/obj/structure/machinery/cm_vending/vendor, var/list/itemspec, var/mob/living/carbon/human/user)
 	if(vendor.stat & IN_USE)
 		return
 	vendor.stat |= IN_USE
@@ -998,6 +1185,8 @@ proc/vendor_successful_vend(var/obj/structure/machinery/cm_vending/vendor, var/l
 
 		if(vend_flags & VEND_LIMITED_INVENTORY)
 			itemspec[2]--
+			if(vend_flags & VEND_LOAD_AMMO_BOXES)
+				vendor.update_derived_ammo_and_boxes(itemspec)
 
 		if(vend_flags & VEND_UNIFORM_RANKS)
 			// apply ranks to clothing
@@ -1024,7 +1213,9 @@ proc/vendor_successful_vend(var/obj/structure/machinery/cm_vending/vendor, var/l
 					user.equip_to_appropriate_slot(new_item)
 
 		if(vend_flags & VEND_TO_HAND)
-			user.put_in_any_hand_if_possible(new_item, disable_warning = TRUE)
+			if(user.client?.prefs && (user.client?.prefs?.toggle_prefs & TOGGLE_VEND_ITEM_TO_HAND))
+				if(vendor.Adjacent(user))
+					user.put_in_any_hand_if_possible(new_item, disable_warning = TRUE)
 	else
 		to_chat(user, SPAN_WARNING("ERROR: itemspec is missing. Please report this to admins."))
 		sleep(15)
@@ -1032,7 +1223,7 @@ proc/vendor_successful_vend(var/obj/structure/machinery/cm_vending/vendor, var/l
 	vendor.stat &= ~IN_USE
 	vendor.update_icon()
 
-proc/handle_vend(var/obj/structure/machinery/cm_vending/vendor, var/list/listed_products, var/mob/living/carbon/human/vending_human)
+/proc/handle_vend(var/obj/structure/machinery/cm_vending/vendor, var/list/listed_products, var/mob/living/carbon/human/vending_human)
 	if(vendor.vend_flags & VEND_USE_VENDOR_FLAGS)
 		return TRUE
 	var/can_buy_flags = listed_products[4]

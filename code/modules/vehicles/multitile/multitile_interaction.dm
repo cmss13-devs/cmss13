@@ -298,7 +298,7 @@
 	if(ammo_flags & AMMO_ANTISTRUCT)
 		// Multiplier based on tank railgun relationship, so might have to reconsider multiplier for AMMO_SIEGE in general
 		damage = round(damage*ANTISTRUCT_DMG_MULT_TANK)
-	if(ammo_flags & AMMO_XENO_ACID)
+	if(ammo_flags & AMMO_ACIDIC)
 		dam_type = "acid"
 
 	// trust me bro

@@ -7,7 +7,7 @@
 	var/datum/powernet/powernet = null
 	var/directwired = 1		// by default, power machines are connected by a cable in a neighbouring turf
 							// if set to 0, requires a 0-X cable on this turf
-	use_power = POWER_USE_NO_POWER
+	use_power = USE_POWER_NONE
 	idle_power_usage = 0
 	active_power_usage = 0
 
@@ -83,13 +83,13 @@
 			if(stat & NOPOWER)
 				addToListNoDupe(processing_machines, src) // power interupted us, start processing again
 		stat &= ~NOPOWER
-		src.update_use_power(POWER_USE_IDLE_POWER)
+		src.update_use_power(USE_POWER_IDLE)
 
 	else
 		if(machine_processing)
 			processing_machines -= src // no power, can't process.
 		stat |= NOPOWER
-		src.update_use_power(POWER_USE_NO_POWER)
+		src.update_use_power(USE_POWER_NONE)
 
 // the powernet datum
 // each contiguous network of cables & nodes
@@ -304,7 +304,7 @@
 	if(istype(power_source,/obj/structure/cable))
 		var/obj/structure/cable/Cable = power_source
 		power_source = Cable.powernet
-		
+
 	var/shock_damage = 0
 
 	if(!power_source && source_area && (!source_area.requires_power || source_area.unlimited_power))
@@ -328,25 +328,25 @@
 		else
 			log_admin("ERROR: /proc/electrocute_mob([M], [power_source], [source]): wrong power_source")
 			return 0
-			
+
 		if (!cell && !PN)
 			return 0
-			
+
 		var/PN_damage = 0
 		var/cell_damage = 0
-		
+
 		if (PN)
 			PN_damage = PN.get_electrocute_damage()
 		if (cell)
 			cell_damage = cell.get_electrocute_damage()
-			
+
 		if (PN_damage>=cell_damage)
 			power_source = PN
 			shock_damage = PN_damage
 		else
 			power_source = cell
 			shock_damage = cell_damage
-	
+
 		var/drained_hp = M.electrocute_act(shock_damage, source, siemens_coeff) //zzzzzzap!
 		var/drained_energy = drained_hp*20
 

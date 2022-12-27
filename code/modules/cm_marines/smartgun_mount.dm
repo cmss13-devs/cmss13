@@ -145,7 +145,7 @@
 	M.gun_mounted = TRUE
 	M.anchored = TRUE
 	M.update_icon()
-	M.set_name_label(name_label)
+	transfer_label_component(M)
 	to_chat(user, SPAN_NOTICE("You deploy \the [src]."))
 	qdel(src)
 
@@ -221,7 +221,7 @@
 
 	to_chat(user, SPAN_NOTICE("You deploy \the [src]."))
 	var/obj/structure/machinery/m56d_post/M = new /obj/structure/machinery/m56d_post(user.loc)
-	M.set_name_label(name_label)
+	transfer_label_component(M)
 	qdel(src)
 
 
@@ -382,7 +382,7 @@
 				playsound(src.loc, 'sound/items/Deconstruct.ogg', 25, 1)
 				user.visible_message(SPAN_NOTICE("[user] screws the M56D into the mount."),SPAN_NOTICE("You finalize the M56D heavy machine gun."))
 				var/obj/structure/machinery/m56d_hmg/G = new(src.loc) //Here comes our new turret.
-				G.set_name_label(name_label)
+				transfer_label_component(G)
 				G.visible_message("[icon2html(G, viewers(src))] <B>\The [G] is now complete!</B>") //finished it for everyone to
 				G.setDir(dir) //make sure we face the right direction
 				G.rounds = src.gun_rounds //Inherent the amount of ammo we had.
@@ -419,7 +419,7 @@
 	unacidable = TRUE //stop the xeno me(l)ta.
 	density = 1
 	layer = ABOVE_MOB_LAYER //no hiding the hmg beind corpse
-	use_power = POWER_USE_NO_POWER
+	use_power = USE_POWER_NONE
 	projectile_coverage = PROJECTILE_COVERAGE_LOW
 	var/rounds = 0 //Have it be empty upon spawn.
 	var/rounds_max = 700
@@ -543,7 +543,7 @@
 				user.visible_message(SPAN_NOTICE(" [user] disassembles [src]! "),SPAN_NOTICE(" You disassemble [src]!"))
 				playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
 				var/obj/item/device/m56d_gun/HMG = new(src.loc) //Here we generate our disassembled mg.
-				HMG.set_name_label(name_label)
+				transfer_label_component(HMG)
 				HMG.rounds = src.rounds //Inherent the amount of ammo we had.
 				HMG.has_mount = TRUE
 				HMG.update_icon()
@@ -1107,7 +1107,7 @@
 		return
 
 	var/obj/structure/machinery/m56d_hmg/auto/M =  new /obj/structure/machinery/m56d_hmg/auto(user.loc)
-	M.set_name_label(name_label)
+	transfer_label_component(M)
 	M.setDir(user.dir) // Make sure we face the right direction
 	M.anchored = TRUE
 	playsound(M, 'sound/items/m56dauto_setup.ogg', 75, TRUE)
@@ -1536,7 +1536,7 @@
 			user.visible_message(SPAN_NOTICE("[user] disassembles [src]."),SPAN_NOTICE("You fold up the tripod for [src], disassembling it."))
 			playsound(src.loc, 'sound/items/m56dauto_setup.ogg', 75, 1)
 			var/obj/item/device/m2c_gun/HMG = new(src.loc)
-			HMG.set_name_label(name_label)
+			transfer_label_component(HMG)
 			HMG.rounds = src.rounds
 			HMG.overheat_value = round(0.5 * src.overheat_value)
 			if (HMG.overheat_value <= 10)

@@ -8,9 +8,9 @@ Class Variables:
    use_power (num)
       current state of auto power use.
       Possible Values:
-         POWER_USE_NO_POWER: 0 -- no auto power use
-         POWER_USE_IDLE_POWER: 1 -- machine is using power at its idle power level
-         POWER_USE_ACTIVE_POWER: 2 -- machine is using power at its active power level
+         USE_POWER_NONE: 0 -- no auto power use
+         USE_POWER_IDLE: 1 -- machine is using power at its idle power level
+         USE_POWER_ACTIVE: 2 -- machine is using power at its active power level
 
 	needs_power (num)
 	  is this thing affected by an area being unpowered
@@ -87,11 +87,15 @@ Class Procs:
 	Compiled by Aygar
 */
 
+//         NONE -- no auto power use
+//         IDLE -- machine is using power at its idle power level
+//         ACTIVE -- machine is using power at its active power level
+
 /obj/structure/machinery
 	name = "machinery"
 	icon = 'icons/obj/structures/props/stationobjs.dmi'
 	var/stat = 0
-	var/use_power = POWER_USE_IDLE_POWER
+	var/use_power = USE_POWER_IDLE
 	var/idle_power_usage = 0
 	var/active_power_usage = 0
 	var/needs_power = TRUE
@@ -191,9 +195,9 @@ Class Procs:
 
 /obj/structure/machinery/proc/calculate_current_power_usage()
 	switch(use_power)
-		if(POWER_USE_IDLE_POWER)
+		if(USE_POWER_IDLE)
 			return idle_power_usage
-		if(POWER_USE_ACTIVE_POWER)
+		if(USE_POWER_ACTIVE)
 			return idle_power_usage + active_power_usage
 	return 0
 
@@ -262,7 +266,7 @@ Class Procs:
 
 /obj/structure/machinery/proc/state(var/msg)
   for(var/mob/O in hearers(src, null))
-    O.show_message("[icon2html(src, O)] [SPAN_NOTICE("[msg]")]", 2)
+    O.show_message("[icon2html(src, O)] [SPAN_NOTICE("[msg]")]", SHOW_MESSAGE_AUDIBLE)
 
 /obj/structure/machinery/proc/ping(text=null)
   if (!text)

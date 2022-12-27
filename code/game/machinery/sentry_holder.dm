@@ -9,7 +9,7 @@
 	active_power_usage = 5000
 	idle_power_usage = 1000
 	power_channel = 1
-	use_power = POWER_USE_IDLE_POWER
+	use_power = USE_POWER_IDLE
 	machine_processing = 1
 	var/deployment_cooldown
 	var/turret_path = /obj/structure/machinery/defenses/sentry/premade/deployable // Path of the turret used
@@ -56,7 +56,7 @@
 		else
 			icon_state = "sentry_system_destroyed"
 	else
-		update_use_power(POWER_USE_IDLE_POWER)
+		update_use_power(USE_POWER_IDLE)
 		if(!ind)
 			deploy_sentry()
 			ind = TRUE

@@ -7,8 +7,8 @@
 	icon = 'icons/obj/items/weapons/guns/gun.dmi'
 	icon_state = ""
 	item_state = "gun"
-	pickupsound = "gunequip"
-	dropsound = "gunrustle"
+	pickup_sound = "gunequip"
+	drop_sound = "gunrustle"
 	pickupvol = 7
 	dropvol = 15
 	matter = null
@@ -34,6 +34,8 @@
 	var/muzzle_flash_lum = 3
 
 	var/fire_sound 		= 'sound/weapons/Gunshot.ogg'
+	 /// If fire_sound is null, it will pick a sound from the list here instead.
+	var/list/fire_sounds = list('sound/weapons/Gunshot.ogg', 'sound/weapons/gun_uzi.ogg')
 	var/firesound_volume = 60 //Volume of gunshot, adjust depending on volume of shot
 	 ///Does our gun have a unique empty mag sound? If so use instead of pitch shifting.
 	var/fire_rattle		= null
@@ -259,6 +261,7 @@
 	GLOB.gun_list += src
 	if(auto_retrieval_slot)
 		AddElement(/datum/element/drop_retrieval/gun, auto_retrieval_slot)
+	update_icon() //for things like magazine overlays
 
 /obj/item/weapon/gun/proc/set_gun_attachment_offsets()
 	attachable_offset = null
@@ -838,7 +841,7 @@ User can be passed as null, (a gun reloading itself for instance), so we need to
 		var/obj/item/ammo_magazine/handful/new_handful = new(get_turf(src))
 		new_handful.generate_handful(in_chamber.ammo.type, caliber, 8, 1, type)
 
-	in_chamber = null
+	QDEL_NULL(in_chamber)
 
 //Manually cock the gun
 //This only works on weapons NOT marked with UNUSUAL_DESIGN or INTERNAL_MAG
@@ -888,8 +891,8 @@ User can be passed as null, (a gun reloading itself for instance), so we need to
 	else if(user.client?.prefs?.toggle_prefs & TOGGLE_HELP_INTENT_SAFETY && (user.a_intent == INTENT_HELP))
 		if (world.time % 3) // Limits how often this message pops up, saw this somewhere else and thought it was clever
 			//Absolutely SCREAM this at people so they don't get killed by it
-			to_chat(user, SPAN_WARNING("Help intent safety is on! Switch to another intent to fire your weapon."))
-			playsound(loc,'sound/weapons/gun_empty.ogg', 25, 1)
+			to_chat(user, SPAN_HIGHDANGER("Help intent safety is on! Switch to another intent to fire your weapon."))
+			click_empty(user)
 		return FALSE
 	else if(user.gun_mode && !(A in target))
 		PreFire(A,user,params) //They're using the new gun system, locate what they're aiming at.
@@ -961,6 +964,7 @@ and you're good to go.
 			P.apply_bullet_trait(L)
 
 /obj/item/weapon/gun/proc/ready_in_chamber()
+	QDEL_NULL(in_chamber)
 	if(current_mag && current_mag.current_rounds > 0)
 		in_chamber = create_bullet(ammo, initial(name))
 		apply_traits(in_chamber)
@@ -1117,16 +1121,34 @@ and you're good to go.
 			targloc = get_turf(target)
 
 		projectile_to_fire.original = target
-		target = simulate_scatter(projectile_to_fire, target, curloc, targloc, user, bullets_fired)
+
+		// turf-targeted projectiles are fired without scatter, because proc would raytrace them further away
+		var/ammo_flags = projectile_to_fire.ammo.flags_ammo_behavior | projectile_to_fire.projectile_override_flags
+		if(!(ammo_flags & AMMO_HITS_TARGET_TURF))
+			target = simulate_scatter(projectile_to_fire, target, curloc, targloc, user, bullets_fired)
 
 		var/bullet_velocity = projectile_to_fire?.ammo?.shell_speed + velocity_add
 
-		if(params)
-			var/list/mouse_control = params2list(params)
-			if(mouse_control["icon-x"])
-				projectile_to_fire.p_x = text2num(mouse_control["icon-x"])
-			if(mouse_control["icon-y"])
-				projectile_to_fire.p_y = text2num(mouse_control["icon-y"])
+		if(params) // Apply relative clicked position from the mouse info to offset projectile
+			if(!params["click_catcher"])
+				if(params["vis-x"])
+					projectile_to_fire.p_x = text2num(params["vis-x"])
+				else if(params["icon-x"])
+					projectile_to_fire.p_x = text2num(params["icon-x"])
+				if(params["vis-y"])
+					projectile_to_fire.p_y = text2num(params["vis-y"])
+				else if(params["icon-y"])
+					projectile_to_fire.p_y = text2num(params["icon-y"])
+				var/atom/movable/clicked_target = original_target
+				if(istype(clicked_target))
+					projectile_to_fire.p_x -= clicked_target.bound_width / 2
+					projectile_to_fire.p_y -= clicked_target.bound_height / 2
+				else
+					projectile_to_fire.p_x -= world.icon_size / 2
+					projectile_to_fire.p_y -= world.icon_size / 2
+			else
+				projectile_to_fire.p_x -= world.icon_size / 2
+				projectile_to_fire.p_y -= world.icon_size / 2
 
 		//Finally, make with the pew pew!
 		if(QDELETED(projectile_to_fire) || !isobj(projectile_to_fire))
@@ -1142,14 +1164,16 @@ and you're good to go.
 
 			//This is where the projectile leaves the barrel and deals with projectile code only.
 			//vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
-			projectile_to_fire.fire_at(target, user, src, projectile_to_fire?.ammo?.max_range, bullet_velocity, original_target, FALSE)
+			in_chamber = null // It's not in the gun anymore
+			INVOKE_ASYNC(projectile_to_fire, /obj/item/projectile.proc/fire_at, target, user, src, projectile_to_fire?.ammo?.max_range, bullet_velocity, original_target)
+			projectile_to_fire = null // Important: firing might have made projectile collide early and ALREADY have deleted it. We clear it too.
 			//^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 			if(check_for_attachment_fire)
 				active_attachable.last_fired = world.time
 			else
 				last_fired = world.time
-			SEND_SIGNAL(user, COMSIG_MOB_FIRED_GUN, src, projectile_to_fire)
+			SEND_SIGNAL(user, COMSIG_MOB_FIRED_GUN, src)
 			. = TRUE
 
 			if(flags_gun_features & GUN_FULL_AUTO_ON)
@@ -1210,7 +1234,12 @@ and you're good to go.
 		var/obj/item/projectile/projectile_to_fire = load_into_chamber(user)
 		if(projectile_to_fire) //We actually have a projectile, let's move on.
 			user.visible_message(SPAN_WARNING("[user] pulls the trigger!"))
-			var/actual_sound = (active_attachable && active_attachable.fire_sound) ? active_attachable.fire_sound : fire_sound
+			var/actual_sound
+			if(active_attachable && active_attachable.fire_sound)
+				actual_sound = active_attachable.fire_sound
+			else if(!isnull(fire_sound))
+				actual_sound = fire_sound
+			else actual_sound = pick(fire_sounds)
 			var/sound_volume = (flags_gun_features & GUN_SILENCED && !active_attachable) ? 25 : 60
 			playsound(user, actual_sound, sound_volume, 1)
 			simulate_recoil(2, user)
@@ -1243,12 +1272,12 @@ and you're good to go.
 			M.last_damage_data = cause_data
 			user.attack_log += t //Apply the attack log.
 			last_fired = world.time //This is incorrect if firing an attached undershotgun, but the user is too dead to care.
-			SEND_SIGNAL(user, COMSIG_MOB_FIRED_GUN, src, projectile_to_fire)
+			SEND_SIGNAL(user, COMSIG_MOB_FIRED_GUN, src)
 
 			projectile_to_fire.play_damage_effect(user)
-			if(!delete_bullet(projectile_to_fire))
-				qdel(projectile_to_fire) //If this proc DIDN'T delete the bullet, we're going to do so here.
-
+			// No projectile code to handhold us, we do the cleaning ourselves:
+			QDEL_NULL(projectile_to_fire)
+			in_chamber = null
 			reload_into_chamber(user) //Reload the sucker.
 		else
 			click_empty(user)//If there's no projectile, we can't do much.
@@ -1366,15 +1395,15 @@ and you're good to go.
 		else
 			last_fired = world.time
 
-		SEND_SIGNAL(user, COMSIG_MOB_FIRED_GUN, src, projectile_to_fire)
+		SEND_SIGNAL(user, COMSIG_MOB_FIRED_GUN, src)
 
 		if(EXECUTION_CHECK) //Continue execution if on the correct intent. Accounts for change via the earlier do_after
 			user.visible_message(SPAN_DANGER("[user] has executed [M] with [src]!"), SPAN_DANGER("You have executed [M] with [src]!"), message_flags = CHAT_TYPE_WEAPON_USE)
 			M.death()
 			bullets_to_fire = bullets_fired //Giant bursts are not compatible with precision killshots.
-
-		if(!delete_bullet(projectile_to_fire))
-			qdel(projectile_to_fire)
+		// No projectile code to handhold us, we do the cleaning ourselves:
+		QDEL_NULL(projectile_to_fire)
+		in_chamber = null
 
 		//This is where we load the next bullet in the chamber. We check for attachments too, since we don't want to load anything if an attachment is active.
 		if(!check_for_attachment_fire && !reload_into_chamber(user)) // It has to return a bullet, otherwise it's empty. Unless it's an undershotgun.
@@ -1499,6 +1528,8 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 //This proc applies some bonus effects to the shot/makes the message when a bullet is actually fired.
 /obj/item/weapon/gun/proc/apply_bullet_effects(obj/item/projectile/projectile_to_fire, mob/user, bullets_fired = 1, reflex = 0, dual_wield = 0)
 	var/actual_sound = fire_sound
+	if(isnull(fire_sound))
+		actual_sound = pick(fire_sounds)
 	if(projectile_to_fire.ammo && projectile_to_fire.ammo.sound_override)
 		actual_sound = projectile_to_fire.ammo.sound_override
 

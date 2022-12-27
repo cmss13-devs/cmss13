@@ -486,11 +486,11 @@
 //---ability actions--\\
 
 /datum/action/item_action/m46c/action_activate()
-	var/obj/item/weapon/gun/rifle/m46c/G = holder_item
+	var/obj/item/weapon/gun/rifle/m46c/protag_gun = holder_item
 	if(!ishuman(owner))
 		return
-	var/mob/living/carbon/human/H = owner
-	if(H.is_mob_incapacitated() || G.get_active_firearm(H, FALSE) != holder_item)
+	var/mob/living/carbon/human/protagonist = owner
+	if(protagonist.is_mob_incapacitated() || protag_gun.get_active_firearm(protagonist, FALSE) != holder_item)
 		return
 
 /datum/action/item_action/m46c/update_button_icon()
@@ -506,9 +506,9 @@
 
 /datum/action/item_action/m46c/toggle_lethal_mode/action_activate()
 	. = ..()
-	var/obj/item/weapon/gun/rifle/m46c/G = holder_item
-	G.toggle_iff(usr)
-	if(G.iff_enabled)
+	var/obj/item/weapon/gun/rifle/m46c/protag_gun = holder_item
+	protag_gun.toggle_iff(usr)
+	if(protag_gun.iff_enabled)
 		action_icon_state = "iff_toggle_on"
 	else
 		action_icon_state = "iff_toggle_off"
@@ -525,9 +525,9 @@
 
 /datum/action/item_action/m46c/toggle_id_lock/action_activate()
 	. = ..()
-	var/obj/item/weapon/gun/rifle/m46c/G = holder_item
-	G.toggle_lock()
-	if(G.is_locked)
+	var/obj/item/weapon/gun/rifle/m46c/protag_gun = holder_item
+	protag_gun.toggle_lock()
+	if(protag_gun.is_locked)
 		action_icon_state = "id_lock_locked"
 	else
 		action_icon_state = "id_lock_unlocked"

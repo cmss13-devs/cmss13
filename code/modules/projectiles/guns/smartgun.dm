@@ -576,11 +576,11 @@
 // ID lock action \\
 
 /datum/action/item_action/co_sg/action_activate()
-	var/obj/item/weapon/gun/smartgun/co/G = holder_item
+	var/obj/item/weapon/gun/smartgun/co/protag_gun = holder_item
 	if(!ishuman(owner))
 		return
-	var/mob/living/carbon/human/H = owner
-	if(H.is_mob_incapacitated() || G.get_active_firearm(H, FALSE) != holder_item)
+	var/mob/living/carbon/human/protagonist = owner
+	if(protagonist.is_mob_incapacitated() || protag_gun.get_active_firearm(protagonist, FALSE) != holder_item)
 		return
 
 /datum/action/item_action/co_sg/update_button_icon()
@@ -596,9 +596,9 @@
 
 /datum/action/item_action/co_sg/toggle_id_lock/action_activate()
 	. = ..()
-	var/obj/item/weapon/gun/smartgun/co/G = holder_item
-	G.toggle_lock()
-	if(G.is_locked)
+	var/obj/item/weapon/gun/smartgun/co/protag_gun = holder_item
+	protag_gun.toggle_lock()
+	if(protag_gun.is_locked)
 		action_icon_state = "id_lock_locked"
 	else
 		action_icon_state = "id_lock_unlocked"

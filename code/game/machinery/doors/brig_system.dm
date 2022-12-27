@@ -15,12 +15,23 @@
 	unacidable = TRUE
 	indestructible = TRUE
 
-	var/id = null     		// id of door it controls.
-	var/picture_state		// icon_state of alert picture, if not displaying text/numbers
-	var/list/obj/structure/machinery/targets = list() // A list of World objects this machine controls.
+	/// id of door it controls.
+	var/id = null
+
+	// icon_state of alert picture, if not displaying text/numbers
+	var/picture_state
+
+	/// The incident reports currently inserted into this machine.
 	var/list/obj/item/paper/incident/incident_reports = list()
-	var/obj/item/paper/incident/active_report = null // The report currently ticking down the clock.
-	var/obj/item/paper/incident/viewed_report = null // The report currently being viewed.
+
+	/// A list of World objects this machine controls.
+	var/list/obj/structure/machinery/targets = list()
+
+	/// The report currently ticking down the clock.
+	var/obj/item/paper/incident/active_report = null
+
+	/// The report currently being viewed.
+	var/obj/item/paper/incident/viewed_report = null
 
 	maptext_height = 26
 	maptext_width = 32
@@ -203,7 +214,8 @@
 	for(var/obj/structure/machinery/door/window/brigdoor/door in targets)
 		if(door.density)
 			continue
-		INVOKE_ASYNC(door, /obj/structure/machinery/door.proc/close)
+
+		INVOKE_ASYNC(door, TYPE_PROC_REF(/obj/structure/machinery/door, close))
 
 	// Perma sentences don't need to process the timer.
 	if (!(incident.status & BRIG_SENTENCE_PERMA))
@@ -271,7 +283,7 @@
 
 /obj/structure/machinery/brig_cell/Initialize()
 	. = ..()
-	addtimer(CALLBACK(src, .proc/search_for_components), 20)
+	addtimer(CALLBACK(src, PROC_REF(search_for_components)), 20)
 
 /obj/structure/machinery/brig_cell/proc/search_for_components()
 	for(var/obj/structure/machinery/door/window/brigdoor/M in machines)

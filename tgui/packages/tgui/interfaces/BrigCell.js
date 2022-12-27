@@ -32,7 +32,7 @@ export const BrigCell = (props, context) => {
         <Flex direction="column" justify="center" align="center" width="auto">
           {!viewing_incident && (
             <>
-              <h1>Incidents:</h1>
+              <h1>Sentences:</h1>
               <Flex align="center">
                 <ColorBox color="green" />
                 <Box inline px="1rem">

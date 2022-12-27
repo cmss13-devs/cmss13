@@ -118,6 +118,21 @@ PLANT_CUT_MACHETE = 3 = Needs at least a machete to be cut down
 	layer = BELOW_MOB_LAYER
 	density = 0
 
+
+//Actual Palm trees, partly to ensure proper destruction
+/obj/structure/flora/tree/palmtree
+	name = "Palm tree"
+	desc = "A tall palm tree, perfect for paradise!"
+	icon = 'icons/turf/beach2.dmi'
+	icon_state = "palm1"
+
+/obj/structure/flora/tree/palmtree/New()
+	..()
+	icon_state = pick("palm1","palm2")
+	return
+
+
+
 //grass
 /obj/structure/flora/grass
 	name = "grass"

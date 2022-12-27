@@ -528,9 +528,6 @@
 	baseturfs = /turf/open/gm/riverdeep
 	supports_surgery = FALSE
 
-/turf/open/gm/riverdeep/ocean
-	name = "ocean"
-
 
 /turf/open/gm/riverdeep/Initialize(mapload, ...)
 	. = ..()

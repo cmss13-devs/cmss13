@@ -582,6 +582,9 @@
 /obj/effect/resin_construct/door
 	icon_state = "DoorConstruct"
 
+/obj/effect/resin_construct/door/thick
+	icon_state = "ThickDoorConstruct"
+
 /obj/effect/resin_construct/thick
 	icon_state = "ThickConstruct"
 

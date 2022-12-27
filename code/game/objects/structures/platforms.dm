@@ -194,3 +194,15 @@
 /obj/structure/platform_decoration/mineral/sandstone/runed
 	name = "sandstone temple platform corner"
 	color = "#b29082"
+
+/obj/structure/platform/alamo
+	name = "platform"
+	desc = "A square metal surface resting on four legs."
+	icon = 'icons/obj/structures/props/platforms.dmi'
+	icon_state = "alamo"
+
+/obj/structure/platform/normandy
+	name = "platform"
+	desc = "A square metal surface resting on four legs."
+	icon = 'icons/obj/structures/props/platforms.dmi'
+	icon_state = "normandy"

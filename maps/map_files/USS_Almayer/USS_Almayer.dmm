@@ -22415,22 +22415,6 @@
 /obj/structure/stairs{
 	icon_state = "ramptop"
 	},
-/obj/structure/platform{
-	dir = 8
-	},
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15";
-	tag = "icon-rasputin15"
-	},
-/area/shuttle/drop1/sulaco)
-"bwD" = (
-/obj/structure/stairs{
-	icon_state = "ramptop"
-	},
-/obj/structure/platform{
-	dir = 4;
-	layer = 2.7
-	},
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15";
 	tag = "icon-rasputin15"
@@ -35849,7 +35833,7 @@
 	},
 /area/almayer/engineering/engine_core)
 "cZK" = (
-/obj/structure/platform{
+/obj/structure/platform/normandy{
 	dir = 1;
 	pixel_y = 5
 	},
@@ -53676,7 +53660,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/upper_hull/u_a_p)
 "kMD" = (
-/obj/structure/platform{
+/obj/structure/platform/alamo{
 	dir = 1;
 	pixel_y = 5
 	},
@@ -108536,7 +108520,7 @@ btQ
 bpq
 btQ
 bkm
-bwD
+bwC
 bpq
 bpq
 bpq

@@ -2360,7 +2360,14 @@ Defined in conflicts.dm of the #defines folder.
 	scatter_mod = SCATTER_AMOUNT_TIER_9
 	recoil_mod = RECOIL_AMOUNT_TIER_5
 
+/obj/item/attachable/bipod/Attach(obj/item/weapon/gun/G)
+	..()
+
+	RegisterSignal(G, COMSIG_ITEM_DROPPED, PROC_REF(handle_drop))
+
 /obj/item/attachable/bipod/Detach(var/mob/user, var/obj/item/weapon/gun/detaching_gub)
+	UnregisterSignal(detaching_gub, COMSIG_ITEM_DROPPED)
+
 	if(bipod_deployed)
 		undeploy_bipod(detaching_gub)
 	..()
@@ -2378,6 +2385,17 @@ Defined in conflicts.dm of the #defines folder.
 		gun.update_attachable(slot)
 		for(var/datum/action/A as anything in gun.actions)
 			A.update_button_icon()
+
+/obj/item/attachable/bipod/proc/handle_drop(obj/item/weapon/gun/G, mob/living/carbon/human/user)
+	SIGNAL_HANDLER
+
+	UnregisterSignal(user, COMSIG_MOB_MOVE_OR_LOOK)
+
+	if(bipod_deployed)
+		undeploy_bipod(G)
+		playsound(user,'sound/items/m56dauto_rotate.ogg', 55, 1)
+		user.apply_effect(1, SUPERSLOW)
+		user.apply_effect(2, SLOW)
 
 /obj/item/attachable/bipod/proc/undeploy_bipod(obj/item/weapon/gun/G)
 	bipod_deployed = FALSE

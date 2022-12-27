@@ -372,4 +372,7 @@
 		src.try_to_prime(mob)
 
 /obj/item/explosive/mine/sharp/attack_alien()
-	return
+	if(disarmed)
+		..()
+	else
+		return

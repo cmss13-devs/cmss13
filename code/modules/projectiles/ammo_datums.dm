@@ -3429,11 +3429,15 @@
 /datum/ammo/rifle/sharp/track/on_hit_mob(mob/living/M, obj/item/projectile/P)
 	if(!M || M == P.firer) return
 	shake_camera(M, 2, 1)
-	GLOB.sharp_tracked_mob_list |= M
-	addtimer(CALLBACK(src, .proc/remove_tracker, M), tracker_timer)
+	var/obj/item/weapon/gun/rifle/sharp/weapon = P.shot_from
+	if(weapon)
+		weapon.sharp_tracked_mob_list |= M
+	addtimer(CALLBACK(src, .proc/remove_tracker, M, P), tracker_timer)
 
-/datum/ammo/rifle/sharp/track/proc/remove_tracker(mob/living/M)
-	GLOB.sharp_tracked_mob_list -= M
+/datum/ammo/rifle/sharp/track/proc/remove_tracker(mob/living/M, obj/item/projectile/P)
+	var/obj/item/weapon/gun/rifle/sharp/weapon = P.shot_from
+	if(weapon)
+		weapon.sharp_tracked_mob_list -= M
 
 /datum/ammo/rifle/sharp/flechette
 	name = "9X-F flechette dart"
@@ -3463,9 +3467,9 @@
 	create_flechette(P.loc, P)
 
 /datum/ammo/rifle/sharp/flechette/proc/create_flechette(var/loc, obj/item/projectile/P)
-	var/shrapnel_count = 8
-	var/direct_hit_shrapnel = 3
-	var/dispersion_angle = 50
+	var/shrapnel_count = 10
+	var/direct_hit_shrapnel = 5
+	var/dispersion_angle = 20
 	create_shrapnel(loc, min(direct_hit_shrapnel, shrapnel_count), P.dir, dispersion_angle, shrapnel_type, P.weapon_cause_data, FALSE, 100)
 	shrapnel_count -= direct_hit_shrapnel
 	if(shrapnel_count)

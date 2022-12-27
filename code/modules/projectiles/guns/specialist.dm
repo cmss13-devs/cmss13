@@ -1425,6 +1425,7 @@
 	map_specific_decoration = TRUE
 
 	var/explosion_delay_sharp = FALSE
+	var/list/sharp_tracked_mob_list = list()
 
 /obj/item/weapon/gun/rifle/sharp/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 17,"rail_x" = 12, "rail_y" = 20, "under_x" = 23, "under_y" = 13, "stock_x" = 24, "stock_y" = 13)
@@ -1450,11 +1451,11 @@
 	var/atom/areaLoc = null
 	var/output = FALSE
 
-	var/x = GLOB.sharp_tracked_mob_list.len - max_count
+	var/x = sharp_tracked_mob_list.len - max_count
 	for(var/i=0,i<x,++i)
-		popleft(GLOB.sharp_tracked_mob_list)
+		popleft(sharp_tracked_mob_list)
 
-	for(var/mob/living/mob_tracked as mob in GLOB.sharp_tracked_mob_list)
+	for(var/mob/living/mob_tracked as mob in sharp_tracked_mob_list)
 		if(!QDELETED(mob_tracked))
 			if(M.z == mob_tracked.z)
 				var/dist = get_dist(M,mob_tracked)
@@ -1484,10 +1485,7 @@
 /obj/item/weapon/gun/rifle/sharp/toggle_burst(mob/user)
 	switch_mode(user)
 	playsound(user, 'sound/weapons/handling/gun_burst_toggle.ogg', 15, 1)
-	to_chat(user, SPAN_NOTICE("[icon2html(src, user)] You [explosion_delay_sharp ? "<B>enable</b>" : "<B>disable</b>"] [src]'s delayed fire mode. Explosive ammo will blow up in [explosion_delay_sharp ? "five seconds" : "one second"]."))
+	to_chat(user, SPAN_NOTICE("[icon2html(src, user)] You [explosion_delay_sharp ? SPAN_BOLD("enable") : SPAN_BOLD("disable")] [src]'s delayed fire mode. Explosive ammo will blow up in [explosion_delay_sharp ? SPAN_BOLD("five seconds") : SPAN_BOLD("one second")]."))
 
 /obj/item/weapon/gun/rifle/sharp/proc/switch_mode(mob/user)
-	if(explosion_delay_sharp)
-		explosion_delay_sharp = FALSE
-	else
-		explosion_delay_sharp = TRUE
+	explosion_delay_sharp = !explosion_delay_sharp

@@ -750,10 +750,16 @@
 	skills = /datum/skills/commando/deathsquad
 	auto_squad_name = SQUAD_SOF
 	paygrade = "ME6"
+	uses_special_name = TRUE
 
 /datum/equipment_preset/uscm/marsoc/New()
 	. = ..()
 	access = get_all_accesses() + get_all_centcom_access()
+
+/datum/equipment_preset/uscm/marsoc/load_name(mob/living/carbon/human/H, var/randomise)
+	H.gender = MALE
+	H.change_real_name(H, "[pick(nato_phonetic_alphabet)]")
+	H.age = rand(20,30)
 
 /datum/equipment_preset/uscm/marsoc/load_gear(mob/living/carbon/human/H)
 	//back
@@ -795,23 +801,6 @@
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/medical/socmed/full, WEAR_L_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/tactical/full, WEAR_R_STORE)
 
-/datum/equipment_preset/uscm/marsoc/load_rank(mob/living/carbon/human/H)
-	if(H.client)
-		if(get_job_playtime(H.client, rank) > JOB_PLAYTIME_TIER_2)
-			return "ME7"
-	return paygrade
-
-//Covert Raiders
-/datum/equipment_preset/uscm/marsoc/covert
-	name = "Marine Raiders (Covert)"
-	uses_special_name = TRUE
-/datum/equipment_preset/uscm/marsoc/covert/load_name(mob/living/carbon/human/H, var/randomise)
-	H.gender = MALE
-	H.change_real_name(H, "[pick(nato_phonetic_alphabet)]")
-	H.age = rand(20,30)
-/datum/equipment_preset/uscm/marsoc/covert/load_rank(mob/living/carbon/human/H)
-	return "O"
-
 //Team Leader
 /datum/equipment_preset/uscm/marsoc/sl
 	name = "Marine Raider Team Leader"
@@ -821,22 +810,6 @@
 	paygrade = "MO1"
 	skills = /datum/skills/commando/deathsquad/leader
 
-/datum/equipment_preset/uscm/marsoc/sl/load_rank(mob/living/carbon/human/H)
-	if(H.client)
-		if(get_job_playtime(H.client, rank) > JOB_PLAYTIME_TIER_2)
-			return "MO2"
-	return paygrade
-
-//Codenamed Team Leader
-/datum/equipment_preset/uscm/marsoc/sl/covert
-	name = "Marine Raider Team Leader (Covert)"
-	uses_special_name = TRUE
-/datum/equipment_preset/uscm/marsoc/sl/covert/load_name(mob/living/carbon/human/H, var/randomise)
-	H.gender = MALE
-	H.change_real_name(H, "[pick(nato_phonetic_alphabet)]")
-	H.age = rand(20,30)
-/datum/equipment_preset/uscm/marsoc/sl/covert/load_rank(mob/living/carbon/human/H)
-	return "O"
 //Officer
 /datum/equipment_preset/uscm/marsoc/cmd
 	name = "Marine Raider Officer"

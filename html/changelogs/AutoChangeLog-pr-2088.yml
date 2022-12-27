@@ -1,5 +1,0 @@
-author: "ThePiachu"
-delete-after: True
-changes:
-  - bugfix: "Fixed Acider and Hedgehog overlays persisting after their death."
-  - code_imp: "Tiny refactor to Warden overlay cutting as well."

@@ -1,4 +1,0 @@
-author: "stanalbatross"
-delete-after: True
-changes:
-  - rscadd: "added three new changelog labels: ui, mapadd, and maptweak!"

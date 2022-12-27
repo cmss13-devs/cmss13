@@ -165,7 +165,7 @@
 	return XENO_NO_DELAY_ACTION
 
 /obj/effect/alien/resin/fruit/proc/prevent_consume(mob/living/carbon/Xenomorph/xeno)
-	if(!(flags & CAN_CONSUME_AT_FULL_HEALTH) && xeno.health >= xeno.caste.max_health)
+	if(!(flags & CAN_CONSUME_AT_FULL_HEALTH) && xeno.health >= xeno.maxHealth)
 		to_chat(xeno, SPAN_XENODANGER("You are at full health! This would be a waste..."))
 		return XENO_NO_DELAY_ACTION
 	return FALSE

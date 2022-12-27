@@ -1,7 +1,0 @@
-author: "ThePiachu"
-delete-after: True
-changes:
-  - rscadd: "Observers can now join as Facehuggers using any planted egg or a Carrier."
-  - rscadd: "Ghosts now have a verb to join as a Facehugger from a Carrier or an Egg Morpher (egg list would be too cluttered)."
-  - code_imp: "Refactored the code around joining as a Facehugger to be less Egg Morpher centric."
-  - balance: "Rebalanced how many Facehuggers a Hive can support. Now it's based on Xeno population rather than Marine population."

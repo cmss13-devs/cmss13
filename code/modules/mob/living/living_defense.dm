@@ -185,7 +185,7 @@
 		return TRUE
 	if(fire_stacks > 0)
 		adjust_fire_stacks(-0.5, min_stacks = 0) //the fire is consumed slowly
-	if(current_weather_effect_type)
+	if(current_weather_effect_type && SSweather && SSweather.weather_event_instance)
 		adjust_fire_stacks(-SSweather.weather_event_instance.fire_smothering_strength, min_stacks = 0)
 
 /mob/living/fire_act()

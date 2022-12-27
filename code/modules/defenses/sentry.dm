@@ -282,11 +282,11 @@
 
 	if(!enaged_timer)
 		SEND_SIGNAL(src, COMSIG_SENTRY_ENGAGED_ALERT, src)
-		enaged_timer = addtimer(CALLBACK(src, .proc/reset_engaged_timer), SENTRY_ENGAGED_TIMEOUT)
+		enaged_timer = addtimer(CALLBACK(src, PROC_REF(reset_engaged_timer)), SENTRY_ENGAGED_TIMEOUT)
 
 	if(ammo && !low_ammo_timer && ammo.current_rounds != 0 && ammo.current_rounds < (ammo.max_rounds * 0.25))
 		SEND_SIGNAL(src, COMSIG_SENTRY_LOW_AMMO_ALERT, src)
-		low_ammo_timer = addtimer(CALLBACK(src, .proc/reset_low_ammo_timer), SENTRY_LOW_AMMO_TIMEOUT)
+		low_ammo_timer = addtimer(CALLBACK(src, PROC_REF(reset_low_ammo_timer)), SENTRY_LOW_AMMO_TIMEOUT)
 
 /obj/structure/machinery/defenses/sentry/proc/reset_engaged_timer()
 	enaged_timer = null

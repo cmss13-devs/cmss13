@@ -105,7 +105,7 @@
 		displayname = sentrygun.nickname
 	var/areaname = get_area(sentrygun)
 	var/message = "[displayname]:[areaname] Engaged [sentrygun.target]."
-	INVOKE_ASYNC(src, .proc/send_message, message)
+	INVOKE_ASYNC(src, PROC_REF(send_message), message)
 
 /obj/item/device/sentry_computer/proc/handle_low_ammo(var/obj/structure/machinery/defenses/sentry/sentrygun)
 	if(sentrygun.ammo)
@@ -114,7 +114,7 @@
 			displayname = sentrygun.nickname
 		var/areaname = get_area(sentrygun)
 		var/message = "[displayname]:[areaname] Low ammo [sentrygun.ammo.current_rounds]/[sentrygun.ammo.max_rounds]."
-		INVOKE_ASYNC(src, .proc/send_message, message)
+		INVOKE_ASYNC(src, PROC_REF(send_message), message)
 
 /obj/item/device/sentry_computer/proc/handle_empty_ammo(var/obj/structure/machinery/defenses/sentry/sentrygun)
 	var/displayname = sentrygun.name
@@ -122,7 +122,7 @@
 		displayname = sentrygun.nickname
 	var/areaname = get_area(sentrygun)
 	var/message = "[displayname]:[areaname] out of ammo."
-	INVOKE_ASYNC(src, .proc/send_message, message)
+	INVOKE_ASYNC(src, PROC_REF(send_message), message)
 
 /obj/item/device/sentry_computer/proc/send_message(var/message)
 	if(transceiver)
@@ -187,7 +187,7 @@
 		pair_sentry(defence)
 		to_chat(user, SPAN_NOTICE("\The [defence] has been encrypted."))
 		var/message = "[defence] added to [src]"
-		INVOKE_ASYNC(src, .proc/send_message, message)
+		INVOKE_ASYNC(src, PROC_REF(send_message), message)
 
 /obj/item/device/sentry_computer/proc/unregister(var/tool, mob/user, var/sentry_gun)
 	var/obj/structure/machinery/defenses/sentry/sentry = sentry_gun
@@ -196,7 +196,7 @@
 			unpair_sentry(sentry)
 			to_chat(user, SPAN_NOTICE("\The [sentry] has been decrypted."))
 			var/message = "[sentry] removed from from [src]"
-			INVOKE_ASYNC(src, .proc/send_message, message)
+			INVOKE_ASYNC(src, PROC_REF(send_message), message)
 	else
 		to_chat(user, SPAN_WARNING("\The [sentry] is already encrypted by laptop [sentry.linked_laptop.serial_number]."))
 
@@ -209,17 +209,17 @@
 		displayname = sentry.nickname
 	var/areaname = get_area(sentry)
 	var/message = "[displayname]:[areaname] lost contact."
-	INVOKE_ASYNC(src, .proc/send_message, message)
+	INVOKE_ASYNC(src, PROC_REF(send_message), message)
 	playsound(src,  'sound/machines/buzz-two.ogg', 25, FALSE)
 
 /obj/item/device/sentry_computer/proc/pair_sentry(var/obj/structure/machinery/defenses/target)
 	target.linked_laptop = src
 	paired_sentry +=list(target)
 	update_static_data_for_all_viewers()
-	RegisterSignal(target, COMSIG_SENTRY_ENGAGED_ALERT, .proc/handle_engaged)
-	RegisterSignal(target, COMSIG_SENTRY_LOW_AMMO_ALERT, .proc/handle_low_ammo)
-	RegisterSignal(target, COMSIG_SENTRY_EMPTY_AMMO_ALERT, .proc/handle_empty_ammo)
-	RegisterSignal(target, COMSIG_SENTRY_DESTROYED_ALERT, .proc/sentry_destroyed)
+	RegisterSignal(target, COMSIG_SENTRY_ENGAGED_ALERT, PROC_REF(handle_engaged))
+	RegisterSignal(target, COMSIG_SENTRY_LOW_AMMO_ALERT, PROC_REF(handle_low_ammo))
+	RegisterSignal(target, COMSIG_SENTRY_EMPTY_AMMO_ALERT, PROC_REF(handle_empty_ammo))
+	RegisterSignal(target, COMSIG_SENTRY_DESTROYED_ALERT, PROC_REF(sentry_destroyed))
 
 /obj/item/device/sentry_computer/proc/unpair_sentry(var/obj/structure/machinery/defenses/target)
 	target.linked_laptop = null

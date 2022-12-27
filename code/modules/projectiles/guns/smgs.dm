@@ -286,7 +286,7 @@
 						)
 	random_spawn_chance = 33
 	random_spawn_rail = list(
-							/obj/item/attachable/reflex/
+							/obj/item/attachable/reflex
 							)
 	random_spawn_under = list(
 							/obj/item/attachable/lasersight
@@ -487,13 +487,13 @@
 	return //Can't remove nails from mags or gun.
 
 /obj/item/weapon/gun/smg/nailgun/compact
-    name = "compact nailgun"
-    desc = "A carpentry tool, used to drive nails into tough surfaces. Cannot fire nails offensively due to a lack of a gas seal around the nail, meaning it cannot build up the pressure to fire."
-    icon_state = "cnailgun"
-    item_state = "nailgun"
-    w_class = SIZE_SMALL
+	name = "compact nailgun"
+	desc = "A carpentry tool, used to drive nails into tough surfaces. Cannot fire nails offensively due to a lack of a gas seal around the nail, meaning it cannot build up the pressure to fire."
+	icon_state = "cnailgun"
+	item_state = "nailgun"
+	w_class = SIZE_SMALL
 /obj/item/weapon/gun/smg/nailgun/compact/able_to_fire(mob/living/user)
-    . = ..()
-    if(.)
-        click_empty(user)
-    return FALSE
+	. = ..()
+	if(.)
+		click_empty(user)
+	return FALSE

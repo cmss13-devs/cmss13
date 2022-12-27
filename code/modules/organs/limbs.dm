@@ -1271,9 +1271,9 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 	body_part = BODY_FLAG_ARM_LEFT
 	has_stump_icon = TRUE
 
-	process()
-		..()
-		process_grasp(owner.l_hand, "left hand")
+/obj/limb/hand/l_hand/process()
+	..()
+	process_grasp(owner.l_hand, "left hand")
 
 /obj/limb/leg/l_leg
 	name = "l_leg"
@@ -1290,9 +1290,9 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 	body_part = BODY_FLAG_ARM_RIGHT
 	has_stump_icon = TRUE
 
-	process()
-		..()
-		process_grasp(owner.r_hand, "right hand")
+/obj/limb/hand/l_hand/process()
+	..()
+	process_grasp(owner.r_hand, "right hand")
 
 /obj/limb/leg/r_leg
 	name = "r_leg"
@@ -1325,9 +1325,9 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 	body_part = BODY_FLAG_HAND_RIGHT
 	has_stump_icon = TRUE
 
-	process()
-		..()
-		process_grasp(owner.r_hand, "right hand")
+/obj/limb/hand/l_hand/process()
+	..()
+	process_grasp(owner.r_hand, "right hand")
 
 /obj/limb/hand/l_hand
 	name = "l_hand"
@@ -1336,9 +1336,9 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 	body_part = BODY_FLAG_HAND_LEFT
 	has_stump_icon = TRUE
 
-	process()
-		..()
-		process_grasp(owner.l_hand, "left hand")
+/obj/limb/hand/l_hand/process()
+	..()
+	process_grasp(owner.l_hand, "left hand")
 
 /obj/limb/head
 	name = "head"

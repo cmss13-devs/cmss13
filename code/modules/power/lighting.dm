@@ -370,7 +370,7 @@
 			for(var/mob/M as anything in viewers(src))
 				if(M == user)
 					continue
-				M.show_message("[user.name] smashed the light!", 3, "You hear a tinkle of breaking glass", 2)
+				M.show_message("[user.name] smashed the light!", SHOW_MESSAGE_VISIBLE, "You hear a tinkle of breaking glass", SHOW_MESSAGE_AUDIBLE)
 			if(on && (W.flags_atom & CONDUCT))
 				if (prob(12))
 					electrocute_mob(user, get_area(src), src, 0.3)
@@ -448,7 +448,7 @@
 		return
 	else if (status == LIGHT_OK||status == LIGHT_BURNED)
 		for(var/mob/O in viewers(src))
-			O.show_message(SPAN_DANGER("[M.name] smashed the light!"), 3, "You hear a tinkle of breaking glass", 2)
+			O.show_message(SPAN_DANGER("[M.name] smashed the light!"), SHOW_MESSAGE_VISIBLE, "You hear a tinkle of breaking glass", SHOW_MESSAGE_AUDIBLE)
 		broken()
 	return
 // attack with hand - remove tube/bulb
@@ -466,7 +466,7 @@
 		var/mob/living/carbon/human/H = user
 		if(H.species.can_shred(H))
 			for(var/mob/M as anything in viewers(src))
-				M.show_message(SPAN_DANGER("[user.name] smashed the light!"), 3, "You hear a tinkle of breaking glass", 2)
+				M.show_message(SPAN_DANGER("[user.name] smashed the light!"), SHOW_MESSAGE_VISIBLE, "You hear a tinkle of breaking glass", SHOW_MESSAGE_AUDIBLE)
 			broken()
 			return
 

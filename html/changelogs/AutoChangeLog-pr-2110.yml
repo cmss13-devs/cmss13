@@ -1,0 +1,5 @@
+author: "ThePiachu"
+delete-after: True
+changes:
+  - bugfix: "Fixed a Vanguard Praetorian runtime."
+  - refactor: "Refactored Vanguard shield code a bit to remove unnecesary typecasting."

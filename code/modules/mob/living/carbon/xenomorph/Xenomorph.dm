@@ -264,13 +264,15 @@
 	// 		an easily modularizable way. So, here you go.
 	//
 	//////////////////////////////////////////////////////////////////
-	var/weedwalking_activated = 0 //Hivelord's weedwalking
-	var/tunnel = 0
-	var/burrow = 0
-	var/fortify = 0
-	var/crest_defense = 0
-	var/agility = 0		// 0 - upright, 1 - all fours
-	var/ripping_limb = 0
+	var/weedwalking_activated = FALSE //Hivelord's weedwalking
+	var/tunnel = FALSE
+	var/stealth = FALSE // for check on lurker invisibility
+	var/burrow = FALSE
+	var/fortify = FALSE
+	var/crest_defense = FALSE
+	var/agility = FALSE		// 0 - upright, 1 - all fours
+	var/ripping_limb = FALSE
+	var/steelcrest = FALSE
 	// Related to zooming out (primarily queen and boiler)
 	var/devour_timer = 0 // The world.time at which we will regurgitate our currently-vored victim
 	var/extra_build_dist = 0 // For drones/hivelords. Extends the maximum build range they have
@@ -281,7 +283,6 @@
 	var/selected_mark // If leader what mark you will place when you make one
 	var/datum/ammo/xeno/ammo = null //The ammo datum for our spit projectiles. We're born with this, it changes sometimes.
 	var/tunnel_delay = 0
-	var/steelcrest = FALSE
 	var/list/available_fruits = list() // List of placeable the xenomorph has access to.
 	var/list/current_fruits = list() // If we have current_fruits that are limited, e.g. fruits
 	var/max_placeable = 0 // Limit to that amount
@@ -488,6 +489,7 @@
 		hive.hive_ui.update_all_xeno_data()
 
 	job = caste.caste_type // Used for tracking the caste playtime
+	Decorate()
 
 	RegisterSignal(src, COMSIG_MOB_SCREECH_ACT, .proc/handle_screech_act)
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_XENO_SPAWN, src)
@@ -1017,13 +1019,13 @@
 	var/displaytime = max(1, round(breakouttime / 600)) //Minutes
 	to_chat(src, SPAN_WARNING("You attempt to remove [legcuffed]. (This will take around [displaytime] minute(s) and you need to stand still)"))
 	for(var/mob/O in viewers(src))
-		O.show_message(SPAN_DANGER("<B>[usr] attempts to remove [legcuffed]!</B>"), 1)
+		O.show_message(SPAN_DANGER("<B>[usr] attempts to remove [legcuffed]!</B>"), SHOW_MESSAGE_VISIBLE)
 	if(!do_after(src, breakouttime, INTERRUPT_NO_NEEDHAND^INTERRUPT_RESIST, BUSY_ICON_HOSTILE))
 		return
 	if(!legcuffed || buckled)
 		return // time leniency for lag which also might make this whole thing pointless but the server
 	for(var/mob/O in viewers(src))//                                         lags so hard that 40s isn't lenient enough - Quarxink
-		O.show_message(SPAN_DANGER("<B>[src] manages to remove [legcuffed]!</B>"), 1)
+		O.show_message(SPAN_DANGER("<B>[src] manages to remove [legcuffed]!</B>"), SHOW_MESSAGE_VISIBLE)
 	to_chat(src, SPAN_NOTICE(" You successfully remove [legcuffed]."))
 	drop_inv_item_on_ground(legcuffed)
 

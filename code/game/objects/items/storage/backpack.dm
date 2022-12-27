@@ -50,7 +50,7 @@
 			playsound(user.loc, 'sound/weapons/pierce.ogg', 25, TRUE)
 			user.visible_message(SPAN_WARNING("\The [user] tried to strap \the [src] onto [target_mob] but instead gets a tail swipe to the head!"))
 			return FALSE
-	
+
 	user.visible_message(SPAN_NOTICE("\The [user] starts strapping \the [src] onto [target_mob]."), \
 	SPAN_NOTICE("You start strapping \the [src] onto [target_mob]."), null, 5, CHAT_TYPE_FLUFF_ACTION)
 	if(!do_after(user, HUMAN_STRIP_DELAY * user.get_skill_duration_multiplier(), INTERRUPT_ALL, BUSY_ICON_GENERIC, target_mob, INTERRUPT_MOVED, BUSY_ICON_GENERIC))
@@ -132,7 +132,7 @@
 				return FALSE
 	return TRUE
 
-obj/item/storage/backpack/empty(mob/user, turf/T)
+/obj/item/storage/backpack/empty(mob/user, turf/T)
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
 		if(H.back == src && !worn_accessible && !content_watchers) //Backpack on back needs to be opened; if it's already opened, it can be emptied immediately.
@@ -144,7 +144,7 @@ obj/item/storage/backpack/empty(mob/user, turf/T)
 	..()
 
 //Returns true if the user's id matches the lock's
-obj/item/storage/backpack/proc/compare_id(var/mob/living/carbon/human/H)
+/obj/item/storage/backpack/proc/compare_id(var/mob/living/carbon/human/H)
 	var/obj/item/card/id/card = H.wear_id
 	if(!card || locking_id.registered_name != card.registered_name)
 		return FALSE
@@ -194,26 +194,26 @@ obj/item/storage/backpack/proc/compare_id(var/mob/living/carbon/human/H)
 	max_w_class = SIZE_LARGE
 	max_storage_space = 28
 
-	attackby(obj/item/W as obj, mob/user as mob)
-		if(crit_fail)
-			to_chat(user, SPAN_DANGER("The Bluespace generator isn't working."))
-			return
-		if(istype(W, /obj/item/storage/backpack/holding) && !W.crit_fail)
-			to_chat(user, SPAN_DANGER("The Bluespace interfaces of the two devices conflict and malfunction."))
-			qdel(W)
-			return
-		..()
+/obj/item/storage/backpack/holding/attackby(obj/item/W as obj, mob/user as mob)
+	if(crit_fail)
+		to_chat(user, SPAN_DANGER("The Bluespace generator isn't working."))
+		return
+	if(istype(W, /obj/item/storage/backpack/holding) && !W.crit_fail)
+		to_chat(user, SPAN_DANGER("The Bluespace interfaces of the two devices conflict and malfunction."))
+		qdel(W)
+		return
+	..()
 
-	proc/failcheck(mob/user as mob)
-		if (prob(src.reliability)) return 1 //No failure
-		if (prob(src.reliability))
-			to_chat(user, SPAN_DANGER("The Bluespace portal resists your attempt to add another item.")) //light failure
-		else
-			to_chat(user, SPAN_DANGER("The Bluespace generator malfunctions!"))
-			for (var/obj/O in src.contents) //it broke, delete what was in it
-				qdel(O)
-			crit_fail = 1
-			icon_state = "brokenpack"
+/obj/item/storage/backpack/holding/proc/failcheck(mob/user as mob)
+	if (prob(src.reliability)) return 1 //No failure
+	if (prob(src.reliability))
+		to_chat(user, SPAN_DANGER("The Bluespace portal resists your attempt to add another item.")) //light failure
+	else
+		to_chat(user, SPAN_DANGER("The Bluespace generator malfunctions!"))
+		for (var/obj/O in src.contents) //it broke, delete what was in it
+			qdel(O)
+		crit_fail = 1
+		icon_state = "brokenpack"
 
 
 //==========================//JOKE PACKS\\================================\\

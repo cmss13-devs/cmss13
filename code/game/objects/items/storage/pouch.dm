@@ -835,6 +835,7 @@
 	can_hold = list(/obj/item/reagent_container/hypospray/autoinjector/empty)
 	var/obj/item/reagent_container/glass/pressurized_canister/inner
 	matter = list("plastic" = 2000, "glass" = 2000)
+	flags_item = NOBLUDGEON
 
 /obj/item/storage/pouch/pressurized_reagent_canister/Initialize()
 	. = ..()

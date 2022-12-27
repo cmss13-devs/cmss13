@@ -21,8 +21,8 @@
 	max_heat_protection_temperature = HELMET_max_heat_protection_temperature
 	siemens_coefficient = 0.7
 	w_class = SIZE_MEDIUM
-	pickupsound = "armorequip"
-	dropsound = "armorequip"
+	pickup_sound = "armorequip"
+	drop_sound = "armorequip"
 
 /obj/item/clothing/head/helmet/verb/hidehair()
 	set name = "Toggle Hair"
@@ -1005,7 +1005,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	item_state = "upp_ushanka_civi"
 	original_state = "upp_ushanka_civi"
 
-obj/item/clothing/head/helmet/marine/veteran/van_bandolier
+/obj/item/clothing/head/helmet/marine/veteran/van_bandolier
 	name = "pith helmet"
 	desc = "A stylish pith helmet, made from space-age materials. Lightweight, breathable, cool, and protective."
 	icon_state = "van_bandolier"

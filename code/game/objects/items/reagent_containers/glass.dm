@@ -16,8 +16,6 @@
 	flags_atom = FPRINT|OPENCONTAINER
 	transparent = TRUE
 
-	var/label_text = ""
-
 	var/list/can_be_placed_into = list(
 		/obj/structure/machinery/chem_master/,
 		/obj/structure/machinery/chem_dispenser/,
@@ -167,23 +165,29 @@
 		return
 
 /obj/item/reagent_container/glass/attackby(obj/item/W as obj, mob/user as mob)
-	if(istype(W, /obj/item/tool/pen) || istype(W, /obj/item/device/flashlight/pen))
-		var/tmp_label = sanitize(input(user, "Enter a label for [name]","Label", label_text))
+	if(HAS_TRAIT(W, TRAIT_TOOL_PEN))
+		var/prior_label_text
+		var/datum/component/label/labelcomponent = src.GetComponent(/datum/component/label)
+		if(labelcomponent)
+			prior_label_text = labelcomponent.label_name
+		var/tmp_label = sanitize(input(user, "Enter a label for [name]","Label", prior_label_text))
+		if(tmp_label == "" || !tmp_label)
+			if(labelcomponent)
+				labelcomponent.remove_label()
+				user.visible_message(SPAN_NOTICE("[user] removes the label from \the [src]."), \
+				SPAN_NOTICE("You remove the label from \the [src]."))
+				return
+			else
+				return
 		if(length(tmp_label) > MAX_NAME_LEN)
 			to_chat(user, SPAN_WARNING("The label can be at most [MAX_NAME_LEN] characters long."))
 		else
 			user.visible_message(SPAN_NOTICE("[user] labels [src] as \"[tmp_label]\"."), \
 			SPAN_NOTICE("You label [src] as \"[tmp_label]\"."))
-			label_text = tmp_label
-			update_name_label()
+			AddComponent(/datum/component/label, tmp_label)
+			playsound(src, "paper_writing", 15, TRUE)
 	else
 		. = ..()
-
-/obj/item/reagent_container/glass/proc/update_name_label()
-	if(label_text == "")
-		name = base_name
-	else
-		name = "[base_name] ([label_text])"
 
 /obj/item/reagent_container/glass/beaker
 	name = "beaker"

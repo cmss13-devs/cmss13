@@ -374,6 +374,25 @@
 	new /obj/item/handcuffs/zip(src)
 	new /obj/item/handcuffs/zip(src)
 
+/obj/item/storage/box/tapes
+	name = "box of regulation tapes"
+	desc = "A box full of magnetic tapes for tape recorders. Contains 10 hours and 40 minutes of recording space!"
+
+/obj/item/storage/box/tapes/fill_preset_inventory()
+	new /obj/item/tape/regulation(src)
+	new /obj/item/tape/regulation(src)
+	new /obj/item/tape/regulation(src)
+	new /obj/item/tape/regulation(src)
+	new /obj/item/tape/regulation(src)
+	new /obj/item/tape/regulation(src)
+	new /obj/item/tape/regulation(src)
+	new /obj/item/tape/regulation(src)
+	new /obj/item/tape/regulation(src)
+	new /obj/item/tape/regulation(src)
+	new /obj/item/tape/regulation(src)
+	new /obj/item/tape/regulation(src)
+	new /obj/item/tape/regulation(src)
+	new /obj/item/tape/regulation(src)
 
 /obj/item/storage/box/mousetraps
 	name = "box of Pest-B-Gon mousetraps"

@@ -133,7 +133,7 @@
 						ghostrend = SPAN_XENOLEADER("Hivemind, Leader [src.name][track] hisses, <span class='normal'>'[message]'</span>")
 					else
 						ghostrend = SPAN_XENO("Hivemind, [src.name][track] hisses, <span class='normal'>'[message]'</span>")
-					S.show_message(ghostrend, 2)
+					S.show_message(ghostrend, SHOW_MESSAGE_AUDIBLE)
 
 			else if(hive.hivenumber == xeno_hivenumber(S) || hive.hivenumber == hear_hivemind)
 				if(isXeno(src) && isXeno(S))
@@ -146,5 +146,5 @@
 				else
 					rendered = SPAN_XENO("Hivemind, [src.name][overwatch_insert] hisses, <span class='normal'>'[message]'</span>")
 
-				S.show_message(rendered, 2)
+				S.show_message(rendered, SHOW_MESSAGE_AUDIBLE)
 

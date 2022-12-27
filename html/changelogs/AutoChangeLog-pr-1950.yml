@@ -1,5 +1,0 @@
-author: "stanalbatross"
-delete-after: True
-changes:
-  - balance: "crusher AOE slashes will no longer reduce the cooldown of their shield ability even more"
-  - balance: "increased the plasma cost of a few crusher abilities"

@@ -18,7 +18,7 @@
 	/// id of door it controls.
 	var/id = null
 
-	// icon_state of alert picture, if not displaying text/numbers
+	/// icon_state of alert picture, if not displaying text/numbers
 	var/picture_state
 
 	/// The incident reports currently inserted into this machine.

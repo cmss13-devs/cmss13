@@ -1,4 +1,4 @@
-proc/random_ethnicity()
+/proc/random_ethnicity()
 	return pick(GLOB.ethnicities_list)
 
 /proc/random_body_type()

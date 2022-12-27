@@ -591,8 +591,8 @@
 	flags_ammo_behavior = AMMO_BALLISTIC
 
 	accuracy = HIT_ACCURACY_TIER_8
-	damage = 25
-	penetration= ARMOR_PENETRATION_TIER_5
+	damage = 30
+	penetration = 20
 	shrapnel_chance = SHRAPNEL_CHANCE_TIER_2
 
 /*
@@ -2244,7 +2244,7 @@
 	accuracy = HIT_ACCURACY_TIER_3
 	damage_falloff = DAMAGE_FALLOFF_TIER_8
 
-/datum/ammo/energy/yautja/
+/datum/ammo/energy/yautja
 	headshot_state	= HEADSHOT_OVERLAY_MEDIUM
 	accurate_range = 12
 	shell_speed = AMMO_SPEED_TIER_3
@@ -3165,7 +3165,7 @@
 	))
 
 /datum/ammo/flare/on_hit_mob(mob/M,obj/item/projectile/P)
-	drop_flare(get_turf(P), P, P.firer)
+	drop_flare(get_turf(M), P, P.firer)
 
 /datum/ammo/flare/on_hit_obj(obj/O,obj/item/projectile/P)
 	drop_flare(get_turf(P), P, P.firer)
@@ -3181,6 +3181,9 @@
 
 /datum/ammo/flare/proc/drop_flare(var/turf/T, obj/item/projectile/fired_projectile, var/mob/firer)
 	var/obj/item/device/flashlight/flare/G = new flare_type(T)
+	var/matrix/rotation = matrix()
+	rotation.Turn(fired_projectile.angle - 90)
+	G.apply_transform(rotation)
 	G.visible_message(SPAN_WARNING("\A [G] bursts into brilliant light nearby!"))
 	return G
 

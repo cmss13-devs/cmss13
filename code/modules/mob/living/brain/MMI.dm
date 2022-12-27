@@ -82,18 +82,17 @@
 		icon_state = "mmi_empty"
 		name = "Man-Machine Interface"
 
-/obj/item/device/mmi/proc
-	transfer_identity(var/mob/living/carbon/human/H)//Same deal as the regular brain proc. Used for human-->robot people.
-		brainmob = new(src)
-		brainmob.name = H.real_name
-		brainmob.real_name = H.real_name
-		brainmob.blood_type = H.blood_type
-		brainmob.container = src
+/obj/item/device/mmi/proc/transfer_identity(var/mob/living/carbon/human/H)//Same deal as the regular brain proc. Used for human-->robot people.
+	brainmob = new(src)
+	brainmob.name = H.real_name
+	brainmob.real_name = H.real_name
+	brainmob.blood_type = H.blood_type
+	brainmob.container = src
 
-		name = "Man-Machine Interface: [brainmob.real_name]"
-		icon_state = "mmi_full"
-		locked = 1
-		return
+	name = "Man-Machine Interface: [brainmob.real_name]"
+	icon_state = "mmi_full"
+	locked = 1
+	return
 
 /obj/item/device/mmi/radio_enabled
 	name = "Radio-enabled Man-Machine Interface"

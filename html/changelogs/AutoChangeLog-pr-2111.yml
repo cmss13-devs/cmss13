@@ -1,0 +1,4 @@
+author: "ThePiachu"
+delete-after: True
+changes:
+  - bugfix: "Fixed a runtime caused by fires being mid-smothering while weather changed."

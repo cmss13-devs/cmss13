@@ -865,3 +865,33 @@
   - spellcheck: fixed a typo when a larva spawns in the spawn pool
   somepersondunno:
   - spellcheck: fixed 2 typos for a vampire lurker ability.
+2022-12-27:
+  BeagleGaming1:
+  - spellcheck: Shortened Commanding Officer Survivor in job preferences to only take
+      one line
+  Molto:
+  - spellcheck: fixed punctuation of some desc
+  Segrain:
+  - bugfix: Contractors ERT once again gets its proper equipment.
+  ThePiachu:
+  - rscadd: Observers can now join as Facehuggers using any planted egg or a Carrier.
+  - rscadd: Ghosts now have a verb to join as a Facehugger from a Carrier or an Egg
+      Morpher (egg list would be too cluttered).
+  - code_imp: Refactored the code around joining as a Facehugger to be less Egg Morpher
+      centric.
+  - balance: Rebalanced how many Facehuggers a Hive can support. Now it's based on
+      Xeno population rather than Marine population.
+  - bugfix: Fixed Acider and Hedgehog overlays persisting after their death.
+  - code_imp: Tiny refactor to Warden overlay cutting as well.
+  carlarctg:
+  - bugfix: Fix entering a ghosted xeno not removing ghostize sleep.
+  harryob:
+  - code_imp: all instances of relative pathing against our styleguide have been changed.
+  insertnamehere123:
+  - bugfix: fixed a bug where a healer drone could use healing salve on burning xenos
+  stanalbatross:
+  - refactor: changed the botany machines to tgui
+  - rscdel: removed the 5s cooldown on every action using the botany machines. Research
+      should not be limited by arbitrary long cooldowns with these.
+  - rscadd: 'added three new changelog labels: ui, mapadd, and maptweak!'
+  - ui: converted the A.C.I.D. harness to use TGUI

@@ -117,6 +117,11 @@
 		holder.overlays += image('icons/mob/hud/hud.dmi', "xenoenergy[percentage_shards]")
 	return
 
+
+/datum/behavior_delegate/ravager_hedgehog/handle_death(mob/M)
+	var/image/holder = bound_xeno.hud_list[PLASMA_HUD]
+	holder.overlays.Cut()
+
 /datum/behavior_delegate/ravager_hedgehog/on_hitby_projectile()
 	if (!shards_locked)
 		shards = min(max_shards, shards + shards_per_projectile)

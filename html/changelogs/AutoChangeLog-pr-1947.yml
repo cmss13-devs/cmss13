@@ -1,0 +1,4 @@
+author: "carlarctg"
+delete-after: True
+changes:
+  - imageadd: "Adds an alternate PO flightsuit (and jacket) for sale in the equipment vendor. Located on the dorms next to CIC."

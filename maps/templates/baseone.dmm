@@ -2621,7 +2621,7 @@
 	},
 /area/adminlevel/bunker01/medbay)
 "fI" = (
-/obj/structure/machinery/bodyscanner,
+/obj/structure/machinery/medical_pod/bodyscanner,
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "sterile_green_corner";
@@ -2649,7 +2649,7 @@
 	},
 /area/adminlevel/bunker01/medbay)
 "fL" = (
-/obj/structure/machinery/bodyscanner,
+/obj/structure/machinery/medical_pod/bodyscanner,
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "sterile_green_side";
@@ -2657,7 +2657,7 @@
 	},
 /area/adminlevel/bunker01/medbay)
 "fM" = (
-/obj/structure/machinery/autodoc,
+/obj/structure/machinery/medical_pod/autodoc,
 /obj/structure/machinery/light{
 	dir = 1
 	},
@@ -2679,7 +2679,7 @@
 	},
 /area/adminlevel/bunker01/medbay)
 "fO" = (
-/obj/structure/machinery/autodoc,
+/obj/structure/machinery/medical_pod/autodoc,
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "sterile_green_side";
@@ -3091,7 +3091,7 @@
 	},
 /area/adminlevel/bunker01/medbay)
 "gB" = (
-/obj/structure/machinery/autodoc,
+/obj/structure/machinery/medical_pod/autodoc,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_side";
 	tag = "icon-sterile"

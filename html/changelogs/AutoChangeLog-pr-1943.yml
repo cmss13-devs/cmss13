@@ -1,0 +1,4 @@
+author: "ThePiachu"
+delete-after: True
+changes:
+  - code_imp: "Refactored the code around listing squad members for the Overwatch Console, Crew Monitor and the Groundside Operations Computer."

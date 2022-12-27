@@ -24,6 +24,7 @@ var/datum/controller/subsystem/entity_manager/SSentity_manager
 /datum/controller/subsystem/entity_manager
 	name          = "Entity Manager"
 	init_order    = SS_INIT_ENTITYMANAGER
+	init_stage    = INITSTAGE_EARLY
 	priority      = SS_PRIORITY_ENTITY
 	runlevels = RUNLEVELS_DEFAULT|RUNLEVEL_LOBBY
 	var/datum/db/adapter/adapter
@@ -79,6 +80,7 @@ var/datum/controller/subsystem/entity_manager/SSentity_manager
 			adapter.prepare_view(view)
 
 	ready = TRUE
+	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/entity_manager/proc/prepare_tables()
 	adapter.sync_table_meta()

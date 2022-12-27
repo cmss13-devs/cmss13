@@ -105,6 +105,16 @@
 		do_caboom()
 		return
 
+	var/image/holder = bound_xeno.hud_list[PLASMA_HUD]
+	holder.overlays.Cut()
+	var/percentage_acid = round((acid_amount / max_acid) * 100, 10)
+	if(percentage_acid)
+		holder.overlays += image('icons/mob/hud/hud.dmi', "xenoenergy[percentage_acid]")
+
+/datum/behavior_delegate/runner_acider/handle_death(mob/M)
+	var/image/holder = bound_xeno.hud_list[PLASMA_HUD]
+	holder.overlays.Cut()
+
 /datum/behavior_delegate/runner_acider/proc/do_caboom()
 	if(!bound_xeno)
 		return

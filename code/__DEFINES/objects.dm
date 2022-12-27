@@ -22,11 +22,6 @@
 #define ATMOS_DEFAULT_VOLUME_MIXER	200	//L
 #define ATMOS_DEFAULT_VOLUME_PIPE	70	//L
 
-//Power use states
-#define POWER_USE_NO_POWER		0
-#define POWER_USE_IDLE_POWER	1
-#define POWER_USE_ACTIVE_POWER	2
-
 // channel numbers for power
 #define POWER_CHANNEL_EQUIP		1
 #define POWER_CHANNEL_LIGHT		2
@@ -163,3 +158,5 @@ var/list/RESTRICTED_CAMERA_NETWORKS = list( //Those networks can only be accesse
 #define OBJ_NO_HELMET_BAND	(1<<1)
 /// Marks the object as helmet garb
 #define OBJ_IS_HELMET_GARB (1<<2)
+/// can you customize the description/name of the thing?
+#define OBJ_UNIQUE_RENAME (1<<3)

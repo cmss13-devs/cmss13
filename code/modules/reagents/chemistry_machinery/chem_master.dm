@@ -5,7 +5,7 @@
 	icon = 'icons/obj/structures/machinery/science_machines.dmi'
 	icon_state = "mixer0"
 	var/base_state = "mixer"
-	use_power = POWER_USE_IDLE_POWER
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 20
 	layer = BELOW_OBJ_LAYER //So bottles/pills reliably appear above it
 	var/req_skill = SKILL_MEDICAL
@@ -137,7 +137,7 @@
 
 		var/label = copytext(reject_bad_text(input(user,"Label text?", "Set label", "")), 1, MAX_NAME_LEN)
 		if(label)
-			loaded_pill_bottle.set_name_label(label)
+			loaded_pill_bottle.AddComponent(/datum/component/label, label)
 			if(length(label) < 3)
 				loaded_pill_bottle.maptext_label = label
 				loaded_pill_bottle.update_icon()

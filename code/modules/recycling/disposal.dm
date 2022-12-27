@@ -338,7 +338,7 @@
 //Timed process, charge the gas reservoir and perform flush if ready
 /obj/structure/machinery/disposal/process()
 	if(stat & BROKEN) //Nothing can happen if broken
-		update_use_power(POWER_USE_NO_POWER)
+		update_use_power(USE_POWER_NONE)
 		return
 
 	flush_count++
@@ -355,7 +355,7 @@
 		flush()
 
 	if(mode != 1) //If off or ready, no need to charge
-		update_use_power(POWER_USE_IDLE_POWER)
+		update_use_power(USE_POWER_IDLE)
 	else if(disposal_pressure >= SEND_PRESSURE)
 		mode = 2 //If full enough, switch to ready mode
 		update()

@@ -12,6 +12,7 @@
 	max_storage_space = 14
 	worn_accessible = TRUE
 	actions_types = list(/datum/action/item_action/toggle)
+	xeno_types = null
 
 	var/show_exoskeleton = FALSE
 

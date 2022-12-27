@@ -83,7 +83,7 @@
 				to_chat(usr, SPAN_WARNING("Failed to construct map using interpreted co-ordinates. (X: [x], Y: [y], Z: [z])"))
 				return
 
-	if(alert(usr, "Are you sure you want to construct this DMM file at X: [x], Y: [y], Z: [z]?", "Construct Map", "Yes", "No") == "No")
+	if(alert(usr, "Are you sure you want to construct this DMM file at X: [x], Y: [y], Z: [z]?", "Construct Map", "Yes", "No") != "Yes")
 		return
 
 	to_chat(usr, SPAN_NOTICE("Constructing map..."))

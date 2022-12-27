@@ -511,6 +511,10 @@
 	for(var/i = 1 to storage_slots)
 		new /obj/item/ammo_magazine/rifle/nsg23/extended(src)
 
+/obj/item/storage/pouch/magazine/large/nsg_heap/fill_preset_inventory()
+	for(var/i = 1 to storage_slots)
+		new /obj/item/ammo_magazine/rifle/nsg23/heap(src)
+
 /obj/item/storage/pouch/magazine/large/pmc_p90/fill_preset_inventory()
 	for(var/i = 1 to storage_slots)
 		new /obj/item/ammo_magazine/smg/fp9000(src)
@@ -538,6 +542,14 @@
 /obj/item/storage/pouch/magazine/large/m16/ap/fill_preset_inventory()
 	for(var/i = 1 to storage_slots)
 		new /obj/item/ammo_magazine/rifle/m16/ap(src)
+
+/obj/item/storage/pouch/magazine/large/rifle_heap/fill_preset_inventory()
+	for(var/i = 1 to storage_slots)
+		new /obj/item/ammo_magazine/rifle/heap(src)
+
+/obj/item/storage/pouch/magazine/large/smg_heap/fill_preset_inventory()
+	for(var/i = 1 to storage_slots)
+		new /obj/item/ammo_magazine/smg/m39/heap(src)
 
 /obj/item/storage/pouch/shotgun
 	name = "shotgun shell pouch"
@@ -823,6 +835,7 @@
 	can_hold = list(/obj/item/reagent_container/hypospray/autoinjector/empty)
 	var/obj/item/reagent_container/glass/pressurized_canister/inner
 	matter = list("plastic" = 2000, "glass" = 2000)
+	flags_item = NOBLUDGEON
 
 /obj/item/storage/pouch/pressurized_reagent_canister/Initialize()
 	. = ..()
@@ -1020,6 +1033,19 @@
 			to_chat(usr, SPAN_NOTICE("You flush the [src]."))
 			inner.reagents.clear_reagents()
 			update_icon()
+
+/obj/item/storage/pouch/pressurized_reagent_canister/verb/remove_canister()
+	set category = "Weapons"
+	set name = "Remove Canister"
+	set desc = "Removes the Pressurized Canister from the pouch."
+	set src in usr
+	if(!inner)
+		to_chat(usr, SPAN_WARNING("There is no container inside this pouch!"))
+		return
+
+	usr.put_in_any_hand_if_possible(inner, disable_warning = TRUE)
+	inner = null
+	update_icon()
 
 /obj/item/storage/pouch/document
 	name = "large document pouch"

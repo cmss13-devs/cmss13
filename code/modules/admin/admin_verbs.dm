@@ -118,7 +118,8 @@ var/list/admin_verbs_minor_event = list(
 	/client/proc/toggle_blood_optimization,
 	/client/proc/toggle_combat_cas,
 	/client/proc/toggle_lz_protection, //Mortar hitting LZ
-	/client/proc/cmd_admin_medals_panel // Marine and Xeno medals editor panel
+	/client/proc/cmd_admin_medals_panel, // Marine and Xeno medals editor panel
+	/client/proc/toggle_shipside_sd
 )
 var/list/admin_verbs_major_event = list(
 	/client/proc/enable_event_mob_verbs,
@@ -169,6 +170,7 @@ var/list/admin_verbs_debug = list(
 	/client/proc/reload_admins,
 	/client/proc/reload_whitelist,
 	/client/proc/restart_controller,
+	/client/proc/debug_controller,
 	/client/proc/cmd_debug_toggle_should_check_for_win,
 	/client/proc/enable_debug_verbs,
 	/client/proc/toggledebuglogs,
@@ -419,7 +421,7 @@ var/list/roundstart_mod_verbs = list(
 		if(!msg)
 			return
 		for (var/mob/V in hearers(mob.control_object))
-			V.show_message("<b>[mob.control_object.name]</b> says: \"" + msg + "\"", 2)
+			V.show_message("<b>[mob.control_object.name]</b> says: \"" + msg + "\"", SHOW_MESSAGE_AUDIBLE)
 
 
 /client/proc/toggle_log_hrefs()

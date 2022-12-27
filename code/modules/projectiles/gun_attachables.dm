@@ -2393,7 +2393,6 @@ Defined in conflicts.dm of the #defines folder.
 
 	if(bipod_deployed)
 		undeploy_bipod(G)
-		playsound(user,'sound/items/m56dauto_rotate.ogg', 55, 1)
 		user.apply_effect(1, SUPERSLOW)
 		user.apply_effect(2, SLOW)
 
@@ -2409,10 +2408,13 @@ Defined in conflicts.dm of the #defines folder.
 	if(isliving(G.loc))
 		user = G.loc
 		UnregisterSignal(user, COMSIG_MOB_MOVE_OR_LOOK)
-	playsound(user,'sound/items/m56dauto_rotate.ogg', 55, 1)
+
 	if(G.flags_gun_features & GUN_SUPPORT_PLATFORM)
 		G.remove_bullet_trait("iff")
-	update_icon()
+
+	if(!QDELETED(G))
+		playsound(user,'sound/items/m56dauto_rotate.ogg', 55, 1)
+		update_icon()
 
 /obj/item/attachable/bipod/activate_attachment(obj/item/weapon/gun/G,mob/living/user, turn_off)
 	if(turn_off)

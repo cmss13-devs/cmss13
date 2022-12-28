@@ -49,7 +49,7 @@
 	var/datum/behavior_delegate/crusher_base/crusher_delegate = xeno_owner.behavior_delegate
 	if(!istype(crusher_delegate))
 		return
-	addtimer(CALLBACK(src, .proc/undo_charging_icon), 0.5 SECONDS) // let the icon be here for a bit, it looks cool
+	addtimer(CALLBACK(src, PROC_REF(undo_charging_icon)), 0.5 SECONDS) // let the icon be here for a bit, it looks cool
 
 /datum/action/xeno_action/activable/pounce/crusher_charge/proc/undo_charging_icon()
 	var/mob/living/carbon/Xenomorph/xeno_owner = owner

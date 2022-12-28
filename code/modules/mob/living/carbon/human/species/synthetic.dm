@@ -53,7 +53,7 @@
 	return ..()
 
 /datum/species/synthetic/apply_signals(var/mob/living/carbon/human/H)
-	RegisterSignal(H, COMSIG_HUMAN_IMPREGNATE, .proc/cancel_impregnate, TRUE)
+	RegisterSignal(H, COMSIG_HUMAN_IMPREGNATE, PROC_REF(cancel_impregnate), TRUE)
 
 /datum/species/synthetic/proc/cancel_impregnate(datum/source)
 	SIGNAL_HANDLER

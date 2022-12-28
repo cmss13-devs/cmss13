@@ -65,7 +65,7 @@
 
 /mob/living/carbon/Xenomorph/Predalien/Initialize(mapload, mob/living/carbon/Xenomorph/oldXeno, h_number)
 	. = ..()
-	addtimer(CALLBACK(src, .proc/announce_spawn), 3 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(announce_spawn)), 3 SECONDS)
 	hunter_data.dishonored = TRUE
 	hunter_data.dishonored_reason = "An abomination upon the honor of us all!"
 	hunter_data.dishonored_set = src

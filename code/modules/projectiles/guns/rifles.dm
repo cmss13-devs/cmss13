@@ -521,7 +521,7 @@
 
 /obj/item/weapon/gun/rifle/m46c/proc/name_after_co(var/mob/living/carbon/human/H, var/obj/item/weapon/gun/rifle/m46c/I)
 	linked_human = H
-	RegisterSignal(linked_human, COMSIG_PARENT_QDELETING, .proc/remove_idlock)
+	RegisterSignal(linked_human, COMSIG_PARENT_QDELETING, PROC_REF(remove_idlock))
 
 /obj/item/weapon/gun/rifle/m46c/get_examine_text(mob/user)
 	. = ..()

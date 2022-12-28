@@ -111,7 +111,7 @@ SUBSYSTEM_DEF(weather)
 	is_weather_event_starting = TRUE
 	weather_event_type = event_typepath
 	map_holder.weather_warning(weather_event_type)
-	addtimer(CALLBACK(src, .proc/start_weather_event), map_holder.warn_time)
+	addtimer(CALLBACK(src, PROC_REF(start_weather_event)), map_holder.warn_time)
 	return TRUE
 
 // Adjust our state to indicate that we're starting a new event

@@ -268,7 +268,7 @@
 		to_chat(user, SPAN_DANGER("[execution_target] has already been executed!"))
 		return
 
-	INVOKE_ASYNC(src, .proc/attempt_battlefield_execution, src, execution_target, firing_projectile, user, fired_from)
+	INVOKE_ASYNC(src, PROC_REF(attempt_battlefield_execution), src, execution_target, firing_projectile, user, fired_from)
 
 	return COMPONENT_CANCEL_AMMO_POINT_BLANK
 
@@ -448,7 +448,7 @@
 
 /datum/ammo/bullet/pistol/heavy/super/highimpact/New()
 	..()
-	RegisterSignal(src, COMSIG_AMMO_POINT_BLANK, .proc/handle_battlefield_execution)
+	RegisterSignal(src, COMSIG_AMMO_POINT_BLANK, PROC_REF(handle_battlefield_execution))
 
 /datum/ammo/bullet/pistol/heavy/super/highimpact/on_hit_mob(mob/M, obj/item/projectile/P)
 	knockback(M, P, 4)
@@ -591,8 +591,8 @@
 	flags_ammo_behavior = AMMO_BALLISTIC
 
 	accuracy = HIT_ACCURACY_TIER_8
-	damage = 25
-	penetration= ARMOR_PENETRATION_TIER_5
+	damage = 30
+	penetration = 20
 	shrapnel_chance = SHRAPNEL_CHANCE_TIER_2
 
 /*
@@ -752,7 +752,7 @@
 
 /datum/ammo/bullet/revolver/mateba/highimpact/New()
 	..()
-	RegisterSignal(src, COMSIG_AMMO_POINT_BLANK, .proc/handle_battlefield_execution)
+	RegisterSignal(src, COMSIG_AMMO_POINT_BLANK, PROC_REF(handle_battlefield_execution))
 
 /datum/ammo/bullet/revolver/mateba/highimpact/on_hit_mob(mob/M, obj/item/projectile/P)
 	knockback(M, P, 4)
@@ -880,7 +880,7 @@
 	user.visible_message(SPAN_DANGER("[user] punches [L] with the nailgun and nails their limb to [thick_surface]!"),
 		SPAN_DANGER("You punch [L] with the nailgun and nail their limb to [thick_surface]!"))
 	L.update_canmove()
-	addtimer(CALLBACK(L, /mob.proc/unfreeze), 3 SECONDS)
+	addtimer(CALLBACK(L, TYPE_PROC_REF(/mob, unfreeze)), 3 SECONDS)
 
 /datum/ammo/bullet/smg/nail/on_hit_mob(mob/living/L, obj/item/projectile/P)
 	if(!L || L == P.firer || L.lying)
@@ -1883,7 +1883,7 @@
 	if(SSticker.mode && MODE_HAS_FLAG(MODE_FACTION_CLASH))
 		damage = 15
 	else if(SSticker.current_state < GAME_STATE_PLAYING)
-		RegisterSignal(SSdcs, COMSIG_GLOB_MODE_PRESETUP, .proc/setup_hvh_damage)
+		RegisterSignal(SSdcs, COMSIG_GLOB_MODE_PRESETUP, PROC_REF(setup_hvh_damage))
 
 /datum/ammo/bullet/minigun/proc/setup_hvh_damage()
 	if(MODE_HAS_FLAG(MODE_FACTION_CLASH))
@@ -2450,7 +2450,7 @@
 /datum/ammo/xeno/toxin/New()
 	..()
 
-	neuro_callback = CALLBACK(GLOBAL_PROC, .proc/apply_neuro)
+	neuro_callback = CALLBACK(GLOBAL_PROC, PROC_REF(apply_neuro))
 
 /proc/apply_neuro(mob/M, power, insta_neuro)
 	if(skillcheck(M, SKILL_ENDURANCE, SKILL_ENDURANCE_MAX) && !insta_neuro)
@@ -2540,7 +2540,7 @@
 /datum/ammo/xeno/toxin/shotgun/New()
 	..()
 
-	neuro_callback = CALLBACK(GLOBAL_PROC, .proc/apply_scatter_neuro)
+	neuro_callback = CALLBACK(GLOBAL_PROC, PROC_REF(apply_scatter_neuro))
 
 /datum/ammo/xeno/toxin/shotgun/additional
 	name = "additional neurotoxic droplets"
@@ -2882,10 +2882,10 @@
 
 	new /datum/effects/xeno_slow(target, fired_proj.firer, ttl = 0.5 SECONDS)
 	target.apply_effect(0.5, STUN)
-	INVOKE_ASYNC(target, /atom/movable.proc/throw_atom, fired_proj.firer, get_dist(fired_proj.firer, target)-1, SPEED_VERY_FAST)
+	INVOKE_ASYNC(target, TYPE_PROC_REF(/atom/movable, throw_atom), fired_proj.firer, get_dist(fired_proj.firer, target)-1, SPEED_VERY_FAST)
 
 	qdel(tail_beam)
-	addtimer(CALLBACK(src, /datum/ammo/xeno/oppressor_tail.proc/remove_tail_overlay, target, tail_image), 0.5 SECONDS) //needed so it can actually be seen as it gets deleted too quickly otherwise.
+	addtimer(CALLBACK(src, TYPE_PROC_REF(/datum/ammo/xeno/oppressor_tail, remove_tail_overlay), target, tail_image), 0.5 SECONDS) //needed so it can actually be seen as it gets deleted too quickly otherwise.
 
 /datum/ammo/xeno/oppressor_tail/proc/remove_tail_overlay(var/mob/overlayed_mob, var/image/tail_image)
 	overlayed_mob.overlays -= tail_image
@@ -3165,7 +3165,7 @@
 	))
 
 /datum/ammo/flare/on_hit_mob(mob/M,obj/item/projectile/P)
-	drop_flare(get_turf(P), P, P.firer)
+	drop_flare(get_turf(M), P, P.firer)
 
 /datum/ammo/flare/on_hit_obj(obj/O,obj/item/projectile/P)
 	drop_flare(get_turf(P), P, P.firer)
@@ -3339,4 +3339,4 @@
 /datum/ammo/hugger_container/proc/spawn_hugger(var/turf/T)
 	var/obj/item/clothing/mask/facehugger/child = new(T)
 	child.hivenumber = hugger_hive
-	INVOKE_ASYNC(child, /obj/item/clothing/mask/facehugger.proc/leap_at_nearest_target)
+	INVOKE_ASYNC(child, TYPE_PROC_REF(/obj/item/clothing/mask/facehugger, leap_at_nearest_target))

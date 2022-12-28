@@ -1,7 +1,7 @@
 /*
- *		Toy gun
- *		Toy crossbow
- *		Toy swords
+ * Toy gun
+ * Toy crossbow
+ * Toy swords
 */
 
 

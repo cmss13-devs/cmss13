@@ -1,6 +1,6 @@
-#define EQUIPMENT_PRESET_STUB 			0
+#define EQUIPMENT_PRESET_STUB 0
 #define EQUIPMENT_PRESET_START_OF_ROUND (1<<0)
-#define EQUIPMENT_PRESET_EXTRA 			(1<<1)
+#define EQUIPMENT_PRESET_EXTRA (1<<1)
 #define EQUIPMENT_PRESET_START_OF_ROUND_WO (1<<2)
 #define EQUIPMENT_PRESET_MARINE (1<<3)
 
@@ -157,7 +157,7 @@
 
 	H.regenerate_icons()
 
-	H.marine_points = MARINE_TOTAL_BUY_POINTS		//resetting buy points
+	H.marine_points = MARINE_TOTAL_BUY_POINTS //resetting buy points
 	H.marine_snowflake_points = MARINE_TOTAL_SNOWFLAKE_POINTS
 	H.marine_buy_flags = MARINE_CAN_BUY_ALL
 

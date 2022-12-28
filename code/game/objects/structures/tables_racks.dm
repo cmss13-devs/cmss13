@@ -1,9 +1,9 @@
 /* Tables and Racks
  * Contains:
- *		Tables
- *		Wooden tables
- *		Reinforced tables
- *		Racks
+ * Tables
+ * Wooden tables
+ * Reinforced tables
+ * Racks
  */
 
 /*
@@ -17,7 +17,7 @@
 	density = 1
 	anchored = 1.0
 	layer = TABLE_LAYER
-	throwpass = 1	//You can throw objects over this, despite it's density.")
+	throwpass = 1 //You can throw objects over this, despite it's density.")
 	climbable = 1
 	breakable = 1
 	var/parts = /obj/item/frame/table
@@ -129,11 +129,11 @@
 				if(direction < 5)
 					dir_sum += direction
 				else
-					if(direction == 5)	//This permits the use of all table directions. (Set up so clockwise around the central table is a higher value, from north)
+					if(direction == 5) //This permits the use of all table directions. (Set up so clockwise around the central table is a higher value, from north)
 						dir_sum += 16
 					if(direction == 6)
 						dir_sum += 32
-					if(direction == 8)	//Aherp and Aderp.  Jezes I am stupid.  -- SkyMarshal
+					if(direction == 8) //Aherp and Aderp.  Jezes I am stupid.  -- SkyMarshal
 						dir_sum += 8
 					if(direction == 10)
 						dir_sum += 64
@@ -158,7 +158,7 @@
 		dir_sum %= 16
 	if((dir_sum%16) in list(13, 14, 7, 11)) //Three-way intersection
 		table_type = 5 //full table as three-way intersections are not sprited, would require 64 sprites to handle all combinations.  TOO BAD -- SkyMarshal
-		switch(dir_sum%16)	//Begin computation of the special type tables.  --SkyMarshal
+		switch(dir_sum%16) //Begin computation of the special type tables.  --SkyMarshal
 			if(7)
 				if(dir_sum == 23)
 					table_type = 6
@@ -267,7 +267,7 @@
 			var/mob/living/M = G.grabbed_thing
 			if(user.a_intent == INTENT_HARM)
 				if(user.grab_level > GRAB_AGGRESSIVE)
-					if (prob(15))	M.apply_effect(5, WEAKEN)
+					if (prob(15)) M.apply_effect(5, WEAKEN)
 					M.apply_damage(8, def_zone = "head")
 					user.visible_message(SPAN_DANGER("[user] slams [M]'s face against [src]!"),
 					SPAN_DANGER("You slam [M]'s face against [src]!"))
@@ -601,7 +601,7 @@
 	density = 1
 	layer = TABLE_LAYER
 	anchored = 1.0
-	throwpass = 1	//You can throw objects over this, despite it's density.
+	throwpass = 1 //You can throw objects over this, despite it's density.
 	breakable = 1
 	climbable = 1
 	health = 100

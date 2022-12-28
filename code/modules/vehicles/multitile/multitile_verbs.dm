@@ -277,11 +277,11 @@
 		return
 
 	//post-checks
-	if(V.seats[seat] != user)	//check that we are still in seat
+	if(V.seats[seat] != user) //check that we are still in seat
 		to_chat(user, SPAN_WARNING("You need to be buckled to vehicle seat to do this."))
 		return
 
-	if(V.nickname)	//check again if second VC was faster.
+	if(V.nickname) //check again if second VC was faster.
 		to_chat(user, SPAN_WARNING("The other crewman beat you to it!"))
 		return
 
@@ -325,7 +325,7 @@
 
 /obj/vehicle/multitile/proc/perform_honk()
 	if(honk_sound)
-		playsound(loc, honk_sound, 75, TRUE, 15)	//heard within ~15 tiles
+		playsound(loc, honk_sound, 75, TRUE, 15) //heard within ~15 tiles
 
 //Support gunner verbs
 

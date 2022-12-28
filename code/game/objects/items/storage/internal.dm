@@ -11,10 +11,10 @@
 	name = master_object.name
 
 /obj/item/storage/internal/attack_hand()
-	return		//make sure this is never picked up
+	return //make sure this is never picked up
 
 /obj/item/storage/internal/mob_can_equip()
-	return FALSE	//make sure this is never picked up
+	return FALSE //make sure this is never picked up
 
 //Helper procs to cleanly implement internal storages - storage items that provide inventory slots for other items.
 //These procs are completely optional, it is up to the master item to decide when it's storage get's opened by calling open()
@@ -90,7 +90,7 @@
 
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
-		if(H.l_store == master_object && !H.get_active_hand())	//Prevents opening if it's in a pocket.
+		if(H.l_store == master_object && !H.get_active_hand()) //Prevents opening if it's in a pocket.
 			H.put_in_hands(master_object)
 			H.l_store = null
 			return FALSE

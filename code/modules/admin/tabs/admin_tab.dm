@@ -95,7 +95,7 @@
 	var/mob/body = mob
 	body.ghostize(TRUE, TRUE)
 	if(body && !body.key)
-		body.key = "@[key]"	//Haaaaaaaack. But the people have spoken. If it breaks; blame adminbus
+		body.key = "@[key]" //Haaaaaaaack. But the people have spoken. If it breaks; blame adminbus
 		if(body.client)
 			body.client.change_view(world_view_size) //reset view range to default.
 

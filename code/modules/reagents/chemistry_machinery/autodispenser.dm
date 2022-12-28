@@ -1,8 +1,8 @@
-#define PROGRAM_MEMORY 			1
-#define PROGRAM_BOX 			2
-#define OUTPUT_TO_CONTAINER		0
-#define OUTPUT_TO_SMARTFRIDGE	1
-#define OUTPUT_TO_CENTRIFUGE	2
+#define PROGRAM_MEMORY 1
+#define PROGRAM_BOX 2
+#define OUTPUT_TO_CONTAINER 0
+#define OUTPUT_TO_SMARTFRIDGE 1
+#define OUTPUT_TO_CENTRIFUGE 2
 
 /obj/structure/machinery/autodispenser
 	name = "Turing Dispenser"

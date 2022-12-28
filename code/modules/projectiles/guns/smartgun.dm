@@ -8,7 +8,7 @@
 	icon_state = "m56"
 	item_state = "m56"
 	fire_sound = "gun_smartgun"
-	fire_rattle	= "gun_smartgun_rattle"
+	fire_rattle = "gun_smartgun_rattle"
 	reload_sound = 'sound/weapons/handling/gun_sg_reload.ogg'
 	unload_sound = 'sound/weapons/handling/gun_sg_unload.ogg'
 	current_mag = /obj/item/ammo_magazine/smartgun

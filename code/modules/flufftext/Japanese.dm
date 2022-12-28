@@ -1,17 +1,17 @@
 ///How likely the nucleus (vowel) is to geminate ie a -> aa
-#define JAPANESE_SOUND_GEMINATION_CHANCE_NUCLEUS		10
+#define JAPANESE_SOUND_GEMINATION_CHANCE_NUCLEUS 10
 ///How likely the initial (consonant) is to geminate ie k -> kk
-#define JAPANESE_SOUND_GEMINATION_CHANCE_INITIAL		7.5
+#define JAPANESE_SOUND_GEMINATION_CHANCE_INITIAL 7.5
 ///How likely the consonant is to palatalise ie r -> ry
-#define JAPANESE_SOUND_PALATALISATION_CHANCE			10
+#define JAPANESE_SOUND_PALATALISATION_CHANCE 10
 ///How likely the syllable is not to have a consonant at the start, needs to be kinda high for convincing diphthongs
-#define JAPANESE_SOUND_NULL_INITIAL_CHANCE				20
+#define JAPANESE_SOUND_NULL_INITIAL_CHANCE 20
 ///How likely the syllable is to end in an N
-#define JAPANESE_SOUND_N_FINAL_CHANCE					20
+#define JAPANESE_SOUND_N_FINAL_CHANCE 20
 ///How likely it is to insert an apostrophe between two syllables (this can happen anywhere, mainly used for morpheme boundaries.)
-#define JAPANESE_SOUND_APOSTROPHE_CHANCE				30
+#define JAPANESE_SOUND_APOSTROPHE_CHANCE 30
 ///how likely voiced sounds are to geminate, these mainly occur in foreign loans so quite unlikely
-#define JAPANESE_SOUND_GEMINATION_CHANCE_VOICED			20
+#define JAPANESE_SOUND_GEMINATION_CHANCE_VOICED 20
 
 /*
 Hello and welcome to the Japanese language. Or rather, a random generator for it.

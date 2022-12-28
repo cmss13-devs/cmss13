@@ -22,9 +22,9 @@
 
 /mob/living/silicon/robot/proc/clamp_values()
 
-//	set_effect(min(stunned, 30), STUN)
+// set_effect(min(stunned, 30), STUN)
 	set_effect(min(knocked_out, 30), PARALYZE)
-//	set_effect(min(knocked_down, 20), WEAKEN)
+// set_effect(min(knocked_down, 20), WEAKEN)
 	sleeping = 0
 	apply_damage(0, BRUTE)
 	apply_damage(0, TOX)
@@ -47,7 +47,7 @@
 			cell_use_power(50)
 
 		if(lights_on)
-			cell_use_power(30) 	// 30W light. Normal lights would use ~15W, but increased for balance reasons.
+			cell_use_power(30) // 30W light. Normal lights would use ~15W, but increased for balance reasons.
 
 		src.has_power = 1
 	else
@@ -92,7 +92,7 @@
 				else
 					src.blinded = 0
 
-		else	//Not stunned.
+		else //Not stunned.
 			src.stat = 0
 
 	else //Dead.
@@ -214,8 +214,8 @@
 
 
 //Oxygen and fire does nothing yet!!
-//	if (src.oxygen) src.oxygen.icon_state = "oxy[src.oxygen_alert ? 1 : 0]"
-//	if (src.fire) src.fire.icon_state = "fire[src.fire_alert ? 1 : 0]"
+// if (src.oxygen) src.oxygen.icon_state = "oxy[src.oxygen_alert ? 1 : 0]"
+// if (src.fire) src.fire.icon_state = "fire[src.fire_alert ? 1 : 0]"
 
 	if(stat != DEAD) //the dead get zero fullscreens
 		if(blinded)

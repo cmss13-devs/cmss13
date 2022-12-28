@@ -98,7 +98,7 @@ PathNode
 	var/f
 	var/g
 	var/h
-	var/nt		// Nodes traversed
+	var/nt // Nodes traversed
 	New(s,p,pg,ph,pnt)
 		source = s
 		prevNode = p

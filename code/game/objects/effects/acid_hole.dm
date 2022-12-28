@@ -41,7 +41,7 @@
 
 /obj/effect/acid_hole/attack_alien(mob/living/carbon/Xenomorph/user)
 	if (!holed_wall)
-		qdel(src)		//no wall?! then cease existence...
+		qdel(src) //no wall?! then cease existence...
 		return
 
 	if(!use_wall_hole(user))

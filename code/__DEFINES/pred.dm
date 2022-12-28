@@ -9,4 +9,4 @@
 #define PRED_YAUTJA_PONCHO "yautja poncho"
 
 #define SD_TYPE_BIG   0
-#define SD_TYPE_SMALL	1
+#define SD_TYPE_SMALL 1

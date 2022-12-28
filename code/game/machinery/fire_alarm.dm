@@ -53,7 +53,7 @@ FIRE ALARM
 /obj/structure/machinery/firealarm/fire_act(temperature, volume)
 	if(src.detecting)
 		if(temperature > T0C+200)
-			src.alarm()			// added check of detector status here
+			src.alarm() // added check of detector status here
 	return
 
 /obj/structure/machinery/firealarm/attack_remote(mob/user as mob)

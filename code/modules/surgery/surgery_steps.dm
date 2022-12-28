@@ -12,7 +12,7 @@
 	parent tool type. Example: for an item type /wxy/z, tool_check() returns tools_cache[/wxy/z]. If /wxy is in tools, this will == /wxy; otherwise it == NULL.**/
 	var/list/tools_cache = list()
 
-	/**Does the surgery step accept an open hand? If true and the surgeon uses their hand, doesn't check for tools.	If wanting to make a
+	/**Does the surgery step accept an open hand? If true and the surgeon uses their hand, doesn't check for tools. If wanting to make a
 	surgery where a hand can do it but tools are faster, give it a long default time and its tools modifiers above 100.**/
 	var/accept_hand = FALSE
 	///Does the surgery step accept any item? If true, ignores tools.
@@ -21,7 +21,7 @@
 	to be lying down, the surface the patient is buckled to or resting on: surgery table, field surgical bed, rollerbed, table, open ground etc.**/
 	var/time = 10
 	///Whether this step continuously repeats as long as a criteria is met. If TRUE, consider setting skip_step_criteria() or using a failure() override to return TRUE to allow it to be canceled or skipped.
-	var/repeat_step	= FALSE
+	var/repeat_step = FALSE
 
 /datum/surgery_step/New()
 	. = ..()
@@ -109,7 +109,7 @@ affected_limb, or location vars. Also, in that case there may be a wait between 
 		user.a_intent_change(INTENT_HELP) //So that stabbing your patient to death takes deliberate malice.
 	else if(!repeating) //Looping steps only play the start message on the first iteration; deliberate failure only plays the failure message.
 		preop(user, target, target_zone, tool, tool_type, surgery)
-		var/list/message = new()	//Duration hint messages.
+		var/list/message = new() //Duration hint messages.
 
 		if(self_surgery)
 			message += "[pick("performing surgery", "working")] on [pick("yourself", "your own body")] is [pick("awkward", "tricky")]"

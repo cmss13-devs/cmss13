@@ -2,17 +2,17 @@
 //Abby
 
 //Xeno Overlays Indexes//////////
-#define X_BACK_LAYER			10
-#define X_HEAD_LAYER			9
-#define X_SUIT_LAYER			8
-#define X_L_HAND_LAYER			7
-#define X_R_HAND_LAYER			6
-#define X_BACK_FRONT_LAYER		5
-#define X_RESOURCE_LAYER		4
-#define X_TARGETED_LAYER		3
-#define X_LEGCUFF_LAYER			2
-#define X_FIRE_LAYER			1
-#define X_TOTAL_LAYERS			10
+#define X_BACK_LAYER 10
+#define X_HEAD_LAYER 9
+#define X_SUIT_LAYER 8
+#define X_L_HAND_LAYER 7
+#define X_R_HAND_LAYER 6
+#define X_BACK_FRONT_LAYER 5
+#define X_RESOURCE_LAYER 4
+#define X_TARGETED_LAYER 3
+#define X_LEGCUFF_LAYER 2
+#define X_FIRE_LAYER 1
+#define X_TOTAL_LAYERS 10
 /////////////////////////////////
 
 
@@ -166,17 +166,17 @@
 /mob/living/carbon/Xenomorph/update_targeted()
 	remove_overlay(X_TARGETED_LAYER)
 	if(targeted_by && target_locked)
-		overlays_standing[X_TARGETED_LAYER]	= image("icon" = target_locked, "layer" =-X_TARGETED_LAYER)
+		overlays_standing[X_TARGETED_LAYER] = image("icon" = target_locked, "layer" =-X_TARGETED_LAYER)
 	else if(!targeted_by && target_locked)
 		QDEL_NULL(target_locked)
 	if(!targeted_by || src.stat == DEAD)
-		overlays_standing[X_TARGETED_LAYER]	= null
+		overlays_standing[X_TARGETED_LAYER] = null
 	apply_overlay(X_TARGETED_LAYER)
 
 /mob/living/carbon/Xenomorph/update_inv_legcuffed()
 	remove_overlay(X_LEGCUFF_LAYER)
 	if(legcuffed)
-		overlays_standing[X_LEGCUFF_LAYER]	= image("icon" = 'icons/mob/xenos/effects.dmi', "icon_state" = "legcuff", "layer" =-X_LEGCUFF_LAYER)
+		overlays_standing[X_LEGCUFF_LAYER] = image("icon" = 'icons/mob/xenos/effects.dmi', "icon_state" = "legcuff", "layer" =-X_LEGCUFF_LAYER)
 		apply_overlay(X_LEGCUFF_LAYER)
 
 /mob/living/carbon/Xenomorph/proc/create_shriekwave(var/color = null)

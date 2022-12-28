@@ -92,9 +92,9 @@ steam.start() -- spawns the effect
 /obj/effect/particle_effect/sparks/New()
 	..()
 	playsound(src.loc, "sparks", 25, 1)
-//	var/turf/T = src.loc
-//	if (istype(T, /turf))
-//		T.hotspot_expose(1000,100)
+// var/turf/T = src.loc
+// if (istype(T, /turf))
+// T.hotspot_expose(1000,100)
 	spawn (100)
 		qdel(src)
 

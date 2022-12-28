@@ -99,7 +99,7 @@ HELP TO PROC TYPEPATH SHORTCUTS (Purely based on the path in the code)
 	if (length(args) > 1)
 		arguments = args.Copy(2)
 
-/datum/callback/dynamic/Invoke(...)	
+/datum/callback/dynamic/Invoke(...) 
 	var/list/calling_arguments = arguments
 	if (length(args))
 		object = args[1]
@@ -111,7 +111,7 @@ HELP TO PROC TYPEPATH SHORTCUTS (Purely based on the path in the code)
 		return
 	return call(object, delegate)(arglist(calling_arguments))
 
-/datum/callback/dynamic/InvokeAsync(...)	
+/datum/callback/dynamic/InvokeAsync(...) 
 	set waitfor = FALSE
 	var/list/calling_arguments = arguments
 	if (length(args))

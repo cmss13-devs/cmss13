@@ -20,12 +20,12 @@
 
 /obj/item/circuitboard/robot_module/Initialize()
 	. = ..()
-//		src.modules += new /obj/item/device/flashlight(src) // Replaced by verb and integrated light which uses power.
+// src.modules += new /obj/item/device/flashlight(src) // Replaced by verb and integrated light which uses power.
 	src.modules += new /obj/item/device/flash(src)
 	src.emag = new /obj/item/toy/sword(src)
 	src.emag.name = "Placeholder Emag Item"
-//		src.jetpack = new /obj/item/toy/sword(src)
-//		src.jetpack.name = "Placeholder Upgrade Item"
+// src.jetpack = new /obj/item/toy/sword(src)
+// src.jetpack.name = "Placeholder Upgrade Item"
 
 
 /obj/item/circuitboard/robot_module/proc/respawn_consumable(var/mob/living/silicon/robot/R)
@@ -217,8 +217,8 @@
 	src.modules += new /obj/item/handcuffs/cyborg(src)
 	src.modules += new /obj/item/robot/stun(src)
 	src.modules += new /obj/item/tool/crowbar(src)
-//	src.modules += new /obj/item/weapon/gun/energy/taser/cyborg(src)
-//	src.emag = new /obj/item/weapon/gun/energy/laser/cyborg(src)
+// src.modules += new /obj/item/weapon/gun/energy/taser/cyborg(src)
+// src.emag = new /obj/item/weapon/gun/energy/laser/cyborg(src)
 
 /obj/item/circuitboard/robot_module/security/respawn_consumable(var/mob/living/silicon/robot/R)
 	var/obj/item/device/flash/F = locate() in src.modules
@@ -230,8 +230,8 @@
 		F.flashes_stored++
 	// var/obj/item/weapon/gun/energy/taser/cyborg/T = locate() in src.modules
 	// if(T.power_supply.charge < T.power_supply.maxcharge)
-	// 	T.power_supply.give(T.charge_cost)
-	// 	T.update_icon()
+	// T.power_supply.give(T.charge_cost)
+	// T.update_icon()
 	// else
 	// T.charge_tick = 0
 
@@ -308,7 +308,7 @@
 	src.modules += new /obj/item/device/flashlight(src)
 	src.modules += new /obj/item/device/flash(src)
 	src.modules += new /obj/item/weapon/melee/energy/sword(src)
-//	src.modules += new /obj/item/weapon/gun/energy/pulse_rifle/destroyer(src)
+// src.modules += new /obj/item/weapon/gun/energy/pulse_rifle/destroyer(src)
 
 /obj/item/circuitboard/robot_module/drone
 	name = "drone module"
@@ -346,7 +346,7 @@
 		src.modules += W
 
 /obj/item/circuitboard/robot_module/drone/add_languages(var/mob/living/silicon/robot/R)
-	return	//not much ROM to spare in that tiny microprocessor!
+	return //not much ROM to spare in that tiny microprocessor!
 
 /obj/item/circuitboard/robot_module/drone/respawn_consumable(var/mob/living/silicon/robot/R)
 	var/obj/item/reagent_container/spray/cleaner/C = locate() in src.modules

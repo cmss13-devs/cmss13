@@ -1,8 +1,8 @@
 /* Stack type objects!
  * Contains:
- * 		Stacks
- * 		Recipe datum
- * 		Recipe list datum
+ * Stacks
+ * Recipe datum
+ * Recipe list datum
  */
 
 /*
@@ -218,7 +218,7 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 			usr.drop_inv_item_on_ground(oldsrc)
 			qdel(oldsrc)
 
-		if(istype(O,/obj/item/stack))	//floor stacking convenience
+		if(istype(O,/obj/item/stack)) //floor stacking convenience
 			var/obj/item/stack/S = O
 			for(var/obj/item/stack/F in usr.loc)
 				if(S.stack_id == F.stack_id && S != F)

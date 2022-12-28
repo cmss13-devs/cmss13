@@ -4,7 +4,7 @@
 	icon_path = 'icons/effects/status_effects.dmi'
 	obj_icon_state_path = "+acid"
 	mob_icon_state_path = "human_acid"
-	var/original_duration = 50			//Set to 50 for safety reasons if something fails
+	var/original_duration = 50 //Set to 50 for safety reasons if something fails
 	var/damage_in_total_human = 25
 	var/damage_in_total_obj = 75
 	var/acid_multiplier = 1

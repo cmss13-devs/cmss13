@@ -66,7 +66,7 @@
 			var/list/hearers = get_mobs_in_view(7, src)
 			hearers.Add(src)
 			for (var/mob/O in hearers(get_turf(src), null))
-				if(O.z != z)	//cases like interior vehicles, for example
+				if(O.z != z) //cases like interior vehicles, for example
 					continue
 				if(O.status_flags & PASSEMOTES)
 					for(var/obj/item/holder/H in O.contents)

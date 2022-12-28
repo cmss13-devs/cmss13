@@ -7,8 +7,8 @@
 #define FIREDOOR_MIN_TEMP 0
 
 // Bitflags
-#define FIREDOOR_ALERT_HOT	  1
-#define FIREDOOR_ALERT_COLD	 2
+#define FIREDOOR_ALERT_HOT   1
+#define FIREDOOR_ALERT_COLD  2
 
 
 /obj/structure/machinery/door/firedoor
@@ -128,7 +128,7 @@
 		return
 
 	var/alarmed = lockdown
-	for(var/area/A in areas_added)		//Checks if there are fire alarms in any areas associated with that firedoor
+	for(var/area/A in areas_added) //Checks if there are fire alarms in any areas associated with that firedoor
 		if(A.flags_alarm_state & ALARM_WARNING_FIRE || A.air_doors_activated)
 			alarmed = 1
 
@@ -164,7 +164,7 @@
 	if(needs_to_close)
 		spawn(50)
 			alarmed = 0
-			for(var/area/A in areas_added)		//Just in case a fire alarm is turned off while the firedoor is going through an autoclose cycle
+			for(var/area/A in areas_added) //Just in case a fire alarm is turned off while the firedoor is going through an autoclose cycle
 				if(A.flags_alarm_state & ALARM_WARNING_FIRE || A.air_doors_activated)
 					alarmed = 1
 			if(alarmed)

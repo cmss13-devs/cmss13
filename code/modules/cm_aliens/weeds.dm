@@ -1,6 +1,6 @@
-#define BLOCK_NOTHING 				0
-#define BLOCK_SPECIAL_STRUCTURES	1
-#define BLOCK_ALL_STRUCTURES		2
+#define BLOCK_NOTHING 0
+#define BLOCK_SPECIAL_STRUCTURES 1
+#define BLOCK_ALL_STRUCTURES 2
 
 /obj/effect/alien/weeds
 	name = "weeds"

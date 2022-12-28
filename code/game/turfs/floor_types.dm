@@ -232,7 +232,7 @@
 		AM.visible_message(SPAN_WARNING("[AM] falls into the depths!"), SPAN_WARNING("You fall into the depths!"))
 		for(var/i in GLOB.disposal_retrieval_list)
 			var/obj/structure/disposaloutlet/retrieval/R = i
-			if(R.z != src.z)	continue
+			if(R.z != src.z) continue
 			var/obj/structure/disposalholder/H = new()
 			AM.forceMove(H)
 			sleep(10)

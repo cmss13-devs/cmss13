@@ -88,7 +88,7 @@
 
 
 /obj/structure/grille/attack_animal(var/mob/living/simple_animal/M as mob)
-	if(M.melee_damage_upper == 0)	return
+	if(M.melee_damage_upper == 0) return
 
 	playsound(loc, 'sound/effects/grillehit.ogg', 25, 1)
 	M.visible_message(SPAN_WARNING("[M] smashes against [src]."), \
@@ -204,7 +204,7 @@
 
 /obj/structure/grille/proc/shock(mob/user as mob, prb)
 
-	if(!anchored || destroyed)		// anchored/destroyed grilles are never connected
+	if(!anchored || destroyed) // anchored/destroyed grilles are never connected
 		return 0
 	if(!prob(prb))
 		return 0

@@ -7,7 +7,7 @@
 	throw_range = 5
 	w_class = SIZE_TINY
 	// color = ... (Colors can be names - "red, green, grey, cyan" or a HEX color code "#FF0000")
-	var/dat		// Page content
+	var/dat // Page content
 	var/html_link = ""
 	var/window_size = "1280x720"
 

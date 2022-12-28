@@ -477,7 +477,7 @@
 		cylinder.use_sound = use_sound
 		if(direct_draw)
 			cylinder.storage_flags ^= STORAGE_USING_DRAWING_METHOD
-		if(preload && !spawn_empty)	for(var/i = 1 to cylinder.storage_slots)
+		if(preload && !spawn_empty) for(var/i = 1 to cylinder.storage_slots)
 			new preload(cylinder)
 		update_icon()
 
@@ -861,7 +861,7 @@
 	w_class = SIZE_HUGE
 	force = 15
 	wield_delay = WIELD_DELAY_HORRIBLE
-	delay_style	= WEAPON_DELAY_NO_FIRE
+	delay_style = WEAPON_DELAY_NO_FIRE
 	aim_slowdown = SLOWDOWN_ADS_SPECIALIST
 	attachable_allowed = list(
 						/obj/item/attachable/magnetic_harness
@@ -915,7 +915,7 @@
 			make_rocket(user, 0, 1)
 
 /obj/item/weapon/gun/launcher/rocket/load_into_chamber(mob/user)
-//	if(active_attachable) active_attachable = null
+// if(active_attachable) active_attachable = null
 	return ready_in_chamber()
 
 //No such thing

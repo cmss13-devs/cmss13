@@ -289,12 +289,12 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 /obj/item/clothing/mask/cigarette/afterattack(atom/target, mob/living/user, proximity)
 	..()
 	if(!proximity) return
-	if(istype(target, /obj/item/reagent_container/glass))	//you can dip cigarettes into beakers
+	if(istype(target, /obj/item/reagent_container/glass)) //you can dip cigarettes into beakers
 		var/obj/item/reagent_container/glass/glass = target
 		var/transfered = glass.reagents.trans_to(src, chem_volume)
-		if(transfered)	//if reagents were transfered, show the message
+		if(transfered) //if reagents were transfered, show the message
 			to_chat(user, SPAN_NOTICE("You dip \the [src] into \the [glass]."))
-		else			//if not, either the beaker was empty, or the cigarette was full
+		else //if not, either the beaker was empty, or the cigarette was full
 			if(!glass.reagents.total_volume)
 				to_chat(user, SPAN_NOTICE("[glass] is empty."))
 			else
@@ -356,7 +356,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		go_out()
 		return
 
-	if(reagents && reagents.total_volume)	//	check if it has any reagents at all
+	if(reagents && reagents.total_volume) // check if it has any reagents at all
 		if(iscarbon(loc) && (src == loc:wear_mask)) // if it's in the human/monkey mouth, transfer reagents to the mob
 			if(istype(loc, /mob/living/carbon/human))
 				var/mob/living/carbon/human/H = loc
@@ -392,7 +392,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		var/obj/item/butt = new type_butt(T)
 		transfer_fingerprints_to(butt)
 		//if(M)
-			//M.temp_drop_inv_item(src)	//un-equip it so the overlays can updat
+			//M.temp_drop_inv_item(src) //un-equip it so the overlays can updat
 		qdel(src)
 		. = butt
 	else

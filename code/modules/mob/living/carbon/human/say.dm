@@ -167,7 +167,7 @@
 			italics = 1
 			message_range = 2
 
-		..(message, speaking, verb, alt_name, italics, message_range, speech_sound, sound_vol, 0, message_mode)	//ohgod we should really be passing a datum here.
+		..(message, speaking, verb, alt_name, italics, message_range, speech_sound, sound_vol, 0, message_mode) //ohgod we should really be passing a datum here.
 
 		INVOKE_ASYNC(src, /mob/living/carbon/human.proc/say_to_radios, used_radios, message, message_mode, verb, speaking)
 
@@ -213,9 +213,9 @@
 
 	//This is already covered by mob/say_understands()
 	//if (istype(other, /mob/living/simple_animal))
-	//	if((other.universal_speak && !speaking) || src.universal_speak || src.universal_understand)
-	//		return 1
-	//	return 0
+	// if((other.universal_speak && !speaking) || src.universal_speak || src.universal_understand)
+	// return 1
+	// return 0
 
 	return ..()
 

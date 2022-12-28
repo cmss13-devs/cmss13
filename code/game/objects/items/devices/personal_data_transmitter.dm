@@ -165,4 +165,4 @@
 
 /obj/item/storage/box/pdt_kit/fill_preset_inventory()
 	new /obj/item/device/pdt_locator_tube(src, new /obj/item/clothing/accessory/pdt_bracelet(src))
-	new	/obj/item/cell/crap(src) //it not fitting is intentional
+	new /obj/item/cell/crap(src) //it not fitting is intentional

@@ -9,7 +9,7 @@
 	deconstruct(FALSE)
 	return
 
-/obj/structure/sign/attackby(obj/item/tool as obj, mob/user as mob)	//deconstruction
+/obj/structure/sign/attackby(obj/item/tool as obj, mob/user as mob) //deconstruction
 	if(HAS_TRAIT(tool, TRAIT_TOOL_SCREWDRIVER) && !istype(src, /obj/structure/sign/double))
 		to_chat(user, "You unfasten the sign with your [tool].")
 		var/obj/item/sign/S = new(src.loc)
@@ -24,10 +24,10 @@
 	name = "sign"
 	desc = ""
 	icon = 'icons/obj/structures/props/decals.dmi'
-	w_class = SIZE_MEDIUM		//big
+	w_class = SIZE_MEDIUM //big
 	var/sign_state = ""
 
-/obj/item/sign/attackby(obj/item/tool as obj, mob/user as mob)	//construction
+/obj/item/sign/attackby(obj/item/tool as obj, mob/user as mob) //construction
 	if(HAS_TRAIT(tool, TRAIT_TOOL_SCREWDRIVER) && isturf(user.loc))
 		var/direction = tgui_input_list(usr, "In which direction?", "Select direction.", list("North", "East", "South", "West", "Cancel"))
 		if(direction == "Cancel") return
@@ -78,7 +78,7 @@
 	desc = "This is the Arcturian stop sign that some Bravos from First Platoon stole on the last shore leave."
 	icon_state = "arcturian_stop_sign"
 
-/obj/structure/sign/double/maltesefalcon	//The sign is 64x32, so it needs two tiles. ;3
+/obj/structure/sign/double/maltesefalcon //The sign is 64x32, so it needs two tiles. ;3
 	name = "The Maltese Falcon"
 	desc = "The Maltese Falcon, Space Bar and Grill."
 

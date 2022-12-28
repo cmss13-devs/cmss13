@@ -62,7 +62,7 @@
 		if("dance")
 
 			if(!is_mob_restrained())
-			//	message = "<B>The [name]</B> dances around!"
+			// message = "<B>The [name]</B> dances around!"
 				m_type = 1
 				spawn(0)
 					for(var/i in list(1,2,4,8,4,2,1,2,4,8,4,2,1,2,4,8,4,2,1,2,4,8,4,2,1,2,4,8,4,2,1,2,4,8,4,2,1,2,4,8,4,2,1,2))

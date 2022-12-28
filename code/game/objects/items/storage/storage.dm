@@ -9,17 +9,17 @@
 	name = "storage"
 	icon = 'icons/obj/items/storage.dmi'
 	w_class = SIZE_MEDIUM
-	var/list/can_hold = new/list() 					//List of objects which this item can store (if set, it can't store anything else)
-	var/list/cant_hold = new/list() 				//List of objects which this item can't store (in effect only if can_hold isn't set)
-	var/list/bypass_w_limit = new/list() 			//a list of objects which this item can store despite not passing the w_class limit
-	var/list/click_border_start = new/list() 		//In slotless storage, stores areas where clicking will refer to the associated item
+	var/list/can_hold = new/list() //List of objects which this item can store (if set, it can't store anything else)
+	var/list/cant_hold = new/list() //List of objects which this item can't store (in effect only if can_hold isn't set)
+	var/list/bypass_w_limit = new/list() //a list of objects which this item can store despite not passing the w_class limit
+	var/list/click_border_start = new/list() //In slotless storage, stores areas where clicking will refer to the associated item
 	var/list/click_border_end = new/list()
-	var/list/hearing_items							//A list of items that use hearing for the purpose of performance
-	var/max_w_class = SIZE_SMALL 					//Max size of objects that this object can store
-	var/max_storage_space = 14 						//The sum of the storage costs of all the items in this storage item.
-	var/storage_slots = 7 							//The number of storage slots in this container.
+	var/list/hearing_items //A list of items that use hearing for the purpose of performance
+	var/max_w_class = SIZE_SMALL //Max size of objects that this object can store
+	var/max_storage_space = 14 //The sum of the storage costs of all the items in this storage item.
+	var/storage_slots = 7 //The number of storage slots in this container.
 	var/atom/movable/screen/storage/boxes = null
-	var/atom/movable/screen/storage/storage_start = null 	//storage UI
+	var/atom/movable/screen/storage/storage_start = null //storage UI
 	var/atom/movable/screen/storage/storage_continue = null
 	var/atom/movable/screen/storage/storage_end = null
 	var/atom/movable/screen/storage/stored_start = null
@@ -27,11 +27,11 @@
 	var/atom/movable/screen/storage/stored_end = null
 	var/atom/movable/screen/close/closer = null
 	var/foldable = null
-	var/use_sound = "rustle"						//sound played when used. null for no sound.
-	var/opened = FALSE 								//Has it been opened before?
-	var/list/content_watchers 						//list of mobs currently seeing the storage's contents
+	var/use_sound = "rustle" //sound played when used. null for no sound.
+	var/opened = FALSE //Has it been opened before?
+	var/list/content_watchers //list of mobs currently seeing the storage's contents
 	var/storage_flags = STORAGE_FLAGS_DEFAULT
-	var/has_gamemode_skin = FALSE					///Whether to use map-variant skins.
+	var/has_gamemode_skin = FALSE ///Whether to use map-variant skins.
 
 
 /obj/item/storage/MouseDrop(obj/over_object as obj)
@@ -433,7 +433,7 @@ var/list/global/item_storage_box_cache = list()
 		return 0
 
 	if(W.w_class >= src.w_class && (isstorage(W)))
-		if(!istype(src, /obj/item/storage/backpack/holding))	//bohs should be able to hold backpacks again. The override for putting a boh in a boh is in backpack.dm.
+		if(!istype(src, /obj/item/storage/backpack/holding)) //bohs should be able to hold backpacks again. The override for putting a boh in a boh is in backpack.dm.
 			if(!stop_messages)
 				to_chat(usr, SPAN_NOTICE("[src] cannot hold [W] as it's a storage item of the same size."))
 			return 0 //To prevent the stacking of same sized storage items.
@@ -869,7 +869,7 @@ Returns FALSE if the atom isn't somewhere inside the container's contents.**/
 		cur_atom = cur_atom.loc
 
 	if(!cur_atom)
-		return FALSE	//inside something with a null loc.
+		return FALSE //inside something with a null loc.
 
 /**Like get storage depth to, but returns the depth to the nearest turf, inclusively
 Returns FALSE if no top level turf (a loc was null somewhere, or a non-turf atom's loc was an area somehow).**/

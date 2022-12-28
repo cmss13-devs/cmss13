@@ -50,14 +50,14 @@ Class Variables:
 		Currently unused.
 
 Class Procs:
-	New()					 'game/machinery/machine.dm'
+	New()  'game/machinery/machine.dm'
 
-	Dispose()					 'game/machinery/machine.dm'
+	Dispose()  'game/machinery/machine.dm'
 
 		Default definition uses 'use_power', 'power_channel', 'active_power_usage',
 		'idle_power_usage', 'powered()', and 'use_power()' implement behavior.
 
-	powered(chan = EQUIP)		 'modules/power/power.dm'
+	powered(chan = EQUIP)  'modules/power/power.dm'
 		Checks to see if area that contains the object has power available for power
 		channel given in 'chan'.
 
@@ -66,30 +66,30 @@ Class Procs:
 		If it's autocalled then everything is normal, if something else calls use_power we are going to
 		need to recalculate the power two ticks in a row.
 
-	power_change()			   'modules/power/power.dm'
+	power_change()    'modules/power/power.dm'
 		Called by the area that contains the object when ever that area under goes a
 		power state change (area runs out of power, or area channel is turned off).
 
-	RefreshParts()			   'game/machinery/machine.dm'
+	RefreshParts()    'game/machinery/machine.dm'
 		Called to refresh the variables in the machine that are contributed to by parts
 		contained in the component_parts list. (example: glass and material amounts for
 		the autolathe)
 
 		Default definition does nothing.
 
-	assign_uid()			   'game/machinery/machine.dm'
+	assign_uid()    'game/machinery/machine.dm'
 		Called by machine to assign a value to the uid variable.
 
-	process()				  'game/machinery/machine.dm'
+	process()   'game/machinery/machine.dm'
 		Called by the 'master_controller' once per game tick for each machine that is listed in the 'machines' list.
 
 
 	Compiled by Aygar
 */
 
-//		 NONE -- no auto power use
-//		 IDLE -- machine is using power at its idle power level
-//		 ACTIVE -- machine is using power at its active power level
+//  NONE -- no auto power use
+//  IDLE -- machine is using power at its idle power level
+//  ACTIVE -- machine is using power at its active power level
 
 /obj/structure/machinery
 	name = "machinery"
@@ -183,7 +183,7 @@ Class Procs:
 //sets the use_power var and then forces an area power update
 /obj/structure/machinery/proc/update_use_power(var/new_use_power)
 	if (new_use_power == use_power)
-		return	//don't need to do anything
+		return //don't need to do anything
 
 	var/delta_power = 0 //figuring how much our power delta is
 	delta_power -= calculate_current_power_usage() //current usage

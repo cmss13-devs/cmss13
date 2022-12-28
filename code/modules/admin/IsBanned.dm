@@ -38,7 +38,7 @@ world/IsBanned(key,address,computer_id, type, real_bans_only=FALSE)
 	if(.)
 		return .
 
-	return ..()	//default pager ban stuff
+	return ..() //default pager ban stuff
 
 
 #endif

@@ -44,7 +44,7 @@
 				break // Don't need to keep looking
 
 /*
- *	Coerce Resin ability
+ * Coerce Resin ability
  */
 
 // Remote resin building

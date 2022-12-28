@@ -57,7 +57,7 @@
 /obj/structure/largecrate/lisa
 	icon_state = "lisacrate"
 
-/obj/structure/largecrate/lisa/attackby(obj/item/W as obj, mob/user as mob)	//ugly but oh well
+/obj/structure/largecrate/lisa/attackby(obj/item/W as obj, mob/user as mob) //ugly but oh well
 	if(HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))
 		new /mob/living/simple_animal/corgi/Lisa(loc)
 	..()
@@ -302,7 +302,7 @@
 	num_guns = 3
 	num_mags = 3
 	name = "\improper Hyperdyne firearm crate"
-	stuff = list(	/obj/item/weapon/gun/revolver/nagant = /obj/item/ammo_magazine/revolver/upp,
+	stuff = list( /obj/item/weapon/gun/revolver/nagant = /obj/item/ammo_magazine/revolver/upp,
 					/obj/item/weapon/gun/pistol/c99 = /obj/item/ammo_magazine/pistol/c99,
 					/obj/item/weapon/gun/pistol/kt42 = /obj/item/ammo_magazine/pistol/kt42,
 					/obj/item/weapon/gun/rifle/mar40 = /obj/item/ammo_magazine/rifle/mar40,
@@ -315,7 +315,7 @@
 	num_guns = 1
 	num_mags = 5
 	name = "\improper Black market firearm crate"
-	stuff = list(	/obj/item/weapon/gun/pistol/holdout = /obj/item/ammo_magazine/pistol/holdout,
+	stuff = list( /obj/item/weapon/gun/pistol/holdout = /obj/item/ammo_magazine/pistol/holdout,
 					/obj/item/weapon/gun/pistol/highpower = /obj/item/ammo_magazine/pistol/highpower,
 					/obj/item/weapon/gun/pistol/m1911 = /obj/item/ammo_magazine/pistol/m1911,
 					/obj/item/weapon/gun/pistol/heavy = /obj/item/ammo_magazine/pistol/heavy,

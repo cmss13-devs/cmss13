@@ -56,7 +56,7 @@
 					// and reset by the behavior_delegate whenever the ability ends (because it can be ended by things like slashes, that we can't easily track here)
 	plasma_cost = 20
 
-	var/duration = 30 SECONDS 			// 30 seconds base
+	var/duration = 30 SECONDS // 30 seconds base
 	var/invis_timer_id = TIMER_ID_NULL
 	var/alpha_amount = 25
 	var/speed_buff = 0.20

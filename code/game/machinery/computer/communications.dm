@@ -1,6 +1,6 @@
 #define STATE_DEFAULT 1
 #define STATE_EVACUATION 2
-#define STATE_EVACUATION_CANCEL	3
+#define STATE_EVACUATION_CANCEL 3
 #define STATE_DISTRESS 4
 #define STATE_MESSAGELIST 5
 #define STATE_VIEWMESSAGE 6
@@ -257,8 +257,8 @@
 		if("viewmessage")
 			state = STATE_VIEWMESSAGE
 			if (!currmsg)
-				if(href_list["message-num"]) 	currmsg = text2num(href_list["message-num"])
-				else 							state = STATE_MESSAGELIST
+				if(href_list["message-num"]) currmsg = text2num(href_list["message-num"])
+				else state = STATE_MESSAGELIST
 
 		if("delmessage")
 			state = (currmsg) ? STATE_DELMESSAGE : STATE_MESSAGELIST

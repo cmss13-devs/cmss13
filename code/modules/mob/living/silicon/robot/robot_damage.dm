@@ -58,7 +58,7 @@
 
 /mob/living/silicon/robot/heal_limb_damage(var/brute, var/burn)
 	var/list/datum/robot_component/parts = get_damaged_components(brute,burn)
-	if(!parts.len)	return
+	if(!parts.len) return
 	var/datum/robot_component/picked = pick(parts)
 	picked.heal_damage(brute,burn)
 
@@ -109,7 +109,7 @@
 		parts -= picked
 
 /mob/living/silicon/robot/take_overall_damage(var/brute = 0, var/burn = 0, var/sharp = 0, var/used_weapon = null)
-	if(status_flags & GODMODE)	return	//godmode
+	if(status_flags & GODMODE) return //godmode
 	var/list/datum/robot_component/parts = get_damageable_components()
 
 	//Combat shielding absorbs a percentage of damage directly into the cell.
@@ -142,7 +142,7 @@
 
 		picked.take_damage(brute,burn)
 
-		brute	-= (picked.brute_damage - brute_was)
-		burn	-= (picked.electronics_damage - burn_was)
+		brute -= (picked.brute_damage - brute_was)
+		burn -= (picked.electronics_damage - burn_was)
 
 		parts -= picked

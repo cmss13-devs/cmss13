@@ -8,7 +8,7 @@
 * @return nothing
 */
 /client/verb/nanoclose(var/uiref as text)
-	set hidden = 1	// hide this verb from the user's panel
+	set hidden = 1 // hide this verb from the user's panel
 	set name = "nanoclose"
 
 	var/datum/nanoui/ui = locate(uiref)
@@ -18,7 +18,7 @@
 
 		if(ui.ref)
 			var/href = "close=1"
-			src.Topic(href, params2list(href), ui.ref)	// this will direct to the atom's Topic() proc via client.Topic()
+			src.Topic(href, params2list(href), ui.ref) // this will direct to the atom's Topic() proc via client.Topic()
 		else if (ui.on_close_logic)
 			// no atomref specified (or not found)
 			// so just reset the user mob's machine var

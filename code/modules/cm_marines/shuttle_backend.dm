@@ -319,15 +319,15 @@ x_pos = 0 1 2 3 4 5 6
 	)
 
 /*
-x_pos = 0 1 2 3 4 5 6 7 8 9 ....	   15 16
+x_pos = 0 1 2 3 4 5 6 7 8 9 ....    15 16
 		| | | | | | | | | | | | | | | | | |
-		O O O O O O O O	O O O O O O O O O O	-- y_pos = 6
+		O O O O O O O O O O O O O O O O O O -- y_pos = 6
 		O X X X X X X X X X X X X X X X X O -- y_pos = 5
 		O X X X X X X X X X X X X X X X X O -- y_pos = 4
-		O X X X X X X X X X X X X X X X X O	-- y_pos = 3
+		O X X X X X X X X X X X X X X X X O -- y_pos = 3
 		O X X X X X X X X X X X X X X X X O -- y_pos = 2
 		O X X X X X X X X X X X X X X X X O -- y_pos = 1
-		T O O O O O O O O O O O O O O O O O	-- y_pos = 0
+		T O O O O O O O O O O O O O O O O O -- y_pos = 0
 */
 
 	s_info["CORSAT Monorail"] = newlist(
@@ -381,7 +381,7 @@ x_pos = 0 1 2 3 4 5 6 7 8 9 ....	   15 16
 
 
 // TLDR: Computes a shuttle_tag given the passed string, retrieves that shuttle datum,
-// 		 and dumps the source turf of whatever called it into the passed list.
+//  and dumps the source turf of whatever called it into the passed list.
 #define SHUTTLE_LINK_LOCATIONS(T, L) \
 ..(); \
 if(!shuttle_controller) { qdel(src); return FALSE }; \

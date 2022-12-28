@@ -12,7 +12,7 @@
 var/list/archive_diseases = list()
 
 // The order goes from easy to cure to hard to cure.
-var/list/advance_cures = 	list(
+var/list/advance_cures = list(
 									"nutriment", "sugar", "orangejuice",
 									"spaceacillin", "kelotane", "ethanol",
 									"leporazine", "lipozine",
@@ -109,7 +109,7 @@ var/list/advance_cures = 	list(
 		if(resistance && !affected_mob.resistances[id])
 			affected_mob.resistances[id] = id
 		remove_virus()
-	qdel(src)	//delete the datum to stop it processing
+	qdel(src) //delete the datum to stop it processing
 	return
 
 // Returns the advance disease with a different reference memory.

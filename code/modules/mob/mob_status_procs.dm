@@ -133,7 +133,7 @@
 		knocked_down = max(max(knocked_down,amount),0)
 		knockdown_clock_adjustment()
 		knocked_down_callback_check()
-		update_canmove()	//updates lying, canmove and icons
+		update_canmove() //updates lying, canmove and icons
 	return
 
 /mob/proc/SetKnockDown(amount)
@@ -141,14 +141,14 @@
 		knocked_down = max(amount,0)
 		knockdown_clock_adjustment()
 		knocked_down_callback_check()
-		update_canmove()	//updates lying, canmove and icons
+		update_canmove() //updates lying, canmove and icons
 	return
 
 /mob/proc/AdjustKnockDown(amount)
 	if(status_flags & CANKNOCKDOWN)
 		knocked_down = max(knocked_down + amount,0)
 		knocked_down_callback_check()
-		update_canmove()	//updates lying, canmove and icons
+		update_canmove() //updates lying, canmove and icons
 	return
 
 /mob/proc/knockout_clock_adjustment()
@@ -159,7 +159,7 @@
 		knocked_out = max(max(knocked_out,amount),0)
 		knockout_clock_adjustment()
 		knocked_out_callback_check()
-		update_canmove()	//updates lying, canmove and icons
+		update_canmove() //updates lying, canmove and icons
 	return
 
 /mob/proc/SetKnockOut(amount)
@@ -167,14 +167,14 @@
 		knocked_out = max(amount,0)
 		knockout_clock_adjustment()
 		knocked_out_callback_check()
-		update_canmove()	//updates lying, canmove and icons
+		update_canmove() //updates lying, canmove and icons
 	return
 
 /mob/proc/AdjustKnockOut(amount)
 	if(status_flags & CANKNOCKOUT)
 		knocked_out = max(knocked_out + amount,0)
 		knocked_out_callback_check()
-		update_canmove()	//updates lying, canmove and icons
+		update_canmove() //updates lying, canmove and icons
 	return
 
 /mob/proc/Sleeping(amount)

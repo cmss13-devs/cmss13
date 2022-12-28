@@ -163,7 +163,7 @@
 		return TRUE // no action required
 
 	var/tablecount = internal_table_count(table_name)
-	// check if we have any records	
+	// check if we have any records 
 	if(tablecount == 0)
 		// just MURDER IT
 		return internal_drop_table(table_name) && internal_create_table(table_name, field_types) && internal_record_table_in_sys(type_name, table_name, field_types, id)
@@ -550,7 +550,7 @@
 	for(var/id in ids)
 		if(!first)
 			idtext+=","
-		idtext += "[text2num(id)]"	
+		idtext += "[text2num(id)]" 
 		first = FALSE
 	return {"
 		DELETE FROM `[connection.database]`.`[table_name]` WHERE id IN ([idtext]);
@@ -578,19 +578,19 @@
 			return "BIGINT"
 		if(DB_FIELDTYPE_CHAR)
 			return "VARCHAR(1)"
-		if(DB_FIELDTYPE_STRING_SMALL)	
+		if(DB_FIELDTYPE_STRING_SMALL) 
 			return "VARCHAR(16)"
-		if(DB_FIELDTYPE_STRING_MEDIUM)	
+		if(DB_FIELDTYPE_STRING_MEDIUM) 
 			return "VARCHAR(64)"
-		if(DB_FIELDTYPE_STRING_LARGE)	
+		if(DB_FIELDTYPE_STRING_LARGE) 
 			return "VARCHAR(256)"
-		if(DB_FIELDTYPE_STRING_MAX)	
+		if(DB_FIELDTYPE_STRING_MAX) 
 			return "VARCHAR(4000)"
-		if(DB_FIELDTYPE_DATE)	
+		if(DB_FIELDTYPE_DATE) 
 			return "DATETIME"
-		if(DB_FIELDTYPE_TEXT)	
+		if(DB_FIELDTYPE_TEXT) 
 			return "TEXT"
-		if(DB_FIELDTYPE_BLOB)	
+		if(DB_FIELDTYPE_BLOB) 
 			return "BLOB"
 		if(DB_FIELDTYPE_DECIMAL)
 			return "DECIMAL(18,5)"
@@ -649,7 +649,7 @@
 			var/result_true = case_f.result_true
 			var/result_false = case_f.result_false
 			var/condition_text = get_filter(case_f.condition, field_alias, pflds)
-			var/true_text			
+			var/true_text 
 			if(result_true)
 				var/datum/db/native_function/native_true = result_true
 				if(istype(native_true))
@@ -673,7 +673,7 @@
 				false_text = "ELSE ([false_text]) "
 			return "CASE WHEN [condition_text] THEN ([true_text]) [false_text] END"
 		else
-			return NF.default_to_string(field_alias, pflds)	
+			return NF.default_to_string(field_alias, pflds) 
 
 /datum/db/adapter/brsql_adapter/proc/internal_generate_view_query(var/datum/entity_view_meta/view, var/list/shared_options, var/list/datum/entity_meta/meta_to_load, var/list/meta_to_table, var/list/datum/db/filter/join_conditions, var/list/field_alias)
 	var/list/pre_pflds = list()
@@ -734,7 +734,7 @@
 		var/group_text = "GROUP BY "
 		var/index_order = 1
 		for(var/fld in view.group_by)
-			var/field = field_alias[fld]			
+			var/field = field_alias[fld] 
 			group_text += "[field]"
 			if(index_order != group_length)
 				group_text += ","

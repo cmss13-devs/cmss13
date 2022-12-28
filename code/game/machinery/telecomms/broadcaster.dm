@@ -132,12 +132,12 @@
 	/* ###### Organize the receivers into categories for displaying the message ###### */
 
 	// Understood the message:
-	var/list/heard_masked 	= list() // masked name or no real name
-	var/list/heard_normal 	= list() // normal message
+	var/list/heard_masked = list() // masked name or no real name
+	var/list/heard_normal = list() // normal message
 
 	// Did not understand the message:
-	var/list/heard_voice 	= list() // voice message	(ie "chimpers")
-	var/list/heard_garbled	= list() // garbled message (ie "f*c* **u, **i*er!")
+	var/list/heard_voice = list() // voice message (ie "chimpers")
+	var/list/heard_garbled = list() // garbled message (ie "f*c* **u, **i*er!")
 	var/list/heard_gibberish= list() // completely screwed over message (ie "F%! (O*# *#!<>&**%!")
 
 	if(M)

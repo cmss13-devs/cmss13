@@ -112,8 +112,8 @@
 				if (M.timeofdeath + 6000 < world.time)
 					continue
 			var/turf/T = get_turf(M)
-			if(T)	continue
-			if(is_admin_level(T.z))	continue
+			if(T) continue
+			if(is_admin_level(T.z)) continue
 			var/tmpname = M.real_name
 			if(areaindex[tmpname])
 				tmpname = "[tmpname] ([++areaindex[tmpname]])"
@@ -146,11 +146,11 @@
 	return
 
 /proc/find_loc(obj/R as obj)
-	if (!R)	return null
+	if (!R) return null
 	var/turf/T = R.loc
 	while(!istype(T, /turf))
 		T = T.loc
-		if(!T || istype(T, /area))	return null
+		if(!T || istype(T, /area)) return null
 	return T
 
 /obj/structure/machinery/teleport
@@ -205,7 +205,7 @@
 		s.set_up(5, 1, src)
 		s.start()
 		accurate = 1
-		spawn(5 MINUTES)	accurate = 0 //Accurate teleporting for 5 minutes
+		spawn(5 MINUTES) accurate = 0 //Accurate teleporting for 5 minutes
 		for(var/mob/B in hearers(src, null))
 			B.show_message(SPAN_NOTICE("Test fire completed."), SHOW_MESSAGE_AUDIBLE)
 	return

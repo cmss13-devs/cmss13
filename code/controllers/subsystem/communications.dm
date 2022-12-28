@@ -69,119 +69,119 @@ Radiochat range: 1441 to 1489 (most devices refuse to be tune to other frequency
 var/const/MIN_FREE_FREQ = 1201 // -------------------------------------------------
 
 //Misc channels
-var/const/YAUT_FREQ 	= 1205
-var/const/DUT_FREQ 		= 1210
+var/const/YAUT_FREQ = 1205
+var/const/DUT_FREQ = 1210
 
-var/const/VAI_FREQ		= 1215
+var/const/VAI_FREQ = 1215
 
 //WY Channels (1230-1249)
-var/const/WY_FREQ 		= 1231
-var/const/PMC_CMD_FREQ	= 1232
-var/const/PMC_FREQ 		= 1233
-var/const/PMC_ENGI_FREQ	= 1234
-var/const/PMC_MED_FREQ 	= 1235
-var/const/PMC_CCT_FREQ 	= 1236
-var/const/WY_WO_FREQ 	= 1239
+var/const/WY_FREQ = 1231
+var/const/PMC_CMD_FREQ = 1232
+var/const/PMC_FREQ = 1233
+var/const/PMC_ENGI_FREQ = 1234
+var/const/PMC_MED_FREQ = 1235
+var/const/PMC_CCT_FREQ = 1236
+var/const/WY_WO_FREQ = 1239
 
 //UPP Channels (1250-1269)
-var/const/UPP_FREQ		= 1251
-var/const/UPP_CMD_FREQ	= 1252
-var/const/UPP_ENGI_FREQ	= 1253
-var/const/UPP_MED_FREQ	= 1254
-var/const/UPP_CCT_FREQ	= 1255
-var/const/UPP_KDO_FREQ	= 1259
+var/const/UPP_FREQ = 1251
+var/const/UPP_CMD_FREQ = 1252
+var/const/UPP_ENGI_FREQ = 1253
+var/const/UPP_MED_FREQ = 1254
+var/const/UPP_CCT_FREQ = 1255
+var/const/UPP_KDO_FREQ = 1259
 
 //CLF Channels (1270-1289)
-var/const/CLF_FREQ		= 1271
-var/const/CLF_CMD_FREQ	= 1272
-var/const/CLF_ENGI_FREQ	= 1273
-var/const/CLF_MED_FREQ	= 1274
-var/const/CLF_CCT_FREQ	= 1275
+var/const/CLF_FREQ = 1271
+var/const/CLF_CMD_FREQ = 1272
+var/const/CLF_ENGI_FREQ = 1273
+var/const/CLF_MED_FREQ = 1274
+var/const/CLF_CCT_FREQ = 1275
 
-var/const/MIN_FREQ 		= 1460 // ------------------------------------------------------
-var/const/PUB_FREQ 		= 1461
-var/const/MAX_FREQ 		= 1468 // ------------------------------------------------------
+var/const/MIN_FREQ = 1460 // ------------------------------------------------------
+var/const/PUB_FREQ = 1461
+var/const/MAX_FREQ = 1468 // ------------------------------------------------------
 
 //USCM High Command (USCM 1470-1499)
-var/const/HC_FREQ		= 1471
-var/const/SOF_FREQ		= 1472
+var/const/HC_FREQ = 1471
+var/const/SOF_FREQ = 1472
 
 //Ship department channels
-var/const/COMM_FREQ 	= 1481
-var/const/MED_FREQ 		= 1482
-var/const/ENG_FREQ 		= 1483
-var/const/SEC_FREQ 		= 1484
-var/const/REQ_FREQ 		= 1485
-var/const/JTAC_FREQ 	= 1486
-var/const/INTEL_FREQ	= 1487
+var/const/COMM_FREQ = 1481
+var/const/MED_FREQ = 1482
+var/const/ENG_FREQ = 1483
+var/const/SEC_FREQ = 1484
+var/const/REQ_FREQ = 1485
+var/const/JTAC_FREQ = 1486
+var/const/INTEL_FREQ = 1487
 
-var/const/DS1_FREQ		= 1488
-var/const/DS2_FREQ		= 1489
+var/const/DS1_FREQ = 1488
+var/const/DS2_FREQ = 1489
 
 //Marine Squad channels
-var/const/ALPHA_FREQ 	= 1491
-var/const/BRAVO_FREQ 	= 1492
-var/const/CHARLIE_FREQ 	= 1493
-var/const/DELTA_FREQ 	= 1494
-var/const/ECHO_FREQ 	= 1495
-var/const/CRYO_FREQ		= 1496
+var/const/ALPHA_FREQ = 1491
+var/const/BRAVO_FREQ = 1492
+var/const/CHARLIE_FREQ = 1493
+var/const/DELTA_FREQ = 1494
+var/const/ECHO_FREQ = 1495
+var/const/CRYO_FREQ = 1496
 
 //Civilian channels
-var/const/COLONY_FREQ	= 1469
+var/const/COLONY_FREQ = 1469
 
-var/const/AI_FREQ 		= 1500
+var/const/AI_FREQ = 1500
 
 var/const/MAX_FREE_FREQ = 1599 // -------------------------------------------------
 
 var/list/radiochannels = list(
-	RADIO_CHANNEL_YAUTJA		= YAUT_FREQ,
-	RADIO_CHANNEL_VAI			= VAI_FREQ,
-	RADIO_CHANNEL_DUTCH_DOZEN	= DUT_FREQ,
+	RADIO_CHANNEL_YAUTJA = YAUT_FREQ,
+	RADIO_CHANNEL_VAI = VAI_FREQ,
+	RADIO_CHANNEL_DUTCH_DOZEN = DUT_FREQ,
 
-	RADIO_CHANNEL_HIGHCOM		= HC_FREQ,
-	RADIO_CHANNEL_ALMAYER		= PUB_FREQ,
-	RADIO_CHANNEL_COMMAND		= COMM_FREQ,
-	RADIO_CHANNEL_MEDSCI		= MED_FREQ,
-	RADIO_CHANNEL_ENGI			= ENG_FREQ,
-	RADIO_CHANNEL_MP			= SEC_FREQ,
-	RADIO_CHANNEL_REQ			= REQ_FREQ,
-	RADIO_CHANNEL_JTAC			= JTAC_FREQ,
-	RADIO_CHANNEL_INTEL 		= INTEL_FREQ,
+	RADIO_CHANNEL_HIGHCOM = HC_FREQ,
+	RADIO_CHANNEL_ALMAYER = PUB_FREQ,
+	RADIO_CHANNEL_COMMAND = COMM_FREQ,
+	RADIO_CHANNEL_MEDSCI = MED_FREQ,
+	RADIO_CHANNEL_ENGI = ENG_FREQ,
+	RADIO_CHANNEL_MP = SEC_FREQ,
+	RADIO_CHANNEL_REQ = REQ_FREQ,
+	RADIO_CHANNEL_JTAC = JTAC_FREQ,
+	RADIO_CHANNEL_INTEL = INTEL_FREQ,
 
-	SQUAD_MARINE_1				= ALPHA_FREQ,
-	SQUAD_MARINE_2				= BRAVO_FREQ,
-	SQUAD_MARINE_3				= CHARLIE_FREQ,
-	SQUAD_MARINE_4				= DELTA_FREQ,
-	SQUAD_MARINE_5				= ECHO_FREQ,
-	SQUAD_MARINE_CRYO			= CRYO_FREQ,
-	SQUAD_SOF				= SOF_FREQ,
+	SQUAD_MARINE_1 = ALPHA_FREQ,
+	SQUAD_MARINE_2 = BRAVO_FREQ,
+	SQUAD_MARINE_3 = CHARLIE_FREQ,
+	SQUAD_MARINE_4 = DELTA_FREQ,
+	SQUAD_MARINE_5 = ECHO_FREQ,
+	SQUAD_MARINE_CRYO = CRYO_FREQ,
+	SQUAD_SOF = SOF_FREQ,
 
-	RADIO_CHANNEL_ALAMO			= DS1_FREQ,
-	RADIO_CHANNEL_NORMANDY 		= DS2_FREQ,
+	RADIO_CHANNEL_ALAMO = DS1_FREQ,
+	RADIO_CHANNEL_NORMANDY = DS2_FREQ,
 
-	RADIO_CHANNEL_COLONY		= COLONY_FREQ,
+	RADIO_CHANNEL_COLONY = COLONY_FREQ,
 
 
-	RADIO_CHANNEL_WY			= WY_FREQ,
-	RADIO_CHANNEL_PMC_GEN		= PMC_FREQ,
-	RADIO_CHANNEL_PMC_CMD		= PMC_CMD_FREQ,
-	RADIO_CHANNEL_PMC_ENGI		= PMC_ENGI_FREQ,
-	RADIO_CHANNEL_PMC_MED		= PMC_MED_FREQ,
-	RADIO_CHANNEL_PMC_CCT		= PMC_CCT_FREQ,
-	RADIO_CHANNEL_WY_WO			= WY_WO_FREQ,
+	RADIO_CHANNEL_WY = WY_FREQ,
+	RADIO_CHANNEL_PMC_GEN = PMC_FREQ,
+	RADIO_CHANNEL_PMC_CMD = PMC_CMD_FREQ,
+	RADIO_CHANNEL_PMC_ENGI = PMC_ENGI_FREQ,
+	RADIO_CHANNEL_PMC_MED = PMC_MED_FREQ,
+	RADIO_CHANNEL_PMC_CCT = PMC_CCT_FREQ,
+	RADIO_CHANNEL_WY_WO = WY_WO_FREQ,
 
-	RADIO_CHANNEL_UPP_GEN		= UPP_FREQ,
-	RADIO_CHANNEL_UPP_CMD		= UPP_CMD_FREQ,
-	RADIO_CHANNEL_UPP_ENGI		= UPP_ENGI_FREQ,
-	RADIO_CHANNEL_UPP_MED		= UPP_MED_FREQ,
-	RADIO_CHANNEL_UPP_CCT		= UPP_CCT_FREQ,
-	RADIO_CHANNEL_UPP_KDO		= UPP_KDO_FREQ,
+	RADIO_CHANNEL_UPP_GEN = UPP_FREQ,
+	RADIO_CHANNEL_UPP_CMD = UPP_CMD_FREQ,
+	RADIO_CHANNEL_UPP_ENGI = UPP_ENGI_FREQ,
+	RADIO_CHANNEL_UPP_MED = UPP_MED_FREQ,
+	RADIO_CHANNEL_UPP_CCT = UPP_CCT_FREQ,
+	RADIO_CHANNEL_UPP_KDO = UPP_KDO_FREQ,
 
-	RADIO_CHANNEL_CLF_GEN		= CLF_FREQ,
-	RADIO_CHANNEL_CLF_CMD		= CLF_CMD_FREQ,
-	RADIO_CHANNEL_CLF_ENGI		= CLF_ENGI_FREQ,
-	RADIO_CHANNEL_CLF_MED		= CLF_MED_FREQ,
-	RADIO_CHANNEL_CLF_CCT		= CLF_CCT_FREQ,
+	RADIO_CHANNEL_CLF_GEN = CLF_FREQ,
+	RADIO_CHANNEL_CLF_CMD = CLF_CMD_FREQ,
+	RADIO_CHANNEL_CLF_ENGI = CLF_ENGI_FREQ,
+	RADIO_CHANNEL_CLF_MED = CLF_MED_FREQ,
+	RADIO_CHANNEL_CLF_CCT = CLF_CCT_FREQ,
 )
 
 // Response Teams
@@ -199,8 +199,8 @@ var/list/radiochannels = list(
 //Depts - used for colors in headset.dm, as well as deciding what the marine comms tower can listen into
 #define DEPT_FREQS list(COMM_FREQ, MED_FREQ, ENG_FREQ, SEC_FREQ, ALPHA_FREQ, BRAVO_FREQ, CHARLIE_FREQ, DELTA_FREQ, ECHO_FREQ, CRYO_FREQ, REQ_FREQ, JTAC_FREQ, INTEL_FREQ, WY_FREQ)
 
-#define TRANSMISSION_WIRE	0
-#define TRANSMISSION_RADIO	1
+#define TRANSMISSION_WIRE 0
+#define TRANSMISSION_RADIO 1
 
 /* filters */
 //When devices register with the radio controller, they might register under a certain filter.
@@ -385,8 +385,8 @@ SUBSYSTEM_DEF(radio)
 		devices_line = new
 		devices[filter] = devices_line
 	devices_line+=device
-//			var/list/obj/devices_line___ = devices[filter_str]
-//			var/l = devices_line___.len
+// var/list/obj/devices_line___ = devices[filter_str]
+// var/l = devices_line___.len
 	//log_admin("DEBUG: devices_line.len=[devices_line.len]")
 	//log_admin("DEBUG: devices(filter_str).len=[l]")
 

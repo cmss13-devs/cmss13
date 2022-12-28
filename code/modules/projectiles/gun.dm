@@ -13,11 +13,11 @@
 	dropvol = 15
 	matter = null
 						//Guns generally have their own unique levels.
-	w_class 	= SIZE_MEDIUM
-	throwforce 	= 5
+	w_class = SIZE_MEDIUM
+	throwforce = 5
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 5
-	force 		= 5
+	force = 5
 	attack_verb = null
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/items_lefthand_1.dmi',
@@ -29,25 +29,25 @@
 	var/accepted_ammo = list()
 	///Determines what kind of bullet is created when the gun is unloaded - used to match rounds to magazines. Set automatically when reloading.
 	var/caliber
-	var/muzzle_flash 	= "muzzle_flash"
+	var/muzzle_flash = "muzzle_flash"
 	///muzzle flash brightness
 	var/muzzle_flash_lum = 3
 
-	var/fire_sound 		= 'sound/weapons/Gunshot.ogg'
+	var/fire_sound = 'sound/weapons/Gunshot.ogg'
 	/// If fire_sound is null, it will pick a sound from the list here instead.
 	var/list/fire_sounds = list('sound/weapons/Gunshot.ogg', 'sound/weapons/gun_uzi.ogg')
 	var/firesound_volume = 60 //Volume of gunshot, adjust depending on volume of shot
 	///Does our gun have a unique empty mag sound? If so use instead of pitch shifting.
-	var/fire_rattle		= null
-	var/unload_sound 	= 'sound/weapons/flipblade.ogg'
-	var/empty_sound 	= 'sound/weapons/smg_empty_alarm.ogg'
+	var/fire_rattle = null
+	var/unload_sound = 'sound/weapons/flipblade.ogg'
+	var/empty_sound = 'sound/weapons/smg_empty_alarm.ogg'
 	//We don't want these for guns that don't have them.
-	var/reload_sound 	= null
-	var/cocked_sound 	= null
+	var/reload_sound = null
+	var/cocked_sound = null
 	///world.time value, to prevent COCK COCK COCK COCK
-	var/cock_cooldown	= 0
+	var/cock_cooldown = 0
 	///Delay before we can cock again, in tenths of seconds
-	var/cock_delay		= 30
+	var/cock_delay = 30
 
 	/**How the bullet will behave once it leaves the gun, also used for basic bullet damage and effects, etc.
 	Ammo will be replaced on New() for things that do not use mags.**/
@@ -61,36 +61,36 @@
 
 	//Basic stats.
 	///Multiplier. Increased and decreased through attachments. Multiplies the projectile's accuracy by this number.
-	var/accuracy_mult 			= 0
+	var/accuracy_mult = 0
 	///Multiplier. Increased and decreased through attachments. Multiplies the projectile's damage by this number.
-	var/damage_mult 			= 1
+	var/damage_mult = 1
 	///Multiplier. Increased and decreased through attachments. Multiplies the projectile's damage bleed (falloff) by this number.
-	var/damage_falloff_mult 	= 1
+	var/damage_falloff_mult = 1
 	///Multiplier. Increased and decreased through attachments. Multiplies the projectile's damage bleed (buildup) by this number.
-	var/damage_buildup_mult		= 1
+	var/damage_buildup_mult = 1
 	///Screen shake when the weapon is fired.
-	var/recoil 					= 0
+	var/recoil = 0
 	///How much the bullet scatters when fired.
-	var/scatter					= 0
+	var/scatter = 0
 	/// Added velocity to fired bullet.
-	var/velocity_add			= 0
+	var/velocity_add = 0
 	///Multiplier. Increases or decreases how much bonus scatter is added with each bullet during burst fire (wielded only).
-	var/burst_scatter_mult		= 4
+	var/burst_scatter_mult = 4
 
 	///What minimum range the weapon deals full damage, builds up the closer you get. 0 for no minimum.
-	var/effective_range_min		= 0
+	var/effective_range_min = 0
 	///What maximum range the weapon deals full damage, tapers off using damage_falloff after hitting this value. 0 for no maximum.
-	var/effective_range_max		= 0
+	var/effective_range_max = 0
 
 	///Multiplier. Increased and decreased through attachments. Multiplies the projectile's accuracy when unwielded by this number.
-	var/accuracy_mult_unwielded 		= 1
+	var/accuracy_mult_unwielded = 1
 	///Multiplier. Increased and decreased through attachments. Multiplies the gun's recoil when unwielded by this number.
-	var/recoil_unwielded 				= 0
+	var/recoil_unwielded = 0
 	///Multiplier. Increased and decreased through attachments. Multiplies the projectile's scatter when the gun is unwielded by this number.
-	var/scatter_unwielded 				= 0
+	var/scatter_unwielded = 0
 
 	///Multiplier. Increased and decreased through attachments. Multiplies the accuracy/scatter penalty of the projectile when firing onehanded while moving.
-	var/movement_onehanded_acc_penalty_mult = 5				//Multiplier. Increased and decreased through attachments. Multiplies the accuracy/scatter penalty of the projectile when firing onehanded while moving.
+	var/movement_onehanded_acc_penalty_mult = 5 //Multiplier. Increased and decreased through attachments. Multiplies the accuracy/scatter penalty of the projectile when firing onehanded while moving.
 
 	///For regular shots, how long to wait before firing again.
 	var/fire_delay = 0
@@ -98,28 +98,28 @@
 	var/last_fired = 0
 
 	///Self explanatory. How much does aiming (wielding the gun) slow you
-	var/aim_slowdown	= 0
+	var/aim_slowdown = 0
 	///How long between wielding and firing in tenths of seconds
-	var/wield_delay		= WIELD_DELAY_FAST
+	var/wield_delay = WIELD_DELAY_FAST
 	///Storing value for wield delay.
-	var/wield_time		= 0
+	var/wield_time = 0
 	///Storing value for guaranteed delay
 	var/guaranteed_delay_time = 0
 	///Storing value for how long pulling a gun takes before you can use it
-	var/pull_time		= 0
+	var/pull_time = 0
 
 	///Determines what happens when you fire a gun before its wield or pull time has finished. This one is extra scatter and an acc. malus.
-	var/delay_style		= WEAPON_DELAY_SCATTER_AND_ACCURACY
+	var/delay_style = WEAPON_DELAY_SCATTER_AND_ACCURACY
 
 	//Burst fire.
 	///How many shots can the weapon shoot in burst? Anything less than 2 and you cannot toggle burst.
-	var/burst_amount 	= 1
+	var/burst_amount = 1
 	///The delay in between shots. Lower = less delay = faster.
-	var/burst_delay 	= 1
+	var/burst_delay = 1
 	///When burst-firing, this number is extra time before the weapon can fire again. Depends on number of rounds fired.
-	var/extra_delay 	= 0
+	var/extra_delay = 0
 	///When PB burst firing and handing off to /fire after a target moves out of range, this is how many bullets have been fired.
-	var/PB_burst_bullets_fired		= 0
+	var/PB_burst_bullets_fired = 0
 
 	// Full auto
 	///Whether or not the gun is firing full-auto
@@ -142,9 +142,9 @@
 	var/tmp/list/mob/living/target
 	///Used to fire faster at more than one person.
 	var/tmp/mob/living/last_moved_mob
-	var/tmp/lock_time 		= -100
+	var/tmp/lock_time = -100
 	///Used to determine if you can target multiple people.
-	var/automatic 			= 0
+	var/automatic = 0
 	///So that it doesn't spam them with the fact they cannot hit them.
 	var/tmp/told_cant_shoot = 0
 
@@ -229,14 +229,14 @@
 
 
 //----------------------------------------------------------
-				//					\\
+				// \\
 				// NECESSARY PROCS  \\
-				//					\\
-				//					\\
+				// \\
+				// \\
 //----------------------------------------------------------
 
 /obj/item/weapon/gun/Initialize(mapload, spawn_empty) //You can pass on spawn_empty to make the sure the gun has no bullets or mag or anything when created.
-	. = ..()					//This only affects guns you can get from vendors for now. Special guns spawn with their own things regardless.
+	. = ..() //This only affects guns you can get from vendors for now. Special guns spawn with their own things regardless.
 	base_gun_icon = icon_state
 	attachable_overlays = list("muzzle" = null, "rail" = null, "under" = null, "stock" = null, "mag" = null, "special" = null)
 
@@ -441,11 +441,11 @@
 
 
 /obj/item/weapon/gun/Destroy()
-	in_chamber 		= null
-	ammo 			= null
-	current_mag 	= null
-	target 			= null
-	last_moved_mob 	= null
+	in_chamber = null
+	ammo = null
+	current_mag = null
+	target = null
+	last_moved_mob = null
 	if(flags_gun_features & GUN_FLASHLIGHT_ON)//Handle flashlight.
 		flags_gun_features &= ~GUN_FLASHLIGHT_ON
 		if(ismob(loc))
@@ -465,7 +465,7 @@
 		O.emp_act(severity)
 
 /obj/item/weapon/gun/equipped(mob/user, slot)
-	if(flags_item & NODROP)	return
+	if(flags_item & NODROP) return
 	if(slot != WEAR_L_HAND && slot != WEAR_R_HAND)
 		stop_aim()
 		if (user.client)
@@ -516,8 +516,8 @@
 	if(!(flags_gun_features & (GUN_INTERNAL_MAG|GUN_UNUSUAL_DESIGN))) //Internal mags and unusual guns have their own stuff set.
 		if(current_mag && current_mag.current_rounds > 0)
 			if(flags_gun_features & GUN_AMMO_COUNTER) dat += "Ammo counter shows [current_mag.current_rounds] round\s remaining.<br>"
-			else 								dat += "It's loaded[in_chamber?" and has a round chambered":""].<br>"
-		else 									dat += "It's unloaded[in_chamber?" but has a round chambered":""].<br>"
+			else dat += "It's loaded[in_chamber?" and has a round chambered":""].<br>"
+		else dat += "It's unloaded[in_chamber?" but has a round chambered":""].<br>"
 	if(!(flags_gun_features & GUN_UNUSUAL_DESIGN))
 		dat += "<a href='?src=\ref[src];list_stats=1'>\[See combat statistics]</a>"
 
@@ -715,10 +715,10 @@
 		slowdown = initial(slowdown)
 
 //----------------------------------------------------------
-			//									\\
+			// \\
 			// LOADING, RELOADING, AND CASINGS  \\
-			//									\\
-			//									\\
+			// \\
+			// \\
 //----------------------------------------------------------
 
 /obj/item/weapon/gun/proc/replace_ammo(mob/user = null, var/obj/item/ammo_magazine/magazine)
@@ -865,10 +865,10 @@ User can be passed as null, (a gun reloading itself for instance), so we need to
 
 
 //----------------------------------------------------------
-			//								\\
+			// \\
 			// AFTER ATTACK AND CHAMBERING  \\
-			//								\\
-			//								\\
+			// \\
+			// \\
 //----------------------------------------------------------
 
 /obj/item/weapon/gun/afterattack(atom/A, mob/living/user, flag, params)
@@ -1031,10 +1031,10 @@ and you're good to go.
 	to_chat(user, SPAN_WARNING("[src] jammed! You'll need a second to get it fixed!"))
 
 //----------------------------------------------------------
-		//									   \\
+		//    \\
 		// FIRE BULLET AND POINT BLANK/SUICIDE \\
-		//									   \\
-		//									   \\
+		//    \\
+		//    \\
 //----------------------------------------------------------
 
 /obj/item/weapon/gun/proc/Fire(atom/target, mob/living/user, params, reflex = 0, dual_wield)
@@ -1423,10 +1423,10 @@ and you're good to go.
 
 #undef EXECUTION_CHECK
 //----------------------------------------------------------
-				//							\\
+				// \\
 				// FIRE CYCLE RELATED PROCS \\
-				//							\\
-				//							\\
+				// \\
+				// \\
 //----------------------------------------------------------
 
 /**Returns TRUE if the weapon is loaded. Separate proc because there's no single way to check this for all weapons: chamber isn't always loaded,
@@ -1489,7 +1489,7 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 
 		if(active_attachable) //Underbarrel attached weapon?
 			next_shot += active_attachable.last_fired + active_attachable.attachment_firing_delay
-		else	//Normal fire.
+		else //Normal fire.
 			next_shot += last_fired + fire_delay
 
 		if(world.time >= next_shot + extra_delay) //check the last time it was fired.
@@ -1568,7 +1568,7 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 			var/scatter_debuff = 1 + (SETTLE_SCATTER_MULTIPLIER - 1) * pct_settled
 			projectile_to_fire.scatter *= scatter_debuff
 
-	projectile_to_fire.damage = round(projectile_to_fire.damage * damage_mult) 		// Apply gun damage multiplier to projectile damage
+	projectile_to_fire.damage = round(projectile_to_fire.damage * damage_mult) // Apply gun damage multiplier to projectile damage
 
 	// Apply effective range and falloffs/buildups
 	projectile_to_fire.damage_falloff = damage_falloff_mult * projectile_to_fire.ammo.damage_falloff

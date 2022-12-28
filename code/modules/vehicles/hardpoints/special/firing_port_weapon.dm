@@ -61,7 +61,7 @@
 		return FALSE
 
 	if(world.time < next_use)
-		if(cooldown >= 20)	//filter out guns with high firerate to prevent message spam.
+		if(cooldown >= 20) //filter out guns with high firerate to prevent message spam.
 			to_chat(user, SPAN_WARNING("You need to wait [SPAN_HELPFUL((next_use - world.time) / 10)] seconds before [name] can be used again."))
 		return FALSE
 
@@ -130,6 +130,6 @@
 		fire_projectile(user, T)
 		if(ammo.current_rounds <= 0)
 			break
-		if(bullets_fired < burst_amount)	//we need to sleep only if there are more bullets to shoot in the burst
+		if(bullets_fired < burst_amount) //we need to sleep only if there are more bullets to shoot in the burst
 			sleep(3)
 	to_chat(user, SPAN_WARNING("[src] Ammo: <b>[SPAN_HELPFUL(ammo ? ammo.current_rounds : 0)]/[SPAN_HELPFUL(ammo ? ammo.max_rounds : 0)]</b>"))

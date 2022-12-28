@@ -83,14 +83,14 @@
 			if(stat == CONSCIOUS) //even with 'eye-less' vision, unconsciousness makes you blind
 				blinded = 0
 			SetEyeBlur(0)
-		else if(!has_eyes())		   //Eyes cut out? Permablind.
+		else if(!has_eyes())    //Eyes cut out? Permablind.
 			eye_blind =  1
-			blinded =	1
+			blinded = 1
 			// we don't need to blur vision if they are blind...
-		else if(eye_blind)			   //Blindness, heals slowly over time
+		else if(eye_blind)    //Blindness, heals slowly over time
 			eye_blind =  max(eye_blind - 1, 0)
-			blinded =	1
-		else if(eye_blurry)			   //Blurry eyes heal slowly
+			blinded = 1
+		else if(eye_blurry)    //Blurry eyes heal slowly
 			ReduceEyeBlur(1)
 
 		//Ears

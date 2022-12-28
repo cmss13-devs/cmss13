@@ -1,7 +1,7 @@
-#define INPUT_CONTAINER	0
-#define INPUT_TURING	1
+#define INPUT_CONTAINER 0
+#define INPUT_TURING 1
 
-#define MODE_SPLIT 		0
+#define MODE_SPLIT 0
 #define MODE_DISTRIBUTE 1
 
 /obj/structure/machinery/centrifuge

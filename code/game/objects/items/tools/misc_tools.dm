@@ -20,7 +20,7 @@
 	item_state = "flight"
 	var/label = null
 	var/labels_left = 50
-	var/mode = 0	//off or on.
+	var/mode = 0 //off or on.
 	var/label_sound = 'sound/items/component_pickup.ogg'
 	var/remove_label_sound = 'sound/items/paper_ripped.ogg'
 
@@ -29,12 +29,12 @@
 /obj/item/tool/hand_labeler/afterattack(atom/A, mob/user as mob, proximity)
 	if(!proximity) return
 
-	if(!mode)	//if it's off, give up.
+	if(!mode) //if it's off, give up.
 		to_chat(user, SPAN_WARNING("\The [src] isn't on."))
 		return
 
-	if(A == loc)	// if placing the labeller into something (e.g. backpack)
-		return		// don't set a label
+	if(A == loc) // if placing the labeller into something (e.g. backpack)
+		return // don't set a label
 
 	if(!labels_left)
 		to_chat(user, SPAN_WARNING("No labels left."))
@@ -159,7 +159,7 @@
 	throw_range = 15
 	matter = list("metal" = 10)
 	inherent_traits = list(TRAIT_TOOL_PEN)
-	var/pen_colour = "black"	//what colour the ink is!
+	var/pen_colour = "black" //what colour the ink is!
 	var/on = TRUE
 	var/clicky = FALSE
 
@@ -278,7 +278,7 @@
 	if(!ismob(M))
 		return
 	to_chat(user, SPAN_WARNING("You stab [M] with the pen."))
-//	to_chat(M, SPAN_WARNING("You feel a tiny prick!")) //That's a whole lot of meta!
+// to_chat(M, SPAN_WARNING("You feel a tiny prick!")) //That's a whole lot of meta!
 	M.last_damage_data = create_cause_data(initial(name), user)
 	M.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been stabbed with [name] by [key_name(user)]</font>")
 	user.attack_log += text("\[[time_stamp()]\] <font color='red'>Used the [name] to stab [key_name(M)]</font>")
@@ -299,7 +299,7 @@
 /obj/item/tool/pen/sleepypen/Initialize()
 	. = ..()
 	create_reagents(30) //Used to be 300
-	reagents.add_reagent("chloralhydrate", 22)	//Used to be 100 sleep toxin//30 Chloral seems to be fatal, reducing it to 22./N
+	reagents.add_reagent("chloralhydrate", 22) //Used to be 100 sleep toxin//30 Chloral seems to be fatal, reducing it to 22./N
 
 
 /obj/item/tool/pen/sleepypen/attack(mob/M as mob, mob/user as mob)

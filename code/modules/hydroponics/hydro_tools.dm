@@ -130,7 +130,7 @@
 		if(1)
 			dat += "<br>It is carniovorous and will eat tray pests for sustenance."
 		if(2)
-			dat	+= "<br>It is carnivorous and poses a significant threat to living things around it."
+			dat += "<br>It is carnivorous and poses a significant threat to living things around it."
 
 	if(grown_seed.parasite)
 		dat += "<br>It is capable of parisitizing and gaining sustenance from tray weeds."

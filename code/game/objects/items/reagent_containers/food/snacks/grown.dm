@@ -611,8 +611,8 @@
 		if(T in orange(M,inner_teleport_radius)) continue
 		if(istype(T,/turf/open/space)) continue
 		if(T.density) continue
-		if(T.x>world.maxx-outer_teleport_radius || T.x<outer_teleport_radius)	continue
-		if(T.y>world.maxy-outer_teleport_radius || T.y<outer_teleport_radius)	continue
+		if(T.x>world.maxx-outer_teleport_radius || T.x<outer_teleport_radius) continue
+		if(T.y>world.maxy-outer_teleport_radius || T.y<outer_teleport_radius) continue
 		turfs += T
 	if(!turfs.len)
 		var/list/turfs_to_pick_from = list()

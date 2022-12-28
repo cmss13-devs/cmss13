@@ -109,7 +109,7 @@
 
 
 //------------------------------------
-//			Secure Crates
+// Secure Crates
 //------------------------------------
 
 /obj/structure/closet/crate/secure/ammo

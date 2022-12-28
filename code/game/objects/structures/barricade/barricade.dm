@@ -136,10 +136,10 @@
 			playsound(src, barricade_hitsound, 25, TRUE)
 
 /*
- *	Checks whether an atom can leave its current turf through the barricade.
- *	Returns the blocking direction.
- *		If the atom's movement is not blocked, returns 0.
- *		If the object is completely solid, returns ALL
+ * Checks whether an atom can leave its current turf through the barricade.
+ * Returns the blocking direction.
+ * If the atom's movement is not blocked, returns 0.
+ * If the object is completely solid, returns ALL
  */
 /obj/structure/barricade/BlockedExitDirs(atom/movable/mover, target_dir)
 	if(closed)
@@ -148,13 +148,13 @@
 	return ..()
 
 /*
- *	Checks whether an atom can pass through the barricade into its target turf.
- *	Returns the blocking direction.
- *		If the atom's movement is not blocked, returns 0.
- *		If the object is completely solid, returns ALL
+ * Checks whether an atom can pass through the barricade into its target turf.
+ * Returns the blocking direction.
+ * If the atom's movement is not blocked, returns 0.
+ * If the object is completely solid, returns ALL
  *
- *	Would be worth checking whether it is really necessary to have this CanPass
- *	proc be specific to barricades. Instead, have flags for blocking specific
+ * Would be worth checking whether it is really necessary to have this CanPass
+ * proc be specific to barricades. Instead, have flags for blocking specific
  *  mobs.
  */
 /obj/structure/barricade/BlockedPassDirs(atom/movable/mover, target_dir)
@@ -400,7 +400,7 @@
 		to_chat(usr, SPAN_WARNING("It is fastened to the floor, you can't rotate it!"))
 		return
 
-	user.next_move = world.time + 3	//slight spam prevention? you don't want every metal cade to turn into a doorway
+	user.next_move = world.time + 3 //slight spam prevention? you don't want every metal cade to turn into a doorway
 	setDir(turn(dir, 90 * rotation_dir))
 	update_icon()
 

@@ -17,7 +17,7 @@
 	var/cut_away = FALSE //internal organ has its links to the body severed, organ is ready to be removed.
 	var/removed_type //When removed, forms this object.
 	var/robotic_type //robotic version of removed_type, used in mechanize().
-	var/rejecting			// Is this organ already being rejected?
+	var/rejecting // Is this organ already being rejected?
 	var/obj/item/organ/organ_holder // If not in a body, held in this item.
 	var/list/transplant_data
 	///status of organ - is it healthy, broken, bruised?

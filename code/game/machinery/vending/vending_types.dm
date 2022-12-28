@@ -324,10 +324,10 @@
 
 			if(ispath(typepath,/obj/item/weapon/gun) || ispath(typepath,/obj/item/ammo_magazine) || ispath(typepath,/obj/item/explosive/grenade) || ispath(typepath,/obj/item/weapon/gun/flamer) || ispath(typepath,/obj/item/storage) )
 				R.display_color = "black"
-//			else if(ispath(typepath,/obj/item/clothing) || ispath(typepath,/obj/item/storage))
-//				R.display_color = "green"
-//			else if(ispath(typepath,/obj/item/reagent_container) || ispath(typepath,/obj/item/stack/medical))
-//				R.display_color = "blue"
+// else if(ispath(typepath,/obj/item/clothing) || ispath(typepath,/obj/item/storage))
+// R.display_color = "green"
+// else if(ispath(typepath,/obj/item/reagent_container) || ispath(typepath,/obj/item/stack/medical))
+// R.display_color = "blue"
 			else
 				R.display_color = "white"
 

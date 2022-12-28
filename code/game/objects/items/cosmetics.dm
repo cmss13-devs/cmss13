@@ -55,7 +55,7 @@
 			to_chat(user, SPAN_WARNING("The lid is on!"))
 			return FALSE
 
-		if(H.lip_style)	//if they already have lipstick on
+		if(H.lip_style) //if they already have lipstick on
 			to_chat(user, SPAN_WARNING("You need to wipe the old makeup off with paper first!"))
 			return
 

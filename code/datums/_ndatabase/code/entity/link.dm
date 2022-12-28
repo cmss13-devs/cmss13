@@ -35,4 +35,4 @@
 	var/list/child_requests
 
 /datum/entity_link/proc/get_filter(parent_alias, child_alias)
-	return new /datum/db/filter/link(parent_alias, DB_DEFAULT_ID_FIELD, child_alias, child_field)	
+	return new /datum/db/filter/link(parent_alias, DB_DEFAULT_ID_FIELD, child_alias, child_field) 

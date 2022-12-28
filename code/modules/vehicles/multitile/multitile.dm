@@ -25,10 +25,10 @@
 	var/obj/structure/machinery/camera/vehicle/camera = null
 	var/obj/structure/machinery/camera/vehicle/camera_int = null
 
-	var/nickname		//used for single-use verb to name the vehicle. Put anything here to prevent naming
+	var/nickname //used for single-use verb to name the vehicle. Put anything here to prevent naming
 
 	var/honk_sound = 'sound/vehicles/honk_4_light.ogg'
-	var/next_honk = 0	//to prevent spamming
+	var/next_honk = 0 //to prevent spamming
 
 	// List of verbs to give when a mob is seated in each seat type
 	var/list/seat_verbs

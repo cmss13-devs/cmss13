@@ -14,7 +14,7 @@
 	var/ptype = 0
 	// 0=straight, 1=bent, 2=junction-j1, 3=junction-j2, 4=junction-y, 5=trunk, 6=disposal bin, 7=outlet, 8=inlet
 
-	var/dpdir = 0	// directions as disposalpipe
+	var/dpdir = 0 // directions as disposalpipe
 	var/base_state = "pipe-s"
 
 	// update iconstate and dpdir due to dir and type
@@ -87,13 +87,13 @@
 		else
 			icon_state = base_state
 
-		if(invisibility)				// if invisible, fade icon
+		if(invisibility) // if invisible, fade icon
 			alpha = 128
 
 	// hide called by levelupdate if turf intact status changes
 	// change visibility status and force update of icon
 	hide(var/intact)
-		invisibility = (intact && level==1) ? 101: 0	// hide if floor is intact
+		invisibility = (intact && level==1) ? 101: 0 // hide if floor is intact
 		update()
 
 

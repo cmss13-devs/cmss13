@@ -3,9 +3,9 @@
 //reagents explosion system
 
 /datum/effect_system/reagents_explosion
-	var/amount 						// TNT equivalent
-	var/flashing = 0			// does explosion creates flash effect?
-	var/flashing_factor = 0		// factor of how powerful the flash effect relatively to the explosion
+	var/amount // TNT equivalent
+	var/flashing = 0 // does explosion creates flash effect?
+	var/flashing_factor = 0 // factor of how powerful the flash effect relatively to the explosion
 
 	set_up (amt, loc, flash = 0, flash_fact = 0)
 		amount = amt

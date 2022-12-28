@@ -23,11 +23,11 @@
 
 /datum/equipment_preset/survivor/load_gear(mob/living/carbon/human/H) // Essentially where you will put the most essential piece of kit you want survivors to spawn with.
 	add_random_survivor_equipment(H)
-	add_survivor_weapon_pistol(H)
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress(H), WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/tool/screwdriver(H), WEAR_R_EAR)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full(H), WEAR_L_STORE)
 	H.equip_to_slot_or_del(new /obj/item/stack/sheet/metal/med_small_stack(H), WEAR_IN_BACK)
+	add_survivor_weapon_pistol(H)
 
 /datum/equipment_preset/survivor/load_id(mob/living/carbon/human/H, client/mob_client)
 	var/obj/item/clothing/under/uniform = H.w_uniform

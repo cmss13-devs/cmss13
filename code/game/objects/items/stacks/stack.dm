@@ -334,7 +334,6 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 			src.use(to_transfer)
 			if (src && usr.interactee==src)
 				INVOKE_ASYNC(src, /obj/item/stack/.proc/interact, usr)
-			user.next_move = world.time + 0.3 SECONDS
 			return TRUE
 
 	return ..()

@@ -481,7 +481,6 @@ It's fairly easy to fix if dealing with single letters but not so much with comp
 		to_chat(usr, SPAN_DANGER("You can't pick that up!"))
 		return
 
-	next_move += 6 // stop insane pickup speed
 	UnarmedAttack(pickupify)
 
 /mob/verb/pull_item(atom/movable/pullify in view(1, usr))

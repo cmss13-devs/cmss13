@@ -787,7 +787,6 @@ note dizziness decrements automatically in the mob's Life() proc.
 
 	if(!isliving(usr) || usr.next_move > world.time)
 		return
-	usr.next_move = world.time + 20
 
 	recalculate_move_delay = TRUE
 

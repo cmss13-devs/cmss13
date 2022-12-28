@@ -1232,7 +1232,7 @@
 	can_hold = list(/obj/item/device, /obj/item/tool)
 	bypass_w_limit = list(/obj/item/tool/shovel/etool)
 	storage_flags = STORAGE_FLAGS_POUCH|STORAGE_USING_DRAWING_METHOD
-	var/sling_range = 1
+	var/sling_range = 2
 	var/obj/item/slung
 
 /obj/item/storage/pouch/sling/get_examine_text(mob/user)

@@ -106,7 +106,7 @@
 	var/length = values.len
 	var/list/qpars = list()
 	var/query_inserttable = getquery_insert_table(table_name, values, qpars)
-	var/datum/callback/callback = CALLBACK(src, /datum/db/adapter/brsql_adapter.proc/after_insert_table, CB, length, table_name)
+	var/datum/callback/callback = CALLBACK(src, TYPE_PROC_REF(/datum/db/adapter/brsql_adapter, after_insert_table), CB, length, table_name)
 	if(sync)
 		GLOB.SSdatabase.create_parametric_query_sync(query_inserttable, qpars, callback)
 	else

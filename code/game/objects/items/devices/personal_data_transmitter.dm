@@ -21,7 +21,7 @@
 	if(bracelet)
 		linked_bracelet = bracelet
 		linked_bracelet.copied_serial_number = src.serial_number
-		RegisterSignal(bracelet, COMSIG_PARENT_PREQDELETED, .proc/handle_bracelet_deletion)
+		RegisterSignal(bracelet, COMSIG_PARENT_PREQDELETED, PROC_REF(handle_bracelet_deletion))
 	battery = new(src)
 	update_icon()
 

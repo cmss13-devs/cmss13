@@ -121,9 +121,9 @@ GLOBAL_LIST_INIT(admin_verbs_minor_event, list(
 	/client/proc/toggle_blood_optimization,
 	/client/proc/toggle_combat_cas,
 	/client/proc/toggle_lz_protection, //Mortar hitting LZ
-	/client/proc/cmd_admin_medals_panel // Marine and Xeno medals editor panel
-))
-
+	/client/proc/cmd_admin_medals_panel, // Marine and Xeno medals editor panel
+	/client/proc/toggle_shipside_sd
+)
 GLOBAL_LIST_INIT(admin_verbs_major_event, list(
 	/client/proc/enable_event_mob_verbs,
 	/client/proc/cmd_admin_dress_all,
@@ -167,7 +167,7 @@ GLOBAL_LIST_INIT(admin_verbs_server, list(
 ))
 
 GLOBAL_LIST_INIT(admin_verbs_debug, list(
-    /client/proc/getruntimelog,                     /*allows us to access runtime logs to somebody*/
+    /client/proc/getruntimelog, // allows us to access runtime logs to somebody
 	/client/proc/debug_role_authority,
 	/client/proc/cmd_debug_make_powernets,
 	/client/proc/cmd_debug_list_processing_items,
@@ -207,13 +207,13 @@ GLOBAL_LIST_INIT(clan_verbs, list(
 ))
 
 GLOBAL_LIST_INIT(debug_verbs, list(
-    /client/proc/Cell,
-    /client/proc/cmd_assume_direct_control,
-    /client/proc/ticklag,
-    /client/proc/hide_debug_verbs,
-    /client/proc/view_power_update_stats_area,
-    /client/proc/view_power_update_stats_machines,
-    /client/proc/toggle_power_update_profiling,
+	/client/proc/Cell,
+	/client/proc/cmd_assume_direct_control,
+	/client/proc/ticklag,
+	/client/proc/hide_debug_verbs,
+	/client/proc/view_power_update_stats_area,
+	/client/proc/view_power_update_stats_machines,
+	/client/proc/toggle_power_update_profiling,
 	/client/proc/nanomapgen_DumpImage,
 ))
 
@@ -242,8 +242,8 @@ GLOBAL_LIST_INIT(admin_mob_event_verbs_hideable, list(
 	/client/proc/free_mob_for_ghosts,
 	/client/proc/possess,
 	/client/proc/release,
-    /client/proc/cmd_admin_grantfullaccess,
-    /client/proc/cmd_admin_grantallskills
+	/client/proc/cmd_admin_grantfullaccess,
+	/client/proc/cmd_admin_grantallskills
 ))
 
 //verbs which can be hidden - needs work

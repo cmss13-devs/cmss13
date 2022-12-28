@@ -28,7 +28,7 @@ GLOBAL_LIST_INIT(job_squad_roles, JOB_SQUAD_ROLES_LIST)
 #define JOB_PASSENGER					"Passenger"
 #define JOB_SURVIVOR					"Survivor"
 #define JOB_SYNTH_SURVIVOR				"Synth Survivor"
-#define JOB_CO_SURVIVOR				"Commanding Officer Survivor"
+#define JOB_CO_SURVIVOR				"CO Survivor"
 
 #define JOB_CMO							"Chief Medical Officer"
 #define JOB_DOCTOR						"Doctor"

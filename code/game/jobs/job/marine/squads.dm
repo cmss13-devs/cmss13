@@ -227,7 +227,7 @@
 	SStracking.setup_trackers(null, "FT3")
 	update_all_squad_info()
 
-	RegisterSignal(SSdcs, COMSIG_GLOB_MODE_POSTSETUP, .proc/setup_supply_drop_list)
+	RegisterSignal(SSdcs, COMSIG_GLOB_MODE_POSTSETUP, PROC_REF(setup_supply_drop_list))
 
 /datum/squad/proc/setup_supply_drop_list()
 	SIGNAL_HANDLER
@@ -248,7 +248,7 @@
 		overwatch_officer = null
 		clear_ref_tracking(previous)
 	overwatch_officer = M
-	RegisterSignal(overwatch_officer, COMSIG_PARENT_QDELETING, .proc/personnel_deleted, override = TRUE)
+	RegisterSignal(overwatch_officer, COMSIG_PARENT_QDELETING, PROC_REF(personnel_deleted), override = TRUE)
 	return TRUE
 
 /// Explicitely relinquish overwatch control
@@ -437,7 +437,7 @@
 			if(name == JOB_MARINE_RAIDER)
 				assignment = "Officer"
 
-	RegisterSignal(M, COMSIG_PARENT_QDELETING, .proc/personnel_deleted, override = TRUE)
+	RegisterSignal(M, COMSIG_PARENT_QDELETING, PROC_REF(personnel_deleted), override = TRUE)
 	if(assignment != JOB_SQUAD_LEADER)
 		SStracking.start_tracking(tracking_id, M)
 

@@ -52,7 +52,7 @@
 					break
 				new_spread_amt = 0
 
-		addtimer(CALLBACK(src, .proc/generate_fire, T, F, new_spread_amt, F.flameshape, null, FALSE, fuel_pressure), 0)
+		addtimer(CALLBACK(src, PROC_REF(generate_fire), T, F, new_spread_amt, F.flameshape, null, FALSE, fuel_pressure), 0)
 
 
 /datum/flameshape/default/irregular
@@ -93,7 +93,7 @@
 				if (A.flags_atom & ON_BORDER)
 					break
 
-			addtimer(CALLBACK(src, .proc/generate_fire, T, F, 0, FLAMESHAPE_MINORSTAR, null, FALSE, fuel_pressure), 0)
+			addtimer(CALLBACK(src, PROC_REF(generate_fire), T, F, 0, FLAMESHAPE_MINORSTAR, null, FALSE, fuel_pressure), 0)
 			prev_T = T
 
 /datum/flameshape/star/minor
@@ -151,7 +151,7 @@
 			prev_T = T
 			continue
 
-		addtimer(CALLBACK(src, .proc/generate_fire, T, F, 0, F.flameshape, null, TRUE, fuel_pressure), distance)
+		addtimer(CALLBACK(src, PROC_REF(generate_fire), T, F, 0, F.flameshape, null, TRUE, fuel_pressure), distance)
 		if(stop_at_turf)
 			break
 
@@ -203,7 +203,7 @@
 			prev_T = T
 			continue
 
-		addtimer(CALLBACK(src, .proc/generate_fire, T, F, 0, FLAMESHAPE_TRIANGLE, null, FALSE, fuel_pressure), 0)
+		addtimer(CALLBACK(src, PROC_REF(generate_fire), T, F, 0, FLAMESHAPE_TRIANGLE, null, FALSE, fuel_pressure), 0)
 		prev_T = T
 		sleep(1)
 

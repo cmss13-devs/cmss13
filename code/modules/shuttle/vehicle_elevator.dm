@@ -38,7 +38,7 @@
 		G.stop_moving()
 	for(var/i in railings)
 		var/obj/structure/machinery/door/poddoor/railing/R = i
-		INVOKE_ASYNC(R, /obj/structure/machinery/door.proc/open)
+		INVOKE_ASYNC(R, TYPE_PROC_REF(/obj/structure/machinery/door, open))
 
 /obj/docking_port/stationary/vehicle_elevator
 	name = "Alamyer Vehicle Elevator Dock"

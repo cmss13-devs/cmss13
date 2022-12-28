@@ -22,7 +22,7 @@
 /obj/item/reagent_container/food/snacks/grown/Initialize()
 	. = ..()
 	GLOB.grown_snacks_list += src
-	addtimer(CALLBACK(src, .proc/update_from_seed), 1)
+	addtimer(CALLBACK(src, PROC_REF(update_from_seed)), 1)
 
 /obj/item/reagent_container/food/snacks/grown/Destroy()
 	GLOB.grown_snacks_list -= src

@@ -387,9 +387,9 @@
 
 	// Update the character icons
 	// This is done in set_species when the mob is created as well, but
-	INVOKE_ASYNC(new_character, /mob/living/carbon/human.proc/regenerate_icons)
-	INVOKE_ASYNC(new_character, /mob/living/carbon/human.proc/update_body, 1, 0)
-	INVOKE_ASYNC(new_character, /mob/living/carbon/human.proc/update_hair)
+	INVOKE_ASYNC(new_character, TYPE_PROC_REF(/mob/living/carbon/human, regenerate_icons))
+	INVOKE_ASYNC(new_character, TYPE_PROC_REF(/mob/living/carbon/human, update_body), 1, 0)
+	INVOKE_ASYNC(new_character, TYPE_PROC_REF(/mob/living/carbon/human, update_hair))
 
 	new_character.key = key		//Manually transfer the key to log them in
 	new_character.client?.change_view(GLOB.world_view_size)

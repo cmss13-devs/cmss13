@@ -579,8 +579,8 @@
 
 		selected_cas_signal.linked_cam.view_directly(usr)
 		give_action(usr, /datum/action/human_action/cancel_view)
-		RegisterSignal(usr, COMSIG_MOB_RESET_VIEW, .proc/remove_from_view)
-		RegisterSignal(usr, COMSIG_MOB_RESISTED, .proc/remove_from_view)
+		RegisterSignal(usr, COMSIG_MOB_RESET_VIEW, PROC_REF(remove_from_view))
+		RegisterSignal(usr, COMSIG_MOB_RESISTED, PROC_REF(remove_from_view))
 		firemission_envelope.apply_upgrade(usr)
 		to_chat(usr, "You peek through the guidance camera.")
 
@@ -686,14 +686,16 @@
 	name = "\improper 'Alamo' weapons controls"
 	req_one_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_DROPSHIP, ACCESS_WY_CORPORATE)
 	firemission_envelope = new /datum/cas_fire_envelope/uscm_dropship()
-	New()
-		..()
-		shuttle_tag = "[MAIN_SHIP_NAME] Dropship 1"
+
+/obj/structure/machinery/computer/dropship_weapons/dropship1/New()
+	..()
+	shuttle_tag = "[MAIN_SHIP_NAME] Dropship 1"
 
 /obj/structure/machinery/computer/dropship_weapons/dropship2
 	name = "\improper 'Normandy' weapons controls"
 	req_one_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_DROPSHIP, ACCESS_WY_CORPORATE)
 	firemission_envelope = new /datum/cas_fire_envelope/uscm_dropship()
-	New()
-		..()
-		shuttle_tag = "[MAIN_SHIP_NAME] Dropship 2"
+
+/obj/structure/machinery/computer/dropship_weapons/dropship2/New()
+	..()
+	shuttle_tag = "[MAIN_SHIP_NAME] Dropship 2"

@@ -476,7 +476,7 @@ GLOBAL_LIST_EMPTY(bitfields)
 					winset(user, "mapwindow", "focus=true")
 				break
 	if(timeout)
-		addtimer(CALLBACK(src, .proc/close), timeout)
+		addtimer(CALLBACK(src, PROC_REF(close)), timeout)
 
 
 /datum/browser/modal/proc/wait()

@@ -606,7 +606,7 @@
 	var/bushes_spawn = 1
 	var/plants_spawn = 1
 	name = "wet grass"
-	desc = "Thick, long wet grass"
+	desc = "Thick, long, wet grass."
 	icon = 'icons/turf/floors/jungle.dmi'
 	icon_state = "grass1"
 	var/icon_spawn_state = "grass1"

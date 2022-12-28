@@ -445,6 +445,73 @@ Additional game mode variables.
 			return 1
 	to_chat(xeno_candidate, "JAS01: Something went wrong, tell a coder.")
 
+/datum/game_mode/proc/attempt_to_join_as_facehugger(mob/xeno_candidate)
+	//Step 1 - pick a Hive
+	var/list/active_hives = list()
+	var/datum/hive_status/hive
+	var/last_active_hive = 0
+	for(var/hivenumber in GLOB.hive_datum)
+		hive = GLOB.hive_datum[hivenumber]
+		if(hive.totalXenos.len <= 0)
+			continue
+		active_hives[hive.name] = hive.hivenumber
+		last_active_hive = hive.hivenumber
+
+	if(active_hives.len <= 0)
+		to_chat(xeno_candidate, SPAN_WARNING("There aren't any Hives active at this point for you to join."))
+		return FALSE
+
+	if(active_hives.len > 1)
+		var/hive_picked = tgui_input_list(xeno_candidate, "Select which Hive to attempt joining.", "Hive Choice", active_hives, theme="hive_status")
+		if(!hive_picked)
+			to_chat(xeno_candidate, SPAN_ALERT("Hive choice error. Aborting."))
+			return
+		hive = GLOB.hive_datum[active_hives[hive_picked]]
+	else
+		hive = GLOB.hive_datum[last_active_hive]
+
+	//We have our Hive picked, time to figure out what we can join via
+	var/list/available_facehugger_sources = list()
+
+	for(var/mob/living/carbon/Xenomorph/Carrier/carrier in hive.totalXenos)
+		if(carrier.huggers_cur > carrier.huggers_reserved)
+			var/area_name = get_area_name(carrier)
+			var/descriptive_name = "[carrier.name] in [area_name]"
+			available_facehugger_sources[descriptive_name] = carrier
+
+	for(var/obj/effect/alien/resin/special/eggmorph/morpher in hive.hive_structures[XENO_STRUCTURE_EGGMORPH])
+		if(morpher)
+			if(morpher.stored_huggers)
+				var/area_name = get_area_name(morpher)
+				var/descriptive_name = "[morpher.name] in [area_name]"
+				available_facehugger_sources[descriptive_name] = morpher
+
+	if(available_facehugger_sources.len <= 0)
+		to_chat(xeno_candidate, SPAN_WARNING("There aren't any Carriers or Egg Morphers with available Facehuggers for you to join. Please try again later!"))
+		return FALSE
+
+	var/source_picked = tgui_input_list(xeno_candidate, "Select a Facehugger source.", "Facehugger Source Choice", available_facehugger_sources, theme="hive_status")
+	if(!source_picked)
+		to_chat(xeno_candidate, SPAN_ALERT("Facehugger source choice error. Aborting."))
+		return
+
+	var/facehugger_choice = available_facehugger_sources[source_picked]
+
+	//Just in case some xeno got gibbed while we were picking...
+	if(!facehugger_choice)
+		to_chat(xeno_candidate, SPAN_WARNING("Picked choice is not available anymore, try again!"))
+		return FALSE
+
+	//Call the appropriate procs to spawn with
+	if(isXenoCarrier(facehugger_choice))
+		var/mob/living/carbon/Xenomorph/Carrier/carrier = facehugger_choice
+		carrier.join_as_facehugger_from_this(xeno_candidate)
+	else
+		var/obj/effect/alien/resin/special/eggmorph/morpher = facehugger_choice
+		morpher.join_as_facehugger_from_this(xeno_candidate)
+
+	return TRUE
+
 /datum/game_mode/proc/transfer_xeno(var/xeno_candidate, mob/living/new_xeno)
 	if(!xeno_candidate || !isXeno(new_xeno) || QDELETED(new_xeno))
 		return FALSE
@@ -469,6 +536,7 @@ Additional game mode variables.
 
 	new_xeno.ghostize(FALSE) //Make sure they're not getting a free respawn.
 	xeno_candidate_mind.transfer_to(new_xeno, TRUE)
+	new_xeno.SetSleeping(0) // ghosting sleeps, but they got a new mind! wake up! (/mob/living/verb/ghost())
 
 	new_xeno.mind_initialize()
 	new_xeno.mind.player_entity = setup_player_entity(xeno_candidate_mind.ckey)

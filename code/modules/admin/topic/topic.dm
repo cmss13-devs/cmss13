@@ -1733,7 +1733,7 @@
 	if(href_list["distress"]) //Distress Beacon, sends a random distress beacon when pressed
 		GLOB.distress_cancel = FALSE
 		message_staff("[key_name_admin(usr)] has opted to SEND the distress beacon! Launching in 10 seconds... (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];distresscancel=\ref[usr]'>CANCEL</A>)")
-		addtimer(CALLBACK(src, .proc/accept_ert, usr, locate(href_list["distress"])), 10 SECONDS)
+		addtimer(CALLBACK(src, PROC_REF(accept_ert), usr, locate(href_list["distress"])), 10 SECONDS)
 		//unanswered_distress -= ref_person
 
 	if(href_list["destroyship"]) //Distress Beacon, sends a random distress beacon when pressed

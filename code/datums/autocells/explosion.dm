@@ -147,13 +147,13 @@
 		resistance += max(0, A.get_explosion_resistance())
 
 	// Blow stuff up
-	INVOKE_ASYNC(in_turf, /atom.proc/ex_act, power, direction, explosion_cause_data)
+	INVOKE_ASYNC(in_turf, TYPE_PROC_REF(/atom, ex_act), power, direction, explosion_cause_data)
 	for(var/atom/A in in_turf)
 		if(A in exploded_atoms)
 			continue
 		if(A.gc_destroyed)
 			continue
-		INVOKE_ASYNC(A, /atom.proc/ex_act, power, direction, explosion_cause_data)
+		INVOKE_ASYNC(A, TYPE_PROC_REF(/atom, ex_act), power, direction, explosion_cause_data)
 		exploded_atoms += A
 		log_explosion(A, src)
 
@@ -240,7 +240,7 @@
 	if(A.gc_destroyed)
 		return
 
-	INVOKE_ASYNC(A, /atom.proc/ex_act, power, null, explosion_cause_data)
+	INVOKE_ASYNC(A, TYPE_PROC_REF(/atom, ex_act), power, null, explosion_cause_data)
 	log_explosion(A, src)
 
 // I'll admit most of the code from here on out is basically just copypasta from DOREC

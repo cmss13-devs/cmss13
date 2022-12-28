@@ -352,6 +352,12 @@ GLOBAL_LIST_EMPTY(gear_datums)
 	slot = WEAR_IN_BACK
 	cost = 4 //there needs to be some reason to NOT use this badass facepaint or every marine will have it
 
+/datum/gear/fullbodyfacepaint
+    display_name = "Fullbody Paint"
+    path = /obj/item/facepaint/sniper
+    slot = WEAR_IN_BACK
+    cost = 4 //To match with the skull paint amount of point, gave this amount of point for the same reason of the skull facepaint
+
 /datum/gear/aceofspades
 	display_name = "Ace of Spades"
 	path = /obj/item/toy/handcard/aceofspades

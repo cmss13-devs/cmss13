@@ -56,7 +56,7 @@
 
 	for(var/obj/structure/machinery/door/D in targets)
 		if(!D.density)	continue
-		INVOKE_ASYNC(D, /obj/structure/machinery/door.proc/open)
+		INVOKE_ASYNC(D, TYPE_PROC_REF(/obj/structure/machinery/door, open))
 
 	return TRUE
 
@@ -67,7 +67,7 @@
 
 	for(var/obj/structure/machinery/door/D in targets)
 		if(D.density)	continue
-		INVOKE_ASYNC(D, /obj/structure/machinery/door.proc/close)
+		INVOKE_ASYNC(D, TYPE_PROC_REF(/obj/structure/machinery/door, close))
 
 	return TRUE
 

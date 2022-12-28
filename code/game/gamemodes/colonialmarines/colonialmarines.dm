@@ -113,8 +113,8 @@
 
 	round_time_lobby = world.time
 
-	addtimer(CALLBACK(src, .proc/ares_online), 5 SECONDS)
-	addtimer(CALLBACK(src, .proc/map_announcement), 20 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(ares_online)), 5 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(map_announcement)), 20 SECONDS)
 
 	return ..()
 
@@ -200,7 +200,7 @@
 							sound_to(M, sound(get_sfx("queen"), wait = 0, volume = 50))
 							to_chat(M, SPAN_XENOANNOUNCE("The Queen Mother reaches into your mind from worlds away."))
 							to_chat(M, SPAN_XENOANNOUNCE("To my children and their Queen. I sense the large doors that trap us will open in 30 seconds."))
-						addtimer(CALLBACK(src, .proc/open_podlocks, "map_lockdown"), 300)
+						addtimer(CALLBACK(src, PROC_REF(open_podlocks), "map_lockdown"), 300)
 
 			if(GLOB.round_should_check_for_win)
 				check_win()
@@ -224,7 +224,7 @@
 // Resource Towers
 
 /datum/game_mode/colonialmarines/ds_first_drop(var/datum/shuttle/ferry/marine/m_shuttle)
-	addtimer(CALLBACK(GLOBAL_PROC, /proc/show_blurb_uscm), DROPSHIP_DROP_MSG_DELAY)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(show_blurb_uscm)), DROPSHIP_DROP_MSG_DELAY)
 
 ///////////////////////////
 //Checks to see who won///

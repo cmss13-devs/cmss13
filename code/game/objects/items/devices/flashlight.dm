@@ -510,7 +510,7 @@
 
 	if(.)
 		faction = user.faction
-		addtimer(CALLBACK(src, .proc/activate_signal, user), 5 SECONDS)
+		addtimer(CALLBACK(src, PROC_REF(activate_signal), user), 5 SECONDS)
 
 /obj/item/device/flashlight/flare/signal/activate_signal(mob/living/carbon/human/user)
 	..()

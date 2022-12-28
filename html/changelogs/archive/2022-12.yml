@@ -856,3 +856,81 @@
       down to discourage you from going in it
   - balance: added an extra flank route to the predship cave on NV
   - bugfix: made the big LZ doors on NV visible again
+2022-12-26:
+  ChainsawMullet:
+  - rscdel: Removed R-1NG bell from Engineer vendors and map spawns.
+  Molto:
+  - spellcheck: fixed Solaris wall typo
+  Stalkerino:
+  - spellcheck: fixed a typo when a larva spawns in the spawn pool
+  somepersondunno:
+  - spellcheck: fixed 2 typos for a vampire lurker ability.
+2022-12-27:
+  BeagleGaming1:
+  - spellcheck: Shortened Commanding Officer Survivor in job preferences to only take
+      one line
+  Molto:
+  - spellcheck: fixed punctuation of some desc
+  Segrain:
+  - bugfix: Contractors ERT once again gets its proper equipment.
+  ThePiachu:
+  - rscadd: Observers can now join as Facehuggers using any planted egg or a Carrier.
+  - rscadd: Ghosts now have a verb to join as a Facehugger from a Carrier or an Egg
+      Morpher (egg list would be too cluttered).
+  - code_imp: Refactored the code around joining as a Facehugger to be less Egg Morpher
+      centric.
+  - balance: Rebalanced how many Facehuggers a Hive can support. Now it's based on
+      Xeno population rather than Marine population.
+  - bugfix: Fixed Acider and Hedgehog overlays persisting after their death.
+  - code_imp: Tiny refactor to Warden overlay cutting as well.
+  carlarctg:
+  - bugfix: Fix entering a ghosted xeno not removing ghostize sleep.
+  harryob:
+  - code_imp: all instances of relative pathing against our styleguide have been changed.
+  insertnamehere123:
+  - bugfix: fixed a bug where a healer drone could use healing salve on burning xenos
+  stanalbatross:
+  - refactor: changed the botany machines to tgui
+  - rscdel: removed the 5s cooldown on every action using the botany machines. Research
+      should not be limited by arbitrary long cooldowns with these.
+  - rscadd: 'added three new changelog labels: ui, mapadd, and maptweak!'
+  - ui: converted the A.C.I.D. harness to use TGUI
+2022-12-28:
+  BeagleGaming1:
+  - admin: Adds a staff flag that can toggle whether Predators can big SD while not
+      on the hunting grounds
+  Casper:
+  - bugfix: fixes TGUI runtime
+  - spellcheck: fixes tech tree start-up text
+  - bugfix: corrects signaller frequency UI
+  Huffie56:
+  - refactor: Fix indentation change four space indentation into a tabulation in .dm
+      files.
+  Morrow:
+  - bugfix: 'reverts overwatch refactor
+
+      :cl:'
+  Skegal:
+  - rscadd: Added Full Body Paint to Loadout
+  ThePiachu:
+  - bugfix: Fixed a runtime caused by fires being mid-smothering while weather changed.
+  - bugfix: Fixed a Vanguard Praetorian runtime.
+  - refactor: Refactored Vanguard shield code a bit to remove unnecesary typecasting.
+  - code_imp: Refactored the code around listing squad members for the Overwatch Console,
+      Crew Monitor and the Groundside Operations Computer.
+  carlarctg:
+  - balance: Increased amount of slots in the SU-6's belt from 6 to 7.
+  - balance: Smartpistol kit spawns with a full belt instead of two spare magazines.
+  - balance: Increased Smartpistol damage from 25 to 30, reduced armor-piercing from
+      25 to 20.
+  - imageadd: Adds an alternate PO flightsuit (and jacket) for sale in the equipment
+      vendor. Located on the dorms next to CIC.
+  fira:
+  - bugfix: Fixed Flaregun to have terrible unwielded accuracy, instead of completely
+      negative.
+  - bugfix: Scatter is not applied to ground-targeted weaponry (like Flaregun) as
+      it would cause projectiles to miss wide to max range.
+  harryob:
+  - bugfix: a couple subsystems now report their initialisation correctly.
+  stanalbatross:
+  - ui: converted the rarely used gas tanks to tgui

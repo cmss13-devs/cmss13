@@ -185,7 +185,7 @@ GLOBAL_LIST_INIT(faction_to_tacmap_color, list(
 	tacmap.Scale(GLOB.map_sizes[1] * 2, GLOB.map_sizes[2] * 2)
 	GLOB.populated_mapview_types[tacmap_string] = tacmap
 	GLOB.populated_mapview_type_updated[tacmap_string] = TRUE
-	addtimer(CALLBACK(GLOBAL_PROC, /proc/prepare_tacmap_for_update, tacmap_string), TACMAP_REFRESH_FREQUENCY)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(prepare_tacmap_for_update), tacmap_string), TACMAP_REFRESH_FREQUENCY)
 	return tacmap
 
 /proc/prepare_tacmap_for_update(var/tacmap_string = TACMAP_DEFAULT)

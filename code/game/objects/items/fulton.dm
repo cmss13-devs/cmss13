@@ -152,7 +152,7 @@ GLOBAL_LIST_EMPTY(deployed_fultons) // A list of fultons currently airborne.
 	GLOB.deployed_fultons += src
 	attached_atom.overlays -= I
 
-	addtimer(CALLBACK(src, .proc/return_fulton, original_location), 150 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(return_fulton), original_location), 150 SECONDS)
 
 /obj/item/stack/fulton/proc/return_fulton(var/turf/return_turf)
 

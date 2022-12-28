@@ -202,7 +202,7 @@
 				if(E.operating)
 					E:nextstate = OPEN
 				else if(!E.density)
-					INVOKE_ASYNC(E, /obj/structure/machinery/door.proc/close)
+					INVOKE_ASYNC(E, TYPE_PROC_REF(/obj/structure/machinery/door, close))
 
 /area/proc/air_doors_open()
 	if(src.master.air_doors_activated)
@@ -212,7 +212,7 @@
 				if(E.operating)
 					E:nextstate = OPEN
 				else if(E.density)
-					INVOKE_ASYNC(E, /obj/structure/machinery/door.proc/open)
+					INVOKE_ASYNC(E, TYPE_PROC_REF(/obj/structure/machinery/door, open))
 
 
 /area/proc/firealert()
@@ -228,7 +228,7 @@
 				if(D.operating)
 					D.nextstate = CLOSED
 				else if(!D.density)
-					INVOKE_ASYNC(D, /obj/structure/machinery/door.proc/close)
+					INVOKE_ASYNC(D, TYPE_PROC_REF(/obj/structure/machinery/door, close))
 		var/list/cameras = list()
 		for(var/area/RA in related)
 			for (var/obj/structure/machinery/camera/C in RA)
@@ -250,7 +250,7 @@
 				if(D.operating)
 					D.nextstate = OPEN
 				else if(D.density)
-					INVOKE_ASYNC(D, /obj/structure/machinery/door.proc/open)
+					INVOKE_ASYNC(D, TYPE_PROC_REF(/obj/structure/machinery/door, open))
 		for(var/area/RA in related)
 			for (var/obj/structure/machinery/camera/C in RA)
 				C.network.Remove(CAMERA_NET_FIRE_ALARMS)

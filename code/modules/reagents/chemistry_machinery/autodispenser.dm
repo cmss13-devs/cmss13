@@ -52,7 +52,7 @@
 		return
 	linked_storage = locate(/obj/structure/machinery/smartfridge/chemistry) in range(smartfridge_tether_range, src)
 	if(linked_storage)
-		RegisterSignal(linked_storage, COMSIG_PARENT_QDELETING, .proc/cleanup)
+		RegisterSignal(linked_storage, COMSIG_PARENT_QDELETING, PROC_REF(cleanup))
 
 /obj/structure/machinery/autodispenser/attackby(obj/item/B, mob/living/user)
 	if(!skillcheck(user, SKILL_RESEARCH, SKILL_RESEARCH_TRAINED))

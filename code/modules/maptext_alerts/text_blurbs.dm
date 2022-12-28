@@ -148,7 +148,7 @@ but should see their own spawn message even if the player already dropped as USC
 		T.maptext = "<span style=\"[style]\">[copytext(message,1,i)]</span>"
 		sleep(speed)
 
-	addtimer(CALLBACK(GLOBAL_PROC, /proc/fade_blurb, targets, T), duration)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(fade_blurb), targets, T), duration)
 
 /proc/fade_blurb(list/mob/targets, obj/T)
 	animate(T, alpha = 0, time = 0.5 SECONDS)

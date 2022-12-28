@@ -131,7 +131,7 @@
 			var/new_organ = recipe_datum.path
 			print_time = world.time + recipe_datum.time
 			printing_item = recipe_datum
-			addtimer(CALLBACK(src, .proc/print_limb, new_organ), recipe_datum.time)
+			addtimer(CALLBACK(src, PROC_REF(print_limb), new_organ), recipe_datum.time)
 			QDEL_NULL(recipe_datum)
 			return TRUE
 		if("eject")

@@ -64,7 +64,7 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 	for(var/mob/M in hear)
 		M << speech_bubble
 
-	addtimer(CALLBACK(src, .proc/remove_speech_bubble, speech_bubble, hear), 30)
+	addtimer(CALLBACK(src, PROC_REF(remove_speech_bubble), speech_bubble, hear), 30)
 
 
 /mob/living/proc/remove_speech_bubble(var/image/speech_bubble, var/list_of_mobs)
@@ -141,7 +141,7 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 				M << speech_bubble
 			M.hear_say(message, verb, speaking, alt_name, italics, src, speech_sound, sound_vol)
 
-		addtimer(CALLBACK(src, .proc/remove_speech_bubble, speech_bubble, listening), 30)
+		addtimer(CALLBACK(src, PROC_REF(remove_speech_bubble), speech_bubble, listening), 30)
 
 		for(var/obj/O as anything in listening_obj)
 			if(O) //It's possible that it could be deleted in the meantime.

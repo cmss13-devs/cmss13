@@ -288,7 +288,7 @@
 	if(!istype(src.loc,/turf/open/floor))
 		qdel(src)
 
-	INVOKE_ASYNC(src, .proc/spawn_piece, src.loc)
+	INVOKE_ASYNC(src, PROC_REF(spawn_piece), src.loc)
 
 	START_PROCESSING(SSobj, src)
 

@@ -164,7 +164,7 @@
 	for(var/i = 0, i < range, i++)
 		var/radius = i * 1.5
 		if(!radius)
-			INVOKE_ASYNC(src, .proc/spawnSmoke, location, I, 1)
+			INVOKE_ASYNC(src, PROC_REF(spawnSmoke), location, I, 1)
 			continue
 
 		var/offset = 0
@@ -182,7 +182,7 @@
 			if(!T)
 				continue
 			if(T in targetTurfs)
-				INVOKE_ASYNC(src, .proc/spawnSmoke, T, I, range)
+				INVOKE_ASYNC(src, PROC_REF(spawnSmoke), T, I, range)
 
 #undef arcLength
 

@@ -170,7 +170,7 @@
 		return
 
 	user.next_move += hitting_item.attack_speed
-	to_chat(user, SPAN_NOTICE("You swing [hitting_item] through the air."), CHAT_TYPE_FLUFF_ACTION)
+	user.show_message(SPAN_NOTICE("You swing \the [hitting_item] through the air."), message_flags = CHAT_TYPE_FLUFF_ACTION)
 
 	return ..()
 

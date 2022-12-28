@@ -16,6 +16,7 @@
 /atom/movable/attackby(obj/item/W, mob/living/user)
 	if(W)
 		if(!(W.flags_item & NOBLUDGEON))
+			user.next_move += W.attack_speed
 			visible_message(SPAN_DANGER("[src] has been hit by [user] with [W]."), null, null, 5, CHAT_TYPE_MELEE_HIT)
 			user.animation_attack_on(src)
 			user.flick_attack_overlay(src, "punch")
@@ -83,6 +84,7 @@
 	add_fingerprint(user)
 
 	var/power = force
+	user.next_move += attack_speed
 	if(user.skills)
 		power = round(power * (1 + 0.25 * user.skills.get_skill_level(SKILL_MELEE_WEAPONS))) //25% bonus per melee level
 	if(!ishuman(M))

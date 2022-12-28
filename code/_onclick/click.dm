@@ -139,9 +139,6 @@
 
 /mob/proc/click_adjacent(atom/A, var/obj/item/W, mods)
 	if(W)
-		if(W.attack_speed && !src.contains(A)) //Not being worn or carried in the user's inventory somewhere, including internal storages.
-			next_move += W.attack_speed
-
 		if(!A.attackby(W, src, mods) && A && !QDELETED(A))
 			// in case the attackby slept
 			if(!W)
@@ -149,10 +146,8 @@
 				return
 
 			W.afterattack(A, src, 1, mods)
-	else
-		if(!isitem(A) && !issurface(A))
-			next_move += 4
-		UnarmedAttack(A, 1, mods)
+		return
+	UnarmedAttack(A, 1, mods)
 
 /mob/proc/check_click_intercept(params,A)
 	//Client level intercept

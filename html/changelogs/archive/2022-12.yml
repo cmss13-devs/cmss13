@@ -895,3 +895,42 @@
       should not be limited by arbitrary long cooldowns with these.
   - rscadd: 'added three new changelog labels: ui, mapadd, and maptweak!'
   - ui: converted the A.C.I.D. harness to use TGUI
+2022-12-28:
+  BeagleGaming1:
+  - admin: Adds a staff flag that can toggle whether Predators can big SD while not
+      on the hunting grounds
+  Casper:
+  - bugfix: fixes TGUI runtime
+  - spellcheck: fixes tech tree start-up text
+  - bugfix: corrects signaller frequency UI
+  Huffie56:
+  - refactor: Fix indentation change four space indentation into a tabulation in .dm
+      files.
+  Morrow:
+  - bugfix: 'reverts overwatch refactor
+
+      :cl:'
+  Skegal:
+  - rscadd: Added Full Body Paint to Loadout
+  ThePiachu:
+  - bugfix: Fixed a runtime caused by fires being mid-smothering while weather changed.
+  - bugfix: Fixed a Vanguard Praetorian runtime.
+  - refactor: Refactored Vanguard shield code a bit to remove unnecesary typecasting.
+  - code_imp: Refactored the code around listing squad members for the Overwatch Console,
+      Crew Monitor and the Groundside Operations Computer.
+  carlarctg:
+  - balance: Increased amount of slots in the SU-6's belt from 6 to 7.
+  - balance: Smartpistol kit spawns with a full belt instead of two spare magazines.
+  - balance: Increased Smartpistol damage from 25 to 30, reduced armor-piercing from
+      25 to 20.
+  - imageadd: Adds an alternate PO flightsuit (and jacket) for sale in the equipment
+      vendor. Located on the dorms next to CIC.
+  fira:
+  - bugfix: Fixed Flaregun to have terrible unwielded accuracy, instead of completely
+      negative.
+  - bugfix: Scatter is not applied to ground-targeted weaponry (like Flaregun) as
+      it would cause projectiles to miss wide to max range.
+  harryob:
+  - bugfix: a couple subsystems now report their initialisation correctly.
+  stanalbatross:
+  - ui: converted the rarely used gas tanks to tgui

@@ -8,7 +8,7 @@
 		if(toIndex <= 0)
 			toIndex += L.len + 1
 
-		var/datum/sort_instance/instance = GLOB.sortInstance
+		var/datum/sortInstance/instance = GLOB.sortInstance
 		if(!instance)
 			instance = new
 

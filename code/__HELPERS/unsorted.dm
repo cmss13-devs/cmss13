@@ -771,7 +771,7 @@
 	if(orange)
 		turfs -= get_turf(center)
 	. = list()
-	for(var/V in GLOB.turfs)
+	for(var/V in turfs)
 		var/turf/T = V
 		. += T
 		. += T.contents

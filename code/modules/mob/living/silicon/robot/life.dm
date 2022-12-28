@@ -105,7 +105,7 @@
 	if (src.stuttering) src.stuttering--
 
 	if (src.eye_blind)
-		src.eye_blind--
+		src.ReduceEyeBlind(1)
 		src.blinded = TRUE
 
 	if (src.ear_deaf > 0) src.ear_deaf--

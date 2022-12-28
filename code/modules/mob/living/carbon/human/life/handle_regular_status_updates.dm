@@ -79,17 +79,17 @@
 			return
 		//Eyes
 		if(!species.has_organ["eyes"]) //Presumably if a species has no eyes, they see via something else.
-			eye_blind = 0
+			SetEyeBlind(0)
 			if(stat == CONSCIOUS) //even with 'eye-less' vision, unconsciousness makes you blind
 				blinded = FALSE
 			SetEyeBlur(0)
 		else if(!has_eyes())           //Eyes cut out? Permablind.
-			eye_blind =  1
-			blinded =    1
+			SetEyeBlind(1)
+			blinded = TRUE
 			// we don't need to blur vision if they are blind...
 		else if(eye_blind)		       //Blindness, heals slowly over time
-			eye_blind =  max(eye_blind - 1, 0)
-			blinded =    1
+			ReduceEyeBlind(1)
+			blinded = TRUE
 		else if(eye_blurry)	           //Blurry eyes heal slowly
 			ReduceEyeBlur(1)
 

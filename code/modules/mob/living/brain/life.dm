@@ -88,7 +88,7 @@
 				if(31 to INFINITY)
 					emp_damage = 30//Let's not overdo it
 				if(21 to 30)//High level of EMP damage, unable to see, hear, or speak
-					eye_blind = 1
+					SetEyeBlind(1)
 					blinded = TRUE
 					SetEarDeafness(1)
 					silent = 1
@@ -101,7 +101,7 @@
 				if(20)
 					alert = 0
 					blinded = FALSE
-					eye_blind = 0
+					SetEyeBlind(0)
 					SetEarDeafness(0)
 					silent = 0
 					emp_damage--

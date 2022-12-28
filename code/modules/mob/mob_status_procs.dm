@@ -243,6 +243,18 @@
 	stuttering = max(stuttering + amount,0)
 	return
 
+/mob/proc/SetEyeBlind(amount)
+	eye_blind = max(amount, 0)
+	return
+
+/mob/proc/AdjustEyeBlind(amount)
+	eye_blind = max(eye_blind + amount, 0)
+	return
+
+/mob/proc/ReduceEyeBlind(amount)
+	eye_blind = max(eye_blind - amount, 0)
+	return
+
 /mob/proc/AdjustEarDeafness(amount)
 	var/prev_deaf = ear_deaf
 	ear_deaf = max(ear_deaf + amount, 0)

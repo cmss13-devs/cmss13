@@ -185,7 +185,7 @@
 
 	// fix blindness and deafness
 	blinded = FALSE
-	eye_blind = 0
+	SetEyeBlind(0)
 	SetEyeBlur(0)
 	SetEarDeafness(0)
 	ear_damage = 0

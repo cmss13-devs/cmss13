@@ -168,7 +168,7 @@
 
 		SetEarDeafness(0) //All this stuff is prob unnecessary
 		ear_damage = 0
-		eye_blind = 0
+		SetEyeBlind(0)
 
 		if(knocked_out) //If they're down, make sure they are actually down.
 			blinded = TRUE

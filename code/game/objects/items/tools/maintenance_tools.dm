@@ -98,7 +98,7 @@
 			if(!safety)
 				to_chat(user, SPAN_DANGER("You stab [H] in the eyes with the [src]!"))
 				visible_message(SPAN_DANGER("[user] stabs [H] in the eyes with the [src]!"))
-				E.damage += rand(8,20)
+				E.take_damage(rand(8,20))
 	return ..()
 /obj/item/tool/screwdriver/tactical
 	name = "tactical screwdriver"
@@ -377,33 +377,29 @@
 		switch(safety)
 			if(1)
 				to_chat(user, SPAN_DANGER("Your eyes sting a little."))
-				E.damage += rand(1, 2)
+				E.take_damage(rand(1, 2), TRUE)
 				if(E.damage > 12)
 					H.AdjustEyeBlur(3,6)
 			if(0)
 				to_chat(user, SPAN_WARNING("Your eyes burn."))
-				E.damage += rand(2, 4)
+				E.take_damage(rand(2, 4), TRUE)
 				if(E.damage > 10)
-					E.damage += rand(4,10)
+					E.take_damage(rand(4, 10), TRUE)
 			if(-1)
 				to_chat(user, SPAN_WARNING("Your thermals intensify [src]'s glow. Your eyes itch and burn severely."))
 				H.AdjustEyeBlur(12,20)
-				E.damage += rand(12, 16)
-		if(safety<2)
+				E.take_damage(rand(12, 16), TRUE)
 
+		if(safety < 2)
 			if (E.damage >= E.min_broken_damage)
 				to_chat(H, SPAN_WARNING("You go blind! Maybe welding without protection wasn't such a great idea..."))
-				return
-
+				return FALSE
 			if (E.damage >= E.min_bruised_damage)
 				to_chat(H, SPAN_WARNING("Your vision starts blurring and your eyes hurt terribly!"))
-				return
-
+				return FALSE
 			if(E.damage > 5)
 				to_chat(H, SPAN_WARNING("Your eyes are really starting to hurt. This can't be good for you!"))
-				return
-
-
+				return FALSE
 
 /obj/item/tool/weldingtool/pickup(mob/user)
 	. = ..()

@@ -66,7 +66,7 @@
 
 
 /obj/item/clothing/mask/balaclava
-	name = "Balaclava"
+	name = "balaclava"
 	desc = "A basic single eye-hole balaclava, available in almost every sporting goods, outdoor supply, or military surplus store in existance, protects your face from the cold almost as well as it conceals it. This one is in a standard black color."
 	icon_state = "balaclava"
 	item_state = "balaclava"

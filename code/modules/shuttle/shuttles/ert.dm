@@ -21,6 +21,7 @@
 	for(var/place in shuttle_areas)
 		for(var/obj/structure/machinery/door/airlock/air in place)
 			doors += list(air)
+			air.breakable = FALSE
 
 /obj/docking_port/mobile/emergency_response/enterTransit()
 	control_doors("force-lock-launch")

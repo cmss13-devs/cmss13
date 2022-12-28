@@ -224,7 +224,7 @@ GLOBAL_PROTECT(LastAdminCalledProc)
 /proc/IsAdminAdvancedProcCall()
 	return (GLOB.AdminProcCaller && GLOB.AdminProcCaller == usr?.client?.ckey) || (GLOB.AdminProcCallHandler && usr == GLOB.AdminProcCallHandler)
 
-/client/proc/callproc_datum(datum/called_datum)
+/client/proc/callproc_datum(datum/called_datum as null|area|mob|obj|turf|datum)
 	set category = "Debug"
 	set name = "Datum ProcCall"
 	set waitfor = FALSE

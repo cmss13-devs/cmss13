@@ -493,7 +493,7 @@
 
 /obj/item/weapon/gun/rifle/m46c/verb/toggle_iff()
 	set category = "Weapons"
-	set name = "Toggle Lethal Mode"
+	set name = "Toggle IFF"
 	set src in usr
 
 	if(is_locked && linked_human && usr != linked_human)
@@ -521,7 +521,7 @@
 
 /obj/item/weapon/gun/rifle/m46c/proc/name_after_co(var/mob/living/carbon/human/H, var/obj/item/weapon/gun/rifle/m46c/I)
 	linked_human = H
-	RegisterSignal(linked_human, COMSIG_PARENT_QDELETING, .proc/remove_idlock)
+	RegisterSignal(linked_human, COMSIG_PARENT_QDELETING, PROC_REF(remove_idlock))
 
 /obj/item/weapon/gun/rifle/m46c/get_examine_text(mob/user)
 	. = ..()

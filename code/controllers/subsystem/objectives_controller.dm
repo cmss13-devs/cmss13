@@ -49,9 +49,9 @@ SUBSYSTEM_DEF(objectives)
 	comms = new
 	corpsewar = new
 
-	RegisterSignal(SSdcs, COMSIG_GLOB_MODE_PRESETUP, .proc/pre_round_start)
-	RegisterSignal(SSdcs, COMSIG_GLOB_MODE_POSTSETUP, .proc/post_round_start)
-	RegisterSignal(SSdcs, COMSIG_GLOB_DS_FIRST_LANDED, .proc/on_marine_landing)
+	RegisterSignal(SSdcs, COMSIG_GLOB_MODE_PRESETUP, PROC_REF(pre_round_start))
+	RegisterSignal(SSdcs, COMSIG_GLOB_MODE_POSTSETUP, PROC_REF(post_round_start))
+	RegisterSignal(SSdcs, COMSIG_GLOB_DS_FIRST_LANDED, PROC_REF(on_marine_landing))
 
 	return SS_INIT_SUCCESS
 

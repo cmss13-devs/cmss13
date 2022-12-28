@@ -561,6 +561,7 @@ var/const/MAX_SAVE_SLOTS = 10
 			dat += "<b>Play Lobby Music:</b> <a href='?_src_=prefs;preference=lobby_music'><b>[(toggles_sound & SOUND_LOBBY) ? "Yes" : "No"]</b></a><br>"
 			dat += "<b>Play VOX Announcements:</b> <a href='?_src_=prefs;preference=sound_vox'><b>[(hear_vox) ? "Yes" : "No"]</b></a><br>"
 			dat += "<b>Default Ghost Night Vision Level:</b> <a href='?_src_=prefs;preference=ghost_vision_pref;task=input'><b>[ghost_vision_pref]</b></a><br>"
+			dat += "<a href='?src=\ref[src];action=proccall;procpath=/client/proc/receive_random_tip'>Read Random Tip of the Round</a><br>"
 			if(CONFIG_GET(flag/allow_Metadata))
 				dat += "<b>OOC Notes:</b> <a href='?_src_=prefs;preference=metadata;task=input'> Edit </a>"
 			dat += "</div>"
@@ -2004,8 +2005,8 @@ var/const/MAX_SAVE_SLOTS = 10
 
 	alert("Press OK below, and then input the key sequence!")
 
-	RegisterSignal(owner, COMSIG_CLIENT_KEY_DOWN, .proc/parse_key_down)
-	RegisterSignal(owner, COMSIG_CLIENT_KEY_UP, .proc/set_key_buf)
+	RegisterSignal(owner, COMSIG_CLIENT_KEY_DOWN, PROC_REF(parse_key_down))
+	RegisterSignal(owner, COMSIG_CLIENT_KEY_UP, PROC_REF(set_key_buf))
 	winset(owner, null, "mainwindow.macro=keyreader")
 	UNTIL(key_buf)
 	winset(owner, null, "mainwindow.macro=[old]")

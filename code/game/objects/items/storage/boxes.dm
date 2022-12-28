@@ -148,7 +148,7 @@
 	if(SSticker.mode && MODE_HAS_FLAG(MODE_FACTION_CLASH))
 		handle_delete_clash_contents()
 	else if(SSticker.current_state < GAME_STATE_PLAYING)
-		RegisterSignal(SSdcs, COMSIG_GLOB_MODE_PRESETUP, .proc/handle_delete_clash_contents)
+		RegisterSignal(SSdcs, COMSIG_GLOB_MODE_PRESETUP, PROC_REF(handle_delete_clash_contents))
 
 /obj/item/storage/box/flashbangs/proc/handle_delete_clash_contents()
 	if(MODE_HAS_FLAG(MODE_FACTION_CLASH))
@@ -374,6 +374,25 @@
 	new /obj/item/handcuffs/zip(src)
 	new /obj/item/handcuffs/zip(src)
 
+/obj/item/storage/box/tapes
+	name = "box of regulation tapes"
+	desc = "A box full of magnetic tapes for tape recorders. Contains 10 hours and 40 minutes of recording space!"
+
+/obj/item/storage/box/tapes/fill_preset_inventory()
+	new /obj/item/tape/regulation(src)
+	new /obj/item/tape/regulation(src)
+	new /obj/item/tape/regulation(src)
+	new /obj/item/tape/regulation(src)
+	new /obj/item/tape/regulation(src)
+	new /obj/item/tape/regulation(src)
+	new /obj/item/tape/regulation(src)
+	new /obj/item/tape/regulation(src)
+	new /obj/item/tape/regulation(src)
+	new /obj/item/tape/regulation(src)
+	new /obj/item/tape/regulation(src)
+	new /obj/item/tape/regulation(src)
+	new /obj/item/tape/regulation(src)
+	new /obj/item/tape/regulation(src)
 
 /obj/item/storage/box/mousetraps
 	name = "box of Pest-B-Gon mousetraps"
@@ -638,7 +657,7 @@
 	if(SSticker.mode && MODE_HAS_FLAG(MODE_FACTION_CLASH))
 		handle_delete_clash_contents()
 	else if(SSticker.current_state < GAME_STATE_PLAYING)
-		RegisterSignal(SSdcs, COMSIG_GLOB_MODE_PRESETUP, .proc/handle_delete_clash_contents)
+		RegisterSignal(SSdcs, COMSIG_GLOB_MODE_PRESETUP, PROC_REF(handle_delete_clash_contents))
 
 /obj/item/storage/box/nade_box/tear_gas/proc/handle_delete_clash_contents()
 	if(MODE_HAS_FLAG(MODE_FACTION_CLASH))

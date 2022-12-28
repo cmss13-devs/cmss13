@@ -615,7 +615,7 @@ Defined in conflicts.dm of the #defines folder.
 	remove_attached_item()
 
 	attached_item = S.master_object
-	RegisterSignal(attached_item, COMSIG_PARENT_QDELETING, .proc/remove_attached_item)
+	RegisterSignal(attached_item, COMSIG_PARENT_QDELETING, PROC_REF(remove_attached_item))
 	activation = new /datum/action/item_action/toggle(src, S.master_object)
 
 	if(ismob(S.master_object.loc))
@@ -823,7 +823,7 @@ Defined in conflicts.dm of the #defines folder.
 		G.fire_delay += delay_scoped_nerf
 		G.damage_falloff_mult += damage_falloff_scoped_buff
 		using_scope = TRUE
-		RegisterSignal(user, COMSIG_LIVING_ZOOM_OUT, .proc/remove_scoped_buff)
+		RegisterSignal(user, COMSIG_LIVING_ZOOM_OUT, PROC_REF(remove_scoped_buff))
 
 /obj/item/attachable/scope/proc/remove_scoped_buff(mob/living/carbon/user, obj/item/weapon/gun/G)
 	SIGNAL_HANDLER
@@ -2423,7 +2423,7 @@ Defined in conflicts.dm of the #defines folder.
 				G.recalculate_attachment_bonuses()
 
 				initial_mob_dir = user.dir
-				RegisterSignal(user, COMSIG_MOB_MOVE_OR_LOOK, .proc/handle_mob_move_or_look)
+				RegisterSignal(user, COMSIG_MOB_MOVE_OR_LOOK, PROC_REF(handle_mob_move_or_look))
 
 				if(G.flags_gun_features & GUN_SUPPORT_PLATFORM)
 					G.add_bullet_trait(BULLET_TRAIT_ENTRY_ID("iff", /datum/element/bullet_trait_iff))

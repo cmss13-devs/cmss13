@@ -19,12 +19,13 @@
 		user.drop_held_item()
 		O.forceMove(src)
 		update_icon()
-	else if(istype(O, /obj/item/tool/pen))
+	else if(HAS_TRAIT(O, TRAIT_TOOL_PEN))
 		var/newname = stripped_input(usr, "What would you like to title this bookshelf?")
 		if(!newname)
 			return
 		else
 			name = ("bookcase ([strip_html(newname)])")
+			playsound(src, "paper_writing", 15, TRUE)
 	else
 		..()
 

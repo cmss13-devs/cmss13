@@ -12051,8 +12051,8 @@
 /obj/structure/machinery/door/airlock/almayer/maint/reinforced{
 	dir = 1;
 	name = "\improper Engineering Storage";
-	req_one_access_txt = "2;7";
-	req_one_access = null
+	req_one_access = null;
+	req_one_access_txt = "2;7"
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4";
@@ -12071,8 +12071,8 @@
 /obj/structure/machinery/door/airlock/almayer/maint/reinforced{
 	dir = 1;
 	name = "\improper Engineering Storage";
-	req_one_access_txt = "2;7";
-	req_one_access = null
+	req_one_access = null;
+	req_one_access_txt = "2;7"
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4";
@@ -45154,6 +45154,9 @@
 "gSi" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/computer/security/almayer_network,
+/obj/item/storage/box/tapes{
+	pixel_x = -16
+	},
 /turf/open/floor/almayer,
 /area/almayer/shipboard/brig/processing)
 "gSj" = (
@@ -55186,10 +55189,11 @@
 /turf/open/floor/wood/ship,
 /area/almayer/living/commandbunks)
 "luk" = (
-/obj/structure/largecrate/random/secure,
 /obj/structure/machinery/light/small{
 	dir = 8
 	},
+/obj/item/clothing/head/helmet/marine/tech/tanker,
+/obj/structure/largecrate/random/secure,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -78608,15 +78612,6 @@
 "vAG" = (
 /turf/open/floor/almayer,
 /area/almayer/shipboard/brig/chief_mp_office)
-"vAI" = (
-/obj/structure/machinery/cryopod/right{
-	pixel_y = 6
-	},
-/turf/open/floor/almayer{
-	icon_state = "cargo";
-	tag = "icon-bluecorner (NORTH)"
-	},
-/area/almayer/shipboard/brig/cryo)
 "vAQ" = (
 /obj/structure/machinery/light,
 /obj/structure/sink{
@@ -96020,9 +96015,9 @@ eRL
 mLJ
 pWG
 gaJ
-vAI
+eyg
 gCI
-vAI
+eyg
 gaJ
 heQ
 lMc
@@ -100480,7 +100475,7 @@ cRc
 rPC
 wcn
 vxM
-vAI
+eyg
 giZ
 gTl
 vxM
@@ -101293,7 +101288,7 @@ tRX
 uzm
 vxM
 eyg
-vAI
+eyg
 oWI
 vxM
 nNv
@@ -103551,7 +103546,7 @@ uiZ
 mKq
 qCy
 rpp
-aES
+vCO
 vCO
 vCO
 jxB

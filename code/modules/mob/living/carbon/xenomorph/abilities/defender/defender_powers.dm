@@ -176,7 +176,7 @@
 	playsound(get_turf(xeno), 'sound/effects/stonedoor_openclose.ogg', 30, 1)
 
 	if(!xeno.fortify)
-		RegisterSignal(owner, COMSIG_MOB_DEATH, .proc/death_check)
+		RegisterSignal(owner, COMSIG_MOB_DEATH, PROC_REF(death_check))
 		fortify_switch(xeno, TRUE)
 		if(xeno.selected_ability != src)
 			button.icon_state = "template_active"
@@ -220,7 +220,7 @@
 			X.anchored = TRUE
 			X.small_explosives_stun = FALSE
 			X.update_canmove()
-		RegisterSignal(owner, COMSIG_XENO_PRE_CALCULATE_ARMOURED_DAMAGE_PROJECTILE, .proc/check_directional_armor)
+		RegisterSignal(owner, COMSIG_XENO_PRE_CALCULATE_ARMOURED_DAMAGE_PROJECTILE, PROC_REF(check_directional_armor))
 		X.mob_size = MOB_SIZE_IMMOBILE //knockback immune
 		X.mob_flags &= ~SQUEEZE_UNDER_VEHICLES
 		X.update_icons()

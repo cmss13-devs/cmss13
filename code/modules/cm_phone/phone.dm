@@ -39,7 +39,7 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 	base_icon_state = icon_state
 
 	attached_to = new phone_type(src)
-	RegisterSignal(attached_to, COMSIG_PARENT_PREQDELETED, .proc/override_delete)
+	RegisterSignal(attached_to, COMSIG_PARENT_PREQDELETED, PROC_REF(override_delete))
 	update_icon()
 
 	if(!get_turf(src))
@@ -155,7 +155,7 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 
 	to_chat(user, SPAN_PURPLE("[icon2html(src, user)] Dialing [calling_phone_id].."))
 	playsound(get_turf(user), "rtb_handset")
-	timeout_timer_id = addtimer(CALLBACK(src, .proc/reset_call, TRUE), timeout_duration, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_STOPPABLE)
+	timeout_timer_id = addtimer(CALLBACK(src, PROC_REF(reset_call), TRUE), timeout_duration, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_STOPPABLE)
 
 	START_PROCESSING(SSobj, src)
 	START_PROCESSING(SSobj, T)
@@ -446,7 +446,7 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 
 	var/list/tether_effects = apply_tether(tether_from, tether_to, range = attached_to.range, icon = "wire", always_face = FALSE)
 	tether_effect = tether_effects["tetherer_tether"]
-	RegisterSignal(tether_effect, COMSIG_PARENT_QDELETING, .proc/reset_tether)
+	RegisterSignal(tether_effect, COMSIG_PARENT_QDELETING, PROC_REF(reset_tether))
 
 /obj/item/phone/attack_self(mob/user)
 	..()
@@ -491,7 +491,7 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 
 /obj/item/phone/pickup(mob/user)
 	. = ..()
-	RegisterSignal(user, COMSIG_LIVING_SPEAK, .proc/handle_speak)
+	RegisterSignal(user, COMSIG_LIVING_SPEAK, PROC_REF(handle_speak))
 
 /obj/item/phone/forceMove(atom/dest)
 	. = ..()
@@ -513,8 +513,8 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 
 	if(attached_to && loc.z != attached_to.z)
 		zlevel_transfer = TRUE
-		zlevel_transfer_timer = addtimer(CALLBACK(src, .proc/try_doing_tether), zlevel_transfer_timeout, TIMER_UNIQUE|TIMER_STOPPABLE)
-		RegisterSignal(attached_to, COMSIG_MOVABLE_MOVED, .proc/transmitter_move_handler)
+		zlevel_transfer_timer = addtimer(CALLBACK(src, PROC_REF(try_doing_tether)), zlevel_transfer_timeout, TIMER_UNIQUE|TIMER_STOPPABLE)
+		RegisterSignal(attached_to, COMSIG_MOVABLE_MOVED, PROC_REF(transmitter_move_handler))
 		return TRUE
 	return FALSE
 

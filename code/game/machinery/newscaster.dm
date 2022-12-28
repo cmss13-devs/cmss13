@@ -880,7 +880,7 @@ var/list/obj/structure/machinery/newscaster/allCasters = list() //Global list th
 
 
 /obj/item/newspaper/attackby(obj/item/W as obj, mob/user as mob)
-	if(istype(W, /obj/item/tool/pen))
+	if(HAS_TRAIT(W, TRAIT_TOOL_PEN))
 		if(src.scribble_page == src.curr_page)
 			to_chat(user, "<FONT COLOR='blue'>There's already a scribble in this page... You wouldn't want to make things too cluttered, would you?</FONT>")
 		else

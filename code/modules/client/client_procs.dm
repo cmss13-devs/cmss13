@@ -51,7 +51,8 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	/client/proc/toggle_middle_mouse_swap_hands,
 	/client/proc/toggle_vend_item_to_hand,
 	/client/proc/switch_item_animations,
-	/client/proc/toggle_admin_sound_types
+	/client/proc/toggle_admin_sound_types,
+	/client/proc/receive_random_tip
 ))
 
 /client/Topic(href, href_list, hsrc)
@@ -279,7 +280,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 
 	// Instantiate stat panel
 	stat_panel = new(src, "statbrowser")
-	stat_panel.subscribe(src, .proc/on_stat_panel_message)
+	stat_panel.subscribe(src, PROC_REF(on_stat_panel_message))
 
 	// Instantiate tgui panel
 	tgui_panel = new(src, "browseroutput")
@@ -370,7 +371,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		inline_js = file("html/statbrowser.js"),
 		inline_css = file("html/statbrowser.css"),
 	)
-	addtimer(CALLBACK(src, .proc/check_panel_loaded), 30 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(check_panel_loaded)), 30 SECONDS)
 
 	tgui_panel.initialize()
 
@@ -497,7 +498,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		src << browse('code/modules/asset_cache/validate_assets.html', "window=asset_cache_browser")
 
 		//Precache the client with all other assets slowly, so as to not block other browse() calls
-		addtimer(CALLBACK(SSassets.transport, /datum/asset_transport.proc/send_assets_slow, src, SSassets.transport.preload), 5 SECONDS)
+		addtimer(CALLBACK(SSassets.transport, TYPE_PROC_REF(/datum/asset_transport, send_assets_slow), src, SSassets.transport.preload), 5 SECONDS)
 
 /proc/setup_player_entity(var/ckey)
 	if(!ckey)

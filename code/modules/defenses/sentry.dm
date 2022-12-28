@@ -1,8 +1,8 @@
 #define SENTRY_FIREANGLE 	135
 #define SENTRY_RANGE 		5
 #define SENTRY_MUZZLELUM	3
-#define SENTRY_ENGAGED_TIMEOUT 60
-#define SENTRY_LOW_AMMO_TIMEOUT 20
+#define SENTRY_ENGAGED_TIMEOUT 60 SECONDS
+#define SENTRY_LOW_AMMO_TIMEOUT 20 SECONDS
 /obj/structure/machinery/defenses/sentry
 	name = "\improper UA 571-C sentry gun"
 	icon = 'icons/obj/structures/machinery/defenses/sentry.dmi'
@@ -258,7 +258,7 @@
 	if(!(world.time-last_fired >= fire_delay) || !turned_on || !ammo || QDELETED(target))
 		return
 
-	if(world.time-last_fired >= 300) //if we haven't fired for a while, beep first
+	if(world.time-last_fired >= 30 SECONDS) //if we haven't fired for a while, beep first
 		playsound(loc, 'sound/machines/twobeep.ogg', 50, 1)
 		sleep(3)
 
@@ -294,14 +294,14 @@
 /obj/structure/machinery/defenses/sentry/proc/reset_low_ammo_timer()
 	low_ammo_timer = null
 
-/obj/structure/machinery/defenses/sentry/proc/actual_fire(var/atom/A)
+/obj/structure/machinery/defenses/sentry/proc/actual_fire(var/atom/target)
 	var/obj/item/projectile/new_projectile = new(src, create_cause_data(initial(name), owner_mob, src))
 	new_projectile.generate_bullet(new ammo.default_ammo)
 	new_projectile.damage *= damage_mult
 	new_projectile.accuracy *= accuracy_mult
 	GIVE_BULLET_TRAIT(new_projectile, /datum/element/bullet_trait_iff, faction_group)
-	new_projectile.fire_at(A, src, owner_mob, new_projectile.ammo.max_range, new_projectile.ammo.shell_speed, null, FALSE)
-	muzzle_flash(Get_Angle(get_turf(src), A))
+	new_projectile.fire_at(target, src, owner_mob, new_projectile.ammo.max_range, new_projectile.ammo.shell_speed, null, FALSE)
+	muzzle_flash(Get_Angle(get_turf(src), target))
 	ammo.current_rounds--
 	track_shot()
 	if(ammo.current_rounds == 0)
@@ -327,12 +327,12 @@
 	var/image_layer = layer + 0.1
 	var/offset = 13
 
-	var/image/I = image('icons/obj/items/weapons/projectiles.dmi',src,"muzzle_flash",image_layer)
+	var/image/flash = image('icons/obj/items/weapons/projectiles.dmi',src,"muzzle_flash",image_layer)
 	var/matrix/rotate = matrix() //Change the flash angle.
 	rotate.Translate(0, offset)
 	rotate.Turn(angle)
-	I.transform = rotate
-	I.flick_overlay(src, 3)
+	flash.transform = rotate
+	flash.flick_overlay(src, 3)
 
 /obj/structure/machinery/defenses/sentry/proc/get_target(var/atom/movable/new_target)
 	if(!islist(targets))

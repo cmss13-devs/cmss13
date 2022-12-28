@@ -182,7 +182,7 @@
 		..()
 
 /obj/item/device/sentry_computer/proc/register(var/tool, mob/user, var/sentry_gun)
-	if (do_after(user, 10, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
+	if (do_after(user, 1 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
 		var/obj/structure/machinery/defenses/defence = sentry_gun
 		pair_sentry(defence)
 		to_chat(user, SPAN_NOTICE("\The [defence] has been encrypted."))
@@ -192,7 +192,7 @@
 /obj/item/device/sentry_computer/proc/unregister(var/tool, mob/user, var/sentry_gun)
 	var/obj/structure/machinery/defenses/sentry/sentry = sentry_gun
 	if(sentry.linked_laptop == src)
-		if (do_after(user, 10, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
+		if (do_after(user, 1 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
 			unpair_sentry(sentry)
 			to_chat(user, SPAN_NOTICE("\The [sentry] has been decrypted."))
 			var/message = "[sentry] removed from from [src]"
@@ -297,8 +297,8 @@
 		sentry_holder["kills"] = defence.kills
 		sentry_holder["iff_status"] = defence.faction_group
 		sentry_holder["health"] = defence.health
-		for(var/i in defence.selected_categories)
-			sentry_holder["selection_state"] += list(list("[i]", defence.selected_categories[i]))
+		for(var/category in defence.selected_categories)
+			sentry_holder["selection_state"] += list(list("[category]", defence.selected_categories[category]))
 		if(istype(defence, /obj/structure/machinery/defenses/sentry))
 			var/obj/structure/machinery/defenses/sentry/sentrygun = sentry
 			sentry_holder["rounds"] = sentrygun.ammo.current_rounds

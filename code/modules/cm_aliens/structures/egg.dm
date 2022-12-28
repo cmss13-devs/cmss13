@@ -25,7 +25,7 @@
 
 	set_hive_data(src, hivenumber)
 	update_icon()
-	INVOKE_ASYNC(src, .proc/Grow)
+	INVOKE_ASYNC(src, PROC_REF(Grow))
 
 /obj/effect/alien/egg/Destroy()
 	. = ..()
@@ -122,7 +122,7 @@
 		icon_state = "Egg Opened"
 		flick("Egg Opening", src)
 		playsound(src.loc, "sound/effects/alien_egg_move.ogg", 25)
-		addtimer(CALLBACK(src, .proc/release_hugger, instant_trigger, X, is_hugger_player_controlled), 1 SECONDS)
+		addtimer(CALLBACK(src, PROC_REF(release_hugger), instant_trigger, X, is_hugger_player_controlled), 1 SECONDS)
 
 /obj/effect/alien/egg/proc/release_hugger(var/instant_trigger, var/mob/living/carbon/Xenomorph/X, var/is_hugger_player_controlled = FALSE)
 	if(!loc || status == EGG_DESTROYED)
@@ -192,7 +192,7 @@
 
 				qdel(F)
 
-				addtimer(CALLBACK(src, .proc/deploy_egg_triggers), 30 SECONDS)
+				addtimer(CALLBACK(src, PROC_REF(deploy_egg_triggers)), 30 SECONDS)
 			if(EGG_DESTROYED)
 				to_chat(user, SPAN_XENOWARNING("This egg is no longer usable."))
 			if(EGG_GROWING, EGG_GROWN)

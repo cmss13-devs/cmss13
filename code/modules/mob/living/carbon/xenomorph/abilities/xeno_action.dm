@@ -31,7 +31,7 @@
 /datum/action/xeno_action/New(Target, override_icon_state)
 	. = ..()
 	if(charges != NO_ACTION_CHARGES)
-		RegisterSignal(src, COMSIG_XENO_ACTION_USED, .proc/remove_charge)
+		RegisterSignal(src, COMSIG_XENO_ACTION_USED, PROC_REF(remove_charge))
 	if(charge_time)
 		charge_ready = FALSE
 	update_button_icon()
@@ -225,7 +225,7 @@
 	cooldown_to_apply = cooldown_to_apply * (1 - Clamp(X.cooldown_reduction_percentage, 0, 0.5))
 
 	// Add a unique timer
-	cooldown_timer_id = addtimer(CALLBACK(src, .proc/on_cooldown_end), cooldown_to_apply, TIMER_UNIQUE|TIMER_STOPPABLE)
+	cooldown_timer_id = addtimer(CALLBACK(src, PROC_REF(on_cooldown_end)), cooldown_to_apply, TIMER_UNIQUE|TIMER_STOPPABLE)
 	current_cooldown_duration = cooldown_to_apply
 	current_cooldown_start_time = world.time
 
@@ -245,7 +245,7 @@
 	var/mob/living/carbon/Xenomorph/X = owner
 	// Note: no check to see if we're already on CD. we just flat override whatever's there
 	cooldown_duration = cooldown_duration * (1 - Clamp(X.cooldown_reduction_percentage, 0, 0.5))
-	cooldown_timer_id = addtimer(CALLBACK(src, .proc/on_cooldown_end), cooldown_duration, TIMER_OVERRIDE|TIMER_UNIQUE|TIMER_STOPPABLE)
+	cooldown_timer_id = addtimer(CALLBACK(src, PROC_REF(on_cooldown_end)), cooldown_duration, TIMER_OVERRIDE|TIMER_UNIQUE|TIMER_STOPPABLE)
 	current_cooldown_duration = cooldown_duration
 	current_cooldown_start_time = world.time
 
@@ -312,7 +312,7 @@
 	else
 		// Looks like timers are back on the menu, boys
 		var/new_cooldown_duration = current_cooldown_duration - amount - (world.time - current_cooldown_start_time)
-		cooldown_timer_id = addtimer(CALLBACK(src, .proc/on_cooldown_end), new_cooldown_duration, TIMER_UNIQUE | TIMER_STOPPABLE)
+		cooldown_timer_id = addtimer(CALLBACK(src, PROC_REF(on_cooldown_end)), new_cooldown_duration, TIMER_UNIQUE | TIMER_STOPPABLE)
 		current_cooldown_duration = new_cooldown_duration
 		current_cooldown_start_time = world.time
 
@@ -337,7 +337,7 @@
 			to_chat(owner, SPAN_XENODANGER("You feel your strength return! You can use [name] again!"))
 
 /datum/action/xeno_action/proc/start_charging_ability()
-	charge_timer_id = addtimer(CALLBACK(src, .proc/finish_charging_ability), charge_time, TIMER_UNIQUE|TIMER_STOPPABLE)
+	charge_timer_id = addtimer(CALLBACK(src, PROC_REF(finish_charging_ability)), charge_time, TIMER_UNIQUE|TIMER_STOPPABLE)
 	to_chat(owner, SPAN_XENOWARNING("You start charging up your <b>[name]</b>!"))
 
 /datum/action/xeno_action/proc/finish_charging_ability()

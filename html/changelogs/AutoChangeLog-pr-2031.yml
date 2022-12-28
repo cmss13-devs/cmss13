@@ -1,5 +1,0 @@
-author: "fira"
-delete-after: True
-changes:
-  - bugfix: "Fixed Flaregun to have terrible unwielded accuracy, instead of completely negative."
-  - bugfix: "Scatter is not applied to ground-targeted weaponry (like Flaregun) as it would cause projectiles to miss wide to max range."

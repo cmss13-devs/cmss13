@@ -1297,7 +1297,7 @@
 /obj/item/storage/pouch/sling/proc/handle_retrieval(mob/living/carbon/human/user)
 	if(slung && slung.loc == src)
 		return
-	addtimer(CALLBACK(src, .proc/attempt_retrieval, user), 0.3 SECONDS, TIMER_UNIQUE|TIMER_NO_HASH_WAIT)
+	addtimer(CALLBACK(src, PROC_REF(attempt_retrieval), user), 0.3 SECONDS, TIMER_UNIQUE|TIMER_NO_HASH_WAIT)
 
 /obj/item/storage/pouch/cassette
 	name = "cassette pouch"

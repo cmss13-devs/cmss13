@@ -75,17 +75,28 @@
 #define SS_OK_TO_FAIL_INIT (1 << 6)
 
 //! SUBSYSTEM STATES
-#define SS_IDLE 0 /// ain't doing shit.
-#define SS_QUEUED 1 /// queued to run
-#define SS_RUNNING 2 /// actively running
-#define SS_PAUSED 3 /// paused by mc_tick_check
-#define SS_SLEEPING 4 /// fire() slept.
-#define SS_PAUSING 5 /// in the middle of pausing
+
+/// ain't doing shit.
+#define SS_IDLE 0
+/// queued to run
+#define SS_QUEUED 1
+/// actively running
+#define SS_RUNNING 2
+/// paused by mc_tick_check
+#define SS_PAUSED 3
+/// fire() slept.
+#define SS_SLEEPING 4
+/// in the middle of pausing
+#define SS_PAUSING 5
 
 // Subsystem init stages
-#define INITSTAGE_EARLY 1 //! Early init stuff that doesn't need to wait for mapload
-#define INITSTAGE_MAIN 2 //! Main init stage
-#define INITSTAGE_MAX 2 //! Highest initstage.
+
+/// ! Early init stuff that doesn't need to wait for mapload
+#define INITSTAGE_EARLY 1
+/// ! Main init stage
+#define INITSTAGE_MAIN 2
+/// ! Highest initstage.
+#define INITSTAGE_MAX 2
 
 #define SUBSYSTEM_DEF(X) GLOBAL_REAL(SS##X, /datum/controller/subsystem/##X);\
 /datum/controller/subsystem/##X/New(){\

@@ -57,12 +57,12 @@
 	var/obj/docking_port/mobile/lifeboat/lifeboat = departing_shuttle
 	if(istype(lifeboat))
 		for(var/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat/door in lifeboat.doors)
-			INVOKE_ASYNC(door, /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat.proc/close_and_lock)
+			INVOKE_ASYNC(door, TYPE_PROC_REF(/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat, close_and_lock))
 
 	for(var/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat/blastdoor/blastdoor as anything in GLOB.lifeboat_doors)
 		if(blastdoor.linked_dock == id)
-			addtimer(CALLBACK(blastdoor, /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat.proc/close_and_lock), 10)
-			addtimer(CALLBACK(blastdoor, /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat/blastdoor.proc/bolt_explosion), 75)
+			addtimer(CALLBACK(blastdoor, TYPE_PROC_REF(/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat, close_and_lock)), 10)
+			addtimer(CALLBACK(blastdoor, TYPE_PROC_REF(/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat/blastdoor, bolt_explosion)), 75)
 
 /obj/docking_port/stationary/lifeboat_dock/on_departure(obj/docking_port/mobile/departing_shuttle)
 	. = ..()
@@ -74,21 +74,21 @@
 	var/obj/docking_port/mobile/lifeboat/docked_shuttle = get_docked()
 	if(docked_shuttle)
 		for(var/obj/structure/machinery/door/airlock/multi_tile/door in docked_shuttle.doors)
-			INVOKE_ASYNC(door, /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat.proc/unlock_and_open)
+			INVOKE_ASYNC(door, TYPE_PROC_REF(/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat, unlock_and_open))
 
 	for(var/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat/blastdoor/blastdoor as anything in GLOB.lifeboat_doors)
 		if(blastdoor.linked_dock == id)
-			addtimer(CALLBACK(blastdoor, /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat.proc/unlock_and_open), 10)
+			addtimer(CALLBACK(blastdoor, TYPE_PROC_REF(/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat, unlock_and_open)), 10)
 
 /obj/docking_port/stationary/lifeboat_dock/proc/close_dock()
 	var/obj/docking_port/mobile/lifeboat/docked_shuttle = get_docked()
 	if(docked_shuttle)
 		for(var/obj/structure/machinery/door/airlock/multi_tile/door in docked_shuttle.doors)
-			INVOKE_ASYNC(door, /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat.proc/close_and_lock)
+			INVOKE_ASYNC(door, TYPE_PROC_REF(/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat, close_and_lock))
 
 	for(var/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat/blastdoor/blastdoor as anything in GLOB.lifeboat_doors)
 		if(blastdoor.linked_dock == id)
-			addtimer(CALLBACK(blastdoor, /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat.proc/close_and_lock), 10)
+			addtimer(CALLBACK(blastdoor, TYPE_PROC_REF(/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat, close_and_lock)), 10)
 
 
 /// Port Aft Lifeboat default dock

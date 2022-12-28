@@ -118,7 +118,7 @@
 /obj/item/storage/proc/add_to_watchers(mob/user)
 	if(!(user in content_watchers))
 		LAZYADD(content_watchers, user)
-		RegisterSignal(user, COMSIG_PARENT_QDELETING, .proc/watcher_deleted)
+		RegisterSignal(user, COMSIG_PARENT_QDELETING, PROC_REF(watcher_deleted))
 
 /obj/item/storage/proc/del_from_watchers(mob/watcher)
 	if(watcher in content_watchers)

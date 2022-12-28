@@ -69,7 +69,7 @@
 			continue
 		if(istype(W, /obj/effect/alien/weeds/weedwall))
 			continue
-		addtimer(CALLBACK(W, /obj/effect/alien/weeds.proc/weed_expand, node), CLUSTER_WEEDS_REGROWTH_TIME, TIMER_UNIQUE)
+		addtimer(CALLBACK(W, TYPE_PROC_REF(/obj/effect/alien/weeds, weed_expand), node), CLUSTER_WEEDS_REGROWTH_TIME, TIMER_UNIQUE)
 
 	to_chat(xeno, SPAN_XENONOTICE("You have successfully repaired \the [name]."))
 	playsound(loc, "alien_resin_build", 25)

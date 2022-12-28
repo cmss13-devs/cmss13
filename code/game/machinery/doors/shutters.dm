@@ -46,7 +46,7 @@
 	if(operating == 1) //emag again
 		operating = 0
 	if(autoclose)
-		addtimer(CALLBACK(src, .proc/autoclose), 150)
+		addtimer(CALLBACK(src, PROC_REF(autoclose)), 150)
 	return 1
 
 /obj/structure/machinery/door/poddoor/shutters/close()
@@ -84,7 +84,7 @@
 
 /obj/structure/machinery/door/poddoor/shutters/almayer/containment/attack_alien(mob/living/carbon/Xenomorph/M)
 	if(isXenoQueen(M) && density && !operating)
-		INVOKE_ASYNC(src, .proc/pry_open, M)
+		INVOKE_ASYNC(src, PROC_REF(pry_open), M)
 		return XENO_ATTACK_ACTION
 	else
 		. = ..(M)
@@ -93,7 +93,7 @@
 	. = ..()
 	if(. && !(stat & BROKEN))
 		stat |= BROKEN
-		addtimer(CALLBACK(src, .proc/unbreak_doors), 10 SECONDS)
+		addtimer(CALLBACK(src, PROC_REF(unbreak_doors)), 10 SECONDS)
 
 /obj/structure/machinery/door/poddoor/shutters/almayer/containment/proc/unbreak_doors()
 	stat &= ~BROKEN
@@ -105,8 +105,8 @@
 	icon = 'icons/obj/structures/doors/blastdoors_shutters.dmi'
 	unacidable = TRUE
 
-	ex_act(severity) //immune to explosions
-		return
+/obj/structure/machinery/door/poddoor/shutters/transit/ex_act(severity) //immune to explosions
+	return
 
 /obj/structure/machinery/door/poddoor/shutters/transit/open
 	density = FALSE
@@ -119,8 +119,9 @@
 	icon_state = "shutter0"
 	open_layer = PODDOOR_CLOSED_LAYER
 	closed_layer = PODDOOR_CLOSED_LAYER
-	ex_act(severity)
-		return
+
+/obj/structure/machinery/door/poddoor/shutters/almayer/pressure/ex_act(severity)
+	return
 
 /obj/structure/machinery/door/poddoor/shutters/almayer/uniform_vendors
 	name = "\improper Uniform Vendor Shutters"

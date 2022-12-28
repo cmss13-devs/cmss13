@@ -238,7 +238,7 @@
 
 /datum/action/item_action/smartgun/toggle_lethal_mode/New(Target, obj/item/holder)
 	. = ..()
-	name = "Toggle Lethal Mode"
+	name = "Toggle IFF"
 	action_icon_state = "iff_toggle_on"
 	button.name = name
 	button.overlays.Cut()
@@ -584,7 +584,7 @@
 
 /obj/item/weapon/gun/smartgun/co/proc/name_after_co(var/mob/living/carbon/human/H, var/obj/item/weapon/gun/smartgun/co/I)
 	linked_human = H
-	RegisterSignal(linked_human, COMSIG_PARENT_QDELETING, .proc/remove_idlock)
+	RegisterSignal(linked_human, COMSIG_PARENT_QDELETING, PROC_REF(remove_idlock))
 
 /obj/item/weapon/gun/smartgun/co/get_examine_text()
 	..()

@@ -513,7 +513,7 @@
 		to_chat(user, SPAN_NOTICE("Your badass trick inspires you. Your next few shots will be focused!"))
 		accuracy_mult = BASE_ACCURACY_MULT * 2
 		accuracy_mult_unwielded = BASE_ACCURACY_MULT * 2
-		addtimer(CALLBACK(src, .proc/recalculate_attachment_bonuses), 8 SECONDS)
+		addtimer(CALLBACK(src, PROC_REF(recalculate_attachment_bonuses)), 8 SECONDS)
 
 
 //-------------------------------------------------------

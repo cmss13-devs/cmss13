@@ -64,6 +64,11 @@
 		/datum/action/xeno_action/activable/transfer_plasma/hivelord, // to be consistent with drone placement
 		/datum/action/xeno_action/onclick/toggle_speed, //fourth macro
 		)
+
+	inherent_verbs = list(
+		/mob/living/carbon/Xenomorph/proc/rename_tunnel,
+		/mob/living/carbon/Xenomorph/proc/set_hugger_reserve_for_morpher,
+		)
 	mutation_type = HIVELORD_NORMAL
 
 	icon_xeno = 'icons/mob/xenos/hivelord.dmi'

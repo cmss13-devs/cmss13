@@ -420,8 +420,8 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 
 /obj/item/clothing/mask/cigarette/pickup(mob/user)
 	. = ..()
-	RegisterSignal(user, COMSIG_LIVING_IGNITION, .proc/light)
-	RegisterSignal(user, COMSIG_HUMAN_EXTINGUISH, .proc/handle_extinguish)
+	RegisterSignal(user, COMSIG_LIVING_IGNITION, PROC_REF(light))
+	RegisterSignal(user, COMSIG_HUMAN_EXTINGUISH, PROC_REF(handle_extinguish))
 
 /obj/item/clothing/mask/cigarette/dropped(mob/user)
 	. = ..()

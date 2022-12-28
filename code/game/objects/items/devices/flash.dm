@@ -65,7 +65,7 @@
 			to_chat(user, SPAN_WARNING("The bulb has burnt out!"))
 			update_icon()
 			return
-		addtimer(CALLBACK(src, .proc/add_charge), recharge_time_per_flash)
+		addtimer(CALLBACK(src, PROC_REF(add_charge)), recharge_time_per_flash)
 		to_chat(user, SPAN_DANGER("[flashes_stored] / [max_flashes_stored] flashes remaining."))
 	else
 		to_chat(user, SPAN_WARNING("*click* *click*"))

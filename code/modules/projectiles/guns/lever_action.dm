@@ -65,7 +65,7 @@ their unique feature is that a direct hit will buff your damage and firerate
 /obj/item/weapon/gun/lever_action/wield(var/mob/M)
 	. = ..()
 	if(. && (flags_gun_lever_action & USES_STREAKS))
-		RegisterSignal(M, COMSIG_DIRECT_BULLET_HIT, .proc/direct_hit_buff)
+		RegisterSignal(M, COMSIG_DIRECT_BULLET_HIT, PROC_REF(direct_hit_buff))
 
 /obj/item/weapon/gun/lever_action/unwield(var/mob/M)
 	. = ..()
@@ -113,7 +113,7 @@ their unique feature is that a direct hit will buff your damage and firerate
 	if(!(flags_gun_lever_action & USES_STREAKS))
 		return
 	apply_hit_buff(user, target, one_hand_lever) //this is a separate proc so it's configgable
-	addtimer(CALLBACK(src, .proc/reset_hit_buff, one_hand_lever), hit_buff_reset_cooldown, TIMER_OVERRIDE|TIMER_UNIQUE)
+	addtimer(CALLBACK(src, PROC_REF(reset_hit_buff), one_hand_lever), hit_buff_reset_cooldown, TIMER_OVERRIDE|TIMER_UNIQUE)
 
 /obj/item/weapon/gun/lever_action/proc/apply_hit_buff(mob/user, mob/target, var/one_hand_lever = FALSE)
 	lever_sound = lever_super_sound

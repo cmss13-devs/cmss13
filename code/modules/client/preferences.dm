@@ -2005,8 +2005,8 @@ var/const/MAX_SAVE_SLOTS = 10
 
 	alert("Press OK below, and then input the key sequence!")
 
-	RegisterSignal(owner, COMSIG_CLIENT_KEY_DOWN, .proc/parse_key_down)
-	RegisterSignal(owner, COMSIG_CLIENT_KEY_UP, .proc/set_key_buf)
+	RegisterSignal(owner, COMSIG_CLIENT_KEY_DOWN, PROC_REF(parse_key_down))
+	RegisterSignal(owner, COMSIG_CLIENT_KEY_UP, PROC_REF(set_key_buf))
 	winset(owner, null, "mainwindow.macro=keyreader")
 	UNTIL(key_buf)
 	winset(owner, null, "mainwindow.macro=[old]")

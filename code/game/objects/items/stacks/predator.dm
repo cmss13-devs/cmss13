@@ -63,12 +63,12 @@
 	animate(pixel_x = rand_swing, time = 3 SECONDS,  easing = SINE_EASING|EASE_OUT)
 
 	anchored = TRUE
-	RegisterSignal(src, COMSIG_ATTEMPT_MOB_PULL, .proc/deny_pull)
+	RegisterSignal(src, COMSIG_ATTEMPT_MOB_PULL, PROC_REF(deny_pull))
 	RegisterSignal(src, list(
 		COMSIG_ITEM_ATTEMPT_ATTACK,
 		COMSIG_LIVING_REJUVENATED,
 		COMSIG_HUMAN_REVIVED
-		), .proc/cut_down)
+		), PROC_REF(cut_down))
 
 /mob/living/carbon/human/proc/deny_pull()
 	return COMPONENT_CANCEL_MOB_PULL

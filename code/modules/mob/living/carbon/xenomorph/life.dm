@@ -171,7 +171,7 @@
 		eye_blind = 0
 
 		if(knocked_out) //If they're down, make sure they are actually down.
-			blinded = 1
+			blinded = TRUE
 			stat = UNCONSCIOUS
 			if(regular_update && halloss > 0)
 				apply_damage(-3, HALLOSS)
@@ -181,10 +181,10 @@
 			if(regular_update && mind)
 				if((mind.active && client != null) || immune_to_ssd)
 					sleeping = max(sleeping - 1, 0)
-			blinded = 1
+			blinded = TRUE
 			stat = UNCONSCIOUS
 		else
-			blinded = 0
+			blinded = FALSE
 			stat = CONSCIOUS
 			if(regular_update && halloss > 0)
 				if(resting)
@@ -502,7 +502,7 @@ Make sure their actual health updates immediately.*/
 
 	sound_environment_override = SOUND_ENVIRONMENT_NONE
 	stat = UNCONSCIOUS
-	blinded = 1
+	blinded = TRUE
 	see_in_dark = 5
 	if(layer != initial(layer)) //Unhide
 		layer = initial(layer)

@@ -78,7 +78,7 @@
 	// bool status effects \\
 
 	/// bool that tracks if blind
-	var/blinded = 0
+	var/blinded = FALSE
 	var/sleeping = 0		//Carbon
 	var/resting = 0			//Carbon
 	var/is_floating = 0

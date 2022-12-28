@@ -15002,7 +15002,7 @@
 "aPd" = (
 /obj/structure/machinery/power/apc/hyper{
 	dir = 1;
-	pixel_y = 24
+	pixel_y = 25
 	},
 /turf/open/floor/corsat{
 	dir = 1;
@@ -48838,7 +48838,7 @@
 "kZy" = (
 /obj/structure/machinery/power/apc/hyper{
 	dir = 1;
-	pixel_y = 24
+	pixel_y = 25
 	},
 /turf/open/floor/corsat{
 	dir = 9;

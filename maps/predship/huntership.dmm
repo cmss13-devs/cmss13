@@ -1973,7 +1973,7 @@
 	},
 /obj/structure/machinery/power/apc/almayer{
 	dir = 4;
-	pixel_y = 22
+	pixel_y = 25
 	},
 /obj/item/weapon/melee/twohanded/yautja/spear,
 /obj/item/weapon/melee/twohanded/yautja/spear,

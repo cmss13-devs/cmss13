@@ -3,6 +3,12 @@
 #define REPAIR_COST				100
 #define IMMOBILE_COST			20
 
+#define EXOSKELETON_ON_FILTER_SIZE 0.5
+#define EXOSKELETON_OFF_FILTER_SIZE 1
+
+#define PROTECTIVE_FORM_COLOR "#369E2B"
+#define IMMOBILE_FORM_COLOR "#2B719E"
+
 /obj/item/storage/backpack/marine/smartpack
 	name = "\improper S-V42 prototype smartpack"
 	desc = "A joint project between the USCM and Wey-Yu. It is said to be top-class engineering and state of the art technology. Given to USCM deployed synthetic units and the intended usage involve assisting in battlefield support. Can be recharged by grabbing onto an APC and completing the circuit with one's fingers (procedure not advised for non-synthetic personnel). WARNING - User is advised to take precautions."
@@ -14,7 +20,7 @@
 	actions_types = list(/datum/action/item_action/toggle)
 	xeno_types = null
 
-	var/show_exoskeleton = FALSE
+	var/show_exoskeleton = TRUE
 
 	var/flashlight_cooldown = 0 			//Cooldown for toggling the light
 	var/light_state = FALSE					//Is the light on or off
@@ -22,6 +28,7 @@
 	var/battery_charge = SMARTPACK_MAX_POWER_STORED	//How much power are we storing
 	var/activated_form = FALSE
 	var/immobile_form = FALSE
+	var/repair_form = FALSE
 	var/repairing = FALSE
 	var/changed_icon = FALSE
 
@@ -43,8 +50,14 @@
 
 	show_exoskeleton = !show_exoskeleton
 	to_chat(usr, SPAN_NOTICE("\The [src] will [show_exoskeleton ? "now" : "no longer"] have an exoskeleton."))
+	playsound(src, 'sound/machines/click.ogg', 15, TRUE)
 	update_icon(usr)
 
+/obj/item/storage/backpack/marine/smartpack/clicked(mob/user, list/mods)
+	if(mods["ctrl"])
+		toggle_exoskeleton()
+		return TRUE
+	return ..()
 
 /obj/item/storage/backpack/marine/smartpack/Initialize()
 	. = ..()
@@ -60,10 +73,12 @@
 	if(show_exoskeleton)
 		if(immobile_form)
 			LAZYSET(item_state_slots, WEAR_BACK, initial(item_state) + "_i")
-		else if(activated_form && !immobile_form)
+		else if(activated_form)
 			LAZYSET(item_state_slots, WEAR_BACK, initial(item_state) + "_p")
-		else if(!activated_form && !immobile_form)
+		else if(repair_form)
 			LAZYSET(item_state_slots, WEAR_BACK, initial(item_state) + "_e")
+		else
+			LAZYSET(item_state_slots, WEAR_BACK, initial(item_state))
 	else
 		LAZYSET(item_state_slots, WEAR_BACK, initial(item_state))
 
@@ -200,7 +215,12 @@
 	playsound(loc, 'sound/mecha/mechmove04.ogg', 25, TRUE)
 	to_chat(user, SPAN_INFO("The current charge reads [battery_charge]/[SMARTPACK_MAX_POWER_STORED]"))
 	update_icon(user)
-	user.add_filter("synth_protective_form", 1, list("type" = "outline", "color" = "#fcfcfc71", "size" = 1))
+
+	var/filter_size = EXOSKELETON_OFF_FILTER_SIZE
+	var/filter_color = PROTECTIVE_FORM_COLOR
+	if(show_exoskeleton)
+		filter_size = EXOSKELETON_ON_FILTER_SIZE
+	user.add_filter("synth_protective_form", 1, list("type" = "outline", "color" = filter_color, "size" = filter_size))
 
 	addtimer(CALLBACK(src, .proc/protective_form_cooldown, user), protective_form_cooldown)
 
@@ -234,7 +254,12 @@
 		user.frozen = TRUE
 		to_chat(user, SPAN_DANGER("[name] beeps, \"You are anchored in place and cannot be moved.\""))
 		to_chat(user, SPAN_INFO("The current charge reads [battery_charge]/[SMARTPACK_MAX_POWER_STORED]"))
-		user.add_filter("synth_immobile_form", 1, list("type" = "outline", "color" = "#fcfcfcff", "size" = 1))
+
+		var/filter_size = EXOSKELETON_OFF_FILTER_SIZE
+		var/filter_color = IMMOBILE_FORM_COLOR
+		if(show_exoskeleton)
+			filter_size = EXOSKELETON_ON_FILTER_SIZE
+		user.add_filter("synth_immobile_form", 1, list("type" = "outline", "color" = filter_color, "size" = filter_size))
 	else
 		user.status_flags |= CANPUSH
 		user.anchored = FALSE
@@ -266,6 +291,7 @@
 		to_chat(user, SPAN_DANGER("[name] beeps, \"No noticeable damage. Procedure cancelled.\""))
 		return
 
+	repair_form = TRUE
 	repairing = TRUE
 	update_icon(user)
 
@@ -273,6 +299,7 @@
 		SPAN_WARNING("[name] beeps, \"Beginning to carefully examine your sustained damage.\""))
 	playsound(loc, 'sound/mecha/mechmove04.ogg', 25, TRUE)
 	if(!do_after(H, 100, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
+		repair_form = FALSE
 		repairing = FALSE
 		update_icon(user)
 		to_chat(user, SPAN_DANGER("[name] beeps, \"Repair process was cancelled.\""))
@@ -282,6 +309,8 @@
 	battery_charge -= REPAIR_COST
 	H.heal_overall_damage(50, 50, TRUE)
 	H.pain.recalculate_pain()
+	repair_form = FALSE
+	update_icon(user)
 	to_chat(user, SPAN_INFO("The current charge reads [battery_charge]/[SMARTPACK_MAX_POWER_STORED]"))
 	H.visible_message(SPAN_DANGER("[name] beeps, \"Completed the repairing process. Charge now reads [battery_charge]/[SMARTPACK_MAX_POWER_STORED].\""))
 
@@ -313,3 +342,9 @@
 #undef PROTECTIVE_COST
 #undef REPAIR_COST
 #undef IMMOBILE_COST
+
+#undef EXOSKELETON_ON_FILTER_SIZE
+#undef EXOSKELETON_OFF_FILTER_SIZE
+
+#undef PROTECTIVE_FORM_COLOR
+#undef IMMOBILE_FORM_COLOR

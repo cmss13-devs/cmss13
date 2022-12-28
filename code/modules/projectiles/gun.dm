@@ -739,7 +739,7 @@
 /obj/item/weapon/gun/proc/cock_gun(mob/user)
 	set waitfor = 0
 	if(cocked_sound)
-		addtimer(CALLBACK(src, .proc/cock_sound, user), 0.5 SECONDS)
+		addtimer(CALLBACK(src, PROC_REF(cock_sound), user), 0.5 SECONDS)
 
 /obj/item/weapon/gun/proc/cock_sound(mob/user)
 	if(user && loc)
@@ -1165,7 +1165,7 @@ and you're good to go.
 			//This is where the projectile leaves the barrel and deals with projectile code only.
 			//vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
 			in_chamber = null // It's not in the gun anymore
-			INVOKE_ASYNC(projectile_to_fire, /obj/item/projectile.proc/fire_at, target, user, src, projectile_to_fire?.ammo?.max_range, bullet_velocity, original_target)
+			INVOKE_ASYNC(projectile_to_fire, TYPE_PROC_REF(/obj/item/projectile, fire_at), target, user, src, projectile_to_fire?.ammo?.max_range, bullet_velocity, original_target)
 			projectile_to_fire = null // Important: firing might have made projectile collide early and ALREADY have deleted it. We clear it too.
 			//^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -1686,7 +1686,7 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 
 	if(user.luminosity <= muzzle_flash_lum)
 		user.SetLuminosity(muzzle_flash_lum, FALSE, src)
-		addtimer(CALLBACK(user, /atom.proc/SetLuminosity, 0, FALSE, src), 10)
+		addtimer(CALLBACK(user, TYPE_PROC_REF(/atom, SetLuminosity), 0, FALSE, src), 10)
 
 	var/image_layer = (user && user.dir == SOUTH) ? MOB_LAYER+0.1 : MOB_LAYER-0.1
 	var/offset = 5

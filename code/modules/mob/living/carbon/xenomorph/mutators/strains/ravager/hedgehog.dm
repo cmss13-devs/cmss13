@@ -73,7 +73,7 @@
 
 	shards = 0
 	shards_locked = TRUE
-	addtimer(CALLBACK(src, .proc/unlock_shards), shard_lock_duration)
+	addtimer(CALLBACK(src, PROC_REF(unlock_shards)), shard_lock_duration)
 
 /datum/behavior_delegate/ravager_hedgehog/proc/unlock_shards()
 

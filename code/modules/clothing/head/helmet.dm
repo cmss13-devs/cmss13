@@ -1207,10 +1207,10 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	overlays += /obj/effect/overlay/danger
 	playsound(loc, 'sound/weapons/armbomb.ogg', 25, 1, 6)
 
-	addtimer(CALLBACK(src, .proc/prime), det_time)
+	addtimer(CALLBACK(src, PROC_REF(prime)), det_time)
 
 /obj/item/clothing/head/helmet/marine/specialist/hefa/proc/prime()
-	INVOKE_ASYNC(src, .proc/boom)
+	INVOKE_ASYNC(src, PROC_REF(boom))
 
 // Values nabbed from the HEFA nade
 /obj/item/clothing/head/helmet/marine/specialist/hefa/proc/boom()

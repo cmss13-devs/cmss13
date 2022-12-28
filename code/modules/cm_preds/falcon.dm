@@ -54,7 +54,7 @@
 /mob/hologram/falcon/Initialize(mapload, mob/M, obj/item/falcon_drone/drone, obj/item/clothing/gloves/yautja/bracers)
 	. = ..()
 	parent_drone = drone
-	RegisterSignal(bracers, COMSIG_ITEM_DROPPED, .proc/handle_bracer_drop)
+	RegisterSignal(bracers, COMSIG_ITEM_DROPPED, PROC_REF(handle_bracer_drop))
 	med_hud_set_status()
 	add_to_all_mob_huds()
 

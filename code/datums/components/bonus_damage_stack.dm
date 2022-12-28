@@ -51,8 +51,8 @@
 
 /datum/component/bonus_damage_stack/RegisterWithParent()
 	START_PROCESSING(SSdcs, src)
-	RegisterSignal(parent, COMSIG_XENO_APPEND_TO_STAT, .proc/stat_append)
-	RegisterSignal(parent, COMSIG_BONUS_DAMAGE, .proc/get_bonus_damage)
+	RegisterSignal(parent, COMSIG_XENO_APPEND_TO_STAT, PROC_REF(stat_append))
+	RegisterSignal(parent, COMSIG_BONUS_DAMAGE, PROC_REF(get_bonus_damage))
 
 /datum/component/bonus_damage_stack/UnregisterFromParent()
 	STOP_PROCESSING(SSdcs, src)

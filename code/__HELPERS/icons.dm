@@ -592,7 +592,7 @@ world
 
 /image/proc/flick_overlay(var/atom/A, var/duration) //originally code related to goonPS. This isn't the original code, but has the same effect
 	A.overlays.Add(src)
-	addtimer(CALLBACK(src, .proc/flick_remove_overlay, A), duration)
+	addtimer(CALLBACK(src, PROC_REF(flick_remove_overlay), A), duration)
 
 /image/proc/flick_remove_overlay(var/atom/A)
 	if(A)

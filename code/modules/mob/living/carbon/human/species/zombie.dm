@@ -95,7 +95,7 @@
 			if(zombie.client)
 				zombie.play_screen_text("<span class='langchat' style=font-size:16pt;text-align:center valign='top'><u>You are dead...</u></span><br>You will rise again in one minute.", /atom/movable/screen/text/screen_text/command_order, rgb(155, 0, 200))
 			to_chat(zombie, SPAN_XENOWARNING("You fall... but your body is slowly regenerating itself."))
-			to_revive[WEAKREF(zombie)] = addtimer(CALLBACK(src, .proc/revive_from_death, zombie), 1 MINUTES, TIMER_STOPPABLE|TIMER_OVERRIDE|TIMER_UNIQUE)
+			to_revive[WEAKREF(zombie)] = addtimer(CALLBACK(src, PROC_REF(revive_from_death), zombie), 1 MINUTES, TIMER_STOPPABLE|TIMER_OVERRIDE|TIMER_UNIQUE)
 			revive_times[WEAKREF(zombie)] = world.time + 1 MINUTES
 		else
 			if(zombie.client)
@@ -117,7 +117,7 @@
 
 		handle_alert_ghost(zombie)
 
-		addtimer(CALLBACK(zombie, /mob/.proc/remove_jittery), 3 SECONDS)
+		addtimer(CALLBACK(zombie, TYPE_PROC_REF(/mob, remove_jittery)), 3 SECONDS)
 
 /datum/species/zombie/proc/handle_alert_ghost(var/mob/living/carbon/human/zombie)
 	var/mob/dead/observer/ghost = zombie.get_ghost()

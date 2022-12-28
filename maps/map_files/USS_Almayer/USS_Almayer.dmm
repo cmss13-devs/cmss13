@@ -8439,6 +8439,10 @@
 	dir = 2;
 	tag = "icon-door_open"
 	},
+/obj/structure/machinery/door/poddoor/almayer/open{
+	id = "Hangar Lockdown";
+	name = "\improper Hangar Lockdown Blast Door"
+	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -16113,6 +16117,10 @@
 /obj/item/clothing/head/helmet/marine/pilottex{
 	pixel_x = -5;
 	pixel_y = 10
+	},
+/obj/structure/machinery/light{
+	dir = 1;
+	tag = "icon-tube1 (WEST)"
 	},
 /turf/open/floor/almayer{
 	allow_construction = 0
@@ -35326,8 +35334,9 @@
 "cJu" = (
 /obj/structure/bed,
 /obj/item/bedsheet/brown,
-/obj/structure/machinery/light/small{
-	dir = 1
+/obj/structure/machinery/light{
+	dir = 1;
+	tag = "icon-tube1 (WEST)"
 	},
 /turf/open/floor/almayer{
 	allow_construction = 0
@@ -37979,9 +37988,6 @@
 "dOJ" = (
 /obj/structure/bed,
 /obj/item/bedsheet/brown,
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
 /turf/open/floor/almayer{
 	allow_construction = 0
 	},
@@ -41185,6 +41191,13 @@
 	tag = "icon-W"
 	},
 /obj/structure/machinery/light,
+/obj/structure/machinery/door_control{
+	id = "FlightCrewQ";
+	name = "Flight Crew Quarters Shutters";
+	req_one_access_txt = "3;22;2;19;7";
+	pixel_y = -24;
+	pixel_x = 8
+	},
 /turf/open/floor/almayer{
 	allow_construction = 0
 	},
@@ -49133,12 +49146,6 @@
 	tag = "icon-plating_striped (EAST)"
 	},
 /area/almayer/hull/lower_hull/l_m_p)
-"iFn" = (
-/turf/open/floor/almayer{
-	icon_state = "bluefull";
-	tag = "icon-bluefull"
-	},
-/area/almayer/living/pilotbunks)
 "iFC" = (
 /obj/structure/surface/table/almayer,
 /obj/effect/landmark/map_item,
@@ -58747,17 +58754,17 @@
 	},
 /area/almayer/shipboard/brig/cryo)
 "mVE" = (
-/obj/structure/machinery/door_control{
-	id = "DeployWorkR";
-	name = "Workshop Shutters";
-	pixel_y = 26;
-	req_one_access_txt = "3;22;2;19;7"
+/obj/structure/window/framed/almayer,
+/obj/structure/machinery/door/poddoor/almayer/open{
+	id = "Hangar Lockdown";
+	name = "\improper Hangar Lockdown Blast Door"
 	},
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	id = "FlightCrewQ";
+	name = "\improper Flight Crew Quarters"
 	},
-/area/almayer/hallways/hangar)
+/turf/open/floor/plating,
+/area/almayer/living/pilotbunks)
 "mWe" = (
 /obj/structure/machinery/camera/autoname/almayer{
 	dir = 8;
@@ -71006,11 +71013,11 @@
 	id = "Hangar Lockdown";
 	name = "\improper Hangar Lockdown Blast Door"
 	},
+/obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	id = "DeployWorkR";
 	name = "\improper Workshop Shutters"
 	},
-/obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer{
 	icon_state = "test_floor4";
 	tag = "icon-test_floor4"
@@ -106044,7 +106051,7 @@ ais
 aoL
 akz
 ajM
-mVE
+aTc
 bHB
 aTc
 anU
@@ -108478,8 +108485,8 @@ aiX
 aiX
 ahS
 nBE
-gut
-aiX
+nBE
+mVE
 aTc
 bHB
 aZX
@@ -108682,7 +108689,7 @@ jrm
 alw
 nBE
 nBE
-aiX
+mVE
 aXj
 bHB
 aZY
@@ -108884,7 +108891,7 @@ nBE
 aiX
 dJU
 nBE
-nBE
+gut
 aiX
 mrD
 bHB
@@ -109489,7 +109496,7 @@ mGL
 fJX
 uNL
 xQg
-iFn
+aEf
 jrm
 alw
 nBE

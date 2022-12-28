@@ -161,16 +161,16 @@
 	if (!mover)
 		return null
 
+	/// the actual dir between the start and target turf
 	var/fdir = get_dir(start_turf, target_turf)
 	if (!fdir)
 		return null
 
-
-	var/fd1 = fdir&(fdir-1)
+	var/fd1 = fdir & (fdir-1)
 	var/fd2 = fdir - fd1
 
-
-	var/blocking_dir = 0 // The direction that mover's path is being blocked by
+	/// The direction that mover's path is being blocked by
+	var/blocking_dir = 0
 
 	var/obstacle
 	var/turf/T
@@ -236,7 +236,9 @@
 			continue
 		A = obstacle
 		blocking_dir |= A.BlockedPassDirs(mover, fdir)
-		if ((!fd1 || blocking_dir & fd1) && (!fd2 || blocking_dir & fd2))
+		if((fd1 && blocking_dir == fd1) || (fd2 && blocking_dir == fd2))
+			return A
+		if((!fd1 || blocking_dir & fd1) && (!fd2 || blocking_dir & fd2))
 			return A
 
 	return null // Nothing found to block the link of mover from start_turf to target_turf

@@ -110,6 +110,7 @@
 	if(!ui)
 		ui = new(user, src, "Centrifuge", "[src.name]")
 		ui.open()
+
 /obj/structure/machinery/centrifuge/ui_state(mob/user)
 	return GLOB.not_incapacitated_and_adjacent_state
 

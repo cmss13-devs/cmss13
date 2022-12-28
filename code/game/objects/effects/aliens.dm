@@ -324,12 +324,12 @@
 /obj/effect/xenomorph/acid/proc/handle_weather()
 	SIGNAL_HANDLER
 
-	var/area/A = get_area(src)
-	if(!A)
+	var/area/acids_area = get_area(src)
+	if(!acids_area)
 		return
 
-	if(SSweather.is_weather_event && locate(A.master) in SSweather.weather_areas)
-		acid_strength = acid_strength + (SSweather.weather_event_instance.fire_smothering_strength / 3) //smothering_strength is 1-10, acid strench is a multiplier
+	if(SSweather.is_weather_event && locate(acids_area.master) in SSweather.weather_areas)
+		acid_strength = acid_strength + (SSweather.weather_event_instance.fire_smothering_strength * 0.33) //smothering_strength is 1-10, acid strength is a multiplier
 		in_weather = SSweather.weather_event_instance.fire_smothering_strength
 	else
 		acid_strength = initial(acid_strength)

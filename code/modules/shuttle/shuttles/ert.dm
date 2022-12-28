@@ -88,6 +88,13 @@
 	preferred_direction = SOUTH
 	port_direction = NORTH
 
+// ERT Shuttle 3
+/obj/docking_port/mobile/emergency_response/small
+	name = "Rescue Shuttle"
+	id = MOBILE_SHUTTLE_ID_ERT_SMALL
+	preferred_direction = SOUTH
+	port_direction = NORTH
+
 // Generic ERT Dock
 /obj/docking_port/stationary/emergency_response
 	width  = 7

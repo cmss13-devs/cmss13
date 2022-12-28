@@ -153,8 +153,9 @@
 		newShuttle = TRUE
 	var/list/shuttle_map = list(
 		"Distress" = MOBILE_SHUTTLE_ID_ERT1,
-		"Distress PMC" = MOBILE_SHUTTLE_ID_ERT2,
-		"Distress UPP" = MOBILE_SHUTTLE_ID_ERT3,
+		"Distress_PMC" = MOBILE_SHUTTLE_ID_ERT2,
+		"Distress_UPP" = MOBILE_SHUTTLE_ID_ERT3,
+		"Distress_Small" = MOBILE_SHUTTLE_ID_ERT_SMALL,
 	)
 	if(newShuttle)
 		var/shuttleId = shuttle_map[tag]

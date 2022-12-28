@@ -92,6 +92,13 @@
 	req_access = list()
 	breakable = FALSE
 	var/disabled = FALSE
+	var/compatible_landing_zones = list()
+
+/obj/structure/machinery/computer/shuttle/ert/Initialize(mapload, ...)
+	. = ..()
+
+	for(var/obj/docking_port/stationary/emergency_response/dock in SSshuttle.stationary)
+		compatible_landing_zones += list(dock)
 
 /obj/structure/machinery/computer/shuttle/ert/is_disabled()
 	return disabled
@@ -131,7 +138,6 @@
 
 /obj/structure/machinery/computer/shuttle/ert/ui_data(mob/user)
 	var/obj/docking_port/mobile/emergency_response/ert = SSshuttle.getShuttle(shuttleId)
-	var/list/docks = SSshuttle.stationary
 	. = list()
 	.["shuttle_mode"] = ert.mode
 	.["flight_time"] = ert.timeLeft(0)
@@ -148,7 +154,7 @@
 		.["target_destination"] = ert.destination.name
 
 	.["destinations"] = list()
-	for(var/obj/docking_port/stationary/emergency_response/dock in docks)
+	for(var/obj/docking_port/stationary/dock in compatible_landing_zones)
 		var/dock_reserved = FALSE
 		for(var/obj/docking_port/mobile/other_shuttle in SSshuttle.mobile)
 			if(dock == other_shuttle.destination)
@@ -229,6 +235,13 @@
 	if(.)
 		return TRUE
 	tgui_interact(user)
+
+/obj/structure/machinery/computer/shuttle/ert/small
+	name = "transport shuttle"
+	desc = "A transport shuttle flight computer."
+	icon_state = "comm_alt"
+	req_access = list()
+	breakable = FALSE
 
 /obj/structure/machinery/computer/shuttle/lifeboat
 	name = "lifeboat console"

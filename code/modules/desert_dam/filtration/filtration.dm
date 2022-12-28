@@ -242,7 +242,7 @@ var/global/east_riverstart = 0
 
 	update_turf()
 
-	addtimer(CALLBACK(src, .proc/do_disperse), 1 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(do_disperse)), 1 SECONDS)
 
 /obj/effect/blocker/toxic_water/proc/do_disperse()
 	toxic = 0

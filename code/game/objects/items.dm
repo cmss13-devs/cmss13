@@ -388,7 +388,7 @@ cases. Override_icon_state should be a list.*/
 	if(LAZYLEN(uniform_restricted))
 		UnregisterSignal(user, COMSIG_MOB_ITEM_UNEQUIPPED)
 		if(flags_equip_slot & slotdefine2slotbit(slot))
-			RegisterSignal(user, COMSIG_MOB_ITEM_UNEQUIPPED, .proc/check_for_uniform_restriction)
+			RegisterSignal(user, COMSIG_MOB_ITEM_UNEQUIPPED, PROC_REF(check_for_uniform_restriction))
 
 // Called after the item is removed from equipment slot.
 /obj/item/proc/unequipped(mob/user, slot)
@@ -780,7 +780,7 @@ cases. Override_icon_state should be a list.*/
 
 /obj/item/proc/unzoom(mob/living/user)
 	var/zoom_device = zoomdevicename ? "\improper [zoomdevicename] of [src]" : "\improper [src]"
-	INVOKE_ASYNC(user, /atom.proc/visible_message, SPAN_NOTICE("[user] looks up from [zoom_device]."),
+	INVOKE_ASYNC(user, TYPE_PROC_REF(/atom, visible_message), SPAN_NOTICE("[user] looks up from [zoom_device]."),
 	SPAN_NOTICE("You look up from [zoom_device]."))
 	zoom = !zoom
 	COOLDOWN_START(user, zoom_cooldown, 20)
@@ -820,8 +820,8 @@ cases. Override_icon_state should be a list.*/
 		RegisterSignal(src, list(
 			COMSIG_ITEM_DROPPED,
 			COMSIG_ITEM_UNWIELD,
-		), .proc/unzoom_dropped_callback)
-		RegisterSignal(user, COMSIG_MOB_MOVE_OR_LOOK, .proc/zoom_handle_mob_move_or_look)
+		), PROC_REF(unzoom_dropped_callback))
+		RegisterSignal(user, COMSIG_MOB_MOVE_OR_LOOK, PROC_REF(zoom_handle_mob_move_or_look))
 
 		zoom_initial_mob_dir = user.dir
 

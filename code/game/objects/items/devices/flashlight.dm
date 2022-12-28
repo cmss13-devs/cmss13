@@ -275,7 +275,7 @@
 	/// Whether to use flame overlays for this flare type
 	var/show_flame = TRUE
 	/// Tint for the greyscale flare flame
-	var/flame_tint = "#ddbbbb"
+	var/flame_tint = "#ffcccc"
 	/// Color correction, added to the whole flame overlay
 	var/flame_base_tint = "#ff0000"
 	// "But, why are there two colors?"
@@ -510,7 +510,7 @@
 
 	if(.)
 		faction = user.faction
-		addtimer(CALLBACK(src, .proc/activate_signal, user), 5 SECONDS)
+		addtimer(CALLBACK(src, PROC_REF(activate_signal), user), 5 SECONDS)
 
 /obj/item/device/flashlight/flare/signal/activate_signal(mob/living/carbon/human/user)
 	..()

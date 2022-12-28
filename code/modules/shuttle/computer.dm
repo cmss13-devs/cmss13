@@ -96,6 +96,7 @@
 /obj/structure/machinery/computer/shuttle/ert/ui_static_data(mob/user)
 	. = ..(user)
 	var/obj/docking_port/mobile/shuttle = SSshuttle.getShuttle(shuttleId)
+	// we convert the time to seconds for rendering to ui
 	.["max_flight_duration"] = shuttle.callTime / 10
 	.["max_refuel_duration"] = shuttle.rechargeTime / 10
 	.["max_engine_start_duration"] = shuttle.ignitionTime / 10
@@ -117,7 +118,7 @@
 	if(ert.destination)
 		.["target_destination"] = ert.destination.name
 
-	.["destinations"]=list()
+	.["destinations"] = list()
 	for(var/obj/docking_port/stationary/emergency_response/dock in docks)
 		var/dock_reserved = FALSE
 		for(var/obj/docking_port/mobile/other_shuttle in SSshuttle.mobile)
@@ -126,10 +127,10 @@
 				break
 		var/can_dock = ert.canDock(dock)
 		var/list/dockinfo = list(
-			"id"=dock.id,
-			"name"=dock.name,
-			"available"=can_dock == SHUTTLE_CAN_DOCK && !dock_reserved,
-			"error"=can_dock,
+			"id" = dock.id,
+			"name" = dock.name,
+			"available" = can_dock == SHUTTLE_CAN_DOCK && !dock_reserved,
+			"error" = can_dock,
 		)
 		.["destinations"] += list(dockinfo)
 
@@ -137,7 +138,7 @@
 	. = ..()
 	if(.)
 		return
-	var/soundId = pick(1,2,3,4,5,6)
+
 	var/obj/docking_port/mobile/emergency_response/ert = SSshuttle.getShuttle(shuttleId)
 	switch(action)
 		if("move")
@@ -147,9 +148,9 @@
 			var/dockId = params["target"]
 			var/list/local_data = ui_data(usr)
 			var/found = FALSE
-			playsound(loc, "sound/machines/terminal_button0[soundId].ogg", KEYBOARD_SOUND_VOLUME, 1)
-			for(var/i in local_data["destinations"])
-				if(i["id"] == dockId)
+			playsound(loc, get_sfx("terminal_button"), KEYBOARD_SOUND_VOLUME, 1)
+			for(var/destination in local_data["destinations"])
+				if(destination["id"] == dockId)
 					found = TRUE
 					break
 			if(!found)
@@ -169,7 +170,7 @@
 			to_chat(usr, SPAN_NOTICE("You begin the launch sequence to [dock]."))
 			return TRUE
 		if("button-push")
-			playsound(loc, "sound/machines/computer_typing[soundId].ogg", KEYBOARD_SOUND_VOLUME, 1)
+			playsound(loc, get_sfx("terminal_button"), KEYBOARD_SOUND_VOLUME, 1)
 			return FALSE
 		if("open")
 			if(ert.mode == SHUTTLE_CALL || ert.mode == SHUTTLE_RECALL)
@@ -193,7 +194,9 @@
 			ert.control_doors("unlock")
 
 /obj/structure/machinery/computer/shuttle/ert/attack_hand(mob/user)
-	. = ..()
+	. = ..(user)
+	if(.)
+		return TRUE
 	tgui_interact(user)
 
 /obj/structure/machinery/computer/shuttle/lifeboat

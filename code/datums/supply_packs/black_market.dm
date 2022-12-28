@@ -724,7 +724,7 @@ USCM spare items, miscellaneous gear that's too niche and distant (or restricted
 
 /* - Misc. USCM weaponry - */
 
-datum/supply_packs/contraband/surplus/mk45_automag
+/datum/supply_packs/contraband/surplus/mk45_automag
 	name = "surplus MK-45 Automagnum case"
 	dollar_cost = 35
 	contains = list(/obj/item/storage/box/guncase/mk45_automag)

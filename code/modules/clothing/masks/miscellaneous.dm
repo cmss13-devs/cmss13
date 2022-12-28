@@ -77,7 +77,7 @@
 	w_class = SIZE_SMALL
 
 /obj/item/clothing/mask/balaclava/tactical
-	name = "Green Balaclava"
+	name = "green balaclava"
 	desc = "A basic single eye-hole balaclava, available in almost every sporting goods, outdoor supply, or military surplus store in existance, protects your face from the cold almost as well as it conceals it. This one is in a non-standard green color."
 	icon_state = "swatclava"
 	item_state = "swatclava"

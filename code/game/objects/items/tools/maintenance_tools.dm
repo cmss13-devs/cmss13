@@ -490,7 +490,7 @@
 	throwforce = MELEE_FORCE_NORMAL
 
 /*
- Welding backpack
+Welding backpack
 */
 
 /obj/item/tool/weldpack

@@ -37,7 +37,7 @@
 
 	faction = FACTION_UPP
 
-//SPACE BEARS! SQUEEEEEEEE~     OW! FUCK! IT BIT MY HAND OFF!!
+//SPACE BEARS! SQUEEEEEEEE~	 OW! FUCK! IT BIT MY HAND OFF!!
 /mob/living/simple_animal/hostile/bear/Hudson
 	name = "Hudson"
 	desc = ""

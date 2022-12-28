@@ -1,7 +1,7 @@
 SUBSYSTEM_DEF(acid_pillar)
-	name          = "Acid Pillar"
-	wait          = 0.3 SECONDS
-	priority      = SS_PRIORITY_ACID_PILLAR
+	name		  = "Acid Pillar"
+	wait		  = 0.3 SECONDS
+	priority	  = SS_PRIORITY_ACID_PILLAR
 	flags		  = SS_NO_INIT
 
 	var/list/queuedrun = list()

@@ -1,8 +1,8 @@
 SUBSYSTEM_DEF(sound)
-	name          = "Sound"
+	name		  = "Sound"
 	flags 		  = SS_POST_FIRE_TIMING | SS_NO_INIT
 	wait		  = 2
-	priority      = SS_PRIORITY_SOUND
+	priority	  = SS_PRIORITY_SOUND
 	runlevels 	  = RUNLEVELS_DEFAULT|RUNLEVEL_LOBBY
 
 	var/list/template_queue = list()							// Full Template Queue

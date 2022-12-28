@@ -139,7 +139,7 @@
 	icon_state = "traitcopier"
 
 	var/datum/seed/genetics // Currently scanned seed genetic structure.
-	var/degradation = 0     // Increments with each scan, stops allowing gene mods after a certain point.
+	var/degradation = 0	 // Increments with each scan, stops allowing gene mods after a certain point.
 
 /obj/structure/machinery/botany/extractor/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
 

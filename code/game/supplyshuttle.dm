@@ -530,47 +530,47 @@ var/datum/controller/supply/supply_controller = new()
 /obj/item/paper/manifest/proc/generate_contents()
 	// You don't tell anyone this is inspired from player-made fax layouts,
 	// or else, capiche ? Yes this is long, it's 80 col standard
-	info = "                                                                  \
-        <style>                                                               \
-            #container { width: 500px; min-height: 500px; margin: 25px auto;  \
-                    font-family: monospace; padding: 0; font-size: 130% }     \
-            #title { font-size: 250%; letter-spacing: 8px;                    \
-                    font-weight: bolder; margin: 20px auto }                  \
-            .header { font-size: 130%; text-align: center; }                  \
-            .important { font-variant: small-caps; font-size = 130%;          \
-                         font-weight: bolder; }                               \
-            .tablelabel { width: 150px; }                                     \
-            .field { font-style: italic; }                                    \
-            li { list-style-type: disc; list-style-position: inside; }        \
-            table { table-layout: fixed }                                     \
-        </style><div id='container'>                                          \
-        <div class='header'>                                                  \
-            <p id='title' class='important'>A.S.R.S.</p>                      \
-            <p class='important'>Automatic Storage Retrieval System</p>       \
-            <p class='field'>Order #[ordernum]</p>                            \
-        </div><hr><table>                                                     \
-        <colgroup>                                                            \
-            <col class='tablelabel important'>                                \
-            <col class='field'>                                               \
-        </colgroup>                                                           \
-        <tr><td>Shipment:</td>                                                \
-        <td>[ordername]</td></tr>                                             \
-        <tr><td>Ordered by:</td>                                              \
-        <td>[orderedby]</td></tr>                                             \
-        <tr><td>Approved by:</td>                                             \
-        <td>[approvedby]</td></tr>                                            \
-        <tr><td># packages:</td>                                              \
-        <td class='field'>[packages.len]</td></tr>                            \
-        </table><hr><p class='header important'>Contents</p>                  \
-        <ul class='field'>"
+	info = "																  \
+		<style>															   \
+			#container { width: 500px; min-height: 500px; margin: 25px auto;  \
+					font-family: monospace; padding: 0; font-size: 130% }	 \
+			#title { font-size: 250%; letter-spacing: 8px;					\
+					font-weight: bolder; margin: 20px auto }				  \
+			.header { font-size: 130%; text-align: center; }				  \
+			.important { font-variant: small-caps; font-size = 130%;		  \
+						font-weight: bolder; }							   \
+			.tablelabel { width: 150px; }									 \
+			.field { font-style: italic; }									\
+			li { list-style-type: disc; list-style-position: inside; }		\
+			table { table-layout: fixed }									 \
+		</style><div id='container'>										  \
+		<div class='header'>												  \
+			<p id='title' class='important'>A.S.R.S.</p>					  \
+			<p class='important'>Automatic Storage Retrieval System</p>	   \
+			<p class='field'>Order #[ordernum]</p>							\
+		</div><hr><table>													 \
+		<colgroup>															\
+			<col class='tablelabel important'>								\
+			<col class='field'>											   \
+		</colgroup>														   \
+		<tr><td>Shipment:</td>												\
+		<td>[ordername]</td></tr>											 \
+		<tr><td>Ordered by:</td>											  \
+		<td>[orderedby]</td></tr>											 \
+		<tr><td>Approved by:</td>											 \
+		<td>[approvedby]</td></tr>											\
+		<tr><td># packages:</td>											  \
+		<td class='field'>[packages.len]</td></tr>							\
+		</table><hr><p class='header important'>Contents</p>				  \
+		<ul class='field'>"
 
 	for(var/packagename in packages)
 		info += "<li>[packagename]</li>"
 
-	info += "                                                                 \
-        </ul><br/><hr><br/><p class='important header'>                       \
-            Please stamp below and return to confirm receipt of shipment      \
-        </p></div>"
+	info += "																 \
+		</ul><br/><hr><br/><p class='important header'>					   \
+			Please stamp below and return to confirm receipt of shipment	  \
+		</p></div>"
 
 	name = "[name] - [ordername]"
 
@@ -825,7 +825,7 @@ var/datum/controller/supply/supply_controller = new()
 			var/datum/supply_packs/N = supply_controller.supply_packs[supply_name]
 			if(N.hidden && !hacked) continue
 			if(N.contraband && !can_order_contraband) continue
-			temp += "<A href='?src=\ref[src];doorder=[supply_name]'>[supply_name]</A> Cost: [N.cost]<BR>"    //the obj because it would get caught by the garbage
+			temp += "<A href='?src=\ref[src];doorder=[supply_name]'>[supply_name]</A> Cost: [N.cost]<BR>"	//the obj because it would get caught by the garbage
 		temp += "<BR><A href='?src=\ref[src];mainmenu=1'>OK</A>"*/
 
 	else if (href_list["doorder"])

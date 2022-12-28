@@ -17,7 +17,7 @@
 	var/embeddable = TRUE //FALSE if unembeddable
 	var/embedded_organ = null
 	var/attack_speed = 11  //+3, Adds up to 10.  Added an extra 4 removed from /mob/proc/do_click()
-	 ///Used in attackby() to say how something was attacked "[x] has been [z.attack_verb] by [y] with [z]"
+	///Used in attackby() to say how something was attacked "[x] has been [z.attack_verb] by [y] with [z]"
 	var/list/attack_verb
 
 	health = null
@@ -100,10 +100,10 @@
 	var/list/equip_sounds //Sounds played when this item is equipped
 	var/list/unequip_sounds //Same but when unequipped
 
-	 ///Vision impairing effect if worn on head/mask/glasses.
+	///Vision impairing effect if worn on head/mask/glasses.
 	var/vision_impair = VISION_IMPAIR_NONE
 
-	 ///Used for stepping onto flame and seeing how much dmg you take and if you're ignited.
+	///Used for stepping onto flame and seeing how much dmg you take and if you're ignited.
 	var/fire_intensity_resistance
 
 	var/map_specific_decoration = FALSE

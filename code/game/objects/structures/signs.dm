@@ -49,8 +49,8 @@
 		qdel(src)
 	else ..()
 
-  //=====================//
- // Miscellaneous Signs //
+//=====================//
+// Miscellaneous Signs //
 //=====================//
 
 /obj/structure/sign/nosmoking_1

@@ -22,12 +22,12 @@
 var/datum/controller/subsystem/database_query_manager/SSdatabase
 
 /datum/controller/subsystem/database_query_manager
-	name          = "Database QM"
+	name		  = "Database QM"
 	wait		  = 1
-	init_order    = SS_INIT_DATABASE
-	init_stage    = INITSTAGE_EARLY
-	priority      = SS_PRIORITY_DATABASE // Low prio SS_TICKER
-	flags         = SS_TICKER
+	init_order	= SS_INIT_DATABASE
+	init_stage	= INITSTAGE_EARLY
+	priority	  = SS_PRIORITY_DATABASE // Low prio SS_TICKER
+	flags		 = SS_TICKER
 
 	var/datum/db/connection/connection
 	var/datum/db/connection_settings/settings

@@ -191,10 +191,10 @@
 
 /mob/living/silicon/robot/drone/Collide(atom/A)
 	if (!istype(A,/obj/structure/machinery/door) && \
-	 !istype(A,/obj/structure/machinery/recharge_station) && \
-	 !istype(A,/obj/structure/machinery/disposal/deliveryChute) && \
-	 !istype(A,/obj/structure/machinery/teleport/hub) && \
-	 !istype(A,/obj/effect/portal)
+	!istype(A,/obj/structure/machinery/recharge_station) && \
+	!istype(A,/obj/structure/machinery/disposal/deliveryChute) && \
+	!istype(A,/obj/structure/machinery/teleport/hub) && \
+	!istype(A,/obj/effect/portal)
 	) return
 	..()
 	return

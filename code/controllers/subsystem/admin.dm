@@ -1,6 +1,6 @@
 SUBSYSTEM_DEF(admin)
-	name          = "Admin"
-	wait          = 5 MINUTES
+	name		  = "Admin"
+	wait		  = 5 MINUTES
 	flags		  = SS_NO_INIT | SS_KEEP_TIMING
 	runlevels = RUNLEVELS_DEFAULT|RUNLEVEL_LOBBY
 	var/list/currentrun = list()

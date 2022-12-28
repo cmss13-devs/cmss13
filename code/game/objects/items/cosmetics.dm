@@ -78,7 +78,7 @@
 	if(!H || !user)
 		return //In case they're passed as null.
 	user.visible_message(SPAN_NOTICE("[user] carefully applies [src] on [H]'s face."), \
-						 SPAN_NOTICE("You apply [src]."))
+						SPAN_NOTICE("You apply [src]."))
 	H.lip_style = paint_type
 	H.update_body()
 	uses--

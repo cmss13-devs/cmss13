@@ -91,9 +91,9 @@
 #define COMMAND_ORDER_FOCUS 	"focus"
 #define COMMAND_ORDER_HOLD 		"hold"
 
-#define ORDER_HOLD_MAX_LEVEL    15
+#define ORDER_HOLD_MAX_LEVEL	15
 #define ORDER_HOLD_CALC_LEVEL	20
-#define ORDER_MOVE_MAX_LEVEL    50
+#define ORDER_MOVE_MAX_LEVEL	50
 #define ORDER_FOCUS_MAX_LEVEL   50
 
 //Human Overlays Indexes used in update_icons/////////
@@ -128,7 +128,7 @@
 #define HEAD_GARB_LAYER_4		13	//  |
 #define HEAD_GARB_LAYER_5		12	// End here
 #define HEAD_GARB_LAYER			11
-#define BACK_FRONT_LAYER        10 // For backpacks when mob is facing north
+#define BACK_FRONT_LAYER		10 // For backpacks when mob is facing north
 #define COLLAR_LAYER			9
 #define HANDCUFF_LAYER			8
 #define LEGCUFF_LAYER			7

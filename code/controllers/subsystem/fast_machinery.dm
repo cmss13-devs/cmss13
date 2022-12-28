@@ -2,9 +2,9 @@ var/list/fast_machines = list()
 
 
 SUBSYSTEM_DEF(fast_machinery)
-	name          = "Fast Machinery"
-	wait          = 0.7 SECONDS
-	priority      = SS_PRIORITY_FAST_MACHINERY
+	name		  = "Fast Machinery"
+	wait		  = 0.7 SECONDS
+	priority	  = SS_PRIORITY_FAST_MACHINERY
 	flags		  = SS_NO_INIT
 	var/list/currentrun = list()
 

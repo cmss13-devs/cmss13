@@ -7,7 +7,7 @@ SUBSYSTEM_DEF(fz_transitions)
 	wait			= 1 SECONDS
 	priority 		= SS_PRIORITY_FZ_TRANSITIONS
 	init_order		= SS_INIT_FZ_TRANSITIONS
-	flags     		= SS_KEEP_TIMING
+	flags	 		= SS_KEEP_TIMING
 
 /datum/controller/subsystem/fz_transitions/stat_entry(msg)
 	msg = "P:[projectors.len]|C:[clones.len]|T:[clones_t.len]"

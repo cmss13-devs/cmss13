@@ -1,5 +1,5 @@
-/*      This is code made by Stuicey.
-        He gave us/me permission to port it over.
+/*	  This is code made by Stuicey.
+		He gave us/me permission to port it over.
 		STUI - System Tabbed User Interface
 		A system that allows admins to filter their chats
 		ATTACK_LOG 		1
@@ -8,7 +8,7 @@
 		OOC_CHAT 		4
 		GAME_CHAT 		5
 		DEBUG 			6
-		RUNTIME         7
+		RUNTIME		 7
 		DEFAULT CONFIG LENGTH == 150
 		TODO:
 			** setup a way of opening a single log
@@ -34,9 +34,9 @@ GLOBAL_DATUM_INIT(STUI, /datum/STUI, new)
 	var/list/ooc = list()			//OOC chat
 	var/list/game = list()			//Game Chat
 	var/list/debug = list()			//Debug info
-	var/list/runtime = list()       //Runtimes
+	var/list/runtime = list()	   //Runtimes
 	var/list/tgui = list()			//TGUI
-	var/list/processing	= 0     	//bitflag for logs that need processing
+	var/list/processing	= 0	 	//bitflag for logs that need processing
 
 /datum/STUI/Topic(href, href_list)
 	if(href_list["command"])

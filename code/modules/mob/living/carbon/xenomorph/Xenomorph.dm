@@ -122,7 +122,7 @@
 	var/armor_deflection_buff = 0 // temp buffs to armor
 	var/armor_deflection_debuff = 0 //temp debuffs to armor
 	var/armor_explosive_buff = 0  // temp buffs to explosive armor
-	var/armor_integrity = 100     // Current health % of our armor
+	var/armor_integrity = 100	 // Current health % of our armor
 	var/armor_integrity_max = 100
 	var/armor_integrity_last_damage_time = 0
 	var/armor_integrity_immunity_time = 0
@@ -185,7 +185,7 @@
 	//		Modifiers
 	//
 	// 		These are used by strains/mutators to buff/debuff a xeno's
-	//      stats. They can be mutated and are persistent between
+	//	  stats. They can be mutated and are persistent between
 	// 		upgrades, but not evolutions (which are just a new Xeno)
 	// 		Strains that wish to change these should use the defines
 	// 		in xeno_defines.dm, NOT snowflake values
@@ -256,8 +256,8 @@
 	//		Misc. State - poorly modularized
 	//
 	// 		This is a messy section comprising state that really shouldn't
-	//      exist on the base Xeno type, but is anyway due to the messy
-	//  	way the game's interaction system was architected.
+	//	  exist on the base Xeno type, but is anyway due to the messy
+	//	way the game's interaction system was architected.
 	//		Suffice it to say, the alternative to storing all this here
 	// 		is a bunch of messy typecasts and/or snowflake checks in many, many procs
 	// 		affected integrally by this state, instead of being defined in
@@ -1024,7 +1024,7 @@
 		return
 	if(!legcuffed || buckled)
 		return // time leniency for lag which also might make this whole thing pointless but the server
-	for(var/mob/O in viewers(src))//                                         lags so hard that 40s isn't lenient enough - Quarxink
+	for(var/mob/O in viewers(src))//										 lags so hard that 40s isn't lenient enough - Quarxink
 		O.show_message(SPAN_DANGER("<B>[src] manages to remove [legcuffed]!</B>"), SHOW_MESSAGE_VISIBLE)
 	to_chat(src, SPAN_NOTICE(" You successfully remove [legcuffed]."))
 	drop_inv_item_on_ground(legcuffed)

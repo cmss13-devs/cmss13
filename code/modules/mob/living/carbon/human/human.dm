@@ -149,7 +149,7 @@
 		ear_damage += severity * 0.15
 		AdjustEarDeafness(severity * 0.5)
 
-	 /// Reduces effects by armor value.
+	/// Reduces effects by armor value.
 	var/bomb_armor_mult = ((CLOTHING_ARMOR_HARDCORE - bomb_armor) * 0.01)
 
 	if(severity >= 30)
@@ -1674,7 +1674,7 @@
 
 		if(!restraint || buckled)
 			return // time leniency for lag which also might make this whole thing pointless but the server
-		for(var/mob/O in viewers(src))//                                         lags so hard that 40s isn't lenient enough - Quarxink
+		for(var/mob/O in viewers(src))//										 lags so hard that 40s isn't lenient enough - Quarxink
 			O.show_message(SPAN_DANGER("<B>[src] manages to remove [restraint]!</B>"), SHOW_MESSAGE_VISIBLE)
 		to_chat(src, SPAN_NOTICE(" You successfully remove [restraint]."))
 		drop_inv_item_on_ground(restraint)

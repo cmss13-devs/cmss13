@@ -1,8 +1,8 @@
 #define RANGE_TURFS(RADIUS, CENTER) \
-  block( \
-    locate(max(CENTER.x-(RADIUS),1),          max(CENTER.y-(RADIUS),1),          CENTER.z), \
-    locate(min(CENTER.x+(RADIUS),world.maxx), min(CENTER.y+(RADIUS),world.maxy), CENTER.z) \
-  )
+block( \
+	locate(max(CENTER.x-(RADIUS),1),		  max(CENTER.y-(RADIUS),1),		  CENTER.z), \
+	locate(min(CENTER.x+(RADIUS),world.maxx), min(CENTER.y+(RADIUS),world.maxy), CENTER.z) \
+)
 
 //Admin perms are in global.dm.
 
@@ -180,7 +180,7 @@
 #define ELEVATOR_TRANSIT_DURATION		5 SECONDS	// 5 seconds
 #define TRANSIT_POD_TRANSIT_DURATION	30 SECONDS 	// 30 seconds
 #define DROPSHIP_CRASH_TRANSIT_DURATION	3 MINUTES	// 180 seconds. 3 minutes
-#define ERT_SHUTTLE_TRANSIT_DURATION    30 SECONDS	// what are these comments for
+#define ERT_SHUTTLE_TRANSIT_DURATION	30 SECONDS	// what are these comments for
 
 #define SHUTTLE_RECHARGE  2 MINUTES // 2 minutes
 #define ELEVATOR_RECHARGE 15 SECONDS  // 15 seconds
@@ -399,9 +399,9 @@
 #define EXTINGUISHER_WATER_USE_AMT	5 // Amount of water consumed by extinguisher per use //why is this a define let alone a GLOBAL define oh my good lord
 
 // Chat delay amounts
-#define CHAT_SAY_DELAY      2
+#define CHAT_SAY_DELAY	  2
 #define CHAT_SAY_DELAY_SPAM 10
-#define CHAT_OOC_DELAY      5
+#define CHAT_OOC_DELAY	  5
 #define CHAT_OOC_DELAY_SPAM 10
 
 /// Max characters per minute allowed to speak
@@ -477,7 +477,7 @@
 #define ALMAYER_FORE_BOUNDARY 121
 #define ALMAYER_AFT_BOUNDARY 197
 
-/proc/get_accurate_dist(var/turf/A, var/turf/B)
+/proc/get_accurate_dist(turf/A, turf/B)
 	var/dist
 	if(!A || !B)
 		dist = 0

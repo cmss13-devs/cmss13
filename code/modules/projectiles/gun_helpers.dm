@@ -106,7 +106,7 @@ DEFINES in setup.dm, referenced here.
 			//							  \\
 			// EQUIPMENT AND INTERACTION  \\
 			//							  \\
-			//						   	  \\
+			//							  \\
 //----------------------------------------------------------
 
 /obj/item/weapon/gun/clicked(var/mob/user, var/list/mods)

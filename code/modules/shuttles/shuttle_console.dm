@@ -19,7 +19,7 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 	var/abort_timer = 100 //10 seconds
 	var/link = 0 // Does this terminal activate the transport system?
 
-	 ///Has it been admin-disabled?
+	///Has it been admin-disabled?
 	var/disabled = FALSE
 
 	var/datum/shuttle/ferry/shuttle_datum

@@ -13,7 +13,7 @@ They're all essentially identical when it comes to getting the job done.
 	flags_atom = FPRINT|CONDUCT
 	flags_equip_slot = SLOT_WAIST
 	matter = list("metal" = 1000)
-	 //Low.
+	//Low.
 	throwforce = 2
 	w_class = SIZE_SMALL
 	throw_speed = SPEED_SLOW

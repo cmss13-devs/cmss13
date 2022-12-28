@@ -113,7 +113,7 @@
 				if(affected_mob.knocked_out < 1)
 					affected_mob.pain.apply_pain(PAIN_CHESTBURST_WEAK)
 					affected_mob.visible_message(SPAN_DANGER("\The [affected_mob] starts shaking uncontrollably!"), \
-												 SPAN_DANGER("You start shaking uncontrollably!"))
+												SPAN_DANGER("You start shaking uncontrollably!"))
 					affected_mob.apply_effect(10, PARALYZE)
 					affected_mob.make_jittery(105)
 					affected_mob.take_limb_damage(1)
@@ -210,7 +210,7 @@
 	if(victim.knocked_out < 1)
 		victim.apply_effect(20, DAZE)
 	victim.visible_message(SPAN_DANGER("\The [victim] starts shaking uncontrollably!"), \
-								 SPAN_DANGER("You feel something ripping up your insides!"))
+						SPAN_DANGER("You feel something ripping up your insides!"))
 	victim.make_jittery(300)
 	sleep(30)
 	if(!victim || !victim.loc)

@@ -90,12 +90,12 @@
 /* Pseudo-code. Auto-bolt shuttle airlocks when in motion.
 /datum/shuttle/proc/toggle_doors(var/close_doors, var/bolt_doors, var/area/whatArea)
 	if(!whatArea) return <-- logic checks!
-  		for(all doors in whatArea)
-  			if(door.id is the same as src.id)
+		for(all doors in whatArea)
+			if(door.id is the same as src.id)
 				if(close_doors)
-			    	toggle dat shit
-			   	if(bolt_doors)
-			   		bolt dat shit
+					toggle dat shit
+				if(bolt_doors)
+					bolt dat shit
 */
 
 //Actual code. lel

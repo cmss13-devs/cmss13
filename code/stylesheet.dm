@@ -104,7 +104,7 @@ h1.alert, h2.alert		{color: #000000;}
 .avoidharm				{color:	#72a0e5;	font-weight: bold;}
 .highdanger				{color: #ff0000;	font-weight: bold; font-size: 3;}
 .xenohighdanger			{color: #2a623d; 	font-weight: bold; font-size: 3;}
-.xenoannounce           {color: #1a472a;    font-family: book-antiqua; font-weight: bold; font-style: italic; font-size: 3;}
+.xenoannounce		   {color: #1a472a;	font-family: book-antiqua; font-weight: bold; font-style: italic; font-size: 3;}
 .yautjabold				{color: #800080;	font-weight: bold;}
 .yautjaboldbig			{color: #800080;	font-weight: bold; font-size: 3;}
 

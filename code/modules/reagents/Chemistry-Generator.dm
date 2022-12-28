@@ -3,12 +3,12 @@
 
 	Important keywords:
 		chemclass 						Determines how often a chemical will show up in the generation process
-			CHEM_CLASS_NONE             0 Default. Chemicals not used in the generator
-			CHEM_CLASS_BASIC            1 Chemicals that can be dispensed directly from the dispenser (iron, oxygen)
-			CHEM_CLASS_COMMON           2 Chemicals that can be vended directly or have a very simple recipe (bicaridine, ammonia, table salt)
-			CHEM_CLASS_UNCOMMON         3 Chemicals which recipe is uncommonly known and made (spacedrugs, foaming agent)
-			CHEM_CLASS_RARE             4 Chemicals without a recipe but can be obtained on the Almayer, or requires rare components
-			CHEM_CLASS_SPECIAL          5 Chemicals without a recipe and can't be obtained on the Almayer, or requires special components
+			CHEM_CLASS_NONE			 0 Default. Chemicals not used in the generator
+			CHEM_CLASS_BASIC			1 Chemicals that can be dispensed directly from the dispenser (iron, oxygen)
+			CHEM_CLASS_COMMON		   2 Chemicals that can be vended directly or have a very simple recipe (bicaridine, ammonia, table salt)
+			CHEM_CLASS_UNCOMMON		 3 Chemicals which recipe is uncommonly known and made (spacedrugs, foaming agent)
+			CHEM_CLASS_RARE			 4 Chemicals without a recipe but can be obtained on the Almayer, or requires rare components
+			CHEM_CLASS_SPECIAL		  5 Chemicals without a recipe and can't be obtained on the Almayer, or requires special components
 		gen_tier						Determines how many properties a generated chemical gets, the chance of the properties being good/negative, and how rare the required reagents are
 		potency							Determines how strong the paired property is. Is an associative variable to each property
 
@@ -395,7 +395,7 @@
 	P.holder = src
 	LAZYADD(properties, P)
 
-   	//Special case: If it's a catalyst property, add it nonetheless.
+	//Special case: If it's a catalyst property, add it nonetheless.
 	if(initial_property && initial_property != property)
 		P =	chemical_properties_list[initial_property]
 		if(P.category & PROPERTY_TYPE_CATALYST)
@@ -444,4 +444,4 @@
 			return FALSE
 		GLOB.generated_properties["neutral"] += P
 	return TRUE
-	
+

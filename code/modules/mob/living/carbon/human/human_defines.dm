@@ -139,7 +139,7 @@
 
 	//taken from human.dm
 	hud_possible = list(HEALTH_HUD,STATUS_HUD, STATUS_HUD_OOC, STATUS_HUD_XENO_INFECTION, STATUS_HUD_XENO_CULTIST, ID_HUD, WANTED_HUD, ORDER_HUD, XENO_HOSTILE_ACID, XENO_HOSTILE_SLOW, XENO_HOSTILE_TAG, XENO_HOSTILE_FREEZE, HUNTER_CLAN, HUNTER_HUD, FACTION_HUD)
-	var/embedded_flag	  				//To check if we've need to roll for damage on movement while an item is imbedded in us.
+	var/embedded_flag					//To check if we've need to roll for damage on movement while an item is imbedded in us.
 	var/allow_gun_usage = TRUE
 	var/melee_allowed = TRUE
 	var/has_used_pamphlet = FALSE 		//Has this person used a pamphlet?

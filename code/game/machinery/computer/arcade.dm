@@ -14,13 +14,13 @@
 	var/enemy_mp = 25
 	var/gameover = 0
 	var/blocked = 0 //Player cannot attack/heal while set
-	var/list/prizes = list(	/obj/item/storage/box/MRE			    = 3,
+	var/list/prizes = list(	/obj/item/storage/box/MRE				= 3,
 							/obj/item/spacecash/c10					= 4,
-							/obj/item/ammo_magazine/flamer_tank			    = 1,
+							/obj/item/ammo_magazine/flamer_tank				= 1,
 							/obj/item/tool/lighter/zippo			= 2,
 							/obj/item/tool/weldingtool					= 1,
 							/obj/item/storage/box/uscm_mre			= 2,
-							/obj/item/device/camera				        	= 2,
+							/obj/item/device/camera							= 2,
 							/obj/item/device/camera_film					= 4,
 							/obj/item/cell/crap/empty				= 3,
 							/obj/item/tool/hand_labeler					= 1

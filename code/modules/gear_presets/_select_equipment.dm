@@ -181,7 +181,7 @@
 			if(!H.equip_to_slot_or_del(new G.path, G.slot))
 				H.equip_to_slot_or_del(new G.path, WEAR_IN_BACK)
 
-    //Gives ranks to the ranked
+	//Gives ranks to the ranked
 	var/current_rank = paygrade
 	var/obj/item/card/id/I = H.get_idcard()
 	if(I)

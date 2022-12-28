@@ -213,7 +213,7 @@
 	var/can_be_shield_blocked = FALSE	// Some legacy stuff, self explanatory
 	var/should_destroy_objects = FALSE  // Only used for ravager charge
 	var/pounce_pass_flags // Pounce flags to customize what pounce can go over/through
-	var/throw_speed = SPEED_FAST        // Throw speed
+	var/throw_speed = SPEED_FAST		// Throw speed
 	var/tracks_target = TRUE					// Does it track the target atom?
 
 	var/list/pounce_callbacks = null	// Specific callbacks to invoke when a pounce lands on an atom of a specific type
@@ -425,5 +425,5 @@
 	charge_time = 1 SECONDS
 	xeno_cooldown = 10 SECONDS
 	ability_primacy = XENO_TAIL_STAB
-	 /// Used for defender's tail 'stab'.
+	/// Used for defender's tail 'stab'.
 	var/blunt_stab = FALSE

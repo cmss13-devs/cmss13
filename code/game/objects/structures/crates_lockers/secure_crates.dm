@@ -196,7 +196,7 @@
 	for(var/obj/O in get_turf(src))
 		if(itemcount >= storage_capacity)
 			break
-	 	//Only OB warheads and fuel gets in this boi
+		//Only OB warheads and fuel gets in this boi
 		if(!istype(O, /obj/structure/ob_ammo))
 			continue
 		O.forceMove(src)

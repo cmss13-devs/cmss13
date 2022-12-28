@@ -15,7 +15,7 @@
 #define HUNDRED_MEGAWATTS 100000000
 #define GIGAWATT 1000000000
 
-#define GAS_CRITICAL_TEMPERATURE     132.65    // K. The critical point temperature for air.
+#define GAS_CRITICAL_TEMPERATURE	 132.65	// K. The critical point temperature for air.
 
 #define QUANTIZE(variable)		(round(variable, 0.0001))
 

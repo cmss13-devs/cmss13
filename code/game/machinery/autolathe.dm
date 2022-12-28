@@ -108,8 +108,8 @@
 		to_chat(user, "\The [eating] does not contain significant amounts of useful materials and cannot be accepted.")
 		return
 
-	var/filltype = 0       // Used to determine message.
-	var/total_used = 0     // Amount of material used.
+	var/filltype = 0	   // Used to determine message.
+	var/total_used = 0	 // Amount of material used.
 	var/mass_per_sheet = 0 // Amount of material constituting one sheet.
 
 	for(var/material in eating.matter)
@@ -367,7 +367,7 @@
 
 /obj/structure/machinery/autolathe/proc/get_wire_descriptions()
 	return list(
-		AUTOLATHE_WIRE_HACK    	= "Item template controller",
+		AUTOLATHE_WIRE_HACK		= "Item template controller",
 		AUTOLATHE_WIRE_SHOCK	= "Ground safety"
 	)
 

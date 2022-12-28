@@ -92,7 +92,7 @@
 		if(user.drop_held_item())
 			add_local_item(O)
 			user.visible_message(SPAN_NOTICE("[user] has added \the [O] to \the [src]."), \
-								 SPAN_NOTICE("You add \the [O] to \the [src]."))
+								SPAN_NOTICE("You add \the [O] to \the [src]."))
 
 	else if(istype(O, /obj/item/storage/bag/plants))
 		var/obj/item/storage/bag/plants/P = O
@@ -371,9 +371,9 @@
 
 /obj/structure/machinery/smartfridge/proc/get_wire_descriptions()
 	return list(
-		FRIDGE_WIRE_SHOCK      = "Ground safety",
+		FRIDGE_WIRE_SHOCK	  = "Ground safety",
 		FRIDGE_WIRE_SHOOT_INV  = "Dispenser motor control",
-		FRIDGE_WIRE_IDSCAN     = "ID scanner"
+		FRIDGE_WIRE_IDSCAN	 = "ID scanner"
 	)
 
 /obj/structure/machinery/smartfridge/proc/cut(var/wire)

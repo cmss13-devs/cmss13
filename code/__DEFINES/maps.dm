@@ -81,7 +81,7 @@ require only minor tweaks.
 )
 
 // Camera lock flags
-#define CAMERA_LOCK_SHIP    (1<<0)
+#define CAMERA_LOCK_SHIP	(1<<0)
 #define CAMERA_LOCK_GROUND  (1<<1)
 #define CAMERA_LOCK_ADMIN (1<<2)
 

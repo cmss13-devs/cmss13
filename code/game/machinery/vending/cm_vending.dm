@@ -1253,9 +1253,9 @@ GLOBAL_LIST_INIT(cm_vending_gear_corresponding_types_list, list(
 /*
 /obj/structure/machinery/vending/proc/get_wire_descriptions()
 	return list(
-		VENDING_WIRE_EXTEND    = "Inventory control computer",
-		VENDING_WIRE_IDSCAN    = "ID scanner",
-		VENDING_WIRE_SHOCK     = "Ground safety",
+		VENDING_WIRE_EXTEND	= "Inventory control computer",
+		VENDING_WIRE_IDSCAN	= "ID scanner",
+		VENDING_WIRE_SHOCK	 = "Ground safety",
 		VENDING_WIRE_SHOOT_INV = "Dispenser motor control"
 	)
 

@@ -17,9 +17,9 @@ Buildable meters
 #define PIPE_INSULATED_BENT		12
 #define PIPE_GAS_FILTER			13
 #define PIPE_GAS_MIXER			14
-#define PIPE_PASSIVE_GATE       15
-#define PIPE_VOLUME_PUMP        16
-#define PIPE_HEAT_EXCHANGE      17
+#define PIPE_PASSIVE_GATE	   15
+#define PIPE_VOLUME_PUMP		16
+#define PIPE_HEAT_EXCHANGE	  17
 #define PIPE_MTVALVE			18
 #define PIPE_MANIFOLD4W			19
 #define PIPE_CAP				20
@@ -626,7 +626,7 @@ Buildable meters
 	qdel(src)	// remove the pipe item
 
 	return
-	 //TODO: DEFERRED
+	//TODO: DEFERRED
 
 // ensure that setterm() is called for a newly connected pipeline
 

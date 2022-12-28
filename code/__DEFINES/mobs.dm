@@ -152,8 +152,8 @@
 //=================================================
 
 /*   MOVE DEFINES   */
-#define MOVE_INTENT_WALK        1
-#define MOVE_INTENT_RUN         2
+#define MOVE_INTENT_WALK		1
+#define MOVE_INTENT_RUN		 2
 
 /*   INTERNAL ORGAN DEFINES   */
 #define ORGAN_ASSISTED	1
@@ -187,30 +187,30 @@
 //=================================================
 
 //Language flags.
-#define WHITELISTED 1  		// Language is available if the speaker is whitelisted.
-#define RESTRICTED 2   		// Language can only be accquired by spawning or an admin.
-#define NONVERBAL 4    		// Language has a significant non-verbal component. Speech is garbled without line-of-sight
-#define SIGNLANG 8     		// Language is completely non-verbal. Speech is displayed through emotes for those who can understand.
-#define HIVEMIND 16         // Broadcast to all mobs with this language.
+#define WHITELISTED 1		// Language is available if the speaker is whitelisted.
+#define RESTRICTED 2		// Language can only be accquired by spawning or an admin.
+#define NONVERBAL 4			// Language has a significant non-verbal component. Speech is garbled without line-of-sight
+#define SIGNLANG 8	 		// Language is completely non-verbal. Speech is displayed through emotes for those who can understand.
+#define HIVEMIND 16		 // Broadcast to all mobs with this language.
 //=================================================
 
 //Species flags.
-#define NO_BLOOD                 (1<<0)
-#define NO_BREATHE               (1<<1)
-#define NO_CLONE_LOSS            (1<<2)
-#define NO_SLIP                  (1<<3)
-#define NO_POISON                (1<<4)
+#define NO_BLOOD				 (1<<0)
+#define NO_BREATHE			   (1<<1)
+#define NO_CLONE_LOSS			(1<<2)
+#define NO_SLIP				  (1<<3)
+#define NO_POISON				(1<<4)
 #define NO_CHEM_METABOLIZATION   (1<<5) //Prevents reagents from acting on_mob_life().
-#define HAS_SKIN_TONE            (1<<6)
-#define HAS_SKIN_COLOR           (1<<7)
-#define HAS_LIPS                 (1<<8)
-#define HAS_UNDERWEAR            (1<<9)
-#define IS_WHITELISTED           (1<<10)
-#define IS_SYNTHETIC             (1<<11)
-#define NO_NEURO                 (1<<12)
-#define SPECIAL_BONEBREAK        (1<<13) //species do not get their bonebreak chance modified by endurance
-#define NO_SHRAPNEL              (1<<14)
-#define HAS_HARDCRIT             (1<<15)
+#define HAS_SKIN_TONE			(1<<6)
+#define HAS_SKIN_COLOR		   (1<<7)
+#define HAS_LIPS				 (1<<8)
+#define HAS_UNDERWEAR			(1<<9)
+#define IS_WHITELISTED		   (1<<10)
+#define IS_SYNTHETIC			 (1<<11)
+#define NO_NEURO				 (1<<12)
+#define SPECIAL_BONEBREAK		(1<<13) //species do not get their bonebreak chance modified by endurance
+#define NO_SHRAPNEL			  (1<<14)
+#define HAS_HARDCRIT			 (1<<15)
 
 //=================================================
 
@@ -344,7 +344,7 @@
 
 // Lurker strain flags
 #define LURKER_NORMAL		"Normal"
-#define LURKER_VAMPIRE      "Vampire"
+#define LURKER_VAMPIRE	  "Vampire"
 // Ravager strain flags
 #define RAVAGER_NORMAL 		"Normal"
 #define RAVAGER_HEDGEHOG 	"Hedgehog"

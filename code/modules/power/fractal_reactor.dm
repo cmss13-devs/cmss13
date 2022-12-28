@@ -1,6 +1,6 @@
 // ###############################################################################
-// # ITEM: FRACTAL ENERGY REACTOR                                                #
-// # FUNCTION: Generate infinite electricity. Used for map testing.              #
+// # ITEM: FRACTAL ENERGY REACTOR												#
+// # FUNCTION: Generate infinite electricity. Used for map testing.			  #
 // ###############################################################################
 
 /obj/structure/machinery/power/fractal_reactor

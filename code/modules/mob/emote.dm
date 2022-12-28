@@ -27,8 +27,8 @@
 		if(!nolog)
 			log_emote("[name]/[key] : [message]")
 
- //Hearing gasp and such every five seconds is not good emotes were not global for a reason.
- // Maybe some people are okay with that.
+//Hearing gasp and such every five seconds is not good emotes were not global for a reason.
+// Maybe some people are okay with that.
 		for(var/mob/M in GLOB.player_list)
 			if(!M.client)
 				continue //skip monkeys and leavers

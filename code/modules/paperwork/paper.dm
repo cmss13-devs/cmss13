@@ -25,7 +25,7 @@
 	var/stamps		//The (text for the) stamps on the paper.
 	var/fields		//Amount of user created fields
 	var/list/stamped
-	var/ico[0]      //Icons and
+	var/ico[0] //Icons and
 	var/offset_x[0] //offsets stored for later
 	var/offset_y[0] //usage by the photocopier
 	var/rigged = 0
@@ -129,10 +129,10 @@
 				H.update_body()
 			else
 				user.visible_message(SPAN_WARNING("[user] begins to wipe [H]'s face paint off with \the [src]."), \
-								 	 SPAN_NOTICE("You begin to wipe off [H]'s face paint."))
+									SPAN_NOTICE("You begin to wipe off [H]'s face paint."))
 				if(do_after(user, 10, INTERRUPT_ALL, BUSY_ICON_FRIENDLY) && do_after(H, 10, INTERRUPT_ALL, BUSY_ICON_GENERIC))	//user needs to keep their active hand, H does not.
 					user.visible_message(SPAN_NOTICE("[user] wipes [H]'s face paint off with \the [src]."), \
-										 SPAN_NOTICE("You wipe off [H]'s face paint."))
+										SPAN_NOTICE("You wipe off [H]'s face paint."))
 					H.lip_style = null
 					H.update_body()
 

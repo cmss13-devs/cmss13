@@ -67,7 +67,7 @@
 	if(!components.len)
 		return
 
-	 //Combat shielding absorbs a percentage of damage directly into the cell.
+	//Combat shielding absorbs a percentage of damage directly into the cell.
 	if(module_active && istype(module_active,/obj/item/robot/combat/shield))
 		var/obj/item/robot/combat/shield/shield = module_active
 		//Shields absorb a certain percentage of damage based on their power setting.
@@ -112,7 +112,7 @@
 	if(status_flags & GODMODE)	return	//godmode
 	var/list/datum/robot_component/parts = get_damageable_components()
 
-	 //Combat shielding absorbs a percentage of damage directly into the cell.
+	//Combat shielding absorbs a percentage of damage directly into the cell.
 	if(module_active && istype(module_active,/obj/item/robot/combat/shield))
 		var/obj/item/robot/combat/shield/shield = module_active
 		//Shields absorb a certain percentage of damage based on their power setting.

@@ -459,8 +459,8 @@
 		L.handle_xeno_leader_pheromones()
 
 /*
- *    Helper procs for the Hive Status UI
- *    These are all called by the hive status UI manager to update its data
+ *	Helper procs for the Hive Status UI
+ *	These are all called by the hive status UI manager to update its data
  */
 
 // Returns a list of how many of each caste of xeno there are, sorted by tier

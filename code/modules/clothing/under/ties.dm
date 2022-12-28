@@ -656,8 +656,7 @@
 	/obj/item/ammo_magazine/revolver,
 	/obj/item/weapon/gun/flare,
 	/obj/item/device/flashlight/flare
-
-	 )
+	)
 
 /obj/item/storage/internal/accessory/holster/on_stored_atom_del(atom/movable/AM)
 	if(AM == current_gun)

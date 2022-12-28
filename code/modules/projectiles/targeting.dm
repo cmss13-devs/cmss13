@@ -21,7 +21,7 @@
 	.
 	if(ismob(A) && isliving(A) && !(A in target))
 		Aim(A) 	//Clicked a mob, aim at them
-	else  		//Didn't click someone, check if there is anyone along that guntrace
+	else		//Didn't click someone, check if there is anyone along that guntrace
 		var/mob/living/M = GunTrace(user.x,user.y,A.x,A.y,user.z,user)  //Find dat mob.
 		if(M && isliving(M) && (M in view(user)) && !(M in target))
 			Aim(M) //Aha!  Aim at them!

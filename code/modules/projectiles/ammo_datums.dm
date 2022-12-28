@@ -11,7 +11,7 @@
 	var/sound_shield_hit //When the bullet is absorbed by a xeno_shield
 
 	var/accurate_range_min 			= 0			// Snipers use this to simulate poor accuracy at close ranges
-	var/scatter  					= 0 		// How much the ammo scatters when burst fired, added to gun scatter, along with other mods
+	var/scatter					= 0 		// How much the ammo scatters when burst fired, added to gun scatter, along with other mods
 	var/stamina_damage 				= 0
 	var/damage 						= 0 		// This is the base damage of the bullet as it is fired
 	var/damage_type 				= BRUTE 	// BRUTE, BURN, TOX, OXY, CLONE are the only things that should be in here
@@ -789,13 +789,13 @@
 					SMG Ammo
 //======
 */
- //2020 SMG/ammo rebalance. default ammo actually has penetration so it can be useful, by 4khan: should be meh against t3s, better under 15 armor. Perfectly does this right now (oct 2020)
- //has reduced falloff compared to the m39. this means it is best for kiting castes (mostly t2s and below admittedly)
- //while the m39 ap is better for shredding them at close range, but has reduced velocity, so it's better for just running in and erasing armor-centric castes (defender, crusher)
- // which i think is really interesting and good balance, giving both ammo types a reason to exist even against ravagers.
- //i feel it is necessary to reflavor the default bullet, because otherwise, people won't be able to notice it has less falloff and faster bullet speed. even with a changelog,
- //way too many people don't read the changelog, and after one or two months the changelog entry is all but archive, so there needs to be an ingame description of what the ammo does
- //in comparison to armor-piercing rounds.
+//2020 SMG/ammo rebalance. default ammo actually has penetration so it can be useful, by 4khan: should be meh against t3s, better under 15 armor. Perfectly does this right now (oct 2020)
+//has reduced falloff compared to the m39. this means it is best for kiting castes (mostly t2s and below admittedly)
+//while the m39 ap is better for shredding them at close range, but has reduced velocity, so it's better for just running in and erasing armor-centric castes (defender, crusher)
+// which i think is really interesting and good balance, giving both ammo types a reason to exist even against ravagers.
+//i feel it is necessary to reflavor the default bullet, because otherwise, people won't be able to notice it has less falloff and faster bullet speed. even with a changelog,
+//way too many people don't read the changelog, and after one or two months the changelog entry is all but archive, so there needs to be an ingame description of what the ammo does
+//in comparison to armor-piercing rounds.
 
 /datum/ammo/bullet/smg
 	name = "submachinegun bullet"

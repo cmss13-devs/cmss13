@@ -50,7 +50,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "High Altitude"
 	icon_state = "blue"
 
-/area/start            // will be unused once kurper gets his login interface patch done
+/area/start			// will be unused once kurper gets his login interface patch done
 	name = "start area"
 	icon_state = "start"
 	ceiling = CEILING_MAX

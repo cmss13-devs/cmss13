@@ -72,26 +72,26 @@ TODO: Create /datum/shuttle/ferry/marine/elevator and depreciate this
 
 DOCUMENTATION ON HOW TO ADD A NEW SHUTTLE: Fourkhan, 6/7/19
 
- - Step one is to map the physical shuttle somewhere on the map.
+- Step one is to map the physical shuttle somewhere on the map.
 
- - Step two is to add the shuttle datum to shuttle_controller.dm
+- Step two is to add the shuttle datum to shuttle_controller.dm
 	- the shuttle_tag var is the primary identifier of the shuttle, we'll see this again later on
 	- the info_tag is how you identify the shuttle in the s_info assoc. list, that's the next step
 
- - Step three is the worst part: map out the s_info listing based on the physical shuttle.
+- Step three is the worst part: map out the s_info listing based on the physical shuttle.
 	- follow the examaples already here as a guideline and this should be fairly straightforward.
-	 - keep in mind this is will be retrieved with info_tag on the shuttle datum so those need to EXACTLY match.
+	- keep in mind this is will be retrieved with info_tag on the shuttle datum so those need to EXACTLY match.
 
- - Step four: decide which subtype of landmark you need you need the shuttle to be placed into, or
-              define a new one to suit your needs. Either way, the landmarks need to properly register
-			  (at ABSOLUTE MINIMUM) turfs in locs_move, locs_dock, and locs_land which map to the starting,
-			  transit, and end locations of the shuttle respectively.
+- Step four: decide which subtype of landmark you need you need the shuttle to be placed into, or
+	define a new one to suit your needs. Either way, the landmarks need to properly register
+	(at ABSOLUTE MINIMUM) turfs in locs_move, locs_dock, and locs_land which map to the starting,
+	transit, and end locations of the shuttle respectively.
 
- - Step five: map the landmarks onto the map. These need to have the EXACT same name and be translateable
-              somehow to the master shuttle tag, the macros further down in this file are a good example
-			  for the most part. Convention is to name the landmarks 1, 2, 3, etc. as necessary.
+- Step five: map the landmarks onto the map. These need to have the EXACT same name and be translateable
+	somehow to the master shuttle tag, the macros further down in this file are a good example
+	for the most part. Convention is to name the landmarks 1, 2, 3, etc. as necessary.
 
- - Step six: add a shuttle console, this is code-by-copypaste for the most part.
+- Step six: add a shuttle console, this is code-by-copypaste for the most part.
 
 */
 

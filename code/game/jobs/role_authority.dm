@@ -164,9 +164,9 @@ var/global/players_preassigned = 0
 
 //#undef FACTION_TO_JOIN
 
- /*
- Consolidated into a better collection of procs. It was also calling too many loops, and I tried to fix that as well.
- I hope it's easier to tell what the heck this proc is even doing, unlike previously.
+/*
+Consolidated into a better collection of procs. It was also calling too many loops, and I tried to fix that as well.
+I hope it's easier to tell what the heck this proc is even doing, unlike previously.
  */
 
 
@@ -237,7 +237,7 @@ var/global/players_preassigned = 0
 		var/datum/job/J = temp_roles_for_mode[title]
 		J.current_positions = 0
 
-    // Set up limits for other roles based on our balancing weight number.
+	// Set up limits for other roles based on our balancing weight number.
 	// Set the xeno starting amount based on marines assigned
 	var/datum/job/antag/xenos/XJ = temp_roles_for_mode[JOB_XENOMORPH]
 	if(istype(XJ))

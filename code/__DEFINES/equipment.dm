@@ -5,24 +5,24 @@
 
 //flags_atom
 
-#define NOINTERACT                (1<<0)  // You can't interact with it, at all. Useful when doing certain animations.
-#define FPRINT                    (1<<1)  // takes a fingerprint
-#define CONDUCT                   (1<<2)  // conducts electricity (metal etc.)
-#define ON_BORDER                 (1<<3)  // 'border object'. item has priority to check when entering or leaving
-#define NOBLOODY                  (1<<4)  // Don't want a blood overlay on this one.
-#define DIRLOCK                   (1<<5)  // movable atom won't change direction when Moving()ing. Useful for items that have several dir states.
-#define NOREACT                   (1<<6)  //Reagents dont' react inside this container.
-#define OPENCONTAINER             (1<<7)  //is an open container for chemistry purposes
-#define RELAY_CLICK               (1<<8)  //This is used for /obj/ that relay your clicks via handle_click(), mostly for MGs ~Art
-#define ITEM_UNCATCHABLE          (1<<9)  // The item can't be caught out of the air.
-#define NO_NAME_OVERRIDE          (1<<10) // Used for nonstandard marine clothing to ignore 'specialty' var.
-#define NO_SNOW_TYPE              (1<<11) // Used for armors or uniforms that don't have a snow icon state.
-#define INVULNERABLE              (1<<12)
-#define CAN_BE_SYRINGED           (1<<13) // syringes can inject or drain reagents in this even if it isn't an OPENCONTAINER
-#define CAN_BE_DISPENSED_INTO     (1<<14) // Chem dispenser can dispense in this even if it isn't an OPENCONTAINER
-#define INITIALIZED               (1<<15) // Initialized by SSatoms.
-#define ATOM_DECORATED            (1<<16) // Has run Decorate() as part of subsystem init
-#define USES_HEARING		      (1<<17) // Whether or not the object uses hearing
+#define NOINTERACT				(1<<0)  // You can't interact with it, at all. Useful when doing certain animations.
+#define FPRINT					(1<<1)  // takes a fingerprint
+#define CONDUCT				   (1<<2)  // conducts electricity (metal etc.)
+#define ON_BORDER				 (1<<3)  // 'border object'. item has priority to check when entering or leaving
+#define NOBLOODY				  (1<<4)  // Don't want a blood overlay on this one.
+#define DIRLOCK				   (1<<5)  // movable atom won't change direction when Moving()ing. Useful for items that have several dir states.
+#define NOREACT				   (1<<6)  //Reagents dont' react inside this container.
+#define OPENCONTAINER			 (1<<7)  //is an open container for chemistry purposes
+#define RELAY_CLICK			   (1<<8)  //This is used for /obj/ that relay your clicks via handle_click(), mostly for MGs ~Art
+#define ITEM_UNCATCHABLE		  (1<<9)  // The item can't be caught out of the air.
+#define NO_NAME_OVERRIDE		  (1<<10) // Used for nonstandard marine clothing to ignore 'specialty' var.
+#define NO_SNOW_TYPE			  (1<<11) // Used for armors or uniforms that don't have a snow icon state.
+#define INVULNERABLE			  (1<<12)
+#define CAN_BE_SYRINGED		   (1<<13) // syringes can inject or drain reagents in this even if it isn't an OPENCONTAINER
+#define CAN_BE_DISPENSED_INTO	 (1<<14) // Chem dispenser can dispense in this even if it isn't an OPENCONTAINER
+#define INITIALIZED			   (1<<15) // Initialized by SSatoms.
+#define ATOM_DECORATED			(1<<16) // Has run Decorate() as part of subsystem init
+#define USES_HEARING			  (1<<17) // Whether or not the object uses hearing
 //==========================================================================================
 
 #define HANDLE_BARRIER_CHANCE 1
@@ -33,7 +33,7 @@
 //clothing specific stuff uses flags_inventory.
 
 #define NODROP					(1<<0)	// Cannot be dropped/unequipped at all, only deleted.
-#define NOBLUDGEON  			(1<<1)	// when an item has this it produces no "X has been hit by Y with Z" message with the default handler
+#define NOBLUDGEON			(1<<1)	// when an item has this it produces no "X has been hit by Y with Z" message with the default handler
 #define NOSHIELD				(1<<2)	// weapon not affected by shield (does nothing currently)
 #define DELONDROP				(1<<3)	// Deletes on drop instead of falling on the floor.
 #define TWOHANDED				(1<<4)	// The item is twohanded.
@@ -99,17 +99,17 @@
 //VISION IMPAIRMENT LEVELS===========================================================================
 #define VISION_IMPAIR_NONE		0	//No visual impairment
 /// 1 tile of partial impairment
-#define VISION_IMPAIR_MIN               1
+#define VISION_IMPAIR_MIN			   1
 /// 2 tiles of partial impairment
-#define VISION_IMPAIR_WEAK              2
+#define VISION_IMPAIR_WEAK			  2
 /// 3 tiles of partial impairment
-#define VISION_IMPAIR_MED               3
+#define VISION_IMPAIR_MED			   3
 /// 1 tile of full and 2 of partial impairment
-#define VISION_IMPAIR_HIGH              4
+#define VISION_IMPAIR_HIGH			  4
 /// 2 tiles of full and 2 of partial impairment
-#define VISION_IMPAIR_STRONG            5
+#define VISION_IMPAIR_STRONG			5
 /// 3 tiles of full and 2 of partial impairment (original one)
-#define VISION_IMPAIR_MAX               6
+#define VISION_IMPAIR_MAX			   6
 //VISION IMPAIRMENT LEVELS===========================================================================
 
 
@@ -192,12 +192,12 @@
 #define WEAR_IN_BACK		"in_back"
 #define WEAR_IN_JACKET		"in_jacket"
 #define WEAR_IN_ACCESSORY	"in_accessory"
-#define WEAR_IN_BELT        "in_belt"
-#define WEAR_IN_SCABBARD    "in_scabbard"
-#define WEAR_IN_J_STORE     "in_j_store"
-#define WEAR_IN_HELMET      "in_helmet"
-#define WEAR_IN_L_STORE     "in_l_store"
-#define WEAR_IN_R_STORE     "in_r_store"
+#define WEAR_IN_BELT		"in_belt"
+#define WEAR_IN_SCABBARD	"in_scabbard"
+#define WEAR_IN_J_STORE	 "in_j_store"
+#define WEAR_IN_HELMET	  "in_helmet"
+#define WEAR_IN_L_STORE	 "in_l_store"
+#define WEAR_IN_R_STORE	 "in_r_store"
 #define WEAR_IN_SHOES		"in_shoes"
 
 // Contained Sprites
@@ -371,9 +371,9 @@ GLOBAL_LIST_INIT(slot_to_contained_sprite_shorthand, list(
 //=================================================
 #define ACCESSORY_SLOT_UTILITY  "Utility"
 #define ACCESSORY_SLOT_ARMBAND  "Armband"
-#define ACCESSORY_SLOT_RANK     "Rank"
-#define ACCESSORY_SLOT_DECOR    "Decor"
-#define ACCESSORY_SLOT_MEDAL    "Medal"
+#define ACCESSORY_SLOT_RANK	 "Rank"
+#define ACCESSORY_SLOT_DECOR	"Decor"
+#define ACCESSORY_SLOT_MEDAL	"Medal"
 #define ACCESSORY_SLOT_PONCHO	"Ponchos"
 #define ACCESSORY_SLOT_ARMOR_C  "Chest armor"			//Used for uniform armour inserts.
 #define ACCESSORY_SLOT_ARMOR_A  "Arm armor"
@@ -447,7 +447,7 @@ var/global/list/uniform_categories = list(
 #define STORAGE_USING_FIFO_DRAWING			(1<<5)	// Wether the storage object can have items in it's leftmost slot be drawn
 #define STORAGE_CLICK_EMPTY					(1<<6)	// Whether you can click to empty an item
 #define STORAGE_CLICK_GATHER				(1<<7)	// Whether it is possible to use this storage object in an inverse way,
-										   			// so you can have the item in your hand and click items on the floor to pick them up
+													// so you can have the item in your hand and click items on the floor to pick them up
 #define STORAGE_SHOW_FULLNESS				(1<<8)	// Whether our storage object on hud changes color when full
 #define STORAGE_CONTENT_NUM_DISPLAY			(1<<9)	// Whether the storage object groups contents of the same type and displays them as a number. Only works for slot-based storage objects.
 #define STORAGE_GATHER_SIMULTAENOUSLY		(1<<10)	// Whether the storage object can pick up all the items in a tile

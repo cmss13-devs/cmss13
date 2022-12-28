@@ -110,7 +110,7 @@
 			return
 
 		if(1) 						// 1 only singes
-			if(!scorchedness)  		// we only singe that which hasnt burned
+			if(!scorchedness)		// we only singe that which hasnt burned
 				scorchedness = 1
 
 		if(2 to 30)
@@ -803,7 +803,7 @@
 	icon_state = "plating"
 
 /turf/open/shuttle/brig // Added this floor tile so that I have a separate turf to check in the shuttle -- Polymorph
-	name = "Brig floor"        // Also added it into the 2x3 brig area of the shuttle.
+	name = "Brig floor"		// Also added it into the 2x3 brig area of the shuttle.
 	icon_state = "floor4"
 
 /turf/open/shuttle/escapepod

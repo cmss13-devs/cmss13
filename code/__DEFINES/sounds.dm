@@ -21,7 +21,7 @@
 #define ITEM_EQUIP_VOLUME 50
 
 //Reserved channels
-#define SOUND_CHANNEL_VOX           1017
+#define SOUND_CHANNEL_VOX		   1017
 #define SOUND_CHANNEL_MUSIC 		1018
 #define SOUND_CHANNEL_AMBIENCE 		1019
 #define SOUND_CHANNEL_WALKMAN 		1020

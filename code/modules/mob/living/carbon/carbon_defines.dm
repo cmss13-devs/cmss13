@@ -2,7 +2,7 @@
 	gender = MALE
 	var/list/stomach_contents = list()
 
-	var/life_tick = 0      // The amount of life ticks that have processed on this mob.
+	var/life_tick = 0	  // The amount of life ticks that have processed on this mob.
 
 	var/obj/item/handcuffs/handcuffed = null //Whether or not the mob is handcuffed
 

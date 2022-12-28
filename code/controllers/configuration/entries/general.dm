@@ -140,7 +140,7 @@ Administrative related.
 	config_entry_value = "#ffbf00"
 
 /datum/config_entry/string/ooc_color_debug
- 	config_entry_value = "#6bd1b4"
+	config_entry_value = "#6bd1b4"
 
 /datum/config_entry/string/ooc_color_admin
 	config_entry_value = "#ff8000"

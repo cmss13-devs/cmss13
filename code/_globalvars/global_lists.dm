@@ -409,7 +409,7 @@ GLOBAL_LIST_INIT(edgeinfo_corner2, list(
 		if(islist(chemical_reactions_filtered_list[reaction]))
 			var/list/L = chemical_reactions_filtered_list[reaction]
 			for(var/t in L)
-				. += "    has: [t]\n"
+				. += "	has: [t]\n"
 	world << .
 */
 

@@ -136,7 +136,7 @@ var/const/MAX_SAVE_SLOTS = 10
 	var/r_eyes = 0						//Eye color
 	var/g_eyes = 0						//Eye color
 	var/b_eyes = 0						//Eye color
-	var/species = "Human"               //Species datum to use.
+	var/species = "Human"			   //Species datum to use.
 	var/ethnicity = "Western"			// Ethnicity
 	var/body_type = "Mesomorphic (Average)" // Body Type
 	var/language = "None"				//Secondary language
@@ -145,8 +145,8 @@ var/const/MAX_SAVE_SLOTS = 10
 
 		//Some faction information.
 	var/origin = ORIGIN_USCM
-	var/faction = "None"                	//Antag faction/general associated faction.
-	var/religion = RELIGION_AGNOSTICISM     //Religious association.
+	var/faction = "None"					//Antag faction/general associated faction.
+	var/religion = RELIGION_AGNOSTICISM	 //Religious association.
 
 		//Mob preview
 	var/icon/preview_icon = null

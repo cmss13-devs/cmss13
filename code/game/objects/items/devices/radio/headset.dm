@@ -314,7 +314,7 @@
 	icon_state = "radio"
 	item_state = "headset"
 	initial_keys = list(/obj/item/device/encryptionkey/ai_integrated)
-	var/myAi = null    // Atlantis: Reference back to the AI which has this radio.
+	var/myAi = null	// Atlantis: Reference back to the AI which has this radio.
 	var/disabledAi = 0 // Atlantis: Used to manually disable AI's integrated radio via intellicard menu.
 
 /obj/item/device/radio/headset/ai_integrated/receive_range(freq, level)

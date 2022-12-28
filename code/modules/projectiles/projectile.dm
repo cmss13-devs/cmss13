@@ -30,7 +30,7 @@
 	var/turf/target_turf = null
 	var/turf/starting 	 = null // the projectile's starting turf
 
-	var/turf/path[]  	 = null
+	var/turf/path[]	 = null
 	var/permutated[] 	 = null // we've passed through these atoms, don't try to hit them again
 
 	/// Additional ammo flags applied to the projectile
@@ -64,7 +64,7 @@
 	var/datum/cause_data/weapon_cause_data
 	var/list/bullet_traits
 
-	 /// The beam linked to the projectile. Can be utilized for things like grappling hooks, harpoon guns, tripwire guns, etc..
+	/// The beam linked to the projectile. Can be utilized for things like grappling hooks, harpoon guns, tripwire guns, etc..
 	var/obj/effect/bound_beam
 
 /obj/item/projectile/Initialize(mapload, var/datum/cause_data/cause_data)
@@ -127,7 +127,7 @@
 	scatter		= ammo.scatter
 	accuracy   += ammo.accuracy
 	accuracy   *= rand(PROJ_VARIANCE_LOW-ammo.accuracy_var_low, PROJ_VARIANCE_HIGH+ammo.accuracy_var_high) * PROJ_BASE_ACCURACY_MULT//Rand only works with integers.
-	damage     *= rand(PROJ_VARIANCE_LOW-ammo.damage_var_low, PROJ_VARIANCE_HIGH+ammo.damage_var_high) * PROJ_BASE_DAMAGE_MULT
+	damage	 *= rand(PROJ_VARIANCE_LOW-ammo.damage_var_low, PROJ_VARIANCE_HIGH+ammo.damage_var_high) * PROJ_BASE_DAMAGE_MULT
 	damage_falloff = ammo.damage_falloff
 	damage_buildup = ammo.damage_buildup
 	projectile_override_flags = special_flags
@@ -513,7 +513,7 @@
 		return FALSE
 
 //----------------------------------------------------------
-				//				    	\\
+				//						\\
 				//  HITTING THE TARGET  \\
 				//						\\
 				//						\\
@@ -557,7 +557,7 @@
 
 	return TRUE
 
- //Used by machines and structures to calculate shooting past cover
+//Used by machines and structures to calculate shooting past cover
 /obj/proc/calculate_cover_hit_boolean(obj/item/projectile/P, var/distance = 0, var/cade_direction_correct = FALSE)
 	if(istype(P.shot_from, /obj/item/hardpoint)) //anything shot from a tank gets a bonus to bypassing cover
 		distance -= 3
@@ -809,8 +809,8 @@
 	if(M.stat != DEAD) animation_flash_color(M)
 
 //----------------------------------------------------------
-				//				    \\
-				//    OTHER PROCS	\\
+				//					\\
+				//	OTHER PROCS	\\
 				//					\\
 				//					\\
 //----------------------------------------------------------
@@ -1109,8 +1109,8 @@
 
 
 //----------------------------------------------------------
-					//				    \\
-					//    OTHER PROCS	\\
+					//					\\
+					//	OTHER PROCS	\\
 					//					\\
 					//					\\
 //----------------------------------------------------------

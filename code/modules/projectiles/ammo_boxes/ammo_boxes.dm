@@ -320,8 +320,8 @@
 			if(user.a_intent == INTENT_HARM)
 				dumping = TRUE
 
-			var/transfering   = 0      // Amount of bullets we're trying to transfer
-			var/transferable  = 0      // Amount of bullets that can actually be transfered
+			var/transfering   = 0	  // Amount of bullets we're trying to transfer
+			var/transferable  = 0	  // Amount of bullets that can actually be transfered
 			do
 				// General checking
 				if(dumping)
@@ -345,7 +345,7 @@
 					if(dumping)
 						transfering = -transfering
 					AM.current_rounds += transfering
-					bullet_amount     -= transfering
+					bullet_amount	 -= transfering
 					playsound(src, pick('sound/weapons/handling/mag_refill_1.ogg', 'sound/weapons/handling/mag_refill_2.ogg', 'sound/weapons/handling/mag_refill_3.ogg'), 20, TRUE, 6)
 					to_chat(user, SPAN_NOTICE("You have transferred [abs(transfering)] round\s to [dumping ? src : AM]."))
 					transfering = 0

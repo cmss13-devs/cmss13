@@ -891,7 +891,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 /obj/structure/machinery/power/apc/proc/get_wire_descriptions()
 	return list(
 		APC_WIRE_MAIN_POWER   = "Main power",
-		APC_WIRE_IDSCAN       = "ID scanner"
+		APC_WIRE_IDSCAN	   = "ID scanner"
 	)
 
 /obj/structure/machinery/power/apc/proc/isWireCut(var/wire)

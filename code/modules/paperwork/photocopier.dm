@@ -215,7 +215,7 @@
 	copy.update_icon()
 
 	//Iterates through stamps and puts a matching gray overlay onto the copy
-	var/image/img                                //
+	var/image/img								//
 	for (var/j = 1, j <= original.ico.len, j++)
 		if (findtext(original.ico[j], "cap") || findtext(original.ico[j], "cent"))
 			img = image('icons/obj/items/paper.dmi', "paper_stamp-circle")

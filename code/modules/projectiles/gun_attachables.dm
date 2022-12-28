@@ -64,7 +64,7 @@ Defined in conflicts.dm of the #defines folder.
 	var/aim_speed_mod	= 0 //Changes the aiming speed slowdown of the wearer by this value.
 	var/wield_delay_mod	= 0 //How long ADS takes (time before firing)
 	var/movement_onehanded_acc_penalty_mod = 0 //Modifies accuracy/scatter penalty when firing onehanded while moving.
-	var/velocity_mod    = 0 // Added velocity to bullets
+	var/velocity_mod	= 0 // Added velocity to bullets
 	var/hud_offset_mod  = 0 //How many pixels to adjust the gun's sprite coords by. Ideally, this should keep the gun approximately centered.
 
 	var/activation_sound = 'sound/weapons/handling/gun_underbarrel_activate.ogg'

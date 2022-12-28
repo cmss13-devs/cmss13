@@ -26,7 +26,7 @@
 #define POWER_CHANNEL_EQUIP		1
 #define POWER_CHANNEL_LIGHT		2
 #define POWER_CHANNEL_ENVIRON	3
-#define POWER_CHANNEL_ONEOFF  	4   //One-off power usage
+#define POWER_CHANNEL_ONEOFF	4   //One-off power usage
 #define POWER_CHANNEL_TOTAL		5	//for total power used only
 
 // bitflags for machine stat variable

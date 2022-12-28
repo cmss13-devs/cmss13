@@ -26,7 +26,7 @@
 
 	attack_verb = list("attacked", "stabbed", "poked")
 	sharp = 0
-	var/loaded      //Descriptive string for currently loaded food object.
+	var/loaded	  //Descriptive string for currently loaded food object.
 
 /obj/item/tool/kitchen/utensil/Initialize()
 	. = ..()

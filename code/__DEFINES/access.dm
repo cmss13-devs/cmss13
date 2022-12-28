@@ -31,10 +31,10 @@ most of them are tied into map-placed objects. This should be reworked in the fu
 #define ACCESS_MARINE_WO			24
 #define ACCESS_MARINE_MORGUE	 	25
 #define ACCESS_MARINE_RO			26
-#define ACCESS_MARINE_CREWMAN       27
+#define ACCESS_MARINE_CREWMAN	   27
 #define ACCESS_MARINE_RESEARCH 		28
-#define ACCESS_MARINE_SEA           29
-#define ACCESS_MARINE_KITCHEN       30
+#define ACCESS_MARINE_SEA		   29
+#define ACCESS_MARINE_KITCHEN	   30
 #define ACCESS_MARINE_CAPTAIN		31
 #define ACCESS_MARINE_RTO_PREP 		32
 

@@ -3,12 +3,12 @@
  *		Balloons
  *		Fake telebeacon
  *		Fake singularity
- *      Toy mechs
+ *		Toy mechs
  *		Crayons
  *		Snap pops
  *		Water flower
- *      Therapy dolls
- *      Inflatable duck
+ *		Therapy dolls
+ *		Inflatable duck
  *		Other things
  */
 
@@ -421,8 +421,8 @@
 		comment = "Ouch, bad luck."
 	icon_state = "[name][result]"
 	user.visible_message(SPAN_NOTICE("[user] has thrown [src]. It lands on [result]. [comment]"), \
-						 SPAN_NOTICE("You throw [src]. It lands on a [result]. [comment]"), \
-						 SPAN_NOTICE("You hear [src] landing on a [result]. [comment]"))
+						SPAN_NOTICE("You throw [src]. It lands on a [result]. [comment]"), \
+						SPAN_NOTICE("You hear [src] landing on a [result]. [comment]"))
 
 
 
@@ -465,7 +465,7 @@
 
 	if(world.time > last_hug_time)
 		user.visible_message(SPAN_NOTICE("[user] hugs [src]! How cute! "), \
-							 SPAN_NOTICE("You hug [src]. Dawwww... "))
+							SPAN_NOTICE("You hug [src]. Dawwww... "))
 		last_hug_time = world.time + 50 //5 second cooldown
 
 /obj/item/toy/farwadoll/pred

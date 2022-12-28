@@ -30,7 +30,7 @@ SUBSYSTEM_DEF(statpanels)
 			"Map: [SSmapping.configs?[GROUND_MAP]?.map_name || "Loading..."]",
 			cached ? "Next Map: [cached?.map_name]" : null,
 //			"Round ID: [GLOB.round_id ? GLOB.round_id : "NULL"]", // this is commented because we don't have it and we should have it instead of using debug DB - be the hero of today
-//          "Round Time: [ROUND_TIME]",
+//		  "Round Time: [ROUND_TIME]",
 			"Server Time: [time2text(world.timeofday, "YYYY-MM-DD hh:mm:ss")]",
 			"Round Time: [duration2text()]",
 			"Operation Time: [worldtime2text()]",

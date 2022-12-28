@@ -49,7 +49,7 @@
 		return FALSE//Have to be actually a twohander and wielded.
 	flags_item ^= WIELDED
 	SEND_SIGNAL(src, COMSIG_ITEM_UNWIELD, user)
-	name 	    = copytext(name,1,-10)
+	name 		= copytext(name,1,-10)
 	item_state  = copytext(item_state,1,-2)
 	remove_offhand(user)
 	return TRUE

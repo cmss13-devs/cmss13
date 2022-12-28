@@ -131,7 +131,7 @@
 
 	/* ###### Organize the receivers into categories for displaying the message ###### */
 
-  	// Understood the message:
+	// Understood the message:
 	var/list/heard_masked 	= list() // masked name or no real name
 	var/list/heard_normal 	= list() // normal message
 
@@ -223,7 +223,7 @@
 
 		/* ###### Send the message ###### */
 
-	  	/* --- Process all the mobs that heard a masked voice (understood) --- */
+		/* --- Process all the mobs that heard a masked voice (understood) --- */
 		if (length(heard_masked))
 			for (var/mob/R in heard_masked)
 				R.hear_radio(message,verbage, speaking, part_a, part_b, M, 0, name, volume)

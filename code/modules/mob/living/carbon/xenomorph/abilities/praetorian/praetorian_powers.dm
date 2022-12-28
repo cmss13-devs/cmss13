@@ -583,8 +583,7 @@
 
 		// Reroll damage
 		damage = get_xeno_damage_slash(H, rand(X.melee_damage_lower, X.melee_damage_upper))
-		sleep(4) // Short sleep so the animation and sounds will be distinct, but this creates some strange effects if the prae runs away
-				 // not entirely happy with this, but I think its benefits outweigh its drawbacks
+		sleep(4) // Short sleep so the animation and sounds will be distinct, but this creates some strange effects if the prae runs away. not entirely happy with this, but I think its benefits outweigh its drawbacks
 
 	X.animation_attack_on(A)
 	X.flick_attack_overlay(A, "slash")

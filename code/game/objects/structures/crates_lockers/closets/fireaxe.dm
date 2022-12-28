@@ -17,7 +17,7 @@
 	attackby(obj/item/O, var/mob/user)  //Marker -Agouri
 		//..() //That's very useful, Erro
 
-		var/hasaxe = 0       //gonna come in handy later~
+		var/hasaxe = 0	   //gonna come in handy later~
 		if(fireaxe)
 			hasaxe = 1
 

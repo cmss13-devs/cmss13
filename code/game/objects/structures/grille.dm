@@ -70,13 +70,13 @@
 		if(H.species.can_shred(H))
 			damage_dealt = 5
 			user.visible_message(SPAN_WARNING("[user] mangles [src]."), \
-					 SPAN_WARNING("You mangle [src]."), \
-					 "You hear twisting metal.")
+						SPAN_WARNING("You mangle [src]."), \
+						"You hear twisting metal.")
 
 	if(!damage_dealt)
 		user.visible_message(SPAN_WARNING("[user] kicks [src]."), \
-						 SPAN_WARNING("You kick [src]."), \
-						 "You hear twisting metal.")
+						SPAN_WARNING("You kick [src]."), \
+						"You hear twisting metal.")
 
 	if(shock(user, 70))
 		return
@@ -92,8 +92,8 @@
 
 	playsound(loc, 'sound/effects/grillehit.ogg', 25, 1)
 	M.visible_message(SPAN_WARNING("[M] smashes against [src]."), \
-					  SPAN_WARNING("You smash against [src]."), \
-					  "You hear twisting metal.")
+					SPAN_WARNING("You smash against [src]."), \
+					"You hear twisting metal.")
 
 	health -= M.melee_damage_upper
 	healthcheck()
@@ -127,7 +127,7 @@
 			playsound(loc, 'sound/items/Screwdriver.ogg', 25, 1)
 			anchored = !anchored
 			user.visible_message(SPAN_NOTICE("[user] [anchored ? "fastens" : "unfastens"] the grille."), \
-								 SPAN_NOTICE("You have [anchored ? "fastened the grille to" : "unfastened the grill from"] the floor."))
+								SPAN_NOTICE("You have [anchored ? "fastened the grille to" : "unfastened the grill from"] the floor."))
 			return
 
 //window placing begin

@@ -2,9 +2,9 @@
 #define CAT_HIDDEN 1
 #define CAT_COIN   2
 
-#define VENDING_WIRE_EXTEND    1
-#define VENDING_WIRE_IDSCAN    2
-#define VENDING_WIRE_SHOCK     3
+#define VENDING_WIRE_EXTEND	1
+#define VENDING_WIRE_IDSCAN	2
+#define VENDING_WIRE_SHOCK	 3
 #define VENDING_WIRE_SHOOT_INV 4
 
 #define	VEND_HAND	1
@@ -40,7 +40,7 @@
 	var/list/products	= list() // For each, use the following pattern:
 	var/list/contraband	= list() // list(/type/path = amount,/type/path2 = amount2)
 	var/list/premium 	= list() // No specified amount = only one in stock
-	var/list/prices     = list() // Prices for each item, list(/type/path = price), items not in the list don't have a price.
+	var/list/prices	 = list() // Prices for each item, list(/type/path = price), items not in the list don't have a price.
 
 	var/product_slogans = "" //String of slogans separated by semicolons, optional
 	var/product_ads = "" //String of small ad messages in the vending screen - random chance
@@ -641,7 +641,7 @@
 
 /obj/structure/machinery/vending/proc/stock(obj/item/item_to_stock, mob/user)
 	var/datum/data/vending_product/R //Let's try with a new datum.
-	 //More accurate comparison between absolute paths.
+	//More accurate comparison between absolute paths.
 	for(R in (product_records + hidden_records + coin_records))
 		if(item_to_stock.type == R.product_path && !istype(item_to_stock,/obj/item/storage)) //Nice try, specialists/engis
 			if(isgun(item_to_stock))
@@ -780,9 +780,9 @@
 
 /obj/structure/machinery/vending/proc/get_wire_descriptions()
 	return list(
-		VENDING_WIRE_EXTEND    = "Inventory control computer",
-		VENDING_WIRE_IDSCAN    = "ID scanner",
-		VENDING_WIRE_SHOCK     = "Ground safety",
+		VENDING_WIRE_EXTEND	= "Inventory control computer",
+		VENDING_WIRE_IDSCAN	= "ID scanner",
+		VENDING_WIRE_SHOCK	 = "Ground safety",
 		VENDING_WIRE_SHOOT_INV = "Dispenser motor control"
 	)
 

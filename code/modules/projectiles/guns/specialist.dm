@@ -455,7 +455,7 @@
 
 	///Internal storage item used as magazine. Must be initialised to work! Set parameters by variables or it will inherit standard numbers from storage.dm. Got to call it *something* and 'magazine' or w/e would be confusing.
 	var/obj/item/storage/internal/cylinder
-	 /// Variable that initializes the above.
+	/// Variable that initializes the above.
 	var/has_cylinder = FALSE
 	///What single item to fill the storage with, if any. This does not respect w_class.
 	var/preload

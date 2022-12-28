@@ -207,7 +207,7 @@
 	ghost_orbit		= sanitize_inlist(ghost_orbit, GLOB.ghost_orbits, initial(ghost_orbit))
 	playtime_perks   = sanitize_integer(playtime_perks, 0, 1, 1)
 	xeno_vision_level_pref = sanitize_inlist(xeno_vision_level_pref, list(XENO_VISION_LEVEL_NO_NVG, XENO_VISION_LEVEL_MID_NVG, XENO_VISION_LEVEL_FULL_NVG), XENO_VISION_LEVEL_MID_NVG)
-	hear_vox  		= sanitize_integer(hear_vox, FALSE, TRUE, TRUE)
+	hear_vox		= sanitize_integer(hear_vox, FALSE, TRUE, TRUE)
 	hide_statusbar = sanitize_integer(hide_statusbar, FALSE, TRUE, FALSE)
 	no_radials_preference = sanitize_integer(no_radials_preference, FALSE, TRUE, FALSE)
 	no_radial_labels_preference = sanitize_integer(no_radial_labels_preference, FALSE, TRUE, FALSE)
@@ -236,7 +236,7 @@
 	synth_status		= sanitize_inlist(synth_status, whitelist_hierarchy, initial(synth_status))
 	key_bindings 		= sanitize_keybindings(key_bindings)
 	remembered_key_bindings = sanitize_islist(remembered_key_bindings, null)
-	hotkeys  			= sanitize_integer(hotkeys, FALSE, TRUE, TRUE)
+	hotkeys			= sanitize_integer(hotkeys, FALSE, TRUE, TRUE)
 	vars["fps"] = fps
 
 	if(remembered_key_bindings)
@@ -487,8 +487,8 @@
 	//if(!skin_style) skin_style = "Default"
 
 	if(!origin) origin = ORIGIN_USCM
-	if(!faction)     faction =     "None"
-	if(!religion)    religion =    RELIGION_AGNOSTICISM
+	if(!faction)	 faction =	 "None"
+	if(!religion)	religion =	RELIGION_AGNOSTICISM
 	if(!preferred_squad)	preferred_squad = "None"
 
 	return 1

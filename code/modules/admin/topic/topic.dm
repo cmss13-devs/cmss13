@@ -358,9 +358,9 @@
 		var/jobs = ""
 
 	/***********************************WARNING!************************************
-				      The jobban stuff looks mangled and disgusting
-						      But it looks beautiful in-game
-						                -Nodrak
+					  The jobban stuff looks mangled and disgusting
+							  But it looks beautiful in-game
+										-Nodrak
 	************************************WARNING!***********************************/
 //Regular jobs
 	//Command (Blue)

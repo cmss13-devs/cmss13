@@ -1,32 +1,32 @@
-#define HDPT_PRIMARY                "primary"
-#define HDPT_SECONDARY              "secondary"
-#define HDPT_SUPPORT                "support"
-#define HDPT_ARMOR                  "armor"
-#define HDPT_TREADS                 "treads"
-#define HDPT_WHEELS                 "wheels"
-#define HDPT_TURRET                 "turret"
-#define HDPT_SPECIAL                "special"	//special pre-installed hardpoints with unique behaviour
+#define HDPT_PRIMARY				"primary"
+#define HDPT_SECONDARY			  "secondary"
+#define HDPT_SUPPORT				"support"
+#define HDPT_ARMOR				  "armor"
+#define HDPT_TREADS				 "treads"
+#define HDPT_WHEELS				 "wheels"
+#define HDPT_TURRET				 "turret"
+#define HDPT_SPECIAL				"special"	//special pre-installed hardpoints with unique behaviour
 
 #define HDPT_LAYER_WHEELS   1
 #define HDPT_LAYER_SUPPORT  2
-#define HDPT_LAYER_ARMOR    3
+#define HDPT_LAYER_ARMOR	3
 #define HDPT_LAYER_TURRET   4
-#define HDPT_LAYER_MAX      4
+#define HDPT_LAYER_MAX	  4
 
-#define VEHICLE_DRIVER              "driver"
-#define VEHICLE_GUNNER      		"primary gunner"
+#define VEHICLE_DRIVER			  "driver"
+#define VEHICLE_GUNNER			"primary gunner"
 #define VEHICLE_SUPPORT_GUNNER_ONE  "1st support gunner"
 #define VEHICLE_SUPPORT_GUNNER_TWO  "2nd support gunner"
 
 #define VEHICLE_SPEED_STATIC		5000 //500 seconds per tile, while not actually static, it's much better than adding check for each movement attempt.
-#define VEHICLE_SPEED_SLOW          30 //3 seconds per tile
-#define VEHICLE_SPEED_NORMAL        10 //default 1 second per tile
-#define VEHICLE_SPEED_FASTNORMAL    7
+#define VEHICLE_SPEED_SLOW		  30 //3 seconds per tile
+#define VEHICLE_SPEED_NORMAL		10 //default 1 second per tile
+#define VEHICLE_SPEED_FASTNORMAL	7
 #define VEHICLE_SPEED_FAST			5 //half a second per tile
 #define VEHICLE_SPEED_FASTER		4
-#define VEHICLE_SPEED_VERYFAST      3
-#define VEHICLE_SPEED_SUPERFAST     2
-#define VEHICLE_SPEED_DEBUGFAST     1
+#define VEHICLE_SPEED_VERYFAST	  3
+#define VEHICLE_SPEED_SUPERFAST	 2
+#define VEHICLE_SPEED_DEBUGFAST	 1
 
 #define VEHICLE_TRAMPLE_DAMAGE_TIER_1  22.5
 #define VEHICLE_TRAMPLE_DAMAGE_TIER_2  18.0

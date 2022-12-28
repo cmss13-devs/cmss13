@@ -12,7 +12,7 @@
 	var/skilllock = SKILL_POLICE_FLASH
 	var/flashes_stored = 5
 	var/max_flashes_stored = 5 //how many you can do per minute
-	var/broken = FALSE     //Is the flash burnt out?
+	var/broken = FALSE	 //Is the flash burnt out?
 	var/last_used = 0 //last world.time it was used.
 	var/recharge_time_per_flash = 30 SECONDS
 	var/cooldown_between_flashes = 0.5 SECONDS

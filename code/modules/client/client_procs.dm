@@ -579,9 +579,9 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 
 
 /**
-  * Compiles a full list of verbs to be sent to the browser
-  * Sends the 2D verbs vector of (verb category, verb name)
-  */
+* Compiles a full list of verbs to be sent to the browser
+* Sends the 2D verbs vector of (verb category, verb name)
+*/
 /client/proc/init_verbs()
 	if(IsAdminAdvancedProcCall())
 		return

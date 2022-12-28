@@ -265,7 +265,7 @@
 	else
 		var/list/nicename = null
 		var/list/tankcheck = null
-		var/breathes = "oxygen"    //default, we'll check later
+		var/breathes = "oxygen"	//default, we'll check later
 		if(ishuman(C))
 			var/mob/living/carbon/human/H = C
 			breathes = H.species.breath_type

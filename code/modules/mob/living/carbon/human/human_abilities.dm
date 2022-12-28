@@ -562,8 +562,8 @@ CULT
 	H.client.pixel_x = 0
 	H.client.pixel_y = 0
 
- //Similar to a cancel-camera-view button, but for mobs that were buckled to special vehicle seats.
- //Unbuckles them, which handles the view and offsets resets and other stuff.
+//Similar to a cancel-camera-view button, but for mobs that were buckled to special vehicle seats.
+//Unbuckles them, which handles the view and offsets resets and other stuff.
 /datum/action/human_action/vehicle_unbuckle
 	name = "Vehicle Unbuckle"
 	action_icon_state = "unbuckle"

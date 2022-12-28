@@ -120,11 +120,11 @@
 		if(M == user)	//they're using it on themselves
 			M.flash_eyes()
 			M.visible_message(SPAN_NOTICE("[M] directs [src] to \his eyes."), \
-									 SPAN_NOTICE("You wave the light in front of your eyes! Trippy!"))
+							SPAN_NOTICE("You wave the light in front of your eyes! Trippy!"))
 			return
 
 		user.visible_message(SPAN_NOTICE("[user] directs [src] to [M]'s eyes."), \
-							 SPAN_NOTICE("You direct [src] to [M]'s eyes."))
+							SPAN_NOTICE("You direct [src] to [M]'s eyes."))
 
 		if(istype(M, /mob/living/carbon/human))	//robots and aliens are unaffected
 			if(M.stat == DEAD || M.sdisabilities & DISABILITY_BLIND)	//mob is dead or fully blind

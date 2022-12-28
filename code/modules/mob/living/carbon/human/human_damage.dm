@@ -314,7 +314,7 @@ In most cases it makes more sense to use apply_damage() instead! And make sure t
 // damage MANY limbs, in random order
 /mob/living/carbon/human/take_overall_damage(var/brute, var/burn, var/sharp = 0, var/edge = 0, var/used_weapon = null)
 	if(status_flags & GODMODE)
-		return    //godmode
+		return	//godmode
 	var/list/obj/limb/parts = get_damageable_limbs(80)
 	var/amount_of_parts = length(parts)
 	for(var/obj/limb/L as anything in parts)
@@ -325,7 +325,7 @@ In most cases it makes more sense to use apply_damage() instead! And make sure t
 // damage MANY LIMBS, in random order
 /mob/living/carbon/human/proc/take_overall_armored_damage(var/damage, var/armour_type = ARMOR_MELEE, var/damage_type = BRUTE, var/limb_damage_chance = 80, var/penetration = 0, var/armour_break_pr_pen = 0, var/armour_break_flat = 0)
 	if(status_flags & GODMODE)
-		return    //godmode
+		return	//godmode
 	var/list/obj/limb/parts = get_damageable_limbs(limb_damage_chance)
 	var/amount_of_parts = length(parts)
 	var/armour_config = GLOB.marine_ranged

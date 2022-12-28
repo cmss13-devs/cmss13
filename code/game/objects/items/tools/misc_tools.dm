@@ -118,9 +118,9 @@
 		return
 
 /**
-    Allow the user to refill the labeller
-    @I what is the item trying to be used
-    @user what is using paper on the handler
+	Allow the user to refill the labeller
+	@I what is the item trying to be used
+	@user what is using paper on the handler
 */
 
 /obj/item/tool/hand_labeler/attackby(obj/item/I, mob/user)
@@ -134,13 +134,13 @@
 			to_chat(user, SPAN_NOTICE("The [src] is already full."))
 
 /*
-    Instead of updating labels_left to user every label used,
-    Have the user examine it to show them.
+	Instead of updating labels_left to user every label used,
+	Have the user examine it to show them.
 */
 /obj/item/tool/hand_labeler/get_examine_text(mob/user)
-    . = ..()
-    . += SPAN_NOTICE("It has [labels_left] out of [initial(labels_left)] labels left.")
-    . += SPAN_HELPFUL("Use paper to refill it.")
+	. = ..()
+	. += SPAN_NOTICE("It has [labels_left] out of [initial(labels_left)] labels left.")
+	. += SPAN_HELPFUL("Use paper to refill it.")
 
 
 /*

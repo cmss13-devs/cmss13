@@ -109,7 +109,7 @@
 #define WEATHER_LAYER 4.14	// For WEATHER
 
 #define INTERIOR_WALL_SOUTH_LAYER 5.2
-#define INTERIOR_DOOR_LAYER       5.21
+#define INTERIOR_DOOR_LAYER	   5.21
 
 //#define FLY_LAYER 5
 

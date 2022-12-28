@@ -134,7 +134,7 @@
 			if(H.wear_id && istype(H.wear_id.GetID(), /obj/item/card/id/syndicate))
 				continue
 
-		 // Now, are they viewable by a camera? (This is last because it's the most intensive check)
+		// Now, are they viewable by a camera? (This is last because it's the most intensive check)
 		if(!near_camera(M))
 			continue
 

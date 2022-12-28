@@ -285,7 +285,7 @@
 
 	if(status & LIMB_BROKEN && prob(40) && brute > 10)
 		if(owner.pain.feels_pain)
-			INVOKE_ASYNC(owner, /mob.proc/emote, "scream") //Getting hit on broken hand hurts
+			INVOKE_ASYNC(owner, TYPE_PROC_REF(/mob, emote), "scream") //Getting hit on broken hand hurts
 	if(used_weapon)
 		add_autopsy_data("[used_weapon]", brute + burn)
 
@@ -929,7 +929,7 @@ This function completely restores a damaged organ to perfect condition.
 
 			// Checks if the mob can feel pain or if they have at least oxycodone level of painkiller
 			if(body_part != BODY_FLAG_HEAD && owner.pain.feels_pain && owner.pain.reduction_pain < PAIN_REDUCTION_HEAVY)
-				INVOKE_ASYNC(owner, /mob.proc/emote, pick("pain", "scream"))
+				INVOKE_ASYNC(owner, TYPE_PROC_REF(/mob, emote), pick("pain", "scream"))
 
 			if(organ)
 				//Throw organs around
@@ -1271,9 +1271,9 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 	body_part = BODY_FLAG_ARM_LEFT
 	has_stump_icon = TRUE
 
-	process()
-		..()
-		process_grasp(owner.l_hand, "left hand")
+/obj/limb/hand/l_hand/process()
+	..()
+	process_grasp(owner.l_hand, "left hand")
 
 /obj/limb/leg/l_leg
 	name = "l_leg"
@@ -1290,9 +1290,9 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 	body_part = BODY_FLAG_ARM_RIGHT
 	has_stump_icon = TRUE
 
-	process()
-		..()
-		process_grasp(owner.r_hand, "right hand")
+/obj/limb/hand/l_hand/process()
+	..()
+	process_grasp(owner.r_hand, "right hand")
 
 /obj/limb/leg/r_leg
 	name = "r_leg"
@@ -1325,9 +1325,9 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 	body_part = BODY_FLAG_HAND_RIGHT
 	has_stump_icon = TRUE
 
-	process()
-		..()
-		process_grasp(owner.r_hand, "right hand")
+/obj/limb/hand/l_hand/process()
+	..()
+	process_grasp(owner.r_hand, "right hand")
 
 /obj/limb/hand/l_hand
 	name = "l_hand"
@@ -1336,9 +1336,9 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 	body_part = BODY_FLAG_HAND_LEFT
 	has_stump_icon = TRUE
 
-	process()
-		..()
-		process_grasp(owner.l_hand, "left hand")
+/obj/limb/hand/l_hand/process()
+	..()
+	process_grasp(owner.l_hand, "left hand")
 
 /obj/limb/head
 	name = "head"

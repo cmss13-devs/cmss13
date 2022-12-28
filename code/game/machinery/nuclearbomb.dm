@@ -70,7 +70,7 @@ var/bomb_set = FALSE
 		stop_processing()
 
 /obj/structure/machinery/nuclearbomb/attack_alien(mob/living/carbon/Xenomorph/M)
-	INVOKE_ASYNC(src, /atom.proc/attack_hand, M)
+	INVOKE_ASYNC(src, TYPE_PROC_REF(/atom, attack_hand), M)
 	return XENO_ATTACK_ACTION
 
 /obj/structure/machinery/nuclearbomb/attackby(obj/item/O as obj, mob/user as mob)

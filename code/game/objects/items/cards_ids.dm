@@ -200,9 +200,10 @@
 	icon_state = "pmc"
 	registered_name = "The Corporation"
 	assignment = "Corporate Mercenary"
-	New()
-		access = get_all_centcom_access()
-		..()
+
+/obj/item/card/id/pmc/New()
+	access = get_all_centcom_access()
+	..()
 
 /obj/item/card/id/pmc/ds
 	name = "\improper Corporate holo-badge"
@@ -215,8 +216,9 @@
 	icon_state = "general"
 	registered_name = "The USCM"
 	assignment = "General"
-	New()
-		access = get_all_centcom_access()
+
+/obj/item/card/id/general/New()
+	access = get_all_centcom_access()
 
 /obj/item/card/id/provost
 	name = "provost holo-badge"
@@ -224,8 +226,9 @@
 	icon_state = "provost"
 	registered_name = "Provost Office"
 	assignment = "Provost"
-	New()
-		access = get_all_centcom_access()
+
+/obj/item/card/id/provost/New()
+	access = get_all_centcom_access()
 
 /obj/item/card/id/syndicate
 	name = "agent card"
@@ -308,9 +311,10 @@
 	item_state = "gold_id"
 	registered_name = "Captain"
 	assignment = "Captain"
-	New()
-		access = get_all_marine_access()
-		..()
+
+/obj/item/card/id/captains_spare/New()
+	access = get_all_marine_access()
+	..()
 
 /obj/item/card/id/centcom
 	name = "\improper CentCom. ID"
@@ -318,9 +322,10 @@
 	icon_state = "centcom"
 	registered_name = "Central Command"
 	assignment = "General"
-	New()
-		access = get_all_centcom_access()
-		..()
+
+/obj/item/card/id/centcom/New()
+	access = get_all_centcom_access()
+	..()
 
 
 /obj/item/card/id/equipped(mob/living/carbon/human/H, slot)

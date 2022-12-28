@@ -27,8 +27,8 @@
 	icon_state = "[ismetal ? "m":""]foam"
 	metal = ismetal
 	playsound(src, 'sound/effects/bubbles2.ogg', 25, 1, 5)
-	addtimer(CALLBACK(src, .proc/foam_react), 3 + metal*3)
-	addtimer(CALLBACK(src, .proc/foam_metal_final_react), 120)
+	addtimer(CALLBACK(src, PROC_REF(foam_react)), 3 + metal*3)
+	addtimer(CALLBACK(src, PROC_REF(foam_metal_final_react)), 120)
 
 /obj/effect/particle_effect/foam/proc/foam_react()
 	process()

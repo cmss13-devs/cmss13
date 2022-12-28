@@ -62,13 +62,13 @@
 
 	if (!slash_evasion_buffed)
 		slash_evasion_buffed = TRUE
-		slash_evasion_timer = addtimer(CALLBACK(src, .proc/remove_evasion_buff), evasion_buff_ttl, TIMER_STOPPABLE | TIMER_UNIQUE)
+		slash_evasion_timer = addtimer(CALLBACK(src, PROC_REF(remove_evasion_buff)), evasion_buff_ttl, TIMER_STOPPABLE | TIMER_UNIQUE)
 		praetorian.evasion_modifier += evasion_buff_amount
 		praetorian.recalculate_evasion()
 		to_chat(praetorian, SPAN_XENODANGER("You feel your slash make you more evasive!"))
 
 	else
-		slash_evasion_timer = addtimer(CALLBACK(src, .proc/remove_evasion_buff), evasion_buff_ttl, TIMER_STOPPABLE | TIMER_OVERRIDE|TIMER_UNIQUE)
+		slash_evasion_timer = addtimer(CALLBACK(src, PROC_REF(remove_evasion_buff)), evasion_buff_ttl, TIMER_STOPPABLE | TIMER_OVERRIDE|TIMER_UNIQUE)
 
 	if (dodge_activated)
 		dodge_activated = FALSE

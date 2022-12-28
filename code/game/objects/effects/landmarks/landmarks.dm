@@ -434,7 +434,7 @@
 	anim(loc, loc, 'icons/mob/mob.dmi', null, "zombie_rise", 12, SOUTH)
 	observer.see_invisible = SEE_INVISIBLE_LIVING
 	observer.client.eye = src // gives the player a second to orient themselves to the spawn zone
-	addtimer(CALLBACK(src, .proc/handle_zombie_spawn, observer), 1 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(handle_zombie_spawn), observer), 1 SECONDS)
 
 /obj/effect/landmark/zombie/proc/handle_zombie_spawn(var/mob/dead/observer/observer)
 	var/mob/living/carbon/human/zombie = new /mob/living/carbon/human(loc)

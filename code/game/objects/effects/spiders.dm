@@ -55,9 +55,10 @@
 
 /obj/effect/spider/stickyweb
 	icon_state = "stickyweb1"
-	New()
-		if(prob(50))
-			icon_state = "stickyweb2"
+
+/obj/effect/spider/stickyweb/New()
+	if(prob(50))
+		icon_state = "stickyweb2"
 
 /obj/effect/spider/stickyweb/BlockedPassDirs(atom/movable/mover, target_dir)
 	if(istype(mover, /mob/living/simple_animal/hostile/giant_spider))
@@ -197,8 +198,8 @@
 	icon_state = "cocoon1"
 	health = 60
 
-	New()
-		icon_state = pick("cocoon1","cocoon2","cocoon3")
+/obj/effect/decal/cleanable/spiderling_remains/New()
+	icon_state = pick("cocoon1","cocoon2","cocoon3")
 
 /obj/effect/spider/cocoon/Destroy()
 	visible_message(SPAN_DANGER("[src] splits open."))

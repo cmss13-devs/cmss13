@@ -88,7 +88,7 @@
 /datum/mentorhelp/proc/broadcast_unhandled(msg, client/sender)
 	if(!mentor && open)
 		message_handlers(msg, sender)
-		addtimer(CALLBACK(src, .proc/broadcast_unhandled, msg, sender), 5 MINUTES)
+		addtimer(CALLBACK(src, PROC_REF(broadcast_unhandled), msg, sender), 5 MINUTES)
 
 /datum/mentorhelp/proc/message_handlers(msg, client/sender, client/recipient, with_sound = TRUE, staff_only = FALSE, include_keys = TRUE)
 	if(!sender || !check_author())

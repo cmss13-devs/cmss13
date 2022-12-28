@@ -1202,7 +1202,7 @@
 
 	new /obj/effect/rappel_rope(deploy_turf)
 	user.forceMove(deploy_turf)
-	INVOKE_ASYNC(user, /mob/living/carbon/human.proc/animation_rappel)
+	INVOKE_ASYNC(user, TYPE_PROC_REF(/mob/living/carbon/human, animation_rappel))
 	user.client?.perspective = MOB_PERSPECTIVE
 	user.client?.eye = user
 	deploy_turf.ceiling_debris_check(2)

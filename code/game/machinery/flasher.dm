@@ -136,7 +136,7 @@
 
 	for(var/obj/structure/machinery/flasher/M in machines)
 		if(M.id == src.id)
-			INVOKE_ASYNC(M, /obj/structure/machinery/flasher.proc/flash)
+			INVOKE_ASYNC(M, TYPE_PROC_REF(/obj/structure/machinery/flasher, flash))
 
 	sleep(50)
 

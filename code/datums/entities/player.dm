@@ -358,23 +358,23 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 
 /datum/entity/player/proc/load_rels()
 	if(migrated_notes)
-		DB_FILTER(/datum/entity/player_note, DB_COMP("player_id", DB_EQUALS, id), CALLBACK(src, /datum/entity/player.proc/on_read_notes))
+		DB_FILTER(/datum/entity/player_note, DB_COMP("player_id", DB_EQUALS, id), CALLBACK(src, TYPE_PROC_REF(/datum/entity/player, on_read_notes)))
 	else if(!migrating_notes)
 		migrating_notes = TRUE
-		INVOKE_ASYNC(src, /datum/entity/player.proc/migrate_notes)
+		INVOKE_ASYNC(src, TYPE_PROC_REF(/datum/entity/player, migrate_notes))
 
 	if(migrated_jobbans)
-		DB_FILTER(/datum/entity/player_job_ban, DB_COMP("player_id", DB_EQUALS, id), CALLBACK(src, /datum/entity/player.proc/on_read_job_bans))
+		DB_FILTER(/datum/entity/player_job_ban, DB_COMP("player_id", DB_EQUALS, id), CALLBACK(src, TYPE_PROC_REF(/datum/entity/player, on_read_job_bans)))
 	else if(!migrating_jobbans)
 		migrating_jobbans = TRUE
-		INVOKE_ASYNC(src, /datum/entity/player.proc/migrate_jobbans)
+		INVOKE_ASYNC(src, TYPE_PROC_REF(/datum/entity/player, migrate_jobbans))
 
-	DB_FILTER(/datum/entity/player_time, DB_COMP("player_id", DB_EQUALS, id), CALLBACK(src, /datum/entity/player.proc/on_read_timestat))
-	DB_FILTER(/datum/entity/player_stat, DB_COMP("player_id", DB_EQUALS, id), CALLBACK(src, /datum/entity/player.proc/on_read_stats))
+	DB_FILTER(/datum/entity/player_time, DB_COMP("player_id", DB_EQUALS, id), CALLBACK(src, TYPE_PROC_REF(/datum/entity/player, on_read_timestat)))
+	DB_FILTER(/datum/entity/player_stat, DB_COMP("player_id", DB_EQUALS, id), CALLBACK(src, TYPE_PROC_REF(/datum/entity/player, on_read_stats)))
 
 	if(!migrated_bans && !migrating_bans)
 		migrating_bans = TRUE
-		INVOKE_ASYNC(src, /datum/entity/player.proc/migrate_bans)
+		INVOKE_ASYNC(src, TYPE_PROC_REF(/datum/entity/player, migrate_bans))
 
 	if(permaban_admin_id)
 		permaban_admin = DB_ENTITY(/datum/entity/player, permaban_admin_id)
@@ -474,7 +474,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 					DB_COMP("ckey", DB_EQUALS, ckey),
 					DB_COMP("address", DB_EQUALS, address),
 					DB_COMP("computer_id", DB_EQUALS, computer_id)
-				), CALLBACK(src, .proc/process_stickyban, address, computer_id, source_id, reason, null))
+				), CALLBACK(src, PROC_REF(process_stickyban), address, computer_id, source_id, reason, null))
 
 			.["desc"] = "\nReason: Stickybanned\nExpires: PERMANENT"
 			.["reason"] = "ckey/id"

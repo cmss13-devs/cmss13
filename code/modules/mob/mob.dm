@@ -259,7 +259,7 @@
 	var/start_loc = W.loc
 
 	if(W.time_to_equip && !ignore_delay)
-		INVOKE_ASYNC(src, .proc/equip_to_slot_timed, W, slot, redraw_mob, permanent, start_loc, del_on_fail, disable_warning)
+		INVOKE_ASYNC(src, PROC_REF(equip_to_slot_timed), W, slot, redraw_mob, permanent, start_loc, del_on_fail, disable_warning)
 		return TRUE
 
 	equip_to_slot(W, slot, disable_warning) //This proc should not ever fail.
@@ -568,7 +568,7 @@ below 100 is not dizzy
 	dizziness = min(1000, dizziness + amount) // store what will be new value
 													// clamped to max 1000
 	if(dizziness > 100 && !is_dizzy)
-		INVOKE_ASYNC(src, .proc/dizzy_process)
+		INVOKE_ASYNC(src, PROC_REF(dizzy_process))
 
 
 /*
@@ -605,7 +605,7 @@ note dizziness decrements automatically in the mob's Life() proc.
 	jitteriness = min(1000, jitteriness + amount) // store what will be new value
 													// clamped to max 1000
 	if(jitteriness > 100 && !is_jittery)
-		INVOKE_ASYNC(src, .proc/jittery_process)
+		INVOKE_ASYNC(src, PROC_REF(jittery_process))
 
 
 // Typo from the oriignal coder here, below lies the jitteriness process. So make of his code what you will, the previous comment here was just a copypaste of the above.

@@ -56,14 +56,15 @@
 #define MODE_FACTION_CLASH (1<<14)// Disables scopes, sniper sentries, OBs, shooting corpses, dragging enemy corpses, stripping enemy corpses
 
 // Gamemode Toggleable Flags
-#define MODE_NO_SNIPER_SENTRY (1<<0) /// Upgrade kits will no longer allow you to select long-range upgrades
-#define MODE_NO_ATTACK_DEAD (1<<1) /// People will not be able to shoot at corpses
-#define MODE_NO_STRIPDRAG_ENEMY (1<<2) /// Can't strip or drag dead enemies
-#define MODE_STRIP_NONUNIFORM_ENEMY (1<<3) /// Can strip enemy, but not their boots, uniform, armor, helmet, or ID
-#define MODE_STRONG_DEFIBS (1<<4) /// Defibs Ignore Armor
-#define MODE_BLOOD_OPTIMIZATION (1<<5) /// Blood spawns without a dry timer, and do not cause footprints
-#define MODE_NO_COMBAT_CAS (1<<6) /// Prevents POs and DCCs from creating combat CAS equipment
-#define MODE_LZ_PROTECTION (1<<7) /// Prevents the LZ from being mortared
+#define MODE_NO_SNIPER_SENTRY		(1<<0) /// Upgrade kits will no longer allow you to select long-range upgrades
+#define MODE_NO_ATTACK_DEAD			(1<<1) /// People will not be able to shoot at corpses
+#define MODE_NO_STRIPDRAG_ENEMY		(1<<2) /// Can't strip or drag dead enemies
+#define MODE_STRIP_NONUNIFORM_ENEMY	(1<<3) /// Can strip enemy, but not their boots, uniform, armor, helmet, or ID
+#define MODE_STRONG_DEFIBS			(1<<4) /// Defibs Ignore Armor
+#define MODE_BLOOD_OPTIMIZATION		(1<<5) /// Blood spawns without a dry timer, and do not cause footprints
+#define MODE_NO_COMBAT_CAS			(1<<6) /// Prevents POs and DCCs from creating combat CAS equipment
+#define MODE_LZ_PROTECTION			(1<<7) /// Prevents the LZ from being mortared
+#define MODE_SHIPSIDE_SD			(1<<8) /// Toggles whether Predators can big SD when not on the groundmap
 
 #define ROUNDSTATUS_FOG_DOWN 1
 #define ROUNDSTATUS_PODDOORS_OPEN 2

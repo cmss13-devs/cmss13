@@ -138,17 +138,17 @@
 	name = "Allow Walking"
 	icon_state = "no_walk0"
 
-	update_icon(mob/user)
-		if(user.gun_mode)
-			if(user.target_can_move)
-				icon_state = "no_walk1"
-				name = "Disallow Walking"
-			else
-				icon_state = "no_walk0"
-				name = "Allow Walking"
-			screen_loc = initial(screen_loc)
-			return
-		screen_loc = null
+/atom/movable/screen/gun/move/update_icon(mob/user)
+	if(user.gun_mode)
+		if(user.target_can_move)
+			icon_state = "no_walk1"
+			name = "Disallow Walking"
+		else
+			icon_state = "no_walk0"
+			name = "Allow Walking"
+		screen_loc = initial(screen_loc)
+		return
+	screen_loc = null
 
 /atom/movable/screen/gun/move/clicked(var/mob/user)
 	if (..())
@@ -168,18 +168,18 @@
 	name = "Allow Running"
 	icon_state = "no_run0"
 
-	update_icon(mob/user)
-		if(user.gun_mode)
-			if(user.target_can_move)
-				if(user.target_can_run)
-					icon_state = "no_run1"
-					name = "Disallow Running"
-				else
-					icon_state = "no_run0"
-					name = "Allow Running"
-				screen_loc = initial(screen_loc)
-				return
-		screen_loc = null
+/atom/movable/screen/gun/run/update_icon(mob/user)
+	if(user.gun_mode)
+		if(user.target_can_move)
+			if(user.target_can_run)
+				icon_state = "no_run1"
+				name = "Disallow Running"
+			else
+				icon_state = "no_run0"
+				name = "Allow Running"
+			screen_loc = initial(screen_loc)
+			return
+	screen_loc = null
 
 /atom/movable/screen/gun/run/clicked(var/mob/user)
 	if (..())
@@ -199,17 +199,17 @@
 	name = "Allow Item Use"
 	icon_state = "no_item0"
 
-	update_icon(mob/user)
-		if(user.gun_mode)
-			if(user.target_can_click)
-				icon_state = "no_item1"
-				name = "Allow Item Use"
-			else
-				icon_state = "no_item0"
-				name = "Disallow Item Use"
-			screen_loc = initial(screen_loc)
-			return
-		screen_loc = null
+/atom/movable/screen/gun/item/update_icon(mob/user)
+	if(user.gun_mode)
+		if(user.target_can_click)
+			icon_state = "no_item1"
+			name = "Allow Item Use"
+		else
+			icon_state = "no_item0"
+			name = "Disallow Item Use"
+		screen_loc = initial(screen_loc)
+		return
+	screen_loc = null
 
 /atom/movable/screen/gun/item/clicked(var/mob/user)
 	if (..())
@@ -229,11 +229,11 @@
 	name = "Toggle Gun Mode"
 	icon_state = "gun0"
 
-	update_icon(mob/user)
-		if(user.gun_mode)
-			icon_state = "gun1"
-		else
-			icon_state = "gun0"
+/atom/movable/screen/gun/mode/update_icon(mob/user)
+	if(user.gun_mode)
+		icon_state = "gun1"
+	else
+		icon_state = "gun0"
 
 /atom/movable/screen/gun/mode/clicked(var/mob/user)
 	if (..())

@@ -294,7 +294,7 @@
 			if(!do_after(xeno, delay, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC)) return
 		if(xeno.is_zoomed) return
 		if(handles_movement)
-			RegisterSignal(xeno, COMSIG_MOB_MOVE_OR_LOOK, .proc/handle_mob_move_or_look)
+			RegisterSignal(xeno, COMSIG_MOB_MOVE_OR_LOOK, PROC_REF(handle_mob_move_or_look))
 		xeno.zoom_in()
 		button.icon_state = "template_active"
 

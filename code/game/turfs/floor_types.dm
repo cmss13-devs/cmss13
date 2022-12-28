@@ -225,7 +225,7 @@
 /turf/open/floor/almayer/empty/Entered(var/atom/movable/AM)
 	..()
 	if(!isobserver(AM))
-		addtimer(CALLBACK(src, .proc/enter_depths, AM), 0.2 SECONDS)
+		addtimer(CALLBACK(src, PROC_REF(enter_depths), AM), 0.2 SECONDS)
 
 /turf/open/floor/almayer/empty/proc/enter_depths(var/atom/movable/AM)
 	if(AM.throwing == 0 && istype(get_turf(AM), /turf/open/floor/almayer/empty))

@@ -250,7 +250,7 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 		return
 	if (!retrieval_check(user, retrieval_slot))
 		return
-	addtimer(CALLBACK(src, .proc/retrieve_to_slot, user, retrieval_slot), 0.3 SECONDS, TIMER_UNIQUE|TIMER_NO_HASH_WAIT)
+	addtimer(CALLBACK(src, PROC_REF(retrieve_to_slot), user, retrieval_slot), 0.3 SECONDS, TIMER_UNIQUE|TIMER_NO_HASH_WAIT)
 
 /obj/item/weapon/gun/attack_self(mob/user)
 	..()
@@ -273,7 +273,7 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 	if (!ishuman(user))
 		return
 
-	addtimer(CALLBACK(src, .proc/sling_return, user), 3, TIMER_UNIQUE|TIMER_OVERRIDE)
+	addtimer(CALLBACK(src, PROC_REF(sling_return), user), 3, TIMER_UNIQUE|TIMER_OVERRIDE)
 
 /obj/item/weapon/gun/proc/sling_return(var/mob/living/carbon/human/user)
 	if (!loc || !user)
@@ -691,9 +691,9 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 		if(!(flags_gun_features & GUN_FULL_AUTO_ON))
 			stack_trace("[src] has GUN_FULL_AUTO_ONLY flag but not GUN_FULL_AUTO_ON.")
 			flags_gun_features |= GUN_FULL_AUTO_ON
-			RegisterSignal(user.client, COMSIG_CLIENT_LMB_DOWN, .proc/full_auto_start)
-			RegisterSignal(user.client, COMSIG_CLIENT_LMB_UP, .proc/full_auto_stop)
-			RegisterSignal(user.client, COMSIG_CLIENT_LMB_DRAG, .proc/full_auto_new_target)
+			RegisterSignal(user.client, COMSIG_CLIENT_LMB_DOWN, PROC_REF(full_auto_start))
+			RegisterSignal(user.client, COMSIG_CLIENT_LMB_UP, PROC_REF(full_auto_stop))
+			RegisterSignal(user.client, COMSIG_CLIENT_LMB_DRAG, PROC_REF(full_auto_new_target))
 			return
 
 		to_chat(user, SPAN_NOTICE("\The [src] can only be fired in full auto mode!"))
@@ -707,9 +707,9 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 			flags_gun_features |= GUN_FULL_AUTO_ON
 
 			// Register the full auto click listeners
-			RegisterSignal(user.client, COMSIG_CLIENT_LMB_DOWN, .proc/full_auto_start)
-			RegisterSignal(user.client, COMSIG_CLIENT_LMB_UP, .proc/full_auto_stop)
-			RegisterSignal(user.client, COMSIG_CLIENT_LMB_DRAG, .proc/full_auto_new_target)
+			RegisterSignal(user.client, COMSIG_CLIENT_LMB_DOWN, PROC_REF(full_auto_start))
+			RegisterSignal(user.client, COMSIG_CLIENT_LMB_UP, PROC_REF(full_auto_stop))
+			RegisterSignal(user.client, COMSIG_CLIENT_LMB_DRAG, PROC_REF(full_auto_new_target))
 
 			to_chat(user, SPAN_NOTICE("[icon2html(src, user)] You set [src] to full auto mode."))
 			return

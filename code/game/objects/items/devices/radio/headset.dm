@@ -223,8 +223,8 @@
 		RegisterSignal(user, list(
 			COMSIG_LIVING_REJUVENATED,
 			COMSIG_HUMAN_REVIVED,
-		), .proc/turn_on)
-		RegisterSignal(user, COMSIG_MOB_LOGIN, .proc/add_hud_tracker)
+		), PROC_REF(turn_on))
+		RegisterSignal(user, COMSIG_MOB_LOGIN, PROC_REF(add_hud_tracker))
 		if(headset_hud_on)
 			var/datum/mob_hud/H = huds[hud_type]
 			H.add_hud_to(user)

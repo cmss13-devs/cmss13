@@ -215,42 +215,41 @@ world
 
 #define TO_HEX_DIGIT(n) ascii2text((n&15) + ((n&15)<10 ? 48 : 87))
 
-icon
-	proc/BecomeLying()
-		Turn(90)
-		Shift(SOUTH,6)
-		Shift(EAST,1)
+/icon/proc/BecomeLying()
+	Turn(90)
+	Shift(SOUTH,6)
+	Shift(EAST,1)
 
 	// Multiply all alpha values by this float
-	proc/ChangeOpacity(opacity = 1.0)
-		MapColors(1,0,0,0, 0,1,0,0, 0,0,1,0, 0,0,0,opacity, 0,0,0,0)
+/icon/proc/ChangeOpacity(opacity = 1.0)
+	MapColors(1,0,0,0, 0,1,0,0, 0,0,1,0, 0,0,0,opacity, 0,0,0,0)
 
 	// Convert to grayscale
-	proc/GrayScale()
-		MapColors(0.3,0.3,0.3, 0.59,0.59,0.59, 0.11,0.11,0.11, 0,0,0)
+/icon/proc/GrayScale()
+	MapColors(0.3,0.3,0.3, 0.59,0.59,0.59, 0.11,0.11,0.11, 0,0,0)
 
-	proc/ColorTone(tone)
-		GrayScale()
+/icon/proc/ColorTone(tone)
+	GrayScale()
 
-		var/list/TONE = ReadRGB(tone)
-		var/gray = round(TONE[1]*0.3 + TONE[2]*0.59 + TONE[3]*0.11, 1)
+	var/list/TONE = ReadRGB(tone)
+	var/gray = round(TONE[1]*0.3 + TONE[2]*0.59 + TONE[3]*0.11, 1)
 
-		var/icon/upper = (255-gray) ? new(src) : null
+	var/icon/upper = (255-gray) ? new(src) : null
 
-		if(gray)
-			MapColors(255/gray,0,0, 0,255/gray,0, 0,0,255/gray, 0,0,0)
-			Blend(tone, ICON_MULTIPLY)
-		else SetIntensity(0)
-		if(255-gray)
-			upper.Blend(rgb(gray,gray,gray), ICON_SUBTRACT)
-			upper.MapColors((255-TONE[1])/(255-gray),0,0,0, 0,(255-TONE[2])/(255-gray),0,0, 0,0,(255-TONE[3])/(255-gray),0, 0,0,0,0, 0,0,0,1)
-			Blend(upper, ICON_ADD)
+	if(gray)
+		MapColors(255/gray,0,0, 0,255/gray,0, 0,0,255/gray, 0,0,0)
+		Blend(tone, ICON_MULTIPLY)
+	else SetIntensity(0)
+	if(255-gray)
+		upper.Blend(rgb(gray,gray,gray), ICON_SUBTRACT)
+		upper.MapColors((255-TONE[1])/(255-gray),0,0,0, 0,(255-TONE[2])/(255-gray),0,0, 0,0,(255-TONE[3])/(255-gray),0, 0,0,0,0, 0,0,0,1)
+		Blend(upper, ICON_ADD)
 
-	proc/AddAlphaMask(mask)
-		var/icon/M = new(mask)
-		M.Blend("#ffffff", ICON_SUBTRACT)
-		// apply mask
-		Blend(M, ICON_ADD)
+/icon/proc/AddAlphaMask(mask)
+	var/icon/M = new(mask)
+	M.Blend("#ffffff", ICON_SUBTRACT)
+	// apply mask
+	Blend(M, ICON_ADD)
 
 /*
 	HSV format is represented as "#hhhssvv" or "#hhhssvvaa"
@@ -593,7 +592,7 @@ icon
 
 /image/proc/flick_overlay(var/atom/A, var/duration) //originally code related to goonPS. This isn't the original code, but has the same effect
 	A.overlays.Add(src)
-	addtimer(CALLBACK(src, .proc/flick_remove_overlay, A), duration)
+	addtimer(CALLBACK(src, PROC_REF(flick_remove_overlay), A), duration)
 
 /image/proc/flick_remove_overlay(var/atom/A)
 	if(A)

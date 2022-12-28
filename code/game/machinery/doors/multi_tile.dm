@@ -275,7 +275,7 @@
 					continue
 			else
 				continue
-			INVOKE_ASYNC(atom_movable, /atom/movable.proc/throw_atom, projected, 1, SPEED_FAST, null, FALSE)
+			INVOKE_ASYNC(atom_movable, TYPE_PROC_REF(/atom/movable, throw_atom), projected, 1, SPEED_FAST, null, FALSE)
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat/connect_to_shuttle(obj/docking_port/mobile/port, obj/docking_port/stationary/dock, idnum, override)
 	. = ..()
@@ -315,7 +315,7 @@
 					continue
 			else
 				continue
-			INVOKE_ASYNC(atom_movable, /atom/movable.proc/throw_atom, projected, 50, SPEED_FAST, null, TRUE)
+			INVOKE_ASYNC(atom_movable, TYPE_PROC_REF(/atom/movable, throw_atom), projected, 50, SPEED_FAST, null, TRUE)
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat/blastdoor/proc/bolt_explosion()
 	var/turf/turf = get_step(src, throw_dir|dir)

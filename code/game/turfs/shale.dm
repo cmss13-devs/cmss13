@@ -25,5 +25,3 @@
 
 /turf/open/shale/underlayer/puddle
 	icon_state = "shale_0_puddle"
-
-

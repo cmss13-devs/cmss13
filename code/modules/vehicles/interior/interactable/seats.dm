@@ -320,7 +320,7 @@
 	chairbar = image('icons/obj/vehicles/interiors/general.dmi', "vehicle_bars")
 	chairbar.layer = ABOVE_MOB_LAYER
 
-	addtimer(CALLBACK(src, .proc/setup_buckle_offsets), 1 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(setup_buckle_offsets)), 1 SECONDS)
 
 	handle_rotation()
 

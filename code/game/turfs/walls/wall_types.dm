@@ -892,9 +892,9 @@
 		set_hive_data(src, hive)
 	recalculate_structure()
 	update_tied_turf(loc)
-	RegisterSignal(src, COMSIG_ATOM_TURF_CHANGE, .proc/update_tied_turf)
-	RegisterSignal(src, COMSIG_MOVABLE_XENO_START_PULLING, .proc/allow_xeno_drag)
-	RegisterSignal(src, COMSIG_MOVABLE_PULLED, .proc/continue_allowing_drag)
+	RegisterSignal(src, COMSIG_ATOM_TURF_CHANGE, PROC_REF(update_tied_turf))
+	RegisterSignal(src, COMSIG_MOVABLE_XENO_START_PULLING, PROC_REF(allow_xeno_drag))
+	RegisterSignal(src, COMSIG_MOVABLE_PULLED, PROC_REF(continue_allowing_drag))
 
 /obj/structure/alien/movable_wall/ex_act(severity, direction)
 	take_damage(severity)
@@ -1011,7 +1011,7 @@
 
 	if(tied_turf)
 		UnregisterSignal(tied_turf, COMSIG_TURF_ENTER)
-	RegisterSignal(T, COMSIG_TURF_ENTER, .proc/check_for_move)
+	RegisterSignal(T, COMSIG_TURF_ENTER, PROC_REF(check_for_move))
 	tied_turf = T
 
 /obj/structure/alien/movable_wall/forceMove(atom/dest)
@@ -1104,7 +1104,7 @@
 	new_proj.accuracy = HIT_ACCURACY_TIER_7 // 35% chance to hit something
 
 	// Move back to who fired you.
-	RegisterSignal(new_proj, COMSIG_BULLET_PRE_HANDLE_TURF, .proc/bullet_ignore_turf)
+	RegisterSignal(new_proj, COMSIG_BULLET_PRE_HANDLE_TURF, PROC_REF(bullet_ignore_turf))
 	new_proj.permutated |= src
 
 	var/angle = Get_Angle(src, P.firer) + rand(30, -30)
@@ -1224,7 +1224,7 @@
 	if(mapload)
 		ScrapeAway()
 		return
-	addtimer(CALLBACK(src, .proc/ScrapeAway), duration)
+	addtimer(CALLBACK(src, PROC_REF(ScrapeAway)), duration)
 
 
 /turf/closed/wall/resin/can_be_dissolved()

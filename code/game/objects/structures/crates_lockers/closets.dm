@@ -114,7 +114,7 @@
 		stored_units = store_items(stored_units)
 	if(store_mobs)
 		stored_units = store_mobs(stored_units)
-		RegisterSignal(src, COMSIG_OBJ_FLASHBANGED, .proc/flashbang)
+		RegisterSignal(src, COMSIG_OBJ_FLASHBANGED, PROC_REF(flashbang))
 
 	opened = 0
 	update_icon()

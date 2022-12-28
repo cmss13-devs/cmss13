@@ -467,7 +467,7 @@
 	to_chat(usr, SPAN_NOTICE(" You start washing your hands."))
 	flick("sink_animation_fill", src) //<- play the filling animation then automatically switch back to the loop
 	icon_state = "sink_animation_fill_loop" //<- set it to the loop
-	addtimer(CALLBACK(src, .proc/stop_flow), 6 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(stop_flow)), 6 SECONDS)
 	playsound(loc, 'sound/effects/sinkrunning.ogg', 25, TRUE)
 
 	busy = TRUE

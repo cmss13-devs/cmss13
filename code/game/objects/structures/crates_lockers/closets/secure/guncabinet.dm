@@ -20,7 +20,7 @@
 	. = ..()
 	update_icon()
 	if(is_mainship_level(z))
-		RegisterSignal(SSdcs, COMSIG_GLOB_SECURITY_LEVEL_CHANGED, .proc/sec_changed)
+		RegisterSignal(SSdcs, COMSIG_GLOB_SECURITY_LEVEL_CHANGED, PROC_REF(sec_changed))
 
 /obj/structure/closet/secure_closet/guncabinet/proc/sec_changed(datum/source, new_sec)
 	SIGNAL_HANDLER

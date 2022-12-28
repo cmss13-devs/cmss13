@@ -101,7 +101,7 @@ log transactions
 		meat.name = "raw [I.name] tenderloin"
 		QDEL_NULL(I)
 		var/turf/atm_turf = get_turf(src)
-		addtimer(CALLBACK(src, .proc/drop_money, atm_turf), 30, TIMER_UNIQUE)
+		addtimer(CALLBACK(src, PROC_REF(drop_money), atm_turf), 30, TIMER_UNIQUE)
 
 	else
 		..()

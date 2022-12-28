@@ -148,7 +148,7 @@
 	if(SSticker.mode && MODE_HAS_FLAG(MODE_FACTION_CLASH))
 		handle_delete_clash_contents()
 	else if(SSticker.current_state < GAME_STATE_PLAYING)
-		RegisterSignal(SSdcs, COMSIG_GLOB_MODE_PRESETUP, .proc/handle_delete_clash_contents)
+		RegisterSignal(SSdcs, COMSIG_GLOB_MODE_PRESETUP, PROC_REF(handle_delete_clash_contents))
 
 /obj/item/storage/box/flashbangs/proc/handle_delete_clash_contents()
 	if(MODE_HAS_FLAG(MODE_FACTION_CLASH))
@@ -657,7 +657,7 @@
 	if(SSticker.mode && MODE_HAS_FLAG(MODE_FACTION_CLASH))
 		handle_delete_clash_contents()
 	else if(SSticker.current_state < GAME_STATE_PLAYING)
-		RegisterSignal(SSdcs, COMSIG_GLOB_MODE_PRESETUP, .proc/handle_delete_clash_contents)
+		RegisterSignal(SSdcs, COMSIG_GLOB_MODE_PRESETUP, PROC_REF(handle_delete_clash_contents))
 
 /obj/item/storage/box/nade_box/tear_gas/proc/handle_delete_clash_contents()
 	if(MODE_HAS_FLAG(MODE_FACTION_CLASH))

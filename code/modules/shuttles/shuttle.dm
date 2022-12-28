@@ -67,7 +67,7 @@
 			arrive_time = world.time + travel_time
 		moving_status = SHUTTLE_INTRANSIT
 		move(departing, interim, direction)
-		addtimer(CALLBACK(src, .proc/close_doors, interim), 1)
+		addtimer(CALLBACK(src, PROC_REF(close_doors), interim), 1)
 
 		while (world.time < arrive_time)
 			sleep(5)
@@ -75,7 +75,7 @@
 		sleep(100)
 
 		move(interim, destination, direction)
-		addtimer(CALLBACK(src, .proc/open_doors, destination), 1)
+		addtimer(CALLBACK(src, PROC_REF(open_doors), destination), 1)
 
 		moving_status = SHUTTLE_IDLE
 
@@ -106,11 +106,11 @@
 
 	for(var/obj/structure/machinery/door/unpowered/D in area)
 		if(!D.density && !D.locked)
-			INVOKE_ASYNC(D, /obj/structure/machinery/door.proc/close)
+			INVOKE_ASYNC(D, TYPE_PROC_REF(/obj/structure/machinery/door, close))
 
 	for(var/obj/structure/machinery/door/poddoor/shutters/P in area)
 		if(!P.density)
-			INVOKE_ASYNC(P, /obj/structure/machinery/door.proc/close)
+			INVOKE_ASYNC(P, TYPE_PROC_REF(/obj/structure/machinery/door, close))
 
 	if (iselevator) // Super snowflake code
 		for (var/obj/structure/machinery/computer/shuttle_control/ice_colony/C in area)
@@ -120,7 +120,7 @@
 			G.start()
 
 		for (var/obj/structure/machinery/door/airlock/D in area)//For elevators
-			INVOKE_ASYNC(src, .proc/force_close_launch, D)
+			INVOKE_ASYNC(src, PROC_REF(force_close_launch), D)
 
 /datum/shuttle/proc/force_close_launch(var/obj/structure/machinery/door/airlock/AL) // whatever. SLEEPS
 	AL.safe = FALSE
@@ -135,11 +135,11 @@
 
 	for(var/obj/structure/machinery/door/unpowered/D in area)
 		if(D.density && !D.locked)
-			INVOKE_ASYNC(D, /obj/structure/machinery/door.proc/open)
+			INVOKE_ASYNC(D, TYPE_PROC_REF(/obj/structure/machinery/door, open))
 
 	for(var/obj/structure/machinery/door/poddoor/shutters/P in area)
 		if(P.density)
-			INVOKE_ASYNC(P, /obj/structure/machinery/door.proc/open)
+			INVOKE_ASYNC(P, TYPE_PROC_REF(/obj/structure/machinery/door, open))
 
 	if (iselevator) // Super snowflake code
 		for (var/obj/structure/machinery/computer/shuttle_control/ice_colony/C in area)
@@ -150,9 +150,9 @@
 
 		for (var/obj/structure/machinery/door/airlock/D in area)//For elevators
 			if (D.locked)
-				INVOKE_ASYNC(D, /obj/structure/machinery/door/airlock/.proc/unlock)
+				INVOKE_ASYNC(D, TYPE_PROC_REF(/obj/structure/machinery/door/airlock, unlock))
 			if (D.density)
-				INVOKE_ASYNC(D, /obj/structure/machinery/door.proc/open)
+				INVOKE_ASYNC(D, TYPE_PROC_REF(/obj/structure/machinery/door, open))
 
 /datum/shuttle/proc/dock()
 	if (!docking_controller)

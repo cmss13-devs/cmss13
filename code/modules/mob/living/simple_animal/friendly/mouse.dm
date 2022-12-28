@@ -48,7 +48,7 @@
 			wander = 1
 			canmove = 1
 		else if(prob(5))
-			INVOKE_ASYNC(src, .proc/emote, "snuffles")
+			INVOKE_ASYNC(src, PROC_REF(emote), "snuffles")
 
 /mob/living/simple_animal/mouse/New()
 	..()

@@ -215,7 +215,7 @@
 				broken(1)
 
 	active_power_usage = (brightness * 10)
-	addtimer(CALLBACK(src, .proc/update, 0), 1)
+	addtimer(CALLBACK(src, PROC_REF(update), 0), 1)
 
 	set_pixel_location()
 

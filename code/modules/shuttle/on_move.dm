@@ -164,7 +164,7 @@ All ShuttleMove procs go here
 /obj/structure/machinery/door/airlock/beforeShuttleMove(turf/newT, rotation, move_mode, obj/docking_port/mobile/moving_dock)
 	. = ..()
 	for(var/obj/structure/machinery/door/airlock/A in range(1, src))  // includes src
-		INVOKE_ASYNC(A, /obj/structure/machinery/door/.proc/close)
+		INVOKE_ASYNC(A, TYPE_PROC_REF(/obj/structure/machinery/door, close))
 
 /obj/structure/machinery/camera/beforeShuttleMove(turf/newT, rotation, move_mode, obj/docking_port/mobile/moving_dock)
 	. = ..()

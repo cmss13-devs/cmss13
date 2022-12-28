@@ -312,7 +312,7 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 					Q.count_niche_stat(STATISTICS_NICHE_FLIGHT)
 
 					if(Q.hive)
-						addtimer(CALLBACK(Q.hive, /datum/hive_status.proc/abandon_on_hijack), DROPSHIP_WARMUP_TIME + 5 SECONDS, TIMER_UNIQUE) //+ 5 seconds catch standing in doorways
+						addtimer(CALLBACK(Q.hive, TYPE_PROC_REF(/datum/hive_status, abandon_on_hijack)), DROPSHIP_WARMUP_TIME + 5 SECONDS, TIMER_UNIQUE) //+ 5 seconds catch standing in doorways
 
 					if(bomb_set)
 						for(var/obj/structure/machinery/nuclearbomb/bomb in world)
@@ -320,7 +320,7 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 
 					if(almayer_orbital_cannon)
 						almayer_orbital_cannon.is_disabled = TRUE
-						addtimer(CALLBACK(almayer_orbital_cannon, /obj/structure/orbital_cannon.proc/enable), 10 MINUTES, TIMER_UNIQUE)
+						addtimer(CALLBACK(almayer_orbital_cannon, TYPE_PROC_REF(/obj/structure/orbital_cannon, enable)), 10 MINUTES, TIMER_UNIQUE)
 
 					if(almayer_aa_cannon)
 						almayer_aa_cannon.is_disabled = TRUE

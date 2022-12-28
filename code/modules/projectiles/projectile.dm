@@ -1132,7 +1132,7 @@
 	rotate.Turn(P.angle)
 	I.transform = rotate
 	// Need to do this in order to prevent the ping from being deleted
-	addtimer(CALLBACK(I, /image/.proc/flick_overlay, src, 3), 1)
+	addtimer(CALLBACK(I, TYPE_PROC_REF(/image, flick_overlay), src, 3), 1)
 
 /mob/proc/bullet_message(obj/item/projectile/P)
 	if(!P)

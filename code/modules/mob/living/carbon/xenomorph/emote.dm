@@ -21,10 +21,10 @@
 				return
 			if(!message)
 				return
-			return INVOKE_ASYNC(src, /mob.proc/custom_emote, m_type, message, player_caused)
+			return INVOKE_ASYNC(src, TYPE_PROC_REF(/mob, custom_emote), m_type, message, player_caused)
 
 		if("custom")
-			return INVOKE_ASYNC(src, /mob.proc/custom_emote, m_type, message, player_caused)
+			return INVOKE_ASYNC(src, TYPE_PROC_REF(/mob, custom_emote), m_type, message, player_caused)
 
 		if("growl")
 			if(isXenoPredalien(src))

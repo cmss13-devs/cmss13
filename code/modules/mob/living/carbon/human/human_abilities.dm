@@ -170,7 +170,7 @@ CULT
 
 	update_button_icon()
 
-	addtimer(CALLBACK(src, .proc/update_button_icon), amount)
+	addtimer(CALLBACK(src, PROC_REF(update_button_icon)), amount)
 
 /datum/action/human_action/activable/droppod
 	name = "Call Droppod"
@@ -251,7 +251,7 @@ CULT
 	message_staff("[key_name_admin(H)] called a tech droppod down at [get_area(assigned_droppod)].", T.x, T.y, T.z)
 	for(var/M in to_send_to)
 		to_chat(M, SPAN_BLUE("<b>SUPPLY DROP REQUEST:</b> Droppod requested at LONGITUDE: [obfuscate_x(T.x)], LATITUDE: [obfuscate_y(T.y)]. ETA [Floor(land_time*0.1)] seconds."))
-	RegisterSignal(assigned_droppod, COMSIG_PARENT_QDELETING, .proc/handle_droppod_deleted)
+	RegisterSignal(assigned_droppod, COMSIG_PARENT_QDELETING, PROC_REF(handle_droppod_deleted))
 */
 
 /datum/action/human_action/activable/droppod/proc/handle_droppod_deleted(var/obj/structure/droppod/tech/T)
@@ -544,7 +544,7 @@ CULT
 
 /datum/action/human_action/cancel_view/give_to(user)
 	. = ..()
-	RegisterSignal(user, COMSIG_MOB_RESET_VIEW, .proc/remove_from) // will delete the button even if you reset view by resisting or the verb
+	RegisterSignal(user, COMSIG_MOB_RESET_VIEW, PROC_REF(remove_from)) // will delete the button even if you reset view by resisting or the verb
 
 /datum/action/human_action/cancel_view/remove_from(mob/L)
 	. = ..()
@@ -570,7 +570,7 @@ CULT
 
 /datum/action/human_action/vehicle_unbuckle/give_to(user)
 	. = ..()
-	RegisterSignal(user, COMSIG_MOB_RESET_VIEW, .proc/remove_from)//since unbuckling from special vehicle seats also resets the view, gonna use same signal
+	RegisterSignal(user, COMSIG_MOB_RESET_VIEW, PROC_REF(remove_from))//since unbuckling from special vehicle seats also resets the view, gonna use same signal
 
 /datum/action/human_action/vehicle_unbuckle/remove_from(mob/L)
 	. = ..()

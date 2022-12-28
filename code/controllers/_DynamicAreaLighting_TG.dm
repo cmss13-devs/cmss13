@@ -203,7 +203,7 @@ GLOBAL_LIST_INIT(comp2table, list(
 			highest_luminosity = lumonisity_rating
 	if(source && new_luminosity > 0)
 		LAZYSET(luminosity_sources, source, new_luminosity)
-		RegisterSignal(source, COMSIG_PARENT_QDELETING, .proc/remove_luminosity_source)
+		RegisterSignal(source, COMSIG_PARENT_QDELETING, PROC_REF(remove_luminosity_source))
 	if(new_luminosity < highest_luminosity)
 		new_luminosity = highest_luminosity
 	return ..()

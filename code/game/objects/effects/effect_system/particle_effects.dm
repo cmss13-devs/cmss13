@@ -24,7 +24,7 @@
 /obj/effect/particle_effect/fire/New()
 	if(!istype(loc, /turf))
 		qdel(src)
-	addtimer(CALLBACK(src, .proc/handle_extinguish), life)
+	addtimer(CALLBACK(src, PROC_REF(handle_extinguish)), life)
 
 	setDir(pick(cardinal))
 	SetLuminosity(3)

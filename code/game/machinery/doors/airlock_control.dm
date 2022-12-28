@@ -36,7 +36,7 @@
 
 	cur_command = signal.data["command"]
 	start_processing()
-	INVOKE_ASYNC(src, .proc/execute_current_command)
+	INVOKE_ASYNC(src, PROC_REF(execute_current_command))
 
 /obj/structure/machinery/door/airlock/proc/execute_current_command()
 	if(operating)

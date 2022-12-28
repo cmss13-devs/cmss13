@@ -484,7 +484,7 @@
 						continue
 					new /obj/item/stack/sheet/metal(get_step(src,dir))
 					O.forceMove(get_turf(locate(84,237,2))) //z.2
-//						O.forceMove(get_turf(locate(30,70,1)) )//z.1
+// O.forceMove(get_turf(locate(30,70,1)) )//z.1
 					removed++
 					break
 				else if(istype(O,/obj/item))
@@ -492,7 +492,7 @@
 					if(I.anchored)
 						continue
 					O.forceMove(get_turf(locate(84,237,2))) //z.2
-//						O.forceMove(get_turf(locate(30,70,1)) )//z.1
+// O.forceMove(get_turf(locate(30,70,1)) )//z.1
 					removed++
 					break
 			for(var/mob/M in T)
@@ -501,7 +501,7 @@
 					if(!X.stat == DEAD)
 						continue
 					X.forceMove(get_turf(locate(84,237,2))) //z.2
-//						X.forceMove(get_turf(locate(30,70,1)) )//z.1
+// X.forceMove(get_turf(locate(30,70,1)) )//z.1
 					removed++
 					break
 			if(removed && !working)

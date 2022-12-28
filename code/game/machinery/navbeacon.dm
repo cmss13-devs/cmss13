@@ -36,10 +36,10 @@
 
 	codes = new()
 
-	var/list/entries = splittext(codes_txt, ";")	// entries are separated by semicolons
+	var/list/entries = splittext(codes_txt, ";") // entries are separated by semicolons
 
 	for(var/e in entries)
-		var/index = findtext(e, "=")		// format is "key=value"
+		var/index = findtext(e, "=") // format is "key=value"
 		if(index)
 			var/key = copytext(e, 1, index)
 			var/val = copytext(e, index+1)
@@ -59,7 +59,7 @@
 	var/state="navbeacon[open]"
 
 	if(invisibility)
-		icon_state = "[state]-f"	// if invisible, set icon to faded version
+		icon_state = "[state]-f" // if invisible, set icon to faded version
 									// in case revealed by T-scanner
 	else
 		icon_state = "[state]"
@@ -98,7 +98,7 @@
 /obj/structure/machinery/navbeacon/attackby(var/obj/item/I, var/mob/user)
 	var/turf/T = loc
 	if(T.intact_tile)
-		return		// prevent intraction when T-scanner revealed
+		return // prevent intraction when T-scanner revealed
 
 	if(HAS_TRAIT(I, TRAIT_TOOL_SCREWDRIVER))
 		open = !open
@@ -128,9 +128,9 @@
 /obj/structure/machinery/navbeacon/interact(var/mob/user, var/ai = 0)
 	var/turf/T = loc
 	if(T.intact_tile)
-		return		// prevent intraction when T-scanner revealed
+		return // prevent intraction when T-scanner revealed
 
-	if(!open && !ai)	// can't alter controls if not open, unless you're an AI
+	if(!open && !ai) // can't alter controls if not open, unless you're an AI
 		to_chat(user, "The beacon's control cover is closed.")
 		return
 

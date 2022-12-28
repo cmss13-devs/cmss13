@@ -7,7 +7,7 @@
 ///How likely the syllable is not to have a consonant at the start, needs to be kinda high for convincing diphthongs
 #define JAPANESE_SOUND_NULL_INITIAL_CHANCE 20
 ///How likely the syllable is to end in an N
-#define JAPANESE_SOUND_N_FINAL_CHANCE					20
+#define JAPANESE_SOUND_N_FINAL_CHANCE 20
 ///How likely it is to insert an apostrophe between two syllables (this can happen anywhere, mainly used for morpheme boundaries.)
 #define JAPANESE_SOUND_APOSTROPHE_CHANCE 30
 ///how likely voiced sounds are to geminate, these mainly occur in foreign loans so quite unlikely

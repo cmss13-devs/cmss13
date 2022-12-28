@@ -66,7 +66,7 @@ var/global/list/image/typed_typing_indicators
 	if(hud_typing == -1)
 		return
 	set_typing_indicator(TRUE)
-	hud_typing = addtimer(CALLBACK(src, .proc/timed_typing_clear), 5 SECONDS, TIMER_OVERRIDE|TIMER_UNIQUE|TIMER_STOPPABLE)
+	hud_typing = addtimer(CALLBACK(src, PROC_REF(timed_typing_clear)), 5 SECONDS, TIMER_OVERRIDE|TIMER_UNIQUE|TIMER_STOPPABLE)
 
 /// Clears timed typing indicators
 /mob/proc/timed_typing_clear()

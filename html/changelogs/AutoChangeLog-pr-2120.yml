@@ -1,0 +1,4 @@
+author: "Casper"
+delete-after: True
+changes:
+  - bugfix: "sling pouch is now more reliable while moving"

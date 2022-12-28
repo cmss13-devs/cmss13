@@ -106,7 +106,7 @@
 		activate_sensors()
 	else
 		active = TRUE
-		det_time ? addtimer(CALLBACK(src, .proc/prime), det_time) : prime()
+		det_time ? addtimer(CALLBACK(src, PROC_REF(prime)), det_time) : prime()
 	w_class = SIZE_MASSIVE // We cheat a little, primed nades become massive so they cant be stored anywhere
 	update_icon()
 

@@ -5,7 +5,7 @@
 	// Store all the blocked windows we found
 	var/list/blocked_windows = list()
 
-	for(var/area/A in all_areas)
+	for(var/area/A in GLOB.all_areas)
 		if(!A.z)
 			continue
 

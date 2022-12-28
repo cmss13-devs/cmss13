@@ -7,12 +7,12 @@ SUBSYSTEM_DEF(admin)
 	var/times_repeated = 0
 
 /datum/controller/subsystem/admin/stat_entry(msg)
-	msg = "P:[unansweredAhelps.len]"
+	msg = "P:[GLOB.unansweredAhelps.len]"
 	return ..()
 
 /datum/controller/subsystem/admin/fire(resumed = FALSE)
 	if (!resumed)
-		currentrun = unansweredAhelps.Copy()
+		currentrun = GLOB.unansweredAhelps.Copy()
 
 	if(!currentrun.len)
 		times_repeated = 0
@@ -27,7 +27,7 @@ SUBSYSTEM_DEF(admin)
 		if (!ahelp_msg)
 			continue
 
-		msg += unansweredAhelps[ahelp_msg] + "\n"
+		msg += GLOB.unansweredAhelps[ahelp_msg] + "\n"
 
 		if (MC_TICK_CHECK)
 			return

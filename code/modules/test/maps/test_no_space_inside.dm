@@ -5,7 +5,7 @@
 	// Store all the space turfs we found here
 	var/list/space_turfs = list()
 
-	for(var/area/A in all_areas)
+	for(var/area/A in GLOB.all_areas)
 		if(!A.z)
 			continue
 

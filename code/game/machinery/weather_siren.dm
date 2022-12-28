@@ -11,7 +11,7 @@
 	health = 0
 
 /obj/structure/machinery/weather_siren/Initialize()
-	weather_notify_objects += src
+	GLOB.weather_notify_objects += src
 	return ..()
 
 /obj/structure/machinery/weather_siren/power_change()

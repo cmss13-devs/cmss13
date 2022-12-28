@@ -1,14 +1,14 @@
-/var/create_object_html = null
+GLOBAL_VAR(create_object_html)
 
 /datum/admins/proc/create_object(var/mob/user)
-	if (!create_object_html)
+	if (!GLOB.create_object_html)
 		var/objectjs = null
 		objectjs = jointext(typesof(/obj), ";")
-		create_object_html = file2text('html/create_object.html')
-		create_object_html = replacetext(create_object_html, "null /* object types */", "\"[objectjs]\"")
-		create_object_html = replacetext(create_object_html, "/* href token */", RawHrefToken(forceGlobal = TRUE))
+		GLOB.create_object_html = file2text('html/create_object.html')
+		GLOB.create_object_html = replacetext(GLOB.create_object_html, "null /* object types */", "\"[objectjs]\"")
+		GLOB.create_object_html = replacetext(GLOB.create_object_html, "/* href token */", RawHrefToken(forceGlobal = TRUE))
 
-	show_browser(user, replacetext(create_object_html, "/* ref src */", "\ref[src]"), "Create Object", "create_object", "size=425x475")
+	show_browser(user, replacetext(GLOB.create_object_html, "/* ref src */", "\ref[src]"), "Create Object", "create_object", "size=425x475")
 
 
 /datum/admins/proc/quick_create_object(var/mob/user)

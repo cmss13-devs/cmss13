@@ -75,7 +75,7 @@
 		Export(TGS4_COMM_VALIDATE, list(TGS4_PARAMETER_DATA = "[minimum_required_security_level]"))
 		del(world)
 
-	security_level = cached_json["securityLevel"]
+	GLOB.security_level = cached_json["securityLevel"]
 	chat_channels_json_path = cached_json["chatChannelsJson"]
 	chat_commands_json_path = cached_json["chatCommandsJson"]
 	instance_name = cached_json["instanceName"]

@@ -37,13 +37,13 @@
 	current_stamina = Clamp(current_stamina - amount, 0, max_stamina)
 
 	if(current_stamina < max_stamina)
-		if(!(src in active_staminas))
-			active_staminas.Add(src)
+		if(!(src in GLOB.active_staminas))
+			GLOB.active_staminas.Add(src)
 
 		if(amount > 0)
 			apply_rest_period(STAMINA_REST_PERIOD)
 	else
-		active_staminas.Remove(src)
+		GLOB.active_staminas.Remove(src)
 
 
 	update_stamina_level()

@@ -133,7 +133,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		if(!receiver_client)
 			to_chat(src, SPAN_WARNING("The person you were attempting to PM has gone offline!"))
 			return
-		if(unansweredAhelps[receiver_client.computer_id]) unansweredAhelps.Remove(receiver_client.computer_id)
+		if(GLOB.unansweredAhelps[receiver_client.computer_id]) GLOB.unansweredAhelps.Remove(receiver_client.computer_id)
 		cmd_admin_pm(receiver_client, null)
 		return
 
@@ -189,8 +189,8 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		P.remove_note(index)
 
 	//Logs all hrefs
-	if(CONFIG_GET(flag/log_hrefs) && href_logfile)
-		href_logfile << "<small>[time2text(world.timeofday,"hh:mm")] [src] (usr:[usr])</small> || [hsrc ? "[hsrc] " : ""][href]<br>"
+	if(CONFIG_GET(flag/log_hrefs) && GLOB.href_logfile)
+		GLOB.href_logfile << "<small>[time2text(world.timeofday,"hh:mm")] [src] (usr:[usr])</small> || [hsrc ? "[hsrc] " : ""][href]<br>"
 
 	switch(href_list["_src_"])
 		if("admin_holder")
@@ -301,17 +301,17 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 			admin.associate(src)
 
 	//Admin Authorisation
-	admin_holder = admin_datums[ckey]
+	admin_holder = GLOB.admin_datums[ckey]
 	if(admin_holder)
 		admin_holder.associate(src)
 	notify_login()
 
 	add_pref_verbs()
 	//preferences datum - also holds some persistent data for the client (because we may as well keep these datums to a minimum)
-	prefs = preferences_datums[ckey]
+	prefs = GLOB.preferences_datums[ckey]
 	if(QDELETED(prefs) || !istype(prefs))
 		prefs = new /datum/preferences(src)
-		preferences_datums[ckey] = prefs
+		GLOB.preferences_datums[ckey] = prefs
 	prefs.client_reconnected(src)
 	prefs.last_ip = address				//these are gonna be used for banning
 	prefs.last_id = computer_id			//these are gonna be used for banning
@@ -336,7 +336,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		player_details.byond_version = full_version
 		GLOB.player_details[ckey] = player_details
 
-	view = world_view_size
+	view = GLOB.world_view_size
 	. = ..()	//calls mob.Login()
 
 	if(SSinput.initialized)
@@ -389,8 +389,8 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 			CEI = GLOB.custom_event_info_list[mob.faction]
 			CEI.show_player_event_info(src)
 
-	if( (world.address == address || !address) && !host )
-		host = key
+	if( (world.address == address || !address) && !GLOB.host )
+		GLOB.host = key
 		world.update_status()
 
 	connection_time = world.time
@@ -423,7 +423,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 
 	load_player_data()
 
-	view = world_view_size
+	view = GLOB.world_view_size
 
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_CLIENT_LOGIN, src)
 
@@ -443,7 +443,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	GLOB.clients -= src
 	SSping.currentrun -= src
 
-	unansweredAhelps?.Remove(computer_id)
+	GLOB.unansweredAhelps?.Remove(computer_id)
 	log_access("Logout: [key_name(src)]")
 	if(CLIENT_IS_STAFF(src))
 		message_staff("Admin logout: [key_name(src)]")
@@ -503,17 +503,17 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 /proc/setup_player_entity(var/ckey)
 	if(!ckey)
 		return
-	if(player_entities["[ckey]"])
-		return player_entities["[ckey]"]
+	if(GLOB.player_entities["[ckey]"])
+		return GLOB.player_entities["[ckey]"]
 	var/datum/entity/player_entity/P = new()
 	P.ckey = ckey
 	P.name = ckey
-	player_entities["[ckey]"] = P
+	GLOB.player_entities["[ckey]"] = P
 	// P.setup_save(ckey)
 	return P
 
 /proc/save_player_entities()
-	for(var/key_ref in player_entities)
+	for(var/key_ref in GLOB.player_entities)
 		// var/datum/entity/player_entity/P = player_entities["[key_ref]"]
 		// P.save_statistics()
 	log_debug("STATISTICS: Statistics saving complete.")

@@ -2,10 +2,6 @@
 //SS13 Optimized Map loader
 //////////////////////////////////////////////////////////////
 
-//global datum that will preload variables on atoms instanciation
-var/global/use_preloader = FALSE
-var/global/dmm_suite/preloader/_preloader = new
-
 /datum/map_load_metadata
 	var/bounds
 	var/list/atoms_to_initialise
@@ -318,7 +314,7 @@ var/global/dmm_suite/preloader/_preloader = new
 		is_not_noop = TRUE
 		var/list/attr = members_attributes[index]
 		if (LAZYLEN(attr))
-			_preloader.setup(attr)//preloader for assigning  set variables on atom creation
+			GLOB._preloader.setup(attr)//preloader for assigning  set variables on atom creation
 		var/atype = members[index]
 		var/atom/instance = initialized_areas_by_type[atype]
 		if(!instance)
@@ -327,8 +323,8 @@ var/global/dmm_suite/preloader/_preloader = new
 		if(crds)
 			instance.contents.Add(crds)
 
-		if(use_preloader && instance)
-			_preloader.load(instance)
+		if(GLOB.use_preloader && instance)
+			GLOB._preloader.load(instance)
 
 	//then instance the /turf and, if multiple tiles are presents, simulates the DMM underlays piling effect
 
@@ -382,7 +378,7 @@ var/global/dmm_suite/preloader/_preloader = new
 //Instance an atom at (x,y,z) and gives it the variables in attributes
 /dmm_suite/proc/instance_atom(path,list/attributes, turf/crds, no_changeturf)
 	if (LAZYLEN(attributes))
-		_preloader.setup(attributes, path)
+		GLOB._preloader.setup(attributes, path)
 
 	if(crds)
 		if(!no_changeturf && ispath(path, /turf))
@@ -390,8 +386,8 @@ var/global/dmm_suite/preloader/_preloader = new
 		else
 			. = create_atom(path, crds)//first preloader pass
 
-	if(use_preloader && .)//second preloader pass, for those atoms that don't ..() in New()
-		_preloader.load(.)
+	if(GLOB.use_preloader && .)//second preloader pass, for those atoms that don't ..() in New()
+		GLOB._preloader.load(.)
 
 	//custom CHECK_TICK here because we don't want things created while we're sleeping to delay initialization.
 	// if(TICK_CHECK)
@@ -508,13 +504,13 @@ var/global/dmm_suite/preloader/_preloader = new
 
 /dmm_suite/preloader/proc/setup(list/the_attributes, path)
 	if(LAZYLEN(the_attributes))
-		use_preloader = TRUE
+		GLOB.use_preloader = TRUE
 		attributes = the_attributes
 		target_path = path
 
 /dmm_suite/preloader/proc/load(atom/what)
 	if(isarea(what))
-		use_preloader = FALSE
+		GLOB.use_preloader = FALSE
 		return
 
 	for(var/attribute in attributes)
@@ -537,7 +533,7 @@ var/global/dmm_suite/preloader/_preloader = new
 					break
 			if (!found)
 				throw ex
-	use_preloader = FALSE
+	GLOB.use_preloader = FALSE
 
 /area/template_noop
 	name = "Area Passthrough"

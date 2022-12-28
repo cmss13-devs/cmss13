@@ -88,10 +88,10 @@
 	A.randomize_appearance(H)
 	var/random_name
 	if(H.gender == MALE)
-		random_name = "[pick(first_names_male_dutch)] [pick(last_names)]"
+		random_name = "[pick(GLOB.first_names_male_dutch)] [pick(GLOB.last_names)]"
 		H.f_style = "5 O'clock Shadow"
 	else
-		random_name = "[pick(first_names_female_dutch)] [pick(last_names)]"
+		random_name = "[pick(GLOB.first_names_female_dutch)] [pick(GLOB.last_names)]"
 
 	H.change_real_name(H, random_name)
 	H.age = rand(25,35)
@@ -632,7 +632,7 @@
 	H.age = rand(1, 40)
 
 /datum/equipment_preset/fun/monkey/proc/get_random_name(var/mob/living/carbon/human/H)
-	return pick(monkey_names)
+	return pick(GLOB.monkey_names)
 
 /datum/equipment_preset/fun/monkey/marine
 	name = "Fun - Monkey Marine"
@@ -659,7 +659,7 @@
 	paygrade = "UE1"
 
 /datum/equipment_preset/fun/monkey/soldier/get_random_name(mob/living/carbon/human/H)
-	return H.gender == MALE ? pick(first_names_male_upp) : pick(first_names_female_upp)
+	return H.gender == MALE ? pick(GLOB.first_names_male_upp) : pick(GLOB.first_names_female_upp)
 
 /datum/equipment_preset/fun/monkey/soldier/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/UPP(H), WEAR_BODY)

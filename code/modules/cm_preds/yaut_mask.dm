@@ -137,7 +137,7 @@
 /obj/item/clothing/mask/gas/yautja/dropped(mob/living/carbon/human/user) //Clear the gogglors if the helmet is removed.
 	if(istype(user) && user.wear_mask == src) //inventory reference is only cleared after dropped().
 		for(var/listed_hud in mask_huds)
-			var/datum/mob_hud/H = huds[listed_hud]
+			var/datum/mob_hud/H = GLOB.huds[listed_hud]
 			H.remove_hud_from(user)
 		var/obj/item/G = user.glasses
 		if(G) //make your hud fuck off
@@ -151,7 +151,7 @@
 /obj/item/clothing/mask/gas/yautja/equipped(mob/living/carbon/human/user, slot)
 	if(slot == WEAR_FACE)
 		for(var/listed_hud in mask_huds)
-			var/datum/mob_hud/H = huds[listed_hud]
+			var/datum/mob_hud/H = GLOB.huds[listed_hud]
 			H.add_hud_to(user)
 		if(current_goggles)
 			add_vision(user)

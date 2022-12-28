@@ -91,7 +91,7 @@
 	if(input_container && output_container && outputmode == OUTPUT_TO_CONTAINER)
 		if(automode)
 			run_program()
-	nanomanager.update_uis(src) // update all UIs attached to src
+	GLOB.nanomanager.update_uis(src) // update all UIs attached to src
 
 /obj/structure/machinery/autodispenser/attack_hand(mob/user as mob)
 	if(inoperable())
@@ -130,7 +130,7 @@
 	if(program_amount[PROGRAM_BOX])
 		data["box"] = program_amount[PROGRAM_BOX]
 
-	ui = nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
+	ui = GLOB.nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if(!ui)
 		ui = new(user, src, ui_key, "autodispenser.tmpl", "Turing Dispenser Console", 600, 480)
 		ui.set_initial_data(data)
@@ -200,7 +200,7 @@
 				flush_buffer()
 				outputmode = OUTPUT_TO_CONTAINER
 
-	nanomanager.update_uis(src) // update all UIs attached to src
+	GLOB.nanomanager.update_uis(src) // update all UIs attached to src
 	add_fingerprint(user)
 	attack_hand(usr)
 	return 1
@@ -214,7 +214,7 @@
 			recharge()
 		else
 			recharge_delay--
-		nanomanager.update_uis(src)
+		GLOB.nanomanager.update_uis(src)
 
 	if(status == 0 || status == 1) //Nothing to do
 		return
@@ -234,7 +234,7 @@
 	if(!space || cycle >= cycle_limit) //We done boys
 		stop_program(1)
 		icon_state = "autodispenser_full"
-		nanomanager.update_uis(src)
+		GLOB.nanomanager.update_uis(src)
 		return
 
 	for(var/i=stage,i<=programs[1].len + programs[2].len && i != 0,i++)
@@ -243,7 +243,7 @@
 			if(status == 0)
 				status = 2
 				icon_state = "autodispenser_running"
-				nanomanager.update_uis(src)
+				GLOB.nanomanager.update_uis(src)
 			else
 				break
 
@@ -291,7 +291,7 @@
 			icon_state = "autodispenser_stuck"
 			error = R.name + " NOT FOUND"
 			status = -5
-			nanomanager.update_uis(src)
+			GLOB.nanomanager.update_uis(src)
 		else //We can dispense any basic or common chemical directly. This does use energy as we're creating stuff from thin air
 			//Check if we have enough energy to afford dispensing
 			var/savings = energy - amount * 0.1

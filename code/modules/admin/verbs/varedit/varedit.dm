@@ -353,13 +353,13 @@
 			CHECK_TICK
 
 	else if(ispath(T, /obj/structure/machinery/door))
-		for(var/obj/structure/machinery/door/thing in global.machines)
+		for(var/obj/structure/machinery/door/thing in GLOB.machines)
 			if(typecache[thing.type])
 				. += thing
 			CHECK_TICK
 
 	else if(ispath(T, /obj/structure/machinery))
-		for(var/obj/structure/machinery/thing in global.machines)
+		for(var/obj/structure/machinery/thing in GLOB.machines)
 			if(typecache[thing.type])
 				. += thing
 			CHECK_TICK

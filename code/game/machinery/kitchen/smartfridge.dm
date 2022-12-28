@@ -76,7 +76,7 @@
 		overlays.Cut()
 		if(panel_open)
 			overlays += image(icon, icon_panel)
-		nanomanager.update_uis(src)
+		GLOB.nanomanager.update_uis(src)
 		return
 
 	if(HAS_TRAIT(O, TRAIT_TOOL_MULTITOOL)||HAS_TRAIT(O, TRAIT_TOOL_WIRECUTTERS))
@@ -139,7 +139,7 @@
 
 /obj/structure/machinery/smartfridge/proc/add_network_item(var/obj/item/O)
 	if(is_in_network())
-		add_item(chemical_data.shared_item_storage, O)
+		add_item(GLOB.chemical_data.shared_item_storage, O)
 		return TRUE
 	return FALSE
 
@@ -214,9 +214,9 @@
 
 	var/list/networked_items = list()
 	if(is_in_network())
-		for (var/i=1 to length(chemical_data.shared_item_storage))
-			var/item_index = chemical_data.shared_item_storage[i]
-			var/list/item_list = chemical_data.shared_item_storage[item_index]
+		for (var/i=1 to length(GLOB.chemical_data.shared_item_storage))
+			var/item_index = GLOB.chemical_data.shared_item_storage[i]
+			var/list/item_list = GLOB.chemical_data.shared_item_storage[item_index]
 			var/count = length(item_list)
 			if(count < 1)
 				continue
@@ -277,7 +277,7 @@
 
 			var/list/target_list = item_quants
 			if(params["isLocal"] == 0)
-				target_list = chemical_data.shared_item_storage
+				target_list = GLOB.chemical_data.shared_item_storage
 
 			var/item_index = target_list[index]
 			var/list/item_list = target_list[item_index]
@@ -310,9 +310,9 @@
 			var/amount=params["amount"]
 
 			var/source = item_quants
-			var/target = chemical_data.shared_item_storage
+			var/target = GLOB.chemical_data.shared_item_storage
 			if(params["isLocal"] == 0)
-				source = chemical_data.shared_item_storage
+				source = GLOB.chemical_data.shared_item_storage
 				target = item_quants
 
 			var/item_index = source[index]

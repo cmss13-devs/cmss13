@@ -63,14 +63,14 @@
 			shuttle_tag = "Ground Transport 1"
 	if(!shuttle_tag)
 		return
-	var/datum/shuttle/ferry/shuttle = shuttle_controller.shuttles[shuttle_tag]
+	var/datum/shuttle/ferry/shuttle = GLOB.shuttle_controller.shuttles[shuttle_tag]
 	if (!istype(shuttle))
 		return
 	if(shuttle.door_override)
 		return // its been locked down by the queen
 	if(is_mainship_level(z)) // on the almayer
 		return
-	for(var/obj/structure/machinery/door/airlock/dropship_hatch/M in machines)
+	for(var/obj/structure/machinery/door/airlock/dropship_hatch/M in GLOB.machines)
 		if(M.id == ship_id)
 			if(M.locked && M.density)
 				continue // jobs done
@@ -83,10 +83,10 @@
 	var/obj/structure/machinery/door/airlock/multi_tile/almayer/reardoor
 	switch(ship_id)
 		if("sh_dropship1")
-			for(var/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/ds1/D in machines)
+			for(var/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/ds1/D in GLOB.machines)
 				reardoor = D
 		if("sh_dropship2")
-			for(var/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/ds2/D in machines)
+			for(var/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/ds2/D in GLOB.machines)
 				reardoor = D
 
 	if(!reardoor.locked && reardoor.density)
@@ -133,13 +133,13 @@
 					D.safe = 1
 
 /obj/structure/machinery/door_control/proc/handle_pod()
-	for(var/obj/structure/machinery/door/poddoor/M in machines)
+	for(var/obj/structure/machinery/door/poddoor/M in GLOB.machines)
 		if(M.id == id)
 			var/datum/shuttle/ferry/marine/S
 			var/area/A = get_area(M)
 			for(var/i = 1 to 2)
 				if(istype(A, text2path("/area/shuttle/drop[i]")))
-					S = shuttle_controller.shuttles["[MAIN_SHIP_NAME] Dropship [i]"]
+					S = GLOB.shuttle_controller.shuttles["[MAIN_SHIP_NAME] Dropship [i]"]
 					if(S.moving_status == SHUTTLE_INTRANSIT)
 						return FALSE
 			if(M.density)
@@ -215,19 +215,19 @@
 	active = 1
 	icon_state = "launcheract"
 
-	for(var/obj/structure/machinery/door/poddoor/M in machines)
+	for(var/obj/structure/machinery/door/poddoor/M in GLOB.machines)
 		if(M.id == src.id)
 			INVOKE_ASYNC(M, /obj/structure/machinery/door.proc/open)
 
 	sleep(20)
 
-	for(var/obj/structure/machinery/mass_driver/M in machines)
+	for(var/obj/structure/machinery/mass_driver/M in GLOB.machines)
 		if(M.id == src.id)
 			M.drive()
 
 	sleep(50)
 
-	for(var/obj/structure/machinery/door/poddoor/M in machines)
+	for(var/obj/structure/machinery/door/poddoor/M in GLOB.machines)
 		if(M.id == src.id)
 			INVOKE_ASYNC(M, /obj/structure/machinery/door.proc/close)
 
@@ -273,7 +273,7 @@
 	add_fingerprint(user)
 
 	var/effective = 0
-	for(var/obj/structure/machinery/door/poddoor/M in machines)
+	for(var/obj/structure/machinery/door/poddoor/M in GLOB.machines)
 		if(M.id == id)
 			effective = 1
 			spawn()

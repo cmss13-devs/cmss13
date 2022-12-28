@@ -73,12 +73,12 @@
 
 /datum/db/adapter/brsql_adapter/sync_table_meta()
 	var/query = getquery_systable_check()
-	var/datum/db/query_response/sys_table = SSdatabase.create_query_sync(query)
+	var/datum/db/query_response/sys_table = GLOB.SSdatabase.create_query_sync(query)
 	if(sys_table.status != DB_QUERY_FINISHED)
 		issue_log += "Unable to create or access system table, error: '[sys_table.error]'"
 		return FALSE // OH SHIT OH FUCK
 	query = getquery_sysindex_check()
-	var/datum/db/query_response/sys_index = SSdatabase.create_query_sync(query)
+	var/datum/db/query_response/sys_index = GLOB.SSdatabase.create_query_sync(query)
 	if(sys_index.status != DB_QUERY_FINISHED)
 		issue_log += "Unable to create or access system index table, error: '[sys_table.error]'"
 		return FALSE // OH SHIT OH FUCK
@@ -88,17 +88,17 @@
 /datum/db/adapter/brsql_adapter/read_table(table_name, var/list/ids, var/datum/callback/CB, sync = FALSE)
 	var/query_gettable = getquery_select_table(table_name, ids)
 	if(sync)
-		SSdatabase.create_query_sync(query_gettable, CB)
+		GLOB.SSdatabase.create_query_sync(query_gettable, CB)
 	else
-		SSdatabase.create_query(query_gettable, CB)
+		GLOB.SSdatabase.create_query(query_gettable, CB)
 
 /datum/db/adapter/brsql_adapter/update_table(table_name, var/list/values, var/datum/callback/CB, sync = FALSE)
 	var/list/qpars = list()
 	var/query_updatetable = getquery_update_table(table_name, values, qpars)
 	if(sync)
-		SSdatabase.create_parametric_query_sync(query_updatetable, qpars, CB)
+		GLOB.SSdatabase.create_parametric_query_sync(query_updatetable, qpars, CB)
 	else
-		SSdatabase.create_parametric_query(query_updatetable, qpars, CB)
+		GLOB.SSdatabase.create_parametric_query(query_updatetable, qpars, CB)
 
 /datum/db/adapter/brsql_adapter/insert_table(table_name, var/list/values, var/datum/callback/CB, sync = FALSE)
 	if(!sync)
@@ -108,9 +108,9 @@
 	var/query_inserttable = getquery_insert_table(table_name, values, qpars)
 	var/datum/callback/callback = CALLBACK(src, /datum/db/adapter/brsql_adapter.proc/after_insert_table, CB, length, table_name)
 	if(sync)
-		SSdatabase.create_parametric_query_sync(query_inserttable, qpars, callback)
+		GLOB.SSdatabase.create_parametric_query_sync(query_inserttable, qpars, callback)
 	else
-		SSdatabase.create_parametric_query(query_inserttable, qpars, callback)
+		GLOB.SSdatabase.create_parametric_query(query_inserttable, qpars, callback)
 
 /datum/db/adapter/brsql_adapter/proc/after_insert_table(var/datum/callback/CB, length, table_name, uid, var/list/results, var/datum/db/query/brsql/query)
 	CB.Invoke(query.last_insert_id)
@@ -119,17 +119,17 @@
 /datum/db/adapter/brsql_adapter/delete_table(table_name, var/list/ids, var/datum/callback/CB, sync = FALSE)
 	var/query_deletetable = getquery_delete_table(table_name, ids)
 	if(sync)
-		SSdatabase.create_query_sync(query_deletetable, CB)
+		GLOB.SSdatabase.create_query_sync(query_deletetable, CB)
 	else
-		SSdatabase.create_query(query_deletetable, CB)
+		GLOB.SSdatabase.create_query(query_deletetable, CB)
 
 /datum/db/adapter/brsql_adapter/read_filter(table_name, var/datum/db/filter, var/datum/callback/CB, sync = FALSE)
 	var/list/qpars = list()
 	var/query_gettable = getquery_filter_table(table_name, filter, qpars)
 	if(sync)
-		SSdatabase.create_parametric_query_sync(query_gettable, qpars, CB)
+		GLOB.SSdatabase.create_parametric_query_sync(query_gettable, qpars, CB)
 	else
-		SSdatabase.create_parametric_query(query_gettable, qpars, CB)
+		GLOB.SSdatabase.create_parametric_query(query_gettable, qpars, CB)
 
 /datum/db/adapter/brsql_adapter/read_view(var/datum/entity_view_meta/view, var/datum/db/filter/filter, var/datum/callback/CB, sync=FALSE)
 	var/v_key = "v_[view.type]"
@@ -139,14 +139,14 @@
 		return null
 	var/query_getview = cached_view.spawn_query(filter, qpars)
 	if(sync)
-		SSdatabase.create_parametric_query_sync(query_getview, qpars, CB)
+		GLOB.SSdatabase.create_parametric_query_sync(query_getview, qpars, CB)
 	else
-		SSdatabase.create_parametric_query(query_getview, qpars, CB)
+		GLOB.SSdatabase.create_parametric_query(query_getview, qpars, CB)
 
 /datum/db/adapter/brsql_adapter/sync_table(type_name, table_name, var/list/field_types)
 	var/list/qpars = list()
 	var/query_gettable = getquery_systable_gettable(table_name, qpars)
-	var/datum/db/query_response/table_meta = SSdatabase.create_parametric_query_sync(query_gettable, qpars)
+	var/datum/db/query_response/table_meta = GLOB.SSdatabase.create_parametric_query_sync(query_gettable, qpars)
 	if(table_meta.status != DB_QUERY_FINISHED)
 		issue_log += "Unable to access system table, error: '[table_meta.error]'"
 		return FALSE // OH SHIT OH FUCK
@@ -163,18 +163,18 @@
 		return TRUE // no action required
 
 	var/tablecount = internal_table_count(table_name)
-	// check if we have any records	
+	// check if we have any records
 	if(tablecount == 0)
 		// just MURDER IT
 		return internal_drop_table(table_name) && internal_create_table(table_name, field_types) && internal_record_table_in_sys(type_name, table_name, field_types, id)
-	
+
 	return internal_drop_backup_table(table_name) && internal_create_backup_table(table_name, old_fields) && internal_migrate_to_backup(table_name, old_fields) && \
 		internal_update_table(table_name, field_types, old_fields) && internal_record_table_in_sys(type_name, table_name, field_types, id)
-	
+
 /datum/db/adapter/brsql_adapter/sync_index(index_name, table_name, var/list/fields, unique, cluster)
 	var/list/qpars = list()
 	var/query_getindex = getquery_sysindex_getindex(index_name, table_name, qpars)
-	var/datum/db/query_response/index_meta = SSdatabase.create_parametric_query_sync(query_getindex, qpars)
+	var/datum/db/query_response/index_meta = GLOB.SSdatabase.create_parametric_query_sync(query_getindex, qpars)
 	if(index_meta.status != DB_QUERY_FINISHED)
 		issue_log += "Unable to access system index table, error: '[index_meta.error]'"
 		return FALSE // OH SHIT OH FUCK
@@ -194,7 +194,7 @@
 
 /datum/db/adapter/brsql_adapter/proc/internal_create_table(table_name, field_types)
 	var/query = getquery_systable_maketable(table_name, field_types)
-	var/datum/db/query_response/sit_check = SSdatabase.create_query_sync(query)
+	var/datum/db/query_response/sit_check = GLOB.SSdatabase.create_query_sync(query)
 	if(sit_check.status != DB_QUERY_FINISHED)
 		issue_log += "Unable to create new table [table_name], error: '[sit_check.error]'"
 		return FALSE // OH SHIT OH FUCK
@@ -203,7 +203,7 @@
 /datum/db/adapter/brsql_adapter/proc/internal_record_table_in_sys(type_name, table_name, field_types, id)
 	var/list/qpars = list()
 	var/query = getquery_systable_recordtable(type_name, table_name, field_types, qpars, id)
-	var/datum/db/query_response/sit_check = SSdatabase.create_parametric_query_sync(query, qpars)
+	var/datum/db/query_response/sit_check = GLOB.SSdatabase.create_parametric_query_sync(query, qpars)
 	if(sit_check.status != DB_QUERY_FINISHED)
 		issue_log += "Unable to record meta for table [table_name], error: '[sit_check.error]'"
 		return FALSE // OH SHIT OH FUCK
@@ -211,7 +211,7 @@
 
 /datum/db/adapter/brsql_adapter/proc/internal_create_index(index_name, table_name, fields, unique, cluster)
 	var/query = getquery_sysindex_makeindex(index_name, table_name, fields, unique, cluster)
-	var/datum/db/query_response/sit_check = SSdatabase.create_query_sync(query)
+	var/datum/db/query_response/sit_check = GLOB.SSdatabase.create_query_sync(query)
 	if(sit_check.status != DB_QUERY_FINISHED)
 		issue_log += "Unable to create new index [index_name], error: '[sit_check.error]'"
 		return FALSE // OH SHIT OH FUCK
@@ -220,7 +220,7 @@
 /datum/db/adapter/brsql_adapter/proc/internal_record_index_in_sys(index_name, table_name, fields, id)
 	var/list/qpars = list()
 	var/query = getquery_sysindex_recordindex(index_name, table_name, fields, qpars, id)
-	var/datum/db/query_response/sit_check = SSdatabase.create_parametric_query_sync(query, qpars)
+	var/datum/db/query_response/sit_check = GLOB.SSdatabase.create_parametric_query_sync(query, qpars)
 	if(sit_check.status != DB_QUERY_FINISHED)
 		issue_log += "Unable to record meta for index [index_name], error: '[sit_check.error]'"
 		return FALSE // OH SHIT OH FUCK
@@ -229,7 +229,7 @@
 
 /datum/db/adapter/brsql_adapter/proc/internal_drop_table(table_name)
 	var/query = getcommand_droptable(table_name)
-	var/datum/db/query_response/sit_check = SSdatabase.create_query_sync(query)
+	var/datum/db/query_response/sit_check = GLOB.SSdatabase.create_query_sync(query)
 	if(sit_check.status != DB_QUERY_FINISHED)
 		issue_log += "Unable to drop table [table_name], error: '[sit_check.error]'"
 		return FALSE // OH SHIT OH FUCK
@@ -237,7 +237,7 @@
 
 /datum/db/adapter/brsql_adapter/proc/internal_drop_index(index_name, table_name)
 	var/query = getcommand_dropindex(index_name, table_name)
-	var/datum/db/query_response/sit_check = SSdatabase.create_query_sync(query)
+	var/datum/db/query_response/sit_check = GLOB.SSdatabase.create_query_sync(query)
 	if(sit_check.status != DB_QUERY_FINISHED)
 		issue_log += "Unable to drop index [index_name], error: '[sit_check.error]'"
 		return FALSE // OH SHIT OH FUCK
@@ -245,7 +245,7 @@
 
 /datum/db/adapter/brsql_adapter/proc/internal_drop_backup_table(table_name)
 	var/query = getcommand_droptable("[BRSQL_BACKUP_PREFIX][table_name]")
-	var/datum/db/query_response/sit_check = SSdatabase.create_query_sync(query)
+	var/datum/db/query_response/sit_check = GLOB.SSdatabase.create_query_sync(query)
 	if(sit_check.status != DB_QUERY_FINISHED)
 		issue_log += "Unable to drop table [table_name], error: '[sit_check.error]'"
 		return FALSE // OH SHIT OH FUCK
@@ -254,7 +254,7 @@
 // returns -1 if shit is fucked, otherwise returns count
 /datum/db/adapter/brsql_adapter/proc/internal_table_count(table_name)
 	var/query = getquery_get_rowcount(table_name)
-	var/datum/db/query_response/rowcount = SSdatabase.create_query_sync(query)
+	var/datum/db/query_response/rowcount = GLOB.SSdatabase.create_query_sync(query)
 	if(rowcount.status != DB_QUERY_FINISHED)
 		issue_log += "Unable to get row count from table [table_name], error: '[rowcount.error]'"
 		return -1 // OH SHIT OH FUCK
@@ -262,7 +262,7 @@
 
 /datum/db/adapter/brsql_adapter/proc/internal_request_insert_allocation(table_name, size)
 	var/query = getquery_allocate_insert(table_name, size)
-	var/datum/db/query_response/first_id = SSdatabase.create_query_sync(query)
+	var/datum/db/query_response/first_id = GLOB.SSdatabase.create_query_sync(query)
 	if(first_id.status != DB_QUERY_FINISHED)
 		issue_log += "Unable to allocate insert for [table_name], error: '[first_id.error]'"
 		return -1 // OH SHIT OH FUCK
@@ -273,7 +273,7 @@
 
 /datum/db/adapter/brsql_adapter/proc/internal_create_backup_table(table_name, field_types)
 	var/query = getquery_systable_maketable("[BRSQL_BACKUP_PREFIX][table_name]", field_types)
-	var/datum/db/query_response/sit_check = SSdatabase.create_query_sync(query)
+	var/datum/db/query_response/sit_check = GLOB.SSdatabase.create_query_sync(query)
 	if(sit_check.status != DB_QUERY_FINISHED)
 		issue_log += "Unable to create backup for table [table_name], error: '[sit_check.error]'"
 		return FALSE // OH SHIT OH FUCK
@@ -285,7 +285,7 @@
 		fields += field
 
 	var/query = getquery_insert_from_backup(table_name, fields)
-	var/datum/db/query_response/sit_check = SSdatabase.create_query_sync(query)
+	var/datum/db/query_response/sit_check = GLOB.SSdatabase.create_query_sync(query)
 	if(sit_check.status != DB_QUERY_FINISHED)
 		issue_log += "Unable to migrate table [table_name] to backup, error: '[sit_check.error]'"
 		return FALSE // OH SHIT OH FUCK
@@ -297,7 +297,7 @@
 		fields += field
 
 	var/query = getquery_insert_into_backup(table_name, fields)
-	var/datum/db/query_response/sit_check = SSdatabase.create_query_sync(query)
+	var/datum/db/query_response/sit_check = GLOB.SSdatabase.create_query_sync(query)
 	if(sit_check.status != DB_QUERY_FINISHED)
 		issue_log += "Unable to migrate table [table_name] to backup, error: '[sit_check.error]'"
 		return FALSE // OH SHIT OH FUCK
@@ -307,22 +307,22 @@
 	for(var/field in field_types_old)
 		if(!field_types_new[field])
 			var/query = getquery_update_table_delete_column(table_name, field)
-			var/datum/db/query_response/sit_check = SSdatabase.create_query_sync(query)
+			var/datum/db/query_response/sit_check = GLOB.SSdatabase.create_query_sync(query)
 			if(sit_check.status != DB_QUERY_FINISHED)
 				issue_log += "Unable to update table `[table_name]`, error: '[sit_check.error]'"
 				return FALSE // OH SHIT OH FUCK
-	
+
 	for(var/field in field_types_new)
 		if(!field_types_old[field])
 			var/query = getquery_update_table_add_column(table_name, field, field_types_new[field])
-			var/datum/db/query_response/sit_check = SSdatabase.create_query_sync(query)
+			var/datum/db/query_response/sit_check = GLOB.SSdatabase.create_query_sync(query)
 			if(sit_check.status != DB_QUERY_FINISHED)
 				issue_log += "Unable to update table `[table_name]`, error: '[sit_check.error]'"
 				return FALSE // OH SHIT OH FUCK
 		else
 			if(field_types_old[field] != field_types_new[field])
 				var/query = getquery_update_table_change_column(table_name, field, field_types_new[field])
-				var/datum/db/query_response/sit_check = SSdatabase.create_query_sync(query)
+				var/datum/db/query_response/sit_check = GLOB.SSdatabase.create_query_sync(query)
 				if(sit_check.status != DB_QUERY_FINISHED)
 					issue_log += "Unable to update table `[table_name]`, error: '[sit_check.error]'"
 					return FALSE // OH SHIT OH FUCK
@@ -399,7 +399,7 @@
 	return {"
 			UPDATE `[connection.database]`.`[BRSQL_SYSTABLENAME]` SET type_name = ?, table_name = ?, fields_hash = ?, fields_current= ? WHERE id=[text2num(id)];
 		"}
-		
+
 /datum/db/adapter/brsql_adapter/proc/getquery_sysindex_recordindex(index_name, table_name, fields, var/list/qpar, id = null)
 	var/field_text = jointext(fields, ",")
 	var/new_hash = sha1(field_text)
@@ -474,7 +474,7 @@
 			local_first = FALSE
 		calltext += "([local_text])"
 		first = FALSE
-	
+
 	return {"
 		INSERT INTO `[connection.database]`.`[table_name]` ([insert_items]) VALUES [calltext];
 	"}
@@ -550,7 +550,7 @@
 	for(var/id in ids)
 		if(!first)
 			idtext+=","
-		idtext += "[text2num(id)]"	
+		idtext += "[text2num(id)]"
 		first = FALSE
 	return {"
 		DELETE FROM `[connection.database]`.`[table_name]` WHERE id IN ([idtext]);
@@ -578,19 +578,19 @@
 			return "BIGINT"
 		if(DB_FIELDTYPE_CHAR)
 			return "VARCHAR(1)"
-		if(DB_FIELDTYPE_STRING_SMALL)	
+		if(DB_FIELDTYPE_STRING_SMALL)
 			return "VARCHAR(16)"
-		if(DB_FIELDTYPE_STRING_MEDIUM)	
+		if(DB_FIELDTYPE_STRING_MEDIUM)
 			return "VARCHAR(64)"
-		if(DB_FIELDTYPE_STRING_LARGE)	
+		if(DB_FIELDTYPE_STRING_LARGE)
 			return "VARCHAR(256)"
-		if(DB_FIELDTYPE_STRING_MAX)	
+		if(DB_FIELDTYPE_STRING_MAX)
 			return "VARCHAR(4000)"
-		if(DB_FIELDTYPE_DATE)	
+		if(DB_FIELDTYPE_DATE)
 			return "DATETIME"
-		if(DB_FIELDTYPE_TEXT)	
+		if(DB_FIELDTYPE_TEXT)
 			return "TEXT"
-		if(DB_FIELDTYPE_BLOB)	
+		if(DB_FIELDTYPE_BLOB)
 			return "BLOB"
 		if(DB_FIELDTYPE_DECIMAL)
 			return "DECIMAL(18,5)"
@@ -634,7 +634,7 @@
 		if(!field_path)
 			field_path = field
 		internal_parse_column(field, field_path, view, shared_options, meta_to_load, meta_to_table, join_conditions, field_alias)
-	
+
 	if(view.root_filter)
 		var/list/filter_columns = view.root_filter.get_columns()
 		for(var/field in filter_columns)
@@ -649,7 +649,7 @@
 			var/result_true = case_f.result_true
 			var/result_false = case_f.result_false
 			var/condition_text = get_filter(case_f.condition, field_alias, pflds)
-			var/true_text			
+			var/true_text
 			if(result_true)
 				var/datum/db/native_function/native_true = result_true
 				if(istype(native_true))
@@ -673,7 +673,7 @@
 				false_text = "ELSE ([false_text]) "
 			return "CASE WHEN [condition_text] THEN ([true_text]) [false_text] END"
 		else
-			return NF.default_to_string(field_alias, pflds)	
+			return NF.default_to_string(field_alias, pflds)
 
 /datum/db/adapter/brsql_adapter/proc/internal_generate_view_query(var/datum/entity_view_meta/view, var/list/shared_options, var/list/datum/entity_meta/meta_to_load, var/list/meta_to_table, var/list/datum/db/filter/join_conditions, var/list/field_alias)
 	var/list/pre_pflds = list()
@@ -696,7 +696,7 @@
 		var/join_c = get_filter(join_conditions[alias_t], null, pre_pflds)
 		join_text += "LEFT JOIN "
 		join_text += "`[connection.database]`.`[name_t]` as `[alias_t]` on [join_c] "
-	
+
 	query_text += join_text
 
 	query_text += "WHERE "
@@ -734,7 +734,7 @@
 		var/group_text = "GROUP BY "
 		var/index_order = 1
 		for(var/fld in view.group_by)
-			var/field = field_alias[fld]			
+			var/field = field_alias[fld]
 			group_text += "[field]"
 			if(index_order != group_length)
 				group_text += ","
@@ -750,7 +750,7 @@
 	// this is a function?
 	if(istype(NF))
 		var/list/field_list = NF.get_columns()
-		
+
 		for(var/sub_field in field_list)
 			internal_parse_column(sub_field, sub_field, view, shared_options, meta_to_load, meta_to_table, join_conditions, field_alias)
 		if(field)

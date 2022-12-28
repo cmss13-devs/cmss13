@@ -51,8 +51,7 @@
 		airlock.setDir(BM.build_dir)
 	else if(istype(object, /turf) && ctrl_click && left_click)
 		var/obj/structure/window/reinforced/window
-		var/diagonals = list(NORTHEAST, NORTHWEST, SOUTHEAST, SOUTHWEST)
-		if(BM.build_dir in diagonals)
+		if(BM.build_dir in GLOB.diagonals)
 			window = new /obj/structure/window/framed(get_turf(object))
 		else
 			window = new /obj/structure/window/framed/almayer/hull(get_turf(object))

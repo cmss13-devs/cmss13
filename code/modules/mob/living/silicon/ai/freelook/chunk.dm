@@ -88,7 +88,7 @@
 		for(var/turf/t in c.can_see())
 			newVisibleTurfs[t] = t
 
-	// Removes turf that isn't in turfs.
+	// Removes turf that isn't in GLOB.turfs.
 	newVisibleTurfs &= turfs
 
 	var/list/visAdded = newVisibleTurfs - visibleTurfs
@@ -154,7 +154,7 @@
 		for(var/turf/t in c.can_see())
 			visibleTurfs[t] = t
 
-	// Removes turf that isn't in turfs.
+	// Removes turf that isn't in GLOB.turfs.
 	visibleTurfs &= turfs
 
 	obscuredTurfs = turfs - visibleTurfs

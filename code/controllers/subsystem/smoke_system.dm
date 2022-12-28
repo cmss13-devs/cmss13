@@ -1,5 +1,4 @@
-var/list/active_smoke_effects = list()
-
+GLOBAL_LIST_EMPTY(active_smoke_effects)
 
 SUBSYSTEM_DEF(smoke_effects)
 	name     = "Smoke Effects"
@@ -10,13 +9,13 @@ SUBSYSTEM_DEF(smoke_effects)
 	var/list/currentrun = list()
 
 /datum/controller/subsystem/smoke_effects/stat_entry(msg)
-	msg = "P:[active_smoke_effects.len]"
+	msg = "P:[GLOB.active_smoke_effects.len]"
 	return ..()
 
 
 /datum/controller/subsystem/smoke_effects/fire(resumed = FALSE)
 	if(!resumed)
-		currentrun = active_smoke_effects.Copy()
+		currentrun = GLOB.active_smoke_effects.Copy()
 
 	while(currentrun.len)
 		var/obj/effect/particle_effect/smoke/E = currentrun[currentrun.len]

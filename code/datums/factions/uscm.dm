@@ -5,7 +5,7 @@
 /datum/faction/uscm/modify_hud_holder(image/holder, mob/living/carbon/human/H)
 	var/datum/squad/squad = H.assigned_squad
 	if(istype(squad))
-		var/squad_clr = squad_colors[H.assigned_squad.color]
+		var/squad_clr = GLOB.squad_colors[H.assigned_squad.color]
 		var/marine_rk
 		var/obj/item/card/id/I = H.get_idcard()
 		var/_role
@@ -38,7 +38,7 @@
 		else
 			H.langchat_styles = initial(H.langchat_styles)
 
-		H.langchat_color = squad_colors_chat[H.assigned_squad.color]
+		H.langchat_color = GLOB.squad_colors_chat[H.assigned_squad.color]
 
 		if(!marine_rk) marine_rk = H.rank_fallback
 		if(marine_rk)

@@ -695,7 +695,7 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 	if(target.density)
 		return
 
-	for(var/spread_direction in alldirs)
+	for(var/spread_direction in GLOB.alldirs)
 
 		var/spread_power = remaining_distance
 
@@ -739,7 +739,7 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 	R.burncolor = f_color
 
 	new/obj/flamer_fire(target, cause_data, R)
-	for(var/direction in alldirs)
+	for(var/direction in GLOB.alldirs)
 		var/spread_power = range
 		switch(direction)
 			if(NORTH,SOUTH,EAST,WEST)

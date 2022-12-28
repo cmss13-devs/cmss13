@@ -28,7 +28,7 @@
 
 /obj/structure/machinery/chem_storage/Initialize()
 	. = ..()
-	chemical_data.add_chem_storage(src)
+	GLOB.chemical_data.add_chem_storage(src)
 	start_processing()
 
 /obj/structure/machinery/chem_storage/get_examine_text(mob/user)

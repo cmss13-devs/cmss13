@@ -142,7 +142,7 @@
 			if(isitem(A))
 				var/obj/item/item = A
 				if(item.is_objective && item.unacidable)
-					item.forceMove(get_step(loc, pick(alldirs)))
+					item.forceMove(get_step(loc, pick(GLOB.alldirs)))
 
 		QDEL_NULL(melting_body)
 	else

@@ -26,28 +26,28 @@
 	return values
 
 /proc/test_read(id)
-	var/datum/entity/test_entity/ET = SSentity_manager.select(/datum/entity/test_entity, id)
+	var/datum/entity/test_entity/ET = GLOB.SSentity_manager.select(/datum/entity/test_entity, id)
 	ET.sync_then(CALLBACK(GLOBAL_PROC, /proc/log_sync))
 
 /proc/test_insert(name, desc, value)
-	var/datum/entity/test_entity/ET = SSentity_manager.select(/datum/entity/test_entity)
+	var/datum/entity/test_entity/ET = GLOB.SSentity_manager.select(/datum/entity/test_entity)
 	ET.name = name
 	ET.description = desc
 	ET.value = value
 	ET.save()
 
 /proc/test_update(id, nvalue)
-	var/datum/entity/test_entity/ET = SSentity_manager.select(/datum/entity/test_entity, id)
+	var/datum/entity/test_entity/ET = GLOB.SSentity_manager.select(/datum/entity/test_entity, id)
 	ET.sync()
 	ET.value = nvalue
 	ET.save()
 
 /proc/test_delete(id)
-	var/datum/entity/test_entity/ET = SSentity_manager.select(/datum/entity/test_entity, id)
+	var/datum/entity/test_entity/ET = GLOB.SSentity_manager.select(/datum/entity/test_entity, id)
 	ET.delete()
 
 /proc/test_filter(value)
-	SSentity_manager.filter_then(/datum/entity/test_entity, DB_COMP("value", DB_EQUALS, value), CALLBACK(GLOBAL_PROC, /proc/log_filter))
+	GLOB.SSentity_manager.filter_then(/datum/entity/test_entity, DB_COMP("value", DB_EQUALS, value), CALLBACK(GLOBAL_PROC, /proc/log_filter))
 
 /proc/log_filter(var/list/datum/entity/elist)
 	to_world("got [elist.len] items")

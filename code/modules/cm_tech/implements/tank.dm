@@ -36,8 +36,8 @@
 /obj/item/tank_coupon/proc/redeem_tank(mob/user)
 	SHOULD_NOT_SLEEP(TRUE)
 	. = FALSE
-	var/obj/structure/machinery/computer/supplycomp/vehicle/comp = VehicleElevatorConsole
-	var/obj/structure/machinery/cm_vending/gear/vehicle_crew/gearcomp = VehicleGearConsole
+	var/obj/structure/machinery/computer/supplycomp/vehicle/comp = GLOB.VehicleElevatorConsole
+	var/obj/structure/machinery/cm_vending/gear/vehicle_crew/gearcomp = GLOB.VehicleGearConsole
 
 	if(!comp || !gearcomp)
 		return
@@ -62,11 +62,11 @@
 	var/datum/supply_packs/VK = /datum/supply_packs/vc_kit
 	var/pack = initial(VK.name)
 	var/datum/supply_order/O = new /datum/supply_order()
-	O.ordernum = supply_controller.ordernum
-	supply_controller.ordernum++
-	O.object = supply_controller.supply_packs[pack]
+	O.ordernum = GLOB.supply_controller.ordernum
+	GLOB.supply_controller.ordernum++
+	O.object = GLOB.supply_controller.supply_packs[pack]
 	O.orderedby = MAIN_AI_SYSTEM
 	O.approvedby = MAIN_AI_SYSTEM
-	supply_controller.shoppinglist += O
+	GLOB.supply_controller.shoppinglist += O
 
 	return TRUE

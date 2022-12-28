@@ -10,7 +10,7 @@
 #define DEFCON_POINT_GAIN_PER_LEVEL 2
 #define DEFCON_MAX_LEVEL 5
 
-var/global/datum/controller/defcon/defcon_controller
+GLOBAL_DATUM(defcon_controller, /datum/controller/defcon)
 
 /datum/controller/defcon
 	name = "DEFCON Level Accounting"
@@ -58,10 +58,10 @@ var/global/datum/controller/defcon/defcon_controller
 	if(current_defcon_level > 1)
 		if(last_objectives_scored_points > defcon_level_triggers[current_defcon_level - 1])
 			decrease_defcon_level()
-	if(round_statistics)
-		round_statistics.defcon_level = current_defcon_level
-		round_statistics.objective_points = last_objectives_scored_points
-		round_statistics.total_objective_points = last_objectives_total_points
+	if(GLOB.round_statistics)
+		GLOB.round_statistics.defcon_level = current_defcon_level
+		GLOB.round_statistics.objective_points = last_objectives_scored_points
+		GLOB.round_statistics.total_objective_points = last_objectives_total_points
 
 /datum/controller/defcon/proc/announce_defcon_level()
 	//Send ARES message about new DEFCON level

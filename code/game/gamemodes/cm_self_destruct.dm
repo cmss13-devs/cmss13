@@ -43,7 +43,7 @@ Regardless of where it's detonated, or how, a successful detonation will end the
 All of the necessary difines are stored under mode.dm in defines.
 */
 
-var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initited elsewhere so that the world has a chance to load in.
+GLOBAL_DATUM(EvacuationAuthority, /datum/authority/branch/evacuation) //This is initited elsewhere so that the world has a chance to load in.
 
 /datum/authority/branch/evacuation
 	var/name = "Evacuation Authority"
@@ -97,11 +97,11 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 		ai_announcement("Attention. Emergency. All personnel must evacuate immediately. You have [round(EVACUATION_ESTIMATE_DEPARTURE/60,1)] minute\s until departure.", 'sound/AI/evacuate.ogg')
 		xeno_message_all("A wave of adrenaline ripples through the hive. The fleshy creatures are trying to escape!")
 		var/datum/shuttle/ferry/marine/evacuation_pod/P
-		for(var/obj/structure/machinery/status_display/SD in machines)
+		for(var/obj/structure/machinery/status_display/SD in GLOB.machines)
 			if(is_mainship_level(SD.z))
 				SD.set_picture("evac")
 		for(var/i = 1 to MAIN_SHIP_ESCAPE_POD_NUMBER)
-			P = shuttle_controller.shuttles["[MAIN_SHIP_NAME] Evac [i]"]
+			P = GLOB.shuttle_controller.shuttles["[MAIN_SHIP_NAME] Evac [i]"]
 			P.toggle_ready()
 		activate_lifeboats()
 		process_evacuation()
@@ -115,11 +115,11 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 		ai_announcement("Evacuation has been cancelled.", 'sound/AI/evacuate_cancelled.ogg')
 		var/datum/shuttle/ferry/marine/evacuation_pod/P
 		if(get_security_level() == "red")
-			for(var/obj/structure/machinery/status_display/SD in machines)
+			for(var/obj/structure/machinery/status_display/SD in GLOB.machines)
 				if(is_mainship_level(SD.z))
 					SD.set_picture("redalert")
 		for(var/i = 1 to MAIN_SHIP_ESCAPE_POD_NUMBER)
-			P = shuttle_controller.shuttles["[MAIN_SHIP_NAME] Evac [i]"]
+			P = GLOB.shuttle_controller.shuttles["[MAIN_SHIP_NAME] Evac [i]"]
 			P.toggle_ready()
 		return TRUE
 
@@ -135,7 +135,7 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 			for(i = 1 to MAIN_SHIP_ESCAPE_POD_NUMBER) L += i
 			while(L.len)
 				i = pick(L)
-				P = shuttle_controller.shuttles["[MAIN_SHIP_NAME] Evac [i]"]
+				P = GLOB.shuttle_controller.shuttles["[MAIN_SHIP_NAME] Evac [i]"]
 				P.prepare_for_launch() //May or may not launch, will do everything on its own.
 				L -= i
 				sleep(50) //Sleeps 5 seconds each launch.
@@ -200,7 +200,7 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 		dest_started_at = world.time
 		set_security_level(SEC_LEVEL_DELTA) //also activate Delta alert, to open the SD shutters.
 		spawn(0)
-			for(var/obj/structure/machinery/door/poddoor/shutters/almayer/D in machines)
+			for(var/obj/structure/machinery/door/poddoor/shutters/almayer/D in GLOB.machines)
 				if(D.id == "sd_lockdown")
 					D.open()
 		return TRUE
@@ -210,7 +210,7 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 	if(dest_status == NUKE_EXPLOSION_ACTIVE)
 		var/obj/structure/machinery/self_destruct/rod/I
 		var/i
-		for(i in EvacuationAuthority.dest_rods)
+		for(i in GLOB.EvacuationAuthority.dest_rods)
 			I = i
 			if(I.active_state == SELF_DESTRUCT_MACHINE_ARMED && !override)
 				dest_master.state(SPAN_WARNING("WARNING: Unable to cancel detonation. Please disarm all control rods."))
@@ -239,7 +239,7 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 				dest_master.state(SPAN_WARNING("WARNING: Unable to trigger detonation. Please arm all control rods."))
 				return FALSE
 		dest_master.in_progress = !dest_master.in_progress
-		for(i in EvacuationAuthority.dest_rods)
+		for(i in GLOB.EvacuationAuthority.dest_rods)
 			I = i
 			I.in_progress = 1
 		ai_announcement("DANGER. DANGER. Self-destruct system activated. DANGER. DANGER. Self-destruct in progress. DANGER. DANGER.")
@@ -344,7 +344,7 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 
 /obj/structure/machinery/self_destruct/Destroy()
 	. = ..()
-	machines -= src
+	GLOB.machines -= src
 	operator = null
 
 /obj/structure/machinery/self_destruct/ex_act(severity)
@@ -373,8 +373,8 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 
 /obj/structure/machinery/self_destruct/console/Destroy()
 	. = ..()
-	EvacuationAuthority.dest_master = null
-	EvacuationAuthority.dest_rods = null
+	GLOB.EvacuationAuthority.dest_master = null
+	GLOB.EvacuationAuthority.dest_rods = null
 
 /obj/structure/machinery/self_destruct/console/lock_or_unlock(lock)
 	playsound(src, 'sound/machines/hydraulics_1.ogg', 25, 1)
@@ -419,20 +419,20 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 			sleep(2 SECONDS)
 			ai_announcement("Danger. The emergency destruct system is now activated. The ship will detonate in T-minus 20 minutes. Automatic detonation is unavailable. Manual detonation is required.", 'sound/AI/selfdestruct.ogg')
 			active_state = SELF_DESTRUCT_MACHINE_ARMED //Arm it here so the process can execute it later.
-			var/obj/structure/machinery/self_destruct/rod/I = EvacuationAuthority.dest_rods[EvacuationAuthority.dest_index]
+			var/obj/structure/machinery/self_destruct/rod/I = GLOB.EvacuationAuthority.dest_rods[GLOB.EvacuationAuthority.dest_index]
 			I.activate_time = world.time
-			EvacuationAuthority.process_self_destruct()
+			GLOB.EvacuationAuthority.process_self_destruct()
 			. = TRUE
 
 		if("dest_trigger")
-			EvacuationAuthority.initiate_self_destruct()
+			GLOB.EvacuationAuthority.initiate_self_destruct()
 			. = TRUE
 
 		if("dest_cancel")
 			if(!allowed(usr))
 				to_chat(usr, SPAN_WARNING("You don't have the necessary clearance to cancel the emergency destruct system!"))
 				return
-			EvacuationAuthority.cancel_self_destruct()
+			GLOB.EvacuationAuthority.cancel_self_destruct()
 			. = TRUE
 
 /obj/structure/machinery/self_destruct/rod
@@ -444,8 +444,8 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 
 /obj/structure/machinery/self_destruct/rod/Destroy()
 	. = ..()
-	if(EvacuationAuthority && EvacuationAuthority.dest_rods)
-		EvacuationAuthority.dest_rods -= src
+	if(GLOB.EvacuationAuthority && GLOB.EvacuationAuthority.dest_rods)
+		GLOB.EvacuationAuthority.dest_rods -= src
 
 /obj/structure/machinery/self_destruct/rod/lock_or_unlock(lock)
 	playsound(src, 'sound/machines/hydraulics_2.ogg', 25, 1)

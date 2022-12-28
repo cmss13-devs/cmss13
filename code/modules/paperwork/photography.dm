@@ -175,7 +175,7 @@
 	res.Blend("#000", ICON_OVERLAY)
 
 	var/atoms[] = list()
-	for(var/turf/the_turf in turfs)
+	for(var/turf/the_turf in GLOB.turfs)
 		// Add outselves to the list of stuff to draw
 		atoms.Add(the_turf);
 		// As well as anything that isn't invisible.
@@ -209,7 +209,7 @@
 				res.Blend(IM, blendMode2iconMode(A.blend_mode),  A.pixel_x + xoff, A.pixel_y + yoff)
 
 	// Lastly, render any contained effects on top.
-	for(var/turf/the_turf as anything in turfs)
+	for(var/turf/the_turf as anything in GLOB.turfs)
 		// Calculate where we are relative to the center of the photo
 		var/xoff = (the_turf.x - center.x) * 32 + center_offset
 		var/yoff = (the_turf.y - center.y) * 32 + center_offset
@@ -257,8 +257,8 @@
 /obj/item/device/camera/proc/captureimage(atom/target, mob/user, flag)
 	var/mobs = ""
 	var/radius = (size-1)*0.5
-	var/list/turf/turfs = RANGE_TURFS(radius, target) & view(world_view_size + radius, user.client)
-	for(var/turf/T as anything in turfs)
+	var/list/turf/turfs = RANGE_TURFS(radius, target) & view(GLOB.world_view_size + radius, user.client)
+	for(var/turf/T as anything in GLOB.turfs)
 		mobs += get_mobs(T)
 	var/datum/picture/P = createpicture(target, user, turfs, mobs, flag)
 	printpicture(user, P)

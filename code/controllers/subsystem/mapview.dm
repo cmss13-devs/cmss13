@@ -21,7 +21,7 @@ SUBSYSTEM_DEF(mapview)
 	ready = TRUE
 
 /datum/controller/subsystem/mapview/fire(resumed = FALSE)
-	if(!ready || !RoleAuthority)
+	if(!ready || !GLOB.RoleAuthority)
 		return
 	if(!resumed)
 		currentrun = map_machines.Copy()

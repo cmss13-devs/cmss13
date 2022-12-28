@@ -75,7 +75,7 @@
 		junction = 0
 		if(anchored)
 			var/turf/TU
-			for(var/dirn in cardinal)
+			for(var/dirn in GLOB.cardinal)
 				TU = get_step(src, dirn)
 				var/obj/structure/window/W = locate() in TU
 				if(W && W.anchored && W.density && W.legacy_full) //Only counts anchored, non-destroyed, legacy full-tile windows.
@@ -347,7 +347,7 @@
 //This proc is used to update the icons of nearby windows.
 /obj/structure/window/proc/update_nearby_icons()
 	update_icon()
-	for(var/direction in cardinal)
+	for(var/direction in GLOB.cardinal)
 		for(var/obj/structure/window/W in get_step(src, direction))
 			W.update_icon()
 
@@ -833,7 +833,7 @@
 		return
 	else
 		triggered = 1
-	for(var/direction in cardinal)
+	for(var/direction in GLOB.cardinal)
 		if(direction == from_dir) continue //doesn't check backwards
 		for(var/obj/structure/window/framed/prison/reinforced/hull/W in get_step(src,direction) )
 			W.spawn_shutters(turn(direction,180))
@@ -917,7 +917,7 @@
 		return
 
 	triggered = 1
-	for(var/direction in cardinal)
+	for(var/direction in GLOB.cardinal)
 		if(direction == from_dir)
 			continue //doesn't check backwards
 

@@ -18,7 +18,7 @@
 
 /mob/new_player/Destroy()
 	if(ready)
-		readied_players--
+		GLOB.readied_players--
 	GLOB.new_player_list -= src
 	GLOB.dead_mob_list -= src
 	return ..()
@@ -81,14 +81,14 @@
 			if(SSticker.current_state < GAME_STATE_PREGAME)
 				to_chat(src, "Game is still starting up, please wait")
 				return
-			if(!SSentity_manager.ready)
+			if(!GLOB.SSentity_manager.ready)
 				to_chat(src, "DB is still starting up, please wait")
 				return
 			client.prefs.ShowChoices(src)
 			return 1
 
 		if("show_playtimes")
-			if(!SSentity_manager.ready)
+			if(!GLOB.SSentity_manager.ready)
 				to_chat(src, "DB is still starting up, please wait")
 				return
 			if(client.player_data)
@@ -98,14 +98,14 @@
 		if("ready")
 			if( (SSticker.current_state <= GAME_STATE_PREGAME) && !ready) // Make sure we don't ready up after the round has started
 				ready = TRUE
-				readied_players++
+				GLOB.readied_players++
 
 			new_player_panel_proc()
 
 		if("unready")
 			if((SSticker.current_state <= GAME_STATE_PREGAME) && ready) // Make sure we don't ready up after the round has started
 				ready = FALSE
-				readied_players--
+				GLOB.readied_players--
 
 			new_player_panel_proc()
 
@@ -146,7 +146,7 @@
 				mind.transfer_to(observer, TRUE)
 
 				if(observer.client)
-					observer.client.change_view(world_view_size)
+					observer.client.change_view(GLOB.world_view_size)
 
 				observer.set_huds_from_prefs()
 
@@ -208,7 +208,7 @@
 
 		if("SelectedJob")
 
-			if(!enter_allowed)
+			if(!GLOB.enter_allowed)
 				to_chat(usr, SPAN_WARNING("There is an administrative lock on entering the game! (The dropship likely crashed into the Almayer. This should take at most 20 minutes.)"))
 				return
 
@@ -234,10 +234,10 @@
 	if(SSticker.current_state != GAME_STATE_PLAYING)
 		to_chat(usr, SPAN_WARNING("The round is either not ready, or has already finished!"))
 		return
-	if(!enter_allowed)
+	if(!GLOB.enter_allowed)
 		to_chat(usr, SPAN_WARNING("There is an administrative lock on entering the game! (The dropship likely crashed into the Almayer. This should take at most 20 minutes.)"))
 		return
-	if(!RoleAuthority.assign_role(src, RoleAuthority.roles_for_mode[rank], 1))
+	if(!GLOB.RoleAuthority.assign_role(src, GLOB.RoleAuthority.roles_for_mode[rank], 1))
 		to_chat(src, alert("[rank] is not available. Please try another."))
 		return
 
@@ -245,18 +245,18 @@
 	close_spawn_windows()
 
 	var/mob/living/carbon/human/character = create_character()	//creates the human and transfers vars and mind
-	RoleAuthority.equip_role(character, RoleAuthority.roles_for_mode[rank], late_join = TRUE)
+	GLOB.RoleAuthority.equip_role(character, GLOB.RoleAuthority.roles_for_mode[rank], late_join = TRUE)
 	EquipCustomItems(character)
 
-	if(security_level > SEC_LEVEL_BLUE || EvacuationAuthority.evac_status)
-		to_chat(character, SPAN_HIGHDANGER("As you stagger out of hypersleep, the sleep bay blares: '[EvacuationAuthority.evac_status ? "VESSEL UNDERGOING EVACUATION PROCEDURES, SELF DEFENSE KIT PROVIDED" : "VESSEL IN HEIGHTENED ALERT STATUS, SELF DEFENSE KIT PROVIDED"]'."))
+	if(GLOB.security_level > SEC_LEVEL_BLUE || GLOB.EvacuationAuthority.evac_status)
+		to_chat(character, SPAN_HIGHDANGER("As you stagger out of hypersleep, the sleep bay blares: '[GLOB.EvacuationAuthority.evac_status ? "VESSEL UNDERGOING EVACUATION PROCEDURES, SELF DEFENSE KIT PROVIDED" : "VESSEL IN HEIGHTENED ALERT STATUS, SELF DEFENSE KIT PROVIDED"]'."))
 		character.put_in_hands(new /obj/item/storage/box/kit/cryo_self_defense(character.loc))
 
 	GLOB.data_core.manifest_inject(character)
 	SSticker.minds += character.mind//Cyborgs and AIs handle this in the transform proc.	//TODO!!!!! ~Carn
-	SSticker.mode.latejoin_tally += RoleAuthority.calculate_role_weight(RoleAuthority.roles_for_mode[rank])
+	SSticker.mode.latejoin_tally += GLOB.RoleAuthority.calculate_role_weight(GLOB.RoleAuthority.roles_for_mode[rank])
 
-	for(var/datum/squad/sq in RoleAuthority.squads)
+	for(var/datum/squad/sq in GLOB.RoleAuthority.squads)
 		if(sq)
 			sq.max_engineers = engi_slot_formula(GLOB.clients.len)
 			sq.max_medics = medic_slot_formula(GLOB.clients.len)
@@ -294,52 +294,52 @@
 	var/dat = "<html><body onselectstart='return false;'><center>"
 	dat += "Round Duration: [round(hours)]h [round(mins)]m<br>"
 
-	if(EvacuationAuthority)
-		switch(EvacuationAuthority.evac_status)
+	if(GLOB.EvacuationAuthority)
+		switch(GLOB.EvacuationAuthority.evac_status)
 			if(EVACUATION_STATUS_INITIATING) dat += "<font color='red'><b>The [MAIN_SHIP_NAME] is being evacuated.</b></font><br>"
 			if(EVACUATION_STATUS_COMPLETE) dat += "<font color='red'>The [MAIN_SHIP_NAME] has undergone evacuation.</font><br>"
 
 	dat += "Choose from the following open positions:<br>"
 	var/roles_show = FLAG_SHOW_ALL_JOBS
 
-	for(var/i in RoleAuthority.roles_for_mode)
-		var/datum/job/J = RoleAuthority.roles_for_mode[i]
-		if(!RoleAuthority.check_role_entry(src, J, TRUE))
+	for(var/i in GLOB.RoleAuthority.roles_for_mode)
+		var/datum/job/J = GLOB.RoleAuthority.roles_for_mode[i]
+		if(!GLOB.RoleAuthority.check_role_entry(src, J, TRUE))
 			continue
 		var/active = 0
 		// Only players with the job assigned and AFK for less than 10 minutes count as active
 		for(var/mob/M in GLOB.player_list)
 			if(M.client && M.job == J.title)
 				active++
-		if(roles_show & FLAG_SHOW_CIC && ROLES_CIC.Find(J.title))
+		if(roles_show & FLAG_SHOW_CIC && GLOB.ROLES_CIC.Find(J.title))
 			dat += "Command:<br>"
 			roles_show ^= FLAG_SHOW_CIC
 
-		else if(roles_show & FLAG_SHOW_AUXIL_SUPPORT && ROLES_AUXIL_SUPPORT.Find(J.title))
+		else if(roles_show & FLAG_SHOW_AUXIL_SUPPORT && GLOB.ROLES_AUXIL_SUPPORT.Find(J.title))
 			dat += "<hr>Auxiliary Combat Support:<br>"
 			roles_show ^= FLAG_SHOW_AUXIL_SUPPORT
 
-		else if(roles_show & FLAG_SHOW_MISC && ROLES_MISC.Find(J.title))
+		else if(roles_show & FLAG_SHOW_MISC && GLOB.ROLES_MISC.Find(J.title))
 			dat += "<hr>Other:<br>"
 			roles_show ^= FLAG_SHOW_MISC
 
-		else if(roles_show & FLAG_SHOW_POLICE && ROLES_POLICE.Find(J.title))
+		else if(roles_show & FLAG_SHOW_POLICE && GLOB.ROLES_POLICE.Find(J.title))
 			dat += "<hr>Military Police:<br>"
 			roles_show ^= FLAG_SHOW_POLICE
 
-		else if(roles_show & FLAG_SHOW_ENGINEERING && ROLES_ENGINEERING.Find(J.title))
+		else if(roles_show & FLAG_SHOW_ENGINEERING && GLOB.ROLES_ENGINEERING.Find(J.title))
 			dat += "<hr>Engineering:<br>"
 			roles_show ^= FLAG_SHOW_ENGINEERING
 
-		else if(roles_show & FLAG_SHOW_REQUISITION && ROLES_REQUISITION.Find(J.title))
+		else if(roles_show & FLAG_SHOW_REQUISITION && GLOB.ROLES_REQUISITION.Find(J.title))
 			dat += "<hr>Requisitions:<br>"
 			roles_show ^= FLAG_SHOW_REQUISITION
 
-		else if(roles_show & FLAG_SHOW_MEDICAL && ROLES_MEDICAL.Find(J.title))
+		else if(roles_show & FLAG_SHOW_MEDICAL && GLOB.ROLES_MEDICAL.Find(J.title))
 			dat += "<hr>Medbay:<br>"
 			roles_show ^= FLAG_SHOW_MEDICAL
 
-		else if(roles_show & FLAG_SHOW_MARINES && ROLES_MARINES.Find(J.title))
+		else if(roles_show & FLAG_SHOW_MARINES && GLOB.ROLES_MARINES.Find(J.title))
 			dat += "<hr>Squad Riflemen:<br>"
 			roles_show ^= FLAG_SHOW_MARINES
 
@@ -392,7 +392,7 @@
 	INVOKE_ASYNC(new_character, /mob/living/carbon/human.proc/update_hair)
 
 	new_character.key = key		//Manually transfer the key to log them in
-	new_character.client?.change_view(world_view_size)
+	new_character.client?.change_view(GLOB.world_view_size)
 
 	return new_character
 

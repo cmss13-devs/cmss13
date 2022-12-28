@@ -161,7 +161,7 @@
 	if(!simulation)
 		to_chat(user, SPAN_WARNING("GPU damaged! Unable to start simulation."))
 		return
-	if(user.client.view != world_view_size)
+	if(user.client.view != GLOB.world_view_size)
 		to_chat(user, SPAN_WARNING("You're too busy looking at something else."))
 		return
 	user.reset_view(simulation)

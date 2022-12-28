@@ -371,7 +371,7 @@
 // Hellhound strain flags
 #define HELLHOUND_NORMAL	"Normal"
 
-var/list/default_onmob_icons = list(
+GLOBAL_LIST_INIT(default_onmob_icons, list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/items_lefthand_0.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/items_righthand_0.dmi',
 		WEAR_WAIST = 'icons/mob/humans/onmob/belt.dmi',
@@ -390,9 +390,9 @@ var/list/default_onmob_icons = list(
 		WEAR_HANDS = 'icons/mob/humans/onmob/hands.dmi',
 		WEAR_J_STORE = 'icons/mob/humans/onmob/suit_slot.dmi',
 		WEAR_ACCESSORIES = 'icons/mob/humans/onmob/ties.dmi'
-		)
+		))
 
-var/list/default_xeno_onmob_icons = list(
+GLOBAL_LIST_INIT(default_xeno_onmob_icons, list(
 		/mob/living/carbon/Xenomorph/Runner = 'icons/mob/xenos/onmob/runner.dmi',
 		/mob/living/carbon/Xenomorph/Praetorian = 'icons/mob/xenos/onmob/praetorian.dmi',
 		/mob/living/carbon/Xenomorph/Drone = 'icons/mob/xenos/onmob/drone.dmi',
@@ -400,7 +400,7 @@ var/list/default_xeno_onmob_icons = list(
 		/mob/living/carbon/Xenomorph/Defender = 'icons/mob/xenos/onmob/defender.dmi',
 		/mob/living/carbon/Xenomorph/Sentinel = 'icons/mob/xenos/onmob/sentinel.dmi',
 		/mob/living/carbon/Xenomorph/Spitter = 'icons/mob/xenos/onmob/spitter.dmi'
-		)
+		))
 
 // species names
 #define SPECIES_HUMAN "Human"

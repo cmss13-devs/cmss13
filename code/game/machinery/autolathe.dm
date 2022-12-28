@@ -506,7 +506,7 @@
 	if(panel_wires.len)
 		data["wires"] = panel_wires
 
-	ui = nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
+	ui = GLOB.nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
 
 	if (!ui)
 		ui = new(user, src, ui_key, "autolathe.tmpl", "[name] Control Panel" , 600, 700)

@@ -6,7 +6,7 @@
 #define SUPPLY_COST_MULTIPLIER 1.08
 #define ASRS_COST_MULTIPLIER 1.2
 
-var/datum/controller/supply/supply_controller = new()
+GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new)
 
 /area/supply
 	ceiling = CEILING_METAL
@@ -153,11 +153,11 @@ var/datum/controller/supply/supply_controller = new()
 	var/list/data = list()
 
 	var/list/squad_list = list()
-	for(var/datum/squad/S in RoleAuthority.squads)
+	for(var/datum/squad/S in GLOB.RoleAuthority.squads)
 		if(S.active && S.faction == faction && S.color)
 			squad_list += list(list(
 				"squad_name" = S.name,
-				"squad_color" = squad_colors[S.color]
+				"squad_color" = GLOB.squad_colors[S.color]
 				))
 
 	data["can_pick_squad"] = can_pick_squad
@@ -367,7 +367,7 @@ var/datum/controller/supply/supply_controller = new()
 			if(processing)
 				iteration++
 				points += points_per_process
-				if(iteration >= 20 && iteration % base_random_crate_interval == 0 && supply_controller.shoppinglist.len <= 20)
+				if(iteration >= 20 && iteration % base_random_crate_interval == 0 && GLOB.supply_controller.shoppinglist.len <= 20)
 					add_random_crates()
 					crate_iteration++
 			sleep(processing_interval)
@@ -394,18 +394,18 @@ var/datum/controller/supply/supply_controller = new()
 //This is a weighted pick based upon their cost.
 //Their cost will go up if the crate is picked
 /datum/controller/supply/proc/add_random_crate()
-	var/datum/supply_packs/C = supply_controller.pick_weighted_crate(random_supply_packs)
+	var/datum/supply_packs/C = GLOB.supply_controller.pick_weighted_crate(random_supply_packs)
 	if(C == null)
 		return
 	C.cost = round(C.cost * ASRS_COST_MULTIPLIER) //We still do this to raise the weight
 	//We have to create a supply order to make the system spawn it. Here we transform a crate into an order.
 	var/datum/supply_order/O = new /datum/supply_order()
-	O.ordernum = supply_controller.ordernum
+	O.ordernum = GLOB.supply_controller.ordernum
 	O.object = C
 	O.orderedby = "ASRS"
 	O.approvedby = "ASRS"
 	//We add the order to the shopping list
-	supply_controller.shoppinglist += O
+	GLOB.supply_controller.shoppinglist += O
 
 //Here we weigh the crate based upon it's cost
 /datum/controller/supply/proc/pick_weighted_crate(list/cratelist)
@@ -588,10 +588,10 @@ var/datum/controller/supply/supply_controller = new()
 	if(temp)
 		dat = temp
 	else
-		var/datum/shuttle/ferry/supply/shuttle = supply_controller.shuttle
+		var/datum/shuttle/ferry/supply/shuttle = GLOB.supply_controller.shuttle
 		if (shuttle)
 			dat += {"Location: [shuttle.has_arrive_time() ? "Raising platform":shuttle.at_station() ? "Raised":"Lowered"]<BR>
-			<HR>Supply budget: $[supply_controller.points * SUPPLY_TO_MONEY_MUPLTIPLIER]<BR>
+			<HR>Supply budget: $[GLOB.supply_controller.points * SUPPLY_TO_MONEY_MUPLTIPLIER]<BR>
 		<BR>\n<A href='?src=\ref[src];order=categories'>Request items</A><BR><BR>
 		<A href='?src=\ref[src];vieworders=1'>View approved orders</A><BR><BR>
 		<A href='?src=\ref[src];viewrequests=1'>View requests</A><BR><BR>
@@ -612,18 +612,18 @@ var/datum/controller/supply/supply_controller = new()
 			//all_supply_groups
 			//Request what?
 			last_viewed_group = "categories"
-			temp = "<b>Supply budget: $[supply_controller.points * SUPPLY_TO_MONEY_MUPLTIPLIER]</b><BR>"
+			temp = "<b>Supply budget: $[GLOB.supply_controller.points * SUPPLY_TO_MONEY_MUPLTIPLIER]</b><BR>"
 			temp += "<A href='?src=\ref[src];mainmenu=1'>Main Menu</A><HR><BR><BR>"
 			temp += "<b>Select a category</b><BR><BR>"
-			for(var/supply_group_name in all_supply_groups )
+			for(var/supply_group_name in GLOB.all_supply_groups )
 				temp += "<A href='?src=\ref[src];order=[supply_group_name]'>[supply_group_name]</A><BR>"
 		else
 			last_viewed_group = href_list["order"]
-			temp = "<b>Supply budget: $[supply_controller.points * SUPPLY_TO_MONEY_MUPLTIPLIER]</b><BR>"
+			temp = "<b>Supply budget: $[GLOB.supply_controller.points * SUPPLY_TO_MONEY_MUPLTIPLIER]</b><BR>"
 			temp += "<A href='?src=\ref[src];order=categories'>Back to all categories</A><HR><BR><BR>"
 			temp += "<b>Request from: [last_viewed_group]</b><BR><BR>"
-			for(var/supply_name in supply_controller.supply_packs )
-				var/datum/supply_packs/N = supply_controller.supply_packs[supply_name]
+			for(var/supply_name in GLOB.supply_controller.supply_packs )
+				var/datum/supply_packs/N = GLOB.supply_controller.supply_packs[supply_name]
 				if(N.hidden || N.contraband || N.group != last_viewed_group || !N.buyable) continue								//Have to send the type instead of a reference to
 				temp += "<A href='?src=\ref[src];doorder=[supply_name]'>[supply_name]</A> Cost: $[round(N.cost) * SUPPLY_TO_MONEY_MUPLTIPLIER]<BR>"		//the obj because it would get caught by the garbage
 
@@ -634,7 +634,7 @@ var/datum/controller/supply/supply_controller = new()
 			return
 
 		//Find the correct supply_pack datum
-		var/datum/supply_packs/P = supply_controller.supply_packs[href_list["doorder"]]
+		var/datum/supply_packs/P = GLOB.supply_controller.supply_packs[href_list["doorder"]]
 		if(!istype(P))	return
 
 		if(P.hidden || P.contraband || !P.buyable)
@@ -654,11 +654,11 @@ var/datum/controller/supply/supply_controller = new()
 		else if(ishighersilicon(usr))
 			idname = usr.real_name
 
-		supply_controller.ordernum++
+		GLOB.supply_controller.ordernum++
 		var/obj/item/paper/reqform = new /obj/item/paper(loc)
 		reqform.name = "Requisition Form - [P.name]"
-		reqform.info += "<h3>[station_name] Supply Requisition Form</h3><hr>"
-		reqform.info += "INDEX: #[supply_controller.ordernum]<br>"
+		reqform.info += "<h3>[GLOB.station_name] Supply Requisition Form</h3><hr>"
+		reqform.info += "INDEX: #[GLOB.supply_controller.ordernum]<br>"
 		reqform.info += "REQUESTED BY: [idname]<br>"
 		reqform.info += "RANK: [idrank]<br>"
 		reqform.info += "REASON: [reason]<br>"
@@ -674,24 +674,24 @@ var/datum/controller/supply/supply_controller = new()
 
 		//make our supply_order datum
 		var/datum/supply_order/O = new /datum/supply_order()
-		O.ordernum = supply_controller.ordernum
+		O.ordernum = GLOB.supply_controller.ordernum
 		O.object = P
 		O.orderedby = idname
-		supply_controller.requestlist += O
+		GLOB.supply_controller.requestlist += O
 
 		temp = "Thanks for your request. The cargo team will process it as soon as possible.<BR>"
 		temp += "<BR><A href='?src=\ref[src];order=[last_viewed_group]'>Back</A> <A href='?src=\ref[src];mainmenu=1'>Main Menu</A>"
 
 	else if (href_list["vieworders"])
 		temp = "Current approved orders: <BR><BR>"
-		for(var/S in supply_controller.shoppinglist)
+		for(var/S in GLOB.supply_controller.shoppinglist)
 			var/datum/supply_order/SO = S
 			temp += "[SO.object.name] approved by [SO.approvedby]<BR>"
 		temp += "<BR><A href='?src=\ref[src];mainmenu=1'>OK</A>"
 
 	else if (href_list["viewrequests"])
 		temp = "Current requests: <BR><BR>"
-		for(var/S in supply_controller.requestlist)
+		for(var/S in GLOB.supply_controller.requestlist)
 			var/datum/supply_order/SO = S
 			temp += "#[SO.ordernum] - [SO.object.name] requested by [SO.orderedby]<BR>"
 		temp += "<BR><A href='?src=\ref[src];mainmenu=1'>OK</A>"
@@ -717,7 +717,7 @@ var/datum/controller/supply/supply_controller = new()
 	if (temp)
 		dat = temp
 	else
-		var/datum/shuttle/ferry/supply/shuttle = supply_controller.shuttle
+		var/datum/shuttle/ferry/supply/shuttle = GLOB.supply_controller.shuttle
 		if (shuttle)
 			dat += "\nPlatform position: "
 			if (shuttle.has_arrive_time())
@@ -751,7 +751,7 @@ var/datum/controller/supply/supply_controller = new()
 					dat += "<BR>\n<BR>"
 
 
-		dat += {"<HR>\nSupply budget: $[supply_controller.points * SUPPLY_TO_MONEY_MUPLTIPLIER]<BR>\n<BR>
+		dat += {"<HR>\nSupply budget: $[GLOB.supply_controller.points * SUPPLY_TO_MONEY_MUPLTIPLIER]<BR>\n<BR>
 		\n<A href='?src=\ref[src];order=categories'>Order items</A><BR>\n<BR>
 		\n<A href='?src=\ref[src];viewrequests=1'>View requests</A><BR>\n<BR>
 		\n<A href='?src=\ref[src];vieworders=1'>View orders</A><BR>\n<BR>
@@ -763,10 +763,10 @@ var/datum/controller/supply/supply_controller = new()
 
 /obj/structure/machinery/computer/supplycomp/Topic(href, href_list)
 	if(!is_mainship_level(z)) return
-	if(!supply_controller)
-		world.log << "## ERROR: Eek. The supply_controller controller datum is missing somehow."
+	if(!GLOB.supply_controller)
+		world.log << "## ERROR: Eek. The GLOB.supply_controller controller datum is missing somehow."
 		return
-	var/datum/shuttle/ferry/supply/shuttle = supply_controller.shuttle
+	var/datum/shuttle/ferry/supply/shuttle = GLOB.supply_controller.shuttle
 	if (!shuttle)
 		world.log << "## ERROR: Eek. The supply/shuttle datum is missing somehow."
 		return
@@ -804,25 +804,25 @@ var/datum/controller/supply/supply_controller = new()
 			//all_supply_groups
 			//Request what?
 			last_viewed_group = "categories"
-			temp = "<b>Supply budget: $[supply_controller.points * SUPPLY_TO_MONEY_MUPLTIPLIER]</b><BR>"
+			temp = "<b>Supply budget: $[GLOB.supply_controller.points * SUPPLY_TO_MONEY_MUPLTIPLIER]</b><BR>"
 			temp += "<A href='?src=\ref[src];mainmenu=1'>Main Menu</A><HR><BR><BR>"
 			temp += "<b>Select a category</b><BR><BR>"
-			for(var/supply_group_name in all_supply_groups )
+			for(var/supply_group_name in GLOB.all_supply_groups )
 				temp += "<A href='?src=\ref[src];order=[supply_group_name]'>[supply_group_name]</A><BR>"
 		else
 			last_viewed_group = href_list["order"]
-			temp = "<b>Supply budget: $[supply_controller.points * SUPPLY_TO_MONEY_MUPLTIPLIER]</b><BR>"
+			temp = "<b>Supply budget: $[GLOB.supply_controller.points * SUPPLY_TO_MONEY_MUPLTIPLIER]</b><BR>"
 			temp += "<A href='?src=\ref[src];order=categories'>Back to all categories</A><HR><BR><BR>"
 			temp += "<b>Request from: [last_viewed_group]</b><BR><BR>"
-			for(var/supply_name in supply_controller.supply_packs )
-				var/datum/supply_packs/N = supply_controller.supply_packs[supply_name]
+			for(var/supply_name in GLOB.supply_controller.supply_packs )
+				var/datum/supply_packs/N = GLOB.supply_controller.supply_packs[supply_name]
 				if((N.hidden && !hacked) || (N.contraband && !can_order_contraband) || N.group != last_viewed_group || !N.buyable) continue								//Have to send the type instead of a reference to
 				temp += "<A href='?src=\ref[src];doorder=[supply_name]'>[supply_name]</A> Cost: $[round(N.cost) * SUPPLY_TO_MONEY_MUPLTIPLIER]<BR>"		//the obj because it would get caught by the garbage
 
-		/*temp = "Supply points: [supply_controller.points]<BR><HR><BR>Request what?<BR><BR>"
+		/*temp = "Supply points: [GLOB.supply_controller.points]<BR><HR><BR>Request what?<BR><BR>"
 
-		for(var/supply_name in supply_controller.supply_packs )
-			var/datum/supply_packs/N = supply_controller.supply_packs[supply_name]
+		for(var/supply_name in GLOB.supply_controller.supply_packs )
+			var/datum/supply_packs/N = GLOB.supply_controller.supply_packs[supply_name]
 			if(N.hidden && !hacked) continue
 			if(N.contraband && !can_order_contraband) continue
 			temp += "<A href='?src=\ref[src];doorder=[supply_name]'>[supply_name]</A> Cost: [N.cost]<BR>"    //the obj because it would get caught by the garbage
@@ -835,7 +835,7 @@ var/datum/controller/supply/supply_controller = new()
 			return
 
 		//Find the correct supply_pack datum
-		var/datum/supply_packs/P = supply_controller.supply_packs[href_list["doorder"]]
+		var/datum/supply_packs/P = GLOB.supply_controller.supply_packs[href_list["doorder"]]
 
 		if(!istype(P))	return
 
@@ -857,11 +857,11 @@ var/datum/controller/supply/supply_controller = new()
 		else if(isSilicon(usr))
 			idname = usr.real_name
 
-		supply_controller.ordernum++
+		GLOB.supply_controller.ordernum++
 		var/obj/item/paper/reqform = new /obj/item/paper(loc)
 		reqform.name = "Requisition Form - [P.name]"
-		reqform.info += "<h3>[station_name] Supply Requisition Form</h3><hr>"
-		reqform.info += "INDEX: #[supply_controller.ordernum]<br>"
+		reqform.info += "<h3>[GLOB.station_name] Supply Requisition Form</h3><hr>"
+		reqform.info += "INDEX: #[GLOB.supply_controller.ordernum]<br>"
 		reqform.info += "REQUESTED BY: [idname]<br>"
 		reqform.info += "RANK: [idrank]<br>"
 		reqform.info += "REASON: [reason]<br>"
@@ -877,10 +877,10 @@ var/datum/controller/supply/supply_controller = new()
 
 		//make our supply_order datum
 		var/datum/supply_order/O = new /datum/supply_order()
-		O.ordernum = supply_controller.ordernum
+		O.ordernum = GLOB.supply_controller.ordernum
 		O.object = P
 		O.orderedby = idname
-		supply_controller.requestlist += O
+		GLOB.supply_controller.requestlist += O
 
 		temp = "Order request placed.<BR>"
 		temp += "<BR><A href='?src=\ref[src];order=[last_viewed_group]'>Back</A>|<A href='?src=\ref[src];mainmenu=1'>Main Menu</A>|<A href='?src=\ref[src];confirmorder=[O.ordernum]'>Authorize Order</A>"
@@ -893,19 +893,19 @@ var/datum/controller/supply/supply_controller = new()
 		temp = "Invalid Request"
 		temp += "<BR><A href='?src=\ref[src];order=[last_viewed_group]'>Back</A>|<A href='?src=\ref[src];mainmenu=1'>Main Menu</A>"
 
-		if(supply_controller.shoppinglist.len > 20)
+		if(GLOB.supply_controller.shoppinglist.len > 20)
 			to_chat(usr, SPAN_DANGER("Current retrieval load has reached maximum capacity."))
 			return
 
-		for(var/i=1, i<=supply_controller.requestlist.len, i++)
-			var/datum/supply_order/SO = supply_controller.requestlist[i]
+		for(var/i=1, i<=GLOB.supply_controller.requestlist.len, i++)
+			var/datum/supply_order/SO = GLOB.supply_controller.requestlist[i]
 			if(SO.ordernum == ordernum)
 				O = SO
 				P = O.object
-				if(supply_controller.points >= round(P.cost))
-					supply_controller.requestlist.Cut(i,i+1)
-					supply_controller.points -= round(P.cost)
-					supply_controller.shoppinglist += O
+				if(GLOB.supply_controller.points >= round(P.cost))
+					GLOB.supply_controller.requestlist.Cut(i,i+1)
+					GLOB.supply_controller.points -= round(P.cost)
+					GLOB.supply_controller.shoppinglist += O
 					P.cost = P.cost * SUPPLY_COST_MULTIPLIER
 					temp = "Thank you for your order.<BR>"
 					temp += "<BR><A href='?src=\ref[src];viewrequests=1'>Back</A> <A href='?src=\ref[src];mainmenu=1'>Main Menu</A>"
@@ -918,7 +918,7 @@ var/datum/controller/supply/supply_controller = new()
 
 	else if (href_list["vieworders"])
 		temp = "Current approved orders: <BR><BR>"
-		for(var/S in supply_controller.shoppinglist)
+		for(var/S in GLOB.supply_controller.shoppinglist)
 			var/datum/supply_order/SO = S
 			temp += "#[SO.ordernum] - [SO.object.name] approved by [SO.approvedby]<BR>"// <A href='?src=\ref[src];cancelorder=[S]'>(Cancel)</A><BR>"
 		temp += "<BR><A href='?src=\ref[src];mainmenu=1'>OK</A>"
@@ -936,7 +936,7 @@ var/datum/controller/supply/supply_controller = new()
 */
 	else if (href_list["viewrequests"])
 		temp = "Current requests: <BR><BR>"
-		for(var/S in supply_controller.requestlist)
+		for(var/S in GLOB.supply_controller.requestlist)
 			var/datum/supply_order/SO = S
 			temp += "#[SO.ordernum] - [SO.object.name] requested by [SO.orderedby] <A href='?src=\ref[src];confirmorder=[SO.ordernum]'>Approve</A> <A href='?src=\ref[src];rreq=[SO.ordernum]'>Remove</A><BR>"
 
@@ -946,16 +946,16 @@ var/datum/controller/supply/supply_controller = new()
 	else if (href_list["rreq"])
 		var/ordernum = text2num(href_list["rreq"])
 		temp = "Invalid Request.<BR>"
-		for(var/i=1, i<=supply_controller.requestlist.len, i++)
-			var/datum/supply_order/SO = supply_controller.requestlist[i]
+		for(var/i=1, i<=GLOB.supply_controller.requestlist.len, i++)
+			var/datum/supply_order/SO = GLOB.supply_controller.requestlist[i]
 			if(SO.ordernum == ordernum)
-				supply_controller.requestlist.Cut(i,i+1)
+				GLOB.supply_controller.requestlist.Cut(i,i+1)
 				temp = "Request removed.<BR>"
 				break
 		temp += "<BR><A href='?src=\ref[src];viewrequests=1'>Back</A> <A href='?src=\ref[src];mainmenu=1'>Main Menu</A>"
 
 	else if (href_list["clearreq"])
-		supply_controller.requestlist.Cut()
+		GLOB.supply_controller.requestlist.Cut()
 		temp = "List cleared.<BR>"
 		temp += "<BR><A href='?src=\ref[src];mainmenu=1'>OK</A>"
 
@@ -1032,8 +1032,8 @@ var/datum/controller/supply/supply_controller = new()
 		new/datum/vehicle_order/apc/cmd()
 	)
 
-	if(!VehicleElevatorConsole)
-		VehicleElevatorConsole = src
+	if(!GLOB.VehicleElevatorConsole)
+		GLOB.VehicleElevatorConsole = src
 
 /obj/structure/machinery/computer/supplycomp/vehicle/attack_hand(var/mob/living/carbon/human/H as mob)
 	if(inoperable())
@@ -1088,8 +1088,8 @@ var/datum/controller/supply/supply_controller = new()
 		return
 	if(spent)
 		return
-	if(!supply_controller)
-		world.log << "## ERROR: Eek. The supply_controller controller datum is missing somehow."
+	if(!GLOB.supply_controller)
+		world.log << "## ERROR: Eek. The GLOB.supply_controller controller datum is missing somehow."
 		return
 
 	if (!SSshuttle.vehicle_elevator)

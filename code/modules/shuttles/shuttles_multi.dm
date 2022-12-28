@@ -52,7 +52,7 @@
 		return
 	add_fingerprint(user)
 
-	var/datum/shuttle/multi_shuttle/MS = shuttle_controller.shuttles[shuttle_tag]
+	var/datum/shuttle/multi_shuttle/MS = GLOB.shuttle_controller.shuttles[shuttle_tag]
 	if(!istype(MS)) return
 
 	var/dat
@@ -83,7 +83,7 @@
 	usr.set_interaction(src)
 	src.add_fingerprint(usr)
 
-	var/datum/shuttle/multi_shuttle/MS = shuttle_controller.shuttles[shuttle_tag]
+	var/datum/shuttle/multi_shuttle/MS = GLOB.shuttle_controller.shuttles[shuttle_tag]
 	if(!istype(MS))
 		to_chat(usr, SPAN_NOTICE(" [shuttle_tag] vessel is moving."))
 		return

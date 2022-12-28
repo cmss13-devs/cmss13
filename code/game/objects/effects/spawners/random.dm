@@ -284,9 +284,9 @@
 	var/gunpath = pick(guns)
 	var/ammopath
 	if(istype(gunpath, /obj/item/weapon/gun/shotgun))
-		ammopath = pick(shotgun_boxes_12g)
+		ammopath = pick(GLOB.shotgun_boxes_12g)
 	else if(istype(gunpath, /obj/item/weapon/gun/launcher/grenade))
-		ammopath = pick(grenade_packets)
+		ammopath = pick(GLOB.grenade_packets)
 	else
 		ammopath = guns[gunpath]
 	spawn_weapon_on_floor(gunpath, ammopath, rand(mags_min, mags_max))
@@ -301,7 +301,7 @@
 	if(gunpath)
 		gun = new gunpath(spawnloc)
 		if(scatter)
-			var/direction = pick(alldirs)
+			var/direction = pick(GLOB.alldirs)
 			var/turf/T = get_step(gun, direction)
 			if(!T || T.density)
 				return
@@ -311,7 +311,7 @@
 			ammo = new ammopath(spawnloc)
 			if(scatter)
 				for(i=0, i<rand(1,3), i++)
-					var/direction = pick(alldirs)
+					var/direction = pick(GLOB.alldirs)
 					var/turf/T = get_step(ammo, direction)
 					if(!T || T.density)
 						break

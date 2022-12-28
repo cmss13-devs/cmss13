@@ -10,7 +10,7 @@
 /datum/shuttle/ferry/ert/can_launch()
 	//ert shuttle at the start area.
 	if(moving_status == SHUTTLE_IDLE && location == 1)
-		for(var/datum/shuttle/ferry/ert/F in shuttle_controller.process_shuttles)
+		for(var/datum/shuttle/ferry/ert/F in GLOB.shuttle_controller.process_shuttles)
 			if(F != src)
 				//other ERT shuttles already docked on almayer or about to be
 				if(!F.location || F.moving_status != SHUTTLE_IDLE)
@@ -35,7 +35,7 @@
 		else if(istype(area_station, /area/shuttle/distress/arrive_s_hangar))
 			umbili_id = "s_umbilical"
 		else return
-		for(var/obj/structure/machinery/door/poddoor/PD in machines)
+		for(var/obj/structure/machinery/door/poddoor/PD in GLOB.machines)
 			if(!PD.density && PD.id == umbili_id)
 				INVOKE_ASYNC(PD, /obj/structure/machinery/door.proc/close)
 	if(use_small_docks && location == 0)
@@ -45,7 +45,7 @@
 		else if(istype(area_station, /area/shuttle/distress/arrive_s_engi))
 			smalldock_id = "s_engi"
 		else return
-		for(var/obj/structure/machinery/door/poddoor/PD in machines)
+		for(var/obj/structure/machinery/door/poddoor/PD in GLOB.machines)
 			if(!PD.density && PD.id == smalldock_id)
 				INVOKE_ASYNC(PD, /obj/structure/machinery/door.proc/close)
 
@@ -72,7 +72,7 @@
 			umbili_id = "s_umbilical"
 		else return
 		//open the almayer's north of south umbilical shutters and the shuttle's north or south shutters
-		for(var/obj/structure/machinery/door/poddoor/PD in machines)
+		for(var/obj/structure/machinery/door/poddoor/PD in GLOB.machines)
 			if(PD.density && PD.id == umbili_id)
 				INVOKE_ASYNC(PD, /obj/structure/machinery/door.proc/open)
 
@@ -83,7 +83,7 @@
 		else if(istype(area_station, /area/shuttle/distress/arrive_s_engi))
 			smalldock_id = "s_engi"
 		else return
-		for(var/obj/structure/machinery/door/poddoor/PD in machines)
+		for(var/obj/structure/machinery/door/poddoor/PD in GLOB.machines)
 			if(PD.density && PD.id == smalldock_id)
 				INVOKE_ASYNC(PD, /obj/structure/machinery/door.proc/open)
 
@@ -100,7 +100,7 @@
 		else if(istype(area_station, /area/shuttle/distress/arrive_3))
 			shutter_id = "aftert"
 		if(shutter_id)
-			for(var/obj/structure/machinery/door/poddoor/shutters/T in machines)
+			for(var/obj/structure/machinery/door/poddoor/shutters/T in GLOB.machines)
 				if(T.density && shutter_id == T.id)
 					INVOKE_ASYNC(T, /obj/structure/machinery/door.proc/open)
 
@@ -114,7 +114,7 @@
 
 /obj/structure/machinery/computer/shuttle_control/ert/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 0)
 	var/data[0]
-	var/datum/shuttle/ferry/shuttle = shuttle_controller.shuttles[shuttle_tag]
+	var/datum/shuttle/ferry/shuttle = GLOB.shuttle_controller.shuttles[shuttle_tag]
 	if (!istype(shuttle))
 		return
 
@@ -155,7 +155,7 @@
 		"recharge_time" = shuttle.recharge_time,
 	)
 
-	ui = nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
+	ui = GLOB.nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
 
 	if (!ui)
 		ui = new(user, src, ui_key, "ert_shuttle_control_console.tmpl" , "ERT Shuttle Control", 550, 500)
@@ -171,7 +171,7 @@
 	usr.set_interaction(src)
 	src.add_fingerprint(usr)
 
-	var/datum/shuttle/ferry/ert/MS = shuttle_controller.shuttles[shuttle_tag]
+	var/datum/shuttle/ferry/ert/MS = GLOB.shuttle_controller.shuttles[shuttle_tag]
 	if(!istype(MS)) return
 
 	if(href_list["select_dock"])
@@ -196,7 +196,7 @@
 				if("Starboard Engineering") dock_id = /area/shuttle/distress/arrive_n_engi
 				else return
 
-			for(var/datum/shuttle/ferry/ert/F in shuttle_controller.process_shuttles)
+			for(var/datum/shuttle/ferry/ert/F in GLOB.shuttle_controller.process_shuttles)
 				if(F != MS)
 					//other ERT shuttles already docked on almayer or about to be
 					if(!F.location || F.moving_status != SHUTTLE_IDLE)
@@ -204,7 +204,7 @@
 							to_chat(usr, SPAN_DANGER("The [dock_name] dock area is unavailable."))
 							return
 
-			for(var/area/A in all_areas)
+			for(var/area/A in GLOB.all_areas)
 				if(A.type == dock_id)
 					MS.area_station = A
 					to_chat(usr, SPAN_DANGER("You set the docking area on the Almayer to \"[dock_name]\"."))

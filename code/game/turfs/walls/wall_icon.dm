@@ -84,7 +84,7 @@
 				break
 
 		if(success)
-			if(get_dir(src, T) in cardinal)
+			if(get_dir(src, T) in GLOB.cardinal)
 				wall_dirs += get_dir(src, T)
 
 	for(var/neighbor in wall_dirs)

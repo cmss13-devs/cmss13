@@ -186,7 +186,7 @@ GLOBAL_LIST_INIT(comp2table, list(
 	if (trueLuminosity < 1)
 		luminosity = 0
 	else if (trueLuminosity <= 100)
-		luminosity = sqrtTable[trueLuminosity]
+		luminosity = GLOB.sqrtTable[trueLuminosity]
 	else
 		luminosity = sqrt(trueLuminosity)
 

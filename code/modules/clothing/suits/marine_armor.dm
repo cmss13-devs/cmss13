@@ -28,18 +28,18 @@
 #define SOF		7
 #define NOSQUAD 	8
 
-var/list/armormarkings = list()
-var/list/armormarkings_sql = list()
-var/list/helmetmarkings = list()
-var/list/helmetmarkings_sql = list()
-var/list/glovemarkings = list()
-var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), rgb(65,72,200), rgb(103,214,146), rgb(196, 122, 80), rgb(64, 0, 0))
-var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150,255), rgb(130,140,255), rgb(103,214,146), rgb(196, 122, 80), rgb(64, 0, 0))
+GLOBAL_LIST_EMPTY(armormarkings)
+GLOBAL_LIST_EMPTY(armormarkings_sql)
+GLOBAL_LIST_EMPTY(helmetmarkings)
+GLOBAL_LIST_EMPTY(helmetmarkings_sql)
+GLOBAL_LIST_EMPTY(glovemarkings)
+GLOBAL_LIST_INIT(squad_colors, list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), rgb(65,72,200), rgb(103,214,146), rgb(196, 122, 80), rgb(64, 0, 0)))
+GLOBAL_LIST_INIT(squad_colors_chat, list(rgb(230,125,125), rgb(255,230,80), rgb(255,150,255), rgb(130,140,255), rgb(103,214,146), rgb(196, 122, 80), rgb(64, 0, 0)))
 
 /proc/initialize_marine_armor()
 	var/i
-	for(i=1, i<(length(squad_colors) + 1), i++)
-		var/squad_color = squad_colors[i]
+	for(i=1, i<(length(GLOB.squad_colors) + 1), i++)
+		var/squad_color = GLOB.squad_colors[i]
 		var/armor_color = rgb(hex2num(copytext(squad_color, 2, 4)), hex2num(copytext(squad_color, 4, 6)), hex2num(copytext(squad_color, 6, 8)), 125)
 
 		var/image/armor
@@ -48,21 +48,21 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 
 		armor = image('icons/mob/humans/onmob/suit_1.dmi',icon_state = "std-armor")
 		armor.color = armor_color
-		armormarkings += armor
+		GLOB.armormarkings += armor
 		armor = image('icons/mob/humans/onmob/suit_1.dmi',icon_state = "sql-armor")
 		armor.color = armor_color
-		armormarkings_sql += armor
+		GLOB.armormarkings_sql += armor
 
 		helmet = image('icons/mob/humans/onmob/head_1.dmi',icon_state = "std-helmet")
 		helmet.color = armor_color
-		helmetmarkings += helmet
+		GLOB.helmetmarkings += helmet
 		helmet = image('icons/mob/humans/onmob/head_1.dmi',icon_state = "sql-helmet")
 		helmet.color = armor_color
-		helmetmarkings_sql += helmet
+		GLOB.helmetmarkings_sql += helmet
 
 		glove = image('icons/mob/humans/onmob/hands_garb.dmi',icon_state = "std-gloves")
 		glove.color = armor_color
-		glovemarkings += glove
+		GLOB.glovemarkings += glove
 
 
 
@@ -878,9 +878,9 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 
 	RegisterSignal(H, COMSIG_MOB_MOVE_OR_LOOK, .proc/handle_mob_move_or_look)
 
-	var/datum/mob_hud/security/advanced/SA = huds[MOB_HUD_SECURITY_ADVANCED]
+	var/datum/mob_hud/security/advanced/SA = GLOB.huds[MOB_HUD_SECURITY_ADVANCED]
 	SA.remove_from_hud(H)
-	var/datum/mob_hud/xeno_infection/XI = huds[MOB_HUD_XENO_INFECTION]
+	var/datum/mob_hud/xeno_infection/XI = GLOB.huds[MOB_HUD_XENO_INFECTION]
 	XI.remove_from_hud(H)
 
 	anim(H.loc, H, 'icons/mob/mob.dmi', null, "cloak", null, H.dir)
@@ -911,9 +911,9 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 		H.density = TRUE
 	H.update_canmove()
 
-	var/datum/mob_hud/security/advanced/SA = huds[MOB_HUD_SECURITY_ADVANCED]
+	var/datum/mob_hud/security/advanced/SA = GLOB.huds[MOB_HUD_SECURITY_ADVANCED]
 	SA.add_to_hud(H)
-	var/datum/mob_hud/xeno_infection/XI = huds[MOB_HUD_XENO_INFECTION]
+	var/datum/mob_hud/xeno_infection/XI = GLOB.huds[MOB_HUD_XENO_INFECTION]
 	XI.add_to_hud(H)
 
 	H.visible_message(SPAN_DANGER("[H]'s camouflage fails!"), SPAN_WARNING("Your camouflage fails!"), max_distance = 4)

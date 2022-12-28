@@ -176,7 +176,7 @@
 		to_chat(user, SPAN_NOTICE("You start looking at the map."))
 		var/icon/O = overlay_tacmap(map_type, map_base_type, map_additional_parameter)
 		user << browse_rsc(O, "marine_minimap.png")
-		show_browser(user, "<img src=marine_minimap.png>", "Tactical Map Table", "marineminimap", "size=[(map_sizes[1]*2)+50]x[(map_sizes[2]*2)+50]", closeref = src)
+		show_browser(user, "<img src=marine_minimap.png>", "Tactical Map Table", "marineminimap", "size=[(GLOB.map_sizes[1]*2)+50]x[(GLOB.map_sizes[2]*2)+50]", closeref = src)
 		return
 	..()
 
@@ -190,7 +190,7 @@
 			continue
 
 		L << browse_rsc(O, "marine_minimap.png")
-		show_browser(L, "<img src=marine_minimap.png>", "Tactical Map Table", "marineminimap", "size=[(map_sizes[1]*2)+50]x[(map_sizes[2]*2)+50]", closeref = src)
+		show_browser(L, "<img src=marine_minimap.png>", "Tactical Map Table", "marineminimap", "size=[(GLOB.map_sizes[1]*2)+50]x[(GLOB.map_sizes[2]*2)+50]", closeref = src)
 
 
 /obj/structure/machinery/prop/almayer/CICmap/Topic(href, href_list)
@@ -308,7 +308,7 @@
 		var/obj/item/dogtag/D = I
 		if(D.fallen_names)
 			to_chat(user, SPAN_NOTICE("You add [D] to [src]."))
-			fallen_list += D.fallen_names
+			GLOB.fallen_list += D.fallen_names
 			qdel(D)
 		return TRUE
 	else
@@ -316,13 +316,13 @@
 
 /obj/structure/prop/almayer/ship_memorial/get_examine_text(mob/user)
 	. = ..()
-	if((isobserver(user) || ishuman(user)) && fallen_list)
+	if((isobserver(user) || ishuman(user)) && GLOB.fallen_list)
 		var/faltext = ""
-		for(var/i = 1 to fallen_list.len)
-			if(i != fallen_list.len)
-				faltext += "[fallen_list[i]], "
+		for(var/i = 1 to GLOB.fallen_list.len)
+			if(i != GLOB.fallen_list.len)
+				faltext += "[GLOB.fallen_list[i]], "
 			else
-				faltext += fallen_list[i]
+				faltext += GLOB.fallen_list[i]
 		. += SPAN_NOTICE("To our fallen soldiers: <b>[faltext]</b>.")
 
 /obj/structure/prop/almayer/particle_cannon

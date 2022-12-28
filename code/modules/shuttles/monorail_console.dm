@@ -25,7 +25,7 @@
 
 	user.set_interaction(src)
 
-	var/datum/shuttle/ferry/shuttle = shuttle_controller.shuttles[shuttle_tag]
+	var/datum/shuttle/ferry/shuttle = GLOB.shuttle_controller.shuttles[shuttle_tag]
 
 	if(!isXeno(user) && (onboard || is_ground_level(z)))
 		if(shuttle.queen_locked)
@@ -63,7 +63,7 @@
 /obj/structure/machinery/computer/shuttle_control/monorail/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 0)
 
 	var/data[0]
-	var/datum/shuttle/ferry/shuttle = shuttle_controller.shuttles[shuttle_tag]
+	var/datum/shuttle/ferry/shuttle = GLOB.shuttle_controller.shuttles[shuttle_tag]
 	if (!istype(shuttle))
 		return
 
@@ -120,7 +120,7 @@
 		"onboard" = onboard,
 	)
 
-	ui = nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
+	ui = GLOB.nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
 
 	if (!ui)
 		ui = new(user, src, ui_key, "monorail_control_console.tmpl", "Monorail Control", 550, 500)
@@ -133,7 +133,7 @@
 
 	add_fingerprint(usr)
 
-	var/datum/shuttle/ferry/shuttle = shuttle_controller.shuttles[shuttle_tag]
+	var/datum/shuttle/ferry/shuttle = GLOB.shuttle_controller.shuttles[shuttle_tag]
 	if (!istype(shuttle))
 		return
 
@@ -168,7 +168,7 @@
 					var/datum/shuttle/ferry/marine/shuttle1 = shuttle
 					shuttle1.transit_gun_mission = 0
 					shuttle1.alerts_allowed--
-					//round_statistics.count_hijack_mobs_for_statistics()
+					//GLOB.round_statistics.count_hijack_mobs_for_statistics()
 					marine_announcement("Unauthorized monorail departure detected", "CORSAT Monorail Authority Alert", 'sound/misc/notice2.ogg')
 					to_chat(usr, SPAN_DANGER("A loud alarm erupts from [src]! The fleshy hosts must know that you can access it!"))
 					var/mob/living/carbon/Xenomorph/Queen/Q = usr // typechecked above

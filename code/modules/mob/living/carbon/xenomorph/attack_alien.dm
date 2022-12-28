@@ -776,9 +776,9 @@
 		to_chat(M, SPAN_XENONOTICE("You interact with the machine and disable remote control."))
 		xeno_message(SPAN_XENOANNOUNCE("[message]"),3,M.hivenumber)
 		last_locked = world.time
-		if(almayer_orbital_cannon)
-			almayer_orbital_cannon.is_disabled = TRUE
-			addtimer(CALLBACK(almayer_orbital_cannon, .obj/structure/orbital_cannon/proc/enable), 10 MINUTES, TIMER_UNIQUE)
+		if(GLOB.almayer_orbital_cannon)
+			GLOB.almayer_orbital_cannon.is_disabled = TRUE
+			addtimer(CALLBACK(GLOB.almayer_orbital_cannon, .obj/structure/orbital_cannon/proc/enable), 10 MINUTES, TIMER_UNIQUE)
 		queen_locked = 1
 
 /datum/shuttle/ferry/marine/proc/door_override(mob/living/carbon/Xenomorph/M, shuttle_tag)
@@ -792,24 +792,24 @@
 		if(shuttle_tag == "[MAIN_SHIP_NAME] Dropship 2")
 			ship_id = "sh_dropship2"
 
-		for(var/obj/structure/machinery/door/airlock/dropship_hatch/D in machines)
+		for(var/obj/structure/machinery/door/airlock/dropship_hatch/D in GLOB.machines)
 			if(D.id == ship_id)
 				D.unlock()
 
 		var/obj/structure/machinery/door/airlock/multi_tile/almayer/reardoor
 		switch(ship_id)
 			if("sh_dropship1")
-				for(var/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/ds1/D in machines)
+				for(var/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/ds1/D in GLOB.machines)
 					reardoor = D
 			if("sh_dropship2")
-				for(var/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/ds2/D in machines)
+				for(var/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/ds2/D in GLOB.machines)
 					reardoor = D
 		if(!reardoor)
 			CRASH("Shuttle crashed trying to override invalid rear door with shuttle id [ship_id]")
 		reardoor.unlock()
 
 /obj/structure/machinery/computer/shuttle_control/attack_alien(mob/living/carbon/Xenomorph/M)
-	var/datum/shuttle/ferry/marine/shuttle = shuttle_controller.shuttles[shuttle_tag]
+	var/datum/shuttle/ferry/marine/shuttle = GLOB.shuttle_controller.shuttles[shuttle_tag]
 	if(!istype(shuttle) || !(M.caste && M.caste.is_intelligent))
 		return ..()
 
@@ -834,7 +834,7 @@
 			else
 				return XENO_NO_DELAY_ACTION
 
-		var/datum/shuttle/ferry/marine/shuttle = shuttle_controller.shuttles[shuttle_tag]
+		var/datum/shuttle/ferry/marine/shuttle = GLOB.shuttle_controller.shuttles[shuttle_tag]
 		shuttle.door_override(M, shuttle_tag)
 		xeno_attack_delay(M)
 

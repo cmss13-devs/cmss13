@@ -149,8 +149,8 @@
 	var/list/data = list()
 
 	var/list/geneMasks[0]
-	for(var/gene_tag in gene_tag_masks)
-		geneMasks.Add(list(list("tag" = gene_tag, "mask" = gene_tag_masks[gene_tag])))
+	for(var/gene_tag in GLOB.gene_tag_masks)
+		geneMasks.Add(list(list("tag" = gene_tag, "mask" = GLOB.gene_tag_masks[gene_tag])))
 	data["geneMasks"] = geneMasks
 
 	data["activity"] = active
@@ -175,7 +175,7 @@
 		data["hasGenetics"] = 0
 		data["sourceName"] = 0
 
-	ui = nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
+	ui = GLOB.nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if (!ui)
 		ui = new(user, src, ui_key, "botany_isolator.tmpl", "Lysis-isolation Centrifuge UI", 470, 450)
 		ui.set_initial_data(data)
@@ -191,10 +191,10 @@
 		if(!seed) return
 		seed.forceMove(get_turf(src))
 
-		if(seed.seed.name == "new line" || isnull(seed_types[seed.seed.name]))
-			seed.seed.uid = seed_types.len + 1
+		if(seed.seed.name == "new line" || isnull(GLOB.seed_types[seed.seed.name]))
+			seed.seed.uid = GLOB.seed_types.len + 1
 			seed.seed.name = "[seed.seed.uid]"
-			seed_types[seed.seed.name] = seed.seed
+			GLOB.seed_types[seed.seed.name] = seed.seed
 
 		seed.update_seed()
 		visible_message("[icon2html(src, viewers(src))] [src] beeps and spits out [seed].")
@@ -249,8 +249,8 @@
 		if(!genetics.roundstart)
 			loaded_disk.genesource += " (variety #[genetics.uid])"
 
-		loaded_disk.name += " ([gene_tag_masks[href_list["get_gene"]]], #[genetics.uid])"
-		loaded_disk.desc += " The label reads \'gene [gene_tag_masks[href_list["get_gene"]]], sampled from [genetics.display_name]\'."
+		loaded_disk.name += " ([GLOB.gene_tag_masks[href_list["get_gene"]]], #[genetics.uid])"
+		loaded_disk.desc += " The label reads \'gene [GLOB.gene_tag_masks[href_list["get_gene"]]], sampled from [genetics.display_name]\'."
 		eject_disk = 1
 
 		degradation += rand(20,60)
@@ -295,7 +295,7 @@
 
 		for(var/datum/plantgene/P in loaded_disk.genes)
 			if(data["locus"] != "") data["locus"] += ", "
-			data["locus"] += "[gene_tag_masks[P.genetype]]"
+			data["locus"] += "[GLOB.gene_tag_masks[P.genetype]]"
 
 	else
 		data["disk"] = 0
@@ -307,7 +307,7 @@
 	else
 		data["loaded"] = 0
 
-	ui = nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
+	ui = GLOB.nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if (!ui)
 		ui = new(user, src, ui_key, "botany_editor.tmpl", "Bioballistic Delivery UI", 470, 450)
 		ui.set_initial_data(data)
@@ -326,7 +326,7 @@
 		active = 1
 		start_processing()
 
-		if(!isnull(seed_types[seed.seed.name]))
+		if(!isnull(GLOB.seed_types[seed.seed.name]))
 			seed.seed = seed.seed.diverge(1)
 			seed.seed_type = seed.seed.name
 			seed.update_seed()

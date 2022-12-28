@@ -74,7 +74,7 @@ GLOBAL_DATUM(interior_manager, /datum/interior_manager)
 	var/spawn_x = chunk_coords[1]
 	var/spawn_y = chunk_coords[2]
 
-	var/datum/map_load_metadata/M = maploader.load_map(file("maps/interiors/[interior.name].dmm"), spawn_x, spawn_y, interior_z, FALSE, FALSE, FALSE, TRUE)
+	var/datum/map_load_metadata/M = GLOB.maploader.load_map(file("maps/interiors/[interior.name].dmm"), spawn_x, spawn_y, interior_z, FALSE, FALSE, FALSE, TRUE)
 
 	// Failed to load the interior
 	if(!M)

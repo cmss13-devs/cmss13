@@ -109,7 +109,7 @@
 	A.randomize_appearance(H)
 	var/random_name
 	if(H.gender == MALE)
-		random_name = "[pick(first_names_male_dutch)] [pick(last_names_clf)]"
+		random_name = "[pick(GLOB.first_names_male_dutch)] [pick(GLOB.last_names_clf)]"
 		H.f_style = "Shaved"
 
 	H.change_real_name(H, random_name)

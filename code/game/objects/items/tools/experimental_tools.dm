@@ -60,8 +60,8 @@
 	dat += "<center><b>Search:</b> <input type='text' id='filter' value='' onkeyup='updateSearch();' style='width:300px;'></center>"
 	dat += "<table id='marine_list' border='2px' style='width: 100%; border-collapse: collapse;' align='center'><tr>"
 	dat += "<th>Name</th><th>Squad</th><th>Role</th><th>State</th><th>Location</th><th>Distance</th></tr>"
-	for(var/datum/squad/S in RoleAuthority.squads)
-		var/list/squad_roles = ROLES_MARINES.Copy()
+	for(var/datum/squad/S in GLOB.RoleAuthority.squads)
+		var/list/squad_roles = GLOB.ROLES_MARINES.Copy()
 		for(var/i in squad_roles)
 			squad_roles[i] = ""
 		var/misc_roles = ""

@@ -480,8 +480,8 @@
 			var/new_val = LAZYACCESS(hive.used_free_slots, selected_caste) + 1
 			LAZYSET(hive.used_free_slots, selected_caste, new_val)
 
-	if(round_statistics && !statistic_exempt)
-		round_statistics.track_new_participant(faction, 1)
+	if(GLOB.round_statistics && !statistic_exempt)
+		GLOB.round_statistics.track_new_participant(faction, 1)
 	generate_name()
 
 	// This can happen if a xeno gets made before the game starts
@@ -779,7 +779,7 @@
 
 	//and display them
 	add_to_all_mob_huds()
-	var/datum/mob_hud/MH = huds[MOB_HUD_XENO_INFECTION]
+	var/datum/mob_hud/MH = GLOB.huds[MOB_HUD_XENO_INFECTION]
 	MH.add_hud_to(src)
 
 

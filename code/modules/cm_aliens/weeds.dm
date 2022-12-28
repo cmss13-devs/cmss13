@@ -197,7 +197,7 @@
 		return
 
 	var/list/weeds = list()
-	for(var/dirn in cardinal)
+	for(var/dirn in GLOB.cardinal)
 		var/turf/T = get_step(src, dirn)
 		if(!istype(T))
 			continue
@@ -250,7 +250,7 @@
 
 		if(istype(O, /obj/structure/barricade)) //cades on tile we're trying to expand to
 			var/obj/structure/barricade/to_blocking_cade = O
-			if(to_blocking_cade.density && to_blocking_cade.dir == reverse_dir[direction] && to_blocking_cade.health >= (to_blocking_cade.maxhealth / 4))
+			if(to_blocking_cade.density && to_blocking_cade.dir == GLOB.reverse_dir[direction] && to_blocking_cade.health >= (to_blocking_cade.maxhealth / 4))
 				return FALSE
 
 		if(istype(O, /obj/structure/window/framed))
@@ -267,7 +267,7 @@
 	if(!U)
 		U = loc
 	if(istype(U))
-		for(var/dirn in cardinal)
+		for(var/dirn in GLOB.cardinal)
 			var/turf/T = get_step(U, dirn)
 
 			if(!istype(T))
@@ -281,7 +281,7 @@
 	overlays.Cut()
 
 	var/my_dir = 0
-	for(var/check_dir in cardinal)
+	for(var/check_dir in GLOB.cardinal)
 		var/turf/check = get_step(src, check_dir)
 
 		if(!istype(check))

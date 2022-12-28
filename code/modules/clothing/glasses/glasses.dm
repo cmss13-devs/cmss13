@@ -67,7 +67,7 @@
 			update_clothing_icon()
 
 			if(hud_type)
-				var/datum/mob_hud/MH = huds[hud_type]
+				var/datum/mob_hud/MH = GLOB.huds[hud_type]
 				if(active)
 					MH.add_hud_to(H)
 					playsound(H, 'sound/handling/hud_on.ogg', 25, 1)
@@ -93,7 +93,7 @@
 			to_chat(user, SPAN_WARNING("You have no idea what any of the data means and power it off before it makes you nauseated."))
 
 		else if(hud_type)
-			var/datum/mob_hud/MH = huds[hud_type]
+			var/datum/mob_hud/MH = GLOB.huds[hud_type]
 			MH.add_hud_to(user)
 	user.update_sight()
 	..()
@@ -101,7 +101,7 @@
 /obj/item/clothing/glasses/dropped(mob/living/carbon/human/user)
 	if(hud_type && active && istype(user))
 		if(src == user.glasses) //dropped is called before the inventory reference is updated.
-			var/datum/mob_hud/H = huds[hud_type]
+			var/datum/mob_hud/H = GLOB.huds[hud_type]
 			H.remove_hud_from(user)
 			user.glasses = null
 			user.update_inv_glasses()

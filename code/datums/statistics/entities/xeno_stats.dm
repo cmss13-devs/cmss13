@@ -72,15 +72,15 @@
 		S.total_rounds_played++
 		S.round_played = TRUE
 	S.total_playtime += time
-	if(round_statistics)
-		var/datum/entity/player_stats/caste/R = round_statistics.setup_caste_stats(caste)
+	if(GLOB.round_statistics)
+		var/datum/entity/player_stats/caste/R = GLOB.round_statistics.setup_caste_stats(caste)
 		R.total_playtime += time
 
 /datum/entity/player_stats/xeno/count_personal_death(var/caste)
 	var/datum/entity/player_stats/caste/S = setup_caste_stats(caste)
 	S.total_deaths++
-	if(round_statistics)
-		var/datum/entity/player_stats/caste/R = round_statistics.setup_caste_stats(caste)
+	if(GLOB.round_statistics)
+		var/datum/entity/player_stats/caste/R = GLOB.round_statistics.setup_caste_stats(caste)
 		R.total_deaths++
 
 //******************
@@ -90,16 +90,16 @@
 /datum/entity/player_stats/xeno/count_personal_human_kill(var/job_name, var/cause, var/caste)
 	var/datum/entity/player_stats/caste/S = setup_caste_stats(caste)
 	S.count_human_kill(job_name, cause)
-	if(round_statistics)
-		var/datum/entity/player_stats/caste/R = round_statistics.setup_caste_stats(caste)
+	if(GLOB.round_statistics)
+		var/datum/entity/player_stats/caste/R = GLOB.round_statistics.setup_caste_stats(caste)
 		R.count_human_kill(job_name, cause)
 	recalculate_top_caste()
 
 /datum/entity/player_stats/xeno/count_personal_xeno_kill(var/caste_type, var/cause, var/caste)
 	var/datum/entity/player_stats/caste/S = setup_caste_stats(caste)
 	S.count_xeno_kill(caste_type, cause)
-	if(round_statistics)
-		var/datum/entity/player_stats/caste/R = round_statistics.setup_caste_stats(caste)
+	if(GLOB.round_statistics)
+		var/datum/entity/player_stats/caste/R = GLOB.round_statistics.setup_caste_stats(caste)
 		R.count_xeno_kill(caste_type, cause)
 	recalculate_top_caste()
 
@@ -110,15 +110,15 @@
 /datum/entity/player_stats/xeno/count_personal_niche_stat(var/niche_name, var/amount = 1, var/caste)
 	var/datum/entity/player_stats/caste/S = setup_caste_stats(caste)
 	S.count_niche_stat(niche_name, amount)
-	if(round_statistics)
-		var/datum/entity/player_stats/caste/R = round_statistics.setup_caste_stats(caste)
+	if(GLOB.round_statistics)
+		var/datum/entity/player_stats/caste/R = GLOB.round_statistics.setup_caste_stats(caste)
 		R.count_niche_stat(niche_name, amount)
 
 /datum/entity/player_stats/xeno/proc/track_personal_abilities_used(var/caste, var/ability, var/amount = 1)
 	var/datum/entity/player_stats/caste/S = setup_caste_stats(caste)
 	S.track_personal_abilities_used(ability, amount)
-	if(round_statistics)
-		var/datum/entity/player_stats/caste/R = round_statistics.setup_caste_stats(caste)
+	if(GLOB.round_statistics)
+		var/datum/entity/player_stats/caste/R = GLOB.round_statistics.setup_caste_stats(caste)
 		R.track_personal_abilities_used(ability, amount)
 
 /mob/living/carbon/Xenomorph/proc/track_ability_usage(var/ability, var/caste, var/amount = 1)
@@ -131,8 +131,8 @@
 /datum/entity/player_stats/xeno/count_personal_steps_walked(var/caste, var/amount = 1)
 	var/datum/entity/player_stats/caste/S = setup_caste_stats(caste)
 	S.steps_walked += amount
-	if(round_statistics)
-		var/datum/entity/player_stats/caste/R = round_statistics.setup_caste_stats(caste)
+	if(GLOB.round_statistics)
+		var/datum/entity/player_stats/caste/R = GLOB.round_statistics.setup_caste_stats(caste)
 		R.steps_walked += amount
 
 /mob/living/carbon/Xenomorph/track_steps_walked(var/amount = 1)
@@ -148,8 +148,8 @@
 /datum/entity/player_stats/xeno/proc/count_personal_slashes(var/caste, var/amount = 1)
 	var/datum/entity/player_stats/caste/S = setup_caste_stats(caste)
 	S.total_hits += amount
-	if(round_statistics)
-		var/datum/entity/player_stats/caste/R = round_statistics.setup_caste_stats(caste)
+	if(GLOB.round_statistics)
+		var/datum/entity/player_stats/caste/R = GLOB.round_statistics.setup_caste_stats(caste)
 		R.total_hits += amount
 
 /mob/living/carbon/Xenomorph/proc/track_slashes(var/caste, var/amount = 1)
@@ -161,5 +161,5 @@
 	xeno_stats.total_hits += amount
 	if(caste_type)
 		xeno_stats.count_personal_slashes(caste_type, amount)
-	if(round_statistics)
-		round_statistics.total_slashes += amount
+	if(GLOB.round_statistics)
+		GLOB.round_statistics.total_slashes += amount

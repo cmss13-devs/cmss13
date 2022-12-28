@@ -66,7 +66,7 @@
 	. = ..()
 	if(.) //successful turf change
 		var/turf/T
-		for(var/i in cardinal)
+		for(var/i in GLOB.cardinal)
 			T = get_step(src, i)
 
 			//nearby glowshrooms updated

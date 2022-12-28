@@ -218,7 +218,7 @@
 /obj/structure/machinery/magnetic_controller/Initialize(mapload, ...)
 	. = ..()
 	if(autolink)
-		for(var/obj/structure/machinery/magnetic_module/M in machines)
+		for(var/obj/structure/machinery/magnetic_module/M in GLOB.machines)
 			if(M.freq == frequency && M.code == code)
 				magnets.Add(M)
 
@@ -230,7 +230,7 @@
 /obj/structure/machinery/magnetic_controller
 	process()
 		if(magnets.len == 0 && autolink)
-			for(var/obj/structure/machinery/magnetic_module/M in machines)
+			for(var/obj/structure/machinery/magnetic_module/M in GLOB.machines)
 				if(M.freq == frequency && M.code == code)
 					magnets.Add(M)
 

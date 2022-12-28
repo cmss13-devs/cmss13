@@ -46,10 +46,10 @@
 	A.randomize_appearance(H)
 	var/random_name
 	if(H.gender == MALE)
-		random_name = "[pick(first_names_male_colonist)] [pick(last_names_colonist)]"
+		random_name = "[pick(GLOB.first_names_male_colonist)] [pick(GLOB.last_names_colonist)]"
 		H.f_style = "5 O'clock Shadow"
 	else
-		random_name = "[pick(first_names_female_colonist)] [pick(last_names_colonist)]"
+		random_name = "[pick(GLOB.first_names_female_colonist)] [pick(GLOB.last_names_colonist)]"
 	H.change_real_name(H, random_name)
 	H.age = rand(20,45)
 	H.r_hair = 25
@@ -105,7 +105,7 @@
 	H.equip_to_slot_or_del(new /obj/item/storage/belt/shotgun, WEAR_WAIST)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/explosive/C4, WEAR_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/tool/crowbar, WEAR_IN_BACK)
-	spawn_weapon(/obj/item/weapon/gun/shotgun/type23, pick(shotgun_handfuls_8g), H, 0, 14) //shotgunner mini-spec
+	spawn_weapon(/obj/item/weapon/gun/shotgun/type23, pick(GLOB.shotgun_handfuls_8g), H, 0, 14) //shotgunner mini-spec
 	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/stick, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/stick, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/stick, WEAR_IN_BACK)
@@ -255,10 +255,10 @@
 	A.randomize_appearance(H)
 	var/random_name
 	if(H.gender == MALE)
-		random_name = "[pick(first_names_male_colonist)] [pick(last_names_colonist)]"
+		random_name = "[pick(GLOB.first_names_male_colonist)] [pick(GLOB.last_names_colonist)]"
 		H.f_style = "5 O'clock Shadow"
 	else
-		random_name = "[pick(first_names_female_colonist)] [pick(last_names_colonist)]"
+		random_name = "[pick(GLOB.first_names_female_colonist)] [pick(GLOB.last_names_colonist)]"
 	H.change_real_name(H, random_name)
 	H.age = rand(20,45)
 	H.r_hair = rand(15,35)
@@ -570,9 +570,9 @@
 	A.randomize_appearance(H)
 	var/random_name
 	if(H.gender == MALE)
-		random_name = "[pick(first_names_male)] [pick(last_names)]"
+		random_name = "[pick(GLOB.first_names_male)] [pick(GLOB.last_names)]"
 	else
-		random_name = "[pick(first_names_female)] [pick(last_names)]"
+		random_name = "[pick(GLOB.first_names_female)] [pick(GLOB.last_names)]"
 	H.change_real_name(H, random_name)
 	H.age = rand(17,45)
 
@@ -660,7 +660,7 @@
 	H.gender = pick(MALE, FEMALE)
 	var/datum/preferences/A = new
 	A.randomize_appearance(H)
-	var/random_name = capitalize(pick(H.gender == MALE ? first_names_male : first_names_female)) + " " + capitalize(pick(last_names))
+	var/random_name = capitalize(pick(H.gender == MALE ? GLOB.first_names_male : GLOB.first_names_female)) + " " + capitalize(pick(GLOB.last_names))
 	H.change_real_name(H, random_name)
 	H.age = rand(21,45)
 
@@ -700,7 +700,7 @@
 	H.gender = pick(MALE, FEMALE)
 	var/datum/preferences/A = new
 	A.randomize_appearance(H)
-	var/random_name = capitalize(pick(H.gender == MALE ? first_names_male_gladiator : first_names_female_gladiator))
+	var/random_name = capitalize(pick(H.gender == MALE ? GLOB.first_names_male_gladiator : GLOB.first_names_female_gladiator))
 	H.change_real_name(H, random_name)
 	H.age = rand(21,45)
 
@@ -825,7 +825,7 @@
 	var/list/huds_to_add = list(MOB_HUD_XENO_INFECTION, MOB_HUD_XENO_STATUS)
 
 	for(var/hud_to_add in huds_to_add)
-		var/datum/mob_hud/hud = huds[hud_to_add]
+		var/datum/mob_hud/hud = GLOB.huds[hud_to_add]
 		hud.add_hud_to(H)
 
 	var/list/actions_to_add = subtypesof(/datum/action/human_action/activable/cult)

@@ -1,5 +1,5 @@
-var/list/shuttle_landmarks = list()
-var/list/item_pool_landmarks = list()
+GLOBAL_LIST_EMPTY(shuttle_landmarks)
+GLOBAL_LIST_EMPTY(item_pool_landmarks)
 
 SUBSYSTEM_DEF(landmark_init)
 	name       = "Landmark Init"
@@ -7,15 +7,15 @@ SUBSYSTEM_DEF(landmark_init)
 	flags      = SS_NO_FIRE
 
 /datum/controller/subsystem/landmark_init/Initialize()
-	for(var/obj/effect/landmark/shuttle_loc/L in shuttle_landmarks)
+	for(var/obj/effect/landmark/shuttle_loc/L in GLOB.shuttle_landmarks)
 		L.initialize_marker()
 		L.link_loc()
-		shuttle_landmarks -= L
+		GLOB.shuttle_landmarks -= L
 
 	// List of all the datums we need to loop through
 	var/list/datum/item_pool_holder/pools = list()
 
-	for (var/obj/effect/landmark/item_pool_spawner/L in item_pool_landmarks)
+	for (var/obj/effect/landmark/item_pool_spawner/L in GLOB.item_pool_landmarks)
 
 		var/curr_pool_name = L.pool_name
 
@@ -54,8 +54,8 @@ SUBSYSTEM_DEF(landmark_init)
 			continue
 
 		if (pool.quota > pool.turfs.len)
-			log_debug("Item pool [pool.pool_name] wants to spawn more items than it has landmarks for. Spawning [turfs.len] instances of [pool.type_to_spawn] instead. Code: ITEM_POOL_4")
-			message_admins("Item pool [pool.pool_name] wants to spawn more items than it has landmarks for. Spawning [turfs.len] instances of [pool.type_to_spawn] instead. Tell the devs. Code: ITEM_POOL_4")
+			log_debug("Item pool [pool.pool_name] wants to spawn more items than it has landmarks for. Spawning [GLOB.turfs.len] instances of [pool.type_to_spawn] instead. Code: ITEM_POOL_4")
+			message_admins("Item pool [pool.pool_name] wants to spawn more items than it has landmarks for. Spawning [GLOB.turfs.len] instances of [pool.type_to_spawn] instead. Tell the devs. Code: ITEM_POOL_4")
 			pool.quota = pool.turfs.len
 
 		// Quota times, pick a random turf, spawn an item there, then remove that turf from the list.

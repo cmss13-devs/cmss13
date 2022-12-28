@@ -82,7 +82,7 @@
 	H.gender = pick(60;MALE,40;FEMALE)
 	var/datum/preferences/A = new()
 	A.randomize_appearance(H)
-	var/random_name = capitalize(pick(H.gender == MALE ? first_names_male : first_names_female)) + " " + capitalize(pick(last_names))
+	var/random_name = capitalize(pick(H.gender == MALE ? GLOB.first_names_male : GLOB.first_names_female)) + " " + capitalize(pick(GLOB.last_names))
 	H.change_real_name(H, random_name)
 	H.age = rand(21,45)
 
@@ -150,8 +150,8 @@
 	load_status(H, mob_client)
 	load_vanity(H, mob_client)
 	load_traits(H, mob_client)
-	if(round_statistics && count_participant)
-		round_statistics.track_new_participant(faction)
+	if(GLOB.round_statistics && count_participant)
+		GLOB.round_statistics.track_new_participant(faction)
 
 	H.assigned_equipment_preset = src
 
@@ -170,7 +170,7 @@
 	var/datum/gear/G
 	var/i
 	for(i in H.client.prefs.gear)
-		G = gear_datums[i]
+		G = GLOB.gear_datums[i]
 		if(G)
 			if(G.allowed_roles && !(assignment in G.allowed_roles))
 				to_chat(H, SPAN_WARNING("Custom gear [G.display_name] cannot be equipped: Invalid Role"))
@@ -434,16 +434,16 @@
 	return 1
 
 
-var/list/rebel_shotguns = list(
+GLOBAL_LIST_INIT(rebel_shotguns, list(
 	/obj/item/weapon/gun/shotgun/double = /obj/item/ammo_magazine/handful/shotgun/buckshot,
 	/obj/item/weapon/gun/shotgun/double/with_stock = /obj/item/ammo_magazine/handful/shotgun/flechette,
 	/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb = /obj/item/ammo_magazine/handful/shotgun/incendiary,
 	/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb = /obj/item/ammo_magazine/handful/shotgun/incendiary,
 	/obj/item/weapon/gun/shotgun/double/sawn = /obj/item/ammo_magazine/handful/shotgun/incendiary,
 	/obj/item/weapon/gun/shotgun/double/sawn = /obj/item/ammo_magazine/handful/shotgun/buckshot
-	)
+	))
 
-var/list/rebel_smgs = list(
+GLOBAL_LIST_INIT(rebel_smgs, list(
 	/obj/item/weapon/gun/smg/ppsh = /obj/item/ammo_magazine/smg/ppsh,
 	/obj/item/weapon/gun/smg/mp27 = /obj/item/ammo_magazine/smg/mp27,
 	/obj/item/weapon/gun/smg/mp5 = /obj/item/ammo_magazine/smg/mp5,
@@ -452,9 +452,9 @@ var/list/rebel_smgs = list(
 	/obj/item/weapon/gun/smg/mac15 = /obj/item/ammo_magazine/smg/mac15,
 	/obj/item/weapon/gun/smg/uzi = /obj/item/ammo_magazine/smg/uzi,
 	/obj/item/weapon/gun/smg/fp9000 = /obj/item/ammo_magazine/smg/fp9000
-	)
+	))
 
-var/list/rebel_rifles = list(
+GLOBAL_LIST_INIT(rebel_rifles, list(
 	/obj/item/weapon/gun/rifle/mar40 = /obj/item/ammo_magazine/rifle/mar40,
 	/obj/item/weapon/gun/rifle/mar40 = /obj/item/ammo_magazine/rifle/mar40,
 	/obj/item/weapon/gun/rifle/mar40/carbine = /obj/item/ammo_magazine/rifle/mar40,
@@ -464,13 +464,13 @@ var/list/rebel_rifles = list(
 	/obj/item/weapon/gun/rifle/ar10 = /obj/item/ammo_magazine/rifle/ar10,
 	/obj/item/weapon/gun/rifle/hunting = /obj/item/ammo_magazine/rifle/hunting,
 	/obj/item/weapon/gun/rifle/hunting = /obj/item/ammo_magazine/rifle/hunting,
-	)
+	))
 
 /datum/equipment_preset/proc/spawn_rebel_smg(var/atom/M, var/ammo_amount = 12)
 	if(!M) return
 
-	var/gunpath = pick(rebel_smgs)
-	var/ammopath = rebel_smgs[gunpath]
+	var/gunpath = pick(GLOB.rebel_smgs)
+	var/ammopath = GLOB.rebel_smgs[gunpath]
 
 	spawn_weapon(gunpath, ammopath, M, ammo_amount)
 
@@ -479,8 +479,8 @@ var/list/rebel_rifles = list(
 /datum/equipment_preset/proc/spawn_rebel_shotgun(var/atom/M, var/ammo_amount = 12)
 	if(!M) return
 
-	var/gunpath = pick(rebel_shotguns)
-	var/ammopath = rebel_shotguns[gunpath]
+	var/gunpath = pick(GLOB.rebel_shotguns)
+	var/ammopath = GLOB.rebel_shotguns[gunpath]
 
 	spawn_weapon(gunpath, ammopath, M, ammo_amount)
 
@@ -489,8 +489,8 @@ var/list/rebel_rifles = list(
 /datum/equipment_preset/proc/spawn_rebel_rifle(var/atom/M, var/ammo_amount = 12)
 	if(!M) return
 
-	var/gunpath = pick(rebel_rifles)
-	var/ammopath = rebel_rifles[gunpath]
+	var/gunpath = pick(GLOB.rebel_rifles)
+	var/ammopath = GLOB.rebel_rifles[gunpath]
 
 	spawn_weapon(gunpath, ammopath, M, ammo_amount)
 
@@ -549,10 +549,10 @@ var/list/rebel_rifles = list(
 	if(!M) return
 
 	var/list/merc_shotguns = list(
-		/obj/item/weapon/gun/shotgun/merc = pick(shotgun_handfuls_12g),
-		/obj/item/weapon/gun/shotgun/combat = pick(shotgun_handfuls_12g),
-		/obj/item/weapon/gun/shotgun/double/with_stock = pick(shotgun_handfuls_12g),
-		/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb = pick(shotgun_handfuls_12g))
+		/obj/item/weapon/gun/shotgun/merc = pick(GLOB.shotgun_handfuls_12g),
+		/obj/item/weapon/gun/shotgun/combat = pick(GLOB.shotgun_handfuls_12g),
+		/obj/item/weapon/gun/shotgun/double/with_stock = pick(GLOB.shotgun_handfuls_12g),
+		/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb = pick(GLOB.shotgun_handfuls_12g))
 
 	var/gunpath = pick(merc_shotguns)
 	var/ammopath = merc_shotguns[gunpath]
@@ -584,9 +584,9 @@ var/list/rebel_rifles = list(
 	/obj/item/weapon/gun/rifle/m41a/elite = /obj/item/ammo_magazine/rifle/ap)
 
 	var/list/elite_merc_shotguns = list(
-	/obj/item/weapon/gun/shotgun/merc = pick(shotgun_handfuls_12g),
-	/obj/item/weapon/gun/shotgun/combat = pick(shotgun_handfuls_12g),
-	/obj/item/weapon/gun/shotgun/type23 = pick(shotgun_handfuls_8g))
+	/obj/item/weapon/gun/shotgun/merc = pick(GLOB.shotgun_handfuls_12g),
+	/obj/item/weapon/gun/shotgun/combat = pick(GLOB.shotgun_handfuls_12g),
+	/obj/item/weapon/gun/shotgun/type23 = pick(GLOB.shotgun_handfuls_8g))
 
 	if(prob(shotgun_chance))
 		var/gunpath = pick(elite_merc_shotguns)

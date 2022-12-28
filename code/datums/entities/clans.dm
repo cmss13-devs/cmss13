@@ -41,8 +41,8 @@ BSQL_PROTECT_DATUM(/datum/entity/clan)
 
 /datum/entity_meta/clan_player/on_insert(var/datum/entity/clan_player/player)
 	player.honor = 0
-	player.clan_rank = clan_ranks_ordered[CLAN_RANK_UNBLOODED]
-	player.permissions = clan_ranks[CLAN_RANK_UNBLOODED].permissions
+	player.clan_rank = GLOB.clan_ranks_ordered[CLAN_RANK_UNBLOODED]
+	player.permissions = GLOB.clan_ranks[CLAN_RANK_UNBLOODED].permissions
 
 	player.save()
 

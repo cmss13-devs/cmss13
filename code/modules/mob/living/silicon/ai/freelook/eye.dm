@@ -30,7 +30,7 @@
 
 		T = get_turf(T)
 		forceMove(T)
-		cameranet.visibility(src)
+		GLOB.cameranet.visibility(src)
 		if(ai.client)
 			ai.client.eye = src
 		//Holopad

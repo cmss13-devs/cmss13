@@ -1,9 +1,9 @@
-var/global/list/gear_datums = list()
+GLOBAL_LIST_EMPTY(gear_datums)
 
 /proc/populate_gear_list()
 	for(var/type in typesof(/datum/gear)-/datum/gear)
 		var/datum/gear/G = new type()
-		gear_datums[G.display_name] = G
+		GLOB.gear_datums[G.display_name] = G
 	return 1
 
 /datum/gear

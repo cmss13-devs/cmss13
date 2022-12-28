@@ -7,10 +7,10 @@
 	var/list/processing_uis = list()
 
  /**
-  * Create a new nanomanager instance.
+  * Create a new GLOB.nanomanager instance.
   * This proc generates a list of assets which are to be sent to each client on connect
   *
-  * @return /nanomanager new nanomanager object
+  * @return /nanomanager new GLOB.nanomanager object
   */
 /datum/nanomanager/New()
 	return

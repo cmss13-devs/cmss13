@@ -121,7 +121,7 @@
 #define MONKEYS_TO_TOTAL_RATIO 1/32
 
 /datum/game_mode/colonialmarines/proc/spawn_smallhosts()
-	if(!players_preassigned)
+	if(!GLOB.players_preassigned)
 		return
 
 	monkey_types = SSmapping.configs[GROUND_MAP].monkey_types
@@ -129,7 +129,7 @@
 	if(!length(monkey_types))
 		return
 
-	var/amount_to_spawn = round(players_preassigned * MONKEYS_TO_TOTAL_RATIO)
+	var/amount_to_spawn = round(GLOB.players_preassigned * MONKEYS_TO_TOTAL_RATIO)
 
 	for(var/i in 0 to min(amount_to_spawn, length(GLOB.monkey_spawns)))
 		var/turf/T = get_turf(pick_n_take(GLOB.monkey_spawns))
@@ -159,7 +159,7 @@
 		return FALSE //Initial countdown, just to be safe, so that everyone has a chance to spawn before we check anything.
 
 	if(next_research_allocation < world.time)
-		chemical_data.update_credits(chemical_data.research_allocation_amount)
+		GLOB.chemical_data.update_credits(GLOB.chemical_data.research_allocation_amount)
 		next_research_allocation = world.time + research_allocation_interval
 
 	if(!round_finished)
@@ -173,7 +173,7 @@
 				xeno_message("The Hive is ready for a new Queen to evolve.", 3, hive.hivenumber)
 
 		if(!active_lz && world.time > lz_selection_timer)
-			for(var/obj/structure/machinery/computer/shuttle_control/dropship1/default_console in machines)
+			for(var/obj/structure/machinery/computer/shuttle_control/dropship1/default_console in GLOB.machines)
 				if(is_ground_level(default_console.z) && !default_console.onboard)
 					select_lz(default_console)
 					break
@@ -202,7 +202,7 @@
 							to_chat(M, SPAN_XENOANNOUNCE("To my children and their Queen. I sense the large doors that trap us will open in 30 seconds."))
 						addtimer(CALLBACK(src, .proc/open_podlocks, "map_lockdown"), 300)
 
-			if(round_should_check_for_win)
+			if(GLOB.round_should_check_for_win)
 				check_win()
 			round_checkwin = 0
 
@@ -233,17 +233,17 @@
 	if(SSticker.current_state != GAME_STATE_PLAYING)
 		return
 
-	var/living_player_list[] = count_humans_and_xenos(EvacuationAuthority.get_affected_zlevels())
+	var/living_player_list[] = count_humans_and_xenos(GLOB.EvacuationAuthority.get_affected_zlevels())
 	var/num_humans = living_player_list[1]
 	var/num_xenos = living_player_list[2]
 
 	if(force_end_at && world.time > force_end_at)
 		round_finished = MODE_INFESTATION_X_MINOR
-	if(EvacuationAuthority.dest_status == NUKE_EXPLOSION_FINISHED)
+	if(GLOB.EvacuationAuthority.dest_status == NUKE_EXPLOSION_FINISHED)
 		round_finished = MODE_GENERIC_DRAW_NUKE //Nuke went off, ending the round.
-	if(EvacuationAuthority.dest_status == NUKE_EXPLOSION_GROUND_FINISHED)
+	if(GLOB.EvacuationAuthority.dest_status == NUKE_EXPLOSION_GROUND_FINISHED)
 		round_finished = MODE_INFESTATION_M_MINOR //Nuke went off, ending the round.
-	if(EvacuationAuthority.dest_status < NUKE_EXPLOSION_IN_PROGRESS) //If the nuke ISN'T in progress. We do not want to end the round before it detonates.
+	if(GLOB.EvacuationAuthority.dest_status < NUKE_EXPLOSION_IN_PROGRESS) //If the nuke ISN'T in progress. We do not want to end the round before it detonates.
 		if(!num_humans && num_xenos) //No humans remain alive.
 			round_finished = MODE_INFESTATION_X_MAJOR //Evacuation did not take place. Everyone died.
 		else if(num_humans && !num_xenos)
@@ -288,40 +288,40 @@
 		if(MODE_INFESTATION_X_MAJOR)
 			musical_track = pick('sound/theme/sad_loss1.ogg','sound/theme/sad_loss2.ogg')
 			end_icon = "xeno_major"
-			if(round_statistics && round_statistics.current_map)
-				round_statistics.current_map.total_xeno_victories++
-				round_statistics.current_map.total_xeno_majors++
+			if(GLOB.round_statistics && GLOB.round_statistics.current_map)
+				GLOB.round_statistics.current_map.total_xeno_victories++
+				GLOB.round_statistics.current_map.total_xeno_majors++
 		if(MODE_INFESTATION_M_MAJOR)
 			musical_track = pick('sound/theme/winning_triumph1.ogg','sound/theme/winning_triumph2.ogg')
 			end_icon = "marine_major"
-			if(round_statistics && round_statistics.current_map)
-				round_statistics.current_map.total_marine_victories++
-				round_statistics.current_map.total_marine_majors++
+			if(GLOB.round_statistics && GLOB.round_statistics.current_map)
+				GLOB.round_statistics.current_map.total_marine_victories++
+				GLOB.round_statistics.current_map.total_marine_majors++
 		if(MODE_INFESTATION_X_MINOR)
 			musical_track = pick('sound/theme/neutral_melancholy1.ogg','sound/theme/neutral_melancholy2.ogg')
 			end_icon = "xeno_minor"
-			if(round_statistics && round_statistics.current_map)
-				round_statistics.current_map.total_xeno_victories++
+			if(GLOB.round_statistics && GLOB.round_statistics.current_map)
+				GLOB.round_statistics.current_map.total_xeno_victories++
 		if(MODE_INFESTATION_M_MINOR)
 			musical_track = pick('sound/theme/neutral_hopeful1.ogg','sound/theme/neutral_hopeful2.ogg')
 			end_icon = "marine_minor"
-			if(round_statistics && round_statistics.current_map)
-				round_statistics.current_map.total_marine_victories++
+			if(GLOB.round_statistics && GLOB.round_statistics.current_map)
+				GLOB.round_statistics.current_map.total_marine_victories++
 		if(MODE_INFESTATION_DRAW_DEATH)
 			end_icon = "draw"
 			musical_track = pick('sound/theme/nuclear_detonation1.ogg','sound/theme/nuclear_detonation2.ogg')
-			if(round_statistics && round_statistics.current_map)
-				round_statistics.current_map.total_draws++
+			if(GLOB.round_statistics && GLOB.round_statistics.current_map)
+				GLOB.round_statistics.current_map.total_draws++
 	var/sound/S = sound(musical_track, channel = SOUND_CHANNEL_LOBBY)
 	S.status = SOUND_STREAM
 	sound_to(world, S)
-	if(round_statistics)
-		round_statistics.game_mode = name
-		round_statistics.round_length = world.time
-		round_statistics.round_result = round_finished
-		round_statistics.end_round_player_population = GLOB.clients.len
+	if(GLOB.round_statistics)
+		GLOB.round_statistics.game_mode = name
+		GLOB.round_statistics.round_length = world.time
+		GLOB.round_statistics.round_result = round_finished
+		GLOB.round_statistics.end_round_player_population = GLOB.clients.len
 
-		round_statistics.log_round_statistics()
+		GLOB.round_statistics.log_round_statistics()
 
 	calculate_end_statistics()
 	show_end_statistics(end_icon)

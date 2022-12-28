@@ -124,7 +124,7 @@
 		)
 	)
 
-	ui = nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
+	ui = GLOB.nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if(!ui)
 		ui = new(user, src, ui_key, "acid_core_config.tmpl", "A.C.I.D. CORE CONFIG", 460, 760)
 		ui.set_initial_data(data)
@@ -171,7 +171,7 @@
 					acid_core.inject_vitals |= flag_value
 
 
-	nanomanager.update_uis(src) // update all UIs attached to src
+	GLOB.nanomanager.update_uis(src) // update all UIs attached to src
 	add_fingerprint(user)
 
 

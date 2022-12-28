@@ -75,7 +75,7 @@
 	set_frequency(frequency)
 
 	for (var/ch_name in channels)
-		secure_radio_connections[ch_name] = SSradio.add_object(src, radiochannels[ch_name], RADIO_CHAT)
+		secure_radio_connections[ch_name] = SSradio.add_object(src, GLOB.radiochannels[ch_name], RADIO_CHAT)
 
 	flags_atom |= USES_HEARING
 
@@ -178,8 +178,8 @@
 /obj/item/device/radio/proc/text_sec_channel(var/chan_name, var/chan_stat)
 	var/list = !!(chan_stat&FREQ_LISTENING)!=0
 	var/channel_key
-	for(var/key in department_radio_keys)
-		if(department_radio_keys[key] == chan_name)
+	for(var/key in GLOB.department_radio_keys)
+		if(GLOB.department_radio_keys[key] == chan_name)
 			channel_key = key
 			break
 	return {"
@@ -463,7 +463,7 @@
 
 
 			for(var/ch_name in channels)
-				SSradio.remove_object(src, radiochannels[ch_name])
+				SSradio.remove_object(src, GLOB.radiochannels[ch_name])
 				secure_radio_connections[ch_name] = null
 
 
@@ -516,7 +516,7 @@
 
 
 	for (var/ch_name in src.channels)
-		secure_radio_connections[ch_name] = SSradio.add_object(src, radiochannels[ch_name],  RADIO_CHAT)
+		secure_radio_connections[ch_name] = SSradio.add_object(src, GLOB.radiochannels[ch_name], RADIO_CHAT)
 
 	SStgui.update_uis(src)
 
@@ -570,11 +570,11 @@
 
 /obj/item/device/radio/proc/config(op)
 	for (var/ch_name in channels)
-		SSradio.remove_object(src, radiochannels[ch_name])
+		SSradio.remove_object(src, GLOB.radiochannels[ch_name])
 	secure_radio_connections = new
 	channels = op
 	for (var/ch_name in op)
-		secure_radio_connections[ch_name] = SSradio.add_object(src, radiochannels[ch_name],  RADIO_CHAT)
+		secure_radio_connections[ch_name] = SSradio.add_object(src, GLOB.radiochannels[ch_name], RADIO_CHAT)
 
 /obj/item/device/radio/off
 	listening = 0

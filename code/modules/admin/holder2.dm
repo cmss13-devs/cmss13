@@ -1,4 +1,4 @@
-var/list/datum/admins/admin_datums = list()
+GLOBAL_LIST_EMPTY_TYPED(admin_datums, /datum/admins)
 
 GLOBAL_VAR_INIT(href_token, GenerateToken())
 GLOBAL_PROTECT(href_token)
@@ -33,7 +33,7 @@ GLOBAL_PROTECT(href_token)
 	rank = initial_rank
 	rights = initial_rights
 	href_token = GenerateToken()
-	admin_datums[ckey] = src
+	GLOB.admin_datums[ckey] = src
 	extra_titles = new_extra_titles
 
 /datum/admins/proc/associate(client/C)
@@ -125,8 +125,8 @@ you will have to do something like if(client.admin_holder.rights & R_ADMIN) your
 	return 1
 
 /client/proc/readmin()
-	if(admin_datums[ckey])
-		admin_datums[ckey].associate(src)
+	if(GLOB.admin_datums[ckey])
+		GLOB.admin_datums[ckey].associate(src)
 	return 1
 
 /proc/IsAdminAdvancedProcCall()

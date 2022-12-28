@@ -91,7 +91,7 @@
 		to_chat(src, SPAN_DANGER("You have deadchat muted."))
 		return
 
-	if(!AHOLD_IS_MOD(client.admin_holder) && !dsay_allowed)
+	if(!AHOLD_IS_MOD(client.admin_holder) && !GLOB.dsay_allowed)
 		to_chat(src, SPAN_DANGER("Deadchat is globally muted"))
 		return
 

@@ -1,10 +1,8 @@
 
-var/world_view_size = 7
-var/lobby_view_size = 16
+GLOBAL_VAR_INIT(world_view_size, 7)
+GLOBAL_VAR_INIT(lobby_view_size, 16)
 
-var/internal_tick_usage = 0
-
-var/list/reboot_sfx = file2list("config/reboot_sfx.txt")
+GLOBAL_LIST_FILE_LOAD(reboot_sfx, "config/reboot_sfx.txt")
 /world
 	mob = /mob/new_player
 	turf = /turf/open/space/basic
@@ -18,7 +16,7 @@ var/list/reboot_sfx = file2list("config/reboot_sfx.txt")
 	if (debug_server)
 		call(debug_server, "auxtools_init")()
 		enable_debugging()
-	internal_tick_usage = 0.2 * world.tick_lag
+	GLOB.internal_tick_usage = 0.2 * world.tick_lag
 	hub_password = "kMZy3U5jJHSiBQjr"
 
 #ifdef BYOND_TRACY
@@ -29,15 +27,15 @@ var/list/reboot_sfx = file2list("config/reboot_sfx.txt")
 	//logs
 	var/date_string = time2text(world.realtime, "YYYY/MM-Month/DD-Day")
 	var/year_string = time2text(world.realtime, "YYYY")
-	href_logfile = file("data/logs/[date_string] hrefs.htm")
-	diary = file("data/logs/[date_string].log")
-	diary << "[log_end]\n[log_end]\nStarting up. [time2text(world.timeofday, "hh:mm.ss")][log_end]\n---------------------[log_end]"
-	round_stats = file("data/logs/[year_string]/round_stats.log")
-	round_stats << "[log_end]\nStarting up - [time2text(world.realtime,"YYYY-MM-DD (hh:mm:ss)")][log_end]\n---------------------[log_end]"
-	round_scheduler_stats = file("data/logs/[year_string]/round_scheduler_stats.log")
-	round_scheduler_stats << "[log_end]\nStarting up - [time2text(world.realtime,"YYYY-MM-DD (hh:mm:ss)")][log_end]\n---------------------[log_end]"
-	mutator_logs = file("data/logs/[year_string]/mutator_logs.log")
-	mutator_logs << "[log_end]\nStarting up - [time2text(world.realtime,"YYYY-MM-DD (hh:mm:ss)")][log_end]\n---------------------[log_end]"
+	GLOB.href_logfile = file("data/logs/[date_string] hrefs.htm")
+	GLOB.diary = file("data/logs/[date_string].log")
+	GLOB.diary << "[GLOB.log_end]\n[GLOB.log_end]\nStarting up. [time2text(world.timeofday, "hh:mm.ss")][GLOB.log_end]\n---------------------[GLOB.log_end]"
+	GLOB.round_stats = file("data/logs/[year_string]/round_stats.log")
+	GLOB.round_stats << "[GLOB.log_end]\nStarting up - [time2text(world.realtime,"YYYY-MM-DD (hh:mm:ss)")][GLOB.log_end]\n---------------------[GLOB.log_end]"
+	GLOB.round_scheduler_stats = file("data/logs/[year_string]/round_scheduler_stats.log")
+	GLOB.round_scheduler_stats << "[GLOB.log_end]\nStarting up - [time2text(world.realtime,"YYYY-MM-DD (hh:mm:ss)")][GLOB.log_end]\n---------------------[GLOB.log_end]"
+	GLOB.mutator_logs = file("data/logs/[year_string]/mutator_logs.log")
+	GLOB.mutator_logs << "[GLOB.log_end]\nStarting up - [time2text(world.realtime,"YYYY-MM-DD (hh:mm:ss)")][GLOB.log_end]\n---------------------[GLOB.log_end]"
 	var/latest_changelog = file("[global.config.directory]/../html/changelogs/archive/" + time2text(world.timeofday, "YYYY-MM") + ".yml")
 	GLOB.changelog_hash = fexists(latest_changelog) ? md5(latest_changelog) : 0 //for telling if the changelog has changed recently
 
@@ -70,11 +68,11 @@ var/list/reboot_sfx = file2list("config/reboot_sfx.txt")
 	// Only do offline sleeping when the server isn't running unit tests or hosting a local dev test
 	sleep_offline = (!running_tests && !testing_locally)
 
-	if(!RoleAuthority)
-		RoleAuthority = new /datum/authority/branch/role()
+	if(!GLOB.RoleAuthority)
+		GLOB.RoleAuthority = new /datum/authority/branch/role()
 		to_world(SPAN_DANGER("\b Job setup complete"))
 
-	if(!EvacuationAuthority)		EvacuationAuthority = new
+	if(!GLOB.EvacuationAuthority)		GLOB.EvacuationAuthority = new
 
 	change_tick_lag(CONFIG_GET(number/ticklag))
 	GLOB.timezoneOffset = text2num(time2text(0,"hh")) * 36000
@@ -83,35 +81,12 @@ var/list/reboot_sfx = file2list("config/reboot_sfx.txt")
 	update_status()
 
 	//Scramble the coords obsfucator
-	obfs_x = rand(-500, 500) //A number between -100 and 100
-	obfs_y = rand(-500, 500) //A number between -100 and 100
+	GLOB.obfs_x = rand(-500, 500) //A number between -100 and 100
+	GLOB.obfs_y = rand(-500, 500) //A number between -100 and 100
 
 	spawn(3000)		//so we aren't adding to the round-start lag
 		if(CONFIG_GET(flag/ToRban))
 			ToRban_autoupdate()
-
-	// Allow the test manager to run all unit tests if this is being hosted just to run unit tests
-	if(running_tests)
-		test_executor.host_tests()
-
-	// If the server's configured for local testing, get everything set up ASAP.
-	// Shamelessly stolen from the test manager's host_tests() proc
-	if(testing_locally)
-		master_mode = "extended"
-
-		// If a test environment was specified, initialize it
-		if(fexists("test_environment.txt"))
-			var/test_environment = file2text("test_environment.txt")
-
-			var/env_type = null
-			for(var/type in subtypesof(/datum/test_environment))
-				if("[type]" == test_environment)
-					env_type = type
-					break
-
-			if(env_type)
-				var/datum/test_environment/env = new env_type()
-				env.initialize()
 
 		// Wait for the game ticker to initialize
 		while(!SSticker.initialized)
@@ -121,8 +96,8 @@ var/list/reboot_sfx = file2list("config/reboot_sfx.txt")
 		SSticker.request_start()
 	return
 
-var/world_topic_spam_protect_ip = "0.0.0.0"
-var/world_topic_spam_protect_time = world.timeofday
+GLOBAL_VAR_INIT(world_topic_spam_protect_ip, "0.0.0.0")
+GLOBAL_VAR_INIT(world_topic_spam_protect_time, world.timeofday)
 
 /world/proc/initialize_tgs()
 	TgsNew(new /datum/tgs_event_handler/impl, TGS_SECURITY_TRUSTED)
@@ -142,10 +117,10 @@ var/world_topic_spam_protect_time = world.timeofday
 
 	else if (T == "status")
 		var/list/s = list()
-		s["version"] = game_version
-		s["mode"] = master_mode
+		s["version"] = GLOB.game_version
+		s["mode"] = GLOB.master_mode
 		s["respawn"] = CONFIG_GET(flag/respawn)
-		s["enter"] = enter_allowed
+		s["enter"] = GLOB.enter_allowed
 		s["vote"] = CONFIG_GET(flag/allow_vote_mode)
 		s["ai"] = CONFIG_GET(flag/allow_ai)
 		s["host"] = host ? host : null
@@ -180,7 +155,7 @@ var/world_topic_spam_protect_time = world.timeofday
 	else if(copytext(T,1,6) == "notes")
 		if(addr != "127.0.0.1")
 			return "Nah ah ah, you didn't say the magic word"
-		if(!SSdatabase.connection.connection_ready())
+		if(!GLOB.SSdatabase.connection.connection_ready())
 			return "Database is not yet ready. Please wait."
 		var/input[] = params2list(T)
 		var/ckey = trim(input["ckey"])
@@ -221,8 +196,8 @@ var/world_topic_spam_protect_time = world.timeofday
 
 /world/proc/send_tgs_restart()
 	if(CONFIG_GET(string/new_round_alert_channel) && CONFIG_GET(string/new_round_alert_role_id))
-		if(round_statistics)
-			send2chat("[round_statistics.round_name] completed!", CONFIG_GET(string/new_round_alert_channel))
+		if(GLOB.round_statistics)
+			send2chat("[GLOB.round_statistics.round_name] completed!", CONFIG_GET(string/new_round_alert_channel))
 		if(SSmapping.next_map_configs)
 			var/datum/map_config/next_map = SSmapping.next_map_configs[GROUND_MAP]
 			if(next_map)
@@ -232,7 +207,7 @@ var/world_topic_spam_protect_time = world.timeofday
 	return
 
 /world/proc/send_reboot_sound()
-	var/reboot_sound = SAFEPICK(reboot_sfx)
+	var/reboot_sound = SAFEPICK(GLOB.reboot_sfx)
 	if(reboot_sound)
 		var/sound/reboot_sound_ref = sound(reboot_sound)
 		for(var/client/client as anything in GLOB.clients)
@@ -243,8 +218,8 @@ var/world_topic_spam_protect_time = world.timeofday
 	var/list/Lines = file2list("data/mode.txt")
 	if(Lines.len)
 		if(Lines[1])
-			master_mode = Lines[1]
-			log_misc("Saved mode is '[master_mode]'")
+			GLOB.master_mode = Lines[1]
+			log_misc("Saved mode is '[GLOB.master_mode]'")
 
 /world/proc/save_mode(var/the_mode)
 	var/F = file("data/mode.txt")
@@ -252,12 +227,12 @@ var/world_topic_spam_protect_time = world.timeofday
 	F << the_mode
 
 /world/proc/load_motd()
-	join_motd = file2text("config/motd.txt")
+	GLOB.join_motd = file2text("config/motd.txt")
 
 /world/proc/load_tm_message()
 	var/datum/getrev/revdata = GLOB.revdata
 	if(revdata.testmerge.len)
-		current_tms = revdata.GetTestMergeInfo()
+		GLOB.current_tms = revdata.GetTestMergeInfo()
 
 /world/proc/update_status()
 	//Note: Hub content is limited to 254 characters, including limited HTML/CSS.
@@ -276,8 +251,8 @@ var/world_topic_spam_protect_time = world.timeofday
 	world.status = s
 
 #define FAILED_DB_CONNECTION_CUTOFF 1
-var/failed_db_connections = 0
-var/failed_old_db_connections = 0
+GLOBAL_VAR_INIT(failed_db_connections, 0)
+GLOBAL_VAR_INIT(failed_old_db_connections, 0)
 
 // /hook/startup/proc/connectDB()
 // 	if(!setup_database_connection())
@@ -286,19 +261,19 @@ var/failed_old_db_connections = 0
 // 		world.log << "Feedback database connection established."
 // 	return 1
 
-var/datum/BSQL_Connection/connection
+GLOBAL_DATUM(connection, /datum/BSQL_Connection)
 /proc/setup_database_connection()
 
-	if(failed_db_connections > FAILED_DB_CONNECTION_CUTOFF)	//If it failed to establish a connection more than 5 times in a row, don't bother attempting to conenct anymore.
+	if(GLOB.failed_db_connections > FAILED_DB_CONNECTION_CUTOFF)	//If it failed to establish a connection more than 5 times in a row, don't bother attempting to conenct anymore.
 		return 0
 
 
 	return .
 
 /proc/set_global_view(view_size)
-	world_view_size = view_size
+	GLOB.world_view_size = view_size
 	for(var/client/c in GLOB.clients)
-		c.view = world_view_size
+		c.view = GLOB.world_view_size
 
 #undef FAILED_DB_CONNECTION_CUTOFF
 

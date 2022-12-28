@@ -17,12 +17,12 @@
 		return
 
 	var/datum/supply_order/O = new /datum/supply_order()
-	O.ordernum = supply_controller.ordernum
-	supply_controller.ordernum++
-	O.object = supply_controller.supply_packs[type_to_give]
+	O.ordernum = GLOB.supply_controller.ordernum
+	GLOB.supply_controller.ordernum++
+	O.object = GLOB.supply_controller.supply_packs[type_to_give]
 	O.orderedby = MAIN_AI_SYSTEM
 
-	supply_controller.shoppinglist += O
+	GLOB.supply_controller.shoppinglist += O
 
 /datum/tech/repeatable/ob/he
 	name = "Additional OB projectiles - HE"

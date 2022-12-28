@@ -10,7 +10,7 @@
 	var/datum/preferences/A = new()
 	A.randomize_appearance(H)
 	var/random_name
-	random_name = capitalize(pick(H.gender == MALE ? first_names_male : first_names_female)) + " " + capitalize(pick(last_names))
+	random_name = capitalize(pick(H.gender == MALE ? GLOB.first_names_male : GLOB.first_names_female)) + " " + capitalize(pick(GLOB.last_names))
 	H.change_real_name(H, random_name)
 	H.name = H.real_name
 	H.age = rand(21,45)

@@ -1,4 +1,4 @@
-var/bomb_set = FALSE
+GLOBAL_VAR_INIT(bomb_set, FALSE)
 
 /obj/structure/machinery/nuclearbomb
 	name = "\improper Nuclear Fission Explosive"
@@ -44,7 +44,7 @@ var/bomb_set = FALSE
 /obj/structure/machinery/nuclearbomb/process()
 	. = ..()
 	if(timing)
-		bomb_set = TRUE //So long as there is one nuke timing, it means one nuke is armed.
+		GLOB.bomb_set = TRUE //So long as there is one nuke timing, it means one nuke is armed.
 		timeleft = explosion_time - world.time
 		if(world.time >= explosion_time)
 			explode()
@@ -74,7 +74,7 @@ var/bomb_set = FALSE
 	return XENO_ATTACK_ACTION
 
 /obj/structure/machinery/nuclearbomb/attackby(obj/item/O as obj, mob/user as mob)
-	if(anchored && timing && bomb_set && HAS_TRAIT(O, TRAIT_TOOL_WIRECUTTERS))
+	if(anchored && timing && GLOB.bomb_set && HAS_TRAIT(O, TRAIT_TOOL_WIRECUTTERS))
 		user.visible_message(SPAN_DANGER("[user] begins to defuse \the [src]."), SPAN_DANGER("You begin to defuse \the [src]. This will take some time..."))
 		if(do_after(user, 150 * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
 			disable()
@@ -95,7 +95,7 @@ var/bomb_set = FALSE
 			return
 
 		if(isXenoQueen(user))
-			if(timing && bomb_set)
+			if(timing && GLOB.bomb_set)
 				user.visible_message(SPAN_DANGER("[user] begins to defuse \the [src]."), SPAN_DANGER("You begin to defuse \the [src]. This will take some time..."))
 				if(do_after(user, 5 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
 					disable()
@@ -179,13 +179,13 @@ var/bomb_set = FALSE
 				timing = !timing
 				if(timing)
 					if(!safety)
-						bomb_set = TRUE
+						GLOB.bomb_set = TRUE
 						explosion_time = world.time + timeleft
 						start_processing()
 						announce_to_players()
 						message_staff("[src] has been activated by [key_name(usr, 1)](<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservejump=[usr]'>JMP</A>)")
 					else
-						bomb_set = FALSE
+						GLOB.bomb_set = FALSE
 				else
 					disable()
 					message_staff("[src] has been deactivated by [key_name(usr, 1)](<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservejump=[usr]'>JMP</A>)")
@@ -214,7 +214,7 @@ var/bomb_set = FALSE
 			being_used = FALSE
 			if(safety)
 				timing = FALSE
-				bomb_set = FALSE
+				GLOB.bomb_set = FALSE
 			. = TRUE
 
 		if("toggleCommandLockout")
@@ -373,7 +373,7 @@ var/bomb_set = FALSE
 
 /obj/structure/machinery/nuclearbomb/proc/disable()
 	timing = FALSE
-	bomb_set = FALSE
+	GLOB.bomb_set = FALSE
 	timeleft = initial(timeleft)
 	explosion_time = null
 	announce_to_players()
@@ -388,7 +388,7 @@ var/bomb_set = FALSE
 	update_icon()
 	safety = TRUE
 
-	EvacuationAuthority.trigger_self_destruct(list(z), src, FALSE, NUKE_EXPLOSION_GROUND_FINISHED, FALSE, end_round)
+	GLOB.EvacuationAuthority.trigger_self_destruct(list(z), src, FALSE, NUKE_EXPLOSION_GROUND_FINISHED, FALSE, end_round)
 
 	sleep(100)
 	cell_explosion(loc, 500, 150, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data(initial(name)))
@@ -399,5 +399,5 @@ var/bomb_set = FALSE
 	if(timing != -1)
 		message_staff("[src] has been unexpectedly deleted at ([x],[y],[x]). (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[x];Y=[y];Z=[z]'>JMP</a>)")
 		log_game("[src] has been unexpectedly deleted at ([x],[y],[x]).")
-	bomb_set = FALSE
+	GLOB.bomb_set = FALSE
 	..()

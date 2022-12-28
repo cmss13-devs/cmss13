@@ -51,7 +51,7 @@
 	dat += "<BR><A HREF='?src=\ref[src];operation=announce'>[is_announcement_active ? "Make An Announcement" : "*Unavailable*"]</A>"
 	dat += "<BR><A href='?src=\ref[src];operation=mapview'>Tactical Map</A>"
 	dat += "<BR><hr>"
-	var/datum/squad/marine/echo/echo_squad = locate() in RoleAuthority.squads
+	var/datum/squad/marine/echo/echo_squad = locate() in GLOB.RoleAuthority.squads
 	if(!echo_squad.active && faction == FACTION_MARINE)
 		dat += "<BR><A href='?src=\ref[src];operation=activate_echo'>Designate Echo Squad</A>"
 		dat += "<BR><hr>"
@@ -194,7 +194,7 @@
 	var/icon/O = overlay_tacmap(tacmap_type, tacmap_base_type, tacmap_additional_parameter)
 	if(O)
 		current_mapviewer << browse_rsc(O, "marine_minimap.png")
-		show_browser(current_mapviewer, "<img src=marine_minimap.png>", minimap_name, "marineminimap", "size=[(map_sizes[1]*2)+50]x[(map_sizes[2]*2)+50]", closeref = src)
+		show_browser(current_mapviewer, "<img src=marine_minimap.png>", minimap_name, "marineminimap", "size=[(GLOB.map_sizes[1]*2)+50]x[(GLOB.map_sizes[2]*2)+50]", closeref = src)
 
 /obj/structure/machinery/computer/groundside_operations/Topic(href, href_list)
 	if (href_list["close"] && current_mapviewer)
@@ -248,7 +248,7 @@
 			if(SSticker.mode.active_lz)
 				return
 			var/lz_choices = list()
-			for(var/obj/structure/machinery/computer/shuttle_control/console in machines)
+			for(var/obj/structure/machinery/computer/shuttle_control/console in GLOB.machines)
 				if(is_ground_level(console.z) && !console.onboard && console.shuttle_type == SHUTTLE_DROPSHIP)
 					lz_choices += console
 			var/new_lz = input(usr, "Choose the primary LZ for this operation", "Operation Staging")  as null|anything in lz_choices
@@ -257,7 +257,7 @@
 
 		if("pick_squad")
 			var/list/squad_list = list()
-			for(var/datum/squad/S in RoleAuthority.squads)
+			for(var/datum/squad/S in GLOB.RoleAuthority.squads)
 				if(S.active && S.faction == faction)
 					squad_list += S.name
 
@@ -285,7 +285,7 @@
 					visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("Stopping helmet cam view of [cam_target].")]")
 					cam = null
 					usr.reset_view(null)
-				else if(usr.client.view != world_view_size)
+				else if(usr.client.view != GLOB.world_view_size)
 					to_chat(usr, SPAN_WARNING("You're too busy peering through binoculars."))
 				else
 					cam = new_cam
@@ -296,7 +296,7 @@
 			if(!reason)
 				return
 			if(alert(usr, "Confirm activation of Echo Squad for [reason]", "Confirm Activation", "Yes", "No") != "Yes") return
-			var/datum/squad/marine/echo/echo_squad = locate() in RoleAuthority.squads
+			var/datum/squad/marine/echo/echo_squad = locate() in GLOB.RoleAuthority.squads
 			if(!echo_squad)
 				visible_message(SPAN_BOLDNOTICE("ERROR: Unable to locate Echo Squad database."))
 				return

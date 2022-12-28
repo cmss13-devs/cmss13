@@ -19,7 +19,7 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
-var/datum/controller/subsystem/database_query_manager/SSdatabase
+GLOBAL_DATUM(SSdatabase, /datum/controller/subsystem/database_query_manager)
 
 /datum/controller/subsystem/database_query_manager
 	name          = "Database QM"
@@ -54,7 +54,7 @@ var/datum/controller/subsystem/database_query_manager/SSdatabase
 	queries_standby = list()
 	var/list/result = loadsql("config/dbconfig.txt")
 	settings = connection_settings_from_config(result)
-	NEW_SS_GLOBAL(SSdatabase)
+	NEW_SS_GLOBAL(GLOB.SSdatabase)
 
 /datum/controller/subsystem/database_query_manager/Initialize()
 	set waitfor=0

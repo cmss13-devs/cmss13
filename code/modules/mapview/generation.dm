@@ -1,13 +1,14 @@
-var/global/list/base_mapview_types = list()
-var/global/list/populated_mapview_types = list()
-var/global/list/populated_mapview_type_updated = list()
+GLOBAL_LIST_EMPTY(base_mapview_types)
+GLOBAL_LIST_EMPTY(populated_mapview_types)
+GLOBAL_LIST_EMPTY(populated_mapview_type_updated)
 
-var/global/list/map_sizes = list()
-var/global/list/faction_to_tacmap_color = list(
+
+GLOBAL_LIST_EMPTY(map_sizes)
+GLOBAL_LIST_INIT(faction_to_tacmap_color, list(
 	FACTION_UPP = "#c26a2f",
 	FACTION_CLF = "#2f98c2",
 	FACTION_PMC = "#d19513"
-)
+))
 
 #define TACMAP_REFRESH_FREQUENCY 1 MINUTES
 
@@ -17,7 +18,7 @@ var/global/list/faction_to_tacmap_color = list(
 	var/max_x = 0
 	var/min_y = 1000
 	var/max_y = 0
-	for(var/z1 in z1turfs)
+	for(var/z1 in GLOB.z1turfs)
 		var/turf/T = z1
 		if(T.x < min_x && !istype(T,/turf/open/space))
 			min_x = T.x
@@ -63,9 +64,9 @@ var/global/list/faction_to_tacmap_color = list(
 			minimap.DrawBox(rgb(200,200,200),T.x,T.y)
 			continue
 	minimap.Crop(1,1,max_x,max_y)
-	if(!length(map_sizes))
-		map_sizes = list(max_x, max_y,min_x, min_y)
-	base_mapview_types[map_type] = minimap
+	if(!length(GLOB.map_sizes))
+		GLOB.map_sizes = list(max_x, max_y,min_x, min_y)
+	GLOB.base_mapview_types[map_type] = minimap
 	return minimap
 
 /proc/draw_tacmap_units(var/icon/tacmap, var/tacmap_type = TACMAP_DEFAULT, var/additional_parameter = null)
@@ -82,11 +83,11 @@ var/global/list/faction_to_tacmap_color = list(
 			draw_vehicles(tacmap)
 			draw_xenos(tacmap, FALSE, FALSE)
 		if(TACMAP_FACTION)
-			draw_faction_units(tacmap, additional_parameter, (additional_parameter in faction_to_tacmap_color) ? faction_to_tacmap_color[additional_parameter] : "#2facc2d3")
+			draw_faction_units(tacmap, additional_parameter, (additional_parameter in GLOB.faction_to_tacmap_color) ? GLOB.faction_to_tacmap_color[additional_parameter] : "#2facc2d3")
 			draw_tcomms_towers(tacmap)
 
 /proc/draw_marines(var/icon/tacmap)
-	var/list/colors = squad_colors.Copy()
+	var/list/colors = GLOB.squad_colors.Copy()
 	colors += rgb(51, 204, 204)
 	for(var/mob/living/carbon/human/H as anything in GLOB.alive_human_list)
 		if(!is_ground_level(H.z))
@@ -175,20 +176,20 @@ var/global/list/faction_to_tacmap_color = list(
 	var/tacmap_string = map_string
 	if(additional_parameter)
 		tacmap_string += "-[additional_parameter]"
-	if(populated_mapview_type_updated[tacmap_string]) // update this every [refresh_frequency] units of time, iconops is laggy
-		return populated_mapview_types[tacmap_string]
+	if(GLOB.populated_mapview_type_updated[tacmap_string]) // update this every [refresh_frequency] units of time, iconops is laggy
+		return GLOB.populated_mapview_types[tacmap_string]
 
-	var/icon/tacmap = icon(base_mapview_types[map_type])
+	var/icon/tacmap = icon(GLOB.base_mapview_types[map_type])
 	draw_tacmap_units(tacmap, map_string, additional_parameter)
-	tacmap.Crop(1, 1, map_sizes[1], map_sizes[2])
-	tacmap.Scale(map_sizes[1] * 2, map_sizes[2] * 2)
-	populated_mapview_types[tacmap_string] = tacmap
-	populated_mapview_type_updated[tacmap_string] = TRUE
+	tacmap.Crop(1, 1, GLOB.map_sizes[1], GLOB.map_sizes[2])
+	tacmap.Scale(GLOB.map_sizes[1] * 2, GLOB.map_sizes[2] * 2)
+	GLOB.populated_mapview_types[tacmap_string] = tacmap
+	GLOB.populated_mapview_type_updated[tacmap_string] = TRUE
 	addtimer(CALLBACK(GLOBAL_PROC, /proc/prepare_tacmap_for_update, tacmap_string), TACMAP_REFRESH_FREQUENCY)
 	return tacmap
 
 /proc/prepare_tacmap_for_update(var/tacmap_string = TACMAP_DEFAULT)
-	populated_mapview_type_updated[tacmap_string] = FALSE
+	GLOB.populated_mapview_type_updated[tacmap_string] = FALSE
 
 /mob/living/carbon/human/proc/has_helmet_camera()
 	if(faction == FACTION_MARINE)

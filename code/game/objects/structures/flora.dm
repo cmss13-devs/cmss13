@@ -189,7 +189,7 @@ ICE GRASS
 	addtimer(CALLBACK(src, .proc/burn_up), spread_time + 5 SECONDS)
 
 /obj/structure/flora/proc/spread_fire()
-	for(var/D in cardinal) //Spread fire
+	for(var/D in GLOB.cardinal) //Spread fire
 		var/turf/T = get_step(src.loc, D)
 		if(T)
 			for(var/obj/structure/flora/F in T)

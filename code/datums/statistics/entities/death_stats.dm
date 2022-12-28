@@ -119,8 +119,8 @@
 
 	handle_observer_message(cause_data, cause_mob, death_loc, A)
 
-	if(round_statistics)
-		round_statistics.track_death(new_death)
+	if(GLOB.round_statistics)
+		GLOB.round_statistics.track_death(new_death)
 
 	new_death.save()
 	new_death.detach()

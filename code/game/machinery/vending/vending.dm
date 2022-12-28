@@ -311,7 +311,7 @@
 		if (CH) // Only proceed if card contains proper account number.
 			if(!CH.suspended)
 				if(CH.security_level != 0) //If card requires pin authentication (ie seclevel 1 or 2)
-					if(vendor_account)
+					if(GLOB.vendor_account)
 						var/attempt_pin = tgui_input_number(usr, "Enter pin code", "Vendor transaction")
 						var/datum/money_account/D = attempt_account_access(C.associated_account_number, attempt_pin, 2)
 						transfer_and_vend(D)
@@ -332,18 +332,18 @@
 
 			//transfer the money
 			acc.money -= transaction_amount
-			vendor_account.money += transaction_amount
+			GLOB.vendor_account.money += transaction_amount
 
 			//create entries in the two account transaction logs
 			var/datum/transaction/T = new()
-			T.target_name = "[vendor_account.owner_name] (via [src.name])"
+			T.target_name = "[GLOB.vendor_account.owner_name] (via [src.name])"
 			T.purpose = "Purchase of [currently_vending.product_name]"
 			if(transaction_amount > 0)
 				T.amount = "([transaction_amount])"
 			else
 				T.amount = "[transaction_amount]"
 			T.source_terminal = src.name
-			T.date = current_date_string
+			T.date = GLOB.current_date_string
 			T.time = worldtime2text()
 			acc.transaction_log.Add(T)
 							//
@@ -352,9 +352,9 @@
 			T.purpose = "Purchase of [currently_vending.product_name]"
 			T.amount = "[transaction_amount]"
 			T.source_terminal = src.name
-			T.date = current_date_string
+			T.date = GLOB.current_date_string
 			T.time = worldtime2text()
-			vendor_account.transaction_log.Add(T)
+			GLOB.vendor_account.transaction_log.Add(T)
 
 			// Vend the item
 			src.vend(src.currently_vending, usr)
@@ -447,7 +447,7 @@
 	if(panel_wires.len)
 		data["wires"] = panel_wires
 
-	ui = nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
+	ui = GLOB.nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
 
 	if (!ui)
 		ui = new(user, src, ui_key, "vending_machine.tmpl", name , 450, 600)

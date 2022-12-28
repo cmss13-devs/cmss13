@@ -1,5 +1,4 @@
-var/list/fast_machines = list()
-
+GLOBAL_LIST_EMPTY(fast_machines)
 
 SUBSYSTEM_DEF(fast_machinery)
 	name          = "Fast Machinery"
@@ -9,12 +8,12 @@ SUBSYSTEM_DEF(fast_machinery)
 	var/list/currentrun = list()
 
 /datum/controller/subsystem/fast_machinery/stat_entry(msg)
-	msg = "FP:[fast_machines.len]"
+	msg = "FP:[GLOB.fast_machines.len]"
 	return ..()
 
 /datum/controller/subsystem/fast_machinery/fire(resumed = FALSE)
 	if(!resumed)
-		currentrun = fast_machines.Copy()
+		currentrun = GLOB.fast_machines.Copy()
 	while(currentrun.len)
 		var/obj/structure/machinery/M = currentrun[currentrun.len]
 		currentrun.len--

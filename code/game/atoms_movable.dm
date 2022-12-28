@@ -196,7 +196,7 @@
 	C.proj_x = shift_x
 	C.proj_y = shift_y
 
-	clones.Add(C)
+	GLOB.clones.Add(C)
 	C.mstr = src //Link clone and master
 	src.clone = C
 
@@ -228,7 +228,7 @@
 			clone.SetLuminosity(0) //Kill clone light
 
 /atom/movable/proc/destroy_clone()
-	clones.Remove(src.clone)
+	GLOB.clones.Remove(src.clone)
 	qdel(src.clone)
 	src.clone = null
 

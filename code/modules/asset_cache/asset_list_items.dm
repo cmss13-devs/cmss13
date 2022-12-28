@@ -253,7 +253,7 @@
 	var/i
 	for(i = 1; i < length(squads); i++)
 		var/squad = squads[i]
-		var/color = squad_colors[i]
+		var/color = GLOB.squad_colors[i]
 		for(var/iref in icon_data)
 			var/list/iconref = iref
 			var/icon/background = icon('icons/mob/hud/marine_hud.dmi', "hudsquad", SOUTH)

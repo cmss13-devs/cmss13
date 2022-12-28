@@ -95,7 +95,7 @@
 	message_staff("[key_name_admin(usr)] is constructing an environment using a DMM file ([input]).", x, y, show_z)
 
 	try
-		var/datum/map_load_metadata/M = maploader.load_map(input, x, y, z, TRUE, FALSE, FALSE, TRUE)
+		var/datum/map_load_metadata/M = GLOB.maploader.load_map(input, x, y, z, TRUE, FALSE, FALSE, TRUE)
 		to_chat(src, SPAN_NOTICE("Map has been fully constructed!"))
 
 		for(var/obj/O in M.atoms_to_initialise)
@@ -153,7 +153,7 @@
 			continue
 
 		// Check that the key isn't a prefab/reserved
-		if(assignment_key in test_env_prefab_types)
+		if(assignment_key in GLOB.test_env_prefab_types)
 			LAZYADD(errors, "[line]: assignment key '[assignment_key]' is reserved")
 			continue
 
@@ -205,7 +205,7 @@
 				continue
 
 			// Prefab characters don't count
-			if(char in test_env_prefab_types || char == "\n")
+			if(char in GLOB.test_env_prefab_types || char == "\n")
 				continue
 
 			// If the key was assigned to a

@@ -19,13 +19,13 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
-#define DB_ENTITY SSentity_manager.select
-#define DB_EKEY SSentity_manager.select_by_key
-#define DB_FILTER SSentity_manager.filter_then
-#define DB_FILTER_LOCAL SSentity_manager.filter_local
-#define DB_META SSentity_manager.tables
-#define DB_VIEW SSentity_manager.view_meta
-#define WAIT_DB_READY while(!SSentity_manager.ready) {stoplag();}
+#define DB_ENTITY GLOB.SSentity_manager.select
+#define DB_EKEY GLOB.SSentity_manager.select_by_key
+#define DB_FILTER GLOB.SSentity_manager.filter_then
+#define DB_FILTER_LOCAL GLOB.SSentity_manager.filter_local
+#define DB_META GLOB.SSentity_manager.tables
+#define DB_VIEW GLOB.SSentity_manager.view_meta
+#define WAIT_DB_READY while(!GLOB.SSentity_manager.ready) {stoplag();}
 
 // MODIFY THESE TO ENABLE OR DISABLE DB ENGINES
 #define NDATABASE_BSQL_SUPPORT TRUE

@@ -2,7 +2,7 @@
 //
 // The datum containing all the chunks.
 
-var/datum/cameranet/cameranet = new()
+GLOBAL_DATUM_INIT(cameranet, /datum/cameranet, new)
 
 /datum/cameranet
 	// The cameras on the map, no matter if they work or not. Updated in obj/structure/machinery/camera/New() and Dispose().

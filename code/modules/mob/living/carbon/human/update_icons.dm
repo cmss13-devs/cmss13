@@ -4,8 +4,8 @@
 	TODO: Proper documentation
 	icon_key is [species.race_key][g][husk][fat][hulk][skeleton][ethnicity]
 */
-var/global/list/human_icon_cache = list()
-var/global/list/tail_icon_cache = list()
+GLOBAL_LIST_EMPTY(human_icon_cache)
+GLOBAL_LIST_EMPTY(tail_icon_cache)
 
 /proc/overlay_image(icon, icon_state, color, flags)
 	var/image/ret = image(icon,icon_state)
@@ -19,7 +19,7 @@ var/global/list/tail_icon_cache = list()
 	Global associative list for caching uniform masks.
 	Each index is just 0 or 1 for not removed and removed (as in previously delimbed).
 */
-var/global/list/uniform_mask_cache = list()
+GLOBAL_LIST_EMPTY(uniform_mask_cache)
 
 	///////////////////////
 	//UPDATE_ICONS SYSTEM//
@@ -470,8 +470,8 @@ Applied by gun suicide and high impact bullet executions, removed by rejuvenate,
 			if(assigned_squad && marine_helmet.flags_marine_helmet & HELMET_SQUAD_OVERLAY)
 				var/datum/squad/S = assigned_squad
 				var/leader = S.squad_leader == src
-				if(S.color <= helmetmarkings.len)
-					var/image/J = leader? helmetmarkings_sql[S.color] : helmetmarkings[S.color]
+				if(S.color <= GLOB.helmetmarkings.len)
+					var/image/J = leader? GLOB.helmetmarkings_sql[S.color] : GLOB.helmetmarkings[S.color]
 					J.layer = -HEAD_SQUAD_LAYER
 					overlays_standing[HEAD_SQUAD_LAYER] = J
 					apply_overlay(HEAD_SQUAD_LAYER)
@@ -530,8 +530,8 @@ Applied by gun suicide and high impact bullet executions, removed by rejuvenate,
 				if(assigned_squad)
 					var/datum/squad/S = assigned_squad
 					var/leader = S.squad_leader == src
-					if(S.color <= helmetmarkings.len)
-						var/image/J = leader? armormarkings_sql[S.color] : armormarkings[S.color]
+					if(S.color <= GLOB.helmetmarkings.len)
+						var/image/J = leader? GLOB.armormarkings_sql[S.color] : GLOB.armormarkings[S.color]
 						J.layer = -SUIT_SQUAD_LAYER
 						overlays_standing[SUIT_SQUAD_LAYER] = J
 						apply_overlay(SUIT_SQUAD_LAYER)
@@ -668,11 +668,11 @@ Applied by gun suicide and high impact bullet executions, removed by rejuvenate,
 
 /mob/living/carbon/human/proc/get_tail_icon()
 	var/icon_key = "[species.race_key][r_skin][g_skin][b_skin][r_hair][g_hair][b_hair]"
-	var/icon/tail_icon = tail_icon_cache[icon_key]
+	var/icon/tail_icon = GLOB.tail_icon_cache[icon_key]
 	if(!tail_icon)
 		//generate a new one
 		tail_icon = icon('icons/effects/species.dmi', "[species.get_tail(src)]")
-		tail_icon_cache[icon_key] = tail_icon
+		GLOB.tail_icon_cache[icon_key] = tail_icon
 
 	return tail_icon
 

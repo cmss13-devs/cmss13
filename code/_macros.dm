@@ -75,7 +75,7 @@
 
 #define POSITIVE(val) max(val, 0)
 
-#define GENERATE_DEBUG_ID "[rand(0, 9)][rand(0, 9)][rand(0, 9)][rand(0, 9)][pick(alphabet_lowercase)][pick(alphabet_lowercase)][pick(alphabet_lowercase)][pick(alphabet_lowercase)]"
+#define GENERATE_DEBUG_ID "[rand(0, 9)][rand(0, 9)][rand(0, 9)][rand(0, 9)][pick(GLOB.alphabet_lowercase)][pick(GLOB.alphabet_lowercase)][pick(GLOB.alphabet_lowercase)][pick(GLOB.alphabet_lowercase)]"
 
 #define RECT new /datum/shape/rectangle
 #define QTREE new /datum/quadtree

@@ -33,7 +33,7 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 	return ..()
 
 /obj/structure/machinery/computer/shuttle_control/proc/get_shuttle()
-	var/datum/shuttle/ferry/shuttle = shuttle_controller.shuttles[shuttle_tag]
+	var/datum/shuttle/ferry/shuttle = GLOB.shuttle_controller.shuttles[shuttle_tag]
 
 	if(shuttle_datum)
 		shuttle = shuttle_datum
@@ -210,7 +210,7 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 		"auto_time_cdown" = automated_launch_time_left,
 	)
 
-	ui = nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
+	ui = GLOB.nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
 
 	if (!ui)
 		ui = new(user, src, ui_key, shuttle.iselevator? "elevator_control_console.tmpl" : "shuttle_control_console.tmpl", shuttle.iselevator? "Elevator Control" : "Shuttle Control", 550, 500)
@@ -268,7 +268,7 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 					return
 
 				// Allow the queen to choose the ship section to crash into
-				var/crash_target = tgui_input_list(usr, "Choose a ship section to target","Hijack", almayer_ship_sections + list("Cancel"))
+				var/crash_target = tgui_input_list(usr, "Choose a ship section to target","Hijack", GLOB.almayer_ship_sections + list("Cancel"))
 				if(crash_target == "Cancel")
 					return
 
@@ -286,17 +286,17 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 					shuttle1.true_crash_target_section = crash_target
 
 					// If the AA is protecting the target area, pick any other section to crash into at random
-					if(almayer_aa_cannon.protecting_section == crash_target)
-						var/list/potential_crash_sections = almayer_ship_sections.Copy()
-						potential_crash_sections -= almayer_aa_cannon.protecting_section
+					if(GLOB.almayer_aa_cannon.protecting_section == crash_target)
+						var/list/potential_crash_sections = GLOB.almayer_ship_sections.Copy()
+						potential_crash_sections -= GLOB.almayer_aa_cannon.protecting_section
 						crash_target = pick(potential_crash_sections)
 
 					shuttle1.crash_target_section = crash_target
 					shuttle1.transit_gun_mission = 0
 					shuttle1.launch_crash()
 
-					if(round_statistics)
-						round_statistics.track_hijack()
+					if(GLOB.round_statistics)
+						GLOB.round_statistics.track_hijack()
 
 					marine_announcement("Unscheduled dropship departure detected from operational area. Hijack likely. Shutting down autopilot.", "Dropship Alert", 'sound/AI/hijack.ogg')
 					shuttle.alerts_allowed--
@@ -314,16 +314,16 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 					if(Q.hive)
 						addtimer(CALLBACK(Q.hive, /datum/hive_status.proc/abandon_on_hijack), DROPSHIP_WARMUP_TIME + 5 SECONDS, TIMER_UNIQUE) //+ 5 seconds catch standing in doorways
 
-					if(bomb_set)
+					if(GLOB.bomb_set)
 						for(var/obj/structure/machinery/nuclearbomb/bomb in world)
 							bomb.end_round = FALSE
 
-					if(almayer_orbital_cannon)
-						almayer_orbital_cannon.is_disabled = TRUE
-						addtimer(CALLBACK(almayer_orbital_cannon, /obj/structure/orbital_cannon.proc/enable), 10 MINUTES, TIMER_UNIQUE)
+					if(GLOB.almayer_orbital_cannon)
+						GLOB.almayer_orbital_cannon.is_disabled = TRUE
+						addtimer(CALLBACK(GLOB.almayer_orbital_cannon, /obj/structure/orbital_cannon.proc/enable), 10 MINUTES, TIMER_UNIQUE)
 
-					if(almayer_aa_cannon)
-						almayer_aa_cannon.is_disabled = TRUE
+					if(GLOB.almayer_aa_cannon)
+						GLOB.almayer_aa_cannon.is_disabled = TRUE
 				else
 					if(shuttle.require_link)
 						use_power(4080)
@@ -372,7 +372,7 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 		if(shuttle_tag == "[MAIN_SHIP_NAME] Dropship 2")
 			ship_id = "sh_dropship2"
 
-		for(var/obj/structure/machinery/door/airlock/dropship_hatch/M in machines)
+		for(var/obj/structure/machinery/door/airlock/dropship_hatch/M in GLOB.machines)
 			if(M.id == ship_id)
 				if(M.locked && M.density)
 					continue // jobs done
@@ -385,10 +385,10 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 		var/obj/structure/machinery/door/airlock/multi_tile/almayer/reardoor
 		switch(ship_id)
 			if("sh_dropship1")
-				for(var/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/ds1/D in machines)
+				for(var/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/ds1/D in GLOB.machines)
 					reardoor = D
 			if("sh_dropship2")
-				for(var/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/ds2/D in machines)
+				for(var/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/ds2/D in GLOB.machines)
 					reardoor = D
 
 		if(!reardoor.locked && reardoor.density)
@@ -411,7 +411,7 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 		if(shuttle_tag == "[MAIN_SHIP_NAME] Dropship 2")
 			ship_id = "sh_dropship2"
 
-		for(var/obj/structure/machinery/door/airlock/dropship_hatch/M in machines)
+		for(var/obj/structure/machinery/door/airlock/dropship_hatch/M in GLOB.machines)
 			if(M.id == ship_id)
 				if(!is_loworbit_level(M.z))
 					M.unlock()
@@ -419,10 +419,10 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 		var/obj/structure/machinery/door/airlock/multi_tile/almayer/reardoor
 		switch(ship_id)
 			if("sh_dropship1")
-				for(var/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/ds1/D in machines)
+				for(var/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/ds1/D in GLOB.machines)
 					reardoor = D
 			if("sh_dropship2")
-				for(var/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/ds2/D in machines)
+				for(var/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/ds2/D in GLOB.machines)
 					reardoor = D
 		if(!is_loworbit_level(reardoor.z))
 			reardoor.unlock()
@@ -435,7 +435,7 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 		if(shuttle_tag == "[MAIN_SHIP_NAME] Dropship 2")
 			ship_id = "sh_dropship2"
 
-		for(var/obj/structure/machinery/door/airlock/dropship_hatch/M in machines)
+		for(var/obj/structure/machinery/door/airlock/dropship_hatch/M in GLOB.machines)
 			if(M.id == ship_id)
 				var/is_right_side = text2num(href_list["right side"])
 				if(is_right_side)
@@ -464,10 +464,10 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 		var/obj/structure/machinery/door/airlock/multi_tile/almayer/reardoor
 		switch(ship_id)
 			if("sh_dropship1")
-				for(var/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/ds1/D in machines)
+				for(var/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/ds1/D in GLOB.machines)
 					reardoor = D
 			if("sh_dropship2")
-				for(var/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/ds2/D in machines)
+				for(var/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/ds2/D in GLOB.machines)
 					reardoor = D
 		if(reardoor)
 			if(reardoor.locked)

@@ -387,14 +387,14 @@
 		dat += "Round Duration: <B>[round(world.time / 36000)]:[add_zero(world.time / 600 % 60, 2)]:[world.time / 100 % 6][world.time / 100 % 10]</B><BR>"
 
 		if(check_rights(R_DEBUG, 0))
-			dat += "<br><A HREF='?_src_=vars;Vars=\ref[EvacuationAuthority]'>VV Evacuation Controller</A><br>"
-			dat += "<A HREF='?_src_=vars;Vars=\ref[shuttle_controller]'>VV Shuttle Controller</A><br><br>"
+			dat += "<br><A HREF='?_src_=vars;Vars=\ref[GLOB.EvacuationAuthority]'>VV Evacuation Controller</A><br>"
+			dat += "<A HREF='?_src_=vars;Vars=\ref[GLOB.shuttle_controller]'>VV Shuttle Controller</A><br><br>"
 
 		if(check_rights(R_MOD, 0))
 			dat += "<b>Evacuation:</b> "
-			switch(EvacuationAuthority.evac_status)
+			switch(GLOB.EvacuationAuthority.evac_status)
 				if(EVACUATION_STATUS_STANDING_BY) dat += 	"STANDING BY"
-				if(EVACUATION_STATUS_INITIATING) dat += 	"IN PROGRESS: [EvacuationAuthority.get_status_panel_eta()]"
+				if(EVACUATION_STATUS_INITIATING) dat += 	"IN PROGRESS: [GLOB.EvacuationAuthority.get_status_panel_eta()]"
 				if(EVACUATION_STATUS_COMPLETE) dat += 		"COMPLETE"
 			dat += "<br>"
 
@@ -405,7 +405,7 @@
 
 		if(check_rights(R_ADMIN, 0))
 			dat += "<b>Self-Destruct:</b> "
-			switch(EvacuationAuthority.dest_status)
+			switch(GLOB.EvacuationAuthority.dest_status)
 				if(NUKE_EXPLOSION_INACTIVE) dat += 		"INACTIVE"
 				if(NUKE_EXPLOSION_ACTIVE) dat += 		"ACTIVE"
 				if(NUKE_EXPLOSION_IN_PROGRESS) dat += 	"IN PROGRESS"

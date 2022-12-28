@@ -21,18 +21,18 @@
 		if(prob(40))
 			first_name = "[capitalize(randomly_generate_japanese_word(rand(1, 3)))]"
 		else
-			first_name = "[pick(first_names_male_clf)]"
+			first_name = "[pick(GLOB.first_names_male_clf)]"
 		H.f_style = pick("3 O'clock Shadow", "3 O'clock Moustache", "5 O'clock Shadow", "5 O'clock Moustache")
 	else
 		if(prob(40))
 			first_name = "[capitalize(randomly_generate_japanese_word(rand(1, 3)))]"
 		else
-			first_name = "[pick(first_names_female_clf)]"
+			first_name = "[pick(GLOB.first_names_female_clf)]"
 	//surname
 	if(prob(35))
 		last_name = "[capitalize(randomly_generate_japanese_word(rand(1, 4)))]"
 	else
-		last_name = "[pick(last_names_clf)]"
+		last_name = "[pick(GLOB.last_names_clf)]"
 	//put them together
 	random_name = "[first_name] [last_name]"
 	H.change_real_name(H, random_name)
@@ -747,9 +747,9 @@
 	if(prob(10))
 		random_name = "[capitalize(randomly_generate_japanese_word(rand(2, 3)))]"
 	else if(H.gender == MALE)
-		random_name = "[pick(first_names_male_clf)]"
+		random_name = "[pick(GLOB.first_names_male_clf)]"
 	else
-		random_name = "[pick(first_names_female_clf)]"
+		random_name = "[pick(GLOB.first_names_female_clf)]"
 
 	if(H.gender == MALE)
 		H.f_style = "5 O'clock Shadow"

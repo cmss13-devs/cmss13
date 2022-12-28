@@ -187,10 +187,10 @@
 	setDir(get_dir(loc, target_turf))
 
 	var/ammo_flags = ammo.flags_ammo_behavior | projectile_override_flags
-	if(round_statistics && ammo_flags & AMMO_BALLISTIC)
-		round_statistics.total_projectiles_fired++
+	if(GLOB.round_statistics && ammo_flags & AMMO_BALLISTIC)
+		GLOB.round_statistics.total_projectiles_fired++
 		if(ammo.bonus_projectiles_amount)
-			round_statistics.total_projectiles_fired += ammo.bonus_projectiles_amount
+			GLOB.round_statistics.total_projectiles_fired += ammo.bonus_projectiles_amount
 	if(firer && ismob(firer) && weapon_cause_data)
 		var/mob/M = firer
 		M.track_shot(weapon_cause_data.cause_name)
@@ -450,11 +450,11 @@
 
 		var/hit_roll = rand(1,100)
 
-		if(original != L || hit_roll > hit_chance-base_miss_chance[def_zone]-20)	// If hit roll is high or the firer wasn't aiming at this mob, we still hit but now we might hit the wrong body part
+		if(original != L || hit_roll > hit_chance-GLOB.base_miss_chance[def_zone]-20)	// If hit roll is high or the firer wasn't aiming at this mob, we still hit but now we might hit the wrong body part
 			def_zone = rand_zone()
 		else
 			SEND_SIGNAL(firer, COMSIG_DIRECT_BULLET_HIT, L)
-		hit_chance -= base_miss_chance[def_zone] // Reduce accuracy based on spot.
+		hit_chance -= GLOB.base_miss_chance[def_zone] // Reduce accuracy based on spot.
 
 		#if DEBUG_HIT_CHANCE
 		to_world(SPAN_DEBUG("([L]) Hit chance: [hit_chance] | Roll: [hit_roll]"))
@@ -1146,7 +1146,7 @@
 		var/area/A = get_area(src)
 		if(ishuman(firingMob) && ishuman(src) && faction == firingMob.faction && !A?.statistic_exempt) //One human shot another, be worried about it but do everything basically the same //special_role should be null or an empty string if done correctly
 			if(!istype(P.ammo, /datum/ammo/energy/taser))
-				round_statistics.total_friendly_fire_instances++
+				GLOB.round_statistics.total_friendly_fire_instances++
 				var/ff_msg = "[key_name(firingMob)] shot [key_name(src)] with \a [P.name] in [get_area(firingMob)] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[firingMob.x];Y=[firingMob.y];Z=[firingMob.z]'>JMP</a>) ([firingMob.client ? "<a href='?priv_msg=[firingMob.client.ckey]'>PM</a>" : "NO CLIENT"])"
 				var/ff_living = TRUE
 				if(src.stat == DEAD)

@@ -78,7 +78,7 @@
 			return 1
 		if(STATUS_DISPLAY_TRANSFER_SHUTTLE_TIME)				//emergency shuttle timer
 			message1 = "EVAC"
-			message2 = EvacuationAuthority.get_status_panel_eta()
+			message2 = GLOB.EvacuationAuthority.get_status_panel_eta()
 			if(message2)
 				if(length(message2) > CHARS_PER_LINE) message2 = "Error"
 				update_display(message1, message2)
@@ -146,7 +146,7 @@
 		maptext = new_text
 
 /obj/structure/machinery/status_display/proc/get_supply_shuttle_timer()
-	var/datum/shuttle/ferry/supply/shuttle = supply_controller.shuttle
+	var/datum/shuttle/ferry/supply/shuttle = GLOB.supply_controller.shuttle
 	if (!shuttle)
 		return "Error"
 

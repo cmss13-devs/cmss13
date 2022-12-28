@@ -77,7 +77,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player_time)
 	if(!LAZYACCESS(playtime_data, "loaded"))
 		load_timestat_data()
 
-	ui = nanomanager.try_update_ui(user, src, ui_key, ui, playtime_data, force_open)
+	ui = GLOB.nanomanager.try_update_ui(user, src, ui_key, ui, playtime_data, force_open)
 
 	if(!ui)
 		ui = new(user, src, ui_key, "playtime.tmpl", "Playtimes", 450, 700, null, -1)
@@ -93,10 +93,10 @@ BSQL_PROTECT_DATUM(/datum/entity/player_time)
 		LAZYSET(playtime_data, "category", href_list["switchCategory"])
 
 
-	nanomanager.update_uis(src)
+	GLOB.nanomanager.update_uis(src)
 
 /datum/entity/player/proc/load_timestat_data()
-	if(!playtime_loaded || !RoleAuthority || LAZYACCESS(playtime_data, "loading")) // Need roleauthority to be up to see which job is xeno-related
+	if(!playtime_loaded || !GLOB.RoleAuthority || LAZYACCESS(playtime_data, "loading")) // Need GLOB.RoleAuthority to be up to see which job is xeno-related
 		return
 
 	LAZYSET(playtime_data, "loading", TRUE)
@@ -130,13 +130,13 @@ BSQL_PROTECT_DATUM(/datum/entity/player_time)
 		LAZYADD(marine_playtimes, list(marine_playtime))
 
 	for(var/datum/view_record/playtime/PT in PTs)
-		var/isXeno = (PT.role_id in RoleAuthority.castes_by_name)
+		var/isXeno = (PT.role_id in GLOB.RoleAuthority.castes_by_name)
 		var/isOther = (PT.role_id == JOB_OBSERVER) // more maybe eventually
 
 		if(PT.role_id == JOB_XENOMORPH)
 			continue // Snowflake check, will need to be removed in the future
 
-		if(!(PT.role_id in RoleAuthority.roles_by_name) && !isXeno && !isOther)
+		if(!(PT.role_id in GLOB.RoleAuthority.roles_by_name) && !isXeno && !isOther)
 			continue
 
 		if(isXeno)

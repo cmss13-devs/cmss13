@@ -180,7 +180,7 @@
 		new_xeno.key = picked.key
 
 		if(new_xeno.client)
-			new_xeno.client.change_view(world_view_size)
+			new_xeno.client.change_view(GLOB.world_view_size)
 
 		SSround_recording.recorder.track_player(new_xeno)
 
@@ -248,16 +248,16 @@
 		victim.attack_log += "\[[time_stamp()]\]<font color='orange'> Was chestbursted, larva was [key_name(L)]</font>"
 
 		if(burstcount)
-			step(L, pick(cardinal))
+			step(L, pick(GLOB.cardinal))
 
-		if(round_statistics)
-			round_statistics.total_larva_burst++
+		if(GLOB.round_statistics)
+			GLOB.round_statistics.total_larva_burst++
 		burstcount++
 
 		if(!L.ckey && L.poolable && loc && is_ground_level(loc.z) && (locate(/obj/structure/bed/nest) in loc) && hive.living_xeno_queen && hive.living_xeno_queen.z == loc.z)
 			L.visible_message(SPAN_XENODANGER("[L] quickly burrows into the ground."))
-			if(round_statistics && !L.statistic_exempt)
-				round_statistics.track_new_participant(faction, -1) // keep stats sane
+			if(GLOB.round_statistics && !L.statistic_exempt)
+				GLOB.round_statistics.track_new_participant(faction, -1) // keep stats sane
 			hive.stored_larva++
 			hive.hive_ui.update_pooled_larva()
 			qdel(L)

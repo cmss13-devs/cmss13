@@ -114,7 +114,7 @@
 		if(istype(charging, /obj/item/device/defibrillator))
 			var/obj/item/device/defibrillator/D = charging
 			if(!D.dcell.fully_charged())
-				D.dcell.give(active_power_usage*CELLRATE)
+				D.dcell.give(active_power_usage* CELLRATE)
 				percent_charge_complete = D.dcell.percent()
 				update_use_power(USE_POWER_ACTIVE)
 				update_icon()

@@ -147,7 +147,7 @@
   - rscadd: remixed smartgun firing audio.
 2020-10-14:
   Vampmare:
-  - tweak: Reworked the RoleAuthority and rolling of roles. Special roles are now
+  - tweak: Reworked the GLOB.RoleAuthority and rolling of roles. Special roles are now
       rolled with everything else, this helps with balancing and some other backend
       stuff. First a fake rolling of marines are done, to get a approx number of roundstart
       marines. Then xeno pop is calculated based on that. Then roles are actually
@@ -380,7 +380,7 @@
       Trap cooldown per hostile living mob hit.'
 2020-10-25:
   Jeser:
-  - bugfix: Readded Debug RoleAuthority verb that was unintentionally deleted some
+  - bugfix: Readded Debug GLOB.RoleAuthority verb that was unintentionally deleted some
       time ago.
   Vampmare:
   - tweak: Predator and survivor now rolls before marine rolls in case of equal priority.

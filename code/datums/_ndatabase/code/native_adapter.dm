@@ -68,7 +68,7 @@
 
 /datum/db/adapter/native_adapter/sync_table_meta()
 	var/query = getquery_systable_check()
-	var/datum/db/query_response/sys_table = SSdatabase.create_query_sync(query)
+	var/datum/db/query_response/sys_table = GLOB.SSdatabase.create_query_sync(query)
 	if(sys_table.status != DB_QUERY_FINISHED)
 		issue_log += "Unable to create or access system table, error: '[sys_table.error]'"
 		return FALSE // OH SHIT OH FUCK
@@ -78,9 +78,9 @@
 /datum/db/adapter/native_adapter/read_table(table_name, var/list/ids, var/datum/callback/CB, sync = FALSE)
 	var/query_gettable = getquery_select_table(table_name, ids)
 	if(sync)
-		SSdatabase.create_query_sync(query_gettable, CB)
+		GLOB.SSdatabase.create_query_sync(query_gettable, CB)
 	else
-		SSdatabase.create_query(query_gettable, CB)
+		GLOB.SSdatabase.create_query(query_gettable, CB)
 
 /datum/db/adapter/native_adapter/update_table(table_name, var/list/values, var/datum/callback/CB, sync = FALSE)
 	if(!sync)
@@ -89,7 +89,7 @@
 	for(var/list/vals in values)
 		var/list/qpars = list()
 		var/query_updaterow = getquery_update_row(table_name, vals, qpars)
-		SSdatabase.create_parametric_query_sync(query_updaterow, qpars, CB)
+		GLOB.SSdatabase.create_parametric_query_sync(query_updaterow, qpars, CB)
 
 /datum/db/adapter/native_adapter/insert_table(table_name, var/list/values, var/datum/callback/CB, sync = FALSE)
 	set waitfor = 0
@@ -101,24 +101,24 @@
 		CB.arguments = list()
 	CB.arguments.Add(startid)
 	if(sync)
-		SSdatabase.create_parametric_query_sync(query_inserttable, qpars, CB)
+		GLOB.SSdatabase.create_parametric_query_sync(query_inserttable, qpars, CB)
 	else
-		SSdatabase.create_parametric_query(query_inserttable, qpars, CB)
+		GLOB.SSdatabase.create_parametric_query(query_inserttable, qpars, CB)
 
 /datum/db/adapter/native_adapter/delete_table(table_name, var/list/ids, var/datum/callback/CB, sync = FALSE)
 	var/query_deletetable = getquery_delete_table(table_name, ids)
 	if(sync)
-		SSdatabase.create_query_sync(query_deletetable, CB)
+		GLOB.SSdatabase.create_query_sync(query_deletetable, CB)
 	else
-		SSdatabase.create_query(query_deletetable, CB)
+		GLOB.SSdatabase.create_query(query_deletetable, CB)
 
 /datum/db/adapter/native_adapter/read_filter(table_name, var/datum/db/filter, var/datum/callback/CB, sync = FALSE)
 	var/list/qpars = list()
 	var/query_gettable = getquery_filter_table(table_name, filter, qpars)
 	if(sync)
-		SSdatabase.create_parametric_query_sync(query_gettable, qpars, CB)
+		GLOB.SSdatabase.create_parametric_query_sync(query_gettable, qpars, CB)
 	else
-		SSdatabase.create_parametric_query(query_gettable, qpars, CB)
+		GLOB.SSdatabase.create_parametric_query(query_gettable, qpars, CB)
 
 /datum/db/adapter/native_adapter/read_view(var/datum/entity_view_meta/view, var/datum/db/filter/filter, var/datum/callback/CB, sync=FALSE)
 	var/v_key = "v_[view.type]"
@@ -128,14 +128,14 @@
 		return null
 	var/query_getview = cached_view.spawn_query(filter, qpars)
 	if(sync)
-		SSdatabase.create_parametric_query_sync(query_getview, qpars, CB)
+		GLOB.SSdatabase.create_parametric_query_sync(query_getview, qpars, CB)
 	else
-		SSdatabase.create_parametric_query(query_getview, qpars, CB)
+		GLOB.SSdatabase.create_parametric_query(query_getview, qpars, CB)
 
 /datum/db/adapter/native_adapter/sync_table(type_name, table_name, var/list/field_types)
 	var/list/qpars = list()
 	var/query_gettable = getquery_systable_gettable(table_name, qpars)
-	var/datum/db/query_response/table_meta = SSdatabase.create_parametric_query_sync(query_gettable, qpars)
+	var/datum/db/query_response/table_meta = GLOB.SSdatabase.create_parametric_query_sync(query_gettable, qpars)
 	if(table_meta.status != DB_QUERY_FINISHED)
 		issue_log += "Unable to access system table, error: '[table_meta.error]'"
 		return FALSE // OH SHIT OH FUCK
@@ -164,7 +164,7 @@
 
 /datum/db/adapter/native_adapter/proc/internal_create_table(table_name, field_types)
 	var/query = getquery_systable_maketable(table_name, field_types)
-	var/datum/db/query_response/sit_check = SSdatabase.create_query_sync(query)
+	var/datum/db/query_response/sit_check = GLOB.SSdatabase.create_query_sync(query)
 	if(sit_check.status != DB_QUERY_FINISHED)
 		issue_log += "Unable to create new table [table_name], error: '[sit_check.error]'"
 		return FALSE // OH SHIT OH FUCK
@@ -173,7 +173,7 @@
 /datum/db/adapter/native_adapter/proc/internal_record_table_in_sys(type_name, table_name, field_types, id)
 	var/list/qpars = list()
 	var/query = getquery_systable_recordtable(type_name, table_name, field_types, qpars, id)
-	var/datum/db/query_response/sit_check = SSdatabase.create_parametric_query_sync(query, qpars)
+	var/datum/db/query_response/sit_check = GLOB.SSdatabase.create_parametric_query_sync(query, qpars)
 	if(sit_check.status != DB_QUERY_FINISHED)
 		issue_log += "Unable to record meta for table [table_name], error: '[sit_check.error]'"
 		return FALSE // OH SHIT OH FUCK
@@ -181,7 +181,7 @@
 
 /datum/db/adapter/native_adapter/proc/internal_drop_table(table_name)
 	var/query = getcommand_droptable(table_name)
-	var/datum/db/query_response/sit_check = SSdatabase.create_query_sync(query)
+	var/datum/db/query_response/sit_check = GLOB.SSdatabase.create_query_sync(query)
 	if(sit_check.status != DB_QUERY_FINISHED)
 		issue_log += "Unable to drop table [table_name], error: '[sit_check.error]'"
 		return FALSE // OH SHIT OH FUCK
@@ -189,7 +189,7 @@
 
 /datum/db/adapter/native_adapter/proc/internal_drop_backup_table(table_name)
 	var/query = getcommand_droptable("[NATIVE_BACKUP_PREFIX][table_name]")
-	var/datum/db/query_response/sit_check = SSdatabase.create_query_sync(query)
+	var/datum/db/query_response/sit_check = GLOB.SSdatabase.create_query_sync(query)
 	if(sit_check.status != DB_QUERY_FINISHED)
 		issue_log += "Unable to drop table [table_name], error: '[sit_check.error]'"
 		return FALSE // OH SHIT OH FUCK
@@ -198,7 +198,7 @@
 // returns -1 if shit is fucked, otherwise returns count
 /datum/db/adapter/native_adapter/proc/internal_table_count(table_name)
 	var/query = getquery_get_rowcount(table_name)
-	var/datum/db/query_response/rowcount = SSdatabase.create_query_sync(query)
+	var/datum/db/query_response/rowcount = GLOB.SSdatabase.create_query_sync(query)
 	if(rowcount.status != DB_QUERY_FINISHED)
 		issue_log += "Unable to get row count from table [table_name], error: '[rowcount.error]'"
 		return -1 // OH SHIT OH FUCK
@@ -206,7 +206,7 @@
 
 /datum/db/adapter/native_adapter/proc/internal_request_insert_allocation(table_name, size)
 	var/query = getquery_allocate_insert(table_name, size)
-	var/datum/db/query_response/first_id = SSdatabase.create_query_sync(query)
+	var/datum/db/query_response/first_id = GLOB.SSdatabase.create_query_sync(query)
 	if(first_id.status != DB_QUERY_FINISHED)
 		issue_log += "Unable to allocate insert for [table_name], error: '[first_id.error]'"
 		return -1 // OH SHIT OH FUCK
@@ -217,7 +217,7 @@
 
 /datum/db/adapter/native_adapter/proc/internal_create_backup_table(table_name, field_types)
 	var/query = getquery_systable_maketable("[NATIVE_BACKUP_PREFIX][table_name]", field_types)
-	var/datum/db/query_response/sit_check = SSdatabase.create_query_sync(query)
+	var/datum/db/query_response/sit_check = GLOB.SSdatabase.create_query_sync(query)
 	if(sit_check.status != DB_QUERY_FINISHED)
 		issue_log += "Unable to create backup for table [table_name], error: '[sit_check.error]'"
 		return FALSE // OH SHIT OH FUCK
@@ -229,7 +229,7 @@
 		fields += field
 
 	var/query = getquery_insert_from_backup(table_name, fields)
-	var/datum/db/query_response/sit_check = SSdatabase.create_query_sync(query)
+	var/datum/db/query_response/sit_check = GLOB.SSdatabase.create_query_sync(query)
 	if(sit_check.status != DB_QUERY_FINISHED)
 		issue_log += "Unable to migrate table [table_name] to backup, error: '[sit_check.error]'"
 		return FALSE // OH SHIT OH FUCK
@@ -241,7 +241,7 @@
 		fields += field
 
 	var/query = getquery_insert_into_backup(table_name, fields)
-	var/datum/db/query_response/sit_check = SSdatabase.create_query_sync(query)
+	var/datum/db/query_response/sit_check = GLOB.SSdatabase.create_query_sync(query)
 	if(sit_check.status != DB_QUERY_FINISHED)
 		issue_log += "Unable to migrate table [table_name] to backup, error: '[sit_check.error]'"
 		return FALSE // OH SHIT OH FUCK

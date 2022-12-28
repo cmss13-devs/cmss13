@@ -792,7 +792,7 @@ cases. Override_icon_state should be a list.*/
 	UnregisterSignal(user, COMSIG_MOB_MOVE_OR_LOOK)
 	//General reset in case anything goes wrong, the view will always reset to default unless zooming in.
 	if(user.client)
-		user.client.change_view(world_view_size, src)
+		user.client.change_view(GLOB.world_view_size, src)
 		user.client.pixel_x = 0
 		user.client.pixel_y = 0
 

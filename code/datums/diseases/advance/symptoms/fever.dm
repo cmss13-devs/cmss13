@@ -26,7 +26,7 @@ Bonus
 
 /datum/symptom/fever/Activate(var/datum/disease/advance/A)
 	..()
-	if(prob(SYMPTOM_ACTIVATION_PROB))
+	if(prob(GLOB.SYMPTOM_ACTIVATION_PROB))
 		var/mob/living/carbon/M = A.affected_mob
 		var/message = "[pick("You feel hot.", "You feel like you're burning.")]"
 		to_chat(M, SPAN_NOTICE(message))

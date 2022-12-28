@@ -356,12 +356,12 @@
 		dat += "No squad selected!"
 	else
 		dat += "<B>Current Cannon Status:</B> "
-		var/cooldown_left = COOLDOWN_TIMELEFT(almayer_orbital_cannon, ob_firing_cooldown)
-		if(almayer_orbital_cannon.is_disabled)
+		var/cooldown_left = COOLDOWN_TIMELEFT(GLOB.almayer_orbital_cannon, ob_firing_cooldown)
+		if(GLOB.almayer_orbital_cannon.is_disabled)
 			dat += "Cannon is disabled!<br>"
 		else if(cooldown_left > 0)
 			dat += "Cannon on cooldown ([round(cooldown_left/10)] seconds)<br>"
-		else if(!almayer_orbital_cannon.chambered_tray)
+		else if(!GLOB.almayer_orbital_cannon.chambered_tray)
 			dat += SET_CLASS("No ammo chambered in the cannon.", INTERFACE_RED)
 			dat += "<br>"
 		else
@@ -383,7 +383,7 @@
 	var/icon/O = overlay_tacmap(TACMAP_DEFAULT)
 	if(O)
 		current_mapviewer << browse_rsc(O, "marine_minimap.png")
-		show_browser(current_mapviewer, "<img src=marine_minimap.png>", "Marine Minimap", "marineminimap", "size=[(map_sizes[1]*2)+50]x[(map_sizes[2]*2)+50]", closeref = src)
+		show_browser(current_mapviewer, "<img src=marine_minimap.png>", "Marine Minimap", "marineminimap", "size=[(GLOB.map_sizes[1]*2)+50]x[(GLOB.map_sizes[2]*2)+50]", closeref = src)
 
 /obj/structure/machinery/computer/overwatch/Topic(href, href_list)
 	if(href_list["close"])
@@ -454,7 +454,7 @@
 					to_chat(usr, SPAN_WARNING("[icon2html(src, usr)] You are already selecting a squad."))
 				else
 					var/list/squad_list = list()
-					for(var/datum/squad/S in RoleAuthority.squads)
+					for(var/datum/squad/S in GLOB.RoleAuthority.squads)
 						if(S.active && !S.overwatch_officer && S.faction == faction && S.name != "Root")
 							squad_list += S.name
 
@@ -590,10 +590,10 @@
 				else
 					handle_supplydrop()
 		if("dropbomb")
-			if(almayer_orbital_cannon.is_disabled)
+			if(GLOB.almayer_orbital_cannon.is_disabled)
 				to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("Orbital bombardment cannon disabled!")]")
-			else if(!COOLDOWN_FINISHED(almayer_orbital_cannon, ob_firing_cooldown))
-				to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("Orbital bombardment cannon not yet ready to fire again! Please wait [COOLDOWN_TIMELEFT(almayer_orbital_cannon, ob_firing_cooldown)/10] seconds.")]")
+			else if(!COOLDOWN_FINISHED(GLOB.almayer_orbital_cannon, ob_firing_cooldown))
+				to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("Orbital bombardment cannon not yet ready to fire again! Please wait [COOLDOWN_TIMELEFT(GLOB.almayer_orbital_cannon, ob_firing_cooldown)/10] seconds.")]")
 			else
 				handle_bombard(usr)
 		if("back")
@@ -611,7 +611,7 @@
 					visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("Stopping helmet cam view of [cam_target].")]")
 					cam = null
 					usr.reset_view(null)
-				else if(usr.client.view != world_view_size)
+				else if(usr.client.view != GLOB.world_view_size)
 					to_chat(usr, SPAN_WARNING("You're too busy peering through binoculars."))
 				else
 					cam = new_cam
@@ -643,9 +643,9 @@
 	var/area/ob_area = get_area(target)
 	if(!ob_area)
 		return
-	var/ob_type = almayer_orbital_cannon.tray.warhead ? almayer_orbital_cannon.tray.warhead.warhead_kind : "UNKNOWN"
+	var/ob_type = GLOB.almayer_orbital_cannon.tray.warhead ? GLOB.almayer_orbital_cannon.tray.warhead.warhead_kind : "UNKNOWN"
 
-	for(var/datum/squad/S in RoleAuthority.squads)
+	for(var/datum/squad/S in GLOB.RoleAuthority.squads)
 		if(!S.active)
 			continue
 		for(var/mob/living/carbon/human/M in S.marines_list)
@@ -776,7 +776,7 @@
 		return
 
 	var/list/available_squads = list()
-	for(var/datum/squad/squad as anything in RoleAuthority.squads)
+	for(var/datum/squad/squad as anything in GLOB.RoleAuthority.squads)
 		if(squad.active && !squad.locked && squad.faction == faction && squad.name != "Root")
 			available_squads += squad
 
@@ -797,7 +797,7 @@
 		to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("[transfer_marine] is already in [new_squad]!")]")
 		return
 
-	if(RoleAuthority.check_squad_capacity(transfer_marine, new_squad))
+	if(GLOB.RoleAuthority.check_squad_capacity(transfer_marine, new_squad))
 		to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("Transfer aborted. [new_squad] can't have another [transfer_marine.job].")]")
 		return
 
@@ -820,7 +820,7 @@
 		to_chat(user, "[icon2html(src, user)] [SPAN_WARNING("No squad selected!")]")
 		return
 
-	if(!almayer_orbital_cannon.chambered_tray)
+	if(!GLOB.almayer_orbital_cannon.chambered_tray)
 		to_chat(user, "[icon2html(src, user)] [SPAN_WARNING("The orbital cannon has no ammo chambered.")]")
 		return
 
@@ -870,7 +870,7 @@
 	if(!A || !T)
 		return
 
-	var/ob_name = lowertext(almayer_orbital_cannon.tray.warhead.name)
+	var/ob_name = lowertext(GLOB.almayer_orbital_cannon.tray.warhead.name)
 	announce_dchat("\A [ob_name] targeting [A.name] has been fired!", T)
 	message_staff(FONT_SIZE_HUGE("ALERT: [key_name(user)] fired an orbital bombardment in [A.name] for squad '[current_squad]' (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[T.x];Y=[T.y];Z=[T.z]'>JMP</a>)"))
 	log_attack("[key_name(user)] fired an orbital bombardment in [A.name] for squad '[current_squad]'")
@@ -878,7 +878,7 @@
 	busy = FALSE
 	var/turf/target = locate(T.x + rand(-3, 3), T.y + rand(-3, 3), T.z)
 	if(target && istype(target))
-		almayer_orbital_cannon.fire_ob_cannon(target, user)
+		GLOB.almayer_orbital_cannon.fire_ob_cannon(target, user)
 		user.count_niche_stat(STATISTICS_NICHE_OB)
 
 /obj/structure/machinery/computer/overwatch/proc/handle_supplydrop()

@@ -135,7 +135,7 @@
 
 	var/total_xeno_playtime = 0
 
-	for(var/caste in RoleAuthority.castes_by_name)
+	for(var/caste in GLOB.RoleAuthority.castes_by_name)
 		total_xeno_playtime += get_job_playtime(src, caste)
 
 	total_xeno_playtime += get_job_playtime(src, JOB_XENOMORPH)

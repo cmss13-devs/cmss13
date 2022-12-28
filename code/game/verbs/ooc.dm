@@ -15,10 +15,10 @@
 		return
 
 	if(!admin_holder || !(admin_holder.rights & R_MOD))
-		if(!ooc_allowed) //Send to LOOC instead
+		if(!GLOB.ooc_allowed) //Send to LOOC instead
 			looc(msg)
 			return
-		if(!dooc_allowed && (mob.stat == DEAD || isobserver(mob)))
+		if(!GLOB.dooc_allowed && (mob.stat == DEAD || isobserver(mob)))
 			to_chat(usr, SPAN_DANGER("OOC for dead mobs has been turned off."))
 			return
 		if(prefs.muted & MUTE_OOC)
@@ -94,10 +94,10 @@
 		return
 
 	if(!admin_holder || !(admin_holder.rights & R_MOD))
-		if(!looc_allowed)
+		if(!GLOB.looc_allowed)
 			to_chat(src, SPAN_DANGER("LOOC is globally muted"))
 			return
-		if(!dlooc_allowed && (mob.stat == DEAD || isobserver(mob)))
+		if(!GLOB.dlooc_allowed && (mob.stat == DEAD || isobserver(mob)))
 			to_chat(usr, SPAN_DANGER("LOOC for dead mobs has been turned off."))
 			return
 		if(prefs.muted & MUTE_OOC)

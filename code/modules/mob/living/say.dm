@@ -1,4 +1,4 @@
-var/list/department_radio_keys = list(
+GLOBAL_LIST_INIT(department_radio_keys, list(
 	  ":i" = RADIO_CHANNEL_INTERCOM,	".i" = RADIO_CHANNEL_INTERCOM,		"#i" = RADIO_CHANNEL_INTERCOM,
 	  ":h" = RADIO_CHANNEL_DEPARTMENT,	".h" = RADIO_CHANNEL_DEPARTMENT,	"#h" = RADIO_CHANNEL_DEPARTMENT,
 	  ":w" = RADIO_MODE_WHISPER,		".w" = RADIO_MODE_WHISPER,			"#w" = RADIO_MODE_WHISPER,
@@ -45,7 +45,7 @@ var/list/department_radio_keys = list(
 	  ":O" = RADIO_CHANNEL_COLONY,		".O" = RADIO_CHANNEL_COLONY,		"#O" = RADIO_CHANNEL_PMC_CCT,
 	  ":Z" = RADIO_CHANNEL_HIGHCOM,		".Z" = RADIO_CHANNEL_HIGHCOM,		"#Z" = RADIO_CHANNEL_PMC_CMD,
 	  ":K" = SQUAD_SOF,					".K" = SQUAD_SOF,					"#K" = RADIO_CHANNEL_WY_WO,
-)
+))
 
 /mob/living/proc/binarycheck()
 	return FALSE
@@ -78,7 +78,7 @@ var/list/department_radio_keys = list(
 	speech_bubble = null
 
 
-/mob/living/say(var/message, var/datum/language/speaking = null, var/verb="says", var/alt_name="", var/italics=0, var/message_range = world_view_size, var/sound/speech_sound, var/sound_vol, var/nolog = 0, var/message_mode = null)
+/mob/living/say(var/message, var/datum/language/speaking = null, var/verb="says", var/alt_name="", var/italics=0, var/message_range = GLOB.world_view_size, var/sound/speech_sound, var/sound_vol, var/nolog = 0, var/message_mode = null)
 	var/turf/T
 
 	if(SEND_SIGNAL(src, COMSIG_LIVING_SPEAK, message, speaking, verb, alt_name, italics, message_range, speech_sound, sound_vol, nolog, message_mode) & COMPONENT_OVERRIDE_SPEAK) return

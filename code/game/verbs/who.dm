@@ -83,7 +83,7 @@
 									counted_humanoids["Infected humans"]++
 								if(C.mob.faction == FACTION_MARINE)
 									counted_humanoids[FACTION_MARINE]++
-									if(C.mob.job in (ROLES_MARINES))
+									if(C.mob.job in (GLOB.ROLES_MARINES))
 										counted_humanoids["USCM Marines"]++
 								else
 									counted_humanoids[C.mob.faction]++

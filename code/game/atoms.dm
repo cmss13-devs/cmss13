@@ -322,11 +322,11 @@ Parameters are passed from New.
 		CRASH("Warning: [src]([type]) initialized multiple times!")
 	flags_atom |= INITIALIZED
 
-	pass_flags = pass_flags_cache[type]
+	pass_flags = GLOB.pass_flags_cache[type]
 	if (isnull(pass_flags))
 		pass_flags = new()
 		initialize_pass_flags(pass_flags)
-		pass_flags_cache[type] = pass_flags
+		GLOB.pass_flags_cache[type] = pass_flags
 	else
 		initialize_pass_flags()
 	Decorate(mapload)
@@ -353,7 +353,7 @@ Parameters are passed from New.
 	T.appearance = src.appearance
 	T.setDir(src.dir)
 
-	clones_t.Add(src)
+	GLOB.clones_t.Add(src)
 	src.clone = T
 
 // EFFECTS

@@ -56,7 +56,7 @@
 
 /obj/structure/machinery/computer/dropship_weapons/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 0)
 	var/data[0]
-	var/datum/shuttle/ferry/marine/FM = shuttle_controller.shuttles[shuttle_tag]
+	var/datum/shuttle/ferry/marine/FM = GLOB.shuttle_controller.shuttles[shuttle_tag]
 	if (!istype(FM))
 		return
 
@@ -81,7 +81,7 @@
 	if(!faction)
 		return //no faction, no weapons
 
-	var/datum/cas_iff_group/cas_group = cas_groups[faction]
+	var/datum/cas_iff_group/cas_group = GLOB.cas_groups[faction]
 
 	if(!cas_group)
 		return //broken group. No fighting
@@ -221,7 +221,7 @@
 		"firemission_step" = firemission_stat,
 	)
 
-	ui = nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
+	ui = GLOB.nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
 
 	if (!ui)
 		ui = new(user, src, ui_key, "dropship_weapons_console.tmpl", "Weapons Control", 800, 600)
@@ -235,7 +235,7 @@
 
 	add_fingerprint(usr)
 
-	var/datum/shuttle/ferry/marine/shuttle = shuttle_controller.shuttles[shuttle_tag]
+	var/datum/shuttle/ferry/marine/shuttle = GLOB.shuttle_controller.shuttles[shuttle_tag]
 	if (!istype(shuttle))
 		return
 
@@ -264,7 +264,7 @@
 		if(!faction)
 			return //no faction, no weapons
 
-		var/datum/cas_iff_group/cas_group = cas_groups[faction]
+		var/datum/cas_iff_group/cas_group = GLOB.cas_groups[faction]
 
 		if(!cas_group)
 			return //broken group. No fighting
@@ -464,7 +464,7 @@
 		if(shuttle.moving_status != SHUTTLE_INTRANSIT)
 			to_chat(usr, SPAN_WARNING("Shuttle has to be in orbit."))
 			return
-		var/datum/cas_iff_group/cas_group = cas_groups[faction]
+		var/datum/cas_iff_group/cas_group = GLOB.cas_groups[faction]
 		var/datum/cas_signal/cas_sig
 		for(var/X in cas_group.cas_signals)
 			var/datum/cas_signal/LT = X
@@ -562,7 +562,7 @@
 			to_chat(usr, SPAN_DANGER("Bug encountered, this console doesn't have a faction set, report this to a coder!"))
 			return
 
-		var/datum/cas_iff_group/cas_group = cas_groups[faction]
+		var/datum/cas_iff_group/cas_group = GLOB.cas_groups[faction]
 		if(!cas_group)
 			to_chat(usr, SPAN_DANGER("Bug encountered, no CAS group exists for this console, report this to a coder!"))
 			return
@@ -593,7 +593,7 @@
 
 /obj/structure/machinery/computer/dropship_weapons/proc/initiate_firemission()
 	set waitfor = 0
-	var/datum/shuttle/ferry/marine/shuttle = shuttle_controller.shuttles[shuttle_tag]
+	var/datum/shuttle/ferry/marine/shuttle = GLOB.shuttle_controller.shuttles[shuttle_tag]
 	if (!istype(shuttle))
 		return
 	if (shuttle.in_transit_time_left < firemission_envelope.get_total_duration())

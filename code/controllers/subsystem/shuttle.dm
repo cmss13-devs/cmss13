@@ -1,4 +1,4 @@
-var/global/datum/controller/shuttle_controller/shuttle_controller
+GLOBAL_DATUM(shuttle_controller, /datum/controller/shuttle_controller)
 
 SUBSYSTEM_DEF(oldshuttle)
 	name		= "Old Shuttle"
@@ -10,11 +10,11 @@ SUBSYSTEM_DEF(oldshuttle)
 	if(GLOB.perf_flags & PERF_TOGGLE_SHUTTLES)
 		can_fire = FALSE
 		return
-	if(!shuttle_controller)
-		shuttle_controller = new /datum/controller/shuttle_controller()
+	if(!GLOB.shuttle_controller)
+		GLOB.shuttle_controller = new /datum/controller/shuttle_controller()
 	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/oldshuttle/fire()
 	if(GLOB.perf_flags & PERF_TOGGLE_SHUTTLES)
 		return
-	shuttle_controller.process()
+	GLOB.shuttle_controller.process()

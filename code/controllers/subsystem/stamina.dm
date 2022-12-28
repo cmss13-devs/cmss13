@@ -1,4 +1,4 @@
-var/global/list/active_staminas = list()
+GLOBAL_LIST_EMPTY(active_staminas)
 
 SUBSYSTEM_DEF(stamina)
 	name     = "Stamina"
@@ -10,7 +10,7 @@ SUBSYSTEM_DEF(stamina)
 
 /datum/controller/subsystem/stamina/fire(resumed = FALSE)
 	if (!resumed)
-		currentrun = active_staminas.Copy()
+		currentrun = GLOB.active_staminas.Copy()
 
 	while (currentrun.len)
 		var/datum/stamina/S = currentrun[currentrun.len]

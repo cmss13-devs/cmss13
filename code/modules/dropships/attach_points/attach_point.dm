@@ -57,7 +57,7 @@
 	installed_equipment = SE
 	SE.ship_base = src
 
-	for(var/datum/shuttle/ferry/marine/S in shuttle_controller.process_shuttles)
+	for(var/datum/shuttle/ferry/marine/S in GLOB.shuttle_controller.process_shuttles)
 		if(S.shuttle_tag == ship_tag)
 			SE.linked_shuttle = S
 			S.equipments += SE

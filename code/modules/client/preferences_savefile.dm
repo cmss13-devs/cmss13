@@ -11,8 +11,8 @@
 //if a file was updated, return 1
 /datum/preferences/proc/savefile_update(savefile/S)
 	if(!isnum(savefile_version) || savefile_version < SAVEFILE_VERSION_MIN)	//lazily delete everything + additional files so they can be saved in the new format
-		for(var/ckey in preferences_datums)
-			var/datum/preferences/D = preferences_datums[ckey]
+		for(var/ckey in GLOB.preferences_datums)
+			var/datum/preferences/D = GLOB.preferences_datums[ckey]
 			if(D == src)
 				var/delpath = "data/player_saves/[copytext(ckey,1,2)]/[ckey]/"
 				if(delpath && fexists(delpath))
@@ -229,11 +229,11 @@
 	predator_cape_color = sanitize_hexcolor(predator_cape_color, initial(predator_cape_color))
 	predator_h_style = sanitize_inlist(predator_h_style, GLOB.yautja_hair_styles_list, initial(predator_h_style))
 	predator_flavor_text = predator_flavor_text ? sanitize_text(predator_flavor_text, initial(predator_flavor_text)) : initial(predator_flavor_text)
-	commander_status	= sanitize_inlist(commander_status, whitelist_hierarchy, initial(commander_status))
+	commander_status	= sanitize_inlist(commander_status, GLOB.whitelist_hierarchy, initial(commander_status))
 	commander_sidearm   = sanitize_inlist(commander_sidearm, list("Mateba","Colonel's Mateba","Golden Desert Eagle","Desert Eagle"), initial(commander_sidearm))
 	sea_path			= sanitize_inlist(sea_path, list("Command", "Technical"), initial(sea_path))
-	yautja_status		= sanitize_inlist(yautja_status, whitelist_hierarchy + list("Elder"), initial(yautja_status))
-	synth_status		= sanitize_inlist(synth_status, whitelist_hierarchy, initial(synth_status))
+	yautja_status		= sanitize_inlist(yautja_status, GLOB.whitelist_hierarchy + list("Elder"), initial(yautja_status))
+	synth_status		= sanitize_inlist(synth_status, GLOB.whitelist_hierarchy, initial(synth_status))
 	key_bindings 		= sanitize_keybindings(key_bindings)
 	remembered_key_bindings = sanitize_islist(remembered_key_bindings, null)
 	hotkeys  			= sanitize_integer(hotkeys, FALSE, TRUE, TRUE)
@@ -467,7 +467,7 @@
 	b_eyes			= sanitize_integer(b_eyes, 0, 255, initial(b_eyes))
 	underwear	= sanitize_inlist(underwear, gender == MALE ? GLOB.underwear_m : GLOB.underwear_f, initial(underwear))
 	undershirt		= sanitize_inlist(undershirt, gender == MALE ? GLOB.undershirt_m : GLOB.undershirt_f, initial(undershirt))
-	backbag			= sanitize_integer(backbag, 1, backbaglist.len, initial(backbag))
+	backbag			= sanitize_integer(backbag, 1, GLOB.backbaglist.len, initial(backbag))
 	//b_type			= sanitize_text(b_type, initial(b_type))
 
 	alternate_option = sanitize_integer(alternate_option, 0, 3, initial(alternate_option))

@@ -515,3 +515,49 @@
 #define PERF_TOGGLE_SHUTTLES (1<<3)
 /// Disables loading Techwebs and additional Z-Levels
 #define PERF_TOGGLE_TECHWEBS (1<<4)
+
+//This file was auto-corrected by findeclaration.exe on 25.5.2012 20:42:31
+#define MAIN_SHIP_NAME SSmapping.get_main_ship_name()
+#define MAIN_SHIP_DEFAULT_NAME "USS Almayer"
+//=================================================
+//Please don't edit these values without speaking to Errorage first	~Carn
+//Admin Permissions
+#define R_BUILDMODE		(1<<0)
+#define R_ADMIN			(1<<1)
+#define R_BAN			(1<<2)
+#define R_SERVER		(1<<3)
+#define R_DEBUG			(1<<4)
+#define R_POSSESS		(1<<5)
+#define R_PERMISSIONS	(1<<6)
+#define R_STEALTH		(1<<7)
+#define R_REJUVINATE	(1<<8)
+#define R_COLOR			(1<<9)
+#define R_VAREDIT		(1<<10)
+#define R_SOUNDS		(1<<11)
+#define R_SPAWN			(1<<12)
+#define R_MOD			(1<<13)
+#define R_MENTOR		(1<<14)
+#define R_HOST			(1<<15)
+#define R_PROFILER		(1<<16)
+#define R_NOLOCK		(1<<17)
+#define R_EVENT			(1<<18)
+
+#define R_EVERYTHING	((1<<19)-1) //the sum of all other rank permissions
+// 512.1430 increases maximum bit flags from 16 to 24, so the following flags should be available for future changes:
+//=================================================
+
+#define CLIENT_HAS_RIGHTS(cli, flags) ((cli?.admin_holder?.rights & flags) == flags)
+#define CLIENT_IS_STAFF(cli) (cli?.admin_holder?.rights & (R_MOD|R_ADMIN))
+
+#define AHOLD_IS_MOD(ahold) (ahold && (ahold.rights & R_MOD))
+#define AHOLD_IS_ADMIN(ahold) (ahold && (ahold.rights & R_ADMIN))
+
+//Don't set this very much higher then 1024 unless you like inviting people in to dos your server with message spam
+#define MAX_MESSAGE_LEN 1024
+#define MAX_EMOTE_LEN 256
+#define MAX_PAPER_MESSAGE_LEN 3072
+#define MAX_BOOK_MESSAGE_LEN 9216
+#define MAX_NAME_LEN 26
+
+#define shuttle_time_in_station 3 MINUTES // 3 minutes in the station
+#define shuttle_time_to_arrive 10 MINUTES // 10 minutes to arrive

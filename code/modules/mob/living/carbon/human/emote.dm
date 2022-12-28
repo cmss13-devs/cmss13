@@ -757,10 +757,10 @@
 
 
 		if(m_type & SHOW_MESSAGE_VISIBLE)
-			for (var/mob/O in get_mobs_in_view(world_view_size,src))
+			for (var/mob/O in get_mobs_in_view(GLOB.world_view_size,src))
 				O.show_message(message, m_type)
 		else if(m_type & SHOW_MESSAGE_AUDIBLE)
-			for (var/mob/O in (hearers(src.loc, null)|get_mobs_in_view(world_view_size,src)))
+			for (var/mob/O in (hearers(src.loc, null)|get_mobs_in_view(GLOB.world_view_size,src)))
 				O.show_message(message, m_type)
 
 

@@ -6,7 +6,7 @@
 	name = MAIN_AI_SYSTEM
 	desc = "This is the artificial intelligence system for the [MAIN_SHIP_NAME]. Like many other military-grade AI systems, this one was manufactured by Weyland-Yutani."
 	ai_headset = new(src)
-	ai_mob_list += src
+	GLOB.ai_mob_list += src
 
 //Should likely just replace this with an actual AI mob in the future. Might as well.
 /mob/living/silicon/decoy
@@ -64,7 +64,7 @@
 
 	if(length(message) >= 2)
 		var/channel_prefix = copytext(message, 1 ,3)
-		channel_prefix = department_radio_keys[channel_prefix]
+		channel_prefix = GLOB.department_radio_keys[channel_prefix]
 		if(channel_prefix) return channel_prefix
 
 

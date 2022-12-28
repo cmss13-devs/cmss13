@@ -221,7 +221,7 @@
 
 /datum/equipment_preset/corpse/clown/load_name(mob/living/carbon/human/H, var/randomise)
 	. = ..() //To load gender, randomise appearance, etc.
-	H.change_real_name(H, pick(clown_names)) //Picking a proper clown name!
+	H.change_real_name(H, pick(GLOB.clown_names)) //Picking a proper clown name!
 
 /datum/equipment_preset/corpse/clown/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/clown(H), WEAR_BODY)

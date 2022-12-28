@@ -8,7 +8,7 @@
 			owner.jump_to_area(choice)
 
 		if("jump_to_turf")
-			var/turf/choice = tgui_input_list(owner, "Pick a turf to jump to:", "Jump", turfs)
+			var/turf/choice = tgui_input_list(owner, "Pick a turf to jump to:", "Jump", GLOB.turfs)
 			if(QDELETED(choice))
 				return
 
@@ -172,7 +172,7 @@
 				M.on_mob_jump()
 				M.forceMove(get_turf(owner.mob))
 			message_staff(WRAP_STAFF_LOG(owner.mob, "mass-teleported [GLOB.dead_mob_list.len] corpses to themselves in [get_area(owner.mob)] ([owner.mob.x],[owner.mob.y],[owner.mob.z])."), owner.mob.x, owner.mob.y, owner.mob.z)
-		
+
 		if("teleport_items_by_type")
 			var/item = input(owner,"What item?", "Item Fetcher","") as text|null
 			if(!item)

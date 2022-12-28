@@ -26,7 +26,7 @@
 /obj/item/clothing/gloves/marine/get_mob_overlay(mob/living/carbon/human/H, slot)
 	var/image/ret = ..()
 	if(adopts_squad_color && slot == WEAR_HANDS && istype(H) && H.assigned_squad)
-		ret.overlays += glovemarkings[H.assigned_squad.color]
+		ret.overlays += GLOB.glovemarkings[H.assigned_squad.color]
 	return ret
 
 /obj/item/clothing/gloves/marine/insulated

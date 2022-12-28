@@ -807,7 +807,7 @@
 	uses_special_name = TRUE
 /datum/equipment_preset/uscm/marsoc/covert/load_name(mob/living/carbon/human/H, var/randomise)
 	H.gender = MALE
-	H.change_real_name(H, "[pick(nato_phonetic_alphabet)]")
+	H.change_real_name(H, "[pick(GLOB.nato_phonetic_alphabet)]")
 	H.age = rand(20,30)
 /datum/equipment_preset/uscm/marsoc/covert/load_rank(mob/living/carbon/human/H)
 	return "O"
@@ -833,7 +833,7 @@
 	uses_special_name = TRUE
 /datum/equipment_preset/uscm/marsoc/sl/covert/load_name(mob/living/carbon/human/H, var/randomise)
 	H.gender = MALE
-	H.change_real_name(H, "[pick(nato_phonetic_alphabet)]")
+	H.change_real_name(H, "[pick(GLOB.nato_phonetic_alphabet)]")
 	H.age = rand(20,30)
 /datum/equipment_preset/uscm/marsoc/sl/covert/load_rank(mob/living/carbon/human/H)
 	return "O"

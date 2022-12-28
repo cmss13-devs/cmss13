@@ -282,7 +282,7 @@ SUBSYSTEM_DEF(mapping)
 	clearing_reserved_turfs = FALSE
 
 /datum/controller/subsystem/mapping/proc/reserve_turfs(list/turfs)
-	for(var/i in turfs)
+	for(var/i in GLOB.turfs)
 		var/turf/T = i
 		T.empty(RESERVED_TURF_TYPE, RESERVED_TURF_TYPE, null, TRUE)
 		LAZYINITLIST(unused_turfs["[T.z]"])

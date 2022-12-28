@@ -10,10 +10,10 @@
 	var/letter
 	dat = "<table><tr><th>Call</th><th>Response<th></tr>"
 	for(var/i in 1 to 10)
-		letter = pick(greek_letters)
+		letter = pick(GLOB.greek_letters)
 		number = rand(100,999)
 		dat += "<tr><td>[letter]-[number]</td>"
-		letter = pick(greek_letters)
+		letter = pick(GLOB.greek_letters)
 		number = rand(100,999)
 		dat += "<td>[letter]-[number]</td></tr>"
 

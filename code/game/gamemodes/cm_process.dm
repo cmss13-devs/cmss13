@@ -39,15 +39,15 @@ of predators), but can be added to include variant game modes (like humans vs. h
 /datum/game_mode/proc/declare_completion_announce_fallen_soldiers()
 	set waitfor = 0
 	sleep(2 SECONDS)
-	if(fallen_list.len)
+	if(GLOB.fallen_list.len)
 		var/dat = "<br>"
 		dat += SPAN_ROUNDBODY("In Flanders fields...<br>")
 		dat += SPAN_CENTERBOLD("In memoriam of our fallen soldiers: <br>")
-		for(var/i = 1 to fallen_list.len)
-			if(i != fallen_list.len)
-				dat += "[fallen_list[i]], "
+		for(var/i = 1 to GLOB.fallen_list.len)
+			if(i != GLOB.fallen_list.len)
+				dat += "[GLOB.fallen_list[i]], "
 			else
-				dat += "[fallen_list[i]].<br>"
+				dat += "[GLOB.fallen_list[i]].<br>"
 		to_world("[dat]")
 
 
@@ -144,18 +144,18 @@ of predators), but can be added to include variant game modes (like humans vs. h
 // Open podlocks with the given ID if they aren't already opened.
 // DO NOT USE THIS WITH ID's CORRESPONDING TO SHUTTLES OR THEY WILL BREAK!
 /datum/game_mode/proc/open_podlocks(var/podlock_id)
-	for(var/obj/structure/machinery/door/poddoor/M in machines)
+	for(var/obj/structure/machinery/door/poddoor/M in GLOB.machines)
 		if(M.id == podlock_id && M.density)
 			M.open()
 
 //Variables for the below function that we need to keep throught the round
-var/peakHumans = 1
-var/peakXenos = 1
+GLOBAL_VAR_INIT(peakHumans, 1)
+GLOBAL_VAR_INIT(peakXenos, 1)
 
-var/lastXenoBioscan = 30 MINUTES//30 minutes in (we will add to that!)
-var/lastHumanBioscan = 30 MINUTES//30 minutes in (we will add to that!)
-var/nextPredatorBioscan = 5 MINUTES//5 minutes in
-var/nextAdminBioscan = 30 MINUTES//30 minutes in
+GLOBAL_VAR_INIT(lastXenoBioscan, 30 MINUTES) //30 minutes in (we will add to that!)
+GLOBAL_VAR_INIT(lastHumanBioscan, 30 MINUTES) //30 minutes in (we will add to that!)
+GLOBAL_VAR_INIT(nextPredatorBioscan, 5 MINUTES) //5 minutes in
+GLOBAL_VAR_INIT(nextAdminBioscan, 30 MINUTES) //30 minutes in
 
 /datum/game_mode/proc/select_lz(var/obj/structure/machinery/computer/shuttle_control/console)
 	if(active_lz)
@@ -188,10 +188,10 @@ var/nextAdminBioscan = 30 MINUTES//30 minutes in
 		larva += HS.stored_larva
 
 	//Keeping track of peak numbers to determine when a side is "losing"
-	if (peakHumans < length(GLOB.alive_human_list))
-		peakHumans = length(GLOB.alive_human_list)
-	if (peakXenos < length(GLOB.living_xeno_list))
-		peakXenos = length(GLOB.living_xeno_list)
+	if (GLOB.peakHumans < length(GLOB.alive_human_list))
+		GLOB.peakHumans = length(GLOB.alive_human_list)
+	if (GLOB.peakXenos < length(GLOB.living_xeno_list))
+		GLOB.peakXenos = length(GLOB.living_xeno_list)
 
 	for(var/mob/M in GLOB.living_xeno_list)
 		if(M.mob_flags & NOBIOSCAN)
@@ -227,8 +227,8 @@ var/nextAdminBioscan = 30 MINUTES//30 minutes in
 				numHostsShip++
 				hostsShipLocations += where
 
-	if (world.time > nextAdminBioscan)
-		nextAdminBioscan += 30 MINUTES//every 30 minutes, straight
+	if (world.time > GLOB.nextAdminBioscan)
+		GLOB.nextAdminBioscan += 30 MINUTES//every 30 minutes, straight
 		//Message the admins first before we tweak the numbers
 		message_staff("A bioscan/Queen Mother message has completed. Humans: [numHostsPlanet] on the planet and [numHostsShip] on the ship. Xenos: [numXenosPlanet] on the planet and [numXenosShip] on the ship.")
 
@@ -246,8 +246,8 @@ var/nextAdminBioscan = 30 MINUTES//30 minutes in
 	if (xenosShipLocations.len>0)
 		RandomXenosShipLocation = get_area_name(pick(xenosShipLocations))
 
-	if(world.time > nextPredatorBioscan)
-		nextPredatorBioscan += 5 MINUTES//5 minutes, straight
+	if(world.time > GLOB.nextPredatorBioscan)
+		GLOB.nextPredatorBioscan += 5 MINUTES//5 minutes, straight
 		var/xeno_colony_location = "[RandomXenosPlanetLocation?", including one in [RandomXenosPlanetLocation]":""]"
 		var/xeno_ship_location = "[RandomXenosShipLocation?", including one in [RandomXenosShipLocation].":"."]"
 		var/marine_colony_location = "[RandomHostsPlanetLocation?", including one in [RandomHostsPlanetLocation].":"."]"
@@ -272,11 +272,11 @@ var/nextAdminBioscan = 30 MINUTES//30 minutes in
 	//So if you have peak 30 xenos, if you still have 30 xenos, humans will have to wait 30 minutes between bioscans
 	//But if you fall down to 15 xenos, humans will get them every 15 minutes
 	//But never more often than 5 minutes apart
-	var/nextXenoBioscan = lastXenoBioscan + max(30 MINUTES * length(GLOB.alive_human_list) / peakHumans, 5 MINUTES)
-	var/nextHumanBioscan = lastHumanBioscan + max(30 MINUTES * length(GLOB.living_xeno_list) / peakXenos, 5 MINUTES)
+	var/nextXenoBioscan = GLOB.lastXenoBioscan + max(30 MINUTES * length(GLOB.alive_human_list) / GLOB.peakHumans, 5 MINUTES)
+	var/nextHumanBioscan = GLOB.lastHumanBioscan + max(30 MINUTES * length(GLOB.living_xeno_list) / GLOB.peakXenos, 5 MINUTES)
 
 	if(world.time > nextXenoBioscan)
-		lastXenoBioscan = world.time
+		GLOB.lastXenoBioscan = world.time
 		// The announcement to all Xenos. Slightly off for the human ship, accurate otherwise.
 		for(var/i in GLOB.living_xeno_list)
 			var/mob/M = i
@@ -291,7 +291,7 @@ var/nextAdminBioscan = 30 MINUTES//30 minutes in
 
 
 	if(world.time > nextHumanBioscan)
-		lastHumanBioscan = world.time
+		GLOB.lastHumanBioscan = world.time
 		// The announcement to all Humans. Slightly off for the planet and elsewhere, accurate for the ship.
 		var/name = "[MAIN_AI_SYSTEM] Bioscan Status"
 		var/input = "Bioscan complete.\n\nSensors indicate [numXenosShipAres ? "[numXenosShipAres]":"no"] unknown lifeform signature[!numXenosShipAres || numXenosShipAres > 1 ? "s":""] present on the ship[numXenosShipAres&&RandomXenosShipLocation?", including one in [RandomXenosShipLocation],":""] and [numXenosPlanet ? "approximately [numXenosPlanet]":"no"] signature[!numXenosPlanet || numXenosPlanet > 1 ? "s":""] located elsewhere[numXenosPlanet&&RandomXenosPlanetLocation?", including one in [RandomXenosPlanetLocation]":""]."

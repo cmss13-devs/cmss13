@@ -6,7 +6,7 @@ by MadSnailDisease, 12/29/16
 /datum/shuttle_area_info :
 --------------------------------
 This is just a datum that holds the hard-coded coordinate datums.
-An instance of it named s_info is found in the shuttle controller
+An instance of it named GLOB.s_info is found in the shuttle controller
 --------------------------------
 
 /datum/coords :
@@ -74,11 +74,11 @@ DOCUMENTATION ON HOW TO ADD A NEW SHUTTLE: Fourkhan, 6/7/19
 
  - Step one is to map the physical shuttle somewhere on the map.
 
- - Step two is to add the shuttle datum to shuttle_controller.dm
+ - Step two is to add the shuttle datum to GLOB.shuttle_controller.dm
 	- the shuttle_tag var is the primary identifier of the shuttle, we'll see this again later on
-	- the info_tag is how you identify the shuttle in the s_info assoc. list, that's the next step
+	- the info_tag is how you identify the shuttle in the GLOB.s_info assoc. list, that's the next step
 
- - Step three is the worst part: map out the s_info listing based on the physical shuttle.
+ - Step three is the worst part: map out the GLOB.s_info listing based on the physical shuttle.
 	- follow the examaples already here as a guideline and this should be fairly straightforward.
 	 - keep in mind this is will be retrieved with info_tag on the shuttle datum so those need to EXACTLY match.
 
@@ -95,10 +95,10 @@ DOCUMENTATION ON HOW TO ADD A NEW SHUTTLE: Fourkhan, 6/7/19
 
 */
 
-var/global/list/s_info = null
+GLOBAL_LIST_EMPTY(s_info)
 
 /proc/loadShuttleInfoDatums()
-	s_info = list()
+	GLOB.s_info = list()
 
 	//This is how we switch from using those damn areas into using relative positions
 	//These hold the RELATIVE positions to the base turf of a shuttle
@@ -125,7 +125,7 @@ var/global/list/s_info = null
 	*/
 
 	/*
-	s_info["ERROR"] = newlist(
+	GLOB.s_info["ERROR"] = newlist(
 		/datum/coords {x_pos = -1; y_pos = 1}, /datum/coords {x_pos = 0; y_pos = 1}, /datum/coords {x_pos = 1; y_pos = 1},
 		/datum/coords {x_pos = -1; y_pos = 0}, /datum/coords {x_pos = 0; y_pos = 0}, /datum/coords {x_pos = 1; y_pos = 0},
 		/datum/coords {x_pos = -1; y_pos = -1}, /datum/coords {x_pos = 0; y_pos = -1}, /datum/coords {x_pos = 1; y_pos = -1}
@@ -155,7 +155,7 @@ x_pos = 0 1 2 3 4 5 6 7 8
 		O O O X X X O O O -- y_pos = 1
 		T O O X X X O O O -- y_pos = 0
 	*/
-	s_info["Dropship 1"] = newlist(
+	GLOB.s_info["Dropship 1"] = newlist(
 		/datum/coords {x_pos = 3; y_pos = 17}, /datum/coords {x_pos = 4; y_pos = 17}, /datum/coords {x_pos = 5; y_pos = 17},
 
 		/datum/coords {x_pos = 3; y_pos = 16}, /datum/coords {x_pos = 4; y_pos = 16}, /datum/coords {x_pos = 5; y_pos = 16},
@@ -209,7 +209,7 @@ x_pos = 0 1 2 3 4 5 6 7 8
 		O X X X X X X X O -- y_pos = 1
 		T O O O O O O O O -- y_pos = 0
 	*/
-	s_info["Dropship 2"] = newlist(
+	GLOB.s_info["Dropship 2"] = newlist(
 		/datum/coords {x_pos = 1; y_pos = 7}, /datum/coords {x_pos = 2; y_pos = 7}, /datum/coords {x_pos = 3; y_pos = 7}, /datum/coords {x_pos = 4; y_pos = 7}, /datum/coords {x_pos = 5; y_pos = 7}, /datum/coords {x_pos = 6; y_pos = 7}, /datum/coords {x_pos = 7; y_pos = 7},
 
 		/datum/coords {x_pos = 1; y_pos = 6}, /datum/coords {x_pos = 2; y_pos = 6}, /datum/coords {x_pos = 3; y_pos = 6}, /datum/coords {x_pos = 4; y_pos = 6}, /datum/coords {x_pos = 5; y_pos = 6}, /datum/coords {x_pos = 6; y_pos = 6}, /datum/coords {x_pos = 7; y_pos = 6},
@@ -237,7 +237,7 @@ x_pos = 0 1 2 3 4 5
 		O X X X X O -- y_pos = 1
 		T O O O O O -- y_pos = 0
 	*/
-	s_info["Almayer Evac"] = newlist(
+	GLOB.s_info["Almayer Evac"] = newlist(
 		/datum/coords {x_pos = 1; y_pos = 5}, /datum/coords {x_pos = 2; y_pos = 5}, /datum/coords {x_pos = 3; y_pos = 5}, /datum/coords {x_pos = 4; y_pos = 5},
 
 		/datum/coords {x_pos = 1; y_pos = 4}, /datum/coords {x_pos = 2; y_pos = 4}, /datum/coords {x_pos = 3; y_pos = 4}, /datum/coords {x_pos = 4; y_pos = 4},
@@ -260,7 +260,7 @@ x_pos = 0 1 2 3 4 5 6
 		O X X X X X O -- y_pos = 1
 		T O O O O O O -- y_pos = 0
 	*/
-	s_info["Alt Almayer Evac"] = newlist(
+	GLOB.s_info["Alt Almayer Evac"] = newlist(
 		/datum/coords {x_pos = 1; y_pos = 4}, /datum/coords {x_pos = 2; y_pos = 4}, /datum/coords {x_pos = 3; y_pos = 4}, /datum/coords {x_pos = 4; y_pos = 4}, /datum/coords {x_pos = 5; y_pos = 4},
 
 		/datum/coords {x_pos = 1; y_pos = 3}, /datum/coords {x_pos = 2; y_pos = 3}, /datum/coords {x_pos = 3; y_pos = 3}, /datum/coords {x_pos = 4; y_pos = 3}, /datum/coords {x_pos = 5; y_pos = 3},
@@ -272,7 +272,7 @@ x_pos = 0 1 2 3 4 5 6
 
 	//Almayer Dropship
 
-	s_info["Almayer Dropship"] = newlist(
+	GLOB.s_info["Almayer Dropship"] = newlist(
 
 	/datum/coords{x_pos=3;y_pos=20}, /datum/coords{x_pos=4;y_pos=20}, /datum/coords{x_pos=5;y_pos=20}, /datum/coords{x_pos=6;y_pos=20}, /datum/coords{x_pos=7;y_pos=20},
 
@@ -330,7 +330,7 @@ x_pos = 0 1 2 3 4 5 6 7 8 9 ....	   15 16
 		T O O O O O O O O O O O O O O O O O	-- y_pos = 0
 */
 
-	s_info["CORSAT Monorail"] = newlist(
+	GLOB.s_info["CORSAT Monorail"] = newlist(
 
 	/datum/coords{x_pos=1;y_pos=5}, /datum/coords{x_pos=2;y_pos=5}, /datum/coords{x_pos=3;y_pos=5}, /datum/coords{x_pos=4;y_pos=5}, /datum/coords{x_pos=5;y_pos=5}, /datum/coords{x_pos=6;y_pos=5}, /datum/coords{x_pos=7;y_pos=5},
 	/datum/coords{x_pos=8;y_pos=5}, /datum/coords{x_pos=9;y_pos=5}, /datum/coords{x_pos=10;y_pos=5}, /datum/coords{x_pos=11;y_pos=5}, /datum/coords{x_pos=12;y_pos=5}, /datum/coords{x_pos=13;y_pos=5}, /datum/coords{x_pos=14;y_pos=5}, /datum/coords{x_pos=15;y_pos=5},
@@ -361,7 +361,7 @@ x_pos = 0 1 2 3 4 5 6 7 8 9 ....	   15 16
 // marine_src, marine_int, and marine_trg, and also marine_crs (crash)
 /obj/effect/landmark/shuttle_loc/New()
 	set waitfor = 0
-	shuttle_landmarks += src
+	GLOB.shuttle_landmarks += src
 	..()
 
 /obj/effect/landmark/shuttle_loc/proc/initialize_marker()
@@ -383,13 +383,13 @@ x_pos = 0 1 2 3 4 5 6 7 8 9 ....	   15 16
 // TLDR: Computes a shuttle_tag given the passed string, retrieves that shuttle datum,
 // 		 and dumps the source turf of whatever called it into the passed list.
 #define SHUTTLE_LINK_LOCATIONS(T, L) \
-..(); \
-if(!shuttle_controller) { qdel(src); return FALSE }; \
-var/datum/shuttle/ferry/marine/S = shuttle_controller.shuttles["[MAIN_SHIP_NAME] [T] [name]"]; \
-if(!S) {log_debug("ERROR CODE SO1: unable to find shuttle with the tag of: ["[MAIN_SHIP_NAME] [T] [name]"]."); \
-return FALSE}; \
-L[get_turf(src)] = rotation; \
-qdel(src)
+	..(); \
+	if(!GLOB.shuttle_controller) { qdel(src); return FALSE }; \
+	var/datum/shuttle/ferry/marine/S = GLOB.shuttle_controller.shuttles["[MAIN_SHIP_NAME] [T] [name]"]; \
+	if(!S) {log_debug("ERROR CODE SO1: unable to find shuttle with the tag of: ["[MAIN_SHIP_NAME] [T] [name]"]."); \
+	return FALSE}; \
+	L[get_turf(src)] = rotation; \
+	qdel(src)
 
 /obj/effect/landmark/shuttle_loc/marine_src/dropship/initialize_marker() //Name these "1" or "2", etc.
 	// This is some NEXT LEVEL macro use.
@@ -407,7 +407,7 @@ qdel(src)
 
 /obj/effect/landmark/shuttle_loc/marine_src/evacuation/link_loc()
 	..()
-	var/datum/shuttle/ferry/marine/evacuation_pod/S = shuttle_controller.shuttles["[MAIN_SHIP_NAME] Evac [name]"]
+	var/datum/shuttle/ferry/marine/evacuation_pod/S = GLOB.shuttle_controller.shuttles["[MAIN_SHIP_NAME] Evac [name]"]
 	if(!S)
 		log_debug("ERROR CODE SO1: unable to find shuttle with the tag of: ["[MAIN_SHIP_NAME] Evac [name]"].")
 		return FALSE
@@ -446,22 +446,22 @@ qdel(src)
 	else
 		ship_section += MIDSHIP
 
-	if(isnull(shuttle_controller.locs_crash[ship_section]))
-		shuttle_controller.locs_crash[ship_section] = list()
+	if(isnull(GLOB.shuttle_controller.locs_crash[ship_section]))
+		GLOB.shuttle_controller.locs_crash[ship_section] = list()
 
-	shuttle_controller.locs_crash[ship_section][get_turf(src)] = rotation
+	GLOB.shuttle_controller.locs_crash[ship_section][get_turf(src)] = rotation
 	qdel(src)
 
 #undef SHUTTLE_LINK_LOCATIONS
 
 // Handle ground links
 #define GROUND_LINK_LOCATIONS(T, L) \
-..(); \
-var/targetTurf = get_turf(src);\
-var/datum/shuttle/ferry/marine/S = shuttle_controller.shuttles["Ground [T] [name]"]; \
-if(!S) {log_debug("ERROR CODE SO1: unable to find shuttle with the tag of: ["Ground [T] [name]"].")};\
-L[targetTurf] = rotation; \
-qdel(src)
+	..(); \
+	var/targetTurf = get_turf(src);\
+	var/datum/shuttle/ferry/marine/S = GLOB.shuttle_controller.shuttles["Ground [T] [name]"]; \
+	if(!S) {log_debug("ERROR CODE SO1: unable to find shuttle with the tag of: ["Ground [T] [name]"].")};\
+	L[targetTurf] = rotation; \
+	qdel(src)
 
 // Stripped-down variant of the dropship effects. Here, we don't need crashes
 // or evacuation functionality

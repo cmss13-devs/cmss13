@@ -251,3 +251,6 @@
 
 // magic value to use for indicating a proc slept
 #define PROC_RETURN_SLEEP -1
+
+#define CELLRATE 0.006
+#define CHARGELEVEL 0.001

@@ -47,7 +47,7 @@
 	var/rollable_state = "[worn_state]_d[contained_sprite ? "_un" : ""]"
 	var/cuttable_state = "[worn_state]_df[contained_sprite ? "_un" : ""]"
 	var/removable_state = "[worn_state]_dj[contained_sprite ? "_un" : ""]"
-	var/check_icon = contained_sprite ? icon : default_onmob_icons[WEAR_BODY]
+	var/check_icon = contained_sprite ? icon : GLOB.default_onmob_icons[WEAR_BODY]
 	var/list/check_icon_states = icon_states(check_icon)
 
 	//autodetect rollability
@@ -257,7 +257,7 @@
 	else if(LAZYISIN(item_icons, WEAR_BODY))
 		under_icon = item_icons[WEAR_BODY]
 	else
-		under_icon = default_onmob_icons[WEAR_BODY]
+		under_icon = GLOB.default_onmob_icons[WEAR_BODY]
 
 	var/check_worn_state = "[worn_state]_d[contained_sprite ? "_un" : ""]"
 	if(!(check_worn_state in icon_states(under_icon)))
@@ -290,7 +290,7 @@
 	else if(LAZYISIN(item_icons, WEAR_BODY))
 		under_icon = item_icons[WEAR_BODY]
 	else
-		under_icon = default_onmob_icons[WEAR_BODY]
+		under_icon = GLOB.default_onmob_icons[WEAR_BODY]
 
 	var/check_worn_state = "[worn_state]_dj[contained_sprite ? "_un" : ""]"
 	if(!(check_worn_state in icon_states(under_icon)))

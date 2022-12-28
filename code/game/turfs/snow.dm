@@ -77,7 +77,7 @@
 	if(update_full)
 		var/turf/open/T
 		if(!skip_sides)
-			for(var/dirn in alldirs)
+			for(var/dirn in GLOB.alldirs)
 				var/turf/open/snow/D = get_step(src,dirn)
 				if(istype(D))
 					//Update turfs that are near us, but only once
@@ -85,7 +85,7 @@
 
 		overlays.Cut()
 
-		for(var/dirn in alldirs)
+		for(var/dirn in GLOB.alldirs)
 			T = get_step(src, dirn)
 			if(istype(T))
 				if(bleed_layer > T.bleed_layer && T.bleed_layer < 1)

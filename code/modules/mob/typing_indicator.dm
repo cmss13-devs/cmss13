@@ -4,22 +4,22 @@
 /mob/var/last_typed
 /mob/var/last_typed_time
 
-var/global/image/typing_indicator
-var/global/list/image/typed_typing_indicators
+GLOBAL_DATUM(typing_indicator, /image)
+GLOBAL_LIST_EMPTY(typed_typing_indicators)
 
 /mob/proc/set_typing_indicator(var/state, var/type)
 	SHOULD_NOT_SLEEP(TRUE)
 
-	if(!typing_indicator)
-		typing_indicator = image('icons/mob/hud/talk.dmi', null, "typing")
-		typing_indicator.appearance_flags = NO_CLIENT_COLOR|KEEP_APART|RESET_COLOR
-	if(type && !LAZYISIN(typed_typing_indicators, type))
-		LAZYINITLIST(typed_typing_indicators)
+	if(!GLOB.typing_indicator)
+		GLOB.typing_indicator = image('icons/mob/hud/talk.dmi', null, "typing")
+		GLOB.typing_indicator.appearance_flags = NO_CLIENT_COLOR|KEEP_APART|RESET_COLOR
+	if(type && !LAZYISIN(GLOB.typed_typing_indicators, type))
+		LAZYINITLIST(GLOB.typed_typing_indicators)
 		var/image/I = image('icons/mob/hud/talk.dmi', null, type)
 		I.appearance_flags = NO_CLIENT_COLOR|KEEP_APART|RESET_COLOR
-		typed_typing_indicators[type] = I
+		GLOB.typed_typing_indicators[type] = I
 
-	var/image/indicator = type ? typed_typing_indicators[type] : typing_indicator
+	var/image/indicator = type ? GLOB.typed_typing_indicators[type] : GLOB.typing_indicator
 
 	if(client)
 		if(client.prefs.toggles_chat & SHOW_TYPING)

@@ -5,7 +5,7 @@
 	// Store all unconnected pipes we found
 	var/list/improper_pipes = list()
 
-	for(var/area/A in all_areas)
+	for(var/area/A in GLOB.all_areas)
 		if(!A.z)
 			continue
 
@@ -29,13 +29,13 @@
 				for(var/obj/structure/pipes/target in get_step(P, direction))
 					check_connections++
 					break
-				
+
 			if(istype(P, /obj/structure/pipes/vents))
 				is_special = TRUE
 
 			if(istype(P, /obj/structure/pipes/unary))
 				is_special = TRUE
-			
+
 			if(!is_special && check_connections != length(P.valid_directions))
 				to_world("failed [check_connections] and [length(P.valid_directions)]")
 				fail = TRUE

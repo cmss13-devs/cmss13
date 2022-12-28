@@ -26,8 +26,8 @@
 /obj/structure/machinery/cm_vending/gear/vehicle_crew/Initialize(mapload, ...)
 	. = ..()
 	RegisterSignal(SSdcs, COMSIG_GLOB_VEHICLE_ORDERED, .proc/populate_products)
-	if(!VehicleGearConsole)
-		VehicleGearConsole = src
+	if(!GLOB.VehicleGearConsole)
+		GLOB.VehicleGearConsole = src
 
 /obj/structure/machinery/cm_vending/gear/vehicle_crew/get_appropriate_vend_turf(var/mob/living/carbon/human/H)
 	var/turf/T = loc
@@ -80,9 +80,9 @@
 	. = list()
 	. += ui_static_data(user)
 
-	if(supply_controller.tank_points)		//we steal points from supply_controller, meh-he-he. Solely to be able to modify amount of points in vendor if needed by just changing one var.
-		available_points_to_display = supply_controller.tank_points
-		supply_controller.tank_points = 0
+	if(GLOB.supply_controller.tank_points)		//we steal points from supply_controller, meh-he-he. Solely to be able to modify amount of points in vendor if needed by just changing one var.
+		available_points_to_display = GLOB.supply_controller.tank_points
+		GLOB.supply_controller.tank_points = 0
 	.["current_m_points"] = available_points_to_display
 
 	var/list/ui_listed_products = get_listed_products(user)

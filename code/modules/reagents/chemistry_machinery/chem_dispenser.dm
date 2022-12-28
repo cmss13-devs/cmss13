@@ -29,7 +29,7 @@
 
 /obj/structure/machinery/chem_dispenser/process()
 	if(!chem_storage)
-		chem_storage = chemical_data.connect_chem_storage(network)
+		chem_storage = GLOB.chemical_data.connect_chem_storage(network)
 
 /obj/structure/machinery/chem_dispenser/Initialize()
 	. = ..()
@@ -118,7 +118,7 @@
 
 	var/list/chemicals = list()
 	for(var/re in dispensable_reagents)
-		var/datum/reagent/temp = chemical_reagents_list[re]
+		var/datum/reagent/temp = GLOB.chemical_reactions_list[re]
 		if(temp)
 			var/chemname = temp.name
 			chemicals.Add(list(list("title" = chemname, "id" = temp.id)))

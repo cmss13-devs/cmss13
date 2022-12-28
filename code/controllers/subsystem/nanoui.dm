@@ -7,12 +7,12 @@ SUBSYSTEM_DEF(nano)
 	var/list/currentrun = list()
 
 /datum/controller/subsystem/nano/stat_entry(msg)
-	msg = "P:[nanomanager.processing_uis.len]"
+	msg = "P:[GLOB.nanomanager.processing_uis.len]"
 	return ..()
 
 /datum/controller/subsystem/nano/fire(resumed = FALSE)
 	if (!resumed)
-		currentrun = nanomanager.processing_uis.Copy()
+		currentrun = GLOB.nanomanager.processing_uis.Copy()
 
 	while (currentrun.len)
 		var/datum/nanoui/UI = currentrun[currentrun.len]

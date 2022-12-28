@@ -1,4 +1,4 @@
-var/datum/test_manager/test_executor = new
+GLOBAL_DATUM_INIT(test_executor, /datum/test_manager, new)
 
 /datum/test_manager
 	// A list of lists containing test sets to run and the individual test cases in each set
@@ -126,7 +126,7 @@ var/datum/test_manager/test_executor = new
 
 // The server is being run to do tests only, so start the game, run them and shut down
 /datum/test_manager/proc/host_tests()
-	master_mode = "extended"
+	GLOB.master_mode = "extended"
 
 	// Wait for the game ticker to initialize
 	while(!SSticker.initialized)

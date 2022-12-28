@@ -260,11 +260,11 @@
 	var/datum/preferences/A = new()
 	A.randomize_appearance(H)
 	if(H.gender == MALE)
-		first_name = "[pick(first_names_male_colonist)]"
+		first_name = "[pick(GLOB.first_names_male_colonist)]"
 	else
-		first_name ="[pick(first_names_female_colonist)]"
+		first_name ="[pick(GLOB.first_names_female_colonist)]"
 
-	last_name ="[pick(last_names_colonist)]"
+	last_name ="[pick(GLOB.last_names_colonist)]"
 	random_name = "[first_name] [last_name]"
 	H.change_real_name(H, random_name)
 	var/static/list/colors = list("BLACK" = list(15, 15, 25), "BROWN" = list(102, 51, 0), "AUBURN" = list(139, 62, 19))

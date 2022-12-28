@@ -102,7 +102,7 @@
 	else
 		new_xeno.key = target_xeno.key
 		if(new_xeno.client)
-			new_xeno.client.change_view(world_view_size)
+			new_xeno.client.change_view(GLOB.world_view_size)
 			new_xeno.client.pixel_x = 0
 			new_xeno.client.pixel_y = 0
 
@@ -125,8 +125,8 @@
 
 	target_xeno.transfer_observers_to(new_xeno)
 
-	if(round_statistics && !new_xeno.statistic_exempt)
-		round_statistics.track_new_participant(target_xeno.faction, -1) //so an evolved xeno doesn't count as two.
+	if(GLOB.round_statistics && !new_xeno.statistic_exempt)
+		GLOB.round_statistics.track_new_participant(target_xeno.faction, -1) //so an evolved xeno doesn't count as two.
 	SSround_recording.recorder.stop_tracking(target_xeno)
 	SSround_recording.recorder.track_player(new_xeno)
 	qdel(target_xeno)
@@ -487,7 +487,7 @@
 		return
 
 	var/obj/effect/alien/weeds/node/node
-	for(var/direction in cardinal)
+	for(var/direction in GLOB.cardinal)
 		var/turf/weed_turf = get_step(T, direction)
 		var/obj/effect/alien/weeds/W = locate() in weed_turf
 		if(W && W.hivenumber == X.hivenumber && W.parent && !W.hibernate && !LinkBlocked(W, weed_turf, T))
@@ -651,4 +651,4 @@
 	var/icon/O = overlay_tacmap(TACMAP_XENO, TACMAP_BASE_OPEN, hivenumber)
 	if(O)
 		src << browse_rsc(O, "marine_minimap.png")
-		show_browser(src, "<img src=marine_minimap.png>", "Xeno Tacmap", "marineminimap", "size=[(map_sizes[1]*2)+50]x[(map_sizes[2]*2)+50]", closeref = src)
+		show_browser(src, "<img src=marine_minimap.png>", "Xeno Tacmap", "marineminimap", "size=[(GLOB.map_sizes[1]*2)+50]x[(GLOB.map_sizes[2]*2)+50]", closeref = src)

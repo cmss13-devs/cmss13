@@ -27,7 +27,7 @@ BONUS
 
 /datum/symptom/headache/Activate(var/datum/disease/advance/A)
 	..()
-	if(prob(SYMPTOM_ACTIVATION_PROB))
+	if(prob(GLOB.SYMPTOM_ACTIVATION_PROB))
 		var/mob/living/M = A.affected_mob
 		to_chat(M, SPAN_NOTICE("[pick("Your head hurts.", "Your head starts pounding.")]"))
 	return

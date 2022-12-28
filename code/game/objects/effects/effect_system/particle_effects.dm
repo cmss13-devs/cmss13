@@ -26,7 +26,7 @@
 		qdel(src)
 	addtimer(CALLBACK(src, .proc/handle_extinguish), life)
 
-	setDir(pick(cardinal))
+	setDir(pick(GLOB.cardinal))
 	SetLuminosity(3)
 
 	for(var/mob/living/L in loc)//Mobs

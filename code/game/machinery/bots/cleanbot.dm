@@ -37,8 +37,8 @@
 	should_patrol = 1
 
 	src.botcard = new(src)
-	if(RoleAuthority)
-		var/datum/job/ctequiv = RoleAuthority.roles_by_name[JOB_CARGO_TECH]
+	if(GLOB.RoleAuthority)
+		var/datum/job/ctequiv = GLOB.RoleAuthority.roles_by_name[JOB_CARGO_TECH]
 		if(ctequiv) botcard.access = ctequiv.get_access()
 
 	src.locked = 0 // Start unlocked so roboticist can set them to patrol.

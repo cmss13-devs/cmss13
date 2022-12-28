@@ -14,12 +14,12 @@
 		the character.
 */
 
-var/list/test_env_prefab_types = list(
+GLOBAL_LIST_INIT(test_env_prefab_types, list(
 	"H" = /turf/closed/wall/almayer/outer,
 	"W" = /turf/closed/wall/almayer,
 	"F" = /turf/open/floor/almayer,
 	"S" = null
-)
+))
 
 /datum/test_environment
 	// Name of the test environment
@@ -102,8 +102,8 @@ var/list/test_env_prefab_types = list(
 			new /area/test(cur_turf)
 
 			// Construct prefab atoms
-			if(char in test_env_prefab_types)
-				var/type = test_env_prefab_types[char]
+			if(char in GLOB.test_env_prefab_types)
+				var/type = GLOB.test_env_prefab_types[char]
 				// Do nothing here
 				if(!type)
 					cur_x++

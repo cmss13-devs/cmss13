@@ -198,7 +198,7 @@
 	if (storage_flags & STORAGE_SHOW_FULLNESS)
 		boxes.update_fullness(src)
 
-var/list/global/item_storage_box_cache = list()
+GLOBAL_LIST_EMPTY(item_storage_box_cache)
 
 /datum/item_storage_box
 	var/atom/movable/screen/storage/start = null
@@ -247,7 +247,7 @@ var/list/global/item_storage_box_cache = list()
 		click_border_start.Add(startpoint)
 		click_border_end.Add(endpoint)
 
-		if(!item_storage_box_cache["[startpoint], [endpoint], [stored_cap_width]"])
+		if(!GLOB.item_storage_box_cache["[startpoint], [endpoint], [stored_cap_width]"])
 			var/datum/item_storage_box/box = new()
 			var/matrix/M_start = matrix()
 			var/matrix/M_continue = matrix()
@@ -259,9 +259,9 @@ var/list/global/item_storage_box_cache = list()
 			box.start.apply_transform(M_start)
 			box.continued.apply_transform(M_continue)
 			box.end.apply_transform(M_end)
-			item_storage_box_cache["[startpoint], [endpoint], [stored_cap_width]"] = box
+			GLOB.item_storage_box_cache["[startpoint], [endpoint], [stored_cap_width]"] = box
 
-		var/datum/item_storage_box/ISB = item_storage_box_cache["[startpoint], [endpoint], [stored_cap_width]"]
+		var/datum/item_storage_box/ISB = GLOB.item_storage_box_cache["[startpoint], [endpoint], [stored_cap_width]"]
 		stored_start = ISB.start
 		stored_continue = ISB.continued
 		stored_end = ISB.end

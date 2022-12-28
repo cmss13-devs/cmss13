@@ -91,10 +91,10 @@
 		return //Kill it so as not to repeat
 
 /datum/shuttle/ferry/marine/proc/load_datums()
-	if(!(info_tag in s_info))
+	if(!(info_tag in GLOB.s_info))
 		message_staff(SPAN_WARNING("Error with shuttles: Shuttle tag does not exist. Code: MSD10.\n WARNING: DROPSHIP LAUNCH WILL PROBABLY FAIL"))
 
-	var/list/L = s_info[info_tag]
+	var/list/L = GLOB.s_info[info_tag]
 	info_datums = L.Copy()
 
 /datum/shuttle/ferry/marine/proc/launch_crash(var/user)
@@ -300,7 +300,7 @@
 
 	in_transit_time_left = 0
 
-	if(EvacuationAuthority.dest_status >= NUKE_EXPLOSION_IN_PROGRESS)
+	if(GLOB.EvacuationAuthority.dest_status >= NUKE_EXPLOSION_IN_PROGRESS)
 		return FALSE //If a nuke is in progress, don't attempt a landing.
 
 	playsound_area(get_area(turfs_int[sound_target]), sound_landing, 100)
@@ -315,7 +315,7 @@
 
 	sleep(100) //Wait for it to finish.
 
-	if(EvacuationAuthority.dest_status == NUKE_EXPLOSION_FINISHED)
+	if(GLOB.EvacuationAuthority.dest_status == NUKE_EXPLOSION_FINISHED)
 		return FALSE //If a nuke finished, don't land.
 
 	target_turf = T_trg
@@ -389,17 +389,17 @@
 
 	var/target_section = crash_target_section
 	if(isnull(target_section))
-		var/list/potential_crash_sections = almayer_ship_sections.Copy()
-		potential_crash_sections -= almayer_aa_cannon.protecting_section
+		var/list/potential_crash_sections = GLOB.almayer_ship_sections.Copy()
+		potential_crash_sections -= GLOB.almayer_aa_cannon.protecting_section
 		target_section = pick(potential_crash_sections)
 
-	var/turf/T_trg = pick(shuttle_controller.locs_crash[target_section])
+	var/turf/T_trg = pick(GLOB.shuttle_controller.locs_crash[target_section])
 
 	for(var/X in equipments)
 		var/obj/structure/dropship_equipment/E = X
 		if(istype(E, /obj/structure/dropship_equipment/adv_comp/docking))
 			var/list/crash_turfs = list()
-			for(var/turf/TU in shuttle_controller.locs_crash[target_section])
+			for(var/turf/TU in GLOB.shuttle_controller.locs_crash[target_section])
 				if(istype(get_area(TU), /area/almayer/hallways/hangar))
 					crash_turfs += TU
 			if(crash_turfs.len) T_trg = pick(crash_turfs)
@@ -409,7 +409,7 @@
 	if(!istype(T_src) || !istype(T_int) || !istype(T_trg))
 		message_staff(SPAN_WARNING("Error with shuttles: Reference turfs not correctly instantiated. Code: MSD04.\n WARNING: DROPSHIP LAUNCH WILL FAIL"))
 
-	shuttle_controller.locs_crash[target_section] -= T_trg
+	GLOB.shuttle_controller.locs_crash[target_section] -= T_trg
 
 	//END: Heavy lifting backend
 
@@ -479,7 +479,7 @@
 
 	in_transit_time_left = 0
 
-	if(EvacuationAuthority.dest_status >= NUKE_EXPLOSION_IN_PROGRESS)
+	if(GLOB.EvacuationAuthority.dest_status >= NUKE_EXPLOSION_IN_PROGRESS)
 		return FALSE //If a nuke is in progress, don't attempt a landing.
 
 	//This is where things change and shit gets real
@@ -494,15 +494,15 @@
 
 	sleep(85)
 
-	if(EvacuationAuthority.dest_status == NUKE_EXPLOSION_FINISHED)
+	if(GLOB.EvacuationAuthority.dest_status == NUKE_EXPLOSION_FINISHED)
 		return FALSE //If a nuke finished, don't land.
 
-	if(security_level < SEC_LEVEL_RED) //automatically set security level to red.
+	if(GLOB.security_level < SEC_LEVEL_RED) //automatically set security level to red.
 		set_security_level(SEC_LEVEL_RED, TRUE)
 
 	shake_cameras(turfs_int) //shake for 1.5 seconds before crash, 0.5 after
 
-	for(var/obj/structure/machinery/power/apc/A in machines) //break APCs
+	for(var/obj/structure/machinery/power/apc/A in GLOB.machines) //break APCs
 		if(A.z != T_trg.z) continue
 		if(prob(A.crash_break_probability))
 			A.overload_lighting()
@@ -534,7 +534,7 @@
 	var/explosion_alive = TRUE
 	while(explosion_alive)
 		explosion_alive = FALSE
-		for(var/datum/automata_cell/explosion/E in cellauto_cells)
+		for(var/datum/automata_cell/explosion/E in GLOB.cellauto_cells)
 			if(E.explosion_cause_data && E.explosion_cause_data.cause_name == "dropship crash")
 				explosion_alive = TRUE
 				break
@@ -577,15 +577,15 @@
 	open_doors_crashed(turfs_trg) //And now open the doors
 
 
-	for (var/obj/structure/machinery/door_display/research_cell/d in machines)
+	for (var/obj/structure/machinery/door_display/research_cell/d in GLOB.machines)
 		if(is_mainship_level(d.z) || is_loworbit_level(d.z))
 			d.ion_act() //Breaking xenos out of containment
 
 	//Stolen from events.dm. WARNING: This code is old as hell
-	for (var/obj/structure/machinery/power/apc/APC in machines)
+	for (var/obj/structure/machinery/power/apc/APC in GLOB.machines)
 		if(is_mainship_level(APC.z) || is_loworbit_level(APC.z))
 			APC.ion_act()
-	for (var/obj/structure/machinery/power/smes/SMES in machines)
+	for (var/obj/structure/machinery/power/smes/SMES in GLOB.machines)
 		if(is_mainship_level(SMES.z) || is_loworbit_level(SMES.z))
 			SMES.ion_act()
 
@@ -599,7 +599,7 @@
 		SSticker.mode.force_end_at = world.time + 15000 // 25 mins
 
 /datum/shuttle/ferry/marine/proc/disable_latejoin()
-	enter_allowed = FALSE
+	GLOB.enter_allowed = FALSE
 
 
 /datum/shuttle/ferry/marine/short_jump()

@@ -152,7 +152,7 @@
 				if(isitem(A))
 					var/obj/item/item = A
 					if(item.is_objective && item.unacidable)
-						item.forceMove(get_step(loc, pick(alldirs)))
+						item.forceMove(get_step(loc, pick(GLOB.alldirs)))
 
 			QDEL_NULL(captured_mob)
 			update_icon()
@@ -213,7 +213,7 @@
 	if(world.time > last_marine_count + marine_count_cooldown)
 		var/marine_count = 0
 		for(var/mob/mob as anything in GLOB.human_mob_list)
-			if(mob.job in ROLES_MARINES)
+			if(mob.job in GLOB.ROLES_MARINES)
 				marine_count++
 		playable_hugger_limit = round(marine_count / 5)
 

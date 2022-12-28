@@ -192,7 +192,7 @@
 	if (hive)
 		hivenumber = hive
 	set_hive_data(src, hivenumber)
-	setDir(pick(alldirs))
+	setDir(pick(GLOB.alldirs))
 
 /obj/effect/alien/resin/spike/Crossed(atom/movable/AM)
 	. = ..()
@@ -430,7 +430,7 @@
 	var/turf/U = loc
 	spawn(0)
 		var/turf/T
-		for(var/i in cardinal)
+		for(var/i in GLOB.cardinal)
 			T = get_step(U, i)
 			if(!istype(T)) continue
 			for(var/obj/structure/mineral_door/resin/R in T)
@@ -463,7 +463,7 @@
 //do we still have something next to us to support us?
 /obj/structure/mineral_door/resin/proc/check_resin_support()
 	var/turf/T
-	for(var/i in cardinal)
+	for(var/i in GLOB.cardinal)
 		T = get_step(src, i)
 		if(!T)
 			continue
@@ -884,9 +884,9 @@
 
 	// If the cell is the epicenter, propagate in all directions
 	if(isnull(direction))
-		return alldirs
+		return GLOB.alldirs
 
-	if(direction in cardinal)
+	if(direction in GLOB.cardinal)
 		. += list(direction, turn(direction, 45), turn(direction, -45))
 	else
 		. += direction
@@ -920,7 +920,7 @@
 			// Set the direction the explosion is traveling in
 			E.direction = dir
 
-			if(dir in diagonals)
+			if(dir in GLOB.diagonals)
 				E.range--
 
 			switch(E.range)

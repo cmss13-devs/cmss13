@@ -77,7 +77,7 @@
 			icon_state = "[initial(icon_state)]emp"
 			var/list/previous_network = network
 			network = list()
-			cameranet.removeCamera(src)
+			GLOB.cameranet.removeCamera(src)
 			stat |= EMPED
 			SetLuminosity(0)
 			triggerCameraAlarm()
@@ -87,7 +87,7 @@
 				stat &= ~EMPED
 				cancelCameraAlarm()
 				if(can_use())
-					cameranet.addCamera(src)
+					GLOB.cameranet.addCamera(src)
 			kick_viewers()
 			..()
 
@@ -101,7 +101,7 @@
 
 /obj/structure/machinery/camera/proc/setViewRange(var/num = 7)
 	src.view_range = num
-	cameranet.updateVisibility(src, 0)
+	GLOB.cameranet.updateVisibility(src, 0)
 
 /obj/structure/machinery/camera/attack_hand(mob/living/carbon/human/user as mob)
 

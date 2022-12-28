@@ -34,7 +34,7 @@
 	set category = "OOC"
 	set name = "View Playtimes"
 	set desc = "View your playtimes."
-	if(!SSentity_manager.ready)
+	if(!GLOB.SSentity_manager.ready)
 		to_chat(src, "DB is still starting up, please wait")
 		return
 	if(client && client.player_entity)
@@ -154,7 +154,7 @@
 		return
 
 	M.key = key
-	if(M.client) M.client.change_view(world_view_size)
+	if(M.client) M.client.change_view(GLOB.world_view_size)
 //	M.Login()	//wat
 	return
 

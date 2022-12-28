@@ -26,7 +26,7 @@ Bonus
 
 /datum/symptom/voice_change/Activate(var/datum/disease/advance/A)
 	..()
-	if(prob(SYMPTOM_ACTIVATION_PROB))
+	if(prob(GLOB.SYMPTOM_ACTIVATION_PROB))
 
 		var/mob/living/carbon/M = A.affected_mob
 		switch(A.stage)
@@ -38,10 +38,10 @@ Bonus
 					var/random_name = ""
 					switch(H.gender)
 						if(MALE)
-							random_name = pick(first_names_male)
+							random_name = pick(GLOB.first_names_male)
 						else
-							random_name = pick(first_names_female)
-					random_name += " [pick(last_names)]"
+							random_name = pick(GLOB.first_names_female)
+					random_name += " [pick(GLOB.last_names)]"
 					H.SetSpecialVoice(random_name)
 
 	return

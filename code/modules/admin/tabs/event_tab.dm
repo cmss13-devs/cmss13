@@ -148,7 +148,7 @@
 	var/tag = tgui_input_list(usr, "Which ERT shuttle should be force launched?", "Select an ERT Shuttle:", list("Distress", "Distress_PMC", "Distress_UPP", "Distress_Big", "Distress_Small"))
 	if(!tag) return
 
-	var/datum/shuttle/ferry/ert/shuttle = shuttle_controller.shuttles[tag]
+	var/datum/shuttle/ferry/ert/shuttle = GLOB.shuttle_controller.shuttles[tag]
 	if(!shuttle || !istype(shuttle))
 		message_staff("Warning: Distress shuttle not found. Aborting.")
 		return
@@ -170,7 +170,7 @@
 			if("Port Engineering") dock_id = /area/shuttle/distress/arrive_s_engi
 			if("Starboard Engineering") dock_id = /area/shuttle/distress/arrive_n_engi
 			else return
-		for(var/datum/shuttle/ferry/ert/F in shuttle_controller.process_shuttles)
+		for(var/datum/shuttle/ferry/ert/F in GLOB.shuttle_controller.process_shuttles)
 			if(F != shuttle)
 				//other ERT shuttles already docked on almayer or about to be
 				if(!F.location || F.moving_status != SHUTTLE_IDLE)
@@ -178,7 +178,7 @@
 						message_staff("Warning: That docking zone is already taken by another shuttle. Aborting.")
 						return
 
-		for(var/area/A in all_areas)
+		for(var/area/A in GLOB.all_areas)
 			if(A.type == dock_id)
 				shuttle.area_station = A
 				break
@@ -256,7 +256,7 @@
 	if(!SSticker.mode || !check_rights(R_ADMIN))
 		return
 	set_security_level(SEC_LEVEL_RED)
-	EvacuationAuthority.initiate_evacuation()
+	GLOB.EvacuationAuthority.initiate_evacuation()
 
 	message_staff("[key_name_admin(usr)] forced an emergency evacuation.")
 
@@ -267,7 +267,7 @@
 
 	if(!SSticker.mode || !check_rights(R_ADMIN))
 		return
-	EvacuationAuthority.cancel_evacuation()
+	GLOB.EvacuationAuthority.cancel_evacuation()
 
 	message_staff("[key_name_admin(usr)] canceled an emergency evacuation.")
 
@@ -295,12 +295,12 @@
 	var/points_to_add = tgui_input_real_number(usr, "Enter the amount of points to give, or a negative number to subtract. 1 point = $100.", "Points", 0)
 	if(points_to_add == 0)
 		return
-	else if((supply_controller.points + points_to_add) < 0)
-		supply_controller.points = 0
-	else if((supply_controller.points + points_to_add) > 99999)
-		supply_controller.points = 99999
+	else if((GLOB.supply_controller.points + points_to_add) < 0)
+		GLOB.supply_controller.points = 0
+	else if((GLOB.supply_controller.points + points_to_add) > 99999)
+		GLOB.supply_controller.points = 99999
 	else
-		supply_controller.points += points_to_add
+		GLOB.supply_controller.points += points_to_add
 
 
 	message_staff("[key_name_admin(usr)] granted requisitions [points_to_add] points.")
@@ -439,7 +439,7 @@
 		if("No") crash = 0
 		else return
 
-	var/datum/shuttle/ferry/marine/dropship = shuttle_controller.shuttles[MAIN_SHIP_NAME + " " + tag]
+	var/datum/shuttle/ferry/marine/dropship = GLOB.shuttle_controller.shuttles[MAIN_SHIP_NAME + " " + tag]
 	if(!dropship)
 		to_chat(src, SPAN_DANGER("Error: Attempted to force a dropship launch but the shuttle datum was null. Code: MSD_FSV_DIN"))
 		log_admin("Error: Attempted to force a dropship launch but the shuttle datum was null. Code: MSD_FSV_DIN")
@@ -467,7 +467,7 @@
 	if(!tag)
 		return
 
-	var/datum/shuttle/ferry/marine/dropship = shuttle_controller.shuttles["Ground" + " " + tag]
+	var/datum/shuttle/ferry/marine/dropship = GLOB.shuttle_controller.shuttles["Ground" + " " + tag]
 	if(!dropship)
 		to_chat(src, SPAN_DANGER("Error: Attempted to force a dropship launch but the shuttle datum was null. Code: MSD_FSV_DIN_2</span>"))
 		to_chat(src, SPAN_DANGER("This is expected if map != CORSAT.</span>"))
@@ -495,13 +495,13 @@
 	if(!customname)
 		customname = "[faction] Update"
 	if(faction == FACTION_MARINE)
-		for(var/obj/structure/machinery/computer/almayer_control/C in machines)
+		for(var/obj/structure/machinery/computer/almayer_control/C in GLOB.machines)
 			if(!(C.inoperable()))
 				var/obj/item/paper/P = new /obj/item/paper( C.loc )
-				P.name = "'[command_name] Update.'"
+				P.name = "'[GLOB.command_name] Update.'"
 				P.info = input
 				P.update_icon()
-				C.messagetitle.Add("[command_name] Update")
+				C.messagetitle.Add("[GLOB.command_name] Update")
 				C.messagetext.Add(P.info)
 
 		if(alert("Press \"Yes\" if you want to announce it to ship crew and marines. Press \"No\" to keep it only as printed report on communication console.",,"Yes","No") == "Yes")
@@ -565,7 +565,7 @@
 	if(!input)
 		return FALSE
 
-	for(var/obj/structure/machinery/computer/almayer_control/C in machines)
+	for(var/obj/structure/machinery/computer/almayer_control/C in GLOB.machines)
 		if(!(C.inoperable()))
 //			var/obj/item/paper/P = new /obj/item/paper(C.loc)//Don't need a printed copy currently.
 //			P.name = "'[MAIN_AI_SYSTEM] Update.'"
@@ -590,7 +590,7 @@
 	if(!input)
 		return FALSE
 
-	for(var/obj/structure/machinery/computer/almayer_control/C in machines)
+	for(var/obj/structure/machinery/computer/almayer_control/C in GLOB.machines)
 		if(!(C.inoperable()))
 //			var/obj/item/paper/P = new /obj/item/paper(C.loc)//Don't need a printed copy currently.
 //			P.name = "'[MAIN_AI_SYSTEM] Update.'"
@@ -651,14 +651,14 @@
 	set name = "Mob Event Verbs - Show"
 	set category = "Admin.Events"
 
-	add_verb(src, admin_mob_event_verbs_hideable)
+	add_verb(src, GLOB.admin_mob_event_verbs_hideable)
 	remove_verb(src, /client/proc/enable_event_mob_verbs)
 
 /client/proc/hide_event_mob_verbs()
 	set name = "Mob Event Verbs - Hide"
 	set category = "Admin.Events"
 
-	remove_verb(src, admin_mob_event_verbs_hideable)
+	remove_verb(src, GLOB.admin_mob_event_verbs_hideable)
 	add_verb(src, /client/proc/enable_event_mob_verbs)
 
 // ----------------------------

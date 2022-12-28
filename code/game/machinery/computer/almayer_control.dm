@@ -52,8 +52,8 @@
 
 	var/dat = "<head><title>Almayer Control Console</title></head><body>"
 
-	if(EvacuationAuthority.evac_status == EVACUATION_STATUS_INITIATING)
-		dat += "<B>Evacuation in Progress</B>\n<BR>\nETA: [EvacuationAuthority.get_status_panel_eta()]<BR>"
+	if(GLOB.EvacuationAuthority.evac_status == EVACUATION_STATUS_INITIATING)
+		dat += "<B>Evacuation in Progress</B>\n<BR>\nETA: [GLOB.EvacuationAuthority.get_status_panel_eta()]<BR>"
 
 	switch(state)
 		if(STATE_DEFAULT)
@@ -68,7 +68,7 @@
 			dat += "<BR><A HREF='?src=\ref[src];operation=messagelist'>Message list</A>"
 			dat += "<BR><A HREF='?src=\ref[src];operation=distress'>Send Distress Beacon</A>"
 			dat += "<BR><A HREF='?src=\ref[src];operation=destroy'>Activate Self-Destruct</A>"
-			switch(EvacuationAuthority.evac_status)
+			switch(GLOB.EvacuationAuthority.evac_status)
 				if(EVACUATION_STATUS_STANDING_BY)
 					dat += "<BR><A HREF='?src=\ref[src];operation=evacuation_start'>Initiate emergency evacuation</A>"
 				if(EVACUATION_STATUS_INITIATING)
@@ -149,15 +149,15 @@
 
 		if("evacuation_start")
 			if(state == STATE_EVACUATION)
-				if(security_level < SEC_LEVEL_RED)
+				if(GLOB.security_level < SEC_LEVEL_RED)
 					to_chat(usr, SPAN_WARNING("The ship must be under red alert in order to enact evacuation procedures."))
 					return FALSE
 
-				if(EvacuationAuthority.flags_scuttle & FLAGS_EVACUATION_DENY)
+				if(GLOB.EvacuationAuthority.flags_scuttle & FLAGS_EVACUATION_DENY)
 					to_chat(usr, SPAN_WARNING("The USCM has placed a lock on deploying the evacuation pods."))
 					return FALSE
 
-				if(!EvacuationAuthority.initiate_evacuation())
+				if(!GLOB.EvacuationAuthority.initiate_evacuation())
 					to_chat(usr, SPAN_WARNING("You are unable to initiate an evacuation procedure right now!"))
 					return FALSE
 
@@ -169,14 +169,14 @@
 
 		if("evacuation_cancel")
 			if(state == STATE_EVACUATION_CANCEL)
-				if(!EvacuationAuthority.cancel_evacuation())
+				if(!GLOB.EvacuationAuthority.cancel_evacuation())
 					to_chat(usr, SPAN_WARNING("You are unable to cancel the evacuation right now!"))
 					return FALSE
 
 				spawn(35)//some time between AI announcements for evac cancel and SD cancel.
-					if(EvacuationAuthority.evac_status == EVACUATION_STATUS_STANDING_BY)//nothing changed during the wait
+					if(GLOB.EvacuationAuthority.evac_status == EVACUATION_STATUS_STANDING_BY)//nothing changed during the wait
 						 //if the self_destruct is active we try to cancel it (which includes lowering alert level to red)
-						if(!EvacuationAuthority.cancel_self_destruct(1))
+						if(!GLOB.EvacuationAuthority.cancel_self_destruct(1))
 							//if SD wasn't active (likely canceled manually in the SD room), then we lower the alert level manually.
 							set_security_level(SEC_LEVEL_RED, TRUE) //both SD and evac are inactive, lowering the security level.
 
@@ -205,7 +205,7 @@
 					to_chat(usr, SPAN_WARNING("The distress beacon has recently broadcast a message. Please wait."))
 					return FALSE
 
-				if(security_level == SEC_LEVEL_DELTA)
+				if(GLOB.security_level == SEC_LEVEL_DELTA)
 					to_chat(usr, SPAN_WARNING("The ship is already undergoing self-destruct procedures!"))
 					return FALSE
 
@@ -289,7 +289,7 @@
 
 		if("changeseclevel")
 			var/list/alert_list = list(num2seclevel(SEC_LEVEL_GREEN), num2seclevel(SEC_LEVEL_BLUE))
-			switch(security_level)
+			switch(GLOB.security_level)
 				if(SEC_LEVEL_GREEN)
 					alert_list -= num2seclevel(SEC_LEVEL_GREEN)
 				if(SEC_LEVEL_BLUE)

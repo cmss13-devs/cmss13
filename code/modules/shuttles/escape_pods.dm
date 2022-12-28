@@ -39,7 +39,7 @@ with the original.*/
 		process_state = WAIT_LAUNCH
 
 	can_launch() //Cannot launch it early before the evacuation takes place proper, and the pod must be ready. Cannot be delayed, broken, launching, or otherwise.
-		if(..() && EvacuationAuthority.evac_status >= EVACUATION_STATUS_INITIATING)
+		if(..() && GLOB.EvacuationAuthority.evac_status >= EVACUATION_STATUS_INITIATING)
 			switch(evacuation_program.dock_state)
 				if(STATE_READY)
 					return TRUE
@@ -51,7 +51,7 @@ with the original.*/
 
 	//The pod can be delayed until after the automatic launch.
 	can_cancel()
-		. = (EvacuationAuthority.evac_status > EVACUATION_STATUS_STANDING_BY && (evacuation_program.dock_state in STATE_READY to STATE_DELAYED)) //Must be evac time and the pod can't be launching/launched.
+		. = (GLOB.EvacuationAuthority.evac_status > EVACUATION_STATUS_STANDING_BY && (evacuation_program.dock_state in STATE_READY to STATE_DELAYED)) //Must be evac time and the pod can't be launching/launched.
 
 	short_jump()
 		. = ..()
@@ -241,7 +241,7 @@ As such, a new tracker datum must be constructed to follow proper child inherita
 /obj/structure/machinery/embedded_controller/radio/simple_docking_controller/escape_pod/ui_data(mob/user)
 	var/list/data = list()
 	var/launch_status[] = evacuation_program.check_launch_status()
-	var/datum/shuttle/ferry/marine/evacuation_pod/P = shuttle_controller.shuttles[id_tag]
+	var/datum/shuttle/ferry/marine/evacuation_pod/P = GLOB.shuttle_controller.shuttles[id_tag]
 
 	data["docking_status"] = evacuation_program.dock_state
 	data["door_state"] = P.D.density
@@ -255,7 +255,7 @@ As such, a new tracker datum must be constructed to follow proper child inherita
 	if(.)
 		return
 
-	var/datum/shuttle/ferry/marine/evacuation_pod/P = shuttle_controller.shuttles[id_tag]
+	var/datum/shuttle/ferry/marine/evacuation_pod/P = GLOB.shuttle_controller.shuttles[id_tag]
 
 	switch(action)
 		if("force_launch")
@@ -298,7 +298,7 @@ As such, a new tracker datum must be constructed to follow proper child inherita
 		//close_door()
 
 /datum/computer/file/embedded_program/docking/simple/escape_pod/proc/check_launch_status()
-	var/datum/shuttle/ferry/marine/evacuation_pod/P = shuttle_controller.shuttles[id_tag]
+	var/datum/shuttle/ferry/marine/evacuation_pod/P = GLOB.shuttle_controller.shuttles[id_tag]
 	. = list(P.can_launch(), P.can_cancel())
 
 //=========================================================================================
@@ -475,7 +475,7 @@ As such, a new tracker datum must be constructed to follow proper child inherita
 		"armed" = armed,
 	)
 
-	ui = nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
+	ui = GLOB.nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
 
 	if (!ui)
 		ui = new(user, src, ui_key, "escape_pod_berth_console.tmpl", name, 470, 290)

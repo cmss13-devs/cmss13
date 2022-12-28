@@ -5,7 +5,7 @@
 	// Store all the blocked doors we found
 	var/list/blocked_doors = list()
 
-	for(var/area/A in all_areas)
+	for(var/area/A in GLOB.all_areas)
 		if(!A.z)
 			continue
 

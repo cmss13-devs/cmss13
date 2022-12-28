@@ -28,12 +28,12 @@
 	shuttle.location = 1
 	shuttle.warmup_time = 1
 	shuttle.move_time = ELEVATOR_TRANSIT_DURATION
-	for(var/area/A in all_areas)
+	for(var/area/A in GLOB.all_areas)
 		if(A.type == /area/supply/dock)
 			shuttle.area_offsite = A
 			break
 
-	for(var/area/A in all_areas)
+	for(var/area/A in GLOB.all_areas)
 		if(A.type == /area/supply/station)
 			shuttle.area_station = A
 			break
@@ -41,7 +41,7 @@
 	shuttles["Supply"] = shuttle
 	process_shuttles += shuttle
 
-	supply_controller.shuttle = shuttle
+	GLOB.supply_controller.shuttle = shuttle
 
 	var/datum/shuttle/ferry/marine/shuttle1 //Because I am using shuttle_tag, which is only defined under /datum/shuttle/ferry/marine
 	//ALMAYER DROPSHIP 1
@@ -112,17 +112,17 @@
 	ES = new ()
 	ES.location = 1
 
-	for(var/area/A in all_areas)
+	for(var/area/A in GLOB.all_areas)
 		if(A.type == /area/shuttle/distress/start)
 			ES.area_offsite = A
 			break
 
-	for(var/area/A in all_areas)
+	for(var/area/A in GLOB.all_areas)
 		if(A.type == /area/shuttle/distress/arrive_1)
 			ES.area_station = A
 			break
 
-	for(var/area/A in all_areas)
+	for(var/area/A in GLOB.all_areas)
 		if(A.type == /area/shuttle/distress/transit)
 			ES.area_transition = A
 			break
@@ -136,17 +136,17 @@
 	ES = new ()
 	ES.location = 1
 
-	for(var/area/A in all_areas)
+	for(var/area/A in GLOB.all_areas)
 		if(A.type == /area/shuttle/distress/start_pmc)
 			ES.area_offsite = A
 			break
 
-	for(var/area/A in all_areas)
+	for(var/area/A in GLOB.all_areas)
 		if(A.type == /area/shuttle/distress/arrive_2)
 			ES.area_station = A
 			break
 
-	for(var/area/A in all_areas)
+	for(var/area/A in GLOB.all_areas)
 		if(A.type == /area/shuttle/distress/transit_pmc)
 			ES.area_transition = A
 			break
@@ -160,17 +160,17 @@
 	ES = new()
 	ES.location = 1
 
-	for(var/area/A in all_areas)
+	for(var/area/A in GLOB.all_areas)
 		if(A.type == /area/shuttle/distress/start_upp)
 			ES.area_offsite = A
 			break
 
-	for(var/area/A in all_areas)
+	for(var/area/A in GLOB.all_areas)
 		if(A.type == /area/shuttle/distress/arrive_3)
 			ES.area_station = A
 			break
 
-	for(var/area/A in all_areas)
+	for(var/area/A in GLOB.all_areas)
 		if(A.type == /area/shuttle/distress/transit_upp)
 			ES.area_transition = A
 			break
@@ -185,17 +185,17 @@
 	ES.location = 1
 	ES.use_umbilical = TRUE
 
-	for(var/area/A in all_areas)
+	for(var/area/A in GLOB.all_areas)
 		if(A.type == /area/shuttle/distress/start_big)
 			ES.area_offsite = A
 			break
 
-	for(var/area/A in all_areas)
+	for(var/area/A in GLOB.all_areas)
 		if(A.type == /area/shuttle/distress/arrive_n_hangar)
 			ES.area_station = A
 			break
 
-	for(var/area/A in all_areas)
+	for(var/area/A in GLOB.all_areas)
 		if(A.type == /area/shuttle/distress/transit_big)
 			ES.area_transition = A
 			break
@@ -209,17 +209,17 @@
 	ES.location = 1
 	ES.use_small_docks = TRUE
 
-	for(var/area/A in all_areas)
+	for(var/area/A in GLOB.all_areas)
 		if(A.type == /area/shuttle/distress/start_small)
 			ES.area_offsite = A
 			break
 
-	for(var/area/A in all_areas)
+	for(var/area/A in GLOB.all_areas)
 		if(A.type == /area/shuttle/distress/arrive_n_engi)
 			ES.area_station = A
 			break
 
-	for(var/area/A in all_areas)
+	for(var/area/A in GLOB.all_areas)
 		if(A.type == /area/shuttle/distress/transit_small)
 			ES.area_transition = A
 			break
@@ -237,17 +237,17 @@
 	shuttle.warmup_time = 10 SECONDS
 	shuttle.recharge_time = ELEVATOR_RECHARGE
 
-	for(var/area/A in all_areas)
+	for(var/area/A in GLOB.all_areas)
 		if(A.type == /area/shuttle/elevator1/underground)
 			shuttle.area_offsite = A
 			break
 
-	for(var/area/A in all_areas)
+	for(var/area/A in GLOB.all_areas)
 		if(A.type == /area/shuttle/elevator1/ground)
 			shuttle.area_station = A
 			break
 
-	for(var/area/A in all_areas)
+	for(var/area/A in GLOB.all_areas)
 		if(A.type == /area/shuttle/elevator1/transit)
 			shuttle.area_transition = A
 			break
@@ -263,17 +263,17 @@
 	shuttle.warmup_time = 10 SECONDS
 	shuttle.recharge_time = ELEVATOR_RECHARGE
 
-	for(var/area/A in all_areas)
+	for(var/area/A in GLOB.all_areas)
 		if(A.type == /area/shuttle/elevator2/underground)
 			shuttle.area_offsite = A
 			break
 
-	for(var/area/A in all_areas)
+	for(var/area/A in GLOB.all_areas)
 		if(A.type == /area/shuttle/elevator2/ground)
 			shuttle.area_station = A
 			break
 
-	for(var/area/A in all_areas)
+	for(var/area/A in GLOB.all_areas)
 		if(A.type == /area/shuttle/elevator2/transit)
 			shuttle.area_transition = A
 			break
@@ -289,17 +289,17 @@
 	shuttle.location = 0
 	shuttle.warmup_time = 10 SECONDS
 	shuttle.recharge_time = ELEVATOR_RECHARGE
-	for(var/area/A in all_areas)
+	for(var/area/A in GLOB.all_areas)
 		if(A.type == /area/shuttle/elevator3/underground)
 			shuttle.area_offsite = A
 			break
 
-	for(var/area/A in all_areas)
+	for(var/area/A in GLOB.all_areas)
 		if(A.type == /area/shuttle/elevator3/ground)
 			shuttle.area_station = A
 			break
 
-	for(var/area/A in all_areas)
+	for(var/area/A in GLOB.all_areas)
 		if(A.type == /area/shuttle/elevator3/transit)
 			shuttle.area_transition = A
 			break
@@ -314,17 +314,17 @@
 	shuttle.location = 0
 	shuttle.warmup_time = 10 SECONDS
 	shuttle.recharge_time = ELEVATOR_RECHARGE
-	for(var/area/A in all_areas)
+	for(var/area/A in GLOB.all_areas)
 		if(A.type == /area/shuttle/elevator4/underground)
 			shuttle.area_offsite = A
 			break
 
-	for(var/area/A in all_areas)
+	for(var/area/A in GLOB.all_areas)
 		if(A.type == /area/shuttle/elevator4/ground)
 			shuttle.area_station = A
 			break
 
-	for(var/area/A in all_areas)
+	for(var/area/A in GLOB.all_areas)
 		if(A.type == /area/shuttle/elevator4/transit)
 			shuttle.area_transition = A
 			break
@@ -339,17 +339,17 @@
 	shuttle.location = 0
 	shuttle.warmup_time = 10 SECONDS
 	shuttle.recharge_time = ELEVATOR_RECHARGE
-	for(var/area/A in all_areas)
+	for(var/area/A in GLOB.all_areas)
 		if(A.type == /area/shuttle/tri_trans1/omega)
 			shuttle.area_offsite = A
 			break
 
-	for(var/area/A in all_areas)
+	for(var/area/A in GLOB.all_areas)
 		if(A.type == /area/shuttle/tri_trans1/alpha)
 			shuttle.area_station = A
 			break
 
-	for(var/area/A in all_areas)
+	for(var/area/A in GLOB.all_areas)
 		if(A.type == /area/shuttle/tri_trans1/away)
 			shuttle.area_transition = A
 			break
@@ -365,17 +365,17 @@
 	shuttle.location = 0
 	shuttle.warmup_time = 10 SECONDS
 	shuttle.recharge_time = ELEVATOR_RECHARGE
-	for(var/area/A in all_areas)
+	for(var/area/A in GLOB.all_areas)
 		if(A.type == /area/shuttle/tri_trans2/omega)
 			shuttle.area_offsite = A
 			break
 
-	for(var/area/A in all_areas)
+	for(var/area/A in GLOB.all_areas)
 		if(A.type == /area/shuttle/tri_trans2/alpha)
 			shuttle.area_station = A
 			break
 
-	for(var/area/A in all_areas)
+	for(var/area/A in GLOB.all_areas)
 		if(A.type == /area/shuttle/tri_trans2/away)
 			shuttle.area_transition = A
 			break
@@ -403,7 +403,7 @@
 
 	//search for the controllers, if we have one.
 	if(dock_controller_map.len)
-		for(var/obj/structure/machinery/embedded_controller/radio/C in machines)	//only radio controllers are supported at the moment
+		for(var/obj/structure/machinery/embedded_controller/radio/C in GLOB.machines)	//only radio controllers are supported at the moment
 			if (istype(C.program, /datum/computer/file/embedded_program/docking))
 				if(dock_controller_map[C.id_tag])
 					shuttle = dock_controller_map[C.id_tag]

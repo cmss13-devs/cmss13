@@ -10,41 +10,40 @@
 // will get logs that are one big line if the system is Linux and they are using notepad.  This solves it by adding CR to every line ending
 // in the logs.  ascii character 13 = CR
 
-/var/global/log_end= world.system_type == UNIX ? ascii2text(13) : ""
-
+GLOBAL_VAR_INIT(log_end, world.system_type == UNIX ? ascii2text(13) : "")
 
 /proc/error(msg)
-	world.log << "## ERROR: [msg][log_end]"
+	world.log << "## ERROR: [msg][GLOB.log_end]"
 	GLOB.STUI.debug.Add("\[[time_stamp()]]DEBUG: [msg]")
 	GLOB.STUI.processing |= STUI_LOG_DEBUG
 #define WARNING(MSG) warning("[MSG] in [__FILE__] at line [__LINE__] src: [src] usr: [usr].")
 //print a warning message to world.log
 /proc/warning(msg)
-	world.log << "## WARNING: [msg][log_end]"
+	world.log << "## WARNING: [msg][GLOB.log_end]"
 	GLOB.STUI.debug.Add("\[[time_stamp()]]WARNING: [msg]")
 	GLOB.STUI.processing |= STUI_LOG_DEBUG
 //print a testing-mode debug message to world.log
 /proc/testing(msg)
-	world.log << "## TESTING: [msg][log_end]"
+	world.log << "## TESTING: [msg][GLOB.log_end]"
 	GLOB.STUI.debug.Add("\[[time_stamp()]]TESTING: [msg]")
 	GLOB.STUI.processing |= STUI_LOG_DEBUG
 
 /proc/log_admin(text)
-	admin_log.Add(text)
+	GLOB.admin_log.Add(text)
 	if (CONFIG_GET(flag/log_admin))
-		diary << "\[[time_stamp()]]ADMIN: [text][log_end]"
+		GLOB.diary << "\[[time_stamp()]]ADMIN: [text][GLOB.log_end]"
 	GLOB.STUI.admin.Add("\[[time_stamp()]]ADMIN: [text]")
 	GLOB.STUI.processing |= STUI_LOG_ADMIN
 
 /proc/log_asset(text)
-	asset_log.Add(text)
+	GLOB.asset_log.Add(text)
 	if (CONFIG_GET(flag/log_asset))
-		diary << "\[[time_stamp()]]ADMIN: [text][log_end]"
+		GLOB.diary << "\[[time_stamp()]]ADMIN: [text][GLOB.log_end]"
 
 /proc/log_adminpm(text)
-	admin_log.Add(text)
+	GLOB.admin_log.Add(text)
 	if (CONFIG_GET(flag/log_admin))
-		diary << "\[[time_stamp()]]ADMIN: [text][log_end]"
+		GLOB.diary << "\[[time_stamp()]]ADMIN: [text][GLOB.log_end]"
 	GLOB.STUI.staff.Add("\[[time_stamp()]]ADMIN: [text]")
 	GLOB.STUI.processing |= STUI_LOG_STAFF_CHAT
 
@@ -53,7 +52,7 @@
 
 /proc/log_debug(text, diary_only=FALSE)
 	if (CONFIG_GET(flag/log_debug))
-		diary << "\[[time_stamp()]]DEBUG: [text][log_end]"
+		GLOB.diary << "\[[time_stamp()]]DEBUG: [text][GLOB.log_end]"
 
 	if(diary_only)
 		return
@@ -67,13 +66,13 @@
 
 /proc/log_game(text)
 	if (CONFIG_GET(flag/log_game))
-		diary << html_decode("\[[time_stamp()]]GAME: [text][log_end]")
+		GLOB.diary << html_decode("\[[time_stamp()]]GAME: [text][GLOB.log_end]")
 	GLOB.STUI.admin.Add("\[[time_stamp()]]GAME: [text]")
 	GLOB.STUI.processing |= STUI_LOG_ADMIN
 
 /proc/log_interact(var/mob/living/carbon/origin, var/mob/living/carbon/target, var/msg)
 	if (CONFIG_GET(flag/log_interact))
-		diary << html_decode("\[[time_stamp()]]INTERACT: [msg][log_end]")
+		GLOB.diary << html_decode("\[[time_stamp()]]INTERACT: [msg][GLOB.log_end]")
 	origin.attack_log += "\[[time_stamp()]\]<font color='green'> [msg] </font>"
 	target.attack_log += "\[[time_stamp()]\]<font color='green'> [msg] </font>"
 
@@ -83,88 +82,88 @@
 
 /proc/log_overwatch(text)
 	if (CONFIG_GET(flag/log_overwatch))
-		diary << html_decode("\[[time_stamp()]]OVERWATCH: [text][log_end]")
+		GLOB.diary << html_decode("\[[time_stamp()]]OVERWATCH: [text][GLOB.log_end]")
 	GLOB.STUI.admin.Add("\[[time_stamp()]]OVERWATCH: [text]")
 	GLOB.STUI.processing |= STUI_LOG_ADMIN
 
 /proc/log_idmod(var/obj/item/card/id/target_id, var/msg)
 	if (CONFIG_GET(flag/log_idmod))
-		diary << html_decode("\[[time_stamp()]]ID MOD: [msg][log_end]")
+		GLOB.diary << html_decode("\[[time_stamp()]]ID MOD: [msg][GLOB.log_end]")
 	target_id.modification_log += "\[[time_stamp()]]: [msg]"
 
 /proc/log_vote(text)
 	if (CONFIG_GET(flag/log_vote))
-		diary << html_decode("\[[time_stamp()]]VOTE: [text][log_end]")
+		GLOB.diary << html_decode("\[[time_stamp()]]VOTE: [text][GLOB.log_end]")
 
 /proc/log_access(text)
 	if (CONFIG_GET(flag/log_access))
-		diary << html_decode("\[[time_stamp()]]ACCESS: [text][log_end]")
+		GLOB.diary << html_decode("\[[time_stamp()]]ACCESS: [text][GLOB.log_end]")
 	GLOB.STUI.debug.Add("\[[time_stamp()]]ACCESS: [text]")
 	GLOB.STUI.processing |= STUI_LOG_DEBUG
 
 /proc/log_say(text)
 	if (CONFIG_GET(flag/log_say))
-		diary << html_decode("\[[time_stamp()]]SAY: [text][log_end]")
+		GLOB.diary << html_decode("\[[time_stamp()]]SAY: [text][GLOB.log_end]")
 	GLOB.STUI.game.Add("\[[time_stamp()]]SAY: [text]")
 	GLOB.STUI.processing |= STUI_LOG_GAME_CHAT
 
 /proc/log_hivemind(text)
 	if (CONFIG_GET(flag/log_hivemind))
-		diary << html_decode("\[[time_stamp()]]HIVEMIND: [text][log_end]")
+		GLOB.diary << html_decode("\[[time_stamp()]]HIVEMIND: [text][GLOB.log_end]")
 	GLOB.STUI.game.Add("\[[time_stamp()]]HIVEMIND: [text]")
 	GLOB.STUI.processing |= STUI_LOG_GAME_CHAT
 
 /proc/log_ooc(text)
 	if (CONFIG_GET(flag/log_ooc))
-		diary << html_decode("\[[time_stamp()]]OOC: [text][log_end]")
+		GLOB.diary << html_decode("\[[time_stamp()]]OOC: [text][GLOB.log_end]")
 
 /proc/log_whisper(text)
 	if (CONFIG_GET(flag/log_whisper))
-		diary << html_decode("\[[time_stamp()]]WHISPER: [text][log_end]")
+		GLOB.diary << html_decode("\[[time_stamp()]]WHISPER: [text][GLOB.log_end]")
 	GLOB.STUI.game.Add("\[[time_stamp()]]WHISPER: [text]")
 	GLOB.STUI.processing |= STUI_LOG_GAME_CHAT
 
 /proc/log_emote(text)
 	if (CONFIG_GET(flag/log_emote))
-		diary << html_decode("\[[time_stamp()]]EMOTE: [text][log_end]")
+		GLOB.diary << html_decode("\[[time_stamp()]]EMOTE: [text][GLOB.log_end]")
 	GLOB.STUI.game.Add("\[[time_stamp()]]<font color='#999999'>EMOTE: [text]</font>")
 	GLOB.STUI.processing |= STUI_LOG_GAME_CHAT
 
 /proc/log_attack(text)
 	if (CONFIG_GET(flag/log_attack))
-		diary << html_decode("\[[time_stamp()]]ATTACK: [text][log_end]")
+		GLOB.diary << html_decode("\[[time_stamp()]]ATTACK: [text][GLOB.log_end]")
 	GLOB.STUI.attack.Add("\[[time_stamp()]]ATTACK: [text]")
 	GLOB.STUI.processing |= STUI_LOG_ATTACK
 
 /proc/log_adminsay(text)
 	if (CONFIG_GET(flag/log_adminchat))
-		diary << html_decode("\[[time_stamp()]]ADMINSAY: [text][log_end]")
+		GLOB.diary << html_decode("\[[time_stamp()]]ADMINSAY: [text][GLOB.log_end]")
 
 /proc/log_adminwarn(text)
 	if (CONFIG_GET(flag/log_adminwarn))
-		diary << html_decode("\[[time_stamp()]]ADMINWARN: [text][log_end]")
+		GLOB.diary << html_decode("\[[time_stamp()]]ADMINWARN: [text][GLOB.log_end]")
 	GLOB.STUI.admin.Add("\[[time_stamp()]]ADMIN: [text]")
 	GLOB.STUI.processing |= STUI_LOG_ADMIN
 
 /proc/log_misc(text)
-	diary << html_decode("\[[time_stamp()]]MISC: [text][log_end]")
+	GLOB.diary << html_decode("\[[time_stamp()]]MISC: [text][GLOB.log_end]")
 	GLOB.STUI?.debug.Add("\[[time_stamp()]]MISC: [text]")
 
 /proc/log_mutator(text)
-	if(!mutator_logs)
+	if(!GLOB.mutator_logs)
 		return
-	mutator_logs << text + "[log_end]"
+	GLOB.mutator_logs << text + "[GLOB.log_end]"
 
 /proc/log_hiveorder(text)
-	diary << html_decode("\[[time_stamp()]]HIVE ORDER: [text][log_end]")
+	GLOB.diary << html_decode("\[[time_stamp()]]HIVE ORDER: [text][GLOB.log_end]")
 	GLOB.STUI.debug.Add("\[[time_stamp()]]HIVE ORDER: [text]")
 
 /proc/log_announcement(text)
-	diary << html_decode("\[[time_stamp()]]ANNOUNCEMENT: [text][log_end]")
+	GLOB.diary << html_decode("\[[time_stamp()]]ANNOUNCEMENT: [text][GLOB.log_end]")
 	GLOB.STUI.admin.Add("\[[time_stamp()]]ANNOUNCEMENT: [text]")
 
 /proc/log_mhelp(text)
-	diary << html_decode("\[[time_stamp()]]MENTORHELP: [text][log_end]")
+	GLOB.diary << html_decode("\[[time_stamp()]]MENTORHELP: [text][GLOB.log_end]")
 	GLOB.STUI.admin.Add("\[[time_stamp()]]MENTORHELP: [text]")
 
 /**
@@ -197,7 +196,7 @@
 	// Insert message
 	if(message)
 		entry += "\n[message]"
-	diary << html_decode("\[[time_stamp()]]TGUI: [entry][log_end]")
+	GLOB.diary << html_decode("\[[time_stamp()]]TGUI: [entry][GLOB.log_end]")
 	GLOB.STUI.tgui.Add("\[[time_stamp()]]TGUI: [entry]")
 	GLOB.STUI.processing |= STUI_LOG_TGUI
 

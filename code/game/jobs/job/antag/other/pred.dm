@@ -41,7 +41,7 @@
 
 	player.clan_info.sync() // pause here might be problematic, we'll see. If DB dies, then we're fucked
 
-	var/rank = clan_ranks[player.clan_info.clan_rank]
+	var/rank = GLOB.clan_ranks[player.clan_info.clan_rank]
 
 	if(!rank)
 		return CLAN_RANK_BLOODED

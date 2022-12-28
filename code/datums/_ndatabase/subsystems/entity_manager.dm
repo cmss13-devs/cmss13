@@ -19,7 +19,7 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
-var/datum/controller/subsystem/entity_manager/SSentity_manager
+GLOBAL_DATUM(SSentity_manager, /datum/controller/subsystem/entity_manager)
 
 /datum/controller/subsystem/entity_manager
 	name          = "Entity Manager"
@@ -62,12 +62,12 @@ var/datum/controller/subsystem/entity_manager/SSentity_manager
 	views = list()
 	views_unsorted = list()
 
-	NEW_SS_GLOBAL(SSentity_manager)
+	NEW_SS_GLOBAL(GLOB.SSentity_manager)
 
 /datum/controller/subsystem/entity_manager/Initialize()
 	set waitfor=0
-	UNTIL(SSdatabase.connection.connection_ready())
-	adapter = SSdatabase.connection.get_adapter()
+	UNTIL(GLOB.SSdatabase.connection.connection_ready())
+	adapter = GLOB.SSdatabase.connection.get_adapter()
 	prepare_tables()
 
 	var/list/all_views = typesof(/datum/entity_view_meta) - list(/datum/entity_view_meta)
@@ -97,7 +97,7 @@ var/datum/controller/subsystem/entity_manager/SSentity_manager
 /datum/controller/subsystem/entity_manager/fire(resumed = FALSE)
 	if (!resumed)
 		currentrun = tables_unsorted.Copy()
-	if(!SSdatabase.connection.connection_ready())
+	if(!GLOB.SSdatabase.connection.connection_ready())
 		return
 	while (currentrun.len)
 		var/datum/entity_meta/Q = currentrun[currentrun.len]

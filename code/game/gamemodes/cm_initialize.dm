@@ -97,7 +97,7 @@ Additional game mode variables.
 
 
 /datum/game_mode/proc/get_roles_list()
-	return ROLES_REGULAR_ALL
+	return GLOB.ROLES_REGULAR_ALL
 
 //===================================================\\
 
@@ -106,16 +106,16 @@ Additional game mode variables.
 //===================================================\\
 
 /datum/game_mode/proc/initialize_special_clamps()
-	xeno_starting_num = clamp((readied_players/CONFIG_GET(number/xeno_number_divider)), xeno_required_num, INFINITY) //(n, minimum, maximum)
-	surv_starting_num = clamp((readied_players/CONFIG_GET(number/surv_number_divider)), 2, 8) //this doesnt run
+	xeno_starting_num = clamp((GLOB.readied_players/CONFIG_GET(number/xeno_number_divider)), xeno_required_num, INFINITY) //(n, minimum, maximum)
+	surv_starting_num = clamp((GLOB.readied_players/CONFIG_GET(number/surv_number_divider)), 2, 8) //this doesnt run
 	marine_starting_num = GLOB.player_list.len - xeno_starting_num - surv_starting_num
-	for(var/datum/squad/sq in RoleAuthority.squads)
+	for(var/datum/squad/sq in GLOB.RoleAuthority.squads)
 		if(sq)
 			sq.max_engineers = engi_slot_formula(marine_starting_num)
 			sq.max_medics = medic_slot_formula(marine_starting_num)
 
-	for(var/i in RoleAuthority.roles_by_name)
-		var/datum/job/J = RoleAuthority.roles_by_name[i]
+	for(var/i in GLOB.RoleAuthority.roles_by_name)
+		var/datum/job/J = GLOB.RoleAuthority.roles_by_name[i]
 		if(J.scaled)
 			J.set_spawn_positions(marine_starting_num)
 
@@ -146,7 +146,7 @@ Additional game mode variables.
 		else
 			if(!istype(player,/mob/dead)) continue //Otherwise we just want to grab the ghosts.
 
-		if(RoleAuthority.roles_whitelist[player.ckey] & WHITELIST_PREDATOR)  //Are they whitelisted?
+		if(GLOB.RoleAuthority.roles_whitelist[player.ckey] & WHITELIST_PREDATOR)  //Are they whitelisted?
 			if(!player.client.prefs)
 				player.client.prefs = new /datum/preferences(player.client) //Somehow they don't have one.
 
@@ -173,16 +173,16 @@ Additional game mode variables.
 	if(!pred_candidate.client)
 		return
 
-	var/datum/job/J = RoleAuthority.roles_by_name[JOB_PREDATOR]
+	var/datum/job/J = GLOB.RoleAuthority.roles_by_name[JOB_PREDATOR]
 
 	if(!J)
 		if(show_warning) to_chat(pred_candidate, SPAN_WARNING("Something went wrong!"))
 		return
 
-	if(show_warning && alert(pred_candidate, "Confirm joining the hunt. You will join as \a [lowertext(J.get_whitelist_status(RoleAuthority.roles_whitelist, pred_candidate.client))] predator", "Confirmation", "Yes", "No") != "Yes")
+	if(show_warning && alert(pred_candidate, "Confirm joining the hunt. You will join as \a [lowertext(J.get_whitelist_status(GLOB.RoleAuthority.roles_whitelist, pred_candidate.client))] predator", "Confirmation", "Yes", "No") != "Yes")
 		return
 
-	if(!(RoleAuthority.roles_whitelist[pred_candidate.ckey] & WHITELIST_PREDATOR))
+	if(!(GLOB.RoleAuthority.roles_whitelist[pred_candidate.ckey] & WHITELIST_PREDATOR))
 		if(show_warning) to_chat(pred_candidate, SPAN_WARNING("You are not whitelisted! You may apply on the forums to be whitelisted as a predator."))
 		return
 
@@ -195,7 +195,7 @@ Additional game mode variables.
 			to_chat(pred_candidate, SPAN_WARNING("You already were a Yautja! Give someone else a chance."))
 		return
 
-	if(J.get_whitelist_status(RoleAuthority.roles_whitelist, pred_candidate.client) == WHITELIST_NORMAL)
+	if(J.get_whitelist_status(GLOB.RoleAuthority.roles_whitelist, pred_candidate.client) == WHITELIST_NORMAL)
 		var/pred_max = calculate_pred_max
 		if(pred_current_num >= pred_max)
 			if(show_warning) to_chat(pred_candidate, SPAN_WARNING("Only [pred_max] predators may spawn this round, but Elders and Leaders do not count."))
@@ -230,13 +230,13 @@ Additional game mode variables.
 	pred_candidate.mind.transfer_to(new_predator, TRUE)
 	new_predator.client = pred_candidate.client
 
-	var/datum/job/J = RoleAuthority.roles_by_name[JOB_PREDATOR]
+	var/datum/job/J = GLOB.RoleAuthority.roles_by_name[JOB_PREDATOR]
 
 	if(!J)
 		qdel(new_predator)
 		return
 
-	RoleAuthority.equip_role(new_predator, J, new_predator.loc)
+	GLOB.RoleAuthority.equip_role(new_predator, J, new_predator.loc)
 
 	return new_predator
 
@@ -477,7 +477,7 @@ Additional game mode variables.
 	// Let the round recorder know that the key has changed
 	SSround_recording.recorder.update_key(new_xeno)
 	if(new_xeno.client)
-		new_xeno.client.change_view(world_view_size)
+		new_xeno.client.change_view(GLOB.world_view_size)
 
 	msg_admin_niche("[new_xeno.key] has joined as [new_xeno].")
 	if(isXeno(new_xeno)) //Dear lord
@@ -726,7 +726,7 @@ Additional game mode variables.
 		CVS.populate_product_list_and_boxes(scale)
 
 	//Scale the amount of cargo points through a direct multiplier
-	supply_controller.points = round(supply_controller.points * scale)
+	GLOB.supply_controller.points = round(GLOB.supply_controller.points * scale)
 
 /datum/game_mode/proc/get_scaling_value()
 	//We take the number of marine players, deduced from other lists, and then get a scale multiplier from it, to be used in arbitrary manners to distribute equipment

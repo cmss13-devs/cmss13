@@ -28,13 +28,13 @@
 		amount = oldamount - 1
 	cause_data = new_cause_data
 	time_to_live += rand(-1,1)
-	active_smoke_effects += src
+	GLOB.active_smoke_effects += src
 
 /obj/effect/particle_effect/smoke/Destroy()
 	. = ..()
 	if(opacity)
 		SetOpacity(0)
-	active_smoke_effects -= src
+	GLOB.active_smoke_effects -= src
 	cause_data = null
 
 /obj/effect/particle_effect/smoke/initialize_pass_flags(var/datum/pass_flags_container/PF)
@@ -76,7 +76,7 @@
 	if(QDELETED(src)) return
 	var/turf/U = get_turf(src)
 	if(!U) return
-	for(var/i in cardinal)
+	for(var/i in GLOB.cardinal)
 		if(direction && i != direction)
 			continue
 		var/turf/T = get_step(U, i)
@@ -89,7 +89,7 @@
 			else
 				continue
 		var/obj/effect/particle_effect/smoke/S = new type(T, amount, cause_data)
-		S.setDir(pick(cardinal))
+		S.setDir(pick(GLOB.cardinal))
 		S.time_to_live = time_to_live
 		if(S.amount>0)
 			S.spread_smoke()
@@ -441,7 +441,7 @@
 	if(QDELETED(src)) return
 	var/turf/U = get_turf(src)
 	if(!U) return
-	for(var/i in cardinal)
+	for(var/i in GLOB.cardinal)
 		if(direction && i != direction)
 			continue
 		var/turf/T = get_step(U, i)
@@ -462,7 +462,7 @@
 			if(istype(A, /obj/flamer_fire))
 				qdel(A)
 
-		S.setDir(pick(cardinal))
+		S.setDir(pick(GLOB.cardinal))
 		S.time_to_live = time_to_live
 		if(S.amount>0)
 			S.spread_smoke()

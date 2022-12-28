@@ -1,4 +1,4 @@
-var/obj/structure/anti_air_cannon/almayer_aa_cannon
+GLOBAL_DATUM(almayer_aa_cannon, /obj/structure/anti_air_cannon)
 
 /obj/structure/anti_air_cannon
 	name = "\improper IX-50 MGAD Cannon"
@@ -20,8 +20,8 @@ var/obj/structure/anti_air_cannon/almayer_aa_cannon
 
 /obj/structure/anti_air_cannon/New()
 	. = ..()
-	if(!almayer_aa_cannon)
-		almayer_aa_cannon = src
+	if(!GLOB.almayer_aa_cannon)
+		GLOB.almayer_aa_cannon = src
 
 /obj/structure/anti_air_cannon/ex_act()
 	return
@@ -71,7 +71,7 @@ var/obj/structure/anti_air_cannon/almayer_aa_cannon
 
 	data["sections"] = list()
 
-	for(var/section in almayer_ship_sections)
+	for(var/section in GLOB.almayer_ship_sections)
 		data["sections"] += list(list(
 			"section_id" = section,
 		))
@@ -81,8 +81,8 @@ var/obj/structure/anti_air_cannon/almayer_aa_cannon
 /obj/structure/machinery/computer/aa_console/ui_data(mob/user)
 	var/list/data = list()
 
-	data["disabled"] = almayer_aa_cannon.is_disabled
-	data["protecting_section"] = almayer_aa_cannon.protecting_section
+	data["disabled"] = GLOB.almayer_aa_cannon.is_disabled
+	data["protecting_section"] = GLOB.almayer_aa_cannon.protecting_section
 
 	return data
 
@@ -91,19 +91,19 @@ var/obj/structure/anti_air_cannon/almayer_aa_cannon
 	if(.)
 		return
 
-	if(!almayer_aa_cannon)
+	if(!GLOB.almayer_aa_cannon)
 		return
 
 	switch(action)
 		if("protect")
-			almayer_aa_cannon.protecting_section = params["section_id"]
-			if(!(almayer_aa_cannon.protecting_section in almayer_ship_sections))
-				almayer_aa_cannon.protecting_section = ""
+			GLOB.almayer_aa_cannon.protecting_section = params["section_id"]
+			if(!(GLOB.almayer_aa_cannon.protecting_section in GLOB.almayer_ship_sections))
+				GLOB.almayer_aa_cannon.protecting_section = ""
 				return
-			message_staff("[key_name(usr)] has set the AA to [html_encode(almayer_aa_cannon.protecting_section)].")
+			message_staff("[key_name(usr)] has set the AA to [html_encode(GLOB.almayer_aa_cannon.protecting_section)].")
 			. = TRUE
 		if("deactivate")
-			almayer_aa_cannon.protecting_section = ""
+			GLOB.almayer_aa_cannon.protecting_section = ""
 			message_staff("[key_name(usr)] has deactivated the AA cannon.")
 			. = TRUE
 

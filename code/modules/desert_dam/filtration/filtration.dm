@@ -18,7 +18,7 @@
 
 	New()
 		..()
-		dir  = pick(CARDINAL_DIRS)
+		dir  = pick(GLOB.cardinal_DIRS)
 
 	attack_hand(mob/M)
 		to_chat(M, SPAN_NOTICE("You peer through the fog, but it's impossible to tell what's on the other side..."))
@@ -219,7 +219,7 @@ var/global/east_riverstart = 0
 	if(dispersing || !toxic)
 		return
 
-	for(var/direction in alldirs)
+	for(var/direction in GLOB.alldirs)
 		if(direction == from_dir) continue //doesn't check backwards
 
 		var/effective_spread_delay
@@ -303,7 +303,7 @@ var/global/east_riverstart = 0
 	//var/area/A = get_area(src)
 	//A.ambience_exterior = 'sound/ambience/ambiatm1.ogg'
 
-	for(var/obj/structure/machinery/dispersal_initiator/M in machines)
+	for(var/obj/structure/machinery/dispersal_initiator/M in GLOB.machines)
 		if (M.id == src.id)
 			M.initiate()
 

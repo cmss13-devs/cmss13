@@ -37,7 +37,7 @@
 	if(stat == DEAD)
 		return FALSE
 	icon_state = "hydra-off"
-	addtimer(CALLBACK(GLOBAL_PROC, .proc/explosion, loc, -1, 0, 8, 12), 2 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, PROC_REF(explosion), loc, -1, 0, 8, 12), 2 SECONDS)
 	return ..()
 
 /mob/living/silicon/decoy/say(message, new_sound) //General communication across the ship.

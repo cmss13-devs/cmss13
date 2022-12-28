@@ -112,7 +112,7 @@
 
 		observed_xeno.hud_set_queen_overwatch()
 		SEND_SIGNAL(src, COMSIG_XENO_OVERWATCH_XENO, observed_xeno)
-		RegisterSignal(src, COMSIG_MOB_MOVE_OR_LOOK, .proc/overwatch_handle_mob_move_or_look)
+		RegisterSignal(src, COMSIG_MOB_MOVE_OR_LOOK, PROC_REF(overwatch_handle_mob_move_or_look))
 
 	src.reset_view()
 

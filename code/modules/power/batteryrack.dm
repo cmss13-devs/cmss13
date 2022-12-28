@@ -154,7 +154,7 @@
 	if (outputting)
 		overlays += image('icons/obj/structures/machinery/power.dmi', "gsmes_outputting")
 	if(inputting)
-		overlays += image('icons/obj/structures/machinery/power.dmi', "gsmes_inputting")
+		overlays += image('icons/obj/structures/machinery/power.dmi', "gsmes_charging")
 	if (overcharge_percent > 100)
 		overlays += image('icons/obj/structures/machinery/power.dmi', "gsmes_overcharge")
 	else

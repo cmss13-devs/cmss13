@@ -1,5 +1,5 @@
 // All mobs should have custom emote, really..
-/mob/proc/custom_emote(var/m_type=1,var/message = null, player_caused, var/nolog = 0)
+/mob/proc/custom_emote(var/m_type = SHOW_MESSAGE_VISIBLE, var/message = null, player_caused, var/nolog = 0)
 	var/comm_paygrade = ""
 	if(stat || (!use_me && player_caused))
 		if(player_caused)
@@ -41,7 +41,7 @@
 
 
 		// Type 1 (Visual) emotes are sent to anyone in view of the item
-		if(m_type & 1)
+		if(m_type & SHOW_MESSAGE_VISIBLE)
 			var/list/viewers = get_mobs_in_view(7, src)
 			for (var/mob/O in viewers(src, null))
 				if(O.status_flags & PASSEMOTES)
@@ -62,7 +62,7 @@
 
 		// Type 2 (Audible) emotes are sent to anyone in hear range
 		// of the *LOCATION* -- this is important for pAIs to be heard
-		else if(m_type & 2)
+		else if(m_type & SHOW_MESSAGE_AUDIBLE)
 			var/list/hearers = get_mobs_in_view(7, src)
 			hearers.Add(src)
 			for (var/mob/O in hearers(get_turf(src), null))
@@ -106,20 +106,30 @@
 	else
 		return
 
-
+	var/turf/my_turf = get_turf(src)
+	var/list/mob/langchat_listeners = list()
 	if(message)
-		log_emote("Ghost/[src.key] : [message]")
+		log_emote("DEAD/[key_name(src)] : [message]")
 		for(var/mob/M in GLOB.player_list)
 			if(istype(M, /mob/new_player))
 				continue
+			if(!(M?.client?.prefs?.toggles_chat & CHAT_DEAD))
+				continue
 
-			if(M.client && M.client.admin_holder && AHOLD_IS_MOD(M.client.admin_holder) && (M.client.prefs.toggles_chat & CHAT_DEAD)) // Show the emote to admins/mods
+			if(isobserver(M) && !orbiting)
+				var/mob/dead/observer/observer = M
+				var/turf/their_turf = get_turf(M)
+				if(alpha && observer.ghostvision && my_turf.z == their_turf.z && get_dist(my_turf, their_turf) <= observer.client.view)
+					langchat_listeners += observer
+
+			if(M.stat == DEAD)
+				M.show_message(message, SHOW_MESSAGE_AUDIBLE)
+
+			else if(M.client.admin_holder && AHOLD_IS_MOD(M.client.admin_holder)) // Show the emote to admins/mods
 				to_chat(M, message)
 
-			else if(M.stat == DEAD || isobserver(M))
-				if(M.client.prefs && !(M.client.prefs.toggles_chat & CHAT_DEAD))
-					continue
-				M.show_message(message, 2)
+		if(length(langchat_listeners))
+			langchat_speech(input, langchat_listeners, GLOB.all_languages, skip_language_check = TRUE, additional_styles = list("emote", "langchat_small"))
 
 /mob/living/carbon/verb/show_emotes()
 	set name = "Emotes"

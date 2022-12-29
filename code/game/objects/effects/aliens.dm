@@ -115,7 +115,7 @@
 					continue
 
 				apply_spray(M)
-				M.apply_armoured_damage(damage_amount, ARMOR_BIO, BURN) // Deal extra damage when first placing ourselves down.
+				M.apply_armoured_damage(damage_amount * XVX_ACID_DAMAGEMULT, ARMOR_BIO, BURN) // Deal extra damage when first placing ourselves down.
 
 			continue
 
@@ -125,7 +125,7 @@
 			continue
 
 	START_PROCESSING(SSobj, src)
-	addtimer(CALLBACK(src, .proc/die), time_to_live)
+	addtimer(CALLBACK(src, PROC_REF(die)), time_to_live)
 	animate(src, time_to_live, alpha = 128)
 
 /obj/effect/xenomorph/spray/Destroy()
@@ -165,14 +165,14 @@
 		if(ishuman(H))
 			H.emote("pain")
 			if(should_stun)
-				H.apply_effect(stun_duration, WEAKEN)
+				H.KnockDown(stun_duration)
 			H.apply_armoured_damage(damage_amount * 0.4, ARMOR_BIO, BURN, "l_foot")
 			H.apply_armoured_damage(damage_amount * 0.4, ARMOR_BIO, BURN, "r_foot")
 
 		else if (isXeno(H))
 			var/mob/living/carbon/Xenomorph/X = H
 			if (X.mob_size < MOB_SIZE_BIG && should_stun)
-				X.apply_effect(stun_duration, WEAKEN)
+				X.KnockDown(stun_duration)
 			X.emote("hiss")
 			H.apply_armoured_damage(damage_amount * 0.4 * XVX_ACID_DAMAGEMULT, ARMOR_BIO, BURN)
 
@@ -193,7 +193,42 @@
 	fire_level_to_extinguish = 6
 	time_to_live = 6
 
-	var/bonus_damage = 5
+	var/bonus_damage = 25
+
+/obj/effect/xenomorph/spray/weak/apply_spray(mob/living/carbon/carbone)
+	if(ishuman(carbone))
+		var/mob/living/carbon/human/hooman = carbone
+
+		var/damage = damage_amount
+
+		var/buffed_splash = FALSE
+		var/datum/effects/acid/acid_effect = locate() in hooman.effects_list
+		if(acid_effect && acid_effect.acid_enhanced == FALSE) // can't stack the bonus every splash. thatd be nuts!
+			buffed_splash = TRUE
+			damage += bonus_damage
+
+			acid_effect.enhance_acid()
+
+		var/datum/effects/weak_spray_stack/spray_stack = locate() in hooman.effects_list
+		if(!spray_stack)
+			spray_stack = new /datum/effects/weak_spray_stack(hooman)
+		spray_stack.hit_count++
+		damage /= spray_stack.hit_count //less damage every hit
+
+		to_chat(hooman, SPAN_DANGER("Your legs scald and burn! Argh!"))
+		hooman.emote(pick("scream", "pain"))
+		if (buffed_splash)
+			hooman.KnockDown(stun_duration)
+			to_chat(hooman, SPAN_HIGHDANGER("The acid coating on you starts bubbling and sizzling wildly!"))
+		hooman.last_damage_data = cause_data
+		hooman.apply_armoured_damage(damage * 0.25, ARMOR_BIO, BURN, "l_foot", 20)
+		hooman.apply_armoured_damage(damage * 0.25, ARMOR_BIO, BURN, "r_foot", 20)
+		hooman.apply_armoured_damage(damage * 0.25, ARMOR_BIO, BURN, "l_leg", 20)
+		hooman.apply_armoured_damage(damage * 0.25, ARMOR_BIO, BURN, "r_leg", 20)
+		hooman.UpdateDamageIcon()
+		hooman.updatehealth()
+	else if (isXeno(carbone))
+		..(carbone, FALSE)
 
 /obj/effect/xenomorph/spray/strong
 	name = "strong splatter"
@@ -209,32 +244,6 @@
 /obj/effect/xenomorph/spray/strong/no_stun
 	stun_duration = 0
 
-/obj/effect/xenomorph/spray/weak/apply_spray(mob/living/carbon/M)
-	if(ishuman(M))
-		var/mob/living/carbon/human/H = M
-
-		var/damage = damage_amount
-
-		var/should_stun = FALSE
-		for (var/datum/effects/acid/A in H.effects_list)
-			should_stun = TRUE
-			damage += (-1*(A.duration - A.original_duration))*(A.damage_in_total_human/A.original_duration)
-			damage += bonus_damage
-
-			qdel(A)
-			break
-
-		to_chat(H, SPAN_DANGER("Your feet scald and burn! Argh!"))
-		H.emote("pain")
-		if (should_stun && !H.lying)
-			H.apply_effect(stun_duration, WEAKEN)
-		H.last_damage_data = cause_data
-		H.apply_armoured_damage(damage_amount * 0.5, ARMOR_BIO, BURN, "l_foot", 50)
-		H.apply_armoured_damage(damage_amount * 0.5, ARMOR_BIO, BURN, "r_foot", 50)
-		H.UpdateDamageIcon()
-		H.updatehealth()
-	else if (isXeno(M))
-		..(M, FALSE)
 
 /obj/effect/xenomorph/spray/praetorian
 	name = "splatter"
@@ -398,8 +407,8 @@
 	else
 		qdel(src)
 
-	addtimer(CALLBACK(src, .proc/damage_mobs), time_before_damage)
-	addtimer(CALLBACK(src, .proc/make_smoke), time_before_smoke)
+	addtimer(CALLBACK(src, PROC_REF(damage_mobs)), time_before_damage)
+	addtimer(CALLBACK(src, PROC_REF(make_smoke)), time_before_smoke)
 
 /obj/effect/xenomorph/boiler_bombard/proc/damage_mobs()
 	if (!istype(src) || !isturf(loc))
@@ -450,7 +459,7 @@
 	icon_state = "xeno_telegraph_green"
 
 /obj/effect/xenomorph/xeno_telegraph/brown/abduct_hook
-	icon_state = "xeno_telegraph_abduct_hook"
+	icon_state = "xeno_telegraph_abduct_hook_anim"
 
 /obj/effect/xenomorph/xeno_telegraph/brown/lash
 	icon_state = "xeno_telegraph_lash"
@@ -472,7 +481,7 @@
 /obj/effect/xenomorph/acid_damage_delay/New(loc, damage = 20, delay = 10, empowered = FALSE, message = null, mob/living/carbon/Xenomorph/linked_xeno = null)
 	..(loc)
 
-	addtimer(CALLBACK(src, .proc/die), delay)
+	addtimer(CALLBACK(src, PROC_REF(die)), delay)
 	src.damage = damage
 	src.message = message
 	src.linked_xeno = linked_xeno

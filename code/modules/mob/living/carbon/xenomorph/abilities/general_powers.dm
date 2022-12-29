@@ -580,6 +580,9 @@
 	else if(X.hive && X.hive.construction_allowed == XENO_QUEEN && !istype(X.caste, /datum/caste_datum/queen))
 		to_chat(X, SPAN_WARNING("Construction is currently restricted to Queen only!"))
 		return FALSE
+	else if(X.hive && X.hive.construction_allowed == XENO_NOBODY)
+		to_chat(X, SPAN_WARNING("The hive is too weak and fragile to have the strength to design constructions."))
+		return FALSE
 
 	var/turf/T = get_turf(A)
 
@@ -625,10 +628,10 @@
 		return FALSE
 
 	if((choice == XENO_STRUCTURE_CORE) && isXenoQueen(X) && X.hive.has_structure(XENO_STRUCTURE_CORE))
-		if(X.hive.hive_location.hardcore || world.time > HIVECORE_COOLDOWN_CUTOFF)
+		if(X.hive.hive_location.hardcore || world.time > XENOMORPH_PRE_SETUP_CUTOFF)
 			to_chat(X, SPAN_WARNING("You can't rebuild this structure!"))
 			return
-		if(alert(X, "Are you sure that you want to move the hive and destroy the old hive core?", , "Yes", "No") == "No")
+		if(alert(X, "Are you sure that you want to move the hive and destroy the old hive core?", , "Yes", "No") != "Yes")
 			return
 		qdel(X.hive.hive_location)
 	else if(!X.hive.can_build_structure(choice))
@@ -727,11 +730,14 @@
 	var/sound_to_play = pick(1, 2) == 1 ? 'sound/voice/alien_spitacid.ogg' : 'sound/voice/alien_spitacid2.ogg'
 	playsound(X.loc, sound_to_play, 25, 1)
 
+
 	var/obj/item/projectile/P = new /obj/item/projectile(current_turf, create_cause_data(initial(X.caste_type), X))
 	P.generate_bullet(X.ammo)
 	P.permutated += X
 	P.def_zone = X.get_limbzone_target()
 	P.fire_at(A, X, X, X.ammo.max_range, X.ammo.shell_speed)
+
+	SEND_SIGNAL(X, COMSIG_XENO_POST_SPIT)
 
 	apply_cooldown()
 	..()
@@ -789,7 +795,7 @@
 	else if(!T.can_bombard(owner))
 		return
 
-	addtimer(CALLBACK(src, .proc/new_effect, T, owner), 2*(orig_depth - dist_left))
+	addtimer(CALLBACK(src, PROC_REF(new_effect), T, owner), 2*(orig_depth - dist_left))
 
 	for(var/mob/living/L in T)
 		to_chat(L, SPAN_XENOHIGHDANGER("You see a massive ball of acid flying towards you!"))
@@ -916,20 +922,49 @@
 	if(!check_and_use_plasma_owner())
 		return FALSE
 
+	var/result = ability_act(stabbing_xeno, target, limb)
+
+	apply_cooldown()
+	xeno_attack_delay(stabbing_xeno)
+	..()
+	return result
+
+/datum/action/xeno_action/activable/tail_stab/proc/ability_act(var/mob/living/carbon/Xenomorph/stabbing_xeno, var/mob/living/carbon/target, var/obj/limb/limb)
+
 	target.last_damage_data = create_cause_data(initial(stabbing_xeno.caste_type), stabbing_xeno)
+
+	 /// To reset the direction if they haven't moved since then in below callback.
+	var/last_dir = stabbing_xeno.dir
+	 /// Direction var to make the tail stab look cool and immersive.
+	var/stab_direction
+
+	var/stab_overlay
 
 	if(blunt_stab)
 		stabbing_xeno.visible_message(SPAN_XENOWARNING("\The [stabbing_xeno] swipes its tail into [target]'s [limb ? limb.display_name : "chest"], bashing it!"), SPAN_XENOWARNING("You swipe your tail into [target]'s [limb? limb.display_name : "chest"], bashing it!"))
 		playsound(target, "punch", 50, TRUE)
-		stabbing_xeno.emote("tail")
+		// The xeno smashes the target with their tail, moving it to the side and thus their direction as well.
+		stab_direction = turn(stabbing_xeno.dir, pick(90, -90))
+		stab_overlay = "slam"
 	else
 		stabbing_xeno.visible_message(SPAN_XENOWARNING("\The [stabbing_xeno] skewers [target] through the [limb ? limb.display_name : "chest"] with its razor sharp tail!"), SPAN_XENOWARNING("You skewer [target] through the [limb? limb.display_name : "chest"] with your razor sharp tail!"))
 		playsound(target, "alien_bite", 50, TRUE)
+		// The xeno flips around for a second to impale the target with their tail. These look awsome.
+		stab_direction = turn(get_dir(stabbing_xeno, target), 180)
+		stab_overlay = "tail"
+
+	stabbing_xeno.setDir(stab_direction)
+	stabbing_xeno.emote("tail")
+
+	 /// Ditto.
+	var/new_dir = stabbing_xeno.dir
+
+	addtimer(CALLBACK(src, PROC_REF(reset_direction), stabbing_xeno, last_dir, new_dir), 0.5 SECONDS)
 
 	stabbing_xeno.animation_attack_on(target)
-	stabbing_xeno.flick_attack_overlay(target, "tail")
+	stabbing_xeno.flick_attack_overlay(target, stab_overlay)
 
-	var/damage = (stabbing_xeno.melee_damage_upper + stabbing_xeno.frenzy_aura * FRENZY_DAMAGE_MULTIPLIER) * 1.2
+	var/damage = (stabbing_xeno.melee_damage_upper + stabbing_xeno.frenzy_aura * FRENZY_DAMAGE_MULTIPLIER) * TAILSTAB_MOB_DAMAGE_MULTIPLIER
 
 	if(stabbing_xeno.behavior_delegate)
 		stabbing_xeno.behavior_delegate.melee_attack_additional_effects_target(target)
@@ -941,9 +976,9 @@
 	shake_camera(target, 2, 1)
 
 	target.handle_blood_splatter(get_dir(owner.loc, target.loc))
-
-	apply_cooldown()
-	xeno_attack_delay(stabbing_xeno)
-
-	..()
 	return target
+
+/datum/action/xeno_action/activable/tail_stab/proc/reset_direction(var/mob/living/carbon/Xenomorph/stabbing_xeno, var/last_dir, var/new_dir)
+	// If the xenomorph is still holding the same direction as the tail stab animation's changed it to, reset it back to the old direction so the xenomorph isn't stuck facing backwards.
+	if(new_dir == stabbing_xeno.dir)
+		stabbing_xeno.setDir(last_dir)

@@ -26,7 +26,7 @@
 	density = 1
 	layer = BELOW_OBJ_LAYER
 
-	use_power = 1
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 10
 	var/vend_power_usage = 150 //actuators and stuff
 
@@ -102,10 +102,10 @@
 	switch(severity)
 		if(0 to EXPLOSION_THRESHOLD_LOW)
 			if(prob(25))
-				INVOKE_ASYNC(src, .proc/malfunction)
+				INVOKE_ASYNC(src, PROC_REF(malfunction))
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			if(prob(50))
-				INVOKE_ASYNC(src, .proc/malfunction)
+				INVOKE_ASYNC(src, PROC_REF(malfunction))
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
 			deconstruct(FALSE)
 
@@ -606,7 +606,10 @@
 /obj/structure/machinery/vending/proc/release_item(var/datum/data/vending_product/R, var/delay_vending = 0, var/mob/living/carbon/human/user)
 	set waitfor = 0
 
-	ui_interact(user)
+	//We interact with the UI only if a user is present
+	//(This function can be called with no user if the machine gets blown up / malfunctions)
+	if(user)
+		ui_interact(user)
 
 	if (delay_vending)
 		use_power(vend_power_usage)	//actuators and stuff
@@ -721,13 +724,13 @@
 		return
 
 	for(var/mob/O in hearers(src, null))
-		O.show_message("<span class='game say'><span class='name'>[src]</span> beeps, \"[message]\"</span>",2)
+		O.show_message("<span class='game say'><span class='name'>[src]</span> beeps, \"[message]\"</span>", SHOW_MESSAGE_AUDIBLE)
 	return
 
 /obj/structure/machinery/vending/power_change()
 	..()
 	if(stat & NOPOWER)
-		addtimer(CALLBACK(src, .proc/update_icon), rand(1, 15))
+		addtimer(CALLBACK(src, PROC_REF(update_icon)), rand(1, 15))
 		return
 	update_icon()
 

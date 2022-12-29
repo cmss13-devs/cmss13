@@ -70,13 +70,19 @@
 	icon = 'icons/turf/walls/almayer_white.dmi'
 	icon_state = "wwall"
 
+/turf/closed/wall/almayer/white/reinforced
+	name = "reinforced hull"
+	damage_cap = HEALTH_WALL_REINFORCED
+	icon_state = "reinforced"
+
 /turf/closed/wall/almayer/white/outer_tile
 	tiles_with = list(/turf/closed/wall/almayer/white,/turf/closed/wall/almayer/outer)
 
 /turf/closed/wall/almayer/white/hull
-	name = "research hull"
+	name = "ultra reinforced hull"
 	desc = "An extremely reinforced metal wall used to isolate potentially dangerous areas"
 	hull = 1
+	icon_state = "hull"
 
 /turf/closed/wall/almayer/research/can_be_dissolved()
 	return 0
@@ -91,7 +97,6 @@
 /turf/closed/wall/almayer/research/containment/wall/ex_act(severity, explosion_direction)
 	if(severity <= EXPLOSION_THRESHOLD_MEDIUM) // Wall is resistant to explosives (and also crusher charge)
 		return
-
 	. = ..()
 
 /turf/closed/wall/almayer/research/containment/wall/take_damage(dam, mob/M)
@@ -397,9 +402,6 @@
 /turf/closed/wall/mineral/bone/is_weedable()
 	return NOT_WEEDABLE
 
-/turf/closed/wall/mineral/bone/ex_act(severity, explosion_direction, source, mob/source_mob)
-	return
-
 //Misc walls
 
 /turf/closed/wall/cult
@@ -498,9 +500,6 @@
 	walltype = WALL_STRATA_ICE //Not a metal wall
 	hull = 1 //Can't break this ice.
 
-/turf/closed/wall/strata_ice/ex_act(severity)
-	return
-
 /turf/closed/wall/strata_ice/dirty
 	icon_state = "strata_ice_dirty"
 	desc = "Columns and crags stacked atop one another. They defiantly push towards the heavens, but are stopped short by dripping frigid excess."
@@ -549,7 +548,7 @@
 	name = "solaris ridge colony wall"
 	icon = 'icons/turf/walls/solaris/solaris.dmi'
 	icon_state = "solaris_interior"
-	desc = "Tough looking walls that have been blasted by sand since they day they were erected. A testament to human willpower."
+	desc = "Tough looking walls that have been blasted by sand since the day they were erected. A testament to human willpower."
 	walltype = WALL_SOLARIS
 
 /turf/closed/wall/solaris/reinforced
@@ -639,9 +638,6 @@
 	desc = "Slabs on slabs of dirty black ice crusted over ancient rock formations. The permafrost fluctuates between 20in and 12in during the summer months."
 	walltype = WALL_SHIVA_ICE //Not a metal wall
 	hull = 1 //Can't break this ice.
-
-/turf/closed/wall/strata_ice/ex_act(severity)
-	return
 
 /turf/closed/wall/shiva/prefabricated
 	name = "prefabricated structure wall"
@@ -896,9 +892,9 @@
 		set_hive_data(src, hive)
 	recalculate_structure()
 	update_tied_turf(loc)
-	RegisterSignal(src, COMSIG_ATOM_TURF_CHANGE, .proc/update_tied_turf)
-	RegisterSignal(src, COMSIG_MOVABLE_XENO_START_PULLING, .proc/allow_xeno_drag)
-	RegisterSignal(src, COMSIG_MOVABLE_PULLED, .proc/continue_allowing_drag)
+	RegisterSignal(src, COMSIG_ATOM_TURF_CHANGE, PROC_REF(update_tied_turf))
+	RegisterSignal(src, COMSIG_MOVABLE_XENO_START_PULLING, PROC_REF(allow_xeno_drag))
+	RegisterSignal(src, COMSIG_MOVABLE_PULLED, PROC_REF(continue_allowing_drag))
 
 /obj/structure/alien/movable_wall/ex_act(severity, direction)
 	take_damage(severity)
@@ -1015,7 +1011,7 @@
 
 	if(tied_turf)
 		UnregisterSignal(tied_turf, COMSIG_TURF_ENTER)
-	RegisterSignal(T, COMSIG_TURF_ENTER, .proc/check_for_move)
+	RegisterSignal(T, COMSIG_TURF_ENTER, PROC_REF(check_for_move))
 	tied_turf = T
 
 /obj/structure/alien/movable_wall/forceMove(atom/dest)
@@ -1103,17 +1099,18 @@
 		return
 
 	var/obj/item/projectile/new_proj = new(src, construction_data ? construction_data : create_cause_data(initial(name)))
-	new_proj.generate_bullet(P.ammo, special_flags = P.projectile_override_flags|AMMO_HOMING)
+	new_proj.generate_bullet(P.ammo)
 	new_proj.damage = P.damage * reflection_multiplier // don't make it too punishing
 	new_proj.accuracy = HIT_ACCURACY_TIER_7 // 35% chance to hit something
 
 	// Move back to who fired you.
-	RegisterSignal(new_proj, COMSIG_BULLET_PRE_HANDLE_TURF, .proc/bullet_ignore_turf)
+	RegisterSignal(new_proj, COMSIG_BULLET_PRE_HANDLE_TURF, PROC_REF(bullet_ignore_turf))
 	new_proj.permutated |= src
 
 	var/angle = Get_Angle(src, P.firer) + rand(30, -30)
 	var/atom/target = get_angle_target_turf(src, angle, get_dist(src, P.firer))
-	new_proj.fire_at(target, P.firer, src, reflect_range, speed = P.ammo.shell_speed, is_shrapnel = TRUE)
+	new_proj.projectile_flags |= PROJECTILE_SHRAPNEL
+	new_proj.fire_at(target, P.firer, src, reflect_range, speed = P.ammo.shell_speed)
 
 	return TRUE
 
@@ -1227,7 +1224,7 @@
 	if(mapload)
 		ScrapeAway()
 		return
-	addtimer(CALLBACK(src, .proc/ScrapeAway), duration)
+	addtimer(CALLBACK(src, PROC_REF(ScrapeAway)), duration)
 
 
 /turf/closed/wall/resin/can_be_dissolved()
@@ -1240,3 +1237,9 @@
 	icon_state = "metal"//DMI specific name
 	walltype = WALL_HUNTERSHIP
 	hull = 1
+
+/turf/closed/wall/huntership/destructible
+	name = "degraded hunter wall"
+	color = "#c5beb4"
+	desc = "Ancient beyond measure, these walls make up the hull of a vessel of non human origin. Despite this, they can be felled with plastic explosives like any other opaque blocker."
+	hull = 0

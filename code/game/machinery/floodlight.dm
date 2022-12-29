@@ -47,7 +47,7 @@
 			cell.forceMove(loc)
 
 		cell.add_fingerprint(user)
-		cell.updateicon()
+		cell.update_icon()
 
 		src.cell = null
 		to_chat(user, "You remove the power cell.")
@@ -123,13 +123,13 @@
 	on = 1
 	in_use = 1
 	luminosity = 6
-	use_power = 0
+	use_power = USE_POWER_NONE
 
-	attack_hand()
-		return
+/obj/structure/machinery/floodlight/landing/attack_hand()
+	return
 
-	attackby()
-		return
+/obj/structure/machinery/floodlight/landing/attackby()
+	return
 
 /obj/structure/machinery/floodlight/landing/floor
 	icon_state = "floor_flood01"

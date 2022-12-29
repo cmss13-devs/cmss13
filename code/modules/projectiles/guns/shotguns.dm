@@ -119,7 +119,8 @@ can cause issues with ammo types getting mixed up during the burst.
 
 
 /obj/item/weapon/gun/shotgun/reload(mob/user, var/obj/item/ammo_magazine/magazine)
-	if(flags_gun_features & GUN_BURST_FIRING) return
+	if(flags_gun_features & GUN_BURST_FIRING)
+		return
 
 	if(!magazine || !istype(magazine,/obj/item/ammo_magazine/handful)) //Can only reload with handfuls.
 		to_chat(user, SPAN_WARNING("You can't use that to reload!"))
@@ -137,7 +138,8 @@ can cause issues with ammo types getting mixed up during the burst.
 		add_to_tube(user,mag_caliber) //This will check the other conditions.
 
 /obj/item/weapon/gun/shotgun/unload(mob/user)
-	if(flags_gun_features & GUN_BURST_FIRING) return
+	if(flags_gun_features & GUN_BURST_FIRING)
+		return
 	empty_chamber(user)
 
 /obj/item/weapon/gun/shotgun/proc/ready_shotgun_tube()
@@ -498,7 +500,8 @@ can cause issues with ammo types getting mixed up during the burst.
 /obj/item/weapon/gun/shotgun/double/check_chamber_position()
 	if(!current_mag)
 		return
-	if(current_mag.chamber_closed) return
+	if(current_mag.chamber_closed)
+		return
 	return 1
 
 /obj/item/weapon/gun/shotgun/double/add_to_tube(mob/user,selection) //Load it on the go, nothing chambered.
@@ -739,9 +742,9 @@ can cause issues with ammo types getting mixed up during the burst.
 	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 21,"rail_x" = 15, "rail_y" = 22, "under_x" = 21, "under_y" = 16, "stock_x" = 0, "stock_y" = 16)
 
 /obj/item/weapon/gun/shotgun/double/twobore/proc/brace(mob/living/carbon/human/user)
-	RegisterSignal(user, COMSIG_MOVABLE_MOVED, .proc/unbrace, user)
-	RegisterSignal(src, COMSIG_ITEM_DROPPED, .proc/unbrace, user)
-	RegisterSignal(src, COMSIG_ITEM_EQUIPPED, .proc/unbrace, user)
+	RegisterSignal(user, COMSIG_MOVABLE_MOVED, PROC_REF(unbrace), user)
+	RegisterSignal(src, COMSIG_ITEM_DROPPED, PROC_REF(unbrace), user)
+	RegisterSignal(src, COMSIG_ITEM_EQUIPPED, PROC_REF(unbrace), user)
 	braced = TRUE
 
 ///Returns TRUE if the gun was braced.
@@ -833,7 +836,7 @@ can cause issues with ammo types getting mixed up during the burst.
 		shoulder.fracture(100)
 		if(!(shoulder.status & LIMB_SPLINTED_INDESTRUCTIBLE) && (shoulder.status & LIMB_SPLINTED)) //If they have it splinted, the splint won't hold.
 			shoulder.status &= ~LIMB_SPLINTED
-			playsound(get_turf(loc), 'sound/items/splintbreaks.ogg')
+			playsound(get_turf(loc), 'sound/items/splintbreaks.ogg', 20)
 			to_chat(user, SPAN_DANGER("The splint on your [shoulder.display_name] comes apart under the recoil!"))
 			user.pain.apply_pain(PAIN_BONE_BREAK_SPLINTED)
 			user.update_med_icon()
@@ -987,7 +990,8 @@ can cause issues with ammo types getting mixed up during the burst.
 
 //More or less chambers the round instead of load_into_chamber().
 /obj/item/weapon/gun/shotgun/pump/proc/pump_shotgun(mob/user)	//We can't fire bursts with pumps.
-	if(world.time < (recent_pump + pump_delay) ) return //Don't spam it.
+	if(world.time < (recent_pump + pump_delay) )
+		return //Don't spam it.
 	if(pumped)
 		if (world.time > (message + pump_delay))
 			to_chat(usr, SPAN_WARNING("<i>[src] already has a shell in the chamber!<i>"))
@@ -1025,11 +1029,53 @@ can cause issues with ammo types getting mixed up during the burst.
 	return ..()
 
 //-------------------------------------------------------
+
+/obj/item/weapon/gun/shotgun/pump/dual_tube
+	name = "generic dual-tube pump shotgun"
+	desc = "A twenty-round pump action shotgun with dual internal tube magazines. You can switch the active internal magazine by toggling burst fire mode."
+	current_mag = /obj/item/ammo_magazine/internal/shotgun
+	var/obj/item/ammo_magazine/internal/shotgun/primary_tube
+	var/obj/item/ammo_magazine/internal/shotgun/secondary_tube
+
+/obj/item/weapon/gun/shotgun/pump/dual_tube/Initialize(mapload, spawn_empty)
+	. = ..()
+	primary_tube = current_mag
+	secondary_tube = new current_mag.type(src, spawn_empty ? TRUE : FALSE)
+	current_mag = secondary_tube
+	replace_tube(current_mag.current_rounds)
+
+/obj/item/weapon/gun/shotgun/pump/dual_tube/Destroy()
+	QDEL_NULL(primary_tube)
+	QDEL_NULL(secondary_tube)
+	. = ..()
+
+/obj/item/weapon/gun/shotgun/pump/dual_tube/proc/swap_tube(var/mob/user)
+	if(!ishuman(user) || user.is_mob_incapacitated())
+		return FALSE
+	var/obj/item/weapon/gun/shotgun/pump/dual_tube/shotgun = user.get_active_hand()
+	if(shotgun != src)
+		to_chat(user, SPAN_WARNING("You must be holding \the [src] in your active hand to switch the active internal magazine!")) // currently this warning can't show up, but this is incase you get an action button or similar for it instead of current implementation
+		return
+	if(!current_mag)
+		return
+	if(current_mag == primary_tube)
+		current_mag = secondary_tube
+	else
+		current_mag = primary_tube
+	to_chat(user, SPAN_NOTICE("[icon2html(src, user)] You switch \the [src]'s active magazine to the [(current_mag == primary_tube) ? "<b>first</b>" : "<b>second</b>"] magazine."))
+	playsound(src, 'sound/machines/switch.ogg', 15, TRUE)
+	return TRUE
+
+/obj/item/weapon/gun/shotgun/pump/dual_tube/toggle_burst()
+	var/obj/item/weapon/gun/shotgun/pump/dual_tube/shotgun = get_active_firearm(usr)
+	if(shotgun == src)
+		swap_tube(usr)
+
 //SHOTGUN FROM ISOLATION
 
-/obj/item/weapon/gun/shotgun/pump/cmb
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb
 	name = "\improper HG 37-12 pump shotgun"
-	desc = "A eight-round pump action shotgun with dual internal tube magazine allowing for quick reloading and highly accurate fire. Used exclusively by Colonial Marshals."
+	desc = "A eight-round pump action shotgun with four-round capacity dual internal tube magazines allowing for quick reloading and highly accurate fire. Used exclusively by Colonial Marshals. You can switch the active internal magazine by toggling burst fire mode."
 	icon_state = "hg3712"
 	item_state = "hg3712"
 	fire_sound = 'sound/weapons/gun_shotgun_small.ogg'
@@ -1047,16 +1093,15 @@ can cause issues with ammo types getting mixed up during the burst.
 	map_specific_decoration = FALSE
 
 
-/obj/item/weapon/gun/shotgun/pump/cmb/Initialize(mapload, spawn_empty)
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb/Initialize(mapload, spawn_empty)
 	. = ..()
 	pump_delay = FIRE_DELAY_TIER_5*2
 
-
-/obj/item/weapon/gun/shotgun/pump/cmb/set_gun_attachment_offsets()
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 31, "muzzle_y" = 17,"rail_x" = 8, "rail_y" = 21, "under_x" = 22, "under_y" = 15, "stock_x" = 24, "stock_y" = 10)
 
 
-/obj/item/weapon/gun/shotgun/pump/cmb/set_gun_config_values()
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb/set_gun_config_values()
 	..()
 	fire_delay = FIRE_DELAY_TIER_7*4
 	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_3
@@ -1068,9 +1113,9 @@ can cause issues with ammo types getting mixed up during the burst.
 	recoil = RECOIL_AMOUNT_TIER_4
 	recoil_unwielded = RECOIL_AMOUNT_TIER_2
 
-/obj/item/weapon/gun/shotgun/pump/cmb/m3717
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb/m3717
 	name = "\improper M37-17 pump shotgun"
-	desc = "A ten-round pump action shotgun with dual internal tube magazine allowing for quick reloading and highly accurate fire. Issued to select USCM vessels out on the rim."
+	desc = "A ten-round pump action shotgun with five-round capacity dual internal tube magazines allowing for quick reloading and highly accurate fire. Issued to select USCM vessels out on the rim. You can switch the active internal magazine by toggling burst fire mode."
 	icon_state = "m3717"
 	item_state = "m3717"
 	current_mag = /obj/item/ammo_magazine/internal/shotgun/cmb/m3717

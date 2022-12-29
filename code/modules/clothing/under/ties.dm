@@ -138,7 +138,7 @@
 /obj/item/clothing/accessory/medal/on_attached(obj/item/clothing/S, mob/living/user, silent)
 	. = ..()
 	if(.)
-		RegisterSignal(S, COMSIG_ITEM_PICKUP, .proc/remove_medal)
+		RegisterSignal(S, COMSIG_ITEM_PICKUP, PROC_REF(remove_medal))
 
 /obj/item/clothing/accessory/medal/proc/remove_medal(var/obj/item/clothing/C, var/mob/user)
 	SIGNAL_HANDLER
@@ -217,9 +217,9 @@
 
 			if(!H.stat && H.pain.feels_pain)
 				if(prob(35))
-					INVOKE_ASYNC(H, /mob.proc/emote, "pain")
+					INVOKE_ASYNC(H, TYPE_PROC_REF(/mob, emote), "pain")
 				else
-					INVOKE_ASYNC(H, /mob.proc/emote, "me", 1, "winces.")
+					INVOKE_ASYNC(H, TYPE_PROC_REF(/mob, emote), "me", 1, "winces.")
 
 	if(U.can_attach_accessory(src) && user.drop_held_item())
 		U.attach_accessory(H, src, TRUE)
@@ -347,7 +347,7 @@
 	name = "\improper USCM patch"
 	desc = "A fire-resistant shoulder patch, worn by the men and women of the United States Colonial Marines."
 	icon_state = "uscmpatch"
-	jumpsuit_hide_states = (UNIFORM_SLEEVE_ROLLED|UNIFORM_SLEEVE_CUT|UNIFORM_JACKET_REMOVED)
+	jumpsuit_hide_states = (UNIFORM_SLEEVE_CUT|UNIFORM_JACKET_REMOVED)
 
 /obj/item/clothing/accessory/patch/falcon
 	name = "\improper Falling Falcons patch"
@@ -602,7 +602,7 @@
 	icon_state = "unathiharness2"
 	hold = /obj/item/storage/internal/accessory/knifeharness/duelling
 
-obj/item/storage/internal/accessory/knifeharness/duelling
+/obj/item/storage/internal/accessory/knifeharness/duelling
 	storage_slots = 2
 	max_storage_space = 2
 	can_hold = list(
@@ -772,12 +772,13 @@ obj/item/storage/internal/accessory/knifeharness/duelling
 /obj/item/storage/box/holobadge
 	name = "holobadge box"
 	desc = "A box claiming to contain holobadges."
-	New()
-		new /obj/item/clothing/accessory/holobadge(src)
-		new /obj/item/clothing/accessory/holobadge(src)
-		new /obj/item/clothing/accessory/holobadge(src)
-		new /obj/item/clothing/accessory/holobadge(src)
-		new /obj/item/clothing/accessory/holobadge/cord(src)
-		new /obj/item/clothing/accessory/holobadge/cord(src)
-		..()
-		return
+
+/obj/item/storage/box/holobadge/New()
+	new /obj/item/clothing/accessory/holobadge(src)
+	new /obj/item/clothing/accessory/holobadge(src)
+	new /obj/item/clothing/accessory/holobadge(src)
+	new /obj/item/clothing/accessory/holobadge(src)
+	new /obj/item/clothing/accessory/holobadge/cord(src)
+	new /obj/item/clothing/accessory/holobadge/cord(src)
+	..()
+	return

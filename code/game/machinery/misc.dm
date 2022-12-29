@@ -6,7 +6,7 @@
 	density = TRUE
 	anchored = TRUE
 	wrenchable = TRUE
-	use_power = 1
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 40
 
 /obj/structure/machinery/biogenerator/initialize_pass_flags(var/datum/pass_flags_container/PF)
@@ -51,12 +51,12 @@
 	name = "server rack"
 	icon_state = "rackframe"
 
-	update_icon()
-		//overlays.Cut()
-		return
+/obj/structure/machinery/computer3/server/rack/update_icon()
+	//overlays.Cut()
+	return
 
-	attack_hand() // Racks have no screen, only AI can use them
-		return
+/obj/structure/machinery/computer3/server/rack/attack_hand() // Racks have no screen, only AI can use them
+	return
 
 
 /obj/structure/machinery/lapvend
@@ -92,7 +92,7 @@
 	desc = "Nothing is being built."
 	density = TRUE
 	anchored = TRUE
-	use_power = 1
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 20
 	active_power_usage = 5000
 

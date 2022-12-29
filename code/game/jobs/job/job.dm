@@ -148,6 +148,30 @@
 /datum/job/proc/spawn_and_equip(var/mob/new_player/player)
 	CRASH("A job without a set spawn_and_equip proc has handle_spawn_and_equip set to TRUE!")
 
+/datum/job/proc/generate_money_account(mob/living/carbon/human/account_user)
+
+	var/datum/money_account/generated_account
+	//Give them an account in the database.
+	if(!(flags_startup_parameters & ROLE_NO_ACCOUNT))
+		var/obj/item/card/id/card = account_user.wear_id
+		var/user_has_preexisting_account = account_user.mind?.initial_account
+		if(card && !user_has_preexisting_account)
+			var/datum/paygrade/account_paygrade = GLOB.paygrades[card.paygrade]
+			generated_account = create_account(account_user.real_name, rand(30, 50), null, account_paygrade)
+			card.associated_account_number = generated_account.account_number
+			if(account_user.mind)
+				var/remembered_info = ""
+				remembered_info += "<b>Your account number is:</b> #[generated_account.account_number]<br>"
+				remembered_info += "<b>Your account pin is:</b> [generated_account.remote_access_pin]<br>"
+				remembered_info += "<b>Your account funds are:</b> $[generated_account.money]<br>"
+
+				if(generated_account.transaction_log.len)
+					var/datum/transaction/T = generated_account.transaction_log[1]
+					remembered_info += "<b>Your account was created:</b> [T.time], [T.date] at [T.source_terminal]<br>"
+				account_user.mind.store_memory(remembered_info)
+				account_user.mind.initial_account = generated_account
+	return generated_account
+
 /datum/job/proc/generate_entry_message()
 	if(!entry_message_intro)
 		entry_message_intro = "You are the [title]!"
@@ -167,7 +191,7 @@
 			[SPAN_ROLE_BODY("|______________________|")] \n\
 			[SPAN_ROLE_HEADER("You are \a [title_given]")] \n\
 			[flags_startup_parameters & ROLE_ADMIN_NOTIFY ? SPAN_ROLE_HEADER("You are playing a job that is important for game progression. If you have to disconnect, please notify the admins via adminhelp.") : ""] \n\
-			[SPAN_ROLE_BODY("[generate_entry_message(H)]<br>[M ? "Your account number is: <b>[M.account_number]</b>. Your account pin is: <b>[M.remote_access_pin]</b>." : ""]")] \n\
+			[SPAN_ROLE_BODY("[generate_entry_message(H)]<br>[M ? "Your account number is: <b>[M.account_number]</b>. Your account pin is: <b>[M.remote_access_pin]</b>." : "You do not have a bank account."]")] \n\
 			[SPAN_ROLE_BODY("|______________________|")] \
 		"
 		to_chat_spaced(H, html = entrydisplay)
@@ -181,7 +205,7 @@
 //This lets you scale max jobs at runtime
 //All you have to do is rewrite the inheritance
 /datum/job/proc/get_total_positions(var/latejoin)
-	return latejoin ? spawn_positions : total_positions
+	return latejoin ? total_positions : spawn_positions
 
 /datum/job/proc/spawn_in_player(var/mob/new_player/NP)
 	if(!istype(NP))
@@ -203,9 +227,6 @@
 	new_character.name = NP.real_name
 	new_character.voice = NP.real_name
 
-	if(NP.client.prefs.disabilities)
-		new_character.disabilities |= NEARSIGHTED
-
 	if(NP.mind)
 		NP.mind_initialize()
 		NP.mind.transfer_to(new_character, TRUE)
@@ -213,9 +234,9 @@
 
 	// Update the character icons
 	// This is done in set_species when the mob is created as well, but
-	INVOKE_ASYNC(new_character, /mob/living/carbon/human.proc/regenerate_icons)
-	INVOKE_ASYNC(new_character, /mob/living/carbon/human.proc/update_body, 1, 0)
-	INVOKE_ASYNC(new_character, /mob/living/carbon/human.proc/update_hair)
+	INVOKE_ASYNC(new_character, TYPE_PROC_REF(/mob/living/carbon/human, regenerate_icons))
+	INVOKE_ASYNC(new_character, TYPE_PROC_REF(/mob/living/carbon/human, update_body), 1, 0)
+	INVOKE_ASYNC(new_character, TYPE_PROC_REF(/mob/living/carbon/human, update_hair))
 
 	return new_character
 
@@ -225,23 +246,6 @@
 
 	if(ishuman(M))
 		var/mob/living/carbon/human/human = M
-		human.job = title
-
-		var/datum/money_account/A
-		//Give them an account in the database.
-		if(!(flags_startup_parameters & ROLE_NO_ACCOUNT))
-			A = create_account(human.real_name, rand(50,500)*10, null)
-			if(human.mind)
-				var/remembered_info = ""
-				remembered_info += "<b>Your account number is:</b> #[A.account_number]<br>"
-				remembered_info += "<b>Your account pin is:</b> [A.remote_access_pin]<br>"
-				remembered_info += "<b>Your account funds are:</b> $[A.money]<br>"
-
-				if(A.transaction_log.len)
-					var/datum/transaction/T = A.transaction_log[1]
-					remembered_info += "<b>Your account was created:</b> [T.time], [T.date] at [T.source_terminal]<br>"
-				human.mind.store_memory(remembered_info)
-				human.mind.initial_account = A
 
 		var/job_whitelist = title
 		var/whitelist_status = get_whitelist_status(RoleAuthority.roles_whitelist, human.client)
@@ -249,13 +253,17 @@
 		if(whitelist_status)
 			job_whitelist = "[title][whitelist_status]"
 
+		human.job = title //TODO Why is this a mob variable at all?
+
 		if(gear_preset_whitelist[job_whitelist])
 			arm_equipment(human, gear_preset_whitelist[job_whitelist], FALSE, TRUE)
-			announce_entry_message(human, A, whitelist_status) //Tell them their spawn info.
+			var/generated_account = generate_money_account(human)
+			announce_entry_message(human, generated_account, whitelist_status) //Tell them their spawn info.
 			generate_entry_conditions(human, whitelist_status) //Do any other thing that relates to their spawn.
 		else
 			arm_equipment(human, gear_preset, FALSE, TRUE) //After we move them, we want to equip anything else they should have.
-			announce_entry_message(human, A) //Tell them their spawn info.
+			var/generated_account = generate_money_account(human)
+			announce_entry_message(human, generated_account) //Tell them their spawn info.
 			generate_entry_conditions(human) //Do any other thing that relates to their spawn.
 
 		if(flags_startup_parameters & ROLE_ADD_TO_SQUAD) //Are we a muhreen? Randomize our squad. This should go AFTER IDs. //TODO Robust this later.

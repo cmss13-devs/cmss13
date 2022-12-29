@@ -93,7 +93,7 @@
 					SetEarDeafness(1)
 					silent = 1
 					if(!alert)//Sounds an alarm, but only once per 'level'
-						INVOKE_ASYNC(src, .proc/emote, "alarm")
+						INVOKE_ASYNC(src, PROC_REF(emote), "alarm")
 						to_chat(src, SPAN_DANGER("Major electrical distruption detected: System rebooting."))
 						alert = 1
 					if(prob(75))
@@ -106,22 +106,22 @@
 					silent = 0
 					emp_damage--
 				if(11 to 19)//Moderate level of EMP damage, resulting in nearsightedness and ear damage
-					eye_blurry = 1
+					AdjustEyeBlur(1)
 					ear_damage = 1
 					if(!alert)
-						INVOKE_ASYNC(src, .proc/emote, "alert")
+						INVOKE_ASYNC(src, PROC_REF(emote), "alert")
 						to_chat(src, SPAN_DANGER("Primary systems are now online."))
 						alert = 1
 					if(prob(50))
 						emp_damage--
 				if(10)
 					alert = 0
-					eye_blurry = 0
+					SetEyeBlur(0)
 					ear_damage = 0
 					emp_damage--
 				if(2 to 9)//Low level of EMP damage, has few effects(handled elsewhere)
 					if(!alert)
-						INVOKE_ASYNC(src, .proc/emote, "notice")
+						INVOKE_ASYNC(src, PROC_REF(emote), "notice")
 						to_chat(src, SPAN_DANGER("System reboot nearly complete."))
 						alert = 1
 					if(prob(25))

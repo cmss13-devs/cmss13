@@ -149,3 +149,40 @@
 	icon_state = "sandals"
 	item_state = "sandals"
 	items_allowed = null
+
+/obj/item/clothing/shoes/hiking
+	name = "hiking shoes"
+	desc = "These rugged shoes are caked with mud and dirt. Designed for high-altitude hiking expeditions, they're sure to be helpful in any climate or environment."
+	icon_state = "jackboots"
+	item_state = "jackboots"
+	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bullet = CLOTHING_ARMOR_LOW
+	armor_laser = CLOTHING_ARMOR_NONE
+	armor_energy = CLOTHING_ARMOR_NONE
+	armor_bomb = CLOTHING_ARMOR_LOW
+	armor_bio = CLOTHING_ARMOR_MEDIUMLOW
+	armor_rad = CLOTHING_ARMOR_NONE
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUMLOW
+	min_cold_protection_temperature = SHOE_min_cold_protection_temperature
+	max_heat_protection_temperature = SHOE_max_heat_protection_temperature
+	flags_cold_protection = BODY_FLAG_FEET
+	flags_heat_protection = BODY_FLAG_FEET
+	flags_inventory = FPRINT|NOSLIPPING
+	siemens_coefficient = 0.6
+	items_allowed = list(/obj/item/attachable/bayonet, /obj/item/weapon/melee/throwing_knife, /obj/item/weapon/gun/pistol/holdout, /obj/item/weapon/gun/pistol/m43pistol)
+	var/weed_slowdown_mult = 0.5
+
+/obj/item/clothing/shoes/hiking/equipped(mob/user, slot, silent)
+	. = ..()
+	var/mob/living/carbon/human/human_user = user
+	if(src != human_user.shoes)
+		return
+	RegisterSignal(user, COMSIG_MOB_WEEDS_CROSSED, PROC_REF(handle_weed_slowdown))
+
+/obj/item/clothing/shoes/hiking/unequipped(mob/user, slot, silent)
+	. = ..()
+	UnregisterSignal(user, COMSIG_MOB_WEEDS_CROSSED, PROC_REF(handle_weed_slowdown))
+
+/obj/item/clothing/shoes/hiking/proc/handle_weed_slowdown(mob/user, list/slowdata)
+	SIGNAL_HANDLER
+	slowdata["movement_slowdown"] *= weed_slowdown_mult

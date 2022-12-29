@@ -48,7 +48,7 @@
 
 /obj/structure/machinery/door/poddoor/attack_alien(mob/living/carbon/Xenomorph/X)
 	if((stat & NOPOWER) && density && !operating && !unacidable)
-		INVOKE_ASYNC(src, .proc/pry_open, X)
+		INVOKE_ASYNC(src, PROC_REF(pry_open), X)
 		return XENO_ATTACK_ACTION
 
 /obj/structure/machinery/door/poddoor/proc/pry_open(var/mob/living/carbon/Xenomorph/X, var/time = 4 SECONDS)
@@ -88,7 +88,7 @@
 	if(operating == 1) //emag again
 		operating = 0
 	if(autoclose)
-		addtimer(CALLBACK(src, .proc/autoclose), 150)
+		addtimer(CALLBACK(src, PROC_REF(autoclose)), 150)
 	return 1
 
 /obj/structure/machinery/door/poddoor/close()
@@ -137,7 +137,7 @@
 	if(operating == 1) //emag again
 		operating = 0
 	if(autoclose)
-		addtimer(CALLBACK(src, .proc/autoclose), 15 SECONDS)
+		addtimer(CALLBACK(src, PROC_REF(autoclose)), 15 SECONDS)
 
 /obj/structure/machinery/door/poddoor/two_tile/four_tile/open_fully()
 	f3.density = 0
@@ -284,9 +284,12 @@
 /obj/structure/machinery/door/poddoor/almayer/blended
 	icon_state = "almayer_pdoor"
 
+/obj/structure/machinery/door/poddoor/almayer/blended/white
+	icon_state = "w_almayer_pdoor"
+
 /obj/structure/machinery/door/poddoor/almayer/Initialize()
 	. = ..()
-	addtimer(CALLBACK(src, /atom.proc/relativewall_neighbours), 10)
+	addtimer(CALLBACK(src, TYPE_PROC_REF(/atom, relativewall_neighbours)), 10)
 
 /obj/structure/machinery/door/poddoor/almayer/locked
 	unslashable = TRUE

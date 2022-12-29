@@ -22,7 +22,7 @@
 
 /obj/structure/machinery/brig_cell/Initialize()
 	. = ..()
-	addtimer(CALLBACK(src, .proc/search_for_components), 20)
+	addtimer(CALLBACK(src, PROC_REF(search_for_components)), 20)
 
 /obj/structure/machinery/brig_cell/proc/search_for_components()
 	for(var/obj/structure/machinery/door/window/brigdoor/M in machines)
@@ -142,7 +142,7 @@
 		if(door.density)
 			continue
 
-		INVOKE_ASYNC(door, /obj/structure/machinery/door.proc/close)
+		INVOKE_ASYNC(door, TYPE_PROC_REF(/obj/structure/machinery/door, close))
 
 	start_processing()
 	log_admin("[key_name(user)] has jailed [C.criminal_name] for [C.charges_to_string()].")
@@ -318,7 +318,7 @@
 			timer_pause(usr)
 
 		if("pardon")
-			if(alert(usr, "Are you sure you want to pardon?", "Confirmation", "Yes", "No") == "No")
+			if(alert(usr, "Are you sure you want to pardon?", "Confirmation", "Yes", "No") != "Yes")
 				return
 
 			do_pardon(usr)

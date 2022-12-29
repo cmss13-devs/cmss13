@@ -10,7 +10,7 @@
 	unacidable = TRUE
 	density = 1
 	anchored = 1
-	use_power = 1
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 10
 	active_power_usage = 100
 
@@ -407,7 +407,7 @@
 			hacked = !hacked
 			visible_message(SPAN_NOTICE("A blue light flickers [hacked ? "on" : "off"] in the panel of \the [src]."))
 			update_printable()
-			addtimer(CALLBACK(src, .proc/flip_hacked), 10 SECONDS)
+			addtimer(CALLBACK(src, PROC_REF(flip_hacked)), 10 SECONDS)
 		if (AUTOLATHE_WIRE_SHOCK)
 			shock(user, 50)
 			seconds_electrified = 10

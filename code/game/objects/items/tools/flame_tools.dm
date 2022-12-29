@@ -64,7 +64,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		if(!flavor_text)
 			flavor_text = SPAN_NOTICE("[usr] lights [src].")
 		for(var/mob/O in viewers(usr, null))
-			O.show_message(flavor_text, 1)
+			O.show_message(flavor_text, SHOW_MESSAGE_VISIBLE)
 		SetLuminosity(CANDLE_LUM)
 		update_icon()
 		START_PROCESSING(SSobj, src)
@@ -420,8 +420,8 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 
 /obj/item/clothing/mask/cigarette/pickup(mob/user)
 	. = ..()
-	RegisterSignal(user, COMSIG_LIVING_IGNITION, .proc/light)
-	RegisterSignal(user, COMSIG_HUMAN_EXTINGUISH, .proc/handle_extinguish)
+	RegisterSignal(user, COMSIG_LIVING_IGNITION, PROC_REF(light))
+	RegisterSignal(user, COMSIG_HUMAN_EXTINGUISH, PROC_REF(handle_extinguish))
 
 /obj/item/clothing/mask/cigarette/dropped(mob/user)
 	. = ..()

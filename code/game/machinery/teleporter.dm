@@ -59,7 +59,7 @@
 			if(C.data == "Clown Land")
 				//whoops
 				for(var/mob/O in hearers(src, null))
-					O.show_message(SPAN_DANGER("Incoming hyperspace portal detected, unable to lock in."), 2)
+					O.show_message(SPAN_DANGER("Incoming hyperspace portal detected, unable to lock in."), SHOW_MESSAGE_AUDIBLE)
 
 				for(var/obj/structure/machinery/teleport/hub/H in range(1))
 					var/amount = rand(2,5)
@@ -68,7 +68,7 @@
 				//
 			else
 				for(var/mob/O in hearers(src, null))
-					O.show_message(SPAN_NOTICE("Locked In"), 2)
+					O.show_message(SPAN_NOTICE("Locked In"), SHOW_MESSAGE_AUDIBLE)
 				src.locked = L
 				one_time_use = 1
 
@@ -129,7 +129,7 @@
 
 	src.locked = L[desc]
 	for(var/mob/O in hearers(src, null))
-		O.show_message(SPAN_NOTICE("Locked In"), 2)
+		O.show_message(SPAN_NOTICE("Locked In"), SHOW_MESSAGE_AUDIBLE)
 	src.add_fingerprint(usr)
 	return
 
@@ -167,7 +167,7 @@
 	icon_state = "tele0"
 	dir = EAST
 	var/accurate = 0
-	use_power = 1
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 10
 	active_power_usage = 2000
 	var/obj/structure/machinery/computer/teleporter/com
@@ -189,7 +189,7 @@
 		return
 	if (!com.locked)
 		for(var/mob/O in hearers(src, null))
-			O.show_message(SPAN_DANGER("Failure: Cannot authenticate locked on coordinates. Please reinstate coordinate matrix."))
+			O.show_message(SPAN_DANGER("Failure: Cannot authenticate locked on coordinates. Please reinstate coordinate matrix."), SHOW_MESSAGE_AUDIBLE)
 		return
 	if (istype(M, /atom/movable))
 		if(prob(5) && !accurate) //oh dear a problem, put em in deep space
@@ -207,7 +207,7 @@
 		accurate = 1
 		spawn(5 MINUTES)	accurate = 0 //Accurate teleporting for 5 minutes
 		for(var/mob/B in hearers(src, null))
-			B.show_message(SPAN_NOTICE("Test fire completed."))
+			B.show_message(SPAN_NOTICE("Test fire completed."), SHOW_MESSAGE_AUDIBLE)
 	return
 /*
 /proc/do_teleport(atom/movable/M as mob|obj, atom/destination, precision)
@@ -303,7 +303,7 @@
 	dir = EAST
 	var/active = 0
 	var/engaged = 0
-	use_power = 1
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 10
 	active_power_usage = 2000
 	var/obj/structure/machinery/teleport/hub/com
@@ -333,7 +333,7 @@
 		com.icon_state = "tele1"
 		use_power(5000)
 		for(var/mob/O in hearers(src, null))
-			O.show_message(SPAN_NOTICE("Teleporter engaged!"), 2)
+			O.show_message(SPAN_NOTICE("Teleporter engaged!"), SHOW_MESSAGE_AUDIBLE)
 	src.add_fingerprint(usr)
 	src.engaged = 1
 	return
@@ -346,7 +346,7 @@
 		com.icon_state = "tele0"
 		com.accurate = 0
 		for(var/mob/O in hearers(src, null))
-			O.show_message(SPAN_NOTICE("Teleporter disengaged!"), 2)
+			O.show_message(SPAN_NOTICE("Teleporter disengaged!"), SHOW_MESSAGE_AUDIBLE)
 	src.add_fingerprint(usr)
 	src.engaged = 0
 	return
@@ -362,7 +362,7 @@
 	if (com && !active)
 		active = 1
 		for(var/mob/O in hearers(src, null))
-			O.show_message(SPAN_NOTICE("Test firing!"), 2)
+			O.show_message(SPAN_NOTICE("Test firing!"), SHOW_MESSAGE_AUDIBLE)
 		com.teleport()
 		use_power(5000)
 
@@ -401,4 +401,4 @@
 	return
 
 /atom/proc/laserhit(L as obj)
-	return 1
+	return TRUE

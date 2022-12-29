@@ -99,8 +99,7 @@ var/global/cas_tracking_id_increment = 0	//this var used to assign unique tracki
 	for(var/obj/effect/landmark/structure_spawner/SS in GLOB.structure_spawners)
 		SS.post_setup()
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_MODE_POSTSETUP)
-	spawn (ROUNDSTART_LOGOUT_REPORT_TIME)
-		display_roundstart_logout_report()
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(display_roundstart_logout_report)), ROUNDSTART_LOGOUT_REPORT_TIME)
 
 	for(var/mob/new_player/np in GLOB.new_player_list)
 		np.new_player_panel_proc()
@@ -266,7 +265,7 @@ var/global/cas_tracking_id_increment = 0	//this var used to assign unique tracki
 //////////////////////////
 //Reports player logouts//
 //////////////////////////
-proc/display_roundstart_logout_report()
+/proc/display_roundstart_logout_report()
 	var/msg = FONT_SIZE_LARGE("<b>Roundstart logout report\n\n")
 	for(var/i in GLOB.living_mob_list)
 		var/mob/living/L = i

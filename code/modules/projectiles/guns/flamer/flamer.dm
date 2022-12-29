@@ -222,7 +222,7 @@
 
 	playsound(to_fire, src.get_fire_sound(), 50, TRUE)
 
-	new /obj/flamer_fire(to_fire, create_cause_data(initial(name), user), R, max_range, current_mag.reagents, flameshape, target, CALLBACK(src, .proc/show_percentage, user), fuel_pressure, fire_type)
+	new /obj/flamer_fire(to_fire, create_cause_data(initial(name), user), R, max_range, current_mag.reagents, flameshape, target, CALLBACK(src, PROC_REF(show_percentage), user), fuel_pressure, fire_type)
 
 /obj/item/weapon/gun/flamer/proc/show_percentage(var/mob/living/user)
 	if(current_mag)
@@ -399,6 +399,8 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 
 	var/fire_variant = FIRE_VARIANT_DEFAULT
 
+	var/weather_smothering_strength = 0
+
 /obj/flamer_fire/Initialize(mapload, var/datum/cause_data/cause_data, var/datum/reagent/R, fire_spread_amount = 0, var/datum/reagents/obj_reagents = null, new_flameshape = FLAMESHAPE_DEFAULT, var/atom/target = null, var/datum/callback/C, var/fuel_pressure = 1, var/fire_type = FIRE_VARIANT_DEFAULT)
 	. = ..()
 	if(!R)
@@ -443,9 +445,12 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 	firelevel = R.durationfire + fuel_pressure*R.durationmod
 	burnlevel = R.intensityfire
 
+	//are we in weather??
+	update_in_weather_status()
+
 	update_flame()
 
-	addtimer(CALLBACK(src, .proc/un_burst_flame), 0.5 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(un_burst_flame)), 0.5 SECONDS)
 	START_PROCESSING(SSobj, src)
 
 	to_call = C
@@ -473,6 +478,12 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 		if (S.bleed_layer > 0)
 			S.bleed_layer--
 			S.update_icon(1, 0)
+
+	//scorch mah grass HNNGGG
+	if (istype(loc, /turf/open))
+		var/turf/open/scorch_turf_target = loc
+		if(scorch_turf_target.scorchable)
+			scorch_turf_target.scorch(burnlevel)
 
 	if (istype(loc, /turf/open/auto_turf/snow))
 		var/turf/open/auto_turf/snow/S = loc
@@ -538,6 +549,8 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 			var/mob/SM = weapon_cause_data.resolve_mob()
 			if(istype(SM))
 				SM.track_shot_hit(weapon_cause_data.cause_name)
+
+	RegisterSignal(SSdcs, COMSIG_GLOB_WEATHER_CHANGE, PROC_REF(update_in_weather_status))
 
 /obj/flamer_fire/Destroy()
 	SetLuminosity(0)
@@ -654,8 +667,20 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 		thing.handle_flamer_fire(src, damage, delta_time)
 
 	//This has been made a simple loop, for the most part flamer_fire_act() just does return, but for specific items it'll cause other effects.
-	firelevel -= 2 //reduce the intensity by 2 per tick
+
+	firelevel -= 2 + weather_smothering_strength //reduce the intensity by 2 as default or more if in weather ---- weather_smothering_strength is set as /datum/weather_event's fire_smothering_strength
+
 	return
+
+/obj/flamer_fire/proc/update_in_weather_status()
+	SIGNAL_HANDLER
+	var/area/A = get_area(src)
+	if(!A)
+		return
+	if(SSweather.is_weather_event && locate(A.master) in SSweather.weather_areas)
+		weather_smothering_strength = SSweather.weather_event_instance.fire_smothering_strength
+	else
+		weather_smothering_strength = 0
 
 /proc/fire_spread_recur(var/turf/target, var/datum/cause_data/cause_data, remaining_distance, direction, fire_lvl, burn_lvl, f_color, burn_sprite = "dynamic", var/aerial_flame_level)
 	var/direction_angle = dir2angle(direction)

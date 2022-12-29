@@ -98,6 +98,9 @@
 	if(faction == FACTION_MARINE & !isnull(SSticker) && !isnull(SSticker.mode) && !isnull(SSticker.mode.active_lz) && !isnull(SSticker.mode.active_lz.loc) && !isnull(SSticker.mode.active_lz.loc.loc))
 		. += "Primary LZ: [SSticker.mode.active_lz.loc.loc.name]"
 
+	if(faction == FACTION_MARINE & !isnull(SSticker) && !isnull(SSticker.mode))
+		. += "Operation Name: [round_statistics.round_name]"
+
 	if(assigned_squad)
 		if(assigned_squad.overwatch_officer)
 			. += "Overwatch Officer: [assigned_squad.overwatch_officer.get_paygrade()][assigned_squad.overwatch_officer.name]"
@@ -122,15 +125,15 @@
 	if(lying)
 		severity *= EXPLOSION_PRONE_MULTIPLIER
 
-	if(severity >= 30)
-		flash_eyes()
+
 
 	var/b_loss = 0
 	var/f_loss = 0
 
 	var/damage = severity
+	var/bomb_armor = getarmor(null, ARMOR_BOMB)
 
-	damage = armor_damage_reduction(GLOB.marine_explosive, damage, getarmor(null, ARMOR_BOMB))
+	damage = armor_damage_reduction(GLOB.marine_explosive, damage, bomb_armor)
 
 	last_damage_data = istype(cause_data) ? cause_data : create_cause_data(cause_data)
 
@@ -138,7 +141,6 @@
 		var/oldloc = loc
 		gib(last_damage_data)
 		create_shrapnel(oldloc, rand(5, 9), direction, 45, /datum/ammo/bullet/shrapnel/light/human, last_damage_data)
-		sleep(1)
 		create_shrapnel(oldloc, rand(5, 9), direction, 30, /datum/ammo/bullet/shrapnel/light/human/var1, last_damage_data)
 		create_shrapnel(oldloc, rand(5, 9), direction, 45, /datum/ammo/bullet/shrapnel/light/human/var2, last_damage_data)
 		return
@@ -147,20 +149,28 @@
 		ear_damage += severity * 0.15
 		AdjustEarDeafness(severity * 0.5)
 
-	var/knockdown_value = min( round( severity*0.1  ,1) ,10)
-	if(knockdown_value > 0)
-		var/obj/item/Item1 = get_active_hand()
-		var/obj/item/Item2 = get_inactive_hand()
-		apply_effect(knockdown_value, WEAKEN)
-		var/knockout_value = min( round( damage*0.1  ,1) ,10)
-		apply_effect( knockout_value , PARALYZE)
-		apply_effect( knockout_value*2 , DAZE)
-		explosion_throw(severity, direction)
+	 /// Reduces effects by armor value.
+	var/bomb_armor_mult = ((CLOTHING_ARMOR_HARDCORE - bomb_armor) * 0.01)
 
-		if(Item1 && isturf(Item1.loc))
-			Item1.explosion_throw(severity, direction)
-		if(Item2 && isturf(Item2.loc))
-			Item2.explosion_throw(severity, direction)
+	if(severity >= 30)
+		flash_eyes(flash_timer = 4 SECONDS * bomb_armor_mult)
+
+	// Stuns are multiplied by 1 reduced by their medium armor value. So a medium of 30 would mean a 30% reduction.
+	var/knockdown_value = severity * 0.1
+	var/knockdown_minus_armor = min(knockdown_value * bomb_armor_mult, 1 SECONDS)
+	var/obj/item/item1 = get_active_hand()
+	var/obj/item/item2 = get_inactive_hand()
+	apply_effect(round(knockdown_minus_armor), WEAKEN)
+	var/knockout_value = damage * 0.1
+	var/knockout_minus_armor = min(knockout_value * bomb_armor_mult * 0.5, 0.5 SECONDS) // the KO time is halved from the knockdown timer. basically same stun time, you just spend less time KO'd.
+	apply_effect(round(knockout_minus_armor), PARALYZE)
+	apply_effect(round(knockout_minus_armor) * 2, DAZE)
+	explosion_throw(severity, direction)
+
+	if(item1 && isturf(item1.loc))
+		item1.explosion_throw(severity, direction)
+	if(item2 && isturf(item2.loc))
+		item2.explosion_throw(severity, direction)
 
 	if(damage >= 0)
 		b_loss += damage * 0.5
@@ -220,7 +230,7 @@
 		if(M.attack_sound)
 			playsound(loc, M.attack_sound, 25, 1)
 		for(var/mob/O in viewers(src, null))
-			O.show_message(SPAN_DANGER("<B>[M]</B> [M.attacktext] [src]!"), 1)
+			O.show_message(SPAN_DANGER("<B>[M]</B> [M.attacktext] [src]!"), SHOW_MESSAGE_VISIBLE)
 		last_damage_data = create_cause_data(initial(M.name), M)
 		M.attack_log += text("\[[time_stamp()]\] <font color='red'>attacked [key_name(src)]</font>")
 		src.attack_log += text("\[[time_stamp()]\] <font color='orange'>was attacked by [key_name(M)]</font>")
@@ -939,8 +949,8 @@
 	if(!lastpuke)
 		lastpuke = 1
 		to_chat(src, SPAN_WARNING("You feel nauseous..."))
-		addtimer(CALLBACK(GLOBAL_PROC, .proc/to_chat, src, "You feel like you are about to throw up!"), 15 SECONDS)
-		addtimer(CALLBACK(src, .proc/do_vomit), 25 SECONDS)
+		addtimer(CALLBACK(GLOBAL_PROC, PROC_REF(to_chat), src, "You feel like you are about to throw up!"), 15 SECONDS)
+		addtimer(CALLBACK(src, PROC_REF(do_vomit)), 25 SECONDS)
 
 /mob/living/carbon/human/proc/do_vomit()
 	apply_effect(5, STUN)
@@ -1095,18 +1105,32 @@
 	show_browser(src, dat, "Crew Manifest", "manifest", "size=400x750")
 
 /mob/living/carbon/human/verb/view_objective_memory()
-    set name = "View objectives"
-    set category = "IC"
+	set name = "View objectives"
+	set category = "IC"
 
-    if(!mind)
-        to_chat(src, "The game appears to have misplaced your mind datum.")
-        return
+	if(!mind)
+		to_chat(src, "The game appears to have misplaced your mind datum.")
+		return
 
-    if(!skillcheck(usr, SKILL_INTEL, SKILL_INTEL_TRAINED) || faction != FACTION_MARINE && !(faction in FACTION_LIST_WY))
-        to_chat(usr, SPAN_WARNING("You have no access to the [MAIN_SHIP_NAME] intel network."))
-        return
+	if(!skillcheck(usr, SKILL_INTEL, SKILL_INTEL_TRAINED) || faction != FACTION_MARINE && !(faction in FACTION_LIST_WY))
+		to_chat(usr, SPAN_WARNING("You have no access to the [MAIN_SHIP_NAME] intel network."))
+		return
 
-    mind.view_objective_memories(src)
+	mind.view_objective_memories(src)
+
+/mob/living/carbon/human/verb/view_research_objective_memory()
+	set name = "View research objectives"
+	set category = "IC"
+
+	if(!mind)
+		to_chat(src, "The game appears to have misplaced your mind datum.")
+		return
+
+	if(!skillcheck(usr, SKILL_RESEARCH, SKILL_RESEARCH_TRAINED) || faction != FACTION_MARINE && !(faction in FACTION_LIST_WY))
+		to_chat(usr, SPAN_WARNING("You have no access to the [MAIN_SHIP_NAME] research network."))
+		return
+
+	mind.view_research_objective_memories(src)
 
 /mob/living/carbon/human/verb/purge_objective_memory()
 	set name = "Reset view objectives"
@@ -1149,10 +1173,15 @@
 	if(oldspecies)
 		//additional things to change when we're no longer that species
 		oldspecies.post_species_loss(src)
+		if(oldspecies.weed_slowdown_mult != 1)
+			UnregisterSignal(src, COMSIG_MOB_WEEDS_CROSSED)
 
 	mob_flags = species.mob_flags
 	for(var/T in species.mob_inherent_traits)
 		ADD_TRAIT(src, T, TRAIT_SOURCE_SPECIES)
+
+	if(species.weed_slowdown_mult != 1)
+		RegisterSignal(src, COMSIG_MOB_WEEDS_CROSSED, PROC_REF(handle_weed_slowdown))
 
 	species.create_organs(src)
 
@@ -1176,11 +1205,11 @@
 	species.initialize_stamina(src)
 	species.handle_post_spawn(src)
 
-	INVOKE_ASYNC(src, .proc/regenerate_icons)
-	INVOKE_ASYNC(src, .proc/restore_blood)
-	INVOKE_ASYNC(src, .proc/update_body, 1, 0)
+	INVOKE_ASYNC(src, PROC_REF(regenerate_icons))
+	INVOKE_ASYNC(src, PROC_REF(restore_blood))
+	INVOKE_ASYNC(src, PROC_REF(update_body), 1, 0)
 	if(!(species.flags & HAS_UNDERWEAR))
-		INVOKE_ASYNC(src, .proc/remove_underwear)
+		INVOKE_ASYNC(src, PROC_REF(remove_underwear))
 
 	default_lighting_alpha = species.default_lighting_alpha
 	update_sight()
@@ -1190,6 +1219,9 @@
 	else
 		return FALSE
 
+/mob/living/carbon/human/proc/handle_weed_slowdown(mob/user, list/slowdata)
+	SIGNAL_HANDLER
+	slowdata["movement_slowdown"] *= species.weed_slowdown_mult
 
 /mob/living/carbon/human/print_flavor_text()
 	var/list/equipment = list(src.head,src.wear_mask,src.glasses,src.w_uniform,src.wear_suit,src.gloves,src.shoes)
@@ -1560,18 +1592,22 @@
 		apply_effect(1, WEAKEN)
 		spin(10, 2)
 		visible_message(SPAN_DANGER("[src] expertly rolls on the floor!"), \
-			SPAN_NOTICE("You expertly roll to get rid of the acid!"), null, 5)
+			SPAN_NOTICE("You expertly roll to get rid of the acid!"), max_distance = 5)
 	else
 		apply_effect(1.5, WEAKEN)
 		spin(15, 2)
 		visible_message(SPAN_DANGER("[src] rolls on the floor, trying to get the acid off!"), \
-			SPAN_NOTICE("You stop, drop, and roll!"), null, 5)
+			SPAN_NOTICE("You stop, drop, and roll!"), max_distance = 5)
 
 	sleep(sleep_amount)
 
-	visible_message(SPAN_DANGER("[src] has successfully removed the acid!"), \
-			SPAN_NOTICE("You get rid of the acid."), null, 5)
-	extinguish_acid()
+	if( extinguish_acid() )
+		visible_message(SPAN_DANGER("[src] has successfully removed the acid!"), \
+				SPAN_NOTICE("You get rid of the acid."), max_distance = 5)
+	else
+		visible_message(SPAN_DANGER("[src] has managed to get rid of some of the acid!"), \
+				SPAN_NOTICE("You manage to get rid of some of the acid... but it's still melting you!"), max_distance = 5)
+
 	return
 
 /mob/living/carbon/human/resist_restraints()
@@ -1612,14 +1648,14 @@
 	if(can_break_cuffs) //Don't want to do a lot of logic gating here.
 		to_chat(usr, SPAN_DANGER("You attempt to break [restraint]. (This will take around 5 seconds and you need to stand still)"))
 		for(var/mob/O in viewers(src))
-			O.show_message(SPAN_DANGER("<B>[src] is trying to break [restraint]!</B>"), 1)
+			O.show_message(SPAN_DANGER("<B>[src] is trying to break [restraint]!</B>"), SHOW_MESSAGE_VISIBLE)
 		if(!do_after(src, 50, INTERRUPT_NO_NEEDHAND^INTERRUPT_RESIST, BUSY_ICON_HOSTILE))
 			return
 
 		if(!restraint || buckled)
 			return
 		for(var/mob/O in viewers(src))
-			O.show_message(SPAN_DANGER("<B>[src] manages to break [restraint]!</B>"), 1)
+			O.show_message(SPAN_DANGER("<B>[src] manages to break [restraint]!</B>"), SHOW_MESSAGE_VISIBLE)
 		to_chat(src, SPAN_WARNING("You successfully break [restraint]."))
 		say(pick(";RAAAAAAAARGH!", ";HNNNNNNNNNGGGGGGH!", ";GWAAAAAAAARRRHHH!", "NNNNNNNNGGGGGGGGHH!", ";AAAAAAARRRGH!" ))
 		if(handcuffed)
@@ -1639,7 +1675,7 @@
 		if(!restraint || buckled)
 			return // time leniency for lag which also might make this whole thing pointless but the server
 		for(var/mob/O in viewers(src))//                                         lags so hard that 40s isn't lenient enough - Quarxink
-			O.show_message(SPAN_DANGER("<B>[src] manages to remove [restraint]!</B>"), 1)
+			O.show_message(SPAN_DANGER("<B>[src] manages to remove [restraint]!</B>"), SHOW_MESSAGE_VISIBLE)
 		to_chat(src, SPAN_NOTICE(" You successfully remove [restraint]."))
 		drop_inv_item_on_ground(restraint)
 

@@ -60,7 +60,7 @@
 		spawn_turf = get_turf(body)				//Where is the body located?
 		attack_log = body.attack_log	//preserve our attack logs by copying them to our ghost
 		life_kills_total = body.life_kills_total //kills also copy over
-    
+
 		appearance = body.appearance
 		base_transform = matrix(body.base_transform)
 		body.alter_ghost(src)
@@ -93,7 +93,7 @@
 	change_real_name(src, name)
 
 	if(SSticker.mode && SSticker.mode.flags_round_type & MODE_PREDATOR)
-		addtimer(CALLBACK(GLOBAL_PROC, .proc/to_chat, src, "<span style='color: red;'>This is a <B>PREDATOR ROUND</B>! If you are whitelisted, you may Join the Hunt!</span>"), 2 SECONDS)
+		addtimer(CALLBACK(GLOBAL_PROC, PROC_REF(to_chat), src, "<span style='color: red;'>This is a <B>PREDATOR ROUND</B>! If you are whitelisted, you may Join the Hunt!</span>"), 2 SECONDS)
 
 	verbs -= /mob/verb/pickup_item
 	verbs -= /mob/verb/pull_item
@@ -146,8 +146,8 @@
 	target.observers |= src
 	target.hud_used.show_hud(target.hud_used.hud_version, src)
 	observetarget = target
-	RegisterSignal(observetarget, COMSIG_PARENT_QDELETING, .proc/clean_observetarget)
-	RegisterSignal(src, COMSIG_MOVABLE_MOVED, .proc/observer_move_react)
+	RegisterSignal(observetarget, COMSIG_PARENT_QDELETING, PROC_REF(clean_observetarget))
+	RegisterSignal(src, COMSIG_MOVABLE_MOVED, PROC_REF(observer_move_react))
 
 /mob/dead/observer/reset_perspective(atom/A)
 	if(observetarget)
@@ -279,6 +279,13 @@ Works together with spawning an observer, noted above.
 	var/mob/dead/observer/ghost = new(loc, src)	//Transfer safety to observer spawning proc.
 	ghost.can_reenter_corpse = can_reenter_corpse
 	ghost.timeofdeath = timeofdeath //BS12 EDIT
+
+	// Carryover langchat settings since we kept the icon
+	ghost.langchat_height = langchat_height
+	ghost.icon_size = icon_size
+	ghost.langchat_image = null
+	ghost.langchat_make_image()
+
 	SStgui.on_transfer(src, ghost)
 	if(is_admin_level(z))
 		ghost.timeofdeath = 0 // Bypass respawn limit if you die on the admin zlevel
@@ -684,6 +691,21 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	if(SSticker.mode.check_xeno_late_join(src))
 		SSticker.mode.attempt_to_join_as_xeno(src)
 
+/mob/dead/verb/join_as_facehugger()
+	set category = "Ghost.Join"
+	set name = "Join as a Facehugger"
+	set desc = "Try joining as a Facehugger from a Carrier or Egg Morpher."
+
+	if (!client)
+		return
+
+	if(SSticker.current_state < GAME_STATE_PLAYING || !SSticker.mode)
+		to_chat(src, SPAN_WARNING("The game hasn't started yet!"))
+		return
+
+	if(SSticker.mode.check_xeno_late_join(src))
+		SSticker.mode.attempt_to_join_as_facehugger(src)
+
 /mob/dead/verb/join_as_zombie() //Adapted from join as hellhoud
 	set category = "Ghost.Join"
 	set name = "Join as Zombie"
@@ -933,3 +955,36 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 /proc/message_ghosts(var/message)
 	for(var/mob/dead/observer/O as anything in GLOB.observer_list)
 		to_chat(O, message)
+
+/// Format text and links to JuMP/FoLloW something
+/mob/dead/observer/proc/format_jump(atom/target, jump_tag)
+	if(ismob(target))
+		if(!jump_tag)
+			jump_tag = "FLW"
+		return "(<a href='?src=\ref[src];track=\ref[target]'>[jump_tag]</a>)"
+	if(!jump_tag)
+		jump_tag = "JMP"
+	var/turf/turf = get_turf(target)
+	return "(<a href='?src=\ref[src];jumptocoord=1;X=[turf.x];Y=[turf.y];Z=[turf.z]'>[jump_tag]</a>)"
+
+/mob/dead/observer/point_to(atom/A in view())
+	if(!(client?.prefs?.toggles_chat & CHAT_DEAD))
+		return FALSE
+	if(A?.z != src.z || !A.mouse_opacity || get_dist(src, A) > client.view)
+		return FALSE
+	var/turf/turf = get_turf(A)
+	if(recently_pointed_to > world.time)
+		return FALSE
+	point_to_atom(A, turf)
+	return TRUE
+
+/mob/dead/observer/point_to_atom(atom/A, turf/T)
+	recently_pointed_to = world.time + 4 SECONDS
+	new /obj/effect/overlay/temp/point/big/observer(T, src, A)
+	for(var/mob/dead/observer/nearby_observer as anything in GLOB.observer_list)
+		var/client/observer_client = nearby_observer.client
+		// We check observer view range specifically to also show the message to zoomed out ghosts. Double check Z as get_dist goes thru levels.
+		if((observer_client?.prefs?.toggles_chat & CHAT_DEAD) \
+			&& src.z == nearby_observer.z && get_dist(src, nearby_observer) <= observer_client.view)
+			to_chat(observer_client, SPAN_DEADSAY("<b>[src]</b> points to [A] [nearby_observer.format_jump(A)]"))
+	return TRUE

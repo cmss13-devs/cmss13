@@ -68,8 +68,10 @@
 
 /// Replaces marine food dispensers contents with more festive MREs
 /datum/decorator/christmas/food
+
 /datum/decorator/christmas/food/get_decor_types()
 	return list(/obj/structure/machinery/cm_vending/sorted/marine_food)
+
 /datum/decorator/christmas/food/decorate(obj/structure/machinery/cm_vending/sorted/marine_food/dispenser)
 	// This happens during atom init before vending init, so we can hotswap the list before it gets processed
 	dispenser.listed_products = list(
@@ -79,6 +81,19 @@
 		list("Xmas Prepared Meal (Sugar Cookies)", 25, /obj/item/reagent_container/food/snacks/mre_pack/xmas1, VENDOR_ITEM_REGULAR),
 
 		list("FLASKS", -1, null, null),
+		list("Canteen", 10, /obj/item/reagent_container/food/drinks/flask/canteen, VENDOR_ITEM_REGULAR),
 		list("Metal Flask", 10, /obj/item/reagent_container/food/drinks/flask, VENDOR_ITEM_REGULAR),
-		list("USCM Flask", 5, /obj/item/reagent_container/food/drinks/flask/marine, VENDOR_ITEM_REGULAR)
+		list("USCM Flask", 5, /obj/item/reagent_container/food/drinks/flask/marine, VENDOR_ITEM_REGULAR),
+		list("W-Y Flask", 5, /obj/item/reagent_container/food/drinks/flask/weylandyutani, VENDOR_ITEM_REGULAR),
+
+		list("UTILITIES", -1, null, null),
+		list("C92 pattern 'Festivizer' decorator", 10, /obj/item/toy/festivizer, VENDOR_ITEM_REGULAR)
 	)
+
+/datum/decorator/christmas/builder_list/get_decor_types()
+	return typesof(/mob/living/carbon/Xenomorph)
+
+/datum/decorator/christmas/builder_list/decorate(var/mob/living/carbon/Xenomorph/Xeno)
+	if(!istype(Xeno))
+		return
+	LAZYDISTINCTADD(Xeno.resin_build_order, /datum/resin_construction/resin_obj/festivizer)

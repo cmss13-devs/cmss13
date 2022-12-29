@@ -111,7 +111,7 @@
 	QDEL_NULL(hidden)
 	QDEL_NULL_LIST(internal_organs)
 	QDEL_NULL_LIST(implants)
-	QDEL_NULL_LIST(autopsy_data)
+	QDEL_LIST_ASSOC_VAL(autopsy_data)
 
 	if(bleeding_effects_list)
 		for(var/datum/effects/bleeding/B in bleeding_effects_list)
@@ -285,7 +285,7 @@
 
 	if(status & LIMB_BROKEN && prob(40) && brute > 10)
 		if(owner.pain.feels_pain)
-			INVOKE_ASYNC(owner, /mob.proc/emote, "scream") //Getting hit on broken hand hurts
+			INVOKE_ASYNC(owner, TYPE_PROC_REF(/mob, emote), "scream") //Getting hit on broken hand hurts
 	if(used_weapon)
 		add_autopsy_data("[used_weapon]", brute + burn)
 
@@ -459,7 +459,7 @@ This function completely restores a damaged organ to perfect condition.
 
 	if(!(status & LIMB_SPLINTED_INDESTRUCTIBLE) && (status & LIMB_SPLINTED) && damage > 5 && prob(50 + damage * 2.5)) //If they have it splinted, the splint won't hold.
 		status &= ~LIMB_SPLINTED
-		playsound(get_turf(loc), 'sound/items/splintbreaks.ogg')
+		playsound(get_turf(loc), 'sound/items/splintbreaks.ogg', 20)
 		to_chat(owner, SPAN_DANGER("The splint on your [display_name] comes apart!"))
 		owner.pain.apply_pain(PAIN_BONE_BREAK_SPLINTED)
 		owner.update_med_icon()
@@ -929,7 +929,7 @@ This function completely restores a damaged organ to perfect condition.
 
 			// Checks if the mob can feel pain or if they have at least oxycodone level of painkiller
 			if(body_part != BODY_FLAG_HEAD && owner.pain.feels_pain && owner.pain.reduction_pain < PAIN_REDUCTION_HEAVY)
-				INVOKE_ASYNC(owner, /mob.proc/emote, pick("pain", "scream"))
+				INVOKE_ASYNC(owner, TYPE_PROC_REF(/mob, emote), pick("pain", "scream"))
 
 			if(organ)
 				//Throw organs around
@@ -1271,9 +1271,9 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 	body_part = BODY_FLAG_ARM_LEFT
 	has_stump_icon = TRUE
 
-	process()
-		..()
-		process_grasp(owner.l_hand, "left hand")
+/obj/limb/hand/l_hand/process()
+	..()
+	process_grasp(owner.l_hand, "left hand")
 
 /obj/limb/leg/l_leg
 	name = "l_leg"
@@ -1290,9 +1290,9 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 	body_part = BODY_FLAG_ARM_RIGHT
 	has_stump_icon = TRUE
 
-	process()
-		..()
-		process_grasp(owner.r_hand, "right hand")
+/obj/limb/hand/l_hand/process()
+	..()
+	process_grasp(owner.r_hand, "right hand")
 
 /obj/limb/leg/r_leg
 	name = "r_leg"
@@ -1325,9 +1325,9 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 	body_part = BODY_FLAG_HAND_RIGHT
 	has_stump_icon = TRUE
 
-	process()
-		..()
-		process_grasp(owner.r_hand, "right hand")
+/obj/limb/hand/l_hand/process()
+	..()
+	process_grasp(owner.r_hand, "right hand")
 
 /obj/limb/hand/l_hand
 	name = "l_hand"
@@ -1336,9 +1336,9 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 	body_part = BODY_FLAG_HAND_LEFT
 	has_stump_icon = TRUE
 
-	process()
-		..()
-		process_grasp(owner.l_hand, "left hand")
+/obj/limb/hand/l_hand/process()
+	..()
+	process_grasp(owner.l_hand, "left hand")
 
 /obj/limb/head
 	name = "head"

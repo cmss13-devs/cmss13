@@ -8,7 +8,7 @@
 	wrenchable = TRUE
 	var/broken = 0
 	var/processing = 0
-	use_power = 1
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 5
 	active_power_usage = 50
 
@@ -16,41 +16,45 @@
 	var/input
 	var/output
 	var/time = 40
-	process(loc, what)
-		if (src.output && loc)
-			new src.output(loc)
-		if (what)
-			qdel(what)
+
+/datum/food_processor_process/process(loc, what)
+	if (src.output && loc)
+		new src.output(loc)
+	if (what)
+		qdel(what)
 
 	/* objs */
-	meat
-		input = /obj/item/reagent_container/food/snacks/meat
-		output = /obj/item/reagent_container/food/snacks/meatball
+/datum/food_processor_process/meat
+	input = /obj/item/reagent_container/food/snacks/meat
+	output = /obj/item/reagent_container/food/snacks/rawmeatball
 
-	potato
-		input = /obj/item/reagent_container/food/snacks/grown/potato
-		output = /obj/item/reagent_container/food/snacks/rawsticks
+/datum/food_processor_process/potato
+	input = /obj/item/reagent_container/food/snacks/grown/potato
+	output = /obj/item/reagent_container/food/snacks/rawsticks
 
-	carrot
-		input = /obj/item/reagent_container/food/snacks/grown/carrot
-		output = /obj/item/reagent_container/food/snacks/carrotfries
+/datum/food_processor_process/carrot
+	input = /obj/item/reagent_container/food/snacks/grown/carrot
+	output = /obj/item/reagent_container/food/snacks/carrotfries
 
-	soybeans
-		input = /obj/item/reagent_container/food/snacks/grown/soybeans
-		output = /obj/item/reagent_container/food/snacks/soydope
+/datum/food_processor_process/soybeans
+	input = /obj/item/reagent_container/food/snacks/grown/soybeans
+	output = /obj/item/reagent_container/food/snacks/soydope
 
-	wheat
-		input = /obj/item/reagent_container/food/snacks/grown/wheat
-		output = /obj/item/reagent_container/food/snacks/flour
+/datum/food_processor_process/wheat
+	input = /obj/item/reagent_container/food/snacks/grown/wheat
+	output = /obj/item/reagent_container/food/snacks/flour
 
-	spaghetti
-		input = /obj/item/reagent_container/food/snacks/flour
-		output = /obj/item/reagent_container/food/snacks/spagetti
+/datum/food_processor_process/spaghetti
+	input = /obj/item/reagent_container/food/snacks/flour
+	output = /obj/item/reagent_container/food/snacks/spagetti
+
+/datum/food_processor_process/chocolatebar
+	input = /obj/item/reagent_container/food/snacks/grown/cocoapod
+	output = /obj/item/reagent_container/food/snacks/chocolatebar
 
 	/* mobs */
-	mob
-		process(loc, what)
-			..()
+/datum/food_processor_process/mob/process(loc, what)
+	..()
 
 /obj/structure/machinery/processor/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()

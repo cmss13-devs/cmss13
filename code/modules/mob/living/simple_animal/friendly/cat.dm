@@ -44,7 +44,7 @@
 			for(var/mob/living/simple_animal/mouse/M in view(1,src))
 				if(!M.stat)
 					M.splat()
-					INVOKE_ASYNC(src, .proc/emote, pick("bites \the [M]!","toys with \the [M].","chomps on \the [M]!"))
+					INVOKE_ASYNC(src, PROC_REF(emote), pick("bites \the [M]!","toys with \the [M].","chomps on \the [M]!"))
 					movement_target = null
 					stop_automated_movement = 0
 					break
@@ -53,7 +53,7 @@
 
 	for(var/mob/living/simple_animal/mouse/snack in oview(src, 3))
 		if(prob(15))
-			INVOKE_ASYNC(src, .proc/emote, pick("hisses and spits!","mrowls fiercely!","eyes [snack] hungrily."))
+			INVOKE_ASYNC(src, PROC_REF(emote), pick("hisses and spits!","mrowls fiercely!","eyes [snack] hungrily."))
 		break
 
 	if(!stat && !resting && !buckled)
@@ -111,6 +111,7 @@
 	icon_state = "cat"
 	icon_living = "cat"
 	icon_dead = "cat_dead"
+	holder_type = /obj/item/holder/blackcat
 
 /mob/living/simple_animal/cat/Jones
 	name = "Jones"
@@ -129,4 +130,5 @@
 	icon_state = "kitten"
 	icon_living = "kitten"
 	icon_dead = "kitten_dead"
+	holder_type = /obj/item/holder/kitten
 	gender = NEUTER

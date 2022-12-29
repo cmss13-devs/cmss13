@@ -42,6 +42,7 @@
 
 	if(picked_spawner.story_text)
 		story_text = picked_spawner.story_text
+	new /datum/cm_objective/move_mob/almayer/survivor(H)
 
 /datum/job/civilian/survivor/generate_entry_message(var/mob/living/carbon/human/H)
 	if(intro_text)
@@ -106,6 +107,12 @@
 		arm_equipment(equipping_human, pick(survivor_types), FALSE, TRUE)
 		return
 
+AddTimelock(/datum/job/civilian/survivor, list(
+	JOB_SQUAD_ROLES = 5 HOURS,
+	JOB_ENGINEER_ROLES = 5 HOURS,
+	JOB_MEDIC_ROLES = 5 HOURS
+))
+
 /datum/job/civilian/survivor/synth
 	title = JOB_SYNTH_SURVIVOR
 	selection_class = "job_synth"
@@ -126,8 +133,26 @@
 		arm_equipment(equipping_human, pick(synth_survivor_types), FALSE, TRUE)
 		return
 
-AddTimelock(/datum/job/civilian/survivor, list(
-	JOB_SQUAD_ROLES = 5 HOURS,
-	JOB_ENGINEER_ROLES = 5 HOURS,
-	JOB_MEDIC_ROLES = 5 HOURS
-))
+/datum/job/civilian/survivor/commanding_officer
+	title = JOB_CO_SURVIVOR
+	selection_class = "job_co"
+	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADMIN_NOTIFY|ROLE_WHITELISTED|ROLE_CUSTOM_SPAWN
+	flags_whitelist = WHITELIST_COMMANDER
+	total_positions = 0
+	spawn_positions = 0
+
+/datum/job/civilian/survivor/commanding_officer/set_spawn_positions()
+	var/list/CO_survivor_types = SSmapping.configs[GROUND_MAP].CO_survivor_types
+	if(CO_survivor_types.len)
+		total_positions = 1
+		spawn_positions = 1
+	return spawn_positions
+
+/datum/job/civilian/survivor/commanding_officer/handle_equip_gear(var/mob/living/carbon/human/equipping_human, var/obj/effect/landmark/survivor_spawner/picked_spawner)
+	if(picked_spawner.CO_equipment)
+		arm_equipment(equipping_human, picked_spawner.CO_equipment, FALSE, TRUE)
+		return
+	else
+		var/list/CO_survivor_types = SSmapping.configs[GROUND_MAP].CO_survivor_types
+		arm_equipment(equipping_human, pick(CO_survivor_types), FALSE, TRUE)
+		return

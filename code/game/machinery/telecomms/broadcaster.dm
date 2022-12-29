@@ -14,7 +14,7 @@
 	desc = "A dish-shaped machine used to broadcast processed subspace signals."
 	density = 1
 	anchored = 1
-	use_power = 1
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 25
 	machinetype = 5
 	delay = 7
@@ -108,6 +108,7 @@
 			if(R.receive_range(display_freq, level) > -1 && OBJECTS_CAN_REACH(loc, radio_loc))
 				radios += R
 
+	/* Currently unused, but leaving incase someone revives agents or another use for it.
 	// --- Broadcast to antag radios! ---
 	else if(data == RADIO_FILTER_TYPE_ANTAG_RADIOS)
 		for(var/antag_freq in ANTAG_FREQS)
@@ -116,6 +117,7 @@
 				var/atom/loc = R.loc
 				if(R.receive_range(display_freq, level) > -1 && OBJECTS_CAN_REACH(loc, radio_loc))
 					radios += R
+	*/
 
 	// --- Broadcast to ALL radio devices ---
 	else

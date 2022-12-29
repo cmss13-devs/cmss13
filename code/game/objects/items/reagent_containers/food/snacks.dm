@@ -136,12 +136,6 @@
 	else
 		. += SPAN_NOTICE("\The [src] was bitten multiple times!")
 
-/obj/item/reagent_container/food/snacks/set_name_label(var/new_label)
-	name_label = new_label
-	name = made_from_player + initial(name)
-	if(name_label)
-		name += " ([name_label])"
-
 /obj/item/reagent_container/food/snacks/set_origin_name_prefix(var/name_prefix)
 	made_from_player = name_prefix
 
@@ -2466,7 +2460,7 @@
 	reagents.add_reagent("cheese", 25)
 	reagents.add_reagent("sugar", 1)
 	reagents.add_reagent("sodiumchloride", 1)
-	reagents.add_reagent("universal enzyme", 1)
+	reagents.add_reagent("enzyme", 1)
 
 /obj/item/reagent_container/food/snacks/cheesewedge/extramature
 	name = "primordial cheese wedge"
@@ -2594,7 +2588,7 @@
 	. = ..()
 	reagents.add_reagent("bread", 1)
 	reagents.add_reagent("sodiumchloride", 1)
-	
+
 /*
 *PIZZA.
 *object parent for all the object pizza give the number of slice produce and the filling color.
@@ -2612,7 +2606,7 @@
 	name = "Mystery Pizza"
 	desc = "Edible looking, hunger inducing, mysterious pizza."
 	slice_path = /obj/item/reagent_container/food/snacks/mysteryslice
-	
+
 /obj/item/reagent_container/food/snacks/sliceable/pizza/mystery/Initialize()
 	. = ..()
 	reagents.add_reagent("bread", 15)
@@ -2628,7 +2622,7 @@
 	desc = "You go first."
 	filling_color = "#BAA14C"
 	bitesize = 2
-	
+
 /obj/item/reagent_container/food/snacks/mysteryslice/Initialize()
 	. = ..() // I'm not rewriting a chunk of cooking backend for this, so this just slices into random icons. Intriguing!
 	icon_state = pick("pizzamargheritaslice","meatpizzaslice","mushroompizzaslice","vegetablepizzaslice")
@@ -2864,7 +2858,7 @@
 			boxtotagto = boxes[boxes.len]
 
 		boxtotagto.boxtag = "[boxtotagto.boxtag][t]"
-
+		playsound(src, "paper_writing", 15, TRUE)
 		update_icon()
 		return
 	..()

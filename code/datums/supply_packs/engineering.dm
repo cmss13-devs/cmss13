@@ -1,16 +1,10 @@
-//*******************************************************************************
-//ENGINEERING
-//*******************************************************************************/
-
-
 /datum/supply_packs/sandbags
 	name = "empty sandbags crate (x50)"
 	contains = list(/obj/item/stack/sandbags_empty/full)
-	cost = RO_PRICE_VERY_CHEAP
+	cost = 20
 	containertype = /obj/structure/closet/crate/supply
 	containername = "empty sandbags crate"
 	group = "Engineering"
-
 
 /datum/supply_packs/sandbagskit
 	name = "sandbags construction kit (sandbags x50, etool x2)"
@@ -18,7 +12,7 @@
 					/obj/item/stack/sandbags_empty/full,
 					/obj/item/tool/shovel/etool,
 					/obj/item/tool/shovel/etool)
-	cost = RO_PRICE_CHEAP
+	cost = 30
 	containertype = /obj/structure/closet/crate/supply
 	containername = "sandbags construction kit"
 	group = "Engineering"
@@ -26,7 +20,7 @@
 /datum/supply_packs/metal
 	name = "metal sheets (x50)"
 	contains = list(/obj/item/stack/sheet/metal/large_stack)
-	cost = RO_PRICE_VERY_CHEAP
+	cost = 20
 	containertype = /obj/structure/closet/crate/supply
 	containername = "metal sheets crate"
 	group = "Engineering"
@@ -34,7 +28,7 @@
 /datum/supply_packs/plas
 	name = "plasteel sheets (x40)"
 	contains = list(/obj/item/stack/sheet/plasteel/med_large_stack)
-	cost = RO_PRICE_CHEAP
+	cost = 30
 	containertype = /obj/structure/closet/crate/supply
 	containername = "plasteel sheets crate"
 	group = "Engineering"
@@ -42,7 +36,7 @@
 /datum/supply_packs/glass
 	name = "glass sheets (x50)"
 	contains = list(/obj/item/stack/sheet/glass/large_stack)
-	cost = RO_PRICE_VERY_CHEAP
+	cost = 20
 	containertype = /obj/structure/closet/crate/supply
 	containername = "glass sheets crate"
 	group = "Engineering"
@@ -50,7 +44,7 @@
 /datum/supply_packs/wood50
 	name = "wooden planks (x50)"
 	contains = list(/obj/item/stack/sheet/wood/large_stack)
-	cost = RO_PRICE_VERY_CHEAP
+	cost = 20
 	containertype = /obj/structure/closet/crate/supply
 	containername = "wooden planks crate"
 	group = "Engineering"
@@ -60,30 +54,15 @@
 					/obj/item/stack/folding_barricade/three
 					)
 	name = "Folding Barricades (x3)"
-	cost = RO_PRICE_VERY_CHEAP
+	cost = 20
 	containertype = /obj/structure/closet/crate/supply
-	containername = "\improper folding barricades crate"
+	containername = "folding barricades crate"
 	group = "Engineering"
-
-/datum/supply_packs/binocs
-	name = "Mixed Binoculars Crate (x2 per, x6 total)"
-	cost = RO_PRICE_VERY_CHEAP
-	containertype = /obj/structure/closet/crate/green
-	containername = "Mixed Binoculars Crate"
-	group = "Engineering"
-	contains = list(
-		/obj/item/device/binoculars/range/designator,
-		/obj/item/device/binoculars/range/designator,
-		/obj/item/device/binoculars/range,
-		/obj/item/device/binoculars/range,
-		/obj/item/device/binoculars,
-		/obj/item/device/binoculars
-	)
 
 /datum/supply_packs/smescoil
 	name = "superconducting magnetic coil crate (x1)"
 	contains = list(/obj/item/stock_parts/smes_coil)
-	cost = RO_PRICE_CHEAP
+	cost = 30
 	containertype = /obj/structure/closet/crate/construction
 	containername = "superconducting magnetic coil crate"
 	group = "Engineering"
@@ -100,7 +79,7 @@
 					/obj/item/cell/high,
 					/obj/item/cell/high
 					)
-	cost = RO_PRICE_VERY_CHEAP
+	cost = 20
 	containertype = /obj/structure/closet/crate/construction
 	containername = "electrical maintenance crate"
 	group = "Engineering"
@@ -118,17 +97,9 @@
 					/obj/item/clothing/head/welding,
 					/obj/item/clothing/head/hardhat
 					)
-	cost = RO_PRICE_VERY_CHEAP
+	cost = 20
 	containertype = /obj/structure/closet/crate/construction
 	containername = "mechanical maintenance crate"
-	group = "Engineering"
-
-/datum/supply_packs/fueltank
-	name = "fuel tank crate (x1)"
-	contains = list(/obj/structure/reagent_dispensers/fueltank)
-	cost = RO_PRICE_VERY_CHEAP
-	containertype = /obj/structure/largecrate
-	containername = "fuel tank crate"
 	group = "Engineering"
 
 /datum/supply_packs/inflatable
@@ -138,7 +109,7 @@
 					/obj/item/storage/briefcase/inflatable,
 					/obj/item/storage/briefcase/inflatable
 					)
-	cost = RO_PRICE_VERY_CHEAP
+	cost = 20
 	containertype = /obj/structure/closet/crate/construction
 	containername = "inflatable barriers crate"
 	group = "Engineering"
@@ -150,7 +121,7 @@
 					/obj/item/storage/box/lights/mixed,
 					/obj/item/storage/box/lights/mixed
 					)
-	cost = RO_PRICE_VERY_CHEAP
+	cost = 20
 	containertype = /obj/structure/closet/crate/supply
 	containername = "replacement lights crate"
 	group = "Engineering"
@@ -163,15 +134,14 @@
 				/obj/item/stock_parts/matter_bin,
 				/obj/item/circuitboard/machine/pacman
 				)
-	cost = RO_PRICE_CHEAP
+	cost = 30
 	containername = "\improper P.A.C.M.A.N. portable generator construction kit"
 	containertype = /obj/structure/closet/crate/secure
 	group = "Engineering"
 
-
 /datum/supply_packs/super_pacman_parts
 	name = "Super P.A.C.M.A.N. portable generator parts"
-	cost = RO_PRICE_NORMAL
+	cost = 40
 	containername = "\improper Super P.A.C.M.A.N. portable generator construction kit"
 	containertype = /obj/structure/closet/crate/secure
 	group = "Engineering"

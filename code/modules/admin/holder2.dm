@@ -5,6 +5,7 @@ GLOBAL_PROTECT(href_token)
 
 /datum/admins
 	var/rank			= "Temporary Admin"
+	var/list/extra_titles		= null
 	var/client/owner	= null
 	var/rights = 0
 	var/fakekey			= null
@@ -21,7 +22,9 @@ GLOBAL_PROTECT(href_token)
 	///Whether this admin is invisiminning
 	var/invisimined = FALSE
 
-/datum/admins/New(initial_rank = "Temporary Admin", initial_rights = 0, ckey)
+	var/datum/filter_editor/filteriffic
+
+/datum/admins/New(initial_rank = "Temporary Admin", initial_rights = 0, ckey, list/new_extra_titles)
 	if(!ckey)
 		error("Admin datum created without a ckey argument. Datum has been deleted")
 		qdel(src)
@@ -31,6 +34,7 @@ GLOBAL_PROTECT(href_token)
 	rights = initial_rights
 	href_token = GenerateToken()
 	admin_datums[ckey] = src
+	extra_titles = new_extra_titles
 
 /datum/admins/proc/associate(client/C)
 	if(istype(C))
@@ -56,7 +60,7 @@ if rights_required == 0, then it simply checks if they are an admin.
 if it doesn't return 1 and show_msg=1 it will prints a message explaining why the check has failed
 generally it would be used like so:
 
-proc/admin_proc()
+/proc/admin_proc()
 	if(!check_rights(R_ADMIN)) return
 	to_world("you have enough rights!")
 

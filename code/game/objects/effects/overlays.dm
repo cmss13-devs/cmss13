@@ -69,8 +69,8 @@
 		pixel_x = dist_x * 32
 		pixel_y = dist_y * 32
 
-		var/offset_x = actual_pointed_atom?.pixel_x || 0
-		var/offset_y = actual_pointed_atom?.pixel_y || 0
+		var/offset_x = actual_pointed_atom ? get_pixel_position_x(actual_pointed_atom, relative = TRUE) : 0
+		var/offset_y = actual_pointed_atom ? get_pixel_position_y(actual_pointed_atom, relative = TRUE) : 0
 
 		animate(src, pixel_x = offset_x, pixel_y = offset_y, time = glide_time, easing = QUAD_EASING)
 
@@ -83,8 +83,11 @@
 /obj/effect/overlay/temp/point/big/greyscale
 	icon_state = "big_arrow_grey"
 
-/obj/effect/overlay/temp/point/big/greyscale
+/obj/effect/overlay/temp/point/big/observer
 	icon_state = "big_arrow_grey"
+	color = "#1c00f6"
+	invisibility = INVISIBILITY_OBSERVER
+	plane = GHOST_PLANE
 
 /obj/effect/overlay/temp/point/big/queen
 	icon_state = "big_arrow_grey"
@@ -220,9 +223,9 @@
 	name = "emp sparks"
 	effect_duration = 10
 
-	New(loc)
-		setDir(pick(cardinal))
-		..()
+/obj/effect/overlay/temp/emp_sparks/New(loc)
+	setDir(pick(cardinal))
+	..()
 
 /obj/effect/overlay/temp/emp_pulse
 	name = "emp pulse"
@@ -280,5 +283,5 @@
 /obj/effect/overlay/temp/acid_pool_splash
 	name = "acid splash"
 	icon = 'icons/mob/xenos/effects.dmi'
-	icon_state = "acidpoolsplash"
+	icon_state = "pool_splash"
 	effect_duration = 10 SECONDS

@@ -4,7 +4,7 @@
 	icon = 'icons/obj/structures/machinery/aibots.dmi'
 	layer = MOB_LAYER
 	luminosity = 3
-	use_power = 0
+	use_power = USE_POWER_NONE
 	var/obj/item/card/id/botcard			// the ID card that the bot "holds"
 	var/on = 1
 	unslashable = TRUE

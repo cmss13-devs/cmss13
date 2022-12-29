@@ -21,7 +21,7 @@ var/global/list/gene_tag_masks = list()   // Gene obfuscation for delicious tria
 // and mutant varieties use their uid converted to a string instead.
 // Looks like shit but it's sort of necessary.
 
-proc/populate_seed_list()
+/proc/populate_seed_list()
 
 	// Populate the global seed datum list.
 	for(var/type in typesof(/datum/seed)-/datum/seed)
@@ -47,7 +47,7 @@ proc/populate_seed_list()
 
 	while(gene_tags && gene_tags.len)
 		var/gene_tag = pick(gene_tags)
-		var/gene_mask = "[num2hex(rand(0,255))]"
+		var/gene_mask = "[num2hex(rand(0,255))] - [gene_tag]"
 
 		while(gene_mask in used_masks)
 			gene_mask = "[num2hex(rand(0,255))]"

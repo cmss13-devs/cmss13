@@ -13,7 +13,6 @@
 
 	var/stat = 0 //Whether a mob is alive or dead. TODO: Move this to living - Nodrak
 	var/chatWarn = 0 //Tracks how many times someone has spammed and gives them a no-no timer
-	var/talked = 0 //Won't let someone say something again in under a second.
 
 	var/atom/movable/screen/hands = null //robot
 
@@ -48,24 +47,53 @@
 	var/can_crawl = TRUE
 	var/monkeyizing = null	//Carbon
 	var/hand = null
-	var/eye_blind = null	//Carbon
-	var/eye_blurry = null	//Carbon
-	var/ear_deaf = null		//Carbon
-	var/ear_damage = null	//Carbon
-	var/stuttering = null	//Carbon
-	var/slurring = null		//Carbon
-	var/real_name = null
+
+	// status effects that decrease over time \\
+
+	/// timer for blinding
+	var/eye_blind = 0	//Carbon
+	/// Does the mob have blurry sight
+	var/eye_blurry = 0 //Carbon
+	var/ear_deaf = 0		//Carbon
+	var/ear_damage = 0	//Carbon
+	var/stuttering = 0	//Carbon
+	var/slurring = 0		//Carbon
+	var/paralyzed = 0		//Carbon
+	var/druggy = 0			//Carbon
+	var/confused = 0		//Carbon
+	var/drowsyness = 0.0//Carbon
+	var/dizziness = 0//Carbon
+	var/jitteriness = 0//Carbon
+	var/floatiness = 0
+	var/knocked_out = 0.0
+	var/stunned = 0.0
+	var/frozen = 0.0
+	var/knocked_down = 0.0
+	var/losebreath = 0.0//Carbon
+	var/dazed = 0.0
+	var/slowed = 0.0 // X_SLOW_AMOUNT
+	var/superslowed = 0.0 // X_SUPERSLOW_AMOUNT
+	var/shakecamera = 0
+
+	// bool status effects \\
+
+	/// bool that tracks if blind
+	var/blinded = 0
+	var/sleeping = 0		//Carbon
+	var/resting = 0			//Carbon
+	var/is_floating = 0
+	var/is_dizzy = 0
+	var/is_jittery = 0
+
+	// strings \\
+
+	var/real_name = ""
 	var/flavor_text = ""
 	var/med_record = ""
 	var/sec_record = ""
 	var/gen_record = ""
 	var/exploit_record = ""
-	var/blinded = null
-	var/druggy = 0			//Carbon
-	var/confused = 0		//Carbon
-	var/sleeping = 0		//Carbon
-	var/resting = 0			//Carbon
-	var/paralyzed = 0		//Carbon
+
 	var/gibbing = FALSE
 	var/lying = FALSE
 	var/lying_prev = 0
@@ -104,28 +132,14 @@
 	var/bodytemperature = 310.055	//98.7 F
 	var/old_x = 0
 	var/old_y = 0
-	var/drowsyness = 0.0//Carbon
-	var/dizziness = 0//Carbon
-	var/is_dizzy = 0
-	var/is_jittery = 0
-	var/jitteriness = 0//Carbon
-	var/is_floating = 0
-	var/floatiness = 0
+
 	var/charges = 0.0
 	var/nutrition = NUTRITION_NORMAL//Carbon
 
 	var/overeatduration = 0		// How long this guy is overeating //Carbon
-	var/knocked_out = 0.0
-	var/stunned = 0.0
-	var/frozen = 0.0
-	var/knocked_down = 0.0
-	var/losebreath = 0.0//Carbon
-	var/dazed = 0.0
-	var/slowed = 0.0 // X_SLOW_AMOUNT
-	var/superslowed = 0.0 // X_SUPERSLOW_AMOUNT
-	var/shakecamera = 0
 	var/recovery_constant = 1
 	var/a_intent = INTENT_HELP//Living
+	var/m_intent = MOVE_INTENT_RUN
 	var/lastKnownIP = null
 	var/obj/buckled = null//Living
 	var/obj/item/l_hand = null//Living

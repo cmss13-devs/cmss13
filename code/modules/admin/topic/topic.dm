@@ -582,7 +582,7 @@
 			to_chat(usr, SPAN_WARNING("Not a xeno"))
 			return
 
-		if(alert("Are you sure you want to reset xeno name for [X.ckey]?", , "Yes", "No") == "No")
+		if(alert("Are you sure you want to reset xeno name for [X.ckey]?", , "Yes", "No") != "Yes")
 			return
 
 		if(!X.ckey)
@@ -609,7 +609,7 @@
 		var/mob/M = locate(href_list["xenobanname"])
 
 		if(ismob(M) && X.client && X.client.xeno_name_ban)
-			if(alert("Are you sure you want to UNBAN [X.ckey] and let them use xeno name?", ,"Yes", "No") == "No")
+			if(alert("Are you sure you want to UNBAN [X.ckey] and let them use xeno name?", ,"Yes", "No") != "Yes")
 				return
 			X.client.xeno_name_ban = FALSE
 			X.client.prefs.xeno_name_ban = FALSE
@@ -626,7 +626,7 @@
 			to_chat(usr, SPAN_WARNING("Not a xeno"))
 			return
 
-		if(alert("Are you sure you want to BAN [X.ckey] from ever using any xeno name?", , "Yes", "No") == "No")
+		if(alert("Are you sure you want to BAN [X.ckey] from ever using any xeno name?", , "Yes", "No") != "Yes")
 			return
 
 		if(!X.ckey)
@@ -1026,7 +1026,7 @@
 	else if(href_list["makeyautja"])
 		if(!check_rights(R_SPAWN))	return
 
-		if(alert("Are you sure you want to make this person into a yautja? It will delete their old character.","Make Yautja","Yes","No") == "No")
+		if(alert("Are you sure you want to make this person into a yautja? It will delete their old character.","Make Yautja","Yes","No") != "Yes")
 			return
 
 		var/mob/H = locate(href_list["makeyautja"])
@@ -1260,6 +1260,10 @@
 		to_chat(src.owner, "You sent [input] to [H] via a secure channel.")
 		log_admin("[src.owner] replied to [key_name(H)]'s Syndicate message with the message [input].")
 		to_chat(H, "You hear something crackle in your headset for a moment before a voice speaks.  \"Please stand by for a message from your benefactor.  Message as follows, agent. <b>\"[input]\"</b>  Message ends.\"")
+
+	else if(href_list["UpdateFax"])
+		var/obj/structure/machinery/faxmachine/fax = locate(href_list["originfax"])
+		fax.update_departments()
 
 	else if(href_list["USCMFaxReply"])
 		var/mob/living/carbon/human/H = locate(href_list["USCMFaxReply"])
@@ -1729,7 +1733,7 @@
 	if(href_list["distress"]) //Distress Beacon, sends a random distress beacon when pressed
 		distress_cancel = FALSE
 		message_staff("[key_name_admin(usr)] has opted to SEND the distress beacon! Launching in 10 seconds... (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];distresscancel=\ref[usr]'>CANCEL</A>)")
-		addtimer(CALLBACK(src, .proc/accept_ert, usr, locate(href_list["distress"])), 10 SECONDS)
+		addtimer(CALLBACK(src, PROC_REF(accept_ert), usr, locate(href_list["distress"])), 10 SECONDS)
 		//unanswered_distress -= ref_person
 
 	if(href_list["destroyship"]) //Distress Beacon, sends a random distress beacon when pressed

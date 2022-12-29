@@ -450,36 +450,3 @@ As such, a new tracker datum must be constructed to follow proper child inherita
 #undef STATE_READY
 #undef STATE_BROKEN
 #undef STATE_LAUNCHED
-
-/*
-//Leaving this commented out for the CL pod, which should have a way to open from the outside.
-
-//This controller is for the escape pod berth (station side)
-/obj/structure/machinery/embedded_controller/radio/simple_docking_controller/escape_pod_berth
-	name = "escape pod berth controller"
-
-/obj/structure/machinery/embedded_controller/radio/simple_docking_controller/escape_pod_berth/Initialize()
-	. = ..()
-	docking_program = new/datum/computer/file/embedded_program/docking/simple/escape_pod(src)
-	program = docking_program
-
-/obj/structure/machinery/embedded_controller/radio/simple_docking_controller/escape_pod_berth/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
-	var/armed = null
-	if (istype(docking_program, /datum/computer/file/embedded_program/docking/simple/escape_pod))
-		var/datum/computer/file/embedded_program/docking/simple/escape_pod/P = docking_program
-		armed = P.armed
-
-	var/data[] = list(
-		"docking_status" = docking_program.get_docking_status(),
-		"override_enabled" = docking_program.override_enabled,
-		"armed" = armed,
-	)
-
-	ui = nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
-
-	if (!ui)
-		ui = new(user, src, ui_key, "escape_pod_berth_console.tmpl", name, 470, 290)
-		ui.set_initial_data(data)
-		ui.open()
-		ui.set_auto_update(1)
-*/

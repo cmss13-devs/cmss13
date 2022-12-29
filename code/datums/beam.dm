@@ -163,11 +163,11 @@
 		visible_message(SPAN_DANGER("[moving_human] screams out in pain as \the [src] moves across their eyes!"), SPAN_NOTICE("Aurgh!!! \The [src] moves across your unprotected eyes for a split-second!"))
 	else
 		if(HAS_TRAIT(moving_human, TRAIT_BIMEX))
-			visible_message(SPAN_NOTICE("[moving_human]'s BiMex© personal shades shine for a moment as \the [src] passes over them."), SPAN_NOTICE("Your BiMex© personal shades shine for a moment as \the [src] passes over them."))
+			visible_message(SPAN_NOTICE("[moving_human]'s BiMex© personal shades shine as \the [src] passes over them."), SPAN_NOTICE("Your BiMex© personal shades as \the [src] passes over them."))
 			//drip = bonus balloonchat
-			moving_human.balloon_alert_to_viewers(SPAN_NOTICE("[moving_human]'s BiMex© personal shades shine for a moment as \the [src] passes over them."), SPAN_NOTICE("Your BiMex© personal shades reflect \the [src]."))
+			moving_human.balloon_alert_to_viewers("[moving_human]'s BiMex© personal shades shine as they reflect \the [src].", "Your BiMex© personal shades reflect \the [src].")
 		else
-			visible_message(SPAN_NOTICE("[moving_human]'s headgear protects them from \the [src] passes over them."), SPAN_NOTICE("Your headgear protect you from  \the [src] passes over them."))
+			visible_message(SPAN_NOTICE("[moving_human]'s headgear protects them from \the [src]."), SPAN_NOTICE("Your headgear protects you from  \the [src]."))
 
 /obj/effect/ebeam/laser/intense
 	name = "intense laser beam"

@@ -416,6 +416,7 @@
 		return
 
 	COOLDOWN_START(designator, spotting_cooldown, designator.spotting_cooldown_delay)
+	human.face_atom(target)
 
 	///Add a decisecond to the default 1.5 seconds for each two tiles to hit.
 	var/distance = round(get_dist(target, human) * 0.5)

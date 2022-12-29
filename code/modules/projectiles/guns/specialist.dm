@@ -22,10 +22,7 @@
 	. = ..()
 	if(!has_aimed_shot)
 		return
-	var/dat = ""
-	dat += SPAN_NOTICE("This weapon has an unique ability, Aimed Shot, allowing it to deal great damage after a windup. ")
-	dat += SPAN_BOLDNOTICE("Additionally, the aimed shot can be sped up with a tracking laser, which is enabled by default but may be disabled.")
-	. += dat
+	. += SPAN_NOTICE("This weapon has an unique ability, Aimed Shot, allowing it to deal great damage after a windup.<br><b> Additionally, the aimed shot can be sped up with a tracking laser, which is enabled by default but may be disabled.</b>")
 
 /obj/item/weapon/gun/rifle/sniper/Initialize(mapload, spawn_empty)
 	if(has_aimed_shot)
@@ -96,6 +93,7 @@
 		return
 
 	sniper_rifle.aimed_shot_cooldown = world.time + sniper_rifle.aimed_shot_cooldown_delay
+	human.face_atom(target)
 
 	///Add a decisecond to the default 1.5 seconds for each two tiles to hit.
 	var/distance = round(get_dist(target, human) * 0.5)
@@ -242,28 +240,26 @@
 	button.overlays += IMG
 
 /datum/action/item_action/specialist/toggle_laser/can_use_action()
-	var/mob/living/carbon/human/human = owner
 	var/obj/item/weapon/gun/rifle/sniper/sniper_rifle = holder_item
 
-	if(!istype(human) || human.is_mob_incapacitated())
+	if(owner.is_mob_incapacitated())
 		return FALSE
 
-	if(sniper_rifle != human.r_hand && sniper_rifle != human.l_hand)
-		to_chat(human, SPAN_WARNING("How do you expect to do this without your sniper rifle?"))
+	if(owner.get_held_item() != sniper_rifle)
+		to_chat(owner, SPAN_WARNING("How do you expect to do this without the sniper rifle in your hand?"))
 		return FALSE
 	return TRUE
 
 /datum/action/item_action/specialist/toggle_laser/action_activate()
-	var/mob/living/carbon/human/human = owner
 	var/obj/item/weapon/gun/rifle/sniper/sniper_rifle = holder_item
 
-	if(sniper_rifle != human.r_hand && sniper_rifle != human.l_hand)
-		to_chat(human, SPAN_WARNING("How do you expect to do this without your sniper rifle?"))
+	if(owner.get_held_item() != sniper_rifle)
+		to_chat(owner, SPAN_WARNING("How do you expect to do this without the sniper rifle in your hand?"))
 		return FALSE
 
 	sniper_rifle.enable_aimed_shot_laser = !sniper_rifle.enable_aimed_shot_laser
-	human.visible_message(SPAN_NOTICE("[human] flips a switch on \the [sniper_rifle] and [sniper_rifle.enable_aimed_shot_laser ? "enables" : "disables"] its targeting laser."))
-	playsound(human, 'sound/machines/click.ogg', 15, TRUE)
+	owner.visible_message(SPAN_NOTICE("[owner] flips a switch on \the [sniper_rifle] and [sniper_rifle.enable_aimed_shot_laser ? "enables" : "disables"] its targeting laser."))
+	playsound(owner, 'sound/machines/click.ogg', 15, TRUE)
 	update_button_icon()
 
 //Pow! Headshot.

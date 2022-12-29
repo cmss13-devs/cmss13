@@ -58,7 +58,6 @@
 	// Are points associated with this vendor tied to its instance?
 	var/instanced_vendor_points = FALSE
 	var/vend_flags = VEND_CLUTTER_PROTECTION
-
 /*
 Explanation on stat flags:
 BROKEN						vendor is not operational and it's not a power issue
@@ -879,11 +878,15 @@ GLOBAL_LIST_EMPTY(vending_products)
 					to_chat(user, SPAN_WARNING("\The [item_to_stock] needs to be fully charged to restock it!"))
 					return
 
-			if(istype(item_to_stock, /obj/item/cell))
+			else if(istype(item_to_stock, /obj/item/cell))
 				var/obj/item/cell/C = item_to_stock
 				if(C.charge < C.maxcharge)
 					to_chat(user, SPAN_WARNING("\The [item_to_stock] needs to be fully charged to restock it!"))
 					return
+
+			else if(!additional_restock_checks(item_to_stock, user))
+				// the error message needs to go in the proc
+				return FALSE
 
 			if(item_to_stock.loc == user) //Inside the mob's inventory
 				if(item_to_stock.flags_item & WIELDED)
@@ -901,6 +904,10 @@ GLOBAL_LIST_EMPTY(vending_products)
 			update_derived_ammo_and_boxes_on_add(R)
 			updateUsrDialog()
 			return //We found our item, no reason to go on.
+
+/// additional restocking checks for individual vendor subtypes. Parse in item, do checks, return FALSE to fail. Include error message.
+/obj/structure/machinery/cm_vending/sorted/proc/additional_restock_checks(obj/item/item_to_stock, mob/user)
+	return TRUE
 
 //sending an /empty ammo box type path here will return corresponding regular (full) type of this box
 //if there is one set in corresponding_box_types or will return FALSE otherwise

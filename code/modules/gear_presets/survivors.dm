@@ -270,6 +270,15 @@
 
 	..()
 
+/datum/equipment_preset/survivor/doctor/ua
+	name = "Survivor - United Americas Doctor"
+	assignment = "United Americas Doctor"
+
+/datum/equipment_preset/survivor/doctor/ua/load_gear(mob/living/carbon/human/H)
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/chief_medical_officer(H), WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/surgery/green(H), WEAR_HEAD)
+
+	..()
 // ----- CL Survivor
 
 /datum/equipment_preset/survivor/corporate
@@ -537,6 +546,19 @@
 		add_ice_colony_survivor_equipment(H)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/norm(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/black(H), WEAR_FEET)
+
+	..()
+
+/datum/equipment_preset/survivor/civilian/ua
+	name = "Survivor - United Americas Assitant"
+	assignment = "United Americas Assitant"
+	skills = /datum/skills/civilian/survivor
+	flags = EQUIPMENT_PRESET_START_OF_ROUND
+	access = list(ACCESS_CIVILIAN_PUBLIC)
+
+/datum/equipment_preset/survivor/civilian/ua/load_gear(mob/living/carbon/human/H)
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/colonist/ua_civvies(H), WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/norm(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/black(H), WEAR_FEET)
 
 	..()
@@ -647,6 +669,16 @@
 /datum/equipment_preset/survivor/chaplain/solaris/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/holidaypriest(H), WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/nun_hood(H), WEAR_HEAD)
+
+	..()
+
+/datum/equipment_preset/survivor/chaplain/ua
+	name = "Survivor - United Americas Chaplain"
+	assignment = "United Americas Chaplain"
+
+/datum/equipment_preset/survivor/chaplain/ua/load_gear(mob/living/carbon/human/H)
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/internalaffairs(H), WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/bowlerhat(H), WEAR_HEAD)
 
 	..()
 
@@ -793,6 +825,17 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/welding/superior(H), WEAR_EYES)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/eng(H), WEAR_BACK)
 
+/datum/equipment_preset/survivor/engineer/ua
+	name = "Survivor - United Americas Journeyman Engineer"
+	assignment = "United Americas Engineer"
+
+/datum/equipment_preset/survivor/engineer/ua/load_gear(mob/living/carbon/human/H)
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/atmospheric_technician(H), WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/hardhat/dblue(H), WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/hazardvest/blue(H), WEAR_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/welding/superior(H), WEAR_EYES)
+	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/eng(H), WEAR_BACK)
+
 	..()
 
 // ----- Miner Survivor
@@ -869,6 +912,19 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/brown(H), WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/soft/yellow(H), WEAR_HEAD)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(H), WEAR_BACK)
+
+/datum/equipment_preset/survivor/trucker/ua
+	name = "Survivor - United Americas Logistics Specalist"
+	assignment = "United Americas Logistics Specalist"
+
+/datum/equipment_preset/survivor/trucker/ua/load_gear(mob/living/carbon/human/H)
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/det(H), WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/hazardvest/yellow(H), WEAR_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/meson(H), WEAR_EYES)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/dress(H), WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/soft/yellow(H), WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(H), WEAR_BACK)
+
 
 	..()
 
@@ -1306,13 +1362,14 @@
 /datum/equipment_preset/survivor/trucker/usmc/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/ct(H), WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/cargotech(H), WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine(H), WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/yellow(H), WEAR_HANDS)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/beanie(H), WEAR_HEAD)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/medium(H), WEAR_R_STORE)
-	add_random_survivor_equipment(H)
-	add_survivor_weapon(H)
-	add_survivor_weapon_pistol(H)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full(H), WEAR_R_STORE)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full(H), WEAR_L_STORE)
+	H.equip_to_slot_or_del(new /obj/item/stack/sheet/metal/large_stack(H), WEAR_IN_BACK)
+
 	..()
 
 
@@ -1336,10 +1393,8 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/white(H), WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/latex(H), WEAR_HANDS)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/surgery/green(H), WEAR_HEAD)
-	add_random_survivor_medical_gear(H)
-	add_random_survivor_equipment(H)
-	add_survivor_weapon(H)
-	add_survivor_weapon_pistol(H)
+
+	..()
 
 /datum/equipment_preset/survivor/engineer/usmc // Engieer
 	name = "Survivor - USCM Maintenance Technician (MT)"
@@ -1365,9 +1420,8 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine(H), WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/yellow(H), WEAR_HANDS)
 
-	add_random_survivor_equipment(H)
-	add_survivor_weapon(H)
-	add_survivor_weapon_pistol(H)
+
+	..()
 
 /datum/equipment_preset/survivor/engineer/usmc/load_rank(mob/living/carbon/human/H)
 	if(H.client)
@@ -1405,14 +1459,15 @@
 
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mmpo(H), WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/mp(H), WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/sec(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine(H), WEAR_HANDS)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/MP(H), WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/sechud(H), WEAR_EYES)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/beret/marine/mp(H), WEAR_HEAD)
-	add_random_survivor_equipment(H)
-	add_survivor_weapon(H)
-	add_survivor_weapon_pistol(H)
+
+
+	..()
 
 /datum/equipment_preset/survivor/security/usmc/load_rank(mob/living/carbon/human/human)
 	if(human.client && get_job_playtime(human.client, rank) < JOB_PLAYTIME_TIER_1)
@@ -1420,14 +1475,14 @@
 	return paygrade
 
 /datum/equipment_preset/survivor/usmc/commander // Colonial Supervisor
-	name = "USCM Executive Officer (XO)"
+	name = "Survivor - USCM Commanding Officer (CO)"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
 
 	idtype = /obj/item/card/id/silver
-	assignment = JOB_XO
-	rank = JOB_XO
+	assignment = JOB_CO
+	rank = JOB_CO
 	paygrade = "MO3"
-	role_comm_title = "XO"
+	role_comm_title = "CO"
 	minimum_age = 35
 	skills = /datum/skills/XO
 
@@ -1439,17 +1494,30 @@
 
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom/cdrcom(H), WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/bridge(H), WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/jacket/marine/service(H), WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/dress/commander(H), WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/beret/cm(H), WEAR_HEAD)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(H), WEAR_R_STORE)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/pistol/command(H), WEAR_L_STORE)
 	H.equip_to_slot_or_del(new /obj/item/device/binoculars/range/designator(H), WEAR_L_HAND)
-	add_random_survivor_equipment(H)
-	add_survivor_weapon(H)
-	add_survivor_weapon_pistol(H)
+	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/mateba/cmateba(H), WEAR_WAIST)
+	H.equip_to_slot_or_del(new /obj/item/weapon/gun/revolver/mateba/cmateba(H), WEAR_R_HAND)
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/revolver/mateba(H), WEAR_IN_BELT)
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/revolver/mateba(H), WEAR_IN_BELT)
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/revolver/mateba(H), WEAR_IN_BELT)
+	H.equip_to_slot_or_del(new /obj/item/device/binoculars/range/designator(H), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/clothing/mask/cigarette/cigar(H), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/tool/lighter/zippo/gold(H), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/reagent_container/food/drinks/bottle/davenport(H), WEAR_IN_BACK)
 
-/datum/equipment_preset/survivor/usmc/so // Colonial Supervisor
+
+	..()
+
+/datum/equipment_preset/survivor/usmc/commander/adjunct // Role for when old in lore CO passes away
+	name = "Survivor - USCM Commanding Officer Adjunct (CO)"
+	assignment = "Adjunct Commanding Officer"
+	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
+
+/datum/equipment_preset/survivor/usmc/so
 	name = "Survivor - USCM Staff Officer (SO)"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
 
@@ -1465,14 +1533,12 @@
 /datum/equipment_preset/survivor/usmc/so/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom(H), WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/bridge(H), WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/cmcap/ro(H), WEAR_HEAD)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(H), WEAR_L_STORE)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(H), WEAR_R_STORE)
-	H.equip_to_slot_or_del(new /obj/item/device/binoculars/range(H), WEAR_L_HAND)
-	add_random_survivor_equipment(H)
-	add_survivor_weapon(H)
-	add_survivor_weapon_pistol(H)
+	H.equip_to_slot_or_del(new /obj/item/device/binoculars/range(H), WEAR_IN_BACK)
+
+	..()
 
 /datum/equipment_preset/survivor/chaplain/usmc // Chaplain
 	name = "Survivor - USMC Chaplain"
@@ -1483,12 +1549,10 @@
 
 /datum/equipment_preset/survivor/chaplain/usmc/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine(H), WEAR_BODY)
-	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
-		add_ice_colony_survivor_equipment(H)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/satchel(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/cmcap(H), WEAR_HEAD)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/holidaypriest(H), WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
-	H.equip_to_slot_or_del(new /obj/item/storage/bible/booze(H.back), WEAR_IN_BACK)
+
 
 	..()

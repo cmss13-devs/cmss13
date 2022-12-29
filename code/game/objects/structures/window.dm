@@ -931,4 +931,4 @@
 		else
 			P.setDir(EAST)
 
-	INVOKE_ASYNC(P, /obj/structure/machinery/door.proc/close)
+	INVOKE_ASYNC(P, TYPE_PROC_REF(/obj/structure/machinery/door, close))

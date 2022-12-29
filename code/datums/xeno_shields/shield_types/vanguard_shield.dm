@@ -44,8 +44,7 @@
 			linked_xeno.overlay_shields()
 			var/datum/action/xeno_action/activable/cleave/cAction = get_xeno_action_by_type(linked_xeno, /datum/action/xeno_action/activable/cleave)
 			if (istype(cAction))
-				addtimer(CALLBACK(cAction, /datum/action/xeno_action/activable/cleave.proc/remove_buff), 7, TIMER_UNIQUE)
-			qdel(src)
+				addtimer(CALLBACK(cAction, TYPE_PROC_REF(/datum/action/xeno_action/activable/cleave, remove_buff)), 7, TIMER_UNIQUE)
 
 /datum/xeno_shield/vanguard/proc/notify_xeno()
 	if (!istype(linked_xeno))

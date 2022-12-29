@@ -10,7 +10,7 @@
 
 /datum/species/human/handle_on_fire(humanoidmob)
 	. = ..()
-	INVOKE_ASYNC(humanoidmob, /mob.proc/emote, pick("pain", "scream"))
+	INVOKE_ASYNC(humanoidmob, TYPE_PROC_REF(/mob, emote), pick("pain", "scream"))
 
 //Tougher humans, basically action movie protagonists.
 /datum/species/human/hero

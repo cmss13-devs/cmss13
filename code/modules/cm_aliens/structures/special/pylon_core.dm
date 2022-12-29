@@ -81,7 +81,7 @@
 			continue
 		if(istype(W, /obj/effect/alien/weeds/weedwall))
 			continue
-		addtimer(CALLBACK(W, /obj/effect/alien/weeds.proc/weed_expand, N), PYLON_WEEDS_REGROWTH_TIME, TIMER_UNIQUE)
+		addtimer(CALLBACK(W, TYPE_PROC_REF(/obj/effect/alien/weeds, weed_expand), N), PYLON_WEEDS_REGROWTH_TIME, TIMER_UNIQUE)
 
 	to_chat(xeno, SPAN_XENONOTICE("You have successfully repaired \the [name]."))
 	playsound(loc, "alien_resin_build", 25)
@@ -136,14 +136,14 @@
 			if((alert(M, "Are you sure that you want to destroy the hive core? (There will be a 5 minute cooldown before you can build another one.)", , "Yes", "No") != "Yes"))
 				return XENO_NO_DELAY_ACTION
 
-			INVOKE_ASYNC(src, .proc/startDestroying,M)
+			INVOKE_ASYNC(src, PROC_REF(startDestroying),M)
 			return XENO_NO_DELAY_ACTION
 
 		else if(world.time < XENOMORPH_PRE_SETUP_CUTOFF)
 			if((alert(M, "Are you sure that you want to remove the hive core? No cooldown will be applied.", , "Yes", "No") != "Yes"))
 				return XENO_NO_DELAY_ACTION
 
-			INVOKE_ASYNC(src, .proc/startDestroying,M)
+			INVOKE_ASYNC(src, PROC_REF(startDestroying),M)
 			return XENO_NO_DELAY_ACTION
 
 	if(linked_hive)
@@ -168,7 +168,7 @@
 			. = ..()
 			return
 		linked_hive.hivecore_cooldown = TRUE
-		INVOKE_ASYNC(src, .proc/cooldownFinish,linked_hive) // start cooldown
+		INVOKE_ASYNC(src, PROC_REF(cooldownFinish),linked_hive) // start cooldown
 		if(hardcore)
 			xeno_message(SPAN_XENOANNOUNCE("You can no longer gain new sisters or another Queen. Additionally, you are unable to heal if your Queen is dead"), 2, linked_hive.hivenumber)
 			linked_hive.hardcore = TRUE

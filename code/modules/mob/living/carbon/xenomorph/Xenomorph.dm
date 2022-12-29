@@ -389,11 +389,11 @@
 
 	if (caste.fire_immunity != FIRE_IMMUNITY_NONE)
 		if(caste.fire_immunity & FIRE_IMMUNITY_NO_IGNITE)
-			RegisterSignal(src, COMSIG_LIVING_PREIGNITION, .proc/fire_immune)
+			RegisterSignal(src, COMSIG_LIVING_PREIGNITION, PROC_REF(fire_immune))
 		RegisterSignal(src, list(
 			COMSIG_LIVING_FLAMER_CROSSED,
 			COMSIG_LIVING_FLAMER_FLAMED,
-		), .proc/flamer_crossed_immune)
+		), PROC_REF(flamer_crossed_immune))
 	else
 		UnregisterSignal(src, list(
 			COMSIG_LIVING_PREIGNITION,
@@ -493,7 +493,7 @@
 	job = caste.caste_type // Used for tracking the caste playtime
 	Decorate()
 
-	RegisterSignal(src, COMSIG_MOB_SCREECH_ACT, .proc/handle_screech_act)
+	RegisterSignal(src, COMSIG_MOB_SCREECH_ACT, PROC_REF(handle_screech_act))
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_XENO_SPAWN, src)
 
 /mob/living/carbon/Xenomorph/proc/handle_screech_act(var/mob/self, var/mob/living/carbon/Xenomorph/Queen/queen)
@@ -1034,9 +1034,9 @@
 /mob/living/carbon/Xenomorph/IgniteMob()
 	. = ..()
 	if (. & IGNITE_IGNITED)
-		RegisterSignal(src, COMSIG_XENO_PRE_HEAL, .proc/cancel_heal)
+		RegisterSignal(src, COMSIG_XENO_PRE_HEAL, PROC_REF(cancel_heal))
 		if(!caste || !(caste.fire_immunity & FIRE_IMMUNITY_NO_DAMAGE) || fire_reagent.fire_penetrating)
-			INVOKE_ASYNC(src, /mob.proc/emote, "roar")
+			INVOKE_ASYNC(src, TYPE_PROC_REF(/mob, emote), "roar")
 
 /mob/living/carbon/Xenomorph/ExtinguishMob()
 	. = ..()

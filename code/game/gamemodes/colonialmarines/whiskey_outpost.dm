@@ -125,7 +125,7 @@
 	switch(map_locale) //Switching it up.
 		if(0)
 			marine_announcement("This is Captain Hans Naiche, commander of the 3rd Battalion 'Dust Raiders' forces here on LV-624. In our attempts to establish a base on this planet, several of our patrols were wiped out by hostile creatures.  We're setting up a distress call, but we need you to hold [SSmapping.configs[GROUND_MAP].map_name] in order for our engineers to set up the relay. We're prepping several M402 mortar units to provide fire support. If they overrun your positon, we will be wiped out with no way to call for help. Hold the line or we all die.", "Captain Naiche, 3rd Battalion Command, LV-624 Garrison")
-	addtimer(CALLBACK(src, .proc/story_announce, 0), 3 MINUTES)
+	addtimer(CALLBACK(src, PROC_REF(story_announce), 0), 3 MINUTES)
 	return ..()
 
 /datum/game_mode/whiskey_outpost/proc/story_announce(var/time)
@@ -138,7 +138,7 @@
 			marine_announcement("Captain Naiche here. We've tracked the bulk of enemy forces on the move and [SSmapping.configs[GROUND_MAP].map_name] is likely to be hit before they reach the base. We need you to hold them off while we finish sending the distress call. Expect incoming within a few minutes. Godspeed, [SSmapping.configs[GROUND_MAP].map_name].", "Captain Naiche, 3rd Battalion Command, LV-624 Garrison")
 
 	if(time <= 2)
-		addtimer(CALLBACK(src, .proc/story_announce, time+1), 3 MINUTES)
+		addtimer(CALLBACK(src, PROC_REF(story_announce), time+1), 3 MINUTES)
 
 /datum/game_mode/whiskey_outpost/proc/update_controllers()
 	//Update controllers while we're on this mode

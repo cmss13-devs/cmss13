@@ -1,6 +1,0 @@
-author: "carlarctg"
-delete-after: True
-changes:
-  - balance: "Increased amount of slots in the SU-6's belt from 6 to 7."
-  - balance: "Smartpistol kit spawns with a full belt instead of two spare magazines."
-  - balance: "Increased Smartpistol damage from 25 to 30, reduced armor-piercing from 25 to 20."

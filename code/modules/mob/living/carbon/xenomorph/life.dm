@@ -76,7 +76,7 @@
 	if(!caste || !(caste.fire_immunity & FIRE_IMMUNITY_NO_DAMAGE) || fire_reagent.fire_penetrating)
 		var/dmg = armor_damage_reduction(GLOB.xeno_fire, PASSIVE_BURN_DAM_CALC(fire_reagent.intensityfire, fire_reagent.durationfire, fire_stacks))
 		apply_damage(dmg, BURN)
-		INVOKE_ASYNC(src, /mob.proc/emote, pick("roar", "needhelp"))
+		INVOKE_ASYNC(src, TYPE_PROC_REF(/mob, emote), pick("roar", "needhelp"))
 
 #undef PASSIVE_BURN_DAM_CALC
 
@@ -495,7 +495,7 @@ Make sure their actual health updates immediately.*/
 				var/grace_time = crit_grace_time > 0 ? crit_grace_time + (1 SECONDS * max(round(warding_aura - 1), 0)) : 0
 				if(grace_time)
 					sound_environment_override = SOUND_ENVIRONMENT_PSYCHOTIC
-					addtimer(CALLBACK(src, .proc/handle_crit), grace_time)
+					addtimer(CALLBACK(src, PROC_REF(handle_crit)), grace_time)
 				else
 					handle_crit()
 				next_grace_time = world.time + grace_time

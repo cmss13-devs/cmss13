@@ -102,10 +102,10 @@
 	switch(severity)
 		if(0 to EXPLOSION_THRESHOLD_LOW)
 			if(prob(25))
-				INVOKE_ASYNC(src, .proc/malfunction)
+				INVOKE_ASYNC(src, PROC_REF(malfunction))
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			if(prob(50))
-				INVOKE_ASYNC(src, .proc/malfunction)
+				INVOKE_ASYNC(src, PROC_REF(malfunction))
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
 			deconstruct(FALSE)
 
@@ -730,7 +730,7 @@
 /obj/structure/machinery/vending/power_change()
 	..()
 	if(stat & NOPOWER)
-		addtimer(CALLBACK(src, .proc/update_icon), rand(1, 15))
+		addtimer(CALLBACK(src, PROC_REF(update_icon)), rand(1, 15))
 		return
 	update_icon()
 

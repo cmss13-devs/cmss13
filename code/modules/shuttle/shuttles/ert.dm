@@ -5,6 +5,10 @@
 #define ERT_SHUTTLE_DEFAULT_CALLTIME 30 SECONDS
 #define ERT_SHUTTLE_DEFAULT_RECHARGE 90 SECONDS
 
+#define ADMIN_LANDING_PAD_1 "base-ert1"
+#define ADMIN_LANDING_PAD_2 "base-ert2"
+#define ADMIN_LANDING_PAD_3 "base-ert3"
+
 // Base ERT Shuttle
 /obj/docking_port/mobile/emergency_response
 	name = "ERT Shuttle"
@@ -22,6 +26,8 @@
 		for(var/obj/structure/machinery/door/airlock/air in place)
 			doors += list(air)
 			air.breakable = FALSE
+			air.indestructible = TRUE
+			air.unacidable = TRUE
 
 /obj/docking_port/mobile/emergency_response/enterTransit()
 	control_doors("force-lock-launch")
@@ -107,30 +113,30 @@
 /obj/docking_port/stationary/emergency_response/idle_port1
 	name = "Response Station Landing Pad 1"
 	dir = NORTH
-	id = "base-ert1"
-	roundstart_template = /datum/map_template/shuttle/ert1
+	id = ADMIN_LANDING_PAD_1
+	roundstart_template = /datum/map_template/shuttle/response_ert
 
 /obj/docking_port/stationary/emergency_response/idle_port2
 	name = "Response Station Landing Pad 2"
 	dir = NORTH
-	id = "base-ert2"
-	roundstart_template = /datum/map_template/shuttle/ert2
+	id = ADMIN_LANDING_PAD_2
+	roundstart_template = /datum/map_template/shuttle/pmc_ert
 
 /obj/docking_port/stationary/emergency_response/idle_port3
 	name = "Response Station Landing Pad 3"
 	dir = NORTH
-	id = "base-ert3"
-	roundstart_template = /datum/map_template/shuttle/ert3
+	id = ADMIN_LANDING_PAD_3
+	roundstart_template = /datum/map_template/shuttle/upp_ert
 
-/datum/map_template/shuttle/ert1
+/datum/map_template/shuttle/response_ert
 	name = "ERT Shuttle 1"
-	shuttle_id = "ert_shuttle_1"
+	shuttle_id = "ert_response_shuttle"
 
-/datum/map_template/shuttle/ert2
+/datum/map_template/shuttle/pmc_ert
 	name = "ERT Shuttle 2"
-	shuttle_id = "ert_shuttle_2"
+	shuttle_id = "ert_pmc_shuttle"
 
-/datum/map_template/shuttle/ert3
+/datum/map_template/shuttle/upp_ert
 	name = "ERT Shuttle 3"
-	shuttle_id = "ert_shuttle_3"
+	shuttle_id = "ert_upp_shuttle"
 

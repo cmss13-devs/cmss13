@@ -1348,7 +1348,7 @@
 
 // ----- Generic USMC Survivors
 
-/datum/equipment_preset/survivor/trucker/usmc //Trucker
+/datum/equipment_preset/survivor/trucker/uscm //Trucker
 	name = "Survivor - USCM Cargo Technician (CT)"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
 
@@ -1359,7 +1359,7 @@
 	role_comm_title = "CT"
 	skills = /datum/skills/civilian/survivor/trucker
 
-/datum/equipment_preset/survivor/trucker/usmc/load_gear(mob/living/carbon/human/H)
+/datum/equipment_preset/survivor/trucker/uscm/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/ct(H), WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/cargotech(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(H), WEAR_BACK)
@@ -1373,7 +1373,7 @@
 	..()
 
 
-/datum/equipment_preset/survivor/doctor/usmc //doctor
+/datum/equipment_preset/survivor/doctor/uscm //doctor
 	name = "Survivor - USCM Doctor"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
 
@@ -1385,7 +1385,7 @@
 	skills = /datum/skills/civilian/survivor/doctor
 
 
-/datum/equipment_preset/survivor/doctor/usmc/load_gear(mob/living/carbon/human/H)
+/datum/equipment_preset/survivor/doctor/uscm/load_gear(mob/living/carbon/human/H)
 
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/doc(H), WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/medical/green(H), WEAR_BODY)
@@ -1396,7 +1396,7 @@
 
 	..()
 
-/datum/equipment_preset/survivor/engineer/usmc // Engieer
+/datum/equipment_preset/survivor/engineer/uscm // Engieer
 	name = "Survivor - USCM Maintenance Technician (MT)"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
 
@@ -1411,7 +1411,7 @@
 	role_comm_title = "MT"
 	skills = /datum/skills/civilian/survivor/engineer
 
-/datum/equipment_preset/survivor/engineer/usmc/load_gear(mob/living/carbon/human/H)
+/datum/equipment_preset/survivor/engineer/uscm/load_gear(mob/living/carbon/human/H)
 
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mt(H), WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/engi(H), WEAR_BODY)
@@ -1423,13 +1423,13 @@
 
 	..()
 
-/datum/equipment_preset/survivor/engineer/usmc/load_rank(mob/living/carbon/human/H)
+/datum/equipment_preset/survivor/engineer/uscm/load_rank(mob/living/carbon/human/H)
 	if(H.client)
 		if(get_job_playtime(H.client, rank) < JOB_PLAYTIME_TIER_1)
 			return "ME1"
 	return paygrade
 
-/datum/equipment_preset/survivor/security/usmc // Security
+/datum/equipment_preset/survivor/security/uscm // Security
 	name = "Survivor - USCM Military Police (MP)"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
 
@@ -1455,7 +1455,7 @@
 	role_comm_title = "MP"
 	skills = /datum/skills/civilian/survivor/marshal
 
-/datum/equipment_preset/survivor/security/usmc/load_gear(mob/living/carbon/human/H)
+/datum/equipment_preset/survivor/security/uscm/load_gear(mob/living/carbon/human/H)
 
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mmpo(H), WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/mp(H), WEAR_BODY)
@@ -1469,12 +1469,12 @@
 
 	..()
 
-/datum/equipment_preset/survivor/security/usmc/load_rank(mob/living/carbon/human/human)
+/datum/equipment_preset/survivor/security/uscm/load_rank(mob/living/carbon/human/human)
 	if(human.client && get_job_playtime(human.client, rank) < JOB_PLAYTIME_TIER_1)
 		return "ME3"
 	return paygrade
 
-/datum/equipment_preset/survivor/usmc/commander // Colonial Supervisor
+/datum/equipment_preset/survivor/uscm/commander // Colonial Supervisor
 	name = "Survivor - USCM Commanding Officer (CO)"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
 
@@ -1486,11 +1486,11 @@
 	minimum_age = 35
 	skills = /datum/skills/XO
 
-/datum/equipment_preset/survivor/usmc/commander/New()
+/datum/equipment_preset/survivor/uscm/commander/New()
 	. = ..()
 	access = get_all_marine_access()
 
-/datum/equipment_preset/survivor/usmc/commander/load_gear(mob/living/carbon/human/H)
+/datum/equipment_preset/survivor/uscm/commander/load_gear(mob/living/carbon/human/H)
 
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom/cdrcom(H), WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/bridge(H), WEAR_BODY)
@@ -1512,12 +1512,12 @@
 
 	..()
 
-/datum/equipment_preset/survivor/usmc/commander/adjunct // Role for when old in lore CO passes away
+/datum/equipment_preset/survivor/uscm/commander/adjunct // Role for when old in lore CO passes away
 	name = "Survivor - USCM Commanding Officer Adjunct (CO)"
 	assignment = "Adjunct Commanding Officer"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
 
-/datum/equipment_preset/survivor/usmc/so
+/datum/equipment_preset/survivor/uscm/so
 	name = "Survivor - USCM Staff Officer (SO)"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
 
@@ -1530,7 +1530,7 @@
 	minimum_age = 25
 	skills = /datum/skills/SO
 
-/datum/equipment_preset/survivor/usmc/so/load_gear(mob/living/carbon/human/H)
+/datum/equipment_preset/survivor/uscm/so/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom(H), WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/bridge(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(H), WEAR_BACK)
@@ -1540,14 +1540,14 @@
 
 	..()
 
-/datum/equipment_preset/survivor/chaplain/usmc // Chaplain
-	name = "Survivor - USMC Chaplain"
+/datum/equipment_preset/survivor/chaplain/uscm // Chaplain
+	name = "Survivor - USCM Chaplain"
 	assignment = "Chaplain"
 	skills = /datum/skills/civilian/survivor/chaplain
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_BRIG, ACCESS_CIVILIAN_COMMAND)
 
-/datum/equipment_preset/survivor/chaplain/usmc/load_gear(mob/living/carbon/human/H)
+/datum/equipment_preset/survivor/chaplain/uscm/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/satchel(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/cmcap(H), WEAR_HEAD)

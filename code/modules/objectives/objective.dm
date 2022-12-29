@@ -62,3 +62,7 @@
 // Make this objective call process() and check_completion() every SS tick.
 /datum/cm_objective/proc/activate()
 	SSobjectives.start_processing_objective(src)
+
+// Stops the Objective from processing
+/datum/cm_objective/proc/deactivate()
+	SSobjectives.stop_processing_objective(src)

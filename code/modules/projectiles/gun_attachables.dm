@@ -2360,7 +2360,14 @@ Defined in conflicts.dm of the #defines folder.
 	scatter_mod = SCATTER_AMOUNT_TIER_9
 	recoil_mod = RECOIL_AMOUNT_TIER_5
 
+/obj/item/attachable/bipod/Attach(obj/item/weapon/gun/G)
+	..()
+
+	RegisterSignal(G, COMSIG_ITEM_DROPPED, PROC_REF(handle_drop))
+
 /obj/item/attachable/bipod/Detach(var/mob/user, var/obj/item/weapon/gun/detaching_gub)
+	UnregisterSignal(detaching_gub, COMSIG_ITEM_DROPPED)
+
 	if(bipod_deployed)
 		undeploy_bipod(detaching_gub)
 	..()
@@ -2379,6 +2386,16 @@ Defined in conflicts.dm of the #defines folder.
 		for(var/datum/action/A as anything in gun.actions)
 			A.update_button_icon()
 
+/obj/item/attachable/bipod/proc/handle_drop(obj/item/weapon/gun/G, mob/living/carbon/human/user)
+	SIGNAL_HANDLER
+
+	UnregisterSignal(user, COMSIG_MOB_MOVE_OR_LOOK)
+
+	if(bipod_deployed)
+		undeploy_bipod(G)
+		user.apply_effect(1, SUPERSLOW)
+		user.apply_effect(2, SLOW)
+
 /obj/item/attachable/bipod/proc/undeploy_bipod(obj/item/weapon/gun/G)
 	bipod_deployed = FALSE
 	accuracy_mod = -HIT_ACCURACY_MULT_TIER_5
@@ -2391,10 +2408,13 @@ Defined in conflicts.dm of the #defines folder.
 	if(isliving(G.loc))
 		user = G.loc
 		UnregisterSignal(user, COMSIG_MOB_MOVE_OR_LOOK)
-	playsound(user,'sound/items/m56dauto_rotate.ogg', 55, 1)
+
 	if(G.flags_gun_features & GUN_SUPPORT_PLATFORM)
 		G.remove_bullet_trait("iff")
-	update_icon()
+
+	if(!QDELETED(G))
+		playsound(user,'sound/items/m56dauto_rotate.ogg', 55, 1)
+		update_icon()
 
 /obj/item/attachable/bipod/activate_attachment(obj/item/weapon/gun/G,mob/living/user, turn_off)
 	if(turn_off)

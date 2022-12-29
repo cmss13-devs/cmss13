@@ -934,3 +934,20 @@
   - bugfix: a couple subsystems now report their initialisation correctly.
   stanalbatross:
   - ui: converted the rarely used gas tanks to tgui
+2022-12-29:
+  Casper:
+  - bugfix: sling pouch is now more reliable while moving
+  - bugfix: fixed bipod slow never being removed on weapon drop
+  Lacasitospro:
+  - bugfix: Fixes webbings' side states being too bulky
+  ThePiachu:
+  - rscadd: Re-added the old objective of rescuing survivors. Now each survivor rescued
+      alive and brought to Almayer will net the USCM a good deal of points for their
+      Techweb.
+  carlarctg:
+  - bugfix: Fix bug in which xenos couldn't eat fruit below default max health
+  - rscadd: Adds a cosmetic garb slot to boonie hats and other USCM caps.
+  - code_imp: Slightly improved cmcap code.
+  - bugfix: Fixed entering APC being 0.1 seconds instead of 1 second.
+  harryob:
+  - code_imp: 515 compatibility is here

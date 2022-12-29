@@ -5,7 +5,10 @@ After dying, ask yourself what you did wrong and make a mental note to not make 
 Communication, be it from a marine to a marine, a drone to the queen, or command to everyone, is vital and information on flanks can change how the entire round plays out.
 As an alien or marine, be careful of the flank, regardless of if the push is going well or stalling out.
 Half of getting good is knowing to be aggressive. The other half is knowing when not to be aggressive.
-Past lives have absolutely no effect on the chain of command.
 Alt-click a storage item to draw the last item in it (last non-weapon if it's a weapon belt). Middle-click a storage item to inmediately open it, and middle-click structures to attempt to vault them.
-A more shiny medal or higher xeno rank does not make you better at the game.
 Use "North, South, East, West" when referring to locations in-game rather than "up, down, left, right".
+You shouldn't ignore what your allies are up to. Sometimes they can be organizing a flank in hivemind/radio, sometimes they can be walking up behind you with a slug-loaded shotgun. Either way, it pays to be alert to what they're doing, as much to as what the enemies are.
+The Wiki (https://cm-ss13.com/wiki) is a very useful repository of information about the game, such as weapons, equipment, xenomorph castes and their strains. It may not be fully up to date the majority of the time, but the basics are usually accurate.
+As an observer, you may see how much remaining hijack time is left in the status panel.
+Embrace the suck.
+Any applied damage has a small chance of being a critical hit, reducing armor's reduction of it to its minimal efficiency. For some reason.

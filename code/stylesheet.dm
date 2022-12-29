@@ -1,4 +1,4 @@
-client/script = {"<style>
+/client/script = {"<style>
 body					{font-family: Verdana, sans-serif;}
 
 h1, h2, h3, h4, h5, h6	{color: #0000ff;	font-family: Georgia, Verdana, sans-serif;}
@@ -48,7 +48,7 @@ em						{font-style: normal;	font-weight: bold;}
 .jtacradio				{color: #702963;}
 .intelradio				{color: #027D02;}
 .wyradio				{color: #FE9B24;}
-.cctradio				{color: #A13852;}
+.pmcradio				{color: #A13852;}
 
 .clfradio				{color: #6f679c}
 

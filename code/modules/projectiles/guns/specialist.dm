@@ -554,8 +554,10 @@
 	///gun update_icon doesn't detect that guns with no magazine are loaded or not, and will always append _o or _e if possible.
 	var/GL_has_open_icon = FALSE
 
-	///Internal storage item used as magazine. Must be initialised to work! Set parameters by variables or it will inherit standard numbers from storage.dm. Got to call it *something* and 'magazine' or w/e would be confusing. If FALSE, is not active.
-	var/obj/item/storage/internal/cylinder = FALSE
+	///Internal storage item used as magazine. Must be initialised to work! Set parameters by variables or it will inherit standard numbers from storage.dm. Got to call it *something* and 'magazine' or w/e would be confusing.
+	var/obj/item/storage/internal/cylinder
+	 /// Variable that initializes the above.
+	var/has_cylinder = FALSE
 	///What single item to fill the storage with, if any. This does not respect w_class.
 	var/preload
 	///How many items can be inserted. "Null" = backpack-style size-based inventory. You'll have to set max_storage_space too if you do that, and arrange any initial contents. Iff you arrange to put in more items than the storage can hold, they can be taken out but not replaced.
@@ -569,8 +571,8 @@
 
 /obj/item/weapon/gun/launcher/Initialize(mapload, spawn_empty) //If changing vars on init, be sure to do the parent proccall *after* the change.
 	. = ..()
-	if(cylinder)
-		cylinder = new/obj/item/storage/internal(src)
+	if(has_cylinder)
+		cylinder = new /obj/item/storage/internal(src)
 		cylinder.storage_slots = internal_slots
 		cylinder.max_w_class = internal_max_w_class
 		cylinder.use_sound = use_sound
@@ -601,7 +603,7 @@
 	reload_sound = 'sound/weapons/gun_shotgun_open2.ogg' //Played when inserting nade.
 	unload_sound = 'sound/weapons/gun_revolver_unload.ogg'
 
-	cylinder = TRUE //This weapon won't work otherwise.
+	has_cylinder = TRUE //This weapon won't work otherwise.
 	preload = /obj/item/explosive/grenade/HE
 	internal_slots = 1 //This weapon must use slots.
 	internal_max_w_class = SIZE_MEDIUM //MEDIUM = M15.
@@ -644,10 +646,10 @@
 		. += SPAN_NOTICE("It is empty.")
 
 
-obj/item/weapon/gun/launcher/grenade/update_icon()
+/obj/item/weapon/gun/launcher/grenade/update_icon()
 	..()
 	var/GL_sprite = base_gun_icon
-	if(GL_has_empty_icon && !length(cylinder.contents))
+	if(GL_has_empty_icon && cylinder && !length(cylinder.contents))
 		GL_sprite += "_e"
 		playsound(loc, cocked_sound, 25, 1)
 	if(GL_has_open_icon && open_chamber)
@@ -1215,7 +1217,7 @@ obj/item/weapon/gun/launcher/grenade/update_icon()
 
 /obj/item/weapon/gun/launcher/rocket/anti_tank/disposable/proc/fold(mob/user)
 	var/obj/item/prop/folded_anti_tank_sadar/F = new /obj/item/prop/folded_anti_tank_sadar(src.loc)
-	F.set_name_label(name_label)
+	transfer_label_component(F)
 	qdel(src)
 	user.put_in_active_hand(F)
 
@@ -1252,7 +1254,7 @@ obj/item/weapon/gun/launcher/grenade/update_icon()
 
 /obj/item/prop/folded_anti_tank_sadar/proc/unfold(mob/user)
 	var/obj/item/weapon/gun/launcher/rocket/anti_tank/disposable/F = new /obj/item/weapon/gun/launcher/rocket/anti_tank/disposable(src.loc)
-	F.set_name_label(name_label)
+	transfer_label_component(F)
 	qdel(src)
 	user.put_in_active_hand(F)
 
@@ -1299,7 +1301,7 @@ obj/item/weapon/gun/launcher/grenade/update_icon()
 	..()
 	fire_delay = FIRE_DELAY_TIER_10
 	accuracy_mult = BASE_ACCURACY_MULT
-	accuracy_mult_unwielded = -MOVEMENT_ACCURACY_PENALTY_MULT_TIER_1
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_10
 	scatter = 0
 	recoil = RECOIL_AMOUNT_TIER_4
 	recoil_unwielded = RECOIL_AMOUNT_TIER_4

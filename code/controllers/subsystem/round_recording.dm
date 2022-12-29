@@ -10,7 +10,7 @@ SUBSYSTEM_DEF(round_recording)
 /datum/controller/subsystem/round_recording/Initialize()
 	recorder = new()
 	can_fire = FALSE
-	return ..()
+	return SS_INIT_SUCCESS
 
 // use CONFIG_GET(flag/record_rounds)
 

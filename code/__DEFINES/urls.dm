@@ -35,7 +35,6 @@
 #define URL_WIKI_CMP_GUIDE			"https://cm-ss13.com/wiki/Chief_MP" // MP Roles //
 #define URL_WIKI_MW_GUIDE			"https://cm-ss13.com/wiki/Warden"
 #define URL_WIKI_MP_GUIDE			"https://cm-ss13.com/wiki/Military_Police"
-#define URL_WIKI_MPC_GUIDE			"https://cm-ss13.com/wiki/Military_Police_Cadet"
 #define URL_WIKI_PO_GUIDE			"https://cm-ss13.com/wiki/Pilot_Officer" // Auxiliary Support
 #define URL_WIKI_DCC_GUIDE			"https://cm-ss13.com/wiki/Dropship_Crew_Chief"
 #define URL_WIKI_VC_GUIDE			"https://cm-ss13.com/wiki/Vehicle_Crewman"

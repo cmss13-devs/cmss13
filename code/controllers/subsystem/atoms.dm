@@ -23,7 +23,7 @@ SUBSYSTEM_DEF(atoms)
 	// bugging out and not populating with the correct packet names
 	// due to this list not being instantiated.
 	populate_seed_list()
-	return ..()
+	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/atoms/proc/InitializeAtoms(list/atoms)
 	if(initialized == INITIALIZATION_INSSATOMS)
@@ -40,13 +40,13 @@ SUBSYSTEM_DEF(atoms)
 		for(var/I in atoms)
 			var/atom/A = I
 			if(!(A.flags_atom & INITIALIZED))
-				InitAtom(I, mapload_arg)
+				InitAtom(I, TRUE, mapload_arg)
 				CHECK_TICK
 	else
 		count = 0
 		for(var/atom/A in world)
 			if(!(A.flags_atom & INITIALIZED))
-				InitAtom(A, mapload_arg)
+				InitAtom(A, FALSE, mapload_arg)
 				++count
 				CHECK_TICK
 
@@ -63,7 +63,7 @@ SUBSYSTEM_DEF(atoms)
 		late_loaders.Cut()
 
 /// Init this specific atom
-/datum/controller/subsystem/atoms/proc/InitAtom(atom/A, list/arguments)
+/datum/controller/subsystem/atoms/proc/InitAtom(atom/A, from_template = FALSE, list/arguments)
 	var/the_type = A.type
 	if(QDELING(A))
 		BadInitializeCalls[the_type] |= BAD_INIT_QDEL_BEFORE
@@ -100,6 +100,12 @@ SUBSYSTEM_DEF(atoms)
 		qdeleted = TRUE
 	else if(!(A.flags_atom & INITIALIZED))
 		BadInitializeCalls[the_type] |= BAD_INIT_DIDNT_INIT
+	/*
+	else
+		SEND_SIGNAL(A,COMSIG_ATOM_AFTER_SUCCESSFUL_INITIALIZE)
+		if(created_atoms && from_template && ispath(the_type, /atom/movable))//we only want to populate the list with movables
+			created_atoms += A.get_all_contents()
+	*/
 
 	return qdeleted || QDELING(A)
 

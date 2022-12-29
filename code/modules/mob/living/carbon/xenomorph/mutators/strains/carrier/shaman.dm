@@ -10,6 +10,7 @@
 		/datum/action/xeno_action/onclick/plant_weeds,
 		/datum/action/xeno_action/onclick/place_trap,
 		/datum/action/xeno_action/activable/retrieve_egg,
+		/datum/action/xeno_action/onclick/set_hugger_reserve,
 	)
 	mutator_actions_to_add = list(
 		/datum/action/xeno_action/activable/sacrifice_egg/radius_remember,

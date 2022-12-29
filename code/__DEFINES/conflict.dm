@@ -12,9 +12,9 @@
 #define HEADSHOT_OVERLAY_HEAVY "heavy_headshot"
 
 #define AMMO_EXPLOSIVE 			(1<<0)
-#define AMMO_XENO_ACID 			(1<<1)
-#define AMMO_XENO_TOX			(1<<2)
-#define AMMO_XENO_BONE			(1<<3) // Needed for some boneshards based abilities
+#define AMMO_ACIDIC 			(1<<1)
+#define AMMO_XENO				(1<<2)
+#define AMMO_LASER				(1<<3)
 #define AMMO_ENERGY 			(1<<4)
 #define AMMO_ROCKET				(1<<5)
 #define AMMO_SNIPER				(1<<6)

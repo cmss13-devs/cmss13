@@ -166,7 +166,7 @@
 			if(dock_reserved)
 				to_chat(usr, SPAN_WARNING("\The [dock] is currently in use."))
 				return TRUE
-			ert.request(dock)
+			SSshuttle.moveShuttle(ert, dock, TRUE)
 			to_chat(usr, SPAN_NOTICE("You begin the launch sequence to [dock]."))
 			return TRUE
 		if("button-push")

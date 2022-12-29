@@ -28,7 +28,7 @@
 		host_box = loc
 	handle_side_effects(host_box)
 	//need to make sure we delete the structure box if it exists, it will handle the deletion of ammo box inside
-	addtimer(CALLBACK(GLOBAL_PROC, .proc/qdel, (host_box ? host_box : src)), 7 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, PROC_REF(qdel), (host_box ? host_box : src)), 7 SECONDS)
 	return
 
 /obj/item/ammo_box/magazine/misc/handle_side_effects(var/obj/structure/magazine_box/host_box)
@@ -97,7 +97,7 @@
 		host_box = loc
 	var/flare_amount = get_severity()
 	//need to make sure we delete the structure box if it exists, it will handle the deletion of ammo box inside
-	addtimer(CALLBACK(GLOBAL_PROC, .proc/qdel, (host_box ? host_box : src)), 7 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, PROC_REF(qdel), (host_box ? host_box : src)), 7 SECONDS)
 	if(flare_amount > 0)
 		handle_side_effects(host_box, TRUE)
 
@@ -105,7 +105,7 @@
 		for(var/turf/T in range(5, (host_box ? host_box : src)))
 			turf_list += T
 		for(var/i = 1, i <= flare_amount, i++)
-			addtimer(CALLBACK(src, .proc/explode, (host_box ? host_box : src), turf_list), rand(1, 6) SECONDS)
+			addtimer(CALLBACK(src, PROC_REF(explode), (host_box ? host_box : src), turf_list), rand(1, 6) SECONDS)
 		return
 	handle_side_effects(host_box)
 	return
@@ -133,7 +133,7 @@
 	var/obj/item/device/flashlight/flare/on/F = new (get_turf(host_box ? host_box : src))
 	playsound(src,'sound/handling/flare_activate_2.ogg', 50, 1)
 
-	INVOKE_ASYNC(F, /atom/movable.proc/throw_atom, target_turf, range, speed, null, TRUE)
+	INVOKE_ASYNC(F, TYPE_PROC_REF(/atom/movable, throw_atom), target_turf, range, speed, null, TRUE)
 	return
 
 /obj/item/ammo_box/magazine/misc/flares/empty

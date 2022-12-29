@@ -576,7 +576,7 @@
 	window_frame = /obj/structure/window_frame/almayer/white
 
 /obj/structure/window/framed/almayer/white/hull
-	name = "research window"
+	name = "hull window"
 	desc = "An ultra-reinforced window designed to keep research a secure area. This one was made out of exotic materials to prevent hull breaches. No way to get through here."
 	not_damageable = 1
 	not_deconstructable = 1
@@ -931,4 +931,4 @@
 		else
 			P.setDir(EAST)
 
-	INVOKE_ASYNC(P, /obj/structure/machinery/door.proc/close)
+	INVOKE_ASYNC(P, TYPE_PROC_REF(/obj/structure/machinery/door, close))

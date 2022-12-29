@@ -21,7 +21,7 @@
 					if(prob(3))
 						fake_attack(src)
 					if(!handling_hal)
-						INVOKE_ASYNC(src, /mob/living/carbon.proc/handle_hallucinations)
+						INVOKE_ASYNC(src, TYPE_PROC_REF(/mob/living/carbon, handle_hallucinations))
 
 				if(hallucination <= 2)
 					hallucination = 0
@@ -67,7 +67,7 @@
 					if((mind.active && client != null) || immune_to_ssd) //This also checks whether a client is connected, if not, sleep is not reduced.
 						sleeping = max(sleeping - 1, 0)
 				if(prob(2) && health && !hal_crit)
-					addtimer(CALLBACK(src, .proc/emote, "snore"))
+					addtimer(CALLBACK(src, PROC_REF(emote), "snore"))
 			blinded = 1
 			stat = UNCONSCIOUS
 		else
@@ -82,16 +82,16 @@
 			eye_blind = 0
 			if(stat == CONSCIOUS) //even with 'eye-less' vision, unconsciousness makes you blind
 				blinded = 0
-			eye_blurry = 0
+			SetEyeBlur(0)
 		else if(!has_eyes())           //Eyes cut out? Permablind.
 			eye_blind =  1
 			blinded =    1
-			eye_blurry = 1
+			// we don't need to blur vision if they are blind...
 		else if(eye_blind)		       //Blindness, heals slowly over time
 			eye_blind =  max(eye_blind - 1, 0)
 			blinded =    1
 		else if(eye_blurry)	           //Blurry eyes heal slowly
-			eye_blurry = max(eye_blurry - 1, 0)
+			ReduceEyeBlur(1)
 
 		//Ears
 		if(ear_deaf) //Deafness, heals slowly over time
@@ -132,7 +132,7 @@
 
 		if(drowsyness)
 			drowsyness = max(0,drowsyness - 2)
-			eye_blurry = max(2, eye_blurry)
+			EyeBlur(2)
 			if(drowsyness > 10 && prob(5))
 				sleeping++
 				apply_effect(5, PARALYZE)

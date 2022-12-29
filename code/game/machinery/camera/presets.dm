@@ -37,12 +37,11 @@
 		var/area/A = get_area(src)
 		c_tag = "[laser_name] ([A.name])"
 
-/obj/structure/machinery/camera/laser_cam
-	emp_act(severity)
-		return //immune to EMPs, just in case
+/obj/structure/machinery/camera/laser_cam/emp_act(severity)
+	return //immune to EMPs, just in case
 
-	ex_act()
-		return
+/obj/structure/machinery/camera/laser_cam/ex_act()
+	return
 
 
 // ALL UPGRADES
@@ -103,13 +102,13 @@
 	name = "containment camera"
 	unslashable = TRUE
 	unacidable = TRUE
-	network = list(CAMERA_NET_ALMAYER, CAMERA_NET_CONTAINMENT)
+	network = list(CAMERA_NET_RESEARCH, CAMERA_NET_CONTAINMENT)
 
 /obj/structure/machinery/camera/autoname/almayer/containment/attack_alien(mob/living/carbon/Xenomorph/M)
 	return
 
 /obj/structure/machinery/camera/autoname/almayer/containment/hidden
-	network = list(CAMERA_NET_ALMAYER, CAMERA_NET_CONTAINMENT_HIDDEN)
+	network = list(CAMERA_NET_CONTAINMENT_HIDDEN)
 
 //used by the landing camera dropship equipment. Do not place them right under where the dropship lands.
 //Should place them near each corner of your LZs.

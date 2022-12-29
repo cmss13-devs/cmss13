@@ -175,8 +175,49 @@ var/global/list/pass_flags_cache = list()
 //Parameterss cache
 var/global/list/paramslist_cache = list()
 
-#define cached_key_number_decode(key_number_data) cached_params_decode(key_number_data, /proc/key_number_decode)
-#define cached_number_list_decode(number_list_data) cached_params_decode(number_list_data, /proc/number_list_decode)
+//Turf Edge info uberlist -- a list whos states contain GLOB.edgeinfo_X keyed as different icon_states
+var/global/list/turf_edgeinfo_cache = list()
+
+#define FULL_EDGE 1
+#define HALF_EDGE_RIGHT 2
+#define HALF_EDGE_LEFT 3
+//right and left looking from the turf who makes an overlay towards its neighbor thats it overlays upon
+
+//These are ordered just like sprites are in the dm dmi editor: 2/SOUTH then 1/NORTH then 4/EAST then 8/WEST
+GLOBAL_LIST_INIT(edgeinfo_full, list(
+								list(FULL_EDGE, FULL_EDGE, FULL_EDGE, FULL_EDGE),
+								list(FULL_EDGE, FULL_EDGE, FULL_EDGE, FULL_EDGE),
+								list(FULL_EDGE, FULL_EDGE, FULL_EDGE, FULL_EDGE),
+								list(FULL_EDGE, FULL_EDGE, FULL_EDGE, FULL_EDGE)
+								))
+
+GLOBAL_LIST_INIT(edgeinfo_edge, list(
+								list(null, FULL_EDGE, HALF_EDGE_LEFT, HALF_EDGE_RIGHT),
+								list(FULL_EDGE, null, HALF_EDGE_RIGHT, HALF_EDGE_LEFT),
+								list(HALF_EDGE_LEFT, HALF_EDGE_RIGHT, null, FULL_EDGE),
+								list(HALF_EDGE_RIGHT, HALF_EDGE_LEFT, FULL_EDGE, null)
+								))
+
+GLOBAL_LIST_INIT(edgeinfo_corner, list(
+								list( HALF_EDGE_LEFT, FULL_EDGE,FULL_EDGE, HALF_EDGE_RIGHT),
+								list(HALF_EDGE_RIGHT, FULL_EDGE, HALF_EDGE_LEFT, FULL_EDGE),
+								list(FULL_EDGE, HALF_EDGE_LEFT, FULL_EDGE, HALF_EDGE_LEFT),
+								list(FULL_EDGE, HALF_EDGE_RIGHT, HALF_EDGE_RIGHT, FULL_EDGE)
+								))
+
+GLOBAL_LIST_INIT(edgeinfo_corner2, list(
+								list(null, HALF_EDGE_LEFT, null,  HALF_EDGE_RIGHT),
+								list(HALF_EDGE_RIGHT, null, HALF_EDGE_RIGHT, null),
+								list(null, HALF_EDGE_RIGHT, HALF_EDGE_LEFT, null),
+								list(HALF_EDGE_LEFT, null, null, HALF_EDGE_LEFT)
+								))
+
+#undef FULL_EDGE
+#undef HALF_EDGE_RIGHT
+#undef HALF_EDGE_LEFT
+
+#define cached_key_number_decode(key_number_data) cached_params_decode(key_number_data, GLOBAL_PROC_REF(key_number_decode))
+#define cached_number_list_decode(number_list_data) cached_params_decode(number_list_data, GLOBAL_PROC_REF(number_list_decode))
 
 /proc/cached_params_decode(var/params_data, var/decode_proc)
 	. = paramslist_cache[params_data]

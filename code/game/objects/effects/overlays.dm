@@ -223,9 +223,9 @@
 	name = "emp sparks"
 	effect_duration = 10
 
-	New(loc)
-		setDir(pick(cardinal))
-		..()
+/obj/effect/overlay/temp/emp_sparks/New(loc)
+	setDir(pick(cardinal))
+	..()
 
 /obj/effect/overlay/temp/emp_pulse
 	name = "emp pulse"
@@ -283,5 +283,5 @@
 /obj/effect/overlay/temp/acid_pool_splash
 	name = "acid splash"
 	icon = 'icons/mob/xenos/effects.dmi'
-	icon_state = "acidpoolsplash"
+	icon_state = "pool_splash"
 	effect_duration = 10 SECONDS

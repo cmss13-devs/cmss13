@@ -118,7 +118,8 @@ var/list/admin_verbs_minor_event = list(
 	/client/proc/toggle_blood_optimization,
 	/client/proc/toggle_combat_cas,
 	/client/proc/toggle_lz_protection, //Mortar hitting LZ
-	/client/proc/cmd_admin_medals_panel // Marine and Xeno medals editor panel
+	/client/proc/cmd_admin_medals_panel, // Marine and Xeno medals editor panel
+	/client/proc/toggle_shipside_sd
 )
 var/list/admin_verbs_major_event = list(
 	/client/proc/enable_event_mob_verbs,
@@ -160,7 +161,7 @@ var/list/admin_verbs_server = list(
 	/datum/admins/proc/view_txt_log
 )
 var/list/admin_verbs_debug = list(
-    /client/proc/getruntimelog,                     /*allows us to access runtime logs to somebody*/
+	/client/proc/getruntimelog,					 /*allows us to access runtime logs to somebody*/
 	/client/proc/debug_role_authority,
 	/client/proc/cmd_debug_make_powernets,
 	/client/proc/cmd_debug_list_processing_items,
@@ -169,6 +170,7 @@ var/list/admin_verbs_debug = list(
 	/client/proc/reload_admins,
 	/client/proc/reload_whitelist,
 	/client/proc/restart_controller,
+	/client/proc/debug_controller,
 	/client/proc/cmd_debug_toggle_should_check_for_win,
 	/client/proc/enable_debug_verbs,
 	/client/proc/toggledebuglogs,
@@ -199,13 +201,13 @@ var/list/clan_verbs = list(
 )
 
 var/list/debug_verbs = list(
-    /client/proc/Cell,
-    /client/proc/cmd_assume_direct_control,
-    /client/proc/ticklag,
-    /client/proc/hide_debug_verbs,
-    /client/proc/view_power_update_stats_area,
-    /client/proc/view_power_update_stats_machines,
-    /client/proc/toggle_power_update_profiling,
+	/client/proc/Cell,
+	/client/proc/cmd_assume_direct_control,
+	/client/proc/ticklag,
+	/client/proc/hide_debug_verbs,
+	/client/proc/view_power_update_stats_area,
+	/client/proc/view_power_update_stats_machines,
+	/client/proc/toggle_power_update_profiling,
 	/client/proc/nanomapgen_DumpImage,
 )
 
@@ -232,8 +234,8 @@ var/list/admin_mob_event_verbs_hideable = list(
 	/client/proc/free_mob_for_ghosts,
 	/client/proc/possess,
 	/client/proc/release,
-    /client/proc/cmd_admin_grantfullaccess,
-    /client/proc/cmd_admin_grantallskills
+	/client/proc/cmd_admin_grantfullaccess,
+	/client/proc/cmd_admin_grantallskills
 )
 
 //verbs which can be hidden - needs work
@@ -419,7 +421,7 @@ var/list/roundstart_mod_verbs = list(
 		if(!msg)
 			return
 		for (var/mob/V in hearers(mob.control_object))
-			V.show_message("<b>[mob.control_object.name]</b> says: \"" + msg + "\"", 2)
+			V.show_message("<b>[mob.control_object.name]</b> says: \"" + msg + "\"", SHOW_MESSAGE_AUDIBLE)
 
 
 /client/proc/toggle_log_hrefs()

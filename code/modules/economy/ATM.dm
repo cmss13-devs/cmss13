@@ -20,7 +20,7 @@ log transactions
 	icon = 'icons/obj/structures/machinery/terminals.dmi'
 	icon_state = "atm"
 	anchored = 1
-	use_power = 1
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 10
 	var/datum/money_account/authenticated_account
 	var/number_incorrect_tries = 0
@@ -101,7 +101,7 @@ log transactions
 		meat.name = "raw [I.name] tenderloin"
 		QDEL_NULL(I)
 		var/turf/atm_turf = get_turf(src)
-		addtimer(CALLBACK(src, .proc/drop_money, atm_turf), 30, TIMER_UNIQUE)
+		addtimer(CALLBACK(src, PROC_REF(drop_money), atm_turf), 30, TIMER_UNIQUE)
 
 	else
 		..()

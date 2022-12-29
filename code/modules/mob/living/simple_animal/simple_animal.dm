@@ -119,27 +119,27 @@
 						length += emote_see.len
 					var/randomValue = rand(1,length)
 					if(randomValue <= speak.len)
-						INVOKE_ASYNC(src, .proc/say, pick(speak))
+						INVOKE_ASYNC(src, PROC_REF(say), pick(speak))
 					else
 						randomValue -= speak.len
 						if(emote_see && randomValue <= emote_see.len)
-							INVOKE_ASYNC(src, .proc/emote, pick(emote_see),1)
+							INVOKE_ASYNC(src, PROC_REF(emote), pick(emote_see),1)
 						else
-							INVOKE_ASYNC(src, .proc/emote, pick(emote_hear),2)
+							INVOKE_ASYNC(src, PROC_REF(emote), pick(emote_hear),2)
 				else
-					INVOKE_ASYNC(src, .proc/say, pick(speak))
+					INVOKE_ASYNC(src, PROC_REF(say), pick(speak))
 			else
 				if(!(emote_hear && emote_hear.len) && (emote_see && emote_see.len))
-					INVOKE_ASYNC(src, .proc/emote, pick(emote_see),1)
+					INVOKE_ASYNC(src, PROC_REF(emote), pick(emote_see),1)
 				if((emote_hear && emote_hear.len) && !(emote_see && emote_see.len))
-					INVOKE_ASYNC(src, .proc/emote, pick(emote_hear),2)
+					INVOKE_ASYNC(src, PROC_REF(emote), pick(emote_hear),2)
 				if((emote_hear && emote_hear.len) && (emote_see && emote_see.len))
 					var/length = emote_hear.len + emote_see.len
 					var/pick = rand(1,length)
 					if(pick <= emote_see.len)
-						INVOKE_ASYNC(src, .proc/emote, pick(emote_see),1)
+						INVOKE_ASYNC(src, PROC_REF(emote), pick(emote_see),1)
 					else
-						INVOKE_ASYNC(src, .proc/emote, pick(emote_hear),2)
+						INVOKE_ASYNC(src, PROC_REF(emote), pick(emote_hear),2)
 
 
 	//Atmos
@@ -244,7 +244,7 @@
 		if(M.attack_sound)
 			playsound(loc, M.attack_sound, 25, 1)
 		for(var/mob/O in viewers(src, null))
-			O.show_message(SPAN_DANGER("<B>[M]</B> [M.attacktext] [src]!"), 1)
+			O.show_message(SPAN_DANGER("<B>[M]</B> [M.attacktext] [src]!"), SHOW_MESSAGE_VISIBLE)
 		last_damage_data = create_cause_data(initial(M.name), M)
 		M.attack_log += text("\[[time_stamp()]\] <font color='red'>attacked [src.name] ([src.ckey])</font>")
 		src.attack_log += text("\[[time_stamp()]\] <font color='orange'>was attacked by [M.name] ([M.ckey])</font>")
@@ -261,7 +261,7 @@
 			if (health > 0)
 				for(var/mob/O in viewers(src, null))
 					if ((O.client && !( O.blinded )))
-						O.show_message(SPAN_NOTICE("[M] [response_help] [src]"))
+						O.show_message(SPAN_NOTICE("[M] [response_help] [src]"), SHOW_MESSAGE_VISIBLE)
 
 		if(INTENT_GRAB)
 			if(M == src || anchored)
@@ -274,7 +274,7 @@
 			apply_damage(harm_intent_damage, BRUTE)
 			for(var/mob/O in viewers(src, null))
 				if ((O.client && !( O.blinded )))
-					O.show_message(SPAN_DANGER("[M] [response_harm] [src]"))
+					O.show_message(SPAN_DANGER("[M] [response_harm] [src]"), SHOW_MESSAGE_VISIBLE)
 
 	return
 
@@ -295,7 +295,7 @@
 					MED.use(1)
 					for(var/mob/M as anything in viewers(src, null))
 						if ((M.client && !( M.blinded )))
-							M.show_message(SPAN_NOTICE("[user] applies the [MED] on [src]"))
+							M.show_message(SPAN_NOTICE("[user] applies the [MED] on [src]"), SHOW_MESSAGE_VISIBLE)
 					return
 		else
 			to_chat(user, SPAN_NOTICE(" this [src] is dead, medical items won't bring it back to life."))
@@ -363,7 +363,7 @@
 		return
 
 	if(copytext(message,1,2) == "*")
-		INVOKE_ASYNC(src, .proc/emote, copytext(message,2))
+		INVOKE_ASYNC(src, PROC_REF(emote), copytext(message,2))
 		return
 
 	if(stat)

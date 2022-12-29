@@ -7,7 +7,8 @@
 	mutator_actions_to_remove = list(
 		/datum/action/xeno_action/activable/throw_hugger,
 		/datum/action/xeno_action/onclick/place_trap,
-		/datum/action/xeno_action/activable/retrieve_egg // readding it so it gets at the end of the ability list
+		/datum/action/xeno_action/activable/retrieve_egg, // readding it so it gets at the end of the ability list
+		/datum/action/xeno_action/onclick/set_hugger_reserve,
 	)
 	mutator_actions_to_add = list(
 		/datum/action/xeno_action/activable/generate_egg,
@@ -15,26 +16,26 @@
 	)
 	keystone = TRUE
 
-/datum/xeno_mutator/eggsac/apply_mutator(datum/mutator_set/individual_mutators/MS)
+/datum/xeno_mutator/eggsac/apply_mutator(datum/mutator_set/individual_mutators/mutator_set)
 	. = ..()
 	if (!.)
 		return
-	var/mob/living/carbon/Xenomorph/Carrier/C = MS.xeno
-	if(!istype(C))
+	var/mob/living/carbon/Xenomorph/Carrier/carrier = mutator_set.xeno
+	if(!istype(carrier))
 		return FALSE
-	C.mutation_type = CARRIER_EGGSAC
-	C.plasma_types = list(PLASMA_EGG)
-	C.phero_modifier += XENO_PHERO_MOD_LARGE // praetorian level pheremones
-	C.plasmapool_modifier = 1.5
-	mutator_update_actions(C)
-	MS.recalculate_actions(description, flavor_description)
-	C.recalculate_pheromones()
-	C.recalculate_plasma()
-	if(C.huggers_cur > 0)
-		playsound(C.loc, 'sound/voice/alien_facehugger_dies.ogg', 25, 1)
-	C.huggers_cur = 0
-	C.huggers_max = 0
-	C.extra_build_dist = 1
+	carrier.mutation_type = CARRIER_EGGSAC
+	carrier.plasma_types = list(PLASMA_EGG)
+	carrier.phero_modifier += XENO_PHERO_MOD_LARGE // praetorian level pheremones
+	carrier.plasmapool_modifier = 1.5
+	mutator_update_actions(carrier)
+	mutator_set.recalculate_actions(description, flavor_description)
+	carrier.recalculate_pheromones()
+	carrier.recalculate_plasma()
+	if(carrier.huggers_cur > 0)
+		playsound(carrier.loc, 'sound/voice/alien_facehugger_dies.ogg', 25, 1)
+	carrier.huggers_cur = 0
+	carrier.huggers_max = 0
+	carrier.extra_build_dist = 1
 	return TRUE
 
 /datum/action/xeno_action/activable/generate_egg
@@ -50,19 +51,19 @@
 /datum/action/xeno_action/activable/generate_egg/can_use_action()
 	if(!owner)
 		return FALSE
-	var/mob/living/carbon/Xenomorph/X = owner
-	if(X && !X.is_mob_incapacitated() && !X.dazed && !X.lying && !X.buckled && X.plasma_stored >= plasma_cost)
+	var/mob/living/carbon/Xenomorph/xeno = owner
+	if(xeno && !xeno.is_mob_incapacitated() && !xeno.dazed && !xeno.lying && !xeno.buckled && xeno.plasma_stored >= plasma_cost)
 		return TRUE
 
 /datum/action/xeno_action/activable/generate_egg/use_ability()
-	var/mob/living/carbon/Xenomorph/Carrier/X = owner
-	if(!istype(X) || !action_cooldown_check())
+	var/mob/living/carbon/Xenomorph/Carrier/xeno = owner
+	if(!istype(xeno) || !action_cooldown_check())
 		return FALSE
-	if(X.eggs_cur >= X.eggs_max)
-		to_chat(X, SPAN_XENOWARNING("You don't have any space to store a new egg!"))
+	if(xeno.eggs_cur >= xeno.eggs_max)
+		to_chat(xeno, SPAN_XENOWARNING("You don't have any space to store a new egg!"))
 		return FALSE
-	to_chat(X, SPAN_NOTICE("You form a new egg inside your sac."))
-	X.eggs_cur++
-	X.use_plasma(plasma_cost)
+	to_chat(xeno, SPAN_NOTICE("You form a new egg inside your sac."))
+	xeno.eggs_cur++
+	xeno.use_plasma(plasma_cost)
 	apply_cooldown()
 	return TRUE

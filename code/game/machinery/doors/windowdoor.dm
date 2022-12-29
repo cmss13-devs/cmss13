@@ -7,7 +7,7 @@
 	var/base_state = "left"
 	health = 150.0 //If you change this, consiter changing ../door/window/brigdoor/ health at the bottom of this .dm file
 	visible = 0.0
-	use_power = 0
+	use_power = USE_POWER_NONE
 	flags_atom = ON_BORDER
 	opacity = 0
 	var/obj/item/circuitboard/airlock/electronics = null
@@ -15,7 +15,7 @@
 
 /obj/structure/machinery/door/window/Initialize()
 	. = ..()
-	addtimer(CALLBACK(src, .proc/update_icon), 1)
+	addtimer(CALLBACK(src, PROC_REF(update_icon)), 1)
 	if (src.req_access && src.req_access.len)
 		src.icon_state = "[src.icon_state]"
 		src.base_state = src.icon_state

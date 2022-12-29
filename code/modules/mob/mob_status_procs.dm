@@ -10,7 +10,7 @@
 
 /mob/proc/stun_callback_check()
 	if(stunned && stunned < recovery_constant)
-		stun_timer = addtimer(CALLBACK(src, .proc/stun_callback), (stunned/recovery_constant) * 2 SECONDS, TIMER_OVERRIDE|TIMER_UNIQUE|TIMER_STOPPABLE)
+		stun_timer = addtimer(CALLBACK(src, PROC_REF(stun_callback)), (stunned/recovery_constant) * 2 SECONDS, TIMER_OVERRIDE|TIMER_UNIQUE|TIMER_STOPPABLE)
 		return
 
 	if(stun_timer != TIMER_ID_NULL)
@@ -97,7 +97,7 @@
 
 /mob/proc/knocked_down_callback_check()
 	if(knocked_down && knocked_down < recovery_constant)
-		knocked_down_timer = addtimer(CALLBACK(src, .proc/knocked_down_callback), (knocked_down/recovery_constant) * 2 SECONDS, TIMER_OVERRIDE|TIMER_UNIQUE|TIMER_STOPPABLE) // times whatever amount we have per tick
+		knocked_down_timer = addtimer(CALLBACK(src, PROC_REF(knocked_down_callback)), (knocked_down/recovery_constant) * 2 SECONDS, TIMER_OVERRIDE|TIMER_UNIQUE|TIMER_STOPPABLE) // times whatever amount we have per tick
 		return
 
 	if(knocked_down_timer)
@@ -114,7 +114,7 @@
 
 /mob/proc/knocked_out_callback_check()
 	if(knocked_out && knocked_out < recovery_constant)
-		knocked_out_timer = addtimer(CALLBACK(src, .proc/knocked_out_callback), (knocked_out/recovery_constant) * 2 SECONDS, TIMER_OVERRIDE|TIMER_UNIQUE|TIMER_STOPPABLE) // times whatever amount we have per tick
+		knocked_out_timer = addtimer(CALLBACK(src, PROC_REF(knocked_out_callback)), (knocked_out/recovery_constant) * 2 SECONDS, TIMER_OVERRIDE|TIMER_UNIQUE|TIMER_STOPPABLE) // times whatever amount we have per tick
 		return
 	else if(!knocked_out)
 		//It's been called, and we're probably inconscious, so fix that.
@@ -203,15 +203,33 @@
 
 /mob/proc/EyeBlur(amount)
 	eye_blurry = max(max(eye_blurry, amount), 0)
+	update_eye_blur()
 	return
 
 /mob/proc/SetEyeBlur(amount)
 	eye_blurry = max(amount, 0)
+	update_eye_blur()
 	return
 
 /mob/proc/AdjustEyeBlur(amount)
 	eye_blurry = max(eye_blurry + amount, 0)
+	update_eye_blur()
 	return
+
+/mob/proc/ReduceEyeBlur(amount)
+	eye_blurry = max(eye_blurry - amount, 0)
+	update_eye_blur()
+	return
+
+///Apply the blurry overlays to a mobs clients screen
+/mob/proc/update_eye_blur()
+	if(!client)
+		return
+	var/atom/movable/plane_master_controller/game_plane_master_controller = hud_used.plane_master_controllers[PLANE_MASTERS_GAME]
+	if(eye_blurry)
+		game_plane_master_controller.add_filter("eye_blur", 1, gauss_blur_filter(clamp(eye_blurry * 0.1, 0.6, 3)))
+	else
+		game_plane_master_controller.remove_filter("eye_blur")
 
 /mob/proc/TalkStutter(amount)
 	stuttering = max(max(stuttering, amount), 0)

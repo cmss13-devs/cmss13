@@ -12,6 +12,21 @@
 	if(hand)	return r_hand
 	else		return l_hand
 
+/mob/proc/get_hands()
+	if(hand)
+		return list(l_hand, r_hand)
+	else
+		return list(r_hand, l_hand)
+
+//Sad that this will cause some overhead, but the alias seems necessary
+//*I* may be happy with a million and one references to "indexes" but others won't be
+/mob/proc/is_holding(obj/item/I)
+	return get_held_index_of_item(I)
+
+/mob/proc/get_held_index_of_item(obj/item/I)
+	var/list/handen = get_hands()
+	return handen.Find(I)
+
 //Puts the item into your l_hand if possible and calls all necessary triggers/updates. returns 1 on success.
 /mob/proc/put_in_l_hand(var/obj/item/W)
 	if(lying)
@@ -60,7 +75,7 @@
 	if(hand)	return put_in_r_hand(W)
 	else		return put_in_l_hand(W)
 
-//Puts the item our active hand if possible. Failing that it tries our inactive hand. Returns 1 on success.
+//Puts the item into our active hand if possible. Failing that it tries our inactive hand. Returns 1 on success.
 //If both fail it drops it on the floor and returns 0.
 //This is probably the main one you need to know :)
 /mob/proc/put_in_hands(var/obj/item/W)
@@ -76,7 +91,24 @@
 		W.dropped(src)
 		return FALSE
 
-
+//Puts the item into our back if possible. Returns 1 on success.
+/mob/proc/put_in_back(var/obj/item/item)
+	if(!item)
+		return FALSE
+	if(!istype(item))
+		return FALSE
+	if(back)
+		return FALSE
+	if(item.loc == src && !(item.flags_item & DELONDROP))
+		item.dropped(src)
+	item.pickup(src)
+	item.forceMove(src)
+	back = item
+	item.layer = ABOVE_HUD_LAYER
+	item.plane = ABOVE_HUD_PLANE
+	item.equipped(src, WEAR_BACK)
+	update_inv_back()
+	return TRUE
 
 /mob/proc/drop_item_v()		//this is dumb.
 	if(stat == CONSCIOUS && isturf(loc))
@@ -366,3 +398,5 @@
 		return WEAR_L_HAND
 	if(I == r_hand)
 		return WEAR_R_HAND
+	if(I == back)
+		return WEAR_BACK

@@ -179,7 +179,7 @@ Additional game mode variables.
 		if(show_warning) to_chat(pred_candidate, SPAN_WARNING("Something went wrong!"))
 		return
 
-	if(show_warning && alert(pred_candidate, "Confirm joining the hunt. You will join as \a [lowertext(J.get_whitelist_status(RoleAuthority.roles_whitelist, pred_candidate.client))] predator", "Confirmation", "Yes", "No") == "No")
+	if(show_warning && alert(pred_candidate, "Confirm joining the hunt. You will join as \a [lowertext(J.get_whitelist_status(RoleAuthority.roles_whitelist, pred_candidate.client))] predator", "Confirmation", "Yes", "No") != "Yes")
 		return
 
 	if(!(RoleAuthority.roles_whitelist[pred_candidate.ckey] & WHITELIST_PREDATOR))
@@ -350,13 +350,12 @@ Additional game mode variables.
 	var/datum/hive_status/hive
 	for(var/hivenumber in GLOB.hive_datum)
 		hive = GLOB.hive_datum[hivenumber]
-		var/obj/effect/alien/resin/special/pool/SP = hive.spawn_pool
-		if(!isnull(SP) && SP.can_spawn_larva())
+		if(!hive.hardcore && hive.stored_larva && (hive.spawn_pool || (world.time < 30 MINUTES + SSticker.round_start_time)))
 			if(SSticker.mode && (SSticker.mode.flags_round_type & MODE_RANDOM_HIVE))
-				available_xenos |= "pooled larva"
-				LAZYADD(available_xenos["pooled larva"], hive)
+				available_xenos |= "any buried larva"
+				LAZYADD(available_xenos["any buried larva"], hive)
 			else
-				var/larva_option = "pooled larva ([hive])"
+				var/larva_option = "buried larva ([hive])"
 				available_xenos += larva_option
 				available_xenos[larva_option] = list(hive)
 
@@ -369,9 +368,8 @@ Additional game mode variables.
 		var/userInput = tgui_input_list(usr, "Available Xenomorphs", "Join as Xeno", available_xenos, theme="hive_status")
 
 		if(available_xenos[userInput]) //Free xeno mobs have no associated value and skip this. "Pooled larva" strings have a list of hives.
-			var/datum/hive_status/H = pick(available_xenos[userInput]) //The list contains all available hives if we are to choose at random, only one element if we already chose a hive by its name.
-			var/obj/effect/alien/resin/special/pool/SP = H.spawn_pool
-			if(!isnull(SP) && SP.can_spawn_larva()) //isnull() is checked here, in case the spawn pool gets destroyed while the menu is open.
+			var/datum/hive_status/picked_hive = pick(available_xenos[userInput]) //The list contains all available hives if we are to choose at random, only one element if we already chose a hive by its name.
+			if(picked_hive.stored_larva)
 				if(!xeno_bypass_timer)
 					var/deathtime = world.time - xeno_candidate.timeofdeath
 					if(isnewplayer(xeno_candidate))
@@ -379,20 +377,26 @@ Additional game mode variables.
 					if(deathtime < 2.5 MINUTES && !check_client_rights(xeno_candidate.client, R_ADMIN, FALSE))
 						var/message = SPAN_WARNING("You have been dead for [DisplayTimeText(deathtime)].")
 						to_chat(xeno_candidate, message)
-						to_chat(xeno_candidate, SPAN_WARNING("You must wait 2.5 minutes before rejoining the game!"))
+						to_chat(xeno_candidate, SPAN_WARNING("You must wait 2.5 minutes before rejoining the game as a buried larva!"))
 						return FALSE
 
-				for(var/mob_name in SP.linked_hive.banished_ckeys)
-					if(SP.linked_hive.banished_ckeys[mob_name] == xeno_candidate.ckey)
-						to_chat(xeno_candidate, SPAN_WARNING("You are banished from this hive, You may not rejoin unless the Queen re-admits you or dies."))
+				for(var/mob_name in picked_hive.banished_ckeys)
+					if(picked_hive.banished_ckeys[mob_name] == xeno_candidate.ckey)
+						to_chat(xeno_candidate, SPAN_WARNING("You are banished from the [picked_hive], you may not rejoin unless the Queen re-admits you or dies."))
 						return
 				if(isnewplayer(xeno_candidate))
-					var/mob/new_player/N = xeno_candidate
-					N.close_spawn_windows()
-				SP.spawn_pooled_larva(xeno_candidate)
+					var/mob/new_player/noob = xeno_candidate
+					noob.close_spawn_windows()
+				if(picked_hive.spawn_pool)
+					picked_hive.spawn_pool.spawn_pooled_larva(xeno_candidate)
+				else if((world.time < 30 MINUTES + SSticker.round_start_time))
+					picked_hive.do_buried_larva_spawn(xeno_candidate)
+				else
+					to_chat(xeno_candidate, SPAN_WARNING("Seems like something went wrong. Try again?"))
+					return FALSE
 				return TRUE
 			else
-				to_chat(xeno_candidate, SPAN_WARNING("Seems like something went wrong. Try again"))
+				to_chat(xeno_candidate, SPAN_WARNING("Seems like something went wrong. Try again?"))
 				return FALSE
 
 		if(!isXeno(userInput) || !xeno_candidate)
@@ -441,6 +445,73 @@ Additional game mode variables.
 			return 1
 	to_chat(xeno_candidate, "JAS01: Something went wrong, tell a coder.")
 
+/datum/game_mode/proc/attempt_to_join_as_facehugger(mob/xeno_candidate)
+	//Step 1 - pick a Hive
+	var/list/active_hives = list()
+	var/datum/hive_status/hive
+	var/last_active_hive = 0
+	for(var/hivenumber in GLOB.hive_datum)
+		hive = GLOB.hive_datum[hivenumber]
+		if(hive.totalXenos.len <= 0)
+			continue
+		active_hives[hive.name] = hive.hivenumber
+		last_active_hive = hive.hivenumber
+
+	if(active_hives.len <= 0)
+		to_chat(xeno_candidate, SPAN_WARNING("There aren't any Hives active at this point for you to join."))
+		return FALSE
+
+	if(active_hives.len > 1)
+		var/hive_picked = tgui_input_list(xeno_candidate, "Select which Hive to attempt joining.", "Hive Choice", active_hives, theme="hive_status")
+		if(!hive_picked)
+			to_chat(xeno_candidate, SPAN_ALERT("Hive choice error. Aborting."))
+			return
+		hive = GLOB.hive_datum[active_hives[hive_picked]]
+	else
+		hive = GLOB.hive_datum[last_active_hive]
+
+	//We have our Hive picked, time to figure out what we can join via
+	var/list/available_facehugger_sources = list()
+
+	for(var/mob/living/carbon/Xenomorph/Carrier/carrier in hive.totalXenos)
+		if(carrier.huggers_cur > carrier.huggers_reserved)
+			var/area_name = get_area_name(carrier)
+			var/descriptive_name = "[carrier.name] in [area_name]"
+			available_facehugger_sources[descriptive_name] = carrier
+
+	for(var/obj/effect/alien/resin/special/eggmorph/morpher in hive.hive_structures[XENO_STRUCTURE_EGGMORPH])
+		if(morpher)
+			if(morpher.stored_huggers)
+				var/area_name = get_area_name(morpher)
+				var/descriptive_name = "[morpher.name] in [area_name]"
+				available_facehugger_sources[descriptive_name] = morpher
+
+	if(available_facehugger_sources.len <= 0)
+		to_chat(xeno_candidate, SPAN_WARNING("There aren't any Carriers or Egg Morphers with available Facehuggers for you to join. Please try again later!"))
+		return FALSE
+
+	var/source_picked = tgui_input_list(xeno_candidate, "Select a Facehugger source.", "Facehugger Source Choice", available_facehugger_sources, theme="hive_status")
+	if(!source_picked)
+		to_chat(xeno_candidate, SPAN_ALERT("Facehugger source choice error. Aborting."))
+		return
+
+	var/facehugger_choice = available_facehugger_sources[source_picked]
+
+	//Just in case some xeno got gibbed while we were picking...
+	if(!facehugger_choice)
+		to_chat(xeno_candidate, SPAN_WARNING("Picked choice is not available anymore, try again!"))
+		return FALSE
+
+	//Call the appropriate procs to spawn with
+	if(isXenoCarrier(facehugger_choice))
+		var/mob/living/carbon/Xenomorph/Carrier/carrier = facehugger_choice
+		carrier.join_as_facehugger_from_this(xeno_candidate)
+	else
+		var/obj/effect/alien/resin/special/eggmorph/morpher = facehugger_choice
+		morpher.join_as_facehugger_from_this(xeno_candidate)
+
+	return TRUE
+
 /datum/game_mode/proc/transfer_xeno(var/xeno_candidate, mob/living/new_xeno)
 	if(!xeno_candidate || !isXeno(new_xeno) || QDELETED(new_xeno))
 		return FALSE
@@ -465,6 +536,7 @@ Additional game mode variables.
 
 	new_xeno.ghostize(FALSE) //Make sure they're not getting a free respawn.
 	xeno_candidate_mind.transfer_to(new_xeno, TRUE)
+	new_xeno.SetSleeping(0) // ghosting sleeps, but they got a new mind! wake up! (/mob/living/verb/ghost())
 
 	new_xeno.mind_initialize()
 	new_xeno.mind.player_entity = setup_player_entity(xeno_candidate_mind.ckey)
@@ -620,6 +692,7 @@ Additional game mode variables.
 				H.mind.memory += temp_story
 				//remove ourselves, so we don't get stuff generated for us
 				survivors -= H.mind
+		new /datum/cm_objective/move_mob/almayer/survivor(H)
 
 /datum/game_mode/proc/survivor_non_event_transform(mob/living/carbon/human/H, obj/effect/landmark/spawn_point, is_synth = FALSE, is_CO = FALSE)
 	H.forceMove(get_turf(spawn_point))
@@ -628,6 +701,7 @@ Additional game mode variables.
 
 	//Give them some information
 	if(!H.first_xeno) //Only give objectives/back-stories to uninfected survivors
+		new /datum/cm_objective/move_mob/almayer/survivor(H)
 		spawn(4)
 			to_chat(H, "<h2>You are a survivor!</h2>")
 			to_chat(H, SPAN_NOTICE(SSmapping.configs[GROUND_MAP].survivor_message))
@@ -719,7 +793,7 @@ Additional game mode variables.
 	//Set up attachment vendor contents related to Marine count
 	for(var/i in GLOB.cm_vending_vendors)
 		var/obj/structure/machinery/cm_vending/sorted/CVS = i
-		CVS.populate_product_list(scale)
+		CVS.populate_product_list_and_boxes(scale)
 
 	//Scale the amount of cargo points through a direct multiplier
 	supply_controller.points = round(supply_controller.points * scale)

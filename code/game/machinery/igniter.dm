@@ -7,7 +7,7 @@
 	var/id = null
 	var/on = 1.0
 	anchored = 1.0
-	use_power = 1
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 2
 	active_power_usage = 4
 
@@ -127,7 +127,7 @@
 
 	for(var/obj/structure/machinery/sparker/M in machines)
 		if (M.id == src.id)
-			INVOKE_ASYNC(M, /obj/structure/machinery/sparker.proc/ignite)
+			INVOKE_ASYNC(M, TYPE_PROC_REF(/obj/structure/machinery/sparker, ignite))
 
 	for(var/obj/structure/machinery/igniter/M in machines)
 		if(M.id == src.id)

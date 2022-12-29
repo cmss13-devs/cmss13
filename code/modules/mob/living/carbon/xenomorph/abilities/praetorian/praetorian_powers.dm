@@ -84,7 +84,7 @@
 		. = ..()
 		if(.)
 			activated_once = TRUE
-			addtimer(CALLBACK(src, .proc/timeout), time_until_timeout)
+			addtimer(CALLBACK(src, PROC_REF(timeout)), time_until_timeout)
 	else
 		damage_nearby_targets()
 
@@ -177,7 +177,7 @@
 			var/mob/living/carbon/human/Hu = H
 			Hu.update_xeno_hostile_hud()
 
-		addtimer(CALLBACK(GLOBAL_PROC, .proc/unroot_human, H), get_xeno_stun_duration(H, root_duration))
+		addtimer(CALLBACK(GLOBAL_PROC, PROC_REF(unroot_human), H), get_xeno_stun_duration(H, root_duration))
 		to_chat(H, SPAN_XENOHIGHDANGER("[X] has pinned you to the ground! You cannot move!"))
 
 	else
@@ -196,6 +196,39 @@
 	buffed = FALSE
 
 ///////// OPPRESSOR POWERS
+
+/datum/action/xeno_action/activable/tail_stab/tail_seize/use_ability(atom/targetted_atom)
+	var/mob/living/carbon/Xenomorph/stabbing_xeno = owner
+
+	if(!action_cooldown_check())
+		return FALSE
+
+	if(!stabbing_xeno.check_state())
+		return FALSE
+
+	if (world.time <= stabbing_xeno.next_move)
+		return FALSE
+
+	if(!check_and_use_plasma_owner())
+		return FALSE
+
+	stabbing_xeno.visible_message(SPAN_XENODANGER("\The [stabbing_xeno] uncoils and wildly throws out its tail!"), SPAN_XENODANGER("You uncoil your tail wildly in front of you!"))
+
+	var/obj/item/projectile/hook_projectile = new /obj/item/projectile(stabbing_xeno.loc, create_cause_data(initial(stabbing_xeno.caste_type), stabbing_xeno))
+
+	var/datum/ammo/ammoDatum = GLOB.ammo_list[/datum/ammo/xeno/oppressor_tail]
+
+	hook_projectile.generate_bullet(ammoDatum, bullet_generator = stabbing_xeno)
+	hook_projectile.bound_beam = hook_projectile.beam(stabbing_xeno, "oppressor_tail", 'icons/effects/beam.dmi', 1 SECONDS, 5)
+
+	hook_projectile.fire_at(targetted_atom, stabbing_xeno, stabbing_xeno, ammoDatum.max_range, ammoDatum.shell_speed)
+	playsound(stabbing_xeno, 'sound/effects/oppressor_tail.ogg', 40, FALSE)
+
+	apply_cooldown()
+	xeno_attack_delay(stabbing_xeno)
+	..()
+	return
+
 /datum/action/xeno_action/activable/prae_abduct/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/X = owner
 
@@ -249,7 +282,7 @@
 		to_chat(X, SPAN_XENOWARNING("You don't have any room to do your abduction!"))
 		return
 
-	X.visible_message(SPAN_XENODANGER("[X] prepares to fire its resin spurs at [A]!"), SPAN_XENODANGER("You prepare to fire your resin spurs at [A]!"))
+	X.visible_message(SPAN_XENODANGER("\The [X]'s segmented tail starts coiling..."), SPAN_XENODANGER("You begin coiling your tail, aiming towards \the [A]..."))
 	X.emote("roar")
 
 	var/throw_target_turf = get_step(X.loc, facing)
@@ -257,7 +290,7 @@
 	X.frozen = TRUE
 	X.update_canmove()
 	if(!do_after(X, windup, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, numticks = 1))
-		to_chat(X, SPAN_XENOWARNING("You cancel your abduct."))
+		to_chat(X, SPAN_XENOWARNING("You relax your tail."))
 		apply_cooldown()
 
 		for (var/obj/effect/xenomorph/xeno_telegraph/XT in telegraph_atom_list)
@@ -276,6 +309,7 @@
 	X.update_canmove()
 
 	playsound(get_turf(X), 'sound/effects/bang.ogg', 25, 0)
+	X.visible_message(SPAN_XENODANGER("\The [X] suddenly uncoils its tail, firing it towards [A]!"), SPAN_XENODANGER("You uncoil your tail, sending it out towards \the [A]!"))
 
 	var/list/targets = list()
 	for (var/turf/target_turf in turflist)
@@ -284,16 +318,15 @@
 				continue
 
 			targets += H
-
 	if (LAZYLEN(targets) == 1)
-		to_chat(X, SPAN_XENOHIGHDANGER("You hit one target! You will slow it."))
+		X.balloon_alert(X, "your tail catches and slows one target!", text_color = "#51a16c")
 	else if (LAZYLEN(targets) == 2)
-		to_chat(X, SPAN_XENOHIGHDANGER("You hit two targets! You will daze and root them!"))
+		X.balloon_alert(X, "your tail catches and roots two targets!", text_color = "#51a16c")
 	else if (LAZYLEN(targets) >= 3)
-		to_chat(X, SPAN_XENOHIGHDANGER("You hit 3 or more targets! You will stun them!"))
+		X.balloon_alert(X, "your tail catches and stuns [LAZYLEN(targets)] targets!", text_color = "#51a16c")
 
 	for (var/mob/living/carbon/H in targets)
-		to_chat(H, SPAN_XENOHIGHDANGER("You are pulled toward [X]!"))
+		X.visible_message(SPAN_XENODANGER("\The [X]'s hooked tail coils itself around [H]!"), SPAN_XENODANGER("Your hooked tail coils itself around [H]!"))
 
 		H.apply_effect(0.2, WEAKEN)
 
@@ -307,7 +340,7 @@
 			if (ishuman(H))
 				var/mob/living/carbon/human/Hu = H
 				Hu.update_xeno_hostile_hud()
-			addtimer(CALLBACK(GLOBAL_PROC, .proc/unroot_human, H), get_xeno_stun_duration(H, 25))
+			addtimer(CALLBACK(GLOBAL_PROC, PROC_REF(unroot_human), H), get_xeno_stun_duration(H, 25))
 			to_chat(H, SPAN_XENOHIGHDANGER("[X] has pinned you to the ground! You cannot move!"))
 
 			H.set_effect(2, DAZE)
@@ -317,11 +350,22 @@
 
 
 		shake_camera(H, 10, 1)
+
+		var/obj/effect/beam/tail_beam = X.beam(H, "oppressor_tail", 'icons/effects/beam.dmi', 0.5 SECONDS, 8)
+		var/image/tail_image = image('icons/effects/status_effects.dmi', "hooked")
+		H.overlays += tail_image
+
 		H.throw_atom(throw_target_turf, get_dist(throw_target_turf, H)-1, SPEED_VERY_FAST)
+
+		qdel(tail_beam) // hook beam catches target, throws them back, is deleted (throw_atom has sleeps), then hook beam catches another target, repeat
+		addtimer(CALLBACK(src, /datum/action/xeno_action/activable/prae_abduct/proc/remove_tail_overlay, H, tail_image), 0.5 SECONDS) //needed so it can actually be seen as it gets deleted too quickly otherwise.
 
 	apply_cooldown()
 	..()
 	return
+
+/datum/action/xeno_action/activable/prae_abduct/proc/remove_tail_overlay(var/mob/living/carbon/human/overlayed_human, var/image/tail_image)
+	overlayed_human.overlays -= tail_image
 
 /datum/action/xeno_action/activable/oppressor_punch/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/X = owner
@@ -366,7 +410,7 @@
 			var/mob/living/carbon/human/Hu = H
 			Hu.update_xeno_hostile_hud()
 
-		addtimer(CALLBACK(GLOBAL_PROC, .proc/unroot_human, H), get_xeno_stun_duration(H, 12))
+		addtimer(CALLBACK(GLOBAL_PROC, PROC_REF(unroot_human), H), get_xeno_stun_duration(H, 12))
 		to_chat(H, SPAN_XENOHIGHDANGER("[X] has pinned you to the ground! You cannot move!"))
 
 		var/datum/action/xeno_action/activable/prae_abduct/SFA = get_xeno_action_by_type(X, /datum/action/xeno_action/activable/prae_abduct)
@@ -381,8 +425,6 @@
 
 
 	shake_camera(H, 2, 1)
-
-
 
 	apply_cooldown()
 	..()
@@ -579,7 +621,7 @@
 	xeno.add_temp_pass_flags(PASS_MOB_THRU)
 	xeno.recalculate_speed()
 
-	addtimer(CALLBACK(src, .proc/remove_effects), duration)
+	addtimer(CALLBACK(src, PROC_REF(remove_effects)), duration)
 
 	apply_cooldown()
 	..()
@@ -728,7 +770,7 @@
 	grenade.cause_data = create_cause_data(initial(X.caste_type), X)
 	grenade.forceMove(get_turf(X))
 	grenade.throw_atom(A, 5, SPEED_SLOW, X, TRUE)
-	addtimer(CALLBACK(grenade, /obj/item/explosive.proc/prime), prime_delay)
+	addtimer(CALLBACK(grenade, TYPE_PROC_REF(/obj/item/explosive, prime)), prime_delay)
 
 	..()
 	return

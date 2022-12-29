@@ -51,6 +51,7 @@
 
 	knock_down_reduction = 4
 	stun_reduction = 4
+	weed_slowdown_mult = 0 // no slowdown!
 
 	icobase = 'icons/mob/humans/species/r_predator.dmi'
 	deform = 'icons/mob/humans/species/r_predator.dmi'
@@ -211,7 +212,7 @@
 
 /datum/species/yautja/handle_on_fire(humanoidmob)
 	. = ..()
-	INVOKE_ASYNC(humanoidmob, /mob.proc/emote, pick("pain", "scream"))
+	INVOKE_ASYNC(humanoidmob, TYPE_PROC_REF(/mob, emote), pick("pain", "scream"))
 
 /datum/species/yautja/handle_paygrades()
 	return ""

@@ -6,7 +6,7 @@
 	icon = 'icons/obj/structures/props/stationobjs.dmi'
 	icon_state = "mass_driver"
 	anchored = 1.0
-	use_power = 1
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 2
 	active_power_usage = 50
 
@@ -29,7 +29,7 @@
 					to_chat(M, SPAN_NOTICE(" The mass driver lets out a screech, it mustn't be able to handle any more items."))
 				break
 			use_power(500)
-			INVOKE_ASYNC(O, /atom/movable.proc/throw_atom, target, drive_range * power, 100/power)
+			INVOKE_ASYNC(O, TYPE_PROC_REF(/atom/movable, throw_atom), target, drive_range * power, 100/power)
 	flick("mass_driver1", src)
 	return
 

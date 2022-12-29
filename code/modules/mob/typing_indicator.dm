@@ -1,8 +1,8 @@
 #define TYPING_INDICATOR_LIFETIME 30 * 10	//grace period after which typing indicator disappears regardless of text in chatbar
 
-mob/var/hud_typing = 0 //set when typing in an input window instead of chatline
-mob/var/last_typed
-mob/var/last_typed_time
+/mob/var/hud_typing = 0 //set when typing in an input window instead of chatline
+/mob/var/last_typed
+/mob/var/last_typed_time
 
 var/global/image/typing_indicator
 var/global/list/image/typed_typing_indicators
@@ -66,7 +66,7 @@ var/global/list/image/typed_typing_indicators
 	if(hud_typing == -1)
 		return
 	set_typing_indicator(TRUE)
-	hud_typing = addtimer(CALLBACK(src, .proc/timed_typing_clear), 5 SECONDS, TIMER_OVERRIDE|TIMER_UNIQUE|TIMER_STOPPABLE)
+	hud_typing = addtimer(CALLBACK(src, PROC_REF(timed_typing_clear)), 5 SECONDS, TIMER_OVERRIDE|TIMER_UNIQUE|TIMER_STOPPABLE)
 
 /// Clears timed typing indicators
 /mob/proc/timed_typing_clear()

@@ -52,7 +52,7 @@
 		return
 	linked_storage = locate(/obj/structure/machinery/smartfridge/chemistry) in range(smartfridge_tether_range, src)
 	if(linked_storage)
-		RegisterSignal(linked_storage, COMSIG_PARENT_QDELETING, .proc/cleanup)
+		RegisterSignal(linked_storage, COMSIG_PARENT_QDELETING, PROC_REF(cleanup))
 
 /obj/structure/machinery/autodispenser/attackby(obj/item/B, mob/living/user)
 	if(!skillcheck(user, SKILL_RESEARCH, SKILL_RESEARCH_TRAINED))
@@ -261,6 +261,8 @@
 		if(smartlink && linked_storage)
 			var/skip
 			for(var/obj/item/reagent_container/C in linked_storage.contents)
+				if(!C.reagents)
+					continue
 				var/O = C.reagents.get_reagent_amount(R.id)
 				if(O)
 					//Check if there's enough and note if there isn't, then transfer
@@ -381,7 +383,7 @@
 			P.amount_per_transfer_from_this = 60
 			reagents.trans_to(P, 60)
 			if(!linked_storage.add_network_item(P)) // Prefer network to avoid recursion (create bottle, then consume from bottle)
-				linked_storage.add_item(P)
+				linked_storage.add_local_item(P)
 
 
 

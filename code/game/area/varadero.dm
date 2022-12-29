@@ -47,18 +47,35 @@
 /area/varadero/interior_protected
 	name = "New Varadero - Interior"
 	ceiling = CEILING_DEEP_UNDERGROUND
+	icon_state = "NV_no_OB"
 
-/area/varadero/interior_protected/comms1
+/area/varadero/interior/comms1
 	name = "New Varadero - Cargo Generator"
+	icon_state = "comms1"
 
-/area/varadero/interior_protected/comms2
+/area/varadero/interior/comms2
 	name = "New Varadero - Communications Project Site"
+	is_resin_allowed = FALSE
+	icon_state = "comms2"
 
-/area/varadero/interior_protected/comms3
+/area/varadero/interior/comms3
 	name = "New Varadero - Fishing Hole"
+	is_resin_allowed = FALSE
+	icon_state = "comms3"
 
 /area/varadero/exterior/comms4
 	name = "New Varadero - Walkway Extension"
+	icon_state = "comms4"
+
+/area/varadero/exterior/eastbeach
+	name = "New Varadero - East Beach"
+	icon_state = "varadero1"
+
+/area/varadero/exterior/eastocean
+	name = "New Varadero - East Ocean"
+	is_resin_allowed = FALSE
+	flags_area = AREA_NOTUNNEL
+	icon_state = "varadero2"
 
 /area/varadero/interior/oob
 	name = "New Varadero - Out Of Bounds"
@@ -72,9 +89,12 @@
 /area/varadero/exterior/lz1_console
 	name = "New Varadero - Pontoon Dock"
 	requires_power = FALSE
+	is_resin_allowed = FALSE
 
 /area/varadero/exterior/lz1_console/two
-	name = "Varadero - Palm Airfield"
+	name = "New Varadero - Palm Airfield"
+	requires_power = FALSE
+	is_resin_allowed = FALSE
 
 //exterior areas
 
@@ -91,16 +111,23 @@
 /area/varadero/exterior/pontoon_beach
 	name = "New Varadero - Rockabilly Beach"
 	icon_state = "varadero0"
+	is_resin_allowed = FALSE
 
 //interior areas
 
 /area/varadero/interior/cargo
 	name = "New Varadero - Cargo"
 	icon_state = "req0"
+	is_resin_allowed = FALSE
 
 /area/varadero/interior/hall_NW
 	name = "New Varadero - Hallway NW"
 	icon_state = "hall0"
+
+/area/varadero/interior/hall_N
+	name = "New Varadero - Hallway N"
+	icon_state = "hall2"
+	is_resin_allowed = FALSE
 
 /area/varadero/interior/hall_SE
 	name = "New Varadero - Hallway SE"
@@ -109,10 +136,12 @@
 /area/varadero/interior/chapel
 	name = "New Vardero - Chapel"
 	icon_state = "offices1"
+	is_resin_allowed = FALSE
 
 /area/varadero/interior/morgue
 	name = "New Varadero - Morgue"
 	icon_state = "offices0"
+	is_resin_allowed = FALSE
 
 /area/varadero/interior/medical
 	name = "New Varadero - Medical"
@@ -125,6 +154,7 @@
 /area/varadero/interior/maintenance/north
 	name = "New Varadero - Northern Maintenance"
 	icon_state = "tunnels1"
+	is_resin_allowed = FALSE
 
 /area/varadero/interior/maintenance/research
 	name = "New Varadero - Research Maintenance"
@@ -133,10 +163,6 @@
 /area/varadero/interior/maintenance/security
 	name = "New Varadero - Security Maintenance"
 	icon_state = "tunnels2"
-
-/area/varadero/interior/maintenance/south
-	name = "New Varadero - Southern Maintenance"
-	icon_state = "tunnels3"
 
 /area/varadero/interior/research
 	name = "New Varadero - Research Offices"
@@ -169,6 +195,7 @@
 /area/varadero/interior/library
 	name = "New Varadero - Library"
 	icon_state = "offices0"
+	is_resin_allowed = FALSE
 
 /area/varadero/interior/court
 	name = "New Varadero - Basketball Court"
@@ -194,9 +221,26 @@
 	name = "New Varadero - Main Lift"
 	icon_state = "req3"
 
-/area/varadero/interior_protected/caves
-	name = "New Varadero - Research Caves"
+/area/varadero/interior/caves
+	name = "New Varadero - PARENT TYPE CAVES"
+	icon_state = "tunnels0"
+	power_light = FALSE
+	power_equip = FALSE
+	power_environ = FALSE
+	luminosity = 0
+	lighting_use_dynamic = 1
+
+/area/varadero/interior/caves/north_research
+	name = "New Varadero - North Research Caves"
 	icon_state = "tunnels4"
+
+/area/varadero/interior/caves/east
+	name = "New Varadero - Beach Caves"
+	icon_state = "tunnels2"
+
+/area/varadero/interior_protected/caves
+	name = "New Varadero - South Research Caves"
+	icon_state = "deepcaves0"
 	power_light = FALSE
 	power_equip = FALSE
 	power_environ = FALSE
@@ -204,20 +248,20 @@
 	lighting_use_dynamic = 1
 
 
-/area/varadero/interior_protected/caves/east
-	name = "New Varadero - Beach Caves"
-	icon_state = "tunnels4"
-
 /area/varadero/interior_protected/caves/central
 	name = "New Varadero - Grass Caves"
-	icon_state = "tunnels3"
+	icon_state = "deepcaves2"
 
 /area/varadero/interior_protected/caves/digsite
 	name = "New Varadero - Dig Site"
-	icon_state = "tunnels4"
+	icon_state = "deepcaves3"
+
+/area/varadero/interior_protected/maintenance/south
+	name = "New Varadero - Southern Maintenance"
+	icon_state = "deepcaves4"
 
 /area/varadero/interior_protected/vessel
 	name = "New Varadero - Unknown Vessel"
-	icon_state = "req0"
+	icon_state = "predship"
 
 

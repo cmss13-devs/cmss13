@@ -1,8 +1,8 @@
 
-obj/item/limb
+/obj/item/limb
 	icon = 'icons/mob/humans/species/r_human.dmi'
 
-obj/item/limb/New(loc, mob/living/carbon/human/H)
+/obj/item/limb/New(loc, mob/living/carbon/human/H)
 	..(loc)
 	if(!istype(H))
 		return

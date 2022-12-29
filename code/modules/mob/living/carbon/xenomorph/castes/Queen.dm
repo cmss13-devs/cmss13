@@ -87,14 +87,14 @@
 	Q.overwatch(stop_overwatch = TRUE)
 
 	. = ..()
-	RegisterSignal(Q, COMSIG_MOB_PRE_CLICK, .proc/handle_overwatch)
-	RegisterSignal(Q, COMSIG_QUEEN_DISMOUNT_OVIPOSITOR, .proc/exit_hologram)
-	RegisterSignal(Q, COMSIG_XENO_OVERWATCH_XENO, .proc/start_watching)
+	RegisterSignal(Q, COMSIG_MOB_PRE_CLICK, PROC_REF(handle_overwatch))
+	RegisterSignal(Q, COMSIG_QUEEN_DISMOUNT_OVIPOSITOR, PROC_REF(exit_hologram))
+	RegisterSignal(Q, COMSIG_XENO_OVERWATCH_XENO, PROC_REF(start_watching))
 	RegisterSignal(Q, list(
 		COMSIG_XENO_STOP_OVERWATCH,
 		COMSIG_XENO_STOP_OVERWATCH_XENO
-	), .proc/stop_watching)
-	RegisterSignal(src, COMSIG_MOVABLE_TURF_ENTER, .proc/turf_weed_only)
+	), PROC_REF(stop_watching))
+	RegisterSignal(src, COMSIG_MOVABLE_TURF_ENTER, PROC_REF(turf_weed_only))
 
 	// Default colour
 	if(Q.hive.color)
@@ -124,7 +124,7 @@
 	forceMove(target)
 	is_watching = target
 
-	RegisterSignal(target, COMSIG_PARENT_QDELETING, .proc/target_watching_qdeleted)
+	RegisterSignal(target, COMSIG_PARENT_QDELETING, PROC_REF(target_watching_qdeleted))
 	return
 
 // able to stop watching here before the loc is set to null
@@ -149,21 +149,24 @@
 	X.reset_view()
 	return
 
-/mob/hologram/queen/proc/turf_weed_only(var/mob/self, var/turf/T)
+/mob/hologram/queen/proc/turf_weed_only(var/mob/self, var/turf/crossing_turf)
 	SIGNAL_HANDLER
 
-	if(!T)
+	if(!crossing_turf)
 		return COMPONENT_TURF_DENY_MOVEMENT
 
-	if(istype(T, /turf/closed/wall))
-		var/turf/closed/wall/W = T
-		if(W.hull)
+	if(istype(crossing_turf, /turf/closed/wall))
+		var/turf/closed/wall/crossing_wall = crossing_turf
+		if(crossing_wall.hull)
 			return COMPONENT_TURF_DENY_MOVEMENT
 
-	var/list/turf_area = range(3, T)
+	var/list/turf_area = range(3, crossing_turf)
 
-	var/obj/effect/alien/weeds/W = locate() in turf_area
-	if(W && HIVE_ALLIED_TO_HIVE(W.hivenumber, hivenumber))
+	var/obj/effect/alien/weeds/nearby_weeds = locate() in turf_area
+	if(nearby_weeds && HIVE_ALLIED_TO_HIVE(nearby_weeds.hivenumber, hivenumber))
+		var/obj/effect/alien/crossing_turf_weeds = locate() in crossing_turf
+		if(crossing_turf_weeds)
+			crossing_turf_weeds.update_icon() //randomizes the icon of the turf when crossed over*/
 		return COMPONENT_TURF_ALLOW_MOVEMENT
 
 	return COMPONENT_TURF_DENY_MOVEMENT
@@ -303,6 +306,7 @@
 		/mob/living/carbon/Xenomorph/Queen/proc/set_orders,
 		/mob/living/carbon/Xenomorph/Queen/proc/hive_message,
 		/mob/living/carbon/Xenomorph/proc/rename_tunnel,
+		/mob/living/carbon/Xenomorph/proc/set_hugger_reserve_for_morpher,
 	)
 
 	var/list/mobile_abilities = list(
@@ -389,7 +393,7 @@
 				break // Don't need to keep looking
 
 	if(hive.dynamic_evolution && !queen_aged)
-		queen_age_timer_id = addtimer(CALLBACK(src, .proc/make_combat_effective), XENO_QUEEN_AGE_TIME, TIMER_UNIQUE|TIMER_STOPPABLE)
+		queen_age_timer_id = addtimer(CALLBACK(src, PROC_REF(make_combat_effective)), XENO_QUEEN_AGE_TIME, TIMER_UNIQUE|TIMER_STOPPABLE)
 	else
 		make_combat_effective()
 
@@ -598,7 +602,7 @@
 		return
 
 	pslash_delay = TRUE
-	addtimer(CALLBACK(src, /mob/living/carbon/Xenomorph.proc/do_claw_toggle_cooldown), 30 SECONDS)
+	addtimer(CALLBACK(src, TYPE_PROC_REF(/mob/living/carbon/Xenomorph, do_claw_toggle_cooldown)), 30 SECONDS)
 
 	var/choice = tgui_input_list(usr, "Choose which level of slashing hosts to permit to your hive.","Harming", list("Allowed", "Restricted - Hosts of Interest", "Forbidden"), theme="hive_status")
 
@@ -759,6 +763,7 @@
 	if(hive.living_xeno_queen == src)
 		hive.xeno_queen_timer = world.time + XENO_QUEEN_DEATH_DELAY
 		hive.banished_ckeys   = list() // Reset the banished ckey list
+	icon = queen_standing_icon
 	return ..()
 
 

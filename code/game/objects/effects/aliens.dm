@@ -125,7 +125,7 @@
 			continue
 
 	START_PROCESSING(SSobj, src)
-	addtimer(CALLBACK(src, .proc/die), time_to_live)
+	addtimer(CALLBACK(src, PROC_REF(die)), time_to_live)
 	animate(src, time_to_live, alpha = 128)
 
 /obj/effect/xenomorph/spray/Destroy()
@@ -407,8 +407,8 @@
 	else
 		qdel(src)
 
-	addtimer(CALLBACK(src, .proc/damage_mobs), time_before_damage)
-	addtimer(CALLBACK(src, .proc/make_smoke), time_before_smoke)
+	addtimer(CALLBACK(src, PROC_REF(damage_mobs)), time_before_damage)
+	addtimer(CALLBACK(src, PROC_REF(make_smoke)), time_before_smoke)
 
 /obj/effect/xenomorph/boiler_bombard/proc/damage_mobs()
 	if (!istype(src) || !isturf(loc))
@@ -459,7 +459,7 @@
 	icon_state = "xeno_telegraph_green"
 
 /obj/effect/xenomorph/xeno_telegraph/brown/abduct_hook
-	icon_state = "xeno_telegraph_abduct_hook"
+	icon_state = "xeno_telegraph_abduct_hook_anim"
 
 /obj/effect/xenomorph/xeno_telegraph/brown/lash
 	icon_state = "xeno_telegraph_lash"
@@ -481,7 +481,7 @@
 /obj/effect/xenomorph/acid_damage_delay/New(loc, damage = 20, delay = 10, empowered = FALSE, message = null, mob/living/carbon/Xenomorph/linked_xeno = null)
 	..(loc)
 
-	addtimer(CALLBACK(src, .proc/die), delay)
+	addtimer(CALLBACK(src, PROC_REF(die)), delay)
 	src.damage = damage
 	src.message = message
 	src.linked_xeno = linked_xeno

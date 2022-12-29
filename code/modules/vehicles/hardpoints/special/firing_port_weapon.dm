@@ -82,9 +82,6 @@
 
 	return TRUE
 
-/obj/item/hardpoint/special/firing_port_weapon/get_examine_text(mob/user, var/integrity_only = FALSE)
-	return list()
-
 /obj/item/hardpoint/special/firing_port_weapon/reload(var/mob/user)
 	if(!ammo)
 		ammo = new /obj/item/ammo_magazine/hardpoint/firing_port_weapon
@@ -105,7 +102,7 @@
 		to_chat(user, SPAN_WARNING("\The [name] is out of ammunition! Wait [reload_time / 10] seconds for automatic reload to finish."))
 	reloading = TRUE
 	reload_time_started = world.time
-	addtimer(CALLBACK(src, .proc/reload, user), reload_time)
+	addtimer(CALLBACK(src, PROC_REF(reload), user), reload_time)
 
 //try adding magazine to hardpoint's backup clips. Called via weapons loader
 /obj/item/hardpoint/special/firing_port_weapon/try_add_clip(var/obj/item/ammo_magazine/A, var/mob/user)

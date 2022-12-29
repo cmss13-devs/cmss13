@@ -225,6 +225,24 @@
 	reagents.add_reagent("oxycodone", MED_REAGENTS_OVERDOSE-1)
 	update_icon()
 
+/obj/item/reagent_container/hypospray/autoinjector/ultrazine
+	name = "ultrazine autoinjector"
+	chemname = "ultrazine"
+	desc = "An auto-injector loaded with a special illegal muscle stimulant, do not administer more than twice at a time. Highly addictive."
+	amount_per_transfer_from_this = 5
+	volume = 25
+	uses_left = 5
+	icon_state = "stimpack"
+	item_state = "stimpack"
+	skilllock = SKILL_MEDICAL_DEFAULT
+	display_maptext = TRUE
+	maptext_label = "UZ"
+
+/obj/item/reagent_container/hypospray/autoinjector/ultrazine/liaison
+	name = "white autoinjector"
+	desc = "You know what they say, don't jab yourself with suspicious syringes."
+	maptext_label = "??"
+
 /obj/item/reagent_container/hypospray/autoinjector/yautja
 	name = "unusual crystal"
 	chemname = "thwei"
@@ -355,7 +373,7 @@
 	volume = 60
 	amount_per_transfer_from_this = 60
 
-/obj/item/reagent_container/hypospray/autoinjector/empty/medic/
+/obj/item/reagent_container/hypospray/autoinjector/empty/medic
 	name = "Medic Autoinjector (M-M)"
 	desc = "A custom-made professional injector, likely from research. Has a similar lock to pill bottles, and fits up to 6 injections."
 	skilllock = SKILL_MEDICAL_MEDIC

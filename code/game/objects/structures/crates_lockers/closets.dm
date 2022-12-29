@@ -80,8 +80,8 @@
 
 	for(var/mob/M in src)
 		M.forceMove(loc)
-		if(!(exit_stun == 0))
-			M.stunned = max(M.stunned, exit_stun) //Action delay when going out of a closet
+		if(exit_stun)
+			M.apply_effect(exit_stun, PARALYZE) //Action delay when going out of a closet
 		M.update_canmove() //Force the delay to go in action immediately
 		if(!M.lying)
 			M.visible_message(SPAN_WARNING("[M] suddenly gets out of [src]!"),
@@ -114,7 +114,7 @@
 		stored_units = store_items(stored_units)
 	if(store_mobs)
 		stored_units = store_mobs(stored_units)
-		RegisterSignal(src, COMSIG_OBJ_FLASHBANGED, .proc/flashbang)
+		RegisterSignal(src, COMSIG_OBJ_FLASHBANGED, PROC_REF(flashbang))
 
 	opened = 0
 	update_icon()
@@ -227,7 +227,7 @@
 					return
 				new /obj/item/stack/sheet/metal(src.loc)
 				for(var/mob/M as anything in viewers(src))
-					M.show_message(SPAN_NOTICE("\The [src] has been cut apart by [user] with [WT]."), 3, "You hear welding.", 2)
+					M.show_message(SPAN_NOTICE("\The [src] has been cut apart by [user] with [WT]."), SHOW_MESSAGE_VISIBLE, "You hear welding.", SHOW_MESSAGE_AUDIBLE)
 				qdel(src)
 				return
 		if(material == MATERIAL_WOOD)
@@ -262,7 +262,7 @@
 		welded = !welded
 		update_icon()
 		for(var/mob/M as anything in viewers(src))
-			M.show_message(SPAN_WARNING("[src] has been [welded?"welded shut":"unwelded"] by [user.name]."), 3, "You hear welding.", 2)
+			M.show_message(SPAN_WARNING("[src] has been [welded?"welded shut":"unwelded"] by [user.name]."), SHOW_MESSAGE_VISIBLE, "You hear welding.", SHOW_MESSAGE_AUDIBLE)
 	else
 		if(isXeno(user))
 			var/mob/living/carbon/Xenomorph/opener = user

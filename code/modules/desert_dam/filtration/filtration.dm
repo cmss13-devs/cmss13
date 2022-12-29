@@ -1,7 +1,7 @@
 /*
-obj/effect/landmark/desertdam
+/obj/effect/landmark/desertdam
 	icon = 'icons/misc/mark.dmi'
-obj/effect/landmark/desertdam/river_blocker
+/obj/effect/landmark/desertdam/river_blocker
 	name = "toxic river blocker"
 	icon_state = "spawn_event"
 
@@ -242,7 +242,7 @@ var/global/east_riverstart = 0
 
 	update_turf()
 
-	addtimer(CALLBACK(src, .proc/do_disperse), 1 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(do_disperse)), 1 SECONDS)
 
 /obj/effect/blocker/toxic_water/proc/do_disperse()
 	toxic = 0
@@ -281,7 +281,7 @@ var/global/east_riverstart = 0
 	var/id = null
 	var/active = 0
 	anchored = 1.0
-	use_power = 1
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 2
 	active_power_usage = 4
 	unslashable = TRUE

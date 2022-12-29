@@ -18,7 +18,7 @@ var/bomb_set = FALSE
 	var/end_round = TRUE
 	var/timer_announcements_flags = NUKE_SHOW_TIMER_ALL
 	pixel_x = -16
-	use_power = 0
+	use_power = USE_POWER_NONE
 	req_access = list()
 	flags_atom = FPRINT
 	var/command_lockout = FALSE //If set to TRUE, only command staff would be able to disable the nuke
@@ -70,7 +70,7 @@ var/bomb_set = FALSE
 		stop_processing()
 
 /obj/structure/machinery/nuclearbomb/attack_alien(mob/living/carbon/Xenomorph/M)
-	INVOKE_ASYNC(src, /atom.proc/attack_hand, M)
+	INVOKE_ASYNC(src, TYPE_PROC_REF(/atom, attack_hand), M)
 	return XENO_ATTACK_ACTION
 
 /obj/structure/machinery/nuclearbomb/attackby(obj/item/O as obj, mob/user as mob)

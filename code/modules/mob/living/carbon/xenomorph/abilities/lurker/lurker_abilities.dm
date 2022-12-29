@@ -35,7 +35,7 @@
 		return
 
 	if (X.mutation_type == LURKER_NORMAL)
-		RegisterSignal(X, COMSIG_XENO_SLASH_ADDITIONAL_EFFECTS_SELF, .proc/remove_freeze)
+		RegisterSignal(X, COMSIG_XENO_SLASH_ADDITIONAL_EFFECTS_SELF, PROC_REF(remove_freeze))
 
 /datum/action/xeno_action/activable/pounce/lurker/proc/remove_freeze(mob/living/carbon/Xenomorph/X)
 	SIGNAL_HANDLER
@@ -73,3 +73,38 @@
 	plasma_cost = 20
 
 	var/buff_duration = 50
+
+// VAMP LURKER ABILITIES
+
+/datum/action/xeno_action/activable/pounce/rush
+	name = "Rush"
+	action_icon_state = "pounce"
+	ability_name = "Rush"
+	macro_path = /datum/action/xeno_action/verb/verb_rush
+	ability_primacy = XENO_PRIMARY_ACTION_1
+	action_type = XENO_ACTION_CLICK
+	xeno_cooldown = 60
+	plasma_cost = 0
+
+	// Config options
+	distance = 4
+	knockdown = FALSE
+	freeze_self = FALSE
+
+/datum/action/xeno_action/activable/flurry
+	name = "Flurry"
+	action_icon_state = "rav_spike"
+	ability_name = "Flurry"
+	macro_path = /datum/action/xeno_action/verb/verb_flurry
+	ability_primacy = XENO_PRIMARY_ACTION_2
+	action_type = XENO_ACTION_CLICK
+	xeno_cooldown = 30
+
+/datum/action/xeno_action/activable/tail_jab
+	name = "Tail Jab"
+	action_icon_state = "prae_pierce"
+	ability_name = "Tail Jab"
+	macro_path = /datum/action/xeno_action/verb/verb_tail_jab
+	ability_primacy = XENO_PRIMARY_ACTION_3
+	action_type = XENO_ACTION_CLICK
+	xeno_cooldown = 70

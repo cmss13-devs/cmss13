@@ -63,6 +63,13 @@
 	if(crest_defense)
 		return "Defender_crest_[severity]"
 
+/mob/living/carbon/Xenomorph/Defender/handle_special_backpack_states()
+	. = ..()
+	if(fortify)
+		return " Fortify"
+	if(crest_defense)
+		return " Crest"
+
 /datum/behavior_delegate/defender_base
 	name = "Base Defender Behavior Delegate"
 
@@ -70,9 +77,9 @@
 	if(bound_xeno.stat == DEAD)
 		return
 
-	if(bound_xeno.fortify)
+	if(bound_xeno.fortify && bound_xeno.health > 0)
 		bound_xeno.icon_state = "[bound_xeno.mutation_icon_state || bound_xeno.mutation_type] Defender Fortify"
 		return TRUE
-	if(bound_xeno.crest_defense)
+	if(bound_xeno.crest_defense && bound_xeno.health > 0)
 		bound_xeno.icon_state = "[bound_xeno.mutation_icon_state || bound_xeno.mutation_type] Defender Crest"
 		return TRUE

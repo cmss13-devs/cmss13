@@ -215,6 +215,9 @@
 	scatter_unwielded = SCATTER_AMOUNT_TIER_4
 	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_5
 
+/obj/item/weapon/gun/rifle/m41a/elite/whiteout
+	current_mag = /obj/item/ammo_magazine/rifle/heap //special version for whiteout that has the HEAP mag, nothing else changed
+
 /obj/item/weapon/gun/rifle/m41a/corporate
 	desc = "A Weyland-Yutani creation, this M41A MK2 comes equipped in corporate white. Uses 10x24mm caseless ammunition."
 	icon = 'icons/obj/items/weapons/guns/guns_by_map/snow/guns_obj.dmi'
@@ -241,7 +244,7 @@
 	unacidable = TRUE
 	indestructible = TRUE
 
-	current_mag = /obj/item/ammo_magazine/rifle/m40_sd
+	current_mag = /obj/item/ammo_magazine/rifle/m40_sd/heap
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER|GUN_BURST_ON
 	aim_slowdown = SLOWDOWN_ADS_QUICK
 	wield_delay = WIELD_DELAY_FAST
@@ -254,7 +257,8 @@
 		/obj/item/ammo_magazine/rifle/explosive,
 		/obj/item/ammo_magazine/rifle/le,
 		/obj/item/ammo_magazine/rifle/ap,
-		/obj/item/ammo_magazine/rifle/m40_sd
+		/obj/item/ammo_magazine/rifle/m40_sd,
+		/obj/item/ammo_magazine/rifle/m40_sd/heap
 	)
 	attachable_allowed = list(
 						/obj/item/attachable/suppressor/m40_integral,//no rail attachies
@@ -375,6 +379,7 @@
 		/obj/item/ammo_magazine/rifle/m41aMK1,
 		/obj/item/ammo_magazine/rifle/m41aMK1/ap,
 		/obj/item/ammo_magazine/rifle/m41aMK1/incendiary,
+		/obj/item/ammo_magazine/rifle/m41aMK1/heap,
 		/obj/item/ammo_magazine/rifle/m41aMK1/cluster,
 		/obj/item/ammo_magazine/rifle/m41aMK1/toxin,
 		/obj/item/ammo_magazine/rifle/m41aMK1/penetrating,
@@ -488,7 +493,7 @@
 
 /obj/item/weapon/gun/rifle/m46c/verb/toggle_iff()
 	set category = "Weapons"
-	set name = "Toggle Lethal Mode"
+	set name = "Toggle IFF"
 	set src in usr
 
 	if(is_locked && linked_human && usr != linked_human)
@@ -516,7 +521,7 @@
 
 /obj/item/weapon/gun/rifle/m46c/proc/name_after_co(var/mob/living/carbon/human/H, var/obj/item/weapon/gun/rifle/m46c/I)
 	linked_human = H
-	RegisterSignal(linked_human, COMSIG_PARENT_QDELETING, .proc/remove_idlock)
+	RegisterSignal(linked_human, COMSIG_PARENT_QDELETING, PROC_REF(remove_idlock))
 
 /obj/item/weapon/gun/rifle/m46c/get_examine_text(mob/user)
 	. = ..()
@@ -1182,7 +1187,7 @@
 	icon_state = "type73"
 	item_state = "type73"
 	wield_delay = 0 //Ends up being .5 seconds due to scope
-	current_mag = /obj/item/ammo_magazine/rifle/type71/ap
+	current_mag = /obj/item/ammo_magazine/rifle/type71/heap
 	attachable_allowed = list(
 						/obj/item/attachable/lasersight,
 						/obj/item/attachable/verticalgrip,

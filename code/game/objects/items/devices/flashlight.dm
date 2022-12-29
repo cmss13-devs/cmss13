@@ -21,6 +21,10 @@
 
 /obj/item/device/flashlight/Initialize()
 	. = ..()
+	update_icon()
+
+/obj/item/device/flashlight/update_icon()
+	. = ..()
 	if(on)
 		icon_state = "[initial(icon_state)]-on"
 	else
@@ -36,7 +40,7 @@
 
 /obj/item/device/flashlight/proc/update_brightness(var/mob/user = null)
 	if(on)
-		icon_state = "[initial(icon_state)]-on"
+		update_icon()
 		if(loc && loc == user)
 			user.SetLuminosity(brightness_on, FALSE, src)
 		else if(isturf(loc))
@@ -262,14 +266,46 @@
 	actions = list()	//just pull it manually, neckbeard.
 	raillight_compatible = 0
 	can_be_broken = FALSE
+	var/burnt_out = FALSE
 	var/fuel = 0
 	var/fuel_rate = AMOUNT_PER_TIME(1 SECONDS, 1 SECONDS)
 	var/on_damage = 7
 	var/ammo_datum = /datum/ammo/flare
 
+	/// Whether to use flame overlays for this flare type
+	var/show_flame = TRUE
+	/// Tint for the greyscale flare flame
+	var/flame_tint = "#ffcccc"
+	/// Color correction, added to the whole flame overlay
+	var/flame_base_tint = "#ff0000"
+	// "But, why are there two colors?"
+	// The flame_tint is applied multiplicatively to the greyscale animation
+	// However it represents levels within the flame, not the color of the flame as a whole.
+	// To get around this, we additively apply flame_base_tint for coloring.
+
 /obj/item/device/flashlight/flare/Initialize()
 	. = ..()
 	fuel = rand(1600 SECONDS, 2000 SECONDS)
+
+/obj/item/device/flashlight/flare/update_icon()
+	overlays?.Cut()
+	. = ..()
+	if(on)
+		icon_state = "[initial(icon_state)]-on"
+		if(show_flame)
+			var/image/flame = image('icons/obj/items/lighting.dmi', src, "flare_flame")
+			flame.color = flame_tint
+			flame.appearance_flags = KEEP_APART|RESET_COLOR|RESET_TRANSFORM
+			var/image/flame_base = image('icons/obj/items/lighting.dmi', src, "flare_flame")
+			flame_base.color = flame_base_tint
+			flame_base.appearance_flags = KEEP_APART|RESET_COLOR
+			flame_base.blend_mode = BLEND_ADD
+			flame.overlays += flame_base
+			overlays += flame
+	else if(burnt_out)
+		icon_state = "[initial(icon_state)]-empty"
+	else
+		icon_state = "[initial(icon_state)]"
 
 /obj/item/device/flashlight/flare/dropped(mob/user)
 	. = ..()
@@ -286,10 +322,24 @@
 	if(fuel <= 0 || !on)
 		burn_out()
 
+// Causes flares to stop with a rotation offset for visual purposes
+/obj/item/device/flashlight/flare/animation_spin(speed = 5, loop_amount = -1, clockwise = TRUE, sections = 3, angular_offset = 0, pixel_fuzz = 0)
+	clockwise = pick(TRUE, FALSE)
+	angular_offset = rand(360)
+	pixel_fuzz = 16
+	return ..()
+/obj/item/device/flashlight/flare/pickup()
+	if(transform)
+		apply_transform(matrix()) // reset rotation
+	pixel_x = 0
+	pixel_y = 0
+	return ..()
+
 /obj/item/device/flashlight/flare/proc/burn_out()
 	turn_off()
 	fuel = 0
-	icon_state = "[initial(icon_state)]-empty"
+	burnt_out = TRUE
+	update_icon()
 	add_to_garbage(src)
 	STOP_PROCESSING(SSobj, src)
 
@@ -361,10 +411,14 @@
 	invisibility = 101 //Can't be seen or found, it's "up in the sky"
 	mouse_opacity = 0
 	brightness_on = 7 //Way brighter than most lights
+	show_flame = FALSE
 
 /obj/item/device/flashlight/flare/on/illumination/Initialize()
 	. = ..()
 	fuel = rand(800 SECONDS, 1000 SECONDS) // Half the duration of a flare, but justified since it's invincible
+
+/obj/item/device/flashlight/flare/on/illumination/update_icon()
+	return
 
 /obj/item/device/flashlight/flare/on/illumination/turn_off()
 	..()
@@ -380,6 +434,7 @@
 	brightness_on = 7
 	anchored = 1//can't be picked up
 	ammo_datum = /datum/ammo/flare/starshell
+	show_flame = FALSE
 
 /obj/item/device/flashlight/flare/on/starshell_ash/Initialize(mapload, ...)
 	if(mapload)
@@ -440,6 +495,8 @@
 	var/faction = ""
 	var/datum/cas_signal/signal
 	var/activate_message = TRUE
+	flame_base_tint = "#00aa00"
+	flame_tint = "#aaccaa"
 
 /obj/item/device/flashlight/flare/signal/Initialize()
 	. = ..()
@@ -453,7 +510,7 @@
 
 	if(.)
 		faction = user.faction
-		addtimer(CALLBACK(src, .proc/activate_signal, user), 5 SECONDS)
+		addtimer(CALLBACK(src, PROC_REF(activate_signal), user), 5 SECONDS)
 
 /obj/item/device/flashlight/flare/signal/activate_signal(mob/living/carbon/human/user)
 	..()

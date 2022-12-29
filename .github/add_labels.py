@@ -13,12 +13,20 @@ changelogToPrefix = {
 	'refactor': ["Refactor", ["refactored some code"]],
 	'config': ["Config", ["changed some config setting"]],
 	'admin': ["Admin", ["messed with admin stuff"]],
-	'server': ["Server", ["something server ops should know"]]
+	'server': ["Server", ["something server ops should know"]],
+    'soundadd': ["Sound", ["added a new sound thingy"]],
+    'sounddel': ["Sound", ["removed an old sound thingy"]],
+    'imageadd': ["Sprites", ["added some icons and images"]],
+    'imagedel': ["Sprites", ["deleted some icons and images"]],
+    'mapadd': ["Mapping", ["added a new map or section to a map"]],
+    'maptweak': ["Mapping", ["tweaked a map"]],
+    'ui' : ["UI", ["changed something relating to user interfaces"]]
 }
 
 fileToPrefix = {
 	'wav': 'Sound',
 	'ogg': 'Sound',
+    'mp3': 'Sound', ## Can't believe they forgot about the best sound format
 	'dmm': 'Mapping',
 
 	'js': 'UI',

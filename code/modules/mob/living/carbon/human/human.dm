@@ -11,7 +11,8 @@
 			set_species()
 
 	create_reagents(1000)
-	change_real_name(src, "unknown")
+	if(!real_name || !name)
+		change_real_name(src, "unknown")
 
 	. = ..()
 

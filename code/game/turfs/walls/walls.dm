@@ -330,6 +330,9 @@
 		if(!HAS_TRAIT(user, TRAIT_SUPER_STRONG))
 			to_chat(user, SPAN_WARNING("You can't use \the [W] properly!"))
 			return
+		if(hull)
+			to_chat(user, SPAN_WARNING("Even with your immense strength, you can't bring down \the [src]."))
+			return
 
 		to_chat(user, SPAN_NOTICE("You start taking down \the [src]."))
 		if(!do_after(user, 5 SECONDS, INTERRUPT_ALL_OUT_OF_RANGE, BUSY_ICON_BUILD))

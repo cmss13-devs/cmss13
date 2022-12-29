@@ -1,10 +1,11 @@
 import { useBackend } from '../backend';
+import { addZeros } from 'common/math';
 import { Window } from '../layouts';
 import { Box, ColorBox, NoticeBox, Flex, ProgressBar, Button, LabeledList, Divider } from '../components';
 
 export const BrigCell = (props, context) => {
   const { data, act } = useBackend(context);
-  const { viewing_incident, incidents } = data;
+  const { viewing_incident, incidents, bit_active } = data;
 
   return (
     <Window theme="weyland" width={450} height={450}>
@@ -40,20 +41,24 @@ export const BrigCell = (props, context) => {
                 </Box>
               </Flex>
 
-              {incidents.map((incident, i) => (
-                <Button
-                  key={i}
-                  textAlign="center"
-                  minWidth="15rem"
-                  p=".5rem"
-                  my=".5rem"
-                  color={incident.active ? 'green' : ''}
-                  onClick={() =>
-                    act('set_viewed_incident', { incident: incident.ref })
-                  }>
-                  {incident.suspect}
-                </Button>
-              ))}
+              {incidents.map((incident, i) => {
+                const isActive = incident.status & bit_active;
+
+                return (
+                  <Button
+                    key={i}
+                    textAlign="center"
+                    minWidth="15rem"
+                    p=".5rem"
+                    my=".5rem"
+                    color={isActive ? 'green' : ''}
+                    onClick={() =>
+                      act('set_viewed_incident', { incident: incident.ref })
+                    }>
+                    {incident.suspect}
+                  </Button>
+                );
+              })}
             </>
           )}
         </Flex>
@@ -64,19 +69,70 @@ export const BrigCell = (props, context) => {
   );
 };
 
+// Returns the time left, in seconds.
+const getTimeLeft = function (data) {
+  const {
+    time_to_release,
+    time,
+    status,
+    bit_active,
+    brig_sentence,
+    time_served,
+  } = data;
+
+  const isActive = status & bit_active;
+  let timeLeft = (time_to_release - time) / 10;
+
+  if (!isActive) {
+    timeLeft = (brig_sentence * 600 - time_served) / 10;
+  }
+
+  return Math.max(0, timeLeft);
+};
+
 const IncidentDetails = (props, context) => {
   const { data, act } = useBackend(context);
   const {
     suspect,
-    progress,
-    sentence,
-    time_left,
-    started,
-    active,
-    status_class,
-    status_text,
     can_pardon,
+    brig_sentence,
+    time_served,
+    bit_active,
+    bit_perma,
+    bit_pardoned,
+    bit_served,
+    status,
   } = data;
+
+  // Time left, in seconds.
+  const time_left = getTimeLeft(data);
+
+  // 0 to 1, for the progress bar.
+  const progress = 1 - time_left / 60 / brig_sentence;
+
+  // The time in 5:05 format.
+  const time_left_pretty =
+    Math.floor((time_left / 60) % 60) +
+    ':' +
+    addZeros(Math.floor(time_left % 60), 2);
+
+  const isActive = status & bit_active;
+  const isPerma = status & bit_perma;
+  const isPardoned = status & bit_pardoned;
+  const isServed = status & bit_served;
+  const isStarted = time_served || isActive;
+
+  let statusText, statusClass;
+  if (isPardoned) {
+    statusText = 'PARDONED';
+    statusClass = 'info';
+  } else if (isPerma) {
+    statusText = 'PERMABRIG';
+    statusClass = 'danger';
+  } else if (isServed) {
+    statusText = 'SERVED';
+    statusClass = 'success';
+  }
 
   return (
     <>
@@ -90,7 +146,7 @@ const IncidentDetails = (props, context) => {
         />
 
         <Flex.Item>
-          {status_text !== 'PERMABRIG' && (
+          {!(isPerma && !isPardoned) && (
             <Button.Confirm
               icon="rotate-left"
               px=".75rem"
@@ -111,7 +167,7 @@ const IncidentDetails = (props, context) => {
         </Flex.Item>
       </Flex>
 
-      {!status_class && (
+      {!statusClass && (
         <ProgressBar
           my="0rem"
           value={progress}
@@ -119,34 +175,36 @@ const IncidentDetails = (props, context) => {
           color="average"
           style={{ border: 'none', margin: 0 }}>
           <Flex justify="center" fontSize="2rem" bold>
-            {time_left}
+            {time_left_pretty}
           </Flex>
         </ProgressBar>
       )}
 
-      {status_class && (
+      {statusClass && (
         <NoticeBox
-          className={'NoticeBox--type--' + status_class}
+          className={'NoticeBox--type--' + statusClass}
           width="100%"
           textAlign="center"
           p="1rem"
           fontSize="2rem">
-          {status_text}
+          {statusText}
         </NoticeBox>
       )}
 
       <Flex mt="1rem">
         <LabeledList>
           <LabeledList.Item label="Suspect">{suspect}</LabeledList.Item>
-          <LabeledList.Item label="Sentence">{sentence}</LabeledList.Item>
+          <LabeledList.Item label="Sentence">
+            {isPerma ? 'Permabrig' : brig_sentence + ' Minutes'}
+          </LabeledList.Item>
         </LabeledList>
       </Flex>
 
-      {(!status_class || status_text === 'PERMABRIG') && (
+      {!!(!statusClass || isPerma) && (
         <Flex>
-          {!active && (
+          {!isActive && (
             <Button
-              tooltip={started ? 'Resume Timer' : 'Start Timer'}
+              tooltip={isStarted ? 'Resume Timer' : 'Start Timer'}
               icon="play"
               px="2rem"
               py=".25rem"
@@ -156,9 +214,9 @@ const IncidentDetails = (props, context) => {
             />
           )}
 
-          {!!active && (
+          {!!isActive && (
             <>
-              {status_text !== 'PERMABRIG' && (
+              {!isPerma && (
                 <Button
                   tooltip="Pause Timer"
                   icon="pause"

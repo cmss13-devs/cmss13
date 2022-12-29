@@ -56,29 +56,12 @@
 	if (viewed_report)
 		var/datum/crime_incident/incident = viewed_report.incident
 
-		var/time_left = get_time_left(incident)
-
+		data["time"] = REALTIMEOFDAY
 		data["suspect"] = incident.criminal_name
-		data["progress"] = 1 - (time_left / 60) / incident.brig_sentence
-		data["sentence"] = (incident.status & BRIG_SENTENCE_PERMA) ? "Permabrig" : "[incident.brig_sentence] Minutes"
-		data["time_left"] = "[num2text((time_left / 60) % 60)]:[add_zero(num2text(time_left % 60), 2)]"
-
-		// Flags.
-		data["active"]	= (incident.status & BRIG_SENTENCE_ACTIVE) // Is this timer currently ticking?
-		data["started"]	= (incident.time_served || data["active"]) // Has this timer been started at all?
-
-		if (incident.status & BRIG_SENTENCE_PARDONED)
-			data["status_text"] = "PARDONED"
-			data["status_class"] = "info"
-		else if (incident.status & BRIG_SENTENCE_PERMA)
-			data["status_text"] = "PERMABRIG"
-			data["status_class"] = "danger"
-		else if (incident.status & BRIG_SENTENCE_SERVED)
-			data["status_text"] = "SERVED"
-			data["status_class"] = "success"
-		else
-			data["status_text"] = null
-			data["status_class"] = null
+		data["brig_sentence"] = incident.brig_sentence
+		data["time_to_release"] = incident.time_to_release
+		data["time_served"] = incident.time_served
+		data["status"] = incident.status
 
 	data["incidents"] = list()
 	for (var/obj/item/paper/incident/paper as anything in incident_reports)
@@ -86,7 +69,7 @@
 		var/list/incident_data = list()
 
 		incident_data["suspect"] = incident.criminal_name
-		incident_data["active"] = (incident.status & BRIG_SENTENCE_ACTIVE)
+		incident_data["status"] = incident.status
 		incident_data["ref"] = "\ref[paper]"
 
 		data["incidents"] += list(incident_data)
@@ -100,6 +83,18 @@
 		if (id_card)
 			if ((id_card.paygrade in GLOB.co_paygrades) || (id_card.paygrade in GLOB.highcom_paygrades) || (id_card.paygrade == "PvI"))
 				data["can_pardon"] = TRUE
+
+	return data
+
+
+/obj/structure/machinery/brig_cell/ui_static_data()
+	var/list/data = list()
+
+	// Bitflags.
+	data["bit_active"] = BRIG_SENTENCE_ACTIVE
+	data["bit_served"] = BRIG_SENTENCE_SERVED
+	data["bit_pardoned"] = BRIG_SENTENCE_PARDONED
+	data["bit_perma"] = BRIG_SENTENCE_PERMA
 
 	return data
 
@@ -189,7 +184,8 @@
 	viewed_report.incident.status |= BRIG_SENTENCE_PARDONED
 	viewed_report.name += " (PARDONED)"
 
-	log_admin("[key_name(user)] has pardoned [viewed_report.incident.criminal_name] for [viewed_report.incident.charges_to_string()].")
+	message_staff("[key_name(user, 1)](<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservejump=\ref[user]'>JMP</A>) has pardoned [viewed_report.incident.criminal_name].")
+	log_admin("[key_name(user)] pardoned [viewed_report.incident.criminal_name] for [viewed_report.incident.charges_to_string()].")
 	ai_silent_announcement("BRIG REPORT: [viewed_report.incident.criminal_name] has been pardoned for [viewed_report.incident.charges_to_string()].")
 
 	// If this is the active timer, end it.
@@ -221,7 +217,7 @@
 	if (!(incident.status & BRIG_SENTENCE_PERMA))
 		start_processing()
 
-	log_admin("[key_name(user)] has jailed [incident.criminal_name] for [incident.charges_to_string()].")
+	log_admin("[key_name(user)] jailed [incident.criminal_name] for [incident.charges_to_string()].")
 
 	incident.status |= BRIG_SENTENCE_ACTIVE
 
@@ -238,7 +234,8 @@
 	incident.status &= ~BRIG_SENTENCE_ACTIVE
 	incident.time_served = (incident.brig_sentence * 600) - (incident.time_to_release - REALTIMEOFDAY)
 
-	log_admin("[key_name(user)] has paused the jail timer of [incident.criminal_name], [incident.charges_to_string()].")
+	message_staff("[key_name(user, 1)](<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservejump=\ref[user]'>JMP</A>) has paused the jail timer of [incident.criminal_name].")
+	log_admin("[key_name(user)] paused the jail timer of [incident.criminal_name], [incident.charges_to_string()].")
 
 	active_report = null
 	stop_processing()
@@ -256,7 +253,8 @@
 	incident.status |= BRIG_SENTENCE_SERVED
 
 	if (user)
-		log_admin("[key_name(user)] has ended the jail timer of [incident.criminal_name], [incident.charges_to_string()].")
+		message_staff("[key_name(user, 1)](<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservejump=\ref[user]'>JMP</A>) has prematurely ended the jail timer of [incident.criminal_name].")
+		log_admin("[key_name(user)] prematurely ended the jail timer of [incident.criminal_name], [incident.charges_to_string()].")
 
 	active_report = null
 	stop_processing()
@@ -275,7 +273,8 @@
 	incident.status &= ~BRIG_SENTENCE_PARDONED
 	incident.status &= ~BRIG_SENTENCE_SERVED
 
-	log_admin("[key_name(user)] has reset the jail timer of [incident.criminal_name], [incident.charges_to_string()].")
+	message_staff("[key_name(user, 1)](<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservejump=\ref[user]'>JMP</A>) has reset the jail timer of [incident.criminal_name].")
+	log_admin("[key_name(user)] reset the jail timer of [incident.criminal_name], [incident.charges_to_string()].")
 	ai_silent_announcement("BRIG REPORT: [incident.criminal_name] had their jail time reset by [user].", ":p")
 
 	update_icon()
@@ -343,7 +342,7 @@
 	W.moveToNullspace()
 	incident_reports += W
 
-	to_chat(user, SPAN_NOTICE("You insert [W] into [name]."))
+	to_chat(user, SPAN_NOTICE("You insert \the [W] into \the [name]."))
 
 /obj/structure/machinery/brig_cell/proc/set_picture(state)
 	picture_state = state

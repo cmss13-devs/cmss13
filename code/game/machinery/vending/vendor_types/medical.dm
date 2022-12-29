@@ -9,6 +9,7 @@
 	density = 0
 	unslashable = TRUE
 	unacidable = TRUE
+	plane = FLOOR_PLANE
 	layer = 2.1 //It's the floor, man
 
 //------------SORTED MEDICAL VENDORS---------------
@@ -87,7 +88,7 @@
 	if(istype(item_to_stock, /obj/item/reagent_container/hypospray/autoinjector) || istype(item_to_stock, /obj/item/reagent_container/glass/bottle))
 		if(requires_supply_link_port && !get_supply_link())
 			var/obj/item/reagent_container/container = item_to_stock
-			if(container.reagents.total_volume > container.reagents.maximum_volume)
+			if(container.reagents.total_volume < container.reagents.maximum_volume)
 				if(user)
 					to_chat(user, SPAN_WARNING("\The [container.name] must be full to restock it when not linked to a medical supply port!"))
 				return FALSE
@@ -114,16 +115,16 @@
 				return
 
 		var/obj/item/reagent_container/C = I
-		if(requires_supply_link_port && !get_supply_link())
-			to_chat(user, SPAN_WARNING("\The [src] needs to be linked to a medical supply link port to refill the [C.name]!"))
-			return
-
 		if(!(C.type in chem_refill))
 			to_chat(user, SPAN_WARNING("[src] cannot refill the [C.name]."))
 			return
 
 		if(C.reagents.total_volume == C.reagents.maximum_volume)
 			to_chat(user, SPAN_WARNING("[src] makes a warning noise. The [C.name] is currently full."))
+			return
+
+		if(requires_supply_link_port && !get_supply_link())
+			to_chat(user, SPAN_WARNING("\The [src] needs to be linked to a medical supply link port to refill the [C.name]!"))
 			return
 
 		to_chat(user, SPAN_NOTICE("[src] makes a whirring noise as it refills your [C.name]."))
@@ -142,10 +143,6 @@
 				return
 
 		var/obj/item/stack/S = I
-		if(requires_supply_link_port && !get_supply_link())
-			to_chat(user, SPAN_WARNING("\The [src] needs to be linked to a medical supply link port to refill the [S.name]!"))
-			return
-
 		if(!(S.type in stack_refill))
 			to_chat(user, SPAN_WARNING("[src] cannot restock the [S.name]."))
 			return
@@ -153,6 +150,11 @@
 		if(S.amount == S.max_amount)
 			to_chat(user, SPAN_WARNING("[src] makes a warning noise. The [S.name] is currently fully stacked."))
 			return
+
+		if(requires_supply_link_port && !get_supply_link())
+			to_chat(user, SPAN_WARNING("\The [src] needs to be linked to a medical supply link port to refill the [S.name]!"))
+			return
+
 
 		to_chat(user, SPAN_NOTICE("[src] makes a whirring noise as it restocks your [S.name]."))
 		S.amount = S.max_amount

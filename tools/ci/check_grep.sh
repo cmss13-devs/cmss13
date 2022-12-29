@@ -64,7 +64,7 @@ fi;
 #	st=1
 #fi;
 echo "Checking for whitespace issues"
-if grep -P '(^ {2})|(^ [^ * ])|(^	+)' code/**/*.dm; then
+if grep -P '(^ {2})|(^ [^ * ])|(^    +)' code/**/*.dm; then
 	echo
 	echo -e "${RED}ERROR: space indentation detected.${NC}"
 	st=1

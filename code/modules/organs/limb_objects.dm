@@ -34,6 +34,10 @@
 	else
 		b_icon = B.icon_name
 
+	if(isSpeciesYautja(H))
+		e_icon = H.ethnicity
+		b_icon = H.body_type
+
 	icon_state = "[get_limb_icon_name(H.species, b_icon, H.gender, name, e_icon)]"
 	setDir(SOUTH)
 	apply_transform(turn(transform, rand(70,130)))

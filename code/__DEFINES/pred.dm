@@ -1,5 +1,6 @@
 #define PRED_MATERIALS list("ebony", "silver", "bronze")
 #define PRED_TRANSLATORS list("Modern", "Retro", "Combo")
+#define PRED_SKIN_COLOR list("cyan", "green", "purple", "blue", "red", "black")
 
 #define PRED_YAUTJA_CAPE "yautja cape"
 #define PRED_YAUTJA_CEREMONIAL_CAPE "yautja ceremonial cape"

@@ -11,7 +11,7 @@
 
 /datum/equipment_preset/yautja/load_race(mob/living/carbon/human/H, var/client/mob_client)
 	H.set_species(SPECIES_YAUTJA)
-	H.ethnicity = "cyan"
+	H.ethnicity = "tan"
 	H.body_type = "pred" //can be removed in future for body types
 	if(!mob_client)
 		mob_client = H.client

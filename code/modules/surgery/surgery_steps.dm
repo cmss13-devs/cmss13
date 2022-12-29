@@ -158,7 +158,7 @@ affected_limb, or location vars. Also, in that case there may be a wait between 
 			advance = TRUE
 			if(repeat_step && repeat_step_criteria(user, target, target_zone, tool, tool_type, surgery))
 				surgery.step_in_progress = FALSE
-				INVOKE_ASYNC(surgery, /datum/surgery.proc/attempt_next_step, user, tool, TRUE)
+				INVOKE_ASYNC(surgery, TYPE_PROC_REF(/datum/surgery, attempt_next_step), user, tool, TRUE)
 				return TRUE
 		else if(surgery.status != 1 && failure(user, target, target_zone, tool, tool_type, surgery)) //Failing the first step while on help intent doesn't risk harming the patient.
 			advance = TRUE

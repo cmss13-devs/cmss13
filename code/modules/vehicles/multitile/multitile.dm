@@ -114,7 +114,7 @@
 	var/visible_in_tacmap = TRUE
 
 	//Amount of seconds spent on entering/leaving. Always the same when dragging stuff (2 seconds) and for xenos (1 second)
-	var/entrance_speed = 1
+	var/entrance_speed = 1 SECONDS
 
 	//Whether or not entering the vehicle is ID restricted to those with crewman, command or MP access only. Toggleable by the driver.
 	//Having command/MP/Crewmen access won't matter if the faction of the vehicle is not yours, so you can't infiltrate the vehicle.

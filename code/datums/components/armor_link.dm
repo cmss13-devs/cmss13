@@ -17,7 +17,7 @@
 
 /datum/component/armor_link/RegisterWithParent()
 	. = ..()
-	RegisterSignal(parent, COMSIG_ITEM_EQUIPPED, .proc/on_equipped)
+	RegisterSignal(parent, COMSIG_ITEM_EQUIPPED, PROC_REF(on_equipped))
 
 /datum/component/armor_link/UnregisterFromParent()
 	. = ..()
@@ -38,8 +38,8 @@
 	if(istype(to_link))
 		link_armor(to_link)
 	else
-		RegisterSignal(M, COMSIG_HUMAN_EQUIPPED_ITEM, .proc/on_human_equipped_item)
-	RegisterSignal(parent, COMSIG_ITEM_DROPPED, .proc/on_unequipped)
+		RegisterSignal(M, COMSIG_HUMAN_EQUIPPED_ITEM, PROC_REF(on_human_equipped_item))
+	RegisterSignal(parent, COMSIG_ITEM_DROPPED, PROC_REF(on_unequipped))
 
 /datum/component/armor_link/proc/on_human_equipped_item(equipper, item, slot)
 	SIGNAL_HANDLER
@@ -70,7 +70,7 @@
 		C.armor_internaldamage =	to_link.armor_internaldamage
 
 	linked = to_link
-	RegisterSignal(linked, COMSIG_ITEM_DROPPED, .proc/break_link)
+	RegisterSignal(linked, COMSIG_ITEM_DROPPED, PROC_REF(break_link))
 
 /datum/component/armor_link/proc/break_link()
 	SIGNAL_HANDLER
@@ -88,7 +88,7 @@
 	C.reset_armor_rad_value()
 	C.reset_armor_internaldamage_value()
 
-	RegisterSignal(equipped_mob, COMSIG_HUMAN_EQUIPPED_ITEM, .proc/on_human_equipped_item)
+	RegisterSignal(equipped_mob, COMSIG_HUMAN_EQUIPPED_ITEM, PROC_REF(on_human_equipped_item))
 
 /datum/component/armor_link/proc/on_unequipped(parent, unequipper)
 	SIGNAL_HANDLER

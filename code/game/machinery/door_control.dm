@@ -109,9 +109,9 @@
 		if(D.id_tag == src.id)
 			if(specialfunctions & OPEN)
 				if (D.density)
-					INVOKE_ASYNC(D, /obj/structure/machinery/door.proc/open)
+					INVOKE_ASYNC(D, TYPE_PROC_REF(/obj/structure/machinery/door, open))
 				else
-					INVOKE_ASYNC(D, /obj/structure/machinery/door.proc/close)
+					INVOKE_ASYNC(D, TYPE_PROC_REF(/obj/structure/machinery/door, close))
 			if(desiredstate == 1)
 				if(specialfunctions & IDSCAN)
 					D.remoteDisabledIdScanner = 1
@@ -143,9 +143,9 @@
 					if(S.moving_status == SHUTTLE_INTRANSIT)
 						return FALSE
 			if(M.density)
-				INVOKE_ASYNC(M, /obj/structure/machinery/door.proc/open)
+				INVOKE_ASYNC(M, TYPE_PROC_REF(/obj/structure/machinery/door, open))
 			else
-				INVOKE_ASYNC(M, /obj/structure/machinery/door.proc/close)
+				INVOKE_ASYNC(M, TYPE_PROC_REF(/obj/structure/machinery/door, close))
 
 /obj/structure/machinery/door_control/verb/push_button()
 	set name = "Push Button"
@@ -217,7 +217,7 @@
 
 	for(var/obj/structure/machinery/door/poddoor/M in machines)
 		if(M.id == src.id)
-			INVOKE_ASYNC(M, /obj/structure/machinery/door.proc/open)
+			INVOKE_ASYNC(M, TYPE_PROC_REF(/obj/structure/machinery/door, open))
 
 	sleep(20)
 
@@ -229,7 +229,7 @@
 
 	for(var/obj/structure/machinery/door/poddoor/M in machines)
 		if(M.id == src.id)
-			INVOKE_ASYNC(M, /obj/structure/machinery/door.proc/close)
+			INVOKE_ASYNC(M, TYPE_PROC_REF(/obj/structure/machinery/door, close))
 
 	icon_state = "launcherbtt"
 	active = 0

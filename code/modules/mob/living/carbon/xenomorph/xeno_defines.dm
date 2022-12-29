@@ -1052,7 +1052,7 @@
 		UnregisterSignal(leader, COMSIG_PARENT_QDELETING)
 
 	leader = H
-	RegisterSignal(leader, COMSIG_PARENT_QDELETING, .proc/handle_qdelete)
+	RegisterSignal(leader, COMSIG_PARENT_QDELETING, PROC_REF(handle_qdelete))
 
 /datum/hive_status/corrupted/tamed/proc/handle_qdelete(var/mob/living/carbon/human/H)
 	SIGNAL_HANDLER

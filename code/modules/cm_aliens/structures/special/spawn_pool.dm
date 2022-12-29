@@ -146,7 +146,7 @@
 
 		QDEL_NULL(melting_body)
 	else
-		addtimer(CALLBACK(src, /obj/effect/alien/resin/special/pool.proc/melt_body, iterations), 2 SECONDS)
+		addtimer(CALLBACK(src, TYPE_PROC_REF(/obj/effect/alien/resin/special/pool, melt_body), iterations), 2 SECONDS)
 
 /obj/effect/alien/resin/special/pool/proc/can_spawn_larva()
 	if(linked_hive.hardcore)
@@ -213,7 +213,7 @@
 		return
 
 	playsound(H, get_sfx("acid_sizzle"), 30)
-	addtimer(CALLBACK(src, .proc/do_human_damage, H), 3 SECONDS, TIMER_UNIQUE)
+	addtimer(CALLBACK(src, PROC_REF(do_human_damage), H), 3 SECONDS, TIMER_UNIQUE)
 
 	if(H.lying)
 		for(var/i in DEFENSE_ZONES_LIVING)

@@ -155,7 +155,7 @@
 			unpicked_targets += targets
 		var/turf/TT = pick(unpicked_targets)
 		unpicked_targets -= TT
-		INVOKE_ASYNC(src, .proc/release_liquid, TT, user)
+		INVOKE_ASYNC(src, PROC_REF(release_liquid), TT, user)
 
 	if(istype(user.loc, /turf/open/space) || (user.lastarea && user.lastarea.has_gravity == 0))
 		user.inertia_dir = get_dir(target, user)

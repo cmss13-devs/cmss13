@@ -88,7 +88,7 @@
 			playsound_client(M.client, sound_to_play, M, vol = 45)
 
 	for(var/mob/living/silicon/decoy/ship_ai/AI in ai_mob_list)
-		INVOKE_ASYNC(AI, /mob/living/silicon/decoy/ship_ai.proc/say, message)
+		INVOKE_ASYNC(AI, TYPE_PROC_REF(/mob/living/silicon/decoy/ship_ai, say), message)
 
 /proc/ai_silent_announcement(var/message, var/channel_prefix, bypass_cooldown = FALSE)
 	if(!message)
@@ -97,7 +97,7 @@
 	for(var/mob/living/silicon/decoy/ship_ai/AI in ai_mob_list)
 		if(channel_prefix)
 			message = "[channel_prefix][message]"
-		INVOKE_ASYNC(AI, /mob/living/silicon/decoy/ship_ai.proc/say, message)
+		INVOKE_ASYNC(AI, TYPE_PROC_REF(/mob/living/silicon/decoy/ship_ai, say), message)
 
 /mob/proc/detectable_by_ai()
 	return TRUE

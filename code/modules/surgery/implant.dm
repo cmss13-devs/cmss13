@@ -341,5 +341,5 @@
 		if(istype(imp))
 			target.visible_message(SPAN_WARNING("Something beeps inside [target]'s [surgery.affected_limb.display_name]!"))
 			playsound(target, 'sound/items/countdown.ogg', 25, TRUE)
-			addtimer(CALLBACK(imp, /obj/item/implant.proc/activate), 2.5 SECONDS)
+			addtimer(CALLBACK(imp, TYPE_PROC_REF(/obj/item/implant, activate)), 2.5 SECONDS)
 	return FALSE

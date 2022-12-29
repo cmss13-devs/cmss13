@@ -12,7 +12,7 @@
 
 /datum/nmtask/scheduler/mapload/add_task(datum/nmtask/task)
 	. = ..()
-	RegisterSignal(task, COMSIG_NIGHTMARE_TAINTED_BOUNDS, .proc/register_tainted_bounds)
+	RegisterSignal(task, COMSIG_NIGHTMARE_TAINTED_BOUNDS, PROC_REF(register_tainted_bounds))
 
 /datum/nmtask/scheduler/mapload/proc/register_tainted_bounds(datum/nmtask/task, list/bounds)
 	tainted_bounds.len++

@@ -239,7 +239,7 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 				qdel(I)
 		//BubbleWrap END
 	if(src && usr.interactee == src) //do not reopen closed window
-		INVOKE_ASYNC(src, .proc/interact, usr)
+		INVOKE_ASYNC(src, PROC_REF(interact), usr)
 
 /obj/item/stack/proc/check_one_per_turf(var/datum/stack_recipe/R, var/mob/user)
 	switch(R.one_per_turf)
@@ -305,7 +305,7 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 		F.add_fingerprint(user)
 		use(1)
 		if (src && usr.interactee==src)
-			INVOKE_ASYNC(src, /obj/item/stack/.proc/interact, usr)
+			INVOKE_ASYNC(src, TYPE_PROC_REF(/obj/item/stack, interact), usr)
 	else
 		..()
 	return
@@ -330,10 +330,10 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 			to_chat(user, SPAN_INFO("You transfer [to_transfer] between the stacks."))
 			S.add(to_transfer)
 			if (S && usr.interactee==S)
-				INVOKE_ASYNC(S, /obj/item/stack/.proc/interact, usr)
+				INVOKE_ASYNC(S, TYPE_PROC_REF(/obj/item/stack, interact), usr)
 			src.use(to_transfer)
 			if (src && usr.interactee==src)
-				INVOKE_ASYNC(src, /obj/item/stack/.proc/interact, usr)
+				INVOKE_ASYNC(src, TYPE_PROC_REF(/obj/item/stack, interact), usr)
 			user.next_move = world.time + 0.3 SECONDS
 			return TRUE
 
@@ -377,7 +377,8 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 	var/title = "ERROR"
 	var/list/recipes = null
 	var/req_amount = 1
-	New(title, recipes, req_amount = 1)
-		src.title = title
-		src.recipes = recipes
-		src.req_amount = req_amount
+
+/datum/stack_recipe_list/New(title, recipes, req_amount = 1)
+	src.title = title
+	src.recipes = recipes
+	src.req_amount = req_amount

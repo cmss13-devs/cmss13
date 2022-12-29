@@ -9,6 +9,7 @@ import yaml from 'js-yaml';
 
 const icons = {
   bugfix: { icon: 'bug', color: 'green' },
+  fix: { icon: 'bug', color: 'green' },
   wip: { icon: 'hammer', color: 'orange' },
   qol: { icon: 'hand-holding-heart', color: 'green' },
   soundadd: { icon: 'tg-sound-plus', color: 'green' },
@@ -29,6 +30,9 @@ const icons = {
   server: { icon: 'server', color: 'purple' },
   tgs: { icon: 'toolbox', color: 'purple' },
   tweak: { icon: 'wrench', color: 'green' },
+  ui: { icon: 'desktop', color: 'blue' },
+  mapadd: { icon: 'earth-africa', color: 'yellow' },
+  maptweak: { icon: 'map-location-dot', color: 'green' },
   unknown: { icon: 'info-circle', color: 'label' },
 };
 

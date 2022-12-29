@@ -398,5 +398,5 @@
 		attack_self(user)
 		return
 	user.do_click(A, null, params)
-	addtimer(CALLBACK(src, .proc/autoclick, user, A, params), 0.1)
+	addtimer(CALLBACK(src, PROC_REF(autoclick), user, A, params), 0.1)
 #endif

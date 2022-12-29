@@ -73,7 +73,7 @@
 
 	shards = 0
 	shards_locked = TRUE
-	addtimer(CALLBACK(src, .proc/unlock_shards), shard_lock_duration)
+	addtimer(CALLBACK(src, PROC_REF(unlock_shards)), shard_lock_duration)
 
 /datum/behavior_delegate/ravager_hedgehog/proc/unlock_shards()
 
@@ -116,6 +116,11 @@
 	if(percentage_shards)
 		holder.overlays += image('icons/mob/hud/hud.dmi', "xenoenergy[percentage_shards]")
 	return
+
+
+/datum/behavior_delegate/ravager_hedgehog/handle_death(mob/M)
+	var/image/holder = bound_xeno.hud_list[PLASMA_HUD]
+	holder.overlays.Cut()
 
 /datum/behavior_delegate/ravager_hedgehog/on_hitby_projectile()
 	if (!shards_locked)

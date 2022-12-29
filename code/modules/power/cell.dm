@@ -179,8 +179,9 @@
 	charge = 30000
 	maxcharge = 30000
 	matter = list("metal" = 700, "glass" = 80)
-	use()
-		return 1
+
+/obj/item/cell/infinite/use()
+	return 1
 
 /obj/item/cell/potato
 	name = "\improper potato battery"

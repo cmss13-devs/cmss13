@@ -154,7 +154,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 		name = "\improper [area.name] APC"
 		stat |= MAINT
 		update_icon()
-		addtimer(CALLBACK(src, .proc/update), 5)
+		addtimer(CALLBACK(src, PROC_REF(update)), 5)
 
 	start_processing()
 
@@ -364,7 +364,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 	update_icon()
 	make_terminal()
 
-	addtimer(CALLBACK(src, .proc/update), 5)
+	addtimer(CALLBACK(src, PROC_REF(update)), 5)
 
 /obj/structure/machinery/power/apc/get_examine_text(mob/user)
 	. = list(desc)
@@ -1250,7 +1250,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 
 	//Aesthetically much better!
 	visible_message(SPAN_WARNING("[src]'s screen flickers with warnings briefly!"))
-	addtimer(CALLBACK(src, .proc/do_set_broken), rand(2, 5))
+	addtimer(CALLBACK(src, PROC_REF(do_set_broken)), rand(2, 5))
 
 /obj/structure/machinery/power/apc/proc/do_set_broken()
 	visible_message(SPAN_DANGER("[src]'s screen suddenly explodes in rain of sparks and small debris!"))

@@ -12,7 +12,7 @@
 
 	claws_minimum = CLAW_TYPE_VERY_SHARP
 
-/turf/closed/wall/r_wall/attackby(obj/item/W, mob/user)
+/turf/closed/wall/r_wall/after_attack_by(obj/item/W, mob/user)
 	if(hull)
 		return
 
@@ -198,7 +198,7 @@
 	walltype = WALL_REINFORCED
 	hull = 1
 
-/turf/closed/wall/r_wall/unmeltable/attackby() //This should fix everything else. No cables, etc
+/turf/closed/wall/r_wall/unmeltable/after_attack_by() //This should fix everything else. No cables, etc
 	return
 
 //Chigusa
@@ -249,7 +249,7 @@
 /turf/closed/wall/r_wall/prison_unmeltable/fire_act(exposed_temperature, exposed_volume)
 		return
 
-/turf/closed/wall/r_wall/prison_unmeltable/attackby() //This should fix everything else. No cables, etc
+/turf/closed/wall/r_wall/prison_unmeltable/after_attack_by() //This should fix everything else. No cables, etc
 		return
 
 //Biodome
@@ -271,7 +271,7 @@
 /turf/closed/wall/r_wall/biodome/biodome_unmeltable/fire_act(exposed_temperature, exposed_volume)
 		return
 
-/turf/closed/wall/r_wall/biodome/biodome_unmeltable/attackby() //This should fix everything else. No cables, etc
+/turf/closed/wall/r_wall/biodome/biodome_unmeltable/after_attack_by() //This should fix everything else. No cables, etc
 		return
 
 

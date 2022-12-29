@@ -88,7 +88,7 @@
 		return
 	..()
 
-/mob/living/carbon/Xenomorph/Burrower/attack_hand()
+/mob/living/carbon/Xenomorph/Burrower/after_attack_hand()
 	if(burrow)
 		return
 	..()

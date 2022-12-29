@@ -1,6 +1,6 @@
 /mob/living/carbon/human/var/cpr_cooldown
 /mob/living/carbon/human/var/cpr_attempt_timer
-/mob/living/carbon/human/attack_hand(mob/living/carbon/human/M)
+/mob/living/carbon/human/after_attack_hand(mob/living/carbon/human/M)
 	if(..())
 		return TRUE
 

@@ -111,10 +111,12 @@
 /obj/effect/alien/resin/attack_hand()
 	to_chat(usr, SPAN_WARNING("You scrape ineffectively at \the [src]."))
 
-/obj/effect/alien/resin/attackby(obj/item/W, mob/user)
+/obj/effect/alien/resin/attackby(obj/item/W, mob/living/user)
 	if(!(W.flags_item & NOBLUDGEON))
 		var/damage = W.force * RESIN_MELEE_DAMAGE_MULTIPLIER
 		health -= damage
+		user.animation_attack_on(src)
+		user.next_move += W.attack_speed
 		if(istype(src, /obj/effect/alien/resin/sticky))
 			playsound(loc, "alien_resin_move", 25)
 		else
@@ -361,6 +363,7 @@
 		return // defer to item afterattack
 	if(!(W.flags_item & NOBLUDGEON) && W.force)
 		user.animation_attack_on(src)
+		user.next_move += W.attack_speed
 		health -= W.force*RESIN_MELEE_DAMAGE_MULTIPLIER
 		to_chat(user, "You hit the [name] with your [W.name]!")
 		playsound(loc, "alien_resin_move", 25)

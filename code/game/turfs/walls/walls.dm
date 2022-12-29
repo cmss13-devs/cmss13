@@ -303,7 +303,12 @@
 
 
 /turf/closed/wall/attackby(obj/item/W, mob/user)
+	SHOULD_CALL_PARENT(TRUE)
+	..()
+	user.next_move += W.attack_speed
+	after_attack_by(W, user)
 
+/turf/closed/wall/proc/after_attack_by(obj/item/W, mob/user)
 	if(!ishuman(user) && !isrobot(user))
 		to_chat(user, SPAN_WARNING("You don't have the dexterity to do this!"))
 		return

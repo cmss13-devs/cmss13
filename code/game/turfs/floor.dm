@@ -174,6 +174,12 @@
 
 	return ..()
 
+/turf/open/floor/attack_hand(mob/user)
+	if(!user.a_intent == INTENT_HARM|INTENT_DISARM)
+		return
+	user.next_move += 1 SECONDS
+	user.show_message(SPAN_NOTICE("You swipe at the air!"), message_flags = CHAT_TYPE_FLUFF_ACTION) //per removal of click delay, this is so missing will continue to affect combat
+
 /turf/open/floor/wet_floor(wet_level = FLOOR_WET_WATER)
 	if(wet >= wet_level) return
 	wet = wet_level

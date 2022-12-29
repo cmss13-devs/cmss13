@@ -47,7 +47,7 @@
 	if(!use_wall_hole(user))
 		if(user.mob_size >= MOB_SIZE_BIG)
 			expand_hole(user)
-			return XENO_NO_DELAY_ACTION
+			return XENO_NONCOMBAT_ACTION
 
 /obj/effect/acid_hole/proc/expand_hole(mob/living/carbon/Xenomorph/user)
 	if(user.action_busy || user.lying)

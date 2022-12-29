@@ -359,6 +359,7 @@
 
 
 	user.animation_attack_on(src)
+	user.next_move += W.attack_speed
 
 	take_damage(damage)
 	return TRUE //don't call afterattack

@@ -631,7 +631,8 @@ var/list/robot_verbs_default = list(
 		updatehealth()
 
 
-/mob/living/silicon/robot/attack_hand(mob/user)
+/mob/living/silicon/robot/after_attack_hand(mob/user)
+	..()
 
 	add_fingerprint(user)
 

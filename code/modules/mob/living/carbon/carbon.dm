@@ -152,7 +152,8 @@
 
 	. = ..()
 
-/mob/living/carbon/attack_hand(mob/M as mob)
+/mob/living/carbon/after_attack_hand(mob/M as mob)
+	..()
 	if(!istype(M, /mob/living/carbon)) return
 
 	if(M.mob_flags & SURGERY_MODE_ON && M.a_intent & (INTENT_HELP|INTENT_DISARM))

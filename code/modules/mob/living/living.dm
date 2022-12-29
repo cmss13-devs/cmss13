@@ -465,3 +465,11 @@
 	for(var/h in src.hud_possible)
 		src.clone.hud_list[h].icon_state = src.hud_list[h].icon_state
 
+/mob/living/attack_hand(mob/user) // not recommended to be used - does not apply next move cooldown by default (how do i dmdoc procs?)
+	. = ..()
+	after_attack_hand(user)
+
+/mob/living/proc/after_attack_hand(mob/user)
+	SHOULD_CALL_PARENT(TRUE)
+	user.next_move += 0.4 SECONDS // transferred here from click_adjacent()
+	return

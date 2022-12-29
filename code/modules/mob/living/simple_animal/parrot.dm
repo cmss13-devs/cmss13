@@ -206,7 +206,7 @@
  * Attack responces
  */
 //Humans, monkeys, aliens
-/mob/living/simple_animal/parrot/attack_hand(mob/living/carbon/M as mob)
+/mob/living/simple_animal/parrot/after_attack_hand(mob/living/carbon/M as mob)
 	..()
 	if(client) return
 	if(!stat && M.a_intent == INTENT_HARM)

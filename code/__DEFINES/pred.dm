@@ -1,4 +1,4 @@
-#define PRED_MATERIALS list("ebony", "silver", "bronze")
+#define PRED_MATERIALS list("ebony", "silver", "bronze", "crimson", "bone")
 #define PRED_TRANSLATORS list("Modern", "Retro", "Combo")
 
 #define PRED_YAUTJA_CAPE "yautja cape"

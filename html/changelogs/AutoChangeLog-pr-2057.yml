@@ -1,0 +1,4 @@
+author: "stanalbatross"
+delete-after: True
+changes:
+  - balance: "you can no longer remove bullets from HPR mags"

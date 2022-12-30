@@ -9,9 +9,6 @@ tools/deploy.sh ci_test
 mkdir ci_test/config
 mkdir ci_test/data
 
-#test config
-cp tools/ci/ci_config.txt ci_test/config/config.txt
-
 #set the map
 cp maps/$MAP.json ci_test/data/next_map.json
 cp maps/almayer.json ci_test/data/next_ship.json

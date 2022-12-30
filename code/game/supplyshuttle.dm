@@ -392,6 +392,34 @@ var/datum/controller/supply/supply_controller = new()
 
 	var/obj/structure/machinery/computer/supplycomp/bound_supply_computer_list
 
+	var/list/all_supply_groups = list(
+		"Operations",
+		"Weapons",
+		"Vehicle Ammo",
+		"Attachments",
+		"Ammo",
+		"Weapons Specialist Ammo",
+		"Restricted Equipment",
+		"Clothing",
+		"Medical",
+		"Engineering",
+		"Research",
+		"Supplies",
+		"Food",
+		"Gear",
+		"Mortar",
+		"Explosives",
+		"Reagent tanks",
+		)
+
+	var/list/contraband_supply_groups = list(
+		"Seized Items",
+		"Shipside Contraband",
+		"Surplus Equipment",
+		"Deep Storage",
+		"Miscellaneous"
+		)
+
 	//dropship part fabricator's points, so we can reference them globally (mostly for DEFCON)
 	var/dropship_points = 10000 //gains roughly 18 points per minute | Original points of 5k doubled due to removal of prespawned ammo.
 	var/tank_points = 0
@@ -683,7 +711,7 @@ var/datum/controller/supply/supply_controller = new()
 			temp = "<b>Supply budget: $[supply_controller.points * SUPPLY_TO_MONEY_MUPLTIPLIER]</b><BR>"
 			temp += "<A href='?src=\ref[src];mainmenu=1'>Main Menu</A><HR><BR><BR>"
 			temp += "<b>Select a category</b><BR><BR>"
-			for(var/supply_group_name in all_supply_groups )
+			for(var/supply_group_name in supply_controller.all_supply_groups)
 				temp += "<A href='?src=\ref[src];order=[supply_group_name]'>[supply_group_name]</A><BR>"
 		else
 			last_viewed_group = href_list["order"]
@@ -875,7 +903,7 @@ var/datum/controller/supply/supply_controller = new()
 			temp = "<b>Supply budget: $[supply_controller.points * SUPPLY_TO_MONEY_MUPLTIPLIER]</b><BR>"
 			temp += "<A href='?src=\ref[src];mainmenu=1'>Main Menu</A><HR><BR><BR>"
 			temp += "<b>Select a category</b><BR><BR>"
-			for(var/supply_group_name in all_supply_groups )
+			for(var/supply_group_name in supply_controller.all_supply_groups)
 				temp += "<A href='?src=\ref[src];order=[supply_group_name]'>[supply_group_name]</A><BR>"
 			if(can_order_contraband)
 				temp += "<A href='?src=\ref[src];order=["Black Market"]'>[SPAN_DANGER("$E4RR301¿")]</A><BR>"
@@ -883,7 +911,7 @@ var/datum/controller/supply/supply_controller = new()
 			last_viewed_group = href_list["order"]
 			if(last_viewed_group == "Black Market")
 				handle_black_market(temp)
-			else if(last_viewed_group in contraband_supply_groups)
+			else if(last_viewed_group in supply_controller.contraband_supply_groups)
 				handle_black_market_groups()
 			else
 				temp = "<b>Supply budget: $[supply_controller.points * SUPPLY_TO_MONEY_MUPLTIPLIER]</b><BR>"
@@ -1054,7 +1082,7 @@ var/datum/controller/supply/supply_controller = new()
 	handle_mendoza_dialogue() //mendoza has been in there for a while. he gets lonely sometimes
 	temp += "<b>[last_viewed_group]</b><BR><BR>"
 
-	for(var/supply_group_name in contraband_supply_groups)
+	for(var/supply_group_name in supply_controller.contraband_supply_groups)
 		temp += "<A href='?src=\ref[src];order=[supply_group_name]'>[supply_group_name]</A><BR>"
 
 /obj/structure/machinery/computer/supplycomp/proc/handle_black_market_groups()

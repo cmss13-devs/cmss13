@@ -124,3 +124,7 @@
 	icon_state = "green"
 	requires_power = 0
 	flags_area = AREA_NOTUNNEL
+
+/area/misc/testroom
+	requires_power = FALSE
+	name = "Test Room"

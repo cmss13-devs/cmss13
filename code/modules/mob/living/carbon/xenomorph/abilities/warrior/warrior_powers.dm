@@ -328,13 +328,13 @@
 		img_alpha_mult = ALPHA_SHIELD_FULL
 		Knight.balloon_alert_to_viewers(SPAN_XENODANGER("[Knight] forms a defensive shell!"), SPAN_XENODANGER("You form a defensive shell!"), text_color = knight_delegate.current_color)
 
-	RegisterSignal(Knight, COMSIG_XENO_BULLET_ACT, .proc/reduce_bullet_damage)
-	RegisterSignal(Knight, list(COMSIG_LIVING_APPLY_EFFECT, COMSIG_LIVING_ADJUST_EFFECT, COMSIG_LIVING_SET_EFFECT), .proc/reduce_stuns)
-	RegisterSignal(Knight, COMSIG_ITEM_ATTEMPT_ATTACK, .proc/resist_melee)
+	RegisterSignal(Knight, COMSIG_XENO_BULLET_ACT, PROC_REF(reduce_bullet_damage))
+	RegisterSignal(Knight, list(COMSIG_LIVING_APPLY_EFFECT, COMSIG_LIVING_ADJUST_EFFECT, COMSIG_LIVING_SET_EFFECT), PROC_REF(reduce_stuns))
+	RegisterSignal(Knight, COMSIG_ITEM_ATTEMPT_ATTACK, PROC_REF(resist_melee))
 	button.icon_state = "template_active"
 	button.color = knight_delegate.current_color
 	current_shield_image = Knight.create_bulwark_image(img_alpha_mult, "full")
-	addtimer(CALLBACK(src, .proc/remove_shield), shield_duration)
+	addtimer(CALLBACK(src, PROC_REF(remove_shield), shield_duration))
 
 	apply_cooldown()
 	..()

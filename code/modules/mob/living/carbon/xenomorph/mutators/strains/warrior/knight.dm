@@ -67,7 +67,7 @@
 	COOLDOWN_DECLARE(toggle_msg_cd) // 14 SECONDS - reduces chat spam
 
 /datum/behavior_delegate/warrior_knight/add_to_xeno()
-	RegisterSignal(bound_xeno, COMSIG_MOVABLE_TURF_ENTER, .proc/weed_enhance_check)
+	RegisterSignal(bound_xeno, COMSIG_MOVABLE_TURF_ENTER, PROC_REF(weed_enhance_check))
 	if(bound_xeno.hivenumber != XENO_HIVE_NORMAL)
 		un_enhanced_color = adjust_brightness(bound_xeno.hive.color, AAdebugcolor1)
 		enhanced_color = adjust_brightness(bound_xeno.hive.color, AAdebugcolor2)

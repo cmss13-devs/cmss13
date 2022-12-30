@@ -1,4 +1,0 @@
-author: "stanalbatross"
-delete-after: True
-changes:
-  - bugfix: "fixed the queen spawn picker tgui input list leaving you in the lobby art if you let it time out. If you let this happen, if will now pick a random spawn."

@@ -106,18 +106,18 @@ SUBSYSTEM_DEF(shuttle)
 /datum/controller/subsystem/shuttle/proc/toggleShuttle(shuttleId, dockHome, dockAway, timed)
 	var/obj/docking_port/mobile/M = getShuttle(shuttleId)
 	if(!M)
-		return 1
+		return DOCKING_BLOCKED
 	var/obj/docking_port/stationary/dockedAt = M.get_docked()
 	var/destination = dockHome
 	if(dockedAt && dockedAt.id == dockHome)
 		destination = dockAway
 	if(timed)
 		if(M.request(getDock(destination)))
-			return 2
+			return DOCKING_IMMOBILIZED
 	else
 		if(M.initiate_docking(getDock(destination)) != DOCKING_SUCCESS)
-			return 2
-	return 0 //dock successful
+			return DOCKING_IMMOBILIZED
+	return DOCKING_SUCCESS	//dock successful
 
 /**
  * Moves a shuttle to a new location

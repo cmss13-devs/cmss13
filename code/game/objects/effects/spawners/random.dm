@@ -31,6 +31,8 @@
 // creates the random item
 /obj/effect/spawner/random/proc/spawn_item()
 	var/build_path = item_to_spawn()
+	if(isnull(build_path))
+		return
 	return (new build_path(src.loc))
 
 

@@ -551,17 +551,8 @@
 	var/mob/living/carbon/human/linked_human
 	var/is_locked = TRUE
 
-	actions_types = list(
-						/datum/action/item_action/smartgun/toggle_accuracy_improvement,
-						/datum/action/item_action/smartgun/toggle_ammo_type,
-						/datum/action/item_action/smartgun/toggle_auto_fire,
-						/datum/action/item_action/smartgun/toggle_lethal_mode,
-						/datum/action/item_action/smartgun/toggle_motion_detector,
-						/datum/action/item_action/smartgun/toggle_recoil_compensation,
-						/datum/action/item_action/co_sg/toggle_id_lock
-						)
-
 /obj/item/weapon/gun/smartgun/co/able_to_fire(mob/user)
+	LAZYADD(actions_types, /datum/action/item_action/co_sg/toggle_id_lock)
 	. = ..()
 	if(is_locked && linked_human && linked_human != user)
 		if(linked_human.is_revivable() || linked_human.stat != DEAD)
@@ -630,14 +621,16 @@
 	RegisterSignal(linked_human, COMSIG_PARENT_QDELETING, .proc/remove_idlock)
 
 /obj/item/weapon/gun/smartgun/co/get_examine_text()
-	..()
+	. = ..()
 	if(linked_human)
 		if(is_locked)
-			to_chat(usr, SPAN_NOTICE("It is registered to [linked_human]."))
+			. += SPAN_NOTICE("It is registered to [linked_human].")
 		else
-			to_chat(usr, SPAN_NOTICE("It is registered to [linked_human], but has its fire restrictions unlocked."))
+			. += SPAN_NOTICE("It is registered to [linked_human] but has its fire restrictions unlocked.")
 	else
-		to_chat(usr, SPAN_NOTICE("It's unregistered. Pick it up to register yourself as its owner."))
+		. += SPAN_NOTICE("It's unregistered. Pick it up to register yourself as its owner.")
+	if(!iff_enabled)
+		. += SPAN_WARNING("Its IFF restrictions are disabled.")
 
 /obj/item/weapon/gun/smartgun/co/proc/remove_idlock()
 	SIGNAL_HANDLER

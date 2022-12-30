@@ -424,16 +424,13 @@
 	auto_retrieval_slot = WEAR_J_STORE
 	map_specific_decoration = TRUE
 
-	actions_types = list(
-						/datum/action/item_action/m46c/toggle_lethal_mode,
-						/datum/action/item_action/m46c/toggle_id_lock
-						)
-
 	var/mob/living/carbon/human/linked_human
 	var/is_locked = TRUE
 	var/iff_enabled = TRUE
 
 /obj/item/weapon/gun/rifle/m46c/Initialize(mapload, ...)
+	LAZYADD(actions_types, /datum/action/item_action/m46c/toggle_lethal_mode)
+	LAZYADD(actions_types, /datum/action/item_action/m46c/toggle_id_lock)
 	. = ..()
 	if(iff_enabled)
 		LAZYADD(traits_to_give, list(

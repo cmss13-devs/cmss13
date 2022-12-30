@@ -21657,6 +21657,28 @@
 	tag = "icon-silver (SOUTHWEST)"
 	},
 /area/almayer/command/computerlab)
+"btk" = (
+/obj/structure/sign/poster/pinup{
+	pixel_x = -30
+	},
+/obj/structure/sign/poster/hunk{
+	pixel_x = -25;
+	pixel_y = 10
+	},
+/obj/item/trash/buritto,
+/obj/structure{
+	desc = "A lightweight support lattice.";
+	icon = 'icons/obj/structures/props/smoothlattice.dmi';
+	icon_state = "lattice12";
+	layer = 5.1;
+	name = "overhead lattice";
+	pixel_y = 16
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/hull/lower_hull/l_m_s)
 "btm" = (
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -40796,10 +40818,8 @@
 	},
 /area/almayer/living/briefing)
 "eVy" = (
-/obj/item/bedsheet/yellow{
-	layer = 3.2
-	},
 /obj/structure/surface/table/almayer,
+/obj/item/storage/beer_pack,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/l_m_s)
 "eVQ" = (
@@ -42632,6 +42652,19 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/living/pilotbunks)
+"fJA" = (
+/obj/structure/coatrack,
+/obj/structure/sign/poster/clf{
+	pixel_x = -28
+	},
+/obj/structure/sign/nosmoking_1{
+	pixel_y = 30
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/hull/lower_hull/l_m_s)
 "fJO" = (
 /obj/structure/window/framed/almayer,
 /obj/structure/machinery/door/firedoor/border_only/almayer,
@@ -43796,28 +43829,11 @@
 /turf/open/floor/almayer,
 /area/almayer/squads/charlie_delta_shared)
 "glr" = (
-/obj/structure{
-	desc = "A lightweight support lattice.";
-	icon = 'icons/obj/structures/props/smoothlattice.dmi';
-	icon_state = "lattice12";
-	layer = 5.1;
-	name = "overhead lattice";
-	pixel_x = -1;
-	pixel_y = 16
+/obj/item/tool/warning_cone{
+	pixel_x = -20;
+	pixel_y = 18
 	},
-/obj/structure{
-	desc = "A lightweight support lattice.";
-	icon = 'icons/obj/structures/props/smoothlattice.dmi';
-	icon_state = "lattice13";
-	layer = 5.1;
-	name = "overhead lattice";
-	pixel_x = 16;
-	pixel_y = 16
-	},
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
-	},
+/turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/l_m_s)
 "gls" = (
 /obj/structure/filingcabinet/filingcabinet,
@@ -45769,6 +45785,13 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/squads/alpha_bravo_shared)
+"hfk" = (
+/obj/item/trash/crushed_cup,
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/hull/lower_hull/l_m_s)
 "hfm" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -49558,6 +49581,26 @@
 	},
 /turf/open/floor/plating,
 /area/almayer/hull/lower_hull/l_f_p)
+"iQL" = (
+/obj/structure/machinery/door/airlock/almayer/maint{
+	dir = 2;
+	req_one_access = list(2,34,30)
+	},
+/obj/structure{
+	desc = "A lightweight support lattice.";
+	dir = 1;
+	icon = 'icons/obj/structures/props/smoothlattice.dmi';
+	icon_state = "lattice-simple";
+	layer = 5.1;
+	name = "overhead lattice";
+	pixel_x = 16;
+	pixel_y = -16
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/hull/lower_hull/l_m_s)
 "iRr" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -51182,15 +51225,10 @@
 /turf/open/floor/plating,
 /area/almayer/hull/lower_hull/l_f_p)
 "jFe" = (
-/obj/structure{
-	desc = "A lightweight support lattice.";
-	icon = 'icons/obj/structures/props/smoothlattice.dmi';
-	icon_state = "lattice12";
-	layer = 5.1;
-	name = "overhead lattice";
-	pixel_x = -1;
-	pixel_y = 16
+/obj/structure/prop/holidays/string_lights{
+	pixel_y = 27
 	},
+/obj/item/frame/rack,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/l_m_s)
 "jFg" = (
@@ -56323,16 +56361,7 @@
 /turf/open/floor/wood/ship,
 /area/almayer/living/commandbunks)
 "lQu" = (
-/obj/structure{
-	desc = "A lightweight support lattice.";
-	dir = 1;
-	icon = 'icons/obj/structures/props/smoothlattice.dmi';
-	icon_state = "lattice-simple";
-	layer = 5.1;
-	name = "overhead lattice";
-	pixel_x = 16;
-	pixel_y = -15
-	},
+/obj/structure/bed/stool,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -56893,6 +56922,29 @@
 	tag = "icon-orange (EAST)"
 	},
 /area/almayer/hallways/hangar)
+"mhl" = (
+/obj/structure{
+	desc = "A lightweight support lattice.";
+	icon = 'icons/obj/structures/props/smoothlattice.dmi';
+	icon_state = "lattice13";
+	layer = 5.1;
+	name = "overhead lattice";
+	pixel_x = 16;
+	pixel_y = 16
+	},
+/obj/structure{
+	desc = "A lightweight support lattice.";
+	icon = 'icons/obj/structures/props/smoothlattice.dmi';
+	icon_state = "lattice12";
+	layer = 5.1;
+	name = "overhead lattice";
+	pixel_y = 16
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/hull/lower_hull/l_m_s)
 "mhm" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_22";
@@ -58339,8 +58391,16 @@
 	},
 /area/space/almayer/lifeboat_dock)
 "mNZ" = (
-/obj/structure/surface/table/almayer,
-/obj/effect/spawner/random/tool,
+/obj/item/trash/uscm_mre,
+/obj/structure{
+	desc = "A lightweight support lattice.";
+	icon = 'icons/obj/structures/props/smoothlattice.dmi';
+	icon_state = "lattice1";
+	layer = 5.1;
+	name = "overhead lattice";
+	pixel_x = 16;
+	pixel_y = -16
+	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -58465,14 +58525,26 @@
 /turf/open/floor/plating,
 /area/almayer/hull/lower_hull/l_f_p)
 "mRc" = (
-/obj/structure/largecrate/random/barrel/white,
-/obj/structure/machinery/light/small{
-	dir = 4
+/obj/structure{
+	desc = "A lightweight support lattice.";
+	icon = 'icons/obj/structures/props/smoothlattice.dmi';
+	icon_state = "lattice10";
+	layer = 5.1;
+	name = "overhead lattice";
+	pixel_x = 16;
+	pixel_y = 16
 	},
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
+/obj/structure{
+	desc = "A lightweight support lattice.";
+	dir = 1;
+	icon = 'icons/obj/structures/props/smoothlattice.dmi';
+	icon_state = "lattice-simple";
+	layer = 5.1;
+	name = "overhead lattice";
+	pixel_x = 16;
+	pixel_y = -16
 	},
+/turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/l_m_s)
 "mRl" = (
 /obj/structure/machinery/camera/autoname/almayer{
@@ -60253,35 +60325,18 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/l_f_p)
 "nEA" = (
-/obj/structure{
-	desc = "A lightweight support lattice.";
-	icon = 'icons/obj/structures/props/smoothlattice.dmi';
-	icon_state = "lattice12";
-	layer = 5.1;
-	name = "overhead lattice";
-	pixel_x = -1;
-	pixel_y = 16
+/obj/structure/prop/holidays/string_lights{
+	pixel_y = 27
 	},
-/obj/structure{
-	desc = "A lightweight support lattice.";
-	icon = 'icons/obj/structures/props/smoothlattice.dmi';
-	icon_state = "lattice10";
-	layer = 5.1;
-	name = "overhead lattice";
-	pixel_x = 16;
-	pixel_y = 16
+/obj/structure/machinery/light/small{
+	dir = 4
 	},
-/obj/structure{
-	desc = "A lightweight support lattice.";
-	dir = 1;
-	icon = 'icons/obj/structures/props/smoothlattice.dmi';
-	icon_state = "lattice-simple";
-	layer = 5.1;
-	name = "overhead lattice";
-	pixel_x = 16;
-	pixel_y = -15
+/obj/structure/surface/table/almayer,
+/obj/item/storage/box/drinkingglasses,
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
 	},
-/turf/closed/wall/almayer,
 /area/almayer/hull/lower_hull/l_m_s)
 "nEF" = (
 /obj/structure/machinery/conveyor_switch{
@@ -64972,8 +65027,10 @@
 /turf/open/floor/almayer,
 /area/almayer/living/offices)
 "pOB" = (
-/obj/structure/surface/table/almayer,
-/obj/effect/spawner/random/toolbox,
+/obj/item/trash/cigbutt{
+	pixel_x = -10;
+	pixel_y = 13
+	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -65693,8 +65750,7 @@
 	},
 /area/almayer/lifeboat_pumps/north2)
 "qce" = (
-/obj/structure/largecrate/random/barrel/red,
-/obj/structure/machinery/light/small,
+/obj/item/trash/cigbutt,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -66868,9 +66924,15 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig/processing)
 "qEW" = (
-/obj/structure/surface/table/almayer,
-/obj/effect/spawner/random/toolbox,
-/turf/open/floor/plating/plating_catwalk,
+/obj/structure/sign/poster/ad{
+	pixel_x = 30
+	},
+/obj/structure/closet,
+/obj/item/clothing/mask/cigarette/weed,
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
 /area/almayer/hull/lower_hull/l_m_s)
 "qFb" = (
 /obj/structure/sign/safety/storage{
@@ -72075,6 +72137,25 @@
 	icon_state = "tcomms"
 	},
 /area/almayer/shipboard/weapon_room)
+"sSe" = (
+/obj/structure/sign/poster/blacklight{
+	pixel_y = 35
+	},
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
+/obj/structure/reagent_dispensers/beerkeg/alt_dark{
+	pixel_x = -7;
+	pixel_y = 10;
+	anchored = 1;
+	density = 0;
+	chemical = null
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/hull/lower_hull/l_m_s)
 "sSl" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer{
@@ -75157,6 +75238,15 @@
 	tag = "icon-red"
 	},
 /area/almayer/shipboard/brig/main_office)
+"ugV" = (
+/obj/structure/surface/table/almayer,
+/obj/item/tool/kitchen/tray,
+/obj/item/reagent_container/food/drinks/bottle/whiskey,
+/obj/item/toy/deck{
+	pixel_x = -9
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/hull/lower_hull/l_m_s)
 "uhl" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "SE-out";
@@ -79596,9 +79686,7 @@
 /turf/open/floor/almayer,
 /area/almayer/command/lifeboat)
 "vUi" = (
-/obj/structure/surface/table/almayer,
-/obj/effect/spawner/random/powercell,
-/obj/effect/spawner/random/technology_scanner,
+/obj/structure/machinery/light/small,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/l_m_s)
 "vUI" = (
@@ -82258,9 +82346,11 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/delta)
 "wXv" = (
-/obj/structure/surface/table/almayer,
-/obj/effect/spawner/random/powercell,
-/turf/open/floor/plating/plating_catwalk,
+/obj/structure/machinery/vending/cigarette,
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
 /area/almayer/hull/lower_hull/l_m_s)
 "wXH" = (
 /obj/structure/bed/chair{
@@ -83378,9 +83468,17 @@
 /turf/open/floor/plating,
 /area/almayer/hull/lower_hull/l_f_p)
 "xwv" = (
-/obj/structure/surface/table/almayer,
-/obj/effect/spawner/random/tool,
-/obj/item/tool/shovel/snow,
+/obj/structure/bed/chair{
+	dir = 1;
+	tag = "icon-chair (NORTH)"
+	},
+/obj/structure/sign/poster{
+	desc = "YOU ALWAYS KNOW A WORKING JOE. YOU ALWAYS KNOW A WORKING JOE. YOU ALWAYS KNOW A WORKING JOE. YOU ALWAYS KNOW A WORKING JOE. YOU ALWAYS KNOW A WORKING JOE.";
+	icon_state = "poster11";
+	name = "YOU ALWAYS KNOW A WORKING JOE.";
+	pixel_x = -27;
+	serial_number = 11
+	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/l_m_s)
 "xwG" = (
@@ -83679,17 +83777,18 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/l_m_s)
 "xCN" = (
-/obj/structure{
-	desc = "A lightweight support lattice.";
-	icon = 'icons/obj/structures/props/smoothlattice.dmi';
-	icon_state = "lattice12";
-	layer = 5.1;
-	name = "overhead lattice";
-	pixel_x = -1;
-	pixel_y = 16
+/obj/structure/prop/holidays/string_lights{
+	pixel_y = 27
 	},
-/obj/structure/largecrate/random/case/double,
-/turf/open/floor/plating/plating_catwalk,
+/obj/structure/largecrate/random/barrel/red,
+/obj/item/reagent_container/food/drinks/cans/cola{
+	pixel_y = 16;
+	pixel_x = -2
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
 /area/almayer/hull/lower_hull/l_m_s)
 "xCR" = (
 /obj/structure/machinery/light/small,
@@ -84823,15 +84922,15 @@
 /turf/open/floor/wood/ship,
 /area/almayer/living/commandbunks)
 "xZI" = (
-/obj/structure/largecrate/random/barrel/white,
 /obj/structure{
 	desc = "A lightweight support lattice.";
+	dir = 1;
 	icon = 'icons/obj/structures/props/smoothlattice.dmi';
-	icon_state = "lattice1";
+	icon_state = "lattice-simple";
 	layer = 5.1;
 	name = "overhead lattice";
 	pixel_x = 16;
-	pixel_y = -8
+	pixel_y = -16
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -85141,6 +85240,26 @@
 	tag = "icon-red (WEST)"
 	},
 /area/almayer/hallways/aft_hallway)
+"yfy" = (
+/obj/structure/surface/table/almayer,
+/obj/item/trash/crushed_cup,
+/obj/item/reagent_container/food/drinks/cup{
+	pixel_y = 9;
+	pixel_x = -5
+	},
+/obj/item/spacecash/c10{
+	pixel_x = 5;
+	pixel_y = 10
+	},
+/obj/item/ashtray/plastic{
+	pixel_y = -10;
+	pixel_x = 5
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/hull/lower_hull/l_m_s)
 "yfS" = (
 /obj/structure/window/framed/almayer,
 /obj/structure/machinery/door/firedoor/border_only/almayer{
@@ -85356,12 +85475,19 @@
 	},
 /area/almayer/hallways/stern_hallway)
 "ylY" = (
-/obj/structure/largecrate/random/case/small,
-/obj/structure/machinery/light/small,
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
+/obj/structure/largecrate/random/case/double,
+/obj/item/tool/wet_sign{
+	pixel_y = 18
 	},
+/obj/item/trash/cigbutt/ucigbutt{
+	desc = "A handful of rounds to reload on the go.";
+	icon = 'icons/obj/items/weapons/guns/handful.dmi';
+	icon_state = "bullet_2";
+	name = "handful of pistol bullets (9mm)";
+	pixel_x = -8;
+	pixel_y = 10
+	},
+/turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/l_m_s)
 
 (1,1,1) = {"
@@ -120201,9 +120327,9 @@ aad
 aKW
 aLf
 aSm
-aSm
-jFe
-bPS
+hhw
+fJA
+btk
 xwv
 eVy
 nsY
@@ -120404,10 +120530,10 @@ aad
 aKW
 rsj
 sxe
-aSm
+iQL
 glr
-aLf
-aLf
+mhl
+aSm
 ylY
 nsY
 nNT
@@ -120607,10 +120733,10 @@ aag
 aKW
 aSm
 aLf
-aSm
+hhw
 jFe
-aSm
-aSm
+mRc
+xZI
 mNZ
 nsY
 nsY
@@ -120809,12 +120935,12 @@ aKW
 aKW
 aKW
 aSm
-aLf
-mRc
+vUi
+hhw
 xCN
-aSm
-aSm
 pOB
+hfk
+aLf
 nsY
 tUS
 bNh
@@ -121017,7 +121143,7 @@ hhw
 nEA
 lQu
 lQu
-xZI
+aSm
 nsY
 lru
 sJY
@@ -121215,12 +121341,12 @@ aLf
 aLf
 aSm
 aLf
-aLf
-aSm
-aSm
-aLf
-aLf
-aLF
+bPW
+hhw
+hhw
+yfy
+ugV
+vUi
 nsY
 weB
 axc
@@ -121418,12 +121544,12 @@ bPV
 aLF
 aSm
 bzG
-aLf
-aSm
-aLf
-aSm
+hhw
+hhw
+sSe
 aLf
 qce
+aSm
 nsY
 wpz
 oEX
@@ -121623,9 +121749,9 @@ bbI
 aLB
 aLB
 wXv
-vUi
-bPU
-qEW
+aLf
+aLf
+oIn
 qEW
 nsY
 xgS

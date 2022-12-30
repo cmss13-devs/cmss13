@@ -950,8 +950,8 @@
 	if(!lastpuke)
 		lastpuke = 1
 		to_chat(src, SPAN_WARNING("You feel nauseous..."))
-		addtimer(CALLBACK(GLOBAL_PROC, .proc/to_chat, src, "You feel like you are about to throw up!"), 15 SECONDS)
-		addtimer(CALLBACK(src, .proc/do_vomit), 25 SECONDS)
+		addtimer(CALLBACK(GLOBAL_PROC, PROC_REF(to_chat), src, "You feel like you are about to throw up!"), 15 SECONDS)
+		addtimer(CALLBACK(src, PROC_REF(do_vomit)), 25 SECONDS)
 
 /mob/living/carbon/human/proc/do_vomit()
 	apply_effect(5, STUN)
@@ -1182,7 +1182,7 @@
 		ADD_TRAIT(src, T, TRAIT_SOURCE_SPECIES)
 
 	if(species.weed_slowdown_mult != 1)
-		RegisterSignal(src, COMSIG_MOB_WEEDS_CROSSED, .proc/handle_weed_slowdown)
+		RegisterSignal(src, COMSIG_MOB_WEEDS_CROSSED, PROC_REF(handle_weed_slowdown))
 
 	species.create_organs(src)
 
@@ -1206,11 +1206,11 @@
 	species.initialize_stamina(src)
 	species.handle_post_spawn(src)
 
-	INVOKE_ASYNC(src, .proc/regenerate_icons)
-	INVOKE_ASYNC(src, .proc/restore_blood)
-	INVOKE_ASYNC(src, .proc/update_body, 1, 0)
+	INVOKE_ASYNC(src, PROC_REF(regenerate_icons))
+	INVOKE_ASYNC(src, PROC_REF(restore_blood))
+	INVOKE_ASYNC(src, PROC_REF(update_body), 1, 0)
 	if(!(species.flags & HAS_UNDERWEAR))
-		INVOKE_ASYNC(src, .proc/remove_underwear)
+		INVOKE_ASYNC(src, PROC_REF(remove_underwear))
 
 	default_lighting_alpha = species.default_lighting_alpha
 	update_sight()

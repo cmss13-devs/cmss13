@@ -81,7 +81,7 @@
 	for(var/mob/M in src)
 		M.forceMove(loc)
 		if(exit_stun)
-			M.apply_effect(exit_stun, PARALYZE) //Action delay when going out of a closet
+			M.apply_effect(exit_stun, STUN) //Action delay when going out of a closet
 		M.update_canmove() //Force the delay to go in action immediately
 		if(!M.lying)
 			M.visible_message(SPAN_WARNING("[M] suddenly gets out of [src]!"),
@@ -114,7 +114,7 @@
 		stored_units = store_items(stored_units)
 	if(store_mobs)
 		stored_units = store_mobs(stored_units)
-		RegisterSignal(src, COMSIG_OBJ_FLASHBANGED, .proc/flashbang)
+		RegisterSignal(src, COMSIG_OBJ_FLASHBANGED, PROC_REF(flashbang))
 
 	opened = 0
 	update_icon()

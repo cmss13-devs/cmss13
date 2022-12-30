@@ -578,7 +578,10 @@ Additional game mode variables.
 			spawn_name = "[area_name] [++spawn_counter]"
 		spawn_list_map[spawn_name] = T
 
-	var/selected_spawn = tgui_input_list(original, "Where do you want to spawn?", "Queen Spawn", spawn_list_map, QUEEN_SPAWN_TIMEOUT, theme="hive_status")
+	var/selected_spawn = tgui_input_list(original, "Where do you want you and your hive to spawn?", "Queen Spawn", spawn_list_map, QUEEN_SPAWN_TIMEOUT, theme="hive_status")
+	if(!selected_spawn)
+		selected_spawn = pick(spawn_list_map)
+		to_chat(original, SPAN_XENOANNOUNCE("You have taken too long to pick a spawn location, one has been chosen for you."))
 
 	var/turf/QS
 	var/obj/effect/landmark/queen_spawn/QSI
@@ -692,6 +695,7 @@ Additional game mode variables.
 				H.mind.memory += temp_story
 				//remove ourselves, so we don't get stuff generated for us
 				survivors -= H.mind
+		new /datum/cm_objective/move_mob/almayer/survivor(H)
 
 /datum/game_mode/proc/survivor_non_event_transform(mob/living/carbon/human/H, obj/effect/landmark/spawn_point, is_synth = FALSE, is_CO = FALSE)
 	H.forceMove(get_turf(spawn_point))
@@ -700,6 +704,7 @@ Additional game mode variables.
 
 	//Give them some information
 	if(!H.first_xeno) //Only give objectives/back-stories to uninfected survivors
+		new /datum/cm_objective/move_mob/almayer/survivor(H)
 		spawn(4)
 			to_chat(H, "<h2>You are a survivor!</h2>")
 			to_chat(H, SPAN_NOTICE(SSmapping.configs[GROUND_MAP].survivor_message))

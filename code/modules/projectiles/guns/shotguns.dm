@@ -742,9 +742,9 @@ can cause issues with ammo types getting mixed up during the burst.
 	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 21,"rail_x" = 15, "rail_y" = 22, "under_x" = 21, "under_y" = 16, "stock_x" = 0, "stock_y" = 16)
 
 /obj/item/weapon/gun/shotgun/double/twobore/proc/brace(mob/living/carbon/human/user)
-	RegisterSignal(user, COMSIG_MOVABLE_MOVED, .proc/unbrace, user)
-	RegisterSignal(src, COMSIG_ITEM_DROPPED, .proc/unbrace, user)
-	RegisterSignal(src, COMSIG_ITEM_EQUIPPED, .proc/unbrace, user)
+	RegisterSignal(user, COMSIG_MOVABLE_MOVED, PROC_REF(unbrace), user)
+	RegisterSignal(src, COMSIG_ITEM_DROPPED, PROC_REF(unbrace), user)
+	RegisterSignal(src, COMSIG_ITEM_EQUIPPED, PROC_REF(unbrace), user)
 	braced = TRUE
 
 ///Returns TRUE if the gun was braced.

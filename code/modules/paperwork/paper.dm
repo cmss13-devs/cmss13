@@ -637,7 +637,7 @@
 									prob(15);pick(GLOB.chemical_gen_classes_list["T4"]))
 		if(!random_chem)
 			random_chem = pick(GLOB.chemical_gen_classes_list["T1"])
-		C = GLOB.chemical_reactions_list["[random_chem]"]
+		C = GLOB.chemical_reagents_list["[random_chem]"]
 	var/txt = "<center><img src = wylogo.png><HR><I><B>Official Weyland-Yutani Document</B><BR>Experiment Notes</I><HR><H2>"
 	switch(note_type)
 		if("synthesis")
@@ -647,13 +647,13 @@
 			txt += "[name] </H2></center>"
 			txt += "During experiment <I>[pick("C","Q","V","W","X","Y","Z")][rand(100,999)][pick("a","b","c")]</I> the theorized compound identified as [C.name], was successfully synthesized using the following formula:<BR>\n<BR>\n"
 			for(var/I in G.required_reagents)
-				var/datum/reagent/R = GLOB.chemical_reactions_list["[I]"]
+				var/datum/reagent/R = GLOB.chemical_reagents_list["[I]"]
 				var/U = G.required_reagents[I]
 				txt += "<font size = \"2\"><I> - [U] [R.name]</I></font><BR>\n"
 			if(G.required_catalysts && G.required_catalysts.len)
 				txt += "<BR>\nWhile using the following catalysts: <BR>\n<BR>\n"
 				for(var/I in G.required_catalysts)
-					var/datum/reagent/R = GLOB.chemical_reactions_list["[I]"]
+					var/datum/reagent/R = GLOB.chemical_reagents_list["[I]"]
 					var/U = G.required_catalysts[I]
 					txt += "<font size = \"2\"><I> - [U] [R.name]</I></font><BR>\n"
 			if(full_report)
@@ -739,7 +739,7 @@
 		C.gen_tier = GLOB.chemical_data.clearance_level
 	C.generate_stats()
 	GLOB.chemical_gen_classes_list["tau"] += C.id //Because each unique_vended should be unique, we do not save the chemclass anywhere but in the tau list
-	GLOB.chemical_reactions_list[C.id] = C
+	GLOB.chemical_reagents_list[C.id] = C
 	C.generate_assoc_recipe()
 	data = C
 	msg_admin_niche("New reagent with id [C.id], name [C.name], level [C.gen_tier], generated and printed at [loc] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[loc.x];Y=[loc.y];Z=[loc.z]'>JMP</a>).")
@@ -791,7 +791,7 @@
 	if(GLOB.chemical_reactions_list[S.id])
 		var/datum/chemical_reaction/C = GLOB.chemical_reactions_list[S.id]
 		for(var/I in C.required_reagents)
-			var/datum/reagent/R = GLOB.chemical_reactions_list["[I]"]
+			var/datum/reagent/R = GLOB.chemical_reagents_list["[I]"]
 			if(R.chemclass >= CHEM_CLASS_SPECIAL && !GLOB.chemical_data.chemical_identified_list[R.id] && !info_only)
 				info += "<font size = \"2\"><I> - Unknown emission spectrum</I></font><BR>\n"
 				completed = FALSE
@@ -802,7 +802,7 @@
 			if(C.required_catalysts.len)
 				info += "<BR>Reaction would require the following catalysts:<BR>\n"
 				for(var/I in C.required_catalysts)
-					var/datum/reagent/R = GLOB.chemical_reactions_list["[I]"]
+					var/datum/reagent/R = GLOB.chemical_reagents_list["[I]"]
 					if(R.chemclass >= CHEM_CLASS_SPECIAL && !GLOB.chemical_data.chemical_identified_list[R.id] && !info_only)
 						info += "<font size = \"2\"><I> - Unknown emission spectrum</I></font><BR>\n"
 						completed = FALSE

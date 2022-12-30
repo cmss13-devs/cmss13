@@ -70,10 +70,10 @@ GLOBAL_LIST_INIT_TYPED(resin_mark_meanings, /datum/xeno_mark_define, setup_resin
 GLOBAL_REFERENCE_LIST_INDEXED(xeno_datum_list, /datum/caste_datum, caste_type)
 
 //Chem Stuff
-GLOBAL_LIST_EMPTY(chemical_reactions_filtered_list)	//List of all /datum/chemical_reaction datums filtered by reaction components. Used during chemical reactions
-GLOBAL_LIST_EMPTY(chemical_reactions_list)		//List of all /datum/chemical_reaction datums indexed by reaction id. Used to search for the result instead of the components.
-GLOBAL_LIST_EMPTY(chemical_reagents_list)		//List of all /datum/reagent datums indexed by reagent id. Used by chemistry stuff
-GLOBAL_LIST_EMPTY(chemical_properties_list)	//List of all /datum/chem_property datums indexed by property name
+GLOBAL_LIST(chemical_reactions_filtered_list)	//List of all /datum/chemical_reaction datums filtered by reaction components. Used during chemical reactions
+GLOBAL_LIST(chemical_reactions_list)		//List of all /datum/chemical_rxseaction datums indexed by reaction id. Used to search for the result instead of the components.
+GLOBAL_LIST(chemical_reagents_list)		//List of all /datum/reagent datums indexed by reagent id. Used by chemistry stuff
+GLOBAL_LIST(chemical_properties_list)	//List of all /datum/chem_property datums indexed by property name
 //List of all id's from classed /datum/reagent datums indexed by class or tier. Used by chemistry generator and chem spawners.
 GLOBAL_LIST_INIT_TYPED(chemical_gen_classes_list, /list, list("C" = list(),"C1" = list(),"C2" = list(),"C3" = list(),"C4" = list(),"C5" = list(),"C6" = list(),"T1" = list(),"T2" = list(),"T3" = list(),"T4" = list(),"tau" = list()))
 //properties generated in chemicals, helps to make sure the same property doesn't show up 10 times

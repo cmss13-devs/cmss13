@@ -169,7 +169,7 @@
 	while(!gen_name)
 		gen_name = addtext(pick(prefix),pick(wordroot),pick(suffix))
 		//Make sure this name is not already used
-		for(var/datum/reagent/R in GLOB.chemical_reactions_list)
+		for(var/datum/reagent/R in GLOB.chemical_reagents_list)
 			if(R.name == gen_name)//if we are already using this name, try again
 				gen_name = ""
 	//set name

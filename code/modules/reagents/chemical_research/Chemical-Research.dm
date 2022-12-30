@@ -132,7 +132,7 @@ GLOBAL_DATUM_INIT(chemical_data, /datum/chemical_data, new)
 	chemical_not_completed_objective_list[S.id] = S.objective_value
 
 /datum/chemical_data/proc/get_tgui_data(var/chemid)
-	var/datum/reagent/S = GLOB.chemical_reactions_list[chemid]
+	var/datum/reagent/S = GLOB.chemical_reagents_list[chemid]
 	if(!S)
 		error("Invalid chemid [chemid]")
 		return

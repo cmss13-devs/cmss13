@@ -39,14 +39,14 @@
 			var/response = alert(usr,"Enter ID or select ID from list?",null, "Enter ID","Select from list")
 			var/target
 			if(response == "Select from list")
-				var/list/pool = GLOB.chemical_reactions_list
+				var/list/pool = GLOB.chemical_reagents_list
 				pool = sortAssoc(pool)
 				target = tgui_input_list(usr,"Select the ID of the chemical reagent you wish to view:", "View reagent", pool)
 			else if(response == "Enter ID")
 				target = input(usr,"Enter the ID of the chemical reagent you wish to view:")
 			if(!target)
 				return
-			var/datum/reagent/R = GLOB.chemical_reactions_list[target]
+			var/datum/reagent/R = GLOB.chemical_reagents_list[target]
 			if(R)
 				usr.client.debug_variables(R)
 			else
@@ -77,7 +77,7 @@
 			return
 		if("spawn_reagent")
 			var/target = input(usr,"Enter the ID of the chemical reagent you wish to make:")
-			if(!GLOB.chemical_reactions_list[target])
+			if(!GLOB.chemical_reagents_list[target])
 				to_chat(usr,SPAN_WARNING("No reagent with this ID could been found."))
 				return
 			var/volume = tgui_input_number(usr,"How much? An appropriate container will be selected.")
@@ -88,18 +88,18 @@
 			return
 		if("make_report")
 			var/target = input(usr, "Enter the ID of the chemical reagent you wish to make a report of:")
-			if(!GLOB.chemical_reactions_list[target])
+			if(!GLOB.chemical_reagents_list[target])
 				to_chat(usr, SPAN_WARNING("No reagent with this ID could be found."))
 				return
 
-			var/datum/reagent/R = GLOB.chemical_reactions_list[target]
+			var/datum/reagent/R = GLOB.chemical_reagents_list[target]
 			R.print_report(loc = usr.loc, admin_spawned = TRUE)
 		//For quickly generating a new chemical
 		if("create_random_reagent")
 			var/target = input(usr,"Enter the ID of the chemical reagent you wish to make:")
 			if(!target)
 				return
-			if(GLOB.chemical_reactions_list[target])
+			if(GLOB.chemical_reagents_list[target])
 				to_chat(usr,SPAN_WARNING("This ID is already in use."))
 				return
 			var/tier = tgui_input_number(usr,"Enter the generation tier you wish. This will affect the number of properties (tier + 1), rarity of components and potential for good properties. Ought to be 1-4, max 10.", "Generation tier", 1, 10)
@@ -116,7 +116,7 @@
 			R.generate_name()
 			R.generate_stats()
 			//Save our reagent
-			GLOB.chemical_reactions_list[target] = R
+			GLOB.chemical_reagents_list[target] = R
 			message_staff("[key_name_admin(usr)] has generated the reagent: [target].")
 			var/response = alert(usr,"Do you want to do anything else?",null,"Generate associated reaction","View my reagent","Finish")
 			while(response != "Finish")
@@ -128,17 +128,17 @@
 						R.generate_assoc_recipe()
 						if(!GLOB.chemical_reactions_list[target])
 							to_chat(usr,SPAN_WARNING("Something went wrong when saving the reaction. The associated reagent has been deleted."))
-							GLOB.chemical_reactions_list[target] -= R
+							GLOB.chemical_reagents_list[target] -= R
 							return
 						response = alert(usr,"Do you want to do anything else?",null,"View my reaction","View my reagent","Finish")
 					if("View my reagent")
-						if(GLOB.chemical_reactions_list[target])
-							R = GLOB.chemical_reactions_list[target]
+						if(GLOB.chemical_reagents_list[target])
+							R = GLOB.chemical_reagents_list[target]
 							usr.client.debug_variables(R)
 							log_admin("[key_name(usr)] is viewing the chemical reaction for [R].")
 						else
 							to_chat(usr,SPAN_WARNING("No reagent with this ID could been found. Wait what? But I just... Contact a debugger."))
-							GLOB.chemical_reactions_list.Remove(target)
+							GLOB.chemical_reagents_list.Remove(target)
 							GLOB.chemical_reactions_list.Remove("[target]")
 							GLOB.chemical_reactions_filtered_list.Remove("[target]")
 						return
@@ -148,7 +148,7 @@
 							usr.client.debug_variables(G)
 						else
 							to_chat(usr,SPAN_WARNING("No reaction with this ID could been found. Wait what? But I just... Contact a debugger."))
-							GLOB.chemical_reactions_list.Remove(target)
+							GLOB.chemical_reagents_list.Remove(target)
 							GLOB.chemical_reactions_list.Remove("[target]")
 							GLOB.chemical_reactions_filtered_list.Remove("[target]")
 						return
@@ -165,7 +165,7 @@
 			var/target = input(usr,"Enter the ID of the chemical reagent you wish to make:")
 			if(!target)
 				return
-			if(GLOB.chemical_reactions_list[target])
+			if(GLOB.chemical_reagents_list[target])
 				to_chat(usr,SPAN_WARNING("This ID is already in use."))
 				return
 			var/datum/reagent/generated/R = new /datum/reagent/generated
@@ -221,7 +221,7 @@
 						break
 			R.generate_description()
 			//Save our reagent
-			GLOB.chemical_reactions_list[target] = R
+			GLOB.chemical_reagents_list[target] = R
 			message_staff("[key_name_admin(usr)] has created a custom reagent: [target].")
 			//See what we want to do last
 			response = alert(usr,"Spawn container with reagent?","Custom reagent [target]","Yes","No, show me the reagent","No, I'm all done")
@@ -233,7 +233,7 @@
 
 					spawn_reagent(target, volume)
 				if("No, show me the reagent")
-					usr.client.debug_variables(GLOB.chemical_reactions_list[target])
+					usr.client.debug_variables(GLOB.chemical_reagents_list[target])
 			return
 		//For creating a custom reaction
 		if("create_custom_reaction")

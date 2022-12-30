@@ -23,7 +23,7 @@
 
 /datum/reagents/New(maximum=100)
 	maximum_volume = maximum
-	if(!GLOB.chemical_reactions_list || !GLOB.chemical_reactions_filtered_list || !GLOB.chemical_properties_list)
+	if(!GLOB.chemical_reagents_list || !GLOB.chemical_reactions_filtered_list || !GLOB.chemical_properties_list)
 		global_prepare_properties()
 		global_prepare_reagents()
 
@@ -65,11 +65,11 @@
 	//Chemical Reagents - Initialises all /datum/reagent into a list indexed by reagent id
 	//Generated chemicals should be initialized last, hence the substract then readd.
 	var/list/paths = subtypesof(/datum/reagent) - typesof(/datum/reagent/generated) -  subtypesof(/datum/reagent/generated) + subtypesof(/datum/reagent/generated)
-	GLOB.chemical_reactions_list = list()
+	GLOB.chemical_reagents_list = list()
 	for(var/path in paths)
 		var/datum/reagent/D = new path()
 		D.save_chemclass()
-		GLOB.chemical_reactions_list[D.id] = D
+		GLOB.chemical_reagents_list[D.id] = D
 
 	//Chemical Reactions - Initialises all /datum/chemical_reaction into a list
 	// It is filtered into multiple lists within a list.
@@ -468,10 +468,10 @@
 				handle_reactions()
 			return FALSE
 
-	var/datum/reagent/D = GLOB.chemical_reactions_list[reagent]
+	var/datum/reagent/D = GLOB.chemical_reagents_list[reagent]
 	if(D)
 		if(!istype(D, /datum/reagent))
-			CRASH("Not REAGENT - [reagent] - GLOB.chemical_reactions_list[reagent]")
+			CRASH("Not REAGENT - [reagent] - GLOB.chemical_reagents_list[reagent]")
 
 		var/datum/reagent/R = new D.type()
 		if(D.type == /datum/reagent/generated)

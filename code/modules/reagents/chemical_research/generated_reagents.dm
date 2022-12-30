@@ -16,11 +16,11 @@
 	//Generate stats
 	if(!id) //So we can initiate a new datum without generating it
 		return
-	if(!GLOB.chemical_reactions_list[id])
+	if(!GLOB.chemical_reagents_list[id])
 		generate_name()
 		generate_stats()
-		GLOB.chemical_reactions_list[id] = src
-	make_alike(GLOB.chemical_reactions_list[id])
+		GLOB.chemical_reagents_list[id] = src
+	make_alike(GLOB.chemical_reagents_list[id])
 	recalculate_variables()
 
 /datum/chemical_reaction/generated/New()

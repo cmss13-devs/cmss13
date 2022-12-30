@@ -118,7 +118,7 @@
 
 	var/list/chemicals = list()
 	for(var/re in dispensable_reagents)
-		var/datum/reagent/temp = GLOB.chemical_reactions_list[re]
+		var/datum/reagent/temp = GLOB.chemical_reagents_list[re]
 		if(temp)
 			var/chemname = temp.name
 			chemicals.Add(list(list("title" = chemname, "id" = temp.id)))

@@ -119,7 +119,7 @@
 
 	if(simulating == SIMULATION_STAGE_FINAL)
 		for(var/reagent_id in recipe_targets)
-			var/datum/reagent/R = GLOB.chemical_reactions_list[reagent_id]
+			var/datum/reagent/R = GLOB.chemical_reagents_list[reagent_id]
 			var/list/id_name[0]
 			id_name["[R.id]"] = R.name
 			data["recipe_targets"] += id_name
@@ -291,7 +291,7 @@
 		newname = reject_bad_name(newname, TRUE, 20, FALSE)
 		if(isnull(newname))
 			to_chat(user, "Bad name.")
-		else if(GLOB.chemical_reactions_list[newname])
+		else if(GLOB.chemical_reagents_list[newname])
 			to_chat(user, "Name already taken.")
 		else
 			creation_name = newname
@@ -381,7 +381,7 @@
 					C.name = C.id
 					if(C.id in simulations)
 						//We've already simulated this before, so we don't need to continue
-						C = GLOB.chemical_reactions_list[C.id]
+						C = GLOB.chemical_reagents_list[C.id]
 						print(C.id)
 						status_bar = "SIMULATION COMPLETE"
 						simulating = SIMULATION_STAGE_OFF
@@ -478,7 +478,7 @@
 			if(LAZYLEN(R.required_reagents) > 2)
 				LAZYREMOVE(R.required_reagents, pick(R.required_reagents))
 			var/new_component_id = R.add_component(tier = max(min(target.data.chemclass, CHEM_CLASS_COMMON), target.data.gen_tier, 1))
-			var/datum/reagent/new_component = GLOB.chemical_reactions_list[new_component_id]
+			var/datum/reagent/new_component = GLOB.chemical_reagents_list[new_component_id]
 			//Make sure we don't have an identical reaction and that the component is identified
 			if(R.check_duplicate() || R.check_reaction_uses_all_default_medical() || new_component.chemclass >= CHEM_CLASS_SPECIAL)
 				R.required_reagents = old_reaction.Copy()
@@ -512,12 +512,12 @@
 		var/datum/chemical_reaction/C = GLOB.chemical_reactions_list[target.data.id]
 		if(C)
 			for(var/component in C.required_reagents)
-				var/datum/reagent/R = GLOB.chemical_reactions_list[component]
+				var/datum/reagent/R = GLOB.chemical_reagents_list[component]
 				if(R && R.chemclass >= CHEM_CLASS_SPECIAL && !GLOB.chemical_data.chemical_identified_list[R.id])
 					status_bar = "UNREGISTERED COMPONENTS DETECTED"
 					return FALSE
 			for(var/catalyst in C.required_catalysts)
-				var/datum/reagent/R = GLOB.chemical_reactions_list[catalyst]
+				var/datum/reagent/R = GLOB.chemical_reagents_list[catalyst]
 				if(R && R.chemclass >= CHEM_CLASS_SPECIAL && !GLOB.chemical_data.chemical_identified_list[R.id])
 					status_bar = "UNREGISTERED CATALYSTS DETECTED"
 					return FALSE
@@ -572,7 +572,7 @@
 	flick("[icon_state]_printing",src)
 	sleep(10)
 	var/obj/item/paper/research_report/report = new /obj/item/paper/research_report/(loc)
-	var/datum/reagent/D = GLOB.chemical_reactions_list[id]
+	var/datum/reagent/D = GLOB.chemical_reagents_list[id]
 	report.name = "Simulation result for [D.name]"
 	report.info += "<center><img src = wylogo.png><HR><I><B>Official Company Document</B><BR>Simulated Synthesis Report</I><HR><H2>Result for [D.name]</H2></center>"
 	report.generate(D)
@@ -582,7 +582,7 @@
 		GLOB.chemical_data.save_document(report, "Synthesis Simulations", report.name)
 
 /obj/structure/machinery/chem_simulator/proc/encode_reagent(var/datum/reagent/C)
-	var/datum/reagent/O = GLOB.chemical_reactions_list[C.original_id] //So make the new name based on the Original
+	var/datum/reagent/O = GLOB.chemical_reagents_list[C.original_id] //So make the new name based on the Original
 	var/suffix = " "
 	for(var/datum/chem_property/P in C.properties)
 		suffix += P.code+"[P.level]"
@@ -690,7 +690,7 @@
 	else
 		GLOB.chemical_data.update_credits(property_costs[target_property.name] * -1)
 		//Refund 1 credit if a rare or rarer target was added
-		var/datum/reagent/component = GLOB.chemical_reactions_list[recipe_target]
+		var/datum/reagent/component = GLOB.chemical_reagents_list[recipe_target]
 		if(component && component.chemclass >= CHEM_CLASS_RARE)
 			GLOB.chemical_data.update_credits(1)
 
@@ -698,7 +698,7 @@
 	//Save the reagent
 	C.generate_description()
 	C.chemclass = CHEM_CLASS_RARE //So that we can always scan this in the future, don't generate defcon, and don't get a loop of making credits
-	GLOB.chemical_reactions_list[C.id] = C
+	GLOB.chemical_reagents_list[C.id] = C
 	LAZYADD(simulations, C.id) //Remember we've simulated this
 
 	//Save the reaction

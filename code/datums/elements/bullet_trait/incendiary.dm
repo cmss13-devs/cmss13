@@ -13,7 +13,7 @@
 
 	if(ispath(reagent))
 		var/datum/reagent/R = reagent
-		burn_reagent = GLOB.chemical_reagents_listchemical_reagents_list[initial(R.id)]
+		burn_reagent = GLOB.chemical_reagents_list[initial(R.id)]
 	else
 		burn_reagent = reagent
 	burn_stacks = stacks

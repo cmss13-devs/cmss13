@@ -79,10 +79,11 @@
 
 //Ammo magazine defines, for flags_magazine
 
-#define AMMUNITION_REFILLABLE   (1<<0)
-#define AMMUNITION_HANDFUL   (1<<1)
-#define AMMUNITION_HANDFUL_BOX  (1<<2) //for dump_ammo_to(), boxes of handfuls like shotgun shell boxes
+#define AMMUNITION_REFILLABLE (1<<0)
+#define AMMUNITION_HANDFUL (1<<1)
+#define AMMUNITION_HANDFUL_BOX (1<<2) //for dump_ammo_to(), boxes of handfuls like shotgun shell boxes
 #define AMMUNITION_HIDE_AMMO (1<<3)
+#define AMMUNITION_CANNOT_REMOVE_BULLETS (1<<4)
 
 //Slowdown from various armors.
 #define SHOES_SLOWDOWN -1.0 // How much shoes slow you down by default. Negative values speed you up

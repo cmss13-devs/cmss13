@@ -951,3 +951,15 @@
   - bugfix: Fixed entering APC being 0.1 seconds instead of 1 second.
   harryob:
   - code_imp: 515 compatibility is here
+2022-12-30:
+  Molto:
+  - bugfix: fixed the gsmes sprite overlay
+  stanalbatross:
+  - qol: converted the M46c's verbs to hud buttons. Sprites by Nauticall.
+  - qol: added a "toggle id lock" hud button to the CO smartgun
+  - bugfix: fixed the queen spawn picker tgui input list leaving you in the lobby
+      art if you let it time out. If you let this happen, if will now pick a random
+      spawn.
+  - balance: you can no longer remove bullets from HPR mags
+  - bugfix: lockers no longer paralyse you when getting out of them
+  - bugfix: berets no longer make the sounds of armour being taken off

@@ -1,0 +1,5 @@
+author: "stanalbatross"
+delete-after: True
+changes:
+  - qol: "converted the M46c's verbs to hud buttons. Sprites by Nauticall."
+  - qol: "added a \"toggle id lock\" hud button to the CO smartgun"

@@ -123,13 +123,6 @@
 	if (!cAction1.action_cooldown_check())
 		cAction1.reduce_cooldown(slash_charge_cdr)
 
-	var/datum/action/xeno_action/activable/fling/cAction2 = get_xeno_action_by_type(bound_xeno, /datum/action/xeno_action/activable/fling)
-	if (!cAction2.action_cooldown_check())
-		cAction2.reduce_cooldown(slash_charge_cdr)
-
-	var/datum/action/xeno_action/activable/warrior_punch/cAction3 = get_xeno_action_by_type(bound_xeno, /datum/action/xeno_action/activable/warrior_punch)
-	if (!cAction3.action_cooldown_check())
-		cAction3.reduce_cooldown(slash_charge_cdr)
 
 /datum/behavior_delegate/warrior_base/melee_attack_additional_effects_target(mob/living/carbon/A)
 	..()

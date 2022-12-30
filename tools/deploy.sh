@@ -13,6 +13,7 @@ mkdir -p \
     $1/maps \
     $1/icons \
     $1/sound \
+	$1/config \
     $1/strings
 
 if [ -d ".git" ]; then
@@ -25,6 +26,7 @@ cp -r maps/* $1/maps/
 cp -r icons/* $1/icons/
 cp -r sound/* $1/sound/
 cp -r strings/* $1/strings/
+cp -r config/* $1/config/
 
 #remove .dm files from _maps
 

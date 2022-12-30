@@ -378,7 +378,7 @@ var/datum/BSQL_Connection/connection
 	else
 		fail_reasons = list("Missing GLOB!")
 	if(!fail_reasons)
-		text2file("Success!", "data/logs/clean_run.lk")
+		text2file("Success!", "data/logs/ci/clean_run.lk")
 	else
 		log_world("Test run failed!\n[fail_reasons.Join("\n")]")
 	sleep(0) //yes, 0, this'll let Reboot finish and prevent byond memes

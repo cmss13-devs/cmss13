@@ -93,9 +93,8 @@
 /area/bigredv2/outside/admin_building)
 "S" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/colony{
 	name = "\improper Operations";
-	req_access = null
 	},
 /turf/open/floor{
 	icon_state = "white"

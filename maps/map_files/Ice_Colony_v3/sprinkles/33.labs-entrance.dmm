@@ -197,7 +197,7 @@
 /turf/open/floor/shiva,
 /area/shiva/interior/colony/research_hab)
 "sj" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor/glass/colony/autoname{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor/glass/colony{
 	req_access_txt = "100";
 	name = "\improper Omicron Field Gear Storage"
 	},
@@ -500,7 +500,7 @@
 /area/shiva/interior/caves/cp_camp)
 "YI" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor/glass/colony/autoname{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor/glass/colony{
 	dir = 1;
 	req_access_txt = "100";
 	name = "\improper Omicron Field Gear Storage"

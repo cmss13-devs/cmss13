@@ -119,24 +119,30 @@ SUBSYSTEM_DEF(shuttle)
 			return 2
 	return 0 //dock successful
 
-
+/**
+ * Moves a shuttle to a new location
+ *
+ * Arguments:
+ * * shuttle_id - The ID of the shuttle (mobile docking port) to move
+ * * dock_id - The ID of the destination (stationary docking port) to move to
+ * * timed - If true, have the shuttle follow normal spool-up, jump, dock process. If false, immediately move to the new location.
+ */
 /datum/controller/subsystem/shuttle/proc/moveShuttle(shuttleId, dockId, timed)
 	var/obj/docking_port/stationary/D = getDock(dockId)
-
-	return moveShuttleToDock(shuttleId, D, timed)
-
-/datum/controller/subsystem/shuttle/proc/moveShuttleToDock(shuttleId, obj/docking_port/stationary/D, timed)
 	var/obj/docking_port/mobile/M = getShuttle(shuttleId)
 
+	return moveShuttleToDock(M, D, timed)
+
+/datum/controller/subsystem/shuttle/proc/moveShuttleToDock(obj/docking_port/mobile/M, obj/docking_port/stationary/D, timed)
 	if(!M)
-		return 1
+		return DOCKING_NULL_SOURCE
 	if(timed)
 		if(M.request(D))
-			return 2
+			return DOCKING_IMMOBILIZED
 	else
 		if(M.initiate_docking(D) != DOCKING_SUCCESS)
-			return 2
-	return 0 //dock successful
+			return DOCKING_IMMOBILIZED
+	return DOCKING_SUCCESS	//dock successful
 
 /datum/controller/subsystem/shuttle/proc/request_transit_dock(obj/docking_port/mobile/M)
 	if(!istype(M))

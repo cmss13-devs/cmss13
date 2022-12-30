@@ -1570,17 +1570,6 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	armor_bomb = CLOTHING_ARMOR_GIGAHIGH
 
 
-/obj/item/clothing/suit/storage/marine/M3G/hefa/damaged
-	name = "damaged HEFA Knight armor"
-	desc = "A thick piece of armor adorning a HEFA. Usually seen on a HEFA knight. This one appears to have suffered heavy damage, especially on the front armor plating."
-	armor_bullet = CLOTHING_ARMOR_HIGH
-	armor_melee = CLOTHING_ARMOR_HIGH
-	armor_bomb = CLOTHING_ARMOR_GIGAHIGH
-	flags_marine_armor = ARMOR_LAMP_OVERLAY
-	flags_inventory = NO_FLAGS
-	flags_item = NO_FLAGS
-	flags_atom = NO_NAME_OVERRIDE|NO_SNOW_TYPE
-
 //=========================//PROVOST\\================================\\
 //=======================================================================\\
 

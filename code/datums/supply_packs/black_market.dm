@@ -99,10 +99,10 @@ Non-USCM items, from CLF, UPP, colonies, etc. Mostly combat-related.
 			new /obj/item/clothing/suit/storage/marine/faction/freelancer(src)
 			new /obj/item/clothing/gloves/marine/veteran(src)
 			new /obj/item/storage/backpack/lightpack(src)
-		if(7) //HEFA
-			new /obj/item/clothing/head/helmet/marine/specialist/hefa(src)
-			new /obj/item/clothing/suit/storage/marine/M3G/hefa/damaged(src)
-			new /obj/item/clothing/under/marine(src)
+		if(7) //VAIPO
+			new /obj/item/clothing/glasses/sunglasses/big(src)
+			new /obj/item/clothing/suit/storage/marine/light/vest(src)
+			new /obj/item/clothing/under/tshirt/gray_blu(src)
 
 /datum/supply_packs/contraband/seized/confiscated_weaponry
 	name = "seized foreign weaponry crate"
@@ -184,13 +184,17 @@ Non-USCM items, from CLF, UPP, colonies, etc. Mostly combat-related.
 				new /obj/item/weapon/gun/rifle/mar40/lmg(src)
 				new /obj/item/ammo_magazine/rifle/mar40/lmg(src)
 				new /obj/item/ammo_magazine/rifle/mar40/lmg(src)
-		if(7) //HEFA
-			new /obj/item/weapon/melee/claymore/hefa(src)
-			new /obj/item/weapon/melee/claymore/hefa(src)
-			var/obj/item/storage/belt/grenade/belt = new(src)
-			belt.name = "M42 HEFA rig Mk. IX"
-			for(var/i in 1 to belt.storage_slots)
-				new /obj/item/explosive/grenade/HE/frag(belt)
+		if(7) //VAIPO
+			if(prob(50))
+				new /obj/item/weapon/gun/rifle/mar40/tactical(src)
+				new /obj/item/ammo_magazine/rifle/mar40/extended(src)
+				new /obj/item/ammo_magazine/rifle/mar40/extended(src)
+				new /obj/item/ammo_magazine/rifle/mar40(src)
+			else
+				new /obj/item/weapon/gun/rifle/m41aMK1/tactical(src)
+				new /obj/item/ammo_magazine/rifle/m41aMK1/ap(src)
+				new /obj/item/ammo_magazine/rifle/m41aMK1(src)
+				new /obj/item/ammo_magazine/rifle/m41aMK1(src)
 
 /* Misc. Individual Guns */
 

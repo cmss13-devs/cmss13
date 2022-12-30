@@ -1,0 +1,5 @@
+author: "stanalbatross"
+delete-after: True
+changes:
+  - bugfix: "lockers no longer paralyse you when getting out of them"
+  - bugfix: "berets no longer make the sounds of armour being taken off"

@@ -85,7 +85,7 @@ jobs:
           echo "maps={\"paths\":[$(cat maps_output.txt)]}" >> $GITHUB_OUTPUT
   run_all_tests:
     if: "!contains(github.event.head_commit.message, '[ci skip]')"
-    name: Integration Tests
+    name: Unit Tests
     needs: [find_all_maps]
     strategy:
       fail-fast: false
@@ -94,6 +94,6 @@ jobs:
     concurrency:
       group: run_all_tests-${{ github.ref }}-${{ matrix.map }}
       cancel-in-progress: true
-    uses: ./.github/workflows/run_integration_tests.yml
+    uses: ./.github/workflows/run_unit_tests.yml
     with:
       map: ${{ matrix.map }}

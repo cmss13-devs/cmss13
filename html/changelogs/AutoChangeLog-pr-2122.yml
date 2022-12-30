@@ -1,4 +1,0 @@
-author: "Lacasitospro"
-delete-after: True
-changes:
-  - bugfix: "Fixes webbings' side states being too bulky"

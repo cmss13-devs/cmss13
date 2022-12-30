@@ -234,7 +234,7 @@
 
 	switch(client.prefs?.pain_overlay_pref_level)
 		if(PAIN_OVERLAY_IMPAIR)
-			overlay_fullscreen("eye_blur", /atom/movable/screen/fullscreen/impaired, clamp(eye_blurry * 0.3, 1, 6))
+			overlay_fullscreen("eye_blur", /atom/movable/screen/fullscreen/impaired, CEILING(clamp(eye_blurry * 0.3, 1, 6), 1))
 		if(PAIN_OVERLAY_LEGACY)
 			overlay_fullscreen("eye_blur", /atom/movable/screen/fullscreen/blurry)
 		else // PAIN_OVERLAY_BLURRY

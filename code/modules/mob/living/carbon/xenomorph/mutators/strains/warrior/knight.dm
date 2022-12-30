@@ -1,7 +1,6 @@
 /datum/xeno_mutator/knight
 	name = "STRAIN: Warrior - Knight"
-	description = "You forfeit all your abilities and ways to pummel hosts into oblivion and instead gain the powerful ability to face them al head-on, for a time."
-	flavor_description = "With fealty, loyalty, and a thorough application of your claws, there is nothing that can oppose you."
+	description = "You forfeit all your brawling abilities, replacing them with the ability to fight on the front, with your long-ranged Pike to harass, your Bulwark to protect from suppression, and your Leap to reposition. Being on weeds will enhance your abilities."
 	cost = MUTATOR_COST_EXPENSIVE
 	individual_only = TRUE
 	caste_whitelist = list(XENO_CASTE_WARRIOR) //Only warrior.

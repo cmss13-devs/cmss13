@@ -155,8 +155,8 @@
 /datum/cm_objective/move_mob/New(var/mob/living/survivor)
 	if(istype(survivor, /mob/living))
 		target = survivor
-		RegisterSignal(survivor, COMSIG_MOB_DEATH, .proc/handle_death)
-		RegisterSignal(survivor, COMSIG_PARENT_QDELETING, .proc/handle_corpse_deletion)
+		RegisterSignal(survivor, COMSIG_MOB_DEATH, PROC_REF(handle_death))
+		RegisterSignal(survivor, COMSIG_PARENT_QDELETING, PROC_REF(handle_corpse_deletion))
 	activate()
 	. = ..()
 
@@ -185,10 +185,10 @@
 	if(mob_can_die == MOB_FAILS_ON_DEATH)
 		deactivate()
 		if (isXeno(dead_mob))
-			RegisterSignal(dead_mob, COMSIG_XENO_REVIVED, .proc/handle_mob_revival)
+			RegisterSignal(dead_mob, COMSIG_XENO_REVIVED, PROC_REF(handle_mob_revival))
 		else
-			RegisterSignal(dead_mob, COMSIG_HUMAN_REVIVED, .proc/handle_mob_revival)
-		RegisterSignal(dead_mob, COMSIG_LIVING_REJUVENATED, .proc/handle_mob_revival)
+			RegisterSignal(dead_mob, COMSIG_HUMAN_REVIVED, PROC_REF(handle_mob_revival))
+		RegisterSignal(dead_mob, COMSIG_LIVING_REJUVENATED, PROC_REF(handle_mob_revival))
 
 /datum/cm_objective/move_mob/proc/handle_mob_revival(mob/living/carbon/revived_mob)
 	SIGNAL_HANDLER

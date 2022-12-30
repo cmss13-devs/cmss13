@@ -3,7 +3,7 @@
 	desc = "It's a basic storage unit."
 	icon = 'icons/obj/structures/closet.dmi'
 	icon_state = "closed"
-	density = 1
+	density = TRUE
 	layer = BELOW_OBJ_LAYER
 	var/icon_closed = "closed"
 	var/icon_opened = "open"
@@ -100,7 +100,7 @@
 	opened = 1
 	update_icon()
 	playsound(src.loc, open_sound, 15, 1)
-	density = 0
+	density = FALSE
 	return 1
 
 /obj/structure/closet/proc/close()
@@ -120,7 +120,7 @@
 	update_icon()
 
 	playsound(src.loc, close_sound, 15, 1)
-	density = 1
+	density = TRUE
 	return 1
 
 /obj/structure/closet/proc/store_items(var/stored_units)

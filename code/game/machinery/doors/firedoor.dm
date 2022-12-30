@@ -17,8 +17,8 @@
 	icon = 'icons/obj/structures/doors/DoorHazard.dmi'
 	icon_state = "door_open"
 	req_one_access = list(ACCESS_CIVILIAN_ENGINEERING)
-	opacity = 0
-	density = 0
+	opacity = FALSE
+	density = FALSE
 	layer = FIREDOOR_OPEN_LAYER
 	open_layer = FIREDOOR_OPEN_LAYER // Just below doors when open
 	closed_layer = FIREDOOR_CLOSED_LAYER // Just above doors when closed

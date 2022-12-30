@@ -4,7 +4,7 @@
 	name = "hydroponics tray"
 	icon = 'icons/obj/structures/machinery/hydroponics.dmi'
 	icon_state = "hydrotray3"
-	density = 1
+	density = TRUE
 	anchored = 1
 	unslashable = FALSE
 	health = 100
@@ -736,7 +736,7 @@
 	name = "soil"
 	icon = 'icons/obj/structures/machinery/hydroponics.dmi'
 	icon_state = "soil"
-	density = 0
+	density = FALSE
 	use_power = USE_POWER_NONE
 	draw_warnings = 0
 

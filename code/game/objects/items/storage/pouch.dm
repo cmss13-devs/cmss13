@@ -42,7 +42,7 @@
 
 /obj/item/storage/pouch/equipped(mob/user, slot)
 	if(slot == WEAR_L_STORE || slot == WEAR_R_STORE)
-		mouse_opacity = 2 //so it's easier to click when properly equipped.
+		mouse_opacity = MOUSE_OPACITY_OPAQUE //so it's easier to click when properly equipped.
 	..()
 
 /obj/item/storage/pouch/dropped(mob/user)

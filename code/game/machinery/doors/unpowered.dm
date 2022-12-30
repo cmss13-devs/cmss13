@@ -18,5 +18,5 @@
 	icon = 'icons/turf/shuttle.dmi'
 	name = "door"
 	icon_state = "door1"
-	opacity = 1
-	density = 1
+	opacity = TRUE
+	density = TRUE

@@ -20,7 +20,7 @@
 	strength = 8
 	anchored = 0
 	base_state = "pflash"
-	density = 1
+	density = TRUE
 
 /obj/structure/machinery/flasher/power_change()
 	..()

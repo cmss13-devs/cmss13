@@ -175,7 +175,7 @@
 
 	if (storage_flags & STORAGE_CONTENT_NUM_DISPLAY)
 		for (var/datum/numbered_display/ND in display_contents)
-			ND.sample_object.mouse_opacity = 2
+			ND.sample_object.mouse_opacity = MOUSE_OPACITY_OPAQUE
 			ND.sample_object.screen_loc = "[cx]:16,[cy]:16"
 			ND.sample_object.maptext = "<font color='white'>[(ND.number > 1)? "[ND.number]" : ""]</font>"
 			ND.sample_object.layer = ABOVE_HUD_LAYER
@@ -186,7 +186,7 @@
 				cy--
 	else
 		for (var/obj/item/O in contents)
-			O.mouse_opacity = 2 //So storage items that start with contents get the opacity trick.
+			O.mouse_opacity = MOUSE_OPACITY_OPAQUE //So storage items that start with contents get the opacity trick.
 			O.screen_loc = "[cx]:[16+O.hud_offset],[cy]:16"
 			O.layer = ABOVE_HUD_LAYER
 			O.plane = ABOVE_HUD_PLANE
@@ -476,7 +476,7 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 	for(var/mob/M in can_see_content())
 		show_to(M)
 	if (storage_slots)
-		W.mouse_opacity = 2 //not having to click the item's tiny sprite to take it out of the storage.
+		W.mouse_opacity = MOUSE_OPACITY_OPAQUE //not having to click the item's tiny sprite to take it out of the storage.
 	update_icon()
 
 ///Call this proc to handle the removal of an item from the storage item. The item will be moved to the atom sent as new_target.

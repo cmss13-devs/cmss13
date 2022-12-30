@@ -2,14 +2,14 @@
 	name = "warning stripes"
 	icon = 'icons/effects/warning_stripes.dmi'
 	layer = WEED_LAYER
-	mouse_opacity = 0
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
 /obj/effect/decal/warning_stripes/asteroid
 	icon_state = "warning"
 
 /obj/effect/decal/sand_overlay
 	name = "sandy edge"
-	mouse_opacity = 0
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	unacidable = TRUE
 	icon = 'icons/turf/overlays.dmi'
 	layer = TURF_LAYER

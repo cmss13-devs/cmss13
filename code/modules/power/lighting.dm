@@ -720,7 +720,7 @@
 	desc = "A landing light, if it's flashing stay clear!"
 	var/id = "" // ID for landing zone
 	anchored = 1
-	density = 0
+	density = FALSE
 	layer = BELOW_TABLE_LAYER
 	use_power = USE_POWER_ACTIVE
 	idle_power_usage = 2

@@ -121,7 +121,7 @@
 		if(isobserver(mob))
 			mob.invisibility = INVISIBILITY_MAXIMUM
 			mob.alpha = 0
-			mob.mouse_opacity = 0
+			mob.mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
 	admin_holder.invisimined = !admin_holder.invisimined
 

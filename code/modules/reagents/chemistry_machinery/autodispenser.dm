@@ -11,7 +11,7 @@
 	icon_state = "autodispenser_empty_open"
 	active_power_usage = 40
 	layer = BELOW_OBJ_LAYER
-	density = 1
+	density = TRUE
 
 	var/obj/item/storage/fancy/vials/input_container //Contains vials for our program
 	var/obj/item/reagent_container/glass/output_container //Our output beaker

@@ -8,7 +8,7 @@
 	desc = "Used for advanced medical procedures."
 	icon = 'icons/obj/structures/machinery/surgery.dmi'
 	icon_state = "table2-idle"
-	density = 1
+	density = TRUE
 	layer = TABLE_LAYER
 	anchored = 1
 	unslashable = TRUE
@@ -50,7 +50,7 @@
 	switch(severity)
 		if(0 to EXPLOSION_THRESHOLD_LOW)
 			if (prob(25))
-				src.density = 0
+				src.density = FALSE
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			if (prob(50))
 				deconstruct(FALSE)

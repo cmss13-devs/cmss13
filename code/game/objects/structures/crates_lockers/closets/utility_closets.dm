@@ -201,7 +201,7 @@
 	icon_closed = "hydrant"
 	icon_opened = "hydrant_open"
 	anchored = 1
-	density = 0
+	density = FALSE
 	wall_mounted = 1
 	store_mobs = FALSE
 	var/spawn_empty = FALSE
@@ -228,7 +228,7 @@
 	icon_closed = "medical_wall"
 	icon_opened = "medical_wall_open"
 	anchored = 1
-	density = 0
+	density = FALSE
 	wall_mounted = 1
 	store_mobs = FALSE
 

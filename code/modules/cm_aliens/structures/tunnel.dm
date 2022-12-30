@@ -8,8 +8,8 @@
 	icon = 'icons/mob/xenos/effects.dmi'
 	icon_state = "hole"
 
-	density = 0
-	opacity = 0
+	density = FALSE
+	opacity = FALSE
 	anchored = 1
 	unslashable = TRUE
 	unacidable = TRUE

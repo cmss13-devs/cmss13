@@ -576,7 +576,7 @@
 	parent_cluster.damaged = TRUE
 
 /obj/effect/resin_construct
-	mouse_opacity = 0
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	icon = 'icons/mob/xenos/effects.dmi'
 
 /obj/effect/resin_construct/door

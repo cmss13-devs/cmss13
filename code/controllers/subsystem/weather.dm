@@ -198,7 +198,7 @@ SUBSYSTEM_DEF(weather)
 	name = "weather vfx holder"
 	icon = 'icons/effects/weather.dmi'
 	invisibility = 0
-	mouse_opacity = 0
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	layer = WEATHER_LAYER
 
 /obj/effect/weather_vfx_holder/rain

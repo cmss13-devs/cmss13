@@ -3,7 +3,7 @@
 	desc = "A hefty wooden crate."
 	icon = 'icons/obj/structures/crates.dmi'
 	icon_state = "densecrate"
-	density = 1
+	density = TRUE
 	anchored = 0
 	var/parts_type = /obj/item/stack/sheet/wood
 	var/unpacking_sound = 'sound/effects/woodhit.ogg'
@@ -124,7 +124,7 @@
 	name = "small crate"
 	desc = "The large supply crate's cousin, 1st removed."
 	icon_state = "mini_crate"
-	density = 0
+	density = FALSE
 
 /obj/structure/largecrate/random/mini/chest
 	desc = "A small plastic crate wrapped with securing elastic straps."

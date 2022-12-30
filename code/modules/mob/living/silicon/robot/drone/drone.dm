@@ -10,7 +10,7 @@
 	gender = NEUTER
 	braintype = "Robot"
 	lawupdate = 0
-	density = 1
+	density = TRUE
 	req_access = list(ACCESS_MARINE_ENGINEERING, ACCESS_MARINE_RESEARCH)
 	integrated_light_power = 2
 	local_transmit = 1

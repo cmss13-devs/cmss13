@@ -5,7 +5,7 @@
 	icon = 'icons/obj/structures/machinery/stock_parts.dmi'
 	icon_state = "box_0"
 	var/base_state = "box"
-	density = 0
+	density = FALSE
 	anchored = 1
 	use_power = USE_POWER_NONE
 	var/requirements_left

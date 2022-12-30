@@ -2,8 +2,8 @@
 
 //turfs with density = TRUE
 /turf/closed
-	density = 1
-	opacity = 1
+	density = TRUE
+	opacity = TRUE
 
 /turf/closed/insert_self_into_baseturfs()
 	return
@@ -111,7 +111,7 @@
 	icon = 'icons/turf/walls/icewalllight.dmi'
 	icon_state = "Single"
 	desc = "It is very thin."
-	opacity = 0
+	opacity = FALSE
 
 /turf/closed/ice/thin/single
 	icon_state = "Single"
@@ -223,7 +223,7 @@
 	icon_state = "1"
 
 /turf/closed/shuttle/dropship1/transparent
-	opacity = 0
+	opacity = FALSE
 
 /turf/closed/shuttle/dropship2
 	name = "\improper Normandy"
@@ -231,7 +231,7 @@
 	icon_state = "1"
 
 /turf/closed/shuttle/dropship2/transparent
-	opacity = 0
+	opacity = FALSE
 
 /turf/closed/shuttle/dropship2/tornado
 	name = "\improper Tornado"
@@ -253,7 +253,7 @@
 
 /turf/closed/shuttle/lifeboat/transparent
 	icon_state = "window1"
-	opacity = 0
+	opacity = FALSE
 
 //INSERT EXPLOSION CODE
 /turf/closed/shuttle/lifeboat/proc/transform_crash()

@@ -42,7 +42,7 @@
 
 // object is being physically reduced into parts
 /obj/proc/deconstruct(disassembled = TRUE)
-	density = 0
+	density = FALSE
 	qdel(src)
 
 /obj/item/proc/is_used_on(obj/O, mob/user)
@@ -224,11 +224,11 @@
 		return
 
 	if(density)
-		density = 0
+		density = FALSE
 		if(!step(M, get_dir(M, src)) && loc != M.loc)
-			density = 1
+			density = TRUE
 			return
-		density = 1
+		density = TRUE
 	else
 		if(M.loc != src.loc)
 			step_towards(M, src) //buckle if you're right next to it

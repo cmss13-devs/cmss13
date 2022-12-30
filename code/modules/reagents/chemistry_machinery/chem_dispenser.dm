@@ -1,6 +1,6 @@
 /obj/structure/machinery/chem_dispenser
 	name = "chem dispenser"
-	density = 1
+	density = TRUE
 	anchored = 1
 	icon = 'icons/obj/structures/machinery/science_machines.dmi'
 	icon_state = "dispenser"

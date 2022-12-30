@@ -522,4 +522,4 @@
 	name = "Medical Laptop"
 	desc = "Cheap Weyland-Yutani Laptop."
 	icon_state = "medlaptop"
-	density = 0
+	density = FALSE

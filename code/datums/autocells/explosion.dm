@@ -341,5 +341,5 @@
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "smoke"
 	anchored = 1
-	mouse_opacity = 0
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	layer = FLY_LAYER

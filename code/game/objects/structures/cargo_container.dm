@@ -5,9 +5,9 @@
 	icon_state = "blue"
 	bound_width = 32
 	bound_height = 64
-	density = 1
+	density = TRUE
 	health = 200
-	opacity = 1
+	opacity = TRUE
 	anchored = 1
 
 /obj/structure/cargo_container/attack_hand(mob/user as mob)
@@ -35,9 +35,9 @@
 	icon_state = "blue"
 	bound_width = 64
 	bound_height = 32
-	density = 1
+	density = TRUE
 	health = 200
-	opacity = 1
+	opacity = TRUE
 
 
 

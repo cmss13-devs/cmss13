@@ -90,7 +90,8 @@
 			var/obj/item/reagent_container/container = item_to_stock
 			if(container.reagents.total_volume < container.reagents.maximum_volume)
 				if(user)
-					to_chat(user, SPAN_WARNING("\The [container.name] must be full to restock it when not linked to a medical supply port!"))
+					to_chat(user, SPAN_WARNING("\The [src] makes a buzzing noise as it rejects \the [container.name]. Looks like this vendor cannot refill these outside of a medical bay's supply link."))
+					playsound(src, 'sound/machines/buzz-sigh.ogg', 15, TRUE)
 				return FALSE
 
 	//stacked items handling if the vendor cannot restock partial stacks
@@ -99,7 +100,8 @@
 			var/obj/item/stack/restock_stack = item_to_stock
 			if(restock_stack.amount < restock_stack.max_amount) // if the stack is not full
 				if(user)
-					to_chat(user, SPAN_WARNING("\The [restock_stack] is not full. Fill it back up before restocking. Alternatively, link this vendor to a medical supply port."))
+					to_chat(user, SPAN_WARNING("\The [src] makes a buzzing noise as it rejects \the [restock_stack]. Looks like this vendor cannot restock non-full stacks outside of a medical bay's supply link."))
+					playsound(src, 'sound/machines/buzz-sigh.ogg', 15, TRUE)
 				return FALSE
 	return TRUE
 
@@ -124,7 +126,8 @@
 			return
 
 		if(requires_supply_link_port && !get_supply_link())
-			to_chat(user, SPAN_WARNING("\The [src] needs to be linked to a medical supply link port to refill the [C.name]!"))
+			to_chat(user, SPAN_WARNING("\The [src] makes a buzzing noise as it rejects \the [C.name]. Looks like this vendor cannot refill these outside of a medical bay's supply link."))
+			playsound(src, 'sound/machines/buzz-sigh.ogg', 15, TRUE)
 			return
 
 		to_chat(user, SPAN_NOTICE("[src] makes a whirring noise as it refills your [C.name]."))
@@ -152,7 +155,8 @@
 			return
 
 		if(requires_supply_link_port && !get_supply_link())
-			to_chat(user, SPAN_WARNING("\The [src] needs to be linked to a medical supply link port to refill the [S.name]!"))
+			to_chat(user, SPAN_WARNING("\The [src] makes a buzzing noise as it rejects \the [S.name]. Looks like this vendor cannot restock non-full stacks outside of a medical bay's supply link."))
+			playsound(src, 'sound/machines/buzz-sigh.ogg', 15, TRUE)
 			return
 
 

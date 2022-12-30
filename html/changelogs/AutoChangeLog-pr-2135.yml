@@ -1,0 +1,5 @@
+author: "stanalbatross"
+delete-after: True
+changes:
+  - bugfix: "fixed a ton of instances where organs were not using the take_damage proc, resulting in them not properly breaking"
+  - code_imp: "made a ton of eye_blind things use the procs for it"

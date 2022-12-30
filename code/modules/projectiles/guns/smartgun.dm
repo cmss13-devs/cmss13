@@ -551,8 +551,11 @@
 	var/mob/living/carbon/human/linked_human
 	var/is_locked = TRUE
 
-/obj/item/weapon/gun/smartgun/co/able_to_fire(mob/user)
+/obj/item/weapon/gun/smartgun/co/Initialize(mapload, ...)
 	LAZYADD(actions_types, /datum/action/item_action/co_sg/toggle_id_lock)
+	. = ..()
+
+/obj/item/weapon/gun/smartgun/co/able_to_fire(mob/user)
 	. = ..()
 	if(is_locked && linked_human && linked_human != user)
 		if(linked_human.is_revivable() || linked_human.stat != DEAD)

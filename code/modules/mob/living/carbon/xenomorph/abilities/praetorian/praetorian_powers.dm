@@ -263,7 +263,7 @@
 
 		var/blocked = FALSE
 		for(var/obj/structure/S in temp)
-			if(S.opacity || ((istype(S, /obj/structure/barricade) || istype(S, /obj/structure/machinery/door)) && S.density))
+			if(S.opacity || ((istype(S, /obj/structure/barricade) || istype(S, /obj/structure/girder) && S.density || istype(S, /obj/structure/machinery/door)) && S.density))
 				blocked = TRUE
 				break
 		if(blocked)
@@ -988,7 +988,7 @@
 
 		var/blocked = FALSE
 		for(var/obj/structure/S in temp)
-			if(S.opacity || ((istype(S, /obj/structure/barricade) || istype(S, /obj/structure/machinery/door)) && S.density))
+			if(S.opacity || ((istype(S, /obj/structure/barricade) || istype(S, /obj/structure/girder)  && S.density|| istype(S, /obj/structure/machinery/door)) && S.density))
 				blocked = TRUE
 				break
 		if(blocked)

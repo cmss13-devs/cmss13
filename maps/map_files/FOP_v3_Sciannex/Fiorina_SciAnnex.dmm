@@ -309,7 +309,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/lz/near_lzI)
 "aif" = (
-/obj/structure/machinery/door/airlock/almayer/maint/autoname{
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
 	dir = 1;
 	name = "\improper Null Hatch REPLACE ME";
 	req_access = null;
@@ -916,7 +916,7 @@
 	},
 /area/fiorina/station/medbay)
 "ayX" = (
-/obj/structure/machinery/door/airlock/almayer/maint/autoname{
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
 	dir = 1;
 	name = "\improper Null Hatch REPLACE ME";
 	req_access = null;
@@ -1529,7 +1529,7 @@
 	},
 /area/fiorina/station/power_ring)
 "aMM" = (
-/obj/structure/machinery/door/airlock/almayer/maint/autoname{
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
 	dir = 1;
 	name = "\improper Null Hatch REPLACE ME";
 	req_access = null;
@@ -4548,7 +4548,7 @@
 	},
 /area/fiorina/station/civres_blue)
 "cDl" = (
-/obj/structure/machinery/door/airlock/almayer/maint/autoname{
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
 	name = "\improper Null Hatch REPLACE ME";
 	req_access = null;
 	req_one_access = null
@@ -4689,7 +4689,7 @@
 /turf/open/floor/prison,
 /area/fiorina/station/security)
 "cHD" = (
-/obj/structure/machinery/door/airlock/almayer/maint/autoname{
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
 	name = "\improper Null Hatch REPLACE ME";
 	req_access = null;
 	req_one_access = null
@@ -5984,7 +5984,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/fiorina/tumor/fiberbush)
 "dwT" = (
-/obj/structure/machinery/door/airlock/almayer/maint/autoname{
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
 	name = "\improper Null Hatch REPLACE ME";
 	req_access = null;
 	req_one_access = null
@@ -10350,7 +10350,7 @@
 	},
 /area/fiorina/tumor/aux_engi)
 "gfh" = (
-/obj/structure/machinery/door/airlock/almayer/maint/autoname{
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
 	dir = 1;
 	name = "\improper Null Hatch REPLACE ME";
 	req_access = null;
@@ -13404,7 +13404,7 @@
 	},
 /area/fiorina/station/security)
 "hVG" = (
-/obj/structure/machinery/door/airlock/almayer/maint/autoname{
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
 	dir = 1;
 	name = "\improper Null Hatch REPLACE ME";
 	req_access = null;
@@ -15397,7 +15397,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/station/transit_hub)
 "jjs" = (
-/obj/structure/machinery/door/airlock/almayer/maint/autoname{
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
 	name = "\improper Null Hatch REPLACE ME";
 	req_access = null;
 	req_one_access = null
@@ -15942,7 +15942,7 @@
 	},
 /area/fiorina/station/medbay)
 "jwc" = (
-/obj/structure/machinery/door/airlock/almayer/maint/autoname{
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
 	dir = 1;
 	name = "\improper Null Hatch REPLACE ME";
 	req_access = null;
@@ -20381,12 +20381,10 @@
 	},
 /area/fiorina/station/medbay)
 "mbp" = (
-/obj/structure/machinery/door/airlock/almayer/maint/autoname{
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
 	dir = 1;
-	locked = 1;
+	locked = 0;
 	name = "\improper Null Hatch REPLACE ME";
-	req_access = null;
-	req_one_access = null
 	},
 /turf/open/floor/plating/prison,
 /area/fiorina/oob)
@@ -20658,7 +20656,7 @@
 /turf/open/space,
 /area/fiorina/oob)
 "mhM" = (
-/obj/structure/machinery/door/airlock/almayer/maint/autoname{
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
 	dir = 1;
 	name = "\improper Null Hatch REPLACE ME";
 	req_access = null;
@@ -25770,7 +25768,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/lz/near_lzII)
 "ppI" = (
-/obj/structure/machinery/door/airlock/almayer/maint/autoname{
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
 	name = "\improper Null Hatch REPLACE ME";
 	req_access = null;
 	req_one_access = null
@@ -30161,7 +30159,7 @@
 	},
 /area/fiorina/station/research_cells)
 "rSr" = (
-/obj/structure/machinery/door/airlock/almayer/maint/autoname{
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
 	dir = 1;
 	name = "\improper Null Hatch REPLACE ME";
 	req_access = null;
@@ -31155,7 +31153,7 @@
 	},
 /area/fiorina/station/telecomm/lz1_cargo)
 "sBA" = (
-/obj/structure/machinery/door/airlock/almayer/maint/autoname{
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
 	dir = 1;
 	name = "\improper Null Hatch REPLACE ME";
 	req_access = null;
@@ -31220,7 +31218,7 @@
 	},
 /area/fiorina/station/power_ring)
 "sDL" = (
-/obj/structure/machinery/door/airlock/almayer/maint/autoname{
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
 	dir = 1;
 	name = "\improper Null Hatch REPLACE ME";
 	req_access = null;
@@ -32316,7 +32314,7 @@
 	},
 /area/fiorina/station/security)
 "tpa" = (
-/obj/structure/machinery/door/airlock/almayer/maint/autoname{
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
 	name = "\improper Null Hatch REPLACE ME";
 	req_access = null;
 	req_one_access = null
@@ -36278,7 +36276,7 @@
 	},
 /area/fiorina/station/civres_blue)
 "vFs" = (
-/obj/structure/machinery/door/airlock/almayer/maint/autoname{
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
 	dir = 1;
 	name = "\improper Null Hatch REPLACE ME";
 	req_access = null;
@@ -38037,7 +38035,7 @@
 	},
 /area/fiorina/tumor/servers)
 "wMi" = (
-/obj/structure/machinery/door/airlock/almayer/maint/autoname{
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
 	name = "\improper Null Hatch REPLACE ME";
 	req_access = null;
 	req_one_access = null
@@ -38252,7 +38250,7 @@
 	},
 /area/fiorina/station/power_ring)
 "wRP" = (
-/obj/structure/machinery/door/airlock/almayer/maint/autoname{
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
 	dir = 1;
 	name = "\improper Null Hatch REPLACE ME";
 	req_access = null;
@@ -38700,7 +38698,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/fiorina/station/security)
 "xja" = (
-/obj/structure/machinery/door/airlock/almayer/maint/autoname{
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
 	name = "\improper Null Hatch REPLACE ME";
 	req_access = null;
 	req_one_access = null

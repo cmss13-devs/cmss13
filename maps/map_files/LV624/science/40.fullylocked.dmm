@@ -20,7 +20,7 @@
 	layer = 3.3;
 	name = "\improper Science Wing Blast Door"
 	},
-/obj/structure/machinery/door/airlock/almayer/research{
+/obj/structure/machinery/door/airlock/almayer/research/colony{
 	dir = 1;
 	locked = 1;
 	name = "\improper Research Dome"
@@ -150,7 +150,7 @@
 	},
 /area/lv624/lazarus/research)
 "az" = (
-/obj/structure/machinery/door/airlock/almayer/research{
+/obj/structure/machinery/door/airlock/almayer/research/colony{
 	dir = 1;
 	locked = 1;
 	name = "\improper Research Dome"
@@ -170,7 +170,7 @@
 	},
 /area/lv624/lazarus/research)
 "aB" = (
-/obj/structure/machinery/door/airlock/almayer/research{
+/obj/structure/machinery/door/airlock/almayer/research/colony{
 	locked = 1;
 	name = "\improper Research Dome"
 	},
@@ -180,7 +180,7 @@
 	},
 /area/lv624/lazarus/research)
 "aC" = (
-/obj/structure/machinery/door/airlock/almayer/research{
+/obj/structure/machinery/door/airlock/almayer/research/colony{
 	locked = 1;
 	name = "\improper Research Dome"
 	},
@@ -246,7 +246,7 @@
 	},
 /area/lv624/lazarus/research)
 "aL" = (
-/obj/structure/machinery/door/airlock/almayer/research{
+/obj/structure/machinery/door/airlock/almayer/research/colony{
 	dir = 1;
 	locked = 1;
 	name = "\improper Research Dome"
@@ -344,7 +344,7 @@
 	layer = 3.3;
 	name = "\improper Science Wing Blast Door"
 	},
-/obj/structure/machinery/door/airlock/almayer/research{
+/obj/structure/machinery/door/airlock/almayer/research/colony{
 	locked = 1;
 	name = "\improper Research Dome"
 	},

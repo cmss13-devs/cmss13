@@ -192,9 +192,8 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/almayer/engineering{
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	name = "\improper Engineering Workshop";
-	req_one_access = null
 	},
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
@@ -215,10 +214,9 @@
 	},
 /area/bigredv2/outside/engineering)
 "bu" = (
-/obj/structure/machinery/door/airlock/almayer/engineering{
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	dir = 1;
 	name = "\improper Engine Reactor Control";
-	req_one_access = null
 	},
 /turf/open/floor,
 /area/bigredv2/outside/telecomm/engi)
@@ -432,10 +430,9 @@
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "cn" = (
-/obj/structure/machinery/door/airlock/almayer/secure{
+/obj/structure/machinery/door/airlock/almayer/secure/colony{
 	dir = 1;
 	name = "\improper Engine Reactor";
-	req_access = null
 	},
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
@@ -463,9 +460,8 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/almayer/engineering{
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	name = "\improper Engine Reactor Control";
-	req_one_access = null
 	},
 /turf/open/floor,
 /area/bigredv2/outside/telecomm/engi)
@@ -482,9 +478,8 @@
 	},
 /area/bigredv2/outside/telecomm/engi)
 "cv" = (
-/obj/structure/machinery/door/airlock/almayer/engineering{
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	name = "\improper Engine Reactor Control";
-	req_one_access = null
 	},
 /turf/open/floor,
 /area/bigredv2/outside/telecomm/engi)

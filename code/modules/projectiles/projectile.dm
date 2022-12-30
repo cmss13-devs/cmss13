@@ -376,9 +376,7 @@
 	// Explosive ammo always explodes on the turf of the clicked target
 	// So does ammo that's flagged to always hit the target
 	if(((ammo_flags & AMMO_EXPLOSIVE) || (ammo_flags & AMMO_HITS_TARGET_TURF)) && T == target_turf)
-		ammo.on_hit_turf(T,src)
-		T?.bullet_act(src)
-		return TRUE
+		hit_turf = TRUE
 
 	for(var/atom/movable/clone/C in T) //Handle clones if there are any
 		if(isobj(C.mstr) && handle_object(C.mstr))
@@ -1134,7 +1132,7 @@
 	rotate.Turn(P.angle)
 	I.transform = rotate
 	// Need to do this in order to prevent the ping from being deleted
-	addtimer(CALLBACK(I, /image/.proc/flick_overlay, src, 3), 1)
+	addtimer(CALLBACK(I, TYPE_PROC_REF(/image, flick_overlay), src, 3), 1)
 
 /mob/proc/bullet_message(obj/item/projectile/P)
 	if(!P)

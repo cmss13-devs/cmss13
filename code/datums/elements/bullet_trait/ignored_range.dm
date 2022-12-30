@@ -15,7 +15,7 @@
 	if(!istype(target, /obj/item/projectile))
 		return ELEMENT_INCOMPATIBLE
 
-	RegisterSignal(target, COMSIG_BULLET_CHECK_MOB_SKIPPING, .proc/check_distance)
+	RegisterSignal(target, COMSIG_BULLET_CHECK_MOB_SKIPPING, PROC_REF(check_distance))
 
 /datum/element/bullet_trait_ignored_range/Detach(datum/target)
 	UnregisterSignal(target, COMSIG_BULLET_CHECK_MOB_SKIPPING)

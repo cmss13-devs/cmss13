@@ -98,6 +98,9 @@
 	if(faction == FACTION_MARINE & !isnull(SSticker) && !isnull(SSticker.mode) && !isnull(SSticker.mode.active_lz) && !isnull(SSticker.mode.active_lz.loc) && !isnull(SSticker.mode.active_lz.loc.loc))
 		. += "Primary LZ: [SSticker.mode.active_lz.loc.loc.name]"
 
+	if(faction == FACTION_MARINE & !isnull(SSticker) && !isnull(SSticker.mode))
+		. += "Operation Name: [round_statistics.round_name]"
+
 	if(assigned_squad)
 		if(assigned_squad.overwatch_officer)
 			. += "Overwatch Officer: [assigned_squad.overwatch_officer.get_paygrade()][assigned_squad.overwatch_officer.name]"
@@ -946,8 +949,8 @@
 	if(!lastpuke)
 		lastpuke = 1
 		to_chat(src, SPAN_WARNING("You feel nauseous..."))
-		addtimer(CALLBACK(GLOBAL_PROC, .proc/to_chat, src, "You feel like you are about to throw up!"), 15 SECONDS)
-		addtimer(CALLBACK(src, .proc/do_vomit), 25 SECONDS)
+		addtimer(CALLBACK(GLOBAL_PROC, PROC_REF(to_chat), src, "You feel like you are about to throw up!"), 15 SECONDS)
+		addtimer(CALLBACK(src, PROC_REF(do_vomit)), 25 SECONDS)
 
 /mob/living/carbon/human/proc/do_vomit()
 	apply_effect(5, STUN)
@@ -1102,32 +1105,32 @@
 	show_browser(src, dat, "Crew Manifest", "manifest", "size=400x750")
 
 /mob/living/carbon/human/verb/view_objective_memory()
-    set name = "View objectives"
-    set category = "IC"
+	set name = "View objectives"
+	set category = "IC"
 
-    if(!mind)
-        to_chat(src, "The game appears to have misplaced your mind datum.")
-        return
+	if(!mind)
+		to_chat(src, "The game appears to have misplaced your mind datum.")
+		return
 
-    if(!skillcheck(usr, SKILL_INTEL, SKILL_INTEL_TRAINED) || faction != FACTION_MARINE && !(faction in FACTION_LIST_WY))
-        to_chat(usr, SPAN_WARNING("You have no access to the [MAIN_SHIP_NAME] intel network."))
-        return
+	if(!skillcheck(usr, SKILL_INTEL, SKILL_INTEL_TRAINED) || faction != FACTION_MARINE && !(faction in FACTION_LIST_WY))
+		to_chat(usr, SPAN_WARNING("You have no access to the [MAIN_SHIP_NAME] intel network."))
+		return
 
-    mind.view_objective_memories(src)
+	mind.view_objective_memories(src)
 
 /mob/living/carbon/human/verb/view_research_objective_memory()
-    set name = "View research objectives"
-    set category = "IC"
+	set name = "View research objectives"
+	set category = "IC"
 
-    if(!mind)
-        to_chat(src, "The game appears to have misplaced your mind datum.")
-        return
+	if(!mind)
+		to_chat(src, "The game appears to have misplaced your mind datum.")
+		return
 
-    if(!skillcheck(usr, SKILL_RESEARCH, SKILL_RESEARCH_TRAINED) || faction != FACTION_MARINE && !(faction in FACTION_LIST_WY))
-        to_chat(usr, SPAN_WARNING("You have no access to the [MAIN_SHIP_NAME] research network."))
-        return
+	if(!skillcheck(usr, SKILL_RESEARCH, SKILL_RESEARCH_TRAINED) || faction != FACTION_MARINE && !(faction in FACTION_LIST_WY))
+		to_chat(usr, SPAN_WARNING("You have no access to the [MAIN_SHIP_NAME] research network."))
+		return
 
-    mind.view_research_objective_memories(src)
+	mind.view_research_objective_memories(src)
 
 /mob/living/carbon/human/verb/purge_objective_memory()
 	set name = "Reset view objectives"
@@ -1178,7 +1181,7 @@
 		ADD_TRAIT(src, T, TRAIT_SOURCE_SPECIES)
 
 	if(species.weed_slowdown_mult != 1)
-		RegisterSignal(src, COMSIG_MOB_WEEDS_CROSSED, .proc/handle_weed_slowdown)
+		RegisterSignal(src, COMSIG_MOB_WEEDS_CROSSED, PROC_REF(handle_weed_slowdown))
 
 	species.create_organs(src)
 
@@ -1202,11 +1205,11 @@
 	species.initialize_stamina(src)
 	species.handle_post_spawn(src)
 
-	INVOKE_ASYNC(src, .proc/regenerate_icons)
-	INVOKE_ASYNC(src, .proc/restore_blood)
-	INVOKE_ASYNC(src, .proc/update_body, 1, 0)
+	INVOKE_ASYNC(src, PROC_REF(regenerate_icons))
+	INVOKE_ASYNC(src, PROC_REF(restore_blood))
+	INVOKE_ASYNC(src, PROC_REF(update_body), 1, 0)
 	if(!(species.flags & HAS_UNDERWEAR))
-		INVOKE_ASYNC(src, .proc/remove_underwear)
+		INVOKE_ASYNC(src, PROC_REF(remove_underwear))
 
 	default_lighting_alpha = species.default_lighting_alpha
 	update_sight()

@@ -237,7 +237,7 @@
 		return
 	linked_storage = locate(/obj/structure/machinery/smartfridge/chemistry) in range(tether_range, src)
 	if(linked_storage)
-		RegisterSignal(linked_storage, COMSIG_PARENT_QDELETING, .proc/cleanup)
+		RegisterSignal(linked_storage, COMSIG_PARENT_QDELETING, PROC_REF(cleanup))
 		visible_message(SPAN_NOTICE("<b>The [src] beeps:</b> Smartfridge connected."))
 
 /obj/structure/machinery/reagentgrinder/proc/is_allowed(var/obj/item/reagent_container/O)

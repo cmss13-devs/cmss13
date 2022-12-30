@@ -8,8 +8,8 @@
 	icon_state = "fire_extinguisher0"
 	item_state = "fire_extinguisher"
 	hitsound = 'sound/weapons/smash.ogg'
-	pickupsound = 'sound/handling/wrench_pickup.ogg'
-	dropsound = 'sound/handling/wrench_drop.ogg'
+	pickup_sound = 'sound/handling/wrench_pickup.ogg'
+	drop_sound = 'sound/handling/wrench_drop.ogg'
 	flags_atom = FPRINT|CONDUCT
 	throwforce = 10
 	w_class = SIZE_MEDIUM
@@ -155,7 +155,7 @@
 			unpicked_targets += targets
 		var/turf/TT = pick(unpicked_targets)
 		unpicked_targets -= TT
-		INVOKE_ASYNC(src, .proc/release_liquid, TT, user)
+		INVOKE_ASYNC(src, PROC_REF(release_liquid), TT, user)
 
 	if(istype(user.loc, /turf/open/space) || (user.lastarea && user.lastarea.has_gravity == 0))
 		user.inertia_dir = get_dir(target, user)

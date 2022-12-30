@@ -16,7 +16,7 @@ SUBSYSTEM_DEF(fz_transitions)
 /datum/controller/subsystem/fz_transitions/Initialize()
 	for(var/obj/effect/projector/P in world)
 		projectors.Add(P)
-	return ..()
+	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/fz_transitions/fire(resumed = FALSE)
 	for(var/obj/effect/projector/P in projectors)

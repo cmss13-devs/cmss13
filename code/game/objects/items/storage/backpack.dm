@@ -50,7 +50,7 @@
 			playsound(user.loc, 'sound/weapons/pierce.ogg', 25, TRUE)
 			user.visible_message(SPAN_WARNING("\The [user] tried to strap \the [src] onto [target_mob] but instead gets a tail swipe to the head!"))
 			return FALSE
-	
+
 	user.visible_message(SPAN_NOTICE("\The [user] starts strapping \the [src] onto [target_mob]."), \
 	SPAN_NOTICE("You start strapping \the [src] onto [target_mob]."), null, 5, CHAT_TYPE_FLUFF_ACTION)
 	if(!do_after(user, HUMAN_STRIP_DELAY * user.get_skill_duration_multiplier(), INTERRUPT_ALL, BUSY_ICON_GENERIC, target_mob, INTERRUPT_MOVED, BUSY_ICON_GENERIC))
@@ -127,12 +127,12 @@
 				if(!do_after(user, 2 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC)) //Timed opening.
 					to_chat(H, SPAN_WARNING("You were interrupted!"))
 					return FALSE
-				RegisterSignal(user, COMSIG_MOVABLE_PRE_MOVE, .proc/storage_close) //Continue along the proc and allow opening if not locked; close on movement.
+				RegisterSignal(user, COMSIG_MOVABLE_PRE_MOVE, PROC_REF(storage_close)) //Continue along the proc and allow opening if not locked; close on movement.
 			else if(H.back == src) //On back and doing timed actions?
 				return FALSE
 	return TRUE
 
-obj/item/storage/backpack/empty(mob/user, turf/T)
+/obj/item/storage/backpack/empty(mob/user, turf/T)
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
 		if(H.back == src && !worn_accessible && !content_watchers) //Backpack on back needs to be opened; if it's already opened, it can be emptied immediately.
@@ -144,7 +144,7 @@ obj/item/storage/backpack/empty(mob/user, turf/T)
 	..()
 
 //Returns true if the user's id matches the lock's
-obj/item/storage/backpack/proc/compare_id(var/mob/living/carbon/human/H)
+/obj/item/storage/backpack/proc/compare_id(var/mob/living/carbon/human/H)
 	var/obj/item/card/id/card = H.wear_id
 	if(!card || locking_id.registered_name != card.registered_name)
 		return FALSE
@@ -194,26 +194,26 @@ obj/item/storage/backpack/proc/compare_id(var/mob/living/carbon/human/H)
 	max_w_class = SIZE_LARGE
 	max_storage_space = 28
 
-	attackby(obj/item/W as obj, mob/user as mob)
-		if(crit_fail)
-			to_chat(user, SPAN_DANGER("The Bluespace generator isn't working."))
-			return
-		if(istype(W, /obj/item/storage/backpack/holding) && !W.crit_fail)
-			to_chat(user, SPAN_DANGER("The Bluespace interfaces of the two devices conflict and malfunction."))
-			qdel(W)
-			return
-		..()
+/obj/item/storage/backpack/holding/attackby(obj/item/W as obj, mob/user as mob)
+	if(crit_fail)
+		to_chat(user, SPAN_DANGER("The Bluespace generator isn't working."))
+		return
+	if(istype(W, /obj/item/storage/backpack/holding) && !W.crit_fail)
+		to_chat(user, SPAN_DANGER("The Bluespace interfaces of the two devices conflict and malfunction."))
+		qdel(W)
+		return
+	..()
 
-	proc/failcheck(mob/user as mob)
-		if (prob(src.reliability)) return 1 //No failure
-		if (prob(src.reliability))
-			to_chat(user, SPAN_DANGER("The Bluespace portal resists your attempt to add another item.")) //light failure
-		else
-			to_chat(user, SPAN_DANGER("The Bluespace generator malfunctions!"))
-			for (var/obj/O in src.contents) //it broke, delete what was in it
-				qdel(O)
-			crit_fail = 1
-			icon_state = "brokenpack"
+/obj/item/storage/backpack/holding/proc/failcheck(mob/user as mob)
+	if (prob(src.reliability)) return 1 //No failure
+	if (prob(src.reliability))
+		to_chat(user, SPAN_DANGER("The Bluespace portal resists your attempt to add another item.")) //light failure
+	else
+		to_chat(user, SPAN_DANGER("The Bluespace generator malfunctions!"))
+		for (var/obj/O in src.contents) //it broke, delete what was in it
+			qdel(O)
+		crit_fail = 1
+		icon_state = "brokenpack"
 
 
 //==========================//JOKE PACKS\\================================\\
@@ -459,7 +459,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	internal_transmitter.relay_obj = src
 	internal_transmitter.phone_category = "RTO"
 	internal_transmitter.enabled = FALSE
-	RegisterSignal(internal_transmitter, COMSIG_TRANSMITTER_UPDATE_ICON, .proc/check_for_ringing)
+	RegisterSignal(internal_transmitter, COMSIG_TRANSMITTER_UPDATE_ICON, PROC_REF(check_for_ringing))
 	GLOB.radio_packs += src
 
 /obj/item/storage/backpack/marine/satchel/rto/proc/check_for_ringing()
@@ -676,8 +676,8 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 		to_chat(H, SPAN_WARNING("Your cloak is malfunctioning and can't be enabled right now!"))
 		return
 
-	RegisterSignal(H, COMSIG_GRENADE_PRE_PRIME, .proc/cloak_grenade_callback)
-	RegisterSignal(H, COMSIG_HUMAN_EXTINGUISH, .proc/wrapper_fizzle_camouflage)
+	RegisterSignal(H, COMSIG_GRENADE_PRE_PRIME, PROC_REF(cloak_grenade_callback))
+	RegisterSignal(H, COMSIG_HUMAN_EXTINGUISH, PROC_REF(wrapper_fizzle_camouflage))
 
 	camo_active = TRUE
 	H.visible_message(SPAN_DANGER("[H] vanishes into thin air!"), SPAN_NOTICE("You activate your cloak's camouflage."), max_distance = 4)
@@ -732,7 +732,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	if(anim)
 		anim(H.loc, H,'icons/mob/mob.dmi', null, "uncloak", null, H.dir)
 
-	addtimer(CALLBACK(src, .proc/allow_shooting, H), 1.5 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(allow_shooting), H), 1.5 SECONDS)
 
 // This proc is to cancel priming grenades in /obj/item/explosive/grenade/attack_self()
 /obj/item/storage/backpack/marine/satchel/scout_cloak/proc/cloak_grenade_callback(mob/user)

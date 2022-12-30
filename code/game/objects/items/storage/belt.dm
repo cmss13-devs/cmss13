@@ -939,6 +939,10 @@
 	if(user.action_busy)
 		return
 
+	if(ammo_dumping.flags_magazine & AMMUNITION_CANNOT_REMOVE_BULLETS)
+		to_chat(user, SPAN_WARNING("You can't remove ammo from \the [ammo_dumping]!"))
+		return
+
 	if(ammo_dumping.flags_magazine & AMMUNITION_HANDFUL_BOX)
 		var/handfuls = round(ammo_dumping.current_rounds / amount_to_dump, 1) //The number of handfuls, we round up because we still want the last one that isn't full
 		if(ammo_dumping.current_rounds != 0)
@@ -1150,7 +1154,7 @@
 		return ..()
 
 
-obj/item/storage/belt/gun/m44/lever_action/verb/detach_holster()
+/obj/item/storage/belt/gun/m44/lever_action/verb/detach_holster()
 	set category = "Object"
 	set name = "Detach revolver holster"
 	set src in usr
@@ -1362,7 +1366,7 @@ obj/item/storage/belt/gun/m44/lever_action/verb/detach_holster()
 	name = "\improper M276 pattern SU-6 Smartpistol holster rig"
 	desc = "The M276 is the standard load-bearing equipment of the USCM. It consists of a modular belt with various clips. This version is for the SU-6 smartpistol."
 	icon_state = "smartpistol_holster"
-	storage_slots = 6
+	storage_slots = 7
 	holster_slots = list(
 		"1" = list(
 			"icon_x" = -5,
@@ -1375,6 +1379,10 @@ obj/item/storage/belt/gun/m44/lever_action/verb/detach_holster()
 
 /obj/item/storage/belt/gun/smartpistol/full/fill_preset_inventory()
 	handle_item_insertion(new /obj/item/weapon/gun/pistol/smart())
+	for(var/i = 1 to storage_slots - 1)
+		new /obj/item/ammo_magazine/pistol/smart(src)
+
+/obj/item/storage/belt/gun/smartpistol/full_nogun/fill_preset_inventory()
 	for(var/i = 1 to storage_slots - 1)
 		new /obj/item/ammo_magazine/pistol/smart(src)
 

@@ -184,9 +184,9 @@
 	fire_stacks = 0
 
 	// fix blindness and deafness
-	blinded = 0
-	eye_blind = 0
-	eye_blurry = 0
+	blinded = FALSE
+	SetEyeBlind(0)
+	SetEyeBlur(0)
 	SetEarDeafness(0)
 	ear_damage = 0
 	paralyzed = 0

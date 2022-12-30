@@ -83,7 +83,7 @@
 /atom/proc/AICtrlClick()
 	return
 
-atom/proc/AIAltClick()
+/atom/proc/AIAltClick()
 	return
 
 /obj/structure/machinery/door/airlock/AICtrlClick() // Bolts doors

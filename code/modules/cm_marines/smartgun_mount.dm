@@ -145,7 +145,7 @@
 	M.gun_mounted = TRUE
 	M.anchored = TRUE
 	M.update_icon()
-	M.set_name_label(name_label)
+	transfer_label_component(M)
 	to_chat(user, SPAN_NOTICE("You deploy \the [src]."))
 	qdel(src)
 
@@ -221,7 +221,7 @@
 
 	to_chat(user, SPAN_NOTICE("You deploy \the [src]."))
 	var/obj/structure/machinery/m56d_post/M = new /obj/structure/machinery/m56d_post(user.loc)
-	M.set_name_label(name_label)
+	transfer_label_component(M)
 	qdel(src)
 
 
@@ -382,7 +382,7 @@
 				playsound(src.loc, 'sound/items/Deconstruct.ogg', 25, 1)
 				user.visible_message(SPAN_NOTICE("[user] screws the M56D into the mount."),SPAN_NOTICE("You finalize the M56D heavy machine gun."))
 				var/obj/structure/machinery/m56d_hmg/G = new(src.loc) //Here comes our new turret.
-				G.set_name_label(name_label)
+				transfer_label_component(G)
 				G.visible_message("[icon2html(G, viewers(src))] <B>\The [G] is now complete!</B>") //finished it for everyone to
 				G.setDir(dir) //make sure we face the right direction
 				G.rounds = src.gun_rounds //Inherent the amount of ammo we had.
@@ -543,7 +543,7 @@
 				user.visible_message(SPAN_NOTICE(" [user] disassembles [src]! "),SPAN_NOTICE(" You disassemble [src]!"))
 				playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
 				var/obj/item/device/m56d_gun/HMG = new(src.loc) //Here we generate our disassembled mg.
-				HMG.set_name_label(name_label)
+				transfer_label_component(HMG)
 				HMG.rounds = src.rounds //Inherent the amount of ammo we had.
 				HMG.has_mount = TRUE
 				HMG.update_icon()
@@ -872,8 +872,8 @@
 			to_chat(usr, SPAN_NOTICE("You are too far from the handles to man [src]!"))
 
 /obj/structure/machinery/m56d_hmg/on_set_interaction(mob/user)
-	RegisterSignal(user, COMSIG_MOB_RESISTED, .proc/exit_interaction)
-	RegisterSignal(user, COMSIG_MOB_MG_EXIT, .proc/exit_interaction)
+	RegisterSignal(user, COMSIG_MOB_RESISTED, PROC_REF(exit_interaction))
+	RegisterSignal(user, COMSIG_MOB_MG_EXIT, PROC_REF(exit_interaction))
 	flags_atom |= RELAY_CLICK
 	user.status_flags |= IMMOBILE_ACTION
 	user.visible_message(SPAN_NOTICE("[user] mans \the [src]."),SPAN_NOTICE("You man \the [src], locked and loaded!"))
@@ -1107,7 +1107,7 @@
 		return
 
 	var/obj/structure/machinery/m56d_hmg/auto/M =  new /obj/structure/machinery/m56d_hmg/auto(user.loc)
-	M.set_name_label(name_label)
+	transfer_label_component(M)
 	M.setDir(user.dir) // Make sure we face the right direction
 	M.anchored = TRUE
 	playsound(M, 'sound/items/m56dauto_setup.ogg', 75, TRUE)
@@ -1383,7 +1383,7 @@
 
 	handle_rotating_gun(user)
 
-	INVOKE_ASYNC(src, .proc/auto_fire_repeat, user)
+	INVOKE_ASYNC(src, PROC_REF(auto_fire_repeat), user)
 
 /obj/structure/machinery/m56d_hmg/auto/proc/auto_fire_stop(client/source, atom/A, params)
 	SIGNAL_HANDLER
@@ -1431,7 +1431,7 @@
 				to_chat(user, SPAN_DANGER("You wait for [src]'s barrel to cooldown to continue sustained fire."))
 				fire_stopper = TRUE
 				STOP_PROCESSING(SSobj, src)
-				addtimer(CALLBACK(src, .proc/force_cooldown), force_cooldown_timer)
+				addtimer(CALLBACK(src, PROC_REF(force_cooldown)), force_cooldown_timer)
 
 		else if(overheat_value < overheat_threshold)
 			fire_shot(1, user)
@@ -1439,7 +1439,7 @@
 				overheat_value = overheat_value + 1
 				START_PROCESSING(SSobj, src)
 
-	addtimer(CALLBACK(src, .proc/auto_fire_repeat, user), fire_delay)
+	addtimer(CALLBACK(src, PROC_REF(auto_fire_repeat), user), fire_delay)
 
 /obj/structure/machinery/m56d_hmg/auto/handle_ammo_out(mob/user)
 	visible_message(SPAN_NOTICE("[icon2html(src, viewers(src))] \The [src]'s ammo box drops onto the ground, now completely empty."))
@@ -1536,7 +1536,7 @@
 			user.visible_message(SPAN_NOTICE("[user] disassembles [src]."),SPAN_NOTICE("You fold up the tripod for [src], disassembling it."))
 			playsound(src.loc, 'sound/items/m56dauto_setup.ogg', 75, 1)
 			var/obj/item/device/m2c_gun/HMG = new(src.loc)
-			HMG.set_name_label(name_label)
+			transfer_label_component(HMG)
 			HMG.rounds = src.rounds
 			HMG.overheat_value = round(0.5 * src.overheat_value)
 			if (HMG.overheat_value <= 10)
@@ -1555,11 +1555,11 @@
 /obj/structure/machinery/m56d_hmg/auto/on_set_interaction(mob/user)
 	..()
 	if(user.client)
-		RegisterSignal(user.client, COMSIG_CLIENT_LMB_DOWN, .proc/auto_fire_start)
-		RegisterSignal(user.client, COMSIG_CLIENT_LMB_UP, .proc/auto_fire_stop)
-		RegisterSignal(user.client, COMSIG_CLIENT_LMB_DRAG, .proc/auto_fire_new_target)
-	RegisterSignal(user, COMSIG_MOVABLE_PRE_MOVE, .proc/disable_interaction)
-	RegisterSignal(user, COMSIG_MOB_POST_UPDATE_CANMOVE, .proc/disable_canmove_interaction)
+		RegisterSignal(user.client, COMSIG_CLIENT_LMB_DOWN, PROC_REF(auto_fire_start))
+		RegisterSignal(user.client, COMSIG_CLIENT_LMB_UP, PROC_REF(auto_fire_stop))
+		RegisterSignal(user.client, COMSIG_CLIENT_LMB_DRAG, PROC_REF(auto_fire_new_target))
+	RegisterSignal(user, COMSIG_MOVABLE_PRE_MOVE, PROC_REF(disable_interaction))
+	RegisterSignal(user, COMSIG_MOB_POST_UPDATE_CANMOVE, PROC_REF(disable_canmove_interaction))
 
 // DISMOUNT THE MG
 

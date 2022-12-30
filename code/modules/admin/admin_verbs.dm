@@ -16,7 +16,6 @@ var/list/admin_verbs_default = list(
 	/client/proc/cmd_admin_changekey,
 	/client/proc/cmd_admin_subtle_message,
 	/client/proc/cmd_admin_object_narrate,
-	/client/proc/cmd_admin_add_items_to_vendor,
 	/client/proc/cmd_admin_xeno_report,  //Allows creation of IC reports by the Queen Mother
 	/client/proc/cmd_admin_create_AI_report,  //Allows creation of IC reports by the ships AI utilizing Almayer General channel. Relies on ARES being intact and tcomms being powered.
 	/client/proc/cmd_admin_create_AI_shipwide_report,  //Allows creation of IC reports by the ships AI utilizing announcement code. Will be shown to every conscious human on Almayer z-level regardless of ARES and tcomms status.
@@ -108,7 +107,6 @@ var/list/admin_verbs_minor_event = list(
 	/client/proc/adjust_predator_round,
 	/client/proc/cmd_admin_world_narrate,	/*sends text to all players with no padding*/
 	/client/proc/cmd_admin_object_narrate,
-	/client/proc/cmd_admin_add_items_to_vendor,
 	/client/proc/cmd_admin_create_centcom_report, //Messages from USCM command/other factions.
 	/client/proc/cmd_admin_create_predator_report, //Predator ship AI report
 	/client/proc/toggle_ob_spawn,
@@ -120,7 +118,8 @@ var/list/admin_verbs_minor_event = list(
 	/client/proc/toggle_blood_optimization,
 	/client/proc/toggle_combat_cas,
 	/client/proc/toggle_lz_protection, //Mortar hitting LZ
-	/client/proc/cmd_admin_medals_panel // Marine and Xeno medals editor panel
+	/client/proc/cmd_admin_medals_panel, // Marine and Xeno medals editor panel
+	/client/proc/toggle_shipside_sd
 )
 var/list/admin_verbs_major_event = list(
 	/client/proc/enable_event_mob_verbs,
@@ -162,7 +161,7 @@ var/list/admin_verbs_server = list(
 	/datum/admins/proc/view_txt_log
 )
 var/list/admin_verbs_debug = list(
-    /client/proc/getruntimelog,                     /*allows us to access runtime logs to somebody*/
+	/client/proc/getruntimelog,					 /*allows us to access runtime logs to somebody*/
 	/client/proc/debug_role_authority,
 	/client/proc/cmd_debug_make_powernets,
 	/client/proc/cmd_debug_list_processing_items,
@@ -171,6 +170,7 @@ var/list/admin_verbs_debug = list(
 	/client/proc/reload_admins,
 	/client/proc/reload_whitelist,
 	/client/proc/restart_controller,
+	/client/proc/debug_controller,
 	/client/proc/cmd_debug_toggle_should_check_for_win,
 	/client/proc/enable_debug_verbs,
 	/client/proc/toggledebuglogs,
@@ -201,13 +201,13 @@ var/list/clan_verbs = list(
 )
 
 var/list/debug_verbs = list(
-    /client/proc/Cell,
-    /client/proc/cmd_assume_direct_control,
-    /client/proc/ticklag,
-    /client/proc/hide_debug_verbs,
-    /client/proc/view_power_update_stats_area,
-    /client/proc/view_power_update_stats_machines,
-    /client/proc/toggle_power_update_profiling,
+	/client/proc/Cell,
+	/client/proc/cmd_assume_direct_control,
+	/client/proc/ticklag,
+	/client/proc/hide_debug_verbs,
+	/client/proc/view_power_update_stats_area,
+	/client/proc/view_power_update_stats_machines,
+	/client/proc/toggle_power_update_profiling,
 	/client/proc/nanomapgen_DumpImage,
 )
 
@@ -234,8 +234,8 @@ var/list/admin_mob_event_verbs_hideable = list(
 	/client/proc/free_mob_for_ghosts,
 	/client/proc/possess,
 	/client/proc/release,
-    /client/proc/cmd_admin_grantfullaccess,
-    /client/proc/cmd_admin_grantallskills
+	/client/proc/cmd_admin_grantfullaccess,
+	/client/proc/cmd_admin_grantallskills
 )
 
 //verbs which can be hidden - needs work
@@ -250,7 +250,6 @@ var/list/admin_verbs_hideable = list(
 	/client/proc/cmd_admin_changekey,
 	/client/proc/cmd_admin_subtle_message,
 	/client/proc/cmd_admin_object_narrate,
-	/client/proc/cmd_admin_add_items_to_vendor,
 	/client/proc/cmd_admin_pm_context,
 	/client/proc/cmd_admin_rejuvenate,
 	/client/proc/cmd_admin_check_contents,

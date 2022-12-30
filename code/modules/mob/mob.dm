@@ -180,6 +180,15 @@
 	for(var/mob/M as anything in viewers(view_dist, src))
 		M.show_message(message, SHOW_MESSAGE_VISIBLE, blind_message, SHOW_MESSAGE_AUDIBLE, message_flags)
 
+// Show a message to all mobs in earshot of this atom
+// Use for objects performing only audible actions
+// message is output to anyone who can see, e.g. "The [src] does something!"
+/atom/proc/audible_message(message, max_distance, message_flags = CHAT_TYPE_OTHER)
+	var/hear_dist = 7
+	if(max_distance) hear_dist = max_distance
+	for(var/mob/M as anything in hearers(hear_dist, src.loc))
+		M.show_message(message, 2, message_flags = message_flags)
+
 /atom/proc/ranged_message(message, blind_message, max_distance, message_flags = CHAT_TYPE_OTHER)
 	var/view_dist = 7
 	if(max_distance) view_dist = max_distance
@@ -250,7 +259,7 @@
 	var/start_loc = W.loc
 
 	if(W.time_to_equip && !ignore_delay)
-		INVOKE_ASYNC(src, .proc/equip_to_slot_timed, W, slot, redraw_mob, permanent, start_loc, del_on_fail, disable_warning)
+		INVOKE_ASYNC(src, PROC_REF(equip_to_slot_timed), W, slot, redraw_mob, permanent, start_loc, del_on_fail, disable_warning)
 		return TRUE
 
 	equip_to_slot(W, slot, disable_warning) //This proc should not ever fail.
@@ -559,7 +568,7 @@ below 100 is not dizzy
 	dizziness = min(1000, dizziness + amount)	// store what will be new value
 													// clamped to max 1000
 	if(dizziness > 100 && !is_dizzy)
-		INVOKE_ASYNC(src, .proc/dizzy_process)
+		INVOKE_ASYNC(src, PROC_REF(dizzy_process))
 
 
 /*
@@ -596,7 +605,7 @@ note dizziness decrements automatically in the mob's Life() proc.
 	jitteriness = min(1000, jitteriness + amount)	// store what will be new value
 													// clamped to max 1000
 	if(jitteriness > 100 && !is_jittery)
-		INVOKE_ASYNC(src, .proc/jittery_process)
+		INVOKE_ASYNC(src, PROC_REF(jittery_process))
 
 
 // Typo from the oriignal coder here, below lies the jitteriness process. So make of his code what you will, the previous comment here was just a copypaste of the above.
@@ -770,7 +779,7 @@ note dizziness decrements automatically in the mob's Life() proc.
 			visible_implants += O
 	return visible_implants
 
-mob/proc/yank_out_object()
+/mob/proc/yank_out_object()
 	set category = "Object"
 	set name = "Yank out object"
 	set desc = "Remove an embedded item at the cost of bleeding and pain."

@@ -69,7 +69,7 @@
 		if(get_dist(node, src) >= node.node_range)
 			SEND_SIGNAL(parent, COMSIG_WEEDNODE_GROWTH_COMPLETE)
 		else if(!hibernate)
-			addtimer(CALLBACK(src, .proc/weed_expand), WEED_BASE_GROW_SPEED / max(weed_strength, 1))
+			addtimer(CALLBACK(src, PROC_REF(weed_expand)), WEED_BASE_GROW_SPEED / max(weed_strength, 1))
 
 	var/turf/T = get_turf(src)
 	T.weeds = src
@@ -78,7 +78,7 @@
 	RegisterSignal(src, list(
 		COMSIG_ATOM_TURF_CHANGE,
 		COMSIG_MOVABLE_TURF_ENTERED
-	), .proc/set_turf_weeded)
+	), PROC_REF(set_turf_weeded))
 
 /obj/effect/alien/weeds/proc/set_turf_weeded(var/datum/source, var/turf/T)
 	SIGNAL_HANDLER
@@ -155,7 +155,7 @@
 
 
 /obj/effect/alien/weeds/Crossed(atom/movable/atom_movable)
-	if(!ismob(atom_movable))
+	if(!isliving(atom_movable))
 		return
 	var/mob/living/crossing_mob = atom_movable
 
@@ -486,7 +486,7 @@
 
 	var/obj/effect/alien/resin/trap/TR = locate() in loc
 	if(TR)
-		RegisterSignal(TR, COMSIG_PARENT_PREQDELETED, .proc/trap_destroyed)
+		RegisterSignal(TR, COMSIG_PARENT_PREQDELETED, PROC_REF(trap_destroyed))
 		overlay_node = FALSE
 		overlays -= staticnode
 
@@ -506,7 +506,7 @@
 	RegisterSignal(src, list(
 		COMSIG_WEEDNODE_GROWTH_COMPLETE,
 		COMSIG_WEEDNODE_CANNOT_EXPAND_FURTHER,
-	), .proc/complete_growth)
+	), PROC_REF(complete_growth))
 
 	update_icon()
 
@@ -516,7 +516,7 @@
 	for(var/X in children)
 		var/obj/effect/alien/weeds/W = X
 		remove_child(W)
-		addtimer(CALLBACK(W, .proc/avoid_orphanage), WEED_BASE_DECAY_SPEED + rand(0, 1 SECONDS)) // Slight variation whilst decaying
+		addtimer(CALLBACK(W, PROC_REF(avoid_orphanage)), WEED_BASE_DECAY_SPEED + rand(0, 1 SECONDS)) // Slight variation whilst decaying
 
 	. = ..()
 

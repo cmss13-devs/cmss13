@@ -22,8 +22,8 @@
 			var/mob/living/carbon/human/M = src.loc
 			to_chat(M, SPAN_WARNING("The Optical Thermal Scanner overloads and blinds you!"))
 			if(M.glasses == src)
-				M.eye_blind = 3
-				M.eye_blurry = 5
+				M.SetEyeBlind(3)
+				M.EyeBlur(5)
 				if(!(M.disabilities & NEARSIGHTED))
 					M.disabilities |= NEARSIGHTED
 					spawn(100)

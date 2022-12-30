@@ -201,7 +201,7 @@
 	to_chat(user, SPAN_INFO("The current charge reads [battery_charge]/[SMARTPACK_MAX_POWER_STORED]"))
 	update_icon(user)
 
-	addtimer(CALLBACK(src, .proc/protective_form_cooldown, user), protective_form_cooldown)
+	addtimer(CALLBACK(src, PROC_REF(protective_form_cooldown), user), protective_form_cooldown)
 
 /obj/item/storage/backpack/marine/smartpack/proc/protective_form_cooldown(var/mob/living/carbon/human/H)
 	activated_form = FALSE
@@ -242,7 +242,7 @@
 	update_icon(user)
 	activated_form = TRUE
 
-	addtimer(CALLBACK(src, .proc/immobile_form_cooldown, user), immobile_form_cooldown)
+	addtimer(CALLBACK(src, PROC_REF(immobile_form_cooldown), user), immobile_form_cooldown)
 
 /obj/item/storage/backpack/marine/smartpack/proc/immobile_form_cooldown(mob/user)
 	activated_form = FALSE
@@ -281,7 +281,7 @@
 	to_chat(user, SPAN_INFO("The current charge reads [battery_charge]/[SMARTPACK_MAX_POWER_STORED]"))
 	H.visible_message(SPAN_DANGER("[name] beeps, \"Completed the repairing process. Charge now reads [battery_charge]/[SMARTPACK_MAX_POWER_STORED].\""))
 
-	addtimer(CALLBACK(src, .proc/repair_form_cooldown, user), repair_form_cooldown)
+	addtimer(CALLBACK(src, PROC_REF(repair_form_cooldown), user), repair_form_cooldown)
 
 /obj/item/storage/backpack/marine/smartpack/proc/repair_form_cooldown(mob/user)
 	repairing = FALSE

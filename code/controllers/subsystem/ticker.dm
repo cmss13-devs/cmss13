@@ -54,7 +54,7 @@ SUBSYSTEM_DEF(ticker)
 	var/key = SAFEPICK(all_music)
 	if(key)
 		login_music = file(all_music[key])
-	return ..()
+	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/ticker/fire(resumed = FALSE)
 	switch(current_state)
@@ -106,7 +106,7 @@ SUBSYSTEM_DEF(ticker)
 						/datum/controller/subsystem/vote/proc/initiate_vote,
 						"gamemode",
 						"SERVER",
-						CALLBACK(src, .proc/handle_map_reboot)
+						CALLBACK(src, PROC_REF(handle_map_reboot))
 					), 3 SECONDS)
 				else
 					handle_map_reboot()
@@ -123,7 +123,7 @@ SUBSYSTEM_DEF(ticker)
 			SSnightmare.stat = NIGHTMARE_STATUS_DONE
 			log_admin("Nightmare setup was cancelled as it took more than 30 seconds! Game might be inconsistent!")
 		else
-			var/ret = INVOKE_ASYNC(SSnightmare, /datum/controller/subsystem/nightmare.proc/prepare_game)
+			var/ret = INVOKE_ASYNC(SSnightmare, TYPE_PROC_REF(/datum/controller/subsystem/nightmare, prepare_game))
 			if(!ret)
 				return // Wait for completion
 			log_debug("Nightmare setup finished")
@@ -131,7 +131,7 @@ SUBSYSTEM_DEF(ticker)
 	if(current_state != GAME_STATE_PREGAME)
 		return
 	current_state = GAME_STATE_SETTING_UP
-	INVOKE_ASYNC(src, .proc/setup_start)
+	INVOKE_ASYNC(src, PROC_REF(setup_start))
 
 	for(var/client/C in GLOB.admins)
 		remove_verb(C, roundstart_mod_verbs)
@@ -158,7 +158,7 @@ SUBSYSTEM_DEF(ticker)
 		/datum/controller/subsystem/vote/proc/initiate_vote,
 		"groundmap",
 		"SERVER",
-		CALLBACK(src, .proc/Reboot)
+		CALLBACK(src, PROC_REF(Reboot))
 	), 3 SECONDS)
 
 /datum/controller/subsystem/ticker/proc/setup()
@@ -184,7 +184,7 @@ SUBSYSTEM_DEF(ticker)
 	CHECK_TICK
 	mode.announce()
 	if(mode.taskbar_icon)
-		RegisterSignal(SSdcs, COMSIG_GLOB_CLIENT_LOGIN, .proc/handle_mode_icon)
+		RegisterSignal(SSdcs, COMSIG_GLOB_CLIENT_LOGIN, PROC_REF(handle_mode_icon))
 		set_clients_taskbar_icon(mode.taskbar_icon)
 
 	if(GLOB.perf_flags & PERF_TOGGLE_LAZYSS)
@@ -229,7 +229,7 @@ SUBSYSTEM_DEF(ticker)
 	CHECK_TICK
 
 	for(var/mob/new_player/np in GLOB.new_player_list)
-		INVOKE_ASYNC(np, /mob/new_player.proc/new_player_panel_proc, TRUE)
+		INVOKE_ASYNC(np, TYPE_PROC_REF(/mob/new_player, new_player_panel_proc), TRUE)
 
 	setup_economy()
 
@@ -256,9 +256,9 @@ SUBSYSTEM_DEF(ticker)
 
 	for(var/i in GLOB.closet_list) //Set up special equipment for lockers and vendors, depending on gamemode
 		var/obj/structure/closet/C = i
-		INVOKE_ASYNC(C, /obj/structure/closet.proc/select_gamemode_equipment, mode.type)
+		INVOKE_ASYNC(C, TYPE_PROC_REF(/obj/structure/closet, select_gamemode_equipment), mode.type)
 	for(var/obj/structure/machinery/vending/V in machines)
-		INVOKE_ASYNC(V, /obj/structure/machinery/vending.proc/select_gamemode_equipment, mode.type)
+		INVOKE_ASYNC(V, TYPE_PROC_REF(/obj/structure/machinery/vending, select_gamemode_equipment), mode.type)
 
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_POST_SETUP)
 
@@ -381,7 +381,7 @@ SUBSYSTEM_DEF(ticker)
 		if(!player || !player.ready || !player.mind || !player.job)
 			continue
 
-		INVOKE_ASYNC(src, .proc/spawn_and_equip_char, player)
+		INVOKE_ASYNC(src, PROC_REF(spawn_and_equip_char), player)
 
 /datum/controller/subsystem/ticker/proc/spawn_and_equip_char(var/mob/new_player/player)
 	var/datum/job/J = RoleAuthority.roles_for_mode[player.job]

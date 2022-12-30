@@ -15,8 +15,8 @@ SUBSYSTEM_DEF(machinery)
 	var/list/currentrunmachines = list()
 
 /datum/controller/subsystem/machinery/Initialize(start_timeofday)
-	. = ..()
 	makepowernets()
+	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/machinery/stat_entry(msg)
 	msg = "M:[global.processing_machines.len]"

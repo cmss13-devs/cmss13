@@ -78,6 +78,9 @@ They're all essentially identical when it comes to getting the job done.
 /obj/item/ammo_magazine/attack_hand(mob/user)
 	if(flags_magazine & AMMUNITION_REFILLABLE) //actual refillable magazine, not just a handful of bullets or a fuel tank.
 		if(src == user.get_inactive_hand()) //Have to be holding it in the hand.
+			if(flags_magazine & AMMUNITION_CANNOT_REMOVE_BULLETS)
+				to_chat(user, SPAN_WARNING("You can't remove ammo from \the [src]!"))
+				return
 			if (current_rounds > 0)
 				if(create_handful(user))
 					return
@@ -156,7 +159,7 @@ They're all essentially identical when it comes to getting the job done.
 		var/severity = round(current_rounds / 50)
 		//the more ammo inside, the faster and harder it cooks off
 		if(severity > 0)
-			addtimer(CALLBACK(GLOBAL_PROC, .proc/explosion, loc, -1, ((severity > 4) ? 0 : -1), Clamp(severity, 0, 1), Clamp(severity, 0, 2), 1, 0, 0, flame_cause_data), max(5 - severity, 2))
+			addtimer(CALLBACK(GLOBAL_PROC, PROC_REF(explosion), loc, -1, ((severity > 4) ? 0 : -1), Clamp(severity, 0, 1), Clamp(severity, 0, 2), 1, 0, 0, flame_cause_data), max(5 - severity, 2))
 
 	if(!QDELETED(src))
 		qdel(src)

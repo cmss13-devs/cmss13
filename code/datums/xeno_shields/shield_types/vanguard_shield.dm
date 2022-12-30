@@ -4,7 +4,6 @@
 	var/explosive_armor_amount = XENO_EXPOSIVEARMOR_MOD_VERYLARGE
 	amount = 800
 
-
 /datum/xeno_shield/vanguard/on_hit(damage)
 	notify_xeno()
 
@@ -16,10 +15,9 @@
 		return ..(damage)
 
 /datum/xeno_shield/vanguard/Destroy()
-	if (linked_xeno && istype(linked_xeno, /mob/living/carbon/Xenomorph))
-		var/mob/living/carbon/Xenomorph/X = linked_xeno
-		X.explosivearmor_modifier -= explosive_armor_amount
-		X.recalculate_armor()
+	if (linked_xeno)
+		linked_xeno.explosivearmor_modifier -= explosive_armor_amount
+		linked_xeno.recalculate_armor()
 
 	return ..()
 
@@ -39,25 +37,20 @@
 		sleep(0.4 SECONDS)
 
 	if (amount <= 0)
-		if (linked_xeno && istype(linked_xeno, /mob/living/carbon/Xenomorph))
-			var/mob/living/carbon/Xenomorph/X = linked_xeno
-
-			if (QDELETED(X) || !istype(X))
+		if (linked_xeno)
+			if (QDELETED(linked_xeno) || !istype(linked_xeno))
 				return
 
-			qdel(src)
-			X.overlay_shields()
-
+			linked_xeno.overlay_shields()
 			var/datum/action/xeno_action/activable/cleave/cAction = get_xeno_action_by_type(linked_xeno, /datum/action/xeno_action/activable/cleave)
 			if (istype(cAction))
-				addtimer(CALLBACK(cAction, /datum/action/xeno_action/activable/cleave.proc/remove_buff), 7, TIMER_UNIQUE)
+				addtimer(CALLBACK(cAction, TYPE_PROC_REF(/datum/action/xeno_action/activable/cleave, remove_buff)), 7, TIMER_UNIQUE)
 
 /datum/xeno_shield/vanguard/proc/notify_xeno()
-	var/mob/living/carbon/Xenomorph/X = linked_xeno
-	if (!istype(X))
+	if (!istype(linked_xeno))
 		return
 
-	if (X.mutation_type == PRAETORIAN_VANGUARD)
-		var/datum/behavior_delegate/praetorian_vanguard/BD = X.behavior_delegate
+	if (linked_xeno.mutation_type == PRAETORIAN_VANGUARD)
+		var/datum/behavior_delegate/praetorian_vanguard/BD = linked_xeno.behavior_delegate
 		if (istype(BD))
 			BD.last_combat_time = world.time

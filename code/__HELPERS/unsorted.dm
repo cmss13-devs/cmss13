@@ -1441,7 +1441,7 @@ var/global/image/action_purple_power_up
 	else if (zone == "r_foot") return "right foot"
 	else return zone
 
-proc/get_true_location(var/atom/loc)
+/proc/get_true_location(var/atom/loc)
 	var/atom/subLoc = loc
 	while(subLoc.z == 0)
 		if (istype(subLoc.loc, /atom))
@@ -1698,7 +1698,7 @@ var/list/WALLITEMS = list(
 
 /proc/flick_overlay(var/atom/target, overlay, time)
 	target.overlays += overlay
-	addtimer(CALLBACK(GLOBAL_PROC, /proc/remove_timed_overlay, target, overlay), time)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(remove_timed_overlay), target, overlay), time)
 
 /proc/remove_timed_overlay(var/atom/target, overlay)
 	target.overlays -= overlay
@@ -1799,10 +1799,7 @@ var/list/WALLITEMS = list(
 		user.face_atom(src)
 	return TRUE
 
-//datum may be null, but it does need to be a typed var
-#define NAMEOF(datum, X) (#X || ##datum.##X)
-
-#define VARSET_CALLBACK(datum, var, var_value) CALLBACK(GLOBAL_PROC, /proc/___callbackvarset, ##datum, NAMEOF(##datum, ##var), ##var_value)
+#define VARSET_CALLBACK(datum, var, var_value) CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(___callbackvarset), ##datum, NAMEOF(##datum, ##var), ##var_value)
 
 /proc/___callbackvarset(list_or_datum, var_name, var_value)
 	if(length(list_or_datum))
@@ -1866,7 +1863,7 @@ var/list/WALLITEMS = list(
 	for(var/area/A in world)
 		GLOB.sorted_areas.Add(A)
 
-	sortTim(GLOB.sorted_areas, /proc/cmp_name_asc)
+	sortTim(GLOB.sorted_areas, GLOBAL_PROC_REF(cmp_name_asc))
 
 /atom/proc/GetAllContentsIgnoring(list/ignore_typecache)
 	if(!length(ignore_typecache))

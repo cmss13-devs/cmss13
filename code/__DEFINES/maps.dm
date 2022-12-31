@@ -28,7 +28,7 @@ require only minor tweaks.
 #define ZTRAIT_AWAY  "Away"
 #define ZTRAIT_LOWORBIT "LowOrbit"
 #define ZTRAIT_INTERIORS "Interiors"
-#define ZTRAIT_TECHTREE	"TechTree"
+#define ZTRAIT_TECHTREE "TechTree"
 
 #define ZTRAIT_FOG "Fog"
 #define ZTRAIT_LOCKDOWN "Lockdown"
@@ -83,6 +83,7 @@ require only minor tweaks.
 )
 
 // Camera lock flags
+<<<<<<< HEAD
 
 #define CAMERA_LOCK_SHIP    (1<<0)
 #define CAMERA_LOCK_GROUND  (1<<1)
@@ -92,6 +93,14 @@ require only minor tweaks.
 
 /// What the turf is when not being used
 #define RESERVED_TURF_TYPE /turf/open/space/basic
+=======
+#define CAMERA_LOCK_SHIP (1<<0)
+#define CAMERA_LOCK_GROUND  (1<<1)
+#define CAMERA_LOCK_ADMIN (1<<2)
+
+//Reserved/Transit turf type
+#define RESERVED_TURF_TYPE /turf/open/space/basic //What the turf is when not being used
+>>>>>>> upstream/master
 
 //Ruin Generation
 
@@ -119,8 +128,13 @@ require only minor tweaks.
 #define MAP_ARMOR_STYLE_PRISON "prison"
 
 //turf-only flags
+<<<<<<< HEAD
 #define NOJAUNT_1					(1<<0)
 #define UNUSED_RESERVATION_TURF_1	(1<<1)
 
+=======
+#define NOJAUNT_1 (1<<0)
+#define UNUSED_RESERVATION_TURF_1 (1<<1)
+>>>>>>> upstream/master
 /// If a turf can be made dirty at roundstart. This is also used in areas.
-#define CAN_BE_DIRTY_1				(1<<2)
+#define CAN_BE_DIRTY_1 (1<<2)

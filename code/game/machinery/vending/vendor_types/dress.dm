@@ -93,7 +93,7 @@
 	var/list/stock_values = list()
 	for (var/i in 1 to length(ui_listed_products))
 		var/prod_available = TRUE
-		var/list/myprod = ui_listed_products[i]	//we take one list from listed_products
+		var/list/myprod = ui_listed_products[i] //we take one list from listed_products
 		var/uniform_path = myprod[3]
 		if(uniform_path in vended_items)
 			prod_available = FALSE
@@ -166,7 +166,7 @@
 	use_snowflake_points = FALSE
 	vendor_theme = VENDOR_THEME_COMPANY
 	vend_flags = VEND_CLUTTER_PROTECTION | VEND_TO_HAND
-	vend_delay = 10
+	vend_delay = 1 SECONDS
 	var/list/items
 	var/list/obj/item/item_types
 

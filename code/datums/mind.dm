@@ -1,9 +1,9 @@
 /datum/mind
 	var/key
 	var/ckey
-	var/name				//replaces mob/var/original_name
+	var/name //replaces mob/var/original_name
 	var/mob/living/current
-	var/mob/living/original	//TODO: remove.not used in any meaningful way ~Carn. First I'll need to tweak the way silicon-mobs handle minds.
+	var/mob/living/original //TODO: remove.not used in any meaningful way ~Carn. First I'll need to tweak the way silicon-mobs handle minds.
 	var/mob/dead/observer/ghost_mob = null // If we're in a ghost, a reference to it
 	var/active = FALSE
 	var/roundstart_picked = FALSE
@@ -40,7 +40,7 @@
 		return
 
 	if(current)
-		current.mind = null	//remove ourself from our old body's mind variable
+		current.mind = null //remove ourself from our old body's mind variable
 		nanomanager.user_transferred(current, new_character) // transfer active NanoUI instances to new user
 
 	if(key)
@@ -52,12 +52,12 @@
 	if(new_character.mind)
 		new_character.mind.current = null //remove any mind currently in our new body's mind variable
 
-	current = new_character		//link ourself to our new body
+	current = new_character //link ourself to our new body
 	original = new_character
-	new_character.mind = src	//and link our new body to ourself
+	new_character.mind = src //and link our new body to ourself
 
 	if(active || force)
-		new_character.key = key		//now transfer the key to link the client to our new body
+		new_character.key = key //now transfer the key to link the client to our new body
 		SSround_recording.recorder.update_key(new_character)
 		if(new_character.client)
 			new_character.client.init_verbs()
@@ -71,8 +71,8 @@
 						continue
 			player_entity = setup_player_entity(ckey)
 
-	new_character.refresh_huds(current)					//inherit the HUDs from the old body
-	new_character.aghosted = FALSE						//reset aghost and away timer
+	new_character.refresh_huds(current) //inherit the HUDs from the old body
+	new_character.aghosted = FALSE //reset aghost and away timer
 	new_character.away_timer = 0
 
 
@@ -125,7 +125,7 @@
 		if(SSticker) SSticker.minds += mind
 		else world.log << "## DEBUG: mind_initialize(): No ticker ready yet! Please inform Carn"
 		. = 1 //successfully created a new mind
-	if(!mind.name)	mind.name = real_name
+	if(!mind.name) mind.name = real_name
 	mind.current = src
 
 //this is an objective that the player has just completed

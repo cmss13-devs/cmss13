@@ -9,11 +9,11 @@
 	idle_power_usage = 50
 	active_power_usage = 50
 	var/mob/living/occupant = null
-	var/max_internal_charge = 15000 		// Two charged borgs in a row with default cell
-	var/current_internal_charge = 15000 	// Starts charged, to prevent power surges on round start
-	var/charging_cap_active = 25000			// Active Cap - When cyborg is inside
-	var/charging_cap_passive = 2500			// Passive Cap - Recharging internal capacitor when no cyborg is inside
-	var/icon_update_tick = 0				// Used to update icon only once every 10 ticks
+	var/max_internal_charge = 15000 // Two charged borgs in a row with default cell
+	var/current_internal_charge = 15000 // Starts charged, to prevent power surges on round start
+	var/charging_cap_active = 25000 // Active Cap - When cyborg is inside
+	var/charging_cap_passive = 2500 // Passive Cap - Recharging internal capacitor when no cyborg is inside
+	var/icon_update_tick = 0 // Used to update icon only once every 10 ticks
 	can_buckle = TRUE
 
 /obj/structure/machinery/recharge_station/Initialize(mapload, ...)
@@ -60,10 +60,10 @@
 
 	// Calculating amount of power to draw
 	var/charge_diff = max_internal_charge - current_internal_charge // OK we have charge differences
-	charge_diff = charge_diff / CELLRATE 							// Deconvert from Charge to Joules
-	if(chargemode)													// Decide if use passive or active power
-		charge_diff = between(0, charge_diff, charging_cap_active)	// Trim the values to limits
-	else															// We should have load for this tick in Watts
+	charge_diff = charge_diff / CELLRATE // Deconvert from Charge to Joules
+	if(chargemode) // Decide if use passive or active power
+		charge_diff = between(0, charge_diff, charging_cap_active) // Trim the values to limits
+	else // We should have load for this tick in Watts
 		charge_diff = between(0, charge_diff, charging_cap_passive)
 
 	charge_diff += 50 // 50W for circuitry
@@ -149,8 +149,8 @@
 			if(!R.cell)
 				return
 			if(!R.cell.fully_charged())
-				var/diff = min(R.cell.maxcharge - R.cell.charge, 500) 	// 500 charge / tick is about 2% every 3 seconds
-				diff = min(diff, current_internal_charge) 				// No over-discharging
+				var/diff = min(R.cell.maxcharge - R.cell.charge, 500) // 500 charge / tick is about 2% every 3 seconds
+				diff = min(diff, current_internal_charge) // No over-discharging
 				R.cell.give(diff)
 				current_internal_charge = max(current_internal_charge - diff, 0)
 				to_chat(occupant, "Recharging...")
@@ -179,7 +179,7 @@
 	if(!( src.occupant ))
 		return
 	//for(var/obj/O in src)
-	//	O.forceMove(src.loc)
+	// O.forceMove(src.loc)
 	if (src.occupant.client)
 		src.occupant.client.eye = src.occupant.client.mob
 		src.occupant.client.perspective = MOB_PERSPECTIVE

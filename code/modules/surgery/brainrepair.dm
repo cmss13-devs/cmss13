@@ -1,6 +1,6 @@
 //Procedures in this file: brain damage surgery.
 //////////////////////////////////////////////////////////////////
-//						BRAIN DAMAGE FIXING						//
+// BRAIN DAMAGE FIXING //
 //////////////////////////////////////////////////////////////////
 
 /datum/surgery/brain_repair
@@ -17,7 +17,7 @@
 	var/datum/internal_organ/brain/B = patient.internal_organs_by_name["brain"]
 	if(!B || B.damage <= dmg_min || B.robotic == ORGAN_ROBOT)
 		return FALSE
-	if(dmg_max && B.damage > dmg_max)	
+	if(dmg_max && B.damage > dmg_max) 
 		return FALSE
 	return TRUE
 

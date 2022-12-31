@@ -27,7 +27,7 @@
 				return 1
 
 		if(ismob(A) || isVehicle(A))
-			if(isXeno(A) && SSticker.mode.check_xeno_late_join(src))		//if it's a xeno and all checks are alright, we are gonna try to take their body
+			if(isXeno(A) && SSticker.mode.check_xeno_late_join(src)) //if it's a xeno and all checks are alright, we are gonna try to take their body
 				var/mob/living/carbon/Xenomorph/X = A
 				if(X.stat == DEAD || is_admin_level(X.z) || X.aghosted)
 					to_chat(src, SPAN_WARNING("You cannot join as [X]."))

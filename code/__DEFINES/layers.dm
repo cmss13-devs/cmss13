@@ -4,9 +4,9 @@
 //the hardcoded ones are AREA_LAYER = 1, TURF_LAYER = 2, OBJ_LAYER = 3, MOB_LAYER = 4, FLY_LAYER = 5
 
 /*=============================*\
-|								|
-|		  LAYER DEFINES			|
-|								|
+| |
+|   LAYER DEFINES |
+| |
 \*=============================*/
 
 //#define AREA_LAYER 1
@@ -30,6 +30,7 @@
 #define WIRE_LAYER 2.44
 #define WIRE_TERMINAL_LAYER 2.45
 
+<<<<<<< HEAD
 /// bluespace beacon, navigation beacon, etc
 #define UNDERFLOOR_OBJ_LAYER 2.46
 /// catwalk overlay of /turf/open/floor/plating/plating_catwalk
@@ -38,6 +39,15 @@
 #define WEED_LAYER 2.51
 /// Over weeds, such as blood
 #define ABOVE_WEED_LAYER 2.518
+=======
+#define UNDERFLOOR_OBJ_LAYER 2.46 //bluespace beacon, navigation beacon, etc
+
+#define CATWALK_LAYER 2.5 //catwalk overlay of /turf/open/floor/plating/plating_catwalk
+
+#define WEED_LAYER 2.51 // Alien weeds and node layer
+
+#define ABOVE_WEED_LAYER 2.518 // Over weeds, such as blood
+>>>>>>> upstream/master
 
 #define ABOVE_BLOOD_LAYER 2.519
 
@@ -46,12 +56,19 @@
 
 #define ANIMAL_HIDING_LAYER 2.53
 
+<<<<<<< HEAD
 /// Right under poddoors
 #define FIREDOOR_OPEN_LAYER 2.549
 /// Under doors and virtually everything that's "above the floor"
 #define PODDOOR_OPEN_LAYER 2.55
 /// conveyor belt
 #define CONVEYOR_LAYER 2.56
+=======
+#define FIREDOOR_OPEN_LAYER 2.549 //Right under poddoors
+#define PODDOOR_OPEN_LAYER 2.55 //Under doors and virtually everything that's "above the floor"
+
+#define CONVEYOR_LAYER 2.56 //conveyor belt
+>>>>>>> upstream/master
 
 #define RESIN_STRUCTURE_LAYER 2.6
 
@@ -65,10 +82,17 @@
 #define TABLE_LAYER 2.8
 #define ABOVE_TABLE_LAYER 2.81
 
+<<<<<<< HEAD
 /// Under all objects if opened. 2.85 due to tables being at 2.8
 #define DOOR_OPEN_LAYER 2.85
 
 #define BELOW_VAN_LAYER	2.98
+=======
+#define DOOR_OPEN_LAYER 2.85 //Under all objects if opened. 2.85 due to tables being at 2.8
+
+#define BELOW_VAN_LAYER 2.98
+#define BELOW_OBJ_LAYER 2.98 //just below all items
+>>>>>>> upstream/master
 
 /// just below all items
 #define BELOW_OBJ_LAYER 2.98
@@ -87,6 +111,7 @@
 
 #define BUSH_LAYER 3.05
 
+<<<<<<< HEAD
 /// Above most items if closed
 #define DOOR_CLOSED_LAYER 3.1
 /// Right under poddoors
@@ -99,11 +124,22 @@
 #define WALL_OBJ_LAYER 3.5
 /// above windows and wall mounts so the top of the loader doesn't clip.
 #define POWERLOADER_LAYER 3.6
+=======
+#define DOOR_CLOSED_LAYER 3.1 //Above most items if closed
+#define FIREDOOR_CLOSED_LAYER 3.189 //Right under poddoors
+#define PODDOOR_CLOSED_LAYER 3.19 //Above doors which are at 3.1
 
-#define BELOW_MOB_LAYER 		3.75
-#define LYING_DEAD_MOB_LAYER	3.76
+#define WINDOW_LAYER 3.2 //above closed doors
+
+#define WALL_OBJ_LAYER 3.5 //posters on walls
+
+#define POWERLOADER_LAYER 3.6 //above windows and wall mounts so the top of the loader doesn't clip.
+>>>>>>> upstream/master
+
+#define BELOW_MOB_LAYER 3.75
+#define LYING_DEAD_MOB_LAYER 3.76
 #define LYING_BETWEEN_MOB_LAYER 3.79
-#define LYING_LIVING_MOB_LAYER	3.8
+#define LYING_LIVING_MOB_LAYER 3.8
 
 /// drone (not the xeno)
 #define ABOVE_LYING_MOB_LAYER 3.9
@@ -112,17 +148,26 @@
 
 #define ABOVE_MOB_LAYER 4.1
 
-#define BIG_XENO_LAYER 4.11	//above ABOVE_MOB_LAYER because it's used for shallow river overlays
+#define BIG_XENO_LAYER 4.11 //above ABOVE_MOB_LAYER because it's used for shallow river overlays
 							//which clips with the top of large xeno sprites.
 
+<<<<<<< HEAD
 /// for xenos to hide behind bushes and tall grass
 #define ABOVE_XENO_LAYER 4.12
 /// For facehuggers
 #define FACEHUGGER_LAYER 4.13
 /// For WEATHER
 #define WEATHER_LAYER 4.14
+=======
+#define ABOVE_XENO_LAYER 4.12 //for xenos to hide behind bushes and tall grass
+
+#define FACEHUGGER_LAYER 4.13 // For facehuggers
+
+#define WEATHER_LAYER 4.14 // For WEATHER
+
+>>>>>>> upstream/master
 #define INTERIOR_WALL_SOUTH_LAYER 5.2
-#define INTERIOR_DOOR_LAYER       5.21
+#define INTERIOR_DOOR_LAYER    5.21
 
 //#define FLY_LAYER 5
 
@@ -141,6 +186,7 @@
 #define FULLSCREEN_IMPAIRED_LAYER 17.02
 #define FULLSCREEN_DRUGGY_LAYER 17.03
 #define FULLSCREEN_BLURRY_LAYER 17.04
+<<<<<<< HEAD
 /// flashed
 #define FULLSCREEN_FLASH_LAYER 17.05
 /// red circles when hurt
@@ -151,6 +197,13 @@
 #define FULLSCREEN_PAIN_LAYER	17.2
 /// in critical
 #define FULLSCREEN_CRIT_LAYER 17.25
+=======
+#define FULLSCREEN_FLASH_LAYER 17.05 //flashed
+#define FULLSCREEN_DAMAGE_LAYER 17.1 //red circles when hurt
+#define FULLSCREEN_BLIND_LAYER 17.15 //unconscious
+#define FULLSCREEN_PAIN_LAYER 17.2 //pain flashes
+#define FULLSCREEN_CRIT_LAYER 17.25 //in critical
+>>>>>>> upstream/master
 
 #define HUD_LAYER 19
 #define ABOVE_HUD_LAYER 20
@@ -161,9 +214,9 @@
 #define AREAS_LAYER 999
 
 /*=============================*\
-|								|
-|		  PLANE DEFINES			|
-|								|
+| |
+|   PLANE DEFINES |
+| |
 \*=============================*/
 
 /// NEVER HAVE ANYTHING BELOW THIS PLANE ADJUST IF YOU NEED MORE SPACE

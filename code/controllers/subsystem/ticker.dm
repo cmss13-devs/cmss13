@@ -6,21 +6,21 @@ SUBSYSTEM_DEF(ticker)
 	flags = SS_KEEP_TIMING
 	runlevels = RUNLEVEL_LOBBY | RUNLEVEL_SETUP | RUNLEVEL_GAME
 
-	var/current_state = GAME_STATE_STARTUP	//State of current round used by process()
-	var/force_ending = FALSE					//Round was ended by admin intervention
-	var/bypass_checks = FALSE 				//Bypass mode init checks
-	var/setup_failed = FALSE 				//If the setup has failed at any point
+	var/current_state = GAME_STATE_STARTUP //State of current round used by process()
+	var/force_ending = FALSE //Round was ended by admin intervention
+	var/bypass_checks = FALSE //Bypass mode init checks
+	var/setup_failed = FALSE //If the setup has failed at any point
 	var/setup_started = FALSE
 
 	var/datum/game_mode/mode = null
 
-	var/list/login_music = null						//Music played in pregame lobby
+	var/list/login_music = null //Music played in pregame lobby
 
-	var/delay_end = FALSE					//If set true, the round will not restart on it's own
+	var/delay_end = FALSE //If set true, the round will not restart on it's own
 	var/delay_start = FALSE
-	var/admin_delay_notice = ""				//A message to display to anyone who tries to restart the world after a delay
+	var/admin_delay_notice = "" //A message to display to anyone who tries to restart the world after a delay
 
-	var/time_left							//Pre-game timer
+	var/time_left //Pre-game timer
 	var/start_at
 
 	var/roundend_check_paused = FALSE
@@ -32,7 +32,7 @@ SUBSYSTEM_DEF(ticker)
 	var/graceful = FALSE //Will this server gracefully shut down?
 
 	var/queue_delay = 0
-	var/list/queued_players = list()		//used for join queues when the server exceeds the hard population cap
+	var/list/queued_players = list() //used for join queues when the server exceeds the hard population cap
 
 	// TODO: move this into mapview ss
 	var/toweractive = FALSE
@@ -41,11 +41,11 @@ SUBSYSTEM_DEF(ticker)
 
 	var/automatic_delay_end = FALSE
 
-	 ///If we have already done tip of the round.
+	///If we have already done tip of the round.
 	var/tipped
 
-	var/totalPlayers = 0					//used for pregame stats on statpanel
-	var/totalPlayersReady = 0				//used for pregame stats on statpanel
+	var/totalPlayers = 0 //used for pregame stats on statpanel
+	var/totalPlayersReady = 0 //used for pregame stats on statpanel
 
 /datum/controller/subsystem/ticker/Initialize(timeofday)
 	load_mode()
@@ -77,7 +77,7 @@ SUBSYSTEM_DEF(ticker)
 			totalPlayersReady = 0
 			for(var/i in GLOB.new_player_list)
 				var/mob/new_player/player = i
-				if(player.ready) // TODO: port this     == PLAYER_READY_TO_PLAY)
+				if(player.ready) // TODO: port this  == PLAYER_READY_TO_PLAY)
 					++totalPlayersReady
 			if(time_left < 0 || delay_start)
 				return
@@ -252,7 +252,7 @@ SUBSYSTEM_DEF(ticker)
 	if(round_statistics)
 		to_chat_spaced(world, html = FONT_SIZE_BIG(SPAN_ROLE_BODY("<B>Welcome to [round_statistics.round_name]</B>")))
 
-	supply_controller.process() 		//Start the supply shuttle regenerating points -- TLE
+	supply_controller.process() //Start the supply shuttle regenerating points -- TLE
 
 	for(var/i in GLOB.closet_list) //Set up special equipment for lockers and vendors, depending on gamemode
 		var/obj/structure/closet/C = i
@@ -320,7 +320,7 @@ SUBSYSTEM_DEF(ticker)
 
 
 /datum/controller/subsystem/ticker/proc/SetTimeLeft(newtime)
-	if(newtime >= 0 && isnull(time_left))	//remember, negative means delayed
+	if(newtime >= 0 && isnull(time_left)) //remember, negative means delayed
 		start_at = world.time + newtime
 	else
 		time_left = newtime
@@ -457,11 +457,11 @@ SUBSYSTEM_DEF(ticker)
 	 * SScellauto: can't touch this because it would directly affect explosion spread speed
 	 */
 
-	SSquadtree?.wait           = 0.8 SECONDS // From 0.5, relevant based on player movement speed (higher = more error in sound location, motion detector pings, sentries target acquisition)
-	SSlighting?.wait           = 0.6 SECONDS // From 0.4, same but also heavily scales on player/scene density (higher = less frequent lighting updates which is very noticeable as you move)
-	SSstatpanels?.wait         = 1.5 SECONDS // From 0.6, refresh rate mainly matters for ALT+CLICK turf contents (which gens icons, intensive)
-	SSsoundscape?.wait         =   2 SECONDS // From 1, soudscape triggering checks, scales on player count
-	SStgui?.wait               = 1.2 SECONDS // From 0.9, UI refresh rate
+	SSquadtree?.wait    = 0.8 SECONDS // From 0.5, relevant based on player movement speed (higher = more error in sound location, motion detector pings, sentries target acquisition)
+	SSlighting?.wait    = 0.6 SECONDS // From 0.4, same but also heavily scales on player/scene density (higher = less frequent lighting updates which is very noticeable as you move)
+	SSstatpanels?.wait  = 1.5 SECONDS // From 0.6, refresh rate mainly matters for ALT+CLICK turf contents (which gens icons, intensive)
+	SSsoundscape?.wait  =   2 SECONDS // From 1, soudscape triggering checks, scales on player count
+	SStgui?.wait    = 1.2 SECONDS // From 0.9, UI refresh rate
 
 	log_debug("Switching to lazy Subsystem timings for performance")
 

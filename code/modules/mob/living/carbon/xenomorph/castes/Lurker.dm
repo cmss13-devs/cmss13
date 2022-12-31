@@ -58,7 +58,7 @@
 	name = "Base Lurker Behavior Delegate"
 
 	// Config
-	var/invis_recharge_time = 150      // 15 seconds to recharge invisibility.
+	var/invis_recharge_time = 150   // 15 seconds to recharge invisibility.
 	var/invis_start_time = -1 // Special value for when we're not invisible
 	var/invis_duration = 300  // so we can display how long the lurker is invisible to it
 	var/buffed_slash_damage_ratio = 1.2

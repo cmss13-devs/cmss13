@@ -62,7 +62,7 @@
 	src.add_fingerprint(usr)
 
 	var/clean = 0
-	switch(href_list["command"])	//anti-HTML-hacking checks
+	switch(href_list["command"]) //anti-HTML-hacking checks
 		if("cycle_ext_door")
 			clean = 1
 		if("cycle_int_door")

@@ -22,6 +22,7 @@
 
 #define CLAN_PERMISSION_ALL (CLAN_PERMISSION_USER_ALL|CLAN_PERMISSION_ADMIN_ALL)
 
+<<<<<<< HEAD
 /// Unused for the moment
 #define CLAN_RANK_UNBLOODED		"Unblooded"
 /// Clanless
@@ -35,6 +36,16 @@
 
 /// Must be given by someone with CLAN_PERMISSION_ADMIN_MODIFY
 #define CLAN_RANK_ADMIN			"Ancient"
+=======
+#define CLAN_RANK_UNBLOODED "Unblooded" // Unused for the moment
+#define CLAN_RANK_YOUNG "Young Blood" // Clanless
+#define CLAN_RANK_BLOODED "Blooded" // New to the clan
+#define CLAN_RANK_ELITE "Elite"
+#define CLAN_RANK_ELDER "Elder"
+#define CLAN_RANK_LEADER "Clan Leader"
+
+#define CLAN_RANK_ADMIN "Ancient" // Must be given by someone with CLAN_PERMISSION_ADMIN_MODIFY
+>>>>>>> upstream/master
 
 #define CLAN_RANK_UNBLOODED_INT 1
 #define CLAN_RANK_YOUNG_INT 2

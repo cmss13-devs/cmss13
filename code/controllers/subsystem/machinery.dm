@@ -6,11 +6,11 @@ var/list/datum/powernet/powernets_by_name = list() //Holds all powernet datums i
 
 
 SUBSYSTEM_DEF(machinery)
-	name          = "Machinery"
-	wait          = 3.5 SECONDS
-	flags         = SS_KEEP_TIMING
+	name   = "Machinery"
+	wait   = 3.5 SECONDS
+	flags  = SS_KEEP_TIMING
 	init_order = SS_INIT_MACHINES
-	priority      = SS_PRIORITY_MACHINERY
+	priority   = SS_PRIORITY_MACHINERY
 
 	var/list/currentrunmachines = list()
 

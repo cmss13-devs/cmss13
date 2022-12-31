@@ -1,13 +1,13 @@
 //Handles the control of airlocks
 
-#define STATE_IDLE			0
-#define STATE_PREPARE		1
-#define STATE_DEPRESSURIZE	2
-#define STATE_PRESSURIZE	3
+#define STATE_IDLE 0
+#define STATE_PREPARE 1
+#define STATE_DEPRESSURIZE 2
+#define STATE_PRESSURIZE 3
 
-#define TARGET_NONE			0
-#define TARGET_INOPEN		-1
-#define TARGET_OUTOPEN		-2
+#define TARGET_NONE 0
+#define TARGET_INOPEN -1
+#define TARGET_OUTOPEN -2
 
 
 /datum/computer/file/embedded_program/airlock
@@ -27,16 +27,16 @@
 	..(M)
 
 	memory["chamber_sensor_pressure"] = ONE_ATMOSPHERE
-	memory["external_sensor_pressure"] = 0					//assume vacuum for simple airlock controller
+	memory["external_sensor_pressure"] = 0 //assume vacuum for simple airlock controller
 	memory["internal_sensor_pressure"] = ONE_ATMOSPHERE
-	memory["exterior_status"] = list(state = "closed", lock = "locked")		//assume closed and locked in case the doors dont report in
+	memory["exterior_status"] = list(state = "closed", lock = "locked") //assume closed and locked in case the doors dont report in
 	memory["interior_status"] = list(state = "closed", lock = "locked")
 	memory["pump_status"] = "unknown"
 	memory["target_pressure"] = ONE_ATMOSPHERE
 	memory["purge"] = 0
 	memory["secure"] = 0
 
-	if (istype(M, /obj/structure/machinery/embedded_controller/radio/airlock))	//if our controller is an airlock controller than we can auto-init our tags
+	if (istype(M, /obj/structure/machinery/embedded_controller/radio/airlock)) //if our controller is an airlock controller than we can auto-init our tags
 		var/obj/structure/machinery/embedded_controller/radio/airlock/controller = M
 		tag_exterior_door = controller.tag_exterior_door? controller.tag_exterior_door : "[id_tag]_outer"
 		tag_interior_door = controller.tag_interior_door? controller.tag_interior_door : "[id_tag]_inner"
@@ -49,7 +49,7 @@
 		memory["secure"] = controller.tag_secure
 
 		spawn(10)
-			signalDoor(tag_exterior_door, "update")		//signals connected doors to update their status
+			signalDoor(tag_exterior_door, "update") //signals connected doors to update their status
 			signalDoor(tag_interior_door, "update")
 
 /datum/computer/file/embedded_program/airlock/receive_signal(datum/signal/signal, receive_method, receive_param)
@@ -88,7 +88,7 @@
 				if("cycle_interior")
 					receive_user_command("cycle_int_door")
 				if("cycle")
-					if(memory["interior_status"]["state"] == "open")		//handle backwards compatibility
+					if(memory["interior_status"]["state"] == "open") //handle backwards compatibility
 						receive_user_command("cycle_ext")
 					else
 						receive_user_command("cycle_int")
@@ -99,7 +99,7 @@
 				if("cycle_interior")
 					receive_user_command("cycle_int")
 				if("cycle")
-					if(memory["interior_status"]["state"] == "open")		//handle backwards compatibility
+					if(memory["interior_status"]["state"] == "open") //handle backwards compatibility
 						receive_user_command("cycle_ext")
 					else
 						receive_user_command("cycle_int")
@@ -156,7 +156,7 @@
 				signalDoor(tag_exterior_door, "unlock")
 
 	if(shutdown_pump)
-		signalPump(tag_airpump, 0)		//send a signal to stop pressurizing
+		signalPump(tag_airpump, 0) //send a signal to stop pressurizing
 
 
 /datum/computer/file/embedded_program/airlock/process()
@@ -174,7 +174,7 @@
 			state = STATE_PREPARE
 		else
 			//make sure to return to a sane idle state
-			if(memory["pump_status"] != "off")	//send a signal to stop pumping
+			if(memory["pump_status"] != "off") //send a signal to stop pumping
 				signalPump(tag_airpump, 0)
 
 	if ((state == STATE_PRESSURIZE || state == STATE_DEPRESSURIZE) && !check_doors_secured())
@@ -195,11 +195,11 @@
 
 				if(chamber_pressure <= target_pressure)
 					state = STATE_PRESSURIZE
-					signalPump(tag_airpump, 1, 1, target_pressure)	//send a signal to start pressurizing
+					signalPump(tag_airpump, 1, 1, target_pressure) //send a signal to start pressurizing
 
 				else if(chamber_pressure > target_pressure)
 					state = STATE_DEPRESSURIZE
-					signalPump(tag_airpump, 1, 0, target_pressure)	//send a signal to start depressurizing
+					signalPump(tag_airpump, 1, 0, target_pressure) //send a signal to start depressurizing
 
 				//Check for vacuum - this is set after the pumps so the pumps are aiming for 0
 				if(!memory["target_pressure"])
@@ -213,7 +213,7 @@
 				target_state = TARGET_NONE
 
 				if(memory["pump_status"] != "off")
-					signalPump(tag_airpump, 0)		//send a signal to stop pumping
+					signalPump(tag_airpump, 0) //send a signal to stop pumping
 
 
 		if(STATE_DEPRESSURIZE)

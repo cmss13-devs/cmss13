@@ -1009,7 +1009,7 @@
 "buo" = (
 /obj/structure/machinery/power/apc{
 	dir = 1;
-	pixel_y = 24
+	pixel_y = 25
 	},
 /turf/open/floor/kutjevo/colors/orange/inner_corner,
 /area/kutjevo/interior/foremans_office)
@@ -15750,7 +15750,7 @@
 /area/kutjevo/exterior/runoff_bridge)
 "vkm" = (
 /obj/structure/machinery/power/apc{
-	pixel_x = 28
+	pixel_x = 25
 	},
 /obj/structure/machinery/light{
 	dir = 4
@@ -16982,7 +16982,7 @@
 	dir = 4
 	},
 /obj/structure/machinery/power/apc{
-	pixel_x = 28
+	pixel_x = 25
 	},
 /turf/open/floor/kutjevo/colors/cyan,
 /area/kutjevo/interior/complex/med/auto_doc)

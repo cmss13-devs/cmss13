@@ -4452,7 +4452,7 @@
 /obj/structure/bedsheetbin,
 /obj/structure/machinery/power/apc{
 	dir = 1;
-	pixel_y = 24
+	pixel_y = 25
 	},
 /turf/open/floor/strata{
 	icon_state = "floor3"
@@ -6458,7 +6458,7 @@
 "asM" = (
 /obj/structure/machinery/power/apc{
 	dir = 1;
-	pixel_y = 24
+	pixel_y = 25
 	},
 /turf/open/floor/strata{
 	icon_state = "floor3"
@@ -8223,7 +8223,7 @@
 	},
 /obj/structure/machinery/power/apc{
 	dir = 1;
-	pixel_y = 24
+	pixel_y = 25
 	},
 /obj/effect/landmark/survivor_spawner,
 /turf/open/floor/interior/tatami,
@@ -10324,7 +10324,7 @@
 /obj/structure/closet/crate/freezer/rations,
 /obj/structure/machinery/power/apc{
 	dir = 1;
-	pixel_y = 24
+	pixel_y = 25
 	},
 /turf/open/floor/strata{
 	dir = 10;
@@ -10347,7 +10347,7 @@
 "aEu" = (
 /obj/structure/machinery/power/apc{
 	dir = 1;
-	pixel_y = 24
+	pixel_y = 25
 	},
 /obj/item/reagent_container/food/drinks/cans/waterbottle,
 /turf/open/floor/strata{
@@ -11893,7 +11893,7 @@
 /obj/structure/machinery/computer/crew,
 /obj/structure/machinery/power/apc{
 	dir = 1;
-	pixel_y = 24
+	pixel_y = 25
 	},
 /turf/open/floor/strata,
 /area/strata/ag/interior/outpost/admin)
@@ -16161,7 +16161,7 @@
 	},
 /obj/structure/machinery/power/apc{
 	dir = 1;
-	pixel_y = 24
+	pixel_y = 25
 	},
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/interior/plastic,
@@ -16747,7 +16747,7 @@
 "aZm" = (
 /obj/structure/machinery/power/apc{
 	dir = 1;
-	pixel_y = 24
+	pixel_y = 25
 	},
 /turf/open/floor/strata{
 	dir = 10;
@@ -17536,7 +17536,7 @@
 /obj/structure/closet/wardrobe/pjs,
 /obj/structure/machinery/power/apc{
 	dir = 1;
-	pixel_y = 24
+	pixel_y = 25
 	},
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/strata,
@@ -21580,7 +21580,7 @@
 	},
 /obj/structure/machinery/power/apc{
 	dir = 1;
-	pixel_y = 24
+	pixel_y = 25
 	},
 /turf/open/floor/strata{
 	dir = 4;
@@ -23464,7 +23464,7 @@
 "bxn" = (
 /obj/structure/machinery/power/apc{
 	dir = 1;
-	pixel_y = 24
+	pixel_y = 25
 	},
 /obj/structure/kitchenspike,
 /turf/open/floor/strata{
@@ -24017,7 +24017,7 @@
 "bzx" = (
 /obj/structure/machinery/power/apc{
 	dir = 1;
-	pixel_y = 24
+	pixel_y = 25
 	},
 /turf/open/floor/strata,
 /area/strata/ag/interior/outpost/engi/drome)
@@ -24606,7 +24606,7 @@
 "bDv" = (
 /obj/structure/machinery/power/apc{
 	dir = 1;
-	pixel_y = 24
+	pixel_y = 25
 	},
 /turf/open/floor/strata{
 	icon_state = "multi_tiles"
@@ -25827,7 +25827,7 @@
 "bNm" = (
 /obj/structure/machinery/power/apc{
 	dir = 1;
-	pixel_y = 24
+	pixel_y = 25
 	},
 /turf/open/floor/strata{
 	dir = 10;
@@ -29380,7 +29380,7 @@
 /obj/item/tool/wrench,
 /obj/structure/machinery/power/apc{
 	dir = 1;
-	pixel_y = 24
+	pixel_y = 25
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -29438,7 +29438,7 @@
 /obj/structure/reagent_dispensers/beerkeg,
 /obj/structure/machinery/power/apc{
 	dir = 1;
-	pixel_y = 24
+	pixel_y = 25
 	},
 /turf/open/floor/strata{
 	dir = 4;
@@ -31532,7 +31532,7 @@
 "era" = (
 /obj/structure/machinery/power/apc{
 	dir = 1;
-	pixel_y = 24
+	pixel_y = 25
 	},
 /turf/open/floor/strata{
 	icon_state = "floor2"
@@ -34967,7 +34967,7 @@
 	},
 /obj/structure/machinery/power/apc{
 	dir = 1;
-	pixel_y = 24
+	pixel_y = 25
 	},
 /turf/open/floor/strata,
 /area/strata/ug/interior/outpost/jung/dorms/med2)
@@ -35792,7 +35792,7 @@
 /obj/structure/machinery/photocopier,
 /obj/structure/machinery/power/apc{
 	dir = 1;
-	pixel_y = 24
+	pixel_y = 25
 	},
 /turf/open/floor/strata,
 /area/strata/ug/interior/outpost/jung/dorms/admin1)
@@ -36784,7 +36784,7 @@
 "mWM" = (
 /obj/structure/machinery/power/apc{
 	dir = 1;
-	pixel_y = 24
+	pixel_y = 25
 	},
 /obj/effect/decal/cleanable/blood,
 /obj/effect/landmark/objective_landmark/medium,
@@ -39622,7 +39622,7 @@
 "rSE" = (
 /obj/structure/machinery/power/apc{
 	dir = 1;
-	pixel_y = 24
+	pixel_y = 25
 	},
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
@@ -40884,7 +40884,7 @@
 "tZF" = (
 /obj/structure/machinery/power/apc{
 	dir = 1;
-	pixel_y = 24
+	pixel_y = 25
 	},
 /turf/open/floor/strata{
 	dir = 8;
@@ -41416,7 +41416,7 @@
 "uTv" = (
 /obj/structure/machinery/power/apc{
 	dir = 1;
-	pixel_y = 24
+	pixel_y = 25
 	},
 /turf/open/floor/strata{
 	dir = 8;
@@ -42111,7 +42111,7 @@
 "vTN" = (
 /obj/structure/machinery/power/apc{
 	dir = 1;
-	pixel_y = 24
+	pixel_y = 25
 	},
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/blood/gibs/core,

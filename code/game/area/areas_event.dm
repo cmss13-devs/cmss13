@@ -1,8 +1,8 @@
 /*
 //Variants of characteristics:
-//	1. Uses dynamic lightning ON/OFF	(no dynamic lighting means area has constant light level, like LZ pads and thunderdome)
+// 1. Uses dynamic lightning ON/OFF (no dynamic lighting means area has constant light level, like LZ pads and thunderdome)
 		if ON:
-		a) is it lit or not				(if area is lit, that means that, while area has dynamic lighting enabled, it's default light level is not darkness)
+		a) is it lit or not (if area is lit, that means that, while area has dynamic lighting enabled, it's default light level is not darkness)
 	2. Is it powered or not
 	3. ceiling level
 		a) CEILING_NONE

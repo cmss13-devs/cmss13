@@ -8,7 +8,7 @@
 	icon = 'icons/obj/items/clothing/backpacks.dmi'
 	icon_state = "backpack"
 	w_class = SIZE_LARGE
-	flags_equip_slot = SLOT_BACK	//ERROOOOO
+	flags_equip_slot = SLOT_BACK //ERROOOOO
 	max_w_class = SIZE_MEDIUM
 	storage_slots = null
 	max_storage_space = 21

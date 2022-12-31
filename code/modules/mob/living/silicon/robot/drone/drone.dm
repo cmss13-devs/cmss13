@@ -164,7 +164,7 @@
 
 /mob/living/silicon/robot/drone/proc/question(var/client/C)
 	spawn(0)
-		if(!C || jobban_isbanned(C,"Cyborg"))	return
+		if(!C || jobban_isbanned(C,"Cyborg")) return
 		var/response = alert(C, "Someone is attempting to reboot a maintenance drone. Would you like to play as one?", "Maintenance drone reboot", "Yes", "No", "Never for this round.")
 		if(!C || ckey)
 			return
@@ -191,10 +191,10 @@
 
 /mob/living/silicon/robot/drone/Collide(atom/A)
 	if (!istype(A,/obj/structure/machinery/door) && \
-	 !istype(A,/obj/structure/machinery/recharge_station) && \
-	 !istype(A,/obj/structure/machinery/disposal/deliveryChute) && \
-	 !istype(A,/obj/structure/machinery/teleport/hub) && \
-	 !istype(A,/obj/effect/portal)
+	!istype(A,/obj/structure/machinery/recharge_station) && \
+	!istype(A,/obj/structure/machinery/disposal/deliveryChute) && \
+	!istype(A,/obj/structure/machinery/teleport/hub) && \
+	!istype(A,/obj/effect/portal)
 	) return
 	..()
 	return

@@ -17,7 +17,7 @@
 	health = 100.0
 	var/maxhealth = 100.0
 	var/locked = 0.0
-//	req_access = list(access_maint_tunnels)
+// req_access = list(access_maint_tunnels)
 
 /obj/structure/machinery/deployable/barrier/Initialize(mapload, ...)
 	. = ..()

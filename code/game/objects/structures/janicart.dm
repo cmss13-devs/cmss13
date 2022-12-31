@@ -14,7 +14,7 @@
 	var/obj/item/reagent_container/spray/myspray
 	var/obj/item/device/lightreplacer/myreplacer
 	var/obj/item/reagent_container/glass/bucket/janibucket/mybucket
-	var/signs = 0	//maximum capacity hardcoded below
+	var/signs = 0 //maximum capacity hardcoded below
 
 
 /obj/structure/janitorialcart/New()
@@ -40,11 +40,11 @@
 		to_chat(user, SPAN_NOTICE("You put [I] into [src]."))
 
 	else if(istype(I, /obj/item/tool/mop))
-		if(I.reagents.total_volume < I.reagents.maximum_volume && mybucket)	//if it's not completely soaked we assume they want to wet it, otherwise store it
+		if(I.reagents.total_volume < I.reagents.maximum_volume && mybucket) //if it's not completely soaked we assume they want to wet it, otherwise store it
 			if(mybucket.reagents.total_volume < 1)
 				to_chat(user, "[mybucket] is out of water!")
 			else
-				mybucket.reagents.trans_to(I, 5)	//
+				mybucket.reagents.trans_to(I, 5) //
 				to_chat(user, SPAN_NOTICE("You wet [I] in [mybucket]."))
 				playsound(loc, 'sound/effects/slosh.ogg', 25, 1)
 			return

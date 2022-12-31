@@ -1,13 +1,13 @@
-#define to_world_log(message)                               world.log << (message)
-#define debug_msg(message)                                  to_world(message) // A message define designed to be easily found and deleted
-#define debug_log(message)                                  to_world_log(message)
-#define sound_to(target, sound)                             target << (sound)
-#define to_file(file_entry, source_var)                     file_entry << (source_var)
-#define from_file(file_entry, target_var)                   file_entry >> (target_var)
-#define close_browser(target, browser_name)                 target << browse(null, "window=[browser_name]")
-#define show_image(target, image)                           target << (image)
-#define send_rsc(target, args...)             				target << browse_rsc(##args)
-#define open_link(target, url)                              target << link(url)
+#define to_world_log(message)    world.log << (message)
+#define debug_msg(message)   to_world(message) // A message define designed to be easily found and deleted
+#define debug_log(message)   to_world_log(message)
+#define sound_to(target, sound)  target << (sound)
+#define to_file(file_entry, source_var)  file_entry << (source_var)
+#define from_file(file_entry, target_var)    file_entry >> (target_var)
+#define close_browser(target, browser_name)  target << browse(null, "window=[browser_name]")
+#define show_image(target, image)    target << (image)
+#define send_rsc(target, args...) target << browse_rsc(##args)
+#define open_link(target, url)   target << link(url)
 
 #define any2ref(x) ref(x)
 

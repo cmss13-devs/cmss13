@@ -12,7 +12,7 @@
 	hackable = TRUE
 
 	vendor_theme = VENDOR_THEME_COMPANY
-	vend_delay = 5
+	vend_delay = 0.5 SECONDS
 
 	var/datum/health_scan/last_health_display
 
@@ -308,7 +308,7 @@
 	name = "\improper NanoMed"
 	desc = "Wall-mounted Medical Equipment Dispenser."
 	icon_state = "wallmed"
-	vend_delay = 7
+	vend_delay = 0.7 SECONDS
 
 	req_access = list()
 

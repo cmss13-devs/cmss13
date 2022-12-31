@@ -709,6 +709,10 @@ This function completely restores a damaged organ to perfect condition.
 	else
 		b_icon = B.icon_name
 
+	if(isSpeciesYautja(owner))
+		e_icon = owner.ethnicity
+		b_icon = owner.body_type
+
 	icon = race_icon
 	icon_state = "[get_limb_icon_name(owner.species, b_icon, owner.gender, icon_name, e_icon)]"
 	wound_overlay.color = owner.species.blood_color

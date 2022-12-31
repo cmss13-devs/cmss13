@@ -164,6 +164,7 @@
 	S["pred_cape_type"]		>> predator_cape_type
 	S["pred_cape_color"]	>> predator_cape_color
 	S["pred_h_style"]		>> predator_h_style
+	S["pred_skin_color"]	>> predator_skin_color
 	S["pred_flavor_text"]	>> predator_flavor_text
 
 	S["commander_status"]	>> commander_status
@@ -228,6 +229,7 @@
 	predator_cape_type = sanitize_inlist(predator_cape_type, GLOB.all_yautja_capes + "None", initial(predator_cape_type))
 	predator_cape_color = sanitize_hexcolor(predator_cape_color, initial(predator_cape_color))
 	predator_h_style = sanitize_inlist(predator_h_style, GLOB.yautja_hair_styles_list, initial(predator_h_style))
+	predator_skin_color = sanitize_inlist(predator_skin_color, PRED_SKIN_COLOR, initial(predator_skin_color))
 	predator_flavor_text = predator_flavor_text ? sanitize_text(predator_flavor_text, initial(predator_flavor_text)) : initial(predator_flavor_text)
 	commander_status	= sanitize_inlist(commander_status, whitelist_hierarchy, initial(commander_status))
 	commander_sidearm   = sanitize_inlist(commander_sidearm, list("Mateba","Colonel's Mateba","Golden Desert Eagle","Desert Eagle"), initial(commander_sidearm))
@@ -321,6 +323,7 @@
 	S["pred_cape_type"]		<< predator_cape_type
 	S["pred_cape_color"]	<< predator_cape_color
 	S["pred_h_style"]		<< predator_h_style
+	S["pred_skin_color"]	<< predator_skin_color
 	S["pred_flavor_text"]	<< predator_flavor_text
 
 	S["commander_status"] 	<< commander_status

@@ -934,3 +934,52 @@
   - bugfix: a couple subsystems now report their initialisation correctly.
   stanalbatross:
   - ui: converted the rarely used gas tanks to tgui
+2022-12-29:
+  Casper:
+  - bugfix: sling pouch is now more reliable while moving
+  - bugfix: fixed bipod slow never being removed on weapon drop
+  Lacasitospro:
+  - bugfix: Fixes webbings' side states being too bulky
+  ThePiachu:
+  - rscadd: Re-added the old objective of rescuing survivors. Now each survivor rescued
+      alive and brought to Almayer will net the USCM a good deal of points for their
+      Techweb.
+  carlarctg:
+  - bugfix: Fix bug in which xenos couldn't eat fruit below default max health
+  - rscadd: Adds a cosmetic garb slot to boonie hats and other USCM caps.
+  - code_imp: Slightly improved cmcap code.
+  - bugfix: Fixed entering APC being 0.1 seconds instead of 1 second.
+  harryob:
+  - code_imp: 515 compatibility is here
+2022-12-30:
+  Molto:
+  - bugfix: fixed the gsmes sprite overlay
+  stanalbatross:
+  - qol: converted the M46c's verbs to hud buttons. Sprites by Nauticall.
+  - qol: added a "toggle id lock" hud button to the CO smartgun
+  - bugfix: fixed the queen spawn picker tgui input list leaving you in the lobby
+      art if you let it time out. If you let this happen, if will now pick a random
+      spawn.
+  - balance: you can no longer remove bullets from HPR mags
+  - bugfix: lockers no longer paralyse you when getting out of them
+  - bugfix: berets no longer make the sounds of armour being taken off
+2022-12-31:
+  Huffie56:
+  - rscadd: Added emergency shutter and buttons to activate the alarm that where missing.
+  - rscdel: Remove some shutters between canteen and squad prep.
+  - bugfix: fixed some emergency shutters being in the wrong direction.
+  - rscadd: changed the all internal layout of PO quarter, standartize DCC/PO bunkroomsize
+      added a new bathroom.
+  Morrow:
+  - bugfix: Fixes runtime with pre-mapped decapitated heads
+  chowdermcarthor:
+  - bugfix: Walls that are indestructible will now show it in the description.
+  - bugfix: The synthetic's breaching hammer no longer allows you to attempt to destroy
+      an indestructible wall.
+  stanalbatross:
+  - bugfix: fixed a ton of instances where organs were not using the take_damage proc,
+      resulting in them not properly breaking
+  - code_imp: made a ton of eye_blind things use the procs for it
+  thwompa:
+  - maptweak: Converted vacant space in the lower-starboard hull maint area to a secret
+      hideout.

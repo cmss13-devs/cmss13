@@ -59,6 +59,7 @@ var/const/MAX_SAVE_SLOTS = 10
 	var/toggles_ert = TOGGLES_ERT_DEFAULT
 	var/chat_display_preferences = CHAT_TYPE_ALL
 	var/item_animation_pref_level = SHOW_ITEM_ANIMATIONS_ALL
+	var/pain_overlay_pref_level = PAIN_OVERLAY_BLURRY
 	var/UI_style_color = "#ffffff"
 	var/UI_style_alpha = 255
 	var/View_MC = FALSE
@@ -80,6 +81,7 @@ var/const/MAX_SAVE_SLOTS = 10
 	var/predator_gender = MALE
 	var/predator_age = 100
 	var/predator_h_style = "Standard"
+	var/predator_skin_color = "tan"
 	var/predator_translator_type = "Modern"
 	var/predator_mask_type = 1
 	var/predator_armor_type = 1
@@ -484,6 +486,7 @@ var/const/MAX_SAVE_SLOTS = 10
 				dat += "<b>Yautja Gender:</b> <a href='?_src_=prefs;preference=pred_gender;task=input'><b>[predator_gender == MALE ? "Male" : "Female"]</b></a><br>"
 				dat += "<b>Yautja Age:</b> <a href='?_src_=prefs;preference=pred_age;task=input'><b>[predator_age]</b></a><br>"
 				dat += "<b>Yautja Quill Style:</b> <a href='?_src_=prefs;preference=pred_hair;task=input'><b>[predator_h_style]</b></a><br>"
+				dat += "<b>Yautja Skin Color:</b> <a href='?_src_=prefs;preference=pred_skin;task=input'><b>[predator_skin_color]</b></a><br>"
 				dat += "<b>Yautja Flavor Text:</b> <a href='?_src_=prefs;preference=pred_flavor_text;task=input'><b>[TextPreview(predator_flavor_text, 15)]</b></a><br>"
 				dat += "<b>Yautja Whitelist Status:</b> <a href='?_src_=prefs;preference=yautja_status;task=input'><b>[yautja_status]</b></a>"
 				dat += "</div>"
@@ -558,6 +561,7 @@ var/const/MAX_SAVE_SLOTS = 10
 			dat += "<b>Play Admin Midis:</b> <a href='?_src_=prefs;preference=hear_midis'><b>[(toggles_sound & SOUND_MIDI) ? "Yes" : "No"]</b></a><br>"
 			dat += "<b>Play Admin Internet Sounds:</b> <a href='?_src_=prefs;preference=hear_internet'><b>[(toggles_sound & SOUND_INTERNET) ? "Yes" : "No"]</b></a><br>"
 			dat += "<b>Toggle Meme or Atmospheric Sounds:</b> <a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_admin_sound_types'>Toggle</a><br>"
+			dat += "<b>Set Eye Blur Type:</b> <a href='?src=\ref[src];action=proccall;procpath=/client/proc/set_eye_blur_type'>Set</a><br>"
 			dat += "<b>Play Lobby Music:</b> <a href='?_src_=prefs;preference=lobby_music'><b>[(toggles_sound & SOUND_LOBBY) ? "Yes" : "No"]</b></a><br>"
 			dat += "<b>Play VOX Announcements:</b> <a href='?_src_=prefs;preference=sound_vox'><b>[(hear_vox) ? "Yes" : "No"]</b></a><br>"
 			dat += "<b>Default Ghost Night Vision Level:</b> <a href='?_src_=prefs;preference=ghost_vision_pref;task=input'><b>[ghost_vision_pref]</b></a><br>"
@@ -1142,6 +1146,11 @@ var/const/MAX_SAVE_SLOTS = 10
 					if(!new_h_style)
 						return
 					predator_h_style = new_h_style
+				if("pred_skin")
+					var/new_skin_color = tgui_input_list(user, "Choose your skin color:", "Skin Color", PRED_SKIN_COLOR)
+					if(!new_skin_color)
+						return
+					predator_skin_color = new_skin_color
 				if("pred_flavor_text")
 					var/pred_flv_raw = input(user, "Choose your Predator's flavor text:", "Flavor Text", predator_flavor_text) as message
 					if(!pred_flv_raw)

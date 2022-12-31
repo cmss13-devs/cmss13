@@ -5,7 +5,7 @@
 	if (src.monkeyizing)
 		return
 
-	src.blinded = null
+	src.blinded = FALSE
 
 	//Status updates, death etc.
 	clamp_values()
@@ -88,15 +88,15 @@
 					adjust_effect(-1, WEAKEN)
 				if (src.knocked_out > 0)
 					adjust_effect(-1, PARALYZE)
-					src.blinded = 1
+					src.blinded = TRUE
 				else
-					src.blinded = 0
+					src.blinded = FALSE
 
 		else	//Not stunned.
 			src.stat = 0
 
 	else //Dead.
-		src.blinded = 1
+		src.blinded = TRUE
 		src.stat = 2
 
 	if(!regular_update)
@@ -105,8 +105,8 @@
 	if (src.stuttering) src.stuttering--
 
 	if (src.eye_blind)
-		src.eye_blind--
-		src.blinded = 1
+		src.ReduceEyeBlind(1)
+		src.blinded = TRUE
 
 	if (src.ear_deaf > 0) src.ear_deaf--
 	if (src.ear_damage < 25)
@@ -116,7 +116,7 @@
 	src.density = !( src.lying )
 
 	if ((src.sdisabilities & DISABILITY_BLIND))
-		src.blinded = 1
+		src.blinded = TRUE
 	if ((src.sdisabilities & DISABILITY_DEAF))
 		SetEarDeafness(1)
 
@@ -137,9 +137,9 @@
 		radio.on = 1
 
 	if(is_component_functioning("camera"))
-		src.blinded = 0
+		src.blinded = FALSE
 	else
-		src.blinded = 1
+		src.blinded = TRUE
 
 	return 1
 

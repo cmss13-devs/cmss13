@@ -40,7 +40,7 @@
 			dry()
 			return
 		dry_start_time = world.time
-		addtimer(CALLBACK(src, .proc/dry), drying_time * (amount+1))
+		addtimer(CALLBACK(src, PROC_REF(dry)), drying_time * (amount+1))
 
 /obj/effect/decal/cleanable/blood/Crossed(atom/movable/AM)
 	. = ..()

@@ -96,4 +96,4 @@
 /datum/decorator/christmas/builder_list/decorate(var/mob/living/carbon/Xenomorph/Xeno)
 	if(!istype(Xeno))
 		return
-	LAZYADD(Xeno.resin_build_order, /datum/resin_construction/resin_obj/festivizer)
+	LAZYDISTINCTADD(Xeno.resin_build_order, /datum/resin_construction/resin_obj/festivizer)

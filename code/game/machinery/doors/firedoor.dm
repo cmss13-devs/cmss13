@@ -157,9 +157,9 @@
 			// Accountability!
 			users_to_open |= user.name
 			needs_to_close = 1
-		INVOKE_ASYNC(src, .proc/open, TRUE)
+		INVOKE_ASYNC(src, PROC_REF(open), TRUE)
 	else
-		INVOKE_ASYNC(src, .proc/close)
+		INVOKE_ASYNC(src, PROC_REF(close))
 
 	if(needs_to_close)
 		spawn(50)
@@ -225,9 +225,9 @@
 			"You force \the [ blocked ? "welded" : "" ] [src] [density ? "open" : "closed"] with \the [C]!",\
 			"You hear metal strain and groan, and a door [density ? "opening" : "closing"].")
 			if(density)
-				INVOKE_ASYNC(src, .proc/open, TRUE)
+				INVOKE_ASYNC(src, PROC_REF(open), TRUE)
 			else
-				INVOKE_ASYNC(src, .proc/close)
+				INVOKE_ASYNC(src, PROC_REF(close))
 			return
 
 /obj/structure/machinery/door/firedoor/try_to_activate_door(mob/user)

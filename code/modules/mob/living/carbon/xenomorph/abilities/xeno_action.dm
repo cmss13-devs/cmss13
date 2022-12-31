@@ -31,7 +31,7 @@
 /datum/action/xeno_action/New(Target, override_icon_state)
 	. = ..()
 	if(charges != NO_ACTION_CHARGES)
-		RegisterSignal(src, COMSIG_XENO_ACTION_USED, .proc/remove_charge)
+		RegisterSignal(src, COMSIG_XENO_ACTION_USED, PROC_REF(remove_charge))
 	if(charge_time)
 		charge_ready = FALSE
 	update_button_icon()
@@ -132,6 +132,10 @@
 	if(!hidden && can_use_action() && use_ability(arglist(args)))
 		SEND_SIGNAL(src, COMSIG_XENO_ACTION_USED, owner)
 
+// For actions that do something on each life tick
+/datum/action/xeno_action/proc/life_tick()
+	return
+
 // Activable actions - most abilities in the game. Require Shift/Middle click to do their 'main' effects.
 // The action_activate code of these actions does NOT call use_ability.
 /datum/action/xeno_action/activable
@@ -225,7 +229,7 @@
 	cooldown_to_apply = cooldown_to_apply * (1 - Clamp(X.cooldown_reduction_percentage, 0, 0.5))
 
 	// Add a unique timer
-	cooldown_timer_id = addtimer(CALLBACK(src, .proc/on_cooldown_end), cooldown_to_apply, TIMER_UNIQUE|TIMER_STOPPABLE)
+	cooldown_timer_id = addtimer(CALLBACK(src, PROC_REF(on_cooldown_end)), cooldown_to_apply, TIMER_UNIQUE|TIMER_STOPPABLE)
 	current_cooldown_duration = cooldown_to_apply
 	current_cooldown_start_time = world.time
 
@@ -245,7 +249,7 @@
 	var/mob/living/carbon/Xenomorph/X = owner
 	// Note: no check to see if we're already on CD. we just flat override whatever's there
 	cooldown_duration = cooldown_duration * (1 - Clamp(X.cooldown_reduction_percentage, 0, 0.5))
-	cooldown_timer_id = addtimer(CALLBACK(src, .proc/on_cooldown_end), cooldown_duration, TIMER_OVERRIDE|TIMER_UNIQUE|TIMER_STOPPABLE)
+	cooldown_timer_id = addtimer(CALLBACK(src, PROC_REF(on_cooldown_end)), cooldown_duration, TIMER_OVERRIDE|TIMER_UNIQUE|TIMER_STOPPABLE)
 	current_cooldown_duration = cooldown_duration
 	current_cooldown_start_time = world.time
 
@@ -312,7 +316,7 @@
 	else
 		// Looks like timers are back on the menu, boys
 		var/new_cooldown_duration = current_cooldown_duration - amount - (world.time - current_cooldown_start_time)
-		cooldown_timer_id = addtimer(CALLBACK(src, .proc/on_cooldown_end), new_cooldown_duration, TIMER_UNIQUE | TIMER_STOPPABLE)
+		cooldown_timer_id = addtimer(CALLBACK(src, PROC_REF(on_cooldown_end)), new_cooldown_duration, TIMER_UNIQUE | TIMER_STOPPABLE)
 		current_cooldown_duration = new_cooldown_duration
 		current_cooldown_start_time = world.time
 
@@ -337,7 +341,7 @@
 			to_chat(owner, SPAN_XENODANGER("You feel your strength return! You can use [name] again!"))
 
 /datum/action/xeno_action/proc/start_charging_ability()
-	charge_timer_id = addtimer(CALLBACK(src, .proc/finish_charging_ability), charge_time, TIMER_UNIQUE|TIMER_STOPPABLE)
+	charge_timer_id = addtimer(CALLBACK(src, PROC_REF(finish_charging_ability)), charge_time, TIMER_UNIQUE|TIMER_STOPPABLE)
 	to_chat(owner, SPAN_XENOWARNING("You start charging up your <b>[name]</b>!"))
 
 /datum/action/xeno_action/proc/finish_charging_ability()
@@ -394,3 +398,54 @@
 				return FALSE
 
 	return TRUE
+
+
+//An ability that does something actively when toggled
+/datum/action/xeno_action/active_toggle
+	action_type = XENO_ACTION_ACTIVATE
+	var/action_active = FALSE //Is the action active
+	var/plasma_use_per_tick = 0 //How much plasma it costs us to upkeep
+	var/action_start_message = ""
+	var/action_end_message = ""
+
+/datum/action/xeno_action/active_toggle/can_use_action()
+	var/mob/living/carbon/Xenomorph/xeno = owner
+	if(xeno && !xeno.is_mob_incapacitated() && (action_active || xeno.plasma_stored >= plasma_cost))
+		return TRUE
+	return FALSE
+
+/datum/action/xeno_action/active_toggle/action_activate()
+	toggle_toggle()
+
+/datum/action/xeno_action/active_toggle/life_tick()
+	if(action_active && should_use_plasma())
+		. = check_and_use_plasma_owner(plasma_use_per_tick)
+		if(. == FALSE)
+			disable_toggle()
+		return
+	return FALSE
+
+//Checking if plasma should be used
+/datum/action/xeno_action/active_toggle/proc/should_use_plasma()
+	return TRUE
+
+/datum/action/xeno_action/active_toggle/proc/toggle_toggle()
+	if(action_active)
+		disable_toggle()
+	else
+		enable_toggle()
+
+/datum/action/xeno_action/active_toggle/proc/disable_toggle()
+	action_active = FALSE
+	button.icon_state = "template"
+	if(action_end_message)
+		to_chat(owner, SPAN_WARNING(action_end_message))
+
+/datum/action/xeno_action/active_toggle/proc/enable_toggle()
+	if(!check_and_use_plasma_owner(plasma_cost))
+		return
+	action_active = TRUE
+	button.icon_state = "template_active"
+	track_xeno_ability_stats()
+	if(action_start_message)
+		to_chat(owner, SPAN_NOTICE(action_start_message))

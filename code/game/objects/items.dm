@@ -31,14 +31,14 @@
 
 	//SOUND VARS
 	///Sound to be played when item is picked up
-	var/pickupsound
+	var/pickup_sound
 	///Volume of pickup sound
 	var/pickupvol = 15
 	///Whether the pickup sound will vary in pitch/frequency
 	var/pickup_vary = TRUE
 
 	///Sound to be played when item is dropped
-	var/dropsound
+	var/drop_sound
 	///Volume of drop sound
 	var/dropvol = 15
 	///Whether the drop sound will vary in pitch/frequency
@@ -310,8 +310,8 @@ cases. Override_icon_state should be a list.*/
 		qdel(src)
 
 	SEND_SIGNAL(src, COMSIG_ITEM_DROPPED, user)
-	if(dropsound && (src.loc?.z))
-		playsound(src, dropsound, dropvol, drop_vary)
+	if(drop_sound && (src.loc?.z))
+		playsound(src, drop_sound, dropvol, drop_vary)
 	src.do_drop_animation(user)
 
 	appearance_flags &= ~NO_CLIENT_COLOR //So saturation/desaturation etc. effects affect it.
@@ -321,8 +321,8 @@ cases. Override_icon_state should be a list.*/
 	SHOULD_CALL_PARENT(TRUE)
 	SEND_SIGNAL(src, COMSIG_ITEM_PICKUP, user)
 	setDir(SOUTH)//Always rotate it south. This resets it to default position, so you wouldn't be putting things on backwards
-	if(pickupsound && !silent && src.loc?.z)
-		playsound(src, pickupsound, pickupvol, pickup_vary)
+	if(pickup_sound && !silent && src.loc?.z)
+		playsound(src, pickup_sound, pickupvol, pickup_vary)
 	do_pickup_animation(user)
 
 // called when this item is removed from a storage item, which is passed on as S. The loc variable is already set to the new destination before this is called.
@@ -388,7 +388,7 @@ cases. Override_icon_state should be a list.*/
 	if(LAZYLEN(uniform_restricted))
 		UnregisterSignal(user, COMSIG_MOB_ITEM_UNEQUIPPED)
 		if(flags_equip_slot & slotdefine2slotbit(slot))
-			RegisterSignal(user, COMSIG_MOB_ITEM_UNEQUIPPED, .proc/check_for_uniform_restriction)
+			RegisterSignal(user, COMSIG_MOB_ITEM_UNEQUIPPED, PROC_REF(check_for_uniform_restriction))
 
 // Called after the item is removed from equipment slot.
 /obj/item/proc/unequipped(mob/user, slot)
@@ -780,7 +780,7 @@ cases. Override_icon_state should be a list.*/
 
 /obj/item/proc/unzoom(mob/living/user)
 	var/zoom_device = zoomdevicename ? "\improper [zoomdevicename] of [src]" : "\improper [src]"
-	INVOKE_ASYNC(user, /atom.proc/visible_message, SPAN_NOTICE("[user] looks up from [zoom_device]."),
+	INVOKE_ASYNC(user, TYPE_PROC_REF(/atom, visible_message), SPAN_NOTICE("[user] looks up from [zoom_device]."),
 	SPAN_NOTICE("You look up from [zoom_device]."))
 	zoom = !zoom
 	COOLDOWN_START(user, zoom_cooldown, 20)
@@ -820,8 +820,8 @@ cases. Override_icon_state should be a list.*/
 		RegisterSignal(src, list(
 			COMSIG_ITEM_DROPPED,
 			COMSIG_ITEM_UNWIELD,
-		), .proc/unzoom_dropped_callback)
-		RegisterSignal(user, COMSIG_MOB_MOVE_OR_LOOK, .proc/zoom_handle_mob_move_or_look)
+		), PROC_REF(unzoom_dropped_callback))
+		RegisterSignal(user, COMSIG_MOB_MOVE_OR_LOOK, PROC_REF(zoom_handle_mob_move_or_look))
 
 		zoom_initial_mob_dir = user.dir
 

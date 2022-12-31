@@ -65,6 +65,17 @@
 
 /area/varadero/exterior/comms4
 	name = "New Varadero - Walkway Extension"
+	icon_state = "comms4"
+
+/area/varadero/exterior/eastbeach
+	name = "New Varadero - East Beach"
+	icon_state = "varadero1"
+
+/area/varadero/exterior/eastocean
+	name = "New Varadero - East Ocean"
+	is_resin_allowed = FALSE
+	flags_area = AREA_NOTUNNEL
+	icon_state = "varadero2"
 
 /area/varadero/interior/oob
 	name = "New Varadero - Out Of Bounds"

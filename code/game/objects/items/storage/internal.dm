@@ -169,26 +169,26 @@
 
 
 // Marine Helmet Storage
-/obj/item/storage/internal/helmet
+/obj/item/storage/internal/headgear
 	var/list/garb_items
 	var/slots_reserved_for_garb
 
-/obj/item/storage/internal/helmet/can_be_inserted(obj/item/item, stop_messages) //We don't need to stop messages, but it can be left in.
+/obj/item/storage/internal/headgear/can_be_inserted(obj/item/item, stop_messages) //We don't need to stop messages, but it can be left in.
 	. = ..()
 	if(!.)
 		return
 
 	if(!HAS_FLAG(item.flags_obj, OBJ_IS_HELMET_GARB) && length(contents) - length(garb_items) >= storage_slots - slots_reserved_for_garb)
 		if(!stop_messages)
-			to_chat(usr, SPAN_WARNING("This slot is reserved for helmet accessories!"))
+			to_chat(usr, SPAN_WARNING("This slot is reserved for headgear accessories!"))
 		return FALSE
 
-/obj/item/storage/internal/helmet/_item_insertion(obj/item/item, prevent_warning = FALSE)
+/obj/item/storage/internal/headgear/_item_insertion(obj/item/item, prevent_warning = FALSE)
 	if(HAS_FLAG(item.flags_obj, OBJ_IS_HELMET_GARB))
 		LAZYADD(garb_items, item)
 	return ..()
 
-/obj/item/storage/internal/helmet/_item_removal(obj/item/item, atom/new_location)
+/obj/item/storage/internal/headgear/_item_removal(obj/item/item, atom/new_location)
 	if(HAS_FLAG(item.flags_obj, OBJ_IS_HELMET_GARB))
 		LAZYREMOVE(garb_items, item)
 	return ..()

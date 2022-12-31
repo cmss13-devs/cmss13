@@ -12,7 +12,7 @@
 
 	unslashable = TRUE
 
-	vend_delay = 40
+	vend_delay = 4 SECONDS
 	vend_sound = 'sound/machines/medevac_extend.ogg'
 
 	var/selected_vehicle
@@ -25,7 +25,7 @@
 
 /obj/structure/machinery/cm_vending/gear/vehicle_crew/Initialize(mapload, ...)
 	. = ..()
-	RegisterSignal(SSdcs, COMSIG_GLOB_VEHICLE_ORDERED, .proc/populate_products)
+	RegisterSignal(SSdcs, COMSIG_GLOB_VEHICLE_ORDERED, PROC_REF(populate_products))
 	if(!VehicleGearConsole)
 		VehicleGearConsole = src
 

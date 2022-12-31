@@ -41,7 +41,7 @@
 
 	speak_chance = 1//1% (1 in 100) chance every tick; So about once per 150 seconds, assuming an average tick is 1.5s
 	turns_per_move = 5
-	meat_type = /obj/item/reagent_container/food/snacks/cracker/
+	meat_type = /obj/item/reagent_container/food/snacks/cracker
 
 	response_help  = "pets the"
 	response_disarm = "gently moves aside the"
@@ -349,7 +349,7 @@
 			//Search for item to steal
 			parrot_interest = search_for_item()
 			if(parrot_interest)
-				INVOKE_ASYNC(src, .proc/emote, "looks in [parrot_interest]'s direction and takes flight")
+				INVOKE_ASYNC(src, PROC_REF(emote), "looks in [parrot_interest]'s direction and takes flight")
 				parrot_state = PARROT_SWOOP|PARROT_STEAL
 				icon_state = "parrot_fly"
 			return
@@ -371,7 +371,7 @@
 			if(AM)
 				if(istype(AM, /obj/item) || isliving(AM))	//If stealable item
 					parrot_interest = AM
-					INVOKE_ASYNC(src, .proc/emote, "turns and flies towards [parrot_interest]")
+					INVOKE_ASYNC(src, PROC_REF(emote), "turns and flies towards [parrot_interest]")
 					parrot_state = PARROT_SWOOP|PARROT_STEAL
 					return
 				else	//Else it's a perch
@@ -432,7 +432,7 @@
 
 		if(in_range(src, parrot_perch))
 			src.forceMove(parrot_perch.loc)
-			INVOKE_ASYNC(src, .proc/drop_parrot_held_item)
+			INVOKE_ASYNC(src, PROC_REF(drop_parrot_held_item))
 			parrot_state = PARROT_PERCH
 			icon_state = "parrot_sit"
 			return
@@ -485,11 +485,11 @@
 				var/obj/limb/affecting = H.get_limb(rand_zone(pick(parrot_dam_zone)))
 
 				H.apply_damage(damage, BRUTE, affecting, sharp=1)
-				INVOKE_ASYNC(src, .proc/emote, pick("pecks [H]'s [affecting]", "cuts [H]'s [affecting] with its talons"))
+				INVOKE_ASYNC(src, PROC_REF(emote), pick("pecks [H]'s [affecting]", "cuts [H]'s [affecting] with its talons"))
 
 			else
 				L.apply_damage(damage, BRUTE)
-				INVOKE_ASYNC(src, .proc/emote, pick("pecks at [L]", "claws [L]"))
+				INVOKE_ASYNC(src, PROC_REF(emote), pick("pecks at [L]", "claws [L]"))
 			return
 
 		//Otherwise, fly towards the mob!
@@ -501,7 +501,7 @@
 		walk(src,0)
 		parrot_interest = null
 		parrot_perch = null
-		INVOKE_ASYNC(src, .proc/drop_parrot_held_item)
+		INVOKE_ASYNC(src, PROC_REF(drop_parrot_held_item))
 		parrot_state = PARROT_WANDER
 		return
 

@@ -118,7 +118,7 @@
 /obj/item/storage/proc/add_to_watchers(mob/user)
 	if(!(user in content_watchers))
 		LAZYADD(content_watchers, user)
-		RegisterSignal(user, COMSIG_PARENT_QDELETING, .proc/watcher_deleted)
+		RegisterSignal(user, COMSIG_PARENT_QDELETING, PROC_REF(watcher_deleted))
 
 /obj/item/storage/proc/del_from_watchers(mob/watcher)
 	if(watcher in content_watchers)
@@ -676,6 +676,10 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 
 /obj/item/storage/proc/dump_ammo_to(obj/item/ammo_magazine/ammo_dumping, mob/user, var/amount_to_dump = 5) //amount_to_dump should never actually need to be used as default value
 	if(user.action_busy)
+		return
+
+	if(ammo_dumping.flags_magazine & AMMUNITION_CANNOT_REMOVE_BULLETS)
+		to_chat(user, SPAN_WARNING("You can't remove ammo from \the [ammo_dumping]!"))
 		return
 
 	if(ammo_dumping.flags_magazine & AMMUNITION_HANDFUL_BOX)

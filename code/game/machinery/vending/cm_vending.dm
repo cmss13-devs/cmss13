@@ -801,6 +801,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 	icon_state = "guns_rack"
 	vendor_theme = VENDOR_THEME_USCM
 	vend_flags = VEND_CLUTTER_PROTECTION | VEND_LIMITED_INVENTORY | VEND_TO_HAND
+	show_points = FALSE
 
 	//this here is made to provide ability to restock vendors with different subtypes of same object, like handmade and manually filled ammo boxes.
 	var/list/corresponding_types_list
@@ -1213,8 +1214,9 @@ GLOBAL_LIST_INIT(cm_vending_gear_corresponding_types_list, list(
 					user.equip_to_appropriate_slot(new_item)
 
 		if(vend_flags & VEND_TO_HAND)
-			if (user.client?.prefs && (user.client?.prefs?.toggle_prefs & TOGGLE_VEND_ITEM_TO_HAND))
-				user.put_in_any_hand_if_possible(new_item, disable_warning = TRUE)
+			if(user.client?.prefs && (user.client?.prefs?.toggle_prefs & TOGGLE_VEND_ITEM_TO_HAND))
+				if(vendor.Adjacent(user))
+					user.put_in_any_hand_if_possible(new_item, disable_warning = TRUE)
 	else
 		to_chat(user, SPAN_WARNING("ERROR: itemspec is missing. Please report this to admins."))
 		sleep(15)

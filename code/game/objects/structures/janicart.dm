@@ -83,7 +83,7 @@
 		else
 			to_chat(user, SPAN_NOTICE("[src] can't hold any more signs."))
 
-	else if(istype(I, /obj/item/reagent_container/glass/bucket/janibucket))
+	else if(istype(I, /obj/item/reagent_container/glass/bucket/janibucket) && !mybucket)
 		user.drop_held_item()
 		mybucket = I
 		I.forceMove(src)

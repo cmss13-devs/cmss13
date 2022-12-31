@@ -338,7 +338,7 @@
 	set waitfor = 0
 	if(!cause_data)
 		cause_data = create_cause_data(initial(name), user)
-	cell_explosion(loc, 100, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, CARDINAL_ALL_DIRS, cause_data)
+	cell_explosion(loc, 90, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, CARDINAL_ALL_DIRS, cause_data)
 	playsound(loc, 'sound/weapons/gun_sharp_explode.ogg', 35)
 	qdel(src)
 

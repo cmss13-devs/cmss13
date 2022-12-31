@@ -1432,7 +1432,7 @@
 
 /obj/item/weapon/gun/rifle/sharp/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_2
+	fire_delay = FIRE_DELAY_TIER_1
 	accuracy_mult = BASE_ACCURACY_MULT
 	scatter = SCATTER_AMOUNT_NONE
 	damage_mult = BASE_BULLET_DAMAGE_MULT

@@ -43,16 +43,16 @@ fi;
 #	echo -e "${RED}ERROR: Variable editted cables detected, please remove them.${NC}"
 #	st=1
 #fi;
-#if grep -Pzo '/obj/structure/machinery/power/apc[/\w]*?\{\n[^}]*?pixel_[xy] = -?[013-9]\d*?[^\d]*?\s*?\},?\n' maps/**/*.dmm ||
-#	grep -Pzo '/obj/structure/machinery/power/apc[/\w]*?\{\n[^}]*?pixel_[xy] = -?\d+?[0-46-9][^\d]*?\s*?\},?\n' maps/**/*.dmm ||
-#	grep -Pzo '/obj/structure/machinery/power/apc[/\w]*?\{\n[^}]*?pixel_[xy] = -?\d{3,1000}[^\d]*?\s*?\},?\n' maps/**/*.dmm ;	then
-#	echo -e "${RED}ERROR: found an APC with a manually set pixel_x or pixel_y that is not +-25.${NC}"
-#	st=1
-#fi;
-#if grep -P '^/area/.+[\{]' maps/**/*.dmm;	then
-#	echo -e "${RED}ERROR: Vareditted /area path use detected in maps, please replace with proper paths.${NC}"
-#	st=1
-#fi;
+if grep -Pzo '/obj/structure/machinery/power/apc[/\w]*?\{\n[^}]*?pixel_[xy] = -?[013-9]\d*?[^\d]*?\s*?\},?\n' maps/**/*.dmm ||
+	grep -Pzo '/obj/structure/machinery/power/apc[/\w]*?\{\n[^}]*?pixel_[xy] = -?\d+?[0-46-9][^\d]*?\s*?\},?\n' maps/**/*.dmm ||
+	grep -Pzo '/obj/structure/machinery/power/apc[/\w]*?\{\n[^}]*?pixel_[xy] = -?\d{3,1000}[^\d]*?\s*?\},?\n' maps/**/*.dmm ;	then
+	echo -e "${RED}ERROR: found an APC with a manually set pixel_x or pixel_y that is not +-25.${NC}"
+	st=1
+fi;
+if grep -P '^/area/.+[\{]' maps/**/*.dmm;	then
+	echo -e "${RED}ERROR: Vareditted /area path use detected in maps, please replace with proper paths.${NC}"
+	st=1
+fi;
 if grep -P '\W\/turf\s*[,\){]' maps/**/*.dmm; then
 	echo
 	echo -e "${RED}ERROR: base /turf path use detected in maps, please replace with proper paths.${NC}"

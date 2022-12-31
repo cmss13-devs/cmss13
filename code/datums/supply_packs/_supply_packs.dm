@@ -1,6 +1,5 @@
 //SUPPLY PACKS
 //NOTE: only secure crate types use the access var (and are lockable)
-//NOTE: hidden packs only show up when the computer has been hacked.
 //ANOTER NOTE: Contraband is obtainable through modified supplycomp circuitboards.
 //BIG NOTE: Don't add living things to crates, that's bad, it will break the shuttle.
 //NOTE: Do NOT set the price of any crates below 7 points. Doing so allows infinite points.
@@ -9,13 +8,14 @@
 
 /datum/supply_packs
 	var/name = "Basic supply pack."
+	 /// If this variable is null (not if it's an empty list), *and* so is containertype, it won't show up on the order computer.
 	var/list/contains = list()
 	var/manifest = ""
 	var/cost = 7 				/// Determine the price of the crate. Give it a value between 7 and 100 to avoid breaking the game.
+	 /// If this variable is null (not if it's an empty list), *and* so is contains, it won't show up on the order computer.
 	var/containertype = null
 	var/containername = null
 	var/access = null
-	var/hidden = 0 //Hidden packs only show up when the computer has been hacked
 	var/contraband = 0			/// Tell if the crate is a contraband value 1 or not 0.
 	var/group = null
 	var/buyable = 1 			///Can this pack be bought? These packs don't show up at all - they have to be spawned externally (fe: DEFCON ASRS)

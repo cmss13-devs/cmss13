@@ -21,12 +21,11 @@ black market prices are NOT based on real or in-universe costs. they are based o
 
 /datum/supply_packs/contraband//base
 	name = "contraband crate"
-	contains = list(/obj/item/toy/bikehorn)
-	containertype = /obj/structure/closet/crate/trashcart
+	contains = null
+	containertype = null
 	containername = "large crate"
 	group = "Black Market"
 	contraband = TRUE
-	hidden = TRUE
 	cost = 0
 	dollar_cost = 50
 
@@ -48,7 +47,6 @@ Non-USCM items, from CLF, UPP, colonies, etc. Mostly combat-related.
 
 /datum/supply_packs/contraband/seized
 	group = "Seized Items"
-	contains = list()
 
 /datum/supply_packs/contraband/seized/black_market_scanner
 	name = "black market scanner crate"
@@ -498,8 +496,6 @@ Primarily made up of things that would be best utilized, well, shipside. Recreat
 
 /datum/supply_packs/contraband/shipside
 	group = "Shipside Contraband"
-	contains = list()
-	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/shipside/confiscated_alcohol
 	name = "confiscated alcohol crate"
@@ -625,6 +621,7 @@ Primarily made up of things that would be best utilized, well, shipside. Recreat
 		/obj/item/storage/belt/champion,
 		/obj/item/clothing/mask/luchador,
 		/obj/item/tool/soap/deluxe,
+		/obj/item/tool/crowbar/maintenance_jack,
 		/obj/item/explosive/grenade/smokebomb,
 		/obj/item/corncob,
 		/obj/item/poster,
@@ -657,8 +654,6 @@ USCM spare items, miscellaneous gear that's too niche and distant (or restricted
 
 /datum/supply_packs/contraband/surplus
 	group = "Surplus Equipment"
-	contains = list()
-	containertype = /obj/structure/largecrate/black_market
 
 /* - Misc. USCM equipment - */
 
@@ -770,8 +765,6 @@ This is where the RO can reclaim their lost honor and purchase the M44 custom, t
 
 /datum/supply_packs/contraband/deep_storage
 	group = "Deep Storage"
-	contains = list()
-	containertype = /obj/structure/largecrate/black_market
 
 
 // Helmet Garb
@@ -1006,8 +999,6 @@ Things that don't fit anywhere else. If they're meant for shipside use, they pro
 
 /datum/supply_packs/contraband/miscellaneous
 	group = "Miscellaneous"
-	contains = list()
-	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/miscellaneous/secured_wildlife
 	name = "secured wildlife container"

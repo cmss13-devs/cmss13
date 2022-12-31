@@ -485,6 +485,17 @@
 	force = MELEE_FORCE_NORMAL
 	throwforce = MELEE_FORCE_NORMAL
 
+/obj/item/tool/crowbar/maintenance_jack
+	name = "maintenance jack"
+	desc = "A combination crowbar, wrench, and generally large bludgeoning device that comes in handy in emergencies. Can be used to disengage door jacks. Pretty hefty, though."
+	icon_state = "maintenance_jack"
+	item_state = "red_crowbar"
+	hitsound = "swing_hit"
+	w_class = SIZE_MEDIUM
+	force = MELEE_FORCE_NORMAL
+	throwforce = MELEE_FORCE_TIER_4
+	inherent_traits = list(TRAIT_TOOL_CROWBAR, TRAIT_TOOL_WRENCH)
+
 /*
  Welding backpack
 */

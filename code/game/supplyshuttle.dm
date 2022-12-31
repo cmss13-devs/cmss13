@@ -720,7 +720,8 @@ var/datum/controller/supply/supply_controller = new()
 			temp += "<b>Request from: [last_viewed_group]</b><BR><BR>"
 			for(var/supply_name in supply_controller.supply_packs )
 				var/datum/supply_packs/supply_pack = supply_controller.supply_packs[supply_name]
-				if(supply_pack.hidden || supply_pack.contraband || supply_pack.group != last_viewed_group || !supply_pack.buyable) continue								//Have to send the type instead of a reference to
+				if(supply_pack.contraband || supply_pack.group != last_viewed_group || !supply_pack.buyable)
+					continue
 				temp += "<A href='?src=\ref[src];doorder=[supply_name]'>[supply_name]</A> Cost: $[round(supply_pack.cost) * SUPPLY_TO_MONEY_MUPLTIPLIER]<BR>"		//the obj because it would get caught by the garbage
 
 	else if (href_list["doorder"])
@@ -733,7 +734,7 @@ var/datum/controller/supply/supply_controller = new()
 		var/datum/supply_packs/supply_pack = supply_controller.supply_packs[href_list["doorder"]]
 		if(!istype(supply_pack))	return
 
-		if(supply_pack.hidden || supply_pack.contraband || !supply_pack.buyable)
+		if(supply_pack.contraband || !supply_pack.buyable)
 			return
 
 		var/timeout = world.time + 600
@@ -919,17 +920,9 @@ var/datum/controller/supply/supply_controller = new()
 				temp += "<b>Request from: [last_viewed_group]</b><BR><BR>"
 				for(var/supply_name in supply_controller.supply_packs )
 					var/datum/supply_packs/supply_pack = supply_controller.supply_packs[supply_name]
-					if((supply_pack.contraband && !can_order_contraband) || supply_pack.group != last_viewed_group || !supply_pack.buyable) continue								//Have to send the type instead of a reference to
+					if(!is_buyable(supply_pack))
+						continue
 					temp += "<A href='?src=\ref[src];doorder=[supply_name]'>[supply_name]</A> Cost: $[round(supply_pack.cost) * SUPPLY_TO_MONEY_MUPLTIPLIER]<BR>"		//the obj because it would get caught by the garbage
-
-		/*temp = "Supply points: [supply_controller.points]<BR><HR><BR>Request what?<BR><BR>"
-
-		for(var/supply_name in supply_controller.supply_packs )
-			var/datum/supply_packs/supply_pack = supply_controller.supply_packs[supply_name]
-			if(supply_pack.hidden && !hacked) continue
-			if(supply_pack.contraband && !can_order_contraband) continue
-			temp += "<A href='?src=\ref[src];doorder=[supply_name]'>[supply_name]</A> Cost: [supply_pack.cost]<BR>"    //the obj because it would get caught by the garbage
-		temp += "<BR><A href='?src=\ref[src];mainmenu=1'>OK</A>"*/
 
 	else if (href_list["doorder"])
 		if(world.time < reqtime)
@@ -1091,7 +1084,7 @@ var/datum/controller/supply/supply_controller = new()
 	temp += "<b>Purchase from: [last_viewed_group]</b><BR><BR>"
 	for(var/supply_name in supply_controller.supply_packs )
 		var/datum/supply_packs/supply_pack = supply_controller.supply_packs[supply_name]
-		if(supply_pack.group != last_viewed_group)
+		if(!is_buyable(supply_pack))
 			continue
 		temp += "<A href='?src=\ref[src];doorder=[supply_name]'>[supply_name]</A> Cost: $[round(supply_pack.dollar_cost) * BLACK_MARKET_TO_MONEY_MUPLTIPLIER]<BR>"
 
@@ -1225,6 +1218,22 @@ var/datum/controller/supply/supply_controller = new()
 /datum/controller/supply/proc/play_sound_handler(var/sound_to_play, var/timer)
 	 /// For code readability.
 	addtimer(CALLBACK(GLOBAL_PROC, /proc/playsound, get_rand_sound_tile(), sound_to_play, 25, FALSE), timer)
+
+/obj/structure/machinery/computer/supplycomp/proc/is_buyable(var/datum/supply_packs/supply_pack)
+
+	if(supply_pack.group != last_viewed_group)
+		return
+
+	if(!supply_pack.buyable)
+		return
+
+	if(supply_pack.contraband && !can_order_contraband)
+		return
+
+	if(isnull(supply_pack.contains) && isnull(supply_pack.containertype))
+		return
+
+	return TRUE
 
 /obj/structure/machinery/computer/supplycomp/proc/post_signal(var/command)
 

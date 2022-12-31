@@ -18320,9 +18320,9 @@
 /area/shuttle/drop2/sulaco)
 "bfQ" = (
 /obj/item/device/radio/intercom{
-	frequency = 1443;
+	frequency = 1489;
 	layer = 3.5;
-	name = "dropship intercom";
+	name = "normandy dropship intercom";
 	pixel_x = 21;
 	pixel_y = 43
 	},
@@ -18410,9 +18410,9 @@
 /area/shuttle/drop1/sulaco)
 "bge" = (
 /obj/item/device/radio/intercom{
-	frequency = 1441;
+	frequency = 1488;
 	layer = 3.5;
-	name = "dropship intercom";
+	name = "alamo dropship intercom";
 	pixel_x = 21;
 	pixel_y = 43
 	},
@@ -19256,8 +19256,8 @@
 /area/shuttle/drop2/sulaco)
 "bjW" = (
 /obj/item/device/radio/intercom{
-	frequency = 1443;
-	name = "dropship intercom";
+	frequency = 1489;
+	name = "normandy dropship intercom";
 	pixel_y = 24
 	},
 /turf/open/shuttle/dropship{
@@ -19287,8 +19287,8 @@
 /area/shuttle/drop2/sulaco)
 "bjZ" = (
 /obj/item/device/radio/intercom{
-	frequency = 1443;
-	name = "dropship intercom";
+	frequency = 1489;
+	name = "normandy dropship intercom";
 	pixel_y = 24
 	},
 /turf/open/shuttle/dropship{
@@ -19359,8 +19359,8 @@
 /area/shuttle/drop1/sulaco)
 "bkl" = (
 /obj/item/device/radio/intercom{
-	frequency = 1441;
-	name = "dropship intercom";
+	frequency = 1488;
+	name = "alamo dropship intercom";
 	pixel_y = 24
 	},
 /turf/open/shuttle/dropship{
@@ -19390,8 +19390,8 @@
 /area/shuttle/drop1/sulaco)
 "bko" = (
 /obj/item/device/radio/intercom{
-	frequency = 1441;
-	name = "dropship intercom";
+	frequency = 1488;
+	name = "alamo dropship intercom";
 	pixel_y = 24
 	},
 /turf/open/shuttle/dropship{
@@ -21313,7 +21313,7 @@
 /area/almayer/hallways/hangar)
 "brZ" = (
 /obj/item/device/radio/intercom{
-	frequency = 1443;
+	frequency = 1489;
 	layer = 3.5;
 	name = "normandy dropship intercom";
 	pixel_x = -10
@@ -21329,7 +21329,7 @@
 /area/shuttle/drop2/sulaco)
 "bsb" = (
 /obj/item/device/radio/intercom{
-	frequency = 1443;
+	frequency = 1489;
 	layer = 3.5;
 	name = "normandy dropship intercom";
 	pixel_x = 10
@@ -21775,8 +21775,8 @@
 /area/shuttle/drop2/sulaco)
 "btJ" = (
 /obj/item/device/radio/intercom{
-	frequency = 1443;
-	name = "dropship intercom";
+	frequency = 1489;
+	name = "normandy dropship intercom";
 	pixel_y = 24
 	},
 /turf/open/shuttle/dropship{
@@ -21829,8 +21829,8 @@
 /area/shuttle/drop1/sulaco)
 "btR" = (
 /obj/item/device/radio/intercom{
-	frequency = 1441;
-	name = "dropship intercom";
+	frequency = 1488;
+	name = "alamo dropship intercom";
 	pixel_y = 24
 	},
 /turf/open/shuttle/dropship{
@@ -30231,8 +30231,8 @@
 /area/almayer/command/cichallway)
 "bYB" = (
 /obj/item/device/radio/intercom{
-	frequency = 1441;
-	name = "dropship intercom";
+	frequency = 1488;
+	name = "alamo dropship intercom";
 	pixel_x = -10
 	},
 /turf/closed/shuttle/dropship1{
@@ -30253,8 +30253,8 @@
 /area/almayer/hallways/port_hallway)
 "bYF" = (
 /obj/item/device/radio/intercom{
-	frequency = 1441;
-	name = "dropship intercom";
+	frequency = 1488;
+	name = "alamo dropship intercom";
 	pixel_x = 10
 	},
 /turf/closed/shuttle/dropship1{
@@ -36510,7 +36510,7 @@
 /obj/structure/surface/table/almayer,
 /obj/item/device/radio/intercom{
 	canhear_range = 7;
-	frequency = 1441;
+	frequency = 1488;
 	layer = 2.9;
 	name = "alamo dropship intercom"
 	},
@@ -79843,7 +79843,7 @@
 	},
 /obj/structure/surface/table/almayer,
 /obj/item/device/radio/intercom{
-	frequency = 1443;
+	frequency = 1489;
 	layer = 3.5;
 	name = "normandy dropship intercom"
 	},

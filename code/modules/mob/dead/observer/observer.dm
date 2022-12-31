@@ -10,7 +10,7 @@
 	icon_state = "ghost"
 	density = 0
 	canmove = TRUE
-	blinded = 0
+	blinded = FALSE
 	anchored = 1	//  don't get pushed around
 	invisibility = INVISIBILITY_OBSERVER
 	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE

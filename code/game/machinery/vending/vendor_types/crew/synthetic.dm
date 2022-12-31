@@ -267,7 +267,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth_snowflake, list(
 	req_access = list(ACCESS_MARINE_SYNTH)
 	vendor_role = list(JOB_SYNTH, JOB_SYNTH_SURVIVOR)
 
-	vend_delay = 10
+	vend_delay = 1 SECONDS
 
 /obj/structure/machinery/cm_vending/clothing/synth/snowflake/get_listed_products(mob/user)
 	return GLOB.cm_vending_clothing_synth_snowflake

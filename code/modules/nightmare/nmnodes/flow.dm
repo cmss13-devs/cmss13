@@ -44,9 +44,9 @@
 		node.invoke(context)
 
 /// Same as branch, but selects a subset of the given nodes
-///    amount: how many items to pick
-///    choices: nested nodes to pick from
-///    each node should have a 'weight' key if you want to use weighted pick
+/// amount: how many items to pick
+/// choices: nested nodes to pick from
+/// each node should have a 'weight' key if you want to use weighted pick
 /datum/nmnode/picker
 	id = "pick"
 	var/amount = 1

@@ -23,7 +23,7 @@
 	desc = "A large piece of cheap printed paper."
 	icon = 'icons/obj/structures/props/posters.dmi'
 	anchored = 1
-	var/serial_number	//determines the design of the poster
+	var/serial_number //determines the design of the poster
 	var/ruined = 0
 
 
@@ -102,7 +102,7 @@
 	var/temp_loc = user.loc
 	flick("poster_being_set",D)
 	D.forceMove(src)
-	qdel(P)	//delete it now to cut down on sanity checks afterwards. Agouri's code supports rerolling it anyway
+	qdel(P) //delete it now to cut down on sanity checks afterwards. Agouri's code supports rerolling it anyway
 	playsound(D.loc, 'sound/items/poster_being_created.ogg', 25, 1)
 
 	if(!do_after(user, 17, INTERRUPT_ALL, BUSY_ICON_HOSTILE))

@@ -132,6 +132,10 @@
 	if(!hidden && can_use_action() && use_ability(arglist(args)))
 		SEND_SIGNAL(src, COMSIG_XENO_ACTION_USED, owner)
 
+// For actions that do something on each life tick
+/datum/action/xeno_action/proc/life_tick()
+	return
+
 // Activable actions - most abilities in the game. Require Shift/Middle click to do their 'main' effects.
 // The action_activate code of these actions does NOT call use_ability.
 /datum/action/xeno_action/activable
@@ -394,3 +398,54 @@
 				return FALSE
 
 	return TRUE
+
+
+//An ability that does something actively when toggled
+/datum/action/xeno_action/active_toggle
+	action_type = XENO_ACTION_ACTIVATE
+	var/action_active = FALSE //Is the action active
+	var/plasma_use_per_tick = 0 //How much plasma it costs us to upkeep
+	var/action_start_message = ""
+	var/action_end_message = ""
+
+/datum/action/xeno_action/active_toggle/can_use_action()
+	var/mob/living/carbon/Xenomorph/xeno = owner
+	if(xeno && !xeno.is_mob_incapacitated() && (action_active || xeno.plasma_stored >= plasma_cost))
+		return TRUE
+	return FALSE
+
+/datum/action/xeno_action/active_toggle/action_activate()
+	toggle_toggle()
+
+/datum/action/xeno_action/active_toggle/life_tick()
+	if(action_active && should_use_plasma())
+		. = check_and_use_plasma_owner(plasma_use_per_tick)
+		if(. == FALSE)
+			disable_toggle()
+		return
+	return FALSE
+
+//Checking if plasma should be used
+/datum/action/xeno_action/active_toggle/proc/should_use_plasma()
+	return TRUE
+
+/datum/action/xeno_action/active_toggle/proc/toggle_toggle()
+	if(action_active)
+		disable_toggle()
+	else
+		enable_toggle()
+
+/datum/action/xeno_action/active_toggle/proc/disable_toggle()
+	action_active = FALSE
+	button.icon_state = "template"
+	if(action_end_message)
+		to_chat(owner, SPAN_WARNING(action_end_message))
+
+/datum/action/xeno_action/active_toggle/proc/enable_toggle()
+	if(!check_and_use_plasma_owner(plasma_cost))
+		return
+	action_active = TRUE
+	button.icon_state = "template_active"
+	track_xeno_ability_stats()
+	if(action_start_message)
+		to_chat(owner, SPAN_NOTICE(action_start_message))

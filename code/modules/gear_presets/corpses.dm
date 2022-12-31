@@ -117,7 +117,7 @@
 		H.equip_to_slot_or_del(new /obj/item/clothing/head/ushanka(H), WEAR_HEAD)
 
 //*****************************************************************************************************/
-                                 ///////////Civilians//////////////////////
+// Civilians
 
 /datum/equipment_preset/corpse/prisoner
 	name = "Corpse - Prisoner"
@@ -422,7 +422,7 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/jackboots(H), WEAR_FEET)
 
 //*****************************************************************************************************/
-                                /////////////////Officers//////////////////////
+								/////////////////Officers//////////////////////
 
 /datum/equipment_preset/corpse/bridgeofficer
 	name = "Corpse - Staff Officer"

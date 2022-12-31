@@ -671,10 +671,6 @@
 		tracked_marker.xenos_tracking -= src
 		tracked_marker = null
 
-	if(stomach_contents.len)
-		devour_timer = 0
-		handle_stomach_contents()
-
 	if(mind)
 		mind.name = name //Grabs the name when the xeno is getting deleted, to reference through hive status later.
 	if(IS_XENO_LEADER(src)) //Strip them from the Xeno leader list, if they are indexed in here

@@ -161,7 +161,7 @@ RCD
 						activate()
 						qdel(A)
 						return 1
-				return	0
+				return 0
 			return 0
 		else
 			to_chat(user, "ERROR: RCD in MODE: [mode] attempted use by [user]. Send this text #coderbus or an admin.")

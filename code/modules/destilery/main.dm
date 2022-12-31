@@ -44,14 +44,14 @@
 		return
 
 	progress++
-	if(progress < 10)	//Edit this value to make milling faster or slower
-		return	//Not done yet.
+	if(progress < 10) //Edit this value to make milling faster or slower
+		return //Not done yet.
 
 	switch(milled_item.type)
-		if(/obj/item/reagent_container/food/snacks/grown/wheat)	//Wheat becomes flour
+		if(/obj/item/reagent_container/food/snacks/grown/wheat) //Wheat becomes flour
 			var/obj/item/reagent_container/food/snacks/flour/F = new(src)
 			output += F
-		if(/obj/item/reagent_container/food/snacks/flour)	//Flour is still flour
+		if(/obj/item/reagent_container/food/snacks/flour) //Flour is still flour
 			var/obj/item/reagent_container/food/snacks/flour/F = new(src)
 			output += F
 		else
@@ -120,11 +120,11 @@
 	water_level--
 
 	progress++
-	if(progress < 10)	//Edit this value to make milling faster or slower
-		return	//Not done yet.
+	if(progress < 10) //Edit this value to make milling faster or slower
+		return //Not done yet.
 
 	switch(fermenting_item.type)
-		if(/obj/item/reagent_container/food/snacks/flour)	//Flour is still flour
+		if(/obj/item/reagent_container/food/snacks/flour) //Flour is still flour
 			var/obj/item/reagent_container/food/drinks/cans/beer/B = new(src)
 			output += B
 		else
@@ -184,11 +184,11 @@
 		return
 
 	progress++
-	if(progress < 10)	//Edit this value to make distilling faster or slower
-		return	//Not done yet.
+	if(progress < 10) //Edit this value to make distilling faster or slower
+		return //Not done yet.
 
 	switch(destilling_item.type)
-		if(/obj/item/reagent_container/food/drinks/cans/beer)	//Flour is still flour
+		if(/obj/item/reagent_container/food/drinks/cans/beer) //Flour is still flour
 			var/obj/item/reagent_container/food/drinks/bottle/vodka/V = new(src)
 			output += V
 		else
@@ -269,8 +269,8 @@
 		return
 
 	progress++
-	if(progress < 10)	//Edit this value to make milling faster or slower
-		return	//Not done yet.
+	if(progress < 10) //Edit this value to make milling faster or slower
+		return //Not done yet.
 
 	var/transfer_enzymes = spinning_item.reagents.get_reagent_amount("enzyme")
 

@@ -17,13 +17,13 @@
 */
 
 // Pain level, how bad are you in pain right now
-#define PAIN_LEVEL_NONE				0
-#define PAIN_LEVEL_MILD				1
-#define PAIN_LEVEL_DISCOMFORTING	2
-#define PAIN_LEVEL_MODERATE			3
-#define PAIN_LEVEL_DISTRESSING		4
-#define PAIN_LEVEL_SEVERE			5
-#define PAIN_LEVEL_HORRIBLE			6
+#define PAIN_LEVEL_NONE 0
+#define PAIN_LEVEL_MILD 1
+#define PAIN_LEVEL_DISCOMFORTING 2
+#define PAIN_LEVEL_MODERATE 3
+#define PAIN_LEVEL_DISTRESSING 4
+#define PAIN_LEVEL_SEVERE 5
+#define PAIN_LEVEL_HORRIBLE 6
 
 // Time to wait between each pain level increase/decrease
 #define PAIN_UPDATE_FREQUENCY 20
@@ -32,11 +32,11 @@
 #define PAIN_REDUCTION_DECREASE_RATE 0.25
 
 // Movespeed levels, how much is the pain slowing you
-#define PAIN_SPEED_VERYSLOW	4.50
-#define PAIN_SPEED_SLOW		3.75
-#define PAIN_SPEED_HIGH		2.75
-#define PAIN_SPEED_MED		1.50
-#define PAIN_SPEED_LOW		1
+#define PAIN_SPEED_VERYSLOW 4.50
+#define PAIN_SPEED_SLOW 3.75
+#define PAIN_SPEED_HIGH 2.75
+#define PAIN_SPEED_MED 1.50
+#define PAIN_SPEED_LOW 1
 
 // Multipliers for how much pain the different types give
 #define BRUTE_PAIN_MULTIPLIER 1
@@ -44,26 +44,26 @@
 #define TOX_PAIN_MULTIPLIER 1.5
 
 /datum/pain
-	var/mob/living/source_mob 		= null
+	var/mob/living/source_mob = null
 
-	var/current_pain 		= 0
-	var/max_pain 			= 100
-	var/reduction_pain		= 0
+	var/current_pain = 0
+	var/max_pain = 100
+	var/reduction_pain = 0
 
-	var/pain_level 			= PAIN_LEVEL_NONE
-	var/last_level			= PAIN_LEVEL_NONE
+	var/pain_level = PAIN_LEVEL_NONE
+	var/last_level = PAIN_LEVEL_NONE
 
-	var/threshold_mild 				= 20
-	var/threshold_discomforting 	= 30
-	var/threshold_moderate			= 40
-	var/threshold_distressing		= 60
-	var/threshold_severe			= 75
-	var/threshold_horrible			= 85
+	var/threshold_mild = 20
+	var/threshold_discomforting = 30
+	var/threshold_moderate = 40
+	var/threshold_distressing = 60
+	var/threshold_severe = 75
+	var/threshold_horrible = 85
 
-	var/pain_slowdown		= 0
+	var/pain_slowdown = 0
 
 	var/last_reduction_update = 0
-	var/level_updating		= FALSE
+	var/level_updating = FALSE
 
 	var/feels_pain = TRUE
 

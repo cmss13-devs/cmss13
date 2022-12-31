@@ -7,7 +7,7 @@
 	anchored = 1.0
 	layer = LATTICE_LAYER
 	plane = FLOOR_PLANE
-	//	flags = CONDUCT
+	// flags = CONDUCT
 
 /obj/structure/lattice/Initialize()
 	. = ..()
@@ -69,7 +69,7 @@
 
 /obj/structure/lattice/proc/updateOverlays()
 	//if(!(istype(src.loc, /turf/open/space)))
-	//	qdel(src)
+	// qdel(src)
 	spawn(1)
 		overlays = list()
 

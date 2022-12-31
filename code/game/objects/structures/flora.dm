@@ -434,7 +434,7 @@ ICE GRASS
 
 /obj/structure/flora/jungle/treeblocker
 	name = "huge tree"
-	icon_state = ""	//will this break it?? - Nope
+	icon_state = "" //will this break it?? - Nope
 	density = TRUE
 
 /obj/structure/flora/jungle/vines

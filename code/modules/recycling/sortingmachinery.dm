@@ -220,7 +220,7 @@
 
 /obj/item/packageWrap/afterattack(var/obj/target as obj, mob/user as mob, proximity)
 	if(!proximity) return
-	if(!istype(target))	//this really shouldn't be necessary (but it is).	-Pete
+	if(!istype(target)) //this really shouldn't be necessary (but it is). -Pete
 		return
 	if(istype(target, /obj/item/smallDelivery) || istype(target,/obj/structure/bigDelivery) \
 	|| istype(target, /obj/item/gift) || istype(target, /obj/item/evidencebag))
@@ -238,7 +238,7 @@
 	if (istype(target, /obj/item) && !(isstorage(target) && !istype(target,/obj/item/storage/box)))
 		var/obj/item/O = target
 		if (src.amount > 1)
-			var/obj/item/smallDelivery/P = new /obj/item/smallDelivery(get_turf(O.loc))	//Aaannd wrap it up!
+			var/obj/item/smallDelivery/P = new /obj/item/smallDelivery(get_turf(O.loc)) //Aaannd wrap it up!
 			if(!istype(O.loc, /turf))
 				if(user.client)
 					user.client.screen -= O
@@ -358,7 +358,7 @@
 	spawn(5)
 		trunk = locate() in src.loc
 		if(trunk)
-			trunk.linked = src	// link the pipe trunk to self
+			trunk.linked = src // link the pipe trunk to self
 
 /obj/structure/machinery/disposal/deliveryChute/interact()
 	return
@@ -367,7 +367,7 @@
 	return
 
 /obj/structure/machinery/disposal/deliveryChute/Collided(var/atom/movable/AM) //Go straight into the chute
-	if(istype(AM, /obj/item/projectile) || istype(AM, /obj/effect))	return
+	if(istype(AM, /obj/item/projectile) || istype(AM, /obj/effect)) return
 	switch(dir)
 		if(NORTH)
 			if(AM.loc.y != src.loc.y+1) return
@@ -386,21 +386,21 @@
 /obj/structure/machinery/disposal/deliveryChute/flush()
 	flushing = 1
 	flick("intake-closing", src)
-	var/obj/structure/disposalholder/H = new()	// virtual holder object which actually
+	var/obj/structure/disposalholder/H = new() // virtual holder object which actually
 												// travels through the pipes.
 
 	sleep(10)
 	playsound(src, 'sound/machines/disposalflush.ogg', 25, 0)
 	sleep(5) // wait for animation to finish
 
-	H.init(src)	// copy the contents of disposer to holder
+	H.init(src) // copy the contents of disposer to holder
 
 	H.start(src) // start the holder processing movement
 	flushing = 0
 	// now reset disposal state
 	flush = 0
-	if(mode == 2)	// if was ready,
-		mode = 1	// switch to charging
+	if(mode == 2) // if was ready,
+		mode = 1 // switch to charging
 	update()
 	return
 

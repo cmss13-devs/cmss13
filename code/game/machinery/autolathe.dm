@@ -1,6 +1,6 @@
-#define AUTOLATHE_WIRE_HACK 	1
-#define AUTOLATHE_WIRE_SHOCK	2
-#define AUTOLATHE_WIRES_UNCUT	(AUTOLATHE_WIRE_HACK|AUTOLATHE_WIRE_SHOCK) // when none of the wires are cut
+#define AUTOLATHE_WIRE_HACK 1
+#define AUTOLATHE_WIRE_SHOCK 2
+#define AUTOLATHE_WIRES_UNCUT (AUTOLATHE_WIRE_HACK|AUTOLATHE_WIRE_SHOCK) // when none of the wires are cut
 
 /obj/structure/machinery/autolathe
 	name = "\improper autolathe"
@@ -108,8 +108,8 @@
 		to_chat(user, "\The [eating] does not contain significant amounts of useful materials and cannot be accepted.")
 		return
 
-	var/filltype = 0       // Used to determine message.
-	var/total_used = 0     // Amount of material used.
+	var/filltype = 0    // Used to determine message.
+	var/total_used = 0  // Amount of material used.
 	var/mass_per_sheet = 0 // Amount of material constituting one sheet.
 
 	for(var/material in eating.matter)
@@ -367,8 +367,8 @@
 
 /obj/structure/machinery/autolathe/proc/get_wire_descriptions()
 	return list(
-		AUTOLATHE_WIRE_HACK    	= "Item template controller",
-		AUTOLATHE_WIRE_SHOCK	= "Ground safety"
+		AUTOLATHE_WIRE_HACK = "Item template controller",
+		AUTOLATHE_WIRE_SHOCK = "Ground safety"
 	)
 
 /obj/structure/machinery/autolathe/proc/isWireCut(var/wire)

@@ -940,7 +940,7 @@
 	if(!unacidable)
 		M.animation_attack_on(src)
 		if(!opened)
-			var/difficulty = 70	//if its just closed we can smash open quite easily
+			var/difficulty = 70 //if its just closed we can smash open quite easily
 			if(welded)
 				difficulty = 30 // if its welded shut it should be harder to smash open
 			if(prob(difficulty))

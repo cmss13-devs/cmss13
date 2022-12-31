@@ -4,7 +4,7 @@
 	//determines whether or not the object can be destroyed by an explosion
 	var/indestructible = FALSE
 	var/health = null
-	var/reliability = 100	//Used by SOME devices to determine how reliable they are.
+	var/reliability = 100 //Used by SOME devices to determine how reliable they are.
 	var/crit_fail = 0
 	unacidable = FALSE //universal "unacidabliness" var, here so you can use it in any obj.
 	animate_movement = 2
@@ -328,9 +328,9 @@
 	var/spritesheet = FALSE
 	if(icon_override)
 		mob_icon = icon_override
-		if(slot == 	WEAR_L_HAND)
+		if(slot == WEAR_L_HAND)
 			mob_state = "[mob_state]_l"
-		if(slot == 	WEAR_R_HAND)
+		if(slot == WEAR_R_HAND)
 			mob_state = "[mob_state]_r"
 	else if(use_spritesheet(bodytype, slot, mob_state))
 		spritesheet = TRUE

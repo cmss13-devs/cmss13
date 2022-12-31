@@ -67,13 +67,13 @@
 	return
 
 
-/obj/structure/inflatable/proc/attack_generic(mob/living/user, damage = 0)	//used by attack_animal
+/obj/structure/inflatable/proc/attack_generic(mob/living/user, damage = 0) //used by attack_animal
 	health -= damage
 	user.animation_attack_on(src)
 	if(health <= 0)
 		user.visible_message(SPAN_DANGER("[user] tears open [src]!"))
 		deflate(1)
-	else	//for nicer text~
+	else //for nicer text~
 		user.visible_message(SPAN_DANGER("[user] tears at [src]!"))
 
 /obj/structure/inflatable/attack_animal(mob/user as mob)

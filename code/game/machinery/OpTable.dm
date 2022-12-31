@@ -1,7 +1,7 @@
 // patient_exam defines
-#define PATIENT_NOT_AWAKE		1
-#define	PATIENT_LOW_BLOOD		2
-#define PATIENT_LOW_NUTRITION	4
+#define PATIENT_NOT_AWAKE 1
+#define PATIENT_LOW_BLOOD 2
+#define PATIENT_LOW_NUTRITION 4
 
 /obj/structure/machinery/optable
 	name = "Operating Table"

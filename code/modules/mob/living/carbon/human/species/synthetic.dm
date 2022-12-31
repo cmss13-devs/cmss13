@@ -34,8 +34,8 @@
 	blood_color = "#EEEEEE"
 
 	has_organ = list(
-		"heart" =    /datum/internal_organ/heart/prosthetic,
-		"brain" =    /datum/internal_organ/brain/prosthetic,
+		"heart" = /datum/internal_organ/heart/prosthetic,
+		"brain" = /datum/internal_organ/brain/prosthetic,
 		)
 
 	knock_down_reduction = 5

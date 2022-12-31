@@ -1,7 +1,7 @@
 /*
  * Contains:
- * 		Beds
- *		Roller beds
+ * Beds
+ * Roller beds
  */
 
 /*
@@ -270,7 +270,7 @@
 	QDEL_NULL(held)
 
 //////////////////////////////////////////////
-//			PORTABLE SURGICAL BED			//
+// PORTABLE SURGICAL BED //
 //////////////////////////////////////////////
 
 /obj/structure/bed/portable_surgery

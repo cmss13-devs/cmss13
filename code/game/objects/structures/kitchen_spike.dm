@@ -16,10 +16,10 @@
 		return
 	to_chat(user, SPAN_DANGER("They are too big for the spike, try something smaller!"))
 
-//	MouseDrop_T(var/atom/movable/C, mob/user)
-//		if(istype(C, /obj/mob/carbon/monkey)
-//		else if(istype(C, /obj/mob/carbon/alien))
-//		else if(istype(C, /obj/livestock/spesscarp
+// MouseDrop_T(var/atom/movable/C, mob/user)
+// if(istype(C, /obj/mob/carbon/monkey)
+// else if(istype(C, /obj/mob/carbon/alien))
+// else if(istype(C, /obj/livestock/spesscarp
 
 /obj/structure/kitchenspike/attack_hand(mob/user as mob)
 	if(..())

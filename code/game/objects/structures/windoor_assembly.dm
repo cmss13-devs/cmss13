@@ -21,9 +21,9 @@
 	var/obj/item/circuitboard/airlock/electronics = null
 
 	//Vars to help with the icon's name
-	var/facing = "l"	//Does the windoor open to the left or right?
-	var/secure = ""		//Whether or not this creates a secure windoor
-	var/state = "01"	//How far the door assembly has progressed in terms of sprites
+	var/facing = "l" //Does the windoor open to the left or right?
+	var/secure = "" //Whether or not this creates a secure windoor
+	var/state = "01" //How far the door assembly has progressed in terms of sprites
 
 /obj/structure/windoor_assembly/New(Loc, start_dir=NORTH, constructed=0)
 	..()

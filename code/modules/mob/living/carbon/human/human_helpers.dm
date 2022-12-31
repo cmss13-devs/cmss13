@@ -163,6 +163,10 @@
 	else
 		b_icon = B.icon_name
 
+	if(isSpeciesYautja(src))
+		e_icon = src.ethnicity
+		b_icon = src.body_type
+
 	for(var/obj/limb/L in limbs)
 		L.icon_name = get_limb_icon_name(species, b_icon, gender, L.display_name, e_icon)
 

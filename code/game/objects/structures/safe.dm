@@ -34,14 +34,14 @@ FLOOR SAFES
 	unslashable = TRUE
 	unacidable = TRUE
 	var/spawnkey = 1 //Spawn safe code on top of it?
-	var/open = 0		//is the safe open?
-	var/tumbler_1_pos	//the tumbler position- from 0 to 72
-	var/tumbler_1_open	//the tumbler position to open at- 0 to 72
+	var/open = 0 //is the safe open?
+	var/tumbler_1_pos //the tumbler position- from 0 to 72
+	var/tumbler_1_open //the tumbler position to open at- 0 to 72
 	var/tumbler_2_pos
 	var/tumbler_2_open
-	var/dial = 0		//where is the dial pointing?
-	var/space = 0		//the combined w_class of everything in the safe
-	var/maxspace = 24	//the maximum combined w_class of stuff in the safe
+	var/dial = 0 //where is the dial pointing?
+	var/space = 0 //the combined w_class of everything in the safe
+	var/maxspace = 24 //the maximum combined w_class of stuff in the safe
 
 	var/datum/cm_objective/crack_safe/objective
 
@@ -135,7 +135,7 @@ FLOOR SAFES
 	. = ..()
 	if(.)
 		return
-	if(!ishuman(usr))	return
+	if(!ishuman(usr)) return
 	var/mob/living/carbon/human/user = usr
 
 	var/canhear = 0
@@ -210,7 +210,7 @@ FLOOR SAFES
 	name = "floor safe"
 	icon_state = "floorsafe"
 	density = FALSE
-	level = 1	//underfloor
+	level = 1 //underfloor
 	layer = UNDERFLOOR_OBJ_LAYER
 
 

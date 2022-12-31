@@ -6,7 +6,7 @@
 	density = TRUE
 	anchored = TRUE
 
-	var/opened = 0	//for deconstruction
+	var/opened = 0 //for deconstruction
 
 /obj/structure/pipes/unary/freezer/create_valid_directions()
 	valid_directions = list(dir)
@@ -52,7 +52,7 @@
 	icon_state = "heater_0"
 	density = TRUE
 	anchored = 1.0
-	var/opened = 0		//for deconstruction
+	var/opened = 0 //for deconstruction
 
 /obj/structure/pipes/unary/heater/create_valid_directions()
 	valid_directions = list(dir)

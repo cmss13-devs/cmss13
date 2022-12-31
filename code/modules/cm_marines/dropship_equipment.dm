@@ -41,7 +41,7 @@
 				to_chat(user, SPAN_WARNING("You need to unload \the [ammo_equipped] from \the [src] first!"))
 				return TRUE
 			if(uses_ammo)
-				load_ammo(PC, user)	//it handles on it's own whether the ammo fits
+				load_ammo(PC, user) //it handles on it's own whether the ammo fits
 				return
 
 		else
@@ -318,7 +318,7 @@
 			if(ship_base.base_category == DROPSHIP_WEAPON)
 				switch(dir)
 					if(NORTH)
-						if(	istype(get_step(src, WEST), /turf/open) )
+						if( istype(get_step(src, WEST), /turf/open) )
 							deployed_mg.pixel_x = 5
 						else if ( istype(get_step(src, EAST), /turf/open) )
 							deployed_mg.pixel_x = -5

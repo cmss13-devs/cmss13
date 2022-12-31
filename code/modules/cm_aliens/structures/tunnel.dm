@@ -103,7 +103,7 @@
 		exit_tunnel(usr)
 
 /obj/structure/tunnel/proc/pick_tunnel(mob/living/carbon/Xenomorph/X)
-	. = FALSE	//For peace of mind when it comes to dealing with unintended proc failures
+	. = FALSE //For peace of mind when it comes to dealing with unintended proc failures
 	if(!istype(X) || X.stat || X.lying || !isfriendly(X) || !hive)
 		return FALSE
 	if(X in contents)

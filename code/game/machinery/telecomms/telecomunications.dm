@@ -29,14 +29,14 @@ GLOBAL_LIST_EMPTY_TYPED(telecomms_list, /obj/structure/machinery/telecomms)
 	var/list/freq_listening = list() // list of frequencies to tune into: if none, will listen to all
 	var/machinetype = 0 // just a hacky way of preventing alike machines from pairing
 	var/delay = 10 // how many process() ticks to delay per heat
-	var/long_range_link = 0	// Can you link it across Z levels or on the otherside of the map? (Relay & Hub)
+	var/long_range_link = 0 // Can you link it across Z levels or on the otherside of the map? (Relay & Hub)
 	var/circuitboard = null // string pointing to a circuitboard type
-	var/listening_level = 0	// 0 = auto set in New() - this is the z level that the machine is listening to.
+	var/listening_level = 0 // 0 = auto set in New() - this is the z level that the machine is listening to.
 
-	var/tcomms_machine = FALSE 			// Set to true if the machine is enabling tcomms
-	var/toggled = TRUE 					// Is it toggled on
-	var/on = TRUE						// Is it actually on
-	var/hide = FALSE					// Is it a hidden machine?
+	var/tcomms_machine = FALSE // Set to true if the machine is enabling tcomms
+	var/toggled = TRUE // Is it toggled on
+	var/on = TRUE // Is it actually on
+	var/hide = FALSE // Is it a hidden machine?
 
 //Never allow tecommunications machinery being blown up
 /obj/structure/machinery/telecomms/ex_act(severity)
@@ -238,13 +238,13 @@ GLOBAL_LIST_EMPTY_TYPED(telecomms_list, /obj/structure/machinery/telecomms)
 	var/logs = 0 // number of logs
 	var/totaltraffic = 0 // gigabytes (if > 1024, divide by 1024 -> terrabytes)
 
-	var/list/memory = list()	// stored memory
-	var/rawcode = ""	// the code to compile (raw text)
-	var/datum/TCS_Compiler/Compiler	// the compiler that compiles and runs the code
-	var/autoruncode = 0		// 1 if the code is set to run every time a signal is picked up
+	var/list/memory = list() // stored memory
+	var/rawcode = "" // the code to compile (raw text)
+	var/datum/TCS_Compiler/Compiler // the compiler that compiles and runs the code
+	var/autoruncode = 0 // 1 if the code is set to run every time a signal is picked up
 
 	var/encryption = "null" // encryption key: ie "password"
-	var/salt = "null"		// encryption salt: ie "123comsat"
+	var/salt = "null" // encryption salt: ie "123comsat"
 							// would add up to md5("password123comsat")
 	var/language = "human"
 	var/obj/item/device/radio/headset/server_radio = null

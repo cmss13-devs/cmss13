@@ -109,7 +109,7 @@
 	"}
 
 /datum/browser/proc/open(var/use_onclose = TRUE)
-	if(isnull(window_id))	//null check because this can potentially nuke goonchat
+	if(isnull(window_id)) //null check because this can potentially nuke goonchat
 		to_chat(user, "<span class='userdanger'>The [title] browser you tried to open failed a sanity check! Please report this on github!</span>")
 		return
 	var/window_size = ""
@@ -163,8 +163,8 @@
 // e.g. canisters, timers, etc.
 //
 // windowid should be the specified window name
-// e.g. code is	: user << browse(text, "window=fred")
-// then use 	: onclose(user, "fred")
+// e.g. code is : user << browse(text, "window=fred")
+// then use : onclose(user, "fred")
 //
 // Optionally, specify the "ref" parameter as the controlled atom (usually src)
 // to pass a "close=1" parameter or a custom list of parameters to the atom's
@@ -202,11 +202,11 @@
 // otherwise, just reset the client mob's machine var.
 //
 /client/verb/windowclose(var/atomref as text|null, var/params as text|null)
-	set hidden = 1						// hide this verb from the user's panel
-	set name = ".windowclose"			// no autocomplete on cmd line
+	set hidden = 1 // hide this verb from the user's panel
+	set name = ".windowclose" // no autocomplete on cmd line
 
-	if(atomref && atomref != "null")				// if passed a real atomref
-		var/hsrc = locate(atomref)	// find the reffed atom
+	if(atomref && atomref != "null") // if passed a real atomref
+		var/hsrc = locate(atomref) // find the reffed atom
 		if(hsrc)
 			usr = src.mob
 			var/param_string = "close=1"

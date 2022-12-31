@@ -8,7 +8,7 @@
 	var/obj/item/cell/cell
 	var/on = 0
 	var/open = 0
-	var/set_temperature = T0C + 70	//K
+	var/set_temperature = T0C + 70 //K
 	var/heating_power = 40000
 
 	flags_atom = FPRINT

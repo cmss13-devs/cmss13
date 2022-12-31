@@ -51,9 +51,9 @@
 	close_sound = 'sound/effects/vegetation_walk_2.ogg'
 	item_path = /obj/item/bodybag/tarp
 	anchored = 0
-	var/uncloak_time = 3	//in SECONDS, this is how long it takes for the tarp to become fully visible again once it's opened from an invisible state
-	var/cloak_time = 15		//ditto for cloaking
-	var/closed_alpha = 60	//how much ALPHA the tarp has once it's fully cloaked.
+	var/uncloak_time = 3 //in SECONDS, this is how long it takes for the tarp to become fully visible again once it's opened from an invisible state
+	var/cloak_time = 15 //ditto for cloaking
+	var/closed_alpha = 60 //how much ALPHA the tarp has once it's fully cloaked.
 	var/can_store_dead = FALSE
 	var/is_animating = FALSE
 	var/first_open = TRUE

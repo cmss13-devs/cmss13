@@ -206,18 +206,18 @@
 	//Translate clone position by projection factor
 	//This is done first to reduce movement latency
 
-	clone.anchored 		= anchored //Some of these may be suitable for Init
-	clone.appearance 	= appearance
-	clone.dir 			= dir
-	clone.flags_atom 	= flags_atom
-	clone.density 		= density
-	clone.layer 		= layer
-	clone.level 		= level
-	clone.name 			= name
-	clone.pixel_x 		= pixel_x
-	clone.pixel_y 		= pixel_y
-	clone.transform 	= transform
-	clone.invisibility 	= invisibility
+	clone.anchored = anchored //Some of these may be suitable for Init
+	clone.appearance = appearance
+	clone.dir = dir
+	clone.flags_atom = flags_atom
+	clone.density = density
+	clone.layer = layer
+	clone.level = level
+	clone.name = name
+	clone.pixel_x = pixel_x
+	clone.pixel_y = pixel_y
+	clone.transform = transform
+	clone.invisibility = invisibility
 	////////////////////
 
 	if(light) //Clone lighting
@@ -248,5 +248,5 @@
 
 /atom/movable/proc/safe_throw_at(atom/target, range, speed, mob/thrower, spin = TRUE)
 	//if((force < (move_resist * MOVE_FORCE_THROW_RATIO)) || (move_resist == INFINITY))
-	//	return
+	// return
 	return throw_atom(target, range, speed, thrower, spin)

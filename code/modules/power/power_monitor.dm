@@ -59,7 +59,7 @@
 
 		if(L.len > 0)
 			var/total_demand = 0
-			t += "Area                           Eqp./Lgt./Env.  Load   Cell<HR>"
+			t += "Area    Eqp./Lgt./Env.  Load   Cell<HR>"
 
 			var/list/S = list(" Off","AOff","  On", " AOn")
 			var/list/chg = list("N","C","F")

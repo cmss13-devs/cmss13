@@ -65,13 +65,13 @@
 	return //TODO: DEFERRED
 
 
-/mob/living/brain/handle_regular_status_updates(regular_update = TRUE)	//TODO: comment out the unused bits >_>
+/mob/living/brain/handle_regular_status_updates(regular_update = TRUE) //TODO: comment out the unused bits >_>
 	updatehealth()
 
-	if(stat == DEAD)	//DEAD. BROWN BREAD. SWIMMING WITH THE SPESS CARP
+	if(stat == DEAD) //DEAD. BROWN BREAD. SWIMMING WITH THE SPESS CARP
 		blinded = TRUE
 		silent = 0
-	else				//ALIVE. LIGHTS ARE ON
+	else //ALIVE. LIGHTS ARE ON
 		if( !container && (health < HEALTH_THRESHOLD_DEAD || ((world.time - timeofhostdeath) > CONFIG_GET(number/revival_brain_life))) )
 			death(last_damage_data)
 			blinded = TRUE
@@ -79,7 +79,7 @@
 			return 1
 
 		//Handling EMP effect in the Life(), it's made VERY simply, and has some additional effects handled elsewhere
-		if(emp_damage && regular_update)			//This is pretty much a damage type only used by MMIs, dished out by the emp_act
+		if(emp_damage && regular_update) //This is pretty much a damage type only used by MMIs, dished out by the emp_act
 			if(!(container && istype(container, /obj/item/device/mmi)))
 				emp_damage = 0
 			else

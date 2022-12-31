@@ -25,8 +25,8 @@
 			var/i
 			for(var/obj/limb/O in list(right_hand, left_hand))
 				if(!O || !O.is_usable()) continue //Not if the organ can't possibly function.
-				if(O.name == "l_hand") 	drop_l_hand()
-				else 					drop_r_hand()
+				if(O.name == "l_hand") drop_l_hand()
+				else drop_r_hand()
 				i++
 			if(i) msg += ", [pick("fumbling with","struggling with","losing control of")] your [i < 2 ? "hand" : "hands"]"
 			to_chat(H, SPAN_WARNING("[msg]."))
@@ -84,7 +84,7 @@
 
 /mob/living/carbon/human/proc/handle_pain()
 	if(stat >= UNCONSCIOUS)
-		return 	// not when sleeping
+		return // not when sleeping
 	if(!pain.feels_pain)
 		return
 	if(pain.reduction_pain >= PAIN_REDUCTION_HEAVY)

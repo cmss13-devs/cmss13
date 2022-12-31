@@ -29,8 +29,8 @@ SUBSYSTEM_DEF(statpanels)
 		global_data = list(
 			"Map: [SSmapping.configs?[GROUND_MAP]?.map_name || "Loading..."]",
 			cached ? "Next Map: [cached?.map_name]" : null,
-//			"Round ID: [GLOB.round_id ? GLOB.round_id : "NULL"]", // this is commented because we don't have it and we should have it instead of using debug DB - be the hero of today
-//          "Round Time: [ROUND_TIME]",
+// "Round ID: [GLOB.round_id ? GLOB.round_id : "NULL"]", // this is commented because we don't have it and we should have it instead of using debug DB - be the hero of today
+//   "Round Time: [ROUND_TIME]",
 			"Server Time: [time2text(world.timeofday, "YYYY-MM-DD hh:mm:ss")]",
 			"Round Time: [duration2text()]",
 			"Operation Time: [worldtime2text()]",
@@ -135,7 +135,7 @@ SUBSYSTEM_DEF(statpanels)
 		if(turf_content in overrides)
 			continue
 		//if(turf_content.IsObscured()) // requires click under flags to work
-		//	continue
+		// continue
 		atoms_to_display += turf_content
 
 	/// Set the atoms we're meant to display
@@ -192,7 +192,7 @@ SUBSYSTEM_DEF(statpanels)
 		list("World Time:", "[world.time]"),
 		list("Globals:", GLOB.stat_entry(), "\ref[GLOB]"),
 		list("[config]:", config.stat_entry(), "\ref[config]"),
-//		list("Byond:", "(FPS:[world.fps]) (TickCount:[world.time/world.tick_lag]) (TickDrift:[round(Master.tickdrift,1)]([round((Master.tickdrift/(world.time/world.tick_lag))*100,0.1)]%)) (Internal Tick Usage: [round(MAPTICK_LAST_INTERNAL_TICK_USAGE,0.1)]%)"),
+// list("Byond:", "(FPS:[world.fps]) (TickCount:[world.time/world.tick_lag]) (TickDrift:[round(Master.tickdrift,1)]([round((Master.tickdrift/(world.time/world.tick_lag))*100,0.1)]%)) (Internal Tick Usage: [round(MAPTICK_LAST_INTERNAL_TICK_USAGE,0.1)]%)"),
 		list("Byond:", "(FPS:[world.fps]) (TickCount:[world.time/world.tick_lag]) (TickDrift:[round(Master.tickdrift,1)]([round((Master.tickdrift/(world.time/world.tick_lag))*100,0.1)]%)"),
 		list("Master Controller:", Master.stat_entry(), "\ref[Master]"),
 		list("Failsafe Controller:", Failsafe.stat_entry(), "\ref[Failsafe]"),

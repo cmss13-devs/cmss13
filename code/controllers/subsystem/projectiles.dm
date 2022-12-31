@@ -34,7 +34,7 @@ SUBSYSTEM_DEF(projectiles)
 	projectiles = list()
 	flying = list()
 	sleepers = list()
-	return ..()
+	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/projectiles/fire(resumed = FALSE)
 	if(!resumed)

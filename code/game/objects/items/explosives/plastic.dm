@@ -121,7 +121,7 @@
 		user.visible_message(SPAN_WARNING("[user] plants [name] on [target]!"),
 		SPAN_WARNING("You plant [name] on [target]! Timer counting down from [timer]."))
 		active = TRUE
-		addtimer(CALLBACK(src, .proc/prime), timer * 10)
+		addtimer(CALLBACK(src, PROC_REF(prime)), timer * 10)
 
 /obj/item/explosive/plastic/attackby(obj/item/W, mob/user)
 	if(HAS_TRAIT(W, TRAIT_TOOL_MULTITOOL))
@@ -278,7 +278,7 @@
 		else if(issignaller(detonator.a_right) || issignaller(detonator.a_left))
 			overlays += new /obj/effect/overlay/danger
 			layer = INTERIOR_DOOR_LAYER
-			addtimer(CALLBACK(src, .proc/delayed_prime, target_turf), 3 SECONDS)
+			addtimer(CALLBACK(src, PROC_REF(delayed_prime), target_turf), 3 SECONDS)
 			return
 		else
 			. = ..()

@@ -13,19 +13,19 @@
 
 //Quick type checks for weapons
 var/global/list/weapons = list(
-    /obj/item/weapon,
-    /obj/item/attachable/bayonet
+	/obj/item/weapon,
+	/obj/item/attachable/bayonet
 )
 
 //Quick type checks for some tools
 var/global/list/common_tools = list(
-    /obj/item/stack/cable_coil,
-    /obj/item/tool/wrench,
-    /obj/item/tool/weldingtool,
-    /obj/item/tool/screwdriver,
-    /obj/item/tool/wirecutters,
-    /obj/item/device/multitool,
-    /obj/item/tool/crowbar
+	/obj/item/stack/cable_coil,
+	/obj/item/tool/wrench,
+	/obj/item/tool/weldingtool,
+	/obj/item/tool/screwdriver,
+	/obj/item/tool/wirecutters,
+	/obj/item/device/multitool,
+	/obj/item/tool/crowbar
 )
 
 /obj/item/proc/can_pry()

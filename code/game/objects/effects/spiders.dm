@@ -116,10 +116,10 @@
 		amount_grown = 1
 
 /obj/effect/spider/spiderling/nogrow/Initialize(mapload, ...)
-    . = ..()
-    pixel_x = rand(6,-6)
-    pixel_y = rand(6,-6)
-    START_PROCESSING(SSobj, src)
+	. = ..()
+	pixel_x = rand(6,-6)
+	pixel_y = rand(6,-6)
+	START_PROCESSING(SSobj, src)
 
 /obj/effect/spider/spiderling/Destroy()
 	STOP_PROCESSING(SSobj, src)

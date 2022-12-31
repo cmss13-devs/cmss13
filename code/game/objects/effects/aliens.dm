@@ -125,7 +125,7 @@
 			continue
 
 	START_PROCESSING(SSobj, src)
-	addtimer(CALLBACK(src, .proc/die), time_to_live)
+	addtimer(CALLBACK(src, PROC_REF(die)), time_to_live)
 	animate(src, time_to_live, alpha = 128)
 
 /obj/effect/xenomorph/spray/Destroy()
@@ -292,6 +292,7 @@
 	var/acid_strength = 1 //100% speed, normal
 	var/barricade_damage = 40
 	var/barricade_damage_ticks = 10 // tick is once per 5 seconds. This tells us how many times it will try damaging barricades
+	var/in_weather = FALSE
 
 //Sentinel weakest acid
 /obj/effect/xenomorph/acid/weak
@@ -311,11 +312,28 @@
 	..(loc)
 	acid_t = target
 	var/strength_t = isturf(acid_t) ? 8:4 // Turf take twice as long to take down.
+	handle_weather()
 	tick(strength_t)
+
+	RegisterSignal(SSdcs, COMSIG_GLOB_WEATHER_CHANGE, .proc/handle_weather)
 
 /obj/effect/xenomorph/acid/Destroy()
 	acid_t = null
 	. = ..()
+
+/obj/effect/xenomorph/acid/proc/handle_weather()
+	SIGNAL_HANDLER
+
+	var/area/acids_area = get_area(src)
+	if(!acids_area)
+		return
+
+	if(SSweather.is_weather_event && locate(acids_area.master) in SSweather.weather_areas)
+		acid_strength = acid_strength + (SSweather.weather_event_instance.fire_smothering_strength * 0.33) //smothering_strength is 1-10, acid strength is a multiplier
+		in_weather = SSweather.weather_event_instance.fire_smothering_strength
+	else
+		acid_strength = initial(acid_strength)
+		in_weather = FALSE
 
 /obj/effect/xenomorph/acid/proc/handle_barricade()
 	var/obj/structure/barricade/cade = acid_t
@@ -329,7 +347,7 @@
 		return
 
 	if(istype(acid_t,/obj/structure/barricade))
-		if(++ticks >= barricade_damage_ticks)
+		if(++ticks >= barricade_damage_ticks || prob(in_weather))
 			visible_message(SPAN_XENOWARNING("Acid on \The [acid_t] subsides!"))
 			qdel(src)
 			return
@@ -407,8 +425,8 @@
 	else
 		qdel(src)
 
-	addtimer(CALLBACK(src, .proc/damage_mobs), time_before_damage)
-	addtimer(CALLBACK(src, .proc/make_smoke), time_before_smoke)
+	addtimer(CALLBACK(src, PROC_REF(damage_mobs)), time_before_damage)
+	addtimer(CALLBACK(src, PROC_REF(make_smoke)), time_before_smoke)
 
 /obj/effect/xenomorph/boiler_bombard/proc/damage_mobs()
 	if (!istype(src) || !isturf(loc))
@@ -481,7 +499,7 @@
 /obj/effect/xenomorph/acid_damage_delay/New(loc, damage = 20, delay = 10, empowered = FALSE, message = null, mob/living/carbon/Xenomorph/linked_xeno = null)
 	..(loc)
 
-	addtimer(CALLBACK(src, .proc/die), delay)
+	addtimer(CALLBACK(src, PROC_REF(die)), delay)
 	src.damage = damage
 	src.message = message
 	src.linked_xeno = linked_xeno

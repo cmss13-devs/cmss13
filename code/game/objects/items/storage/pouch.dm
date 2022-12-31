@@ -1232,7 +1232,7 @@
 	can_hold = list(/obj/item/device, /obj/item/tool)
 	bypass_w_limit = list(/obj/item/tool/shovel/etool)
 	storage_flags = STORAGE_FLAGS_POUCH|STORAGE_USING_DRAWING_METHOD
-	var/sling_range = 1
+	var/sling_range = 2
 	var/obj/item/slung
 
 /obj/item/storage/pouch/sling/get_examine_text(mob/user)
@@ -1297,7 +1297,7 @@
 /obj/item/storage/pouch/sling/proc/handle_retrieval(mob/living/carbon/human/user)
 	if(slung && slung.loc == src)
 		return
-	addtimer(CALLBACK(src, .proc/attempt_retrieval, user), 0.3 SECONDS, TIMER_UNIQUE|TIMER_NO_HASH_WAIT)
+	addtimer(CALLBACK(src, PROC_REF(attempt_retrieval), user), 0.3 SECONDS, TIMER_UNIQUE|TIMER_NO_HASH_WAIT)
 
 /obj/item/storage/pouch/cassette
 	name = "cassette pouch"

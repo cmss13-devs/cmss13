@@ -58,8 +58,8 @@
 	RegisterSignal(parent, list(,
 		COMSIG_XENO_BULLET_ACT,
 		COMSIG_HUMAN_BULLET_ACT
-	), .proc/apply_cluster_stacks)
-	RegisterSignal(parent, COMSIG_XENO_APPEND_TO_STAT, .proc/stat_append)
+	), PROC_REF(apply_cluster_stacks))
+	RegisterSignal(parent, COMSIG_XENO_APPEND_TO_STAT, PROC_REF(stat_append))
 
 /datum/component/cluster_stack/UnregisterFromParent()
 	STOP_PROCESSING(SSdcs, src)
@@ -86,7 +86,7 @@
 		L.visible_message(SPAN_DANGER("You hear an explosion from the insides of [L]!"))
 		L.apply_armoured_damage(old_dmg_cont * 0.3, ARMOR_BOMB, BRUTE)
 		var/datum/cause_data/cause_data = create_cause_data("cluster explosion", P.firer)
-		INVOKE_ASYNC(GLOBAL_PROC, /atom.proc/cell_explosion, get_turf(L), 50, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, P.dir, cause_data)
+		INVOKE_ASYNC(GLOBAL_PROC, TYPE_PROC_REF(/atom, cell_explosion), get_turf(L), 50, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, P.dir, cause_data)
 
 
 #undef COLOR_CLUSTER

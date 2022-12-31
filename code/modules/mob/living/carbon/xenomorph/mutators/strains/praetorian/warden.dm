@@ -71,8 +71,7 @@
 		holder.overlays += image('icons/mob/hud/hud.dmi', "xenoenergy[percentage_energy]")
 
 /datum/behavior_delegate/praetorian_warden/handle_death(mob/M)
-	var/mob/living/carbon/Xenomorph/Praetorian/praetorian = M
-	var/image/holder = praetorian.hud_list[PLASMA_HUD]
+	var/image/holder = bound_xeno.hud_list[PLASMA_HUD]
 	holder.overlays.Cut()
 
 /datum/behavior_delegate/praetorian_warden/melee_attack_additional_effects_self()

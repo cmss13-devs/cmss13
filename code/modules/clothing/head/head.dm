@@ -82,7 +82,7 @@
 /obj/item/clothing/head/beret/cm/squadberet/equipped(mob/user, slot)
 	. = ..()
 	self_set()
-	RegisterSignal(user, COMSIG_SET_SQUAD, .proc/self_set, TRUE)
+	RegisterSignal(user, COMSIG_SET_SQUAD, PROC_REF(self_set), TRUE)
 
 /obj/item/clothing/head/beret/cm/squadberet/dropped(mob/user)
 	. = ..()
@@ -176,7 +176,7 @@
 	adapt_to_squad()
 
 /obj/item/clothing/head/headband/squad/equipped(mob/user, slot, silent)
-	RegisterSignal(user, COMSIG_SET_SQUAD, .proc/update_clothing_wrapper, TRUE)
+	RegisterSignal(user, COMSIG_SET_SQUAD, PROC_REF(update_clothing_wrapper), TRUE)
 	adapt_to_squad()
 	return ..()
 
@@ -219,7 +219,7 @@
 		)
 	var/base_cap_icon
 	var/flags_marine_hat = HAT_GARB_OVERLAY|HAT_CAN_FLIP
-	var/obj/item/storage/internal/pockets
+	var/obj/item/storage/internal/headgear/pockets
 	var/list/allowed_hat_items = list(
 						/obj/item/storage/fancy/cigarettes/emeraldgreen = "hat_cig_cig",
 						/obj/item/storage/fancy/cigarettes/kpack = "hat_cig_kpack",
@@ -249,6 +249,10 @@
 						/obj/item/prop/helmetgarb/lucky_feather/blue = "lucky_feather_blue",
 						/obj/item/prop/helmetgarb/lucky_feather/purple = "lucky_feather_purple",
 						/obj/item/prop/helmetgarb/lucky_feather/yellow = "lucky_feather_yellow")
+	var/storage_slots = 1
+	var/storage_slots_reserved_for_garb = 1
+	var/storage_max_w_class = SIZE_TINY
+	var/storage_max_storage_space = 4
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
 	)
@@ -259,11 +263,13 @@
 		select_gamemode_skin(type)
 	base_cap_icon = icon_state
 	helmet_overlays = list("item") //To make things simple.
-	pockets = new/obj/item/storage/internal(src)
-	pockets.storage_slots = 1
-	pockets.max_w_class = 0
+
+	pockets = new(src)
+	pockets.storage_slots = storage_slots + storage_slots_reserved_for_garb
+	pockets.slots_reserved_for_garb = storage_slots_reserved_for_garb
+	pockets.max_w_class = storage_max_w_class
 	pockets.bypass_w_limit = allowed_hat_items
-	pockets.max_storage_space = 1
+	pockets.max_storage_space = storage_max_storage_space
 
 /obj/item/clothing/head/cmcap/attack_hand(mob/user)
 	if(loc != user)
@@ -292,18 +298,20 @@
 		M.update_inv_head()
 
 /obj/item/clothing/head/cmcap/get_mob_overlay(mob/user_mob, slot)
-	var/image/ret = ..()
-	if(slot == WEAR_HEAD)
-		if(length(pockets.contents) && (flags_marine_hat & HAT_GARB_OVERLAY))
-			var/obj/O = pockets.contents[1]
-			if(O.type in allowed_hat_items)
-				var/garb_state = allowed_hat_items[O.type]
-				if(garb_state == HAT_GARB_RELAY_ICON_STATE)
-					garb_state = "hat_[O.icon_state]"
-				var/image/I = overlay_image('icons/mob/humans/onmob/helmet_garb.dmi', "[garb_state]", color, RESET_COLOR)
-				ret.overlays += I
+	var/image/return_image = ..()
+	if(!slot == WEAR_HEAD)
+		return
 
-	return ret
+	if(length(pockets.contents) && (flags_marine_hat & HAT_GARB_OVERLAY))
+		for(var/obj/garb_object in pockets.contents)
+			if(garb_object.type in allowed_hat_items)
+				var/garb_state = allowed_hat_items[garb_object.type]
+				if(garb_state == HAT_GARB_RELAY_ICON_STATE)
+					garb_state = "hat_[garb_object.icon_state]"
+				var/image/garb_image = overlay_image('icons/mob/humans/onmob/helmet_garb.dmi', "[garb_state]", color, RESET_COLOR)
+				return_image.overlays += garb_image
+
+	return return_image
 
 /obj/item/clothing/head/cmcap/has_garb_overlay()
 	return flags_marine_hat & HAT_GARB_OVERLAY

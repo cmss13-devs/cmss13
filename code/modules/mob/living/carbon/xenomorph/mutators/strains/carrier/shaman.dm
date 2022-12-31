@@ -170,7 +170,7 @@
 		effect_power++
 		xenomorphs_in_range += xeno
 
-	addtimer(CALLBACK(xeno_behavior, /datum/behavior_delegate/carrier_shaman.proc/reset_shaman_ability), action_def.get_cooldown())
+	addtimer(CALLBACK(xeno_behavior, TYPE_PROC_REF(/datum/behavior_delegate/carrier_shaman, reset_shaman_ability)), action_def.get_cooldown())
 
 	if(!length(xenomorphs_in_range))
 		to_chat(src, SPAN_XENOWARNING("There weren't enough of your allies around for the sacrifice to be effective."))
@@ -269,7 +269,7 @@
 		effect_overlay.flick_overlay(xeno, 20)
 		effect_power++
 
-	addtimer(CALLBACK(xeno_behavior, /datum/behavior_delegate/carrier_shaman.proc/reset_shaman_ability), action_def.get_cooldown())
+	addtimer(CALLBACK(xeno_behavior, TYPE_PROC_REF(/datum/behavior_delegate/carrier_shaman, reset_shaman_ability)), action_def.get_cooldown())
 
 	if(xeno_behavior.enable_pain_usage && effect_power < xeno_behavior.remembered_count)
 		to_chat(src, SPAN_XENOWARNING("You use stored pain memory."))
@@ -385,7 +385,7 @@
 		effect_overlay.flick_overlay(xeno, 20)
 		effect_power++
 
-	addtimer(CALLBACK(xeno_behavior, /datum/behavior_delegate/carrier_shaman.proc/reset_shaman_ability), action_def.get_cooldown())
+	addtimer(CALLBACK(xeno_behavior, TYPE_PROC_REF(/datum/behavior_delegate/carrier_shaman, reset_shaman_ability)), action_def.get_cooldown())
 
 	if(xeno_behavior.enable_pain_usage && effect_power < xeno_behavior.remembered_count)
 		to_chat(src, SPAN_XENOWARNING("You use stored pain memory."))
@@ -404,7 +404,7 @@
 	playsound(loc, "alien_drool", 25)
 	visible_message(SPAN_XENOWARNING("\The [src] begins to emit madness-inducing pheromones."), SPAN_XENOWARNING("You begin to emit an array of pheromones."), null, 5)
 
-	addtimer(CALLBACK(src, /mob/living/carbon/Xenomorph/Carrier.proc/egg_sacr_pheromones_disable), 30 SECONDS)
+	addtimer(CALLBACK(src, TYPE_PROC_REF(/mob/living/carbon/Xenomorph/Carrier, egg_sacr_pheromones_disable)), 30 SECONDS)
 	return TRUE
 
 
@@ -475,7 +475,7 @@
 		effect_overlay.flick_overlay(xeno, 20)
 		effect_power++
 
-	addtimer(CALLBACK(xeno_behavior, /datum/behavior_delegate/carrier_shaman.proc/reset_shaman_ability), action_def.get_cooldown())
+	addtimer(CALLBACK(xeno_behavior, TYPE_PROC_REF(/datum/behavior_delegate/carrier_shaman, reset_shaman_ability)), action_def.get_cooldown())
 
 	if(!effect_power)
 		to_chat(src, SPAN_XENOWARNING("There weren't enough of your allies around for the sacrifice to be effective."))

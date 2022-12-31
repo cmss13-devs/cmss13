@@ -315,7 +315,7 @@
 	handle_weather()
 	tick(strength_t)
 
-	RegisterSignal(SSdcs, COMSIG_GLOB_WEATHER_CHANGE, .proc/handle_weather)
+	RegisterSignal(SSdcs, COMSIG_GLOB_WEATHER_CHANGE, PROC_REF(handle_weather))
 
 /obj/effect/xenomorph/acid/Destroy()
 	acid_t = null

@@ -12,7 +12,7 @@
 
 	unslashable = TRUE
 
-	vend_delay = 40
+	vend_delay = 4 SECONDS
 	vend_sound = 'sound/machines/medevac_extend.ogg'
 
 	var/selected_vehicle

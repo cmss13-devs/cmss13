@@ -356,14 +356,9 @@ Make sure their actual health updates immediately.*/
 			if(prob(50) && !is_runner_hiding && !current_aura)
 				plasma_stored += 0.1 * plasma_max / 100
 
-		if(isXenoHivelord(src))
-			var/mob/living/carbon/Xenomorph/Hivelord/H = src
-			if(H.weedwalking_activated)
-				plasma_stored -= 30
-				if(plasma_stored < 0)
-					H.weedwalking_activated = 0
-					to_chat(src, SPAN_WARNING("You feel dizzy as the world slows down."))
-					recalculate_move_delay = TRUE
+
+		for(var/datum/action/xeno_action/action in src.actions)
+			action.life_tick()
 
 		if(current_aura)
 			plasma_stored -= 5

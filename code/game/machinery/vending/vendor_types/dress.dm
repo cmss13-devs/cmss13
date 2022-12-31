@@ -166,7 +166,7 @@
 	use_snowflake_points = FALSE
 	vendor_theme = VENDOR_THEME_COMPANY
 	vend_flags = VEND_CLUTTER_PROTECTION | VEND_TO_HAND
-	vend_delay = 10
+	vend_delay = 1 SECONDS
 	var/list/items
 	var/list/obj/item/item_types
 

@@ -273,7 +273,8 @@
 		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_middle_mouse_swap_hands'>Toggle Middle Mouse Swapping Hands</a><br>",
 		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_vend_item_to_hand'>Toggle Vendors Vending to Hands</a><br>",
 		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/switch_item_animations'>Toggle Item Animations</a><br>",
-		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_admin_sound_types'>Toggle Admin Sound Types</a><br>"
+		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_admin_sound_types'>Toggle Admin Sound Types</a><br>",
+		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/set_eye_blur_type'>Set Eye Blur Type</a><br>"
 	)
 
 	var/dat = ""
@@ -432,6 +433,18 @@
 		return TRUE
 	else
 		CRASH("receive_random_tip() failed: null message")
+
+/client/proc/set_eye_blur_type()
+	var/result = tgui_alert(src, "What type of eye blur do you want?", "What type of eye blur do you want?", list("Blurry", "Impair", "Legacy"))
+	if(result == "Blurry")
+		prefs.pain_overlay_pref_level = PAIN_OVERLAY_BLURRY
+		to_chat(src, SPAN_NOTICE("Your vision will now be directly blurred."))
+	if(result == "Impair")
+		prefs.pain_overlay_pref_level = PAIN_OVERLAY_IMPAIR
+		to_chat(src, SPAN_NOTICE("Your vision will now be impaired on blur."))
+	if(result == "Legacy")
+		prefs.pain_overlay_pref_level = PAIN_OVERLAY_LEGACY
+		to_chat(src, SPAN_NOTICE("Your vision will now have a legacy blurring effect. This is not recommended!"))
 
 //------------ GHOST PREFERENCES ---------------------------------
 

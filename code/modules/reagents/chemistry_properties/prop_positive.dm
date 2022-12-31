@@ -285,7 +285,7 @@
 		return
 	M.apply_internal_damage(-potency, "eyes")
 	M.ReduceEyeBlur(POTENCY_MULTIPLIER_VHIGH*potency)
-	M.eye_blind = max(M.eye_blind-POTENCY_MULTIPLIER_VHIGH*potency , 0)
+	M.ReduceEyeBlind(POTENCY_MULTIPLIER_VHIGH*potency)
 
 /datum/chem_property/positive/oculopeutic/process_overdose(mob/living/M, var/potency = 1)
 	M.apply_damage(potency, TOX)

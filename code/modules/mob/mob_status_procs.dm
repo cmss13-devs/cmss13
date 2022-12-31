@@ -226,10 +226,20 @@
 	if(!client)
 		return
 	var/atom/movable/plane_master_controller/game_plane_master_controller = hud_used.plane_master_controllers[PLANE_MASTERS_GAME]
-	if(eye_blurry)
-		game_plane_master_controller.add_filter("eye_blur", 1, gauss_blur_filter(clamp(eye_blurry * 0.1, 0.6, 3)))
-	else
+
+	if(!eye_blurry)
+		clear_fullscreen("eye_blur", 0.5 SECONDS)
 		game_plane_master_controller.remove_filter("eye_blur")
+		return
+
+	switch(client.prefs?.pain_overlay_pref_level)
+		if(PAIN_OVERLAY_IMPAIR)
+			overlay_fullscreen("eye_blur", /atom/movable/screen/fullscreen/impaired, CEILING(clamp(eye_blurry * 0.3, 1, 6), 1))
+		if(PAIN_OVERLAY_LEGACY)
+			overlay_fullscreen("eye_blur", /atom/movable/screen/fullscreen/blurry)
+		else // PAIN_OVERLAY_BLURRY
+			game_plane_master_controller.add_filter("eye_blur", 1, gauss_blur_filter(clamp(eye_blurry * 0.1, 0.6, 3)))
+
 
 /mob/proc/TalkStutter(amount)
 	stuttering = max(max(stuttering, amount), 0)
@@ -241,6 +251,18 @@
 
 /mob/proc/AdjustTalkStutter(amount)
 	stuttering = max(stuttering + amount,0)
+	return
+
+/mob/proc/SetEyeBlind(amount)
+	eye_blind = max(amount, 0)
+	return
+
+/mob/proc/AdjustEyeBlind(amount)
+	eye_blind = max(eye_blind + amount, 0)
+	return
+
+/mob/proc/ReduceEyeBlind(amount)
+	eye_blind = max(eye_blind - amount, 0)
 	return
 
 /mob/proc/AdjustEarDeafness(amount)

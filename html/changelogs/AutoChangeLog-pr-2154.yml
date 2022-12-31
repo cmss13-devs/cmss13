@@ -1,5 +1,0 @@
-author: "chowdermcarthor"
-delete-after: True
-changes:
-  - bugfix: "Walls that are indestructible will now show it in the description."
-  - bugfix: "The synthetic's breaching hammer no longer allows you to attempt to destroy an indestructible wall."

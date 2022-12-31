@@ -1,4 +1,4 @@
-#define UPGRADE_COOLDOWN	2 SECONDS
+#define UPGRADE_COOLDOWN 2 SECONDS
 
 /obj/item/grab
 	name = "grab"
@@ -37,7 +37,7 @@
 	if(user.grab_level >= GRAB_CARRY)
 		return
 	if(istype(target, /obj/effect))//if you click a blood splatter with a grab instead of the turf,
-		target = get_turf(target)	//we still try to move the grabbed thing to the turf.
+		target = get_turf(target) //we still try to move the grabbed thing to the turf.
 	if(isturf(target))
 		var/turf/T = target
 		if(!T.density && T.Adjacent(user))

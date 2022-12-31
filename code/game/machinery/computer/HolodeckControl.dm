@@ -51,7 +51,7 @@
 	icon_state = "table"
 	density = 1
 	anchored = 1.0
-	throwpass = 1	//You can throw objects over this, despite it's density.
+	throwpass = 1 //You can throw objects over this, despite it's density.
 
 /obj/structure/surface/table/holotable/attack_animal(mob/living/user as mob) //Removed code for larva since it doesn't work. Previous code is now a larva ability. /N
 	return attack_hand(user)

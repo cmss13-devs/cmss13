@@ -350,7 +350,7 @@
 	item_state = "highpower" //placeholder
 
 	fire_sound = "gun_pkd"
-	fire_rattle	= 'sound/weapons/gun_pkd_fire01_rattle.ogg'
+	fire_rattle = 'sound/weapons/gun_pkd_fire01_rattle.ogg'
 	reload_sound = 'sound/weapons/handling/pkd_speed_load.ogg'
 	cocked_sound = 'sound/weapons/handling/pkd_cock.wav'
 	unload_sound = 'sound/weapons/handling/pkd_open_chamber.ogg'

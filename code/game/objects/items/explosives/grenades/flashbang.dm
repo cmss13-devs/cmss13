@@ -245,7 +245,7 @@
 				var/mob/living/carbon/Xenomorph/X = M
 				X.Daze(2)
 				X.SetEarDeafness(max(X.ear_deaf, 3))
-		else	//simple mobs?
+		else //simple mobs?
 			M.Stun(5)
 			M.KnockDown(1)
 

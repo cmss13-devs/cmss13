@@ -437,7 +437,7 @@
 						/obj/item/attachable/lasersight,
 						/obj/item/attachable/burstfire_assembly
 	)
-	 /// This weapon needs to be manually racked every time a new magazine is loaded. I tried and failed to touch gun shitcode so this will do.
+	/// This weapon needs to be manually racked every time a new magazine is loaded. I tried and failed to touch gun shitcode so this will do.
 	var/manually_slided = FALSE
 
 /obj/item/weapon/gun/pistol/highpower/Initialize(mapload, spawn_empty)

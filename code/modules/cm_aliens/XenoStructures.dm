@@ -271,7 +271,7 @@
 	X.hive.mark_ui.update_all_data()
 
 	for(var/mob/living/carbon/Xenomorph/XX in X.hive.totalXenos)
-		XX.hud_set_marks()		//this should be a hud thing, but that code is too confusing so I am doing it here
+		XX.hud_set_marks() //this should be a hud thing, but that code is too confusing so I am doing it here
 
 	addtimer(CALLBACK(src, PROC_REF(check_for_weeds)), 30 SECONDS, TIMER_UNIQUE)
 
@@ -284,7 +284,7 @@
 		XX.built_structures -= src
 		if(!XX.client)
 			continue
-		XX.client.images -= seenMeaning		 //this should be a hud thing, but that code is too confusing so I am doing it here
+		XX.client.images -= seenMeaning  //this should be a hud thing, but that code is too confusing so I am doing it here
 		XX.hive.mark_ui.update_all_data()
 
 	for(var/mob/living/carbon/Xenomorph/X in xenos_tracking) //no floating references :0)

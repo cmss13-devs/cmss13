@@ -8,7 +8,7 @@
 	icon_state = "0"
 	var/state = 0
 	var/obj/item/circuitboard/computer/circuit = null
-//	weight = 1.0E8
+// weight = 1.0E8
 
 /obj/structure/computerframe/attackby(obj/item/P as obj, mob/user as mob)
 	switch(state)

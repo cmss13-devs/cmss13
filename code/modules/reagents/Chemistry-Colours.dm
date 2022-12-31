@@ -58,8 +58,8 @@
 	mixedcolor = round(mixedcolor)
 
 	//until someone writes a formal proof for this algorithm, let's keep this in
-//	if(mixedcolor<0x00 || mixedcolor>0xFF)
-//		return 0
+// if(mixedcolor<0x00 || mixedcolor>0xFF)
+// return 0
 	//that's not the kind of operation we are running here, nerd
 	mixedcolor=min(max(mixedcolor,0),255)
 

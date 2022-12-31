@@ -1,6 +1,6 @@
 /datum/custom_event_info
-	var/faction = "default"		//here category/faction/hive name stored
-	var/msg = ""			//here is the message itself
+	var/faction = "default" //here category/faction/hive name stored
+	var/msg = "" //here is the message itself
 
 
 //this shows event info to player. can pass clients and mobs

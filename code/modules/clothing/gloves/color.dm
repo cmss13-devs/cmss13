@@ -10,12 +10,12 @@
 	flags_heat_protection = BODY_FLAG_HANDS
 	max_heat_protection_temperature = GLOVES_max_heat_protection_temperature
 
-/obj/item/clothing/gloves/fyellow                             //Cheap Chinese Crap
+/obj/item/clothing/gloves/fyellow  //Cheap Chinese Crap
 	desc = "These gloves are cheap copies of the coveted gloves, no way this can end badly."
 	name = "budget insulated gloves"
 	icon_state = "lightbrown"
 	item_state = "lightbrowngloves"
-	siemens_coefficient = 1			//Set to a default of 1, gets overridden in New()
+	siemens_coefficient = 1 //Set to a default of 1, gets overridden in New()
 	permeability_coefficient = 0.05
 
 /obj/item/clothing/gloves/fyellow/New()

@@ -24,7 +24,7 @@ SUBSYSTEM_DEF(shuttle)
 	var/list/hidden_shuttle_turfs = list() //all turfs hidden from navigation computers associated with a list containing the image hiding them and the type of the turf they are pretending to be
 	var/list/hidden_shuttle_turf_images = list() //only the images from the above list
 
-	var/lockdown = FALSE	//disallow transit after nuke goes off
+	var/lockdown = FALSE //disallow transit after nuke goes off
 
 	var/datum/map_template/shuttle/selected
 
@@ -117,7 +117,7 @@ SUBSYSTEM_DEF(shuttle)
 	else
 		if(M.initiate_docking(getDock(destination)) != DOCKING_SUCCESS)
 			return 2
-	return 0	//dock successful
+	return 0 //dock successful
 
 
 /datum/controller/subsystem/shuttle/proc/moveShuttle(shuttleId, dockId, timed)
@@ -136,7 +136,7 @@ SUBSYSTEM_DEF(shuttle)
 	else
 		if(M.initiate_docking(D) != DOCKING_SUCCESS)
 			return 2
-	return 0	//dock successful
+	return 0 //dock successful
 
 /datum/controller/subsystem/shuttle/proc/request_transit_dock(obj/docking_port/mobile/M)
 	if(!istype(M))
@@ -196,9 +196,9 @@ SUBSYSTEM_DEF(shuttle)
 	var/turf/bottomleft = locate(proposal.bottom_left_coords[1], proposal.bottom_left_coords[2], proposal.bottom_left_coords[3])
 	// Then create a transit docking port in the middle
 	var/coords = M.return_coords(0, 0, dock_dir)
-	/*	0------2
-		|      |
-		|      |
+	/* 0------2
+		|   |
+		|   |
 		|  x   |
 		3------1
 	*/
@@ -541,8 +541,8 @@ SUBSYSTEM_DEF(shuttle)
 
 
 		//if(istype(M, /obj/docking_port/mobile/marine_dropship))
-		//	var/obj/docking_port/mobile/marine_dropship/D = M
-		//	L["hijack"] = D.hijack_state
+		// var/obj/docking_port/mobile/marine_dropship/D = M
+		// L["hijack"] = D.hijack_state
 		//else
 		L["hijack"] = "N/A"
 

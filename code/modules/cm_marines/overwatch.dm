@@ -210,7 +210,7 @@
 				if(H.job)
 					role = H.job
 				else if(istype(H.wear_id, /obj/item/card/id)) //decapitated marine is mindless,
-					var/obj/item/card/id/ID = H.wear_id		//we use their ID to get their role.
+					var/obj/item/card/id/ID = H.wear_id //we use their ID to get their role.
 					if(ID.rank) role = ID.rank
 
 				if(current_squad.squad_leader)
@@ -743,7 +743,7 @@
 					if(!findtext(R.fields["ma_crim"],"Insubordination."))
 						R.fields["criminal"] = "*Arrest*"
 						if(R.fields["ma_crim"] == "None")
-							R.fields["ma_crim"]	= "Insubordination."
+							R.fields["ma_crim"] = "Insubordination."
 						else
 							R.fields["ma_crim"] += "Insubordination."
 

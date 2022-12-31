@@ -2,7 +2,7 @@
 #define DROPSHIP_CHAIR_FOLDED 2
 #define DROPSHIP_CHAIR_BROKEN 3
 
-/obj/structure/bed/chair //YES, chairs are a type of bed, which are a type of stool. This works, believe me.	-Pete
+/obj/structure/bed/chair //YES, chairs are a type of bed, which are a type of stool. This works, believe me. -Pete
 	name = "chair"
 	desc = "A rectangular metallic frame sitting on four legs with a back panel. Designed to fit the sitting position, more or less comfortably."
 	icon_state = "chair"

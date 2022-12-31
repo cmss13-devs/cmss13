@@ -1,5 +1,5 @@
 /obj/structure/machinery/embedded_controller
-	var/datum/computer/file/embedded_program/program	//the currently executing program
+	var/datum/computer/file/embedded_program/program //the currently executing program
 
 	name = "Embedded Controller"
 	anchored = 1
@@ -66,7 +66,7 @@
 /obj/structure/machinery/embedded_controller/radio/post_signal(datum/signal/signal, var/filter = null)
 	signal.transmission_method = TRANSMISSION_RADIO
 	if(radio_connection)
-		//use_power(radio_power_use)	//neat idea, but causes way too much lag.
+		//use_power(radio_power_use) //neat idea, but causes way too much lag.
 		return radio_connection.post_signal(src, signal, filter)
 	else
 		qdel(signal)

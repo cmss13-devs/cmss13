@@ -462,6 +462,9 @@
 	icon_state = "toxstorage"
 	is_resin_allowed = FALSE
 
+/area/prison/hangar_storage/research/shuttle
+	name = "Corporate Shuttle"
+
 /area/prison/telecomms
 	name = "\improper Telecommunications"
 	icon_state = "tcomsatcham"

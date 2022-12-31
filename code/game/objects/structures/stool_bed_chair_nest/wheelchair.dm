@@ -44,7 +44,7 @@
 			move_delay += 2
 		if(!working_hands)
 			return // No hands to drive your chair? Tough luck!
-		if(driver.pulling && driver.pulling.drag_delay && driver.get_pull_miltiplier())	//Dragging stuff can slow you down a bit.
+		if(driver.pulling && driver.pulling.drag_delay && driver.get_pull_miltiplier()) //Dragging stuff can slow you down a bit.
 			var/pull_delay = driver.pulling.get_pull_drag_delay() * driver.get_pull_miltiplier()
 			move_delay += max(driver.pull_speed + pull_delay + 3*driver.grab_level, 0) //harder grab makes you slower
 
@@ -68,7 +68,7 @@
 
 /obj/structure/bed/chair/wheelchair/Collide(atom/A)
 	..()
-	if(!buckled_mob)	return
+	if(!buckled_mob) return
 
 	if(propelled)
 		var/mob/living/occupant = buckled_mob

@@ -129,6 +129,10 @@
 /turf/closed/wall/get_examine_text(mob/user)
 	. = ..()
 
+	if(hull)
+		.+= SPAN_WARNING("You don't think you have any tools able to even scratch this.")
+		return //If it's indestructable, we don't want to give the wrong impression by saying "you can decon it with a welder"
+
 	if(!damage)
 		if (acided_hole)
 			. += SPAN_WARNING("It looks fully intact, except there's a large hole that could've been caused by some sort of acid.")
@@ -325,6 +329,9 @@
 			return
 		if(!HAS_TRAIT(user, TRAIT_SUPER_STRONG))
 			to_chat(user, SPAN_WARNING("You can't use \the [W] properly!"))
+			return
+		if(hull)
+			to_chat(user, SPAN_WARNING("Even with your immense strength, you can't bring down \the [src]."))
 			return
 
 		to_chat(user, SPAN_NOTICE("You start taking down \the [src]."))

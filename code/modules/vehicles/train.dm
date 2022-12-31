@@ -144,11 +144,11 @@
 	if(!istype(T) || !Adjacent(T))
 		return 0
 
-	var/T_dir = get_dir(src, T)	//figure out where T is wrt src
+	var/T_dir = get_dir(src, T) //figure out where T is wrt src
 
-	if(dir == T_dir) 	//if car is ahead
+	if(dir == T_dir) //if car is ahead
 		src.attach_to(T, user)
-	else if(reverse_direction(dir) == T_dir)	//else if car is behind
+	else if(reverse_direction(dir) == T_dir) //else if car is behind
 		T.attach_to(src, user)
 
 //returns 1 if this is the lead car of the train

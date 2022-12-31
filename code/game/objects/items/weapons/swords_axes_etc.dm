@@ -1,8 +1,8 @@
 /* Weapons
  * Contains:
- *		Banhammer
- *		Classic Baton
- *		Energy Shield
+ * Banhammer
+ * Classic Baton
+ * Energy Shield
  */
 
 /*

@@ -30,7 +30,7 @@
 
 /obj/structure/closet/Initialize()
 	. = ..()
-	if(!opened && fill_from_loc)		// if closed, any item at the crate's loc is put in the contents
+	if(!opened && fill_from_loc) // if closed, any item at the crate's loc is put in the contents
 		for(var/obj/item/I in src.loc)
 			if(I.density || I.anchored || I == src)
 				continue
@@ -81,7 +81,7 @@
 	for(var/mob/M in src)
 		M.forceMove(loc)
 		if(exit_stun)
-			M.apply_effect(exit_stun, PARALYZE) //Action delay when going out of a closet
+			M.apply_effect(exit_stun, STUN) //Action delay when going out of a closet
 		M.update_canmove() //Force the delay to go in action immediately
 		if(!M.lying)
 			M.visible_message(SPAN_WARNING("[M] suddenly gets out of [src]!"),
@@ -206,7 +206,7 @@
 			if(isXeno(user)) return
 			var/obj/item/grab/G = W
 			if(G.grabbed_thing)
-				src.MouseDrop_T(G.grabbed_thing, user)      //act like they were dragged onto the closet
+				src.MouseDrop_T(G.grabbed_thing, user)   //act like they were dragged onto the closet
 			return
 		if(W.flags_item & ITEM_ABSTRACT)
 			return 0

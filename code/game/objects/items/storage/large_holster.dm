@@ -196,8 +196,8 @@
 /obj/item/storage/large_holster/fuelpack/Initialize()
 	. = ..()
 	fuel = new /obj/item/ammo_magazine/flamer_tank/large()
-	fuelB =	new /obj/item/ammo_magazine/flamer_tank/large/B()
-	fuelX =	new /obj/item/ammo_magazine/flamer_tank/large/X()
+	fuelB = new /obj/item/ammo_magazine/flamer_tank/large/B()
+	fuelX = new /obj/item/ammo_magazine/flamer_tank/large/X()
 	active_fuel = fuel
 	flamer_overlay = overlay_image('icons/obj/items/clothing/backpacks.dmi', "+m240t")
 

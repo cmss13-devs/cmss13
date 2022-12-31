@@ -163,7 +163,7 @@ const TextHighlightSettings = (props, context) => {
   const highlightSettings = useSelector(context, selectHighlightSettings);
   const dispatch = useDispatch(context);
   return (
-    <Section fill>
+    <Section fill scrollable>
       <Section level={2} p={0}>
         <Flex direction="column">
           {highlightSettings.map((id, i) => (

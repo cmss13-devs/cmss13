@@ -92,3 +92,6 @@
 	var/list/incision_depths = DEFENSE_ZONES_LIVING
 
 	var/current_weather_effect_type
+
+	var/slash_verb = "attack"
+	var/slashes_verb = "attacks"

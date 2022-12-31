@@ -59,6 +59,7 @@ var/const/MAX_SAVE_SLOTS = 10
 	var/toggles_ert = TOGGLES_ERT_DEFAULT
 	var/chat_display_preferences = CHAT_TYPE_ALL
 	var/item_animation_pref_level = SHOW_ITEM_ANIMATIONS_ALL
+	var/pain_overlay_pref_level = PAIN_OVERLAY_BLURRY
 	var/UI_style_color = "#ffffff"
 	var/UI_style_alpha = 255
 	var/View_MC = FALSE
@@ -558,6 +559,7 @@ var/const/MAX_SAVE_SLOTS = 10
 			dat += "<b>Play Admin Midis:</b> <a href='?_src_=prefs;preference=hear_midis'><b>[(toggles_sound & SOUND_MIDI) ? "Yes" : "No"]</b></a><br>"
 			dat += "<b>Play Admin Internet Sounds:</b> <a href='?_src_=prefs;preference=hear_internet'><b>[(toggles_sound & SOUND_INTERNET) ? "Yes" : "No"]</b></a><br>"
 			dat += "<b>Toggle Meme or Atmospheric Sounds:</b> <a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_admin_sound_types'>Toggle</a><br>"
+			dat += "<b>Set Eye Blur Type:</b> <a href='?src=\ref[src];action=proccall;procpath=/client/proc/set_eye_blur_type'>Set</a><br>"
 			dat += "<b>Play Lobby Music:</b> <a href='?_src_=prefs;preference=lobby_music'><b>[(toggles_sound & SOUND_LOBBY) ? "Yes" : "No"]</b></a><br>"
 			dat += "<b>Play VOX Announcements:</b> <a href='?_src_=prefs;preference=sound_vox'><b>[(hear_vox) ? "Yes" : "No"]</b></a><br>"
 			dat += "<b>Default Ghost Night Vision Level:</b> <a href='?_src_=prefs;preference=ghost_vision_pref;task=input'><b>[ghost_vision_pref]</b></a><br>"

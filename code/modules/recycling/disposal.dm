@@ -18,18 +18,25 @@
 	icon_state = "disposal"
 	anchored = 1
 	density = 1
-	var/mode = DISPOSALS_CHARGING //Item mode 0=off 1=charging 2=charged
-	var/flush = 0 //True if flush handle is pulled
-	var/obj/structure/disposalpipe/trunk/trunk = null //The attached pipe trunk
-	var/flushing = FALSE //True if flushing in progress
-	var/flush_after_ticks = 10 //After 10 ticks it will look whether it is ready to flush
-	var/flush_count = 0 //This var adds 1 once per tick. When it reaches flush_after_ticks it resets and tries to flush.
+	///Item mode 0=off 1=charging 2=charged
+	var/mode = DISPOSALS_CHARGING
+	///True if flush handle is pulled
+	var/flush = 0
+	///The attached pipe trunk
+	var/obj/structure/disposalpipe/trunk/trunk = null
+	///True if flushing in progress
+	var/flushing = FALSE
+	///After 10 ticks it will look whether it is ready to flush
+	var/flush_after_ticks = 10
+	///This var adds 1 once per tick. When it reaches flush_after_ticks it resets and tries to flush.
+	var/flush_count = 0
 	var/last_sound = 0
-	active_power_usage = 3500 //The pneumatic pump power. 3 HP ~ 2200W
+	///The pneumatic pump power. 3 HP ~ 2200W
+	active_power_usage = 3500
 	idle_power_usage = 100
 	var/disposal_pressure = 0
 
-//Create a new disposal, find the attached trunk (if present) and init gas resvr.
+///Create a new disposal, find the attached trunk (if present) and init gas resvr.
 /obj/structure/machinery/disposal/Initialize(mapload, ...)
 	. = ..()
 	trunk = locate() in loc
@@ -53,7 +60,7 @@
 	if (PF)
 		PF.flags_can_pass_all = PASS_HIGH_OVER_ONLY|PASS_AROUND
 
-//Attack by item places it in to disposal
+///Attack by item places it in to disposal
 /obj/structure/machinery/disposal/attackby(var/obj/item/I, var/mob/user)
 	if(stat & BROKEN || !I || !user)
 		return
@@ -144,7 +151,7 @@
 		start_processing()
 	update()
 
-//Mouse drop another mob or self
+///Mouse drop another mob or self
 /obj/structure/machinery/disposal/MouseDrop_T(mob/target, mob/user)
 	return
 /*
@@ -181,14 +188,14 @@
 	flush()
 	update()*/
 
-//Attempt to move while inside
+///Attempt to move while inside
 /obj/structure/machinery/disposal/relaymove(mob/user)
 	if(user.stat || user.stunned || user.knocked_down || flushing)
 		return
 	if(user.loc == src)
 		go_out(user)
 
-//Leave the disposal
+///Leave the disposal
 /obj/structure/machinery/disposal/proc/go_out(mob/user)
 
 	if(user.client)
@@ -202,7 +209,7 @@
 		SPAN_WARNING("You climb out of [src] and get your bearings!"))
 		update()
 
-//Human interact with machine
+///Human interact with machine
 /obj/structure/machinery/disposal/attack_hand(mob/user as mob)
 	if(user && user.loc == src)
 		to_chat(usr, SPAN_DANGER("You cannot reach the controls from inside."))
@@ -258,7 +265,7 @@
 			eject()
 			. = TRUE
 
-//Eject the contents of the disposal unit
+///Eject the contents of the disposal unit
 /obj/structure/machinery/disposal/proc/eject()
 	for(var/atom/movable/AM in src)
 		AM.forceMove(loc)
@@ -272,7 +279,7 @@
 				SPAN_WARNING("You get pushed out of [src] and get your bearings!"))
 	update()
 
-//Pipe affected by explosion
+///Pipe affected by explosion
 /obj/structure/machinery/disposal/ex_act(severity)
 	switch(severity)
 		if(0 to EXPLOSION_THRESHOLD_LOW)
@@ -286,7 +293,7 @@
 			deconstruct(FALSE)
 			return
 
-//Update the icon & overlays to reflect mode & status
+///Update the icon & overlays to reflect mode & status
 /obj/structure/machinery/disposal/proc/update()
 	overlays.Cut()
 	if(stat & BROKEN)
@@ -313,7 +320,7 @@
 	else if(mode == DISPOSALS_CHARGED)
 		overlays += image('icons/obj/pipes/disposal.dmi', "dispover-ready")
 
-//Timed process, charge the gas reservoir and perform flush if ready
+///Timed process, charge the gas reservoir and perform flush if ready
 /obj/structure/machinery/disposal/process()
 	if(stat & BROKEN) //Nothing can happen if broken
 		update_use_power(USE_POWER_NONE)
@@ -348,7 +355,7 @@
 		disposal_pressure += 5
 	return
 
-//Perform a flush
+///Perform a flush
 /obj/structure/machinery/disposal/proc/flush()
 
 	flushing = TRUE
@@ -382,18 +389,18 @@
 	flushing = FALSE
 	//Now reset disposal state
 	flush = 0
-	if(mode == DISPOSALS_CHARGED)	//If was ready,
-		mode = DISPOSALS_CHARGING	//Switch to charging
+	if(mode == DISPOSALS_CHARGED) //If was ready,
+		mode = DISPOSALS_CHARGING //Switch to charging
 	update()
 	return
 
-//Called when area power changes
+///Called when area power changes
 /obj/structure/machinery/disposal/power_change()
 	..() //Do default setting/reset of stat NOPOWER bit
 	update() //Update icon
 	return
 
-//Called when holder is expelled from a disposal, should usually only occur if the pipe network is modified
+///Called when holder is expelled from a disposal, should usually only occur if the pipe network is modified
 /obj/structure/machinery/disposal/proc/expel(var/obj/structure/disposalholder/H)
 	var/turf/target
 	playsound(src, 'sound/machines/hiss.ogg', 25, 0)
@@ -419,8 +426,8 @@
 	else
 		visible_message(SPAN_WARNING("[mover] bounces off of [src]'s rim!"))
 
-//Virtual disposal object, travels through pipes in lieu of actual items
-//Contents will be items flushed by the disposal, this allows the gas flushed to be tracked
+///Virtual disposal object, travels through pipes in lieu of actual items
+///Contents will be items flushed by the disposal, this allows the gas flushed to be tracked
 /obj/structure/disposalholder
 	invisibility = 101
 	var/active = 0 //True if the holder is moving, otherwise inactive

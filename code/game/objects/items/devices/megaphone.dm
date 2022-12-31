@@ -29,7 +29,7 @@
 	if(!message)
 		return
 	message = capitalize(message)
-	log_admin("[key_name(user)] used a megaphone to say: >[message]<")
+	log_admin("[key_name(user)] used a megaphone to say: >[html_decode(message)]<")
 
 	if((src.loc == user && !user.is_mob_incapacitated()))
 		var/list/mob/living/carbon/human/human_viewers = viewers(user) // slow but we need it
@@ -37,9 +37,9 @@
 			if(isYautja(listener)) //NOPE
 				listener.show_message("[user] says something on the microphone, but you can't understand it.")
 				continue
-			listener.show_message("<B>[user]</B> broadcasts, [FONT_SIZE_LARGE("\"[message]\"")]", SHOW_MESSAGE_AUDIBLE) // 2 stands for hearable message
+			listener.show_message("<B>[user]</B> broadcasts, [FONT_SIZE_LARGE("\"[html_decode(message)]\"")]", SHOW_MESSAGE_AUDIBLE) // 2 stands for hearable message
 
 
-		user.langchat_long_speech(message, human_viewers, user.get_default_language())
+		user.langchat_long_speech(html_decode(message), human_viewers, user.get_default_language())
 
 		COOLDOWN_START(src, spam_cooldown, spam_cooldown_time)

@@ -29,18 +29,17 @@
 	///Seconds under which to warn that the tape is almost up.
 	var/time_left_warning = 60 SECONDS
 
-	///Sound loop that plays when recording or playing back. I will add this in once the MC port is in.
-	//var/datum/looping_sound/tape_recorder_hiss/soundloop
+	var/datum/looping_sound/tape_recorder_hiss/soundloop
 
 /obj/item/device/taperecorder/Initialize(mapload)
 	. = ..()
 	if(starting_tape_type)
 		mytape = new starting_tape_type(src)
-	//soundloop = new(src)
+	soundloop = new(src)
 	update_icon()
 
 /obj/item/device/taperecorder/Destroy()
-	//QDEL_NULL(soundloop)
+	QDEL_NULL(soundloop)
 	QDEL_NULL(mytape)
 	return ..()
 
@@ -77,13 +76,13 @@
 	if(mytape)
 		icons_available += list("Eject" = image(radial_icon_file,"eject"))
 
-/*
+
 /obj/item/device/taperecorder/proc/update_sound()
-	if(!playing && !recording)
+	if(!playing)
 		soundloop.stop()
 	else
 		soundloop.start()
-*/
+
 
 /obj/item/device/taperecorder/attackby(obj/item/I, mob/user, params)
 	if(!mytape && istype(I, /obj/item/tape))
@@ -191,7 +190,7 @@
 	if(mytape.used_capacity < mytape.max_capacity)
 		recording = TRUE
 		audible_message(SPAN_MAROON("[icon2html(src, usr)] Recording started."))
-		//update_sound()
+		update_sound()
 		update_icon()
 		var/used = mytape.used_capacity //to stop runtimes when you eject the tape
 		var/max = mytape.max_capacity
@@ -227,7 +226,7 @@
 		playing = FALSE
 	time_warned = FALSE
 	update_icon()
-	//update_sound()
+	update_sound()
 
 /obj/item/device/taperecorder/verb/play()
 	set name = "Play Tape"
@@ -248,7 +247,7 @@
 
 	playing = TRUE
 	update_icon()
-	//update_sound()
+	update_sound()
 	audible_message(SPAN_MAROON("[icon2html(src, usr)] Playback started."))
 	playsound(src, 'sound/items/taperecorder/taperecorder_play.ogg', 50, FALSE)
 	var/used = mytape.used_capacity //to stop runtimes when you eject the tape

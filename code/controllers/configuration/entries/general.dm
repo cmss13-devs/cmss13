@@ -127,6 +127,9 @@ Administrative related.
 
 /datum/config_entry/flag/allow_vote_adjustment_callback
 
+/// logs all timers in buckets on automatic bucket reset (Useful for timer debugging)
+/datum/config_entry/flag/log_timers_on_bucket_reset
+
 /datum/config_entry/number/vote_adjustment_callback
 	config_entry_value = 0.1
 

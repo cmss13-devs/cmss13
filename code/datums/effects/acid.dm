@@ -30,7 +30,7 @@
 
 	handle_weather()
 
-	RegisterSignal(SSdcs, COMSIG_GLOB_WEATHER_CHANGE, .proc/handle_weather)
+	RegisterSignal(SSdcs, COMSIG_GLOB_WEATHER_CHANGE, PROC_REF(handle_weather))
 
 /datum/effects/acid/validate_atom(var/atom/A)
 	if(istype(A, /obj/structure/barricade))

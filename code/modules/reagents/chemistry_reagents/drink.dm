@@ -86,7 +86,7 @@
 	. = ..()
 	if(!.) return
 	M.ReduceEyeBlur(1)
-	M.eye_blind = max(M.eye_blind-1 , 0)
+	M.ReduceEyeBlind(1)
 	if(!data) data = 1
 	switch(data)
 		if(1 to 20)
@@ -378,7 +378,7 @@
 			M.apply_effect(20, PARALYZE)
 			var/datum/internal_organ/heart/E = H.internal_organs_by_name["heart"]
 			if(prob(10) && E)
-				E.damage += 0.5
+				E.take_damage(0.5, TRUE)
 				M.emote(pick("twitch", "blink_r", "shiver"))
 
 /datum/reagent/drink/coffee/icecoffee

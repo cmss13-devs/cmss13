@@ -1,4 +1,4 @@
-# This is a reusable workflow to run integration tests on a single map.
+# This is a reusable workflow to run unit tests on a single map.
 # This is run for every single map in ci_suite.yml. You might want to edit that instead.
 name: Run Unit Tests
 on:
@@ -14,7 +14,7 @@ on:
         required: false
         type: string
 jobs:
-  run_integration_tests:
+  run_unit_tests:
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v3

@@ -16,20 +16,20 @@
 	G.follow()
 
 // /atom/movable/screen/ghost/follow_xeno
-// 	name = "Follow Xeno"
-// 	icon_state = "follow_xeno"
+// name = "Follow Xeno"
+// icon_state = "follow_xeno"
 
 // /atom/movable/screen/ghost/follow_xeno/Click()
-// 	var/mob/dead/observer/G = usr
-// 	G.follow_xeno()
+// var/mob/dead/observer/G = usr
+// G.follow_xeno()
 
 // /atom/movable/screen/ghost/follow_human
-// 	name = "Follow Humans"
-// 	icon_state = "follow_human"
+// name = "Follow Humans"
+// icon_state = "follow_human"
 
 // /atom/movable/screen/ghost/follow_human/Click()
-// 	var/mob/dead/observer/G = usr
-// 	G.follow_human()
+// var/mob/dead/observer/G = usr
+// G.follow_human()
 
 /atom/movable/screen/ghost/reenter_corpse
 	name = "Reenter corpse"
@@ -71,7 +71,7 @@
 	if(!.)
 		return
 	var/mob/screenmob = viewmob || mymob
-/*	if(!screenmob.client.prefs.ghost_hud)
+/* if(!screenmob.client.prefs.ghost_hud)
 		screenmob.client.screen -= static_inventory
 	else*/
 	screenmob.client.screen += static_inventory

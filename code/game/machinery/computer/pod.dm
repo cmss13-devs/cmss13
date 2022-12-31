@@ -62,7 +62,7 @@
 	user.set_interaction(src)
 	if(connected)
 		var/d2
-		if(timing)	//door controls do not need timers.
+		if(timing) //door controls do not need timers.
 			d2 = "<A href='?src=\ref[src];time=0'>Stop Time Launch</A>"
 		else
 			d2 = "<A href='?src=\ref[src];time=1'>Initiate Time Launch</A>"

@@ -48,32 +48,32 @@ Additional game mode variables.
 	var/list/dead_queens // A list of messages listing the dead queens
 	var/predators = list()
 
-	var/xeno_required_num 	= 0 //We need at least one. You can turn this off in case we don't care if we spawn or don't spawn xenos.
-	var/xeno_starting_num 	= 0 //To clamp starting xenos.
-	var/xeno_bypass_timer 	= 0 //Bypass the five minute timer before respawning.
-	var/xeno_queen_deaths 	= 0 //How many times the alien queen died.
-	var/surv_starting_num 	= 0 //To clamp starting survivors.
-	var/merc_starting_num 	= 0 //PMC clamp.
+	var/xeno_required_num = 0 //We need at least one. You can turn this off in case we don't care if we spawn or don't spawn xenos.
+	var/xeno_starting_num = 0 //To clamp starting xenos.
+	var/xeno_bypass_timer = 0 //Bypass the five minute timer before respawning.
+	var/xeno_queen_deaths = 0 //How many times the alien queen died.
+	var/surv_starting_num = 0 //To clamp starting survivors.
+	var/merc_starting_num = 0 //PMC clamp.
 	var/marine_starting_num = 0 //number of players not in something special
-	var/pred_current_num 	= 0 //How many are there now?
-	var/pred_per_players 	= 80 //Preds per player
-	var/pred_start_count	= 4 //The initial count of predators
+	var/pred_current_num = 0 //How many are there now?
+	var/pred_per_players = 80 //Preds per player
+	var/pred_start_count = 4 //The initial count of predators
 
 	var/pred_additional_max = 0
-	var/pred_leader_count 	= 0 //How many Leader preds are active
-	var/pred_leader_max 	= 1 //How many Leader preds are permitted. Currently fixed to 1. May add admin verb to adjust this later.
+	var/pred_leader_count = 0 //How many Leader preds are active
+	var/pred_leader_max = 1 //How many Leader preds are permitted. Currently fixed to 1. May add admin verb to adjust this later.
 
 	//Some gameplay variables.
-	var/round_checkwin 		= 0
+	var/round_checkwin = 0
 	var/round_finished
-	var/round_started  		= 5 //This is a simple timer so we don't accidently check win conditions right in post-game
-	var/list/round_fog = list()				//List of the fog locations.
-	var/list/round_toxic_river = list()		//List of all toxic river locations
-	var/round_time_lobby 		//Base time for the lobby, for fog dispersal.
+	var/round_started = 5 //This is a simple timer so we don't accidently check win conditions right in post-game
+	var/list/round_fog = list() //List of the fog locations.
+	var/list/round_toxic_river = list() //List of all toxic river locations
+	var/round_time_lobby //Base time for the lobby, for fog dispersal.
 	var/round_time_river
-	var/monkey_amount		= 0 //How many monkeys do we spawn on this map ?
-	var/list/monkey_types	= list() //What type of monkeys do we spawn
-	var/latejoin_tally		= 0 //How many people latejoined Marines
+	var/monkey_amount = 0 //How many monkeys do we spawn on this map ?
+	var/list/monkey_types = list() //What type of monkeys do we spawn
+	var/latejoin_tally = 0 //How many people latejoined Marines
 	var/latejoin_larva_drop = LATEJOIN_MARINES_PER_LATEJOIN_LARVA //A larva will spawn in once the tally reaches this level. If set to 0, no latejoin larva drop
 
 	//Role Authority set up.
@@ -85,9 +85,9 @@ Additional game mode variables.
 	var/bioscan_ongoing_interval = 1 MINUTES//every 1 minute
 
 	var/lz_selection_timer = 25 MINUTES //25 minutes in
-	var/round_time_pooled_cutoff = 25 MINUTES	//Time for when free pooled larvae stop spawning.
+	var/round_time_pooled_cutoff = 25 MINUTES //Time for when free pooled larvae stop spawning.
 
-	var/round_time_resin = 40 MINUTES	//Time for when resin placing is allowed close to LZs
+	var/round_time_resin = 40 MINUTES //Time for when resin placing is allowed close to LZs
 
 	var/round_time_evolution_ovipositor = 5 MINUTES //Time for when ovipositor becomes necessary for evolution to progress.
 	var/evolution_ovipositor_threshold = FALSE

@@ -63,28 +63,28 @@ fi;
 #	echo -e "${RED}ERROR: Unmanaged global var use detected in code, please use the helpers.${NC}"
 #	st=1
 #fi;
-#echo "Checking for whitespace issues"
-#if grep -P '(^ {2})|(^ [^ * ])|(^	+)' code/**/*.dm; then
-#	echo
-#	echo -e "${RED}ERROR: space indentation detected.${NC}"
-#	st=1
-#fi;
-#if grep -P '^\t+ [^ *]' code/**/*.dm; then
-#	echo
-#	echo -e "${RED}ERROR: mixed <tab><space> indentation detected.${NC}"
-#	st=1
-#fi;
-#nl='
-#'
-#nl=$'\n'
-#while read f; do
-#	t=$(tail -c2 "$f"; printf x); r1="${nl}$"; r2="${nl}${r1}"
-#	if [[ ! ${t%x} =~ $r1 ]]; then
-#		echo
-#		echo -e "${RED}ERROR: file $f is missing a trailing newline.${NC}"
-#		st=1
-#	fi;
-#done < <(find . -type f -name '*.dm')
+echo "Checking for whitespace issues"
+if grep -P '(^ {2})|(^ [^ * ])|(^    +)' code/**/*.dm; then
+	echo
+	echo -e "${RED}ERROR: space indentation detected.${NC}"
+	st=1
+fi;
+if grep -P '^\t+ [^ *]' code/**/*.dm; then
+	echo
+	echo -e "${RED}ERROR: mixed <tab><space> indentation detected.${NC}"
+	st=1
+fi;
+nl='
+'
+nl=$'\n'
+while read f; do
+	t=$(tail -c2 "$f"; printf x); r1="${nl}$"; r2="${nl}${r1}"
+	if [[ ! ${t%x} =~ $r1 ]]; then
+		echo
+		echo -e "${RED}ERROR: file $f is missing a trailing newline.${NC}"
+		st=1
+	fi;
+done < <(find . -type f -name '*.dm')
 echo "Checking for common mistakes"
 #if grep -P '^/[\w/]\S+\(.*(var/|, ?var/.*).*\)' code/**/*.dm; then
 #	echo

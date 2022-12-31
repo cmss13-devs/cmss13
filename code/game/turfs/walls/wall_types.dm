@@ -244,7 +244,7 @@
 	desc = "Assorted artworks."
 	icon = 'icons/lobby/title.dmi'
 	icon_state = ""
-//	icon_state = "title_holiday"
+// icon_state = "title_holiday"
 	layer = FLY_LAYER
 	special_icon = 1
 

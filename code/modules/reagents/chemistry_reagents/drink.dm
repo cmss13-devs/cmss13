@@ -212,7 +212,7 @@
 	id = "souto_classic"
 	description = "A tangerine flavored soda that's canned in Havana"
 	color = "#802b00"
-	adj_drowsy 	= 	-10
+	adj_drowsy = -10
 	chemclass = CHEM_CLASS_RARE
 
 /datum/reagent/drink/souto/cherry
@@ -278,7 +278,7 @@
 	id = "grapesoda"
 	description = "Grapes made into a fine drank."
 	color = "#421C52" // rgb: 98, 57, 53
-	adj_drowsy 	= 	-3
+	adj_drowsy = -3
 
 /datum/reagent/drink/cold/space_cola
 	name = "Space Cola"
@@ -286,7 +286,7 @@
 	description = "A refreshing beverage."
 	reagent_state = LIQUID
 	color = "#100800" // rgb: 16, 8, 0
-	adj_drowsy 	= 	-3
+	adj_drowsy = -3
 
 /datum/reagent/drink/cold/wy_cola
 	name = "Fruit Beer"

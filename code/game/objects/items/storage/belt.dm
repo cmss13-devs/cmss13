@@ -174,8 +174,8 @@
 
 /obj/item/storage/belt/medical/full/with_suture_and_graft/fill_preset_inventory()
 	. = ..()
-	new	/obj/item/tool/surgery/surgical_line(src)
-	new	/obj/item/tool/surgery/synthgraft(src)
+	new /obj/item/tool/surgery/surgical_line(src)
+	new /obj/item/tool/surgery/synthgraft(src)
 
 /obj/item/storage/belt/medical/get_examine_text()
 	. = ..()

@@ -69,7 +69,7 @@
 /mob/living/silicon/robot/proc/pulse(var/wireColor)
 	var/wireIndex = BorgWireColorToIndex[wireColor]
 	switch(wireIndex)
-		if(BORG_WIRE_LAWCHECK)	//Forces a law update if the borg is set to receive them. Since an update would happen when the borg checks its laws anyway, not much use, but eh
+		if(BORG_WIRE_LAWCHECK) //Forces a law update if the borg is set to receive them. Since an update would happen when the borg checks its laws anyway, not much use, but eh
 			if (src.lawupdate)
 				src.photosync()
 

@@ -2257,7 +2257,6 @@
 	shell_speed = AMMO_SPEED_TIER_3
 	damage_type = BURN
 	flags_ammo_behavior = AMMO_IGNORE_RESIST
-	hit_effect_color = "#0000FF"
 
 /datum/ammo/energy/yautja/pistol
 	name = "plasma pistol bolt"
@@ -2265,7 +2264,6 @@
 
 	damage = 40
 	shell_speed = AMMO_SPEED_TIER_2
-	hit_effect_color = "#0000FF"
 
 /datum/ammo/energy/yautja/pistol/set_bullet_traits()
 	. = ..()
@@ -2283,6 +2281,7 @@
 
 	damage = 0
 	flags_ammo_behavior = AMMO_ENERGY|AMMO_IGNORE_RESIST
+	hit_effect_color = "#0000FF" // only non-lethals get a different color - indicates stun
 
 /datum/ammo/energy/yautja/caster/bolt
 	name = "plasma bolt"
@@ -2297,6 +2296,7 @@
 
 	damage = 0
 	flags_ammo_behavior = AMMO_ENERGY|AMMO_IGNORE_RESIST
+	hit_effect_color = "#0000FF" // only non-lethals get a different color - indicates stun
 
 /datum/ammo/energy/yautja/caster/bolt/stun/on_hit_mob(mob/M, obj/item/projectile/P)
 	var/mob/living/carbon/C = M
@@ -2357,6 +2357,7 @@
 	flags_ammo_behavior = AMMO_ENERGY|AMMO_IGNORE_RESIST
 	accurate_range = 20
 	max_range = 20
+	hit_effect_color = "#0000FF" // only non-lethals get a different color - indicates stun
 
 	var/stun_range = 4 // Big
 	var/stun_time = 6
@@ -2444,7 +2445,6 @@
 
 	accuracy = HIT_ACCURACY_TIER_8*2
 	max_range = 12
-	hit_effect_color = "#00FF00"
 
 /datum/ammo/xeno/toxin
 	name = "neurotoxic spit"
@@ -2644,7 +2644,7 @@
 	max_range = 8 // 7 will disappear on diagonals. i love shitcode
 	penetration = ARMOR_PENETRATION_TIER_2
 	shell_speed = AMMO_SPEED_TIER_3
-	hit_effect_color = "#dffc00"
+	hit_effect_color = "#FF0000"
 
 /datum/ammo/xeno/acid/on_shield_block(mob/M, obj/item/projectile/P)
 	burst(M,P,damage_type)
@@ -2766,7 +2766,7 @@
 
 	accuracy_var_high = PROJECTILE_VARIANCE_TIER_4
 	max_range = 32
-	hit_effect_color = "#dffc00"
+	hit_effect_color = "#FF0000"
 
 /datum/ammo/xeno/boiler_gas/New()
 	..()

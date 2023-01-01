@@ -367,15 +367,15 @@ var/datum/controller/supply/supply_controller = new()
 	var/points_per_crate = 2
 
 	//black market stuff
-	 ///in Weyland-Yutani dollars - Not Stan_Albatross.
+	///in Weyland-Yutani dollars - Not Stan_Albatross.
 	var/black_market_points = 5 // 5 to start with to buy the scanner.
-	 ///If the black market is enabled.
+	///If the black market is enabled.
 	var/black_market_enabled = FALSE
 
-	 /// This contains a list of all typepaths of sold items and how many times they've been recieved. Used to calculate points dropoff (Can't send down a hundred blue souto cans for infinite points)
+	/// This contains a list of all typepaths of sold items and how many times they've been recieved. Used to calculate points dropoff (Can't send down a hundred blue souto cans for infinite points)
 	var/list/black_market_sold_items
 
-	 /// If the players killed him by sending a live hostile below.. this goes false and they can't order any more contraband.
+	/// If the players killed him by sending a live hostile below.. this goes false and they can't order any more contraband.
 	var/mendoza_status = TRUE
 
 	var/base_random_crate_interval = 10 //Every how many processing intervals do we get a random crates.
@@ -1216,7 +1216,7 @@ var/datum/controller/supply/supply_controller = new()
 	return sound_tile
 
 /datum/controller/supply/proc/play_sound_handler(var/sound_to_play, var/timer)
-	 /// For code readability.
+	/// For code readability.
 	addtimer(CALLBACK(GLOBAL_PROC, /proc/playsound, get_rand_sound_tile(), sound_to_play, 25, FALSE), timer)
 
 /obj/structure/machinery/computer/supplycomp/proc/is_buyable(var/datum/supply_packs/supply_pack)

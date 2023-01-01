@@ -310,7 +310,7 @@
 
 	//this below is in case we have subtype of an object, that SHOULD be treated as parent object (like /empty ammo box)
 	var/corrected_path = return_corresponding_type(item_to_stock.type)
-	var/stack_restock = 0	//used for making restocking stacked stuff much better.
+	var/stack_restock = 0 //used for making restocking stacked stuff much better.
 
 	for(R in (listed_products))
 		if(item_to_stock.type == R[3] || corrected_path && corrected_path == R[3])
@@ -352,7 +352,7 @@
 				if(ST.amount > stack_restock * modifier)
 					ST.amount -= stack_restock * modifier
 					ST.update_icon()
-					item_to_stock = null	//we have left overs, so we don't delete stack
+					item_to_stock = null //we have left overs, so we don't delete stack
 
 				R[2] += stack_restock
 				if(vend_flags & VEND_LOAD_AMMO_BOXES)

@@ -105,7 +105,7 @@
 	var/beakerCurrentVolume = 0
 	if(beaker && beaker.reagents && beaker.reagents.reagent_list.len)
 		for(var/datum/reagent/R in beaker.reagents.reagent_list)
-			beakerContents += list(list("name" = R.name, "volume" = R.volume))	 // list in a list because Byond merges the first list...
+			beakerContents += list(list("name" = R.name, "volume" = R.volume))  // list in a list because Byond merges the first list...
 			beakerCurrentVolume += R.volume
 	.["beakerContents"] = beakerContents
 

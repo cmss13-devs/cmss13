@@ -13,13 +13,13 @@
 	allowed_sensors = list(/obj/item/device/assembly/timer)
 	max_container_volume = 60
 	var/det_time = 40
-	var/dangerous = 0		//Make an danger overlay for humans?
+	var/dangerous = 0 //Make an danger overlay for humans?
 	var/arm_sound = 'sound/weapons/armbomb.ogg'
 	var/has_arm_sound = TRUE
 	var/underslug_launchable = FALSE
 	var/hand_throwable = TRUE
-	harmful = TRUE	//Is it harmful? Are they banned for synths?
-	antigrief_protection = TRUE	//Should it be checked by antigrief?
+	harmful = TRUE //Is it harmful? Are they banned for synths?
+	antigrief_protection = TRUE //Should it be checked by antigrief?
 
 /obj/item/explosive/grenade/Initialize()
 	. = ..()
@@ -106,7 +106,7 @@
 		activate_sensors()
 	else
 		active = TRUE
-		det_time ? addtimer(CALLBACK(src, .proc/prime), det_time) : prime()
+		det_time ? addtimer(CALLBACK(src, PROC_REF(prime)), det_time) : prime()
 	w_class = SIZE_MASSIVE // We cheat a little, primed nades become massive so they cant be stored anywhere
 	update_icon()
 

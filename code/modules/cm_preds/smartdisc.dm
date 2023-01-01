@@ -32,7 +32,7 @@
 	if(L)
 		throw_atom(L.loc, 4, SPEED_FAST, usr)
 	throw_atom(usr, 12, SPEED_SLOW, usr)
-	addtimer(CALLBACK(src, .proc/clear_boomerang), 3 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(clear_boomerang)), 3 SECONDS)
 
 /obj/item/explosive/grenade/spawnergrenade/smartdisc/proc/clear_boomerang()
 	icon_state = initial(icon_state)
@@ -263,7 +263,7 @@
 	if(!(target_mob in ListTargets(5)) || prob(20) || target_mob.stat)
 		stance = HOSTILE_STANCE_IDLE
 		return 0
-	if(get_dist(src, target_mob) <= 1)	//Attacking
+	if(get_dist(src, target_mob) <= 1) //Attacking
 		AttackingTarget()
 		return 1
 

@@ -67,7 +67,7 @@
 /obj/structure/pipes/tvalve/create_valid_directions()
 	valid_directions = list(turn(dir, 180), dir, turn(dir, 90))
 
-/obj/structure/pipes/tvalve/digital		// can be controlled by AI
+/obj/structure/pipes/tvalve/digital // can be controlled by AI
 	name = "digital switching valve"
 	desc = "A digitally controlled valve."
 	icon = 'icons/obj/pipes/digital_tvalve.dmi'

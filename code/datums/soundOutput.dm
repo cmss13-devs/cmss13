@@ -1,9 +1,9 @@
 /datum/soundOutput
 	var/client/owner
-	var/scape_cooldown				= INITIAL_SOUNDSCAPE_COOLDOWN //This value is changed when entering an area. Time it takes for a soundscape sound to be triggered
-	var/list/soundscape_playlist 	= list() //Updated on changing areas
-	var/ambience 					= null //The file currently being played as ambience
-	var/status_flags 				= 0 //For things like ear deafness, psychodelic effects, and other things that change how all sounds behave
+	var/scape_cooldown = INITIAL_SOUNDSCAPE_COOLDOWN //This value is changed when entering an area. Time it takes for a soundscape sound to be triggered
+	var/list/soundscape_playlist = list() //Updated on changing areas
+	var/ambience = null //The file currently being played as ambience
+	var/status_flags = 0 //For things like ear deafness, psychodelic effects, and other things that change how all sounds behave
 	var/list/echo
 /datum/soundOutput/New(client/C)
 	if(!C)
@@ -129,7 +129,7 @@
 		sound_to(owner, S)
 
 /client/proc/adjust_volume_prefs(var/volume_key, var/prompt = "", var/channel_update = 0)
-	volume_preferences[volume_key]	= (tgui_input_number(src, prompt, "Volume", volume_preferences[volume_key]*100)) / 100
+	volume_preferences[volume_key] = (tgui_input_number(src, prompt, "Volume", volume_preferences[volume_key]*100)) / 100
 	if(volume_preferences[volume_key] > 1)
 		volume_preferences[volume_key] = 1
 	if(volume_preferences[volume_key] < 0)

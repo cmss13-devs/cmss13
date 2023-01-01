@@ -104,9 +104,9 @@
 	assembly_type = /obj/structure/airlock_assembly/airlock_assembly_min
 
 /obj/structure/machinery/door/airlock/marine
-    name = "\improper Airlock"
-    icon = 'icons/obj/structures/doors/door_marines.dmi'
-    assembly_type = /obj/structure/airlock_assembly/airlock_assembly_min
+	name = "\improper Airlock"
+	icon = 'icons/obj/structures/doors/door_marines.dmi'
+	assembly_type = /obj/structure/airlock_assembly/airlock_assembly_min
 
 /obj/structure/machinery/door/airlock/atmos
 	name = "\improper Atmospherics Airlock"
@@ -690,7 +690,7 @@
 /obj/structure/machinery/door/airlock/almayer/marine/shared/alpha_bravo/yellow
 	icon = 'icons/obj/structures/doors/prepdoor_bravo.dmi'
 
-/obj/structure/machinery/door/airlock/almayer/marine/shared/charlie_delta/
+/obj/structure/machinery/door/airlock/almayer/marine/shared/charlie_delta
 	name = "\improper Charlie-Delta Squads Preparations"
 	icon = 'icons/obj/structures/doors/prepdoor_charlie.dmi'
 	req_one_access = list(ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_CARGO, ACCESS_MARINE_CHARLIE, ACCESS_MARINE_DELTA)

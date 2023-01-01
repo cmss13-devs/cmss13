@@ -6,10 +6,10 @@
 	// Technically you can have more than one, if they're different values you're gonna get inconsistent behavior though
 	// Best to just make one master like I've done here and call it good, it should just *work* as long as
 	var/type_to_spawn // Type variable indicating our datum type (holds which items we need to use, etc).. THIS NEEDS TO BE MOVABLE OR CODE WILL BORK
-	var/quota			// Max # of items to spawn
+	var/quota // Max # of items to spawn
 
 	// Initialized everywhere
-	var/pool_name			// Holds the UUID of the pool
+	var/pool_name // Holds the UUID of the pool
 
 /obj/effect/landmark/item_pool_spawner/Initialize(mapload, ...)
 	. = ..()

@@ -1,5 +1,5 @@
-#define MAX_ALPHA 				35
-#define GLOW_COLOR 				"#7a0000"
+#define MAX_ALPHA 35
+#define GLOW_COLOR "#7a0000"
 /*
 This component prevents healing under a certain strength for xenos while active.
 Healing above this strength will be reduced by the strength of the buildup.
@@ -54,8 +54,8 @@ Humans will take continuous damage instead.
 	RegisterSignal(parent, list(
 		COMSIG_XENO_ON_HEAL,
 		COMSIG_XENO_ON_HEAL_WOUNDS
-		), .proc/apply_healing_reduction)
-	RegisterSignal(parent, COMSIG_XENO_APPEND_TO_STAT, .proc/stat_append)
+		), PROC_REF(apply_healing_reduction))
+	RegisterSignal(parent, COMSIG_XENO_APPEND_TO_STAT, PROC_REF(stat_append))
 
 /datum/component/healing_reduction/UnregisterFromParent()
 	STOP_PROCESSING(SSdcs, src)

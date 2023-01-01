@@ -11,7 +11,7 @@
 	var/use = 0
 	var/unlocked = 0
 	var/open = 0
-	var/brightness_on = 7		//can't remember what the maxed out value is
+	var/brightness_on = 7 //can't remember what the maxed out value is
 	unslashable = TRUE
 	unacidable = TRUE
 
@@ -125,11 +125,11 @@
 	luminosity = 6
 	use_power = USE_POWER_NONE
 
-	attack_hand()
-		return
+/obj/structure/machinery/floodlight/landing/attack_hand()
+	return
 
-	attackby()
-		return
+/obj/structure/machinery/floodlight/landing/attackby()
+	return
 
 /obj/structure/machinery/floodlight/landing/floor
 	icon_state = "floor_flood01"

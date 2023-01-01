@@ -221,7 +221,7 @@ Contains most of the procs that are called when a mob is attacked by something
 	var/bloody = FALSE
 	if((I.damtype == BRUTE || I.damtype == HALLOSS) && prob(I.force*2 + 25))
 		var/color_override = (affecting.status & LIMB_ROBOT) ? COLOR_OIL : null
-		I.add_mob_blood(src, color_override)	//Make the weapon bloody, not the person.
+		I.add_mob_blood(src, color_override) //Make the weapon bloody, not the person.
 		if(prob(33))
 			bloody = TRUE
 			var/turf/location = loc
@@ -287,12 +287,12 @@ Contains most of the procs that are called when a mob is attacked by something
 		var/mob/living/L = LM.thrower
 		zone = check_zone(L.zone_selected)
 	else
-		zone = rand_zone("chest", 75)	//Hits a random part of the body, geared towards the chest
+		zone = rand_zone("chest", 75) //Hits a random part of the body, geared towards the chest
 
 	if (!zone)
 		visible_message(SPAN_NOTICE("\The [O] misses [src] narrowly!"), null, null, 5)
 		return
-	O.throwing = FALSE		//it hit, so stop moving
+	O.throwing = FALSE //it hit, so stop moving
 
 	if ((LM.thrower != src) && check_shields(impact_damage, "[O]"))
 		return

@@ -375,7 +375,7 @@
 
 
 //-------------------------------------------------------
-//	DAS REAL UZI
+// DAS REAL UZI
 
 #define UZI_UNJAM_CHANCE 25
 

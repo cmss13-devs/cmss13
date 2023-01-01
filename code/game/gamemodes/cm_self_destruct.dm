@@ -47,34 +47,34 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 
 /datum/authority/branch/evacuation
 	var/name = "Evacuation Authority"
-	var/evac_time	//Time the evacuation was initiated.
+	var/evac_time //Time the evacuation was initiated.
 	var/evac_status = EVACUATION_STATUS_STANDING_BY //What it's doing now? It can be standing by, getting ready to launch, or finished.
 
 	var/obj/structure/machinery/self_destruct/console/dest_master //The main console that does the brunt of the work.
 	var/dest_rods[] //Slave devices to make the explosion work.
 	var/dest_cooldown //How long it takes between rods, determined by the amount of total rods present.
-	var/dest_index = 1	//What rod the thing is currently on.
+	var/dest_index = 1 //What rod the thing is currently on.
 	var/dest_status = NUKE_EXPLOSION_INACTIVE
 	var/dest_started_at = 0
 
 	var/flags_scuttle = NO_FLAGS
 
-	New()
-		..()
-		dest_master = locate()
-		if(!dest_master)
-			log_debug("ERROR CODE SD1: could not find master self-destruct console")
-			to_world(SPAN_DEBUG("ERROR CODE SD1: could not find master self-destruct console"))
-			return FALSE
-		dest_rods = new
-		for(var/obj/structure/machinery/self_destruct/rod/I in dest_master.loc.loc) dest_rods += I
-		if(!dest_rods.len)
-			log_debug("ERROR CODE SD2: could not find any self-destruct rods")
-			to_world(SPAN_DEBUG("ERROR CODE SD2: could not find any self-destruct rods"))
-			QDEL_NULL(dest_master)
-			return FALSE
-		dest_cooldown = SELF_DESTRUCT_ROD_STARTUP_TIME / dest_rods.len
-		dest_master.desc = "The main operating panel for a self-destruct system. It requires very little user input, but the final safety mechanism is manually unlocked.\nAfter the initial start-up sequence, [dest_rods.len] control rods must be armed, followed by manually flipping the detonation switch."
+/datum/authority/branch/evacuation/New()
+	..()
+	dest_master = locate()
+	if(!dest_master)
+		log_debug("ERROR CODE SD1: could not find master self-destruct console")
+		to_world(SPAN_DEBUG("ERROR CODE SD1: could not find master self-destruct console"))
+		return FALSE
+	dest_rods = new
+	for(var/obj/structure/machinery/self_destruct/rod/I in dest_master.loc.loc) dest_rods += I
+	if(!dest_rods.len)
+		log_debug("ERROR CODE SD2: could not find any self-destruct rods")
+		to_world(SPAN_DEBUG("ERROR CODE SD2: could not find any self-destruct rods"))
+		QDEL_NULL(dest_master)
+		return FALSE
+	dest_cooldown = SELF_DESTRUCT_ROD_STARTUP_TIME / dest_rods.len
+	dest_master.desc = "The main operating panel for a self-destruct system. It requires very little user input, but the final safety mechanism is manually unlocked.\nAfter the initial start-up sequence, [dest_rods.len] control rods must be armed, followed by manually flipping the detonation switch."
 
 /datum/authority/branch/evacuation/proc/get_affected_zlevels() //This proc returns the ship's z level list (or whatever specified), when an evac/self-destruct happens.
 	if(dest_status < NUKE_EXPLOSION_IN_PROGRESS && evac_status == EVACUATION_STATUS_COMPLETE) //Nuke is not in progress and evacuation finished, end the round on ship and low orbit (dropships in transit) only.
@@ -128,7 +128,7 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 		evac_status = EVACUATION_STATUS_IN_PROGRESS //Cannot cancel at this point. All shuttles are off.
 		spawn() //One of the few times spawn() is appropriate. No need for a new proc.
 			ai_announcement("WARNING: Evacuation order confirmed. Launching escape pods.", 'sound/AI/evacuation_confirmed.ogg')
-			addtimer(CALLBACK(src, .proc/launch_lifeboats), 10 SECONDS) // giving some time to board lifeboats
+			addtimer(CALLBACK(src, PROC_REF(launch_lifeboats)), 10 SECONDS) // giving some time to board lifeboats
 			var/datum/shuttle/ferry/marine/evacuation_pod/P
 			var/L[] = new
 			var/i

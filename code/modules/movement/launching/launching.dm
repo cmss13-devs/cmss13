@@ -85,7 +85,7 @@
 	else if (!rebounding && rebounds)
 		var/oldloc = loc
 		var/launched_speed = cur_speed
-		addtimer(CALLBACK(src, .proc/rebound, oldloc, launched_speed), 0.5)
+		addtimer(CALLBACK(src, PROC_REF(rebound), oldloc, launched_speed), 0.5)
 
 	if (!rebounding)
 		O.hitby(src)
@@ -94,7 +94,7 @@
 	if (!rebounding && rebounds)
 		var/oldloc = loc
 		var/launched_speed = cur_speed
-		addtimer(CALLBACK(src, .proc/rebound, oldloc, launched_speed), 0.5)
+		addtimer(CALLBACK(src, PROC_REF(rebound), oldloc, launched_speed), 0.5)
 
 	if (!rebounding)
 		T.hitby(src)

@@ -615,10 +615,10 @@
 /obj/structure/prop/invuln/lifeboat_hatch_placeholder/terminal
 	icon = 'icons/obj/structures/machinery/bolt_terminal.dmi'
 
-/obj/structure/prop/invuln/dropship_parts	//for TG shuttle system
+/obj/structure/prop/invuln/dropship_parts //for TG shuttle system
 	density = TRUE
 
-/obj/structure/prop/invuln/dropship_parts/beforeShuttleMove()	//moves content but leaves the turf behind (for cool space turf)
+/obj/structure/prop/invuln/dropship_parts/beforeShuttleMove() //moves content but leaves the turf behind (for cool space turf)
 	. = ..()
 	if(. & MOVE_AREA)
 		. |= MOVE_CONTENTS

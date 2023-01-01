@@ -135,7 +135,7 @@
 	icon = 'icons/obj/structures/machinery/mainframe.dmi'
 	icon_state = "aimainframe"
 	circuit = /obj/item/circuitboard/computer/rdconsole  //It will eventually need it's own circuit.
-	req_access = list(ACCESS_MARINE_RESEARCH)	//Data and setting manipulation requires scientist access.
+	req_access = list(ACCESS_MARINE_RESEARCH) //Data and setting manipulation requires scientist access.
 
 
 /obj/structure/machinery/r_n_d/organic_analyzer

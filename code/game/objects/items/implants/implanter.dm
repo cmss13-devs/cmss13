@@ -101,7 +101,7 @@
 
 /obj/item/implanter/compressed/attack(mob/M as mob, mob/user as mob)
 	var/obj/item/implant/compressed/c = imp
-	if (!c)	return
+	if (!c) return
 	if (c.scanned == null)
 		to_chat(user, "Please scan an object with the implanter first.")
 		return

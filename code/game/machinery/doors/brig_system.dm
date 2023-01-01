@@ -4,13 +4,13 @@
 	icon_state = "security"
 	desc = "A remote control for a door."
 	req_access = list(ACCESS_MARINE_BRIG)
-	anchored = TRUE    		// can't pick it up
-	density = FALSE       		// can walk through it.
+	anchored = TRUE // can't pick it up
+	density = FALSE // can walk through it.
 	unacidable = TRUE
 	indestructible = TRUE
 
-	var/id = null     		// id of door it controls.
-	var/picture_state		// icon_state of alert picture, if not displaying text/numbers
+	var/id = null // id of door it controls.
+	var/picture_state // icon_state of alert picture, if not displaying text/numbers
 	var/list/obj/structure/machinery/targets = list()
 	var/list/obj/item/paper/incident/incident_reports = list()
 	var/obj/item/paper/incident/current_report = null
@@ -22,7 +22,7 @@
 
 /obj/structure/machinery/brig_cell/Initialize()
 	. = ..()
-	addtimer(CALLBACK(src, .proc/search_for_components), 20)
+	addtimer(CALLBACK(src, PROC_REF(search_for_components)), 20)
 
 /obj/structure/machinery/brig_cell/proc/search_for_components()
 	for(var/obj/structure/machinery/door/window/brigdoor/M in machines)
@@ -142,7 +142,7 @@
 		if(door.density)
 			continue
 
-		INVOKE_ASYNC(door, /obj/structure/machinery/door.proc/close)
+		INVOKE_ASYNC(door, TYPE_PROC_REF(/obj/structure/machinery/door, close))
 
 	start_processing()
 	log_admin("[key_name(user)] has jailed [C.criminal_name] for [C.charges_to_string()].")

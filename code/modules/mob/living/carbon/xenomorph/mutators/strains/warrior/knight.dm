@@ -43,22 +43,22 @@
 /datum/behavior_delegate/warrior_knight
 	name = "Warrior Knight Behavior Delegate"
 
-	 /// If the Knight has chess-leaped onto a victim - they have been owned and will be stomped on. This var is jank meant to bypass bad pounce code.
+	/// If the Knight has chess-leaped onto a victim - they have been owned and will be stomped on. This var is jank meant to bypass bad pounce code.
 	var/owned = FALSE
 
-	 /// If the Knight is on weeds, and thus has its abilities enhanced.
+	/// If the Knight is on weeds, and thus has its abilities enhanced.
 	var/abilities_enhanced = FALSE
 
-	 /// Clarity stacks, gained with Bulwark.
+	/// Clarity stacks, gained with Bulwark.
 	var/clarity_stacks = 0
 
 	// Colors for various abilities - pike, bulwark.
 
-	 /// When the Warrior is on weeds.
+	/// When the Warrior is on weeds.
 	var/enhanced_color = "#A7A2CB"
 	 // When the warrior isn't on weeds.
 	var/un_enhanced_color = "#6a6688" //"#4ADBC1"
-	 /// Currently selected color.
+	/// Currently selected color.
 	var/current_color
 
 	var/AAdebugcolor1 = 50

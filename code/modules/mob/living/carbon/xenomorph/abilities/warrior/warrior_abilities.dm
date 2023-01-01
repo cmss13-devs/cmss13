@@ -107,9 +107,9 @@
 
 	//Config
 
-	 /// Basic ability damage.
+	/// Basic ability damage.
 	var/pike_damage = 25
-	 /// Reach of the ability in tiles.
+	/// Reach of the ability in tiles.
 	var/pike_len = 3
 
 /datum/action/xeno_action/onclick/bulwark

@@ -143,20 +143,15 @@
 /obj/docking_port/mobile/emergency_response/big/Initialize(mapload)
 	. = ..()
 	doors = list()
-	world.log << "init [src] doors"
 	for(var/place in shuttle_areas)
-		world.log << "area [place]"
 		for(var/obj/structure/machinery/door/airlock/multi_tile/air in place)
-			world.log << "door [air]"
 			if(air.id == "starboard_door")
-				world.log << "match! starboard"
 				air.breakable = FALSE
 				air.indestructible = TRUE
 				air.unacidable = TRUE
 				starboard_door = air
 				doors += list(air)
 			else if(air.id == "port_door")
-				world.log << "match! port"
 				air.breakable = FALSE
 				air.indestructible = TRUE
 				air.unacidable = TRUE

@@ -60,6 +60,7 @@
 
 #define EFFECT_FLAG_LIFE (1<<0)
 #define EFFECT_FLAG_DEFAULT (1<<1)
+#define EFFECT_FLAG_NATURAL (1<<2) // Effects that come 'naturally', such as resting, so they're not blocked by stun protection.
 //Examples for future usage!
 //#define EFFECT_FLAG_EXPLOSIVE
 //#define EFFECT_FLAG_XENOMORPH

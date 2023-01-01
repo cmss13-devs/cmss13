@@ -1566,13 +1566,13 @@
 /mob/living/carbon/human/resist_fire()
 	if(isYautja(src))
 		adjust_fire_stacks(HUNTER_FIRE_RESIST_AMOUNT, min_stacks = 0)
-		apply_effect(1, WEAKEN) // actually 0.5
+		apply_effect(1, WEAKEN, EFFECT_FLAG_NATURAL) // actually 0.5
 		spin(5, 1)
 		visible_message(SPAN_DANGER("[src] expertly rolls on the floor, greatly reducing the amount of flames!"), \
 			SPAN_NOTICE("You expertly roll to extinguish the flames!"), null, 5)
 	else
 		adjust_fire_stacks(HUMAN_FIRE_RESIST_AMOUNT, min_stacks = 0)
-		apply_effect(4, WEAKEN)
+		apply_effect(4, WEAKEN, EFFECT_FLAG_NATURAL)
 		spin(35, 2)
 		visible_message(SPAN_DANGER("[src] rolls on the floor, trying to put themselves out!"), \
 			SPAN_NOTICE("You stop, drop, and roll!"), null, 5)
@@ -1589,12 +1589,12 @@
 /mob/living/carbon/human/resist_acid()
 	var/sleep_amount = 1
 	if(isYautja(src))
-		apply_effect(1, WEAKEN)
+		apply_effect(1, WEAKEN, EFFECT_FLAG_NATURAL)
 		spin(10, 2)
 		visible_message(SPAN_DANGER("[src] expertly rolls on the floor!"), \
 			SPAN_NOTICE("You expertly roll to get rid of the acid!"), max_distance = 5)
 	else
-		apply_effect(1.5, WEAKEN)
+		apply_effect(1.5, WEAKEN, EFFECT_FLAG_NATURAL)
 		spin(15, 2)
 		visible_message(SPAN_DANGER("[src] rolls on the floor, trying to get the acid off!"), \
 			SPAN_NOTICE("You stop, drop, and roll!"), max_distance = 5)

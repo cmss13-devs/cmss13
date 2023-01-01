@@ -226,6 +226,8 @@
 	var/turf/temp = zenomorf.loc
 	var/list/telegraph_atom_list = list()
 
+	var/detached = FALSE
+
 	for (var/x in 1 to pike_len)
 		temp = get_step(var_turf, facing)
 		if(facing in diagonals) // check if it goes through corners
@@ -250,7 +252,10 @@
 		if (var_turf in target_turfs)
 			break
 
-		facing = get_dir(var_turf, target_atom)
+		if(get_turf(target_atom) == var_turf) // If the turf we're on is the same as the target atom, we 'detach' from the target atom so the ability continues without stopping suddenly.
+			detached = TRUE
+		if(!detached)
+			facing = Get_Compass_Dir(var_turf, target_atom)
 		target_turfs += var_turf
 		if(x == pike_len && knight_delegate.abilities_enhanced == TRUE) //If we reach the last tile and are enhanced, apply unique effects.
 			telegraph_atom_list += new /obj/effect/xenomorph/xeno_telegraph/silver(var_turf, 0.25 SECONDS)
@@ -300,7 +305,7 @@
 #define ALPHA_SHIELD_FULL_ENHANCED 0.85
 #define ALPHA_SHIELD_FULL 0.75
 #define ALPHA_SHIELD_CRACKED 0.6
-#define ALPHA_SHIELD_SHATTERED 0.55
+#define ALPHA_SHIELD_SHATTERED 0.50
 
 /datum/action/xeno_action/onclick/bulwark/use_ability(atom/target_atom)
 	var/mob/living/carbon/Xenomorph/Warrior/Knight = owner
@@ -321,12 +326,12 @@
 		knight_delegate.clarity_stacks = 2
 		img_alpha_mult = ALPHA_SHIELD_FULL_ENHANCED
 		knight_delegate.current_color = knight_delegate.enhanced_color
-		Knight.balloon_alert_to_viewers(SPAN_XENODANGER("[Knight] forms an enhanced defensive shell!"), SPAN_XENODANGER("You form an enhanced defensive shell!"), text_color = knight_delegate.current_color)
+		Knight.balloon_alert_to_viewers("*forms an enhanced defensive shell*", "*you form an enhanced defensive shell*", text_color = knight_delegate.current_color)
 	else
 		knight_delegate.clarity_stacks = 1
 		knight_delegate.current_color = knight_delegate.un_enhanced_color
 		img_alpha_mult = ALPHA_SHIELD_FULL
-		Knight.balloon_alert_to_viewers(SPAN_XENODANGER("[Knight] forms a defensive shell!"), SPAN_XENODANGER("You form a defensive shell!"), text_color = knight_delegate.current_color)
+		Knight.balloon_alert_to_viewers("*forms a defensive shell*", "*you form a defensive shell*", text_color = knight_delegate.current_color)
 
 	RegisterSignal(Knight, COMSIG_XENO_BULLET_ACT, PROC_REF(reduce_bullet_damage))
 	RegisterSignal(Knight, list(COMSIG_LIVING_APPLY_EFFECT, COMSIG_LIVING_ADJUST_EFFECT, COMSIG_LIVING_SET_EFFECT), PROC_REF(reduce_stuns))
@@ -334,7 +339,7 @@
 	button.icon_state = "template_active"
 	button.color = knight_delegate.current_color
 	current_shield_image = Knight.create_bulwark_image(img_alpha_mult, "full")
-	addtimer(CALLBACK(src, PROC_REF(remove_shield), shield_duration))
+	addtimer(CALLBACK(src, PROC_REF(remove_shield)), shield_duration)
 
 	apply_cooldown()
 	..()
@@ -364,7 +369,7 @@
 		return
 
 	// Effect checks: Needs to be a stun that immobilizes, needs to be above 0 (Won't absorb stun reduction!).
-	if(!(effect_type in list(STUN, WEAKEN, PARALYZE)) || !(effect_amount > 0))
+	if(!(effect_type in list(STUN, WEAKEN, PARALYZE)) || !(effect_amount > 0) || effect_flags & (EFFECT_FLAG_NATURAL))
 		return
 	// Clarity check.
 	if(shatter_shield())
@@ -378,7 +383,7 @@
 	attacker.animation_attack_on(Knight)
 	attacker.flick_attack_overlay(Knight, "punch") //"shield"
 	if(hitting_item.force < MELEE_FORCE_NORMAL)
-		attacker.balloon_alert(attacker, "your attack bounces right off!")
+		attacker.balloon_alert(attacker, "*the attack bounces off*")
 		var/picked_attack_verb = pick(hitting_item.attack_verb)
 		picked_attack_verb = deconjugate(picked_attack_verb)
 		if(isnull(picked_attack_verb))
@@ -400,16 +405,14 @@
 	if(knight_delegate.clarity_stacks)
 		playsound(Knight, "ballistic_shield_hit", 25, TRUE)
 		to_chat(Knight, SPAN_XENOWARNING("Your bulwark glows and cracks as you resist an attack. You have [knight_delegate.clarity_stacks] clarity left."))
-		Knight.balloon_alert_to_viewers("the shell cracks!", "your shell cracks!", text_color = knight_delegate.current_color)
+		Knight.balloon_alert_to_viewers("*the shell cracks*", "*your shell cracks*", text_color = knight_delegate.current_color)
 		Knight.create_bulwark_image(ALPHA_SHIELD_CRACKED, "cracked")
 	else
 		playsound(Knight, "shield_shatter", 25, TRUE)
 		to_chat(Knight, SPAN_XENOWARNING("Your bulwark shatters you resist an attack! You have no clarity left."))
-		Knight.balloon_alert_to_viewers("the shell shatters!", "your shell shatters!", text_color = knight_delegate.current_color)
+		Knight.balloon_alert_to_viewers("*the shell shatters*", "*your shell shatters*", text_color = knight_delegate.current_color)
 		Knight.create_bulwark_image(ALPHA_SHIELD_SHATTERED, "shattered")
 	return TRUE
-
-#define X_HEAD_LAYER			9
 
 /datum/action/xeno_action/onclick/bulwark/proc/remove_shield()
 	var/mob/living/carbon/Xenomorph/xeno = owner

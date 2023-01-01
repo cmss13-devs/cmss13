@@ -174,6 +174,7 @@
 	rank = JOB_PMC_MEDIC
 	paygrade = "PMC-MS"
 	skills = /datum/skills/pmc/medic
+	headset_type = /obj/item/device/radio/headset/distress/PMC/medic
 
 /datum/equipment_preset/pmc/pmc_medic/load_gear(mob/living/carbon/human/H)
 
@@ -216,7 +217,7 @@
 /datum/equipment_preset/pmc/pmc_medic/hvh
 	name = "Weyland-Yutani PMC (Corporate Medic) | HvH"
 	human_versus_human = TRUE
-	headset_type = /obj/item/device/radio/headset/distress/PMC/hvh
+	headset_type = /obj/item/device/radio/headset/distress/PMC/medic/hvh
 
 //*****************************************************************************************************/
 /datum/equipment_preset/pmc/pmc_med_investigator
@@ -227,6 +228,7 @@
 	rank = JOB_PMC_INVESTIGATOR
 	paygrade = "PMC-MS" //Fixed from PMC2 to PMC-MS to display properly.
 	skills = /datum/skills/pmc/medic/chem
+	headset_type = /obj/item/device/radio/headset/distress/PMC/medic
 
 /datum/equipment_preset/pmc/pmc_med_investigator/load_gear(mob/living/carbon/human/H)
 
@@ -281,6 +283,7 @@
 	paygrade = "PMC-TL"
 	role_comm_title = "SL"
 	skills = /datum/skills/pmc/SL
+	headset_type = /obj/item/device/radio/headset/distress/PMC/command
 
 /datum/equipment_preset/pmc/pmc_leader/load_gear(mob/living/carbon/human/H)
 	//TODO: add backpacks and satchels
@@ -318,7 +321,7 @@
 /datum/equipment_preset/pmc/pmc_leader/hvh
 	name = "Weyland-Yutani PMC (Leader) | HvH"
 	human_versus_human = TRUE
-	headset_type = /obj/item/device/radio/headset/distress/PMC/hvh/cct
+	headset_type = /obj/item/device/radio/headset/distress/PMC/command/hvh
 
 //*****************************************************************************************************/
 
@@ -331,6 +334,7 @@
 	paygrade = "PMC-TL"
 	role_comm_title = "SL"
 	skills = /datum/skills/pmc/SL/chem
+	headset_type = /obj/item/device/radio/headset/distress/PMC/command
 
 /datum/equipment_preset/pmc/pmc_lead_investigator/load_gear(mob/living/carbon/human/H)
 	//TODO: add backpacks and satchels
@@ -396,6 +400,7 @@
 	paygrade = "PMC-WS"
 	role_comm_title = "Spc"
 	skills = /datum/skills/pmc/specialist
+	headset_type = /obj/item/device/radio/headset/distress/PMC/cct
 
 /datum/equipment_preset/pmc/pmc_sniper/load_gear(mob/living/carbon/human/H)
 	//TODO: add backpacks and satchels
@@ -425,7 +430,7 @@
 /datum/equipment_preset/pmc/pmc_sniper/hvh
 	name = "Weyland-Yutani PMC (Sniper) | HvH"
 	human_versus_human = TRUE
-	headset_type = /obj/item/device/radio/headset/distress/PMC/hvh/cct
+	headset_type = /obj/item/device/radio/headset/distress/PMC/cct/hvh
 
 /datum/equipment_preset/pmc/pmc_sniper/hvh/load_gear(mob/living/carbon/human/H)
 	..()
@@ -440,6 +445,7 @@
 	rank = JOB_PMC_CREWMAN
 	paygrade = "PMC-VS"
 	skills = /datum/skills/pmc/tank_crew
+	headset_type = /obj/item/device/radio/headset/distress/PMC/cct
 
 /datum/equipment_preset/pmc/pmc_crewman/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new headset_type, WEAR_L_EAR)
@@ -462,7 +468,7 @@
 /datum/equipment_preset/pmc/pmc_crewman/hvh
 	name = "Weyland-Yutani PMC (Crewman) | HvH"
 	human_versus_human = TRUE
-	headset_type = /obj/item/device/radio/headset/distress/PMC/hvh/cct
+	headset_type = /obj/item/device/radio/headset/distress/PMC/cct/hvh
 
 /*****************************************************************************************************/
 
@@ -478,6 +484,7 @@
 	role_comm_title = "XH"
 	skills = /datum/skills/pmc/xeno_handler
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE, LANGUAGE_XENOMORPH)
+	headset_type = /obj/item/device/radio/headset/distress/PMC/command
 
 /datum/equipment_preset/pmc/xeno_handler/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/PMC, WEAR_HEAD)
@@ -509,7 +516,7 @@
 	name = "Weyland-Yutani PMC (Xeno Handler) | HvH"
 	faction_group = FACTION_LIST_WY
 	human_versus_human = TRUE
-	headset_type = /obj/item/device/radio/headset/distress/PMC/hvh/cct
+	headset_type = /obj/item/device/radio/headset/distress/PMC/command/hvh
 
 /*****************************************************************************************************/
 
@@ -522,6 +529,7 @@
 	paygrade = "PMC-DOC"
 	role_comm_title = "TRI"
 	skills = /datum/skills/pmc/doctor
+	headset_type = /obj/item/device/radio/headset/distress/PMC/medic
 
 /datum/equipment_preset/pmc/doctor/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/PMC, WEAR_HEAD)
@@ -558,7 +566,7 @@
 /datum/equipment_preset/pmc/doctor/hvh
 	name = "Weyland-Yutani PMC (Trauma Surgeon) | HvH"
 	human_versus_human = TRUE
-	headset_type = /obj/item/device/radio/headset/distress/PMC/hvh
+	headset_type = /obj/item/device/radio/headset/distress/PMC/medic/hvh
 
 /*****************************************************************************************************/
 
@@ -571,6 +579,7 @@
 	paygrade = "PMC-TECH"
 	role_comm_title = "TEC"
 	skills = /datum/skills/pmc/engineer
+	headset_type = /obj/item/device/radio/headset/distress/PMC/cct
 
 /datum/equipment_preset/pmc/technician/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/PMC, WEAR_HEAD)
@@ -603,7 +612,7 @@
 /datum/equipment_preset/pmc/technician/hvh
 	name = "Weyland-Yutani PMC (Corporate Technician) | HvH"
 	human_versus_human = TRUE
-	headset_type = /obj/item/device/radio/headset/distress/PMC/hvh/cct
+	headset_type = /obj/item/device/radio/headset/distress/PMC/cct/hvh
 
 /*****************************************************************************************************/
 
@@ -618,6 +627,7 @@
 	paygrade = "PMC-DIR"
 	role_comm_title = "DIR"
 	skills = /datum/skills/pmc/director
+	headset_type = /obj/item/device/radio/headset/distress/PMC/command/director
 
 /datum/equipment_preset/pmc/director/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/PMC/leader, WEAR_HEAD)
@@ -643,7 +653,7 @@
 /datum/equipment_preset/pmc/director/hvh
 	name = "Weyland-Yutani PMC (Site Director) | HvH"
 	human_versus_human = TRUE
-	headset_type = /obj/item/device/radio/headset/distress/PMC/hvh/cct
+	headset_type = /obj/item/device/radio/headset/distress/PMC/command/director/hvh
 
 //*****************************************************************************************************/
 
@@ -658,6 +668,7 @@
 		assignment = JOB_PMC_SYNTH
 		rank = JOB_PMC_SYNTH
 		role_comm_title = "SYN"
+		headset_type = /obj/item/device/radio/headset/distress/PMC/command
 
 
 /datum/equipment_preset/pmc/synth/load_name(mob/living/carbon/human/H, var/randomise)
@@ -731,4 +742,4 @@
 /datum/equipment_preset/pmc/synth/hvh
 		name = "Weyland-Yutani PMC (Support Synthetic) | HvH"
 		human_versus_human = TRUE
-		headset_type = /obj/item/device/radio/headset/distress/PMC/hvh/cct
+		headset_type = /obj/item/device/radio/headset/distress/PMC/command/hvh

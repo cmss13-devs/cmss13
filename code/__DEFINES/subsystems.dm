@@ -132,6 +132,7 @@
 #define SS_INIT_DEFCON  9
 #define SS_INIT_LAW 6
 #define SS_INIT_FZ_TRANSITIONS  5
+#define SS_INIT_PROJECTILES			4.1
 #define SS_INIT_ATOMS   4
 #define SS_INIT_DECORATOR   3.7
 #define SS_INIT_SHUTTLE 3.5

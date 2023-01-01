@@ -94,7 +94,7 @@
 /datum/wound/proc/merge_wound(var/datum/wound/other)
 	src.damage += other.damage
 	src.amount += other.amount
-	src.created = max(src.created, other.created)	//take the newer created time
+	src.created = max(src.created, other.created) //take the newer created time
 
 // heal the given amount of damage, and if the given amount of damage was more
 // than what needed to be healed, return how much heal was left
@@ -132,7 +132,7 @@
 // this will prevent large amounts of damage being trapped in less severe wound types
 /datum/wound/proc/can_worsen(damage_type, damage)
 	if (src.damage_type != damage_type)
-		return 0	//incompatible damage types
+		return 0 //incompatible damage types
 
 	if (src.amount > 1)
 		return 0

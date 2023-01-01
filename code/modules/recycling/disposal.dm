@@ -3,8 +3,8 @@
 //Can hold items and human size things, no other draggables
 //Toilets are a type of disposal bin for small objects only and work on magic. By magic, I mean torque rotation
 #define SEND_PRESSURE 50 //kPa
-#define PRESSURE_TANK_VOLUME 70	//L - a 0.3 m diameter * 1 m long cylindrical tank. Happens to be the same volume as the regular oxygen tanks, so seems appropriate.
-#define PUMP_MAX_FLOW_RATE 50	//L/s - 8 m/s using a 15 cm by 15 cm inlet
+#define PRESSURE_TANK_VOLUME 70 //L - a 0.3 m diameter * 1 m long cylindrical tank. Happens to be the same volume as the regular oxygen tanks, so seems appropriate.
+#define PUMP_MAX_FLOW_RATE 50 //L/s - 8 m/s using a 15 cm by 15 cm inlet
 
 /obj/structure/machinery/disposal
 	name = "disposal unit"
@@ -12,7 +12,7 @@
 	icon = 'icons/obj/pipes/disposal.dmi'
 	icon_state = "disposal"
 	anchored = 1
-	density = 1
+	density = TRUE
 	var/mode = 1 //Item mode 0=off 1=charging 2=charged
 	var/flush = 0 //True if flush handle is pulled
 	var/obj/structure/disposalpipe/trunk/trunk = null //The attached pipe trunk
@@ -32,7 +32,7 @@
 		mode = 0
 		flush = 0
 	else
-		trunk.linked = src	//Link the pipe trunk to self
+		trunk.linked = src //Link the pipe trunk to self
 
 	update()
 	start_processing()
@@ -90,7 +90,7 @@
 					transfer_fingerprints_to(C)
 					C.ptype = 6 //6 = disposal unit
 					C.anchored = 1
-					C.density = 1
+					C.density = TRUE
 					C.update()
 					qdel(src)
 			else
@@ -377,7 +377,7 @@
 	flick("[icon_state]-flush", src)
 
 	var/wrapcheck = 0
-	var/obj/structure/disposalholder/H = new()	//Virtual holder object which actually
+	var/obj/structure/disposalholder/H = new() //Virtual holder object which actually
 												//Travels through the pipes.
 	//Hacky test to get drones to mail themselves through disposals.
 	for(var/mob/living/silicon/robot/drone/D in src)
@@ -398,21 +398,21 @@
 	disposal_pressure = 0
 
 	if(H)
-		H.init(src)	//Copy the contents of disposer to holder
+		H.init(src) //Copy the contents of disposer to holder
 
 		H.start(src) //Start the holder processing movement
 	flushing = 0
 	//Now reset disposal state
 	flush = 0
-	if(mode == 2)	//If was ready,
-		mode = 1	//Switch to charging
+	if(mode == 2) //If was ready,
+		mode = 1 //Switch to charging
 	update()
 	return
 
 //Called when area power changes
 /obj/structure/machinery/disposal/power_change()
-	..()	//Do default setting/reset of stat NOPOWER bit
-	update()	//Update icon
+	..() //Do default setting/reset of stat NOPOWER bit
+	update() //Update icon
 	return
 
 //Called when holder is expelled from a disposal, should usually only occur if the pipe network is modified
@@ -445,10 +445,10 @@
 //Contents will be items flushed by the disposal, this allows the gas flushed to be tracked
 /obj/structure/disposalholder
 	invisibility = 101
-	var/active = 0	//True if the holder is moving, otherwise inactive
+	var/active = 0 //True if the holder is moving, otherwise inactive
 	dir = 0
 	var/count = 2048 //Can travel 2048 steps before going inactive (in case of loops)
-	var/has_fat_guy = 0	//True if contains a fat person
+	var/has_fat_guy = 0 //True if contains a fat person
 	var/destinationTag = "" //Changes if contains a delivery container
 	var/tomail = 0 //Changes if contains wrapped package
 	var/hasmob = 0 //If it contains a mob
@@ -598,15 +598,15 @@
 	name = "disposal pipe"
 	desc = "An underfloor disposal pipe."
 	anchored = 1
-	density = 0
+	density = FALSE
 
-	level = 1			//Underfloor only
-	var/dpdir = 0		//Bitmask of pipe directions
-	dir = 0				//dir will contain dominant direction for junction pipes
-	health = 10 	//Health points 0-10
+	level = 1 //Underfloor only
+	var/dpdir = 0 //Bitmask of pipe directions
+	dir = 0 //dir will contain dominant direction for junction pipes
+	health = 10 //Health points 0-10
 	plane = FLOOR_PLANE
 	layer = DISPOSAL_PIPE_LAYER //Slightly lower than wires and other pipes
-	var/base_icon_state	//Initial icon state on map
+	var/base_icon_state //Initial icon state on map
 
 	//New pipe, set the icon_state as on map
 /obj/structure/disposalpipe/Initialize(mapload, ...)
@@ -667,7 +667,7 @@
 
 //Hide called by levelupdate if turf intact status changes, change visibility status and force update of icon
 /obj/structure/disposalpipe/hide(var/intact)
-	invisibility = intact ? 101: 0	// hide if floor is intact
+	invisibility = intact ? 101: 0 // hide if floor is intact
 	updateicon()
 
 //Update actual icon_state depending on visibility, if invisible, append "f" to icon_state to show faded version, this will be revealed if a T-scanner is used
@@ -732,7 +732,7 @@
 				var/obj/structure/disposalpipe/broken/P = new(loc)
 				P.setDir(D)
 
-	invisibility = 101	//Make invisible (since we won't delete the pipe immediately)
+	invisibility = 101 //Make invisible (since we won't delete the pipe immediately)
 	var/obj/structure/disposalholder/H = locate() in src
 	if(H)
 		//Holder was present
@@ -840,7 +840,7 @@
 			C.ptype = 14
 	transfer_fingerprints_to(C)
 	C.setDir(dir)
-	C.density = 0
+	C.density = FALSE
 	C.anchored = 1
 	C.update()
 	qdel(src)
@@ -1046,9 +1046,9 @@
 //Next direction to move, if coming in from secondary dirs, then next is primary dir, if coming in from primary dir, then next is equal chance of other dirs
 /obj/structure/disposalpipe/junction/nextdir(var/fromdir)
 	var/flipdir = turn(fromdir, 180)
-	if(flipdir != dir)	//Came from secondary dir
-		return dir		//So exit through primary
-	else				//Came from primary
+	if(flipdir != dir) //Came from secondary dir
+		return dir //So exit through primary
+	else //Came from primary
 						//So need to choose either secondary exit
 		var/mask = ..(fromdir)
 
@@ -1235,7 +1235,7 @@
 //A trunk joining to a disposal bin or outlet on the same turf
 /obj/structure/disposalpipe/trunk
 	icon_state = "pipe-t"
-	var/obj/linked 	//The linked obj/structure/machinery/disposal or obj/disposaloutlet
+	var/obj/linked //The linked obj/structure/machinery/disposal or obj/disposaloutlet
 
 /obj/structure/disposalpipe/trunk/Initialize(mapload, ...)
 	. = ..()
@@ -1341,10 +1341,10 @@
 	desc = "An outlet for the pneumatic disposal system."
 	icon = 'icons/obj/pipes/disposal.dmi'
 	icon_state = "outlet"
-	density = 1
+	density = TRUE
 	anchored = 1
 	var/active = 0
-	var/turf/target	//This will be where the output objects are 'thrown' to.
+	var/turf/target //This will be where the output objects are 'thrown' to.
 	var/mode = 0
 	var/range = 10
 
@@ -1353,7 +1353,7 @@
 	target = get_ranged_target_turf(src, dir, range)
 	var/obj/structure/disposalpipe/trunk/trunk = locate() in loc
 	if(trunk)
-		trunk.linked = src	//Link the pipe trunk to self
+		trunk.linked = src //Link the pipe trunk to self
 
 //Expel the contents of the holder object, then delete it. Called when the holder exits the outlet
 /obj/structure/disposaloutlet/proc/expel(var/obj/structure/disposalholder/H)
@@ -1401,7 +1401,7 @@
 				C.ptype = 7 //7 =  outlet
 				C.update()
 				C.anchored = 1
-				C.density = 1
+				C.density = TRUE
 				qdel(src)
 		else
 			to_chat(user, SPAN_WARNING("You need more welding fuel to complete this task."))

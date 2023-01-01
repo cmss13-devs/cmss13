@@ -4,7 +4,7 @@
 //****************************************Food Reagents************************************************/
 //*****************************************************************************************************/
 // Part of the food code. Nutriment is used instead of the old "heal_amt" code. Also is where all the food
-// 	condiments, additives, and such go.
+// condiments, additives, and such go.
 
 /datum/reagent/nutriment
 	name = "Nutriment"

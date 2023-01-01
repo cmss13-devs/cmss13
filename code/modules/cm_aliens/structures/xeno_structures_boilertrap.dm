@@ -6,8 +6,8 @@
 	desc = "It looks like a trap for catching tallhosts."
 	name = "resin hole"
 	icon_state = "trap_boiler"
-	density = 0
-	opacity = 0
+	density = FALSE
+	opacity = FALSE
 	anchored = 1
 	health = 1
 	layer = RESIN_STRUCTURE_LAYER
@@ -75,7 +75,7 @@
 /obj/effect/hole_tripwire_boiler
 	name = "hole tripwire"
 	anchored = TRUE
-	mouse_opacity = 0
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	invisibility = 101
 	unacidable = TRUE //You never know
 	var/obj/effect/alien/resin/boilertrap/linked_trap

@@ -1,7 +1,7 @@
 //Procedures in this file: Eye mending surgery
 //Steps will only work in a surgery of /datum/surgery/eye_repair or a child of that due to target_eyes var.
 //////////////////////////////////////////////////////////////////
-//							EYE SURGERY							//
+// EYE SURGERY //
 //////////////////////////////////////////////////////////////////
 
 /datum/surgery/eye_repair

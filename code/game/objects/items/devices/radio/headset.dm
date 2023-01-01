@@ -131,7 +131,7 @@
 	add_fingerprint(usr)
 
 /obj/item/device/radio/headset/attackby(obj/item/W as obj, mob/user as mob)
-//	..()
+// ..()
 	user.set_interaction(src)
 	if ( !(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER) || (istype(W, /obj/item/device/encryptionkey)) ))
 		return
@@ -314,7 +314,7 @@
 	icon_state = "radio"
 	item_state = "headset"
 	initial_keys = list(/obj/item/device/encryptionkey/ai_integrated)
-	var/myAi = null    // Atlantis: Reference back to the AI which has this radio.
+	var/myAi = null // Atlantis: Reference back to the AI which has this radio.
 	var/disabledAi = 0 // Atlantis: Used to manually disable AI's integrated radio via intellicard menu.
 
 /obj/item/device/radio/headset/ai_integrated/receive_range(freq, level)
@@ -730,9 +730,9 @@
 			for(var/ch_name in channels)
 				secure_radio_connections[ch_name] = SSradio.add_object(src, radiochannels[ch_name],  RADIO_CHAT)
 			recalculateChannels()
-			if(H.mind && H.hud_used && H.hud_used.locate_leader)	//make SL tracker visible
+			if(H.mind && H.hud_used && H.hud_used.locate_leader) //make SL tracker visible
 				H.hud_used.locate_leader.alpha = 255
-				H.hud_used.locate_leader.mouse_opacity = 1
+				H.hud_used.locate_leader.mouse_opacity = MOUSE_OPACITY_ICON
 
 //Distress (ERT) headsets.
 

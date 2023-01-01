@@ -16,7 +16,7 @@
 	objectives = "Destroy everything!"
 
 /datum/emergency_call/feral_xenos/spawn_items()
-	var/turf/drop_spawn	= get_spawn_point(TRUE)
+	var/turf/drop_spawn = get_spawn_point(TRUE)
 	if(istype(drop_spawn))
 		//drop some weeds for xeno plasma regen.
 		new /obj/effect/alien/weeds/node/feral(drop_spawn)

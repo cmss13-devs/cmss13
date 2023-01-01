@@ -8,7 +8,7 @@
 	desc = "A little medical robot. He looks somewhat underwhelmed."
 	icon = 'icons/obj/structures/machinery/aibots.dmi'
 	icon_state = "medibot0"
-	density = 0
+	density = FALSE
 	anchored = 0
 	health = 20
 	maxhealth = 20
@@ -254,9 +254,9 @@
 					src.speak(message)
 					src.visible_message("<b>[src]</b> points at [C.name]!")
 					src.last_newpatient_speak = world.time
-//					if(declare_treatment)
-//						var/area/location = get_area(src)
-//						broadcast_medical_hud_message("[src.name] is treating <b>[C]</b> in <b>[location]</b>", src)
+// if(declare_treatment)
+// var/area/location = get_area(src)
+// broadcast_medical_hud_message("[src.name] is treating <b>[C]</b> in <b>[location]</b>", src)
 				break
 			else
 				continue
@@ -420,7 +420,7 @@
 			src.currently_healing = 0
 			return
 
-//	src.speak(reagent_id)
+// src.speak(reagent_id)
 	reagent_id = null
 	return
 
@@ -468,7 +468,7 @@
 
 
 /*
- *	Medbot Assembly -- Can be made out of all three medkits.
+ * Medbot Assembly -- Can be made out of all three medkits.
  */
 
 /obj/item/storage/firstaid/attackby(var/obj/item/robot_parts/S, mob/user as mob)

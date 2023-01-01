@@ -54,7 +54,7 @@
 
 /datum/entity/proc/detach()
 	metadata.to_read -= src
-	metadata.to_delete -= src	
+	metadata.to_delete -= src 
 	metadata.to_update -= src
 	metadata.managed -= src.id
 	if(metadata.key_field)

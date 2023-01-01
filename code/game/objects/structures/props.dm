@@ -5,12 +5,12 @@
 	icon_state = "comm_tower_destroyed"
 	unslashable = TRUE
 	unacidable = TRUE
-	density = 1
+	density = TRUE
 	layer = ABOVE_FLY_LAYER
 	bound_height = 96
 
 /obj/structure/prop/dam
-	density = 1
+	density = TRUE
 
 /obj/structure/prop/dam/drill
 	name = "mining drill"
@@ -100,7 +100,7 @@
 	desc = "A traditional Japanese archway, made out of wood, and adorned with lanterns."
 	icon = 'icons/obj/structures/props/torii.dmi'
 	icon_state = "torii"
-	density = 0
+	density = FALSE
 	pixel_x = -16
 	layer = MOB_LAYER+0.5
 	var/lit = 0
@@ -440,7 +440,7 @@
 	desc = "A rack full of hard drives, micro-computers, and ethernet cables."
 	icon = 'icons/obj/structures/props/server_equipment.dmi'
 	icon_state = "rackframe"
-	density = 1
+	density = TRUE
 	health = 150
 
 /obj/structure/prop/server_equipment/broken
@@ -464,7 +464,7 @@
 	name = "laptop"
 	desc = "Laptops, porta-comps, and reel-back computers, all of these and more available at your local Wey-Mart electronics section!"
 	icon_state = "laptop_off"
-	density = 0
+	density = FALSE
 
 /obj/structure/prop/server_equipment/laptop/closed
 	icon_state = "laptop_closed"
@@ -480,7 +480,7 @@
 	icon = 'icons/obj/structures/props/biomass_turbine.dmi'
 	icon_state = "biomass_turbine"
 	desc = "A gigantic turbine that runs on god knows what. It could probably be turned on by someone with the correct know-how."
-	density = 1
+	density = TRUE
 	breakable = FALSE
 	indestructible = TRUE
 	unslashable = TRUE
@@ -517,7 +517,7 @@
 	icon = 'icons/obj/structures/props/biomass_turbine.dmi'
 	icon_state = "support_struts_r"
 	desc = "Pipes, or maybe support struts that lead into, or perhaps support that big ol' turbine."
-	density = 0
+	density = FALSE
 	breakable = FALSE
 	indestructible = TRUE
 	unslashable = TRUE
@@ -553,7 +553,7 @@
 	desc = "A Seegson brand point of sales system that accepts credit chits... and cash assuming it is operated. Rumor has it these use the same logic board as Seegson Working Joes. You are becoming financially unstable."
 	icon = 'icons/obj/structures/props/cash_register.dmi'
 	icon_state = "cash_register"
-	density = 1
+	density = TRUE
 	health = 50
 
 /obj/structure/prop/cash_register/open
@@ -576,7 +576,7 @@
 	desc = "Like rebar, but in space."
 	icon = 'icons/obj/structures/structures.dmi'
 	icon_state = "structure_lattice"
-	density = 1 //impassable by default
+	density = TRUE //impassable by default
 
 /obj/structure/prop/resin_prop
 	name = "resin coated object"
@@ -604,10 +604,10 @@
 	desc = "What remains of Maj. Afric Zimmerman. Their entire head is missing. Someone shed a tear."
 	icon = 'icons/obj/structures/props/64x64.dmi'
 	icon_state = "afric_zimmerman"
-	density = 0
+	density = FALSE
 
 /obj/structure/prop/invuln/lifeboat_hatch_placeholder
-	density = 0
+	density = FALSE
 	name = "non-functional hatch"
 	desc = "You'll need more than a prybar for this one."
 	icon = 'icons/obj/structures/machinery/bolt_target.dmi'
@@ -615,10 +615,10 @@
 /obj/structure/prop/invuln/lifeboat_hatch_placeholder/terminal
 	icon = 'icons/obj/structures/machinery/bolt_terminal.dmi'
 
-/obj/structure/prop/invuln/dropship_parts	//for TG shuttle system
+/obj/structure/prop/invuln/dropship_parts //for TG shuttle system
 	density = TRUE
 
-/obj/structure/prop/invuln/dropship_parts/beforeShuttleMove()	//moves content but leaves the turf behind (for cool space turf)
+/obj/structure/prop/invuln/dropship_parts/beforeShuttleMove() //moves content but leaves the turf behind (for cool space turf)
 	. = ..()
 	if(. & MOVE_AREA)
 		. |= MOVE_CONTENTS
@@ -689,7 +689,7 @@
 
 /obj/structure/prop/ice_colony/dense
 	health = 75
-	density = 1
+	density = TRUE
 
 /obj/structure/prop/ice_colony/dense/ice_tray
 	name = "ice slab tray"
@@ -712,7 +712,7 @@
 	desc = "The planter box is empty."
 
 /obj/structure/prop/ice_colony/flamingo
-	density = 0
+	density = FALSE
 	name = "lawn flamingo"
 	desc = "For ornamenting your suburban lawn... or your ice colony."
 	icon_state = "flamingo"
@@ -738,7 +738,7 @@
 
 /obj/structure/prop/holidays
 	projectile_coverage = 0
-	density = 0
+	density = FALSE
 	icon = 'icons/obj/structures/props/holiday_props.dmi'
 	desc = "parent object for temporary holiday structures. If you are reading this, go find a mapper and tell them to search up error code: TOO MUCH EGGNOG"//hello future mapper. Next time use the sub types or instance the desc. Thanks -past mapper.
 	layer = 4
@@ -775,7 +775,7 @@
 	name = "colony crawler"
 	desc = "It is a tread bound crawler used in harsh conditions. Supplied by Orbital Blue International; 'Your friends, in the Aerospace business.' A subsidiary of Weyland Yutani."
 	icon_state = "crawler"
-	density = 1
+	density = TRUE
 
 //overhead prop sets
 
@@ -798,7 +798,7 @@
 	desc = "Warning, contents under pressure!"
 	icon = 'icons/obj/structures/props/generic_props.dmi'
 	icon_state = "tank"
-	density = 1
+	density = TRUE
 
 /obj/structure/prop/static_tank/fuel
 	desc = "It contains Decatuxole-Hypospaldirol. A non-volatile liquid fuel type that tastes like oranges. Can't really be used for anything outside of atmos-rocket boosters."
@@ -812,7 +812,7 @@
 
 /obj/structure/prop/invuln
 	layer = ABOVE_MOB_LAYER
-	density = 1
+	density = TRUE
 	icon = 'icons/obj/structures/props/ice_colony/props.dmi'
 	icon_state = "ice_tray"
 
@@ -820,7 +820,7 @@
 	name = "support lattice"
 	icon_state = "support_lattice"
 	desc = "The middle of a large set of steel support girders."
-	density = 0
+	density = FALSE
 
 /obj/structure/prop/invuln/minecart_tracks
 	name = "rails"
@@ -836,7 +836,7 @@
 	desc = "This (usually) stops minecarts and other rail vehicles at the end of a line of track."
 
 /obj/structure/prop/invuln/dense
-	density = 1
+	density = TRUE
 
 /obj/structure/prop/invuln/dense/catwalk_support
 	name = "support lattice"
@@ -853,14 +853,14 @@
 	desc = "This structure is made of metal support rods and robust poly-kevlon plastics. A derivative of the stuff used in UA ballistics vests, USCM and UPP uniforms. The loose walls roll with each gust of wind."
 	icon = 'icons/obj/structures/props/ice_colony/fabs_tileset.dmi'
 	icon_state = "fab"
-	density = 1
+	density = TRUE
 	layer = 3
 	bound_width = 32
 	bound_height = 32
 
 /obj/structure/prop/invuln/ice_prefab/trim
 	layer = ABOVE_MOB_LAYER
-	density = 0
+	density = FALSE
 
 /obj/structure/prop/invuln/ice_prefab/roof_greeble
 	icon = 'icons/obj/structures/props/ice_colony/fabs_greebles.dmi'
@@ -871,7 +871,7 @@
 
 
 /obj/structure/prop/invuln/ice_prefab/standalone
-	density = 1
+	density = TRUE
 	icon = 'icons/obj/structures/props/ice_colony/fabs_64.dmi'
 	icon_state = "orange"//instance icons
 	layer = 3
@@ -881,7 +881,7 @@
 /obj/structure/prop/invuln/ice_prefab/standalone/trim
 	icon_state = "orange_trim"//instance icons
 	layer = ABOVE_MOB_LAYER
-	density = 0
+	density = FALSE
 
 /obj/structure/prop/wooden_cross
 	name = "wooden cross"

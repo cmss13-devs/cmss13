@@ -23,7 +23,7 @@
 	var/distribute_pressure = ONE_ATMOSPHERE
 	var/integrity = 3
 	var/volume = 70
-	var/manipulated_by = null		//Used by _onclick/hud/screen_objects.dm internals to determine if someone has messed with our tank or not.
+	var/manipulated_by = null //Used by _onclick/hud/screen_objects.dm internals to determine if someone has messed with our tank or not.
 						//If they have and we haven't scanned it with the PDA or gas analyzer then we might just breath whatever they put in it.
 
 /obj/item/tank/get_examine_text(mob/user)
@@ -55,7 +55,7 @@
 		for(var/mob/O in viewers(user, null))
 			to_chat(O, SPAN_DANGER("[user] has used [W] on [icon2html(src, O)] [src]"))
 
-		manipulated_by = user.real_name			//This person is aware of the contents of the tank.
+		manipulated_by = user.real_name //This person is aware of the contents of the tank.
 
 		to_chat(user, SPAN_NOTICE("Results of analysis of [icon2html(src, user)]"))
 		if(pressure>0)

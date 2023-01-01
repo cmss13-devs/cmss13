@@ -277,7 +277,7 @@ to destroy them and players will be able to make replacements.
 /obj/item/circuitboard/machine/smes
 	name = "Circuit board (SMES Cell)"
 	build_path = /obj/structure/machinery/power/smes/buildable
-	 // Board itself is high tech. Coils have to be ordered from cargo or salvaged from existing SMESs.
+	// Board itself is high tech. Coils have to be ordered from cargo or salvaged from existing SMESs.
 	frame_desc = "Requires 1 superconducting magnetic coil and 30 wires."
 	req_components = list(/obj/item/stock_parts/smes_coil = 1, /obj/item/stack/cable_coil = 30)
 

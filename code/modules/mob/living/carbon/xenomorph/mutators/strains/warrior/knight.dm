@@ -77,7 +77,7 @@
 	if(bound_xeno.hivenumber != XENO_HIVE_NORMAL)
 		un_enhanced_color = adjust_brightness(bound_xeno.hive.color, un_enhanced_brightness)
 		enhanced_color = adjust_brightness(bound_xeno.hive.color, enhanced_brightness)
-	weed_enhance_check(Knight, get_turf(Knight))
+	weed_enhance_check(bound_xeno, get_turf(bound_xeno))
 
 /datum/behavior_delegate/warrior_knight/on_update_icons()
 	if(!enhancement_tendrils_icon)

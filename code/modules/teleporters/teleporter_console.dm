@@ -5,8 +5,8 @@
 	unacidable = TRUE
 	var/datum/teleporter/linked_teleporter
 	var/teleporter_id // Set the teleporter ID to link to here
-	var/selected_source             // Populated w/ the TGUI-selected source location
-	var/selected_destination        // selected destination location
+	var/selected_source  // Populated w/ the TGUI-selected source location
+	var/selected_destination // selected destination location
 	var/teleporting = FALSE // is it currently doing le telepórt
 
 /obj/structure/machinery/computer/teleporter_console/Destroy()

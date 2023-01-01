@@ -9,7 +9,7 @@
 	locked = 0
 	charge_use = 15
 
-	var/car_limit = 3		//how many cars an engine can pull before performance degrades
+	var/car_limit = 3 //how many cars an engine can pull before performance degrades
 	active_engines = 1
 	var/obj/item/key/cargo_train/key
 
@@ -38,7 +38,7 @@
 	key = new()
 	var/image/I = new(icon = 'icons/obj/vehicles/vehicles.dmi', icon_state = "cargo_engine_overlay", layer = src.layer + 0.2) //over mobs
 	overlays += I
-	turn_off()	//so engine verbs are correctly set
+	turn_off() //so engine verbs are correctly set
 
 /obj/vehicle/train/cargo/engine/Move()
 	if(on && cell.charge < charge_use)
@@ -204,7 +204,7 @@
 //-------------------------------------------------------
 /obj/vehicle/train/cargo/engine/update_car(var/train_length, var/active_engines)
 	src.train_length = train_length
-	src.active_engines = active_engines															//makes cargo trains 10% slower than running when not overweight
+	src.active_engines = active_engines //makes cargo trains 10% slower than running when not overweight
 
 /obj/vehicle/train/cargo/trolley/update_car(var/train_length, var/active_engines)
 	src.train_length = train_length

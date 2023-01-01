@@ -179,16 +179,16 @@
 
 // Still using old projectile code - commenting this out for now
 // /mob/living/simple_animal/hostile/alien/sentinel
-// 	name = "alien sentinel"
-// 	icon_state = "Sentinel Running"
-// 	icon_living = "Sentinel Running"
-// 	icon_dead = "Sentinel Dead"
-// 	health = 120
-// 	melee_damage_lower = 15
-// 	melee_damage_upper = 15
-// 	ranged = 1
-// 	projectiletype = /obj/item/projectile/neurotox
-// 	projectilesound = 'sound/weapons/pierce.ogg'
+// name = "alien sentinel"
+// icon_state = "Sentinel Running"
+// icon_living = "Sentinel Running"
+// icon_dead = "Sentinel Dead"
+// health = 120
+// melee_damage_lower = 15
+// melee_damage_upper = 15
+// ranged = 1
+// projectiletype = /obj/item/projectile/neurotox
+// projectilesound = 'sound/weapons/pierce.ogg'
 /obj/item/projectile/neurotox
 	damage = 30
 	icon_state = "toxin"

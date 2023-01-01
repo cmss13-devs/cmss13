@@ -20,13 +20,13 @@
 		if(H.species.can_shred(H))
 
 			user.visible_message(SPAN_WARNING("[user] smashes [src] to no avail."), \
-					 SPAN_WARNING("You beat against [src] to no effect"), \
-					 "You hear twisting metal.")
+					SPAN_WARNING("You beat against [src] to no effect"), \
+					"You hear twisting metal.")
 
 	if(!damage_dealt)
 		user.visible_message(SPAN_WARNING("[user] beats against the [src] to no avail."), \
-						 SPAN_WARNING("[user] beats against the [src]."), \
-						 "You hear twisting metal.")
+					SPAN_WARNING("[user] beats against the [src]."), \
+					"You hear twisting metal.")
 
 /obj/structure/cargo_container/horizontal
 	name = "Cargo Container"

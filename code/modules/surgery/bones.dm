@@ -1,7 +1,7 @@
 //Procedures in this file: Fracture repair surgery
 //Steps will only work in a surgery of /datum/surgery/bone_repair or a child of that due to affected_bone var.
 //////////////////////////////////////////////////////////////////
-//						BONE SURGERY							//
+// BONE SURGERY //
 //////////////////////////////////////////////////////////////////
 
 /datum/surgery/bone_repair

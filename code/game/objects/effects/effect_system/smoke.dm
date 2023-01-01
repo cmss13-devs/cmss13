@@ -363,7 +363,7 @@
 	if(!M.eye_blind) //Eye exposure damage
 		to_chat(M, SPAN_DANGER("Your eyes sting. You can't see!"))
 	M.SetEyeBlur(effect_amt)
-	M.eye_blind = max(M.eye_blind, round(effect_amt/3))
+	M.SetEyeBlind(round(effect_amt/3))
 	if(M.coughedtime != 1 && !M.stat) //Coughing/gasping
 		M.coughedtime = 1
 		if(prob(50))
@@ -415,7 +415,7 @@
 	M.SetEarDeafness(max(M.ear_deaf, round(effect_amt*1.5))) //Paralysis of hearing system, aka deafness
 	if(!M.eye_blind) //Eye exposure damage
 		to_chat(M, SPAN_DANGER("Your eyes sting. You can't see!"))
-	M.eye_blind = max(M.eye_blind, round(effect_amt/3))
+	M.SetEyeBlind(round(effect_amt/3))
 	if(M.coughedtime != 1 && !M.stat) //Coughing/gasping
 		M.coughedtime = 1
 		if(prob(50))

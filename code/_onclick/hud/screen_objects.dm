@@ -28,7 +28,7 @@
 	icon_state = "intro_ship"
 
 /atom/movable/screen/inventory
-	var/slot_id	//The indentifier for the slot. It has nothing to do with ID cards.
+	var/slot_id //The indentifier for the slot. It has nothing to do with ID cards.
 
 
 /atom/movable/screen/close
@@ -154,7 +154,7 @@
 	if (..())
 		return 1
 
-	if(gun_click_time > world.time - 30)	//give them 3 seconds between mode changes.
+	if(gun_click_time > world.time - 30) //give them 3 seconds between mode changes.
 		return 1
 	if(!isgun(user.get_held_item()))
 		to_chat(user, "You need your gun in your active hand to do that!")
@@ -185,7 +185,7 @@
 	if (..())
 		return 1
 
-	if(gun_click_time > world.time - 30)	//give them 3 seconds between mode changes.
+	if(gun_click_time > world.time - 30) //give them 3 seconds between mode changes.
 		return 1
 	if(!isgun(user.get_held_item()))
 		to_chat(user, "You need your gun in your active hand to do that!")
@@ -215,7 +215,7 @@
 	if (..())
 		return 1
 
-	if(gun_click_time > world.time - 30)	//give them 3 seconds between mode changes.
+	if(gun_click_time > world.time - 30) //give them 3 seconds between mode changes.
 		return 1
 	if(!isgun(user.get_held_item()))
 		to_chat(user, "You need your gun in your active hand to do that!")
@@ -319,7 +319,7 @@
 	icon = 'icons/mob/hud/screen1_robot.dmi'
 
 /atom/movable/screen/clicked(var/mob/user)
-	if(!user)	return 1
+	if(!user) return 1
 
 	switch(name)
 		if("equip")

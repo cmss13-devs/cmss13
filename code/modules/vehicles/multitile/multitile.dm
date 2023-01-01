@@ -25,10 +25,10 @@
 	var/obj/structure/machinery/camera/vehicle/camera = null
 	var/obj/structure/machinery/camera/vehicle/camera_int = null
 
-	var/nickname		//used for single-use verb to name the vehicle. Put anything here to prevent naming
+	var/nickname //used for single-use verb to name the vehicle. Put anything here to prevent naming
 
 	var/honk_sound = 'sound/vehicles/honk_4_light.ogg'
-	var/next_honk = 0	//to prevent spamming
+	var/next_honk = 0 //to prevent spamming
 
 	// List of verbs to give when a mob is seated in each seat type
 	var/list/seat_verbs
@@ -114,7 +114,7 @@
 	var/visible_in_tacmap = TRUE
 
 	//Amount of seconds spent on entering/leaving. Always the same when dragging stuff (2 seconds) and for xenos (1 second)
-	var/entrance_speed = 1
+	var/entrance_speed = 1 SECONDS
 
 	//Whether or not entering the vehicle is ID restricted to those with crewman, command or MP access only. Toggleable by the driver.
 	//Having command/MP/Crewmen access won't matter if the faction of the vehicle is not yours, so you can't infiltrate the vehicle.

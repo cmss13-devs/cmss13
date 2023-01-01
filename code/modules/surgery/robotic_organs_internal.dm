@@ -1,7 +1,7 @@
 /*Procedures in this file: chest + groin organ repair surgery, legacy prosthetic organ repair
 and organ transplant code which may come in handy in future but haven't been edited at all.*/
 //////////////////////////////////////////////////////////////////
-//						ORGAN SURGERIES							//
+// ORGAN SURGERIES //
 //////////////////////////////////////////////////////////////////
 
 /datum/surgery/robotic_organ_repair
@@ -33,7 +33,7 @@ and organ transplant code which may come in handy in future but haven't been edi
 		/obj/item/stack/cable_coil = SURGERY_TOOL_MULT_SUBSTITUTE
 		)
 	time = 3 SECONDS
-	repeat_step	= TRUE
+	repeat_step = TRUE
 
 /datum/surgery_step/repair_organs/repeat_step_criteria(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	for(var/datum/internal_organ/IO as anything in surgery.affected_limb.internal_organs)

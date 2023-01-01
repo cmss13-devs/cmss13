@@ -3,7 +3,7 @@
 	desc = "A cabinet containing various supplies."
 	icon = 'icons/obj/structures/machinery/lifeboat.dmi'
 	icon_state = "supplycab"
-	vend_delay = 3
+	vend_delay = 0.3 SECONDS
 	hackable = TRUE
 	unacidable = FALSE
 	unslashable = FALSE

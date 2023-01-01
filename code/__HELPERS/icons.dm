@@ -391,7 +391,7 @@ world
 				noIcon = TRUE // Do not render this object.
 
 	var/curdir
-	var/base_icon_dir	//We'll use this to get the icon state to display if not null BUT NOT pass it to overlays as the dir we have
+	var/base_icon_dir //We'll use this to get the icon state to display if not null BUT NOT pass it to overlays as the dir we have
 
 	//These should use the parent's direction (most likely)
 	if(!A.dir || A.dir == SOUTH)
@@ -404,7 +404,7 @@ world
 	if(!noIcon && curdir != SOUTH)
 		var/exist = FALSE
 		var/static/list/checkdirs = list(NORTH, EAST, WEST)
-		for(var/i in checkdirs)		//Not using GLOB for a reason.
+		for(var/i in checkdirs) //Not using GLOB for a reason.
 			if(length(icon_states(icon(curicon, curstate, i))))
 				exist = TRUE
 				break
@@ -414,7 +414,7 @@ world
 	if(!base_icon_dir)
 		base_icon_dir = curdir
 
-	ASSERT(!BLEND_DEFAULT)		//I might just be stupid but lets make sure this define is 0.
+	ASSERT(!BLEND_DEFAULT) //I might just be stupid but lets make sure this define is 0.
 
 	var/curblend = A.blend_mode || defblend
 
@@ -521,7 +521,7 @@ world
 			. = cleaned
 		else
 			. = icon(flat, "", SOUTH)
-	else	//There's no overlays.
+	else //There's no overlays.
 		if(!noIcon)
 			GENERATE_FLAT_IMAGE_ICON(., A, curicon, curstate, base_icon_dir)
 
@@ -546,7 +546,7 @@ world
 /proc/getIconMask(atom/A)//By yours truly. Creates a dynamic mask for a mob/whatever. /N
 	var/icon/alpha_mask = new(A.icon,A.icon_state)//So we want the default icon and icon state of A.
 	for(var/I in A.overlays)//For every image in overlays. var/image/I will not work, don't try it.
-		if(I:layer>A.layer)	continue//If layer is greater than what we need, skip it.
+		if(I:layer>A.layer) continue//If layer is greater than what we need, skip it.
 		var/icon/image_overlay = new(I:icon,I:icon_state)//Blend only works with icon objects.
 		//Also, icons cannot directly set icon_state. Slower than changing variables but whatever.
 		alpha_mask.Blend(image_overlay,ICON_OR)//OR so they are lumped together in a nice overlay.
@@ -582,9 +582,9 @@ world
 		if(gap < 1)
 			gap = 1
 		for(var/i = 1; gap + i <= result.len; i++)
-			var/atom/l = result[i]		//Fucking hate
-			var/atom/r = result[gap+i]	//how lists work here
-			if(l.layer > r.layer)		//no "result[i].layer" for me
+			var/atom/l = result[i] //Fucking hate
+			var/atom/r = result[gap+i] //how lists work here
+			if(l.layer > r.layer) //no "result[i].layer" for me
 				result.Swap(i, gap + i)
 				swapped = 1
 	return result

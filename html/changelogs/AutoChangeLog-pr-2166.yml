@@ -1,0 +1,4 @@
+author: "Segrain"
+delete-after: True
+changes:
+  - bugfix: "HPR magazines once again can be refilled from boxes of loose ammunition."

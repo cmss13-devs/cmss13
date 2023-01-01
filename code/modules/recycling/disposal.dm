@@ -17,7 +17,7 @@
 	icon = 'icons/obj/pipes/disposal.dmi'
 	icon_state = "disposal"
 	anchored = 1
-	density = 1
+	density = TRUE
 	///Item mode 0=off 1=charging 2=charged
 	var/mode = DISPOSALS_CHARGING
 	///True if flush handle is pulled
@@ -102,7 +102,7 @@
 					transfer_fingerprints_to(C)
 					C.ptype = 6 //6 = disposal unit
 					C.anchored = 1
-					C.density = 1
+					C.density = TRUE
 					C.update()
 					qdel(src)
 			else
@@ -583,7 +583,7 @@
 	name = "disposal pipe"
 	desc = "An underfloor disposal pipe."
 	anchored = 1
-	density = 0
+	density = FALSE
 
 	level = 1 //Underfloor only
 	var/dpdir = 0 //Bitmask of pipe directions
@@ -825,7 +825,7 @@
 			C.ptype = 14
 	transfer_fingerprints_to(C)
 	C.setDir(dir)
-	C.density = 0
+	C.density = FALSE
 	C.anchored = 1
 	C.update()
 	qdel(src)
@@ -1326,7 +1326,7 @@
 	desc = "An outlet for the pneumatic disposal system."
 	icon = 'icons/obj/pipes/disposal.dmi'
 	icon_state = "outlet"
-	density = 1
+	density = TRUE
 	anchored = 1
 	var/active = 0
 	var/turf/target //This will be where the output objects are 'thrown' to.
@@ -1386,7 +1386,7 @@
 				C.ptype = 7 //7 =  outlet
 				C.update()
 				C.anchored = 1
-				C.density = 1
+				C.density = TRUE
 				qdel(src)
 		else
 			to_chat(user, SPAN_WARNING("You need more welding fuel to complete this task."))

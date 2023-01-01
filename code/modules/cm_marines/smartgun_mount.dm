@@ -232,7 +232,7 @@
 	icon = 'icons/turf/whiskeyoutpost.dmi'
 	icon_state = "M56D_mount"
 	anchored = 0
-	density = 1
+	density = TRUE
 	layer = ABOVE_MOB_LAYER
 	projectile_coverage = PROJECTILE_COVERAGE_LOW
 	var/gun_mounted = FALSE //Has the gun been mounted?
@@ -417,7 +417,7 @@
 	anchored = 1
 	unslashable = TRUE
 	unacidable = TRUE //stop the xeno me(l)ta.
-	density = 1
+	density = TRUE
 	layer = ABOVE_MOB_LAYER //no hiding the hmg beind corpse
 	use_power = USE_POWER_NONE
 	projectile_coverage = PROJECTILE_COVERAGE_LOW
@@ -1168,7 +1168,7 @@
 	var/grip_dir = null
 	var/fold_time = 1.5 SECONDS
 	var/repair_time = 5 SECONDS
-	density = 1
+	density = TRUE
 	health = 230
 	health_max = 230
 	var/list/cadeblockers = list()
@@ -1239,7 +1239,7 @@
 /obj/structure/blocker/anti_cade
 	health = INFINITY
 	anchored = 1
-	density = 0
+	density = FALSE
 	unacidable = TRUE
 	indestructible = TRUE
 	invisibility = 101 // no looking at it with alt click

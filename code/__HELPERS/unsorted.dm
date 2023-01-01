@@ -1343,7 +1343,7 @@ var/global/image/action_purple_power_up
 						// Spawn a new shuttle corner object
 						var/obj/corner = new()
 						corner.forceMove(X)
-						corner.density = 1
+						corner.density = TRUE
 						corner.anchored = 1
 						corner.icon = X.icon
 						corner.icon_state = replacetext(X.icon_state, "_s", "_f")

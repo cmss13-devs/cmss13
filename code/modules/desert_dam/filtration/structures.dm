@@ -28,7 +28,7 @@
 	icon = 'icons/obj/filtration/96x96.dmi'
 	bound_x = 96
 	bound_y = 96
-	density = 1
+	density = TRUE
 
 
 /obj/structure/prop/almayer/anti_air_cannon
@@ -36,7 +36,7 @@
 	desc = "An anti-air cannon for shooting spaceships. It looks broken."
 	icon = 'icons/effects/128x128.dmi'
 	icon_state = "anti_air_cannon"
-	density = 1
+	density = TRUE
 	anchored = 1
 	layer = LADDER_LAYER
 	bound_width = 128
@@ -51,7 +51,7 @@
 	name = "filtration catwalks"
 	//bound_x = 96
 	//bound_y = 96
-	density = 0
+	density = FALSE
 	anchored = 1
 	bound_width = 32
 	bound_height = 32
@@ -66,7 +66,7 @@
 
 /obj/structure/filtration/machine_32x64
 	icon = 'icons/obj/structures/props/32x64.dmi'
-	density = 1
+	density = TRUE
 	anchored = 1
 	bound_width = 32
 	bound_height = 64
@@ -83,7 +83,7 @@
 	icon = 'icons/obj/structures/props/96x96.dmi'
 	//bound_x = 96
 	//bound_y = 96
-	density = 1
+	density = TRUE
 	anchored = 1
 	bound_width = 96
 	bound_height = 96
@@ -100,7 +100,7 @@
 	icon = 'icons/obj/structures/props/64x96.dmi'
 	//bound_x = 96
 	//bound_y = 96
-	density = 1
+	density = TRUE
 	anchored = 1
 	bound_width = 64
 	bound_height = 96
@@ -117,7 +117,7 @@
 	icon = 'icons/obj/structures/props/64x128.dmi'
 	//bound_x = 96
 	//bound_y = 96
-	density = 1
+	density = TRUE
 	anchored = 1
 	bound_width = 64
 	bound_height = 128
@@ -133,7 +133,7 @@
 /obj/structure/filtration/coagulation_arm
 	name = "coagulation arm"
 	desc = "An axel with four sides, made to spin to help filter the water."
-	density = 1
+	density = TRUE
 	icon = 'icons/obj/structures/props/coagulation_arm.dmi'
 	icon_state = "arm"
 	layer = ABOVE_MOB_LAYER + 0.1
@@ -143,7 +143,7 @@
 /obj/structure/filtration/flacculation_arm
 	name = "flocculation arm"
 	desc = "A long metal filtering rod on an axel, made to spin for flocculation."
-	density = 1
+	density = TRUE
 	icon = 'icons/obj/structures/props/flacculation_arm.dmi'
 	icon_state = "flacculation_arm"
 	bound_height = 32

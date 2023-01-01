@@ -2,8 +2,8 @@
 	name = "reinforced wall"
 	desc = "A huge chunk of reinforced metal used to separate rooms."
 	icon_state = "r_wall_mapicon"
-	opacity = 1
-	density = 1
+	opacity = TRUE
+	density = TRUE
 
 	damage_cap = HEALTH_WALL_REINFORCED
 	max_temperature = 6000

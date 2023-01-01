@@ -1,4 +1,0 @@
-author: "carlarctg"
-delete-after: True
-changes:
-  - rscadd: "Added a preference for eye blurring. Can be defaut blur, vision impair, or the legacy blurring effect."

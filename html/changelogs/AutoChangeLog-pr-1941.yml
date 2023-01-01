@@ -1,5 +1,0 @@
-author: "kugamo"
-delete-after: True
-changes:
-  - rscadd: "Weather now effects acid, lasting shorter and damaging less."
-  - balance: "Weather's effects on fires have been nerfed by a few points."

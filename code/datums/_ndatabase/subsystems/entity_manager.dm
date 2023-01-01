@@ -22,10 +22,10 @@
 var/datum/controller/subsystem/entity_manager/SSentity_manager
 
 /datum/controller/subsystem/entity_manager
-	name          = "Entity Manager"
-	init_order    = SS_INIT_ENTITYMANAGER
-	init_stage    = INITSTAGE_EARLY
-	priority      = SS_PRIORITY_ENTITY
+	name   = "Entity Manager"
+	init_order = SS_INIT_ENTITYMANAGER
+	init_stage = INITSTAGE_EARLY
+	priority   = SS_PRIORITY_ENTITY
 	runlevels = RUNLEVELS_DEFAULT|RUNLEVEL_LOBBY
 	var/datum/db/adapter/adapter
 	var/list/datum/entity_meta/tables

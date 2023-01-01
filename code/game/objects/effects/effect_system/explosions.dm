@@ -3,9 +3,9 @@
 //reagents explosion system
 
 /datum/effect_system/reagents_explosion
-	var/amount 						// TNT equivalent
-	var/flashing = 0			// does explosion creates flash effect?
-	var/flashing_factor = 0		// factor of how powerful the flash effect relatively to the explosion
+	var/amount // TNT equivalent
+	var/flashing = 0 // does explosion creates flash effect?
+	var/flashing_factor = 0 // factor of how powerful the flash effect relatively to the explosion
 
 /datum/effect_system/reagents_explosion/set_up(amt, loc, flash = 0, flash_fact = 0)
 	amount = amt
@@ -106,9 +106,9 @@
 	name = "explosive particles"
 	icon = 'icons/effects/96x96.dmi'
 	icon_state = "explosion"
-	opacity = 1
+	opacity = TRUE
 	anchored = 1
-	mouse_opacity = 0
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	pixel_x = -32
 	pixel_y = -32
 

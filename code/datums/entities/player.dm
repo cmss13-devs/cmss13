@@ -476,8 +476,8 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 					DB_COMP("computer_id", DB_EQUALS, computer_id)
 				), CALLBACK(src, PROC_REF(process_stickyban), address, computer_id, source_id, reason, null))
 
-			.["desc"]	= "\nReason: Stickybanned\nExpires: PERMANENT"
-			.["reason"]	= "ckey/id"
+			.["desc"] = "\nReason: Stickybanned\nExpires: PERMANENT"
+			.["reason"] = "ckey/id"
 			return .
 
 	if(!is_time_banned && !is_permabanned)
@@ -489,8 +489,8 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 		permaban_admin.sync()
 		log_access("Failed Login: [ckey] [last_known_cid] [last_known_ip] - Banned [permaban_reason]")
 		message_staff("Failed Login: [ckey] id:[last_known_cid] ip:[last_known_ip] - Banned [permaban_reason]")
-		.["desc"]	= "\nReason: [permaban_reason]\nExpires: <B>PERMANENT</B>\nBy: [permaban_admin.ckey][appeal]"
-		.["reason"]	= "ckey/id"
+		.["desc"] = "\nReason: [permaban_reason]\nExpires: <B>PERMANENT</B>\nBy: [permaban_admin.ckey][appeal]"
+		.["reason"] = "ckey/id"
 		return .
 	if(is_time_banned)
 		var/time_left = time_ban_expiration - MINUTES_STAMP
@@ -506,8 +506,8 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 			timeleftstring = "[time_left] Minutes"
 		log_access("Failed Login: [ckey] [last_known_cid] [last_known_ip] - Banned [time_ban_reason]")
 		message_staff("Failed Login: [ckey] id:[last_known_cid] ip:[last_known_ip] - Banned [time_ban_reason]")
-		.["desc"]	= "\nReason: [time_ban_reason]\nExpires: [timeleftstring]\nBy: [time_ban_admin.ckey][appeal]"
-		.["reason"]	= "ckey/id"
+		.["desc"] = "\nReason: [time_ban_reason]\nExpires: [timeleftstring]\nBy: [time_ban_admin.ckey][appeal]"
+		.["reason"] = "ckey/id"
 		return .
 	// shouldn't be here
 	return FALSE
@@ -560,9 +560,9 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 	save()
 
 /datum/entity/player/proc/migrate_bans()
-	if(!Banlist)		// if Banlist cannot be located for some reason
-		LoadBans()		// try to load the bans
-		if(!Banlist)	// uh oh, can't find bans!
+	if(!Banlist) // if Banlist cannot be located for some reason
+		LoadBans() // try to load the bans
+		if(!Banlist) // uh oh, can't find bans!
 			return
 
 	var/reason

@@ -1,8 +1,8 @@
 SUBSYSTEM_DEF(clues)
-	name          = "Clues"
-	wait          = 10 SECONDS
-	flags         = SS_NO_INIT | SS_KEEP_TIMING
-	priority      = SS_PRIORITY_DISEASE
+	name   = "Clues"
+	wait   = 10 SECONDS
+	flags  = SS_NO_INIT | SS_KEEP_TIMING
+	priority   = SS_PRIORITY_DISEASE
 
 	var/list/currentrun = list()
 	var/list/prints_list = list()

@@ -15,7 +15,7 @@
 	icon_state = "hydra"
 	anchored = 1
 	canmove = 0
-	density = 1 //Do not want to see past it.
+	density = TRUE //Do not want to see past it.
 	bound_height = 64 //putting this in so we can't walk through our machine.
 	bound_width = 96
 	var/obj/item/device/radio/headset/almayer/mcom/ai/ai_headset //The thing it speaks into.

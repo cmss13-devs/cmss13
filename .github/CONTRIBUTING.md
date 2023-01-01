@@ -156,7 +156,19 @@ There is no strict process when it comes to merging pull requests. Pull requests
 
 * While we have no issue helping contributors (and especially new contributors) bring reasonably sized contributions up to standards via the pull request review process, larger contributions are expected to pass a higher bar of completeness and code quality *before* you open a pull request. Maintainers may close such pull requests that are deemed to be substantially flawed. You should take some time to discuss with maintainers or other contributors on how to improve the changes.
 
-* After leaving reviews on an open pull request, maintainers may convert it to a draft. Once you have addressed all their comments to the best of your ability, feel free to mark the pull as `Ready for Review` again.
+* After leaving reviews on an open pull request, maintainers should convert it to a draft. Once you have addressed all their comments to the best of your ability, feel free to mark the pull as `Ready for Review` again.
+
+### A note on balance review and PR denial
+
+Certain PRs, such as those which directly change number values (i.e. health, recoil, damage) or add large pieces of content to the game (i.e. a new gun, a new dropship weapon, or a new xeno structure) can have the potential to highly impact game balance or gameflow. As such, they are subject to another level of review known as "balance review".
+
+* Any gameplay architect may balance review PRs, after the PR has been open for 7 days without architect review any normal maintainer may balance review it.
+
+* In the process of architect review, changes may be requested as normal, the PR may be approved, or the PR may be denied.
+
+* It should go without saying that denied PRs may not be reopened or remade without changes and prior approval.
+
+* We understand that having something you have worked on for quite some time being denied can be frustrating. Therefore, it is recommmended that you check with an architect or maintainer before beginning coding your PR if you have any doubts that your PR will be accepted. This will save everyone's time and energy.
 
 ## Good Boy Points
 
@@ -212,12 +224,13 @@ Entirely new maps are generally considered to be stepping stones into the Develo
 - Latency optimizations and improvements
 - Backend system refactors that improve server stability or performance
 - Minor features that don’t impact the overall round loop
+- Content for jobs currently lacking in it
 - Anything on the public task-board
 - New Alien strains
-- New Marine and Alien tech options
 - Bay12 legacy feature removal (such as wizard backend, laser eyes, etc)
 - Map specific survivor loadouts
 - Bug fixes and inconsistency fixes
+- New TGUI
 
 ## What we don't want
 The following list is non-exhaustive, but should give you a good idea of what the dev team don't want to see in Pull Requests.
@@ -231,10 +244,14 @@ The following list is non-exhaustive, but should give you a good idea of what th
 ### Mapping
 - Nightmare inserts with ridiculous loot or ones that are out of place (don’t put snow on LV, for example)
 - Additional detailing that degrades arena space or hinders gameplay in any sort of way
+- Event or unused maps
 
 ### Coding
-- Only direct changes to balance numbers on an PR (damage, recoil, health, armor, movespeed, etc), with nothing else to add to the game (without prior approval)
 - No additional species or races, even Arcturians
+- No new whitelists
+- NanoUI
+- Player-facing HTML UIs
+- Prior denied content/PRs (without approval)
 
 Remember that the following lists are not exhaustive. And you can freely contribute an PR with content that can be shuffled into the “What we don’t want” category, and still get it merged. It is just unlikely without prior talk/approval from a maintainer.
 

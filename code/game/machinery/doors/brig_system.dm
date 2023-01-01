@@ -10,8 +10,8 @@
 	icon_state = "security"
 	desc = "A remote control for a door."
 	req_access = list(ACCESS_MARINE_BRIG)
-	anchored = TRUE    		// can't pick it up
-	density = FALSE       		// can walk through it.
+	anchored = TRUE // can't pick it up
+	density = FALSE // can walk through it.
 	unacidable = TRUE
 	indestructible = TRUE
 

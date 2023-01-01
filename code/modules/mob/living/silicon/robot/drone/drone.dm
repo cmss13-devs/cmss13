@@ -37,7 +37,6 @@
 
 
 	add_verb(src, /mob/living/proc/hide)
-	add_language(LANGUAGE_DRONE, 1)
 
 	if(camera && ("Robots" in camera.network))
 		camera.network.Add("Engineering")

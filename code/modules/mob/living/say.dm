@@ -47,9 +47,6 @@ var/list/department_radio_keys = list(
 	  ":K" = SQUAD_SOF, ".K" = SQUAD_SOF, "#K" = RADIO_CHANNEL_WY_WO,
 )
 
-/mob/living/proc/binarycheck()
-	return FALSE
-
 ///Shows custom speech bubbles for screaming, *warcry etc.
 /mob/living/proc/show_speech_bubble(var/bubble_name)
 	var/list/hear = hearers()

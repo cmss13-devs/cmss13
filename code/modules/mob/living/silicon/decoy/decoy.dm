@@ -40,7 +40,7 @@
 	addtimer(CALLBACK(GLOBAL_PROC, PROC_REF(explosion), loc, -1, 0, 8, 12), 2 SECONDS)
 	return ..()
 
-/mob/living/silicon/decoy/say(message, new_sound) //General communication across the ship.
+/mob/living/silicon/decoy/say(message) //General communication across the ship.
 	if(stat || !message)
 		return FALSE
 

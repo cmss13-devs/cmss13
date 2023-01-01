@@ -304,8 +304,10 @@ for it but just ignore it.
 
 	return returns
 
-/mob/living/carbon/human/binarycheck()
+/mob/living/carbon/human/hear_apollo()
 	var/obj/item/device/radio/headset/dongle = get_type_in_ears(/obj/item/device/radio/headset)
-	if (dongle && dongle.translate_binary)
+	if (dongle && dongle.translate_apollo)
+		return TRUE
+	for(var/datum/language/apollo/link in languages)
 		return TRUE
 	return FALSE

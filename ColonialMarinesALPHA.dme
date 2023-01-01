@@ -488,7 +488,7 @@
 #include "code\datums\paygrades\factions\other\dutch_dozen.dm"
 #include "code\datums\paygrades\factions\other\freelancer.dm"
 #include "code\datums\paygrades\factions\other\misc.dm"
-#include "code\datums\paygrades\factions\ress\ress.dm"
+#include "code\datums\paygrades\factions\twe\twe.dm"
 #include "code\datums\paygrades\factions\upp\upp.dm"
 #include "code\datums\paygrades\factions\uscm\marine.dm"
 #include "code\datums\paygrades\factions\uscm\navy.dm"

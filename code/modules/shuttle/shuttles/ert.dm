@@ -8,6 +8,7 @@
 #define ADMIN_LANDING_PAD_1 "base-ert1"
 #define ADMIN_LANDING_PAD_2 "base-ert2"
 #define ADMIN_LANDING_PAD_3 "base-ert3"
+#define ADMIN_LANDING_PAD_4 "base-ert4"
 
 // Base ERT Shuttle
 /obj/docking_port/mobile/emergency_response
@@ -94,6 +95,28 @@
 	id = MOBILE_SHUTTLE_ID_ERT_SMALL
 	preferred_direction = SOUTH
 	port_direction = NORTH
+	width = 6
+	height = 9
+	var/port_door
+	var/starboard_door
+
+/obj/docking_port/mobile/emergency_response/small/Initialize(mapload)
+	. = ..()
+	doors = list()
+	for(var/place in shuttle_areas)
+		for(var/obj/structure/machinery/door/airlock/multi_tile/air in place)
+			doors += list(air)
+			air.breakable = FALSE
+			air.indestructible = TRUE
+			air.unacidable = TRUE
+			if(air.id == "starboard_door")
+				starboard_door = air
+			else if(air.id == "port_door")
+				port_door = air
+	if(!port_door)
+		WARNING("No port door found for [src]")
+	if(!starboard_door)
+		WARNING("No starboard door found for [src]")
 
 // Generic ERT Dock
 /obj/docking_port/stationary/emergency_response
@@ -116,6 +139,50 @@
 	dir = NORTH
 	id = "almayer-ert3"
 
+/obj/docking_port/stationary/emergency_response/external
+	var/airlock_id
+	var/airlock_area
+	var/external_airlocks = list()
+
+/obj/docking_port/stationary/emergency_response/external/Initialize(mapload)
+	. = ..()
+	for(var/area/target_area in world)
+		if(istype(target_area, airlock_area))
+			world.log << "made it [target_area]"
+			for(var/obj/structure/machinery/door/door in target_area)
+				world.log << "door [door] [door.id] [airlock_id]"
+				if(door.id == airlock_id)
+					world.log << "MATCH"
+					external_airlocks += list(door)
+	if(!length(external_airlocks))
+		WARNING("No external airlocks for [src]")
+
+/obj/docking_port/stationary/emergency_response/external/on_arrival(obj/docking_port/mobile/arriving_shuttle)
+	for(var/door in external_airlocks)
+		INVOKE_ASYNC(door, TYPE_PROC_REF(/obj/structure/machinery/door, open))
+
+/obj/docking_port/stationary/emergency_response/external/on_departure(obj/docking_port/mobile/departing_shuttle)
+	for(var/door in external_airlocks)
+		INVOKE_ASYNC(door, TYPE_PROC_REF(/obj/structure/machinery/door, close))
+
+/obj/docking_port/stationary/emergency_response/external/port4
+	name = "Almayer port external airlock"
+	dir = EAST
+	id = "almayer-ert4"
+	width  = 6
+	height = 9
+	airlock_id = "s_engi_ext"
+	airlock_area = /area/almayer/engineering/upper_engineering/notunnel
+
+/obj/docking_port/stationary/emergency_response/external/port5
+	name = "Almayer starboard external airlock"
+	dir = EAST
+	id = "almayer-ert5"
+	width  = 6
+	height = 9
+	airlock_id = "n_engi_ext"
+	airlock_area = /area/almayer/engineering/upper_engineering/notunnel
+
 // These are docking ports not on the almayer
 /obj/docking_port/stationary/emergency_response/idle_port1
 	name = "Response Station Landing Pad 1"
@@ -135,6 +202,14 @@
 	id = ADMIN_LANDING_PAD_3
 	roundstart_template = /datum/map_template/shuttle/upp_ert
 
+/obj/docking_port/stationary/emergency_response/idle_port4
+	name = "Response Station Landing Pad 4"
+	dir = EAST
+	id = ADMIN_LANDING_PAD_4
+	width  = 6
+	height = 9
+	roundstart_template = /datum/map_template/shuttle/small_ert
+
 /datum/map_template/shuttle/response_ert
 	name = "ERT Shuttle 1"
 	shuttle_id = "ert_response_shuttle"
@@ -147,3 +222,6 @@
 	name = "ERT Shuttle 3"
 	shuttle_id = "ert_upp_shuttle"
 
+/datum/map_template/shuttle/small_ert
+	name = "ERT Shuttle 4"
+	shuttle_id = "ert_small_shuttle_north"

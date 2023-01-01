@@ -19,7 +19,7 @@
 	response_help  = "pets the"
 	response_disarm = "gently pushes aside the"
 	response_harm   = "stamps on the"
-	density = 0
+	density = FALSE
 	var/body_color //brown, gray and white, leave blank for random
 	layer = ABOVE_LYING_MOB_LAYER
 	min_oxy = 16 //Require atleast 16kPA oxygen

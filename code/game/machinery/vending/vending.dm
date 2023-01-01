@@ -23,7 +23,7 @@
 	icon = 'icons/obj/structures/machinery/vending.dmi'
 	icon_state = "generic"
 	anchored = 1
-	density = 1
+	density = TRUE
 	layer = BELOW_OBJ_LAYER
 
 	use_power = USE_POWER_IDLE

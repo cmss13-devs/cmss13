@@ -545,7 +545,7 @@
 	name = "empty space"
 	icon = 'icons/turf/floors/floors.dmi'
 	icon_state = "black"
-	density = 1
+	density = TRUE
 	supports_surgery = FALSE
 
 /turf/open/gm/empty/is_weedable()
@@ -768,7 +768,7 @@
 
 /turf/open/jungle/water/deep
 	plants_spawn = 0
-	density = 1
+	density = TRUE
 	icon_state = "water2"
 	icon_spawn_state = "water2"
 

@@ -189,7 +189,7 @@
 	icon = 'icons/obj/items/toy.dmi'
 	icon_state = "null"
 	anchored = 1
-	density = 0
+	density = FALSE
 
 
 /*

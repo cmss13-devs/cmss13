@@ -3,7 +3,7 @@
 /////////////////////////////////////////////
 /obj/effect/particle_effect/smoke/chem
 	icon = 'icons/effects/chemsmoke.dmi'
-	opacity = 0
+	opacity = FALSE
 	time_to_live = 300
 	anchored = 1
 	smokeranking = SMOKE_RANK_HIGH

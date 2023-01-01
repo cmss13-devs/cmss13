@@ -19,7 +19,7 @@
 	name = "\improper Mill"
 	desc = "It is a machine that grinds produce."
 	icon_state = "autolathe"
-	density = 1
+	density = TRUE
 	anchored = 1
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 10
@@ -90,7 +90,7 @@
 	name = "\improper Fermenter"
 	desc = "It is a machine that ferments produce into alcoholic drinks."
 	icon_state = "autolathe"
-	density = 1
+	density = TRUE
 	anchored = 1
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 10
@@ -159,7 +159,7 @@
 	name = "\improper Still"
 	desc = "It is a machine that produces hard liquor from alcoholic drinks."
 	icon_state = "autolathe"
-	density = 1
+	density = TRUE
 	anchored = 1
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 10
@@ -224,7 +224,7 @@
 	name = "\improper Squeezer"
 	desc = "It is a machine that squeezes extracts from produce."
 	icon_state = "autolathe"
-	density = 1
+	density = TRUE
 	anchored = 1
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 10
@@ -248,7 +248,7 @@
 	name = "\improper Centrifuge"
 	desc = "It is a machine that spins produce."
 	icon_state = "autolathe"
-	density = 1
+	density = TRUE
 	anchored = 1
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 10

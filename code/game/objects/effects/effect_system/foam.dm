@@ -11,11 +11,11 @@
 /obj/effect/particle_effect/foam
 	name = "foam"
 	icon_state = "foam"
-	opacity = 0
+	opacity = FALSE
 	anchored = 1
-	density = 0
+	density = FALSE
 	layer = BELOW_MOB_LAYER
-	mouse_opacity = 0
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	var/amount = 3
 	var/expand = 1
 	animate_movement = 0
@@ -164,8 +164,8 @@
 /obj/structure/foamed_metal
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "metalfoam"
-	density = 1
-	opacity = 1 // changed in New()
+	density = TRUE
+	opacity = TRUE // changed in New()
 	anchored = 1
 	name = "foamed metal"
 	desc = "A lightweight foamed metal wall."

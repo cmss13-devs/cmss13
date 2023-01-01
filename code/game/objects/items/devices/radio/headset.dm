@@ -732,7 +732,7 @@
 			recalculateChannels()
 			if(H.mind && H.hud_used && H.hud_used.locate_leader) //make SL tracker visible
 				H.hud_used.locate_leader.alpha = 255
-				H.hud_used.locate_leader.mouse_opacity = 1
+				H.hud_used.locate_leader.mouse_opacity = MOUSE_OPACITY_ICON
 
 //Distress (ERT) headsets.
 

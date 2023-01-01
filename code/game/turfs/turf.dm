@@ -1,7 +1,7 @@
 /*
 /turf
 
-	/open - all turfs with density = 0 are turf/open
+	/open - all turfs with density = FALSE are turf/open
 
 		/floor - floors are constructed floor as opposed to natural grounds
 
@@ -11,7 +11,7 @@
 
 		/snow - snow is one type of non-floor open turf
 
-	/closed - all turfs with density = 1 are turf/closed
+	/closed - all turfs with density = TRUE are turf/closed
 
 		/wall - walls are constructed walls as opposed to natural solid turfs
 
@@ -555,10 +555,10 @@
 	return NOT_WEEDABLE
 
 /turf/open/auto_turf/shale/layer1/is_weedable()
-	return FALSE 
+	return FALSE
 
 /turf/open/auto_turf/shale/layer2/is_weedable()
-	return FALSE 
+	return FALSE
 
 /turf/closed/wall/is_weedable()
 	return FULLY_WEEDABLE //so we can spawn weeds on the walls

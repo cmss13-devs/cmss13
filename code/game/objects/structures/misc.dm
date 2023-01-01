@@ -3,7 +3,7 @@
 	icon = 'icons/obj/structures/props/stationobjs.dmi'
 	icon_state = "showcase_1"
 	desc = "A stand with the empty body of a cyborg bolted to it."
-	density = 1
+	density = TRUE
 	anchored = 1
 	health = 250
 
@@ -52,7 +52,7 @@
 	desc = "A shooting target."
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "target_a"
-	density = 0
+	density = FALSE
 	health = 5000
 
 /obj/structure/target/syndicate
@@ -69,7 +69,7 @@
 	name = "monorail track"
 	icon = 'icons/obj/structures/structures.dmi'
 	icon_state = "monorail"
-	density = 0
+	density = FALSE
 	anchored = 1
 	layer = ATMOS_PIPE_LAYER + 0.01
 
@@ -144,8 +144,8 @@
 	health = null
 	layer = TURF_LAYER
 	plane = FLOOR_PLANE
-	density = 0
-	opacity = 0
+	density = FALSE
+	opacity = FALSE
 
 /obj/structure/stairs/perspective //instance these for the required icons
 	icon = 'icons/obj/structures/stairs/perspective_stairs.dmi'
@@ -164,7 +164,7 @@
 	icon_state = "orebox0"
 	name = "ore box"
 	desc = "A heavy box used for storing ore."
-	density = 1
+	density = TRUE
 	anchored = 0
 
 /obj/structure/ore_box/initialize_pass_flags(var/datum/pass_flags_container/PF)
@@ -173,7 +173,7 @@
 		PF.flags_can_pass_all = PASS_HIGH_OVER_ONLY|PASS_OVER_THROW_ITEM
 
 /obj/structure/computer3frame
-	density = 1
+	density = TRUE
 	anchored = 0
 	name = "computer frame"
 	icon = 'icons/obj/structures/machinery/stock_parts.dmi'

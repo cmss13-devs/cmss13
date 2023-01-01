@@ -5,7 +5,7 @@
 	desc = "A little cleaning robot, he looks so excited!"
 	icon = 'icons/obj/structures/machinery/aibots.dmi'
 	icon_state = "cleanbot0"
-	density = 0
+	density = FALSE
 	anchored = 0
 	//weight = 1.0E7
 	health = 25

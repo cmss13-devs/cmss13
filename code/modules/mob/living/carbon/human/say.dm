@@ -308,6 +308,6 @@ for it but just ignore it.
 	var/obj/item/device/radio/headset/dongle = get_type_in_ears(/obj/item/device/radio/headset)
 	if (dongle && dongle.translate_apollo)
 		return TRUE
-	if(isSynth(src))
+	for(var/datum/language/apollo/link in languages)
 		return TRUE
 	return FALSE

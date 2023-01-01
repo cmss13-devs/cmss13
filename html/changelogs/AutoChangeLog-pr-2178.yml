@@ -1,0 +1,4 @@
+author: "Sleepynecrons"
+delete-after: True
+changes:
+  - bugfix: "fixed green skin on predator having an invisible hand"

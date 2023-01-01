@@ -57,21 +57,42 @@
 	/// When the Warrior is on weeds.
 	var/enhanced_color = "#A7A2CB"
 	 // When the warrior isn't on weeds.
-	var/un_enhanced_color = "#6a6688" //"#4ADBC1"
+	var/un_enhanced_color = "#6a6688"
 	/// Currently selected color.
 	var/current_color
 
-	var/AAdebugcolor1 = 50
-	var/AAdebugcolor2 = 125
+	// These vars will adjust brightness if the Knight isn't from the default hive.
+
+	var/un_enhanced_brightness = 50
+	var/enhanced_brightness = 125
+
+	// This is a purely-flavor overlay for when the Knight is on weeds.
+
+	var/mutable_appearance/enhancement_tendrils_icon
 
 	COOLDOWN_DECLARE(toggle_msg_cd) // 14 SECONDS - reduces chat spam
 
 /datum/behavior_delegate/warrior_knight/add_to_xeno()
 	RegisterSignal(bound_xeno, COMSIG_MOVABLE_TURF_ENTER, PROC_REF(weed_enhance_check))
 	if(bound_xeno.hivenumber != XENO_HIVE_NORMAL)
-		un_enhanced_color = adjust_brightness(bound_xeno.hive.color, AAdebugcolor1)
-		enhanced_color = adjust_brightness(bound_xeno.hive.color, AAdebugcolor2)
+		un_enhanced_color = adjust_brightness(bound_xeno.hive.color, un_enhanced_brightness)
+		enhanced_color = adjust_brightness(bound_xeno.hive.color, enhanced_brightness)
+	weed_enhance_check(Knight, get_turf(Knight))
 
+/datum/behavior_delegate/warrior_knight/on_update_icons()
+	if(!enhancement_tendrils_icon)
+		enhancement_tendrils_icon = mutable_appearance('icons/mob/xenos/warrior_strain_overlays.dmi',"Immortal Will Overlay")
+
+	bound_xeno.overlays -= enhancement_tendrils_icon
+	enhancement_tendrils_icon.overlays.Cut()
+
+	if(!abilities_enhanced)
+		return
+
+	if(bound_xeno.stat == DEAD || bound_xeno.lying || bound_xeno.resting || bound_xeno.sleeping || bound_xeno.health < 0) // only if they'are up and about
+		return
+
+	bound_xeno.overlays += enhancement_tendrils_icon
 
 /datum/behavior_delegate/warrior_knight/proc/weed_enhance_check(var/mob/living/carbon/Xenomorph/Warrior/Knight, var/turf/entered_turf)
 	SIGNAL_HANDLER
@@ -93,11 +114,10 @@
 	current_color = enhanced_color
 
 	var/color = enhanced_color
-	var/alpha = 30
+	var/alpha = 25
 	if(COOLDOWN_FINISHED(src, toggle_msg_cd))
 		bound_xeno.visible_message(SPAN_DANGER("\The [bound_xeno] begins faintly glowing purple."), SPAN_NOTICE("Tendrils from your hive's weeds connect you to the hive's psychic power. Your abilities are now enhanced."))
-		bound_xeno.balloon_alert(bound_xeno, "your abilities are enhanced", text_color = color)
-		COOLDOWN_START(src, toggle_msg_cd, 3 SECONDS)
+		COOLDOWN_START(src, toggle_msg_cd, 8 SECONDS)
 	color += num2text(alpha, 2, 16)
 	bound_xeno.add_filter("enhanced_buff", 1, list("type" = "outline", "color" = color, "size" = 2))
 
@@ -108,6 +128,5 @@
 
 	if(COOLDOWN_FINISHED(src, toggle_msg_cd))
 		bound_xeno.visible_message(SPAN_DANGER("\The [bound_xeno] ceases glowing."), SPAN_NOTICE("As you step away from your hive's weeds its tendrils unhook from your body. Your abilities weaken and are no longer enhanced."))
-		bound_xeno.balloon_alert(bound_xeno, "your abilities are no longer enhanced")
-		COOLDOWN_START(src, toggle_msg_cd, 14 SECONDS)
+		COOLDOWN_START(src, toggle_msg_cd, 8 SECONDS)
 	bound_xeno.remove_filter("enhanced_buff")

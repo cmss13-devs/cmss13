@@ -1,9 +1,9 @@
 //sensor tower for deser dam. It is there to add the xeno's to the tactical map for marines.
 
-#define SENSORTOWER_BUILDSTATE_WORKING		0
-#define SENSORTOWER_BUILDSTATE_BLOWTORCH	1
-#define SENSORTOWER_BUILDSTATE_WIRECUTTERS	2
-#define SENSORTOWER_BUILDSTATE_WRENCH		3
+#define SENSORTOWER_BUILDSTATE_WORKING 0
+#define SENSORTOWER_BUILDSTATE_BLOWTORCH 1
+#define SENSORTOWER_BUILDSTATE_WIRECUTTERS 2
+#define SENSORTOWER_BUILDSTATE_WRENCH 3
 
 /obj/structure/machinery/sensortower
 	name = "\improper experimental sensor tower"
@@ -13,7 +13,7 @@
 	anchored = TRUE
 	density = TRUE
 	unslashable = TRUE
-	unacidable = TRUE	  //NOPE.jpg
+	unacidable = TRUE   //NOPE.jpg
 	use_power = TRUE
 	idle_power_usage = 1000
 	var/buildstate = SENSORTOWER_BUILDSTATE_BLOWTORCH //What state of building it are we on, 0-3, 1 is "broken", the default

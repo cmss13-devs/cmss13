@@ -1,6 +1,6 @@
 #define STATE_DEFAULT 1
 #define STATE_EVACUATION 2
-#define STATE_EVACUATION_CANCEL	3
+#define STATE_EVACUATION_CANCEL 3
 #define STATE_DISTRESS 4
 #define STATE_MESSAGELIST 5
 #define STATE_VIEWMESSAGE 6
@@ -172,7 +172,7 @@
 
 				spawn(35)//some time between AI announcements for evac cancel and SD cancel.
 					if(EvacuationAuthority.evac_status == EVACUATION_STATUS_STANDING_BY)//nothing changed during the wait
-						 //if the self_destruct is active we try to cancel it (which includes lowering alert level to red)
+						//if the self_destruct is active we try to cancel it (which includes lowering alert level to red)
 						if(!EvacuationAuthority.cancel_self_destruct(1))
 							//if SD wasn't active (likely canceled manually in the SD room), then we lower the alert level manually.
 							set_security_level(SEC_LEVEL_RED, TRUE) //both SD and evac are inactive, lowering the security level.
@@ -198,7 +198,6 @@
 					to_chat(usr, SPAN_WARNING("ARES has denied your request for operational security reasons."))
 					return FALSE
 
-				 //Comment block to test
 				if(world.time < cooldown_request + COOLDOWN_COMM_REQUEST)
 					to_chat(usr, SPAN_WARNING("The distress beacon has recently broadcast a message. Please wait."))
 					return FALSE
@@ -258,8 +257,8 @@
 		if("viewmessage")
 			state = STATE_VIEWMESSAGE
 			if (!currmsg)
-				if(href_list["message-num"]) 	currmsg = text2num(href_list["message-num"])
-				else 							state = STATE_MESSAGELIST
+				if(href_list["message-num"]) currmsg = text2num(href_list["message-num"])
+				else state = STATE_MESSAGELIST
 
 		if("delmessage")
 			state = (currmsg) ? STATE_DELMESSAGE : STATE_MESSAGELIST
@@ -441,7 +440,7 @@
 	show_browser(user, dat, name, "communications")
 	onclose(user, "communications")
 
- //A simpler version that doesn't have everything the other one has
+//A simpler version that doesn't have everything the other one has
 /obj/structure/machinery/computer/communications/simple
 	circuit = null
 

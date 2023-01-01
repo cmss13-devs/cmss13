@@ -3,7 +3,7 @@
 	desc = "..."
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "watertank"
-	density = 1
+	density = TRUE
 	anchored = 0
 	health = 100 // Can be destroyed in 2-4 slashes.
 	flags_atom = CAN_BE_SYRINGED
@@ -427,7 +427,7 @@
 	icon_state = "peppertank"
 	anchored = 1
 	wrenchable =  FALSE
-	density = 0
+	density = FALSE
 	amount_per_transfer_from_this = 45
 	chemical = "condensedcapsaicin"
 
@@ -466,6 +466,6 @@
 	amount_per_transfer_from_this = 10
 	anchored = 1
 	wrenchable = FALSE
-	density = 0
+	density = FALSE
 	chemical = "virusfood"
 

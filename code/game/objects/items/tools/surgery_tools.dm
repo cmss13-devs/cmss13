@@ -400,7 +400,7 @@ t. optimisticdude
 					resetting = 0
 
 /obj/item/tool/surgery/WYautopsy/attack(mob/living/carbon/Xenomorph/T as mob, mob/living/user as mob)
-/*	set category = "Autopsy"
+/* set category = "Autopsy"
 	set name = "Perform Alien Autopsy"
 	set src in usr*/
 	if(resetting)

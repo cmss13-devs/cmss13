@@ -68,7 +68,7 @@
 	screen_loc = "CENTER-7,CENTER-7"
 	layer = FULLSCREEN_LAYER
 	plane = FULLSCREEN_PLANE
-	mouse_opacity = 0
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	var/severity = 0
 	var/fs_view = 7
 	var/show_when_dead = FALSE
@@ -130,6 +130,12 @@
 	screen_loc = "WEST,SOUTH to EAST,NORTH"
 	icon_state = "druggy"
 	layer = FULLSCREEN_DRUGGY_LAYER
+
+/atom/movable/screen/fullscreen/blurry
+	icon = 'icons/mob/hud/screen1.dmi'
+	screen_loc = "WEST,SOUTH to EAST,NORTH"
+	icon_state = "blurry"
+	layer = FULLSCREEN_BLURRY_LAYER
 
 /atom/movable/screen/fullscreen/nvg
 	icon = 'icons/mob/hud/screen1.dmi'

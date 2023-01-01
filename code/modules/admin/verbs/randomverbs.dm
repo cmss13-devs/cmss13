@@ -3,7 +3,7 @@
 #define ANTIGRIEF_OPTION_NEW_PLAYERS "Enabled for New Players"
 #define ANTIGRIEF_OPTION_DISABLED "Disabled"
 
-/client/proc/cmd_mentor_check_new_players()	//Allows mentors / admins to determine who the newer players are.
+/client/proc/cmd_mentor_check_new_players() //Allows mentors / admins to determine who the newer players are.
 	set category = "Admin"
 	set name = "Check new Players"
 
@@ -63,13 +63,13 @@
 	var/mute_string
 
 	switch(mute_type)
-		if(MUTE_IC)			mute_string = "IC (say and emote)"
-		if(MUTE_OOC)		mute_string = "OOC"
-		if(MUTE_PRAY)		mute_string = "pray"
-		if(MUTE_ADMINHELP)	mute_string = "adminhelp, admin PM and ASAY"
-		if(MUTE_DEADCHAT)	mute_string = "deadchat and DSAY"
-		if(MUTE_ALL)		mute_string = "everything"
-		else				return FALSE
+		if(MUTE_IC) mute_string = "IC (say and emote)"
+		if(MUTE_OOC) mute_string = "OOC"
+		if(MUTE_PRAY) mute_string = "pray"
+		if(MUTE_ADMINHELP) mute_string = "adminhelp, admin PM and ASAY"
+		if(MUTE_DEADCHAT) mute_string = "deadchat and DSAY"
+		if(MUTE_ALL) mute_string = "everything"
+		else return FALSE
 
 	if(automute)
 		muteunmute = "auto-muted"

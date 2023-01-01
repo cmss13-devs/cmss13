@@ -17,17 +17,17 @@
 	flags_equip_slot = SLOT_BACK
 	actions_types = list(/datum/action/item_action/hover)
 	var/hover_cooldown = 7.5 SECONDS
-	 /// If you can use it, used for cooldowns.
+	/// If you can use it, used for cooldowns.
 	var/can_hover = TRUE
 
 	// These vars change in attackby().
 	var/fuel_multiplier = 1
-	 ///How quick you will fly
+	///How quick you will fly
 	var/speed = 5
-	 ///How many tiles you can leap to at once.
+	///How many tiles you can leap to at once.
 	var/max_distance = 4
 
-	 /// Reservoir that stores the reagents that fuel the propellant for the hoverpack. Or something like that..
+	/// Reservoir that stores the reagents that fuel the propellant for the hoverpack. Or something like that..
 	var/obj/item/reagent_container/glass/beaker/reservoir/reservoir
 
 	var/last_fuel

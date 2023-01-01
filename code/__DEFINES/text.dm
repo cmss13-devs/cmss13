@@ -12,5 +12,5 @@
 
 /// defines related to text related procs
 
-#define SHOW_MESSAGE_VISIBLE	1
-#define SHOW_MESSAGE_AUDIBLE	2
+#define SHOW_MESSAGE_VISIBLE 1
+#define SHOW_MESSAGE_AUDIBLE 2

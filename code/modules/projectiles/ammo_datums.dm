@@ -53,9 +53,9 @@
 
 	var/flamer_reagent_type = /datum/reagent/napalm/ut
 
-	 /// The flicker that plays when a bullet hits a target. Usually red. Can be nulled so it doesn't show up at all.
+	/// The flicker that plays when a bullet hits a target. Usually red. Can be nulled so it doesn't show up at all.
 	var/hit_effect_color = "#FF0000"
-	 /// The flicker that plays when a bullet hits a shielded xeno. Usually yellow. Can be nulled so it doesn't show up at all.
+	/// The flicker that plays when a bullet hits a shielded xeno. Usually yellow. Can be nulled so it doesn't show up at all.
 	var/shield_effect_color = "#FFFF00"
 
 /datum/ammo/New()

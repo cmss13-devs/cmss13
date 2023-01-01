@@ -64,12 +64,12 @@
 	var/datum/cause_data/weapon_cause_data
 	var/list/bullet_traits
 
-	 /// The beam linked to the projectile. Can be utilized for things like grappling hooks, harpoon guns, tripwire guns, etc..
+	/// The beam linked to the projectile. Can be utilized for things like grappling hooks, harpoon guns, tripwire guns, etc..
 	var/obj/effect/bound_beam
 
-	 /// The flicker that plays when a bullet hits a target. Usually red. Can be nulled so it doesn't show up at all.
+	/// The flicker that plays when a bullet hits a target. Usually red. Can be nulled so it doesn't show up at all.
 	var/hit_effect_color = "#FF0000"
-	 /// The flicker that plays when a bullet hits a shielded xeno. Usually yellow. Can be nulled so it doesn't show up at all.
+	/// The flicker that plays when a bullet hits a shielded xeno. Usually yellow. Can be nulled so it doesn't show up at all.
 	var/shield_effect_color = "#FFFF00"
 
 /obj/item/projectile/Initialize(mapload, var/datum/cause_data/cause_data)

@@ -296,6 +296,23 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 		if(!oldsrc)
 			break
 
+/obj/item/stack/clicked(mob/user, list/mods)
+	if(mods["alt"])
+		var/desired = tgui_input_number(user, "How much would you like to split off from this stack?", "How much?", 1, amount-1, 1)
+		if(!desired)
+			return
+		var/obj/item/stack/newstack = new src.type(user, desired)
+		transfer_fingerprints_to(newstack)
+		user.put_in_hands(newstack)
+		src.add_fingerprint(user)
+		newstack.add_fingerprint(user)
+		use(desired)
+		if(src && usr.interactee==src)
+			INVOKE_ASYNC(src, TYPE_PROC_REF(/obj/item/stack, interact), usr)
+		return
+	else
+		return ..()
+
 /obj/item/stack/attack_hand(mob/user as mob)
 	if (user.get_inactive_hand() == src)
 		var/obj/item/stack/F = new src.type(user, 1)
@@ -311,20 +328,13 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 	return
 
 /obj/item/stack/attackby(obj/item/W as obj, mob/user as mob)
-	if (istype(W, /obj/item/stack))
+	if(istype(W, /obj/item/stack))
 		var/obj/item/stack/S = W
 		if(S.stack_id == stack_id) //same stack type
 			if(S.amount >= max_amount)
-				to_chat(user, SPAN_NOTICE("The stack is full!"))
+				to_chat(user, SPAN_WARNING("The stack is full!"))
 				return TRUE
-			var/to_transfer
-			if(user.get_inactive_hand() == src)
-				var/desired = tgui_input_number(user, "How much would you like to transfer from this stack?", "How much?", 1, amount, 1)
-				if(!desired)
-					return
-				to_transfer = Clamp(desired, 0, min(amount, S.max_amount-S.amount))
-			else
-				to_transfer = min(src.amount, S.max_amount-S.amount)
+			var/to_transfer = min(src.amount, S.max_amount-S.amount)
 			if(to_transfer <= 0)
 				return
 			to_chat(user, SPAN_INFO("You transfer [to_transfer] between the stacks."))

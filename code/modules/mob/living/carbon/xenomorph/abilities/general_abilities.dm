@@ -236,7 +236,7 @@
 /datum/action/xeno_action/activable/pounce/proc/post_pounce_additional_effects(mob/living/L)
 	return
 
- // Called inmediately before checking for knockdown on a target.
+// Called inmediately before checking for knockdown on a target.
 /datum/action/xeno_action/activable/pounce/proc/pre_pounce_additional_effects(mob/living/L)
 	return
 

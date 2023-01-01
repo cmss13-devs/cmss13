@@ -56,7 +56,7 @@
 
 	/// When the Warrior is on weeds.
 	var/enhanced_color = "#A7A2CB"
-	 // When the warrior isn't on weeds.
+	/// When the warrior isn't on weeds.
 	var/un_enhanced_color = "#6a6688"
 	/// Currently selected color.
 	var/current_color

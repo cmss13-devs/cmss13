@@ -35,7 +35,7 @@
 	block_range = 1
 
 	var/datum/hive_status/linked_hive
-	 /// If the structure can be broken by all members of its hive.
+	/// If the structure can be broken by all members of its hive.
 	var/all_breakable = FALSE
 
 	plane = FLOOR_PLANE

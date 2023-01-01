@@ -81,28 +81,16 @@
 			memory["pump_status"] = "off"
 
 	else if(receive_tag==id_tag)
-		if(istype(master, /obj/structure/machinery/embedded_controller/radio/airlock/access_controller))
-			switch(signal.data["command"])
-				if("cycle_exterior")
-					receive_user_command("cycle_ext_door")
-				if("cycle_interior")
-					receive_user_command("cycle_int_door")
-				if("cycle")
-					if(memory["interior_status"]["state"] == "open") //handle backwards compatibility
-						receive_user_command("cycle_ext")
-					else
-						receive_user_command("cycle_int")
-		else
-			switch(signal.data["command"])
-				if("cycle_exterior")
+		switch(signal.data["command"])
+			if("cycle_exterior")
+				receive_user_command("cycle_ext")
+			if("cycle_interior")
+				receive_user_command("cycle_int")
+			if("cycle")
+				if(memory["interior_status"]["state"] == "open") //handle backwards compatibility
 					receive_user_command("cycle_ext")
-				if("cycle_interior")
+				else
 					receive_user_command("cycle_int")
-				if("cycle")
-					if(memory["interior_status"]["state"] == "open") //handle backwards compatibility
-						receive_user_command("cycle_ext")
-					else
-						receive_user_command("cycle_int")
 
 
 /datum/computer/file/embedded_program/airlock/receive_user_command(command)

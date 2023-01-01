@@ -238,7 +238,7 @@
 	icon = 'icons/obj/structures/props/stationobjs.dmi'
 	icon_state = "telescreen"
 	network = list("thunder")
-	density = 0
+	density = FALSE
 	circuit = null
 
 /obj/structure/machinery/computer/security/telescreen/update_icon()
@@ -297,7 +297,7 @@
 
 
 /obj/structure/machinery/computer/security/almayer
-	density = 0
+	density = FALSE
 	icon_state = "security_cam"
 	network = list(CAMERA_NET_ALMAYER)
 
@@ -331,7 +331,7 @@
 /obj/structure/machinery/computer/security/mortar
 	name = "Mortar Camera Interface"
 	alpha = 0
-	mouse_opacity = 0
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	density = FALSE
 	use_power = USE_POWER_NONE
 	idle_power_usage = 0
@@ -347,7 +347,7 @@
 /obj/structure/machinery/computer/security/dropship
 	name = "abstract dropship camera computer"
 	desc = "A computer to monitor cameras linked to the dropship."
-	density = 1
+	density = TRUE
 	icon = 'icons/obj/structures/machinery/shuttle-parts.dmi'
 	icon_state = "consoleleft"
 	circuit = null

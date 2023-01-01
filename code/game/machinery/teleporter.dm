@@ -7,7 +7,7 @@
 	var/obj/item/locked = null
 	var/id = null
 	var/one_time_use = 0 //Used for one-time-use teleport cards (such as clown planet coordinates.)
-						 //Setting this to 1 will set src.locked to null after a player enters the portal and will not allow hand-teles to open portals to that location.
+						//Setting this to 1 will set src.locked to null after a player enters the portal and will not allow hand-teles to open portals to that location.
 
 /obj/structure/machinery/computer/teleporter/Initialize()
 	. = ..()
@@ -112,8 +112,8 @@
 				if (M.timeofdeath + 6000 < world.time)
 					continue
 			var/turf/T = get_turf(M)
-			if(T)	continue
-			if(is_admin_level(T.z))	continue
+			if(T) continue
+			if(is_admin_level(T.z)) continue
 			var/tmpname = M.real_name
 			if(areaindex[tmpname])
 				tmpname = "[tmpname] ([++areaindex[tmpname]])"
@@ -146,17 +146,17 @@
 	return
 
 /proc/find_loc(obj/R as obj)
-	if (!R)	return null
+	if (!R) return null
 	var/turf/T = R.loc
 	while(!istype(T, /turf))
 		T = T.loc
-		if(!T || istype(T, /area))	return null
+		if(!T || istype(T, /area)) return null
 	return T
 
 /obj/structure/machinery/teleport
 	name = "teleport"
 	icon = 'icons/obj/structures/props/stationobjs.dmi'
-	density = 1
+	density = TRUE
 	anchored = 1.0
 	var/lockeddown = 0
 
@@ -205,7 +205,7 @@
 		s.set_up(5, 1, src)
 		s.start()
 		accurate = 1
-		spawn(5 MINUTES)	accurate = 0 //Accurate teleporting for 5 minutes
+		spawn(5 MINUTES) accurate = 0 //Accurate teleporting for 5 minutes
 		for(var/mob/B in hearers(src, null))
 			B.show_message(SPAN_NOTICE("Test fire completed."), SHOW_MESSAGE_AUDIBLE)
 	return

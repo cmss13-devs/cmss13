@@ -8,7 +8,7 @@
 
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 60
-	active_power_usage = 10000	//10 kW. It's a big all-body scanner.
+	active_power_usage = 10000 //10 kW. It's a big all-body scanner.
 
 	push_in_timer = null
 
@@ -79,7 +79,7 @@
 	name = "body scanner console"
 	icon = 'icons/obj/structures/machinery/cryogenics.dmi'
 	icon_state = "body_scannerconsole"
-	density = 0
+	density = FALSE
 	anchored = TRUE
 	dir = SOUTH
 	unslashable = TRUE

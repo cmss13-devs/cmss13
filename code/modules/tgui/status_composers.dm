@@ -28,7 +28,7 @@
 	if(isobserver(user))
 		// If they turn on ghost AI control, admins can always interact.
 		//if(isAdminGhostAI(user))
-		//	return UI_INTERACTIVE
+		// return UI_INTERACTIVE
 
 		// Regular ghosts can always at least view if in range.
 		var/client/client = user.client

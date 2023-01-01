@@ -1,0 +1,36 @@
+2023-01-01:
+  BeagleGaming1:
+  - bugfix: Fixes inconsistent sounds for certain modes of the plasma caster
+  Joe Lampost, sleepynecrons(wei):
+  - rscadd: Adds both bone and crimson Armour variants for preds
+  Shad0vvs, Sleepynecrons:
+  - rscadd: Added Predator skin colors (cyan, green, purple, blue, red, black), chosen
+      in the preferences screen. (Sprites by Sleepynecrons (wei))
+  ThePiachu:
+  - balance: Base and Shaman Carriers now have 500 base plasma, up from 400. Eggsac
+      remains at 600 plasma.
+  - balance: Base and Shaman Carriers can now store up to 8 eggs, up from 7. Eggsac
+      now can store a whopping 12 eggs, up from 7. Be careful not to die while carrying
+      those and give Marines greeno material!
+  - balance: Shaman can now plant weeds. This bumped all their other abilities one
+      slot over shortcut-wise.
+  - qol: Eggsac's egg generation ability is now a toggle that uses plasma per tick
+      to generate eggs at an ongoing rate until full or out of plasma.
+  - code_imp: Hivelord's Resin Walker now uses the same toggle structure.
+  - bugfix: Hivelord's Resin Walker now deactivates properly when you run out of plasma.
+  - bugfix: Fixed a runtime around Shaman's ability initialisation.
+  carlarctg:
+  - rscadd: Added a preference for eye blurring. Can be defaut blur, vision impair,
+      or the legacy blurring effect.
+  kugamo:
+  - rscadd: Weather now effects acid, lasting shorter and damaging less.
+  - balance: Weather's effects on fires have been nerfed by a few points.
+  stanalbatross:
+  - bugfix: fixed /sorted vendors showing points when they don't use them
+  - qol: marine food vendors and the req attachment vendor no longer have vend delay
+  - bugfix: fixed vaulting through windows
+  - bugfix: fixed ' " / breaking in the megaphone
+  - ui: converted the turing dispenser to tgui
+  thwompa:
+  - imageadd: added new synth charging station sprites
+  - imagedel: removed old cyborg chaging sprites

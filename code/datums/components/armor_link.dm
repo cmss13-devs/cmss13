@@ -51,23 +51,23 @@
 /datum/component/armor_link/proc/link_armor(obj/item/clothing/to_link)
 	var/obj/item/clothing/C = parent
 	if(check_values)
-		C.armor_melee	=			max(C.armor_melee, to_link.armor_melee)
-		C.armor_bullet	=			max(C.armor_bullet, to_link.armor_bullet)
-		C.armor_laser	=			max(C.armor_laser, to_link.armor_laser)
-		C.armor_energy	=			max(C.armor_energy, to_link.armor_energy)
-		C.armor_bomb	=			max(C.armor_bomb, to_link.armor_bomb)
-		C.armor_bio		=			max(C.armor_bio, to_link.armor_bio)
-		C.armor_rad		=			max(C.armor_rad, to_link.armor_rad)
-		C.armor_internaldamage =	max(C.armor_internaldamage, to_link.armor_internaldamage)
+		C.armor_melee = max(C.armor_melee, to_link.armor_melee)
+		C.armor_bullet = max(C.armor_bullet, to_link.armor_bullet)
+		C.armor_laser = max(C.armor_laser, to_link.armor_laser)
+		C.armor_energy = max(C.armor_energy, to_link.armor_energy)
+		C.armor_bomb = max(C.armor_bomb, to_link.armor_bomb)
+		C.armor_bio = max(C.armor_bio, to_link.armor_bio)
+		C.armor_rad = max(C.armor_rad, to_link.armor_rad)
+		C.armor_internaldamage = max(C.armor_internaldamage, to_link.armor_internaldamage)
 	else
-		C.armor_melee	=			to_link.armor_melee
-		C.armor_bullet	=			to_link.armor_bullet
-		C.armor_laser	=			to_link.armor_laser
-		C.armor_energy	=			to_link.armor_energy
-		C.armor_bomb	=			to_link.armor_bomb
-		C.armor_bio		=			to_link.armor_bio
-		C.armor_rad		=			to_link.armor_rad
-		C.armor_internaldamage =	to_link.armor_internaldamage
+		C.armor_melee = to_link.armor_melee
+		C.armor_bullet = to_link.armor_bullet
+		C.armor_laser = to_link.armor_laser
+		C.armor_energy = to_link.armor_energy
+		C.armor_bomb = to_link.armor_bomb
+		C.armor_bio = to_link.armor_bio
+		C.armor_rad = to_link.armor_rad
+		C.armor_internaldamage = to_link.armor_internaldamage
 
 	linked = to_link
 	RegisterSignal(linked, COMSIG_ITEM_DROPPED, PROC_REF(break_link))

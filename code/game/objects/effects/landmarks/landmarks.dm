@@ -53,9 +53,9 @@
 /obj/effect/landmark/nightmare
 	name = "Nightmare Insert"
 	icon_state = "nightmare_insert"
-	var/insert_tag            // Identifier for global mapping
-	var/replace = FALSE       // Replace another existing landmark mapping of same name
-	var/autoremove = TRUE     // Delete mapped turf when landmark is deleted, such as by an insert in replace mode
+	var/insert_tag // Identifier for global mapping
+	var/replace = FALSE    // Replace another existing landmark mapping of same name
+	var/autoremove = TRUE  // Delete mapped turf when landmark is deleted, such as by an insert in replace mode
 /obj/effect/landmark/nightmare/Initialize(mapload, ...)
 	. = ..()
 	if(!insert_tag) return

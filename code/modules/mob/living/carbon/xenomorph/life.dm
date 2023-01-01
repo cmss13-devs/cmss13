@@ -163,7 +163,7 @@
 
 	updatehealth()
 
-	if(health > 0 && stat != DEAD)	//alive and not in crit! Turn on their vision.
+	if(health > 0 && stat != DEAD) //alive and not in crit! Turn on their vision.
 		see_in_dark = 50
 
 		SetEarDeafness(0) //All this stuff is prob unnecessary
@@ -430,8 +430,8 @@ Make sure their actual health updates immediately.*/
 	if(!hud_used || !hud_used.locate_marker || !tracked_marker.loc || !loc)
 		return
 
-	var/tracked_marker_z_level = tracked_marker.loc.z 		 //I was getting errors if the mark was deleted while this was operating,
-	var/tracked_marker_turf = get_turf(tracked_marker)	 //so I made local variables to circumvent this
+	var/tracked_marker_z_level = tracked_marker.loc.z  //I was getting errors if the mark was deleted while this was operating,
+	var/tracked_marker_turf = get_turf(tracked_marker)  //so I made local variables to circumvent this
 	var/area/A = get_area(loc)
 	var/area/MA = get_area(tracked_marker_turf)
 	var/atom/movable/screen/mark_locator/ML = hud_used.locate_marker

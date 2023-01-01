@@ -27,7 +27,7 @@ var/global/dmm_suite/maploader = new
 		- A .dmm file to load (Required).
 		- A number representing the z-level on which to start loading the map (Optional).
 	The /dmm_suite will load the map file starting on the specified z-level. If no
-	z-level	was specified, world.maxz will be increased so as to fit the map. Note
+	z-level was specified, world.maxz will be increased so as to fit the map. Note
 	that if you wish to load a map onto a z-level that already has objects on it,
 	you will have to handle the removal of those objects. Otherwise the new map will
 	simply load the new objects on top of the old ones.

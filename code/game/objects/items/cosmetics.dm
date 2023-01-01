@@ -40,6 +40,12 @@
 	paint_type = "skull_camo"
 	icon_state = "skull_camo"
 
+/obj/item/facepaint/sunscreen_stick
+	name= "\improper USCM issue sunscreen"
+	desc = "A stick of SPF 50 sunscreen, issued to you by the good brass of the Corps. Whereas the previously issued sunscreen was toxic upon ingestion, this batch improves upon that by only containing excessive amounts of cadmium."
+	paint_type = "sunscreen_stick"
+	icon_state = "sunscreen_stick"
+
 /obj/item/facepaint/attack(mob/M, mob/user)
 	if(user.a_intent == INTENT_HARM)
 		return ..()

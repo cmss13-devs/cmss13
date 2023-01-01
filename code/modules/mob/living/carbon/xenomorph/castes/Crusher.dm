@@ -206,7 +206,7 @@
 
 	var/aoe_slash_damage_reduction = 0.40
 
-	 /// Utilized to update charging animation.
+	/// Utilized to update charging animation.
 	var/is_charging = FALSE
 
 /datum/behavior_delegate/crusher_base/melee_attack_additional_effects_target(mob/living/carbon/A)

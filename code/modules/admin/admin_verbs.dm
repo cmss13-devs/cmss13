@@ -235,7 +235,8 @@ var/list/admin_mob_event_verbs_hideable = list(
 	/client/proc/possess,
 	/client/proc/release,
 	/client/proc/cmd_admin_grantfullaccess,
-	/client/proc/cmd_admin_grantallskills
+	/client/proc/cmd_admin_grantallskills,
+	/client/proc/admin_create_account
 )
 
 //verbs which can be hidden - needs work

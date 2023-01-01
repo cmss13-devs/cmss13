@@ -27409,14 +27409,6 @@
 	icon_state = "bluefull"
 	},
 /area/varadero/interior/administration)
-"xkf" = (
-/obj/item,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
-	},
-/area/varadero/exterior/lz1_near)
 "xkj" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_22";
@@ -42616,7 +42608,7 @@ olD
 olD
 olD
 wMw
-xkf
+wMw
 wMw
 wMw
 wMw

@@ -31,11 +31,16 @@
 			air.unacidable = TRUE
 
 /obj/docking_port/mobile/emergency_response/enterTransit()
-	control_doors("force-lock-launch")
+	control_doors("force-lock-launch", force = TRUE)
 	..()
 
-/obj/docking_port/mobile/emergency_response/proc/control_doors(var/action)
-	for(var/door in doors)
+/obj/docking_port/mobile/emergency_response/proc/control_doors(var/action, var/force = FALSE)
+	for(var/D in doors)
+		var/obj/structure/machinery/door/door = D
+		var/is_external = door.borders_space()
+		if(!force && is_external)
+			world.log << "door [door] [force] [is_external]"
+			continue
 		switch(action)
 			if("open")
 				INVOKE_ASYNC(door, TYPE_PROC_REF(/obj/structure/machinery/door/airlock, open))
@@ -67,6 +72,11 @@
 	air.close()
 	air.lock()
 	air.safe = 1
+
+/obj/docking_port/mobile/emergency_response/setDir(newdir)
+	. = ..()
+	for(var/obj/structure/machinery/door/shuttle_door in doors)
+		shuttle_door.handle_multidoor()
 
 // ERT Shuttle 1
 /obj/docking_port/mobile/emergency_response/ert1

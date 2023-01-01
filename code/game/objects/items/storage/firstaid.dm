@@ -1,8 +1,8 @@
 /* First aid storage
  * Contains:
- *		First Aid Kits
- * 		Pill Bottles
- *		Pill Packets
+ * First Aid Kits
+ * Pill Bottles
+ * Pill Packets
  */
 
 //---------FIRST AID KITS---------
@@ -657,19 +657,19 @@
 	pill_type_to_fill = /obj/item/reagent_container/pill/tramadol
 
 /obj/item/storage/pill_bottle/packet/bicaridine
-    name = "Bicaridine pill packet"
-    icon_state = "bicaridine_packet"
-    desc = "This packet contains bicaridine pills. Heals brute damage effectively. Once you take them out, they don't go back in. Don't take more than 2 pills in a short period."
-    pill_type_to_fill = /obj/item/reagent_container/pill/bicaridine
+	name = "Bicaridine pill packet"
+	icon_state = "bicaridine_packet"
+	desc = "This packet contains bicaridine pills. Heals brute damage effectively. Once you take them out, they don't go back in. Don't take more than 2 pills in a short period."
+	pill_type_to_fill = /obj/item/reagent_container/pill/bicaridine
 
 /obj/item/storage/pill_bottle/packet/kelotane
-    name = "kelotane pill packet"
-    icon_state = "kelotane_packet"
-    desc = "This packet contains kelotane pills. Heals burn damage effectively. Once you take them out, they don't go back in. Don't take more than 2 pills in a short period."
-    pill_type_to_fill = /obj/item/reagent_container/pill/kelotane
+	name = "kelotane pill packet"
+	icon_state = "kelotane_packet"
+	desc = "This packet contains kelotane pills. Heals burn damage effectively. Once you take them out, they don't go back in. Don't take more than 2 pills in a short period."
+	pill_type_to_fill = /obj/item/reagent_container/pill/kelotane
 
 /obj/item/storage/pill_bottle/packet/oxycodone
-    name = "oxycodone pill packet"
-    icon_state = "oxycodone_packet"
-    desc = "This packet contains oxycodone pills. A highly effective painkiller. Once you take them out, they don't go back in. Don't take more than 1 pill in a short period."
-    pill_type_to_fill = /obj/item/reagent_container/pill/oxycodone
+	name = "oxycodone pill packet"
+	icon_state = "oxycodone_packet"
+	desc = "This packet contains oxycodone pills. A highly effective painkiller. Once you take them out, they don't go back in. Don't take more than 1 pill in a short period."
+	pill_type_to_fill = /obj/item/reagent_container/pill/oxycodone

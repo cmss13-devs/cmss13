@@ -41,7 +41,6 @@
 	var/action_name = "Toggle Agility"
 	handle_xeno_macro(src, action_name)
 
-
 /datum/action/xeno_action/verb/verb_pike()
 	set category = "Alien"
 	set name = "Pike"

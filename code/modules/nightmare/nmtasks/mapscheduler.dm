@@ -12,7 +12,7 @@
 
 /datum/nmtask/scheduler/mapload/add_task(datum/nmtask/task)
 	. = ..()
-	RegisterSignal(task, COMSIG_NIGHTMARE_TAINTED_BOUNDS, .proc/register_tainted_bounds)
+	RegisterSignal(task, COMSIG_NIGHTMARE_TAINTED_BOUNDS, PROC_REF(register_tainted_bounds))
 
 /datum/nmtask/scheduler/mapload/proc/register_tainted_bounds(datum/nmtask/task, list/bounds)
 	tainted_bounds.len++
@@ -22,7 +22,7 @@
 	var/list/tainted = list()
 
 	for(var/list/bounds as anything in tainted_bounds)
-		var/list/TT = 	block(	locate(bounds[MAP_MINX], bounds[MAP_MINY], bounds[MAP_MINZ]),
+		var/list/TT = block( locate(bounds[MAP_MINX], bounds[MAP_MINY], bounds[MAP_MINZ]),
 								locate(bounds[MAP_MAXX], bounds[MAP_MAXY], bounds[MAP_MAXZ]))
 		tainted |= TT
 

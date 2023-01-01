@@ -4,7 +4,7 @@
 	flavor_description = "In the midst of the Chaos of the battlefield, there is also opportunity."
 	cost = MUTATOR_COST_EXPENSIVE
 	individual_only = TRUE
-	caste_whitelist = list(XENO_CASTE_RAVAGER)  	// Only Ravager.
+	caste_whitelist = list(XENO_CASTE_RAVAGER) // Only Ravager.
 	mutator_actions_to_remove = list(
 		/datum/action/xeno_action/onclick/empower,
 		/datum/action/xeno_action/activable/pounce/charge,
@@ -73,7 +73,7 @@
 
 	shards = 0
 	shards_locked = TRUE
-	addtimer(CALLBACK(src, .proc/unlock_shards), shard_lock_duration)
+	addtimer(CALLBACK(src, PROC_REF(unlock_shards)), shard_lock_duration)
 
 /datum/behavior_delegate/ravager_hedgehog/proc/unlock_shards()
 
@@ -116,6 +116,11 @@
 	if(percentage_shards)
 		holder.overlays += image('icons/mob/hud/hud.dmi', "xenoenergy[percentage_shards]")
 	return
+
+
+/datum/behavior_delegate/ravager_hedgehog/handle_death(mob/M)
+	var/image/holder = bound_xeno.hud_list[PLASMA_HUD]
+	holder.overlays.Cut()
 
 /datum/behavior_delegate/ravager_hedgehog/on_hitby_projectile()
 	if (!shards_locked)

@@ -278,8 +278,8 @@
 
 	// Configurable options
 
-	spray_type = ACID_SPRAY_LINE	// Enum for the shape of spray to do
-	spray_distance = 7 				// Distance to spray
+	spray_type = ACID_SPRAY_LINE // Enum for the shape of spray to do
+	spray_distance = 7 // Distance to spray
 
 	activation_delay = TRUE
 	activation_delay_length = 5

@@ -795,7 +795,7 @@
 	else if(!T.can_bombard(owner))
 		return
 
-	addtimer(CALLBACK(src, .proc/new_effect, T, owner), 2*(orig_depth - dist_left))
+	addtimer(CALLBACK(src, PROC_REF(new_effect), T, owner), 2*(orig_depth - dist_left))
 
 	for(var/mob/living/L in T)
 		to_chat(L, SPAN_XENOHIGHDANGER("You see a massive ball of acid flying towards you!"))
@@ -933,9 +933,9 @@
 
 	target.last_damage_data = create_cause_data(initial(stabbing_xeno.caste_type), stabbing_xeno)
 
-	 /// To reset the direction if they haven't moved since then in below callback.
+	/// To reset the direction if they haven't moved since then in below callback.
 	var/last_dir = stabbing_xeno.dir
-	 /// Direction var to make the tail stab look cool and immersive.
+	/// Direction var to make the tail stab look cool and immersive.
 	var/stab_direction
 
 	var/stab_overlay
@@ -956,10 +956,10 @@
 	stabbing_xeno.setDir(stab_direction)
 	stabbing_xeno.emote("tail")
 
-	 /// Ditto.
+	/// Ditto.
 	var/new_dir = stabbing_xeno.dir
 
-	addtimer(CALLBACK(src, .proc/reset_direction, stabbing_xeno, last_dir, new_dir), 0.5 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(reset_direction), stabbing_xeno, last_dir, new_dir), 0.5 SECONDS)
 
 	stabbing_xeno.animation_attack_on(target)
 	stabbing_xeno.flick_attack_overlay(target, stab_overlay)

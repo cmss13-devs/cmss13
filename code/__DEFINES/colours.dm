@@ -24,7 +24,7 @@
 #define COLOUR_DARK "#454545"
 #define COLOUR_ALMOST_BLACK "#333333"
 #define COLOUR_BLACK "#000000"
-#define COLOUR_HALF_TRANSPARENT_BLACK    "#0000007A"
+#define COLOUR_HALF_TRANSPARENT_BLACK "#0000007A"
 
 #define COLOUR_RED "#FF0000"
 #define COLOUR_MOSTLY_PURE_RED "#FF3300"
@@ -94,29 +94,29 @@
 #define COLOUR_SOAPSTONE_GOLD "#FFD900"
 #define COLOUR_SOAPSTONE_DIAMOND "#00ffee"
 
-#define COLOUR_GREEN_GRAY       "#99BB76"
-#define COLOUR_RED_GRAY         "#B4696A"
+#define COLOUR_GREEN_GRAY    "#99BB76"
+#define COLOUR_RED_GRAY  "#B4696A"
 #define COLOUR_PALE_BLUE_GRAY   "#98C5DF"
 #define COLOUR_PALE_GREEN_GRAY  "#B7D993"
-#define COLOUR_PALE_RED_GRAY    "#D59998"
+#define COLOUR_PALE_RED_GRAY "#D59998"
 #define COLOUR_PALE_PURPLE_GRAY "#CBB1CA"
-#define COLOUR_PURPLE_GRAY      "#AE8CA8"
+#define COLOUR_PURPLE_GRAY   "#AE8CA8"
 
 //Colour defines used by the assembly detailer.
 #define COLOUR_ASSEMBLY_BLACK   "#545454"
 #define COLOUR_ASSEMBLY_BGRAY   "#9497AB"
 #define COLOUR_ASSEMBLY_WHITE   "#E2E2E2"
-#define COLOUR_ASSEMBLY_RED     "#CC4242"
+#define COLOUR_ASSEMBLY_RED  "#CC4242"
 #define COLOUR_ASSEMBLY_ORANGE  "#E39751"
 #define COLOUR_ASSEMBLY_BEIGE   "#AF9366"
 #define COLOUR_ASSEMBLY_BROWN   "#97670E"
-#define COLOUR_ASSEMBLY_GOLD    "#AA9100"
+#define COLOUR_ASSEMBLY_GOLD "#AA9100"
 #define COLOUR_ASSEMBLY_YELLOW  "#CECA2B"
 #define COLOUR_ASSEMBLY_GURKHA  "#999875"
 #define COLOUR_ASSEMBLY_LGREEN  "#789876"
 #define COLOUR_ASSEMBLY_GREEN   "#44843C"
 #define COLOUR_ASSEMBLY_LBLUE   "#5D99BE"
-#define COLOUR_ASSEMBLY_BLUE    "#38559E"
+#define COLOUR_ASSEMBLY_BLUE "#38559E"
 #define COLOUR_ASSEMBLY_PURPLE  "#6F6192"
 
 ///Colours for xenobiology vatgrowing
@@ -143,15 +143,15 @@
  * Important note: colours can end up significantly different from the basic html picture, especially when saturated
  */
 /// Bright but quickly dissipating neon green. rgb(100, 200, 100)
-#define LIGHT_COLOUR_GREEN      "#64C864"
+#define LIGHT_COLOUR_GREEN   "#64C864"
 /// Electric green. rgb(0, 255, 0)
-#define LIGHT_COLOUR_ELECTRIC_GREEN      "#00FF00"
+#define LIGHT_COLOUR_ELECTRIC_GREEN   "#00FF00"
 /// Cold, diluted blue. rgb(100, 150, 250)
-#define LIGHT_COLOUR_BLUE       "#6496FA"
+#define LIGHT_COLOUR_BLUE    "#6496FA"
 /// Light blueish green. rgb(125, 225, 175)
 #define LIGHT_COLOUR_BLUEGREEN  "#7DE1AF"
 /// Diluted cyan. rgb(125, 225, 225)
-#define LIGHT_COLOUR_CYAN       "#7DE1E1"
+#define LIGHT_COLOUR_CYAN    "#7DE1E1"
 /// Electric cyan rgb(0, 255, 255)
 #define LIGHT_COLOUR_ELECTRIC_CYAN "#00FFFF"
 /// More-saturated cyan. rgb(64, 206, 255)
@@ -159,15 +159,15 @@
 /// Saturated blue. rgb(51, 117, 248)
 #define LIGHT_COLOUR_DARK_BLUE  "#6496FA"
 /// Diluted, mid-warmth pink. rgb(225, 125, 225)
-#define LIGHT_COLOUR_PINK       "#E17DE1"
+#define LIGHT_COLOUR_PINK    "#E17DE1"
 /// Dimmed yellow, leaning kaki. rgb(225, 225, 125)
-#define LIGHT_COLOUR_YELLOW     "#E1E17D"
+#define LIGHT_COLOUR_YELLOW  "#E1E17D"
 /// Clear brown, mostly dim. rgb(150, 100, 50)
-#define LIGHT_COLOUR_BROWN      "#966432"
+#define LIGHT_COLOUR_BROWN   "#966432"
 /// Mostly pure orange. rgb(250, 150, 50)
-#define LIGHT_COLOUR_ORANGE     "#FA9632"
+#define LIGHT_COLOUR_ORANGE  "#FA9632"
 /// Light Purple. rgb(149, 44, 244)
-#define LIGHT_COLOUR_PURPLE     "#952CF4"
+#define LIGHT_COLOUR_PURPLE  "#952CF4"
 /// Less-saturated light purple. rgb(155, 81, 255)
 #define LIGHT_COLOUR_LAVENDER   "#9B51FF"
 ///slightly desaturated bright yellow.
@@ -177,17 +177,17 @@
 
 /* These ones aren't a direct colour like the ones above, because nothing would fit */
 /// Warm orange colour, leaning strongly towards yellow. rgb(250, 160, 25)
-#define LIGHT_COLOUR_FIRE       "#FAA019"
+#define LIGHT_COLOUR_FIRE    "#FAA019"
 /// Very warm yellow, leaning slightly towards orange. rgb(196, 138, 24)
-#define LIGHT_COLOUR_LAVA       "#C48A18"
+#define LIGHT_COLOUR_LAVA    "#C48A18"
 /// Bright, non-saturated red. Leaning slightly towards pink for visibility. rgb(250, 100, 75)
-#define LIGHT_COLOUR_FLARE      "#FA644B"
+#define LIGHT_COLOUR_FLARE   "#FA644B"
 /// Weird colour, between yellow and green, very slimy. rgb(175, 200, 75)
 #define LIGHT_COLOUR_SLIME_LAMP "#AFC84B"
 /// Extremely diluted yellow, close to skin colour (for some reason). rgb(250, 225, 175)
 #define LIGHT_COLOUR_TUNGSTEN   "#FAE1AF"
 /// Barely visible cyan-ish hue, as the doctor prescribed. rgb(240, 250, 250)
-#define LIGHT_COLOUR_HALOGEN    "#F0FAFA"
+#define LIGHT_COLOUR_HALOGEN "#F0FAFA"
 
 //The GAGS greyscale_colours for each department's computer/machine circuits
 #define CIRCUIT_COLOUR_GENERIC "#1A7A13"

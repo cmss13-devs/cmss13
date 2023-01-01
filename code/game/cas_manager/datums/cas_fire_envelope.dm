@@ -181,7 +181,7 @@
 		apply_upgrade(user)
 		if(!(user in guidance.users))
 			guidance.users += user
-			RegisterSignal(usr, COMSIG_MOB_RESISTED, .proc/exit_cam_resist)
+			RegisterSignal(usr, COMSIG_MOB_RESISTED, PROC_REF(exit_cam_resist))
 
 
 /datum/cas_fire_envelope/proc/apply_upgrade(user)

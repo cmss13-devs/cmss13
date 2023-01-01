@@ -567,10 +567,10 @@
 
 	for(var/obj/structure/machinery/computer/almayer_control/C in machines)
 		if(!(C.inoperable()))
-//			var/obj/item/paper/P = new /obj/item/paper(C.loc)//Don't need a printed copy currently.
-//			P.name = "'[MAIN_AI_SYSTEM] Update.'"
-//			P.info = input
-//			P.update_icon()
+// var/obj/item/paper/P = new /obj/item/paper(C.loc)//Don't need a printed copy currently.
+// P.name = "'[MAIN_AI_SYSTEM] Update.'"
+// P.info = input
+// P.update_icon()
 			C.messagetitle.Add("[MAIN_AI_SYSTEM] Update")
 			C.messagetext.Add(input)
 			ai_announcement(input)
@@ -592,10 +592,10 @@
 
 	for(var/obj/structure/machinery/computer/almayer_control/C in machines)
 		if(!(C.inoperable()))
-//			var/obj/item/paper/P = new /obj/item/paper(C.loc)//Don't need a printed copy currently.
-//			P.name = "'[MAIN_AI_SYSTEM] Update.'"
-//			P.info = input
-//			P.update_icon()
+// var/obj/item/paper/P = new /obj/item/paper(C.loc)//Don't need a printed copy currently.
+// P.name = "'[MAIN_AI_SYSTEM] Update.'"
+// P.info = input
+// P.update_icon()
 			C.messagetitle.Add("[MAIN_AI_SYSTEM] Shipwide Update")
 			C.messagetext.Add(input)
 

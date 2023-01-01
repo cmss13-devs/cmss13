@@ -5,7 +5,7 @@
 	flavor_description = "Only in Death does your sisters' service to the Queen end. Keep them fighting using your own blood and claws."
 	cost = MUTATOR_COST_EXPENSIVE
 	individual_only = TRUE
-	caste_whitelist = list(XENO_CASTE_PRAETORIAN)  	// Only bae
+	caste_whitelist = list(XENO_CASTE_PRAETORIAN) // Only bae
 	mutator_actions_to_remove = list(
 		/datum/action/xeno_action/activable/pounce/base_prae_dash,
 		/datum/action/xeno_action/activable/prae_acid_ball,
@@ -71,8 +71,7 @@
 		holder.overlays += image('icons/mob/hud/hud.dmi', "xenoenergy[percentage_energy]")
 
 /datum/behavior_delegate/praetorian_warden/handle_death(mob/M)
-	var/mob/living/carbon/Xenomorph/Praetorian/praetorian = M
-	var/image/holder = praetorian.hud_list[PLASMA_HUD]
+	var/image/holder = bound_xeno.hud_list[PLASMA_HUD]
 	holder.overlays.Cut()
 
 /datum/behavior_delegate/praetorian_warden/melee_attack_additional_effects_self()

@@ -15208,6 +15208,12 @@
 	icon_state = "multi_tiles"
 	},
 /area/varadero/interior/electrical)
+"mYR" = (
+/obj/item/facepaint/sunscreen_stick,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
+/area/varadero/exterior/lz1_near)
 "mYW" = (
 /turf/open/floor/shiva{
 	dir = 1;
@@ -17403,6 +17409,7 @@
 /turf/open/floor/plating,
 /area/varadero/interior/maintenance/security)
 "oRj" = (
+/obj/item/facepaint/sunscreen_stick,
 /turf/open/gm/dirt{
 	icon_state = "desert0"
 	},
@@ -27402,6 +27409,14 @@
 	icon_state = "bluefull"
 	},
 /area/varadero/interior/administration)
+"xkf" = (
+/obj/item,
+/turf/open/floor{
+	dir = 1;
+	icon_state = "asteroidfloor";
+	tag = "icon-asteroidfloor (NORTH)"
+	},
+/area/varadero/exterior/lz1_near)
 "xkj" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_22";
@@ -41672,7 +41687,7 @@ ijy
 ijy
 xBb
 gnC
-asx
+mYR
 asx
 saj
 ijy
@@ -42601,7 +42616,7 @@ olD
 olD
 olD
 wMw
-wMw
+xkf
 wMw
 wMw
 wMw

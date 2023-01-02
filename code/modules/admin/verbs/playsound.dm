@@ -69,7 +69,7 @@
 		if("Marines")
 			targets = GLOB.human_mob_list + GLOB.dead_mob_list
 		if("Ghosts")
-			targets = GLOB.observer_list
+			targets = GLOB.observer_list + GLOB.dead_mob_list
 		if("All Inview")
 			targets = viewers(usr.client.view, src)
 		if("Single Inview")
@@ -149,9 +149,9 @@
 		if("Xenos")
 			targets = GLOB.xeno_mob_list + GLOB.dead_mob_list
 		if("Marines")
-			targets = GLOB.human_mob_list + GLOB.dead_mob_list#
+			targets = GLOB.human_mob_list + GLOB.dead_mob_list
 		if("Ghosts")
-			targets = GLOB.observer_list
+			targets = GLOB.observer_list + GLOB.dead_mob_list
 		if("All Inview")
 			targets = viewers(usr.client.view, src)
 		if("Single Inview")

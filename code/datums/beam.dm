@@ -81,7 +81,7 @@
  */
 /datum/beam/proc/Draw()
 	if(always_turn)
-		origin.setDir(get_dir(origin, target))	//Causes the source of the beam to rotate to continuosly face the BeamTarget.
+		origin.setDir(get_dir(origin, target)) //Causes the source of the beam to rotate to continuosly face the BeamTarget.
 	var/Angle = round(Get_Angle(origin,target))
 	var/matrix/rot_matrix = matrix()
 	var/turf/origin_turf = get_turf(origin)

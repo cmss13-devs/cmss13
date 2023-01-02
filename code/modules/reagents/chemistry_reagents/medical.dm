@@ -163,7 +163,7 @@
 	color = "#C8A5DC" // rgb: 200, 165, 220
 	chemclass = CHEM_CLASS_SPECIAL
 	objective_value = OBJECTIVE_HIGH_VALUE
-	properties = list(	PROPERTY_CROSSMETABOLIZING = 1,
+	properties = list( PROPERTY_CROSSMETABOLIZING = 1,
 						PROPERTY_ANTITOXIC = 1,
 						PROPERTY_HEMOGENIC = 9,
 						PROPERTY_OXYGENATING = 6,
@@ -367,7 +367,7 @@
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	properties = list(PROPERTY_UNKNOWN = 1)
 
-/datum/reagent/medical/ethylredoxrazine	// FUCK YOU, ALCOHOL
+/datum/reagent/medical/ethylredoxrazine // FUCK YOU, ALCOHOL
 	name = "Ethylredoxrazine"
 	id = "ethylredoxrazine"
 	description = "Neutralizes the effects of alcohol in the blood stream, by oxidizing it into water molecules. However, it does not stop immediate intoxication. Ethylredoxrazine being a powerful oxidizer, it becomes toxic in high doses."

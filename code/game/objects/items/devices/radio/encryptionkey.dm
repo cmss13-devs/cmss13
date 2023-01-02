@@ -5,7 +5,7 @@
 	icon_state = "cypherkey"
 	item_state = ""
 	w_class = SIZE_TINY
-	var/translate_binary = FALSE
+	var/translate_apollo = FALSE
 	var/translate_hive = FALSE
 	var/syndie = FALSE //Signifies that it de-crypts Syndicate transmissions
 	var/list/channels = list()
@@ -14,7 +14,7 @@
 
 /obj/item/device/encryptionkey/binary
 	icon_state = "binary_key"
-	translate_binary = TRUE
+	translate_apollo = TRUE
 
 
 

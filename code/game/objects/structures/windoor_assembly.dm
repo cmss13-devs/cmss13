@@ -15,15 +15,15 @@
 	name = "Windoor Assembly"
 	icon_state = "l_windoor_assembly01"
 	anchored = 0
-	density = 0
+	density = FALSE
 	dir = NORTH
 
 	var/obj/item/circuitboard/airlock/electronics = null
 
 	//Vars to help with the icon's name
-	var/facing = "l"	//Does the windoor open to the left or right?
-	var/secure = ""		//Whether or not this creates a secure windoor
-	var/state = "01"	//How far the door assembly has progressed in terms of sprites
+	var/facing = "l" //Does the windoor open to the left or right?
+	var/secure = "" //Whether or not this creates a secure windoor
+	var/state = "01" //How far the door assembly has progressed in terms of sprites
 
 /obj/structure/windoor_assembly/New(Loc, start_dir=NORTH, constructed=0)
 	..()
@@ -38,7 +38,7 @@
 
 
 /obj/structure/windoor_assembly/Destroy()
-	density = 0
+	density = FALSE
 	. = ..()
 
 /obj/structure/windoor_assembly/update_icon()
@@ -196,7 +196,7 @@
 
 					if(!src) return
 
-					density = 1 //Shouldn't matter but just incase
+					density = TRUE //Shouldn't matter but just incase
 					to_chat(user, SPAN_NOTICE(" You finish the windoor!"))
 
 					if(secure)
@@ -208,7 +208,7 @@
 							windoor.icon_state = "rightsecureopen"
 							windoor.base_state = "rightsecure"
 						windoor.setDir(src.dir)
-						windoor.density = 0
+						windoor.density = FALSE
 
 						if(src.electronics.one_access)
 							windoor.req_access = null
@@ -226,7 +226,7 @@
 							windoor.icon_state = "rightopen"
 							windoor.base_state = "right"
 						windoor.setDir(src.dir)
-						windoor.density = 0
+						windoor.density = FALSE
 
 						if(src.electronics.one_access)
 							windoor.req_access = null

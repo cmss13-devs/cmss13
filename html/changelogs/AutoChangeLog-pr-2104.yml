@@ -1,6 +1,0 @@
-author: "Huffie56"
-delete-after: True
-changes:
-  - rscadd: "Added emergency shutter and buttons to activate the alarm that where missing."
-  - rscdel: "Remove some shutters between canteen and squad prep."
-  - bugfix: "fixed some emergency shutters being in the wrong direction."

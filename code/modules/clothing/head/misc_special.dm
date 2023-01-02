@@ -1,9 +1,9 @@
 /*
  * Contents:
- *		Welding mask
- *		Cakehat
- *		Ushanka
- *		Pumpkin head
+ * Welding mask
+ * Cakehat
+ * Ushanka
+ * Pumpkin head
  *
  */
 
@@ -67,7 +67,7 @@
 			if(H.head == src)
 				H.update_tint()
 
-		update_clothing_icon()	//so our mob-overlays update
+		update_clothing_icon() //so our mob-overlays update
 
 		for(var/X in actions)
 			var/datum/action/A = X
@@ -83,7 +83,7 @@
 	flags_inventory = COVEREYES
 	var/onfire = 0.0
 	var/status = 0
-	var/fire_resist = T0C+1300	//this is the max temp it can stand before you start to cook. although it might not burn away, you take damage
+	var/fire_resist = T0C+1300 //this is the max temp it can stand before you start to cook. although it might not burn away, you take damage
 	var/processing = 0 //I dont think this is used anywhere.
 	flags_armor_protection = BODY_FLAG_EYES
 

@@ -1,8 +1,8 @@
-#define STAMINA_SPEED_VERYSLOW        4.50
-#define STAMINA_SPEED_SLOW            3.75
-#define STAMINA_SPEED_HIGH            2.75
-#define STAMINA_SPEED_MED            1.50
-#define STAMINA_SPEED_LOW            1
+#define STAMINA_SPEED_VERYSLOW 4.50
+#define STAMINA_SPEED_SLOW 3.75
+#define STAMINA_SPEED_HIGH 2.75
+#define STAMINA_SPEED_MED 1.50
+#define STAMINA_SPEED_LOW 1
 
 /datum/effects/stamina
 	effect_name = "stamina"

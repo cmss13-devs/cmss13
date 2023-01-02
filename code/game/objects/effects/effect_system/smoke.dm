@@ -7,9 +7,9 @@
 /obj/effect/particle_effect/smoke
 	name = "smoke"
 	icon_state = "smoke"
-	opacity = 1
+	opacity = TRUE
 	anchored = 1
-	mouse_opacity = 0
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	layer = ABOVE_MOB_LAYER + 0.1 //above mobs and barricades
 	var/amount = 2
 	var/spread_speed = 1 //time in decisecond for a smoke to spread one tile.
@@ -245,7 +245,7 @@
 /obj/effect/particle_effect/smoke/flashbang
 	name = "illumination"
 	time_to_live = 4
-	opacity = 0
+	opacity = FALSE
 	icon_state = "sparks"
 	icon = 'icons/effects/effects.dmi'
 	smokeranking = SMOKE_RANK_MED

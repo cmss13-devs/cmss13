@@ -1,7 +1,7 @@
-#define VISION_MODE_OFF		0
-#define VISION_MODE_NVG		1
-#define VISION_MODE_THERMAL	2
-#define VISION_MODE_MESON	3
+#define VISION_MODE_OFF 0
+#define VISION_MODE_NVG 1
+#define VISION_MODE_THERMAL 2
+#define VISION_MODE_MESON 3
 
 ///parent type
 /obj/item/clothing/mask/gas/yautja

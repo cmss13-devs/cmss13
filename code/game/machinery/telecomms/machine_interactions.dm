@@ -232,7 +232,7 @@
 	if(is_admin_level(z))
 		dat += "<br>Signal Locked to Station: <A href='?src=\ref[src];change_listening=1'>[listening_level == TELECOMM_GROUND_Z ? "TRUE" : "FALSE"]</a>"
 	dat += "<br>Broadcasting: <A href='?src=\ref[src];broadcast=1'>[broadcasting ? "YES" : "NO"]</a>"
-	dat += "<br>Receiving:    <A href='?src=\ref[src];receive=1'>[receiving ? "YES" : "NO"]</a>"
+	dat += "<br>Receiving: <A href='?src=\ref[src];receive=1'>[receiving ? "YES" : "NO"]</a>"
 	return dat
 
 /obj/structure/machinery/telecomms/relay/Options_Topic(href, href_list)

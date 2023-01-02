@@ -370,7 +370,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	//speciality does NOTHING if you have NO_NAME_OVERRIDE
 
 /obj/item/clothing/head/helmet/marine/New(loc,
-	new_protection[]	= list(MAP_ICE_COLONY = ICE_PLANET_min_cold_protection_temperature))
+	new_protection[] = list(MAP_ICE_COLONY = ICE_PLANET_min_cold_protection_temperature))
 	if(!(flags_atom & NO_NAME_OVERRIDE))
 		name = "[specialty]"
 		if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
@@ -560,7 +560,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 			if(H.head == src)
 				H.update_tint()
 
-		update_clothing_icon()	//so our mob-overlays update
+		update_clothing_icon() //so our mob-overlays update
 
 		for(var/X in actions)
 			var/datum/action/A = X
@@ -1063,7 +1063,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	icon_state = "skullcapm"
 
 /obj/item/clothing/head/helmet/skullcap/jungle/New(loc, type,
-	new_protection[] 	= list(MAP_ICE_COLONY = ICE_PLANET_min_cold_protection_temperature))
+	new_protection[] = list(MAP_ICE_COLONY = ICE_PLANET_min_cold_protection_temperature))
 	select_gamemode_skin(type,, new_protection)
 	..()
 	switch(icon_state)

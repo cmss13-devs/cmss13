@@ -567,10 +567,10 @@
 
 	for(var/obj/structure/machinery/computer/almayer_control/C in machines)
 		if(!(C.inoperable()))
-//			var/obj/item/paper/P = new /obj/item/paper(C.loc)//Don't need a printed copy currently.
-//			P.name = "'[MAIN_AI_SYSTEM] Update.'"
-//			P.info = input
-//			P.update_icon()
+// var/obj/item/paper/P = new /obj/item/paper(C.loc)//Don't need a printed copy currently.
+// P.name = "'[MAIN_AI_SYSTEM] Update.'"
+// P.info = input
+// P.update_icon()
 			C.messagetitle.Add("[MAIN_AI_SYSTEM] Update")
 			C.messagetext.Add(input)
 			ai_announcement(input)
@@ -578,6 +578,31 @@
 			log_admin("AI comms report: [input]")
 		else
 			to_chat(usr, SPAN_WARNING("[MAIN_AI_SYSTEM] is not responding. It may be offline or destroyed."))
+
+/client/proc/cmd_admin_create_AI_apollo_report()
+	set name = "Report: ARES Apollo"
+	set category = "Admin.Factions"
+
+	if(!admin_holder || !(admin_holder.rights & R_MOD))
+		to_chat(src, "Only administrators may use this command.")
+		return
+	var/input = tgui_input_text(usr, "This is a broadcast from the ship AI to Working Joes and Maintenance Drones. Do not use html.", "What?", "")
+	if(!input)
+		return FALSE
+
+	for(var/obj/structure/machinery/computer/almayer_control/console in machines)
+		if(console.inoperable())
+			to_chat(usr, SPAN_WARNING("[MAIN_AI_SYSTEM] is not responding. It may be offline or destroyed."))
+			return
+		else
+			var/datum/language/apollo = GLOB.all_languages[LANGUAGE_APOLLO]
+			for(var/mob/living/silicon/decoy/ship_ai/AI in ai_mob_list)
+				apollo.broadcast(AI, input)
+			for(var/mob/listener in (GLOB.human_mob_list + GLOB.dead_mob_list))
+				if(listener.hear_apollo())//Only plays sound to mobs and not observers, to reduce spam.
+					playsound_client(listener.client, sound('sound/misc/interference.ogg'), listener, vol = 45)
+			message_staff("[key_name_admin(src)] has created an AI Apollo report")
+			log_admin("AI Apollo report: [input]")
 
 /client/proc/cmd_admin_create_AI_shipwide_report()
 	set name = "Report: ARES Shipwide"
@@ -592,10 +617,10 @@
 
 	for(var/obj/structure/machinery/computer/almayer_control/C in machines)
 		if(!(C.inoperable()))
-//			var/obj/item/paper/P = new /obj/item/paper(C.loc)//Don't need a printed copy currently.
-//			P.name = "'[MAIN_AI_SYSTEM] Update.'"
-//			P.info = input
-//			P.update_icon()
+// var/obj/item/paper/P = new /obj/item/paper(C.loc)//Don't need a printed copy currently.
+// P.name = "'[MAIN_AI_SYSTEM] Update.'"
+// P.info = input
+// P.update_icon()
 			C.messagetitle.Add("[MAIN_AI_SYSTEM] Shipwide Update")
 			C.messagetext.Add(input)
 

@@ -2,10 +2,10 @@
 	name = "blood"
 	desc = "It's thick and gooey. This probably isn't a safe place to be."
 	gender = PLURAL
-	density = 0
+	density = FALSE
 	anchored = 1
 	layer = ABOVE_WEED_LAYER
-	mouse_opacity = 0
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	icon = 'icons/effects/blood.dmi'
 	icon_state = "mfloor1"
 	random_icon_states = list("mfloor1", "mfloor2", "mfloor3", "mfloor4", "mfloor5", "mfloor6", "mfloor7")
@@ -40,7 +40,7 @@
 			dry()
 			return
 		dry_start_time = world.time
-		addtimer(CALLBACK(src, .proc/dry), drying_time * (amount+1))
+		addtimer(CALLBACK(src, PROC_REF(dry)), drying_time * (amount+1))
 
 /obj/effect/decal/cleanable/blood/Crossed(atom/movable/AM)
 	. = ..()
@@ -127,7 +127,7 @@
 	name = "gibs"
 	desc = "They look bloody and gruesome."
 	gender = PLURAL
-	density = 0
+	density = FALSE
 	anchored = 1
 	layer = TURF_LAYER
 	icon = 'icons/effects/blood.dmi'

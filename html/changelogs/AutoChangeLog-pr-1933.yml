@@ -1,8 +1,0 @@
-author: "Puckaboo, Carlarc"
-delete-after: True
-changes:
-  - imageadd: "Added unique strain sprites for Healer and Gardener."
-  - imageadd: "Healer drone now gains an overlay for 10 seconds after healing a target."
-  - imageadd: "Gardener drone's sac changes colors depending on what fruit is selected."
-  - imageadd: "Altered fruit glow colors."
-  - imageadd: "Reflavored the healing effect of Healer to be 'applying salve', ability icon changed to show this."

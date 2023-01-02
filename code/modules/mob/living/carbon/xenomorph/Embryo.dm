@@ -113,7 +113,7 @@
 				if(affected_mob.knocked_out < 1)
 					affected_mob.pain.apply_pain(PAIN_CHESTBURST_WEAK)
 					affected_mob.visible_message(SPAN_DANGER("\The [affected_mob] starts shaking uncontrollably!"), \
-												 SPAN_DANGER("You start shaking uncontrollably!"))
+												SPAN_DANGER("You start shaking uncontrollably!"))
 					affected_mob.apply_effect(10, PARALYZE)
 					affected_mob.make_jittery(105)
 					affected_mob.take_limb_damage(1)
@@ -199,7 +199,7 @@
 		victim.pain.apply_pain(PAIN_CHESTBURST_STRONG)  //ow that really hurts larvie!
 	var/message = SPAN_HIGHDANGER( pick("IT'S IN YOUR INSIDES!", "IT'S GNAWING YOU!", "MAKE IT STOP!", "YOU ARE GOING TO DIE!", "IT'S TEARING YOU APART!"))
 	to_chat(victim, message)
-	addtimer(CALLBACK(src, .proc/cause_unbearable_pain, victim), rand(1, 3) SECONDS, TIMER_UNIQUE)
+	addtimer(CALLBACK(src, PROC_REF(cause_unbearable_pain), victim), rand(1, 3) SECONDS, TIMER_UNIQUE)
 
 /mob/living/carbon/Xenomorph/Larva/proc/chest_burst(mob/living/carbon/victim)
 	set waitfor = 0
@@ -210,7 +210,7 @@
 	if(victim.knocked_out < 1)
 		victim.apply_effect(20, DAZE)
 	victim.visible_message(SPAN_DANGER("\The [victim] starts shaking uncontrollably!"), \
-								 SPAN_DANGER("You feel something ripping up your insides!"))
+						SPAN_DANGER("You feel something ripping up your insides!"))
 	victim.make_jittery(300)
 	sleep(30)
 	if(!victim || !victim.loc)

@@ -23,9 +23,9 @@
 /obj/item/reagent_container/blood/update_icon()
 	var/percent = round((reagents.total_volume / volume) * 100)
 	switch(percent)
-		if(0 to 9)			icon_state = "empty"
-		if(10 to 50) 		icon_state = "half"
-		if(51 to INFINITY)	icon_state = "full"
+		if(0 to 9) icon_state = "empty"
+		if(10 to 50) icon_state = "half"
+		if(51 to INFINITY) icon_state = "full"
 
 /obj/item/reagent_container/blood/APlus
 	blood_type = "A+"

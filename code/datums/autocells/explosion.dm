@@ -19,16 +19,16 @@
 		3. Each time the explosion propagates, it loses power_falloff power
 
 		4. Each time the explosion propagates, atoms in the tile the explosion is in
-		   may reduce the power of the explosion by their explosive resistance
+		may reduce the power of the explosion by their explosive resistance
 
 	That's it. There are some special rules, though, namely:
 
 		* If the explosion occured in a wall, the wave is strengthened
-		  with power *= reflection_multiplier and reflected back in the
-		  direction it came from
+		with power *= reflection_multiplier and reflected back in the
+		direction it came from
 
 		* If two explosions meet, they will either merge into an amplified
-		  or weakened explosion
+		or weakened explosion
 */
 
 /datum/automata_cell/explosion
@@ -147,13 +147,13 @@
 		resistance += max(0, A.get_explosion_resistance())
 
 	// Blow stuff up
-	INVOKE_ASYNC(in_turf, /atom.proc/ex_act, power, direction, explosion_cause_data)
+	INVOKE_ASYNC(in_turf, TYPE_PROC_REF(/atom, ex_act), power, direction, explosion_cause_data)
 	for(var/atom/A in in_turf)
 		if(A in exploded_atoms)
 			continue
 		if(A.gc_destroyed)
 			continue
-		INVOKE_ASYNC(A, /atom.proc/ex_act, power, direction, explosion_cause_data)
+		INVOKE_ASYNC(A, TYPE_PROC_REF(/atom, ex_act), power, direction, explosion_cause_data)
 		exploded_atoms += A
 		log_explosion(A, src)
 
@@ -219,15 +219,16 @@
 	qdel(src)
 
 /*
-  The issue is that between the cell being birthed and the cell processing,
-  someone could potentially move through the cell unharmed.
+The issue is that between the cell being birthed and the cell processing,
+someone could potentially move through the cell unharmed.
 
-  To prevent that, we track all atoms that enter the explosion cell's turf
-  and blow them up immediately once they do.
+To prevent that, we track all atoms that enter the explosion cell's turf
+and blow them up immediately once they do.
 
-  When the cell processes, we simply don't blow up atoms that were tracked
-  as having entered the turf.
+When the cell processes, we simply don't blow up atoms that were tracked
+as having entered the turf.
 */
+
 /datum/automata_cell/explosion/proc/on_turf_entered(var/atom/movable/A)
 	// Once is enough
 	if(A in exploded_atoms)
@@ -240,7 +241,7 @@
 	if(A.gc_destroyed)
 		return
 
-	INVOKE_ASYNC(A, /atom.proc/ex_act, power, null, explosion_cause_data)
+	INVOKE_ASYNC(A, TYPE_PROC_REF(/atom, ex_act), power, null, explosion_cause_data)
 	log_explosion(A, src)
 
 // I'll admit most of the code from here on out is basically just copypasta from DOREC
@@ -341,5 +342,5 @@
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "smoke"
 	anchored = 1
-	mouse_opacity = 0
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	layer = FLY_LAYER

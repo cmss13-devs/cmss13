@@ -12,6 +12,8 @@ interface ShuttleData {
   can_fly: 0 | 1;
   mode: string;
   status: string;
+  is_disabled: 0 | 1;
+  has_disable: 0 | 1;
 }
 
 interface ShuttleTemplate {
@@ -89,16 +91,30 @@ const ShuttleManipulatorStatus = (props, context) => {
                   })
                 }
               />
-              <Button
-                content="Disable"
-                key={shuttle.id}
-                disabled={!shuttle.can_fly}
-                onClick={() =>
-                  act('disable', {
-                    id: shuttle.id,
-                  })
-                }
-              />
+              {shuttle.has_disable === 1 && shuttle.is_disabled === 0 && (
+                <Button
+                  content="Disable"
+                  key={shuttle.id}
+                  disabled={!shuttle.can_fly}
+                  onClick={() =>
+                    act('lock', {
+                      id: shuttle.id,
+                    })
+                  }
+                />
+              )}
+              {shuttle.has_disable === 1 && shuttle.is_disabled === 1 && (
+                <Button
+                  content="Enable"
+                  key={shuttle.id}
+                  disabled={!shuttle.can_fly}
+                  onClick={() =>
+                    act('unlock', {
+                      id: shuttle.id,
+                    })
+                  }
+                />
+              )}
             </Table.Cell>
             <Table.Cell>{shuttle.name}</Table.Cell>
             <Table.Cell>{shuttle.id}</Table.Cell>

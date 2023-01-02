@@ -499,7 +499,6 @@ SUBSYSTEM_DEF(shuttle)
 	var/list/data = list()
 
 	// Templates panel
-	data["templates"] = list()
 	data["selected"] = list()
 
 	data["template_data"] = list()
@@ -530,6 +529,13 @@ SUBSYSTEM_DEF(shuttle)
 			L["timeleft"] = "Infinity"
 		L["can_fast_travel"] = M.timer && timeleft >= 50
 		L["can_fly"] = TRUE
+
+		var/obj/structure/machinery/computer/shuttle/console = M.getControlConsole()
+		L["has_disable"] = FALSE
+		if(console)
+			L["has_disable"] = TRUE
+			L["is_disabled"] = console.is_disabled()
+
 		if(!M.destination)
 			L["can_fast_travel"] = FALSE
 		if (M.mode != SHUTTLE_IDLE)
@@ -570,7 +576,22 @@ SUBSYSTEM_DEF(shuttle)
 						user.forceMove(get_turf(M))
 						. = TRUE
 						break
-
+		if("lock")
+			for(var/i in mobile)
+				var/obj/docking_port/mobile/M = i
+				if(M.id == params["id"])
+					. = TRUE
+					var/obj/structure/machinery/computer/shuttle/console = M.getControlConsole()
+					console.disable()
+					break
+		if("unlock")
+			for(var/i in mobile)
+				var/obj/docking_port/mobile/M = i
+				if(M.id == params["id"])
+					. = TRUE
+					var/obj/structure/machinery/computer/shuttle/console = M.getControlConsole()
+					console.enable()
+					break
 		if("fly")
 			for(var/i in mobile)
 				var/obj/docking_port/mobile/M = i

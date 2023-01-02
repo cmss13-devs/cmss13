@@ -10,6 +10,15 @@
 	var/possible_destinations = list()
 	var/admin_controlled
 
+/obj/structure/machinery/computer/shuttle/proc/is_disabled()
+	return FALSE
+
+/obj/structure/machinery/computer/shuttle/proc/disable()
+	return
+
+/obj/structure/machinery/computer/shuttle/proc/enable()
+	return
+
 /obj/structure/machinery/computer/shuttle/tgui_interact(mob/user)
 	. = ..()
 	var/list/options = valid_destinations()
@@ -83,6 +92,15 @@
 	req_access = list()
 	breakable = FALSE
 	var/disabled = FALSE
+
+/obj/structure/machinery/computer/shuttle/ert/is_disabled()
+	return disabled
+
+/obj/structure/machinery/computer/shuttle/ert/disable()
+	disabled = TRUE
+
+/obj/structure/machinery/computer/shuttle/ert/enable()
+	disabled = FALSE
 
 /obj/structure/machinery/computer/shuttle/ert/tgui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)

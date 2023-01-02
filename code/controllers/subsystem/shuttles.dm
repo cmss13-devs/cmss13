@@ -90,6 +90,12 @@ SUBSYSTEM_DEF(shuttle)
 			if(MC_TICK_CHECK)
 				break
 
+/datum/controller/subsystem/shuttle/proc/hasShuttle(id)
+	. = FALSE
+	for(var/obj/docking_port/mobile/M in mobile)
+		if(M.id == id)
+			return TRUE
+
 /datum/controller/subsystem/shuttle/proc/getShuttle(id)
 	for(var/obj/docking_port/mobile/M in mobile)
 		if(M.id == id)
@@ -491,38 +497,25 @@ SUBSYSTEM_DEF(shuttle)
 
 /datum/controller/subsystem/shuttle/ui_data(mob/user)
 	var/list/data = list()
-	data["tabs"] = list("Status", "Templates", "Modification")
 
 	// Templates panel
 	data["templates"] = list()
-	var/list/templates = data["templates"]
-	data["templates_tabs"] = list()
 	data["selected"] = list()
 
+	data["template_data"] = list()
 	for(var/shuttle_id in SSmapping.shuttle_templates)
 		var/datum/map_template/shuttle/S = SSmapping.shuttle_templates[shuttle_id]
-
-		if(!templates[S.shuttle_id])
-			data["templates_tabs"] += S.shuttle_id
-			templates[S.shuttle_id] = list(
-				"shuttle_id" = S.port_id,
-				"templates" = list())
-
-		var/list/L = list()
-		L["name"] = S.name
-		L["shuttle_id"] = S.shuttle_id
-		L["description"] = S.description
-		L["admin_notes"] = S.admin_notes
+		var/list/template_data = list()
+		template_data["name"] = S.name
+		template_data["shuttle_id"] = S.shuttle_id
+		template_data["description"] = S.description
+		template_data["admin_notes"] = S.admin_notes
 
 		if(selected == S)
-			data["selected"] = L
-
-		templates[S.shuttle_id]["templates"] += list(L)
-
-	data["templates_tabs"] = sortList(data["templates_tabs"])
+			data["selected"] = template_data
+		data["template_data"] += list(template_data)
 
 	data["existing_shuttle"] = null
-
 	// Status panel
 	data["shuttles"] = list()
 	for(var/i in mobile)
@@ -544,12 +537,6 @@ SUBSYSTEM_DEF(shuttle)
 		L["status"] = M.getDbgStatusText()
 		if(M == existing_shuttle)
 			data["existing_shuttle"] = L
-
-
-		//if(istype(M, /obj/docking_port/mobile/marine_dropship))
-		// var/obj/docking_port/mobile/marine_dropship/D = M
-		// L["hijack"] = D.hijack_state
-		//else
 		L["hijack"] = "N/A"
 
 		data["shuttles"] += list(L)
@@ -569,7 +556,10 @@ SUBSYSTEM_DEF(shuttle)
 	switch(action)
 		if("select_template")
 			if(S)
-				existing_shuttle = getShuttle(S.shuttle_id)
+				if(hasShuttle(S.shuttle_id))
+					existing_shuttle = getShuttle(S.shuttle_id)
+				else
+					existing_shuttle = null
 				selected = S
 				. = TRUE
 		if("jump_to")

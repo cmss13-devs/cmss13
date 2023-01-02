@@ -91,6 +91,10 @@
 #define LOCKDOWN_TIME 6 MINUTES
 #define GROUND_LOCKDOWN_TIME 3 MINUTES
 
-#define MOBILE_SHUTTLE_ID_ERT1 "ert1"
-#define MOBILE_SHUTTLE_ID_ERT2 "ert2"
-#define MOBILE_SHUTTLE_ID_ERT3 "ert3"
+#define MOBILE_SHUTTLE_ID_ERT1 "ert_response_shuttle"
+#define MOBILE_SHUTTLE_ID_ERT2 "ert_pmc_shuttle"
+#define MOBILE_SHUTTLE_ID_ERT3 "ert_upp_shuttle"
+
+#define MOBILE_SHUTTLE_LIFEBOAT_PORT "lifeboat-port"
+#define MOBILE_SHUTTLE_LIFEBOAT_STARBOARD "lifeboat-starboard"
+#define MOBILE_SHUTTLE_VEHICLE_ELEVATOR "vehicle_elevator"

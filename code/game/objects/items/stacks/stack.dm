@@ -262,14 +262,14 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 
 /obj/item/stack/proc/use(used)
 	if(used > amount) //If it's larger than what we have, no go.
-		return 0
+		return FALSE
 	amount -= used
 	update_icon()
 	if(amount <= 0)
 		if(usr && loc == usr)
 			usr.temp_drop_inv_item(src)
 		qdel(src)
-	return 1
+	return TRUE
 
 /obj/item/stack/proc/add(var/extra)
 	if(amount + extra > max_amount)
@@ -301,12 +301,13 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 		var/desired = tgui_input_number(user, "How much would you like to split off from this stack?", "How much?", 1, amount-1, 1)
 		if(!desired)
 			return
+		if(!use(desired))
+			return
 		var/obj/item/stack/newstack = new src.type(user, desired)
 		transfer_fingerprints_to(newstack)
 		user.put_in_hands(newstack)
 		src.add_fingerprint(user)
 		newstack.add_fingerprint(user)
-		use(desired)
 		if(src && usr.interactee==src)
 			INVOKE_ASYNC(src, TYPE_PROC_REF(/obj/item/stack, interact), usr)
 		return

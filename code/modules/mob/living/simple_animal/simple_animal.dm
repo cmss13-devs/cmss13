@@ -80,7 +80,7 @@
 			GLOB.alive_mob_list += src
 			stat = CONSCIOUS
 			lying = 0
-			density = 1
+			density = TRUE
 			reload_fullscreens()
 		return 0
 

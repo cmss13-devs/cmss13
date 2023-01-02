@@ -4,7 +4,7 @@
 	icon = 'icons/obj/janitor.dmi'
 	icon_state = "cart"
 	anchored = 0
-	density = 1
+	density = TRUE
 	drag_delay = 1
 	throwpass = TRUE
 	//copypaste sorry
@@ -83,7 +83,7 @@
 		else
 			to_chat(user, SPAN_NOTICE("[src] can't hold any more signs."))
 
-	else if(istype(I, /obj/item/reagent_container/glass/bucket/janibucket))
+	else if(istype(I, /obj/item/reagent_container/glass/bucket/janibucket) && !mybucket)
 		user.drop_held_item()
 		mybucket = I
 		I.forceMove(src)

@@ -2,7 +2,7 @@
 /obj/structure/machinery/part_fabricator
 	name = "part fabricator"
 	desc = "A large automated 3D printer for producing runtime errors."
-	density = 1
+	density = TRUE
 	anchored = 1
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 20

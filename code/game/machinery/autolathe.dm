@@ -8,7 +8,7 @@
 	icon_state = "autolathe"
 	var/base_state = "autolathe"
 	unacidable = TRUE
-	density = 1
+	density = TRUE
 	anchored = 1
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 10
@@ -560,7 +560,7 @@
 	layer = BELOW_OBJ_LAYER
 	recipes = null
 	categories = null
-	density = 1
+	density = TRUE
 	bound_x = 32
 	storage_capacity = list("plastic" = 0, "glass" = 0)
 	disabled_categories = list("General", "Tools", "Engineering", "Devices and Components", "Surgery", "Explosives")

@@ -19,7 +19,7 @@
 	name = "status display"
 	desc = "A monitor depicting the ship's current status. It flickers every so often."
 	anchored = 1
-	density = 0
+	density = FALSE
 	use_power = FALSE
 	idle_power_usage = 10
 	var/mode = 0 // 0 = Blank
@@ -168,7 +168,7 @@
 	icon_state = "frame"
 	name = "AI display"
 	anchored = 1
-	density = 0
+	density = FALSE
 
 	var/mode = 0 // 0 = Blank
 					// 1 = AI emoticon

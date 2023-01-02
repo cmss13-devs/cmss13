@@ -181,8 +181,8 @@
 
 	flavor_text =  strip_html(input(usr, "Please enter your new flavour text.", "Flavour text", null)  as text)
 
-/mob/living/silicon/binarycheck()
-	return 1
+/mob/living/silicon/hear_apollo()
+	return TRUE
 
 /mob/living/silicon/rejuvenate()
 	..()

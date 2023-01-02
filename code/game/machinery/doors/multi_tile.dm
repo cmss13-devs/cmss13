@@ -13,7 +13,7 @@
 /obj/structure/machinery/door/airlock/multi_tile/glass
 	name = "Glass Airlock"
 	icon = 'icons/obj/structures/doors/Door2x1glass.dmi'
-	opacity = 0
+	opacity = FALSE
 	glass = 1
 	assembly_type = /obj/structure/airlock_assembly/multi_tile
 
@@ -24,7 +24,7 @@
 /obj/structure/machinery/door/airlock/multi_tile/security
 	name = "Security Airlock"
 	icon = 'icons/obj/structures/doors/Door2x1security.dmi'
-	opacity = 0
+	opacity = FALSE
 	glass = 1
 
 /obj/structure/machinery/door/airlock/multi_tile/security/colony
@@ -34,7 +34,7 @@
 /obj/structure/machinery/door/airlock/multi_tile/command
 	name = "Command Airlock"
 	icon = 'icons/obj/structures/doors/Door2x1command.dmi'
-	opacity = 0
+	opacity = FALSE
 	glass = 1
 
 /obj/structure/machinery/door/airlock/multi_tile/command/colony
@@ -44,7 +44,7 @@
 /obj/structure/machinery/door/airlock/multi_tile/medical
 	name = "Medical Airlock"
 	icon = 'icons/obj/structures/doors/Door2x1medbay.dmi'
-	opacity = 0
+	opacity = FALSE
 	glass = 1
 
 /obj/structure/machinery/door/airlock/multi_tile/medical
@@ -54,7 +54,7 @@
 /obj/structure/machinery/door/airlock/multi_tile/engineering
 	name = "Engineering Airlock"
 	icon = 'icons/obj/structures/doors/Door2x1engine.dmi'
-	opacity = 0
+	opacity = FALSE
 	glass = 1
 
 /obj/structure/machinery/door/airlock/multi_tile/engineering/colony
@@ -64,7 +64,7 @@
 /obj/structure/machinery/door/airlock/multi_tile/research
 	name = "Research Airlock"
 	icon = 'icons/obj/structures/doors/Door2x1research.dmi'
-	opacity = 0
+	opacity = FALSE
 	glass = 1
 
 /obj/structure/machinery/door/airlock/multi_tile/research/colony
@@ -101,7 +101,7 @@
 /obj/structure/machinery/door/airlock/multi_tile/secure2_glass
 	name = "Secure Airlock"
 	icon = 'icons/obj/structures/doors/Door2x1_secure2_glass.dmi'
-	opacity = 0
+	opacity = FALSE
 	glass = 1
 	openspeed = 31
 	req_access = null
@@ -114,7 +114,7 @@
 	name = "Shuttle Podlock"
 	icon = 'icons/obj/structures/doors/1x2blast_vert.dmi'
 	icon_state = "pdoor1"
-	opacity = 1
+	opacity = TRUE
 	openspeed = 12
 	req_access = null
 	not_weldable = 1
@@ -268,7 +268,7 @@
 //------Dropship Cargo Doors -----//
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear
-	opacity = 1
+	opacity = TRUE
 	width = 3
 	unslashable = TRUE
 	unacidable = TRUE
@@ -407,7 +407,7 @@
 
 /obj/structure/machinery/door/airlock/multi_tile/elevator/access
 	icon = 'icons/obj/structures/doors/4x1_elevator_access.dmi'
-	opacity = 0
+	opacity = FALSE
 	glass = 1
 
 /obj/structure/machinery/door/airlock/multi_tile/elevator/access/research
@@ -536,7 +536,7 @@
 	icon = 'icons/obj/structures/doors/prepdoor.dmi'
 	req_access = list(ACCESS_MARINE_PREP)
 	req_one_access = list(ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_CARGO, ACCESS_MARINE_ALPHA, ACCESS_MARINE_BRAVO, ACCESS_MARINE_CHARLIE, ACCESS_MARINE_DELTA)
-	opacity = 0
+	opacity = FALSE
 	glass = 1
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/marine/shared/alpha_bravo

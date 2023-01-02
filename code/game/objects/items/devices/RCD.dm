@@ -9,8 +9,8 @@ RCD
 	desc = "A device used to rapidly build walls/floor."
 	icon = 'icons/obj/items/devices.dmi'
 	icon_state = "rcd"
-	opacity = 0
-	density = 0
+	opacity = FALSE
+	density = FALSE
 	anchored = 0.0
 	flags_atom = FPRINT|CONDUCT
 	force = 10.0
@@ -197,8 +197,8 @@ RCD
 	icon = 'icons/obj/items/weapons/guns/ammo.dmi'
 	icon_state = "rcd"
 	item_state = "rcdammo"
-	opacity = 0
-	density = 0
+	opacity = FALSE
+	density = FALSE
 	anchored = 0.0
 
 	matter = list("metal" = 30000,"glass" = 15000)

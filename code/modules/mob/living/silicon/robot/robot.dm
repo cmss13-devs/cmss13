@@ -78,7 +78,7 @@ var/list/robot_verbs_default = list(
 	spark_system.set_up(5, 0, src)
 	spark_system.attach(src)
 
-	add_language(LANGUAGE_BINARY, 1)
+	add_language(LANGUAGE_APOLLO, 1)
 
 	ident = rand(1, 999)
 	updatename("Default")
@@ -950,12 +950,12 @@ var/list/robot_verbs_default = list(
 		return 1
 	return 0
 
-/mob/living/silicon/robot/binarycheck()
+/mob/living/silicon/robot/hear_apollo()
 	if(is_component_functioning("comms"))
 		var/datum/robot_component/RC = get_component("comms")
 		use_power(RC.active_usage)
-		return 1
-	return 0
+		return TRUE
+	return FALSE
 
 
 

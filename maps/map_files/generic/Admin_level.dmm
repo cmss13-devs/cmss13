@@ -778,14 +778,6 @@
 	icon_state = "mono"
 	},
 /area/centcom/control)
-"fD" = (
-/obj/structure/machinery/account_database{
-	name = "CentComm Accounts database"
-	},
-/turf/open/floor/almayer{
-	icon_state = "mono"
-	},
-/area/centcom/control)
 "fH" = (
 /obj/structure/machinery/door/airlock/almayer/generic,
 /obj/effect/decal/warning_stripes{
@@ -15392,7 +15384,7 @@ ej
 fn
 aa
 fn
-fD
+fR
 fR
 fR
 gh

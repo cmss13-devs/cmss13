@@ -39,7 +39,7 @@
 		return say_dead(message)
 
 	if(copytext(message,1,2) == "*")
-		return emote(copytext(message,2))
+		return emote(lowertext(copytext(message,2)))
 
 	var/bot_type = 0 //Let's not do a fuck ton of type checks, thanks.
 	if(isAI(src))

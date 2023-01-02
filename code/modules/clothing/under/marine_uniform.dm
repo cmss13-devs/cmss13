@@ -770,11 +770,11 @@
 	icon_state = "liaison_suspenders"
 	worn_state = "liaison_suspenders"
 
-/obj/item/clothing/under/ress_suit
+/obj/item/clothing/under/twe_suit
 	name = "representative's fine suit"
-	desc = "A stiff, stylish blue suit commonly worn by gentlemen from the Royal Empire of the Rising Sun. Expertly crafted to make you look as important as possible."
-	icon_state = "ress_suit"
-	worn_state = "ress_suit"
+	desc = "A stiff, stylish blue suit commonly worn by gentlemen from the Three World Empire. Expertly crafted to make you look as important as possible."
+	icon_state = "twe_suit"
+	worn_state = "twe_suit"
 
 /obj/item/clothing/under/stowaway
 	name = "dirty suit"

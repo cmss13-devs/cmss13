@@ -234,5 +234,5 @@ GLOBAL_LIST_INIT(mob_traits, list(
 ///Status trait forced by the xeno action charge
 #define TRAIT_SOURCE_XENO_ACTION_CHARGE "t_s_xeno_action_charge"
 
- ///Status trait from weapons?? buh
+///Status trait from weapons?? buh
 #define TRAIT_SOURCE_WEAPON "t_s_weapon"

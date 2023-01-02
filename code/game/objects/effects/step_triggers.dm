@@ -100,7 +100,7 @@
 
 /obj/effect/step_trigger/clone_cleaner/Trigger(var/atom/movable/A)
 	if(A.clone)
-		A.destroy_clone()
+		A.destroy_clone_movable()
 
 /* Seamless vector teleporter - to be used with projectors */
 

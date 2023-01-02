@@ -8,3 +8,5 @@
 	var/vector_y = 0
 	icon = 'icons/landmarks.dmi'
 	icon_state = "projector"//for map editor
+	var/layer_override
+	var/paused = FALSE // 0 for not paused, 1 for primed for pausaztion, 2 for completely paused

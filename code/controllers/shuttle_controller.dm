@@ -23,8 +23,13 @@
 
 	var/datum/shuttle/ferry/shuttle
 
+	var/supply_shuttle_type = text2path("/datum/shuttle/ferry/supply")
+
+	if(SSmapping.configs[SHIP_MAP].shuttles["supply"])
+		supply_shuttle_type =  text2path("/datum/shuttle/ferry/supply/multi")
+
 	// Supply shuttle
-	shuttle = new/datum/shuttle/ferry/supply()
+	shuttle = new supply_shuttle_type
 	shuttle.location = 1
 	shuttle.warmup_time = 1
 	shuttle.move_time = ELEVATOR_TRANSIT_DURATION
@@ -38,6 +43,7 @@
 			shuttle.area_station = A
 			break
 
+	shuttle.add_structures()
 	shuttles["Supply"] = shuttle
 	process_shuttles += shuttle
 

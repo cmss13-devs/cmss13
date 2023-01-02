@@ -167,6 +167,8 @@
 
 	var/list/image/hud_list
 
+	var/layer_override = FALSE
+
 //REDIRECT TO MASTER//
 /atom/movable/clone/attack_remote(mob/user)
 	return src.mstr.attack_remote(user)
@@ -190,12 +192,17 @@
 	return src.mstr.bullet_act(P)
 /////////////////////
 
-/atom/movable/proc/create_clone_movable(shift_x, shift_y)
+/atom/movable/proc/create_clone_movable(shift_x, shift_y, layer_override)
 	var/atom/movable/clone/C = new /atom/movable/clone(src.loc)
 	C.density = 0
 	C.proj_x = shift_x
 	C.proj_y = shift_y
-
+	C.layer_override = layer_override
+	if(ishuman(src))
+		C.icon = getFlatIcon(src, dir)
+	if(layer_override < TURF_LAYER)
+		//C.vis_flags |= VIS_UNDERLAY
+		C.plane = FLOOR_PLANE
 	clones.Add(C)
 	C.mstr = src //Link clone and master
 	src.clone = C
@@ -211,7 +218,6 @@
 	clone.dir 			= dir
 	clone.flags_atom 	= flags_atom
 	clone.density 		= density
-	clone.layer 		= layer
 	clone.level 		= level
 	clone.name 			= name
 	clone.pixel_x 		= pixel_x
@@ -227,7 +233,15 @@
 		if(clone.light)
 			clone.SetLuminosity(0) //Kill clone light
 
-/atom/movable/proc/destroy_clone()
+	if(!clone.layer_override)
+		clone.layer = layer
+	else
+		clone.layer = clone.layer_override
+		if(clone.layer_override < TURF_LAYER)
+			clone.plane = FLOOR_PLANE
+			clone.opacity = FALSE
+
+/atom/movable/proc/destroy_clone_movable()
 	clones.Remove(src.clone)
 	qdel(src.clone)
 	src.clone = null

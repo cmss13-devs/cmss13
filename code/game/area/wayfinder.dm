@@ -464,17 +464,17 @@
 /area/wayfinder/living/cryo_cells
 	name = "\improper Cryo Cells"
 	icon_state = "cryo"
-	fake_zlevel = 2 // lowerdeck
+	fake_zlevel = 2 // middeck
 
 /area/wayfinder/living/cryo_cell_showers
 	name = "\improper Showers"
 	icon_state = "cryo"
-	fake_zlevel = 2 // lowerdeck
+	fake_zlevel = 2 // middeck
 
 /area/wayfinder/living/briefing
 	name = "\improper Briefing Area"
 	icon_state = "briefing"
-	fake_zlevel = 2 // lowerdeck
+	fake_zlevel = 1
 
 /area/wayfinder/living/port_emb
 	name = "\improper Extended Mission Bunks"

@@ -22,7 +22,7 @@
 	var/last_locked = 0 //world.time value to determine if it can be contested
 	var/door_override = 0 //similar to queen_locked, but only affects doors
 	var/last_door_override = 0 //world.time value to determine if it can be contested
-	
+
 	var/in_transit_time_left = 0
 
 /datum/shuttle/ferry/short_jump(var/area/origin,var/area/destination)
@@ -154,7 +154,7 @@
 	return
 
 /datum/shuttle/ferry/proc/can_launch()
-	if(moving_status != SHUTTLE_IDLE || locked || in_use) 
+	if(moving_status != SHUTTLE_IDLE || locked || in_use)
 		return FALSE
 	return TRUE
 
@@ -183,3 +183,5 @@
 	locked = 0
 	return	//do nothing for now
 
+/datum/shuttle/ferry/proc/add_structures()
+	return

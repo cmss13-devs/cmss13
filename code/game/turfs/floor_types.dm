@@ -253,6 +253,35 @@
 		for(var/obj/effect/decal/cleanable/C in contents) //for the off chance of someone bleeding mid=flight
 			qdel(C)
 
+/turf/open/floor/almayer/empty/multi_elevator/Entered(atom/movable/AM)
+	if(AM == src ||	istype(AM, /obj/effect/projector) || istype(AM, /obj/effect/landmark/multi_fakezlevel_supply_elevator) || istype(AM, /obj/effect/step_trigger/clone_cleaner) ||	istype(AM, /obj/effect/elevator/supply/multi_shafted) || istype(AM, /obj/effect/elevator/supply/multi) || istype(AM, /atom/movable/clone))
+		return
+	. = ..()
+
+/turf/open/floor/almayer/empty/multi_elevator/enter_depths(atom/movable/AM)
+	message_admins("[AM] FELL INTO THE SHAFT")
+	if(AM.throwing == 0 && istype(get_turf(AM), type))
+		var/datum/shuttle/ferry/supply/multi/the_cargo_elevator = supply_controller.shuttle
+		var/area/my_area = get_area(src)
+
+		if(!the_cargo_elevator.fake_zlevel || the_cargo_elevator.fake_zlevel > my_area.fake_zlevel)
+			var/obj/structure/disposalholder/H = new()
+			AM.forceMove(H)
+		else if(the_cargo_elevator.fake_zlevel < my_area.fake_zlevel)
+			AM.forceMove(GLOB.supply_elevator_turfs[the_cargo_elevator.fake_zlevel])
+			if(ishuman(AM))
+				var/mob/living/carbon/human/human_who_fell = AM
+				human_who_fell.take_overall_damage(30 * (the_cargo_elevator.fake_zlevel - my_area.fake_zlevel), 0, FALSE, FALSE, "Blunt Trauma")
+				for(var/i in human_who_fell.limbs)
+					if(istype(i, /obj/limb/leg/l_leg/) || istype(i, /obj/limb/leg/r_leg))
+						var/obj/limb/leg/human_who_fells_leg = i
+						human_who_fells_leg.take_damage_bone_break(15 * (the_cargo_elevator.fake_zlevel - my_area.fake_zlevel))
+			//playsound here of stuff clattering on the elevator floor below
+
+	else
+		for(var/obj/effect/decal/cleanable/C in contents) //for the off chance of someone bleeding mid=flight
+			qdel(C)
+
 //Others
 /turf/open/floor/almayer/uscm
 	icon_state = "logo_c"

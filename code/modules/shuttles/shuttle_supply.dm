@@ -1,6 +1,6 @@
 /obj/effect/landmark/supply_elevator/Initialize(mapload, ...)
 	. = ..()
-	GLOB.supply_elevator = get_turf(src)
+	GLOB.supply_elevator_turfs += get_turf(src)
 	return INITIALIZE_HINT_QDEL
 
 /datum/shuttle/ferry/supply
@@ -23,7 +23,7 @@
 
 /datum/shuttle/ferry/supply/proc/pick_loc()
 	RETURN_TYPE(/turf)
-	return GLOB.supply_elevator
+	return GLOB.supply_elevator_turfs[1]
 
 /datum/shuttle/ferry/supply/New()
 	..()
@@ -100,7 +100,7 @@
 			SE.icon_state = "supply_elevator_lowering"
 			NW.icon_state = "supply_elevator_lowering"
 			NE.icon_state = "supply_elevator_lowering"
-			animate(elevator_animation, pixel_x = 160, pixel_y = -80, time = 2 SECONDS)
+			animate(elevator_animation, pixel_x = 0, pixel_y = -128, time = 2 SECONDS)
 			start_gears(SOUTH)
 			sleep(21)
 			SW.icon_state = "supply_elevator_lowered"

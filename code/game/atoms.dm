@@ -346,15 +346,36 @@ Parameters are passed from New.
 	var/proj_x = 0
 	var/proj_y = 0
 
-/atom/proc/create_clone(shift_x, shift_y) //NOTE: Use only for turfs, otherwise use create_clone_movable
+/atom/proc/create_clone(shift_x, shift_y, layer_override) //NOTE: Use only for turfs, otherwise use create_clone_movable
+	if(!isturf(src))
+		to_chat(world, "<span class='notice'>["WARNING: /atom/proc/create_clone() was called for a non turf!"]</span>"); log_world("WARNING: /atom/proc/create_clone() was called for a non turf!")
+		return
+	//var/turf/source_turf = src
 	var/turf/T = null
 	T = locate(src.x + shift_x, src.y + shift_y, src.z)
+	//source_turf.clone_type = T.type
 
 	T.appearance = src.appearance
 	T.setDir(src.dir)
+	T.opacity = FALSE //clones shouldnt block vision
+
+	if(layer_override)
+		T.layer = layer_override
+		if(layer_override < TURF_LAYER)
+			T.plane = FLOOR_PLANE
 
 	clones_t.Add(src)
 	src.clone = T
+
+/atom/proc/destroy_clone(shift_x, shift_y, layer_override)
+	if(src in clones_t)
+		clones_t -= src
+	var/turf/T = null
+	T = locate(src.x + shift_x, src.y + shift_y, src.z)
+	T.appearance = initial(T.appearance)
+	T.setDir(initial(T.dir))
+	T.opacity = initial(T.opacity)
+	T.layer = initial(T.layer)
 
 // EFFECTS
 /atom/proc/extinguish_acid()

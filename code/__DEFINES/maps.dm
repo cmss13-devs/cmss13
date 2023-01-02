@@ -29,6 +29,7 @@ require only minor tweaks.
 #define ZTRAIT_LOWORBIT "LowOrbit"
 #define ZTRAIT_INTERIORS "Interiors"
 #define ZTRAIT_TECHTREE	"TechTree"
+#define ZTRAIT_MULTI_ZLEVEL_SUPPLY_ELEVATOR "Multi Zlevel Supply Elevator"
 
 #define ZTRAIT_FOG "Fog"
 #define ZTRAIT_LOCKDOWN "Lockdown"

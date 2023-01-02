@@ -18,6 +18,16 @@ var/datum/controller/supply/supply_controller = new()
 	lighting_use_dynamic = 0
 	requires_power = 0
 	ambience_exterior = AMBIENCE_ALMAYER
+	fake_zlevel = 1
+
+/area/supply/station/level_1
+	fake_zlevel = 1
+
+/area/supply/station/level_2
+	fake_zlevel = 2
+
+/area/supply/station/level_3
+	fake_zlevel = 3
 
 /area/supply/dock //DO NOT TURN THE lighting_use_dynamic STUFF ON FOR SHUTTLES. IT BREAKS THINGS.
 	name = "Supply Shuttle"
@@ -108,6 +118,7 @@ var/datum/controller/supply/supply_controller = new()
 	var/hacked = 0
 	var/can_order_contraband = 0
 	var/last_viewed_group = "categories"
+	var/supply_shuttle_is_multi_zlevel = FALSE
 
 /obj/structure/machinery/computer/ordercomp
 	name = "Supply ordering console"
@@ -350,8 +361,16 @@ var/datum/controller/supply/supply_controller = new()
 	var/dropship_points = 10000 //gains roughly 18 points per minute | Original points of 5k doubled due to removal of prespawned ammo.
 	var/tank_points = 0
 
+	var/multi_fakezlevel_elevator = null
+	var/primary_fake_zlevel = 1	//where it will go by default --> should be set to something different ONLY using map varedits of /obj/effect/landmark/multi_fakezlevel_supply_elevator
+
 	New()
 		ordernum = rand(1,9000)
+
+
+/datum/controller/supply/proc/shuttle_type_check()
+	if(SSmapping.configs[SHIP_MAP].shuttles["supply"] && SSmapping.configs[SHIP_MAP].shuttles["supply"] == "/datum/shuttle/ferry/supply/multi")
+		multi_fakezlevel_elevator = TRUE
 
 //Supply shuttle ticker - handles supply point regenertion and shuttle travelling between centcomm and the station
 /datum/controller/supply/process()
@@ -719,9 +738,41 @@ var/datum/controller/supply/supply_controller = new()
 	else
 		var/datum/shuttle/ferry/supply/shuttle = supply_controller.shuttle
 		if (shuttle)
-			dat += "\nPlatform position: "
-			if (shuttle.has_arrive_time())
-				dat += "Moving<BR>"
+			if(supply_controller.multi_fakezlevel_elevator)
+				var/datum/shuttle/ferry/supply/multi/m_shuttle = supply_controller.shuttle
+				dat += "\nTarget level: <A href='?src=\ref[src];target=1'>[m_shuttle.target_zlevel]</A>"
+				dat += "<BR>\n<BR>"
+				dat += "Platform position: "
+				if (shuttle.at_station())
+					if (shuttle.has_arrive_time())
+						dat += "Moving<BR>"
+					if (shuttle.docking_controller)
+						switch(shuttle.docking_controller.get_docking_status())
+							if ("docked") dat += "Raised to level: [m_shuttle.fake_zlevel]<BR>"
+							if ("undocked") dat += "Lowered<BR>"
+							if ("docking") dat += "Raising to level [m_shuttle.fake_zlevel] [shuttle.can_force()? SPAN_WARNING("<A href='?src=\ref[src];force_send=1'>Force</A>") : ""]<BR>"
+							if ("undocking") dat += "Lowering [shuttle.can_force()? SPAN_WARNING("<A href='?src=\ref[src];force_send=1'>Force</A>") : ""]<BR>"
+					else
+						dat += "Raised to level: [m_shuttle.fake_zlevel]<BR>"
+					if (shuttle.can_launch())
+						dat += "<A href='?src=\ref[src];send=1'>Move platform</A>"
+					else if (shuttle.can_cancel())
+						dat += "<A href='?src=\ref[src];cancel_send=1'>Cancel</A>"
+					else
+						dat += "*ASRS is busy*"
+					dat += "<BR>\n<BR>"
+				else
+					dat += "\nPlatform position: "
+					if (shuttle.has_arrive_time())
+						dat += "Moving<BR>"
+					dat += "Lowered<BR>"
+					if (shuttle.can_launch())
+						dat += "<A href='?src=\ref[src];send=1'>Raise platform</A>"
+					else if (shuttle.can_cancel())
+						dat += "<A href='?src=\ref[src];cancel_send=1'>Cancel</A>"
+					else
+						dat += "*ASRS is busy*"
+					dat += "<BR>\n<BR>"
 			else
 				if (shuttle.at_station())
 					if (shuttle.docking_controller)
@@ -732,7 +783,6 @@ var/datum/controller/supply/supply_controller = new()
 							if ("undocking") dat += "Lowering [shuttle.can_force()? SPAN_WARNING("<A href='?src=\ref[src];force_send=1'>Force</A>") : ""]<BR>"
 					else
 						dat += "Raised<BR>"
-
 					if (shuttle.can_launch())
 						dat += "<A href='?src=\ref[src];send=1'>Lower platform</A>"
 					else if (shuttle.can_cancel())
@@ -749,7 +799,6 @@ var/datum/controller/supply/supply_controller = new()
 					else
 						dat += "*ASRS is busy*"
 					dat += "<BR>\n<BR>"
-
 
 		dat += {"<HR>\nSupply budget: $[supply_controller.points * SUPPLY_TO_MONEY_MUPLTIPLIER]<BR>\n<BR>
 		\n<A href='?src=\ref[src];order=categories'>Order items</A><BR>\n<BR>
@@ -779,18 +828,40 @@ var/datum/controller/supply/supply_controller = new()
 	if(isturf(loc) && ( in_range(src, usr) || ishighersilicon(usr) ) )
 		usr.set_interaction(src)
 
+	if(href_list["target"])
+		var/datum/shuttle/ferry/supply/multi/m_shuttle = supply_controller.shuttle
+		m_shuttle.target_zlevel = text2num(strip_html(input(usr,"Desired Level?:","Among us","") as null|text))
+
 	//Calling the shuttle
-	if(href_list["send"])
-		if(shuttle.at_station())
-			if (shuttle.forbidden_atoms_check())
-				temp = "For safety reasons, the Automated Storage and Retrieval System cannot store live organisms, classified nuclear weaponry or homing beacons.<BR><BR><A href='?src=\ref[src];mainmenu=1'>OK</A>"
+	if(supply_controller.multi_fakezlevel_elevator)
+		var/datum/shuttle/ferry/supply/multi/m_shuttle = supply_controller.shuttle
+		if(href_list["send"])
+			if(!m_shuttle.target_zlevel)
+				if (shuttle.forbidden_atoms_check())
+					temp = "For safety reasons, the Automated Storage and Retrieval System cannot store live organisms, classified nuclear weaponry or homing beacons.<BR><BR><A href='?src=\ref[src];mainmenu=1'>OK</A>"
+				else
+					shuttle.launch(src)
+					temp = "Returning plaform to ASRS. \[[SPAN_WARNING("<A href='?src=\ref[src];force_send=1'>Force</A>")]\]<BR><BR><A href='?src=\ref[src];mainmenu=1'>OK</A>"
+			else if(m_shuttle.target_zlevel == m_shuttle.fake_zlevel)
+				temp = "Platform is already at target location.<BR><BR><A href='?src=\ref[src];mainmenu=1'>OK</A>"
+			else if(m_shuttle.target_zlevel > m_shuttle.fake_zlevel)
+				shuttle.launch(src)
+				temp = "Raising platform. \[[SPAN_WARNING("<A href='?src=\ref[src];force_send=1'>Force</A>")]\]<BR><BR><A href='?src=\ref[src];mainmenu=1'>OK</A>"
 			else
 				shuttle.launch(src)
 				temp = "Lowering platform. \[[SPAN_WARNING("<A href='?src=\ref[src];force_send=1'>Force</A>")]\]<BR><BR><A href='?src=\ref[src];mainmenu=1'>OK</A>"
-		else
-			shuttle.launch(src)
-			temp = "Raising platform.<BR><BR><A href='?src=\ref[src];mainmenu=1'>OK</A>"
-			post_signal("supply")
+	else
+		if(href_list["send"])
+			if(shuttle.at_station())
+				if (shuttle.forbidden_atoms_check())
+					temp = "For safety reasons, the Automated Storage and Retrieval System cannot store live organisms, classified nuclear weaponry or homing beacons.<BR><BR><A href='?src=\ref[src];mainmenu=1'>OK</A>"
+				else
+					shuttle.launch(src)
+					temp = "Lowering platform. \[[SPAN_WARNING("<A href='?src=\ref[src];force_send=1'>Force</A>")]\]<BR><BR><A href='?src=\ref[src];mainmenu=1'>OK</A>"
+			else
+				shuttle.launch(src)
+				temp = "Raising platform.<BR><BR><A href='?src=\ref[src];mainmenu=1'>OK</A>"
+				post_signal("supply")
 
 	if (href_list["force_send"])
 		shuttle.force_launch(src)

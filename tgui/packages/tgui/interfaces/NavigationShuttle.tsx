@@ -18,6 +18,7 @@ interface NavigationProps {
   max_flight_duration: number;
   max_refuel_duration: number;
   max_engine_start_duration: number;
+  is_disabled: 0 | 1;
   locked_down: 0 | 1;
 }
 
@@ -227,16 +228,39 @@ const DoorControls = (_, context) => {
   );
 };
 
+const DisabledScreen = (props, context) => {
+  return (
+    <Box className="DisabledScreen">
+      <div>
+        <span>
+          The shuttle has had an error. Contact your nearest system
+          administrator to resolve the issue.
+        </span>
+      </div>
+    </Box>
+  );
+};
+
+const RenderScreen = (props, context) => {
+  const { data } = useBackend<NavigationProps>(context);
+  return (
+    <>
+      {data.shuttle_mode === 'idle' && <DestionationSelection />}
+      {data.shuttle_mode === 'igniting' && <LaunchCountdown />}
+      {data.shuttle_mode === 'recharging' && <ShuttleRecharge />}
+      {data.shuttle_mode === 'called' && <InFlightCountdown />}
+      <DoorControls />
+    </>
+  );
+};
+
 export const NavigationShuttle = (props, context) => {
   const { data } = useBackend<NavigationProps>(context);
   return (
     <Window theme="crtgreen" height={500} width={700}>
       <Window.Content className="NavigationMenu">
-        {data.shuttle_mode === 'idle' && <DestionationSelection />}
-        {data.shuttle_mode === 'igniting' && <LaunchCountdown />}
-        {data.shuttle_mode === 'recharging' && <ShuttleRecharge />}
-        {data.shuttle_mode === 'called' && <InFlightCountdown />}
-        <DoorControls />
+        {data.is_disabled === 1 && <DisabledScreen />}
+        {data.is_disabled === 0 && <RenderScreen />}
       </Window.Content>
     </Window>
   );

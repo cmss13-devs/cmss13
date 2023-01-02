@@ -82,6 +82,7 @@
 	icon_state = "syndishuttle"
 	req_access = list()
 	breakable = FALSE
+	var/disabled = FALSE
 
 /obj/structure/machinery/computer/shuttle/ert/tgui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
@@ -89,6 +90,13 @@
 		var/obj/docking_port/mobile/shuttle = SSshuttle.getShuttle(shuttleId)
 		ui = new(user, src, "NavigationShuttle", "[shuttle.name] Navigation Computer")
 		ui.open()
+
+
+/obj/structure/machinery/computer/shuttle/ert/ui_status(mob/user, datum/ui_state/state)
+	. = ..()
+	if(disabled)
+		return UI_UPDATE
+
 
 /obj/structure/machinery/computer/shuttle/ert/ui_state(mob/user)
 	return GLOB.not_incapacitated_and_adjacent_strict_state
@@ -107,6 +115,7 @@
 	. = list()
 	.["shuttle_mode"] = ert.mode
 	.["flight_time"] = ert.timeLeft(0)
+	.["is_disabled"] = disabled
 
 	var/door_count = length(ert.doors)
 	var/locked_count = 0
@@ -137,6 +146,8 @@
 /obj/structure/machinery/computer/shuttle/ert/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 	if(.)
+		return
+	if(disabled)
 		return
 
 	var/obj/docking_port/mobile/emergency_response/ert = SSshuttle.getShuttle(shuttleId)

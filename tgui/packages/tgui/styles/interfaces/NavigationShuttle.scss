@@ -1,3 +1,5 @@
+@use '../base.scss';
+
 .NavigationMenu {
   span {
     font-size: 2rem;
@@ -41,6 +43,18 @@
   .InFlightCountdown {
     span {
       font-size: 1.5rem;
+    }
+  }
+
+  .DisabledScreen {
+    text-align: center;
+    height: 100%;
+    div {
+      border: 2px solid #00e94e;
+    }
+    span {
+      font-size: 2rem;
+      font-weight: bold;
     }
   }
 }

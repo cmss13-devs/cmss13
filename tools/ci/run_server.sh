@@ -10,6 +10,7 @@ mkdir ci_test/data
 
 #set the map
 cp maps/$MAP.json ci_test/data/next_map.json
+cp maps/almayer.json ci_test/data/next_ship.json
 
 cd ci_test
 DreamDaemon ColonialMarinesALPHA.dmb -close -trusted -verbose -params "log-directory=ci"

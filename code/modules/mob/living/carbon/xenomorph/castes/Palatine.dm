@@ -9,14 +9,14 @@
 	plasma_gain = XENO_PLASMA_GAIN_TIER_8
 	plasma_max = XENO_PLASMA_TIER_10
 	xeno_explosion_resistance = XENO_EXPLOSIVE_ARMOR_TIER_6
-	armor_deflection = XENO_ARMOR_TIER_4
+	armor_deflection = XENO_ARMOR_TIER_5
 	evasion = XENO_EVASION_NONE
 	speed = XENO_SPEED_TIER_5
 
 	evolution_allowed = FALSE
 	deevolves_to = list()
 	caste_desc = "The guard of the Queen Mother"
-	spit_types = list(/datum/ammo/xeno/toxin/queen, /datum/ammo/xeno/acid/medium)
+	spit_types = list(/datum/ammo/xeno/toxin/queen, /datum/ammo/xeno/acid/spatter)
 	acid_level = 3
 
 	aura_strength = 3
@@ -54,8 +54,8 @@
 		/datum/action/xeno_action/onclick/palatine_roar,//Mac1
 		/datum/action/xeno_action/onclick/palatine_change_roar,
 		/datum/action/xeno_action/activable/prae_abduct/palatine_macro,//Mac2
-		/datum/action/xeno_action/activable/warden_heal,//Mac3
-		/datum/action/xeno_action/activable/prae_retrieve,//Mac4
+		/datum/action/xeno_action/activable/prae_retrieve,//Mac3
+		/datum/action/xeno_action/activable/warden_heal,//Mac4
 		/datum/action/xeno_action/onclick/prae_switch_heal_type,//Mac5
 		/datum/action/xeno_action/onclick/emit_pheromones,
 	)
@@ -81,6 +81,6 @@
 /datum/behavior_delegate/palatine_base/melee_attack_modify_damage(original_damage, mob/living/carbon/A)
 	if(!isCarbonSizeHuman(A))
 		return
-	var/mob/living/carbon/human/H = A
+//	var/mob/living/carbon/human/H = A
 
 	return original_damage + thirst * 2.5

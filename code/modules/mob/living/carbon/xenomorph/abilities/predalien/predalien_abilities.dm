@@ -12,7 +12,7 @@
 
 /datum/action/xeno_action/onclick/predalien_roar
 	name = "Roar"
-    action_icon_state = "screech_disrupt"
+	action_icon_state = "screech_disrupt"
 	ability_name = "roar"
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_2

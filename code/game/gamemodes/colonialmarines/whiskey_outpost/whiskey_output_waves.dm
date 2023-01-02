@@ -157,7 +157,7 @@
 					XENO_CASTE_DRONE)
 	scaling_factor = 0.7
 
-/datum/whiskey_outpost_wave/wave5 //Reset the spawns	so we don't drown in xenos again.
+/datum/whiskey_outpost_wave/wave5 //Reset the spawns so we don't drown in xenos again.
 	wave_number = 5
 	wave_castes = list(XENO_CASTE_RUNNER,
 					XENO_CASTE_RUNNER,

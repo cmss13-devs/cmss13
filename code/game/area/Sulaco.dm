@@ -53,7 +53,7 @@
 	icon_state = "shuttle"
 
 /area/shuttle/drop1/transit
-	ambience_exterior 	= 'sound/ambience/dropship_ambience_loop.ogg'
+	ambience_exterior = 'sound/ambience/dropship_ambience_loop.ogg'
 	name = "\improper Dropship Alamo Transit"
 	icon_state = "shuttle2"
 
@@ -108,7 +108,7 @@
 	icon_state = "shuttle2"
 
 /area/shuttle/drop2/transit
-	ambience_exterior 	= 'sound/ambience/dropship_ambience_loop.ogg'
+	ambience_exterior = 'sound/ambience/dropship_ambience_loop.ogg'
 	name = "\improper Dropship Normandy Transit"
 	icon_state = "shuttlered"
 

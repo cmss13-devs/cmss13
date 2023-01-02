@@ -440,12 +440,12 @@
 /mob/living/carbon/human/proc/show_hud_tracker()
 	if(hud_used && !hud_used.locate_leader.alpha)
 		hud_used.locate_leader.alpha = 255
-		hud_used.locate_leader.mouse_opacity = 1
+		hud_used.locate_leader.mouse_opacity = MOUSE_OPACITY_ICON
 
 /mob/living/carbon/human/proc/hide_hud_tracker()
 	if(hud_used && hud_used.locate_leader.alpha)
 		hud_used.locate_leader.alpha = 0
-		hud_used.locate_leader.mouse_opacity = 0
+		hud_used.locate_leader.mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
 /mob/living/carbon/human/handle_blood_splatter(var/splatter_dir)
 	species.handle_blood_splatter(src, splatter_dir)

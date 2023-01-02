@@ -1,11 +1,11 @@
 /* Parrots!
  * Contains
- * 		Defines
- *		Inventory (headset stuff)
- *		Attack responces
- *		AI
- *		Procs / Verbs (usable by players)
- *		Sub-types
+ * Defines
+ * Inventory (headset stuff)
+ * Attack responces
+ * AI
+ * Procs / Verbs (usable by players)
+ * Sub-types
  */
 
 /*
@@ -14,15 +14,15 @@
 
 //Only a maximum of one action and one intent should be active at any given time.
 //Actions
-#define PARROT_PERCH 1		//Sitting/sleeping, not moving
-#define PARROT_SWOOP 2		//Moving towards or away from a target
-#define PARROT_WANDER 4		//Moving without a specific target in mind
+#define PARROT_PERCH 1 //Sitting/sleeping, not moving
+#define PARROT_SWOOP 2 //Moving towards or away from a target
+#define PARROT_WANDER 4 //Moving without a specific target in mind
 
 //Intents
-#define PARROT_STEAL 8		//Flying towards a target to steal it/from it
-#define PARROT_ATTACK 16	//Flying towards a target to attack it
-#define PARROT_RETURN 32	//Flying towards its perch
-#define PARROT_FLEE 64		//Flying away from its attacker
+#define PARROT_STEAL 8 //Flying towards a target to steal it/from it
+#define PARROT_ATTACK 16 //Flying towards a target to attack it
+#define PARROT_RETURN 32 //Flying towards its perch
+#define PARROT_FLEE 64 //Flying away from its attacker
 
 
 /mob/living/simple_animal/parrot
@@ -70,9 +70,9 @@
 	//Parrots will generally sit on their pertch unless something catches their eye.
 	//These vars store their preffered perch and if they dont have one, what they can use as a perch
 	var/obj/parrot_perch = null
-	var/obj/desired_perches = list(/obj/structure/computerframe, 		/obj/structure/displaycase, \
-									/obj/structure/filingcabinet,		/obj/structure/machinery/teleport, \
-									/obj/structure/machinery/computer,			/obj/structure/machinery/suit_storage_unit, \
+	var/obj/desired_perches = list(/obj/structure/computerframe, /obj/structure/displaycase, \
+									/obj/structure/filingcabinet, /obj/structure/machinery/teleport, \
+									/obj/structure/machinery/computer, /obj/structure/machinery/suit_storage_unit, \
 									/obj/structure/machinery/telecomms, \
 									/obj/structure/machinery/smartfridge, \
 									/obj/structure/machinery/recharge_station)
@@ -83,7 +83,7 @@
 /mob/living/simple_animal/parrot/Initialize()
 	. = ..()
 	if(!ears)
-		var/headset = pick(	/obj/item/device/radio/headset)
+		var/headset = pick( /obj/item/device/radio/headset)
 		ears = new headset(src)
 
 	parrot_sleep_dur = parrot_sleep_max //In case someone decides to change the max without changing the duration var
@@ -114,11 +114,11 @@
 	user.set_interaction(src)
 	if(user.stat) return
 
-	var/dat = 	"<div align='center'><b>Inventory of [name]</b></div><p>"
+	var/dat = "<div align='center'><b>Inventory of [name]</b></div><p>"
 	if(ears)
-		dat +=	"<br><b>Headset:</b> [ears] (<a href='?src=\ref[src];remove_inv=ears'>Remove</a>)"
+		dat += "<br><b>Headset:</b> [ears] (<a href='?src=\ref[src];remove_inv=ears'>Remove</a>)"
 	else
-		dat +=	"<br><b>Headset:</b> <a href='?src=\ref[src];add_inv=ears'>Nothing</a>"
+		dat += "<br><b>Headset:</b> <a href='?src=\ref[src];add_inv=ears'>Nothing</a>"
 
 	user << browse(dat, text("window=mob[];size=325x500", name))
 	onclose(user, "mob[real_name]")
@@ -196,7 +196,7 @@
 								if("Cargo")
 									available_channels.Add(":q")
 
-						if(headset_to_add.translate_binary)
+						if(headset_to_add.translate_apollo)
 							available_channels.Add(":b")
 		else
 			..()
@@ -222,7 +222,7 @@
 		if(M.health < 50) //Weakened mob? Fight back!
 			parrot_state |= PARROT_ATTACK
 		else
-			parrot_state |= PARROT_FLEE		//Otherwise, fly like a bat out of hell!
+			parrot_state |= PARROT_FLEE //Otherwise, fly like a bat out of hell!
 			drop_parrot_held_item(0)
 	return
 
@@ -369,12 +369,12 @@
 		if(!held_item && !parrot_perch) //If we've got nothing to do.. look for something to do.
 			var/atom/movable/AM = search_for_perch_and_item() //This handles checking through lists so we know it's either a perch or stealable item
 			if(AM)
-				if(istype(AM, /obj/item) || isliving(AM))	//If stealable item
+				if(istype(AM, /obj/item) || isliving(AM)) //If stealable item
 					parrot_interest = AM
 					INVOKE_ASYNC(src, PROC_REF(emote), "turns and flies towards [parrot_interest]")
 					parrot_state = PARROT_SWOOP|PARROT_STEAL
 					return
-				else	//Else it's a perch
+				else //Else it's a perch
 					parrot_perch = AM
 					parrot_state = PARROT_SWOOP|PARROT_RETURN
 					return

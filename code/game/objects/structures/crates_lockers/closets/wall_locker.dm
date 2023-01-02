@@ -6,7 +6,7 @@
 	name = "Wall Locker"
 	icon = 'icons/obj/structures/props/walllocker.dmi'
 	icon_state = "wall-locker"
-	density = 0
+	density = FALSE
 	anchored = 1
 	icon_closed = "wall-locker"
 	icon_opened = "wall-lockeropen"
@@ -30,8 +30,8 @@
 	return
 
 /obj/structure/closet/walllocker/emerglocker/attack_hand(mob/user as mob)
-	if (isRemoteControlling(user))	//Added by Strumpetplaya - AI shouldn't be able to
-		return									//activate emergency lockers.  This fixes that.  (Does this make sense, the AI can't call attack_hand, can it? --Mloc)
+	if (isRemoteControlling(user)) //Added by Strumpetplaya - AI shouldn't be able to
+		return //activate emergency lockers.  This fixes that.  (Does this make sense, the AI can't call attack_hand, can it? --Mloc)
 	if(!amount)
 		to_chat(usr, SPAN_NOTICE("It's empty.."))
 		return

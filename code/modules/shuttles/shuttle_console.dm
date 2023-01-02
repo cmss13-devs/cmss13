@@ -12,14 +12,14 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 	var/shuttle_optimized = 0 //Have the shuttle's flight subroutines been generated ?
 	var/onboard = 0 //Wether or not the computer is on the physical ship. A bit hacky but that'll do.
 	var/shuttle_type = 0
-	var/skip_time_lock = 0	// Allows admins to var edit the time lock away.
+	var/skip_time_lock = 0 // Allows admins to var edit the time lock away.
 	var/obj/structure/dropship_equipment/selected_equipment //the currently selected equipment installed on the shuttle this console controls.
 	var/list/shuttle_equipments = list() //list of the equipments on the shuttle this console controls
 	var/can_abort_flyby = TRUE
 	var/abort_timer = 100 //10 seconds
 	var/link = 0 // Does this terminal activate the transport system?
 
-	 ///Has it been admin-disabled?
+	///Has it been admin-disabled?
 	var/disabled = FALSE
 
 	var/datum/shuttle/ferry/shuttle_datum
@@ -583,7 +583,7 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 	unslashable = TRUE
 	unacidable = TRUE
 	exproof = 1
-	density = 0
+	density = FALSE
 	req_access = null
 
 /obj/structure/machinery/computer/shuttle_control/ice_colony/proc/animate_on()
@@ -617,7 +617,7 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 	unslashable = TRUE
 	unacidable = TRUE
 	exproof = 1
-	density = 0
+	density = FALSE
 	req_access = null
 
 /obj/structure/machinery/computer/shuttle_control/trijent/proc/animate_on()

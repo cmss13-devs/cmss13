@@ -3,7 +3,7 @@
 	desc = "A huge chunk of metal used to separate rooms."
 	icon = 'icons/turf/walls/walls.dmi'
 	icon_state = "0"
-	opacity = 1
+	opacity = TRUE
 	var/hull = 0 //1 = Can't be deconstructed by tools or thermite. Used for Sulaco walls
 	var/walltype = WALL_METAL
 	var/junctiontype //when walls smooth with one another, the type of junction each wall is.
@@ -255,7 +255,7 @@
 	O.icon = 'icons/effects/fire.dmi'
 	O.icon_state = "red_3"
 	O.anchored = 1
-	O.density = 1
+	O.density = TRUE
 	O.layer = FLY_LAYER
 
 	to_chat(user, SPAN_WARNING("The thermite starts melting through [src]."))

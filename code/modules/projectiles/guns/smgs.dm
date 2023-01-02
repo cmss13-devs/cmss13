@@ -313,7 +313,7 @@
 
 
 //-------------------------------------------------------
-//	DAS REAL UZI
+// DAS REAL UZI
 
 /obj/item/weapon/gun/smg/uzi
 	name = "\improper UZI"

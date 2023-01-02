@@ -11456,12 +11456,6 @@
 	},
 /area/bigredv2/outside/nw)
 "aDB" = (
-/obj/structure/machinery/embedded_controller/radio/airlock/access_controller{
-	id_tag = "viro_controller";
-	pixel_y = 28;
-	tag_exterior_door = "viro_ext";
-	tag_interior_door = "viro_int"
-	},
 /turf/open/floor{
 	dir = 5;
 	icon_state = "whitegreen";

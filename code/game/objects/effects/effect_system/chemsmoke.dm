@@ -3,7 +3,7 @@
 /////////////////////////////////////////////
 /obj/effect/particle_effect/smoke/chem
 	icon = 'icons/effects/chemsmoke.dmi'
-	opacity = 0
+	opacity = FALSE
 	time_to_live = 300
 	anchored = 1
 	smokeranking = SMOKE_RANK_HIGH
@@ -67,7 +67,7 @@
 	smokeFlow(location, targetTurfs, wallList)
 
 	//set the density of the cloud - for diluting reagents
-	density = max(1, targetTurfs.len / 4)	//clamp the cloud density minimum to 1 so it cant multiply the reagents
+	density = max(1, targetTurfs.len / 4) //clamp the cloud density minimum to 1 so it cant multiply the reagents
 
 	//Admin messaging
 	var/contained = ""
@@ -102,7 +102,7 @@
 //------------------------------------------
 /datum/effect_system/smoke_spread/chem/start()
 
-	if(!location)	//kill grenade if it somehow ends up in nullspace
+	if(!location) //kill grenade if it somehow ends up in nullspace
 		return
 
 	//reagent application - only run if there are extra reagents in the smoke
@@ -134,7 +134,7 @@
 						if(prob(proba))
 							R.reaction_turf(T, R.volume)
 						for(var/atom/A in T.contents)
-							if(istype(A, /obj/effect/particle_effect/smoke/chem))	//skip the item if it is chem smoke
+							if(istype(A, /obj/effect/particle_effect/smoke/chem)) //skip the item if it is chem smoke
 								continue
 							else if(istype(A, /mob))
 								var/dist = cheap_pythag(T.x - location.x, T.y - location.y)
@@ -172,7 +172,7 @@
 		var/angle = round(ToDegrees(arcLength / radius), 1)
 
 		if(!IsInteger(radius))
-			offset = 45		//degrees
+			offset = 45 //degrees
 
 		for(var/j = 0, j < points, j++)
 			var/a = (angle * j) + offset
@@ -194,15 +194,15 @@
 /datum/effect_system/smoke_spread/chem/proc/spawnSmoke(var/turf/T, var/icon/I, var/dist = 1)
 	var/obj/effect/particle_effect/smoke/chem/smoke = new(location)
 	if(chemholder.reagents.reagent_list.len)
-		chemholder.reagents.copy_to(smoke, chemholder.reagents.total_volume / dist, safety = 1)	//copy reagents to the smoke so mob/breathe() can handle inhaling the reagents
+		chemholder.reagents.copy_to(smoke, chemholder.reagents.total_volume / dist, safety = 1) //copy reagents to the smoke so mob/breathe() can handle inhaling the reagents
 	smoke.icon = I
 	smoke.layer = FLY_LAYER
 	smoke.setDir(pick(cardinal))
 	smoke.pixel_x = -32 + rand(-8,8)
 	smoke.pixel_y = -32 + rand(-8,8)
 	walk_to(smoke, T)
-	smoke.SetOpacity(1)		//switching opacity on after the smoke has spawned, and then
-	sleep(150+rand(0,20))	// turning it off before it is deleted results in cleaner
+	smoke.SetOpacity(1) //switching opacity on after the smoke has spawned, and then
+	sleep(150+rand(0,20)) // turning it off before it is deleted results in cleaner
 	if(smoke.opacity)
 		smoke.SetOpacity(0)
 	fadeOut(smoke)

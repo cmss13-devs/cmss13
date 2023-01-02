@@ -12,7 +12,7 @@
 	set name = "Hear/Silence Adminhelps"
 	set category = "Preferences.Sound"
 	set desc = "Toggle hearing a notification when admin PMs are received"
-	if(!admin_holder)	return
+	if(!admin_holder) return
 	prefs.toggles_sound ^= SOUND_ADMINHELP
 	prefs.save_preferences()
 	to_chat(usr,SPAN_BOLDNOTICE( "You will [(prefs.toggles_sound & SOUND_ADMINHELP) ? "now" : "no longer"] hear a sound when adminhelps arrive."))
@@ -57,8 +57,8 @@
 		to_chat(src, SPAN_BOLDNOTICE("The currently playing midi has been silenced."))
 		var/sound/break_sound = sound(null, repeat = 0, wait = 0, channel = SOUND_CHANNEL_ADMIN_MIDI)
 		break_sound.priority = 250
-		src << break_sound	//breaks the client's sound output on SOUND_CHANNEL_ADMIN_MIDI
-		if(src.mob.client.midi_silenced)	return
+		src << break_sound //breaks the client's sound output on SOUND_CHANNEL_ADMIN_MIDI
+		if(src.mob.client.midi_silenced) return
 		if(midi_playing)
 			total_silenced++
 			message_staff("A player has silenced the currently playing midi. Total: [total_silenced] player(s).", 1)
@@ -207,7 +207,7 @@
 	set desc = "Toggles which special roles you would like to be a candidate for, during events."
 	var/role_flag = be_special_flags[role]
 
-	if(!role_flag)	return
+	if(!role_flag) return
 	prefs.be_special ^= role_flag
 	prefs.save_preferences()
 	to_chat(src, SPAN_BOLDNOTICE("You will [(prefs.be_special & role_flag) ? "now" : "no longer"] be considered for [role] events (where possible)."))

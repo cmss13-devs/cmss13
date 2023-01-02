@@ -633,7 +633,7 @@
 	name = "laser"
 	icon = 'icons/obj/items/binoculars.dmi'
 	icon_state = "las_r"
-	opacity = 1
+	opacity = TRUE
 	anchored = 1
-	mouse_opacity = 0
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	unacidable = TRUE

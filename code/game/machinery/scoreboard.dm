@@ -3,7 +3,7 @@
 	icon_state = "scoreboard"
 	name = "basketball scoreboard"
 	anchored = 1
-	density = 0
+	density = FALSE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 10
 	var/id = ""

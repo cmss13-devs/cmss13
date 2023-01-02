@@ -18,7 +18,7 @@
 	var/desiredstate = 0 // Zero is closed, 1 is open.
 	var/specialfunctions = 1
 	/*
-	Bitflag, 	1= open
+	Bitflag, 1= open
 				2= idscan,
 				4= bolts
 				8= shock
@@ -29,7 +29,7 @@
 	var/exposedwires = 0
 	var/wires = 3
 	/*
-	Bitflag,	1=checkID
+	Bitflag, 1=checkID
 				2=Network Access
 	*/
 

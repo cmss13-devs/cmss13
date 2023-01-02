@@ -1,7 +1,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////
 //  Parent of all door displays.
 //  Description: This is a controls the timer for the brig doors, displays the timer on itself and
-//               has a popup window when used, allowing to set the timer.
+//    has a popup window when used, allowing to set the timer.
 //  Code Notes: Combination of old brigdoor.dm code from rev4407 and the status_display.dm code
 //  Date: 01/September/2010
 //  Programmer: Veryinky
@@ -11,11 +11,11 @@
 	icon = 'icons/obj/structures/machinery/status_display.dmi'
 	icon_state = "frame"
 	desc = "A remote control for a door."
-	anchored = 1.0    		// can't pick it up
-	density = 0       		// can walk through it.
-	var/open = 0			// If door should be open.
-	var/id = null     		// id of door it controls.
-	var/picture_state		// icon_state of alert picture, if not displaying text/numbers
+	anchored = 1.0 // can't pick it up
+	density = FALSE // can walk through it.
+	var/open = 0 // If door should be open.
+	var/id = null // id of door it controls.
+	var/picture_state // icon_state of alert picture, if not displaying text/numbers
 	var/list/obj/structure/machinery/targets = list()
 	var/uses_tgui = FALSE
 
@@ -52,10 +52,10 @@
 
 // Opens and locks doors, power check
 /obj/structure/machinery/door_display/proc/open_door()
-	if(inoperable())	return FALSE
+	if(inoperable()) return FALSE
 
 	for(var/obj/structure/machinery/door/D in targets)
-		if(!D.density)	continue
+		if(!D.density) continue
 		INVOKE_ASYNC(D, TYPE_PROC_REF(/obj/structure/machinery/door, open))
 
 	return TRUE
@@ -63,10 +63,10 @@
 
 // Closes and unlocks doors, power check
 /obj/structure/machinery/door_display/proc/close_door()
-	if(inoperable())	return FALSE
+	if(inoperable()) return FALSE
 
 	for(var/obj/structure/machinery/door/D in targets)
-		if(D.density)	continue
+		if(D.density) continue
 		INVOKE_ASYNC(D, TYPE_PROC_REF(/obj/structure/machinery/door, close))
 
 	return TRUE

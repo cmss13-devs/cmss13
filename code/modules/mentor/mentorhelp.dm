@@ -33,7 +33,7 @@
 	return ..()
 
 /*
- *    Helpers
+ * Helpers
  */
 
 // Helper to check that the author is still around
@@ -182,7 +182,7 @@
 	return (message_header + message_body)
 
 /*
- *    Marking
+ * Marking
  */
 
 // Marks the mentorhelp thread and notifies the author that the thread is being responded to
@@ -233,7 +233,7 @@
 	mentor = null
 
 /*
- *    Misc.
+ * Misc.
  */
 
 // Closes the thread and notifies the author/mentor that it has been closed
@@ -283,8 +283,8 @@
 				close(C)
 
 /*
- *    Autoresponse
- *    Putting this here cause it's long and ugly
+ * Autoresponse
+ * Putting this here cause it's long and ugly
  */
 
 // responder is the guy responding to the thread, i.e. the mentor triggering the autoresponse

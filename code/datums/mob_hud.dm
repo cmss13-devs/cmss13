@@ -248,7 +248,7 @@ var/list/datum/mob_hud/huds = list(
 
 
 
- //Medical HUDs
+//Medical HUDs
 
 //called when a human changes suit sensors
 /mob/living/carbon/human/proc/update_suit_sensors()

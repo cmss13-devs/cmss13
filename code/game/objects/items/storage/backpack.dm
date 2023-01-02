@@ -8,7 +8,7 @@
 	icon = 'icons/obj/items/clothing/backpacks.dmi'
 	icon_state = "backpack"
 	w_class = SIZE_LARGE
-	flags_equip_slot = SLOT_BACK	//ERROOOOO
+	flags_equip_slot = SLOT_BACK //ERROOOOO
 	max_w_class = SIZE_MEDIUM
 	storage_slots = null
 	max_storage_space = 21
@@ -88,7 +88,7 @@
 
 /obj/item/storage/backpack/equipped(mob/user, slot, silent)
 	if(slot == WEAR_BACK)
-		mouse_opacity = 2 //so it's easier to click when properly equipped.
+		mouse_opacity = MOUSE_OPACITY_OPAQUE //so it's easier to click when properly equipped.
 		if(use_sound && !silent)
 			playsound(loc, use_sound, 15, TRUE, 6)
 		if(!worn_accessible) //closes it if it's open.
@@ -618,7 +618,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 /obj/item/storage/backpack/general_belt/equipped(mob/user, slot)
 	switch(slot)
 		if(WEAR_WAIST, WEAR_J_STORE) //The G8 can be worn on several armours.
-			mouse_opacity = 2 //so it's easier to click when properly equipped.
+			mouse_opacity = MOUSE_OPACITY_OPAQUE //so it's easier to click when properly equipped.
 	..()
 
 /obj/item/storage/backpack/general_belt/dropped(mob/user)

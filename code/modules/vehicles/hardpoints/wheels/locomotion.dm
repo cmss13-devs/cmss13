@@ -3,7 +3,7 @@
 	desc = "i help the vehicle move :)"
 
 	damage_multiplier = 0.15
-	var/acid_resistant = FALSE	//reduces damage dealt by acid spray
+	var/acid_resistant = FALSE //reduces damage dealt by acid spray
 
 	// these are used to change all vehicle's movement characteristics, 0 means no change
 	var/move_delay = VEHICLE_SPEED_FASTNORMAL

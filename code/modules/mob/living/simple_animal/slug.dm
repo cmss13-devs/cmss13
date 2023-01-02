@@ -18,7 +18,7 @@
 	see_in_dark = 6
 	maxHealth = 5
 	health = 5
-	density = 0
+	density = FALSE
 	universal_speak = 0
 	universal_understand = 1
 

@@ -39,9 +39,9 @@
 
 
 // /obj/effect/alien/resin/collector/get_examine_text(mob/user)
-// 	..()
-// 	if(isXeno(user) || isobserver(user))
-// 		to_chat(user, "It has [connected_node.amount_left] resources left.")
+// ..()
+// if(isXeno(user) || isobserver(user))
+// to_chat(user, "It has [connected_node.amount_left] resources left.")
 
 /obj/effect/alien/resin/collector/process()
 	if(!linked_hive || world.time < (last_gathered_time + gather_cooldown))

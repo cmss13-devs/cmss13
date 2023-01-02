@@ -4478,7 +4478,7 @@
 /obj/structure/bedsheetbin,
 /obj/structure/machinery/power/apc{
 	dir = 1;
-	pixel_y = 24
+	pixel_y = 25
 	},
 /turf/open/floor/strata{
 	icon_state = "floor3"
@@ -4841,7 +4841,7 @@
 	},
 /area/strata/ag/interior/outpost/canteen/personal_storage)
 "anR" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med,
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited,
 /turf/closed/wall/strata_outpost,
 /area/strata/ag/interior/outpost/canteen/personal_storage)
 "anS" = (
@@ -6494,7 +6494,7 @@
 "asM" = (
 /obj/structure/machinery/power/apc{
 	dir = 1;
-	pixel_y = 24
+	pixel_y = 25
 	},
 /turf/open/floor/strata{
 	icon_state = "floor3"
@@ -8274,7 +8274,7 @@
 	},
 /obj/structure/machinery/power/apc{
 	dir = 1;
-	pixel_y = 24
+	pixel_y = 25
 	},
 /obj/effect/landmark/survivor_spawner,
 /turf/open/floor/interior/tatami,
@@ -10365,7 +10365,7 @@
 	},
 /area/strata/ag/interior/outpost/canteen)
 "aEq" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited{
 	pixel_y = -28
 	},
 /obj/structure/largecrate/random,
@@ -10387,7 +10387,7 @@
 /obj/structure/closet/crate/freezer/rations,
 /obj/structure/machinery/power/apc{
 	dir = 1;
-	pixel_y = 24
+	pixel_y = 25
 	},
 /turf/open/floor/strata{
 	dir = 10;
@@ -10410,7 +10410,7 @@
 "aEu" = (
 /obj/structure/machinery/power/apc{
 	dir = 1;
-	pixel_y = 24
+	pixel_y = 25
 	},
 /obj/item/reagent_container/food/drinks/cans/waterbottle,
 /turf/open/floor/strata{
@@ -11972,7 +11972,7 @@
 /obj/structure/machinery/computer/crew,
 /obj/structure/machinery/power/apc{
 	dir = 1;
-	pixel_y = 24
+	pixel_y = 25
 	},
 /turf/open/floor/strata,
 /area/strata/ag/interior/outpost/admin)
@@ -14956,7 +14956,7 @@
 	},
 /area/strata/ag/interior/outpost/admin)
 "aSn" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited{
 	pixel_y = -28
 	},
 /obj/item/reagent_container/spray/cleaner,
@@ -15683,7 +15683,7 @@
 	},
 /area/strata/ag/interior/outpost/gen/foyer)
 "aUS" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med,
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited,
 /turf/closed/wall/strata_outpost,
 /area/strata/ag/interior/outpost/engi)
 "aUT" = (
@@ -16266,7 +16266,7 @@
 	},
 /obj/structure/machinery/power/apc{
 	dir = 1;
-	pixel_y = 24
+	pixel_y = 25
 	},
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/interior/plastic,
@@ -16400,7 +16400,7 @@
 /turf/closed/wall/strata_outpost,
 /area/strata/ug/interior/outpost/jung/dorms/admin4)
 "aXq" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med,
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited,
 /turf/closed/wall/strata_outpost,
 /area/strata/ug/interior/outpost/jung/dorms/admin4)
 "aXr" = (
@@ -16854,7 +16854,7 @@
 "aZm" = (
 /obj/structure/machinery/power/apc{
 	dir = 1;
-	pixel_y = 24
+	pixel_y = 25
 	},
 /turf/open/floor/strata{
 	dir = 10;
@@ -16959,7 +16959,7 @@
 	},
 /area/strata/ag/interior/outpost/maint/canteen_e_1)
 "aZz" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med,
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited,
 /turf/closed/wall/strata_outpost,
 /area/strata/ag/interior/outpost/maint/canteen_e_1)
 "aZA" = (
@@ -17645,7 +17645,7 @@
 /obj/structure/closet/wardrobe/pjs,
 /obj/structure/machinery/power/apc{
 	dir = 1;
-	pixel_y = 24
+	pixel_y = 25
 	},
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/strata,
@@ -18133,7 +18133,7 @@
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/strata/ag/exterior/north_lz_caves)
 "bdE" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med,
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited,
 /turf/closed/wall/strata_outpost,
 /area/strata/ag/interior/outpost/admin)
 "bdG" = (
@@ -18356,7 +18356,7 @@
 	},
 /area/strata/ag/interior/outpost/canteen/bar)
 "bes" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med,
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited,
 /turf/closed/wall/strata_outpost,
 /area/strata/ag/interior/outpost/canteen/bar)
 "bev" = (
@@ -21714,7 +21714,7 @@
 	},
 /obj/structure/machinery/power/apc{
 	dir = 1;
-	pixel_y = 24
+	pixel_y = 25
 	},
 /turf/open/floor/strata{
 	dir = 4;
@@ -22303,9 +22303,9 @@
 	},
 /area/strata/ag/interior/outpost/med)
 "bsx" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med,
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med,
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med,
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited,
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited,
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited,
 /turf/closed/wall/strata_outpost,
 /area/strata/ag/interior/outpost/gen/foyer)
 "bsy" = (
@@ -23612,7 +23612,7 @@
 "bxn" = (
 /obj/structure/machinery/power/apc{
 	dir = 1;
-	pixel_y = 24
+	pixel_y = 25
 	},
 /obj/structure/kitchenspike,
 /turf/open/floor/strata{
@@ -24169,7 +24169,7 @@
 "bzx" = (
 /obj/structure/machinery/power/apc{
 	dir = 1;
-	pixel_y = 24
+	pixel_y = 25
 	},
 /turf/open/floor/strata,
 /area/strata/ag/interior/outpost/engi/drome)
@@ -24761,7 +24761,7 @@
 "bDv" = (
 /obj/structure/machinery/power/apc{
 	dir = 1;
-	pixel_y = 24
+	pixel_y = 25
 	},
 /turf/open/floor/strata{
 	icon_state = "multi_tiles"
@@ -25984,7 +25984,7 @@
 "bNm" = (
 /obj/structure/machinery/power/apc{
 	dir = 1;
-	pixel_y = 24
+	pixel_y = 25
 	},
 /turf/open/floor/strata{
 	dir = 10;
@@ -29200,7 +29200,7 @@
 	},
 /area/strata/ag/interior/outpost/engi/drome/shuttle)
 "cls" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med,
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited,
 /turf/closed/shuttle/ert{
 	icon_state = "upp23"
 	},
@@ -29563,7 +29563,7 @@
 /obj/item/tool/wrench,
 /obj/structure/machinery/power/apc{
 	dir = 1;
-	pixel_y = 24
+	pixel_y = 25
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -29621,7 +29621,7 @@
 /obj/structure/reagent_dispensers/beerkeg,
 /obj/structure/machinery/power/apc{
 	dir = 1;
-	pixel_y = 24
+	pixel_y = 25
 	},
 /turf/open/floor/strata{
 	dir = 4;
@@ -31724,7 +31724,7 @@
 "era" = (
 /obj/structure/machinery/power/apc{
 	dir = 1;
-	pixel_y = 24
+	pixel_y = 25
 	},
 /turf/open/floor/strata{
 	icon_state = "floor2"
@@ -32058,7 +32058,7 @@
 /turf/open/floor/strata,
 /area/strata/ag/exterior/research_decks)
 "eRJ" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited{
 	name = "Emergency NanoMed";
 	pixel_x = 30
 	},
@@ -32252,7 +32252,7 @@
 /turf/closed/wall/strata_outpost/reinforced,
 /area/strata/ag/interior/outpost/gen/bball/nest)
 "flK" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med,
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited,
 /turf/closed/wall/strata_outpost/reinforced,
 /area/strata/ag/interior/outpost/med)
 "fno" = (
@@ -33506,7 +33506,7 @@
 /turf/open/auto_turf/strata_grass/layer0,
 /area/strata/ug/interior/jungle/deep/south_dorms)
 "hjC" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med,
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited,
 /turf/closed/wall/strata_outpost,
 /area/strata/ug/interior/outpost/jung/dorms/sec2)
 "hkn" = (
@@ -34656,7 +34656,7 @@
 	dir = 8;
 	tag = "icon-chair (WEST)"
 	},
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited{
 	name = "Emergency NanoMed";
 	pixel_x = 30
 	},
@@ -35123,7 +35123,7 @@
 	},
 /area/strata/ag/interior/outpost/gen/bball)
 "kaw" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med,
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited,
 /turf/closed/wall/strata_outpost,
 /area/strata/ug/interior/outpost/jung/dorms/med2)
 "kaP" = (
@@ -35165,7 +35165,7 @@
 	},
 /obj/structure/machinery/power/apc{
 	dir = 1;
-	pixel_y = 24
+	pixel_y = 25
 	},
 /turf/open/floor/strata,
 /area/strata/ug/interior/outpost/jung/dorms/med2)
@@ -35992,7 +35992,7 @@
 /obj/structure/machinery/photocopier,
 /obj/structure/machinery/power/apc{
 	dir = 1;
-	pixel_y = 24
+	pixel_y = 25
 	},
 /turf/open/floor/strata,
 /area/strata/ug/interior/outpost/jung/dorms/admin1)
@@ -36648,7 +36648,7 @@
 	},
 /area/strata/ag/interior/tcomms)
 "msG" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med,
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited,
 /turf/closed/wall/strata_outpost,
 /area/strata/ag/interior/outpost/med)
 "msP" = (
@@ -36987,7 +36987,7 @@
 "mWM" = (
 /obj/structure/machinery/power/apc{
 	dir = 1;
-	pixel_y = 24
+	pixel_y = 25
 	},
 /obj/effect/decal/cleanable/blood,
 /obj/effect/landmark/objective_landmark/medium,
@@ -39841,7 +39841,7 @@
 "rSE" = (
 /obj/structure/machinery/power/apc{
 	dir = 1;
-	pixel_y = 24
+	pixel_y = 25
 	},
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
@@ -41104,7 +41104,7 @@
 "tZF" = (
 /obj/structure/machinery/power/apc{
 	dir = 1;
-	pixel_y = 24
+	pixel_y = 25
 	},
 /turf/open/floor/strata{
 	dir = 8;
@@ -41638,7 +41638,7 @@
 "uTv" = (
 /obj/structure/machinery/power/apc{
 	dir = 1;
-	pixel_y = 24
+	pixel_y = 25
 	},
 /turf/open/floor/strata{
 	dir = 8;
@@ -42335,7 +42335,7 @@
 "vTN" = (
 /obj/structure/machinery/power/apc{
 	dir = 1;
-	pixel_y = 24
+	pixel_y = 25
 	},
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/blood/gibs/core,

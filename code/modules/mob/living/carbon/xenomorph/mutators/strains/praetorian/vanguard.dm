@@ -43,8 +43,8 @@
 	name = "Praetorian Vanguard Behavior Delegate"
 
 	// Config
-	var/shield_recharge_time = 200     // 20 seconds to recharge 1-hit shield
-	var/pierce_spin_time = 10          // 1 second to use pierce
+	var/shield_recharge_time = 200  // 20 seconds to recharge 1-hit shield
+	var/pierce_spin_time = 10   // 1 second to use pierce
 	var/shield_decay_cleave_time = 15   // How long you have to buffed cleave after the shield fully decays
 
 	// State
@@ -70,7 +70,7 @@
 	if (istype(pAction))
 		pAction.should_spin_instead = TRUE
 
-	addtimer(CALLBACK(src, .proc/next_pierce_normal), pierce_spin_time)
+	addtimer(CALLBACK(src, PROC_REF(next_pierce_normal)), pierce_spin_time)
 	return
 
 /datum/behavior_delegate/praetorian_vanguard/proc/next_pierce_normal()

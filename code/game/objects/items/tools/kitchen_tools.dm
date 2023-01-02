@@ -1,13 +1,13 @@
 /* Kitchen tools
  * Contains:
- *		Utensils
- *		Spoons
- *		Forks
- *		Knives
- *		Kitchen knives
- *		Butcher's cleaver
- *		Rolling Pins
- *		Trays
+ * Utensils
+ * Spoons
+ * Forks
+ * Knives
+ * Kitchen knives
+ * Butcher's cleaver
+ * Rolling Pins
+ * Trays
  */
 
 /obj/item/tool/kitchen
@@ -26,7 +26,7 @@
 
 	attack_verb = list("attacked", "stabbed", "poked")
 	sharp = 0
-	var/loaded      //Descriptive string for currently loaded food object.
+	var/loaded   //Descriptive string for currently loaded food object.
 
 /obj/item/tool/kitchen/utensil/Initialize()
 	. = ..()
@@ -48,11 +48,11 @@
 		reagents.trans_to_ingest(M, reagents.total_volume)
 		if(M == user)
 			for(var/mob/O in viewers(M, null))
-				O.show_message(SPAN_NOTICE("[user] eats some [loaded] from \the [src]."), 1)
+				O.show_message(SPAN_NOTICE("[user] eats some [loaded] from \the [src]."), SHOW_MESSAGE_VISIBLE)
 				M.reagents.add_reagent("nutriment", 1)
 		else
 			for(var/mob/O in viewers(M, null))
-				O.show_message(SPAN_NOTICE("[user] feeds [M] some [loaded] from \the [src]"), 1)
+				O.show_message(SPAN_NOTICE("[user] feeds [M] some [loaded] from \the [src]"), SHOW_MESSAGE_VISIBLE)
 				M.reagents.add_reagent("nutriment", 1)
 		playsound(M.loc,'sound/items/eatfood.ogg', 15, 1)
 		overlays.Cut()
@@ -178,9 +178,9 @@
 	if(affecting == "head" && istype(M, /mob/living/carbon/) && !isXeno(M))
 		for(var/mob/O in viewers(user, null))
 			if(M != user)
-				O.show_message(text(SPAN_DANGER("<B>[M] has been hit over the head with a [name] by [user]!</B>")), 1)
+				O.show_message(text(SPAN_DANGER("<B>[M] has been hit over the head with a [name] by [user]!</B>")), SHOW_MESSAGE_VISIBLE)
 			else
-				O.show_message(text(SPAN_DANGER("<B>[M] hit \himself with a [name] on the head!</B>")), 1)
+				O.show_message(text(SPAN_DANGER("<B>[M] hit \himself with a [name] on the head!</B>")), SHOW_MESSAGE_VISIBLE)
 		if(drowsy_threshold > 0)
 			M.apply_effect(min(drowsy_threshold, 10) , DROWSY)
 
@@ -209,7 +209,7 @@
 	w_class = SIZE_MEDIUM
 	flags_atom = FPRINT|CONDUCT
 	matter = list("metal" = 3000)
-	var/cooldown = 0	//shield bash cooldown. based on world.time
+	var/cooldown = 0 //shield bash cooldown. based on world.time
 
 /obj/item/tool/kitchen/tray/attack(mob/living/carbon/M, mob/living/carbon/user)
 	to_chat(user, SPAN_WARNING("You accidentally slam yourself with the [src]!"))

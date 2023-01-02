@@ -83,7 +83,7 @@
 
 /obj/structure/pipes/standard/simple/hidden
 	icon_state = "intact"
-	alpha = 128		//set for the benefit of mapping - this is reset to opaque when the pipe is spawned in game
+	alpha = 128 //set for the benefit of mapping - this is reset to opaque when the pipe is spawned in game
 
 /obj/structure/pipes/standard/simple/hidden/update_icon()
 	level = 1

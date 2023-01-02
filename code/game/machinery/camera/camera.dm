@@ -66,10 +66,10 @@
 
 /obj/structure/machinery/camera/set_pixel_location()
 	switch(dir)
-		if(NORTH)		pixel_y = -18
-		if(SOUTH)		pixel_y = 40
-		if(EAST)		pixel_x = -27
-		if(WEST)		pixel_x = 27
+		if(NORTH) pixel_y = -18
+		if(SOUTH) pixel_y = 40
+		if(EAST) pixel_x = -27
+		if(WEST) pixel_x = 27
 
 /obj/structure/machinery/camera/emp_act(severity)
 	if(!isEmpProof())
@@ -246,14 +246,14 @@
 //or null if none
 /proc/seen_by_camera(var/mob/M)
 	for(var/obj/structure/machinery/camera/C in oview(4, M))
-		if(C.can_use())	// check if camera disabled
+		if(C.can_use()) // check if camera disabled
 			return C
 	return null
 
 /proc/near_range_camera(var/mob/M)
 
 	for(var/obj/structure/machinery/camera/C in range(4, M))
-		if(C.can_use())	// check if camera disabled
+		if(C.can_use()) // check if camera disabled
 			return C
 
 	return null
@@ -283,7 +283,7 @@
 
 /obj/structure/machinery/camera/mortar
 	alpha = 0
-	mouse_opacity = 0
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	density = FALSE
 	invuln = TRUE
 	network = list(CAMERA_NET_MORTAR)

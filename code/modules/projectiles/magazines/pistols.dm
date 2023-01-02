@@ -149,7 +149,7 @@
 /obj/item/ammo_magazine/pistol/heavy
 	name = "\improper Desert Eagle magazine (.50)"
 
-	default_ammo = /datum/ammo/bullet/pistol/heavy
+	default_ammo = /datum/ammo/bullet/pistol/deagle
 	caliber = ".50"
 	icon_state = "deagle"
 	max_rounds = 7
@@ -200,9 +200,8 @@
 	default_ammo = /datum/ammo/bullet/pistol/heavy
 	caliber = ".44"
 	icon_state = "kt42"
-	max_rounds = 7
+	max_rounds = 16
 	gun_type = /obj/item/weapon/gun/pistol/kt42
-
 
 //-------------------------------------------------------
 //PIZZACHIMP PROTECTION
@@ -232,15 +231,21 @@
 
 //-------------------------------------------------------
 //.45 MARSHALS PISTOL //Inspired by the Browning Hipower
+// rebalanced - singlefire, very strong bullets but slow to fire and heavy recoil
+// redesigned - now rejected USCM sidearm model, utilized by Colonial Marshals and other stray groups.
 
 /obj/item/ammo_magazine/pistol/highpower
-	name = "\improper Highpower magazine (9mm)"
-	default_ammo = /datum/ammo/bullet/pistol/ap
-	caliber = "9mm"
-	icon_state = "m4a3" //PLACEHOLDER
+	name = "\improper MK-45 Automagnum magazine (.45)"
+	default_ammo = /datum/ammo/bullet/pistol/highpower
+	caliber = ".45"
+	icon_state = "highpower"
 	max_rounds = 13
 	gun_type = /obj/item/weapon/gun/pistol/highpower
 
+//comes in black, for the black variant of the highpower, better for military usage
+
+/obj/item/ammo_magazine/pistol/highpower/black
+	icon_state = "highpower_b"
 
 //-------------------------------------------------------
 /*

@@ -41,13 +41,13 @@
 	if(copytext(message,1,2) == "*")
 		return emote(copytext(message,2))
 
-	var/bot_type = 0			//Let's not do a fuck ton of type checks, thanks.
+	var/bot_type = 0 //Let's not do a fuck ton of type checks, thanks.
 	if(isAI(src))
 		bot_type = IS_AI
 	else if(isrobot(src))
 		bot_type = IS_ROBOT
 
-	var/mob/living/silicon/ai/AI = src		//and let's not declare vars over and over and over for these guys.
+	var/mob/living/silicon/ai/AI = src //and let's not declare vars over and over and over for these guys.
 	var/mob/living/silicon/robot/R = src
 
 	//Must be concious to speak
@@ -159,9 +159,9 @@
 		to_chat(src, "<i><span class='game say'>Holopad transmitted, <span class='name'>[real_name]</span> [verb], <span class='message'>[message]</span></span></i>")//The AI can "hear" its own message.
 		for(var/mob/M in hearers(T.loc))//The location is the object, default distance.
 			if(M.say_understands(src))//If they understand AI speak. Humans and the like will be able to.
-				M.show_message(rendered_a, 2)
+				M.show_message(rendered_a, SHOW_MESSAGE_AUDIBLE)
 			else//If they do not.
-				M.show_message(rendered_b, 2)
+				M.show_message(rendered_b, SHOW_MESSAGE_AUDIBLE)
 		/*Radios "filter out" this conversation channel so we don't need to account for them.
 		This is another way of saying that we won't bother dealing with them.*/
 	else

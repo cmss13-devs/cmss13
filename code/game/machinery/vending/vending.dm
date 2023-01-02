@@ -2,12 +2,12 @@
 #define CAT_HIDDEN 1
 #define CAT_COIN   2
 
-#define VENDING_WIRE_EXTEND    1
-#define VENDING_WIRE_IDSCAN    2
-#define VENDING_WIRE_SHOCK     3
+#define VENDING_WIRE_EXTEND 1
+#define VENDING_WIRE_IDSCAN 2
+#define VENDING_WIRE_SHOCK  3
 #define VENDING_WIRE_SHOOT_INV 4
 
-#define	VEND_HAND	1
+#define VEND_HAND 1
 
 /datum/data/vending_product
 	var/product_name = "generic"
@@ -23,7 +23,7 @@
 	icon = 'icons/obj/structures/machinery/vending.dmi'
 	icon_state = "generic"
 	anchored = 1
-	density = 1
+	density = TRUE
 	layer = BELOW_OBJ_LAYER
 
 	use_power = USE_POWER_IDLE
@@ -33,14 +33,14 @@
 	var/active = 1 //No sales pitches if off!
 	var/delay_product_spawn // If set, uses sleep() in product spawn proc (mostly for seeds to retrieve correct names).
 	var/vend_ready = 1 //Are we ready to vend?? Is it time??
-	var/vend_delay = 10 //How long does it take to vend?
+	var/vend_delay = 1 SECONDS //How long does it take to vend?
 	var/datum/data/vending_product/currently_vending = null // A /datum/data/vending_product instance of what we're paying for right now.
 
 	// To be filled out at compile time
-	var/list/products	= list() // For each, use the following pattern:
-	var/list/contraband	= list() // list(/type/path = amount,/type/path2 = amount2)
-	var/list/premium 	= list() // No specified amount = only one in stock
-	var/list/prices     = list() // Prices for each item, list(/type/path = price), items not in the list don't have a price.
+	var/list/products = list() // For each, use the following pattern:
+	var/list/contraband = list() // list(/type/path = amount,/type/path2 = amount2)
+	var/list/premium = list() // No specified amount = only one in stock
+	var/list/prices  = list() // Prices for each item, list(/type/path = price), items not in the list don't have a price.
 
 	var/product_slogans = "" //String of slogans separated by semicolons, optional
 	var/product_ads = "" //String of small ad messages in the vending screen - random chance
@@ -64,7 +64,7 @@
 	var/obj/item/coin/coin
 	var/announce_hacked = TRUE
 
-	var/check_accounts = 0		// 1 = requires PIN and checks accounts.  0 = You slide an ID, it vends, SPACE COMMUNISM!
+	var/check_accounts = 0 // 1 = requires PIN and checks accounts.  0 = You slide an ID, it vends, SPACE COMMUNISM!
 	var/obj/item/spacecash/ewallet/ewallet
 	var/is_tipped_over = FALSE
 	var/hacking_safety = 0 //1 = Will never shoot inventory or allow all access
@@ -102,10 +102,10 @@
 	switch(severity)
 		if(0 to EXPLOSION_THRESHOLD_LOW)
 			if(prob(25))
-				INVOKE_ASYNC(src, .proc/malfunction)
+				INVOKE_ASYNC(src, PROC_REF(malfunction))
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			if(prob(50))
-				INVOKE_ASYNC(src, .proc/malfunction)
+				INVOKE_ASYNC(src, PROC_REF(malfunction))
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
 			deconstruct(FALSE)
 
@@ -612,7 +612,7 @@
 		ui_interact(user)
 
 	if (delay_vending)
-		use_power(vend_power_usage)	//actuators and stuff
+		use_power(vend_power_usage) //actuators and stuff
 		if (icon_vend)
 			flick(icon_vend,src) //Show the vending animation if needed
 		sleep(delay_vending)
@@ -641,7 +641,7 @@
 
 /obj/structure/machinery/vending/proc/stock(obj/item/item_to_stock, mob/user)
 	var/datum/data/vending_product/R //Let's try with a new datum.
-	 //More accurate comparison between absolute paths.
+	//More accurate comparison between absolute paths.
 	for(R in (product_records + hidden_records + coin_records))
 		if(item_to_stock.type == R.product_path && !istype(item_to_stock,/obj/item/storage)) //Nice try, specialists/engis
 			if(isgun(item_to_stock))
@@ -724,13 +724,13 @@
 		return
 
 	for(var/mob/O in hearers(src, null))
-		O.show_message("<span class='game say'><span class='name'>[src]</span> beeps, \"[message]\"</span>",2)
+		O.show_message("<span class='game say'><span class='name'>[src]</span> beeps, \"[message]\"</span>", SHOW_MESSAGE_AUDIBLE)
 	return
 
 /obj/structure/machinery/vending/power_change()
 	..()
 	if(stat & NOPOWER)
-		addtimer(CALLBACK(src, .proc/update_icon), rand(1, 15))
+		addtimer(CALLBACK(src, PROC_REF(update_icon)), rand(1, 15))
 		return
 	update_icon()
 
@@ -780,9 +780,9 @@
 
 /obj/structure/machinery/vending/proc/get_wire_descriptions()
 	return list(
-		VENDING_WIRE_EXTEND    = "Inventory control computer",
-		VENDING_WIRE_IDSCAN    = "ID scanner",
-		VENDING_WIRE_SHOCK     = "Ground safety",
+		VENDING_WIRE_EXTEND = "Inventory control computer",
+		VENDING_WIRE_IDSCAN = "ID scanner",
+		VENDING_WIRE_SHOCK  = "Ground safety",
 		VENDING_WIRE_SHOOT_INV = "Dispenser motor control"
 	)
 

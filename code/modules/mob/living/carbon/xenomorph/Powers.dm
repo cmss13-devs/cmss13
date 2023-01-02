@@ -138,7 +138,7 @@
 	var/atom/new_resin = RC.build(current_turf, hivenumber, src)
 	if(RC.max_per_xeno != RESIN_CONSTRUCTION_NO_MAX)
 		LAZYADD(built_structures[RC.build_path], new_resin)
-		RegisterSignal(new_resin, COMSIG_PARENT_QDELETING, .proc/remove_built_structure)
+		RegisterSignal(new_resin, COMSIG_PARENT_QDELETING, PROC_REF(remove_built_structure))
 
 	new_resin.add_hiddenprint(src) //so admins know who placed it
 

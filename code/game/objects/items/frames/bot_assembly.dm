@@ -26,7 +26,7 @@
 		user.temp_drop_inv_item(src)
 		qdel(src)
 
-	else if (istype(W, /obj/item/tool/pen))
+	else if (HAS_TRAIT(W, TRAIT_TOOL_PEN))
 		var/t = copytext(stripped_input(user, "Enter new robot name", src.name, src.created_name),1,MAX_NAME_LEN)
 		if (!t)
 			return
@@ -61,7 +61,7 @@
 		user.temp_drop_inv_item(src)
 		qdel(src)
 
-	else if (istype(W, /obj/item/tool/pen))
+	else if (HAS_TRAIT(W, TRAIT_TOOL_PEN))
 		var/t = copytext(stripped_input(user, "Enter new robot name", src.name, src.created_name),1,MAX_NAME_LEN)
 		if (!t)
 			return
@@ -94,7 +94,7 @@
 		to_chat(user, SPAN_NOTICE("You add the robot arm to the odd looking toolbox assembly! Boop beep!"))
 		user.temp_drop_inv_item(src)
 		qdel(src)
-	else if (istype(W, /obj/item/tool/pen))
+	else if (HAS_TRAIT(W, TRAIT_TOOL_PEN))
 		var/t = stripped_input(user, "Enter new robot name", src.name, src.created_name)
 
 		if (!t)
@@ -120,16 +120,16 @@
 	var/skin = null //Same as medbot, set to tox or ointment for the respective kits.
 	w_class = SIZE_MEDIUM
 
-	New()
-		..()
-		spawn(5)
-			if(src.skin)
-				src.overlays += image('icons/obj/structures/machinery/aibots.dmi', "kit_skin_[src.skin]")
+/obj/item/frame/firstaid_arm_assembly/New()
+	..()
+	spawn(5)
+		if(src.skin)
+			src.overlays += image('icons/obj/structures/machinery/aibots.dmi', "kit_skin_[src.skin]")
 
 
 /obj/item/frame/firstaid_arm_assembly/attackby(obj/item/W as obj, mob/user as mob)
 	..()
-	if(istype(W, /obj/item/tool/pen))
+	if(HAS_TRAIT(W, TRAIT_TOOL_PEN))
 		var/t = copytext(stripped_input(user, "Enter new robot name", src.name, src.created_name),1,MAX_NAME_LEN)
 		if (!t)
 			return

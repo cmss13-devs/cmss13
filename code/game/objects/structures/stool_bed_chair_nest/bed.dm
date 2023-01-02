@@ -1,7 +1,7 @@
 /*
  * Contains:
- * 		Beds
- *		Roller beds
+ * Beds
+ * Roller beds
  */
 
 /*
@@ -40,7 +40,7 @@
 		else
 			icon_state = "[base_bed_icon]_down"
 
-obj/structure/bed/Destroy()
+/obj/structure/bed/Destroy()
 	if(buckled_bodybag)
 		unbuckle()
 	. = ..()
@@ -61,12 +61,12 @@ obj/structure/bed/Destroy()
 		M.pixel_y = buckling_y
 		M.old_y = buckling_y
 		if(base_bed_icon)
-			density = 1
+			density = TRUE
 	else
 		M.pixel_y = initial(buckled_mob.pixel_y)
 		M.old_y = initial(buckled_mob.pixel_y)
 		if(base_bed_icon)
-			density = 0
+			density = FALSE
 
 	update_icon()
 
@@ -77,7 +77,7 @@ obj/structure/bed/Destroy()
 	B.forceMove(loc)
 	B.setDir(dir)
 	buckled_bodybag = B
-	density = 1
+	density = TRUE
 	update_icon()
 	if(buckling_y)
 		buckled_bodybag.pixel_y = buckled_bodybag.buckle_offset + buckling_y
@@ -88,7 +88,7 @@ obj/structure/bed/Destroy()
 		buckled_bodybag.pixel_y = initial(buckled_bodybag.pixel_y)
 		buckled_bodybag.roller_buckled = null
 		buckled_bodybag = null
-		density = 0
+		density = FALSE
 		update_icon()
 	else
 		..()
@@ -270,7 +270,7 @@ obj/structure/bed/Destroy()
 	QDEL_NULL(held)
 
 //////////////////////////////////////////////
-//			PORTABLE SURGICAL BED			//
+// PORTABLE SURGICAL BED //
 //////////////////////////////////////////////
 
 /obj/structure/bed/portable_surgery

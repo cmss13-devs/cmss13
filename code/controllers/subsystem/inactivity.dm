@@ -1,9 +1,9 @@
-#define INACTIVITY_KICK	6000	//10 minutes in ticks (approx.)
+#define INACTIVITY_KICK 6000 //10 minutes in ticks (approx.)
 
 SUBSYSTEM_DEF(inactivity)
 	name = "Inactivity"
 	wait = INACTIVITY_KICK
-	flags = SS_NO_INIT | SS_BACKGROUND | SS_DISABLE_FOR_TESTING
+	flags = SS_NO_INIT | SS_BACKGROUND
 	priority = SS_PRIORITY_INACTIVITY
 	runlevels = RUNLEVELS_DEFAULT|RUNLEVEL_LOBBY
 

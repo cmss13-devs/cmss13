@@ -19,14 +19,14 @@
 //=======================================================================\\
 //=======================================================================\\
 
-#define ALPHA		1
-#define BRAVO		2
-#define CHARLIE		3
-#define DELTA		4
-#define ECHO		5
-#define CRYO		6
-#define SOF		7
-#define NOSQUAD 	8
+#define ALPHA 1
+#define BRAVO 2
+#define CHARLIE 3
+#define DELTA 4
+#define ECHO 5
+#define CRYO 6
+#define SOF 7
+#define NOSQUAD 8
 
 var/list/armormarkings = list()
 var/list/armormarkings_sql = list()
@@ -126,8 +126,8 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	sprite_sheets = list(SPECIES_MONKEY = 'icons/mob/humans/species/monkeys/onmob/suit_monkey_1.dmi')
 	time_to_unequip = 20
 	time_to_equip = 20
-	pickupsound = "armorequip"
-	dropsound = "armorequip"
+	pickup_sound = "armorequip"
+	drop_sound = "armorequip"
 	equip_sounds = list('sound/handling/putting_on_armor1.ogg')
 	var/armor_variation = 0
 
@@ -673,7 +673,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 
 /obj/item/clothing/suit/storage/marine/M35/equipped(mob/user, slot)
 	if(slot == WEAR_JACKET)
-		RegisterSignal(user, COMSIG_LIVING_FLAMER_CROSSED, .proc/flamer_fire_callback)
+		RegisterSignal(user, COMSIG_LIVING_FLAMER_CROSSED, PROC_REF(flamer_fire_callback))
 	..()
 
 /obj/item/clothing/suit/storage/marine/M35/verb/fire_shield()
@@ -704,16 +704,16 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 		return
 
 	to_chat(H, SPAN_NOTICE("FIREWALK protocol has been activated. You will now be immune to fire for 6 seconds!"))
-	RegisterSignal(H, COMSIG_LIVING_PREIGNITION, .proc/fire_shield_is_on)
+	RegisterSignal(H, COMSIG_LIVING_PREIGNITION, PROC_REF(fire_shield_is_on))
 	RegisterSignal(H, list(
 		COMSIG_LIVING_FLAMER_FLAMED,
-	), .proc/flamer_fire_callback)
+	), PROC_REF(flamer_fire_callback))
 	fire_shield_on = TRUE
 	can_activate = FALSE
 	for(var/X in actions)
 		var/datum/action/A = X
 		A.update_button_icon()
-	addtimer(CALLBACK(src, .proc/end_fire_shield, H), 6 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(end_fire_shield), H), 6 SECONDS)
 
 	H.add_filter("firewalk_on", 1, list("type" = "outline", "color" = "#03fcc6", "size" = 1))
 
@@ -729,7 +729,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 
 	user.remove_filter("firewalk_on")
 
-	addtimer(CALLBACK(src, .proc/enable_fire_shield, user), FIRE_SHIELD_CD)
+	addtimer(CALLBACK(src, PROC_REF(enable_fire_shield), user), FIRE_SHIELD_CD)
 
 /obj/item/clothing/suit/storage/marine/M35/proc/enable_fire_shield(var/mob/living/carbon/human/user)
 	if(!istype(user))
@@ -865,18 +865,18 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	RegisterSignal(H,  list(
 		COMSIG_MOB_FIRED_GUN,
 		COMSIG_MOB_FIRED_GUN_ATTACHMENT)
-		, .proc/fade_in)
+		, PROC_REF(fade_in))
 	RegisterSignal(H, list(
 		COMSIG_MOB_DEATH,
 		COMSIG_HUMAN_EXTINGUISH
-	), .proc/deactivate_camouflage)
-	RegisterSignal(H, COMSIG_MOB_POST_UPDATE_CANMOVE, .proc/fix_density)
+	), PROC_REF(deactivate_camouflage))
+	RegisterSignal(H, COMSIG_MOB_POST_UPDATE_CANMOVE, PROC_REF(fix_density))
 	camo_active = TRUE
 	H.alpha = full_camo_alpha
 	H.FF_hit_evade = 1000
 	H.density = FALSE
 
-	RegisterSignal(H, COMSIG_MOB_MOVE_OR_LOOK, .proc/handle_mob_move_or_look)
+	RegisterSignal(H, COMSIG_MOB_MOVE_OR_LOOK, PROC_REF(handle_mob_move_or_look))
 
 	var/datum/mob_hud/security/advanced/SA = huds[MOB_HUD_SECURITY_ADVANCED]
 	SA.remove_from_hud(H)
@@ -926,7 +926,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 			current_camo = full_camo_alpha
 		current_camo = Clamp(current_camo + incremental_shooting_camo_penalty, full_camo_alpha, 255)
 		H.alpha = current_camo
-		addtimer(CALLBACK(src, .proc/fade_out_finish, H), camouflage_break, TIMER_OVERRIDE|TIMER_UNIQUE)
+		addtimer(CALLBACK(src, PROC_REF(fade_out_finish), H), camouflage_break, TIMER_OVERRIDE|TIMER_UNIQUE)
 		animate(H, alpha = full_camo_alpha + 5, time = camouflage_break, easing = LINEAR_EASING, flags = ANIMATION_END_NOW)
 
 /obj/item/clothing/suit/storage/marine/ghillie/proc/fix_density(mob/user)

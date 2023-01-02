@@ -34,6 +34,12 @@
 	icon_state = "m41a_explosive"
 	default_ammo = /datum/ammo/bullet/rifle/explosive
 
+/obj/item/ammo_magazine/rifle/heap
+	name = "\improper M41A HEAP magazine (10x24mm)"
+	desc = "A 10mm armor piercing high explosive magazine."
+	icon_state = "m41a_heap"
+	default_ammo = /datum/ammo/bullet/rifle/heap
+
 /obj/item/ammo_magazine/rifle/ap
 	name = "\improper M41A AP magazine (10x24mm)"
 	desc = "A 10mm armor piercing magazine."
@@ -87,6 +93,12 @@
 	icon_state = "m41a_mk1_ap"
 	default_ammo = /datum/ammo/bullet/rifle/ap
 
+/obj/item/ammo_magazine/rifle/m41aMK1/heap
+	name = "\improper M41A MK1 HEAP magazine (10x24mm)"
+	desc = "A long rectangular box of rounds that is only compatible with the older M41A MK1. Holds up to 95 rounds. This one contains High-Explosive Armor-Piercing bullets."
+	icon_state = "m41a_mk1_heap"
+	default_ammo = /datum/ammo/bullet/rifle/heap
+
 /obj/item/ammo_magazine/rifle/m41aMK1/incendiary
 	name = "\improper M41A MK1 incendiary magazine (10x24mm)"
 	desc = "A long rectangular box of rounds that is only compatible with the older M41A MK1. Holds up to 95 rounds. This one contains incendiary bullets."
@@ -121,6 +133,14 @@
 	max_rounds = 60
 	gun_type = /obj/item/weapon/gun/rifle/m41a/elite/m40_sd
 	default_ammo = /datum/ammo/bullet/rifle/ap
+
+/obj/item/ammo_magazine/rifle/m40_sd/heap
+	name = "\improper M40-SD HEAP magazine (10x24mm)"
+	desc = "A stubby and wide, high-capacity double stack magazine used in the M40-SD pulse rifle. Fires 10x24mm High Explosive Armor Piercing rounds, holding up to 60 + 1 in the chamber."
+	icon_state = "m40_sd_heap"
+	max_rounds = 60
+	gun_type = /obj/item/weapon/gun/rifle/m41a/elite/m40_sd
+	default_ammo = /datum/ammo/bullet/rifle/heap
 
 //-------------------------------------------------------
 //MAR-40 AK CLONE //AK47 and FN FAL together as one.
@@ -195,6 +215,7 @@
 	icon_state = "m41ae2"
 	max_rounds = 300
 	gun_type = /obj/item/weapon/gun/rifle/lmg
+	flags_magazine = AMMUNITION_CANNOT_REMOVE_BULLETS|AMMUNITION_REFILLABLE
 
 /obj/item/ammo_magazine/rifle/lmg/holo_target
 	name = "\improper M41AE2 ammo box (10x24mm holo-target)"
@@ -202,6 +223,14 @@
 	icon_state = "m41ae2_track"
 	default_ammo = /datum/ammo/bullet/rifle/holo_target
 	max_rounds = 200
+
+/obj/item/ammo_magazine/rifle/lmg/heap
+	name = "\improper M41AE2 HEAP ammo box (10x24mm)"
+	desc = "A semi-rectangular box of rounds for the M41AE2 Heavy Pulse Rifle. This one contains the standard Armor-Piercing explosive tipped round of the USCM."
+	icon_state = "m41ae2_heap"
+	default_ammo = /datum/ammo/bullet/rifle/heap
+	max_rounds = 300
+	gun_type = /obj/item/weapon/gun/rifle/lmg
 
 //-------------------------------------------------------
 //UPP TYPE 71 RIFLE
@@ -221,6 +250,13 @@
 	icon_state = "type_71_ap"
 	default_ammo = /datum/ammo/bullet/rifle/type71/ap
 	bonus_overlay = "type71_ap"
+
+/obj/item/ammo_magazine/rifle/type71/heap
+	name = "\improper Type 71 HEAP magazine (5.45x39mm)"
+	desc = "A 5.45x39mm high-capacity casket magazine containing the standard high explosive armor piercing rounds for the Type 71 rifle."
+	icon_state = "type_71_heap"
+	default_ammo = /datum/ammo/bullet/rifle/type71/heap
+	bonus_overlay = "type71_heap"
 
 //-------------------------------------------------------
 //USCM L42A Battle Rifle
@@ -251,6 +287,12 @@
 	name = "L42A rubber magazine (10x24mm)"
 	icon_state = "l42mk1_le"
 	default_ammo = /datum/ammo/bullet/rifle/rubber
+
+/obj/item/ammo_magazine/rifle/l42a/heap
+	name = "\improper L42A HEAP (10x24mm)"
+	desc = "A 10mm battle rifle high explosive armor piercing magazine."
+	icon_state = "l42mk1_heap"
+	default_ammo = /datum/ammo/bullet/rifle/heap
 
 /obj/item/ammo_magazine/rifle/l42a/penetrating
 	name = "\improper L42A wall-piercing magazine (10x24mm)"
@@ -317,6 +359,13 @@
 	icon_state = "nsg23_ap"
 	item_state = "nsg23_ap"
 	default_ammo = /datum/ammo/bullet/rifle/ap
+
+/obj/item/ammo_magazine/rifle/nsg23/heap
+	name = "\improper NSG 23 HEAP magazine (10x24mm)"
+	desc = "An NSG 23 assault rifle magazine. This one is loaded with armor-piercing explosive tipped rounds."
+	icon_state = "nsg23_heap"
+	item_state = "nsg23_heap"
+	default_ammo = /datum/ammo/bullet/rifle/heap
 
 //-------------------------------------------------------
 //Basira-Armstrong rifle

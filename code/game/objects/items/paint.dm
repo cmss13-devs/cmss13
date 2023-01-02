@@ -1,4 +1,4 @@
-//NEVER USE THIS IT SUX	-PETETHEGOAT
+//NEVER USE THIS IT SUX -PETETHEGOAT
 
 var/global/list/cached_icons = list()
 
@@ -20,7 +20,7 @@ var/global/list/cached_icons = list()
 	if(!proximity) return
 	if(istype(target) && reagents.total_volume > 5)
 		for(var/mob/O in viewers(user))
-			O.show_message(SPAN_DANGER("\The [target] has been splashed with something by [user]!"), 1)
+			O.show_message(SPAN_DANGER("\The [target] has been splashed with something by [user]!"), SHOW_MESSAGE_VISIBLE)
 		spawn(5)
 			reagents.reaction(target, TOUCH)
 			reagents.remove_any(5)

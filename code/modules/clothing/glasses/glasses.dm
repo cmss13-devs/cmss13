@@ -276,7 +276,7 @@
 	if(!ishuman(user) || slot != WEAR_EYES && slot != WEAR_FACE)
 		return
 
-	RegisterSignal(user, COMSIG_MOB_RECALCULATE_CLIENT_COLOR, .proc/apply_discovision_handler)
+	RegisterSignal(user, COMSIG_MOB_RECALCULATE_CLIENT_COLOR, PROC_REF(apply_discovision_handler))
 	apply_discovision_handler(user)
 
 	//Add the onmob overlay. Normal onmob images are handled by static overlays.
@@ -294,7 +294,7 @@
 	animate(obj_glass_overlay, color = onmob_colors["base"], time = 0.3 SECONDS)
 	animate(mob_glass_overlay, color = onmob_colors["base"], time = 0.3 SECONDS)
 
-	addtimer(CALLBACK(src, .proc/apply_discovision, user), 0.1 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(apply_discovision), user), 0.1 SECONDS)
 
 ///Handles disco-vision. Normal client colour matrix handling isn't set up for a continuous animation like this, so this is applied afterwards.
 /obj/item/clothing/glasses/disco_fever/proc/apply_discovision(mob/user)
@@ -408,8 +408,8 @@
 	remove_attached_item()
 
 	attached_item = S.master_object
-	RegisterSignal(attached_item, COMSIG_PARENT_QDELETING, .proc/remove_attached_item)
-	RegisterSignal(attached_item, COMSIG_ITEM_EQUIPPED, .proc/wear_check)
+	RegisterSignal(attached_item, COMSIG_PARENT_QDELETING, PROC_REF(remove_attached_item))
+	RegisterSignal(attached_item, COMSIG_ITEM_EQUIPPED, PROC_REF(wear_check))
 	activation = new /datum/action/item_action/toggle(src, S.master_object)
 
 	if(ismob(S.master_object.loc))
@@ -425,6 +425,7 @@
 		return
 
 	UnregisterSignal(attached_item, COMSIG_PARENT_QDELETING)
+	UnregisterSignal(attached_item, COMSIG_ITEM_EQUIPPED)
 	qdel(activation)
 	attached_item = null
 
@@ -544,7 +545,7 @@
 	desc = "Covers the eyes, preventing sight."
 	icon_state = "blindfold"
 	item_state = "blindfold"
-	//vision_flags = DISABILITY_BLIND  	// This flag is only supposed to be used if it causes permanent blindness, not temporary because of glasses
+	//vision_flags = DISABILITY_BLIND // This flag is only supposed to be used if it causes permanent blindness, not temporary because of glasses
 
 /obj/item/clothing/glasses/sunglasses/prescription
 	desc = "A mixture of coolness and the inherent nerdiness of a prescription. Somehow manages to conceal both."

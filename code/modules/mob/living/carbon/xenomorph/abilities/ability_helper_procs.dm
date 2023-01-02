@@ -244,7 +244,7 @@
 			AM.acid_spray_act(src)
 			return
 		T = next_turf
-		var/obj/effect/xenomorph/spray/S = new spray_type(T, create_cause_data(initial(	caste_type), src), hivenumber)
+		var/obj/effect/xenomorph/spray/S = new spray_type(T, create_cause_data(initial( caste_type), src), hivenumber)
 		do_acid_spray_cone_normal(T, i, facing, S, spray_type)
 		sleep(2)
 
@@ -369,6 +369,10 @@
 
 	if(HAS_TRAIT(target, TRAIT_ABILITY_NO_PLASMA_TRANSFER))
 		to_chat(src, SPAN_WARNING("You can't transfer plasma to \the [target]."))
+		return FALSE
+
+	if(target.plasma_max == XENO_NO_PLASMA)
+		to_chat(src, SPAN_WARNING("\The [target] doesn't use plasma."))
 		return FALSE
 
 	return TRUE

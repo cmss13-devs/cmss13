@@ -6185,7 +6185,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/power/apc{
 	dir = 1;
-	pixel_y = 24
+	pixel_y = 25
 	},
 /turf/open/floor/prison{
 	dir = 1;
@@ -10044,7 +10044,7 @@
 /turf/open/floor/interior/wood/alt,
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "aCO" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited{
 	name = "Emergency NanoMed";
 	pixel_x = 30;
 	req_access = null
@@ -51666,7 +51666,7 @@
 "dcq" = (
 /obj/structure/machinery/power/apc{
 	dir = 1;
-	pixel_y = 24
+	pixel_y = 25
 	},
 /turf/open/floor/plating,
 /area/desert_dam/building/cafeteria/backroom)

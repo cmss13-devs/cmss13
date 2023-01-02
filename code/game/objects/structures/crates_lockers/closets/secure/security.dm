@@ -140,7 +140,7 @@
 
 	opened = 1
 	locked = 0
-	density = 0
+	density = FALSE
 
 /obj/structure/closet/secure_closet/detective
 	name = "Detective's Cabinet"
@@ -227,7 +227,7 @@
 	name = "wall locker"
 	req_access = list(ACCESS_MARINE_BRIG, ACCESS_CIVILIAN_BRIG)
 	icon_state = "wall-locker1"
-	density = 1
+	density = TRUE
 	icon_closed = "wall-locker"
 	icon_locked = "wall-locker1"
 	icon_opened = "wall-lockeropen"

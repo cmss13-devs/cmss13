@@ -3,7 +3,7 @@
 	It had actual momentum, rolling thanks to momentum and so on. We had to cut out any rolling, cause it made vehicle controls
 	pretty inconvenient even without lags. The reason why it wasn't removed entirely is because I want vehicles to keep the ability
 	to achieve top speed, to be able to move actually FAST in long-range travel on big maps, but not have sonic speed during engagements.
-	 - Jeser
+	- Jeser
 
 	original description:
 		Vehicles have momentum, which makes the movement code a bit complex.
@@ -279,7 +279,7 @@
 
 			// YOU'RE LIKE A CAR CRASH IN SLOW MOTION!
 			// IT'S LIKE I'M WATCHIN' YA FLY THROUGH A WINDSHIELD!
-			A.throw_atom(target, fling_distance, SPEED_VERY_FAST, src, TRUE)
+			INVOKE_ASYNC(A, TYPE_PROC_REF(/atom/movable, throw_atom), target, fling_distance, SPEED_VERY_FAST, src, TRUE)
 
 /obj/vehicle/multitile/proc/at_munition_interior_explosion_effect(var/explosion_strength = 75, var/explosion_falloff = 50, var/shrapnel = TRUE, var/shrapnel_count = 48, var/datum/cause_data/cause_data)
 	if(!interior)
@@ -291,7 +291,6 @@
 
 	if(shrapnel)
 		create_shrapnel(target, shrapnel_count, , ,/datum/ammo/bullet/shrapnel, cause_data)
-		sleep(2) //so that mobs are not knocked down before being hit by shrapnel. shrapnel might also be getting deleted by explosions?
 		cell_explosion(target, explosion_strength, explosion_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data)
 		return
 	else

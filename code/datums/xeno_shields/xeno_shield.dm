@@ -9,23 +9,23 @@
 
 /datum/xeno_shield
 	var/shield_source = XENO_SHIELD_SOURCE_GENERIC  // Unique so that you can only get one shield from a given source at a time
-	var/amount = 0                                  // How much damage the shield will protect
-	var/last_damage_taken                           // Time we last took damage
-	var/duration                                    // Time before decay starts. If not specified, doesn't decay.
-	var/decay_amount_per_second                     // Once the shield begins decaying, how much damage is it taking per tick.
-	var/mob/living/carbon/Xenomorph/linked_xeno		// Xeno to whom the shield is attached
+	var/amount = 0   // How much damage the shield will protect
+	var/last_damage_taken    // Time we last took damage
+	var/duration // Time before decay starts. If not specified, doesn't decay.
+	var/decay_amount_per_second  // Once the shield begins decaying, how much damage is it taking per tick.
+	var/mob/living/carbon/Xenomorph/linked_xeno // Xeno to whom the shield is attached
 	var/processing = FALSE
 
 // Handle a hit. return a new shield hit result class
 // indicating the outcome.
 /datum/xeno_shield/proc/on_hit(damage)
-    last_damage_taken = world.time
+	last_damage_taken = world.time
 
-    apply_damage(damage)
+	apply_damage(damage)
 
-    if (amount <= 0)
-        return -amount
-    return 0
+	if (amount <= 0)
+		return -amount
+	return 0
 
 /datum/xeno_shield/Destroy()
 	if(linked_xeno)
@@ -38,8 +38,8 @@
 
 // Actually calculate how much the damage reduces our amount
 /datum/xeno_shield/proc/apply_damage(damage)
-    amount -= damage
-    return
+	amount -= damage
+	return
 
 // Anything special to do on removal
 /datum/xeno_shield/proc/on_removal()
@@ -83,7 +83,7 @@
 	new_shield.linked_xeno = src
 
 	if(duration > -1)
-		addtimer(CALLBACK(new_shield, /datum/xeno_shield.proc/begin_decay), duration)
+		addtimer(CALLBACK(new_shield, TYPE_PROC_REF(/datum/xeno_shield, begin_decay)), duration)
 
 	overlay_shields()
 	return new_shield

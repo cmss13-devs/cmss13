@@ -41,10 +41,10 @@
 		var/job_icons = get_all_job_icons()
 		var/centcom = get_all_centcom_jobs()
 
-		if(I.assignment	in job_icons) 	return I.assignment//Check if the job has a hud icon
-		if(I.rank in job_icons) 		return I.rank
-		if(I.assignment	in centcom) 	return "Centcom"//Return with the NT logo if it is a Centcom job
-		if(I.rank in centcom) 			return "Centcom"
+		if(I.assignment in job_icons) return I.assignment//Check if the job has a hud icon
+		if(I.rank in job_icons) return I.rank
+		if(I.assignment in centcom) return "Centcom"//Return with the NT logo if it is a Centcom job
+		if(I.rank in centcom) return "Centcom"
 	return "Unknown" //Return unknown if none of the above apply
 
 /proc/get_actual_job_name(var/mob/M)
@@ -80,7 +80,6 @@
 			JOB_RESEARCHER,
 			JOB_DOCTOR,
 			JOB_NURSE,
-			JOB_POLICE_CADET,
 			JOB_POLICE,
 			JOB_WARDEN,
 			JOB_CHIEF_POLICE,

@@ -163,9 +163,9 @@
 	body += "<td width='50%'><div align='center'><a href='?_src_=vars;datumrefresh=\ref[D]'>Refresh</a>"
 
 	//if(ismob(D))
-	//	body += "<br><a href='?_src_=vars;mob_player_panel=\ref[D]'>Show player panel</a></div></td></tr></table></div><hr>"
+	// body += "<br><a href='?_src_=vars;mob_player_panel=\ref[D]'>Show player panel</a></div></td></tr></table></div><hr>"
 
-	body += {"	<form>
+	body += {" <form>
 				<select name="file" size="1"
 				onchange="loadPage(this.form.elements\[0\])"
 				target="_parent._top"
@@ -173,7 +173,7 @@
 				style="background-color:#ffffff">
 			"}
 
-	body += {"	<option value>Select option</option>
+	body += {" <option value>Select option</option>
 				<option value> </option>
 			"}
 
@@ -247,6 +247,7 @@ body
 
 /atom/get_vv_options()
 	. = ..()
+	. += "<option value='?_src_=vars;[VV_HK_EDIT_FILTERS]=\ref[src]'>Edit Filters</option>"
 	. += "<option value='?_src_=vars;enablepixelscaling=\ref[src]'>Enable Pixel Scaling</option>"
 
 /turf/get_vv_options()
@@ -268,7 +269,7 @@ body
 	. += "<option value='?_src_=vars;setmatrix=\ref[src]'>Set Base Matrix</option>"
 	. += "<option value>-----OBJECT-----</option>"
 	. += "<option value='?_src_=vars;delall=\ref[src]'>Delete all of type</option>"
-	
+
 /obj/structure/machinery/get_vv_options()
 	. = ..()
 	. += "<option value='?_src_=vars;toggle_needs_power=\ref[src]'>Toggle needing power</option>"
@@ -413,7 +414,7 @@ body
 			to_chat(usr, "This can only be used on instances of type /mob")
 			return
 
-		addtimer(CALLBACK(admin_holder, /datum/admins.proc/show_player_panel, M), 0.5 SECONDS)
+		addtimer(CALLBACK(admin_holder, TYPE_PROC_REF(/datum/admins, show_player_panel), M), 0.5 SECONDS)
 		href_list["datumrefresh"] = href_list["mob_player_panel"]
 
 	else if(href_list["give_disease"])
@@ -527,16 +528,16 @@ body
 	else if(href_list["toggle_needs_power"])
 		if(!check_rights(R_VAREDIT))
 			return
-		
+
 		var/obj/structure/machinery/O = locate(href_list["toggle_needs_power"])
 		if(!istype(O))
 			to_chat(usr, "This can only be used on instances of type /obj/structure/machinery")
 			return
-		
+
 		O.needs_power = !O.needs_power
 		O.power_change()
 		message_staff("[key_name(src, TRUE)] has toggled needs_power to [O.needs_power] on [O] in [O.loc.loc] ([O.x],[O.y],[O.z]).", O.x, O.y, O.z)
-	
+
 	else if(href_list["enablepixelscaling"])
 		if(!check_rights(R_DEBUG|R_VAREDIT))
 			return
@@ -546,6 +547,16 @@ body
 			return
 
 		A.enable_pixel_scaling()
+
+	else if(href_list[VV_HK_EDIT_FILTERS])
+		if(!check_rights(R_DEBUG|R_VAREDIT))
+			return
+
+		var/atom/A = locate(href_list[VV_HK_EDIT_FILTERS])
+		if(!istype(A, /atom))
+			return
+
+		open_filter_editor(A)
 
 	else if(href_list["explode"])
 		if(!check_rights(R_DEBUG))
@@ -609,8 +620,8 @@ body
 			return
 
 		switch(href_list["rotatedir"])
-			if("right")	A.setDir(turn(A.dir, -45))
-			if("left")	A.setDir(turn(A.dir, 45))
+			if("right") A.setDir(turn(A.dir, -45))
+			if("left") A.setDir(turn(A.dir, 45))
 		href_list["datumrefresh"] = href_list["rotatedatum"]
 
 	else if(href_list["makemonkey"])
@@ -622,7 +633,7 @@ body
 			to_chat(usr, "This can only be done to instances of type /mob/living/carbon/human")
 			return
 
-		if(alert("Confirm mob type change?",,"Transform","Cancel") != "Transform")	return
+		if(alert("Confirm mob type change?",,"Transform","Cancel") != "Transform") return
 		if(!H)
 			to_chat(usr, "Mob doesn't exist anymore")
 			return
@@ -637,7 +648,7 @@ body
 			to_chat(usr, "This can only be done to instances of type /mob/living/carbon/human")
 			return
 
-		if(alert("Confirm mob type change?",,"Transform","Cancel") != "Transform")	return
+		if(alert("Confirm mob type change?",,"Transform","Cancel") != "Transform") return
 		if(!H)
 			to_chat(usr, "Mob doesn't exist anymore")
 			return
@@ -652,7 +663,7 @@ body
 			to_chat(usr, "This can only be done to instances of type /mob/living/carbon/human")
 			return
 
-		if(alert("Confirm mob type change?",,"Transform","Cancel") != "Transform")	return
+		if(alert("Confirm mob type change?",,"Transform","Cancel") != "Transform") return
 		if(!H)
 			to_chat(usr, "Mob doesn't exist anymore")
 			return
@@ -678,7 +689,7 @@ body
 			to_chat(usr, "This can only be done to instances of type /mob/living/carbon/human")
 			return
 
-		if(alert("Confirm mob type change?",,"Transform","Cancel") != "Transform")	return
+		if(alert("Confirm mob type change?",,"Transform","Cancel") != "Transform") return
 		if(!H)
 			to_chat(usr, "Mob doesn't exist anymore")
 			return
@@ -809,7 +820,7 @@ body
 			to_chat(usr, "This can only be done to instances of type /mob/living")
 			return
 		var/list/possibleverbs = list()
-		possibleverbs += "Cancel" 								// One for the top...
+		possibleverbs += "Cancel" // One for the top...
 		possibleverbs += typesof(/mob/proc,/mob/verb,/mob/living/proc,/mob/living/verb)
 		switch(H.type)
 			if(/mob/living/carbon/human)
@@ -819,7 +830,7 @@ body
 			if(/mob/living/silicon/ai)
 				possibleverbs += typesof(/mob/living/silicon/proc,/mob/living/silicon/ai/proc)
 		possibleverbs -= H.verbs
-		possibleverbs += "Cancel" 								// ...And one for the bottom
+		possibleverbs += "Cancel" // ...And one for the bottom
 
 		var/verb = tgui_input_list(usr, "Select a verb!", "Verbs", possibleverbs)
 		if(!H)
@@ -1114,5 +1125,10 @@ body
 		if(!istype(DAT, /datum))
 			return
 		src.debug_variables(DAT)
+	if(href_list["add_items_to_vendor"])
+		var/obj/structure/machinery/cm_vending/clothing/super_snowflake/vendor = locate(href_list["add_items_to_vendor"])
+		if(!istype(vendor))
+			return
+		vendor.add_items_to_vendor()
 
 	return

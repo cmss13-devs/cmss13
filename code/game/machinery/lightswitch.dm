@@ -10,7 +10,7 @@
 	var/on = 1
 	var/area/area = null
 	var/otherarea = null
-	//	luminosity = 1
+	// luminosity = 1
 
 /obj/structure/machinery/light_switch/Initialize()
 	. = ..()

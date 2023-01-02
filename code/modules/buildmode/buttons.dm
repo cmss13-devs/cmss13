@@ -85,6 +85,6 @@
 
 /atom/movable/screen/buildmode/quit/clicked(client/c)
 	message_staff("[key_name(c)] has left build mode.")
-	log_staff("[key_name(c)] has left build mode.")
+	log_admin("[key_name(c)] has left build mode.")
 	bd.quit()
 	return TRUE

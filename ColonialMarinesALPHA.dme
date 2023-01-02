@@ -2173,5 +2173,4 @@
 #include "interface\interface.dm"
 #include "interface\skin.dmf"
 #include "maps\_basemap.dm"
-#include "maps\templates\unit_tests.dmm"
 // END_INCLUDE

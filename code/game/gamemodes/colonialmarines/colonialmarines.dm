@@ -11,6 +11,8 @@
 
 	var/research_allocation_interval = 10 MINUTES
 	var/next_research_allocation = 0
+	var/next_stat_check = 0
+	var/list/running_round_stats
 
 ////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////
@@ -218,6 +220,11 @@
 		if(!GLOB.resin_lz_allowed && world.time >= SSticker.round_start_time + round_time_resin)
 			set_lz_resin_allowed(TRUE)
 
+		if(next_stat_check <= world.time)
+			add_current_round_status_to_end_results((next_stat_check ? "" : "Round Start"))
+			next_stat_check = world.time + 10 MINUTES
+
+
 #undef FOG_DELAY_INTERVAL
 #undef PODLOCKS_OPEN_WAIT
 
@@ -225,6 +232,7 @@
 
 /datum/game_mode/colonialmarines/ds_first_drop(var/datum/shuttle/ferry/marine/m_shuttle)
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(show_blurb_uscm)), DROPSHIP_DROP_MSG_DELAY)
+	add_current_round_status_to_end_results("First Drop")
 
 ///////////////////////////
 //Checks to see who won///
@@ -332,6 +340,8 @@
 	declare_completion_announce_medal_awards()
 	declare_fun_facts()
 
+	handle_round_results_statistics_output()
+
 	return 1
 
 // for the toolbox
@@ -348,3 +358,66 @@
 		if(MODE_INFESTATION_DRAW_DEATH)
 			return "Round has ended. Draw."
 	return "Round has ended in a strange way."
+
+/datum/game_mode/colonialmarines/proc/add_current_round_status_to_end_results(special_round_status as text)
+	var/players = GLOB.clients
+	var/list/counted_humans = list(
+		"Squad Marines" = list(),
+		"Auxiliary Marines" = list(),
+		FACTION_SURVIVOR = 0,
+		"Non-Standard Humans" = 0
+	)
+
+	//organize our jobs in a readable and standard way
+	for(var/job as text in ROLES_MARINES)
+		counted_humans["Squad Marines"][job] = 0
+	for(var/job as text in ROLES_REGULAR_ALL - ROLES_XENO - ROLES_MARINES)
+		counted_humans["Auxiliary Marines"][job] = 0
+
+	var/list/counted_xenos = list()
+
+	//organize our hives and castes in a readable and standard way
+	for(var/hive as text in ALL_XENO_HIVES)
+		for(var/caste as text in ALL_XENO_CASTES)
+			counted_xenos[hive][caste] = 0
+
+	//Run through all our clients
+	//add up our marines by job type, surv numbers, and non-standard humans we don't care too much about
+	//add up our xenos by hive and caste
+	for(var/client/player_client in players)
+		if(player_client.mob && player_client.mob.stat != DEAD)
+			if(ishuman(player_client.mob))
+				if(player_client.mob.faction == FACTION_MARINE)
+					if(player_client.mob.job in (ROLES_MARINES))
+						counted_humans["Squad Marines"][player_client.mob.job]++
+					else
+						counted_humans["Auxiliary Marines"][player_client.mob.job]++
+				else if(player_client.mob.faction == FACTION_SURVIVOR)
+					counted_humans[FACTION_SURVIVOR]++
+				else
+					counted_humans["Non-Standard Humans"]++
+			else if(isXeno(player_client.mob))
+				var/mob/living/carbon/Xenomorph/xeno = player_client.mob
+				counted_xenos[xeno.hivenumber][xeno.caste_type]++
+
+	running_round_stats += list(special_round_status, duration2text(), counted_humans, counted_xenos)
+
+/datum/game_mode/colonialmarines/proc/handle_round_results_statistics_output()
+	var/webhook = CONFIG_GET(string/round_results_webhook_url)
+
+	if(!webhook)
+		return
+
+	var/datum/discord_embed/embed = new()
+	embed.title = "test title"
+	embed.description = "test desc"
+
+	var/list/webhook_info = list()
+	webhook_info["embeds"] = list(embed.convert_to_list())
+
+	var/list/headers = list()
+	headers["Content-Type"] = "application/json"
+
+	var/datum/http_request/request = new()
+	request.prepare(RUSTG_HTTP_METHOD_POST, webhook, json_encode(webhook_info), headers, "tmp/response.json")
+	request.begin_async()

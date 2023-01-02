@@ -34,3 +34,38 @@
   thwompa:
   - imageadd: added new synth charging station sprites
   - imagedel: removed old cyborg chaging sprites
+2023-01-02:
+  BeagleGaming1:
+  - bugfix: Stops Janitorial Cart from deleting buckets
+  Casper:
+  - bugfix: xenos are now set on fire if they travel through an acid hole which is
+      on fire
+  Molto:
+  - bugfix: fixed marine qdel on hijack
+  Segrain:
+  - bugfix: HPR magazines once again can be refilled from boxes of loose ammunition.
+  Sleepynecrons:
+  - bugfix: fixed green skin on predator having an invisible hand
+  SpartanBobby:
+  - bugfix: New Varadero now has correct camo-conforming undershirts meaning people
+      will not spawn bra/shirtless
+  ThePiachu:
+  - bugfix: Fixed a xeno overwatch runtime.
+  realforest2001:
+  - code_imp: Reordered checks for joining the hunt.
+  - rscadd: Added backend whitelist flag for Working Joe, allowing staff to use WJ
+      without having Synthetic.
+  - rscadd: Rebranded Binary Language as Apollo Link, an ARES subprocessor that WY
+      definitely did not steal from Seegson.
+  - rscadd: Changed the Working Joe late-join broadcast to use general comms rather
+      than an intrusive announcement.
+  - admin: Added a verb for staff to talk as ARES on the Apollo Link.
+  - rscdel: Removed Drone Talk as an unnecessary language.
+  silencer_pl, forest2001:
+  - admin: Adds a variable called admin_console that allows the use of camera consoles
+      from the admin z level.
+  somepersondunno:
+  - bugfix: fixed an issue regarding prae strains and girders
+  stanalbatross:
+  - code_imp: converted three base byond vars to true/false bools
+  - ui: converted disposals to tgui

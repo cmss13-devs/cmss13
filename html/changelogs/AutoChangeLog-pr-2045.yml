@@ -1,9 +1,0 @@
-author: "realforest2001"
-delete-after: True
-changes:
-  - code_imp: "Reordered checks for joining the hunt."
-  - rscadd: "Added backend whitelist flag for Working Joe, allowing staff to use WJ without having Synthetic."
-  - rscadd: "Rebranded Binary Language as Apollo Link, an ARES subprocessor that WY definitely did not steal from Seegson."
-  - rscadd: "Changed the Working Joe late-join broadcast to use general comms rather than an intrusive announcement."
-  - admin: "Added a verb for staff to talk as ARES on the Apollo Link."
-  - rscdel: "Removed Drone Talk as an unnecessary language."

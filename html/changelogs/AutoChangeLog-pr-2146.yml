@@ -1,4 +1,0 @@
-author: "Casper"
-delete-after: True
-changes:
-  - bugfix: "xenos are now set on fire if they travel through an acid hole which is on fire"

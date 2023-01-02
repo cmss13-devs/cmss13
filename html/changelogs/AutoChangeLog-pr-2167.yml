@@ -1,4 +1,0 @@
-author: "stanalbatross"
-delete-after: True
-changes:
-  - code_imp: "converted three base byond vars to true/false bools"

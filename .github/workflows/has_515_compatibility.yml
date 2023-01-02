@@ -33,8 +33,8 @@ jobs:
           path: pr
       - name: Check for required commits
         run: |
-          chmod +x ./tools/check_required_commits.sh
-          ./tools/check_required_commits.sh
+          chmod +x ./tools/ci/check_required_commits.sh
+          ./tools/ci/check_required_commits.sh
         shell: bash
         working-directory: pr
         env:

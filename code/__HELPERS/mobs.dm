@@ -1,4 +1,4 @@
-proc/random_ethnicity()
+/proc/random_ethnicity()
 	return pick(GLOB.ethnicities_list)
 
 /proc/random_body_type()
@@ -48,8 +48,8 @@ proc/random_ethnicity()
 		return f_style
 
 /proc/random_name(gender, species = "Human")
-	if(gender==FEMALE)	return capitalize(pick(first_names_female)) + " " + capitalize(pick(last_names))
-	else				return capitalize(pick(first_names_male)) + " " + capitalize(pick(last_names))
+	if(gender==FEMALE) return capitalize(pick(first_names_female)) + " " + capitalize(pick(last_names))
+	else return capitalize(pick(first_names_male)) + " " + capitalize(pick(last_names))
 
 /proc/has_species(var/mob/M, var/species)
 	if(!M || !istype(M,/mob/living/carbon/human))
@@ -131,7 +131,7 @@ Transition is animated but instant by default.**/
 		return
 
 	//Sort the matrix packages by priority.
-	client_color_matrices = sortTim(client_color_matrices, /proc/cmp_filter_data_priority, TRUE)
+	client_color_matrices = sortTim(client_color_matrices, GLOBAL_PROC_REF(cmp_filter_data_priority), TRUE)
 
 	var/list/final_matrix
 

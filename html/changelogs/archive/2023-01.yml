@@ -1,0 +1,71 @@
+2023-01-01:
+  BeagleGaming1:
+  - bugfix: Fixes inconsistent sounds for certain modes of the plasma caster
+  Joe Lampost, sleepynecrons(wei):
+  - rscadd: Adds both bone and crimson Armour variants for preds
+  Shad0vvs, Sleepynecrons:
+  - rscadd: Added Predator skin colors (cyan, green, purple, blue, red, black), chosen
+      in the preferences screen. (Sprites by Sleepynecrons (wei))
+  ThePiachu:
+  - balance: Base and Shaman Carriers now have 500 base plasma, up from 400. Eggsac
+      remains at 600 plasma.
+  - balance: Base and Shaman Carriers can now store up to 8 eggs, up from 7. Eggsac
+      now can store a whopping 12 eggs, up from 7. Be careful not to die while carrying
+      those and give Marines greeno material!
+  - balance: Shaman can now plant weeds. This bumped all their other abilities one
+      slot over shortcut-wise.
+  - qol: Eggsac's egg generation ability is now a toggle that uses plasma per tick
+      to generate eggs at an ongoing rate until full or out of plasma.
+  - code_imp: Hivelord's Resin Walker now uses the same toggle structure.
+  - bugfix: Hivelord's Resin Walker now deactivates properly when you run out of plasma.
+  - bugfix: Fixed a runtime around Shaman's ability initialisation.
+  carlarctg:
+  - rscadd: Added a preference for eye blurring. Can be defaut blur, vision impair,
+      or the legacy blurring effect.
+  kugamo:
+  - rscadd: Weather now effects acid, lasting shorter and damaging less.
+  - balance: Weather's effects on fires have been nerfed by a few points.
+  stanalbatross:
+  - bugfix: fixed /sorted vendors showing points when they don't use them
+  - qol: marine food vendors and the req attachment vendor no longer have vend delay
+  - bugfix: fixed vaulting through windows
+  - bugfix: fixed ' " / breaking in the megaphone
+  - ui: converted the turing dispenser to tgui
+  thwompa:
+  - imageadd: added new synth charging station sprites
+  - imagedel: removed old cyborg chaging sprites
+2023-01-02:
+  BeagleGaming1:
+  - bugfix: Stops Janitorial Cart from deleting buckets
+  Casper:
+  - bugfix: xenos are now set on fire if they travel through an acid hole which is
+      on fire
+  Molto:
+  - bugfix: fixed marine qdel on hijack
+  Segrain:
+  - bugfix: HPR magazines once again can be refilled from boxes of loose ammunition.
+  Sleepynecrons:
+  - bugfix: fixed green skin on predator having an invisible hand
+  SpartanBobby:
+  - bugfix: New Varadero now has correct camo-conforming undershirts meaning people
+      will not spawn bra/shirtless
+  ThePiachu:
+  - bugfix: Fixed a xeno overwatch runtime.
+  realforest2001:
+  - code_imp: Reordered checks for joining the hunt.
+  - rscadd: Added backend whitelist flag for Working Joe, allowing staff to use WJ
+      without having Synthetic.
+  - rscadd: Rebranded Binary Language as Apollo Link, an ARES subprocessor that WY
+      definitely did not steal from Seegson.
+  - rscadd: Changed the Working Joe late-join broadcast to use general comms rather
+      than an intrusive announcement.
+  - admin: Added a verb for staff to talk as ARES on the Apollo Link.
+  - rscdel: Removed Drone Talk as an unnecessary language.
+  silencer_pl, forest2001:
+  - admin: Adds a variable called admin_console that allows the use of camera consoles
+      from the admin z level.
+  somepersondunno:
+  - bugfix: fixed an issue regarding prae strains and girders
+  stanalbatross:
+  - code_imp: converted three base byond vars to true/false bools
+  - ui: converted disposals to tgui

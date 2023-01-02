@@ -2,9 +2,9 @@ var/list/shuttle_landmarks = list()
 var/list/item_pool_landmarks = list()
 
 SUBSYSTEM_DEF(landmark_init)
-	name       = "Landmark Init"
+	name    = "Landmark Init"
 	init_order = SS_INIT_LANDMARK
-	flags      = SS_NO_FIRE
+	flags   = SS_NO_FIRE
 
 /datum/controller/subsystem/landmark_init/Initialize()
 	for(var/obj/effect/landmark/shuttle_loc/L in shuttle_landmarks)

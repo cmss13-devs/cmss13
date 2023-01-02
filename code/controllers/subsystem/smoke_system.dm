@@ -2,9 +2,9 @@ var/list/active_smoke_effects = list()
 
 
 SUBSYSTEM_DEF(smoke_effects)
-	name     = "Smoke Effects"
-	wait     = 1 SECONDS
-	flags    = SS_NO_INIT | SS_KEEP_TIMING
+	name  = "Smoke Effects"
+	wait  = 1 SECONDS
+	flags = SS_NO_INIT | SS_KEEP_TIMING
 	priority = SS_PRIORITY_OBJECTS
 
 	var/list/currentrun = list()

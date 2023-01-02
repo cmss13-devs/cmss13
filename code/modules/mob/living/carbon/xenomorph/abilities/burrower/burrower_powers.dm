@@ -61,7 +61,7 @@
 
 	to_chat(src, SPAN_XENOWARNING("You begin burrowing yourself into the ground."))
 	if(!do_after(src, 1.5 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
-		addtimer(CALLBACK(src, .proc/do_burrow_cooldown), (caste ? caste.burrow_cooldown : 5 SECONDS))
+		addtimer(CALLBACK(src, PROC_REF(do_burrow_cooldown)), (caste ? caste.burrow_cooldown : 5 SECONDS))
 		return
 	// TODO Make immune to all damage here.
 	to_chat(src, SPAN_XENOWARNING("You burrow yourself into the ground."))
@@ -80,8 +80,8 @@
 	playsound(src.loc, 'sound/effects/burrowing_b.ogg', 25)
 	update_canmove()
 	update_icons()
-	addtimer(CALLBACK(src, .proc/do_burrow_cooldown), (caste ? caste.burrow_cooldown : 5 SECONDS))
-	burrow_timer = world.time + 90		// How long we can be burrowed
+	addtimer(CALLBACK(src, PROC_REF(do_burrow_cooldown)), (caste ? caste.burrow_cooldown : 5 SECONDS))
+	burrow_timer = world.time + 90 // How long we can be burrowed
 	process_burrow()
 
 /mob/living/carbon/Xenomorph/proc/process_burrow()
@@ -92,7 +92,7 @@
 	if(observed_xeno)
 		overwatch(observed_xeno, TRUE)
 	if(burrow)
-		addtimer(CALLBACK(src, .proc/process_burrow), 1 SECONDS)
+		addtimer(CALLBACK(src, PROC_REF(process_burrow)), 1 SECONDS)
 
 /mob/living/carbon/Xenomorph/proc/process_burrow_impaler(var/turf/T = get_turf(src))
 	var/obj/effect/alien/weeds/weeds = locate() in T
@@ -124,10 +124,10 @@
 	anchored = FALSE
 	density = TRUE
 	playsound(src.loc, 'sound/effects/burrowoff.ogg', 25)
-	for(var/mob/living/carbon/C in loc)
-		if(!can_not_harm(C))
-			C.apply_effect(2, WEAKEN)
-	addtimer(CALLBACK(src, .proc/do_burrow_cooldown), (caste ? caste.burrow_cooldown : 5 SECONDS))
+	for(var/mob/living/carbon/human/H in loc)
+		if(!can_not_harm(H))
+			H.apply_effect(2, WEAKEN)
+	addtimer(CALLBACK(src, PROC_REF(do_burrow_cooldown)), (caste ? caste.burrow_cooldown : 5 SECONDS))
 	update_canmove()
 	update_icons()
 
@@ -184,7 +184,7 @@
 		tunnel = FALSE
 		to_chat(src, SPAN_NOTICE("You stop tunneling."))
 		used_tunnel = TRUE
-		addtimer(CALLBACK(src, .proc/do_tunnel_cooldown), (caste ? caste.tunnel_cooldown : 5 SECONDS))
+		addtimer(CALLBACK(src, PROC_REF(do_tunnel_cooldown)), (caste ? caste.tunnel_cooldown : 5 SECONDS))
 		return
 
 	if(!T || T.density)
@@ -200,7 +200,7 @@
 		tunnel = FALSE
 		do_tunnel(T)
 	if(tunnel && T)
-		addtimer(CALLBACK(src, .proc/process_tunnel, T), 1 SECONDS)
+		addtimer(CALLBACK(src, PROC_REF(process_tunnel), T), 1 SECONDS)
 
 /mob/living/carbon/Xenomorph/proc/do_tunnel(var/turf/T)
 	to_chat(src, SPAN_NOTICE("You tunnel to your destination."))

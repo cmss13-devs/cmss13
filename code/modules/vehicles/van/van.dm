@@ -30,7 +30,6 @@
 
 	passengers_slots = 8
 	xenos_slots = 2
-	list/datum/role_served_slots/role_reserved_slots = list()
 
 	misc_multipliers = list(
 		"move" = 0.5, // fucking annoying how this is the only way to modify speed
@@ -83,7 +82,7 @@
 
 	icon_state = null
 
-	RegisterSignal(SSdcs, COMSIG_GLOB_MOB_LOGIN, .proc/add_default_image)
+	RegisterSignal(SSdcs, COMSIG_GLOB_MOB_LOGIN, PROC_REF(add_default_image))
 
 	for(var/I in GLOB.player_list)
 		add_default_image(SSdcs, I)
@@ -124,9 +123,9 @@
 		return
 
 	mobs_under += L
-	RegisterSignal(L, COMSIG_PARENT_QDELETING, .proc/remove_under_van)
-	RegisterSignal(L, COMSIG_MOB_LOGIN, .proc/add_client)
-	RegisterSignal(L, COMSIG_MOVABLE_MOVED, .proc/check_under_van)
+	RegisterSignal(L, COMSIG_PARENT_QDELETING, PROC_REF(remove_under_van))
+	RegisterSignal(L, COMSIG_MOB_LOGIN, PROC_REF(add_client))
+	RegisterSignal(L, COMSIG_MOVABLE_MOVED, PROC_REF(check_under_van))
 
 	if(L.client)
 		add_client(L)
@@ -206,7 +205,7 @@
 			return
 
 		misc_multipliers["move"] -= overdrive_speed_mult
-		addtimer(CALLBACK(src, .proc/reset_overdrive), overdrive_duration)
+		addtimer(CALLBACK(src, PROC_REF(reset_overdrive)), overdrive_duration)
 
 		overdrive_next = world.time + overdrive_cooldown
 		to_chat(user, SPAN_NOTICE("You activate overdrive."))

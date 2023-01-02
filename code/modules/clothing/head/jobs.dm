@@ -68,6 +68,8 @@
 	icon_state = "beret"
 	siemens_coefficient = 0.9
 	flags_armor_protection = 0
+	pickup_sound = null
+	drop_sound = null
 
 //Security
 /obj/item/clothing/head/beret/sec

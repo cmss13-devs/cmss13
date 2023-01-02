@@ -10,13 +10,15 @@
 		/datum/action/xeno_action/onclick/plant_weeds,
 		/datum/action/xeno_action/onclick/place_trap,
 		/datum/action/xeno_action/activable/retrieve_egg,
+		/datum/action/xeno_action/onclick/set_hugger_reserve,
 	)
 	mutator_actions_to_add = list(
+		/datum/action/xeno_action/onclick/plant_weeds, //first macro
 		/datum/action/xeno_action/activable/sacrifice_egg/radius_remember,
-		/datum/action/xeno_action/activable/sacrifice_egg/radius_shield, //first macro
-		/datum/action/xeno_action/activable/sacrifice_egg/radius_scream, //second macro
-		/datum/action/xeno_action/activable/sacrifice_egg/radius_pheromones, //third macro
-		/datum/action/xeno_action/activable/retrieve_egg, //fourth macro
+		/datum/action/xeno_action/activable/sacrifice_egg/radius_shield, //second macro
+		/datum/action/xeno_action/activable/sacrifice_egg/radius_scream, //third macro
+		/datum/action/xeno_action/activable/sacrifice_egg/radius_pheromones, //fourth macro
+		/datum/action/xeno_action/activable/retrieve_egg/shaman, //fifth macro
 		/datum/action/xeno_action/onclick/use_pain
 		)
 	behavior_delegate_type = /datum/behavior_delegate/carrier_shaman
@@ -66,6 +68,8 @@
 	action_type = XENO_ACTION_ACTIVATE
 
 /datum/action/xeno_action/activable/sacrifice_egg/action_cooldown_check()
+	if(!owner) //fires when action is assigned
+		return FALSE
 	var/mob/living/carbon/Xenomorph/Carrier/xeno = owner
 	var/datum/behavior_delegate/carrier_shaman/xeno_behavior = xeno.behavior_delegate
 	if(!istype(xeno_behavior))
@@ -100,7 +104,7 @@
 	ability_name = "adrenal shielding"
 	macro_path = /datum/action/xeno_action/verb/verb_egg_sacr_shield
 	action_type = XENO_ACTION_ACTIVATE
-	ability_primacy = XENO_PRIMARY_ACTION_1
+	ability_primacy = XENO_PRIMARY_ACTION_2
 	var/windup_delay = 25
 
 	var/shield_strength_base = 10 // in percent
@@ -166,7 +170,7 @@
 		effect_power++
 		xenomorphs_in_range += xeno
 
-	addtimer(CALLBACK(xeno_behavior, /datum/behavior_delegate/carrier_shaman.proc/reset_shaman_ability), action_def.get_cooldown())
+	addtimer(CALLBACK(xeno_behavior, TYPE_PROC_REF(/datum/behavior_delegate/carrier_shaman, reset_shaman_ability)), action_def.get_cooldown())
 
 	if(!length(xenomorphs_in_range))
 		to_chat(src, SPAN_XENOWARNING("There weren't enough of your allies around for the sacrifice to be effective."))
@@ -205,7 +209,7 @@
 	ability_name = "frenzied scream"
 	macro_path = /datum/action/xeno_action/verb/verb_egg_sacr_scream
 	action_type = XENO_ACTION_ACTIVATE
-	ability_primacy = XENO_PRIMARY_ACTION_2
+	ability_primacy = XENO_PRIMARY_ACTION_3
 	var/windup_delay = 30
 	var/initial_range = 3
 	var/maximum_range = 7
@@ -265,7 +269,7 @@
 		effect_overlay.flick_overlay(xeno, 20)
 		effect_power++
 
-	addtimer(CALLBACK(xeno_behavior, /datum/behavior_delegate/carrier_shaman.proc/reset_shaman_ability), action_def.get_cooldown())
+	addtimer(CALLBACK(xeno_behavior, TYPE_PROC_REF(/datum/behavior_delegate/carrier_shaman, reset_shaman_ability)), action_def.get_cooldown())
 
 	if(xeno_behavior.enable_pain_usage && effect_power < xeno_behavior.remembered_count)
 		to_chat(src, SPAN_XENOWARNING("You use stored pain memory."))
@@ -321,7 +325,7 @@
 	ability_name = "adrenal pheromones"
 	macro_path = /datum/action/xeno_action/verb/verb_egg_sacr_scream
 	action_type = XENO_ACTION_ACTIVATE
-	ability_primacy = XENO_PRIMARY_ACTION_3
+	ability_primacy = XENO_PRIMARY_ACTION_4
 	var/pheromone_strength_per_xeno = 0.5
 	var/pheromone_strength_base = 1
 	var/gather_range = 3
@@ -381,7 +385,7 @@
 		effect_overlay.flick_overlay(xeno, 20)
 		effect_power++
 
-	addtimer(CALLBACK(xeno_behavior, /datum/behavior_delegate/carrier_shaman.proc/reset_shaman_ability), action_def.get_cooldown())
+	addtimer(CALLBACK(xeno_behavior, TYPE_PROC_REF(/datum/behavior_delegate/carrier_shaman, reset_shaman_ability)), action_def.get_cooldown())
 
 	if(xeno_behavior.enable_pain_usage && effect_power < xeno_behavior.remembered_count)
 		to_chat(src, SPAN_XENOWARNING("You use stored pain memory."))
@@ -400,7 +404,7 @@
 	playsound(loc, "alien_drool", 25)
 	visible_message(SPAN_XENOWARNING("\The [src] begins to emit madness-inducing pheromones."), SPAN_XENOWARNING("You begin to emit an array of pheromones."), null, 5)
 
-	addtimer(CALLBACK(src, /mob/living/carbon/Xenomorph/Carrier.proc/egg_sacr_pheromones_disable), 30 SECONDS)
+	addtimer(CALLBACK(src, TYPE_PROC_REF(/mob/living/carbon/Xenomorph/Carrier, egg_sacr_pheromones_disable)), 30 SECONDS)
 	return TRUE
 
 
@@ -471,7 +475,7 @@
 		effect_overlay.flick_overlay(xeno, 20)
 		effect_power++
 
-	addtimer(CALLBACK(xeno_behavior, /datum/behavior_delegate/carrier_shaman.proc/reset_shaman_ability), action_def.get_cooldown())
+	addtimer(CALLBACK(xeno_behavior, TYPE_PROC_REF(/datum/behavior_delegate/carrier_shaman, reset_shaman_ability)), action_def.get_cooldown())
 
 	if(!effect_power)
 		to_chat(src, SPAN_XENOWARNING("There weren't enough of your allies around for the sacrifice to be effective."))

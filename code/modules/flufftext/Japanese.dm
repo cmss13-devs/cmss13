@@ -1,28 +1,28 @@
 ///How likely the nucleus (vowel) is to geminate ie a -> aa
-#define JAPANESE_SOUND_GEMINATION_CHANCE_NUCLEUS		10
+#define JAPANESE_SOUND_GEMINATION_CHANCE_NUCLEUS 10
 ///How likely the initial (consonant) is to geminate ie k -> kk
-#define JAPANESE_SOUND_GEMINATION_CHANCE_INITIAL		7.5
+#define JAPANESE_SOUND_GEMINATION_CHANCE_INITIAL 7.5
 ///How likely the consonant is to palatalise ie r -> ry
-#define JAPANESE_SOUND_PALATALISATION_CHANCE			10
+#define JAPANESE_SOUND_PALATALISATION_CHANCE 10
 ///How likely the syllable is not to have a consonant at the start, needs to be kinda high for convincing diphthongs
-#define JAPANESE_SOUND_NULL_INITIAL_CHANCE				20
+#define JAPANESE_SOUND_NULL_INITIAL_CHANCE 20
 ///How likely the syllable is to end in an N
-#define JAPANESE_SOUND_N_FINAL_CHANCE					20
+#define JAPANESE_SOUND_N_FINAL_CHANCE 20
 ///How likely it is to insert an apostrophe between two syllables (this can happen anywhere, mainly used for morpheme boundaries.)
-#define JAPANESE_SOUND_APOSTROPHE_CHANCE				30
+#define JAPANESE_SOUND_APOSTROPHE_CHANCE 30
 ///how likely voiced sounds are to geminate, these mainly occur in foreign loans so quite unlikely
-#define JAPANESE_SOUND_GEMINATION_CHANCE_VOICED			20
+#define JAPANESE_SOUND_GEMINATION_CHANCE_VOICED 20
 
 /*
 Hello and welcome to the Japanese language. Or rather, a random generator for it.
 Full of snowflake checks and maybe even hard dels (but hopefully not). You're sure to love this.
 */
 
-///holds the syllable's sound itself and information such as if it has a null initial or final
+///holds the syllable's sound itself and information such as if it has a null initial or final_syllable
 /datum/japanese_syllable
 	var/syllable_sound
 	var/null_initial
-	var/null_final
+	var/null_final_syllable
 
 /datum/japanese_syllable/proc/randomly_generate_japanese_syllable(var/initial_geminable = TRUE, var/nucleus_geminable = TRUE, var/no_null_initial = FALSE)
 	var/syllable
@@ -48,7 +48,7 @@ Full of snowflake checks and maybe even hard dels (but hopefully not). You're su
 	if(prob(JAPANESE_SOUND_PALATALISATION_CHANCE) || (initial.forced_to_palatalise && nucleus.forces_palatalisation))
 		initial.palatalise(nucleus)
 	initial.affricate(nucleus) //this doesn't force it to affricate, rather checks if it has to then does it if so
-	//now we construct our syllable, n.b. this is not a mora since we include the nasal final and soukon. For instance, ppyan is four morae - Q-p-a-N. This however is still just one syllable.
+	//now we construct our syllable, n.b. this is not a mora since we include the nasal final_syllable and soukon. For instance, ppyan is four morae - Q-p-a-N. This however is still just one syllable.
 	if(!(prob(JAPANESE_SOUND_NULL_INITIAL_CHANCE)) || no_null_initial)
 		syllable += "[initial.sound]"
 		null_initial = FALSE
@@ -56,12 +56,12 @@ Full of snowflake checks and maybe even hard dels (but hopefully not). You're su
 		null_initial = TRUE
 	syllable += "[nucleus.sound]"
 	if(prob(JAPANESE_SOUND_N_FINAL_CHANCE))
-		var/datum/japanese_sound/final/final = new /datum/japanese_sound/final/n //because we only have -n
-		syllable += "[final.sound]"
-		null_final = FALSE
-		QDEL_NULL(final)
+		var/datum/japanese_sound/final_syllable/final_syllable = new /datum/japanese_sound/final_syllable/n //because we only have -n
+		syllable += "[final_syllable.sound]"
+		null_final_syllable = FALSE
+		QDEL_NULL(final_syllable)
 	else
-		null_final = TRUE
+		null_final_syllable = TRUE
 	syllable_sound = syllable
 	QDEL_NULL(initial)
 	QDEL_NULL(nucleus)
@@ -266,12 +266,12 @@ Full of snowflake checks and maybe even hard dels (but hopefully not). You're su
 	geminated_form = "uu"
 	causes_affrication = TRUE
 
-///a final sound, not used for much since the only one possible is N.
-/datum/japanese_sound/final
-	sound = "final"
+///a final_syllable sound, not used for much since the only one possible is N.
+/datum/japanese_sound/final_syllable
+	sound = "final_syllable"
 	gemination_forbidden = TRUE
 
-/datum/japanese_sound/final/n
+/datum/japanese_sound/final_syllable/n
 	sound = "n"
 	gemination_forbidden = TRUE
 

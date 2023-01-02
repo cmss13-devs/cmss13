@@ -81,6 +81,7 @@
 #include "tgui_create_message.dm"
 #include "timer_sanity.dm"
 #include "unit_test.dm"
+#include "spawn_humans.dm"
 
 #undef TEST_ASSERT
 #undef TEST_ASSERT_EQUAL

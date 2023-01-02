@@ -1,4 +1,4 @@
-/datum/xeno_mutator/gardener
+9/datum/xeno_mutator/gardener
 	name = "STRAIN: Drone - Gardener"
 	description = "You trade your choice of resin secretions, your corrosive acid, and the ability to transfer plasma for the ability to plant hardier weeds, temporarily reinforce structures with your plasma, and to plant potent resin fruits for your sisters by secreting your vital fluids at the cost of a bit of your health for each fruit you shape."
 	cost = MUTATOR_COST_EXPENSIVE
@@ -109,7 +109,7 @@
 		return
 
 	if(locate(/obj/effect/alien/resin/fruit) in range(1, target_turf))
-		to_chat(xeno, SPAN_XENOWARNING("This location too close to another fruit!"))
+		to_chat(xeno, SPAN_XENOWARNING("This location is too close to another fruit!"))
 		return
 
 	if (check_and_use_plasma_owner())

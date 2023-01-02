@@ -964,6 +964,9 @@
 	var/squad = SQUAD_MARINE_1
 	var/sending_package = 0
 
+/obj/structure/supply_drop/ex_act(severity, direction)
+	return FALSE
+
 /obj/structure/supply_drop/Initialize(mapload, ...)
 	. = ..()
 	GLOB.supply_drop_list += src

@@ -5,12 +5,15 @@
 	desc = "A complex network of pipes and machinery, linking to large storage systems below the deck. Medical vendors linked to this port will be able to infinitely restock supplies."
 	icon = 'icons/effects/warning_stripes.dmi'
 	icon_state = "medlink"
-	anchored = 1
-	density = 0
+	anchored = TRUE
+	density = FALSE
 	unslashable = TRUE
 	unacidable = TRUE
 	plane = FLOOR_PLANE
 	layer = 2.1 //It's the floor, man
+
+/obj/structure/medical_supply_link/ex_act(severity, direction)
+	return FALSE
 
 //------------SORTED MEDICAL VENDORS---------------
 

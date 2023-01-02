@@ -39,23 +39,23 @@
 			return
 		to_chat(src, SPAN_XENOWARNING("You begin burrowing yourself into the weeds."))
 		if(!do_after(src, 1.5 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
-			addtimer(CALLBACK(src, .proc/do_burrow_cooldown), (caste ? caste.burrow_cooldown : 5 SECONDS))
+			addtimer(CALLBACK(src, PROC_REF(do_burrow_cooldown)), (caste ? caste.burrow_cooldown : 5 SECONDS))
 			used_burrow = FALSE
 			return
 		burrow = TRUE
 		wound_icon_carrier.alpha = 0
 		density = FALSE
 		add_temp_pass_flags(PASS_MOB_THRU|PASS_BUILDING|PASS_UNDER|PASS_BURROWED)
-		RegisterSignal(src, COMSIG_LIVING_PREIGNITION, .proc/fire_immune)
+		RegisterSignal(src, COMSIG_LIVING_PREIGNITION, PROC_REF(fire_immune))
 		RegisterSignal(src, list(
 			COMSIG_LIVING_FLAMER_CROSSED,
 			COMSIG_LIVING_FLAMER_FLAMED,
-		), .proc/flamer_crossed_immune)
+		), PROC_REF(flamer_crossed_immune))
 		ADD_TRAIT(src, TRAIT_ABILITY_BURROWED, TRAIT_SOURCE_ABILITY("Burrow"))
 		mob_size = MOB_SIZE_BIG
 		playsound(src.loc, 'sound/effects/burrowing_s.ogg', 25)
 		update_icons()
-		addtimer(CALLBACK(src, .proc/do_burrow_cooldown), (caste ? caste.burrow_cooldown : 5 SECONDS))
+		addtimer(CALLBACK(src, PROC_REF(do_burrow_cooldown)), (caste ? caste.burrow_cooldown : 5 SECONDS))
 		process_burrow_impaler()
 		return
 
@@ -71,11 +71,11 @@
 	anchored = TRUE
 	density = FALSE
 	if(caste.fire_immunity == FIRE_IMMUNITY_NONE)
-		RegisterSignal(src, COMSIG_LIVING_PREIGNITION, .proc/fire_immune)
+		RegisterSignal(src, COMSIG_LIVING_PREIGNITION, PROC_REF(fire_immune))
 		RegisterSignal(src, list(
 			COMSIG_LIVING_FLAMER_CROSSED,
 			COMSIG_LIVING_FLAMER_FLAMED,
-		), .proc/flamer_crossed_immune)
+		), PROC_REF(flamer_crossed_immune))
 	ADD_TRAIT(src, TRAIT_ABILITY_BURROWED, TRAIT_SOURCE_ABILITY("Burrow"))
 	playsound(src.loc, 'sound/effects/burrowing_b.ogg', 25)
 	update_canmove()
@@ -101,7 +101,7 @@
 	if((!weeds || !src.ally_of_hivenumber(weeds.hivenumber)) || (src.stat == UNCONSCIOUS && src.health < 0) || (src.stat == DEAD))
 		burrow_off()
 	if(burrow)
-		addtimer(CALLBACK(src, .proc/process_burrow_impaler), 0.5 SECONDS)
+		addtimer(CALLBACK(src, PROC_REF(process_burrow_impaler)), 0.5 SECONDS)
 
 /mob/living/carbon/Xenomorph/proc/burrow_off()
 	if(caste_type && GLOB.xeno_datum_list[caste_type])
@@ -340,7 +340,7 @@
 	X.visible_message(SPAN_XENODANGER("[X] shoots spikes though the ground in front of it!"), SPAN_XENODANGER("You shoot your spikes though the ground in front of you!"))
 
 	// Loop through our turfs, finding any humans there and dealing damage to them
-	INVOKE_ASYNC(src, .proc/handle_damage, X, target_turfs, telegraph_atom_list, damage)
+	INVOKE_ASYNC(src, PROC_REF(handle_damage), X, target_turfs, telegraph_atom_list, damage)
 
 	apply_cooldown()
 	..()
@@ -414,7 +414,7 @@
 	use_plasma_owner()
 	playsound(X.loc, 'sound/effects/burrower_attack1.ogg', 40)
 	X.visible_message(SPAN_XENOWARNING("The [X] stabs its tail in the ground toward [A]!"), SPAN_XENOWARNING("You stab your tail into the ground toward [A]!"))
-	INVOKE_ASYNC(src, .proc/handle_damage, X, target, damage)
+	INVOKE_ASYNC(src, PROC_REF(handle_damage), X, target, damage)
 	if(reinforced_modified)
 		recursive_spread(target, reinforced_spread_range, reinforced_spread_range, damage, target)
 
@@ -459,8 +459,8 @@
 		return
 
 	if(T != original_turf)
-		addtimer(CALLBACK(src, .proc/warning_circle, T, owner), ((windup_delay/2)*(orig_depth - dist_left)))
-		addtimer(CALLBACK(src, .proc/handle_damage, owner, T, (damage - reinforced_damage_bonus), TRUE), (((windup_delay/2)*(orig_depth - dist_left))+5))
+		addtimer(CALLBACK(src, PROC_REF(warning_circle), T, owner), ((windup_delay/2)*(orig_depth - dist_left)))
+		addtimer(CALLBACK(src, PROC_REF(handle_damage), owner, T, (damage - reinforced_damage_bonus), TRUE), (((windup_delay/2)*(orig_depth - dist_left))+5))
 
 	for(var/dirn in alldirs)
 		recursive_spread(get_step(T, dirn), dist_left - 1, orig_depth, damage)
@@ -515,7 +515,7 @@
 	playsound(T, 'sound/effects/burrowing_b.ogg', 25)
 
 	if(!xeno.fortify)
-		RegisterSignal(owner, COMSIG_MOB_DEATH, .proc/death_check)
+		RegisterSignal(owner, COMSIG_MOB_DEATH, PROC_REF(death_check))
 		fortify_switch(xeno, TRUE)
 		if(xeno.selected_ability != src)
 			button.icon_state = "template_active"
@@ -583,4 +583,4 @@
 		fortify_switch(xeno, FALSE)
 		UnregisterSignal(xeno, COMSIG_MOB_DEATH)
 	if(xeno.fortify)
-		addtimer(CALLBACK(src, .proc/process_ensconce, xeno), 1 SECONDS)
+		addtimer(CALLBACK(src, PROC_REF(process_ensconce), xeno), 1 SECONDS)

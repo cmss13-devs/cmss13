@@ -145,16 +145,16 @@
 	if(!check_rights(R_EVENT))
 		return
 
-	var/tag = tgui_input_list(usr, "Which ERT shuttle should be force launched?", "Select an ERT Shuttle:", list("Distress", "Distress_PMC", "Distress_UPP", "Distress_Big", "Distress_Small"))
+	var/tag = tgui_input_list(usr, "Which ERT shuttle should be force launched?", "Select an ERT Shuttle:", list("Distress", "Distress PMC", "Distress UPP", "Distress_Big", "Distress_Small"))
 	if(!tag) return
 
 	var/newShuttle = FALSE
-	if(tag in list("Distress", "Distress_PMC", "Distress_UPP"))
+	if(tag in list("Distress", "Distress PMC", "Distress UPP"))
 		newShuttle = TRUE
 	var/list/shuttle_map = list(
-		"Distress"="ert1",
-		"Distress_PMC"="ert2",
-		"Distress_UPP"="ert3",
+		"Distress" = MOBILE_SHUTTLE_ID_ERT1,
+		"Distress PMC" = MOBILE_SHUTTLE_ID_ERT2,
+		"Distress UPP" = MOBILE_SHUTTLE_ID_ERT3,
 	)
 	if(newShuttle)
 		var/shuttleId = shuttle_map[tag]

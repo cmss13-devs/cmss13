@@ -178,7 +178,7 @@
 /obj/effect/ebeam/laser/weak
 	name = "weak laser beam"
 	alpha = 150
-	strength = 1
+	strength = EYE_PROTECTION_FLAVOR
 	probability = 5
 
 /obj/effect/ebeam/Destroy()

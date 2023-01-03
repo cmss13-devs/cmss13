@@ -115,7 +115,7 @@
 					continue
 
 				apply_spray(M)
-				M.apply_armoured_damage(damage_amount * XVX_ACID_DAMAGEMULT, ARMOR_BIO, BURN) // Deal extra damage when first placing ourselves down.
+				M.apply_armoured_damage(get_xeno_damage_acid(M, damage_amount), ARMOR_BIO, BURN) // Deal extra damage when first placing ourselves down.
 
 			continue
 

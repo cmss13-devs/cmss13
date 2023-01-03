@@ -49,7 +49,7 @@
 		A.forceMove(src)
 		to_chat(user, SPAN_NOTICE("You attach the [item] to the valve controls and secure it."))
 		A.holder = src
-		A.toggle_secure()	//this calls update_icon(), which calls update_icon() on the holder (i.e. the bomb).
+		A.toggle_secure() //this calls update_icon(), which calls update_icon() on the holder (i.e. the bomb).
 
 		attacher = user
 

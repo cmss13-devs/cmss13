@@ -29,7 +29,7 @@
 		dragged_atom = G.grabbed_thing
 
 	var/obj/vehicle/multitile/V = interior.exterior
-	var/exit_time = V.entrance_speed SECONDS
+	var/exit_time = V.entrance_speed
 	if(dragged_atom)
 		exit_time = 2 SECONDS
 
@@ -103,7 +103,7 @@
 		dragged_atom = G.grabbed_thing
 
 	var/obj/vehicle/multitile/V = interior.exterior
-	var/exit_time = V.entrance_speed SECONDS
+	var/exit_time = V.entrance_speed
 	if(dragged_atom)
 		exit_time = 2 SECONDS
 

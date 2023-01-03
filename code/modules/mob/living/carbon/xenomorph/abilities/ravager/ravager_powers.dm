@@ -20,7 +20,7 @@
 		activated_once = TRUE
 		button.icon_state = "template_active"
 		get_inital_shield()
-		addtimer(CALLBACK(src, .proc/timeout), time_until_timeout)
+		addtimer(CALLBACK(src, PROC_REF(timeout)), time_until_timeout)
 		apply_cooldown()
 		return ..()
 	else
@@ -74,7 +74,7 @@
 	color += num2text(alpha, 2, 16)
 	xeno.add_filter("empower_rage", 1, list("type" = "outline", "color" = color, "size" = 3))
 
-	addtimer(CALLBACK(src, .proc/weaken_superbuff, xeno, behavior), 3.5 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(weaken_superbuff), xeno, behavior), 3.5 SECONDS)
 
 /datum/action/xeno_action/onclick/empower/proc/weaken_superbuff(var/mob/living/carbon/Xenomorph/xeno, var/datum/behavior_delegate/ravager_base/behavior)
 
@@ -84,7 +84,7 @@
 	color += num2text(alpha, 2, 16)
 	xeno.add_filter("empower_rage", 1, list("type" = "outline", "color" = color, "size" = 3))
 
-	addtimer(CALLBACK(src, .proc/remove_superbuff, xeno, behavior), 1.5 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(remove_superbuff), xeno, behavior), 1.5 SECONDS)
 
 /datum/action/xeno_action/onclick/empower/proc/remove_superbuff(var/mob/living/carbon/Xenomorph/xeno, var/datum/behavior_delegate/ravager_base/behavior)
 	behavior.empower_targets = 0
@@ -246,12 +246,12 @@
 
 	to_chat(X, SPAN_XENODANGER("Your next slash will slow!"))
 
-	addtimer(CALLBACK(src, .proc/unbuff_slash), buff_duration)
+	addtimer(CALLBACK(src, PROC_REF(unbuff_slash)), buff_duration)
 
 	X.speed_modifier -= speed_buff
 	X.recalculate_speed()
 
-	addtimer(CALLBACK(src, .proc/apprehend_off), buff_duration, TIMER_UNIQUE)
+	addtimer(CALLBACK(src, PROC_REF(apprehend_off)), buff_duration, TIMER_UNIQUE)
 
 	apply_cooldown()
 
@@ -327,9 +327,8 @@
 		H.apply_armoured_damage(get_xeno_damage_slash(H, damage), ARMOR_MELEE, BRUTE) // just for consistency
 
 	// Heal
-	X.gain_health(heal_amount)
-
-
+	if(!X.on_fire)
+		X.gain_health(heal_amount)
 
 	// Fling
 	var/facing = get_dir(X, H)
@@ -427,7 +426,8 @@
 		valid_count++
 
 	// This is the heal
-	xeno.gain_health(Clamp(valid_count * lifesteal_per_marine, 0, max_lifesteal))
+	if(!xeno.on_fire)
+		xeno.gain_health(Clamp(valid_count * lifesteal_per_marine, 0, max_lifesteal))
 
 	xeno.frozen = 0
 	xeno.anchored = 0
@@ -467,7 +467,7 @@
 	xeno.create_shield(shield_duration)
 	shield_active = TRUE
 	button.icon_state = "template_active"
-	addtimer(CALLBACK(src, .proc/remove_shield), shield_duration)
+	addtimer(CALLBACK(src, PROC_REF(remove_shield)), shield_duration)
 
 	apply_cooldown()
 	..()

@@ -9,7 +9,7 @@
 /obj/effect/decal/cleanable/blood/gibs/robot/update_icon()
 	color = "#FFFFFF"
 
-/obj/effect/decal/cleanable/blood/gibs/robot/dry()	//pieces of robots do not dry up like
+/obj/effect/decal/cleanable/blood/gibs/robot/dry() //pieces of robots do not dry up like
 	return
 
 /obj/effect/decal/cleanable/blood/gibs/robot/streak(var/list/directions)

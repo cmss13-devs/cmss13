@@ -1,8 +1,8 @@
 /*
  * Contains:
- *		Fire protection
- *		Bomb protection
- *		Radiation protection
+ * Fire protection
+ * Bomb protection
+ * Radiation protection
  */
 
 /*
@@ -38,7 +38,7 @@
 
 /obj/item/clothing/suit/fire/equipped(mob/user, slot)
 	if(slot == WEAR_JACKET)
-		RegisterSignal(user, COMSIG_LIVING_FLAMER_CROSSED, .proc/flamer_fire_crossed_callback)
+		RegisterSignal(user, COMSIG_LIVING_FLAMER_CROSSED, PROC_REF(flamer_fire_crossed_callback))
 	..()
 
 /obj/item/clothing/suit/fire/dropped(mob/user)

@@ -188,7 +188,7 @@
 
 	QDEL_NULL(occupant)
 
-	addtimer(CALLBACK(src, .proc/create_gibs, totalslabs, allmeat), gibtime)
+	addtimer(CALLBACK(src, PROC_REF(create_gibs), totalslabs, allmeat), gibtime)
 
 /obj/structure/machinery/gibber/proc/create_gibs(totalslabs, list/obj/item/reagent_container/food/snacks/allmeat)
 	playsound(loc, 'sound/effects/splat.ogg', 25, 1)

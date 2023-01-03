@@ -100,7 +100,7 @@
 
 /obj/item/clothing/gloves/boxing/attackby(obj/item/W, mob/user)
 	if(HAS_TRAIT(W, TRAIT_TOOL_WIRECUTTERS) || W.sharp == IS_SHARP_ITEM_ACCURATE || W.sharp == IS_SHARP_ITEM_BIG)
-		to_chat(user, SPAN_NOTICE("It would be a great dishonor to cut open these fine boxing gloves."))	//Nope
+		to_chat(user, SPAN_NOTICE("It would be a great dishonor to cut open these fine boxing gloves.")) //Nope
 		return
 	..()
 

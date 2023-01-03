@@ -21,7 +21,7 @@
 		behavior.on_invisibility()
 
 	// if we go off early, this also works fine.
-	invis_timer_id = addtimer(CALLBACK(src, .proc/invisibility_off), duration, TIMER_STOPPABLE)
+	invis_timer_id = addtimer(CALLBACK(src, PROC_REF(invisibility_off)), duration, TIMER_STOPPABLE)
 
 	// Only resets when invisibility ends
 	apply_cooldown_override(1000000000)
@@ -76,7 +76,7 @@
 
 	to_chat(xeno, SPAN_XENOHIGHDANGER("Your next slash will deal increased damage!"))
 
-	addtimer(CALLBACK(src, .proc/unbuff_slash), buff_duration)
+	addtimer(CALLBACK(src, PROC_REF(unbuff_slash)), buff_duration)
 	xeno.next_move = world.time + 1 // Autoattack reset
 
 	apply_cooldown()

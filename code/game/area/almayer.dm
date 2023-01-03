@@ -40,7 +40,7 @@
 	unslashable = TRUE
 	unacidable = TRUE
 	exproof = 1
-	density = 1
+	density = TRUE
 	req_access = null
 	shuttle_tag = "Hangar"
 
@@ -51,7 +51,7 @@
 	unslashable = TRUE
 	unacidable = TRUE
 	exproof = 1
-	density = 1
+	density = TRUE
 	req_access = null
 	shuttle_tag = "Maintenance"
 

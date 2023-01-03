@@ -10,10 +10,10 @@
 	G.fields["p_stat"] = "Active"
 	G.fields["m_stat"] = "Stable"
 	G.fields["species"] = "Human"
-	G.fields["origin"]	= "Unknown"
-	G.fields["faction"]		= "Unknown"
-	G.fields["mob_faction"]	= "Unknown"
-	G.fields["religion"]	= "Unknown"
+	G.fields["origin"] = "Unknown"
+	G.fields["faction"] = "Unknown"
+	G.fields["mob_faction"] = "Unknown"
+	G.fields["religion"] = "Unknown"
 	GLOB.data_core.general += G
 	return G
 
@@ -27,22 +27,22 @@
 	return R
 
 /proc/create_medical_record(var/mob/living/carbon/human/H)
-	var/datum/data/record/M			= new /datum/data/record()
-	M.fields["id"]					= null
-	M.fields["name"]				= H.real_name
-	M.fields["b_type"]				= H.b_type
-	M.fields["mi_dis"]				= "None"
-	M.fields["mi_dis_d"]			= "No minor disabilities have been declared."
-	M.fields["ma_dis"]				= "None"
-	M.fields["ma_dis_d"]			= "No major disabilities have been diagnosed."
-	M.fields["alg"]					= "None"
-	M.fields["alg_d"]				= "No allergies have been detected in this patient."
-	M.fields["cdi"]					= "None"
-	M.fields["cdi_d"]				= "No diseases have been diagnosed at the moment."
-	M.fields["last_scan_time"]		= null
-	M.fields["last_scan_result"]	= "No scan data on record"
-	M.fields["autodoc_data"]		= list()
-	M.fields["autodoc_manual"]		= list()
-	M.fields["ref"]					= WEAKREF(H)
+	var/datum/data/record/M = new /datum/data/record()
+	M.fields["id"] = null
+	M.fields["name"] = H.real_name
+	M.fields["b_type"] = H.b_type
+	M.fields["mi_dis"] = "None"
+	M.fields["mi_dis_d"] = "No minor disabilities have been declared."
+	M.fields["ma_dis"] = "None"
+	M.fields["ma_dis_d"] = "No major disabilities have been diagnosed."
+	M.fields["alg"] = "None"
+	M.fields["alg_d"] = "No allergies have been detected in this patient."
+	M.fields["cdi"] = "None"
+	M.fields["cdi_d"] = "No diseases have been diagnosed at the moment."
+	M.fields["last_scan_time"] = null
+	M.fields["last_scan_result"] = "No scan data on record"
+	M.fields["autodoc_data"] = list()
+	M.fields["autodoc_manual"] = list()
+	M.fields["ref"] = WEAKREF(H)
 	GLOB.data_core.medical += M
 	return M

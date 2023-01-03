@@ -299,7 +299,7 @@
 		damaged_action(damage)
 
 	if(stat == DEFENSE_DAMAGED)
-		density = 0
+		density = FALSE
 	else
 		density = initial(density)
 

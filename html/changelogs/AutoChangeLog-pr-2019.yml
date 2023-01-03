@@ -1,4 +1,0 @@
-author: "stanalbatross"
-delete-after: True
-changes:
-  - rscdel: "removed the already nonfunctional stickyban panel"

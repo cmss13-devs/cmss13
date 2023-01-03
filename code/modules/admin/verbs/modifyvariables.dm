@@ -129,7 +129,7 @@
 	message_staff("[key_name_admin(src)] added a new element to a list with a key of '[var_value]' and an associated value of [isnum(var_value)? "null" : L[var_value]]", 1)
 
 /client/proc/mod_list(var/list/L)
-	if(!check_rights(R_VAREDIT))	return
+	if(!check_rights(R_VAREDIT)) return
 
 	if(!istype(L,/list)) to_chat(src, "Not a List.")
 
@@ -150,7 +150,7 @@
 	var/dir
 
 	if(variable in locked)
-		if(!check_rights(R_DEBUG))	return
+		if(!check_rights(R_DEBUG)) return
 
 	if(isnull(variable))
 		to_chat(usr, "Unable to determine variable type.")
@@ -297,7 +297,7 @@
 
 
 /client/proc/modify_variables(var/atom/O, var/param_var_name = null, var/autodetect_class = 0)
-	if(!check_rights(R_VAREDIT))	return
+	if(!check_rights(R_VAREDIT)) return
 
 	var/list/locked = list("vars", "key", "ckey", "client", "icon")
 
@@ -319,7 +319,7 @@
 			return
 
 		if(param_var_name == "admin_holder" || (param_var_name in locked))
-			if(!check_rights(R_DEBUG))	return
+			if(!check_rights(R_DEBUG)) return
 
 		variable = param_var_name
 
@@ -382,7 +382,7 @@
 		var_value = O.vars[variable]
 
 		if(variable == "admin_holder" || (variable in locked))
-			if(!check_rights(R_DEBUG))	return
+			if(!check_rights(R_DEBUG)) return
 
 	if(!autodetect_class)
 

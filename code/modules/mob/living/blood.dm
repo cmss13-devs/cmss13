@@ -10,7 +10,7 @@
 	if(NO_BLOOD in species.flags)
 		return
 
-	if(stat != DEAD && bodytemperature >= 170)	//Dead or cryosleep people do not pump the blood.
+	if(stat != DEAD && bodytemperature >= 170) //Dead or cryosleep people do not pump the blood.
 		//Blood regeneration if there is some space
 		if(blood_volume < max_blood)
 			blood_volume += 0.1 // regenerate blood VERY slowly

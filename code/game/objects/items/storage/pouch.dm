@@ -42,7 +42,7 @@
 
 /obj/item/storage/pouch/equipped(mob/user, slot)
 	if(slot == WEAR_L_STORE || slot == WEAR_R_STORE)
-		mouse_opacity = 2 //so it's easier to click when properly equipped.
+		mouse_opacity = MOUSE_OPACITY_OPAQUE //so it's easier to click when properly equipped.
 	..()
 
 /obj/item/storage/pouch/dropped(mob/user)
@@ -56,7 +56,7 @@
 	icon_state = "small_drop"
 	storage_flags = STORAGE_FLAGS_DEFAULT
 	max_w_class = SIZE_MEDIUM
-	cant_hold = list(	//Prevent inventory bloat
+	cant_hold = list( //Prevent inventory bloat
 		/obj/item/storage/firstaid,
 		/obj/item/storage/bible
 	)
@@ -1232,7 +1232,7 @@
 	can_hold = list(/obj/item/device, /obj/item/tool)
 	bypass_w_limit = list(/obj/item/tool/shovel/etool)
 	storage_flags = STORAGE_FLAGS_POUCH|STORAGE_USING_DRAWING_METHOD
-	var/sling_range = 1
+	var/sling_range = 2
 	var/obj/item/slung
 
 /obj/item/storage/pouch/sling/get_examine_text(mob/user)
@@ -1297,7 +1297,7 @@
 /obj/item/storage/pouch/sling/proc/handle_retrieval(mob/living/carbon/human/user)
 	if(slung && slung.loc == src)
 		return
-	addtimer(CALLBACK(src, .proc/attempt_retrieval, user), 0.3 SECONDS, TIMER_UNIQUE|TIMER_NO_HASH_WAIT)
+	addtimer(CALLBACK(src, PROC_REF(attempt_retrieval), user), 0.3 SECONDS, TIMER_UNIQUE|TIMER_NO_HASH_WAIT)
 
 /obj/item/storage/pouch/cassette
 	name = "cassette pouch"

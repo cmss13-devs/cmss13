@@ -35,15 +35,13 @@
 //------------
 /obj/item/storage/box/guncase/smartpistol
 	name = "\improper SU-6 pistol case"
-	desc = "A gun case containing the SU-6 smart pistol. Comes with two magazines and a belt holster."
+	desc = "A gun case containing the SU-6 smart pistol. Comes with a full belt holster."
 	can_hold = list(/obj/item/storage/belt/gun/smartpistol, /obj/item/weapon/gun/pistol/smart, /obj/item/ammo_magazine/pistol/smart)
-	storage_slots = 4
+	storage_slots = 2
 
 /obj/item/storage/box/guncase/smartpistol/fill_preset_inventory()
-	new /obj/item/storage/belt/gun/smartpistol(src)
+	new /obj/item/storage/belt/gun/smartpistol/full_nogun(src)
 	new /obj/item/weapon/gun/pistol/smart(src)
-	new /obj/item/ammo_magazine/pistol/smart(src)
-	new /obj/item/ammo_magazine/pistol/smart(src)
 
 //------------
 /obj/item/storage/box/guncase/mou53
@@ -182,8 +180,8 @@
 	new /obj/item/weapon/gun/rifle/m41a(src)
 	for(var/i = 1 to 4)
 		new /obj/item/ammo_magazine/rifle(src)
-	
-	
+
+
 //------------
 /obj/item/storage/box/guncase/pumpshotgun
 	name = "\improper M37A2 Pump Shotgun case"

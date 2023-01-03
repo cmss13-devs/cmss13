@@ -346,18 +346,18 @@
 
 //-----------------------Nailgun Mag Box-----------------------
 
-/obj/item/ammo_box/magazine/smg/nailgun
+/obj/item/ammo_box/magazine/nailgun
 	name = "\improper magazine box (Nailgun x 10)"
-	icon_state = "base_nailgun"			//base color of box
+	icon_state = "base_nailgun" //base color of box
 	icon_state_deployed = "base_nailgun_deployed"
-	overlay_ammo_type = "_nail"		//used for ammo type color overlay
-	overlay_gun_type = null	//used for text overlay
+	overlay_ammo_type = "_nail" //used for ammo type color overlay
+	overlay_gun_type = null //used for text overlay
 	overlay_content = "_nailgun"
 	magazine_type = /obj/item/ammo_magazine/smg/nailgun
 	num_of_magazines = 10
 	handfuls = FALSE
 	can_explode = FALSE
-	limit_per_tile = 1	//this one has unique too big sprite, so not stackable
+	limit_per_tile = 1 //this one has unique too big sprite, so not stackable
 
-/obj/item/ammo_box/magazine/smg/nailgun/empty
+/obj/item/ammo_box/magazine/nailgun/empty
 	empty = TRUE

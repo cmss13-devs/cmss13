@@ -9,8 +9,8 @@
 /datum/game_mode/whiskey_outpost
 	name = "Whiskey Outpost"
 	config_tag = "Whiskey Outpost"
-	required_players 		= 0
-	xeno_bypass_timer 		= 1
+	required_players = 0
+	xeno_bypass_timer = 1
 	flags_round_type = MODE_NEW_SPAWN
 	role_mappings = list(
 					/datum/job/command/commander/whiskey = JOB_CO,
@@ -125,7 +125,7 @@
 	switch(map_locale) //Switching it up.
 		if(0)
 			marine_announcement("This is Captain Hans Naiche, commander of the 3rd Battalion 'Dust Raiders' forces here on LV-624. In our attempts to establish a base on this planet, several of our patrols were wiped out by hostile creatures.  We're setting up a distress call, but we need you to hold [SSmapping.configs[GROUND_MAP].map_name] in order for our engineers to set up the relay. We're prepping several M402 mortar units to provide fire support. If they overrun your positon, we will be wiped out with no way to call for help. Hold the line or we all die.", "Captain Naiche, 3rd Battalion Command, LV-624 Garrison")
-	addtimer(CALLBACK(src, .proc/story_announce, 0), 3 MINUTES)
+	addtimer(CALLBACK(src, PROC_REF(story_announce), 0), 3 MINUTES)
 	return ..()
 
 /datum/game_mode/whiskey_outpost/proc/story_announce(var/time)
@@ -138,7 +138,7 @@
 			marine_announcement("Captain Naiche here. We've tracked the bulk of enemy forces on the move and [SSmapping.configs[GROUND_MAP].map_name] is likely to be hit before they reach the base. We need you to hold them off while we finish sending the distress call. Expect incoming within a few minutes. Godspeed, [SSmapping.configs[GROUND_MAP].map_name].", "Captain Naiche, 3rd Battalion Command, LV-624 Garrison")
 
 	if(time <= 2)
-		addtimer(CALLBACK(src, .proc/story_announce, time+1), 3 MINUTES)
+		addtimer(CALLBACK(src, PROC_REF(story_announce), time+1), 3 MINUTES)
 
 /datum/game_mode/whiskey_outpost/proc/update_controllers()
 	//Update controllers while we're on this mode
@@ -451,70 +451,70 @@
 
 	name = "Recycler"
 	desc = "Instructions: Place objects you want to destroy on top of it and use the machine. Use with care"
-	density = 0
+	density = FALSE
 	anchored = 1
 	unslashable = TRUE
 	unacidable = TRUE
 	var/working = 0
 
-	attack_hand(mob/user)
-		if(inoperable(MAINT))
-			return
-		if(user.lying || user.stat)
-			return
-		if(ismaintdrone(usr) || \
-			istype(usr, /mob/living/carbon/Xenomorph))
-			to_chat(usr, SPAN_DANGER("You don't have the dexterity to do this!"))
-			return
-		if(working)
-			to_chat(user, SPAN_DANGER("Wait for it to recharge first."))
-			return
-
-		var/remove_max = 10
-		var/turf/T = src.loc
-		if(T)
-			to_chat(user, SPAN_DANGER("You turn on the recycler."))
-			var/removed = 0
-			for(var/i, i < remove_max, i++)
-				for(var/obj/O in T)
-					if(istype(O,/obj/structure/closet/crate))
-						var/obj/structure/closet/crate/C = O
-						if(C.contents.len)
-							to_chat(user, SPAN_DANGER("[O] must be emptied before it can be recycled"))
-							continue
-						new /obj/item/stack/sheet/metal(get_step(src,dir))
-						O.forceMove(get_turf(locate(84,237,2))) //z.2
-//						O.forceMove(get_turf(locate(30,70,1)) )//z.1
-						removed++
-						break
-					else if(istype(O,/obj/item))
-						var/obj/item/I = O
-						if(I.anchored)
-							continue
-						O.forceMove(get_turf(locate(84,237,2))) //z.2
-//						O.forceMove(get_turf(locate(30,70,1)) )//z.1
-						removed++
-						break
-				for(var/mob/M in T)
-					if(istype(M,/mob/living/carbon/Xenomorph))
-						var/mob/living/carbon/Xenomorph/X = M
-						if(!X.stat == DEAD)
-							continue
-						X.forceMove(get_turf(locate(84,237,2))) //z.2
-//						X.forceMove(get_turf(locate(30,70,1)) )//z.1
-						removed++
-						break
-				if(removed && !working)
-					playsound(loc, 'sound/effects/meteorimpact.ogg', 25, 1)
-					working = 1 //Stops the sound from repeating
-				if(removed >= remove_max)
-					break
-
-		working = 1
-		addtimer(VARSET_CALLBACK(src, working, FALSE), 10 SECONDS)
-
-	ex_act(severity)
+/obj/structure/machinery/wo_recycler/attack_hand(mob/user)
+	if(inoperable(MAINT))
 		return
+	if(user.lying || user.stat)
+		return
+	if(ismaintdrone(usr) || \
+		istype(usr, /mob/living/carbon/Xenomorph))
+		to_chat(usr, SPAN_DANGER("You don't have the dexterity to do this!"))
+		return
+	if(working)
+		to_chat(user, SPAN_DANGER("Wait for it to recharge first."))
+		return
+
+	var/remove_max = 10
+	var/turf/T = src.loc
+	if(T)
+		to_chat(user, SPAN_DANGER("You turn on the recycler."))
+		var/removed = 0
+		for(var/i, i < remove_max, i++)
+			for(var/obj/O in T)
+				if(istype(O,/obj/structure/closet/crate))
+					var/obj/structure/closet/crate/C = O
+					if(C.contents.len)
+						to_chat(user, SPAN_DANGER("[O] must be emptied before it can be recycled"))
+						continue
+					new /obj/item/stack/sheet/metal(get_step(src,dir))
+					O.forceMove(get_turf(locate(84,237,2))) //z.2
+// O.forceMove(get_turf(locate(30,70,1)) )//z.1
+					removed++
+					break
+				else if(istype(O,/obj/item))
+					var/obj/item/I = O
+					if(I.anchored)
+						continue
+					O.forceMove(get_turf(locate(84,237,2))) //z.2
+// O.forceMove(get_turf(locate(30,70,1)) )//z.1
+					removed++
+					break
+			for(var/mob/M in T)
+				if(istype(M,/mob/living/carbon/Xenomorph))
+					var/mob/living/carbon/Xenomorph/X = M
+					if(!X.stat == DEAD)
+						continue
+					X.forceMove(get_turf(locate(84,237,2))) //z.2
+// X.forceMove(get_turf(locate(30,70,1)) )//z.1
+					removed++
+					break
+			if(removed && !working)
+				playsound(loc, 'sound/effects/meteorimpact.ogg', 25, 1)
+				working = 1 //Stops the sound from repeating
+			if(removed >= remove_max)
+				break
+
+	working = 1
+	addtimer(VARSET_CALLBACK(src, working, FALSE), 10 SECONDS)
+
+/obj/structure/machinery/wo_recycler/ex_act(severity)
+	return
 
 
 ////////////////////

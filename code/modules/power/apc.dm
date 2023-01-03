@@ -3,7 +3,7 @@
 
 GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 		APC_WIRE_MAIN_POWER   = "Main power",
-		APC_WIRE_IDSCAN 	  = "ID scanner"
+		APC_WIRE_IDSCAN   = "ID scanner"
 	))
 
 #define APC_COVER_CLOSED 0
@@ -154,7 +154,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 		name = "\improper [area.name] APC"
 		stat |= MAINT
 		update_icon()
-		addtimer(CALLBACK(src, .proc/update), 5)
+		addtimer(CALLBACK(src, PROC_REF(update)), 5)
 
 	start_processing()
 
@@ -364,7 +364,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 	update_icon()
 	make_terminal()
 
-	addtimer(CALLBACK(src, .proc/update), 5)
+	addtimer(CALLBACK(src, PROC_REF(update)), 5)
 
 /obj/structure/machinery/power/apc/get_examine_text(mob/user)
 	. = list(desc)
@@ -428,7 +428,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 		status_overlays_environ[3] = image(icon, "apco2-2")
 		status_overlays_environ[4] = image(icon, "apco2-3")
 
-	var/update = check_updates()	//Returns 0 if no need to update icons.
+	var/update = check_updates() //Returns 0 if no need to update icons.
 									//1 if we need to update the icon_state
 									//2 if we need to update the overlays
 	if(!update)
@@ -891,7 +891,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 /obj/structure/machinery/power/apc/proc/get_wire_descriptions()
 	return list(
 		APC_WIRE_MAIN_POWER   = "Main power",
-		APC_WIRE_IDSCAN       = "ID scanner"
+		APC_WIRE_IDSCAN    = "ID scanner"
 	)
 
 /obj/structure/machinery/power/apc/proc/isWireCut(var/wire)
@@ -1094,7 +1094,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 			if(cell.charge >= required_power * CELLRATE) //Can we draw enough from cell to cover what's left over?
 				cell.use(required_power * CELLRATE)
 
-			else if (autoflag != 0)	//Not enough power available to run the last tick!
+			else if (autoflag != 0) //Not enough power available to run the last tick!
 				chargecount = 0
 				//This turns everything off in the case that there is still a charge left on the battery, just not enough to run the room.
 				equipment = autoset(equipment, 0)
@@ -1250,7 +1250,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 
 	//Aesthetically much better!
 	visible_message(SPAN_WARNING("[src]'s screen flickers with warnings briefly!"))
-	addtimer(CALLBACK(src, .proc/do_set_broken), rand(2, 5))
+	addtimer(CALLBACK(src, PROC_REF(do_set_broken)), rand(2, 5))
 
 /obj/structure/machinery/power/apc/proc/do_set_broken()
 	visible_message(SPAN_DANGER("[src]'s screen suddenly explodes in rain of sparks and small debris!"))

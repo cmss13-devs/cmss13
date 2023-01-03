@@ -21,8 +21,8 @@
 	anchored = TRUE
 	projectile_coverage = PROJECTILE_COVERAGE_LOW
 
-	idle_power_usage	= 20
-	active_power_usage	= 50
+	idle_power_usage = 20
+	active_power_usage = 50
 
 /obj/structure/machinery/computer3/New(var/L, var/built = 0)
 	..()
@@ -43,20 +43,20 @@
 /obj/structure/machinery/computer3/powermonitor
 	icon_state = "frame-eng"
 /obj/structure/machinery/computer3/server
-	name			= "server"
-	icon			= 'icons/obj/structures/machinery/computer3.dmi'
-	icon_state		= "serverframe"
+	name = "server"
+	icon = 'icons/obj/structures/machinery/computer3.dmi'
+	icon_state = "serverframe"
 
 /obj/structure/machinery/computer3/server/rack
 	name = "server rack"
 	icon_state = "rackframe"
 
-	update_icon()
-		//overlays.Cut()
-		return
+/obj/structure/machinery/computer3/server/rack/update_icon()
+	//overlays.Cut()
+	return
 
-	attack_hand() // Racks have no screen, only AI can use them
-		return
+/obj/structure/machinery/computer3/server/rack/attack_hand() // Racks have no screen, only AI can use them
+	return
 
 
 /obj/structure/machinery/lapvend

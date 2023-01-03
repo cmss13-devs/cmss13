@@ -15,14 +15,14 @@
 
 #define CLAN_PERMISSION_ALL (CLAN_PERMISSION_USER_ALL|CLAN_PERMISSION_ADMIN_ALL)
 
-#define CLAN_RANK_UNBLOODED     "Unblooded" // Unused for the moment
-#define CLAN_RANK_YOUNG         "Young Blood" // Clanless
-#define CLAN_RANK_BLOODED       "Blooded" // New to the clan
-#define CLAN_RANK_ELITE         "Elite"
-#define CLAN_RANK_ELDER         "Elder"
-#define CLAN_RANK_LEADER        "Clan Leader"
+#define CLAN_RANK_UNBLOODED "Unblooded" // Unused for the moment
+#define CLAN_RANK_YOUNG "Young Blood" // Clanless
+#define CLAN_RANK_BLOODED "Blooded" // New to the clan
+#define CLAN_RANK_ELITE "Elite"
+#define CLAN_RANK_ELDER "Elder"
+#define CLAN_RANK_LEADER "Clan Leader"
 
-#define CLAN_RANK_ADMIN         "Ancient" // Must be given by someone with CLAN_PERMISSION_ADMIN_MODIFY
+#define CLAN_RANK_ADMIN "Ancient" // Must be given by someone with CLAN_PERMISSION_ADMIN_MODIFY
 
 #define CLAN_RANK_UNBLOODED_INT 1
 #define CLAN_RANK_YOUNG_INT 2
@@ -36,23 +36,23 @@
 #define CLAN_LIMIT_SIZE 2 // Scales with clan size
 
 var/global/list/datum/rank/clan_ranks = list(
-    CLAN_RANK_UNBLOODED = new /datum/rank/unblooded(),
-    CLAN_RANK_YOUNG = new /datum/rank/young(),
-    CLAN_RANK_BLOODED = new /datum/rank/blooded(),
-    CLAN_RANK_ELITE = new /datum/rank/elite(),
-    CLAN_RANK_ELDER = new /datum/rank/elder(),
-    CLAN_RANK_LEADER = new /datum/rank/leader(),
-    CLAN_RANK_ADMIN = new /datum/rank/ancient()
+	CLAN_RANK_UNBLOODED = new /datum/rank/unblooded(),
+	CLAN_RANK_YOUNG = new /datum/rank/young(),
+	CLAN_RANK_BLOODED = new /datum/rank/blooded(),
+	CLAN_RANK_ELITE = new /datum/rank/elite(),
+	CLAN_RANK_ELDER = new /datum/rank/elder(),
+	CLAN_RANK_LEADER = new /datum/rank/leader(),
+	CLAN_RANK_ADMIN = new /datum/rank/ancient()
 )
 
 var/global/list/clan_ranks_ordered = list(
-    CLAN_RANK_UNBLOODED = CLAN_RANK_UNBLOODED_INT,
-    CLAN_RANK_YOUNG = CLAN_RANK_YOUNG_INT,
-    CLAN_RANK_BLOODED = CLAN_RANK_BLOODED_INT,
-    CLAN_RANK_ELITE = CLAN_RANK_ELITE_INT,
-    CLAN_RANK_ELDER = CLAN_RANK_ELDER_INT,
-    CLAN_RANK_LEADER = CLAN_RANK_LEADER_INT,
-    CLAN_RANK_ADMIN = CLAN_RANK_ADMIN_INT
+	CLAN_RANK_UNBLOODED = CLAN_RANK_UNBLOODED_INT,
+	CLAN_RANK_YOUNG = CLAN_RANK_YOUNG_INT,
+	CLAN_RANK_BLOODED = CLAN_RANK_BLOODED_INT,
+	CLAN_RANK_ELITE = CLAN_RANK_ELITE_INT,
+	CLAN_RANK_ELDER = CLAN_RANK_ELDER_INT,
+	CLAN_RANK_LEADER = CLAN_RANK_LEADER_INT,
+	CLAN_RANK_ADMIN = CLAN_RANK_ADMIN_INT
 )
 
 #define CLAN_HREF "clan_href"
@@ -74,19 +74,19 @@ var/global/list/clan_ranks_ordered = list(
 #define GET_CLAN_PLAYER(player_id) DB_EKEY(/datum/entity/clan_player, text2num(player_id))
 
 #define NO_CLAN_LIST list(\
-            clan_id = null,\
-            clan_name = "Clanless",\
-            clan_description = "This is a list of players without a clan",\
-            clan_honor = null,\
-            clan_keys = list(),\
-            \
-            player_delete_clan = FALSE,\
-            player_sethonor_clan = FALSE,\
-            player_rename_clan = FALSE,\
-            player_setdesc_clan = FALSE,\
-            player_modify_ranks = FALSE,\
-            \
-            player_move_clans = (clan_info.permissions & CLAN_PERMISSION_ADMIN_MOVE)\
-        )
+			clan_id = null,\
+			clan_name = "Clanless",\
+			clan_description = "This is a list of players without a clan",\
+			clan_honor = null,\
+			clan_keys = list(),\
+			\
+			player_delete_clan = FALSE,\
+			player_sethonor_clan = FALSE,\
+			player_rename_clan = FALSE,\
+			player_setdesc_clan = FALSE,\
+			player_modify_ranks = FALSE,\
+			\
+			player_move_clans = (clan_info.permissions & CLAN_PERMISSION_ADMIN_MOVE)\
+		)
 
 #define CLAN_SHIP_PUBLIC -1

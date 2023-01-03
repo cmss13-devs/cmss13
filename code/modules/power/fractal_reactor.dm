@@ -1,6 +1,6 @@
 // ###############################################################################
-// # ITEM: FRACTAL ENERGY REACTOR                                                #
-// # FUNCTION: Generate infinite electricity. Used for map testing.              #
+// # ITEM: FRACTAL ENERGY REACTOR #
+// # FUNCTION: Generate infinite electricity. Used for map testing.   #
 // ###############################################################################
 
 /obj/structure/machinery/power/fractal_reactor
@@ -9,7 +9,7 @@
 	icon = 'icons/obj/structures/machinery/power.dmi'
 	icon_state = "tracker" //ICON stolen from solar tracker. There is no need to make new texture for debug item
 	anchored = 1
-	density = 1
+	density = TRUE
 	directwired = 1
 	var/power_generation_rate = 2000000 //Defaults to 2MW of power. Should be enough to run SMES charging on full 2 times.
 	var/powernet_connection_failed = 0

@@ -1,5 +1,5 @@
 /datum/stamina/none
-    has_stamina         = FALSE
+	has_stamina  = FALSE
 
 /datum/stamina/none/process()
 	return

@@ -10,8 +10,8 @@
 	icon_state = "rock"//go figure
 	desc = "A solidified collection of local minerals. When melted, becomes a substance best known as lava."
 
-	opacity = 0
-	density = 1
+	opacity = FALSE
+	density = TRUE
 	var/dir_list_full = list(1,2,4,8,5,6,9,10)
 	var/dir_list_limited = list(1,2,4,8)
 
@@ -32,7 +32,7 @@
 /obj/structure/prop/rock/black_ground//the colors on these make them kinda look like actual shit, can't lie. Exercise discretion fellow mappers.
 	icon_state = "black_ground"
 	desc = "Loose stones, earth, rubble, slabs, crags, pebbles, quarried detritus, shale, gravel, solidified carbon and other stuff. Y'know, rocks that you can walk over and kick around."
-	density = 0//these guys don't look like they'd block movement
+	density = FALSE//these guys don't look like they'd block movement
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT//don't want these to eat clicks, that'd be like... bad (Lookin' at you grass tufts)
 
 /obj/structure/prop/rock/black_ground/Initialize()
@@ -41,7 +41,7 @@
 
 /obj/structure/prop/rock/black_ground/dense//surprise surprise, they made 3 versions of these rocks that are near full tile. Fuck you old spriter.
 	icon_state = "black_ground_alt"
-	density = 1
+	density = TRUE
 	desc = "Earth that refuses to yield. Perhaps you should go around or fetch a pickaxe (or a similar implement)."
 
 /obj/structure/prop/rock/black_ground/dense/Initialize()

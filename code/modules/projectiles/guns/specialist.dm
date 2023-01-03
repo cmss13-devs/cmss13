@@ -455,7 +455,7 @@
 
 	///Internal storage item used as magazine. Must be initialised to work! Set parameters by variables or it will inherit standard numbers from storage.dm. Got to call it *something* and 'magazine' or w/e would be confusing.
 	var/obj/item/storage/internal/cylinder
-	 /// Variable that initializes the above.
+	/// Variable that initializes the above.
 	var/has_cylinder = FALSE
 	///What single item to fill the storage with, if any. This does not respect w_class.
 	var/preload
@@ -477,7 +477,7 @@
 		cylinder.use_sound = use_sound
 		if(direct_draw)
 			cylinder.storage_flags ^= STORAGE_USING_DRAWING_METHOD
-		if(preload && !spawn_empty)	for(var/i = 1 to cylinder.storage_slots)
+		if(preload && !spawn_empty) for(var/i = 1 to cylinder.storage_slots)
 			new preload(cylinder)
 		update_icon()
 
@@ -861,7 +861,7 @@
 	w_class = SIZE_HUGE
 	force = 15
 	wield_delay = WIELD_DELAY_HORRIBLE
-	delay_style	= WEAPON_DELAY_NO_FIRE
+	delay_style = WEAPON_DELAY_NO_FIRE
 	aim_slowdown = SLOWDOWN_ADS_SPECIALIST
 	attachable_allowed = list(
 						/obj/item/attachable/magnetic_harness
@@ -915,7 +915,7 @@
 			make_rocket(user, 0, 1)
 
 /obj/item/weapon/gun/launcher/rocket/load_into_chamber(mob/user)
-//	if(active_attachable) active_attachable = null
+// if(active_attachable) active_attachable = null
 	return ready_in_chamber()
 
 //No such thing
@@ -1116,7 +1116,7 @@
 
 /obj/item/weapon/gun/launcher/rocket/anti_tank/disposable/proc/fold(mob/user)
 	var/obj/item/prop/folded_anti_tank_sadar/F = new /obj/item/prop/folded_anti_tank_sadar(src.loc)
-	F.set_name_label(name_label)
+	transfer_label_component(F)
 	qdel(src)
 	user.put_in_active_hand(F)
 
@@ -1153,7 +1153,7 @@
 
 /obj/item/prop/folded_anti_tank_sadar/proc/unfold(mob/user)
 	var/obj/item/weapon/gun/launcher/rocket/anti_tank/disposable/F = new /obj/item/weapon/gun/launcher/rocket/anti_tank/disposable(src.loc)
-	F.set_name_label(name_label)
+	transfer_label_component(F)
 	qdel(src)
 	user.put_in_active_hand(F)
 
@@ -1200,7 +1200,7 @@
 	..()
 	fire_delay = FIRE_DELAY_TIER_10
 	accuracy_mult = BASE_ACCURACY_MULT
-	accuracy_mult_unwielded = -MOVEMENT_ACCURACY_PENALTY_MULT_TIER_1
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_10
 	scatter = 0
 	recoil = RECOIL_AMOUNT_TIER_4
 	recoil_unwielded = RECOIL_AMOUNT_TIER_4

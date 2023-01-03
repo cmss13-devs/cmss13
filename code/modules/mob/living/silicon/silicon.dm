@@ -3,7 +3,7 @@
 	voice_name = "synthesized voice"
 	var/syndicate = 0
 	immune_to_ssd = 1
-	var/list/speech_synthesizer_langs = list()	//which languages can be vocalized by the speech synthesizer
+	var/list/speech_synthesizer_langs = list() //which languages can be vocalized by the speech synthesizer
 
 	//Used in say.dm.
 	var/speak_statement = "states"
@@ -50,7 +50,7 @@
 	..()
 
 /mob/living/silicon/stun_effect_act(var/stun_amount, var/agony_amount)
-	return	//immune
+	return //immune
 
 /mob/living/silicon/proc/damage_mob(var/brute = 0, var/fire = 0, var/tox = 0)
 	return
@@ -108,7 +108,7 @@
 //Silicon mob language procs
 
 /mob/living/silicon/can_speak(datum/language/speaking)
-	return universal_speak || (speaking in src.speech_synthesizer_langs)	//need speech synthesizer support to vocalize a language
+	return universal_speak || (speaking in src.speech_synthesizer_langs) //need speech synthesizer support to vocalize a language
 
 /mob/living/silicon/add_language(var/language, var/can_speak=1)
 	if (..(language) && can_speak)
@@ -181,8 +181,8 @@
 
 	flavor_text =  strip_html(input(usr, "Please enter your new flavour text.", "Flavour text", null)  as text)
 
-/mob/living/silicon/binarycheck()
-	return 1
+/mob/living/silicon/hear_apollo()
+	return TRUE
 
 /mob/living/silicon/rejuvenate()
 	..()

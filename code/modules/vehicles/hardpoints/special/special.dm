@@ -5,4 +5,4 @@
 	slot = HDPT_SPECIAL
 	hdpt_layer = HDPT_LAYER_WHEELS
 
-	damage_multiplier = 0	//breaks differently
+	damage_multiplier = 0 //breaks differently

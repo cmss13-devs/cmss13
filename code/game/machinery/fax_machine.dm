@@ -1,9 +1,9 @@
 var/list/obj/structure/machinery/faxmachine/allfaxes = list()
 var/list/alldepartments = list()
 
-#define DEPARTMENT_WY		"Weyland-Yutani"
-#define DEPARTMENT_HC		"USCM High Command"
-#define DEPARTMENT_PROVOST	"USCM Provost Office"
+#define DEPARTMENT_WY "Weyland-Yutani"
+#define DEPARTMENT_HC "USCM High Command"
+#define DEPARTMENT_PROVOST "USCM Provost Office"
 
 //This fax machine will become a colonial one after I have mapped it onto the Almayer.
 /obj/structure/machinery/faxmachine
@@ -87,7 +87,7 @@ var/list/alldepartments = list()
 	set name = "Eject ID Card"
 	set src in view(1)
 
-	if(!usr || usr.stat || usr.lying)	return
+	if(!usr || usr.stat || usr.lying) return
 
 	if(ishuman(usr) && scan)
 		to_chat(usr, "You remove \the [scan] from \the [src].")

@@ -319,7 +319,7 @@
 		if(hit_target.mob_size < MOB_SIZE_BIG)
 			step_away(hit_target, xeno, 1, 2)
 
-	 /// To reset the direction if they haven't moved since then in below callback.
+	/// To reset the direction if they haven't moved since then in below callback.
 	var/last_dir = xeno.dir
 
 	xeno.setDir(stab_direction)
@@ -327,7 +327,7 @@
 	xeno.flick_attack_overlay(hit_target, stab_overlay)
 
 	var/new_dir = xeno.dir
-	addtimer(CALLBACK(src, .proc/reset_direction, xeno, last_dir, new_dir), 0.5 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(reset_direction), xeno, last_dir, new_dir), 0.5 SECONDS)
 
 	hit_target.apply_armoured_damage(slam_damage, ARMOR_MELEE, BRUTE, "chest")
 

@@ -139,8 +139,6 @@
 	target.sway_jitter(times = 2)
 	xeno.animation_attack_on(target)
 	xeno.flick_attack_overlay(target, "slash")   //fake slash to prevent disarm abuse
-	xeno.flick_heal_overlay(1 SECONDS, "#00B800")
-	xeno.gain_health(30)
 	target.last_damage_data = create_cause_data(xeno.caste_type, xeno)
 	target.apply_armoured_damage(get_xeno_damage_slash(target, xeno.caste.melee_damage_upper), ARMOR_MELEE, BRUTE, "chest")
 	playsound(get_turf(target), 'sound/weapons/alien_claw_flesh3.ogg', 30, TRUE)
@@ -337,9 +335,6 @@
 		hit_target.apply_effect(0.5, WEAKEN)
 	else
 		hit_target.apply_effect(0.5, SLOW)
-
-	xeno.flick_heal_overlay(1 SECONDS, "#00B800")
-	xeno.gain_health(heal_amount)
 
 	hit_target.last_damage_data = create_cause_data(xeno.caste_type, xeno)
 	log_attack("[key_name(xeno)] attacked [key_name(hit_target)] with Tail Jab")

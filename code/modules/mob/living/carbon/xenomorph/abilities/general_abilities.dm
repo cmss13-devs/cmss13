@@ -408,7 +408,7 @@
 	macro_path = /datum/action/xeno_action/verb/verb_bombard
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_1
-	xeno_cooldown = 245
+	xeno_cooldown = 230
 
 	// Range and other config
 	var/effect_range = 3

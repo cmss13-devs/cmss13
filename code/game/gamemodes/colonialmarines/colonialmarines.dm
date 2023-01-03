@@ -400,7 +400,7 @@
 				var/mob/living/carbon/Xenomorph/xeno = player_client.mob
 				counted_xenos[xeno.hivenumber][xeno.caste_type]++
 
-	running_round_stats += list(special_round_status, duration2text(), counted_humans, counted_xenos)
+	running_round_stats += list("special round status" = special_round_status, "round time" = duration2text(), "counted humans" = counted_humans, "counted xenos" = counted_xenos)
 
 /datum/game_mode/colonialmarines/proc/handle_round_results_statistics_output()
 	var/webhook = CONFIG_GET(string/round_results_webhook_url)
@@ -409,8 +409,21 @@
 		return
 
 	var/datum/discord_embed/embed = new()
-	embed.title = "test title"
-	embed.description = "test desc"
+	embed.title = "[SSperf_logging.round?.id]"
+	embed.description = "[round_stats.round_name]\n[round_stats.map_name]\n[end_round_message()]"
+
+	for(var/list/round_status_reports in running_round_stats)
+		var/special_status = round_status_reports["special round status"]
+		var/round_time = round_status_reports["round time"]
+		var/field_name = "[special_status ? "[round_time] - [special_status]" : "[round_time]"]"
+
+		var/total_marines = 0
+		var/total_squad_marines = 0
+		var/jobs_text = ""
+
+		for(round_status_reports["counted humans"])
+
+		embed.fields[field_name] =
 
 	var/list/webhook_info = list()
 	webhook_info["embeds"] = list(embed.convert_to_list())

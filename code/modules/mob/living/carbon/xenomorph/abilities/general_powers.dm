@@ -765,8 +765,6 @@
 	if (!X.can_bombard_turf(T, range, bombard_source))
 		return FALSE
 
-	apply_cooldown()
-
 	X.visible_message(SPAN_XENODANGER("[X] digs itself into place!"), SPAN_XENODANGER("You dig yourself into place!"))
 	if (!do_after(X, activation_delay, interrupt_flags, BUSY_ICON_HOSTILE))
 		to_chat(X, SPAN_XENODANGER("You decide to cancel your bombard."))
@@ -777,6 +775,8 @@
 
 	if (!check_and_use_plasma_owner())
 		return FALSE
+
+	apply_cooldown()
 
 	X.visible_message(SPAN_XENODANGER("[X] launches a massive ball of acid at [A]!"), SPAN_XENODANGER("You launch a massive ball of acid at [A]!"))
 	playsound(get_turf(X), 'sound/effects/blobattack.ogg', 25, 1)

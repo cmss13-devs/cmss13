@@ -1069,6 +1069,19 @@ note dizziness decrements automatically in the mob's Life() proc.
 
 	. += "<option value='?_src_=vars;gib=\ref[src]'>Gib</option>"
 
+/mob/vv_edit_var(var_name, var_value)
+	switch(var_name)
+		if(NAMEOF(src, stat))
+			if((var_value < CONSCIOUS) || (var_value > DEAD))
+				return FALSE
+			if((stat == DEAD) && ((var_value == CONSCIOUS) || (var_value == UNCONSCIOUS)))
+				GLOB.dead_mob_list -= src
+				GLOB.alive_mob_list += src
+			if(((stat == CONSCIOUS) || (stat == UNCONSCIOUS)) && (var_value == DEAD))
+				GLOB.alive_mob_list -= src
+				GLOB.dead_mob_list += src
+	return ..()
+
 /mob/Topic(href, href_list)
 	. = ..()
 	if(.)

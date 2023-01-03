@@ -1790,7 +1790,7 @@ Defined in conflicts.dm of the #defines folder.
 	else if(!turn_off)
 		if(user)
 			to_chat(user, SPAN_NOTICE("You are now using [src]."))
-			playsound(user, gun_activate_sound, 45, 1)
+			playsound(user, gun_activate_sound, 60, 1)
 		G.active_attachable = src
 		gun_original_damage_mult = G.damage_mult
 		G.damage_mult = 1
@@ -1991,11 +1991,11 @@ Defined in conflicts.dm of the #defines folder.
 	max_range = 5
 	slot = "under"
 	fire_sound = 'sound/weapons/gun_flamethrower3.ogg'
-	activation_sound = 'sound/weapons/handling/gun_underbarrel_flamer_activate.ogg'
+	gun_activate_sound = 'sound/weapons/handling/gun_underbarrel_flamer_activate.ogg'
 	flags_attach_features = ATTACH_REMOVABLE|ATTACH_ACTIVATION|ATTACH_RELOADABLE|ATTACH_WEAPON
 	var/burn_level = BURN_LEVEL_TIER_1
 	var/burn_duration = BURN_TIME_TIER_1
-	var/round_usage_multiplier = 1
+	var/round_usage_per_tile = 1
 	var/intense_mode = FALSE
 
 /obj/item/attachable/attached_gun/flamer/New()
@@ -2018,14 +2018,14 @@ Defined in conflicts.dm of the #defines folder.
 	playsound(user,'sound/weapons/handling/flamer_ignition.ogg', 25, 1)
 	if(intense_mode)
 		to_chat(user, SPAN_WARNING("You change \the [src] back to using a normal and more stable flame."))
-		round_usage_multiplier = 1
+		round_usage_per_tile = 1
 		burn_level = BURN_LEVEL_TIER_1
 		burn_duration = BURN_TIME_TIER_1
 		max_range = 5
 		intense_mode = FALSE
 	else
 		to_chat(user, SPAN_WARNING("You change \the [src] to use a more intense and volatile flame."))
-		round_usage_multiplier = 5
+		round_usage_per_tile = 5
 		burn_level = BURN_LEVEL_TIER_5
 		burn_duration = BURN_TIME_TIER_2
 		max_range = 2
@@ -2059,7 +2059,7 @@ Defined in conflicts.dm of the #defines folder.
 	if(get_dist(user,target) > max_range+4)
 		to_chat(user, SPAN_WARNING("Too far to fire the attachment!"))
 		return
-	if(current_rounds > round_usage_multiplier && ..())
+	if(current_rounds > round_usage_per_tile && ..())
 		unleash_flame(target, user)
 
 
@@ -2074,12 +2074,12 @@ Defined in conflicts.dm of the #defines folder.
 		if(T == user.loc)
 			prev_T = T
 			continue
-		if(!current_rounds || current_rounds < round_usage_multiplier)
+		if(!current_rounds || current_rounds < round_usage_per_tile)
 			break
 		if(distance >= max_range)
 			break
 
-		current_rounds -= round_usage_multiplier
+		current_rounds -= round_usage_per_tile
 		var/datum/cause_data/cause_data = create_cause_data(initial(name), user)
 		if(T.density)
 			T.flamer_fire_act(0, cause_data)
@@ -2131,7 +2131,7 @@ Defined in conflicts.dm of the #defines folder.
 	ammo = /datum/ammo/bullet/shotgun/buckshot/masterkey
 	slot = "under"
 	fire_sound = 'sound/weapons/gun_shotgun_u7.ogg'
-	activation_sound = 'sound/weapons/handling/gun_u7_activate.ogg'
+	gun_activate_sound = 'sound/weapons/handling/gun_u7_activate.ogg'
 	flags_attach_features = ATTACH_REMOVABLE|ATTACH_ACTIVATION|ATTACH_PROJECTILE|ATTACH_RELOADABLE|ATTACH_WEAPON
 
 /obj/item/attachable/attached_gun/shotgun/New()

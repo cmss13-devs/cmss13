@@ -310,7 +310,7 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 		newstack.add_fingerprint(user)
 		if(src && usr.interactee==src)
 			INVOKE_ASYNC(src, TYPE_PROC_REF(/obj/item/stack, interact), usr)
-		return
+		return TRUE
 	else
 		return ..()
 

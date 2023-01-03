@@ -8,10 +8,10 @@
 	name = "interior wall"
 	desc = "An interior wall."
 	icon = 'icons/obj/vehicles/interiors/tank.dmi'
-	density = 1
-	opacity = 1
+	density = TRUE
+	opacity = TRUE
 	anchored = 1
-	mouse_opacity = 0
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	layer = INTERIOR_WALL_NORTH_LAYER
 	flags_atom = NOINTERACT
 	unacidable = TRUE
@@ -30,10 +30,10 @@
 	name = "interior roof"
 	desc = "An interior roof."
 	icon = 'icons/obj/vehicles/interiors/tank.dmi'
-	density = 0
-	opacity = 0
+	density = FALSE
+	opacity = FALSE
 	anchored = 1
-	mouse_opacity = 0
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	layer = ABOVE_FLY_LAYER
 	flags_atom = NOINTERACT
 	unacidable = TRUE

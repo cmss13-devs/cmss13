@@ -167,7 +167,7 @@
 			italics = 1
 			message_range = 2
 
-		..(message, speaking, verb, alt_name, italics, message_range, speech_sound, sound_vol, 0, message_mode)	//ohgod we should really be passing a datum here.
+		..(message, speaking, verb, alt_name, italics, message_range, speech_sound, sound_vol, 0, message_mode) //ohgod we should really be passing a datum here.
 
 		INVOKE_ASYNC(src, TYPE_PROC_REF(/mob/living/carbon/human, say_to_radios), used_radios, message, message_mode, verb, speaking)
 
@@ -213,9 +213,9 @@
 
 	//This is already covered by mob/say_understands()
 	//if (istype(other, /mob/living/simple_animal))
-	//	if((other.universal_speak && !speaking) || src.universal_speak || src.universal_understand)
-	//		return 1
-	//	return 0
+	// if((other.universal_speak && !speaking) || src.universal_speak || src.universal_understand)
+	// return 1
+	// return 0
 
 	return ..()
 
@@ -236,12 +236,12 @@
 
 
 /*
-   ***Deprecated***
-   let this be handled at the hear_say or hear_radio proc
-   This is left in for robot speaking when humans gain binary channel access until I get around to rewriting
-   robot_talk() proc.
-   There is no language handling build into it however there is at the /mob level so we accept the call
-   for it but just ignore it.
+***Deprecated***
+let this be handled at the hear_say or hear_radio proc
+This is left in for robot speaking when humans gain binary channel access until I get around to rewriting
+robot_talk() proc.
+There is no language handling build into it however there is at the /mob level so we accept the call
+for it but just ignore it.
 */
 
 /mob/living/carbon/human/say_quote(var/message, var/datum/language/speaking = null)
@@ -304,8 +304,10 @@
 
 	return returns
 
-/mob/living/carbon/human/binarycheck()
+/mob/living/carbon/human/hear_apollo()
 	var/obj/item/device/radio/headset/dongle = get_type_in_ears(/obj/item/device/radio/headset)
-	if (dongle && dongle.translate_binary)
+	if (dongle && dongle.translate_apollo)
+		return TRUE
+	for(var/datum/language/apollo/link in languages)
 		return TRUE
 	return FALSE

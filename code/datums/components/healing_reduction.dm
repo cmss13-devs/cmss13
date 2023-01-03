@@ -1,5 +1,5 @@
-#define MAX_ALPHA 				35
-#define GLOW_COLOR 				"#7a0000"
+#define MAX_ALPHA 35
+#define GLOW_COLOR "#7a0000"
 /*
 This component prevents healing under a certain strength for xenos while active.
 Healing above this strength will be reduced by the strength of the buildup.

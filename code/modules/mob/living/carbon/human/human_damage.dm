@@ -5,11 +5,11 @@
 		health = species.total_health
 		stat = CONSCIOUS
 		return
-	var/total_burn	= 0
-	var/total_brute	= 0
-	for(var/obj/limb/O in limbs)	//hardcoded to streamline things a bit
-		total_brute	+= O.brute_dam
-		total_burn	+= O.burn_dam
+	var/total_burn = 0
+	var/total_brute = 0
+	for(var/obj/limb/O in limbs) //hardcoded to streamline things a bit
+		total_brute += O.brute_dam
+		total_burn += O.burn_dam
 
 	var/oxy_l = ((species && species.flags & NO_BREATHE) ? 0 : getOxyLoss())
 	var/tox_l = ((species && species.flags & NO_POISON) ? 0 : getToxLoss())
@@ -28,7 +28,7 @@
 /mob/living/carbon/human/adjustBrainLoss(var/amount)
 
 	if(status_flags & GODMODE)
-		return FALSE	//godmode
+		return FALSE //godmode
 
 	if(species.has_organ["brain"])
 		var/datum/internal_organ/brain/sponge = internal_organs_by_name["brain"]
@@ -44,7 +44,7 @@
 /mob/living/carbon/human/setBrainLoss(var/amount)
 
 	if(status_flags & GODMODE)
-		return FALSE	//godmode
+		return FALSE //godmode
 
 	if(species.has_organ["brain"])
 		var/datum/internal_organ/brain/sponge = internal_organs_by_name["brain"]
@@ -59,7 +59,7 @@
 /mob/living/carbon/human/getBrainLoss()
 
 	if(status_flags & GODMODE)
-		return FALSE	//godmode
+		return FALSE //godmode
 
 	if(species.has_organ["brain"])
 		var/datum/internal_organ/brain/sponge = internal_organs_by_name["brain"]
@@ -279,7 +279,7 @@ In most cases it makes more sense to use apply_damage() instead! And make sure t
 //It automatically updates health status
 /mob/living/carbon/human/take_limb_damage(var/brute, var/burn, var/sharp = 0, var/edge = 0)
 	var/list/obj/limb/parts = get_damageable_limbs()
-	if(!parts.len)	return
+	if(!parts.len) return
 	var/obj/limb/picked = pick(parts)
 	if(brute != 0)
 		apply_damage(brute, BRUTE, picked, sharp, edge)
@@ -309,12 +309,12 @@ In most cases it makes more sense to use apply_damage() instead! And make sure t
 		parts -= picked
 	updatehealth()
 	speech_problem_flag = 1
-	if(update)	UpdateDamageIcon()
+	if(update) UpdateDamageIcon()
 
 // damage MANY limbs, in random order
 /mob/living/carbon/human/take_overall_damage(var/brute, var/burn, var/sharp = 0, var/edge = 0, var/used_weapon = null)
 	if(status_flags & GODMODE)
-		return    //godmode
+		return //godmode
 	var/list/obj/limb/parts = get_damageable_limbs(80)
 	var/amount_of_parts = length(parts)
 	for(var/obj/limb/L as anything in parts)
@@ -325,7 +325,7 @@ In most cases it makes more sense to use apply_damage() instead! And make sure t
 // damage MANY LIMBS, in random order
 /mob/living/carbon/human/proc/take_overall_armored_damage(var/damage, var/armour_type = ARMOR_MELEE, var/damage_type = BRUTE, var/limb_damage_chance = 80, var/penetration = 0, var/armour_break_pr_pen = 0, var/armour_break_flat = 0)
 	if(status_flags & GODMODE)
-		return    //godmode
+		return //godmode
 	var/list/obj/limb/parts = get_damageable_limbs(limb_damage_chance)
 	var/amount_of_parts = length(parts)
 	var/armour_config = GLOB.marine_ranged
@@ -401,7 +401,7 @@ This function restores all limbs.
 /*
 	Describes how human mobs get damage applied.
 	Less clear vars:
-	*	permanent_kill: whether this attack causes human to become irrevivable
+	* permanent_kill: whether this attack causes human to become irrevivable
 */
 /mob/living/carbon/human/apply_damage(var/damage = 0, var/damagetype = BRUTE, var/def_zone = null, \
 	var/sharp = 0, var/edge = 0, var/obj/used_weapon = null, var/no_limb_loss = FALSE, \

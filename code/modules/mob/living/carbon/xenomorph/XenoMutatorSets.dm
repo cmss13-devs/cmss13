@@ -32,7 +32,7 @@
 	var/pick = tgui_input_list(usr, "Which strain would you like to purchase?", "Purchase strain", mutators_for_purchase, theme="hive_status")
 	if(!pick)
 		return FALSE
-	if(alert(usr, "[GLOB.xeno_mutator_list[pick].description]\n\nConfirm mutation?", "Strain purchase", "Yes", "No") != "Yes")		return
+	if(alert(usr, "[GLOB.xeno_mutator_list[pick].description]\n\nConfirm mutation?", "Strain purchase", "Yes", "No") != "Yes") return
 	if(!Xeno.strain_checks())
 		return
 	if(GLOB.xeno_mutator_list[pick].apply_mutator(src))

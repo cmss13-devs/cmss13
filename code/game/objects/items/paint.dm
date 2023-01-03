@@ -1,4 +1,4 @@
-//NEVER USE THIS IT SUX	-PETETHEGOAT
+//NEVER USE THIS IT SUX -PETETHEGOAT
 
 var/global/list/cached_icons = list()
 

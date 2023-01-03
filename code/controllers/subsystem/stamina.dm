@@ -1,8 +1,8 @@
 var/global/list/active_staminas = list()
 
 SUBSYSTEM_DEF(stamina)
-	name     = "Stamina"
-	wait     = 2 SECONDS
+	name  = "Stamina"
+	wait  = 2 SECONDS
 	priority = SS_PRIORITY_STAMINA
 	flags = SS_NO_INIT
 	var/list/currentrun = list()

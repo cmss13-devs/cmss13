@@ -364,7 +364,7 @@
 					break
 	else
 		T = get_turf(loc)
-		if(T.density)	//I can totally imagine marines getting this crate on dense turf somehow
+		if(T.density) //I can totally imagine marines getting this crate on dense turf somehow
 			turf_blocked = TRUE
 		else
 			for(var/atom/movable/AM in T.contents)

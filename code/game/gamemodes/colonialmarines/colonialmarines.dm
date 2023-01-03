@@ -381,7 +381,7 @@
 		counted_xenos[hive] = list()
 		for(var/caste in ALL_XENO_CASTES)
 			counted_xenos[hive][caste] = 0
-		counted_xenos[hive]["pooled larva"] = GLOB.hive_datum[hive].stored_larva
+		counted_xenos[hive]["Pooled Larva"] = GLOB.hive_datum[hive].stored_larva
 
 	//Run through all our clients
 	//add up our marines by job type, surv numbers, and non-standard humans we don't care too much about
@@ -462,11 +462,12 @@
 			var/hive_amount = 0
 			var/hive_caste_text = ""
 			incrementer = 0
-			for(var/hive_caste in round_status_report["counted xenos"][hive])
-				hive_caste_text += "[hive_caste]: [round_status_report["counted xenos"][hive][hive_caste]]"
-				hive_amount += round_status_report["counted xenos"][hive][hive_caste]
+			var/list/per_hive_status = round_status_report["counted xenos"][hive]
+			for(var/hive_caste in per_hive_status)
+				hive_caste_text += "[hive_caste]: [per_hive_status[hive_caste]]"
+				hive_amount += per_hive_status[hive_caste]
 				incrementer++
-				if(incrementer < round_status_report["counted xenos"][hive].len)
+				if(incrementer < per_hive_status.len)
 					hive_caste_text += ", "
 			if(hive_amount)
 				hive_xeno_numbers[hive] = hive_amount

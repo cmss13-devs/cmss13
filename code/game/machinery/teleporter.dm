@@ -156,7 +156,7 @@
 /obj/structure/machinery/teleport
 	name = "teleport"
 	icon = 'icons/obj/structures/props/stationobjs.dmi'
-	density = 1
+	density = TRUE
 	anchored = 1.0
 	var/lockeddown = 0
 

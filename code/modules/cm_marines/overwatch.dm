@@ -936,7 +936,7 @@
 	busy = FALSE
 
 /obj/structure/machinery/computer/overwatch/almayer
-	density = 0
+	density = FALSE
 	icon = 'icons/obj/structures/machinery/computer.dmi'
 	icon_state = "overwatch"
 
@@ -947,7 +947,7 @@
 /obj/structure/machinery/computer/overwatch/pmc
 	faction = FACTION_PMC
 /obj/structure/machinery/computer/overwatch/twe
-	faction = FACTION_RESS
+	faction = FACTION_TWE
 /obj/structure/machinery/computer/overwatch/freelance
 	faction = FACTION_FREELANCER
 
@@ -956,7 +956,7 @@
 	desc = "Place a crate on here to allow bridge Overwatch officers to drop them on people's heads."
 	icon = 'icons/effects/warning_stripes.dmi'
 	anchored = 1
-	density = 0
+	density = FALSE
 	unslashable = TRUE
 	unacidable = TRUE
 	layer = 2.1 //It's the floor, man

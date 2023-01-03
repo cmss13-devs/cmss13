@@ -75,16 +75,16 @@
 
 /obj/item/ammo_magazine/revolver/cmb
 	name = "\improper Spearhead hollowpoint speed loader (.357)"
-	desc = "This speedloader for the Marshalls' most commonly issued sidearm is loaded with hollowpoint, either for colonies with wildlife problems or orbital stations, which favor hollowpoint over other ammunition to lessen the risk of hull breaches. In exchange, they're near useless against armored targets, but what's the chance of that being a problem on a space station?"
+	desc = "This speedloader was created for the Colonial Marshals' most commonly issued sidearm, loaded with hollowpoint rounds either for colonies with wildlife problems or orbital stations, which favor the lesser penetration over other ammunition to lessen the risk of hull breaches. In exchange, they're near useless against armored targets, but what's the chance of that being a problem on a space station?"
 	default_ammo = /datum/ammo/bullet/revolver/small/hollowpoint
 	caliber = ".357"
 	icon_state = "cmb_hp"
 	max_rounds = 6
 	gun_type = /obj/item/weapon/gun/revolver/cmb
 
-/obj/item/ammo_magazine/revolver/cmb/normalpoint //put these in the marshall ert
+/obj/item/ammo_magazine/revolver/cmb/normalpoint //put these in the marshal ert - ok sure :)
 	name = "\improper Spearhead speed loader (.357)"
-	desc = "This speedloader is fitted with standard .357 revolver bullets. A surprising rarity, as most CMB revolvers are issued to Marshalls on colonies with wildlife, or weakly-hulled space stations."
+	desc = "This speedloader is fitted with standard .357 revolver bullets. A surprising rarity, as most CMB revolvers are issued to Marshals on colonies with wildlife, or weakly-hulled space stations."
 	default_ammo = /datum/ammo/bullet/revolver/small
 	icon_state = "cmb"
 

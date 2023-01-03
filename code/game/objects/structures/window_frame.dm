@@ -4,7 +4,7 @@
 	icon = 'icons/turf/walls/window_frames.dmi'
 	icon_state = "window0_frame"
 	layer = WINDOW_FRAME_LAYER
-	density = 1
+	density = TRUE
 	throwpass = TRUE
 	climbable = 1 //Small enough to vault over, but you do need to vault over it
 	health = 600
@@ -62,7 +62,7 @@
 	relativewall()
 
 /obj/structure/window_frame/Destroy()
-	density = 0
+	density = FALSE
 	update_nearby_icons()
 	for(var/obj/effect/alien/weeds/weedwall/frame/WF in loc)
 		qdel(WF)

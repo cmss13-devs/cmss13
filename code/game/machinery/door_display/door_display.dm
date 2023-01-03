@@ -12,7 +12,7 @@
 	icon_state = "frame"
 	desc = "A remote control for a door."
 	anchored = 1.0 // can't pick it up
-	density = 0 // can walk through it.
+	density = FALSE // can walk through it.
 	var/open = 0 // If door should be open.
 	var/id = null // id of door it controls.
 	var/picture_state // icon_state of alert picture, if not displaying text/numbers

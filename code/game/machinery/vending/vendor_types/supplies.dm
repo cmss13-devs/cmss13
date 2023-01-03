@@ -16,7 +16,7 @@
 	unacidable = TRUE
 	unslashable = TRUE
 	wrenchable = FALSE
-	density = 0
+	density = FALSE
 
 	listed_products = list(
 

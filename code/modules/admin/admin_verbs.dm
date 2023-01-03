@@ -19,6 +19,7 @@ var/list/admin_verbs_default = list(
 	/client/proc/cmd_admin_xeno_report,  //Allows creation of IC reports by the Queen Mother
 	/client/proc/cmd_admin_create_AI_report,  //Allows creation of IC reports by the ships AI utilizing Almayer General channel. Relies on ARES being intact and tcomms being powered.
 	/client/proc/cmd_admin_create_AI_shipwide_report,  //Allows creation of IC reports by the ships AI utilizing announcement code. Will be shown to every conscious human on Almayer z-level regardless of ARES and tcomms status.
+	/client/proc/cmd_admin_create_AI_apollo_report,  //Allows creation of IC reports to the Apollo subprocessor, transmitting to Working Joes and Maintenance Drones.
 	/client/proc/cmd_admin_create_centcom_report, //Messages from USCM command/other factions.
 	/client/proc/cmd_admin_create_predator_report, //Predator ship AI report
 	/client/proc/admin_ghost, /*allows us to ghost/reenter body at will*/
@@ -188,12 +189,13 @@ var/list/admin_verbs_debug = list(
 	/client/proc/construct_env_dmm,
 	/client/proc/enter_tree,
 	/client/proc/set_tree_points,
-	/client/proc/purge_data_tab
+	/client/proc/purge_data_tab,
 )
 
 var/list/admin_verbs_debug_advanced = list(
-	/client/proc/proccall_advanced,
-	/client/proc/proccall_atom,
+	/client/proc/callproc_datum,
+	/client/proc/callproc,
+	/client/proc/SDQL2_query,
 )
 
 var/list/clan_verbs = list(
@@ -235,14 +237,15 @@ var/list/admin_mob_event_verbs_hideable = list(
 	/client/proc/possess,
 	/client/proc/release,
 	/client/proc/cmd_admin_grantfullaccess,
-	/client/proc/cmd_admin_grantallskills
+	/client/proc/cmd_admin_grantallskills,
+	/client/proc/admin_create_account
 )
 
 //verbs which can be hidden - needs work
 var/list/admin_verbs_hideable = list(
 	/client/proc/release,
 	/client/proc/possess,
-	/client/proc/proccall_atom,
+	/client/proc/callproc_datum,
 	/client/proc/jump_to_object,
 	/client/proc/jumptomob,
 	/client/proc/hide_admin_verbs,
@@ -315,8 +318,10 @@ var/list/roundstart_mod_verbs = list(
 		add_verb(src, clan_verbs)
 
 /client/proc/add_admin_whitelists()
-	if(CLIENT_IS_STAFF(src) || CLIENT_HAS_RIGHTS(src, R_MENTOR))
+	if(CLIENT_HAS_RIGHTS(src, R_MENTOR))
 		RoleAuthority.roles_whitelist[ckey] |= WHITELIST_MENTOR
+	if(CLIENT_IS_STAFF(src))
+		RoleAuthority.roles_whitelist[ckey] |= WHITELIST_JOE
 
 /client/proc/remove_admin_verbs()
 	remove_verb(src, list(

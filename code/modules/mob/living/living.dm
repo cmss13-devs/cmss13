@@ -447,7 +447,7 @@
 /mob/proc/flash_eyes()
 	return
 
-/mob/living/flash_eyes(intensity = 1, bypass_checks, type = /atom/movable/screen/fullscreen/flash, var/flash_timer = 40)
+/mob/living/flash_eyes(intensity = EYE_PROTECTION_FLASH, bypass_checks, type = /atom/movable/screen/fullscreen/flash, var/flash_timer = 40)
 	if( bypass_checks || (get_eye_protection() < intensity && !(sdisabilities & DISABILITY_BLIND)))
 		overlay_fullscreen("flash", type)
 		spawn(flash_timer)

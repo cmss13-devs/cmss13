@@ -1,5 +1,0 @@
-author: "stanalbatross"
-delete-after: True
-changes:
-  - bugfix: "fixed vaulting through windows"
-  - bugfix: "fixed ' \" / breaking in the megaphone"

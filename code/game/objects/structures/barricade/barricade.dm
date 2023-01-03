@@ -4,7 +4,7 @@
 	icon = 'icons/obj/structures/barricades.dmi'
 	climbable = TRUE
 	anchored = TRUE
-	density = 1
+	density = TRUE
 	throwpass = TRUE //You can throw objects over this, despite its density.
 	layer = BELOW_OBJ_LAYER
 	flags_atom = ON_BORDER

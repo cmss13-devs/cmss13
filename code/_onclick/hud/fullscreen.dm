@@ -68,7 +68,7 @@
 	screen_loc = "CENTER-7,CENTER-7"
 	layer = FULLSCREEN_LAYER
 	plane = FULLSCREEN_PLANE
-	mouse_opacity = 0
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	var/severity = 0
 	var/fs_view = 7
 	var/show_when_dead = FALSE
@@ -165,6 +165,9 @@
 /atom/movable/screen/fullscreen/xeno_pain
 	icon_state = "xeno_painoverlay"
 	layer = FULLSCREEN_PAIN_LAYER
+
+/atom/movable/screen/fullscreen/laser_blind
+	icon_state = "impairedoverlay1"
 
 //Weather overlays//
 

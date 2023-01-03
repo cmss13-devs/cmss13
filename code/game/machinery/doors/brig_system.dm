@@ -74,15 +74,7 @@
 
 		data["incidents"] += list(incident_data)
 
-	// Does this user have the ability to pardon?
-	data["can_pardon"] = FALSE
-	if (ishuman(user))
-		var/mob/living/carbon/human/human = user
-		var/obj/item/card/id/id_card = human.get_idcard()
-
-		if (id_card)
-			if ((id_card.paygrade in GLOB.co_paygrades) || (id_card.paygrade in GLOB.highcom_paygrades) || (id_card.paygrade == "PvI"))
-				data["can_pardon"] = TRUE
+	data["can_pardon"] = can_pardon(user)
 
 	return data
 
@@ -146,7 +138,8 @@
 			timer_reset(usr)
 
 		if ("pardon")
-			do_pardon(usr)
+			if (can_pardon(usr))
+				do_pardon(usr)
 
 		if ("remove_report")
 			remove_report(usr)
@@ -278,6 +271,18 @@
 	ai_silent_announcement("BRIG REPORT: [incident.criminal_name] had their jail time reset by [user].", ":p")
 
 	update_icon()
+
+// Does this user have the ability to pardon?
+/obj/structure/machinery/brig_cell/proc/can_pardon(mob/user)
+	if (ishuman(user))
+		var/mob/living/carbon/human/human = user
+		var/obj/item/card/id/id_card = human.get_idcard()
+
+		if (id_card)
+			if ((id_card.paygrade in GLOB.co_paygrades) || (id_card.paygrade in GLOB.highcom_paygrades) || (id_card.paygrade == "PvI"))
+				return TRUE
+
+	return FALSE
 
 
 /obj/structure/machinery/brig_cell/Initialize()

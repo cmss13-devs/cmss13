@@ -11,10 +11,7 @@
         "/datum/equipment_preset/survivor/engineer/ua",
         "/datum/equipment_preset/survivor/corporate",
         "/datum/equipment_preset/survivor/security/usmc",
-        "Survivor - Corporate Security Goon"
-    ],
-    "CO_survivor_types": [
-        "/datum/equipment_preset/survivor/usmc/commander/adjunct"
+        "/datum/equipment_preset/survivor/goon"
     ],
 	"synth_survivor_types": [
         "/datum/equipment_preset/synth/survivor/forecon"

@@ -4014,7 +4014,7 @@
 /obj/structure/barricade/deployable{
 	dir = 8
 	},
-/obj/item/ammo_magazine/rifle/explosive{
+/obj/item/ammo_magazine/rifle/heap{
 	current_rounds = 0
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -8426,7 +8426,7 @@
 	},
 /area/lv522/outdoors/colony_streets/central_streets)
 "ejy" = (
-/obj/item/ammo_magazine/rifle/explosive{
+/obj/item/ammo_magazine/rifle/heap{
 	current_rounds = 0
 	},
 /turf/open/floor/prison{
@@ -12358,12 +12358,12 @@
 /area/lv522/indoors/c_block/mining)
 "gbk" = (
 /obj/structure/surface/table/almayer,
-/obj/item/ammo_magazine/rifle/explosive{
+/obj/item/ammo_magazine/rifle/heap{
 	current_rounds = 0;
 	pixel_x = -3;
 	pixel_y = 5
 	},
-/obj/item/ammo_magazine/rifle/explosive{
+/obj/item/ammo_magazine/rifle/heap{
 	current_rounds = 0;
 	pixel_x = 11;
 	pixel_y = -4
@@ -13554,7 +13554,7 @@
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	dir = 8;
 	locked = 1;
-	name = "\improper Marshall Head Office";
+	name = "\improper Marshals Head Office";
 	req_access = null
 	},
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -15501,7 +15501,7 @@
 "how" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	dir = 1;
-	name = "\improper Marshall Office";
+	name = "\improper Marshals Office";
 	req_access = null
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -24841,7 +24841,7 @@
 	},
 /area/lv522/indoors/a_block/admin)
 "kVV" = (
-/obj/item/ammo_magazine/rifle/explosive{
+/obj/item/ammo_magazine/rifle/heap{
 	current_rounds = 0
 	},
 /turf/open/floor/prison,
@@ -25182,7 +25182,7 @@
 /area/lv522/outdoors/colony_streets/north_west_street)
 "lea" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass{
-	name = "\improper Marshall Office Interrogation";
+	name = "\improper Marshals Office Interrogation";
 	req_access = null
 	},
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -25469,7 +25469,7 @@
 	},
 /area/lv522/indoors/c_block/casino)
 "lkH" = (
-/obj/item/ammo_magazine/rifle/explosive{
+/obj/item/ammo_magazine/rifle/heap{
 	current_rounds = 0
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
@@ -30887,7 +30887,7 @@
 /turf/open/auto_turf/shale/layer0,
 /area/lv522/outdoors/w_rockies)
 "nCM" = (
-/obj/item/ammo_magazine/rifle/explosive{
+/obj/item/ammo_magazine/rifle/heap{
 	current_rounds = 0
 	},
 /turf/open/auto_turf/shale/layer0,
@@ -33309,7 +33309,7 @@
 /obj/structure/barricade/deployable{
 	dir = 8
 	},
-/obj/item/ammo_magazine/rifle/explosive{
+/obj/item/ammo_magazine/rifle/heap{
 	current_rounds = 0
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -38875,7 +38875,7 @@
 	},
 /area/lv522/indoors/a_block/hallway)
 "qDr" = (
-/obj/item/ammo_magazine/rifle/explosive{
+/obj/item/ammo_magazine/rifle/heap{
 	current_rounds = 0
 	},
 /turf/open/floor/prison,
@@ -39778,7 +39778,7 @@
 	},
 /area/lv522/indoors/c_block/casino)
 "qSw" = (
-/obj/item/ammo_magazine/rifle/explosive{
+/obj/item/ammo_magazine/rifle/heap{
 	current_rounds = 0
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -39998,7 +39998,7 @@
 /obj/item/weapon/gun/rifle/m41a{
 	current_mag = null
 	},
-/obj/item/ammo_magazine/rifle/explosive{
+/obj/item/ammo_magazine/rifle/heap{
 	current_rounds = 0
 	},
 /turf/open/auto_turf/shale/layer0,
@@ -40769,7 +40769,7 @@
 	},
 /area/lv522/indoors/a_block/bridges/op_centre)
 "rig" = (
-/obj/item/ammo_magazine/rifle/explosive{
+/obj/item/ammo_magazine/rifle/heap{
 	current_rounds = 0
 	},
 /turf/open/shuttle/dropship{
@@ -43041,7 +43041,7 @@
 	},
 /area/lv522/landing_zone_forecon/UD6_Typhoon)
 "scw" = (
-/obj/item/ammo_magazine/rifle/explosive{
+/obj/item/ammo_magazine/rifle/heap{
 	current_rounds = 0
 	},
 /turf/open/shuttle/dropship{
@@ -44828,7 +44828,7 @@
 "sPp" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	dir = 1;
-	name = "\improper Marshall Office Armory";
+	name = "\improper Marshals Office Armory";
 	req_access = null
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -46519,7 +46519,7 @@
 /obj/structure/barricade/deployable{
 	dir = 8
 	},
-/obj/item/ammo_magazine/rifle/explosive{
+/obj/item/ammo_magazine/rifle/heap{
 	current_rounds = 0
 	},
 /turf/open/auto_turf/shale/layer0,
@@ -50928,7 +50928,7 @@
 /turf/open/floor/prison,
 /area/lv522/indoors/a_block/dorms)
 "vjC" = (
-/obj/item/ammo_magazine/rifle/explosive{
+/obj/item/ammo_magazine/rifle/heap{
 	current_rounds = 0
 	},
 /turf/open/auto_turf/shale/layer0,
@@ -58459,7 +58459,7 @@
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	icon_state = "door_locked";
 	locked = 1;
-	name = "\improper Marshall Office Armory";
+	name = "\improper Marshals Office Armory";
 	req_access = null
 	},
 /obj/structure/pipes/standard/simple/hidden/green{

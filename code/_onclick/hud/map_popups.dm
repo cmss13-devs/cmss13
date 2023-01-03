@@ -17,9 +17,9 @@
 	plane = HUD_PLANE
 	layer = ABOVE_HUD_LAYER
 	animate_movement = SLIDE_STEPS
-//	speech_span = SPAN_ROBOT
+// speech_span = SPAN_ROBOT
 	vis_flags = VIS_INHERIT_PLANE
-//	appearance_flags = APPEARANCE_UI
+// appearance_flags = APPEARANCE_UI
 	/// A reference to the object in the slot. Grabs or items, generally.
 	var/obj/master = null
 	/// A reference to the owner HUD, if any.

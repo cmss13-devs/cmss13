@@ -14,7 +14,7 @@
 		if(get_dist(src, user) > 1)
 			return
 
-		if(!directwired)		// only for attaching to directwired machines
+		if(!directwired) // only for attaching to directwired machines
 			return
 
 		coil.turf_place(T, user)
@@ -69,7 +69,7 @@
 	var/dash = findtext(icon_state, "-")
 	d1 = text2num( copytext( icon_state, 1, dash ) )
 	d2 = text2num( copytext( icon_state, dash+1 ) )
-	var/turf/T = src.loc			// hide if turf is not intact
+	var/turf/T = src.loc // hide if turf is not intact
 	if(level==1) hide(T.intact_tile)
 	update_icon()
 	GLOB.cable_list += src
@@ -123,7 +123,7 @@
 		// wires are irrelevant so I have disabled this message for now
 		//message_staff("[key_name(user)](<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminmoreinfo;extra=\ref[user]'>?</A>) cut a wire at ([x],[y],[z]) - <A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[x];Y=[y];Z=[z]'>JMP</a>")
 
-		return	// not needed, but for clarity
+		return // not needed, but for clarity
 
 
 	else if(istype(W, /obj/item/stack/cable_coil))

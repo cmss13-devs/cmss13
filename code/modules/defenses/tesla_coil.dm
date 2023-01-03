@@ -1,7 +1,7 @@
-#define TESLA_COIL_FIREDELAY 	20
-#define TESLA_COIL_RANGE 		3
-#define TESLA_COIL_DAZE_EFFECT 		5
-#define TESLA_COIL_SLOW_EFFECT 		3
+#define TESLA_COIL_FIREDELAY 20
+#define TESLA_COIL_RANGE 3
+#define TESLA_COIL_DAZE_EFFECT 5
+#define TESLA_COIL_SLOW_EFFECT 3
 
 /obj/structure/machinery/defenses/tesla_coil
 	name = "\improper 21S tesla coil"

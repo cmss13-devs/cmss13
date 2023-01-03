@@ -1,7 +1,7 @@
 #define isAI(A) (istype(A, /mob/living/silicon/ai))
 #define isSilicon(A) (istype(A, /mob/living/silicon))
-#define isRemoteControlling(M)	(M && M.client && M.client.remote_control)
-#define isRemoteControllingOrAI(M)	((M && M.client && M.client.remote_control) || (istype(M, /mob/living/silicon/ai)))
+#define isRemoteControlling(M) (M && M.client && M.client.remote_control)
+#define isRemoteControllingOrAI(M) ((M && M.client && M.client.remote_control) || (istype(M, /mob/living/silicon/ai)))
 
 #define isbrain(A) (istype(A, /mob/living/brain))
 #define isrobot(A) (istype(A, /mob/living/silicon/robot))

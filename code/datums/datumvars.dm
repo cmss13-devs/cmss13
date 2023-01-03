@@ -13,6 +13,17 @@
 /client/can_vv_modify()
 	return FALSE
 
+/datum/proc/can_vv_mark()
+	return TRUE
+
+/// Called whenever a var is edited to edit the var, returning FALSE will reject the edit.
+/datum/proc/vv_edit_var(var_name, var_value)
+	if(var_name == NAMEOF(src, vars))
+		return FALSE
+	vars[var_name] = var_value
+	datum_flags |= DF_VAR_EDITED
+	return TRUE
+
 /client/proc/debug_variables(datum/D in world)
 	set category = "Debug"
 	set name = "View Variables"
@@ -163,9 +174,9 @@
 	body += "<td width='50%'><div align='center'><a href='?_src_=vars;datumrefresh=\ref[D]'>Refresh</a>"
 
 	//if(ismob(D))
-	//	body += "<br><a href='?_src_=vars;mob_player_panel=\ref[D]'>Show player panel</a></div></td></tr></table></div><hr>"
+	// body += "<br><a href='?_src_=vars;mob_player_panel=\ref[D]'>Show player panel</a></div></td></tr></table></div><hr>"
 
-	body += {"	<form>
+	body += {" <form>
 				<select name="file" size="1"
 				onchange="loadPage(this.form.elements\[0\])"
 				target="_parent._top"
@@ -173,7 +184,7 @@
 				style="background-color:#ffffff">
 			"}
 
-	body += {"	<option value>Select option</option>
+	body += {" <option value>Select option</option>
 				<option value> </option>
 			"}
 
@@ -414,7 +425,7 @@ body
 			to_chat(usr, "This can only be used on instances of type /mob")
 			return
 
-		addtimer(CALLBACK(admin_holder, /datum/admins.proc/show_player_panel, M), 0.5 SECONDS)
+		addtimer(CALLBACK(admin_holder, TYPE_PROC_REF(/datum/admins, show_player_panel), M), 0.5 SECONDS)
 		href_list["datumrefresh"] = href_list["mob_player_panel"]
 
 	else if(href_list["give_disease"])
@@ -596,6 +607,10 @@ body
 			to_chat(usr, SPAN_WARNING("This datum is protected. Access Denied"))
 			return
 
+		if(!D.can_vv_mark())
+			to_chat(usr, SPAN_WARNING("This datum cannot be marked."))
+			return
+
 		if(D in admin_holder.marked_datums)
 			admin_holder.marked_datums -= D
 		else
@@ -607,7 +622,7 @@ body
 			return
 
 		var/datum/D = locate(href_list["adv_proccall"])
-		callproc(D)
+		callproc_datum(D)
 
 
 	else if(href_list["rotatedatum"])
@@ -620,8 +635,8 @@ body
 			return
 
 		switch(href_list["rotatedir"])
-			if("right")	A.setDir(turn(A.dir, -45))
-			if("left")	A.setDir(turn(A.dir, 45))
+			if("right") A.setDir(turn(A.dir, -45))
+			if("left") A.setDir(turn(A.dir, 45))
 		href_list["datumrefresh"] = href_list["rotatedatum"]
 
 	else if(href_list["makemonkey"])
@@ -633,7 +648,7 @@ body
 			to_chat(usr, "This can only be done to instances of type /mob/living/carbon/human")
 			return
 
-		if(alert("Confirm mob type change?",,"Transform","Cancel") != "Transform")	return
+		if(alert("Confirm mob type change?",,"Transform","Cancel") != "Transform") return
 		if(!H)
 			to_chat(usr, "Mob doesn't exist anymore")
 			return
@@ -648,7 +663,7 @@ body
 			to_chat(usr, "This can only be done to instances of type /mob/living/carbon/human")
 			return
 
-		if(alert("Confirm mob type change?",,"Transform","Cancel") != "Transform")	return
+		if(alert("Confirm mob type change?",,"Transform","Cancel") != "Transform") return
 		if(!H)
 			to_chat(usr, "Mob doesn't exist anymore")
 			return
@@ -663,7 +678,7 @@ body
 			to_chat(usr, "This can only be done to instances of type /mob/living/carbon/human")
 			return
 
-		if(alert("Confirm mob type change?",,"Transform","Cancel") != "Transform")	return
+		if(alert("Confirm mob type change?",,"Transform","Cancel") != "Transform") return
 		if(!H)
 			to_chat(usr, "Mob doesn't exist anymore")
 			return
@@ -689,7 +704,7 @@ body
 			to_chat(usr, "This can only be done to instances of type /mob/living/carbon/human")
 			return
 
-		if(alert("Confirm mob type change?",,"Transform","Cancel") != "Transform")	return
+		if(alert("Confirm mob type change?",,"Transform","Cancel") != "Transform") return
 		if(!H)
 			to_chat(usr, "Mob doesn't exist anymore")
 			return
@@ -820,7 +835,7 @@ body
 			to_chat(usr, "This can only be done to instances of type /mob/living")
 			return
 		var/list/possibleverbs = list()
-		possibleverbs += "Cancel" 								// One for the top...
+		possibleverbs += "Cancel" // One for the top...
 		possibleverbs += typesof(/mob/proc,/mob/verb,/mob/living/proc,/mob/living/verb)
 		switch(H.type)
 			if(/mob/living/carbon/human)
@@ -830,7 +845,7 @@ body
 			if(/mob/living/silicon/ai)
 				possibleverbs += typesof(/mob/living/silicon/proc,/mob/living/silicon/ai/proc)
 		possibleverbs -= H.verbs
-		possibleverbs += "Cancel" 								// ...And one for the bottom
+		possibleverbs += "Cancel" // ...And one for the bottom
 
 		var/verb = tgui_input_list(usr, "Select a verb!", "Verbs", possibleverbs)
 		if(!H)

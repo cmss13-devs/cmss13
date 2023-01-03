@@ -1,7 +1,7 @@
 //Procedures in this file: Putting items in body cavity. Implant removal. Embedded object removal.
 
 //////////////////////////////////////////////////////////////////
-//					ITEM PLACEMENT SURGERY						//
+// ITEM PLACEMENT SURGERY //
 //////////////////////////////////////////////////////////////////
 
 //Implant and removal surgeries allow either removing the implant just inserted or replacing a removed one with a new item.
@@ -244,7 +244,7 @@
 
 
 //////////////////////////////////////////////////////////////////
-//				EMBEDDED ITEM REMOVAL SURGERY					//
+// EMBEDDED ITEM REMOVAL SURGERY //
 //////////////////////////////////////////////////////////////////
 
 /datum/surgery/embedded
@@ -341,5 +341,5 @@
 		if(istype(imp))
 			target.visible_message(SPAN_WARNING("Something beeps inside [target]'s [surgery.affected_limb.display_name]!"))
 			playsound(target, 'sound/items/countdown.ogg', 25, TRUE)
-			addtimer(CALLBACK(imp, /obj/item/implant.proc/activate), 2.5 SECONDS)
+			addtimer(CALLBACK(imp, TYPE_PROC_REF(/obj/item/implant, activate)), 2.5 SECONDS)
 	return FALSE

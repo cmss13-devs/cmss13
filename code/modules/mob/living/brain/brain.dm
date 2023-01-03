@@ -14,10 +14,10 @@
 	..()
 
 /mob/living/brain/Destroy()
-	if(key)				//If there is a mob connected to this thing. Have to check key twice to avoid false death reporting.
-		if(stat!=DEAD)	//If not dead.
-			death(null, 1)	//Brains can die again. AND THEY SHOULD AHA HA HA HA HA HA
-		ghostize()		//Ghostize checks for key so nothing else is necessary.
+	if(key) //If there is a mob connected to this thing. Have to check key twice to avoid false death reporting.
+		if(stat!=DEAD) //If not dead.
+			death(null, 1) //Brains can die again. AND THEY SHOULD AHA HA HA HA HA HA
+		ghostize() //Ghostize checks for key so nothing else is necessary.
 	. = ..()
 
 /mob/living/brain/say_understands(var/mob/other)//Goddamn is this hackish, but this say code is so odd

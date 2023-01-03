@@ -3,7 +3,7 @@
 
 // Used for spray that you spray at walls, tables, hydrovats etc
 /obj/effect/decal/spraystill
-	density = 0
+	density = FALSE
 	anchored = 1
 	layer = FLY_LAYER
 
@@ -26,7 +26,7 @@
 		check_reactions()
 	tiles_left--
 	if(tiles_left)
-		addtimer(CALLBACK(src, .proc/move_towards, A, move_delay, tiles_left), move_delay)
+		addtimer(CALLBACK(src, PROC_REF(move_towards), A, move_delay, tiles_left), move_delay)
 	else
 		qdel(src)
 
@@ -64,9 +64,9 @@
 	name = "Exosuit wreckage"
 	desc = "Remains of some unfortunate mecha. Completely unrepairable."
 	icon = 'icons/obj/structures/props/mech.dmi'
-	density = 1
+	density = TRUE
 	anchored = 0
-	opacity = 0
+	opacity = FALSE
 	unacidable = FALSE
 
 /obj/effect/decal/mecha_wreckage/initialize_pass_flags(var/datum/pass_flags_container/PF)

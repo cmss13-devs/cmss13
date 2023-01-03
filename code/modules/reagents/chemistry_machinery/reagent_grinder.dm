@@ -3,7 +3,7 @@
 	icon = 'icons/obj/structures/machinery/kitchen.dmi'
 	icon_state = "juicer1"
 	layer = ABOVE_TABLE_LAYER
-	density = 0
+	density = FALSE
 	anchored = 0
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 5
@@ -237,7 +237,7 @@
 		return
 	linked_storage = locate(/obj/structure/machinery/smartfridge/chemistry) in range(tether_range, src)
 	if(linked_storage)
-		RegisterSignal(linked_storage, COMSIG_PARENT_QDELETING, .proc/cleanup)
+		RegisterSignal(linked_storage, COMSIG_PARENT_QDELETING, PROC_REF(cleanup))
 		visible_message(SPAN_NOTICE("<b>The [src] beeps:</b> Smartfridge connected."))
 
 /obj/structure/machinery/reagentgrinder/proc/is_allowed(var/obj/item/reagent_container/O)

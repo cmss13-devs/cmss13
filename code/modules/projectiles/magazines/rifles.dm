@@ -36,7 +36,7 @@
 
 /obj/item/ammo_magazine/rifle/heap
 	name = "\improper M41A HEAP magazine (10x24mm)"
-	desc = "A 10mm armor piercing high explosive magazine. The default ammunition of the USCM - accept no substitute."
+	desc = "A 10mm armor piercing high explosive magazine."
 	icon_state = "m41a_heap"
 	default_ammo = /datum/ammo/bullet/rifle/heap
 

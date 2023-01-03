@@ -2059,9 +2059,21 @@ Defined in conflicts.dm of the #defines folder.
 	if(get_dist(user,target) > max_range+4)
 		to_chat(user, SPAN_WARNING("Too far to fire the attachment!"))
 		return
+
+	if(!istype(loc, /obj/item/weapon/gun))
+		to_chat(user, SPAN_WARNING("\The [src] must be attached to a gun!"))
+		return
+
+	var/obj/item/weapon/gun/attached_gun = loc
+
+	if(!(attached_gun.flags_item & WIELDED))
+		to_chat(user, SPAN_WARNING("You must wield \the [attached_gun] to fire \the [src]!"))
+		return
+
 	if(current_rounds > round_usage_per_tile && ..())
 		unleash_flame(target, user)
-
+		if(attached_gun.last_fired < world.time)
+			attached_gun.last_fired = world.time
 
 /obj/item/attachable/attached_gun/flamer/proc/unleash_flame(atom/target, mob/living/user)
 	set waitfor = 0

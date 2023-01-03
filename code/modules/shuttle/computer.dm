@@ -112,6 +112,8 @@
 
 /obj/structure/machinery/computer/shuttle/ert/ui_status(mob/user, datum/ui_state/state)
 	. = ..()
+	if(inoperable())
+		return UI_CLOSE
 	if(disabled)
 		return UI_UPDATE
 

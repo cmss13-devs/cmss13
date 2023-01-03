@@ -21,7 +21,7 @@
 	flags_cold_protection = BODY_FLAG_HEAD
 	min_cold_protection_temperature = SPACE_HELMET_min_cold_protection_temperature
 	siemens_coefficient = 0.9
-	eye_protection = 2
+	eye_protection = EYE_PROTECTION_WELDING
 
 /obj/item/clothing/suit/space
 	name = "Space suit"

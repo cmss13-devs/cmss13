@@ -80,7 +80,7 @@
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_2
 	plasma_cost = 0
-	xeno_cooldown = 140
+	xeno_cooldown = 16 SECONDS
 
 	// Config values
 	var/base_heal = 100
@@ -97,7 +97,7 @@
 	action_type = XENO_ACTION_ACTIVATE
 	ability_primacy = XENO_PRIMARY_ACTION_3
 	plasma_cost = 0
-	xeno_cooldown = 230
+	xeno_cooldown = 23 SECONDS
 
 	// Config values
 	var/activation_delay = 20

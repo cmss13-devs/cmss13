@@ -186,12 +186,13 @@ var/list/admin_verbs_debug = list(
 	/client/proc/construct_env_dmm,
 	/client/proc/enter_tree,
 	/client/proc/set_tree_points,
-	/client/proc/purge_data_tab
+	/client/proc/purge_data_tab,
 )
 
 var/list/admin_verbs_debug_advanced = list(
-	/client/proc/proccall_advanced,
-	/client/proc/proccall_atom,
+	/client/proc/callproc_datum,
+	/client/proc/callproc,
+	/client/proc/SDQL2_query,
 )
 
 var/list/clan_verbs = list(
@@ -233,14 +234,15 @@ var/list/admin_mob_event_verbs_hideable = list(
 	/client/proc/possess,
 	/client/proc/release,
 	/client/proc/cmd_admin_grantfullaccess,
-	/client/proc/cmd_admin_grantallskills
+	/client/proc/cmd_admin_grantallskills,
+	/client/proc/admin_create_account
 )
 
 //verbs which can be hidden - needs work
 var/list/admin_verbs_hideable = list(
 	/client/proc/release,
 	/client/proc/possess,
-	/client/proc/proccall_atom,
+	/client/proc/callproc_datum,
 	/client/proc/jump_to_object,
 	/client/proc/jumptomob,
 	/client/proc/hide_admin_verbs,

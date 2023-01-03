@@ -69,3 +69,25 @@
   stanalbatross:
   - code_imp: converted three base byond vars to true/false bools
   - ui: converted disposals to tgui
+2023-01-03:
+  QuickLoad:
+  - spellcheck: fixed typos regarding Colonial Marshals
+  Stanalbatross, TheDonkified:
+  - ui: re-added the old multiple highlight system, originally made by thedonkified.
+      You can add up to 10 individual highlights, customise their colours, and toggle
+      if they highlight the whole message or not.
+  - ui: you can now use regex for text highlighting. The syntax is /[regex expression]/,
+      eg /dog[0-9]/. There are no quantifiers, but you can use capture groups. The
+      regex must read a minimum of two characters.
+  realforest2001:
+  - spellcheck: Changes mentions of RESS to TWE to keep consistent and lore accurate.
+  stanalbatross:
+  - balance: increased clothesline cooldown from 14s to 16s
+  - balance: beserker rav buffed slash will now slow instead of superslow, and its
+      duration will be 3.5s as intended instead of 0.6s
+  - balance: ravs can no longer heal from clothesline/eviscerate while on fire
+  - rscdel: removed the airlock docking controller and embedded airlock controllers,
+      they were completely unused
+  - rscdel: removed the centcom accounts database, which was only used in one proc
+      and was only present on the admin level.
+  - admin: added a mob event verb to make an account

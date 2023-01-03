@@ -7,3 +7,4 @@
 /proc/call_async(datum/source, proc_type, list/arguments)
 	set waitfor = FALSE
 	return call(source, proc_type)(arglist(arguments))
+

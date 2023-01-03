@@ -20,7 +20,6 @@
 	var/subspace_transmission = 0
 	/// If true, subspace_transmission can be toggled at will.
 	var/subspace_switchable = FALSE
-	var/syndie = 0//Holder to see if it's a syndicate encrpyed radio
 	var/maxf = 1499
 	var/volume = RADIO_VOLUME_QUIET
 	///if false it will just default to RADIO_VOLUME_QUIET every time
@@ -32,7 +31,6 @@
 	w_class = SIZE_SMALL
 
 	matter = list("glass" = 25,"metal" = 75)
-		//FREQ_BROADCASTING = 2
 
 	var/datum/radio_frequency/radio_connection
 	var/list/datum/radio_frequency/secure_radio_connections = new
@@ -82,7 +80,6 @@
 
 /obj/item/device/radio/attack_self(mob/user as mob)
 	..()
-	user.set_interaction(src)
 	tgui_interact(user)
 
 /obj/item/device/radio/ui_state(mob/user)
@@ -108,9 +105,17 @@
 	data["minFrequency"] = freerange ? MIN_FREE_FREQ : MIN_FREQ
 	data["maxFrequency"] = freerange ? MAX_FREE_FREQ : MAX_FREQ
 	data["freqlock"] = freqlock
-	data["channels"] = list()
+
+	var/list/radio_channels = list()
+
 	for(var/channel in channels)
-		data["channels"][channel] = channels[channel] & FREQ_LISTENING
+		radio_channels += list(list(
+			"name" = channel,
+			"status" = channels[channel] & FREQ_LISTENING,
+			"hotkey" = department_radio_keys[channel]))
+
+	data["channels"] = radio_channels
+
 	data["command"] = volume
 	data["useCommand"] = use_volume
 	data["subspace"] = subspace_transmission
@@ -410,7 +415,6 @@
 
 /obj/item/device/radio/attackby(obj/item/W as obj, mob/user as mob)
 	..()
-	user.set_interaction(src)
 	if (!HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER))
 		return
 	b_stat = !( b_stat )
@@ -454,7 +458,6 @@
 
 /obj/item/device/radio/borg/attackby(obj/item/W as obj, mob/user as mob)
 // ..()
-	user.set_interaction(src)
 	if (!(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER) || (istype(W, /obj/item/device/encryptionkey))))
 		return
 
@@ -495,7 +498,6 @@
 
 /obj/item/device/radio/borg/proc/recalculateChannels()
 	src.channels = list()
-	src.syndie = 0
 
 	var/mob/living/silicon/robot/D = src.loc
 	if(D.module)
@@ -510,10 +512,6 @@
 				continue
 			src.channels += ch_name
 			src.channels[ch_name] += keyslot.channels[ch_name]
-
-		if(keyslot.syndie)
-			src.syndie = 1
-
 
 	for (var/ch_name in src.channels)
 		secure_radio_connections[ch_name] = SSradio.add_object(src, radiochannels[ch_name],  RADIO_CHAT)
@@ -578,8 +576,6 @@
 
 /obj/item/device/radio/off
 	listening = 0
-
-
 
 //MARINE RADIO
 

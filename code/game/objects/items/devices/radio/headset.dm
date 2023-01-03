@@ -178,7 +178,6 @@
 	channels = list()
 	translate_apollo = FALSE
 	translate_hive = FALSE
-	syndie = FALSE
 
 	tracking_options = length(inbuilt_tracking_options) ? inbuilt_tracking_options.Copy() : list()
 	for(var/i in keys)
@@ -194,8 +193,6 @@
 			translate_apollo = TRUE
 		if(key.translate_hive)
 			translate_hive = TRUE
-		if(key.syndie)
-			syndie = TRUE
 
 	if(length(tracking_options))
 		var/list/tracking_stuff = list()
@@ -787,10 +784,6 @@
 	initial_keys = list(/obj/item/device/encryptionkey/colony)
 	has_hud = TRUE
 	hud_type = MOB_HUD_FACTION_UPP
-
-/obj/item/device/radio/headset/distress/UPP/recalculateChannels()
-	..()
-	syndie = 1
 
 /obj/item/device/radio/headset/distress/UPP/cct
 	name = "UPP-CCT headset"

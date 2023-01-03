@@ -110,7 +110,7 @@ export const Radio = (props, context) => {
                   </Box>
                 )}
                 {channels.map((channel) => (
-                  <Box key={channel.name}>
+                  <Box key={channel}>
                     <Button
                       icon={channel.status ? 'check-square-o' : 'square-o'}
                       selected={channel.status}

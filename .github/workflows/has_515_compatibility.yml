@@ -1,41 +1,17 @@
-# Checks that a pull request has the commits in required_commits.txt.
-# This uses the required_commits.txt from master, so that you cannot mess it up with an old branch.
-name: Check required commits
+# This workflow was added in the 515 compatibility PR - https://github.com/tgstation/tgstation/pull/71161
+# By having this in your repository, we know that you have that PR merged as well.
+# This will be REMOVED when 515 is fully compatible and ready, but for now we need this
+# to prevent merge skew.
+# In the future, this will be a more proper system where commits can be added into a text file,
+# but that's a lot more difficult and I'm in a huge time crunch right now.
+name: "515 Compatibility Pass"
 on:
   pull_request:
     branches:
     - master
-    - main
 jobs:
-  check_required_commits:
-    name: Check required commits
+  has_515_compatibility:
+    name: Has 515 Compatibility
     runs-on: ubuntu-20.04
-    concurrency:
-      group: check_required_commits-${{ github.ref }}
-      cancel-in-progress: true
     steps:
-      - name: Checkout master
-        uses: actions/checkout@v3
-        with:
-          repository: ${{ github.event.pull_request.base.repo.full_name }}
-          path: base
-      - name: Read required commits
-        id: required_commits
-        run: |
-          REQUIRED_COMMITS=$(jq -nrRc '[inputs | capture("^(?<commit>[a-f0-9]+) = (?<name>.+)$") | .commit, .name] | @tsv' ./base/.github/required_commits.txt)
-          echo $REQUIRED_COMMITS
-          echo "required_commits=$REQUIRED_COMMITS" >> $GITHUB_ENV
-      - name: Checkout branch
-        uses: actions/checkout@v3
-        with:
-          # We want as much depth as possible, but fetch-depth: 0 also checks out all branches.
-          fetch-depth: 9999999999999999
-          path: pr
-      - name: Check for required commits
-        run: |
-          chmod +x ./tools/ci/check_required_commits.sh
-          ./tools/ci/check_required_commits.sh
-        shell: bash
-        working-directory: pr
-        env:
-          REQUIRED_COMMITS: ${{ env.required_commits }}
+      - run: echo "You're ready to go!"

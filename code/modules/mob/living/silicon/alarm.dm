@@ -1,7 +1,7 @@
 /datum/alarm
-	var/area/area		//the area associated with the alarm. Used to identify the alarm
-	var/list/sources	//list of things triggering the alarm. Used to determine when the alarm should be cleared.
-	var/list/cameras	//list of cameras that can be switched to, if the player has that capability.
+	var/area/area //the area associated with the alarm. Used to identify the alarm
+	var/list/sources //list of things triggering the alarm. Used to determine when the alarm should be cleared.
+	var/list/cameras //list of cameras that can be switched to, if the player has that capability.
 
 /datum/alarm/New(area/A, list/sourcelist=list(), list/cameralist=list())
 	area = A
@@ -9,7 +9,7 @@
 	cameras = cameralist
 
 /mob/living/silicon
-	var/alarms = list("Motion"=list(), "Fire"=list(), "Atmosphere"=list(), "Power"=list(), "Camera"=list())	//each sublist stores alarms keyed by the area name
+	var/alarms = list("Motion"=list(), "Fire"=list(), "Atmosphere"=list(), "Power"=list(), "Camera"=list()) //each sublist stores alarms keyed by the area name
 	var/list/alarms_to_show = list()
 	var/list/alarms_to_clear = list()
 	var/list/alarm_types_show = list("Motion" = 0, "Fire" = 0, "Atmosphere" = 0, "Power" = 0, "Camera" = 0)

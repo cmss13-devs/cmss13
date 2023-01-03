@@ -9,7 +9,7 @@
 	var/language = LANGUAGE_XENOMORPH
 	var/melee_damage_lower = 10
 	var/melee_damage_upper = 20
-	var/melee_vehicle_damage = 10	//allows fine tuning melee damage to vehicles per caste.
+	var/melee_vehicle_damage = 10 //allows fine tuning melee damage to vehicles per caste.
 	var/evasion = XENO_EVASION_NONE
 
 	var/speed = XENO_SPEED_TIER_10
@@ -196,7 +196,7 @@
 	var/list/used_free_slots
 	var/list/tier_2_xenos = list()//list of living tier2 xenos
 	var/list/tier_3_xenos = list()//list of living tier3 xenos
-	var/list/totalXenos	= list()  //list of living xenos
+	var/list/totalXenos = list()  //list of living xenos
 	var/list/totalDeadXenos = list()//list of previously living xenos
 	var/xeno_queen_timer
 	var/isSlotOpen = TRUE //Set true for starting alerts only after the hive has reached its full potential
@@ -466,8 +466,8 @@
 		L.handle_xeno_leader_pheromones()
 
 /*
- *    Helper procs for the Hive Status UI
- *    These are all called by the hive status UI manager to update its data
+ * Helper procs for the Hive Status UI
+ * These are all called by the hive status UI manager to update its data
  */
 
 // Returns a list of how many of each caste of xeno there are, sorted by tier
@@ -782,6 +782,9 @@
 				xeno.set_hive_and_update(XENO_HIVE_FORSAKEN)
 			else
 				to_chat(xeno, SPAN_XENOANNOUNCE("The Queen has left without you, you quickly find a hiding place to enter hibernation as you lose touch with the hive mind."))
+				if(xeno.stomach_contents.len)
+					xeno.devour_timer = 0
+					xeno.handle_stomach_contents()
 				qdel(xeno)
 			stored_larva++
 	for(var/i in GLOB.alive_mob_list)

@@ -17,8 +17,8 @@
 
 	//Getting out of someone's inventory.
 	if(istype(loc, /obj/item/holder))
-		var/obj/item/holder/H = loc		//Get our item holder.
-		var/mob/M = H.loc           	//Get our mob holder (if any).
+		var/obj/item/holder/H = loc //Get our item holder.
+		var/mob/M = H.loc //Get our mob holder (if any).
 
 		if(istype(M))
 			M.drop_inv_item_on_ground(H)

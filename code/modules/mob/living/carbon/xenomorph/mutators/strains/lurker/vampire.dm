@@ -11,6 +11,7 @@
 		/datum/action/xeno_action/activable/tail_stab
 	)
 	mutator_actions_to_add = list(
+		/datum/action/xeno_action/activable/tail_stab/vampire,
 		/datum/action/xeno_action/activable/pounce/rush,
 		/datum/action/xeno_action/activable/flurry,
 		/datum/action/xeno_action/activable/tail_jab
@@ -26,7 +27,7 @@
 
 	lurker.plasmapool_modifier = 0
 	lurker.health_modifier -= XENO_HEALTH_MOD_MED
-	lurker.speed_modifier += XENO_SPEED_FASTMOD_TIER_2
+	lurker.speed_modifier += XENO_SPEED_FASTMOD_TIER_1
 	lurker.armor_modifier += XENO_ARMOR_MOD_LARGE
 	lurker.melee_damage_lower = XENO_DAMAGE_TIER_3
 	lurker.melee_damage_upper = XENO_DAMAGE_TIER_3

@@ -76,6 +76,9 @@
 
 // VAMP LURKER ABILITIES
 
+/datum/action/xeno_action/activable/tail_stab/vampire
+	name = "Wicked Tail Stab"
+
 /datum/action/xeno_action/activable/pounce/rush
 	name = "Rush"
 	action_icon_state = "pounce"

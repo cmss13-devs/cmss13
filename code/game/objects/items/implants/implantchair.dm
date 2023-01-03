@@ -5,8 +5,8 @@
 	desc = "Used to implant occupants with loyalty implants."
 	icon = 'icons/obj/structures/machinery/implantchair.dmi'
 	icon_state = "implantchair"
-	density = 1
-	opacity = 0
+	density = TRUE
+	opacity = FALSE
 	anchored = 1
 
 	var/ready = 1
@@ -113,9 +113,9 @@
 /obj/structure/machinery/implantchair/proc/implant(var/mob/M)
 	if (!istype(M, /mob/living/carbon))
 		return
-	if(!implant_list.len)	return
+	if(!implant_list.len) return
 	for(var/obj/item/implant/loyalty/imp in implant_list)
-		if(!imp)	continue
+		if(!imp) continue
 		if(istype(imp, /obj/item/implant/loyalty))
 			for (var/mob/O in viewers(M, null))
 				O.show_message(SPAN_DANGER("[M] has been implanted by the [src.name]."), SHOW_MESSAGE_VISIBLE)

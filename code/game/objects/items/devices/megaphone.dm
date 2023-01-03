@@ -25,7 +25,7 @@
 		to_chat(user, SPAN_DANGER("\The [src] needs to recharge! Wait [COOLDOWN_SECONDSLEFT(src, spam_cooldown)] second(s)."))
 		return
 
-	var/message = strip_html(tgui_input_text(user, "Shout a message?", "Megaphone", multiline = TRUE))
+	var/message = tgui_input_text(user, "Shout a message?", "Megaphone", multiline = TRUE)
 	if(!message)
 		return
 	message = capitalize(message)

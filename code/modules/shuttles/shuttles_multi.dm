@@ -6,7 +6,7 @@
 	var/returned_home = 0
 	var/move_time = 4 MINUTES
 	var/cooldown = 20
-	var/last_move = 0	//the time at which we last moved
+	var/last_move = 0 //the time at which we last moved
 
 	var/announcer
 	var/arrival_message

@@ -4,14 +4,14 @@
 	icon = 'icons/obj/items/organs.dmi'
 	icon_state = "appendix"
 
-	health = 100                              // Process() ticks before death.
+	health = 100   // Process() ticks before death.
 
-	var/fresh = 3                             // Squirts of blood left in it.
-	var/dead_icon                             // Icon used when the organ dies.
-	var/robotic                               // Is the limb prosthetic?
-	var/organ_tag                             // What slot does it go in?
-	var/organ_type = /datum/internal_organ    // Used to spawn the relevant organ data when produced via a machine or spawn().
-	var/datum/internal_organ/organ_data       // Stores info when removed.
+	var/fresh = 3  // Squirts of blood left in it.
+	var/dead_icon  // Icon used when the organ dies.
+	var/robotic    // Is the limb prosthetic?
+	var/organ_tag  // What slot does it go in?
+	var/organ_type = /datum/internal_organ // Used to spawn the relevant organ data when produced via a machine or spawn().
+	var/datum/internal_organ/organ_data    // Stores info when removed.
 
 /obj/item/organ/attack_self(mob/user)
 	..()

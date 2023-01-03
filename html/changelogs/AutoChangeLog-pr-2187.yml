@@ -1,0 +1,4 @@
+author: "Casper"
+delete-after: True
+changes:
+  - bugfix: "boiler bombard cooldown now only applies if the shot actually fires"

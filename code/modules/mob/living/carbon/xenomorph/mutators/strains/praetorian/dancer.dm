@@ -5,7 +5,7 @@
 	flavor_description = "You are the Queen's scalpel. Don't think you are. Know you are."
 	cost = MUTATOR_COST_EXPENSIVE
 	individual_only = TRUE
-	caste_whitelist = list(XENO_CASTE_PRAETORIAN)  	// Only bae
+	caste_whitelist = list(XENO_CASTE_PRAETORIAN) // Only bae
 	mutator_actions_to_remove = list(
 		/datum/action/xeno_action/activable/xeno_spit,
 		/datum/action/xeno_action/activable/pounce/base_prae_dash,
@@ -44,7 +44,7 @@
 	name = "Praetorian Dancer Behavior Delegate"
 
 	var/evasion_buff_amount = 40
-	var/evasion_buff_ttl = 25     // 2.5 seconds seems reasonable
+	var/evasion_buff_ttl = 25  // 2.5 seconds seems reasonable
 
 	// State
 	var/next_slash_buffed = FALSE
@@ -62,13 +62,13 @@
 
 	if (!slash_evasion_buffed)
 		slash_evasion_buffed = TRUE
-		slash_evasion_timer = addtimer(CALLBACK(src, .proc/remove_evasion_buff), evasion_buff_ttl, TIMER_STOPPABLE | TIMER_UNIQUE)
+		slash_evasion_timer = addtimer(CALLBACK(src, PROC_REF(remove_evasion_buff)), evasion_buff_ttl, TIMER_STOPPABLE | TIMER_UNIQUE)
 		praetorian.evasion_modifier += evasion_buff_amount
 		praetorian.recalculate_evasion()
 		to_chat(praetorian, SPAN_XENODANGER("You feel your slash make you more evasive!"))
 
 	else
-		slash_evasion_timer = addtimer(CALLBACK(src, .proc/remove_evasion_buff), evasion_buff_ttl, TIMER_STOPPABLE | TIMER_OVERRIDE|TIMER_UNIQUE)
+		slash_evasion_timer = addtimer(CALLBACK(src, PROC_REF(remove_evasion_buff)), evasion_buff_ttl, TIMER_STOPPABLE | TIMER_OVERRIDE|TIMER_UNIQUE)
 
 	if (dodge_activated)
 		dodge_activated = FALSE

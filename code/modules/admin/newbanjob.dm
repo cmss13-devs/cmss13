@@ -44,10 +44,10 @@ var/savefile/Banlistjob
 	for (var/A in Banlistjob.dir)
 		Banlistjob.cd = "/base/[A]"
 		//if (!Banlistjob["key"] || !Banlistjob["id"])
-		//	RemoveBanjob(A, "full")
-		//	log_admin("Invalid Ban.")
-		//	message_admins("Invalid Ban.")
-		//	continue
+		// RemoveBanjob(A, "full")
+		// log_admin("Invalid Ban.")
+		// message_admins("Invalid Ban.")
+		// continue
 
 		if (!Banlistjob["temp"]) continue
 		if (CMinutes >= Banlistjob["minutes"]) RemoveBanjob(A)

@@ -4,7 +4,7 @@
 	desc = "it's stringy and sticky"
 	icon = 'icons/effects/effects.dmi'
 	anchored = 1
-	density = 0
+	density = FALSE
 	health = 15
 
 //similar to weeds, but only barfed out by nurses manually
@@ -116,10 +116,10 @@
 		amount_grown = 1
 
 /obj/effect/spider/spiderling/nogrow/Initialize(mapload, ...)
-    . = ..()
-    pixel_x = rand(6,-6)
-    pixel_y = rand(6,-6)
-    START_PROCESSING(SSobj, src)
+	. = ..()
+	pixel_x = rand(6,-6)
+	pixel_y = rand(6,-6)
+	START_PROCESSING(SSobj, src)
 
 /obj/effect/spider/spiderling/Destroy()
 	STOP_PROCESSING(SSobj, src)

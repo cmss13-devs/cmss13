@@ -10,13 +10,13 @@
 	icon_state = "floor_magnet-f"
 	name = "Electromagnetic Generator"
 	desc = "A device that uses station power to create points of magnetic energy."
-	level = 1		// underfloor
+	level = 1 // underfloor
 	layer = UNDERFLOOR_OBJ_LAYER
 	anchored = 1
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 50
 
-	var/freq = 1449		// radio frequency
+	var/freq = 1449 // radio frequency
 	var/electricity_level = 1 // intensity of the magnetic pull
 	var/magnetic_field = 1 // the range of magnetic attraction
 	var/code = 0 // frequency code, they should be different unless you have a group of magnets working together or something
@@ -38,7 +38,7 @@
 
 	SSradio.add_object(src, freq, RADIO_MAGNETS)
 
-	INVOKE_ASYNC(src, .proc/magnetic_process)
+	INVOKE_ASYNC(src, PROC_REF(magnetic_process))
 
 	// update the invisibility and icon
 /obj/structure/machinery/magnetic_module/hide(var/intact)
@@ -53,7 +53,7 @@
 		onstate="0"
 
 	if(invisibility)
-		icon_state = "[state][onstate]-f"	// if invisible, set icon to faded version
+		icon_state = "[state][onstate]-f" // if invisible, set icon to faded version
 											// in case of being revealed by T-scanner
 	else
 		icon_state = "[state][onstate]"
@@ -74,9 +74,9 @@
 	if(command)
 		switch(command)
 			if("set-electriclevel")
-				if(modifier)	electricity_level = modifier
+				if(modifier) electricity_level = modifier
 			if("set-magneticfield")
-				if(modifier)	magnetic_field = modifier
+				if(modifier) magnetic_field = modifier
 
 			if("add-elec")
 				electricity_level++
@@ -96,13 +96,13 @@
 					magnetic_field = 1
 
 			if("set-x")
-				if(modifier)	center_x = modifier
+				if(modifier) center_x = modifier
 			if("set-y")
-				if(modifier)	center_y = modifier
+				if(modifier) center_y = modifier
 
 			if("N") // NORTH
 				center_y++
-			if("S")	// SOUTH
+			if("S") // SOUTH
 				center_y--
 			if("E") // EAST
 				center_x++
@@ -116,12 +116,12 @@
 				center_y = rand(-max_dist, max_dist)
 
 			if("set-code")
-				if(modifier)	code = modifier
+				if(modifier) code = modifier
 			if("toggle-power")
 				on = !on
 
 				if(on)
-					INVOKE_ASYNC(src, .proc/magnetic_process)
+					INVOKE_ASYNC(src, PROC_REF(magnetic_process))
 
 
 /obj/structure/machinery/magnetic_module/process()
@@ -190,7 +190,7 @@
 	name = "Magnetic Control Console"
 	icon = 'icons/obj/structures/machinery/airlock_machines.dmi' // uses an airlock machine icon, THINK GREEN HELP THE ENVIRONMENT - RECYCLING!
 	icon_state = "airlock_control_standby"
-	density = 1
+	density = TRUE
 	anchored = 1.0
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 45
@@ -296,7 +296,7 @@
 
 		radio_connection.post_signal(src, signal, filter = RADIO_MAGNETS)
 
-		addtimer(CALLBACK(src, .proc/updateUsrDialog), 1)
+		addtimer(CALLBACK(src, PROC_REF(updateUsrDialog)), 1)
 
 	if(href_list["operation"])
 		switch(href_list["operation"])
@@ -319,7 +319,7 @@
 			if("togglemoving")
 				moving = !moving
 				if(moving)
-					INVOKE_ASYNC(src, .proc/MagnetMove)
+					INVOKE_ASYNC(src, PROC_REF(MagnetMove))
 
 
 	updateUsrDialog()

@@ -51,7 +51,7 @@
 		return FALSE
 	for(var/S in total_calls)
 		var/datum/emergency_call/C= new S()
-		if(!C)	continue
+		if(!C) continue
 		if(C.name == "name") continue //The default parent, don't add it
 		all_calls += C
 
@@ -187,7 +187,7 @@
 	if(announce)
 		marine_announcement("A distress beacon has been launched from the [MAIN_SHIP_NAME].", "Priority Alert", 'sound/AI/distressbeacon.ogg')
 
-	addtimer(CALLBACK(src, /datum/emergency_call.proc/spawn_candidates, announce, override_spawn_loc), 30 SECONDS)
+	addtimer(CALLBACK(src, TYPE_PROC_REF(/datum/emergency_call, spawn_candidates), announce, override_spawn_loc), 30 SECONDS)
 
 /datum/emergency_call/proc/spawn_candidates(announce = TRUE, override_spawn_loc)
 	if(SSticker.mode)

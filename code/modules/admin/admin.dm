@@ -138,7 +138,7 @@
 
 
 /datum/admins/proc/Game()
-	if(!check_rights(0))	return
+	if(!check_rights(0)) return
 
 	var/dat = {"
 		<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];c_mode=1'>Change Game Mode</A><br>
@@ -181,7 +181,7 @@
 	set desc = "(atom path) Spawn an atom"
 	set name = "Spawn"
 
-	if(!check_rights(R_SPAWN))	return
+	if(!check_rights(R_SPAWN)) return
 
 	var/list/types = typesof(/atom)
 	var/list/matches = new()

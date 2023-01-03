@@ -1,4 +1,0 @@
-author: "insertnamehere123"
-delete-after: True
-changes:
-  - bugfix: "fixed a bug where a healer drone could use healing salve on burning xenos"

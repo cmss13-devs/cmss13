@@ -7,8 +7,8 @@
 #define FIREDOOR_MIN_TEMP 0
 
 // Bitflags
-#define FIREDOOR_ALERT_HOT      1
-#define FIREDOOR_ALERT_COLD     2
+#define FIREDOOR_ALERT_HOT   1
+#define FIREDOOR_ALERT_COLD  2
 
 
 /obj/structure/machinery/door/firedoor
@@ -17,8 +17,8 @@
 	icon = 'icons/obj/structures/doors/DoorHazard.dmi'
 	icon_state = "door_open"
 	req_one_access = list(ACCESS_CIVILIAN_ENGINEERING)
-	opacity = 0
-	density = 0
+	opacity = FALSE
+	density = FALSE
 	layer = FIREDOOR_OPEN_LAYER
 	open_layer = FIREDOOR_OPEN_LAYER // Just below doors when open
 	closed_layer = FIREDOOR_CLOSED_LAYER // Just above doors when closed
@@ -128,7 +128,7 @@
 		return
 
 	var/alarmed = lockdown
-	for(var/area/A in areas_added)		//Checks if there are fire alarms in any areas associated with that firedoor
+	for(var/area/A in areas_added) //Checks if there are fire alarms in any areas associated with that firedoor
 		if(A.flags_alarm_state & ALARM_WARNING_FIRE || A.air_doors_activated)
 			alarmed = 1
 
@@ -157,14 +157,14 @@
 			// Accountability!
 			users_to_open |= user.name
 			needs_to_close = 1
-		INVOKE_ASYNC(src, .proc/open, TRUE)
+		INVOKE_ASYNC(src, PROC_REF(open), TRUE)
 	else
-		INVOKE_ASYNC(src, .proc/close)
+		INVOKE_ASYNC(src, PROC_REF(close))
 
 	if(needs_to_close)
 		spawn(50)
 			alarmed = 0
-			for(var/area/A in areas_added)		//Just in case a fire alarm is turned off while the firedoor is going through an autoclose cycle
+			for(var/area/A in areas_added) //Just in case a fire alarm is turned off while the firedoor is going through an autoclose cycle
 				if(A.flags_alarm_state & ALARM_WARNING_FIRE || A.air_doors_activated)
 					alarmed = 1
 			if(alarmed)
@@ -225,9 +225,9 @@
 			"You force \the [ blocked ? "welded" : "" ] [src] [density ? "open" : "closed"] with \the [C]!",\
 			"You hear metal strain and groan, and a door [density ? "opening" : "closing"].")
 			if(density)
-				INVOKE_ASYNC(src, .proc/open, TRUE)
+				INVOKE_ASYNC(src, PROC_REF(open), TRUE)
 			else
-				INVOKE_ASYNC(src, .proc/close)
+				INVOKE_ASYNC(src, PROC_REF(close))
 			return
 
 /obj/structure/machinery/door/firedoor/try_to_activate_door(mob/user)

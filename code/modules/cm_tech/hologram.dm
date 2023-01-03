@@ -27,17 +27,17 @@ GLOBAL_LIST_EMPTY(hologram_list)
 	. = ..()
 
 	GLOB.hologram_list += src
-	RegisterSignal(M, COMSIG_CLIENT_MOB_MOVE, .proc/handle_move)
-	RegisterSignal(M, COMSIG_MOB_RESET_VIEW, .proc/handle_view)
+	RegisterSignal(M, COMSIG_CLIENT_MOB_MOVE, PROC_REF(handle_move))
+	RegisterSignal(M, COMSIG_MOB_RESET_VIEW, PROC_REF(handle_view))
 	RegisterSignal(M, list(
 		COMSIG_MOB_TAKE_DAMAGE,
 		COMSIG_HUMAN_TAKE_DAMAGE,
 		COMSIG_XENO_TAKE_DAMAGE
-	), .proc/take_damage)
+	), PROC_REF(take_damage))
 	RegisterSignal(M, list(
 		COMSIG_BINOCULAR_ATTACK_SELF,
 		COMSIG_BINOCULAR_HANDLE_CLICK
-	), .proc/handle_binoc)
+	), PROC_REF(handle_binoc))
 
 	linked_mob = M
 	linked_mob.reset_view()
@@ -107,7 +107,7 @@ GLOBAL_LIST_EMPTY(hologram_list)
 
 /mob/hologram/techtree/Initialize(mapload, mob/M)
 	. = ..()
-	RegisterSignal(M, COMSIG_MOB_ENTER_TREE, .proc/disallow_tree_entering)
+	RegisterSignal(M, COMSIG_MOB_ENTER_TREE, PROC_REF(disallow_tree_entering))
 
 
 /mob/hologram/techtree/proc/disallow_tree_entering(var/mob/M, var/datum/techtree/T, var/force)

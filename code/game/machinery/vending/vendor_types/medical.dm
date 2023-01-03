@@ -12,7 +12,7 @@
 	hackable = TRUE
 
 	vendor_theme = VENDOR_THEME_COMPANY
-	vend_delay = 5
+	vend_delay = 0.5 SECONDS
 
 	var/datum/health_scan/last_health_display
 
@@ -156,7 +156,7 @@
 		list("Bottle (Dylovene)", round(scale * 5), /obj/item/reagent_container/glass/bottle/antitoxin, VENDOR_ITEM_REGULAR),
 		list("Bottle (Dexalin)", round(scale * 5), /obj/item/reagent_container/glass/bottle/dexalin, VENDOR_ITEM_REGULAR),
 		list("Bottle (Inaprovaline)", round(scale * 5), /obj/item/reagent_container/glass/bottle/inaprovaline, VENDOR_ITEM_REGULAR),
-		list("Bottle (Kelotane)", round(scale * 5), 	/obj/item/reagent_container/glass/bottle/kelotane, VENDOR_ITEM_REGULAR),
+		list("Bottle (Kelotane)", round(scale * 5), /obj/item/reagent_container/glass/bottle/kelotane, VENDOR_ITEM_REGULAR),
 		list("Bottle (Oxycodone)", round(scale * 5), /obj/item/reagent_container/glass/bottle/oxycodone, VENDOR_ITEM_REGULAR),
 		list("Bottle (Peridaxon)", round(scale * 5), /obj/item/reagent_container/glass/bottle/peridaxon, VENDOR_ITEM_REGULAR),
 		list("Bottle (Tramadol)", round(scale * 5), /obj/item/reagent_container/glass/bottle/tramadol, VENDOR_ITEM_REGULAR),
@@ -208,7 +208,7 @@
 		list("Dylovene Bottle", round(scale * 5), /obj/item/reagent_container/glass/bottle/antitoxin, VENDOR_ITEM_REGULAR),
 		list("Dexalin Bottle", round(scale * 5), /obj/item/reagent_container/glass/bottle/dexalin, VENDOR_ITEM_REGULAR),
 		list("Inaprovaline Bottle", round(scale * 5), /obj/item/reagent_container/glass/bottle/inaprovaline, VENDOR_ITEM_REGULAR),
-		list("Kelotane Bottle", round(scale * 5), 	/obj/item/reagent_container/glass/bottle/kelotane, VENDOR_ITEM_REGULAR),
+		list("Kelotane Bottle", round(scale * 5), /obj/item/reagent_container/glass/bottle/kelotane, VENDOR_ITEM_REGULAR),
 		list("Oxycodone Bottle", round(scale * 5), /obj/item/reagent_container/glass/bottle/oxycodone, VENDOR_ITEM_REGULAR),
 		list("Peridaxon Bottle", round(scale * 5), /obj/item/reagent_container/glass/bottle/peridaxon, VENDOR_ITEM_REGULAR),
 		list("Tramadol Bottle", round(scale * 5), /obj/item/reagent_container/glass/bottle/tramadol, VENDOR_ITEM_REGULAR),
@@ -308,7 +308,7 @@
 	name = "\improper NanoMed"
 	desc = "Wall-mounted Medical Equipment Dispenser."
 	icon_state = "wallmed"
-	vend_delay = 7
+	vend_delay = 0.7 SECONDS
 
 	req_access = list()
 

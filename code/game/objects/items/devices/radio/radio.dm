@@ -109,10 +109,15 @@
 	var/list/radio_channels = list()
 
 	for(var/channel in channels)
+		var/channel_key
+		for(var/key in department_radio_keys)
+			if(department_radio_keys[key] == channel)
+				channel_key = key
+				break
 		radio_channels += list(list(
 			"name" = channel,
 			"status" = channels[channel] & FREQ_LISTENING,
-			"hotkey" = department_radio_keys[channel]))
+			"hotkey" = channel_key))
 
 	data["channels"] = radio_channels
 

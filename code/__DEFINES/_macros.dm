@@ -1,15 +1,10 @@
 
 //CPU lag shit
-<<<<<<< HEAD
 
 /// Converts your ticks to proper tenths.
-#define calculateticks(x)	x * world.tick_lag
+#define calculateticks(x) x * world.tick_lag
 /// Shorthand of checking and then sleeping a process based on world CPU.
-#define tcheck(CPU,TOSLEEP)	if(world.cpu > CPU) sleep(calculateticks(TOSLEEP))
-=======
-#define calculateticks(x) x * world.tick_lag // Converts your ticks to proper tenths.
-#define tcheck(CPU,TOSLEEP) if(world.cpu > CPU) sleep(calculateticks(TOSLEEP)) //Shorthand of checking and then sleeping a process based on world CPU
->>>>>>> upstream/master
+#define tcheck(CPU,TOSLEEP) if(world.cpu > CPU) sleep(calculateticks(TOSLEEP))
 
 #define subtypesof(A) (typesof(A) - A)
 

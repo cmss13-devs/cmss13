@@ -24,13 +24,9 @@
 #define R_NOLOCK (1<<17)
 #define R_EVENT (1<<18)
 
-<<<<<<< HEAD
 /// The sum of all other rank permissions.
-#define R_EVERYTHING	((1<<19)-1)
+#define R_EVERYTHING ((1<<19)-1)
 
-=======
-#define R_EVERYTHING ((1<<19)-1) //the sum of all other rank permissions
->>>>>>> upstream/master
 // 512.1430 increases maximum bit flags from 16 to 24, so the following flags should be available for future changes:
 //=================================================
 

@@ -177,28 +177,16 @@ block( \
 // and the time before it leaves again
 // note that this is multiplied by 10 in the shuttle controller. Hence, this is not defined in deciseconds but in real seconds
 
-<<<<<<< HEAD
-/// How long in ticks we wait before assuming the docking controller is broken or blown up.
-#define DOCK_ATTEMPT_TIMEOUT 			20 SECONDS
-#define DROPSHIP_WARMUP_TIME			10 SECONDS
-#define DROPSHIP_DROP_MSG_DELAY			30 SECONDS
-#define DROPSHIP_TRANSIT_DURATION		100 SECONDS
-#define DROPSHIP_CORSAT_DURATION		30 SECONDS
-#define ELEVATOR_TRANSIT_DURATION		5 SECONDS
-#define TRANSIT_POD_TRANSIT_DURATION	30 SECONDS
-#define DROPSHIP_CRASH_TRANSIT_DURATION	3 MINUTES
-#define ERT_SHUTTLE_TRANSIT_DURATION    30 SECONDS
-=======
-#define DOCK_ATTEMPT_TIMEOUT 20 SECONDS //how long in ticks we wait before assuming the docking controller is broken or blown up.
+/// how long in ticks we wait before assuming the docking controller is broken or blown up.
+#define DOCK_ATTEMPT_TIMEOUT 20 SECONDS
 #define DROPSHIP_WARMUP_TIME 10 SECONDS
 #define DROPSHIP_DROP_MSG_DELAY 30 SECONDS
-#define DROPSHIP_TRANSIT_DURATION 100 SECONDS // 100 seconds
-#define DROPSHIP_CORSAT_DURATION 30 SECONDS  // 30 seconds
-#define ELEVATOR_TRANSIT_DURATION 5 SECONDS // 5 seconds
-#define TRANSIT_POD_TRANSIT_DURATION 30 SECONDS // 30 seconds
-#define DROPSHIP_CRASH_TRANSIT_DURATION 3 MINUTES // 180 seconds. 3 minutes
-#define ERT_SHUTTLE_TRANSIT_DURATION 30 SECONDS // what are these comments for
->>>>>>> upstream/master
+#define DROPSHIP_TRANSIT_DURATION 100 SECONDS
+#define DROPSHIP_CORSAT_DURATION 30 SECONDS
+#define ELEVATOR_TRANSIT_DURATION 5 SECONDS
+#define TRANSIT_POD_TRANSIT_DURATION 30 SECONDS
+#define DROPSHIP_CRASH_TRANSIT_DURATION 3 MINUTES
+#define ERT_SHUTTLE_TRANSIT_DURATION 30 SECONDS
 
 #define SHUTTLE_RECHARGE  2 MINUTES
 #define ELEVATOR_RECHARGE 15 SECONDS
@@ -245,12 +233,8 @@ block( \
 //=================================================
 //Game mode related defines.
 
-<<<<<<< HEAD
 /// Distance from edge to move to another z-level.
-#define TRANSITIONEDGE	3
-=======
-#define TRANSITIONEDGE 3 //Distance from edge to move to another z-level
->>>>>>> upstream/master
+#define TRANSITIONEDGE 3
 
 //Flags for zone sleeping
 
@@ -321,20 +305,13 @@ block( \
 #define BARRICADE_DMG_MODERATE 2
 #define BARRICADE_DMG_HEAVY 3
 
-<<<<<<< HEAD
-#define BARRICADE_BSTATE_FORTIFIED 	3 // Used by handrails to indicate reinforcing
-#define BARRICADE_BSTATE_SECURED 	2 // fresh barricade
-
-/// Intermediate state before cade is movable (no apparent effect on health).
-#define BARRICADE_BSTATE_UNSECURED 	1
-/// Ready to be deconstructed and can be moved.
-#define BARRICADE_BSTATE_MOVABLE 	0
-=======
 #define BARRICADE_BSTATE_FORTIFIED 3 // Used by handrails to indicate reinforcing
 #define BARRICADE_BSTATE_SECURED 2 // fresh barricade
-#define BARRICADE_BSTATE_UNSECURED 1 // intermediate state before cade is movable (no apparent effect on health)
-#define BARRICADE_BSTATE_MOVABLE 0 // ready to be deconstructed and can be moved
->>>>>>> upstream/master
+
+/// Intermediate state before cade is movable (no apparent effect on health).
+#define BARRICADE_BSTATE_UNSECURED 1
+/// Ready to be deconstructed and can be moved.
+#define BARRICADE_BSTATE_MOVABLE 0
 
 // Defines for sandbag build stages
 #define BARRICADE_SANDBAG_1 1
@@ -432,13 +409,9 @@ block( \
 #define SHUTTLE_GROUND   3
 
 // Misc game defines
-<<<<<<< HEAD
 
 /// Amount of water consumed by extinguisher per use.//why is this a define let alone a GLOBAL define oh my good lord
-#define EXTINGUISHER_WATER_USE_AMT	5
-=======
-#define EXTINGUISHER_WATER_USE_AMT 5 // Amount of water consumed by extinguisher per use //why is this a define let alone a GLOBAL define oh my good lord
->>>>>>> upstream/master
+#define EXTINGUISHER_WATER_USE_AMT 5
 
 // Chat delay amounts
 #define CHAT_SAY_DELAY   2

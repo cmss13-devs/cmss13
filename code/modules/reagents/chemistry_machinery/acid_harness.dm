@@ -158,7 +158,10 @@
 
 	switch(action)
 		if("set_inject_amount")
-			acid_core.inject_amount = round(text2num(params["value"]))
+			var/inject = round(text2num(params["value"]))
+			if(inject < 1)
+				inject = 1
+			acid_core.inject_amount = inject
 			. = TRUE
 		if("set_inject_damage_threshold")
 			acid_core.inject_damage_threshold = round(text2num(params["value"]))

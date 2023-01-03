@@ -109,11 +109,7 @@
 	var/list/radio_channels = list()
 
 	for(var/channel in channels)
-		var/channel_key
-		for(var/key in department_radio_keys)
-			if(department_radio_keys[key] == channel)
-				channel_key = key
-				break
+		var/channel_key = channel_to_prefix(channel)
 		radio_channels += list(list(
 			"name" = channel,
 			"status" = channels[channel] & FREQ_LISTENING,
@@ -187,11 +183,7 @@
 
 /obj/item/device/radio/proc/text_sec_channel(var/chan_name, var/chan_stat)
 	var/list = !!(chan_stat&FREQ_LISTENING)!=0
-	var/channel_key
-	for(var/key in department_radio_keys)
-		if(department_radio_keys[key] == chan_name)
-			channel_key = key
-			break
+	var/channel_key = channel_to_prefix(chan_name)
 	return {"
 			<tr><td><B>[chan_name]</B> [channel_key]</td>
 			<td><A href='byond://?src=\ref[src];ch_name=[chan_name];listen=[!list]'>[list ? "Engaged" : "Disengaged"]</A></td></tr>

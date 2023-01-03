@@ -47,6 +47,17 @@ var/list/department_radio_keys = list(
 	  ":K" = SQUAD_SOF, ".K" = SQUAD_SOF, "#K" = RADIO_CHANNEL_WY_WO,
 )
 
+/proc/channel_to_prefix(channel)
+	var/channel_key
+	for(var/key in department_radio_keys)
+		if(department_radio_keys[key] == channel)
+			channel_key = key
+			break
+	return channel_key
+
+/proc/prefix_to_channel(prefix)
+	return department_radio_keys[prefix]
+
 ///Shows custom speech bubbles for screaming, *warcry etc.
 /mob/living/proc/show_speech_bubble(var/bubble_name)
 	var/list/hear = hearers()

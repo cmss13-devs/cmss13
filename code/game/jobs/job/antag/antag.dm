@@ -14,7 +14,7 @@
 
 /// counts drone caste evo time as well
 /datum/timelock/drone
-	name = "Drone"
+	name = "Drone and drone evolutions"
 
 /datum/timelock/drone/can_play(client/C)
 	return C.get_total_drone_playtime() >= time_required
@@ -24,7 +24,7 @@
 
 /// t3 and queen time
 /datum/timelock/tier3
-	name = "Tier_three"
+	name = "Tier three castes"
 
 /datum/timelock/tier3/can_play(client/C)
 	return C.get_total_t3_playtime() >= time_required

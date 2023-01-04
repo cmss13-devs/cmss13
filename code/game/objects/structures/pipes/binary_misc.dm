@@ -69,7 +69,7 @@
 	desc = "A gas circulator pump and heat exchanger."
 	icon = 'icons/obj/pipes/pipes3.dmi'
 	icon_state = "circ-off"
-	anchored = 0
+	anchored = FALSE
 	density = TRUE
 
 /obj/structure/pipes/binary/circulator/New()

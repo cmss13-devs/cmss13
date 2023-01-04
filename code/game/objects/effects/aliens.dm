@@ -16,7 +16,7 @@
 	icon_state = "splatter"
 	density = FALSE
 	opacity = FALSE
-	anchored = 1
+	anchored = TRUE
 
 /obj/effect/xenomorph/splatter/New() //Self-deletes after creation & animation
 	..()
@@ -29,7 +29,7 @@
 	icon_state = "acidblob"
 	density = FALSE
 	opacity = FALSE
-	anchored = 1
+	anchored = TRUE
 
 /obj/effect/xenomorph/splatterblob/New() //Self-deletes after creation & animation
 	..()
@@ -42,7 +42,7 @@
 	icon_state = "acid2"
 	density = FALSE
 	opacity = FALSE
-	anchored = 1
+	anchored = TRUE
 	layer = ABOVE_OBJ_LAYER
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	var/datum/cause_data/cause_data
@@ -285,7 +285,7 @@
 	icon_state = "acid_normal"
 	density = FALSE
 	opacity = FALSE
-	anchored = 1
+	anchored = TRUE
 	unacidable = TRUE
 	var/atom/acid_t
 	var/ticks = 0

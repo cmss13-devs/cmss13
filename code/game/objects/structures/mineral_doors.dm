@@ -4,7 +4,7 @@
 /obj/structure/mineral_door
 	name = "mineral door"
 	density = TRUE
-	anchored = 1
+	anchored = TRUE
 	opacity = TRUE
 	health = HEALTH_DOOR
 

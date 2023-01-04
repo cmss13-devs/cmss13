@@ -62,7 +62,7 @@
 	name = "alarm"
 	icon = 'icons/obj/structures/machinery/monitors.dmi' // I made these really quickly because idk where they have their new air alarm ~Art
 	icon_state = "alarm0"
-	anchored = 1
+	anchored = TRUE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 80
 	active_power_usage = 1000 //For heating/cooling rooms. 1000 joules equates to about 1 degree every 2 seconds for a single tile of air.
@@ -918,7 +918,7 @@ table tr:first-child th:first-child { border: none;}
 			var/t1 = text2num(href_list["AAlarmwires"])
 			var/obj/item/held_item = usr.get_held_item()
 			if (!held_item || !HAS_TRAIT(held_item, TRAIT_TOOL_WIRECUTTERS))
-				to_chat(usr, "You need wirecutters!")
+				to_chat(usr, SPAN_WARNING("You need wirecutters!"))
 				return
 			if (isWireColorCut(t1))
 				mend(t1)
@@ -934,10 +934,10 @@ table tr:first-child th:first-child { border: none;}
 			var/t1 = text2num(href_list["pulse"])
 			var/obj/item/held_item = usr.get_held_item()
 			if (held_item && !HAS_TRAIT(held_item, TRAIT_TOOL_MULTITOOL))
-				to_chat(usr, "You need a multitool!")
+				to_chat(usr, SPAN_WARNING("You need a multitool!"))
 				return
 			if (isWireColorCut(t1))
-				to_chat(usr, "You can't pulse a cut wire.")
+				to_chat(usr, SPAN_WARNING("You can't pulse a cut wire."))
 				return
 			else
 				pulse(t1)

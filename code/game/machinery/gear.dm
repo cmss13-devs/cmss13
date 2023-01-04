@@ -1,7 +1,7 @@
 /obj/structure/machinery/gear
 	name = "\improper gear"
 	icon_state = "gear"
-	anchored = 1
+	anchored = TRUE
 	density = FALSE
 	unslashable = TRUE
 	unacidable = TRUE
@@ -18,7 +18,7 @@
 /obj/structure/machinery/elevator_strut
 	name = "\improper strut"
 	icon = 'icons/turf/elevator_strut.dmi'
-	anchored = 1
+	anchored = TRUE
 	unslashable = TRUE
 	unacidable = TRUE
 	density = FALSE

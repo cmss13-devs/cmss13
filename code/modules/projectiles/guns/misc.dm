@@ -106,7 +106,7 @@
 	desc = ""
 	icon = 'icons/obj/items/chemistry.dmi'
 	icon_state = "null"
-	anchored = 1
+	anchored = TRUE
 	density = FALSE
 
 /obj/effect/syringe_gun_dummy/Initialize()

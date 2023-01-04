@@ -5,7 +5,7 @@
 	icon = 'icons/obj/structures/barricades.dmi'
 	density = TRUE
 	icon_state = "turnstile"
-	anchored = 1
+	anchored = TRUE
 	flags_atom = ON_BORDER
 	dir = WEST
 	var/last_use

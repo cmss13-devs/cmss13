@@ -2,7 +2,7 @@
 	var/datum/computer/file/embedded_program/program //the currently executing program
 
 	name = "Embedded Controller"
-	anchored = 1
+	anchored = TRUE
 
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 10

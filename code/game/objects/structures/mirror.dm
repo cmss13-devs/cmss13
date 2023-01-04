@@ -5,7 +5,7 @@
 	icon = 'icons/obj/structures/props/watercloset.dmi'
 	icon_state = "mirror"
 	density = FALSE
-	anchored = 1
+	anchored = TRUE
 	var/shattered = 0
 
 

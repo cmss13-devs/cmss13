@@ -8,7 +8,7 @@
 	icon = 'generator.dmi'
 	icon_state = "off"
 	density = TRUE
-	anchored = 0
+	anchored = FALSE
 	directwired = 0
 	var/t_status = 0
 	var/t_per = 5000
@@ -47,7 +47,7 @@ display round(lastgen) and phorontank amount
 	icon = 'icons/obj/structures/machinery/power.dmi'
 	icon_state = "portgen0"
 	density = TRUE
-	anchored = 0
+	anchored = FALSE
 // directwired = 0
 	use_power = USE_POWER_NONE
 	unslashable = FALSE

@@ -8,7 +8,7 @@
 	icon = 'icons/mob/xenos/weeds.dmi'
 	icon_state = "constructionnode"
 	density = FALSE
-	anchored = 1
+	anchored = TRUE
 	health = 200
 	block_range = 1
 

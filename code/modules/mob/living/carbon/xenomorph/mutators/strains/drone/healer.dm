@@ -64,7 +64,7 @@
 /datum/action/xeno_action/verb/verb_apply_salve()
 	set category = "Alien"
 	set name = "Apply Resin Salve"
-	set hidden = 1
+	set hidden = TRUE
 	var/action_name = "Apply Resin Salve"
 	handle_xeno_macro(src, action_name)
 

@@ -4,7 +4,7 @@
 	icon = 'icons/obj/structures/structures.dmi'
 	icon_state = "latticefull"
 	density = FALSE
-	anchored = 1.0
+	anchored = TRUE
 	layer = LATTICE_LAYER
 	plane = FLOOR_PLANE
 	// flags = CONDUCT

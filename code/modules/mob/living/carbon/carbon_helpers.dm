@@ -13,7 +13,7 @@
 
 /mob/living/carbon/verb/warcry_macro()
 	set name = "warcry"
-	set hidden = 1
+	set hidden = TRUE
 
 	to_chat(usr, SPAN_WARNING("Your species doesn't have a warcry associated with it!"))
 
@@ -28,7 +28,7 @@
 
 /mob/living/carbon/verb/medic_macro()
 	set name = "medic"
-	set hidden = 1
+	set hidden = TRUE
 
 	to_chat(usr, SPAN_WARNING("Your species doesn't have a help cry associated with it!"))
 

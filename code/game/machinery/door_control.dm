@@ -33,7 +33,7 @@
 				2=Network Access
 	*/
 
-	anchored = 1.0
+	anchored = TRUE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 2
 	active_power_usage = 4

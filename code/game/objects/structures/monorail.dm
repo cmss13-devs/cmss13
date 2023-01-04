@@ -3,5 +3,5 @@
 	icon = 'icons/obj/structures.dmi'
 	icon_state = "monorail"
 	density = FALSE
-	anchored = 1.0
+	anchored = TRUE
 	layer = ATMOS_PIPE_LAYER + 0.01

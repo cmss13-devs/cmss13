@@ -16,7 +16,7 @@
 	var/channel = "almayer" // Which channel are we on? Needs to be set for these to properly work.
 	//1 = select event
 	//2 = authenticate
-	anchored = 1.0
+	anchored = TRUE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 2
 	active_power_usage = 6

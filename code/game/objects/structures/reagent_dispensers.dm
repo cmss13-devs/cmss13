@@ -4,7 +4,7 @@
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "watertank"
 	density = TRUE
-	anchored = 0
+	anchored = FALSE
 	health = 100 // Can be destroyed in 2-4 slashes.
 	flags_atom = CAN_BE_SYRINGED
 	wrenchable = TRUE
@@ -427,7 +427,7 @@
 	desc = "Refill pepper spray canisters."
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "peppertank"
-	anchored = 1
+	anchored = TRUE
 	wrenchable =  FALSE
 	density = FALSE
 	amount_per_transfer_from_this = 45
@@ -440,7 +440,7 @@
 	icon = 'icons/obj/structures/machinery/vending.dmi'
 	icon_state = "water_cooler"
 	possible_transfer_amounts = null
-	anchored = 1
+	anchored = TRUE
 	chemical = "water"
 
 /obj/structure/reagent_dispensers/water_cooler/stacks
@@ -466,7 +466,7 @@
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "virusfoodtank"
 	amount_per_transfer_from_this = 10
-	anchored = 1
+	anchored = TRUE
 	wrenchable = FALSE
 	density = FALSE
 	chemical = "virusfood"

@@ -7,7 +7,7 @@
 	icon = 'icons/obj/structures/props/walllocker.dmi'
 	icon_state = "wall-locker"
 	density = FALSE
-	anchored = 1
+	anchored = TRUE
 	icon_closed = "wall-locker"
 	icon_opened = "wall-lockeropen"
 	wall_mounted = 1

@@ -19,7 +19,7 @@ log transactions
 	desc = "For all your monetary needs!"
 	icon = 'icons/obj/structures/machinery/terminals.dmi'
 	icon_state = "atm"
-	anchored = 1
+	anchored = TRUE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 10
 	var/datum/money_account/authenticated_account

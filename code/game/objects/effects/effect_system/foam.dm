@@ -12,7 +12,7 @@
 	name = "foam"
 	icon_state = "foam"
 	opacity = FALSE
-	anchored = 1
+	anchored = TRUE
 	density = FALSE
 	layer = BELOW_MOB_LAYER
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
@@ -166,7 +166,7 @@
 	icon_state = "metalfoam"
 	density = TRUE
 	opacity = TRUE // changed in New()
-	anchored = 1
+	anchored = TRUE
 	name = "foamed metal"
 	desc = "A lightweight foamed metal wall."
 	health = 45

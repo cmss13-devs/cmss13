@@ -2,7 +2,7 @@
 /client/verb/wiki()
 	set name = "wiki"
 	set desc = "Visit the wiki."
-	set hidden = 1
+	set hidden = TRUE
 	if( CONFIG_GET(string/wikiurl) )
 		if(alert("This will open the wiki in your browser. Are you sure?",,"Yes","No")=="No")
 			return
@@ -14,7 +14,7 @@
 /client/verb/forum()
 	set name = "forum"
 	set desc = "Visit the forum."
-	set hidden = 1
+	set hidden = TRUE
 	if( CONFIG_GET(string/forumurl) )
 		if(alert("This will open the forum in your browser. Are you sure?",,"Yes","No")=="No")
 			return
@@ -26,7 +26,7 @@
 /client/verb/rules()
 	set name = "rules"
 	set desc = "Read our rules."
-	set hidden = 1
+	set hidden = TRUE
 	if( CONFIG_GET(string/rulesurl) )
 		if(alert("This will open the rules in your browser. Are you sure?",,"Yes","No")=="No")
 			return
@@ -50,7 +50,7 @@
 /client/verb/discord()
 	set name = "Discord"
 	set desc = "Join our Discord! Meet and talk with other players in the server."
-	set hidden = 1
+	set hidden = TRUE
 
 	src << link("https://discord.gg/cmss13")
 	return
@@ -58,7 +58,7 @@
 /client/verb/submitbug()
 	set name = "Submit Bug"
 	set desc = "Submit a bug."
-	set hidden = 1
+	set hidden = TRUE
 
 	if(alert("Please search for the bug first to make sure you aren't posting a duplicate.",,"Ok","Cancel")=="Cancel")
 		return

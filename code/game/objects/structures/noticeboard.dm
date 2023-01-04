@@ -4,7 +4,7 @@
 	icon = 'icons/obj/structures/props/stationobjs.dmi'
 	icon_state = "nboard00"
 	density = FALSE
-	anchored = 1
+	anchored = TRUE
 	var/notices = 0
 
 /obj/structure/noticeboard/Initialize()

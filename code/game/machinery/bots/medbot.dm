@@ -9,7 +9,7 @@
 	icon = 'icons/obj/structures/machinery/aibots.dmi'
 	icon_state = "medibot0"
 	density = FALSE
-	anchored = 0
+	anchored = FALSE
 	health = 20
 	maxhealth = 20
 	req_access =list(ACCESS_MARINE_MEDBAY)

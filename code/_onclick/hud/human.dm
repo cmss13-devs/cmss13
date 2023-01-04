@@ -109,7 +109,7 @@
 		hud_used.hotkey_ui_hidden = 0
 	else
 		client.screen -= hud_used.hotkeybuttons
-		hud_used.hotkey_ui_hidden = 1
+		hud_used.hotkey_ui_hidden = TRUE
 
 /datum/hud/human/hidden_inventory_update(mob/viewer)
 	if(!mymob || !ui_datum)

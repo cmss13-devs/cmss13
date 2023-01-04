@@ -4,7 +4,7 @@
 	desc = "The Caterpillar P-5000 Work Loader is a commercial mechanized exoskeleton used for lifting heavy materials and objects, first designed in January 29, 2025 by Weyland Corporation. An old but trusted design used in warehouses, constructions and military ships everywhere."
 	icon_state = "powerloader_open"
 	layer = POWERLOADER_LAYER //so the top appears above windows and wall mounts
-	anchored = 1
+	anchored = TRUE
 	density = TRUE
 	luminosity = 5
 	move_delay = 8
@@ -334,7 +334,7 @@
 	icon = 'icons/obj/vehicles/powerloader.dmi'
 	icon_state = "wreck"
 	density = TRUE
-	anchored = 0
+	anchored = FALSE
 	opacity = FALSE
 	pixel_x = -18
 	pixel_y = -5

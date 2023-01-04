@@ -4,7 +4,7 @@
 	icon = 'icons/obj/structures/structures.dmi'
 	icon_state = "grille"
 	density = TRUE
-	anchored = 1
+	anchored = TRUE
 	debris = list(/obj/item/stack/rods)
 	flags_atom = FPRINT|CONDUCT
 	layer = OBJ_LAYER

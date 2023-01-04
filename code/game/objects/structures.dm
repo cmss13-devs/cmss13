@@ -11,7 +11,7 @@
 	var/unslashable = FALSE
 	var/wrenchable = FALSE
 	health = 100
-	anchored = 1
+	anchored = TRUE
 	projectile_coverage = PROJECTILE_COVERAGE_MEDIUM
 	can_block_movement = TRUE
 

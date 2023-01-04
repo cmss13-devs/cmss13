@@ -54,7 +54,7 @@
 /mob/living/carbon/Xenomorph/verb/xeno_primary_action_one()
 	set category = "Alien"
 	set name = "Xeno Primary Action One"
-	set hidden = 1
+	set hidden = TRUE
 	var/mob/living/carbon/Xenomorph/xeno = src
 	if (!istype(xeno))
 		return
@@ -70,7 +70,7 @@
 /mob/living/carbon/Xenomorph/verb/xeno_primary_action_two()
 	set category = "Alien"
 	set name = "Xeno Primary Action Two"
-	set hidden = 1
+	set hidden = TRUE
 	var/mob/living/carbon/Xenomorph/xeno = src
 	if (!istype(xeno))
 		return
@@ -86,7 +86,7 @@
 /mob/living/carbon/Xenomorph/verb/xeno_primary_action_three()
 	set category = "Alien"
 	set name = "Xeno Primary Action Three"
-	set hidden = 1
+	set hidden = TRUE
 	var/mob/living/carbon/Xenomorph/xeno = src
 	if (!istype(xeno))
 		return
@@ -102,7 +102,7 @@
 /mob/living/carbon/Xenomorph/verb/xeno_primary_action_four()
 	set category = "Alien"
 	set name = "Xeno Primary Action Four"
-	set hidden = 1
+	set hidden = TRUE
 	var/mob/living/carbon/Xenomorph/xeno = src
 	if (!istype(xeno))
 		return
@@ -118,7 +118,7 @@
 /mob/living/carbon/Xenomorph/verb/xeno_primary_action_five()
 	set category = "Alien"
 	set name = "Xeno Primary Action Five"
-	set hidden = 1
+	set hidden = TRUE
 	var/mob/living/carbon/Xenomorph/xeno = src
 	if (!istype(xeno))
 		return

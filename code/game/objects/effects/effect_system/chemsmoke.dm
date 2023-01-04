@@ -5,7 +5,7 @@
 	icon = 'icons/effects/chemsmoke.dmi'
 	opacity = FALSE
 	time_to_live = 300
-	anchored = 1
+	anchored = TRUE
 	smokeranking = SMOKE_RANK_HIGH
 
 /obj/effect/particle_effect/smoke/chem/Initialize()

@@ -8,7 +8,7 @@
 	icon_opened = "open_basic"
 	icon_closed = "closed_basic"
 	climbable = 1
-	anchored = 0
+	anchored = FALSE
 	throwpass = 1 //prevents moving crates by hurling things at them
 	store_mobs = FALSE
 	var/rigged = 0

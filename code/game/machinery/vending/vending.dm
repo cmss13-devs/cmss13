@@ -22,7 +22,7 @@
 	desc = "A generic vending machine."
 	icon = 'icons/obj/structures/machinery/vending.dmi'
 	icon_state = "generic"
-	anchored = 1
+	anchored = TRUE
 	density = TRUE
 	layer = BELOW_OBJ_LAYER
 
@@ -272,11 +272,11 @@
 			playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
 			switch (anchored)
 				if (0)
-					anchored = 1
+					anchored = TRUE
 					user.visible_message("[user] tightens the bolts securing \the [src] to the floor.", "You tighten the bolts securing \the [src] to the floor.")
 				if (1)
 					user.visible_message("[user] unfastens the bolts securing \the [src] to the floor.", "You unfasten the bolts securing \the [src] to the floor.")
-					anchored = 0
+					anchored = FALSE
 		return
 	else if(HAS_TRAIT(W, TRAIT_TOOL_MULTITOOL) || HAS_TRAIT(W, TRAIT_TOOL_WIRECUTTERS))
 		if(src.panel_open)
@@ -533,7 +533,7 @@
 
 			var/obj/item/held_item = usr.get_held_item()
 			if (!held_item || !HAS_TRAIT(held_item, TRAIT_TOOL_WIRECUTTERS))
-				to_chat(usr, "You need wirecutters!")
+				to_chat(usr, SPAN_WARNING("You need wirecutters!"))
 				return
 
 			if (src.isWireCut(wire))
@@ -554,11 +554,11 @@
 
 			var/obj/item/held_item = usr.get_held_item()
 			if (!held_item || !HAS_TRAIT(held_item, TRAIT_TOOL_MULTITOOL))
-				to_chat(usr, "You need a multitool!")
+				to_chat(usr, SPAN_WARNING("You need a multitool!"))
 				return
 
 			if (src.isWireCut(wire))
-				to_chat(usr, "You can't pulse a cut wire.")
+				to_chat(usr, SPAN_WARNING("You can't pulse a cut wire."))
 				return
 			else
 				src.pulse(wire)

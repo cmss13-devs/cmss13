@@ -12,7 +12,7 @@
 	var/c_tag = null
 	var/c_tag_order = 999
 	var/status = 1.0
-	anchored = 1.0
+	anchored = TRUE
 	var/panel_open = FALSE // 0 = Closed / 1 = Open
 	var/invuln = null
 	var/bugged = 0

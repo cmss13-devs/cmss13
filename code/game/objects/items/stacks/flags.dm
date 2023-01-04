@@ -50,7 +50,7 @@
 	if(upright)
 		upright = 0
 		icon_state = base_state
-		anchored = 0
+		anchored = FALSE
 		src.visible_message("<b>[user]</b> knocks down [src].")
 	else
 		..()

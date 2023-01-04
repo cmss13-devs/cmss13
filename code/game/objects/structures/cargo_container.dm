@@ -8,7 +8,7 @@
 	density = TRUE
 	health = 200
 	opacity = TRUE
-	anchored = 1
+	anchored = TRUE
 
 /obj/structure/cargo_container/attack_hand(mob/user as mob)
 

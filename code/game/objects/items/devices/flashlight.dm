@@ -432,7 +432,7 @@
 	desc = "Bright burning ash from a Star Shell 40mm. Don't touch, oh it'll burn ya'."
 	icon_state = "starshell_ash"
 	brightness_on = 7
-	anchored = 1//can't be picked up
+	anchored = TRUE//can't be picked up
 	ammo_datum = /datum/ammo/flare/starshell
 	show_flame = FALSE
 

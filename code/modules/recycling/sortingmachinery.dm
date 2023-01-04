@@ -11,7 +11,7 @@
 	var/label_y
 	var/label_x
 	var/tag_x
-	anchored = 0
+	anchored = FALSE
 
 /obj/structure/bigDelivery/attack_hand(mob/user as mob)
 	if(wrapped) //sometimes items can disappear. For example, bombs. --rastaf0
@@ -433,7 +433,7 @@
 				var/obj/structure/disposalconstruct/C = new (src.loc)
 				C.ptype = 8 // 8 =  Delivery chute
 				C.update()
-				C.anchored = 1
+				C.anchored = TRUE
 				C.density = TRUE
 				qdel(src)
 			return

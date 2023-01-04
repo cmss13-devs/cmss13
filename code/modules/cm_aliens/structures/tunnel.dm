@@ -10,7 +10,7 @@
 
 	density = FALSE
 	opacity = FALSE
-	anchored = 1
+	anchored = TRUE
 	unslashable = TRUE
 	unacidable = TRUE
 	layer = RESIN_STRUCTURE_LAYER

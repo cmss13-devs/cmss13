@@ -4,7 +4,7 @@
 	icon = 'icons/obj/structures/machinery/loudspeaker.dmi'
 	icon_state = "loudspeaker"
 	density = FALSE
-	anchored = 1
+	anchored = TRUE
 	unacidable = 1
 	unslashable = 1
 	use_power = USE_POWER_NONE

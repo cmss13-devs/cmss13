@@ -376,7 +376,7 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 /obj/flamer_fire
 	name = "fire"
 	desc = "Ouch!"
-	anchored = 1
+	anchored = TRUE
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	icon = 'icons/effects/fire.dmi'
 	icon_state = "dynamic_2"

@@ -10,7 +10,7 @@
 	desc = "It looks way too dangerous to traverse. Best wait until it has cleared up."
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "smoke"
-	anchored = 1
+	anchored = TRUE
 	density = TRUE
 	//opacity = TRUE
 	unslashable = TRUE
@@ -65,7 +65,7 @@ var/global/east_riverstart = 0
 */
 
 /obj/effect/blocker/toxic_water
-	anchored = 1
+	anchored = TRUE
 	density = FALSE
 	opacity = FALSE
 	unacidable = TRUE
@@ -280,7 +280,7 @@ var/global/east_riverstart = 0
 	desc = "Activates the filtration mechanism."
 	var/id = null
 	var/active = 0
-	anchored = 1.0
+	anchored = TRUE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 2
 	active_power_usage = 4

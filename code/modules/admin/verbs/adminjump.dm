@@ -164,7 +164,7 @@
 	set name = "Get Mob"
 	set desc = "Mob to teleport"
 	set category = null
-	set hidden = 1
+	set hidden = TRUE
 
 	if(!src.admin_holder)
 		to_chat(src, "Only administrators may use this command.")
@@ -200,7 +200,7 @@
 /client/proc/sendmob(var/mob/M in sortmobs())
 	set category = "Admin"
 	set name = "Send Mob"
-	set hidden = 1
+	set hidden = TRUE
 
 	if(!src.admin_holder || !(admin_holder.rights & R_MOD))
 		to_chat(src, "Only administrators may use this command.")

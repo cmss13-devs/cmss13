@@ -3,7 +3,7 @@
 #define MINIMUM_TEMP 170
 
 /obj/effect/blocker/sorokyne_cold_water
-	anchored = 1
+	anchored = TRUE
 	density = FALSE
 	opacity = FALSE
 	unacidable = 1

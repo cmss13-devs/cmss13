@@ -280,7 +280,7 @@ It's fairly easy to fix if dealing with single letters but not so much with comp
 
 /mob/verb/a_intent_change(intent as num)
 	set name = "a-intent"
-	set hidden = 1
+	set hidden = TRUE
 
 	if(intent)
 		a_intent = intent
@@ -306,7 +306,7 @@ It's fairly easy to fix if dealing with single letters but not so much with comp
 
 /mob/verb/a_select_zone(input as text)
 	set name = "a-select-zone"
-	set hidden = 1
+	set hidden = TRUE
 
 	var/atom/movable/screen/zone_sel/zone
 

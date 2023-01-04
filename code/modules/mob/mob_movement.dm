@@ -43,7 +43,7 @@
 
 //This gets called when you press the delete button.
 /client/verb/delete_key_pressed()
-	set hidden = 1
+	set hidden = TRUE
 
 	if(!usr.pulling)
 		to_chat(usr, SPAN_NOTICE("You are not pulling anything."))
@@ -52,7 +52,7 @@
 
 /client/verb/swap_hand()
 	set name = ".SwapMobHand"
-	set hidden = 1
+	set hidden = TRUE
 
 	if(istype(mob, /mob/living/carbon))
 		mob.swap_hand()
@@ -64,13 +64,13 @@
 
 
 /client/verb/attack_self()
-	set hidden = 1
+	set hidden = TRUE
 	if(mob)
 		mob.mode()
 	return
 
 /client/verb/drop_item()
-	set hidden = 1
+	set hidden = TRUE
 	if(!isrobot(mob))
 		mob.drop_item_v()
 	return

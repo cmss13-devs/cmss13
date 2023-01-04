@@ -5,7 +5,7 @@
 	icon_state = "rcd"
 	opacity = FALSE
 	density = FALSE
-	anchored = 0.0
+	anchored = FALSE
 	var/stored_matter = 0
 	var/mode = 1
 	w_class = SIZE_MEDIUM

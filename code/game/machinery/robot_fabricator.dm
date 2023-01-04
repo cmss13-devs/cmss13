@@ -3,7 +3,7 @@
 	icon = 'icons/obj/structures/machinery/robotics.dmi'
 	icon_state = "fab-idle"
 	density = TRUE
-	anchored = 1
+	anchored = TRUE
 	var/metal_amount = 0
 	var/operating = 0
 	var/obj/item/robot_parts/being_built = null

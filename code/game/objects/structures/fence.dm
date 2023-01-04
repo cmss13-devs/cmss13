@@ -4,7 +4,7 @@
 	icon = 'icons/obj/structures/props/fence.dmi'
 	icon_state = "fence0"
 	density = TRUE
-	anchored = 1
+	anchored = TRUE
 	layer = WINDOW_LAYER
 	flags_atom = FPRINT
 	health = 50

@@ -332,9 +332,12 @@
 		if("cutwire")
 			if(!panel_open)
 				return FALSE
+			if(!skillcheck(usr, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+				to_chat(usr, SPAN_WARNING("You don't understand anything about this wiring..."))
+				return FALSE
 			var/obj/item/held_item = user.get_held_item()
 			if (!held_item || !HAS_TRAIT(held_item, TRAIT_TOOL_WIRECUTTERS))
-				to_chat(user, "You need wirecutters!")
+				to_chat(user, SPAN_WARNING("You need wirecutters!"))
 				return TRUE
 
 			var/wire = params["wire"]
@@ -343,9 +346,12 @@
 		if("fixwire")
 			if(!panel_open)
 				return FALSE
+			if(!skillcheck(usr, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+				to_chat(usr, SPAN_WARNING("You don't understand anything about this wiring..."))
+				return FALSE
 			var/obj/item/held_item = user.get_held_item()
 			if (!held_item || !HAS_TRAIT(held_item, TRAIT_TOOL_WIRECUTTERS))
-				to_chat(user, "You need wirecutters!")
+				to_chat(user, SPAN_WARNING("You need wirecutters!"))
 				return TRUE
 			var/wire = params["wire"]
 			mend(wire)
@@ -353,13 +359,16 @@
 		if("pulsewire")
 			if(!panel_open)
 				return FALSE
+			if(!skillcheck(usr, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+				to_chat(usr, SPAN_WARNING("You don't understand anything about this wiring..."))
+				return FALSE
 			var/obj/item/held_item = user.get_held_item()
 			if (!held_item || !HAS_TRAIT(held_item, TRAIT_TOOL_MULTITOOL))
 				to_chat(user, "You need multitool!")
 				return TRUE
 			var/wire = params["wire"]
 			if (isWireCut(wire))
-				to_chat(usr, "You can't pulse a cut wire.")
+				to_chat(usr, SPAN_WARNING("You can't pulse a cut wire."))
 				return TRUE
 			pulse(wire)
 			return TRUE

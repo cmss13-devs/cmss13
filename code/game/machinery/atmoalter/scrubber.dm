@@ -43,7 +43,7 @@
 /obj/structure/machinery/portable_atmospherics/powered/scrubber/huge
 	name = "Huge Air Scrubber"
 	icon_state = "scrubber:0"
-	anchored = 1
+	anchored = TRUE
 
 	chan
 	use_power = USE_POWER_NONE

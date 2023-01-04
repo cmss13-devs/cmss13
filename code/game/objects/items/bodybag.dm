@@ -66,7 +66,7 @@
 	var/item_path = /obj/item/bodybag
 	var/open_cooldown = 0 //the active var that tracks the cooldown for opening and closing
 	density = FALSE
-	anchored = 0
+	anchored = FALSE
 	layer = ABOVE_OBJ_LAYER //To layer above rollerbeds.
 	drag_delay = 2 //slightly easier than to drag the body directly.
 	var/obj/structure/bed/roller/roller_buckled //the roller bed this bodybag is attached to.

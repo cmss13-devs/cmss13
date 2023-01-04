@@ -30,7 +30,7 @@ PLANT_CUT_MACHETE = 3 = Needs at least a machete to be cut down
 
 /obj/structure/flora
 	name = "plant"
-	anchored = 1
+	anchored = TRUE
 	density = TRUE
 	var/icon_tag = null
 	var/variations = 1

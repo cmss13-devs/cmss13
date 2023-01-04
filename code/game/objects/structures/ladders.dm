@@ -7,7 +7,7 @@
 	var/height = 0 //The 'height' of the ladder. higher numbers are considered physically higher
 	var/obj/structure/ladder/down = null //The ladder below this one
 	var/obj/structure/ladder/up = null //The ladder above this one
-	anchored = 1
+	anchored = TRUE
 	unslashable = TRUE
 	unacidable = TRUE
 	layer = LADDER_LAYER
@@ -277,7 +277,7 @@
 	desc = "Well, it was only a matter of time."
 	icon = 'icons/obj/structures/structures.dmi'
 	icon_state = "ladder00"
-	anchored = 1
+	anchored = TRUE
 	unslashable = TRUE
 	unacidable = TRUE
 	layer = LADDER_LAYER

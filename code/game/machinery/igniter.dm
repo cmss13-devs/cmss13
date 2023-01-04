@@ -6,7 +6,7 @@
 	plane = FLOOR_PLANE
 	var/id = null
 	var/on = 1.0
-	anchored = 1.0
+	anchored = TRUE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 2
 	active_power_usage = 4
@@ -53,7 +53,7 @@
 	var/disable = 0
 	var/last_spark = 0
 	var/base_state = "migniter"
-	anchored = 1
+	anchored = TRUE
 
 /obj/structure/machinery/sparker/power_change()
 	..()

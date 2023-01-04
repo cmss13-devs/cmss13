@@ -12,7 +12,7 @@
  */
 
 /obj/structure/machinery/hologram
-	anchored = 1
+	anchored = TRUE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 5
 	active_power_usage = 100
@@ -136,7 +136,7 @@ For the other part of the code, check silicon say.dm. Particularly robot talk.*/
 	hologram.icon = A.holo_icon
 	hologram.mouse_opacity = MOUSE_OPACITY_TRANSPARENT//So you can't click on it.
 	hologram.layer = FLY_LAYER//Above all the other objects/mobs. Or the vast majority of them.
-	hologram.anchored = 1//So space wind cannot drag it.
+	hologram.anchored = TRUE//So space wind cannot drag it.
 	hologram.name = "[A.name] (Hologram)"//If someone decides to right click.
 	hologram.SetLuminosity(2) //hologram lighting
 	SetLuminosity(2) //pad lighting

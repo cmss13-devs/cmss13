@@ -98,6 +98,6 @@
 /datum/action/xeno_action/verb/verb_coerce_resin()
 	set category = "Alien"
 	set name = "Coerce Resin"
-	set hidden = 1
+	set hidden = TRUE
 	var/action_name = "Coerce Resin (150)"
 	handle_xeno_macro(src, action_name)

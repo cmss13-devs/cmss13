@@ -41,8 +41,8 @@
 	ui_interact(user)
 
 /obj/structure/machinery/computer/dropship_weapons/attackby(var/obj/item/W, mob/user as mob)
-	if(istype(W, /obj/item/frame/matrix))
-		var/obj/item/frame/matrix/MATRIX = W
+	if(istype(W, /obj/item/frame/matrix_frame))
+		var/obj/item/frame/matrix_frame/MATRIX = W
 		if(MATRIX.state == ASSEMBLY_LOCKED)
 			user.drop_held_item(W, src)
 			W.forceMove(src)

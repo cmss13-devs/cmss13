@@ -34,7 +34,7 @@ var/global/list/image/typed_typing_indicators
 
 /mob/verb/say_wrapper()
 	set name = ".Say"
-	set hidden = 1
+	set hidden = TRUE
 
 	set_typing_indicator(TRUE)
 	hud_typing = -1
@@ -46,7 +46,7 @@ var/global/list/image/typed_typing_indicators
 
 /mob/verb/me_wrapper()
 	set name = ".Me"
-	set hidden = 1
+	set hidden = TRUE
 
 	set_typing_indicator(TRUE)
 	hud_typing = -1

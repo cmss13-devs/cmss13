@@ -16,6 +16,10 @@
 /atom/proc/BlockedPassDirs(atom/movable/mover, target_dir)
 	var/reverse_dir = REVERSE_DIR(dir)
 	var/flags_can_pass = pass_flags.flags_can_pass_all|flags_can_pass_all_temp|pass_flags.flags_can_pass_front|flags_can_pass_front_temp
+
+	if(!mover || !mover.pass_flags)
+		return NO_BLOCKED_MOVEMENT
+
 	var/mover_flags_pass = mover.pass_flags.flags_pass|mover.flags_pass_temp
 
 	if (!density || (flags_can_pass & mover_flags_pass))
@@ -40,6 +44,10 @@
  */
 /atom/proc/BlockedExitDirs(atom/movable/mover, target_dir)
 	var/flags_can_pass = pass_flags.flags_can_pass_all|flags_can_pass_all_temp|pass_flags.flags_can_pass_behind|flags_can_pass_behind_temp
+
+	if(!mover || !mover.pass_flags)
+		return NO_BLOCKED_MOVEMENT
+
 	var/mover_flags_pass = mover.pass_flags.flags_pass|mover.flags_pass_temp
 
 	if(flags_atom & ON_BORDER && density && !(flags_can_pass & mover_flags_pass))

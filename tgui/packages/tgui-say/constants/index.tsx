@@ -1,18 +1,18 @@
 /** Radio channels */
-export const CHANNELS = ['Say', 'Comms', 'Me', 'OOC'] as const;
+export const CHANNELS = ['Say', 'Comms', 'Me', 'OOC', 'LOOC'] as const;
 
 /** Window sizes in pixels */
 export enum WINDOW_SIZES {
   small = 30,
   medium = 50,
   large = 70,
-  width = 331,
+  width = 360,
 }
 
 /** Line lengths for autoexpand */
 export enum LINE_LENGTHS {
-  small = 30,
-  medium = 60,
+  small = 35,
+  medium = 65,
 }
 
 /**
@@ -22,6 +22,22 @@ export enum LINE_LENGTHS {
  * label - string. button label.
  */
 export const RADIO_PREFIXES = {
+  ':m ': {
+    id: 'medsci',
+    label: 'MedSci',
+  },
+  ':n ': {
+    id: 'engi',
+    label: 'Engi',
+  },
+  ':g ': {
+    id: 'ship',
+    label: 'Ship',
+  },
+  ':v ': {
+    id: 'command',
+    label: 'Cmd.',
+  },
   ':a ': {
     id: 'alpha',
     label: 'Alpha',
@@ -42,25 +58,9 @@ export const RADIO_PREFIXES = {
     id: 'echo',
     label: 'Echo',
   },
-  ':m ': {
-    id: 'medsci',
-    label: 'MedSci',
-  },
   ':f ': {
     id: 'foxtrot',
     label: 'Foxtr.',
-  },
-  ':o ': {
-    id: 'cct',
-    label: 'CCT',
-  },
-  ':n ': {
-    id: 'engi',
-    label: 'Engi',
-  },
-  ':g ': {
-    id: 'ship',
-    label: 'Ship',
   },
   ':p ': {
     id: 'security',
@@ -82,20 +82,400 @@ export const RADIO_PREFIXES = {
     id: 'wy',
     label: 'W-Y',
   },
-  ':v ': {
-    id: 'command',
-    label: 'Comm.',
+  ':o ': {
+    id: 'colony',
+    label: 'Colony',
   },
   ':z ': {
     id: 'highcom',
     label: 'HC',
   },
+  ':k ': {
+    id: 'sof',
+    label: 'SOF',
+  },
   ':q ': {
     id: 'hive',
     label: 'Hive',
   },
-  ':k ': {
+  ':M ': {
+    id: 'medsci',
+    label: 'MedSci',
+  },
+  ':N ': {
+    id: 'engi',
+    label: 'Engi',
+  },
+  ':G ': {
+    id: 'ship',
+    label: 'Ship',
+  },
+  ':V ': {
+    id: 'command',
+    label: 'Cmd.',
+  },
+  ':A ': {
+    id: 'alpha',
+    label: 'Alpha',
+  },
+  ':B ': {
+    id: 'bravo',
+    label: 'Bravo',
+  },
+  ':C ': {
+    id: 'charlie',
+    label: 'Charl.',
+  },
+  ':D ': {
+    id: 'delta',
+    label: 'Delta',
+  },
+  ':E ': {
+    id: 'echo',
+    label: 'Echo',
+  },
+  ':F ': {
+    id: 'foxtrot',
+    label: 'Foxtr.',
+  },
+  ':P ': {
+    id: 'security',
+    label: 'MP',
+  },
+  ':U ': {
+    id: 'req',
+    label: 'Req',
+  },
+  ':J ': {
+    id: 'jtac',
+    label: 'JTAC',
+  },
+  ':T ': {
+    id: 'intel',
+    label: 'Int',
+  },
+  ':Y ': {
+    id: 'wy',
+    label: 'W-Y',
+  },
+  ':O ': {
+    id: 'colony',
+    label: 'Colony',
+  },
+  ':Z ': {
+    id: 'highcom',
+    label: 'HC',
+  },
+  ':K ': {
     id: 'sof',
     label: 'SOF',
+  },
+  ':Q ': {
+    id: 'hive',
+    label: 'Hive',
+  },
+  '.m ': {
+    id: 'medsci',
+    label: 'MedSci',
+  },
+  '.n ': {
+    id: 'engi',
+    label: 'Engi',
+  },
+  '.g ': {
+    id: 'ship',
+    label: 'Ship',
+  },
+  '.v ': {
+    id: 'command',
+    label: 'Cmd.',
+  },
+  '.a ': {
+    id: 'alpha',
+    label: 'Alpha',
+  },
+  '.b ': {
+    id: 'bravo',
+    label: 'Bravo',
+  },
+  '.c ': {
+    id: 'charlie',
+    label: 'Charl.',
+  },
+  '.d ': {
+    id: 'delta',
+    label: 'Delta',
+  },
+  '.e ': {
+    id: 'echo',
+    label: 'Echo',
+  },
+  '.f ': {
+    id: 'foxtrot',
+    label: 'Foxtr.',
+  },
+  '.p ': {
+    id: 'security',
+    label: 'MP',
+  },
+  '.u ': {
+    id: 'req',
+    label: 'Req',
+  },
+  '.j ': {
+    id: 'jtac',
+    label: 'JTAC',
+  },
+  '.t ': {
+    id: 'intel',
+    label: 'Int',
+  },
+  '.y ': {
+    id: 'wy',
+    label: 'W-Y',
+  },
+  '.o ': {
+    id: 'colony',
+    label: 'Colony',
+  },
+  '.z ': {
+    id: 'highcom',
+    label: 'HC',
+  },
+  '.k ': {
+    id: 'sof',
+    label: 'SOF',
+  },
+  '.q ': {
+    id: 'hive',
+    label: 'Hive',
+  },
+  '.M ': {
+    id: 'medsci',
+    label: 'MedSci',
+  },
+  '.N ': {
+    id: 'engi',
+    label: 'Engi',
+  },
+  '.G ': {
+    id: 'ship',
+    label: 'Ship',
+  },
+  '.V ': {
+    id: 'command',
+    label: 'Cmd.',
+  },
+  '.A ': {
+    id: 'alpha',
+    label: 'Alpha',
+  },
+  '.B ': {
+    id: 'bravo',
+    label: 'Bravo',
+  },
+  '.C ': {
+    id: 'charlie',
+    label: 'Charl.',
+  },
+  '.D ': {
+    id: 'delta',
+    label: 'Delta',
+  },
+  '.E ': {
+    id: 'echo',
+    label: 'Echo',
+  },
+  '.F ': {
+    id: 'foxtrot',
+    label: 'Foxtr.',
+  },
+  '.P ': {
+    id: 'security',
+    label: 'MP',
+  },
+  '.U ': {
+    id: 'req',
+    label: 'Req',
+  },
+  '.J ': {
+    id: 'jtac',
+    label: 'JTAC',
+  },
+  '.T ': {
+    id: 'intel',
+    label: 'Int',
+  },
+  '.Y ': {
+    id: 'wy',
+    label: 'W-Y',
+  },
+  '.O ': {
+    id: 'colony',
+    label: 'Colony',
+  },
+  '.Z ': {
+    id: 'highcom',
+    label: 'HC',
+  },
+  '.K ': {
+    id: 'sof',
+    label: 'SOF',
+  },
+  '.Q ': {
+    id: 'hive',
+    label: 'Hive',
+  },
+  '#m ': {
+    id: 'upp-med',
+    label: 'UPP Med',
+  },
+  '#n ': {
+    id: 'upp-engi',
+    label: 'UPP Engi',
+  },
+  '#g ': {
+    id: 'clf',
+    label: 'clf',
+  },
+  '#v ': {
+    id: 'upp-cmd',
+    label: 'UPP Cmd.',
+  },
+  '#a ': {
+    id: 'clf-med',
+    label: 'CLF Med',
+  },
+  '#b ': {
+    id: 'clf-engi',
+    label: 'CLF Engi',
+  },
+  '#c ': {
+    id: 'clf-cmd',
+    label: 'CLF Cmd.',
+  },
+  '#d ': {
+    id: 'clf-cct',
+    label: 'CLF CCT',
+  },
+  '#e ': {
+    id: 'pmc-engi',
+    label: 'PMC Engi',
+  },
+  '#f ': {
+    id: 'pmc-med',
+    label: 'PMC Med',
+  },
+  '#p ': {
+    id: 'pmc',
+    label: 'PMC',
+  },
+  '#u ': {
+    id: 'upp',
+    label: 'UPP',
+  },
+  '#j ': {
+    id: 'upp-cct',
+    label: 'UPP CCT',
+  },
+  '#t ': {
+    id: 'upp-kdo',
+    label: 'UPP Kdo',
+  },
+  '#y ': {
+    id: 'wy',
+    label: 'W-Y',
+  },
+  '#o ': {
+    id: 'pmc-cct',
+    label: 'PMC CCT',
+  },
+  '#z ': {
+    id: 'pmc-cmd',
+    label: 'PMC Cmd.',
+  },
+  '#k ': {
+    id: 'specops',
+    label: 'SpecOps',
+  },
+  '#q ': {
+    id: 'hive',
+    label: 'Hive',
+  },
+  '#M ': {
+    id: 'upp-medsci',
+    label: 'UPP Med',
+  },
+  '#N ': {
+    id: 'upp-engi',
+    label: 'UPP Engi',
+  },
+  '#G ': {
+    id: 'clf',
+    label: 'clf',
+  },
+  '#V ': {
+    id: 'upp-cmd',
+    label: 'UPP Cmd.',
+  },
+  '#A ': {
+    id: 'clf-med',
+    label: 'CLF Med',
+  },
+  '#B ': {
+    id: 'clf-engi',
+    label: 'CLF Engi',
+  },
+  '#C ': {
+    id: 'clf-cmd',
+    label: 'CLF Cmd.',
+  },
+  '#D ': {
+    id: 'clf-cct',
+    label: 'CLF CCT',
+  },
+  '#E ': {
+    id: 'pmc-engi',
+    label: 'PMC Engi',
+  },
+  '#F ': {
+    id: 'pmc-med',
+    label: 'PMC Med',
+  },
+  '#P ': {
+    id: 'pmc',
+    label: 'PMC',
+  },
+  '#U ': {
+    id: 'upp',
+    label: 'UPP',
+  },
+  '#J ': {
+    id: 'upp-cct',
+    label: 'UPP CCT',
+  },
+  '#T ': {
+    id: 'upp-kdo',
+    label: 'UPP Kdo',
+  },
+  '#Y ': {
+    id: 'wy',
+    label: 'W-Y',
+  },
+  '#O ': {
+    id: 'pmc-cct',
+    label: 'PMC CCT',
+  },
+  '#Z ': {
+    id: 'pmc-cmd',
+    label: 'PMC Cmd.',
+  },
+  '#K ': {
+    id: 'specops',
+    label: 'SpecOps',
+  },
+  '#Q ': {
+    id: 'hive',
+    label: 'Hive',
   },
 } as const;

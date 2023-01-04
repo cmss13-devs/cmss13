@@ -666,6 +666,9 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 				if(OOC_CHANNEL)
 					var/ooc = tgui_say_create_open_command(OOC_CHANNEL)
 					winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=[ooc]")
+				if(LOOC_CHANNEL)
+					var/looc = tgui_say_create_open_command(LOOC_CHANNEL)
+					winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=[looc]")
 
 /client/proc/toggle_fullscreen(new_value)
 	if(new_value)

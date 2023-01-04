@@ -67,6 +67,15 @@ export class TguiSay extends Component<{}, State> {
             selfClear
             value={edited && value}
           />
+          {!!theme && (
+            <button
+              className={getCss('button', theme)}
+              onclick={onEscape}
+              type="submit"
+              style={{ 'width': '1rem' }}>
+              X
+            </button>
+          )}
           <Dragzone theme={theme} right />
         </div>
         <Dragzone theme={theme} bottom />

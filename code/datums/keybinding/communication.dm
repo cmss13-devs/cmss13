@@ -18,7 +18,7 @@
 /datum/keybinding/client/communication/looc
 	hotkey_keys = list("L")
 	classic_keys = list()
-	name = "LOOC"
+	name = LOOC_CHANNEL
 	full_name = "Local Out Of Character Say (OOC)"
 	keybind_signal = COMSIG_KB_CLIENT_LOOC_DOWN
 

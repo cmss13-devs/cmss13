@@ -13,6 +13,7 @@ $say: #a4bad6;
 $comms: #b4b4b4;
 $me: #5975da;
 $ooc: #cca300;
+$looc: #e362b4;
 
 ////////////////////////////////////////////////
 // Subchannel chat colors
@@ -33,6 +34,10 @@ $jtac: #ad3b98;
 $wy: #fe9b24;
 $cct: #4dc5ce;
 $intel: #027d02;
+$pmc: #4dc5ce;
+$clf: #8e83ca;
+$upp: #8f4a4b;
+$colony: #993399;
 
 $_channel_map: (
   'say': $say,
@@ -58,6 +63,23 @@ $_channel_map: (
   'intel': $intel,
   'sof': $highcom,
   'ship': $comms,
+  'colony': $colony,
+  'upp-med': $upp,
+  'upp-engi': $upp,
+  'upp-cmd': $upp,
+  'upp-kdo': $upp,
+  'upp': $upp,
+  'clf-med': $clf,
+  'clf-engi': $clf,
+  'clf-cmd': $clf,
+  'clf-cct': $clf,
+  'clf': $clf,
+  'pmc-med': $pmc,
+  'pmc-engi': $pmc,
+  'pmc-cct': $pmc,
+  'pmc-cmd': $pmc,
+  'specops': $pmc,
+  'pmc': $pmc,
 );
 
 $channel_keys: map.keys($_channel_map) !default;

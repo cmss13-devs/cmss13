@@ -81,7 +81,7 @@
 	if(!payload?["channel"])
 		CRASH("No channel provided to an open TGUI-Say")
 	window_open = TRUE
-	if(payload["channel"] != OOC_CHANNEL)
+	if(payload["channel"] != OOC_CHANNEL && payload["channel"] != LOOC_CHANNEL)
 		start_thinking()
 	return TRUE
 

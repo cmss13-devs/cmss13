@@ -90,6 +90,12 @@ SUBSYSTEM_DEF(shuttle)
 			if(MC_TICK_CHECK)
 				break
 
+/datum/controller/subsystem/shuttle/proc/hasShuttle(id)
+	for(var/obj/docking_port/mobile/M in mobile)
+		if(M.id == id)
+			return TRUE
+	return FALSE
+
 /datum/controller/subsystem/shuttle/proc/getShuttle(id)
 	for(var/obj/docking_port/mobile/M in mobile)
 		if(M.id == id)
@@ -106,37 +112,43 @@ SUBSYSTEM_DEF(shuttle)
 /datum/controller/subsystem/shuttle/proc/toggleShuttle(shuttleId, dockHome, dockAway, timed)
 	var/obj/docking_port/mobile/M = getShuttle(shuttleId)
 	if(!M)
-		return 1
+		return DOCKING_BLOCKED
 	var/obj/docking_port/stationary/dockedAt = M.get_docked()
 	var/destination = dockHome
 	if(dockedAt && dockedAt.id == dockHome)
 		destination = dockAway
 	if(timed)
 		if(M.request(getDock(destination)))
-			return 2
+			return DOCKING_IMMOBILIZED
 	else
 		if(M.initiate_docking(getDock(destination)) != DOCKING_SUCCESS)
-			return 2
-	return 0 //dock successful
+			return DOCKING_IMMOBILIZED
+	return DOCKING_SUCCESS	//dock successful
 
-
+/**
+ * Moves a shuttle to a new location
+ *
+ * Arguments:
+ * * shuttle_id - The ID of the shuttle (mobile docking port) to move
+ * * dock_id - The ID of the destination (stationary docking port) to move to
+ * * timed - If true, have the shuttle follow normal spool-up, jump, dock process. If false, immediately move to the new location.
+ */
 /datum/controller/subsystem/shuttle/proc/moveShuttle(shuttleId, dockId, timed)
 	var/obj/docking_port/stationary/D = getDock(dockId)
-
-	return moveShuttleToDock(shuttleId, D, timed)
-
-/datum/controller/subsystem/shuttle/proc/moveShuttleToDock(shuttleId, obj/docking_port/stationary/D, timed)
 	var/obj/docking_port/mobile/M = getShuttle(shuttleId)
 
+	return moveShuttleToDock(M, D, timed)
+
+/datum/controller/subsystem/shuttle/proc/moveShuttleToDock(obj/docking_port/mobile/M, obj/docking_port/stationary/D, timed)
 	if(!M)
-		return 1
+		return DOCKING_NULL_SOURCE
 	if(timed)
 		if(M.request(D))
-			return 2
+			return DOCKING_IMMOBILIZED
 	else
 		if(M.initiate_docking(D) != DOCKING_SUCCESS)
-			return 2
-	return 0 //dock successful
+			return DOCKING_IMMOBILIZED
+	return DOCKING_SUCCESS	//dock successful
 
 /datum/controller/subsystem/shuttle/proc/request_transit_dock(obj/docking_port/mobile/M)
 	if(!istype(M))
@@ -485,38 +497,24 @@ SUBSYSTEM_DEF(shuttle)
 
 /datum/controller/subsystem/shuttle/ui_data(mob/user)
 	var/list/data = list()
-	data["tabs"] = list("Status", "Templates", "Modification")
 
 	// Templates panel
-	data["templates"] = list()
-	var/list/templates = data["templates"]
-	data["templates_tabs"] = list()
 	data["selected"] = list()
 
+	data["template_data"] = list()
 	for(var/shuttle_id in SSmapping.shuttle_templates)
 		var/datum/map_template/shuttle/S = SSmapping.shuttle_templates[shuttle_id]
-
-		if(!templates[S.shuttle_id])
-			data["templates_tabs"] += S.shuttle_id
-			templates[S.shuttle_id] = list(
-				"shuttle_id" = S.port_id,
-				"templates" = list())
-
-		var/list/L = list()
-		L["name"] = S.name
-		L["shuttle_id"] = S.shuttle_id
-		L["description"] = S.description
-		L["admin_notes"] = S.admin_notes
+		var/list/template_data = list()
+		template_data["name"] = S.name
+		template_data["shuttle_id"] = S.shuttle_id
+		template_data["description"] = S.description
+		template_data["admin_notes"] = S.admin_notes
 
 		if(selected == S)
-			data["selected"] = L
-
-		templates[S.shuttle_id]["templates"] += list(L)
-
-	data["templates_tabs"] = sortList(data["templates_tabs"])
+			data["selected"] = template_data
+		data["template_data"] += list(template_data)
 
 	data["existing_shuttle"] = null
-
 	// Status panel
 	data["shuttles"] = list()
 	for(var/i in mobile)
@@ -531,6 +529,13 @@ SUBSYSTEM_DEF(shuttle)
 			L["timeleft"] = "Infinity"
 		L["can_fast_travel"] = M.timer && timeleft >= 50
 		L["can_fly"] = TRUE
+
+		var/obj/structure/machinery/computer/shuttle/console = M.getControlConsole()
+		L["has_disable"] = FALSE
+		if(console)
+			L["has_disable"] = TRUE
+			L["is_disabled"] = console.is_disabled()
+
 		if(!M.destination)
 			L["can_fast_travel"] = FALSE
 		if (M.mode != SHUTTLE_IDLE)
@@ -538,12 +543,6 @@ SUBSYSTEM_DEF(shuttle)
 		L["status"] = M.getDbgStatusText()
 		if(M == existing_shuttle)
 			data["existing_shuttle"] = L
-
-
-		//if(istype(M, /obj/docking_port/mobile/marine_dropship))
-		// var/obj/docking_port/mobile/marine_dropship/D = M
-		// L["hijack"] = D.hijack_state
-		//else
 		L["hijack"] = "N/A"
 
 		data["shuttles"] += list(L)
@@ -563,7 +562,10 @@ SUBSYSTEM_DEF(shuttle)
 	switch(action)
 		if("select_template")
 			if(S)
-				existing_shuttle = getShuttle(S.shuttle_id)
+				if(hasShuttle(S.shuttle_id))
+					existing_shuttle = getShuttle(S.shuttle_id)
+				else
+					existing_shuttle = null
 				selected = S
 				. = TRUE
 		if("jump_to")
@@ -574,7 +576,22 @@ SUBSYSTEM_DEF(shuttle)
 						user.forceMove(get_turf(M))
 						. = TRUE
 						break
-
+		if("lock")
+			for(var/i in mobile)
+				var/obj/docking_port/mobile/M = i
+				if(M.id == params["id"])
+					. = TRUE
+					var/obj/structure/machinery/computer/shuttle/console = M.getControlConsole()
+					console.disable()
+					break
+		if("unlock")
+			for(var/i in mobile)
+				var/obj/docking_port/mobile/M = i
+				if(M.id == params["id"])
+					. = TRUE
+					var/obj/structure/machinery/computer/shuttle/console = M.getControlConsole()
+					console.enable()
+					break
 		if("fly")
 			for(var/i in mobile)
 				var/obj/docking_port/mobile/M = i

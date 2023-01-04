@@ -1,7 +1,35 @@
-import { map } from 'common/collections';
 import { useBackend, useLocalState } from '../backend';
-import { Button, Flex, LabeledList, Section, Table, Tabs } from '../components';
+import { Box, Button, Flex, LabeledList, Section, Table, Tabs } from '../components';
+import { TableCell, TableRow } from '../components/Table';
 import { Window } from '../layouts';
+
+interface ShuttleData {
+  name: string;
+  id: string;
+  timer: string;
+  timeleft: string;
+  can_fast_travel: 0 | 1;
+  can_fly: 0 | 1;
+  mode: string;
+  status: string;
+  is_disabled: 0 | 1;
+  has_disable: 0 | 1;
+}
+
+interface ShuttleTemplate {
+  name: string;
+  shuttle_id: string;
+  description: string;
+  admin_notes: string;
+}
+
+interface ShutteManipulatorData {
+  shuttles: Array<ShuttleData>;
+  template_data: Array<ShuttleTemplate>;
+  templates: Array<ShuttleTemplate>;
+  selected?: ShuttleTemplate;
+  existing_shuttle?: ShuttleData;
+}
 
 export const ShuttleManipulator = (props, context) => {
   const [tab, setTab] = useLocalState(context, 'tab', 1);
@@ -27,12 +55,19 @@ export const ShuttleManipulator = (props, context) => {
   );
 };
 
-export const ShuttleManipulatorStatus = (props, context) => {
-  const { act, data } = useBackend(context);
-  const shuttles = data.shuttles || [];
+const ShuttleManipulatorStatus = (props, context) => {
+  const { act, data } = useBackend<ShutteManipulatorData>(context);
+  const shuttles = data.shuttles ?? [];
   return (
     <Section>
       <Table>
+        <TableRow>
+          <TableCell>Actions</TableCell>
+          <TableCell>Shuttle Name</TableCell>
+          <TableCell>ID</TableCell>
+          <TableCell>Status</TableCell>
+          <TableCell>Mode</TableCell>
+        </TableRow>
         {shuttles.map((shuttle) => (
           <Table.Row key={shuttle.id}>
             <Table.Cell>
@@ -46,8 +81,6 @@ export const ShuttleManipulatorStatus = (props, context) => {
                   })
                 }
               />
-            </Table.Cell>
-            <Table.Cell>
               <Button
                 content="Fly"
                 key={shuttle.id}
@@ -58,6 +91,30 @@ export const ShuttleManipulatorStatus = (props, context) => {
                   })
                 }
               />
+              {shuttle.has_disable === 1 && shuttle.is_disabled === 0 && (
+                <Button
+                  content="Disable"
+                  key={shuttle.id}
+                  disabled={!shuttle.can_fly}
+                  onClick={() =>
+                    act('lock', {
+                      id: shuttle.id,
+                    })
+                  }
+                />
+              )}
+              {shuttle.has_disable === 1 && shuttle.is_disabled === 1 && (
+                <Button
+                  content="Enable"
+                  key={shuttle.id}
+                  disabled={!shuttle.can_fly}
+                  onClick={() =>
+                    act('unlock', {
+                      id: shuttle.id,
+                    })
+                  }
+                />
+              )}
             </Table.Cell>
             <Table.Cell>{shuttle.name}</Table.Cell>
             <Table.Cell>{shuttle.id}</Table.Cell>
@@ -87,85 +144,81 @@ export const ShuttleManipulatorStatus = (props, context) => {
   );
 };
 
-export const ShuttleManipulatorTemplates = (props, context) => {
-  const { act, data } = useBackend(context);
-  const templateObject = data.templates || {};
-  const selected = data.selected || {};
+const ShuttleManipulatorTemplates = (props, context) => {
+  const { act, data } = useBackend<ShutteManipulatorData>(context);
+  const templateObject = data.template_data;
+  const selected = data.selected;
   const [selectedTemplateId, setSelectedTemplateId] = useLocalState(
     context,
     'templateId',
-    Object.keys(templateObject)[0]
+    templateObject[0]?.shuttle_id ?? 0
   );
-  const actualTemplates = templateObject[selectedTemplateId]?.templates || [];
+  const actualTemplate = templateObject.find(
+    (x) => x.shuttle_id === selectedTemplateId
+  );
   return (
     <Section>
       <Flex>
         <Flex.Item>
           <Tabs vertical>
-            {map((template, templateId) => (
+            {templateObject.map((template) => (
               <Tabs.Tab
-                key={templateId}
-                selected={selectedTemplateId === templateId}
-                onClick={() => setSelectedTemplateId(templateId)}>
-                {template.port_id}
+                key={template.shuttle_id}
+                selected={selectedTemplateId === template.shuttle_id}
+                onClick={() => setSelectedTemplateId(template.shuttle_id)}>
+                {template.name}
               </Tabs.Tab>
-            ))(templateObject)}
+            ))}
           </Tabs>
         </Flex.Item>
+        <Flex.Item>
+          <Box width={2} />
+        </Flex.Item>
         <Flex.Item grow={1} basis={0}>
-          {actualTemplates.map((actualTemplate) => {
-            const isSelected =
-              actualTemplate.shuttle_id === selected.shuttle_id;
-            // Whoever made the structure being sent is an asshole
-            return (
-              <Section
-                title={actualTemplate.name}
-                level={2}
-                key={actualTemplate.shuttle_id}
-                buttons={
-                  <Button
-                    content={isSelected ? 'Selected' : 'Select'}
-                    selected={isSelected}
-                    onClick={() =>
-                      act('select_template', {
-                        shuttle_id: actualTemplate.shuttle_id,
-                      })
-                    }
-                  />
-                }>
-                {(!!actualTemplate.description ||
-                  !!actualTemplate.admin_notes) && (
-                  <LabeledList>
-                    {!!actualTemplate.description && (
-                      <LabeledList.Item label="Description">
-                        {actualTemplate.description}
-                      </LabeledList.Item>
-                    )}
-                    {!!actualTemplate.admin_notes && (
-                      <LabeledList.Item label="Admin Notes">
-                        {actualTemplate.admin_notes}
-                      </LabeledList.Item>
-                    )}
-                  </LabeledList>
-                )}
-              </Section>
-            );
-          })}
+          {actualTemplate && (
+            <Section
+              title={actualTemplate.name}
+              key={actualTemplate.shuttle_id}
+              buttons={
+                <Button
+                  content={
+                    actualTemplate.shuttle_id === selected?.shuttle_id
+                      ? 'Selected'
+                      : 'Select'
+                  }
+                  selected={actualTemplate.shuttle_id === selected?.shuttle_id}
+                  onClick={() =>
+                    act('select_template', {
+                      shuttle_id: actualTemplate.shuttle_id,
+                    })
+                  }
+                />
+              }>
+              <LabeledList>
+                <LabeledList.Item label="Description">
+                  {actualTemplate.description ?? 'None'}
+                </LabeledList.Item>
+                <LabeledList.Item label="Admin Notes">
+                  {actualTemplate.admin_notes ?? 'None'}
+                </LabeledList.Item>
+              </LabeledList>
+            </Section>
+          )}
         </Flex.Item>
       </Flex>
     </Section>
   );
 };
 
-export const ShuttleManipulatorModification = (props, context) => {
-  const { act, data } = useBackend(context);
-  const selected = data.selected || {};
-  const existingShuttle = data.existing_shuttle || {};
+const ShuttleManipulatorModification = (props, context) => {
+  const { act, data } = useBackend<ShutteManipulatorData>(context);
+  const selected = data.selected;
+  const existingShuttle = data.existing_shuttle;
   return (
     <Section>
       {selected ? (
         <>
-          <Section level={2} title={selected.name}>
+          <Section title={selected.name}>
             {(!!selected.description || !!selected.admin_notes) && (
               <LabeledList>
                 {!!selected.description && (
@@ -182,9 +235,7 @@ export const ShuttleManipulatorModification = (props, context) => {
             )}
           </Section>
           {existingShuttle ? (
-            <Section
-              level={2}
-              title={'Existing Shuttle: ' + existingShuttle.name}>
+            <Section title={'Existing Shuttle: ' + existingShuttle.name}>
               <LabeledList>
                 <LabeledList.Item
                   label="Status"
@@ -205,9 +256,9 @@ export const ShuttleManipulatorModification = (props, context) => {
               </LabeledList>
             </Section>
           ) : (
-            <Section level={2} title="Existing Shuttle: None" />
+            <Section title="Existing Shuttle: None" />
           )}
-          <Section level={2} title="Status">
+          <Section title="Status">
             <Button
               content="Load"
               color="good"

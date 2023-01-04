@@ -48,32 +48,20 @@ var/list/department_radio_keys = list(
 )
 
 ///Shows custom speech bubbles for screaming, *warcry etc.
-/mob/living/proc/show_speech_bubble(var/bubble_name, bubble_type = bubble_icon)
-	var/list/hear = hearers()
+/mob/living/proc/show_speech_bubble(bubble_name, bubble_type = bubble_icon)
 
-	var/image/speech_bubble = image('icons/mob/effects/talk.dmi',src,"[bubble_type][bubble_name]")
+	var/mutable_appearance/speech_bubble = mutable_appearance('icons/mob/effects/talk.dmi', "[bubble_icon][bubble_name]", TYPING_LAYER)
+	speech_bubble.pixel_x = bubble_icon_x_offset
+	speech_bubble.pixel_y = bubble_icon_y_offset
 
-	speech_bubble.appearance_flags = NO_CLIENT_COLOR|KEEP_APART|RESET_COLOR
+	overlays += speech_bubble
 
-	if(appearance_flags & PIXEL_SCALE)
-		speech_bubble.appearance_flags |= PIXEL_SCALE
+	addtimer(CALLBACK(src, PROC_REF(remove_speech_bubble), speech_bubble), 3 SECONDS)
 
-	for(var/mob/M in hear)
-		M << speech_bubble
-
-	addtimer(CALLBACK(src, PROC_REF(remove_speech_bubble), speech_bubble, hear), 30)
-
-
-/mob/living/proc/remove_speech_bubble(var/image/speech_bubble, var/list_of_mobs)
-	if(client)
-		client.images -= speech_bubble
-
-	for(var/mob/M in list_of_mobs)
-		if(M.client)
-			M.client.images -= speech_bubble
+/mob/living/proc/remove_speech_bubble(var/mutable_appearance/speech_bubble, var/list_of_mobs)
+	overlays -= speech_bubble
 
 	speech_bubble = null
-
 
 /mob/living/say(message, datum/language/speaking = null, verb="says", alt_name="", italics=0, message_range = world_view_size, sound/speech_sound, sound_vol, nolog = 0, message_mode = null, bubble_type = bubble_icon)
 	var/turf/T

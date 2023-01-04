@@ -190,6 +190,8 @@ class ChatRenderer {
       const text = setting.highlightText;
       const highlightColor = setting.highlightColor;
       const highlightWholeMessage = setting.highlightWholeMessage;
+      const matchWord = setting.matchWord;
+      const matchCase = setting.matchCase;
       const allowedRegex = /^[a-z0-9_\-$/^[\s\]\\]+$/gi;
       const lines = String(text)
         .split(',')

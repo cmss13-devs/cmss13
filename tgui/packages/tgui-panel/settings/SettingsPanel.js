@@ -204,8 +204,13 @@ const TextHighlightSetting = (props, context) => {
   const { id, ...rest } = props;
   const highlightSettingById = useSelector(context, selectHighlightSettingById);
   const dispatch = useDispatch(context);
-  const { highlightColor, highlightText, highlightWholeMessage } =
-    highlightSettingById[id];
+  const {
+    highlightColor,
+    highlightText,
+    highlightWholeMessage,
+    matchWord,
+    matchCase,
+  } = highlightSettingById[id];
   return (
     <Flex.Item {...rest}>
       <Flex mb={1} color="label" align="baseline">
@@ -233,6 +238,32 @@ const TextHighlightSetting = (props, context) => {
                 updateHighlightSetting({
                   id: id,
                   highlightWholeMessage: !highlightWholeMessage,
+                })
+              )
+            }
+          />
+          <Button.Checkbox
+            content="Match word"
+            checked={matchWord}
+            tooltipPosition="bottom-start"
+            tooltip="Not compatible with punctuation."
+            onClick={() =>
+              dispatch(
+                updateHighlightSetting({
+                  id: id,
+                  matchWord: !matchWord,
+                })
+              )
+            }
+          />
+          <Button.Checkbox
+            content="Match case"
+            checked={matchCase}
+            onClick={() =>
+              dispatch(
+                updateHighlightSetting({
+                  id: id,
+                  matchCase: !matchCase,
                 })
               )
             }

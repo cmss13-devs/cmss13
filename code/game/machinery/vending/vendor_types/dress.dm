@@ -93,7 +93,7 @@
 	var/list/stock_values = list()
 	for (var/i in 1 to length(ui_listed_products))
 		var/prod_available = TRUE
-		var/list/myprod = ui_listed_products[i]	//we take one list from listed_products
+		var/list/myprod = ui_listed_products[i] //we take one list from listed_products
 		var/uniform_path = myprod[3]
 		if(uniform_path in vended_items)
 			prod_available = FALSE
@@ -166,14 +166,14 @@
 	use_snowflake_points = FALSE
 	vendor_theme = VENDOR_THEME_COMPANY
 	vend_flags = VEND_CLUTTER_PROTECTION | VEND_TO_HAND
-	vend_delay = 10
+	vend_delay = 1 SECONDS
 	var/list/items
 	var/list/obj/item/item_types
 
 /obj/structure/machinery/cm_vending/clothing/super_snowflake/get_listed_products(mob/user)
 	//If we don't have an object type, we ask the user to supply it
 	if(!item_types)
-		var/obj/item/chosen = get_item_category_from_mob(user)
+		var/obj/item/chosen = get_item_category_from_user()
 		if(!chosen)
 			return
 		item_types = list(chosen)
@@ -185,7 +185,7 @@
 
 	return items
 
-/obj/structure/machinery/cm_vending/clothing/super_snowflake/proc/get_item_category_from_mob(mob/user)
+/obj/structure/machinery/cm_vending/clothing/super_snowflake/proc/get_item_category_from_user()
 	var/item = tgui_input_text(usr,"What item to stock?", "Stock Vendor","")
 	if(!item)
 		return
@@ -213,20 +213,22 @@
 	for(var/obj/item/I as anything in typesof(item_type))
 		items += list(list(initial(I.name), 0, I, null, VENDOR_ITEM_REGULAR))
 
-/client/proc/cmd_admin_add_items_to_vendor(var/obj/structure/machinery/cm_vending/clothing/super_snowflake/selected)
-	set name = "Add Items To Vendor"
-	set category = null
+/obj/structure/machinery/cm_vending/clothing/super_snowflake/get_vv_options()
+	. = ..()
+	. += "<option value='?_src_=vars;add_items_to_vendor=\ref[src]'>Add Items To Vendor</option>"
 
+/obj/structure/machinery/cm_vending/clothing/super_snowflake/proc/add_items_to_vendor()
 	if(!check_rights(R_MOD))
+		to_chat(usr, SPAN_WARNING("This option isn't for you."))
 		return
 
-	var/obj/item/chosen = selected.get_item_category_from_mob(mob)
+	var/obj/item/chosen = get_item_category_from_user()
 	if(!chosen)
 		return
-	selected.add_items(chosen)
+	add_items(chosen)
 
-	log_admin("[key_name(src)] added an item [chosen] to [selected].")
-	msg_admin_niche("[key_name(src)] added an item [chosen] to [selected].")
+	log_admin("[key_name(usr)] added an item [chosen] to [src].")
+	msg_admin_niche("[key_name(usr)] added an item [chosen] to [src].")
 
 /obj/structure/machinery/cm_vending/clothing/super_snowflake/uniform
 	name = "\improper Super Snowflake Vendor, Uniforms"

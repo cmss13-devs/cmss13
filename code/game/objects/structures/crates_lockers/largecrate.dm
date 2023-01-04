@@ -3,7 +3,7 @@
 	desc = "A hefty wooden crate."
 	icon = 'icons/obj/structures/crates.dmi'
 	icon_state = "densecrate"
-	density = 1
+	density = TRUE
 	anchored = 0
 	var/parts_type = /obj/item/stack/sheet/wood
 	var/unpacking_sound = 'sound/effects/woodhit.ogg'
@@ -57,7 +57,7 @@
 /obj/structure/largecrate/lisa
 	icon_state = "lisacrate"
 
-/obj/structure/largecrate/lisa/attackby(obj/item/W as obj, mob/user as mob)	//ugly but oh well
+/obj/structure/largecrate/lisa/attackby(obj/item/W as obj, mob/user as mob) //ugly but oh well
 	if(HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))
 		new /mob/living/simple_animal/corgi/Lisa(loc)
 	..()
@@ -124,7 +124,7 @@
 	name = "small crate"
 	desc = "The large supply crate's cousin, 1st removed."
 	icon_state = "mini_crate"
-	density = 0
+	density = FALSE
 
 /obj/structure/largecrate/random/mini/chest
 	desc = "A small plastic crate wrapped with securing elastic straps."
@@ -217,34 +217,34 @@
 
 /obj/structure/largecrate/random/barrel
 	name = "blue barrel"
-	desc = "A blue storage barrel"
+	desc = "A blue storage barrel."
 	icon_state = "barrel_blue"
 	parts_type = /obj/item/stack/sheet/metal
 	unpacking_sound = 'sound/effects/metalhit.ogg'
 
 /obj/structure/largecrate/random/barrel/blue
 	name = "blue barrel"
-	desc = "A blue storage barrel"
+	desc = "A blue storage barrel."
 	icon_state = "barrel_blue"
 
 /obj/structure/largecrate/random/barrel/red
 	name = "red barrel"
-	desc = "A red storage barrel"
+	desc = "A red storage barrel."
 	icon_state = "barrel_red"
 
 /obj/structure/largecrate/random/barrel/green
 	name = "green barrel"
-	desc = "A green storage barrel"
+	desc = "A green storage barrel."
 	icon_state = "barrel_green"
 
 /obj/structure/largecrate/random/barrel/yellow
 	name = "yellow barrel"
-	desc = "A yellow storage barrel"
+	desc = "A yellow storage barrel."
 	icon_state = "barrel_yellow"
 
 /obj/structure/largecrate/random/barrel/white
 	name = "white barrel"
-	desc = "A white storage barrel"
+	desc = "A white storage barrel."
 	icon_state = "barrel_white"
 
 /obj/structure/largecrate/random/secure
@@ -302,7 +302,7 @@
 	num_guns = 3
 	num_mags = 3
 	name = "\improper Hyperdyne firearm crate"
-	stuff = list(	/obj/item/weapon/gun/revolver/nagant = /obj/item/ammo_magazine/revolver/upp,
+	stuff = list( /obj/item/weapon/gun/revolver/nagant = /obj/item/ammo_magazine/revolver/upp,
 					/obj/item/weapon/gun/pistol/c99 = /obj/item/ammo_magazine/pistol/c99,
 					/obj/item/weapon/gun/pistol/kt42 = /obj/item/ammo_magazine/pistol/kt42,
 					/obj/item/weapon/gun/rifle/mar40 = /obj/item/ammo_magazine/rifle/mar40,
@@ -315,7 +315,7 @@
 	num_guns = 1
 	num_mags = 5
 	name = "\improper Black market firearm crate"
-	stuff = list(	/obj/item/weapon/gun/pistol/holdout = /obj/item/ammo_magazine/pistol/holdout,
+	stuff = list( /obj/item/weapon/gun/pistol/holdout = /obj/item/ammo_magazine/pistol/holdout,
 					/obj/item/weapon/gun/pistol/highpower = /obj/item/ammo_magazine/pistol/highpower,
 					/obj/item/weapon/gun/pistol/m1911 = /obj/item/ammo_magazine/pistol/m1911,
 					/obj/item/weapon/gun/pistol/heavy = /obj/item/ammo_magazine/pistol/heavy,

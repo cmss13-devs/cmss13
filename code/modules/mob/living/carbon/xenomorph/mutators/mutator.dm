@@ -20,39 +20,39 @@
 	// Rework by Fourkhan - 4/26/19, redone again c. 2/2020
 	// HOW TO ADD A NEW MUTATOR
 	// Step 0: Write an action(s)
-	//			  the "handler" procs go in the appropriate caste's subfolder under the "ABILITIES" file.
-	// 			  the actual ACTION procs go in the appropriate caste's subfolder under the "POWERS" file.
-	// 			  Any constants you need to access for your strain should be in the behavior holder and
-	//			  accessed using a cast to it using the mutator_type variable as defined below. (Or using an istype of the behavior holder)
-	//		      vars that absolutely must be held on the xenos themselves can be added to the Xenomorph class itself.
-	//            Be sure to follow the spec in xeno_action.dm as far as setting up xeno_cooldown is concerned.
+	//   the "handler" procs go in the appropriate caste's subfolder under the "ABILITIES" file.
+	//   the actual ACTION procs go in the appropriate caste's subfolder under the "POWERS" file.
+	//   Any constants you need to access for your strain should be in the behavior holder and
+	//   accessed using a cast to it using the mutator_type variable as defined below. (Or using an istype of the behavior holder)
+	//   vars that absolutely must be held on the xenos themselves can be added to the Xenomorph class itself.
+	// Be sure to follow the spec in xeno_action.dm as far as setting up xeno_cooldown is concerned.
 	//
 	// Step 1: Write the Behavior Delegate datum IF NECESSARY
-	//            the "behavior holder" datum defines all unique behavior and state for each xeno/strain. It works by embedding a number of 'hooks'
-	// 			  for example, if you want to store bonus damage and apply it on slashes, behavior delegates are the way to do it.
-	//            in common procs that call back to Xeno features. See other behavior delegates for examples. Afterward, set the behavior_delegate_type
-	// 			  var on the strain datum to indicate which behavior holder to apply to your strain.
+	// the "behavior holder" datum defines all unique behavior and state for each xeno/strain. It works by embedding a number of 'hooks'
+	//   for example, if you want to store bonus damage and apply it on slashes, behavior delegates are the way to do it.
+	// in common procs that call back to Xeno features. See other behavior delegates for examples. Afterward, set the behavior_delegate_type
+	//   var on the strain datum to indicate which behavior holder to apply to your strain.
 	//
 	// Step 1: Copy/paste another datum definiton and edit it for your strain
-	// 		  	make sure to populate each of the variables listed above (at least as much as other strains)
+	// make sure to populate each of the variables listed above (at least as much as other strains)
 	//
 	// Step 2: Write the apply_mutator proc.
-	//			FIRST:   populate mutator_actions_to_add and mutator_actions_to_remove according to that documentation.
-	//			THEN:    write the body of the apply_mutator method according to your speficiations
-	// 			THEN:    call mutator_update_actions on your xeno
-	//					 call recalculate actions on your mutator set (this should be auto populated)
-	//                   You should probably also call recalculate_everything() on the host Xeno to make sure you don't end up with any
-	//  				 strange transient values.
-	//          THEN:    Set the mutation_type var on the host xeno to "name" the strain.
-	//          FINALLY: Call apply_behavior_holder() to add the behavior datum to the new Xeno.
+	// FIRST:   populate mutator_actions_to_add and mutator_actions_to_remove according to that documentation.
+	// THEN: write the body of the apply_mutator method according to your speficiations
+	// THEN: call mutator_update_actions on your xeno
+	//  call recalculate actions on your mutator set (this should be auto populated)
+	//    You should probably also call recalculate_everything() on the host Xeno to make sure you don't end up with any
+	//  strange transient values.
+	//   THEN: Set the mutation_type var on the host xeno to "name" the strain.
+	//   FINALLY: Call apply_behavior_holder() to add the behavior datum to the new Xeno.
 	//
-	//	You're done!
+	// You're done!
 
 	// Both should be set to null when their use is not necessary.
 	/// A list of PATHS of actions that need to be removed when a xeno takes the mutator.
 	var/list/mutator_actions_to_remove  //Actions to remove when the mutator is added
 	/// A list of PATHS of actions to be ADDED when the Xeno takes the mutator.
-	var/list/mutator_actions_to_add	 //Actions to add when the mutator is added
+	var/list/mutator_actions_to_add  //Actions to add when the mutator is added
 
 	// Type of the behavior datum to add
 	var/behavior_delegate_type = null // Specify this on subtypes

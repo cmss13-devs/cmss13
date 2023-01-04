@@ -38,63 +38,63 @@
 /obj/structure/machinery/door/airlock/glass
 	name = "\improper Glass Airlock"
 	icon = 'icons/obj/structures/doors/Doorglass.dmi'
-	opacity = 0
+	opacity = FALSE
 	glass = 1
 
 /obj/structure/machinery/door/airlock/centcom
 	name = "\improper Airlock"
 	icon = 'icons/obj/structures/doors/Doorele.dmi'
-	opacity = 1
+	opacity = TRUE
 
 /obj/structure/machinery/door/airlock/vault
 	name = "\improper Vault"
 	icon = 'icons/obj/structures/doors/vault.dmi'
-	opacity = 1
+	opacity = TRUE
 	assembly_type = /obj/structure/airlock_assembly/airlock_assembly_highsecurity //Until somebody makes better sprites.
 
 /obj/structure/machinery/door/airlock/freezer
 	name = "\improper Freezer Airlock"
 	icon = 'icons/obj/structures/doors/Doorfreezer.dmi'
-	opacity = 1
+	opacity = TRUE
 	assembly_type = /obj/structure/airlock_assembly/airlock_assembly_fre
 
 /obj/structure/machinery/door/airlock/hatch
 	name = "\improper Airtight Hatch"
 	icon = 'icons/obj/structures/doors/Doorhatchele.dmi'
-	opacity = 1
+	opacity = TRUE
 	assembly_type = /obj/structure/airlock_assembly/airlock_assembly_hatch
 
 /obj/structure/machinery/door/airlock/maintenance_hatch
 	name = "\improper Maintenance Hatch"
 	icon = 'icons/obj/structures/doors/Doorhatchmaint2.dmi'
-	opacity = 1
+	opacity = TRUE
 	assembly_type = /obj/structure/airlock_assembly/airlock_assembly_mhatch
 
 /obj/structure/machinery/door/airlock/glass_command
 	name = "\improper Command Airlock"
 	icon = 'icons/obj/structures/doors/Doorcomglass.dmi'
-	opacity = 0
+	opacity = FALSE
 	assembly_type = /obj/structure/airlock_assembly/airlock_assembly_com
 	glass = 1
 
 /obj/structure/machinery/door/airlock/glass_engineering
 	name = "\improper Engineering Airlock"
 	icon = 'icons/obj/structures/doors/Doorengglass.dmi'
-	opacity = 0
+	opacity = FALSE
 	assembly_type = /obj/structure/airlock_assembly/airlock_assembly_eng
 	glass = 1
 
 /obj/structure/machinery/door/airlock/glass_security
 	name = "\improper Security Airlock"
 	icon = 'icons/obj/structures/doors/Doorsecglass.dmi'
-	opacity = 0
+	opacity = FALSE
 	assembly_type = /obj/structure/airlock_assembly/airlock_assembly_sec
 	glass = 1
 
 /obj/structure/machinery/door/airlock/glass_medical
 	name = "\improper Medical Airlock"
 	icon = 'icons/obj/structures/doors/Doormedglass.dmi'
-	opacity = 0
+	opacity = FALSE
 	assembly_type = /obj/structure/airlock_assembly/airlock_assembly_med
 	glass = 1
 
@@ -104,9 +104,9 @@
 	assembly_type = /obj/structure/airlock_assembly/airlock_assembly_min
 
 /obj/structure/machinery/door/airlock/marine
-    name = "\improper Airlock"
-    icon = 'icons/obj/structures/doors/door_marines.dmi'
-    assembly_type = /obj/structure/airlock_assembly/airlock_assembly_min
+	name = "\improper Airlock"
+	icon = 'icons/obj/structures/doors/door_marines.dmi'
+	assembly_type = /obj/structure/airlock_assembly/airlock_assembly_min
 
 /obj/structure/machinery/door/airlock/atmos
 	name = "\improper Atmospherics Airlock"
@@ -121,7 +121,7 @@
 /obj/structure/machinery/door/airlock/glass_research
 	name = "\improper Research Airlock"
 	icon = 'icons/obj/structures/doors/Doorresearchglass.dmi'
-	opacity = 0
+	opacity = FALSE
 	assembly_type = /obj/structure/airlock_assembly/airlock_assembly_research
 	glass = 1
 	heat_proof = 1
@@ -129,14 +129,14 @@
 /obj/structure/machinery/door/airlock/glass_mining
 	name = "\improper Mining Airlock"
 	icon = 'icons/obj/structures/doors/Doorminingglass.dmi'
-	opacity = 0
+	opacity = FALSE
 	assembly_type = /obj/structure/airlock_assembly/airlock_assembly_min
 	glass = 1
 
 /obj/structure/machinery/door/airlock/glass_atmos
 	name = "\improper Atmospherics Airlock"
 	icon = 'icons/obj/structures/doors/Dooratmoglass.dmi'
-	opacity = 0
+	opacity = FALSE
 	assembly_type = /obj/structure/airlock_assembly/airlock_assembly_atmo
 	glass = 1
 
@@ -193,7 +193,7 @@
 /obj/structure/machinery/door/airlock/glass_science
 	name = "\improper Research Airlock"
 	icon = 'icons/obj/structures/doors/Doorsciglass.dmi'
-	opacity = 0
+	opacity = FALSE
 	assembly_type = /obj/structure/airlock_assembly/airlock_assembly_science
 	glass = 1
 
@@ -296,7 +296,7 @@
 /obj/structure/machinery/door/airlock/almayer/security/glass
 	name = "\improper Security Airlock"
 	icon = 'icons/obj/structures/doors/secdoor_glass.dmi'
-	opacity = 0
+	opacity = FALSE
 	glass = 1
 
 /obj/structure/machinery/door/airlock/almayer/security/glass/autoname
@@ -346,7 +346,7 @@
 /obj/structure/machinery/door/airlock/almayer/engineering
 	name = "\improper Engineering Airlock"
 	icon = 'icons/obj/structures/doors/engidoor.dmi'
-	opacity = 0
+	opacity = FALSE
 	glass = 1
 	req_access = list()
 	req_one_access = list(ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_ENGINEERING)
@@ -385,7 +385,7 @@
 /obj/structure/machinery/door/airlock/almayer/medical/glass
 	name = "\improper Medical Airlock"
 	icon = 'icons/obj/structures/doors/medidoor_glass.dmi'
-	opacity = 0
+	opacity = FALSE
 	glass = 1
 	req_access = list()
 	req_one_access = list(ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_MEDBAY, ACCESS_MARINE_BRIDGE)
@@ -408,7 +408,7 @@
 /obj/structure/machinery/door/airlock/almayer/research/glass
 	name = "\improper Research Airlock"
 	icon = 'icons/obj/structures/doors/medidoor_glass.dmi'
-	opacity = 0
+	opacity = FALSE
 	glass = 1
 	req_access = list(ACCESS_MARINE_RESEARCH)
 
@@ -440,7 +440,7 @@
 /obj/structure/machinery/door/airlock/almayer/marine
 	name = "\improper Airlock"
 	icon = 'icons/obj/structures/doors/prepdoor.dmi'
-	opacity = 0
+	opacity = FALSE
 	glass = 1
 
 /obj/structure/machinery/door/airlock/almayer/marine/autoname
@@ -451,7 +451,7 @@
 	icon = 'icons/obj/structures/doors/prepdoor.dmi'
 	req_access = list()
 	req_one_access = list(ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_CARGO)
-	opacity = 0
+	opacity = FALSE
 	glass = 1
 
 /obj/structure/machinery/door/airlock/almayer/marine/alpha
@@ -459,7 +459,7 @@
 	icon = 'icons/obj/structures/doors/prepdoor_alpha.dmi'
 	req_access = list(ACCESS_MARINE_PREP)
 	req_one_access = list(ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_CARGO, ACCESS_MARINE_ALPHA)
-	opacity = 0
+	opacity = FALSE
 	glass = 1
 
 /obj/structure/machinery/door/airlock/almayer/marine/alpha/sl
@@ -467,7 +467,7 @@
 	req_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_ALPHA)
 	req_one_access = list()
 	dir = SOUTH
-	opacity = 0
+	opacity = FALSE
 	glass = 1
 
 /obj/structure/machinery/door/airlock/almayer/marine/alpha/spec
@@ -475,7 +475,7 @@
 	req_access = list(ACCESS_MARINE_SPECPREP, ACCESS_MARINE_ALPHA)
 	req_one_access = list()
 	dir = SOUTH
-	opacity = 0
+	opacity = FALSE
 	glass = 1
 
 /obj/structure/machinery/door/airlock/almayer/marine/alpha/engineer
@@ -483,7 +483,7 @@
 	req_access = list(ACCESS_MARINE_ENGPREP, ACCESS_MARINE_ALPHA)
 	req_one_access = list()
 	dir = SOUTH
-	opacity = 0
+	opacity = FALSE
 	glass = 1
 
 /obj/structure/machinery/door/airlock/almayer/marine/alpha/medic
@@ -491,7 +491,7 @@
 	req_access = list(ACCESS_MARINE_MEDPREP, ACCESS_MARINE_ALPHA)
 	req_one_access = list()
 	dir = SOUTH
-	opacity = 0
+	opacity = FALSE
 	glass = 1
 
 /obj/structure/machinery/door/airlock/almayer/marine/alpha/smart
@@ -499,7 +499,7 @@
 	req_access = list(ACCESS_MARINE_SMARTPREP, ACCESS_MARINE_ALPHA)
 	req_one_access = list()
 	dir = SOUTH
-	opacity = 0
+	opacity = FALSE
 	glass = 1
 
 /obj/structure/machinery/door/airlock/almayer/marine/bravo
@@ -507,7 +507,7 @@
 	icon = 'icons/obj/structures/doors/prepdoor_bravo.dmi'
 	req_access = list(ACCESS_MARINE_PREP)
 	req_one_access = list(ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_CARGO, ACCESS_MARINE_BRAVO)
-	opacity = 0
+	opacity = FALSE
 	glass = 1
 
 /obj/structure/machinery/door/airlock/almayer/marine/bravo/sl
@@ -515,7 +515,7 @@
 	req_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_BRAVO)
 	req_one_access = list()
 	dir = SOUTH
-	opacity = 0
+	opacity = FALSE
 	glass = 1
 
 /obj/structure/machinery/door/airlock/almayer/marine/bravo/spec
@@ -523,7 +523,7 @@
 	req_access = list(ACCESS_MARINE_SPECPREP, ACCESS_MARINE_BRAVO)
 	req_one_access = list()
 	dir = SOUTH
-	opacity = 0
+	opacity = FALSE
 	glass = 1
 
 /obj/structure/machinery/door/airlock/almayer/marine/bravo/engineer
@@ -531,7 +531,7 @@
 	req_access = list(ACCESS_MARINE_ENGPREP, ACCESS_MARINE_BRAVO)
 	req_one_access = list()
 	dir = SOUTH
-	opacity = 0
+	opacity = FALSE
 	glass = 1
 
 /obj/structure/machinery/door/airlock/almayer/marine/bravo/medic
@@ -539,7 +539,7 @@
 	req_access = list(ACCESS_MARINE_MEDPREP, ACCESS_MARINE_BRAVO)
 	req_one_access = list()
 	dir = SOUTH
-	opacity = 0
+	opacity = FALSE
 	glass = 1
 
 /obj/structure/machinery/door/airlock/almayer/marine/bravo/smart
@@ -547,7 +547,7 @@
 	req_access = list(ACCESS_MARINE_SMARTPREP, ACCESS_MARINE_BRAVO)
 	req_one_access = list()
 	dir = SOUTH
-	opacity = 0
+	opacity = FALSE
 	glass = 1
 
 /obj/structure/machinery/door/airlock/almayer/marine/charlie
@@ -555,7 +555,7 @@
 	icon = 'icons/obj/structures/doors/prepdoor_charlie.dmi'
 	req_access = list(ACCESS_MARINE_PREP)
 	req_one_access = list(ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_CARGO, ACCESS_MARINE_CHARLIE)
-	opacity = 0
+	opacity = FALSE
 	glass = 1
 
 /obj/structure/machinery/door/airlock/almayer/marine/charlie/sl
@@ -563,7 +563,7 @@
 	req_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_CHARLIE)
 	req_one_access = list()
 	dir = SOUTH
-	opacity = 0
+	opacity = FALSE
 	glass = 1
 
 /obj/structure/machinery/door/airlock/almayer/marine/charlie/spec
@@ -571,7 +571,7 @@
 	req_access = list(ACCESS_MARINE_SPECPREP, ACCESS_MARINE_CHARLIE)
 	req_one_access = list()
 	dir = SOUTH
-	opacity = 0
+	opacity = FALSE
 	glass = 1
 
 /obj/structure/machinery/door/airlock/almayer/marine/charlie/engineer
@@ -579,7 +579,7 @@
 	req_access = list(ACCESS_MARINE_ENGPREP, ACCESS_MARINE_CHARLIE)
 	req_one_access = list()
 	dir = SOUTH
-	opacity = 0
+	opacity = FALSE
 	glass = 1
 
 /obj/structure/machinery/door/airlock/almayer/marine/charlie/medic
@@ -587,7 +587,7 @@
 	req_access = list(ACCESS_MARINE_MEDPREP, ACCESS_MARINE_CHARLIE)
 	req_one_access = list()
 	dir = SOUTH
-	opacity = 0
+	opacity = FALSE
 	glass = 1
 
 /obj/structure/machinery/door/airlock/almayer/marine/charlie/smart
@@ -595,7 +595,7 @@
 	req_access = list(ACCESS_MARINE_SMARTPREP, ACCESS_MARINE_CHARLIE)
 	req_one_access = list()
 	dir = SOUTH
-	opacity = 0
+	opacity = FALSE
 	glass = 1
 
 /obj/structure/machinery/door/airlock/almayer/marine/delta
@@ -603,7 +603,7 @@
 	icon = 'icons/obj/structures/doors/prepdoor_delta.dmi'
 	req_access = list(ACCESS_MARINE_PREP)
 	req_one_access = list(ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_CARGO, ACCESS_MARINE_DELTA)
-	opacity = 0
+	opacity = FALSE
 	glass = 1
 
 /obj/structure/machinery/door/airlock/almayer/marine/delta/sl
@@ -611,7 +611,7 @@
 	req_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_DELTA)
 	req_one_access = list()
 	dir = SOUTH
-	opacity = 0
+	opacity = FALSE
 	glass = 1
 
 /obj/structure/machinery/door/airlock/almayer/marine/delta/spec
@@ -619,7 +619,7 @@
 	req_access = list(ACCESS_MARINE_SPECPREP, ACCESS_MARINE_DELTA)
 	req_one_access = list()
 	dir = SOUTH
-	opacity = 0
+	opacity = FALSE
 	glass = 1
 
 /obj/structure/machinery/door/airlock/almayer/marine/delta/engineer
@@ -627,7 +627,7 @@
 	req_access = list(ACCESS_MARINE_ENGPREP, ACCESS_MARINE_DELTA)
 	req_one_access = list()
 	dir = SOUTH
-	opacity = 0
+	opacity = FALSE
 	glass = 1
 
 /obj/structure/machinery/door/airlock/almayer/marine/delta/medic
@@ -635,7 +635,7 @@
 	req_access = list(ACCESS_MARINE_MEDPREP, ACCESS_MARINE_DELTA)
 	req_one_access = list()
 	dir = SOUTH
-	opacity = 0
+	opacity = FALSE
 	glass = 1
 
 /obj/structure/machinery/door/airlock/almayer/marine/delta/smart
@@ -643,7 +643,7 @@
 	req_access = list()
 	req_one_access = list(ACCESS_MARINE_SMARTPREP)
 	dir = SOUTH
-	opacity = 0
+	opacity = FALSE
 	glass = 1
 
 //RTO doors, yes this is stupid
@@ -679,7 +679,7 @@
 	icon = 'icons/obj/structures/doors/prepdoor.dmi'
 	req_access = list(ACCESS_MARINE_PREP)
 	req_one_access = list(ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_CARGO, ACCESS_MARINE_ALPHA, ACCESS_MARINE_BRAVO, ACCESS_MARINE_CHARLIE, ACCESS_MARINE_DELTA)
-	opacity = 0
+	opacity = FALSE
 	glass = 1
 
 /obj/structure/machinery/door/airlock/almayer/marine/shared/alpha_bravo
@@ -690,7 +690,7 @@
 /obj/structure/machinery/door/airlock/almayer/marine/shared/alpha_bravo/yellow
 	icon = 'icons/obj/structures/doors/prepdoor_bravo.dmi'
 
-/obj/structure/machinery/door/airlock/almayer/marine/shared/charlie_delta/
+/obj/structure/machinery/door/airlock/almayer/marine/shared/charlie_delta
 	name = "\improper Charlie-Delta Squads Preparations"
 	icon = 'icons/obj/structures/doors/prepdoor_charlie.dmi'
 	req_one_access = list(ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_CARGO, ACCESS_MARINE_CHARLIE, ACCESS_MARINE_DELTA)

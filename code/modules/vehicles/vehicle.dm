@@ -2,7 +2,7 @@
 	name = "vehicle"
 	icon = 'icons/obj/vehicles/vehicles.dmi'
 	layer = ABOVE_MOB_LAYER //so it sits above objects including mobs
-	density = 1
+	density = TRUE
 	anchored = 1
 	animate_movement = 1
 	luminosity = 2
@@ -19,15 +19,15 @@
 	var/maxhealth = 100
 	var/fire_dam_coeff = 1.0
 	var/brute_dam_coeff = 1.0
-	var/open = 0	//Maint panel
+	var/open = 0 //Maint panel
 	var/locked = TRUE
 	var/stat = 0
-	var/powered = 0		//set if vehicle is powered and should use fuel when moving
-	var/move_delay = 1	//set this to limit the speed of the vehicle
+	var/powered = 0 //set if vehicle is powered and should use fuel when moving
+	var/move_delay = 1 //set this to limit the speed of the vehicle
 	var/buckling_y = 0
 
 	var/obj/item/cell/cell
-	var/charge_use = 5	//set this to adjust the amount of power the vehicle uses per move
+	var/charge_use = 5 //set this to adjust the amount of power the vehicle uses per move
 	can_block_movement = TRUE
 
 //-------------------------------------------
@@ -91,7 +91,7 @@
 		..()
 
 /obj/vehicle/attack_animal(var/mob/living/simple_animal/M as mob)
-	if(M.melee_damage_upper == 0)	return
+	if(M.melee_damage_upper == 0) return
 	health -= M.melee_damage_upper
 	src.visible_message(SPAN_DANGER("<B>[M] has [M.attacktext] [src]!</B>"))
 	M.attack_log += text("\[[time_stamp()]\] <font color='red'>attacked [src.name]</font>")
@@ -219,7 +219,7 @@
 	powercheck()
 
 /obj/vehicle/proc/RunOver(var/mob/living/carbon/human/H)
-	return		//write specifics for different vehicles
+	return //write specifics for different vehicles
 
 
 /obj/vehicle/afterbuckle(mob/M)

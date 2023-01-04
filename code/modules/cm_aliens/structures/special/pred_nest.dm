@@ -4,7 +4,7 @@
 	pixel_x = -8
 	pixel_y = -8
 
-	mouse_opacity = 1
+	mouse_opacity = MOUSE_OPACITY_ICON
 
 	icon = 'icons/mob/xenos/structures48x48.dmi'
 	icon_state = "reinforced_nest"

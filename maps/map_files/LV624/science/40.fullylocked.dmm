@@ -421,6 +421,17 @@
 "bF" = (
 /turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/jungle/central_jungle)
+"gu" = (
+/obj/structure/machinery/door_control{
+	id = "secure_inner_blast";
+	name = "Inner Blast Door";
+	pixel_x = -25;
+	pixel_y = 5
+	},
+/turf/open/floor{
+	icon_state = "white"
+	},
+/area/lv624/lazarus/research)
 "ky" = (
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
@@ -590,7 +601,7 @@ ay
 au
 aQ
 Kl
-ak
+gu
 au
 bp
 ay

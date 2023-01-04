@@ -13,9 +13,9 @@
 	attack_verb = list("beaten")
 	req_one_access = list(ACCESS_MARINE_BRIG, ACCESS_MARINE_ARMORY, ACCESS_MARINE_COMMANDER, ACCESS_WY_CORPORATE, ACCESS_WY_PMC_GREEN, ACCESS_CIVILIAN_BRIG)
 	var/stunforce = 50
-	var/status = 0		//whether the thing is on or not
+	var/status = 0 //whether the thing is on or not
 	var/obj/item/cell/bcell = null
-	var/hitcost = 1000	//oh god why do power cells carry so much charge? We probably need to make a distinction between "industrial" sized power cells for APCs and power cells for everything else.
+	var/hitcost = 1000 //oh god why do power cells carry so much charge? We probably need to make a distinction between "industrial" sized power cells for APCs and power cells for everything else.
 	var/has_user_lock = TRUE //whether the baton prevents people without correct access from using it.
 
 /obj/item/weapon/melee/baton/suicide_act(mob/user)
@@ -146,8 +146,8 @@
 
 	var/target_zone = check_zone(user.zone_selected)
 	if(user.a_intent == INTENT_HARM)
-		if (!..())	//item/attack() does it's own messaging and logs
-			return FALSE	// item/attack() will return TRUE if they hit, 0 if they missed.
+		if (!..()) //item/attack() does it's own messaging and logs
+			return FALSE // item/attack() will return TRUE if they hit, 0 if they missed.
 
 		if(!status)
 			return TRUE
@@ -198,7 +198,7 @@
 
 /obj/item/weapon/melee/baton/emp_act(severity)
 	if(bcell)
-		bcell.emp_act(severity)	//let's not duplicate code everywhere if we don't have to please.
+		bcell.emp_act(severity) //let's not duplicate code everywhere if we don't have to please.
 	..()
 
 //secborg stun baton module

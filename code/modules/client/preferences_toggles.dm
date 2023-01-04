@@ -462,6 +462,7 @@
 	else
 		prefs.tgui_say = TRUE
 		to_chat(src, SPAN_NOTICE("You're now using the new interface."))
+	prefs.save_preferences()
 	update_special_keybinds()
 
 //------------ GHOST PREFERENCES ---------------------------------

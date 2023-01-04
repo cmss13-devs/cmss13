@@ -193,3 +193,49 @@ for it but just ignore it.
 			return L
 
 	return null
+
+/mob/var/hud_typing = 0 //set when typing in an input window instead of chatline
+
+/mob/verb/say_wrapper()
+	set name = ".Say"
+	set hidden = TRUE
+
+	create_typing_indicator(TRUE)
+	hud_typing = -1
+	var/message = input("","say (text)") as text
+	hud_typing = NONE
+	remove_typing_indicator()
+	if(message)
+		say_verb(message)
+
+/mob/verb/me_wrapper()
+	set name = ".Me"
+	set hidden = TRUE
+
+	create_typing_indicator(TRUE)
+	hud_typing = -1
+	var/message = input("","me (text)") as text
+	hud_typing = NONE
+	remove_typing_indicator()
+	if(message)
+		me_verb(message)
+
+/// Sets typing indicator for a couple seconds, for use with client-side comm verbs
+/mob/verb/timed_typing()
+	set name = ".typing"
+	set hidden = TRUE
+	set instant = TRUE
+
+	// Don't override wrapper's indicators
+	if(hud_typing == -1)
+		return
+	create_typing_indicator(TRUE)
+	hud_typing = addtimer(CALLBACK(src, PROC_REF(timed_typing_clear)), 5 SECONDS, TIMER_OVERRIDE|TIMER_UNIQUE|TIMER_STOPPABLE)
+
+/// Clears timed typing indicators
+/mob/proc/timed_typing_clear()
+	// Check it's one of ours
+	if(hud_typing == -1)
+		return
+	hud_typing = NONE
+	remove_typing_indicator()

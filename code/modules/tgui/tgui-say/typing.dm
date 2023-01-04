@@ -82,8 +82,10 @@
 	overlays -= active_thinking_indicator
 	active_thinking_indicator = null
 
-/mob/living/create_typing_indicator()
-	if(active_typing_indicator || active_thinking_indicator || !thinking_IC || stat != CONSCIOUS)
+/mob/living/create_typing_indicator(override_thinking = FALSE)
+	if(active_typing_indicator || active_thinking_indicator || stat != CONSCIOUS)
+		return FALSE
+	if(!thinking_IC && !override_thinking)
 		return FALSE
 	active_typing_indicator = mutable_appearance('icons/mob/effects/talk.dmi', "[bubble_icon]0", TYPING_LAYER)
 	overlays += active_typing_indicator

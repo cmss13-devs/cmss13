@@ -232,8 +232,15 @@ class ChatRenderer {
         }
       }
       const regexStr = regexExpressions.join('|');
+      // setting regex overrides the buttons
       if (regexStr) {
         highlightRegex = new RegExp('(' + regexStr + ')', 'gi');
+      } else {
+        const pattern = `${matchWord ? '\\b' : ''}(${lines.join('|')})${
+          matchWord ? '\\b' : ''
+        }`;
+        const flags = 'g' + (matchCase ? '' : 'i');
+        highlightRegex = new RegExp(pattern, flags);
       }
       // Lazy init
       if (!this.highlightParsers) {

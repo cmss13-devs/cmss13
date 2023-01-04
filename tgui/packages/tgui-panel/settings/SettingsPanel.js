@@ -246,7 +246,7 @@ const TextHighlightSetting = (props, context) => {
             content="Match word"
             checked={matchWord}
             tooltipPosition="bottom-start"
-            tooltip="Not compatible with punctuation."
+            tooltip="Not compatible with punctuation. Overriden if regex is used."
             onClick={() =>
               dispatch(
                 updateHighlightSetting({
@@ -258,6 +258,8 @@ const TextHighlightSetting = (props, context) => {
           />
           <Button.Checkbox
             content="Match case"
+            tooltipPosition="bottom-start"
+            tooltip="Overriden if regex is used."
             checked={matchCase}
             onClick={() =>
               dispatch(

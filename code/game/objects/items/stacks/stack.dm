@@ -298,6 +298,8 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 
 /obj/item/stack/clicked(mob/user, list/mods)
 	if(mods["alt"])
+		if(!CAN_PICKUP(user, src))
+			return
 		var/desired = tgui_input_number(user, "How much would you like to split off from this stack?", "How much?", 1, amount-1, 1)
 		if(!desired)
 			return

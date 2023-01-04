@@ -238,8 +238,8 @@
 				if("Faction Wey-Yu HUD")
 					H = huds[MOB_HUD_FACTION_WY]
 					H.add_hud_to(src)
-				if("Faction RESS HUD")
-					H = huds[MOB_HUD_FACTION_RESS]
+				if("Faction TWE HUD")
+					H = huds[MOB_HUD_FACTION_TWE]
 					H.add_hud_to(src)
 				if("Faction CLF HUD")
 					H = huds[MOB_HUD_FACTION_CLF]

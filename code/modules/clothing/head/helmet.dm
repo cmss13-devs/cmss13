@@ -543,14 +543,14 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 			flags_inventory &= ~(COVEREYES|COVERMOUTH)
 			flags_inv_hide &= ~(HIDEEYES|HIDEFACE)
 			icon_state = base_icon_state
-			eye_protection = 0
+			eye_protection = EYE_PROTECTION_NONE
 			to_chat(usr, "You <b>deactivate</b> the [src]'s welding screen.")
 		else
 			vision_impair = VISION_IMPAIR_MAX
 			flags_inventory |= COVEREYES|COVERMOUTH
 			flags_inv_hide |= HIDEEYES|HIDEFACE
 			icon_state = "[base_icon_state]_on"
-			eye_protection = 2
+			eye_protection = EYE_PROTECTION_WELDING
 			to_chat(usr, "You <b>activate</b> the [src]'s welding screen.")
 
 		protection_on = !protection_on
@@ -1144,13 +1144,13 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 			vision_impair = VISION_IMPAIR_NONE
 			flags_inventory &= ~(COVEREYES|COVERMOUTH)
 			flags_inv_hide &= ~(HIDEEYES|HIDEFACE)
-			eye_protection = 0
+			eye_protection = EYE_PROTECTION_NONE
 			to_chat(usr, "You <b>deactivate</b> the [src]'s welding screen.")
 		else
 			vision_impair = VISION_IMPAIR_MAX
 			flags_inventory |= COVEREYES|COVERMOUTH
 			flags_inv_hide |= HIDEEYES|HIDEFACE
-			eye_protection = 2
+			eye_protection = EYE_PROTECTION_WELDING
 			to_chat(usr, "You <b>activate</b> the [src]'s welding screen.")
 
 		protection_on = !protection_on

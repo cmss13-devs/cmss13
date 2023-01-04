@@ -1,4 +1,0 @@
-author: "stanalbatross"
-delete-after: True
-changes:
-  - rscdel: "removed the airlock docking controller and embedded airlock controllers, they were completely unused"

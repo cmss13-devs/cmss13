@@ -232,7 +232,7 @@
 //-------------------------------------------------------
 //.45 MARSHALS PISTOL //Inspired by the Browning Hipower
 // rebalanced - singlefire, very strong bullets but slow to fire and heavy recoil
-// redesigned - now rejected USCM sidearm model, utilized by marshalls and other stray groups.
+// redesigned - now rejected USCM sidearm model, utilized by Colonial Marshals and other stray groups.
 
 /obj/item/ammo_magazine/pistol/highpower
 	name = "\improper MK-45 Automagnum magazine (.45)"

@@ -14,7 +14,7 @@ var/list/datum/mob_hud/huds = list(
 	MOB_HUD_FACTION_OBSERVER = new /datum/mob_hud/faction/observer(),
 	MOB_HUD_FACTION_UPP = new /datum/mob_hud/faction/upp(),
 	MOB_HUD_FACTION_WY = new /datum/mob_hud/faction/wy(),
-	MOB_HUD_FACTION_RESS = new /datum/mob_hud/faction/ress(),
+	MOB_HUD_FACTION_TWE = new /datum/mob_hud/faction/twe(),
 	MOB_HUD_FACTION_CLF = new /datum/mob_hud/faction/clf(),
 	MOB_HUD_FACTION_PMC = new /datum/mob_hud/faction/pmc(),
 	MOB_HUD_HUNTER = new /datum/mob_hud/hunter_hud(),
@@ -177,8 +177,8 @@ var/list/datum/mob_hud/huds = list(
 /datum/mob_hud/faction/wy
 	faction_to_check = FACTION_WY
 
-/datum/mob_hud/faction/ress
-	faction_to_check = FACTION_RESS
+/datum/mob_hud/faction/twe
+	faction_to_check = FACTION_TWE
 
 /datum/mob_hud/faction/clf
 	faction_to_check = FACTION_CLF

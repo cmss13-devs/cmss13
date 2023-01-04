@@ -41,6 +41,10 @@
 /area/shuttle/vehicle_elevator
 	name = "Vehicle ASRS"
 
+/area/shuttle/ert
+	icon = 'icons/turf/area_almayer.dmi'
+	icon_state = "lifeboat"
+
 /area/shuttle/lifeboat
 	icon = 'icons/turf/area_almayer.dmi'
 	icon_state = "lifeboat"

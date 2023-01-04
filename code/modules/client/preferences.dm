@@ -1707,7 +1707,7 @@ var/const/MAX_SAVE_SLOTS = 10
 						to_chat(user, SPAN_NOTICE("You're now using the say interface whitemode."))
 					else
 						tgui_say_light_mode = FALSE
-						to_chat(user, SPAN_NOTICE("You're now using the say interface whitemode."))
+						to_chat(user, SPAN_NOTICE("You're now using the say interface darkmode."))
 					user?.client.tgui_say?.load()
 					save_preferences()
 

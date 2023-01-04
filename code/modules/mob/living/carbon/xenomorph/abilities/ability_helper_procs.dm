@@ -172,7 +172,7 @@
 		T.update_xeno_hostile_hud()
 	to_chat(H, SPAN_XENOHIGHDANGER("You can move again!"))
 
-/proc/xeno_throw_human(mob/living/carbon/H, mob/living/carbon/Xenomorph/X, direction, distance, var/shake_camera = TRUE)
+/proc/xeno_throw_human(mob/living/carbon/H, mob/living/carbon/Xenomorph/X, direction, distance, shake_camera = TRUE)
 	if (!istype(H) || !istype(X) ||  !direction || !distance)
 		return
 

@@ -1,6 +1,6 @@
 /datum/xeno_mutator/healer
 	name = "STRAIN: Drone - Healer"
-	description = "In exchange for your ability to build, you gain better pheromones, lesser resin fruits, and the ability to heal your sisters' wounds by secreting regenerative resin salve using your vital fluids. Be wary, this is a dangerous process; overexert yourself and you may die..."
+	description = "You trade your choice of resin secretions and ten slash damage for 100 more health, strong pheromones, lesser resin fruits, and the ability to heal your sisters' wounds by secreting a regenerative resin salve using your vital fluids. Be wary, this is a dangerous process; overexert yourself and you may die..."
 	cost = MUTATOR_COST_EXPENSIVE
 	individual_only = TRUE
 	caste_whitelist = list(XENO_CASTE_DRONE) //Only drone.
@@ -69,6 +69,7 @@
 	handle_xeno_macro(src, action_name)
 
 /mob/living/carbon/Xenomorph/proc/xeno_apply_salve(mob/living/carbon/Xenomorph/target_xeno, amount = 100, max_range = 1, damage_taken_mod = 1.2)
+
 	if(!istype(target_xeno))
 		return
 
@@ -77,6 +78,14 @@
 		return
 
 	if(!check_state())
+		return
+
+	if (SEND_SIGNAL(target_xeno, COMSIG_XENO_PRE_HEAL) & COMPONENT_CANCEL_XENO_HEAL)
+		to_chat(src, SPAN_XENOWARNING("Extinguish [target_xeno] first or the flames will burn your resin salve away!"))
+		return
+
+	if(!can_not_harm(target_xeno)) //We don't wanna heal hostile hives, but we do want to heal our allies!
+		to_chat(src, SPAN_WARNING("[target_xeno] is hostile to your hive, so your regenerative resin is incompatible!"))
 		return
 
 	if(!isturf(loc))
@@ -88,7 +97,7 @@
 		return
 
 	if(target_xeno.stat == DEAD)
-		to_chat(src, SPAN_WARNING("[target_xeno] is already dead!"))
+		to_chat(src, SPAN_WARNING("[target_xeno] is dead!"))
 		return
 
 	if(target_xeno.health >= target_xeno.maxHealth)
@@ -101,7 +110,7 @@
 
 	adjustBruteLoss(amount * damage_taken_mod)
 	updatehealth()
-	new /datum/effects/heal_over_time(target_xeno, amount, 10, 2)
+	new /datum/effects/heal_over_time(target_xeno, amount, 12, 2) //Healer now sacrifices the same amount of health that will heal the other xenomorph. Previously, she healed 100 damage while sacrificing 120 health of her own. That is not the law of equivalent exchange!
 	target_xeno.xeno_jitter(1 SECONDS)
 	target_xeno.flick_heal_overlay(10 SECONDS, "#00be6f")
 	to_chat(target_xeno, SPAN_XENOWARNING("\The [src] covers your wounds with regenerative resin. You feel reinvigorated!"))

@@ -17,17 +17,17 @@
 	flags_equip_slot = SLOT_BACK
 	actions_types = list(/datum/action/item_action/hover)
 	var/hover_cooldown = 7.5 SECONDS
-	 /// If you can use it, used for cooldowns.
+	/// If you can use it, used for cooldowns.
 	var/can_hover = TRUE
 
 	// These vars change in attackby().
 	var/fuel_multiplier = 1
-	 ///How quick you will fly
+	///How quick you will fly
 	var/speed = 5
-	 ///How many tiles you can leap to at once.
+	///How many tiles you can leap to at once.
 	var/max_distance = 4
 
-	 /// Reservoir that stores the reagents that fuel the propellant for the hoverpack. Or something like that..
+	/// Reservoir that stores the reagents that fuel the propellant for the hoverpack. Or something like that..
 	var/obj/item/reagent_container/glass/beaker/reservoir/reservoir
 
 	var/last_fuel
@@ -142,9 +142,9 @@
 		do_after(user, 3 SECONDS, INTERRUPT_NONE, BUSY_ICON_HOSTILE, src, INTERRUPT_NONE, BUSY_ICON_HOSTILE)
 		src.visible_message(SPAN_HIGHDANGER("[src] explodes!"))
 		var/datum/cause_data/cause_data = create_cause_data("hoverpack explosion", user)
-		INVOKE_ASYNC(GLOBAL_PROC, /atom.proc/cell_explosion, get_turf(src), 90, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, user.dir, cause_data)
+		INVOKE_ASYNC(GLOBAL_PROC, TYPE_PROC_REF(/atom, cell_explosion), get_turf(src), 90, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, user.dir, cause_data)
 		color = initial(color)
-		addtimer(CALLBACK(src, .proc/end_cooldown, user), hover_cooldown)
+		addtimer(CALLBACK(src, PROC_REF(end_cooldown), user), hover_cooldown)
 		return
 
 	var/fuel_used = FUEL_USAGE
@@ -160,12 +160,12 @@
 	calculate_warning_turf(warning, user, t_turf)
 
 	//has sleep
-	RegisterSignal(user, COMSIG_CLIENT_MOB_MOVE, .proc/disable_flying_movement)
+	RegisterSignal(user, COMSIG_CLIENT_MOB_MOVE, PROC_REF(disable_flying_movement))
 	user.throw_atom(t_turf, max_distance, speed, launch_type = HIGH_LAUNCH)
 	UnregisterSignal(user, COMSIG_CLIENT_MOB_MOVE)
 	qdel(warning)
 	last_fuel = null
-	addtimer(CALLBACK(src, .proc/end_cooldown, user), hover_cooldown)
+	addtimer(CALLBACK(src, PROC_REF(end_cooldown), user), hover_cooldown)
 
 /obj/item/hoverpack/proc/disable_flying_movement(var/mob/living/carbon/human/user)
 	SIGNAL_HANDLER
@@ -240,7 +240,7 @@
 	var/obj/item/hoverpack/HP = holder_item
 	HP.hover(H, A)
 	update_button_icon()
-	addtimer(CALLBACK(src, .proc/update_button_icon), HP.hover_cooldown)
+	addtimer(CALLBACK(src, PROC_REF(update_button_icon)), HP.hover_cooldown)
 
 /datum/action/item_action/hover/remove_from(mob/living/carbon/human/H)
 	..()

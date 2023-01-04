@@ -2,7 +2,7 @@
 	name = "Robotic Fabricator"
 	icon = 'icons/obj/structures/machinery/robotics.dmi'
 	icon_state = "fab-idle"
-	density = 1
+	density = TRUE
 	anchored = 1
 	var/metal_amount = 0
 	var/operating = 0

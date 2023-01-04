@@ -30,9 +30,9 @@
 	. = ..()
 
 /obj/item/device/assembly/signaller/activate()
-	if(cooldown > 0)	return 0
+	if(cooldown > 0) return 0
 	cooldown = 2
-	addtimer(CALLBACK(src, .proc/process_cooldown), 1 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(process_cooldown)), 1 SECONDS)
 
 	signal()
 	return 1

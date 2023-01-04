@@ -21,8 +21,8 @@
 	src.glow_color = glow_color
 
 /datum/component/weed_damage_mult/RegisterWithParent()
-	RegisterSignal(parent, signal_damage_types, .proc/set_incoming_damage)
-	RegisterSignal(parent, COMSIG_MOVABLE_MOVED, .proc/check_for_filter)
+	RegisterSignal(parent, signal_damage_types, PROC_REF(set_incoming_damage))
+	RegisterSignal(parent, COMSIG_MOVABLE_MOVED, PROC_REF(check_for_filter))
 
 	var/mob/M = parent
 	check_for_filter(M, M.loc, 0, FALSE)

@@ -9,7 +9,7 @@ var/list/ob_type_fuel_requirements
 	desc = "The USCM Orbital Cannon System. Used for shooting large targets on the planet that is orbited. It accelerates its payload with solid fuel for devastating results upon impact."
 	icon = 'icons/effects/128x128.dmi'
 	icon_state = "OBC_unloaded"
-	density = 1
+	density = TRUE
 	anchored = 1
 	layer = LADDER_LAYER
 	bound_width = 128
@@ -226,7 +226,7 @@ var/list/ob_type_fuel_requirements
 	desc = "The orbital cannon's loading tray."
 	icon = 'icons/obj/structures/props/almayer_props64.dmi'
 	icon_state = "cannon_tray"
-	density = 1
+	density = TRUE
 	anchored = 1
 	throwpass = TRUE
 	climbable = TRUE
@@ -313,7 +313,7 @@ var/list/ob_type_fuel_requirements
 
 /obj/structure/ob_ammo
 	name = "theoretical ob ammo"
-	density = 1
+	density = TRUE
 	anchored = 1
 	throwpass = TRUE
 	climbable = TRUE
@@ -488,7 +488,7 @@ var/list/ob_type_fuel_requirements
 
 /obj/structure/ob_ammo/warhead/cluster/proc/fire_in_a_hole(var/turf/loc)
 	new /obj/effect/overlay/temp/blinking_laser (loc)
-	addtimer(CALLBACK(GLOBAL_PROC, .proc/cell_explosion, loc, explosion_power, explosion_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data(initial(name), source_mob)), 1 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, PROC_REF(cell_explosion), loc, explosion_power, explosion_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data(initial(name), source_mob)), 1 SECONDS)
 
 /obj/structure/ob_ammo/ob_fuel
 	name = "solid fuel"

@@ -12,7 +12,7 @@ export enum WINDOW_SIZES {
 /** Line lengths for autoexpand */
 export enum LINE_LENGTHS {
   small = 35,
-  medium = 70,
+  medium = 68,
 }
 
 /**
@@ -477,5 +477,53 @@ export const RADIO_PREFIXES = {
   '#Q ': {
     id: 'hive',
     label: 'Hive',
+  },
+  ':W ': {
+    id: 'whisper',
+    label: 'Whisper',
+  },
+  '.W ': {
+    id: 'whisper',
+    label: 'Whisper',
+  },
+  '#W ': {
+    id: 'whisper',
+    label: 'Whisper',
+  },
+  ':w ': {
+    id: 'whisper',
+    label: 'Whisper',
+  },
+  '.w ': {
+    id: 'whisper',
+    label: 'Whisper',
+  },
+  '#w ': {
+    id: 'whisper',
+    label: 'Whisper',
+  },
+  ':H ': {
+    id: 'department',
+    label: 'Depart.',
+  },
+  '.H ': {
+    id: 'department',
+    label: 'Depart.',
+  },
+  '#H ': {
+    id: 'department',
+    label: 'Depart.',
+  },
+  ':h ': {
+    id: 'department',
+    label: 'Depart.',
+  },
+  '.h ': {
+    id: 'department',
+    label: 'Depart.',
+  },
+  '#h ': {
+    id: 'department',
+    label: 'Depart.',
   },
 } as const;

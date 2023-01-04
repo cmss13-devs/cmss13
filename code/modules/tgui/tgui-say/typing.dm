@@ -74,6 +74,8 @@
 	if(active_thinking_indicator || active_typing_indicator || !thinking_IC || stat != CONSCIOUS )
 		return FALSE
 	active_thinking_indicator = mutable_appearance('icons/mob/effects/talk.dmi', "[bubble_icon]3", TYPING_LAYER)
+	active_thinking_indicator.pixel_x = bubble_icon_x_offset
+	active_thinking_indicator.pixel_y = bubble_icon_y_offset
 	overlays += active_thinking_indicator
 
 /mob/living/remove_thinking_indicator()
@@ -88,6 +90,8 @@
 	if(!thinking_IC && !override_thinking)
 		return FALSE
 	active_typing_indicator = mutable_appearance('icons/mob/effects/talk.dmi', "[bubble_icon]0", TYPING_LAYER)
+	active_typing_indicator.pixel_x = bubble_icon_x_offset
+	active_typing_indicator.pixel_y = bubble_icon_y_offset
 	overlays += active_typing_indicator
 
 /mob/living/remove_typing_indicator()

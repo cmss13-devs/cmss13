@@ -95,3 +95,5 @@
 
 	///what icon the mob uses for speechbubbles
 	var/bubble_icon = "default"
+	var/bubble_icon_x_offset = 0
+	var/bubble_icon_y_offset = 0

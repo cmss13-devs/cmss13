@@ -825,6 +825,8 @@
 	resting = FALSE
 	update_canmove()
 	update_icons()
+	bubble_icon_x_offset = 32
+	bubble_icon_y_offset = 32
 
 	for(var/mob/living/carbon/Xenomorph/leader in hive.xeno_leader_list)
 		leader.handle_xeno_leader_pheromones()
@@ -850,6 +852,8 @@
 		return
 	ovipositor = FALSE
 	update_icons()
+	bubble_icon_x_offset = initial(bubble_icon_x_offset)
+	bubble_icon_y_offset = initial(bubble_icon_y_offset)
 	new /obj/ovipositor(loc)
 
 	if(observed_xeno)

@@ -434,10 +434,7 @@ window "statwindow"
 window "tgui_say"
  	elem "tgui_say"
  		type = MAIN
- 		pos = 700,500
- 		size = 331x30
- 		anchor1 = 20,20
- 		anchor2 = 20,20
+ 		size = 380x30
  		is-visible = false
  		saved-params = ""
  		statusbar = false
@@ -445,7 +442,7 @@ window "tgui_say"
  	elem "browser"
  		type = BROWSER
  		pos = 0,0
- 		size = 331x30
+ 		size = 380x30
  		anchor1 = 0,0
  		anchor2 = 0,0
  		saved-params = ""

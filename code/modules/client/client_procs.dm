@@ -54,6 +54,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	/client/proc/toggle_admin_sound_types,
 	/client/proc/receive_random_tip,
 	/client/proc/set_eye_blur_type,
+	/client/proc/toggle_tgui_say,
 ))
 
 /client/Topic(href, href_list, hsrc)
@@ -655,20 +656,37 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 				if("South")
 					movement_keys[key] = SOUTH
 				if(SAY_CHANNEL)
-					var/say = tgui_say_create_open_command(SAY_CHANNEL)
-					winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=[say]")
+					if(prefs.tgui_say)
+						var/say = tgui_say_create_open_command(SAY_CHANNEL)
+						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=[say]")
+					else
+						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=\"say\\n.typing\"")
 				if(COMMS_CHANNEL)
-					var/radio = tgui_say_create_open_command(COMMS_CHANNEL)
-					winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=[radio]")
+					if(prefs.tgui_say)
+						var/radio = tgui_say_create_open_command(COMMS_CHANNEL)
+						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=[radio]")
+					else
+						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=\"say\\n.typing\"")
 				if(ME_CHANNEL)
-					var/me = tgui_say_create_open_command(ME_CHANNEL)
-					winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=[me]")
+					if(prefs.tgui_say)
+						var/me = tgui_say_create_open_command(ME_CHANNEL)
+						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=[me]")
+					else
+						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=\"me\\n.typing\"")
 				if(OOC_CHANNEL)
-					var/ooc = tgui_say_create_open_command(OOC_CHANNEL)
-					winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=[ooc]")
+					if(prefs.tgui_say)
+						var/ooc = tgui_say_create_open_command(OOC_CHANNEL)
+						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=[ooc]")
+					else
+						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=ooc")
 				if(LOOC_CHANNEL)
-					var/looc = tgui_say_create_open_command(LOOC_CHANNEL)
-					winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=[looc]")
+					if(prefs.tgui_say)
+						var/looc = tgui_say_create_open_command(LOOC_CHANNEL)
+						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=[looc]")
+					else
+						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=looc")
+				if("Whisper")
+					winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=whisper")
 
 /client/proc/toggle_fullscreen(new_value)
 	if(new_value)

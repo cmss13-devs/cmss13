@@ -35,6 +35,8 @@ var/const/MAX_SAVE_SLOTS = 10
 	var/default_slot = 1 //Holder so it doesn't default to slot 1, rather the last one used
 	var/savefile_version = 0
 
+	var/tgui_say = TRUE
+
 	//non-preference stuff
 	var/warns = 0
 	var/muted = 0
@@ -556,6 +558,7 @@ var/const/MAX_SAVE_SLOTS = 10
 			dat += "<div id='column2'>"
 			dat += "<h2><b><u>Game Settings:</u></b></h2>"
 			dat += "<b>Ambient Occlusion:</b> <a href='?_src_=prefs;preference=ambientocclusion'><b>[toggle_prefs & TOGGLE_AMBIENT_OCCLUSION ? "Enabled" : "Disabled"]</b></a><br>"
+			dat += "<b>Input Style:</b> <a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_tgui_say'><b>[tgui_say ? "Modern (default)" : "Legacy"]</b></a><br>"
 			dat += "<b>tgui Window Mode:</b> <a href='?_src_=prefs;preference=tgui_fancy'><b>[(tgui_fancy) ? "Fancy (default)" : "Compatible (slower)"]</b></a><br>"
 			dat += "<b>tgui Window Placement:</b> <a href='?_src_=prefs;preference=tgui_lock'><b>[(tgui_lock) ? "Primary monitor" : "Free (default)"]</b></a><br>"
 			dat += "<b>Play Admin Midis:</b> <a href='?_src_=prefs;preference=hear_midis'><b>[(toggles_sound & SOUND_MIDI) ? "Yes" : "No"]</b></a><br>"

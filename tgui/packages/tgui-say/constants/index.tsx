@@ -6,13 +6,13 @@ export enum WINDOW_SIZES {
   small = 30,
   medium = 50,
   large = 70,
-  width = 360,
+  width = 380,
 }
 
 /** Line lengths for autoexpand */
 export enum LINE_LENGTHS {
   small = 35,
-  medium = 65,
+  medium = 70,
 }
 
 /**

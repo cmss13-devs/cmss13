@@ -211,12 +211,13 @@
 			var/obj/effect/alien/resin/fruit/fruit = selected_type
 			to_chat(xeno, SPAN_NOTICE("You will now build <b>[initial(fruit.name)]\s</b> when secreting resin."))
 			//update the button's overlay with new choice
+			xeno.update_icons()
 			button.overlays.Cut()
 			button.overlays += image(icon_file, button, action_icon_state)
 			button.overlays += image('icons/mob/xenos/fruits.dmi', button, initial(fruit.mature_icon_state))
 			xeno.selected_fruit = selected_type
 			. = TRUE
-			xeno.update_icons()
+			
 		if("refresh_ui")
 			. = TRUE
 /*

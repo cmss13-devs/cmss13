@@ -35,22 +35,6 @@ SUBSYSTEM_DEF(fz_transitions)
 						O.clone.proj_x = P.vector_x //Make sure projection is correct
 						O.clone.proj_y = P.vector_y
 
-		switch(P.paused)
-			if(2)
-				P.paused = TRUE
-				if(P.loc.clone)
-					P.loc.destroy_clone(P.vector_x, P.vector_y)
-				if(P.loc.contents)
-					for(var/atom/movable/O in P.loc.contents)
-						if(O.clone)
-							O.destroy_clone_movable()
-			if(3)
-				P.paused = FALSE
-				P.loc.create_clone(P.vector_x, P.vector_y, P.layer_override)
-				for(var/atom/movable/O in P.loc.contents)
-					if(!O.clone)
-						O.create_clone()
-
 	for(var/atom/movable/clone/C in clones)
 		if(C.mstr == null || !istype(C.mstr.loc, /turf))
 			C.mstr.destroy_clone_movable() //Kill clone if master has been destroyed or picked up

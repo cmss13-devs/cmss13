@@ -28,6 +28,7 @@
 
 	var/iselevator = 0 //Used to remove some shuttle related procs and texts to make it compatible with elevators
 	var/almayerelevator = 0 //elevators on the almayer without limitations
+	var/replacement_turf_type = /turf/open/floor/almayer/empty //this is what replaces the turf when leaving there
 
 	var/list/last_passangers = list() //list of living creatures that were our last passengers
 
@@ -221,7 +222,7 @@
 		if(iselevator)
 			if(istype(T,/turf/open/space))
 				if(is_mainship_level(T.z))
-					new /turf/open/floor/almayer/empty(T)
+					new replacement_turf_type(T)
 				else
 					new /turf/open/gm/empty(T)
 		else if(istype(T,/turf/open/space))

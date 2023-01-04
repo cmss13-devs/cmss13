@@ -360,7 +360,7 @@ Parameters are passed from New.
 	T.opacity = FALSE //clones shouldnt block vision
 
 	if(layer_override)
-		T.layer = layer_override
+		T.layer = layer_override + round((layer * 0.01) * 0.75, 0.01) //so we dont loose the intent of the layering
 		if(layer_override < TURF_LAYER)
 			T.plane = FLOOR_PLANE
 
@@ -370,6 +370,7 @@ Parameters are passed from New.
 /atom/proc/destroy_clone(shift_x, shift_y, layer_override)
 	if(src in clones_t)
 		clones_t -= src
+	clone = null
 	var/turf/T = null
 	T = locate(src.x + shift_x, src.y + shift_y, src.z)
 	T.appearance = initial(T.appearance)

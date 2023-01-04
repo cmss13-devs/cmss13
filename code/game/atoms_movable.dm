@@ -236,7 +236,7 @@
 	if(!clone.layer_override)
 		clone.layer = layer
 	else
-		clone.layer = clone.layer_override
+		clone.layer = clone.layer_override + ((layer * 0.01) * 0.75) //so we dont loose the intent of the layering
 		if(clone.layer_override < TURF_LAYER)
 			clone.plane = FLOOR_PLANE
 			clone.opacity = FALSE

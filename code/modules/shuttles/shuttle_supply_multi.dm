@@ -26,11 +26,11 @@
 	var/fake_zlevel = 0
 	var/target_zlevel = 1
 	var/obj/structure/elevator_control_mount/in_elevator_controller
+	replacement_turf_type = /turf/open/floor/almayer/empty/multi_elevator
 
 /datum/shuttle/ferry/supply/multi/New()
 	elevator_animation = new()
-	//elevator_animation.pixel_x = 160 //Matches the slope on the sprite.
-	elevator_animation.pixel_y = -128
+	elevator_animation.pixel_y = -192
 
 	for(var/obj/effect/projector/P in projectors)
 		for(var/turf/T in GLOB.supply_elevator_turfs)
@@ -40,11 +40,19 @@
 					shaft_projectors += list(list())
 				else
 					break
-			var/maths = T.x - P.x			//im only checkin x beacuse I hate you!! >:)
-			if(maths > -5 && maths <= 0)
-				shaft_projectors[area_of_T.fake_zlevel] |= P
-			else if(maths < 5 && maths >= 0)
-				shaft_projectors[area_of_T.fake_zlevel] |= P
+			var/maths_x = T.x - P.x
+			var/maths_y = T.y - P.y
+			if(T.z == P.z)
+				if(maths_x > -5 && maths_x <= 0)
+					if(maths_y > -5 && maths_y <= 0)
+						shaft_projectors[area_of_T.fake_zlevel] |= P
+					else if(maths_y < -5 && maths_y >= 0)
+						shaft_projectors[area_of_T.fake_zlevel] |= P
+				else if(maths_x < 5 && maths_x >= 0)
+					if(maths_y > -5 && maths_y <= 0)
+						shaft_projectors[area_of_T.fake_zlevel] |= P
+					else if(maths_y < -5 && maths_y >= 0)
+						shaft_projectors[area_of_T.fake_zlevel] |= P
 
 	if(supply_controller)
 		for(var/i=1; i <= length(GLOB.supply_elevator_turfs);i++)
@@ -52,23 +60,19 @@
 
 			elevator_effects["[i]SW"]  = new /obj/effect/elevator/supply/multi(locate(T.x-2,T.y-2,T.z))
 			elevator_effects["[i]SW"].vis_contents += elevator_animation
-			elevator_effects["[i]SW"].dir = SOUTHWEST
 
 			elevator_effects["[i]SE"] = new /obj/effect/elevator/supply/multi(locate(T.x+2,T.y-2,T.z))
 			elevator_effects["[i]SE"].pixel_x = -128
 			elevator_effects["[i]SE"].vis_contents += elevator_animation
-			elevator_effects["[i]SE"].dir = SOUTHEAST
 
 			elevator_effects["[i]NW"] = new /obj/effect/elevator/supply/multi(locate(T.x-2,T.y+2,T.z))
 			elevator_effects["[i]NW"].pixel_y = -128
 			elevator_effects["[i]NW"].vis_contents += elevator_animation
-			elevator_effects["[i]NW"].dir = NORTHWEST
 
 			elevator_effects["[i]NE"] = new /obj/effect/elevator/supply/multi(locate(T.x+2,T.y+2,T.z))
 			elevator_effects["[i]NE"].pixel_x = -128
 			elevator_effects["[i]NE"].pixel_y = -128
 			elevator_effects["[i]NE"].vis_contents += elevator_animation
-			elevator_effects["[i]NE"].dir = NORTHEAST
 
 	//playsound(locate(Elevator_x,Elevator_y,Elevator_z), 'sound/machines/cargo_alarm.ogg', 50, 0)  //<-- play this when sending offsite
 
@@ -145,6 +149,13 @@
 		for(var/turf/T in away_area)
 			elevator_animation.vis_contents += T
 
+		for(var/turf/i in elevator_animation.vis_contents)
+			i.layer = elevator_animation.layer + 0.01
+			i.plane = elevator_animation.plane
+			for(var/obj/o in i)
+				o.layer = elevator_animation.layer + 0.01
+				o.plane = elevator_animation.plane
+
 		//If we are at the away_area then we are just pretending to move, otherwise actually do the move
 		if (target_zlevel && fake_zlevel == null)
 			move_elevator_up(origin, destination)
@@ -161,6 +172,7 @@
 		else
 			target_area = get_area(GLOB.supply_elevator_turfs[target_zlevel])
 		fake_zlevel = target_area.fake_zlevel
+
 		moving_status = SHUTTLE_IDLE
 		stop_gears()
 		elevator_animation.vis_contents.Cut()
@@ -176,7 +188,6 @@
 /datum/shuttle/ferry/supply/multi/proc/move_elevator_down(origin, destination)
 	playsound(locate(Elevator_x,Elevator_y,Elevator_z), 'sound/machines/asrs_lowering.ogg', 50, 0)
 	move(origin, destination)
-	update_shaft_effects()
 	animate(elevator_animation, pixel_y = -180, time = 2 SECONDS)
 	start_gears(SOUTH)
 	sleep(21)
@@ -188,35 +199,77 @@
 	sleep(70)
 	animate(elevator_animation, pixel_x = 0, pixel_y = 0, time = 2 SECONDS)
 	sleep(2 SECONDS)
-	update_shaft_effects()
 	move(origin, destination)
 
-/datum/shuttle/ferry/supply/multi/proc/update_shaft_effects()
-	if(fake_zlevel)
-		var/turf/departing_from_turf = GLOB.supply_elevator_turfs[fake_zlevel]
-		elevator_effects["[fake_zlevel]SW"].forceMove(locate(departing_from_turf.x-2, departing_from_turf.y-2, departing_from_turf.z))
-		elevator_effects["[fake_zlevel]SE"].forceMove(locate(departing_from_turf.x+2, departing_from_turf.y-2, departing_from_turf.z))
-		elevator_effects["[fake_zlevel]NW"].forceMove(locate(departing_from_turf.x-2, departing_from_turf.y+2, departing_from_turf.z))
-		elevator_effects["[fake_zlevel]NE"].forceMove(locate(departing_from_turf.x+2, departing_from_turf.y+2, departing_from_turf.z))
-	if(target_zlevel)
-		elevator_effects["[target_zlevel]SW"].moveToNullspace()
-		elevator_effects["[target_zlevel]SE"].moveToNullspace()
-		elevator_effects["[target_zlevel]NW"].moveToNullspace()
-		elevator_effects["[target_zlevel]NE"].moveToNullspace()
-
 /datum/shuttle/ferry/supply/multi/move(area/origin, area/destination)
-	update_shaft_projectors()
+	update_shaft_projectors(1)
+	update_shaft_effects(1)
 	..()
+	for(var/turf/T in get_area(GLOB.supply_elevator_turfs[target_zlevel]))
+		T.layer = initial(T.layer)
+		T.plane = initial(T.plane)
+	for(var/obj/O in get_area(GLOB.supply_elevator_turfs[target_zlevel]))
+		O.layer = initial(O.layer)
+		O.plane = initial(O.plane)
+	update_shaft_effects(2)
+	update_shaft_projectors(2)
 
-/datum/shuttle/ferry/supply/multi/proc/update_shaft_projectors()
+/datum/shuttle/ferry/supply/multi/proc/update_shaft_effects(mode)
+	message_admins("update_shaft_effects()-->mode:[mode] \n target_zlevel:[target_zlevel] \n fake_zlevel:[fake_zlevel]")
+	switch(mode)
+		if(1)
+			if(target_zlevel)
+				elevator_effects["[target_zlevel]SW"].moveToNullspace()
+				elevator_effects["[target_zlevel]SE"].moveToNullspace()
+				elevator_effects["[target_zlevel]NW"].moveToNullspace()
+				elevator_effects["[target_zlevel]NE"].moveToNullspace()
+			if(fake_zlevel)
+				elevator_effects["[fake_zlevel]SW"].moveToNullspace()
+				elevator_effects["[fake_zlevel]SE"].moveToNullspace()
+				elevator_effects["[fake_zlevel]NW"].moveToNullspace()
+				elevator_effects["[fake_zlevel]NE"].moveToNullspace()
+		if(2)
+			if(target_zlevel)
+				var/turf/turf_arrived_at = GLOB.supply_elevator_turfs[target_zlevel]
+				elevator_effects["[target_zlevel]SW"].forceMove(locate(turf_arrived_at.x-2, turf_arrived_at.y-2, turf_arrived_at.z))
+				elevator_effects["[target_zlevel]SE"].forceMove(locate(turf_arrived_at.x+2, turf_arrived_at.y-2, turf_arrived_at.z))
+				elevator_effects["[target_zlevel]NW"].forceMove(locate(turf_arrived_at.x-2, turf_arrived_at.y+2, turf_arrived_at.z))
+				elevator_effects["[target_zlevel]NE"].forceMove(locate(turf_arrived_at.x+2, turf_arrived_at.y+2, turf_arrived_at.z))
+			if(fake_zlevel)
+				var/turf/departing_from_turf = GLOB.supply_elevator_turfs[fake_zlevel]
+				elevator_effects["[fake_zlevel]SW"].forceMove(locate(departing_from_turf.x-2, departing_from_turf.y-2, departing_from_turf.z))
+				elevator_effects["[fake_zlevel]SE"].forceMove(locate(departing_from_turf.x+2, departing_from_turf.y-2, departing_from_turf.z))
+				elevator_effects["[fake_zlevel]NW"].forceMove(locate(departing_from_turf.x-2, departing_from_turf.y+2, departing_from_turf.z))
+				elevator_effects["[fake_zlevel]NE"].forceMove(locate(departing_from_turf.x+2, departing_from_turf.y+2, departing_from_turf.z))
+
+/datum/shuttle/ferry/supply/multi/proc/update_shaft_projectors(mode)
 	//this assumes the projectors are from lower zlevels [FROM INSIDE A SHAFT]
-	//and that their fake_zlevel are ordered such that bigger # == lower decks
-	if(target_zlevel && target_zlevel + 1 <= length(GLOB.supply_elevator_turfs))
-		for(var/obj/effect/projector/P in shaft_projectors[target_zlevel + 1])
-			P.paused = 2
-	if(fake_zlevel && fake_zlevel + 1 <= length(GLOB.supply_elevator_turfs))
-		for(var/obj/effect/projector/P in shaft_projectors[fake_zlevel + 1])
-			P.paused = 3
+	//and that lower zlevels are ordered from 1 up moving downwards
+	//all logic handled by /datum/controller/subsystem/fz_transitions/fire()
+	message_admins("update_shaft_projectors()-->mode:[mode] \n target_zlevel:[target_zlevel] \n fake_zlevel:[fake_zlevel]")
+	switch(mode)
+		if(1)
+			if(target_zlevel && target_zlevel + 1 <= length(GLOB.supply_elevator_turfs))
+				for(var/obj/effect/projector/P in shaft_projectors[target_zlevel + 1])
+					P.update_state(TRUE)
+
+				for(var/obj/effect/projector/P in shaft_projectors[target_zlevel])
+					P.update_state(TRUE)
+			if(fake_zlevel && fake_zlevel != target_zlevel + 1)
+				for(var/obj/effect/projector/P in shaft_projectors[fake_zlevel])
+					P.update_state(TRUE)
+		if(2)
+			if(target_zlevel)
+				for(var/obj/effect/projector/P in shaft_projectors[target_zlevel])
+					P.update_state(FALSE)
+
+			if(fake_zlevel && fake_zlevel + 1 <= length(GLOB.supply_elevator_turfs))
+				for(var/obj/effect/projector/P in shaft_projectors[fake_zlevel + 1])
+					P.update_state(FALSE)
+
+				if(fake_zlevel != target_zlevel + 1)
+					for(var/obj/effect/projector/P in shaft_projectors[fake_zlevel])
+						P.update_state(FALSE)
 
 /datum/shuttle/ferry/supply/multi/forbidden_atoms_check()
 	if(target_zlevel != 0 || target_zlevel != null)

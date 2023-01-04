@@ -209,6 +209,7 @@
 	desc = "There seems to be an awful lot of machinery down below"
 	icon = 'icons/turf/floors/floors.dmi'
 	icon_state = "black"
+	layer = UNDER_TURF_LAYER -0.5
 
 /turf/open/floor/almayer/empty/is_weedable()
 	return NOT_WEEDABLE
@@ -254,12 +255,11 @@
 			qdel(C)
 
 /turf/open/floor/almayer/empty/multi_elevator/Entered(atom/movable/AM)
-	if(AM == src ||	istype(AM, /obj/effect/projector) || istype(AM, /obj/effect/landmark/multi_fakezlevel_supply_elevator) || istype(AM, /obj/effect/step_trigger/clone_cleaner) ||	istype(AM, /obj/effect/elevator/supply/multi_shafted) || istype(AM, /obj/effect/elevator/supply/multi) || istype(AM, /atom/movable/clone))
+	if(AM == src ||	istype(AM, /obj/effect/projector) || istype(AM, /obj/effect/landmark/multi_fakezlevel_supply_elevator) || istype(AM, /obj/effect/step_trigger/clone_cleaner) || istype(AM, /obj/effect/elevator/supply/multi) || istype(AM, /atom/movable/clone))
 		return
 	. = ..()
 
 /turf/open/floor/almayer/empty/multi_elevator/enter_depths(atom/movable/AM)
-	message_admins("[AM] FELL INTO THE SHAFT")
 	if(AM.throwing == 0 && istype(get_turf(AM), type))
 		var/datum/shuttle/ferry/supply/multi/the_cargo_elevator = supply_controller.shuttle
 		var/area/my_area = get_area(src)

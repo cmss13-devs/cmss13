@@ -1,5 +1,0 @@
-author: "stanalbatross"
-delete-after: True
-changes:
-  - bugfix: "vehicle entry speeds will no longer be extraneously multiplied"
-  - qol: "you can now alt-click stacks to split off items from them. As a result of this, attacking a stack in your offhand with one of the same type will no longer ask you how many you want to merge into it."

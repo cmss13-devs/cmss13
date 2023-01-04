@@ -66,10 +66,10 @@
 	icon_state = "ny762_shrapnel"
 
 /obj/item/ammo_magazine/revolver/small
-	name = "\improper S&W speed loader (.357)"
+	name = "\improper S&W speed loader (.38)"
 	default_ammo = /datum/ammo/bullet/revolver/small
-	caliber = ".357"
-	icon_state = "357"
+	caliber = ".38"
+	icon_state = "38"
 	max_rounds = 6
 	gun_type = /obj/item/weapon/gun/revolver/small
 
@@ -168,7 +168,7 @@
 
 /obj/item/ammo_magazine/internal/revolver/small
 	default_ammo = /datum/ammo/bullet/revolver/small
-	caliber = ".357"
+	caliber = ".38"
 	gun_type = /obj/item/weapon/gun/revolver/small
 
 //-------------------------------------------------------

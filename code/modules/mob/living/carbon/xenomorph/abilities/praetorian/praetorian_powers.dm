@@ -135,58 +135,61 @@
 			if (istype(BD))
 				BD.regen_shield()
 
-/datum/action/xeno_action/activable/cleave/use_ability(atom/A)
-	var/mob/living/carbon/Xenomorph/X = owner
+/datum/action/xeno_action/activable/cleave/use_ability(atom/target_atom)
+	var/mob/living/carbon/Xenomorph/vanguard_user = owner
 	if (!action_cooldown_check())
 		return
 
-	if (!X.check_state())
+	if (!vanguard_user.check_state())
 		return
 
 	if (!check_and_use_plasma_owner())
 		return
 
-	if (!isXenoOrHuman(A) || X.can_not_harm(A))
-		to_chat(X, SPAN_XENODANGER("You must target a hostile!"))
+	if (!isXenoOrHuman(target_atom) || vanguard_user.can_not_harm(target_atom))
+		to_chat(vanguard_user, SPAN_XENODANGER("You must target a hostile!"))
 		return
 
-	var/mob/living/carbon/H = A
+	var/mob/living/carbon/target_carbon = target_atom
 
-	if (!X.Adjacent(H))
-		to_chat(X, SPAN_XENOWARNING("You must be adjacent to your target!"))
+	if (!vanguard_user.Adjacent(target_carbon))
+		to_chat(vanguard_user, SPAN_XENOWARNING("You must be adjacent to your target!"))
 		return
 
-	if (H.stat == DEAD)
-		to_chat(X, SPAN_XENODANGER("[H] is dead, why would you want to touch it?"))
+	if (target_carbon.stat == DEAD)
+		to_chat(vanguard_user, SPAN_XENODANGER("[target_carbon] is dead, why would you want to touch it?"))
 		return
 
 	// Flick overlay and play sound
-	X.animation_attack_on(A, 10)
-	var/S = pick('sound/weapons/punch1.ogg','sound/weapons/punch2.ogg','sound/weapons/punch3.ogg','sound/weapons/punch4.ogg')
-	playsound(H,S, 50, 1)
+	vanguard_user.face_atom(target_carbon)
+	vanguard_user.animation_attack_on(target_atom, 10)
+	var/hitsound = pick('sound/weapons/punch1.ogg','sound/weapons/punch2.ogg','sound/weapons/punch3.ogg','sound/weapons/punch4.ogg')
+	playsound(target_carbon,hitsound, 50, 1)
 
 	if (root_toggle)
 		var/root_duration = buffed ? root_duration_buffed : root_duration_unbuffed
 
-		X.visible_message(SPAN_XENODANGER("[X] smashes [A] with its claws, pinning them to the ground!"), SPAN_XENOHIGHDANGER("You smash [A] with your claws, pinning them to the ground!"))
+		vanguard_user.visible_message(SPAN_XENODANGER("[vanguard_user] slams [target_atom] into the ground!"), SPAN_XENOHIGHDANGER("You slam [target_atom] into the ground!"))
 
-		H.frozen = TRUE
-		H.update_canmove()
+		target_carbon.frozen = TRUE
+		target_carbon.update_canmove()
 
-		if (ishuman(H))
-			var/mob/living/carbon/human/Hu = H
+		if (ishuman(target_carbon))
+			var/mob/living/carbon/human/Hu = target_carbon
 			Hu.update_xeno_hostile_hud()
 
-		addtimer(CALLBACK(GLOBAL_PROC, PROC_REF(unroot_human), H), get_xeno_stun_duration(H, root_duration))
-		to_chat(H, SPAN_XENOHIGHDANGER("[X] has pinned you to the ground! You cannot move!"))
+		addtimer(CALLBACK(GLOBAL_PROC, PROC_REF(unroot_human), target_carbon), get_xeno_stun_duration(target_carbon, root_duration))
+		to_chat(target_carbon, SPAN_XENOHIGHDANGER("[vanguard_user] has pinned you to the ground! You cannot move!"))
+		vanguard_user.flick_attack_overlay(target_carbon, "punch")
 
 	else
 		var/fling_distance = buffed ? fling_dist_buffed : fling_dist_unbuffed
 
-		if(H.mob_size >= MOB_SIZE_BIG)
+		if(target_carbon.mob_size >= MOB_SIZE_BIG)
 			fling_distance *= 0.1
-		X.visible_message(SPAN_XENODANGER("[X] deals [A] a massive blow, sending them flying!"), SPAN_XENOHIGHDANGER("You deal [A] a massive blow, sending them flying!"))
-		xeno_throw_human(H, X, get_dir(X, A) ,fling_distance)
+		vanguard_user.visible_message(SPAN_XENODANGER("[vanguard_user] deals [target_atom] a massive blow, sending them flying!"), SPAN_XENOHIGHDANGER("You deal [target_atom] a massive blow, sending them flying!"))
+		vanguard_user.flick_attack_overlay(target_carbon, "slam")
+		xeno_throw_human(target_carbon, vanguard_user, get_dir(vanguard_user, target_atom), fling_distance)
 
 	apply_cooldown()
 	..()
@@ -367,64 +370,68 @@
 /datum/action/xeno_action/activable/prae_abduct/proc/remove_tail_overlay(var/mob/living/carbon/human/overlayed_human, var/image/tail_image)
 	overlayed_human.overlays -= tail_image
 
-/datum/action/xeno_action/activable/oppressor_punch/use_ability(atom/A)
-	var/mob/living/carbon/Xenomorph/X = owner
+/datum/action/xeno_action/activable/oppressor_punch/use_ability(atom/target_atom)
+	var/mob/living/carbon/Xenomorph/oppressor_user = owner
 
 	if (!action_cooldown_check())
 		return
 
-	if (!isXenoOrHuman(A) || X.can_not_harm(A))
+	if (!isXenoOrHuman(target_atom) || oppressor_user.can_not_harm(target_atom))
 		return
 
-	if (!X.check_state() || X.agility)
+	if (!oppressor_user.check_state() || oppressor_user.agility)
 		return
 
-	var/mob/living/carbon/H = A
+	var/mob/living/carbon/target_carbon = target_atom
 
-	if (!X.Adjacent(H))
+	if (!oppressor_user.Adjacent(target_carbon))
 		return
 
-	if(H.stat == DEAD) return
+	if(target_carbon.stat == DEAD) return
 
-	var/obj/limb/L = H.get_limb(check_zone(X.zone_selected))
+	var/obj/limb/target_limb = target_carbon.get_limb(check_zone(oppressor_user.zone_selected))
 
-	if (ishuman(H) && (!L || (L.status & LIMB_DESTROYED)))
+	if (ishuman(target_carbon) && (!target_limb || (target_limb.status & LIMB_DESTROYED)))
 		return
 
 	if (!check_and_use_plasma_owner())
 		return
 
-	H.last_damage_data = create_cause_data(X.caste_type, X)
+	target_carbon.last_damage_data = create_cause_data(oppressor_user.caste_type, oppressor_user)
 
-	X.visible_message(SPAN_XENOWARNING("\The [X] hits [H] in the [L? L.display_name : "chest"] with a devastatingly powerful punch!"), \
-	SPAN_XENOWARNING("You hit [H] in the [L? L.display_name : "chest"] with a devastatingly powerful punch!"))
-	var/S = pick('sound/weapons/punch1.ogg','sound/weapons/punch2.ogg','sound/weapons/punch3.ogg','sound/weapons/punch4.ogg')
-	playsound(H,S, 50, 1)
+	oppressor_user.visible_message(SPAN_XENOWARNING("\The [oppressor_user] hits [target_carbon] in the [target_limb? target_limb.display_name : "chest"] with a devastatingly powerful punch!"), \
+	SPAN_XENOWARNING("You hit [target_carbon] in the [target_limb ? target_limb.display_name : "chest"] with a devastatingly powerful punch!"))
+	var/hitsound = pick('sound/weapons/punch1.ogg','sound/weapons/punch2.ogg','sound/weapons/punch3.ogg','sound/weapons/punch4.ogg')
+	playsound(target_carbon,hitsound, 50, 1)
 
-	if (H.frozen || H.slowed || H.knocked_down)
-		H.apply_damage(get_xeno_damage_slash(H, damage), BRUTE, L? L.name : "chest")
-		H.frozen = TRUE
-		H.update_canmove()
+	oppressor_user.face_atom(target_carbon)
+	oppressor_user.animation_attack_on(target_carbon)
+	oppressor_user.flick_attack_overlay(target_carbon, "punch")
 
-		if (ishuman(H))
-			var/mob/living/carbon/human/Hu = H
+	if (target_carbon.frozen || target_carbon.slowed || target_carbon.knocked_down)
+		target_carbon.apply_damage(get_xeno_damage_slash(target_carbon, damage), BRUTE, target_limb? target_limb.name : "chest")
+		target_carbon.frozen = TRUE
+		target_carbon.update_canmove()
+
+		if (ishuman(target_carbon))
+			var/mob/living/carbon/human/Hu = target_carbon
 			Hu.update_xeno_hostile_hud()
 
-		addtimer(CALLBACK(GLOBAL_PROC, PROC_REF(unroot_human), H), get_xeno_stun_duration(H, 12))
-		to_chat(H, SPAN_XENOHIGHDANGER("[X] has pinned you to the ground! You cannot move!"))
+		addtimer(CALLBACK(GLOBAL_PROC, PROC_REF(unroot_human), target_carbon), get_xeno_stun_duration(target_carbon, 12))
+		to_chat(target_carbon, SPAN_XENOHIGHDANGER("[oppressor_user] has pinned you to the ground! You cannot move!"))
 
-		var/datum/action/xeno_action/activable/prae_abduct/SFA = get_xeno_action_by_type(X, /datum/action/xeno_action/activable/prae_abduct)
-		var/datum/action/xeno_action/activable/tail_lash/SFB = get_xeno_action_by_type(X, /datum/action/xeno_action/activable/tail_lash)
-		if(SFA && SFA.action_cooldown_check())
-			SFA.reduce_cooldown(50)
-		if(SFB && SFB.action_cooldown_check())
-			SFB.reduce_cooldown(50)
+		var/datum/action/xeno_action/activable/prae_abduct/abduct_action = get_xeno_action_by_type(oppressor_user, /datum/action/xeno_action/activable/prae_abduct)
+		var/datum/action/xeno_action/activable/tail_lash/tail_lash_action = get_xeno_action_by_type(oppressor_user, /datum/action/xeno_action/activable/tail_lash)
+		if(abduct_action && abduct_action.action_cooldown_check())
+			abduct_action.reduce_cooldown(5 SECONDS)
+		if(tail_lash_action && tail_lash_action.action_cooldown_check())
+			tail_lash_action.reduce_cooldown(5 SECONDS)
 	else
-		H.apply_armoured_damage(get_xeno_damage_slash(H, damage), ARMOR_MELEE, BRUTE, L? L.name : "chest")
-		step_away(H, X, 2)
+		target_carbon.apply_armoured_damage(get_xeno_damage_slash(target_carbon, damage), ARMOR_MELEE, BRUTE, target_limb? target_limb.name : "chest")
+		step_away(target_carbon, oppressor_user, 2)
 
 
-	shake_camera(H, 2, 1)
+	shake_camera(target_carbon, 2, 1)
 
 	apply_cooldown()
 	..()
@@ -520,29 +527,29 @@
 
 
 /////////// Dancer powers
-/datum/action/xeno_action/activable/prae_impale/use_ability(atom/A)
-	var/mob/living/carbon/Xenomorph/X = owner
+/datum/action/xeno_action/activable/prae_impale/use_ability(atom/target_atom)
+	var/mob/living/carbon/Xenomorph/dancer_user = owner
 
 	if (!action_cooldown_check())
 		return
 
-	if (!X.check_state())
+	if (!dancer_user.check_state())
 		return
 
-	if (!isXenoOrHuman(A) || X.can_not_harm(A))
-		to_chat(X, SPAN_XENODANGER("You must target a hostile!"))
+	if (!isXenoOrHuman(target_atom) || dancer_user.can_not_harm(target_atom))
+		to_chat(dancer_user, SPAN_XENODANGER("You must target a hostile!"))
 		apply_cooldown_override(click_miss_cooldown)
 		return
 
-	if (!X.Adjacent(A))
-		to_chat(X, SPAN_XENODANGER("You must be adjacent to [A]!"))
+	if (!dancer_user.Adjacent(target_atom))
+		to_chat(dancer_user, SPAN_XENODANGER("You must be adjacent to [target_atom]!"))
 		apply_cooldown_override(click_miss_cooldown)
 		return
 
-	var/mob/living/carbon/H = A
+	var/mob/living/carbon/target_carbon = target_atom
 
-	if (H.stat == DEAD)
-		to_chat(X, SPAN_XENOWARNING("[A] is dead, why would you want to attack it?"))
+	if (target_carbon.stat == DEAD)
+		to_chat(dancer_user, SPAN_XENOWARNING("[target_atom] is dead, why would you want to attack it?"))
 		apply_cooldown_override(click_miss_cooldown)
 		return
 
@@ -551,46 +558,46 @@
 
 	var/buffed = FALSE
 	apply_cooldown()
-	if (X.mutation_type == PRAETORIAN_DANCER)
+	if (dancer_user.mutation_type == PRAETORIAN_DANCER)
 		var/found = FALSE
-		for (var/datum/effects/dancer_tag/DT in H.effects_list)
+		for (var/datum/effects/dancer_tag/dancer_tag_effect in target_carbon.effects_list)
 			found = TRUE
-			qdel(DT)
+			qdel(dancer_tag_effect)
 			break
 
 		buffed = found
 
-	if(ishuman(H))
-		var/mob/living/carbon/human/Hu = H
+	if(ishuman(target_carbon))
+		var/mob/living/carbon/human/Hu = target_carbon
 		Hu.update_xeno_hostile_hud()
 
 	// Hmm today I will kill a marine while looking away from them
-	X.face_atom(A)
+	dancer_user.face_atom(target_atom)
 
-	var/damage = get_xeno_damage_slash(H, rand(X.melee_damage_lower, X.melee_damage_upper))
+	var/damage = get_xeno_damage_slash(target_carbon, rand(dancer_user.melee_damage_lower, dancer_user.melee_damage_upper))
 
-	X.visible_message(SPAN_DANGER("\The [X] violently slices [A] with its tail[buffed?" twice":""]!"), \
-					SPAN_DANGER("You slice [A] with your tail[buffed?" twice":""]!"))
+	dancer_user.visible_message(SPAN_DANGER("\The [dancer_user] violently slices [target_atom] with its tail[buffed?" twice":""]!"), \
+					SPAN_DANGER("You slice [target_atom] with your tail[buffed?" twice":""]!"))
 
 	if(buffed)
 		// Do two attacks instead of one
-		X.animation_attack_on(A)
-		X.flick_attack_overlay(A, "slash")
-		X.emote("roar") // Feedback for the player that we got the magic double impale
+		dancer_user.animation_attack_on(target_atom)
+		dancer_user.flick_attack_overlay(target_atom, "tail")
+		dancer_user.emote("roar") // Feedback for the player that we got the magic double impale
 
-		H.apply_armoured_damage(damage, ARMOR_MELEE, BRUTE, "chest", 10)
-		playsound(get_turf(A), "alien_claw_flesh", 30, 1)
+		target_carbon.apply_armoured_damage(damage, ARMOR_MELEE, BRUTE, "chest", 10)
+		playsound(target_carbon, 'sound/weapons/alien_tail_attack.ogg', 30, TRUE)
 
 		// Reroll damage
-		damage = get_xeno_damage_slash(H, rand(X.melee_damage_lower, X.melee_damage_upper))
+		damage = get_xeno_damage_slash(target_carbon, rand(dancer_user.melee_damage_lower, dancer_user.melee_damage_upper))
 		sleep(4) // Short sleep so the animation and sounds will be distinct, but this creates some strange effects if the prae runs away. not entirely happy with this, but I think its benefits outweigh its drawbacks
 
-	X.animation_attack_on(A)
-	X.flick_attack_overlay(A, "slash")
+	dancer_user.animation_attack_on(target_atom)
+	dancer_user.flick_attack_overlay(target_atom, "tail")
 
-	H.last_damage_data = create_cause_data(initial(X.caste_type), X)
-	H.apply_armoured_damage(damage, ARMOR_MELEE, BRUTE, "chest", 10)
-	playsound(get_turf(A), "alien_claw_flesh", 30, 1)
+	target_carbon.last_damage_data = create_cause_data(initial(dancer_user.caste_type), dancer_user)
+	target_carbon.apply_armoured_damage(damage, ARMOR_MELEE, BRUTE, "chest", 10)
+	playsound(target_carbon, 'sound/weapons/alien_tail_attack.ogg', 30, TRUE)
 	..()
 	return
 
@@ -647,24 +654,24 @@
 		xeno.recalculate_speed()
 		to_chat(xeno, SPAN_XENOHIGHDANGER("You can no longer dodge through mobs!"))
 
-/datum/action/xeno_action/activable/prae_tail_trip/use_ability(atom/A)
-	var/mob/living/carbon/Xenomorph/X = owner
+/datum/action/xeno_action/activable/prae_tail_trip/use_ability(atom/target_atom)
+	var/mob/living/carbon/Xenomorph/dancer_user = owner
 
 	if (!action_cooldown_check())
 		return
 
-	if (!istype(X) || !X.check_state())
+	if (!istype(dancer_user) || !dancer_user.check_state())
 		return
 
-	if (!isXenoOrHuman(A) || X.can_not_harm(A))
-		to_chat(X, SPAN_XENODANGER("You must target a hostile!"))
+	if (!isXenoOrHuman(target_atom) || dancer_user.can_not_harm(target_atom))
+		to_chat(dancer_user, SPAN_XENODANGER("You must target a hostile!"))
 		apply_cooldown_override(click_miss_cooldown)
 		return
 
-	var/mob/living/carbon/T = A
+	var/mob/living/carbon/target_carbon = target_atom
 
-	if (T.stat == DEAD)
-		to_chat(X, SPAN_XENOWARNING("[A] is dead, why would you want to attack it?"))
+	if (target_carbon.stat == DEAD)
+		to_chat(dancer_user, SPAN_XENOWARNING("[target_atom] is dead, why would you want to attack it?"))
 		apply_cooldown_override(click_miss_cooldown)
 		return
 
@@ -673,41 +680,42 @@
 
 	var/buffed = FALSE
 
-	if (X.mutation_type == PRAETORIAN_DANCER)
+	if (dancer_user.mutation_type == PRAETORIAN_DANCER)
 		var/found = FALSE
-		for (var/datum/effects/dancer_tag/DT in T.effects_list)
+		for (var/datum/effects/dancer_tag/dancer_tag_effect in target_carbon.effects_list)
 			found = TRUE
-			qdel(DT)
+			qdel(dancer_tag_effect)
 			break
 
 		buffed = found
 
-	if(ishuman(T))
-		var/mob/living/carbon/human/Hu = T
-		Hu.update_xeno_hostile_hud()
+	if(ishuman(target_carbon))
+		var/mob/living/carbon/human/target_human = target_carbon
+		target_human.update_xeno_hostile_hud()
 
-	var/dist = get_dist(X, T)
+	var/dist = get_dist(dancer_user, target_carbon)
 
 	if (dist > range)
-		to_chat(X, SPAN_WARNING("[T] is too far away!"))
+		to_chat(dancer_user, SPAN_WARNING("[target_carbon] is too far away!"))
 		return
 
 	if (dist > 1)
-		var/turf/targetTurf = get_step(X, get_dir(X, T))
+		var/turf/targetTurf = get_step(dancer_user, get_dir(dancer_user, target_carbon))
 		if (targetTurf.density)
-			to_chat(X, SPAN_WARNING("You can't attack through [targetTurf]!"))
+			to_chat(dancer_user, SPAN_WARNING("You can't attack through [targetTurf]!"))
 			return
 		else
-			for (var/atom/I in targetTurf)
-				if (I.density && !I.throwpass && !istype(I, /obj/structure/barricade) && !istype(I, /mob/living))
-					to_chat(X, SPAN_WARNING("You can't attack through [I]!"))
+			for (var/atom/atom_in_turf in targetTurf)
+				if (atom_in_turf.density && !atom_in_turf.throwpass && !istype(atom_in_turf, /obj/structure/barricade) && !istype(atom_in_turf, /mob/living))
+					to_chat(dancer_user, SPAN_WARNING("You can't attack through [atom_in_turf]!"))
 					return
 
 	// Hmm today I will kill a marine while looking away from them
-	X.face_atom(T)
+	dancer_user.face_atom(target_carbon)
+	dancer_user.flick_attack_overlay(target_carbon, "disarm")
 
 	if (!buffed)
-		new /datum/effects/xeno_slow(T, X, null, null, get_xeno_stun_duration(T, slow_duration))
+		new /datum/effects/xeno_slow(target_carbon, dancer_user, null, null, get_xeno_stun_duration(target_carbon, slow_duration))
 
 	var/stun_duration = stun_duration_default
 	var/daze_duration = 0
@@ -718,24 +726,24 @@
 
 	var/xeno_smashed = FALSE
 
-	if(isXeno(T))
-		var/mob/living/carbon/Xenomorph/Xeno = T
+	if(isXeno(target_carbon))
+		var/mob/living/carbon/Xenomorph/Xeno = target_carbon
 		if(Xeno.mob_size >= MOB_SIZE_BIG)
 			xeno_smashed = TRUE
 			shake_camera(Xeno, 10, 1)
-			X.visible_message(SPAN_XENODANGER("[X] smashes [Xeno] with it's tail!"), SPAN_XENODANGER("You smash [Xeno] with your tail!"))
-			to_chat(Xeno, SPAN_XENOHIGHDANGER("You feel dizzy as [X] smashes you with their tail!"))
+			dancer_user.visible_message(SPAN_XENODANGER("[dancer_user] smashes [Xeno] with it's tail!"), SPAN_XENODANGER("You smash [Xeno] with your tail!"))
+			to_chat(Xeno, SPAN_XENOHIGHDANGER("You feel dizzy as [dancer_user] smashes you with their tail!"))
+			dancer_user.animation_attack_on(Xeno)
 
 	if(!xeno_smashed)
 		if (stun_duration > 0)
-			T.apply_effect(stun_duration, WEAKEN)
-		X.visible_message(SPAN_XENODANGER("[X] trips [A] with it's tail!"), SPAN_XENODANGER("You trip [A] with your tail!"))
-		X.spin_circle()
-		X.emote("tail")
-		to_chat(T, SPAN_XENOHIGHDANGER("You are swept off your feet by [X]!"))
-
+			target_carbon.apply_effect(stun_duration, WEAKEN)
+		dancer_user.visible_message(SPAN_XENODANGER("[dancer_user] trips [target_atom] with it's tail!"), SPAN_XENODANGER("You trip [target_atom] with your tail!"))
+		dancer_user.spin_circle()
+		dancer_user.emote("tail")
+		to_chat(target_carbon, SPAN_XENOHIGHDANGER("You are swept off your feet by [dancer_user]!"))
 	if (daze_duration > 0)
-		T.apply_effect(daze_duration, DAZE)
+		target_carbon.apply_effect(daze_duration, DAZE)
 
 	apply_cooldown()
 	..()

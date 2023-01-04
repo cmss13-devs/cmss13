@@ -20,6 +20,6 @@
 
 AddTimelock(/datum/job/antag/xenos/queen, list(
 	JOB_XENO_ROLES = 10 HOURS,
-	JOB_DRONE_ROLES = 10 HOURS,
-	JOB_T3_ROLES = 5 HOURS,
+	JOB_DRONE_ROLES = 5 HOURS,
+	JOB_T3_ROLES = 3 HOURS,
 ))

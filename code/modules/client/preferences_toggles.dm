@@ -465,6 +465,23 @@
 	prefs.save_preferences()
 	update_special_keybinds()
 
+/client/verb/toggle_tgui_say_light_mode()
+	set name = "Toggle Say Input Color"
+	set category = "Preferences.UI"
+	set desc = "Toggle your Input Color"
+
+	var/result = tgui_alert(src, "Which input color do you want?", "Input Style", list("Darkmode", "Lightmode"))
+	if(!result)
+		return
+	if(result == "Lightmode")
+		prefs.tgui_say_light_mode = TRUE
+		to_chat(src, SPAN_NOTICE("You're now using the say interface whitemode."))
+	else
+		prefs.tgui_say_light_mode = FALSE
+		to_chat(src, SPAN_NOTICE("You're now using the say interface whitemode."))
+	tgui_say?.load()
+	prefs.save_preferences()
+
 //------------ GHOST PREFERENCES ---------------------------------
 
 /client/proc/show_ghost_preferences() // Shows ghost-related preferences.

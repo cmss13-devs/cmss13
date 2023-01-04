@@ -321,9 +321,9 @@ CULT
 
 	var/mob/living/carbon/human/H = owner
 
-	var/input = alert(H, "Once obtained, you'll be unable to take it off. Confirm selection.", "Obtain Equipment","Yes","No")
+	var/input = tgui_alert(H, "Once obtained, you'll be unable to take it off. Confirm selection.", "Obtain Equipment", list("Yes","No"))
 
-	if(input == "No")
+	if(input != "Yes")
 		to_chat(H, SPAN_WARNING("You have decided not to obtain your equipment."))
 		return
 
@@ -504,7 +504,7 @@ CULT
 
 	to_chat(H, SPAN_NOTICE("Mutiny join request sent to [chosen]!"))
 
-	if(tgui_alert(chosen, "Do you want to be a mutineer?", "Become Mutineer", list("Yes", "No")) == "No")
+	if(tgui_alert(chosen, "Do you want to be a mutineer?", "Become Mutineer", list("Yes", "No")) != "Yes")
 		return
 
 	converted += chosen
@@ -522,7 +522,7 @@ CULT
 
 	var/mob/living/carbon/human/H = owner
 
-	if(tgui_alert(H, "Are you sure you want to begin the mutiny?", "Begin Mutiny?", list("Yes", "No")) == "No")
+	if(tgui_alert(H, "Are you sure you want to begin the mutiny?", "Begin Mutiny?", list("Yes", "No")) != "Yes")
 		return
 
 	shipwide_ai_announcement("DANGER: Communications received; a mutiny is in progress. Code: Detain, Arrest, Defend.")

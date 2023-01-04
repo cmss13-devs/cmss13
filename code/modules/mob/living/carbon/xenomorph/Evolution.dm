@@ -250,8 +250,8 @@
 	if(!newcaste)
 		return
 
-	var/confirm = alert(src, "Are you sure you want to de-evolve from [caste.caste_type] to [newcaste]?", , "Yes", "No")
-	if(confirm == "No")
+	var/confirm = tgui_alert(src, "Are you sure you want to de-evolve from [caste.caste_type] to [newcaste]?", "Deevolution", list("Yes", "No"))
+	if(confirm != "Yes")
 		return
 
 	if(!check_state())

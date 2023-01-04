@@ -158,7 +158,7 @@
 
 			//Alert code is the Queen is the one calling it, the shuttle is on the ground and the shuttle still allows alerts
 			if(isXenoQueen(usr) && shuttle.location == 1 && shuttle.alerts_allowed)
-				var/i = alert("Confirm hijack and launch?", "WARNING", "Yes", "No")
+				var/i = tgui_alert(usr, "Confirm hijack and launch?", "WARNING", list("Yes", "No"))
 
 				if(shuttle.moving_status != SHUTTLE_IDLE || shuttle.locked || shuttle.location != 1 || !shuttle.alerts_allowed || !shuttle.queen_locked || shuttle.recharging)
 					return
@@ -177,7 +177,7 @@
 					playsound(src, 'sound/misc/queen_alarm.ogg')
 					shuttle1.launch(src)
 
-				else if(i == "No")
+				else if(i != "Yes")
 					return
 				else
 					shuttle.launch(src)

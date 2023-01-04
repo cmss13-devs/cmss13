@@ -1018,7 +1018,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 	H.equip_to_slot_or_del(new /obj/item/cell/hyper, WEAR_IN_ACCESSORY)
 	H.equip_to_slot_or_del(new /obj/item/smartgun_powerpack/pmc, WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/weapon/gun/smartgun/dirty, WEAR_J_STORE)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/pistol/pmc_mateba, WEAR_R_STORE)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/pistol/large/vp78, WEAR_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full, WEAR_L_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/smartgunner/pmc/full, WEAR_WAIST)
 	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/night/m56_goggles, WEAR_EYES)
@@ -1037,7 +1037,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 		list("Armor", 0, /obj/item/clothing/suit/storage/marine/smartgunner/veteran/PMC, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_REGULAR),
 
 		list("BELT", 0, null, null, null),
-		list("M802 Smartgunner Sidearm Belt", 0, /obj/item/storage/belt/gun/smartgunner/full, MARINE_CAN_BUY_BELT, VENDOR_ITEM_MANDATORY),
+		list("M802 Smartgunner Sidearm Belt", 0, /obj/item/storage/belt/gun/smartgunner/pmc/full, MARINE_CAN_BUY_BELT, VENDOR_ITEM_MANDATORY),
 		list("M280 Smartgunner Drum Belt", 0, /obj/item/storage/belt/marine/smartgunner, MARINE_CAN_BUY_BELT, VENDOR_ITEM_MANDATORY),
 
 		list("POUCHES (CHOOSE 2)", 0, null, null, null),

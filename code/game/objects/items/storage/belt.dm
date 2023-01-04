@@ -1441,8 +1441,8 @@ obj/item/storage/belt/gun/m44/lever_action/verb/detach_holster()
 	new /obj/item/ammo_magazine/smartgun(src)
 
 /obj/item/storage/belt/gun/smartgunner/pmc
-	name = "\improper M802 pattern 'Dirty' smartgunner sidearm rig"
-	desc = "A modification of the standard M802 load-bearing equipment, designed to carry smartgun ammunition and a Mateba revolver."
+	name = "\improper M802 pattern 'Terminator' smartgunner sidearm rig"
+	desc = "A modification of the standard M802 load-bearing equipment, designed to carry smartgun ammunition and a sidearm."
 	can_hold = list(
 		/obj/item/device/flashlight/flare,
 		/obj/item/weapon/gun/flare,
@@ -1457,6 +1457,29 @@ obj/item/storage/belt/gun/m44/lever_action/verb/detach_holster()
 	has_gamemode_skin = TRUE
 
 /obj/item/storage/belt/gun/smartgunner/pmc/full/fill_preset_inventory()
+	handle_item_insertion(new /obj/item/weapon/gun/pistol/vp78())
+	new /obj/item/ammo_magazine/pistol/vp78(src)
+	new /obj/item/ammo_magazine/smartgun/dirty(src)
+	new /obj/item/ammo_magazine/smartgun/dirty(src)
+	new /obj/item/ammo_magazine/smartgun/dirty(src)
+
+/obj/item/storage/belt/gun/smartgunner/whiteout
+	name = "\improper M802 pattern 'Terminator' smartgunner sidearm rig"
+	desc = "A modification of the standard M802 load-bearing equipment, designed to carry smartgun ammunition and a Mateba revolver."
+	can_hold = list(
+		/obj/item/device/flashlight/flare,
+		/obj/item/weapon/gun/flare,
+		/obj/item/weapon/gun/pistol,
+		/obj/item/weapon/gun/revolver/m44,
+		/obj/item/weapon/gun/revolver/mateba,
+		/obj/item/ammo_magazine/revolver,
+		/obj/item/ammo_magazine/revolver/mateba,
+		/obj/item/ammo_magazine/pistol,
+		/obj/item/ammo_magazine/smartgun
+	)
+	has_gamemode_skin = TRUE
+
+/obj/item/storage/belt/gun/smartgunner/whiteout/full/fill_preset_inventory()
 	handle_item_insertion(new /obj/item/weapon/gun/revolver/mateba/pmc())
 	new /obj/item/ammo_magazine/revolver/mateba/highimpact/ap(src)
 	new /obj/item/ammo_magazine/smartgun/dirty(src)

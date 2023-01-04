@@ -232,14 +232,14 @@ class ChatRenderer {
         }
       }
       const regexStr = regexExpressions.join('|');
-      // setting regex overrides the buttons
+      const flags = 'g' + (matchCase ? '' : 'i');
+      // setting regex overrides matchword
       if (regexStr) {
-        highlightRegex = new RegExp('(' + regexStr + ')', 'gi');
+        highlightRegex = new RegExp('(' + regexStr + ')', flags);
       } else {
         const pattern = `${matchWord ? '\\b' : ''}(${lines.join('|')})${
           matchWord ? '\\b' : ''
         }`;
-        const flags = 'g' + (matchCase ? '' : 'i');
         highlightRegex = new RegExp(pattern, flags);
       }
       // Lazy init

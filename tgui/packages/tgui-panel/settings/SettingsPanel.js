@@ -258,8 +258,6 @@ const TextHighlightSetting = (props, context) => {
           />
           <Button.Checkbox
             content="Match case"
-            tooltipPosition="bottom-start"
-            tooltip="Overriden if regex is used."
             checked={matchCase}
             onClick={() =>
               dispatch(

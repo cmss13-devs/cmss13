@@ -40,6 +40,8 @@
 		return ..()
 
 	if(mods["alt"])
+		if(!CAN_PICKUP(user, src))
+			return ..()
 		select_object(user)
 		return TRUE
 

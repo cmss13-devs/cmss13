@@ -75,6 +75,7 @@
 	var/mob/living/carbon/Xenomorph/X = user
 	if(istype(X) && status == EGG_GROWN && mods["ctrl"] && X.caste.can_hold_facehuggers)
 		Burst(FALSE, FALSE, X)
+		return TRUE
 
 	return ..()
 

@@ -35,7 +35,9 @@
 
 //Transfer amount switch//
 /obj/item/reagent_container/hypospray/clicked(var/mob/user, var/list/mods)
-	if(!isnull(possible_transfer_amounts) && mods["alt"] && ishuman(user) && !user.is_mob_incapacitated() && user.Adjacent(src)) //Autoinjectors aren't supposed to have toggleable transfer amounts.
+	if(!isnull(possible_transfer_amounts) && mods["alt"]) //Autoinjectors aren't supposed to have toggleable transfer amounts.
+		if(!CAN_PICKUP(user, src))
+			return ..()
 		amount_per_transfer_from_this = next_in_list(amount_per_transfer_from_this, possible_transfer_amounts)
 		playsound(loc, 'sound/items/Screwdriver2.ogg', 20, 1, 3)
 		to_chat(user, SPAN_NOTICE("You set [src]'s dose to [amount_per_transfer_from_this] units."))

@@ -104,7 +104,7 @@
 
 /obj/item/weapon/gun/smartgun/clicked(mob/user, list/mods)
 	if(mods["alt"])
-		if(!ishuman(user))
+		if(!CAN_PICKUP(user, src))
 			return ..()
 		if(!locate(src) in list(user.get_active_hand(), user.get_inactive_hand()))
 			return TRUE

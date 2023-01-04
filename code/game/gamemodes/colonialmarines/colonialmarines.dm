@@ -474,7 +474,7 @@
 				hive_caste_texts[hive] = hive_caste_text
 
 		var/final_text = "Marines: [total_marines]\nSquad Marines: [total_squad_marines]\n\n"
-		final_text = "Marine jobs:\n[auxiliary_marine_job_text], [squad_marine_job_text]\n\n"
+		final_text += "Marine jobs:\n[auxiliary_marine_job_text], [squad_marine_job_text]\n\n"
 
 		for(var/hive in hive_xeno_numbers)
 			final_text += "[hive]\nXenos: [hive_xeno_numbers[hive]]\n\n"

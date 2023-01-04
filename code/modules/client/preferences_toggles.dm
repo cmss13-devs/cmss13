@@ -275,7 +275,6 @@
 		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/switch_item_animations'>Toggle Item Animations</a><br>",
 		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_admin_sound_types'>Toggle Admin Sound Types</a><br>",
 		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/set_eye_blur_type'>Set Eye Blur Type</a><br>",
-		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_tgui_say'>Set Say Interface Type</a><br>"
 	)
 
 	var/dat = ""

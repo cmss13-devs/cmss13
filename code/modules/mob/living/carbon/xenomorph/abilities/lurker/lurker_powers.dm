@@ -99,39 +99,44 @@
 
 // VAMPIRE LURKER
 
-/datum/action/xeno_action/activable/tail_stab/vampire/ability_act(var/mob/living/carbon/Xenomorph/stabbing_xeno, var/mob/living/carbon/target, var/obj/limb/limb)
+/datum/action/xeno_action/activable/tail_stab/vampire/pre_ability_act(var/mob/living/carbon/Xenomorph/stabbing_xeno, var/atom/targetted_atom)
 
-	if(!(target.knocked_out || target.stat == UNCONSCIOUS)) //called knocked out because for some reason .stat seems to have a delay .
-		return ..()
+	if(!iscarbon(targetted_atom))
+		return
 
-	if(!stabbing_xeno.Adjacent(target))
-		to_chat(stabbing_xeno, SPAN_XENONOTICE("[target] is too far away to headbite, so you tail stab them instead."))
-		return ..()
+	var/mob/living/carbon/targetted_carbon = targetted_atom
+
+	if(!(targetted_carbon.knocked_out || targetted_carbon.stat == UNCONSCIOUS)) //called knocked out because for some reason .stat seems to have a delay .
+		return
 
 	if(stabbing_xeno.action_busy)
 		return
 
-	stabbing_xeno.visible_message(SPAN_DANGER("[stabbing_xeno] grabs [target]’s head aggressively."), \
-	SPAN_XENOWARNING("You grab [target]’s head aggressively."), max_distance = 5)
+	if(!stabbing_xeno.Adjacent(targetted_carbon))
+		to_chat(stabbing_xeno, SPAN_XENONOTICE("[targetted_carbon] is too far away to headbite, so you try to tail stab them instead!"))
+		return
+
+	stabbing_xeno.visible_message(SPAN_DANGER("[stabbing_xeno] grabs [targetted_carbon]’s head aggressively."), \
+	SPAN_XENOWARNING("You grab [targetted_carbon]’s head aggressively."), max_distance = 5)
 
 	if(!do_after(stabbing_xeno, 0.75 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
-		return
+		return TRUE //if they return false/null, it should still cancel the tail stab
 
-	if(target.stat == DEAD)
-		return
+	if(targetted_carbon.stat == DEAD)
+		return TRUE
 
-	to_chat(stabbing_xeno, SPAN_XENOHIGHDANGER("You pierce [target]’s head with your inner jaw!"))
-	stabbing_xeno.visible_message(SPAN_DANGER("[stabbing_xeno] pierces [target]’s head with its inner jaw!"))
-	playsound(target,'sound/weapons/alien_bite2.ogg', 50, TRUE)
-	stabbing_xeno.flick_attack_overlay(target, "tail")
-	target.apply_armoured_damage(200, ARMOR_MELEE, BRUTE, "head", 5) //DIE
-	target.death(create_cause_data("Headbite", stabbing_xeno), FALSE, "executed by headbite")
+	to_chat(stabbing_xeno, SPAN_XENOHIGHDANGER("You pierce [targetted_carbon]’s head with your inner jaw!"))
+	stabbing_xeno.visible_message(SPAN_DANGER("[stabbing_xeno] pierces [targetted_carbon]’s head with its inner jaw!"))
+	playsound(targetted_carbon,'sound/weapons/alien_bite2.ogg', 50, TRUE)
+	stabbing_xeno.flick_attack_overlay(targetted_carbon, "tail")
+	targetted_carbon.apply_armoured_damage(200, ARMOR_MELEE, BRUTE, "head", 5) //DIE
+	targetted_carbon.death(create_cause_data("Headbite", stabbing_xeno), FALSE, "executed by headbite")
 	stabbing_xeno.gain_health(150)
 	stabbing_xeno.xeno_jitter(1 SECONDS)
 	stabbing_xeno.flick_heal_overlay(3 SECONDS, "#00B800")
-	log_attack("[key_name(stabbing_xeno)] was executed by [key_name(target)] with a headbite!")
+	log_attack("[key_name(stabbing_xeno)] was executed by [key_name(targetted_carbon)] with a headbite!")
 	stabbing_xeno.emote("roar")
-	return // no cooldown in executions
+	return TRUE
 
 /datum/action/xeno_action/activable/pounce/rush/additional_effects(mob/living/living_target) //pounce effects
 	var/mob/living/carbon/target = living_target

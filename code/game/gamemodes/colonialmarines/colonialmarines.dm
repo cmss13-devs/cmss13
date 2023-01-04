@@ -491,7 +491,7 @@
 		per_report_request.prepare(RUSTG_HTTP_METHOD_POST, webhook, json_encode(per_report_webhook_info), headers, "tmp/response.json")
 		requests += per_report_request
 
-	var/incrementer = 0
+	var/incrementer = 1
 	for(var/datum/http_request/request in requests)
-		addtimer(CALLBACK(request, TYPE_PROC_REF(/datum/http_request, begin_async)), 1 + incrementer)
+		addtimer(CALLBACK(request, TYPE_PROC_REF(/datum/http_request, begin_async)), (2 * incrementer) SECONDS)
 		incrementer++

@@ -54,7 +54,6 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	/client/proc/toggle_admin_sound_types,
 	/client/proc/receive_random_tip,
 	/client/proc/set_eye_blur_type,
-	/client/proc/toggle_tgui_say,
 ))
 
 /client/Topic(href, href_list, hsrc)

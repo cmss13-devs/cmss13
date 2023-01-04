@@ -403,7 +403,7 @@ export const RADIO_PREFIXES = {
     label: 'Hive',
   },
   '#M ': {
-    id: 'upp-medsci',
+    id: 'upp-med',
     label: 'UPP Med',
   },
   '#N ': {

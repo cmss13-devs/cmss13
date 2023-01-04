@@ -447,11 +447,14 @@
 		prefs.pain_overlay_pref_level = PAIN_OVERLAY_LEGACY
 		to_chat(src, SPAN_NOTICE("Your vision will now have a legacy blurring effect. This is not recommended!"))
 
-/client/proc/toggle_tgui_say()
+/client/verb/toggle_tgui_say()
 	set name = "Toggle Input Style"
 	set category = "Preferences"
+	set desc = "Toggle your Input Style"
 
 	var/result = tgui_alert(src, "Which input style do you want?", "Input Style", list("Modern", "Legacy"))
+	if(!result)
+		return
 
 	if(result == "Legacy")
 		prefs.tgui_say = FALSE

@@ -448,8 +448,8 @@
 		to_chat(src, SPAN_NOTICE("Your vision will now have a legacy blurring effect. This is not recommended!"))
 
 /client/verb/toggle_tgui_say()
-	set name = "Toggle Input Style"
-	set category = "Preferences"
+	set name = "Toggle Say Input Style"
+	set category = "Preferences.UI"
 	set desc = "Toggle your Input Style"
 
 	var/result = tgui_alert(src, "Which input style do you want?", "Input Style", list("Modern", "Legacy"))

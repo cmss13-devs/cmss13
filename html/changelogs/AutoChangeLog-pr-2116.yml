@@ -1,6 +1,0 @@
-author: "carlarctg"
-delete-after: True
-changes:
-  - balance: "Changed the Smith & Wesson's caliber from .357 to .38 to remove compatibility between its rounds and the Spearhead revolver's."
-  - balance: "Reduced the amount of time the Smith & Wesson's trick buff lasts."
-  - rscdel: "The CMB Spearhead revolver can no longer fire in bursts nor fit the burst-fire assembly."

@@ -22,8 +22,8 @@
 		boundaries = template.preload_size(template.mappath)
 
 	// Get dims & guesstimate center turf (in practice, current implem means min is always 1)
-	var/dim_x     = boundaries[MAP_MAXX] - boundaries[MAP_MINX] + 1
-	var/dim_y     = boundaries[MAP_MAXY] - boundaries[MAP_MINY] + 1
+	var/dim_x  = boundaries[MAP_MAXX] - boundaries[MAP_MINX] + 1
+	var/dim_y  = boundaries[MAP_MAXY] - boundaries[MAP_MINY] + 1
 	var/center_x  = boundaries[MAP_MINX] + round(dim_x / 2) // Technically off by 0.5 due to above +1. Whatever
 	var/center_y  = boundaries[MAP_MINY] + round(dim_y / 2)
 

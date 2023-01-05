@@ -42,7 +42,7 @@
 
 /obj/item/storage/pouch/equipped(mob/user, slot)
 	if(slot == WEAR_L_STORE || slot == WEAR_R_STORE)
-		mouse_opacity = 2 //so it's easier to click when properly equipped.
+		mouse_opacity = MOUSE_OPACITY_OPAQUE //so it's easier to click when properly equipped.
 	..()
 
 /obj/item/storage/pouch/dropped(mob/user)
@@ -56,7 +56,7 @@
 	icon_state = "small_drop"
 	storage_flags = STORAGE_FLAGS_DEFAULT
 	max_w_class = SIZE_MEDIUM
-	cant_hold = list(	//Prevent inventory bloat
+	cant_hold = list( //Prevent inventory bloat
 		/obj/item/storage/firstaid,
 		/obj/item/storage/bible
 	)

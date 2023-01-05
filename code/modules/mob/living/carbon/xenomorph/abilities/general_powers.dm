@@ -765,8 +765,6 @@
 	if (!X.can_bombard_turf(T, range, bombard_source))
 		return FALSE
 
-	apply_cooldown()
-
 	X.visible_message(SPAN_XENODANGER("[X] digs itself into place!"), SPAN_XENODANGER("You dig yourself into place!"))
 	if (!do_after(X, activation_delay, interrupt_flags, BUSY_ICON_HOSTILE))
 		to_chat(X, SPAN_XENODANGER("You decide to cancel your bombard."))
@@ -777,6 +775,8 @@
 
 	if (!check_and_use_plasma_owner())
 		return FALSE
+
+	apply_cooldown()
 
 	X.visible_message(SPAN_XENODANGER("[X] launches a massive ball of acid at [A]!"), SPAN_XENODANGER("You launch a massive ball of acid at [A]!"))
 	playsound(get_turf(X), 'sound/effects/blobattack.ogg', 25, 1)
@@ -933,9 +933,9 @@
 
 	target.last_damage_data = create_cause_data(initial(stabbing_xeno.caste_type), stabbing_xeno)
 
-	 /// To reset the direction if they haven't moved since then in below callback.
+	/// To reset the direction if they haven't moved since then in below callback.
 	var/last_dir = stabbing_xeno.dir
-	 /// Direction var to make the tail stab look cool and immersive.
+	/// Direction var to make the tail stab look cool and immersive.
 	var/stab_direction
 
 	var/stab_overlay
@@ -956,7 +956,7 @@
 	stabbing_xeno.setDir(stab_direction)
 	stabbing_xeno.emote("tail")
 
-	 /// Ditto.
+	/// Ditto.
 	var/new_dir = stabbing_xeno.dir
 
 	addtimer(CALLBACK(src, PROC_REF(reset_direction), stabbing_xeno, last_dir, new_dir), 0.5 SECONDS)

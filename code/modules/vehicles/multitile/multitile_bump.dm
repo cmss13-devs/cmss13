@@ -150,7 +150,7 @@
 
 /obj/structure/dropship_equipment/handle_vehicle_bump(var/obj/vehicle/multitile/V)
 	if(V.seats[VEHICLE_DRIVER])
-		var/last_moved = V.l_move_time	//in case VC moves before answering
+		var/last_moved = V.l_move_time //in case VC moves before answering
 		if(alert(V.seats[VEHICLE_DRIVER], "Are you sure you want to crush \the [name]?", "Ramming confirmation","Yes","No") == "Yes")
 			if(last_moved == V.l_move_time)
 				visible_message(SPAN_DANGER("\The [V] crushes \the [src]!"))
@@ -409,7 +409,7 @@
 
 /obj/structure/machinery/defenses/sentry/launchable/handle_vehicle_bump(var/obj/vehicle/multitile/V)
 	if(V.seats[VEHICLE_DRIVER])
-		var/last_moved = V.l_move_time	//in case VC moves before answering
+		var/last_moved = V.l_move_time //in case VC moves before answering
 		if(alert(V.seats[VEHICLE_DRIVER], "Are you sure you want to crush \the [name]?", "Ramming confirmation","Yes","No") == "Yes")
 			if(last_moved == V.l_move_time)
 				visible_message(SPAN_DANGER("\The [V] crushes \the [src]!"))
@@ -481,7 +481,7 @@
 
 /obj/vehicle/handle_vehicle_bump(var/obj/vehicle/multitile/V)
 	V.take_damage_type(5, "blunt", V)
-	health = health - Ceiling(maxhealth/2.8)	//we destroy any simple vehicle in 3 crushes
+	health = health - Ceiling(maxhealth/2.8) //we destroy any simple vehicle in 3 crushes
 	healthcheck()
 
 	visible_message(SPAN_DANGER("\The [V] crushes into \the [src]!"))
@@ -491,9 +491,9 @@
 /obj/vehicle/multitile/handle_vehicle_bump(var/obj/vehicle/multitile/V)
 	var/damage
 
-	if(last_move_dir == REVERSE_DIR(V.last_move_dir))	//crashing into each other
+	if(last_move_dir == REVERSE_DIR(V.last_move_dir)) //crashing into each other
 		damage = move_momentum + V.move_momentum
-	else if(last_move_dir == V.last_move_dir)	//crashing into something from behind
+	else if(last_move_dir == V.last_move_dir) //crashing into something from behind
 		damage = max(V.move_momentum - move_momentum, 0)
 	else
 		damage = V.move_momentum
@@ -574,7 +574,7 @@
 		if(faction == driver.faction)
 			msg_admin_ff("[key_name(driver)] rammed [key_name(src)] with \the [V] in [get_area(src)] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[driver.x];Y=[driver.y];Z=[driver.z]'>JMP</a>) ([driver.client ? "<a href='?priv_msg=[driver.client.ckey]'>PM</a>" : "NO CLIENT"])")
 	else
-		log_attack("[key_name(src)] was friendly pushed by [key_name(driver)] with [V].")	//to be able to determine whether vehicle was pushign friendlies
+		log_attack("[key_name(src)] was friendly pushed by [key_name(driver)] with [V].") //to be able to determine whether vehicle was pushign friendlies
 
 	return mob_moved
 
@@ -617,7 +617,7 @@
 		if(faction == driver.faction)
 			msg_admin_ff("[key_name(driver)] rammed and damaged member of allied faction [key_name(src)] with \the [V] in [get_area(src)] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[driver.x];Y=[driver.y];Z=[driver.z]'>JMP</a>) ([driver.client ? "<a href='?priv_msg=[driver.client.ckey]'>PM</a>" : "NO CLIENT"])")
 	else
-		log_attack("[key_name(src)] was friendly pushed by [key_name(driver)] with [V].")	//to be able to determine whether vehicle was pushing friendlies
+		log_attack("[key_name(src)] was friendly pushed by [key_name(driver)] with [V].") //to be able to determine whether vehicle was pushing friendlies
 
 	return TRUE
 
@@ -635,17 +635,17 @@
 	var/momentum_penalty = FALSE
 
 	if((mob_size >= MOB_SIZE_IMMOBILE) && !is_mob_incapacitated() && !buckled)
-		if(!(V.vehicle_flags & VEHICLE_CLASS_HEAVY))	//heavy vehicles just don't give a damn
+		if(!(V.vehicle_flags & VEHICLE_CLASS_HEAVY)) //heavy vehicles just don't give a damn
 			var/dir_between = get_dir(src, V)
 			if(V.vehicle_flags & VEHICLE_CLASS_WEAK)
 				blocked = TRUE
 			//Check what dir they should be facing to be looking directly at the vehicle
-			else if(dir_between == dir)	//front hit (facing the vehicle)
+			else if(dir_between == dir) //front hit (facing the vehicle)
 				blocked = TRUE
-			else if(dir_between == reverse_dir[dir])	// rear hit (facing directly away from the vehicle)
+			else if(dir_between == reverse_dir[dir]) // rear hit (facing directly away from the vehicle)
 				takes_damage = TRUE
 			//side hit
-			else if(caste.caste_type == XENO_CASTE_QUEEN)	// queen blocks even with sides
+			else if(caste.caste_type == XENO_CASTE_QUEEN) // queen blocks even with sides
 				blocked = TRUE
 			else
 				momentum_penalty = TRUE
@@ -748,7 +748,7 @@
 //DEFENDER
 /mob/living/carbon/Xenomorph/Defender/handle_vehicle_bump(var/obj/vehicle/multitile/V)
 	if(fortify)
-		if(V.vehicle_flags & VEHICLE_CLASS_WEAK)	//defenders being able to completely block armored vehicles by crawling into a boulder is ridiculous
+		if(V.vehicle_flags & VEHICLE_CLASS_WEAK) //defenders being able to completely block armored vehicles by crawling into a boulder is ridiculous
 			visible_message(SPAN_DANGER("[src] digs it's claws into the ground, anchoring itself in place and halting [V] in it's tracks!"),
 			SPAN_DANGER("You dig your claws into the ground, stopping [V] in it's tracks!"))
 			return FALSE

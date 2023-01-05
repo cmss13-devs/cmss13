@@ -3,7 +3,7 @@
 	icon = 'icons/obj/structures/machinery/kitchen.dmi'
 	icon_state = "juicer1"
 	layer = ABOVE_TABLE_LAYER
-	density = 0
+	density = FALSE
 	anchored = 0
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 5

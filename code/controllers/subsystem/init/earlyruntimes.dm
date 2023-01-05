@@ -1,9 +1,9 @@
 // Reports early runtime errors (occuring during static init) to STUI and messages about them
 SUBSYSTEM_DEF(earlyruntimes)
-	name       = "Early Runtimes"
+	name    = "Early Runtimes"
 	init_order = SS_INIT_EARLYRUNTIMES
 	init_stage = INITSTAGE_EARLY
-	flags      = SS_NO_FIRE
+	flags   = SS_NO_FIRE
 
 /datum/controller/subsystem/earlyruntimes/stat_entry(msg)
 	msg = " | Init Runtimes: [early_init_runtimes_count]"

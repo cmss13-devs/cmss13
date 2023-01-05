@@ -1,0 +1,4 @@
+author: "stanalbatross"
+delete-after: True
+changes:
+  - admin: "added an option to play midis/sounds to ghosts only"

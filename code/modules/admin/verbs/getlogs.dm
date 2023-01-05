@@ -4,7 +4,7 @@
 	navigate the popup window to the data/logs/runtime/ folder from where your tgstation .dmb is located.
 	(you may have to make this folder yourself)
 
-	OPTIONAL: 	you can select the little checkbox down the bottom to make dreamdeamon save the log everytime you
+	OPTIONAL: you can select the little checkbox down the bottom to make dreamdeamon save the log everytime you
 				start a world. Just remember to repeat these steps with a new name when you update to a new revision!
 
 	Save it with the name of the revision your server uses (e.g. r3459.txt).

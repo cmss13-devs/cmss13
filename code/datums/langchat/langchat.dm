@@ -17,9 +17,9 @@
 #define LANGCHAT_MAX_ALPHA 196
 
 //pop defines
-#define LANGCHAT_DEFAULT_POP 0 	//normal message
-#define LANGCHAT_PANIC_POP 1 	//this causes shaking
-#define LANGCHAT_FAST_POP 2 	//this just makes it go away faster
+#define LANGCHAT_DEFAULT_POP 0 //normal message
+#define LANGCHAT_PANIC_POP 1 //this causes shaking
+#define LANGCHAT_FAST_POP 2 //this just makes it go away faster
 
 // params for default pop
 #define LANGCHAT_MESSAGE_POP_TIME 3

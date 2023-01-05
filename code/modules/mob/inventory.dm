@@ -151,9 +151,10 @@
 
 //drop the inventory item on the ground
 /mob/proc/drop_inv_item_on_ground(obj/item/I, nomoveupdate, force)
-	if(length(dropped_objects) + 1 > MAXIMUM_DROPPED_OBJECTS_REMEMBERED)
-		popleft(dropped_objects)
-	dropped_objects += WEAKREF(I)
+	if(!(WEAKREF(I) in dropped_objects))
+		if(length(dropped_objects) + 1 > MAXIMUM_DROPPED_OBJECTS_REMEMBERED)
+			popleft(dropped_objects)
+		dropped_objects += WEAKREF(I)
 	return u_equip(I, get_step(src, 0), nomoveupdate, force) // Drops on turf instead of loc
 
 /mob/proc/pickup_recent()
@@ -167,7 +168,7 @@
 	for(var/datum/weakref/weak_ref as anything in dropped_objects)
 		var/obj/previously_held_object = weak_ref.resolve()
 		if(previously_held_object.in_contents_of(user_turf))
-			src.put_in_active_hand(previously_held_object)
+			src.put_in_hands(previously_held_object)
 
 //Never use this proc directly. nomoveupdate is used when we don't want the item to react to
 // its new loc (e.g.triggering mousetraps)

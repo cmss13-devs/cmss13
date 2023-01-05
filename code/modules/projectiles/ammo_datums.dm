@@ -3392,7 +3392,6 @@
 	shake_camera(M, 2, 1)
 	if(shooter && ismob(shooter))
 		if(!M.get_target_lock(shooter.faction_group))
-			playsound(get_turf(M), 'sound/weapons/gun_sharp_explode.ogg', 35)
 			var/obj/item/weapon/gun/rifle/sharp/weapon = P.shot_from
 			if(weapon && weapon.explosion_delay_sharp)
 				addtimer(CALLBACK(src, .proc/delayed_explosion, P, M, shooter), 5 SECONDS)
@@ -3418,7 +3417,7 @@
 		var/falloff_size = 50
 		var/cause_data = create_cause_data("P9 SHARP Rifle", shooter)
 		cell_explosion(get_turf(M), explosion_size, falloff_size, EXPLOSION_FALLOFF_SHAPE_LINEAR, P.dir, cause_data)
-		//playsound(get_turf(M), 'sound/weapons/gun_sharp_explode.ogg', 35)
+		playsound(get_turf(M), 'sound/weapons/gun_sharp_explode.ogg', 45)
 
 /datum/ammo/rifle/sharp/track
 	name = "9X-T sticky tracker dart"

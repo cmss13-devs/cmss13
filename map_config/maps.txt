@@ -58,6 +58,7 @@ map LV522_Chances_Claim
 endmap
 
 map new_varadero
+	disabled
 endmap
 
 map whiskey_outpost_v2

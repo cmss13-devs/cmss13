@@ -10,7 +10,7 @@
 	if(!check_and_use_plasma_owner())
 		return
 
-	playsound(xeno.loc, screech_sound_effect, 75, 0, status = 0)
+	playsound(xeno.loc, pick(predalien_roar), 75, 0, status = 0)
 	xeno.visible_message(SPAN_XENOHIGHDANGER("[xeno] emits a guttural roar!"))
 	xeno.create_shriekwave(color = "#FF0000")
 
@@ -84,7 +84,7 @@
 				var/mob/living/carbon/human/human = carbon
 				human.update_xeno_hostile_hud()
 
-			addtimer(CALLBACK(GLOBAL_PROC, .proc/unroot_human, carbon), get_xeno_stun_duration(carbon, freeze_duration))
+			addtimer(CALLBACK(GLOBAL_PROC, PROC_REF(unroot_human), carbon), get_xeno_stun_duration(carbon, freeze_duration))
 
 
 	for(var/mob/M in view(xeno))
@@ -148,7 +148,8 @@
 		carbon.apply_armoured_damage(get_xeno_damage_slash(carbon, base_damage + damage_scale * behavior.kills), ARMOR_MELEE, BRUTE, "chest", 20)
 
 		xeno.animation_attack_on(carbon)
-		xeno.flick_attack_overlay(carbon, "slash")
+		xeno.spin_circle()
+		xeno.flick_attack_overlay(carbon, "tail")
 
 	xeno.frozen = 0
 	xeno.anchored = 0

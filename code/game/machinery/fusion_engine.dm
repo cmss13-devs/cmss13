@@ -1,20 +1,20 @@
 //Experimental engine for the Almayer.  Should be fancier.  I expect I'll eventually make it totally separate from the Geothermal as I don't like the procs... - Apop
 
 
-#define FUSION_ENGINE_MAX_POWER_GEN	50000 //Full capacity
+#define FUSION_ENGINE_MAX_POWER_GEN 50000 //Full capacity
 
-#define FUSION_ENGINE_FAIL_CHECK_TICKS	100 //Check for failure every this many ticks
+#define FUSION_ENGINE_FAIL_CHECK_TICKS 100 //Check for failure every this many ticks
 
 /obj/structure/machinery/power/fusion_engine
 	name = "\improper S-52 fusion reactor"
 	icon = 'icons/obj/structures/machinery/fusion_eng.dmi'
 	icon_state = "off-0"
 	desc = "A Westingland S-52 Fusion Reactor.  Takes fuels cells and converts them to power for the ship.  Also produces a large amount of heat."
-	directwired = 0     //Requires a cable directly underneath
+	directwired = 0  //Requires a cable directly underneath
 	unslashable = TRUE
-	unacidable = TRUE      //NOPE.jpg
+	unacidable = TRUE   //NOPE.jpg
 	anchored = 1
-	density = 1
+	density = TRUE
 
 	var/power_gen_percent = 0 //50,000W at full capacity
 	var/buildstate = 0 //What state of building it are we on, 0-3, 1 is "broken", the default

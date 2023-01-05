@@ -12,7 +12,7 @@
 	icon = 'icons/obj/structures/props/stationobjs.dmi'
 	icon_state = "broadcaster"
 	desc = "A dish-shaped machine used to broadcast processed subspace signals."
-	density = 1
+	density = TRUE
 	anchored = 1
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 25
@@ -131,13 +131,13 @@
 
 	/* ###### Organize the receivers into categories for displaying the message ###### */
 
-  	// Understood the message:
-	var/list/heard_masked 	= list() // masked name or no real name
-	var/list/heard_normal 	= list() // normal message
+	// Understood the message:
+	var/list/heard_masked = list() // masked name or no real name
+	var/list/heard_normal = list() // normal message
 
 	// Did not understand the message:
-	var/list/heard_voice 	= list() // voice message	(ie "chimpers")
-	var/list/heard_garbled	= list() // garbled message (ie "f*c* **u, **i*er!")
+	var/list/heard_voice = list() // voice message (ie "chimpers")
+	var/list/heard_garbled = list() // garbled message (ie "f*c* **u, **i*er!")
 	var/list/heard_gibberish= list() // completely screwed over message (ie "F%! (O*# *#!<>&**%!")
 
 	if(M)
@@ -223,7 +223,7 @@
 
 		/* ###### Send the message ###### */
 
-	  	/* --- Process all the mobs that heard a masked voice (understood) --- */
+		/* --- Process all the mobs that heard a masked voice (understood) --- */
 		if (length(heard_masked))
 			for (var/mob/R in heard_masked)
 				R.hear_radio(message,verbage, speaking, part_a, part_b, M, 0, name, volume)

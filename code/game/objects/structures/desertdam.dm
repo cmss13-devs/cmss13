@@ -4,7 +4,7 @@
 /obj/structure/desertdam/decals
 	name = "desert foliage"
 	icon = 'icons/turf/floors/desertdam_map.dmi'
-	density = 0
+	density = FALSE
 	anchored = 1
 	unslashable = TRUE
 	unacidable = TRUE // can toggle it off anyway

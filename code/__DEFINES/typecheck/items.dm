@@ -1,31 +1,31 @@
 #define iswelder(O) (istype(O, /obj/item/tool/weldingtool))
 #define iscoil(O) (istype(O, /obj/item/stack/cable_coil))
 #define iswire(O) (istype(O, /obj/item/stack/cable_coil))
-#define isweapon(O)		(O && is_type_in_list(O, weapons))
-#define isgun(O)		(istype(O, /obj/item/weapon/gun))
-#define isbanana(O)		(istype(O, /obj/item/reagent_container/food/snacks/grown/banana))
-#define istool(O)		(O && is_type_in_list(O, common_tools))
+#define isweapon(O) (O && is_type_in_list(O, weapons))
+#define isgun(O) (istype(O, /obj/item/weapon/gun))
+#define isbanana(O) (istype(O, /obj/item/reagent_container/food/snacks/grown/banana))
+#define istool(O) (O && is_type_in_list(O, common_tools))
 #define ispowerclamp(O) (istype(O, /obj/item/powerloader_clamp))
-#define isstorage(O) 	(istype(O, /obj/item/storage))
-#define isclothing(O)	(istype(O, /obj/item/clothing))
+#define isstorage(O) (istype(O, /obj/item/storage))
+#define isclothing(O) (istype(O, /obj/item/clothing))
 //Make sure it defenses!
 #define isdefenses(O) (istype(O, /obj/structure/machinery/defenses))
 
 //Quick type checks for weapons
 var/global/list/weapons = list(
-    /obj/item/weapon,
-    /obj/item/attachable/bayonet
+	/obj/item/weapon,
+	/obj/item/attachable/bayonet
 )
 
 //Quick type checks for some tools
 var/global/list/common_tools = list(
-    /obj/item/stack/cable_coil,
-    /obj/item/tool/wrench,
-    /obj/item/tool/weldingtool,
-    /obj/item/tool/screwdriver,
-    /obj/item/tool/wirecutters,
-    /obj/item/device/multitool,
-    /obj/item/tool/crowbar
+	/obj/item/stack/cable_coil,
+	/obj/item/tool/wrench,
+	/obj/item/tool/weldingtool,
+	/obj/item/tool/screwdriver,
+	/obj/item/tool/wirecutters,
+	/obj/item/device/multitool,
+	/obj/item/tool/crowbar
 )
 
 /obj/item/proc/can_pry()

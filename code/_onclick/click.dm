@@ -1,5 +1,5 @@
 // Enables a tool to test ingame click rate.
-#define DEBUG_CLICK_RATE	0
+#define DEBUG_CLICK_RATE 0
 
 /// 1 decisecond click delay (above and beyond mob/next_move)
 /mob/var/next_click = 0
@@ -18,7 +18,7 @@
 */
 
 /client/Click(atom/A, location, control, params)
-	if (control && !ignore_next_click)	// No .click macros allowed, and only one click per mousedown.
+	if (control && !ignore_next_click) // No .click macros allowed, and only one click per mousedown.
 		ignore_next_click = TRUE
 		return usr.do_click(A, location, params)
 
@@ -119,7 +119,7 @@
 	if (!isturf(loc))
 		return
 
-	if (world.time <= next_move && A.loc != src)	// Attack click cooldown check
+	if (world.time <= next_move && A.loc != src) // Attack click cooldown check
 		return
 
 	next_move = world.time
@@ -167,7 +167,7 @@
 
 	return FALSE
 
-/*	OLD DESCRIPTION
+/* OLD DESCRIPTION
 	Standard mob ClickOn()
 	Handles exceptions: Buildmode, middle click, modified clicks, mech actions
 
@@ -280,7 +280,7 @@
 	if(!specific_direction)
 		specific_direction = direction
 
-	facedir(direction, specific_direction)
+	face_dir(direction, specific_direction)
 
 
 
@@ -295,7 +295,7 @@
 	icon_state = "catcher"
 	layer = 0
 	plane = -99
-	mouse_opacity = 2
+	mouse_opacity = MOUSE_OPACITY_OPAQUE
 	screen_loc = "CENTER-7,CENTER-7"
 	flags_atom = NOINTERACT
 
@@ -398,5 +398,5 @@
 		attack_self(user)
 		return
 	user.do_click(A, null, params)
-	addtimer(CALLBACK(src, .proc/autoclick, user, A, params), 0.1)
+	addtimer(CALLBACK(src, PROC_REF(autoclick), user, A, params), 0.1)
 #endif

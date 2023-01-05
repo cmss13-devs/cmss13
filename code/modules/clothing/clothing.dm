@@ -2,7 +2,7 @@
 	name = "clothing"
 	pickupvol = 40
 	dropvol = 40
-	var/eye_protection = 0 //used for headgear, masks, and glasses, to see how much they protect eyes from bright lights.
+	var/eye_protection = EYE_PROTECTION_NONE //used for headgear, masks, and glasses, to see how much they protect eyes from bright lights.
 	var/armor_melee = 0
 	var/armor_bullet = 0
 	var/armor_laser = 0
@@ -44,7 +44,7 @@
 		return
 
 /obj/item/clothing/attack_hand(mob/user as mob)
-	if (drag_unequip && ishuman(usr) && src.loc == user)	//make it harder to accidentally undress yourself
+	if (drag_unequip && ishuman(usr) && src.loc == user) //make it harder to accidentally undress yourself
 		return
 
 	..()
@@ -265,7 +265,7 @@
 	else
 		var/list/nicename = null
 		var/list/tankcheck = null
-		var/breathes = "oxygen"    //default, we'll check later
+		var/breathes = "oxygen" //default, we'll check later
 		if(ishuman(C))
 			var/mob/living/carbon/human/H = C
 			breathes = H.species.breath_type
@@ -358,7 +358,7 @@
 	if(items_allowed && items_allowed.len)
 		for (var/i in items_allowed)
 			if(istype(I, i))
-				if(stored_item)	return
+				if(stored_item) return
 				stored_item = I
 				M.drop_inv_item_to_loc(I, src)
 				to_chat(M, "<div class='notice'>You slide the [I] into [src].</div>")

@@ -8,7 +8,7 @@
 	desc = "A little floor repairing robot, he looks so excited!"
 	icon = 'icons/obj/structures/machinery/aibots.dmi'
 	icon_state = "floorbot0"
-	density = 0
+	density = FALSE
 	anchored = 0
 	health = 25
 	maxhealth = 25
@@ -165,7 +165,7 @@
 		if(targetdirection != null)
 			/*
 			for (var/turf/open/space/D in view(7,src))
-				if(!(D in floorbottargets) && D != src.oldtarget)			// Added for bridging mode -- TLE
+				if(!(D in floorbottargets) && D != src.oldtarget) // Added for bridging mode -- TLE
 					if(get_dir(src, D) == targetdirection)
 						src.oldtarget = D
 						src.target = D

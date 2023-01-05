@@ -87,7 +87,7 @@
 	to_chat(xeno, SPAN_XENOHIGHDANGER("Your next slash will apply neurotoxin!"))
 	button.icon_state = "template_active"
 
-	addtimer(CALLBACK(src, .proc/unbuff_slash), buff_duration)
+	addtimer(CALLBACK(src, PROC_REF(unbuff_slash)), buff_duration)
 
 	apply_cooldown()
 	..()

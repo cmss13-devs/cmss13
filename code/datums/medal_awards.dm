@@ -1,11 +1,11 @@
-#define MARINE_CONDUCT_MEDAL		"distinguished conduct medal"
-#define MARINE_BRONZE_HEART_MEDAL	"bronze heart medal"
-#define MARINE_VALOR_MEDAL			"medal of valor"
-#define MARINE_HEROISM_MEDAL		"medal of exceptional heroism"
+#define MARINE_CONDUCT_MEDAL "distinguished conduct medal"
+#define MARINE_BRONZE_HEART_MEDAL "bronze heart medal"
+#define MARINE_VALOR_MEDAL "medal of valor"
+#define MARINE_HEROISM_MEDAL "medal of exceptional heroism"
 
-#define XENO_SLAUGHTER_MEDAL		"royal jelly of slaughter"
-#define XENO_RESILIENCE_MEDAL		"royal jelly of resilience"
-#define XENO_SABOTAGE_MEDAL			"royal jelly of sabotage"
+#define XENO_SLAUGHTER_MEDAL "royal jelly of slaughter"
+#define XENO_RESILIENCE_MEDAL "royal jelly of resilience"
+#define XENO_SABOTAGE_MEDAL "royal jelly of sabotage"
 
 GLOBAL_LIST_EMPTY(medal_awards)
 GLOBAL_LIST_EMPTY(jelly_awards)

@@ -22,11 +22,11 @@
 	possible_transfer_amounts = null
 	w_class = SIZE_TINY
 	volume = 60
-	reagent_desc_override = TRUE		//it has a special examining mechanic
-	var/identificable = TRUE			//can medically trained people tell what's in it?
-	var/pill_desc = "An unknown pill."	// The real description of the pill, shown when examined by a medically trained person
-	var/pill_icon_class = "random"		// Pills with the same icon class share icons
-	var/list/pill_initial_reagents		// Default reagents if any
+	reagent_desc_override = TRUE //it has a special examining mechanic
+	var/identificable = TRUE //can medically trained people tell what's in it?
+	var/pill_desc = "An unknown pill." // The real description of the pill, shown when examined by a medically trained person
+	var/pill_icon_class = "random" // Pills with the same icon class share icons
+	var/list/pill_initial_reagents // Default reagents if any
 
 /obj/item/reagent_container/pill/Initialize(mapload, ...)
 	. = ..()
@@ -181,9 +181,9 @@
 	pill_icon_class = "kelo"
 
 /obj/item/reagent_container/pill/oxycodone
-    pill_desc = "A Oxycodone pill. A powerful painkiller."
-    pill_initial_reagents = list("oxycodone" = 15)
-    pill_icon_class = "oxy"
+	pill_desc = "A Oxycodone pill. A powerful painkiller."
+	pill_initial_reagents = list("oxycodone" = 15)
+	pill_icon_class = "oxy"
 
 /obj/item/reagent_container/pill/paracetamol
 	pill_desc = "A Paracetamol pill. Painkiller for the ages."

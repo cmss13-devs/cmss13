@@ -8,7 +8,7 @@
 	icon = 'icons/obj/items/clothing/backpacks.dmi'
 	icon_state = "backpack"
 	w_class = SIZE_LARGE
-	flags_equip_slot = SLOT_BACK	//ERROOOOO
+	flags_equip_slot = SLOT_BACK //ERROOOOO
 	max_w_class = SIZE_MEDIUM
 	storage_slots = null
 	max_storage_space = 21
@@ -88,7 +88,7 @@
 
 /obj/item/storage/backpack/equipped(mob/user, slot, silent)
 	if(slot == WEAR_BACK)
-		mouse_opacity = 2 //so it's easier to click when properly equipped.
+		mouse_opacity = MOUSE_OPACITY_OPAQUE //so it's easier to click when properly equipped.
 		if(use_sound && !silent)
 			playsound(loc, use_sound, 15, TRUE, 6)
 		if(!worn_accessible) //closes it if it's open.
@@ -127,7 +127,7 @@
 				if(!do_after(user, 2 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC)) //Timed opening.
 					to_chat(H, SPAN_WARNING("You were interrupted!"))
 					return FALSE
-				RegisterSignal(user, COMSIG_MOVABLE_PRE_MOVE, .proc/storage_close) //Continue along the proc and allow opening if not locked; close on movement.
+				RegisterSignal(user, COMSIG_MOVABLE_PRE_MOVE, PROC_REF(storage_close)) //Continue along the proc and allow opening if not locked; close on movement.
 			else if(H.back == src) //On back and doing timed actions?
 				return FALSE
 	return TRUE
@@ -194,26 +194,26 @@
 	max_w_class = SIZE_LARGE
 	max_storage_space = 28
 
-	attackby(obj/item/W as obj, mob/user as mob)
-		if(crit_fail)
-			to_chat(user, SPAN_DANGER("The Bluespace generator isn't working."))
-			return
-		if(istype(W, /obj/item/storage/backpack/holding) && !W.crit_fail)
-			to_chat(user, SPAN_DANGER("The Bluespace interfaces of the two devices conflict and malfunction."))
-			qdel(W)
-			return
-		..()
+/obj/item/storage/backpack/holding/attackby(obj/item/W as obj, mob/user as mob)
+	if(crit_fail)
+		to_chat(user, SPAN_DANGER("The Bluespace generator isn't working."))
+		return
+	if(istype(W, /obj/item/storage/backpack/holding) && !W.crit_fail)
+		to_chat(user, SPAN_DANGER("The Bluespace interfaces of the two devices conflict and malfunction."))
+		qdel(W)
+		return
+	..()
 
-	proc/failcheck(mob/user as mob)
-		if (prob(src.reliability)) return 1 //No failure
-		if (prob(src.reliability))
-			to_chat(user, SPAN_DANGER("The Bluespace portal resists your attempt to add another item.")) //light failure
-		else
-			to_chat(user, SPAN_DANGER("The Bluespace generator malfunctions!"))
-			for (var/obj/O in src.contents) //it broke, delete what was in it
-				qdel(O)
-			crit_fail = 1
-			icon_state = "brokenpack"
+/obj/item/storage/backpack/holding/proc/failcheck(mob/user as mob)
+	if (prob(src.reliability)) return 1 //No failure
+	if (prob(src.reliability))
+		to_chat(user, SPAN_DANGER("The Bluespace portal resists your attempt to add another item.")) //light failure
+	else
+		to_chat(user, SPAN_DANGER("The Bluespace generator malfunctions!"))
+		for (var/obj/O in src.contents) //it broke, delete what was in it
+			qdel(O)
+		crit_fail = 1
+		icon_state = "brokenpack"
 
 
 //==========================//JOKE PACKS\\================================\\
@@ -227,11 +227,41 @@
 	storage_slots = 30
 	max_w_class = SIZE_MASSIVE
 	worn_accessible = TRUE
+	actions_types = list(/datum/action/item_action/specialist/santabag)
 
 /obj/item/storage/backpack/santabag/Initialize()
 	. = ..()
-	for(var/total_storage_slots in 1 to storage_slots)
+	refill_santa_bag()
+
+/obj/item/storage/backpack/santabag/proc/refill_santa_bag(var/mob/living/user)
+	var/current_items = length(contents)
+	var/total_to_refill = storage_slots - current_items
+	for(var/total_storage_slots in 1 to total_to_refill)
 		new /obj/item/m_gift(src)
+	if(!user)
+		return
+	playsound(user, 'sound/items/jingle_long.wav', 25, TRUE)
+	to_chat(user, SPAN_GREEN("You use the magic of Christmas to refill your gift bag!"))
+
+/obj/item/storage/backpack/santabag/item_action_slot_check(mob/user, slot)
+	if(HAS_TRAIT(user, TRAIT_SANTA)) //Only the Santa himself knows how to use this bag properly.
+		return TRUE
+
+/datum/action/item_action/specialist/santabag/New(var/mob/living/user, var/obj/item/holder)
+	..()
+	name = "Refill Gift Bag"
+	action_icon_state = holder?.icon_state
+	button.name = name
+	button.overlays.Cut()
+	button.overlays += image(holder?.icon_state, button, action_icon_state)
+
+/datum/action/item_action/specialist/santabag/can_use_action()
+	return TRUE
+
+/datum/action/item_action/specialist/santabag/action_activate()
+	var/obj/item/storage/backpack/santabag/santa_bag = holder_item
+	santa_bag.refill_santa_bag(owner)
+	update_button_icon()
 
 /obj/item/storage/backpack/cultpack
 	name = "trophy rack"
@@ -459,7 +489,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	internal_transmitter.relay_obj = src
 	internal_transmitter.phone_category = "RTO"
 	internal_transmitter.enabled = FALSE
-	RegisterSignal(internal_transmitter, COMSIG_TRANSMITTER_UPDATE_ICON, .proc/check_for_ringing)
+	RegisterSignal(internal_transmitter, COMSIG_TRANSMITTER_UPDATE_ICON, PROC_REF(check_for_ringing))
 	GLOB.radio_packs += src
 
 /obj/item/storage/backpack/marine/satchel/rto/proc/check_for_ringing()
@@ -618,7 +648,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 /obj/item/storage/backpack/general_belt/equipped(mob/user, slot)
 	switch(slot)
 		if(WEAR_WAIST, WEAR_J_STORE) //The G8 can be worn on several armours.
-			mouse_opacity = 2 //so it's easier to click when properly equipped.
+			mouse_opacity = MOUSE_OPACITY_OPAQUE //so it's easier to click when properly equipped.
 	..()
 
 /obj/item/storage/backpack/general_belt/dropped(mob/user)
@@ -676,8 +706,8 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 		to_chat(H, SPAN_WARNING("Your cloak is malfunctioning and can't be enabled right now!"))
 		return
 
-	RegisterSignal(H, COMSIG_GRENADE_PRE_PRIME, .proc/cloak_grenade_callback)
-	RegisterSignal(H, COMSIG_HUMAN_EXTINGUISH, .proc/wrapper_fizzle_camouflage)
+	RegisterSignal(H, COMSIG_GRENADE_PRE_PRIME, PROC_REF(cloak_grenade_callback))
+	RegisterSignal(H, COMSIG_HUMAN_EXTINGUISH, PROC_REF(wrapper_fizzle_camouflage))
 
 	camo_active = TRUE
 	H.visible_message(SPAN_DANGER("[H] vanishes into thin air!"), SPAN_NOTICE("You activate your cloak's camouflage."), max_distance = 4)
@@ -732,7 +762,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	if(anim)
 		anim(H.loc, H,'icons/mob/mob.dmi', null, "uncloak", null, H.dir)
 
-	addtimer(CALLBACK(src, .proc/allow_shooting, H), 1.5 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(allow_shooting), H), 1.5 SECONDS)
 
 // This proc is to cancel priming grenades in /obj/item/explosive/grenade/attack_self()
 /obj/item/storage/backpack/marine/satchel/scout_cloak/proc/cloak_grenade_callback(mob/user)

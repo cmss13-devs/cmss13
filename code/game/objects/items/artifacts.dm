@@ -4,19 +4,27 @@
 	icon = 'icons/obj/items/misc.dmi'
 	icon_state = "changerock"
 
+/obj/item/changestone/proc/change(/mob/target)
+	if(!ishuman(target))
+		return FALSE
+	var/mob/living/carbon/human/humantarget = target
+	if(H.gender == FEMALE)
+		H.gender = MALE
+	else
+		H.gender = FEMALE
+	return TRUE
+
 /obj/item/changestone/attack_hand(var/mob/user as mob)
-	if(istype(user,/mob/living/carbon/human))
-		var/mob/living/carbon/human/H = user
-		if(!H.gloves)
-			if (H.gender == FEMALE)
-				H.gender = MALE
-			else
-				H.gender = FEMALE
-			H.update_body()
+	change(user)
 	..()
 
+/obj/item/changestone/attack(mob/living/M, mob/living/user)
+	if(change(user))
+		return
+	. = ..()
 
-
-
+/obj/item/changestone/mob_launch_collision(mob/living/L)
+	. = ..()
+	change(L)
 
 

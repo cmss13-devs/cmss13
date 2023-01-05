@@ -13,6 +13,17 @@
 /client/can_vv_modify()
 	return FALSE
 
+/datum/proc/can_vv_mark()
+	return TRUE
+
+/// Called whenever a var is edited to edit the var, returning FALSE will reject the edit.
+/datum/proc/vv_edit_var(var_name, var_value)
+	if(var_name == NAMEOF(src, vars))
+		return FALSE
+	vars[var_name] = var_value
+	datum_flags |= DF_VAR_EDITED
+	return TRUE
+
 /client/proc/debug_variables(datum/D in world)
 	set category = "Debug"
 	set name = "View Variables"
@@ -596,6 +607,10 @@ body
 			to_chat(usr, SPAN_WARNING("This datum is protected. Access Denied"))
 			return
 
+		if(!D.can_vv_mark())
+			to_chat(usr, SPAN_WARNING("This datum cannot be marked."))
+			return
+
 		if(D in admin_holder.marked_datums)
 			admin_holder.marked_datums -= D
 		else
@@ -607,7 +622,7 @@ body
 			return
 
 		var/datum/D = locate(href_list["adv_proccall"])
-		callproc(D)
+		callproc_datum(D)
 
 
 	else if(href_list["rotatedatum"])

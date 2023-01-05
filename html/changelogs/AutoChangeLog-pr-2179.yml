@@ -1,5 +1,0 @@
-author: "stanalbatross"
-delete-after: True
-changes:
-  - rscdel: "removed the centcom accounts database, which was only used in one proc and was only present on the admin level."
-  - admin: "added a mob event verb to make an account"

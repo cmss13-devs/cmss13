@@ -13067,7 +13067,7 @@
 	icon_state = "plating";
 	tag = "icon-blue (NORTHEAST)"
 	},
-/area/shuttle/distress/arrive_1)
+/area/almayer/ert_port)
 "aKU" = (
 /obj/structure/machinery/light/small{
 	dir = 8;
@@ -17094,20 +17094,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/starboard_hallway)
-"bbE" = (
-/obj/structure/machinery/door/airlock/almayer/secure/reinforced{
-	dir = 2;
-	name = "\improper Exterior Airlock";
-	req_access = null
-	},
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = "starboardert"
-	},
-/turf/open/floor/almayer{
-	icon_state = "test_floor4";
-	tag = "icon-test_floor4"
-	},
-/area/almayer/shipboard/starboard_point_defense)
 "bbI" = (
 /obj/structure/machinery/door/airlock/almayer/maint,
 /obj/structure/machinery/door/poddoor/shutters/almayer{
@@ -18319,10 +18305,8 @@
 	},
 /area/shuttle/drop2/sulaco)
 "bfQ" = (
-/obj/item/device/radio/intercom{
-	frequency = 1443;
+/obj/item/device/radio/intercom/normandy{
 	layer = 3.5;
-	name = "dropship intercom";
 	pixel_x = 21;
 	pixel_y = 43
 	},
@@ -18409,10 +18393,8 @@
 	},
 /area/shuttle/drop1/sulaco)
 "bge" = (
-/obj/item/device/radio/intercom{
-	frequency = 1441;
+/obj/item/device/radio/intercom/alamo{
 	layer = 3.5;
-	name = "dropship intercom";
 	pixel_x = 21;
 	pixel_y = 43
 	},
@@ -19133,12 +19115,13 @@
 	},
 /area/almayer/shipboard/brig/processing)
 "bjy" = (
+/obj/docking_port/stationary/emergency_response/port3,
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
 	tag = "icon-blue (NORTHEAST)"
 	},
-/area/shuttle/distress/arrive_3)
+/area/almayer/ert_port)
 "bjA" = (
 /turf/open/floor/almayer{
 	dir = 9;
@@ -19255,9 +19238,7 @@
 	},
 /area/shuttle/drop2/sulaco)
 "bjW" = (
-/obj/item/device/radio/intercom{
-	frequency = 1443;
-	name = "dropship intercom";
+/obj/item/device/radio/intercom/normandy{
 	pixel_y = 24
 	},
 /turf/open/shuttle/dropship{
@@ -19286,9 +19267,7 @@
 	},
 /area/shuttle/drop2/sulaco)
 "bjZ" = (
-/obj/item/device/radio/intercom{
-	frequency = 1443;
-	name = "dropship intercom";
+/obj/item/device/radio/intercom/normandy{
 	pixel_y = 24
 	},
 /turf/open/shuttle/dropship{
@@ -19358,9 +19337,7 @@
 	},
 /area/shuttle/drop1/sulaco)
 "bkl" = (
-/obj/item/device/radio/intercom{
-	frequency = 1441;
-	name = "dropship intercom";
+/obj/item/device/radio/intercom/alamo{
 	pixel_y = 24
 	},
 /turf/open/shuttle/dropship{
@@ -19389,9 +19366,7 @@
 	},
 /area/shuttle/drop1/sulaco)
 "bko" = (
-/obj/item/device/radio/intercom{
-	frequency = 1441;
-	name = "dropship intercom";
+/obj/item/device/radio/intercom/alamo{
 	pixel_y = 24
 	},
 /turf/open/shuttle/dropship{
@@ -21312,10 +21287,8 @@
 /turf/open/floor/almayer,
 /area/almayer/hallways/hangar)
 "brZ" = (
-/obj/item/device/radio/intercom{
-	frequency = 1443;
+/obj/item/device/radio/intercom/normandy{
 	layer = 3.5;
-	name = "normandy dropship intercom";
 	pixel_x = -10
 	},
 /turf/closed/shuttle/dropship2{
@@ -21328,10 +21301,8 @@
 	},
 /area/shuttle/drop2/sulaco)
 "bsb" = (
-/obj/item/device/radio/intercom{
-	frequency = 1443;
+/obj/item/device/radio/intercom/normandy{
 	layer = 3.5;
-	name = "normandy dropship intercom";
 	pixel_x = 10
 	},
 /turf/closed/shuttle/dropship2{
@@ -21774,9 +21745,7 @@
 	},
 /area/shuttle/drop2/sulaco)
 "btJ" = (
-/obj/item/device/radio/intercom{
-	frequency = 1443;
-	name = "dropship intercom";
+/obj/item/device/radio/intercom/normandy{
 	pixel_y = 24
 	},
 /turf/open/shuttle/dropship{
@@ -21828,9 +21797,7 @@
 	},
 /area/shuttle/drop1/sulaco)
 "btR" = (
-/obj/item/device/radio/intercom{
-	frequency = 1441;
-	name = "dropship intercom";
+/obj/item/device/radio/intercom/alamo{
 	pixel_y = 24
 	},
 /turf/open/shuttle/dropship{
@@ -27522,10 +27489,6 @@
 	name = "\improper Exterior Airlock";
 	req_access = null
 	},
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	dir = 4;
-	id = "aftert"
-	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4";
 	tag = "icon-test_floor4"
@@ -29553,9 +29516,6 @@
 	name = "\improper Exterior Airlock";
 	req_access = null
 	},
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = "portert"
-	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4";
 	tag = "icon-test_floor4"
@@ -29622,12 +29582,13 @@
 	},
 /area/almayer/shipboard/port_point_defense)
 "bWo" = (
+/obj/docking_port/stationary/emergency_response/port2,
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
 	tag = "icon-blue (NORTHEAST)"
 	},
-/area/shuttle/distress/arrive_2)
+/area/almayer/ert_port)
 "bWp" = (
 /obj/structure/machinery/light/small{
 	dir = 4
@@ -30230,9 +30191,7 @@
 	},
 /area/almayer/command/cichallway)
 "bYB" = (
-/obj/item/device/radio/intercom{
-	frequency = 1441;
-	name = "dropship intercom";
+/obj/item/device/radio/intercom/alamo{
 	pixel_x = -10
 	},
 /turf/closed/shuttle/dropship1{
@@ -30252,9 +30211,7 @@
 	},
 /area/almayer/hallways/port_hallway)
 "bYF" = (
-/obj/item/device/radio/intercom{
-	frequency = 1441;
-	name = "dropship intercom";
+/obj/item/device/radio/intercom/alamo{
 	pixel_x = 10
 	},
 /turf/closed/shuttle/dropship1{
@@ -36508,11 +36465,8 @@
 	tag = "icon-intact-supply (EAST)"
 	},
 /obj/structure/surface/table/almayer,
-/obj/item/device/radio/intercom{
-	canhear_range = 7;
-	frequency = 1441;
-	layer = 2.9;
-	name = "alamo dropship intercom"
+/obj/item/device/radio/intercom/alamo{
+	layer = 2.9
 	},
 /turf/open/floor/almayer{
 	icon_state = "redfull";
@@ -64504,6 +64458,14 @@
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/north1)
+"pzG" = (
+/obj/docking_port/stationary/emergency_response/port1,
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "plating";
+	tag = "icon-blue (NORTHEAST)"
+	},
+/area/almayer/ert_port)
 "pzO" = (
 /obj/item/tool/warning_cone{
 	pixel_y = 13
@@ -79842,10 +79804,8 @@
 	tag = "icon-intact-supply (EAST)"
 	},
 /obj/structure/surface/table/almayer,
-/obj/item/device/radio/intercom{
-	frequency = 1443;
-	layer = 3.5;
-	name = "normandy dropship intercom"
+/obj/item/device/radio/intercom/normandy{
+	layer = 3.5
 	},
 /turf/open/floor/almayer{
 	icon_state = "redfull";
@@ -83142,10 +83102,6 @@
 /obj/structure/machinery/door/airlock/almayer/secure/reinforced{
 	name = "\improper Exterior Airlock";
 	req_access = null
-	},
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	dir = 4;
-	id = "aftert"
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4";
@@ -113907,7 +113863,6 @@ aaa
 aab
 aaa
 aKR
-aKS
 aKT
 aKT
 aKT
@@ -113920,6 +113875,7 @@ aKT
 aKT
 aKT
 aKT
+pzG
 bby
 aLL
 aLL
@@ -113983,18 +113939,18 @@ ued
 bSf
 bSf
 cml
-bWe
-bWo
-bWo
-bWo
-bWo
-bWo
-bWo
-bWo
-bWo
-bWo
-bWo
-bWo
+aKT
+aKT
+aKT
+aKT
+aKT
+aKT
+aKT
+aKT
+aKT
+aKT
+aKT
+aKT
 bWo
 bWe
 bVU
@@ -114110,7 +114066,7 @@ aaa
 aab
 aaa
 aKR
-aKS
+aKT
 aKT
 aKT
 aKT
@@ -114186,19 +114142,19 @@ weC
 tZc
 bSf
 cmm
-bWe
-bWo
-bWo
-bWo
-bWo
-bWo
-bWo
-bWo
-bWo
-bWo
-bWo
-bWo
-bWo
+aKT
+aKT
+aKT
+aKT
+aKT
+aKT
+aKT
+aKT
+aKT
+aKT
+aKT
+aKT
+aKT
 bWe
 bVU
 aaa
@@ -114389,19 +114345,19 @@ cpk
 bVd
 bSf
 cmm
-bWo
-bWo
-bWo
-bWo
-bWo
-bWo
-bWo
-bWo
-bWo
-bWo
-bWo
-bWo
-bWo
+aKT
+aKT
+aKT
+aKT
+aKT
+aKT
+aKT
+aKT
+aKT
+aKT
+aKT
+aKT
+aKT
 bWe
 bVU
 aaa
@@ -114530,7 +114486,7 @@ aKT
 aKT
 aKT
 bbz
-bbE
+bdy
 bbS
 bbS
 bdy
@@ -114592,19 +114548,19 @@ weC
 cls
 bWc
 cmm
-bWo
-bWo
-bWo
-bWo
-bWo
-bWo
-bWo
-bWo
-bWo
-bWo
-bWo
-bWo
-bWo
+aKT
+aKT
+aKT
+aKT
+aKT
+aKT
+aKT
+aKT
+aKT
+aKT
+aKT
+aKT
+aKT
 bWe
 bVU
 aaa
@@ -114795,19 +114751,19 @@ weC
 rfI
 bSf
 qzc
-bWo
-bWo
-bWo
-bWo
-bWo
-bWo
-bWo
-bWo
-bWo
-bWo
-bWo
-bWo
-bWo
+aKT
+aKT
+aKT
+aKT
+aKT
+aKT
+aKT
+aKT
+aKT
+aKT
+aKT
+aKT
+aKT
 bWe
 bVU
 aaa
@@ -114922,7 +114878,7 @@ aaa
 aab
 aaa
 aKR
-aKS
+aKT
 aKT
 aKT
 aKT
@@ -114998,19 +114954,19 @@ fvN
 tZc
 bSf
 cmm
-bWe
-bWo
-bWo
-bWo
-bWo
-bWo
-bWo
-bWo
-bWo
-bWo
-bWo
-bWo
-bWo
+aKT
+aKT
+aKT
+aKT
+aKT
+aKT
+aKT
+aKT
+aKT
+aKT
+aKT
+aKT
+aKT
 bWe
 bVU
 aaa
@@ -115125,7 +115081,7 @@ aaa
 aab
 aaa
 aKR
-aKS
+aKT
 aKT
 aKT
 aKT
@@ -115201,19 +115157,19 @@ ued
 bSf
 bSf
 cmn
-bWe
-bWo
-bWo
-bWo
-bWo
-bWo
-bWo
-bWo
-bWo
-bWo
-bWo
-bWo
-bWo
+aKT
+aKT
+aKT
+aKT
+aKT
+aKT
+aKT
+aKT
+aKT
+aKT
+aKT
+aKT
+aKT
 bWe
 bVU
 aaa
@@ -142365,18 +142321,18 @@ aaa
 aaa
 wVb
 qsF
-bdo
-bjy
-bjy
-bjy
-bjy
-bjy
-bjy
-bjy
-bjy
-bjy
-bjy
-bjy
+aKT
+aKT
+aKT
+aKT
+aKT
+aKT
+aKT
+aKT
+aKT
+aKT
+aKT
+aKT
 bjy
 aXQ
 vTK
@@ -142568,19 +142524,19 @@ aaa
 aaa
 wVb
 bdo
-bdo
-bjy
-bjy
-bjy
-bjy
-bjy
-bjy
-bjy
-bjy
-bjy
-bjy
-bjy
-bjy
+aKT
+aKT
+aKT
+aKT
+aKT
+aKT
+aKT
+aKT
+aKT
+aKT
+aKT
+aKT
+aKT
 ovn
 vTK
 aaa
@@ -142771,19 +142727,19 @@ aaa
 aaa
 wVb
 bdo
-bjy
-bjy
-bjy
-bjy
-bjy
-bjy
-bjy
-bjy
-bjy
-bjy
-bjy
-bjy
-bjy
+aKT
+aKT
+aKT
+aKT
+aKT
+aKT
+aKT
+aKT
+aKT
+aKT
+aKT
+aKT
+aKT
 ovn
 vTK
 aaa
@@ -142974,19 +142930,19 @@ aaa
 aaa
 wVb
 bhD
-bjy
-bjy
-bjy
-bjy
-bjy
-bjy
-bjy
-bjy
-bjy
-bjy
-bjy
-bjy
-bjy
+aKT
+aKT
+aKT
+aKT
+aKT
+aKT
+aKT
+aKT
+aKT
+aKT
+aKT
+aKT
+aKT
 bCR
 vTK
 aaa
@@ -143177,19 +143133,19 @@ aaa
 aaa
 wVb
 bdo
-bjy
-bjy
-bjy
-bjy
-bjy
-bjy
-bjy
-bjy
-bjy
-bjy
-bjy
-bjy
-bjy
+aKT
+aKT
+aKT
+aKT
+aKT
+aKT
+aKT
+aKT
+aKT
+aKT
+aKT
+aKT
+aKT
 ovn
 vTK
 aaa
@@ -143380,19 +143336,19 @@ aaa
 aaa
 wVb
 bdo
-bdo
-bjy
-bjy
-bjy
-bjy
-bjy
-bjy
-bjy
-bjy
-bjy
-bjy
-bjy
-bjy
+aKT
+aKT
+aKT
+aKT
+aKT
+aKT
+aKT
+aKT
+aKT
+aKT
+aKT
+aKT
+aKT
 ovn
 vTK
 aaa
@@ -143583,19 +143539,19 @@ aaa
 aaa
 wVb
 qsF
-bdo
-bjy
-bjy
-bjy
-bjy
-bjy
-bjy
-bjy
-bjy
-bjy
-bjy
-bjy
-bjy
+aKT
+aKT
+aKT
+aKT
+aKT
+aKT
+aKT
+aKT
+aKT
+aKT
+aKT
+aKT
+aKT
 aXQ
 vTK
 aaa

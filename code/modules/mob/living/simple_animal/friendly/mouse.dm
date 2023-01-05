@@ -128,14 +128,17 @@
 	body_color = "white"
 	icon_state = "mouse_white"
 	desc = "It's a small laboratory mouse."
+	holder_type = /obj/item/holder/mouse/white
 
 /mob/living/simple_animal/mouse/gray
 	body_color = "gray"
 	icon_state = "mouse_gray"
+	holder_type = /obj/item/holder/mouse/gray
 
 /mob/living/simple_animal/mouse/brown
 	body_color = "brown"
 	icon_state = "mouse_brown"
+	holder_type = /obj/item/holder/mouse/brown
 
 /mob/living/simple_animal/mouse/white/Doc
 	name = "Doc"
@@ -144,7 +147,7 @@
 	response_help  = "pets"
 	response_disarm = "gently pushes aside"
 	response_harm   = "stamps on"
-	holder_type = /obj/item/holder/mouse/Doc
+	holder_type = /obj/item/holder/mouse/white/Doc
 
 //TOM IS ALIVE! SQUEEEEEEEE~K :)
 /mob/living/simple_animal/mouse/brown/Tom
@@ -153,3 +156,4 @@
 	response_help  = "pets"
 	response_disarm = "gently pushes aside"
 	response_harm   = "splats"
+	holder_type = /obj/item/holder/mouse/brown/Tom

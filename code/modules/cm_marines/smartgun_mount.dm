@@ -1554,6 +1554,7 @@
 
 /obj/structure/machinery/m56d_hmg/auto/on_set_interaction(mob/user)
 	..()
+	ADD_TRAIT(user, TRAIT_OVERRIDE_CLICKDRAG, TRAIT_SOURCE_WEAPON)
 	if(user.client)
 		RegisterSignal(user.client, COMSIG_CLIENT_LMB_DOWN, PROC_REF(auto_fire_start))
 		RegisterSignal(user.client, COMSIG_CLIENT_LMB_UP, PROC_REF(auto_fire_stop))
@@ -1564,6 +1565,7 @@
 // DISMOUNT THE MG
 
 /obj/structure/machinery/m56d_hmg/auto/on_unset_interaction(mob/user)
+	REMOVE_TRAIT(user, TRAIT_OVERRIDE_CLICKDRAG, TRAIT_SOURCE_WEAPON)
 	UnregisterSignal(user, list(
 		COMSIG_MOVABLE_PRE_MOVE,
 		COMSIG_MOB_POST_UPDATE_CANMOVE

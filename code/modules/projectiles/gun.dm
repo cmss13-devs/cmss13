@@ -707,10 +707,15 @@
 			wield_time += 3
 		else
 			wield_time -= 2*user.skills.get_skill_level(SKILL_FIREARMS)
+
+	if(flags_gun_features & GUN_FULL_AUTO_ON)
+		ADD_TRAIT(user, TRAIT_OVERRIDE_CLICKDRAG, TRAIT_SOURCE_WEAPON)
+
 	return 1
 
 /obj/item/weapon/gun/unwield(var/mob/user)
 	. = ..()
+	REMOVE_TRAIT(user, TRAIT_OVERRIDE_CLICKDRAG, TRAIT_SOURCE_WEAPON)
 	if(.)
 		slowdown = initial(slowdown)
 

@@ -166,6 +166,12 @@ GLOBAL_LIST_INIT(comp2table, list(
 				UpdateAffectingLights()
 	. = ..()
 
+/atom/vv_edit_var(var_name, var_value)
+	switch(var_name)
+		if(NAMEOF(src, luminosity))
+			SetLuminosity(var_value)
+	return ..()
+
 //Sets our luminosity.
 //If we have no light it will create one.
 //If we are setting luminosity to 0 the light will be cleaned up by the controller and garbage collected once all its

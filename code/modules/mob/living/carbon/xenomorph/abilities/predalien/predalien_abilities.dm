@@ -19,7 +19,7 @@
 	xeno_cooldown = 25 SECONDS
 	plasma_cost = 50
 
-	var/screech_sound_effect = "sound/voice/predalien_roar.ogg"
+	var/predalien_roar = list("sound/voice/predalien_roar.ogg")
 	var/bonus_damage_scale = 2.5
 	var/bonus_speed_scale = 0.05
 

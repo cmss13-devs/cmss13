@@ -715,6 +715,7 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 			return
 		else if(flags_gun_features & GUN_FULL_AUTO_ON)
 			flags_gun_features &= ~GUN_FULL_AUTO_ON
+			REMOVE_TRAIT(user, TRAIT_OVERRIDE_CLICKDRAG, TRAIT_SOURCE_WEAPON)
 			full_auto_stop() // If the LMBUP hasn't been called for any reason.
 			UnregisterSignal(user.client, list(
 				COMSIG_CLIENT_LMB_DOWN,

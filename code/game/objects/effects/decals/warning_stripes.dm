@@ -5,12 +5,10 @@
 	layer = WEED_LAYER
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	var/initial_icon_state
-	var/initial_dir
 
 /obj/effect/decal/warning_stripes/Initialize(mapload, ...)
 	. = ..()
 	initial_icon_state = icon_state
-	initial_dir = dir
 
 /obj/effect/decal/warning_stripes/setDir(newdir)
 	. = ..()

@@ -66,7 +66,7 @@
 	if(tgui_alert(src, "Please search for the bug first to make sure you aren't posting a duplicate.", "No dupe bugs please", list("OK", "Cancel")) != "OK")
 		return
 
-	if(tgui_alert(src, "This will open the github in your browser. Are you sure?", "Confirm", list("Yes", "No")) != "Yes")
+	if(tgui_alert(src, "This will open the GitHub in your browser. Are you sure?", "Confirm", list("Yes", "No")) != "Yes")
 		return
 
 	src << link(URL_ISSUE_TRACKER)

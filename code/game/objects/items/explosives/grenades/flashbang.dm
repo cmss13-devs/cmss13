@@ -244,7 +244,7 @@
 				var/mob/living/carbon/Xenomorph/X = M
 				X.Daze(2)
 				X.SetEarDeafness(max(X.ear_deaf, 3))
-		else	//simple mobs?
+		else //simple mobs?
 			M.Stun(5)
 			M.KnockDown(1)
 
@@ -328,7 +328,7 @@
 	M.apply_effect(paralyze_amount, PARALYZE)
 
 	if(flash_amount)
-		M.flash_eyes(1, TRUE, /atom/movable/screen/fullscreen/flash, flash_amount)
+		M.flash_eyes(EYE_PROTECTION_FLASH, TRUE, /atom/movable/screen/fullscreen/flash, flash_amount)
 	if(deafen_amount)
 		M.SetEarDeafness(max(M.ear_deaf, deafen_amount))
 

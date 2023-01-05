@@ -57,12 +57,12 @@
 //sort of a legacy burn method for /electrocute, /shock, and the e_chair
 /mob/living/proc/burn_skin(burn_amount)
 	if(ishuman(src))
-		var/mob/living/carbon/human/H = src	//make this damage method divide the damage to be done among all the body parts, then burn each body part for that much damage. will have better effect then just randomly picking a body part
+		var/mob/living/carbon/human/H = src //make this damage method divide the damage to be done among all the body parts, then burn each body part for that much damage. will have better effect then just randomly picking a body part
 		var/divided_damage = (burn_amount)/(H.limbs.len)
-		var/extradam = 0	//added to when organ is at max dam
+		var/extradam = 0 //added to when organ is at max dam
 		for(var/obj/limb/affecting in H.limbs)
-			if(!affecting)	continue
-			if(affecting.take_damage(0, divided_damage+extradam))	//TODO: fix the extradam stuff. Or, ebtter yet...rewrite this entire proc ~Carn
+			if(!affecting) continue
+			if(affecting.take_damage(0, divided_damage+extradam)) //TODO: fix the extradam stuff. Or, ebtter yet...rewrite this entire proc ~Carn
 				H.UpdateDamageIcon()
 		H.updatehealth()
 		return 1
@@ -72,9 +72,9 @@
 
 /mob/living/proc/adjustBodyTemp(actual, desired, incrementboost)
 	var/temperature = actual
-	var/difference = abs(actual-desired)	//get difference
+	var/difference = abs(actual-desired) //get difference
 	var/increments = difference/10 //find how many increments apart they are
-	var/change = increments*incrementboost	// Get the amount to change by (x per increment)
+	var/change = increments*incrementboost // Get the amount to change by (x per increment)
 
 	// Too cold
 	if(actual < desired)
@@ -86,7 +86,7 @@
 		temperature -= change
 		if(actual < desired)
 			temperature = desired
-//	if(istype(src, /mob/living/carbon/human))
+// if(istype(src, /mob/living/carbon/human))
 	return temperature
 
 
@@ -103,7 +103,7 @@
 
 		//Leave this commented out, it will cause storage items to exponentially add duplicate to the list
 		//for(var/obj/item/storage/S in Storage.return_inv()) //Check for storage items
-		//	L += get_contents(S)
+		// L += get_contents(S)
 
 		for(var/obj/item/gift/G in Storage.return_inv()) //Check for gift-wrapped items
 			L += G.gift
@@ -119,7 +119,7 @@
 	else
 
 		L += src.contents
-		for(var/obj/item/storage/S in src.contents)	//Check for storage items
+		for(var/obj/item/storage/S in src.contents) //Check for storage items
 			L += get_contents(S)
 
 		for(var/obj/item/gift/G in src.contents) //Check for gift-wrapped items
@@ -216,7 +216,7 @@
 	if(pulledby && get_dist(src, pulledby) > 1)//separated from our puller and not in the middle of a diagonal move.
 		pulledby.stop_pulling()
 
-	if (s_active && !( s_active in contents ) && get_turf(s_active) != get_turf(src))	//check !( s_active in contents ) first so we hopefully don't have to call get_turf() so much.
+	if (s_active && !( s_active in contents ) && get_turf(s_active) != get_turf(src)) //check !( s_active in contents ) first so we hopefully don't have to call get_turf() so much.
 		s_active.storage_close(src)
 
 	// Check if we're still pulling something
@@ -258,7 +258,7 @@
 	if (drowsyness > 0)
 		. += 6
 
-	if(pulling && pulling.drag_delay && get_pull_miltiplier())	//Dragging stuff can slow you down a bit.
+	if(pulling && pulling.drag_delay && get_pull_miltiplier()) //Dragging stuff can slow you down a bit.
 		var/pull_delay = pulling.get_pull_drag_delay() * get_pull_miltiplier()
 
 		var/grab_level_delay = 0
@@ -447,7 +447,7 @@
 /mob/proc/flash_eyes()
 	return
 
-/mob/living/flash_eyes(intensity = 1, bypass_checks, type = /atom/movable/screen/fullscreen/flash, var/flash_timer = 40)
+/mob/living/flash_eyes(intensity = EYE_PROTECTION_FLASH, bypass_checks, type = /atom/movable/screen/fullscreen/flash, var/flash_timer = 40)
 	if( bypass_checks || (get_eye_protection() < intensity && !(sdisabilities & DISABILITY_BLIND)))
 		overlay_fullscreen("flash", type)
 		spawn(flash_timer)

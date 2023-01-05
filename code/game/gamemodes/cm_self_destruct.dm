@@ -47,13 +47,13 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 
 /datum/authority/branch/evacuation
 	var/name = "Evacuation Authority"
-	var/evac_time	//Time the evacuation was initiated.
+	var/evac_time //Time the evacuation was initiated.
 	var/evac_status = EVACUATION_STATUS_STANDING_BY //What it's doing now? It can be standing by, getting ready to launch, or finished.
 
 	var/obj/structure/machinery/self_destruct/console/dest_master //The main console that does the brunt of the work.
 	var/dest_rods[] //Slave devices to make the explosion work.
 	var/dest_cooldown //How long it takes between rods, determined by the amount of total rods present.
-	var/dest_index = 1	//What rod the thing is currently on.
+	var/dest_index = 1 //What rod the thing is currently on.
 	var/dest_status = NUKE_EXPLOSION_INACTIVE
 	var/dest_started_at = 0
 
@@ -142,10 +142,10 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 			sleep(300) //Sleep 30 more seconds to make sure everyone had a chance to leave.
 			var/lifesigns = 0
 			lifesigns += P.passengers
-			var/obj/docking_port/mobile/lifeboat/lifeboat1 = SSshuttle.getShuttle("lifeboat1")
+			var/obj/docking_port/mobile/lifeboat/lifeboat1 = SSshuttle.getShuttle(MOBILE_SHUTTLE_LIFEBOAT_PORT)
 			lifeboat1.check_for_survivors()
 			lifesigns += lifeboat1.survivors
-			var/obj/docking_port/mobile/lifeboat/lifeboat2 = SSshuttle.getShuttle("lifeboat2")
+			var/obj/docking_port/mobile/lifeboat/lifeboat2 = SSshuttle.getShuttle(MOBILE_SHUTTLE_LIFEBOAT_STARBOARD)
 			lifeboat2.check_for_survivors()
 			lifesigns += lifeboat2.survivors
 			ai_announcement("ATTENTION: Evacuation complete. Outbound lifesigns detected: [lifesigns ? lifesigns  : "none"].", 'sound/AI/evacuation_complete.ogg')

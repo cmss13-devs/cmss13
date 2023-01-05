@@ -8,7 +8,7 @@
 	icon_state = "platform"
 	climbable = TRUE
 	anchored = TRUE
-	density = 1
+	density = TRUE
 	throwpass = TRUE //You can throw objects over this, despite its density.
 	layer = OBJ_LAYER
 	breakable = FALSE
@@ -67,7 +67,7 @@
 	icon = 'icons/obj/structures/props/platforms.dmi'
 	icon_state = "platform_deco"
 	anchored = TRUE
-	density = 0
+	density = FALSE
 	throwpass = TRUE
 	layer = OBJ_LAYER
 	breakable = FALSE
@@ -197,12 +197,12 @@
 
 /obj/structure/platform/alamo
 	name = "platform"
-	desc = "A square metal surface resting on four legs."
+	desc = "A square metal surface dividing the cargo bay in the dropship."
 	icon = 'icons/obj/structures/props/platforms.dmi'
 	icon_state = "alamo"
 
 /obj/structure/platform/normandy
 	name = "platform"
-	desc = "A square metal surface resting on four legs."
+	desc = "A square metal surface dividing the cargo bay in the dropship."
 	icon = 'icons/obj/structures/props/platforms.dmi'
 	icon_state = "normandy"

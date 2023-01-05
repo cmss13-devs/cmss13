@@ -363,7 +363,7 @@ GLOBAL_LIST_EMPTY(co_secure_boxes)
 /obj/structure/closet/secure_closet/cmdcabinet
 	name = "command tablet cabinet"
 	desc = "A bulletproof cabinet containing the command tablet for usage by the CO and XO. Opens only to them and department heads."
-	density = 0
+	density = FALSE
 	store_mobs = FALSE
 	req_access = list(ACCESS_MARINE_COMMANDER)
 	icon_state = "secure_locked_cmdcabinet"

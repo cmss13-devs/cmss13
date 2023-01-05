@@ -3,7 +3,7 @@
 	desc = ""
 	icon = 'icons/obj/machines/biogenerator.dmi'
 	icon_state = "biogen-stand"
-	density = 1
+	density = TRUE
 	anchored = 1
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 40

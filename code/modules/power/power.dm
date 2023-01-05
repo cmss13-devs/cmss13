@@ -5,7 +5,7 @@
 	unslashable = TRUE
 	health = 0
 	var/datum/powernet/powernet = null
-	var/directwired = 1		// by default, power machines are connected by a cable in a neighbouring turf
+	var/directwired = 1 // by default, power machines are connected by a cable in a neighbouring turf
 							// if set to 0, requires a 0-X cable on this turf
 	use_power = USE_POWER_NONE
 	idle_power_usage = 0
@@ -48,19 +48,19 @@
 	//This is bad. This makes machines which are switched off not update their stat flag correctly when power_change() is called.
 	//If use_power is 0, then you probably shouldn't be checking power to begin with.
 	//if(!use_power)
-	//	return 1
+	// return 1
 
-	var/area/A = src.loc.loc		// make sure it's in an area
+	var/area/A = src.loc.loc // make sure it's in an area
 	if(!A || !isarea(A) || !A.master)
-		return 0					// if not, then not powered
+		return 0 // if not, then not powered
 	if(chan == -1)
 		chan = power_channel
-	return A.master.powered(chan)	// return power status of the area
+	return A.master.powered(chan) // return power status of the area
 
 // increment the power usage stats for an area
 
 /obj/structure/machinery/proc/use_power(var/amount, var/chan = POWER_CHANNEL_ONEOFF, var/autocalled = 0) // defaults to one-off power charge, not constant power change
-	var/area/A = get_area(src)		// make sure it's in an area
+	var/area/A = get_area(src) // make sure it's in an area
 	if(!A || !isarea(A) || !A.master)
 		return
 	A.master.use_power(amount, chan)
@@ -69,7 +69,7 @@
 	return 1
 
 //The master_area optional argument can be used to save on a lot of processing if the master area is already known. This is mainly intended for when this proc is called by the master controller.
-/obj/structure/machinery/proc/power_change(var/area/master_area = null)		// called whenever the power settings of the containing area change
+/obj/structure/machinery/proc/power_change(var/area/master_area = null) // called whenever the power settings of the containing area change
 										// by default, check equipment channel & set flag
 										// can override if needed
 	var/has_power
@@ -131,15 +131,15 @@
 	else
 		Zdir = 999
 ///// Z-Level Stuff
-//	world.log << "d=[d] fdir=[fdir]"
+// world.log << "d=[d] fdir=[fdir]"
 	for(var/AM in T)
-		if(AM == source)	continue			//we don't want to return source
+		if(AM == source) continue //we don't want to return source
 
 		if(istype(AM,/obj/structure/machinery/power))
 			var/obj/structure/machinery/power/P = AM
-			if(P.powernet == 0)	continue		// exclude APCs which have powernet=0
+			if(P.powernet == 0) continue // exclude APCs which have powernet=0
 
-			if(!unmarked || !P.powernet)		//if unmarked=1 we only return things with no powernet
+			if(!unmarked || !P.powernet) //if unmarked=1 we only return things with no powernet
 				if(P.directwired || (d == 0))
 					. += P
 
@@ -157,7 +157,7 @@
 
 
 /obj/structure/cable/proc/get_connections()
-	. = list()	// this will be a list of all connected power objects
+	. = list() // this will be a list of all connected power objects
 	var/turf/T = loc
 
 	if(d1)
@@ -227,7 +227,7 @@
 		cdir = get_dir(T,loc)
 
 		for(var/obj/structure/cable/C in T)
-			if(C.powernet)	continue
+			if(C.powernet) continue
 			if(C.d1 == cdir || C.d2 == cdir)
 				. += C
 	return .
@@ -235,7 +235,7 @@
 /obj/structure/machinery/power/proc/get_indirect_connections()
 	. = list()
 	for(var/obj/structure/cable/C in loc)
-		if(C.powernet)	continue
+		if(C.powernet) continue
 		if(C.d1 == 0)
 			. += C
 	return .
@@ -295,7 +295,7 @@
 		else if(H.gloves)
 			var/obj/item/clothing/gloves/G = H.gloves
 			if(G.siemens_coefficient == 0)
-				return 0		//to avoid spamming with insulated glvoes on
+				return 0 //to avoid spamming with insulated glvoes on
 
 	var/area/source_area
 	if(istype(power_source,/area))

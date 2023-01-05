@@ -81,7 +81,7 @@
  */
 /datum/beam/proc/Draw()
 	if(always_turn)
-		origin.setDir(get_dir(origin, target))	//Causes the source of the beam to rotate to continuosly face the BeamTarget.
+		origin.setDir(get_dir(origin, target)) //Causes the source of the beam to rotate to continuosly face the BeamTarget.
 	var/Angle = round(Get_Angle(origin,target))
 	var/matrix/rot_matrix = matrix()
 	var/turf/origin_turf = get_turf(origin)
@@ -142,6 +142,44 @@
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	anchored = TRUE
 	var/datum/beam/owner
+
+/obj/effect/ebeam/laser
+	name = "laser beam"
+	desc = "A laser beam!"
+	alpha = 200
+	var/strength = EYE_PROTECTION_FLAVOR
+	var/probability = 20
+
+/obj/effect/ebeam/laser/Crossed(var/atom/movable/AM)
+	. = ..()
+	if(! (prob(probability) && ishuman(AM)) )
+		return
+	var/mob/living/carbon/human/moving_human = AM
+	var/laser_protection = moving_human.get_eye_protection()
+	var/rand_laser_power = rand(EYE_PROTECTION_FLAVOR, strength)
+	if(rand_laser_power > laser_protection)
+		//ouch!
+		INVOKE_ASYNC(moving_human, /mob/proc/emote, "pain")
+		visible_message(SPAN_DANGER("[moving_human] screams out in pain as \the [src] moves across their eyes!"), SPAN_NOTICE("Aurgh!!! \The [src] moves across your unprotected eyes for a split-second!"))
+	else
+		if(HAS_TRAIT(moving_human, TRAIT_BIMEX))
+			visible_message(SPAN_NOTICE("[moving_human]'s BiMex© personal shades shine as \the [src] passes over them."), SPAN_NOTICE("Your BiMex© personal shades as \the [src] passes over them."))
+			//drip = bonus balloonchat
+			moving_human.balloon_alert_to_viewers("the laser bounces off [moving_human.gender == MALE ? "his" : "her"] BiMex© personal shades!", "the laser bounces off your BiMex© personal shades!")
+		else
+			visible_message(SPAN_NOTICE("[moving_human]'s headgear protects them from \the [src]."), SPAN_NOTICE("Your headgear protects you from  \the [src]."))
+
+/obj/effect/ebeam/laser/intense
+	name = "intense laser beam"
+	alpha = 255
+	strength = EYE_PROTECTION_FLASH
+	probability = 35
+
+/obj/effect/ebeam/laser/weak
+	name = "weak laser beam"
+	alpha = 150
+	strength = EYE_PROTECTION_FLAVOR
+	probability = 5
 
 /obj/effect/ebeam/Destroy()
 	owner = null

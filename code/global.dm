@@ -51,7 +51,7 @@ var/href_logfile = null
 var/command_name = "Central Command"
 var/station_name = "[MAIN_SHIP_NAME]"
 var/game_version = "Colonial Marines"
-var/game_year = "2182"
+var/game_year = 2182
 
 var/going = 1.0
 var/master_mode = "Distress Signal"

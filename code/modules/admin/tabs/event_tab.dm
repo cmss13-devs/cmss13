@@ -145,49 +145,87 @@
 	if(!check_rights(R_EVENT))
 		return
 
-	var/tag = tgui_input_list(usr, "Which ERT shuttle should be force launched?", "Select an ERT Shuttle:", list("Distress", "Distress_PMC", "Distress_UPP", "Distress_Big", "Distress_Small"))
+	var/tag = tgui_input_list(usr, "Which ERT shuttle should be force launched?", "Select an ERT Shuttle:", list("Distress", "Distress PMC", "Distress UPP", "Distress_Big", "Distress_Small"))
 	if(!tag) return
 
-	var/datum/shuttle/ferry/ert/shuttle = shuttle_controller.shuttles[tag]
-	if(!shuttle || !istype(shuttle))
-		message_staff("Warning: Distress shuttle not found. Aborting.")
-		return
+	var/newShuttle = FALSE
+	if(tag in list("Distress", "Distress PMC", "Distress UPP"))
+		newShuttle = TRUE
+	var/list/shuttle_map = list(
+		"Distress" = MOBILE_SHUTTLE_ID_ERT1,
+		"Distress PMC" = MOBILE_SHUTTLE_ID_ERT2,
+		"Distress UPP" = MOBILE_SHUTTLE_ID_ERT3,
+	)
+	if(newShuttle)
+		var/shuttleId = shuttle_map[tag]
+		var/list/docks = SSshuttle.stationary
+		var/list/targets = list()
+		var/list/target_names = list()
+		var/obj/docking_port/mobile/emergency_response/ert = SSshuttle.getShuttle(shuttleId)
+		for(var/obj/docking_port/stationary/emergency_response/dock in docks)
+			var/can_dock = ert.canDock(dock)
+			if(can_dock == SHUTTLE_CAN_DOCK)
+				targets += list(dock)
+				target_names +=  list(dock.name)
+		var/dock_name = tgui_input_list(usr, "Where on the [MAIN_SHIP_NAME] should the shuttle dock?", "Select a docking zone:", target_names)
+		var/launched = FALSE
+		for(var/obj/docking_port/stationary/emergency_response/dock as anything in targets)
+			if(dock.name == dock_name)
+				var/obj/docking_port/stationary/target = SSshuttle.getDock(dock.id)
+				ert.request(target)
+				launched=TRUE
+		if(!launched)
+			message_staff("Warning: Unable to launch this Distress shuttle at this moment. Aborting.")
+			return
+	else
+		var/datum/shuttle/ferry/ert/shuttle = shuttle_controller.shuttles[tag]
+		if(!shuttle || !istype(shuttle))
+			message_staff("Warning: Distress shuttle not found. Aborting.")
+			return
 
-	if(shuttle.location) //in start zone in admin z level
-		var/dock_id
-		var/dock_list = list("Port", "Starboard", "Aft")
-		if(shuttle.use_umbilical)
-			dock_list = list("Port Hangar", "Starboard Hangar")
-		if(shuttle.use_small_docks)
-			dock_list = list("Port Engineering", "Starboard Engineering")
-		var/dock_name = tgui_input_list(usr, "Where on the [MAIN_SHIP_NAME] should the shuttle dock?", "Select a docking zone:", dock_list)
-		switch(dock_name)
-			if("Port") dock_id = /area/shuttle/distress/arrive_2
-			if("Starboard") dock_id = /area/shuttle/distress/arrive_1
-			if("Aft") dock_id = /area/shuttle/distress/arrive_3
-			if("Port Hangar") dock_id = /area/shuttle/distress/arrive_s_hangar
-			if("Starboard Hangar") dock_id = /area/shuttle/distress/arrive_n_hangar
-			if("Port Engineering") dock_id = /area/shuttle/distress/arrive_s_engi
-			if("Starboard Engineering") dock_id = /area/shuttle/distress/arrive_n_engi
-			else return
-		for(var/datum/shuttle/ferry/ert/F in shuttle_controller.process_shuttles)
-			if(F != shuttle)
-				//other ERT shuttles already docked on almayer or about to be
-				if(!F.location || F.moving_status != SHUTTLE_IDLE)
-					if(F.area_station.type == dock_id)
-						message_staff("Warning: That docking zone is already taken by another shuttle. Aborting.")
-						return
+		if(shuttle.location) //in start zone in admin z level
+			var/dock_id
+			var/dock_list = list("Port", "Starboard", "Aft")
+			if(shuttle.use_umbilical)
+				dock_list = list("Port Hangar", "Starboard Hangar")
+			if(shuttle.use_small_docks)
+				dock_list = list("Port Engineering", "Starboard Engineering")
+			var/dock_name = tgui_input_list(usr, "Where on the [MAIN_SHIP_NAME] should the shuttle dock?", "Select a docking zone:", dock_list)
+			switch(dock_name)
+				if("Port")
+					dock_id = /area/shuttle/distress/arrive_2
+				if("Starboard")
+					dock_id = /area/shuttle/distress/arrive_1
+				if("Aft")
+					dock_id = /area/shuttle/distress/arrive_3
+				if("Port Hangar")
+					dock_id = /area/shuttle/distress/arrive_s_hangar
+				if("Starboard Hangar")
+					dock_id = /area/shuttle/distress/arrive_n_hangar
+				if("Port Engineering")
+					dock_id = /area/shuttle/distress/arrive_s_engi
+				if("Starboard Engineering")
+					dock_id = /area/shuttle/distress/arrive_n_engi
+				else
+					return
+			for(var/datum/shuttle/ferry/ert/ferry in shuttle_controller.process_shuttles)
+				if(ferry != shuttle)
+					//other ERT shuttles already docked on almayer or about to be
+					if(!ferry.location || ferry.moving_status != SHUTTLE_IDLE)
+						if(ferry.area_station.type == dock_id)
+							message_staff("Warning: That docking zone is already taken by another shuttle. Aborting.")
+							return
 
-		for(var/area/A in all_areas)
-			if(A.type == dock_id)
-				shuttle.area_station = A
-				break
+			for(var/area/landing_zone in all_areas)
+				if(landing_zone.type == dock_id)
+					shuttle.area_station = landing_zone
+					break
 
-	if(!shuttle.can_launch())
-		message_staff("Warning: Unable to launch this Distress shuttle at this moment. Aborting.")
-		return
+		if(!shuttle.can_launch())
+			message_staff("Warning: Unable to launch this Distress shuttle at this moment. Aborting.")
+			return
 
-	shuttle.launch()
+		shuttle.launch()
 
 	message_staff("[key_name_admin(usr)] force launched a distress shuttle ([tag])")
 

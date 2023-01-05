@@ -125,6 +125,7 @@
 	var/life_steps_total = 0
 	var/life_kills_total = 0
 	var/life_damage_taken_total = 0
+	var/festivizer_hits_total = 0
 
 	var/life_value = 1 // when killed, the killee gets this much added to its life_kills_total
 	var/default_honor_value = 1 // when killed by a yautja, this determines the minimum amount of honor gained

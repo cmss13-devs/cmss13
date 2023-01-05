@@ -302,7 +302,7 @@ It's fairly easy to fix if dealing with single letters but not so much with comp
 	return 2
 
 /mob/proc/get_eye_protection()
-	return FALSE
+	return EYE_PROTECTION_NONE
 
 /mob/verb/a_select_zone(input as text)
 	set name = "a-select-zone"

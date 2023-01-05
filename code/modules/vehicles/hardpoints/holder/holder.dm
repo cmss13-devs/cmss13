@@ -29,12 +29,13 @@
 		. += "There is a [H] module installed on \the [src]."
 		. += H.get_examine_text(user, TRUE)
 
-/obj/item/hardpoint/holder/get_hardpoint_info()
-	..()
-	var/dat = ""
+/obj/item/hardpoint/holder/get_tgui_info()
+	var/list/data = list()
+
 	for(var/obj/item/hardpoint/H in hardpoints)
-		dat += H.get_hardpoint_info()
-	return dat
+		data += list(H.get_tgui_info())
+
+	return data
 
 /obj/item/hardpoint/holder/take_damage(var/damage)
 	..()

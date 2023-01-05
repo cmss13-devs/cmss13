@@ -71,6 +71,8 @@
 
 	update_sight()
 
+	remove_typing_indicator()
+
 	drop_r_hand()
 	drop_l_hand()
 

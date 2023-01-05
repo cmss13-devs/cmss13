@@ -10,9 +10,21 @@
 	tag = "icon-sterile"
 	},
 /area/shuttle/ert)
+"bo" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	tag = "icon-E-corner";
+	dir = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	tag = "icon-S";
+	dir = 1
+	},
+/turf/open/floor/plating/almayer,
+/area/shuttle/ert)
 "cx" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/light,
 /obj/item/weapon/gun/pistol/mod88{
 	pixel_y = 4
 	},
@@ -49,6 +61,15 @@
 	icon_state = "plate";
 	tag = "icon-sterile"
 	},
+/area/shuttle/ert)
+"fr" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "SE-out";
+	pixel_x = 1;
+	tag = "icon-SE-out";
+	dir = 1
+	},
+/turf/open/floor/plating/almayer,
 /area/shuttle/ert)
 "fJ" = (
 /obj/structure/bed/chair/office/light{
@@ -99,9 +120,10 @@
 	},
 /area/shuttle/ert)
 "hZ" = (
-/obj/structure/machinery/light/small{
-	dir = 8;
-	tag = "icon-bulb1 (WEST)"
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	tag = "icon-N";
+	dir = 1
 	},
 /turf/open/floor/plating/almayer,
 /area/shuttle/ert)
@@ -183,8 +205,15 @@
 	},
 /area/shuttle/ert)
 "lp" = (
-/obj/structure/machinery/light/small{
-	dir = 4
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	tag = "icon-N";
+	dir = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	tag = "icon-S";
+	dir = 1
 	},
 /turf/open/floor/plating/almayer,
 /area/shuttle/ert)
@@ -200,13 +229,22 @@
 	},
 /area/shuttle/ert)
 "mH" = (
-/obj/structure/bed,
-/obj/item/bedsheet/brown,
-/obj/structure/machinery/light{
-	dir = 1;
-	tag = "icon-tube1 (NORTH)"
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	tag = "icon-N";
+	dir = 1
 	},
-/turf/open/floor/almayer,
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	tag = "icon-S";
+	dir = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	tag = "icon-E-corner";
+	dir = 1
+	},
+/turf/open/floor/plating/almayer,
 /area/shuttle/ert)
 "nG" = (
 /obj/structure/machinery/iv_drip,
@@ -258,7 +296,6 @@
 /obj/structure/machinery/computer/communications{
 	dir = 8
 	},
-/obj/structure/machinery/light,
 /turf/open/floor{
 	dir = 8;
 	icon_state = "carpet9-4";
@@ -266,16 +303,19 @@
 	},
 /area/shuttle/ert)
 "qy" = (
-/obj/structure/bed/chair/dropship/passenger{
-	dir = 8
+/obj/effect/decal/warning_stripes{
+	icon_state = "SE-out";
+	pixel_x = 1;
+	tag = "icon-SE-out";
+	dir = 1
 	},
-/obj/structure/machinery/light{
-	dir = 4
+/obj/effect/decal/warning_stripes{
+	icon_state = "SW-out";
+	pixel_x = -1;
+	tag = "icon-SW-out";
+	dir = 1
 	},
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
-	},
+/turf/open/floor/plating/almayer,
 /area/shuttle/ert)
 "rv" = (
 /turf/open/floor/plating/almayer,
@@ -313,7 +353,6 @@
 /area/shuttle/ert)
 "sW" = (
 /obj/structure/largecrate/random/case/double,
-/obj/structure/machinery/light,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -326,6 +365,32 @@
 	icon_state = "plate";
 	tag = "icon-sterile"
 	},
+/area/shuttle/ert)
+"ts" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "NE-out";
+	pixel_x = 2;
+	tag = "icon-NE-out";
+	dir = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "NW-out";
+	tag = "icon-NW-out";
+	dir = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "SE-out";
+	pixel_x = 1;
+	tag = "icon-SE-out";
+	dir = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "SW-out";
+	pixel_x = -1;
+	tag = "icon-SW-out";
+	dir = 1
+	},
+/turf/open/floor/plating/almayer,
 /area/shuttle/ert)
 "tG" = (
 /turf/open/floor/wood,
@@ -367,10 +432,6 @@
 	name = "General Listening Channel";
 	pixel_x = -28
 	},
-/obj/structure/machinery/light{
-	dir = 1;
-	tag = "icon-tube1 (NORTH)"
-	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -406,6 +467,19 @@
 	icon_state = "plate";
 	tag = "icon-sterile"
 	},
+/area/shuttle/ert)
+"yQ" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	tag = "icon-S";
+	dir = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	tag = "icon-N";
+	dir = 1
+	},
+/turf/open/floor/plating/almayer,
 /area/shuttle/ert)
 "zd" = (
 /obj/structure/surface/table/almayer,
@@ -445,12 +519,22 @@
 	},
 /area/shuttle/ert)
 "AT" = (
-/obj/structure/closet,
-/obj/structure/machinery/light,
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	tag = "icon-W";
+	dir = 1
 	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	tag = "icon-E-corner";
+	dir = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	tag = "icon-E-corner";
+	dir = 1
+	},
+/turf/open/floor/plating/almayer,
 /area/shuttle/ert)
 "AZ" = (
 /obj/structure/surface/table/almayer,
@@ -460,6 +544,39 @@
 	icon_state = "carpet10-8";
 	tag = "icon-carpet10-8 (WEST)"
 	},
+/area/shuttle/ert)
+"Bq" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "NE-out";
+	pixel_x = 2;
+	tag = "icon-NE-out";
+	dir = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "NW-out";
+	tag = "icon-NW-out";
+	dir = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "SE-out";
+	pixel_x = 1;
+	tag = "icon-SE-out";
+	dir = 1
+	},
+/turf/open/floor/plating/almayer,
+/area/shuttle/ert)
+"Cw" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	tag = "icon-W";
+	dir = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	tag = "icon-S";
+	dir = 1
+	},
+/turf/open/floor/plating/almayer,
 /area/shuttle/ert)
 "CX" = (
 /obj/structure/surface/rack,
@@ -498,6 +615,11 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic2{
 	dir = 1
 	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	tag = "icon-S";
+	dir = 1
+	},
 /turf/open/floor/plating/almayer,
 /area/shuttle/ert)
 "Gg" = (
@@ -518,17 +640,24 @@
 	},
 /area/shuttle/ert)
 "JE" = (
-/obj/structure/bed/chair/dropship/passenger{
-	dir = 4
+/obj/effect/decal/warning_stripes{
+	icon_state = "NE-out";
+	pixel_x = 2;
+	tag = "icon-NE-out";
+	dir = 1
 	},
-/obj/structure/machinery/light{
-	dir = 8;
-	tag = "icon-tube1 (WEST)"
+/obj/effect/decal/warning_stripes{
+	icon_state = "NW-out";
+	tag = "icon-NW-out";
+	dir = 1
 	},
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
+/obj/effect/decal/warning_stripes{
+	icon_state = "SW-out";
+	pixel_x = -1;
+	tag = "icon-SW-out";
+	dir = 1
 	},
+/turf/open/floor/plating/almayer,
 /area/shuttle/ert)
 "Ke" = (
 /obj/structure/bed/chair/dropship/passenger{
@@ -552,6 +681,25 @@
 	},
 /turf/open/floor/wood,
 /area/shuttle/ert)
+"KF" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	tag = "icon-W";
+	dir = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	tag = "icon-N";
+	dir = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "SE-out";
+	pixel_x = 1;
+	tag = "icon-SE-out";
+	dir = 1
+	},
+/turf/open/floor/plating/almayer,
+/area/shuttle/ert)
 "KS" = (
 /obj/structure/surface/rack,
 /turf/open/floor/almayer{
@@ -561,10 +709,6 @@
 /area/shuttle/ert)
 "Lk" = (
 /obj/structure/reagent_dispensers/fueltank,
-/obj/structure/machinery/light{
-	dir = 1;
-	tag = "icon-tube1 (NORTH)"
-	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -582,7 +726,6 @@
 /area/shuttle/ert)
 "Mx" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/light,
 /obj/structure/machinery/computer/med_data/laptop{
 	dir = 8
 	},
@@ -595,10 +738,6 @@
 /obj/structure/machinery/optable,
 /obj/item/tank/anesthetic,
 /obj/item/clothing/mask/breath/medical,
-/obj/structure/machinery/light{
-	dir = 1;
-	tag = "icon-tube1 (NORTH)"
-	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -733,6 +872,24 @@
 	},
 /turf/open/floor/plating/almayer,
 /area/shuttle/ert)
+"RG" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	tag = "icon-N";
+	dir = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	tag = "icon-S";
+	dir = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	tag = "icon-W";
+	dir = 1
+	},
+/turf/open/floor/plating/almayer,
+/area/shuttle/ert)
 "RN" = (
 /obj/structure/closet/secure_closet/personal/cabinet,
 /turf/open/floor/wood,
@@ -765,12 +922,17 @@
 	},
 /area/shuttle/ert)
 "SZ" = (
-/obj/structure/surface/rack,
-/obj/structure/machinery/light,
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	tag = "icon-W";
+	dir = 1
 	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	tag = "icon-E-corner";
+	dir = 1
+	},
+/turf/open/floor/plating/almayer,
 /area/shuttle/ert)
 "Tj" = (
 /obj/structure/surface/table/almayer,
@@ -817,17 +979,32 @@
 	tag = "icon-sterile"
 	},
 /area/shuttle/ert)
+"TJ" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	tag = "icon-E-corner";
+	dir = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	tag = "icon-N";
+	dir = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "SW-out";
+	pixel_x = -1;
+	tag = "icon-SW-out";
+	dir = 1
+	},
+/turf/open/floor/plating/almayer,
+/area/shuttle/ert)
 "TO" = (
-/obj/structure/bed/chair/dropship/passenger{
-	dir = 4
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	tag = "icon-S";
+	dir = 1
 	},
-/obj/structure/machinery/light{
-	dir = 8
-	},
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
-	},
+/turf/open/floor/plating/almayer,
 /area/shuttle/ert)
 "Uq" = (
 /obj/structure/machinery/cm_vending/sorted/medical/no_access,
@@ -842,10 +1019,6 @@
 /obj/item/clothing/mask/gas,
 /obj/item/tool/extinguisher,
 /obj/item/tool/extinguisher,
-/obj/structure/machinery/light{
-	dir = 1;
-	tag = "icon-tube1 (NORTH)"
-	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -868,7 +1041,6 @@
 /area/shuttle/ert)
 "WR" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/light,
 /obj/structure/machinery/computer/security{
 	network = list("Military","Almayer");
 	dir = 4
@@ -897,6 +1069,20 @@
 /turf/open/floor{
 	icon_state = "freezerfloor"
 	},
+/area/shuttle/ert)
+"Yo" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "NE-out";
+	pixel_x = 2;
+	tag = "icon-NE-out";
+	dir = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "NW-out";
+	tag = "icon-NW-out";
+	dir = 1
+	},
+/turf/open/floor/plating/almayer,
 /area/shuttle/ert)
 "YN" = (
 /obj/structure/machinery/power/apc/almayer{
@@ -972,8 +1158,8 @@ PE
 PE
 PE
 up
-rv
-rv
+hZ
+TO
 So
 PE
 PE
@@ -1003,9 +1189,9 @@ yG
 QQ
 Ml
 AE
-rv
-rv
-SZ
+hZ
+TO
+KS
 Ml
 DO
 DC
@@ -1034,11 +1220,11 @@ wc
 Qr
 iN
 Qr
-rv
-rv
+hZ
+TO
 ja
 Ml
-mH
+ue
 wc
 wc
 Ad
@@ -1065,7 +1251,7 @@ Qr
 Uq
 Ml
 xK
-rv
+hZ
 ER
 xK
 Ml
@@ -1096,8 +1282,8 @@ Gg
 Ml
 Ml
 Tq
-rv
-rv
+hZ
+TO
 Zl
 Ml
 Ml
@@ -1123,16 +1309,16 @@ Kt
 Ml
 QK
 px
-rv
+RG
 px
-JE
+px
 KS
-rv
-rv
-pI
+hZ
 TO
+pI
 px
-rv
+px
+RG
 KS
 Ml
 vl
@@ -1152,19 +1338,19 @@ Qx
 Ml
 Ml
 Ml
-rv
-rv
-rv
-rv
-rv
-rv
-rv
-rv
-rv
-rv
-rv
-rv
-rv
+KF
+SZ
+ts
+SZ
+SZ
+SZ
+Yo
+fr
+SZ
+SZ
+SZ
+JE
+Cw
 Ml
 rv
 rv
@@ -1178,24 +1364,24 @@ hv
 vk
 rv
 iP
-hZ
 rv
 rv
-lp
+rv
+rv
 iP
-rv
+yQ
 Zl
-rv
-Zl
-Zl
-Zl
-rv
-rv
+lp
 Zl
 Zl
 Zl
-rv
-rv
+hZ
+TO
+Zl
+Zl
+Zl
+hZ
+TO
 NB
 rv
 rv
@@ -1214,19 +1400,19 @@ NL
 Ml
 Ml
 Ml
-rv
-rv
-rv
-rv
-rv
-rv
-rv
-rv
-rv
-rv
-rv
-rv
-rv
+TJ
+SZ
+ts
+SZ
+SZ
+SZ
+Yo
+qy
+AT
+SZ
+SZ
+Bq
+bo
 Ml
 rv
 rv
@@ -1247,16 +1433,16 @@ OF
 Ml
 QK
 Ke
-rv
+mH
 Ke
-qy
-KS
-rv
-rv
-KS
-qy
 Ke
-rv
+KS
+hZ
+TO
+KS
+Ke
+Ke
+mH
 ls
 Ml
 Lk
@@ -1282,8 +1468,8 @@ Kg
 Ml
 Ml
 Tq
-rv
-rv
+hZ
+TO
 Zl
 Ml
 Ml
@@ -1313,7 +1499,7 @@ rv
 Ik
 Ml
 xK
-rv
+hZ
 ER
 xK
 Ml
@@ -1341,11 +1527,11 @@ PE
 XW
 rG
 rv
-AT
+Ik
 Ml
 KS
-rv
-rv
+hZ
+TO
 LB
 Ml
 Vw
@@ -1375,8 +1561,8 @@ rv
 Ik
 Ml
 iu
-rv
-rv
+hZ
+TO
 sW
 Ml
 SQ
@@ -1406,8 +1592,8 @@ zZ
 PE
 PE
 So
-rv
-rv
+hZ
+TO
 KS
 PE
 PE

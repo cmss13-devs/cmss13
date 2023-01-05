@@ -143,9 +143,9 @@
 	.["flight_time"] = ert.timeLeft(0)
 	.["is_disabled"] = disabled
 
-	var/door_count = length(ert.doors)
+	var/door_count = length(ert.external_doors)
 	var/locked_count = 0
-	for(var/obj/structure/machinery/door/airlock/air as anything in ert.doors)
+	for(var/obj/structure/machinery/door/airlock/air as anything in ert.external_doors)
 		if(air.locked)
 			locked_count++
 	.["locked_down"] = door_count == locked_count
@@ -212,23 +212,23 @@
 		if("open")
 			if(ert.mode == SHUTTLE_CALL || ert.mode == SHUTTLE_RECALL)
 				return TRUE
-			ert.control_doors("open")
+			ert.control_doors("open", external_only = TRUE)
 		if("close")
 			if(ert.mode == SHUTTLE_CALL || ert.mode == SHUTTLE_RECALL)
 				return TRUE
-			ert.control_doors("close")
+			ert.control_doors("close", external_only = TRUE)
 		if("lockdown")
 			if(ert.mode == SHUTTLE_CALL || ert.mode == SHUTTLE_RECALL)
 				return TRUE
-			ert.control_doors("force-lock")
+			ert.control_doors("force-lock", external_only = TRUE)
 		if("lock")
 			if(ert.mode == SHUTTLE_CALL || ert.mode == SHUTTLE_RECALL)
 				return TRUE
-			ert.control_doors("lock")
+			ert.control_doors("lock", external_only = TRUE)
 		if("unlock")
 			if(ert.mode == SHUTTLE_CALL || ert.mode == SHUTTLE_RECALL)
 				return TRUE
-			ert.control_doors("unlock")
+			ert.control_doors("unlock", external_only = TRUE)
 
 /obj/structure/machinery/computer/shuttle/ert/attack_hand(mob/user)
 	. = ..(user)

@@ -26,7 +26,7 @@
 /obj/docking_port/mobile/emergency_response/Initialize(mapload)
 	. = ..(mapload)
 	for(var/place in shuttle_areas)
-		for(var/obj/structure/machinery/door/airlock/air in place)
+		for(var/obj/structure/machinery/door/air in place)
 			doors += list(air)
 			external_doors += list(air)
 			air.breakable = FALSE
@@ -34,15 +34,19 @@
 			air.unacidable = TRUE
 
 /obj/docking_port/mobile/emergency_response/enterTransit()
-	control_doors("force-lock-launch", force = TRUE)
+	control_doors("force-lock-launch", force = TRUE, external_only = TRUE)
 	..()
 
-/obj/docking_port/mobile/emergency_response/proc/control_doors(var/action, var/force = FALSE)
-	for(var/D in doors)
+/obj/docking_port/mobile/emergency_response/proc/control_doors(var/action, var/force = FALSE, var/external_only = FALSE)
+	var/list/door_list = doors
+	if(external_only)
+		door_list = external_doors
+
+	for(var/D in door_list)
 		var/obj/structure/machinery/door/door = D
 		var/is_external = door.borders_space()
+		// do not allow the user to normally control external doors
 		if(!force && is_external)
-			world.log << "door [door] [force] [is_external]"
 			continue
 		switch(action)
 			if("open")
@@ -115,12 +119,9 @@
 
 /obj/docking_port/mobile/emergency_response/small/Initialize(mapload)
 	. = ..()
-	doors = list()
 	external_doors = list()
 	for(var/place in shuttle_areas)
-		for(var/obj/structure/machinery/door/airlock/multi_tile/air in place)
-			doors += list(air)
-
+		for(var/obj/structure/machinery/door/air in place)
 			if(air.id == "starboard_door")
 				starboard_door = air
 				external_doors += list(air)
@@ -151,21 +152,21 @@
 
 /obj/docking_port/mobile/emergency_response/big/Initialize(mapload)
 	. = ..()
-	doors = list()
+	external_doors = list()
 	for(var/place in shuttle_areas)
-		for(var/obj/structure/machinery/door/airlock/multi_tile/air in place)
+		for(var/obj/structure/machinery/door/air in place)
 			if(air.id == "starboard_door")
 				air.breakable = FALSE
 				air.indestructible = TRUE
 				air.unacidable = TRUE
+				external_doors += list(air)
 				starboard_door = air
-				doors += list(air)
 			else if(air.id == "port_door")
 				air.breakable = FALSE
 				air.indestructible = TRUE
 				air.unacidable = TRUE
+				external_doors += list(air)
 				port_door = air
-				doors += list(air)
 	if(!port_door)
 		WARNING("No port door found for [src]")
 	if(!starboard_door)

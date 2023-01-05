@@ -7,12 +7,14 @@
 /area/template_noop)
 "h" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	tag = "icon-W"
+	icon_state = "N";
+	tag = "icon-N";
+	dir = 1
 	},
 /obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	tag = "icon-N"
+	icon_state = "W";
+	tag = "icon-W";
+	dir = 1
 	},
 /turf/open/floor/plating/almayer,
 /area/shuttle/ert)
@@ -23,11 +25,13 @@
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
-	tag = "icon-W"
+	tag = "icon-W";
+	dir = 1
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
-	tag = "icon-S"
+	tag = "icon-S";
+	dir = 1
 	},
 /turf/open/floor/plating/almayer,
 /area/shuttle/ert)
@@ -47,19 +51,22 @@
 "q" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "NE-out";
-	tag = "icon-NE-out"
+	tag = "icon-NE-out";
+	dir = 1
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "NW-out";
 	layer = 2.5;
-	tag = "icon-NW-out"
+	tag = "icon-NW-out";
+	dir = 1
 	},
 /turf/open/floor/plating/almayer,
 /area/shuttle/ert)
 "s" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
-	tag = "icon-S"
+	tag = "icon-S";
+	dir = 1
 	},
 /turf/open/floor/plating/almayer,
 /area/shuttle/ert)
@@ -71,15 +78,18 @@
 /obj/effect/landmark/ert_spawns/distress_pizza,
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
-	tag = "icon-W"
+	tag = "icon-W";
+	dir = 1
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
-	tag = "icon-S"
+	tag = "icon-S";
+	dir = 1
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
-	tag = "icon-N"
+	tag = "icon-N";
+	dir = 1
 	},
 /turf/open/floor/almayer{
 	icon_state = "tcomms"
@@ -96,7 +106,8 @@
 /obj/item/tool/crowbar,
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
-	tag = "icon-N"
+	tag = "icon-N";
+	dir = 1
 	},
 /turf/open/floor/plating/almayer,
 /area/shuttle/ert)
@@ -109,11 +120,13 @@
 "x" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
-	tag = "icon-E-corner"
+	tag = "icon-E-corner";
+	dir = 1
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
-	tag = "icon-N"
+	tag = "icon-N";
+	dir = 1
 	},
 /turf/open/floor/plating/almayer,
 /area/shuttle/ert)
@@ -160,21 +173,19 @@
 /obj/effect/landmark/ert_spawns/distress_pizza,
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
-	tag = "icon-E-corner"
+	tag = "icon-E-corner";
+	dir = 1
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
-	tag = "icon-N"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "SE-out";
-	pixel_x = 1;
-	tag = "icon-SE-out"
+	tag = "icon-N";
+	dir = 1
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
 	pixel_x = -1;
-	tag = "icon-SW-out"
+	tag = "icon-SW-out";
+	dir = 1
 	},
 /turf/open/floor/almayer{
 	icon_state = "tcomms"
@@ -186,11 +197,13 @@
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
-	tag = "icon-E-corner"
+	tag = "icon-E-corner";
+	dir = 1
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
-	tag = "icon-W"
+	tag = "icon-W";
+	dir = 1
 	},
 /turf/open/floor/plating/almayer,
 /area/shuttle/ert)
@@ -223,11 +236,13 @@
 "Z" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
-	tag = "icon-E-corner"
+	tag = "icon-E-corner";
+	dir = 1
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
-	tag = "icon-S"
+	tag = "icon-S";
+	dir = 1
 	},
 /turf/open/floor/plating/almayer,
 /area/shuttle/ert)

@@ -101,9 +101,9 @@
 //=================================================
 
 //=================================================
-#define PAIN_OVERLAY_BLURRY						0 //Blurs your screen a varying amount depending on eye_blur.
-#define PAIN_OVERLAY_IMPAIR						1 //Impairs your screen like a welding helmet does depending on eye_blur.
-#define PAIN_OVERLAY_LEGACY						2 //Creates a legacy blurring effect over your screen if you have any eye_blur at all. Not recommended.
+#define PAIN_OVERLAY_BLURRY 0 //Blurs your screen a varying amount depending on eye_blur.
+#define PAIN_OVERLAY_IMPAIR 1 //Impairs your screen like a welding helmet does depending on eye_blur.
+#define PAIN_OVERLAY_LEGACY 2 //Creates a legacy blurring effect over your screen if you have any eye_blur at all. Not recommended.
 //=================================================
 
 

@@ -445,6 +445,7 @@
 	if(result == "Legacy")
 		prefs.pain_overlay_pref_level = PAIN_OVERLAY_LEGACY
 		to_chat(src, SPAN_NOTICE("Your vision will now have a legacy blurring effect. This is not recommended!"))
+	prefs.save_preferences()
 
 //------------ GHOST PREFERENCES ---------------------------------
 

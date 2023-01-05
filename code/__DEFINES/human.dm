@@ -173,3 +173,5 @@
 #define RELIGION_MINOR "Minor Religion"
 #define RELIGION_ATHEISM "Atheism"
 #define RELIGION_AGNOSTICISM "Agnostic"
+
+#define MAXIMUM_DROPPED_OBJECTS_REMEMBERED 2

@@ -250,3 +250,6 @@
 	var/list/important_radio_channels = list()
 
 	var/datum/click_intercept
+
+	///list of weakrefs of recently dropped objects
+	var/list/dropped_objects = list()

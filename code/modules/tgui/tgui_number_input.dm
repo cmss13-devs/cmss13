@@ -109,7 +109,7 @@
 	if(default < min_value)
 		src.default = min_value
 	if(default > max_value)
-		CRASH("Default value is greater than max value.")
+		CRASH("Default value is greater than max value. ([message], [title])")
 
 /datum/tgui_input_number/Destroy(force, ...)
 	SStgui.close_uis(src)

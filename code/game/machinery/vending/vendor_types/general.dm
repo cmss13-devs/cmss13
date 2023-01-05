@@ -5,7 +5,7 @@
 	wrenchable = TRUE
 	hackable = TRUE
 	vendor_theme = VENDOR_THEME_COMPANY
-	vend_delay = 0.5 SECONDS
+	vend_delay = 5
 
 /obj/structure/machinery/cm_vending/sorted/walkman/get_listed_products(mob/user)
 	return GLOB.cm_vending_walkman

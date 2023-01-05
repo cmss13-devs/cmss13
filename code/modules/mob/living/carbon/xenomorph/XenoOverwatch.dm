@@ -107,7 +107,6 @@
 
 			SEND_SIGNAL(src, COMSIG_XENO_STOP_OVERWATCH_XENO, oldXeno)
 			oldXeno.hud_set_queen_overwatch()
-			UnregisterSignal(src, COMSIG_MOB_MOVE_OR_LOOK)
 
 		observed_xeno = targetXeno
 

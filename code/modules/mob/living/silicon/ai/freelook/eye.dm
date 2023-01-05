@@ -8,9 +8,9 @@
 	icon = 'icons/obj/structures/machinery/status_display.dmi' // For AI friend secret shh :o
 	var/list/visibleCameraChunks = list()
 	var/mob/living/silicon/ai/ai = null
-	density = FALSE
+	density = 0
 	status_flags = GODMODE  // You can't damage it.
-	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	mouse_opacity = 0
 	see_in_dark = 7
 
 // Movement code. Returns 0 to stop air movement from moving it.

@@ -1,4 +1,4 @@
-#define XENO_QUEEN_AGE_TIME (10 MINUTES)
+#define XENO_QUEEN_AGE_TIME	(10 MINUTES)
 #define XENO_QUEEN_DEATH_DELAY (5 MINUTES)
 #define YOUNG_QUEEN_HEALTH_MULTIPLIER 0.5
 
@@ -8,7 +8,7 @@
 
 	melee_damage_lower = XENO_DAMAGE_TIER_4
 	melee_damage_upper = XENO_DAMAGE_TIER_6
-	melee_vehicle_damage = XENO_DAMAGE_TIER_9 //Queen and Ravs have extra multiplier when dealing damage in multitile_interaction.dm
+	melee_vehicle_damage = XENO_DAMAGE_TIER_9	//Queen and Ravs have extra multiplier when dealing damage in multitile_interaction.dm
 	max_health = XENO_HEALTH_QUEEN
 	plasma_gain = XENO_PLASMA_GAIN_TIER_7
 	plasma_max = XENO_PLASMA_TIER_10
@@ -268,7 +268,7 @@
 	var/ovipositor = FALSE //whether the Queen is attached to an ovipositor
 	var/queen_ability_cooldown = 0
 	var/egg_amount = 0 //amount of eggs inside the queen
-	var/screech_sound_effect_list = list('sound/voice/alien_queen_screech.ogg') //the noise the Queen makes when she screeches. Done this way for VV purposes.
+	var/screech_sound_effect = 'sound/voice/alien_queen_screech.ogg' //the noise the Queen makes when she screeches. Done this way for VV purposes.
 	var/egg_planting_range = 3 // in ovipositor queen can plant egg up to this amount of tiles away from her position
 	var/queen_ovipositor_icon
 	var/queen_standing_icon
@@ -404,9 +404,9 @@
 	if(queen_aged)
 		age_xeno()
 		switch(age)
-			if(XENO_NORMAL) name = "[name_prefix]Queen"  //Young
-			if(XENO_MATURE) name = "[name_prefix]Elder Queen"  //Mature
-			if(XENO_ELDER) name = "[name_prefix]Elder Empress"  //Elite
+			if(XENO_NORMAL) name = "[name_prefix]Queen"			 //Young
+			if(XENO_MATURE) name = "[name_prefix]Elder Queen"	 //Mature
+			if(XENO_ELDER) name = "[name_prefix]Elder Empress"	 //Elite
 			if(XENO_ANCIENT) name = "[name_prefix]Ancient Empress" //Ancient
 			if(XENO_PRIME) name = "[name_prefix]Prime Empress" //Primordial
 	else

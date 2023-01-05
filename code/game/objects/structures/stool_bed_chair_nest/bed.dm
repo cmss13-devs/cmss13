@@ -1,7 +1,7 @@
 /*
  * Contains:
- * Beds
- * Roller beds
+ * 		Beds
+ *		Roller beds
  */
 
 /*
@@ -61,12 +61,12 @@
 		M.pixel_y = buckling_y
 		M.old_y = buckling_y
 		if(base_bed_icon)
-			density = TRUE
+			density = 1
 	else
 		M.pixel_y = initial(buckled_mob.pixel_y)
 		M.old_y = initial(buckled_mob.pixel_y)
 		if(base_bed_icon)
-			density = FALSE
+			density = 0
 
 	update_icon()
 
@@ -77,7 +77,7 @@
 	B.forceMove(loc)
 	B.setDir(dir)
 	buckled_bodybag = B
-	density = TRUE
+	density = 1
 	update_icon()
 	if(buckling_y)
 		buckled_bodybag.pixel_y = buckled_bodybag.buckle_offset + buckling_y
@@ -88,7 +88,7 @@
 		buckled_bodybag.pixel_y = initial(buckled_bodybag.pixel_y)
 		buckled_bodybag.roller_buckled = null
 		buckled_bodybag = null
-		density = FALSE
+		density = 0
 		update_icon()
 	else
 		..()
@@ -270,7 +270,7 @@
 	QDEL_NULL(held)
 
 //////////////////////////////////////////////
-// PORTABLE SURGICAL BED //
+//			PORTABLE SURGICAL BED			//
 //////////////////////////////////////////////
 
 /obj/structure/bed/portable_surgery

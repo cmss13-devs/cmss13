@@ -2,7 +2,7 @@
 	name = "canister"
 	icon = 'icons/obj/structures/machinery/atmos.dmi'
 	icon_state = "yellow"
-	density = TRUE
+	density = 1
 	health = 100.0
 	flags_atom = FPRINT|CONDUCT
 
@@ -87,7 +87,7 @@ update_flag
 	if (health <= 20)
 		destroyed = 1
 		playsound(src.loc, 'sound/effects/spray.ogg', 25, 1, 5)
-		density = FALSE
+		density = 0
 		update_icon()
 
 /obj/structure/machinery/portable_atmospherics/canister/bullet_act(var/obj/item/projectile/Proj)

@@ -1,6 +1,6 @@
 /obj/structure/machinery/chem_master
 	name = "ChemMaster 3000"
-	density = TRUE
+	density = 1
 	anchored = 1
 	icon = 'icons/obj/structures/machinery/science_machines.dmi'
 	icon_state = "mixer0"
@@ -27,7 +27,7 @@
 
 /obj/structure/machinery/chem_master/Initialize()
 	. = ..()
-	create_reagents(300)
+	create_reagents(240)
 	connect_smartfridge()
 
 /obj/structure/machinery/chem_master/Destroy()

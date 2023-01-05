@@ -27,14 +27,14 @@
 /// Port Aft Lifeboat (bottom-right, doors on its left side)
 /obj/docking_port/mobile/lifeboat/port
 	name = "port-aft lifeboat"
-	id = MOBILE_SHUTTLE_LIFEBOAT_PORT
+	id = "lifeboat1"
 	preferred_direction = WEST
 	port_direction = WEST
 
 /// Starboard Aft Lifeboat (top-right, doors its right side)
 /obj/docking_port/mobile/lifeboat/starboard
 	name = "starboard-aft lifeboat"
-	id = MOBILE_SHUTTLE_LIFEBOAT_STARBOARD
+	id = "lifeboat2"
 	preferred_direction = EAST
 	port_direction = EAST
 
@@ -125,11 +125,11 @@
 /// Port-door lifeboat, bow east
 /datum/map_template/shuttle/lifeboat_port
 	name = "Port door lifeboat"
-	shuttle_id = MOBILE_SHUTTLE_LIFEBOAT_PORT
+	shuttle_id = "lifeboat-port"
 
 /// Starboard-door lifeboat, bow east
 /datum/map_template/shuttle/lifeboat_starboard
 	name = "Starboard door lifeboat"
-	shuttle_id = MOBILE_SHUTTLE_LIFEBOAT_STARBOARD
+	shuttle_id = "lifeboat-starboard"
 
 

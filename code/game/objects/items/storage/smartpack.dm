@@ -1,7 +1,7 @@
-#define BACKPACK_LIGHT_LEVEL 6
-#define PROTECTIVE_COST 50
-#define REPAIR_COST 100
-#define IMMOBILE_COST 20
+#define BACKPACK_LIGHT_LEVEL	6
+#define PROTECTIVE_COST			50
+#define REPAIR_COST				100
+#define IMMOBILE_COST			20
 
 /obj/item/storage/backpack/marine/smartpack
 	name = "\improper S-V42 prototype smartpack"
@@ -16,10 +16,10 @@
 
 	var/show_exoskeleton = FALSE
 
-	var/flashlight_cooldown = 0 //Cooldown for toggling the light
-	var/light_state = FALSE //Is the light on or off
+	var/flashlight_cooldown = 0 			//Cooldown for toggling the light
+	var/light_state = FALSE					//Is the light on or off
 
-	var/battery_charge = SMARTPACK_MAX_POWER_STORED //How much power are we storing
+	var/battery_charge = SMARTPACK_MAX_POWER_STORED	//How much power are we storing
 	var/activated_form = FALSE
 	var/immobile_form = FALSE
 	var/repairing = FALSE

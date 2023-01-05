@@ -5,7 +5,7 @@
 	climbable = TRUE
 	use_power = USE_POWER_NONE
 	flags_atom = ON_BORDER
-	opacity = FALSE
+	opacity = 0
 	unslashable = TRUE
 	unacidable = TRUE
 	projectile_coverage = PROJECTILE_COVERAGE_LOW
@@ -45,7 +45,7 @@
 
 	sleep(12)
 
-	density = FALSE
+	density = 0
 	if(operating == 1) //emag again
 		operating = 0
 	return 1
@@ -53,7 +53,7 @@
 /obj/structure/machinery/door/poddoor/railing/close()
 	if (operating)
 		return 0
-	density = TRUE
+	density = 1
 	operating = 1
 	layer = closed_layer
 	flick("railingc1", src)

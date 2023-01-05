@@ -80,7 +80,7 @@
 	name = "systems computer"
 	desc = "A small computer hooked up into the ship's systems."
 
-	density = FALSE
+	density = 0
 	anchored = 1
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 20
@@ -139,7 +139,7 @@
 	name = "map table"
 	desc = "A table that displays a map of the current target location"
 	unacidable = TRUE
-	density = TRUE
+	density = 1
 	anchored = 1
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 20
@@ -223,7 +223,7 @@
 /obj/structure/prop/almayer
 	name = "GENERIC USS ALMAYER PROP"
 	desc = "THIS SHOULDN'T BE VISIBLE, AHELP 'ART-P02' IF SEEN IN ROUND WITH LOCATION"
-	density = TRUE
+	density = 1
 	anchored = 1
 
 /obj/structure/prop/almayer/minigun_crate
@@ -338,7 +338,7 @@
 	desc = "The name of the ship stenciled on the hull."
 	icon = 'icons/obj/structures/props/almayer_props64.dmi'
 	icon_state = "almayer0"
-	density = FALSE //dunno who would walk on it, but you know.
+	density = 0 //dunno who would walk on it, but you know.
 	unslashable = TRUE
 	unacidable = TRUE
 
@@ -347,7 +347,7 @@
 	desc = "A large number stenciled on the hangar floor used to designate which dropship it is."
 	icon = 'icons/obj/structures/props/almayer_props96.dmi'
 	icon_state = "dropship1"
-	density = FALSE
+	density = 0
 	layer = ABOVE_TURF_LAYER
 
 
@@ -356,8 +356,8 @@
 	desc = "Some large cables."
 	icon = 'icons/obj/structures/props/almayer_props.dmi'
 	icon_state = "cannon_cables"
-	density = FALSE
-	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	density = 0
+	mouse_opacity = 0
 	layer = LADDER_LAYER
 	unslashable = TRUE
 	unacidable = TRUE
@@ -374,7 +374,7 @@
 	desc = "A connector for the large cannon cables."
 	icon = 'icons/obj/structures/props/almayer_props.dmi'
 	icon_state = "cannon_cable_connector"
-	density = TRUE
+	density = 1
 	unslashable = TRUE
 	unacidable = TRUE
 
@@ -401,7 +401,7 @@
 	icon = 'icons/obj/structures/props/almayer_props.dmi'
 	icon_state = "recycler"
 
-	density = TRUE
+	density = 1
 	anchored = 1
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 20

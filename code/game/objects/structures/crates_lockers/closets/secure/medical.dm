@@ -136,7 +136,7 @@
 	icon_broken = "medical_wall_spark"
 	icon_off = "medical_wall_off"
 	anchored = 1
-	density = FALSE
+	density = 0
 	wall_mounted = 1
 	req_access = list(ACCESS_MARINE_MEDBAY)
 
@@ -161,7 +161,7 @@
 	icon_locked = "surgical_wall_locked"
 	icon_opened = "surgical_wall_open"
 	icon_broken = "surgical_wall_spark"
-	density = FALSE
+	density = 0
 	store_mobs = FALSE
 	wall_mounted = TRUE
 

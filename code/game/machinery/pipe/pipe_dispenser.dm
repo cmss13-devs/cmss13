@@ -2,7 +2,7 @@
 	name = "Pipe Dispenser"
 	icon = 'icons/obj/structures/props/stationobjs.dmi'
 	icon_state = "pipe_d"
-	density = TRUE
+	density = 1
 	anchored = 1
 	var/unwrenched = 0
 	var/wait = 0
@@ -135,7 +135,7 @@
 	name = "Disposal Pipe Dispenser"
 	icon = 'icons/obj/structures/props/stationobjs.dmi'
 	icon_state = "pipe_d"
-	density = TRUE
+	density = 1
 	anchored = 1.0
 
 /*
@@ -210,13 +210,13 @@ Nah
 					C.ptype = 5
 				if(5)
 					C.ptype = 6
-					C.density = TRUE
+					C.density = 1
 				if(6)
 					C.ptype = 7
-					C.density = TRUE
+					C.density = 1
 				if(7)
 					C.ptype = 8
-					C.density = TRUE
+					C.density = 1
 ///// Z-Level stuff
 				if(21)
 					C.ptype = 11

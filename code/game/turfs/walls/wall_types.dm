@@ -14,8 +14,8 @@
 
 	max_temperature = 18000 //K, walls will take damage if they're next to a fire hotter than this
 
-	opacity = TRUE
-	density = TRUE
+	opacity = 1
+	density = 1
 
 	tiles_with = list(
 		/turf/closed/wall,
@@ -126,7 +126,7 @@
 	flick("containment_wall_divide_lowering", src)
 	icon_state = "containment_wall_divide_lowered"
 	SetOpacity(0)
-	density = FALSE
+	density = 0
 	operating = FALSE
 	change_weeds()
 
@@ -137,7 +137,7 @@
 	flick("containment_wall_divide_rising", src)
 	icon_state = "containment_wall_divide"
 	SetOpacity(1)
-	density = TRUE
+	density = 1
 	operating = FALSE
 
 	change_weeds()
@@ -185,7 +185,7 @@
 /turf/closed/wall/almayer/research/containment/wall/purple
 	name = "cell window"
 	icon_state = "containment_window"
-	opacity = FALSE
+	opacity = 0
 
 
 
@@ -224,7 +224,7 @@
 	name = "wall"
 	icon = 'icons/turf/walls/walls.dmi'
 	icon_state = "riveted"
-	opacity = TRUE
+	opacity = 1
 	hull = 1
 
 
@@ -237,14 +237,14 @@
 /turf/closed/wall/indestructible/fakeglass
 	name = "window"
 	icon_state = "fakewindows"
-	opacity = FALSE
+	opacity = 0
 
 /turf/closed/wall/indestructible/splashscreen
 	name = "Lobby Art"
 	desc = "Assorted artworks."
 	icon = 'icons/lobby/title.dmi'
 	icon_state = ""
-// icon_state = "title_holiday"
+//	icon_state = "title_holiday"
 	layer = FLY_LAYER
 	special_icon = 1
 
@@ -270,7 +270,7 @@
 
 /turf/closed/wall/indestructible/invisible
 	icon_state = "invisible"
-	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	mouse_opacity = 0
 
 
 
@@ -733,7 +733,7 @@
 	icon_state = "membrane"
 	walltype = WALL_MEMBRANE
 	damage_cap = HEALTH_WALL_XENO_MEMBRANE
-	opacity = FALSE
+	opacity = 0
 	alpha = 180
 
 /turf/closed/wall/resin/membrane/can_bombard(var/mob/living/carbon/Xenomorph/X)

@@ -62,136 +62,128 @@
 	..()
 
 
-/datum/action/xeno_action/activable/fling/use_ability(atom/target_atom)
-	var/mob/living/carbon/Xenomorph/woyer = owner
+/datum/action/xeno_action/activable/fling/use_ability(atom/A)
+	var/mob/living/carbon/Xenomorph/X = owner
 
 	if (!action_cooldown_check())
 		return
 
-	if (!isXenoOrHuman(target_atom) || woyer.can_not_harm(target_atom))
+	if (!isXenoOrHuman(A) || X.can_not_harm(A))
 		return
 
-	if (!woyer.check_state() || woyer.agility)
+	if (!X.check_state() || X.agility)
 		return
 
-	if (!woyer.Adjacent(target_atom))
+	if (!X.Adjacent(A))
 		return
 
-	var/mob/living/carbon/carbone = target_atom
-	if(carbone.stat == DEAD) return
-	if(HAS_TRAIT(carbone, TRAIT_NESTED))
+	var/mob/living/carbon/H = A
+	if(H.stat == DEAD) return
+	if(HAS_TRAIT(H, TRAIT_NESTED))
 		return
 
-	if(carbone == woyer.pulling)
-		woyer.stop_pulling()
+	if(H == X.pulling)
+		X.stop_pulling()
 
-	if(carbone.mob_size >= MOB_SIZE_BIG)
-		to_chat(woyer, SPAN_XENOWARNING("[carbone] is too big for you to fling!"))
+	if(H.mob_size >= MOB_SIZE_BIG)
+		to_chat(X, SPAN_XENOWARNING("[H] is too big for you to fling!"))
 		return
 
 	if (!check_and_use_plasma_owner())
 		return
 
-	woyer.visible_message(SPAN_XENOWARNING("\The [woyer] effortlessly flings [carbone] to the side!"), SPAN_XENOWARNING("You effortlessly fling [carbone] to the side!"))
-	playsound(carbone,'sound/weapons/alien_claw_block.ogg', 75, 1)
+	X.visible_message(SPAN_XENOWARNING("\The [X] effortlessly flings [H] to the side!"), SPAN_XENOWARNING("You effortlessly fling [H] to the side!"))
+	playsound(H,'sound/weapons/alien_claw_block.ogg', 75, 1)
 	if(stun_power)
-		carbone.apply_effect(get_xeno_stun_duration(carbone, stun_power), STUN)
+		H.apply_effect(get_xeno_stun_duration(H, stun_power), STUN)
 	if(weaken_power)
-		carbone.apply_effect(weaken_power, WEAKEN)
+		H.apply_effect(weaken_power, WEAKEN)
 	if(slowdown)
-		if(carbone.slowed < slowdown)
-			carbone.apply_effect(slowdown, SLOW)
-	carbone.last_damage_data = create_cause_data(initial(woyer.caste_type), woyer)
-	shake_camera(carbone, 2, 1)
+		if(H.slowed < slowdown)
+			H.apply_effect(slowdown, SLOW)
+	H.last_damage_data = create_cause_data(initial(X.caste_type), X)
+	shake_camera(H, 2, 1)
 
-	var/facing = get_dir(woyer, carbone)
-	var/turf/throw_turf = woyer.loc
-	var/turf/temp = woyer.loc
+	var/facing = get_dir(X, H)
+	var/turf/T = X.loc
+	var/turf/temp = X.loc
 
 	for (var/x in 0 to fling_distance-1)
-		temp = get_step(throw_turf, facing)
+		temp = get_step(T, facing)
 		if (!temp)
 			break
-		throw_turf = temp
+		T = temp
 
-	// Hmm today I will kill a marine while looking away from them
-	woyer.face_atom(carbone)
-	woyer.animation_attack_on(carbone)
-	woyer.flick_attack_overlay(carbone, "disarm")
-	carbone.throw_atom(throw_turf, fling_distance, SPEED_VERY_FAST, woyer, TRUE)
+	H.throw_atom(T, fling_distance, SPEED_VERY_FAST, X, TRUE)
 
 	apply_cooldown()
 	..()
 	return
 
-/datum/action/xeno_action/activable/warrior_punch/use_ability(atom/target_atom)
-	var/mob/living/carbon/Xenomorph/woyer = owner
+/datum/action/xeno_action/activable/warrior_punch/use_ability(atom/A)
+	var/mob/living/carbon/Xenomorph/X = owner
 
 	if (!action_cooldown_check())
 		return
 
-	if (!isXenoOrHuman(target_atom) || woyer.can_not_harm(target_atom))
+	if (!isXenoOrHuman(A) || X.can_not_harm(A))
 		return
 
-	if (!woyer.check_state() || woyer.agility)
+	if (!X.check_state() || X.agility)
 		return
 
-	var/distance = get_dist(woyer, target_atom)
+	var/distance = get_dist(X, A)
 
 	if (distance > 2)
 		return
 
-	var/mob/living/carbon/carbone = target_atom
+	var/mob/living/carbon/H = A
 
-	if (!woyer.Adjacent(carbone))
+	if (!X.Adjacent(H))
 		return
 
-	if(carbone.stat == DEAD) return
-	if(HAS_TRAIT(carbone, TRAIT_NESTED)) return
+	if(H.stat == DEAD) return
+	if(HAS_TRAIT(H, TRAIT_NESTED)) return
 
-	var/obj/limb/target_limb = carbone.get_limb(check_zone(woyer.zone_selected))
+	var/obj/limb/L = H.get_limb(check_zone(X.zone_selected))
 
-	if (ishuman(carbone) && (!target_limb || (target_limb.status & LIMB_DESTROYED)))
+	if (ishuman(H) && (!L || (L.status & LIMB_DESTROYED)))
 		return
 
 
 	if (!check_and_use_plasma_owner())
 		return
 
-	carbone.last_damage_data = create_cause_data(initial(woyer.caste_type), woyer)
+	H.last_damage_data = create_cause_data(initial(X.caste_type), X)
 
-	woyer.visible_message(SPAN_XENOWARNING("\The [woyer] hits [carbone] in the [target_limb? target_limb.display_name : "chest"] with a devastatingly powerful punch!"), \
-	SPAN_XENOWARNING("You hit [carbone] in the [target_limb? target_limb.display_name : "chest"] with a devastatingly powerful punch!"))
+	X.visible_message(SPAN_XENOWARNING("\The [X] hits [H] in the [L? L.display_name : "chest"] with a devastatingly powerful punch!"), \
+	SPAN_XENOWARNING("You hit [H] in the [L? L.display_name : "chest"] with a devastatingly powerful punch!"))
 	var/S = pick('sound/weapons/punch1.ogg','sound/weapons/punch2.ogg','sound/weapons/punch3.ogg','sound/weapons/punch4.ogg')
-	playsound(carbone,S, 50, 1)
-	do_base_warrior_punch(carbone, target_limb)
+	playsound(H,S, 50, 1)
+	do_base_warrior_punch(H, L)
 	apply_cooldown()
 	..()
 
-/datum/action/xeno_action/activable/warrior_punch/proc/do_base_warrior_punch(mob/living/carbon/carbone, obj/limb/target_limb)
-	var/mob/living/carbon/Xenomorph/woyer = owner
+/datum/action/xeno_action/activable/warrior_punch/proc/do_base_warrior_punch(mob/living/carbon/H, obj/limb/L)
+	var/mob/living/carbon/Xenomorph/X = owner
 	var/damage = rand(base_damage, base_damage + damage_variance)
 
-	if(ishuman(carbone))
-		if((target_limb.status & LIMB_SPLINTED) && !(target_limb.status & LIMB_SPLINTED_INDESTRUCTIBLE)) //If they have it splinted, the splint won't hold.
-			target_limb.status &= ~LIMB_SPLINTED
-			playsound(get_turf(carbone), 'sound/items/splintbreaks.ogg', 20)
-			to_chat(carbone, SPAN_DANGER("The splint on your [target_limb.display_name] comes apart!"))
-			carbone.pain.apply_pain(PAIN_BONE_BREAK_SPLINTED)
+	if(ishuman(H))
+		if((L.status & LIMB_SPLINTED) && !(L.status & LIMB_SPLINTED_INDESTRUCTIBLE)) //If they have it splinted, the splint won't hold.
+			L.status &= ~LIMB_SPLINTED
+			playsound(get_turf(H), 'sound/items/splintbreaks.ogg', 20)
+			to_chat(H, SPAN_DANGER("The splint on your [L.display_name] comes apart!"))
+			H.pain.apply_pain(PAIN_BONE_BREAK_SPLINTED)
 
-		if(isHumanStrict(carbone))
-			carbone.apply_effect(3, SLOW)
-		if(isYautja(carbone))
+		if(isHumanStrict(H))
+			H.apply_effect(3, SLOW)
+		if(isYautja(H))
 			damage = rand(base_punch_damage_pred, base_punch_damage_pred + damage_variance)
-		else if(target_limb.status & (LIMB_ROBOT|LIMB_SYNTHSKIN))
+		else if(L.status & (LIMB_ROBOT|LIMB_SYNTHSKIN))
 			damage = rand(base_punch_damage_synth, base_punch_damage_synth + damage_variance)
 
 
-	carbone.apply_armoured_damage(get_xeno_damage_slash(carbone, damage), ARMOR_MELEE, BRUTE, target_limb? target_limb.name : "chest")
+	H.apply_armoured_damage(get_xeno_damage_slash(H, damage), ARMOR_MELEE, BRUTE, L? L.name : "chest")
 
-	// Hmm today I will kill a marine while looking away from them
-	woyer.face_atom(carbone)
-	woyer.animation_attack_on(carbone)
-	woyer.flick_attack_overlay(carbone, "punch")
-	shake_camera(carbone, 2, 1)
-	step_away(carbone, woyer, 2)
+	shake_camera(H, 2, 1)
+	step_away(H, X, 2)

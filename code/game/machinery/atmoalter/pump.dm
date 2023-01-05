@@ -3,7 +3,7 @@
 
 	icon = 'icons/obj/structures/machinery/atmos.dmi'
 	icon_state = "psiphon:0"
-	density = TRUE
+	density = 1
 
 	var/on = 0
 

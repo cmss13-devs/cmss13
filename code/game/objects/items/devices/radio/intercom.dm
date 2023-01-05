@@ -73,11 +73,3 @@
 			icon_state = "intercom-p"
 		else
 			icon_state = "intercom"
-
-/obj/item/device/radio/intercom/alamo
-	name = "dropship alamo intercom"
-	frequency = DS1_FREQ
-
-/obj/item/device/radio/intercom/normandy
-	name = "dropship normandy intercom"
-	frequency = DS2_FREQ

@@ -1,5 +1,5 @@
 /obj/structure/AIcore
-	density = TRUE
+	density = 1
 	anchored = 0
 	name = "AI core"
 	icon = 'icons/obj/structures/machinery/AI.dmi'

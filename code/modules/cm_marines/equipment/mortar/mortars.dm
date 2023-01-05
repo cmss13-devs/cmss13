@@ -8,7 +8,7 @@
 	anchored = TRUE
 	unslashable = TRUE
 	unacidable = TRUE
-	density = TRUE
+	density = 1
 	// So you can't hide it under corpses
 	layer = ABOVE_MOB_LAYER
 	flags_atom = RELAY_CLICK

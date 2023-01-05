@@ -7,7 +7,7 @@
 	name = "Palm tree"
 	icon = 'icons/turf/beach2.dmi'
 	icon_state = "palm1"
-	density = TRUE
+	density = 1
 	layer = FLY_LAYER
 	anchored = 1
 
@@ -15,7 +15,7 @@
 	name = "Palm tree"
 	icon = 'icons/turf/beach2.dmi'
 	icon_state = "palm2"
-	density = TRUE
+	density = 1
 	layer = FLY_LAYER
 	anchored = 1
 
@@ -35,7 +35,7 @@
 /obj/effect/overlay/temp
 	anchored = 1
 	layer = ABOVE_FLY_LAYER //above mobs
-	mouse_opacity = MOUSE_OPACITY_TRANSPARENT //can't click to examine it
+	mouse_opacity = 0 //can't click to examine it
 	var/effect_duration = 10 //in deciseconds
 
 	var/start_on_spawn = TRUE
@@ -137,7 +137,7 @@
 /obj/effect/overlay/temp/laser_coordinate
 	name = "laser"
 	anchored = TRUE
-	mouse_opacity = MOUSE_OPACITY_ICON
+	mouse_opacity = 1
 	luminosity = 2
 	icon = 'icons/obj/items/weapons/projectiles.dmi'
 	icon_state = "laser_target_coordinate"
@@ -155,7 +155,7 @@
 /obj/effect/overlay/temp/laser_target
 	name = "laser"
 	anchored = TRUE
-	mouse_opacity = MOUSE_OPACITY_ICON
+	mouse_opacity = 1
 	luminosity = 2
 	icon = 'icons/obj/items/weapons/projectiles.dmi'
 	icon_state = "laser_target2"
@@ -209,7 +209,7 @@
 	anchored = TRUE
 	luminosity = 2
 	effect_duration = 10
-	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	mouse_opacity = 0
 	icon = 'icons/obj/items/weapons/projectiles.dmi'
 	icon_state = "laser_target3"
 

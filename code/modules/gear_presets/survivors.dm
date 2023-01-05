@@ -914,11 +914,11 @@
 	..()
 
 
-// ---- Colonial Marshal Survivor
+// ---- Colonial Marshall Survivor
 
 /datum/equipment_preset/survivor/colonial_marshal
-	name = "Survivor - Colonial Marshal"
-	assignment = "Colonial Marshal"
+	name = "Survivor - Colonial Marshall"
+	assignment = "Colonial Marshall"
 	skills = /datum/skills/civilian/survivor/marshal
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	idtype = /obj/item/card/id/silver/cl

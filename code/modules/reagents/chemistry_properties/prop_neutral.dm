@@ -148,7 +148,8 @@
 		var/mob/living/carbon/human/H = M
 		var/datum/internal_organ/liver/L = H.internal_organs_by_name["liver"]
 		if(L)
-			L.take_damage(POTENCY_MULTIPLIER_LOW * potency, TRUE)
+			L.damage += POTENCY_MULTIPLIER_LOW * potency
+
 /datum/chem_property/neutral/hallucinogenic
 	name = PROPERTY_HALLUCINOGENIC
 	code = "HLG"
@@ -542,7 +543,7 @@
 	M.dizziness = max(M.dizziness - POTENCY_MULTIPLIER_MEDIUM * potency, 0)
 	M.jitteriness = max(M.jitteriness - POTENCY_MULTIPLIER_MEDIUM * potency, 0)
 	if(potency >= POTENCY_MAX_TIER_1)
-		M.SetEyeBlind(0)
+		M.eye_blind = 0
 		M.silent = 0
 
 /datum/chem_property/neutral/focusing/process_overdose(mob/living/M, var/potency = 1)

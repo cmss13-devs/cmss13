@@ -7,7 +7,7 @@
 	icon = 'icons/obj/structures/props/stationobjs.dmi'
 	icon_state = "morgue1"
 	dir = EAST
-	density = TRUE
+	density = 1
 	var/obj/structure/morgue_tray/connected = null
 	var/morgue_type = "morgue"
 	var/tray_path = /obj/structure/morgue_tray
@@ -126,7 +126,7 @@
 	icon = 'icons/obj/structures/props/stationobjs.dmi'
 	icon_state = "morguet"
 	var/icon_tray = ""
-	density = TRUE
+	density = 1
 	layer = OBJ_LAYER
 	var/obj/structure/morgue/linked_morgue = null
 	anchored = 1

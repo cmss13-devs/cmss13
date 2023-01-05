@@ -5,7 +5,7 @@
 	icon_state = "chemstorage"
 	active_power_usage = 1000
 	layer = BELOW_OBJ_LAYER
-	density = TRUE
+	density = 1
 	bound_x = 32
 
 	var/network = "Ground"

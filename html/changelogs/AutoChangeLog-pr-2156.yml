@@ -1,8 +1,0 @@
-author: "Morrow"
-delete-after: True
-changes:
-  - rscadd: "New intense mode for underbarrel flamethrower which uses more fuel, is more effective, and with less range."
-  - balance: "Buffed range and max fuel for the underbarrel flamethrower."
-  - code_imp: "Changed around attachment description functions for smarter usage."
-  - bugfix: "Underbarrel guns will now use the correct activation noise"
-  - soundadd: "Activation noise for underbarrel guns slightly louder"

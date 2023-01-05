@@ -15,7 +15,7 @@
 /obj/item/storage/belt/equipped(mob/user, slot)
 	switch(slot)
 		if(WEAR_WAIST, WEAR_J_STORE, WEAR_BACK)
-			mouse_opacity = MOUSE_OPACITY_OPAQUE //so it's easier to click when properly equipped.
+			mouse_opacity = 2 //so it's easier to click when properly equipped.
 	..()
 
 /obj/item/storage/belt/dropped(mob/user)
@@ -174,8 +174,8 @@
 
 /obj/item/storage/belt/medical/full/with_suture_and_graft/fill_preset_inventory()
 	. = ..()
-	new /obj/item/tool/surgery/surgical_line(src)
-	new /obj/item/tool/surgery/synthgraft(src)
+	new	/obj/item/tool/surgery/surgical_line(src)
+	new	/obj/item/tool/surgery/synthgraft(src)
 
 /obj/item/storage/belt/medical/get_examine_text()
 	. = ..()

@@ -1014,7 +1014,9 @@
 	dir = 1;
 	icon_state = "squareswood"
 	},
-/area/yautja)
+/area/yautja{
+	color = "#948954"
+	})
 "ct" = (
 /obj/structure/machinery/door/airlock/strata/autoname{
 	dir = 1;
@@ -1973,7 +1975,7 @@
 	},
 /obj/structure/machinery/power/apc/almayer{
 	dir = 4;
-	pixel_y = 25
+	pixel_y = 22
 	},
 /obj/item/weapon/melee/twohanded/yautja/spear,
 /obj/item/weapon/melee/twohanded/yautja/spear,

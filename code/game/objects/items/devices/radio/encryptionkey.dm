@@ -5,15 +5,16 @@
 	icon_state = "cypherkey"
 	item_state = ""
 	w_class = SIZE_TINY
-	var/translate_apollo = FALSE
+	var/translate_binary = FALSE
 	var/translate_hive = FALSE
+	var/syndie = FALSE //Signifies that it de-crypts Syndicate transmissions
 	var/list/channels = list()
 	var/list/tracking_options
 	var/abstract = FALSE
 
 /obj/item/device/encryptionkey/binary
 	icon_state = "binary_key"
-	translate_apollo = TRUE
+	translate_binary = TRUE
 
 
 
@@ -232,6 +233,7 @@
 /obj/item/device/encryptionkey/upp
 	name = "\improper UPP Radio Encryption Key"
 	icon_state = "upp_key"
+	syndie = TRUE
 	channels = list(RADIO_CHANNEL_UPP_GEN = TRUE)
 
 /obj/item/device/encryptionkey/upp/engi
@@ -254,6 +256,7 @@
 /obj/item/device/encryptionkey/clf
 	name = "\improper CLF Radio Encryption Key"
 	icon_state = "stripped_key"
+	syndie = TRUE
 	channels = list(RADIO_CHANNEL_CLF_GEN = TRUE)
 
 /obj/item/device/encryptionkey/clf/engi

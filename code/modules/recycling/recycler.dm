@@ -6,7 +6,7 @@
 	icon_state = "separator-AO1"
 	layer = ABOVE_MOB_LAYER
 	anchored = 1
-	density = TRUE
+	density = 1
 	var/recycle_dir = NORTH
 	var/list/stored_matter =  list("metal" = 0, "glass" = 0)
 	var/last_recycle_sound //for sound cooldown

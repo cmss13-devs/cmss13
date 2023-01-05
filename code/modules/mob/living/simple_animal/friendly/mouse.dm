@@ -19,12 +19,12 @@
 	response_help  = "pets the"
 	response_disarm = "gently pushes aside the"
 	response_harm   = "stamps on the"
-	density = FALSE
+	density = 0
 	var/body_color //brown, gray and white, leave blank for random
 	layer = ABOVE_LYING_MOB_LAYER
 	min_oxy = 16 //Require atleast 16kPA oxygen
-	minbodytemp = 223 //Below -50 Degrees Celcius
-	maxbodytemp = 323 //Above 50 Degrees Celcius
+	minbodytemp = 223		//Below -50 Degrees Celcius
+	maxbodytemp = 323	//Above 50 Degrees Celcius
 	universal_speak = 0
 	universal_understand = 1
 	holder_type = /obj/item/holder/mouse
@@ -128,17 +128,14 @@
 	body_color = "white"
 	icon_state = "mouse_white"
 	desc = "It's a small laboratory mouse."
-	holder_type = /obj/item/holder/mouse/white
 
 /mob/living/simple_animal/mouse/gray
 	body_color = "gray"
 	icon_state = "mouse_gray"
-	holder_type = /obj/item/holder/mouse/gray
 
 /mob/living/simple_animal/mouse/brown
 	body_color = "brown"
 	icon_state = "mouse_brown"
-	holder_type = /obj/item/holder/mouse/brown
 
 /mob/living/simple_animal/mouse/white/Doc
 	name = "Doc"
@@ -147,7 +144,7 @@
 	response_help  = "pets"
 	response_disarm = "gently pushes aside"
 	response_harm   = "stamps on"
-	holder_type = /obj/item/holder/mouse/white/Doc
+	holder_type = /obj/item/holder/mouse/Doc
 
 //TOM IS ALIVE! SQUEEEEEEEE~K :)
 /mob/living/simple_animal/mouse/brown/Tom
@@ -156,4 +153,3 @@
 	response_help  = "pets"
 	response_disarm = "gently pushes aside"
 	response_harm   = "splats"
-	holder_type = /obj/item/holder/mouse/brown/Tom

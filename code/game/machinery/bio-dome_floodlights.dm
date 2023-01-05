@@ -3,7 +3,7 @@
 	icon = 'icons/turf/ground_map.dmi'
 	icon_state = "panelnopower"
 	desc = "This switch controls the floodlights surrounding the archaeology complex. It only functions when there is power."
-	density = FALSE
+	density = 0
 	anchored = 1
 	var/ispowered = FALSE
 	var/turned_on = 0 //has to be toggled in engineering
@@ -78,7 +78,7 @@
 	name = "Biodome Floodlight"
 	icon = 'icons/obj/structures/machinery/big_floodlight.dmi'
 	icon_state = "flood_s_off"
-	density = TRUE
+	density = 1
 	anchored = 1
 	layer = WINDOW_LAYER
 	var/damaged = 0 //Can be smashed by xenos

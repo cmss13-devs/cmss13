@@ -491,6 +491,8 @@ div.notice {
     white-space: nowrap;
 }
 
+/* DNA Modifier UI (dna_modifier.tmpl) */
+
 .dnaBlock {
     float: left;
     width: 90px;

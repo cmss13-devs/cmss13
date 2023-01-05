@@ -21,7 +21,6 @@
 	var/list/range_turfs = list()
 
 	var/colony_camera_mapload = TRUE
-	var/admin_console = FALSE
 
 /obj/structure/machinery/computer/security/Initialize(mapload)
 	. = ..()
@@ -52,7 +51,7 @@
 	return attack_hand(user)
 
 /obj/structure/machinery/computer/security/attack_hand(mob/user)
-	if(!admin_console && is_admin_level(z))
+	if(is_admin_level(z))
 		to_chat(user, SPAN_DANGER("<b>Unable to establish a connection</b>: \black You're too far away from the ship!"))
 		return
 	if(inoperable())
@@ -239,7 +238,7 @@
 	icon = 'icons/obj/structures/props/stationobjs.dmi'
 	icon_state = "telescreen"
 	network = list("thunder")
-	density = FALSE
+	density = 0
 	circuit = null
 
 /obj/structure/machinery/computer/security/telescreen/update_icon()
@@ -298,7 +297,7 @@
 
 
 /obj/structure/machinery/computer/security/almayer
-	density = FALSE
+	density = 0
 	icon_state = "security_cam"
 	network = list(CAMERA_NET_ALMAYER)
 
@@ -332,7 +331,7 @@
 /obj/structure/machinery/computer/security/mortar
 	name = "Mortar Camera Interface"
 	alpha = 0
-	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	mouse_opacity = 0
 	density = FALSE
 	use_power = USE_POWER_NONE
 	idle_power_usage = 0
@@ -348,7 +347,7 @@
 /obj/structure/machinery/computer/security/dropship
 	name = "abstract dropship camera computer"
 	desc = "A computer to monitor cameras linked to the dropship."
-	density = TRUE
+	density = 1
 	icon = 'icons/obj/structures/machinery/shuttle-parts.dmi'
 	icon_state = "consoleleft"
 	circuit = null

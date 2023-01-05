@@ -1,5 +1,5 @@
 /obj/effect/projector
-	density = FALSE
+	density = 0
 	unacidable = TRUE
 	anchored = 1
 	invisibility = 101

@@ -70,7 +70,7 @@
 	icon = 'icons/obj/pipes/pipes3.dmi'
 	icon_state = "circ-off"
 	anchored = 0
-	density = TRUE
+	density = 1
 
 /obj/structure/pipes/binary/circulator/New()
 	..()

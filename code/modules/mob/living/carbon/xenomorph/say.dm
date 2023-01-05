@@ -21,8 +21,7 @@
 		return
 
 	if(copytext(message, 1, 2) == "*")
-		if(!findtext(message, "*", 2)) //Second asterisk means it is markup for *bold*, not an *emote.
-			return emote(lowertext(copytext(message, 2)), player_caused = TRUE)
+		return emote(copytext(message, 2), player_caused = TRUE)
 
 	var/datum/language/speaking = null
 	if(length(message) >= 2)

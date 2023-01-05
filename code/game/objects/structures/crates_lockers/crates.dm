@@ -410,7 +410,7 @@
 	name = "\improper minecart"
 	desc = "Essentially a big metal bucket on wheels. This one has a modern plastic shroud."
 	icon_state = "closed_mcart"
-	density = TRUE
+	density = 1
 	icon_opened = "open_mcart"
 	icon_closed = "closed_mcart"
 
@@ -418,7 +418,7 @@
 	name = "\improper minecart"
 	desc = "Essentially a big metal bucket on wheels. This one has a modern plastic shroud."
 	icon_state = "closed_mcart_y"
-	density = TRUE
+	density = 1
 	icon_opened = "open_mcart_y"
 	icon_closed = "closed_mcart_y"
 

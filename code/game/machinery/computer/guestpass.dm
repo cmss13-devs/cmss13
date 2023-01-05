@@ -42,7 +42,7 @@
 /obj/structure/machinery/computer/guestpass
 	name = "guest pass terminal"
 	icon_state = "guest"
-	density = FALSE
+	density = 0
 
 
 	var/obj/item/card/id/giver

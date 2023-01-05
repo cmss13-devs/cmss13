@@ -95,7 +95,7 @@
 	var/mob/body = mob
 	body.ghostize(TRUE, TRUE)
 	if(body && !body.key)
-		body.key = "@[key]" //Haaaaaaaack. But the people have spoken. If it breaks; blame adminbus
+		body.key = "@[key]"	//Haaaaaaaack. But the people have spoken. If it breaks; blame adminbus
 		if(body.client)
 			body.client.change_view(world_view_size) //reset view range to default.
 
@@ -121,7 +121,7 @@
 		if(isobserver(mob))
 			mob.invisibility = INVISIBILITY_MAXIMUM
 			mob.alpha = 0
-			mob.mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+			mob.mouse_opacity = 0
 
 	admin_holder.invisimined = !admin_holder.invisimined
 
@@ -406,7 +406,7 @@
 	remove_verb(src, /client/proc/enable_admin_verbs)
 
 	if(!(admin_holder.rights & R_DEBUG))
-		remove_verb(src, /client/proc/callproc_datum)
+		remove_verb(src, /client/proc/proccall_atom)
 	if(!(admin_holder.rights & R_POSSESS))
 		remove_verb(src, /client/proc/release)
 		remove_verb(src, /client/proc/possess)
@@ -563,7 +563,7 @@
 		<A href='?src=\ref[src];[HrefToken()];inviews=rejuvenateall'>Rejuvenate All Mobs In View</A><BR>
 		<BR>
 		<A href='?src=\ref[src];[HrefToken()];inviews=rejuvenatemarine'>Rejuvenate Only Humans In View</A><BR>
-		<A href='?src=\ref[src];[HrefToken()];inviews=rejuvenaterevivemarine'>Rejuvenate Only Revivable Humans In View</A><BR>
+	 	<A href='?src=\ref[src];[HrefToken()];inviews=rejuvenaterevivemarine'>Rejuvenate Only Revivable Humans In View</A><BR>
 		<BR>
 		<A href='?src=\ref[src];[HrefToken()];inviews=rejuvenatexeno'>Rejuvenate Only Xenos In View</A><BR>
 		<BR>

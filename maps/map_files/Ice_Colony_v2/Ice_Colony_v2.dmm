@@ -20270,7 +20270,9 @@
 	icon_state = "warnplate";
 	tag = "icon-warnplate (NORTH)"
 	},
-/area/shuttle/drop2/ice_colony)
+/area/shuttle/drop2/ice_colony{
+	name = "\improper Almayer Dropship 2"
+	})
 "baM" = (
 /obj/structure/machinery/landinglight/ds2/delayone{
 	dir = 8;
@@ -20294,7 +20296,9 @@
 /area/ice_colony/underground/hangar)
 "baP" = (
 /turf/open/floor/plating/icefloor,
-/area/shuttle/drop2/ice_colony)
+/area/shuttle/drop2/ice_colony{
+	name = "\improper Almayer Dropship 2"
+	})
 "baQ" = (
 /obj/structure/machinery/landinglight/ds2{
 	dir = 8;
@@ -20335,7 +20339,9 @@
 /area/ice_colony/exterior/surface/landing_pad)
 "baY" = (
 /turf/open/floor/plating,
-/area/shuttle/drop1/ice_colony)
+/area/shuttle/drop1/ice_colony{
+	name = "\improper Almayer Dropship 1"
+	})
 "baZ" = (
 /obj/structure/ice/thin/corner{
 	dir = 8;
@@ -20431,7 +20437,9 @@
 "bbp" = (
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/plating/icefloor,
-/area/shuttle/drop2/ice_colony)
+/area/shuttle/drop2/ice_colony{
+	name = "\improper Almayer Dropship 2"
+	})
 "bbq" = (
 /obj/structure/machinery/landinglight/ds2/delaytwo{
 	dir = 8;
@@ -20516,14 +20524,18 @@
 	icon_state = "warnplate";
 	tag = "icon-warnplate (WEST)"
 	},
-/area/shuttle/drop2/ice_colony)
+/area/shuttle/drop2/ice_colony{
+	name = "\improper Almayer Dropship 2"
+	})
 "bbD" = (
 /turf/open/floor/plating/icefloor{
 	dir = 4;
 	icon_state = "warnplate";
 	tag = "icon-warnplate (EAST)"
 	},
-/area/shuttle/drop2/ice_colony)
+/area/shuttle/drop2/ice_colony{
+	name = "\improper Almayer Dropship 2"
+	})
 "bbE" = (
 /turf/closed/wall/r_wall,
 /area/ice_colony/surface/tcomms)
@@ -20695,11 +20707,15 @@
 	tag = "icon-armorblood"
 	},
 /turf/open/floor/plating/icefloor,
-/area/shuttle/drop2/ice_colony)
+/area/shuttle/drop2/ice_colony{
+	name = "\improper Almayer Dropship 2"
+	})
 "bcz" = (
 /obj/effect/landmark/hunter_secondary,
 /turf/open/floor/plating/icefloor,
-/area/shuttle/drop2/ice_colony)
+/area/shuttle/drop2/ice_colony{
+	name = "\improper Almayer Dropship 2"
+	})
 "bcA" = (
 /obj/structure/machinery/landinglight/ds2/delaytwo{
 	dir = 8;
@@ -22441,7 +22457,9 @@
 	icon_state = "warnplate";
 	tag = "icon-warnplate"
 	},
-/area/shuttle/drop2/ice_colony)
+/area/shuttle/drop2/ice_colony{
+	name = "\improper Almayer Dropship 2"
+	})
 "bht" = (
 /turf/open/floor/plating/icefloor{
 	icon_state = "warnplate";

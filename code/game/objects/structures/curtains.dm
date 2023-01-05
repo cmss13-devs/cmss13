@@ -3,8 +3,8 @@
 	name = "curtain"
 	icon_state = "green"
 	layer = ABOVE_MOB_LAYER
-	opacity = TRUE
-	density = FALSE
+	opacity = 1
+	density = 0
 
 /obj/structure/curtain/open/New()
 	..()

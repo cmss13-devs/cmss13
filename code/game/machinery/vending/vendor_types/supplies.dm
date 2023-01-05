@@ -3,7 +3,7 @@
 	desc = "A cabinet containing various supplies."
 	icon = 'icons/obj/structures/machinery/lifeboat.dmi'
 	icon_state = "supplycab"
-	vend_delay = 0.3 SECONDS
+	vend_delay = 3
 	hackable = TRUE
 	unacidable = FALSE
 	unslashable = FALSE
@@ -16,7 +16,7 @@
 	unacidable = TRUE
 	unslashable = TRUE
 	wrenchable = FALSE
-	density = FALSE
+	density = 0
 
 	listed_products = list(
 

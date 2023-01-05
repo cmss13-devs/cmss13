@@ -1,7 +1,7 @@
 /obj/structure/machinery/sentry_holder
 	name = "sentry deployment system"
 	desc = "A box that deploys a sentry turret."
-	density = FALSE
+	density = 0
 	anchored = 1
 	unacidable = 1
 	icon = 'icons/obj/structures/props/almayer_props.dmi'

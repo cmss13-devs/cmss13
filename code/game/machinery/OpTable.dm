@@ -1,14 +1,14 @@
 // patient_exam defines
-#define PATIENT_NOT_AWAKE 1
-#define PATIENT_LOW_BLOOD 2
-#define PATIENT_LOW_NUTRITION 4
+#define PATIENT_NOT_AWAKE		1
+#define	PATIENT_LOW_BLOOD		2
+#define PATIENT_LOW_NUTRITION	4
 
 /obj/structure/machinery/optable
 	name = "Operating Table"
 	desc = "Used for advanced medical procedures."
 	icon = 'icons/obj/structures/machinery/surgery.dmi'
 	icon_state = "table2-idle"
-	density = TRUE
+	density = 1
 	layer = TABLE_LAYER
 	anchored = 1
 	unslashable = TRUE
@@ -50,7 +50,7 @@
 	switch(severity)
 		if(0 to EXPLOSION_THRESHOLD_LOW)
 			if (prob(25))
-				src.density = FALSE
+				src.density = 0
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			if (prob(50))
 				deconstruct(FALSE)

@@ -31,7 +31,7 @@ PLANT_CUT_MACHETE = 3 = Needs at least a machete to be cut down
 /obj/structure/flora
 	name = "plant"
 	anchored = 1
-	density = TRUE
+	density = 1
 	var/icon_tag = null
 	var/variations = 1
 	var/cut_level = PLANT_NO_CUT
@@ -90,14 +90,14 @@ PLANT_CUT_MACHETE = 3 = Needs at least a machete to be cut down
 	icon = 'icons/obj/structures/props/joshuatree.dmi'
 	icon_state = "joshua_1"
 	pixel_x = 0
-	density = FALSE
+	density = 0
 	unslashable = TRUE
 	unacidable = TRUE
 
 /obj/structure/flora/tree/jungle
 	icon = 'icons/obj/structures/props/ground_map64.dmi'
 	desc = "What an enormous tree!"
-	density = FALSE
+	density = 0
 
 /obj/structure/flora/tree/jungle/bigtreeTR
 	name = "huge tree"
@@ -116,13 +116,13 @@ PLANT_CUT_MACHETE = 3 = Needs at least a machete to be cut down
 	desc = "A thick mat of dense grass."
 	icon_state = "grasscarpet"
 	layer = BELOW_MOB_LAYER
-	density = FALSE
+	density = 0
 
 //grass
 /obj/structure/flora/grass
 	name = "grass"
 	icon = 'icons/obj/structures/props/ausflora.dmi'
-	density = FALSE
+	density = 0
 	fire_flag = FLORA_BURN_NO_SPREAD
 /*
 
@@ -259,7 +259,7 @@ ICE GRASS
 	name = "bush"
 	icon = 'icons/obj/structures/props/snowflora.dmi'
 	icon_state = "snowbush_1"
-	density = FALSE
+	density = 0
 	layer = ABOVE_XENO_LAYER
 	fire_flag = FLORA_BURN_NO_SPREAD
 
@@ -397,7 +397,7 @@ ICE GRASS
 	name = "potted plant"
 	icon = 'icons/obj/structures/props/plants.dmi'
 	icon_state = "pottedplant_26"
-	density = FALSE
+	density = 0
 
 /obj/structure/flora/pottedplant/random
 	icon_tag = "pottedplant"
@@ -412,7 +412,7 @@ ICE GRASS
 /obj/structure/flora/jungle
 	name = "jungle foliage"
 	icon = 'icons/turf/ground_map.dmi'
-	density = FALSE
+	density = 0
 	layer = ABOVE_XENO_LAYER
 	projectile_coverage = PROJECTILE_COVERAGE_NONE
 
@@ -434,8 +434,8 @@ ICE GRASS
 
 /obj/structure/flora/jungle/treeblocker
 	name = "huge tree"
-	icon_state = "" //will this break it?? - Nope
-	density = TRUE
+	icon_state = ""	//will this break it?? - Nope
+	density = 1
 
 /obj/structure/flora/jungle/vines
 	name = "vines"
@@ -449,7 +449,7 @@ ICE GRASS
 
 /obj/structure/flora/jungle/vines/heavy
 	desc = "A thick, coiled mass of twisted vines."
-	opacity = TRUE
+	opacity = 1
 	icon_state = "heavy_6"
 	icon_tag = "heavy"
 	variations = 6
@@ -472,7 +472,7 @@ ICE GRASS
 	..()
 	health = rand(50,75)
 	if(prob(75))
-		opacity = TRUE
+		opacity = 1
 	setDir(pick(NORTH,EAST,SOUTH,WEST))
 
 
@@ -541,7 +541,7 @@ ICE GRASS
 
 /obj/structure/flora/jungle/thickbush/proc/healthcheck()
 	if(health < 35 && opacity)
-		opacity = FALSE
+		opacity = 0
 	if(health < 0)
 		if(prob(10))
 			icon_state = "stump[rand(1,2)]"

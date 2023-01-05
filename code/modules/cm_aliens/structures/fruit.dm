@@ -4,8 +4,8 @@
 	name = XENO_FRUIT_LESSER
 	desc = "A fruit that can be eaten to immediately recover health."
 	icon_state = "fruit_lesser_immature"
-	density = FALSE
-	opacity = FALSE
+	density = 0
+	opacity = 0
 	anchored = TRUE
 	health = 25
 	layer = BUSH_LAYER // technically a plant amiright

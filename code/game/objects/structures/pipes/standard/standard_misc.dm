@@ -115,7 +115,7 @@
 	desc = "A large vessel containing pressurized gas."
 	dir = SOUTH
 	valid_directions = list(SOUTH)
-	density = TRUE
+	density = 1
 	var/actual_icon_state = "air"
 
 /obj/structure/pipes/standard/tank/New()

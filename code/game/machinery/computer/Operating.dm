@@ -2,7 +2,7 @@
 
 /obj/structure/machinery/computer/operating
 	name = "Operating Computer"
-	density = TRUE
+	density = 1
 	anchored = 1.0
 	icon_state = "operating"
 	circuit = /obj/item/circuitboard/computer/operating

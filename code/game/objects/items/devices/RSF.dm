@@ -9,8 +9,8 @@ RSF
 	desc = "A device used to rapidly deploy service items."
 	icon = 'icons/obj/items/devices.dmi'
 	icon_state = "rcd"
-	opacity = FALSE
-	density = FALSE
+	opacity = 0
+	density = 0
 	anchored = 0.0
 	var/stored_matter = 30
 	var/mode = 1

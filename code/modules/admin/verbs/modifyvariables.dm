@@ -1,3 +1,7 @@
+var/list/forbidden_varedit_object_types = list(
+										/datum/admins,						//Admins editing their own admin-power object? Yup, sounds like a good idea.
+									)
+
 /client/proc/mod_list_add_ass() //haha
 	var/class = "text"
 
@@ -129,7 +133,7 @@
 	message_staff("[key_name_admin(src)] added a new element to a list with a key of '[var_value]' and an associated value of [isnum(var_value)? "null" : L[var_value]]", 1)
 
 /client/proc/mod_list(var/list/L)
-	if(!check_rights(R_VAREDIT)) return
+	if(!check_rights(R_VAREDIT))	return
 
 	if(!istype(L,/list)) to_chat(src, "Not a List.")
 
@@ -150,7 +154,7 @@
 	var/dir
 
 	if(variable in locked)
-		if(!check_rights(R_DEBUG)) return
+		if(!check_rights(R_DEBUG))	return
 
 	if(isnull(variable))
 		to_chat(usr, "Unable to determine variable type.")
@@ -297,7 +301,7 @@
 
 
 /client/proc/modify_variables(var/atom/O, var/param_var_name = null, var/autodetect_class = 0)
-	if(!check_rights(R_VAREDIT)) return
+	if(!check_rights(R_VAREDIT))	return
 
 	var/list/locked = list("vars", "key", "ckey", "client", "icon")
 
@@ -309,6 +313,11 @@
 		to_chat(usr, "You can't modify this object! You require debugging permission")
 		return
 
+	for(var/p in forbidden_varedit_object_types)
+		if( istype(O,p) )
+			to_chat(usr, SPAN_DANGER("It is forbidden to edit this object's variables."))
+			return
+
 	var/class
 	var/variable
 	var/var_value
@@ -319,7 +328,7 @@
 			return
 
 		if(param_var_name == "admin_holder" || (param_var_name in locked))
-			if(!check_rights(R_DEBUG)) return
+			if(!check_rights(R_DEBUG))	return
 
 		variable = param_var_name
 
@@ -376,13 +385,11 @@
 		names = sortList(names)
 
 		variable = tgui_input_list(usr, "Which var?","Var", names)
-		if(!variable)
-			return
-
+		if(!variable)	return
 		var_value = O.vars[variable]
 
 		if(variable == "admin_holder" || (variable in locked))
-			if(!check_rights(R_DEBUG)) return
+			if(!check_rights(R_DEBUG))	return
 
 	if(!autodetect_class)
 
@@ -479,68 +486,60 @@
 			return
 
 		if("restore to default")
-			if(!O.vv_edit_var(variable, initial(O.vars[variable])))
-				to_chat(usr, SPAN_WARNING("Your edit was rejected by the object."))
-				return
+			O.vars[variable] = initial(O.vars[variable])
 
 		if("edit referenced object")
 			return .(O.vars[variable])
 
 		if("text")
 			var/var_new = input("Enter new text:","Text",O.vars[variable]) as null|text
-			if(isnull(var_new))
-				return
-			if(!O.vv_edit_var(variable, var_new))
-				to_chat(usr, SPAN_WARNING("Your edit was rejected by the object."))
-				return
+			if(var_new==null) return
+			O.vars[variable] = var_new
 
 		if("num")
-			var/var_new =  tgui_input_real_number(src, "Enter new number:","Num", O.vars[variable])
-			if(isnull(var_new))
-				return
-			if(!O.vv_edit_var(variable, var_new))
-				to_chat(usr, SPAN_WARNING("Your edit was rejected by the object."))
-				return
+			if(variable=="luminosity")
+				var/var_new = tgui_input_real_number(src, "Enter new number:","Num", O.vars[variable])
+				if(var_new == null) return
+				O.SetLuminosity(var_new)
+			else if(variable=="stat")
+				var/var_new = tgui_input_real_number(src, "Enter new number:","Num", O.vars[variable])
+				if(var_new == null) return
+				if((O.vars[variable] == 2) && (var_new < 2))//Bringing the dead back to life
+					GLOB.dead_mob_list -= O
+					GLOB.alive_mob_list += O
+				if((O.vars[variable] < 2) && (var_new == 2))//Kill he
+					GLOB.alive_mob_list -= O
+					GLOB.dead_mob_list += O
+				O.vars[variable] = var_new
+			else
+				var/var_new =  tgui_input_real_number(src, "Enter new number:","Num", O.vars[variable])
+				if(var_new==null) return
+				O.vars[variable] = var_new
 
 		if("type")
 			var/var_new = tgui_input_list(usr, "Enter type:","Type", typesof(/obj,/mob,/area,/turf))
-			if(isnull(var_new))
-				return
-			if(!O.vv_edit_var(variable, var_new))
-				to_chat(usr, SPAN_WARNING("Your edit was rejected by the object."))
-				return
+			if(var_new==null) return
+			O.vars[variable] = var_new
 
 		if("reference")
 			var/var_new = input("Select reference:","Reference",O.vars[variable]) as null|mob|obj|turf|area in world
-			if(isnull(var_new))
-				return
-			if(!O.vv_edit_var(variable, var_new))
-				to_chat(usr, SPAN_WARNING("Your edit was rejected by the object."))
-				return
+			if(var_new==null) return
+			O.vars[variable] = var_new
 
 		if("mob reference")
 			var/var_new = input("Select reference:","Reference",O.vars[variable]) as null|mob in GLOB.mob_list
-			if(isnull(var_new))
-				return
-			if(!O.vv_edit_var(variable, var_new))
-				to_chat(usr, SPAN_WARNING("Your edit was rejected by the object."))
-				return
+			if(var_new==null) return
+			O.vars[variable] = var_new
 
 		if("file")
 			var/var_new = input("Pick file:","File",O.vars[variable]) as null|file
-			if(isnull(var_new))
-				return
-			if(!O.vv_edit_var(variable, var_new))
-				to_chat(usr, SPAN_WARNING("Your edit was rejected by the object."))
-				return
+			if(var_new==null) return
+			O.vars[variable] = var_new
 
 		if("icon")
 			var/var_new = input("Pick icon:","Icon",O.vars[variable]) as null|icon
-			if(isnull(var_new))
-				return
-			if(!O.vv_edit_var(variable, var_new))
-				to_chat(usr, SPAN_WARNING("Your edit was rejected by the object."))
-				return
+			if(var_new==null) return
+			O.vars[variable] = var_new
 
 		if("matrix")
 			var/matrix_name = tgui_input_list(usr, "Choose a matrix", "Matrix", (stored_matrices + "Cancel"))
@@ -551,18 +550,14 @@
 			if(!M)
 				return
 
-			if(!O.vv_edit_var(variable, M))
-				to_chat(usr, SPAN_WARNING("Your edit was rejected by the object."))
-				return
+			O.vars[variable] = M
 
 			world.log << "### VarEdit by [key_name(src)]: [O.type] '[variable]': [var_value] => matrix \"[matrix_name]\" with columns ([M.a], [M.b], [M.c]), ([M.d], [M.e], [M.f])"
 			message_staff("[key_name_admin(src)] modified [original_name]'s '[variable]': [var_value] => matrix \"[matrix_name]\" with columns ([M.a], [M.b], [M.c]), ([M.d], [M.e], [M.f])", 1)
 
 		if("marked datum")
 			var/datum/D = input_marked_datum(admin_holder.marked_datums)
-			if(!O.vv_edit_var(variable, D))
-				to_chat(usr, SPAN_WARNING("Your edit was rejected by the object."))
-				return
+			O.vars[variable] = D
 
 	if(class != "matrix")
 		world.log << "### VarEdit by [key_name(src)]: [O.type] '[variable]': [var_value] => [html_encode("[O.vars[variable]]")]"

@@ -2,7 +2,7 @@
 //----Ice walls Structure Versions----//
 //Ice Thin Wall
 /obj/structure/ice
-	density = TRUE
+	density = 1
 	unslashable = TRUE
 	unacidable = TRUE
 
@@ -11,7 +11,7 @@
 	icon = 'icons/turf/walls/icewalllight.dmi'
 	icon_state = "Single"
 	desc = "It is very thin."
-	opacity = FALSE
+	opacity = 0
 
 /obj/structure/ice/thin/indestructible/ex_act(severity, direction)
 	return

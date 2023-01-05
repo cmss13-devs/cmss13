@@ -5,7 +5,7 @@
 	icon_state = "laz_sign"
 	bound_width = 64
 	bound_height = 64
-	density = TRUE
+	density = 1
 
 /obj/structure/lz_sign/lazarus_sign
 	name = "Lazarus Landing Sign"

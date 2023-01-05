@@ -159,7 +159,7 @@
 	return TRUE
 
 /datum/keybinding/human/pick_up
-	hotkey_keys = list("U")
+	hotkey_keys = list("F")
 	classic_keys = list()
 	name = "pick_up"
 	full_name = "Pick Up Dropped Items"

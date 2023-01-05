@@ -204,14 +204,19 @@ const TextHighlightSetting = (props, context) => {
   const { id, ...rest } = props;
   const highlightSettingById = useSelector(context, selectHighlightSettingById);
   const dispatch = useDispatch(context);
-  const { highlightColor, highlightText, highlightWholeMessage } =
-    highlightSettingById[id];
+  const {
+    highlightColor,
+    highlightText,
+    highlightWholeMessage,
+    matchWord,
+    matchCase,
+  } = highlightSettingById[id];
   return (
     <Flex.Item {...rest}>
       <Flex mb={1} color="label" align="baseline">
         <Flex.Item grow={1}>
           <Button
-            content="Highlight words (comma separated):"
+            content="Highlight words:"
             color="transparent"
             icon="times"
             onClick={() =>
@@ -233,6 +238,32 @@ const TextHighlightSetting = (props, context) => {
                 updateHighlightSetting({
                   id: id,
                   highlightWholeMessage: !highlightWholeMessage,
+                })
+              )
+            }
+          />
+          <Button.Checkbox
+            content="Match word"
+            checked={matchWord}
+            tooltipPosition="bottom-start"
+            tooltip="Not compatible with punctuation. Overriden if regex is used."
+            onClick={() =>
+              dispatch(
+                updateHighlightSetting({
+                  id: id,
+                  matchWord: !matchWord,
+                })
+              )
+            }
+          />
+          <Button.Checkbox
+            content="Match case"
+            checked={matchCase}
+            onClick={() =>
+              dispatch(
+                updateHighlightSetting({
+                  id: id,
+                  matchCase: !matchCase,
                 })
               )
             }
@@ -259,6 +290,7 @@ const TextHighlightSetting = (props, context) => {
       <TextArea
         height="3em"
         value={highlightText}
+        placeholder="Separate terms with commas, i.e. (term1, term2, term3)"
         onChange={(e, value) =>
           dispatch(
             updateHighlightSetting({

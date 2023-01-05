@@ -11,8 +11,8 @@ export enum WINDOW_SIZES {
 
 /** Line lengths for autoexpand */
 export enum LINE_LENGTHS {
-  small = 35,
-  medium = 68,
+  small = 38,
+  medium = 76,
 }
 
 /**
@@ -525,5 +525,77 @@ export const RADIO_PREFIXES = {
   '#h ': {
     id: 'department',
     label: 'Depart.',
+  },
+  ':l ': {
+    id: 'comms',
+    label: 'L Hand',
+  },
+  '.l ': {
+    id: 'comms',
+    label: 'L Hand',
+  },
+  '#l ': {
+    id: 'comms',
+    label: 'L Hand',
+  },
+  ':L ': {
+    id: 'comms',
+    label: 'L Hand',
+  },
+  '.L ': {
+    id: 'comms',
+    label: 'L Hand',
+  },
+  '#L ': {
+    id: 'comms',
+    label: 'L Hand',
+  },
+  ':r ': {
+    id: 'comms',
+    label: 'R Hand',
+  },
+  '.r ': {
+    id: 'comms',
+    label: 'R Hand',
+  },
+  '#r ': {
+    id: 'comms',
+    label: 'R Hand',
+  },
+  ':R ': {
+    id: 'comms',
+    label: 'R Hand',
+  },
+  '.R ': {
+    id: 'comms',
+    label: 'R Hand',
+  },
+  '#R ': {
+    id: 'comms',
+    label: 'R Hand',
+  },
+  ':i ': {
+    id: 'comms',
+    label: 'Intercom',
+  },
+  '.i ': {
+    id: 'comms',
+    label: 'Intercom',
+  },
+  '#i ': {
+    id: 'comms',
+    label: 'Intercom',
+  },
+  ':I ': {
+    id: 'comms',
+    label: 'Intercom',
+  },
+  '.I ': {
+    id: 'comms',
+    label: 'Intercom',
+  },
+  '#I ': {
+    id: 'comms',
+    label: 'Intercom',
   },
 } as const;

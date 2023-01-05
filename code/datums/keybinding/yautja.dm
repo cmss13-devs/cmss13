@@ -568,7 +568,6 @@
 	if(.)
 		return
 	var/mob/living/carbon/human/H = user.mob
-
 	var/obj/item/clothing/mask/gas/yautja/mask = H.wear_mask
 	mask.togglesight()
 	return TRUE

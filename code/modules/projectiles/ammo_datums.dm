@@ -3413,7 +3413,7 @@
 
 /datum/ammo/rifle/sharp/explosive/proc/delayed_explosion(obj/item/projectile/P, mob/M, mob/shooter)
 	if(istype(M, /mob))
-		var/explosion_size = 90
+		var/explosion_size = 100
 		var/falloff_size = 50
 		var/cause_data = create_cause_data("P9 SHARP Rifle", shooter)
 		cell_explosion(get_turf(M), explosion_size, falloff_size, EXPLOSION_FALLOFF_SHAPE_LINEAR, P.dir, cause_data)

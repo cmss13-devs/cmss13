@@ -259,6 +259,11 @@
 
 	S["remembered_key_bindings"] << GLOB.keybindings_by_name
 
+	if(toggles_chat & SHOW_TYPING)
+		owner.typing_indicators = FALSE
+	else
+		owner.typing_indicators = TRUE
+
 	if(!observer_huds)
 		observer_huds = list("Medical HUD" = FALSE, "Security HUD" = FALSE, "Squad HUD" = FALSE, "Xeno Status HUD" = FALSE)
 

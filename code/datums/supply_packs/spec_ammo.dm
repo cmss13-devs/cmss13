@@ -186,8 +186,8 @@
 
 //SHARP
 
-/datum/supply_packs/ammo_scout_sharp_mix
-	name = "SHARP Scout Mixed Magazine Crate (explosive x2, flechette x2, tracking x2)"
+/datum/supply_packs/ammo_grenader_sharp_mix
+	name = "SHARP Grenader Mixed Magazine Crate (explosive x2, flechette x2, tracking x2)"
 	contains = list(
 					/obj/item/ammo_magazine/rifle/sharp/explosive,
 					/obj/item/ammo_magazine/rifle/sharp/explosive,
@@ -198,11 +198,11 @@
 					)
 	cost = 40
 	containertype = /obj/structure/closet/crate/ammo
-	containername = "SHARP Scout Mixed Magazine Crate"
+	containername = "SHARP Grenader Mixed Magazine Crate"
 	group = "Weapons Specialist Ammo"
 
-/datum/supply_packs/ammo_scout_sharp_explosive
-	name = "SHARPvv Scout Explosive Magazine Crate (x5)"
+/datum/supply_packs/ammo_grenader_sharp_explosive
+	name = "SHARP Grenader Explosive Magazine Crate (x5)"
 	contains = list(
 					/obj/item/ammo_magazine/rifle/sharp/explosive,
 					/obj/item/ammo_magazine/rifle/sharp/explosive,
@@ -212,11 +212,11 @@
 					)
 	cost = 30
 	containertype = /obj/structure/closet/crate/ammo
-	containername = "SHARP Scout Explosive Magazine Crate"
+	containername = "SHARP Grenader Explosive Magazine Crate"
 	group = "Weapons Specialist Ammo"
 
-/datum/supply_packs/ammo_scout_sharp_flechette
-	name = "SHARP Scout Flechette Magazine Crate (x5)"
+/datum/supply_packs/ammo_grenader_sharp_flechette
+	name = "SHARP Grenader Flechette Magazine Crate (x5)"
 	contains = list(
 					/obj/item/ammo_magazine/rifle/sharp/flechette,
 					/obj/item/ammo_magazine/rifle/sharp/flechette,
@@ -226,11 +226,11 @@
 					)
 	cost = 30
 	containertype = /obj/structure/closet/crate/ammo
-	containername = "SHARP Scout Flechette Magazine Crate"
+	containername = "SHARP Grenader Flechette Magazine Crate"
 	group = "Weapons Specialist Ammo"
 
-/datum/supply_packs/ammo_scout_sharp_tracking
-	name = "SHARP Scout Tracking Magazine Crate (x5)"
+/datum/supply_packs/ammo_grenader_sharp_tracking
+	name = "SHARP Grenader Tracking Magazine Crate (x5)"
 	contains = list(
 					/obj/item/ammo_magazine/rifle/sharp/track,
 					/obj/item/ammo_magazine/rifle/sharp/track,
@@ -240,7 +240,7 @@
 					)
 	cost = 30
 	containertype = /obj/structure/closet/crate/ammo
-	containername = "SHARP Scout Tracking Magazine Crate"
+	containername = "SHARP Grenader Tracking Magazine Crate"
 	group = "Weapons Specialist Ammo"
 
 //M240-T

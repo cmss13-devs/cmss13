@@ -81,21 +81,6 @@
 	new /obj/item/weapon/gun/pistol/vp78(src)
 	new /obj/item/ammo_magazine/pistol/vp78(src)
 	new /obj/item/ammo_magazine/pistol/vp78(src)
-	new /obj/item/spec_kit/scout_weapon_selector(src)
-	new /obj/item/storage/backpack/marine/satchel/scout_cloak(src)
-	new /obj/item/bodybag/tarp/reactive/scout(src)
-	new /obj/item/explosive/plastic(src)
-	new /obj/item/explosive/plastic(src)
-	new /obj/item/device/encryptionkey/jtac(src)
-	if(SSmapping.configs[GROUND_MAP].map_name == MAP_WHISKEY_OUTPOST)
-		new /obj/item/device/binoculars/designator(src)
-	else
-		new /obj/item/device/binoculars/range/designator/scout(src)
-
-/obj/item/storage/box/spec/scout/m4ra
-	desc = "A large case containing an M4RA battle rifle."
-
-/obj/item/storage/box/spec/scout/m4ra/fill_preset_inventory()
 	new /obj/item/ammo_magazine/rifle/m4ra(src)
 	new /obj/item/ammo_magazine/rifle/m4ra(src)
 	new /obj/item/ammo_magazine/rifle/m4ra(src)
@@ -105,20 +90,15 @@
 	new /obj/item/ammo_magazine/rifle/m4ra/impact(src)
 	new /obj/item/ammo_magazine/rifle/m4ra/impact(src)
 	new /obj/item/weapon/gun/rifle/m4ra(src)
-
-/obj/item/storage/box/spec/scout/sharp
-	desc = "A large case containing an P9 SHARP Rifle."
-
-/obj/item/storage/box/spec/scout/sharp/fill_preset_inventory()
-	new /obj/item/ammo_magazine/rifle/sharp/explosive(src)
-	new /obj/item/ammo_magazine/rifle/sharp/explosive(src)
-	new /obj/item/ammo_magazine/rifle/sharp/explosive(src)
-	new /obj/item/ammo_magazine/rifle/sharp/explosive(src)
-	new /obj/item/ammo_magazine/rifle/sharp/flechette(src)
-	new /obj/item/ammo_magazine/rifle/sharp/flechette(src)
-	new /obj/item/ammo_magazine/rifle/sharp/track(src)
-	new /obj/item/ammo_magazine/rifle/sharp/track(src)
-	new /obj/item/weapon/gun/rifle/sharp(src)
+	new /obj/item/storage/backpack/marine/satchel/scout_cloak(src)
+	new /obj/item/bodybag/tarp/reactive/scout(src)
+	new /obj/item/explosive/plastic(src)
+	new /obj/item/explosive/plastic(src)
+	new /obj/item/device/encryptionkey/jtac(src)
+	if(SSmapping.configs[GROUND_MAP].map_name == MAP_WHISKEY_OUTPOST)
+		new /obj/item/device/binoculars/designator(src)
+	else
+		new /obj/item/device/binoculars/range/designator/scout(src)
 
 /obj/item/storage/box/spec/pyro
 	name = "\improper Pyrotechnician equipment case"
@@ -146,8 +126,7 @@
 	kit_overlay = "grenadier"
 
 /obj/item/storage/box/spec/heavy_grenadier/fill_preset_inventory()
-	new /obj/item/weapon/gun/launcher/grenade/m92(src)
-	new /obj/item/storage/belt/grenade/large/full(src)
+	new /obj/item/spec_kit/grenader_weapon_selector(src)
 	new /obj/item/storage/backpack/marine/grenadepack(src)
 	new /obj/item/storage/backpack/marine/grenadepack(src)
 	new /obj/item/clothing/gloves/marine/M3G(src)
@@ -157,6 +136,27 @@
 	new /obj/item/ammo_magazine/pistol/vp78(src)
 	new /obj/item/ammo_magazine/pistol/vp78(src)
 	new /obj/item/device/binoculars(src)
+
+/obj/item/storage/box/spec/heavy_grenadier/m92
+	desc = "A large case containing an M92 grenade launcher."
+
+/obj/item/storage/box/spec/heavy_grenadier/sharp/fill_preset_inventory()
+	new /obj/item/storage/belt/grenade/large/full(src)
+	new /obj/item/weapon/gun/launcher/grenade/m92(src)
+
+/obj/item/storage/box/spec/heavy_grenadier/sharp
+	desc = "A large case containing an P9 SHARP Rifle."
+
+/obj/item/storage/box/spec/heavy_grenadier/sharp/fill_preset_inventory()
+	new /obj/item/ammo_magazine/rifle/sharp/explosive(src)
+	new /obj/item/ammo_magazine/rifle/sharp/explosive(src)
+	new /obj/item/ammo_magazine/rifle/sharp/explosive(src)
+	new /obj/item/ammo_magazine/rifle/sharp/explosive(src)
+	new /obj/item/ammo_magazine/rifle/sharp/flechette(src)
+	new /obj/item/ammo_magazine/rifle/sharp/flechette(src)
+	new /obj/item/ammo_magazine/rifle/sharp/track(src)
+	new /obj/item/ammo_magazine/rifle/sharp/track(src)
+	new /obj/item/weapon/gun/rifle/sharp(src)
 
 
 //maybe put in req for later use?
@@ -276,27 +276,27 @@
 		return TRUE
 	return FALSE
 
-//Scout weapon selector snowflake
-/obj/item/spec_kit/scout_weapon_selector
-	name = "\improper Scout weapon case"
-	desc = "A large case with the option of the M4RA Battle Rifle and the P9 SHARP Rifle."
+//Grenader weapon selector snowflake
+/obj/item/spec_kit/grenader_weapon_selector
+	name = "\improper Grenader weapon case"
+	desc = "A large case with the option of the M92 grenade launcher and the P9 SHARP Rifle."
 
-/obj/item/spec_kit/scout_weapon_selector/can_use(mob/living/carbon/human/user)
+/obj/item/spec_kit/grenader_weapon_selector/can_use(mob/living/carbon/human/user)
 	return TRUE
 
-/obj/item/spec_kit/scout_weapon_selector/select_and_spawn(mob/living/carbon/human/user)
-	var/scout_selection = tgui_input_list(usr, "Select your weapon", "Weapon Selection", list("M4RA battle Rifle", "P9 SHARP Rifle"))
+/obj/item/spec_kit/grenader_weapon_selector/select_and_spawn(mob/living/carbon/human/user)
+	var/scout_selection = tgui_input_list(usr, "Select your weapon", "Weapon Selection", list("M92 grenade launcher", "P9 SHARP Rifle"))
 	if(!scout_selection || QDELETED(src))
 		return FALSE
 	var/turf/T = get_turf(loc)
 	var/obj/item/storage/box/spec/weapon_box
 	switch(scout_selection)
-		if("M4RA battle Rifle")
-			weapon_box = new /obj/item/storage/box/spec/scout/m4ra(T)
+		if("M92 grenade launcher")
+			weapon_box = new /obj/item/storage/box/spec/heavy_grenadier/m9(T)
 			user.put_in_hands(weapon_box)
 			return TRUE
 		if("P9 SHARP Rifle")
-			weapon_box = new /obj/item/storage/box/spec/scout/sharp(T)
+			weapon_box = new /obj/item/storage/box/spec/heavy_grenadier/sharp(T)
 			user.put_in_hands(weapon_box)
 			return TRUE
 	return FALSE

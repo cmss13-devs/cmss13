@@ -13,10 +13,6 @@ GLOBAL_LIST_INIT(cm_vending_gear_spec, list(
 		list("A19 High Velocity Incendiary Magazine (10x24mm)", 15, /obj/item/ammo_magazine/rifle/m4ra/incendiary, null, VENDOR_ITEM_REGULAR),
 		list("A19 High Velocity Magazine (10x24mm)", 15, /obj/item/ammo_magazine/rifle/m4ra, null, VENDOR_ITEM_REGULAR),
 
-		list("SHARP 9X-E Sticky Explosive Dart magazine (darts)", 15, /obj/item/ammo_magazine/rifle/sharp/explosive, null, VENDOR_ITEM_REGULAR),
-		list("SHARP 9X-T Sticky Tracking Dart magazine (darts)", 15, /obj/item/ammo_magazine/rifle/sharp/track, null, VENDOR_ITEM_REGULAR),
-		list("SHARP 9X-F Flechette Dart Magazine (darts)", 15, /obj/item/ammo_magazine/rifle/sharp/flechette, null, VENDOR_ITEM_REGULAR),
-
 		list("EXTRA SNIPER AMMUNITION", 0, null, null, null),
 		list("M42A Flak Magazine (10x28mm)", 15, /obj/item/ammo_magazine/sniper/flak, null, VENDOR_ITEM_REGULAR),
 		list("M42A Incendiary Magazine (10x28mm)", 15, /obj/item/ammo_magazine/sniper/incendiary, null, VENDOR_ITEM_REGULAR),
@@ -26,6 +22,11 @@ GLOBAL_LIST_INIT(cm_vending_gear_spec, list(
 		list("84mm Anti-Armor Rocket", 15, /obj/item/ammo_magazine/rocket/ap, null, VENDOR_ITEM_REGULAR),
 		list("84mm High-Explosive Rocket", 15, /obj/item/ammo_magazine/rocket, null, VENDOR_ITEM_REGULAR),
 		list("84mm White-Phosphorus Rocket", 15, /obj/item/ammo_magazine/rocket/wp, null, VENDOR_ITEM_REGULAR),
+
+		list("EXTRA GRENADER AMMUNITION", 0, null, null, null),
+		list("SHARP 9X-E Sticky Explosive Dart magazine (darts)", 15, /obj/item/ammo_magazine/rifle/sharp/explosive, null, VENDOR_ITEM_REGULAR),
+		list("SHARP 9X-T Sticky Tracking Dart magazine (darts)", 15, /obj/item/ammo_magazine/rifle/sharp/track, null, VENDOR_ITEM_REGULAR),
+		list("SHARP 9X-F Flechette Dart Magazine (darts)", 15, /obj/item/ammo_magazine/rifle/sharp/flechette, null, VENDOR_ITEM_REGULAR),
 
 		list("EXTRA GRENADES", 0, null, null, null),
 		list("M40 HEDP Grenades x6", 15, /obj/effect/essentials_set/hedp_6_pack, null, VENDOR_ITEM_REGULAR),

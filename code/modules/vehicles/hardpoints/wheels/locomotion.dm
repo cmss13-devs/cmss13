@@ -61,28 +61,3 @@
 
 	if(owner)
 		owner.healthcheck()
-
-/*
-** PRESETS SPAWNERS
-*/
-
-/obj/effect/hardpoint_spawner/locomotion
-	name = "Locomotion Spawner"
-	icon = 'icons/obj/vehicles/hardpoints/truck.dmi'
-	icon_state = "truck_treads"
-
-/obj/effect/hardpoint_spawner/locomotion/choose_hardpoint()
-	return pick(/obj/item/hardpoint/locomotion/truck/treads,\
-				/obj/item/hardpoint/locomotion/truck/treads/crane,\
-				/obj/item/hardpoint/locomotion/truck/wheels,\
-				/obj/item/hardpoint/locomotion/truck/wheels/civtruck,\
-				/obj/item/hardpoint/locomotion/truck/wheels/civvan)
-
-/obj/effect/hardpoint_spawner/locomotion/Initialize()
-	. = ..()
-	spawn_hardpoint()
-	qdel(src)
-
-/obj/effect/hardpoint_spawner/locomotion/spawn_hardpoint()
-	var/I = choose_hardpoint()
-	return (new I(loc))

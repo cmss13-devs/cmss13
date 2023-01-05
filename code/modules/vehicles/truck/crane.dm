@@ -1,5 +1,5 @@
 /obj/vehicle/multitile/crane
-	name = "Crane"
+	name = "crane"
 	desc = "A rather cheap hunk of metal with some treads, you know what to do. Entrance on the left side. Also emergency exit on the back."
 
 	layer = ABOVE_XENO_LAYER
@@ -41,7 +41,7 @@
 */
 
 /obj/effect/vehicle_spawner/crane
-	name = "Crane Spawner"
+	name = "crane spawner"
 	icon = 'icons/obj/vehicles/crane.dmi'
 	icon_state = "crane"
 

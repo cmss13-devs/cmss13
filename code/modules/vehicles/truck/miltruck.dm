@@ -1,5 +1,5 @@
 /obj/vehicle/multitile/miltruck
-	name = "Military truck"
+	name = "military truck"
 	desc = "A rather new hunk of metal with some locomotion, you know what to do. Entrance on the sides."
 
 	layer = ABOVE_XENO_LAYER
@@ -37,12 +37,12 @@
 	)
 
 /obj/vehicle/multitile/miltruck/miltruck_2
-	name = "Military truck"
+	name = "military truck"
 	desc = "A rather new hunk of metal with some locomotion, you know what to do. Entrance on the sides."
 	icon_state = "miltruck_2"
 
 /obj/vehicle/multitile/miltruck/miltruck_3
-	name = "Military truck"
+	name = "military truck"
 	desc = "A rather new hunk of metal with some locomotion, you know what to do. Entrance on the back and sides."
 	icon_state = "miltruck_3"
 	interior_map = "van"
@@ -60,7 +60,7 @@
 */
 
 /obj/effect/vehicle_spawner/miltruck
-	name = "Miltruck Spawner"
+	name = "miltruck spawner"
 	icon = 'icons/obj/vehicles/miltruck.dmi'
 	icon_state = "miltruck_1"
 	pixel_x = -16

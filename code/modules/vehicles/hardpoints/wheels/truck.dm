@@ -5,7 +5,7 @@
 
 	//TRUCK Wheels
 /obj/item/hardpoint/locomotion/truck/wheels
-	name = "Military wheels"
+	name = "military wheels"
 	desc = "Integral to the movement of the military truck."
 	icon_state = "Military_wheels"
 	disp_icon = "truck"
@@ -16,14 +16,14 @@
 	move_delay = VEHICLE_SPEED_VERYFAST
 
 /obj/item/hardpoint/locomotion/truck/wheels/civtruck
-	name = "Civilian truck wheels"
+	name = "civilian truck wheels"
 	desc = "Integral to the movement of the civilian trucks."
 	icon_state = "Civilian_truck_wheels"
 	disp_icon = "truck"
 	disp_icon_state = "civtruckwheels"
 
 /obj/item/hardpoint/locomotion/truck/wheels/civvan
-	name = "Civilian van wheels"
+	name = "civilian van wheels"
 	desc = "Integral to the movement of the civilian van."
 	icon_state = "Civilian_van_wheels"
 	disp_icon = "truck"
@@ -32,7 +32,7 @@
 
 	//TRUCK Treads
 /obj/item/hardpoint/locomotion/truck/treads
-	name = "Light treads"
+	name = "light treads"
 	desc = "Integral to the movement of the military truck."
 	icon_state = "Light_treads"
 	disp_icon = "truck"
@@ -47,7 +47,7 @@
 	move_turn_momentum_loss_factor = 0.6
 
 /obj/item/hardpoint/locomotion/truck/treads/crane
-	name = "Crane treads"
+	name = "crane treads"
 	desc = "Integral to the movement of the crane."
 	icon_state = "Crane_treads"
 	disp_icon = "truck"

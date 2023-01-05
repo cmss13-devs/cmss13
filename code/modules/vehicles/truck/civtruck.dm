@@ -1,5 +1,5 @@
 /obj/vehicle/multitile/civtruck
-	name = "Civilian truck"
+	name = "civilian truck"
 	desc = "A rather cheap hunk of metal with some wheels, you know what to do. Entrance on the sides."
 
 	layer = ABOVE_XENO_LAYER
@@ -33,11 +33,11 @@
 	)
 
 /obj/vehicle/multitile/civtruck/civtruck_2
-	name = "Civilian truck"
+	name = "civilian truck"
 	icon_state = "civtruck_2"
 
 /obj/vehicle/multitile/civtruck/civtruck_3
-	name = "Civilian truck"
+	name = "civilian truck"
 	icon_state = "civtruck_3"
 
 /*
@@ -45,10 +45,10 @@
 */
 
 /obj/effect/vehicle_spawner/civtruck
-	name = "Civtruck Spawner"
+	name = "civtruck spawner"
 	icon = 'icons/obj/vehicles/civtruck.dmi'
 	icon_state = "civtruck_1"
-	
+
 /obj/effect/vehicle_spawner/civtruck/random_vehicle()
 	return pick(/obj/vehicle/multitile/civtruck,\
 				/obj/vehicle/multitile/civtruck/civtruck_2,\

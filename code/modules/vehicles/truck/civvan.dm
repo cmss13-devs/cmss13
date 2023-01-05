@@ -1,5 +1,5 @@
 /obj/vehicle/multitile/civvan
-	name = "Civilian van"
+	name = "civilian van"
 	desc = "A rather cheap hunk of metal with some wheels, you know what to do. Entrance on the sides."
 
 	layer = ABOVE_XENO_LAYER
@@ -37,7 +37,7 @@
 */
 
 /obj/effect/vehicle_spawner/civvan
-	name = "Civvan Spawner"
+	name = "civvan spawner"
 	icon = 'icons/obj/vehicles/civvan.dmi'
 	icon_state = "civvan"
 

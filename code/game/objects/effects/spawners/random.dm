@@ -543,3 +543,23 @@ GLOBAL_VAR_INIT(spawn_ob, TRUE)
 		/obj/structure/ob_ammo/warhead/cluster
 	)
 	return pick(spawnables)
+
+
+/*
+// Hardpoint spawners
+*/
+
+/obj/effect/spawner/random/locomotion
+	name = "locomotion spawner"
+	icon = 'icons/obj/vehicles/hardpoints/truck.dmi'
+	icon_state = "truck_treads"
+
+/obj/effect/spawner/random/locomotion/item_to_spawn()
+	return pick(/obj/item/hardpoint/locomotion/truck/treads,\
+				/obj/item/hardpoint/locomotion/truck/treads/crane,\
+				/obj/item/hardpoint/locomotion/truck/wheels,\
+				/obj/item/hardpoint/locomotion/truck/wheels/civtruck,\
+				/obj/item/hardpoint/locomotion/truck/wheels/civvan)
+
+
+

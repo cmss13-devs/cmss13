@@ -367,7 +367,7 @@
 //as well as allowing customizations, like properly turning on mapped in direction and so on.
 
 /obj/effect/vehicle_spawner
-	name = "Vehicle Spawner"
+	name = "vehicle Spawner"
 
 //Main proc which handles spawning and adding hardpoints/damaging the vehicle
 /obj/effect/vehicle_spawner/proc/spawn_vehicle()

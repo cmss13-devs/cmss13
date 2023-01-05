@@ -216,7 +216,7 @@ const TextHighlightSetting = (props, context) => {
       <Flex mb={1} color="label" align="baseline">
         <Flex.Item grow={1}>
           <Button
-            content="Highlight words (comma separated):"
+            content="Highlight words:"
             color="transparent"
             icon="times"
             onClick={() =>
@@ -290,6 +290,7 @@ const TextHighlightSetting = (props, context) => {
       <TextArea
         height="3em"
         value={highlightText}
+        placeholder="Separate terms with commas, i.e. (term1, term2, term3)"
         onChange={(e, value) =>
           dispatch(
             updateHighlightSetting({

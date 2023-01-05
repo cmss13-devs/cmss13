@@ -285,14 +285,14 @@
 	return TRUE
 
 /obj/item/spec_kit/grenader_weapon_selector/select_and_spawn(mob/living/carbon/human/user)
-	var/scout_selection = tgui_input_list(usr, "Select your weapon", "Weapon Selection", list("M92 grenade launcher", "P9 SHARP Rifle"))
-	if(!scout_selection || QDELETED(src))
+	var/grenader_selection = tgui_input_list(usr, "Select your weapon", "Weapon Selection", list("M92 Grenade Launcher", "P9 SHARP Rifle"))
+	if(!grenader_selection || QDELETED(src))
 		return FALSE
 	var/turf/T = get_turf(loc)
 	var/obj/item/storage/box/spec/weapon_box
-	switch(scout_selection)
-		if("M92 grenade launcher")
-			weapon_box = new /obj/item/storage/box/spec/heavy_grenadier/m9(T)
+	switch(grenader_selection)
+		if("M92 Grenade Launcher")
+			weapon_box = new /obj/item/storage/box/spec/heavy_grenadier/m92(T)
 			user.put_in_hands(weapon_box)
 			return TRUE
 		if("P9 SHARP Rifle")

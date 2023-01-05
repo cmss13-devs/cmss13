@@ -1,0 +1,5 @@
+author: "CapCamIII"
+delete-after: True
+changes:
+  - rscadd: "Adds 2 new char setup loadout items, a black and green balaclava, 2 points each."
+  - bugfix: "Balaclava object sprite has a correct offset now."

@@ -19238,8 +19238,9 @@
 	},
 /area/shuttle/drop2/sulaco)
 "bjV" = (
-/obj/structure/bed/chair/dropship/passenger/shuttle_chair{
-	dir = 4
+/obj/structure/platform/normandy{
+	dir = 1;
+	pixel_y = 5
 	},
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15";
@@ -19247,12 +19248,12 @@
 	},
 /area/shuttle/drop2/sulaco)
 "bjW" = (
-/obj/item/device/radio/intercom/normandy{
-	pixel_y = 24
+/obj/structure/bed/chair/vehicle/breakable{
+	pixel_x = -8
 	},
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin6";
-	tag = "icon-rasputin6"
+	icon_state = "rasputin15";
+	tag = "icon-rasputin15"
 	},
 /area/shuttle/drop2/sulaco)
 "bjX" = (
@@ -19340,39 +19341,8 @@
 /obj/structure/bed/chair/vehicle/breakable{
 	pixel_x = 8
 	},
-/area/shuttle/drop1/sulaco)
-"bkm" = (
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin5";
-	tag = "icon-rasputin5"
-	},
-/area/shuttle/drop1/sulaco)
-"bkn" = (
-/obj/structure/machinery/door_control{
-	id = "sh_dropship1";
-	name = "Dropship Lockdown";
-	normaldoorcontrol = 3;
-	pixel_y = -19;
-	req_one_access_txt = "3;22";
-	throw_range = 15
-	},
-/turf/open/shuttle/dropship{
-	icon_state = "floor8";
-	tag = "icon-floor8"
-	},
-/area/shuttle/drop1/sulaco)
-"bko" = (
-/obj/item/device/radio/intercom/alamo{
-	pixel_y = 24
-	},
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin7";
-	tag = "icon-rasputin7"
-	},
-/area/shuttle/drop1/sulaco)
-"bkp" = (
-/obj/structure/bed/chair/dropship/passenger/shuttle_chair{
-	dir = 8
+/obj/structure/bed/chair/vehicle/breakable{
+	pixel_x = -8
 	},
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15";
@@ -21702,27 +21672,6 @@
 	icon_state = "50"
 	},
 /area/shuttle/drop2/sulaco)
-"btI" = (
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin4";
-	tag = "icon-rasputin4"
-	},
-/area/shuttle/drop2/sulaco)
-"btJ" = (
-/obj/item/device/radio/intercom/normandy{
-	pixel_y = 24
-	},
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin5";
-	tag = "icon-rasputin5"
-	},
-/area/shuttle/drop2/sulaco)
-"btK" = (
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin8";
-	tag = "icon-rasputin8"
-	},
-/area/shuttle/drop2/sulaco)
 "btL" = (
 /turf/closed/shuttle/dropship2{
 	icon_state = "51"
@@ -21767,8 +21716,11 @@
 	},
 /area/shuttle/drop1/sulaco)
 "btR" = (
-/obj/item/device/radio/intercom/alamo{
-	pixel_y = 24
+/obj/structure/bed/chair/vehicle/breakable{
+	pixel_x = -8
+	},
+/obj/structure/bed/chair/vehicle/breakable{
+	pixel_x = 8
 	},
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15";
@@ -103841,7 +103793,7 @@ bcf
 bdQ
 bfP
 bhY
-btR
+bjW
 bpl
 btR
 bpl
@@ -103849,7 +103801,7 @@ btR
 bpl
 btR
 bvi
-cZK
+bjV
 oRU
 bpl
 bpl
@@ -104052,7 +104004,7 @@ blJ
 blJ
 fSp
 dOy
-cZK
+bjV
 bpl
 bpl
 bpl
@@ -104255,7 +104207,7 @@ btR
 bpl
 btR
 bvi
-cZK
+bjV
 oRU
 bpl
 bpl

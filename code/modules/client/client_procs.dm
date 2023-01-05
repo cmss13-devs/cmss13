@@ -229,7 +229,16 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	if(href_list[CLAN_ACTION])
 		clan_topic(href, href_list)
 
+
+	if(hsrc && hsrc != admin_holder && DEFAULT_TRY_QUEUE_VERB(VERB_CALLBACK(src, PROC_REF(_Topic), hsrc, href, href_list)))
+		return
+
 	return ..() //redirect to hsrc.Topic()
+
+///dumb workaround because byond doesnt seem to recognize the PROC_REF(Topic()) typepath for /datum/proc/Topic() from the client Topic,
+///so we cant queue it without this
+/client/proc/_Topic(datum/hsrc, href, list/href_list)
+	return hsrc.Topic(href, href_list)
 
 /client/proc/handle_spam_prevention(var/message, var/mute_type)
 	if(CONFIG_GET(flag/automute_on) && !admin_holder && src.last_message == message)

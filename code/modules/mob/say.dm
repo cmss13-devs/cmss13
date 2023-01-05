@@ -34,17 +34,20 @@
 
 	var/list/possible_phrases = splittext(message, ";")
 	if(length(possible_phrases))
-		say_verb(pick(possible_phrases))
+		QUEUE_OR_CALL_VERB_FOR(VERB_CALLBACK(src, /mob/proc/say, pick(possible_phrases)), SSspeech_controller)
 		picksay_cooldown = world.time + 1.5 SECONDS
 
 /mob/verb/say_verb(message as text)
 	set name = "Say"
 	set category = "IC"
+	set instant = TRUE
 
 	if(!client?.attempt_talking(message))
 		return
 	set_typing_indicator(0)
-	usr.say(message)
+	if(message)
+		QUEUE_OR_CALL_VERB_FOR(VERB_CALLBACK(src, /mob/proc/say, message), SSspeech_controller)
+
 
 /mob/verb/me_verb(message as text)
 	set name = "Me"
@@ -55,10 +58,8 @@
 		return
 
 	set_typing_indicator(0)
-	if(use_me)
-		usr.emote("me",usr.emote_type,message, TRUE)
-	else
-		usr.emote(message, 1, null, TRUE)
+	if(use_me && message)
+		QUEUE_OR_CALL_VERB_FOR(VERB_CALLBACK(src, /mob/proc/emote, "me", usr.emote_type, message, TRUE), SSspeech_controller)
 
 /mob/proc/say_dead(var/message)
 	var/name = src.real_name

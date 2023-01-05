@@ -17,10 +17,17 @@
 	~ BMC777
 */
 
-/client/Click(atom/A, location, control, params)
-	if (control && !ignore_next_click) // No .click macros allowed, and only one click per mousedown.
-		ignore_next_click = TRUE
-		return usr.do_click(A, location, params)
+/client/Click(atom/object, location, control, params)
+	if(!control || ignore_next_click) // No .click macros allowed, and only one click per mousedown.
+		return
+
+	//check if the server is overloaded and if it is then queue up the click for next tick
+	//yes having it call a wrapping proc on the subsystem is fucking stupid glad we agree unfortunately byond insists its reasonable
+	if(!QDELETED(object) && TRY_QUEUE_VERB(VERB_CALLBACK(object, /atom/proc/_Click, location, control, params), VERB_HIGH_PRIORITY_QUEUE_THRESHOLD, SSinput, control))
+		return
+
+	ignore_next_click = TRUE
+	return usr.do_click(object, location, params)
 
 /mob/proc/do_click(atom/A, location, params)
 	// We'll be sending a lot of signals and things later on, this will save time.

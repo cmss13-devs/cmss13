@@ -2,6 +2,9 @@
 	set name = "quick-equip"
 	set hidden = 1
 
+	DEFAULT_QUEUE_OR_CALL_VERB(VERB_CALLBACK(src, PROC_REF(execute_quick_equip)))
+
+/mob/living/carbon/human/proc/execute_quick_equip()
 	if(ishuman(src))
 		var/mob/living/carbon/human/H = src
 		var/obj/item/I = H.get_active_hand()

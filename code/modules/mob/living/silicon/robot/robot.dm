@@ -887,6 +887,9 @@ var/list/robot_verbs_default = list(
 	set category = "IC"
 	set src = usr
 
+	return ..()
+
+/mob/living/silicon/robot/execute_mode()
 	var/obj/item/W = get_active_hand()
 	if (W)
 		W.attack_self(src)

@@ -5,6 +5,9 @@
 	set category = "Object"
 	set src = usr
 
+	DEFAULT_QUEUE_OR_CALL_VERB(VERB_CALLBACK(src, PROC_REF(execute_mode)))
+
+/mob/proc/execute_mode()
 	if (usr.is_mob_incapacitated())
 		return
 

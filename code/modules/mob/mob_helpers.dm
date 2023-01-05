@@ -455,6 +455,9 @@ It's fairly easy to fix if dealing with single letters but not so much with comp
 	set name = "Examine"
 	set category = "IC"
 
+	DEFAULT_QUEUE_OR_CALL_VERB(VERB_CALLBACK(src, PROC_REF(run_examinate), examinify))
+
+/mob/proc/run_examinate(atom/examinify)
 	examinify.examine(src)
 
 /mob/verb/pickup_item(obj/item/pickupify in oview(1, usr))

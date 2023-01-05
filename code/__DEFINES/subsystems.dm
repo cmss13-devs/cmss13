@@ -111,6 +111,7 @@
 
 #define SS_INIT_EARLYRUNTIMES  1000
 #define SS_INIT_TICKER_SPAWN    999
+#define SS_INIT_SPEECH_CONTROLLER 86
 #define SS_INIT_INPUT   85
 #define SS_INIT_RUST    26
 #define SS_INIT_SUPPLY_SHUTTLE  25
@@ -162,6 +163,8 @@
 // If the subsystem isn't listed here it's either DEFAULT or PROCESS (if it's a processing subsystem child)
 
 #define SS_PRIORITY_INPUT   1000
+#define SS_PRIORITY_DELAYED_VERBS 950
+#define SS_PRIORITY_SPEECH_CONTROLLER 900
 #define SS_PRIORITY_TIMER   700
 #define SS_PRIORITY_SOUND   250
 #define SS_PRIORITY_TICKER  200

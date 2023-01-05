@@ -286,7 +286,7 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/suppressor_fake
 	name = "cheap suppressor"
-	desc = "This cheap-looking suppressor doesn't seem to do much except reduce the noise of the weapon it's attached to."
+	desc = "This cheap-looking suppressor doesn't seem to do much except reduce the noise of the weapon it's attached to. Might not fit on some proprietary barrels."
 	icon_state = "suppressor_fake"
 	slot = "muzzle"
 	pixel_shift_y = 15

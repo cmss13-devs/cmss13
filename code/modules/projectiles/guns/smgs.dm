@@ -12,6 +12,7 @@
 	wield_delay = WIELD_DELAY_VERY_FAST
 	attachable_allowed = list(
 						/obj/item/attachable/suppressor,
+						/obj/item/attachable/suppressor_fake,
 						/obj/item/attachable/reddot,
 						/obj/item/attachable/reflex,
 						/obj/item/attachable/flashlight,
@@ -44,6 +45,7 @@
 	current_mag = /obj/item/ammo_magazine/smg/m39
 	attachable_allowed = list(
 						/obj/item/attachable/suppressor,
+						/obj/item/attachable/suppressor_fake,
 						/obj/item/attachable/reddot,
 						/obj/item/attachable/reflex,
 						/obj/item/attachable/angledgrip,
@@ -136,6 +138,7 @@
 	current_mag = /obj/item/ammo_magazine/smg/mp5
 	attachable_allowed = list(
 						/obj/item/attachable/suppressor,
+						/obj/item/attachable/suppressor_fake,
 						/obj/item/attachable/reddot,
 						/obj/item/attachable/reflex,
 						/obj/item/attachable/flashlight,
@@ -196,6 +199,7 @@
 	current_mag = /obj/item/ammo_magazine/smg/mp27
 	attachable_allowed = list(
 						/obj/item/attachable/suppressor,
+						/obj/item/attachable/suppressor_fake,
 						/obj/item/attachable/reddot,
 						/obj/item/attachable/reflex,
 						/obj/item/attachable/flashlight,
@@ -283,6 +287,7 @@
 						/obj/item/attachable/lasersight,
 						/obj/item/attachable/reflex,
 						/obj/item/attachable/suppressor,
+						/obj/item/attachable/suppressor_fake,
 						)
 	random_spawn_chance = 33
 	random_spawn_rail = list(
@@ -332,6 +337,7 @@
 						/obj/item/attachable/reddot,
 						/obj/item/attachable/flashlight,
 						/obj/item/attachable/suppressor,
+						/obj/item/attachable/suppressor_fake,
 						/obj/item/attachable/compensator,
 						/obj/item/attachable/heavy_barrel,
 						/obj/item/attachable/extended_barrel

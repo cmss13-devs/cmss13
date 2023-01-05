@@ -326,6 +326,7 @@ their unique feature is that a direct hit will buff your damage and firerate
 						/obj/item/attachable/extended_barrel,
 						/obj/item/attachable/heavy_barrel,
 						/obj/item/attachable/suppressor,
+						/obj/item/attachable/suppressor_fake,
 						/obj/item/attachable/compensator,
 						//Rail
 						/obj/item/attachable/reddot,
@@ -385,6 +386,7 @@ their unique feature is that a direct hit will buff your damage and firerate
 						/obj/item/attachable/extended_barrel,
 						/obj/item/attachable/heavy_barrel,
 						/obj/item/attachable/suppressor,
+						/obj/item/attachable/suppressor_fake,
 						/obj/item/attachable/compensator,
 						//Rail
 						/obj/item/attachable/reddot,

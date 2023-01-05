@@ -46,6 +46,7 @@
 	current_mag = /obj/item/ammo_magazine/rifle
 	attachable_allowed = list(
 						/obj/item/attachable/suppressor,
+						/obj/item/attachable/suppressor_fake,
 						/obj/item/attachable/bayonet,
 						/obj/item/attachable/bayonet/upp,
 						/obj/item/attachable/bayonet/c02,
@@ -122,6 +123,7 @@
 	current_mag = /obj/item/ammo_magazine/rifle/nsg23
 	attachable_allowed = list(
 						/obj/item/attachable/suppressor,
+						/obj/item/attachable/suppressor_fake,
 						/obj/item/attachable/bayonet,
 						/obj/item/attachable/reddot,
 						/obj/item/attachable/reflex,
@@ -320,6 +322,7 @@
 	current_mag = /obj/item/ammo_magazine/rifle/m41aMK1
 	attachable_allowed = list(
 						/obj/item/attachable/suppressor,
+						/obj/item/attachable/suppressor_fake,
 						/obj/item/attachable/bayonet,
 						/obj/item/attachable/bayonet/upp,
 						/obj/item/attachable/reddot,
@@ -387,6 +390,7 @@
 	//somewhere in between the mk1 and mk2
 	attachable_allowed = list(
 						/obj/item/attachable/suppressor,
+						/obj/item/attachable/suppressor_fake,
 						/obj/item/attachable/bayonet,
 						/obj/item/attachable/bayonet/upp,
 						/obj/item/attachable/reddot,
@@ -608,6 +612,7 @@
 	current_mag = /obj/item/ammo_magazine/rifle/mar40
 	attachable_allowed = list(
 						/obj/item/attachable/suppressor,
+						/obj/item/attachable/suppressor_fake,
 						/obj/item/attachable/bayonet,
 						/obj/item/attachable/bayonet/upp,
 						/obj/item/attachable/reddot,
@@ -642,6 +647,7 @@
 									)
 	random_spawn_muzzle = list(
 							/obj/item/attachable/suppressor,
+						/obj/item/attachable/suppressor_fake,
 							/obj/item/attachable/bayonet/upp,
 							/obj/item/attachable/extended_barrel,
 							/obj/item/attachable/compensator,
@@ -687,6 +693,7 @@
 	wield_delay = WIELD_DELAY_FAST
 	attachable_allowed = list(
 					/obj/item/attachable/suppressor,
+					/obj/item/attachable/suppressor_fake,
 					/obj/item/attachable/bayonet,
 					/obj/item/attachable/bayonet/upp,
 					/obj/item/attachable/reddot,
@@ -807,6 +814,7 @@
 	current_mag = /obj/item/ammo_magazine/rifle/m16
 	attachable_allowed = list(
 						/obj/item/attachable/suppressor,
+						/obj/item/attachable/suppressor_fake,
 						/obj/item/attachable/bayonet,
 						/obj/item/attachable/bayonet/upp,
 						/obj/item/attachable/reddot,
@@ -846,6 +854,7 @@
 									)
 	random_spawn_muzzle = list(
 							/obj/item/attachable/suppressor,
+							/obj/item/attachable/suppressor_fake,
 							/obj/item/attachable/bayonet,
 							/obj/item/attachable/compensator,
 							/obj/item/attachable/extended_barrel
@@ -895,6 +904,7 @@
 	current_mag = /obj/item/ammo_magazine/rifle/ar10
 	attachable_allowed = list(
 						/obj/item/attachable/suppressor,
+						/obj/item/attachable/suppressor_fake,
 						/obj/item/attachable/bayonet,
 						/obj/item/attachable/bayonet/upp,
 						/obj/item/attachable/reddot,
@@ -922,6 +932,7 @@
 									)
 	random_spawn_muzzle = list(
 							/obj/item/attachable/suppressor,
+							/obj/item/attachable/suppressor_fake,
 							/obj/item/attachable/bayonet,
 							/obj/item/attachable/compensator,
 							/obj/item/attachable/extended_barrel
@@ -967,6 +978,7 @@
 	current_mag = /obj/item/ammo_magazine/rifle/m16/ap
 	attachable_allowed = list(
 						/obj/item/attachable/suppressor,
+						/obj/item/attachable/suppressor_fake,
 						/obj/item/attachable/bayonet,
 						/obj/item/attachable/reddot,
 						/obj/item/attachable/reflex,
@@ -1008,6 +1020,7 @@
 	current_mag = /obj/item/ammo_magazine/rifle/lmg
 	attachable_allowed = list(
 						/obj/item/attachable/suppressor,
+						/obj/item/attachable/suppressor_fake,
 						/obj/item/attachable/reddot,
 						/obj/item/attachable/reflex,
 						/obj/item/attachable/verticalgrip,
@@ -1070,6 +1083,7 @@
 						/obj/item/attachable/reflex,
 						//Muzzle
 						/obj/item/attachable/suppressor,
+						/obj/item/attachable/suppressor_fake,
 						/obj/item/attachable/bayonet,
 						/obj/item/attachable/bayonet/upp,
 						/obj/item/attachable/extended_barrel,
@@ -1349,6 +1363,7 @@
 	current_mag = /obj/item/ammo_magazine/rifle/hunting
 	attachable_allowed = list(
 						/obj/item/attachable/suppressor,
+						/obj/item/attachable/suppressor_fake,
 						/obj/item/attachable/bayonet,
 						/obj/item/attachable/bayonet/upp,
 						/obj/item/attachable/reddot,

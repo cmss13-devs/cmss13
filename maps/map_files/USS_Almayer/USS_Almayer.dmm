@@ -37828,6 +37828,12 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/living/captain_mess)
+"dOy" = (
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin11"
+	},
+/area/shuttle/drop2/sulaco)
 "dOL" = (
 /obj/structure/bed/chair/comfy/black,
 /turf/open/floor/almayer,
@@ -73668,6 +73674,12 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/command/lifeboat)
+"tCD" = (
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin11"
+	},
+/area/shuttle/drop1/sulaco)
 "tCN" = (
 /turf/open/floor/almayer{
 	dir = 8;
@@ -103647,7 +103659,7 @@ blJ
 blJ
 blJ
 fSp
-bvi
+dOy
 cZK
 bpl
 bpl
@@ -108113,7 +108125,7 @@ blP
 blP
 blP
 bAy
-bvo
+tCD
 kMD
 bpq
 bpq

@@ -414,6 +414,12 @@ var/global/list/gear_datums = list()
 	cost = 7
 	allowed_origins = USCM_ORIGINS
 
+/datum/gear/fake_suppressor
+	display_name = "Cheap Suppressor"
+	path = /obj/item/attachable/suppressor_fake
+	slot = WEAR_IN_BACK
+	cost = 3
+
 /datum/gear/jungle_boots
 	display_name = "Jungle Pattern Combat Boots"
 	path = /obj/item/clothing/shoes/marine/jungle

@@ -43,7 +43,7 @@ var/list/ai_verbs_default = list(
 	icon = 'icons/mob/AI.dmi'//
 	icon_state = "ai"
 	anchored = 1 // -- TLE
-	density = 1
+	density = TRUE
 	status_flags = CANSTUN|CANKNOCKOUT
 	med_hud = MOB_HUD_MEDICAL_BASIC
 	sec_hud = MOB_HUD_SECURITY_BASIC
@@ -57,7 +57,7 @@ var/list/ai_verbs_default = list(
 	var/ioncheck[1]
 	var/lawchannel = "Common" // Default channel on which to state laws
 	var/icon/holo_icon//Default is assigned when AI is created.
-//	var/obj/item/device/pda/ai/aiPDA = null
+// var/obj/item/device/pda/ai/aiPDA = null
 	var/obj/item/device/multitool/aiMulti = null
 	var/obj/item/device/radio/headset/ai_integrated/aiRadio = null
 //Hud stuff
@@ -76,7 +76,7 @@ var/list/ai_verbs_default = list(
 
 	var/mob/living/silicon/ai/parent = null
 
-	var/camera_light_on = 0	//Defines if the AI toggled the light on the camera it's looking through.
+	var/camera_light_on = 0 //Defines if the AI toggled the light on the camera it's looking through.
 	var/datum/trackable/track = null
 	var/last_announcement = ""
 	var/datum/announcement/priority/announcement
@@ -98,11 +98,11 @@ var/list/ai_verbs_default = list(
 				possibleNames -= pickedName
 				pickedName = null
 
-//	aiPDA = new/obj/item/device/pda/ai(src)
+// aiPDA = new/obj/item/device/pda/ai(src)
 	SetName(pickedName)
 	anchored = 1
 	canmove = 0
-	density = 1
+	density = TRUE
 	forceMove(loc)
 
 	holo_icon = getHologramIcon(icon('icons/mob/AI.dmi',"holo1"))
@@ -116,7 +116,6 @@ var/list/ai_verbs_default = list(
 		add_ai_verbs(src)
 
 	//Languages
-	add_language(LANGUAGE_BINARY, 1)
 	add_language(LANGUAGE_ENGLISH, 1)
 	add_language(LANGUAGE_RUSSIAN, 1)
 	add_language(LANGUAGE_XENOMORPH, 0)
@@ -356,8 +355,8 @@ var/list/ai_verbs_default = list(
 		camera = A
 	..()
 	if(istype(A,/obj/structure/machinery/camera))
-		if(camera_light_on)	A.SetLuminosity(AI_CAMERA_LUMINOSITY)
-		else				A.SetLuminosity(0)
+		if(camera_light_on) A.SetLuminosity(AI_CAMERA_LUMINOSITY)
+		else A.SetLuminosity(0)
 
 
 /mob/living/silicon/ai/proc/switchCamera(var/obj/structure/machinery/camera/C)
@@ -468,7 +467,7 @@ var/list/ai_verbs_default = list(
 				SD.friendc = 0
 	return
 
-//I am the icon meister. Bow fefore me.	//>fefore
+//I am the icon meister. Bow fefore me. //>fefore
 /mob/living/silicon/ai/proc/ai_hologram_change()
 	set name = "Change Hologram"
 	set desc = "Change the default hologram available to AI to something else."

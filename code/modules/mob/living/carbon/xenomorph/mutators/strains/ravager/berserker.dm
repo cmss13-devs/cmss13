@@ -51,7 +51,7 @@
 	var/movement_speed_buff_per_rage = 0.1
 
 	// Eviscerate config
-	var/rage_lock_duration = 10 SECONDS      // 10 seconds of max rage
+	var/rage_lock_duration = 10 SECONDS   // 10 seconds of max rage
 	var/rage_cooldown_duration = 7 SECONDS  // 7 seconds of NO rage.
 
 	// State for tracking rage
@@ -116,13 +116,13 @@
 	rage_lock_start_time = world.time
 	var/color = "#00000035"
 	bound_xeno.add_filter("empower_rage", 1, list("type" = "outline", "color" = color, "size" = 3))
-	addtimer(CALLBACK(src, .proc/rage_lock_weaken), rage_lock_duration/2)
+	addtimer(CALLBACK(src, PROC_REF(rage_lock_weaken)), rage_lock_duration/2)
 
 /datum/behavior_delegate/ravager_berserker/proc/rage_lock_weaken()
 	bound_xeno.remove_filter("empower_rage")
 	var/color = "#00000027"
 	bound_xeno.add_filter("empower_rage", 1, list("type" = "outline", "color" = color, "size" = 3))
-	addtimer(CALLBACK(src, .proc/rage_lock_callback), rage_cooldown_duration/2)
+	addtimer(CALLBACK(src, PROC_REF(rage_lock_callback)), rage_cooldown_duration/2)
 
 
 /datum/behavior_delegate/ravager_berserker/proc/rage_lock_callback()
@@ -132,7 +132,7 @@
 	decrement_rage(rage)
 	bound_xeno.remove_filter("berserker_rage")
 	to_chat(bound_xeno, SPAN_XENOWARNING("Your adrenal glands spasm. You cannot gain any rage for [rage_cooldown_duration/10] seconds."))
-	addtimer(CALLBACK(src, .proc/rage_cooldown_callback), rage_cooldown_duration)
+	addtimer(CALLBACK(src, PROC_REF(rage_cooldown_callback)), rage_cooldown_duration)
 	bound_xeno.add_filter("berserker_lockdown", 1, list("type" = "outline", "color" = "#fcfcfcff", "size" = 1))
 
 /datum/behavior_delegate/ravager_berserker/proc/rage_cooldown_callback()
@@ -147,7 +147,7 @@
 	if (next_slash_buffed)
 		to_chat(bound_xeno, SPAN_XENOHIGHDANGER("You significantly strengthen your attack, slowing [A]!"))
 		to_chat(A, SPAN_XENOHIGHDANGER("You feel a sharp pain as [bound_xeno] slashes you, slowing you down!"))
-		A.apply_effect(get_xeno_stun_duration(A, 6), SUPERSLOW)
+		A.apply_effect(get_xeno_stun_duration(A, slash_slow_duration), SLOW)
 		next_slash_buffed = FALSE
 
 	return original_damage

@@ -1,9 +1,9 @@
-/*	Photography!
- *	Contains:
- *		Camera
- *		Camera Film
- *		Photos
- *		Photo Albums
+/* Photography!
+ * Contains:
+ * Camera
+ * Camera Film
+ * Photos
+ * Photo Albums
  */
 
 /*
@@ -27,8 +27,8 @@
 	icon_state = "photo"
 	item_state = "paper"
 	w_class = SIZE_TINY
-	var/icon/img	//Big photo image
-	var/scribble	//Scribble on the back.
+	var/icon/img //Big photo image
+	var/scribble //Scribble on the back.
 	var/icon/tiny
 	var/photo_size = 3
 

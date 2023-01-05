@@ -1,6 +1,6 @@
 /obj/structure/machinery/chem_master
 	name = "ChemMaster 3000"
-	density = 1
+	density = TRUE
 	anchored = 1
 	icon = 'icons/obj/structures/machinery/science_machines.dmi'
 	icon_state = "mixer0"
@@ -27,7 +27,7 @@
 
 /obj/structure/machinery/chem_master/Initialize()
 	. = ..()
-	create_reagents(240)
+	create_reagents(300)
 	connect_smartfridge()
 
 /obj/structure/machinery/chem_master/Destroy()
@@ -39,7 +39,7 @@
 		return
 	connected = locate(/obj/structure/machinery/smartfridge/chemistry) in range(tether_range, src)
 	if(connected)
-		RegisterSignal(connected, COMSIG_PARENT_QDELETING, .proc/cleanup)
+		RegisterSignal(connected, COMSIG_PARENT_QDELETING, PROC_REF(cleanup))
 		visible_message(SPAN_NOTICE("<b>The [src] beeps:</b> Smartfridge connected."))
 
 /obj/structure/machinery/chem_master/ex_act(severity)

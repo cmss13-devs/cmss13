@@ -5,9 +5,9 @@
 	knockdown = FALSE
 
 	distance = 5
-	knockdown = FALSE                // Should we knock down the target?
-	slash = FALSE                    // Do we slash upon reception?
-	freeze_self = FALSE                // Should we freeze ourselves after the lunge?
+	knockdown = FALSE // Should we knock down the target?
+	slash = FALSE // Do we slash upon reception?
+	freeze_self = FALSE // Should we freeze ourselves after the lunge?
 	should_destroy_objects = TRUE   // Only used for ravager charge
 
 /datum/action/xeno_action/onclick/predalien_roar

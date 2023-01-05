@@ -48,8 +48,8 @@
 
 
 // /obj/structure/resource_node/get_examine_text(mob/user)
-// 	..()
-// 	to_chat(user, "It has [amount_left] resources left.")
+// ..()
+// to_chat(user, "It has [amount_left] resources left.")
 
 /obj/structure/resource_node/ex_act(severity)
 	return
@@ -96,7 +96,7 @@
 
 	// Vary by up to +/- RESOURCE_GROWTH_VARY
 	var/growth_delay_variance = (rand(0,1) == 0 ? (-1) : 1) * rand(0,RESOURCE_GROWTH_VARY)
-	addtimer(CALLBACK(src, .proc/grow), growth_delay + growth_delay_variance)
+	addtimer(CALLBACK(src, PROC_REF(grow)), growth_delay + growth_delay_variance)
 
 /obj/structure/resource_node/plasma/proc/grow()
 	growth_level++
@@ -109,4 +109,4 @@
 
 	// Continue growing
 	var/growth_delay_variance = (rand(0,1) == 0 ? (-1) : 1) * rand(0,RESOURCE_GROWTH_VARY)
-	addtimer(CALLBACK(src, .proc/grow), growth_delay + growth_delay_variance)
+	addtimer(CALLBACK(src, PROC_REF(grow)), growth_delay + growth_delay_variance)

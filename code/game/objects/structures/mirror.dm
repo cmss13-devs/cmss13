@@ -4,14 +4,14 @@
 	desc = "Mirror mirror on the wall, who's the most robust of them all?"
 	icon = 'icons/obj/structures/props/watercloset.dmi'
 	icon_state = "mirror"
-	density = 0
+	density = FALSE
 	anchored = 1
 	var/shattered = 0
 
 
 /obj/structure/mirror/attack_hand(mob/user as mob)
 
-	if(shattered)	return
+	if(shattered) return
 
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
@@ -45,7 +45,7 @@
 				species_facial_hair = GLOB.facial_hair_styles_list
 
 			var/new_style = input(user, "Select a facial hair style", "Grooming")  as null|anything in species_facial_hair
-			if(userloc != H.loc) return	//no tele-grooming
+			if(userloc != H.loc) return //no tele-grooming
 			if(new_style)
 				H.f_style = new_style
 
@@ -61,7 +61,7 @@
 			species_hair = GLOB.hair_styles_list
 
 		var/new_style = input(user, "Select a hair style", "Grooming")  as null|anything in species_hair
-		if(userloc != H.loc) return	//no tele-grooming
+		if(userloc != H.loc) return //no tele-grooming
 		if(new_style)
 			H.h_style = new_style
 
@@ -69,7 +69,7 @@
 
 
 /obj/structure/mirror/proc/shatter()
-	if(shattered)	return
+	if(shattered) return
 	shattered = 1
 	icon_state = "mirror_broke"
 	playsound(src, "shatter", 70, 1)

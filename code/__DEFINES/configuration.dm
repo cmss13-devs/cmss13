@@ -6,5 +6,5 @@
 #define CONFIG_SHIP_MAPS_FILE "shipmaps.txt"
 
 //flags
-#define CONFIG_ENTRY_LOCKED (1<<0)	//can't edit
-#define CONFIG_ENTRY_HIDDEN (1<<1)	//can't see value
+#define CONFIG_ENTRY_LOCKED (1<<0) //can't edit
+#define CONFIG_ENTRY_HIDDEN (1<<1) //can't see value

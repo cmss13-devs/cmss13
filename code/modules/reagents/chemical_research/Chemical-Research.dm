@@ -1,4 +1,4 @@
-var/global/datum/chemical_data/chemical_data = new /datum/chemical_data/
+var/global/datum/chemical_data/chemical_data = new /datum/chemical_data
 
 /datum/chemical_data
 	var/rsc_credits = 0
@@ -14,9 +14,9 @@ var/global/datum/chemical_data/chemical_data = new /datum/chemical_data/
 	var/list/chemical_networks = list()
 	var/list/shared_item_storage = list()
 	var/list/shared_item_quantity = list()
-	var/list/chemical_objective_list = list()	//List of all objective reagents indexed by ID associated with the objective value
-	var/list/chemical_not_completed_objective_list = list()	//List of not completed objective reagents indexed by ID associated with the objective value
-	var/list/chemical_identified_list = list()	//List of all identified objective reagents indexed by ID associated with the objective value
+	var/list/chemical_objective_list = list() //List of all objective reagents indexed by ID associated with the objective value
+	var/list/chemical_not_completed_objective_list = list() //List of not completed objective reagents indexed by ID associated with the objective value
+	var/list/chemical_identified_list = list() //List of all identified objective reagents indexed by ID associated with the objective value
 
 /datum/chemical_data/proc/update_credits(var/change)
 	rsc_credits = max(0, rsc_credits + change)

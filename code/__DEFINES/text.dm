@@ -9,3 +9,8 @@
 
 /// Simply removes the < and > characters, and limits the length of the message.
 #define STRIP_HTML_SIMPLE(text, limit) (GLOB.angular_brackets.Replace(copytext(text, 1, limit), ""))
+
+/// defines related to text related procs
+
+#define SHOW_MESSAGE_VISIBLE 1
+#define SHOW_MESSAGE_AUDIBLE 2

@@ -4,23 +4,25 @@ GLOBAL_VAR_INIT(href_token, GenerateToken())
 GLOBAL_PROTECT(href_token)
 
 /datum/admins
-	var/rank			= "Temporary Admin"
-	var/list/extra_titles		= null
-	var/client/owner	= null
+	var/rank = "Temporary Admin"
+	var/list/extra_titles = null
+	var/client/owner = null
 	var/rights = 0
-	var/fakekey			= null
+	var/fakekey = null
 
 	var/list/datum/marked_datums = list()
 
-	var/admincaster_screen = 0	//See newscaster.dm under machinery for a full description
+	var/admincaster_screen = 0 //See newscaster.dm under machinery for a full description
 	var/datum/feed_message/admincaster_feed_message = new /datum/feed_message   //These two will act as admin_holders.
 	var/datum/feed_channel/admincaster_feed_channel = new /datum/feed_channel
-	var/admincaster_signature	//What you'll sign the newsfeeds as
+	var/admincaster_signature //What you'll sign the newsfeeds as
 
 	var/href_token
 
 	///Whether this admin is invisiminning
 	var/invisimined = FALSE
+
+	var/datum/filter_editor/filteriffic
 
 /datum/admins/New(initial_rank = "Temporary Admin", initial_rights = 0, ckey, list/new_extra_titles)
 	if(!ckey)
@@ -33,6 +35,10 @@ GLOBAL_PROTECT(href_token)
 	href_token = GenerateToken()
 	admin_datums[ckey] = src
 	extra_titles = new_extra_titles
+
+// Letting admins edit their own permission giver is a poor idea
+/datum/admins/vv_edit_var(var_name, var_value)
+	return FALSE
 
 /datum/admins/proc/associate(client/C)
 	if(istype(C))
@@ -58,7 +64,7 @@ if rights_required == 0, then it simply checks if they are an admin.
 if it doesn't return 1 and show_msg=1 it will prints a message explaining why the check has failed
 generally it would be used like so:
 
-proc/admin_proc()
+/proc/admin_proc()
 	if(!check_rights(R_ADMIN)) return
 	to_world("you have enough rights!")
 
@@ -112,7 +118,7 @@ you will have to do something like if(client.admin_holder.rights & R_ADMIN) your
 				return 1
 			if(usr.client.admin_holder.rights != other.admin_holder.rights)
 				if( (usr.client.admin_holder.rights & other.admin_holder.rights) == other.admin_holder.rights )
-					return 1	//we have all the rights they have and more
+					return 1 //we have all the rights they have and more
 		to_chat(usr, "<font color='red'>Error: Cannot proceed. They have more or equal rights to us.</font>")
 	return 0
 
@@ -127,57 +133,10 @@ you will have to do something like if(client.admin_holder.rights & R_ADMIN) your
 		admin_datums[ckey].associate(src)
 	return 1
 
-/proc/IsAdminAdvancedProcCall()
-	if(usr)
-		return usr?.client && GLOB.AdminProcCaller == usr.client.ckey
-
-/proc/WrapAdminProcCall(datum/target, procname, list/arguments)
-	if(target && procname == "Del")
-		to_chat(usr, "Calling Del() is not allowed")
-		return
-
-	if(target != GLOBAL_PROC && !target.CanProcCall(procname))
-		to_chat(usr, "Proccall on [target.type]/proc/[procname] is disallowed!")
-		return
-
-	var/current_caller = GLOB.AdminProcCaller
-	var/ckey = usr ? usr.client.ckey : GLOB.AdminProcCaller
-	if(!ckey)
-		CRASH("WrapAdminProcCall with no ckey: [target] [procname] [english_list(arguments)]")
-
-	if(current_caller && current_caller != ckey)
-		if(!GLOB.AdminProcCallSpamPrevention[ckey])
-			to_chat(usr, "<span class='adminnotice'>Another set of admin called procs are still running, your proc will be run after theirs finish.</span>")
-			GLOB.AdminProcCallSpamPrevention[ckey] = TRUE
-			UNTIL(!GLOB.AdminProcCaller)
-			to_chat(usr, "<span class='adminnotice'>Running your proc</span>")
-			GLOB.AdminProcCallSpamPrevention -= ckey
-		else
-			UNTIL(!GLOB.AdminProcCaller)
-
-	GLOB.LastAdminCalledProc = procname
-	if(target != GLOBAL_PROC)
-		GLOB.LastAdminCalledTargetRef = "[REF(target)]"
-
-	GLOB.AdminProcCaller = ckey	//if this runtimes, too bad for you
-	++GLOB.AdminProcCallCount
-	. = world.WrapAdminProcCall(target, procname, arguments)
-	if(--GLOB.AdminProcCallCount == 0)
-		GLOB.AdminProcCaller = null
-
 /datum/admins/proc/check_for_rights(rights_required)
 	if(rights_required && !(rights_required & rights))
 		return FALSE
 	return TRUE
-
-
-/world/proc/WrapAdminProcCall(datum/target, procname, list/arguments)
-	if(target == GLOBAL_PROC)
-		return call(procname)(arglist(arguments))
-	else if(target != world)
-		return call(target, procname)(arglist(arguments))
-	else
-		log_admin_private("[key_name(usr)] attempted to call world/proc/[procname] with arguments: [english_list(arguments)]")
 
 /datum/proc/CanProcCall(procname)
 	return TRUE

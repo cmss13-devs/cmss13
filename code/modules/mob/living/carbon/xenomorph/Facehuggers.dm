@@ -73,7 +73,7 @@
 	// to issues with timers
 	if(QDESTROYING(src))
 		return
-	addtimer(CALLBACK(src, .proc/check_turf), 0.2 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(check_turf)), 0.2 SECONDS)
 	if(stat == CONSCIOUS && loc) //Make sure we're conscious and not idle or dead.
 		go_idle()
 
@@ -158,7 +158,7 @@
 /obj/item/clothing/mask/facehugger/bullet_act(obj/item/projectile/P)
 	..()
 	var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags
-	if(ammo_flags & (AMMO_XENO_ACID|AMMO_XENO_TOX))
+	if(ammo_flags & (AMMO_XENO))
 		return //Xeno spits ignore huggers.
 	if(P.damage)
 		die()
@@ -270,7 +270,7 @@
 		if(!H.species || !(H.species.flags & IS_SYNTHETIC)) //synthetics aren't paralyzed
 			H.apply_effect(MIN_IMPREGNATION_TIME * 0.5 * knockout_mod, PARALYZE) //THIS MIGHT NEED TWEAKS
 
-	addtimer(CALLBACK(src, .proc/impregnate, H), rand(MIN_IMPREGNATION_TIME, MAX_IMPREGNATION_TIME))
+	addtimer(CALLBACK(src, PROC_REF(impregnate), H), rand(MIN_IMPREGNATION_TIME, MAX_IMPREGNATION_TIME))
 
 	return TRUE
 
@@ -313,7 +313,7 @@
 	if(stat != CONSCIOUS)
 		icon_state = "[initial(icon_state)]"
 	stat = CONSCIOUS
-	jump_timer = addtimer(CALLBACK(src, .proc/try_jump), time_between_jumps, TIMER_OVERRIDE|TIMER_STOPPABLE|TIMER_UNIQUE)
+	jump_timer = addtimer(CALLBACK(src, PROC_REF(try_jump)), time_between_jumps, TIMER_OVERRIDE|TIMER_STOPPABLE|TIMER_UNIQUE)
 
 /obj/item/clothing/mask/facehugger/proc/go_idle() //Idle state does not count toward the death timer.
 	if(stat == DEAD || stat == UNCONSCIOUS)
@@ -326,10 +326,10 @@
 	jump_timer = null
 	// Reset the jumps left to their original count
 	jumps_left = initial(jumps_left)
-	addtimer(CALLBACK(src, .proc/go_active), rand(MIN_ACTIVE_TIME,MAX_ACTIVE_TIME))
+	addtimer(CALLBACK(src, PROC_REF(go_active)), rand(MIN_ACTIVE_TIME,MAX_ACTIVE_TIME))
 
 /obj/item/clothing/mask/facehugger/proc/try_jump()
-	jump_timer = addtimer(CALLBACK(src, .proc/try_jump), time_between_jumps, TIMER_OVERRIDE|TIMER_STOPPABLE|TIMER_UNIQUE)
+	jump_timer = addtimer(CALLBACK(src, PROC_REF(try_jump)), time_between_jumps, TIMER_OVERRIDE|TIMER_STOPPABLE|TIMER_UNIQUE)
 	if(stat != CONSCIOUS || isnull(loc)) //Make sure we're conscious and not idle or dead.
 		return
 
@@ -389,7 +389,7 @@
 
 	layer = BELOW_MOB_LAYER //so dead hugger appears below live hugger if stacked on same tile.
 
-	addtimer(CALLBACK(src, .proc/decay), 3 MINUTES)
+	addtimer(CALLBACK(src, PROC_REF(decay)), 3 MINUTES)
 
 /obj/item/clothing/mask/facehugger/proc/decay()
 	visible_message("[icon2html(src, viewers(src))] <span class='danger'>\The [src] decays into a mass of acid and chitin.</span>")

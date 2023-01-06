@@ -1,11 +1,10 @@
 var/list/power_machines = list()
 
 SUBSYSTEM_DEF(power)
-	name          = "Power"
-	init_order    = SS_INIT_POWER
-	priority      = SS_PRIORITY_POWER
-	flags         = SS_DISABLE_FOR_TESTING
-	wait          = 2 SECONDS
+	name   = "Power"
+	init_order = SS_INIT_POWER
+	priority   = SS_PRIORITY_POWER
+	wait   = 2 SECONDS
 
 	var/list/currentrun_cables = list()
 	var/list/currentrun_powerents = list()
@@ -19,12 +18,12 @@ SUBSYSTEM_DEF(power)
 
 /datum/controller/subsystem/power/Initialize(timeofday)
 	makepowernets()
-	return ..()
+	return SS_INIT_SUCCESS
 
 
 /datum/controller/subsystem/power/fire(resumed = FALSE)
 	if (!resumed)
-		currentrun_powerents      = global.powernets.Copy()
+		currentrun_powerents   = global.powernets.Copy()
 		currentrun_areas = active_areas.Copy()
 		currentrun_power_machines = global.power_machines.Copy()
 

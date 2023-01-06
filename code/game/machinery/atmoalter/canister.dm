@@ -2,14 +2,14 @@
 	name = "canister"
 	icon = 'icons/obj/structures/machinery/atmos.dmi'
 	icon_state = "yellow"
-	density = 1
+	density = TRUE
 	health = 100.0
 	flags_atom = FPRINT|CONDUCT
 
 
 	var/canister_color = "yellow"
 	var/can_label = 1
-	use_power = 0
+	use_power = USE_POWER_NONE
 
 /obj/structure/machinery/portable_atmospherics/canister/sleeping_agent
 	name = "Canister: \[N2O\]"
@@ -87,7 +87,7 @@ update_flag
 	if (health <= 20)
 		destroyed = 1
 		playsound(src.loc, 'sound/effects/spray.ogg', 25, 1, 5)
-		density = 0
+		density = FALSE
 		update_icon()
 
 /obj/structure/machinery/portable_atmospherics/canister/bullet_act(var/obj/item/projectile/Proj)

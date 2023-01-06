@@ -440,7 +440,7 @@
 
 /datum/equipment_preset/fun/santa
 	name = "Fun - Santa"
-	paygrade = "O8"
+	paygrade = "C"
 	flags = EQUIPMENT_PRESET_EXTRA
 	skills = /datum/skills/everything
 	faction = FACTION_MARINE
@@ -484,6 +484,7 @@
 	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/mateba/general/santa(H), WEAR_WAIST)
 
 	H.set_species("Human Hero") //Santa is STRONG.
+	ADD_TRAIT(H, TRAIT_SANTA, TRAIT_SOURCE_ADMIN)
 
 /datum/equipment_preset/upp/ivan
 	name = "Fun - Ivan"

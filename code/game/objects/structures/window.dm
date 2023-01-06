@@ -3,7 +3,7 @@
 	desc = "A glass window. It looks thin and flimsy. A few knocks with anything should shatter it."
 	icon = 'icons/turf/walls/windows.dmi'
 	icon_state = "window"
-	density = 1
+	density = TRUE
 	anchored = 1
 	layer = WINDOW_LAYER
 	flags_atom = ON_BORDER|FPRINT
@@ -35,7 +35,7 @@
 		update_nearby_icons()
 
 /obj/structure/window/Destroy()
-	density = 0
+	density = FALSE
 	if(is_full_window())
 		update_nearby_icons()
 	. = ..()
@@ -419,7 +419,7 @@
 	desc = "A tinted glass window. It looks rather strong and opaque. Might take a few good hits to shatter it."
 	icon_state = "twindow"
 	basestate = "twindow"
-	opacity = 1
+	opacity = TRUE
 
 /obj/structure/window/reinforced/tinted/frosted
 	name = "privacy window"
@@ -576,7 +576,7 @@
 	window_frame = /obj/structure/window_frame/almayer/white
 
 /obj/structure/window/framed/almayer/white/hull
-	name = "research window"
+	name = "hull window"
 	desc = "An ultra-reinforced window designed to keep research a secure area. This one was made out of exotic materials to prevent hull breaches. No way to get through here."
 	not_damageable = 1
 	not_deconstructable = 1
@@ -602,7 +602,7 @@
 /obj/structure/window/framed/colony/reinforced/tinted
 	name =  "tinted reinforced window"
 	desc = "A glass window with a special rod matrix inside a wall frame. It looks rather strong. Might take a few good hits to shatter it. This one is opaque. You have an uneasy feeling someone might be watching from the other side."
-	opacity = 1
+	opacity = TRUE
 
 /obj/structure/window/framed/colony/reinforced/hull
 	name = "hull window"
@@ -768,7 +768,7 @@
 
 /obj/structure/window/framed/solaris/reinforced/tinted
 	desc = "A tinted glass window. It looks rather strong and opaque. Might take a few good hits to shatter it."
-	opacity = 1
+	opacity = TRUE
 
 //GREYBOX DEV WINDOWS
 
@@ -931,4 +931,4 @@
 		else
 			P.setDir(EAST)
 
-	INVOKE_ASYNC(P, /obj/structure/machinery/door.proc/close)
+	INVOKE_ASYNC(P, TYPE_PROC_REF(/obj/structure/machinery/door, close))

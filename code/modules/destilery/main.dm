@@ -19,9 +19,9 @@
 	name = "\improper Mill"
 	desc = "It is a machine that grinds produce."
 	icon_state = "autolathe"
-	density = 1
+	density = TRUE
 	anchored = 1
-	use_power = 1
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 10
 	active_power_usage = 1000
 
@@ -34,24 +34,24 @@
 		return
 
 	if(!busy)
-		update_use_power(1)
+		update_use_power(USE_POWER_IDLE)
 		if(input.len)
 			milled_item = input[1]
 			input -= milled_item
 			progress = 0
 			busy = TRUE
-			update_use_power(2)
+			update_use_power(USE_POWER_ACTIVE)
 		return
 
 	progress++
-	if(progress < 10)	//Edit this value to make milling faster or slower
-		return	//Not done yet.
+	if(progress < 10) //Edit this value to make milling faster or slower
+		return //Not done yet.
 
 	switch(milled_item.type)
-		if(/obj/item/reagent_container/food/snacks/grown/wheat)	//Wheat becomes flour
+		if(/obj/item/reagent_container/food/snacks/grown/wheat) //Wheat becomes flour
 			var/obj/item/reagent_container/food/snacks/flour/F = new(src)
 			output += F
-		if(/obj/item/reagent_container/food/snacks/flour)	//Flour is still flour
+		if(/obj/item/reagent_container/food/snacks/flour) //Flour is still flour
 			var/obj/item/reagent_container/food/snacks/flour/F = new(src)
 			output += F
 		else
@@ -90,9 +90,9 @@
 	name = "\improper Fermenter"
 	desc = "It is a machine that ferments produce into alcoholic drinks."
 	icon_state = "autolathe"
-	density = 1
+	density = TRUE
 	anchored = 1
-	use_power = 1
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 10
 	active_power_usage = 500
 
@@ -105,13 +105,13 @@
 		return
 
 	if(!busy)
-		update_use_power(1)
+		update_use_power(USE_POWER_IDLE)
 		if(input.len)
 			fermenting_item = input[1]
 			input -= fermenting_item
 			progress = 0
 			busy = TRUE
-			update_use_power(2)
+			update_use_power(USE_POWER_ACTIVE)
 		return
 
 	if(!water_level)
@@ -120,11 +120,11 @@
 	water_level--
 
 	progress++
-	if(progress < 10)	//Edit this value to make milling faster or slower
-		return	//Not done yet.
+	if(progress < 10) //Edit this value to make milling faster or slower
+		return //Not done yet.
 
 	switch(fermenting_item.type)
-		if(/obj/item/reagent_container/food/snacks/flour)	//Flour is still flour
+		if(/obj/item/reagent_container/food/snacks/flour) //Flour is still flour
 			var/obj/item/reagent_container/food/drinks/cans/beer/B = new(src)
 			output += B
 		else
@@ -159,9 +159,9 @@
 	name = "\improper Still"
 	desc = "It is a machine that produces hard liquor from alcoholic drinks."
 	icon_state = "autolathe"
-	density = 1
+	density = TRUE
 	anchored = 1
-	use_power = 1
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 10
 	active_power_usage = 10000
 
@@ -174,21 +174,21 @@
 		return
 
 	if(!busy)
-		update_use_power(1)
+		update_use_power(USE_POWER_IDLE)
 		if(input.len)
 			destilling_item = input[1]
 			input -= destilling_item
 			progress = 0
 			busy = TRUE
-			update_use_power(2)
+			update_use_power(USE_POWER_ACTIVE)
 		return
 
 	progress++
-	if(progress < 10)	//Edit this value to make distilling faster or slower
-		return	//Not done yet.
+	if(progress < 10) //Edit this value to make distilling faster or slower
+		return //Not done yet.
 
 	switch(destilling_item.type)
-		if(/obj/item/reagent_container/food/drinks/cans/beer)	//Flour is still flour
+		if(/obj/item/reagent_container/food/drinks/cans/beer) //Flour is still flour
 			var/obj/item/reagent_container/food/drinks/bottle/vodka/V = new(src)
 			output += V
 		else
@@ -224,9 +224,9 @@
 	name = "\improper Squeezer"
 	desc = "It is a machine that squeezes extracts from produce."
 	icon_state = "autolathe"
-	density = 1
+	density = TRUE
 	anchored = 1
-	use_power = 1
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 10
 	active_power_usage = 500
 
@@ -248,9 +248,9 @@
 	name = "\improper Centrifuge"
 	desc = "It is a machine that spins produce."
 	icon_state = "autolathe"
-	density = 1
+	density = TRUE
 	anchored = 1
-	use_power = 1
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 10
 	active_power_usage = 10000
 
@@ -259,18 +259,18 @@
 		return
 
 	if(!busy)
-		update_use_power(1)
+		update_use_power(USE_POWER_IDLE)
 		if(input.len)
 			spinning_item = input[1]
 			input -= spinning_item
 			progress = 0
 			busy = TRUE
-			update_use_power(2)
+			update_use_power(USE_POWER_ACTIVE)
 		return
 
 	progress++
-	if(progress < 10)	//Edit this value to make milling faster or slower
-		return	//Not done yet.
+	if(progress < 10) //Edit this value to make milling faster or slower
+		return //Not done yet.
 
 	var/transfer_enzymes = spinning_item.reagents.get_reagent_amount("enzyme")
 

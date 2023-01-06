@@ -631,7 +631,7 @@
 		if(X.hive.hive_location.hardcore || world.time > XENOMORPH_PRE_SETUP_CUTOFF)
 			to_chat(X, SPAN_WARNING("You can't rebuild this structure!"))
 			return
-		if(alert(X, "Are you sure that you want to move the hive and destroy the old hive core?", , "Yes", "No") == "No")
+		if(alert(X, "Are you sure that you want to move the hive and destroy the old hive core?", , "Yes", "No") != "Yes")
 			return
 		qdel(X.hive.hive_location)
 	else if(!X.hive.can_build_structure(choice))
@@ -765,8 +765,6 @@
 	if (!X.can_bombard_turf(T, range, bombard_source))
 		return FALSE
 
-	apply_cooldown()
-
 	X.visible_message(SPAN_XENODANGER("[X] digs itself into place!"), SPAN_XENODANGER("You dig yourself into place!"))
 	if (!do_after(X, activation_delay, interrupt_flags, BUSY_ICON_HOSTILE))
 		to_chat(X, SPAN_XENODANGER("You decide to cancel your bombard."))
@@ -777,6 +775,8 @@
 
 	if (!check_and_use_plasma_owner())
 		return FALSE
+
+	apply_cooldown()
 
 	X.visible_message(SPAN_XENODANGER("[X] launches a massive ball of acid at [A]!"), SPAN_XENODANGER("You launch a massive ball of acid at [A]!"))
 	playsound(get_turf(X), 'sound/effects/blobattack.ogg', 25, 1)
@@ -795,7 +795,7 @@
 	else if(!T.can_bombard(owner))
 		return
 
-	addtimer(CALLBACK(src, .proc/new_effect, T, owner), 2*(orig_depth - dist_left))
+	addtimer(CALLBACK(src, PROC_REF(new_effect), T, owner), 2*(orig_depth - dist_left))
 
 	for(var/mob/living/L in T)
 		to_chat(L, SPAN_XENOHIGHDANGER("You see a massive ball of acid flying towards you!"))
@@ -963,13 +963,15 @@
 		var/new_dir = stabbing_xeno.dir
 		addtimer(CALLBACK(src, .proc/reset_direction, stabbing_xeno, last_dir, new_dir), 0.5 SECONDS)
 
-	if(!claw_stab)
-		stabbing_xeno.emote("tail")
+	/// Ditto.
+	var/new_dir = stabbing_xeno.dir
+
+	addtimer(CALLBACK(src, PROC_REF(reset_direction), stabbing_xeno, last_dir, new_dir), 0.5 SECONDS)
 
 	stabbing_xeno.animation_attack_on(target)
 	stabbing_xeno.flick_attack_overlay(target, stab_overlay)
 
-	var/damage = (stabbing_xeno.melee_damage_upper + stabbing_xeno.frenzy_aura * FRENZY_DAMAGE_MULTIPLIER) * 1.2
+	var/damage = (stabbing_xeno.melee_damage_upper + stabbing_xeno.frenzy_aura * FRENZY_DAMAGE_MULTIPLIER) * TAILSTAB_MOB_DAMAGE_MULTIPLIER
 
 	if(stabbing_xeno.behavior_delegate)
 		stabbing_xeno.behavior_delegate.melee_attack_additional_effects_target(target)
@@ -981,6 +983,7 @@
 	shake_camera(target, 2, 1)
 
 	target.handle_blood_splatter(get_dir(owner.loc, target.loc))
+	return target
 
 /datum/action/xeno_action/activable/tail_stab/proc/reset_direction(var/mob/living/carbon/Xenomorph/stabbing_xeno, var/last_dir, var/new_dir)
 	// If the xenomorph is still holding the same direction as the tail stab animation's changed it to, reset it back to the old direction so the xenomorph isn't stuck facing backwards.

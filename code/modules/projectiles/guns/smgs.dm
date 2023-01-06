@@ -120,6 +120,9 @@
 	scatter_unwielded = SCATTER_AMOUNT_TIER_6
 	damage_mult =  BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_7
 
+/obj/item/weapon/gun/smg/m39/elite/whiteout//for the whiteout HEAP mag, nothing else
+	current_mag = /obj/item/ammo_magazine/smg/m39/heap
+
 //-------------------------------------------------------
 //M5, a classic SMG used in a lot of action movies.
 
@@ -283,7 +286,7 @@
 						)
 	random_spawn_chance = 33
 	random_spawn_rail = list(
-							/obj/item/attachable/reflex/
+							/obj/item/attachable/reflex
 							)
 	random_spawn_under = list(
 							/obj/item/attachable/lasersight
@@ -310,7 +313,7 @@
 
 
 //-------------------------------------------------------
-//	DAS REAL UZI
+// DAS REAL UZI
 
 /obj/item/weapon/gun/smg/uzi
 	name = "\improper UZI"
@@ -484,13 +487,13 @@
 	return //Can't remove nails from mags or gun.
 
 /obj/item/weapon/gun/smg/nailgun/compact
-    name = "compact nailgun"
-    desc = "A carpentry tool, used to drive nails into tough surfaces. Cannot fire nails offensively due to a lack of a gas seal around the nail, meaning it cannot build up the pressure to fire."
-    icon_state = "cnailgun"
-    item_state = "nailgun"
-    w_class = SIZE_SMALL
+	name = "compact nailgun"
+	desc = "A carpentry tool, used to drive nails into tough surfaces. Cannot fire nails offensively due to a lack of a gas seal around the nail, meaning it cannot build up the pressure to fire."
+	icon_state = "cnailgun"
+	item_state = "nailgun"
+	w_class = SIZE_SMALL
 /obj/item/weapon/gun/smg/nailgun/compact/able_to_fire(mob/living/user)
-    . = ..()
-    if(.)
-        click_empty(user)
-    return FALSE
+	. = ..()
+	if(.)
+		click_empty(user)
+	return FALSE

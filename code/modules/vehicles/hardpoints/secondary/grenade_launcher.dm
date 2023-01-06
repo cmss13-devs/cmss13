@@ -52,7 +52,7 @@
 	origin_turf = locate(origin_turf.x + origins[1], origin_turf.y + origins[2], origin_turf.z)
 
 	//getting distance between supposed target and tank center.
-	var/range = get_dist(origin_turf, A) + 1	//otherwise nade falls one tile shorter
+	var/range = get_dist(origin_turf, A) + 1 //otherwise nade falls one tile shorter
 	if(range > max_range)
 		range = max_range
 

@@ -10,13 +10,14 @@
 	var/valve_open = 0
 	var/toggle = 1
 
-/obj/item/device/transfer_valve/proc/process_activation(var/obj/item/device/D)
-
 /obj/item/device/transfer_valve/IsAssemblyHolder()
-	return 1
+	return TRUE
+
+/obj/item/device/transfer_valve/attack_self(mob/user)
+	. = ..()
+	to_chat(user, SPAN_NOTICE("You look at \the [src] cluelessly."))
 
 /obj/item/device/transfer_valve/attackby(obj/item/item, mob/user)
-	var/turf/location = get_turf(src) // For admin logs
 	if(istype(item, /obj/item/tank))
 		if(tank_one && tank_two)
 			to_chat(user, SPAN_WARNING("There are already two tanks attached, remove one first."))
@@ -32,12 +33,9 @@
 				tank_two = item
 				item.forceMove(src)
 				to_chat(user, SPAN_NOTICE("You attach the tank to the transfer valve."))
-				message_staff("[key_name_admin(user)] attached both tanks to a transfer valve. (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[location.x];Y=[location.y];Z=[location.z]'>JMP</a>)")
-				log_game("[key_name_admin(user)] attached both tanks to a transfer valve.")
 
 		update_icon()
-		nanomanager.update_uis(src) // update all UIs attached to src
-//TODO: Have this take an assemblyholder
+
 	else if(isassembly(item))
 		var/obj/item/device/assembly/A = item
 		if(A.secured)
@@ -51,82 +49,14 @@
 		A.forceMove(src)
 		to_chat(user, SPAN_NOTICE("You attach the [item] to the valve controls and secure it."))
 		A.holder = src
-		A.toggle_secure()	//this calls update_icon(), which calls update_icon() on the holder (i.e. the bomb).
+		A.toggle_secure() //this calls update_icon(), which calls update_icon() on the holder (i.e. the bomb).
 
-		message_staff("[key_name_admin(user)] attached a [item] to a transfer valve. (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[location.x];Y=[location.y];Z=[location.z]'>JMP</a>)")
-		log_game("[key_name_admin(user)] attached a [item] to a transfer valve.")
 		attacher = user
-		nanomanager.update_uis(src) // update all UIs attached to src
-
 
 /obj/item/device/transfer_valve/HasProximity(atom/movable/AM)
 	if(!attached_device)
 		return
 	attached_device.HasProximity(AM)
-
-
-/obj/item/device/transfer_valve/attack_self(mob/user)
-	..()
-	ui_interact(user)
-
-/obj/item/device/transfer_valve/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
-	// this is the data which will be sent to the ui
-	var/data[0]
-	data["attachmentOne"] = tank_one ? tank_one.name : null
-	data["attachmentTwo"] = tank_two ? tank_two.name : null
-	data["valveAttachment"] = attached_device ? attached_device.name : null
-	data["valveOpen"] = valve_open ? 1 : 0
-
-	// update the ui if it exists, returns null if no ui is passed/found
-	ui = nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
-	if (!ui)
-		// the ui does not exist, so we'll create a new() one
-        // for a list of parameters and their descriptions see the code docs in \code\modules\nano\nanoui.dm
-		ui = new(user, src, ui_key, "transfer_valve.tmpl", "Tank Transfer Valve", 460, 280)
-		// when the ui is first opened this is the data it will use
-		ui.set_initial_data(data)
-		// open the new ui window
-		ui.open()
-		// auto update every Master Controller tick
-		//ui.set_auto_update(1)
-
-/obj/item/device/transfer_valve/Topic(href, href_list)
-	..()
-	if ( usr.stat || usr.is_mob_restrained() )
-		return 0
-	if (src.loc != usr)
-		return 0
-	if(tank_one && href_list["tankone"])
-		split_gases()
-		valve_open = 0
-		tank_one.forceMove(get_turf(src))
-		tank_one = null
-		update_icon()
-	else if(tank_two && href_list["tanktwo"])
-		split_gases()
-		valve_open = 0
-		tank_two.forceMove(get_turf(src))
-		tank_two = null
-		update_icon()
-	else if(href_list["open"])
-		toggle_valve()
-	else if(attached_device)
-		if(href_list["rem_device"])
-			attached_device.forceMove(get_turf(src))
-			attached_device:holder = null
-			attached_device = null
-			update_icon()
-		if(href_list["device"])
-			attached_device.attack_self(usr)
-	src.add_fingerprint(usr)
-	return 1 // Returning 1 sends an update to attached UIs
-
-/obj/item/device/transfer_valve/process_activation(var/obj/item/device/D)
-	if(toggle)
-		toggle = 0
-		toggle_valve()
-		// To stop a signal being spammed from a proxy sensor constantly going off or whatever
-		addtimer(VARSET_CALLBACK(src, toggle, TRUE), 5 SECONDS)
 
 /obj/item/device/transfer_valve/update_icon()
 	overlays.Cut()
@@ -145,50 +75,6 @@
 		underlays += J
 	if(attached_device)
 		overlays += "device"
-
-/obj/item/device/transfer_valve/proc/merge_gases()
-
-/obj/item/device/transfer_valve/proc/split_gases()
-
-
-
-/obj/item/device/transfer_valve/proc/toggle_valve()
-	if(valve_open==0 && (tank_one && tank_two))
-		valve_open = 1
-		var/turf/bombturf = get_turf(src)
-		var/area/A = get_area(bombturf)
-
-		var/attacher_name = ""
-		if(!attacher)
-			attacher_name = "Unknown"
-		else
-			attacher_name = "[attacher.name]([attacher.ckey])"
-
-		var/log_str = "Bomb valve opened in <A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[bombturf.x];Y=[bombturf.y];Z=[bombturf.z]'>[A.name]</a> "
-		log_str += "with [attached_device ? attached_device : "no device"] attacher: [attacher_name]"
-
-		if(attacher)
-			log_str += "(<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminmoreinfo;extra=\ref[attacher]'>?</A>)"
-
-		var/mob/mob = GLOB.directory[fingerprintslast]
-		var/last_touch_info = ""
-		if(mob)
-			last_touch_info = "(<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminmoreinfo;extra=\ref[mob]'>?</A>)"
-
-		log_str += " Last touched by: [src.fingerprintslast][last_touch_info]"
-		message_staff(log_str, 0, 1)
-		log_game(log_str)
-		merge_gases()
-		spawn(20) // In case one tank bursts
-			for (var/i=0,i<5,i++)
-				src.update_icon()
-				sleep(10)
-			src.update_icon()
-
-	else if(valve_open==1 && (tank_one && tank_two))
-		split_gases()
-		valve_open = 0
-		src.update_icon()
 
 // this doesn't do anything but the timer etc. expects it to be here
 // eventually maybe have it update icon to show state (timer, prox etc.) like old bombs

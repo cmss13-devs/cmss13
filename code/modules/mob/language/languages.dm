@@ -145,48 +145,45 @@
 
 		C.hivemind_broadcast(message, GLOB.hive_datum[C.hivenumber])
 
-/datum/language/binary
-	name = LANGUAGE_BINARY
-	desc = "Most human stations support free-use communications protocols and routing hubs for synthetic use."
-	colour = "say_quote"
+/datum/language/apollo
+	name = LANGUAGE_APOLLO
+	desc = "The Apollo Link is an AI subprocessor designed by SEEGSON, allowing for coordination of maintenance drones and Working Joes. WY denies claims the processor was stolen for ARES."
+	colour = "skrell"
 	speech_verb = "states"
 	ask_verb = "queries"
 	exclaim_verb = "declares"
 	key = "6"
 	flags = RESTRICTED|HIVEMIND
-	var/drone_only
 
-/datum/language/binary/broadcast(var/mob/living/speaker,var/message,var/speaker_mask)
-	if(!speaker.binarycheck())
+/datum/language/apollo/broadcast(var/mob/living/speaker,var/message,var/speaker_mask)
+	if(!speaker.hear_apollo())
 		return
 
 	if (!message)
 		return
 
 	var/message_start = "<i><span class='game say'>[name], <span class='name'>[speaker.name]</span>"
-	var/message_body = "<span class='message'>[speaker.say_quote(message)], \"[message]\"</span></span></i>"
-	GLOB.STUI.game.Add("\[[time_stamp()]]<font color='#FFFF00'>BINARY: [key_name(speaker)] : [message]</font><br>")
+	var/message_body = "<span class='message'>broadcasts, \"[message]\"</span></span></i>"
+	GLOB.STUI.game.Add("\[[time_stamp()]]<font color='#FFFF00'>APOLLO: [key_name(speaker)] : [message]</font><br>")
 	GLOB.STUI.processing |= STUI_LOG_GAME_CHAT
-	for (var/mob/M in GLOB.dead_mob_list)
-		if(!istype(M,/mob/new_player) && !istype(M,/mob/living/brain)) //No meta-evesdropping
-			M.show_message("[message_start] [message_body]", 2)
+	for (var/mob/dead in GLOB.dead_mob_list)
+		if(!istype(dead,/mob/new_player) && !istype(dead,/mob/living/brain)) //No meta-evesdropping
+			dead.show_message("<span class='[colour]'>[message_start] [message_body]</span>", SHOW_MESSAGE_VISIBLE)
 
-	for (var/mob/living/S in GLOB.alive_mob_list)
+	for (var/mob/living/listener in GLOB.alive_mob_list)
 
-		if(drone_only && !ismaintdrone(S))
+		if (!listener.hear_apollo())
 			continue
-		else if(isAI(S))
-			message_start = "<i><span class='game say'>[name], <a href='byond://?src=\ref[S];track2=\ref[S];track=\ref[speaker];trackname=[html_encode(speaker.name)]'><span class='name'>[speaker.name]</span></a>"
-		else if (!S.binarycheck())
-			continue
+		else if(isAI(listener))
+			message_start = "<i><span class='game say'>[name], <a href='byond://?src=\ref[listener];track2=\ref[listener];track=\ref[speaker];trackname=[html_encode(speaker.name)]'><span class='name'>[speaker.name]</span></a>"
 
-		S.show_message("[message_start] [message_body]", 2)
+		listener.show_message("<span class='[colour]'>[message_start] [message_body]</span>", SHOW_MESSAGE_VISIBLE)
 
 	var/list/listening = hearers(1, src)
 	listening -= src
 
 	for (var/mob/living/M in listening)
-		if(isSilicon(M) || M.binarycheck())
+		if(isSilicon(M) || M.hear_apollo())
 			continue
 		M.show_message("<i><span class='game say'><span class='name'>synthesised voice</span> <span class='message'>beeps, \"beep beep beep\"</span></span></i>",2)
 
@@ -195,17 +192,6 @@
 		var/mob/living/silicon/robot/R = speaker
 		var/datum/robot_component/C = R.components["comms"]
 		R.cell_use_power(C.active_usage)
-
-/datum/language/binary/drone
-	name = LANGUAGE_DRONE
-	desc = "A heavily encoded damage control coordination stream."
-	speech_verb = "transmits"
-	ask_verb = "transmits"
-	exclaim_verb = "transmits"
-	colour = "say_quote"
-	key = "d"
-	flags = RESTRICTED|HIVEMIND
-	drone_only = 1
 
 /datum/language/event_hivemind
 	name = LANGUAGE_TELEPATH

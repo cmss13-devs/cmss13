@@ -1,3 +1,4 @@
+#define JOIN_AS_FACEHUGGER_DELAY 3 MINUTES
 
 // Actual caste datum basedef
 /datum/caste_datum
@@ -8,7 +9,7 @@
 	var/language = LANGUAGE_XENOMORPH
 	var/melee_damage_lower = 10
 	var/melee_damage_upper = 20
-	var/melee_vehicle_damage = 10	//allows fine tuning melee damage to vehicles per caste.
+	var/melee_vehicle_damage = 10 //allows fine tuning melee damage to vehicles per caste.
 	var/evasion = XENO_EVASION_NONE
 
 	var/speed = XENO_SPEED_TIER_10
@@ -195,7 +196,7 @@
 	var/list/used_free_slots
 	var/list/tier_2_xenos = list()//list of living tier2 xenos
 	var/list/tier_3_xenos = list()//list of living tier3 xenos
-	var/list/totalXenos	= list()  //list of living xenos
+	var/list/totalXenos = list()  //list of living xenos
 	var/list/totalDeadXenos = list()//list of previously living xenos
 	var/xeno_queen_timer
 	var/isSlotOpen = TRUE //Set true for starting alerts only after the hive has reached its full potential
@@ -263,6 +264,12 @@
 	var/hivecore_cooldown = FALSE
 
 	var/need_round_end_check = FALSE
+
+	//Joining as Facehugger vars
+	/// When can huggers join the round
+	var/hugger_timelock = 15 MINUTES
+	/// How many huggers can the hive support
+	var/playable_hugger_limit = 0
 
 /datum/hive_status/New()
 	mutators.hive = src
@@ -459,8 +466,8 @@
 		L.handle_xeno_leader_pheromones()
 
 /*
- *    Helper procs for the Hive Status UI
- *    These are all called by the hive status UI manager to update its data
+ * Helper procs for the Hive Status UI
+ * These are all called by the hive status UI manager to update its data
  */
 
 // Returns a list of how many of each caste of xeno there are, sorted by tier
@@ -775,6 +782,9 @@
 				xeno.set_hive_and_update(XENO_HIVE_FORSAKEN)
 			else
 				to_chat(xeno, SPAN_XENOANNOUNCE("The Queen has left without you, you quickly find a hiding place to enter hibernation as you lose touch with the hive mind."))
+				if(xeno.stomach_contents.len)
+					xeno.devour_timer = 0
+					xeno.handle_stomach_contents()
 				qdel(xeno)
 			stored_larva++
 	for(var/i in GLOB.alive_mob_list)
@@ -835,22 +845,23 @@
 	stored_larva--
 	hive_ui.update_pooled_larva()
 
-/mob/living/carbon/proc/ally_of_hivenumber(var/hivenumber)
-	var/datum/hive_status/H = GLOB.hive_datum[hivenumber]
-	if(!H)
+/mob/living/proc/ally_of_hivenumber(var/hivenumber)
+	var/datum/hive_status/indexed_hive = GLOB.hive_datum[hivenumber]
+	if(!indexed_hive)
 		return FALSE
 
-	return H.is_ally(src)
+	return indexed_hive.is_ally(src)
 
-/datum/hive_status/proc/is_ally(var/mob/living/carbon/C)
-	if(isXeno(C) && C.hivenumber == hivenumber)
-		var/mob/living/carbon/Xenomorph/X = C
-		return !X.banished
+/datum/hive_status/proc/is_ally(var/mob/living/living_mob)
+	if(isXeno(living_mob))
+		var/mob/living/carbon/Xenomorph/zenomorf = living_mob
+		if(zenomorf.hivenumber == hivenumber)
+			return !zenomorf.banished
 
-	if(!C.faction)
+	if(!living_mob.faction)
 		return FALSE
 
-	return faction_is_ally(C.faction)
+	return faction_is_ally(living_mob.faction)
 
 /datum/hive_status/proc/faction_is_ally(var/faction, var/ignore_queen_check = FALSE)
 	if(faction == internal_faction)
@@ -864,6 +875,45 @@
 	if(HAS_TRAIT(src, TRAIT_NO_HIVE_DELAY))
 		return FALSE
 	return TRUE
+
+/datum/hive_status/proc/update_hugger_limit()
+	playable_hugger_limit = 2 + Ceiling(totalXenos.len / 4)
+
+/datum/hive_status/proc/can_spawn_as_hugger(mob/dead/observer/user)
+	if(!GLOB.hive_datum || ! GLOB.hive_datum[hivenumber])
+		return
+	if(world.time < hugger_timelock)
+		to_chat(user, SPAN_WARNING("The hive cannot support facehuggers yet..."))
+		return FALSE
+	if(world.time - user.timeofdeath < JOIN_AS_FACEHUGGER_DELAY)
+		var/time_left = round((user.timeofdeath + JOIN_AS_FACEHUGGER_DELAY - world.time) / 10)
+		to_chat(user, SPAN_WARNING("You ghosted too recently. You cannot become a facehugger until 3 minutes have passed ([time_left] seconds remaining)."))
+		return FALSE
+	if(totalXenos.len <= 0)
+		//This is to prevent people from joining as Forsaken Huggers on the pred ship
+		to_chat(user, SPAN_WARNING("The hive has fallen, you can't join it!"))
+		return FALSE
+
+	update_hugger_limit()
+
+	var/current_hugger_count = 0
+	for(var/mob/mob as anything in totalXenos)
+		if(isXenoFacehugger(mob))
+			current_hugger_count++
+	if(playable_hugger_limit <= current_hugger_count)
+		to_chat(user, SPAN_WARNING("\The [GLOB.hive_datum[hivenumber]] cannot support more facehuggers! Limit: <b>[current_hugger_count]/[playable_hugger_limit]</b>"))
+		return FALSE
+
+	if(alert(user, "Are you sure you want to become a facehugger?", "Confirmation", "Yes", "No") != "Yes")
+		return FALSE
+	return TRUE
+
+/datum/hive_status/proc/spawn_as_hugger(mob/dead/observer/user, atom/A)
+	var/mob/living/carbon/Xenomorph/Facehugger/hugger = new /mob/living/carbon/Xenomorph/Facehugger(A.loc, null, hivenumber)
+	user.mind.transfer_to(hugger, TRUE)
+	hugger.visible_message(SPAN_XENODANGER("A facehugger suddenly emerges out of \the [A]!"), SPAN_XENODANGER("You emerge out of \the [A] and awaken from your slumber. For the Hive!"))
+	playsound(hugger, 'sound/effects/xeno_newlarva.ogg', 25, TRUE)
+	hugger.generate_name()
 
 /datum/hive_status/corrupted
 	name = "Corrupted Hive"
@@ -1005,7 +1055,7 @@
 		UnregisterSignal(leader, COMSIG_PARENT_QDELETING)
 
 	leader = H
-	RegisterSignal(leader, COMSIG_PARENT_QDELETING, .proc/handle_qdelete)
+	RegisterSignal(leader, COMSIG_PARENT_QDELETING, PROC_REF(handle_qdelete))
 
 /datum/hive_status/corrupted/tamed/proc/handle_qdelete(var/mob/living/carbon/human/H)
 	SIGNAL_HANDLER

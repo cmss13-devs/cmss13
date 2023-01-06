@@ -4,7 +4,7 @@
 //****************************************Food Reagents************************************************/
 //*****************************************************************************************************/
 // Part of the food code. Nutriment is used instead of the old "heal_amt" code. Also is where all the food
-// 	condiments, additives, and such go.
+// condiments, additives, and such go.
 
 /datum/reagent/nutriment
 	name = "Nutriment"
@@ -158,15 +158,15 @@
 		if(istype(M, /mob/living/carbon/human))
 			var/mob/living/carbon/human/victim = M
 			if(skillcheck(victim, SKILL_POLICE, SKILL_POLICE_SKILLED))
-				victim.eye_blurry = max(M.eye_blurry, 5)
+				victim.AdjustEyeBlur(5)
 				to_chat(victim, SPAN_WARNING("Your training protects you from the pepperspray!"))
 				return
 
 			if(victim.pain.feels_pain)
 				victim.emote("scream")
 				to_chat(victim, SPAN_WARNING("You're sprayed directly in the eyes with pepperspray!"))
-				victim.eye_blurry = max(M.eye_blurry, 25)
-				victim.eye_blind = max(M.eye_blind, 10)
+				victim.AdjustEyeBlur(25)
+				victim.AdjustEyeBlind(10)
 				victim.apply_effect(3, STUN)
 				victim.apply_effect(3, WEAKEN)
 

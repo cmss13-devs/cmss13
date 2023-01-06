@@ -42,7 +42,7 @@
 // Ensure the frequency is within bounds of what it should be sending/receiving at
 // Sets f within bounds via `Clamp(round(f), 1441, 1489)`
 // If f is even, adds 1 to its value to make it odd
-#define sanitize_frequency(f) 	((Clamp(round(f), 1441, 1489) % 2) == 0 ? \
+#define sanitize_frequency(f) ((Clamp(round(f), 1441, 1489) % 2) == 0 ? \
 									Clamp(round(f), 1441, 1489) + 1 : \
 									Clamp(round(f), 1441, 1489) \
 								)
@@ -50,7 +50,7 @@
 //Turns 1479 into 147.9
 #define format_frequency(f) "[round(f / 10)].[f % 10]"
 
-#define reverse_direction(direction) 	( \
+#define reverse_direction(direction) ( \
 											( dir & (NORTH|SOUTH) ? ~dir & (NORTH|SOUTH) : 0 ) | \
 											( dir & (EAST|WEST) ? ~dir & (EAST|WEST) : 0 ) \
 										)
@@ -99,11 +99,17 @@
 		var/atom/movable/big_subject = subject
 		. += (big_subject.bound_height  - world.icon_size) / 2
 
-/proc/Get_Angle(atom/start,atom/end)//For beams.
+/proc/Get_Angle(atom/start,atom/end, var/tile_bound = FALSE)//For beams.
 	if(!start || !end) return 0
 	if(!start.z || !end.z) return 0 //Atoms are not on turfs.
-	var/dy = get_pixel_position_y(end) - get_pixel_position_y(start)
-	var/dx = get_pixel_position_x(end) - get_pixel_position_x(start)
+	var/dx
+	var/dy
+	if(tile_bound)
+		dy=end.y-start.y
+		dx=end.x-start.x
+	else
+		dy = get_pixel_position_y(end) - get_pixel_position_y(start)
+		dx = get_pixel_position_x(end) - get_pixel_position_x(start)
 	if(!dy)
 		return (dx>=0)?90:270
 	.=arctan(dx/dy)
@@ -155,16 +161,16 @@
 	if (!mover)
 		return null
 
+	/// the actual dir between the start and target turf
 	var/fdir = get_dir(start_turf, target_turf)
 	if (!fdir)
 		return null
 
-
-	var/fd1 = fdir&(fdir-1)
+	var/fd1 = fdir & (fdir-1)
 	var/fd2 = fdir - fd1
 
-
-	var/blocking_dir = 0 // The direction that mover's path is being blocked by
+	/// The direction that mover's path is being blocked by
+	var/blocking_dir = 0
 
 	var/obstacle
 	var/turf/T
@@ -230,7 +236,9 @@
 			continue
 		A = obstacle
 		blocking_dir |= A.BlockedPassDirs(mover, fdir)
-		if ((!fd1 || blocking_dir & fd1) && (!fd2 || blocking_dir & fd2))
+		if((fd1 && blocking_dir == fd1) || (fd2 && blocking_dir == fd2))
+			return A
+		if((!fd1 || blocking_dir & fd1) && (!fd2 || blocking_dir & fd2))
 			return A
 
 	return null // Nothing found to block the link of mover from start_turf to target_turf
@@ -266,7 +274,7 @@
 //This will update a mob's name, real_name, mind.name, data_core records, pda and id
 //Calling this proc without an oldname will only update the mob and skip updating the pda, id and records ~Carn
 /mob/proc/fully_replace_character_name(var/oldname,var/newname)
-	if(!newname)	return 0
+	if(!newname) return 0
 	change_real_name(src, newname)
 
 	if(oldname)
@@ -289,7 +297,7 @@
 				if(ID.registered_name == oldname)
 					ID.registered_name = newname
 					ID.name = "[newname]'s ID Card ([ID.assignment])"
-					if(!search_pda)	break
+					if(!search_pda) break
 					search_id = 0
 	return 1
 
@@ -302,11 +310,11 @@
 	var/time_passed = world.time
 
 	var/newname
-	for(var/i=1,i<=3,i++)	//we get 3 attempts to pick a suitable name.
+	for(var/i=1,i<=3,i++) //we get 3 attempts to pick a suitable name.
 		newname = input(src,"You are a [role]. Would you like to change your name to something else?", "Name change",oldname) as text
 		if((world.time-time_passed)>300)
-			return	//took too long
-		newname = reject_bad_name(newname,allow_numbers)	//returns null if the name doesn't meet some basic requirements. Tidies up a few other things like bad-characters.
+			return //took too long
+		newname = reject_bad_name(newname,allow_numbers) //returns null if the name doesn't meet some basic requirements. Tidies up a few other things like bad-characters.
 		for(var/mob/living/M in GLOB.alive_mob_list)
 			if(M == src)
 				continue
@@ -316,10 +324,10 @@
 				break
 
 		if(newname)
-			break	//That's a suitable name!
+			break //That's a suitable name!
 		to_chat(src, "Sorry, that [role]-name wasn't appropriate, please try another. It's possibly too long/short, has bad characters or is already taken.")
 
-	if(!newname)	//we'll stick with the oldname then
+	if(!newname) //we'll stick with the oldname then
 		return
 
 	if(cmptext("ai",role))
@@ -356,8 +364,8 @@
 /proc/select_active_ai(var/mob/user)
 	var/list/ais = active_ais()
 	if(ais.len)
-		if(user)	. = tgui_input_list(usr,"AI signals detected:", "AI selection", ais)
-		else		. = pick(ais)
+		if(user) . = tgui_input_list(usr,"AI signals detected:", "AI selection", ais)
+		else . = pick(ais)
 	return .
 
 /proc/get_sorted_mobs()
@@ -467,7 +475,7 @@
 	var/list/namecounts = list()
 	for(var/mob/M in mobs)
 		if(isYautja(M)) continue
-		if(iszombie(M))	continue
+		if(iszombie(M)) continue
 		var/name = M.name
 		if (name in names)
 			namecounts[name]++
@@ -492,7 +500,7 @@
 	var/list/namecounts = list()
 	for(var/mob/M in mobs)
 		if(isYautja(M)) continue
-		if(iszombie(M))	continue
+		if(iszombie(M)) continue
 		var/name = M.name
 		if (name in names)
 			namecounts[name]++
@@ -517,7 +525,7 @@
 	var/list/namecounts = list()
 	for(var/mob/M in mobs)
 		if(isYautja(M)) continue
-		if(iszombie(M))	continue
+		if(iszombie(M)) continue
 		var/name = M.name
 		if (name in names)
 			namecounts[name]++
@@ -542,7 +550,7 @@
 	var/list/namecounts = list()
 	for(var/mob/M in mobs)
 		if(isYautja(M)) continue
-		if(iszombie(M))	continue
+		if(iszombie(M)) continue
 		var/name = M.name
 		if (name in names)
 			namecounts[name]++
@@ -687,7 +695,7 @@
 	var/client/C
 	var/key
 
-	if(!whom)	return "*null*"
+	if(!whom) return "*null*"
 	if(istype(whom, /client))
 		C = whom
 		M = C.mob
@@ -711,8 +719,8 @@
 		. += key
 
 		if(include_link)
-			if(C)	. += "</a>"
-			else	. += " (DC)"
+			if(C) . += "</a>"
+			else . += " (DC)"
 	else
 		. += "*no key*"
 
@@ -1013,13 +1021,13 @@ var/global/image/action_purple_power_up
 
 
 /*
- *	do_after handles timed actions
- *	The flags indicate which actions from the user and a target (if there is a target) interrupt a given action.
- *	This proc can handle timed actions with one person alone or one person and a target atom.
+ * do_after handles timed actions
+ * The flags indicate which actions from the user and a target (if there is a target) interrupt a given action.
+ * This proc can handle timed actions with one person alone or one person and a target atom.
  *
- *	show_remaining_time: If TRUE, return the percentage of time remaining in the timed action.
- *	numticks: 	If a value is given, denotes how often the timed action checks for interrupting actions. By default, there are 5 checks every delay/5 deciseconds.
- *				Note: 'delay' should be divisible by numticks in order for the timing to work as intended. numticks should also be a whole number.
+ * show_remaining_time: If TRUE, return the percentage of time remaining in the timed action.
+ * numticks: If a value is given, denotes how often the timed action checks for interrupting actions. By default, there are 5 checks every delay/5 deciseconds.
+ * Note: 'delay' should be divisible by numticks in order for the timing to work as intended. numticks should also be a whole number.
  */
 /proc/do_after(mob/user, delay, user_flags = INTERRUPT_ALL, show_busy_icon, atom/movable/target, target_flags = INTERRUPT_MOVED, show_target_icon, max_dist = 1, \
 		show_remaining_time = FALSE, numticks = DA_DEFAULT_NUM_TICKS) // These args should primarily be named args, since you only modify them in niche situations
@@ -1273,8 +1281,8 @@ var/global/image/action_purple_power_up
 	//Takes: Area. Optional: turf type to leave behind.
 	//Returns: Nothing.
 	//Notes: Attempts to move the contents of one area to another area.
-	//       Movement based on lower left corner. Tiles that do not fit
-	//		 into the new area will not be moved.
+	//    Movement based on lower left corner. Tiles that do not fit
+	//  into the new area will not be moved.
 
 	if(!A || !src) return 0
 
@@ -1284,14 +1292,14 @@ var/global/image/action_purple_power_up
 	var/src_min_x = 0
 	var/src_min_y = 0
 	for (var/turf/T in turfs_src)
-		if(T.x < src_min_x || !src_min_x) src_min_x	= T.x
-		if(T.y < src_min_y || !src_min_y) src_min_y	= T.y
+		if(T.x < src_min_x || !src_min_x) src_min_x = T.x
+		if(T.y < src_min_y || !src_min_y) src_min_y = T.y
 
 	var/trg_min_x = 0
 	var/trg_min_y = 0
 	for (var/turf/T in turfs_trg)
-		if(T.x < trg_min_x || !trg_min_x) trg_min_x	= T.x
-		if(T.y < trg_min_y || !trg_min_y) trg_min_y	= T.y
+		if(T.x < trg_min_x || !trg_min_x) trg_min_x = T.x
+		if(T.y < trg_min_y || !trg_min_y) trg_min_y = T.y
 
 	var/list/refined_src = new/list()
 	for(var/turf/T in turfs_src)
@@ -1335,7 +1343,7 @@ var/global/image/action_purple_power_up
 						// Spawn a new shuttle corner object
 						var/obj/corner = new()
 						corner.forceMove(X)
-						corner.density = 1
+						corner.density = TRUE
 						corner.anchored = 1
 						corner.icon = X.icon
 						corner.icon_state = replacetext(X.icon_state, "_s", "_f")
@@ -1367,11 +1375,11 @@ var/global/image/action_purple_power_up
 						if(!istype(M,/mob) || istype(M, /mob/aiEye)) continue // If we need to check for more mobs, I'll add a variable
 						M.forceMove(X)
 
-//					var/area/AR = X.loc
+// var/area/AR = X.loc
 
-//					if(AR.lighting_use_dynamic)							//TODO: rewrite this code so it's not messed by lighting ~Carn
-//						X.opacity = !X.opacity
-//						X.SetOpacity(!X.opacity)
+// if(AR.lighting_use_dynamic) //TODO: rewrite this code so it's not messed by lighting ~Carn
+// X.opacity = !X.opacity
+// X.SetOpacity(!X.opacity)
 
 					toupdate += X
 
@@ -1435,7 +1443,7 @@ var/global/image/action_purple_power_up
 	else if (zone == "r_foot") return "right foot"
 	else return zone
 
-proc/get_true_location(var/atom/loc)
+/proc/get_true_location(var/atom/loc)
 	var/atom/subLoc = loc
 	while(subLoc.z == 0)
 		if (istype(subLoc.loc, /atom))
@@ -1448,14 +1456,14 @@ proc/get_true_location(var/atom/loc)
 
 /proc/reverse_nearby_direction(direction)
 	switch(direction)
-		if(NORTH) 		return list(SOUTH,     SOUTHEAST, SOUTHWEST)
-		if(NORTHEAST) 	return list(SOUTHWEST, SOUTH,     WEST)
-		if(EAST) 		return list(WEST,      SOUTHWEST, NORTHWEST)
-		if(SOUTHEAST) 	return list(NORTHWEST, NORTH,     WEST)
-		if(SOUTH) 		return list(NORTH,     NORTHEAST, NORTHWEST)
-		if(SOUTHWEST) 	return list(NORTHEAST, NORTH,     EAST)
-		if(WEST) 		return list(EAST,      NORTHEAST, SOUTHEAST)
-		if(NORTHWEST) 	return list(SOUTHEAST, SOUTH,     EAST)
+		if(NORTH) return list(SOUTH,  SOUTHEAST, SOUTHWEST)
+		if(NORTHEAST) return list(SOUTHWEST, SOUTH,  WEST)
+		if(EAST) return list(WEST,   SOUTHWEST, NORTHWEST)
+		if(SOUTHEAST) return list(NORTHWEST, NORTH,  WEST)
+		if(SOUTH) return list(NORTH,  NORTHEAST, NORTHWEST)
+		if(SOUTHWEST) return list(NORTHEAST, NORTH,  EAST)
+		if(WEST) return list(EAST,   NORTHEAST, SOUTHEAST)
+		if(NORTHWEST) return list(SOUTHEAST, SOUTH,  EAST)
 
 /*
 Checks if that loc and dir has a item on the wall
@@ -1518,25 +1526,25 @@ var/list/WALLITEMS = list(
 	return replacetext(replacetext(text,"\proper ",""),"\improper ","")
 
 /proc/getline(atom/M, atom/N, include_from_atom = TRUE)//Ultra-Fast Bresenham Line-Drawing Algorithm
-	var/px=M.x		//starting x
+	var/px=M.x //starting x
 	var/py=M.y
 	var/line[] = list(locate(px,py,M.z))
-	var/dx=N.x-px	//x distance
+	var/dx=N.x-px //x distance
 	var/dy=N.y-py
 	var/dxabs=abs(dx)//Absolute value of x distance
 	var/dyabs=abs(dy)
-	var/sdx=sign(dx)	//Sign of x distance (+ or -)
+	var/sdx=sign(dx) //Sign of x distance (+ or -)
 	var/sdy=sign(dy)
-	var/x=dxabs>>1	//Counters for steps taken, setting to distance/2
-	var/y=dyabs>>1	//Bit-shifting makes me l33t.  It also makes getline() unnessecarrily fast.
-	var/j			//Generic integer for counting
-	if(dxabs>=dyabs)	//x distance is greater than y
+	var/x=dxabs>>1 //Counters for steps taken, setting to distance/2
+	var/y=dyabs>>1 //Bit-shifting makes me l33t.  It also makes getline() unnessecarrily fast.
+	var/j //Generic integer for counting
+	if(dxabs>=dyabs) //x distance is greater than y
 		for(j=0;j<dxabs;j++)//It'll take dxabs steps to get there
 			y+=dyabs
-			if(y>=dxabs)	//Every dyabs steps, step once in y direction
+			if(y>=dxabs) //Every dyabs steps, step once in y direction
 				y-=dxabs
 				py+=sdy
-			px+=sdx		//Step on in x direction
+			px+=sdx //Step on in x direction
 			if(j > 0 || include_from_atom)
 				line+=locate(px,py,M.z)//Add the turf to the list
 	else
@@ -1692,7 +1700,7 @@ var/list/WALLITEMS = list(
 
 /proc/flick_overlay(var/atom/target, overlay, time)
 	target.overlays += overlay
-	addtimer(CALLBACK(GLOBAL_PROC, /proc/remove_timed_overlay, target, overlay), time)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(remove_timed_overlay), target, overlay), time)
 
 /proc/remove_timed_overlay(var/atom/target, overlay)
 	target.overlays -= overlay
@@ -1793,10 +1801,7 @@ var/list/WALLITEMS = list(
 		user.face_atom(src)
 	return TRUE
 
-//datum may be null, but it does need to be a typed var
-#define NAMEOF(datum, X) (#X || ##datum.##X)
-
-#define VARSET_CALLBACK(datum, var, var_value) CALLBACK(GLOBAL_PROC, /proc/___callbackvarset, ##datum, NAMEOF(##datum, ##var), ##var_value)
+#define VARSET_CALLBACK(datum, var, var_value) CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(___callbackvarset), ##datum, NAMEOF(##datum, ##var), ##var_value)
 
 /proc/___callbackvarset(list_or_datum, var_name, var_value)
 	if(length(list_or_datum))
@@ -1860,7 +1865,7 @@ var/list/WALLITEMS = list(
 	for(var/area/A in world)
 		GLOB.sorted_areas.Add(A)
 
-	sortTim(GLOB.sorted_areas, /proc/cmp_name_asc)
+	sortTim(GLOB.sorted_areas, GLOBAL_PROC_REF(cmp_name_asc))
 
 /atom/proc/GetAllContentsIgnoring(list/ignore_typecache)
 	if(!length(ignore_typecache))

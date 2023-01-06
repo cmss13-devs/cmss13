@@ -289,6 +289,7 @@
 		ACCESS_WY_CORPORATE,
 		ACCESS_CIVILIAN_COMMAND
 	)
+	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
 
 /datum/equipment_preset/survivor/corporate/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit/formal(H), WEAR_BODY)
@@ -396,6 +397,7 @@
 /datum/equipment_preset/survivor/security/corsat
 	name = "Survivor - CORSAT Security Guard"
 	assignment = "Weyland-Yutani Corporate Security Guard"
+	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
 
 /datum/equipment_preset/survivor/security/corsat/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/formal/servicedress(H), WEAR_BODY)
@@ -442,6 +444,7 @@
 /datum/equipment_preset/survivor/security/lv
 	name = "Survivor - LV-624 Security Guard"
 	assignment = "Weyland-Yutani Corporate Security Guard"
+	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
 
 /datum/equipment_preset/survivor/security/lv/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/formal/servicedress(H), WEAR_BODY)
@@ -911,11 +914,11 @@
 	..()
 
 
-// ---- Colonial Marshall Survivor
+// ---- Colonial Marshal Survivor
 
 /datum/equipment_preset/survivor/colonial_marshal
-	name = "Survivor - Colonial Marshall"
-	assignment = "Colonial Marshall"
+	name = "Survivor - Colonial Marshal"
+	assignment = "Colonial Marshal"
 	skills = /datum/skills/civilian/survivor/marshal
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	idtype = /obj/item/card/id/silver/cl
@@ -1121,7 +1124,7 @@
 	paygrade = "WEY-GOON"
 	idtype = /obj/item/card/id/silver/cl
 	skills = /datum/skills/civilian/survivor/goon
-	languages = list(LANGUAGE_ENGLISH)
+	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
 	access = list(
 		ACCESS_CIVILIAN_PUBLIC,
 		ACCESS_CIVILIAN_ENGINEERING,
@@ -1130,7 +1133,7 @@
 	)
 
 /datum/equipment_preset/survivor/goon/load_gear(mob/living/carbon/human/H)
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/goon, WEAR_L_EAR)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/WY, WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/PMC/corporate, WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/PMC/light/corporate, WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran, WEAR_HANDS)
@@ -1204,6 +1207,7 @@
 		ACCESS_MARINE_RESEARCH,
 		ACCESS_MARINE_MEDBAY
 	)
+	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
 /datum/equipment_preset/survivor/wy/manager/load_gear(mob/living/carbon/human/H)
 
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/suit_jacket/manager(H), WEAR_BODY)

@@ -34,7 +34,7 @@ callback_args - arguments for callback function
 
 Be sure to include required js functions in your page, or it'll raise an exception.
 */
-proc/send_byjax(receiver, control_id, target_element, new_content=null, callback=null, list/callback_args=null)
+/proc/send_byjax(receiver, control_id, target_element, new_content=null, callback=null, list/callback_args=null)
 	if(receiver && target_element && control_id) // && winexists(receiver, control_id))
 		var/list/argums = list(target_element, new_content)
 		if(callback)
@@ -42,7 +42,7 @@ proc/send_byjax(receiver, control_id, target_element, new_content=null, callback
 			if(callback_args)
 				argums += callback_args
 		argums = list2params(argums)
-/*		if(callback_args)
+/* if(callback_args)
 			argums += "&[list2params(callback_args)]"
 */
 		receiver << output(argums,"[control_id]:replaceContent")

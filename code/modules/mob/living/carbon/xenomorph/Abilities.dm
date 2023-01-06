@@ -29,6 +29,10 @@
 		to_chat(X, SPAN_XENOWARNING("You can't do that from there."))
 		return
 
+	if(SSticker?.mode?.hardcore)
+		to_chat(X, SPAN_XENOWARNING("A certain presence is preventing you from digging tunnels here."))
+		return
+
 	if(!T.can_dig_xeno_tunnel() || !is_ground_level(T.z))
 		to_chat(X, SPAN_XENOWARNING("You scrape around, but you can't seem to dig through that kind of floor."))
 		return
@@ -66,7 +70,7 @@
 
 	var/obj/structure/tunnel/tunnelobj = new(T, X.hivenumber)
 	X.tunnel_delay = 1
-	addtimer(CALLBACK(src, .proc/cooldown_end), 4 MINUTES)
+	addtimer(CALLBACK(src, PROC_REF(cooldown_end)), 4 MINUTES)
 	var/msg = strip_html(input("Add a description to the tunnel:", "Tunnel Description") as text|null)
 	var/description
 	if(msg)
@@ -130,7 +134,7 @@
 		if(hugger.stat != DEAD)
 			hugger.die()
 
-	playsound(xeno.loc, xeno.screech_sound_effect, 75, 0, status = 0)
+	playsound(xeno.loc, pick(xeno.screech_sound_effect_list), 75, 0, status = 0)
 	xeno.visible_message(SPAN_XENOHIGHDANGER("[xeno] emits an ear-splitting guttural roar!"))
 	xeno.create_shriekwave() //Adds the visual effect. Wom wom wom
 

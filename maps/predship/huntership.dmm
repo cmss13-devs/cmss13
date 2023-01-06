@@ -120,7 +120,7 @@
 /turf/open/floor/sandstone/runed,
 /area/yautja)
 "an" = (
-/obj/structure/machinery/autodoc{
+/obj/structure/machinery/medical_pod/autodoc{
 	dir = 4
 	},
 /turf/open/floor/corsat{
@@ -595,7 +595,7 @@
 /turf/open/shuttle/predship,
 /area/yautja)
 "bs" = (
-/obj/structure/machinery/bodyscanner{
+/obj/structure/machinery/medical_pod/bodyscanner{
 	dir = 1
 	},
 /turf/open/floor/corsat{
@@ -938,7 +938,7 @@
 /turf/closed/wall/huntership,
 /area/yautja)
 "cj" = (
-/obj/structure/machinery/sleeper,
+/obj/structure/machinery/medical_pod/sleeper,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "squareswood"
@@ -1014,9 +1014,7 @@
 	dir = 1;
 	icon_state = "squareswood"
 	},
-/area/yautja{
-	color = "#948954"
-	})
+/area/yautja)
 "ct" = (
 /obj/structure/machinery/door/airlock/strata/autoname{
 	dir = 1;
@@ -1975,7 +1973,7 @@
 	},
 /obj/structure/machinery/power/apc/almayer{
 	dir = 4;
-	pixel_y = 22
+	pixel_y = 25
 	},
 /obj/item/weapon/melee/twohanded/yautja/spear,
 /obj/item/weapon/melee/twohanded/yautja/spear,

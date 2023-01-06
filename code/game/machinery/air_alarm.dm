@@ -22,30 +22,30 @@
 		flagIndex+=1
 	return AAlarmwires
 
-#define AALARM_WIRE_IDSCAN		1	//Added wires
-#define AALARM_WIRE_POWER		2
-#define AALARM_WIRE_SYPHON		3
-#define AALARM_WIRE_AI_CONTROL	4
-#define AALARM_WIRE_AALARM		5
+#define AALARM_WIRE_IDSCAN 1 //Added wires
+#define AALARM_WIRE_POWER 2
+#define AALARM_WIRE_SYPHON 3
+#define AALARM_WIRE_AI_CONTROL 4
+#define AALARM_WIRE_AALARM 5
 
-#define AALARM_MODE_SCRUBBING	1
-#define AALARM_MODE_REPLACEMENT	2 //like scrubbing, but faster.
-#define AALARM_MODE_PANIC		3 //constantly sucks all air
-#define AALARM_MODE_CYCLE		4 //sucks off all air, then refill and switches to scrubbing
-#define AALARM_MODE_FILL		5 //emergency fill
-#define AALARM_MODE_OFF			6 //Shuts it all down.
+#define AALARM_MODE_SCRUBBING 1
+#define AALARM_MODE_REPLACEMENT 2 //like scrubbing, but faster.
+#define AALARM_MODE_PANIC 3 //constantly sucks all air
+#define AALARM_MODE_CYCLE 4 //sucks off all air, then refill and switches to scrubbing
+#define AALARM_MODE_FILL 5 //emergency fill
+#define AALARM_MODE_OFF 6 //Shuts it all down.
 
-#define AALARM_SCREEN_MAIN		1
-#define AALARM_SCREEN_VENT		2
-#define AALARM_SCREEN_SCRUB		3
-#define AALARM_SCREEN_MODE		4
-#define AALARM_SCREEN_SENSORS	5
+#define AALARM_SCREEN_MAIN 1
+#define AALARM_SCREEN_VENT 2
+#define AALARM_SCREEN_SCRUB 3
+#define AALARM_SCREEN_MODE 4
+#define AALARM_SCREEN_SENSORS 5
 
 #define AALARM_REPORT_TIMEOUT 100
 
-#define RCON_NO		1
-#define RCON_AUTO	2
-#define RCON_YES	3
+#define RCON_NO 1
+#define RCON_AUTO 2
+#define RCON_YES 3
 
 #define MAX_TEMPERATURE 90
 #define MIN_TEMPERATURE -40
@@ -63,7 +63,7 @@
 	icon = 'icons/obj/structures/machinery/monitors.dmi' // I made these really quickly because idk where they have their new air alarm ~Art
 	icon_state = "alarm0"
 	anchored = 1
-	use_power = 1
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 80
 	active_power_usage = 1000 //For heating/cooling rooms. 1000 joules equates to about 1 degree every 2 seconds for a single tile of air.
 	power_channel = POWER_CHANNEL_ENVIRON
@@ -143,12 +143,12 @@
 		name = "[alarm_area.name] Air Alarm"
 
 	// breathable air according to human/Life(delta_time)
-	TLV["oxygen"] =			list(16, 19, 135, 140) // Partial pressure, kpa
+	TLV["oxygen"] = list(16, 19, 135, 140) // Partial pressure, kpa
 	TLV["carbon dioxide"] = list(-1.0, -1.0, 5, 10) // Partial pressure, kpa
-	TLV["phoron"] =			list(-1.0, -1.0, 0.2, 0.5) // Partial pressure, kpa
-	TLV["other"] =			list(-1.0, -1.0, 0.5, 1.0) // Partial pressure, kpa
-	TLV["pressure"] =		list(ONE_ATMOSPHERE*0.80,ONE_ATMOSPHERE*0.90,ONE_ATMOSPHERE*1.10,ONE_ATMOSPHERE*1.20) /* kpa */
-	TLV["temperature"] =	list(T0C-26, T0C, T0C+40, T0C+66) // K
+	TLV["phoron"] = list(-1.0, -1.0, 0.2, 0.5) // Partial pressure, kpa
+	TLV["other"] = list(-1.0, -1.0, 0.5, 1.0) // Partial pressure, kpa
+	TLV["pressure"] = list(ONE_ATMOSPHERE*0.80,ONE_ATMOSPHERE*0.90,ONE_ATMOSPHERE*1.10,ONE_ATMOSPHERE*1.20) /* kpa */
+	TLV["temperature"] = list(T0C-26, T0C, T0C+40, T0C+66) // K
 
 
 /obj/structure/machinery/alarm/Initialize()
@@ -176,12 +176,12 @@
 	if(!istype(location))
 		return 0
 
-	if(breach_detection	== 0)
+	if(breach_detection == 0)
 		return 0
 
 	var/pressure_levels = TLV["pressure"]
 
-	if (location.return_pressure() <= pressure_levels[1])		//low pressures
+	if (location.return_pressure() <= pressure_levels[1]) //low pressures
 		if (!(mode == AALARM_MODE_PANIC || mode == AALARM_MODE_CYCLE))
 			return 1
 
@@ -219,7 +219,7 @@
 
 	var/icon_level = danger_level
 	if (!isnull(alarm_area) && alarm_area.atmosalm)
-		icon_level = max(icon_level, 1)	//if there's an atmos alarm but everything is okay locally, no need to go past yellow
+		icon_level = max(icon_level, 1) //if there's an atmos alarm but everything is okay locally, no need to go past yellow
 
 	switch(icon_level)
 		if (0)
@@ -299,7 +299,7 @@
 	signal.data["sigtype"] = "command"
 
 	radio_connection.post_signal(src, signal, RADIO_FROM_AIRALARM)
-//			world << text("Signal [] Broadcasted to []", command, target)
+// world << text("Signal [] Broadcasted to []", command, target)
 
 	return 1
 
@@ -415,7 +415,7 @@
 
 			if (alarm_area.atmosalert(2))
 				apply_danger_level(2)
-			addtimer(CALLBACK(src, .proc/updateUsrDialog), 1)
+			addtimer(CALLBACK(src, PROC_REF(updateUsrDialog)), 1)
 			update_icon()
 
 	updateDialog()
@@ -445,7 +445,7 @@
 	//var/wireFlag = AAlarmWireColorToFlag[wireColor] //not used in this function
 	var/wireIndex = AAlarmWireColorToIndex[wireColor]
 	switch(wireIndex)
-		if(AALARM_WIRE_IDSCAN)			//unlocks for 30 seconds, if you have a better way to hack I'm all ears
+		if(AALARM_WIRE_IDSCAN) //unlocks for 30 seconds, if you have a better way to hack I'm all ears
 			locked = 0
 			spawn(30 SECONDS)
 				locked = 1
@@ -477,7 +477,7 @@
 		if(AALARM_WIRE_AALARM)
 			if (alarm_area.atmosalert(0))
 				apply_danger_level(0)
-			addtimer(CALLBACK(src, .proc/updateUsrDialog), 1)
+			addtimer(CALLBACK(src, PROC_REF(updateUsrDialog)), 1)
 			update_icon()
 
 	updateDialog()
@@ -728,10 +728,10 @@ Nitrous Oxide
 			output += "<a href='?src=\ref[src];screen=[AALARM_SCREEN_MAIN]'>Main menu</a><br><b>Air machinery mode for the area:</b><ul>"
 			var/list/modes = list(AALARM_MODE_SCRUBBING   = "Filtering - Scrubs out contaminants",\
 				AALARM_MODE_REPLACEMENT = SET_CLASS("Replace Air - Siphons out air while replacing", INTERFACE_BLUE),\
-				AALARM_MODE_PANIC       = SET_CLASS("Panic - Siphons air out of the room", INTERFACE_RED),\
-				AALARM_MODE_CYCLE       = SET_CLASS("Cycle - Siphons air before replacing", INTERFACE_RED),\
-				AALARM_MODE_FILL        = SET_CLASS("Fill - Shuts off scrubbers and opens vents", INTERFACE_GREEN),\
-				AALARM_MODE_OFF         = SET_CLASS("Off - Shuts off vents and scrubbers", INTERFACE_BLUE)
+				AALARM_MODE_PANIC    = SET_CLASS("Panic - Siphons air out of the room", INTERFACE_RED),\
+				AALARM_MODE_CYCLE    = SET_CLASS("Cycle - Siphons air before replacing", INTERFACE_RED),\
+				AALARM_MODE_FILL = SET_CLASS("Fill - Shuts off scrubbers and opens vents", INTERFACE_GREEN),\
+				AALARM_MODE_OFF  = SET_CLASS("Off - Shuts off vents and scrubbers", INTERFACE_BLUE)
 			)
 			for (var/m=1,m<=modes.len,m++)
 				if (mode==m)
@@ -758,10 +758,10 @@ table tr:first-child th:first-child { border: none;}
 <TR><th></th><th class=dl2>min2</th><th class=dl1>min1</th><th class=dl1>max1</th><th class=dl2>max2</th></TR>
 "}
 			var/list/gases = list(
-				"oxygen"         = "O<sub>2</sub>",
+				"oxygen"  = "O<sub>2</sub>",
 				"carbon dioxide" = "CO<sub>2</sub>",
-				"phoron"         = "Toxin",
-				"other"          = "Other",)
+				"phoron"  = "Toxin",
+				"other"   = "Other",)
 
 			var/list/selected
 			for (var/g in gases)
@@ -772,7 +772,7 @@ table tr:first-child th:first-child { border: none;}
 				output += "</TR>"
 
 			selected = TLV["pressure"]
-			output += "	<TR><th>Pressure</th>"
+			output += " <TR><th>Pressure</th>"
 			for(var/i = 1, i <= 4, i++)
 				output += "<td><A href='?src=\ref[src];command=set_threshold;env=pressure;var=[i]'>[selected[i] >= 0 ? selected[i] :"OFF"]</A></td>"
 			output += "</TR>"
@@ -1037,12 +1037,12 @@ table tr:first-child th:first-child { border: none;}
 /obj/structure/machinery/alarm/server/Initialize()
 	. = ..()
 	req_one_access = list(ACCESS_CIVILIAN_ENGINEERING)
-	TLV["oxygen"] =			list(-1.0, -1.0,-1.0,-1.0) // Partial pressure, kpa
+	TLV["oxygen"] = list(-1.0, -1.0,-1.0,-1.0) // Partial pressure, kpa
 	TLV["carbon dioxide"] = list(-1.0, -1.0,   5,  10) // Partial pressure, kpa
-	TLV["phoron"] =			list(-1.0, -1.0, 0.2, 0.5) // Partial pressure, kpa
-	TLV["other"] =			list(-1.0, -1.0, 0.5, 1.0) // Partial pressure, kpa
-	TLV["pressure"] =		list(0,ONE_ATMOSPHERE*0.10,ONE_ATMOSPHERE*1.40,ONE_ATMOSPHERE*1.60) /* kpa */
-	TLV["temperature"] =	list(20, 40, 140, 160) // K
+	TLV["phoron"] = list(-1.0, -1.0, 0.2, 0.5) // Partial pressure, kpa
+	TLV["other"] = list(-1.0, -1.0, 0.5, 1.0) // Partial pressure, kpa
+	TLV["pressure"] = list(0,ONE_ATMOSPHERE*0.10,ONE_ATMOSPHERE*1.40,ONE_ATMOSPHERE*1.60) /* kpa */
+	TLV["temperature"] = list(20, 40, 140, 160) // K
 	target_temperature = 90
 
 

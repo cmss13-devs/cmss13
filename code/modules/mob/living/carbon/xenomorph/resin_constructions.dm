@@ -34,7 +34,7 @@ GLOBAL_VAR_INIT(resin_lz_allowed, FALSE)
 		to_chat(X, SPAN_XENOWARNING("It's too early to spread the hive this far."))
 		return FALSE
 
-	if(!(AR.resin_construction_allowed))	//disable resin walls not weed, in special circumstances EG. Stairs and Dropship turfs
+	if(!(AR.resin_construction_allowed)) //disable resin walls not weed, in special circumstances EG. Stairs and Dropship turfs
 		to_chat(X, SPAN_WARNING("You sense this is not a suitable area for expanding the hive."))
 		return FALSE
 
@@ -319,6 +319,16 @@ GLOBAL_VAR_INIT(resin_lz_allowed, FALSE)
 	build_path = /obj/item/explosive/grenade/alien/acid
 	build_time = 6 SECONDS
 
+//CHRISTMAS
+
+/datum/resin_construction/resin_obj/festivizer
+	name = "Christmas Festivizer"
+	desc = "Merry Christmas! Hit anything with this to create the jolliest of festivities!"
+	construction_name = "christmas festivizer"
+	max_per_xeno = 5
+	build_path = /obj/item/toy/festivizer/xeno
+	build_time = 2 SECONDS
+
 /datum/resin_construction/resin_obj/movable
 	construction_name = "resin wall"
 
@@ -349,3 +359,4 @@ GLOBAL_VAR_INIT(resin_lz_allowed, FALSE)
 	desc = "A thick resin membrane that can be moved onto any adjacent tile, as long as there are weeds."
 	construction_name = "thick resin membrane"
 	build_path = /obj/structure/alien/movable_wall/membrane/thick
+

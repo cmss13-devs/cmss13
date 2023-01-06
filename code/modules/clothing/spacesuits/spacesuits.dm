@@ -1,6 +1,6 @@
 //Spacesuit
 //Note: Everything in modules/clothing/spacesuits should have the entire suit grouped together.
-//      Meaning the suit is defined directly after the corrisponding helmet. Just like below!
+//   Meaning the suit is defined directly after the corrisponding helmet. Just like below!
 /obj/item/clothing/head/helmet/space
 	name = "Space helmet"
 	icon_state = "space"
@@ -21,7 +21,7 @@
 	flags_cold_protection = BODY_FLAG_HEAD
 	min_cold_protection_temperature = SPACE_HELMET_min_cold_protection_temperature
 	siemens_coefficient = 0.9
-	eye_protection = 2
+	eye_protection = EYE_PROTECTION_WELDING
 
 /obj/item/clothing/suit/space
 	name = "Space suit"

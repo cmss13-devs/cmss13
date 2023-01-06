@@ -1,0 +1,63 @@
+@use '../base.scss';
+
+.NavigationMenu {
+  span {
+    font-size: 2rem;
+  }
+
+  .Button {
+    font-size: 2rem;
+  }
+  .Section {
+    font-size: 2rem;
+    .Section__buttons {
+      .Button {
+        font-size: 1.5rem;
+      }
+    }
+  }
+  .DestinationSelector {
+    .Stack__item {
+      margin-bottom: -0.4em;
+    }
+    .Button {
+      border-radius: 0;
+      width: 100%;
+      font-size: 1.5rem;
+    }
+    .Button__content {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+  }
+  .DoorControlStack {
+    .Button {
+      font-size: 1.5rem;
+    }
+  }
+  .LaunchCountdown {
+    span {
+      font-size: 1.5rem;
+    }
+  }
+  .InFlightCountdown {
+    span {
+      font-size: 1.5rem;
+    }
+  }
+
+  .DisabledScreen {
+    text-align: center;
+    height: 100%;
+    div {
+      border: 2px solid #00e94e;
+    }
+    span {
+      font-size: 2rem;
+      font-weight: bold;
+    }
+  }
+}
+.Test {
+  border: 1px solid red;
+}

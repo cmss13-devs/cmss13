@@ -5,7 +5,7 @@
 	set category = "Object"
 	set src in view(1)
 	usr.set_interaction(src)
-	if(!mapping)	return
+	if(!mapping) return
 
 	log_game("[usr]([usr.key]) used station map L[z] in [src.loc.loc]")
 
@@ -222,7 +222,7 @@
 								colour = rgb(255,128,128)
 
 						//if(istype(AM, /obj/effect/blob))
-						//	colour = rgb(255,0,255)
+						// colour = rgb(255,0,255)
 
 				var/area/A = T.loc
 
@@ -274,7 +274,7 @@
 
 	src.close(user)
 
-/*			if(seccomp == src)
+/* if(seccomp == src)
 				drawmap(user)
 			else
 				user.clearmap()*/
@@ -298,13 +298,13 @@
 
 		return
 
-proc/getr(col)
+/proc/getr(col)
 	return hex2num( copytext(col, 2,4))
 
-proc/getg(col)
+/proc/getg(col)
 	return hex2num( copytext(col, 4,6))
 
-proc/getb(col)
+/proc/getb(col)
 	return hex2num( copytext(col, 6))
 
 

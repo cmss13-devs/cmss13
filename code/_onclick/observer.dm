@@ -27,7 +27,7 @@
 				return 1
 
 		if(ismob(A) || isVehicle(A))
-			if(isXeno(A) && SSticker.mode.check_xeno_late_join(src))		//if it's a xeno and all checks are alright, we are gonna try to take their body
+			if(isXeno(A) && SSticker.mode.check_xeno_late_join(src)) //if it's a xeno and all checks are alright, we are gonna try to take their body
 				var/mob/living/carbon/Xenomorph/X = A
 				if(X.stat == DEAD || is_admin_level(X.z) || X.aghosted)
 					to_chat(src, SPAN_WARNING("You cannot join as [X]."))
@@ -46,7 +46,7 @@
 							to_wait = XENO_LEAVE_TIMER_LARVA - X.away_timer
 						to_chat(src, SPAN_WARNING("That player hasn't been away long enough. Please wait [to_wait] second\s longer."))
 						return FALSE
-				if(alert(src, "Are you sure you want to transfer yourself into [X]?", "Confirm Transfer", "Yes", "No") == "No")
+				if(alert(src, "Are you sure you want to transfer yourself into [X]?", "Confirm Transfer", "Yes", "No") != "Yes")
 					return FALSE
 				if(((!isXenoLarva(X) && X.away_timer < XENO_LEAVE_TIMER) || (isXenoLarva(X) && X.away_timer < XENO_LEAVE_TIMER_LARVA)) || X.stat == DEAD) // Do it again, just in case
 					to_chat(src, SPAN_WARNING("That xenomorph can no longer be controlled. Please try another."))

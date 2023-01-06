@@ -127,7 +127,7 @@
 	if(src == H.get_inactive_hand())
 		message = "between [user.gender == MALE ? "his" : "her"] hands"
 		to_chat(user, SPAN_NOTICE("You start crushing the [name] between your hands!"))
-		if(!do_after(user, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))	//crushing with hands takes great effort and might
+		if(!do_after(user, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC)) //crushing with hands takes great effort and might
 			return
 	else
 		switch(user.zone_selected)
@@ -136,7 +136,7 @@
 					to_chat(user, SPAN_WARNING("You don't have a [H.zone_selected], can't crush yer can on nothing!"))
 					return
 				message = "against [user.gender == MALE ? "his" : "her"] head!"
-				L.take_damage(brute = 3)			//ouch! but you're a tough badass so it barely hurts
+				L.take_damage(brute = 3) //ouch! but you're a tough badass so it barely hurts
 				H.UpdateDamageIcon()
 			if("l_foot" , "r_foot")
 				if(!L)

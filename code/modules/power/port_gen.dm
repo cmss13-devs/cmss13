@@ -7,7 +7,7 @@
 	desc = "A portable generator used for emergency backup power."
 	icon = 'generator.dmi'
 	icon_state = "off"
-	density = 1
+	density = TRUE
 	anchored = 0
 	directwired = 0
 	var/t_status = 0
@@ -42,14 +42,14 @@ display round(lastgen) and phorontank amount
 
 //Baseline portable generator. Has all the default handling. Not intended to be used on it's own (since it generates unlimited power).
 /obj/structure/machinery/power/port_gen
-	name = "Placeholder Generator"	//seriously, don't use this. It can't be anchored without VV magic.
-	desc = "A portable generator for emergency backup power"
+	name = "Placeholder Generator" //seriously, don't use this. It can't be anchored without VV magic.
+	desc = "A portable generator for emergency backup power."
 	icon = 'icons/obj/structures/machinery/power.dmi'
 	icon_state = "portgen0"
-	density = 1
+	density = TRUE
 	anchored = 0
-//	directwired = 0
-	use_power = 0
+// directwired = 0
+	use_power = USE_POWER_NONE
 	unslashable = FALSE
 
 	var/active = 0
@@ -338,8 +338,9 @@ display round(lastgen) and phorontank amount
 	power_gen = 15000
 	time_per_sheet = 120
 	board_path = /obj/item/circuitboard/machine/pacman/super
-	overheat()
-		explosion(src.loc, 3, 3, 3, -1)
+
+/obj/structure/machinery/power/port_gen/pacman/super/overheat()
+	explosion(src.loc, 3, 3, 3, -1)
 
 /obj/structure/machinery/power/port_gen/pacman/mrs
 	name = "M.R.S.P.A.C.M.A.N.-type Portable Generator"
@@ -348,5 +349,6 @@ display round(lastgen) and phorontank amount
 	power_gen = 40000
 	time_per_sheet = 150
 	board_path = /obj/item/circuitboard/machine/pacman/mrs
-	overheat()
-		explosion(src.loc, 4, 4, 4, -1)
+
+/obj/structure/machinery/power/port_gen/pacman/mrs/overheat()
+	explosion(src.loc, 4, 4, 4, -1)

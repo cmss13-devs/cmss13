@@ -5,15 +5,15 @@
 	desc = "A recharge and repair station for robots and synthetics. Simply put the synthetic in need of repair in here and they will be fixed up in no time!"
 	density = TRUE
 	anchored = TRUE
-	use_power = 1
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 50
 	active_power_usage = 50
 	var/mob/living/occupant = null
-	var/max_internal_charge = 15000 		// Two charged borgs in a row with default cell
-	var/current_internal_charge = 15000 	// Starts charged, to prevent power surges on round start
-	var/charging_cap_active = 25000			// Active Cap - When cyborg is inside
-	var/charging_cap_passive = 2500			// Passive Cap - Recharging internal capacitor when no cyborg is inside
-	var/icon_update_tick = 0				// Used to update icon only once every 10 ticks
+	var/max_internal_charge = 15000 // Two charged borgs in a row with default cell
+	var/current_internal_charge = 15000 // Starts charged, to prevent power surges on round start
+	var/charging_cap_active = 25000 // Active Cap - When cyborg is inside
+	var/charging_cap_passive = 2500 // Passive Cap - Recharging internal capacitor when no cyborg is inside
+	var/icon_update_tick = 0 // Used to update icon only once every 10 ticks
 	can_buckle = TRUE
 
 /obj/structure/machinery/recharge_station/Initialize(mapload, ...)
@@ -60,17 +60,17 @@
 
 	// Calculating amount of power to draw
 	var/charge_diff = max_internal_charge - current_internal_charge // OK we have charge differences
-	charge_diff = charge_diff / CELLRATE 							// Deconvert from Charge to Joules
-	if(chargemode)													// Decide if use passive or active power
-		charge_diff = between(0, charge_diff, charging_cap_active)	// Trim the values to limits
-	else															// We should have load for this tick in Watts
+	charge_diff = charge_diff / CELLRATE // Deconvert from Charge to Joules
+	if(chargemode) // Decide if use passive or active power
+		charge_diff = between(0, charge_diff, charging_cap_active) // Trim the values to limits
+	else // We should have load for this tick in Watts
 		charge_diff = between(0, charge_diff, charging_cap_passive)
 
 	charge_diff += 50 // 50W for circuitry
 
 	if(idle_power_usage != charge_diff) // Force update, but only when our power usage changed this tick.
 		idle_power_usage = charge_diff
-		update_use_power(1)
+		update_use_power(USE_POWER_IDLE)
 
 	current_internal_charge = min((current_internal_charge + ((charge_diff - 50) * CELLRATE)), max_internal_charge)
 
@@ -149,14 +149,14 @@
 			if(!R.cell)
 				return
 			if(!R.cell.fully_charged())
-				var/diff = min(R.cell.maxcharge - R.cell.charge, 500) 	// 500 charge / tick is about 2% every 3 seconds
-				diff = min(diff, current_internal_charge) 				// No over-discharging
+				var/diff = min(R.cell.maxcharge - R.cell.charge, 500) // 500 charge / tick is about 2% every 3 seconds
+				diff = min(diff, current_internal_charge) // No over-discharging
 				R.cell.give(diff)
 				current_internal_charge = max(current_internal_charge - diff, 0)
 				to_chat(occupant, "Recharging...")
 				doing_stuff = TRUE
 			else
-				update_use_power(1)
+				update_use_power(USE_POWER_IDLE)
 		if (isrobot(occupant) || isSynth(occupant))
 			if(occupant.getBruteLoss() > 0 || occupant.getFireLoss() > 0 || occupant.getBrainLoss() > 0)
 				occupant.heal_overall_damage(10, 10, TRUE)
@@ -179,14 +179,14 @@
 	if(!( src.occupant ))
 		return
 	//for(var/obj/O in src)
-	//	O.forceMove(src.loc)
+	// O.forceMove(src.loc)
 	if (src.occupant.client)
 		src.occupant.client.eye = src.occupant.client.mob
 		src.occupant.client.perspective = MOB_PERSPECTIVE
 	src.occupant.forceMove(loc)
 	src.occupant = null
 	update_icon()
-	update_use_power(1)
+	update_use_power(USE_POWER_IDLE)
 	return
 
 /obj/structure/machinery/recharge_station/verb/move_eject()
@@ -221,7 +221,7 @@
 	start_processing()
 	src.add_fingerprint(usr)
 	update_icon()
-	update_use_power(1)
+	update_use_power(USE_POWER_IDLE)
 	return TRUE
 
 /obj/structure/machinery/recharge_station/verb/move_inside()

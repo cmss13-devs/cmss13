@@ -1,7 +1,7 @@
 /*
-obj/effect/landmark/desertdam
+/obj/effect/landmark/desertdam
 	icon = 'icons/misc/mark.dmi'
-obj/effect/landmark/desertdam/river_blocker
+/obj/effect/landmark/desertdam/river_blocker
 	name = "toxic river blocker"
 	icon_state = "spawn_event"
 
@@ -11,8 +11,8 @@ obj/effect/landmark/desertdam/river_blocker
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "smoke"
 	anchored = 1
-	density = 1
-	//opacity = 1
+	density = TRUE
+	//opacity = TRUE
 	unslashable = TRUE
 	unacidable = TRUE
 
@@ -66,11 +66,11 @@ var/global/east_riverstart = 0
 
 /obj/effect/blocker/toxic_water
 	anchored = 1
-	density = 0
-	opacity = 0
+	density = FALSE
+	opacity = FALSE
 	unacidable = TRUE
 	layer = ABOVE_FLY_LAYER //to make it visible in the map editor
-	mouse_opacity = 0
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	icon = 'icons/old_stuff/mark.dmi'
 
 	var/dispersing = 0
@@ -242,7 +242,7 @@ var/global/east_riverstart = 0
 
 	update_turf()
 
-	addtimer(CALLBACK(src, .proc/do_disperse), 1 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(do_disperse)), 1 SECONDS)
 
 /obj/effect/blocker/toxic_water/proc/do_disperse()
 	toxic = 0
@@ -254,7 +254,7 @@ var/global/east_riverstart = 0
 	icon = 'icons/old_stuff/mark.dmi'
 	icon_state = "spawn_shuttle_move"
 	layer = ABOVE_FLY_LAYER - 0.1 //to make it visible in the map editor
-	mouse_opacity = 0
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	var/id = null
 
 /obj/structure/machinery/dispersal_initiator/New()
@@ -281,7 +281,7 @@ var/global/east_riverstart = 0
 	var/id = null
 	var/active = 0
 	anchored = 1.0
-	use_power = 1
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 2
 	active_power_usage = 4
 	unslashable = TRUE

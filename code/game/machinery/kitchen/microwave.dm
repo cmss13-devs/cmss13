@@ -7,7 +7,7 @@
 	density = TRUE
 	anchored = TRUE
 	wrenchable = TRUE
-	use_power = 1
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 5
 	active_power_usage = 100
 	flags_atom = OPENCONTAINER|NOREACT
@@ -126,7 +126,7 @@
 				SPAN_NOTICE("[user] has added one of [O] to \the [src]."), \
 				SPAN_NOTICE("You add one of [O] to \the [src]."))
 		else
-		//	user.before_take_item(O)	//This just causes problems so far as I can tell. -Pete
+		// user.before_take_item(O) //This just causes problems so far as I can tell. -Pete
 			if(user.drop_held_item())
 				O.forceMove(src)
 				user.visible_message( \

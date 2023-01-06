@@ -20,9 +20,9 @@
 	name = "invisible wall"
 	desc = "You cannot go this way."
 	icon_state = "invisible_wall"
-	opacity = 0
+	opacity = FALSE
 	layer = ABOVE_FLY_LAYER + 0.1 //to make it visible in the map editor
-	mouse_opacity = 0
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
 /obj/structure/blocker/invisible_wall/Collided(atom/movable/AM)
 	to_chat(AM, SPAN_WARNING("You cannot go this way."))
@@ -44,7 +44,7 @@
 	desc = "It looks way too dangerous to traverse. Best wait until it has cleared up."
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "smoke"
-	opacity = 1
+	opacity = TRUE
 
 /obj/structure/blocker/fog/New()
 	..()

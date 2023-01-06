@@ -12,7 +12,7 @@
 	set name = "Hear/Silence Adminhelps"
 	set category = "Preferences.Sound"
 	set desc = "Toggle hearing a notification when admin PMs are received"
-	if(!admin_holder)	return
+	if(!admin_holder) return
 	prefs.toggles_sound ^= SOUND_ADMINHELP
 	prefs.save_preferences()
 	to_chat(usr,SPAN_BOLDNOTICE( "You will [(prefs.toggles_sound & SOUND_ADMINHELP) ? "now" : "no longer"] hear a sound when adminhelps arrive."))
@@ -57,8 +57,8 @@
 		to_chat(src, SPAN_BOLDNOTICE("The currently playing midi has been silenced."))
 		var/sound/break_sound = sound(null, repeat = 0, wait = 0, channel = SOUND_CHANNEL_ADMIN_MIDI)
 		break_sound.priority = 250
-		src << break_sound	//breaks the client's sound output on SOUND_CHANNEL_ADMIN_MIDI
-		if(src.mob.client.midi_silenced)	return
+		src << break_sound //breaks the client's sound output on SOUND_CHANNEL_ADMIN_MIDI
+		if(src.mob.client.midi_silenced) return
 		if(midi_playing)
 			total_silenced++
 			message_staff("A player has silenced the currently playing midi. Total: [total_silenced] player(s).", 1)
@@ -207,7 +207,7 @@
 	set desc = "Toggles which special roles you would like to be a candidate for, during events."
 	var/role_flag = be_special_flags[role]
 
-	if(!role_flag)	return
+	if(!role_flag) return
 	prefs.be_special ^= role_flag
 	prefs.save_preferences()
 	to_chat(src, SPAN_BOLDNOTICE("You will [(prefs.be_special & role_flag) ? "now" : "no longer"] be considered for [role] events (where possible)."))
@@ -271,7 +271,10 @@
 		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_clickdrag_override'>Toggle Combat Click-Drag Override</a><br>",
 		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_dualwield'>Toggle Alternate-Fire Dual Wielding</a><br>",
 		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_middle_mouse_swap_hands'>Toggle Middle Mouse Swapping Hands</a><br>",
-		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/switch_item_animations'>Toggle Item Animations</a><br>"
+		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_vend_item_to_hand'>Toggle Vendors Vending to Hands</a><br>",
+		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/switch_item_animations'>Toggle Item Animations</a><br>",
+		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_admin_sound_types'>Toggle Admin Sound Types</a><br>",
+		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/set_eye_blur_type'>Set Eye Blur Type</a><br>"
 	)
 
 	var/dat = ""
@@ -367,6 +370,14 @@
 	to_chat(src, SPAN_BOLDNOTICE("Middle Click [(prefs.toggle_prefs & TOGGLE_MIDDLE_MOUSE_SWAP_HANDS) ? "will" : "will no longer"] swap your hands."))
 	prefs.save_preferences()
 
+/client/proc/toggle_vend_item_to_hand() //Toggle whether vendors automatically vend to your hands
+	prefs.toggle_prefs ^= TOGGLE_VEND_ITEM_TO_HAND
+	if(prefs.toggle_prefs & TOGGLE_VEND_ITEM_TO_HAND)
+		to_chat(src, SPAN_BOLDNOTICE("Most vendors will now automatically vend directly into your hands."))
+	else
+		to_chat(src, SPAN_BOLDNOTICE("Vendors will no longer vend into your hands."))
+	prefs.save_preferences()
+
 /client/proc/switch_item_animations() //Switches tg-style item animations on, not-on-same-tile, and off
 	switch(prefs.item_animation_pref_level)
 		if(SHOW_ITEM_ANIMATIONS_NONE)
@@ -386,6 +397,55 @@
 			to_chat(src, SPAN_BOLDNOTICE("You will no longer see item animations."))
 			prefs.save_preferences()
 			return "Off"
+
+/client/proc/toggle_admin_sound_types()
+	//Entirely for code readability.
+	var/meme_toggle = prefs.toggles_sound & SOUND_ADMIN_MEME ? TRUE : FALSE
+	var/atmospheric_toggle = prefs.toggles_sound & SOUND_ADMIN_ATMOSPHERIC ? TRUE : FALSE
+	var/result = tgui_alert(src, "Which sound type do you want to toggle? Meme sounds are currently [meme_toggle ? "enabled" : "disabled"], Atmospheric sounds are currently [atmospheric_toggle ? "enabled" : "disabled"].", "Toggle MIDI/Internet sound type to play", list("Meme", "Atmospheric"))
+	if(result == "Meme")
+		prefs.toggles_sound ^= SOUND_ADMIN_MEME
+		//Update the variables so it doesn't output the outdated toggle.
+		meme_toggle = prefs.toggles_sound & SOUND_ADMIN_MEME ? TRUE : FALSE
+		to_chat(src, SPAN_NOTICE("You will [meme_toggle ? "now" : "no longer"] hear meme admin sounds."))
+	if(result == "Atmospheric")
+		prefs.toggles_sound ^= SOUND_ADMIN_ATMOSPHERIC
+		//Ditto.
+		atmospheric_toggle = prefs.toggles_sound & SOUND_ADMIN_ATMOSPHERIC ? TRUE : FALSE
+		to_chat(src, SPAN_NOTICE("You will [atmospheric_toggle ? "now" : "no longer"] hear atmospheric admin sounds."))
+
+/client/proc/receive_random_tip()
+	var/picked_type = tgui_alert(src, "What kind of tip?", "Tip Type", list("Marine", "Xenomorph", "Meta")) //no memetips for them joker imp
+	var/message
+	var/static/list/types_to_pick = list(
+		"Marine" = "strings/marinetips.txt",
+		"Xenomorph" = "strings/xenotips.txt",
+		"Meta" = "strings/metatips.txt"
+	)
+	var/list/tip_list = file2list(types_to_pick[picked_type])
+	if(length(types_to_pick[picked_type]))
+		message = SAFEPICK(tip_list)
+	else
+		CRASH("receive_random_tip() failed: empty list")
+
+	if(message)
+		to_chat(src, SPAN_PURPLE("<b>Random Tip: </b>[html_encode(message)]"))
+		return TRUE
+	else
+		CRASH("receive_random_tip() failed: null message")
+
+/client/proc/set_eye_blur_type()
+	var/result = tgui_alert(src, "What type of eye blur do you want?", "What type of eye blur do you want?", list("Blurry", "Impair", "Legacy"))
+	if(result == "Blurry")
+		prefs.pain_overlay_pref_level = PAIN_OVERLAY_BLURRY
+		to_chat(src, SPAN_NOTICE("Your vision will now be directly blurred."))
+	if(result == "Impair")
+		prefs.pain_overlay_pref_level = PAIN_OVERLAY_IMPAIR
+		to_chat(src, SPAN_NOTICE("Your vision will now be impaired on blur."))
+	if(result == "Legacy")
+		prefs.pain_overlay_pref_level = PAIN_OVERLAY_LEGACY
+		to_chat(src, SPAN_NOTICE("Your vision will now have a legacy blurring effect. This is not recommended!"))
+	prefs.save_preferences()
 
 //------------ GHOST PREFERENCES ---------------------------------
 
@@ -479,8 +539,8 @@
 			H = huds[MOB_HUD_FACTION_UPP]
 		if("Faction Wey-Yu HUD")
 			H = huds[MOB_HUD_FACTION_WY]
-		if("Faction RESS HUD")
-			H = huds[MOB_HUD_FACTION_RESS]
+		if("Faction TWE HUD")
+			H = huds[MOB_HUD_FACTION_TWE]
 		if("Faction CLF HUD")
 			H = huds[MOB_HUD_FACTION_CLF]
 

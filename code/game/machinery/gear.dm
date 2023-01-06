@@ -2,10 +2,10 @@
 	name = "\improper gear"
 	icon_state = "gear"
 	anchored = 1
-	density = 0
+	density = FALSE
 	unslashable = TRUE
 	unacidable = TRUE
-	use_power = 0
+	use_power = USE_POWER_NONE
 	var/id
 
 /obj/structure/machinery/gear/proc/start_moving(direction = NORTH)
@@ -21,9 +21,9 @@
 	anchored = 1
 	unslashable = TRUE
 	unacidable = TRUE
-	density = 0
-	use_power = 0
-	opacity = 1
+	density = FALSE
+	use_power = USE_POWER_NONE
+	opacity = TRUE
 	layer = ABOVE_MOB_LAYER
 	var/id
 

@@ -4,7 +4,7 @@
 	icon = 'icons/obj/structures/machinery/fusion_eng.dmi'
 	icon_state = "recycler"
 	anchored = 1.0
-	density = 1
+	density = TRUE
 	idle_power_usage = 5
 	active_power_usage = 15000
 	bound_height = 32
@@ -63,11 +63,11 @@
 
 /obj/structure/machinery/fuelcell_recycler/process()
 	if(inoperable())
-		update_use_power(0)
+		update_use_power(USE_POWER_NONE)
 		update_icon()
 		return
 	if(!cell_left && !cell_right)
-		update_use_power(1)
+		update_use_power(USE_POWER_IDLE)
 		update_icon()
 		stop_processing()
 		return
@@ -82,9 +82,9 @@
 				active = TRUE
 				cell_right.give(active_power_usage*(CELLRATE * 0.1))
 		if(active)
-			update_use_power(2)
+			update_use_power(USE_POWER_ACTIVE)
 		else
-			update_use_power(1)
+			update_use_power(USE_POWER_IDLE)
 			stop_processing()
 
 		update_icon()

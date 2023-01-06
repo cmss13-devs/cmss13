@@ -105,7 +105,7 @@
 	},
 /area/adminlevel/bunker01/medbay)
 "ar" = (
-/obj/structure/machinery/bodyscanner,
+/obj/structure/machinery/medical_pod/bodyscanner,
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "sterile_green_side";
@@ -120,7 +120,7 @@
 	},
 /area/adminlevel/bunker01/medbay)
 "at" = (
-/obj/structure/machinery/autodoc,
+/obj/structure/machinery/medical_pod/autodoc,
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "sterile_green_side";
@@ -146,7 +146,7 @@
 	},
 /area/adminlevel/bunker01/medbay)
 "aw" = (
-/obj/structure/machinery/autodoc,
+/obj/structure/machinery/medical_pod/autodoc,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_corner";
 	tag = "icon-sterile"
@@ -324,14 +324,14 @@
 	},
 /area/adminlevel/bunker01/medbay)
 "aV" = (
-/obj/structure/machinery/bodyscanner,
+/obj/structure/machinery/medical_pod/bodyscanner,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_side";
 	tag = "icon-sterile"
 	},
 /area/adminlevel/bunker01/medbay)
 "aW" = (
-/obj/structure/machinery/autodoc,
+/obj/structure/machinery/medical_pod/autodoc,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_side";
 	tag = "icon-sterile"
@@ -354,7 +354,7 @@
 	},
 /area/adminlevel/bunker01/medbay)
 "aZ" = (
-/obj/structure/machinery/autodoc,
+/obj/structure/machinery/medical_pod/autodoc,
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "sterile_green_corner";
@@ -1334,7 +1334,7 @@
 /obj/structure/machinery/microwave,
 /obj/structure/machinery/power/apc/antag{
 	dir = 4;
-	pixel_x = 24
+	pixel_x = 25
 	},
 /turf/open/floor/prison{
 	dir = 2;

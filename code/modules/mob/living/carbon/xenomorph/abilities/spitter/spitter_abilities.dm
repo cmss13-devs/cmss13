@@ -19,7 +19,7 @@
 	ability_primacy = XENO_PRIMARY_ACTION_2
 	action_type = XENO_ACTION_ACTIVATE
 	plasma_cost = 50
-	xeno_cooldown = 15 SECONDS
+	xeno_cooldown = 12 SECONDS
 
 	// Config
 	var/duration = 35
@@ -37,7 +37,10 @@
 	xeno_cooldown = 80
 
 	// Configurable options
-	spray_type = ACID_SPRAY_LINE	// Enum for the shape of spray to do
-	spray_distance = 6 				// Distance to spray
+	spray_type = ACID_SPRAY_LINE // Enum for the shape of spray to do
+	spray_distance = 6 // Distance to spray
 	spray_effect_type = /obj/effect/xenomorph/spray/weak
-	activation_delay = FALSE		    // Is there an activation delay?
+	activation_delay = FALSE // Is there an activation delay?
+
+/datum/action/xeno_action/activable/tail_stab/spitter
+	name = "Corrosive Tail Stab"

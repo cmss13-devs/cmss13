@@ -1,6 +1,6 @@
 //Procedures in this file: Amputations, preparing stumps for prosthetics, including stumps of robotic limbs.
 //////////////////////////////////////////////////////////////////
-//						LIMB SURGERY							//
+// LIMB SURGERY //
 //////////////////////////////////////////////////////////////////
 
 //Sever a limb cleanly.
@@ -92,7 +92,7 @@
 	tools = SURGERY_TOOLS_SUTURE
 	time = 3 SECONDS
 
-datum/surgery_step/abort_amputation/skip_step_criteria(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
+/datum/surgery_step/abort_amputation/skip_step_criteria(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
 	return TRUE //This is an abort pathway to stop people from being locked into a major and irreversible surgery. It is not yet too late for my mercy.
 
 /datum/surgery_step/abort_amputation/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)

@@ -3,7 +3,7 @@
 	desc = "..."
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "watertank"
-	density = 1
+	density = TRUE
 	anchored = 0
 	health = 100 // Can be destroyed in 2-4 slashes.
 	flags_atom = CAN_BE_SYRINGED
@@ -36,6 +36,8 @@
 			. += SPAN_NOTICE(" [R.volume] units of [R.name]")
 	else
 		. += SPAN_NOTICE(" Nothing.")
+	if(reagents)
+		. += SPAN_NOTICE("Total volume: [reagents.total_volume] / [reagents.maximum_volume].")
 
 /obj/structure/reagent_dispensers/Destroy()
 	playsound(src.loc, 'sound/effects/slosh.ogg', 50, 1, 3)
@@ -122,6 +124,11 @@
 	var/N = tgui_input_list(usr, "Amount per transfer from this:","[src]", possible_transfer_amounts)
 	if(N)
 		amount_per_transfer_from_this = N
+
+/obj/structure/reagent_dispensers/attackby(obj/item/hit_item, mob/living/user)
+	if(istype(hit_item, /obj/item/reagent_container))
+		return
+	..()
 
 //Dispensers
 /obj/structure/reagent_dispensers/watertank
@@ -388,6 +395,7 @@
 	desc = "A reagent tank, typically used to store large quantities of chemicals."
 
 	chemical = null
+	dispensing = FALSE //Empty fuel tanks start by accepting chemicals by default. Can't dispense nothing!
 	icon_state = "tank_normal"
 
 /obj/structure/reagent_dispensers/fueltank/custom/Initialize(mapload, volume)
@@ -421,7 +429,7 @@
 	icon_state = "peppertank"
 	anchored = 1
 	wrenchable =  FALSE
-	density = 0
+	density = FALSE
 	amount_per_transfer_from_this = 45
 	chemical = "condensedcapsaicin"
 
@@ -460,6 +468,6 @@
 	amount_per_transfer_from_this = 10
 	anchored = 1
 	wrenchable = FALSE
-	density = 0
+	density = FALSE
 	chemical = "virusfood"
 

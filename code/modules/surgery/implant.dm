@@ -1,7 +1,7 @@
 //Procedures in this file: Putting items in body cavity. Implant removal. Embedded object removal.
 
 //////////////////////////////////////////////////////////////////
-//					ITEM PLACEMENT SURGERY						//
+// ITEM PLACEMENT SURGERY //
 //////////////////////////////////////////////////////////////////
 
 //Implant and removal surgeries allow either removing the implant just inserted or replacing a removed one with a new item.
@@ -89,7 +89,7 @@
 	accept_any_item = TRUE //Any item except a surgery tool or substitute for such.
 	time = 5 SECONDS
 
-datum/surgery_step/place_item/skip_step_criteria(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
+/datum/surgery_step/place_item/skip_step_criteria(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
 	return TRUE
 
 /datum/surgery_step/place_item/proc/get_max_wclass(datum/surgery/surgery)
@@ -157,7 +157,7 @@ datum/surgery_step/place_item/skip_step_criteria(mob/user, mob/living/carbon/tar
 	tools = SURGERY_TOOLS_PINCH
 	time = 5 SECONDS
 
-datum/surgery_step/remove_implant/skip_step_criteria(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
+/datum/surgery_step/remove_implant/skip_step_criteria(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
 	return TRUE
 
 /datum/surgery_step/remove_implant/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
@@ -244,7 +244,7 @@ datum/surgery_step/remove_implant/skip_step_criteria(mob/user, mob/living/carbon
 
 
 //////////////////////////////////////////////////////////////////
-//				EMBEDDED ITEM REMOVAL SURGERY					//
+// EMBEDDED ITEM REMOVAL SURGERY //
 //////////////////////////////////////////////////////////////////
 
 /datum/surgery/embedded
@@ -341,5 +341,5 @@ datum/surgery_step/remove_implant/skip_step_criteria(mob/user, mob/living/carbon
 		if(istype(imp))
 			target.visible_message(SPAN_WARNING("Something beeps inside [target]'s [surgery.affected_limb.display_name]!"))
 			playsound(target, 'sound/items/countdown.ogg', 25, TRUE)
-			addtimer(CALLBACK(imp, /obj/item/implant.proc/activate), 2.5 SECONDS)
+			addtimer(CALLBACK(imp, TYPE_PROC_REF(/obj/item/implant, activate)), 2.5 SECONDS)
 	return FALSE

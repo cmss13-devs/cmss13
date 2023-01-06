@@ -141,15 +141,15 @@
 	if(amount < 10)
 		return
 
-	if((E.flags_embryo & FLAG_EMBRYO_PREDATOR) && E.hivenumber == level)
+	if((E.flags_embryo & FLAG_EMBRYO_PREDATOR) && E.hivenumber == GLOB.hive_datum[level])
 		return
 
 	E.visible_message(SPAN_DANGER("\the [E] rapidly mutates"))
 
 	playsound(E, 'sound/effects/attackblob.ogg', 25, TRUE)
 
-	E.hivenumber = level
-	set_hive_data(E, level)
+	E.hivenumber = GLOB.hive_datum[level]
+	set_hive_data(E, GLOB.hive_datum[level])
 	E.flags_embryo |= FLAG_EMBRYO_PREDATOR
 
 /datum/chem_property/special/crossmetabolizing
@@ -262,8 +262,8 @@
 	M.setBrainLoss(0)
 	M.disabilities = 0
 	M.sdisabilities = 0
-	M.eye_blurry = 0
-	M.eye_blind = 0
+	M.SetEyeBlur(0)
+	M.SetEyeBlind(0)
 	M.set_effect(0, WEAKEN)
 	M.set_effect(0, STUN)
 	M.set_effect(0, PARALYZE)

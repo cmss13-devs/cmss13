@@ -138,3 +138,31 @@
 
 /obj/item/ammo_box/magazine/misc/flares/empty
 	empty = TRUE
+
+//------------------------Flashlight Box--------------------------
+
+/obj/item/ammo_box/magazine/misc/flashlight
+	name = "\improper box of flashlights"
+	desc = "A box of flashlights to brighten your day!"
+	magazine_type = /obj/item/device/flashlight
+	num_of_magazines = 8
+	icon_state = "flashlightbox"
+	icon_state_deployed = "flashlightbox_deployed"
+	overlay_content = "_flashlight"
+
+/obj/item/ammo_box/magazine/misc/flashlight/empty
+	empty = TRUE
+
+//------------------------Battery Box--------------------------
+
+/obj/item/ammo_box/magazine/misc/power_cell
+	name = "\improper box of High-Capacity Power Cells"
+	desc = "A box of High-Capacity Power Cells to keep your electronics going all night long!"
+	magazine_type = /obj/item/cell/high
+	num_of_magazines = 8
+	icon_state = "batterybox"
+	icon_state_deployed = "batterybox_deployed"
+	overlay_content = "_battery"
+
+/obj/item/ammo_box/magazine/misc/power_cell/empty
+	empty = TRUE

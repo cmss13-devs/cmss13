@@ -737,14 +737,6 @@
 	},
 /turf/open/floor/plating/almayer,
 /area/shuttle/distress/start_small)
-"fD" = (
-/obj/structure/machinery/account_database{
-	name = "CentComm Accounts database"
-	},
-/turf/open/floor/almayer{
-	icon_state = "mono"
-	},
-/area/centcom/control)
 "fL" = (
 /turf/open/floor/carpet{
 	dir = 10;

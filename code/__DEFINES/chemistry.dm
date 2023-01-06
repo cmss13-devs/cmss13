@@ -77,14 +77,14 @@
 
 
 //Blood plasma
-#define PLASMA_PURPLE 			"purpleplasma"
-#define PLASMA_PHEROMONE 		"pheromoneplasma"
-#define PLASMA_CHITIN 			"chitinplasma"
-#define PLASMA_CATECHOLAMINE 	"catecholamineplasma"
-#define PLASMA_EGG 				"eggplasma"
-#define PLASMA_NEUROTOXIN 		"neurotoxinplasma"
-#define PLASMA_HEMOCATALENE		"hemocatalene"
-#define PLASMA_ROYAL 			"royalplasma"
+#define PLASMA_PURPLE "purpleplasma"
+#define PLASMA_PHEROMONE "pheromoneplasma"
+#define PLASMA_CHITIN "chitinplasma"
+#define PLASMA_CATECHOLAMINE "catecholamineplasma"
+#define PLASMA_EGG "eggplasma"
+#define PLASMA_NEUROTOXIN "neurotoxinplasma"
+#define PLASMA_HEMOCATALENE	"hemocatalene"
+#define PLASMA_ROYAL "royalplasma"
 
 // Flags for Reagent
 #define REAGENT_TYPE_MEDICAL (1<<0) // Used to restrict recipes in the generator from employing all reagents of this type

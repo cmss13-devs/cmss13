@@ -917,7 +917,7 @@
 	},
 /area/lv522/atmos/east_reactor)
 "aDZ" = (
-/obj/structure/machinery/door/airlock/almayer/maint/colony{
+/obj/structure/machinery/door/airlock/almayer/maint{
 	dir = 1;
 	welded = 1
 	},
@@ -1356,7 +1356,7 @@
 	},
 /area/lv522/indoors/lone_buildings/outdoor_bot)
 "aQU" = (
-/obj/structure/machinery/door/airlock/almayer/maint/colony,
+/obj/structure/machinery/door/airlock/almayer/maint,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
@@ -2313,7 +2313,7 @@
 	},
 /area/lv522/indoors/a_block/bridges/garden_bridge)
 "bvK" = (
-/obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
+/obj/structure/machinery/door/airlock/almayer/medical/glass{
 	dir = 1;
 	name = "\improper Chunk 'N Dump";
 	},
@@ -4172,7 +4172,7 @@
 /turf/open/floor/prison,
 /area/lv522/landing_zone_1/ceiling)
 "cuF" = (
-/obj/structure/machinery/door/airlock/almayer/maint/colony,
+/obj/structure/machinery/door/airlock/almayer/maint,
 /turf/open/floor/corsat{
 	icon_state = "marked"
 	},
@@ -4835,7 +4835,7 @@
 	},
 /area/lv522/indoors/b_block/bar)
 "cIV" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor/colony,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor,
 /turf/open/floor/corsat{
 	icon_state = "marked"
 	},
@@ -4879,7 +4879,7 @@
 /turf/closed/wall/r_wall/biodome/biodome_unmeltable,
 /area/lv522/atmos/east_reactor/west)
 "cJA" = (
-/obj/structure/machinery/door/airlock/almayer/maint/colony{
+/obj/structure/machinery/door/airlock/almayer/maint{
 	dir = 1
 	},
 /turf/open/floor/corsat{
@@ -5585,7 +5585,7 @@
 	},
 /area/lv522/atmos/east_reactor/east)
 "cZM" = (
-/obj/structure/machinery/door/airlock/almayer/maint/colony{
+/obj/structure/machinery/door/airlock/almayer/maint{
 	dir = 1;
 	req_one_access_txt = "100"
 	},
@@ -5813,7 +5813,7 @@
 	},
 /area/lv522/atmos/east_reactor/west)
 "dcF" = (
-/obj/structure/machinery/door/airlock/almayer/maint/colony,
+/obj/structure/machinery/door/airlock/almayer/maint,
 /turf/open/floor/corsat{
 	icon_state = "marked"
 	},
@@ -7419,7 +7419,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/indoors/a_block/dorms)
 "dNK" = (
-/obj/structure/machinery/door/airlock/almayer/engineering/colony{
+/obj/structure/machinery/door/airlock/almayer/engineering{
 	name = "\improper Workshop Storage";
 	req_access_txt = "100";
 	req_one_access = null
@@ -9651,7 +9651,7 @@
 	},
 /area/lv522/atmos/east_reactor)
 "eLZ" = (
-/obj/structure/machinery/door/airlock/almayer/engineering/colony{
+/obj/structure/machinery/door/airlock/almayer/engineering{
 	name = "\improper Cargo Bay Quartermaster";
 	},
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -12689,7 +12689,7 @@
 /turf/open/floor/prison,
 /area/lv522/indoors/c_block/mining)
 "ghr" = (
-/obj/structure/machinery/door/airlock/almayer/engineering/colony,
+/obj/structure/machinery/door/airlock/almayer/engineering,
 /turf/open/floor/corsat{
 	icon_state = "marked"
 	},
@@ -13268,7 +13268,7 @@
 /turf/open/floor/plating,
 /area/lv522/indoors/c_block/cargo)
 "gwR" = (
-/obj/structure/machinery/door/airlock/almayer/security/glass/colony{
+/obj/structure/machinery/door/airlock/almayer/security/glass{
 	locked = 0;
 	name = "\improper Marshal Office Holding Cell";
 	},
@@ -13547,7 +13547,7 @@
 	},
 /area/lv522/indoors/c_block/cargo)
 "gEA" = (
-/obj/structure/machinery/door/airlock/almayer/security/glass/colony{
+/obj/structure/machinery/door/airlock/almayer/security/glass{
 	dir = 8;
 	locked = 0;
 	name = "\improper Marshall Head Office";
@@ -15494,7 +15494,7 @@
 	},
 /area/lv522/indoors/a_block/bridges)
 "how" = (
-/obj/structure/machinery/door/airlock/almayer/security/glass/colony{
+/obj/structure/machinery/door/airlock/almayer/security/glass{
 	dir = 1;
 	name = "\improper Marshals Office";
 	req_access = null
@@ -15898,7 +15898,7 @@
 /turf/closed/wall/strata_outpost,
 /area/lv522/indoors/a_block/fitness)
 "hzq" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor/colony{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor{
 	dir = 1
 	},
 /turf/open/floor/corsat{
@@ -16829,7 +16829,7 @@
 	},
 /area/lv522/atmos/command_centre)
 "hTA" = (
-/obj/structure/machinery/door/airlock/almayer/engineering/colony{
+/obj/structure/machinery/door/airlock/almayer/engineering{
 	name = "\improper Cargo Bay Break Room";
 	req_one_access = null
 	},
@@ -18195,7 +18195,7 @@
 /turf/open/floor/plating,
 /area/lv522/indoors/c_block/cargo)
 "iwJ" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor/colony,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor,
 /turf/open/floor/corsat{
 	icon_state = "marked"
 	},
@@ -18573,7 +18573,7 @@
 	},
 /area/lv522/atmos/cargo_intake)
 "iGl" = (
-/obj/structure/machinery/door/airlock/almayer/engineering/colony,
+/obj/structure/machinery/door/airlock/almayer/engineering,
 /turf/open/floor/corsat{
 	icon_state = "marked"
 	},
@@ -18753,7 +18753,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/indoors/a_block/security)
 "iJx" = (
-/obj/structure/machinery/door/airlock/almayer/maint/colony{
+/obj/structure/machinery/door/airlock/almayer/maint{
 	dir = 8;
 	req_one_access_txt = "100"
 	},
@@ -21023,7 +21023,7 @@
 /turf/closed/wall/r_wall/biodome/biodome_unmeltable,
 /area/lv522/atmos/east_reactor/south)
 "jEQ" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor/colony,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor,
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/corsat{
 	icon_state = "marked"
@@ -23898,7 +23898,7 @@
 	},
 /area/lv522/atmos/cargo_intake)
 "kEA" = (
-/obj/structure/machinery/door/airlock/almayer/maint/colony,
+/obj/structure/machinery/door/airlock/almayer/maint,
 /turf/open/floor/corsat{
 	icon_state = "marked"
 	},
@@ -24908,7 +24908,7 @@
 /turf/open/auto_turf/shale/layer1,
 /area/lv522/outdoors/colony_streets/central_streets)
 "kXg" = (
-/obj/structure/machinery/door/airlock/almayer/medical/colony{
+/obj/structure/machinery/door/airlock/almayer/medical{
 	name = "Medical Laboratory Operating Theatre";
 	req_access_txt = "100";
 	req_one_access = null
@@ -25177,7 +25177,7 @@
 /turf/open/auto_turf/shale/layer1,
 /area/lv522/outdoors/colony_streets/north_west_street)
 "lea" = (
-/obj/structure/machinery/door/airlock/almayer/security/glass/colony{
+/obj/structure/machinery/door/airlock/almayer/security/glass{
 	name = "\improper Marshall Office Interrogation";
 	req_access = null
 	},
@@ -29557,7 +29557,7 @@
 	},
 /area/lv522/indoors/b_block/bar)
 "mXA" = (
-/obj/structure/machinery/door/airlock/almayer/maint/colony{
+/obj/structure/machinery/door/airlock/almayer/maint{
 	dir = 1
 	},
 /turf/open/floor/corsat{
@@ -31453,7 +31453,7 @@
 	},
 /area/lv522/indoors/a_block/corpo/glass)
 "nNL" = (
-/obj/structure/machinery/door/airlock/almayer/maint/colony,
+/obj/structure/machinery/door/airlock/almayer/maint,
 /turf/open/floor/corsat{
 	icon_state = "marked"
 	},
@@ -31669,7 +31669,7 @@
 	},
 /area/lv522/atmos/east_reactor/south/cas)
 "nQT" = (
-/obj/structure/machinery/door/airlock/almayer/maint/colony,
+/obj/structure/machinery/door/airlock/almayer/maint,
 /turf/open/floor/plating,
 /area/lv522/indoors/c_block/mining)
 "nRp" = (
@@ -32570,7 +32570,7 @@
 	},
 /area/lv522/indoors/a_block/kitchen)
 "ogT" = (
-/obj/structure/machinery/door/airlock/almayer/maint/colony,
+/obj/structure/machinery/door/airlock/almayer/maint,
 /turf/open/floor/corsat{
 	icon_state = "marked"
 	},
@@ -33447,7 +33447,7 @@
 	},
 /area/lv522/atmos/filt)
 "oyN" = (
-/obj/structure/machinery/door/airlock/almayer/maint/colony{
+/obj/structure/machinery/door/airlock/almayer/maint{
 	dir = 1
 	},
 /turf/open/floor/corsat{
@@ -33656,7 +33656,7 @@
 /turf/open/gm/river,
 /area/lv522/landing_zone_1/tunnel)
 "oDu" = (
-/obj/structure/machinery/door/airlock/almayer/maint/colony,
+/obj/structure/machinery/door/airlock/almayer/maint,
 /turf/open/floor/corsat{
 	icon_state = "marked"
 	},
@@ -34594,7 +34594,7 @@
 	},
 /area/lv522/indoors/a_block/dorms)
 "oWK" = (
-/obj/structure/machinery/door/airlock/almayer/maint/colony,
+/obj/structure/machinery/door/airlock/almayer/maint,
 /turf/open/floor/corsat{
 	icon_state = "marked"
 	},
@@ -35528,7 +35528,7 @@
 /turf/open/floor/prison,
 /area/lv522/indoors/a_block/dorm_north)
 "ppU" = (
-/obj/structure/machinery/door/airlock/almayer/maint/colony{
+/obj/structure/machinery/door/airlock/almayer/maint{
 	dir = 1;
 	req_one_access_txt = "100"
 	},
@@ -36638,7 +36638,7 @@
 /turf/open/auto_turf/shale/layer0,
 /area/lv522/outdoors/colony_streets/south_east_street)
 "pLN" = (
-/obj/structure/machinery/door/airlock/almayer/medical/colony{
+/obj/structure/machinery/door/airlock/almayer/medical{
 	dir = 2;
 	locked = 0;
 	name = "Medical Airlock";
@@ -36706,7 +36706,7 @@
 /turf/open/floor/plating,
 /area/lv522/indoors/c_block/cargo)
 "pMt" = (
-/obj/structure/machinery/door/airlock/almayer/medical/colony{
+/obj/structure/machinery/door/airlock/almayer/medical{
 	dir = 2;
 	locked = 0;
 	name = "Medical Airlock";
@@ -36730,7 +36730,7 @@
 	},
 /area/lv522/indoors/a_block/fitness)
 "pNa" = (
-/obj/structure/machinery/door/airlock/almayer/maint/colony{
+/obj/structure/machinery/door/airlock/almayer/maint{
 	dir = 1
 	},
 /turf/open/floor/corsat{
@@ -41378,7 +41378,7 @@
 	},
 /area/lv522/indoors/b_block/bridge)
 "rvv" = (
-/obj/structure/machinery/door/airlock/almayer/engineering/colony{
+/obj/structure/machinery/door/airlock/almayer/engineering{
 	name = "\improper Cargo Bay Storage";
 	req_one_access = null
 	},
@@ -44835,7 +44835,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/indoors/a_block/dorms)
 "sPp" = (
-/obj/structure/machinery/door/airlock/almayer/security/glass/colony{
+/obj/structure/machinery/door/airlock/almayer/security/glass{
 	dir = 1;
 	name = "\improper Marshals Office Armory";
 	req_access = null
@@ -48087,7 +48087,7 @@
 	},
 /area/lv522/indoors/a_block/security)
 "ueY" = (
-/obj/structure/machinery/door/airlock/almayer/maint/colony{
+/obj/structure/machinery/door/airlock/almayer/maint{
 	dir = 1
 	},
 /turf/open/floor/corsat{
@@ -53251,7 +53251,7 @@
 	},
 /area/lv522/indoors/c_block/garage)
 "wbL" = (
-/obj/structure/machinery/door/airlock/almayer/engineering/colony{
+/obj/structure/machinery/door/airlock/almayer/engineering{
 	dir = 1;
 	name = "\improper Workshop Storage";
 	req_access_txt = "100";
@@ -56306,7 +56306,7 @@
 	},
 /area/lv522/indoors/a_block/security)
 "xkb" = (
-/obj/structure/machinery/door/airlock/almayer/maint/colony{
+/obj/structure/machinery/door/airlock/almayer/maint{
 	dir = 1
 	},
 /turf/open/floor/corsat{
@@ -58465,7 +58465,7 @@
 	},
 /area/lv522/landing_zone_2/ceiling)
 "yat" = (
-/obj/structure/machinery/door/airlock/almayer/security/glass/colony{
+/obj/structure/machinery/door/airlock/almayer/security/glass{
 	locked = 0;
 	name = "\improper Marshall Office Armory";
 	},

@@ -126,7 +126,8 @@
 	kit_overlay = "grenadier"
 
 /obj/item/storage/box/spec/heavy_grenadier/fill_preset_inventory()
-	new /obj/item/spec_kit/grenadier_weapon_selector(src)
+	new /obj/item/storage/belt/grenade/large/full(src)
+	new /obj/item/weapon/gun/launcher/grenade/m92(src)
 	new /obj/item/storage/backpack/marine/grenadepack(src)
 	new /obj/item/storage/backpack/marine/grenadepack(src)
 	new /obj/item/clothing/gloves/marine/M3G(src)

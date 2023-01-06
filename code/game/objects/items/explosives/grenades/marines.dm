@@ -468,8 +468,8 @@
 		M.apply_effect(dazed_time * 0.5, DAZE)
 
 	if(M.mob_size >= MOB_SIZE_BIG)//big xenos not KO'ed
-		M.apply_effect(slowdown_time * 1.5, SLOW)//They are slowed more :trol:
-		M.apply_effect(dazed_time * 1.5, DAZE)
+		M.apply_effect(slowdown_time * 1.2, SLOW)//They are slowed more :trol:
+		M.apply_effect(dazed_time * 1.2, DAZE)
 		return
 
 	M.apply_effect(knockout_time, WEAKEN)//but little xenos and humans are

@@ -1,22 +1,22 @@
 
-#define QUEEN_DEATH_COUNTDOWN 			 10 MINUTES //10 minutes. Can be changed into a variable if it needs to be manipulated later.
+#define QUEEN_DEATH_COUNTDOWN  10 MINUTES //10 minutes. Can be changed into a variable if it needs to be manipulated later.
 
-#define MODE_INFESTATION_X_MAJOR		"Xenomorph Major Victory"
-#define MODE_INFESTATION_M_MAJOR		"Marine Major Victory"
-#define MODE_INFESTATION_X_MINOR		"Xenomorph Minor Victory"
-#define MODE_INFESTATION_M_MINOR		"Marine Minor Victory"
-#define MODE_INFESTATION_DRAW_DEATH		"DRAW: Mutual Annihilation"
+#define MODE_INFESTATION_X_MAJOR "Xenomorph Major Victory"
+#define MODE_INFESTATION_M_MAJOR "Marine Major Victory"
+#define MODE_INFESTATION_X_MINOR "Xenomorph Minor Victory"
+#define MODE_INFESTATION_M_MINOR "Marine Minor Victory"
+#define MODE_INFESTATION_DRAW_DEATH "DRAW: Mutual Annihilation"
 
-#define MODE_INFECTION_ZOMBIE_WIN		"Major Zombie Victory"
+#define MODE_INFECTION_ZOMBIE_WIN "Major Zombie Victory"
 
-#define MODE_BATTLEFIELD_W_MAJOR		"Wey-Yu PMC Major Success"
-#define MODE_BATTLEFIELD_M_MAJOR		"Marine Major Success"
-#define MODE_BATTLEFIELD_W_MINOR		"Wey-Yu PMC Minor Success"
-#define MODE_BATTLEFIELD_M_MINOR		"Marine Minor Success"
+#define MODE_BATTLEFIELD_W_MAJOR "Wey-Yu PMC Major Success"
+#define MODE_BATTLEFIELD_M_MAJOR "Marine Major Success"
+#define MODE_BATTLEFIELD_W_MINOR "Wey-Yu PMC Minor Success"
+#define MODE_BATTLEFIELD_M_MINOR "Marine Minor Success"
 #define MODE_BATTLEFIELD_DRAW_STALEMATE "DRAW: Stalemate"
-#define MODE_BATTLEFIELD_DRAW_DEATH		"DRAW: My Friends Are Dead"
+#define MODE_BATTLEFIELD_DRAW_DEATH "DRAW: My Friends Are Dead"
 
-#define MODE_GENERIC_DRAW_NUKE			"DRAW: Nuclear Explosion"
+#define MODE_GENERIC_DRAW_NUKE "DRAW: Nuclear Explosion"
 
 /*
 Like with cm_initialize.dm, these procs exist to quickly populate classic CM game modes.
@@ -103,12 +103,19 @@ of predators), but can be added to include variant game modes (like humans vs. h
 				dat += "<br><b>[recipient]</b> is awarded [recipient_award.posthumous[i] ? "posthumously " : ""]a <span class='boldnotice'>[recipient_award.medal_names[i]]</span>: \'<i>[recipient_award.medal_citations[i]]</i>\'[recipient_award.giver_rank[i] ? " by [recipient_award.giver_rank[i]]" : ""][recipient_award.giver_name[i] ? " ([recipient_award.giver_name[i]])" : ""]."
 		to_world(dat)
 
-/datum/game_mode/proc/declare_random_fact()
+/datum/game_mode/proc/declare_fun_facts()
 	set waitfor = 0
 	sleep(2 SECONDS)
-	var/fact_type = pick(subtypesof(/datum/random_fact))
-	var/datum/random_fact/fact = new fact_type()
-	fact.announce()
+	to_chat_spaced(world, margin_bottom = 0, html = SPAN_ROLE_BODY("|______________________|"))
+	to_world(SPAN_ROLE_HEADER("FUN FACTS"))
+	var/list/fact_types = subtypesof(/datum/random_fact)
+	for(var/fact_type as anything in fact_types)
+		var/datum/random_fact/fact_human = new fact_type(set_check_human = TRUE, set_check_xeno = FALSE)
+		fact_human.announce()
+	for(var/fact_type as anything in fact_types)
+		var/datum/random_fact/fact_xeno = new fact_type(set_check_human = FALSE, set_check_xeno = TRUE)
+		fact_xeno.announce()
+	to_chat_spaced(world, margin_top = 0, html = SPAN_ROLE_BODY("|______________________|"))
 
 //===================================================\\
 
@@ -161,10 +168,10 @@ var/nextAdminBioscan = 30 MINUTES//30 minutes in
 
 //Delta is the randomness interval, in +/-. Might not be the exact mathematical definition
 /datum/game_mode/proc/announce_bioscans(var/delta = 2)
-	var/numHostsPlanet	= 0
-	var/numHostsShip	= 0
-	var/numXenosPlanet	= 0
-	var/numXenosShip	= 0
+	var/numHostsPlanet = 0
+	var/numHostsShip = 0
+	var/numXenosPlanet = 0
+	var/numXenosShip = 0
 	var/numXenosShipAres = 0 //ARES scan doesn't count containment xenos
 
 	//We're assembling a list of locations so we can give hint about a random one

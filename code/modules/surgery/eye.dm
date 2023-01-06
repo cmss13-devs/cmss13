@@ -1,7 +1,7 @@
 //Procedures in this file: Eye mending surgery
 //Steps will only work in a surgery of /datum/surgery/eye_repair or a child of that due to target_eyes var.
 //////////////////////////////////////////////////////////////////
-//							EYE SURGERY							//
+// EYE SURGERY //
 //////////////////////////////////////////////////////////////////
 
 /datum/surgery/eye_repair
@@ -166,7 +166,7 @@
 	target.incision_depths[target_zone] = SURGERY_DEPTH_SURFACE
 	target.disabilities &= ~NEARSIGHTED
 	target.sdisabilities &= ~DISABILITY_BLIND
-	surgery.target_eyes.damage = 0
+	surgery.target_eyes.heal_damage(surgery.target_eyes.damage)
 	user.count_niche_stat(STATISTICS_NICHE_SURGERY_EYE)
 	target.pain.recalculate_pain()
 

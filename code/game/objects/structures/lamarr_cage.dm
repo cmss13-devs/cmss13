@@ -3,7 +3,7 @@
 	icon = 'icons/obj/structures/props/stationobjs.dmi'
 	icon_state = "labcage1"
 	desc = "A glass lab container for storing interesting creatures."
-	density = 1
+	density = TRUE
 	anchored = 1
 	unacidable = FALSE
 	health = 30
@@ -23,7 +23,7 @@
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
 			new /obj/item/shard( src.loc )
 			Break()
-			qdel(src)
+			deconstruct(FALSE)
 
 
 /obj/structure/lamarr/bullet_act(var/obj/item/projectile/Proj)
@@ -35,7 +35,7 @@
 /obj/structure/lamarr/proc/healthcheck()
 	if (src.health <= 0)
 		if (!( src.destroyed ))
-			src.density = 0
+			src.density = FALSE
 			src.destroyed = 1
 			new /obj/item/shard( src.loc )
 			playsound(src, "shatter", 25, 1)

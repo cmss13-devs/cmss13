@@ -74,7 +74,7 @@
 			if(do_after(user, ET.shovelspeed * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
 				user.visible_message(SPAN_NOTICE("[user] disassembles [src]."),
 				SPAN_NOTICE("You disassemble [src]."))
-				destroy(TRUE)
+				deconstruct(TRUE)
 		return TRUE
 
 	if(istype(W, stack_type))
@@ -99,11 +99,13 @@
 	else
 		. = ..()
 
-/obj/structure/barricade/sandbags/destroy(deconstruct)
-	if(deconstruct && is_wired)
-		new /obj/item/stack/barbed_wire(loc)
-	if(stack_type && health > 0)
-		new stack_type(loc, stack_amount)
+/obj/structure/barricade/sandbags/deconstruct(disassembled = TRUE)
+	if(disassembled)
+		if(is_wired)
+			new /obj/item/stack/barbed_wire(loc)
+		if(stack_type && health > 0)
+			new stack_type(loc, stack_amount)
+	density = FALSE
 	qdel(src)
 
 /obj/structure/barricade/sandbags/proc/increment_build_stage()

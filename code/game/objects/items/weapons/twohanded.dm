@@ -5,9 +5,9 @@
 	####################################################################*/
 
 /obj/item/weapon/melee/twohanded
-	var/force_wielded 	= 0
-	var/wieldsound 		= null
-	var/unwieldsound 	= null
+	var/force_wielded = 0
+	var/wieldsound = null
+	var/unwieldsound = null
 	force = MELEE_FORCE_NORMAL
 	force_wielded = MELEE_FORCE_VERY_STRONG
 	flags_item = TWOHANDED
@@ -38,8 +38,8 @@
 			to_chat(user, SPAN_WARNING("Your other hand can't hold [src]!"))
 			return
 
-	flags_item 	   ^= WIELDED
-	name 	   += " (Wielded)"
+	flags_item    ^= WIELDED
+	name    += " (Wielded)"
 	item_state += "_w"
 	place_offhand(user,initial(name))
 	return 1
@@ -49,7 +49,7 @@
 		return FALSE//Have to be actually a twohander and wielded.
 	flags_item ^= WIELDED
 	SEND_SIGNAL(src, COMSIG_ITEM_UNWIELD, user)
-	name 	    = copytext(name,1,-10)
+	name = copytext(name,1,-10)
 	item_state  = copytext(item_state,1,-2)
 	remove_offhand(user)
 	return TRUE
@@ -78,14 +78,14 @@
 	if(!.) return
 	user.recalculate_move_delay = TRUE
 	if(wieldsound) playsound(user, wieldsound, 15, 1)
-	force 		= force_wielded
+	force = force_wielded
 
 /obj/item/weapon/melee/twohanded/unwield(mob/user)
 	. = ..()
 	if(!.) return
 	user.recalculate_move_delay = TRUE
 	if(unwieldsound) playsound(user, unwieldsound, 15, 1)
-	force 	 	= initial(force)
+	force = initial(force)
 
 /obj/item/weapon/melee/twohanded/attack_self(mob/user)
 	..()
@@ -94,7 +94,7 @@
 		return
 
 	if(flags_item & WIELDED) unwield(user)
-	else 				wield(user)
+	else wield(user)
 
 ///////////OFFHAND///////////////
 /obj/item/weapon/melee/twohanded/offhand
@@ -214,7 +214,7 @@
 /obj/item/weapon/melee/twohanded/dualsaber/unwield(mob/user)
 	. = ..()
 	if(!.) return
-	icon_state 	= copytext(icon_state,1,-2)
+	icon_state = copytext(icon_state,1,-2)
 
 /obj/item/weapon/melee/twohanded/spear
 	name = "spear"

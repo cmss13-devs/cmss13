@@ -2,29 +2,29 @@
 #define MAIN_SHIP_NAME SSmapping.get_main_ship_name()
 #define MAIN_SHIP_DEFAULT_NAME "USS Almayer"
 //=================================================
-//Please don't edit these values without speaking to Errorage first	~Carn
+//Please don't edit these values without speaking to Errorage first ~Carn
 //Admin Permissions
-#define R_BUILDMODE		(1<<0)
-#define R_ADMIN			(1<<1)
-#define R_BAN			(1<<2)
-#define R_SERVER		(1<<3)
-#define R_DEBUG			(1<<4)
-#define R_POSSESS		(1<<5)
-#define R_PERMISSIONS	(1<<6)
-#define R_STEALTH		(1<<7)
-#define R_REJUVINATE	(1<<8)
-#define R_COLOR			(1<<9)
-#define R_VAREDIT		(1<<10)
-#define R_SOUNDS		(1<<11)
-#define R_SPAWN			(1<<12)
-#define R_MOD			(1<<13)
-#define R_MENTOR		(1<<14)
-#define R_HOST			(1<<15)
-#define R_PROFILER		(1<<16)
-#define R_NOLOCK		(1<<17)
-#define R_EVENT			(1<<18)
+#define R_BUILDMODE (1<<0)
+#define R_ADMIN (1<<1)
+#define R_BAN (1<<2)
+#define R_SERVER (1<<3)
+#define R_DEBUG (1<<4)
+#define R_POSSESS (1<<5)
+#define R_PERMISSIONS (1<<6)
+#define R_STEALTH (1<<7)
+#define R_REJUVINATE (1<<8)
+#define R_COLOR (1<<9)
+#define R_VAREDIT (1<<10)
+#define R_SOUNDS (1<<11)
+#define R_SPAWN (1<<12)
+#define R_MOD (1<<13)
+#define R_MENTOR (1<<14)
+#define R_HOST (1<<15)
+#define R_PROFILER (1<<16)
+#define R_NOLOCK (1<<17)
+#define R_EVENT (1<<18)
 
-#define R_EVERYTHING	((1<<19)-1) //the sum of all other rank permissions
+#define R_EVERYTHING ((1<<19)-1) //the sum of all other rank permissions
 // 512.1430 increases maximum bit flags from 16 to 24, so the following flags should be available for future changes:
 //=================================================
 
@@ -37,8 +37,8 @@
 		//items that ask to be called every cycle
 
 //////////////
-var/list/paper_tag_whitelist = list("center","p","div","span","h1","h2","h3","h4","h5","h6","hr","pre",	\
-	"big","small","font","i","u","b","s","sub","sup","tt","br","hr","ol","ul","li","caption","col",	\
+var/list/paper_tag_whitelist = list("center","p","div","span","h1","h2","h3","h4","h5","h6","hr","pre", \
+	"big","small","font","i","u","b","s","sub","sup","tt","br","hr","ol","ul","li","caption","col", \
 	"table","td","th","tr")
 
 ///////////////
@@ -51,7 +51,7 @@ var/href_logfile = null
 var/command_name = "Central Command"
 var/station_name = "[MAIN_SHIP_NAME]"
 var/game_version = "Colonial Marines"
-var/game_year = "2182"
+var/game_year = 2182
 
 var/going = 1.0
 var/master_mode = "Distress Signal"
@@ -74,7 +74,7 @@ var/total_silenced = 0
 var/list/admin_log = list()
 var/list/asset_log = list()
 
-var/CELLRATE = 0.006	// multiplier for watts per tick <> cell storage (eg: 0.02 means if there is a load of 1000 watts, 20 units will be taken from a cell per second)
+var/CELLRATE = 0.006 // multiplier for watts per tick <> cell storage (eg: 0.02 means if there is a load of 1000 watts, 20 units will be taken from a cell per second)
 						//It's a conversion constant. power_used*CELLRATE = charge_provided, or charge_used/CELLRATE = power_provided
 var/CHARGELEVEL = 0.001 // Cap for how fast cells charge, as a percentage-per-tick (0.01 means cellcharge is capped to 1% per second)
 
@@ -93,11 +93,12 @@ var/list/IClog = list()
 var/list/OOClog = list()
 var/list/adminlog = list()
 
-var/Debug = 0	// global debug switch
+var/Debug = 0 // global debug switch
 
 var/datum/moduletypes/mods = new()
 
 var/join_motd = null
+var/current_tms
 
 // nanomanager, the manager for Nano UIs
 var/datum/nanomanager/nanomanager = new()

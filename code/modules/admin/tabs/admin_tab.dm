@@ -5,7 +5,7 @@
 	if(!admin_holder)
 		return
 
-	if(alert("Confirm deadmin? This procedure can be reverted at any time and will not carry over to next round, but you will lose all your admin powers in the meantime.", , "Yes", "No") == "No")
+	if(alert("Confirm deadmin? This procedure can be reverted at any time and will not carry over to next round, but you will lose all your admin powers in the meantime.", , "Yes", "No") != "Yes")
 		return
 
 	message_staff("[src] de-admined themselves.")
@@ -95,7 +95,7 @@
 	var/mob/body = mob
 	body.ghostize(TRUE, TRUE)
 	if(body && !body.key)
-		body.key = "@[key]"	//Haaaaaaaack. But the people have spoken. If it breaks; blame adminbus
+		body.key = "@[key]" //Haaaaaaaack. But the people have spoken. If it breaks; blame adminbus
 		if(body.client)
 			body.client.change_view(world_view_size) //reset view range to default.
 
@@ -121,7 +121,7 @@
 		if(isobserver(mob))
 			mob.invisibility = INVISIBILITY_MAXIMUM
 			mob.alpha = 0
-			mob.mouse_opacity = 0
+			mob.mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
 	admin_holder.invisimined = !admin_holder.invisimined
 
@@ -196,7 +196,7 @@
 	if(alert("This will sleep ALL mobs within your view range (for Administration purposes). Are you sure?",,"Yes","Cancel") == "Cancel")
 		return
 	for(var/mob/living/M in view(usr.client))
-		M.KnockOut(3) // prevents them from exiting the screen range
+		M.apply_effect(3, PARALYZE) // prevents them from exiting the screen range
 		M.sleeping = 9999999 //if they're not, sleep them and add the sleep icon, so other marines nearby know not to mess with them.
 		M.AddSleepingIcon()
 
@@ -406,10 +406,12 @@
 	remove_verb(src, /client/proc/enable_admin_verbs)
 
 	if(!(admin_holder.rights & R_DEBUG))
-		remove_verb(src, /client/proc/proccall_atom)
+		remove_verb(src, /client/proc/callproc_datum)
 	if(!(admin_holder.rights & R_POSSESS))
 		remove_verb(src, /client/proc/release)
 		remove_verb(src, /client/proc/possess)
+	if(!(admin_holder.rights & R_EVENT))
+		remove_verb(src, /client/proc/cmd_admin_object_narrate)
 
 /client/proc/hide_admin_verbs()
 	set name = "Admin Verbs - Hide"
@@ -516,6 +518,8 @@
 		<A href='?src=\ref[src];[HrefToken()];teleport=teleport_mob_to_area'>Teleport Mob to Area</A><BR>
 		<A href='?src=\ref[src];[HrefToken()];teleport=teleport_mobs_in_range'>Mass Teleport Mobs in Range</A><BR>
 		<A href='?src=\ref[src];[HrefToken()];teleport=teleport_mobs_by_faction'>Mass Teleport Mobs to You by Faction</A><BR>
+		<A href='?src=\ref[src];[HrefToken()];teleport=teleport_corpses'>Mass Teleport Corpses to You</A><BR>
+		<A href='?src=\ref[src];[HrefToken()];teleport=teleport_items_by_type'>Mass Teleport Items to You by Type</A><BR>
 		<BR>
 		"}
 
@@ -559,7 +563,7 @@
 		<A href='?src=\ref[src];[HrefToken()];inviews=rejuvenateall'>Rejuvenate All Mobs In View</A><BR>
 		<BR>
 		<A href='?src=\ref[src];[HrefToken()];inviews=rejuvenatemarine'>Rejuvenate Only Humans In View</A><BR>
-	 	<A href='?src=\ref[src];[HrefToken()];inviews=rejuvenaterevivemarine'>Rejuvenate Only Revivable Humans In View</A><BR>
+		<A href='?src=\ref[src];[HrefToken()];inviews=rejuvenaterevivemarine'>Rejuvenate Only Revivable Humans In View</A><BR>
 		<BR>
 		<A href='?src=\ref[src];[HrefToken()];inviews=rejuvenatexeno'>Rejuvenate Only Xenos In View</A><BR>
 		<BR>
@@ -728,3 +732,17 @@
 
 	SSticker.mode.toggleable_flags ^= MODE_LZ_PROTECTION
 	message_staff("[src] has [MODE_HAS_TOGGLEABLE_FLAG(MODE_LZ_PROTECTION) ? "toggled LZ protection on, mortars can no longer fire there" : "toggled LZ protection off, mortars can now fire there"].")
+
+/client/proc/toggle_shipside_sd()
+	set name = "Toggle Shipside SD Protection"
+	set category = "Admin.Flags"
+
+	if(!admin_holder || !check_rights(R_MOD, FALSE))
+		return
+
+	if(!SSticker.mode)
+		to_chat(usr, SPAN_WARNING("A mode hasn't been selected yet!"))
+		return
+
+	SSticker.mode.toggleable_flags ^= MODE_SHIPSIDE_SD
+	message_staff("[src] has [MODE_HAS_TOGGLEABLE_FLAG(MODE_SHIPSIDE_SD) ? "toggled SD protection off, Yautja can now big self destruct anywhere" : "toggled SD protection on, Yautja can now only big self destruct on the hunting grounds"].")

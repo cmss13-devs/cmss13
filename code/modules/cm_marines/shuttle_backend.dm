@@ -72,26 +72,26 @@ TODO: Create /datum/shuttle/ferry/marine/elevator and depreciate this
 
 DOCUMENTATION ON HOW TO ADD A NEW SHUTTLE: Fourkhan, 6/7/19
 
- - Step one is to map the physical shuttle somewhere on the map.
+- Step one is to map the physical shuttle somewhere on the map.
 
- - Step two is to add the shuttle datum to shuttle_controller.dm
+- Step two is to add the shuttle datum to shuttle_controller.dm
 	- the shuttle_tag var is the primary identifier of the shuttle, we'll see this again later on
 	- the info_tag is how you identify the shuttle in the s_info assoc. list, that's the next step
 
- - Step three is the worst part: map out the s_info listing based on the physical shuttle.
+- Step three is the worst part: map out the s_info listing based on the physical shuttle.
 	- follow the examaples already here as a guideline and this should be fairly straightforward.
-	 - keep in mind this is will be retrieved with info_tag on the shuttle datum so those need to EXACTLY match.
+	- keep in mind this is will be retrieved with info_tag on the shuttle datum so those need to EXACTLY match.
 
- - Step four: decide which subtype of landmark you need you need the shuttle to be placed into, or
-              define a new one to suit your needs. Either way, the landmarks need to properly register
-			  (at ABSOLUTE MINIMUM) turfs in locs_move, locs_dock, and locs_land which map to the starting,
-			  transit, and end locations of the shuttle respectively.
+- Step four: decide which subtype of landmark you need you need the shuttle to be placed into, or
+	define a new one to suit your needs. Either way, the landmarks need to properly register
+	(at ABSOLUTE MINIMUM) turfs in locs_move, locs_dock, and locs_land which map to the starting,
+	transit, and end locations of the shuttle respectively.
 
- - Step five: map the landmarks onto the map. These need to have the EXACT same name and be translateable
-              somehow to the master shuttle tag, the macros further down in this file are a good example
-			  for the most part. Convention is to name the landmarks 1, 2, 3, etc. as necessary.
+- Step five: map the landmarks onto the map. These need to have the EXACT same name and be translateable
+	somehow to the master shuttle tag, the macros further down in this file are a good example
+	for the most part. Convention is to name the landmarks 1, 2, 3, etc. as necessary.
 
- - Step six: add a shuttle console, this is code-by-copypaste for the most part.
+- Step six: add a shuttle console, this is code-by-copypaste for the most part.
 
 */
 
@@ -319,15 +319,15 @@ x_pos = 0 1 2 3 4 5 6
 	)
 
 /*
-x_pos = 0 1 2 3 4 5 6 7 8 9 ....	   15 16
+x_pos = 0 1 2 3 4 5 6 7 8 9 ....    15 16
 		| | | | | | | | | | | | | | | | | |
-		O O O O O O O O	O O O O O O O O O O	-- y_pos = 6
+		O O O O O O O O O O O O O O O O O O -- y_pos = 6
 		O X X X X X X X X X X X X X X X X O -- y_pos = 5
 		O X X X X X X X X X X X X X X X X O -- y_pos = 4
-		O X X X X X X X X X X X X X X X X O	-- y_pos = 3
+		O X X X X X X X X X X X X X X X X O -- y_pos = 3
 		O X X X X X X X X X X X X X X X X O -- y_pos = 2
 		O X X X X X X X X X X X X X X X X O -- y_pos = 1
-		T O O O O O O O O O O O O O O O O O	-- y_pos = 0
+		T O O O O O O O O O O O O O O O O O -- y_pos = 0
 */
 
 	s_info["CORSAT Monorail"] = newlist(
@@ -381,7 +381,7 @@ x_pos = 0 1 2 3 4 5 6 7 8 9 ....	   15 16
 
 
 // TLDR: Computes a shuttle_tag given the passed string, retrieves that shuttle datum,
-// 		 and dumps the source turf of whatever called it into the passed list.
+//  and dumps the source turf of whatever called it into the passed list.
 #define SHUTTLE_LINK_LOCATIONS(T, L) \
 ..(); \
 if(!shuttle_controller) { qdel(src); return FALSE }; \
@@ -395,6 +395,13 @@ qdel(src)
 	// This is some NEXT LEVEL macro use.
 	// This dumps the turfs of marine_src into each DS's docking locs
 	SHUTTLE_LINK_LOCATIONS("Dropship", S.locs_dock)
+
+	// This underlays the walls of the dropship with the icon of the landmark turf (purely visual; its for the parts of the dropship sprite that have holes).
+	var/turf/T_src = pick(S.locs_dock)
+	var/list/turfs_to_init = get_shuttle_turfs(T_src, S.info_datums)
+	for(var/turf/T in turfs_to_init)
+		if(istype(T, /turf/closed/shuttle))
+			T.underlays += mutable_appearance(T_src.icon, T_src.icon_state, TURF_LAYER, FLOOR_PLANE)
 
 /obj/effect/landmark/shuttle_loc/marine_src/evacuation
 
@@ -583,6 +590,10 @@ qdel(src)
 		target.icon_state = old_icon_state
 		target.icon = old_icon
 
+		if(istype(target, /turf/closed/shuttle)) //better than underlaying everyturf, just need the parts that have see through parts. Which are all closed turfs
+			target.underlays.Cut()
+			target.underlays += mutable_appearance(reference.icon, reference.icon_state, TURF_LAYER, FLOOR_PLANE)
+
 		for (var/atom/movable/A in T)
 			// fix for multitile stuff like vehicles drifting on jump
 			if(A.loc != T)
@@ -617,7 +628,7 @@ qdel(src)
 	shuttle.already_moving = 0
 	// Do this after because it's expensive.
 	for (var/mob/living/L in knocked_down_mobs)
-		L.KnockDown(3)
+		L.apply_effect(3, WEAKEN)
 
 	/*
 	Commented out since it doesn't do anything with shuttle walls and the like yet.

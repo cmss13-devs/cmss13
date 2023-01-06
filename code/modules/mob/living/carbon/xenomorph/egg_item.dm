@@ -2,7 +2,7 @@
 /obj/item/xeno_egg
 	name = "egg"
 	desc = "Some sort of egg."
-	icon = 'icons/mob/hostiles/Effects.dmi'
+	icon = 'icons/mob/xenos/effects.dmi'
 	icon_state = "egg_item"
 	w_class = SIZE_MASSIVE
 	flags_atom = OPENCONTAINER
@@ -31,9 +31,11 @@
 		. += "A queen egg, it needs to be planted on weeds to start growing."
 		if(hivenumber != XENO_HIVE_NORMAL)
 			var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
-			. += "This one appears to belong to the [hive.prefix]hive"
+			. += "This one appears to belong to the [hive.name]"
 
 /obj/item/xeno_egg/afterattack(atom/target, mob/user, proximity)
+	if(istype(target, /obj/effect/alien/resin/special/eggmorph))
+		return //We tried storing the hugger from the egg, no need to try to plant it (we know the turf is occupied!)
 	if(isXeno(user))
 		var/turf/T = get_turf(target)
 		plant_egg(user, T, proximity)

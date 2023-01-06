@@ -170,12 +170,12 @@
 							log_game("[key_name(usr)] [R.canmove ? "locked down" : "released"] [R.name]!")
 							R.canmove = !R.canmove
 							if (R.lockcharge)
-							//	R.cell.charge = R.lockcharge
+							// R.cell.charge = R.lockcharge
 								R.lockcharge = !R.lockcharge
 								to_chat(R, "Your lockdown has been lifted!")
 							else
 								R.lockcharge = !R.lockcharge
-						//		R.cell.charge = 0
+						// R.cell.charge = 0
 								to_chat(R, "You have been locked down!")
 
 			else

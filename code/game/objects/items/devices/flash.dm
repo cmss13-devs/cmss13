@@ -2,7 +2,7 @@
 	name = "flash"
 	desc = "Used for blinding and being an asshole. Recharges one flash every 30 seconds. You must wait 1 second between uses for the capacitor to recharge."
 	icon_state = "flash"
-	item_state = "flash_device"	//Replace me later
+	item_state = "flash_device" //Replace me later
 	throwforce = 5
 	w_class = SIZE_SMALL
 	throw_speed = SPEED_VERY_FAST
@@ -12,7 +12,7 @@
 	var/skilllock = SKILL_POLICE_FLASH
 	var/flashes_stored = 5
 	var/max_flashes_stored = 5 //how many you can do per minute
-	var/broken = FALSE     //Is the flash burnt out?
+	var/broken = FALSE  //Is the flash burnt out?
 	var/last_used = 0 //last world.time it was used.
 	var/recharge_time_per_flash = 30 SECONDS
 	var/cooldown_between_flashes = 0.5 SECONDS
@@ -59,12 +59,12 @@
 			return
 		last_used = world.time
 		flashes_stored--
-		if(prob(10 - (flashes_stored*2)))	//it has a 10% chance to break on the final flash
+		if(prob(10 - (flashes_stored*2))) //it has a 10% chance to break on the final flash
 			broken = TRUE
 			to_chat(user, SPAN_WARNING("The bulb has burnt out!"))
 			update_icon()
 			return
-		addtimer(CALLBACK(src, .proc/add_charge), recharge_time_per_flash)
+		addtimer(CALLBACK(src, PROC_REF(add_charge)), recharge_time_per_flash)
 		to_chat(user, SPAN_DANGER("[flashes_stored] / [max_flashes_stored] flashes remaining."))
 	else
 		to_chat(user, SPAN_WARNING("*click* *click*"))
@@ -93,10 +93,10 @@
 		if(iscarbon(M))
 			flashfail = !M.flash_eyes()
 			if(!flashfail)
-				M.KnockDown(10)
+				M.apply_effect(10, WEAKEN)
 
 		else if(isSilicon(M))
-			M.KnockDown(rand(5,10))
+			M.apply_effect(rand(5,10), WEAKEN)
 
 		else //if not carbon or sillicn
 			flashfail = TRUE
@@ -128,7 +128,7 @@
 //targeted flash
 
 /obj/item/device/flash/attack(mob/living/M, mob/user)
-	if(!user || !M)	return	//sanity
+	if(!user || !M) return //sanity
 	if(!istype(M)) return
 
 	if(check_if_can_use_flash(user))
@@ -154,7 +154,7 @@
 		do_flash(user = user, aoe = TRUE)
 
 /obj/item/device/flash/emp_act(severity)
-	if(broken)	return
+	if(broken) return
 	switch(flashes_stored)
 		if(0 to 5)
 			if(prob(20 - (2*flashes_stored)))
@@ -165,7 +165,7 @@
 			if(istype(loc, /mob/living/carbon))
 				var/mob/living/carbon/M = loc
 				if(M.flash_eyes())
-					M.KnockDown(10)
+					M.apply_effect(10, WEAKEN)
 					M.visible_message("<span class='disarm'>[M] is blinded by \the [src]!</span>")
 	..()
 

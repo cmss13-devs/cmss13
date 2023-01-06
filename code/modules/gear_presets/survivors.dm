@@ -9,6 +9,8 @@
 	idtype = /obj/item/card/id/lanyard
 	faction = FACTION_SURVIVOR
 	faction_group = list(FACTION_MARINE, FACTION_SURVIVOR)
+	origin_override = ORIGIN_CIVILIAN
+
 	access = list(ACCESS_CIVILIAN_PUBLIC)
 
 /datum/equipment_preset/survivor/load_name(mob/living/carbon/human/H, var/randomise)
@@ -275,6 +277,7 @@
 	assignment = "Corporate Liaison"
 	skills = /datum/skills/civilian/survivor
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
+	paygrade = "WY-XB-X"
 	idtype = /obj/item/card/id/silver/clearance_badge/cl
 	access = list(
 		ACCESS_CIVILIAN_PUBLIC,
@@ -286,6 +289,7 @@
 		ACCESS_WY_CORPORATE,
 		ACCESS_CIVILIAN_COMMAND
 	)
+	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
 
 /datum/equipment_preset/survivor/corporate/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit/formal(H), WEAR_BODY)
@@ -298,6 +302,20 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/centcom(H), WEAR_FEET)
 
 	..()
+
+/datum/equipment_preset/survivor/corporate/load_rank(mob/living/carbon/human/H)
+	if(H.client)
+		var/playtime = get_job_playtime(H.client, JOB_CORPORATE_LIAISON)
+		if(H.client.prefs.playtime_perks)
+			if(playtime > JOB_PLAYTIME_TIER_4)
+				return "WY-XE"
+			else if(playtime > JOB_PLAYTIME_TIER_3)
+				return "WY-XD"
+			else if(playtime > JOB_PLAYTIME_TIER_2)
+				return "WY-XC"
+			else
+				return paygrade
+	return paygrade
 
 /datum/equipment_preset/survivor/corporate/shiva
 	name = "Survivor - Shivas Snowball Corporate Liaison"
@@ -379,6 +397,7 @@
 /datum/equipment_preset/survivor/security/corsat
 	name = "Survivor - CORSAT Security Guard"
 	assignment = "Weyland-Yutani Corporate Security Guard"
+	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
 
 /datum/equipment_preset/survivor/security/corsat/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/formal/servicedress(H), WEAR_BODY)
@@ -425,6 +444,7 @@
 /datum/equipment_preset/survivor/security/lv
 	name = "Survivor - LV-624 Security Guard"
 	assignment = "Weyland-Yutani Corporate Security Guard"
+	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
 
 /datum/equipment_preset/survivor/security/lv/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/formal/servicedress(H), WEAR_BODY)
@@ -652,7 +672,7 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/welding(H), WEAR_EYES)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/insulated(H), WEAR_HANDS)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
-		
+
 	..()
 
 
@@ -894,11 +914,11 @@
 	..()
 
 
-// ---- Colonial Marshall Survivor
+// ---- Colonial Marshal Survivor
 
 /datum/equipment_preset/survivor/colonial_marshal
-	name = "Survivor - Colonial Marshall"
-	assignment = "Colonial Marshall"
+	name = "Survivor - Colonial Marshal"
+	assignment = "Colonial Marshal"
 	skills = /datum/skills/civilian/survivor/marshal
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	idtype = /obj/item/card/id/silver/cl
@@ -1094,12 +1114,52 @@
 
 // ----- WY Survivors
 
+/datum/equipment_preset/survivor/goon
+	name = "Survivor - Corporate Security Goon"
+	flags = EQUIPMENT_PRESET_START_OF_ROUND
+	assignment = JOB_WY_GOON
+	faction = FACTION_WY
+	faction_group = list(FACTION_WY, FACTION_MARINE, FACTION_SURVIVOR)
+	rank = JOB_WY_GOON
+	paygrade = "WEY-GOON"
+	idtype = /obj/item/card/id/silver/cl
+	skills = /datum/skills/civilian/survivor/goon
+	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
+	access = list(
+		ACCESS_CIVILIAN_PUBLIC,
+		ACCESS_CIVILIAN_ENGINEERING,
+		ACCESS_WY_CORPORATE,
+		ACCESS_CIVILIAN_LOGISTICS
+	)
+
+/datum/equipment_preset/survivor/goon/load_gear(mob/living/carbon/human/H)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/WY, WEAR_L_EAR)
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/PMC/corporate, WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/PMC/light/corporate, WEAR_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran, WEAR_HANDS)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/PMC/corporate, WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/corporate, WEAR_FEET)
+
+	H.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack, WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/weapon/melee/baton, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/tool/crowbar, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/stack/sheet/metal/large_stack(H), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle(H), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle(H), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/mod88_near_empty, WEAR_WAIST)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full, WEAR_R_STORE)
+
+	H.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/m41a/corporate, WEAR_J_STORE)
+
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full(H), WEAR_R_STORE)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full(H), WEAR_L_STORE)
+
 /datum/equipment_preset/survivor/pmc
 	name = "Survivor - PMC"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	assignment = "Weyland-Yutani PMC (Standard)"
-	faction = FACTION_PMC
-	faction_group = FACTION_LIST_WY
+	faction = FACTION_SURVIVOR
+	faction_group = list(FACTION_WY, FACTION_MARINE, FACTION_SURVIVOR)
 	rank = JOB_PMC
 	paygrade = "PMC-OP"
 	idtype = /obj/item/card/id/pmc
@@ -1138,7 +1198,7 @@
 	role_comm_title = "Supervisor"
 	rank = FACTION_WY
 	idtype = /obj/item/card/id/silver/clearance_badge/manager
-	faction_group = FACTION_LIST_WY
+	faction_group = list(FACTION_MARINE, FACTION_WY, FACTION_SURVIVOR)
 	access = list(
 		ACCESS_WY_CORPORATE,
 		ACCESS_ILLEGAL_PIRATE,
@@ -1147,7 +1207,7 @@
 		ACCESS_MARINE_RESEARCH,
 		ACCESS_MARINE_MEDBAY
 	)
-
+	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
 /datum/equipment_preset/survivor/wy/manager/load_gear(mob/living/carbon/human/H)
 
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/suit_jacket/manager(H), WEAR_BODY)

@@ -1,13 +1,13 @@
-#define to_world_log(message)                               world.log << (message)
-#define debug_msg(message)                                  to_world(message) // A message define designed to be easily found and deleted
-#define debug_log(message)                                  to_world_log(message)
-#define sound_to(target, sound)                             target << (sound)
-#define to_file(file_entry, source_var)                     file_entry << (source_var)
-#define from_file(file_entry, target_var)                   file_entry >> (target_var)
-#define close_browser(target, browser_name)                 target << browse(null, "window=[browser_name]")
-#define show_image(target, image)                           target << (image)
-#define send_rsc(target, args...)             				target << browse_rsc(##args)
-#define open_link(target, url)                              target << link(url)
+#define to_world_log(message)    world.log << (message)
+#define debug_msg(message)   to_world(message) // A message define designed to be easily found and deleted
+#define debug_log(message)   to_world_log(message)
+#define sound_to(target, sound)  target << (sound)
+#define to_file(file_entry, source_var)  file_entry << (source_var)
+#define from_file(file_entry, target_var)    file_entry >> (target_var)
+#define close_browser(target, browser_name)  target << browse(null, "window=[browser_name]")
+#define show_image(target, image)    target << (image)
+#define send_rsc(target, args...) target << browse_rsc(##args)
+#define open_link(target, url)   target << link(url)
 
 #define any2ref(x) ref(x)
 
@@ -18,8 +18,6 @@
 #define CanPhysicallyInteract(user) CanInteract(user, GLOB.physical_state)
 
 #define CanPhysicallyInteractWith(user, target) CanInteractWith(user, target, GLOB.physical_state)
-
-#define QDEL_NULL_LIST(x) if(x) { for(var/y in x) { qdel(y) }}; if(x) {x.Cut(); x = null } // Second x check to handle items that LAZYREMOVE on qdel.
 
 #define DROP_NULL(x) if(x) { x.dropInto(loc); x = null; }
 
@@ -74,6 +72,8 @@
 
 // Inverse direction, taking into account UP|DOWN if necessary.
 #define REVERSE_DIR(dir) ( ((dir & 85) << 1) | ((dir & 170) >> 1) )
+
+#define POSITIVE(val) max(val, 0)
 
 #define GENERATE_DEBUG_ID "[rand(0, 9)][rand(0, 9)][rand(0, 9)][rand(0, 9)][pick(alphabet_lowercase)][pick(alphabet_lowercase)][pick(alphabet_lowercase)][pick(alphabet_lowercase)]"
 

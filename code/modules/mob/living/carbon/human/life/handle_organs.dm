@@ -52,4 +52,4 @@
 			if(pain.feels_pain)
 				emote("pain")
 			custom_pain("You can't stand on broken legs!", 1)
-			KnockDown(5)
+			apply_effect(5, WEAKEN)

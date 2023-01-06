@@ -22,7 +22,7 @@
 /obj/item/reagent_container/food/snacks/grown/Initialize()
 	. = ..()
 	GLOB.grown_snacks_list += src
-	addtimer(CALLBACK(src, .proc/update_from_seed), 1)
+	addtimer(CALLBACK(src, PROC_REF(update_from_seed)), 1)
 
 /obj/item/reagent_container/food/snacks/grown/Destroy()
 	GLOB.grown_snacks_list -= src
@@ -31,9 +31,11 @@
 /obj/item/reagent_container/food/snacks/grown/proc/update_from_seed()// Fill the object up with the appropriate reagents.
 	if(!isnull(plantname))
 		var/datum/seed/S = seed_types[plantname]
-		if(!S || !S.chems)
+		if(!S)
 			return
-
+		name = S.seed_name //Copies the name from the seed, important for renamed plants
+		if(!S.chems)
+			return
 		potency = S.potency
 
 		for(var/rid in S.chems)
@@ -609,8 +611,8 @@
 		if(T in orange(M,inner_teleport_radius)) continue
 		if(istype(T,/turf/open/space)) continue
 		if(T.density) continue
-		if(T.x>world.maxx-outer_teleport_radius || T.x<outer_teleport_radius)	continue
-		if(T.y>world.maxy-outer_teleport_radius || T.y<outer_teleport_radius)	continue
+		if(T.x>world.maxx-outer_teleport_radius || T.x<outer_teleport_radius) continue
+		if(T.y>world.maxy-outer_teleport_radius || T.y<outer_teleport_radius) continue
 		turfs += T
 	if(!turfs.len)
 		var/list/turfs_to_pick_from = list()

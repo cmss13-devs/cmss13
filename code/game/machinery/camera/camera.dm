@@ -3,7 +3,7 @@
 	desc = "It's used to monitor rooms."
 	icon = 'icons/obj/structures/machinery/monitors.dmi'
 	icon_state = "autocam_editor"
-	use_power = 2
+	use_power = USE_POWER_ACTIVE
 	idle_power_usage = 5
 	active_power_usage = 10
 	layer = FLY_LAYER
@@ -55,6 +55,10 @@
 	set_pixel_location()
 	update_icon()
 
+/obj/structure/machinery/camera/Destroy()
+	. = ..()
+	QDEL_NULL(assembly)
+
 /obj/structure/machinery/camera/update_icon()
 	. = ..()
 	if(icon_state == "autocam_editor")
@@ -62,10 +66,10 @@
 
 /obj/structure/machinery/camera/set_pixel_location()
 	switch(dir)
-		if(NORTH)		pixel_y = -18
-		if(SOUTH)		pixel_y = 40
-		if(EAST)		pixel_x = -27
-		if(WEST)		pixel_x = 27
+		if(NORTH) pixel_y = -18
+		if(SOUTH) pixel_y = 40
+		if(EAST) pixel_x = -27
+		if(WEST) pixel_x = 27
 
 /obj/structure/machinery/camera/emp_act(severity)
 	if(!isEmpProof())
@@ -242,14 +246,14 @@
 //or null if none
 /proc/seen_by_camera(var/mob/M)
 	for(var/obj/structure/machinery/camera/C in oview(4, M))
-		if(C.can_use())	// check if camera disabled
+		if(C.can_use()) // check if camera disabled
 			return C
 	return null
 
 /proc/near_range_camera(var/mob/M)
 
 	for(var/obj/structure/machinery/camera/C in range(4, M))
-		if(C.can_use())	// check if camera disabled
+		if(C.can_use()) // check if camera disabled
 			return C
 
 	return null
@@ -279,7 +283,7 @@
 
 /obj/structure/machinery/camera/mortar
 	alpha = 0
-	mouse_opacity = 0
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	density = FALSE
 	invuln = TRUE
 	network = list(CAMERA_NET_MORTAR)
@@ -319,12 +323,9 @@
 	viewing_users += user
 	user.client?.eye = get_turf(src)
 	user.client?.perspective = EYE_PERSPECTIVE
-	give_action(user, /datum/action/human_action/cancel_view)
-	RegisterSignal(user, COMSIG_MOB_RESET_VIEW, .proc/remove_from_view)
 
 /obj/structure/machinery/camera/cas/proc/remove_from_view(var/mob/living/carbon/human/user)
 	viewing_users -= user
-	UnregisterSignal(user, COMSIG_MOB_RESET_VIEW)
 
 /obj/structure/machinery/camera/cas/isXRay()
 	return TRUE

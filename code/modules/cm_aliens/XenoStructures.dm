@@ -4,7 +4,7 @@
 /obj/effect/alien
 	name = "alien thing"
 	desc = "There's something alien about this."
-	icon = 'icons/mob/hostiles/Effects.dmi'
+	icon = 'icons/mob/xenos/effects.dmi'
 	unacidable = TRUE
 	health = 1
 	flags_obj = OBJ_ORGANIC
@@ -44,8 +44,7 @@
 
 /obj/effect/alien/resin/proc/healthcheck()
 	if(health <= 0)
-		density = 0
-		qdel(src)
+		deconstruct(FALSE)
 
 /obj/effect/alien/resin/flamer_fire_act()
 	health -= 50
@@ -142,8 +141,8 @@
 	name = "sticky resin"
 	desc = "A layer of disgusting sticky slime."
 	icon_state = "sticky"
-	density = 0
-	opacity = 0
+	density = FALSE
+	opacity = FALSE
 	health = HEALTH_RESIN_XENO_STICKY
 	layer = RESIN_STRUCTURE_LAYER
 	plane = FLOOR_PLANE
@@ -164,7 +163,7 @@
 		return .
 	var/mob/living/carbon/Xenomorph/X = AM
 	if(istype(X) && !X.ally_of_hivenumber(hivenumber))
-		X.next_move_slowdown = X.next_move_slowdown + (slow_amt * WEED_XENO_SPEED_MULT)
+		X.next_move_slowdown = X.next_move_slowdown + slow_amt
 		return .
 
 /obj/effect/alien/resin/spike
@@ -172,8 +171,8 @@
 	desc = "A small cluster of bone spikes. Ouch."
 	icon = 'icons/obj/structures/alien/structures.dmi'
 	icon_state = "resin_spike"
-	density = 0
-	opacity = 0
+	density = FALSE
+	opacity = FALSE
 	health = HEALTH_RESIN_XENO_SPIKE
 	layer = RESIN_STRUCTURE_LAYER
 	should_track_build = TRUE
@@ -231,8 +230,8 @@
 	health = HEALTH_RESIN_XENO_FAST
 	var/speed_amt = 0.7
 
-	Crossed(atom/movable/AM)
-		return
+/obj/effect/alien/resin/sticky/fast/Crossed(atom/movable/AM)
+	return
 
 
 //xeno marker :0)
@@ -247,6 +246,7 @@
 	var/image/seenMeaning //this needs to be a static image because it needs to be dynamically added/removed from xenos' huds as resin marks are created/destroyed
 	var/datum/hivenumber = null
 	var/createdby = null
+	var/createdTime = null
 
 	//scuffed variables so the overwatch code doesnt have a fit
 	var/interference = 0
@@ -265,14 +265,15 @@
 	seenMeaning =  image(icon, src.loc, mark_meaning.icon_state, ABOVE_HUD_LAYER, "pixel_y" = 5)
 	seenMeaning.plane = ABOVE_HUD_PLANE
 	hivenumber = X.hivenumber
+	createdTime = worldtime2text()
 	X.hive.resin_marks += src
 
 	X.hive.mark_ui.update_all_data()
 
 	for(var/mob/living/carbon/Xenomorph/XX in X.hive.totalXenos)
-		XX.hud_set_marks()		//this should be a hud thing, but that code is too confusing so I am doing it here
+		XX.hud_set_marks() //this should be a hud thing, but that code is too confusing so I am doing it here
 
-	addtimer(CALLBACK(src, .proc/check_for_weeds), 30 SECONDS, TIMER_UNIQUE)
+	addtimer(CALLBACK(src, PROC_REF(check_for_weeds)), 30 SECONDS, TIMER_UNIQUE)
 
 /obj/effect/alien/resin/marker/Destroy()
 	var/datum/hive_status/builder_hive = GLOB.hive_datum[hivenumber]
@@ -283,7 +284,7 @@
 		XX.built_structures -= src
 		if(!XX.client)
 			continue
-		XX.client.images -= seenMeaning		 //this should be a hud thing, but that code is too confusing so I am doing it here
+		XX.client.images -= seenMeaning  //this should be a hud thing, but that code is too confusing so I am doing it here
 		XX.hive.mark_ui.update_all_data()
 
 	for(var/mob/living/carbon/Xenomorph/X in xenos_tracking) //no floating references :0)
@@ -294,7 +295,7 @@
 	var/turf/T = get_turf(src)
 	for(var/i in T.contents)
 		if(istype(i, /obj/effect/alien/weeds))
-			addtimer(CALLBACK(src, .proc/check_for_weeds), 30 SECONDS, TIMER_UNIQUE)
+			addtimer(CALLBACK(src, PROC_REF(check_for_weeds)), 30 SECONDS, TIMER_UNIQUE)
 			return
 	qdel(src)
 
@@ -321,7 +322,7 @@
 //Resin Doors
 /obj/structure/mineral_door/resin
 	name = "resin door"
-	icon = 'icons/mob/hostiles/Effects.dmi'
+	icon = 'icons/mob/xenos/effects.dmi'
 	mineralType = "resin"
 	hardness = 1.5
 	health = HEALTH_DOOR_XENO
@@ -384,8 +385,8 @@
 	playsound(loc, "alien_resin_move", 25)
 	flick("[mineralType]opening",src)
 	sleep(3)
-	density = 0
-	opacity = 0
+	density = FALSE
+	opacity = FALSE
 	state = 1
 	update_icon()
 	isSwitchingStates = 0
@@ -406,8 +407,8 @@
 	playsound(loc, "alien_resin_move", 25)
 	flick("[mineralType]closing",src)
 	sleep(3)
-	density = 1
-	opacity = 1
+	density = TRUE
+	opacity = TRUE
 	state = 0
 	update_icon()
 	isSwitchingStates = 0
@@ -565,7 +566,10 @@
 	if(QDELETED(src))
 		return FALSE
 
-	if(info.distance_travelled > range || info.current_turf == info.target_turf)
+	if(info.distance_travelled > range)
+		return FALSE
+
+	if(info.distance_travelled && info.current_turf == info.target_turf )
 		return FALSE
 
 	var/turf/next_turf = get_step_towards(info.current_turf, info.target_turf)
@@ -677,10 +681,10 @@
 		LAZYADD(walls, T)
 
 /obj/effect/alien/resin/resin_pillar/proc/setup_signals(var/turf/T)
-	RegisterSignal(T, COMSIG_TURF_BULLET_ACT, .proc/handle_bullet)
-	RegisterSignal(T, COMSIG_ATOM_HITBY, .proc/handle_hitby)
-	RegisterSignal(T, COMSIG_WALL_RESIN_XENO_ATTACK, .proc/handle_attack_alien)
-	RegisterSignal(T, COMSIG_WALL_RESIN_ATTACKBY, .proc/handle_attackby)
+	RegisterSignal(T, COMSIG_TURF_BULLET_ACT, PROC_REF(handle_bullet))
+	RegisterSignal(T, COMSIG_ATOM_HITBY, PROC_REF(handle_hitby))
+	RegisterSignal(T, COMSIG_WALL_RESIN_XENO_ATTACK, PROC_REF(handle_attack_alien))
+	RegisterSignal(T, COMSIG_WALL_RESIN_ATTACKBY, PROC_REF(handle_attackby))
 
 /obj/effect/alien/resin/resin_pillar/Destroy()
 	STOP_PROCESSING(SSobj, src)
@@ -717,7 +721,7 @@
 	time_to_brittle = brittle_time_override
 	time_to_collapse = collapse_time_override
 
-	addtimer(CALLBACK(src, .proc/brittle), time_to_brittle)
+	addtimer(CALLBACK(src, PROC_REF(brittle)), time_to_brittle)
 
 /obj/effect/alien/resin/resin_pillar/proc/brittle()
 	//playsound(granite cracking)
@@ -731,7 +735,7 @@
 
 	playsound(loc, "alien_resin_break", 25, TRUE)
 	START_PROCESSING(SSobj, src)
-	addtimer(CALLBACK(src, .proc/collapse, TRUE), time_to_collapse)
+	addtimer(CALLBACK(src, PROC_REF(collapse), TRUE), time_to_collapse)
 	brittle = TRUE
 
 /obj/effect/alien/resin/resin_pillar/healthcheck()

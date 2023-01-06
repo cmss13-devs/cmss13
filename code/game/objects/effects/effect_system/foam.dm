@@ -4,18 +4,18 @@
 
 //foam effect
 
-#define FOAM_NOT_METAL			0	// 0=foam, 1=metalfoam, 2=ironfoam
-#define FOAM_METAL_TYPE_ALUMINIUM	1
-#define FOAM_METAL_TYPE_IRON	2
+#define FOAM_NOT_METAL 0 // 0=foam, 1=metalfoam, 2=ironfoam
+#define FOAM_METAL_TYPE_ALUMINIUM 1
+#define FOAM_METAL_TYPE_IRON 2
 
 /obj/effect/particle_effect/foam
 	name = "foam"
 	icon_state = "foam"
-	opacity = 0
+	opacity = FALSE
 	anchored = 1
-	density = 0
+	density = FALSE
 	layer = BELOW_MOB_LAYER
-	mouse_opacity = 0
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	var/amount = 3
 	var/expand = 1
 	animate_movement = 0
@@ -27,8 +27,8 @@
 	icon_state = "[ismetal ? "m":""]foam"
 	metal = ismetal
 	playsound(src, 'sound/effects/bubbles2.ogg', 25, 1, 5)
-	addtimer(CALLBACK(src, .proc/foam_react), 3 + metal*3)
-	addtimer(CALLBACK(src, .proc/foam_metal_final_react), 120)
+	addtimer(CALLBACK(src, PROC_REF(foam_react)), 3 + metal*3)
+	addtimer(CALLBACK(src, PROC_REF(foam_metal_final_react)), 120)
 
 /obj/effect/particle_effect/foam/proc/foam_react()
 	process()
@@ -80,7 +80,7 @@
 			F.create_reagents(10)
 			if (reagents)
 				for(var/datum/reagent/R in reagents.reagent_list)
-					F.reagents.add_reagent(R.id, 1, safety = 1)		//added safety check since reagents in the foam have already had a chance to react
+					F.reagents.add_reagent(R.id, 1, safety = 1) //added safety check since reagents in the foam have already had a chance to react
 
 // foam disolves when heated
 // except metal foams
@@ -106,8 +106,8 @@
 //datum effect system
 
 /datum/effect_system/foam_spread
-	var/amount = 5				// the size of the foam spread.
-	var/list/carried_reagents	// the IDs of reagents present when the foam was mixed
+	var/amount = 5 // the size of the foam spread.
+	var/list/carried_reagents // the IDs of reagents present when the foam was mixed
 	var/metal = FOAM_NOT_METAL
 
 /datum/effect_system/foam_spread/set_up(amt=5, loca, var/datum/reagents/carry = null, var/metal_foam = FOAM_NOT_METAL)
@@ -140,7 +140,7 @@
 	F = new(src.location, metal)
 	F.amount = amount
 
-	if(!metal)	// don't carry other chemicals if a metal foam
+	if(!metal) // don't carry other chemicals if a metal foam
 		F.create_reagents(10)
 
 		if(carried_reagents)
@@ -155,17 +155,17 @@
 // wall formed by metal foams
 // dense and opaque, but easy to break
 
-#define FOAMED_METAL_FIRE_ACT_DMG	50
-#define FOAMED_METAL_XENO_SLASH	0.8
-#define FOAMED_METAL_ITEM_MELEE	2
-#define FOAMED_METAL_BULLET_DMG	2
-#define FOAMED_METAL_EXPLOSION_DMG	1
+#define FOAMED_METAL_FIRE_ACT_DMG 50
+#define FOAMED_METAL_XENO_SLASH 0.8
+#define FOAMED_METAL_ITEM_MELEE 2
+#define FOAMED_METAL_BULLET_DMG 2
+#define FOAMED_METAL_EXPLOSION_DMG 1
 
 /obj/structure/foamed_metal
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "metalfoam"
-	density = 1
-	opacity = 1 	// changed in New()
+	density = TRUE
+	opacity = TRUE // changed in New()
 	anchored = 1
 	name = "foamed metal"
 	desc = "A lightweight foamed metal wall."
@@ -179,9 +179,10 @@
 
 /obj/structure/foamed_metal/proc/take_damage(var/damage)
 	health -= damage
-
+	playsound(src,'sound/weapons/Genhit.ogg', 25, 1)
 	if(health <= 0)
 		visible_message(SPAN_WARNING("[src] crumbles into pieces!"))
+		playsound(src, 'sound/effects/meteorimpact.ogg', 25, 1)
 		qdel(src)
 
 /obj/structure/foamed_metal/ex_act(severity)
@@ -214,7 +215,7 @@
 
 	//Frenzy bonus
 	if(X.frenzy_aura > 0)
-		damage += (X.frenzy_aura * 2)
+		damage += (X.frenzy_aura * FRENZY_DAMAGE_MULTIPLIER)
 
 	X.animation_attack_on(src)
 

@@ -4,9 +4,9 @@
 	icon = 'icons/obj/structures/structures.dmi'
 	icon_state = "ladder11"
 	var/id = null
-	var/height = 0							//The 'height' of the ladder. higher numbers are considered physically higher
-	var/obj/structure/ladder/down = null	//The ladder below this one
-	var/obj/structure/ladder/up = null		//The ladder above this one
+	var/height = 0 //The 'height' of the ladder. higher numbers are considered physically higher
+	var/obj/structure/ladder/down = null //The ladder below this one
+	var/obj/structure/ladder/up = null //The ladder above this one
 	anchored = 1
 	unslashable = TRUE
 	unacidable = TRUE
@@ -37,7 +37,7 @@
 				up = L
 				continue
 
-		if(up && down)	//If both our connections are filled
+		if(up && down) //If both our connections are filled
 			break
 	update_icon()
 
@@ -64,7 +64,7 @@
 	else if(down)
 		icon_state = "ladder01"
 
-	else	//wtf make your ladders properly assholes
+	else //wtf make your ladders properly assholes
 		icon_state = "ladder00"
 
 /obj/structure/ladder/attack_hand(mob/user)
@@ -268,9 +268,9 @@
 	GLOB.hijack_bustable_windows -= src
 	return ..()
 
-/obj/structure/ladder/fragile_almayer/proc/break_and_replace()
+/obj/structure/ladder/fragile_almayer/deconstruct()
 	new /obj/structure/prop/broken_ladder(loc)
-	qdel(src)
+	return ..()
 
 /obj/structure/prop/broken_ladder
 	name = "rickety ladder"

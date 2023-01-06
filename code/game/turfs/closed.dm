@@ -2,8 +2,8 @@
 
 //turfs with density = TRUE
 /turf/closed
-	density = 1
-	opacity = 1
+	density = TRUE
+	opacity = TRUE
 
 /turf/closed/insert_self_into_baseturfs()
 	return
@@ -30,8 +30,6 @@
 
 		if(istype(turf_to_check,/turf/open))
 			turf_to_check.overlays += image('icons/turf/walls/walls.dmi', "rock_side_[direction]", 2.99) //Really high since it's an overhead turf and it shouldn't collide with anything else
-
-
 
 //Ground map dense jungle
 /turf/closed/gm
@@ -67,9 +65,9 @@
 
 //desertdam rock
 /turf/closed/desert_rock
-    name = "rockwall"
-    icon = 'icons/turf/walls/cave.dmi'
-    icon_state = "cavewall1"
+	name = "rockwall"
+	icon = 'icons/turf/walls/cave.dmi'
+	icon_state = "cavewall1"
 
 
 
@@ -113,7 +111,7 @@
 	icon = 'icons/turf/walls/icewalllight.dmi'
 	icon_state = "Single"
 	desc = "It is very thin."
-	opacity = 0
+	opacity = FALSE
 
 /turf/closed/ice/thin/single
 	icon_state = "Single"
@@ -225,7 +223,7 @@
 	icon_state = "1"
 
 /turf/closed/shuttle/dropship1/transparent
-	opacity = 0
+	opacity = FALSE
 
 /turf/closed/shuttle/dropship2
 	name = "\improper Normandy"
@@ -233,7 +231,14 @@
 	icon_state = "1"
 
 /turf/closed/shuttle/dropship2/transparent
-	opacity = 0
+	opacity = FALSE
+
+/turf/closed/shuttle/dropship2/tornado
+	name = "\improper Tornado"
+	icon = 'icons/turf/dropship3.dmi'
+
+/turf/closed/shuttle/dropship2/tornado/typhoon
+	name = "\improper Typhoon"
 
 /turf/closed/shuttle/escapepod
 	name = "wall"
@@ -248,7 +253,7 @@
 
 /turf/closed/shuttle/lifeboat/transparent
 	icon_state = "window1"
-	opacity = 0
+	opacity = FALSE
 
 //INSERT EXPLOSION CODE
 /turf/closed/shuttle/lifeboat/proc/transform_crash()

@@ -4,11 +4,11 @@
 	icon = 'icons/obj/structures/machinery/atmos.dmi'
 	icon_state = "sheater0"
 	anchored = FALSE
-	density = 0
+	density = FALSE
 	var/obj/item/cell/cell
 	var/on = 0
 	var/open = 0
-	var/set_temperature = T0C + 70	//K
+	var/set_temperature = T0C + 70 //K
 	var/heating_power = 40000
 
 	flags_atom = FPRINT
@@ -128,7 +128,7 @@
 			if("cellremove")
 				if(open && cell && !usr.get_active_hand())
 					usr.visible_message(SPAN_NOTICE("[usr] removes \the [cell] from \the [src]."), SPAN_NOTICE("You remove \the [cell] from \the [src]."))
-					cell.updateicon()
+					cell.update_icon()
 					usr.put_in_hands(cell)
 					cell.add_fingerprint(usr)
 					cell = null

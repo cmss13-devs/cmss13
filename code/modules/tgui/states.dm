@@ -1,4 +1,4 @@
-/**
+/*!
  * Base state and helpers for states. Just does some sanity checks,
  * implement a proper state for in-depth checks.
  *
@@ -25,7 +25,7 @@
 	if(isobserver(user))
 		// If they turn on ghost AI control, admins can always interact.
 		//if(isAdminGhostAI(user))
-		//	. = max(., UI_INTERACTIVE)
+		// . = max(., UI_INTERACTIVE)
 
 		// Regular ghosts can always at least view if in range.
 		if(user.client)
@@ -61,6 +61,7 @@
  */
 /mob/proc/shared_ui_interaction(src_object)
 	// Close UIs if mindless.
+	//if(!client && !HAS_TRAIT(src, TRAIT_PRESERVE_UI_WITHOUT_CLIENT))
 	if(!client)
 		return UI_CLOSE
 	// Disable UIs if unconcious.
@@ -70,6 +71,14 @@
 	else if(is_mob_incapacitated())
 		return UI_UPDATE
 	return UI_INTERACTIVE
+
+/* Not sure why this is here, it just breaks interactibility on inventory_state
+/mob/living/shared_ui_interaction(src_object)
+	. = ..()
+	//if(!(mobility_flags & MOBILITY_UI) && . == UI_INTERACTIVE)
+	if(. == UI_INTERACTIVE)
+		return UI_UPDATE
+*/
 
 /mob/living/silicon/robot/shared_ui_interaction(src_object)
 	// Disable UIs if the object isn't installed in the borg AND the borg is either locked, has a dead cell, or no cell.
@@ -87,7 +96,7 @@
  *
  * return UI_state The state of the UI.
  */
-/mob/living/proc/shared_living_ui_distance(atom/movable/src_object, viewcheck = TRUE)
+/mob/living/proc/shared_living_ui_distance(atom/movable/src_object, viewcheck = TRUE, allow_tk = TRUE)
 	// If the object is obscured, close it.
 	if(viewcheck && !(src_object in view(src)))
 		return UI_CLOSE

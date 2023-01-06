@@ -49,7 +49,7 @@
 			var/obj/effect/plantsegment/SV = locate(/obj/effect/plantsegment) in loc
 			qdel(SV)
 			if(prob(10))
-				INVOKE_ASYNC(src, .proc/say, "Nom")
+				INVOKE_ASYNC(src, PROC_REF(say), "Nom")
 
 		if(!pulledby)
 			for(var/direction in shuffle(list(1,2,4,8,5,6,9,10)))
@@ -69,7 +69,7 @@
 			var/obj/effect/plantsegment/SV = locate(/obj/effect/plantsegment) in loc
 			qdel(SV)
 			if(prob(10))
-				INVOKE_ASYNC(src, .proc/say, "Nom")
+				INVOKE_ASYNC(src, PROC_REF(say), "Nom")
 
 /mob/living/simple_animal/hostile/retaliate/goat/attackby(var/obj/item/O as obj, var/mob/user as mob)
 	var/obj/item/reagent_container/glass/G = O
@@ -131,7 +131,7 @@
 
 /mob/living/simple_animal/cow/death()
 	. = ..()
-	if(!.)	return //was already dead
+	if(!.) return //was already dead
 	if(last_damage_data)
 		var/mob/user = last_damage_data.resolve_mob()
 		if(user)
@@ -141,12 +141,12 @@
 	if(!stat && M.a_intent == INTENT_DISARM && icon_state != icon_dead)
 		M.visible_message(SPAN_WARNING("[M] tips over [src]."), \
 			SPAN_NOTICE("You tip over [src]."))
-		KnockDown(30)
+		apply_effect(30, WEAKEN)
 		icon_state = icon_dead
 		spawn(rand(20,50))
 			if(!stat && M)
 				icon_state = icon_living
-				var/list/responses = list(	"[src] looks at you imploringly.",
+				var/list/responses = list( "[src] looks at you imploringly.",
 											"[src] looks at you pleadingly",
 											"[src] looks at you with a resigned expression.",
 											"[src] seems resigned to its fate.")

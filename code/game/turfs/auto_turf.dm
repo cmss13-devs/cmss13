@@ -66,14 +66,14 @@
 		if(0 to EXPLOSION_THRESHOLD_LOW)
 			if(prob(20) && bleed_layer)
 				var/new_bleed_layer = min(0, bleed_layer - 1)
-				addtimer(CALLBACK(src, .proc/changing_layer, new_bleed_layer), 1)
+				addtimer(CALLBACK(src, PROC_REF(changing_layer), new_bleed_layer), 1)
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			if(prob(60) && bleed_layer)
 				var/new_bleed_layer = max(bleed_layer - 2, 0)
-				addtimer(CALLBACK(src, .proc/changing_layer, new_bleed_layer), 1)
+				addtimer(CALLBACK(src, PROC_REF(changing_layer), new_bleed_layer), 1)
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
 			if(bleed_layer)
-				addtimer(CALLBACK(src, .proc/changing_layer, 0), 1)
+				addtimer(CALLBACK(src, PROC_REF(changing_layer), 0), 1)
 
 
 //Actual auto-turfs now
@@ -191,7 +191,7 @@
 	if(M.a_intent == INTENT_HARM) //Missed slash.
 		return
 	if(M.a_intent == INTENT_HELP || !bleed_layer)
-		return XENO_NO_DELAY_ACTION
+		return ..()
 
 	M.visible_message(SPAN_NOTICE("[M] starts clearing out \the [src]..."), SPAN_NOTICE("You start clearing out \the [src]..."), null, 5, CHAT_TYPE_XENO_COMBAT)
 	playsound(M.loc, 'sound/weapons/alien_claw_swipe.ogg', 25, 1)
@@ -308,3 +308,34 @@
 /turf/open/auto_turf/strata_grass/layer1
 	icon_state = "grass_1"
 	bleed_layer = 1
+
+//Chance's Claim / Hadley Shale dirt
+
+/turf/open/auto_turf/shale
+	layer_name = list("wind blown dirt", "volcanic plate rock", "volcanic plate and rock", "this layer does not exist")
+	icon = 'icons/turf/floors/auto_shale.dmi'
+	icon_prefix = "shale"
+
+/turf/open/auto_turf/shale/get_dirt_type()
+	return DIRT_TYPE_SHALE
+
+/turf/open/auto_turf/shale/layer0
+	icon_state = "shale_0"
+	bleed_layer = 0
+	color = "#6699CC"
+
+/turf/open/auto_turf/shale/layer0_puddle
+	icon_state = "shale_0_puddle"
+	bleed_layer = 0
+
+/turf/open/auto_turf/shale/layer0_plate //for inner plate shenanigans
+	icon_state = "shale_1_alt"
+	bleed_layer = 0
+
+/turf/open/auto_turf/shale/layer1
+	icon_state = "shale_1"
+	bleed_layer = 1
+
+/turf/open/auto_turf/shale/layer2
+	icon_state = "shale_2"
+	bleed_layer = 2

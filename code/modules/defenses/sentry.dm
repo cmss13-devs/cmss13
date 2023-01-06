@@ -1,6 +1,6 @@
-#define SENTRY_FIREANGLE 	135
-#define SENTRY_RANGE 		5
-#define SENTRY_MUZZLELUM	3
+#define SENTRY_FIREANGLE 135
+#define SENTRY_RANGE 5
+#define SENTRY_MUZZLELUM 3
 
 /obj/structure/machinery/defenses/sentry
 	name = "\improper UA 571-C sentry gun"
@@ -223,7 +223,7 @@
 	actual_fire(A)
 
 	if(targets.len)
-		addtimer(CALLBACK(src, .proc/get_target), fire_delay)
+		addtimer(CALLBACK(src, PROC_REF(get_target)), fire_delay)
 
 /obj/structure/machinery/defenses/sentry/proc/actual_fire(var/atom/A)
 	var/obj/item/projectile/P = new(src, create_cause_data(initial(name), owner_mob, src))
@@ -231,7 +231,7 @@
 	P.damage *= damage_mult
 	P.accuracy *= accuracy_mult
 	GIVE_BULLET_TRAIT(P, /datum/element/bullet_trait_iff, faction_group)
-	P.fire_at(A, src, owner_mob, P.ammo.max_range, P.ammo.shell_speed, null, FALSE)
+	P.fire_at(A, src, owner_mob, P.ammo.max_range, P.ammo.shell_speed, null)
 	muzzle_flash(Get_Angle(get_turf(src), A))
 	ammo.current_rounds--
 	track_shot()
@@ -249,7 +249,7 @@
 		return
 
 	SetLuminosity(SENTRY_MUZZLELUM)
-	addtimer(CALLBACK(src, /atom.proc/SetLuminosity, -SENTRY_MUZZLELUM), 10)
+	addtimer(CALLBACK(src, TYPE_PROC_REF(/atom, SetLuminosity), -SENTRY_MUZZLELUM), 10)
 
 	var/image_layer = layer + 0.1
 	var/offset = 13
@@ -405,7 +405,7 @@
 /obj/structure/machinery/defenses/sentry/premade/power_off()
 	return
 
-obj/structure/machinery/defenses/sentry/premade/damaged_action()
+/obj/structure/machinery/defenses/sentry/premade/damaged_action()
 	return
 
 /obj/structure/machinery/defenses/sentry/premade/dumb
@@ -446,17 +446,17 @@ obj/structure/machinery/defenses/sentry/premade/damaged_action()
 		deployment_system = null
 	. = ..()
 
-#define SENTRY_SNIPER_RANGE 20
+#define SENTRY_SNIPER_RANGE 10
 /obj/structure/machinery/defenses/sentry/dmr
 	name = "UA 725-D Sniper Sentry"
 	desc = "A fully-automated defence turret with long-range targeting capabilities. Armed with a modified M32-S Autocannon and an internal belt feed."
 	defense_type = "DMR"
 	health = 150
 	health_max = 150
-	fire_delay = 2 SECONDS
+	fire_delay = 1.25 SECONDS
 	ammo = new /obj/item/ammo_magazine/sentry
 	sentry_range = SENTRY_SNIPER_RANGE
-	accuracy_mult = 5
+	accuracy_mult = 4
 	damage_mult = 2
 	handheld_type = /obj/item/defenses/handheld/sentry/dmr
 
@@ -501,7 +501,7 @@ obj/structure/machinery/defenses/sentry/premade/damaged_action()
 			L.visible_message(SPAN_DANGER("The sentry's steel tusks impale [L]!"),
 			SPAN_DANGER("The sentry's steel tusks impale you!"))
 			if(L.mob_size <= MOB_SIZE_XENO_SMALL)
-				L.KnockDown(1)
+				L.apply_effect(1, WEAKEN)
 
 /obj/structure/machinery/defenses/sentry/mini
 	name = "UA 512-M mini sentry"
@@ -551,9 +551,13 @@ obj/structure/machinery/defenses/sentry/premade/damaged_action()
 /obj/structure/machinery/defenses/sentry/launchable/handle_empty()
 	visible_message("[icon2html(src, viewers(src))] <span class='warning'>The [name] beeps steadily and its ammo light blinks red. It rapidly deconstructs itself!</span>")
 	playsound(loc, 'sound/weapons/smg_empty_alarm.ogg', 25, 1)
-	new /obj/item/stack/sheet/metal/medium_stack(loc)
-	new /obj/item/stack/sheet/plasteel/medium_stack(loc)
-	qdel(src)
+	deconstruct()
+
+/obj/structure/machinery/defenses/sentry/launchable/deconstruct(disassembled = TRUE)
+	if(disassembled)
+		new /obj/item/stack/sheet/metal/medium_stack(loc)
+		new /obj/item/stack/sheet/plasteel/medium_stack(loc)
+	return ..()
 
 #undef SENTRY_FIREANGLE
 #undef SENTRY_RANGE

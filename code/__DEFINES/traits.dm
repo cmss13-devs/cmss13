@@ -117,45 +117,57 @@
 // #define TRAIT_X "t_x"
 //-- mob traits --
 // SPECIES TRAITS
- /// Knowledge of Yautja technology
+/// Knowledge of Yautja technology
 #define TRAIT_YAUTJA_TECH "t_yautja_tech"
- /// Absolutely RIPPED. Can do misc. heavyweight stuff others can't. (Yautja, Synths)
+/// Absolutely RIPPED. Can do misc. heavyweight stuff others can't. (Yautja, Synths)
 #define TRAIT_SUPER_STRONG "t_super_strong"
- /// Foreign biology. Basic medHUDs won't show the mob. (Yautja, Zombies)
+/// Foreign biology. Basic medHUDs won't show the mob. (Yautja, Zombies)
 #define TRAIT_FOREIGN_BIO "t_foreign_bio"
- /// Eye color changes on intent. (G1 Synths)
+/// Eye color changes on intent. (G1 Synths)
 #define TRAIT_INTENT_EYES "t_intent_eyes"
+/// Masked synthetic biology. Basic medHUDs will percieve the mob as human. (Infiltrator Synths)
+#define TRAIT_INFILTRATOR_SYNTH "t_infiltrator_synth"
 
 // HIVE TRAITS
- /// If the Hive is a Xenonid Hive
+/// If the Hive is a Xenonid Hive
 #define TRAIT_XENONID "t_xenonid"
+/// If the Hive delays round end (this is overriden for some hives). Does not occur naturally. Must be applied in events.
+#define TRAIT_NO_HIVE_DELAY "t_no_hive_delay"
+/// If the Hive uses it's colors on the mobs. Does not occur naturally, excepting the Mutated hive.
+#define TRAIT_NO_COLOR "t_no_color"
 
 // MISC MOB TRAITS
- /// If the mob is nested.
+/// If the mob is nested.
 #define TRAIT_NESTED "t_nested"
- /// If the mob can crawl through pipes equipped
+/// If the mob can crawl through pipes equipped
 #define TRAIT_CRAWLER "t_crawler"
- /// If the mob is hidden from examination
+/// If the mob is hidden from examination
 #define TRAIT_SIMPLE_DESC "t_simple_desc"
- /// If the mob can handle the superheavy two-bore rifle and speaks its fluff lines when landing hits with it.
+/// If the mob can handle the superheavy two-bore rifle and speaks its fluff lines when landing hits with it.
 #define TRAIT_TWOBORE_TRAINING "t_twobore"
- /// If the mob has equipment that alleviates nearsightedness
+/// If the mob has equipment that alleviates nearsightedness
 #define TRAIT_NEARSIGHTED_EQUIPMENT "t_nearsighted_eq"
- /// If the mob is affected by drag delay.area
+/// If the mob is affected by drag delay.area
 #define TRAIT_DEXTROUS "t_dextrous"
- /// If the mob is currently charging (xeno only)
+/// If the mob is currently charging (xeno only)
 #define TRAIT_CHARGING "t_charging"
- /// If the mob has leadership abilities (giving orders).
+/// If the mob has leadership abilities (giving orders).
 #define TRAIT_LEADERSHIP "t_leadership"
- /// If the mob can see the reagents contents of stuff
+/// If the mob can see the reagents contents of stuff
 #define TRAIT_REAGENT_SCANNER "reagent_scanner"
- /// If the mob is being lazed by a sniper spotter
+/// If the mob is being lazed by a sniper spotter
 #define TRAIT_SPOTTER_LAZED "t_spotter_lazed"
+/// If the mob has ear protection. Protects from external ear damage effects. Includes explosions, firing the RPG, screeching DEAFNESS only, and flashbangs.
+#define TRAIT_EAR_PROTECTION "t_ear_protection"
+/// If the mob is Santa. Enough said.
+#define TRAIT_SANTA "t_santa"
+/// If the mob is wearing bimex glasses. Used for badass laser deflection flavor text.
+#define TRAIT_BIMEX "t_bimex"
 
 // -- ability traits --
- /// Xenos with this trait cannot have plasma transfered to them
+/// Xenos with this trait cannot have plasma transfered to them
 #define TRAIT_ABILITY_NO_PLASMA_TRANSFER "t_ability_no_plasma_transfer"
- /// Shows that the xeno queen is on ovi
+/// Shows that the xeno queen is on ovi
 #define TRAIT_ABILITY_OVIPOSITOR "t_ability_ovipositor"
 
 //-- item traits --
@@ -169,11 +181,19 @@
 #define TRAIT_TOOL_BLOWTORCH "t_tool_blowtorch"
 #define TRAIT_TOOL_SIMPLE_BLOWTORCH "t_tool_simple_blowtorch"
 
+#define TRAIT_TOOL_PEN "t_tool_pen"
+
 // GUN TRAITS
 #define TRAIT_GUN_SILENCED "t_gun_silenced"
 
+// Miscellaneous item traits.
+// Do NOT bloat this category, if needed make a new category (like shoe traits, xeno item traits...)
+
 //If an item with this trait is in an ear slot, no other item with this trait can fit in the other ear slot
 #define TRAIT_ITEM_EAR_EXCLUSIVE "t_item_ear_exclusive"
+
+//This item will force clickdrag to work even if the preference to disable is enabled. (Full-auto items)
+#define TRAIT_OVERRIDE_CLICKDRAG "t_override_clickdrag"
 
 //List of all traits
 GLOBAL_LIST_INIT(mob_traits, list(
@@ -195,25 +215,28 @@ GLOBAL_LIST_INIT(mob_traits, list(
 // #define TRAIT_SOURCE_Y "t_s_y"
 #define TRAIT_SOURCE_INHERENT "t_s_inherent"
 //-- mob traits --
- ///Status trait coming from species. .human/species_gain()
+///Status trait coming from species. .human/species_gain()
 #define TRAIT_SOURCE_SPECIES "t_s_species"
- ///Status trait coming from the hive.
+///Status trait coming from the hive.
 #define TRAIT_SOURCE_HIVE "t_s_hive"
- ///Status trait coming from being buckled.
+///Status trait coming from being buckled.
 #define TRAIT_SOURCE_BUCKLE "t_s_buckle"
- ///Status trait coming from roundstart quirks (that don't exist yet). Unremovable by REMOVE_TRAIT
+///Status trait coming from roundstart quirks (that don't exist yet). Unremovable by REMOVE_TRAIT
 #define TRAIT_SOURCE_QUIRK "t_s_quirk"
- ///Status trait coming from being assigned as [acting] squad leader.
+///Status trait coming from being assigned as [acting] squad leader.
 #define TRAIT_SOURCE_SQUAD_LEADER "t_s_squad_leader"
- ///Status trait forced by staff
+///Status trait forced by staff
 #define TRAIT_SOURCE_ADMIN "t_s_admin"
- ///Status trait coming from equipment
+///Status trait coming from equipment
 #define TRAIT_SOURCE_EQUIPMENT(slot) "t_s_equipment_[slot]"
- ///Status trait coming from skill
+///Status trait coming from skill
 #define TRAIT_SOURCE_SKILL(skill) "t_s_skill_[skill]"
 ///Status trait coming from attachment
 #define TRAIT_SOURCE_ATTACHMENT(slot) "t_s_attachment_[slot]"
- ///Status trait coming from ability
+///Status trait coming from ability
 #define TRAIT_SOURCE_ABILITY(ability) "t_s_ability_[ability]"
- ///Status trait forced by the xeno action charge
+///Status trait forced by the xeno action charge
 #define TRAIT_SOURCE_XENO_ACTION_CHARGE "t_s_xeno_action_charge"
+
+///Status trait from weapons?? buh
+#define TRAIT_SOURCE_WEAPON "t_s_weapon"

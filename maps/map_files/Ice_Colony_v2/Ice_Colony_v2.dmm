@@ -5519,7 +5519,7 @@
 	},
 /area/ice_colony/surface/clinic/treatment)
 "aox" = (
-/obj/structure/machinery/sleeper,
+/obj/structure/machinery/medical_pod/sleeper,
 /turf/open/floor{
 	dir = 9;
 	icon_state = "whitered";
@@ -5545,7 +5545,7 @@
 	},
 /area/ice_colony/surface/clinic/treatment)
 "aoA" = (
-/obj/structure/machinery/bodyscanner,
+/obj/structure/machinery/medical_pod/bodyscanner,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "whitered";
@@ -7370,7 +7370,7 @@
 /turf/open/auto_turf/snow/layer0,
 /area/ice_colony/exterior/surface/clearing/pass)
 "asW" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited{
 	pixel_x = -32
 	},
 /turf/open/floor{
@@ -9123,7 +9123,7 @@
 /turf/open/floor/plating,
 /area/ice_colony/surface/disposals)
 "axf" = (
-/obj/item/weapon/gun/shotgun/pump/cmb,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
 /obj/effect/decal/cleanable/blood{
 	layer = 3
 	},
@@ -13755,7 +13755,7 @@
 /turf/open/floor/wood,
 /area/ice_colony/surface/command/crisis)
 "aIN" = (
-/obj/item/weapon/gun/shotgun/pump/cmb,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
 /obj/effect/decal/cleanable/blood{
 	layer = 3
 	},
@@ -20270,9 +20270,7 @@
 	icon_state = "warnplate";
 	tag = "icon-warnplate (NORTH)"
 	},
-/area/shuttle/drop2/ice_colony{
-	name = "\improper Almayer Dropship 2"
-	})
+/area/shuttle/drop2/ice_colony)
 "baM" = (
 /obj/structure/machinery/landinglight/ds2/delayone{
 	dir = 8;
@@ -20296,9 +20294,7 @@
 /area/ice_colony/underground/hangar)
 "baP" = (
 /turf/open/floor/plating/icefloor,
-/area/shuttle/drop2/ice_colony{
-	name = "\improper Almayer Dropship 2"
-	})
+/area/shuttle/drop2/ice_colony)
 "baQ" = (
 /obj/structure/machinery/landinglight/ds2{
 	dir = 8;
@@ -20339,9 +20335,7 @@
 /area/ice_colony/exterior/surface/landing_pad)
 "baY" = (
 /turf/open/floor/plating,
-/area/shuttle/drop1/ice_colony{
-	name = "\improper Almayer Dropship 1"
-	})
+/area/shuttle/drop1/ice_colony)
 "baZ" = (
 /obj/structure/ice/thin/corner{
 	dir = 8;
@@ -20437,9 +20431,7 @@
 "bbp" = (
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/plating/icefloor,
-/area/shuttle/drop2/ice_colony{
-	name = "\improper Almayer Dropship 2"
-	})
+/area/shuttle/drop2/ice_colony)
 "bbq" = (
 /obj/structure/machinery/landinglight/ds2/delaytwo{
 	dir = 8;
@@ -20524,18 +20516,14 @@
 	icon_state = "warnplate";
 	tag = "icon-warnplate (WEST)"
 	},
-/area/shuttle/drop2/ice_colony{
-	name = "\improper Almayer Dropship 2"
-	})
+/area/shuttle/drop2/ice_colony)
 "bbD" = (
 /turf/open/floor/plating/icefloor{
 	dir = 4;
 	icon_state = "warnplate";
 	tag = "icon-warnplate (EAST)"
 	},
-/area/shuttle/drop2/ice_colony{
-	name = "\improper Almayer Dropship 2"
-	})
+/area/shuttle/drop2/ice_colony)
 "bbE" = (
 /turf/closed/wall/r_wall,
 /area/ice_colony/surface/tcomms)
@@ -20707,15 +20695,11 @@
 	tag = "icon-armorblood"
 	},
 /turf/open/floor/plating/icefloor,
-/area/shuttle/drop2/ice_colony{
-	name = "\improper Almayer Dropship 2"
-	})
+/area/shuttle/drop2/ice_colony)
 "bcz" = (
 /obj/effect/landmark/hunter_secondary,
 /turf/open/floor/plating/icefloor,
-/area/shuttle/drop2/ice_colony{
-	name = "\improper Almayer Dropship 2"
-	})
+/area/shuttle/drop2/ice_colony)
 "bcA" = (
 /obj/structure/machinery/landinglight/ds2/delaytwo{
 	dir = 8;
@@ -22457,9 +22441,7 @@
 	icon_state = "warnplate";
 	tag = "icon-warnplate"
 	},
-/area/shuttle/drop2/ice_colony{
-	name = "\improper Almayer Dropship 2"
-	})
+/area/shuttle/drop2/ice_colony)
 "bht" = (
 /turf/open/floor/plating/icefloor{
 	icon_state = "warnplate";
@@ -22848,7 +22830,7 @@
 /area/ice_colony/underground/hangar)
 "biK" = (
 /obj/structure/surface/table/woodentable,
-/obj/item/weapon/gun/shotgun/pump/cmb,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
 /turf/open/floor/wood,
 /area/ice_colony/surface/command/crisis)
 "biM" = (
@@ -27685,7 +27667,7 @@
 	},
 /area/ice_colony/underground/medical/lobby)
 "bvQ" = (
-/obj/structure/machinery/sleeper,
+/obj/structure/machinery/medical_pod/sleeper,
 /turf/open/floor{
 	dir = 8;
 	icon_state = "whitered";
@@ -28390,7 +28372,7 @@
 	},
 /area/ice_colony/underground/medical/lobby)
 "bxM" = (
-/obj/structure/machinery/bodyscanner,
+/obj/structure/machinery/medical_pod/bodyscanner,
 /turf/open/floor{
 	dir = 10;
 	icon_state = "whitered";
@@ -36461,11 +36443,11 @@
 /area/ice_colony/underground/security/armory)
 "bSu" = (
 /obj/structure/surface/rack,
-/obj/item/weapon/gun/shotgun/pump/cmb{
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb{
 	pixel_x = 6;
 	pixel_y = -4
 	},
-/obj/item/weapon/gun/shotgun/pump/cmb,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
 /turf/open/floor{
 	icon_state = "darkred2";
 	tag = "icon-darkred2"

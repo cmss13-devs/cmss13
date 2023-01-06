@@ -3,8 +3,8 @@
 	desc = "Danger. Very robust."
 	icon_state = "red"
 	item_state = "toolbox_red"
-	pickupsound = 'sound/handling/toolbox_pickup.ogg'
-	dropsound = 'sound/handling/toolbox_drop.ogg'
+	pickup_sound = 'sound/handling/toolbox_pickup.ogg'
+	drop_sound = 'sound/handling/toolbox_drop.ogg'
 	flags_atom = FPRINT|CONDUCT
 	force = 5.0
 	throwforce = 10.0

@@ -32,6 +32,7 @@
         "xeno_hive_charlie": 0,
         "xeno_hive_delta": 0
     },
+    "nightmare_path": "maps/Nightmare/maps/Ice_Colony_v2/",
     "gamemodes": [
         "Distress Signal",
         "Hunter Games",

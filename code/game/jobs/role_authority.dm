@@ -18,10 +18,10 @@ var/global/datum/authority/branch/role/RoleAuthority
 #define RETURN_TO_LOBBY 2
 #define BE_XENOMORPH 3
 
-#define NEVER_PRIORITY 	0
-#define HIGH_PRIORITY 	1
-#define MED_PRIORITY 	2
-#define LOW_PRIORITY	3
+#define NEVER_PRIORITY 0
+#define HIGH_PRIORITY 1
+#define MED_PRIORITY 2
+#define LOW_PRIORITY 3
 
 #define SHIPSIDE_ROLE_WEIGHT 0.5
 
@@ -126,7 +126,7 @@ var/global/players_preassigned = 0
 	var/role
 	roles_whitelist = list()
 	for(i in L)
-		if(!i)	continue
+		if(!i) continue
 		i = trim(i)
 		if(!length(i)) continue
 		else if (copytext(i, 1, 2) == "#") continue
@@ -148,7 +148,8 @@ var/global/players_preassigned = 0
 				if("commandercouncil")				role |= WHITELIST_COMMANDER_COUNCIL
 				if("commandercouncillegacy")		role |= WHITELIST_COMMANDER_COUNCIL_LEGACY
 				if("commanderleader")				role |= WHITELIST_COMMANDER_LEADER
-				if("synthetic") 					role |= WHITELIST_SYNTHETIC
+				if("workingjoe")					role |= WHITELIST_JOE
+				if("synthetic") 					role |= (WHITELIST_SYNTHETIC|WHITELIST_JOE)
 				if("syntheticcouncil")				role |= WHITELIST_SYNTHETIC_COUNCIL
 				if("syntheticcouncillegacy")		role |= WHITELIST_SYNTHETIC_COUNCIL_LEGACY
 				if("syntheticleader")				role |= WHITELIST_SYNTHETIC_LEADER
@@ -164,9 +165,9 @@ var/global/players_preassigned = 0
 
 //#undef FACTION_TO_JOIN
 
- /*
- Consolidated into a better collection of procs. It was also calling too many loops, and I tried to fix that as well.
- I hope it's easier to tell what the heck this proc is even doing, unlike previously.
+/*
+Consolidated into a better collection of procs. It was also calling too many loops, and I tried to fix that as well.
+I hope it's easier to tell what the heck this proc is even doing, unlike previously.
  */
 
 
@@ -237,7 +238,7 @@ var/global/players_preassigned = 0
 		var/datum/job/J = temp_roles_for_mode[title]
 		J.current_positions = 0
 
-    // Set up limits for other roles based on our balancing weight number.
+	// Set up limits for other roles based on our balancing weight number.
 	// Set the xeno starting amount based on marines assigned
 	var/datum/job/antag/xenos/XJ = temp_roles_for_mode[JOB_XENOMORPH]
 	if(istype(XJ))
@@ -253,7 +254,11 @@ var/global/players_preassigned = 0
 	if(istype(SJ))
 		SJ.set_spawn_positions(players_preassigned)
 
-	if(prob(SSticker.mode.pred_round_chance))
+	var/datum/job/CO_surv_job = temp_roles_for_mode[JOB_CO_SURVIVOR]
+	if(istype(CO_surv_job))
+		CO_surv_job.set_spawn_positions(players_preassigned)
+
+	if(SSnightmare.get_scenario_value("predator_round"))
 		SSticker.mode.flags_round_type |= MODE_PREDATOR
 		// Set predators starting amount based on marines assigned
 		var/datum/job/PJ = temp_roles_for_mode[JOB_PREDATOR]
@@ -419,7 +424,7 @@ var/global/players_preassigned = 0
 /datum/authority/branch/role/proc/free_role_admin(var/datum/job/J, var/latejoin = 1, var/user) //Specific proc that used for admin "Free Job Slots" verb (round tab)
 	if(!istype(J) || J.total_positions == -1)
 		return
-	if(J.current_positions < 1)	//this should be filtered earlier, but we still check just in case
+	if(J.current_positions < 1) //this should be filtered earlier, but we still check just in case
 		to_chat(user, "There are no [J] job slots occupied.")
 		return
 
@@ -500,26 +505,7 @@ var/global/players_preassigned = 0
 	if(!ishuman(M))
 		return
 
-	var/mob/living/carbon/H = M
-
-	H.job = J.title //TODO Why is this a mob variable at all?
-
-	var/datum/money_account/A
-
-	//Give them an account in the database.
-	if(!(J.flags_startup_parameters & ROLE_NO_ACCOUNT))
-		A = create_account(H.real_name, rand(50,500)*10, null)
-		if(H.mind)
-			var/remembered_info = ""
-			remembered_info += "<b>Your account number is:</b> #[A.account_number]<br>"
-			remembered_info += "<b>Your account pin is:</b> [A.remote_access_pin]<br>"
-			remembered_info += "<b>Your account funds are:</b> $[A.money]<br>"
-
-			if(A.transaction_log.len)
-				var/datum/transaction/T = A.transaction_log[1]
-				remembered_info += "<b>Your account was created:</b> [T.time], [T.date] at [T.source_terminal]<br>"
-			H.mind.store_memory(remembered_info)
-			H.mind.initial_account = A
+	var/mob/living/carbon/human/H = M
 
 	var/job_whitelist = J.title
 	var/whitelist_status = J.get_whitelist_status(roles_whitelist, H.client)
@@ -527,19 +513,23 @@ var/global/players_preassigned = 0
 	if(whitelist_status)
 		job_whitelist = "[J.title][whitelist_status]"
 
+	H.job = J.title //TODO Why is this a mob variable at all?
+
 	if(J.gear_preset_whitelist[job_whitelist])
 		arm_equipment(H, J.gear_preset_whitelist[job_whitelist], FALSE, TRUE)
-		J.announce_entry_message(H, A, whitelist_status) //Tell them their spawn info.
+		var/generated_account = J.generate_money_account(H)
+		J.announce_entry_message(H, generated_account, whitelist_status) //Tell them their spawn info.
 		J.generate_entry_conditions(H, whitelist_status) //Do any other thing that relates to their spawn.
 	else
 		arm_equipment(H, J.gear_preset, FALSE, TRUE) //After we move them, we want to equip anything else they should have.
-		J.announce_entry_message(H, A) //Tell them their spawn info.
+		var/generated_account = J.generate_money_account(H)
+		J.announce_entry_message(H, generated_account) //Tell them their spawn info.
 		J.generate_entry_conditions(H) //Do any other thing that relates to their spawn.
 
 	if(J.flags_startup_parameters & ROLE_ADD_TO_SQUAD) //Are we a muhreen? Randomize our squad. This should go AFTER IDs. //TODO Robust this later.
 		randomize_squad(H)
 
-	if(Check_WO() && job_squad_roles.Find(GET_DEFAULT_ROLE(H.job)))	//activates self setting proc for marine headsets for WO
+	if(Check_WO() && job_squad_roles.Find(GET_DEFAULT_ROLE(H.job))) //activates self setting proc for marine headsets for WO
 		var/datum/game_mode/whiskey_outpost/WO = SSticker.mode
 		WO.self_set_headset(H)
 
@@ -744,7 +734,7 @@ var/global/players_preassigned = 0
 		if(!lowest)
 			var/ranpick = rand(1,4)
 			lowest = mixed_squads[ranpick]
-		if(lowest)	lowest.put_marine_in_squad(H)
+		if(lowest) lowest.put_marine_in_squad(H)
 		else to_chat(H, "Something went badly with randomize_squad()! Tell a coder!")
 
 	else
@@ -795,9 +785,9 @@ var/global/players_preassigned = 0
 		if(XENO_CASTE_BOILER)
 			M = /mob/living/carbon/Xenomorph/Boiler
 		if(XENO_CASTE_PREDALIEN)
-			M =	/mob/living/carbon/Xenomorph/Predalien
+			M = /mob/living/carbon/Xenomorph/Predalien
 		if(XENO_CASTE_HELLHOUND)
-			M =	/mob/living/carbon/Xenomorph/Hellhound
+			M = /mob/living/carbon/Xenomorph/Hellhound
 	return M
 
 
@@ -825,14 +815,12 @@ var/global/players_preassigned = 0
 		if(transfer_marine.assigned_fireteam)
 			if(old_squad.fireteam_leaders["FT[transfer_marine.assigned_fireteam]"] == transfer_marine)
 				old_squad.unassign_ft_leader(transfer_marine.assigned_fireteam, TRUE, FALSE)
-			old_squad.unassign_fireteam(transfer_marine, TRUE)	//reset fireteam assignment
+			old_squad.unassign_fireteam(transfer_marine, TRUE) //reset fireteam assignment
 		old_squad.remove_marine_from_squad(transfer_marine, ID)
 		old_squad.update_free_mar()
-		old_squad.update_squad_ui()
 	. = new_squad.put_marine_in_squad(transfer_marine, ID)
 	if(.)
 		new_squad.update_free_mar()
-		new_squad.update_squad_ui()
 
 		var/marine_ref = WEAKREF(transfer_marine)
 		for(var/datum/data/record/t in GLOB.data_core.general) //we update the crew manifest

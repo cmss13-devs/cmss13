@@ -3,7 +3,7 @@
 /obj/structure/bed/nest
 	name = "alien nest"
 	desc = "It's a gruesome pile of thick, sticky resin shaped like a nest."
-	icon = 'icons/mob/hostiles/Effects.dmi'
+	icon = 'icons/mob/xenos/effects.dmi'
 	icon_state = "nest"
 	buckling_y = 6
 	buildstacktype = null //can't be disassembled and doesn't drop anything when destroyed
@@ -111,7 +111,7 @@
 			to_chat(user, SPAN_WARNING("[H] was nested recently. Wait a bit."))
 			return
 		if(H.stat != DEAD)
-			if(alert(user, "[H] is still alive and kicking! Are you sure you want to remove them from the nest?", "Confirmation", "Yes", "No") == "No")
+			if(alert(user, "[H] is still alive and kicking! Are you sure you want to remove them from the nest?", "Confirmation", "Yes", "No") != "Yes")
 				return
 			if(!buckled_mob || !user.Adjacent(H) || user.stat || user.lying || user.is_mob_restrained())
 				return
@@ -251,7 +251,7 @@
 
 /obj/structure/bed/nest/ex_act(var/power)
 	if(power >= EXPLOSION_THRESHOLD_VLOW)
-		qdel(src)
+		deconstruct(FALSE)
 
 /obj/structure/bed/nest/update_icon()
 	overlays.Cut()
@@ -263,8 +263,8 @@
 
 /obj/structure/bed/nest/proc/healthcheck()
 	if(health <= 0)
-		density = 0
-		qdel(src)
+		density = FALSE
+		deconstruct()
 
 /obj/structure/bed/nest/fire_act()
 	on_fire = TRUE
@@ -296,7 +296,7 @@
 	healthcheck()
 
 /obj/structure/bed/nest/flamer_fire_act()
-	qdel(src)
+	deconstruct()
 
 /obj/structure/bed/nest/Destroy()
 	unbuckle()

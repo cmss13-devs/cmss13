@@ -9,9 +9,9 @@
 	w_class = SIZE_SMALL
 	allowed_sensors = list(/obj/item/device/assembly/prox_sensor, /obj/item/device/assembly/signaller, /obj/item/device/assembly/timer)
 	max_container_volume = 180
-	reaction_limits = list(	"max_ex_power" = 260,	"base_ex_falloff" = 90,	"max_ex_shards" = 64,
-							"max_fire_rad" = 6,		"max_fire_int" = 26,	"max_fire_dur" = 30,
-							"min_fire_rad" = 2,		"min_fire_int" = 4,		"min_fire_dur" = 5
+	reaction_limits = list( "max_ex_power" = 260, "base_ex_falloff" = 90, "max_ex_shards" = 64,
+							"max_fire_rad" = 6, "max_fire_int" = 26, "max_fire_dur" = 30,
+							"min_fire_rad" = 2, "min_fire_int" = 4, "min_fire_dur" = 5
 	)
 
 	var/deploying_time = 50
@@ -21,8 +21,8 @@
 	var/atom/plant_target = null //which atom the plstique explosive is planted on
 	var/overlay_image = "plastic-explosive2"
 	var/image/overlay
-	var/list/breachable = list(/obj/structure/window, /turf/closed, /obj/structure/machinery/door, /obj/structure/mineral_door)
-	antigrief_protection = TRUE	//Should it be checked by antigrief?
+	var/list/breachable = list(/obj/structure/window, /turf/closed, /obj/structure/machinery/door, /obj/structure/mineral_door , /obj/structure/cargo_container)
+	antigrief_protection = TRUE //Should it be checked by antigrief?
 
 /obj/item/explosive/plastic/Destroy()
 	disarm()
@@ -121,7 +121,7 @@
 		user.visible_message(SPAN_WARNING("[user] plants [name] on [target]!"),
 		SPAN_WARNING("You plant [name] on [target]! Timer counting down from [timer]."))
 		active = TRUE
-		addtimer(CALLBACK(src, .proc/prime), timer * 10)
+		addtimer(CALLBACK(src, PROC_REF(prime)), timer * 10)
 
 /obj/item/explosive/plastic/attackby(obj/item/W, mob/user)
 	if(HAS_TRAIT(W, TRAIT_TOOL_MULTITOOL))
@@ -278,7 +278,7 @@
 		else if(issignaller(detonator.a_right) || issignaller(detonator.a_left))
 			overlays += new /obj/effect/overlay/danger
 			layer = INTERIOR_DOOR_LAYER
-			addtimer(CALLBACK(src, .proc/delayed_prime, target_turf), 3 SECONDS)
+			addtimer(CALLBACK(src, PROC_REF(delayed_prime), target_turf), 3 SECONDS)
 			return
 		else
 			. = ..()

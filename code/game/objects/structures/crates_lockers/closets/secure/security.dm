@@ -47,9 +47,9 @@
 	new /obj/item/storage/belt/security(src)
 	new /obj/item/clothing/shoes/jackboots(src)
 
-/obj/structure/closet/secure_closet/security
+/obj/structure/closet/secure_closet/security/standard
 	name = "Security Officer's Locker"
-	req_one_access = list(ACCESS_MARINE_BRIG, ACCESS_CIVILIAN_BRIG)
+	req_one_access = list(ACCESS_CIVILIAN_COMMAND, ACCESS_CIVILIAN_BRIG)
 	icon_state = "secure_locked_police"
 	icon_closed = "secure_closed_police"
 	icon_locked = "secure_locked_police"
@@ -57,7 +57,7 @@
 	icon_broken = "secure_broken_police"
 	icon_off = "secure_closed_police"
 
-/obj/structure/closet/secure_closet/security/Initialize()
+/obj/structure/closet/secure_closet/security/standard/Initialize()
 	. = ..()
 	if(prob(50))
 		new /obj/item/storage/backpack/security(src)
@@ -76,6 +76,38 @@
 	new /obj/item/clothing/accessory/storage/black_vest(src)
 	new /obj/item/clothing/head/soft/sec/corp(src)
 	new /obj/item/clothing/under/rank/security/corp(src)
+
+/obj/structure/closet/secure_closet/security/soro
+	name = "Security Officer's Locker"
+	req_one_access = list(ACCESS_CIVILIAN_COMMAND, ACCESS_CIVILIAN_BRIG)
+	icon_state = "secure_locked_police"
+	icon_closed = "secure_closed_police"
+	icon_locked = "secure_locked_police"
+	icon_opened = "secure_open_police"
+	icon_broken = "secure_broken_police"
+	icon_off = "secure_closed_police"
+
+/obj/structure/closet/secure_closet/security/soro/Initialize()
+	. = ..()
+	if(prob(50))
+		new /obj/item/storage/backpack/security(src)
+	else
+		new /obj/item/storage/backpack/satchel/sec(src)
+	new /obj/item/storage/belt/security(src)
+	new /obj/item/device/flash(src)
+	new /obj/item/reagent_container/spray/pepper(src)
+	new /obj/item/explosive/grenade/flashbang(src)
+	new /obj/item/weapon/melee/baton/loaded(src)
+	new /obj/item/weapon/gun/energy/taser(src)
+	new /obj/item/clothing/glasses/sunglasses/sechud(src)
+	new /obj/item/device/hailer(src)
+	new /obj/item/clothing/accessory/storage/black_vest(src)
+	new /obj/item/clothing/suit/storage/snow_suit/soviet(src)
+	new /obj/item/clothing/head/ushanka(src)
+	new /obj/item/clothing/mask/rebreather/scarf(src)
+	new /obj/item/clothing/under/rank/veteran/soviet_uniform_01(src)
+	new /obj/item/storage/belt/gun/type47/NY(src)
+
 
 
 /obj/structure/closet/secure_closet/security/cargo/Initialize()
@@ -108,7 +140,7 @@
 
 	opened = 1
 	locked = 0
-	density = 0
+	density = FALSE
 
 /obj/structure/closet/secure_closet/detective
 	name = "Detective's Cabinet"
@@ -195,7 +227,7 @@
 	name = "wall locker"
 	req_access = list(ACCESS_MARINE_BRIG, ACCESS_CIVILIAN_BRIG)
 	icon_state = "wall-locker1"
-	density = 1
+	density = TRUE
 	icon_closed = "wall-locker"
 	icon_locked = "wall-locker1"
 	icon_opened = "wall-lockeropen"

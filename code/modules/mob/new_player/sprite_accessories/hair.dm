@@ -1,5 +1,5 @@
 /datum/sprite_accessory/hair
-	icon = 'icons/mob/humans/human_hair.dmi'	  // default icon for all hairs
+	icon = 'icons/mob/humans/human_hair.dmi'   // default icon for all hairs
 
 /datum/sprite_accessory/hair/crew
 	name = "Crewcut"
@@ -12,7 +12,7 @@
 	gender = MALE
 
 /datum/sprite_accessory/hair/short
-	name = "Short Hair"	  // try to capatilize the names please~
+	name = "Short Hair"   // try to capatilize the names please~
 	icon_state = "hair_shorthair" // you do not need to define _s or _l sub-states, game automatically does this for you
 
 /datum/sprite_accessory/hair/cut
@@ -678,6 +678,11 @@
 /datum/sprite_accessory/hair/flair2
 	name = "Flaired Hair 2"
 	icon_state = "hair_flair2"
+	gender = FEMALE
+
+/datum/sprite_accessory/hair/scully2
+	name = "Scully 2"
+	icon_state = "hair_scully2"
 	gender = FEMALE
 
 /datum/sprite_accessory/hair/chelsea

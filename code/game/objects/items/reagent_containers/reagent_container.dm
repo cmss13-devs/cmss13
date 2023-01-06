@@ -13,6 +13,15 @@
 	var/volume = 30
 	var/transparent = FALSE //can we see what's in it?
 	var/reagent_desc_override = FALSE //does it have a special examining mechanic that should override the normal /reagent_containers examine proc?
+	actions_types = list(/datum/action/item_action/reagent_container/set_transfer_amount)
+
+/obj/item/reagent_container/Initialize()
+	if(!possible_transfer_amounts)
+		actions_types -= /datum/action/item_action/reagent_container/set_transfer_amount
+	. = ..()
+	if(!possible_transfer_amounts)
+		verbs -= /obj/item/reagent_container/verb/set_APTFT //which objects actually uses it?
+	create_reagents(volume)
 
 /obj/item/reagent_container/get_examine_text(mob/user)
 	. = ..()
@@ -91,3 +100,18 @@
 			. += "; [R.name]([R.volume]u)"
 	else
 		. = "No reagents"
+
+
+/datum/action/item_action/reagent_container/set_transfer_amount
+
+/datum/action/item_action/reagent_container/set_transfer_amount/New(var/mob/living/user, var/obj/item/holder)
+	..()
+	name = "Set Transfer Amount"
+	button.name = name
+	button.overlays.Cut()
+	var/image/IMG = image(holder_item.icon, button, holder_item.icon_state)
+	button.overlays += IMG
+
+/datum/action/item_action/reagent_container/set_transfer_amount/action_activate()
+	var/obj/item/reagent_container/cont = holder_item
+	cont.set_APTFT()

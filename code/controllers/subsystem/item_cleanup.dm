@@ -50,7 +50,7 @@ SUBSYSTEM_DEF(item_cleanup)
 
 /datum/controller/subsystem/item_cleanup/proc/delete_z_level(list/z_levels)
 	set background = 1
-	for(var/atom/o in GLOB.object_list)
+	for(var/obj/o in world)
 		if(QDELETED(o) || isnull(o.loc))
 			continue
 		if(o.loc.z in z_levels) //item is on the proper Z-level

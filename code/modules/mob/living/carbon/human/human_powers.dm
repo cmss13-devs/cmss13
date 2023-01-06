@@ -35,18 +35,18 @@
 
 	var/failed
 	if(prob(75))
-		T.KnockDown(rand(0.5,3))
+		T.apply_effect(rand(0.5,3), WEAKEN)
 	else
-		KnockDown(rand(2,4))
+		apply_effect(rand(2,4), WEAKEN)
 		failed = 1
 
 	playsound(loc, 'sound/weapons/pierce.ogg', 25, 1)
 	if(failed)
-		KnockDown(rand(2,4))
+		apply_effect(rand(2,4), WEAKEN)
 
 	for(var/mob/O in viewers(src, null))
 		if((O.client && !( O.blinded )))
-			O.show_message(SPAN_DANGER("<B>[src] [failed ? "tried to tackle" : "has tackled"] down [T]!</B>"), 1)
+			O.show_message(SPAN_DANGER("<B>[src] [failed ? "tried to tackle" : "has tackled"] down [T]!</B>"), SHOW_MESSAGE_VISIBLE)
 
 /mob/living/carbon/human/proc/leap()
 	set category = "Abilities"
@@ -86,7 +86,7 @@
 	throw_atom(target, 5, SPEED_VERY_FAST, src)
 	playsound(loc, 'sound/voice/shriek1.ogg', 25, 1)
 
-	addtimer(CALLBACK(src, .proc/finish_leap, T), 5)
+	addtimer(CALLBACK(src, PROC_REF(finish_leap), T), 5)
 
 /mob/living/carbon/human/proc/finish_leap(mob/living/T)
 	if(status_flags & LEAPING) status_flags &= ~LEAPING
@@ -95,7 +95,7 @@
 		to_chat(src, SPAN_DANGER("You miss!"))
 		return
 
-	T.KnockDown(5)
+	T.apply_effect(5, WEAKEN)
 
 	if(T == src || T.anchored)
 		return FALSE
@@ -238,7 +238,7 @@
 		A.update_button_icon()
 
 	// 1min cooldown on orders
-	addtimer(CALLBACK(src, .proc/make_aura_available), COMMAND_ORDER_COOLDOWN)
+	addtimer(CALLBACK(src, PROC_REF(make_aura_available)), COMMAND_ORDER_COOLDOWN)
 
 	visible_message(SPAN_BOLDNOTICE("[src] gives an order to [order]!"), SPAN_BOLDNOTICE("You give an order to [order]!"))
 
@@ -276,7 +276,7 @@
 	hud_set_order()
 
 	if(duration)
-		addtimer(CALLBACK(src, .proc/deactivate_order_buff, order), duration)
+		addtimer(CALLBACK(src, PROC_REF(deactivate_order_buff), order), duration)
 
 
 /mob/living/carbon/human/proc/deactivate_order_buff(var/order)
@@ -308,7 +308,7 @@
 	set category = "IC"
 
 	if(!resting)
-		KnockDown(1) //so that the mob immediately falls over
+		apply_effect(1, WEAKEN) //so that the mob immediately falls over
 
 	resting = !resting
 

@@ -13,7 +13,7 @@
 /obj/structure/machinery/door/airlock/multi_tile/glass
 	name = "Glass Airlock"
 	icon = 'icons/obj/structures/doors/Door2x1glass.dmi'
-	opacity = 0
+	opacity = FALSE
 	glass = 1
 	assembly_type = /obj/structure/airlock_assembly/multi_tile
 
@@ -21,33 +21,33 @@
 /obj/structure/machinery/door/airlock/multi_tile/security
 	name = "Security Airlock"
 	icon = 'icons/obj/structures/doors/Door2x1security.dmi'
-	opacity = 0
+	opacity = FALSE
 	glass = 1
 
 
 /obj/structure/machinery/door/airlock/multi_tile/command
 	name = "Command Airlock"
 	icon = 'icons/obj/structures/doors/Door2x1command.dmi'
-	opacity = 0
+	opacity = FALSE
 	glass = 1
 
 /obj/structure/machinery/door/airlock/multi_tile/medical
 	name = "Medical Airlock"
 	icon = 'icons/obj/structures/doors/Door2x1medbay.dmi'
-	opacity = 0
+	opacity = FALSE
 	glass = 1
 
 /obj/structure/machinery/door/airlock/multi_tile/engineering
 	name = "Engineering Airlock"
 	icon = 'icons/obj/structures/doors/Door2x1engine.dmi'
-	opacity = 0
+	opacity = FALSE
 	glass = 1
 
 
 /obj/structure/machinery/door/airlock/multi_tile/research
 	name = "Research Airlock"
 	icon = 'icons/obj/structures/doors/Door2x1research.dmi'
-	opacity = 0
+	opacity = FALSE
 	glass = 1
 
 /obj/structure/machinery/door/airlock/multi_tile/research/reinforced
@@ -68,7 +68,7 @@
 /obj/structure/machinery/door/airlock/multi_tile/secure2_glass
 	name = "Secure Airlock"
 	icon = 'icons/obj/structures/doors/Door2x1_secure2_glass.dmi'
-	opacity = 0
+	opacity = FALSE
 	glass = 1
 	openspeed = 31
 	req_access = null
@@ -77,7 +77,7 @@
 	name = "Shuttle Podlock"
 	icon = 'icons/obj/structures/doors/1x2blast_vert.dmi'
 	icon_state = "pdoor1"
-	opacity = 1
+	opacity = TRUE
 	openspeed = 12
 	req_access = null
 	not_weldable = 1
@@ -204,7 +204,7 @@
 //------Dropship Cargo Doors -----//
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear
-	opacity = 1
+	opacity = TRUE
 	width = 3
 	unslashable = TRUE
 	unacidable = TRUE
@@ -267,7 +267,7 @@
 		for(var/atom/movable/atom_movable in self_turf)
 			if(ismob(atom_movable) && !isobserver(atom_movable))
 				var/mob/mob = atom_movable
-				mob.KnockDown(5)
+				mob.apply_effect(5, WEAKEN)
 				to_chat(mob, SPAN_HIGHDANGER("\The [src] shoves you out!"))
 			else if(isobj(atom_movable))
 				var/obj/object = atom_movable
@@ -275,7 +275,7 @@
 					continue
 			else
 				continue
-			INVOKE_ASYNC(atom_movable, /atom/movable.proc/throw_atom, projected, 1, SPEED_FAST, null, FALSE)
+			INVOKE_ASYNC(atom_movable, TYPE_PROC_REF(/atom/movable, throw_atom), projected, 1, SPEED_FAST, null, FALSE)
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat/connect_to_shuttle(obj/docking_port/mobile/port, obj/docking_port/stationary/dock, idnum, override)
 	. = ..()
@@ -307,7 +307,7 @@
 		for(var/atom/movable/atom_movable in near_turf)
 			if(ismob(atom_movable) && !isobserver(atom_movable))
 				var/mob/mob = atom_movable
-				mob.Stun(10)
+				mob.apply_effect(10, STUN)
 				to_chat(mob, SPAN_HIGHDANGER("You get sucked into space!"))
 			else if(isobj(atom_movable))
 				var/obj/object = atom_movable
@@ -315,7 +315,7 @@
 					continue
 			else
 				continue
-			INVOKE_ASYNC(atom_movable, /atom/movable.proc/throw_atom, projected, 50, SPEED_FAST, null, TRUE)
+			INVOKE_ASYNC(atom_movable, TYPE_PROC_REF(/atom/movable, throw_atom), projected, 50, SPEED_FAST, null, TRUE)
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat/blastdoor/proc/bolt_explosion()
 	var/turf/turf = get_step(src, throw_dir|dir)
@@ -343,7 +343,7 @@
 
 /obj/structure/machinery/door/airlock/multi_tile/elevator/access
 	icon = 'icons/obj/structures/doors/4x1_elevator_access.dmi'
-	opacity = 0
+	opacity = FALSE
 	glass = 1
 
 /obj/structure/machinery/door/airlock/multi_tile/elevator/access/research
@@ -437,7 +437,7 @@
 	icon = 'icons/obj/structures/doors/prepdoor.dmi'
 	req_access = list(ACCESS_MARINE_PREP)
 	req_one_access = list(ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_CARGO, ACCESS_MARINE_ALPHA, ACCESS_MARINE_BRAVO, ACCESS_MARINE_CHARLIE, ACCESS_MARINE_DELTA)
-	opacity = 0
+	opacity = FALSE
 	glass = 1
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/marine/shared/alpha_bravo
@@ -448,7 +448,7 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/marine/shared/alpha_bravo/yellow
 	icon = 'icons/obj/structures/doors/2x1prepdoor_bravo.dmi'
 
-/obj/structure/machinery/door/airlock/multi_tile/almayer/marine/shared/charlie_delta/
+/obj/structure/machinery/door/airlock/multi_tile/almayer/marine/shared/charlie_delta
 	name = "\improper Charlie-Delta Squads Preparations"
 	icon = 'icons/obj/structures/doors/2x1prepdoor_charlie.dmi'
 	req_one_access = list(ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_CARGO, ACCESS_MARINE_CHARLIE, ACCESS_MARINE_DELTA)

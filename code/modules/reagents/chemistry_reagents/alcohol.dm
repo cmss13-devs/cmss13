@@ -35,7 +35,7 @@
 	M:nutrition += nutriment_factor
 	holder.remove_reagent(src.id, (alien ? FOOD_METABOLISM : ALCOHOL_METABOLISM)) // Catch-all for creatures without livers.
 
-	if(adj_drowsy)	M.drowsyness = max(0,M.drowsyness + adj_drowsy)
+	if(adj_drowsy) M.drowsyness = max(0,M.drowsyness + adj_drowsy)
 	if(adj_sleepy) M.sleeping = max(0,M.sleeping + adj_sleepy)
 
 	booze_data += boozepwr
@@ -308,9 +308,9 @@
 	color = "#664300" // rgb: 102, 67, 0
 	boozepwr = 2
 
-
-/////////////////////////////////////////////////////////////////cocktail entities//////////////////////////////////////////////
-
+//*****************************************************************************************************/
+//***************************************Cocktail Entities*********************************************/
+//*****************************************************************************************************/
 
 /datum/reagent/ethanol/goldschlager
 	name = "Goldschlager"
@@ -750,3 +750,10 @@
 		M.stuttering += 10
 	else if(booze_data >= 115 && prob(33))
 		M.confused = max(M.confused+15,15)
+
+/datum/reagent/ethanol/mojito
+	name = "Mojito"
+	id = "mojito"
+	description = "You can almost feel the old fresh winds of Cuba with this one."
+	color = "#C0FF00" // rgb: 192, 255, 0
+	boozepwr = 1

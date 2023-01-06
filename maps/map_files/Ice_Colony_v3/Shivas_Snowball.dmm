@@ -257,7 +257,7 @@
 /area/shiva/interior/caves/left_spiders)
 "aaQ" = (
 /obj/effect/spider/stickyweb,
-/obj/item/clothing/head/helmet/marine/marsoc,
+/obj/item/clothing/head/helmet/marine/sof,
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/caves/right_spiders)
 "aaR" = (
@@ -765,7 +765,7 @@
 /obj/structure/prop/invuln{
 	desc = "Its eyes follow you around through the ice.";
 	dir = 4;
-	icon = 'icons/mob/hostiles/queen.dmi';
+	icon = 'icons/mob/xenos/queen.dmi';
 	icon_state = "Normal Queen Knocked Down";
 	layer = 2.5;
 	name = "frozen creature";
@@ -1633,7 +1633,7 @@
 	},
 /area/shiva/interior/colony/medseceng)
 "agM" = (
-/obj/item/ammo_box/magazine/smg/nailgun,
+/obj/item/ammo_box/magazine/nailgun,
 /turf/open/auto_turf/snow/layer1,
 /area/shiva/exterior/cp_colony_grounds)
 "agR" = (
@@ -2685,7 +2685,7 @@
 /area/shiva/interior/warehouse)
 "amI" = (
 /obj/structure/surface/table,
-/obj/item/weapon/gun/shotgun/pump/cmb,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
 /obj/item/ammo_magazine/handful/shotgun/incendiary,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/interior/plastic,
@@ -2905,11 +2905,11 @@
 /area/shiva/interior/colony/medseceng)
 "anR" = (
 /obj/structure/surface/rack,
-/obj/item/weapon/gun/shotgun/pump/cmb{
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb{
 	pixel_x = 6;
 	pixel_y = -4
 	},
-/obj/item/weapon/gun/shotgun/pump/cmb,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
 /turf/open/floor/shiva{
 	dir = 8;
 	icon_state = "redfull"
@@ -2958,7 +2958,7 @@
 /area/shiva/interior/colony/n_admin)
 "anY" = (
 /obj/structure/surface/rack,
-/obj/item/ammo_magazine/shotgun/incendiary,
+/obj/item/ammo_magazine/shotgun/buckshot,
 /turf/open/floor/shiva{
 	dir = 8;
 	icon_state = "redfull"
@@ -2997,7 +2997,7 @@
 	},
 /area/shiva/interior/colony/medseceng)
 "aor" = (
-/obj/structure/machinery/sleeper,
+/obj/structure/machinery/medical_pod/sleeper,
 /turf/open/floor/shiva{
 	dir = 8;
 	icon_state = "wred"
@@ -6759,7 +6759,7 @@
 /area/shiva/exterior/valley)
 "aWb" = (
 /obj/structure/foamed_metal,
-/obj/item/weapon/gun/shotgun/pump/cmb,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
 /turf/open/floor/shiva{
 	dir = 1
 	},
@@ -8121,7 +8121,7 @@
 /turf/open/auto_turf/snow/layer1,
 /area/shiva/exterior/junkyard)
 "bUX" = (
-/obj/item/storage/belt/gun/m44/custom,
+/obj/item/storage/belt/gun/m44,
 /turf/open/floor/shiva{
 	dir = 10;
 	icon_state = "green"
@@ -8444,7 +8444,7 @@
 /turf/open/auto_turf/snow/layer0,
 /area/shiva/interior/caves/cp_camp)
 "cov" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited{
 	pixel_x = 5;
 	pixel_y = -4
 	},
@@ -8921,7 +8921,7 @@
 	},
 /area/shiva/exterior/cp_colony_grounds)
 "cQB" = (
-/obj/structure/machinery/bodyscanner,
+/obj/structure/machinery/medical_pod/bodyscanner,
 /turf/open/floor/shiva{
 	dir = 1;
 	icon_state = "wred"
@@ -10205,7 +10205,7 @@
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/junkyard)
 "etm" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited{
 	pixel_y = 28
 	},
 /turf/open/floor/shiva{
@@ -10325,6 +10325,9 @@
 /obj/item/reagent_container/food/snacks/bigbiteburger,
 /obj/item/reagent_container/food/snacks/bigbiteburger,
 /obj/item/stack/sheet/metal/medium_stack,
+/obj/item/reagent_container/food/condiment/coldsauce,
+/obj/item/reagent_container/food/condiment/coldsauce,
+/obj/item/reagent_container/food/condiment/coldsauce,
 /turf/open/floor/prison{
 	icon_state = "kitchen"
 	},
@@ -11211,7 +11214,7 @@
 /area/shiva/interior/caves/s_lz2)
 "fFd" = (
 /obj/structure/surface/table,
-/obj/item/weapon/gun/shotgun/pump/cmb,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/shiva{
 	icon_state = "bluefull"
@@ -11796,7 +11799,7 @@
 /turf/open/auto_turf/snow/layer0,
 /area/shiva/exterior/cp_colony_grounds)
 "gkL" = (
-/obj/structure/machinery/sleeper,
+/obj/structure/machinery/medical_pod/sleeper,
 /turf/open/floor/shiva{
 	dir = 9;
 	icon_state = "wred"
@@ -13667,8 +13670,8 @@
 	},
 /area/shiva/interior/colony/botany)
 "iji" = (
-/obj/effect/landmark/corpsespawner/pmc,
 /obj/effect/decal/cleanable/blood/gibs/core,
+/obj/effect/landmark/corpsespawner/wygoon,
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/colony/central)
 "ijq" = (
@@ -13901,7 +13904,7 @@
 	},
 /area/shiva/exterior/lz2_fortress)
 "iuM" = (
-/obj/item/weapon/gun/shotgun/pump/cmb,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
 /obj/effect/decal/cleanable/blood{
 	layer = 3
 	},
@@ -14886,7 +14889,7 @@
 /turf/open/floor/carpet,
 /area/shiva/interior/colony/central)
 "jwa" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited{
 	pixel_y = 28
 	},
 /obj/structure/largecrate/random/case/small,
@@ -15736,7 +15739,7 @@
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/interior/colony/medseceng)
 "ksu" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited{
 	pixel_x = -32
 	},
 /obj/structure/bed/chair,
@@ -16469,7 +16472,7 @@
 	},
 /area/shiva/interior/colony/research_hab)
 "kZK" = (
-/obj/item/weapon/gun/shotgun/pump/cmb,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
 /obj/item/ammo_magazine/handful/shotgun/buckshot{
 	pixel_x = 4;
 	pixel_y = -16
@@ -19253,7 +19256,7 @@
 	},
 /area/shiva/interior/colony/research_hab)
 "oah" = (
-/obj/structure/machinery/bodyscanner,
+/obj/structure/machinery/medical_pod/bodyscanner,
 /obj/structure/machinery/light/double,
 /turf/open/floor/shiva{
 	icon_state = "wred"

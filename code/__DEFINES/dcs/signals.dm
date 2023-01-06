@@ -32,9 +32,6 @@
 
 #define COMSIG_GLOB_MOB_LOGIN "!mob_login"
 
-///from /datum/nmcontext/proc/run_steps
-#define COMSIG_GLOB_NIGHTMARE_SETUP_DONE "!nightmare_setup_done"
-
 ///from /datum/controller/subsystem/ticker/PostSetup
 #define COMSIG_GLOB_POST_SETUP "!post_setup"
 
@@ -68,6 +65,14 @@
 #define COMSIG_PARENT_QDELETING "parent_qdeleting"
 /// generic topic handler (usr, href_list)
 #define COMSIG_TOPIC "handle_topic"
+/// from datum ui_act (usr, action)
+#define COMSIG_UI_ACT "COMSIG_UI_ACT"
+///from base of atom/attackby(): (/obj/item, /mob/living, params)
+#define COMSIG_PARENT_ATTACKBY "atom_attackby"
+///Return this in response if you don't want afterattack to be called
+	#define COMPONENT_NO_AFTERATTACK (1<<0)
+///from base of atom/examine(): (/mob, list/examine_text)
+#define COMSIG_PARENT_EXAMINE "atom_examine"
 
 /// fires on the target datum when an element is attached to it (/datum/element)
 #define COMSIG_ELEMENT_ATTACH "element_attach"
@@ -138,13 +143,16 @@
 
 /// For when a mob is devoured by a Xeno
 #define COMSIG_MOB_DEVOURED "mob_devoured"
-	#define COMPONENT_CANCEL_DEVOUR	(1<<0)
+	#define COMPONENT_CANCEL_DEVOUR (1<<0)
 // Reserved for tech trees
 #define COMSIG_MOB_ENTER_TREE "mob_enter_tree"
 	#define COMPONENT_CANCEL_TREE_ENTRY (1<<0)
 /// From base of /mob/proc/set_face_dir(): (newdir)
 #define COMSIG_MOB_SET_FACE_DIR "mob_set_face_dir"
 	#define COMPONENT_CANCEL_SET_FACE_DIR (1<<0)
+
+/// From /obj/effect/alien/weeds/Crossed(atom/movable/AM)
+#define COMSIG_MOB_WEEDS_CROSSED "mob_weeds_crossed"
 
 #define COMSIG_MOB_TAKE_DAMAGE "mob_take_damage"
 #define COMSIG_XENO_TAKE_DAMAGE "xeno_take_damage"
@@ -160,9 +168,13 @@
 #define COMSIG_CLIENT_RESET_VIEW "client_reset_view"
 ///called in /client/change_view()
 #define COMSIG_MOB_CHANGE_VIEW "mob_change_view"
-	#define COMPONENT_OVERRIDE_VIEW	(1<<0)
+	#define COMPONENT_OVERRIDE_VIEW (1<<0)
 
 #define COMSIG_MOB_POST_CLICK "mob_post_click"
+
+
+//Machine Guns (m56D, M2C)
+#define COMSIG_MOB_MG_EXIT "mob_mg_exit"
 
 // Return a nonzero value to cancel these actions
 #define COMSIG_BINOCULAR_ATTACK_SELF "binocular_attack_self"
@@ -179,7 +191,10 @@
 #define COMSIG_DBLCLICK_ALT "dblclick_alt"
 #define COMSIG_DBLCLICK_CTRL "dblclick_ctrl"
 
+///from base of /mob/Login(): ()
 #define COMSIG_MOB_LOGIN "mob_login"
+///from base of /mob/Logout(): ()
+#define COMSIG_MOB_LOGOUT "mob_logout"
 
 /// From /mob/living/rejuvenate
 #define COMSIG_LIVING_REJUVENATED "living_rejuvenated"
@@ -195,14 +210,19 @@
 #define COMSIG_LIVING_FLAMER_CROSSED "living_flamer_crossed"
 /// From /obj/flamer_fire/Initialize
 #define COMSIG_LIVING_FLAMER_FLAMED "living_flamer_flamed"
-	#define COMPONENT_NO_BURN		(1<<0)
-	#define COMPONENT_NO_IGNITE		(1<<1)
-	#define COMPONENT_XENO_FRENZY	(1<<2)
+	#define COMPONENT_NO_BURN (1<<0)
+	#define COMPONENT_NO_IGNITE (1<<1)
+	#define COMPONENT_XENO_FRENZY (1<<2)
 /// From /obj/item/proc/unzoom
 #define COMSIG_LIVING_ZOOM_OUT "living_zoom_out"
 
 #define COMSIG_LIVING_SPEAK "living_speak"
 	#define COMPONENT_OVERRIDE_SPEAK (1<<0)
+
+#define COMSIG_LIVING_APPLY_EFFECT "living_apply_effect"
+#define COMSIG_LIVING_ADJUST_EFFECT "living_adjust_effect"
+#define COMSIG_LIVING_SET_EFFECT "living_set_effect"
+	#define COMPONENT_CANCEL_EFFECT (1<<0)
 
 /// From /obj/item/device/defibrillator/attack
 #define COMSIG_HUMAN_REVIVED "human_revived"
@@ -232,11 +252,16 @@
 
 /// from /mob/living/carbon/Xenomorph/attack_alien()
 #define COMSIG_XENO_ALIEN_ATTACK "xeno_alien_attack"
+
 #define COMSIG_XENO_OVERWATCH_XENO "xeno_overwatch_xeno"
-#define COMSIG_XENO_STOP_OVERWATCH	"xeno_stop_overwatch"
+#define COMSIG_XENO_STOP_OVERWATCH "xeno_stop_overwatch"
 #define COMSIG_XENO_STOP_OVERWATCH_XENO "xeno_stop_overwatch_xeno"
+
 #define COMSIG_XENO_PRE_HEAL "xeno_pre_heal"
-#define COMPONENT_CANCEL_XENO_HEAL (1<<0)
+	#define COMPONENT_CANCEL_XENO_HEAL (1<<0)
+
+/// From ../xeno_action/activable/xeno_spit/use_ability
+#define COMSIG_XENO_POST_SPIT "xeno_spit"
 
 /// From /mob/living/carbon/Xenomorph/revive()
 #define COMSIG_XENO_REVIVED "xeno_revived"
@@ -319,8 +344,8 @@
 ///from /turf/closed/wall/proc/place_poster
 #define COMSIG_POSTER_PLACED "poster_placed"
 
-#define COMSIG_CLIENT_MOB_MOVE	"client_mob_move"
-	#define COMPONENT_OVERRIDE_MOVE	(1<<0)
+#define COMSIG_CLIENT_MOB_MOVE "client_mob_move"
+	#define COMPONENT_OVERRIDE_MOVE (1<<0)
 
 #define COMSIG_MOB_MOVE_OR_LOOK "mob_move_or_look"
 	#define COMPONENT_OVERRIDE_MOB_MOVE_OR_LOOK (1<<0)
@@ -346,7 +371,7 @@
 #define COMSIG_MOB_POST_UPDATE_CANMOVE "mob_can_move"
 
 #define COMSIG_GRENADE_PRE_PRIME "grenade_pre_prime"
-	#define COMPONENT_GRENADE_PRIME_CANCEL	(1<<0)
+	#define COMPONENT_GRENADE_PRIME_CANCEL (1<<0)
 
 #define COMSIG_OBJ_FLASHBANGED "flashbanged"
 
@@ -385,6 +410,10 @@
 #define COMSIG_BULLET_CHECK_MOB_SKIPPING "bullet_check_mob_skipping"
 	#define COMPONENT_SKIP_MOB (1<<0)
 
+/// Called on point blank for ammo effects
+#define COMSIG_AMMO_POINT_BLANK "ammo_point_blank"
+	#define COMPONENT_CANCEL_AMMO_POINT_BLANK (1<<0)
+
 /// From /obj/item/projectile/handle_mob(): (mob/living/target)
 #define COMSIG_BULLET_PRE_HANDLE_MOB "bullet_pre_handle_mob"
 /// From /obj/item/projectile/handle_mob(): (mob/living/target)
@@ -398,6 +427,7 @@
 /// From /obj/item/projectile/scan_a_turf(): (turf/target)
 #define COMSIG_BULLET_PRE_HANDLE_TURF "bullet_pre_handle_turf"
 	#define COMPONENT_BULLET_PASS_THROUGH (1<<0)
+#define COMSIG_BULLET_TERMINAL "bullet_terminal"
 
 /// For any additional things that should happen when a xeno's melee_attack_additional_effects_self() proc is called
 #define COMSIG_XENO_SLASH_ADDITIONAL_EFFECTS_SELF "xeno_slash_additional_effects_self"
@@ -437,6 +467,8 @@
 #define COMSIG_SHUTTLE_SETMODE "shuttle_setmode"
 /// shuttle crushing something
 #define COMSIG_MOVABLE_SHUTTLE_CRUSH "movable_shuttle_crush"
+/// shuttle door registration
+#define COMSIG_REGISTER_DOOR_TO_SHUTTLE "register_door_to_shuttle"
 
 ///from base of /atom/movable/proc/set_glide_size(): (target)
 #define COMSIG_MOVABLE_UPDATE_GLIDE_SIZE "movable_glide_size"
@@ -478,8 +510,16 @@
 // Sent to remove all sutures.
 #define COMSIG_LIMB_REMOVE_SUTURES "limb_clear_sutures"
 
+//from /datum/nmtask/mapload/proc/initialize_boundary_contents()
+#define COMSIG_NIGHTMARE_TAINTED_BOUNDS "nightmare_tainted_bounds"
+//from /datum/nmnode/
+#define COMSIG_NIGHTMARE_APPLYING_NODE "nightmare_applying_node"
+	#define COMPONENT_ABORT_NMNODE (1<<0)
 
 // Used in resin_constructions.dm
 // Checks whether the xeno can build a thick structure regardless of hive weeds
 #define COMSIG_XENO_THICK_RESIN_BYPASS "xeno_thick_resin_bypass"
 	#define COMPONENT_THICK_BYPASS (1<<0)
+
+// Used for smothering fires upon weather event start/stop
+#define COMSIG_GLOB_WEATHER_CHANGE "!weather_event_changed"

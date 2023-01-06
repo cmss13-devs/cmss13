@@ -14,7 +14,7 @@
 		var/turf/closed/wall/W = loc
 		W.acided_hole = src
 		holed_wall = W
-		holed_wall.opacity = 0
+		holed_wall.opacity = FALSE
 		setDir(W.acided_hole_dir)
 
 /obj/effect/acid_hole/Destroy()
@@ -40,9 +40,14 @@
 
 
 /obj/effect/acid_hole/attack_alien(mob/living/carbon/Xenomorph/user)
-	if(holed_wall && user.mob_size >= MOB_SIZE_BIG)
-		expand_hole(user)
-		return XENO_NO_DELAY_ACTION
+	if (!holed_wall)
+		qdel(src) //no wall?! then cease existence...
+		return
+
+	if(!use_wall_hole(user))
+		if(user.mob_size >= MOB_SIZE_BIG)
+			expand_hole(user)
+			return XENO_NO_DELAY_ACTION
 
 /obj/effect/acid_hole/proc/expand_hole(mob/living/carbon/Xenomorph/user)
 	if(user.action_busy || user.lying)
@@ -57,7 +62,7 @@
 /obj/effect/acid_hole/proc/use_wall_hole(mob/user)
 
 	if(user.mob_size >= MOB_SIZE_BIG || user.is_mob_incapacitated() || user.lying || user.buckled || user.anchored)
-		return
+		return FALSE
 
 	var/mob_dir = get_dir(user, src)
 	var/crawl_dir = dir & mob_dir
@@ -101,7 +106,12 @@
 				to_chat(user, SPAN_WARNING("You release what you're pulling to fit into the tunnel!"))
 			user.forceMove(T)
 
+			// If the wall is on fire, ignite the xeno.
+			var/turf/wall = get_turf(src)
+			var/obj/flamer_fire/fire = locate(/obj/flamer_fire) in wall
 
+			if (fire)
+				user.handle_flamer_fire_crossed(fire)
 
 
 //Throwing Shiet
@@ -128,7 +138,7 @@
 			if(Target.density)
 				return
 			user.visible_message(SPAN_WARNING("[user] throws [G] through [src]!"), \
-								 SPAN_WARNING("You throw [G] through [src]"))
+								SPAN_WARNING("You throw [G] through [src]"))
 			user.drop_held_item()
 			G.forceMove(Target)
 			G.setDir(pick(NORTH, SOUTH, EAST, WEST, NORTHEAST, NORTHWEST, SOUTHEAST, SOUTHWEST))
@@ -150,7 +160,7 @@
 			if(Target.density)
 				return
 			user.visible_message(SPAN_WARNING("[user] throws [F] through [src]!"), \
-								 SPAN_WARNING("You throw [F] through [src]"))
+								SPAN_WARNING("You throw [F] through [src]"))
 			user.drop_held_item()
 			F.forceMove(Target)
 			F.setDir(pick(NORTH, SOUTH, EAST, WEST, NORTHEAST, NORTHWEST, SOUTHEAST, SOUTHWEST))

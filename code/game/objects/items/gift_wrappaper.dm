@@ -1,7 +1,7 @@
 /* Gifts and wrapping paper
  * Contains:
- *		Gifts
- *		Wrapping Paper
+ * Gifts
+ * Wrapping Paper
  */
 
 /*
@@ -31,18 +31,18 @@
 		user.put_in_active_hand(gift)
 		gift.add_fingerprint(user)
 	else
-		to_chat(user, SPAN_NOTICE(" The gift was empty!"))
-	qdel(src)
+		to_chat(user, SPAN_NOTICE("The gift was empty!"))
+	deconstruct(TRUE)
 	return
 
 /obj/item/a_gift/ex_act()
-	qdel(src)
+	deconstruct(FALSE)
 	return
 
 /obj/effect/spresent/relaymove(mob/user)
 	if (user.stat)
 		return
-	to_chat(user, SPAN_NOTICE(" You cant move."))
+	to_chat(user, SPAN_NOTICE(" You can't move."))
 
 /obj/effect/spresent/attackby(obj/item/W as obj, mob/user as mob)
 	..()
@@ -59,7 +59,7 @@
 			M.client.eye = M.client.mob
 			M.client.perspective = MOB_PERSPECTIVE
 
-	qdel(src)
+	deconstruct()
 
 /obj/item/a_gift/attack_self(mob/M)
 	..()
@@ -103,7 +103,7 @@
 		/obj/item/reagent_container/food/snacks/grown/ambrosiavulgaris,
 		/obj/item/clothing/accessory/horrible)
 
-	if(!ispath(gift_type,/obj/item))	return
+	if(!ispath(gift_type,/obj/item)) return
 
 	var/obj/item/I = new gift_type(M)
 	M.temp_drop_inv_item(src)
@@ -150,8 +150,7 @@
 					W.add_fingerprint(user)
 					add_fingerprint(user)
 			if (src.amount <= 0)
-				new /obj/item/trash/c_tube( src.loc )
-				qdel(src)
+				deconstruct(TRUE)
 				return
 		else
 			to_chat(user, SPAN_NOTICE(" You need scissors!"))
@@ -159,6 +158,10 @@
 		to_chat(user, SPAN_NOTICE(" The object is FAR too large!"))
 	return
 
+/obj/item/wrapping_paper/deconstruct(disassembled = TRUE)
+	if(disassembled)
+		new /obj/item/trash/c_tube( src.loc )
+	return ..()
 
 /obj/item/wrapping_paper/get_examine_text(mob/user)
 	. = ..()

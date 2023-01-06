@@ -20,7 +20,7 @@
 		X.visible_message(SPAN_XENODANGER("[X] starts to gather its acid for a massive blast!"), SPAN_XENODANGER("You start to gather your acid for a massive blast!"))
 		activated_once = TRUE
 		stack()
-		addtimer(CALLBACK(src, .proc/timeout), max_stacks*stack_time + time_after_max_before_end)
+		addtimer(CALLBACK(src, PROC_REF(timeout)), max_stacks*stack_time + time_after_max_before_end)
 		apply_cooldown()
 		return ..()
 
@@ -38,7 +38,7 @@
 				if(istype(S, /obj/structure/window/framed))
 					var/obj/structure/window/framed/W = S
 					if(!W.unslashable)
-						W.shatter_window(TRUE)
+						W.deconstruct(disassembled = FALSE)
 
 				if(S.opacity)
 					should_stop = TRUE
@@ -70,7 +70,7 @@
 		X.speed_modifier += movespeed_per_stack
 		movespeed_nerf_applied += movespeed_per_stack
 		X.recalculate_speed()
-		addtimer(CALLBACK(src, .proc/stack), stack_time)
+		addtimer(CALLBACK(src, PROC_REF(stack)), stack_time)
 		return
 	else
 		to_chat(X, SPAN_XENOHIGHDANGER("You have charged your acid lance to maximum!"))
@@ -114,8 +114,8 @@
 	if (!X.check_state())
 		return
 
-	RegisterSignal(X, COMSIG_MOB_MOVE_OR_LOOK, .proc/handle_mob_move_or_look)
-	addtimer(CALLBACK(src, .proc/remove_speed_buff), buffs_duration)
+	RegisterSignal(X, COMSIG_MOB_MOVE_OR_LOOK, PROC_REF(handle_mob_move_or_look))
+	addtimer(CALLBACK(src, PROC_REF(remove_speed_buff)), buffs_duration)
 	X.speed_modifier -= speed_buff_amount
 	movespeed_buff_applied = TRUE
 	X.recalculate_speed()
@@ -294,7 +294,7 @@
 /datum/ammo/xeno/acid_shotgun
 	name = "acid ball"
 	ping = null
-	flags_ammo_behavior = AMMO_SKIPS_ALIENS|AMMO_STOPPED_BY_COVER|AMMO_IGNORE_ARMOR|AMMO_XENO_ACID
+	flags_ammo_behavior = AMMO_SKIPS_ALIENS|AMMO_STOPPED_BY_COVER|AMMO_IGNORE_ARMOR|AMMO_ACIDIC
 	bonus_projectiles_type = /datum/ammo/xeno/acid_shotgun/spread
 
 /datum/ammo/xeno/acid_shotgun/New()
@@ -322,4 +322,4 @@
 	var/target = ..()
 	if(iscarbon(target))
 		var/mob/living/carbon/carbon_target = target
-		carbon_target.reagents.add_reagent("molecularacid", 10)
+		carbon_target.reagents.add_reagent("molecularacid", 6)

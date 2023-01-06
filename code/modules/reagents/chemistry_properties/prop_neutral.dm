@@ -56,7 +56,7 @@
 
 	if(M.nutrition + (holder.nutriment_factor * level) >= NUTRITION_MAX)
 		M.nutrition = NUTRITION_MAX
-		holder.volume = 0
+		return
 	else
 		M.nutrition += holder.nutriment_factor * level
 
@@ -90,7 +90,7 @@
 		H.vomit()
 
 /datum/chem_property/neutral/ketogenic/process_critical(mob/living/M, var/potency = 1, delta_time)
-	M.KnockOut(20)
+	M.apply_effect(20, PARALYZE)
 
 /datum/chem_property/neutral/neuroinhibiting
 	name = PROPERTY_NEUROINHIBITING
@@ -148,8 +148,7 @@
 		var/mob/living/carbon/human/H = M
 		var/datum/internal_organ/liver/L = H.internal_organs_by_name["liver"]
 		if(L)
-			L.damage += POTENCY_MULTIPLIER_LOW * potency
-
+			L.take_damage(POTENCY_MULTIPLIER_LOW * potency, TRUE)
 /datum/chem_property/neutral/hallucinogenic
 	name = PROPERTY_HALLUCINOGENIC
 	code = "HLG"
@@ -173,7 +172,7 @@
 
 /datum/chem_property/neutral/hallucinogenic/process_critical(mob/living/M, var/potency = 1, delta_time)
 	M.apply_damage(0.5 * potency * delta_time, BRAIN)
-	M.KnockOut(20)
+	M.apply_effect(20, PARALYZE)
 
 /datum/chem_property/neutral/relaxing
 	name = PROPERTY_RELAXING
@@ -197,7 +196,7 @@
 /datum/chem_property/neutral/relaxing/process_critical(mob/living/M, var/potency = 1, delta_time)
 	//heart stops beating, lungs stop working
 	if(prob(7.5 * potency * delta_time))
-		M.KnockOut(potency)
+		M.apply_effect(potency, PARALYZE)
 	M.apply_damage(0.5 * potency * delta_time, OXY)
 	if(prob(2.5 * delta_time))
 		to_chat(M, SPAN_WARNING("You can hardly breathe!"))
@@ -226,7 +225,7 @@
 	M.apply_effect(POTENCY_MULTIPLIER_MEDIUM * potency,AGONY,0)
 
 /datum/chem_property/neutral/hyperthermic/process_critical(mob/living/M, var/potency = 1, delta_time)
-	M.KnockOut(20)
+	M.apply_effect(20, PARALYZE)
 
 /datum/chem_property/neutral/hypothermic
 	name = PROPERTY_HYPOTHERMIC
@@ -246,7 +245,7 @@
 	M.drowsyness  = max(M.drowsyness, 30)
 
 /datum/chem_property/neutral/hypothermic/process_critical(mob/living/M, var/potency = 1, delta_time)
-	M.KnockOut(20)
+	M.apply_effect(20, PARALYZE)
 
 /datum/chem_property/neutral/balding
 	name = PROPERTY_BALDING
@@ -454,7 +453,7 @@
 		M.emote("yawn")
 
 /datum/chem_property/neutral/sedative/process_overdose(mob/living/M, var/potency = 1, delta_time)
-	M.AdjustKnockedout(0.5 * potency * delta_time)
+	M.adjust_effect(0.5 * potency * delta_time, PARALYZE)
 
 /datum/chem_property/neutral/sedative/process_critical(mob/living/M, var/potency = 1)
 	M.apply_damage(POTENCY_MULTIPLIER_VHIGH * potency, OXY)
@@ -484,7 +483,7 @@
 	M.apply_damage(1.5 * potency * delta_time, BRAIN)
 
 /datum/chem_property/neutral/hyperthrottling/process_critical(mob/living/M, var/potency = 1, delta_time)
-	M.KnockOut(potency * delta_time)
+	M.apply_effect(potency * delta_time, PARALYZE)
 
 /datum/chem_property/neutral/viscous
 	name = PROPERTY_VISCOUS
@@ -521,7 +520,7 @@
 		M.recalculate_move_delay = TRUE
 
 /datum/chem_property/neutral/thermostabilizing/process_overdose(mob/living/M, var/potency = 1, delta_time)
-	M.KnockOut(20)
+	M.apply_effect(20, PARALYZE)
 
 /datum/chem_property/neutral/thermostabilizing/process_critical(mob/living/M, var/potency = 1, delta_time)
 	M.drowsyness  = max(M.drowsyness, 30)
@@ -538,12 +537,12 @@
 	M.reagents.remove_all_type(/datum/reagent/ethanol, potency, 0, 1)
 	M.stuttering = max(M.stuttering - POTENCY_MULTIPLIER_MEDIUM * potency, 0)
 	M.confused = max(M.confused - POTENCY_MULTIPLIER_MEDIUM * potency, 0)
-	M.eye_blurry = max(M.eye_blurry - POTENCY_MULTIPLIER_MEDIUM * potency, 0)
+	M.ReduceEyeBlur(POTENCY_MULTIPLIER_MEDIUM * potency)
 	M.drowsyness = max(M.drowsyness - POTENCY_MULTIPLIER_MEDIUM * potency, 0)
 	M.dizziness = max(M.dizziness - POTENCY_MULTIPLIER_MEDIUM * potency, 0)
 	M.jitteriness = max(M.jitteriness - POTENCY_MULTIPLIER_MEDIUM * potency, 0)
 	if(potency >= POTENCY_MAX_TIER_1)
-		M.eye_blind = 0
+		M.SetEyeBlind(0)
 		M.silent = 0
 
 /datum/chem_property/neutral/focusing/process_overdose(mob/living/M, var/potency = 1)

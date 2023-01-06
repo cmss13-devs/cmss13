@@ -12,17 +12,17 @@
 		handle_weather(delta_time)
 
 /mob/living/carbon/Destroy()
-	QDEL_NULL_LIST(internal_organs)
+	stomach_contents?.Cut()
 
 	. = ..()
 
+	QDEL_NULL_LIST(internal_organs)
 	QDEL_NULL(handcuffed)
 	QDEL_NULL(legcuffed)
 	QDEL_NULL(halitem)
 
 	hunter_data?.clean_data()
 	hunter_data = null
-	stomach_contents?.Cut()
 	halimage = null
 	halbody = null
 
@@ -41,7 +41,7 @@
 		if(prob(30))
 			for(var/mob/M in hearers(4, src))
 				if(M.client)
-					M.show_message(SPAN_DANGER("You hear something rumbling inside [src]'s stomach..."), 2)
+					M.show_message(SPAN_DANGER("You hear something rumbling inside [src]'s stomach..."), SHOW_MESSAGE_AUDIBLE)
 		var/obj/item/I = user.get_active_hand()
 		if(I && I.force)
 			var/d = rand(round(I.force / 4), I.force)
@@ -57,7 +57,7 @@
 				src.take_limb_damage(d)
 			for(var/mob/M as anything in viewers(user, null))
 				if(M.client)
-					M.show_message(text(SPAN_DANGER("<B>[user] attacks [src]'s stomach wall with the [I.name]!")), 2)
+					M.show_message(text(SPAN_DANGER("<B>[user] attacks [src]'s stomach wall with the [I.name]!")), SHOW_MESSAGE_AUDIBLE)
 			user.track_hit(initial(I.name))
 			playsound(user.loc, 'sound/effects/attackblob.ogg', 25, 1)
 
@@ -87,7 +87,7 @@
 
 	var/knock_value = min( round( severity*0.1 ,1) ,10)
 	if(knock_value > 0)
-		KnockOut(knock_value)
+		apply_effect(knock_value, PARALYZE)
 		explosion_throw(severity, direction)
 
 /mob/living/carbon/gib(var/cause = "gibbing")
@@ -193,11 +193,11 @@
 			SPAN_DANGER("You hear a heavy electrical crack.") \
 		)
 		if(isXeno(src) && mob_size >= MOB_SIZE_BIG)
-			Stun(1)//Sadly, something has to stop them from bumping them 10 times in a second
-			KnockDown(1)
+			apply_effect(1, STUN)//Sadly, something has to stop them from bumping them 10 times in a second
+			apply_effect(1, WEAKEN)
 		else
-			Stun(6)//This should work for now, more is really silly and makes you lay there forever
-			KnockDown(6)
+			apply_effect(6, STUN)//This should work for now, more is really silly and makes you lay there forever
+			apply_effect(6, WEAKEN)
 
 		count_niche_stat(STATISTICS_NICHE_SHOCK)
 
@@ -228,7 +228,7 @@
 		wielded_item.zoom(src)
 	..()
 	if(hud_used.l_hand_hud_object && hud_used.r_hand_hud_object)
-		if(hand)	//This being 1 means the left hand is in use
+		if(hand) //This being 1 means the left hand is in use
 			hud_used.l_hand_hud_object.icon_state = "hand_active"
 			hud_used.r_hand_hud_object.icon_state = "hand_inactive"
 		else
@@ -275,9 +275,9 @@
 			playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 5)
 		return
 
-	AdjustKnockedout(-3)
-	AdjustStunned(-3)
-	AdjustKnockeddown(-3)
+	adjust_effect(-3, PARALYZE)
+	adjust_effect(-3, STUN)
+	adjust_effect(-3, WEAKEN)
 
 	playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 5)
 
@@ -404,8 +404,8 @@
 	show_browser(user, dat, name, "mob[name]")
 
 //generates realistic-ish pulse output based on preset levels
-/mob/living/carbon/proc/get_pulse(var/method)	//method 0 is for hands, 1 is for machines, more accurate
-	var/temp = 0								//see setup.dm:694
+/mob/living/carbon/proc/get_pulse(var/method) //method 0 is for hands, 1 is for machines, more accurate
+	var/temp = 0 //see setup.dm:694
 	switch(src.pulse)
 		if(PULSE_NONE)
 			return "0"
@@ -423,7 +423,7 @@
 			return num2text(method ? temp : temp + rand(-10, 10))
 		if(PULSE_THREADY)
 			return method ? ">250" : "extremely weak and fast, patient's artery feels like a thread"
-//			output for machines^	^^^^^^^output for people^^^^^^^^^
+// output for machines^ ^^^^^^^output for people^^^^^^^^^
 
 /mob/living/carbon/verb/mob_sleep()
 	set name = "Sleep"
@@ -448,8 +448,8 @@
 	stop_pulling()
 	to_chat(src, SPAN_WARNING("You slipped on \the [slip_source_name? slip_source_name : "floor"]!"))
 	playsound(src.loc, 'sound/misc/slip.ogg', 25, 1)
-	Stun(stun_level)
-	KnockDown(weaken_level)
+	apply_effect(stun_level, STUN)
+	apply_effect(weaken_level, WEAKEN)
 	. = TRUE
 	if(slide_steps && lying)//lying check to make sure we downed the mob
 		var/slide_dir = dir

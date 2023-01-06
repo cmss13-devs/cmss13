@@ -1,14 +1,14 @@
 #define RANGE_TURFS(RADIUS, CENTER) \
-  block( \
-    locate(max(CENTER.x-(RADIUS),1),          max(CENTER.y-(RADIUS),1),          CENTER.z), \
-    locate(min(CENTER.x+(RADIUS),world.maxx), min(CENTER.y+(RADIUS),world.maxy), CENTER.z) \
-  )
+block( \
+	locate(max(CENTER.x-(RADIUS),1),   max(CENTER.y-(RADIUS),1),   CENTER.z), \
+	locate(min(CENTER.x+(RADIUS),world.maxx), min(CENTER.y+(RADIUS),world.maxy), CENTER.z) \
+)
 
 //Admin perms are in global.dm.
 
 #define NO_FLAGS 0 // To make it even more clear that something is a bitfield
 
-#define GLOBAL_PROC		"magic BS"
+#define GLOBAL_PROC "magic BS"
 
 //Game defining directives.
 #define MAIN_AI_SYSTEM "ARES v3.2"
@@ -37,6 +37,8 @@
 #define MAP_ICE_COLONY_V3 "Shivas Snowball" //Ice Rework, low pop enabled.
 #define MAP_HAUNTED_HOUSE_V2 "Haunted House V2"
 #define MAP_RUNTIME "USS Runtime"
+#define MAP_LV522_CHANCES_CLAIM "LV-522 Chance's Claim" // Highpop Only
+#define MAP_NEW_VARADERO "New Varadero"//ice colony underground but as its own map
 
 #define PLAYERCOUNT_LOWPOP_MAP_LIMIT 130 // number of players before we switch to lowpop maps only (LV, BR, Prison)
 
@@ -45,23 +47,23 @@
 //A set of constants used to determine which type of mute an admin wishes to apply:
 //Please read and understand the muting/automuting stuff before changing these. MUTE_IC_AUTO etc = (MUTE_IC << 1)
 //Therefore there needs to be a gap between the flags for the automute flags
-#define MUTE_IC			1
-#define MUTE_OOC		2
-#define MUTE_PRAY		4
-#define MUTE_ADMINHELP	8
-#define MUTE_DEADCHAT	16
-#define MUTE_ALL		31
+#define MUTE_IC 1
+#define MUTE_OOC 2
+#define MUTE_PRAY 4
+#define MUTE_ADMINHELP 8
+#define MUTE_DEADCHAT 16
+#define MUTE_ALL 31
 
 //Number of identical messages required to get the spam-prevention automute thing to trigger warnings and automutes
 #define SPAM_TRIGGER_WARNING 5
 #define SPAM_TRIGGER_AUTOMUTE 10
 
 //Some constants for DB_Ban
-#define BANTYPE_PERMA		1
-#define BANTYPE_TEMP		2
-#define BANTYPE_JOB_PERMA	3
-#define BANTYPE_JOB_TEMP	4
-#define BANTYPE_ANY_FULLBAN	5 //used to locate stuff to unban.
+#define BANTYPE_PERMA 1
+#define BANTYPE_TEMP 2
+#define BANTYPE_JOB_PERMA 3
+#define BANTYPE_JOB_TEMP 4
+#define BANTYPE_ANY_FULLBAN 5 //used to locate stuff to unban.
 
 #define SEE_INVISIBLE_MINIMUM 5
 
@@ -71,16 +73,18 @@
 
 #define SEE_INVISIBLE_LIVING 25
 
-#define SEE_INVISIBLE_LEVEL_ONE 35	//Used by some stuff in code. It's really poorly organized.
-#define INVISIBILITY_LEVEL_ONE 35	//Used by some stuff in code. It's really poorly organized.
+#define SEE_INVISIBLE_LEVEL_ONE 35 //Used by some stuff in code. It's really poorly organized.
+#define INVISIBILITY_LEVEL_ONE 35 //Used by some stuff in code. It's really poorly organized.
 
-#define SEE_INVISIBLE_LEVEL_TWO 45	//Used by some other stuff in code. It's really poorly organized.
-#define INVISIBILITY_LEVEL_TWO 45	//Used by some other stuff in code. It's really poorly organized.
+#define SEE_INVISIBLE_LEVEL_TWO 45 //Used by some other stuff in code. It's really poorly organized.
+#define INVISIBILITY_LEVEL_TWO 45 //Used by some other stuff in code. It's really poorly organized.
 
 #define INVISIBILITY_OBSERVER 60
 #define SEE_INVISIBLE_OBSERVER 60
 
 #define INVISIBILITY_MAXIMUM 100
+
+#define INVISIBILITY_ABSTRACT 101 //only used for abstract objects that aren't really "there" but can't be datums
 
 //Object specific defines
 #define CANDLE_LUM 3 //For how bright candles are
@@ -88,42 +92,44 @@
 
 //Preference toggles//
 //toggles_sound
-#define SOUND_ADMINHELP	1
-#define SOUND_MIDI		2
-#define SOUND_AMBIENCE	4
-#define SOUND_LOBBY		8
-#define SOUND_INTERNET	16
-#define SOUND_REBOOT	32
+#define SOUND_ADMINHELP (1<<0)
+#define SOUND_MIDI (1<<1)
+#define SOUND_AMBIENCE (1<<2)
+#define SOUND_LOBBY (1<<3)
+#define SOUND_INTERNET (1<<4)
+#define SOUND_REBOOT (1<<5)
+#define SOUND_ADMIN_MEME (1<<6)
+#define SOUND_ADMIN_ATMOSPHERIC (1<<7)
 
 //toggles_chat
-#define CHAT_OOC			1
-#define CHAT_DEAD			2
-#define CHAT_GHOSTEARS		4
-#define CHAT_GHOSTSIGHT		8
-#define CHAT_PRAYER			16
-#define CHAT_RADIO			32
-#define CHAT_ATTACKLOGS		64
-#define CHAT_DEBUGLOGS		128
-#define CHAT_LOOC			256
-#define CHAT_GHOSTRADIO 	512
-#define SHOW_TYPING 		1024
-#define CHAT_FFATTACKLOGS 	2048
-#define CHAT_GHOSTHIVEMIND	4096
-#define CHAT_NICHELOGS		8192
+#define CHAT_OOC (1<<0)
+#define CHAT_DEAD (1<<1)
+#define CHAT_GHOSTEARS (1<<2)
+#define CHAT_GHOSTSIGHT (1<<3)
+#define CHAT_PRAYER (1<<4)
+#define CHAT_RADIO (1<<5)
+#define CHAT_ATTACKLOGS (1<<6)
+#define CHAT_DEBUGLOGS (1<<7)
+#define CHAT_LOOC (1<<8)
+#define CHAT_GHOSTRADIO (1<<9)
+#define SHOW_TYPING (1<<10)
+#define CHAT_FFATTACKLOGS (1<<11)
+#define CHAT_GHOSTHIVEMIND (1<<12)
+#define CHAT_NICHELOGS (1<<13)
 
 //toggles_ghost
 #define GHOST_HEALTH_SCAN  (1<<0)
 
 //toggles_flashing
-#define FLASH_ROUNDSTART		(1<<0)
-#define FLASH_ROUNDEND			(1<<1)
-#define FLASH_CORPSEREVIVE		(1<<2)
-#define FLASH_ADMINPM			(1<<3)
-#define FLASH_UNNEST			(1<<4)
-#define FLASH_POOLSPAWN			(1<<5)
+#define FLASH_ROUNDSTART (1<<0)
+#define FLASH_ROUNDEND (1<<1)
+#define FLASH_CORPSEREVIVE (1<<2)
+#define FLASH_ADMINPM (1<<3)
+#define FLASH_UNNEST (1<<4)
+#define FLASH_POOLSPAWN (1<<5)
 
 //toggles_langchat
-#define LANGCHAT_SEE_EMOTES		(1<<0)
+#define LANGCHAT_SEE_EMOTES (1<<0)
 
 //toggles_ert
 #define PLAY_LEADER (1<<0)
@@ -134,6 +140,10 @@
 #define PLAY_SYNTH (1<<5)
 #define PLAY_MISC (1<<6)
 
+//toggles_admin
+/// Splits admin tabs in Statpanel
+#define SPLIT_ADMIN_TABS (1<<0)
+
 //=================================================
 
 #define TOGGLES_CHAT_DEFAULT (CHAT_OOC|CHAT_DEAD|CHAT_GHOSTEARS|CHAT_GHOSTSIGHT|CHAT_PRAYER|CHAT_RADIO|CHAT_ATTACKLOGS|CHAT_LOOC|CHAT_GHOSTHIVEMIND)
@@ -142,12 +152,13 @@
 
 #define TOGGLES_LANGCHAT_DEFAULT (LANGCHAT_SEE_EMOTES)
 
-#define TOGGLES_SOUND_DEFAULT (SOUND_ADMINHELP|SOUND_MIDI|SOUND_AMBIENCE|SOUND_LOBBY|SOUND_INTERNET)
+#define TOGGLES_SOUND_DEFAULT (SOUND_ADMINHELP|SOUND_MIDI|SOUND_AMBIENCE|SOUND_LOBBY|SOUND_INTERNET|SOUND_ADMIN_MEME|SOUND_ADMIN_ATMOSPHERIC)
 
 #define TOGGLES_FLASHING_DEFAULT (FLASH_ROUNDSTART|FLASH_ROUNDEND|FLASH_CORPSEREVIVE|FLASH_ADMINPM|FLASH_UNNEST)
 
 #define TOGGLES_ERT_DEFAULT (PLAY_LEADER|PLAY_MEDIC|PLAY_ENGINEER|PLAY_HEAVY|PLAY_SMARTGUNNER|PLAY_SYNTH|PLAY_MISC)
 
+#define TOGGLES_ADMIN_DEFAULT (NONE)
 
 // Game Intents
 #define INTENT_HELP 1
@@ -163,49 +174,46 @@
 // and the time before it leaves again
 // note that this is multiplied by 10 in the shuttle controller. Hence, this is not defined in deciseconds but in real seconds
 
-#define DOCK_ATTEMPT_TIMEOUT 			20 SECONDS	//how long in ticks we wait before assuming the docking controller is broken or blown up.
-#define DROPSHIP_WARMUP_TIME			10 SECONDS
-#define DROPSHIP_DROP_MSG_DELAY			30 SECONDS
-#define DROPSHIP_TRANSIT_DURATION		100 SECONDS	// 100 seconds
-#define DROPSHIP_CORSAT_DURATION		30 SECONDS  // 30 seconds
-#define ELEVATOR_TRANSIT_DURATION		5 SECONDS	// 5 seconds
-#define TRANSIT_POD_TRANSIT_DURATION	30 SECONDS 	// 30 seconds
-#define DROPSHIP_CRASH_TRANSIT_DURATION	3 MINUTES	// 180 seconds. 3 minutes
-#define ERT_SHUTTLE_TRANSIT_DURATION    30 SECONDS	// what are these comments for
+#define DOCK_ATTEMPT_TIMEOUT 20 SECONDS //how long in ticks we wait before assuming the docking controller is broken or blown up.
+#define DROPSHIP_WARMUP_TIME 10 SECONDS
+#define DROPSHIP_DROP_MSG_DELAY 30 SECONDS
+#define DROPSHIP_TRANSIT_DURATION 100 SECONDS // 100 seconds
+#define DROPSHIP_CORSAT_DURATION 30 SECONDS  // 30 seconds
+#define ELEVATOR_TRANSIT_DURATION 5 SECONDS // 5 seconds
+#define TRANSIT_POD_TRANSIT_DURATION 30 SECONDS // 30 seconds
+#define DROPSHIP_CRASH_TRANSIT_DURATION 3 MINUTES // 180 seconds. 3 minutes
+#define ERT_SHUTTLE_TRANSIT_DURATION 30 SECONDS // what are these comments for
 
 #define SHUTTLE_RECHARGE  2 MINUTES // 2 minutes
 #define ELEVATOR_RECHARGE 15 SECONDS  // 15 seconds
 
 //Shuttle moving status
-//#define SHUTTLE_IDLE		0
-#define SHUTTLE_WARMUP		1
-#define SHUTTLE_INTRANSIT	2
-#define SHUTTLE_CRASHED		3
+//#define SHUTTLE_IDLE 0
+#define SHUTTLE_WARMUP 1
+#define SHUTTLE_INTRANSIT 2
+#define SHUTTLE_CRASHED 3
 
 //Ferry shuttle processing status
-#define IDLE_STATE		0
-#define WAIT_LAUNCH		1
-#define FORCE_LAUNCH	2
-#define WAIT_ARRIVE		3
-#define WAIT_FINISH		4
-#define FORCE_CRASH		5
+#define IDLE_STATE 0
+#define WAIT_LAUNCH 1
+#define FORCE_LAUNCH 2
+#define WAIT_ARRIVE 3
+#define WAIT_FINISH 4
+#define FORCE_CRASH 5
 
 //Security levels
-#define SEC_LEVEL_GREEN	0
-#define SEC_LEVEL_BLUE	1
-#define SEC_LEVEL_RED	2
-#define SEC_LEVEL_DELTA	3
+#define SEC_LEVEL_GREEN 0
+#define SEC_LEVEL_BLUE 1
+#define SEC_LEVEL_RED 2
+#define SEC_LEVEL_DELTA 3
 
 //Alarm levels.
-#define ALARM_WARNING_FIRE 	(1<<0)
-#define ALARM_WARNING_ATMOS	(1<<1)
-#define ALARM_WARNING_EVAC	(1<<2)
-#define ALARM_WARNING_READY	(1<<3)
-#define ALARM_WARNING_DOWN	(1<<4)
-#define ALARM_LOCKDOWN		(1<<5)
-
-//some arbitrary defines to be used by self-pruning global lists. (see master_controller)
-#define PROCESS_KILL 26	//Used to trigger removal from a processing list
+#define ALARM_WARNING_FIRE (1<<0)
+#define ALARM_WARNING_ATMOS (1<<1)
+#define ALARM_WARNING_EVAC (1<<2)
+#define ALARM_WARNING_READY (1<<3)
+#define ALARM_WARNING_DOWN (1<<4)
+#define ALARM_LOCKDOWN (1<<5)
 
 //=================================================
 #define HOSTILE_STANCE_IDLE 1
@@ -220,7 +228,7 @@
 //=================================================
 //Game mode related defines.
 
-#define TRANSITIONEDGE	3 //Distance from edge to move to another z-level
+#define TRANSITIONEDGE 3 //Distance from edge to move to another z-level
 
 //Flags for zone sleeping
 #define GET_RANDOM_FREQ rand(32000, 55000) //Frequency stuff only works with 45kbps oggs.
@@ -289,10 +297,10 @@
 #define BARRICADE_DMG_MODERATE 2
 #define BARRICADE_DMG_HEAVY 3
 
-#define BARRICADE_BSTATE_FORTIFIED 	3 // Used by handrails to indicate reinforcing
-#define BARRICADE_BSTATE_SECURED 	2 // fresh barricade
-#define BARRICADE_BSTATE_UNSECURED 	1 // intermediate state before cade is movable (no apparent effect on health)
-#define BARRICADE_BSTATE_MOVABLE 	0 // ready to be deconstructed and can be moved
+#define BARRICADE_BSTATE_FORTIFIED 3 // Used by handrails to indicate reinforcing
+#define BARRICADE_BSTATE_SECURED 2 // fresh barricade
+#define BARRICADE_BSTATE_UNSECURED 1 // intermediate state before cade is movable (no apparent effect on health)
+#define BARRICADE_BSTATE_MOVABLE 0 // ready to be deconstructed and can be moved
 
 // Defines for sandbag build stages
 #define BARRICADE_SANDBAG_1 1
@@ -302,11 +310,11 @@
 #define BARRICADE_SANDBAG_5 5
 
 // Defines for sandbag tresholds
-#define BARRICADE_SANDBAG_TRESHOLD_1	75
-#define BARRICADE_SANDBAG_TRESHOLD_2	150
-#define BARRICADE_SANDBAG_TRESHOLD_3	225
-#define BARRICADE_SANDBAG_TRESHOLD_4	300
-#define BARRICADE_SANDBAG_TRESHOLD_5	450
+#define BARRICADE_SANDBAG_TRESHOLD_1 75
+#define BARRICADE_SANDBAG_TRESHOLD_2 150
+#define BARRICADE_SANDBAG_TRESHOLD_3 225
+#define BARRICADE_SANDBAG_TRESHOLD_4 300
+#define BARRICADE_SANDBAG_TRESHOLD_5 450
 
 // Defines for wall types
 #define WALL_METAL "metal"
@@ -378,7 +386,7 @@
 #define FIRE_MISSION_STATE_COOLDOWN 16
 
 //Defines for the ticker
-#define GAME_STATE_COMPILE_FINISHED	5
+#define GAME_STATE_COMPILE_FINISHED 5
 
 // Misc client defines
 #define MIN_FPS 0
@@ -390,13 +398,20 @@
 #define SHUTTLE_GROUND   3
 
 // Misc game defines
-#define EXTINGUISHER_WATER_USE_AMT	5 // Amount of water consumed by extinguisher per use //why is this a define let alone a GLOBAL define oh my good lord
+#define EXTINGUISHER_WATER_USE_AMT 5 // Amount of water consumed by extinguisher per use //why is this a define let alone a GLOBAL define oh my good lord
 
 // Chat delay amounts
-#define CHAT_SAY_DELAY      2
+#define CHAT_SAY_DELAY   2
 #define CHAT_SAY_DELAY_SPAM 10
-#define CHAT_OOC_DELAY      5
+#define CHAT_OOC_DELAY   5
 #define CHAT_OOC_DELAY_SPAM 10
+
+/// Max characters per minute allowed to speak
+#define CHAT_CPM_ALLOWED  1500
+/// Minimum character length counted for a single message
+#define CHAT_CPM_MINIMUM  50
+/// Buffer period over which speaking budget is considered
+#define CHAT_CPM_PERIOD   5 MINUTES
 
 // Decorator Priorities
 #define DECORATOR_USUAL 0
@@ -471,8 +486,8 @@
 	else
 		var/dx = abs(A.x - B.x)
 		var/dy = abs(A.y - B.y)
-		if(dx>=dy)	dist = (0.934*dx) + (0.427*dy)
-		else		dist = (0.427*dx) + (0.934*dy)
+		if(dx>=dy) dist = (0.934*dx) + (0.427*dy)
+		else dist = (0.427*dx) + (0.934*dy)
 
 	return dist
 

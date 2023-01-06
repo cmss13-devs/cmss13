@@ -5,10 +5,7 @@
     "map_item_type": "/obj/item/map/whiskey_outpost_map",
     "perf_mode": 31,
     "disable_ship_map": true,
-    "nightmare": {
-        "scenario": "maps/Nightmare/maps/Whiskey_Outpost_v2/scenario.json",
-        "mapgen": "maps/Nightmare/maps/Whiskey_Outpost_v2/mapgen.json"
-    },
+    "nightmare_path": "maps/Nightmare/maps/Whiskey_Outpost_v2/",
     "gamemodes": [
         "Whiskey Outpost"
     ]

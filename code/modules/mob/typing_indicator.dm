@@ -1,8 +1,8 @@
-#define TYPING_INDICATOR_LIFETIME 30 * 10	//grace period after which typing indicator disappears regardless of text in chatbar
+#define TYPING_INDICATOR_LIFETIME 30 * 10 //grace period after which typing indicator disappears regardless of text in chatbar
 
-mob/var/hud_typing = 0 //set when typing in an input window instead of chatline
-mob/var/last_typed
-mob/var/last_typed_time
+/mob/var/hud_typing = 0 //set when typing in an input window instead of chatline
+/mob/var/last_typed
+/mob/var/last_typed_time
 
 var/global/image/typing_indicator
 var/global/list/image/typed_typing_indicators
@@ -26,7 +26,8 @@ var/global/list/image/typed_typing_indicators
 			overlays -= indicator
 		else
 			if(state)
-				if(stat == CONSCIOUS) overlays += indicator
+				if(stat == CONSCIOUS && alpha == 255)
+					overlays += indicator
 			else
 				overlays -= indicator
 			return state
@@ -65,7 +66,7 @@ var/global/list/image/typed_typing_indicators
 	if(hud_typing == -1)
 		return
 	set_typing_indicator(TRUE)
-	hud_typing = addtimer(CALLBACK(src, .proc/timed_typing_clear), 5 SECONDS, TIMER_OVERRIDE|TIMER_UNIQUE|TIMER_STOPPABLE)
+	hud_typing = addtimer(CALLBACK(src, PROC_REF(timed_typing_clear)), 5 SECONDS, TIMER_OVERRIDE|TIMER_UNIQUE|TIMER_STOPPABLE)
 
 /// Clears timed typing indicators
 /mob/proc/timed_typing_clear()
@@ -74,26 +75,6 @@ var/global/list/image/typed_typing_indicators
 		return
 	hud_typing = NONE
 	set_typing_indicator(FALSE)
-
-/mob/proc/handle_typing_indicator()
-	if(client)
-		if(!(client.prefs.toggles_chat & SHOW_TYPING) && !hud_typing)
-			var/temp = winget(client, "input", "text")
-
-			if (temp != last_typed)
-				last_typed = temp
-				last_typed_time = world.time
-
-			if (world.time > last_typed_time + TYPING_INDICATOR_LIFETIME)
-				set_typing_indicator(0)
-				return
-			if(length(temp) > 5 && findtext(temp, "Say \"", 1, 7))
-				set_typing_indicator(1)
-			else if(length(temp) > 3 && findtext(temp, "Me ", 1, 5))
-				set_typing_indicator(1)
-
-			else
-				set_typing_indicator(0)
 
 /client/verb/typing_indicator()
 	set name = "Show/Hide Typing Indicator"

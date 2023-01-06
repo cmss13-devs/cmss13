@@ -159,7 +159,7 @@
 	if (isnull(dresscode))
 		return
 
-	if(alert("Are you sure you want to change the equipment of ALL humans in the world to [dresscode]?",, "Yes", "No") == "No") return
+	if(alert("Are you sure you want to change the equipment of ALL humans in the world to [dresscode]?",, "Yes", "No") != "Yes") return
 
 	for(var/mob/living/carbon/human/M in GLOB.human_mob_list)
 		src.cmd_admin_dress_human(M, dresscode, 1)

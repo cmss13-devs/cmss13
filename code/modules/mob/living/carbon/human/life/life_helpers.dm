@@ -224,7 +224,7 @@
 
 /mob/living/carbon/human/handle_stunned()
 	if(stunned)
-		AdjustStunned(-species.stun_reduction)
+		adjust_effect(-species.stun_reduction, STUN, EFFECT_FLAG_LIFE)
 		speech_problem_flag = 1
 	return stunned
 
@@ -233,7 +233,7 @@
 		var/skill_resistance = skills ? (skills.get_skill_level(SKILL_ENDURANCE)-1)*0.1 : 0
 
 		var/final_reduction = skill_resistance + 1
-		AdjustDazed(-final_reduction)
+		adjust_effect(-final_reduction, DAZE, EFFECT_FLAG_LIFE)
 	if(dazed)
 		speech_problem_flag = 1
 	return dazed
@@ -244,7 +244,7 @@
 		var/skill_resistance = skills ? (skills.get_skill_level(SKILL_ENDURANCE)-1)*0.1 : 0
 
 		var/final_reduction = species_resistance + skill_resistance
-		knocked_down = max(knocked_down - final_reduction, 0)
+		adjust_effect(-final_reduction, WEAKEN, EFFECT_FLAG_LIFE)
 		knocked_down_callback_check()
 	return knocked_down
 
@@ -254,7 +254,7 @@
 		var/skill_resistance = skills ? (skills.get_skill_level(SKILL_ENDURANCE)-1)*0.1 : 0
 
 		var/final_reduction = species_resistance + skill_resistance
-		knocked_out = max(knocked_out - final_reduction, 0)
+		adjust_effect(-final_reduction, PARALYZE, EFFECT_FLAG_LIFE)
 		knocked_out_callback_check()
 	return knocked_out
 
@@ -263,7 +263,7 @@
 		speech_problem_flag = 1
 	return stuttering
 
-#define HUMAN_TIMER_TO_EFFECT_CONVERSION (1/20) //once per 2 seconds, with effect equal to endurance, which is used later
+#define HUMAN_TIMER_TO_EFFECT_CONVERSION (0.05) //(1/20) //once per 2 seconds, with effect equal to endurance, which is used later
 
 // This is here because sometimes our stun comes too early and tick is about to start, so we need to compensate
 // this is the best place to do it, tho name might be a bit misleading I guess

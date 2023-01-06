@@ -3,10 +3,10 @@ var/savefile/Banlist
 
 
 /proc/CheckBan(var/ckey, var/id, var/address)
-	if(!Banlist)		// if Banlist cannot be located for some reason
-		LoadBans()		// try to load the bans
-		if(!Banlist)	// uh oh, can't find bans!
-			return 0	// ABORT ABORT ABORT
+	if(!Banlist) // if Banlist cannot be located for some reason
+		LoadBans() // try to load the bans
+		if(!Banlist) // uh oh, can't find bans!
+			return 0 // ABORT ABORT ABORT
 
 	. = list()
 	var/appeal
@@ -22,9 +22,9 @@ var/savefile/Banlist
 			else
 				.["desc"] = "\nReason: [Banlist["reason"]]\nExpires: [GetExp(Banlist["minutes"])]\nBy: [Banlist["bannedby"]][appeal]"
 		else
-			Banlist.cd	= "/base/[ckey][id]"
-			.["desc"]	= "\nReason: [Banlist["reason"]]\nExpires: <B>PERMENANT</B>\nBy: [Banlist["bannedby"]][appeal]"
-		.["reason"]	= "ckey/id"
+			Banlist.cd = "/base/[ckey][id]"
+			.["desc"] = "\nReason: [Banlist["reason"]]\nExpires: <B>PERMENANT</B>\nBy: [Banlist["bannedby"]][appeal]"
+		.["reason"] = "ckey/id"
 		return .
 	else
 		for (var/A in Banlist.dir)
@@ -93,10 +93,10 @@ var/savefile/Banlist
 
 
 /proc/AddBan(ckey, computerid, reason, bannedby, temp, minutes, address)
-	if(!Banlist)		// if Banlist cannot be located for some reason
-		LoadBans()		// try to load the bans
-		if(!Banlist)	// uh oh, can't find bans!
-			return 0	// ABORT ABORT ABORT
+	if(!Banlist) // if Banlist cannot be located for some reason
+		LoadBans() // try to load the bans
+		if(!Banlist) // uh oh, can't find bans!
+			return 0 // ABORT ABORT ABORT
 
 	var/bantimestamp
 
@@ -121,10 +121,10 @@ var/savefile/Banlist
 	return 1
 
 /proc/RemoveBan(foldername)
-	if(!Banlist)		// if Banlist cannot be located for some reason
-		LoadBans()		// try to load the bans
-		if(!Banlist)	// uh oh, can't find bans!
-			return 0	// ABORT ABORT ABORT
+	if(!Banlist) // if Banlist cannot be located for some reason
+		LoadBans() // try to load the bans
+		if(!Banlist) // uh oh, can't find bans!
+			return 0 // ABORT ABORT ABORT
 
 	var/key
 	var/id
@@ -231,7 +231,7 @@ var/savefile/Banlist
 	if(!ismob(M)) return
 
 	if(M.client && M.client.admin_holder && (M.client.admin_holder.rights & R_MOD))
-		return	//mods+ cannot be banned. Even if they could, the ban doesn't affect them anyway
+		return //mods+ cannot be banned. Even if they could, the ban doesn't affect them anyway
 
 	if(!M.ckey)
 		to_chat(usr, SPAN_DANGER("<B>Warning: Mob ckey for [M.name] not found.</b>"))

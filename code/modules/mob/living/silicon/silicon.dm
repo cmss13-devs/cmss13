@@ -3,7 +3,7 @@
 	voice_name = "synthesized voice"
 	var/syndicate = 0
 	immune_to_ssd = 1
-	var/list/speech_synthesizer_langs = list()	//which languages can be vocalized by the speech synthesizer
+	var/list/speech_synthesizer_langs = list() //which languages can be vocalized by the speech synthesizer
 
 	//Used in say.dm.
 	var/speak_statement = "states"
@@ -39,10 +39,10 @@
 	switch(severity)
 		if(1)
 			src.take_limb_damage(20)
-			Stun(rand(5,10))
+			apply_effect(rand(5,10), STUN)
 		if(2)
 			src.take_limb_damage(10)
-			Stun(rand(1,5))
+			apply_effect(rand(1,5), STUN)
 	flash_eyes(1, TRUE, type = /atom/movable/screen/fullscreen/flash/noise)
 
 	to_chat(src, SPAN_DANGER("<B>*BZZZT*</B>"))
@@ -50,7 +50,7 @@
 	..()
 
 /mob/living/silicon/stun_effect_act(var/stun_amount, var/agony_amount)
-	return	//immune
+	return //immune
 
 /mob/living/silicon/proc/damage_mob(var/brute = 0, var/fire = 0, var/tox = 0)
 	return
@@ -86,7 +86,7 @@
 	if(EvacuationAuthority)
 		var/eta_status = EvacuationAuthority.get_status_panel_eta()
 		if(eta_status)
-			stat(null, eta_status)
+			stat(null, "Evacuation: [eta_status]")
 
 
 // this function displays the stations manifest in a separate window
@@ -108,7 +108,7 @@
 //Silicon mob language procs
 
 /mob/living/silicon/can_speak(datum/language/speaking)
-	return universal_speak || (speaking in src.speech_synthesizer_langs)	//need speech synthesizer support to vocalize a language
+	return universal_speak || (speaking in src.speech_synthesizer_langs) //need speech synthesizer support to vocalize a language
 
 /mob/living/silicon/add_language(var/language, var/can_speak=1)
 	if (..(language) && can_speak)
@@ -181,8 +181,8 @@
 
 	flavor_text =  strip_html(input(usr, "Please enter your new flavour text.", "Flavour text", null)  as text)
 
-/mob/living/silicon/binarycheck()
-	return 1
+/mob/living/silicon/hear_apollo()
+	return TRUE
 
 /mob/living/silicon/rejuvenate()
 	..()

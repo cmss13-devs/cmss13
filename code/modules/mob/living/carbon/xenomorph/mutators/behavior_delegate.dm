@@ -9,18 +9,18 @@
 // One of these is instanced onto every xeno and is also used to track all additional state needed by the strain itself.
 //
 // A brief flowchart
-//	  xeno New() -OR- strain applicator
-//				|
-//			 constructs
-//			   \/
-//		 behavior_delegate
-//		   attack procs  <- called by attacking code
-//		   other stuff   <- called in xeno Life, etc
-//		   constant variables <- used as balancing values for strains, etc
-//		   state variables	<- used to store all strain-unique state associated with THIS xeno.
+//   xeno New() -OR- strain applicator
+// |
+//  constructs
+//    \/
+//  behavior_delegate
+//    attack procs  <- called by attacking code
+//    other stuff   <- called in xeno Life, etc
+//    constant variables <- used as balancing values for strains, etc
+//    state variables <- used to store all strain-unique state associated with THIS xeno.
 //
 //
-///////////////////////////////////
+//
 /datum/behavior_delegate
 
 	/// Userfriendly name of the mutator

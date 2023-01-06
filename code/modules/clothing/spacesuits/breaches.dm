@@ -3,21 +3,21 @@
 //They can be healed with plastic or metal sheeting.
 
 /datum/breach
-	var/class = 0                           // Size. Lower is smaller.
-	var/descriptor                          // 'gaping hole' etc.
-	var/damtype = BURN                      // Punctured or melted
+	var/class = 0    // Size. Lower is smaller.
+	var/descriptor   // 'gaping hole' etc.
+	var/damtype = BURN   // Punctured or melted
 	var/obj/item/clothing/suit/space/holder // Suit containing the list of breaches holding this instance.
 
 /obj/item/clothing/suit/space
 
-	var/can_breach = 1                      // Set to 0 to disregard all breaching.
-	var/list/breaches = list()              // Breach datum container.
-	var/resilience = 0.2                    // Multiplier that turns damage into breach class. 1 is 100% of damage to breach, 0.1 is 10%.
-	var/breach_threshold = 3                // Min damage before a breach is possible.
-	var/damage = 0                          // Current total damage
-	var/brute_damage = 0                    // Specifically brute damage.
-	var/burn_damage = 0                     // Specifically burn damage.
-	var/base_name                           // Used to keep the original name safe while we apply modifiers.
+	var/can_breach = 1   // Set to 0 to disregard all breaching.
+	var/list/breaches = list()   // Breach datum container.
+	var/resilience = 0.2 // Multiplier that turns damage into breach class. 1 is 100% of damage to breach, 0.1 is 10%.
+	var/breach_threshold = 3 // Min damage before a breach is possible.
+	var/damage = 0   // Current total damage
+	var/brute_damage = 0 // Specifically brute damage.
+	var/burn_damage = 0  // Specifically burn damage.
+	var/base_name    // Used to keep the original name safe while we apply modifiers.
 
 /obj/item/clothing/suit/space/Initialize()
 	. = ..()
@@ -77,7 +77,7 @@ var/global/list/breach_burn_descriptors = list(
 			valid_breaches -= B
 			breaches -= B
 		else
-			B.class	-= amount_left
+			B.class -= amount_left
 			amount_left = 0
 			B.update_descriptor()
 

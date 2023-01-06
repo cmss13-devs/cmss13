@@ -81,7 +81,7 @@
 	var/accuracy = 1
 
 	// The firing arc of this hardpoint
-	var/firing_arc = 0	//in degrees. 0 skips whole arc of fire check
+	var/firing_arc = 0 //in degrees. 0 skips whole arc of fire check
 
 	// Muzzleflash
 	var/use_muzzle_flash = FALSE
@@ -127,7 +127,7 @@
 	health = max(0, health - severity / 2)
 	if(health <= 0)
 		visible_message(SPAN_WARNING("\The [src] disintegrates into useless pile of scrap under the damage it suffered."))
-		qdel(src)
+		deconstruct(TRUE)
 
 /// Populate traits_to_give in this proc
 /obj/item/hardpoint/proc/set_bullet_traits()
@@ -187,7 +187,7 @@
 	buff_applied = TRUE
 
 //removing buffs
-obj/item/hardpoint/proc/remove_buff(var/obj/vehicle/multitile/V)
+/obj/item/hardpoint/proc/remove_buff(var/obj/vehicle/multitile/V)
 	if(!buff_applied)
 		return
 	if(LAZYLEN(type_multipliers))
@@ -246,7 +246,7 @@ obj/item/hardpoint/proc/remove_buff(var/obj/vehicle/multitile/V)
 // Traces backwards from the gun origin to the vehicle to check for obstacles between the vehicle and the muzzle
 /obj/item/hardpoint/proc/clear_los(var/atom/A)
 
-	if(origins[1] == 0 && origins[2] == 0)	//skipping check for modules we don't need this
+	if(origins[1] == 0 && origins[2] == 0) //skipping check for modules we don't need this
 		return TRUE
 
 	var/turf/muzzle_turf = locate(owner.x + origins[1], owner.y + origins[2], owner.z)
@@ -305,7 +305,7 @@ obj/item/hardpoint/proc/remove_buff(var/obj/vehicle/multitile/V)
 		return FALSE
 
 	if(world.time < next_use)
-		if(cooldown >= 20)	//filter out guns with high firerate to prevent message spam.
+		if(cooldown >= 20) //filter out guns with high firerate to prevent message spam.
 			to_chat(user, SPAN_WARNING("You need to wait [SPAN_HELPFUL((next_use - world.time) / 10)] seconds before [name] can be used again."))
 		return FALSE
 
@@ -336,13 +336,11 @@ obj/item/hardpoint/proc/remove_buff(var/obj/vehicle/multitile/V)
 	return
 
 //examining a hardpoint
-/obj/item/hardpoint/get_examine_text(mob/user, var/integrity_only = FALSE)
-	if(!integrity_only)
-		return ..()
+/obj/item/hardpoint/get_examine_text(mob/user)
 	. = ..()
 	if(health <= 0)
 		. += "It's busted!"
-	else if(isobserver(user) || (ishuman(user) && skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED)))
+	else if(isobserver(user) || (ishuman(user) && (skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED) || skillcheck(user, SKILL_VEHICLE, SKILL_VEHICLE_CREWMAN))))
 		. += "It's at [round(get_integrity_percent(), 1)]% integrity!"
 
 //reloading hardpoint - take mag from backup clips and replace current ammo with it. Will change in future. Called via weapons loader
@@ -431,7 +429,7 @@ obj/item/hardpoint/proc/remove_buff(var/obj/vehicle/multitile/V)
 
 	//instead of making timer for repairing 10% of HP longer, we adjust how much % of max HP we fix per 1 second.
 	//Using original 10% per welding as reference
-	var/amount_fixed = 5	//in %
+	var/amount_fixed = 5 //in %
 	switch(slot)
 		if(HDPT_ARMOR)
 			amount_fixed = 1.4
@@ -645,5 +643,5 @@ obj/item/hardpoint/proc/remove_buff(var/obj/vehicle/multitile/V)
 /obj/item/hardpoint/proc/set_mf_use_trt(var/use)
 	use_mz_trt_offsets = use
 
-obj/item/hardpoint/get_applying_acid_time()
+/obj/item/hardpoint/get_applying_acid_time()
 	return 10 SECONDS //you are not supposed to be able to easily combat-melt irreplaceable things.

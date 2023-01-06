@@ -1,4 +1,4 @@
-#define DELETE_TIME	1800
+#define DELETE_TIME 1800
 
 /mob/living/carbon/Xenomorph/death(var/cause, var/gibbed)
 	var/msg = "lets out a waning guttural screech, green blood bubbling from its maw."
@@ -67,7 +67,7 @@
 						break
 				hive.handle_xeno_leader_pheromones()
 				if(SSticker.mode)
-					INVOKE_ASYNC(SSticker.mode, /datum/game_mode.proc/check_queen_status, hivenumber)
+					INVOKE_ASYNC(SSticker.mode, TYPE_PROC_REF(/datum/game_mode, check_queen_status), hivenumber)
 					LAZYADD(SSticker.mode.dead_queens, "<br>[!isnull(src.key) ? src.key : "?"] was [src] [SPAN_BOLDNOTICE("(DIED)")]")
 
 		else
@@ -76,7 +76,7 @@
 		if(hive && hive.living_xeno_queen)
 			xeno_message("Hive: [src] has <b>died</b>[A? " at [sanitize_area(A.name)]":""]! [banished ? "They were banished from the hive." : ""]", death_fontsize, hivenumber)
 
-	if(hive && IS_XENO_LEADER(src))	//Strip them from the Xeno leader list, if they are indexed in here
+	if(hive && IS_XENO_LEADER(src)) //Strip them from the Xeno leader list, if they are indexed in here
 		hive.remove_hive_leader(src)
 		if(hive.living_xeno_queen)
 			to_chat(hive.living_xeno_queen, SPAN_XENONOTICE("A leader has fallen!")) //alert queens so they can choose another leader
@@ -99,16 +99,20 @@
 	if(hive)
 		hive.remove_xeno(src)
 		// Finding the last xeno for anti-delay.
-		if(hive.hivenumber == XENO_HIVE_NORMAL && (LAZYLEN(hive.totalXenos) == 1))
-			var/mob/living/carbon/Xenomorph/X = LAZYACCESS(hive.totalXenos, 1)
-			// Tell the marines where the last one is.
-			var/name = "[MAIN_AI_SYSTEM] Bioscan Status"
-			var/input = "Bioscan complete.\n\nSensors indicate one remaining unknown lifeform signature in [get_area(X)]."
-			marine_announcement(input, name, 'sound/AI/bioscan.ogg')
-			// Tell the xeno she is the last one.
-			if(X.client)
-				to_chat(X, SPAN_XENOANNOUNCE("Your carapace rattles with dread. You are all that remains of the hive!"))
-			announce_dchat("There is only one Xenomorph left: [X.name].", X)
+		if(SSticker.mode && SSticker.current_state != GAME_STATE_FINISHED)
+			if((last_ares_callout + 2 MINUTES) > world.time)
+				return
+			if(hive.hivenumber == XENO_HIVE_NORMAL && (LAZYLEN(hive.totalXenos) == 1))
+				var/mob/living/carbon/Xenomorph/X = LAZYACCESS(hive.totalXenos, 1)
+				last_ares_callout = world.time
+				// Tell the marines where the last one is.
+				var/name = "[MAIN_AI_SYSTEM] Bioscan Status"
+				var/input = "Bioscan complete.\n\nSensors indicate one remaining unknown lifeform signature in [get_area(X)]."
+				marine_announcement(input, name, 'sound/AI/bioscan.ogg')
+				// Tell the xeno she is the last one.
+				if(X.client)
+					to_chat(X, SPAN_XENOANNOUNCE("Your carapace rattles with dread. You are all that remains of the hive!"))
+				announce_dchat("There is only one Xenomorph left: [X.name].", X)
 
 	if(hardcore)
 		QDEL_IN(src, 3 SECONDS)
@@ -145,9 +149,9 @@
 	var/to_flick = "gibbed-a"
 	var/icon_path
 	if(mob_size >= MOB_SIZE_BIG)
-		icon_path = 'icons/mob/hostiles/xenomorph_64x64.dmi'
+		icon_path = 'icons/mob/xenos/xenomorph_64x64.dmi'
 	else
-		icon_path = 'icons/mob/hostiles/xenomorph_48x48.dmi'
+		icon_path = 'icons/mob/xenos/xenomorph_48x48.dmi'
 	switch(caste.caste_type)
 		if(XENO_CASTE_RUNNER)
 			to_flick = "gibbed-a-runner"

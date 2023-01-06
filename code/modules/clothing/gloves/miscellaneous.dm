@@ -86,7 +86,7 @@
 					return 1
 				if (L.halloss > 100)
 					playsound(loc, knockout_sound, 50, FALSE)
-					M.show_message(FONT_SIZE_LARGE(SPAN_WARNING("KNOCKOUT!")))
+					M.show_message(FONT_SIZE_LARGE(SPAN_WARNING("KNOCKOUT!")), SHOW_MESSAGE_VISIBLE)
 					return 1
 				if (L.lying == 1 || L.stat == UNCONSCIOUS)//Can't beat 'em while they're down.
 					to_chat(M, SPAN_WARNING("You can't box with [A], they're already down!"))
@@ -100,7 +100,7 @@
 
 /obj/item/clothing/gloves/boxing/attackby(obj/item/W, mob/user)
 	if(HAS_TRAIT(W, TRAIT_TOOL_WIRECUTTERS) || W.sharp == IS_SHARP_ITEM_ACCURATE || W.sharp == IS_SHARP_ITEM_BIG)
-		to_chat(user, SPAN_NOTICE("It would be a great dishonor to cut open these fine boxing gloves."))	//Nope
+		to_chat(user, SPAN_NOTICE("It would be a great dishonor to cut open these fine boxing gloves.")) //Nope
 		return
 	..()
 
@@ -119,5 +119,5 @@
 /obj/item/clothing/gloves/white
 	name = "white gloves"
 	desc = "These look pretty fancy."
-	icon_state = "latex"
-	item_state = "lgloves"
+	icon_state = "white"
+	item_state = "white"

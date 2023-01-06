@@ -3,7 +3,7 @@
 /obj/effect/alien/resin/collector
 	name = "hive collector"
 	desc = "A disgusting mass of pulsating spores. It reeks of plasma."
-	icon = 'icons/mob/hostiles/structures64x64.dmi'
+	icon = 'icons/mob/xenos/structures64x64.dmi'
 	icon_state = "collector"
 	pixel_x = -16
 	pixel_y = -16
@@ -39,9 +39,9 @@
 
 
 // /obj/effect/alien/resin/collector/get_examine_text(mob/user)
-// 	..()
-// 	if(isXeno(user) || isobserver(user))
-// 		to_chat(user, "It has [connected_node.amount_left] resources left.")
+// ..()
+// if(isXeno(user) || isobserver(user))
+// to_chat(user, "It has [connected_node.amount_left] resources left.")
 
 /obj/effect/alien/resin/collector/process()
 	if(!linked_hive || world.time < (last_gathered_time + gather_cooldown))

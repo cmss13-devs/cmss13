@@ -112,6 +112,13 @@
 	. = ..()
 	name = "plating"
 
+/// Visually like plating+catwalks but without overlaying or interactions - mainly for Reqs Elevator
+/turf/open/floor/plating/bare_catwalk
+	name = "catwalk"
+	desc = "Cats really don't like these things."
+	icon = 'icons/turf/almayer.dmi'
+	icon_state = "plating_catwalk"
+
 /turf/open/floor/plating/plating_catwalk
 	name = "catwalk"
 	desc = "Cats really don't like these things."
@@ -218,14 +225,14 @@
 /turf/open/floor/almayer/empty/Entered(var/atom/movable/AM)
 	..()
 	if(!isobserver(AM))
-		addtimer(CALLBACK(src, .proc/enter_depths, AM), 0.2 SECONDS)
+		addtimer(CALLBACK(src, PROC_REF(enter_depths), AM), 0.2 SECONDS)
 
 /turf/open/floor/almayer/empty/proc/enter_depths(var/atom/movable/AM)
 	if(AM.throwing == 0 && istype(get_turf(AM), /turf/open/floor/almayer/empty))
 		AM.visible_message(SPAN_WARNING("[AM] falls into the depths!"), SPAN_WARNING("You fall into the depths!"))
 		for(var/i in GLOB.disposal_retrieval_list)
 			var/obj/structure/disposaloutlet/retrieval/R = i
-			if(R.z != src.z)	continue
+			if(R.z != src.z) continue
 			var/obj/structure/disposalholder/H = new()
 			AM.forceMove(H)
 			sleep(10)
@@ -538,7 +545,7 @@
 	icon = 'icons/turf/floors/carpet_manual.dmi'//I dunno man, CM-ified carpet sprites are placed manually and I can't be bothered to write a new system for 'em.
 	icon_state = "single"
 
-////// Mechbay /////////////////:
+// Mechbay
 /turf/open/floor/mech_bay_recharge_floor
 	name = "Mech Bay Recharge Station"
 	icon = 'icons/obj/structures/props/mech.dmi'

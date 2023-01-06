@@ -1,12 +1,13 @@
-/// Branch toward all other nodes
+/// Holding node for several child nodes
 /datum/nmnode/branch
-	name = "Branch"
+	id = "branch"
+	/// Child nodes
 	var/list/datum/nmnode/nodes
 
-/datum/nmnode/branch/New(datum/nmreader/reader, list/nodespec)
+/datum/nmnode/branch/New(list/spec)
 	. = ..()
 	if(!nodes)
-		nodes = reader.parse_tree(nodespec["nodes"])
+		nodes = SSnightmare.parse_tree(spec["nodes"])
 
 /datum/nmnode/branch/Destroy()
 	QDEL_NULL_LIST(nodes)
@@ -16,76 +17,64 @@
 	. = ..()
 	if(!. || !length(nodes))
 		return FALSE
-	for(var/datum/nmnode/N in nodes)
-		N.resolve(context)
+	for(var/datum/nmnode/node as anything in nodes)
+		node.invoke(context)
 	return TRUE
 
-/// Same but load them from another file
+
+/// Same as branch, but load node data from another included file
 /datum/nmnode/branch/include
-	name = "Include"
+	id = "include"
 	var/filepath
-/datum/nmnode/branch/include/New(datum/nmreader/reader, list/nodespec)
+	var/list/resolved_nodes = list()
+/datum/nmnode/branch/include/New(list/spec)
 	. = ..()
-	if(nodes)
-		return
-	if(nodespec["file"])
-		filepath = nodespec["file"]
-	if(!nodespec["name"])
+	if(spec["file"])
+		filepath = spec["file"]
+	if(!spec["name"])
 		name += ": [filepath]"
-	nodes = reader.parse_file("[CONFIG_GET(string/nightmare_config_path)][filepath]")
 
-/**
- * Pick between weighted random options
- * weights: array of weights for each option
- * amount:  how many to get in total
- */
-/datum/nmnode/picker
-	name = "Picker"
-	var/amount = 1
-	var/list/weights
-	var/list/datum/nmnode/nodes
-
-/datum/nmnode/picker/New(datum/nmreader/reader, list/nodespec)
+/datum/nmnode/branch/include/resolve(datum/nmcontext/context)
 	. = ..()
-	if(nodespec["amount"])
-		amount = nodespec["amount"]
-	if(nodespec["weights"])
-		var/list/json_weights = nodespec["weights"]
-		weights = json_weights.Copy()
-	else weights = list()
-	nodes = reader.parse_tree(nodespec["choices"])
-	weights.len = nodes.len
-	for(var/i in 1 to length(nodes))
-		if(!isnum(weights[i]) || weights[i] < 0)
-			weights[i] = 1
-		weights[i] = round(weights[i])
+	var/list/datum/nmnode/nodes = SSnightmare.parse_file(context.get_file_path(filepath, "nightmare"))
+	if(!nodes)
+		CRASH("Include failed to load file: [filepath]")
+	resolved_nodes += nodes
+	for(var/datum/nmnode/node as anything in nodes)
+		node.invoke(context)
+
+/// Same as branch, but selects a subset of the given nodes
+/// amount: how many items to pick
+/// choices: nested nodes to pick from
+/// each node should have a 'weight' key if you want to use weighted pick
+/datum/nmnode/picker
+	id = "pick"
+	var/amount = 1
+	var/list/datum/nmnode/choices
+
+/datum/nmnode/picker/New(list/spec)
+	. = ..()
+	if(spec["amount"])
+		amount = spec["amount"]
+	choices = SSnightmare.parse_tree(spec["choices"])
 
 /datum/nmnode/picker/Destroy()
-	QDEL_NULL_LIST(nodes)
-	weights = null
-	return ..()
+	. = ..()
+	QDEL_NULL_LIST(choices)
 
-/// Just a classic weighted pick
 /datum/nmnode/picker/resolve(datum/nmcontext/context)
 	. = ..()
 	if(!.) return
-	var/remaining = amount
-	var/wtotal = 0
-	for(var/w in weights)
-		wtotal += w
-	if(wtotal < 1)
-		return
-	while(length(nodes) && remaining)
-		var/runtotal = 0
-		var/rolled = rand(1, wtotal)
-		for(var/i in 1 to length(nodes))
-			runtotal += weights[i]
-			if(rolled > runtotal)
-				continue
-			var/datum/nmnode/N = nodes[i]
-			remaining--
-			wtotal -= weights[i]
-			nodes.Cut(i, i+1)
-			weights.Cut(i, i+1)
-			N.resolve(context)
-			break
+	var/list/datum/nmnode/pickables = choices.Copy()
+	for(var/datum/nmnode/node as anything in pickables)
+		if(isnum(node.raw["weight"]))
+			pickables[node] = node.raw["weight"]
+	var/list/datum/nmnode/picked = list()
+	var/remaining = src.amount
+	while(length(pickables) && remaining > 0)
+		var/datum/nmnode/node = pickweight(pickables)
+		remaining--
+		pickables -= node
+		picked += node
+		node.resolve(context)
+	return TRUE

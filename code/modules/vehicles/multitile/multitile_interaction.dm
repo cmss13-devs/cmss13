@@ -66,7 +66,7 @@
 		return
 
 	//try to fit something in vehicle without getting in ourselves
-	if(istype(O, /obj/item/grab) && ishuman(user))	//only humans are allowed to fit dragged stuff inside
+	if(istype(O, /obj/item/grab) && ishuman(user)) //only humans are allowed to fit dragged stuff inside
 		if(user.a_intent == INTENT_HELP)
 			var/mob_x = user.x - src.x
 			var/mob_y = user.y - src.y
@@ -77,7 +77,7 @@
 					var/atom/dragged_atom = G.grabbed_thing
 					if(istype(/obj/item/explosive/grenade, dragged_atom))
 						var/obj/item/explosive/grenade/nade = dragged_atom
-						if(!nade.active)		//very creative, but no.
+						if(!nade.active) //very creative, but no.
 							break
 
 					handle_fitting_pulled_atom(user, dragged_atom)
@@ -195,7 +195,7 @@
 			user.visible_message(SPAN_WARNING("[user] stops [repair_message] on \the [src]."), SPAN_NOTICE("You stop [repair_message] on \the [src]. Hull integrity is at [SPAN_HELPFUL(100.0*health/max_hp)]%."))
 			return
 
-		health += max_hp/100 * (5 / amount_fixed_adjustment)
+		health = min(health + max_hp/100 * (5 / amount_fixed_adjustment), max_hp)
 
 		if(WT)
 			WT.remove_fuel(1, user)
@@ -261,7 +261,7 @@
 
 	//Frenzy auras stack in a way, then the raw value is multipled by two to get the additive modifier
 	if(X.frenzy_aura > 0)
-		damage += (X.frenzy_aura * 2)
+		damage += (X.frenzy_aura * FRENZY_DAMAGE_MULTIPLIER)
 
 	X.animation_attack_on(src)
 
@@ -298,7 +298,7 @@
 	if(ammo_flags & AMMO_ANTISTRUCT)
 		// Multiplier based on tank railgun relationship, so might have to reconsider multiplier for AMMO_SIEGE in general
 		damage = round(damage*ANTISTRUCT_DMG_MULT_TANK)
-	if(ammo_flags & AMMO_XENO_ACID)
+	if(ammo_flags & AMMO_ACIDIC)
 		dam_type = "acid"
 
 	// trust me bro
@@ -422,14 +422,14 @@
 	if(isXeno(M))
 		enter_time = 3 SECONDS
 	else
-		if(door_locked && health > 0)	//check if lock on and actually works
+		if(door_locked && health > 0) //check if lock on and actually works
 			if(ishuman(M))
 				var/mob/living/carbon/human/user = M
-				if(!allowed(user) || !get_target_lock(user.faction_group))	//if we are human, we check access and faction
+				if(!allowed(user) || !get_target_lock(user.faction_group)) //if we are human, we check access and faction
 					to_chat(user, SPAN_WARNING("\The [src] is locked!"))
 					return
 			else
-				to_chat(M, SPAN_WARNING("\The [src] is locked!"))	//animals are not allowed inside without supervision
+				to_chat(M, SPAN_WARNING("\The [src] is locked!")) //animals are not allowed inside without supervision
 				return
 
 
@@ -453,7 +453,7 @@
 		dragged_atom = G.grabbed_thing
 
 	if(!enter_time)
-		enter_time = entrance_speed SECONDS
+		enter_time = entrance_speed
 		if(dragged_atom)
 			enter_time = 2 SECONDS
 
@@ -547,7 +547,7 @@
 
 	var/obj/item/hardpoint/locomotion/Loco
 	for(Loco in hardpoints)
-		Loco.on_install(src)	//we restore speed respective to wheels/treads if any installed
+		Loco.on_install(src) //we restore speed respective to wheels/treads if any installed
 
 	next_move = world.time + move_delay
 	var/obj/item/vehicle_clamp/O = new(get_turf(src))

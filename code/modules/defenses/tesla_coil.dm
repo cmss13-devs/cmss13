@@ -1,7 +1,7 @@
-#define TESLA_COIL_FIREDELAY 	20
-#define TESLA_COIL_RANGE 		3
-#define TESLA_COIL_DAZE_EFFECT 		5
-#define TESLA_COIL_SLOW_EFFECT 		3
+#define TESLA_COIL_FIREDELAY 20
+#define TESLA_COIL_RANGE 3
+#define TESLA_COIL_DAZE_EFFECT 5
+#define TESLA_COIL_SLOW_EFFECT 3
 
 /obj/structure/machinery/defenses/tesla_coil
 	name = "\improper 21S tesla coil"
@@ -108,8 +108,8 @@
 	targets = null
 
 /obj/structure/machinery/defenses/tesla_coil/proc/apply_debuff(var/mob/living/M)
-	M.Daze(TESLA_COIL_DAZE_EFFECT)
-	M.Superslow(TESLA_COIL_SLOW_EFFECT)
+	M.apply_effect(TESLA_COIL_DAZE_EFFECT, DAZE)
+	M.apply_effect(TESLA_COIL_SLOW_EFFECT, SUPERSLOW)
 
 /obj/structure/machinery/defenses/tesla_coil/proc/check_path(var/mob/living/M)
 	if(!istype(M))
@@ -159,11 +159,11 @@
 
 /obj/structure/machinery/defenses/tesla_coil/stun/apply_debuff(var/mob/living/M)
 	if(M.mob_size >= MOB_SIZE_BIG)
-		M.SetSuperslowed(TESLA_COIL_SLOW_EFFECT)
+		M.set_effect(TESLA_COIL_SLOW_EFFECT, SUPERSLOW)
 	else
-		M.SetKnockeddown(TESLA_COIL_STUN_EFFECT)
+		M.set_effect(TESLA_COIL_STUN_EFFECT, WEAKEN)
 
-	M.SetDazed(TESLA_COIL_DAZE_EFFECT * 1.5) // 1.5x as effective as normal tesla
+	M.set_effect(TESLA_COIL_DAZE_EFFECT * 1.5, DAZE) // 1.5x as effective as normal tesla
 
 #undef TESLA_COIL_STUN_FIRE_DELAY
 #define TESLA_COIL_MICRO_FIRE_DELAY 10
@@ -176,7 +176,7 @@
 	defense_type = "Micro"
 
 /obj/structure/machinery/defenses/tesla_coil/micro/apply_debuff(var/mob/living/M)
-	M.SetSuperslowed(TESLA_COIL_SLOW_EFFECT) // Only applies slowness
+	M.set_effect(TESLA_COIL_SLOW_EFFECT, SUPERSLOW) // Only applies slowness
 
 #undef TESLA_COIL_MICRO_FIRE_DELAY
 #undef TESLA_COIL_FIREDELAY

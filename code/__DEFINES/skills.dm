@@ -20,6 +20,7 @@
 #define SKILL_EXECUTION "execution"
 #define SKILL_INTEL "intel"
 #define SKILL_DOMESTIC "domestics"
+#define SKILL_FIREMAN "fireman"
 
 /*
 -----------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -188,3 +189,11 @@
 #define SKILL_INTEL_TRAINED 1
 #define SKILL_INTEL_EXPERT 2
 #define SKILL_INTEL_MAX 2
+
+// Fireman carry - Separated from police skills for further rebalances. Determines how fast you carry someone.
+#define SKILL_FIREMAN_DEFAULT 0
+#define SKILL_FIREMAN_TRAINED 1
+#define SKILL_FIREMAN_SKILLED 2
+#define SKILL_FIREMAN_EXPERT 3
+#define SKILL_FIREMAN_MASTER 5
+#define SKILL_FIREMAN_MAX 5

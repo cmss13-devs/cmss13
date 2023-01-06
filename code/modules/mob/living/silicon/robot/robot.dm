@@ -78,7 +78,7 @@ var/list/robot_verbs_default = list(
 	spark_system.set_up(5, 0, src)
 	spark_system.attach(src)
 
-	add_language(LANGUAGE_BINARY, 1)
+	add_language(LANGUAGE_APOLLO, 1)
 
 	ident = rand(1, 999)
 	updatename("Default")
@@ -151,8 +151,8 @@ var/list/robot_verbs_default = list(
 /mob/living/silicon/robot/Destroy()
 	if(mmi)//Safety for when a cyborg gets dust()ed. Or there is no MMI inside.
 		var/turf/T = get_turf(loc)//To hopefully prevent run time errors.
-		if(T)	mmi.forceMove(T)
-		if(mind)	mind.transfer_to(mmi.brainmob)
+		if(T) mmi.forceMove(T)
+		if(mind) mind.transfer_to(mmi.brainmob)
 		mmi = null
 	. = ..()
 
@@ -423,7 +423,7 @@ var/list/robot_verbs_default = list(
 
 	if (!has_alarm)
 		queueAlarm(text("--- [class] alarm in [A.name] has been cleared."), class, 0)
-//		if (viewalerts) robot_alerts()
+// if (viewalerts) robot_alerts()
 	return has_alarm
 
 
@@ -466,7 +466,7 @@ var/list/robot_verbs_default = list(
 			updatehealth()
 			add_fingerprint(user)
 			for(var/mob/O in viewers(user, null))
-				O.show_message(text(SPAN_DANGER("[user] has fixed some of the dents on [src]!")), 1)
+				O.show_message(text(SPAN_DANGER("[user] has fixed some of the dents on [src]!")), SHOW_MESSAGE_VISIBLE)
 		else
 			to_chat(user, "Need more welding fuel!")
 			return
@@ -480,9 +480,9 @@ var/list/robot_verbs_default = list(
 			apply_damage(-30, BURN)
 			updatehealth()
 			for(var/mob/O in viewers(user, null))
-				O.show_message(text(SPAN_DANGER("[user] has fixed some of the burnt wires on [src]!")), 1)
+				O.show_message(text(SPAN_DANGER("[user] has fixed some of the burnt wires on [src]!")), SHOW_MESSAGE_VISIBLE)
 
-	else if (HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))	// crowbar means open or close the cover
+	else if (HAS_TRAIT(W, TRAIT_TOOL_CROWBAR)) // crowbar means open or close the cover
 		if(opened)
 			if(cell)
 				to_chat(user, "You close the cover.")
@@ -538,7 +538,7 @@ var/list/robot_verbs_default = list(
 				opened = 1
 				update_icons()
 
-	else if (istype(W, /obj/item/cell) && opened)	// trying to put a cell inside
+	else if (istype(W, /obj/item/cell) && opened) // trying to put a cell inside
 		var/datum/robot_component/C = components["power cell"]
 		if(wiresexposed)
 			to_chat(user, "Secure the wiring with a screwdriver first.")
@@ -562,12 +562,12 @@ var/list/robot_verbs_default = list(
 		else
 			to_chat(user, "You can't reach the wiring.")
 
-	else if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER) && opened && !cell)	// haxing
+	else if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER) && opened && !cell) // haxing
 		wiresexposed = !wiresexposed
 		to_chat(user, "The wires have been [wiresexposed ? "exposed" : "unexposed"]")
 		update_icons()
 
-	else if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER) && opened && cell)	// radio
+	else if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER) && opened && cell) // radio
 		if(radio)
 			radio.attackby(W,user)//Push it to the radio to let it handle everything
 		else
@@ -622,7 +622,7 @@ var/list/robot_verbs_default = list(
 		if(M.attack_sound)
 			playsound(loc, M.attack_sound, 25, 1)
 		for(var/mob/O in viewers(src, null))
-			O.show_message(SPAN_DANGER("<B>[M]</B> [M.attacktext] [src]!"), 1)
+			O.show_message(SPAN_DANGER("<B>[M]</B> [M.attacktext] [src]!"), SHOW_MESSAGE_VISIBLE)
 		last_damage_data = create_cause_data(initial(M.name), M)
 		M.attack_log += text("\[[time_stamp()]\] <font color='red'>attacked [key_name(src)]</font>")
 		src.attack_log += text("\[[time_stamp()]\] <font color='orange'>was attacked by [key_name(M)]</font>")
@@ -638,7 +638,7 @@ var/list/robot_verbs_default = list(
 	if(opened && !wiresexposed && (!isRemoteControlling(user)))
 		var/datum/robot_component/cell_component = components["power cell"]
 		if(cell)
-			cell.updateicon()
+			cell.update_icon()
 			cell.add_fingerprint(user)
 			user.put_in_active_hand(cell)
 			to_chat(user, "You remove \the [cell].")
@@ -950,12 +950,12 @@ var/list/robot_verbs_default = list(
 		return 1
 	return 0
 
-/mob/living/silicon/robot/binarycheck()
+/mob/living/silicon/robot/hear_apollo()
 	if(is_component_functioning("comms"))
 		var/datum/robot_component/RC = get_component("comms")
 		use_power(RC.active_usage)
-		return 1
-	return 0
+		return TRUE
+	return FALSE
 
 
 

@@ -9,7 +9,7 @@
 	desc = ""
 	icon = ''
 	icon_state = ""
-	vend_delay = 15
+	vend_delay = 1.5 SECONDS
 	products = list()
 	contraband = list()
 	premium = list()
@@ -22,14 +22,16 @@
 	//product_ads = "Have a drink!;Drink up!;It's good for you!;Would you like a hot joe?;I'd kill for some coffee!;The best beans in the galaxy.;Only the finest brew for you.;Mmmm. Nothing like a coffee.;I like coffee, don't you?;Coffee helps you work!;Try some tea.;We hope you like the best!;Try our new chocolate!;Admin conspiracies"
 	icon_state = "coffee"
 	icon_vend = "coffee-vend"
-	vend_delay = 34
+	vend_delay = 3.4 SECONDS
 	idle_power_usage = 211 //refrigerator - believe it or not, this is actually the average power consumption of a refrigerated vending machine according to NRCan.
 	vend_power_usage = 85000 //85 kJ to heat a 250 mL cup of coffee
-	products = list(/obj/item/reagent_container/food/drinks/coffee = 25,
+	products = list(/obj/item/reagent_container/food/drinks/coffee/marine = 25,
 					/obj/item/reagent_container/food/drinks/tea = 25,
 					/obj/item/reagent_container/food/drinks/h_chocolate = 25)
 	contraband = list(/obj/item/reagent_container/food/drinks/ice = 10)
-	prices = list()
+	prices = list(/obj/item/reagent_container/food/drinks/coffee/marine = 1.5,
+					/obj/item/reagent_container/food/drinks/tea = 3,
+					/obj/item/reagent_container/food/drinks/h_chocolate = 15)
 
 /obj/structure/machinery/vending/coffee/simple
 	name = "Hot Coffee Machine"
@@ -53,7 +55,15 @@
 					/obj/item/reagent_container/food/snacks/wrapped/chunk = 6,
 					/obj/item/reagent_container/food/snacks/wrapped/barcardine = 6)
 
-	prices = list()
+	prices = list(/obj/item/reagent_container/food/snacks/packaged_burger = 5,
+					/obj/item/reagent_container/food/snacks/packaged_burrito = 5,
+					/obj/item/reagent_container/food/snacks/packaged_hdogs = 5,
+					/obj/item/reagent_container/food/snacks/kepler_crisps = 3,
+					/obj/item/reagent_container/food/snacks/wy_chips/pepper = 3,
+					/obj/item/reagent_container/food/snacks/eat_bar = 4,
+					/obj/item/reagent_container/food/snacks/wrapped/booniebars = 4,
+					/obj/item/reagent_container/food/snacks/wrapped/chunk = 4,
+					/obj/item/reagent_container/food/snacks/wrapped/barcardine = 4)
 
 /obj/structure/machinery/vending/snack/packaged
 	product_slogans = ""
@@ -67,49 +77,47 @@
 	name = "Souto Softdrinks"
 	desc = "A softdrink vendor provided by Souto Soda Company, Havana."
 	icon_state = "Cola_Machine"
-	product_slogans = "Souto Soda: Have a Souto and be taken away to a tropical paradise!;Souto Classic. You can't beat that tangerine goodness!;Souto Cherry. The sweet flavor of a cool winter morning!;Souto Lime. For that sweet and sour flavor that you know and love!;Souto Grape. There's nothing better than a grape soda.;Weyland-Yutani Fruit Beer. Nothing came from that lawsuit!;Weyland-Yutani Spring Water. It came from a spring!"
-	product_ads = "Souto Classic. You can't beat that tangerine goodness!;Souto Cherry. The sweet flavor of a cool winter morning!;Souto Lime. For that sweet and sour flavor that you know and love!;Souto Grape. There's nothing better than a grape soda.;Weyland-Yutani Fruit Beer. Nothing came from that lawsuit!;Weyland-Yutani Spring Water. It technically came from a spring!"
+	product_slogans = "Souto Soda: Have a Souto and be taken away to a tropical paradise!;Souto Classic. You can't beat that tangerine goodness!;Souto Cherry. The sweet flavor of a cool winter morning!;Souto Lime. For that sweet and sour flavor that you know and love!;Souto Grape. There's nothing better than a grape soda.;Weyland-Yutani Fruit Beer. Nothing came from that lawsuit!"
+	product_ads = "Souto Classic. You can't beat that tangerine goodness!;Souto Cherry. The sweet flavor of a cool winter morning!;Souto Lime. For that sweet and sour flavor that you know and love!;Souto Grape. There's nothing better than a grape soda.;Weyland-Yutani Fruit Beer. Nothing came from that lawsuit!"
 	products = list(/obj/item/reagent_container/food/drinks/cans/souto/classic = 10,
-					/obj/item/reagent_container/food/drinks/cans/souto/diet/classic = 10,
 					/obj/item/reagent_container/food/drinks/cans/souto/cherry = 10,
-					/obj/item/reagent_container/food/drinks/cans/souto/diet/cherry = 10,
 					/obj/item/reagent_container/food/drinks/cans/souto/lime = 10,
-					/obj/item/reagent_container/food/drinks/cans/souto/diet/lime = 10,
 					/obj/item/reagent_container/food/drinks/cans/souto/grape = 10,
-					/obj/item/reagent_container/food/drinks/cans/souto/diet/grape = 10,
 					/obj/item/reagent_container/food/drinks/cans/souto/blue = 10,
-					/obj/item/reagent_container/food/drinks/cans/souto/diet/blue = 10,
 					/obj/item/reagent_container/food/drinks/cans/souto/peach = 10,
-					/obj/item/reagent_container/food/drinks/cans/souto/diet/peach = 10,
 					/obj/item/reagent_container/food/drinks/cans/souto/cranberry = 10,
-					/obj/item/reagent_container/food/drinks/cans/souto/diet/cranberry = 10,
 					/obj/item/reagent_container/food/drinks/cans/souto/vanilla = 10,
-					/obj/item/reagent_container/food/drinks/cans/souto/diet/vanilla = 10,
 					/obj/item/reagent_container/food/drinks/cans/souto/pineapple = 10,
+					/obj/item/reagent_container/food/drinks/cans/souto/diet/classic = 10,
+					/obj/item/reagent_container/food/drinks/cans/souto/diet/cherry = 10,
+					/obj/item/reagent_container/food/drinks/cans/souto/diet/lime = 10,
+					/obj/item/reagent_container/food/drinks/cans/souto/diet/grape = 10,
+					/obj/item/reagent_container/food/drinks/cans/souto/diet/blue = 10,
+					/obj/item/reagent_container/food/drinks/cans/souto/diet/peach = 10,
+					/obj/item/reagent_container/food/drinks/cans/souto/diet/cranberry = 10,
+					/obj/item/reagent_container/food/drinks/cans/souto/diet/vanilla = 10,
 					/obj/item/reagent_container/food/drinks/cans/souto/diet/pineapple = 10,
-					/obj/item/reagent_container/food/drinks/cans/waterbottle = 10,
 					/obj/item/reagent_container/food/drinks/cans/cola = 10)
 
-	prices = list(/obj/item/reagent_container/food/drinks/cans/souto/classic = 5,
-					/obj/item/reagent_container/food/drinks/cans/souto/diet/classic = 5,
-					/obj/item/reagent_container/food/drinks/cans/souto/cherry = 5,
-					/obj/item/reagent_container/food/drinks/cans/souto/diet/cherry = 5,
-					/obj/item/reagent_container/food/drinks/cans/souto/lime = 5,
-					/obj/item/reagent_container/food/drinks/cans/souto/diet/lime = 5,
-					/obj/item/reagent_container/food/drinks/cans/souto/grape = 5,
-					/obj/item/reagent_container/food/drinks/cans/souto/diet/grape = 5,
-					/obj/item/reagent_container/food/drinks/cans/souto/blue = 5,
-					/obj/item/reagent_container/food/drinks/cans/souto/diet/blue = 5,
-					/obj/item/reagent_container/food/drinks/cans/souto/peach = 5,
-					/obj/item/reagent_container/food/drinks/cans/souto/diet/peach = 5,
-					/obj/item/reagent_container/food/drinks/cans/souto/cranberry = 5,
-					/obj/item/reagent_container/food/drinks/cans/souto/diet/cranberry = 5,
-					/obj/item/reagent_container/food/drinks/cans/souto/vanilla = 5,
-					/obj/item/reagent_container/food/drinks/cans/souto/diet/vanilla = 5,
-					/obj/item/reagent_container/food/drinks/cans/souto/pineapple = 5,
-					/obj/item/reagent_container/food/drinks/cans/souto/diet/pineapple = 5,
-					/obj/item/reagent_container/food/drinks/cans/waterbottle = 2,
-					/obj/item/reagent_container/food/drinks/cans/cola = 10)
+	prices = list(/obj/item/reagent_container/food/drinks/cans/souto/classic = 8,
+					/obj/item/reagent_container/food/drinks/cans/souto/diet/classic = 12,
+					/obj/item/reagent_container/food/drinks/cans/souto/cherry = 9,
+					/obj/item/reagent_container/food/drinks/cans/souto/diet/cherry = 12,
+					/obj/item/reagent_container/food/drinks/cans/souto/lime = 9,
+					/obj/item/reagent_container/food/drinks/cans/souto/diet/lime = 12,
+					/obj/item/reagent_container/food/drinks/cans/souto/grape = 9,
+					/obj/item/reagent_container/food/drinks/cans/souto/diet/grape = 12,
+					/obj/item/reagent_container/food/drinks/cans/souto/blue = 9,
+					/obj/item/reagent_container/food/drinks/cans/souto/diet/blue = 12,
+					/obj/item/reagent_container/food/drinks/cans/souto/peach = 9,
+					/obj/item/reagent_container/food/drinks/cans/souto/diet/peach = 12,
+					/obj/item/reagent_container/food/drinks/cans/souto/cranberry = 9,
+					/obj/item/reagent_container/food/drinks/cans/souto/diet/cranberry = 12,
+					/obj/item/reagent_container/food/drinks/cans/souto/vanilla = 9,
+					/obj/item/reagent_container/food/drinks/cans/souto/diet/vanilla = 12,
+					/obj/item/reagent_container/food/drinks/cans/souto/pineapple = 9,
+					/obj/item/reagent_container/food/drinks/cans/souto/diet/pineapple = 12,
+					/obj/item/reagent_container/food/drinks/cans/cola = 20)
 	idle_power_usage = 211 //refrigerator - believe it or not, this is actually the average power consumption of a refrigerated vending machine according to NRCan.
 
 /obj/structure/machinery/vending/cola/research
@@ -131,7 +139,7 @@
 	desc = "If you want to get cancer, might as well do it in style!"
 	product_slogans = "L.S./M.F.T.! Lucky Strikes Means Fine Tobacco.;For a classic style that lights up every time, there's always Zippo!;The FDA would like to remind you that tobacco products cause cancer and increased fatigue.;Real men smoke Lucky Strikes!;Serving the US Armed Forces for over two-hundred years!;Life's short, smoke a Lucky!;L.S./M.F.T.!;Lucky Strike is first again!;You just can't beat a Lucky Strike!;The preferred cigarette of Carlos Hathcock!;First again with tobacco-men!"
 	product_ads = "Real men smoke Lucky Strikes!;Serving the US Armed Forces for over two-hundred years!;Life's short, smoke a Lucky!;L.S./M.F.T.!;Lucky Strike is first again!;You just can't beat a Lucky Strike!;The preferred cigarette of Carlos Hathcock!;First again with tobacco-men!"
-	vend_delay = 14
+	vend_delay = 1.4 SECONDS
 	icon_state = "cigs"
 	products = list(/obj/item/storage/fancy/cigarettes/lucky_strikes = 50,
 					/obj/item/storage/fancy/cigar/tarbacktube = 20,
@@ -140,11 +148,11 @@
 					/obj/item/tool/lighter/zippo = 10)
 
 	premium = list(/obj/item/storage/fancy/cigar = 25)
-	prices = list(/obj/item/storage/fancy/cigarettes/lucky_strikes = 15,
-					/obj/item/storage/fancy/cigar/tarbacktube = 5,
+	prices = list(/obj/item/storage/fancy/cigarettes/lucky_strikes = 35,
+					/obj/item/storage/fancy/cigar/tarbacktube = 35,
 					/obj/item/storage/box/matches = 1,
-					/obj/item/tool/lighter/random = 2,
-					/obj/item/tool/lighter/zippo = 20)
+					/obj/item/tool/lighter/random = 10,
+					/obj/item/tool/lighter/zippo = 25)
 
 /obj/structure/machinery/vending/cigarette/free
 	product_slogans = ""
@@ -170,16 +178,17 @@
 					/obj/item/storage/box/matches = 10,
 					/obj/item/tool/lighter/random = 20,
 					/obj/item/tool/lighter/zippo = 5)
-	prices = list(/obj/item/storage/fancy/cigarettes/kpack = 20,
+
+	prices = list(/obj/item/storage/fancy/cigarettes/kpack = 40,
 					/obj/item/storage/fancy/cigarettes/arcturian_ace = 25,
-					/obj/item/storage/fancy/cigarettes/emeraldgreen = 40,
-					/obj/item/storage/fancy/cigarettes/wypacket = 20,
+					/obj/item/storage/fancy/cigarettes/emeraldgreen = 35,
+					/obj/item/storage/fancy/cigarettes/wypacket = 35,
 					/obj/item/storage/fancy/cigarettes/lady_finger = 30,
-					/obj/item/storage/fancy/cigarettes/blackpack = 50,
-					/obj/item/storage/fancy/cigar/tarbacks = 40,
+					/obj/item/storage/fancy/cigarettes/blackpack = 75,
+					/obj/item/storage/fancy/cigar/tarbacks = 35,
 					/obj/item/storage/box/matches = 1,
-					/obj/item/tool/lighter/random = 2,
-					/obj/item/tool/lighter/zippo = 20)
+					/obj/item/tool/lighter/random = 10,
+					/obj/item/tool/lighter/zippo = 25)
 
 /obj/structure/machinery/vending/security
 	name = "SecTech"
@@ -315,10 +324,10 @@
 
 			if(ispath(typepath,/obj/item/weapon/gun) || ispath(typepath,/obj/item/ammo_magazine) || ispath(typepath,/obj/item/explosive/grenade) || ispath(typepath,/obj/item/weapon/gun/flamer) || ispath(typepath,/obj/item/storage) )
 				R.display_color = "black"
-//			else if(ispath(typepath,/obj/item/clothing) || ispath(typepath,/obj/item/storage))
-//				R.display_color = "green"
-//			else if(ispath(typepath,/obj/item/reagent_container) || ispath(typepath,/obj/item/stack/medical))
-//				R.display_color = "blue"
+// else if(ispath(typepath,/obj/item/clothing) || ispath(typepath,/obj/item/storage))
+// R.display_color = "green"
+// else if(ispath(typepath,/obj/item/reagent_container) || ispath(typepath,/obj/item/stack/medical))
+// R.display_color = "blue"
 			else
 				R.display_color = "white"
 
@@ -345,7 +354,7 @@
 	desc = "Contains Weyland-Yutani approved recreational items, like Walkmans and Cards."
 	icon_state = "walkman"
 	product_ads = "The only place to have fun in the entire Marine Corps!;You'll find no better music from here to Arcturus!;Instructions not included with decks of cards!;No volume controls - you don't need them!;All products responsibly made by people having just as much fun as you will be!"
-	vend_delay = 5
+	vend_delay = 0.5 SECONDS
 	idle_power_usage = 200
 
 	products = list(/obj/item/device/cassette_tape/pop1 = 10,
@@ -366,16 +375,16 @@
 
 	contraband = list(/obj/item/toy/sword = 2)
 
-	prices = list(/obj/item/device/cassette_tape/pop1 = 3,
-		/obj/item/device/cassette_tape/hiphop = 3,
-		/obj/item/device/cassette_tape/nam = 3,
-		/obj/item/device/cassette_tape/ocean = 4,
-		/obj/item/device/cassette_tape/pop3 = 3,
-		/obj/item/device/cassette_tape/pop4 = 3,
-		/obj/item/device/cassette_tape/pop2 = 3,
-		/obj/item/device/cassette_tape/heavymetal = 3,
-		/obj/item/device/cassette_tape/hairmetal = 3,
-		/obj/item/device/cassette_tape/indie = 3,
+	prices = list(/obj/item/device/cassette_tape/pop1 = 5,
+		/obj/item/device/cassette_tape/hiphop = 5,
+		/obj/item/device/cassette_tape/nam = 5,
+		/obj/item/device/cassette_tape/ocean = 6,
+		/obj/item/device/cassette_tape/pop3 = 5,
+		/obj/item/device/cassette_tape/pop4 = 5,
+		/obj/item/device/cassette_tape/pop2 = 5,
+		/obj/item/device/cassette_tape/heavymetal = 5,
+		/obj/item/device/cassette_tape/hairmetal = 5,
+		/obj/item/device/cassette_tape/indie = 5,
 		/obj/item/device/walkman = 15,
 		/obj/item/storage/pouch/cassette = 10,
 		/obj/item/toy/deck = 20,

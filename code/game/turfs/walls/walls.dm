@@ -3,7 +3,7 @@
 	desc = "A huge chunk of metal used to separate rooms."
 	icon = 'icons/turf/walls/walls.dmi'
 	icon_state = "0"
-	opacity = 1
+	opacity = TRUE
 	var/hull = 0 //1 = Can't be deconstructed by tools or thermite. Used for Sulaco walls
 	var/walltype = WALL_METAL
 	var/junctiontype //when walls smooth with one another, the type of junction each wall is.
@@ -129,6 +129,10 @@
 /turf/closed/wall/get_examine_text(mob/user)
 	. = ..()
 
+	if(hull)
+		.+= SPAN_WARNING("You don't think you have any tools able to even scratch this.")
+		return //If it's indestructable, we don't want to give the wrong impression by saying "you can decon it with a welder"
+
 	if(!damage)
 		if (acided_hole)
 			. += SPAN_WARNING("It looks fully intact, except there's a large hole that could've been caused by some sort of acid.")
@@ -251,7 +255,7 @@
 	O.icon = 'icons/effects/fire.dmi'
 	O.icon_state = "red_3"
 	O.anchored = 1
-	O.density = 1
+	O.density = TRUE
 	O.layer = FLY_LAYER
 
 	to_chat(user, SPAN_WARNING("The thermite starts melting through [src]."))
@@ -325,6 +329,9 @@
 			return
 		if(!HAS_TRAIT(user, TRAIT_SUPER_STRONG))
 			to_chat(user, SPAN_WARNING("You can't use \the [W] properly!"))
+			return
+		if(hull)
+			to_chat(user, SPAN_WARNING("Even with your immense strength, you can't bring down \the [src]."))
 			return
 
 		to_chat(user, SPAN_NOTICE("You start taking down \the [src]."))

@@ -12,10 +12,10 @@
 	var/target_rotation = 0
 	var/list/shuttle_turfs = null
 
-	var/docking_controller_tag	//tag of the controller used to coordinate docking
-	var/datum/computer/file/embedded_program/docking/docking_controller	//the controller itself. (micro-controller, not game controller)
+	var/docking_controller_tag //tag of the controller used to coordinate docking
+	var/datum/computer/file/embedded_program/docking/docking_controller //the controller itself. (micro-controller, not game controller)
 
-	var/arrive_time = 0	//the time at which the shuttle arrives when long jumping
+	var/arrive_time = 0 //the time at which the shuttle arrives when long jumping
 
 	//Important note: Shuttle code is a mess, recharge vars will only work fully on ferry type shuttles, aka everything but specops snowflake
 	var/recharge_time = SHUTTLE_RECHARGE //Default recharge time attached to the shuttle itself
@@ -42,7 +42,7 @@
 	moving_status = SHUTTLE_WARMUP
 	spawn(warmup_time)
 		if (moving_status == SHUTTLE_IDLE)
-			return	//someone cancelled the launch
+			return //someone cancelled the launch
 
 		moving_status = SHUTTLE_INTRANSIT //shouldn't matter but just to be safe
 		move(origin, destination)
@@ -59,7 +59,7 @@
 	spawn(warmup_time)
 		if (moving_status == SHUTTLE_IDLE)
 			recharging = 0
-			return	//someone canceled the launch
+			return //someone canceled the launch
 
 		if(transit_optimized)
 			arrive_time = world.time + travel_time * SHUTTLE_OPTIMIZE_FACTOR_TRAVEL
@@ -67,7 +67,7 @@
 			arrive_time = world.time + travel_time
 		moving_status = SHUTTLE_INTRANSIT
 		move(departing, interim, direction)
-		addtimer(CALLBACK(src, .proc/close_doors, interim), 1)
+		addtimer(CALLBACK(src, PROC_REF(close_doors), interim), 1)
 
 		while (world.time < arrive_time)
 			sleep(5)
@@ -75,7 +75,7 @@
 		sleep(100)
 
 		move(interim, destination, direction)
-		addtimer(CALLBACK(src, .proc/open_doors, destination), 1)
+		addtimer(CALLBACK(src, PROC_REF(open_doors), destination), 1)
 
 		moving_status = SHUTTLE_IDLE
 
@@ -90,12 +90,12 @@
 /* Pseudo-code. Auto-bolt shuttle airlocks when in motion.
 /datum/shuttle/proc/toggle_doors(var/close_doors, var/bolt_doors, var/area/whatArea)
 	if(!whatArea) return <-- logic checks!
-  		for(all doors in whatArea)
-  			if(door.id is the same as src.id)
+		for(all doors in whatArea)
+			if(door.id is the same as src.id)
 				if(close_doors)
-			    	toggle dat shit
-			   	if(bolt_doors)
-			   		bolt dat shit
+					toggle dat shit
+				if(bolt_doors)
+					bolt dat shit
 */
 
 //Actual code. lel
@@ -106,13 +106,13 @@
 
 	for(var/obj/structure/machinery/door/unpowered/D in area)
 		if(!D.density && !D.locked)
-			INVOKE_ASYNC(D, /obj/structure/machinery/door.proc/close)
+			INVOKE_ASYNC(D, TYPE_PROC_REF(/obj/structure/machinery/door, close))
 
 	for(var/obj/structure/machinery/door/poddoor/shutters/P in area)
 		if(!P.density)
-			INVOKE_ASYNC(P, /obj/structure/machinery/door.proc/close)
+			INVOKE_ASYNC(P, TYPE_PROC_REF(/obj/structure/machinery/door, close))
 
-	if (iselevator)	// Super snowflake code
+	if (iselevator) // Super snowflake code
 		for (var/obj/structure/machinery/computer/shuttle_control/ice_colony/C in area)
 			C.animate_on()
 
@@ -120,7 +120,7 @@
 			G.start()
 
 		for (var/obj/structure/machinery/door/airlock/D in area)//For elevators
-			INVOKE_ASYNC(src, .proc/force_close_launch, D)
+			INVOKE_ASYNC(src, PROC_REF(force_close_launch), D)
 
 /datum/shuttle/proc/force_close_launch(var/obj/structure/machinery/door/airlock/AL) // whatever. SLEEPS
 	AL.safe = FALSE
@@ -135,13 +135,13 @@
 
 	for(var/obj/structure/machinery/door/unpowered/D in area)
 		if(D.density && !D.locked)
-			INVOKE_ASYNC(D, /obj/structure/machinery/door.proc/open)
+			INVOKE_ASYNC(D, TYPE_PROC_REF(/obj/structure/machinery/door, open))
 
 	for(var/obj/structure/machinery/door/poddoor/shutters/P in area)
 		if(P.density)
-			INVOKE_ASYNC(P, /obj/structure/machinery/door.proc/open)
+			INVOKE_ASYNC(P, TYPE_PROC_REF(/obj/structure/machinery/door, open))
 
-	if (iselevator)	// Super snowflake code
+	if (iselevator) // Super snowflake code
 		for (var/obj/structure/machinery/computer/shuttle_control/ice_colony/C in area)
 			C.animate_off()
 
@@ -150,9 +150,9 @@
 
 		for (var/obj/structure/machinery/door/airlock/D in area)//For elevators
 			if (D.locked)
-				INVOKE_ASYNC(D, /obj/structure/machinery/door/airlock/.proc/unlock)
+				INVOKE_ASYNC(D, TYPE_PROC_REF(/obj/structure/machinery/door/airlock, unlock))
 			if (D.density)
-				INVOKE_ASYNC(D, /obj/structure/machinery/door.proc/open)
+				INVOKE_ASYNC(D, TYPE_PROC_REF(/obj/structure/machinery/door, open))
 
 /datum/shuttle/proc/dock()
 	if (!docking_controller)
@@ -174,7 +174,7 @@
 
 /datum/shuttle/proc/skip_docking_checks()
 	if (!docking_controller || !current_dock_target())
-		return 1	//shuttles without docking controllers or at locations without docking ports act like old-style shuttles
+		return 1 //shuttles without docking controllers or at locations without docking ports act like old-style shuttles
 	return 0
 
 //just moves the shuttle from A to B, if it can be moved
@@ -215,7 +215,7 @@
 					shake_camera(M, iselevator? 2 : 10, 1)
 		if(istype(M, /mob/living/carbon) && !iselevator)
 			if(!M.buckled)
-				M.KnockDown(3)
+				M.apply_effect(3, WEAKEN)
 
 	for(var/turf/T in origin) // WOW so hacky - who cares. Abby
 		if(iselevator)

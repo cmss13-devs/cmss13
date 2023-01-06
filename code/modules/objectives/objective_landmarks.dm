@@ -1,6 +1,6 @@
 /obj/effect/landmark/objective_landmark
 	name = "Objective Landmark"
-	icon_state = "o_white"
+	icon_state = "intel"
 	var/document_holder_present = FALSE
 
 /obj/effect/landmark/objective_landmark/Initialize(mapload, ...)
@@ -16,7 +16,7 @@
 
 /obj/effect/landmark/objective_landmark/close
 	name = "Objective Landmark Close"
-	icon_state = "o_green"
+	icon_state = "intel_close"
 /obj/effect/landmark/objective_landmark/close/Initialize(mapload, ...)
 	. = ..()
 	GLOB.objective_landmarks_close[src] = document_holder_present
@@ -26,7 +26,7 @@
 
 /obj/effect/landmark/objective_landmark/medium
 	name = "Objective Landmark Medium"
-	icon_state = "o_yellow"
+	icon_state = "intel_medium"
 /obj/effect/landmark/objective_landmark/medium/Initialize(mapload, ...)
 	. = ..()
 	GLOB.objective_landmarks_medium[src] = document_holder_present
@@ -36,7 +36,7 @@
 
 /obj/effect/landmark/objective_landmark/far
 	name = "Objective Landmark Far"
-	icon_state = "o_red"
+	icon_state = "intel_far"
 /obj/effect/landmark/objective_landmark/far/Initialize(mapload, ...)
 	. = ..()
 	GLOB.objective_landmarks_far[src] = document_holder_present
@@ -46,7 +46,7 @@
 
 /obj/effect/landmark/objective_landmark/science
 	name = "Objective Landmark Science"
-	icon_state = "o_blue"
+	icon_state = "intel_sci"
 /obj/effect/landmark/objective_landmark/science/Initialize(mapload, ...)
 	. = ..()
 	GLOB.objective_landmarks_science[src] = document_holder_present

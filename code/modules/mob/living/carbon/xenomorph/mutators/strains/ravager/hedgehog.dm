@@ -4,7 +4,7 @@
 	flavor_description = "In the midst of the Chaos of the battlefield, there is also opportunity."
 	cost = MUTATOR_COST_EXPENSIVE
 	individual_only = TRUE
-	caste_whitelist = list(XENO_CASTE_RAVAGER)  	// Only Ravager.
+	caste_whitelist = list(XENO_CASTE_RAVAGER) // Only Ravager.
 	mutator_actions_to_remove = list(
 		/datum/action/xeno_action/onclick/empower,
 		/datum/action/xeno_action/activable/pounce/charge,
@@ -18,25 +18,25 @@
 	behavior_delegate_type = /datum/behavior_delegate/ravager_hedgehog
 	keystone = TRUE
 
-/datum/xeno_mutator/hedgehog/apply_mutator(datum/mutator_set/individual_mutators/MS)
+/datum/xeno_mutator/hedgehog/apply_mutator(datum/mutator_set/individual_mutators/mutator_set)
 	. = ..()
 	if (. == 0)
 		return
 
-	var/mob/living/carbon/Xenomorph/Ravager/R = MS.xeno
+	var/mob/living/carbon/Xenomorph/Ravager/ravager = mutator_set.xeno
 
-	R.mutation_type = RAVAGER_HEDGEHOG
-	R.plasma_max = 0
-	R.small_explosives_stun = FALSE
-	R.explosivearmor_modifier += XENO_EXPOSIVEARMOR_MOD_SMALL
-	R.speed_modifier += XENO_SPEED_SLOWMOD_TIER_8
+	ravager.mutation_type = RAVAGER_HEDGEHOG
+	ravager.plasma_max = 0
+	ravager.small_explosives_stun = FALSE
+	ravager.explosivearmor_modifier += XENO_EXPOSIVEARMOR_MOD_SMALL
+	ravager.speed_modifier += XENO_SPEED_SLOWMOD_TIER_8
 
-	apply_behavior_holder(R)
+	apply_behavior_holder(ravager)
 
-	mutator_update_actions(R)
-	MS.recalculate_actions(description, flavor_description)
+	mutator_update_actions(ravager)
+	mutator_set.recalculate_actions(description, flavor_description)
 
-	R.recalculate_everything()
+	ravager.recalculate_everything()
 
 /datum/behavior_delegate/ravager_hedgehog
 	name = "Hedgehog Ravager Behavior Delegate"
@@ -73,7 +73,7 @@
 
 	shards = 0
 	shards_locked = TRUE
-	addtimer(CALLBACK(src, .proc/unlock_shards), shard_lock_duration)
+	addtimer(CALLBACK(src, PROC_REF(unlock_shards)), shard_lock_duration)
 
 /datum/behavior_delegate/ravager_hedgehog/proc/unlock_shards()
 
@@ -109,7 +109,18 @@
 	bound_xeno.armor_modifier += armor_buff_count * armor_buff_per_fifty_shards
 	bound_xeno.recalculate_armor()
 	times_armor_buffed = armor_buff_count
+
+	var/image/holder = bound_xeno.hud_list[PLASMA_HUD]
+	holder.overlays.Cut()
+	var/percentage_shards = round((shards / max_shards) * 100, 10)
+	if(percentage_shards)
+		holder.overlays += image('icons/mob/hud/hud.dmi', "xenoenergy[percentage_shards]")
 	return
+
+
+/datum/behavior_delegate/ravager_hedgehog/handle_death(mob/M)
+	var/image/holder = bound_xeno.hud_list[PLASMA_HUD]
+	holder.overlays.Cut()
 
 /datum/behavior_delegate/ravager_hedgehog/on_hitby_projectile()
 	if (!shards_locked)

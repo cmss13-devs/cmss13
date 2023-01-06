@@ -1,7 +1,3 @@
-//Provost Officer
-/datum/job/special/provost/officer
-	title = JOB_PROVOST_OFFICER
-
 //Provost Enforcer
 /datum/job/special/provost/enforcer
 	title = JOB_PROVOST_ENFORCER

@@ -2,20 +2,22 @@
   "private": true,
   "name": "tgui-workspace",
   "version": "4.3.0",
+  "packageManager": "yarn@3.1.1",
   "workspaces": [
     "packages/*"
   ],
   "scripts": {
-    "tgui:build": "webpack",
     "tgui:analyze": "webpack --analyze",
+    "tgui:bench": "webpack --env TGUI_BENCH=1 && node packages/tgui-bench/index.js",
+    "tgui:build": "BROWSERSLIST_IGNORE_OLD_DATA=true webpack",
     "tgui:dev": "node --experimental-modules packages/tgui-dev-server/index.js",
     "tgui:lint": "eslint packages --ext .js,.cjs,.ts,.tsx",
+    "tgui:prettier": "prettierx --check .",
     "tgui:sonar": "eslint packages --ext .js,.cjs,.ts,.tsx -c .eslintrc-sonar.yml",
-    "tgui:tsc": "tsc",
     "tgui:test": "jest --watch",
     "tgui:test-simple": "CI=true jest --color",
     "tgui:test-ci": "CI=true jest --color --collect-coverage",
-    "tgui:bench": "webpack --env TGUI_BENCH=1 && node packages/tgui-bench/index.js"
+    "tgui:tsc": "tsc"
   },
   "dependencies": {
     "@babel/core": "^7.15.0",
@@ -57,6 +59,5 @@
     "webpack": "^5.50.0",
     "webpack-bundle-analyzer": "^4.4.2",
     "webpack-cli": "^4.7.2"
-  },
-  "packageManager": "yarn@3.1.1"
+  }
 }

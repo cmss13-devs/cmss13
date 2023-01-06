@@ -1,9 +1,9 @@
 /turf/closed/wall/r_wall
 	name = "reinforced wall"
 	desc = "A huge chunk of reinforced metal used to separate rooms."
-	icon_state = "r_wall"
-	opacity = 1
-	density = 1
+	icon_state = "r_wall_mapicon"
+	opacity = TRUE
+	density = TRUE
 
 	damage_cap = HEALTH_WALL_REINFORCED
 	max_temperature = 6000
@@ -21,7 +21,7 @@
 		return
 
 	//get the user's location
-	if( !istype(user.loc, /turf) )	return	//can't do this stuff whilst inside objects and such
+	if( !istype(user.loc, /turf) ) return //can't do this stuff whilst inside objects and such
 
 	//THERMITE related stuff. Calls src.thermitemelt() which handles melting walls and the relevant effects
 	if(thermite)
@@ -194,16 +194,12 @@
 /turf/closed/wall/r_wall/unmeltable
 	name = "heavy reinforced wall"
 	desc = "A huge chunk of ultra-reinforced metal used to separate rooms. Looks virtually indestructible."
-	icon_state = "r_wall"
+	icon_state = "heavy_r_wall_mapicon"
 	walltype = WALL_REINFORCED
 	hull = 1
 
 /turf/closed/wall/r_wall/unmeltable/attackby() //This should fix everything else. No cables, etc
 	return
-
-
-
-
 
 //Chigusa
 
@@ -277,3 +273,44 @@
 
 /turf/closed/wall/r_wall/biodome/biodome_unmeltable/attackby() //This should fix everything else. No cables, etc
 		return
+
+
+/// Destructible elevator walls, for when you want the elevator to act as a prop rather than an actual elevator
+/turf/closed/wall/r_wall/elevator
+	icon = 'icons/turf/elevator.dmi'
+	icon_state = "wall"
+	special_icon = TRUE
+
+// Wall with gears that animate when elevator is moving
+/turf/closed/wall/r_wall/elevator/gears
+	icon_state = "wall_gear"
+
+// Special wall icons
+/turf/closed/wall/r_wall/elevator/research
+	icon_state = "wall_research"
+
+/turf/closed/wall/r_wall/elevator/dorm
+	icon_state = "wall_dorm"
+
+/turf/closed/wall/r_wall/elevator/freight
+	icon_state = "wall_freight"
+
+/turf/closed/wall/r_wall/elevator/arrivals
+	icon_state = "wall_arrivals"
+
+// Elevator Buttons
+/turf/closed/wall/r_wall/elevator/button
+	name = "elevator buttons"
+
+/turf/closed/wall/r_wall/elevator/button/research
+	icon_state = "wall_button_research"
+
+/turf/closed/wall/r_wall/elevator/button/dorm
+	icon_state = "wall_button_dorm"
+
+/turf/closed/wall/r_wall/elevator/button/freight
+	icon_state = "wall_button_freight"
+
+/turf/closed/wall/r_wall/elevator/button/arrivals
+	icon_state = "wall_button_arrivals"
+

@@ -1,29 +1,5 @@
 //DEFINITIONS FOR ASSET DATUMS START HERE.
 
-/datum/asset/simple/tgui
-	keep_local_name = TRUE
-	assets = list(
-		"tgui.bundle.js" = file("tgui/public/tgui.bundle.js"),
-		"tgui.bundle.css" = file("tgui/public/tgui.bundle.css"),
-	)
-
-/datum/asset/simple/tgui_panel
-	keep_local_name = TRUE
-	assets = list(
-		"tgui-panel.bundle.js" = file("tgui/public/tgui-panel.bundle.js"),
-		"tgui-panel.bundle.css" = file("tgui/public/tgui-panel.bundle.css"),
-	)
-
-/datum/asset/simple/fontawesome
-	keep_local_name = TRUE
-	assets = list(
-		"fa-regular-400.ttf" = 'html/font-awesome/webfonts/fa-regular-400.ttf',
-		"fa-solid-900.ttf" = 'html/font-awesome/webfonts/fa-solid-900.ttf',
-		"fa-v4compatibility.ttf" = 'html/font-awesome/webfonts/fa-v4compatibility.ttf',
-		"font-awesome.css" = 'html/font-awesome/css/all.min.css',
-		"v4shim.css" = 'html/font-awesome/css/v4-shims.min.css',
-	)
-
 /datum/asset/simple/common
 	assets = list(
 		"common.css" = 'html/browser/common.css',
@@ -176,7 +152,7 @@
 /datum/asset/spritesheet/chat/register()
 	InsertAll("emoji", 'icons/emoji.dmi')
 	// pre-loading all lanugage icons also helps to avoid meta
-/*	InsertAll("language", 'icons/misc/language.dmi')
+/* InsertAll("language", 'icons/misc/language.dmi')
 	// catch languages which are pulling icons from another file
 	for(var/path in typesof(/datum/language))
 		var/datum/language/L = path
@@ -256,6 +232,41 @@
 		Insert("[icon_name]_big", iconBig)
 	return ..()
 
+/datum/asset/spritesheet/ranks
+	name = "squadranks"
+
+/datum/asset/spritesheet/ranks/register()
+	var/icon_file = 'icons/mob/hud/marine_hud.dmi'
+	var/list/squads = list("Alpha", "Bravo", "Charlie", "Delta", "Foxtrot", "Cryo")
+
+	var/list/icon_data = list(
+		list("Mar", null),
+		list("ass", "hudsquad_ass"),
+		list("Eng", "hudsquad_engi"),
+		list("Med", "hudsquad_med"),
+		list("SG", "hudsquad_gun"),
+		list("Spc", "hudsquad_spec"),
+		list("RTO", "hudsquad_rto"),
+		list("SL", "hudsquad_leader"),
+	)
+
+	var/i
+	for(i = 1; i < length(squads); i++)
+		var/squad = squads[i]
+		var/color = squad_colors[i]
+		for(var/iref in icon_data)
+			var/list/iconref = iref
+			var/icon/background = icon('icons/mob/hud/marine_hud.dmi', "hudsquad", SOUTH)
+			background.Blend(color, ICON_MULTIPLY)
+			if(iconref[2])
+				var/icon/squad_icon = icon(icon_file, iconref[2], SOUTH)
+				background.Blend(squad_icon, ICON_OVERLAY)
+			background.Crop(25,25,32,32)
+			background.Scale(16,16)
+
+			Insert("squad-[squad]-hud-[iconref[1]]", background)
+	return ..()
+
 /datum/asset/spritesheet/vending_products
 	name = "vending"
 
@@ -267,7 +278,7 @@
 		var/icon/I
 
 		if (!ispath(item, /atom))
-			world.log << "not atom! [item]"
+			log_debug("not atom! [item]")
 			continue
 
 		if (sprites[icon_file])
@@ -288,6 +299,7 @@
 					icon_state = initial(target.icon_state)
 					var/target_obj = new target()
 					I = getFlatIcon(target_obj)
+					I.Scale(32,32)
 					qdel(target_obj)
 			else
 				item = new k()
@@ -303,7 +315,7 @@
 	name = "choosefruit"
 
 /datum/asset/spritesheet/choose_fruit/register()
-	var/icon_file = 'icons/mob/hostiles/fruits.dmi'
+	var/icon_file = 'icons/mob/xenos/fruits.dmi'
 	var/icon_states_list = icon_states(icon_file)
 	for(var/obj/effect/alien/resin/fruit/fruit as anything in typesof(/obj/effect/alien/resin/fruit))
 		var/icon_state = initial(fruit.mature_icon_state)

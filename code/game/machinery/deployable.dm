@@ -12,12 +12,12 @@
 	desc = "A deployable barrier. Swipe your ID card to lock/unlock it."
 	icon = 'icons/obj/objects.dmi'
 	anchored = 0.0
-	density = 1
+	density = TRUE
 	icon_state = "barrier0"
 	health = 100.0
 	var/maxhealth = 100.0
 	var/locked = 0.0
-//	req_access = list(access_maint_tunnels)
+// req_access = list(access_maint_tunnels)
 
 /obj/structure/machinery/deployable/barrier/Initialize(mapload, ...)
 	. = ..()
@@ -76,15 +76,14 @@
 /obj/structure/machinery/deployable/barrier/proc/explode()
 
 	visible_message(SPAN_DANGER("<B>[src] blows apart!</B>"))
-	var/turf/Tsec = get_turf(src)
-
-/*	var/obj/item/stack/rods/ =*/
-	new /obj/item/stack/rods(Tsec)
-
 	var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 	s.set_up(3, 1, src)
 	s.start()
 
+	deconstruct(FALSE)
 	explosion(src.loc,-1,-1,0)
-	if(src)
-		qdel(src)
+
+/obj/structure/machinery/deployable/barrier/deconstruct(disassembled = TRUE)
+	if(!disassembled)
+		new /obj/item/stack/rods(loc)
+	return ..()

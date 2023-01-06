@@ -26,6 +26,7 @@
 		update_canmove()
 		update_icons()
 		handle_luminosity()
+		handle_blood()
 
 		if(behavior_delegate)
 			behavior_delegate.on_life()
@@ -69,7 +70,7 @@
 	if(!caste || !(caste.fire_immunity & FIRE_IMMUNITY_NO_DAMAGE) || fire_reagent.fire_penetrating)
 		var/dmg = armor_damage_reduction(GLOB.xeno_fire, PASSIVE_BURN_DAM_CALC(fire_reagent.intensityfire, fire_reagent.durationfire, fire_stacks))
 		apply_damage(dmg, BURN)
-		INVOKE_ASYNC(src, /mob.proc/emote, pick("roar", "needhelp"))
+		INVOKE_ASYNC(src, TYPE_PROC_REF(/mob, emote), pick("roar", "needhelp"))
 
 #undef PASSIVE_BURN_DAM_CALC
 
@@ -140,6 +141,17 @@
 			if(strength > recovery_new)
 				recovery_new = strength
 
+	// Also cap the auras
+	for(var/capped_aura in received_phero_caps)
+		switch(capped_aura)
+			if("frenzy")
+				frenzy_new = min(frenzy_new, received_phero_caps[capped_aura])
+			if("warding")
+				warding_new = min(warding_new, received_phero_caps[capped_aura])
+			if("recovery")
+				recovery_new = min(recovery_new, received_phero_caps[capped_aura])
+
+
 /mob/living/carbon/Xenomorph/handle_regular_status_updates(regular_update = TRUE)
 	if(regular_update && health <= 0 && (!caste || (caste.fire_immunity & FIRE_IMMUNITY_NO_IGNITE) || !on_fire)) //Sleeping Xenos are also unconscious, but all crit Xenos are under 0 HP. Go figure
 		var/turf/T = loc
@@ -151,15 +163,15 @@
 
 	updatehealth()
 
-	if(health > 0 && stat != DEAD)	//alive and not in crit! Turn on their vision.
+	if(health > 0 && stat != DEAD) //alive and not in crit! Turn on their vision.
 		see_in_dark = 50
 
 		SetEarDeafness(0) //All this stuff is prob unnecessary
 		ear_damage = 0
-		eye_blind = 0
+		SetEyeBlind(0)
 
 		if(knocked_out) //If they're down, make sure they are actually down.
-			blinded = 1
+			blinded = TRUE
 			stat = UNCONSCIOUS
 			if(regular_update && halloss > 0)
 				apply_damage(-3, HALLOSS)
@@ -169,10 +181,10 @@
 			if(regular_update && mind)
 				if((mind.active && client != null) || immune_to_ssd)
 					sleeping = max(sleeping - 1, 0)
-			blinded = 1
+			blinded = TRUE
 			stat = UNCONSCIOUS
 		else
-			blinded = 0
+			blinded = FALSE
 			stat = CONSCIOUS
 			if(regular_update && halloss > 0)
 				if(resting)
@@ -182,11 +194,7 @@
 
 		if(regular_update)
 			if(eye_blurry)
-				overlay_fullscreen("eye_blurry", /atom/movable/screen/fullscreen/impaired, 5)
-				src.eye_blurry--
-				src.eye_blurry = max(0, src.eye_blurry)
-			else
-				clear_fullscreen("eye_blurry")
+				src.ReduceEyeBlur(1)
 
 			handle_statuses()//natural decrease of stunned, knocked_down, etc...
 			handle_interference()
@@ -348,14 +356,9 @@ Make sure their actual health updates immediately.*/
 			if(prob(50) && !is_runner_hiding && !current_aura)
 				plasma_stored += 0.1 * plasma_max / 100
 
-		if(isXenoHivelord(src))
-			var/mob/living/carbon/Xenomorph/Hivelord/H = src
-			if(H.weedwalking_activated)
-				plasma_stored -= 30
-				if(plasma_stored < 0)
-					H.weedwalking_activated = 0
-					to_chat(src, SPAN_WARNING("You feel dizzy as the world slows down."))
-					recalculate_move_delay = TRUE
+
+		for(var/datum/action/xeno_action/action in src.actions)
+			action.life_tick()
 
 		if(current_aura)
 			plasma_stored -= 5
@@ -427,8 +430,8 @@ Make sure their actual health updates immediately.*/
 	if(!hud_used || !hud_used.locate_marker || !tracked_marker.loc || !loc)
 		return
 
-	var/tracked_marker_z_level = tracked_marker.loc.z 		 //I was getting errors if the mark was deleted while this was operating,
-	var/tracked_marker_turf = get_turf(tracked_marker)	 //so I made local variables to circumvent this
+	var/tracked_marker_z_level = tracked_marker.loc.z  //I was getting errors if the mark was deleted while this was operating,
+	var/tracked_marker_turf = get_turf(tracked_marker)  //so I made local variables to circumvent this
 	var/area/A = get_area(loc)
 	var/area/MA = get_area(tracked_marker_turf)
 	var/atom/movable/screen/mark_locator/ML = hud_used.locate_marker
@@ -481,11 +484,12 @@ Make sure their actual health updates immediately.*/
 				var/grace_time = crit_grace_time > 0 ? crit_grace_time + (1 SECONDS * max(round(warding_aura - 1), 0)) : 0
 				if(grace_time)
 					sound_environment_override = SOUND_ENVIRONMENT_PSYCHOTIC
-					addtimer(CALLBACK(src, .proc/handle_crit), grace_time)
+					addtimer(CALLBACK(src, PROC_REF(handle_crit)), grace_time)
 				else
 					handle_crit()
 				next_grace_time = world.time + grace_time
-	med_hud_set_health()
+	if(!gibbing)
+		med_hud_set_health()
 
 /mob/living/carbon/Xenomorph/proc/handle_crit()
 	if(stat == DEAD || gibbing)
@@ -493,7 +497,7 @@ Make sure their actual health updates immediately.*/
 
 	sound_environment_override = SOUND_ENVIRONMENT_NONE
 	stat = UNCONSCIOUS
-	blinded = 1
+	blinded = TRUE
 	see_in_dark = 5
 	if(layer != initial(layer)) //Unhide
 		layer = initial(layer)
@@ -511,7 +515,7 @@ Make sure their actual health updates immediately.*/
 
 /mob/living/carbon/Xenomorph/handle_stunned()
 	if(stunned)
-		stunned = max(stunned-1.5,0)
+		adjust_effect(life_stun_reduction, STUN, EFFECT_FLAG_LIFE)
 		stun_callback_check()
 
 	return stunned
@@ -527,28 +531,28 @@ Make sure their actual health updates immediately.*/
 
 /mob/living/carbon/Xenomorph/handle_dazed()
 	if(dazed)
-		dazed = max(dazed-1.5,0)
+		adjust_effect(life_daze_reduction, DAZE, EFFECT_FLAG_LIFE)
 	return dazed
 
 /mob/living/carbon/Xenomorph/handle_slowed()
 	if(slowed)
-		slowed = max(slowed-1.5,0)
+		adjust_effect(life_slow_reduction, SLOW, EFFECT_FLAG_LIFE)
 	return slowed
 
 /mob/living/carbon/Xenomorph/handle_superslowed()
 	if(superslowed)
-		superslowed = max(superslowed-1.5,0)
+		adjust_effect(life_slow_reduction, SUPERSLOW, EFFECT_FLAG_LIFE)
 	return superslowed
 
 /mob/living/carbon/Xenomorph/handle_knocked_down()
 	if(knocked_down)
-		knocked_down = max(knocked_down-1.5,0)
+		adjust_effect(life_knockdown_reduction, WEAKEN, EFFECT_FLAG_LIFE)
 		knocked_down_callback_check()
 	return knocked_down
 
 /mob/living/carbon/Xenomorph/handle_knocked_out()
 	if(knocked_out)
-		knocked_out = max(knocked_out - 1.5, 0)
+		adjust_effect(life_knockout_reduction, PARALYZE, EFFECT_FLAG_LIFE)
 		knocked_out_callback_check()
 	return knocked_out
 
@@ -568,7 +572,7 @@ Make sure their actual health updates immediately.*/
 	return TRUE //we have off-weed healing, and either we're on Almayer with the Queen, or we're on non-Almayer, or the Queen is dead, good enough!
 
 
-#define XENO_TIMER_TO_EFFECT_CONVERSION 1.5/20 //once per 2 seconds, with 1.5 effect per that once
+#define XENO_TIMER_TO_EFFECT_CONVERSION (0.075) // (1.5/20) //once per 2 seconds, with 1.5 effect per that once
 
 // This is here because sometimes our stun comes too early and tick is about to start, so we need to compensate
 // this is the best place to do it, tho name might be a bit misleading I guess

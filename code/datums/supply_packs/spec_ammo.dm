@@ -9,7 +9,7 @@
 					/obj/item/ammo_magazine/rocket/ap,
 					/obj/item/ammo_magazine/rocket/wp
 					)
-	cost = RO_PRICE_CHEAP
+	cost = 30
 	containertype = /obj/structure/closet/crate/explosives
 	containername = "\improper M5 RPG Rocket Crate"
 	group = "Weapons Specialist Ammo"
@@ -21,7 +21,7 @@
 					/obj/item/ammo_magazine/rocket,
 					/obj/item/ammo_magazine/rocket
 					)
-	cost = RO_PRICE_CHEAP
+	cost = 30
 	containertype = /obj/structure/closet/crate/explosives
 	containername = "M5 RPG HE Rocket Crate"
 	group = "Weapons Specialist Ammo"
@@ -33,7 +33,7 @@
 					/obj/item/ammo_magazine/rocket/ap,
 					/obj/item/ammo_magazine/rocket/ap
 					)
-	cost = RO_PRICE_CHEAP
+	cost = 30
 	containertype = /obj/structure/closet/crate/explosives
 	containername = "M5 RPG AP Rockets Crate"
 	group = "Weapons Specialist Ammo"
@@ -45,7 +45,7 @@
 					/obj/item/ammo_magazine/rocket/wp,
 					/obj/item/ammo_magazine/rocket/wp
 					)
-	cost = RO_PRICE_CHEAP
+	cost = 30
 	containertype = /obj/structure/closet/crate/explosives
 	containername = "M5 RPG WP Rocket Crate"
 	group = "Weapons Specialist Ammo"
@@ -62,7 +62,7 @@
 					/obj/item/ammo_magazine/sniper/incendiary,
 					/obj/item/ammo_magazine/sniper/incendiary
 					)
-	cost = RO_PRICE_NORMAL
+	cost = 40
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "M42A Mixed Magazine Crate"
 	group = "Weapons Specialist Ammo"
@@ -76,7 +76,7 @@
 					/obj/item/ammo_magazine/sniper,
 					/obj/item/ammo_magazine/sniper
 					)
-	cost = RO_PRICE_CHEAP
+	cost = 30
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "M42A Marksman Magazine Crate"
 	group = "Weapons Specialist Ammo"
@@ -90,7 +90,7 @@
 					/obj/item/ammo_magazine/sniper/flak,
 					/obj/item/ammo_magazine/sniper/flak
 					)
-	cost = RO_PRICE_CHEAP
+	cost = 30
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "M42A Flak Magazine Crate"
 	group = "Weapons Specialist Ammo"
@@ -104,7 +104,7 @@
 					/obj/item/ammo_magazine/sniper/incendiary,
 					/obj/item/ammo_magazine/sniper/incendiary
 					)
-	cost = RO_PRICE_CHEAP
+	cost = 30
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "M42A Incendiary Magazine Crate"
 	group = "Weapons Specialist Ammo"
@@ -120,7 +120,7 @@
 					/obj/item/ammo_magazine/sniper/anti_materiel,
 					/obj/item/ammo_magazine/sniper/anti_materiel
 					)
-	cost = RO_PRICE_CHEAP
+	cost = 30
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "XM42B Anti-Materiel Magazine Crate"
 	group = "Specialist Ammo"
@@ -137,7 +137,7 @@
 					/obj/item/ammo_magazine/rifle/m4ra/impact,
 					/obj/item/ammo_magazine/rifle/m4ra/impact
 					)
-	cost = RO_PRICE_NORMAL
+	cost = 40
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "M4RA Scout Mixed Magazine Crate"
 	group = "Weapons Specialist Ammo"
@@ -151,7 +151,7 @@
 					/obj/item/ammo_magazine/rifle/m4ra,
 					/obj/item/ammo_magazine/rifle/m4ra
 					)
-	cost = RO_PRICE_CHEAP
+	cost = 30
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "M4RA Scout Magazine Crate"
 	group = "Weapons Specialist Ammo"
@@ -165,7 +165,7 @@
 					/obj/item/ammo_magazine/rifle/m4ra/incendiary,
 					/obj/item/ammo_magazine/rifle/m4ra/incendiary
 					)
-	cost = RO_PRICE_CHEAP
+	cost = 30
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "M4RA Scout Incendiary Magazine"
 	group = "Weapons Specialist Ammo"
@@ -179,7 +179,7 @@
 					/obj/item/ammo_magazine/rifle/m4ra/impact,
 					/obj/item/ammo_magazine/rifle/m4ra/impact
 					)
-	cost = RO_PRICE_CHEAP
+	cost = 30
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "M4RA Scout Impact Magazine Crate"
 	group = "Weapons Specialist Ammo"
@@ -193,7 +193,7 @@
 					/obj/item/ammo_magazine/flamer_tank/large/B,
 					/obj/item/ammo_magazine/flamer_tank/large/X
 					)
-	cost = RO_PRICE_PRICY
+	cost = 60
 	containertype = /obj/structure/closet/crate/ammo/alt/flame
 	containername = "\improper M240-T Mixed Fuel Tank Crate"
 	group = "Weapons Specialist Ammo"
@@ -205,7 +205,7 @@
 					/obj/item/ammo_magazine/flamer_tank/large,
 					/obj/item/ammo_magazine/flamer_tank/large
 					)
-	cost = RO_PRICE_CHEAP
+	cost = 30
 	containertype = /obj/structure/closet/crate/ammo/alt/flame
 	containername = "M240-T Extended Fuel Tank Crate"
 	group = "Weapons Specialist Ammo"
@@ -215,7 +215,7 @@
 	contains = list(
 					/obj/item/ammo_magazine/flamer_tank/large/B
 					)
-	cost = RO_PRICE_CHEAP
+	cost = 30
 	containertype = /obj/structure/closet/crate/ammo/alt/flame
 	containername = "M240-T Type-B Fuel Tank Crate"
 	group = "Weapons Specialist Ammo"
@@ -225,7 +225,7 @@
 	contains = list(
 					/obj/item/ammo_magazine/flamer_tank/large/X
 					)
-	cost = RO_PRICE_NORMAL
+	cost = 40
 	containertype = /obj/structure/closet/crate/ammo/alt/flame
 	containername = "M240-T Type-X Fuel Tank Crate"
 	group = "Weapons Specialist Ammo"

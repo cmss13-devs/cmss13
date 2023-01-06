@@ -1,7 +1,7 @@
 ///////////////////////////////////////////////Condiments
 //Notes by Darem: The condiments food-subtype is for stuff you don't actually eat but you use to modify existing food. They all
-//	leave empty containers when used up and can be filled/re-filled with other items. Formatting for first section is identical
-//	to mixed-drinks code. If you want an object that starts pre-loaded, you need to make it in addition to the other code.
+// leave empty containers when used up and can be filled/re-filled with other items. Formatting for first section is identical
+// to mixed-drinks code. If you want an object that starts pre-loaded, you need to make it in addition to the other code.
 
 //Food items that aren't eaten normally and leave an empty container behind.
 /obj/item/reagent_container/food/condiment
@@ -86,7 +86,7 @@
 		to_chat(user, SPAN_NOTICE(" You transfer [trans] units of the condiment to [target]."))
 
 /obj/item/reagent_container/food/condiment/on_reagent_change()
-	if(icon_state == "saltshakersmall" || icon_state == "peppermillsmall" || icon_state == "hotsauce_cholula" || icon_state == "hotsauce_franks" || icon_state == "hotsauce_sriracha" || icon_state == "hotsauce_tabasco")
+	if(icon_state == "saltshakersmall" || icon_state == "peppermillsmall" || icon_state == "hotsauce_cholula" || icon_state == "hotsauce_franks" || icon_state == "hotsauce_sriracha" || icon_state == "hotsauce_tabasco" || icon_state == "coldsauce_cole")
 		return
 	if(reagents.reagent_list.len > 0)
 		switch(reagents.get_master_reagent_id())
@@ -159,8 +159,8 @@
 	. = ..()
 	reagents.add_reagent("sugar", 50)
 
-/obj/item/reagent_container/food/condiment/saltshaker		//Separate from above since it's a small shaker rather then
-	name = "Salt Shaker"											//	a large one.
+/obj/item/reagent_container/food/condiment/saltshaker //Separate from above since it's a small shaker rather then
+	name = "Salt Shaker" // a large one.
 	desc = "Salt. From space oceans, presumably."
 	icon_state = "saltshakersmall"
 	possible_transfer_amounts = list(1,20) //for clown turning the lid off
@@ -216,3 +216,12 @@
 	desc = "A bottle of Weyland-Yutani brand Tabasco hot sauce."
 	icon_state = "hotsauce_tabasco"
 	item_state = "hotsauce_tabasco"
+
+/obj/item/reagent_container/food/condiment/coldsauce
+	name = "Cole's Cold bottle"
+	desc = "A bottle of cold sauce locally produced in Shivas Snowball. You probably shouldn't drink this on its own."
+	icon_state = "coldsauce_cole"
+
+/obj/item/reagent_container/food/condiment/coldsauce/Initialize()
+	. = ..()
+	reagents.add_reagent("frostoil", 60)

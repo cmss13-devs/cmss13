@@ -15,6 +15,8 @@
 	has_process = TRUE
 	lightning_chance = 2
 
+	fire_smothering_strength = 6
+
 /datum/weather_event/clash_rain/start_weather_event()
 	. = ..()
 	GLOB.minimum_exterior_lighting_alpha = 200

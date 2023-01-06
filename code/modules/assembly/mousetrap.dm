@@ -32,11 +32,11 @@
 			if("feet")
 				if(!H.shoes)
 					affecting = H.get_limb(pick("l_leg", "r_leg"))
-					H.KnockDown(3)
+					H.apply_effect(3, WEAKEN)
 			if("l_hand", "r_hand")
 				if(!H.gloves)
 					affecting = H.get_limb(type)
-					H.Stun(3)
+					H.apply_effect(3, STUN)
 		if(affecting)
 			if(affecting.take_damage(1, 0))
 				H.UpdateDamageIcon()
@@ -99,7 +99,7 @@
 	if(armed)
 		finder.visible_message(SPAN_WARNING("[finder] accidentally sets off [src], breaking their fingers."),SPAN_WARNING("You accidentally trigger [src]!"))
 		triggered(finder, finder.hand ? "l_hand" : "r_hand")
-		return 1	//end the search!
+		return 1 //end the search!
 	return 0
 
 

@@ -13,9 +13,20 @@
 	var/aimed_shot_cooldown
 	var/aimed_shot_cooldown_delay = 2.5 SECONDS
 
+	var/enable_aimed_shot_laser = TRUE
+	var/sniper_lockon_icon = "sniper_lockon"
+	var/obj/effect/ebeam/sniper_beam_type = /obj/effect/ebeam/laser
+	var/sniper_beam_icon = "laser_beam"
+
+/obj/item/weapon/gun/rifle/sniper/get_examine_text(mob/user)
+	. = ..()
+	if(!has_aimed_shot)
+		return
+	. += SPAN_NOTICE("This weapon has an unique ability, Aimed Shot, allowing it to deal great damage after a windup.<br><b> Additionally, the aimed shot can be sped up with a tracking laser, which is enabled by default but may be disabled.</b>")
+
 /obj/item/weapon/gun/rifle/sniper/Initialize(mapload, spawn_empty)
 	if(has_aimed_shot)
-		LAZYADD(actions_types, /datum/action/item_action/specialist/aimed_shot)
+		LAZYADD(actions_types, list(/datum/action/item_action/specialist/aimed_shot, /datum/action/item_action/specialist/toggle_laser))
 	return ..()
 
 /obj/item/weapon/gun/rifle/sniper/able_to_fire(mob/living/user)
@@ -65,49 +76,89 @@
 		return TRUE
 
 /datum/action/item_action/specialist/aimed_shot/proc/use_ability(atom/A)
-	var/mob/living/carbon/human/H = owner
+	var/mob/living/carbon/human/human = owner
 	if(!istype(A, /mob/living))
 		return
 
-	var/mob/living/M = A
+	var/mob/living/target = A
 
-	if(M.stat == DEAD || M == H)
+	if(target.stat == DEAD || target == human)
 		return
 
 	var/obj/item/weapon/gun/rifle/sniper/sniper_rifle = holder_item
 	if(world.time < sniper_rifle.aimed_shot_cooldown)
 		return
 
-	if(!check_can_use(M))
+	if(!check_can_use(target))
 		return
 
 	sniper_rifle.aimed_shot_cooldown = world.time + sniper_rifle.aimed_shot_cooldown_delay
+	human.face_atom(target)
 
 	///Add a decisecond to the default 1.5 seconds for each two tiles to hit.
-	var/distance = round(get_dist(M, H) * 0.5)
+	var/distance = round(get_dist(target, human) * 0.5)
 	var/f_aiming_time = sniper_rifle.aiming_time + distance
-	if(HAS_TRAIT(M, TRAIT_SPOTTER_LAZED))
-		f_aiming_time *= 0.5
 
-	var/image/I = image(icon = 'icons/effects/Targeted.dmi', icon_state = "locking-sniper", dir = get_cardinal_dir(M, H))
-	M.overlays += I
-	if(H.client)
-		playsound_client(H.client, 'sound/weapons/TargetOn.ogg', H, 50)
-	playsound(M, 'sound/weapons/TargetOn.ogg', 70, FALSE, 8, falloff = 0.4)
+	var/aim_multiplier = 1
+	var/aiming_buffs
 
-	if(!do_after(H, f_aiming_time, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, NO_BUSY_ICON))
-		M.overlays -= I
+	if(sniper_rifle.enable_aimed_shot_laser)
+		aim_multiplier = 0.6
+		aiming_buffs++
+
+	if(HAS_TRAIT(target, TRAIT_SPOTTER_LAZED))
+		aim_multiplier = 0.5
+		aiming_buffs++
+
+	if(aiming_buffs > 1)
+		aim_multiplier = 0.35
+
+	f_aiming_time *= aim_multiplier
+
+	var/image/lockon_icon = image(icon = 'icons/effects/Targeted.dmi', icon_state = sniper_rifle.sniper_lockon_icon)
+
+	var/x_offset =  -target.pixel_x + target.base_pixel_x
+	var/y_offset = (target.icon_size - world.icon_size) * 0.5 - target.pixel_y + target.base_pixel_y
+
+	lockon_icon.pixel_x = x_offset
+	lockon_icon.pixel_y = y_offset
+	target.overlays += lockon_icon
+
+	var/image/lockon_direction_icon
+	if(!sniper_rifle.enable_aimed_shot_laser)
+		lockon_direction_icon = image(icon = 'icons/effects/Targeted.dmi', icon_state = "[sniper_rifle.sniper_lockon_icon]_direction", dir = get_cardinal_dir(target, human))
+		lockon_direction_icon.pixel_x = x_offset
+		lockon_direction_icon.pixel_y = y_offset
+		target.overlays += lockon_direction_icon
+	if(human.client)
+		playsound_client(human.client, 'sound/weapons/TargetOn.ogg', human, 50)
+	playsound(target, 'sound/weapons/TargetOn.ogg', 70, FALSE, 8, falloff = 0.4)
+
+	var/datum/beam/laser_beam
+	if(sniper_rifle.enable_aimed_shot_laser)
+		laser_beam = target.beam(human, sniper_rifle.sniper_beam_icon, 'icons/effects/beam.dmi', (f_aiming_time + 1 SECONDS), beam_type = sniper_rifle.sniper_beam_type)
+		laser_beam.visuals.alpha = 0
+		animate(laser_beam.visuals, alpha = initial(laser_beam.visuals.alpha), f_aiming_time, easing = SINE_EASING|EASE_OUT)
+
+	////timer is (f_spotting_time + 1 SECONDS) because sometimes it janks out before the doafter is done. blame sleeps or something
+
+	if(!do_after(human, f_aiming_time, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, NO_BUSY_ICON))
+		target.overlays -= lockon_icon
+		target.overlays -= lockon_direction_icon
+		qdel(laser_beam)
 		return
 
-	M.overlays -= I
+	target.overlays -= lockon_icon
+	target.overlays -= lockon_direction_icon
+	qdel(laser_beam)
 
-	if(!check_can_use(M, TRUE))
+	if(!check_can_use(target, TRUE))
 		return
 
-	var/obj/item/projectile/P = sniper_rifle.in_chamber
-	P.homing_target = M
-	P.projectile_override_flags |= AMMO_HOMING
-	sniper_rifle.Fire(M, H)
+	var/obj/item/projectile/aimed_proj = sniper_rifle.in_chamber
+	aimed_proj.projectile_flags |= PROJECTILE_BULLSEYE
+	aimed_proj.AddComponent(/datum/component/homing_projectile, target, human)
+	sniper_rifle.Fire(target, human)
 
 /datum/action/item_action/specialist/aimed_shot/proc/check_can_use(var/mob/M, var/cover_lose_focus)
 	var/mob/living/carbon/human/H = owner
@@ -164,6 +215,52 @@
 			break
 
 	return blocked
+
+// Snipers may enable or disable their laser tracker at will.
+/datum/action/item_action/specialist/toggle_laser
+	ability_primacy = SPEC_PRIMARY_ACTION_2
+
+/datum/action/item_action/specialist/toggle_laser/New(var/mob/living/user, var/obj/item/holder)
+	..()
+	name = "Toggle Tracker Laser"
+	button.name = name
+	button.overlays.Cut()
+	var/image/IMG = image('icons/mob/hud/actions.dmi', button, "sniper_toggle_laser_on")
+	button.overlays += IMG
+	update_button_icon()
+
+/datum/action/item_action/specialist/toggle_laser/update_button_icon()
+	var/obj/item/weapon/gun/rifle/sniper/sniper_rifle = holder_item
+
+	var/icon = 'icons/mob/hud/actions.dmi'
+	var/icon_state = "sniper_toggle_laser_[sniper_rifle.enable_aimed_shot_laser ? "on" : "off"]"
+
+	button.overlays.Cut()
+	var/image/IMG = image(icon, button, icon_state)
+	button.overlays += IMG
+
+/datum/action/item_action/specialist/toggle_laser/can_use_action()
+	var/obj/item/weapon/gun/rifle/sniper/sniper_rifle = holder_item
+
+	if(owner.is_mob_incapacitated())
+		return FALSE
+
+	if(owner.get_held_item() != sniper_rifle)
+		to_chat(owner, SPAN_WARNING("How do you expect to do this without the sniper rifle in your hand?"))
+		return FALSE
+	return TRUE
+
+/datum/action/item_action/specialist/toggle_laser/action_activate()
+	var/obj/item/weapon/gun/rifle/sniper/sniper_rifle = holder_item
+
+	if(owner.get_held_item() != sniper_rifle)
+		to_chat(owner, SPAN_WARNING("How do you expect to do this without the sniper rifle in your hand?"))
+		return FALSE
+
+	sniper_rifle.enable_aimed_shot_laser = !sniper_rifle.enable_aimed_shot_laser
+	owner.visible_message(SPAN_NOTICE("[owner] flips a switch on \the [sniper_rifle] and [sniper_rifle.enable_aimed_shot_laser ? "enables" : "disables"] its targeting laser."))
+	playsound(owner, 'sound/machines/click.ogg', 15, TRUE)
+	update_button_icon()
 
 //Pow! Headshot.
 /obj/item/weapon/gun/rifle/sniper/M42A
@@ -236,6 +333,9 @@
 	attachable_allowed = list(/obj/item/attachable/bipod)
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY|GUN_AMMO_COUNTER
 	starting_attachment_types = list(/obj/item/attachable/sniperbarrel)
+	sniper_beam_type = /obj/effect/ebeam/laser/intense
+	sniper_beam_icon = "laser_beam_intense"
+	sniper_lockon_icon = "sniper_lockon_intense"
 
 /obj/item/weapon/gun/rifle/sniper/XM42B/handle_starting_attachment()
 	..()
@@ -295,6 +395,9 @@
 	zoomdevicename = "scope"
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_WY_RESTRICTED|GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY|GUN_AMMO_COUNTER
 	starting_attachment_types = list(/obj/item/attachable/sniperbarrel)
+	sniper_beam_type = /obj/effect/ebeam/laser/intense
+	sniper_beam_icon = "laser_beam_intense"
+	sniper_lockon_icon = "sniper_lockon_intense"
 
 /obj/item/weapon/gun/rifle/sniper/elite/handle_starting_attachment()
 	..()
@@ -330,7 +433,7 @@
 		if(PMC_sniper.lying == 0 && !istype(PMC_sniper.wear_suit,/obj/item/clothing/suit/storage/marine/smartgunner/veteran/PMC) && !istype(PMC_sniper.wear_suit,/obj/item/clothing/suit/storage/marine/veteran))
 			PMC_sniper.visible_message(SPAN_WARNING("[PMC_sniper] is blown backwards from the recoil of the [src.name]!"),SPAN_HIGHDANGER("You are knocked prone by the blowback!"))
 			step(PMC_sniper,turn(PMC_sniper.dir,180))
-			PMC_sniper.KnockDown(5)
+			PMC_sniper.apply_effect(5, WEAKEN)
 
 //SVD //Based on the actual Dragunov sniper rifle.
 
@@ -350,7 +453,7 @@
 
 	has_aimed_shot = FALSE
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_WIELDED_FIRING_ONLY
-
+	sniper_beam_type = null
 
 /obj/item/weapon/gun/rifle/sniper/svd/handle_starting_attachment()
 	..()
@@ -451,8 +554,10 @@
 	///gun update_icon doesn't detect that guns with no magazine are loaded or not, and will always append _o or _e if possible.
 	var/GL_has_open_icon = FALSE
 
-	///Internal storage item used as magazine. Must be initialised to work! Set parameters by variables or it will inherit standard numbers from storage.dm. Got to call it *something* and 'magazine' or w/e would be confusing. If FALSE, is not active.
-	var/obj/item/storage/internal/cylinder = FALSE
+	///Internal storage item used as magazine. Must be initialised to work! Set parameters by variables or it will inherit standard numbers from storage.dm. Got to call it *something* and 'magazine' or w/e would be confusing.
+	var/obj/item/storage/internal/cylinder
+	/// Variable that initializes the above.
+	var/has_cylinder = FALSE
 	///What single item to fill the storage with, if any. This does not respect w_class.
 	var/preload
 	///How many items can be inserted. "Null" = backpack-style size-based inventory. You'll have to set max_storage_space too if you do that, and arrange any initial contents. Iff you arrange to put in more items than the storage can hold, they can be taken out but not replaced.
@@ -466,14 +571,14 @@
 
 /obj/item/weapon/gun/launcher/Initialize(mapload, spawn_empty) //If changing vars on init, be sure to do the parent proccall *after* the change.
 	. = ..()
-	if(cylinder)
-		cylinder = new/obj/item/storage/internal(src)
+	if(has_cylinder)
+		cylinder = new /obj/item/storage/internal(src)
 		cylinder.storage_slots = internal_slots
 		cylinder.max_w_class = internal_max_w_class
 		cylinder.use_sound = use_sound
 		if(direct_draw)
 			cylinder.storage_flags ^= STORAGE_USING_DRAWING_METHOD
-		if(preload && !spawn_empty)	for(var/i = 1 to cylinder.storage_slots)
+		if(preload && !spawn_empty) for(var/i = 1 to cylinder.storage_slots)
 			new preload(cylinder)
 		update_icon()
 
@@ -498,7 +603,7 @@
 	reload_sound = 'sound/weapons/gun_shotgun_open2.ogg' //Played when inserting nade.
 	unload_sound = 'sound/weapons/gun_revolver_unload.ogg'
 
-	cylinder = TRUE //This weapon won't work otherwise.
+	has_cylinder = TRUE //This weapon won't work otherwise.
 	preload = /obj/item/explosive/grenade/HE
 	internal_slots = 1 //This weapon must use slots.
 	internal_max_w_class = SIZE_MEDIUM //MEDIUM = M15.
@@ -541,10 +646,10 @@
 		. += SPAN_NOTICE("It is empty.")
 
 
-obj/item/weapon/gun/launcher/grenade/update_icon()
+/obj/item/weapon/gun/launcher/grenade/update_icon()
 	..()
 	var/GL_sprite = base_gun_icon
-	if(GL_has_empty_icon && !length(cylinder.contents))
+	if(GL_has_empty_icon && cylinder && !length(cylinder.contents))
 		GL_sprite += "_e"
 		playsound(loc, cocked_sound, 25, 1)
 	if(GL_has_open_icon && open_chamber)
@@ -857,7 +962,7 @@ obj/item/weapon/gun/launcher/grenade/update_icon()
 	w_class = SIZE_HUGE
 	force = 15
 	wield_delay = WIELD_DELAY_HORRIBLE
-	delay_style	= WEAPON_DELAY_NO_FIRE
+	delay_style = WEAPON_DELAY_NO_FIRE
 	aim_slowdown = SLOWDOWN_ADS_SPECIALIST
 	attachable_allowed = list(
 						/obj/item/attachable/magnetic_harness
@@ -900,11 +1005,6 @@ obj/item/weapon/gun/launcher/grenade/update_icon()
 /obj/item/weapon/gun/launcher/rocket/able_to_fire(mob/living/user)
 	. = ..()
 	if (. && istype(user)) //Let's check all that other stuff first.
-		/*var/turf/current_turf = get_turf(user)
-		if (is_mainship_level(current_turf.z) || is_loworbit_level(current_turf.z)) //Can't fire on the Almayer, bub.
-			click_empty(user)
-			to_chat(user, SPAN_WARNING("You can't fire that here!"))
-			return 0*/
 		if(skill_locked && !skillcheck(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_ALL) && user.skills.get_skill_level(SKILL_SPEC_WEAPONS) != SKILL_SPEC_ROCKET)
 			to_chat(user, SPAN_WARNING("You don't seem to know how to use \the [src]..."))
 			return 0
@@ -916,7 +1016,7 @@ obj/item/weapon/gun/launcher/grenade/update_icon()
 			make_rocket(user, 0, 1)
 
 /obj/item/weapon/gun/launcher/rocket/load_into_chamber(mob/user)
-//	if(active_attachable) active_attachable = null
+// if(active_attachable) active_attachable = null
 	return ready_in_chamber()
 
 //No such thing
@@ -1018,18 +1118,24 @@ obj/item/weapon/gun/launcher/grenade/update_icon()
 
 //Adding in the rocket backblast. The tile behind the specialist gets blasted hard enough to down and slightly wound anyone
 /obj/item/weapon/gun/launcher/rocket/apply_bullet_effects(obj/item/projectile/projectile_to_fire, mob/user, i = 1, reflex = 0)
+	. = ..()
+	if(!HAS_TRAIT(user, TRAIT_EAR_PROTECTION) && ishuman(user))
+		var/mob/living/carbon/human/huser = user
+		to_chat(user, SPAN_WARNING("Augh!! \The [src]'s launch blast resonates extremely loudly in your ears! You probably should have worn some sort of ear protection..."))
+		huser.apply_effect(6, STUTTER)
+		huser.emote("pain")
+		huser.SetEarDeafness(max(user.ear_deaf,10))
 
 	var/backblast_loc = get_turf(get_step(user.loc, turn(user.dir, 180)))
 	smoke.set_up(1, 0, backblast_loc, turn(user.dir, 180))
 	smoke.start()
-	playsound(src, 'sound/weapons/gun_rocketlauncher.ogg', 100, 1, 7)
+	playsound(src, 'sound/weapons/gun_rocketlauncher.ogg', 100, TRUE, 10)
 	for(var/mob/living/carbon/C in backblast_loc)
-		if(!C.lying) //Have to be standing up to get the fun stuff
+		if(!C.lying && !HAS_TRAIT(C, TRAIT_EAR_PROTECTION)) //Have to be standing up to get the fun stuff
 			C.apply_damage(15, BRUTE) //The shockwave hurts, quite a bit. It can knock unarmored targets unconscious in real life
-			C.Stun(4) //For good measure
+			C.apply_effect(4, STUN) //For good measure
+			C.apply_effect(6, STUTTER)
 			C.emote("pain")
-
-		..()
 
 //-------------------------------------------------------
 //M5 RPG'S MEAN FUCKING COUSIN
@@ -1111,7 +1217,7 @@ obj/item/weapon/gun/launcher/grenade/update_icon()
 
 /obj/item/weapon/gun/launcher/rocket/anti_tank/disposable/proc/fold(mob/user)
 	var/obj/item/prop/folded_anti_tank_sadar/F = new /obj/item/prop/folded_anti_tank_sadar(src.loc)
-	F.set_name_label(name_label)
+	transfer_label_component(F)
 	qdel(src)
 	user.put_in_active_hand(F)
 
@@ -1148,7 +1254,7 @@ obj/item/weapon/gun/launcher/grenade/update_icon()
 
 /obj/item/prop/folded_anti_tank_sadar/proc/unfold(mob/user)
 	var/obj/item/weapon/gun/launcher/rocket/anti_tank/disposable/F = new /obj/item/weapon/gun/launcher/rocket/anti_tank/disposable(src.loc)
-	F.set_name_label(name_label)
+	transfer_label_component(F)
 	qdel(src)
 	user.put_in_active_hand(F)
 
@@ -1195,7 +1301,7 @@ obj/item/weapon/gun/launcher/grenade/update_icon()
 	..()
 	fire_delay = FIRE_DELAY_TIER_10
 	accuracy_mult = BASE_ACCURACY_MULT
-	accuracy_mult_unwielded = -MOVEMENT_ACCURACY_PENALTY_MULT_TIER_1
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_10
 	scatter = 0
 	recoil = RECOIL_AMOUNT_TIER_4
 	recoil_unwielded = RECOIL_AMOUNT_TIER_4

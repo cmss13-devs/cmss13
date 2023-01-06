@@ -81,6 +81,14 @@
 	has_buttons = TRUE
 	icon_state = "coat_officer"
 
+/obj/item/clothing/suit/storage/jacket/marine/pilot
+	name = "\improper M70B1 light flak jacket"
+	desc = "A light flak jacket used by dropship pilots to protect themselves while flying in the cockpit. This specific flak jacket has been designed for style and comfort over protection, and it shows. Don't get hit by any stray bullets!"
+	icon_state = "pilot_alt"
+	has_buttons = TRUE
+	flags_atom = NO_SNOW_TYPE
+	initial_icon_state = "pilot_alt"
+
 /obj/item/clothing/suit/storage/jacket/marine/service/mp
 	name = "military police service jacket"
 	desc = "A marine service jacket adopted for use by Military Police personnel on board USCM ships. Ironically most ships require their MP departments to use full armor, making these barely used by on duty MPs. This variant is also available to regular Marines, if they are willing to bear the shame."
@@ -233,3 +241,27 @@
 /obj/item/clothing/suit/storage/jacket/marine/provost/marshal/chief
 	name = "\improper Provost Chief Marshal Jacket"
 	desc = "The crisp jacket of the Provost Chief Marshal."
+
+//=========================//DRESS BLUES\\================================\\
+//=======================================================================\\
+
+/obj/item/clothing/suit/storage/jacket/marine/dress/blues
+	name = "marine enlisted dress blues jacket"
+	desc = "The jacket of the legendary Marine dress blues, virtually unchanged since the 19th century. You're wearing history, Marine. Don't let your ancestors down."
+	icon = 'icons/mob/humans/onmob/contained/marinedressblues.dmi'
+	icon_state = "e_jacket"
+	item_state = "e_jacket"
+	item_state_slots = null
+	contained_sprite = TRUE
+
+/obj/item/clothing/suit/storage/jacket/marine/dress/blues/nco
+	name = "marine NCO dress blues jacket"
+	desc = "The jacket of the legendary Marine dress blues, virtually unchanged since the 19th century. Features the adornments of a decorated non-commissioned officer. Heritage, embodied."
+	icon_state = "nco_jacket"
+	item_state = "nco_jacket"
+
+/obj/item/clothing/suit/storage/jacket/marine/dress/blues/officer
+	name = "marine officer dress blues jacket"
+	desc = "The jacket of the legendary Marine dress blues, virtually unchanged since the 19th century. Features the sleek dark design of the uniform worn by a commissioned officer."
+	icon_state = "o_jacket"
+	item_state = "o_jacket"

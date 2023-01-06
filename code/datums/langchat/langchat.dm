@@ -17,9 +17,9 @@
 #define LANGCHAT_MAX_ALPHA 196
 
 //pop defines
-#define LANGCHAT_DEFAULT_POP 0 	//normal message
-#define LANGCHAT_PANIC_POP 1 	//this causes shaking
-#define LANGCHAT_FAST_POP 2 	//this just makes it go away faster
+#define LANGCHAT_DEFAULT_POP 0 //normal message
+#define LANGCHAT_PANIC_POP 1 //this causes shaking
+#define LANGCHAT_FAST_POP 2 //this just makes it go away faster
 
 // params for default pop
 #define LANGCHAT_MESSAGE_POP_TIME 3
@@ -65,6 +65,21 @@
 	langchat_image.color = override_color ? override_color : langchat_color
 	if(appearance_flags & PIXEL_SCALE)
 		langchat_image.appearance_flags |= PIXEL_SCALE
+
+/mob/langchat_make_image(var/override_color = null)
+	var/new_image = FALSE
+	if(!langchat_image)
+		new_image = TRUE
+	. = ..()
+	// Recenter for icons more than 32 wide
+	if(new_image)
+		langchat_image.maptext_x += (icon_size - 32) / 2
+
+/mob/dead/observer/langchat_make_image(var/override_color = null)
+	if(!override_color)
+		override_color = "#c51fb7"
+	. = ..()
+	langchat_image.appearance_flags |= RESET_ALPHA
 
 /atom/proc/langchat_speech(message, var/list/listeners, language, var/override_color, var/skip_language_check = FALSE, var/animation_style = LANGCHAT_DEFAULT_POP, var/list/additional_styles = list("langchat"))
 	langchat_drop_image()
@@ -115,7 +130,7 @@
 			langchat_image.alpha = 0
 			animate(langchat_image, pixel_y = langchat_image.pixel_y + LANGCHAT_MESSAGE_FAST_POP_Y_SINK, alpha = LANGCHAT_MAX_ALPHA, time = LANGCHAT_MESSAGE_FAST_POP_TIME)
 
-	addtimer(CALLBACK(src, /atom.proc/langchat_drop_image, language), timer, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT)
+	addtimer(CALLBACK(src, TYPE_PROC_REF(/atom, langchat_drop_image), language), timer, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT)
 
 /atom/proc/langchat_long_speech(message, var/list/listeners, language)
 	langchat_drop_image()
@@ -147,9 +162,9 @@
 
 	animate(langchat_image, pixel_y = langchat_image.pixel_y + LANGCHAT_MESSAGE_POP_Y_SINK, alpha = LANGCHAT_MAX_ALPHA, time = LANGCHAT_MESSAGE_POP_TIME)
 	if(text_left)
-		addtimer(CALLBACK(src, /atom.proc/langchat_long_speech, text_left, listeners, language), timer, TIMER_OVERRIDE|TIMER_UNIQUE|TIMER_NO_HASH_WAIT)
+		addtimer(CALLBACK(src, TYPE_PROC_REF(/atom, langchat_long_speech), text_left, listeners, language), timer, TIMER_OVERRIDE|TIMER_UNIQUE|TIMER_NO_HASH_WAIT)
 	else
-		addtimer(CALLBACK(src, /atom.proc/langchat_drop_image, language), timer, TIMER_OVERRIDE|TIMER_UNIQUE|TIMER_NO_HASH_WAIT)
+		addtimer(CALLBACK(src, TYPE_PROC_REF(/atom, langchat_drop_image), language), timer, TIMER_OVERRIDE|TIMER_UNIQUE|TIMER_NO_HASH_WAIT)
 
 /** Displays image to a single listener after it was built above eg. for chaining different game logic than speech code
 This does just that, doesn't check deafness or language! Do what you will in that regard **/

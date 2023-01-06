@@ -142,52 +142,90 @@
 
 	if (!SSticker.mode)
 		return
-	if(!check_rights(R_ADMIN))
+	if(!check_rights(R_EVENT))
 		return
 
-	var/tag = tgui_input_list(usr, "Which ERT shuttle should be force launched?", "Select an ERT Shuttle:", list("Distress", "Distress_PMC", "Distress_UPP", "Distress_Big", "Distress_Small"))
+	var/tag = tgui_input_list(usr, "Which ERT shuttle should be force launched?", "Select an ERT Shuttle:", list("Distress", "Distress PMC", "Distress UPP", "Distress_Big", "Distress_Small"))
 	if(!tag) return
 
-	var/datum/shuttle/ferry/ert/shuttle = shuttle_controller.shuttles[tag]
-	if(!shuttle || !istype(shuttle))
-		message_staff("Warning: Distress shuttle not found. Aborting.")
-		return
+	var/newShuttle = FALSE
+	if(tag in list("Distress", "Distress PMC", "Distress UPP"))
+		newShuttle = TRUE
+	var/list/shuttle_map = list(
+		"Distress" = MOBILE_SHUTTLE_ID_ERT1,
+		"Distress PMC" = MOBILE_SHUTTLE_ID_ERT2,
+		"Distress UPP" = MOBILE_SHUTTLE_ID_ERT3,
+	)
+	if(newShuttle)
+		var/shuttleId = shuttle_map[tag]
+		var/list/docks = SSshuttle.stationary
+		var/list/targets = list()
+		var/list/target_names = list()
+		var/obj/docking_port/mobile/emergency_response/ert = SSshuttle.getShuttle(shuttleId)
+		for(var/obj/docking_port/stationary/emergency_response/dock in docks)
+			var/can_dock = ert.canDock(dock)
+			if(can_dock == SHUTTLE_CAN_DOCK)
+				targets += list(dock)
+				target_names +=  list(dock.name)
+		var/dock_name = tgui_input_list(usr, "Where on the [MAIN_SHIP_NAME] should the shuttle dock?", "Select a docking zone:", target_names)
+		var/launched = FALSE
+		for(var/obj/docking_port/stationary/emergency_response/dock as anything in targets)
+			if(dock.name == dock_name)
+				var/obj/docking_port/stationary/target = SSshuttle.getDock(dock.id)
+				ert.request(target)
+				launched=TRUE
+		if(!launched)
+			message_staff("Warning: Unable to launch this Distress shuttle at this moment. Aborting.")
+			return
+	else
+		var/datum/shuttle/ferry/ert/shuttle = shuttle_controller.shuttles[tag]
+		if(!shuttle || !istype(shuttle))
+			message_staff("Warning: Distress shuttle not found. Aborting.")
+			return
 
-	if(shuttle.location) //in start zone in admin z level
-		var/dock_id
-		var/dock_list = list("Port", "Starboard", "Aft")
-		if(shuttle.use_umbilical)
-			dock_list = list("Port Hangar", "Starboard Hangar")
-		if(shuttle.use_small_docks)
-			dock_list = list("Port Engineering", "Starboard Engineering")
-		var/dock_name = tgui_input_list(usr, "Where on the [MAIN_SHIP_NAME] should the shuttle dock?", "Select a docking zone:", dock_list)
-		switch(dock_name)
-			if("Port") dock_id = /area/shuttle/distress/arrive_2
-			if("Starboard") dock_id = /area/shuttle/distress/arrive_1
-			if("Aft") dock_id = /area/shuttle/distress/arrive_3
-			if("Port Hangar") dock_id = /area/shuttle/distress/arrive_s_hangar
-			if("Starboard Hangar") dock_id = /area/shuttle/distress/arrive_n_hangar
-			if("Port Engineering") dock_id = /area/shuttle/distress/arrive_s_engi
-			if("Starboard Engineering") dock_id = /area/shuttle/distress/arrive_n_engi
-			else return
-		for(var/datum/shuttle/ferry/ert/F in shuttle_controller.process_shuttles)
-			if(F != shuttle)
-				//other ERT shuttles already docked on almayer or about to be
-				if(!F.location || F.moving_status != SHUTTLE_IDLE)
-					if(F.area_station.type == dock_id)
-						message_staff("Warning: That docking zone is already taken by another shuttle. Aborting.")
-						return
+		if(shuttle.location) //in start zone in admin z level
+			var/dock_id
+			var/dock_list = list("Port", "Starboard", "Aft")
+			if(shuttle.use_umbilical)
+				dock_list = list("Port Hangar", "Starboard Hangar")
+			if(shuttle.use_small_docks)
+				dock_list = list("Port Engineering", "Starboard Engineering")
+			var/dock_name = tgui_input_list(usr, "Where on the [MAIN_SHIP_NAME] should the shuttle dock?", "Select a docking zone:", dock_list)
+			switch(dock_name)
+				if("Port")
+					dock_id = /area/shuttle/distress/arrive_2
+				if("Starboard")
+					dock_id = /area/shuttle/distress/arrive_1
+				if("Aft")
+					dock_id = /area/shuttle/distress/arrive_3
+				if("Port Hangar")
+					dock_id = /area/shuttle/distress/arrive_s_hangar
+				if("Starboard Hangar")
+					dock_id = /area/shuttle/distress/arrive_n_hangar
+				if("Port Engineering")
+					dock_id = /area/shuttle/distress/arrive_s_engi
+				if("Starboard Engineering")
+					dock_id = /area/shuttle/distress/arrive_n_engi
+				else
+					return
+			for(var/datum/shuttle/ferry/ert/ferry in shuttle_controller.process_shuttles)
+				if(ferry != shuttle)
+					//other ERT shuttles already docked on almayer or about to be
+					if(!ferry.location || ferry.moving_status != SHUTTLE_IDLE)
+						if(ferry.area_station.type == dock_id)
+							message_staff("Warning: That docking zone is already taken by another shuttle. Aborting.")
+							return
 
-		for(var/area/A in all_areas)
-			if(A.type == dock_id)
-				shuttle.area_station = A
-				break
+			for(var/area/landing_zone in all_areas)
+				if(landing_zone.type == dock_id)
+					shuttle.area_station = landing_zone
+					break
 
-	if(!shuttle.can_launch())
-		message_staff("Warning: Unable to launch this Distress shuttle at this moment. Aborting.")
-		return
+		if(!shuttle.can_launch())
+			message_staff("Warning: Unable to launch this Distress shuttle at this moment. Aborting.")
+			return
 
-	shuttle.launch()
+		shuttle.launch()
 
 	message_staff("[key_name_admin(usr)] force launched a distress shuttle ([tag])")
 
@@ -199,7 +237,7 @@
 	if (!SSticker.mode)
 		return
 
-	if(!check_rights(R_SPAWN)) // Seems more like an event thing than an admin thing
+	if(!check_rights(R_EVENT)) // Seems more like an event thing than an admin thing
 		return
 
 	var/list/list_of_calls = list()
@@ -315,7 +353,7 @@
 	if(!SSticker.mode || !check_rights(R_ADMIN) || get_security_level() == "delta")
 		return
 
-	if(alert(src, "Are you sure you want to do this?", "Confirmation", "Yes", "No") == "No")
+	if(alert(src, "Are you sure you want to do this?", "Confirmation", "Yes", "No") != "Yes")
 		return
 
 	set_security_level(SEC_LEVEL_DELTA)
@@ -409,7 +447,7 @@
 	var/random_names = FALSE
 	if (alert(src, "Do you want to give everyone random numbered names?", "Confirmation", "Yes", "No") == "Yes")
 		random_names = TRUE
-	if (alert(src, "Are you sure you want to do this? It will laaag.", "Confirmation", "Yes", "No") == "No")
+	if (alert(src, "Are you sure you want to do this? It will laaag.", "Confirmation", "Yes", "No") != "Yes")
 		return
 	for(var/mob/living/carbon/human/H in GLOB.human_mob_list)
 		if(ismonkey(H))
@@ -567,10 +605,10 @@
 
 	for(var/obj/structure/machinery/computer/almayer_control/C in machines)
 		if(!(C.inoperable()))
-//			var/obj/item/paper/P = new /obj/item/paper(C.loc)//Don't need a printed copy currently.
-//			P.name = "'[MAIN_AI_SYSTEM] Update.'"
-//			P.info = input
-//			P.update_icon()
+// var/obj/item/paper/P = new /obj/item/paper(C.loc)//Don't need a printed copy currently.
+// P.name = "'[MAIN_AI_SYSTEM] Update.'"
+// P.info = input
+// P.update_icon()
 			C.messagetitle.Add("[MAIN_AI_SYSTEM] Update")
 			C.messagetext.Add(input)
 			ai_announcement(input)
@@ -578,6 +616,31 @@
 			log_admin("AI comms report: [input]")
 		else
 			to_chat(usr, SPAN_WARNING("[MAIN_AI_SYSTEM] is not responding. It may be offline or destroyed."))
+
+/client/proc/cmd_admin_create_AI_apollo_report()
+	set name = "Report: ARES Apollo"
+	set category = "Admin.Factions"
+
+	if(!admin_holder || !(admin_holder.rights & R_MOD))
+		to_chat(src, "Only administrators may use this command.")
+		return
+	var/input = tgui_input_text(usr, "This is a broadcast from the ship AI to Working Joes and Maintenance Drones. Do not use html.", "What?", "")
+	if(!input)
+		return FALSE
+
+	for(var/obj/structure/machinery/computer/almayer_control/console in machines)
+		if(console.inoperable())
+			to_chat(usr, SPAN_WARNING("[MAIN_AI_SYSTEM] is not responding. It may be offline or destroyed."))
+			return
+		else
+			var/datum/language/apollo = GLOB.all_languages[LANGUAGE_APOLLO]
+			for(var/mob/living/silicon/decoy/ship_ai/AI in ai_mob_list)
+				apollo.broadcast(AI, input)
+			for(var/mob/listener in (GLOB.human_mob_list + GLOB.dead_mob_list))
+				if(listener.hear_apollo())//Only plays sound to mobs and not observers, to reduce spam.
+					playsound_client(listener.client, sound('sound/misc/interference.ogg'), listener, vol = 45)
+			message_staff("[key_name_admin(src)] has created an AI Apollo report")
+			log_admin("AI Apollo report: [input]")
 
 /client/proc/cmd_admin_create_AI_shipwide_report()
 	set name = "Report: ARES Shipwide"
@@ -592,10 +655,10 @@
 
 	for(var/obj/structure/machinery/computer/almayer_control/C in machines)
 		if(!(C.inoperable()))
-//			var/obj/item/paper/P = new /obj/item/paper(C.loc)//Don't need a printed copy currently.
-//			P.name = "'[MAIN_AI_SYSTEM] Update.'"
-//			P.info = input
-//			P.update_icon()
+// var/obj/item/paper/P = new /obj/item/paper(C.loc)//Don't need a printed copy currently.
+// P.name = "'[MAIN_AI_SYSTEM] Update.'"
+// P.info = input
+// P.update_icon()
 			C.messagetitle.Add("[MAIN_AI_SYSTEM] Shipwide Update")
 			C.messagetext.Add(input)
 
@@ -794,7 +857,7 @@
 	if(!check_rights(R_MOD))
 		return
 
-	if(alert(usr, "Are you sure you want to change all mutineers back to normal?", "Confirmation", "Yes", "No") == "No")
+	if(alert(usr, "Are you sure you want to change all mutineers back to normal?", "Confirmation", "Yes", "No") != "Yes")
 		return
 
 	for(var/mob/living/carbon/human/H in GLOB.human_mob_list)
@@ -892,13 +955,13 @@
 			qdel(OBShell)
 
 	if(custom)
-		if(alert(usr, statsmessage, "Confirm Stats", "Yes", "No") == "No") return
+		if(alert(usr, statsmessage, "Confirm Stats", "Yes", "No") != "Yes") return
 		message_staff(statsmessage)
 
 	var/turf/target = get_turf(usr.loc)
 
 	if(alert(usr, "Fire or Spawn Warhead?", "Mode", "Fire", "Spawn") == "Fire")
-		if(alert("Are you SURE you want to do this? It will create an OB explosion!",, "Yes", "No") == "No") return
+		if(alert("Are you SURE you want to do this? It will create an OB explosion!",, "Yes", "No") != "Yes") return
 		message_staff("[key_name(usr)] has fired \an [warhead.name] at ([target.x],[target.y],[target.z]).")
 		warhead.warhead_impact(target)
 		QDEL_IN(warhead, OB_CRASHING_DOWN)
@@ -920,3 +983,38 @@
 	SSticker.mode.taskbar_icon = taskbar_icon
 	SSticker.set_clients_taskbar_icon(taskbar_icon)
 	message_staff("[key_name_admin(usr)] has changed the taskbar icon to [taskbar_icon].")
+
+/client/proc/change_weather()
+	set name = "Change Weather"
+	set category = "Admin.Events"
+
+	if(!check_rights(R_EVENT))
+		return
+
+	if(!SSweather.map_holder)
+		to_chat(src, SPAN_WARNING("This map has no weather data."))
+		return
+
+	if(SSweather.is_weather_event_starting)
+		to_chat(src, SPAN_WARNING("A weather event is already starting. Please wait."))
+		return
+
+	if(SSweather.is_weather_event)
+		if(tgui_alert(src, "A weather event is already in progress! End it?", "Confirm", list("End", "Continue"), 10 SECONDS) == "Continue")
+			return
+		if(SSweather.is_weather_event)
+			SSweather.end_weather_event()
+
+	var/list/mappings = list()
+	for(var/datum/weather_event/typepath as anything in subtypesof(/datum/weather_event))
+		mappings[initial(typepath.name)] = typepath
+	var/chosen_name = tgui_input_list(src, "Select a weather event to start", "Weather Selector", mappings)
+	var/chosen_typepath = mappings[chosen_name]
+	if(!chosen_typepath)
+		return
+
+	var/retval = SSweather.setup_weather_event(chosen_typepath)
+	if(!retval)
+		to_chat(src, SPAN_WARNING("Could not start the weather event at present!"))
+		return
+	to_chat(src, SPAN_BOLDNOTICE("Success! The weather event should start shortly."))

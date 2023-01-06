@@ -1,7 +1,7 @@
 //Config stuff
 #define SUPPLY_STATION_AREATYPE /area/supply/station //Type of the supply shuttle area for station
 #define SUPPLY_STATION_AREATYPE_VEHICLE /area/supply/station/vehicle
-#define SUPPLY_DOCK_AREATYPE /area/supply/dock	//Type of the supply shuttle area for dock
+#define SUPPLY_DOCK_AREATYPE /area/supply/dock //Type of the supply shuttle area for dock
 #define SUPPLY_DOCK_AREATYPE_VEHICLE /area/supply/dock/vehicle
 #define SUPPLY_COST_MULTIPLIER 1.08
 #define ASRS_COST_MULTIPLIER 1.2
@@ -47,10 +47,10 @@ var/datum/controller/supply/supply_controller = new()
 	desc = "Completely impassable - or are they?"
 	icon = 'icons/obj/structures/props/stationobjs.dmi' //Change this.
 	icon_state = "plasticflaps"
-	density = 0
+	density = FALSE
 	anchored = 1
 	layer = MOB_LAYER
-	var/collide_message_busy	// Timer to stop collision spam
+	var/collide_message_busy // Timer to stop collision spam
 
 /obj/structure/plasticflaps/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
@@ -83,12 +83,12 @@ var/datum/controller/supply/supply_controller = new()
 	switch(severity)
 		if(0 to EXPLOSION_THRESHOLD_LOW)
 			if (prob(5))
-				qdel(src)
+				deconstruct(FALSE)
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			if (prob(50))
-				qdel(src)
+				deconstruct(FALSE)
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
-			qdel(src)
+			deconstruct(FALSE)
 
 /obj/structure/plasticflaps/mining //A specific type for mining that doesn't allow airflow because of them damn crates
 	name = "\improper Airtight plastic flaps"
@@ -128,7 +128,6 @@ var/datum/controller/supply/supply_controller = new()
 	var/x_supply = 0
 	var/y_supply = 0
 	var/datum/squad/current_squad = null
-	var/busy = FALSE //The computer is busy launching a drop, lock controls
 	var/drop_cooldown = 1 MINUTES
 	var/can_pick_squad = TRUE
 	var/faction = FACTION_MARINE
@@ -176,7 +175,6 @@ var/datum/controller/supply/supply_controller = new()
 	data["worldtime"] = world.time
 	data["x_offset"] = x_supply
 	data["y_offset"] = y_supply
-	data["active"] = busy
 	data["loaded"] = loaded_crate
 	if(loaded_crate)
 		data["crate_name"] = loaded_crate.name
@@ -251,10 +249,7 @@ var/datum/controller/supply/supply_controller = new()
 		return FALSE
 
 /obj/structure/machinery/computer/supply_drop_console/proc/handle_supplydrop()
-	if(busy)
-		to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("\The [name] is busy processing another action!")]")
-		return
-
+	SHOULD_NOT_SLEEP(TRUE)
 	var/obj/structure/closet/crate/C = check_pad()
 	if(!C)
 		to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("No crate was detected on the drop pad. Get Requisitions on the line!")]")
@@ -282,57 +277,19 @@ var/datum/controller/supply/supply_controller = new()
 		to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("The landing zone appears to be obstructed or out of bounds. Package would be lost on drop.")]")
 		return
 
-	busy = TRUE
+	C.visible_message(SPAN_WARNING("\The [C] loads into a launch tube. Stand clear!"))
+	current_squad.send_message("'[C.name]' supply drop incoming. Heads up!")
+	current_squad.send_maptext(C.name, "Incoming Supply Drop:")
+	COOLDOWN_START(src, next_fire, drop_cooldown)
+	if(ismob(usr))
+		var/mob/M = usr
+		M.count_niche_stat(STATISTICS_NICHE_CRATES)
 
-	visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("'[C.name]' supply drop is now loading into the launch tube! Stand by!")]")
-	C.visible_message(SPAN_WARNING("\The [C] begins to load into a launch tube. Stand clear!"))
-	C.anchored = TRUE //To avoid accidental pushes
-	send_to_squad("'[C.name]' supply drop incoming. Heads up!")
-	var/datum/squad/S = current_squad //in case the operator changes the overwatched squad mid-drop
-	spawn(100)
-		if(!C || C.loc != S.drop_pad.loc) //Crate no longer on pad somehow, abort.
-			if(C)
-				C.anchored = FALSE
-			to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("Launch aborted! No crate detected on the drop pad.")]")
-			return
-		COOLDOWN_START(src, next_fire, drop_cooldown)
-		if(ismob(usr))
-			var/mob/M = usr
-			M.count_niche_stat(STATISTICS_NICHE_CRATES)
-
-		playsound(C.loc,'sound/effects/bamf.ogg', 50, 1)  //Ehh
-		C.anchored = FALSE
-		C.forceMove(T)
-		var/turf/TC = get_turf(C)
-		TC.ceiling_debris_check(3)
-		playsound(C.loc,'sound/effects/bamf.ogg', 50, 1)  //Ehhhhhhhhh.
-		C.visible_message("[icon2html(C, viewers(src))] [SPAN_BOLDNOTICE("The '[C.name]' supply drop falls from the sky!")]")
-		visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("'[C.name]' supply drop launched! Another launch will be available in five minutes.")]")
-		busy = FALSE
-
-
-//Sends a string to our currently selected squad.
-/obj/structure/machinery/computer/supply_drop_console/proc/send_to_squad(var/txt = "", var/plus_name = 0, var/only_leader = 0)
-	if(txt == "" || !current_squad) return //Logic
-
-	var/text = strip_html(txt)
-	var/nametext = ""
-	if(plus_name)
-		nametext = "[usr.name] transmits: "
-		text = "<font size='3'><b>[text]<b></font>"
-
-	for(var/mob/living/carbon/human/M in current_squad.marines_list)
-		if(!M.stat && M.client) //Only living and connected people in our squad
-			if(!only_leader)
-				if(plus_name)
-					M << sound('sound/effects/radiostatic.ogg')
-				to_chat(M, "[icon2html(src, M)] [SPAN_BLUE("<B>\[Overwatch\]:</b> [nametext][text]")]")
-			else
-				if(current_squad.squad_leader == M)
-					if(plus_name)
-						M << sound('sound/effects/radiostatic.ogg')
-					to_chat(M, "[icon2html(src, M)] [SPAN_BLUE("<B>\[SL Overwatch\]:</b> [nametext][text]</font>")]")
-					return
+	playsound(C.loc,'sound/effects/bamf.ogg', 50, 1)  //Ehh
+	var/obj/structure/droppod/supply/pod = new()
+	C.forceMove(pod)
+	pod.launch(T)
+	visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("'[C.name]' supply drop launched! Another launch will be available in five minutes.")]")
 
 //A limited version of the above console
 //Can't pick squads, drops less often
@@ -358,7 +315,7 @@ var/datum/controller/supply/supply_controller = new()
 	name = "X"
 	invisibility = 101
 	anchored = 1
-	opacity = 0
+	opacity = FALSE
 */
 
 /datum/supply_order
@@ -393,8 +350,8 @@ var/datum/controller/supply/supply_controller = new()
 	var/dropship_points = 10000 //gains roughly 18 points per minute | Original points of 5k doubled due to removal of prespawned ammo.
 	var/tank_points = 0
 
-	New()
-		ordernum = rand(1,9000)
+/datum/controller/supply/New()
+	ordernum = rand(1,9000)
 
 //Supply shuttle ticker - handles supply point regenertion and shuttle travelling between centcomm and the station
 /datum/controller/supply/process()
@@ -573,47 +530,47 @@ var/datum/controller/supply/supply_controller = new()
 /obj/item/paper/manifest/proc/generate_contents()
 	// You don't tell anyone this is inspired from player-made fax layouts,
 	// or else, capiche ? Yes this is long, it's 80 col standard
-	info = "                                                                  \
-        <style>                                                               \
-            #container { width: 500px; min-height: 500px; margin: 25px auto;  \
-                    font-family: monospace; padding: 0; font-size: 130% }     \
-            #title { font-size: 250%; letter-spacing: 8px;                    \
-                    font-weight: bolder; margin: 20px auto }                  \
-            .header { font-size: 130%; text-align: center; }                  \
-            .important { font-variant: small-caps; font-size = 130%;          \
-                         font-weight: bolder; }                               \
-            .tablelabel { width: 150px; }                                     \
-            .field { font-style: italic; }                                    \
-            li { list-style-type: disc; list-style-position: inside; }        \
-            table { table-layout: fixed }                                     \
-        </style><div id='container'>                                          \
-        <div class='header'>                                                  \
-            <p id='title' class='important'>A.S.R.S.</p>                      \
-            <p class='important'>Automatic Storage Retrieval System</p>       \
-            <p class='field'>Order #[ordernum]</p>                            \
-        </div><hr><table>                                                     \
-        <colgroup>                                                            \
-            <col class='tablelabel important'>                                \
-            <col class='field'>                                               \
-        </colgroup>                                                           \
-        <tr><td>Shipment:</td>                                                \
-        <td>[ordername]</td></tr>                                             \
-        <tr><td>Ordered by:</td>                                              \
-        <td>[orderedby]</td></tr>                                             \
-        <tr><td>Approved by:</td>                                             \
-        <td>[approvedby]</td></tr>                                            \
-        <tr><td># packages:</td>                                              \
-        <td class='field'>[packages.len]</td></tr>                            \
-        </table><hr><p class='header important'>Contents</p>                  \
-        <ul class='field'>"
+	info = "   \
+		<style>    \
+			#container { width: 500px; min-height: 500px; margin: 25px auto;  \
+					font-family: monospace; padding: 0; font-size: 130% }  \
+			#title { font-size: 250%; letter-spacing: 8px; \
+					font-weight: bolder; margin: 20px auto }   \
+			.header { font-size: 130%; text-align: center; }   \
+			.important { font-variant: small-caps; font-size = 130%;   \
+						font-weight: bolder; }    \
+			.tablelabel { width: 150px; }  \
+			.field { font-style: italic; } \
+			li { list-style-type: disc; list-style-position: inside; } \
+			table { table-layout: fixed }  \
+		</style><div id='container'>   \
+		<div class='header'>   \
+			<p id='title' class='important'>A.S.R.S.</p>   \
+			<p class='important'>Automatic Storage Retrieval System</p>    \
+			<p class='field'>Order #[ordernum]</p> \
+		</div><hr><table>  \
+		<colgroup> \
+			<col class='tablelabel important'> \
+			<col class='field'>    \
+		</colgroup>    \
+		<tr><td>Shipment:</td> \
+		<td>[ordername]</td></tr>  \
+		<tr><td>Ordered by:</td>   \
+		<td>[orderedby]</td></tr>  \
+		<tr><td>Approved by:</td>  \
+		<td>[approvedby]</td></tr> \
+		<tr><td># packages:</td>   \
+		<td class='field'>[packages.len]</td></tr> \
+		</table><hr><p class='header important'>Contents</p>   \
+		<ul class='field'>"
 
 	for(var/packagename in packages)
 		info += "<li>[packagename]</li>"
 
-	info += "                                                                 \
-        </ul><br/><hr><br/><p class='important header'>                       \
-            Please stamp below and return to confirm receipt of shipment      \
-        </p></div>"
+	info += "  \
+		</ul><br/><hr><br/><p class='important header'>    \
+			Please stamp below and return to confirm receipt of shipment   \
+		</p></div>"
 
 	name = "[name] - [ordername]"
 
@@ -667,26 +624,26 @@ var/datum/controller/supply/supply_controller = new()
 			temp += "<b>Request from: [last_viewed_group]</b><BR><BR>"
 			for(var/supply_name in supply_controller.supply_packs )
 				var/datum/supply_packs/N = supply_controller.supply_packs[supply_name]
-				if(N.hidden || N.contraband || N.group != last_viewed_group || !N.buyable) continue								//Have to send the type instead of a reference to
-				temp += "<A href='?src=\ref[src];doorder=[supply_name]'>[supply_name]</A> Cost: $[round(N.cost) * SUPPLY_TO_MONEY_MUPLTIPLIER]<BR>"		//the obj because it would get caught by the garbage
+				if(N.hidden || N.contraband || N.group != last_viewed_group || !N.buyable) continue //Have to send the type instead of a reference to
+				temp += "<A href='?src=\ref[src];doorder=[supply_name]'>[supply_name]</A> Cost: $[round(N.cost) * SUPPLY_TO_MONEY_MUPLTIPLIER]<BR>" //the obj because it would get caught by the garbage
 
 	else if (href_list["doorder"])
 		if(world.time < reqtime)
 			for(var/mob/V in hearers(src))
-				V.show_message("<b>[src]</b>'s monitor flashes, \"[world.time - reqtime] seconds remaining until another requisition form may be printed.\"")
+				V.show_message("<b>[src]</b>'s monitor flashes, \"[world.time - reqtime] seconds remaining until another requisition form may be printed.\"", SHOW_MESSAGE_VISIBLE)
 			return
 
 		//Find the correct supply_pack datum
 		var/datum/supply_packs/P = supply_controller.supply_packs[href_list["doorder"]]
-		if(!istype(P))	return
+		if(!istype(P)) return
 
 		if(P.hidden || P.contraband || !P.buyable)
 			return
 
 		var/timeout = world.time + 600
 		var/reason = strip_html(input(usr,"Reason:","Why do you require this item?","") as null|text)
-		if(world.time > timeout)	return
-		if(!reason)	return
+		if(world.time > timeout) return
+		if(!reason) return
 
 		var/idname = "*None Provided*"
 		var/idrank = "*None Provided*"
@@ -712,7 +669,7 @@ var/datum/controller/supply/supply_controller = new()
 		reqform.info += "<hr>"
 		reqform.info += "STAMP BELOW TO APPROVE THIS REQUISITION:<br>"
 
-		reqform.update_icon()	//Fix for appearing blank when printed.
+		reqform.update_icon() //Fix for appearing blank when printed.
 		reqtime = (world.time + 5) % 1e5
 
 		//make our supply_order datum
@@ -842,7 +799,7 @@ var/datum/controller/supply/supply_controller = new()
 		shuttle.cancel_launch(src)
 
 	else if (href_list["order"])
-		//if(!shuttle.idle()) return	//this shouldn't be necessary it seems
+		//if(!shuttle.idle()) return //this shouldn't be necessary it seems
 		if(href_list["order"] == "categories")
 			//all_supply_groups
 			//Request what?
@@ -859,8 +816,8 @@ var/datum/controller/supply/supply_controller = new()
 			temp += "<b>Request from: [last_viewed_group]</b><BR><BR>"
 			for(var/supply_name in supply_controller.supply_packs )
 				var/datum/supply_packs/N = supply_controller.supply_packs[supply_name]
-				if((N.hidden && !hacked) || (N.contraband && !can_order_contraband) || N.group != last_viewed_group || !N.buyable) continue								//Have to send the type instead of a reference to
-				temp += "<A href='?src=\ref[src];doorder=[supply_name]'>[supply_name]</A> Cost: $[round(N.cost) * SUPPLY_TO_MONEY_MUPLTIPLIER]<BR>"		//the obj because it would get caught by the garbage
+				if((N.hidden && !hacked) || (N.contraband && !can_order_contraband) || N.group != last_viewed_group || !N.buyable) continue //Have to send the type instead of a reference to
+				temp += "<A href='?src=\ref[src];doorder=[supply_name]'>[supply_name]</A> Cost: $[round(N.cost) * SUPPLY_TO_MONEY_MUPLTIPLIER]<BR>" //the obj because it would get caught by the garbage
 
 		/*temp = "Supply points: [supply_controller.points]<BR><HR><BR>Request what?<BR><BR>"
 
@@ -868,19 +825,19 @@ var/datum/controller/supply/supply_controller = new()
 			var/datum/supply_packs/N = supply_controller.supply_packs[supply_name]
 			if(N.hidden && !hacked) continue
 			if(N.contraband && !can_order_contraband) continue
-			temp += "<A href='?src=\ref[src];doorder=[supply_name]'>[supply_name]</A> Cost: [N.cost]<BR>"    //the obj because it would get caught by the garbage
+			temp += "<A href='?src=\ref[src];doorder=[supply_name]'>[supply_name]</A> Cost: [N.cost]<BR>" //the obj because it would get caught by the garbage
 		temp += "<BR><A href='?src=\ref[src];mainmenu=1'>OK</A>"*/
 
 	else if (href_list["doorder"])
 		if(world.time < reqtime)
 			for(var/mob/V in hearers(src))
-				V.show_message("<b>[src]</b>'s monitor flashes, \"[world.time - reqtime] seconds remaining until another requisition form may be printed.\"")
+				V.show_message("<b>[src]</b>'s monitor flashes, \"[world.time - reqtime] seconds remaining until another requisition form may be printed.\"", SHOW_MESSAGE_VISIBLE)
 			return
 
 		//Find the correct supply_pack datum
 		var/datum/supply_packs/P = supply_controller.supply_packs[href_list["doorder"]]
 
-		if(!istype(P))	return
+		if(!istype(P)) return
 
 		if((P.hidden && !hacked) || (P.contraband && !can_order_contraband) || !P.buyable)
 			return
@@ -888,8 +845,8 @@ var/datum/controller/supply/supply_controller = new()
 		var/timeout = world.time + 600
 		//var/reason = copytext(sanitize(input(usr,"Reason:","Why do you require this item?","") as null|text),1,MAX_MESSAGE_LEN)
 		var/reason = "*None Provided*"
-		if(world.time > timeout)	return
-		if(!reason)	return
+		if(world.time > timeout) return
+		if(!reason) return
 
 		var/idname = "*None Provided*"
 		var/idrank = "*None Provided*"
@@ -915,7 +872,7 @@ var/datum/controller/supply/supply_controller = new()
 		reqform.info += "<hr>"
 		reqform.info += "STAMP BELOW TO APPROVE THIS REQUISITION:<br>"
 
-		reqform.update_icon()	//Fix for appearing blank when printed.
+		reqform.update_icon() //Fix for appearing blank when printed.
 		reqtime = (world.time + 5) % 1e5
 
 		//make our supply_order datum
@@ -1082,7 +1039,7 @@ var/datum/controller/supply/supply_controller = new()
 	if(inoperable())
 		return
 
-	if(LAZYLEN(allowed_roles) && !allowed_roles.Find(H.job))		//replaced Z-level restriction with role restriction.
+	if(LAZYLEN(allowed_roles) && !allowed_roles.Find(H.job)) //replaced Z-level restriction with role restriction.
 		to_chat(H, SPAN_WARNING("This console isn't for you."))
 		return
 

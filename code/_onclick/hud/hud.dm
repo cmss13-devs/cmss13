@@ -9,15 +9,16 @@
 	var/mob/mymob
 	var/datum/custom_hud/ui_datum
 
-	var/hud_version = HUD_STYLE_STANDARD	//the hud version used (standard, reduced, none)
-	var/hud_shown = TRUE			//Used for the HUD toggle (F12)
-	var/inventory_shown = TRUE		//the inventory
+	var/hud_version = HUD_STYLE_STANDARD //the hud version used (standard, reduced, none)
+	var/hud_shown = TRUE //Used for the HUD toggle (F12)
+	var/inventory_shown = TRUE //the inventory
 	var/show_intent_icons = 0
-	var/hotkey_ui_hidden = 0	//This is to hide the buttons that can be used via hotkeys. (hotkeybuttons list of buttons)
+	var/hotkey_ui_hidden = 0 //This is to hide the buttons that can be used via hotkeys. (hotkeybuttons list of buttons)
 
 	var/atom/movable/screen/r_hand_hud_object
 	var/atom/movable/screen/l_hand_hud_object
 	var/atom/movable/screen/action_intent
+	var/atom/movable/screen/mov_intent/move_intent
 	var/atom/movable/screen/alien_plasma_display
 	var/atom/movable/screen/alien_armor_display
 	var/atom/movable/screen/locate_leader
@@ -59,7 +60,7 @@
 
 	var/list/atom/movable/screen/plane_master/plane_masters = list() // see "appearance_flags" in the ref, assoc list of "[plane]" = object
 	///Assoc list of controller groups, associated with key string group name with value of the plane master controller ref
-	var/list/obj/plane_master_controller/plane_master_controllers = list()
+	var/list/atom/movable/plane_master_controller/plane_master_controllers = list()
 
 	var/list/static_inventory = list() //the screen objects which are static
 	var/list/toggleable_inventory = list() //the screen objects which can be hidden
@@ -82,8 +83,8 @@
 		if(owner.client)
 			instance.backdrop(mymob)
 
-	for(var/mytype in subtypesof(/obj/plane_master_controller))
-		var/obj/plane_master_controller/controller_instance = new mytype(null,src)
+	for(var/mytype in subtypesof(/atom/movable/plane_master_controller))
+		var/atom/movable/plane_master_controller/controller_instance = new mytype(null,src)
 		plane_master_controllers[controller_instance.name] = controller_instance
 
 /datum/hud/Destroy()
@@ -112,6 +113,7 @@
 	r_hand_hud_object = null
 	l_hand_hud_object = null
 	action_intent = null
+	move_intent = null
 	alien_plasma_display = null
 	alien_armor_display = null
 	locate_leader = null
@@ -165,8 +167,8 @@
 /datum/hud/proc/show_hud(version = 0, mob/viewmob)
 	if(!ismob(mymob))
 		return FALSE
-//	if(!mymob.client)
-//		return FALSE
+// if(!mymob.client)
+// return FALSE
 	var/mob/screenmob = viewmob || mymob
 	if(!screenmob.client)
 		return FALSE
@@ -175,14 +177,14 @@
 	screenmob.client.apply_clickcatcher()
 
 	var/display_hud_version = version
-	if(!display_hud_version)	//If 0 or blank, display the next hud version
+	if(!display_hud_version) //If 0 or blank, display the next hud version
 		display_hud_version = hud_version + 1
-	if(display_hud_version > HUD_VERSIONS)	//If the requested version number is greater than the available versions, reset back to the first version
+	if(display_hud_version > HUD_VERSIONS) //If the requested version number is greater than the available versions, reset back to the first version
 		display_hud_version = 1
 
 	switch(display_hud_version)
-		if(HUD_STYLE_STANDARD)	//Default HUD
-			hud_shown = 1	//Governs behavior of other procs
+		if(HUD_STYLE_STANDARD) //Default HUD
+			hud_shown = 1 //Governs behavior of other procs
 			if(static_inventory.len)
 				screenmob.client.screen += static_inventory
 			if(toggleable_inventory.len && inventory_shown)
@@ -192,8 +194,8 @@
 			if(infodisplay.len)
 				screenmob.client.screen += infodisplay
 
-		if(HUD_STYLE_REDUCED)	//Reduced HUD
-			hud_shown = 0	//Governs behavior of other procs
+		if(HUD_STYLE_REDUCED) //Reduced HUD
+			hud_shown = 0 //Governs behavior of other procs
 			if(static_inventory.len)
 				screenmob.client.screen -= static_inventory
 			if(toggleable_inventory.len)
@@ -205,14 +207,14 @@
 
 			//These ones are a part of 'static_inventory', 'toggleable_inventory' or 'hotkeybuttons' but we want them to stay
 			if(l_hand_hud_object)
-				screenmob.client.screen += l_hand_hud_object	//we want the hands to be visible
+				screenmob.client.screen += l_hand_hud_object //we want the hands to be visible
 			if(r_hand_hud_object)
-				screenmob.client.screen += r_hand_hud_object	//we want the hands to be visible
+				screenmob.client.screen += r_hand_hud_object //we want the hands to be visible
 			if(action_intent)
-				screenmob.client.screen += action_intent		//we want the intent switcher visible
+				screenmob.client.screen += action_intent //we want the intent switcher visible
 
-		if(HUD_STYLE_NOHUD)	//No HUD
-			hud_shown = 0	//Governs behavior of other procs
+		if(HUD_STYLE_NOHUD) //No HUD
+			hud_shown = 0 //Governs behavior of other procs
 			if(static_inventory.len)
 				screenmob.client.screen -= static_inventory
 			if(toggleable_inventory.len)
@@ -281,6 +283,18 @@
 	static_inventory += using
 	action_intent = using
 
+/datum/hud/proc/draw_mov_intent(var/datum/custom_hud/ui_datum, var/ui_alpha, var/ui_color)
+	var/atom/movable/screen/using = new /atom/movable/screen/mov_intent()
+	using.icon = ui_datum.ui_style_icon
+	using.screen_loc = ui_datum.ui_movi
+	if(ui_alpha)
+		using.alpha = ui_alpha
+	if(ui_color)
+		using.color = ui_color
+	using.icon_state = (mymob.m_intent == MOVE_INTENT_RUN ? "running" : "walking")
+	static_inventory += using
+	move_intent = using
+
 /datum/hud/proc/draw_drop(var/datum/custom_hud/ui_datum, var/ui_alpha, var/ui_color)
 	var/atom/movable/screen/using = new /atom/movable/screen/drop()
 	using.icon = ui_datum.ui_style_icon
@@ -343,7 +357,7 @@
 	inv_box.setDir(WEST)
 	inv_box.screen_loc = ui_datum.ui_rhand
 	inv_box.icon_state = "hand_inactive"
-	if(mymob && !mymob.hand)	//This being 0 or null means the right hand is in use
+	if(mymob && !mymob.hand) //This being 0 or null means the right hand is in use
 		inv_box.icon_state = "hand_active"
 	if(ui_alpha)
 		inv_box.alpha = ui_alpha

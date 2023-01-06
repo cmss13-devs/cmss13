@@ -4,14 +4,14 @@
 	pixel_x = -8
 	pixel_y = -8
 
-	mouse_opacity = 1
+	mouse_opacity = MOUSE_OPACITY_ICON
 
-	icon = 'icons/mob/hostiles/structures48x48.dmi'
+	icon = 'icons/mob/xenos/structures48x48.dmi'
 	icon_state = "reinforced_nest"
 	health = 400
 	var/obj/structure/bed/nest/structure/pred_nest
 
-	block_range = 2
+	block_range = 0
 
 /obj/effect/alien/resin/special/nest/get_examine_text(mob/user)
 	. = ..()

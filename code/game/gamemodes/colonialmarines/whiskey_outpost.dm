@@ -9,8 +9,8 @@
 /datum/game_mode/whiskey_outpost
 	name = "Whiskey Outpost"
 	config_tag = "Whiskey Outpost"
-	required_players 		= 0
-	xeno_bypass_timer 		= 1
+	required_players = 0
+	xeno_bypass_timer = 1
 	flags_round_type = MODE_NEW_SPAWN
 	role_mappings = list(
 					/datum/job/command/commander/whiskey = JOB_CO,
@@ -115,7 +115,7 @@
 	sleep(10)
 	to_world("<span class='round_header'>The current game mode is - WHISKEY OUTPOST!</span>")
 	to_world(SPAN_ROUNDBODY("It is the year 2177 on the planet LV-624, five years before the arrival of the USS Almayer and the 2nd 'Falling Falcons' Battalion in the sector"))
-	to_world(SPAN_ROUNDBODY("The 3rd 'Dust Raiders' Battalion is charged with establishing a USCM prescence in the Tychon's Rift sector"))
+	to_world(SPAN_ROUNDBODY("The 3rd 'Dust Raiders' Battalion is charged with establishing a USCM presence in the Neroid Sector"))
 	to_world(SPAN_ROUNDBODY("[SSmapping.configs[GROUND_MAP].map_name], one of the Dust Raider bases being established in the sector, has come under attack from unrecognized alien forces"))
 	to_world(SPAN_ROUNDBODY("With casualties mounting and supplies running thin, the Dust Raiders at [SSmapping.configs[GROUND_MAP].map_name] must survive for an hour to alert the rest of their battalion in the sector"))
 	to_world(SPAN_ROUNDBODY("Hold out for as long as you can."))
@@ -125,7 +125,7 @@
 	switch(map_locale) //Switching it up.
 		if(0)
 			marine_announcement("This is Captain Hans Naiche, commander of the 3rd Battalion 'Dust Raiders' forces here on LV-624. In our attempts to establish a base on this planet, several of our patrols were wiped out by hostile creatures.  We're setting up a distress call, but we need you to hold [SSmapping.configs[GROUND_MAP].map_name] in order for our engineers to set up the relay. We're prepping several M402 mortar units to provide fire support. If they overrun your positon, we will be wiped out with no way to call for help. Hold the line or we all die.", "Captain Naiche, 3rd Battalion Command, LV-624 Garrison")
-	addtimer(CALLBACK(src, .proc/story_announce, 0), 3 MINUTES)
+	addtimer(CALLBACK(src, PROC_REF(story_announce), 0), 3 MINUTES)
 	return ..()
 
 /datum/game_mode/whiskey_outpost/proc/story_announce(var/time)
@@ -135,10 +135,10 @@
 		if(1)
 			marine_announcement("Our scouts report increased activity in the area and given our intel, we're already preparing for the worst. We're setting up a comms relay to send out a distress call, but we're going to need time while our engineers get everything ready. All other stations should prepare accordingly and maximize combat readiness, effective immediately.", "Captain Naiche, 3rd Battalion Command, LV-624 Garrison")
 		if(2)
-			marine_announcement("Captian Naiche here. We've tracked the bulk of enemy forces on the move and [SSmapping.configs[GROUND_MAP].map_name] is likely to be hit before they reach the base. We need you to hold them off while we finish sending the distress call. Expect incoming within a few minutes. Godspeed, [SSmapping.configs[GROUND_MAP].map_name].", "Captain Naiche, 3rd Battalion Command, LV-624 Garrison")
+			marine_announcement("Captain Naiche here. We've tracked the bulk of enemy forces on the move and [SSmapping.configs[GROUND_MAP].map_name] is likely to be hit before they reach the base. We need you to hold them off while we finish sending the distress call. Expect incoming within a few minutes. Godspeed, [SSmapping.configs[GROUND_MAP].map_name].", "Captain Naiche, 3rd Battalion Command, LV-624 Garrison")
 
 	if(time <= 2)
-		addtimer(CALLBACK(src, .proc/story_announce, time+1), 3 MINUTES)
+		addtimer(CALLBACK(src, PROC_REF(story_announce), time+1), 3 MINUTES)
 
 /datum/game_mode/whiskey_outpost/proc/update_controllers()
 	//Update controllers while we're on this mode
@@ -262,7 +262,7 @@
 		log_game("Round end result - xenos won")
 		to_world("<span class='round_header'>The Xenos have succesfully defended their hive from colonization.</span>")
 		to_world(SPAN_ROUNDBODY("Well done, you've secured LV-624 for the hive!"))
-		to_world(SPAN_ROUNDBODY("It will be another five years before the USCM returns to the Tychon's Rift sector, with the arrival of the 2nd 'Falling Falcons' Battalion and the USS Almayer."))
+		to_world(SPAN_ROUNDBODY("It will be another five years before the USCM returns to the Neroid Sector, with the arrival of the 2nd 'Falling Falcons' Battalion and the USS Almayer."))
 		to_world(SPAN_ROUNDBODY("The xenomorph hive on LV-624 remains unthreatened until then..."))
 		world << sound('sound/misc/Game_Over_Man.ogg')
 		if(round_statistics)
@@ -274,8 +274,8 @@
 	else if(finished == 2)
 		log_game("Round end result - marines won")
 		to_world("<span class='round_header'>Against the onslaught, the marines have survived.</span>")
-		to_world(SPAN_ROUNDBODY("The signal rings out to the USS Alistoun, and Dust Raiders stationed elsewhere in Tychon's Rift begin to converge on LV-624."))
-		to_world(SPAN_ROUNDBODY("Eventually, the Dust Raiders secure LV-624 and the entire Tychon's Rift sector in 2182, pacifiying it and establishing peace in the sector for decades to come."))
+		to_world(SPAN_ROUNDBODY("The signal rings out to the USS Alistoun, and Dust Raiders stationed elsewhere in the Neroid Sector begin to converge on LV-624."))
+		to_world(SPAN_ROUNDBODY("Eventually, the Dust Raiders secure LV-624 and the entire Neroid Sector in 2182, pacifiying it and establishing peace in the sector for decades to come."))
 		to_world(SPAN_ROUNDBODY("The USS Almayer and the 2nd 'Falling Falcons' Battalion are never sent to the sector and are spared their fate in 2186."))
 		world << sound('sound/misc/hell_march.ogg')
 		if(round_statistics)
@@ -451,70 +451,70 @@
 
 	name = "Recycler"
 	desc = "Instructions: Place objects you want to destroy on top of it and use the machine. Use with care"
-	density = 0
+	density = FALSE
 	anchored = 1
 	unslashable = TRUE
 	unacidable = TRUE
 	var/working = 0
 
-	attack_hand(mob/user)
-		if(inoperable(MAINT))
-			return
-		if(user.lying || user.stat)
-			return
-		if(ismaintdrone(usr) || \
-			istype(usr, /mob/living/carbon/Xenomorph))
-			to_chat(usr, SPAN_DANGER("You don't have the dexterity to do this!"))
-			return
-		if(working)
-			to_chat(user, SPAN_DANGER("Wait for it to recharge first."))
-			return
-
-		var/remove_max = 10
-		var/turf/T = src.loc
-		if(T)
-			to_chat(user, SPAN_DANGER("You turn on the recycler."))
-			var/removed = 0
-			for(var/i, i < remove_max, i++)
-				for(var/obj/O in T)
-					if(istype(O,/obj/structure/closet/crate))
-						var/obj/structure/closet/crate/C = O
-						if(C.contents.len)
-							to_chat(user, SPAN_DANGER("[O] must be emptied before it can be recycled"))
-							continue
-						new /obj/item/stack/sheet/metal(get_step(src,dir))
-						O.forceMove(get_turf(locate(84,237,2))) //z.2
-//						O.forceMove(get_turf(locate(30,70,1)) )//z.1
-						removed++
-						break
-					else if(istype(O,/obj/item))
-						var/obj/item/I = O
-						if(I.anchored)
-							continue
-						O.forceMove(get_turf(locate(84,237,2))) //z.2
-//						O.forceMove(get_turf(locate(30,70,1)) )//z.1
-						removed++
-						break
-				for(var/mob/M in T)
-					if(istype(M,/mob/living/carbon/Xenomorph))
-						var/mob/living/carbon/Xenomorph/X = M
-						if(!X.stat == DEAD)
-							continue
-						X.forceMove(get_turf(locate(84,237,2))) //z.2
-//						X.forceMove(get_turf(locate(30,70,1)) )//z.1
-						removed++
-						break
-				if(removed && !working)
-					playsound(loc, 'sound/effects/meteorimpact.ogg', 25, 1)
-					working = 1 //Stops the sound from repeating
-				if(removed >= remove_max)
-					break
-
-		working = 1
-		addtimer(VARSET_CALLBACK(src, working, FALSE), 10 SECONDS)
-
-	ex_act(severity)
+/obj/structure/machinery/wo_recycler/attack_hand(mob/user)
+	if(inoperable(MAINT))
 		return
+	if(user.lying || user.stat)
+		return
+	if(ismaintdrone(usr) || \
+		istype(usr, /mob/living/carbon/Xenomorph))
+		to_chat(usr, SPAN_DANGER("You don't have the dexterity to do this!"))
+		return
+	if(working)
+		to_chat(user, SPAN_DANGER("Wait for it to recharge first."))
+		return
+
+	var/remove_max = 10
+	var/turf/T = src.loc
+	if(T)
+		to_chat(user, SPAN_DANGER("You turn on the recycler."))
+		var/removed = 0
+		for(var/i, i < remove_max, i++)
+			for(var/obj/O in T)
+				if(istype(O,/obj/structure/closet/crate))
+					var/obj/structure/closet/crate/C = O
+					if(C.contents.len)
+						to_chat(user, SPAN_DANGER("[O] must be emptied before it can be recycled"))
+						continue
+					new /obj/item/stack/sheet/metal(get_step(src,dir))
+					O.forceMove(get_turf(locate(84,237,2))) //z.2
+// O.forceMove(get_turf(locate(30,70,1)) )//z.1
+					removed++
+					break
+				else if(istype(O,/obj/item))
+					var/obj/item/I = O
+					if(I.anchored)
+						continue
+					O.forceMove(get_turf(locate(84,237,2))) //z.2
+// O.forceMove(get_turf(locate(30,70,1)) )//z.1
+					removed++
+					break
+			for(var/mob/M in T)
+				if(istype(M,/mob/living/carbon/Xenomorph))
+					var/mob/living/carbon/Xenomorph/X = M
+					if(!X.stat == DEAD)
+						continue
+					X.forceMove(get_turf(locate(84,237,2))) //z.2
+// X.forceMove(get_turf(locate(30,70,1)) )//z.1
+					removed++
+					break
+			if(removed && !working)
+				playsound(loc, 'sound/effects/meteorimpact.ogg', 25, 1)
+				working = 1 //Stops the sound from repeating
+			if(removed >= remove_max)
+				break
+
+	working = 1
+	addtimer(VARSET_CALLBACK(src, working, FALSE), 10 SECONDS)
+
+/obj/structure/machinery/wo_recycler/ex_act(severity)
+	return
 
 
 ////////////////////

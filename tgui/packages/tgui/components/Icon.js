@@ -39,8 +39,8 @@ export const Icon = (props) => {
     const faName = name.replace(FA_OUTLINE_REGEX, '');
     // prettier-ignore
     iconClass = (faRegular ? 'far ' : 'fas ')
-    + 'fa-' + faName
-    + (spin ? " fa-spin" : "");
+      + 'fa-' + faName
+      + (spin ? ' fa-spin' : '');
   }
   return (
     <i

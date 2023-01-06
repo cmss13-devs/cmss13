@@ -1,9 +1,9 @@
 var/list/obj/structure/machinery/faxmachine/allfaxes = list()
 var/list/alldepartments = list()
 
-#define DEPARTMENT_WY		"Weyland-Yutani"
-#define DEPARTMENT_HC		"USCM High Command"
-#define DEPARTMENT_PROVOST	"USCM Provost Office"
+#define DEPARTMENT_WY "Weyland-Yutani"
+#define DEPARTMENT_HC "USCM High Command"
+#define DEPARTMENT_PROVOST "USCM Provost Office"
 
 //This fax machine will become a colonial one after I have mapped it onto the Almayer.
 /obj/structure/machinery/faxmachine
@@ -12,7 +12,7 @@ var/list/alldepartments = list()
 	icon_state = "fax"
 	anchored = TRUE
 	density = TRUE
-	use_power = 1
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 30
 	active_power_usage = 200
 	power_channel = POWER_CHANNEL_EQUIP
@@ -38,15 +38,7 @@ var/list/alldepartments = list()
 /obj/structure/machinery/faxmachine/Initialize(mapload, ...)
 	. = ..()
 	allfaxes += src
-
-	if( !("[department]" in alldepartments) ) //Initialize departments. This will work with multiple fax machines.
-		alldepartments += department
-	if(!(DEPARTMENT_WY in alldepartments))
-		alldepartments += DEPARTMENT_WY
-	if(!(DEPARTMENT_HC in alldepartments))
-		alldepartments += DEPARTMENT_HC
-	if(!(DEPARTMENT_PROVOST in alldepartments))
-		alldepartments += DEPARTMENT_PROVOST
+	update_departments()
 
 /obj/structure/machinery/faxmachine/Destroy()
 	allfaxes -= src
@@ -95,7 +87,7 @@ var/list/alldepartments = list()
 	set name = "Eject ID Card"
 	set src in view(1)
 
-	if(!usr || usr.stat || usr.lying)	return
+	if(!usr || usr.stat || usr.lying) return
 
 	if(ishuman(usr) && scan)
 		to_chat(usr, "You remove \the [scan] from \the [src].")
@@ -109,6 +101,15 @@ var/list/alldepartments = list()
 		to_chat(usr, "There is nothing to remove from \the [src].")
 	return
 
+/obj/structure/machinery/faxmachine/proc/update_departments()
+	if( !("[department]" in alldepartments) ) //Initialize departments. This will work with multiple fax machines.
+		alldepartments += department
+	if(!(DEPARTMENT_WY in alldepartments))
+		alldepartments += DEPARTMENT_WY
+	if(!(DEPARTMENT_HC in alldepartments))
+		alldepartments += DEPARTMENT_HC
+	if(!(DEPARTMENT_PROVOST in alldepartments))
+		alldepartments += DEPARTMENT_PROVOST
 // TGUI SHIT \\
 
 /obj/structure/machinery/faxmachine/tgui_interact(mob/user, datum/tgui/ui)

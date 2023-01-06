@@ -48,7 +48,7 @@
 /area/strata/ag/interior/paths/cabin_area/central)
 "aal" = (
 /obj/structure/bed/nest,
-/obj/effect/landmark/corpsespawner/pmc,
+/obj/effect/landmark/corpsespawner/upp,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/interior/outpost/gen/bball/nest)
 "aam" = (
@@ -118,7 +118,7 @@
 "aax" = (
 /obj/structure/bed/nest,
 /obj/effect/decal/cleanable/blood/gibs/core,
-/obj/effect/landmark/corpsespawner/pmc,
+/obj/effect/landmark/corpsespawner/upp,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/interior/outpost/gen/bball/nest)
 "aay" = (
@@ -437,7 +437,7 @@
 /area/strata/ag/exterior)
 "abB" = (
 /obj/structure/bed/nest,
-/obj/effect/landmark/corpsespawner/pmc,
+/obj/effect/landmark/corpsespawner/upp,
 /turf/open/floor/strata{
 	icon_state = "fake_wood"
 	},
@@ -1022,7 +1022,7 @@
 "acW" = (
 /obj/structure/bed/nest,
 /obj/effect/decal/cleanable/blood/gibs/core,
-/obj/effect/landmark/corpsespawner/pmc,
+/obj/effect/landmark/corpsespawner/upp,
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/interior/outpost/gen/bball/nest)
 "acX" = (
@@ -1369,7 +1369,7 @@
 	},
 /area/strata/ug/interior/jungle/deep/structures/res)
 "adU" = (
-/obj/structure/closet/secure_closet/security,
+/obj/structure/closet/secure_closet/security/soro,
 /obj/item/reagent_container/food/snacks/carpmeat,
 /turf/open/floor/strata{
 	icon_state = "red1"
@@ -1570,7 +1570,7 @@
 	},
 /area/strata/ag/interior/outpost/gen/bball)
 "aev" = (
-/obj/effect/landmark/corpsespawner/pmc,
+/obj/effect/landmark/corpsespawner/upp,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/interior/outpost/gen/bball/nest)
 "aex" = (
@@ -4478,7 +4478,7 @@
 /obj/structure/bedsheetbin,
 /obj/structure/machinery/power/apc{
 	dir = 1;
-	pixel_y = 24
+	pixel_y = 25
 	},
 /turf/open/floor/strata{
 	icon_state = "floor3"
@@ -4662,7 +4662,7 @@
 /area/strata/ag/interior/dorms/canteen)
 "anr" = (
 /obj/structure/surface/rack,
-/obj/item/weapon/gun/shotgun/pump/cmb,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
 /obj/item/ammo_magazine/shotgun/slugs{
 	pixel_x = 6;
 	pixel_y = -4
@@ -4676,9 +4676,8 @@
 	},
 /area/strata/ag/interior/research_decks/security)
 "ans" = (
-/obj/structure/closet/secure_closet/security,
+/obj/structure/closet/secure_closet/security/soro,
 /obj/item/reagent_container/food/snacks/carpmeat,
-/obj/effect/landmark/costume/commie,
 /obj/structure/machinery/light/small{
 	dir = 1;
 	pixel_y = 20
@@ -4751,10 +4750,9 @@
 	},
 /area/strata/ag/interior/research_decks/security)
 "anB" = (
-/obj/structure/closet/secure_closet/security,
 /obj/item/reagent_container/food/snacks/carpmeat,
-/obj/effect/landmark/costume/commie,
 /obj/effect/landmark/objective_landmark/close,
+/obj/structure/closet/secure_closet/security/soro,
 /turf/open/floor/strata{
 	icon_state = "red1"
 	},
@@ -4843,7 +4841,7 @@
 	},
 /area/strata/ag/interior/outpost/canteen/personal_storage)
 "anR" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med,
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited,
 /turf/closed/wall/strata_outpost,
 /area/strata/ag/interior/outpost/canteen/personal_storage)
 "anS" = (
@@ -5707,6 +5705,7 @@
 /area/strata/ag/interior/dorms/maintenance)
 "aqB" = (
 /obj/item/storage/box/nade_box/tear_gas,
+/obj/structure/closet/secure_closet/security/soro,
 /turf/open/floor/strata{
 	icon_state = "red1"
 	},
@@ -5877,7 +5876,6 @@
 	},
 /area/strata/ug/interior/jungle/deep/structures/res)
 "arb" = (
-/obj/structure/closet/secure_closet/security_empty,
 /obj/item/storage/belt/security,
 /turf/open/floor/strata{
 	icon_state = "floor2"
@@ -6496,7 +6494,7 @@
 "asM" = (
 /obj/structure/machinery/power/apc{
 	dir = 1;
-	pixel_y = 24
+	pixel_y = 25
 	},
 /turf/open/floor/strata{
 	icon_state = "floor3"
@@ -7630,7 +7628,6 @@
 	},
 /area/strata/ag/interior/outpost/engi)
 "avY" = (
-/obj/structure/closet/secure_closet/security_empty,
 /obj/structure/machinery/light/small{
 	dir = 8
 	},
@@ -8157,11 +8154,11 @@
 	},
 /area/strata/ag/interior/outpost/engi)
 "axu" = (
-/obj/structure/closet/secure_closet/security,
+/obj/structure/closet/secure_closet/security/soro,
 /turf/open/floor/strata{
 	icon_state = "red1"
 	},
-/area/strata/ag/interior/outpost/security)
+/area/strata/ag/interior/research_decks/security)
 "axv" = (
 /turf/open/auto_turf/snow/brown_base/layer4,
 /area/strata/ag/interior/outpost/gen/bball)
@@ -8277,7 +8274,7 @@
 	},
 /obj/structure/machinery/power/apc{
 	dir = 1;
-	pixel_y = 24
+	pixel_y = 25
 	},
 /obj/effect/landmark/survivor_spawner,
 /turf/open/floor/interior/tatami,
@@ -8675,6 +8672,7 @@
 /area/strata/ag/interior/outpost/security)
 "aza" = (
 /obj/item/poster,
+/obj/structure/closet/secure_closet/security/soro,
 /turf/open/floor/strata{
 	icon_state = "red1"
 	},
@@ -10107,7 +10105,7 @@
 	},
 /area/strata/ag/interior/dorms)
 "aDI" = (
-/obj/structure/machinery/bodyscanner,
+/obj/structure/machinery/medical_pod/bodyscanner,
 /obj/structure/machinery/light/small{
 	dir = 8
 	},
@@ -10367,7 +10365,7 @@
 	},
 /area/strata/ag/interior/outpost/canteen)
 "aEq" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited{
 	pixel_y = -28
 	},
 /obj/structure/largecrate/random,
@@ -10389,7 +10387,7 @@
 /obj/structure/closet/crate/freezer/rations,
 /obj/structure/machinery/power/apc{
 	dir = 1;
-	pixel_y = 24
+	pixel_y = 25
 	},
 /turf/open/floor/strata{
 	dir = 10;
@@ -10412,7 +10410,7 @@
 "aEu" = (
 /obj/structure/machinery/power/apc{
 	dir = 1;
-	pixel_y = 24
+	pixel_y = 25
 	},
 /obj/item/reagent_container/food/drinks/cans/waterbottle,
 /turf/open/floor/strata{
@@ -11974,7 +11972,7 @@
 /obj/structure/machinery/computer/crew,
 /obj/structure/machinery/power/apc{
 	dir = 1;
-	pixel_y = 24
+	pixel_y = 25
 	},
 /turf/open/floor/strata,
 /area/strata/ag/interior/outpost/admin)
@@ -12551,7 +12549,6 @@
 	},
 /area/strata/ag/interior/outpost/maint/canteen_e_1)
 "aLc" = (
-/obj/structure/closet/secure_closet/security_empty,
 /obj/structure/window/reinforced/tinted,
 /obj/structure/window/reinforced/tinted{
 	dir = 8
@@ -14959,7 +14956,7 @@
 	},
 /area/strata/ag/interior/outpost/admin)
 "aSn" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited{
 	pixel_y = -28
 	},
 /obj/item/reagent_container/spray/cleaner,
@@ -15686,7 +15683,7 @@
 	},
 /area/strata/ag/interior/outpost/gen/foyer)
 "aUS" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med,
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited,
 /turf/closed/wall/strata_outpost,
 /area/strata/ag/interior/outpost/engi)
 "aUT" = (
@@ -16269,7 +16266,7 @@
 	},
 /obj/structure/machinery/power/apc{
 	dir = 1;
-	pixel_y = 24
+	pixel_y = 25
 	},
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/interior/plastic,
@@ -16403,7 +16400,7 @@
 /turf/closed/wall/strata_outpost,
 /area/strata/ug/interior/outpost/jung/dorms/admin4)
 "aXq" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med,
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited,
 /turf/closed/wall/strata_outpost,
 /area/strata/ug/interior/outpost/jung/dorms/admin4)
 "aXr" = (
@@ -16857,7 +16854,7 @@
 "aZm" = (
 /obj/structure/machinery/power/apc{
 	dir = 1;
-	pixel_y = 24
+	pixel_y = 25
 	},
 /turf/open/floor/strata{
 	dir = 10;
@@ -16962,7 +16959,7 @@
 	},
 /area/strata/ag/interior/outpost/maint/canteen_e_1)
 "aZz" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med,
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited,
 /turf/closed/wall/strata_outpost,
 /area/strata/ag/interior/outpost/maint/canteen_e_1)
 "aZA" = (
@@ -17648,7 +17645,7 @@
 /obj/structure/closet/wardrobe/pjs,
 /obj/structure/machinery/power/apc{
 	dir = 1;
-	pixel_y = 24
+	pixel_y = 25
 	},
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/strata,
@@ -18136,7 +18133,7 @@
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/strata/ag/exterior/north_lz_caves)
 "bdE" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med,
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited,
 /turf/closed/wall/strata_outpost,
 /area/strata/ag/interior/outpost/admin)
 "bdG" = (
@@ -18214,7 +18211,6 @@
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/exterior/marsh/river)
 "bdU" = (
-/obj/structure/closet/secure_closet/security_empty,
 /obj/item/book/manual/security_space_law,
 /turf/open/floor/strata{
 	icon_state = "red1"
@@ -18360,7 +18356,7 @@
 	},
 /area/strata/ag/interior/outpost/canteen/bar)
 "bes" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med,
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited,
 /turf/closed/wall/strata_outpost,
 /area/strata/ag/interior/outpost/canteen/bar)
 "bev" = (
@@ -19650,8 +19646,6 @@
 	icon_state = "floor3"
 	},
 /area/strata/ag/interior/outpost/admin)
-"biM" = (
-)
 "biN" = (
 /obj/structure/platform/strata,
 /obj/structure/platform/strata{
@@ -21720,7 +21714,7 @@
 	},
 /obj/structure/machinery/power/apc{
 	dir = 1;
-	pixel_y = 24
+	pixel_y = 25
 	},
 /turf/open/floor/strata{
 	dir = 4;
@@ -22309,9 +22303,9 @@
 	},
 /area/strata/ag/interior/outpost/med)
 "bsx" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med,
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med,
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med,
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited,
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited,
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited,
 /turf/closed/wall/strata_outpost,
 /area/strata/ag/interior/outpost/gen/foyer)
 "bsy" = (
@@ -22466,11 +22460,6 @@
 "bsT" = (
 /obj/structure/platform/strata{
 	dir = 8
-	},
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_x = -29;
-	start_charge = 0
 	},
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/strata/ag/exterior/marsh/crash)
@@ -23623,7 +23612,7 @@
 "bxn" = (
 /obj/structure/machinery/power/apc{
 	dir = 1;
-	pixel_y = 24
+	pixel_y = 25
 	},
 /obj/structure/kitchenspike,
 /turf/open/floor/strata{
@@ -24180,7 +24169,7 @@
 "bzx" = (
 /obj/structure/machinery/power/apc{
 	dir = 1;
-	pixel_y = 24
+	pixel_y = 25
 	},
 /turf/open/floor/strata,
 /area/strata/ag/interior/outpost/engi/drome)
@@ -24772,7 +24761,7 @@
 "bDv" = (
 /obj/structure/machinery/power/apc{
 	dir = 1;
-	pixel_y = 24
+	pixel_y = 25
 	},
 /turf/open/floor/strata{
 	icon_state = "multi_tiles"
@@ -24932,7 +24921,7 @@
 /area/strata/ag/interior/disposals)
 "bEY" = (
 /obj/structure/surface/rack,
-/obj/item/weapon/gun/shotgun/pump/cmb,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
 /obj/effect/landmark/good_item,
 /obj/structure/surface/rack,
 /obj/structure/machinery/light/small{
@@ -25009,12 +24998,6 @@
 	icon_state = "multi_tiles"
 	},
 /area/strata/ag/interior/outpost/canteen)
-"bFA" = (
-/obj/structure/closet/secure_closet/security,
-/turf/open/floor/strata{
-	icon_state = "red1"
-	},
-/area/strata/ag/interior/administration)
 "bFB" = (
 /obj/structure/closet/secure_closet/personal,
 /obj/structure/machinery/alarm{
@@ -26001,7 +25984,7 @@
 "bNm" = (
 /obj/structure/machinery/power/apc{
 	dir = 1;
-	pixel_y = 24
+	pixel_y = 25
 	},
 /turf/open/floor/strata{
 	dir = 10;
@@ -26805,7 +26788,7 @@
 /obj/structure/machinery/light/small{
 	dir = 8
 	},
-/obj/item/weapon/gun/shotgun/pump/cmb,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
 /obj/item/ammo_magazine/shotgun/slugs{
 	pixel_x = 6;
 	pixel_y = -4
@@ -29217,7 +29200,7 @@
 	},
 /area/strata/ag/interior/outpost/engi/drome/shuttle)
 "cls" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med,
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited,
 /turf/closed/shuttle/ert{
 	icon_state = "upp23"
 	},
@@ -29580,7 +29563,7 @@
 /obj/item/tool/wrench,
 /obj/structure/machinery/power/apc{
 	dir = 1;
-	pixel_y = 24
+	pixel_y = 25
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -29638,7 +29621,7 @@
 /obj/structure/reagent_dispensers/beerkeg,
 /obj/structure/machinery/power/apc{
 	dir = 1;
-	pixel_y = 24
+	pixel_y = 25
 	},
 /turf/open/floor/strata{
 	dir = 4;
@@ -29794,7 +29777,6 @@
 /turf/open/auto_turf/ice/layer1,
 /area/strata/ag/interior/outpost/gen/bball/nest)
 "cpi" = (
-/obj/structure/closet/secure_closet/security_empty,
 /obj/item/stack/medical/ointment,
 /obj/item/stack/medical/splint,
 /obj/structure/machinery/light/small{
@@ -31742,7 +31724,7 @@
 "era" = (
 /obj/structure/machinery/power/apc{
 	dir = 1;
-	pixel_y = 24
+	pixel_y = 25
 	},
 /turf/open/floor/strata{
 	icon_state = "floor2"
@@ -32076,7 +32058,7 @@
 /turf/open/floor/strata,
 /area/strata/ag/exterior/research_decks)
 "eRJ" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited{
 	name = "Emergency NanoMed";
 	pixel_x = 30
 	},
@@ -32270,7 +32252,7 @@
 /turf/closed/wall/strata_outpost/reinforced,
 /area/strata/ag/interior/outpost/gen/bball/nest)
 "flK" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med,
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited,
 /turf/closed/wall/strata_outpost/reinforced,
 /area/strata/ag/interior/outpost/med)
 "fno" = (
@@ -33426,10 +33408,10 @@
 "haU" = (
 /obj/structure/machinery/power/apc{
 	dir = 4;
-	pixel_x = 28;
+	pixel_x = -28;
 	start_charge = 0
 	},
-/turf/open/auto_turf/snow/brown_base/layer1,
+/turf/open/floor/plating,
 /area/strata/ag/exterior/marsh/crash)
 "haZ" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -33524,7 +33506,7 @@
 /turf/open/auto_turf/strata_grass/layer0,
 /area/strata/ug/interior/jungle/deep/south_dorms)
 "hjC" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med,
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited,
 /turf/closed/wall/strata_outpost,
 /area/strata/ug/interior/outpost/jung/dorms/sec2)
 "hkn" = (
@@ -34049,7 +34031,7 @@
 "ioz" = (
 /obj/structure/bed/nest,
 /obj/effect/decal/cleanable/blood/gibs/core,
-/obj/effect/landmark/corpsespawner/pmc,
+/obj/effect/landmark/corpsespawner/upp,
 /turf/open/floor/strata{
 	icon_state = "multi_tiles"
 	},
@@ -34674,7 +34656,7 @@
 	dir = 8;
 	tag = "icon-chair (WEST)"
 	},
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited{
 	name = "Emergency NanoMed";
 	pixel_x = 30
 	},
@@ -35141,7 +35123,7 @@
 	},
 /area/strata/ag/interior/outpost/gen/bball)
 "kaw" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med,
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited,
 /turf/closed/wall/strata_outpost,
 /area/strata/ug/interior/outpost/jung/dorms/med2)
 "kaP" = (
@@ -35183,7 +35165,7 @@
 	},
 /obj/structure/machinery/power/apc{
 	dir = 1;
-	pixel_y = 24
+	pixel_y = 25
 	},
 /turf/open/floor/strata,
 /area/strata/ug/interior/outpost/jung/dorms/med2)
@@ -36010,7 +35992,7 @@
 /obj/structure/machinery/photocopier,
 /obj/structure/machinery/power/apc{
 	dir = 1;
-	pixel_y = 24
+	pixel_y = 25
 	},
 /turf/open/floor/strata,
 /area/strata/ug/interior/outpost/jung/dorms/admin1)
@@ -36168,9 +36150,9 @@
 /area/strata/ug/interior/jungle/deep/structures/engi)
 "lNr" = (
 /obj/structure/surface/rack,
-/obj/item/weapon/gun/shotgun/pump/cmb,
-/obj/item/weapon/gun/shotgun/pump/cmb,
-/obj/item/weapon/gun/shotgun/pump/cmb{
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb{
 	pixel_x = 6;
 	pixel_y = -4
 	},
@@ -36208,8 +36190,8 @@
 /turf/open/gm/river,
 /area/strata/ag/exterior/marsh)
 "lPk" = (
-/obj/structure/closet/secure_closet/security,
 /obj/effect/landmark/objective_landmark/medium,
+/obj/structure/closet/secure_closet/security/soro,
 /turf/open/floor/strata{
 	icon_state = "red1"
 	},
@@ -36384,7 +36366,6 @@
 	},
 /area/strata/ag/interior/tcomms)
 "mdK" = (
-/obj/structure/closet/secure_closet/security_empty,
 /obj/item/storage/belt/security,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/strata{
@@ -36667,7 +36648,7 @@
 	},
 /area/strata/ag/interior/tcomms)
 "msG" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med,
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited,
 /turf/closed/wall/strata_outpost,
 /area/strata/ag/interior/outpost/med)
 "msP" = (
@@ -37006,7 +36987,7 @@
 "mWM" = (
 /obj/structure/machinery/power/apc{
 	dir = 1;
-	pixel_y = 24
+	pixel_y = 25
 	},
 /obj/effect/decal/cleanable/blood,
 /obj/effect/landmark/objective_landmark/medium,
@@ -39525,7 +39506,6 @@
 /area/strata/ag/exterior/tcomms/tcomms_deck)
 "rkb" = (
 /obj/item/clothing/glasses/thermal/syndi,
-/obj/structure/closet/secure_closet/security,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/strata{
 	dir = 8;
@@ -39861,7 +39841,7 @@
 "rSE" = (
 /obj/structure/machinery/power/apc{
 	dir = 1;
-	pixel_y = 24
+	pixel_y = 25
 	},
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
@@ -41124,7 +41104,7 @@
 "tZF" = (
 /obj/structure/machinery/power/apc{
 	dir = 1;
-	pixel_y = 24
+	pixel_y = 25
 	},
 /turf/open/floor/strata{
 	dir = 8;
@@ -41658,7 +41638,7 @@
 "uTv" = (
 /obj/structure/machinery/power/apc{
 	dir = 1;
-	pixel_y = 24
+	pixel_y = 25
 	},
 /turf/open/floor/strata{
 	dir = 8;
@@ -42332,7 +42312,7 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/ug/interior/jungle/deep/south_dorms)
 "vPY" = (
-/obj/effect/landmark/corpsespawner/pmc,
+/obj/effect/landmark/corpsespawner/upp,
 /turf/open/floor/strata,
 /area/strata/ug/interior/outpost/jung/dorms/admin1)
 "vQo" = (
@@ -42355,7 +42335,7 @@
 "vTN" = (
 /obj/structure/machinery/power/apc{
 	dir = 1;
-	pixel_y = 24
+	pixel_y = 25
 	},
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/blood/gibs/core,
@@ -43868,8 +43848,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (2,1,1) = {"
 aaa
@@ -44063,8 +44043,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (3,1,1) = {"
 aaa
@@ -44258,8 +44238,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (4,1,1) = {"
 aaa
@@ -44453,8 +44433,8 @@ aab
 aab
 aab
 aab
-biM
-biM
+aab
+aab
 "}
 (5,1,1) = {"
 aaa
@@ -44648,8 +44628,8 @@ aac
 aac
 aac
 aac
-biM
-biM
+aac
+aac
 "}
 (6,1,1) = {"
 aaa
@@ -44843,8 +44823,8 @@ ttQ
 ttQ
 ttQ
 ttQ
-biM
-biM
+ttQ
+ttQ
 "}
 (7,1,1) = {"
 aaa
@@ -45038,8 +45018,8 @@ eOI
 eOI
 eOI
 eOI
-biM
-biM
+eOI
+eOI
 "}
 (8,1,1) = {"
 aaa
@@ -45233,8 +45213,8 @@ vgb
 vgb
 vgb
 vgb
-biM
-biM
+vgb
+vgb
 "}
 (9,1,1) = {"
 aaa
@@ -45428,8 +45408,8 @@ vgb
 vgb
 vgb
 vgb
-biM
-biM
+vgb
+vgb
 "}
 (10,1,1) = {"
 aaa
@@ -45623,8 +45603,8 @@ vgb
 vgb
 vgb
 vgb
-biM
-biM
+vgb
+vgb
 "}
 (11,1,1) = {"
 aaa
@@ -45818,8 +45798,8 @@ vgb
 vgb
 vgb
 vgb
-biM
-biM
+vgb
+vgb
 "}
 (12,1,1) = {"
 aaa
@@ -46013,8 +45993,8 @@ vgb
 vgb
 vgb
 vgb
-biM
-biM
+vgb
+vgb
 "}
 (13,1,1) = {"
 aaa
@@ -46208,8 +46188,8 @@ wdN
 wdN
 wdN
 wdN
-biM
-biM
+wdN
+wdN
 "}
 (14,1,1) = {"
 aaa
@@ -46403,8 +46383,8 @@ ttQ
 ttQ
 ttQ
 ttQ
-biM
-biM
+ttQ
+ttQ
 "}
 (15,1,1) = {"
 aaa
@@ -46598,8 +46578,8 @@ aac
 aac
 aac
 aac
-biM
-biM
+aac
+aac
 "}
 (16,1,1) = {"
 aaa
@@ -46793,8 +46773,8 @@ aab
 aab
 aab
 aab
-biM
-biM
+aab
+aab
 "}
 (17,1,1) = {"
 aaa
@@ -46988,8 +46968,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (18,1,1) = {"
 aaa
@@ -47183,8 +47163,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (19,1,1) = {"
 aaa
@@ -47293,7 +47273,7 @@ aVq
 aVq
 bgS
 bgS
-haU
+bgS
 bgS
 bgS
 bhO
@@ -47378,8 +47358,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (20,1,1) = {"
 aaa
@@ -47683,7 +47663,7 @@ aVq
 aVq
 bgS
 bgS
-xzR
+haU
 xzR
 bgS
 bhN
@@ -47768,8 +47748,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (22,1,1) = {"
 aaa
@@ -47963,8 +47943,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (23,1,1) = {"
 aaa
@@ -48158,8 +48138,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (24,1,1) = {"
 aaa
@@ -48353,8 +48333,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (25,1,1) = {"
 aaa
@@ -48548,8 +48528,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (26,1,1) = {"
 aaa
@@ -48743,8 +48723,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (27,1,1) = {"
 aaa
@@ -48938,8 +48918,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (28,1,1) = {"
 aaa
@@ -49133,8 +49113,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (29,1,1) = {"
 aaa
@@ -49328,8 +49308,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (30,1,1) = {"
 aaa
@@ -49523,8 +49503,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (31,1,1) = {"
 aaa
@@ -49718,8 +49698,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (32,1,1) = {"
 aaa
@@ -49913,8 +49893,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (33,1,1) = {"
 aaa
@@ -50108,8 +50088,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (34,1,1) = {"
 aaa
@@ -50303,8 +50283,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (35,1,1) = {"
 aaa
@@ -50498,8 +50478,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (36,1,1) = {"
 aaa
@@ -50693,8 +50673,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (37,1,1) = {"
 aaa
@@ -50888,8 +50868,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (38,1,1) = {"
 aaa
@@ -51083,8 +51063,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (39,1,1) = {"
 aaa
@@ -51278,8 +51258,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (40,1,1) = {"
 aaa
@@ -51473,8 +51453,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (41,1,1) = {"
 aaa
@@ -51668,8 +51648,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (42,1,1) = {"
 aaa
@@ -51863,8 +51843,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (43,1,1) = {"
 aaa
@@ -52058,8 +52038,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (44,1,1) = {"
 aaa
@@ -52253,8 +52233,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (45,1,1) = {"
 aaa
@@ -52448,8 +52428,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (46,1,1) = {"
 aaa
@@ -52643,8 +52623,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (47,1,1) = {"
 aaa
@@ -52838,8 +52818,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (48,1,1) = {"
 aaa
@@ -53033,8 +53013,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (49,1,1) = {"
 aaa
@@ -53228,8 +53208,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (50,1,1) = {"
 aaa
@@ -53423,8 +53403,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (51,1,1) = {"
 aaa
@@ -53618,8 +53598,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (52,1,1) = {"
 aaa
@@ -53813,8 +53793,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (53,1,1) = {"
 aaa
@@ -54008,8 +53988,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (54,1,1) = {"
 aaa
@@ -54203,8 +54183,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (55,1,1) = {"
 aaa
@@ -54398,8 +54378,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (56,1,1) = {"
 aaa
@@ -54593,8 +54573,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (57,1,1) = {"
 aaa
@@ -54686,7 +54666,7 @@ bkt
 cfR
 ctz
 ctS
-bFA
+oUS
 cfR
 bav
 aZP
@@ -54788,8 +54768,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (58,1,1) = {"
 aaa
@@ -54983,8 +54963,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (59,1,1) = {"
 aaa
@@ -55178,8 +55158,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (60,1,1) = {"
 aaa
@@ -55373,8 +55353,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (61,1,1) = {"
 aaa
@@ -55568,8 +55548,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (62,1,1) = {"
 aaa
@@ -55763,8 +55743,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (63,1,1) = {"
 aaa
@@ -55958,8 +55938,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (64,1,1) = {"
 aaa
@@ -56153,8 +56133,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (65,1,1) = {"
 aaa
@@ -56348,8 +56328,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (66,1,1) = {"
 aaa
@@ -56543,8 +56523,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (67,1,1) = {"
 aaa
@@ -56738,8 +56718,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (68,1,1) = {"
 aaa
@@ -56933,8 +56913,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (69,1,1) = {"
 aaa
@@ -57128,8 +57108,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (70,1,1) = {"
 aaa
@@ -57323,8 +57303,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (71,1,1) = {"
 aaa
@@ -57518,8 +57498,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (72,1,1) = {"
 aaa
@@ -57713,8 +57693,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (73,1,1) = {"
 aaa
@@ -57908,8 +57888,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (74,1,1) = {"
 aaa
@@ -58103,8 +58083,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (75,1,1) = {"
 aaa
@@ -58298,8 +58278,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (76,1,1) = {"
 aaa
@@ -58493,8 +58473,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (77,1,1) = {"
 aaa
@@ -58688,8 +58668,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (78,1,1) = {"
 aaa
@@ -58883,8 +58863,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (79,1,1) = {"
 aaa
@@ -59078,8 +59058,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (80,1,1) = {"
 aaa
@@ -59273,8 +59253,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (81,1,1) = {"
 aaa
@@ -59468,8 +59448,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (82,1,1) = {"
 aaa
@@ -59663,8 +59643,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (83,1,1) = {"
 aaa
@@ -59858,8 +59838,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (84,1,1) = {"
 aaa
@@ -60053,8 +60033,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (85,1,1) = {"
 aaa
@@ -60248,8 +60228,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (86,1,1) = {"
 aaa
@@ -60443,8 +60423,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (87,1,1) = {"
 aaa
@@ -60638,8 +60618,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (88,1,1) = {"
 aaa
@@ -60833,8 +60813,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (89,1,1) = {"
 aaa
@@ -61028,8 +61008,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (90,1,1) = {"
 aaa
@@ -61223,8 +61203,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (91,1,1) = {"
 aaa
@@ -61418,8 +61398,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (92,1,1) = {"
 aaa
@@ -61613,8 +61593,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (93,1,1) = {"
 aaa
@@ -61808,8 +61788,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (94,1,1) = {"
 aaa
@@ -62003,8 +61983,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (95,1,1) = {"
 aaa
@@ -62198,8 +62178,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (96,1,1) = {"
 aaa
@@ -62393,8 +62373,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (97,1,1) = {"
 aab
@@ -62588,8 +62568,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (98,1,1) = {"
 aab
@@ -62783,8 +62763,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (99,1,1) = {"
 aab
@@ -62978,8 +62958,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (100,1,1) = {"
 aab
@@ -63173,8 +63153,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (101,1,1) = {"
 aab
@@ -63368,8 +63348,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (102,1,1) = {"
 aab
@@ -63563,8 +63543,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (103,1,1) = {"
 aab
@@ -63675,7 +63655,7 @@ iPd
 lzT
 aqn
 vvR
-ant
+axu
 ybN
 bkU
 aGP
@@ -63758,8 +63738,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (104,1,1) = {"
 aab
@@ -63953,8 +63933,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (105,1,1) = {"
 aab
@@ -64148,8 +64128,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (106,1,1) = {"
 aab
@@ -64343,8 +64323,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (107,1,1) = {"
 aab
@@ -64538,8 +64518,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (108,1,1) = {"
 aab
@@ -64733,8 +64713,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (109,1,1) = {"
 aab
@@ -64928,8 +64908,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (110,1,1) = {"
 aab
@@ -65123,8 +65103,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (111,1,1) = {"
 aab
@@ -65318,8 +65298,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (112,1,1) = {"
 aab
@@ -65513,8 +65493,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (113,1,1) = {"
 aab
@@ -65708,8 +65688,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (114,1,1) = {"
 aab
@@ -65903,8 +65883,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (115,1,1) = {"
 aab
@@ -66098,8 +66078,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (116,1,1) = {"
 aab
@@ -66293,8 +66273,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (117,1,1) = {"
 aab
@@ -66488,8 +66468,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (118,1,1) = {"
 aab
@@ -66683,8 +66663,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (119,1,1) = {"
 aab
@@ -66878,8 +66858,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (120,1,1) = {"
 aab
@@ -67073,8 +67053,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (121,1,1) = {"
 aab
@@ -67268,8 +67248,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (122,1,1) = {"
 aab
@@ -67463,8 +67443,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (123,1,1) = {"
 aab
@@ -67658,8 +67638,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (124,1,1) = {"
 aab
@@ -67853,8 +67833,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (125,1,1) = {"
 aab
@@ -68048,8 +68028,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (126,1,1) = {"
 aab
@@ -68243,8 +68223,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (127,1,1) = {"
 aab
@@ -68305,7 +68285,7 @@ bXv
 gAm
 auH
 ijo
-axu
+cdZ
 cdZ
 aAz
 ccn
@@ -68438,8 +68418,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (128,1,1) = {"
 aab
@@ -68633,8 +68613,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (129,1,1) = {"
 aab
@@ -68828,8 +68808,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (130,1,1) = {"
 aab
@@ -69023,8 +69003,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (131,1,1) = {"
 aab
@@ -69218,8 +69198,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (132,1,1) = {"
 aab
@@ -69413,8 +69393,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (133,1,1) = {"
 aab
@@ -69608,8 +69588,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (134,1,1) = {"
 aab
@@ -69803,8 +69783,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (135,1,1) = {"
 aab
@@ -69998,8 +69978,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (136,1,1) = {"
 aab
@@ -70193,8 +70173,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (137,1,1) = {"
 aab
@@ -70388,8 +70368,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (138,1,1) = {"
 aab
@@ -70583,8 +70563,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (139,1,1) = {"
 aab
@@ -70778,8 +70758,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (140,1,1) = {"
 aab
@@ -70973,8 +70953,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (141,1,1) = {"
 aab
@@ -71168,8 +71148,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (142,1,1) = {"
 aab
@@ -71363,8 +71343,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (143,1,1) = {"
 aab
@@ -71558,8 +71538,8 @@ aaa
 aaa
 aaa
 aaa
-biM
-biM
+aaa
+aaa
 "}
 (144,1,1) = {"
 aab
@@ -71753,8 +71733,8 @@ aab
 aab
 aab
 aab
-biM
-biM
+aab
+aab
 "}
 (145,1,1) = {"
 aab
@@ -71947,9 +71927,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (146,1,1) = {"
 aab
@@ -72142,9 +72122,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (147,1,1) = {"
 aab
@@ -72337,9 +72317,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (148,1,1) = {"
 aab
@@ -72532,9 +72512,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (149,1,1) = {"
 aab
@@ -72727,9 +72707,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (150,1,1) = {"
 aab
@@ -72922,9 +72902,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (151,1,1) = {"
 aab
@@ -73117,9 +73097,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (152,1,1) = {"
 aab
@@ -73312,9 +73292,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (153,1,1) = {"
 aab
@@ -73507,9 +73487,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (154,1,1) = {"
 aab
@@ -73702,9 +73682,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (155,1,1) = {"
 aab
@@ -73897,9 +73877,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (156,1,1) = {"
 aab
@@ -74092,9 +74072,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (157,1,1) = {"
 aab
@@ -74287,9 +74267,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (158,1,1) = {"
 aab
@@ -74482,9 +74462,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (159,1,1) = {"
 aab
@@ -74677,9 +74657,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (160,1,1) = {"
 aab
@@ -74872,9 +74852,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (161,1,1) = {"
 aab
@@ -75067,9 +75047,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (162,1,1) = {"
 aab
@@ -75262,9 +75242,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (163,1,1) = {"
 aab
@@ -75457,9 +75437,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (164,1,1) = {"
 aab
@@ -75652,9 +75632,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (165,1,1) = {"
 aab
@@ -75847,9 +75827,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (166,1,1) = {"
 aab
@@ -76042,9 +76022,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (167,1,1) = {"
 aab
@@ -76237,9 +76217,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (168,1,1) = {"
 aab
@@ -76432,9 +76412,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (169,1,1) = {"
 aab
@@ -76627,9 +76607,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (170,1,1) = {"
 aab
@@ -76822,9 +76802,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (171,1,1) = {"
 aab
@@ -77017,9 +76997,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (172,1,1) = {"
 aab
@@ -77212,9 +77192,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (173,1,1) = {"
 aab
@@ -77407,9 +77387,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (174,1,1) = {"
 aab
@@ -77602,9 +77582,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (175,1,1) = {"
 aab
@@ -77797,9 +77777,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (176,1,1) = {"
 aab
@@ -77992,9 +77972,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (177,1,1) = {"
 aab
@@ -78187,9 +78167,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (178,1,1) = {"
 aab
@@ -78382,9 +78362,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (179,1,1) = {"
 aab
@@ -78577,9 +78557,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (180,1,1) = {"
 aab
@@ -78772,9 +78752,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (181,1,1) = {"
 aab
@@ -78967,9 +78947,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (182,1,1) = {"
 aab
@@ -79162,9 +79142,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (183,1,1) = {"
 aab
@@ -79357,9 +79337,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (184,1,1) = {"
 aab
@@ -79552,9 +79532,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (185,1,1) = {"
 aab
@@ -79747,9 +79727,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (186,1,1) = {"
 aab
@@ -79942,9 +79922,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (187,1,1) = {"
 aab
@@ -80137,9 +80117,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (188,1,1) = {"
 aab
@@ -80332,9 +80312,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (189,1,1) = {"
 aab
@@ -80527,9 +80507,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (190,1,1) = {"
 aab
@@ -80722,9 +80702,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (191,1,1) = {"
 aab
@@ -80917,9 +80897,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (192,1,1) = {"
 aab
@@ -81112,9 +81092,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (193,1,1) = {"
 aab
@@ -81307,9 +81287,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (194,1,1) = {"
 aab
@@ -81502,9 +81482,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (195,1,1) = {"
 aab
@@ -81697,9 +81677,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (196,1,1) = {"
 aab
@@ -81892,9 +81872,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (197,1,1) = {"
 aab
@@ -82087,9 +82067,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (198,1,1) = {"
 aab
@@ -82282,9 +82262,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (199,1,1) = {"
 aab
@@ -82477,9 +82457,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (200,1,1) = {"
 aab
@@ -82672,9 +82652,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (201,1,1) = {"
 aab
@@ -82867,9 +82847,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (202,1,1) = {"
 aab
@@ -83062,9 +83042,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (203,1,1) = {"
 aab
@@ -83257,9 +83237,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (204,1,1) = {"
 aab
@@ -83452,9 +83432,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (205,1,1) = {"
 aab
@@ -83647,9 +83627,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (206,1,1) = {"
 aab
@@ -83842,9 +83822,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (207,1,1) = {"
 aab
@@ -84037,9 +84017,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (208,1,1) = {"
 aab
@@ -84232,9 +84212,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (209,1,1) = {"
 aab
@@ -84427,9 +84407,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (210,1,1) = {"
 aab
@@ -84622,9 +84602,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (211,1,1) = {"
 aab
@@ -84817,9 +84797,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (212,1,1) = {"
 aab
@@ -85012,9 +84992,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (213,1,1) = {"
 aab
@@ -85207,9 +85187,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (214,1,1) = {"
 aab
@@ -85402,9 +85382,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (215,1,1) = {"
 aab
@@ -85597,9 +85577,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (216,1,1) = {"
 aab
@@ -85792,9 +85772,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (217,1,1) = {"
 aab
@@ -85987,9 +85967,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (218,1,1) = {"
 aab
@@ -86182,9 +86162,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (219,1,1) = {"
 aab
@@ -86377,9 +86357,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (220,1,1) = {"
 aab
@@ -86572,9 +86552,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (221,1,1) = {"
 aab
@@ -86767,9 +86747,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (222,1,1) = {"
 aab
@@ -86962,9 +86942,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (223,1,1) = {"
 aab
@@ -87157,9 +87137,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (224,1,1) = {"
 aab
@@ -87352,9 +87332,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (225,1,1) = {"
 aab
@@ -87547,9 +87527,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (226,1,1) = {"
 aab
@@ -87742,9 +87722,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (227,1,1) = {"
 aab
@@ -87937,9 +87917,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (228,1,1) = {"
 aab
@@ -88132,9 +88112,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (229,1,1) = {"
 aab
@@ -88327,9 +88307,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (230,1,1) = {"
 aab
@@ -88522,9 +88502,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (231,1,1) = {"
 aab
@@ -88717,9 +88697,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (232,1,1) = {"
 aab
@@ -88912,9 +88892,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (233,1,1) = {"
 aab
@@ -89107,9 +89087,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (234,1,1) = {"
 aab
@@ -89302,9 +89282,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (235,1,1) = {"
 aab
@@ -89497,9 +89477,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (236,1,1) = {"
 aab
@@ -89692,9 +89672,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (237,1,1) = {"
 aab
@@ -89887,9 +89867,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (238,1,1) = {"
 aab
@@ -90082,9 +90062,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (239,1,1) = {"
 aab
@@ -90277,9 +90257,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (240,1,1) = {"
 aab
@@ -90472,9 +90452,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (241,1,1) = {"
 aab
@@ -90667,9 +90647,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (242,1,1) = {"
 aab
@@ -90862,9 +90842,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (243,1,1) = {"
 aab
@@ -91057,9 +91037,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (244,1,1) = {"
 aab
@@ -91252,9 +91232,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (245,1,1) = {"
 aab
@@ -91447,9 +91427,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (246,1,1) = {"
 aab
@@ -91642,9 +91622,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (247,1,1) = {"
 aab
@@ -91837,9 +91817,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (248,1,1) = {"
 aab
@@ -92032,9 +92012,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (249,1,1) = {"
 aab
@@ -92227,9 +92207,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (250,1,1) = {"
 aab
@@ -92422,9 +92402,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (251,1,1) = {"
 aab
@@ -92617,9 +92597,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (252,1,1) = {"
 aab
@@ -92812,9 +92792,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (253,1,1) = {"
 aab
@@ -93007,9 +92987,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (254,1,1) = {"
 aab
@@ -93202,9 +93182,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (255,1,1) = {"
 aab
@@ -93397,9 +93377,9 @@ aad
 aad
 aad
 aad
+aad
+aad
 aab
-biM
-biM
 "}
 (256,1,1) = {"
 aab
@@ -93593,6 +93573,6 @@ aab
 aab
 aab
 aab
-biM
-biM
+aab
+aab
 "}

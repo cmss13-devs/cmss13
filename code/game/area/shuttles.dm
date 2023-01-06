@@ -11,9 +11,9 @@
 
 
 ///area/shuttle/Initialize()
-//	if(!canSmoothWithAreas)
-//		canSmoothWithAreas = type
-//	. = ..()
+// if(!canSmoothWithAreas)
+// canSmoothWithAreas = type
+// . = ..()
 
 /area/shuttle/PlaceOnTopReact(list/new_baseturfs, turf/fake_turf_type, flags)
 	. = ..()
@@ -31,7 +31,7 @@
 	// Pass it on
 	return shuttle.get_sound_ambience()
 
-////////////////////////////Single-area shuttles////////////////////////////
+//========== Single-area shuttles ============//
 
 /area/shuttle/transit
 	name = "Hyperspace"
@@ -40,6 +40,10 @@
 
 /area/shuttle/vehicle_elevator
 	name = "Vehicle ASRS"
+
+/area/shuttle/ert
+	icon = 'icons/turf/area_almayer.dmi'
+	icon_state = "lifeboat"
 
 /area/shuttle/lifeboat
 	icon = 'icons/turf/area_almayer.dmi'

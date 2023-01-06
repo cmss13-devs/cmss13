@@ -287,7 +287,7 @@
 			continue
 
 		new /datum/effects/heal_over_time(Xa, Xa.maxHealth * 0.3, 2 SECONDS, 2)
-		Xa.flick_heal_overlay(3 SECONDS, "#D9F500")	//it's already hard enough to gauge health without hp overlays!
+		Xa.flick_heal_overlay(3 SECONDS, "#D9F500") //it's already hard enough to gauge health without hp overlays!
 
 	apply_cooldown()
 	to_chat(X, SPAN_XENONOTICE("You channel your plasma to heal your sisters' wounds around this area."))
@@ -349,7 +349,7 @@
 	target_xeno.hud_update_banished()
 	target_xeno.lock_evolve = TRUE
 	user_xeno.hive.banished_ckeys[target_xeno.name] = target_xeno.ckey
-	addtimer(CALLBACK(src, .proc/remove_banish, user_xeno.hive, target_xeno.name), 30 MINUTES)
+	addtimer(CALLBACK(src, PROC_REF(remove_banish), user_xeno.hive, target_xeno.name), 30 MINUTES)
 
 	message_staff("[key_name_admin(user_xeno)] has banished [key_name_admin(target_xeno)]. Reason: [reason]")
 
@@ -498,10 +498,6 @@
 		to_chat(X, SPAN_XENOWARNING("You can only plant weeds near weeds with a connected node!"))
 		return
 
-	if(node.weed_strength >= WEED_LEVEL_HIVE)
-		to_chat(X, SPAN_XENOWARNING("You cannot expand hive weeds!"))
-		return
-
 	if(T in recently_built_turfs)
 		to_chat(X, SPAN_XENOWARNING("You've recently built here already!"))
 		return
@@ -509,11 +505,11 @@
 	if (!check_and_use_plasma_owner())
 		return
 
-	new /obj/effect/alien/weeds(T, node)
+	new /obj/effect/alien/weeds(T, node, FALSE)
 	playsound(T, "alien_resin_build", 35)
 
 	recently_built_turfs += T
-	addtimer(CALLBACK(src, .proc/reset_turf_cooldown, T), turf_build_cooldown)
+	addtimer(CALLBACK(src, PROC_REF(reset_turf_cooldown), T), turf_build_cooldown)
 
 	to_chat(X, SPAN_XENONOTICE("You plant weeds at [T]."))
 	apply_cooldown()
@@ -542,20 +538,20 @@
 
 	to_chat(Q, SPAN_XENONOTICE("You rally the hive to the queen beacon!"))
 	LAZYCLEARLIST(transported_xenos)
-	RegisterSignal(SSdcs, COMSIG_GLOB_XENO_SPAWN, .proc/tunnel_xeno)
+	RegisterSignal(SSdcs, COMSIG_GLOB_XENO_SPAWN, PROC_REF(tunnel_xeno))
 	for(var/xeno in hive.totalXenos)
 		if(xeno == Q)
 			continue
 		tunnel_xeno(src, xeno)
 
-	addtimer(CALLBACK(src, .proc/transport_xenos, T), 3 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(transport_xenos), T), 3 SECONDS)
 	return TRUE
 
 /datum/action/xeno_action/activable/place_queen_beacon/proc/tunnel_xeno(datum/source, mob/living/carbon/Xenomorph/X)
 	SIGNAL_HANDLER
 	if(X.z == owner.z)
 		to_chat(X, SPAN_XENONOTICE("You begin tunneling towards the queen beacon!"))
-		RegisterSignal(X, COMSIG_MOVABLE_PRE_MOVE, .proc/cancel_movement)
+		RegisterSignal(X, COMSIG_MOVABLE_PRE_MOVE, PROC_REF(cancel_movement))
 		LAZYADD(transported_xenos, X)
 
 /datum/action/xeno_action/activable/place_queen_beacon/proc/transport_xenos(turf/target)

@@ -6,8 +6,8 @@
 	. = ..()
 	if(!.)
 		return
-	var/mob/M = user.mob
-	return isgun(M.get_held_item())
+	var/mob/user_mob = user.mob
+	return isgun(user_mob.get_held_item())
 
 /datum/keybinding/human/combat/field_strip_weapon
 	hotkey_keys = list()
@@ -20,10 +20,10 @@
 	. = ..()
 	if(.)
 		return
-	var/mob/living/carbon/human/H = user.mob
-	var/obj/item/weapon/gun/G = H.get_held_item()
+	var/mob/living/carbon/human/human = user.mob
+	var/obj/item/weapon/gun/held_item = human.get_held_item()
 
-	G.field_strip()
+	held_item.field_strip()
 	return TRUE
 
 /datum/keybinding/human/combat/toggle_burst_fire
@@ -37,9 +37,9 @@
 	. = ..()
 	if(.)
 		return
-	var/mob/living/carbon/human/H = user.mob
-	var/obj/item/weapon/gun/G = H.get_held_item()
-	G.toggle_burst()
+	var/mob/living/carbon/human/human = user.mob
+	var/obj/item/weapon/gun/held_item = human.get_held_item()
+	held_item.use_toggle_burst()
 	return TRUE
 
 /datum/keybinding/human/combat/stock_attachment
@@ -53,9 +53,9 @@
 	. = ..()
 	if(.)
 		return
-	var/mob/living/carbon/human/H = user.mob
-	var/obj/item/weapon/gun/G = H.get_held_item()
-	G.toggle_stock_attachment_verb()
+	var/mob/living/carbon/human/human = user.mob
+	var/obj/item/weapon/gun/held_item = human.get_held_item()
+	held_item.toggle_stock_attachment_verb()
 	return TRUE
 
 /datum/keybinding/human/combat/auto_eject
@@ -69,9 +69,9 @@
 	. = ..()
 	if(.)
 		return
-	var/mob/living/carbon/human/H = user.mob
-	var/obj/item/weapon/gun/G = H.get_held_item()
-	G.toggle_auto_eject_verb()
+	var/mob/living/carbon/human/human = user.mob
+	var/obj/item/weapon/gun/held_item = human.get_held_item()
+	held_item.toggle_auto_eject_verb()
 	return TRUE
 
 /datum/keybinding/human/combat/underbarrel
@@ -85,9 +85,9 @@
 	. = ..()
 	if(.)
 		return
-	var/mob/living/carbon/human/H = user.mob
-	var/obj/item/weapon/gun/G = H.get_held_item()
-	G.toggle_underbarrel_attachment_verb()
+	var/mob/living/carbon/human/human = user.mob
+	var/obj/item/weapon/gun/held_item = human.get_held_item()
+	held_item.toggle_underbarrel_attachment_verb()
 	return TRUE
 
 /datum/keybinding/human/combat/unique_action
@@ -101,9 +101,9 @@
 	. = ..()
 	if(.)
 		return
-	var/mob/living/carbon/human/H = user.mob
-	var/obj/item/weapon/gun/G = H.get_held_item()
-	G.use_unique_action()
+	var/mob/living/carbon/human/human = user.mob
+	var/obj/item/weapon/gun/held_item = human.get_held_item()
+	held_item.use_unique_action()
 	return TRUE
 
 /datum/keybinding/human/combat/unload_gun
@@ -117,9 +117,9 @@
 	. = ..()
 	if(.)
 		return
-	var/mob/living/carbon/human/H = user.mob
-	var/obj/item/weapon/gun/G = H.get_held_item()
-	G.empty_mag()
+	var/mob/living/carbon/human/human = user.mob
+	var/obj/item/weapon/gun/held_item = human.get_held_item()
+	held_item.empty_mag()
 	return TRUE
 
 /datum/keybinding/human/combat/safety
@@ -133,9 +133,9 @@
 	. = ..()
 	if(.)
 		return
-	var/mob/living/carbon/human/H = user.mob
-	var/obj/item/weapon/gun/G = H.get_held_item()
-	G.toggle_gun_safety()
+	var/mob/living/carbon/human/human = user.mob
+	var/obj/item/weapon/gun/held_item = human.get_held_item()
+	held_item.toggle_gun_safety()
 	return TRUE
 
 /datum/keybinding/human/combat/attachment
@@ -149,9 +149,9 @@
 	. = ..()
 	if(.)
 		return
-	var/mob/living/carbon/human/H = user.mob
-	var/obj/item/weapon/gun/G = H.get_held_item()
-	G.activate_attachment_verb()
+	var/mob/living/carbon/human/human = user.mob
+	var/obj/item/weapon/gun/held_item = human.get_held_item()
+	held_item.activate_attachment_verb()
 	return TRUE
 
 /datum/keybinding/human/combat/attachment_rail
@@ -165,7 +165,29 @@
 	. = ..()
 	if(.)
 		return
-	var/mob/living/carbon/human/H = user.mob
-	var/obj/item/weapon/gun/G = H.get_held_item()
-	G.activate_rail_attachment_verb()
+	var/mob/living/carbon/human/human = user.mob
+	var/obj/item/weapon/gun/held_item = human.get_held_item()
+	held_item.activate_rail_attachment_verb()
 	return TRUE
+
+/datum/keybinding/human/combat/toggle_iff
+	hotkey_keys = list()
+	classic_keys = list()
+	name = "toggle_iff"
+	full_name = "Toggle IFF"
+	keybind_signal = COMSIG_KB_HUMAN_WEAPON_TOGGLE_IFF
+
+/datum/keybinding/human/combat/toggle_iff/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/human/human = user.mob
+	var/obj/item/weapon/gun/held_item = human.get_held_item()
+	if(istype(held_item, /obj/item/weapon/gun/smartgun))
+		var/obj/item/weapon/gun/smartgun/clevergun = held_item
+		clevergun.toggle_lethal_mode(human)
+		return TRUE
+	else if(istype(held_item, /obj/item/weapon/gun/rifle/m46c))
+		var/obj/item/weapon/gun/rifle/m46c/COgun = held_item
+		COgun.toggle_iff(human)
+		return TRUE

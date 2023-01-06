@@ -1,28 +1,54 @@
 /obj/item/reagent_container/food/drinks/cans
-	var/canopened = 0
+	var/canopened = FALSE
+	var/crushed = FALSE
 	gulp_size = 10
+	icon = 'icons/obj/items/drinkcans.dmi'
 
 /obj/item/reagent_container/food/drinks/cans/attack_self(mob/user)
 	..()
 
-	if (canopened == FALSE)
+	if(crushed)
+		return
+
+	if (!canopened)
 		playsound(src.loc,'sound/effects/canopen.ogg', 15, 1)
 		to_chat(user, SPAN_NOTICE("You open the drink with an audible pop!"))
 		canopened = TRUE
 
+/obj/item/reagent_container/food/drinks/cans/attack_hand(mob/user)
+	if(crushed)
+		return ..()
+
+	if (canopened && !reagents.total_volume)
+		if(user.a_intent == INTENT_HARM)
+			if(isturf(loc))
+				if(user.zone_selected == "r_foot" || user.zone_selected == "l_foot" )
+					crush_can(user)
+					return FALSE
+			else if(loc == user && src == user.get_inactive_hand())
+				crush_can(user)
+				return FALSE
+	return ..()
+
 /obj/item/reagent_container/food/drinks/cans/attack(mob/M, mob/user)
-	if (canopened == 0)
+	if(crushed)
+		return
+
+	if(!canopened)
 		to_chat(user, SPAN_NOTICE("You need to open the drink!"))
 		return
 	var/datum/reagents/R = src.reagents
 	var/fillevel = gulp_size
 
 	if(!R.total_volume || !R)
+		if(M == user && M.a_intent == INTENT_HARM && M.zone_selected == "head")
+			crush_can(M)
+			return
 		to_chat(user, SPAN_DANGER("The [src.name] is empty!"))
 		return 0
 
 	if(M == user)
-		to_chat(M, SPAN_NOTICE(" You swallow a gulp of [src]."))
+		to_chat(M, SPAN_NOTICE("You swallow a gulp of [src]."))
 		if(reagents.total_volume)
 			reagents.set_source_mob(user)
 			reagents.trans_to_ingest(M, gulp_size)
@@ -30,11 +56,10 @@
 		playsound(M.loc,'sound/items/drink.ogg', 15, 1)
 		return 1
 	else if( istype(M, /mob/living/carbon/human) )
-		if (canopened == 0)
+		if (!canopened)
 			to_chat(user, SPAN_NOTICE("You need to open the drink!"))
 			return
 
-	else if (canopened == 1)
 		user.affected_message(M,
 			SPAN_HELPFUL("You <b>start feeding</b> [user == M ? "yourself" : "[M]"] <b>[src]</b>."),
 			SPAN_HELPFUL("[user] <b>starts feeding</b> you <b>[src]</b>."),
@@ -69,28 +94,62 @@
 
 
 /obj/item/reagent_container/food/drinks/cans/afterattack(obj/target, mob/user, proximity)
-	if(!proximity) return
+	if(crushed || !proximity) return
 
 	if(istype(target, /obj/structure/reagent_dispensers)) //A dispenser. Transfer FROM it TO us.
-		if (canopened == 0)
+		if (!canopened)
 			to_chat(user, SPAN_NOTICE("You need to open the drink!"))
 			return
 
 
 	else if(target.is_open_container()) //Something like a glass. Player probably wants to transfer TO it.
-		if (canopened == 0)
+		if (!canopened)
 			to_chat(user, SPAN_NOTICE("You need to open the drink!"))
 			return
 
 		if (istype(target, /obj/item/reagent_container/food/drinks/cans))
 			var/obj/item/reagent_container/food/drinks/cans/cantarget = target
-			if(cantarget.canopened == 0)
+			if(!cantarget.canopened)
 				to_chat(user, SPAN_NOTICE("You need to open the drink you want to pour into!"))
 				return
 
 	return ..()
 
+/obj/item/reagent_container/food/drinks/cans/proc/crush_can(mob/user)
+	if(!ishuman(user))
+		return
 
+	var/mob/living/carbon/human/H = user
+	var/message
+	var/obj/limb/L
+	L = H.get_limb(H.zone_selected)
+
+	if(src == H.get_inactive_hand())
+		message = "between [user.gender == MALE ? "his" : "her"] hands"
+		to_chat(user, SPAN_NOTICE("You start crushing the [name] between your hands!"))
+		if(!do_after(user, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC)) //crushing with hands takes great effort and might
+			return
+	else
+		switch(user.zone_selected)
+			if("head")
+				if(!L)
+					to_chat(user, SPAN_WARNING("You don't have a [H.zone_selected], can't crush yer can on nothing!"))
+					return
+				message = "against [user.gender == MALE ? "his" : "her"] head!"
+				L.take_damage(brute = 3) //ouch! but you're a tough badass so it barely hurts
+				H.UpdateDamageIcon()
+			if("l_foot" , "r_foot")
+				if(!L)
+					to_chat(user, SPAN_WARNING("You don't have a [H.zone_selected], can't crush yer can under nothing!"))
+					return
+				message = "under [user.gender == MALE ? "his" : "her"] foot!"
+
+	crushed = TRUE
+	flags_atom &= ~OPENCONTAINER
+	desc += "\nIts been crushed! A badass must have been through here..."
+	icon_state = "[icon_state]_crushed"
+	user.visible_message(SPAN_BOLDNOTICE("[user] crushed the [name] [message]"), null, null, CHAT_TYPE_FLUFF_ACTION)
+	playsound(src,"sound/items/can_crush.ogg", 20, FALSE, 15)
 
 //SODA
 

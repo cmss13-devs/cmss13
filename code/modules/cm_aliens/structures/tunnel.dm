@@ -5,11 +5,11 @@
 /obj/structure/tunnel
 	name = "tunnel"
 	desc = "A tunnel entrance. Looks like it was dug by some kind of clawed beast."
-	icon = 'icons/mob/hostiles/Effects.dmi'
+	icon = 'icons/mob/xenos/effects.dmi'
 	icon_state = "hole"
 
-	density = 0
-	opacity = 0
+	density = FALSE
+	opacity = FALSE
 	anchored = 1
 	unslashable = TRUE
 	unacidable = TRUE
@@ -103,7 +103,7 @@
 		exit_tunnel(usr)
 
 /obj/structure/tunnel/proc/pick_tunnel(mob/living/carbon/Xenomorph/X)
-	. = FALSE	//For peace of mind when it comes to dealing with unintended proc failures
+	. = FALSE //For peace of mind when it comes to dealing with unintended proc failures
 	if(!istype(X) || X.stat || X.lying || !isfriendly(X) || !hive)
 		return FALSE
 	if(X in contents)

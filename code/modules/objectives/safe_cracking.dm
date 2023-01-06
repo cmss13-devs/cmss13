@@ -1,5 +1,6 @@
 //An objective to open a safe
 /datum/cm_objective/crack_safe
+	name = "Crack Safe"
 	var/obj/structure/safe/target
 	var/area/initial_area
 	value = OBJECTIVE_HIGH_VALUE
@@ -12,8 +13,9 @@
 	initial_area = get_area(target)
 
 
-	RegisterSignal(safe, COMSIG_SAFE_OPENED, .proc/on_safe_open)
-	RegisterSignal(safe, COMSIG_PARENT_QDELETING, .proc/on_safe_open)
+	RegisterSignal(safe, COMSIG_SAFE_OPENED, PROC_REF(on_safe_open))
+	RegisterSignal(safe, COMSIG_PARENT_QDELETING, PROC_REF(on_safe_open))
+	safe.objective = src
 	. = ..()
 
 /datum/cm_objective/crack_safe/pre_round_start()

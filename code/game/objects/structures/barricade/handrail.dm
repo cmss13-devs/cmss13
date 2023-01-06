@@ -16,7 +16,7 @@
 	barricade_hitsound = 'sound/effects/metalhit.ogg'
 	projectile_coverage = PROJECTILE_COVERAGE_LOW
 	var/build_state = BARRICADE_BSTATE_SECURED
-	var/reinforced = FALSE	//Reinforced to be a cade or not
+	var/reinforced = FALSE //Reinforced to be a cade or not
 
 /obj/structure/barricade/handrail/update_icon()
 	overlays.Cut()
@@ -54,7 +54,7 @@
 
 /obj/structure/barricade/handrail/proc/reinforce()
 	if(reinforced)
-		if(health == maxhealth)	// Drop metal if full hp when unreinforcing
+		if(health == maxhealth) // Drop metal if full hp when unreinforcing
 			new /obj/item/stack/sheet/metal(loc)
 		health = initial(health)
 		maxhealth = initial(maxhealth)
@@ -133,7 +133,7 @@
 				user.visible_message(SPAN_NOTICE("[user] takes apart [src]."),
 				SPAN_NOTICE("You take apart [src]."))
 				playsound(loc, 'sound/items/Deconstruct.ogg', 25, 1)
-				destroy(TRUE)
+				deconstruct(TRUE)
 				return
 
 		if(BARRICADE_BSTATE_FORTIFIED)
@@ -152,7 +152,7 @@
 					reinforce()
 					return
 			else
-				if(iswelder(W))	// Finish reinforcing
+				if(iswelder(W)) // Finish reinforcing
 					if(!HAS_TRAIT(W, TRAIT_TOOL_BLOWTORCH))
 						to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
 						return

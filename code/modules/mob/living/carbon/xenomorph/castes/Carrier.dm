@@ -8,7 +8,7 @@
 	melee_vehicle_damage = XENO_DAMAGE_TIER_3
 	max_health = XENO_HEALTH_TIER_9
 	plasma_gain = XENO_PLASMA_GAIN_TIER_6
-	plasma_max = XENO_PLASMA_TIER_4
+	plasma_max = XENO_PLASMA_TIER_5
 	crystal_max = XENO_CRYSTAL_LOW
 	xeno_explosion_resistance = XENO_EXPLOSIVE_ARMOR_TIER_2
 	armor_deflection = XENO_NO_ARMOR
@@ -17,7 +17,6 @@
 
 	evolution_allowed = FALSE
 	deevolves_to = list(XENO_CASTE_DRONE)
-	eggs_max = 5
 	throwspeed = SPEED_AVERAGE
 	can_hold_facehuggers = 1
 	can_hold_eggs = CAN_HOLD_ONE_HAND
@@ -25,7 +24,7 @@
 
 	hugger_nurturing = TRUE
 	huggers_max = 16
-	eggs_max = 7
+	eggs_max = 8
 
 	tackle_min = 2
 	tackle_max = 4
@@ -42,10 +41,12 @@
 	name = XENO_CASTE_CARRIER
 	desc = "A strange-looking alien creature. It carries a number of scuttling jointed crablike creatures."
 	icon_size = 64
+	icon_xeno = 'icons/mob/xenos/carrier.dmi'
 	icon_state = "Carrier Walking"
 	plasma_types = list(PLASMA_PURPLE)
 
 	drag_delay = 6 //pulling a big dead xeno is hard
+	var/huggers_reserved = 0
 
 	mob_size = MOB_SIZE_BIG
 	tier = 2
@@ -63,6 +64,12 @@
 		/datum/action/xeno_action/onclick/place_trap, //2nd macro
 		/datum/action/xeno_action/activable/throw_hugger, //3rd macro
 		/datum/action/xeno_action/activable/retrieve_egg, //4th macro
+		/datum/action/xeno_action/onclick/set_hugger_reserve,
+		)
+	
+	inherent_verbs = list(
+		/mob/living/carbon/Xenomorph/proc/rename_tunnel,
+		/mob/living/carbon/Xenomorph/proc/set_hugger_reserve_for_morpher,
 		)
 	mutation_type = CARRIER_NORMAL
 
@@ -116,15 +123,22 @@
 				hugger_image_index += funny_list[rand(1,length(funny_list))]
 
 /mob/living/carbon/Xenomorph/Carrier/Initialize(mapload, mob/living/carbon/Xenomorph/oldXeno, h_number)
-	icon_xeno = get_icon_from_source(CONFIG_GET(string/alien_carrier))
 	. = ..()
-
-	hugger_overlays_icon = mutable_appearance('icons/mob/hostiles/overlay_effects64x64.dmi',"empty")
+	hugger_overlays_icon = mutable_appearance('icons/mob/xenos/overlay_effects64x64.dmi',"empty")
 
 /mob/living/carbon/Xenomorph/Carrier/death(var/cause, var/gibbed)
 	. = ..(cause, gibbed)
 	if(.)
 		var/chance = 75
+
+		if (huggers_cur)
+			//Hugger explosion, like an egg morpher
+			var/obj/item/clothing/mask/facehugger/hugger
+			visible_message(SPAN_XENOWARNING("The chittering mass of tiny aliens is trying to escape [src]!"))
+			for(var/i in 1 to huggers_cur)
+				if(prob(chance))
+					hugger = new(loc, hivenumber)
+					step_away(hugger, src, 1)
 
 		while (eggs_cur > 0)
 			if(prob(chance))
@@ -153,6 +167,27 @@
 	else
 		to_chat(src, SPAN_WARNING("You can't carry more facehuggers on you."))
 
+/mob/living/carbon/Xenomorph/Carrier/proc/store_huggers_from_egg_morpher(obj/effect/alien/resin/special/eggmorph/morpher)
+	if(morpher.linked_hive && (morpher.linked_hive.hivenumber != hivenumber))
+		to_chat(src, SPAN_WARNING("That egg morpher is tainted!"))
+		return
+
+	if(morpher.stored_huggers == 0)
+		to_chat(src, SPAN_WARNING("The egg morpher is empty!"))
+		return
+
+	if(huggers_max > 0 && huggers_cur < huggers_max)
+		var/huggers_to_transfer = min(morpher.stored_huggers, huggers_max-huggers_cur)
+		huggers_cur += huggers_to_transfer
+		morpher.stored_huggers -= huggers_to_transfer
+		if(huggers_to_transfer == 1)
+			to_chat(src, SPAN_NOTICE("You store one facehugger and carry it for safekeeping. Now sheltering: [huggers_cur] / [huggers_max]."))
+		else
+			to_chat(src, SPAN_NOTICE("You store [huggers_to_transfer] facehuggers and carry them for safekeeping. Now sheltering: [huggers_cur] / [huggers_max]."))
+		update_icons()
+	else
+		to_chat(src, SPAN_WARNING("You can't carry more facehuggers on you."))
+
 
 /mob/living/carbon/Xenomorph/Carrier/proc/throw_hugger(atom/T)
 	if(!T)
@@ -173,6 +208,19 @@
 				to_chat(src, SPAN_WARNING("Touching \the [F] while you're on fire would burn it!"))
 				return
 			store_hugger(F)
+			return
+
+	//target an egg morpher to top up on huggers
+	if(istype(T, /obj/effect/alien/resin/special/eggmorph))
+		var/obj/effect/alien/resin/special/eggmorph/morpher = T
+		if(Adjacent(morpher))
+			if(morpher.linked_hive && (morpher.linked_hive.hivenumber != hivenumber))
+				to_chat(src, SPAN_WARNING("That egg morpher is tainted!"))
+				return
+			if(on_fire)
+				to_chat(src, SPAN_WARNING("Touching \the [morpher] while you're on fire would burn the facehuggers in it!"))
+				return
+			store_huggers_from_egg_morpher(morpher)
 			return
 
 	var/obj/item/clothing/mask/facehugger/F = get_active_hand()
@@ -226,7 +274,6 @@
 	else
 		to_chat(src, SPAN_WARNING("You can't carry more eggs on you."))
 
-
 /mob/living/carbon/Xenomorph/Carrier/proc/retrieve_egg(atom/T)
 	if(!T) return
 
@@ -237,7 +284,13 @@
 	if(istype(T, /obj/item/xeno_egg))
 		var/obj/item/xeno_egg/E = T
 		if(isturf(E.loc) && Adjacent(E))
+			var/turf/egg_turf = E.loc
 			store_egg(E)
+			//Grab all the eggs from the turf
+			if(eggs_cur < eggs_max)
+				for(E in egg_turf)
+					if(eggs_cur < eggs_max)
+						store_egg(E)
 			return
 
 	var/obj/item/xeno_egg/E = get_active_hand()
@@ -255,3 +308,28 @@
 	if(!istype(E)) //something else in our hand
 		to_chat(src, SPAN_WARNING("You need an empty hand to grab one of your stored eggs!"))
 		return
+
+/mob/living/carbon/Xenomorph/Carrier/attack_ghost(mob/dead/observer/user)
+	. = ..() //Do a view printout as needed just in case the observer doesn't want to join as a Hugger but wants info
+	join_as_facehugger_from_this(user)
+
+/mob/living/carbon/Xenomorph/Carrier/proc/join_as_facehugger_from_this(mob/dead/observer/user)
+	if(!huggers_max) //Eggsac, Shaman don't have huggers, do nothing!
+		return
+	if(stat == DEAD)
+		to_chat(user, SPAN_WARNING("\The [src] is dead and all their huggers died with it."))
+		return
+	if(!huggers_cur)
+		to_chat(user, SPAN_WARNING("\The [src] doesn't have any facehuggers to inhabit."))
+		return
+	if(huggers_cur <= huggers_reserved)
+		to_chat(user, SPAN_WARNING("\The [src] has reserved the remaining facehuggers for themselves."))
+		return
+	if(!GLOB.hive_datum[hivenumber].can_spawn_as_hugger(user))
+		return
+	//Need to check again because time passed due to the confirmation window
+	if(!huggers_cur)
+		to_chat(user, SPAN_WARNING("\The [src] doesn't have any facehuggers to inhabit."))
+		return
+	GLOB.hive_datum[hivenumber].spawn_as_hugger(user, src)
+	huggers_cur--

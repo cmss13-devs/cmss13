@@ -7,7 +7,7 @@
 	unacidable = TRUE
 	density = TRUE
 	layer = ABOVE_MOB_LAYER //So you can't hide it under corpses
-	use_power = 0
+	use_power = USE_POWER_NONE
 	stat = DEFENSE_FUNCTIONAL
 	health = 200
 	var/list/faction_group
@@ -174,7 +174,7 @@
 				LAZYADD(faction_group, i)
 		power_off()
 		HD.forceMove(T)
-		HD.set_name_label(name_label)
+		transfer_label_component(HD)
 		HD.dropped = 1
 		HD.update_icon()
 		placed = 0
@@ -299,7 +299,7 @@
 		damaged_action(damage)
 
 	if(stat == DEFENSE_DAMAGED)
-		density = 0
+		density = FALSE
 	else
 		density = initial(density)
 
@@ -343,7 +343,7 @@
 	bullet_ping(P)
 	visible_message(SPAN_WARNING("[src] is hit by the [P.name]!"))
 	var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags
-	if(ammo_flags & AMMO_XENO_ACID) //Fix for xenomorph spit doing baby damage.
+	if(ammo_flags & AMMO_ACIDIC) //Fix for xenomorph spit doing baby damage.
 		update_health(round(P.damage/3))
 	else
 		update_health(round(P.damage/10))
@@ -357,7 +357,7 @@
 /obj/structure/machinery/defenses/Destroy()
 	if(owner_mob)
 		owner_mob = null
-
+	HD = null // FIXME: Might also need to delete. Unsure.
 	. = ..()
 
 /obj/structure/machinery/defenses/verb/toggle_turret_locks_verb()

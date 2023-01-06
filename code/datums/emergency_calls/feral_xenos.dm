@@ -16,7 +16,7 @@
 	objectives = "Destroy everything!"
 
 /datum/emergency_call/feral_xenos/spawn_items()
-	var/turf/drop_spawn	= get_spawn_point(TRUE)
+	var/turf/drop_spawn = get_spawn_point(TRUE)
 	if(istype(drop_spawn))
 		//drop some weeds for xeno plasma regen.
 		new /obj/effect/alien/weeds/node/feral(drop_spawn)
@@ -28,12 +28,14 @@
 		return //Didn't find a useable spawn point.
 
 	var/mob/current_mob = M.current
+	var/hive_leader = FALSE
 
 	var/mob/living/carbon/Xenomorph/new_xeno
 	if(!leader)
-		var/picked = pick(/mob/living/carbon/Xenomorph/Ravager, /mob/living/carbon/Xenomorph/Praetorian)
+		var/picked = pick(/mob/living/carbon/Xenomorph/Ravager, /mob/living/carbon/Xenomorph/Praetorian, /mob/living/carbon/Xenomorph/Crusher)
 		new_xeno = new picked(spawn_loc)
 		leader = new_xeno
+		hive_leader = TRUE
 
 	else if(medics < max_medics)
 		medics++
@@ -51,6 +53,8 @@
 
 	M.transfer_to(new_xeno, TRUE)
 	new_xeno.set_hive_and_update(XENO_HIVE_FERAL)
+	if(hive_leader)
+		new_xeno.hive.add_hive_leader(new_xeno)
 
 	QDEL_NULL(current_mob)
 

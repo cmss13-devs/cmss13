@@ -1,13 +1,5 @@
 import { useBackend } from '../backend';
-import {
-  Box,
-  Button,
-  Flex,
-  LabeledList,
-  ProgressBar,
-  Section,
-  Slider,
-} from '../components';
+import { Box, Button, Flex, LabeledList, ProgressBar, Section, Slider } from '../components';
 import { formatPower } from '../format';
 import { Window } from '../layouts';
 
@@ -147,8 +139,8 @@ export const Smes = (props, context) => {
                 {outputting
                   ? 'Sending'
                   : charge > 0
-                  ? 'Not Sending'
-                  : 'No Charge'}
+                    ? 'Not Sending'
+                    : 'No Charge'}
               </Box>
             </LabeledList.Item>
             <LabeledList.Item label="Target Output">

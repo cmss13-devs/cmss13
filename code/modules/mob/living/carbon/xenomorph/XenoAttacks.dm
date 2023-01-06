@@ -27,6 +27,27 @@
 	switch(M.a_intent)
 
 		if(INTENT_HELP)
+			if(back && Adjacent(M))
+				back.add_fingerprint(M)
+				var/obj/item/storage/backpack = back
+				if(backpack && !M.action_busy)
+					if(stat != DEAD) // If the Xeno is alive, fight back
+						if(!M.ally_of_hivenumber(hivenumber))
+							M.KnockDown(rand(caste.tacklestrength_min, caste.tacklestrength_max))
+							playsound(M.loc, 'sound/weapons/pierce.ogg', 25, TRUE)
+							M.visible_message(SPAN_WARNING("\The [M] tried to open \the [backpack] on [src] but instead gets a tail swipe to the head!"))
+							return FALSE
+
+					M.visible_message(SPAN_NOTICE("\The [M] starts opening \the [backpack] on [src]"), \
+					SPAN_NOTICE("You begin to open \the [backpack] on [src], so you can check its contents."), null, 5, CHAT_TYPE_FLUFF_ACTION)
+					if(!do_after(M, 1 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC, src, INTERRUPT_MOVED, BUSY_ICON_GENERIC)) //Timed opening.
+						to_chat(M, SPAN_WARNING("You were interrupted!"))
+						return FALSE
+					if(!Adjacent(M))
+						to_chat(M, SPAN_WARNING("You were interrupted!"))
+						return FALSE
+					backpack.open(M)
+					return
 			if(stat == DEAD)
 				M.visible_message(SPAN_WARNING("\The [M] pokes \the [src], but nothing happens."), \
 				SPAN_WARNING("You poke \the [src], but nothing happens."), null, 5, CHAT_TYPE_FLUFF_ACTION)
@@ -125,7 +146,7 @@
 
 			//Frenzy auras stack in a way, then the raw value is multipled by two to get the additive modifier
 			if(M.frenzy_aura > 0)
-				damage += (M.frenzy_aura * 2)
+				damage += (M.frenzy_aura * FRENZY_DAMAGE_MULTIPLIER)
 
 			//Somehow we will deal no damage on this attack
 			if(!damage)
@@ -162,7 +183,7 @@
 				playsound(loc, 'sound/weapons/alien_knockdown.ogg', 25, 1)
 				M.visible_message(SPAN_WARNING("\The [M] shoves \the [src] out of her way!"), \
 				SPAN_WARNING("You shove \the [src] out of your way!"), null, 5, CHAT_TYPE_XENO_COMBAT)
-				src.KnockDown(1)
+				src.apply_effect(1, WEAKEN)
 			else
 				playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1)
 				M.visible_message(SPAN_WARNING("\The [M] shoves \the [src]!"), \

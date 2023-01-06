@@ -20,6 +20,7 @@
 	if(ready)
 		readied_players--
 	GLOB.new_player_list -= src
+	GLOB.dead_mob_list -= src
 	return ..()
 
 /mob/new_player/verb/new_player_panel()
@@ -118,7 +119,9 @@
 			if(alert(src,"Are you sure you wish to observe? When you observe, you will not be able to join as marine. It might also take some time to become a xeno or responder!","Player Setup","Yes","No") == "Yes")
 				if(!client)
 					return TRUE
-				var/mob/dead/observer/observer = new()
+				if(!client.prefs?.preview_dummy)
+					client.prefs.update_preview_icon()
+				var/mob/dead/observer/observer = new /mob/dead/observer(get_turf(pick(GLOB.latejoin)), client.prefs.preview_dummy)
 				observer.set_lighting_alpha_from_pref(client)
 				spawning = TRUE
 				observer.started_as_observer = TRUE
@@ -156,7 +159,7 @@
 				to_chat(src, SPAN_WARNING("The round is either not ready, or has already finished..."))
 				return
 
-			if(SSticker.mode.flags_round_type	& MODE_NO_LATEJOIN)
+			if(SSticker.mode.flags_round_type & MODE_NO_LATEJOIN)
 				to_chat(src, SPAN_WARNING("Sorry, you cannot late join during [SSticker.mode.name]. You have to start at the beginning of the round. You may observe or try to join as an alien, if possible."))
 				return
 
@@ -241,7 +244,7 @@
 	spawning = TRUE
 	close_spawn_windows()
 
-	var/mob/living/carbon/human/character = create_character()	//creates the human and transfers vars and mind
+	var/mob/living/carbon/human/character = create_character() //creates the human and transfers vars and mind
 	RoleAuthority.equip_role(character, RoleAuthority.roles_for_mode[rank], late_join = TRUE)
 	EquipCustomItems(character)
 
@@ -250,7 +253,7 @@
 		character.put_in_hands(new /obj/item/storage/box/kit/cryo_self_defense(character.loc))
 
 	GLOB.data_core.manifest_inject(character)
-	SSticker.minds += character.mind//Cyborgs and AIs handle this in the transform proc.	//TODO!!!!! ~Carn
+	SSticker.minds += character.mind//Cyborgs and AIs handle this in the transform proc. //TODO!!!!! ~Carn
 	SSticker.mode.latejoin_tally += RoleAuthority.calculate_role_weight(RoleAuthority.roles_for_mode[rank])
 
 	for(var/datum/squad/sq in RoleAuthority.squads)
@@ -276,10 +279,9 @@
 			if(C.player_data && C.player_data.playtime_loaded && length(C.player_data.playtimes) == 0)
 				msg_admin_niche("NEW PLAYER: <b>[key_name(character, 1, 1, 0)] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];ahelp=adminmoreinfo;extra=\ref[C]'>?</A>)</b>. IP: [character.lastKnownIP], CID: [character.computer_id]")
 			if(C.player_data && C.player_data.playtime_loaded && ((round(C.get_total_human_playtime() DECISECONDS_TO_HOURS, 0.1)) <= 5))
-				msg_sea("NEW PLAYER: <b>[key_name(character, 0, 1, 0)] has less than 5 hours as a human. Current role: [get_actual_job_name(character)] - Current location: [get_area(character)]")
+				msg_sea("NEW PLAYER: <b>[key_name(character, 0, 1, 0)]</b> only has [(round(C.get_total_human_playtime() DECISECONDS_TO_HOURS, 0.1))] hours as a human. Current role: [get_actual_job_name(character)] - Current location: [get_area(character)]")
 
-	character.client.init_statbrowser() // init verbs for the late join
-
+	character.client.init_verbs()
 	qdel(src)
 
 
@@ -374,29 +376,23 @@
 
 	if(mind)
 		mind_initialize()
-		mind.active = 0					//we wish to transfer the key manually
+		mind.active = 0 //we wish to transfer the key manually
 		mind.original = new_character
-		mind.transfer_to(new_character)					//won't transfer key since the mind is not active
+		mind.transfer_to(new_character) //won't transfer key since the mind is not active
 		mind.setup_human_stats()
 
 	new_character.job = job
 	new_character.name = real_name
 	new_character.voice = real_name
 
-	if(client.prefs.disabilities)
-		new_character.disabilities |= NEARSIGHTED
-
 	// Update the character icons
 	// This is done in set_species when the mob is created as well, but
-	INVOKE_ASYNC(new_character, /mob/living/carbon/human.proc/regenerate_icons)
-	INVOKE_ASYNC(new_character, /mob/living/carbon/human.proc/update_body, 1, 0)
-	INVOKE_ASYNC(new_character, /mob/living/carbon/human.proc/update_hair)
+	INVOKE_ASYNC(new_character, TYPE_PROC_REF(/mob/living/carbon/human, regenerate_icons))
+	INVOKE_ASYNC(new_character, TYPE_PROC_REF(/mob/living/carbon/human, update_body), 1, 0)
+	INVOKE_ASYNC(new_character, TYPE_PROC_REF(/mob/living/carbon/human, update_hair))
 
-	new_character.key = key		//Manually transfer the key to log them in
-
-	if(new_character.client)
-		new_character.client.change_view(world_view_size)
-		new_character.client.init_statbrowser()
+	new_character.key = key //Manually transfer the key to log them in
+	new_character.client?.change_view(world_view_size)
 
 	return new_character
 

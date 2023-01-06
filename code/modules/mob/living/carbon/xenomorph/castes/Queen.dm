@@ -1,4 +1,4 @@
-#define XENO_QUEEN_AGE_TIME	(10 MINUTES)
+#define XENO_QUEEN_AGE_TIME (10 MINUTES)
 #define XENO_QUEEN_DEATH_DELAY (5 MINUTES)
 #define YOUNG_QUEEN_HEALTH_MULTIPLIER 0.5
 
@@ -8,7 +8,7 @@
 
 	melee_damage_lower = XENO_DAMAGE_TIER_4
 	melee_damage_upper = XENO_DAMAGE_TIER_6
-	melee_vehicle_damage = XENO_DAMAGE_TIER_9	//Queen and Ravs have extra multiplier when dealing damage in multitile_interaction.dm
+	melee_vehicle_damage = XENO_DAMAGE_TIER_9 //Queen and Ravs have extra multiplier when dealing damage in multitile_interaction.dm
 	max_health = XENO_HEALTH_QUEEN
 	plasma_gain = XENO_PLASMA_GAIN_TIER_7
 	plasma_max = XENO_PLASMA_TIER_10
@@ -24,7 +24,7 @@
 	evolution_allowed = FALSE
 	fire_immunity = FIRE_IMMUNITY_NO_DAMAGE|FIRE_IMMUNITY_NO_IGNITE
 	caste_desc = "The biggest and baddest xeno. The Queen controls the hive and plants eggs"
-	spit_types = list(/datum/ammo/xeno/toxin/queen, /datum/ammo/xeno/acid/medium)
+	spit_types = list(/datum/ammo/xeno/toxin/queen, /datum/ammo/xeno/acid/spatter)
 	can_hold_facehuggers = 0
 	can_hold_eggs = CAN_HOLD_ONE_HAND
 	acid_level = 2
@@ -87,14 +87,14 @@
 	Q.overwatch(stop_overwatch = TRUE)
 
 	. = ..()
-	RegisterSignal(Q, COMSIG_MOB_PRE_CLICK, .proc/handle_overwatch)
-	RegisterSignal(Q, COMSIG_QUEEN_DISMOUNT_OVIPOSITOR, .proc/exit_hologram)
-	RegisterSignal(Q, COMSIG_XENO_OVERWATCH_XENO, .proc/start_watching)
+	RegisterSignal(Q, COMSIG_MOB_PRE_CLICK, PROC_REF(handle_overwatch))
+	RegisterSignal(Q, COMSIG_QUEEN_DISMOUNT_OVIPOSITOR, PROC_REF(exit_hologram))
+	RegisterSignal(Q, COMSIG_XENO_OVERWATCH_XENO, PROC_REF(start_watching))
 	RegisterSignal(Q, list(
 		COMSIG_XENO_STOP_OVERWATCH,
 		COMSIG_XENO_STOP_OVERWATCH_XENO
-	), .proc/stop_watching)
-	RegisterSignal(src, COMSIG_MOVABLE_TURF_ENTER, .proc/turf_weed_only)
+	), PROC_REF(stop_watching))
+	RegisterSignal(src, COMSIG_MOVABLE_TURF_ENTER, PROC_REF(turf_weed_only))
 
 	// Default colour
 	if(Q.hive.color)
@@ -124,7 +124,7 @@
 	forceMove(target)
 	is_watching = target
 
-	RegisterSignal(target, COMSIG_PARENT_QDELETING, .proc/target_watching_qdeleted)
+	RegisterSignal(target, COMSIG_PARENT_QDELETING, PROC_REF(target_watching_qdeleted))
 	return
 
 // able to stop watching here before the loc is set to null
@@ -149,21 +149,24 @@
 	X.reset_view()
 	return
 
-/mob/hologram/queen/proc/turf_weed_only(var/mob/self, var/turf/T)
+/mob/hologram/queen/proc/turf_weed_only(var/mob/self, var/turf/crossing_turf)
 	SIGNAL_HANDLER
 
-	if(!T)
+	if(!crossing_turf)
 		return COMPONENT_TURF_DENY_MOVEMENT
 
-	if(istype(T, /turf/closed/wall))
-		var/turf/closed/wall/W = T
-		if(W.hull)
+	if(istype(crossing_turf, /turf/closed/wall))
+		var/turf/closed/wall/crossing_wall = crossing_turf
+		if(crossing_wall.hull)
 			return COMPONENT_TURF_DENY_MOVEMENT
 
-	var/list/turf_area = range(3, T)
+	var/list/turf_area = range(3, crossing_turf)
 
-	var/obj/effect/alien/weeds/W = locate() in turf_area
-	if(W && HIVE_ALLIED_TO_HIVE(W.hivenumber, hivenumber))
+	var/obj/effect/alien/weeds/nearby_weeds = locate() in turf_area
+	if(nearby_weeds && HIVE_ALLIED_TO_HIVE(nearby_weeds.hivenumber, hivenumber))
+		var/obj/effect/alien/crossing_turf_weeds = locate() in crossing_turf
+		if(crossing_turf_weeds)
+			crossing_turf_weeds.update_icon() //randomizes the icon of the turf when crossed over*/
 		return COMPONENT_TURF_ALLOW_MOVEMENT
 
 	return COMPONENT_TURF_DENY_MOVEMENT
@@ -188,7 +191,7 @@
 			if(X == Q) continue
 			to_chat(X, message)
 
-		var/obj/effect/overlay/temp/point/big/queen/point = new(T, src)
+		var/obj/effect/overlay/temp/point/big/queen/point = new(T, src, A)
 		point.color = color
 
 		return COMPONENT_INTERRUPT_CLICK
@@ -232,6 +235,7 @@
 		linked_mob.sight &= ~(SEE_TURFS|SEE_OBJS)
 
 	remove_from_all_mob_huds()
+	is_watching = null
 
 	return ..()
 
@@ -257,13 +261,14 @@
 	small_explosives_stun = FALSE
 	pull_speed = 3.0 //screech/neurodragging is cancer, at the very absolute least get some runner to do it for teamwork
 
+	icon_xeno = 'icons/mob/xenos/queen.dmi'
 	icon_xenonid = 'icons/mob/xenonids/queen.dmi'
 
 	var/breathing_counter = 0
 	var/ovipositor = FALSE //whether the Queen is attached to an ovipositor
 	var/queen_ability_cooldown = 0
 	var/egg_amount = 0 //amount of eggs inside the queen
-	var/screech_sound_effect = 'sound/voice/alien_queen_screech.ogg' //the noise the Queen makes when she screeches. Done this way for VV purposes.
+	var/screech_sound_effect_list = list('sound/voice/alien_queen_screech.ogg') //the noise the Queen makes when she screeches. Done this way for VV purposes.
 	var/egg_planting_range = 3 // in ovipositor queen can plant egg up to this amount of tiles away from her position
 	var/queen_ovipositor_icon
 	var/queen_standing_icon
@@ -301,6 +306,7 @@
 		/mob/living/carbon/Xenomorph/Queen/proc/set_orders,
 		/mob/living/carbon/Xenomorph/Queen/proc/hive_message,
 		/mob/living/carbon/Xenomorph/proc/rename_tunnel,
+		/mob/living/carbon/Xenomorph/proc/set_hugger_reserve_for_morpher,
 	)
 
 	var/list/mobile_abilities = list(
@@ -334,6 +340,7 @@
 		/datum/action/xeno_action/activable/xeno_spit/queen_macro, //third macro
 		/datum/action/xeno_action/onclick/shift_spits, //second macro
 	)
+	mutation_icon_state = QUEEN_NORMAL
 	mutation_type = QUEEN_NORMAL
 	claw_type = CLAW_TYPE_VERY_SHARP
 
@@ -372,7 +379,6 @@
 	queen_aged = TRUE
 
 /mob/living/carbon/Xenomorph/Queen/Initialize()
-	icon_xeno = get_icon_from_source(CONFIG_GET(string/alien_queen_standing))
 	. = ..()
 	if(!is_admin_level(z))//so admins can safely spawn Queens in Thunderdome for tests.
 		xeno_message(SPAN_XENOANNOUNCE("A new Queen has risen to lead the Hive! Rejoice!"),3,hivenumber)
@@ -387,7 +393,7 @@
 				break // Don't need to keep looking
 
 	if(hive.dynamic_evolution && !queen_aged)
-		queen_age_timer_id = addtimer(CALLBACK(src, .proc/make_combat_effective), XENO_QUEEN_AGE_TIME, TIMER_UNIQUE|TIMER_STOPPABLE)
+		queen_age_timer_id = addtimer(CALLBACK(src, PROC_REF(make_combat_effective)), XENO_QUEEN_AGE_TIME, TIMER_UNIQUE|TIMER_STOPPABLE)
 	else
 		make_combat_effective()
 
@@ -398,9 +404,9 @@
 	if(queen_aged)
 		age_xeno()
 		switch(age)
-			if(XENO_NORMAL) name = "[name_prefix]Queen"			 //Young
-			if(XENO_MATURE) name = "[name_prefix]Elder Queen"	 //Mature
-			if(XENO_ELDER) name = "[name_prefix]Elder Empress"	 //Elite
+			if(XENO_NORMAL) name = "[name_prefix]Queen"  //Young
+			if(XENO_MATURE) name = "[name_prefix]Elder Queen"  //Mature
+			if(XENO_ELDER) name = "[name_prefix]Elder Empress"  //Elite
 			if(XENO_ANCIENT) name = "[name_prefix]Ancient Empress" //Ancient
 			if(XENO_PRIME) name = "[name_prefix]Prime Empress" //Primordial
 	else
@@ -416,6 +422,7 @@
 		name_client_prefix = "[(client.xeno_prefix||client.xeno_postfix) ? client.xeno_prefix : "XX"]-"
 		name_client_postfix = client.xeno_postfix ? ("-"+client.xeno_postfix) : ""
 	full_designation = "[name_client_prefix][nicknumber][name_client_postfix]"
+	color = in_hive.color
 
 	//Update linked data so they show up properly
 	change_real_name(src, name)
@@ -595,7 +602,7 @@
 		return
 
 	pslash_delay = TRUE
-	addtimer(CALLBACK(src, /mob/living/carbon/Xenomorph.proc/do_claw_toggle_cooldown), 30 SECONDS)
+	addtimer(CALLBACK(src, TYPE_PROC_REF(/mob/living/carbon/Xenomorph, do_claw_toggle_cooldown)), 30 SECONDS)
 
 	var/choice = tgui_input_list(usr, "Choose which level of slashing hosts to permit to your hive.","Harming", list("Allowed", "Restricted - Hosts of Interest", "Forbidden"), theme="hive_status")
 
@@ -756,6 +763,7 @@
 	if(hive.living_xeno_queen == src)
 		hive.xeno_queen_timer = world.time + XENO_QUEEN_DEATH_DELAY
 		hive.banished_ckeys   = list() // Reset the banished ckey list
+	icon = queen_standing_icon
 	return ..()
 
 
@@ -910,7 +918,7 @@
 	var/mob/living/carbon/Xenomorph/Queen/Queen = bound_xeno
 	if(Queen.ovipositor)
 		Queen.icon = Queen.queen_ovipositor_icon
-		Queen.icon_state = "[Queen.mutation_type] Queen Ovipositor"
+		Queen.icon_state = "[Queen.mutation_icon_state || Queen.mutation_type] Queen Ovipositor"
 		return TRUE
 
 	// Switch icon back and then let normal icon behavior happen

@@ -43,7 +43,7 @@
 	src.mob.forceMove(T)
 	return
 
-/client/proc/jump_to_object(var/obj/O in GLOB.object_list)
+/client/proc/jump_to_object(var/obj/O as obj in world)
 	set name = "Jump to Object"
 	set category = null
 

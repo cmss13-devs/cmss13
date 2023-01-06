@@ -32,7 +32,6 @@
 	set waitfor = 0
 	if(shrapnel_count)
 		create_shrapnel(loc, shrapnel_count, , ,shrapnel_type, cause_data)
-		sleep(2) //so that mobs are not knocked down before being hit by shrapnel. shrapnel might also be getting deleted by explosions?
 	apply_explosion_overlay()
 	cell_explosion(loc, explosion_power, explosion_falloff, falloff_mode, null, cause_data)
 	qdel(src)
@@ -160,7 +159,7 @@
 		if(ismob(hit_atom))
 			var/mob/M = hit_atom
 			create_shrapnel(loc, min(direct_hit_shrapnel, shrapnel_count), last_move_dir , dispersion_angle ,shrapnel_type, cause_data, FALSE, 100)
-			M.Superslow(3.0)
+			M.apply_effect(3.0, SUPERSLOW)
 			shrapnel_count -= direct_hit_shrapnel
 		if(shrapnel_count)
 			create_shrapnel(loc, shrapnel_count, last_move_dir , dispersion_angle ,shrapnel_type, cause_data, FALSE, 0)
@@ -212,7 +211,7 @@
 	var/fire_type = FIRE_VARIANT_TYPE_B //Armor Shredding Greenfire
 
 /obj/item/explosive/grenade/incendiary/prime()
-	INVOKE_ASYNC(GLOBAL_PROC, .proc/flame_radius, cause_data, radius, get_turf(src), flame_level, burn_level, flameshape, null, fire_type)
+	INVOKE_ASYNC(GLOBAL_PROC, PROC_REF(flame_radius), cause_data, radius, get_turf(src), flame_level, burn_level, flameshape, null, fire_type)
 	playsound(src.loc, 'sound/weapons/gun_flamethrower2.ogg', 35, 1, 4)
 	qdel(src)
 
@@ -291,10 +290,10 @@
 		if(shrapnel_count)
 			create_shrapnel(loc, shrapnel_count, last_move_dir , 30 ,shrapnel_type, cause_data, FALSE, 0)
 		if(target)
-			INVOKE_ASYNC(GLOBAL_PROC, .proc/flame_radius, cause_data, radius, get_turf(src), flame_level, burn_level, flameshape, target)
+			INVOKE_ASYNC(GLOBAL_PROC, PROC_REF(flame_radius), cause_data, radius, get_turf(src), flame_level, burn_level, flameshape, target)
 		else
 			//Not stellar, but if we can't find a direction, fall back to HIDP behaviour.
-			INVOKE_ASYNC(GLOBAL_PROC, .proc/flame_radius, cause_data, radius, get_turf(src), flame_level, burn_level, FLAMESHAPE_DEFAULT, target)
+			INVOKE_ASYNC(GLOBAL_PROC, PROC_REF(flame_radius), cause_data, radius, get_turf(src), flame_level, burn_level, FLAMESHAPE_DEFAULT, target)
 		playsound(src.loc, 'sound/weapons/gun_flamethrower2.ogg', 35, 1, 4)
 		qdel(src)
 
@@ -465,20 +464,18 @@
 	src.throw_atom(random_tile,ram_distance,SPEED_FAST,src,TRUE,NORMAL_LAUNCH,NO_FLAGS) //time for a little trolling
 
 	if(isYautja(M)|| isSynth(M))
-		M.Slow(slowdown_time * 0.5)
-		M.Daze(dazed_time * 0.5)
+		M.apply_effect(slowdown_time * 0.5, SLOW)
+		M.apply_effect(dazed_time * 0.5, DAZE)
 
 	if(M.mob_size >= MOB_SIZE_BIG)//big xenos not KO'ed
-		M.Slow(slowdown_time * 1.2)//They are slowed more :trol:
-		M.Daze(dazed_time * 1.2)
+		M.apply_effect(slowdown_time * 1.5, SLOW)//They are slowed more :trol:
+		M.apply_effect(dazed_time * 1.5, DAZE)
 		return
 
-	M.KnockDown(knockout_time)//but little xenos and humans are
+	M.apply_effect(knockout_time, WEAKEN)//but little xenos and humans are
 	M.throw_atom(target_turf,fling,SPEED_AVERAGE,M,TRUE)
-	M.Slow(slowdown_time)
-	M.Daze(dazed_time)
-
-
+	M.apply_effect(slowdown_time, SLOW)
+	M.apply_effect(dazed_time, DAZE)
 	return
 
 /obj/item/explosive/grenade/slug/baton

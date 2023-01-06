@@ -1,4 +1,4 @@
-#define DELETE_TIME	1800
+#define DELETE_TIME 1800
 
 /mob/living/carbon/Xenomorph/death(var/cause, var/gibbed)
 	var/msg = "lets out a waning guttural screech, green blood bubbling from its maw."
@@ -76,7 +76,7 @@
 		if(hive && hive.living_xeno_queen)
 			xeno_message("Hive: [src] has <b>died</b>[A? " at [sanitize_area(A.name)]":""]! [banished ? "They were banished from the hive." : ""]", death_fontsize, hivenumber)
 
-	if(hive && IS_XENO_LEADER(src))	//Strip them from the Xeno leader list, if they are indexed in here
+	if(hive && IS_XENO_LEADER(src)) //Strip them from the Xeno leader list, if they are indexed in here
 		hive.remove_hive_leader(src)
 		if(hive.living_xeno_queen)
 			to_chat(hive.living_xeno_queen, SPAN_XENONOTICE("A leader has fallen!")) //alert queens so they can choose another leader

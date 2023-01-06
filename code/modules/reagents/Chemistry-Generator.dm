@@ -2,15 +2,15 @@
 	For more info about about this generation process, and for tables describing the generator, check the FDS: https://docs.google.com/document/d/1JHmMm48j-MlUN6hKBfw42grwBDuftbSabZHUxSHWqV8/edit?usp=sharing
 
 	Important keywords:
-		chemclass 						Determines how often a chemical will show up in the generation process
-			CHEM_CLASS_NONE             0 Default. Chemicals not used in the generator
-			CHEM_CLASS_BASIC            1 Chemicals that can be dispensed directly from the dispenser (iron, oxygen)
-			CHEM_CLASS_COMMON           2 Chemicals that can be vended directly or have a very simple recipe (bicaridine, ammonia, table salt)
-			CHEM_CLASS_UNCOMMON         3 Chemicals which recipe is uncommonly known and made (spacedrugs, foaming agent)
-			CHEM_CLASS_RARE             4 Chemicals without a recipe but can be obtained on the Almayer, or requires rare components
-			CHEM_CLASS_SPECIAL          5 Chemicals without a recipe and can't be obtained on the Almayer, or requires special components
-		gen_tier						Determines how many properties a generated chemical gets, the chance of the properties being good/negative, and how rare the required reagents are
-		potency							Determines how strong the paired property is. Is an associative variable to each property
+		chemclass Determines how often a chemical will show up in the generation process
+			CHEM_CLASS_NONE  0 Default. Chemicals not used in the generator
+			CHEM_CLASS_BASIC 1 Chemicals that can be dispensed directly from the dispenser (iron, oxygen)
+			CHEM_CLASS_COMMON    2 Chemicals that can be vended directly or have a very simple recipe (bicaridine, ammonia, table salt)
+			CHEM_CLASS_UNCOMMON  3 Chemicals which recipe is uncommonly known and made (spacedrugs, foaming agent)
+			CHEM_CLASS_RARE  4 Chemicals without a recipe but can be obtained on the Almayer, or requires rare components
+			CHEM_CLASS_SPECIAL   5 Chemicals without a recipe and can't be obtained on the Almayer, or requires special components
+		gen_tier Determines how many properties a generated chemical gets, the chance of the properties being good/negative, and how rare the required reagents are
+		potency Determines how strong the paired property is. Is an associative variable to each property
 
 	- TobiNerd July 2019
 */
@@ -60,8 +60,8 @@
 	return TRUE
 
 /datum/chemical_reaction/proc/add_component(var/my_chemid, var/my_modifier, var/is_catalyst, var/tier, var/class)
-	var/chem_id		//The id of the picked chemical
-	var/modifier	//The number of required reagents
+	var/chem_id //The id of the picked chemical
+	var/modifier //The number of required reagents
 
 	if(my_modifier) //Do we want a specific modifier?
 		modifier = my_modifier
@@ -320,28 +320,28 @@
 
 /datum/reagent/proc/insert_property(var/property, var/level)
 	//The list below defines what properties should override each other.
-	var/list/conflicting_properties = list(	PROPERTY_NUTRITIOUS = PROPERTY_HEMORRAGING,		PROPERTY_NUTRITIOUS = PROPERTY_HEMOLYTIC,		PROPERTY_TOXIC = PROPERTY_ANTITOXIC,\
-											PROPERTY_CORROSIVE = PROPERTY_ANTICORROSIVE,	PROPERTY_BIOCIDIC = PROPERTY_NEOGENETIC,		PROPERTY_HYPERTHERMIC = PROPERTY_HYPOTHERMIC,\
-											PROPERTY_NUTRITIOUS = PROPERTY_KETOGENIC,		PROPERTY_PAINING = PROPERTY_PAINKILLING,		PROPERTY_HALLUCINOGENIC = PROPERTY_ANTIHALLUCINOGENIC,\
-											PROPERTY_HEPATOTOXIC = PROPERTY_HEPATOPEUTIC,	PROPERTY_NEPHROTOXIC = PROPERTY_NEPHROPEUTIC,	PROPERTY_PNEUMOTOXIC = PROPERTY_PNEUMOPEUTIC,\
-											PROPERTY_OCULOTOXIC = PROPERTY_OCULOPEUTIC, 	PROPERTY_CARDIOTOXIC = PROPERTY_CARDIOPEUTIC,	PROPERTY_NEUROTOXIC = PROPERTY_NEUROPEUTIC,\
-											PROPERTY_FLUXING = PROPERTY_REPAIRING, 			PROPERTY_RELAXING = PROPERTY_MUSCLESTIMULATING,	PROPERTY_HEMOGENIC = PROPERTY_HEMOLYTIC,\
-											PROPERTY_HEMOGENIC = PROPERTY_HEMORRAGING,		PROPERTY_NUTRITIOUS = PROPERTY_EMETIC,\
-											PROPERTY_HYPERGENETIC = PROPERTY_NEOGENETIC, 	PROPERTY_HYPERGENETIC = PROPERTY_HEPATOPEUTIC,	PROPERTY_HYPERGENETIC = PROPERTY_NEPHROPEUTIC,\
-											PROPERTY_HYPERGENETIC = PROPERTY_PNEUMOPEUTIC,	PROPERTY_HYPERGENETIC = PROPERTY_OCULOPEUTIC, 	PROPERTY_HYPERGENETIC = PROPERTY_CARDIOPEUTIC,\
-											PROPERTY_HYPERGENETIC = PROPERTY_NEUROPEUTIC,	PROPERTY_ADDICTIVE = PROPERTY_ANTIADDICTIVE,	PROPERTY_NEUROSHIELDING = PROPERTY_NEUROTOXIC,\
+	var/list/conflicting_properties = list( PROPERTY_NUTRITIOUS = PROPERTY_HEMORRAGING, PROPERTY_NUTRITIOUS = PROPERTY_HEMOLYTIC, PROPERTY_TOXIC = PROPERTY_ANTITOXIC,\
+											PROPERTY_CORROSIVE = PROPERTY_ANTICORROSIVE, PROPERTY_BIOCIDIC = PROPERTY_NEOGENETIC, PROPERTY_HYPERTHERMIC = PROPERTY_HYPOTHERMIC,\
+											PROPERTY_NUTRITIOUS = PROPERTY_KETOGENIC, PROPERTY_PAINING = PROPERTY_PAINKILLING, PROPERTY_HALLUCINOGENIC = PROPERTY_ANTIHALLUCINOGENIC,\
+											PROPERTY_HEPATOTOXIC = PROPERTY_HEPATOPEUTIC, PROPERTY_NEPHROTOXIC = PROPERTY_NEPHROPEUTIC, PROPERTY_PNEUMOTOXIC = PROPERTY_PNEUMOPEUTIC,\
+											PROPERTY_OCULOTOXIC = PROPERTY_OCULOPEUTIC, PROPERTY_CARDIOTOXIC = PROPERTY_CARDIOPEUTIC, PROPERTY_NEUROTOXIC = PROPERTY_NEUROPEUTIC,\
+											PROPERTY_FLUXING = PROPERTY_REPAIRING, PROPERTY_RELAXING = PROPERTY_MUSCLESTIMULATING, PROPERTY_HEMOGENIC = PROPERTY_HEMOLYTIC,\
+											PROPERTY_HEMOGENIC = PROPERTY_HEMORRAGING, PROPERTY_NUTRITIOUS = PROPERTY_EMETIC,\
+											PROPERTY_HYPERGENETIC = PROPERTY_NEOGENETIC, PROPERTY_HYPERGENETIC = PROPERTY_HEPATOPEUTIC, PROPERTY_HYPERGENETIC = PROPERTY_NEPHROPEUTIC,\
+											PROPERTY_HYPERGENETIC = PROPERTY_PNEUMOPEUTIC, PROPERTY_HYPERGENETIC = PROPERTY_OCULOPEUTIC, PROPERTY_HYPERGENETIC = PROPERTY_CARDIOPEUTIC,\
+											PROPERTY_HYPERGENETIC = PROPERTY_NEUROPEUTIC, PROPERTY_ADDICTIVE = PROPERTY_ANTIADDICTIVE, PROPERTY_NEUROSHIELDING = PROPERTY_NEUROTOXIC,\
 											PROPERTY_HYPOMETABOLIC = PROPERTY_HYPERMETABOLIC, PROPERTY_HYPERTHROTTLING = PROPERTY_NEUROINHIBITING,
-											PROPERTY_FOCUSING = PROPERTY_NERVESTIMULATING, 	PROPERTY_THERMOSTABILIZING = PROPERTY_HYPERTHERMIC, PROPERTY_THERMOSTABILIZING = PROPERTY_HYPOTHERMIC,
-											PROPERTY_AIDING = PROPERTY_NEUROINHIBITING, 	PROPERTY_OXYGENATING = PROPERTY_HYPOXEMIC,		PROPERTY_ANTICARCINOGENIC = PROPERTY_CARCINOGENIC, \
+											PROPERTY_FOCUSING = PROPERTY_NERVESTIMULATING, PROPERTY_THERMOSTABILIZING = PROPERTY_HYPERTHERMIC, PROPERTY_THERMOSTABILIZING = PROPERTY_HYPOTHERMIC,
+											PROPERTY_AIDING = PROPERTY_NEUROINHIBITING, PROPERTY_OXYGENATING = PROPERTY_HYPOXEMIC, PROPERTY_ANTICARCINOGENIC = PROPERTY_CARCINOGENIC, \
 											PROPERTY_CIPHERING = PROPERTY_CIPHERING_PREDATOR, PROPERTY_TRANSFORMATIVE = PROPERTY_ANTITOXIC)
 	//The list below defines which properties should be combined into a combo property
-	var/list/combining_properties = list(	PROPERTY_DEFIBRILLATING 	= list(PROPERTY_MUSCLESTIMULATING, PROPERTY_CARDIOPEUTIC),\
-											PROPERTY_THANATOMETABOL 	= list(PROPERTY_HYPOXEMIC, PROPERTY_CRYOMETABOLIZING, PROPERTY_NEUROCRYOGENIC),\
+	var/list/combining_properties = list( PROPERTY_DEFIBRILLATING = list(PROPERTY_MUSCLESTIMULATING, PROPERTY_CARDIOPEUTIC),\
+											PROPERTY_THANATOMETABOL = list(PROPERTY_HYPOXEMIC, PROPERTY_CRYOMETABOLIZING, PROPERTY_NEUROCRYOGENIC),\
 											PROPERTY_HYPERDENSIFICATING = list(PROPERTY_MUSCLESTIMULATING, PROPERTY_BONEMENDING, PROPERTY_CARCINOGENIC),\
-											PROPERTY_HYPERTHROTTLING 	= list(PROPERTY_PSYCHOSTIMULATING, PROPERTY_HALLUCINOGENIC),\
-											PROPERTY_NEUROSHIELDING 	= list(PROPERTY_ALCOHOLIC, PROPERTY_BALDING),\
-											PROPERTY_ANTIADDICTIVE		= list(PROPERTY_PSYCHOSTIMULATING, PROPERTY_ANTIHALLUCINOGENIC),\
-											PROPERTY_ADDICTIVE 			= list(PROPERTY_PSYCHOSTIMULATING, PROPERTY_NEUROTOXIC),\
+											PROPERTY_HYPERTHROTTLING = list(PROPERTY_PSYCHOSTIMULATING, PROPERTY_HALLUCINOGENIC),\
+											PROPERTY_NEUROSHIELDING = list(PROPERTY_ALCOHOLIC, PROPERTY_BALDING),\
+											PROPERTY_ANTIADDICTIVE = list(PROPERTY_PSYCHOSTIMULATING, PROPERTY_ANTIHALLUCINOGENIC),\
+											PROPERTY_ADDICTIVE = list(PROPERTY_PSYCHOSTIMULATING, PROPERTY_NEUROTOXIC),\
 											PROPERTY_CIPHERING_PREDATOR = list(PROPERTY_CIPHERING, PROPERTY_CROSSMETABOLIZING))
 	var/datum/chem_property/match
 	var/datum/chem_property/initial_property
@@ -395,9 +395,9 @@
 	P.holder = src
 	LAZYADD(properties, P)
 
-   	//Special case: If it's a catalyst property, add it nonetheless.
+	//Special case: If it's a catalyst property, add it nonetheless.
 	if(initial_property && initial_property != property)
-		P =	chemical_properties_list[initial_property]
+		P = chemical_properties_list[initial_property]
 		if(P.category & PROPERTY_TYPE_CATALYST)
 			P = new P.type()
 			P.level = level
@@ -444,4 +444,4 @@
 			return FALSE
 		GLOB.generated_properties["neutral"] += P
 	return TRUE
-	
+

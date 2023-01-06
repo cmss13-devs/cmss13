@@ -41,7 +41,7 @@
 				to_chat(user, SPAN_WARNING("You need to unload \the [ammo_equipped] from \the [src] first!"))
 				return TRUE
 			if(uses_ammo)
-				load_ammo(PC, user)	//it handles on it's own whether the ammo fits
+				load_ammo(PC, user) //it handles on it's own whether the ammo fits
 				return
 
 		else
@@ -145,7 +145,7 @@
 	equip_categories = list(DROPSHIP_WEAPON, DROPSHIP_CREW_WEAPON)
 	name = "sentry deployment system"
 	desc = "A box that deploys a sentry turret. Fits on both the external weapon and crew compartment attach points of dropships. You need a powerloader to lift it."
-	density = 0
+	density = FALSE
 	health = null
 	icon_state = "sentry_system"
 	is_interactable = TRUE
@@ -265,7 +265,7 @@
 /obj/structure/dropship_equipment/mg_holder
 	name = "machine gun deployment system"
 	desc = "A box that deploys a crew-served scoped M56D heavy machine gun. Fits on both the external weapon and crew compartment attach points of dropships. You need a powerloader to lift it."
-	density = 0
+	density = FALSE
 	equip_categories = list(DROPSHIP_WEAPON, DROPSHIP_CREW_WEAPON)
 	icon_state = "mg_system"
 	point_cost = 300
@@ -318,7 +318,7 @@
 			if(ship_base.base_category == DROPSHIP_WEAPON)
 				switch(dir)
 					if(NORTH)
-						if(	istype(get_step(src, WEST), /turf/open) )
+						if( istype(get_step(src, WEST), /turf/open) )
 							deployed_mg.pixel_x = 5
 						else if ( istype(get_step(src, EAST), /turf/open) )
 							deployed_mg.pixel_x = -5

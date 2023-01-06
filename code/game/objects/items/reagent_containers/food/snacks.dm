@@ -1,7 +1,7 @@
-/*	SNACK
-*	snack are food items that after being consume destroy themself.
-*	some snack are slice able.
-*	some produce trash after being consume/destroyed.
+/* SNACK
+* snack are food items that after being consume destroy themself.
+* some snack are slice able.
+* some produce trash after being consume/destroyed.
 */
 
 /obj/item/reagent_container/food/snacks
@@ -21,13 +21,13 @@
 	//Placeholder for effect that trigger on eating that aren't tied to reagents.
 /obj/item/reagent_container/food/snacks/proc/On_Consume(var/mob/M)
 	SEND_SIGNAL(src, COMSIG_SNACK_EATEN, M)
-	if(!usr)	return
+	if(!usr) return
 
 	if(!reagents.total_volume)
 		if(M == usr)
 			to_chat(usr, SPAN_NOTICE("You finish eating \the [src]."))
 		M.visible_message(SPAN_NOTICE("[M] finishes eating \the [src]."))
-		usr.drop_inv_item_on_ground(src)	//so icons update :[
+		usr.drop_inv_item_on_ground(src) //so icons update :[
 
 		if(trash)
 			if(ispath(trash,/obj/item))
@@ -47,9 +47,9 @@
 	user.next_move += attack_speed
 
 /obj/item/reagent_container/food/snacks/attack(mob/M, mob/user)
-	if(reagents && !reagents.total_volume)						//Shouldn't be needed but it checks to see if it has anything left in it.
+	if(reagents && !reagents.total_volume) //Shouldn't be needed but it checks to see if it has anything left in it.
 		to_chat(user, SPAN_DANGER("None of [src] left, oh no!"))
-		M.drop_inv_item_on_ground(src)	//so icons update :[
+		M.drop_inv_item_on_ground(src) //so icons update :[
 		qdel(src)
 		return 0
 
@@ -100,7 +100,7 @@
 				SPAN_HELPFUL("[user] <b>fed</b> you <b>[src]</b>."),
 				SPAN_NOTICE("[user] fed [user == M ? "themselves" : "[M]"] [src]."))
 
-		if(reagents)								//Handle ingestion of the reagent.
+		if(reagents) //Handle ingestion of the reagent.
 			playsound(M.loc,'sound/items/eatfood.ogg', 15, 1)
 			if(reagents.total_volume)
 				reagents.set_source_mob(user)
@@ -183,7 +183,7 @@
 		inaccurate = 1
 	else
 		return 1
-	if ( 	!istype(loc, /obj/structure/surface/table) && \
+	if ( !istype(loc, /obj/structure/surface/table) && \
 			(!isturf(src.loc) || \
 			!(locate(/obj/structure/surface/table) in src.loc) && \
 			!(locate(/obj/structure/machinery/optable) in src.loc) && \
@@ -235,36 +235,36 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 /*
-*	SNACKS
-*	Comment on what items in subcategory snacks need to behave:
-*	Items in the "Snacks" subcategory are food items that people actually eat.
-*	The key points are that they are created already filled with reagents and are destroyed when empty.
-*	Additionally, they make a "munching" noise when eaten.
+* SNACKS
+* Comment on what items in subcategory snacks need to behave:
+* Items in the "Snacks" subcategory are food items that people actually eat.
+* The key points are that they are created already filled with reagents and are destroyed when empty.
+* Additionally, they make a "munching" noise when eaten.
 *
-*	Notes by Darem:
-*	Food in the "snacks" subtype can hold a maximum of 50 units Generally speaking.
-*	You don't want to go over 40 total for the item because you want to leave space for extra condiments.
-*	If you want effect besides healing, add a reagent for it.
-*	Try to stick to existing reagents when possible (so if you want a stronger healing effect, just use Tricordrazine).
-*	On use effect (such as the old officer eating a donut code) requires a unique reagent (unless you can figure out a better way).
+* Notes by Darem:
+* Food in the "snacks" subtype can hold a maximum of 50 units Generally speaking.
+* You don't want to go over 40 total for the item because you want to leave space for extra condiments.
+* If you want effect besides healing, add a reagent for it.
+* Try to stick to existing reagents when possible (so if you want a stronger healing effect, just use Tricordrazine).
+* On use effect (such as the old officer eating a donut code) requires a unique reagent (unless you can figure out a better way).
 *
-*	Comment on how the old and new system compare?:
-*	The nutriment reagent and bitesize variable replace the old heal_amt and amount variables.
-*	Each unit of nutriment is equal to 2 of the old heal_amt variable. Bitesize is the rate at which the reagents are consumed.
-*	So if you have 6 nutriment and a bitesize of 2, then it'll take 3 bites to eat.
-*	Unlike the old system, the contained reagents are evenly spread among all the bites. No more contained reagents = no more bites.
+* Comment on how the old and new system compare?:
+* The nutriment reagent and bitesize variable replace the old heal_amt and amount variables.
+* Each unit of nutriment is equal to 2 of the old heal_amt variable. Bitesize is the rate at which the reagents are consumed.
+* So if you have 6 nutriment and a bitesize of 2, then it'll take 3 bites to eat.
+* Unlike the old system, the contained reagents are evenly spread among all the bites. No more contained reagents = no more bites.
 *
-*	Example on how to add a new snack item:
-*	here is an example of the new formatting for anyone who wants to add more food items.
-*	/obj/item/reagent_container/food/snacks/xenoburger				///Identification path for the object.
-*	name = "Xenoburger"												///Name that displays in the UI.
-*	desc = "Smells caustic. Tastes like heresy."					///Duh
-*	icon_state = "xburger"											///Refers to an icon in food.dmi
-*	/obj/item/reagent_container/food/snacks/xenoburger/Initialize()	///Don't mess with this.
-*	. = ..()														///Same here.
-*	reagents.add_reagent("xenomicrobes", 10)						///This is what is in the food item. you may copy/paste
-*	reagents.add_reagent("nutriment", 2)							///	this line of code for all the contents.
-*	bitesize = 3													///This is the amount each bite consumes.
+* Example on how to add a new snack item:
+* here is an example of the new formatting for anyone who wants to add more food items.
+* /obj/item/reagent_container/food/snacks/xenoburger ///Identification path for the object.
+* name = "Xenoburger" ///Name that displays in the UI.
+* desc = "Smells caustic. Tastes like heresy." ///Duh
+* icon_state = "xburger" ///Refers to an icon in food.dmi
+* /obj/item/reagent_container/food/snacks/xenoburger/Initialize() ///Don't mess with this.
+* . = ..() ///Same here.
+* reagents.add_reagent("xenomicrobes", 10) ///This is what is in the food item. you may copy/paste
+* reagents.add_reagent("nutriment", 2) /// this line of code for all the contents.
+* bitesize = 3 ///This is the amount each bite consumes.
 */
 
 /obj/item/reagent_container/food/snacks/aesirsalad
@@ -1137,7 +1137,7 @@
 	bitesize = 0.1 //this snack is supposed to be eating during looooong time. And this it not dinner food! --rastaf0
 
 /obj/item/reagent_container/food/snacks/popcorn/On_Consume()
-	if(prob(unpopped))	//lol ...what's the point?
+	if(prob(unpopped)) //lol ...what's the point?
 		to_chat(usr, SPAN_DANGER("You bite down on an un-popped kernel!"))
 		unpopped = max(0, unpopped-1)
 	..()
@@ -1549,7 +1549,7 @@
 			I.take_damage(rand(I.min_bruised_damage, I.min_broken_damage+1))
 		if (!E.hidden && prob(60)) //set it snuggly
 			E.hidden = surprise
-		else 		//someone is having a bad day
+		else //someone is having a bad day
 			E.createwound(CUT, 30)
 			E.embed(surprise)
 	..()
@@ -2114,9 +2114,9 @@
 
 /*
 *Sliceable
-*	All the food items that can be sliced into smaller bits like Meatbread and Cheesewheels
-*	sliceable is just an organization type path, it doesn't have any additional code or variables tied to it.
-*	Make it that every big items are cut down into six smaller slice as a standart.
+* All the food items that can be sliced into smaller bits like Meatbread and Cheesewheels
+* sliceable is just an organization type path, it doesn't have any additional code or variables tied to it.
+* Make it that every big items are cut down into six smaller slice as a standart.
 */
 
 /obj/item/reagent_container/food/snacks/sliceable

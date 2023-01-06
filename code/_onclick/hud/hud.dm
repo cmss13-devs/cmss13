@@ -9,11 +9,11 @@
 	var/mob/mymob
 	var/datum/custom_hud/ui_datum
 
-	var/hud_version = HUD_STYLE_STANDARD	//the hud version used (standard, reduced, none)
-	var/hud_shown = TRUE			//Used for the HUD toggle (F12)
-	var/inventory_shown = TRUE		//the inventory
+	var/hud_version = HUD_STYLE_STANDARD //the hud version used (standard, reduced, none)
+	var/hud_shown = TRUE //Used for the HUD toggle (F12)
+	var/inventory_shown = TRUE //the inventory
 	var/show_intent_icons = 0
-	var/hotkey_ui_hidden = 0	//This is to hide the buttons that can be used via hotkeys. (hotkeybuttons list of buttons)
+	var/hotkey_ui_hidden = 0 //This is to hide the buttons that can be used via hotkeys. (hotkeybuttons list of buttons)
 
 	var/atom/movable/screen/r_hand_hud_object
 	var/atom/movable/screen/l_hand_hud_object
@@ -167,8 +167,8 @@
 /datum/hud/proc/show_hud(version = 0, mob/viewmob)
 	if(!ismob(mymob))
 		return FALSE
-//	if(!mymob.client)
-//		return FALSE
+// if(!mymob.client)
+// return FALSE
 	var/mob/screenmob = viewmob || mymob
 	if(!screenmob.client)
 		return FALSE
@@ -177,14 +177,14 @@
 	screenmob.client.apply_clickcatcher()
 
 	var/display_hud_version = version
-	if(!display_hud_version)	//If 0 or blank, display the next hud version
+	if(!display_hud_version) //If 0 or blank, display the next hud version
 		display_hud_version = hud_version + 1
-	if(display_hud_version > HUD_VERSIONS)	//If the requested version number is greater than the available versions, reset back to the first version
+	if(display_hud_version > HUD_VERSIONS) //If the requested version number is greater than the available versions, reset back to the first version
 		display_hud_version = 1
 
 	switch(display_hud_version)
-		if(HUD_STYLE_STANDARD)	//Default HUD
-			hud_shown = 1	//Governs behavior of other procs
+		if(HUD_STYLE_STANDARD) //Default HUD
+			hud_shown = 1 //Governs behavior of other procs
 			if(static_inventory.len)
 				screenmob.client.screen += static_inventory
 			if(toggleable_inventory.len && inventory_shown)
@@ -194,8 +194,8 @@
 			if(infodisplay.len)
 				screenmob.client.screen += infodisplay
 
-		if(HUD_STYLE_REDUCED)	//Reduced HUD
-			hud_shown = 0	//Governs behavior of other procs
+		if(HUD_STYLE_REDUCED) //Reduced HUD
+			hud_shown = 0 //Governs behavior of other procs
 			if(static_inventory.len)
 				screenmob.client.screen -= static_inventory
 			if(toggleable_inventory.len)
@@ -207,14 +207,14 @@
 
 			//These ones are a part of 'static_inventory', 'toggleable_inventory' or 'hotkeybuttons' but we want them to stay
 			if(l_hand_hud_object)
-				screenmob.client.screen += l_hand_hud_object	//we want the hands to be visible
+				screenmob.client.screen += l_hand_hud_object //we want the hands to be visible
 			if(r_hand_hud_object)
-				screenmob.client.screen += r_hand_hud_object	//we want the hands to be visible
+				screenmob.client.screen += r_hand_hud_object //we want the hands to be visible
 			if(action_intent)
-				screenmob.client.screen += action_intent		//we want the intent switcher visible
+				screenmob.client.screen += action_intent //we want the intent switcher visible
 
-		if(HUD_STYLE_NOHUD)	//No HUD
-			hud_shown = 0	//Governs behavior of other procs
+		if(HUD_STYLE_NOHUD) //No HUD
+			hud_shown = 0 //Governs behavior of other procs
 			if(static_inventory.len)
 				screenmob.client.screen -= static_inventory
 			if(toggleable_inventory.len)
@@ -357,7 +357,7 @@
 	inv_box.setDir(WEST)
 	inv_box.screen_loc = ui_datum.ui_rhand
 	inv_box.icon_state = "hand_inactive"
-	if(mymob && !mymob.hand)	//This being 0 or null means the right hand is in use
+	if(mymob && !mymob.hand) //This being 0 or null means the right hand is in use
 		inv_box.icon_state = "hand_active"
 	if(ui_alpha)
 		inv_box.alpha = ui_alpha

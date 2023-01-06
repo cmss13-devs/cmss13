@@ -1,10 +1,10 @@
 /* Diffrent misc types of sheets
  * Contains:
- *		Metal
- *		Plasteel
- *		Wood
- *		Cloth
- *		Cardboard
+ * Metal
+ * Plasteel
+ * Wood
+ * Cloth
+ * Cardboard
  */
 
 /*
@@ -287,7 +287,7 @@ var/global/list/datum/stack_recipe/cardboard_recipes = list ( \
 		)) \
 )
 
-/obj/item/stack/sheet/cardboard	//BubbleWrap
+/obj/item/stack/sheet/cardboard //BubbleWrap
 	name = "cardboard"
 	desc = "Large sheets of card, like boxes folded flat."
 	singular_name = "cardboard sheet"

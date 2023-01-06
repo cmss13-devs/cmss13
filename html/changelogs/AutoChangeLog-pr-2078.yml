@@ -1,5 +1,0 @@
-author: "carlarctg"
-delete-after: True
-changes:
-  - rscadd: "Adds a cosmetic garb slot to boonie hats and other USCM caps."
-  - code_imp: "Slightly improved cmcap code."

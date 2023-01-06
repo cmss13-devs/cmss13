@@ -81,7 +81,7 @@ SUBSYSTEM_DEF(atoms)
 	if(result != INITIALIZE_HINT_NORMAL)
 		switch(result)
 			if(INITIALIZE_HINT_LATELOAD)
-				if(arguments[1])	//mapload
+				if(arguments[1]) //mapload
 					late_loaders += A
 				else
 					A.LateInitialize()
@@ -96,7 +96,7 @@ SUBSYSTEM_DEF(atoms)
 			else
 				BadInitializeCalls[the_type] |= BAD_INIT_NO_HINT
 
-	if(!A)	//possible harddel
+	if(!A) //possible harddel
 		qdeleted = TRUE
 	else if(!(A.flags_atom & INITIALIZED))
 		BadInitializeCalls[the_type] |= BAD_INIT_DIDNT_INIT

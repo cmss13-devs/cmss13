@@ -91,7 +91,7 @@
 	health = Clamp(health, 0, initial(health))
 
 	if(health <= 0)
-		toggled = FALSE		// requires flipping on again once repaired
+		toggled = FALSE // requires flipping on again once repaired
 	if(health < initial(health))
 		desc = "[initial(desc)] [SPAN_WARNING(" It is damaged and needs a welder for repairs!")]"
 	else
@@ -485,7 +485,7 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 	icon = 'icons/obj/structures/props/stationobjs.dmi'
 	icon_state = "comm_server"
 	desc = "A compact machine used for portable subspace telecommunications processing."
-	density = 1
+	density = TRUE
 	anchored = 1
 	use_power = USE_POWER_NONE
 	idle_power_usage = 0

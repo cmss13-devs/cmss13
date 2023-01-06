@@ -1,7 +1,7 @@
 //Procedures in this file: Opening and closing incisions. Clamping bleeds. Opening and closing ribcage/skull etc., proof of concept do-nothing non-human surgery.
 
 //////////////////////////////////////////////////////////////////
-//						INCISION SURGERIES						//
+// INCISION SURGERIES //
 //////////////////////////////////////////////////////////////////
 
 /datum/surgery/open_incision
@@ -335,7 +335,7 @@
 	return FALSE
 
 //////////////////////////////////////////////////////////////////
-//						BONE-OPENING SURGERIES					//
+// BONE-OPENING SURGERIES //
 //////////////////////////////////////////////////////////////////
 
 /datum/surgery/open_encased
@@ -589,7 +589,7 @@
 /*Proof of concept. Functions but does nothing useful.
 If fiddling with, uncomment /mob/living/attackby surgery code also. It's pointless processing to have live without any surgeries for it to use.*/
 //////////////////////////////////////////////////////////////////
-//						NONHUMAN SURGERIES						//
+// NONHUMAN SURGERIES //
 //////////////////////////////////////////////////////////////////
 /*
 /datum/surgery/open_test_incision

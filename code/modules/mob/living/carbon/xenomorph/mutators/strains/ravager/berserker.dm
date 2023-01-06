@@ -51,7 +51,7 @@
 	var/movement_speed_buff_per_rage = 0.1
 
 	// Eviscerate config
-	var/rage_lock_duration = 10 SECONDS      // 10 seconds of max rage
+	var/rage_lock_duration = 10 SECONDS   // 10 seconds of max rage
 	var/rage_cooldown_duration = 7 SECONDS  // 7 seconds of NO rage.
 
 	// State for tracking rage
@@ -147,7 +147,7 @@
 	if (next_slash_buffed)
 		to_chat(bound_xeno, SPAN_XENOHIGHDANGER("You significantly strengthen your attack, slowing [A]!"))
 		to_chat(A, SPAN_XENOHIGHDANGER("You feel a sharp pain as [bound_xeno] slashes you, slowing you down!"))
-		A.apply_effect(get_xeno_stun_duration(A, 6), SUPERSLOW)
+		A.apply_effect(get_xeno_stun_duration(A, slash_slow_duration), SLOW)
 		next_slash_buffed = FALSE
 
 	return original_damage

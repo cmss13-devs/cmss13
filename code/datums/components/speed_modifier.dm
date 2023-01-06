@@ -1,5 +1,5 @@
-#define MAX_ALPHA 					35
-#define GLOW_COLOR 					"#7a0000"
+#define MAX_ALPHA 35
+#define GLOW_COLOR "#7a0000"
 
 //Adjusts the speed of a xenomorph the component is on. Humans will take or heal stamina damage.
 

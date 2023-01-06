@@ -5,7 +5,7 @@
 	var/value
 	var/enabled = TRUE
 
-/datum/decorator/manual/admin_runtime/New(_decorate_type, _decorate_subtypes, _field, _value)	
+/datum/decorator/manual/admin_runtime/New(_decorate_type, _decorate_subtypes, _field, _value) 
 	decorate_type = text2path("[_decorate_type]")
 	decorate_subtypes = _decorate_subtypes
 	field = _field

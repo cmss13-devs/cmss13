@@ -833,7 +833,7 @@
 	icon_state = "casing_9_1"
 	},
 /obj/structure/machinery/defenses/sentry/premade/dumb{
-	dir = 4;
+	dir = 8;
 	faction_group = list("CLF")
 	},
 /turf/open/floor{

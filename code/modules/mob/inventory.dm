@@ -152,7 +152,7 @@
 //drop the inventory item on the ground
 /mob/proc/drop_inv_item_on_ground(obj/item/I, nomoveupdate, force)
 	if(!(WEAKREF(I) in dropped_objects))
-		if(length(dropped_objects) + 1 > MAXIMUM_DROPPED_OBJECTS_REMEMBERED)
+		if(length(dropped_objects) >= MAXIMUM_DROPPED_OBJECTS_REMEMBERED)
 			popleft(dropped_objects)
 		dropped_objects += WEAKREF(I)
 	return u_equip(I, get_step(src, 0), nomoveupdate, force) // Drops on turf instead of loc

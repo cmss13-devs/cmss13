@@ -18,6 +18,7 @@
 	evolution_allowed = FALSE
 	deevolves_to = list(XENO_CASTE_CARRIER)
 	throwspeed = SPEED_AVERAGE
+	can_hold_eggs = CAN_HOLD_ONE_HAND
 	weed_level = WEED_LEVEL_STANDARD
 
 	behavior_delegate_type = /datum/behavior_delegate/base_reaper

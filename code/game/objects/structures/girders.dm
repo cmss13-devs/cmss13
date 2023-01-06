@@ -1,16 +1,16 @@
-#define STATE_STANDARD 			0
-#define STATE_DISMANTLING		1
-#define STATE_WALL 				2
-#define STATE_REINFORCED_WALL 	3
-#define STATE_DISPLACED			4
+#define STATE_STANDARD 0
+#define STATE_DISMANTLING 1
+#define STATE_WALL 2
+#define STATE_REINFORCED_WALL 3
+#define STATE_DISPLACED 4
 
-#define STATE_SCREWDRIVER 		1
-#define STATE_WIRECUTTER 		2
-#define STATE_METAL 			3
-#define STATE_PLASTEEL 			4
-#define STATE_RODS 				5
+#define STATE_SCREWDRIVER 1
+#define STATE_WIRECUTTER 2
+#define STATE_METAL 3
+#define STATE_PLASTEEL 4
+#define STATE_RODS 5
 
-#define GIRDER_UPGRADE_MATERIAL_COST	5
+#define GIRDER_UPGRADE_MATERIAL_COST 5
 
 /obj/structure/girder
 	icon_state = "girder"

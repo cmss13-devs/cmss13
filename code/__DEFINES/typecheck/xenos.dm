@@ -54,3 +54,8 @@
 	if(isCarbonSizeXeno(A))
 		return damage * XVX_SLASH_DAMAGEMULT
 	return damage
+
+/proc/get_xeno_damage_acid(var/mob/target_mob, damage)
+	if(isXeno(target_mob))
+		return damage * XVX_ACID_DAMAGEMULT
+	return damage

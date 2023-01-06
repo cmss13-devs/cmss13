@@ -9,8 +9,8 @@
 /datum/game_mode/whiskey_outpost
 	name = "Whiskey Outpost"
 	config_tag = "Whiskey Outpost"
-	required_players 		= 0
-	xeno_bypass_timer 		= 1
+	required_players = 0
+	xeno_bypass_timer = 1
 	flags_round_type = MODE_NEW_SPAWN
 	role_mappings = list(
 					/datum/job/command/commander/whiskey = JOB_CO,
@@ -451,7 +451,7 @@
 
 	name = "Recycler"
 	desc = "Instructions: Place objects you want to destroy on top of it and use the machine. Use with care"
-	density = 0
+	density = FALSE
 	anchored = 1
 	unslashable = TRUE
 	unacidable = TRUE
@@ -484,7 +484,7 @@
 						continue
 					new /obj/item/stack/sheet/metal(get_step(src,dir))
 					O.forceMove(get_turf(locate(84,237,2))) //z.2
-//						O.forceMove(get_turf(locate(30,70,1)) )//z.1
+// O.forceMove(get_turf(locate(30,70,1)) )//z.1
 					removed++
 					break
 				else if(istype(O,/obj/item))
@@ -492,7 +492,7 @@
 					if(I.anchored)
 						continue
 					O.forceMove(get_turf(locate(84,237,2))) //z.2
-//						O.forceMove(get_turf(locate(30,70,1)) )//z.1
+// O.forceMove(get_turf(locate(30,70,1)) )//z.1
 					removed++
 					break
 			for(var/mob/M in T)
@@ -501,7 +501,7 @@
 					if(!X.stat == DEAD)
 						continue
 					X.forceMove(get_turf(locate(84,237,2))) //z.2
-//						X.forceMove(get_turf(locate(30,70,1)) )//z.1
+// X.forceMove(get_turf(locate(30,70,1)) )//z.1
 					removed++
 					break
 			if(removed && !working)

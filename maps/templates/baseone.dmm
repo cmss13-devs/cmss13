@@ -329,7 +329,6 @@
 "aI" = (
 /obj/structure/machinery/power/apc/antag{
 	dir = 2;
-	pixel_x = 0
 	},
 /turf/open/floor/almayer{
 	dir = 8;
@@ -573,7 +572,7 @@
 /obj/structure/machinery/power/apc/antag{
 	dir = 8;
 	pixel_x = 0;
-	pixel_y = 24
+	pixel_y = 25
 	},
 /turf/open/floor/almayer,
 /area/adminlevel/bunker01/bedroom)
@@ -700,7 +699,7 @@
 /obj/structure/disposalpipe/segment,
 /obj/structure/machinery/power/apc/antag{
 	dir = 8;
-	pixel_x = -24
+	pixel_x = -25
 	},
 /turf/open/floor/wood,
 /area/adminlevel/bunker01/bedroom)
@@ -768,7 +767,7 @@
 /obj/structure/machinery/microwave,
 /obj/structure/machinery/power/apc/antag{
 	dir = 4;
-	pixel_x = 24
+	pixel_x = 25
 	},
 /turf/open/floor/prison{
 	dir = 2;
@@ -1173,7 +1172,7 @@
 	tag = "icon-intact-supply (NORTHWEST)"
 	},
 /obj/structure/machinery/power/apc/antag{
-	pixel_y = -24
+	pixel_y = -25
 	},
 /turf/open/floor/almayer{
 	icon_state = "blue";
@@ -1324,7 +1323,7 @@
 "cY" = (
 /obj/structure/machinery/power/apc/antag{
 	dir = 4;
-	pixel_x = 24
+	pixel_x = 25
 	},
 /turf/open/floor/almayer{
 	dir = 5;
@@ -1929,7 +1928,7 @@
 	},
 /obj/structure/machinery/power/apc/antag{
 	dir = 8;
-	pixel_x = -24
+	pixel_x = -25
 	},
 /turf/open/floor/almayer{
 	icon_state = "cargo";
@@ -1968,7 +1967,7 @@
 	},
 /obj/structure/machinery/power/apc/antag{
 	dir = 8;
-	pixel_x = -24
+	pixel_x = -25
 	},
 /turf/open/floor/almayer{
 	dir = 8;
@@ -2132,7 +2131,7 @@
 "eL" = (
 /obj/structure/machinery/power/apc/antag{
 	dir = 8;
-	pixel_x = -24
+	pixel_x = -25
 	},
 /turf/open/floor/almayer,
 /area/adminlevel/bunker01/mainroom)
@@ -2567,7 +2566,7 @@
 "fB" = (
 /obj/structure/machinery/power/apc/antag{
 	dir = 8;
-	pixel_x = -24
+	pixel_x = -25
 	},
 /turf/open/floor/almayer,
 /area/adminlevel/bunker01/security)
@@ -2995,7 +2994,7 @@
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/machinery/power/apc/antag{
 	dir = 4;
-	pixel_x = 24
+	pixel_x = 25
 	},
 /turf/open/floor/almayer{
 	dir = 4;

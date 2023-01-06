@@ -1,17 +1,17 @@
 /*
- *	These absorb the functionality of the plant bag, ore satchel, etc.
- *	They use the use_to_pickup, quick_gather, and quick_empty functions
- *	that were already defined in weapon/storage, but which had been
- *	re-implemented in other classes.
+ * These absorb the functionality of the plant bag, ore satchel, etc.
+ * They use the use_to_pickup, quick_gather, and quick_empty functions
+ * that were already defined in weapon/storage, but which had been
+ * re-implemented in other classes.
  *
- *	Contains:
- *		Trash Bag
- *		Mining Satchel
- *		Plant Bag
- *		Sheet Snatcher
- *		Cash Bag
+ * Contains:
+ * Trash Bag
+ * Mining Satchel
+ * Plant Bag
+ * Sheet Snatcher
+ * Cash Bag
  *
- *	-Sayu
+ * -Sayu
  */
 
 //  Generic non-item
@@ -20,7 +20,7 @@
 	flags_equip_slot = SLOT_WAIST
 
 // -----------------------------
-//          Trash bag
+//   Trash bag
 // -----------------------------
 /obj/item/storage/bag/trash
 	name = "trash bag"
@@ -50,7 +50,7 @@
 	return
 
 // -----------------------------
-//        Plastic Bag
+// Plastic Bag
 // -----------------------------
 
 /obj/item/storage/bag/plasticbag
@@ -67,7 +67,7 @@
 	cant_hold = list(/obj/item/disk/nuclear, /obj/item/weapon/melee/throwing_knife)
 
 // -----------------------------
-//        Mining Satchel
+// Mining Satchel
 // -----------------------------
 
 /obj/item/storage/bag/ore
@@ -85,7 +85,7 @@
 
 
 // -----------------------------
-//          Plant bag
+//   Plant bag
 // -----------------------------
 
 /obj/item/storage/bag/plants
@@ -105,7 +105,7 @@
 
 
 // -----------------------------
-//        Sheet Snatcher
+// Sheet Snatcher
 // -----------------------------
 // Because it stacks stacks, this doesn't operate normally.
 // However, making it a storage/bag allows us to reuse existing code in some places. -Sayu
@@ -156,7 +156,7 @@
 
 	for(var/obj/item/stack/sheet/sheet in contents)
 		if(S.type == sheet.type) // we are violating the amount limitation because these are not sane objects
-			sheet.amount += amount	// they should only be removed through procs in this file, which split them up.
+			sheet.amount += amount // they should only be removed through procs in this file, which split them up.
 			S.amount -= amount
 			inserted = 1
 			break
@@ -236,7 +236,7 @@
 	return ..(S,new_location)
 
 // -----------------------------
-//    Sheet Snatcher (Cyborg)
+// Sheet Snatcher (Cyborg)
 // -----------------------------
 
 /obj/item/storage/bag/sheetsnatcher/borg
@@ -245,7 +245,7 @@
 	capacity = 500//Borgs get more because >specialization
 
 // -----------------------------
-//           Cash Bag
+//    Cash Bag
 // -----------------------------
 
 /obj/item/storage/bag/cash

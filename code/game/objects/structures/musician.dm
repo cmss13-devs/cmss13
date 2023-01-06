@@ -11,7 +11,7 @@
 	desc = "What a shame. This piano looks like it'll never play again. Ever. Don't even ask about it."
 	icon_state = "pianobroken"
 	anchored = 1
-	density = 1
+	density = TRUE
 
 /obj/structure/device/broken_moog
 	name = "broken vintage synthesizer"
@@ -19,4 +19,4 @@
 	desc = "This spacemoog synthesizer is vintage, but trashed. Seems someone didn't like its hot fresh tunes."
 	icon_state = "minimoogbroken"
 	anchored = 1
-	density = 1
+	density = TRUE

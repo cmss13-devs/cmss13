@@ -46,7 +46,7 @@ steam.start() -- spawns the effect
 	name = "steam"
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "extinguish"
-	density = 0
+	density = FALSE
 
 /datum/effect_system/steam_spread
 
@@ -87,14 +87,14 @@ steam.start() -- spawns the effect
 	icon_state = "sparks"
 	var/amount = 6.0
 	anchored = 1.0
-	mouse_opacity = 0
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
 /obj/effect/particle_effect/sparks/New()
 	..()
 	playsound(src.loc, "sparks", 25, 1)
-//	var/turf/T = src.loc
-//	if (istype(T, /turf))
-//		T.hotspot_expose(1000,100)
+// var/turf/T = src.loc
+// if (istype(T, /turf))
+// T.hotspot_expose(1000,100)
 	spawn (100)
 		qdel(src)
 

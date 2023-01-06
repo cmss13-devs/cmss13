@@ -89,12 +89,12 @@
 	set category = "Admin.Fun"
 	set name = "Gib"
 
-	if(!check_rights(R_ADMIN))	return
+	if(!check_rights(R_ADMIN)) return
 
 	var/confirm = alert(src, "You sure?", "Confirm", "Yes", "No")
 	if(confirm != "Yes") return
 	//Due to the delay here its easy for something to have happened to the mob
-	if(!M)	return
+	if(!M) return
 
 	message_staff("[key_name_admin(usr)] has gibbed [key_name_admin(M)]", 1)
 
@@ -392,7 +392,7 @@
 	set name = "Toggle Sleeping"
 	set category = null
 
-	if(!check_rights(0))	return
+	if(!check_rights(0)) return
 
 	if (M.sleeping > 0) //if they're already slept, set their sleep to zero and remove the icon
 		M.sleeping = 0

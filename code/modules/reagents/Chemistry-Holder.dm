@@ -187,8 +187,8 @@
 		var/current_reagent_transfer = current_reagent.volume * part
 		if(preserve_data)
 			trans_data = copy_data(current_reagent)
-		target.add_reagent(current_reagent.id, (current_reagent_transfer * multiplier), trans_data, safety = 1)	//safety checks on these so all chemicals are transferred
-		remove_reagent(current_reagent.id, current_reagent_transfer, safety = 1)							// to the target container before handling reactions
+		target.add_reagent(current_reagent.id, (current_reagent_transfer * multiplier), trans_data, safety = 1) //safety checks on these so all chemicals are transferred
+		remove_reagent(current_reagent.id, current_reagent_transfer, safety = 1) // to the target container before handling reactions
 	update_total()
 	target.update_total()
 	if(reaction)
@@ -233,7 +233,7 @@
 		var/current_reagent_transfer = current_reagent.volume * part
 		if(preserve_data)
 			trans_data = copy_data(current_reagent)
-		R.add_reagent(current_reagent.id, (current_reagent_transfer * multiplier), trans_data, safety = 1)	//safety check so all chemicals are transferred before reacting
+		R.add_reagent(current_reagent.id, (current_reagent_transfer * multiplier), trans_data, safety = 1) //safety check so all chemicals are transferred before reacting
 
 	update_total()
 	R.update_total()
@@ -554,7 +554,7 @@
 		else
 			if(istype(R, reagent_type))
 				matches = TRUE
-		// We found a match, proceed to remove the reagent.	Keep looping, we might find other reagents of the same type.
+		// We found a match, proceed to remove the reagent. Keep looping, we might find other reagents of the same type.
 		if(matches)
 			// Have our other proc handle removement
 			has_removed_reagent = remove_reagent(R.id, amount, safety)

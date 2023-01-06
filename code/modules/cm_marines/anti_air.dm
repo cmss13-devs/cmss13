@@ -5,7 +5,7 @@ var/obj/structure/anti_air_cannon/almayer_aa_cannon
 	desc = "The IX-50 is a state-of-the-art Micro-Gravity and Air Defense system capable of independently tracking and neutralizing threats with rockets strapped onto them."
 	icon = 'icons/effects/128x128.dmi'
 	icon_state = "anti_air_cannon"
-	density = 1
+	density = TRUE
 	anchored = 1
 	layer = LADDER_LAYER
 	bound_width = 128

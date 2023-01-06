@@ -26,8 +26,8 @@ GLOBAL_LIST_FILE_LOAD(alien_whitelist, "config/alienwhitelist.txt")
 		return 1
 	if(species == "human" || species == "Human")
 		return 1
-//	if(check_rights(R_ADMIN, 0)) //Admins are not automatically considered to be whitelisted anymore. ~N
-//		return 1				//This actually screwed up a bunch of procs, but I only noticed it with the wrong spawn point.
+// if(check_rights(R_ADMIN, 0)) //Admins are not automatically considered to be whitelisted anymore. ~N
+// return 1 //This actually screwed up a bunch of procs, but I only noticed it with the wrong spawn point.
 	if(!CONFIG_GET(flag/usealienwhitelist) || !GLOB.alien_whitelist)
 		return 0
 	if(M && species)
@@ -35,7 +35,7 @@ GLOBAL_LIST_FILE_LOAD(alien_whitelist, "config/alienwhitelist.txt")
 			if(findtext(lowertext(s),"[lowertext(M.key)] - [species]"))
 				return 1
 			//if(findtext(lowertext(s),"[lowertext(M.key)] - [species] Elder")) //Unnecessary.
-			//	return 1
+			// return 1
 			if(findtext(lowertext(s),"[lowertext(M.key)] - All"))
 				return 1
 	return 0

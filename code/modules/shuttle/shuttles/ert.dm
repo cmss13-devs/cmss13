@@ -176,6 +176,7 @@
 /obj/docking_port/stationary/emergency_response
 	width  = 7
 	height = 13
+	var/is_external = FALSE
 
 /obj/docking_port/stationary/emergency_response/port1
 	name = "Almayer starboard landing pad"
@@ -194,6 +195,7 @@
 	id = "almayer-ert3"
 
 /obj/docking_port/stationary/emergency_response/external
+	is_external = TRUE
 	var/airlock_id
 	var/airlock_area
 	var/external_airlocks = list()

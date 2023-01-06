@@ -96,9 +96,14 @@
 
 /obj/structure/machinery/computer/shuttle/ert/Initialize(mapload, ...)
 	. = ..()
+	compatible_landing_zones = get_landing_zones()
 
+/obj/structure/machinery/computer/shuttle/ert/proc/get_landing_zones()
+	. = list()
 	for(var/obj/docking_port/stationary/emergency_response/dock in SSshuttle.stationary)
-		compatible_landing_zones += list(dock)
+		if(!dock.is_external)
+			. += list(dock)
+
 
 /obj/structure/machinery/computer/shuttle/ert/is_disabled()
 	return disabled
@@ -243,12 +248,26 @@
 	req_access = list()
 	breakable = FALSE
 
+/obj/structure/machinery/computer/shuttle/ert/small/get_landing_zones()
+	. = list()
+	for(var/obj/docking_port/stationary/emergency_response/dock in SSshuttle.stationary)
+		if(istype(dock, /obj/docking_port/stationary/emergency_response/external/hangar_port))
+			continue
+		if(istype(dock, /obj/docking_port/stationary/emergency_response/external/hangar_starboard))
+			continue
+		. += list(dock)
+
 /obj/structure/machinery/computer/shuttle/ert/big
 	name = "transport shuttle"
 	desc = "A transport shuttle flight computer."
 	icon_state = "comm_alt"
 	req_access = list()
 	breakable = FALSE
+
+/obj/structure/machinery/computer/shuttle/ert/big/get_landing_zones()
+	. = list()
+	for(var/obj/docking_port/stationary/emergency_response/dock in SSshuttle.stationary)
+		. += list(dock)
 
 /obj/structure/machinery/computer/shuttle/lifeboat
 	name = "lifeboat console"

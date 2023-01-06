@@ -71,7 +71,7 @@
 
 /obj/item/storage/box/spec/scout
 	name = "\improper Scout equipment case"
-	desc = "A large case containing a M4RA battle rifle or a P9 SHARP rifle, M3-S light armor and helmet, M4RA battle sight, M68 thermal cloak, V3 reactive thermal tarp, improved scout laser designator, ammunition and additional pieces of equipment.\nDrag this sprite onto yourself to open it up! NOTE: You cannot put items back inside this case."
+	desc = "A large case containing an M4RA battle rifle, M3-S light armor and helmet, M4RA battle sight, M68 thermal cloak, V3 reactive thermal tarp, improved scout laser designator, ammunition and additional pieces of equipment.\nDrag this sprite onto yourself to open it up! NOTE: You cannot put items back inside this case."
 	kit_overlay = "scout"
 
 /obj/item/storage/box/spec/scout/fill_preset_inventory()
@@ -122,11 +122,11 @@
 
 /obj/item/storage/box/spec/heavy_grenadier
 	name = "\improper Heavy Grenadier equipment case"
-	desc = "A large case containing a heavy-duty multi-shot Armat Systems M92 grenade launcher, M3-G4 grenadier armor and helmet, significant amount of various M40 grenades and additional pieces of equipment.\nDrag this sprite onto yourself to open it up! NOTE: You cannot put items back inside this case."
+	desc = "A large case containing a heavy-duty multi-shot Armat Systems M92 grenade launcher or a P9 SHARP Rifle, M3-G4 grenadier armor and helmet, significant amount of various M40 grenades and additional pieces of equipment.\nDrag this sprite onto yourself to open it up! NOTE: You cannot put items back inside this case."
 	kit_overlay = "grenadier"
 
 /obj/item/storage/box/spec/heavy_grenadier/fill_preset_inventory()
-	new /obj/item/spec_kit/grenader_weapon_selector(src)
+	new /obj/item/spec_kit/grenadier_weapon_selector(src)
 	new /obj/item/storage/backpack/marine/grenadepack(src)
 	new /obj/item/storage/backpack/marine/grenadepack(src)
 	new /obj/item/clothing/gloves/marine/M3G(src)
@@ -276,21 +276,21 @@
 		return TRUE
 	return FALSE
 
-//Grenader weapon selector snowflake
-/obj/item/spec_kit/grenader_weapon_selector
-	name = "\improper Grenader weapon case"
+//Grenadier weapon selector snowflake
+/obj/item/spec_kit/grenadier_weapon_selector
+	name = "\improper Grenadier weapon case"
 	desc = "A large case with the option of the M92 grenade launcher and the P9 SHARP Rifle."
 
-/obj/item/spec_kit/grenader_weapon_selector/can_use(mob/living/carbon/human/user)
+/obj/item/spec_kit/grenadier_weapon_selector/can_use(mob/living/carbon/human/user)
 	return TRUE
 
-/obj/item/spec_kit/grenader_weapon_selector/select_and_spawn(mob/living/carbon/human/user)
-	var/grenader_selection = tgui_input_list(usr, "Select your weapon", "Weapon Selection", list("M92 Grenade Launcher", "P9 SHARP Rifle"))
-	if(!grenader_selection || QDELETED(src))
+/obj/item/spec_kit/grenadier_weapon_selector/select_and_spawn(mob/living/carbon/human/user)
+	var/grenadier_selection = tgui_input_list(usr, "Select your weapon", "Weapon Selection", list("M92 Grenade Launcher", "P9 SHARP Rifle"))
+	if(!grenadier_selection || QDELETED(src))
 		return FALSE
 	var/turf/T = get_turf(loc)
 	var/obj/item/storage/box/spec/weapon_box
-	switch(grenader_selection)
+	switch(grenadier_selection)
 		if("M92 Grenade Launcher")
 			weapon_box = new /obj/item/storage/box/spec/heavy_grenadier/m92(T)
 			user.put_in_hands(weapon_box)

@@ -334,7 +334,6 @@
 	icon_state = "sharprifle"
 	item_state = "sharprifle"
 
-	matter = list("metal" = 10000)
 	w_class = SIZE_MEDIUM
 	max_rounds = 10
 	default_ammo = /datum/ammo/rifle/sharp/explosive

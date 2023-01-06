@@ -3400,7 +3400,7 @@
 
 /datum/ammo/rifle/sharp/explosive/drop_dart(var/loc, obj/item/projectile/P, var/mob/shooter)
 	var/signal_explosion = FALSE
-	if(locate(/obj/item/explosive/mine) in get_turf(loc)) // TO FIX MID SOLUTION?
+	if(locate(/obj/item/explosive/mine) in get_turf(loc))
 		signal_explosion = TRUE
 	var/obj/item/explosive/mine/sharp/dart = new /obj/item/explosive/mine/sharp(loc)
 	// if no darts on tile, don't arm, explode instead.
@@ -3412,7 +3412,7 @@
 		addtimer(CALLBACK(dart, /obj/item/explosive/mine/sharp.proc/disarm), 1 MINUTES, TIMER_DELETE_ME)
 
 /datum/ammo/rifle/sharp/explosive/proc/delayed_explosion(obj/item/projectile/P, mob/M, mob/shooter)
-	if(istype(M, /mob))
+	if(ismob(M))
 		var/explosion_size = 100
 		var/falloff_size = 50
 		var/cause_data = create_cause_data("P9 SHARP Rifle", shooter)

@@ -1406,16 +1406,15 @@
 	desc = "A experimental harpoon launcher rifle manufactured by Armat Systems. It's specialized for specific ammo types out of a 10-round magainze, best used for area denial and disruption."
 	icon_state = "sharprifle"
 	item_state = "sharp"
-	fire_sound = 'sound/weapons/gun_sharp.ogg' // to fix
-	reload_sound = 'sound/weapons/handling/m41_reload.ogg' // to fix
-	unload_sound = 'sound/weapons/handling/m41_unload.ogg' // to fix
+	fire_sound = 'sound/weapons/gun_sharp.ogg'
+	reload_sound = 'sound/weapons/handling/m41_reload.ogg'
+	unload_sound = 'sound/weapons/handling/m41_unload.ogg'
 	unacidable = TRUE
-	indestructible = 1
+	indestructible = TRUE
 	muzzle_flash = null
 
 	current_mag = /obj/item/ammo_magazine/rifle/sharp/explosive
 	attachable_allowed = list(/obj/item/attachable/magnetic_harness)
-	matter = list("metal" = 6000)
 
 	aim_slowdown = SLOWDOWN_ADS_SPECIALIST
 	wield_delay = WIELD_DELAY_NORMAL
@@ -1437,7 +1436,6 @@
 	scatter = SCATTER_AMOUNT_NONE
 	damage_mult = BASE_BULLET_DAMAGE_MULT
 	recoil = RECOIL_OFF
-	burst_amount = 0 //just incase
 
 /obj/item/weapon/gun/rifle/sharp/unique_action(mob/user)
 	track(user)
@@ -1483,9 +1481,6 @@
 	return
 
 /obj/item/weapon/gun/rifle/sharp/toggle_burst(mob/user)
-	switch_mode(user)
+	explosion_delay_sharp = !explosion_delay_sharp
 	playsound(user, 'sound/weapons/handling/gun_burst_toggle.ogg', 15, 1)
 	to_chat(user, SPAN_NOTICE("[icon2html(src, user)] You [explosion_delay_sharp ? SPAN_BOLD("enable") : SPAN_BOLD("disable")] [src]'s delayed fire mode. Explosive ammo will blow up in [explosion_delay_sharp ? SPAN_BOLD("five seconds") : SPAN_BOLD("one second")]."))
-
-/obj/item/weapon/gun/rifle/sharp/proc/switch_mode(mob/user)
-	explosion_delay_sharp = !explosion_delay_sharp

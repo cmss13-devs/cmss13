@@ -279,7 +279,7 @@
 /obj/docking_port/stationary/proc/on_crash()
 	return
 
-/// Caleld when a new shuttle arrives
+/// Called when a new shuttle arrives
 /obj/docking_port/stationary/proc/on_arrival(obj/docking_port/mobile/arriving_shuttle)
 	return
 

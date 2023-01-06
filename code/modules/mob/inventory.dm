@@ -78,7 +78,7 @@
 //Puts the item into our active hand if possible. Failing that it tries our inactive hand. Returns 1 on success.
 //If both fail it drops it on the floor and returns 0.
 //This is probably the main one you need to know :)
-/mob/proc/put_in_hands(var/obj/item/W)
+/mob/proc/put_in_hands(var/obj/item/W, drop_on_fail = TRUE)
 	if(!W)
 		return FALSE
 	if(put_in_active_hand(W))
@@ -86,9 +86,10 @@
 	else if(put_in_inactive_hand(W))
 		return TRUE
 	else
-		W.forceMove(get_turf(src))
-		W.layer = initial(W.layer)
-		W.dropped(src)
+		if(drop_on_fail)
+			W.forceMove(get_turf(src))
+			W.layer = initial(W.layer)
+			W.dropped(src)
 		return FALSE
 
 //Puts the item into our back if possible. Returns 1 on success.
@@ -165,7 +166,7 @@
 	for(var/datum/weakref/weak_ref as anything in remembered_dropped_objects)
 		var/obj/previously_held_object = weak_ref.resolve()
 		if(previously_held_object.in_contents_of(user_turf))
-			src.put_in_hands(previously_held_object)
+			src.put_in_hands(previously_held_object, drop_on_fail = FALSE)
 
 /mob/proc/remember_dropped_object(obj/dropped_object)
 	var/weak_ref = WEAKREF(dropped_object)

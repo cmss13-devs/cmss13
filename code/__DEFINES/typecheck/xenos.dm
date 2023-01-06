@@ -23,8 +23,9 @@
 #define isXenoSpitter(A) (istype(A, /mob/living/carbon/Xenomorph/Spitter))
 #define isXenoWarrior(A) (istype(A, /mob/living/carbon/Xenomorph/Warrior))
 #define isXenoBurrower(A) (istype(A, /mob/living/carbon/Xenomorph/Burrower))
+#define isXenoReaper(A) (istype(A, /mob/living/carbon/Xenomorph/Reaper))
 
-#define isXenoBuilder(A) (isXenoDrone(A) || isXenoHivelord(A) || isXenoCarrier(A) || isXenoBurrower(A) || isXenoQueen(A))
+#define isXenoBuilder(A) (isXenoDrone(A) || isXenoHivelord(A) || isXenoCarrier(A) || isXenoBurrower(A) || isXenoQueen(A) || isXenoReaper(A))
 
 /mob/living/carbon/Xenomorph/proc/can_not_harm(var/mob/living/carbon/C)
 	if(!istype(C))

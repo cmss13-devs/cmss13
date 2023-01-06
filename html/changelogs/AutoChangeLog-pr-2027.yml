@@ -1,0 +1,4 @@
+author: "realforest2001"
+delete-after: True
+changes:
+  - qol: "Adds mapper sprites to the walls for CORSAT, Prison & Solaris"

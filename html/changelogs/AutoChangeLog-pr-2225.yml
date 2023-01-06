@@ -1,0 +1,5 @@
+author: "stanalbatross"
+delete-after: True
+changes:
+  - bugfix: "fixed two common runtimes"
+  - code_imp: "added a better log to the tgui input number error log so the offending tgui number input can be easier identified"

@@ -252,4 +252,4 @@
 	var/datum/click_intercept
 
 	///list of weakrefs of recently dropped objects
-	var/list/dropped_objects = list()
+	var/list/remembered_dropped_objects = list()

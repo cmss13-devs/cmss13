@@ -1,4 +1,0 @@
-author: "stanalbatross"
-delete-after: True
-changes:
-  - bugfix: "fixed a few runtimes with blockedpassdirs and blockedexitdirs"

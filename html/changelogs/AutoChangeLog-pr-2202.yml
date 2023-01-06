@@ -1,5 +1,0 @@
-author: "carlarctg"
-delete-after: True
-changes:
-  - code_imp: "Added an XvX acid multiplier check proc."
-  - bugfix: "Fixed xenomorph acid traps dealing too much damage."

@@ -1,4 +1,0 @@
-author: "stanalbatross"
-delete-after: True
-changes:
-  - ui: "added the match word and match case options back to highlight settings, match word is overidden if regex is used"

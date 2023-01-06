@@ -26,6 +26,7 @@
 
 	clear_fullscreens()
 	QDEL_NULL(mob_panel)
+	QDEL_NULL(mob_language_menu)
 	QDEL_NULL_LIST(open_uis)
 
 	tgui_open_uis = null
@@ -78,6 +79,12 @@
 	QDEL_NULL(mob_panel)
 
 	mob_panel = new(src)
+
+/mob/proc/create_language_menu()
+	QDEL_NULL(mob_language_menu)
+
+	mob_language_menu = new(src)
+
 
 /mob/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()

@@ -3394,9 +3394,9 @@
 		if(!M.get_target_lock(shooter.faction_group))
 			var/obj/item/weapon/gun/rifle/sharp/weapon = P.shot_from
 			if(weapon && weapon.explosion_delay_sharp)
-				addtimer(CALLBACK(src, .proc/delayed_explosion, P, M, shooter), 5 SECONDS)
+				addtimer(CALLBACK(src, PROC_REF(delayed_explosion), P, M, shooter), 5 SECONDS)
 			else
-				addtimer(CALLBACK(src, .proc/delayed_explosion, P, M, shooter), 1 SECONDS)
+				addtimer(CALLBACK(src, PROC_REF(delayed_explosion), P, M, shooter), 1 SECONDS)
 
 /datum/ammo/rifle/sharp/explosive/drop_dart(var/loc, obj/item/projectile/P, var/mob/shooter)
 	var/signal_explosion = FALSE
@@ -3405,11 +3405,11 @@
 	var/obj/item/explosive/mine/sharp/dart = new /obj/item/explosive/mine/sharp(loc)
 	// if no darts on tile, don't arm, explode instead.
 	if(signal_explosion)
-		INVOKE_ASYNC(dart, /obj/item/explosive/mine/sharp.proc/prime, shooter)
+		INVOKE_ASYNC(dart, TYPE_PROC_REF(/obj/item/explosive/mine/sharp, prime), shooter)
 	else
 		dart.anchored = TRUE
-		addtimer(CALLBACK(dart, /obj/item/explosive/mine/sharp.proc/deploy_mine, shooter), 3 SECONDS, TIMER_DELETE_ME)
-		addtimer(CALLBACK(dart, /obj/item/explosive/mine/sharp.proc/disarm), 1 MINUTES, TIMER_DELETE_ME)
+		addtimer(CALLBACK(dart, TYPE_PROC_REF(/obj/item/explosive/mine/sharp, deploy_mine), shooter), 3 SECONDS, TIMER_DELETE_ME)
+		addtimer(CALLBACK(dart, TYPE_PROC_REF(/obj/item/explosive/mine/sharp, disarm)), 1 MINUTES, TIMER_DELETE_ME)
 
 /datum/ammo/rifle/sharp/explosive/proc/delayed_explosion(obj/item/projectile/P, mob/M, mob/shooter)
 	if(ismob(M))
@@ -3431,7 +3431,7 @@
 	var/obj/item/weapon/gun/rifle/sharp/weapon = P.shot_from
 	if(weapon)
 		weapon.sharp_tracked_mob_list |= M
-	addtimer(CALLBACK(src, .proc/remove_tracker, M, P), tracker_timer)
+	addtimer(CALLBACK(src, PROC_REF(remove_tracker), M, P), tracker_timer)
 
 /datum/ammo/rifle/sharp/track/proc/remove_tracker(mob/living/M, obj/item/projectile/P)
 	var/obj/item/weapon/gun/rifle/sharp/weapon = P.shot_from

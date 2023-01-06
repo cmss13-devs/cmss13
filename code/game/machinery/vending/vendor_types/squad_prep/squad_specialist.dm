@@ -23,7 +23,7 @@ GLOBAL_LIST_INIT(cm_vending_gear_spec, list(
 		list("84mm High-Explosive Rocket", 15, /obj/item/ammo_magazine/rocket, null, VENDOR_ITEM_REGULAR),
 		list("84mm White-Phosphorus Rocket", 15, /obj/item/ammo_magazine/rocket/wp, null, VENDOR_ITEM_REGULAR),
 
-		list("EXTRA GRENADER AMMUNITION", 0, null, null, null),
+		list("EXTRA GRENADIER AMMUNITION", 0, null, null, null),
 		list("SHARP 9X-E Sticky Explosive Dart magazine (darts)", 15, /obj/item/ammo_magazine/rifle/sharp/explosive, null, VENDOR_ITEM_REGULAR),
 		list("SHARP 9X-T Sticky Tracking Dart magazine (darts)", 15, /obj/item/ammo_magazine/rifle/sharp/track, null, VENDOR_ITEM_REGULAR),
 		list("SHARP 9X-F Flechette Dart Magazine (darts)", 15, /obj/item/ammo_magazine/rifle/sharp/flechette, null, VENDOR_ITEM_REGULAR),

@@ -14,7 +14,7 @@
 	name = "Prime Claw Toss"
 	action_icon_state = "fling"
 	ability_name = "prime claw toss"
-	macro_path = /datum/action/xeno_action/verb/verb_plasma_strike
+	macro_path = /datum/action/xeno_action/verb/verb_prime_claw_toss
 	ability_primacy = XENO_PRIMARY_ACTION_3
 	action_type = XENO_ACTION_ACTIVATE
 	xeno_cooldown = 15 SECONDS

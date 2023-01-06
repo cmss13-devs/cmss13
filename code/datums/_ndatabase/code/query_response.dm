@@ -40,7 +40,7 @@
 		return TRUE
 	query.read_single()
 	status = query.status
-	if(status==DB_QUERY_FINISHED)		
+	if(status==DB_QUERY_FINISHED) 
 		results = query.results
 		error = query.error
 		if(success_callback && !called_callback)

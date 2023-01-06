@@ -4,7 +4,7 @@
 //****************************************Food Reagents************************************************/
 //*****************************************************************************************************/
 // Part of the food code. Nutriment is used instead of the old "heal_amt" code. Also is where all the food
-// 	condiments, additives, and such go.
+// condiments, additives, and such go.
 
 /datum/reagent/nutriment
 	name = "Nutriment"
@@ -166,7 +166,7 @@
 				victim.emote("scream")
 				to_chat(victim, SPAN_WARNING("You're sprayed directly in the eyes with pepperspray!"))
 				victim.AdjustEyeBlur(25)
-				victim.eye_blind = max(M.eye_blind, 10)
+				victim.AdjustEyeBlind(10)
 				victim.apply_effect(3, STUN)
 				victim.apply_effect(3, WEAKEN)
 

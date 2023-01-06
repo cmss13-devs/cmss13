@@ -30,7 +30,7 @@
 		var/mob/A = P.fields["author"]
 		C.connected_ai.aiCamera.injectaialbum(P, " (taken by [A.name])")
 		to_chat(C.connected_ai, "<span class='unconscious'>Image recorded and saved by [name]</span>")
-		to_chat(usr, "<span class='unconscious'>Image recorded and saved to remote database</span>")	//feedback to the Cyborg player that the picture was taken
+		to_chat(usr, "<span class='unconscious'>Image recorded and saved to remote database</span>") //feedback to the Cyborg player that the picture was taken
 	else
 		injectaialbum(P)
 		to_chat(usr, "<span class='unconscious'>Image recorded</span>")

@@ -94,7 +94,7 @@
 	icon_state = "clown"
 	item_state = "clown_shoes"
 	slowdown = SHOES_SLOWDOWN+1
-	var/footstep = 1	//used for squeeks whilst walking
+	var/footstep = 1 //used for squeeks whilst walking
 
 /obj/item/clothing/shoes/jackboots
 	name = "jackboots"

@@ -4,12 +4,12 @@
 	icon = 'icons/obj/structures/machinery/virology.dmi'
 	icon_state = "analyser"
 	anchored = 1
-	density = 1
+	density = TRUE
 
 
 /obj/structure/machinery/computer/pandemic
 	name = "PanD.E.M.I.C 2200"
-	density = 1
+	density = TRUE
 	anchored = 1
 	icon = 'icons/obj/structures/machinery/science_machines.dmi'
 	icon_state = "mixer0"

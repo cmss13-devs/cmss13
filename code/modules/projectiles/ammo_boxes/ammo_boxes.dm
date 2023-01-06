@@ -8,8 +8,8 @@
 	var/empty = FALSE
 	var/can_explode = FALSE
 	var/burning = FALSE
-	var/limit_per_tile = 1	//how many you can deploy per tile
-	layer = LOWER_ITEM_LAYER	//to not hide other items
+	var/limit_per_tile = 1 //how many you can deploy per tile
+	layer = LOWER_ITEM_LAYER //to not hide other items
 
 //---------------------GENERAL PROCS
 
@@ -29,7 +29,7 @@
 
 	SetLuminosity(3)
 	apply_fire_overlay()
-	addtimer(CALLBACK(GLOBAL_PROC, .proc/qdel, src), 5 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, PROC_REF(qdel), src), 5 SECONDS)
 
 /obj/item/ammo_box/proc/get_severity()
 	return
@@ -53,9 +53,9 @@
 
 /obj/item/ammo_box/magazine
 	name = "\improper magazine box (M41A x 10)"
-	icon_state = "base_m41"			//base color of box
-	var/overlay_ammo_type = "_reg"		//used for ammo type color overlay
-	var/overlay_gun_type = "_m41"		//used for text overlay
+	icon_state = "base_m41" //base color of box
+	var/overlay_ammo_type = "_reg" //used for ammo type color overlay
+	var/overlay_gun_type = "_m41" //used for text overlay
 	var/overlay_content = "_reg"
 	var/magazine_type = /obj/item/ammo_magazine/rifle
 	var/num_of_magazines = 10
@@ -88,20 +88,20 @@
 /obj/item/ammo_box/magazine/update_icon()
 	if(overlays)
 		overlays.Cut()
-	overlays += image(icon, icon_state = "[icon_state]_lid")				//adding lid
+	overlays += image(icon, icon_state = "[icon_state]_lid") //adding lid
 	if(overlay_gun_type)
-		overlays += image(icon, icon_state = "text[overlay_gun_type]")		//adding text
+		overlays += image(icon, icon_state = "text[overlay_gun_type]") //adding text
 	if(overlay_ammo_type)
-		overlays += image(icon, icon_state = "base_type[overlay_ammo_type]")	//adding base color stripes
+		overlays += image(icon, icon_state = "base_type[overlay_ammo_type]") //adding base color stripes
 	if(overlay_ammo_type!="_reg" && overlay_ammo_type!="_blank")
-		overlays += image(icon, icon_state = "lid_type[overlay_ammo_type]")	//adding base color stripes
+		overlays += image(icon, icon_state = "lid_type[overlay_ammo_type]") //adding base color stripes
 
 //---------------------INTERACTION PROCS
 
 /obj/item/ammo_box/magazine/get_examine_text(mob/living/user)
 	. = ..()
 	. += SPAN_INFO("[SPAN_HELPFUL("Activate")] box in hand or [SPAN_HELPFUL("click")] with it on the ground to deploy it. Activating it while empty will fold it into cardboard sheet.")
-	if(src.loc != user)		//feeling box weight in a distance is unnatural and bad
+	if(src.loc != user) //feeling box weight in a distance is unnatural and bad
 		return
 	if(!handfuls)
 		if(contents.len < (num_of_magazines/3))
@@ -210,11 +210,11 @@
 		var/severity = get_severity()
 		if(severity > 0)
 			handle_side_effects(host_box, TRUE)
-			addtimer(CALLBACK(src, .proc/explode, severity, flame_cause_data), max(5 - severity, 2))	//the more ammo inside, the faster and harder it cooks off
+			addtimer(CALLBACK(src, PROC_REF(explode), severity, flame_cause_data), max(5 - severity, 2)) //the more ammo inside, the faster and harder it cooks off
 			return
 	handle_side_effects(host_box)
 	//need to make sure we delete the structure box if it exists, it will handle the deletion of ammo box inside
-	addtimer(CALLBACK(GLOBAL_PROC, .proc/qdel, (host_box ? host_box : src)), 5 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, PROC_REF(qdel), (host_box ? host_box : src)), 5 SECONDS)
 	return
 
 /obj/item/ammo_box/magazine/handle_side_effects(var/obj/structure/magazine_box/host_box, var/will_explode = FALSE)
@@ -234,7 +234,7 @@
 /obj/item/ammo_box/magazine/apply_fire_overlay(var/will_explode = FALSE)
 	//original fire overlay is made for standard mag boxes, so they don't need additional offsetting
 	var/offset_y = 0
-	if(limit_per_tile == 1)	//snowflake nailgun ammo box again
+	if(limit_per_tile == 1) //snowflake nailgun ammo box again
 		offset_y += -2
 	var/image/fire_overlay = image(icon, icon_state = will_explode ? "on_fire_explode_overlay" : "on_fire_overlay", pixel_y = offset_y)
 	overlays.Add(fire_overlay)
@@ -249,7 +249,7 @@
 	icon_state = "base_m41"
 	item_state = "base_m41"
 	flags_equip_slot = SLOT_BACK
-	var/overlay_gun_type = "_rounds"		//used for ammo type color overlay
+	var/overlay_gun_type = "_rounds" //used for ammo type color overlay
 	var/overlay_content = "_reg"
 	var/default_ammo = /datum/ammo/bullet/rifle
 	var/bullet_amount = 600
@@ -271,7 +271,7 @@
 /obj/item/ammo_box/rounds/update_icon()
 	if(overlays)
 		overlays.Cut()
-	overlays += image(icon, icon_state = "text[overlay_gun_type]")	//adding base color stripes
+	overlays += image(icon, icon_state = "text[overlay_gun_type]") //adding base color stripes
 
 	if(bullet_amount == max_bullet_amount)
 		overlays += image(icon, icon_state = "rounds[overlay_content]")
@@ -318,10 +318,13 @@
 
 			var/dumping = FALSE // we REFILL BOX (dump to it) on harm intent, otherwise we refill FROM box
 			if(user.a_intent == INTENT_HARM)
+				if(AM.flags_magazine & AMMUNITION_CANNOT_REMOVE_BULLETS)
+					to_chat(user, SPAN_WARNING("You can't remove ammo from \the [AM]!"))
+					return
 				dumping = TRUE
 
-			var/transfering   = 0      // Amount of bullets we're trying to transfer
-			var/transferable  = 0      // Amount of bullets that can actually be transfered
+			var/transfering   = 0   // Amount of bullets we're trying to transfer
+			var/transferable  = 0   // Amount of bullets that can actually be transfered
 			do
 				// General checking
 				if(dumping)
@@ -345,7 +348,7 @@
 					if(dumping)
 						transfering = -transfering
 					AM.current_rounds += transfering
-					bullet_amount     -= transfering
+					bullet_amount  -= transfering
 					playsound(src, pick('sound/weapons/handling/mag_refill_1.ogg', 'sound/weapons/handling/mag_refill_2.ogg', 'sound/weapons/handling/mag_refill_3.ogg'), 20, TRUE, 6)
 					to_chat(user, SPAN_NOTICE("You have transferred [abs(transfering)] round\s to [dumping ? src : AM]."))
 					transfering = 0
@@ -387,17 +390,17 @@
 	return
 
 /obj/item/ammo_box/rounds/get_severity()
-	return round(bullet_amount / 200)	//we need a lot of bullets to produce an explosion.
+	return round(bullet_amount / 200) //we need a lot of bullets to produce an explosion.
 
 /obj/item/ammo_box/rounds/process_burning(var/datum/cause_data/flame_cause_data)
 	if(can_explode)
 		var/severity = get_severity()
 		if(severity > 0)
 			handle_side_effects(TRUE)
-			addtimer(CALLBACK(src, .proc/explode, severity, flame_cause_data), max(5 - severity, 2))	//the more ammo inside, the faster and harder it cooks off
+			addtimer(CALLBACK(src, PROC_REF(explode), severity, flame_cause_data), max(5 - severity, 2)) //the more ammo inside, the faster and harder it cooks off
 			return
 	handle_side_effects()
-	addtimer(CALLBACK(GLOBAL_PROC, .proc/qdel, (src)), 5 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, PROC_REF(qdel), (src)), 5 SECONDS)
 
 /obj/item/ammo_box/rounds/handle_side_effects(var/will_explode = FALSE)
 	if(will_explode)

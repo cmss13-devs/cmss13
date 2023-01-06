@@ -4,7 +4,7 @@
 	desc = "it's stringy and sticky"
 	icon = 'icons/effects/effects.dmi'
 	anchored = 1
-	density = 0
+	density = FALSE
 	health = 15
 
 //similar to weeds, but only barfed out by nurses manually
@@ -55,9 +55,10 @@
 
 /obj/effect/spider/stickyweb
 	icon_state = "stickyweb1"
-	New()
-		if(prob(50))
-			icon_state = "stickyweb2"
+
+/obj/effect/spider/stickyweb/New()
+	if(prob(50))
+		icon_state = "stickyweb2"
 
 /obj/effect/spider/stickyweb/BlockedPassDirs(atom/movable/mover, target_dir)
 	if(istype(mover, /mob/living/simple_animal/hostile/giant_spider))
@@ -115,10 +116,10 @@
 		amount_grown = 1
 
 /obj/effect/spider/spiderling/nogrow/Initialize(mapload, ...)
-    . = ..()
-    pixel_x = rand(6,-6)
-    pixel_y = rand(6,-6)
-    START_PROCESSING(SSobj, src)
+	. = ..()
+	pixel_x = rand(6,-6)
+	pixel_y = rand(6,-6)
+	START_PROCESSING(SSobj, src)
 
 /obj/effect/spider/spiderling/Destroy()
 	STOP_PROCESSING(SSobj, src)
@@ -197,8 +198,8 @@
 	icon_state = "cocoon1"
 	health = 60
 
-	New()
-		icon_state = pick("cocoon1","cocoon2","cocoon3")
+/obj/effect/decal/cleanable/spiderling_remains/New()
+	icon_state = pick("cocoon1","cocoon2","cocoon3")
 
 /obj/effect/spider/cocoon/Destroy()
 	visible_message(SPAN_DANGER("[src] splits open."))

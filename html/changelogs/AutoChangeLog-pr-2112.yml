@@ -1,0 +1,5 @@
+author: "Casper"
+delete-after: True
+changes:
+  - bugfix: "fixes pardon mechanic"
+  - refactor: "brig timer now uses TGUI"

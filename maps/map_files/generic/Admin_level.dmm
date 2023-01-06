@@ -206,7 +206,7 @@
 /area/space)
 "ba" = (
 /turf/open/space,
-/area/shuttle/distress/transit)
+/area/almayer/ert_port)
 "be" = (
 /obj/effect/step_trigger/teleporter/random{
 	affect_ghosts = 1;
@@ -395,9 +395,6 @@
 "cb" = (
 /turf/open/space/transit/north/shuttlespace_ns4,
 /area/almayer/evacuation/stranded/pod14)
-"cc" = (
-/turf/open/space,
-/area/shuttle/distress/transit_pmc)
 "ch" = (
 /turf/open/space/transit/north/shuttlespace_ns4,
 /area/almayer/evacuation/stranded/pod3)
@@ -493,6 +490,9 @@
 	},
 /turf/open/space/transit/east/shuttlespace_ew4,
 /area/space)
+"de" = (
+/turf/open/space/transit/north/shuttlespace_ns13,
+/area/almayer/ert_port)
 "dg" = (
 /turf/open/space/transit/north/shuttlespace_ns4,
 /area/almayer/evacuation/stranded/pod9)
@@ -1068,127 +1068,9 @@
 	tag = "icon-sterile"
 	},
 /area/adminlevel/ert_station/shuttle_dispatch)
-"gY" = (
-/turf/closed/shuttle/ert{
-	icon_state = "stan20"
-	},
-/area/shuttle/distress/start)
-"gZ" = (
-/turf/closed/shuttle/ert{
-	icon_state = "stan27"
-	},
-/area/shuttle/distress/start)
-"ha" = (
-/turf/closed/shuttle/ert{
-	icon_state = "stan25"
-	},
-/area/shuttle/distress/start)
-"hb" = (
-/turf/closed/shuttle/ert{
-	icon_state = "wy20"
-	},
-/area/shuttle/distress/start_pmc)
-"hc" = (
-/turf/closed/shuttle/ert{
-	icon_state = "wy27"
-	},
-/area/shuttle/distress/start_pmc)
-"hd" = (
-/turf/closed/shuttle/ert{
-	icon_state = "wy25"
-	},
-/area/shuttle/distress/start_pmc)
-"he" = (
-/turf/closed/shuttle/ert{
-	icon_state = "upp20"
-	},
-/area/shuttle/distress/start_upp)
-"hf" = (
-/turf/closed/shuttle/ert{
-	icon_state = "upp27"
-	},
-/area/shuttle/distress/start_upp)
-"hg" = (
-/turf/closed/shuttle/ert{
-	icon_state = "upp25"
-	},
-/area/shuttle/distress/start_upp)
 "hp" = (
 /turf/closed/wall/indestructible,
 /area/start)
-"hr" = (
-/turf/closed/shuttle/ert{
-	icon_state = "stan21"
-	},
-/area/shuttle/distress/start)
-"hs" = (
-/turf/closed/shuttle/ert{
-	icon_state = "stan22"
-	},
-/area/shuttle/distress/start)
-"ht" = (
-/obj/structure/machinery/computer/shuttle_control/ert,
-/obj/structure/blocker/invisible_wall,
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15";
-	tag = "icon-rasputin15"
-	},
-/area/shuttle/distress/start)
-"hu" = (
-/turf/closed/shuttle/ert{
-	icon_state = "stan23"
-	},
-/area/shuttle/distress/start)
-"hv" = (
-/turf/closed/shuttle/ert{
-	icon_state = "wy21"
-	},
-/area/shuttle/distress/start_pmc)
-"hw" = (
-/turf/closed/shuttle/ert{
-	icon_state = "wy22"
-	},
-/area/shuttle/distress/start_pmc)
-"hx" = (
-/obj/structure/machinery/computer/shuttle_control/ert{
-	shuttle_tag = "Distress_PMC"
-	},
-/obj/structure/blocker/invisible_wall,
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15";
-	tag = "icon-rasputin15"
-	},
-/area/shuttle/distress/start_pmc)
-"hy" = (
-/turf/closed/shuttle/ert{
-	icon_state = "wy23"
-	},
-/area/shuttle/distress/start_pmc)
-"hz" = (
-/turf/closed/shuttle/ert{
-	icon_state = "upp21"
-	},
-/area/shuttle/distress/start_upp)
-"hA" = (
-/turf/closed/shuttle/ert{
-	icon_state = "upp22"
-	},
-/area/shuttle/distress/start_upp)
-"hB" = (
-/obj/structure/machinery/computer/shuttle_control/ert{
-	shuttle_tag = "Distress_UPP"
-	},
-/obj/structure/blocker/invisible_wall,
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15";
-	tag = "icon-rasputin15"
-	},
-/area/shuttle/distress/start_upp)
-"hC" = (
-/turf/closed/shuttle/ert{
-	icon_state = "upp23"
-	},
-/area/shuttle/distress/start_upp)
 "hH" = (
 /turf/open/floor/almayer{
 	dir = 9;
@@ -1197,118 +1079,16 @@
 	},
 /area/adminlevel/ert_station)
 "hN" = (
-/turf/closed/shuttle/ert,
-/area/shuttle/distress/start)
-"hO" = (
-/obj/structure/surface/rack,
-/obj/effect/landmark/ert_spawns/distress/item,
-/obj/item/storage/toolbox/syndicate,
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15";
-	tag = "icon-rasputin15"
-	},
-/area/shuttle/distress/start)
+/turf/open/floor/plating,
+/area/space/almayer/lifeboat_dock)
 "hP" = (
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin6";
-	tag = "icon-rasputin6"
-	},
-/area/shuttle/distress/start)
-"hQ" = (
-/turf/open/shuttle/dropship{
-	icon_state = "floor8";
-	tag = "icon-rasputin7"
-	},
-/area/shuttle/distress/start)
-"hR" = (
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin7";
-	tag = "icon-rasputin7"
-	},
-/area/shuttle/distress/start)
-"hT" = (
-/turf/closed/shuttle/ert{
-	icon_state = "stan5"
-	},
-/area/shuttle/distress/start)
-"hU" = (
-/turf/closed/shuttle/ert{
-	icon_state = "wy18"
-	},
-/area/shuttle/distress/start_pmc)
-"hV" = (
-/obj/structure/surface/rack,
-/obj/effect/landmark/ert_spawns/distress_pmc/item,
-/obj/item/storage/toolbox/syndicate,
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15";
-	tag = "icon-rasputin15"
-	},
-/area/shuttle/distress/start_pmc)
-"hW" = (
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin6";
-	tag = "icon-rasputin6"
-	},
-/area/shuttle/distress/start_pmc)
-"hX" = (
-/turf/open/shuttle/dropship{
-	icon_state = "floor8";
-	tag = "icon-rasputin7"
-	},
-/area/shuttle/distress/start_pmc)
-"hY" = (
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin7";
-	tag = "icon-rasputin7"
-	},
-/area/shuttle/distress/start_pmc)
+/obj/docking_port/stationary/emergency_response/idle_port1,
+/turf/open/floor/plating,
+/area/almayer/ert_port)
 "hZ" = (
 /obj/structure/sign/poster/art,
 /turf/closed/wall/r_wall/unmeltable,
 /area/adminlevel/ert_station)
-"ia" = (
-/turf/closed/shuttle/ert{
-	icon_state = "wy19"
-	},
-/area/shuttle/distress/start_pmc)
-"ib" = (
-/turf/closed/shuttle/ert{
-	icon_state = "upp4"
-	},
-/area/shuttle/distress/start_upp)
-"ic" = (
-/obj/structure/surface/rack,
-/obj/effect/landmark/ert_spawns/distress_upp/item,
-/obj/item/storage/toolbox/syndicate,
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15";
-	tag = "icon-rasputin15"
-	},
-/area/shuttle/distress/start_upp)
-"id" = (
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin6";
-	tag = "icon-rasputin6"
-	},
-/area/shuttle/distress/start_upp)
-"ie" = (
-/turf/open/shuttle/dropship{
-	icon_state = "floor8";
-	tag = "icon-rasputin7"
-	},
-/area/shuttle/distress/start_upp)
-"if" = (
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin7";
-	tag = "icon-rasputin7"
-	},
-/area/shuttle/distress/start_upp)
-"ih" = (
-/turf/closed/shuttle/ert{
-	icon_state = "upp5"
-	},
-/area/shuttle/distress/start_upp)
 "ii" = (
 /turf/open/space/transit/east/shuttlespace_ew10,
 /area/space)
@@ -1319,174 +1099,6 @@
 	tag = "icon-sterile"
 	},
 /area/adminlevel/ert_station)
-"in" = (
-/obj/structure/machinery/door/airlock/almayer/generic,
-/obj/structure/machinery/door/poddoor/shutters/transit{
-	dir = 4
-	},
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin3";
-	tag = "icon-rasputin3"
-	},
-/area/shuttle/distress/start)
-"io" = (
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15";
-	tag = "icon-rasputin15"
-	},
-/area/shuttle/distress/start)
-"ip" = (
-/obj/effect/landmark/ert_spawns/distress,
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin3";
-	tag = "icon-rasputin3"
-	},
-/area/shuttle/distress/start)
-"iq" = (
-/obj/structure/bed/chair/dropship/passenger,
-/obj/effect/landmark/ert_spawns/distress,
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15";
-	tag = "icon-rasputin15"
-	},
-/area/shuttle/distress/start)
-"ir" = (
-/obj/structure/machinery/door/airlock/almayer/generic,
-/obj/structure/machinery/door/poddoor/shutters/transit{
-	dir = 4
-	},
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin3";
-	tag = "icon-rasputin3"
-	},
-/area/shuttle/distress/start_pmc)
-"is" = (
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15";
-	tag = "icon-rasputin15"
-	},
-/area/shuttle/distress/start_pmc)
-"it" = (
-/obj/effect/landmark/ert_spawns/distress_pmc,
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin3";
-	tag = "icon-rasputin3"
-	},
-/area/shuttle/distress/start_pmc)
-"iu" = (
-/obj/structure/bed/chair/dropship/passenger,
-/obj/effect/landmark/ert_spawns/distress_pmc,
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15";
-	tag = "icon-rasputin15"
-	},
-/area/shuttle/distress/start_pmc)
-"iv" = (
-/obj/structure/machinery/door/airlock/almayer/generic,
-/obj/structure/machinery/door/poddoor/shutters/transit{
-	dir = 4
-	},
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin3";
-	tag = "icon-rasputin3"
-	},
-/area/shuttle/distress/start_upp)
-"iw" = (
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15";
-	tag = "icon-rasputin15"
-	},
-/area/shuttle/distress/start_upp)
-"ix" = (
-/obj/effect/landmark/ert_spawns/distress_upp,
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin3";
-	tag = "icon-rasputin3"
-	},
-/area/shuttle/distress/start_upp)
-"iy" = (
-/obj/structure/bed/chair/dropship/passenger,
-/obj/effect/landmark/ert_spawns/distress_upp,
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15";
-	tag = "icon-rasputin15"
-	},
-/area/shuttle/distress/start_upp)
-"iz" = (
-/obj/structure/bed/chair/dropship/passenger{
-	dir = 4
-	},
-/obj/effect/landmark/ert_spawns/distress,
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15";
-	tag = "icon-rasputin15"
-	},
-/area/shuttle/distress/start)
-"iA" = (
-/obj/structure/bed/chair/dropship/passenger{
-	dir = 8
-	},
-/obj/effect/landmark/ert_spawns/distress,
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15";
-	tag = "icon-rasputin15"
-	},
-/area/shuttle/distress/start)
-"iB" = (
-/turf/closed/shuttle/ert{
-	icon_state = "wy16"
-	},
-/area/shuttle/distress/start_pmc)
-"iC" = (
-/obj/structure/bed/chair/dropship/passenger{
-	dir = 4
-	},
-/obj/effect/landmark/ert_spawns/distress_pmc,
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15";
-	tag = "icon-rasputin15"
-	},
-/area/shuttle/distress/start_pmc)
-"iD" = (
-/obj/structure/bed/chair/dropship/passenger{
-	dir = 8
-	},
-/obj/effect/landmark/ert_spawns/distress_pmc,
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15";
-	tag = "icon-rasputin15"
-	},
-/area/shuttle/distress/start_pmc)
-"iE" = (
-/turf/closed/shuttle/ert{
-	icon_state = "wy17"
-	},
-/area/shuttle/distress/start_pmc)
-"iF" = (
-/turf/closed/shuttle/ert{
-	icon_state = "upp16"
-	},
-/area/shuttle/distress/start_upp)
-"iG" = (
-/obj/structure/bed/chair/dropship/passenger{
-	dir = 4
-	},
-/obj/effect/landmark/ert_spawns/distress_upp,
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15";
-	tag = "icon-rasputin15"
-	},
-/area/shuttle/distress/start_upp)
-"iH" = (
-/obj/structure/bed/chair/dropship/passenger{
-	dir = 8
-	},
-/obj/effect/landmark/ert_spawns/distress_upp,
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15";
-	tag = "icon-rasputin15"
-	},
-/area/shuttle/distress/start_upp)
 "iL" = (
 /obj/structure/machinery/status_display{
 	pixel_y = 30
@@ -1496,16 +1108,6 @@
 	tag = "icon-emerald (NORTH)"
 	},
 /area/adminlevel/ert_station)
-"iS" = (
-/turf/closed/shuttle/ert{
-	icon_state = "wy14"
-	},
-/area/shuttle/distress/start_pmc)
-"iT" = (
-/turf/closed/shuttle/ert{
-	icon_state = "wy15"
-	},
-/area/shuttle/distress/start_pmc)
 "iU" = (
 /turf/closed/wall/almayer/white,
 /area/shuttle/distress/start_big)
@@ -1523,16 +1125,6 @@
 "ja" = (
 /turf/open/floor/plating,
 /area/admin/droppod/loading)
-"jc" = (
-/turf/closed/shuttle/ert{
-	icon_state = "wy12"
-	},
-/area/shuttle/distress/start_pmc)
-"jd" = (
-/turf/closed/shuttle/ert{
-	icon_state = "wy13"
-	},
-/area/shuttle/distress/start_pmc)
 "je" = (
 /obj/structure/closet/crate,
 /turf/open/floor/almayer{
@@ -1544,96 +1136,6 @@
 /obj/effect/landmark/newplayer_start,
 /turf/open/floor,
 /area/start)
-"jj" = (
-/obj/structure/surface/rack,
-/obj/effect/landmark/ert_spawns/distress/item,
-/obj/item/storage/firstaid/regular,
-/obj/item/storage/belt/medical/full/with_defib_and_analyzer,
-/obj/item/device/healthanalyzer,
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15";
-	tag = "icon-rasputin15"
-	},
-/area/shuttle/distress/start)
-"jk" = (
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin4";
-	tag = "icon-rasputin7"
-	},
-/area/shuttle/distress/start)
-"jl" = (
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin8";
-	tag = "icon-rasputin7"
-	},
-/area/shuttle/distress/start)
-"jm" = (
-/turf/closed/shuttle/ert{
-	icon_state = "wy4"
-	},
-/area/shuttle/distress/start_pmc)
-"jn" = (
-/obj/structure/surface/rack,
-/obj/effect/landmark/ert_spawns/distress_pmc/item,
-/obj/item/storage/firstaid/regular,
-/obj/item/storage/belt/medical/lifesaver/full,
-/obj/item/device/healthanalyzer,
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15";
-	tag = "icon-rasputin15"
-	},
-/area/shuttle/distress/start_pmc)
-"jo" = (
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin4";
-	tag = "icon-rasputin7"
-	},
-/area/shuttle/distress/start_pmc)
-"jp" = (
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin8";
-	tag = "icon-rasputin7"
-	},
-/area/shuttle/distress/start_pmc)
-"jq" = (
-/turf/closed/shuttle/ert{
-	icon_state = "wy5"
-	},
-/area/shuttle/distress/start_pmc)
-"jr" = (
-/obj/structure/surface/rack,
-/obj/effect/landmark/ert_spawns/distress_upp/item,
-/obj/item/storage/firstaid/regular,
-/obj/item/storage/belt/medical/lifesaver/upp/full,
-/obj/item/device/healthanalyzer,
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15";
-	tag = "icon-rasputin15"
-	},
-/area/shuttle/distress/start_upp)
-"js" = (
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin4";
-	tag = "icon-rasputin7"
-	},
-/area/shuttle/distress/start_upp)
-"jt" = (
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin8";
-	tag = "icon-rasputin7"
-	},
-/area/shuttle/distress/start_upp)
-"ju" = (
-/obj/structure/surface/rack,
-/obj/item/storage/firstaid/regular,
-/obj/effect/landmark/ert_spawns/distress_upp/item,
-/obj/item/storage/belt/medical/lifesaver/upp/full,
-/obj/item/device/healthanalyzer,
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15";
-	tag = "icon-rasputin15"
-	},
-/area/shuttle/distress/start_upp)
 "jv" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
@@ -1641,264 +1143,14 @@
 	},
 /turf/open/floor/plating/almayer,
 /area/shuttle/distress/start_big)
-"jy" = (
-/turf/closed/shuttle/ert{
-	icon_state = "stan_leftengine"
-	},
-/area/shuttle/distress/start)
-"jz" = (
-/turf/closed/shuttle/ert{
-	icon_state = "stan8"
-	},
-/area/shuttle/distress/start)
-"jA" = (
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin3";
-	tag = "icon-rasputin3"
-	},
-/area/shuttle/distress/start)
-"jB" = (
-/turf/closed/shuttle/ert{
-	icon_state = "stan9"
-	},
-/area/shuttle/distress/start)
-"jC" = (
-/turf/closed/shuttle/ert{
-	icon_state = "stan_rightengine"
-	},
-/area/shuttle/distress/start)
-"jD" = (
-/turf/closed/shuttle/ert{
-	icon_state = "wy_leftengine"
-	},
-/area/shuttle/distress/start_pmc)
-"jE" = (
-/turf/closed/shuttle/ert{
-	icon_state = "wy8"
-	},
-/area/shuttle/distress/start_pmc)
-"jF" = (
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin3";
-	tag = "icon-rasputin3"
-	},
-/area/shuttle/distress/start_pmc)
-"jG" = (
-/turf/closed/shuttle/ert{
-	icon_state = "wy9"
-	},
-/area/shuttle/distress/start_pmc)
-"jH" = (
-/turf/closed/shuttle/ert{
-	icon_state = "wy_rightengine"
-	},
-/area/shuttle/distress/start_pmc)
-"jI" = (
-/turf/closed/shuttle/ert{
-	icon_state = "upp_leftengine"
-	},
-/area/shuttle/distress/start_upp)
-"jJ" = (
-/turf/closed/shuttle/ert{
-	icon_state = "upp8"
-	},
-/area/shuttle/distress/start_upp)
-"jK" = (
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin3";
-	tag = "icon-rasputin3"
-	},
-/area/shuttle/distress/start_upp)
-"jL" = (
-/turf/closed/shuttle/ert{
-	icon_state = "upp9"
-	},
-/area/shuttle/distress/start_upp)
-"jM" = (
-/turf/closed/shuttle/ert{
-	icon_state = "upp_rightengine"
-	},
-/area/shuttle/distress/start_upp)
-"jN" = (
-/turf/closed/shuttle/ert{
-	icon_state = "leftengine_3";
-	opacity = 0
-	},
-/area/shuttle/distress/start)
-"jO" = (
-/turf/closed/shuttle/ert{
-	icon_state = "rightengine_3"
-	},
-/area/shuttle/distress/start)
-"jP" = (
-/turf/closed/shuttle/ert{
-	icon_state = "leftengine_3";
-	opacity = 0
-	},
-/area/shuttle/distress/start_pmc)
-"jQ" = (
-/turf/closed/shuttle/ert{
-	icon_state = "rightengine_3";
-	opacity = 0
-	},
-/area/shuttle/distress/start_pmc)
-"jR" = (
-/turf/closed/shuttle/ert{
-	icon_state = "leftengine_3";
-	opacity = 0
-	},
-/area/shuttle/distress/start_upp)
-"jS" = (
-/turf/closed/shuttle/ert{
-	icon_state = "rightengine_3";
-	opacity = 0
-	},
-/area/shuttle/distress/start_upp)
-"jT" = (
-/turf/closed/shuttle/ert{
-	icon_state = "leftengine_2";
-	opacity = 0
-	},
-/area/shuttle/distress/start)
-"jU" = (
-/turf/closed/shuttle/ert{
-	icon_state = "rightengine_2"
-	},
-/area/shuttle/distress/start)
-"jV" = (
-/turf/closed/shuttle/ert{
-	icon_state = "leftengine_2";
-	opacity = 0
-	},
-/area/shuttle/distress/start_pmc)
-"jW" = (
-/turf/closed/shuttle/ert{
-	icon_state = "rightengine_2";
-	opacity = 0
-	},
-/area/shuttle/distress/start_pmc)
-"jX" = (
-/turf/closed/shuttle/ert{
-	icon_state = "leftengine_2";
-	opacity = 0
-	},
-/area/shuttle/distress/start_upp)
-"jY" = (
-/turf/closed/shuttle/ert{
-	icon_state = "rightengine_2";
-	opacity = 0
-	},
-/area/shuttle/distress/start_upp)
-"kb" = (
-/turf/closed/shuttle/ert{
-	icon_state = "leftengine_1";
-	opacity = 0
-	},
-/area/shuttle/distress/start)
-"kc" = (
-/turf/closed/shuttle/ert{
-	icon_state = "stan1"
-	},
-/area/shuttle/distress/start)
-"kd" = (
-/obj/structure/machinery/door/airlock/almayer/generic{
-	dir = 2
-	},
-/obj/structure/machinery/door/poddoor/shutters/transit,
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15";
-	tag = "icon-rasputin15"
-	},
-/area/shuttle/distress/start)
-"ke" = (
-/turf/closed/shuttle/ert{
-	icon_state = "stan2"
-	},
-/area/shuttle/distress/start)
-"kf" = (
-/turf/closed/shuttle/ert{
-	icon_state = "stan3"
-	},
-/area/shuttle/distress/start)
-"kg" = (
-/turf/closed/shuttle/ert{
-	icon_state = "rightengine_1"
-	},
-/area/shuttle/distress/start)
-"kh" = (
-/turf/closed/shuttle/ert{
-	icon_state = "leftengine_1";
-	opacity = 0
-	},
-/area/shuttle/distress/start_pmc)
-"ki" = (
-/turf/closed/shuttle/ert{
-	icon_state = "wy1"
-	},
-/area/shuttle/distress/start_pmc)
-"kj" = (
-/obj/structure/machinery/door/airlock/almayer/generic{
-	dir = 2
-	},
-/obj/structure/machinery/door/poddoor/shutters/transit,
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15";
-	tag = "icon-rasputin15"
-	},
-/area/shuttle/distress/start_pmc)
-"kk" = (
-/turf/closed/shuttle/ert{
-	icon_state = "wy2"
-	},
-/area/shuttle/distress/start_pmc)
-"kl" = (
-/turf/closed/shuttle/ert{
-	icon_state = "wy3"
-	},
-/area/shuttle/distress/start_pmc)
-"km" = (
-/turf/closed/shuttle/ert{
-	icon_state = "rightengine_1";
-	opacity = 0
-	},
-/area/shuttle/distress/start_pmc)
 "kn" = (
-/turf/closed/shuttle/ert{
-	icon_state = "leftengine_1";
-	opacity = 0
-	},
-/area/shuttle/distress/start_upp)
-"ko" = (
-/turf/closed/shuttle/ert{
-	icon_state = "upp1"
-	},
-/area/shuttle/distress/start_upp)
-"kp" = (
-/obj/structure/machinery/door/airlock/almayer/generic{
-	dir = 2
-	},
-/obj/structure/machinery/door/poddoor/shutters/transit,
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15";
-	tag = "icon-rasputin15"
-	},
-/area/shuttle/distress/start_upp)
-"kq" = (
-/turf/closed/shuttle/ert{
-	icon_state = "upp2"
-	},
-/area/shuttle/distress/start_upp)
-"kr" = (
-/turf/closed/shuttle/ert{
-	icon_state = "upp3"
-	},
-/area/shuttle/distress/start_upp)
+/obj/docking_port/stationary/emergency_response/idle_port3,
+/turf/open/floor/plating,
+/area/almayer/ert_port)
 "ks" = (
-/turf/closed/shuttle/ert{
-	icon_state = "rightengine_1";
-	opacity = 0
-	},
-/area/shuttle/distress/start_upp)
+/obj/docking_port/stationary/emergency_response/idle_port2,
+/turf/open/floor/plating,
+/area/almayer/ert_port)
 "kt" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
@@ -4113,18 +3365,6 @@
 	},
 /turf/open/floor/plating/almayer,
 /area/adminlevel/ert_station/shuttle_dispatch)
-"Er" = (
-/obj/structure/surface/rack,
-/obj/item/storage/firstaid/adv{
-	pixel_x = 2;
-	pixel_y = -5
-	},
-/obj/effect/landmark/ert_spawns/distress_upp/item,
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15";
-	tag = "icon-rasputin15"
-	},
-/area/shuttle/distress/start_upp)
 "Ez" = (
 /turf/open/floor/almayer{
 	dir = 4;
@@ -4437,6 +3677,9 @@
 "Ji" = (
 /turf/open/space/transit/east/shuttlespace_ew13,
 /area/space)
+"Jl" = (
+/turf/open/floor/plating,
+/area/almayer/ert_port)
 "Jo" = (
 /obj/structure/machinery/door/poddoor/shutters/transit{
 	id = "s_engi"
@@ -4458,6 +3701,19 @@
 	tag = "icon-sterile"
 	},
 /area/adminlevel/ert_station)
+"JH" = (
+/obj/effect/step_trigger/teleporter/random{
+	affect_ghosts = 1;
+	name = "escapeshuttle_leave";
+	teleport_x = 25;
+	teleport_x_offset = 245;
+	teleport_y = 25;
+	teleport_y_offset = 245;
+	teleport_z = 1;
+	teleport_z_offset = 1
+	},
+/turf/open/space/transit/north/shuttlespace_ns11,
+/area/almayer/ert_port)
 "JT" = (
 /obj/structure/sink{
 	dir = 8;
@@ -4531,6 +3787,9 @@
 	},
 /turf/open/floor/wood/ship,
 /area/adminlevel/ert_station)
+"KO" = (
+/turf/open/space/basic,
+/area/almayer/ert_port)
 "KQ" = (
 /obj/structure/machinery/cm_vending/sorted/boozeomat,
 /turf/open/floor/wood/ship,
@@ -4615,18 +3874,6 @@
 /obj/item/trash/barcardine,
 /turf/open/floor/wood/ship,
 /area/adminlevel/ert_station)
-"LN" = (
-/obj/structure/surface/rack,
-/obj/effect/landmark/ert_spawns/distress_pmc/item,
-/obj/item/storage/firstaid/adv{
-	pixel_x = 2;
-	pixel_y = -5
-	},
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15";
-	tag = "icon-rasputin15"
-	},
-/area/shuttle/distress/start_pmc)
 "LO" = (
 /obj/structure/machinery/disposal,
 /obj/structure/disposalpipe/trunk{
@@ -5049,6 +4296,19 @@
 "Sr" = (
 /turf/open/space,
 /area/space/almayer/lifeboat_dock)
+"Ss" = (
+/obj/effect/step_trigger/teleporter/random{
+	affect_ghosts = 1;
+	name = "escapeshuttle_leave";
+	teleport_x = 25;
+	teleport_x_offset = 245;
+	teleport_y = 25;
+	teleport_y_offset = 245;
+	teleport_z = 1;
+	teleport_z_offset = 1
+	},
+/turf/open/space/transit/north/shuttlespace_ns13,
+/area/almayer/ert_port)
 "St" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/computer/crew/alt{
@@ -5408,18 +4668,6 @@
 /obj/structure/sign/poster/music,
 /turf/closed/wall,
 /area/adminlevel/ert_station)
-"Xt" = (
-/obj/structure/surface/rack,
-/obj/effect/landmark/ert_spawns/distress/item,
-/obj/item/storage/firstaid/adv{
-	pixel_x = 2;
-	pixel_y = -5
-	},
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15";
-	tag = "icon-rasputin15"
-	},
-/area/shuttle/distress/start)
 "XA" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/item/reagent_container/food/snacks/pastatomato,
@@ -5458,6 +4706,19 @@
 	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/ert_station)
+"Yt" = (
+/obj/effect/step_trigger/teleporter/random{
+	affect_ghosts = 1;
+	name = "escapeshuttle_leave";
+	teleport_x = 25;
+	teleport_x_offset = 245;
+	teleport_y = 25;
+	teleport_y_offset = 245;
+	teleport_z = 1;
+	teleport_z_offset = 1
+	},
+/turf/open/space/transit/north/shuttlespace_ns9,
+/area/almayer/ert_port)
 "Yu" = (
 /obj/structure/bed/sofa/vert/grey,
 /obj/effect/decal/cleanable/dirt,
@@ -6588,37 +5849,37 @@ aa
 wW
 KW
 FB
-FB
-gY
-hN
-in
-hN
-hN
-hN
-in
-hN
-jy
-jN
-jT
-kb
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+hP
 FB
 Fo
 wW
 KW
 FB
-FB
-hb
-hU
-ir
-iB
-iS
-jc
-ir
-jm
-jD
-jP
-jV
-kh
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+ks
 FB
 Fo
 wW
@@ -6740,37 +6001,37 @@ aa
 wW
 KW
 FB
-FB
-hr
-hO
-io
-iz
-iz
-iz
-io
-jj
-jz
-hN
-hN
-kc
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
 FB
 Fo
 wW
 KW
 FB
-FB
-hv
-hV
-is
-iC
-iC
-iC
-is
-jn
-jE
-jm
-jm
-ki
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
 FB
 Fo
 wW
@@ -6892,37 +6153,37 @@ aa
 wW
 KW
 FB
-gY
-hs
-hP
-ip
-ip
-ip
-ip
-ip
-jk
-io
-io
-io
-kd
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
 FB
 Fo
 wW
 KW
 FB
-hb
-hw
-hW
-it
-it
-it
-it
-it
-jo
-is
-is
-is
-kj
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
 FB
 Fo
 wW
@@ -7044,37 +6305,37 @@ aa
 wW
 KW
 FB
-gZ
-ht
-hQ
-iq
-iq
-iq
-iq
-iq
-hQ
-jA
-jA
-jA
-ke
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
 FB
 Fo
 wW
 KW
 FB
-hc
-hx
-hX
-iu
-iu
-iu
-iu
-iu
-hX
-jF
-jF
-jF
-kk
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
 FB
 Fo
 wW
@@ -7196,37 +6457,37 @@ aa
 wW
 KW
 FB
-ha
-hu
-hR
-ip
-ip
-ip
-ip
-ip
-jl
-io
-io
-io
-kd
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
 FB
 Fo
 wW
 KW
 FB
-hd
-hy
-hY
-it
-it
-it
-it
-it
-jp
-is
-is
-is
-kj
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
 FB
 Fo
 wW
@@ -7348,37 +6609,37 @@ aa
 wW
 KW
 FB
-FB
-hr
-Xt
-io
-iA
-iA
-iA
-io
-jj
-jB
-hT
-hT
-kf
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
 FB
 Fo
 wW
 KW
 FB
-FB
-hv
-LN
-is
-iD
-iD
-iD
-is
-jn
-jG
-jq
-jq
-kl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
 FB
 Fo
 wW
@@ -7500,37 +6761,37 @@ aa
 wW
 KW
 FB
-FB
-ha
-hT
-in
-hT
-hT
-hT
-in
-hT
-jC
-jO
-jU
-kg
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
 FB
 Fo
 wW
 KW
 FB
-FB
-hd
-ia
-ir
-iE
-iT
-jd
-ir
-jq
-jH
-jQ
-jW
-km
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
 FB
 Fo
 wW
@@ -10254,18 +9515,18 @@ Fo
 wW
 KW
 FB
-FB
-he
-ib
-iv
-iF
-ib
-ib
-iv
-ib
-jI
-jR
-jX
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
 kn
 FB
 Fo
@@ -10406,19 +9667,19 @@ Fo
 wW
 KW
 FB
-FB
-hz
-ic
-iw
-iG
-iG
-iG
-iw
-jr
-jJ
-ib
-ib
-ko
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
 FB
 Fo
 wW
@@ -10558,19 +9819,19 @@ Fo
 wW
 KW
 FB
-he
-hA
-id
-ix
-ix
-ix
-ix
-ix
-js
-iw
-iw
-iw
-kp
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
 FB
 Fo
 wW
@@ -10710,19 +9971,19 @@ Fo
 wW
 KW
 FB
-hf
-hB
-ie
-iy
-iy
-iy
-iy
-iy
-ie
-jK
-jK
-jK
-kq
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
 FB
 Fo
 wW
@@ -10862,19 +10123,19 @@ Fo
 wW
 KW
 FB
-hg
-hC
-if
-ix
-ix
-ix
-ix
-ix
-jt
-iw
-iw
-iw
-kp
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
 FB
 Fo
 wW
@@ -11014,19 +10275,19 @@ Fo
 wW
 KW
 FB
-FB
-hz
-Er
-iw
-iH
-iH
-iH
-iw
-ju
-jL
-ih
-ih
-kr
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
 FB
 Fo
 wW
@@ -11166,19 +10427,19 @@ Fo
 wW
 KW
 FB
-FB
-hg
-ih
-iv
-ih
-ih
-ih
-iv
-ih
-jM
-jS
-jY
-ks
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
 FB
 Fo
 wW
@@ -12746,7 +12007,7 @@ Ou
 aO
 aQ
 aP
-aY
+JH
 ba
 ba
 ba
@@ -12898,7 +12159,7 @@ bS
 aN
 aP
 aT
-aZ
+Yt
 ba
 ba
 ba
@@ -13506,7 +12767,7 @@ bS
 aN
 aP
 aT
-aZ
+Yt
 ba
 ba
 ba
@@ -13658,7 +12919,7 @@ Ou
 aO
 aQ
 aP
-aY
+JH
 ba
 ba
 ba
@@ -15786,7 +15047,7 @@ Ou
 aO
 aQ
 aP
-aN
+aQ
 aG
 bg
 bi
@@ -15938,7 +15199,7 @@ bS
 aN
 aP
 aQ
-aX
+aT
 be
 bh
 bj
@@ -16090,19 +15351,19 @@ Ou
 aO
 aQ
 aP
-aY
-cc
-cc
-cc
-cc
-cc
-cc
-cc
-cc
-cc
-cc
-cc
-cc
+Ss
+ba
+ba
+ba
+ba
+ba
+ba
+ba
+ba
+ba
+ba
+ba
+ba
 bT
 aQ
 aU
@@ -16242,19 +15503,19 @@ bS
 aN
 aP
 aT
-aZ
-cc
-cc
-cc
-cc
-cc
-cc
-cc
-cc
-cc
-cc
-cc
-cc
+Ss
+ba
+ba
+ba
+ba
+ba
+ba
+ba
+ba
+ba
+ba
+ba
+ba
 aY
 aP
 aT
@@ -16394,19 +15655,19 @@ Ou
 aO
 aQ
 aU
-cc
-cc
-cc
-cc
-cc
-cc
-cc
-cc
-cc
-cc
-cc
-cc
-cc
+de
+ba
+ba
+ba
+ba
+ba
+ba
+ba
+ba
+ba
+ba
+ba
+ba
 bT
 aQ
 aU
@@ -16546,19 +15807,19 @@ bS
 aN
 aP
 aT
-cc
-cc
-cc
-cc
-cc
-cc
-cc
-cc
-cc
-cc
-cc
-cc
-cc
+de
+ba
+ba
+ba
+ba
+ba
+ba
+ba
+ba
+ba
+ba
+ba
+ba
 aY
 aP
 aT
@@ -16698,19 +15959,19 @@ Ou
 aO
 aQ
 aU
-cc
-cc
-cc
-cc
-cc
-cc
-cc
-cc
-cc
-cc
-cc
-cc
-cc
+de
+ba
+ba
+ba
+ba
+ba
+ba
+ba
+ba
+ba
+ba
+ba
+ba
 bT
 aQ
 aU
@@ -16850,19 +16111,19 @@ bS
 aN
 aP
 aT
-aZ
-cc
-cc
-cc
-cc
-cc
-cc
-cc
-cc
-cc
-cc
-cc
-cc
+Ss
+ba
+ba
+ba
+ba
+ba
+ba
+ba
+ba
+ba
+ba
+ba
+ba
 aY
 aP
 aT
@@ -17002,19 +16263,19 @@ Ou
 aO
 aQ
 aP
-aY
-cc
-cc
-cc
-cc
-cc
-cc
-cc
-cc
-cc
-cc
-cc
-cc
+Ss
+ba
+ba
+ba
+ba
+ba
+ba
+ba
+ba
+ba
+ba
+ba
+ba
 bT
 aQ
 aU
@@ -17072,7 +16333,7 @@ xr
 xr
 xr
 xr
-xr
+hN
 xr
 xr
 Gm
@@ -17154,7 +16415,7 @@ bS
 aN
 aP
 aQ
-aX
+aT
 be
 bh
 bj
@@ -17306,7 +16567,7 @@ bS
 aN
 aP
 aQ
-aO
+aQ
 aH
 aO
 aQ
@@ -19871,7 +19132,7 @@ as
 as
 as
 as
-as
+KO
 as
 as
 as

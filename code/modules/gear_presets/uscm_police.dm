@@ -185,8 +185,8 @@
 
 	idtype = /obj/item/card/id/silver
 	access = list()
-	assignment = "Riot Control"
-	rank = "Riot"
+	assignment = JOB_RIOT
+	rank = JOB_RIOT
 	paygrade = "ME5"
 	role_comm_title = "RMP"
 	skills = /datum/skills/CMP
@@ -233,8 +233,8 @@
 	name = "USCM Riot Chief MP (RCMP)"
 	flags = EQUIPMENT_PRESET_EXTRA
 
-	assignment = "Chief Riot Control"
-	rank = "CRMP"
+	assignment = JOB_RIOT_CHIEF
+	rank = JOB_RIOT_CHIEF
 	paygrade = "MO1"
 	role_comm_title = "CRMP"
 	skills = /datum/skills/CMP

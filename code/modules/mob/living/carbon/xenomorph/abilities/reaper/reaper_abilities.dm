@@ -3,7 +3,7 @@
 	action_icon_state = "lurker_inject_neuro"
 	ability_name = "plasma strike"
 	macro_path = /datum/action/xeno_action/verb/verb_plasma_strike
-	ability_primacy = XENO_PRIMARY_ACTION_3
+	ability_primacy = XENO_PRIMARY_ACTION_2
 	action_type = XENO_ACTION_ACTIVATE
 	xeno_cooldown = 20 SECONDS
 	plasma_cost = 150
@@ -15,7 +15,7 @@
 	action_icon_state = "fling"
 	ability_name = "prime claw toss"
 	macro_path = /datum/action/xeno_action/verb/verb_plasma_strike
-	ability_primacy = XENO_PRIMARY_ACTION_4
+	ability_primacy = XENO_PRIMARY_ACTION_3
 	action_type = XENO_ACTION_ACTIVATE
 	xeno_cooldown = 15 SECONDS
 	plasma_cost = 50

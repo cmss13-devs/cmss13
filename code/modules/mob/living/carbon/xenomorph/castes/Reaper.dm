@@ -54,9 +54,8 @@
 		/datum/action/xeno_action/activable/tail_stab/reaper,
 		/datum/action/xeno_action/activable/place_construction,
 		/datum/action/xeno_action/onclick/plant_weeds, //1st macro
-		/datum/action/xeno_action/onclick/place_trap, //2nd macro
-		/datum/action/xeno_action/onclick/plasma_strike, //3rd macro
-		/datum/action/xeno_action/onclick/claw_toss //4th macro
+		/datum/action/xeno_action/onclick/plasma_strike, //2nd macro
+		/datum/action/xeno_action/onclick/claw_toss //3rd macro
 	)
 	mutation_type = REAPER_NORMAL
 

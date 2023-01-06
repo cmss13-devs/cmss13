@@ -16,8 +16,7 @@
 	pixel_x = rand(-3,3)
 	pixel_y = rand(-3,3)
 	create_reagents(60)
-	reagents.add_reagent("eggplasma",60)
-
+	reagents.add_reagent(PLASMA_EGG, 60, list("hive_number" = hivenumber))
 
 	if (hive)
 		hivenumber = hive

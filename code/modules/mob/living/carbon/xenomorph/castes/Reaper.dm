@@ -94,7 +94,7 @@
 	if (egg_plasma_primed)
 		to_chat(bound_xeno, SPAN_XENOHIGHDANGER("You stab into \the [target_carbon], releasing egg plasma directly into their bloodstream!"))
 		to_chat(target_carbon, SPAN_XENOHIGHDANGER("You feel a cold liquid coursing through your veins as [bound_xeno] stabs you!"))
-		target_carbon.reagents.add_reagent(PLASMA_EGG, 15)
+		target_carbon.reagents.add_reagent(PLASMA_EGG, 15, list("hive_number" = bound_xeno.hivenumber))
 		target_carbon.reagents.add_reagent(PLASMA_HEMOCATALENE, 20)
 		egg_plasma_primed = FALSE
 		var/datum/action/xeno_action/onclick/plasma_strike/ability = get_xeno_action_by_type(bound_xeno, /datum/action/xeno_action/onclick/plasma_strike)

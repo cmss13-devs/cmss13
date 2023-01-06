@@ -39,7 +39,7 @@
 	icon_size = 64
 	icon_xeno = 'icons/mob/xenos/reaper.dmi'
 	icon_state = "Reaper Walking"
-	plasma_types = list(PLASMA_PURPLE)
+	plasma_types = list(PLASMA_PURPLE, PLASMA_EGG)
 
 	drag_delay = 6 //pulling a big dead xeno is hard
 

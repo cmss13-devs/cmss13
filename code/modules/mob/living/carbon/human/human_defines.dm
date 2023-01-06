@@ -159,6 +159,9 @@
 
 	var/datum/action/human_action/activable/selected_ability
 
+	/// misc human flags
+	var/flags_human_misc = 0
+
 /client/var/cached_human_playtime
 
 /client/proc/get_total_human_playtime(var/skip_cache = FALSE)

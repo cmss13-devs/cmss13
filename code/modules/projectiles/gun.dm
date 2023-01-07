@@ -531,38 +531,39 @@
 	if(!ishuman(usr) && !isobserver(usr))
 		return
 
-	if(href_list["list_stats"] && !(flags_gun_features & GUN_UNUSUAL_DESIGN))
-		ui_interact(usr, "weapon_stat")
+	if(href_list["list_stats"]&& !(flags_gun_features & GUN_UNUSUAL_DESIGN))
+		tgui_interact(user)
 
+// TGUI GOES HERE \\
 
-/obj/item/weapon/gun/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 0)
-	var/datum/asset/assets = get_asset_datum(/datum/asset/nanoui/weapons)
-	assets.send(user)
+/obj/item/weapon/gun/tgui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if (!ui)
+		ui = new(user, src, "WeaponStats", name)
+		ui.open()
+
+/obj/item/weapon/gun/ui_state(mob/user)
+	return GLOB.always_state
+
+/obj/item/weapon/gun/ui_data(mob/user)
+	var/list/data = list()
 
 	var/ammo_name = "bullet"
-
 	var/damage = 0
 	var/bonus_projectile_amount = 0
-
 	var/falloff = 0
-
 	var/gun_recoil = src.recoil
 
 	if(flags_gun_features & GUN_RECOIL_BUILDUP)
 		update_recoil_buildup() // Need to update recoil values
-
 		gun_recoil = recoil_buildup
 
 	var/penetration = 0
 	var/armor_punch = 0
-
 	var/accuracy = 0
-
 	var/min_accuracy = 0
-
 	var/max_range = 0
 	var/scatter = 0
-
 	var/list/damage_armor_profile_xeno = list()
 	var/list/damage_armor_profile_marine = list()
 	var/list/damage_armor_profile_armorbreak = list()
@@ -580,7 +581,6 @@
 			in_ammo = ammo
 
 	var/has_ammo = istype(in_ammo)
-
 	if(has_ammo)
 		ammo_name = in_ammo.name
 
@@ -610,58 +610,54 @@
 	var/rpm = max(fire_delay, 1)
 	var/burst_rpm = max((fire_delay * 1.5 + (burst_amount - 1) * burst_delay)/max(burst_amount, 1), 0.0001)
 
-	var/list/data = list(
-		"name" = name,
-		"desc" = desc,
-		"icon" = SSassets.transport.get_asset_url("[base_gun_icon].png"),
+	data["name"] = name
+	data["desc"] = desc
+	data["two_handed_only"] = (flags_gun_features & GUN_WIELDED_FIRING_ONLY)
+	data["recoil"] = max(gun_recoil, 0.1)
+	data["unwielded_recoil"] = max(recoil_unwielded, 0.1)
+	data["has_ammo"] = has_ammo,
+	data["automatic"] = (flags_gun_features & GUN_HAS_FULL_AUTO)
+	data["ammo_name"] = ammo_name
+	data["damage"] = damage
+	data["falloff"] = falloff
+	data["total_projectile_amount"] = bonus_projectile_amount+1
+	data["armor_punch"] = armor_punch
+	data["penetration"] = penetration,
+	data["accuracy"] = accuracy * accuracy_mult
+	data["unwielded_accuracy"] = accuracy * accuracy_mult_unwielded
+	data["min_accuracy"] = min_accuracy
+	data["max_range"] = max_range
+	data["scatter"] = max(0.1, scatter + src.scatter)
+	data["unwielded_scatter"] = max(0.1, scatter + scatter_unwielded)
+	data["burst_scatter"] = src.burst_scatter_mult
+	data["burst_amount"] = burst_amount
+	data["firerate"] = round(1 MINUTES / rpm) // 3 minutes so that the values look greater than they actually are
+	data["burst_firerate"] = round(1 MINUTES / burst_rpm)
+	data["firerate_second"] = round(1 SECONDS / rpm, 0.01)
+	data["burst_firerate_second"] = round(1 SECONDS / burst_rpm, 0.01)
+	data["recoil_max"] = RECOIL_AMOUNT_TIER_1
+	data["scatter_max"] = SCATTER_AMOUNT_TIER_1
+	data["firerate_max"] = 1 MINUTES / FIRE_DELAY_TIER_10
+	data["damage_max"] = 100
+	data["accuracy_max"] = 32
+	data["range_max"] = 32
+	data["falloff_max"] = DAMAGE_FALLOFF_TIER_1
+	data["penetration_max"] = ARMOR_PENETRATION_TIER_10
+	data["punch_max"] = 5
+	data["damage_armor_profile_headers"] = damage_armor_profile_headers
+	data["damage_armor_profile_marine"] = damage_armor_profile_marine
+	data["damage_armor_profile_xeno"] = damage_armor_profile_xeno
+	data["damage_armor_profile_armorbreak"] = damage_armor_profile_armorbreak
 
-		"two_handed_only" = (flags_gun_features & GUN_WIELDED_FIRING_ONLY),
+	return data
 
-		"recoil" = max(gun_recoil, 0.1),
-		"unwielded_recoil" = max(recoil_unwielded, 0.1),
+// END TGUI \\
 
-		"has_ammo" = has_ammo,
+/obj/item/weapon/gun/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 0)
+	var/datum/asset/assets = get_asset_datum(/datum/asset/nanoui/weapons)
+	assets.send(user)
 
-		"automatic" = (flags_gun_features & GUN_HAS_FULL_AUTO),
 
-		"ammo_name" = ammo_name,
-		"damage" = damage,
-		"falloff" = falloff,
-		"total_projectile_amount" = bonus_projectile_amount+1,
-
-		"armor_punch" = armor_punch,
-		"penetration" = penetration,
-
-		"accuracy" = accuracy * accuracy_mult,
-		"unwielded_accuracy" = accuracy * accuracy_mult_unwielded,
-		"min_accuracy" = min_accuracy,
-		"max_range" = max_range,
-		"scatter" = max(0.1, scatter + src.scatter),
-		"unwielded_scatter" = max(0.1, scatter + scatter_unwielded),
-
-		"burst_scatter" = src.burst_scatter_mult,
-		"burst_amount" = burst_amount,
-		"firerate" = round(1 MINUTES / rpm), // 3 minutes so that the values look greater than they actually are
-		"burst_firerate" = round(1 MINUTES / burst_rpm),
-
-		"firerate_second" = round(1 SECONDS / rpm, 0.01),
-		"burst_firerate_second" = round(1 SECONDS / burst_rpm, 0.01),
-
-		"recoil_max" = RECOIL_AMOUNT_TIER_1,
-		"scatter_max" = SCATTER_AMOUNT_TIER_1,
-		"firerate_max" = 1 MINUTES / FIRE_DELAY_TIER_10,
-		"damage_max" = 100,
-		"accuracy_max" = 32,
-		"range_max" = 32,
-		"falloff_max" = DAMAGE_FALLOFF_TIER_1,
-		"penetration_max" = ARMOR_PENETRATION_TIER_10,
-		"punch_max" = 5,
-
-		"damage_armor_profile_headers" = damage_armor_profile_headers,
-		"damage_armor_profile_marine" = damage_armor_profile_marine,
-		"damage_armor_profile_xeno" = damage_armor_profile_xeno,
-		"damage_armor_profile_armorbreak" = damage_armor_profile_armorbreak,
-	)
 
 	ui = nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
 

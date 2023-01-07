@@ -283,6 +283,9 @@
 /obj/docking_port/stationary/proc/on_arrival(obj/docking_port/mobile/arriving_shuttle)
 	return
 
+/obj/docking_port/stationary/proc/on_prearrival(obj/docking_port/mobile/arriving_shuttle)
+	return
+
 /// Called when the docked shuttle ignites
 /obj/docking_port/stationary/proc/on_dock_ignition(obj/docking_port/mobile/departing_shuttle)
 	return
@@ -541,6 +544,7 @@
 /obj/docking_port/mobile/proc/on_prearrival()
 	if(destination)
 		playsound(destination.return_center_turf(), landing_sound, 60, 0)
+		destination.on_prearrival()
 	playsound(return_center_turf(), landing_sound, 60, 0)
 	return
 

@@ -25183,9 +25183,7 @@
 /turf/open/floor/almayer,
 /area/almayer/hallways/hangar)
 "bFR" = (
-/obj/effect/landmark/shuttle_loc/marine_src/dropship{
-	name = "1"
-	},
+/obj/docking_port/stationary/marine_dropship/almayer_hangar_1,
 /turf/open/floor/plating,
 /area/almayer/hallways/hangar)
 "bFU" = (

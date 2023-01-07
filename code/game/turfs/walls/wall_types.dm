@@ -1192,7 +1192,6 @@
 
 	if(!(W.flags_item & NOBLUDGEON))
 		user.animation_attack_on(src)
-		user.next_move += W.attack_speed
 		take_damage(W.force*RESIN_MELEE_DAMAGE_MULTIPLIER, user)
 		playsound(src, "alien_resin_break", 25)
 	else

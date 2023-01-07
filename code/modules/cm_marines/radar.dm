@@ -14,6 +14,8 @@
 	var/arrowstyle = "ntosradarpointer.png"
 	///Used by the tgui interface, themed for NT or Syndicate colors.
 	var/pointercolor = "green"
+	///cooldown between scans
+	var/scan_cooldown = 2 SECONDS
 
 /datum/radar/New(atom/holder)
 	src.holder = holder
@@ -127,7 +129,7 @@
 	var/turf/there = get_turf(signal)
 	if(!here || !there)
 		return FALSE //I was still getting a runtime even after the above check while scanning, so fuck it
-	return (there.z == here.z) || (is_station_level(here.z) && is_station_level(there.z))
+	return (there.z == here.z) || (is_mainship_level(here.z) && is_mainship_level(there.z))
 
 /**
  *
@@ -142,6 +144,9 @@
  *somewhat costly loops.
 */
 /datum/radar/proc/scan()
+	if(world.time < next_scan)
+		return
+	next_scan = world.time + scan_cooldown
 	return
 
 /**
@@ -199,28 +204,36 @@
 */
 
 /datum/radar/advanced_pdtl
+	var/obj/item/device/pdt_locator_tube/advanced/typed_holder
 
+/datum/radar/advanced_pdtl/New(atom/holder)
+	. = ..()
+	typed_holder = holder
 
+/datum/radar/advanced_pdtl/find_atom()
+	return typed_holder.linked_bracelet
+
+/datum/radar/advanced_pdtl/scan()
+	. = ..()
+	objects = list()
+	var/obj/item/clothing/accessory/pdt_bracelet/bracelet = typed_holder.linked_bracelet
+	if(!bracelet)
+		return
+	objects += list(list(
+		ref = REF(bracelet),
+		name = bracelet.name,
+	))
 
 ///A program that tracks crew members via suit sensors
 /datum/radar/lifeline
-	filename = "lifeline"
-	filedesc = "Lifeline"
-	extended_desc = "This program allows for tracking of crew members via their suit sensors."
-	requires_ntnet = TRUE
-	transfer_access = list(ACCESS_MEDICAL)
-	available_on_ntnet = TRUE
-	program_icon = "heartbeat"
 
 /datum/radar/lifeline/find_atom()
-	return locate(selected) in GLOB.human_list
+	return locate(selected) in GLOB.human_mob_list
 
 /datum/radar/lifeline/scan()
-	if(world.time < next_scan)
-		return
-	next_scan = world.time + (2 SECONDS)
+	. = ..()
 	objects = list()
-	for(var/i in GLOB.human_list)
+	for(var/i in GLOB.human_mob_list)
 		var/mob/living/carbon/human/humanoid = i
 		if(!trackable(humanoid))
 			continue
@@ -241,6 +254,6 @@
 	if(..())
 		if (istype(humanoid.w_uniform, /obj/item/clothing/under))
 			var/obj/item/clothing/under/uniform = humanoid.w_uniform
-			if(uniform.has_sensor && uniform.sensor_mode >= SENSOR_COORDS) // Suit sensors must be on maximum
+			if(uniform.has_sensor && uniform.sensor_mode >= 3) // Suit sensors must be on maximum
 				return TRUE
 	return FALSE

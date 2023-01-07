@@ -108,6 +108,9 @@
 		playsound(src, 'sound/machines/buzz-sigh.ogg', 15, TRUE)
 		return
 
+	locate_bracelet(user)
+
+/obj/item/device/pdt_locator_tube/proc/locate_bracelet(mob/user)
 	var/turf/self_turf = get_turf(src)
 	var/turf/bracelet_turf = get_turf(linked_bracelet)
 	var/area/self_area = get_area(self_turf)
@@ -128,6 +131,7 @@
 
 	linked_bracelet.visible_message(SPAN_BOLDNOTICE("\The [src] lights up for a moment and makes a beeping noise!"), max_distance = 3)
 	playsound(linked_bracelet, 'sound/machines/twobeep.ogg', 15, TRUE)
+	return
 
 /obj/item/device/pdt_locator_tube/proc/handle_bracelet_deletion()
 	linked_bracelet = null
@@ -167,12 +171,34 @@
 	new /obj/item/device/pdt_locator_tube(src, new /obj/item/clothing/accessory/pdt_bracelet(src))
 	new /obj/item/cell/crap(src) //it not fitting is intentional
 
-/// THE ADVANCED VERSION... ADMIN SPAWN ONLY... USES TGUI RADAR... \\\
+/// THE ADVANCED VERSION... ADMIN SPAWN ONLY... USES TGUI RADAR... ///
 
 /obj/item/storage/box/pdt_kit/advanced
 	name = "advanced PDT/L Battle Buddy kit"
 	desc = "Contains a PDT/L set, consisting of the advanced PDT bracelet and its sister locator tube, alongside a spare cell seemingly wedged into the kit."
 
 /obj/item/storage/box/pdt_kit/advanced/fill_preset_inventory()
-	new /obj/item/device/pdt_locator_tube(src, new /obj/item/clothing/accessory/pdt_bracelet(src))
+	new /obj/item/device/pdt_locator_tube/advanced(src, new /obj/item/clothing/accessory/pdt_bracelet/advanced(src))
 	new /obj/item/cell/crap(src) //it not fitting is intentional
+
+/obj/item/device/pdt_locator_tube/advanced
+	name = "advanced PDT locator tube"
+	var/datum/radar/advanced_pdtl/radar
+
+/obj/item/device/pdt_locator_tube/advanced/Initialize(mapload, obj/item/clothing/accessory/pdt_bracelet/bracelet)
+	. = ..()
+	radar = new /datum/radar/advanced_pdtl(src)
+
+/obj/item/device/pdt_locator_tube/advanced/Destroy()
+	QDEL_NULL(radar)
+	. = ..()
+
+/obj/item/device/pdt_locator_tube/advanced/handle_bracelet_deletion()
+	. = ..()
+	SStgui.close_uis(radar)
+
+/obj/item/device/pdt_locator_tube/advanced/locate_bracelet(mob/user)
+	radar.tgui_interact(user)
+
+/obj/item/clothing/accessory/pdt_bracelet/advanced
+	name = "advanced PDT bracelet"

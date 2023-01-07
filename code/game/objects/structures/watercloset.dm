@@ -5,7 +5,7 @@
 	desc = "The HT-451, a torque rotation-based, waste disposal unit for small matter. This one seems remarkably clean."
 	icon = 'icons/obj/structures/props/watercloset.dmi'
 	icon_state = "toilet00"
-	density = 0
+	density = FALSE
 	anchored = 1
 	can_buckle = TRUE
 	var/open = 0 //if the lid is up
@@ -94,7 +94,7 @@
 		var/direction = dir2text(dir)
 		M.pixel_y = buckling_y[direction] + pixel_y
 		M.pixel_x = buckling_x[direction] + pixel_x
-		density = 1
+		density = TRUE
 
 		if(dir == NORTH)
 			if(cistern == 1)
@@ -106,7 +106,7 @@
 		M.old_y = initial(buckled_mob.pixel_y)
 		M.pixel_x = initial(buckled_mob.pixel_x)
 		M.old_x = initial(buckled_mob.pixel_x)
-		density = 0
+		density = FALSE
 
 		if(dir == NORTH)
 			if(cistern == 1)
@@ -185,7 +185,7 @@
 	desc = "The HU-452, an experimental urinal."
 	icon = 'icons/obj/structures/props/watercloset.dmi'
 	icon_state = "urinal"
-	density = 0
+	density = FALSE
 	anchored = 1
 
 /obj/structure/urinal/attackby(obj/item/I, mob/living/user)
@@ -210,7 +210,7 @@
 	desc = "The HS-451. Installed in the 2050s by the Weyland Hygiene Division."
 	icon = 'icons/obj/structures/props/watercloset.dmi'
 	icon_state = "shower"
-	density = 0
+	density = FALSE
 	anchored = 1
 	use_power = USE_POWER_NONE
 	var/on = 0
@@ -232,7 +232,7 @@
 	icon_state = "mist"
 	layer = FLY_LAYER
 	anchored = 1
-	mouse_opacity = 0
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
 /obj/structure/machinery/shower/attack_hand(mob/M as mob)
 	on = !on

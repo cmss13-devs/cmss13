@@ -11,7 +11,7 @@
 	icon_state = "unknown"
 	layer = AREAS_LAYER
 	plane = BLACKNESS_PLANE
-	mouse_opacity = 0
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	invisibility = INVISIBILITY_LIGHTING
 	var/lightswitch = 1
 
@@ -222,7 +222,7 @@
 		flags_alarm_state |= ALARM_WARNING_FIRE
 		master.flags_alarm_state |= ALARM_WARNING_FIRE //used for firedoor checks
 		updateicon()
-		mouse_opacity = 0
+		mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 		for(var/obj/structure/machinery/door/firedoor/D in all_doors)
 			if(!D.blocked)
 				if(D.operating)
@@ -243,7 +243,7 @@
 	if(flags_alarm_state & ALARM_WARNING_FIRE)
 		flags_alarm_state &= ~ALARM_WARNING_FIRE
 		master.flags_alarm_state &= ~ALARM_WARNING_FIRE //used for firedoor checks
-		mouse_opacity = 0
+		mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 		updateicon()
 		for(var/obj/structure/machinery/door/firedoor/D in all_doors)
 			if(!D.blocked)

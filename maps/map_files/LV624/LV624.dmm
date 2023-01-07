@@ -2281,15 +2281,15 @@
 /area/lv624/ground/river/east_river)
 "akh" = (
 /obj/item/trash/candy,
-/obj/structure/machinery/door_control{
-	dir = 1;
-	id = "nexus_blast";
-	name = "Nexus Lockdown";
-	pixel_x = 25
-	},
 /obj/structure/machinery/power/apc{
 	dir = 1;
 	name = "Corporate Lobby APC"
+	},
+/obj/structure/machinery/door_control{
+	id = "secure_outer_blast";
+	name = "Outer Blast Door";
+	pixel_x = 25;
+	pixel_y = -5
 	},
 /turf/open/floor/wood,
 /area/lv624/lazarus/hop)
@@ -9928,6 +9928,12 @@
 /obj/effect/landmark/crap_item,
 /obj/effect/landmark/crap_item,
 /obj/item/clothing/suit/armor/vest/security,
+/obj/structure/machinery/door_control{
+	id = "secure_inner_blast";
+	name = "Inner Blast Door";
+	pixel_x = 25;
+	pixel_y = 5
+	},
 /turf/open/floor{
 	icon_state = "cult"
 	},
@@ -11994,15 +12000,28 @@
 /area/lv624/lazarus/secure_storage)
 "aWb" = (
 /obj/structure/machinery/door_control{
-	id = "secure_blast";
-	name = "Dome Access";
-	pixel_x = 25
+	id = "secure_outer_blast";
+	name = "Outer Blast Door";
+	pixel_x = 25;
+	pixel_y = -5
+	},
+/obj/structure/machinery/door_control{
+	id = "secure_inner_blast";
+	name = "Inner Blast Door";
+	pixel_x = 25;
+	pixel_y = 5
 	},
 /turf/open/floor/greengrid,
 /area/lv624/lazarus/secure_storage)
 "aWc" = (
 /obj/structure/computerframe{
 	anchored = 1
+	},
+/obj/structure/machinery/door_control{
+	id = "secure_outer_blast";
+	name = "Outer Blast Door";
+	pixel_x = 25;
+	pixel_y = -5
 	},
 /turf/open/floor/greengrid,
 /area/lv624/lazarus/secure_storage)
@@ -12129,7 +12148,7 @@
 "aWu" = (
 /obj/structure/machinery/door/poddoor/almayer{
 	dir = 4;
-	id = "secure_blast";
+	id = "secure_inner_blast";
 	layer = 3.3;
 	name = "\improper Secure Armory Blast Door";
 	unacidable = 1
@@ -12139,7 +12158,7 @@
 "aWv" = (
 /obj/structure/machinery/door/poddoor/almayer{
 	dir = 4;
-	id = "secure_blast";
+	id = "secure_outer_blast";
 	layer = 3.3;
 	name = "\improper Secure Armory Blast Door";
 	unacidable = 1
@@ -18930,17 +18949,6 @@
 	icon_state = "grassdirt_corner"
 	},
 /area/lv624/ground/colony/west_nexus_road)
-"nOw" = (
-/obj/structure/machinery/door_control{
-	id = "garage_blast";
-	name = "Garage Shutters";
-	pixel_x = -26;
-	range = 200
-	},
-/turf/open/floor{
-	icon_state = "cult"
-	},
-/area/lv624/lazarus/armory)
 "nOD" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -20012,6 +20020,12 @@
 /area/lv624/lazarus/corporate_dome)
 "pRe" = (
 /obj/item/storage/firstaid/adv/empty,
+/obj/structure/machinery/door_control{
+	id = "secure_outer_blast";
+	name = "Outer Blast Door";
+	pixel_x = 25;
+	pixel_y = -5
+	},
 /turf/open/floor{
 	dir = 5;
 	icon_state = "whiteyellow"
@@ -22882,6 +22896,18 @@
 /obj/structure/flora/jungle/vines/heavy,
 /turf/open/gm/grass,
 /area/lv624/ground/jungle/north_west_jungle)
+"wAe" = (
+/obj/effect/decal/cleanable/blood/splatter,
+/obj/structure/machinery/door_control{
+	id = "secure_inner_blast";
+	name = "Inner Blast Door";
+	pixel_x = -25;
+	pixel_y = 5
+	},
+/turf/open/floor{
+	icon_state = "white"
+	},
+/area/lv624/lazarus/research)
 "wAI" = (
 /obj/structure/flora/jungle/vines{
 	icon_state = "light_2"
@@ -40937,7 +40963,7 @@ auV
 atU
 avE
 atp
-awr
+wAe
 atU
 axH
 aum
@@ -46897,7 +46923,7 @@ aLk
 aMY
 aMZ
 aOy
-nOw
+aMZ
 aLk
 aQx
 aQx

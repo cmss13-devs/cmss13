@@ -14,7 +14,7 @@
 		var/turf/closed/wall/W = loc
 		W.acided_hole = src
 		holed_wall = W
-		holed_wall.opacity = 0
+		holed_wall.opacity = FALSE
 		setDir(W.acided_hole_dir)
 
 /obj/effect/acid_hole/Destroy()
@@ -106,7 +106,12 @@
 				to_chat(user, SPAN_WARNING("You release what you're pulling to fit into the tunnel!"))
 			user.forceMove(T)
 
+			// If the wall is on fire, ignite the xeno.
+			var/turf/wall = get_turf(src)
+			var/obj/flamer_fire/fire = locate(/obj/flamer_fire) in wall
 
+			if (fire)
+				user.handle_flamer_fire_crossed(fire)
 
 
 //Throwing Shiet

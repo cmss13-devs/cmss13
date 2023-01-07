@@ -101,5 +101,5 @@
 		M.movement_force = movement_force.Copy()
 
 /datum/map_template/shuttle/vehicle
-	shuttle_id = "vehicle_elevator"
+	shuttle_id = MOBILE_SHUTTLE_VEHICLE_ELEVATOR
 	name = "Vehicle Elevator"

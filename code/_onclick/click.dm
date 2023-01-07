@@ -280,7 +280,7 @@
 	if(!specific_direction)
 		specific_direction = direction
 
-	facedir(direction, specific_direction)
+	face_dir(direction, specific_direction)
 
 
 
@@ -295,7 +295,7 @@
 	icon_state = "catcher"
 	layer = 0
 	plane = -99
-	mouse_opacity = 2
+	mouse_opacity = MOUSE_OPACITY_OPAQUE
 	screen_loc = "CENTER-7,CENTER-7"
 	flags_atom = NOINTERACT
 

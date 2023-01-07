@@ -84,6 +84,8 @@ block( \
 
 #define INVISIBILITY_MAXIMUM 100
 
+#define INVISIBILITY_ABSTRACT 101 //only used for abstract objects that aren't really "there" but can't be datums
+
 //Object specific defines
 #define CANDLE_LUM 3 //For how bright candles are
 

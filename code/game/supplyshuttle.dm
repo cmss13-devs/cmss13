@@ -47,7 +47,7 @@ var/datum/controller/supply/supply_controller = new()
 	desc = "Completely impassable - or are they?"
 	icon = 'icons/obj/structures/props/stationobjs.dmi' //Change this.
 	icon_state = "plasticflaps"
-	density = 0
+	density = FALSE
 	anchored = 1
 	layer = MOB_LAYER
 	var/collide_message_busy // Timer to stop collision spam
@@ -315,7 +315,7 @@ var/datum/controller/supply/supply_controller = new()
 	name = "X"
 	invisibility = 101
 	anchored = 1
-	opacity = 0
+	opacity = FALSE
 */
 
 /datum/supply_order

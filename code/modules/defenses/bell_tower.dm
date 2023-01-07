@@ -73,7 +73,7 @@
 /obj/effect/bell_tripwire
 	name = "bell tripwire"
 	anchored = TRUE
-	mouse_opacity = 0
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	invisibility = 101
 	unacidable = TRUE
 	var/obj/structure/machinery/defenses/bell_tower/linked_bell

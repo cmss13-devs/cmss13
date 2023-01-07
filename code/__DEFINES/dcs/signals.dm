@@ -467,6 +467,8 @@
 #define COMSIG_SHUTTLE_SETMODE "shuttle_setmode"
 /// shuttle crushing something
 #define COMSIG_MOVABLE_SHUTTLE_CRUSH "movable_shuttle_crush"
+/// shuttle door registration
+#define COMSIG_REGISTER_DOOR_TO_SHUTTLE "register_door_to_shuttle"
 
 ///from base of /atom/movable/proc/set_glide_size(): (target)
 #define COMSIG_MOVABLE_UPDATE_GLIDE_SIZE "movable_glide_size"

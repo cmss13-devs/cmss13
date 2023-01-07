@@ -453,7 +453,7 @@
 		dragged_atom = G.grabbed_thing
 
 	if(!enter_time)
-		enter_time = entrance_speed SECONDS
+		enter_time = entrance_speed
 		if(dragged_atom)
 			enter_time = 2 SECONDS
 

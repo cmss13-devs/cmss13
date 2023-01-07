@@ -5,8 +5,8 @@
 	icon = 'icons/obj/structures/doors/Doorint.dmi'
 	icon_state = "door1"
 	anchored = 1
-	opacity = 1
-	density = 1
+	opacity = TRUE
+	density = TRUE
 	throwpass = 0
 	layer = DOOR_OPEN_LAYER
 	var/open_layer = DOOR_OPEN_LAYER
@@ -50,7 +50,7 @@
 	if(filler && width > 1)
 		filler.SetOpacity(0)// Ehh... let's hope there are no walls there. Must fix this
 		filler = null
-	density = 0
+	density = FALSE
 
 /obj/structure/machinery/door/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
@@ -216,7 +216,7 @@
 	src.SetOpacity(0)
 	sleep(openspeed)
 	src.layer = open_layer
-	src.density = 0
+	src.density = FALSE
 	update_icon()
 	SetOpacity(0)
 	if (filler)
@@ -237,7 +237,7 @@
 	if(operating > 0 || !loc) return
 	operating = 1
 	CHECK_TICK
-	src.density = 1
+	src.density = TRUE
 	src.layer = closed_layer
 	do_animate("closing")
 	sleep(openspeed)

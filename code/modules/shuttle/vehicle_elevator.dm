@@ -5,6 +5,8 @@
 	dwidth = 2
 	dheight = 2
 
+	id = MOBILE_SHUTTLE_VEHICLE_ELEVATOR
+
 	callTime = 5 SECONDS
 	ignitionTime = 1 SECONDS
 

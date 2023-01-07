@@ -91,3 +91,143 @@
   - rscdel: removed the centcom accounts database, which was only used in one proc
       and was only present on the admin level.
   - admin: added a mob event verb to make an account
+2023-01-04:
+  Casper:
+  - bugfix: boiler bombard cooldown now only applies if the shot actually fires
+  Huffie56:
+  - rscadd: add buttons for Inner and Outer Blast door of secure storage    for you
+      to find out where.
+  - rscdel: deleted Nexus lockdown and garage shutter button in armory but it's still
+      in mapping data.
+  - balance: adding the ability for survivor to get in secure storage on LV-624.
+  - code_imp: separated Inner and outer blast door instead of being a single entity.
+  Segrain:
+  - bugfix: Money accounts are once again properly created.
+  Sleepynecrons:
+  - imageadd: New sprites for Praetorian's Vanguard, Dancer and Warden strains. Changes
+      Oppressor palette back to base Prae
+  ThePiachu:
+  - rscadd: Added some rechargers and battery chargers to LV-522.
+  - balance: ChemMaster's internal volume now matches that of a Bluespace Beaker so
+      you can more efficiently utilise it to its full pill making potential.
+  - qol: The Reagent Tanks now display the total volume used by all of their chemicals
+      so you know exactly how full it is when containing a complex chemical mix.
+  Zonespace27:
+  - admin: Added SDQL2 tools, allowing for more granular mass VV/proc calling/data
+      collecting.
+  - refactor: Refactored VV backend
+  carlarctg:
+  - rscadd: Aiming a shot on a sniper rifle now adds a red laser beam that connects
+      the target and the aimer. Spotting designators will emanate a faint yellow one.
+      Both will slowly increase in alpha from 0 to max as the tracking progresses.
+  - balance: The sniper's laser beam can be disabled with a button, but keeping it
+      enabled reduces aiming shot time. Cloaked spotters will not cause a beam to
+      appear.
+  - imageadd: Completely resprited the indicators for spotting (it's now yellow) and
+      aiming (it's now red, usually)
+  - imageadd: The XM42B and PMC sniper rifles have more intense blue lasers and reticles.
+  - rscadd: Stepping through laser beams will check for eye protection, if it isn't
+      sufficient, and the small probability chance passes, the target will scream
+      in pain! Completely flavor. If they have enough eye protection, it will bounce
+      off their headgear, and if said protection is BiMex patented personal shades
+      it will create a cool visual effect.
+  - refactor: Refactored eye_protection to have three levels, flavor, flashes, and
+      welding. Sunglasses have flavor protection, sechuds have flash protection, welding
+      gear has welding protection.
+  - imageadd: The spotter's designator now has a white band on it to distinguish it
+      from the rest.
+  - rscadd: Chance's claim EMPTY explosive magazines are now EMPTY HEAP magazines.
+  harryob:
+  - admin: fixed logging when you leave buildmode
+  stanalbatross:
+  - bugfix: vehicle entry speeds will no longer be extraneously multiplied
+  - qol: you can now alt-click stacks to split off items from them. As a result of
+      this, attacking a stack in your offhand with one of the same type will no longer
+      ask you how many you want to merge into it.
+2023-01-05:
+  Segrain:
+  - bugfix: Splitting stacks actually works now.
+  - bugfix: Aliens and telekinetics no longer can abuse splitting stacks.
+  carlarctg:
+  - rscadd: Adds attacking animations to all Xeno abilities that lacked them.
+  - rscadd: Made said abilities cause the xeno to face the target.
+  - rscadd: Said abilities also cause an attack flicker overlay.
+  - rscadd: Dancer Impale now plays a stronger hit sound and hit animation.
+  - balance: Base crushers lower their crest while charging.
+  - rscadd: Abominations spin around when devastating a target.
+  - code_imp: changed facedir() into face_dir()
+  - balance: Changed the Smith & Wesson's caliber from .357 to .38 to remove compatibility
+      between its rounds and the Spearhead revolver's.
+  - balance: Reduced the amount of time the Smith & Wesson's trick buff lasts.
+  - rscdel: The CMB Spearhead revolver can no longer fire in bursts nor fit the burst-fire
+      assembly.
+  mullenpaul:
+  - refactor: ert dropships reworked to now use the tg shuttles system
+  - refactor: ert dropships now have tgui interface for controls
+  - imageadd: ert dropships now have cardinal directions for all sprites - placeholders
+  - rscdel: remove old ert shuttles
+  - rscdel: removed transit shutters on ert shuttles and the Almayer landing pads
+  - refactor: shuttle manipulator now can disable the shuttle computer
+  - bugfix: Shuttle Manipulator page now properly references lifeboats and vehicle
+      elevator
+2023-01-06:
+  CapCamIII:
+  - rscadd: Adds 2 new char setup loadout items, a black and green balaclava, 2 points
+      each.
+  - bugfix: Balaclava object sprite has a correct offset now.
+  Morrow:
+  - rscadd: New intense mode for underbarrel flamethrower which uses more fuel, is
+      more effective, and with less range.
+  - balance: Buffed range and max fuel for the underbarrel flamethrower.
+  - code_imp: Changed around attachment description functions for smarter usage.
+  - bugfix: Underbarrel guns will now use the correct activation noise
+  - soundadd: Activation noise for underbarrel guns slightly louder
+  Segrain:
+  - bugfix: Markup for bold text can now be used for the first word or words in the
+      spoken sentence without it being interpreted as a failed *emote.
+  - qol: '*emotes are no longer case sensitive (e.g. saying "*salute", "*Salute" and
+      "*SALUTE" are equally valid ways to salute).'
+  carlarctg:
+  - rscadd: Added a fun fact for amount of items festivized - only plays if any item
+      was actually festivized. Text alternates based on amount of festivization.
+  - rscadd: Added jingling sounds to the festivizer.
+  - rscadd: Santa can now refill his bag with an item action.
+  - soundadd: Added a new MERRY CHRISTMAS! sound that plays alongside the others with
+      the Festeba and queen's screech.
+  - code_imp: Screech now works as a list that an item is picked from.
+  - bugfix: Fixed being unable to utilize smartguns and M2Cs with clickdrag override
+      preference and harm/disarm intent enabled.
+  - balance: Warriors no longer lifesteal while on fire.
+  - bugfix: Fixed S&W speedloaders having a broken sprite.
+  - bugfix: Fixes rats being white as holder items
+  - code_imp: Added an XvX acid multiplier check proc.
+  - bugfix: Fixed xenomorph acid traps dealing too much damage.
+  harryob:
+  - bugfix: eye blur now actually saves as a preference, instead of being discarded
+  realforest2001:
+  - bugfix: Alamo and Normandy now use their correct intercom frequencies.
+  - rscadd: Added subtypes of intercoms for use on the dropships, so they're not instances
+      that will endlessly break if frequencies change again.
+  stanalbatross:
+  - ui: added the match word and match case options back to highlight settings, match
+      word is overidden if regex is used
+  - ui: radio TGUI now shows channel prefixes again
+  - code_imp: cleaned up radio code a bit, removed a deprecated var
+  - bugfix: fixed a few runtimes with blockedpassdirs and blockedexitdirs
+  - admin: added an option to play midis/sounds to ghosts only
+2023-01-07:
+  Casper:
+  - bugfix: fixes pardon mechanic
+  - refactor: brig timer now uses TGUI
+  ThePiachu, Iamtheguy:
+  - rscadd: Added a flashlight and battery box to make the FOBs a little bit more
+      organised.
+  carlarctg:
+  - bugfix: FIxes some NV laser pistols having broken icons
+  realforest2001:
+  - qol: Adds mapper sprites to the walls for CORSAT, Prison & Solaris
+  stanalbatross:
+  - ui: converted the language menu to tgui
+  - bugfix: fixed two common runtimes
+  - code_imp: added a better log to the tgui input number error log so the offending
+      tgui number input can be easier identified

@@ -1,5 +1,0 @@
-author: "Zonespace27"
-delete-after: True
-changes:
-  - admin: "Added SDQL2 tools, allowing for more granular mass VV/proc calling/data collecting."
-  - refactor: "Refactored VV backend"

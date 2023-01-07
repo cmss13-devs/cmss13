@@ -215,3 +215,19 @@
   - code_imp: cleaned up radio code a bit, removed a deprecated var
   - bugfix: fixed a few runtimes with blockedpassdirs and blockedexitdirs
   - admin: added an option to play midis/sounds to ghosts only
+2023-01-07:
+  Casper:
+  - bugfix: fixes pardon mechanic
+  - refactor: brig timer now uses TGUI
+  ThePiachu, Iamtheguy:
+  - rscadd: Added a flashlight and battery box to make the FOBs a little bit more
+      organised.
+  carlarctg:
+  - bugfix: FIxes some NV laser pistols having broken icons
+  realforest2001:
+  - qol: Adds mapper sprites to the walls for CORSAT, Prison & Solaris
+  stanalbatross:
+  - ui: converted the language menu to tgui
+  - bugfix: fixed two common runtimes
+  - code_imp: added a better log to the tgui input number error log so the offending
+      tgui number input can be easier identified

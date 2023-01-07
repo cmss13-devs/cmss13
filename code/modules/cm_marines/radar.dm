@@ -24,8 +24,8 @@
 	SStgui.close_uis(src)
 	return . = ..()
 
-/datum/radar/ui_state(mob/user) // default behaviour. For specific radars, WHICH YOU ARE ENCOURAGED TO SUBTYPE, make it do something like holder.ui_state() idk
-	return GLOB.always_state
+/datum/radar/ui_state(mob/user)
+	return GLOB.not_incapacitated_state
 
 /datum/radar/tgui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
@@ -163,46 +163,7 @@
 /datum/radar/proc/find_atom()
 	return
 
-
-// update icon proc, might be useful in the future.
-/*
-//We use SSfastprocess for the program icon state because it runs faster than process_tick() does.
-/datum/radar/process()
-	if(!selected)
-		return
-
-	var/atom/movable/signal = find_atom()
-	if(!trackable(signal))
-		program_icon_state = "[initial(program_icon_state)]lost"
-		if(last_icon_state != program_icon_state)
-			computer.update_appearance()
-			last_icon_state = program_icon_state
-		return
-
-	var/here_turf = get_turf(computer)
-	var/target_turf = get_turf(signal)
-	var/trackdistance = get_dist_euclidian(here_turf, target_turf)
-	switch(trackdistance)
-		if(0)
-			program_icon_state = "[initial(program_icon_state)]direct"
-		if(1 to 12)
-			program_icon_state = "[initial(program_icon_state)]close"
-		if(13 to 24)
-			program_icon_state = "[initial(program_icon_state)]medium"
-		if(25 to INFINITY)
-			program_icon_state = "[initial(program_icon_state)]far"
-
-	if(last_icon_state != program_icon_state)
-		computer.update_appearance()
-		last_icon_state = program_icon_state
-	computer.setDir(get_dir(here_turf, target_turf))
-
-//We can use process_tick to restart fast processing, since the computer will be running this constantly either way.
-/datum/radar/process_tick(delta_time)
-	if(computer.active_program == src)
-		START_PROCESSING(SSfastprocess, src)
-*/
-
+// a version that tracks an advanced PDT/L bracelet
 /datum/radar/advanced_pdtl
 	var/obj/item/device/pdt_locator_tube/advanced/typed_holder
 
@@ -231,9 +192,6 @@
 /datum/radar/lifeline/New(atom/holder, faction)
 	. = ..()
 	src.faction = faction
-
-/datum/radar/lifeline/ui_state(mob/user)
-	return GLOB.not_incapacitated_state
 
 /datum/radar/lifeline/find_atom()
 	return locate(selected) in GLOB.human_mob_list

@@ -27,9 +27,6 @@ var/list/sqrtTable = list(1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 4, 4, 4, 
 // cosecant
 #define Csc(x) (1 / sin(x))
 
-/// Gets the sign of x, returns -1 if negative, 0 if 0, 1 if positive
-#define SIGN(x) ( ((x) > 0) - ((x) < 0) )
-
 #define Default(a, b) (a ? a : b)
 #define Floor(x) (round(x))
 

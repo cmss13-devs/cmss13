@@ -226,6 +226,14 @@
 
 ///A program that tracks crew members via suit sensors
 /datum/radar/lifeline
+	var/faction
+
+/datum/radar/lifeline/New(atom/holder, faction)
+	. = ..()
+	src.faction = faction
+
+/datum/radar/lifeline/ui_state(mob/user)
+	return GLOB.not_incapacitated_state
 
 /datum/radar/lifeline/find_atom()
 	return locate(selected) in GLOB.human_mob_list
@@ -252,8 +260,10 @@
 	if(!humanoid || !istype(humanoid))
 		return FALSE
 	if(..())
-		if (istype(humanoid.w_uniform, /obj/item/clothing/under))
+		if(humanoid.faction != faction)
+			return FALSE
+		if(istype(humanoid.w_uniform, /obj/item/clothing/under))
 			var/obj/item/clothing/under/uniform = humanoid.w_uniform
-			if(uniform.has_sensor && uniform.sensor_mode >= 3) // Suit sensors must be on maximum
+			if(uniform.has_sensor && uniform.sensor_mode >= SENSOR_MODE_LOCATION) // Suit sensors must be on maximum
 				return TRUE
 	return FALSE

@@ -208,6 +208,13 @@
 			var/obj/item/card/id/ID = humanoid.wear_id.GetID()
 			if(ID?.registered_name)
 				crewmember_name = ID.registered_name
+		switch(humanoid.state)
+			if(CONSCIOUS)
+				crewmember_name = "[crewmember_name] (Conscious)"
+			if(UNCONSCIOUS)
+				crewmember_name = "[crewmember_name] (Unconscious)"
+			if(DEAD)
+				crewmember_name = "[crewmember_name] (DEAD)"
 		var/list/crewinfo = list(
 			ref = REF(humanoid),
 			name = crewmember_name,

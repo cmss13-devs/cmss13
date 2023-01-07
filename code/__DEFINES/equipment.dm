@@ -39,9 +39,9 @@
 /// Initialized by SSatoms.
 #define INITIALIZED (1<<15)
 /// Has run Decorate() as part of subsystem init
-#define ATOM_DECORATED            (1<<16)
+#define ATOM_DECORATED (1<<16)
 /// Whether or not the object uses hearing
-#define USES_HEARING		      (1<<17)
+#define USES_HEARING (1<<17)
 
 //==========================================================================================
 

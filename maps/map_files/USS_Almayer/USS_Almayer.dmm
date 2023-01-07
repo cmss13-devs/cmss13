@@ -33421,8 +33421,8 @@
 	dir = 4
 	},
 /obj/structure/sign/safety/refridgeration{
-	step_x = 8;
-	step_y = 30
+	pixel_x = 8;
+	pixel_y = 30
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -53009,8 +53009,8 @@
 /area/almayer/hull/upper_hull/u_f_p)
 "kwM" = (
 /obj/structure/sign/safety/refridgeration{
-	step_y = -30;
-	step_x = 8
+	pixel_y = -30;
+	pixel_x = 8
 	},
 /turf/open/floor/almayer,
 /area/almayer/hallways/port_hallway)

@@ -266,7 +266,7 @@
 			return 1
 
 		return 0
-     
+
 	// if the move wasn't diagonal
 	else
 		return ..()

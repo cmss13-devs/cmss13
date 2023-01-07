@@ -30,8 +30,6 @@
 	var/list/mob_type_blacklist_typecache
 	/// Types that can use this emote regardless of their state.
 	var/list/mob_type_ignore_stat_typecache
-	/// Species that can use this emote.
-	var/list/species_type_allowed_typecache
 	/// In which state can you use this emote? (Check stat.dm for a full list of them)
 	var/stat_allowed = CONSCIOUS
 	/// Sound to play when emote is called.
@@ -46,6 +44,10 @@
 	var/can_message_change = FALSE
 	/// How long is the cooldown on the audio of the emote, if it has one?
 	var/audio_cooldown = 2 SECONDS
+	/// What message to make the user send with the emote?
+	var/say_message
+	/// What volume should the sound be played at?
+	var/volume = 50
 
 /datum/emote/New()
 	switch(mob_type_allowed_typecache)
@@ -88,10 +90,13 @@
 
 	log_emote("[user.name]/[user.key] : [msg]")
 
+	if(say_message)
+		user.say(say_message)
+
 	var/tmp_sound = get_sound(user)
 	if(tmp_sound && should_play_sound(user, intentional) && !TIMER_COOLDOWN_CHECK(user, type))
 		TIMER_COOLDOWN_START(user, type, audio_cooldown)
-		playsound(user, tmp_sound, 50, vary)
+		playsound(user, tmp_sound, volume, vary)
 
 	var/user_turf = get_turf(user)
 	if (user.client)
@@ -101,9 +106,9 @@
 			if(ghost.client.prefs.toggles_chat & CHAT_GHOSTSIGHT && !(ghost in viewers(user_turf, null)))
 				ghost.show_message(formatted_message)
 	if(emote_type & (EMOTE_AUDIBLE | EMOTE_VISIBLE)) //emote is audible and visible
-		user.show_message(formatted_message, type = SHOW_MESSAGE_AUDIBLE, alt = "<span class='emote'>You see how <b>[user]</b> [msg]</span>")
+		user.audible_message(formatted_message)
 	else if(emote_type & EMOTE_VISIBLE)	//emote is only visible
-		user.show_message(formatted_message, type = SHOW_MESSAGE_VISIBLE)
+		user.visible_message(formatted_message, blind_message = "<span class='emote'>You see how <b>[user]</b> [msg]</span>")
 	if(emote_type & EMOTE_IMPORTANT)
 		for(var/mob/living/viewer in viewers())
 			if(is_blind(viewer) && isdeaf(viewer))

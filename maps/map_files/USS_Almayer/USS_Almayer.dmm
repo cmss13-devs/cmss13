@@ -56444,6 +56444,8 @@
 /area/almayer/lifeboat_pumps/south1)
 "lRP" = (
 /obj/structure/surface/table/almayer,
+/obj/item/prop/helmetgarb/chaplain_patch,
+/obj/item/prop/helmetgarb/chaplain_patch,
 /turf/open/floor/wood/ship,
 /area/almayer/living/chapel)
 "lRU" = (

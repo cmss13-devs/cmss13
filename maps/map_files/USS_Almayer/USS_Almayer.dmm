@@ -3196,20 +3196,6 @@
 	allow_construction = 0
 	},
 /area/almayer/stair_clone/upper)
-"aiL" = (
-/obj/effect/attach_point/weapon/dropship1/left_fore,
-/turf/closed/shuttle/dropship1/transparent{
-	icon_state = "84"
-	},
-/area/shuttle/drop1/sulaco)
-"aiM" = (
-/obj/effect/attach_point/electronics/dropship1{
-	dir = 1
-	},
-/turf/closed/shuttle/dropship1/transparent{
-	icon_state = "85"
-	},
-/area/shuttle/drop1/sulaco)
 "aiP" = (
 /obj/structure/machinery/light/small{
 	dir = 1;
@@ -3343,11 +3329,6 @@
 	tag = "icon-redfull"
 	},
 /area/almayer/command/cic)
-"ajn" = (
-/turf/closed/shuttle/dropship1/transparent{
-	icon_state = "86"
-	},
-/area/shuttle/drop1/sulaco)
 "ajo" = (
 /turf/closed/wall/almayer/white,
 /area/almayer/medical/medical_science)
@@ -3605,11 +3586,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/lifeboat_pumps/north1)
-"ajU" = (
-/turf/closed/shuttle/dropship1/transparent{
-	icon_state = "89"
-	},
-/area/shuttle/drop1/sulaco)
 "ajV" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 10;
@@ -3845,14 +3821,6 @@
 "akC" = (
 /turf/closed/wall/almayer/reinforced,
 /area/almayer/shipboard/starboard_missiles)
-"akD" = (
-/obj/effect/attach_point/electronics/dropship1{
-	dir = 1
-	},
-/turf/closed/shuttle/dropship1/transparent{
-	icon_state = "90"
-	},
-/area/shuttle/drop1/sulaco)
 "akE" = (
 /obj/structure/machinery/door_control{
 	id = "or2privacyshutter";
@@ -3872,12 +3840,6 @@
 	tag = "icon-wall6"
 	},
 /area/almayer/evacuation/pod7)
-"akG" = (
-/obj/effect/attach_point/weapon/dropship1/right_fore,
-/turf/closed/shuttle/dropship1/transparent{
-	icon_state = "91"
-	},
-/area/shuttle/drop1/sulaco)
 "akH" = (
 /obj/structure/machinery/light,
 /obj/structure/disposalpipe/segment{
@@ -4334,12 +4296,6 @@
 "alX" = (
 /turf/open/floor/almayer,
 /area/almayer/command/cic)
-"alY" = (
-/turf/closed/shuttle/dropship1{
-	icon_state = "75";
-	tag = "icon-75"
-	},
-/area/shuttle/drop1/sulaco)
 "alZ" = (
 /turf/open/floor/almayer{
 	icon_state = "red";
@@ -4681,12 +4637,6 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/almayer,
 /area/almayer/command/cichallway)
-"amZ" = (
-/turf/closed/shuttle/dropship1{
-	icon_state = "83";
-	tag = "icon-90"
-	},
-/area/shuttle/drop1/sulaco)
 "ana" = (
 /obj/structure/sign/safety/hazard{
 	pixel_x = -17;
@@ -4723,11 +4673,6 @@
 /obj/effect/landmark/yautja_teleport,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/pilotbunks)
-"ane" = (
-/turf/closed/shuttle/dropship1/transparent{
-	icon_state = "71"
-	},
-/area/shuttle/drop1/sulaco)
 "anf" = (
 /turf/open/floor/almayer{
 	icon_state = "silvercorner";
@@ -5144,11 +5089,6 @@
 	tag = "icon-silver (WEST)"
 	},
 /area/almayer/command/cichallway)
-"aon" = (
-/turf/closed/shuttle/dropship1/transparent{
-	icon_state = "74"
-	},
-/area/shuttle/drop1/sulaco)
 "aop" = (
 /obj/structure/closet/secure_closet/personal/patient{
 	name = "morgue closet"
@@ -5571,12 +5511,6 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/hallways/port_hallway)
-"apn" = (
-/obj/effect/attach_point/weapon/dropship1/left_wing,
-/turf/closed/shuttle/dropship1/transparent{
-	icon_state = "61"
-	},
-/area/shuttle/drop1/sulaco)
 "apo" = (
 /obj/structure/disposalpipe/trunk,
 /obj/structure/machinery/disposal,
@@ -5647,12 +5581,6 @@
 	tag = "icon-blue (NORTH)"
 	},
 /area/almayer/hallways/aft_hallway)
-"apy" = (
-/obj/effect/attach_point/weapon/dropship1/right_wing,
-/turf/closed/shuttle/dropship1/transparent{
-	icon_state = "65"
-	},
-/area/shuttle/drop1/sulaco)
 "apz" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/door_control{
@@ -5691,12 +5619,6 @@
 /obj/effect/step_trigger/clone_cleaner,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/starboard_hallway)
-"apD" = (
-/turf/closed/shuttle/dropship1{
-	icon_state = "46";
-	tag = "icon-46"
-	},
-/area/shuttle/drop1/sulaco)
 "apE" = (
 /turf/open/floor/almayer{
 	dir = 9;
@@ -6086,12 +6008,6 @@
 	tag = "icon-test_floor4"
 	},
 /area/almayer/living/pilotbunks)
-"aqA" = (
-/turf/closed/shuttle/dropship1{
-	icon_state = "49";
-	tag = "icon-49"
-	},
-/area/shuttle/drop1/sulaco)
 "aqC" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 5;
@@ -6144,11 +6060,6 @@
 	tag = "icon-red (NORTHEAST)"
 	},
 /area/almayer/command/lifeboat)
-"aqL" = (
-/turf/closed/shuttle/dropship1/transparent{
-	icon_state = "40"
-	},
-/area/shuttle/drop1/sulaco)
 "aqM" = (
 /obj/effect/projector{
 	name = "Almayer_Up2";
@@ -6244,21 +6155,11 @@
 	tag = "icon-orange (NORTH)"
 	},
 /area/almayer/engineering/engineering_workshop/hangar)
-"aqX" = (
-/turf/closed/shuttle/dropship1/transparent{
-	icon_state = "41"
-	},
-/area/shuttle/drop1/sulaco)
 "aqY" = (
 /obj/structure/window/framed/almayer,
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /turf/open/floor/plating,
 /area/almayer/engineering/upper_engineering)
-"ara" = (
-/turf/closed/shuttle/dropship1/transparent{
-	icon_state = "44"
-	},
-/area/shuttle/drop1/sulaco)
 "arb" = (
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/medical/morgue)
@@ -6382,11 +6283,6 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/hallways/starboard_hallway)
-"aro" = (
-/turf/closed/shuttle/dropship1/transparent{
-	icon_state = "45"
-	},
-/area/shuttle/drop1/sulaco)
 "arp" = (
 /obj/item/roller,
 /obj/item/roller,
@@ -6435,12 +6331,6 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/hull/upper_hull/u_m_s)
-"arv" = (
-/turf/closed/shuttle/dropship1{
-	icon_state = "7";
-	tag = "icon-7"
-	},
-/area/shuttle/drop1/sulaco)
 "arw" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/disposalpipe/junction{
@@ -6485,12 +6375,6 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/engineering/upper_engineering)
-"arB" = (
-/turf/closed/shuttle/dropship1{
-	icon_state = "8";
-	tag = "icon-8"
-	},
-/area/shuttle/drop1/sulaco)
 "arC" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/machinery/light{
@@ -6504,9 +6388,6 @@
 	tag = "icon-orange (EAST)"
 	},
 /area/almayer/engineering/engineering_workshop/hangar)
-"arD" = (
-/turf/closed/shuttle/dropship1/transparent,
-/area/shuttle/drop1/sulaco)
 "arE" = (
 /obj/structure/pipes/vents/pump{
 	dir = 4
@@ -6597,11 +6478,6 @@
 	tag = "icon-silver (NORTH)"
 	},
 /area/almayer/command/cic)
-"arQ" = (
-/turf/closed/shuttle/dropship1/transparent{
-	icon_state = "2"
-	},
-/area/shuttle/drop1/sulaco)
 "arR" = (
 /obj/structure/machinery/status_display{
 	pixel_y = 30
@@ -6613,22 +6489,12 @@
 	tag = "icon-silver (NORTHEAST)"
 	},
 /area/almayer/command/cic)
-"arS" = (
-/turf/closed/shuttle/dropship1/transparent{
-	icon_state = "5"
-	},
-/area/shuttle/drop1/sulaco)
 "arT" = (
 /obj/structure/target{
 	name = "punching bag"
 	},
 /turf/open/floor/almayer,
 /area/almayer/living/gym)
-"arU" = (
-/turf/closed/shuttle/dropship1/transparent{
-	icon_state = "6"
-	},
-/area/shuttle/drop1/sulaco)
 "arV" = (
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/command/lifeboat)
@@ -16863,21 +16729,6 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/hallways/hangar)
-"baT" = (
-/turf/closed/shuttle/dropship1/transparent{
-	icon_state = "100"
-	},
-/area/shuttle/drop1/sulaco)
-"baU" = (
-/turf/closed/shuttle/dropship1/transparent{
-	icon_state = "101"
-	},
-/area/shuttle/drop1/sulaco)
-"baW" = (
-/turf/closed/shuttle/dropship1/transparent{
-	icon_state = "102"
-	},
-/area/shuttle/drop1/sulaco)
 "baX" = (
 /obj/structure/machinery/landinglight/ds1/delaythree{
 	dir = 8;
@@ -17335,33 +17186,6 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/hallways/hangar)
-"bcr" = (
-/turf/closed/shuttle/dropship1{
-	icon_state = "95";
-	tag = "icon-75"
-	},
-/area/shuttle/drop1/sulaco)
-"bcs" = (
-/turf/closed/shuttle/dropship1/transparent{
-	icon_state = "96"
-	},
-/area/shuttle/drop1/sulaco)
-"bct" = (
-/turf/closed/shuttle/dropship1/transparent{
-	icon_state = "97"
-	},
-/area/shuttle/drop1/sulaco)
-"bcu" = (
-/turf/closed/shuttle/dropship1/transparent{
-	icon_state = "98"
-	},
-/area/shuttle/drop1/sulaco)
-"bcv" = (
-/turf/closed/shuttle/dropship1{
-	icon_state = "99";
-	tag = "icon-75"
-	},
-/area/shuttle/drop1/sulaco)
 "bcw" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
@@ -17834,53 +17658,6 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/hallways/hangar)
-"beb" = (
-/turf/closed/shuttle/dropship1{
-	icon_state = "92";
-	tag = "icon-90"
-	},
-/area/shuttle/drop1/sulaco)
-"bec" = (
-/obj/structure/machinery/computer/security/dropship/one,
-/obj/structure/prop/ice_colony/hula_girl{
-	pixel_x = -10;
-	pixel_y = 16
-	},
-/obj/structure/blocker/invisible_wall,
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15";
-	tag = "icon-rasputin15"
-	},
-/area/shuttle/drop1/sulaco)
-"bed" = (
-/obj/structure/blocker/invisible_wall,
-/obj/structure/machinery/computer/shuttle_control/dropship1/onboard,
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15";
-	tag = "icon-rasputin15"
-	},
-/area/shuttle/drop1/sulaco)
-"bee" = (
-/obj/structure/machinery/computer/dropship_weapons/dropship1,
-/obj/structure/transmitter/rotary{
-	name = "Alamo Telephone";
-	phone_category = "Dropship";
-	phone_id = "Alamo";
-	pixel_x = 11;
-	pixel_y = 16
-	},
-/obj/structure/blocker/invisible_wall,
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15";
-	tag = "icon-rasputin15"
-	},
-/area/shuttle/drop1/sulaco)
-"bef" = (
-/turf/closed/shuttle/dropship1{
-	icon_state = "94";
-	tag = "icon-90"
-	},
-/area/shuttle/drop1/sulaco)
 "beg" = (
 /obj/structure/machinery/landinglight/ds1/delayone{
 	dir = 8;
@@ -18417,41 +18194,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/l_f_p)
-"bgd" = (
-/obj/structure/bed/chair/dropship/pilot{
-	dir = 1;
-	tag = "icon-pilot_chair (NORTH)"
-	},
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15";
-	tag = "icon-rasputin15"
-	},
-/area/shuttle/drop1/sulaco)
-"bge" = (
-/obj/item/device/radio/intercom/alamo{
-	layer = 3.5;
-	pixel_x = 21;
-	pixel_y = 43
-	},
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15";
-	tag = "icon-rasputin15"
-	},
-/area/shuttle/drop1/sulaco)
-"bgf" = (
-/obj/structure/bed/chair/dropship/pilot{
-	dir = 1;
-	tag = "icon-pilot_chair (NORTH)"
-	},
-/obj/structure/machinery/camera/autoname/almayer/dropship_one{
-	pixel_x = -6;
-	pixel_y = -16
-	},
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15";
-	tag = "icon-rasputin15"
-	},
-/area/shuttle/drop1/sulaco)
 "bgj" = (
 /obj/structure/machinery/landinglight/ds1{
 	dir = 8;
@@ -18925,48 +18667,6 @@
 	icon_state = "83"
 	},
 /area/shuttle/drop2/sulaco)
-"bij" = (
-/turf/closed/shuttle/dropship1{
-	icon_state = "76";
-	tag = "icon-76"
-	},
-/area/shuttle/drop1/sulaco)
-"bik" = (
-/turf/closed/shuttle/dropship1{
-	icon_state = "81";
-	tag = "icon-81"
-	},
-/area/shuttle/drop1/sulaco)
-"bil" = (
-/turf/closed/shuttle/dropship1{
-	icon_state = "78";
-	tag = "icon-78"
-	},
-/area/shuttle/drop1/sulaco)
-"bim" = (
-/obj/structure/machinery/door/airlock/hatch/cockpit{
-	req_access = null;
-	req_access_txt = "22";
-	req_one_access = null
-	},
-/obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15";
-	tag = "icon-rasputin15"
-	},
-/area/shuttle/drop1/sulaco)
-"bin" = (
-/turf/closed/shuttle/dropship1{
-	icon_state = "80";
-	tag = "icon-80"
-	},
-/area/shuttle/drop1/sulaco)
-"bio" = (
-/turf/closed/shuttle/dropship1{
-	icon_state = "77";
-	tag = "icon-77"
-	},
-/area/shuttle/drop1/sulaco)
 "biq" = (
 /obj/structure/surface/table/almayer,
 /obj/item/reagent_container/glass/beaker/large,
@@ -19346,74 +19046,6 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/hallways/hangar)
-"bkj" = (
-/turf/closed/shuttle/dropship1{
-	icon_state = "72";
-	tag = "icon-72"
-	},
-/area/shuttle/drop1/sulaco)
-"bkk" = (
-/obj/structure/bed/chair/dropship/passenger/shuttle_chair{
-	dir = 4
-	},
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15";
-	tag = "icon-rasputin15"
-	},
-/area/shuttle/drop1/sulaco)
-"bkl" = (
-/obj/item/device/radio/intercom/alamo{
-	pixel_y = 24
-	},
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin6";
-	tag = "icon-rasputin6"
-	},
-/area/shuttle/drop1/sulaco)
-"bkm" = (
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin5";
-	tag = "icon-rasputin5"
-	},
-/area/shuttle/drop1/sulaco)
-"bkn" = (
-/obj/structure/machinery/door_control{
-	id = "sh_dropship1";
-	name = "Dropship Lockdown";
-	normaldoorcontrol = 3;
-	pixel_y = -19;
-	req_one_access_txt = "3;22";
-	throw_range = 15
-	},
-/turf/open/shuttle/dropship{
-	icon_state = "floor8";
-	tag = "icon-floor8"
-	},
-/area/shuttle/drop1/sulaco)
-"bko" = (
-/obj/item/device/radio/intercom/alamo{
-	pixel_y = 24
-	},
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin7";
-	tag = "icon-rasputin7"
-	},
-/area/shuttle/drop1/sulaco)
-"bkp" = (
-/obj/structure/bed/chair/dropship/passenger/shuttle_chair{
-	dir = 8
-	},
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15";
-	tag = "icon-rasputin15"
-	},
-/area/shuttle/drop1/sulaco)
-"bkq" = (
-/turf/closed/shuttle/dropship1{
-	icon_state = "73";
-	tag = "icon-73"
-	},
-/area/shuttle/drop1/sulaco)
 "bks" = (
 /obj/structure/machinery/landinglight/ds1/delaytwo{
 	dir = 8;
@@ -19745,53 +19377,6 @@
 	icon_state = "70"
 	},
 /area/shuttle/drop2/sulaco)
-"blN" = (
-/turf/closed/shuttle/dropship1/transparent{
-	icon_state = "66"
-	},
-/area/shuttle/drop1/sulaco)
-"blO" = (
-/turf/closed/shuttle/dropship1{
-	icon_state = "67";
-	tag = "icon-67"
-	},
-/area/shuttle/drop1/sulaco)
-"blP" = (
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin3";
-	tag = "icon-rasputin3"
-	},
-/area/shuttle/drop1/sulaco)
-"blQ" = (
-/turf/closed/shuttle/dropship1{
-	icon_state = "68";
-	tag = "icon-68"
-	},
-/area/shuttle/drop1/sulaco)
-"blR" = (
-/obj/structure/machinery/camera/autoname/almayer/dropship_one{
-	dir = 8;
-	pixel_x = 16
-	},
-/obj/structure/bed/chair/dropship/passenger/shuttle_chair{
-	dir = 8
-	},
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15";
-	tag = "icon-rasputin15"
-	},
-/area/shuttle/drop1/sulaco)
-"blS" = (
-/turf/closed/shuttle/dropship1{
-	icon_state = "69";
-	tag = "icon-69"
-	},
-/area/shuttle/drop1/sulaco)
-"blT" = (
-/turf/closed/shuttle/dropship1/transparent{
-	icon_state = "70"
-	},
-/area/shuttle/drop1/sulaco)
 "blU" = (
 /obj/structure/machinery/light{
 	dir = 4;
@@ -20318,24 +19903,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/aft_hallway)
-"bnE" = (
-/turf/closed/shuttle/dropship1{
-	icon_state = "62";
-	tag = "icon-62"
-	},
-/area/shuttle/drop1/sulaco)
-"bnF" = (
-/turf/closed/shuttle/dropship1{
-	icon_state = "63";
-	tag = "icon-63"
-	},
-/area/shuttle/drop1/sulaco)
-"bnG" = (
-/turf/closed/shuttle/dropship1{
-	icon_state = "64";
-	tag = "icon-64"
-	},
-/area/shuttle/drop1/sulaco)
 "bnH" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4;
@@ -20765,28 +20332,6 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/living/offices)
-"bpp" = (
-/obj/structure/machinery/door/airlock/dropship_hatch,
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15";
-	tag = "icon-rasputin15"
-	},
-/area/shuttle/drop1/sulaco)
-"bpq" = (
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15";
-	tag = "icon-rasputin15"
-	},
-/area/shuttle/drop1/sulaco)
-"bpr" = (
-/obj/structure/machinery/door/airlock/dropship_hatch{
-	dir = 8
-	},
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15";
-	tag = "icon-rasputin15"
-	},
-/area/shuttle/drop1/sulaco)
 "bpv" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
@@ -21379,12 +20924,6 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/hull/upper_hull/u_f_s)
-"bsg" = (
-/turf/closed/shuttle/dropship1{
-	icon_state = "53";
-	tag = "icon-53"
-	},
-/area/shuttle/drop1/sulaco)
 "bsj" = (
 /turf/open/floor/almayer{
 	dir = 8;
@@ -21809,39 +21348,6 @@
 "btO" = (
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/hangar)
-"btP" = (
-/turf/closed/shuttle/dropship1{
-	icon_state = "50";
-	tag = "icon-50"
-	},
-/area/shuttle/drop1/sulaco)
-"btQ" = (
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin4";
-	tag = "icon-rasputin4"
-	},
-/area/shuttle/drop1/sulaco)
-"btR" = (
-/obj/item/device/radio/intercom/alamo{
-	pixel_y = 24
-	},
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin5";
-	tag = "icon-rasputin5"
-	},
-/area/shuttle/drop1/sulaco)
-"btS" = (
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin8";
-	tag = "icon-rasputin8"
-	},
-/area/shuttle/drop1/sulaco)
-"btT" = (
-/turf/closed/shuttle/dropship1{
-	icon_state = "51";
-	tag = "icon-51"
-	},
-/area/shuttle/drop1/sulaco)
 "btU" = (
 /turf/open/floor/almayer{
 	icon_state = "sterile_green";
@@ -22191,25 +21697,6 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/command/corporateliason)
-"bvn" = (
-/turf/closed/shuttle/dropship1{
-	icon_state = "47";
-	tag = "icon-47"
-	},
-/area/shuttle/drop1/sulaco)
-"bvo" = (
-/obj/structure/bed/chair/dropship/passenger,
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15";
-	tag = "icon-rasputin15"
-	},
-/area/shuttle/drop1/sulaco)
-"bvp" = (
-/turf/closed/shuttle/dropship1{
-	icon_state = "48";
-	tag = "icon-48"
-	},
-/area/shuttle/drop1/sulaco)
 "bvr" = (
 /obj/structure/bed/chair/office/dark,
 /obj/effect/decal/warning_stripes{
@@ -22536,30 +22023,6 @@
 	icon_state = "mono"
 	},
 /area/almayer/engineering/upper_engineering)
-"bwC" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
-	pixel_x = -30
-	},
-/obj/structure/bed/chair/dropship/passenger/shuttle_chair{
-	dir = 4
-	},
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15";
-	tag = "icon-rasputin15"
-	},
-/area/shuttle/drop1/sulaco)
-"bwD" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
-	pixel_x = 30
-	},
-/obj/structure/bed/chair/dropship/passenger/shuttle_chair{
-	dir = 8
-	},
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15";
-	tag = "icon-rasputin15"
-	},
-/area/shuttle/drop1/sulaco)
 "bwF" = (
 /obj/structure/machinery/light/small{
 	dir = 1;
@@ -22856,39 +22319,6 @@
 	icon_state = "39"
 	},
 /area/shuttle/drop2/sulaco)
-"bxR" = (
-/turf/closed/shuttle/dropship1/transparent{
-	icon_state = "34"
-	},
-/area/shuttle/drop1/sulaco)
-"bxS" = (
-/turf/closed/shuttle/dropship1/transparent{
-	icon_state = "35"
-	},
-/area/shuttle/drop1/sulaco)
-"bxT" = (
-/obj/structure/machinery/camera/autoname/almayer/dropship_one{
-	dir = 4;
-	pixel_x = -16
-	},
-/obj/structure/bed/chair/dropship/passenger/shuttle_chair{
-	dir = 4
-	},
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15";
-	tag = "icon-rasputin15"
-	},
-/area/shuttle/drop1/sulaco)
-"bxU" = (
-/turf/closed/shuttle/dropship1/transparent{
-	icon_state = "38"
-	},
-/area/shuttle/drop1/sulaco)
-"bxV" = (
-/turf/closed/shuttle/dropship1/transparent{
-	icon_state = "39"
-	},
-/area/shuttle/drop1/sulaco)
 "bxX" = (
 /obj/structure/sign/safety/hvac_old{
 	pixel_x = 8;
@@ -23252,42 +22682,6 @@
 /obj/item/bedsheet/orange,
 /turf/open/floor/wood/ship,
 /area/almayer/command/corporateliason)
-"byZ" = (
-/obj/effect/attach_point/fuel/dropship1,
-/turf/closed/shuttle/dropship1/transparent{
-	icon_state = "28"
-	},
-/area/shuttle/drop1/sulaco)
-"bza" = (
-/turf/closed/shuttle/dropship1/transparent{
-	icon_state = "29"
-	},
-/area/shuttle/drop1/sulaco)
-"bzb" = (
-/turf/closed/shuttle/dropship1{
-	icon_state = "30";
-	tag = "icon-42"
-	},
-/area/shuttle/drop1/sulaco)
-"bzc" = (
-/turf/closed/shuttle/dropship1{
-	icon_state = "31";
-	tag = "icon-43"
-	},
-/area/shuttle/drop1/sulaco)
-"bzd" = (
-/turf/closed/shuttle/dropship1/transparent{
-	icon_state = "32"
-	},
-/area/shuttle/drop1/sulaco)
-"bze" = (
-/obj/effect/attach_point/fuel/dropship1{
-	pixel_x = -32
-	},
-/turf/closed/shuttle/dropship1/transparent{
-	icon_state = "33"
-	},
-/area/shuttle/drop1/sulaco)
 "bzg" = (
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile";
@@ -23599,45 +22993,6 @@
 "bAs" = (
 /turf/closed/wall/almayer/outer,
 /area/almayer/shipboard/weapon_room)
-"bAv" = (
-/turf/closed/shuttle/dropship1/transparent{
-	icon_state = "22"
-	},
-/area/shuttle/drop1/sulaco)
-"bAw" = (
-/turf/closed/shuttle/dropship1/transparent{
-	icon_state = "23"
-	},
-/area/shuttle/drop1/sulaco)
-"bAx" = (
-/turf/closed/shuttle/dropship1{
-	icon_state = "24";
-	tag = "icon-42"
-	},
-/area/shuttle/drop1/sulaco)
-"bAy" = (
-/obj/effect/attach_point/crew_weapon/dropship1,
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin3";
-	tag = "icon-rasputin3"
-	},
-/area/shuttle/drop1/sulaco)
-"bAz" = (
-/turf/closed/shuttle/dropship1{
-	icon_state = "25";
-	tag = "icon-43"
-	},
-/area/shuttle/drop1/sulaco)
-"bAA" = (
-/turf/closed/shuttle/dropship1/transparent{
-	icon_state = "26"
-	},
-/area/shuttle/drop1/sulaco)
-"bAB" = (
-/turf/closed/shuttle/dropship1/transparent{
-	icon_state = "27"
-	},
-/area/shuttle/drop1/sulaco)
 "bAF" = (
 /obj/effect/step_trigger/clone_cleaner,
 /turf/open/floor/almayer,
@@ -24022,26 +23377,6 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/living/briefing)
-"bBS" = (
-/turf/closed/shuttle/dropship1/transparent{
-	icon_state = "16"
-	},
-/area/shuttle/drop1/sulaco)
-"bBT" = (
-/turf/closed/shuttle/dropship1/transparent{
-	icon_state = "17"
-	},
-/area/shuttle/drop1/sulaco)
-"bBU" = (
-/turf/closed/shuttle/dropship1/transparent{
-	icon_state = "20"
-	},
-/area/shuttle/drop1/sulaco)
-"bBV" = (
-/turf/closed/shuttle/dropship1/transparent{
-	icon_state = "21"
-	},
-/area/shuttle/drop1/sulaco)
 "bBY" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/computer/security/almayer{
@@ -24396,42 +23731,11 @@
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/closed/wall/almayer,
 /area/almayer/hallways/hangar)
-"bDp" = (
-/turf/closed/shuttle/dropship1{
-	icon_state = "9";
-	tag = "icon-9"
-	},
-/area/shuttle/drop1/sulaco)
-"bDq" = (
-/turf/closed/shuttle/dropship1{
-	icon_state = "10";
-	tag = "icon-10"
-	},
-/area/shuttle/drop1/sulaco)
-"bDr" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/ds1,
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15";
-	tag = "icon-rasputin15"
-	},
-/area/shuttle/drop1/sulaco)
 "bDs" = (
 /turf/open/floor/prison{
 	icon_state = "kitchen"
 	},
 /area/almayer/living/grunt_rnr)
-"bDt" = (
-/turf/closed/shuttle/dropship1{
-	icon_state = "14";
-	tag = "icon-14"
-	},
-/area/shuttle/drop1/sulaco)
-"bDu" = (
-/turf/closed/shuttle/dropship1{
-	icon_state = "15";
-	tag = "icon-15"
-	},
-/area/shuttle/drop1/sulaco)
 "bDv" = (
 /obj/structure/machinery/cm_vending/clothing/medical_crew,
 /turf/open/floor/almayer{
@@ -25186,18 +24490,6 @@
 /obj/docking_port/stationary/marine_dropship/almayer_hangar_1,
 /turf/open/floor/plating,
 /area/almayer/hallways/hangar)
-"bFU" = (
-/turf/closed/shuttle/dropship1{
-	icon_state = "3";
-	tag = "icon-3"
-	},
-/area/shuttle/drop1/sulaco)
-"bFV" = (
-/turf/closed/shuttle/dropship1{
-	icon_state = "4";
-	tag = "icon-4"
-	},
-/area/shuttle/drop1/sulaco)
 "bGb" = (
 /turf/closed/wall/almayer,
 /area/almayer/hallways/port_hallway)
@@ -30248,15 +29540,6 @@
 	tag = "icon-silver (NORTHEAST)"
 	},
 /area/almayer/command/cichallway)
-"bYB" = (
-/obj/item/device/radio/intercom/alamo{
-	pixel_x = -10
-	},
-/turf/closed/shuttle/dropship1{
-	icon_state = "52";
-	tag = "icon-52"
-	},
-/area/shuttle/drop1/sulaco)
 "bYE" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
@@ -30268,15 +29551,6 @@
 	tag = "icon-orangecorner (EAST)"
 	},
 /area/almayer/hallways/port_hallway)
-"bYF" = (
-/obj/item/device/radio/intercom/alamo{
-	pixel_x = 10
-	},
-/turf/closed/shuttle/dropship1{
-	icon_state = "54";
-	tag = "icon-54"
-	},
-/area/shuttle/drop1/sulaco)
 "bYI" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/simple/hidden/supply,
@@ -58427,12 +57701,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/port_hallway)
-"mFL" = (
-/turf/closed/shuttle/dropship1{
-	icon_state = "43";
-	tag = "icon-43"
-	},
-/area/shuttle/drop1/sulaco)
 "mFM" = (
 /obj/structure/machinery/door_control{
 	id = "laddersoutheast";
@@ -70143,12 +69411,6 @@
 	tag = "icon-silver (WEST)"
 	},
 /area/almayer/shipboard/brig/cic_hallway)
-"rFh" = (
-/turf/closed/shuttle/dropship1{
-	icon_state = "42";
-	tag = "icon-42"
-	},
-/area/shuttle/drop1/sulaco)
 "rFs" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/item/folder/black,
@@ -108375,19 +107637,19 @@ baI
 baI
 baI
 baI
-ane
-blN
-apn
 baI
 baI
 baI
 baI
 baI
-aqL
-bxR
-byZ
-bAv
-bBS
+baI
+baI
+baI
+baI
+baI
+baI
+baI
+baI
 baI
 baI
 bFR
@@ -108576,24 +107838,24 @@ aZW
 baI
 baI
 baI
-aiL
-alY
-bkj
-blO
-bnE
-bpp
-bpp
-bYB
-btP
-apD
-aqX
-bxS
-bza
-bAw
-bBT
 baI
 baI
-arD
+baI
+baI
+baI
+baI
+baI
+baI
+baI
+baI
+baI
+baI
+baI
+baI
+baI
+baI
+baI
+baI
 bGN
 bHB
 xAY
@@ -108779,24 +108041,24 @@ aZX
 baI
 baI
 baI
-aiM
-bij
-bkk
-bkk
-bkk
-bpq
-bpq
-bkk
-bkk
-bvn
-rFh
-rFh
-bzb
-bAx
-rFh
-bDp
 baI
-arQ
+baI
+baI
+baI
+baI
+baI
+baI
+baI
+baI
+baI
+baI
+baI
+baI
+baI
+baI
+baI
+baI
+baI
 bGO
 bHB
 xAY
@@ -108979,27 +108241,27 @@ ajM
 aTc
 bHB
 aZY
-baT
-bcr
-beb
-ajn
-bik
-bkl
-blP
-blP
-blP
-blP
-blP
-btQ
-bkk
-bwC
-bxT
-bkk
-bkk
-bkk
-bDq
-arv
-bFU
+baI
+baI
+baI
+baI
+baI
+baI
+baI
+baI
+baI
+baI
+baI
+baI
+baI
+baI
+baI
+baI
+baI
+baI
+baI
+baI
+baI
 bGP
 bHB
 xAY
@@ -109182,25 +108444,25 @@ eXq
 eVm
 bHB
 aZV
-baU
-bcs
-bec
-bgd
-bil
-bkm
-bkp
-bkp
-bkp
-bkp
-bkp
-bkm
-blP
-blP
-blP
-blP
-blP
-blP
-bDr
+baI
+baI
+baI
+baI
+baI
+baI
+baI
+baI
+baI
+baI
+baI
+baI
+baI
+baI
+baI
+baI
+baI
+baI
+baI
 baI
 baI
 bGM
@@ -109385,25 +108647,25 @@ ajM
 aTc
 bHB
 aZW
-baU
-bct
-bed
-bge
-bim
-bkn
-blQ
-bnF
-bnF
-bnF
-bsg
-btR
-bvo
-bAy
-blP
-bAy
-blP
-bAy
-bpq
+baI
+baI
+baI
+baI
+baI
+baI
+baI
+baI
+baI
+baI
+baI
+baI
+baI
+baI
+baI
+baI
+baI
+baI
+baI
 baI
 baI
 bGN
@@ -109588,25 +108850,25 @@ ajM
 aTc
 bHB
 aZX
-baU
-bcu
-bee
-bgf
-bin
-bkm
-bkk
-bkk
-bkk
-bkk
-bkk
-bkm
-blP
-blP
-blP
-blP
-blP
-blP
-bpq
+baI
+baI
+baI
+baI
+baI
+baI
+baI
+baI
+baI
+baI
+baI
+baI
+baI
+baI
+baI
+baI
+baI
+baI
+baI
 baI
 baI
 bGO
@@ -109791,27 +109053,27 @@ ajM
 aXj
 bHB
 aZY
-baW
-bcv
-bef
-ajU
-bio
-bko
-blP
-blP
-blP
-blP
-blP
-btS
-bkp
-bwD
-bkp
-bkp
-bkp
-bkp
-bDt
-arB
-bFV
+baI
+baI
+baI
+baI
+baI
+baI
+baI
+baI
+baI
+baI
+baI
+baI
+baI
+baI
+baI
+baI
+baI
+baI
+baI
+baI
+baI
 bGP
 bHB
 vxb
@@ -109997,24 +109259,24 @@ aZV
 baI
 baI
 baI
-akD
-bij
-bkp
-blR
-bkp
-bpq
-bpq
-bkp
-bkp
-bvp
-mFL
-mFL
-bzc
-bAz
-mFL
-bDu
 baI
-arS
+baI
+baI
+baI
+baI
+baI
+baI
+baI
+baI
+baI
+baI
+baI
+baI
+baI
+baI
+baI
+baI
+baI
 bGM
 bHB
 btO
@@ -110200,24 +109462,24 @@ aZW
 baI
 baI
 baI
-akG
-amZ
-bkq
-blS
-bnG
-bpr
-bpr
-bYF
-btT
-aqA
-ara
-bxU
-bzd
-bAA
-bBU
 baI
 baI
-arU
+baI
+baI
+baI
+baI
+baI
+baI
+baI
+baI
+baI
+baI
+baI
+baI
+baI
+baI
+baI
+baI
 bGN
 bHB
 btO
@@ -110405,19 +109667,19 @@ baI
 baI
 baI
 baI
-aon
-blT
-apy
 baI
 baI
 baI
 baI
 baI
-aro
-bxV
-bze
-bAB
-bBV
+baI
+baI
+baI
+baI
+baI
+baI
+baI
+baI
 baI
 baI
 baI

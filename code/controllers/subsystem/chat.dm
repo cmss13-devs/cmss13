@@ -12,13 +12,10 @@ SUBSYSTEM_DEF(chat)
 
 	var/list/payload_by_client = list()
 
-/* This only works for newer versions of the Master Controller!
- *
 /datum/controller/subsystem/chat/Initialize()
 	// Just used by chat system to know that initialization is nearly finished.
 	// The to_chat checks could probably check the runlevel instead, but would require testing.
 	return SS_INIT_SUCCESS
-*/
 
 /datum/controller/subsystem/chat/fire()
 	for(var/key in payload_by_client)

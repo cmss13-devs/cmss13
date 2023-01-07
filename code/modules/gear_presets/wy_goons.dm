@@ -5,7 +5,7 @@
 	idtype = /obj/item/card/id/silver/cl
 	faction = FACTION_WY
 	faction_group = list(FACTION_WY)
-	languages = list(LANGUAGE_ENGLISH)
+	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
 
 /datum/equipment_preset/goon/New()
 	. = ..()
@@ -65,7 +65,7 @@
 	skills = /datum/skills/MP
 
 /datum/equipment_preset/goon/standard/load_gear(mob/living/carbon/human/H)
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/goon, WEAR_L_EAR)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/WY, WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/PMC/corporate, WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/PMC/light/corporate, WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran, WEAR_HANDS)
@@ -94,7 +94,7 @@
 	skills = /datum/skills/MP
 
 /datum/equipment_preset/goon/lead/load_gear(mob/living/carbon/human/H)
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/goon, WEAR_L_EAR)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/WY, WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/PMC/corporate/lead, WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/PMC/light/corporate/lead, WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran, WEAR_HANDS)

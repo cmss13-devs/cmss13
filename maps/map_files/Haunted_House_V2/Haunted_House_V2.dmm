@@ -998,9 +998,7 @@
 "du" = (
 /obj/effect/landmark/crap_item,
 /turf/open/floor/plating,
-/area/shuttle/drop2/LV624{
-	name = "\improper Almayer Dropship 2"
-	})
+/area/shuttle/drop2/LV624)
 "dw" = (
 /turf/open/floor/plating{
 	dir = 4;
@@ -4780,9 +4778,7 @@
 /area/event/underground_no_CAS/dynamic)
 "px" = (
 /turf/open/floor/plating,
-/area/shuttle/drop2/LV624{
-	name = "\improper Almayer Dropship 2"
-	})
+/area/shuttle/drop2/LV624)
 "py" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/reagentgrinder,
@@ -6769,9 +6765,7 @@
 "vk" = (
 /obj/effect/landmark/crap_item,
 /turf/open/floor/plating,
-/area/shuttle/drop1/LV624{
-	name = "\improper Almayer Dropship 1"
-	})
+/area/shuttle/drop1/LV624)
 "vl" = (
 /obj/effect/spider/stickyweb,
 /mob/living/simple_animal/mouse/gray,
@@ -13111,9 +13105,7 @@
 "OQ" = (
 /obj/effect/landmark/hunter_secondary,
 /turf/open/floor/plating,
-/area/shuttle/drop1/LV624{
-	name = "\improper Almayer Dropship 1"
-	})
+/area/shuttle/drop1/LV624)
 "OT" = (
 /obj/structure/barricade/metal/wired{
 	dir = 4;
@@ -16334,9 +16326,7 @@
 /area/event/underground_no_CAS/dynamic)
 "Zj" = (
 /turf/open/floor/plating,
-/area/shuttle/drop1/LV624{
-	name = "\improper Almayer Dropship 1"
-	})
+/area/shuttle/drop1/LV624)
 "Zk" = (
 /obj/structure/fence,
 /turf/open/floor{

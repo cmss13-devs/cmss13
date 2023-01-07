@@ -17,6 +17,9 @@
 /area/lv624/lazarus/hydroponics)
 "bk" = (
 /obj/item/tool/extinguisher,
+/obj/effect/decal/cleanable/blood/tracks/footprints{
+	dir = 1
+	},
 /turf/open/floor{
 	icon_state = "platingdmg1"
 	},
@@ -37,7 +40,7 @@
 "ck" = (
 /obj/effect/decal/cleanable/blood/xeno,
 /turf/open/floor/plating,
-/area/lv624/lazarus/medbay)
+/area/lv624/lazarus/hydroponics)
 "cQ" = (
 /obj/effect/decal/cleanable/blood/xeno,
 /turf/open/floor/plating{
@@ -64,6 +67,22 @@
 	icon_state = "grassdirt_corner2"
 	},
 /area/lv624/ground/colony/south_medbay_road)
+"ft" = (
+/obj/item/clothing/gloves/marine/veteran/PMC{
+	name = "damaged WY PMC gloves";
+	armor_bio = 10;
+	armor_bomb = 10;
+	armor_bullet = 15;
+	armor_energy = 15;
+	armor_internaldamage = 15;
+	armor_laser = 15;
+	armor_melee = 15;
+	armor_rad = 10
+	},
+/turf/open/floor{
+	icon_state = "platingdmg1"
+	},
+/area/lv624/lazarus/hydroponics)
 "fX" = (
 /obj/item/device/analyzer/plant_analyzer,
 /obj/effect/spawner/random/claymore,
@@ -121,6 +140,14 @@
 /obj/structure/girder,
 /turf/open/floor,
 /area/lv624/lazarus/hydroponics)
+"km" = (
+/obj/effect/decal/cleanable/blood/tracks/footprints{
+	dir = 1
+	},
+/turf/open/floor/plating{
+	icon_state = "panelscorched"
+	},
+/area/lv624/lazarus/hydroponics)
 "kD" = (
 /obj/item/reagent_container/glass/bucket,
 /turf/open/floor/plating{
@@ -140,8 +167,30 @@
 	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/hydroponics)
+"mK" = (
+/obj/item/clothing/suit/storage/marine/veteran/PMC/light/synth{
+	desc = "A modification of the standard Armat Systems M3 armor. This variant was designed for PMC Support Units in the field, offering protection and storage while not restricting movement. This set seems damaged...";
+	name = "damaged M4 synthetic PMC armor";
+	slowdown = 1;
+	pixel_x = -5;
+	pixel_y = -5
+	},
+/obj/effect/spawner/gibspawner/robot,
+/obj/item/limb/head/synth{
+	pixel_x = 9;
+	pixel_y = 3;
+	name = "shattered synthetic head";
+	desc = "This appears to be the head of a synthetic, though it it is so destroyed there is no way in hell anyone is going to bring it back to even basic functionality."
+	},
+/obj/item/robot_parts/arm/l_arm,
+/turf/open/floor{
+	dir = 9;
+	icon_state = "green"
+	},
+/area/lv624/lazarus/hydroponics)
 "np" = (
-/obj/item/tool/weldingtool,
+/obj/item/tool/weldingtool/simple,
+/obj/item/stack/sheet/wood,
 /turf/open/floor{
 	dir = 9;
 	icon_state = "green"
@@ -171,13 +220,12 @@
 /turf/open/floor{
 	icon_state = "platingdmg1"
 	},
-/area/lv624/lazarus/medbay)
+/area/lv624/lazarus/hydroponics)
 "se" = (
 /obj/structure/fence,
 /turf/open/gm/dirtgrassborder,
 /area/lv624/ground/colony/south_medbay_road)
 "tK" = (
-/obj/effect/landmark/corpsespawner/pmc,
 /obj/structure/barricade/deployable{
 	damage_state = 3;
 	dir = 1;
@@ -186,26 +234,39 @@
 	},
 /obj/effect/decal/cleanable/blood,
 /obj/item/weapon/gun/smg/fp9000,
-/obj/item/ammo_magazine/smg/fp9000,
-/obj/item/ammo_magazine/smg/fp9000,
+/obj/item/clothing/under/marine/veteran/PMC/leader{
+	pixel_x = -7
+	},
 /turf/open/floor/plating{
 	icon_state = "panelscorched"
 	},
 /area/lv624/lazarus/hydroponics)
 "vm" = (
-/obj/item/weapon/gun/rifle/nsg23/no_lock,
+/obj/item/stack/sheet/wood{
+	amount = 16
+	},
+/obj/item/ammo_magazine/rifle/nsg23{
+	current_rounds = 13
+	},
+/obj/effect/spawner/gibspawner/human,
+/obj/item/clothing/head/helmet/marine/veteran/PMC{
+	pixel_x = -6;
+	pixel_y = 8
+	},
 /turf/open/floor/plating{
 	icon_state = "platingdmg3"
 	},
 /area/lv624/lazarus/hydroponics)
 "xa" = (
-/obj/effect/landmark/corpsespawner/pmc,
 /obj/effect/decal/cleanable/blood,
-/obj/item/ammo_magazine/rifle/nsg23,
-/obj/item/ammo_magazine/rifle/nsg23,
-/obj/item/ammo_magazine/rifle/nsg23,
-/obj/item/ammo_magazine/rifle/nsg23,
-/obj/item/ammo_magazine/rifle/nsg23,
+/obj/item/ammo_magazine/rifle/nsg23{
+	current_rounds = 2
+	},
+/obj/effect/spawner/gibspawner/human,
+/obj/item/clothing/under/marine/veteran/PMC{
+	pixel_x = 6;
+	pixel_y = 8
+	},
 /turf/open/floor/plating{
 	icon_state = "panelscorched"
 	},
@@ -217,6 +278,10 @@
 /area/lv624/lazarus/hydroponics)
 "xF" = (
 /obj/effect/decal/cleanable/blood,
+/obj/item/clothing/under/marine/veteran/PMC{
+	pixel_x = -7;
+	pixel_y = 9
+	},
 /turf/open/floor/plating{
 	icon_state = "panelscorched"
 	},
@@ -243,6 +308,11 @@
 /area/lv624/lazarus/hydroponics)
 "zj" = (
 /obj/item/stack/folding_barricade,
+/obj/item/ammo_magazine/rifle/nsg23{
+	current_rounds = 17
+	},
+/obj/effect/spawner/gibspawner/human,
+/obj/item/clothing/head/helmet/marine/veteran/PMC/leader,
 /turf/open/floor/plating,
 /area/lv624/lazarus/hydroponics)
 "zL" = (
@@ -259,8 +329,15 @@
 "zX" = (
 /obj/effect/decal/cleanable/blood,
 /obj/item/weapon/gun/smg/fp9000,
-/obj/item/ammo_magazine/smg/fp9000,
-/obj/item/ammo_magazine/smg/fp9000,
+/obj/item/ammo_magazine/smg/fp9000{
+	pixel_x = 1
+	},
+/obj/item/ammo_magazine/smg/fp9000{
+	pixel_x = -3
+	},
+/obj/structure/barricade/wooden{
+	dir = 8
+	},
 /turf/open/floor/plating{
 	icon_state = "panelscorched"
 	},
@@ -308,10 +385,12 @@
 	},
 /area/lv624/lazarus/hydroponics)
 "Fk" = (
-/turf/open/floor{
-	icon_state = "platingdmg1"
+/obj/item/clothing/head/helmet/marine/veteran/PMC{
+	pixel_x = -13;
+	pixel_y = 11
 	},
-/area/lv624/lazarus/medbay)
+/turf/open/floor/plating,
+/area/lv624/lazarus/hydroponics)
 "FJ" = (
 /obj/effect/decal/cleanable/blood/xeno,
 /turf/open/floor{
@@ -319,18 +398,24 @@
 	},
 /area/lv624/lazarus/hydroponics)
 "Ha" = (
-/obj/effect/landmark/corpsespawner/pmc,
 /obj/structure/barricade/deployable{
 	damage_state = 1;
 	dir = 1;
 	health = 245;
 	icon_state = "folding_1"
 	},
-/obj/item/ammo_magazine/rifle/nsg23,
-/obj/item/ammo_magazine/rifle/nsg23,
-/obj/item/ammo_magazine/rifle/nsg23,
-/obj/item/ammo_magazine/rifle/nsg23,
-/obj/item/ammo_magazine/rifle/nsg23,
+/obj/effect/landmark/corpsespawner/wy/manager,
+/obj/item/weapon/gun/pistol/vp78{
+	current_mag = null;
+	name = "dented VP78 pistol";
+	pixel_x = -5;
+	pixel_y = -4
+	},
+/obj/item/ammo_magazine/pistol/vp78{
+	current_rounds = 4;
+	name = "scratched VP78 magazine (9mm)";
+	pixel_x = 6
+	},
 /turf/open/floor/plating{
 	icon_state = "platingdmg3"
 	},
@@ -344,6 +429,9 @@
 /area/lv624/lazarus/hydroponics)
 "Jc" = (
 /obj/item/stack/sheet/metal,
+/obj/effect/decal/cleanable/blood/tracks/footprints{
+	dir = 1
+	},
 /turf/open/floor/plating{
 	icon_state = "panelscorched"
 	},
@@ -397,6 +485,9 @@
 	health = 50;
 	icon_state = "folding_3"
 	},
+/obj/item/ammo_magazine/rifle/nsg23,
+/obj/item/ammo_magazine/rifle/nsg23,
+/obj/item/ammo_magazine/rifle/nsg23,
 /turf/open/floor/plating{
 	icon_state = "panelscorched"
 	},
@@ -420,7 +511,7 @@
 "NO" = (
 /obj/effect/landmark/crap_item,
 /turf/open/floor/plating,
-/area/lv624/lazarus/medbay)
+/area/lv624/lazarus/hydroponics)
 "On" = (
 /obj/structure/window_frame/colony,
 /turf/open/floor{
@@ -460,6 +551,7 @@
 "OO" = (
 /obj/item/ammo_magazine/rifle/nsg23/extended,
 /obj/effect/landmark/objective_landmark/medium,
+/obj/item/stack/sheet/wood,
 /turf/open/floor/plating{
 	icon_state = "panelscorched"
 	},
@@ -472,16 +564,30 @@
 	},
 /area/lv624/lazarus/hydroponics)
 "Px" = (
-/obj/item/stack/sheet/metal,
-/turf/open/floor/plating{
-	icon_state = "platingdmg3"
+/obj/effect/decal/cleanable/blood/tracks/footprints{
+	dir = 1
 	},
-/area/lv624/lazarus/medbay)
+/turf/open/floor{
+	icon_state = "platingdmg1"
+	},
+/area/lv624/lazarus/hydroponics)
 "Qd" = (
 /obj/item/stack/folding_barricade,
 /obj/item/ammo_magazine/smg/fp9000,
 /obj/item/ammo_magazine/smg/fp9000,
 /obj/item/ammo_magazine/smg/fp9000,
+/obj/item/clothing/gloves/marine/veteran/PMC{
+	name = "damaged WY PMC gloves";
+	armor_bio = 10;
+	armor_bomb = 10;
+	armor_bullet = 15;
+	armor_energy = 15;
+	armor_internaldamage = 15;
+	armor_laser = 15;
+	armor_melee = 15;
+	armor_rad = 10;
+	pixel_y = 9
+	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/hydroponics)
 "QR" = (
@@ -490,10 +596,25 @@
 	},
 /area/lv624/lazarus/hydroponics)
 "RT" = (
-/turf/open/floor/plating{
-	icon_state = "platingdmg3"
+/obj/item/clothing/shoes/veteran/PMC{
+	slowdown = 0.5;
+	name = "scuffed shoes";
+	armor_bio = 15;
+	armor_bomb = 5;
+	armor_bullet = 15;
+	armor_energy = 5;
+	armor_internaldamage = 5;
+	armor_laser = 5;
+	armor_melee = 15;
+	desc = "The height of fashion, but these look to be woven with protective fiber. This pair seems heavily damaged, especially around the soles...";
+	pixel_x = -14;
+	pixel_y = -10
 	},
-/area/lv624/lazarus/medbay)
+/turf/open/floor{
+	dir = 9;
+	icon_state = "green"
+	},
+/area/lv624/lazarus/hydroponics)
 "TC" = (
 /turf/open/floor/plating{
 	icon_state = "platingdmg3"
@@ -507,7 +628,6 @@
 	},
 /area/lv624/lazarus/hydroponics)
 "Ul" = (
-/obj/effect/landmark/corpsespawner/pmc,
 /obj/structure/barricade/deployable{
 	damage_state = 2;
 	dir = 8;
@@ -515,12 +635,17 @@
 	icon_state = "folding_2"
 	},
 /obj/item/weapon/gun/rifle/nsg23/no_lock,
+/obj/item/ammo_magazine/rifle/nsg23,
 /turf/open/floor/plating{
 	icon_state = "panelscorched"
 	},
 /area/lv624/lazarus/hydroponics)
 "UG" = (
 /obj/effect/decal/cleanable/blood,
+/obj/structure/barricade/wooden{
+	dir = 4
+	},
+/obj/item/weapon/gun/rifle/nsg23/no_lock,
 /turf/open/floor/plating{
 	icon_state = "platingdmg3"
 	},
@@ -543,10 +668,9 @@
 /area/lv624/ground/jungle/north_jungle)
 "YJ" = (
 /obj/item/storage/firstaid,
-/obj/item/ammo_magazine/rifle/nsg23/extended,
-/obj/item/ammo_magazine/smg/fp9000,
-/obj/item/ammo_magazine/smg/fp9000,
-/obj/item/ammo_magazine/smg/fp9000,
+/obj/item/explosive/grenade/HE/PMC{
+	pixel_x = 6
+	},
 /turf/open/floor/plating{
 	icon_state = "platingdmg3"
 	},
@@ -557,8 +681,12 @@
 	},
 /area/lv624/lazarus/hydroponics)
 "Zm" = (
-/turf/open/floor/plating,
-/area/lv624/lazarus/medbay)
+/obj/item/stack/sheet/metal,
+/obj/item/robot_parts/leg/l_leg,
+/turf/open/floor/plating{
+	icon_state = "panelscorched"
+	},
+/area/lv624/lazarus/hydroponics)
 "ZL" = (
 /obj/item/tool/minihoe{
 	pixel_x = 1;
@@ -637,7 +765,7 @@ se
 (5,1,1) = {"
 XA
 qe
-Fk
+YV
 TC
 FJ
 Wg
@@ -685,7 +813,7 @@ Xv
 (8,1,1) = {"
 YV
 Wg
-YV
+ft
 TC
 bm
 tK
@@ -699,12 +827,12 @@ ZL
 Xv
 "}
 (9,1,1) = {"
-YV
+Px
 bk
-YV
-JO
+Px
+km
 Jc
-JO
+km
 YJ
 Qd
 MM
@@ -715,11 +843,11 @@ Ed
 Xv
 "}
 (10,1,1) = {"
-Xv
+RT
 Xv
 QR
-QR
-Wg
+JO
+Fk
 xF
 Ha
 vm
@@ -751,11 +879,11 @@ Xv
 bd
 aO
 QR
-Xv
+mK
 DN
-RT
-Zm
-RT
+TC
+Wg
+TC
 TC
 lm
 OI
@@ -766,13 +894,13 @@ Cq
 XA
 On
 IO
-Jc
+Zm
 Lk
 TC
 NO
-Zm
-RT
-Px
+Wg
+TC
+lm
 ck
 CG
 YV

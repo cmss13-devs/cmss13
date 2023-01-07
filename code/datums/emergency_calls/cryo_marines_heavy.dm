@@ -69,7 +69,7 @@
 	to_chat(H, SPAN_BOLD("Objectives: [objectives]"))
 
 
-datum/emergency_call/cryo_squad_equipped/platoon
+/datum/emergency_call/cryo_squad_equipped/platoon
 	name = "Marine Cryo Reinforcements (Full Equipment) (Platoon)"
 	mob_min = 8
 	mob_max = 30

@@ -67,7 +67,8 @@
 		list("88M4 AP Magazine (9mm)", 5, /obj/item/ammo_magazine/pistol/mod88, null, VENDOR_ITEM_REGULAR),
 		list("Beretta 92FS Magazine (9mm)", 5, /obj/item/ammo_magazine/pistol/b92fs, null, VENDOR_ITEM_REGULAR),
 		list("KT-42 Magazine (.44)", 5, /obj/item/ammo_magazine/pistol/kt42, null, VENDOR_ITEM_REGULAR),
-		list("Spearhead Speed Loader (.357)", 5, /obj/item/ammo_magazine/revolver/cmb, null, VENDOR_ITEM_REGULAR),
+		list("Spearhead Speed Loader (.357)", 10, /obj/item/ammo_magazine/revolver/cmb/normalpoint, VENDOR_ITEM_REGULAR),
+		list("Hollowpoint Spearhead Speed Loader (.357)", 5, /obj/item/ammo_magazine/revolver/cmb, VENDOR_ITEM_REGULAR),
 		list("S&W Speed Loader (.357)", 5, /obj/item/ammo_magazine/revolver/small, null, VENDOR_ITEM_REGULAR),
 		list("Tiny Pistol Magazine (.22)", 5, /obj/item/ammo_magazine/pistol/holdout, null, VENDOR_ITEM_REGULAR),
 
@@ -132,7 +133,8 @@
 		list("88M4 AP Magazine (9mm)", 40, /obj/item/ammo_magazine/pistol/mod88, VENDOR_ITEM_REGULAR),
 		list("Beretta 92FS Magazine (9mm)", 40, /obj/item/ammo_magazine/pistol/b92fs, VENDOR_ITEM_REGULAR),
 		list("KT-42 Magazine (.44)", 40, /obj/item/ammo_magazine/pistol/kt42, VENDOR_ITEM_REGULAR),
-		list("Spearhead Speed Loader (.357)", 40, /obj/item/ammo_magazine/revolver/cmb, VENDOR_ITEM_REGULAR),
+		list("Spearhead Speed Loader (.357)", 40, /obj/item/ammo_magazine/revolver/cmb/normalpoint, VENDOR_ITEM_REGULAR),
+		list("Hollowpoint Spearhead Speed Loader (.357)", 40, /obj/item/ammo_magazine/revolver/cmb, VENDOR_ITEM_REGULAR),
 		list("S&W Speed Loader (.357)", 40, /obj/item/ammo_magazine/revolver/small, VENDOR_ITEM_REGULAR),
 		list("Tiny Pistol Magazine (.22)", 40, /obj/item/ammo_magazine/pistol/holdout, VENDOR_ITEM_REGULAR),
 

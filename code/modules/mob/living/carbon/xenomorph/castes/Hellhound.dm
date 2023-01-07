@@ -164,7 +164,7 @@
 	if(message)
 		if(src.client)
 			log_emote("[name]/[key] : [message]")
-		if(m_type & 1)
+		if(m_type & SHOW_MESSAGE_VISIBLE)
 			for(var/mob/O in viewers(src, null))
 				O.show_message(message, m_type)
 		else

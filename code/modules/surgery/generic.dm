@@ -1,7 +1,7 @@
 //Procedures in this file: Opening and closing incisions. Clamping bleeds. Opening and closing ribcage/skull etc., proof of concept do-nothing non-human surgery.
 
 //////////////////////////////////////////////////////////////////
-//						INCISION SURGERIES						//
+// INCISION SURGERIES //
 //////////////////////////////////////////////////////////////////
 
 /datum/surgery/open_incision
@@ -140,7 +140,7 @@
 	var/ligation_tools = list(/obj/item/stack/cable_coil)
 	time = 2 SECONDS
 
-datum/surgery_step/clamp_bleeders_step/skip_step_criteria(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
+/datum/surgery_step/clamp_bleeders_step/skip_step_criteria(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
 	return TRUE //This step is optional.
 
 /datum/surgery_step/clamp_bleeders_step/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
@@ -335,7 +335,7 @@ datum/surgery_step/clamp_bleeders_step/skip_step_criteria(mob/user, mob/living/c
 	return FALSE
 
 //////////////////////////////////////////////////////////////////
-//						BONE-OPENING SURGERIES					//
+// BONE-OPENING SURGERIES //
 //////////////////////////////////////////////////////////////////
 
 /datum/surgery/open_encased
@@ -367,7 +367,7 @@ datum/surgery_step/clamp_bleeders_step/skip_step_criteria(mob/user, mob/living/c
 		)
 	time = 4 SECONDS
 
-datum/surgery_step/saw_encased/skip_step_criteria(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
+/datum/surgery_step/saw_encased/skip_step_criteria(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
 	var/obj/limb/affecting = target.get_limb(check_zone(user.zone_selected))
 	if(affecting.status & LIMB_BROKEN)
 		return TRUE //Don't need the saw if it's already fractured.
@@ -425,7 +425,7 @@ datum/surgery_step/saw_encased/skip_step_criteria(mob/user, mob/living/carbon/ta
 	tools = SURGERY_TOOLS_PRY_ENCASED
 	time = 2 SECONDS
 
-datum/surgery_step/open_encased_step/skip_step_criteria(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
+/datum/surgery_step/open_encased_step/skip_step_criteria(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
 	return TRUE
 
 /datum/surgery_step/open_encased_step/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
@@ -589,7 +589,7 @@ datum/surgery_step/open_encased_step/skip_step_criteria(mob/user, mob/living/car
 /*Proof of concept. Functions but does nothing useful.
 If fiddling with, uncomment /mob/living/attackby surgery code also. It's pointless processing to have live without any surgeries for it to use.*/
 //////////////////////////////////////////////////////////////////
-//						NONHUMAN SURGERIES						//
+// NONHUMAN SURGERIES //
 //////////////////////////////////////////////////////////////////
 /*
 /datum/surgery/open_test_incision

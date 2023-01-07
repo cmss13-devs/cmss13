@@ -21,8 +21,8 @@
 	max_heat_protection_temperature = HELMET_max_heat_protection_temperature
 	siemens_coefficient = 0.7
 	w_class = SIZE_MEDIUM
-	pickupsound = "armorequip"
-	dropsound = "armorequip"
+	pickup_sound = "armorequip"
+	drop_sound = "armorequip"
 
 /obj/item/clothing/head/helmet/verb/hidehair()
 	set name = "Toggle Hair"
@@ -361,7 +361,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
 	)
 
-	var/obj/item/storage/internal/helmet/pockets
+	var/obj/item/storage/internal/headgear/pockets
 	var/storage_slots = 2 // keep in mind, one slot is reserved for garb items
 	var/storage_slots_reserved_for_garb = 1
 	var/storage_max_w_class = SIZE_TINY // can hold tiny items only, EXCEPT for glasses & metal flask.
@@ -370,7 +370,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	//speciality does NOTHING if you have NO_NAME_OVERRIDE
 
 /obj/item/clothing/head/helmet/marine/New(loc,
-	new_protection[]	= list(MAP_ICE_COLONY = ICE_PLANET_min_cold_protection_temperature))
+	new_protection[] = list(MAP_ICE_COLONY = ICE_PLANET_min_cold_protection_temperature))
 	if(!(flags_atom & NO_NAME_OVERRIDE))
 		name = "[specialty]"
 		if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
@@ -543,14 +543,14 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 			flags_inventory &= ~(COVEREYES|COVERMOUTH)
 			flags_inv_hide &= ~(HIDEEYES|HIDEFACE)
 			icon_state = base_icon_state
-			eye_protection = 0
+			eye_protection = EYE_PROTECTION_NONE
 			to_chat(usr, "You <b>deactivate</b> the [src]'s welding screen.")
 		else
 			vision_impair = VISION_IMPAIR_MAX
 			flags_inventory |= COVEREYES|COVERMOUTH
 			flags_inv_hide |= HIDEEYES|HIDEFACE
 			icon_state = "[base_icon_state]_on"
-			eye_protection = 2
+			eye_protection = EYE_PROTECTION_WELDING
 			to_chat(usr, "You <b>activate</b> the [src]'s welding screen.")
 
 		protection_on = !protection_on
@@ -560,7 +560,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 			if(H.head == src)
 				H.update_tint()
 
-		update_clothing_icon()	//so our mob-overlays update
+		update_clothing_icon() //so our mob-overlays update
 
 		for(var/X in actions)
 			var/datum/action/A = X
@@ -1005,7 +1005,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	item_state = "upp_ushanka_civi"
 	original_state = "upp_ushanka_civi"
 
-obj/item/clothing/head/helmet/marine/veteran/van_bandolier
+/obj/item/clothing/head/helmet/marine/veteran/van_bandolier
 	name = "pith helmet"
 	desc = "A stylish pith helmet, made from space-age materials. Lightweight, breathable, cool, and protective."
 	icon_state = "van_bandolier"
@@ -1063,7 +1063,7 @@ obj/item/clothing/head/helmet/marine/veteran/van_bandolier
 	icon_state = "skullcapm"
 
 /obj/item/clothing/head/helmet/skullcap/jungle/New(loc, type,
-	new_protection[] 	= list(MAP_ICE_COLONY = ICE_PLANET_min_cold_protection_temperature))
+	new_protection[] = list(MAP_ICE_COLONY = ICE_PLANET_min_cold_protection_temperature))
 	select_gamemode_skin(type,, new_protection)
 	..()
 	switch(icon_state)
@@ -1144,13 +1144,13 @@ obj/item/clothing/head/helmet/marine/veteran/van_bandolier
 			vision_impair = VISION_IMPAIR_NONE
 			flags_inventory &= ~(COVEREYES|COVERMOUTH)
 			flags_inv_hide &= ~(HIDEEYES|HIDEFACE)
-			eye_protection = 0
+			eye_protection = EYE_PROTECTION_NONE
 			to_chat(usr, "You <b>deactivate</b> the [src]'s welding screen.")
 		else
 			vision_impair = VISION_IMPAIR_MAX
 			flags_inventory |= COVEREYES|COVERMOUTH
 			flags_inv_hide |= HIDEEYES|HIDEFACE
-			eye_protection = 2
+			eye_protection = EYE_PROTECTION_WELDING
 			to_chat(usr, "You <b>activate</b> the [src]'s welding screen.")
 
 		protection_on = !protection_on
@@ -1207,10 +1207,10 @@ obj/item/clothing/head/helmet/marine/veteran/van_bandolier
 	overlays += /obj/effect/overlay/danger
 	playsound(loc, 'sound/weapons/armbomb.ogg', 25, 1, 6)
 
-	addtimer(CALLBACK(src, .proc/prime), det_time)
+	addtimer(CALLBACK(src, PROC_REF(prime)), det_time)
 
 /obj/item/clothing/head/helmet/marine/specialist/hefa/proc/prime()
-	INVOKE_ASYNC(src, .proc/boom)
+	INVOKE_ASYNC(src, PROC_REF(boom))
 
 // Values nabbed from the HEFA nade
 /obj/item/clothing/head/helmet/marine/specialist/hefa/proc/boom()

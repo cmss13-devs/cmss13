@@ -101,7 +101,7 @@ log transactions
 		meat.name = "raw [I.name] tenderloin"
 		QDEL_NULL(I)
 		var/turf/atm_turf = get_turf(src)
-		addtimer(CALLBACK(src, .proc/drop_money, atm_turf), 30, TIMER_UNIQUE)
+		addtimer(CALLBACK(src, PROC_REF(drop_money), atm_turf), 30, TIMER_UNIQUE)
 
 	else
 		..()
@@ -314,7 +314,7 @@ log transactions
 						//remove the money
 						authenticated_account.money -= amount
 
-						//	spawn_money(amount,src.loc)
+						// spawn_money(amount,src.loc)
 						spawn_ewallet(amount,src.loc,usr)
 
 						//create an entry in the account transaction log
@@ -481,7 +481,7 @@ log transactions
 	set name = "Eject ID Card"
 	set src in view(1)
 
-	if(!usr || usr.stat || usr.lying)	return
+	if(!usr || usr.stat || usr.lying) return
 
 	if(ishuman(usr) && held_card)
 		to_chat(usr, "You remove \the [held_card] from \the [src].")

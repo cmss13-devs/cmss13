@@ -9,7 +9,7 @@
 
 	passengers_slots = 8
 
-	var/sensor_radius = 45	//45 tiles radius
+	var/sensor_radius = 45 //45 tiles radius
 
 	var/techpod_faction_requirement = FACTION_MARINE
 	var/techpod_access_settings_override = FALSE
@@ -113,7 +113,7 @@
 /obj/vehicle/multitile/apc/command/attack_hand(var/mob/user)
 	. = ..()
 
-	if(user.z != GLOB.interior_manager.interior_z)	//if we didn't enter
+	if(user.z != GLOB.interior_manager.interior_z) //if we didn't enter
 		var/turf/T = get_step(get_step(get_turf(src), REVERSE_DIR(dir)), REVERSE_DIR(dir))
 		if(user.loc == T)
 			access_techpod(user)

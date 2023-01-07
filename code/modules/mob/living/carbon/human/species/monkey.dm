@@ -35,7 +35,7 @@
 
 /datum/species/monkey/handle_post_spawn(var/mob/living/carbon/human/H)
 	H.set_languages(list(LANGUAGE_MONKEY))
-	if(H.real_name == "unknown")
+	if(!H.real_name || !H.name)
 		var/random_name = "[lowertext(name)] ([rand(1, 999)])"
 		H.change_real_name(H, random_name)
 	return ..()
@@ -79,7 +79,7 @@
 
 /datum/species/monkey/handle_on_fire(humanoidmob)
 	. = ..()
-	INVOKE_ASYNC(humanoidmob, /mob.proc/emote, pick("pain", "scream"))
+	INVOKE_ASYNC(humanoidmob, TYPE_PROC_REF(/mob, emote), pick("pain", "scream"))
 
 /datum/species/monkey/yiren
 	name = "Yiren"

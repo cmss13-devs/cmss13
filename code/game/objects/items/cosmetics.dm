@@ -40,6 +40,12 @@
 	paint_type = "skull_camo"
 	icon_state = "skull_camo"
 
+/obj/item/facepaint/sunscreen_stick
+	name= "\improper USCM issue sunscreen"
+	desc = "A stick of SPF 50 sunscreen, issued to you by the good brass of the Corps. Whereas the previously issued sunscreen was toxic upon ingestion, this batch improves upon that by only containing excessive amounts of cadmium."
+	paint_type = "sunscreen_stick"
+	icon_state = "sunscreen_stick"
+
 /obj/item/facepaint/attack(mob/M, mob/user)
 	if(user.a_intent == INTENT_HARM)
 		return ..()
@@ -55,7 +61,7 @@
 			to_chat(user, SPAN_WARNING("The lid is on!"))
 			return FALSE
 
-		if(H.lip_style)	//if they already have lipstick on
+		if(H.lip_style) //if they already have lipstick on
 			to_chat(user, SPAN_WARNING("You need to wipe the old makeup off with paper first!"))
 			return
 
@@ -78,7 +84,7 @@
 	if(!H || !user)
 		return //In case they're passed as null.
 	user.visible_message(SPAN_NOTICE("[user] carefully applies [src] on [H]'s face."), \
-						 SPAN_NOTICE("You apply [src]."))
+						SPAN_NOTICE("You apply [src]."))
 	H.lip_style = paint_type
 	H.update_body()
 	uses--

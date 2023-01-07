@@ -9,9 +9,9 @@
 	return GLOB.not_incapacitated_state
 
 /datum/squad/ui_data(mob/user)
-	if(!squad_info_data.len)					//initial first update of data
+	if(!squad_info_data.len) //initial first update of data
 		update_all_squad_info()
-	if(squad_info_data["total_mar"] != count)	//updates for new marines
+	if(squad_info_data["total_mar"] != count) //updates for new marines
 		update_free_mar()
 		if(squad_leader && squad_info_data["sl"]["name"] != squad_leader.real_name)
 			update_squad_leader()
@@ -37,10 +37,9 @@
 	return FALSE
 
 /datum/squad/proc/get_marine_from_name(var/name)
-	for(var/marine in marines_list)
-		var/mob/living/carbon/human/H = marine
-		if(H.name == name)
-			return H
+	for(var/mob/living/carbon/human/marine in marines_list)
+		if(marine.name == name)
+			return marine
 	return null
 
 /datum/squad/ui_assets(mob/user)

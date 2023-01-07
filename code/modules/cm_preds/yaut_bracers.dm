@@ -28,7 +28,7 @@
 	armor_rad = CLOTHING_ARMOR_MEDIUM
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
 
-	var/notification_sound = TRUE	// Whether the bracer pings when a message comes or not
+	var/notification_sound = TRUE // Whether the bracer pings when a message comes or not
 	var/charge = 1500
 	var/charge_max = 1500
 	var/cloaked = 0
@@ -254,7 +254,7 @@
 	SIGNAL_HANDLER
 
 	var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags
-	if(ammo_flags & (AMMO_ROCKET|AMMO_ENERGY|AMMO_XENO_ACID)) //<--- These will auto uncloak.
+	if(ammo_flags & (AMMO_ROCKET|AMMO_ENERGY|AMMO_ACIDIC)) //<--- These will auto uncloak.
 		decloak(H) //Continue on to damage.
 	else if(prob(20))
 		decloak(H)
@@ -518,8 +518,8 @@
 
 		cloaked = TRUE
 
-		RegisterSignal(M, COMSIG_HUMAN_EXTINGUISH, .proc/wrapper_fizzle_camouflage)
-		RegisterSignal(M, COMSIG_HUMAN_PRE_BULLET_ACT, .proc/bullet_hit)
+		RegisterSignal(M, COMSIG_HUMAN_EXTINGUISH, PROC_REF(wrapper_fizzle_camouflage))
+		RegisterSignal(M, COMSIG_HUMAN_PRE_BULLET_ACT, PROC_REF(bullet_hit))
 
 		cloak_timer = world.time + 1.5 SECONDS
 
@@ -618,7 +618,7 @@
 
 	exploding = 1
 	var/turf/T = get_turf(src)
-	if(explosion_type == SD_TYPE_BIG && victim.stat == CONSCIOUS && is_ground_level(T.z))
+	if(explosion_type == SD_TYPE_BIG && victim.stat == CONSCIOUS && (is_ground_level(T.z) || MODE_HAS_TOGGLEABLE_FLAG(MODE_SHIPSIDE_SD)))
 		playsound(src, 'sound/voice/pred_deathlaugh.ogg', 100, 0, 17, status = 0)
 
 	playsound(src, 'sound/effects/pred_countdown.ogg', 100, 0, 17, status = 0)
@@ -632,7 +632,7 @@
 			victim.gib() // kills the pred
 			qdel(victim)
 		var/datum/cause_data/cause_data = create_cause_data("yautja self-destruct", victim)
-		if(explosion_type == SD_TYPE_BIG && is_ground_level(T.z))
+		if(explosion_type == SD_TYPE_BIG && (is_ground_level(T.z) || MODE_HAS_TOGGLEABLE_FLAG(MODE_SHIPSIDE_SD)))
 			cell_explosion(T, 600, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data) //Dramatically BIG explosion.
 		else
 			cell_explosion(T, 800, 550, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data)
@@ -773,7 +773,7 @@
 		return FALSE
 
 	inject_timer = TRUE
-	addtimer(CALLBACK(src, .proc/injectors_ready), 2 MINUTES)
+	addtimer(CALLBACK(src, PROC_REF(injectors_ready)), 2 MINUTES)
 
 	to_chat(caller, SPAN_NOTICE("You feel a faint hiss and a crystalline injector drops into your hand."))
 	var/obj/item/reagent_container/hypospray/autoinjector/yautja/O = new(caller)
@@ -814,7 +814,7 @@
 		return FALSE
 
 	healing_capsule_timer = TRUE
-	addtimer(CALLBACK(src, .proc/healing_capsule_ready), 4 MINUTES)
+	addtimer(CALLBACK(src, PROC_REF(healing_capsule_ready)), 4 MINUTES)
 
 	to_chat(caller, SPAN_NOTICE("You feel your bracer churn as it pops out a healing capsule."))
 	var/obj/item/tool/surgery/healing_gel/O = new(caller)
@@ -959,9 +959,9 @@
 	if(.)
 		return
 
-	caller.set_typing_indicator(TRUE, "translator")
+	caller.create_typing_indicator()
 	var/msg = sanitize(input(caller, "Your bracer beeps and waits patiently for you to input your message.", "Translator", "") as text)
-	caller.set_typing_indicator(FALSE, "translator")
+	caller.remove_typing_indicator()
 	if(!msg || !caller.client)
 		return
 

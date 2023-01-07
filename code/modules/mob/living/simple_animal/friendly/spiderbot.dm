@@ -36,7 +36,7 @@
 	response_harm   = "stomps on"
 
 	var/obj/item/held_item = null //Storage for single item they can hold.
-	speed = -1                    //Spiderbots gotta go fast.
+	speed = -1 //Spiderbots gotta go fast.
 	mob_size = MOB_SIZE_SMALL
 	speak_emote = list("beeps","clicks","chirps")
 
@@ -90,7 +90,7 @@
 					health = maxHealth
 				add_fingerprint(user)
 				for(var/mob/W in viewers(user, null))
-					W.show_message(text(SPAN_DANGER("[user] has spot-welded some of the damage to [src]!")), 1)
+					W.show_message(text(SPAN_DANGER("[user] has spot-welded some of the damage to [src]!")), SHOW_MESSAGE_VISIBLE)
 			else
 				to_chat(user, SPAN_NOTICE(" [src] is undamaged!"))
 		else
@@ -126,12 +126,12 @@
 			apply_damage(damage, BRUTE)
 			for(var/mob/M as anything in viewers(src, null))
 				if ((M.client && !( M.blinded )))
-					M.show_message(SPAN_DANGER("\b [src] has been attacked with the [O] by [user]. "))
+					M.show_message(SPAN_DANGER("[src] has been attacked with \the [O] by [user]."), SHOW_MESSAGE_VISIBLE)
 		else
 			to_chat(usr, SPAN_DANGER("This weapon is ineffective, it does no damage."))
 			for(var/mob/M as anything in viewers(src, null))
 				if ((M.client && !( M.blinded )))
-					M.show_message(SPAN_DANGER("[user] gently taps [src] with the [O]. "))
+					M.show_message(SPAN_DANGER("[user] gently taps [src] with \the [O]."), SHOW_MESSAGE_VISIBLE)
 
 /mob/living/simple_animal/spiderbot/proc/transfer_personality(var/obj/item/device/mmi/M as obj)
 
@@ -144,7 +144,7 @@
 /mob/living/simple_animal/spiderbot/proc/explode(var/cause = "exploding") //When emagged.
 	for(var/mob/M as anything in viewers(src, null))
 		if ((M.client && !( M.blinded )))
-			M.show_message(SPAN_DANGER("[src] makes an odd warbling noise, fizzles, and explodes."))
+			M.show_message(SPAN_DANGER("[src] makes an odd warbling noise, fizzles, and explodes."), SHOW_MESSAGE_VISIBLE)
 	explosion(get_turf(loc), -1, -1, 3, 5)
 	eject_brain()
 	death(cause)
@@ -163,7 +163,7 @@
 		var/turf/T = get_turf(loc)
 		if(T)
 			mmi.forceMove(T)
-		if(mind)	mind.transfer_to(mmi.brainmob)
+		if(mind) mind.transfer_to(mmi.brainmob)
 		mmi = null
 		src.name = "Spider-bot"
 		update_icon()

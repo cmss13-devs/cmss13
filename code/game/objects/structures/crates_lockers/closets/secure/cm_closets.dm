@@ -52,8 +52,6 @@ GLOBAL_LIST_EMPTY(co_secure_boxes)
 	. = ..()
 	new /obj/item/clothing/head/beret/cm(src)
 	new /obj/item/clothing/head/beret/cm(src)
-	new /obj/item/clothing/head/beret/cm/tan(src)
-	new /obj/item/clothing/head/beret/cm/tan(src)
 	new /obj/item/clothing/head/cmcap/ro(src)
 	new /obj/item/clothing/head/cmcap/ro(src)
 	new /obj/item/device/radio/headset/almayer/mcom(src)
@@ -64,7 +62,12 @@ GLOBAL_LIST_EMPTY(co_secure_boxes)
 	new /obj/item/clothing/shoes/marine(src)
 	new /obj/item/storage/belt/marine(src)
 	new /obj/item/storage/belt/marine(src)
-	new /obj/item/storage/backpack/marine(src)
+	new /obj/item/clothing/under/marine/officer/command(src)
+	new /obj/item/clothing/under/marine/officer/command(src)
+	new /obj/item/clothing/suit/storage/webbing(src)
+	new /obj/item/clothing/suit/storage/webbing(src)
+	new /obj/item/clothing/gloves/combat(src)
+	new /obj/item/clothing/gloves/combat(src)
 
 /obj/structure/closet/secure_closet/staff_officer/armory
 	name = "staff officer's armory locker"
@@ -360,7 +363,7 @@ GLOBAL_LIST_EMPTY(co_secure_boxes)
 /obj/structure/closet/secure_closet/cmdcabinet
 	name = "command tablet cabinet"
 	desc = "A bulletproof cabinet containing the command tablet for usage by the CO and XO. Opens only to them and department heads."
-	density = 0
+	density = FALSE
 	store_mobs = FALSE
 	req_access = list(ACCESS_MARINE_COMMANDER)
 	icon_state = "secure_locked_cmdcabinet"

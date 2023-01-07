@@ -2,7 +2,7 @@
  * Paper
  * also scraps of paper
  */
- 
+
 #define MAX_FIELDS 51
 
 /obj/item/paper
@@ -11,8 +11,8 @@
 	icon = 'icons/obj/items/paper.dmi'
 	icon_state = "paper"
 	item_state = "paper"
-	pickupsound = 'sound/handling/paper_pickup.ogg'
-	dropsound = 'sound/handling/paper_drop.ogg'
+	pickup_sound = 'sound/handling/paper_pickup.ogg'
+	drop_sound = 'sound/handling/paper_drop.ogg'
 	throwforce = 0
 	w_class = SIZE_TINY
 	throw_speed = SPEED_FAST
@@ -20,12 +20,12 @@
 	flags_armor_protection = BODY_FLAG_HEAD
 	attack_verb = list("bapped")
 
-	var/info		//What's actually written on the paper.
-	var/info_links	//A different version of the paper which includes html links at fields and EOF
-	var/stamps		//The (text for the) stamps on the paper.
-	var/fields		//Amount of user created fields
+	var/info //What's actually written on the paper.
+	var/info_links //A different version of the paper which includes html links at fields and EOF
+	var/stamps //The (text for the) stamps on the paper.
+	var/fields //Amount of user created fields
 	var/list/stamped
-	var/ico[0]      //Icons and
+	var/ico[0] //Icons and
 	var/offset_x[0] //offsets stored for later
 	var/offset_y[0] //usage by the photocopier
 	var/rigged = 0
@@ -98,7 +98,7 @@
 
 /obj/item/paper/attack_self(mob/living/user)
 	..()
-	examine(user)
+	read_paper(user)
 
 /obj/item/paper/attack_remote(var/mob/living/silicon/ai/user as mob)
 	var/dist
@@ -129,10 +129,10 @@
 				H.update_body()
 			else
 				user.visible_message(SPAN_WARNING("[user] begins to wipe [H]'s face paint off with \the [src]."), \
-								 	 SPAN_NOTICE("You begin to wipe off [H]'s face paint."))
-				if(do_after(user, 10, INTERRUPT_ALL, BUSY_ICON_FRIENDLY) && do_after(H, 10, INTERRUPT_ALL, BUSY_ICON_GENERIC))	//user needs to keep their active hand, H does not.
+									SPAN_NOTICE("You begin to wipe off [H]'s face paint."))
+				if(do_after(user, 10, INTERRUPT_ALL, BUSY_ICON_FRIENDLY) && do_after(H, 10, INTERRUPT_ALL, BUSY_ICON_GENERIC)) //user needs to keep their active hand, H does not.
 					user.visible_message(SPAN_NOTICE("[user] wipes [H]'s face paint off with \the [src]."), \
-										 SPAN_NOTICE("You wipe off [H]'s face paint."))
+										SPAN_NOTICE("You wipe off [H]'s face paint."))
 					H.lip_style = null
 					H.update_body()
 
@@ -258,7 +258,7 @@
 
 		t = "<font face=\"[crayonfont]\" color=[P ? P.pen_colour : "black"]><b>[t]</b></font>"
 
-//	t = replacetext(t, "#", "") // Junk converted to nothing!
+// t = replacetext(t, "#", "") // Junk converted to nothing!
 
 //Count the fields
 	var/laststart = 1
@@ -335,7 +335,7 @@
 
 		var/obj/item/i = usr.get_active_hand() // Check to see if he still got that darn pen, also check if he's using a crayon or pen.
 		var/iscrayon = 0
-		if(!istype(i, /obj/item/tool/pen))
+		if(!HAS_TRAIT(i, TRAIT_TOOL_PEN))
 			if(!istype(i, /obj/item/toy/crayon))
 				return
 			iscrayon = 1
@@ -357,7 +357,7 @@
 		show_browser(usr, "<BODY class='paper'>[info_links][stamps]</BODY>", name, name) // Update the window
 
 		update_icon()
-
+		playsound(src, "paper_writing", 15, TRUE)
 
 /obj/item/paper/attackby(obj/item/P, mob/user)
 	..()
@@ -385,8 +385,8 @@
 		B.attach_doc(P, user, TRUE)
 		user.put_in_hands(B)
 
-	else if(istype(P, /obj/item/tool/pen) || istype(P, /obj/item/toy/crayon))
-		if(istype(P, /obj/item/tool/pen))
+	else if(HAS_TRAIT(P, TRAIT_TOOL_PEN) || istype(P, /obj/item/toy/crayon))
+		if(HAS_TRAIT(P, TRAIT_TOOL_PEN))
 			var/obj/item/tool/pen/p = P
 			if(!p.on)
 				to_chat(user, SPAN_NOTICE("Your pen is not on!"))
@@ -543,7 +543,7 @@
 
 /obj/item/paper/lv_624/cheese
 	name = "paper= 'Note on the contents of the armoury'"
-	info = "<p>Seems the administrator had an extra shipment of cheese delivered in our last supply drop from Earth. We've got no space to store it in the main kitchen, and he wants it to \"age\" or something.</p><p>It's being kept in the armoury for now, seems it has the right conditions. Anyway, apologies about the smell.</p><p> - Marshall"
+	info = "<p>Seems the administrator had an extra shipment of cheese delivered in our last supply drop from Earth. We've got no space to store it in the main kitchen, and he wants it to \"age\" or something.</p><p>It's being kept in the armoury for now, seems it has the right conditions. Anyway, apologies about the smell.</p><p> - Marshal Johnson"
 
 /obj/item/paper/bigred/walls
 	name = "crumpled note"
@@ -632,7 +632,7 @@
 			if(note_type == "test")
 				random_chem = pick(chemical_gen_classes_list["T4"])
 			else
-				random_chem = pick(	prob(55);pick(chemical_gen_classes_list["T2"]),
+				random_chem = pick( prob(55);pick(chemical_gen_classes_list["T2"]),
 									prob(30);pick(chemical_gen_classes_list["T3"]),
 									prob(15);pick(chemical_gen_classes_list["T4"]))
 		if(!random_chem)

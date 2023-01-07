@@ -32,7 +32,7 @@
 		to_chat(H, SPAN_ROLE_BODY("You are being assigned as part escort, part assistant and part law enforcer to the Inspector that is being dispatched to the [MAIN_SHIP_NAME]"))
 		to_chat(H, SPAN_ROLE_BODY("You are not expected to enforce ML on the ship, however the Inspector may ask you to perform MP duties as part of their investigation in which case you are obligated to act like any other MP."))
 		to_chat(H, SPAN_WARNING("This role requires familiarity with Marine Law and Standard Operating Procedure. Ahelp if you have any questions or wish to surrender the character to someone else."))
-	addtimer(CALLBACK(GLOBAL_PROC, .proc/to_chat, H, SPAN_BOLD("Objectives: [objectives]")), 1 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, PROC_REF(to_chat), H, SPAN_BOLD("Objectives: [objectives]")), 1 SECONDS)
 
 
 /datum/emergency_call/inspection_provost/spawn_items()
@@ -76,7 +76,7 @@
 		to_chat(H, SPAN_ROLE_BODY("An inspection is scheduled for the [MAIN_SHIP_NAME] during their current assignment. You serve both as security detail to the officer performing the inspection and their assistant should they need your expertise."))
 		to_chat(H, SPAN_ROLE_BODY("Follow the inspector as they perform their duties on the ship. Feel free to offer your insight if you feel like you have any and help then as they request it. Remember, while you do not answer directly to the officers on the ship, you still need to respect their position."))
 		to_chat(H, SPAN_WARNING("Remember, you may not interrupt regular operation and are expected to follow orders of the Inspector at all times. Ahelp if you have any questions of you wish to offer the role to someone else."))
-	addtimer(CALLBACK(GLOBAL_PROC, .proc/to_chat, H, SPAN_BOLD("Objectives: [objectives]")), 1 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, PROC_REF(to_chat), H, SPAN_BOLD("Objectives: [objectives]")), 1 SECONDS)
 
 //UAAC-TIS
 /datum/emergency_call/inspection_tis
@@ -111,7 +111,7 @@
 		to_chat(H, SPAN_ROLE_BODY("You have been assigned as an escort for an UAAC-TIS Officer being dispatched to the [MAIN_SHIP_NAME]. Technically, the TIS has no direct authority over you, however you have been ordered to follow the instructions of the TIS Officer."))
 		to_chat(H, SPAN_ROLE_BODY("You are not expected to enforce ML on the ship and are generally expected to follow the instruction of the Officer you are protecting. Remember that should they start acting in a way that you believe puts the USCM in danger, you are not obligated to follow their orders and should report this to the Provost at once."))
 		to_chat(H, SPAN_WARNING("This role requires familiarity with Marine Law and Standard Operating Procedure. Ahelp if you have any questions or wish to surrender the character to someone else."))
-	addtimer(CALLBACK(GLOBAL_PROC, .proc/to_chat, H, SPAN_BOLD("Objectives: [objectives]")), 1 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, PROC_REF(to_chat), H, SPAN_BOLD("Objectives: [objectives]")), 1 SECONDS)
 
 /datum/emergency_call/inspection_tis/spawn_items()
 	var/turf/drop_spawn
@@ -155,7 +155,7 @@
 		to_chat(H, SPAN_ROLE_BODY("While officially your outfit does mundane security work for Weyland-Yutani, in practice you serve as both official and unofficial investigators into conduct of Company personnel. The Lead Investigator is in charge, your duty is to provide backup, counsel and any other form of assistance you can render to make sure their mission is a success."))
 		to_chat(H, SPAN_ROLE_BODY("Remember that the USCM, or at least some parts of it, may be hostile towards your presence on the ship. Unless ordered otherwise by Dispatch, you and your Team Leader are to avoid open conflict with the Marines. Your main priority is making sure that your Lead survives to write the report they are due."))
 		to_chat(H, SPAN_WARNING("Unless ordered otherwise by Dispatch, you are to avoid open conflict with the Marines. Your priority is the safety of your team, if the ship gets to hot, your best bet is evacuation. Ahelp if you have any more questions or wish to release this character for other players."))
-	addtimer(CALLBACK(GLOBAL_PROC, .proc/to_chat, H, SPAN_BOLD("Objectives: [objectives]")), 1 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, PROC_REF(to_chat), H, SPAN_BOLD("Objectives: [objectives]")), 1 SECONDS)
 
 /datum/emergency_call/inspection_wy/spawn_items()
 	var/turf/drop_spawn

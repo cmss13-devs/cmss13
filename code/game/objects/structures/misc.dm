@@ -3,7 +3,7 @@
 	icon = 'icons/obj/structures/props/stationobjs.dmi'
 	icon_state = "showcase_1"
 	desc = "A stand with the empty body of a cyborg bolted to it."
-	density = 1
+	density = TRUE
 	anchored = 1
 	health = 250
 
@@ -52,7 +52,7 @@
 	desc = "A shooting target."
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "target_a"
-	density = 0
+	density = FALSE
 	health = 5000
 
 /obj/structure/target/syndicate
@@ -69,48 +69,48 @@
 	name = "monorail track"
 	icon = 'icons/obj/structures/structures.dmi'
 	icon_state = "monorail"
-	density = 0
+	density = FALSE
 	anchored = 1
 	layer = ATMOS_PIPE_LAYER + 0.01
 
 
 //ICE COLONY RESEARCH DECORATION-----------------------//
 //Most of icons made by ~Morrinn
-obj/structure/xenoautopsy
+/obj/structure/xenoautopsy
 	name = "Research thingies"
 	icon = 'icons/obj/structures/props/alien_autopsy.dmi'
 	icon_state = "jarshelf_9"
 
-obj/structure/xenoautopsy/jar_shelf
+/obj/structure/xenoautopsy/jar_shelf
 	name = "jar shelf"
 	icon_state = "jarshelf_0"
 	var/randomise = 1 //Random icon
 
-	New()
-		if(randomise)
-			icon_state = "jarshelf_[rand(0,9)]"
+/obj/structure/xenoautopsy/jar_shelf/New()
+	if(randomise)
+		icon_state = "jarshelf_[rand(0,9)]"
 
-obj/structure/xenoautopsy/tank
+/obj/structure/xenoautopsy/tank
 	name = "cryo tank"
 	icon_state = "tank_empty"
 	desc = "It is empty."
 
-obj/structure/xenoautopsy/tank/broken
+/obj/structure/xenoautopsy/tank/broken
 	name = "cryo tank"
 	icon_state = "tank_broken"
 	desc = "Something broke it..."
 
-obj/structure/xenoautopsy/tank/alien
+/obj/structure/xenoautopsy/tank/alien
 	name = "cryo tank"
 	icon_state = "tank_alien"
 	desc = "There is something big inside..."
 
-obj/structure/xenoautopsy/tank/hugger
+/obj/structure/xenoautopsy/tank/hugger
 	name = "cryo tank"
 	icon_state = "tank_hugger"
 	desc = "There is something spider-like inside..."
 
-obj/structure/xenoautopsy/tank/larva
+/obj/structure/xenoautopsy/tank/larva
 	name = "cryo tank"
 	icon_state = "tank_larva"
 	desc = "There is something worm-like inside..."
@@ -144,8 +144,8 @@ obj/structure/xenoautopsy/tank/larva
 	health = null
 	layer = TURF_LAYER
 	plane = FLOOR_PLANE
-	density = 0
-	opacity = 0
+	density = FALSE
+	opacity = FALSE
 
 /obj/structure/stairs/perspective //instance these for the required icons
 	icon = 'icons/obj/structures/stairs/perspective_stairs.dmi'
@@ -164,7 +164,7 @@ obj/structure/xenoautopsy/tank/larva
 	icon_state = "orebox0"
 	name = "ore box"
 	desc = "A heavy box used for storing ore."
-	density = 1
+	density = TRUE
 	anchored = 0
 
 /obj/structure/ore_box/initialize_pass_flags(var/datum/pass_flags_container/PF)
@@ -173,7 +173,7 @@ obj/structure/xenoautopsy/tank/larva
 		PF.flags_can_pass_all = PASS_HIGH_OVER_ONLY|PASS_OVER_THROW_ITEM
 
 /obj/structure/computer3frame
-	density = 1
+	density = TRUE
 	anchored = 0
 	name = "computer frame"
 	icon = 'icons/obj/structures/machinery/stock_parts.dmi'

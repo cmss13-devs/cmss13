@@ -2,7 +2,7 @@
 	name = "secure locker"
 	desc = "It's an immobile card-locked storage unit."
 	icon_state = "secure1"
-	density = 1
+	density = TRUE
 	opened = 0
 	var/locked = 1
 	var/broken = 0
@@ -86,7 +86,7 @@
 			var/obj/item/grab/G = W
 			if(G.grabbed_thing)
 				if(src.large)
-					src.MouseDrop_T(G.grabbed_thing, user)	//act like they were dragged onto the closet
+					src.MouseDrop_T(G.grabbed_thing, user) //act like they were dragged onto the closet
 				else
 					to_chat(user, SPAN_NOTICE("The locker is too small to stuff [W:affecting] into!"))
 			return

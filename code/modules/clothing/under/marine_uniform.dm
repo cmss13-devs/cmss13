@@ -25,7 +25,7 @@
 
 	//speciality does NOTHING if you have NO_NAME_OVERRIDE
 
-/obj/item/clothing/under/marine/Initialize(mapload, new_protection[] = list(MAP_ICE_COLONY = ICE_PLANET_min_cold_protection_temperature), override_icon_state[] 	= null)
+/obj/item/clothing/under/marine/Initialize(mapload, new_protection[] = list(MAP_ICE_COLONY = ICE_PLANET_min_cold_protection_temperature), override_icon_state[] = null)
 	if(!(flags_atom & NO_NAME_OVERRIDE))
 		name = "[specialty]"
 		if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
@@ -81,10 +81,10 @@
 	flags_jumpsuit = FALSE
 	specialty = "USCM tanker"
 
-/obj/item/clothing/under/marine/tanker/New(loc,expected_type 		= type,
-	new_name[] 			= list(MAP_ICE_COLONY = "\improper USCM tanker snow uniform"),
-	new_protection[] 	= list(MAP_ICE_COLONY = ICE_PLANET_min_cold_protection_temperature),
-	override_icon_state[]		= list(MAP_ICE_COLONY = "s_marine_tanker")
+/obj/item/clothing/under/marine/tanker/New(loc,expected_type = type,
+	new_name[] = list(MAP_ICE_COLONY = "\improper USCM tanker snow uniform"),
+	new_protection[] = list(MAP_ICE_COLONY = ICE_PLANET_min_cold_protection_temperature),
+	override_icon_state[] = list(MAP_ICE_COLONY = "s_marine_tanker")
 	)
 	..(loc,expected_type, override_icon_state, new_name, new_protection)
 
@@ -106,9 +106,6 @@
 	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
 	specialty = "military police"
 	flags_atom = NO_SNOW_TYPE
-
-/obj/item/clothing/under/marine/mp/cadet
-	name = "MP cadet jumpsuit"
 
 /obj/item/clothing/under/marine/warden
 	name = "military warden jumpsuit"
@@ -165,7 +162,17 @@
 	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
 	flags_atom = NO_NAME_OVERRIDE
 	flags_cold_protection = ICE_PLANET_min_cold_protection_temperature
-	suit_restricted = list(/obj/item/clothing/suit/armor/vest/pilot, /obj/item/clothing/suit/storage/marine/light/vest/dcc)
+	suit_restricted = list(/obj/item/clothing/suit/armor/vest/pilot, /obj/item/clothing/suit/storage/marine/light/vest/dcc, /obj/item/clothing/suit/storage/jacket/marine/pilot)
+
+/obj/item/clothing/under/marine/officer/pilot/flight
+	name = "tactical pilot officer flightsuit"
+	desc = "A flightsuit worn by pilot officers of the USCM, with plenty of leather straps, pouches, and other essential gear you will never use. Looks badass."
+	icon_state = "pilot_flightsuit_alt"
+	item_state = "pilot_flightsuit_alt"
+	worn_state = "pilot_flightsuit_alt"
+	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
+	flags_atom = NO_NAME_OVERRIDE|NO_SNOW_TYPE
+	flags_cold_protection = ICE_PLANET_min_cold_protection_temperature
 
 /obj/item/clothing/under/marine/officer/pilot/dcc
 	name = "dropship crew chief bodysuit"
@@ -763,11 +770,11 @@
 	icon_state = "liaison_suspenders"
 	worn_state = "liaison_suspenders"
 
-/obj/item/clothing/under/ress_suit
+/obj/item/clothing/under/twe_suit
 	name = "representative's fine suit"
-	desc = "A stiff, stylish blue suit commonly worn by gentlemen from the Royal Empire of the Rising Sun. Expertly crafted to make you look as important as possible."
-	icon_state = "ress_suit"
-	worn_state = "ress_suit"
+	desc = "A stiff, stylish blue suit commonly worn by gentlemen from the Three World Empire. Expertly crafted to make you look as important as possible."
+	icon_state = "twe_suit"
+	worn_state = "twe_suit"
 
 /obj/item/clothing/under/stowaway
 	name = "dirty suit"

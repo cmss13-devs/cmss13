@@ -62,9 +62,9 @@
 
 	//////////////////////////////////////////////////////////////////
 	//
-	//		Core Stats
+	// Core Stats
 	//
-	// 		Self-Explanatory.
+	// Self-Explanatory.
 	//
 	//////////////////////////////////////////////////////////////////
 	var/datum/caste_datum/caste // Used to extract determine ALL Xeno stats.
@@ -122,7 +122,7 @@
 	var/armor_deflection_buff = 0 // temp buffs to armor
 	var/armor_deflection_debuff = 0 //temp debuffs to armor
 	var/armor_explosive_buff = 0  // temp buffs to explosive armor
-	var/armor_integrity = 100     // Current health % of our armor
+	var/armor_integrity = 100  // Current health % of our armor
 	var/armor_integrity_max = 100
 	var/armor_integrity_last_damage_time = 0
 	var/armor_integrity_immunity_time = 0
@@ -182,13 +182,13 @@
 
 	//////////////////////////////////////////////////////////////////
 	//
-	//		Modifiers
+	// Modifiers
 	//
-	// 		These are used by strains/mutators to buff/debuff a xeno's
-	//      stats. They can be mutated and are persistent between
-	// 		upgrades, but not evolutions (which are just a new Xeno)
-	// 		Strains that wish to change these should use the defines
-	// 		in xeno_defines.dm, NOT snowflake values
+	// These are used by strains/mutators to buff/debuff a xeno's
+	//   stats. They can be mutated and are persistent between
+	// upgrades, but not evolutions (which are just a new Xeno)
+	// Strains that wish to change these should use the defines
+	// in xeno_defines.dm, NOT snowflake values
 	//
 	//////////////////////////////////////////////////////////////////
 	var/damage_modifier = 0
@@ -212,9 +212,9 @@
 
 	//////////////////////////////////////////////////////////////////
 	//
-	//		Intrinsic State - well-ish modularized
+	// Intrinsic State - well-ish modularized
 	//
-	// 		State used by all Xeno mobs.
+	// State used by all Xeno mobs.
 	//
 	//////////////////////////////////////////////////////////////////
 	var/xeno_mobhud = FALSE //whether the xeno mobhud is activated or not.
@@ -253,24 +253,26 @@
 
 	//////////////////////////////////////////////////////////////////
 	//
-	//		Misc. State - poorly modularized
+	// Misc. State - poorly modularized
 	//
-	// 		This is a messy section comprising state that really shouldn't
-	//      exist on the base Xeno type, but is anyway due to the messy
-	//  	way the game's interaction system was architected.
-	//		Suffice it to say, the alternative to storing all this here
-	// 		is a bunch of messy typecasts and/or snowflake checks in many, many procs
-	// 		affected integrally by this state, instead of being defined in
-	// 		an easily modularizable way. So, here you go.
+	// This is a messy section comprising state that really shouldn't
+	//   exist on the base Xeno type, but is anyway due to the messy
+	// way the game's interaction system was architected.
+	// Suffice it to say, the alternative to storing all this here
+	// is a bunch of messy typecasts and/or snowflake checks in many, many procs
+	// affected integrally by this state, instead of being defined in
+	// an easily modularizable way. So, here you go.
 	//
 	//////////////////////////////////////////////////////////////////
-	var/weedwalking_activated = 0 //Hivelord's weedwalking
-	var/tunnel = 0
-	var/burrow = 0
-	var/fortify = 0
-	var/crest_defense = 0
-	var/agility = 0		// 0 - upright, 1 - all fours
-	var/ripping_limb = 0
+	var/weedwalking_activated = FALSE //Hivelord's weedwalking
+	var/tunnel = FALSE
+	var/stealth = FALSE // for check on lurker invisibility
+	var/burrow = FALSE
+	var/fortify = FALSE
+	var/crest_defense = FALSE
+	var/agility = FALSE // 0 - upright, 1 - all fours
+	var/ripping_limb = FALSE
+	var/steelcrest = FALSE
 	// Related to zooming out (primarily queen and boiler)
 	var/devour_timer = 0 // The world.time at which we will regurgitate our currently-vored victim
 	var/extra_build_dist = 0 // For drones/hivelords. Extends the maximum build range they have
@@ -281,7 +283,6 @@
 	var/selected_mark // If leader what mark you will place when you make one
 	var/datum/ammo/xeno/ammo = null //The ammo datum for our spit projectiles. We're born with this, it changes sometimes.
 	var/tunnel_delay = 0
-	var/steelcrest = FALSE
 	var/list/available_fruits = list() // List of placeable the xenomorph has access to.
 	var/list/current_fruits = list() // If we have current_fruits that are limited, e.g. fruits
 	var/max_placeable = 0 // Limit to that amount
@@ -291,9 +292,11 @@
 	var/icon_xeno
 	var/icon_xenonid
 
+	bubble_icon = "alien"
+
 	/////////////////////////////////////////////////////////////////////
 	//
-	//		Phero related vars
+	// Phero related vars
 	//
 	//////////////////////////////////////////////////////////////////
 	var/ignores_pheromones = FALSE // title, ignores ALL pheros
@@ -308,7 +311,7 @@
 
 	//////////////////////////////////////////////////////////////////
 	//
-	//		Vars that should be deleted
+	// Vars that should be deleted
 	//
 	//////////////////////////////////////////////////////////////////
 	var/burrow_timer = 200
@@ -335,6 +338,7 @@
 	var/list/overlays_standing[X_TOTAL_LAYERS]
 
 	var/atom/movable/vis_obj/xeno_wounds/wound_icon_carrier
+	var/atom/movable/vis_obj/xeno_pack/backpack_icon_carrier
 
 /mob/living/carbon/Xenomorph/Initialize(mapload, mob/living/carbon/Xenomorph/oldXeno, h_number)
 	var/area/A = get_area(src)
@@ -385,11 +389,11 @@
 
 	if (caste.fire_immunity != FIRE_IMMUNITY_NONE)
 		if(caste.fire_immunity & FIRE_IMMUNITY_NO_IGNITE)
-			RegisterSignal(src, COMSIG_LIVING_PREIGNITION, .proc/fire_immune)
+			RegisterSignal(src, COMSIG_LIVING_PREIGNITION, PROC_REF(fire_immune))
 		RegisterSignal(src, list(
 			COMSIG_LIVING_FLAMER_CROSSED,
 			COMSIG_LIVING_FLAMER_FLAMED,
-		), .proc/flamer_crossed_immune)
+		), PROC_REF(flamer_crossed_immune))
 	else
 		UnregisterSignal(src, list(
 			COMSIG_LIVING_PREIGNITION,
@@ -487,8 +491,9 @@
 		hive.hive_ui.update_all_xeno_data()
 
 	job = caste.caste_type // Used for tracking the caste playtime
+	Decorate()
 
-	RegisterSignal(src, COMSIG_MOB_SCREECH_ACT, .proc/handle_screech_act)
+	RegisterSignal(src, COMSIG_MOB_SCREECH_ACT, PROC_REF(handle_screech_act))
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_XENO_SPAWN, src)
 
 /mob/living/carbon/Xenomorph/proc/handle_screech_act(var/mob/self, var/mob/living/carbon/Xenomorph/Queen/queen)
@@ -702,6 +707,9 @@
 
 	vis_contents -= wound_icon_carrier
 	QDEL_NULL(wound_icon_carrier)
+	if(backpack_icon_carrier)
+		vis_contents -= backpack_icon_carrier
+		QDEL_NULL(backpack_icon_carrier)
 
 	QDEL_NULL(iff_tag)
 
@@ -785,7 +793,7 @@
 ///get_eye_protection()
 ///Returns a number between -1 to 2
 /mob/living/carbon/Xenomorph/get_eye_protection()
-	return 2
+	return EYE_PROTECTION_WELDING
 
 /mob/living/carbon/Xenomorph/get_pull_miltiplier()
 	return pull_multiplier
@@ -1013,22 +1021,22 @@
 	var/displaytime = max(1, round(breakouttime / 600)) //Minutes
 	to_chat(src, SPAN_WARNING("You attempt to remove [legcuffed]. (This will take around [displaytime] minute(s) and you need to stand still)"))
 	for(var/mob/O in viewers(src))
-		O.show_message(SPAN_DANGER("<B>[usr] attempts to remove [legcuffed]!</B>"), 1)
+		O.show_message(SPAN_DANGER("<B>[usr] attempts to remove [legcuffed]!</B>"), SHOW_MESSAGE_VISIBLE)
 	if(!do_after(src, breakouttime, INTERRUPT_NO_NEEDHAND^INTERRUPT_RESIST, BUSY_ICON_HOSTILE))
 		return
 	if(!legcuffed || buckled)
 		return // time leniency for lag which also might make this whole thing pointless but the server
-	for(var/mob/O in viewers(src))//                                         lags so hard that 40s isn't lenient enough - Quarxink
-		O.show_message(SPAN_DANGER("<B>[src] manages to remove [legcuffed]!</B>"), 1)
+	for(var/mob/O in viewers(src))//  lags so hard that 40s isn't lenient enough - Quarxink
+		O.show_message(SPAN_DANGER("<B>[src] manages to remove [legcuffed]!</B>"), SHOW_MESSAGE_VISIBLE)
 	to_chat(src, SPAN_NOTICE(" You successfully remove [legcuffed]."))
 	drop_inv_item_on_ground(legcuffed)
 
 /mob/living/carbon/Xenomorph/IgniteMob()
 	. = ..()
 	if (. & IGNITE_IGNITED)
-		RegisterSignal(src, COMSIG_XENO_PRE_HEAL, .proc/cancel_heal)
+		RegisterSignal(src, COMSIG_XENO_PRE_HEAL, PROC_REF(cancel_heal))
 		if(!caste || !(caste.fire_immunity & FIRE_IMMUNITY_NO_DAMAGE) || fire_reagent.fire_penetrating)
-			INVOKE_ASYNC(src, /mob.proc/emote, "roar")
+			INVOKE_ASYNC(src, TYPE_PROC_REF(/mob, emote), "roar")
 
 /mob/living/carbon/Xenomorph/ExtinguishMob()
 	. = ..()

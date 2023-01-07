@@ -45,7 +45,7 @@
 
 	handle_reload(user)
 
-obj/structure/weapons_loader/proc/reload_ammo()
+/obj/structure/weapons_loader/proc/reload_ammo()
 	set name = "Reload Ammo"
 	set category = "Object"
 	set src in range(1)

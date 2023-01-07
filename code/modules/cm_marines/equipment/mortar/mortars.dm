@@ -8,7 +8,7 @@
 	anchored = TRUE
 	unslashable = TRUE
 	unacidable = TRUE
-	density = 1
+	density = TRUE
 	// So you can't hide it under corpses
 	layer = ABOVE_MOB_LAYER
 	flags_atom = RELAY_CLICK
@@ -265,7 +265,7 @@
 			for(var/mob/M in range(7))
 				shake_camera(M, 3, 1)
 
-			addtimer(CALLBACK(src, .proc/handle_shell, T, mortar_shell), travel_time)
+			addtimer(CALLBACK(src, PROC_REF(handle_shell), T, mortar_shell), travel_time)
 
 	if(HAS_TRAIT(O, TRAIT_TOOL_WRENCH))
 		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
@@ -316,8 +316,8 @@
 		else
 			relative_dir = get_dir(M, target)
 		M.show_message( \
-			SPAN_DANGER("A SHELL IS COMING DOWN TOWARDS THE [SPAN_UNDERLINE(relative_dir ? uppertext(("TO YOUR " + dir2text(relative_dir))) : uppertext("right above you"))]!"), 1, \
-			SPAN_DANGER("YOU HEAR SOMETHING COMING DOWN TOWARDS THE [SPAN_UNDERLINE(relative_dir ? uppertext(("TO YOUR " + dir2text(relative_dir))) : uppertext("right above you"))]!"), 2 \
+			SPAN_DANGER("A SHELL IS COMING DOWN TOWARDS THE [SPAN_UNDERLINE(relative_dir ? uppertext(("TO YOUR " + dir2text(relative_dir))) : uppertext("right above you"))]!"), SHOW_MESSAGE_VISIBLE, \
+			SPAN_DANGER("YOU HEAR SOMETHING COMING DOWN TOWARDS THE [SPAN_UNDERLINE(relative_dir ? uppertext(("TO YOUR " + dir2text(relative_dir))) : uppertext("right above you"))]!"), SHOW_MESSAGE_AUDIBLE \
 		)
 	sleep(2.5 SECONDS) // Sleep a bit to give a message
 	for(var/mob/M in range(10, target))
@@ -326,8 +326,8 @@
 		else
 			relative_dir = get_dir(M, target)
 		M.show_message( \
-			SPAN_HIGHDANGER("A SHELL IS ABOUT TO IMPACT TOWARDS THE [SPAN_UNDERLINE(relative_dir ? uppertext(("TO YOUR " + dir2text(relative_dir))) : uppertext("right above you"))]!"), 1, \
-			SPAN_HIGHDANGER("YOU HEAR SOMETHING VERY CLOSE COMING DOWN TOWARDS THE [SPAN_UNDERLINE(relative_dir ? uppertext(("TO YOUR " + dir2text(relative_dir))) : uppertext("right above you"))]!"), 2 \
+			SPAN_HIGHDANGER("A SHELL IS ABOUT TO IMPACT TOWARDS THE [SPAN_UNDERLINE(relative_dir ? uppertext(("TO YOUR " + dir2text(relative_dir))) : uppertext("right above you"))]!"), SHOW_MESSAGE_VISIBLE, \
+			SPAN_HIGHDANGER("YOU HEAR SOMETHING VERY CLOSE COMING DOWN TOWARDS THE [SPAN_UNDERLINE(relative_dir ? uppertext(("TO YOUR " + dir2text(relative_dir))) : uppertext("right above you"))]!"), SHOW_MESSAGE_AUDIBLE \
 		)
 	sleep(2 SECONDS) // Wait out the rest of the landing time
 	target.ceiling_debris_check(2)

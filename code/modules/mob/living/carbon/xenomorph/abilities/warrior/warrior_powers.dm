@@ -64,7 +64,6 @@
 
 /datum/action/xeno_action/activable/fling/use_ability(atom/target_atom)
 	var/mob/living/carbon/Xenomorph/woyer = owner
-
 	if (!action_cooldown_check())
 		return
 
@@ -78,6 +77,7 @@
 		return
 
 	var/mob/living/carbon/carbone = target_atom
+	var/temp_carbone_slowdown = carbone.next_move_slowdown
 	if(carbone.stat == DEAD) return
 	if(HAS_TRAIT(carbone, TRAIT_NESTED))
 		return
@@ -101,6 +101,7 @@
 	if(slowdown)
 		if(carbone.slowed < slowdown)
 			carbone.apply_effect(slowdown, SLOW)
+			temp_carbone_slowdown = carbone.next_move_slowdown
 	carbone.last_damage_data = create_cause_data(initial(woyer.caste_type), woyer)
 	shake_camera(carbone, 2, 1)
 
@@ -119,6 +120,10 @@
 	woyer.animation_attack_on(carbone)
 	woyer.flick_attack_overlay(carbone, "disarm")
 	carbone.throw_atom(throw_turf, fling_distance, SPEED_VERY_FAST, woyer, TRUE)
+
+	// if the mob is flung over a slowdown tile (weeds, sticky resin, snow etc..) then the slowdown effect will be stacked.
+	// to prevent this, we just use the slowdown speed of the carbone before it was flung.
+	carbone.next_move_slowdown = temp_carbone_slowdown
 
 	apply_cooldown()
 	..()

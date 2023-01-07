@@ -171,7 +171,9 @@
 	SEND_SIGNAL(crossing_mob, COMSIG_MOB_WEEDS_CROSSED, slowdata, src)
 	var/final_slowdown = slowdata["movement_slowdown"]
 
-	crossing_mob.next_move_slowdown += POSITIVE(final_slowdown)
+	// if the mob is getting pulled then the slowdown speed will be stacked.
+	if(!crossing_mob.pulledby)
+		crossing_mob.next_move_slowdown += POSITIVE(final_slowdown)
 
 // Uh oh, we might be dying!
 // I know this is bad proc naming but it was too good to pass on and it's only used in this file anyways

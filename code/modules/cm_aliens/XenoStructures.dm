@@ -158,12 +158,12 @@
 /obj/effect/alien/resin/sticky/Crossed(atom/movable/AM)
 	. = ..()
 	var/mob/living/carbon/human/H = AM
-	if(istype(H) && !H.lying && !H.ally_of_hivenumber(hivenumber))
-		H.next_move_slowdown = H.next_move_slowdown + slow_amt
+	if(istype(H) && !H.lying && !H.ally_of_hivenumber(hivenumber) && !H.pulledby)
+		H.next_move_slowdown += slow_amt
 		return .
 	var/mob/living/carbon/Xenomorph/X = AM
-	if(istype(X) && !X.ally_of_hivenumber(hivenumber))
-		X.next_move_slowdown = X.next_move_slowdown + slow_amt
+	if(istype(X) && !X.ally_of_hivenumber(hivenumber) && !X.pulledby)
+		X.next_move_slowdown += slow_amt
 		return .
 
 /obj/effect/alien/resin/spike

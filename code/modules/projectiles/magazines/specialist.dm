@@ -343,17 +343,17 @@
 	description_ammo = "darts"
 
 /obj/item/ammo_magazine/rifle/sharp/explosive
-	name = "\improper 9X-E Sticky Explosive Dart Magazine"
+	name = "\improper 9X-E sticky explosive dart magazine"
 	desc = "A specialized sticky explosive dart magazine."
 
 /obj/item/ammo_magazine/rifle/sharp/track
-	name = "\improper 9X-T Sticky Tracking Dart Magazine"
+	name = "\improper 9X-T sticky tracking dart magazine"
 	desc = "A specialized tracking dart magazine."
 	icon_state = "sharprifle_tracker"
 	default_ammo = /datum/ammo/rifle/sharp/track
 
 /obj/item/ammo_magazine/rifle/sharp/flechette
-	name = "\improper 9X-F Flechette Dart Magazine"
+	name = "\improper 9X-F flechette dart magazine"
 	desc = "A specialized flechette dart magazine."
 	icon_state = "sharprifle_flechette"
 	default_ammo = /datum/ammo/rifle/sharp/flechette

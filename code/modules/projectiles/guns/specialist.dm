@@ -1402,8 +1402,8 @@
 //P9 Sonic Harpoon Artillery Remote Projectile(SHARP) Rifle
 
 /obj/item/weapon/gun/rifle/sharp
-	name = "\improper P9 SHARP Rifle"
-	desc = "A experimental harpoon launcher rifle manufactured by Armat Systems. It's specialized for specific ammo types out of a 10-round magainze, best used for area denial and disruption."
+	name = "\improper P9 SHARP rifle"
+	desc = "A experimental harpoon launcher rifle manufactured by Armat Systems. It's specialized for specific ammo types out of a 10-round magazine, best used for area denial and disruption."
 	icon_state = "sharprifle"
 	item_state = "sharp"
 	fire_sound = 'sound/weapons/gun_sharp.ogg'

@@ -545,9 +545,6 @@
 /obj/item/weapon/gun/ui_state(mob/user)
 	return GLOB.always_state
 
-/obj/item/weapon/gun/ui_assets(mob/user)
-	. = ..()
-
 /obj/item/weapon/gun/ui_data(mob/user)
 	var/list/data = list()
 
@@ -655,10 +652,6 @@
 	return data
 
 // END TGUI \\
-
-/obj/item/weapon/gun/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 0)
-	var/datum/asset/assets = get_asset_datum(/datum/asset/nanoui/weapons)
-	assets.send(user)
 
 /obj/item/weapon/gun/wield(var/mob/user)
 

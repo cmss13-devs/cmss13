@@ -253,3 +253,6 @@
 	var/list/important_radio_channels = list()
 
 	var/datum/click_intercept
+
+	/// Used for tracking last uses of emotes for cooldown purposes
+	var/list/emotes_used

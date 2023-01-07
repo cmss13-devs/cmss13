@@ -150,11 +150,6 @@ for it but just ignore it.
 
 		return verb
 
-
-/mob/proc/emote(var/act, var/type, var/message, player_caused)
-	if(act == "me")
-		return custom_emote(type, message, player_caused)
-
 /mob/proc/get_ear()
 	// returns an atom representing a location on the map from which this
 	// mob can hear things

@@ -172,6 +172,10 @@
 
 #define COMSIG_MOB_POST_CLICK "mob_post_click"
 
+///from /mob/living/emote(): ()
+#define COMSIG_MOB_EMOTE "mob_emote"
+
+#define COMSIG_MOB_EMOTED(emote_key) "mob_emoted_[emote_key]"
 
 //Machine Guns (m56D, M2C)
 #define COMSIG_MOB_MG_EXIT "mob_mg_exit"

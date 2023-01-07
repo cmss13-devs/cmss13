@@ -358,3 +358,16 @@
 #define SMALL_FONTS(FONTSIZE, MSG) "<span style=\"font-family: 'Small Fonts'; -dm-text-outline: 1 black; font-size: [FONTSIZE]px;\">[MSG]</span>"
 #define SMALL_FONTS_CENTRED(FONTSIZE, MSG) "<center><span style=\"font-family: 'Small Fonts'; -dm-text-outline: 1 black; font-size: [FONTSIZE]px;\">[MSG]</span></center>"
 #define SMALL_FONTS_COLOR(FONTSIZE, MSG, COLOR) "<span style=\"font-family: 'Small Fonts'; -dm-text-outline: 1 black; font-size: [FONTSIZE]px; color: [COLOR];\">[MSG]</span>"
+
+//finds the first occurrence of one of the characters from needles argument inside haystack
+//it may appear this can be optimised, but it really can't. findtext() is so much faster than anything you can do in byondcode.
+//stupid byond :(
+/proc/findchar(haystack, needles, start=1, end=0)
+	var/char = ""
+	var/len = length(needles)
+	for(var/i = 1, i <= len, i += length(char))
+		char = needles[i]
+		. = findtextEx(haystack, char, start, end)
+		if(.)
+			return
+	return 0

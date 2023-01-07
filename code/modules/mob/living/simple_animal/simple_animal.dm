@@ -231,11 +231,9 @@
 
 /mob/living/simple_animal/emote(var/act, var/type, var/message, player_caused)
 	if(act)
-		if(act == "scream") act = "whimper" //ugly hack to stop animals screaming when crushed :P
-		if(act == "me")
-			custom_emote(type,desc, nolog = !ckey) //if the animal has a ckey then it will log the message
-		else
-			..(act, type, message, player_caused)
+		if(act == "scream")
+			act = "whimper" //ugly hack to stop animals screaming when crushed :P
+		..(act, message, player_caused) //if the animal has a ckey then it will log the message
 
 /mob/living/simple_animal/attack_animal(mob/living/M as mob)
 	if(M.melee_damage_upper == 0)
@@ -363,9 +361,8 @@
 		return
 
 	if(copytext(message,1,2) == "*")
-		if(!findtext(message, "*", 2)) //Second asterisk means it is markup for *bold*, not an *emote.
-			INVOKE_ASYNC(src, PROC_REF(emote), lowertext(copytext(message,2)))
-			return
+		INVOKE_ASYNC(src, PROC_REF(emote), copytext(message,2))
+		return
 
 	if(stat)
 		return

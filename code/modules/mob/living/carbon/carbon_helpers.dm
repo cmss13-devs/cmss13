@@ -18,13 +18,13 @@
 	to_chat(usr, SPAN_WARNING("Your species doesn't have a warcry associated with it!"))
 
 /mob/living/carbon/human/warcry_macro()
-	emote("warcry", player_caused = TRUE)
+	emote("warcry")
 
 /mob/living/carbon/human/yautja/warcry_macro()
-	emote("roar", player_caused = TRUE)
+	emote("roar")
 
 /mob/living/carbon/Xenomorph/warcry_macro()
-	emote("roar", player_caused = TRUE)
+	emote("roar")
 
 /mob/living/carbon/verb/medic_macro()
 	set name = "medic"
@@ -33,13 +33,13 @@
 	to_chat(usr, SPAN_WARNING("Your species doesn't have a help cry associated with it!"))
 
 /mob/living/carbon/human/medic_macro()
-	emote("medic", player_caused = TRUE)
+	emote("medic")
 
 /mob/living/carbon/human/yautja/medic_macro()
-	emote("click", player_caused = TRUE)
+	emote("click")
 
 /mob/living/carbon/Xenomorph/medic_macro()
-	emote("needhelp", player_caused = TRUE)
+	emote("needhelp")
 
 /mob/living/carbon/check_view_change(var/new_size, var/atom/source)
 	LAZYREMOVE(view_change_sources, source)

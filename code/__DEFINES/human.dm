@@ -15,7 +15,7 @@
 #define HUMAN_STRIP_DELAY 40
 #define POCKET_STRIP_DELAY 20
 
-///////////////////LIMB DEFINES///////////////////
+///////////////////LIMB FLAGS///////////////////
 
 #define LIMB_ORGANIC (1<<0)
 #define LIMB_ROBOT (1<<1)
@@ -211,3 +211,7 @@
 #define RELIGION_MINOR "Minor Religion"
 #define RELIGION_ATHEISM "Atheism"
 #define RELIGION_AGNOSTICISM "Agnostic"
+
+///////////////////MISC HUMAN FLAGS (LINKED TO VAR: FLAGS_HUMAN_MISC)///////////////////
+
+#define HUMAN_FLAG_CHANGED (1<<0)

@@ -258,6 +258,8 @@
 /// Any effects to apply to the xenomorph after the windup finishes (or is interrupted)
 /datum/action/xeno_action/activable/pounce/proc/post_windup_effects(var/interrupted)
 	SHOULD_CALL_PARENT(TRUE)
+	if(!owner)
+		return
 	owner.flags_atom &= ~DIRLOCK
 
 /datum/action/xeno_action/onclick/toggle_long_range

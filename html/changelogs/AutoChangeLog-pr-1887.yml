@@ -1,7 +1,0 @@
-author: "Huffie56"
-delete-after: True
-changes:
-  - rscadd: "add buttons for Inner and Outer Blast door of secure storage    for you to find out where."
-  - rscdel: "deleted Nexus lockdown and garage shutter button in armory but it's still in mapping data."
-  - balance: "adding the ability for survivor to get in secure storage on LV-624."
-  - code_imp: "separated Inner and outer blast door instead of being a single entity."

@@ -35,15 +35,15 @@
 	return
 
 // Defender Headbutt
-/datum/action/xeno_action/activable/headbutt/use_ability(atom/A)
-	var/mob/living/carbon/Xenomorph/X = owner
-	if (!istype(X))
+/datum/action/xeno_action/activable/headbutt/use_ability(atom/target_atom)
+	var/mob/living/carbon/Xenomorph/fendy = owner
+	if (!istype(fendy))
 		return
 
-	if(!isXenoOrHuman(A) || X.can_not_harm(A))
+	if(!isXenoOrHuman(target_atom) || fendy.can_not_harm(target_atom))
 		return
 
-	if(!X.check_state())
+	if(!fendy.check_state())
 		return
 
 	if (!action_cooldown_check())
@@ -52,49 +52,53 @@
 	if(!check_and_use_plasma_owner())
 		return
 
-	if(X.fortify && !X.steelcrest)
-		to_chat(X, SPAN_XENOWARNING("You cannot use headbutt while fortified."))
+	if(fendy.fortify && !fendy.steelcrest)
+		to_chat(fendy, SPAN_XENOWARNING("You cannot use headbutt while fortified."))
 		return
 
-	var/mob/living/carbon/H = A
-	if(H.stat == DEAD)
+	var/mob/living/carbon/carbone = target_atom
+	if(carbone.stat == DEAD)
 		return
 
-	var/distance = get_dist(X, H)
+	var/distance = get_dist(fendy, carbone)
 
-	var/max_distance = 3 - (X.crest_defense * 2)
+	var/max_distance = 3 - (fendy.crest_defense * 2)
 
 	if(distance > max_distance)
 		return
 
-	if(!X.crest_defense)
+	if(!fendy.crest_defense)
 		apply_cooldown()
-		X.throw_atom(get_step_towards(H, X), 3, SPEED_SLOW, X)
-	if(!X.Adjacent(H))
+		fendy.throw_atom(get_step_towards(carbone, fendy), 3, SPEED_SLOW, fendy)
+	if(!fendy.Adjacent(carbone))
 		on_cooldown_end()
 		return
 
-	H.last_damage_data = create_cause_data(X.caste_type, X)
-	X.visible_message(SPAN_XENOWARNING("[X] rams [H] with its armored crest!"), \
-	SPAN_XENOWARNING("You ram [H] with your armored crest!"))
+	carbone.last_damage_data = create_cause_data(fendy.caste_type, fendy)
+	fendy.visible_message(SPAN_XENOWARNING("[fendy] rams [carbone] with its armored crest!"), \
+	SPAN_XENOWARNING("You ram [carbone] with your armored crest!"))
 
-	if(H.stat != DEAD && (!(H.status_flags & XENO_HOST) || !HAS_TRAIT(H, TRAIT_NESTED)) )
-		var/h_damage = 30 - (X.crest_defense * 10) + (X.steelcrest * 7.5) //30 if crest up, 20 if down, plus 7.5
-		H.apply_armoured_damage(get_xeno_damage_slash(H, h_damage), ARMOR_MELEE, BRUTE, "chest", 5)
+	if(carbone.stat != DEAD && (!(carbone.status_flags & XENO_HOST) || !HAS_TRAIT(carbone, TRAIT_NESTED)) )
+		var/h_damage = 30 - (fendy.crest_defense * 10) + (fendy.steelcrest * 7.5) //30 if crest up, 20 if down, plus 7.5
+		carbone.apply_armoured_damage(get_xeno_damage_slash(carbone, h_damage), ARMOR_MELEE, BRUTE, "chest", 5)
 
-	var/facing = get_dir(X, H)
-	var/headbutt_distance = 1 + (X.crest_defense * 2) + (X.fortify * 2)
-	var/turf/T = get_turf(X)
-	var/turf/temp = get_turf(X)
+	var/facing = get_dir(fendy, carbone)
+	var/headbutt_distance = 1 + (fendy.crest_defense * 2) + (fendy.fortify * 2)
+	var/turf/thrown_turf = get_turf(fendy)
+	var/turf/temp = get_turf(fendy)
 
 	for(var/x in 0 to headbutt_distance)
-		temp = get_step(T, facing)
+		temp = get_step(thrown_turf, facing)
 		if(!temp)
 			break
-		T = temp
+		thrown_turf = temp
 
-	H.throw_atom(T, headbutt_distance, SPEED_SLOW, src)
-	playsound(H,'sound/weapons/alien_claw_block.ogg', 50, 1)
+	// Hmm today I will kill a marine while looking away from them
+	fendy.face_atom(carbone)
+	fendy.animation_attack_on(carbone)
+	fendy.flick_attack_overlay(carbone, "punch")
+	carbone.throw_atom(thrown_turf, headbutt_distance, SPEED_SLOW, src)
+	playsound(carbone,'sound/weapons/alien_claw_block.ogg', 50, 1)
 	apply_cooldown()
 	..()
 	return
@@ -134,6 +138,7 @@
 		if(H.stat == DEAD) continue
 		if(HAS_TRAIT(H, TRAIT_NESTED)) continue
 		step_away(H, X, sweep_range, 2)
+		X.flick_attack_overlay(H, "punch")
 		H.last_damage_data = create_cause_data(X.caste_type, X)
 		H.apply_armoured_damage(get_xeno_damage_slash(H, 15), ARMOR_MELEE, BRUTE)
 		shake_camera(H, 2, 1)

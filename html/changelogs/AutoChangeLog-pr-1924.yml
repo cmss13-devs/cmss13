@@ -1,5 +1,0 @@
-author: "ThePiachu"
-delete-after: True
-changes:
-  - balance: "ChemMaster's internal volume now matches that of a Bluespace Beaker so you can more efficiently utilise it to its full pill making potential."
-  - qol: "The Reagent Tanks now display the total volume used by all of their chemicals so you know exactly how full it is when containing a complex chemical mix."

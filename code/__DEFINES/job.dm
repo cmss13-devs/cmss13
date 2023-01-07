@@ -244,6 +244,9 @@ var/global/list/job_command_roles = JOB_COMMAND_ROLES_LIST
 
 #define PROVOST_JOB_LIST list(JOB_PROVOST_ENFORCER, JOB_PROVOST_TML, JOB_PROVOST_ADVISOR, JOB_PROVOST_INSPECTOR, JOB_PROVOST_MARSHAL, JOB_PROVOST_SMARSHAL, JOB_PROVOST_CMARSHAL)
 
+#define JOB_RIOT "Riot Control"
+#define JOB_RIOT_CHIEF "Chief Riot Control"
+
 //-------- UAAC --------//
 #define JOB_TIS_IO "UAAC-TIS Intelligence Officer"
 #define JOB_TIS_SA "UAAC-TIS Special Agent"

@@ -208,7 +208,7 @@
 			var/obj/item/card/id/ID = humanoid.wear_id.GetID()
 			if(ID?.registered_name)
 				crewmember_name = ID.registered_name
-		switch(humanoid.state)
+		switch(humanoid.stat)
 			if(CONSCIOUS)
 				crewmember_name = "[crewmember_name] (Conscious)"
 			if(UNCONSCIOUS)

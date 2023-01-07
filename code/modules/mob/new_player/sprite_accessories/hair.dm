@@ -719,8 +719,8 @@
 
 /datum/sprite_accessory/hair/row_braid
 	name = "Row Braid"
-	icon_state = "hair_row_braid_s"
+	icon_state = "hair_row_braid"
 
 /datum/sprite_accessory/hair/croft
 	name = "Croft"
-	icon_state ="hair_croft_s"
+	icon_state ="hair_croft"

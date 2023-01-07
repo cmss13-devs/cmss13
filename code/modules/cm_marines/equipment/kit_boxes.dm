@@ -140,7 +140,7 @@
 /obj/item/storage/box/spec/heavy_grenadier/m92
 	desc = "A large case containing an M92 grenade launcher."
 
-/obj/item/storage/box/spec/heavy_grenadier/sharp/fill_preset_inventory()
+/obj/item/storage/box/spec/heavy_grenadier/m92/fill_preset_inventory()
 	new /obj/item/storage/belt/grenade/large/full(src)
 	new /obj/item/weapon/gun/launcher/grenade/m92(src)
 

@@ -80,11 +80,11 @@
 	return TRUE
 
 
-/datum/action/xeno_action/activable/sacrifice_egg/radius_shield
-	name = "Adrenal Shielding (100)"
-	action_icon_state = "shield_xeno"
-	ability_name = "adrenal shielding"
-	macro_path = /datum/action/xeno_action/verb/verb_egg_sacr_shield
+/datum/action/xeno_action/activable/sacrifice_egg/hide_pain
+	name = "Hide Pain (100)"
+	action_icon_state = "hide_pain"
+	ability_name = "hide pain"
+	macro_path = /datum/action/xeno_action/verb/verb_hide_pain
 	action_type = XENO_ACTION_ACTIVATE
 	ability_primacy = XENO_PRIMARY_ACTION_1
 	var/windup_delay = 25
@@ -156,13 +156,13 @@
 
 	for(var/mob/living/carbon/Xenomorph/X as anything in xenomorphs_in_range)
 		X.wound_icon_carrier.alpha = 0
-		addtimer(CALLBACK(src, .proc/return_wounds_alpha, X), action_def.hide_pain_seconds)
+		addtimer(CALLBACK(src, PROC_REF(return_wounds_alpha), X), action_def.hide_pain_seconds)
 
 	src.current_aura = "frenzy"
 	visible_message(SPAN_XENOWARNING("\The [src] begins to emit strange-smelling pheromones."), \
 	SPAN_XENOWARNING("You begin to emit frenzy pheromones."), null, 5)
 	playsound(loc, "alien_drool", 25)
-	addtimer(CALLBACK(src, .proc/return_wounds_alpha, src), action_def.hide_pain_seconds)
+	addtimer(CALLBACK(src, PROC_REF(return_wounds_alpha), src), action_def.hide_pain_seconds)
 
 	return TRUE
 
@@ -235,7 +235,7 @@
 		effect_overlay.flick_overlay(X, 20)
 		effect_power++
 
-	addtimer(CALLBACK(BD, /datum/behavior_delegate/carrier_shaman.proc/reset_shaman_ability), action_def.get_cooldown())
+	addtimer(CALLBACK(BD, TYPE_PROC_REF(/datum/behavior_delegate/carrier_shaman, reset_shaman_ability)), action_def.get_cooldown())
 
 	visible_message(SPAN_XENONOTICE("\The [src] squashes the egg into a pulp."), SPAN_XENONOTICE("You squash the egg into a mess of acid, blood, and gore! The collective psychic scream will stun nearby enemies!"), null, 8)
 
@@ -346,25 +346,25 @@
 		effect_overlay.flick_overlay(X, 20)
 		allies_in_range += X
 
-	addtimer(CALLBACK(xeno_behavior, /datum/behavior_delegate/carrier_shaman.proc/reset_shaman_ability), action_def.get_cooldown())
+	addtimer(CALLBACK(xeno_behavior, TYPE_PROC_REF(/datum/behavior_delegate/carrier_shaman, reset_shaman_ability)), action_def.get_cooldown())
 
 	for(var/mob/living/carbon/Xenomorph/X as anything in allies_in_range)
 		X.ExtinguishMob()
 		X.mob_flags |= FIRE_SHIELD_ON
 
-		RegisterSignal(X, COMSIG_LIVING_PREIGNITION, .proc/fire_immune)
+		RegisterSignal(X, COMSIG_LIVING_PREIGNITION, PROC_REF(fire_immune))
 		RegisterSignal(X, list(
 			COMSIG_LIVING_FLAMER_CROSSED,
 			COMSIG_LIVING_FLAMER_FLAMED,
-		), .proc/flamer_crossed_immune)
+		), PROC_REF(flamer_crossed_immune))
 
 		X.add_filter("firewalk_on", 1, list("type" = "outline", "color" = "#03fcc6", "size" = 1))
-		addtimer(CALLBACK(src, .proc/firewalk_immune_off, X), action_def.firewalk_seconds)
+		addtimer(CALLBACK(src, PROC_REF(firewalk_immune_off), X), action_def.firewalk_seconds)
 
 	playsound(loc, "alien_drool", 25)
 	visible_message(SPAN_XENOWARNING("\The [src] begins to emit fire resistant phermones."), SPAN_XENOWARNING("You begin to emit fire resistant pheromones."), null, 5)
 
-	addtimer(CALLBACK(src, /mob/living/carbon/Xenomorph/Carrier.proc/egg_sacr_pheromones_disable), 30 SECONDS)
+	addtimer(CALLBACK(src, TYPE_PROC_REF(/mob/living/carbon/Xenomorph/Carrier, egg_sacr_pheromones_disable)), 30 SECONDS)
 	return TRUE
 
 /mob/living/carbon/Xenomorph/Carrier/proc/firewalk_immune_off(var/mob/living/carbon/X)
@@ -446,13 +446,13 @@
 		if(isturf(BD.fakexeno.loc) && !BD.fakexeno.key)
 			walk_to(BD.fakexeno, target_turf, 0, 4)
 			BD.fakexeno.FindTarget()
-			addtimer(CALLBACK(src, .proc/egg_sacr_mindtrick_disable, BD.fakexeno), action_def.mindtrick_seconds - 1 SECONDS)
-			addtimer(CALLBACK(GLOBAL_PROC, .proc/qdel, BD.fakexeno), action_def.mindtrick_seconds)
+			addtimer(CALLBACK(src, PROC_REF(egg_sacr_mindtrick_disable), BD.fakexeno), action_def.mindtrick_seconds - 1 SECONDS)
+			addtimer(CALLBACK(GLOBAL_PROC, PROC_REF(qdel), BD.fakexeno), action_def.mindtrick_seconds)
 
 		effect_overlay.flick_overlay(X, 20)
 		effect_power++
 
-	addtimer(CALLBACK(BD, /datum/behavior_delegate/carrier_shaman.proc/reset_shaman_ability), action_def.get_cooldown())
+	addtimer(CALLBACK(BD, TYPE_PROC_REF(/datum/behavior_delegate/carrier_shaman, reset_shaman_ability)), action_def.get_cooldown())
 
 	return TRUE
 

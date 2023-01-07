@@ -33712,6 +33712,13 @@
 /area/almayer/command/computerlab)
 "cnr" = (
 /obj/structure/machinery/iv_drip,
+/obj/structure/machinery/door_control{
+	dir = 1;
+	id = "tc03";
+	name = "Door Release";
+	normaldoorcontrol = 1;
+	pixel_x = 28
+	},
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_corner";
 	tag = "icon-sterile"
@@ -43321,20 +43328,6 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/medical/operating_room_four)
-"ggJ" = (
-/obj/structure/machinery/door_control{
-	dir = 1;
-	id = "tc03";
-	name = "Door Release";
-	normaldoorcontrol = 1;
-	pixel_x = 28;
-	pixel_y = -23
-	},
-/turf/open/floor/almayer{
-	icon_state = "dark_sterile";
-	tag = "icon-sterile"
-	},
-/area/almayer/medical/lower_medical_medbay)
 "ggQ" = (
 /obj/structure/window/framed/almayer,
 /turf/open/floor/plating,
@@ -115637,7 +115630,7 @@ bgt
 bgw
 cnr
 kmr
-ggJ
+beA
 pJf
 jsP
 izY

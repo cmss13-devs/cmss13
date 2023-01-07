@@ -279,8 +279,8 @@ var/global/list/job_command_roles = JOB_COMMAND_ROLES_LIST
 #define XENO_ANCIENT 3
 #define XENO_PRIME 4
 
-#define JOB_OBSERVER "Observer" // For monthly time tracking
-
+/// For monthly time tracking
+#define JOB_OBSERVER "Observer"
 #define TIMELOCK_JOB(role_id, hours) new/datum/timelock(role_id, hours, role_id)
 
 //For displaying groups of jobs. Used by new player's latejoin menu and by crew manifest.

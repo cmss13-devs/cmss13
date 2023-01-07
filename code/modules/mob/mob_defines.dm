@@ -256,3 +256,10 @@
 
 	/// Used for tracking last uses of emotes for cooldown purposes
 	var/list/emotes_used
+
+	///the icon currently used for the typing indicator's bubble
+	var/mutable_appearance/active_typing_indicator
+	///the icon currently used for the thinking indicator's bubble
+	var/mutable_appearance/active_thinking_indicator
+	/// User is thinking in character. Used to revert to thinking state after stop_typing
+	var/thinking_IC = FALSE

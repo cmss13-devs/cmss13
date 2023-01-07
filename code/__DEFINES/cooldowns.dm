@@ -1,5 +1,33 @@
 #define COOLDOWN_MOB_AUDIO "mob_audio_cooldown"
 
+//// COOLDOWN SYSTEMS
+/*
+ * We have 2 cooldown systems: timer cooldowns (divided between stoppable and regular) and world.time cooldowns.
+ *
+ * When to use each?
+ *
+ * * Adding a commonly-checked cooldown, like on a subsystem to check for processing
+ * * * Use the world.time ones, as they are cheaper.
+ *
+ * * Adding a rarely-used one for special situations, such as giving an uncommon item a cooldown on a target.
+ * * * Timer cooldown, as adding a new variable on each mob to track the cooldown of said uncommon item is going too far.
+ *
+ * * Triggering events at the end of a cooldown.
+ * * * Timer cooldown, registering to its signal.
+ *
+ * * Being able to check how long left for the cooldown to end.
+ * * * Either world.time or stoppable timer cooldowns, depending on the other factors. Regular timer cooldowns do not support this.
+ *
+ * * Being able to stop the timer before it ends.
+ * * * Either world.time or stoppable timer cooldowns, depending on the other factors. Regular timer cooldowns do not support this.
+*/
+
+
+/*
+ * Cooldown system based on an datum-level associative lazylist using timers.
+*/
+
+
 //TIMER COOLDOWN MACROS
 
 #define COMSIG_CD_STOP(cd_index) "cooldown_[cd_index]"

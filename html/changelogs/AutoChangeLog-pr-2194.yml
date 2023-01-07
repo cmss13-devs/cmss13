@@ -1,4 +1,0 @@
-author: "Segrain"
-delete-after: True
-changes:
-  - bugfix: "Money accounts are once again properly created."

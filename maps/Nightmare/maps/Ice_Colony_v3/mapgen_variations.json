@@ -1,4 +1,0 @@
-[
-	{ "type": "map_sprinkle", "path": "map_files/Ice_Colony_v3/sprinkles/" },
-    { "type": "map_variations",   "landmark": "lz2-south-caves", "path": "map_files/Ice_Colony_v3/lz2-south-caves/",                "chance": 0.5 }
-]

@@ -5246,7 +5246,7 @@
 /area/desert_dam/interior/lab_northeast/east_lab_biology)
 "apl" = (
 /obj/structure/surface/rack,
-/obj/item/weapon/gun/shotgun/pump/cmb,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
 /turf/open/floor/prison{
 	icon_state = "darkredfull2"
 	},
@@ -6185,7 +6185,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/power/apc{
 	dir = 1;
-	pixel_y = 24
+	pixel_y = 25
 	},
 /turf/open/floor/prison{
 	dir = 1;
@@ -10044,7 +10044,7 @@
 /turf/open/floor/interior/wood/alt,
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "aCO" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited{
 	name = "Emergency NanoMed";
 	pixel_x = 30;
 	req_access = null
@@ -11153,7 +11153,7 @@
 /area/desert_dam/exterior/valley/valley_medical)
 "aFM" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/autodoc,
+/obj/structure/machinery/medical_pod/autodoc,
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "sterile_white";
@@ -35400,7 +35400,7 @@
 /turf/open/floor/plating,
 /area/desert_dam/interior/dam_interior/disposals)
 "cbO" = (
-/obj/item/weapon/gun/shotgun/pump/cmb,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
 /turf/open/floor/plating,
 /area/desert_dam/interior/dam_interior/disposals)
 "cbP" = (
@@ -43968,7 +43968,7 @@
 	},
 /area/desert_dam/building/medical/primary_storage)
 "cCp" = (
-/obj/structure/machinery/bodyscanner,
+/obj/structure/machinery/medical_pod/bodyscanner,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "whitered"
@@ -43996,7 +43996,7 @@
 	},
 /area/desert_dam/building/medical/surgery_room_one)
 "cCt" = (
-/obj/structure/machinery/bodyscanner,
+/obj/structure/machinery/medical_pod/bodyscanner,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "whitered"
@@ -46792,7 +46792,7 @@
 /area/desert_dam/exterior/telecomm/lz2_containers)
 "cKj" = (
 /obj/structure/surface/rack,
-/obj/item/weapon/gun/shotgun/pump/cmb,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
 /turf/open/floor/prison{
 	icon_state = "darkredfull2"
 	},
@@ -51666,7 +51666,7 @@
 "dcq" = (
 /obj/structure/machinery/power/apc{
 	dir = 1;
-	pixel_y = 24
+	pixel_y = 25
 	},
 /turf/open/floor/plating,
 /area/desert_dam/building/cafeteria/backroom)
@@ -58533,7 +58533,7 @@
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_one/control_room)
 "dNY" = (
-/obj/item/weapon/gun/shotgun/pump/cmb,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
@@ -60169,7 +60169,7 @@
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "dSs" = (
-/obj/structure/machinery/bodyscanner,
+/obj/structure/machinery/medical_pod/bodyscanner,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
 	dir = 8;
@@ -60202,7 +60202,7 @@
 	},
 /area/desert_dam/building/medical/emergency_room)
 "dSw" = (
-/obj/structure/machinery/sleeper,
+/obj/structure/machinery/medical_pod/sleeper,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
 	icon_state = "whitegreen"

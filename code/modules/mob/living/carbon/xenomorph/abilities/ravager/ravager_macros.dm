@@ -36,28 +36,28 @@
 
 /datum/action/xeno_action/verb/verb_scissorcut()
 	set category = "Alien"
-	set name = "scissor cut"
+	set name = "Scissor Cut"
 	set hidden = 1
 	var/action_name = "Scissor Cut"
 	handle_xeno_macro(src, action_name) 
 
 /datum/action/xeno_action/verb/verb_spike_shield()
 	set category = "Alien"
-	set name = "spike shield"
+	set name = "Spike Shield"
 	set hidden = 1
 	var/action_name = "Spike Shield (200 shards)"
 	handle_xeno_macro(src, action_name) 
 
 /datum/action/xeno_action/verb/verb_fire_spikes()
 	set category = "Alien"
-	set name = "fire spikes"
+	set name = "Fire Spikes"
 	set hidden = 1
 	var/action_name = "Fire Spikes (75 shards)"
 	handle_xeno_macro(src, action_name) 
 
 /datum/action/xeno_action/verb/verb_shed_spikes()
 	set category = "Alien"
-	set name = "shed spikes"
+	set name = "Shed Spikes"
 	set hidden = 1
 	var/action_name = "Spike Shed (50 shards)"
 	handle_xeno_macro(src, action_name) 

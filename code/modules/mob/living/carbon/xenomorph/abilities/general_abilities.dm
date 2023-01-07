@@ -192,31 +192,31 @@
 	plasma_cost = 10
 
 	// Config options
-	var/distance = 6					// 6 for runners, 4 for ravagers and praes
+	var/distance = 6 // 6 for runners, 4 for ravagers and praes
 
-	var/knockdown = TRUE				// Should we knock down the target?
-	var/knockdown_duration = 1			// 1 for runners, 3 for lurkers.
+	var/knockdown = TRUE // Should we knock down the target?
+	var/knockdown_duration = 1 // 1 for runners, 3 for lurkers.
 										// ONLY USED IF THE POUNCE KNOCKS DOWN
 
-	var/slash = FALSE					// Do we slash upon reception?
-	var/slash_bonus_damage = 0			// Any bonus damage to apply on the tackle slash, if applicable
+	var/slash = FALSE // Do we slash upon reception?
+	var/slash_bonus_damage = 0 // Any bonus damage to apply on the tackle slash, if applicable
 
-	var/freeze_self = TRUE				// Should we freeze ourselves after the lunge?
-	var/freeze_time = 5					// 5 for runners, 15 for lurkers
-	var/freeze_timer_id = TIMER_ID_NULL	// Timer to cancel the end freeze if it can be cancelled earlier
+	var/freeze_self = TRUE // Should we freeze ourselves after the lunge?
+	var/freeze_time = 5 // 5 for runners, 15 for lurkers
+	var/freeze_timer_id = TIMER_ID_NULL // Timer to cancel the end freeze if it can be cancelled earlier
 	var/freeze_play_sound = TRUE
 
-	var/windup = FALSE					// Is there a do_after before we pounce?
-	var/windup_duration = 20			// How long to wind up, if applicable
-	var/windup_interruptable = TRUE		// Can the windup be interrupted?
+	var/windup = FALSE // Is there a do_after before we pounce?
+	var/windup_duration = 20 // How long to wind up, if applicable
+	var/windup_interruptable = TRUE // Can the windup be interrupted?
 
-	var/can_be_shield_blocked = FALSE	// Some legacy stuff, self explanatory
+	var/can_be_shield_blocked = FALSE // Some legacy stuff, self explanatory
 	var/should_destroy_objects = FALSE  // Only used for ravager charge
 	var/pounce_pass_flags // Pounce flags to customize what pounce can go over/through
-	var/throw_speed = SPEED_FAST        // Throw speed
-	var/tracks_target = TRUE					// Does it track the target atom?
+	var/throw_speed = SPEED_FAST // Throw speed
+	var/tracks_target = TRUE // Does it track the target atom?
 
-	var/list/pounce_callbacks = null	// Specific callbacks to invoke when a pounce lands on an atom of a specific type
+	var/list/pounce_callbacks = null // Specific callbacks to invoke when a pounce lands on an atom of a specific type
 										// (note that if a collided atom does not match any of the key types, defaults to the appropriate X_launch_collision proc)
 
 /datum/action/xeno_action/activable/pounce/New()
@@ -258,6 +258,8 @@
 /// Any effects to apply to the xenomorph after the windup finishes (or is interrupted)
 /datum/action/xeno_action/activable/pounce/proc/post_windup_effects(var/interrupted)
 	SHOULD_CALL_PARENT(TRUE)
+	if(!owner)
+		return
 	owner.flags_atom &= ~DIRLOCK
 
 /datum/action/xeno_action/onclick/toggle_long_range
@@ -299,7 +301,7 @@
 			if(!do_after(xeno, delay, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC)) return
 		if(xeno.is_zoomed) return
 		if(handles_movement)
-			RegisterSignal(xeno, COMSIG_MOB_MOVE_OR_LOOK, .proc/handle_mob_move_or_look)
+			RegisterSignal(xeno, COMSIG_MOB_MOVE_OR_LOOK, PROC_REF(handle_mob_move_or_look)))
 		if(movement_slowdown)
 			xeno.speed_modifier += movement_slowdown
 			xeno.recalculate_speed()
@@ -333,12 +335,12 @@
 
 	// Configurable options
 
-	var/spray_type = ACID_SPRAY_LINE	// Enum for the shape of spray to do
-	var/spray_distance = 5 				// Distance to spray
+	var/spray_type = ACID_SPRAY_LINE // Enum for the shape of spray to do
+	var/spray_distance = 5 // Distance to spray
 	var/spray_effect_type = /obj/effect/xenomorph/spray
 
-	var/activation_delay = FALSE		// Is there an activation delay?
-	var/activation_delay_length = 0		// Only used if activation_delay is TRUE.
+	var/activation_delay = FALSE // Is there an activation delay?
+	var/activation_delay_length = 0 // Only used if activation_delay is TRUE.
 
 
 /datum/action/xeno_action/activable/transfer_plasma
@@ -417,7 +419,7 @@
 	macro_path = /datum/action/xeno_action/verb/verb_bombard
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_1
-	xeno_cooldown = 245
+	xeno_cooldown = 230
 
 	// Range and other config
 	var/effect_range = 3
@@ -434,5 +436,5 @@
 	charge_time = 1 SECONDS
 	xeno_cooldown = 10 SECONDS
 	ability_primacy = XENO_TAIL_STAB
-	 /// Used for defender's tail 'stab'.
+	/// Used for defender's tail 'stab'.
 	var/blunt_stab = FALSE

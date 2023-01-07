@@ -3,7 +3,7 @@
 /datum/preferences/var/list/traits
 /// State var for preferences to track trait points
 /// Change this value to set the amount of trait points you start with
-/datum/preferences/var/trait_points = 1
+/datum/preferences/var/trait_points = 2
 /// State var to check if traits have been read in to modify
 /// trait points
 /datum/preferences/var/read_traits = FALSE

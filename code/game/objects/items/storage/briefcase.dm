@@ -21,9 +21,9 @@
 	if(affecting == "head" && istype(M, /mob/living/carbon/) && !isXeno(M))
 		for(var/mob/O in viewers(user, null))
 			if(M != user)
-				O.show_message(text(SPAN_DANGER("<B>[M] has been hit over the head with a [name] by [user]!</B>")), 1)
+				O.show_message(text(SPAN_DANGER("<B>[M] has been hit over the head with a [name] by [user]!</B>")), SHOW_MESSAGE_VISIBLE)
 			else
-				O.show_message(text(SPAN_DANGER("<B>[M] hit \himself with a [name] on the head!</B>")), 1)
+				O.show_message(text(SPAN_DANGER("<B>[M] hit \himself with a [name] on the head!</B>")), SHOW_MESSAGE_VISIBLE)
 		if(drowsy_threshold > 0)
 			M.apply_effect(min(drowsy_threshold, 10) , DROWSY)
 

@@ -65,13 +65,12 @@ GLOBAL_LIST_INIT(cm_vending_gear_spec, list(
 	desc = "An automated gear rack for Squad Weapons Specialists."
 	icon_state = "spec_gear"
 	show_points = TRUE
-	use_points = TRUE
 	vendor_role = list(JOB_SQUAD_SPECIALIST)
 	req_access = list(ACCESS_MARINE_SPECPREP)
 
-/obj/structure/machinery/cm_vending/gear/spec/Initialize(mapload, ...)
-	. = ..()
-	listed_products = GLOB.cm_vending_gear_spec
+/obj/structure/machinery/cm_vending/gear/spec/get_listed_products(var/mob/user)
+	return GLOB.cm_vending_gear_spec
+
 
 //------------CLOTHING VENDOR---------------
 

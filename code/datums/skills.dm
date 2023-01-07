@@ -133,15 +133,17 @@
 	skill_name = SKILL_FIREMAN
 	skill_level = SKILL_FIREMAN_DEFAULT
 
-// Skill with an extra S at the end is a collection of multiple skills. Basically a skillSET
-// This is to organize and provide a common interface to the huge heap of skills there are
+/// Skill with an extra S at the end is a collection of multiple skills. Basically a skillSET
+/// This is to organize and provide a common interface to the huge heap of skills there are
 /datum/skills
-	var/name //the name of the skillset
-	var/mob/owner = null // the mind that has this skillset
+	/// The name of the skillset
+	var/name
+	// The mob that has this skillset
+	var/mob/owner
 
-	// List of skill datums.
-	// Also, if this is populated when the datum is created, it will set the skill levels automagically
-	var/list/skills = list()
+	/// List of skill datums.
+	/// Also, if this is populated when the datum is created, it will set the skill levels automagically
+	var/list/datum/skill/skills = list()
 
 /datum/skills/New(var/mob/skillset_owner)
 	owner = skillset_owner
@@ -160,11 +162,7 @@
 
 /datum/skills/Destroy()
 	owner = null
-
-	for(var/datum/skill/S in skills)
-		qdel(S)
-		skills -= S
-
+	skills = null // Don't need to delete, /datum/skill should softdel
 	return ..()
 
 // Checks if the given skill is contained in this skillset at all
@@ -173,11 +171,15 @@
 
 // Returns the skill DATUM for the given skill
 /datum/skills/proc/get_skill(var/skill)
+	if(!skills)
+		return null
 	return skills[skill]
 
 // Returns the skill level for the given skill
 /datum/skills/proc/get_skill_level(var/skill)
 	var/datum/skill/S = get_skill(skill)
+	if(!S)
+		return -1
 	if(QDELETED(S))
 		return -1
 	return S.get_skill_level()
@@ -447,6 +449,109 @@ CIVILIAN
 	)
 /*
 ---------------------
+MILITARY SURVIVORS
+---------------------
+*/
+//Hardcore survivors with poor equipment and skills, prove you're the best of the best.
+
+/datum/skills/military/survivor/forecon_standard
+	name = "Reconnaissance Rifleman"
+	skills = list(
+		SKILL_ENGINEER = SKILL_ENGINEER_ENGI,
+		SKILL_CONSTRUCTION = SKILL_CONSTRUCTION_DEFAULT,
+		SKILL_MELEE = SKILL_MELEE_TRAINED,
+		SKILL_CQC = SKILL_CQC_TRAINED,
+		SKILL_FIREARMS = SKILL_FIREARMS_DEFAULT,
+		SKILL_MEDICAL = SKILL_MEDICAL_TRAINED,
+		SKILL_ENDURANCE = SKILL_ENDURANCE_TRAINED,
+		SKILL_LEADERSHIP = SKILL_LEAD_NOVICE,
+		SKILL_VEHICLE = SKILL_VEHICLE_DEFAULT,
+		SKILL_JTAC = SKILL_JTAC_TRAINED
+	)
+
+/datum/skills/military/survivor/forecon_techician
+	name = "Reconnaissance Support Technician"
+	skills = list(
+		SKILL_ENGINEER = SKILL_ENGINEER_ENGI,
+		SKILL_CONSTRUCTION = SKILL_CONSTRUCTION_ENGI,
+		SKILL_MELEE = SKILL_MELEE_TRAINED,
+		SKILL_CQC = SKILL_CQC_TRAINED,
+		SKILL_FIREARMS = SKILL_FIREARMS_DEFAULT,
+		SKILL_MEDICAL = SKILL_MEDICAL_MEDIC,
+		SKILL_SURGERY = SKILL_SURGERY_NOVICE,
+		SKILL_ENDURANCE = SKILL_ENDURANCE_TRAINED,
+		SKILL_LEADERSHIP = SKILL_LEAD_NOVICE,
+		SKILL_VEHICLE = SKILL_VEHICLE_DEFAULT,
+		SKILL_JTAC = SKILL_JTAC_TRAINED
+	)
+
+/datum/skills/military/survivor/forecon_marksman
+	name = "Reconnaissance Designated Marksman"
+	skills = list(
+		SKILL_ENGINEER = SKILL_ENGINEER_ENGI,
+		SKILL_CONSTRUCTION = SKILL_CONSTRUCTION_DEFAULT,
+		SKILL_MELEE = SKILL_MELEE_TRAINED,
+		SKILL_CQC = SKILL_CQC_TRAINED,
+		SKILL_FIREARMS = SKILL_FIREARMS_DEFAULT,
+		SKILL_SPEC_WEAPONS = SKILL_SPEC_SCOUT,
+		SKILL_MEDICAL = SKILL_MEDICAL_TRAINED,
+		SKILL_ENDURANCE = SKILL_ENDURANCE_TRAINED,
+		SKILL_LEADERSHIP = SKILL_LEAD_NOVICE,
+		SKILL_VEHICLE = SKILL_VEHICLE_DEFAULT,
+		SKILL_JTAC = SKILL_JTAC_TRAINED
+	)
+
+/datum/skills/military/survivor/forecon_smartgunner
+	name = "Reconnaissance Smartgunner"
+	skills = list(
+		SKILL_ENGINEER = SKILL_ENGINEER_ENGI,
+		SKILL_CONSTRUCTION = SKILL_CONSTRUCTION_DEFAULT,
+		SKILL_MELEE = SKILL_MELEE_TRAINED,
+		SKILL_CQC = SKILL_CQC_TRAINED,
+		SKILL_FIREARMS = SKILL_FIREARMS_DEFAULT,
+		SKILL_SPEC_WEAPONS = SKILL_SPEC_SMARTGUN,
+		SKILL_MEDICAL = SKILL_MEDICAL_TRAINED,
+		SKILL_ENDURANCE = SKILL_ENDURANCE_TRAINED,
+		SKILL_LEADERSHIP = SKILL_LEAD_NOVICE,
+		SKILL_VEHICLE = SKILL_VEHICLE_DEFAULT,
+		SKILL_JTAC = SKILL_JTAC_TRAINED
+	)
+
+/datum/skills/military/survivor/forecon_grenadier
+	name = "Reconnaissance Grenadier"
+	skills = list(
+		SKILL_ENGINEER = SKILL_ENGINEER_ENGI,
+		SKILL_CONSTRUCTION = SKILL_CONSTRUCTION_DEFAULT,
+		SKILL_MELEE = SKILL_MELEE_TRAINED,
+		SKILL_CQC = SKILL_CQC_TRAINED,
+		SKILL_FIREARMS = SKILL_FIREARMS_DEFAULT,
+		SKILL_SPEC_WEAPONS = SKILL_SPEC_GRENADIER,
+		SKILL_MEDICAL = SKILL_MEDICAL_TRAINED,
+		SKILL_ENDURANCE = SKILL_ENDURANCE_TRAINED,
+		SKILL_LEADERSHIP = SKILL_LEAD_NOVICE,
+		SKILL_VEHICLE = SKILL_VEHICLE_DEFAULT,
+		SKILL_JTAC = SKILL_JTAC_TRAINED
+	)
+
+/datum/skills/military/survivor/forecon_squad_leader
+	name = "Reconnaissance Squad Leader"
+	skills = list(
+		SKILL_ENGINEER = SKILL_ENGINEER_ENGI,
+		SKILL_CONSTRUCTION = SKILL_CONSTRUCTION_DEFAULT,
+		SKILL_MELEE = SKILL_MELEE_TRAINED,
+		SKILL_CQC = SKILL_CQC_SKILLED,
+		SKILL_FIREARMS = SKILL_FIREARMS_DEFAULT,
+		SKILL_POLICE = SKILL_POLICE_SKILLED,
+		SKILL_JTAC = SKILL_JTAC_TRAINED,
+		SKILL_MEDICAL = SKILL_MEDICAL_TRAINED,
+		SKILL_ENDURANCE = SKILL_ENDURANCE_TRAINED,
+		SKILL_LEADERSHIP = SKILL_LEAD_TRAINED,
+		SKILL_VEHICLE = SKILL_VEHICLE_DEFAULT,
+		SKILL_JTAC = SKILL_JTAC_TRAINED
+	)
+
+/*
+---------------------
 COMMAND STAFF
 ---------------------
 */
@@ -536,7 +641,8 @@ COMMAND STAFF
 		SKILL_POWERLOADER = SKILL_POWERLOADER_MASTER,
 		SKILL_VEHICLE = SKILL_VEHICLE_LARGE,
 		SKILL_JTAC = SKILL_JTAC_EXPERT,
-		SKILL_INTEL = SKILL_INTEL_EXPERT
+		SKILL_INTEL = SKILL_INTEL_EXPERT,
+		SKILL_ENDURANCE = SKILL_ENDURANCE_TRAINED
 	)
 
 /datum/skills/SEA/New(var/mob/skillset_owner)
@@ -642,6 +748,7 @@ MILITARY NONCOMBATANT
 		SKILL_MEDICAL = SKILL_MEDICAL_MEDIC,
 		SKILL_SURGERY = SKILL_SURGERY_NOVICE,
 		SKILL_JTAC = SKILL_JTAC_TRAINED,
+		SKILL_INTEL = SKILL_INTEL_TRAINED,
 	)
 
 /datum/skills/crew_chief
@@ -773,7 +880,7 @@ SYNTHETIC
 	)
 
 /datum/skills/working_joe
-	name = SYNTH_COLONY
+	name = SYNTH_WORKING_JOE
 	skills = list(
 		SKILL_CQC = SKILL_CQC_SKILLED,
 		SKILL_ENGINEER = SKILL_ENGINEER_ENGI,
@@ -782,6 +889,7 @@ SYNTHETIC
 		SKILL_FIREMAN = SKILL_FIREMAN_SKILLED,
 		SKILL_POWERLOADER = SKILL_POWERLOADER_MASTER,
 		SKILL_VEHICLE = SKILL_VEHICLE_LARGE,
+		SKILL_DOMESTIC = SKILL_DOMESTIC_MASTER
 	)
 
 /datum/skills/infiltrator_synthetic
@@ -888,6 +996,7 @@ United States Colonial Marines
 		SKILL_ENDURANCE = SKILL_ENDURANCE_TRAINED,
 		SKILL_VEHICLE = SKILL_VEHICLE_SMALL,
 		SKILL_JTAC = SKILL_JTAC_TRAINED,
+		SKILL_INTEL = SKILL_INTEL_TRAINED,
 	)
 
 /datum/skills/intel

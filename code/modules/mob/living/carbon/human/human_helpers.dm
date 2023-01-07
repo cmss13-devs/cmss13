@@ -163,6 +163,10 @@
 	else
 		b_icon = B.icon_name
 
+	if(isSpeciesYautja(src))
+		e_icon = src.ethnicity
+		b_icon = src.body_type
+
 	for(var/obj/limb/L in limbs)
 		L.icon_name = get_limb_icon_name(species, b_icon, gender, L.display_name, e_icon)
 
@@ -436,12 +440,18 @@
 /mob/living/carbon/human/proc/show_hud_tracker()
 	if(hud_used && !hud_used.locate_leader.alpha)
 		hud_used.locate_leader.alpha = 255
-		hud_used.locate_leader.mouse_opacity = 1
+		hud_used.locate_leader.mouse_opacity = MOUSE_OPACITY_ICON
 
 /mob/living/carbon/human/proc/hide_hud_tracker()
 	if(hud_used && hud_used.locate_leader.alpha)
 		hud_used.locate_leader.alpha = 0
-		hud_used.locate_leader.mouse_opacity = 0
+		hud_used.locate_leader.mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
 /mob/living/carbon/human/handle_blood_splatter(var/splatter_dir)
 	species.handle_blood_splatter(src, splatter_dir)
+
+/mob/living/carbon/human/alter_ghost(var/mob/dead/observer/ghost)
+	ghost.vis_contents = vis_contents
+
+/mob/living/carbon/human/get_orbit_size()
+	return langchat_height

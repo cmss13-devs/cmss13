@@ -7,15 +7,15 @@
 	name = "alien thing"
 	desc = "You shouldn't be seeing this."
 	unacidable = TRUE
-	icon = 'icons/mob/hostiles/Effects.dmi'
+	icon = 'icons/mob/xenos/effects.dmi'
 	layer = FLY_LAYER
 
 /obj/effect/xenomorph/splatter
 	name = "splatter"
 	desc = "It burns! It burns like hygiene!"
 	icon_state = "splatter"
-	density = 0
-	opacity = 0
+	density = FALSE
+	opacity = FALSE
 	anchored = 1
 
 /obj/effect/xenomorph/splatter/New() //Self-deletes after creation & animation
@@ -27,8 +27,8 @@
 	name = "splatter"
 	desc = "It burns! It burns like hygiene!"
 	icon_state = "acidblob"
-	density = 0
-	opacity = 0
+	density = FALSE
+	opacity = FALSE
 	anchored = 1
 
 /obj/effect/xenomorph/splatterblob/New() //Self-deletes after creation & animation
@@ -40,11 +40,11 @@
 	name = "splatter"
 	desc = "It burns! It burns like hygiene!"
 	icon_state = "acid2"
-	density = 0
-	opacity = 0
+	density = FALSE
+	opacity = FALSE
 	anchored = 1
 	layer = ABOVE_OBJ_LAYER
-	mouse_opacity = 0
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	var/datum/cause_data/cause_data
 
 	var/hivenumber = XENO_HIVE_NORMAL
@@ -115,7 +115,7 @@
 					continue
 
 				apply_spray(M)
-				M.apply_armoured_damage(damage_amount, ARMOR_BIO, BURN) // Deal extra damage when first placing ourselves down.
+				M.apply_armoured_damage(get_xeno_damage_acid(M, damage_amount), ARMOR_BIO, BURN) // Deal extra damage when first placing ourselves down.
 
 			continue
 
@@ -125,7 +125,7 @@
 			continue
 
 	START_PROCESSING(SSobj, src)
-	addtimer(CALLBACK(src, .proc/die), time_to_live)
+	addtimer(CALLBACK(src, PROC_REF(die)), time_to_live)
 	animate(src, time_to_live, alpha = 128)
 
 /obj/effect/xenomorph/spray/Destroy()
@@ -165,14 +165,14 @@
 		if(ishuman(H))
 			H.emote("pain")
 			if(should_stun)
-				H.apply_effect(stun_duration, WEAKEN)
+				H.KnockDown(stun_duration)
 			H.apply_armoured_damage(damage_amount * 0.4, ARMOR_BIO, BURN, "l_foot")
 			H.apply_armoured_damage(damage_amount * 0.4, ARMOR_BIO, BURN, "r_foot")
 
 		else if (isXeno(H))
 			var/mob/living/carbon/Xenomorph/X = H
 			if (X.mob_size < MOB_SIZE_BIG && should_stun)
-				X.apply_effect(stun_duration, WEAKEN)
+				X.KnockDown(stun_duration)
 			X.emote("hiss")
 			H.apply_armoured_damage(damage_amount * 0.4 * XVX_ACID_DAMAGEMULT, ARMOR_BIO, BURN)
 
@@ -193,7 +193,42 @@
 	fire_level_to_extinguish = 6
 	time_to_live = 6
 
-	var/bonus_damage = 5
+	var/bonus_damage = 25
+
+/obj/effect/xenomorph/spray/weak/apply_spray(mob/living/carbon/carbone)
+	if(ishuman(carbone))
+		var/mob/living/carbon/human/hooman = carbone
+
+		var/damage = damage_amount
+
+		var/buffed_splash = FALSE
+		var/datum/effects/acid/acid_effect = locate() in hooman.effects_list
+		if(acid_effect && acid_effect.acid_enhanced == FALSE) // can't stack the bonus every splash. thatd be nuts!
+			buffed_splash = TRUE
+			damage += bonus_damage
+
+			acid_effect.enhance_acid()
+
+		var/datum/effects/weak_spray_stack/spray_stack = locate() in hooman.effects_list
+		if(!spray_stack)
+			spray_stack = new /datum/effects/weak_spray_stack(hooman)
+		spray_stack.hit_count++
+		damage /= spray_stack.hit_count //less damage every hit
+
+		to_chat(hooman, SPAN_DANGER("Your legs scald and burn! Argh!"))
+		hooman.emote(pick("scream", "pain"))
+		if (buffed_splash)
+			hooman.KnockDown(stun_duration)
+			to_chat(hooman, SPAN_HIGHDANGER("The acid coating on you starts bubbling and sizzling wildly!"))
+		hooman.last_damage_data = cause_data
+		hooman.apply_armoured_damage(damage * 0.25, ARMOR_BIO, BURN, "l_foot", 20)
+		hooman.apply_armoured_damage(damage * 0.25, ARMOR_BIO, BURN, "r_foot", 20)
+		hooman.apply_armoured_damage(damage * 0.25, ARMOR_BIO, BURN, "l_leg", 20)
+		hooman.apply_armoured_damage(damage * 0.25, ARMOR_BIO, BURN, "r_leg", 20)
+		hooman.UpdateDamageIcon()
+		hooman.updatehealth()
+	else if (isXeno(carbone))
+		..(carbone, FALSE)
 
 /obj/effect/xenomorph/spray/strong
 	name = "strong splatter"
@@ -209,32 +244,6 @@
 /obj/effect/xenomorph/spray/strong/no_stun
 	stun_duration = 0
 
-/obj/effect/xenomorph/spray/weak/apply_spray(mob/living/carbon/M)
-	if(ishuman(M))
-		var/mob/living/carbon/human/H = M
-
-		var/damage = damage_amount
-
-		var/should_stun = FALSE
-		for (var/datum/effects/acid/A in H.effects_list)
-			should_stun = TRUE
-			damage += (-1*(A.duration - A.original_duration))*(A.damage_in_total_human/A.original_duration)
-			damage += bonus_damage
-
-			qdel(A)
-			break
-
-		to_chat(H, SPAN_DANGER("Your feet scald and burn! Argh!"))
-		H.emote("pain")
-		if (should_stun && !H.lying)
-			H.apply_effect(stun_duration, WEAKEN)
-		H.last_damage_data = cause_data
-		H.apply_armoured_damage(damage_amount * 0.5, ARMOR_BIO, BURN, "l_foot", 50)
-		H.apply_armoured_damage(damage_amount * 0.5, ARMOR_BIO, BURN, "r_foot", 50)
-		H.UpdateDamageIcon()
-		H.updatehealth()
-	else if (isXeno(M))
-		..(M, FALSE)
 
 /obj/effect/xenomorph/spray/praetorian
 	name = "splatter"
@@ -274,8 +283,8 @@
 	name = "acid"
 	desc = "Burbling corrosive stuff. I wouldn't want to touch it."
 	icon_state = "acid_normal"
-	density = 0
-	opacity = 0
+	density = FALSE
+	opacity = FALSE
 	anchored = 1
 	unacidable = TRUE
 	var/atom/acid_t
@@ -283,6 +292,7 @@
 	var/acid_strength = 1 //100% speed, normal
 	var/barricade_damage = 40
 	var/barricade_damage_ticks = 10 // tick is once per 5 seconds. This tells us how many times it will try damaging barricades
+	var/in_weather = FALSE
 
 //Sentinel weakest acid
 /obj/effect/xenomorph/acid/weak
@@ -302,11 +312,28 @@
 	..(loc)
 	acid_t = target
 	var/strength_t = isturf(acid_t) ? 8:4 // Turf take twice as long to take down.
+	handle_weather()
 	tick(strength_t)
+
+	RegisterSignal(SSdcs, COMSIG_GLOB_WEATHER_CHANGE, PROC_REF(handle_weather))
 
 /obj/effect/xenomorph/acid/Destroy()
 	acid_t = null
 	. = ..()
+
+/obj/effect/xenomorph/acid/proc/handle_weather()
+	SIGNAL_HANDLER
+
+	var/area/acids_area = get_area(src)
+	if(!acids_area)
+		return
+
+	if(SSweather.is_weather_event && locate(acids_area.master) in SSweather.weather_areas)
+		acid_strength = acid_strength + (SSweather.weather_event_instance.fire_smothering_strength * 0.33) //smothering_strength is 1-10, acid strength is a multiplier
+		in_weather = SSweather.weather_event_instance.fire_smothering_strength
+	else
+		acid_strength = initial(acid_strength)
+		in_weather = FALSE
 
 /obj/effect/xenomorph/acid/proc/handle_barricade()
 	var/obj/structure/barricade/cade = acid_t
@@ -320,7 +347,7 @@
 		return
 
 	if(istype(acid_t,/obj/structure/barricade))
-		if(++ticks >= barricade_damage_ticks)
+		if(++ticks >= barricade_damage_ticks || prob(in_weather))
 			visible_message(SPAN_XENOWARNING("Acid on \The [acid_t] subsides!"))
 			qdel(src)
 			return
@@ -345,7 +372,7 @@
 			G.dismantle()
 		else if(istype(acid_t, /obj/structure/window/framed))
 			var/obj/structure/window/framed/WF = acid_t
-			WF.drop_window_frame()
+			WF.deconstruct(disassembled = FALSE)
 		else if(istype(acid_t,/obj/item/explosive/plastic))
 			qdel(acid_t)
 
@@ -373,7 +400,7 @@
 	name = "???"
 	desc = ""
 	icon_state = "boiler_bombard"
-	mouse_opacity = 0
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
 	// Config-ish values
 	var/damage = 20
@@ -398,8 +425,8 @@
 	else
 		qdel(src)
 
-	addtimer(CALLBACK(src, .proc/damage_mobs), time_before_damage)
-	addtimer(CALLBACK(src, .proc/make_smoke), time_before_smoke)
+	addtimer(CALLBACK(src, PROC_REF(damage_mobs)), time_before_damage)
+	addtimer(CALLBACK(src, PROC_REF(make_smoke)), time_before_smoke)
 
 /obj/effect/xenomorph/boiler_bombard/proc/damage_mobs()
 	if (!istype(src) || !isturf(loc))
@@ -434,7 +461,7 @@
 	name = "???"
 	desc = ""
 	icon_state = "xeno_telegraph_red"
-	mouse_opacity = 0
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
 /obj/effect/xenomorph/xeno_telegraph/New(loc, ttl = 10)
 	..(loc)
@@ -450,7 +477,7 @@
 	icon_state = "xeno_telegraph_green"
 
 /obj/effect/xenomorph/xeno_telegraph/brown/abduct_hook
-	icon_state = "xeno_telegraph_abduct_hook"
+	icon_state = "xeno_telegraph_abduct_hook_anim"
 
 /obj/effect/xenomorph/xeno_telegraph/brown/lash
 	icon_state = "xeno_telegraph_lash"
@@ -461,7 +488,7 @@
 	name = "???"
 	desc = ""
 	icon_state = "boiler_bombard"
-	mouse_opacity = 0
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
 	var/damage = 20
 	var/message = null
@@ -472,7 +499,7 @@
 /obj/effect/xenomorph/acid_damage_delay/New(loc, damage = 20, delay = 10, empowered = FALSE, message = null, mob/living/carbon/Xenomorph/linked_xeno = null)
 	..(loc)
 
-	addtimer(CALLBACK(src, .proc/die), delay)
+	addtimer(CALLBACK(src, PROC_REF(die)), delay)
 	src.damage = damage
 	src.message = message
 	src.linked_xeno = linked_xeno

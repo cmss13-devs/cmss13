@@ -10,13 +10,15 @@
 		/datum/action/xeno_action/onclick/plant_weeds,
 		/datum/action/xeno_action/onclick/place_trap,
 		/datum/action/xeno_action/activable/retrieve_egg,
+		/datum/action/xeno_action/onclick/set_hugger_reserve,
 	)
 	mutator_actions_to_add = list(
+		/datum/action/xeno_action/onclick/plant_weeds, //first macro
 		/datum/action/xeno_action/activable/sacrifice_egg/radius_remember,
-		/datum/action/xeno_action/activable/sacrifice_egg/radius_shield, //first macro
-		/datum/action/xeno_action/activable/sacrifice_egg/radius_scream, //second macro
-		/datum/action/xeno_action/activable/sacrifice_egg/radius_pheromones, //third macro
-		/datum/action/xeno_action/activable/retrieve_egg, //fourth macro
+		/datum/action/xeno_action/activable/sacrifice_egg/radius_shield, //second macro
+		/datum/action/xeno_action/activable/sacrifice_egg/radius_scream, //third macro
+		/datum/action/xeno_action/activable/sacrifice_egg/radius_pheromones, //fourth macro
+		/datum/action/xeno_action/activable/retrieve_egg/shaman, //fifth macro
 		/datum/action/xeno_action/onclick/use_pain
 		)
 	behavior_delegate_type = /datum/behavior_delegate/carrier_shaman
@@ -38,25 +40,25 @@
 	used_shaman_ability = FALSE
 	to_chat(bound_xeno, SPAN_XENOBOLDNOTICE("The hive is ready for another sacrifice."))
 
-/datum/xeno_mutator/shaman/apply_mutator(datum/mutator_set/individual_mutators/MS)
+/datum/xeno_mutator/shaman/apply_mutator(datum/mutator_set/individual_mutators/mutator_set)
 	. = ..()
 	if (!.)
 		return .
-	var/mob/living/carbon/Xenomorph/Carrier/C = MS.xeno
-	if(!istype(C))
+	var/mob/living/carbon/Xenomorph/Carrier/carrier = mutator_set.xeno
+	if(!istype(carrier))
 		return FALSE
-	C.mutation_type = CARRIER_SHAMAN
-	C.shaman_interactive = FALSE
-	C.ignores_pheromones = TRUE
-	apply_behavior_holder(C)
-	mutator_update_actions(C)
-	MS.recalculate_actions(description, flavor_description)
-	C.phero_modifier = -C.caste.aura_strength
-	C.recalculate_pheromones()
-	if(C.huggers_cur > 0)
-		playsound(C.loc, 'sound/voice/alien_facehugger_dies.ogg', 25, 1)
-	C.huggers_cur = 0
-	C.huggers_max = 0
+	carrier.mutation_type = CARRIER_SHAMAN
+	carrier.shaman_interactive = FALSE
+	carrier.ignores_pheromones = TRUE
+	apply_behavior_holder(carrier)
+	mutator_update_actions(carrier)
+	mutator_set.recalculate_actions(description, flavor_description)
+	carrier.phero_modifier = -carrier.caste.aura_strength
+	carrier.recalculate_pheromones()
+	if(carrier.huggers_cur > 0)
+		playsound(carrier.loc, 'sound/voice/alien_facehugger_dies.ogg', 25, 1)
+	carrier.huggers_cur = 0
+	carrier.huggers_max = 0
 	return TRUE
 
 /datum/action/xeno_action/activable/sacrifice_egg
@@ -66,11 +68,13 @@
 	action_type = XENO_ACTION_ACTIVATE
 
 /datum/action/xeno_action/activable/sacrifice_egg/action_cooldown_check()
-	var/mob/living/carbon/Xenomorph/Carrier/X = owner
-	var/datum/behavior_delegate/carrier_shaman/BD = X.behavior_delegate
-	if(!istype(BD))
+	if(!owner) //fires when action is assigned
 		return FALSE
-	return !BD.used_shaman_ability
+	var/mob/living/carbon/Xenomorph/Carrier/xeno = owner
+	var/datum/behavior_delegate/carrier_shaman/xeno_behavior = xeno.behavior_delegate
+	if(!istype(xeno_behavior))
+		return FALSE
+	return !xeno_behavior.used_shaman_ability
 
 /datum/action/xeno_action/activable/sacrifice_egg/proc/get_cooldown()
 	return 10 SECONDS
@@ -79,17 +83,17 @@
 	return 4
 
 /datum/action/xeno_action/activable/sacrifice_egg/use_ability()
-	var/mob/living/carbon/Xenomorph/Carrier/X = owner
-	if(!istype(X))
+	var/mob/living/carbon/Xenomorph/Carrier/xeno = owner
+	if(!istype(xeno))
 		return FALSE
-	if(X.eggs_cur <= 0)
-		to_chat(X, SPAN_XENOWARNING("You need an egg in your storage to sacrifice."))
+	if(xeno.eggs_cur <= 0)
+		to_chat(xeno, SPAN_XENOWARNING("You need an egg in your storage to sacrifice."))
 		return FALSE
-	var/datum/behavior_delegate/carrier_shaman/BD = X.behavior_delegate
-	if(!istype(BD))
+	var/datum/behavior_delegate/carrier_shaman/xeno_behavior = xeno.behavior_delegate
+	if(!istype(xeno_behavior))
 		return FALSE
-	if(BD.used_shaman_ability)
-		to_chat(X, SPAN_XENOWARNING("Hive is not ready for death of another little one."))
+	if(xeno_behavior.used_shaman_ability)
+		to_chat(xeno, SPAN_XENOWARNING("Hive is not ready for death of another little one."))
 		return FALSE
 	return TRUE
 
@@ -100,7 +104,7 @@
 	ability_name = "adrenal shielding"
 	macro_path = /datum/action/xeno_action/verb/verb_egg_sacr_shield
 	action_type = XENO_ACTION_ACTIVATE
-	ability_primacy = XENO_PRIMARY_ACTION_1
+	ability_primacy = XENO_PRIMARY_ACTION_2
 	var/windup_delay = 25
 
 	var/shield_strength_base = 10 // in percent
@@ -119,10 +123,10 @@
 	handle_xeno_macro(src, action_name)
 
 /datum/action/xeno_action/activable/sacrifice_egg/radius_shield/use_ability()
-	var/mob/living/carbon/Xenomorph/Carrier/X = owner
+	var/mob/living/carbon/Xenomorph/Carrier/xeno = owner
 	if(!..())
 		return
-	X.egg_sacr_shield(src)
+	xeno.egg_sacr_shield(src)
 
 /mob/living/carbon/Xenomorph/Carrier/proc/egg_sacr_shield(var/datum/action/xeno_action/activable/sacrifice_egg/radius_shield/action_def)
 	if(!check_state())
@@ -131,15 +135,15 @@
 	if(!check_plasma(100))
 		return
 
-	var/datum/behavior_delegate/carrier_shaman/BD = behavior_delegate
-	if(!istype(BD))
+	var/datum/behavior_delegate/carrier_shaman/xeno_behavior = behavior_delegate
+	if(!istype(xeno_behavior))
 		return FALSE
-	BD.used_shaman_ability = TRUE
+	xeno_behavior.used_shaman_ability = TRUE
 
 	visible_message(SPAN_XENOBOLDNOTICE("\The [src] takes an alien egg into its hand and prepares to crush it!"), SPAN_XENOBOLDNOTICE("You prepare to sacrifice an egg, trying to inflict as much suffering as possible!"), null, 8)
 
 	if(!do_after(src, action_def.windup_delay, INTERRUPT_ALL, ACTION_GREEN_POWER_UP))
-		BD.used_shaman_ability = FALSE
+		xeno_behavior.used_shaman_ability = FALSE
 		return
 
 	plasma_stored -= 100
@@ -152,49 +156,49 @@
 
 	var/list/xenomorphs_in_range = list()
 	var/effect_power = 0
-	for(var/mob/living/carbon/Xenomorph/X in range(action_def.get_gather_range(), src) - src)
-		if(X.stat == DEAD)
+	for(var/mob/living/carbon/Xenomorph/xeno in range(action_def.get_gather_range(), src) - src)
+		if(xeno.stat == DEAD)
 			continue
-		if(!X.shaman_interactive) // Shamans are disconnected from the effect
+		if(!xeno.shaman_interactive) // Shamans are disconnected from the effect
 			continue
-		if(!hive.is_ally(X))
+		if(!hive.is_ally(xeno))
 			continue
 
-		to_chat(X, SPAN_XENOBOLDNOTICE("The sacrifice of an egg spikes your adrenal system into overdrive!"))
+		to_chat(xeno, SPAN_XENOBOLDNOTICE("The sacrifice of an egg spikes your adrenal system into overdrive!"))
 
-		effect_overlay.flick_overlay(X, 20)
+		effect_overlay.flick_overlay(xeno, 20)
 		effect_power++
-		xenomorphs_in_range += X
+		xenomorphs_in_range += xeno
 
-	addtimer(CALLBACK(BD, /datum/behavior_delegate/carrier_shaman.proc/reset_shaman_ability), action_def.get_cooldown())
+	addtimer(CALLBACK(xeno_behavior, TYPE_PROC_REF(/datum/behavior_delegate/carrier_shaman, reset_shaman_ability)), action_def.get_cooldown())
 
 	if(!length(xenomorphs_in_range))
 		to_chat(src, SPAN_XENOWARNING("There weren't enough of your allies around for the sacrifice to be effective."))
 		return
 
-	if(BD.enable_pain_usage && effect_power < BD.remembered_count)
+	if(xeno_behavior.enable_pain_usage && effect_power < xeno_behavior.remembered_count)
 		to_chat(src, SPAN_XENOWARNING("You use stored pain memory."))
-		effect_power = BD.remembered_count
-		BD.remembered_count = 0
+		effect_power = xeno_behavior.remembered_count
+		xeno_behavior.remembered_count = 0
 
 	var/shield_percent = min(((effect_power - 1) * action_def.shield_strength_gain) + action_def.shield_strength_base, action_def.shield_strength_max)
 	var/armor_percent =  min(((effect_power - 1) * action_def.armor_strength_gain) + action_def.armor_strength_base, action_def.armor_strength_max)
 
-	for(var/mob/living/carbon/Xenomorph/X as anything in xenomorphs_in_range)
+	for(var/mob/living/carbon/Xenomorph/xeno as anything in xenomorphs_in_range)
 		// give overshield
-		var/to_shield = min(X.maxHealth * shield_percent / 100, action_def.shield_strength_max)
-		X.add_xeno_shield(to_shield, XENO_SHIELD_SOURCE_SHAMAN)
+		var/to_shield = min(xeno.maxHealth * shield_percent / 100, action_def.shield_strength_max)
+		xeno.add_xeno_shield(to_shield, XENO_SHIELD_SOURCE_SHAMAN)
 
-		if(X.armor_deflection && X.armor_integrity < 100)
+		if(xeno.armor_deflection && xeno.armor_integrity < 100)
 			var/to_armor = armor_percent
-			X.gain_armor_percent(to_armor)
+			xeno.gain_armor_percent(to_armor)
 
 		// lift them up from any state
-		X.set_effect(0, STUN)
-		X.set_effect(0, DAZE)
-		X.set_effect(0, WEAKEN)
+		xeno.set_effect(0, STUN)
+		xeno.set_effect(0, DAZE)
+		xeno.set_effect(0, WEAKEN)
 
-		shield_overlay.flick_overlay(X, 20)
+		shield_overlay.flick_overlay(xeno, 20)
 
 	return TRUE
 
@@ -205,7 +209,7 @@
 	ability_name = "frenzied scream"
 	macro_path = /datum/action/xeno_action/verb/verb_egg_sacr_scream
 	action_type = XENO_ACTION_ACTIVATE
-	ability_primacy = XENO_PRIMARY_ACTION_2
+	ability_primacy = XENO_PRIMARY_ACTION_3
 	var/windup_delay = 30
 	var/initial_range = 3
 	var/maximum_range = 7
@@ -221,10 +225,10 @@
 	handle_xeno_macro(src, action_name)
 
 /datum/action/xeno_action/activable/sacrifice_egg/radius_scream/use_ability()
-	var/mob/living/carbon/Xenomorph/Carrier/X = owner
+	var/mob/living/carbon/Xenomorph/Carrier/xeno = owner
 	if(!..())
 		return
-	X.egg_sacr_scream(src)
+	xeno.egg_sacr_scream(src)
 
 /mob/living/var/scream_stun_timeout
 
@@ -235,15 +239,15 @@
 	if(!check_plasma(300))
 		return
 
-	var/datum/behavior_delegate/carrier_shaman/BD = behavior_delegate
-	if(!istype(BD))
+	var/datum/behavior_delegate/carrier_shaman/xeno_behavior = behavior_delegate
+	if(!istype(xeno_behavior))
 		return FALSE
-	BD.used_shaman_ability = TRUE
+	xeno_behavior.used_shaman_ability = TRUE
 
 	visible_message(SPAN_XENOBOLDNOTICE("\The [src] takes an alien egg into its hand and prepares to crush it!"), SPAN_XENOBOLDNOTICE("You prepare to sacrifice an egg, trying to inflict as much suffering as possible!"), null, 8)
 
 	if(!do_after(src, action_def.windup_delay, INTERRUPT_ALL, ACTION_RED_POWER_UP))
-		BD.used_shaman_ability = FALSE
+		xeno_behavior.used_shaman_ability = FALSE
 		return
 
 	plasma_stored -= 300
@@ -252,25 +256,25 @@
 	var/image/effect_overlay = get_busy_icon(ACTION_RED_POWER_UP)
 
 	var/effect_power = 0
-	for(var/mob/living/carbon/Xenomorph/X in range(action_def.get_gather_range(), src) - src)
-		if(X.stat == DEAD)
+	for(var/mob/living/carbon/Xenomorph/xeno in range(action_def.get_gather_range(), src) - src)
+		if(xeno.stat == DEAD)
 			continue
-		if(!X.shaman_interactive) // Shamans are disconnected from the effect
+		if(!xeno.shaman_interactive) // Shamans are disconnected from the effect
 			continue
-		if(!hive.is_ally(X))
+		if(!hive.is_ally(xeno))
 			continue
 
-		to_chat(X, SPAN_XENONOTICE("Your mind emits a strange wave of thoughts that even other creatures can feel!"))
+		to_chat(xeno, SPAN_XENONOTICE("Your mind emits a strange wave of thoughts that even other creatures can feel!"))
 
-		effect_overlay.flick_overlay(X, 20)
+		effect_overlay.flick_overlay(xeno, 20)
 		effect_power++
 
-	addtimer(CALLBACK(BD, /datum/behavior_delegate/carrier_shaman.proc/reset_shaman_ability), action_def.get_cooldown())
+	addtimer(CALLBACK(xeno_behavior, TYPE_PROC_REF(/datum/behavior_delegate/carrier_shaman, reset_shaman_ability)), action_def.get_cooldown())
 
-	if(BD.enable_pain_usage && effect_power < BD.remembered_count)
+	if(xeno_behavior.enable_pain_usage && effect_power < xeno_behavior.remembered_count)
 		to_chat(src, SPAN_XENOWARNING("You use stored pain memory."))
-		effect_power = BD.remembered_count
-		BD.remembered_count = 0
+		effect_power = xeno_behavior.remembered_count
+		xeno_behavior.remembered_count = 0
 
 	if(!effect_power)
 		to_chat(src, SPAN_XENOWARNING("There weren't enough of your allies around for the sacrifice to be effective."))
@@ -289,14 +293,14 @@
 			to_chat(src, SPAN_XENOWARNING("A wave of madness passes over you, but you were already shocked by the same feeling recently."))
 			continue
 
-		var/mob/living/carbon/Xenomorph/X = M
+		var/mob/living/carbon/Xenomorph/xeno = M
 		var/mob/living/carbon/human/H = M
 
-		if(istype(X))
-			to_chat(X, SPAN_XENODANGER("A wave of madness passes through and completely overwhelms you. How could they do this to their own little ones!?"))
-			X.apply_effect(action_def.stun_timer, WEAKEN)
-			X.emote("needhelp")
-			X.scream_stun_timeout = world.time + action_def.stun_timeout
+		if(istype(xeno))
+			to_chat(xeno, SPAN_XENODANGER("A wave of madness passes through and completely overwhelms you. How could they do this to their own little ones!?"))
+			xeno.apply_effect(action_def.stun_timer, WEAKEN)
+			xeno.emote("needhelp")
+			xeno.scream_stun_timeout = world.time + action_def.stun_timeout
 			continue
 
 		if(istype(H))
@@ -321,7 +325,7 @@
 	ability_name = "adrenal pheromones"
 	macro_path = /datum/action/xeno_action/verb/verb_egg_sacr_scream
 	action_type = XENO_ACTION_ACTIVATE
-	ability_primacy = XENO_PRIMARY_ACTION_3
+	ability_primacy = XENO_PRIMARY_ACTION_4
 	var/pheromone_strength_per_xeno = 0.5
 	var/pheromone_strength_base = 1
 	var/gather_range = 3
@@ -336,10 +340,10 @@
 	handle_xeno_macro(src, action_name)
 
 /datum/action/xeno_action/activable/sacrifice_egg/radius_pheromones/use_ability()
-	var/mob/living/carbon/Xenomorph/Carrier/X = owner
+	var/mob/living/carbon/Xenomorph/Carrier/xeno = owner
 	if(!..())
 		return
-	X.egg_sacr_pheromones(src)
+	xeno.egg_sacr_pheromones(src)
 
 /mob/living/carbon/Xenomorph/Carrier/proc/egg_sacr_pheromones(var/datum/action/xeno_action/activable/sacrifice_egg/radius_pheromones/action_def)
 	if(!check_state())
@@ -348,15 +352,15 @@
 	if(!check_plasma(300))
 		return
 
-	var/datum/behavior_delegate/carrier_shaman/BD = behavior_delegate
-	if(!istype(BD))
+	var/datum/behavior_delegate/carrier_shaman/xeno_behavior = behavior_delegate
+	if(!istype(xeno_behavior))
 		return FALSE
-	BD.used_shaman_ability = TRUE
+	xeno_behavior.used_shaman_ability = TRUE
 
 	visible_message(SPAN_XENOBOLDNOTICE("\The [src] takes an alien egg into its hand and prepares to crush it!"), SPAN_XENOBOLDNOTICE("You prepare to sacrifice an egg, trying to inflict as much suffering as possible!"), null, 8)
 
 	if(!do_after(src, action_def.windup_delay, INTERRUPT_ALL, ACTION_BLUE_POWER_UP))
-		BD.used_shaman_ability = FALSE
+		xeno_behavior.used_shaman_ability = FALSE
 		return
 
 	plasma_stored -= 300
@@ -368,25 +372,25 @@
 
 	visible_message(SPAN_XENONOTICE("\The [src] squashes the egg into a pulp."), SPAN_XENONOTICE("You squash the egg into a mess of acid, blood, and gore! You absorb the adrenal pheremones and redirect them outwards!"), null, 8)
 
-	for(var/mob/living/carbon/Xenomorph/X in range(action_def.get_gather_range(), src) - src)
-		if(X.stat == DEAD)
+	for(var/mob/living/carbon/Xenomorph/xeno in range(action_def.get_gather_range(), src) - src)
+		if(xeno.stat == DEAD)
 			continue
-		if(!X.shaman_interactive) // Shamans are disconnected from the effect
+		if(!xeno.shaman_interactive) // Shamans are disconnected from the effect
 			continue
-		if(!hive.is_ally(X))
+		if(!hive.is_ally(xeno))
 			continue
 
-		to_chat(X, SPAN_XENONOTICE("The death of an ovomorph causes you to release adrenal pheromones!"))
+		to_chat(xeno, SPAN_XENONOTICE("The death of an ovomorph causes you to release adrenal pheromones!"))
 
-		effect_overlay.flick_overlay(X, 20)
+		effect_overlay.flick_overlay(xeno, 20)
 		effect_power++
 
-	addtimer(CALLBACK(BD, /datum/behavior_delegate/carrier_shaman.proc/reset_shaman_ability), action_def.get_cooldown())
+	addtimer(CALLBACK(xeno_behavior, TYPE_PROC_REF(/datum/behavior_delegate/carrier_shaman, reset_shaman_ability)), action_def.get_cooldown())
 
-	if(BD.enable_pain_usage && effect_power < BD.remembered_count)
+	if(xeno_behavior.enable_pain_usage && effect_power < xeno_behavior.remembered_count)
 		to_chat(src, SPAN_XENOWARNING("You use stored pain memory."))
-		effect_power = BD.remembered_count
-		BD.remembered_count = 0
+		effect_power = xeno_behavior.remembered_count
+		xeno_behavior.remembered_count = 0
 
 	if(!effect_power)
 		to_chat(src, SPAN_XENOWARNING("There weren't enough of your allies around for the sacrifice to be effective."))
@@ -400,7 +404,7 @@
 	playsound(loc, "alien_drool", 25)
 	visible_message(SPAN_XENOWARNING("\The [src] begins to emit madness-inducing pheromones."), SPAN_XENOWARNING("You begin to emit an array of pheromones."), null, 5)
 
-	addtimer(CALLBACK(src, /mob/living/carbon/Xenomorph/Carrier.proc/egg_sacr_pheromones_disable), 30 SECONDS)
+	addtimer(CALLBACK(src, TYPE_PROC_REF(/mob/living/carbon/Xenomorph/Carrier, egg_sacr_pheromones_disable)), 30 SECONDS)
 	return TRUE
 
 
@@ -429,10 +433,10 @@
 	handle_xeno_macro(src, action_name)
 
 /datum/action/xeno_action/activable/sacrifice_egg/radius_remember/use_ability()
-	var/mob/living/carbon/Xenomorph/Carrier/X = owner
+	var/mob/living/carbon/Xenomorph/Carrier/xeno = owner
 	if(!..())
 		return
-	X.egg_sacr_remember_pain(src)
+	xeno.egg_sacr_remember_pain(src)
 
 /mob/living/carbon/Xenomorph/Carrier/proc/egg_sacr_remember_pain(var/datum/action/xeno_action/activable/sacrifice_egg/radius_remember/action_def)
 	if(!check_state())
@@ -441,15 +445,15 @@
 	if(!check_plasma(300))
 		return
 
-	var/datum/behavior_delegate/carrier_shaman/BD = behavior_delegate
-	if(!istype(BD))
+	var/datum/behavior_delegate/carrier_shaman/xeno_behavior = behavior_delegate
+	if(!istype(xeno_behavior))
 		return FALSE
-	BD.used_shaman_ability = TRUE
+	xeno_behavior.used_shaman_ability = TRUE
 
 	visible_message(SPAN_XENOBOLDNOTICE("\The [src] takes an alien egg into its hand and prepares to crush it!"), SPAN_XENOBOLDNOTICE("You prepare to sacrifice an egg, trying to inflict as much suffering as possible!"), null, 8)
 
 	if(!do_after(src, action_def.windup_delay, INTERRUPT_ALL, ACTION_PURPLE_POWER_UP))
-		BD.used_shaman_ability = FALSE
+		xeno_behavior.used_shaman_ability = FALSE
 		return
 
 	plasma_stored -= 300
@@ -460,25 +464,25 @@
 
 	visible_message(SPAN_XENONOTICE("\The [src] squashes the egg into a pulp."), SPAN_XENONOTICE("You squash the egg into a mess of acid, blood, and gore! You absorb the adrenal pheremones and store them inside you."), null, 8)
 
-	for(var/mob/living/carbon/Xenomorph/X in range(7, src) - src)
-		if(X.stat == DEAD)
+	for(var/mob/living/carbon/Xenomorph/xeno in range(7, src) - src)
+		if(xeno.stat == DEAD)
 			continue
-		if(!X.shaman_interactive) // Shamans are disconnected from the effect
+		if(!xeno.shaman_interactive) // Shamans are disconnected from the effect
 			continue
-		if(!hive.is_ally(X))
+		if(!hive.is_ally(xeno))
 			continue
 
-		effect_overlay.flick_overlay(X, 20)
+		effect_overlay.flick_overlay(xeno, 20)
 		effect_power++
 
-	addtimer(CALLBACK(BD, /datum/behavior_delegate/carrier_shaman.proc/reset_shaman_ability), action_def.get_cooldown())
+	addtimer(CALLBACK(xeno_behavior, TYPE_PROC_REF(/datum/behavior_delegate/carrier_shaman, reset_shaman_ability)), action_def.get_cooldown())
 
 	if(!effect_power)
 		to_chat(src, SPAN_XENOWARNING("There weren't enough of your allies around for the sacrifice to be effective."))
 		return
 
 	to_chat(src, SPAN_XENOBOLDNOTICE("You absorb the adrenal pheremones of [effect_power] xenomorph\s!"))
-	BD.remembered_count = effect_power
+	xeno_behavior.remembered_count = effect_power
 
 /datum/action/xeno_action/onclick/use_pain
 	name = "Use Pain"
@@ -495,18 +499,18 @@
 	handle_xeno_macro(src, action_name)
 
 /datum/action/xeno_action/onclick/use_pain/use_ability()
-	var/mob/living/carbon/Xenomorph/Carrier/X = owner
+	var/mob/living/carbon/Xenomorph/Carrier/xeno = owner
 	if(!..())
 		return
-	X.use_pain_toggle()
-	var/datum/behavior_delegate/carrier_shaman/BD = X.behavior_delegate
-	if(!istype(BD))
+	xeno.use_pain_toggle()
+	var/datum/behavior_delegate/carrier_shaman/xeno_behavior = xeno.behavior_delegate
+	if(!istype(xeno_behavior))
 		return FALSE
-	button.icon_state = BD.enable_pain_usage ? "template_active" : "template"
+	button.icon_state = xeno_behavior.enable_pain_usage ? "template_active" : "template"
 
 /mob/living/carbon/Xenomorph/Carrier/proc/use_pain_toggle()
-	var/datum/behavior_delegate/carrier_shaman/BD = behavior_delegate
-	if(!istype(BD))
+	var/datum/behavior_delegate/carrier_shaman/xeno_behavior = behavior_delegate
+	if(!istype(xeno_behavior))
 		return FALSE
-	BD.enable_pain_usage = !BD.enable_pain_usage
-	to_chat(src, SPAN_XENONOTICE("You will now [BD.enable_pain_usage ? "" : "<b>NOT</b> "]use remembered pain to cast abilities."))
+	xeno_behavior.enable_pain_usage = !xeno_behavior.enable_pain_usage
+	to_chat(src, SPAN_XENONOTICE("You will now [xeno_behavior.enable_pain_usage ? "" : "<b>NOT</b> "]use remembered pain to cast abilities."))

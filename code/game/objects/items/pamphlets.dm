@@ -11,7 +11,7 @@
 	var/flavour_text = "You read over the pamphlet a few times, learning a new skill."
 	var/bypass_pamphlet_limit = FALSE
 
-obj/item/pamphlet/Initialize()
+/obj/item/pamphlet/Initialize()
 	. = ..()
 
 	trait = GLOB.character_traits[trait]

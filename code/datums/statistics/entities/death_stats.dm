@@ -30,37 +30,37 @@
 	var/z
 
 /datum/entity_meta/statistic_death
-    entity_type = /datum/entity/statistic/death
-    table_name = "log_player_statistic_death"
-    field_types = list(
-        "player_id" = DB_FIELDTYPE_BIGINT,
-        "round_id" = DB_FIELDTYPE_BIGINT,
+	entity_type = /datum/entity/statistic/death
+	table_name = "log_player_statistic_death"
+	field_types = list(
+		"player_id" = DB_FIELDTYPE_BIGINT,
+		"round_id" = DB_FIELDTYPE_BIGINT,
 
-        "role_name" = DB_FIELDTYPE_STRING_LARGE,
-        "faction_name" = DB_FIELDTYPE_STRING_LARGE,
-        "mob_name" = DB_FIELDTYPE_STRING_LARGE,
-        "area_name" = DB_FIELDTYPE_STRING_LARGE,
+		"role_name" = DB_FIELDTYPE_STRING_LARGE,
+		"faction_name" = DB_FIELDTYPE_STRING_LARGE,
+		"mob_name" = DB_FIELDTYPE_STRING_LARGE,
+		"area_name" = DB_FIELDTYPE_STRING_LARGE,
 
-        "cause_name" = DB_FIELDTYPE_STRING_LARGE,
+		"cause_name" = DB_FIELDTYPE_STRING_LARGE,
 		"cause_player_id" = DB_FIELDTYPE_BIGINT,
-        "cause_role_name" = DB_FIELDTYPE_STRING_LARGE,
-        "cause_faction_name" = DB_FIELDTYPE_STRING_LARGE,
+		"cause_role_name" = DB_FIELDTYPE_STRING_LARGE,
+		"cause_faction_name" = DB_FIELDTYPE_STRING_LARGE,
 
-        "total_steps" = DB_FIELDTYPE_INT,
-        "total_kills" = DB_FIELDTYPE_INT,
-        "time_of_death" = DB_FIELDTYPE_BIGINT,
-        "total_time_alive" = DB_FIELDTYPE_BIGINT,
-        "total_damage_taken" = DB_FIELDTYPE_INT,
+		"total_steps" = DB_FIELDTYPE_INT,
+		"total_kills" = DB_FIELDTYPE_INT,
+		"time_of_death" = DB_FIELDTYPE_BIGINT,
+		"total_time_alive" = DB_FIELDTYPE_BIGINT,
+		"total_damage_taken" = DB_FIELDTYPE_INT,
 
-        "total_brute" = DB_FIELDTYPE_INT,
-        "total_burn" = DB_FIELDTYPE_INT,
-        "total_oxy" = DB_FIELDTYPE_INT,
-        "total_tox" = DB_FIELDTYPE_INT,
+		"total_brute" = DB_FIELDTYPE_INT,
+		"total_burn" = DB_FIELDTYPE_INT,
+		"total_oxy" = DB_FIELDTYPE_INT,
+		"total_tox" = DB_FIELDTYPE_INT,
 
-        "x" = DB_FIELDTYPE_INT,
-        "y" = DB_FIELDTYPE_INT,
-        "z" = DB_FIELDTYPE_INT
-    )
+		"x" = DB_FIELDTYPE_INT,
+		"y" = DB_FIELDTYPE_INT,
+		"z" = DB_FIELDTYPE_INT
+	)
 
 /mob/proc/track_mob_death(var/datum/cause_data/cause_data, var/turf/death_loc)
 	if(!mind || statistic_exempt)
@@ -136,9 +136,11 @@
 
 /mob/living/carbon/Xenomorph/track_mob_death(var/cause, var/cause_mob)
 	var/datum/entity/statistic/death/new_death = ..(cause, cause_mob, caste_type)
+	if(!new_death)
+		return
+	new_death.is_xeno = TRUE // this was placed beneath the if below, which meant gibbing as a xeno wouldn't track properly in stats
 	if(statistic_exempt || !mind)
 		return
-	new_death.is_xeno = TRUE // beneath the if, because new_death isn't generated if there's no mind
 	var/datum/entity/player_stats/xeno/xeno_stats = mind.setup_xeno_stats()
 	if(xeno_stats && xeno_stats.death_list)
 		xeno_stats.death_list.Insert(1, new_death)

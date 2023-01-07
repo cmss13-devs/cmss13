@@ -7,9 +7,9 @@
 /obj/effect/particle_effect/smoke
 	name = "smoke"
 	icon_state = "smoke"
-	opacity = 1
+	opacity = TRUE
 	anchored = 1
-	mouse_opacity = 0
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	layer = ABOVE_MOB_LAYER + 0.1 //above mobs and barricades
 	var/amount = 2
 	var/spread_speed = 1 //time in decisecond for a smoke to spread one tile.
@@ -22,7 +22,7 @@
 	pixel_x = -32
 	pixel_y = -32
 
-/obj/effect/particle_effect/smoke/New(loc, oldamount, new_cause_data)
+/obj/effect/particle_effect/smoke/Initialize(mapload, oldamount, new_cause_data)
 	..()
 	if(oldamount)
 		amount = oldamount - 1
@@ -35,6 +35,7 @@
 	if(opacity)
 		SetOpacity(0)
 	active_smoke_effects -= src
+	cause_data = null
 
 /obj/effect/particle_effect/smoke/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
@@ -54,7 +55,7 @@
 	apply_smoke_effect(get_turf(src))
 
 /obj/effect/particle_effect/smoke/ex_act(severity)
-	if( prob(severity/EXPLOSION_THRESHOLD_LOW * 100) )
+	if(prob(severity/EXPLOSION_THRESHOLD_LOW * 100))
 		qdel(src)
 
 /obj/effect/particle_effect/smoke/Crossed(atom/movable/M)
@@ -245,7 +246,7 @@
 /obj/effect/particle_effect/smoke/flashbang
 	name = "illumination"
 	time_to_live = 4
-	opacity = 0
+	opacity = FALSE
 	icon_state = "sparks"
 	icon = 'icons/effects/effects.dmi'
 	smokeranking = SMOKE_RANK_MED
@@ -432,7 +433,7 @@
 	M.SetEarDeafness(max(M.ear_deaf, round(effect_amt*1.5))) //Paralysis of hearing system, aka deafness
 	if(!M.eye_blind) //Eye exposure damage
 		to_chat(M, SPAN_DANGER("Your eyes sting. You can't see!"))
-	M.eye_blind = max(M.eye_blind, round(effect_amt/3))
+	M.SetEyeBlind(round(effect_amt/3))
 	if(M.coughedtime != 1 && !M.stat) //Coughing/gasping
 		M.coughedtime = 1
 		if(prob(50))

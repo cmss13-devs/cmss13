@@ -68,8 +68,8 @@
 /obj/item/clothing/accessory/health/on_attached(obj/item/clothing/S, mob/living/carbon/human/user)
 	. = ..()
 	if(.)
-		RegisterSignal(S, COMSIG_ITEM_EQUIPPED, .proc/check_to_signal)
-		RegisterSignal(S, COMSIG_ITEM_DROPPED, .proc/unassign_signals)
+		RegisterSignal(S, COMSIG_ITEM_EQUIPPED, PROC_REF(check_to_signal))
+		RegisterSignal(S, COMSIG_ITEM_DROPPED, PROC_REF(unassign_signals))
 
 		if(istype(user) && user.w_uniform == S)
 			check_to_signal(S, user, WEAR_BODY)
@@ -88,8 +88,8 @@
 
 	if(slot == WEAR_BODY)
 		if(take_slash_damage)
-			RegisterSignal(user, COMSIG_HUMAN_XENO_ATTACK, .proc/take_slash_damage)
-		RegisterSignal(user, COMSIG_HUMAN_BULLET_ACT, .proc/take_bullet_damage)
+			RegisterSignal(user, COMSIG_HUMAN_XENO_ATTACK, PROC_REF(take_slash_damage))
+		RegisterSignal(user, COMSIG_HUMAN_BULLET_ACT, PROC_REF(take_bullet_damage))
 	else
 		unassign_signals(S, user)
 
@@ -168,7 +168,7 @@
 	armor_shattersound = 'sound/effects/ceramic_shatter.ogg'
 
 /obj/item/clothing/accessory/health/ceramic_plate/take_bullet_damage(var/mob/living/user, damage, ammo_flags)
-	if(ammo_flags & AMMO_XENO_ACID)
+	if(ammo_flags & AMMO_ACIDIC)
 		return
 
 	return ..()

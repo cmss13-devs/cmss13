@@ -39,7 +39,7 @@
 	var/id = null
 	var/active = 0
 	anchored = 1
-	use_power = 1
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 2
 	active_power_usage = 4
 
@@ -65,6 +65,6 @@
 
 	for(var/obj/structure/machinery/holosign/M in machines)
 		if (M.id == src.id)
-			INVOKE_ASYNC(M, /obj/structure/machinery/holosign.proc/toggle)
+			INVOKE_ASYNC(M, TYPE_PROC_REF(/obj/structure/machinery/holosign, toggle))
 
 	return

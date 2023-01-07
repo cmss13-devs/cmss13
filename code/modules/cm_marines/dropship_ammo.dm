@@ -26,7 +26,7 @@
 	/// How many tiles the ammo can deviate from the laser target
 	var/accuracy_range = 3
 	/// Sound played mere seconds before impact
-	var/warning_sound = 'sound/machines/hydraulics_2.ogg'
+	var/warning_sound = 'sound/effects/rocketpod_fire.ogg'
 	/// Volume of the sound played before impact
 	var/warning_sound_volume = 70
 	/// Ammunition expended each time this is fired

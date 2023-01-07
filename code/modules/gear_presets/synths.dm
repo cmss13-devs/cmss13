@@ -1,8 +1,9 @@
 /datum/equipment_preset/synth
 	name = "Synth"
 	uses_special_name = TRUE
-	languages = list(LANGUAGE_ENGLISH, LANGUAGE_RUSSIAN, LANGUAGE_JAPANESE, LANGUAGE_YAUTJA, LANGUAGE_XENOMORPH, LANGUAGE_WELTRAUMDEUTSCH, LANGUAGE_NEOSPANISH, LANGUAGE_CHINESE)
+	languages = ALL_SYNTH_LANGUAGES
 	skills = /datum/skills/synthetic
+	paygrade = "SYN"
 
 /datum/equipment_preset/synth/New()
 	. = ..()
@@ -24,7 +25,7 @@
 
 /datum/equipment_preset/synth/load_skills(mob/living/carbon/human/H)
 	. = ..()
-	if(isColonySynthetic(H))
+	if(isColonySynthetic(H) && !isWorkingJoe(H))
 		H.set_skills(/datum/skills/colonial_synthetic)
 
 	H.allow_gun_usage = FALSE
@@ -38,7 +39,7 @@
 	idtype = /obj/item/card/id/gold
 	assignment = JOB_SYNTH
 	rank = "Synthetic"
-	paygrade = ""
+	paygrade = "SYN"
 	role_comm_title = "Syn"
 
 /datum/equipment_preset/synth/uscm/load_gear(mob/living/carbon/human/H)
@@ -62,7 +63,7 @@
 	idtype = /obj/item/card/id/gold
 	assignment = JOB_SYNTH
 	rank = "Synthetic"
-	paygrade = ""
+	paygrade = "SYN"
 	role_comm_title = "Syn"
 
 /datum/equipment_preset/synth/uscm/councillor/load_gear(mob/living/carbon/human/H)
@@ -153,6 +154,7 @@
 	assignment = JOB_WORKING_JOE
 	rank = JOB_WORKING_JOE
 	skills = /datum/skills/working_joe
+	languages = list(LANGUAGE_ENGLISH, LANGUAGE_APOLLO, LANGUAGE_RUSSIAN, LANGUAGE_JAPANESE, LANGUAGE_GERMAN, LANGUAGE_SPANISH, LANGUAGE_CHINESE)
 
 /datum/equipment_preset/synth/working_joe/New()
 	. = ..()
@@ -245,6 +247,7 @@
 	rank = JOB_COLONIST
 	skills = /datum/skills/infiltrator_synthetic
 	idtype = /obj/item/card/id/lanyard
+	paygrade = "C"
 
 /datum/equipment_preset/synth/infiltrator/New()
 	. = ..()
@@ -261,7 +264,7 @@
 		first_name = "[pick(first_names_male_colonist)]"
 	else
 		first_name ="[pick(first_names_female_colonist)]"
-		
+
 	last_name ="[pick(last_names_colonist)]"
 	random_name = "[first_name] [last_name]"
 	H.change_real_name(H, random_name)

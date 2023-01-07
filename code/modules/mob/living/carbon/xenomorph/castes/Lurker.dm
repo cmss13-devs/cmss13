@@ -51,17 +51,14 @@
 	tackle_min = 2
 	tackle_max = 6
 
+	icon_xeno = 'icons/mob/xenos/lurker.dmi'
 	icon_xenonid = 'icons/mob/xenonids/lurker.dmi'
-
-/mob/living/carbon/Xenomorph/Lurker/Initialize(mapload, mob/living/carbon/Xenomorph/oldXeno, h_number)
-	icon_xeno = get_icon_from_source(CONFIG_GET(string/alien_lurker))
-	. = ..()
 
 /datum/behavior_delegate/lurker_base
 	name = "Base Lurker Behavior Delegate"
 
 	// Config
-	var/invis_recharge_time = 150      // 15 seconds to recharge invisibility.
+	var/invis_recharge_time = 150   // 15 seconds to recharge invisibility.
 	var/invis_start_time = -1 // Special value for when we're not invisible
 	var/invis_duration = 300  // so we can display how long the lurker is invisible to it
 	var/buffed_slash_damage_ratio = 1.2
@@ -109,6 +106,7 @@
 	if (LPA && istype(LPA))
 		LPA.knockdown = TRUE // pounce knocks down
 		LPA.freeze_self = TRUE
+	bound_xeno.stealth = TRUE
 	can_go_invisible = FALSE
 	invis_start_time = world.time
 
@@ -117,10 +115,11 @@
 	if (LPA && istype(LPA))
 		LPA.knockdown = FALSE // pounce no longer knocks down
 		LPA.freeze_self = FALSE
+	bound_xeno.stealth = FALSE
 
 	// SLIGHTLY hacky because we need to maintain lots of other state on the lurker
 	// whenever invisibility is on/off CD and when it's active.
-	addtimer(CALLBACK(src, .proc/regen_invisibility), invis_recharge_time)
+	addtimer(CALLBACK(src, PROC_REF(regen_invisibility)), invis_recharge_time)
 
 	invis_start_time = -1
 

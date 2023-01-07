@@ -23,12 +23,18 @@
 	set desc = "Force-toggle a predator round for the round type. Only works on maps that support Predator spawns."
 	set category = "Server.Round"
 
+	// note: This is a proof of concept. ideally, scenario parameters should all be changeable in the same UI, rather than writing snowflake code everywhere like this
 	if(!SSticker || SSticker.current_state < GAME_STATE_PLAYING || !SSticker.mode)
-		to_chat(usr, SPAN_DANGER("The game hasn't started yet!"))
+		var/enabled = FALSE
+		if(SSnightmare.get_scenario_value("predator_round"))
+			enabled = TRUE
+		var/ret = alert("Nightmare Scenario has the upcoming round being a [(enabled ? "PREDATOR" : "NORMAL")] round. Do you want to toggle this?", "Toggle Predator Round", "Yes", "No")
+		if(ret == "Yes")
+			SSnightmare.set_scenario_value("predator_round", !enabled)
 		return
 
 	var/datum/game_mode/predator_round = SSticker.mode
-	if(alert("Are you sure you want to force-toggle a predator round? Predators currently: [(predator_round.flags_round_type & MODE_PREDATOR) ? "Enabled" : "Disabled"]",, "Yes", "No") == "No")
+	if(alert("Are you sure you want to force-toggle a predator round? Predators currently: [(predator_round.flags_round_type & MODE_PREDATOR) ? "Enabled" : "Disabled"]",, "Yes", "No") != "Yes")
 		return
 
 	if(!(predator_round.flags_round_type & MODE_PREDATOR))

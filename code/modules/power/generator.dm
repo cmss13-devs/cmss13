@@ -2,10 +2,10 @@
 	name = "thermoelectric generator"
 	desc = "It's a high efficiency thermoelectric generator."
 	icon_state = "teg"
-	density = 1
+	density = TRUE
 	anchored = 0
 
-	use_power = 1
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 100 //Watts, I hope.  Just enough to do the computer and display things.
 
 /obj/structure/machinery/power/generator/attackby(obj/item/W as obj, mob/user as mob)

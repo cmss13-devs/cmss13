@@ -10,7 +10,7 @@
 /atom/movable/screen/text
 	icon = null
 	icon_state = null
-	mouse_opacity = 0
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	plane = CINEMATIC_PLANE
 	layer = CINEMATIC_LAYER
 	maptext_height = 480
@@ -20,7 +20,7 @@
 /atom/movable/screen/cinematic
 	plane = CINEMATIC_PLANE
 	layer = CINEMATIC_LAYER
-	mouse_opacity = 0
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	screen_loc = "1,0"
 
 /atom/movable/screen/cinematic/explosion
@@ -28,7 +28,7 @@
 	icon_state = "intro_ship"
 
 /atom/movable/screen/inventory
-	var/slot_id	//The indentifier for the slot. It has nothing to do with ID cards.
+	var/slot_id //The indentifier for the slot. It has nothing to do with ID cards.
 
 
 /atom/movable/screen/close
@@ -39,8 +39,8 @@
 /atom/movable/screen/close/clicked(var/mob/user)
 	if(master)
 		if(isstorage(master))
-			var/obj/item/storage/S = master
-			S.storage_close(user)
+			var/obj/item/storage/master_storage = master
+			master_storage.storage_close(user)
 	return TRUE
 
 
@@ -105,24 +105,27 @@
 	name = "storage"
 	layer = HUD_LAYER
 
-/atom/movable/screen/storage/proc/update_fullness(obj/item/storage/S)
-	if(!S.contents.len)
+/atom/movable/screen/storage/proc/update_fullness(obj/item/storage/master_storage)
+	if(!master_storage.contents.len)
 		color = null
 	else
 		var/total_w = 0
-		for(var/obj/item/I in S)
-			total_w += I.w_class
+		for(var/obj/item/storage_item in master_storage)
+			total_w += storage_item.w_class
 
 		//Calculate fullness for etiher max storage, or for storage slots if the container has them
 		var/fullness = 0
-		if (S.storage_slots == null)
-			fullness = round(10*total_w/S.max_storage_space)
+		if (master_storage.storage_slots == null)
+			fullness = round(10*total_w/master_storage.max_storage_space)
 		else
-			fullness = round(10*S.contents.len/S.storage_slots)
+			fullness = round(10*master_storage.contents.len/master_storage.storage_slots)
 		switch(fullness)
-			if(10) color = "#ff0000"
-			if(7 to 9) color = "#ffa500"
-			else color = null
+			if(10)
+				color = "#ff0000"
+			if(7 to 9)
+				color = "#ffa500"
+			else
+				color = null
 
 
 
@@ -135,23 +138,23 @@
 	name = "Allow Walking"
 	icon_state = "no_walk0"
 
-	update_icon(mob/user)
-		if(user.gun_mode)
-			if(user.target_can_move)
-				icon_state = "no_walk1"
-				name = "Disallow Walking"
-			else
-				icon_state = "no_walk0"
-				name = "Allow Walking"
-			screen_loc = initial(screen_loc)
-			return
-		screen_loc = null
+/atom/movable/screen/gun/move/update_icon(mob/user)
+	if(user.gun_mode)
+		if(user.target_can_move)
+			icon_state = "no_walk1"
+			name = "Disallow Walking"
+		else
+			icon_state = "no_walk0"
+			name = "Allow Walking"
+		screen_loc = initial(screen_loc)
+		return
+	screen_loc = null
 
 /atom/movable/screen/gun/move/clicked(var/mob/user)
 	if (..())
 		return 1
 
-	if(gun_click_time > world.time - 30)	//give them 3 seconds between mode changes.
+	if(gun_click_time > world.time - 30) //give them 3 seconds between mode changes.
 		return 1
 	if(!isgun(user.get_held_item()))
 		to_chat(user, "You need your gun in your active hand to do that!")
@@ -165,24 +168,24 @@
 	name = "Allow Running"
 	icon_state = "no_run0"
 
-	update_icon(mob/user)
-		if(user.gun_mode)
-			if(user.target_can_move)
-				if(user.target_can_run)
-					icon_state = "no_run1"
-					name = "Disallow Running"
-				else
-					icon_state = "no_run0"
-					name = "Allow Running"
-				screen_loc = initial(screen_loc)
-				return
-		screen_loc = null
+/atom/movable/screen/gun/run/update_icon(mob/user)
+	if(user.gun_mode)
+		if(user.target_can_move)
+			if(user.target_can_run)
+				icon_state = "no_run1"
+				name = "Disallow Running"
+			else
+				icon_state = "no_run0"
+				name = "Allow Running"
+			screen_loc = initial(screen_loc)
+			return
+	screen_loc = null
 
 /atom/movable/screen/gun/run/clicked(var/mob/user)
 	if (..())
 		return 1
 
-	if(gun_click_time > world.time - 30)	//give them 3 seconds between mode changes.
+	if(gun_click_time > world.time - 30) //give them 3 seconds between mode changes.
 		return 1
 	if(!isgun(user.get_held_item()))
 		to_chat(user, "You need your gun in your active hand to do that!")
@@ -196,23 +199,23 @@
 	name = "Allow Item Use"
 	icon_state = "no_item0"
 
-	update_icon(mob/user)
-		if(user.gun_mode)
-			if(user.target_can_click)
-				icon_state = "no_item1"
-				name = "Allow Item Use"
-			else
-				icon_state = "no_item0"
-				name = "Disallow Item Use"
-			screen_loc = initial(screen_loc)
-			return
-		screen_loc = null
+/atom/movable/screen/gun/item/update_icon(mob/user)
+	if(user.gun_mode)
+		if(user.target_can_click)
+			icon_state = "no_item1"
+			name = "Allow Item Use"
+		else
+			icon_state = "no_item0"
+			name = "Disallow Item Use"
+		screen_loc = initial(screen_loc)
+		return
+	screen_loc = null
 
 /atom/movable/screen/gun/item/clicked(var/mob/user)
 	if (..())
 		return 1
 
-	if(gun_click_time > world.time - 30)	//give them 3 seconds between mode changes.
+	if(gun_click_time > world.time - 30) //give them 3 seconds between mode changes.
 		return 1
 	if(!isgun(user.get_held_item()))
 		to_chat(user, "You need your gun in your active hand to do that!")
@@ -226,9 +229,11 @@
 	name = "Toggle Gun Mode"
 	icon_state = "gun0"
 
-	update_icon(mob/user)
-		if(user.gun_mode) icon_state = "gun1"
-		else icon_state = "gun0"
+/atom/movable/screen/gun/mode/update_icon(mob/user)
+	if(user.gun_mode)
+		icon_state = "gun1"
+	else
+		icon_state = "gun0"
 
 /atom/movable/screen/gun/mode/clicked(var/mob/user)
 	if (..())
@@ -314,13 +319,13 @@
 	icon = 'icons/mob/hud/screen1_robot.dmi'
 
 /atom/movable/screen/clicked(var/mob/user)
-	if(!user)	return 1
+	if(!user) return 1
 
 	switch(name)
 		if("equip")
 			if(ishuman(user))
-				var/mob/living/carbon/human/H = user
-				H.quick_equip()
+				var/mob/living/carbon/human/human = user
+				human.quick_equip()
 			return 1
 
 		if("Reset Machine")
@@ -329,7 +334,7 @@
 
 		if("module")
 			if(isSilicon(user))
-				if(usr:module)
+				if(user:module)
 					return 1
 				user:pick_module()
 			return 1
@@ -364,30 +369,33 @@
 			return 1
 
 		if("Activate weapon attachment")
-			var/obj/item/weapon/gun/G = user.get_held_item()
-			if(istype(G))
-				G.activate_attachment_verb()
+			var/obj/item/weapon/gun/held_item = user.get_held_item()
+			if(istype(held_item))
+				held_item.activate_attachment_verb()
 			return 1
 
 		if("Toggle Rail Flashlight")
-			var/obj/item/weapon/gun/G = user.get_held_item()
-			if(istype(G))
-				G.activate_rail_attachment_verb()
+			var/obj/item/weapon/gun/held_item = user.get_held_item()
+			if(istype(held_item))
+				held_item.activate_rail_attachment_verb()
 			return 1
 
 		if("Eject magazine")
-			var/obj/item/weapon/gun/G = user.get_held_item()
-			if(istype(G)) G.empty_mag()
+			var/obj/item/weapon/gun/held_item = user.get_held_item()
+			if(istype(held_item))
+				held_item.empty_mag()
 			return 1
 
 		if("Toggle burst fire")
-			var/obj/item/weapon/gun/G = user.get_held_item()
-			if(istype(G)) G.toggle_burst()
+			var/obj/item/weapon/gun/held_item = user.get_held_item()
+			if(istype(held_item))
+				held_item.use_toggle_burst()
 			return 1
 
 		if("Use unique action")
-			var/obj/item/weapon/gun/G = user.get_held_item()
-			if(istype(G)) G.use_unique_action()
+			var/obj/item/weapon/gun/held_item = user.get_held_item()
+			if(istype(held_item))
+				held_item.use_unique_action()
 			return 1
 	return 0
 
@@ -399,14 +407,14 @@
 		return 1
 	switch(name)
 		if("r_hand")
-			if(iscarbon(usr))
-				var/mob/living/carbon/C = user
-				C.activate_hand("r")
+			if(iscarbon(user))
+				var/mob/living/carbon/carbon = user
+				carbon.activate_hand("r")
 			return 1
 		if("l_hand")
 			if(iscarbon(user))
-				var/mob/living/carbon/C = user
-				C.activate_hand("l")
+				var/mob/living/carbon/carbon = user
+				carbon.activate_hand("l")
 			return 1
 		if("swap")
 			user.swap_hand()
@@ -427,18 +435,18 @@
 	icon_state = "act_throw_off"
 
 /atom/movable/screen/throw_catch/clicked(var/mob/user, var/list/mods)
-	var/mob/living/carbon/C = user
+	var/mob/living/carbon/carbon = user
 
-	if (!istype(C))
+	if (!istype(carbon))
 		return
 
 	if(user.is_mob_incapacitated())
 		return TRUE
 
 	if (mods["ctrl"])
-		C.toggle_throw_mode(THROW_MODE_HIGH)
+		carbon.toggle_throw_mode(THROW_MODE_HIGH)
 	else
-		C.toggle_throw_mode(THROW_MODE_NORMAL)
+		carbon.toggle_throw_mode(THROW_MODE_NORMAL)
 	return TRUE
 
 /atom/movable/screen/drop
@@ -460,9 +468,51 @@
 
 /atom/movable/screen/resist/clicked(var/mob/user)
 	if(isliving(user))
-		var/mob/living/L = user
-		L.resist()
+		var/mob/living/living = user
+		living.resist()
 		return 1
+
+/atom/movable/screen/mov_intent
+	name = "run/walk toggle"
+	icon = 'icons/mob/hud/human_midnight.dmi'
+	icon_state = "running"
+
+/atom/movable/screen/mov_intent/clicked(mob/living/user)
+	. = ..()
+	if(.)
+		return TRUE
+	user.toggle_mov_intent()
+
+/mob/living/proc/set_movement_intent(var/new_intent)
+	m_intent = new_intent
+	if(hud_used?.move_intent)
+		hud_used.move_intent.set_movement_intent_icon(m_intent)
+	recalculate_move_delay = TRUE
+
+/mob/living/proc/toggle_mov_intent()
+	if(legcuffed)
+		to_chat(src, SPAN_NOTICE("You are legcuffed! You cannot run until you get \the [legcuffed] removed!"))
+		set_movement_intent(MOVE_INTENT_WALK)
+		return FALSE
+	switch(m_intent)
+		if(MOVE_INTENT_RUN)
+			set_movement_intent(MOVE_INTENT_WALK)
+		if(MOVE_INTENT_WALK)
+			set_movement_intent(MOVE_INTENT_RUN)
+	return TRUE
+
+/atom/movable/screen/mov_intent/proc/set_movement_intent_icon(var/new_intent)
+	switch(new_intent)
+		if(MOVE_INTENT_WALK)
+			icon_state = "walking"
+		if(MOVE_INTENT_RUN)
+			icon_state = "running"
+
+/mob/living/carbon/Xenomorph/toggle_mov_intent()
+	. = ..()
+	if(.)
+		update_icons()
+		return TRUE
 
 /atom/movable/screen/act_intent
 	name = "intent"
@@ -495,7 +545,7 @@
 	name = "health"
 	icon_state = "health0"
 	icon = 'icons/mob/hud/human_midnight.dmi'
-	mouse_opacity = 0
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
 /atom/movable/screen/pull
 	name = "stop pulling"
@@ -509,7 +559,8 @@
 	return 1
 
 /atom/movable/screen/pull/update_icon(mob/user)
-	if(!user) return
+	if(!user)
+		return
 	if(user.pulling)
 		icon_state = "pull"
 	else
@@ -522,7 +573,7 @@
 	icon = 'icons/mob/hud/human_midnight.dmi'
 	icon_state = "trackoff"
 	alpha = 0 //invisible
-	mouse_opacity = 0
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
 /atom/movable/screen/squad_leader_locator/clicked(mob/living/carbon/human/user, mods)
 	if(!istype(user))
@@ -542,7 +593,7 @@
 	if(user.get_active_hand())
 		return
 	if(user.assigned_squad)
-		user.assigned_squad.ui_interact(user)
+		user.assigned_squad.tgui_interact(user)
 
 /atom/movable/screen/mark_locator
 	name = "mark locator"

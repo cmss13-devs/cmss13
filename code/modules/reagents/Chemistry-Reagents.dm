@@ -84,11 +84,11 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 		P.post_update_reagent()
 
 /datum/reagent/proc/reaction_mob(var/mob/M, var/method=TOUCH, var/volume) //By default we have a chance to transfer some
-	if(!istype(M, /mob/living))	return 0
+	if(!istype(M, /mob/living)) return 0
 	var/datum/reagent/self = src
-	src = null										  //of the reagent to the mob on TOUCHING it.
+	src = null   //of the reagent to the mob on TOUCHING it.
 
-	if(self.holder)		//for catching rare runtimes
+	if(self.holder) //for catching rare runtimes
 		if(!istype(self.holder.my_atom, /obj/effect/particle_effect/smoke/chem))
 			// If the chemicals are in a smoke cloud, do not try to let the chemicals "penetrate" into the mob's system (balance station 13) -- Doohl
 
@@ -128,7 +128,7 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	//By default we transfer a small part of the reagent to the object
 	//if it can hold reagents. nope!
 	//if(O.reagents)
-	//	O.reagents.add_reagent(id,volume/3)
+	// O.reagents.add_reagent(id,volume/3)
 	return
 
 /datum/reagent/proc/reaction_turf(var/turf/T, var/volume)
@@ -156,11 +156,11 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 
 //Pre-processing
 /datum/reagent/proc/handle_pre_processing(mob/living/M)
-	var/list/mods = list(	REAGENT_EFFECT		= TRUE,
-							REAGENT_BOOST 		= FALSE,
-							REAGENT_PURGE 		= FALSE,
-							REAGENT_FORCE 		= FALSE,
-							REAGENT_CANCEL		= FALSE)
+	var/list/mods = list( REAGENT_EFFECT = TRUE,
+							REAGENT_BOOST = FALSE,
+							REAGENT_PURGE = FALSE,
+							REAGENT_FORCE = FALSE,
+							REAGENT_CANCEL = FALSE)
 
 	for(var/datum/chem_property/P in properties)
 		var/list/A = P.pre_process(M)
@@ -262,9 +262,9 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	result = C.result
 	result_amount = C.result_amount
 
-/datum/reagent/proc/save_chemclass() //Called from /datum/reagents/New()
+/datum/reagent/proc/save_chemclass()
 	//Store all classed reagents so we can easily access chem IDs based on class. Doesn't store flagged reagents.
-	if(chemclass && !(flags && REAGENT_NO_GENERATION))
+	if(chemclass && !(flags & REAGENT_NO_GENERATION))
 		switch(chemclass)
 			if(CHEM_CLASS_BASIC)
 				chemical_gen_classes_list["C1"] += id
@@ -276,10 +276,10 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 				chemical_gen_classes_list["C4"] += id
 			if(CHEM_CLASS_SPECIAL)
 				chemical_gen_classes_list["C5"] += id
-				chemical_objective_list[id] = objective_value
+				chemical_data.add_chemical_objective(src)
 			if(CHEM_CLASS_ULTRA)
 				chemical_gen_classes_list["C6"] += id
-				chemical_objective_list[id] = objective_value
+				chemical_data.add_chemical_objective(src)
 		chemical_gen_classes_list["C"] += id
 	if(gen_tier)
 		switch(gen_tier)

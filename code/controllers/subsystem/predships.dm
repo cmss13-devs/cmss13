@@ -1,11 +1,11 @@
 SUBSYSTEM_DEF(predships)
-	name          = "PredShips"
-	init_order    = SS_INIT_PREDSHIPS
-	flags         = SS_NO_FIRE
+	name   = "PredShips"
+	init_order = SS_INIT_PREDSHIPS
+	flags  = SS_NO_FIRE
 
 	var/datum/map_template/ship_template // Current ship template in use
-	var/list/list/managed_z              // Maps initating clan id to list(datum/space_level, list/turf(spawns))
-	var/list/turf/spawnpoints            // List of all spawn landmark locations
+	var/list/list/managed_z   // Maps initating clan id to list(datum/space_level, list/turf(spawns))
+	var/list/turf/spawnpoints // List of all spawn landmark locations
 	/* Note we map clan_id as string due to legacy code using them internally */
 
 /datum/controller/subsystem/predships/Initialize(timeofday)
@@ -13,7 +13,7 @@ SUBSYSTEM_DEF(predships)
 		ship_template = new /datum/map_template(HUNTERSHIPS_TEMPLATE_PATH, cache = TRUE)
 	LAZYINITLIST(managed_z)
 	load_new(CLAN_SHIP_PUBLIC)
-	return ..()
+	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/predships/proc/init_spawnpoint(obj/effect/landmark/clan_spawn/SP)
 	LAZYADD(spawnpoints, get_turf(SP))

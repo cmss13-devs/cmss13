@@ -2,6 +2,7 @@
 	name = "special survivor spawner"
 	var/equipment = null
 	var/synth_equipment = null
+	var/CO_equipment = null
 	var/list/intro_text = list()
 	var/story_text = ""
 	var/roundstart_damage_min = 0
@@ -16,7 +17,7 @@
 	GLOB.survivor_spawns -= src
 	return ..()
 
-/obj/effect/landmark/survivor_spawner/proc/check_can_spawn(var/mob/living/carbon/human/survivor, var/is_synth)
+/obj/effect/landmark/survivor_spawner/proc/check_can_spawn(var/mob/living/carbon/human/survivor)
 	// prevents stacking survivors on top of eachother
 	if(locate(/mob/living/carbon/human) in loc)
 		return FALSE
@@ -66,3 +67,19 @@
 	roundstart_damage_times = 2
 
 
+//Military Survivors//
+
+/obj/effect/landmark/survivor_spawner/lv522_forecon_tech
+	equipment = /datum/equipment_preset/survivor/forecon/tech
+
+/obj/effect/landmark/survivor_spawner/lv522_forecon_marksman
+	equipment = /datum/equipment_preset/survivor/forecon/marksman
+
+/obj/effect/landmark/survivor_spawner/lv522_forecon_smartgunner
+	equipment = /datum/equipment_preset/survivor/forecon/smartgunner
+
+/obj/effect/landmark/survivor_spawner/lv522_forecon_grenadier
+	equipment = /datum/equipment_preset/survivor/forecon/grenadier
+
+/obj/effect/landmark/survivor_spawner/lv522_forecon_squad_leader
+	equipment = /datum/equipment_preset/survivor/forecon/squad_leader

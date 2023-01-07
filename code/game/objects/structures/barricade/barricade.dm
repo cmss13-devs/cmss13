@@ -4,7 +4,7 @@
 	icon = 'icons/obj/structures/barricades.dmi'
 	climbable = TRUE
 	anchored = TRUE
-	density = 1
+	density = TRUE
 	throwpass = TRUE //You can throw objects over this, despite its density.
 	layer = BELOW_OBJ_LAYER
 	flags_atom = ON_BORDER
@@ -13,7 +13,7 @@
 	var/destroyed_stack_amount //to specify a non-zero amount of stack to drop when destroyed
 	health = 100 //Pretty tough. Changes sprites at 300 and 150
 	var/maxhealth = 100 //Basic code functions
-	 /// Used for calculating some stuff related to maxhealth as it constantly changes due to e.g. barbed wire. set to 100 to avoid possible divisions by zero
+	/// Used for calculating some stuff related to maxhealth as it constantly changes due to e.g. barbed wire. set to 100 to avoid possible divisions by zero
 	var/starting_maxhealth = 100
 	var/crusher_resistant = TRUE //Whether a crusher can ram through it.
 	var/force_level_absorption = 5 //How much force an item needs to even damage it at all.
@@ -37,7 +37,7 @@
 	. = ..()
 	if(user)
 		user.count_niche_stat(STATISTICS_NICHE_CADES)
-	addtimer(CALLBACK(src, .proc/update_icon), 0)
+	addtimer(CALLBACK(src, PROC_REF(update_icon)), 0)
 	starting_maxhealth = maxhealth
 
 /obj/structure/barricade/initialize_pass_flags(var/datum/pass_flags_container/PF)
@@ -132,14 +132,14 @@
 
 		else if(!C.stat)
 			visible_message(SPAN_DANGER("[C] smashes through [src]!"))
-			destroy()
+			deconstruct()
 			playsound(src, barricade_hitsound, 25, TRUE)
 
 /*
- *	Checks whether an atom can leave its current turf through the barricade.
- *	Returns the blocking direction.
- *		If the atom's movement is not blocked, returns 0.
- *		If the object is completely solid, returns ALL
+ * Checks whether an atom can leave its current turf through the barricade.
+ * Returns the blocking direction.
+ * If the atom's movement is not blocked, returns 0.
+ * If the object is completely solid, returns ALL
  */
 /obj/structure/barricade/BlockedExitDirs(atom/movable/mover, target_dir)
 	if(closed)
@@ -148,13 +148,13 @@
 	return ..()
 
 /*
- *	Checks whether an atom can pass through the barricade into its target turf.
- *	Returns the blocking direction.
- *		If the atom's movement is not blocked, returns 0.
- *		If the object is completely solid, returns ALL
+ * Checks whether an atom can pass through the barricade into its target turf.
+ * Returns the blocking direction.
+ * If the atom's movement is not blocked, returns 0.
+ * If the object is completely solid, returns ALL
  *
- *	Would be worth checking whether it is really necessary to have this CanPass
- *	proc be specific to barricades. Instead, have flags for blocking specific
+ * Would be worth checking whether it is really necessary to have this CanPass
+ * proc be specific to barricades. Instead, have flags for blocking specific
  *  mobs.
  */
 /obj/structure/barricade/BlockedPassDirs(atom/movable/mover, target_dir)
@@ -262,21 +262,21 @@
 
 	return TRUE
 
-/obj/structure/barricade/destroy(deconstruct)
-	if(deconstruct && is_wired)
-		new /obj/item/stack/barbed_wire(loc)
-	if(stack_type)
-		var/stack_amt
-		if(!deconstruct && destroyed_stack_amount)
-			stack_amt = destroyed_stack_amount
-		else
+/obj/structure/barricade/deconstruct(disassembled = TRUE)
+	if(disassembled)
+		if(is_wired)
+			new /obj/item/stack/barbed_wire(loc)
+		if(stack_type)
+			var/stack_amt
 			stack_amt = round(stack_amount * (health/starting_maxhealth)) //Get an amount of sheets back equivalent to remaining health. Obviously, fully destroyed means 0
-		if(upgraded)
-			stack_amt += round(2 * (health/starting_maxhealth))
-
-		if(stack_amt)
-			new stack_type (loc, stack_amt)
-	qdel(src)
+			if(upgraded)
+				stack_amt += round(2 * (health/starting_maxhealth))
+			if(stack_amt)
+				new stack_type(loc, stack_amt)
+	else
+		if(destroyed_stack_amount)
+			new stack_type(loc, destroyed_stack_amount)
+	return ..()
 
 
 /obj/structure/barricade/ex_act(severity, direction, cause_data)
@@ -290,7 +290,7 @@
 		handle_debris(severity, direction)
 		if(prob(50)) // no message spam pls
 			visible_message(SPAN_WARNING("[src] blows apart in the explosion, sending shards flying!"))
-		qdel(src)
+		deconstruct(FALSE)
 		create_shrapnel(location, rand(2,5), direction, , /datum/ammo/bullet/shrapnel/light, cause_data)
 	else
 		update_health(round(severity * explosive_multiplier))
@@ -341,7 +341,7 @@
 	if(!health)
 		if(!nomessage)
 			visible_message(SPAN_DANGER("[src] falls apart!"))
-		destroy()
+		deconstruct()
 		return
 
 	update_damage_state()
@@ -400,7 +400,7 @@
 		to_chat(usr, SPAN_WARNING("It is fastened to the floor, you can't rotate it!"))
 		return
 
-	user.next_move = world.time + 3	//slight spam prevention? you don't want every metal cade to turn into a doorway
+	user.next_move = world.time + 3 //slight spam prevention? you don't want every metal cade to turn into a doorway
 	setDir(turn(dir, 90 * rotation_dir))
 	update_icon()
 

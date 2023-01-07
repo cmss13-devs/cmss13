@@ -27,7 +27,8 @@
 
 /obj/item/storage/box/spec/demolitionist/fill_preset_inventory()
 	new /obj/item/clothing/suit/storage/marine/M3T(src)
-	new /obj/item/clothing/head/helmet/marine(src)
+	new /obj/item/clothing/head/helmet/marine/M3T(src)
+	new /obj/item/clothing/head/helmet/marine/M3T(src)
 	new /obj/item/storage/backpack/marine/rocketpack(src)
 	new /obj/item/storage/backpack/marine/rocketpack(src)
 	new /obj/item/weapon/gun/launcher/rocket(src)
@@ -150,8 +151,8 @@
 	new /obj/item/clothing/head/helmet/marine/specialist(src)
 	new /obj/item/clothing/suit/storage/marine/specialist(src)
 
- //-----------------SPEC KIT BOX------------------
- //For events/WO, allows the user to choose a specalist kit out of available ones in spec_kit_boxes_left list in gloabl_lists.dm
+//-----------------SPEC KIT BOX------------------
+//For events/WO, allows the user to choose a specalist kit out of available ones in spec_kit_boxes_left list in gloabl_lists.dm
 
 /obj/item/spec_kit
 	name = "specialist kit"
@@ -520,3 +521,11 @@
 	new /obj/item/storage/backpack/marine/smock(src)
 	new /obj/item/device/binoculars/range/designator/spotter(src)
 	new /obj/item/pamphlet/skill/spotter(src)
+
+/obj/item/storage/box/kit/engineering_supply_kit
+	name = "\improper Engineering Supply Kit"
+
+/obj/item/storage/box/kit/engineering_supply_kit/fill_preset_inventory()
+	new /obj/item/storage/pouch/construction/low_grade_full(src)
+	new /obj/item/storage/pouch/electronics/full(src)
+	new /obj/item/clothing/glasses/welding(src)

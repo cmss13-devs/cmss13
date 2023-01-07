@@ -106,6 +106,16 @@
 	button.overlays += image('icons/mob/hud/actions_xeno.dmi', button, action_icon_result)
 
 ////////// Oppressor powers
+
+/datum/action/xeno_action/activable/tail_stab/tail_seize //no verbmacrohotkey, its just tail stab.
+	name = "Tail Seize"
+	action_icon_state = "tail_seize"
+	ability_name = "tail seize"
+	action_type = XENO_ACTION_CLICK
+	charge_time = 0.5 SECONDS
+	xeno_cooldown = 15 SECONDS
+	ability_primacy = XENO_TAIL_STAB
+
 /datum/action/xeno_action/activable/prae_abduct
 	name = "Abduct"
 	action_icon_state = "abduct"
@@ -268,8 +278,8 @@
 
 	// Configurable options
 
-	spray_type = ACID_SPRAY_LINE	// Enum for the shape of spray to do
-	spray_distance = 7 				// Distance to spray
+	spray_type = ACID_SPRAY_LINE // Enum for the shape of spray to do
+	spray_distance = 7 // Distance to spray
 
 	activation_delay = TRUE
 	activation_delay_length = 5

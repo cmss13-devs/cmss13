@@ -23,7 +23,7 @@
 	permissions_required = R_BAN
 
 /datum/player_action/eorgban/act(var/client/user, var/mob/target, var/list/params)
-	if(target.client && target.client.admin_holder)	return	//admins cannot be banned. Even if they could, the ban doesn't affect them anyway
+	if(target.client && target.client.admin_holder) return //admins cannot be banned. Even if they could, the ban doesn't affect them anyway
 
 	if(!target.ckey)
 		to_chat(user, SPAN_DANGER("<B>Warning: Mob ckey for [target.name] not found.</b>"))
@@ -79,7 +79,7 @@
 		to_chat(user, SPAN_WARNING("[target.name] is not a xeno!"))
 		return
 
-	if(alert(user, "Are you sure you want to reset xeno name for [X.ckey]?", , "Yes", "No") == "No")
+	if(alert(user, "Are you sure you want to reset xeno name for [X.ckey]?", , "Yes", "No") != "Yes")
 		return
 
 	if(!X.ckey)
@@ -112,7 +112,7 @@
 	var/client/targetClient = target.client
 
 	if(targetClient.xeno_name_ban)
-		if(alert(user, "Are you sure you want to UNBAN [target.ckey] and let them use xeno name?", ,"Yes", "No") == "No")
+		if(alert(user, "Are you sure you want to UNBAN [target.ckey] and let them use xeno name?", ,"Yes", "No") != "Yes")
 			return
 		targetClient.xeno_name_ban = FALSE
 		targetClient.prefs.xeno_name_ban = FALSE
@@ -128,7 +128,7 @@
 		to_chat(user, SPAN_DANGER("Target is not a xenomorph. Aborting."))
 		return
 
-	if(alert("Are you sure you want to BAN [target.ckey] from ever using any xeno name?", , "Yes", "No") == "No")
+	if(alert("Are you sure you want to BAN [target.ckey] from ever using any xeno name?", , "Yes", "No") != "Yes")
 		return
 
 	if(!target.ckey)
@@ -176,7 +176,7 @@
 		to_chat(user, SPAN_DANGER("Warning: Mob ckey for [target_mob.name] not found."))
 		return
 
-	if(alert(user, "Are you sure you want to reset name for [target_mob.ckey]?", "Confirmation", "Yes", "No") == "No")
+	if(alert(user, "Are you sure you want to reset name for [target_mob.ckey]?", "Confirmation", "Yes", "No") != "Yes")
 		return
 
 	var/new_name
@@ -235,7 +235,7 @@
 	var/client/target_client = target.client
 
 	if(target_client.human_name_ban)
-		if(alert(user, "Are you sure you want to UNBAN [target.ckey] and let them use human names?", "Confirmation", "Yes", "No") == "No")
+		if(alert(user, "Are you sure you want to UNBAN [target.ckey] and let them use human names?", "Confirmation", "Yes", "No") != "Yes")
 			return
 
 		if(!target.client || !target.ckey)
@@ -254,7 +254,7 @@
 		return
 
 
-	if(alert("Are you sure you want to BAN [target.ckey] from ever using any human names?", "Confirmation", "Yes", "No") == "No")
+	if(alert("Are you sure you want to BAN [target.ckey] from ever using any human names?", "Confirmation", "Yes", "No") != "Yes")
 		return
 
 	if(!target.client || !target.ckey)

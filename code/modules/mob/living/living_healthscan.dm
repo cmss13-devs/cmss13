@@ -423,6 +423,7 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 		else
 			data["diseases"] = null // interstingly even if we don't set data at all, re-using UI that had this data still has it
 
+	data["ssd"] = null //clear the data in case we have an old input from a previous scan
 	if(target_mob.getBrainLoss() >= 100 || !target_mob.has_brain())
 		data["ssd"] = "Subject is brain-dead."
 	else if(target_mob.has_brain() && target_mob.stat != DEAD && ishuman(target_mob))
@@ -474,18 +475,18 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 	var/dat = ""
 	// Calculate damage amounts
 	var/fake_oxy = max(rand(1,40), src.getOxyLoss(), (300 - (src.getToxLoss() + src.getFireLoss() + src.getBruteLoss())))
-	var/OX = src.getOxyLoss() > 50 		? 	"<b>[src.getOxyLoss()]</b>" 		: src.getOxyLoss()
-	var/TX = src.getToxLoss() > 50 		? 	"<b>[src.getToxLoss()]</b>" 		: src.getToxLoss()
-	var/BU = src.getFireLoss() > 50 	? 	"<b>[src.getFireLoss()]</b>"	 	: src.getFireLoss()
-	var/BR = src.getBruteLoss() > 50 	? 	"<b>[src.getBruteLoss()]</b>" 		: src.getBruteLoss()
+	var/OX = src.getOxyLoss() > 50 ? "<b>[src.getOxyLoss()]</b>" : src.getOxyLoss()
+	var/TX = src.getToxLoss() > 50 ? "<b>[src.getToxLoss()]</b>" : src.getToxLoss()
+	var/BU = src.getFireLoss() > 50 ? "<b>[src.getFireLoss()]</b>" : src.getFireLoss()
+	var/BR = src.getBruteLoss() > 50 ? "<b>[src.getBruteLoss()]</b>" : src.getBruteLoss()
 
 	// Show overall
 	if(src.status_flags & FAKEDEATH)
-		OX = fake_oxy > 50 			? 	"<b>[fake_oxy]</b>" 			: fake_oxy
+		OX = fake_oxy > 50 ? "<b>[fake_oxy]</b>" : fake_oxy
 		dat += "\nHealth Analyzer for [src]:\n\tOverall Status: <b>DEAD</b>\n"
 	else
 		dat += "\nHealth Analyzer results for [src]:\n\tOverall Status: [src.stat > 1 ? "<b>DEAD</b>" : "<b>[src.health - src.halloss]% healthy"]</b>\n"
-	dat += "\tType:    [SET_CLASS("Oxygen", INTERFACE_BLUE)]-[SET_CLASS("Toxin", INTERFACE_GREEN)]-[SET_CLASS("Burns", INTERFACE_ORANGE)]-[SET_CLASS("Brute", INTERFACE_RED)]\n"
+	dat += "\tType: [SET_CLASS("Oxygen", INTERFACE_BLUE)]-[SET_CLASS("Toxin", INTERFACE_GREEN)]-[SET_CLASS("Burns", INTERFACE_ORANGE)]-[SET_CLASS("Brute", INTERFACE_RED)]\n"
 	dat += "\tDamage: \t[SET_CLASS(OX, INTERFACE_BLUE)] - [SET_CLASS(TX, INTERFACE_GREEN)] - [SET_CLASS(BU, INTERFACE_ORANGE)] - [SET_CLASS(BR, INTERFACE_RED)]\n"
 	dat += "\tUntreated: {B}=Burns,{T}=Trauma,{F}=Fracture\n"
 

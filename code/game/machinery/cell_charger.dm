@@ -1,12 +1,12 @@
 /obj/structure/machinery/cell_charger
-	name = "heavy-duty cell charger"
+	name = "\improper heavy-duty cell charger"
 	desc = "A much more powerful version of the standard recharger that is specially designed for charging power cells."
 	icon = 'icons/obj/structures/machinery/power.dmi'
 	icon_state = "ccharger0"
 	anchored = 1
-	use_power = 1
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 5
-	active_power_usage = 40000	//40 kW. (this the power drawn when charging)
+	active_power_usage = 40000 //40 kW. (this the power drawn when charging)
 	power_channel = POWER_CHANNEL_EQUIP
 	var/obj/item/cell/charging = null
 	var/chargelevel = -1
@@ -16,7 +16,7 @@
 
 	if(charging && !(inoperable()) )
 
-		var/newlevel = 	round(charging.percent() * 4.0 / 99)
+		var/newlevel = round(charging.percent() * 4.0 / 99)
 
 		if(chargelevel != newlevel)
 
@@ -31,7 +31,7 @@
 	. = ..()
 	. += "There's [charging ? "a" : "no"] cell in the charger."
 	if(charging)
-		. += "Current charge: [charging.charge]"
+		. += "Current charge: [charging.charge] ([charging.percent()]%)"
 
 /obj/structure/machinery/cell_charger/attackby(obj/item/W, mob/user)
 	if(stat & BROKEN)
@@ -68,7 +68,7 @@
 	if(charging)
 		usr.put_in_hands(charging)
 		charging.add_fingerprint(user)
-		charging.updateicon()
+		charging.update_icon()
 
 		src.charging = null
 		user.visible_message("[user] removes the cell from the charger.", "You remove the cell from the charger.")
@@ -89,13 +89,13 @@
 
 /obj/structure/machinery/cell_charger/process()
 	if((inoperable()) || !anchored)
-		update_use_power(0)
+		update_use_power(USE_POWER_NONE)
 		return
 
 	if (charging && !charging.fully_charged())
 		charging.give(active_power_usage*CELLRATE)
-		update_use_power(2)
+		update_use_power(USE_POWER_ACTIVE)
 
 		updateicon()
 	else
-		update_use_power(1)
+		update_use_power(USE_POWER_IDLE)

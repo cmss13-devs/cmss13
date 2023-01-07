@@ -17,28 +17,28 @@
 	var/embeddable = TRUE //FALSE if unembeddable
 	var/embedded_organ = null
 	var/attack_speed = 11  //+3, Adds up to 10.  Added an extra 4 removed from /mob/proc/do_click()
-	 ///Used in attackby() to say how something was attacked "[x] has been [z.attack_verb] by [y] with [z]"
+	///Used in attackby() to say how something was attacked "[x] has been [z.attack_verb] by [y] with [z]"
 	var/list/attack_verb
 
 	health = null
 
 	rebounds = TRUE
 
-	var/sharp = 0		// whether this item cuts
-	var/edge = 0		// whether this item is more likely to dismember
+	var/sharp = 0 // whether this item cuts
+	var/edge = 0 // whether this item is more likely to dismember
 	var/pry_capable = 0 //whether this item can be used to pry things open.
 	var/heat_source = 0 //whether this item is a source of heat, and how hot it is (in Kelvin).
 
 	//SOUND VARS
 	///Sound to be played when item is picked up
-	var/pickupsound
+	var/pickup_sound
 	///Volume of pickup sound
 	var/pickupvol = 15
 	///Whether the pickup sound will vary in pitch/frequency
 	var/pickup_vary = TRUE
 
 	///Sound to be played when item is dropped
-	var/dropsound
+	var/drop_sound
 	///Volume of drop sound
 	var/dropvol = 15
 	///Whether the drop sound will vary in pitch/frequency
@@ -53,8 +53,8 @@
 	var/w_class = SIZE_MEDIUM
 	var/storage_cost = null
 	flags_atom = FPRINT
-	var/flags_item = NO_FLAGS	//flags for item stuff that isn't clothing/equipping specific.
-	var/flags_equip_slot = NO_FLAGS		//This is used to determine on which slots an item can fit.
+	var/flags_item = NO_FLAGS //flags for item stuff that isn't clothing/equipping specific.
+	var/flags_equip_slot = NO_FLAGS //This is used to determine on which slots an item can fit.
 
 	//Since any item can now be a piece of clothing, this has to be put here so all items share it.
 	var/flags_inventory = NO_FLAGS //This flag is used for various clothing/equipment item stuff
@@ -95,15 +95,15 @@
 
 	var/list/item_state_slots //overrides the default
 
-	var/mob/living/carbon/human/locked_to_mob = null	// If the item uses flag MOB_LOCK_ON_PICKUP, this is the mob owner reference.
+	var/mob/living/carbon/human/locked_to_mob = null // If the item uses flag MOB_LOCK_ON_PICKUP, this is the mob owner reference.
 
-	var/list/equip_sounds//Sounds played when this item is equipped
+	var/list/equip_sounds //Sounds played when this item is equipped
 	var/list/unequip_sounds //Same but when unequipped
 
-	 ///Vision impairing effect if worn on head/mask/glasses.
+	///Vision impairing effect if worn on head/mask/glasses.
 	var/vision_impair = VISION_IMPAIR_NONE
 
-	 ///Used for stepping onto flame and seeing how much dmg you take and if you're ignited.
+	///Used for stepping onto flame and seeing how much dmg you take and if you're ignited.
 	var/fire_intensity_resistance
 
 	var/map_specific_decoration = FALSE
@@ -148,22 +148,22 @@
 	return ..()
 
 /obj/item/ex_act(severity, explosion_direction)
+	var/msg = pick("is destroyed by the blast!", "is obliterated by the blast!", "shatters as the explosion engulfs it!", "disintegrates in the blast!", "perishes in the blast!", "is mangled into uselessness by the blast!")
+	explosion_throw(severity, explosion_direction)
 	switch(severity)
 		if(0 to EXPLOSION_THRESHOLD_LOW)
 			if(prob(5))
 				if(!indestructible)
-					qdel(src)
-			else
-				explosion_throw(severity, explosion_direction)
+					visible_message(SPAN_DANGER(SPAN_UNDERLINE("\The [src] [msg]")))
+					deconstruct(FALSE)
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			if(prob(50))
 				if(!indestructible)
-					qdel(src)
-			else
-				explosion_throw(severity, explosion_direction)
+					deconstruct(FALSE)
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
 			if(!indestructible)
-				qdel(src)
+				visible_message(SPAN_DANGER(SPAN_UNDERLINE("\The [src] [msg]")))
+				deconstruct(FALSE)
 
 /obj/item/mob_launch_collision(var/mob/living/L)
 	forceMove(L.loc)
@@ -199,7 +199,7 @@ cases. Override_icon_state should be a list.*/
 			if(MAP_WHISKEY_OUTPOST, MAP_DESERT_DAM, MAP_BIG_RED, MAP_KUTJEVO)
 				icon_state = new_icon_state ? new_icon_state : "d_" + icon_state
 				item_state = new_item_state ? new_item_state : "d_" + item_state
-			if(MAP_PRISON_STATION, MAP_PRISON_STATION_V3)
+			if(MAP_PRISON_STATION, MAP_PRISON_STATION_V3, MAP_LV522_CHANCES_CLAIM)
 				icon_state = new_icon_state ? new_icon_state : "c_" + icon_state
 				item_state = new_item_state ? new_item_state : "c_" + item_state
 		if(new_protection)
@@ -276,7 +276,7 @@ cases. Override_icon_state should be a list.*/
 						failure = 1
 						continue
 					success = 1
-					S.handle_item_insertion(I, TRUE, user)	//The 1 stops the "You put the [src] into [S]" insertion message from being displayed.
+					S.handle_item_insertion(I, TRUE, user) //The 1 stops the "You put the [src] into [S]" insertion message from being displayed.
 				if(success && !failure)
 					to_chat(user, SPAN_NOTICE("You put everything in [S]."))
 				else if(success)
@@ -310,8 +310,8 @@ cases. Override_icon_state should be a list.*/
 		qdel(src)
 
 	SEND_SIGNAL(src, COMSIG_ITEM_DROPPED, user)
-	if(dropsound && (src.loc.z))
-		playsound(src, dropsound, dropvol, drop_vary)
+	if(drop_sound && (src.loc?.z))
+		playsound(src, drop_sound, dropvol, drop_vary)
 	src.do_drop_animation(user)
 
 	appearance_flags &= ~NO_CLIENT_COLOR //So saturation/desaturation etc. effects affect it.
@@ -321,8 +321,8 @@ cases. Override_icon_state should be a list.*/
 	SHOULD_CALL_PARENT(TRUE)
 	SEND_SIGNAL(src, COMSIG_ITEM_PICKUP, user)
 	setDir(SOUTH)//Always rotate it south. This resets it to default position, so you wouldn't be putting things on backwards
-	if(pickupsound && !silent && src.loc?.z)
-		playsound(src, pickupsound, pickupvol, pickup_vary)
+	if(pickup_sound && !silent && src.loc?.z)
+		playsound(src, pickup_sound, pickupvol, pickup_vary)
 	do_pickup_animation(user)
 
 // called when this item is removed from a storage item, which is passed on as S. The loc variable is already set to the new destination before this is called.
@@ -388,7 +388,7 @@ cases. Override_icon_state should be a list.*/
 	if(LAZYLEN(uniform_restricted))
 		UnregisterSignal(user, COMSIG_MOB_ITEM_UNEQUIPPED)
 		if(flags_equip_slot & slotdefine2slotbit(slot))
-			RegisterSignal(user, COMSIG_MOB_ITEM_UNEQUIPPED, .proc/check_for_uniform_restriction)
+			RegisterSignal(user, COMSIG_MOB_ITEM_UNEQUIPPED, PROC_REF(check_for_uniform_restriction))
 
 // Called after the item is removed from equipment slot.
 /obj/item/proc/unequipped(mob/user, slot)
@@ -744,7 +744,7 @@ cases. Override_icon_state should be a list.*/
 
 /obj/item/proc/showoff(mob/user)
 	for (var/mob/M in view(user))
-		M.show_message("[user] holds up [src]. <a HREF=?src=\ref[M];lookitem=\ref[src]>Take a closer look.</a>",1)
+		M.show_message("[user] holds up [src]. <a HREF=?src=\ref[M];lookitem=\ref[src]>Take a closer look.</a>", SHOW_MESSAGE_VISIBLE)
 
 /mob/living/carbon/verb/showoff()
 	set name = "Show Held Item"
@@ -780,7 +780,7 @@ cases. Override_icon_state should be a list.*/
 
 /obj/item/proc/unzoom(mob/living/user)
 	var/zoom_device = zoomdevicename ? "\improper [zoomdevicename] of [src]" : "\improper [src]"
-	INVOKE_ASYNC(user, /atom.proc/visible_message, SPAN_NOTICE("[user] looks up from [zoom_device]."),
+	INVOKE_ASYNC(user, TYPE_PROC_REF(/atom, visible_message), SPAN_NOTICE("[user] looks up from [zoom_device]."),
 	SPAN_NOTICE("You look up from [zoom_device]."))
 	zoom = !zoom
 	COOLDOWN_START(user, zoom_cooldown, 20)
@@ -820,8 +820,8 @@ cases. Override_icon_state should be a list.*/
 		RegisterSignal(src, list(
 			COMSIG_ITEM_DROPPED,
 			COMSIG_ITEM_UNWIELD,
-		), .proc/unzoom_dropped_callback)
-		RegisterSignal(user, COMSIG_MOB_MOVE_OR_LOOK, .proc/zoom_handle_mob_move_or_look)
+		), PROC_REF(unzoom_dropped_callback))
+		RegisterSignal(user, COMSIG_MOB_MOVE_OR_LOOK, PROC_REF(zoom_handle_mob_move_or_look))
 
 		zoom_initial_mob_dir = user.dir
 

@@ -1,11 +1,11 @@
-#define BLOCK_NOTHING 				0
-#define BLOCK_SPECIAL_STRUCTURES	1
-#define BLOCK_ALL_STRUCTURES		2
+#define BLOCK_NOTHING 0
+#define BLOCK_SPECIAL_STRUCTURES 1
+#define BLOCK_ALL_STRUCTURES 2
 
 /obj/effect/alien/weeds
 	name = "weeds"
 	desc = "Weird black weeds..."
-	icon = 'icons/mob/hostiles/weeds.dmi'
+	icon = 'icons/mob/xenos/weeds.dmi'
 	icon_state = "base"
 
 	anchored = TRUE
@@ -69,16 +69,17 @@
 		if(get_dist(node, src) >= node.node_range)
 			SEND_SIGNAL(parent, COMSIG_WEEDNODE_GROWTH_COMPLETE)
 		else if(!hibernate)
-			addtimer(CALLBACK(src, .proc/weed_expand), WEED_BASE_GROW_SPEED / max(weed_strength, 1))
+			addtimer(CALLBACK(src, PROC_REF(weed_expand)), WEED_BASE_GROW_SPEED / max(weed_strength, 1))
 
 	var/turf/T = get_turf(src)
-	T.weeds = src
-	weeded_turf = T
+	if(T)
+		T.weeds = src
+		weeded_turf = T
 
 	RegisterSignal(src, list(
 		COMSIG_ATOM_TURF_CHANGE,
 		COMSIG_MOVABLE_TURF_ENTERED
-	), .proc/set_turf_weeded)
+	), PROC_REF(set_turf_weeded))
 
 /obj/effect/alien/weeds/proc/set_turf_weeded(var/datum/source, var/turf/T)
 	SIGNAL_HANDLER
@@ -154,15 +155,23 @@
 			. += ceiling_info
 
 
-/obj/effect/alien/weeds/Crossed(atom/movable/AM)
-	if (ishuman(AM))
-		var/mob/living/carbon/human/H = AM
-		if (!isYautja(H) && !H.ally_of_hivenumber(linked_hive.hivenumber)) // predators are immune to weed slowdown effect
-			H.next_move_slowdown = H.next_move_slowdown + weed_strength
-	else if (isXeno(AM))
-		var/mob/living/carbon/Xenomorph/X = AM
-		if (!linked_hive.is_ally(X))
-			X.next_move_slowdown = X.next_move_slowdown + (weed_strength*WEED_XENO_SPEED_MULT)
+/obj/effect/alien/weeds/Crossed(atom/movable/atom_movable)
+	if(!isliving(atom_movable))
+		return
+	var/mob/living/crossing_mob = atom_movable
+
+	var/weed_slow = weed_strength
+
+	if(crossing_mob.ally_of_hivenumber(linked_hive.hivenumber))
+		if( (crossing_mob.hivenumber != linked_hive.hivenumber) && prob(7)) // small chance for allied mobs to get a message indicating this
+			to_chat(crossing_mob, SPAN_NOTICE("The weeds seem to reshape themselves around your feet as you walk on them."))
+		return
+
+	var/list/slowdata = list("movement_slowdown" = weed_slow)
+	SEND_SIGNAL(crossing_mob, COMSIG_MOB_WEEDS_CROSSED, slowdata, src)
+	var/final_slowdown = slowdata["movement_slowdown"]
+
+	crossing_mob.next_move_slowdown += POSITIVE(final_slowdown)
 
 // Uh oh, we might be dying!
 // I know this is bad proc naming but it was too good to pass on and it's only used in this file anyways
@@ -303,11 +312,11 @@
 		var/image/secretion
 
 		if(icon_dir >= 0)
-			secretion = image('icons/mob/hostiles/Effects.dmi', "secrete[icon_dir]")
+			secretion = image('icons/mob/xenos/effects.dmi', "secrete[icon_dir]")
 		else if(icon_dir == -15)
-			secretion = image('icons/mob/hostiles/Effects.dmi', "secrete_base")
+			secretion = image('icons/mob/xenos/effects.dmi', "secrete_base")
 		else
-			secretion = image('icons/mob/hostiles/Effects.dmi', "secrete_dir[-icon_dir]")
+			secretion = image('icons/mob/xenos/effects.dmi', "secrete_dir[-icon_dir]")
 
 		overlays += secretion
 
@@ -361,7 +370,7 @@
 
 	health -= damage
 	if(health <= 0)
-		qdel(src)
+		deconstruct(FALSE)
 
 /obj/effect/alien/weeds/flamer_fire_act(dam)
 	if(indestructible)
@@ -474,11 +483,11 @@
 	. = ..(mapload, src)
 
 	if(!staticnode)
-		staticnode = image('icons/mob/hostiles/weeds.dmi', "weednode", ABOVE_OBJ_LAYER)
+		staticnode = image('icons/mob/xenos/weeds.dmi', "weednode", ABOVE_OBJ_LAYER)
 
 	var/obj/effect/alien/resin/trap/TR = locate() in loc
 	if(TR)
-		RegisterSignal(TR, COMSIG_PARENT_PREQDELETED, .proc/trap_destroyed)
+		RegisterSignal(TR, COMSIG_PARENT_PREQDELETED, PROC_REF(trap_destroyed))
 		overlay_node = FALSE
 		overlays -= staticnode
 
@@ -498,7 +507,7 @@
 	RegisterSignal(src, list(
 		COMSIG_WEEDNODE_GROWTH_COMPLETE,
 		COMSIG_WEEDNODE_CANNOT_EXPAND_FURTHER,
-	), .proc/complete_growth)
+	), PROC_REF(complete_growth))
 
 	update_icon()
 
@@ -508,7 +517,7 @@
 	for(var/X in children)
 		var/obj/effect/alien/weeds/W = X
 		remove_child(W)
-		addtimer(CALLBACK(W, .proc/avoid_orphanage), WEED_BASE_DECAY_SPEED + rand(0, 1 SECONDS)) // Slight variation whilst decaying
+		addtimer(CALLBACK(W, PROC_REF(avoid_orphanage)), WEED_BASE_DECAY_SPEED + rand(0, 1 SECONDS)) // Slight variation whilst decaying
 
 	. = ..()
 
@@ -568,8 +577,8 @@
 	parent_cluster.damaged = TRUE
 
 /obj/effect/resin_construct
-	mouse_opacity = 0
-	icon = 'icons/mob/hostiles/Effects.dmi'
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	icon = 'icons/mob/xenos/effects.dmi'
 
 /obj/effect/resin_construct/door
 	icon_state = "DoorConstruct"

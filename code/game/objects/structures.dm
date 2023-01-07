@@ -1,13 +1,12 @@
-#define	CLIMB_DELAY_SHORT		0.2 SECONDS
-#define	CLIMB_DELAY_MEDIUM		1 SECONDS
-#define CLIMB_DELAY_LONG		2 SECONDS
+#define CLIMB_DELAY_SHORT 0.2 SECONDS
+#define CLIMB_DELAY_MEDIUM 1 SECONDS
+#define CLIMB_DELAY_LONG 2 SECONDS
 
 /obj/structure
 	icon = 'icons/obj/structures/structures.dmi'
 	var/climbable
 	var/climb_delay = CLIMB_DELAY_LONG
 	var/breakable
-	var/parts
 	var/list/debris
 	var/unslashable = FALSE
 	var/wrenchable = FALSE
@@ -32,17 +31,11 @@
 	debris = null
 	. = ..()
 
-/obj/structure/proc/destroy(deconstruct)
-	if(parts)
-		new parts(loc)
-	density = 0
-	qdel(src)
-
 /obj/structure/attack_animal(mob/living/user)
 	if(breakable)
 		if(user.wall_smash)
 			visible_message(SPAN_DANGER("[user] smashes [src] apart!"))
-			destroy()
+			deconstruct(FALSE)
 
 /obj/structure/attackby(obj/item/W, mob/user)
 	if(HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
@@ -60,7 +53,7 @@
 		src.health -= severity
 		if(src.health <= 0)
 			handle_debris(severity, direction)
-			qdel(src)
+			deconstruct(FALSE)
 
 /obj/structure/proc/handle_debris(severity = 0, direction = 0)
 	if(!LAZYLEN(debris))

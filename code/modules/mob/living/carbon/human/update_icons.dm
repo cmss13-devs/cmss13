@@ -36,7 +36,7 @@ In practice this means that:
 
 There are several things that need to be remembered:
 
->	Whenever we do something that should cause an overlay to update (which doesn't use standard procs
+> Whenever we do something that should cause an overlay to update (which doesn't use standard procs
 	( i.e. you do something like l_hand = /obj/item/something new(src) )
 	You will need to call the relevant update_inv_* proc:
 		update_inv_head()
@@ -61,14 +61,14 @@ There are several things that need to be remembered:
 	corgi etc. Instead, it'll just return without doing any work. So no harm in calling it for corgis and such.
 
 
->	There are also these special cases:
-		UpdateDamageIcon()	//handles damage overlays for brute/burn damage //(will rename this when I geta round to it)
-		update_body()	//Handles updating your mob's icon to reflect their gender/race/complexion etc
-		update_hair()	//Handles updating your hair overlay (used to be update_face, but mouth and
+> There are also these special cases:
+		UpdateDamageIcon() //handles damage overlays for brute/burn damage //(will rename this when I geta round to it)
+		update_body() //Handles updating your mob's icon to reflect their gender/race/complexion etc
+		update_hair() //Handles updating your hair overlay (used to be update_face, but mouth and
 																			...eyes were merged into update_body)
 		update_targeted() // Updates the target overlay when someone points a gun at you
 
->	If you need to update all overlays you can use regenerate_icons(). it works exactly like update_clothing used to.
+> If you need to update all overlays you can use regenerate_icons(). it works exactly like update_clothing used to.
 
 
 */
@@ -354,7 +354,7 @@ Applied by gun suicide and high impact bullet executions, removed by rejuvenate,
 	if(!wear_id.pinned_on_uniform || (w_uniform && w_uniform.displays_id && !(w_uniform.flags_jumpsuit & UNIFORM_JACKET_REMOVED)))
 		var/image/id_overlay = wear_id.get_mob_overlay(src, WEAR_ID)
 		id_overlay.layer = -ID_LAYER
-		overlays_standing[ID_LAYER]	= id_overlay
+		overlays_standing[ID_LAYER] = id_overlay
 		apply_overlay(ID_LAYER)
 
 /mob/living/carbon/human/update_inv_gloves()
@@ -374,7 +374,7 @@ Applied by gun suicide and high impact bullet executions, removed by rejuvenate,
 	if(!I)
 		return
 	I.layer = -GLOVES_LAYER
-	overlays_standing[GLOVES_LAYER]	= I
+	overlays_standing[GLOVES_LAYER] = I
 	apply_overlay(GLOVES_LAYER)
 
 
@@ -440,7 +440,7 @@ Applied by gun suicide and high impact bullet executions, removed by rejuvenate,
 			client.screen += s_store
 			s_store.screen_loc = hud_used.ui_datum.hud_slot_offset(s_store, hud_used.ui_datum.ui_sstore1)
 
-		var/image/I	= s_store.get_mob_overlay(src, WEAR_J_STORE)
+		var/image/I = s_store.get_mob_overlay(src, WEAR_J_STORE)
 		I.layer = -SUIT_STORE_LAYER
 		overlays_standing[SUIT_STORE_LAYER] = I
 		apply_overlay(SUIT_STORE_LAYER)
@@ -678,7 +678,7 @@ Applied by gun suicide and high impact bullet executions, removed by rejuvenate,
 
 
 //Adds a collar overlay above the helmet layer if the suit has one
-//	Suit needs an identically named sprite in icons/mob/collar.dmi
+// Suit needs an identically named sprite in icons/mob/collar.dmi
 /mob/living/carbon/human/proc/update_collar()
 	remove_overlay(COLLAR_LAYER)
 	if(!istype(wear_suit,/obj/item/clothing/suit))
@@ -687,7 +687,7 @@ Applied by gun suicide and high impact bullet executions, removed by rejuvenate,
 	var/image/I = S.get_collar()
 	if(I)
 		I.layer = -COLLAR_LAYER
-		overlays_standing[COLLAR_LAYER]	= I
+		overlays_standing[COLLAR_LAYER] = I
 		apply_overlay(COLLAR_LAYER)
 
 /mob/living/carbon/human/update_burst()
@@ -695,9 +695,9 @@ Applied by gun suicide and high impact bullet executions, removed by rejuvenate,
 	var/image/standing
 	switch(chestburst)
 		if(1)
-			standing = image("icon" = 'icons/mob/hostiles/Effects.dmi',"icon_state" = "burst_stand", "layer" = -BURST_LAYER)
+			standing = image("icon" = 'icons/mob/xenos/effects.dmi',"icon_state" = "burst_stand", "layer" = -BURST_LAYER)
 		if(2)
-			standing = image("icon" = 'icons/mob/hostiles/Effects.dmi',"icon_state" = "bursted_stand", "layer" = -BURST_LAYER)
+			standing = image("icon" = 'icons/mob/xenos/effects.dmi',"icon_state" = "bursted_stand", "layer" = -BURST_LAYER)
 		else
 			return
 	overlays_standing[BURST_LAYER] = standing

@@ -23,7 +23,7 @@
 
 	sleep(5)
 	arm_equipment(H, /datum/equipment_preset/uscm/tank/full, TRUE, TRUE)
-	to_chat(H, SPAN_ROLE_HEADER("You are a vehicle crewman in the USCM"))
+	to_chat(H, SPAN_ROLE_HEADER("You are a Vehicle Crewman in the USCM"))
 	to_chat(H, SPAN_ROLE_BODY("You are here to assist in the defence of the [SSmapping.configs[GROUND_MAP].map_name]. Listen to the chain of command."))
 
 	sleep(10)

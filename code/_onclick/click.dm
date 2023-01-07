@@ -1,5 +1,5 @@
 // Enables a tool to test ingame click rate.
-#define DEBUG_CLICK_RATE	0
+#define DEBUG_CLICK_RATE 0
 
 /// 1 decisecond click delay (above and beyond mob/next_move)
 /mob/var/next_click = 0
@@ -18,7 +18,7 @@
 */
 
 /client/Click(atom/A, location, control, params)
-	if (control && !ignore_next_click)	// No .click macros allowed, and only one click per mousedown.
+	if (control && !ignore_next_click) // No .click macros allowed, and only one click per mousedown.
 		ignore_next_click = TRUE
 		return usr.do_click(A, location, params)
 
@@ -58,7 +58,7 @@
 	if(SEND_SIGNAL(src, COMSIG_MOB_PRE_CLICK, A, mods) & COMPONENT_INTERRUPT_CLICK)
 		return
 
-	if(istype(A, /obj/statclick))
+	if(istype(A, /obj/effect/statclick))
 		A.clicked(src, mods)
 		return
 
@@ -98,22 +98,28 @@
 	var/obj/item/W = get_active_hand()
 
 	// Special gun mode stuff.
-	if (W == A)
+	if(W == A)
 		mode()
 		return
 
 	//Self-harm preference. isXeno check because xeno clicks on self are redirected to the turf below the pointer.
-	if (A == src && client.prefs && client.prefs.toggle_prefs & TOGGLE_IGNORE_SELF && src.a_intent != INTENT_HELP && !isXeno(src) && W.force && (!W || !(W.flags_item & (NOBLUDGEON|ITEM_ABSTRACT))))
-		if (world.time % 3)
-			to_chat(src, SPAN_NOTICE("You have the discipline not to hurt yourself."))
-		return
+	if(A == src && client.prefs && client.prefs.toggle_prefs & TOGGLE_IGNORE_SELF && src.a_intent != INTENT_HELP && !isXeno(src))
+		if(W)
+			if(W.force && (!W || !(W.flags_item & (NOBLUDGEON|ITEM_ABSTRACT))))
+				if(world.time % 3)
+					to_chat(src, SPAN_NOTICE("You have the discipline not to hurt yourself."))
+				return
+		else
+			if(world.time % 3)
+				to_chat(src, SPAN_NOTICE("You have the discipline not to hurt yourself."))
+			return
 
 
 	// Don't allow doing anything else if inside a container of some sort, like a locker.
 	if (!isturf(loc))
 		return
 
-	if (world.time <= next_move && A.loc != src)	// Attack click cooldown check
+	if (world.time <= next_move && A.loc != src) // Attack click cooldown check
 		return
 
 	next_move = world.time
@@ -161,7 +167,7 @@
 
 	return FALSE
 
-/*	OLD DESCRIPTION
+/* OLD DESCRIPTION
 	Standard mob ClickOn()
 	Handles exceptions: Buildmode, middle click, modified clicks, mech actions
 
@@ -274,7 +280,7 @@
 	if(!specific_direction)
 		specific_direction = direction
 
-	facedir(direction, specific_direction)
+	face_dir(direction, specific_direction)
 
 
 
@@ -289,7 +295,7 @@
 	icon_state = "catcher"
 	layer = 0
 	plane = -99
-	mouse_opacity = 2
+	mouse_opacity = MOUSE_OPACITY_OPAQUE
 	screen_loc = "CENTER-7,CENTER-7"
 	flags_atom = NOINTERACT
 
@@ -392,5 +398,5 @@
 		attack_self(user)
 		return
 	user.do_click(A, null, params)
-	addtimer(CALLBACK(src, .proc/autoclick, user, A, params), 0.1)
+	addtimer(CALLBACK(src, PROC_REF(autoclick), user, A, params), 0.1)
 #endif

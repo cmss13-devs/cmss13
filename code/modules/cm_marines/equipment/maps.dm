@@ -7,7 +7,7 @@
 	throw_range = 5
 	w_class = SIZE_TINY
 	// color = ... (Colors can be names - "red, green, grey, cyan" or a HEX color code "#FF0000")
-	var/dat        // Page content
+	var/dat // Page content
 	var/html_link = ""
 	var/window_size = "1280x720"
 
@@ -43,7 +43,7 @@
 					function pageloaded(obj) {
 						document.getElementById("loading").style.display = "none";
 						obj.style.display = "inline";
-	    			}
+					}
 				</script>
 				<p id='loading'>You start unfolding the map...</p>
 					<img onload="pageloaded(this)" src="[wikiurl]/[html_link]?printable=yes&remove_links=1" id="main_frame" alt=""></img>
@@ -117,6 +117,16 @@
 	html_link = "images/0/0d/Kutjevo_a1.jpg"
 	color = "red"
 
+/obj/item/map/lv522_map
+	name = "\improper LV-522 Map"
+	desc = "An overview of LV-522 schematics."
+	html_link = "images/b/bb/C_claim.png"
+	color = "cyan"
+/obj/item/map/new_varadero//to-do actually finish this map
+	name = "\improper New Varadero map"
+	desc = "The blueprint and readout of the UA outpost New Varadero"
+	html_link = "images/0/0d/Kutjevo_a1.jpg"//replace later
+	color = "red"
 
 //used by marine equipment machines to spawn the correct map.
 /obj/item/map/current_map
@@ -174,6 +184,17 @@
 			desc = "An orbital scan of Kutjevo Refinery"
 			html_link = "images/0/0d/Kutjevo_a1.jpg"
 			color = "red"
+		if (MAP_LV522_CHANCES_CLAIM)
+			name = "\improper LV-522 Map"
+			desc = "An overview of LV-522 schematics."
+			html_link = "images/b/bb/C_claim.png"
+			color = "cyan"
+		if (MAP_NEW_VARADERO)
+			name = "\improper New Varadero map"
+			desc = "The blueprint and readout of the UA outpost New Varadero"
+			html_link = "images/0/0d/Kutjevo_a1.jpg"//replace later
+			color = "red"
+
 		else
 			return INITIALIZE_HINT_QDEL
 

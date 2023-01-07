@@ -155,7 +155,7 @@
 					else
 						break
 			//See what we want to do last
-			if(alert(usr,"Spawn container with reagent?","Custom reagent [target]","Yes","No") == "No")
+			if(alert(usr,"Spawn container with reagent?","Custom reagent [target]","Yes","No") != "Yes")
 				return
 			var/volume = tgui_input_number(usr,"How much? An appropriate container will be selected.")
 			if(volume <= 0)

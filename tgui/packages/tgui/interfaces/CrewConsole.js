@@ -133,6 +133,7 @@ const CrewTableEntry = (props, context) => {
     brutedam,
     area,
     can_track,
+    side,
   } = sensor_data;
 
   return (
@@ -183,7 +184,12 @@ const CrewTableEntry = (props, context) => {
           'Dead'
         )}
       </Table.Cell>
-      <Table.Cell>
+      <Table.Cell
+        color={
+          side !== undefined
+            ? COLORS.damageType['oxy']
+            : COLORS.damageType['brute']
+        }>
         {area !== undefined ? (
           area
         ) : (

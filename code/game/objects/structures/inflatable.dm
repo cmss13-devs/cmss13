@@ -34,9 +34,9 @@
 /obj/structure/inflatable
 	name = "inflatable wall"
 	desc = "An inflated membrane. Do not puncture."
-	density = 1
+	density = TRUE
 	anchored = 1
-	opacity = 0
+	opacity = FALSE
 
 	icon = 'icons/obj/items/inflatable.dmi'
 	icon_state = "wall"
@@ -60,20 +60,20 @@
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			deflate(1)
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
-			qdel(src)
+			deconstruct(FALSE)
 
 /obj/structure/inflatable/attack_hand(mob/user as mob)
 	add_fingerprint(user)
 	return
 
 
-/obj/structure/inflatable/proc/attack_generic(mob/living/user, damage = 0)	//used by attack_animal
+/obj/structure/inflatable/proc/attack_generic(mob/living/user, damage = 0) //used by attack_animal
 	health -= damage
 	user.animation_attack_on(src)
 	if(health <= 0)
 		user.visible_message(SPAN_DANGER("[user] tears open [src]!"))
 		deflate(1)
-	else	//for nicer text~
+	else //for nicer text~
 		user.visible_message(SPAN_DANGER("[user] tears at [src]!"))
 
 /obj/structure/inflatable/attack_animal(mob/user as mob)
@@ -112,18 +112,22 @@
 		visible_message("[src] rapidly deflates!")
 		flick("wall_popping", src)
 		sleep(10)
-		new /obj/structure/inflatable/popped(loc)
-		//var/obj/item/inflatable/torn/R = new /obj/item/inflatable/torn(loc)
-		//src.transfer_fingerprints_to(R)
-		qdel(src)
+		deconstruct(TRUE)
 	else
-		//to_chat(user, SPAN_NOTICE(" You slowly deflate the inflatable wall."))
 		visible_message("[src] slowly deflates.")
 		flick("wall_deflating", src)
 		spawn(50)
-			var/obj/item/inflatable/R = new /obj/item/inflatable(loc)
-			src.transfer_fingerprints_to(R)
-			qdel(src)
+			deconstruct(FALSE)
+
+
+/obj/structure/inflatable/deconstruct(disassembled = TRUE)
+	if(!disassembled)
+		new /obj/structure/inflatable/popped(loc)
+	else
+		var/obj/item/inflatable/R = new /obj/item/inflatable(loc)
+		src.transfer_fingerprints_to(R)
+	return ..()
+
 
 /obj/structure/inflatable/verb/hand_deflate()
 	set name = "Deflate"
@@ -144,7 +148,7 @@
 /obj/structure/inflatable/popped
 	name = "popped inflatable wall"
 	desc = "It used to be an inflatable wall, now it's just a mess of plastic."
-	density = 0
+	density = FALSE
 	anchored = 1
 	deflated = TRUE
 
@@ -162,9 +166,9 @@
 
 /obj/structure/inflatable/door //Based on mineral door code
 	name = "inflatable door"
-	density = 1
+	density = TRUE
 	anchored = 1
-	opacity = 0
+	opacity = FALSE
 
 	icon = 'icons/obj/items/inflatable.dmi'
 	icon_state = "door_closed"
@@ -207,8 +211,8 @@
 	//playsound(loc, 'sound/effects/stonedoor_openclose.ogg', 25, 1)
 	flick("door_opening",src)
 	sleep(10)
-	density = 0
-	opacity = 0
+	density = FALSE
+	opacity = FALSE
 	state = 1
 	update_icon()
 	isSwitchingStates = 0
@@ -218,8 +222,8 @@
 	//playsound(loc, 'sound/effects/stonedoor_openclose.ogg', 25, 1)
 	flick("door_closing",src)
 	sleep(10)
-	density = 1
-	opacity = 0
+	density = TRUE
+	opacity = FALSE
 	state = 0
 	update_icon()
 	isSwitchingStates = 0

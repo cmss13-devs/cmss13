@@ -26,6 +26,10 @@
 	range_bounds = RECT(x, y, PLANTED_FLAG_RANGE, PLANTED_FLAG_RANGE)
 	update_icon()
 
+/obj/structure/machinery/defenses/planted_flag/Destroy()
+	. = ..()
+	range_bounds = null
+
 /obj/structure/machinery/defenses/planted_flag/update_icon()
 	..()
 

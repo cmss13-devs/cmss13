@@ -95,11 +95,9 @@
 	cuff_sound = 'sound/weapons/cablecuff.ogg'
 	cuff_delay = 20
 
-	place_handcuffs(mob/living/carbon/target, mob/user)
-		..()
-		flags_item |= DELONDROP
-
-
+/obj/item/handcuffs/zip/place_handcuffs(mob/living/carbon/target, mob/user)
+	..()
+	flags_item |= DELONDROP
 
 /obj/item/handcuffs/cable
 	name = "cable restraints"
@@ -162,7 +160,7 @@
 				return
 
 		spawn(30)
-			if(!C)	return
+			if(!C) return
 			if(p_loc == user.loc && p_loc_m == C.loc)
 				C.handcuffed = new /obj/item/handcuffs(C)
 				C.handcuff_update()
@@ -197,9 +195,9 @@
 		var/turf/p_loc_m = C.loc
 		playsound(src.loc, 'sound/weapons/handcuffs.ogg', 25, 1, 6)
 		for(var/mob/O in viewers(user, null))
-			O.show_message(SPAN_DANGER("<B>[user] is trying to put restraints on [C]!</B>"), 1)
+			O.show_message(SPAN_DANGER("<B>[user] is trying to put restraints on [C]!</B>"), SHOW_MESSAGE_VISIBLE)
 		spawn(30)
-			if(!C)	return
+			if(!C) return
 			if(p_loc == user.loc && p_loc_m == C.loc)
 				C.handcuffed = new /obj/item/restraints(C)
 				C.handcuff_update()

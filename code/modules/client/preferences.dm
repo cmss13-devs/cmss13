@@ -32,7 +32,7 @@ var/const/MAX_SAVE_SLOTS = 10
 
 	//doohickeys for savefiles
 	var/path
-	var/default_slot = 1				//Holder so it doesn't default to slot 1, rather the last one used
+	var/default_slot = 1 //Holder so it doesn't default to slot 1, rather the last one used
 	var/savefile_version = 0
 
 	//non-preference stuff
@@ -41,14 +41,14 @@ var/const/MAX_SAVE_SLOTS = 10
 	var/last_ip
 	var/fps = 20
 	var/last_id
-	var/save_cooldown = 0	//5s cooldown between saving slots
-	var/reload_cooldown = 0	//5s cooldown between loading slots
+	var/save_cooldown = 0 //5s cooldown between saving slots
+	var/reload_cooldown = 0 //5s cooldown between loading slots
 
 	//game-preferences
-	var/lastchangelog = ""				// Saved changlog filesize to detect if there was a change
+	var/lastchangelog = "" // Saved changlog filesize to detect if there was a change
 	var/ooccolor
-	var/be_special = 0				// Special role selection
-	var/toggle_prefs = TOGGLE_MIDDLE_MOUSE_CLICK|TOGGLE_DIRECTIONAL_ATTACK|TOGGLE_MEMBER_PUBLIC|TOGGLE_AMBIENT_OCCLUSION // flags in #define/mode.dm
+	var/be_special = 0 // Special role selection
+	var/toggle_prefs = TOGGLE_MIDDLE_MOUSE_CLICK|TOGGLE_DIRECTIONAL_ATTACK|TOGGLE_MEMBER_PUBLIC|TOGGLE_AMBIENT_OCCLUSION|TOGGLE_VEND_ITEM_TO_HAND // flags in #define/mode.dm
 	var/UI_style = "midnight"
 	var/toggles_admin = TOGGLES_ADMIN_DEFAULT
 	var/toggles_chat = TOGGLES_CHAT_DEFAULT
@@ -59,6 +59,7 @@ var/const/MAX_SAVE_SLOTS = 10
 	var/toggles_ert = TOGGLES_ERT_DEFAULT
 	var/chat_display_preferences = CHAT_TYPE_ALL
 	var/item_animation_pref_level = SHOW_ITEM_ANIMATIONS_ALL
+	var/pain_overlay_pref_level = PAIN_OVERLAY_BLURRY
 	var/UI_style_color = "#ffffff"
 	var/UI_style_alpha = 255
 	var/View_MC = FALSE
@@ -80,6 +81,7 @@ var/const/MAX_SAVE_SLOTS = 10
 	var/predator_gender = MALE
 	var/predator_age = 100
 	var/predator_h_style = "Standard"
+	var/predator_skin_color = "tan"
 	var/predator_translator_type = "Modern"
 	var/predator_mask_type = 1
 	var/predator_armor_type = 1
@@ -102,51 +104,51 @@ var/const/MAX_SAVE_SLOTS = 10
 	var/synth_status = WHITELIST_NORMAL
 
 	//character preferences
-	var/real_name						//our character's name
-	var/be_random_name = FALSE				//whether we are a random name every round
+	var/real_name //our character's name
+	var/be_random_name = FALSE //whether we are a random name every round
 	var/human_name_ban = FALSE
 
 
-	var/be_random_body = 0				//whether we have a random appearance every round
-	var/gender = MALE					//gender of character (well duh)
-	var/age = 19						//age of character
+	var/be_random_body = 0 //whether we have a random appearance every round
+	var/gender = MALE //gender of character (well duh)
+	var/age = 19 //age of character
 	var/spawnpoint = "Arrivals Shuttle" //where this character will spawn (0-2).
-	var/underwear = "Boxers (Camo Conforming)"			//underwear type
-	var/undershirt = "Undershirt"					//undershirt type
-	var/backbag = 2						//backpack type
+	var/underwear = "Boxers (Camo Conforming)" //underwear type
+	var/undershirt = "Undershirt" //undershirt type
+	var/backbag = 2 //backpack type
 
-	var/h_style = "Crewcut"				//Hair type
-	var/r_hair = 0						//Hair color
-	var/g_hair = 0						//Hair color
-	var/b_hair = 0						//Hair color
+	var/h_style = "Crewcut" //Hair type
+	var/r_hair = 0 //Hair color
+	var/g_hair = 0 //Hair color
+	var/b_hair = 0 //Hair color
 
-	var/grad_style = "None"				//Hair Gradient type
-	var/r_gradient = 0					//Hair Gradient color
-	var/g_gradient = 0					//Hair Gradient color
-	var/b_gradient = 0					//Hair Gradient color
+	var/grad_style = "None" //Hair Gradient type
+	var/r_gradient = 0 //Hair Gradient color
+	var/g_gradient = 0 //Hair Gradient color
+	var/b_gradient = 0 //Hair Gradient color
 
-	var/f_style = "Shaved"				//Face hair type
-	var/r_facial = 0					//Face hair color
-	var/g_facial = 0					//Face hair color
-	var/b_facial = 0					//Face hair color
+	var/f_style = "Shaved" //Face hair type
+	var/r_facial = 0 //Face hair color
+	var/g_facial = 0 //Face hair color
+	var/b_facial = 0 //Face hair color
 
-	var/r_skin = 0						//Skin color
-	var/g_skin = 0						//Skin color
-	var/b_skin = 0						//Skin color
-	var/r_eyes = 0						//Eye color
-	var/g_eyes = 0						//Eye color
-	var/b_eyes = 0						//Eye color
-	var/species = "Human"               //Species datum to use.
-	var/ethnicity = "Western"			// Ethnicity
+	var/r_skin = 0 //Skin color
+	var/g_skin = 0 //Skin color
+	var/b_skin = 0 //Skin color
+	var/r_eyes = 0 //Eye color
+	var/g_eyes = 0 //Eye color
+	var/b_eyes = 0 //Eye color
+	var/species = "Human"    //Species datum to use.
+	var/ethnicity = "Western" // Ethnicity
 	var/body_type = "Mesomorphic (Average)" // Body Type
-	var/language = "None"				//Secondary language
-	var/list/gear						//Custom/fluff item loadout.
+	var/language = "None" //Secondary language
+	var/list/gear //Custom/fluff item loadout.
 	var/preferred_squad = "None"
 
 		//Some faction information.
 	var/origin = ORIGIN_USCM
-	var/faction = "None"                	//Antag faction/general associated faction.
-	var/religion = RELIGION_AGNOSTICISM     //Religious association.
+	var/faction = "None" //Antag faction/general associated faction.
+	var/religion = RELIGION_AGNOSTICISM  //Religious association.
 
 		//Mob preview
 	var/icon/preview_icon = null
@@ -169,7 +171,6 @@ var/const/MAX_SAVE_SLOTS = 10
 	var/sec_record = ""
 	var/gen_record = ""
 	var/exploit_record = ""
-	var/disabilities = 0
 
 	var/nanotrasen_relation = "Neutral"
 
@@ -261,10 +262,10 @@ var/const/MAX_SAVE_SLOTS = 10
 	update_preview_icon()
 
 	var/dat = "<style>"
-	dat += "#column1			{width: 30%; float: left;}"
-	dat += "#column2			{width: 30%; float: left;}"
-	dat += "#column3			{width: 40%; float: left;}"
-	dat += ".square			{width: 15px; height: 15px; display: inline-block;}"
+	dat += "#column1 {width: 30%; float: left;}"
+	dat += "#column2 {width: 30%; float: left;}"
+	dat += "#column3 {width: 40%; float: left;}"
+	dat += ".square {width: 15px; height: 15px; display: inline-block;}"
 	dat += "</style>"
 	dat += "<body onselectstart='return false;'>"
 
@@ -312,7 +313,6 @@ var/const/MAX_SAVE_SLOTS = 10
 			dat += "<b>Gender:</b> <a href='?_src_=prefs;preference=gender'><b>[gender == MALE ? "Male" : "Female"]</b></a><br>"
 			dat += "<b>Ethnicity:</b> <a href='?_src_=prefs;preference=ethnicity;task=input'><b>[ethnicity]</b></a><br>"
 			dat += "<b>Body Type:</b> <a href='?_src_=prefs;preference=body_type;task=input'><b>[body_type]</b></a><br>"
-			dat += "<b>Poor Eyesight:</b> <a href='?_src_=prefs;preference=disabilities'><b>[disabilities == 0 ? "No" : "Yes"]</b></a><br>"
 			dat += "<b>Traits:</b> <a href='byond://?src=\ref[user];preference=traits;task=open'><b>Character Traits</b></a>"
 			dat += "<br>"
 
@@ -486,6 +486,7 @@ var/const/MAX_SAVE_SLOTS = 10
 				dat += "<b>Yautja Gender:</b> <a href='?_src_=prefs;preference=pred_gender;task=input'><b>[predator_gender == MALE ? "Male" : "Female"]</b></a><br>"
 				dat += "<b>Yautja Age:</b> <a href='?_src_=prefs;preference=pred_age;task=input'><b>[predator_age]</b></a><br>"
 				dat += "<b>Yautja Quill Style:</b> <a href='?_src_=prefs;preference=pred_hair;task=input'><b>[predator_h_style]</b></a><br>"
+				dat += "<b>Yautja Skin Color:</b> <a href='?_src_=prefs;preference=pred_skin;task=input'><b>[predator_skin_color]</b></a><br>"
 				dat += "<b>Yautja Flavor Text:</b> <a href='?_src_=prefs;preference=pred_flavor_text;task=input'><b>[TextPreview(predator_flavor_text, 15)]</b></a><br>"
 				dat += "<b>Yautja Whitelist Status:</b> <a href='?_src_=prefs;preference=yautja_status;task=input'><b>[yautja_status]</b></a>"
 				dat += "</div>"
@@ -559,9 +560,12 @@ var/const/MAX_SAVE_SLOTS = 10
 			dat += "<b>tgui Window Placement:</b> <a href='?_src_=prefs;preference=tgui_lock'><b>[(tgui_lock) ? "Primary monitor" : "Free (default)"]</b></a><br>"
 			dat += "<b>Play Admin Midis:</b> <a href='?_src_=prefs;preference=hear_midis'><b>[(toggles_sound & SOUND_MIDI) ? "Yes" : "No"]</b></a><br>"
 			dat += "<b>Play Admin Internet Sounds:</b> <a href='?_src_=prefs;preference=hear_internet'><b>[(toggles_sound & SOUND_INTERNET) ? "Yes" : "No"]</b></a><br>"
+			dat += "<b>Toggle Meme or Atmospheric Sounds:</b> <a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_admin_sound_types'>Toggle</a><br>"
+			dat += "<b>Set Eye Blur Type:</b> <a href='?src=\ref[src];action=proccall;procpath=/client/proc/set_eye_blur_type'>Set</a><br>"
 			dat += "<b>Play Lobby Music:</b> <a href='?_src_=prefs;preference=lobby_music'><b>[(toggles_sound & SOUND_LOBBY) ? "Yes" : "No"]</b></a><br>"
 			dat += "<b>Play VOX Announcements:</b> <a href='?_src_=prefs;preference=sound_vox'><b>[(hear_vox) ? "Yes" : "No"]</b></a><br>"
 			dat += "<b>Default Ghost Night Vision Level:</b> <a href='?_src_=prefs;preference=ghost_vision_pref;task=input'><b>[ghost_vision_pref]</b></a><br>"
+			dat += "<a href='?src=\ref[src];action=proccall;procpath=/client/proc/receive_random_tip'>Read Random Tip of the Round</a><br>"
 			if(CONFIG_GET(flag/allow_Metadata))
 				dat += "<b>OOC Notes:</b> <a href='?_src_=prefs;preference=metadata;task=input'> Edit </a>"
 			dat += "</div>"
@@ -590,6 +594,8 @@ var/const/MAX_SAVE_SLOTS = 10
 					</b> <a href='?_src_=prefs;preference=toggle_prefs;flag=[TOGGLE_ALTERNATING_DUAL_WIELD]'><b>[toggle_prefs & TOGGLE_ALTERNATING_DUAL_WIELD ? "On" : "Off"]</b></a><br>"
 			dat += "<b>Toggle Middle-Click Swap Hands: \
 					</b> <a href='?_src_=prefs;preference=toggle_prefs;flag=[TOGGLE_MIDDLE_MOUSE_SWAP_HANDS]'><b>[toggle_prefs & TOGGLE_MIDDLE_MOUSE_SWAP_HANDS ? "On" : "Off"]</b></a><br>"
+			dat += "<b>Toggle Vendors Vending to Hands: \
+					</b> <a href='?_src_=prefs;preference=toggle_prefs;flag=[TOGGLE_VEND_ITEM_TO_HAND]'><b>[toggle_prefs & TOGGLE_VEND_ITEM_TO_HAND ? "On" : "Off"]</b></a><br>"
 			dat += "<a href='?src=\ref[src];action=proccall;procpath=/client/proc/switch_item_animations'>Toggle Item Animations Detail Level</a><br>"
 		if(MENU_ERT) //wart
 			dat += "<div id='column1'>"
@@ -610,10 +616,10 @@ var/const/MAX_SAVE_SLOTS = 10
 	show_browser(user, dat, "Preferences", "preferencebrowser")
 	onclose(user, "preferencewindow", src)
 
-//limit 	 	- The amount of jobs allowed per column. Defaults to 13 to make it look nice.
-//splitJobs 	- Allows you split the table by job. You can make different tables for each department by including their heads. Defaults to CE to make it look nice.
-//width	 		- Screen' width. Defaults to 550 to make it look nice.
-//height 	 	- Screen's height. Defaults to 500 to make it look nice.
+//limit - The amount of jobs allowed per column. Defaults to 13 to make it look nice.
+//splitJobs - Allows you split the table by job. You can make different tables for each department by including their heads. Defaults to CE to make it look nice.
+//width - Screen' width. Defaults to 550 to make it look nice.
+//height - Screen's height. Defaults to 500 to make it look nice.
 /datum/preferences/proc/SetChoices(mob/user, limit = 19, list/splitJobs = list(), width = 950, height = 700)
 	if(!RoleAuthority)
 		return
@@ -1140,6 +1146,11 @@ var/const/MAX_SAVE_SLOTS = 10
 					if(!new_h_style)
 						return
 					predator_h_style = new_h_style
+				if("pred_skin")
+					var/new_skin_color = tgui_input_list(user, "Choose your skin color:", "Skin Color", PRED_SKIN_COLOR)
+					if(!new_skin_color)
+						return
+					predator_skin_color = new_skin_color
 				if("pred_flavor_text")
 					var/pred_flv_raw = input(user, "Choose your Predator's flavor text:", "Flavor Text", predator_flavor_text) as message
 					if(!pred_flv_raw)
@@ -1244,9 +1255,9 @@ var/const/MAX_SAVE_SLOTS = 10
 							var/ascii_char = text2ascii(new_xeno_prefix,i)
 							switch(ascii_char)
 								// A  .. Z
-								if(65 to 90)			//Uppercase Letters will work
+								if(65 to 90) //Uppercase Letters will work
 								else
-									all_ok = FALSE		//everything else - won't
+									all_ok = FALSE //everything else - won't
 						if(all_ok)
 							xeno_prefix = new_xeno_prefix
 						else
@@ -1280,7 +1291,7 @@ var/const/MAX_SAVE_SLOTS = 10
 							var/ascii_char = text2ascii(new_xeno_postfix,i)
 							switch(ascii_char)
 								// A  .. Z
-								if(65 to 90)			//Uppercase Letters will work on first char
+								if(65 to 90) //Uppercase Letters will work on first char
 
 									if(length(xeno_prefix)!=2)
 										to_chat(user, SPAN_WARNING(FONT_SIZE_BIG("You can't use three letter prefix with any postfix.")))
@@ -1290,11 +1301,11 @@ var/const/MAX_SAVE_SLOTS = 10
 										to_chat(user, SPAN_WARNING(FONT_SIZE_BIG("You need to play [time_left_until(300 HOURS, playtime, 1 HOURS)] more hours to unlock double letter xeno postfix.")))
 										all_ok = FALSE
 								// 0  .. 9
-								if(48 to 57)			//Numbers will work if not the first char
+								if(48 to 57) //Numbers will work if not the first char
 									if(first_char)
 										all_ok = FALSE
 								else
-									all_ok = FALSE		//everything else - won't
+									all_ok = FALSE //everything else - won't
 							first_char = FALSE
 						if(all_ok)
 							xeno_postfix = new_xeno_postfix
@@ -1553,9 +1564,6 @@ var/const/MAX_SAVE_SLOTS = 10
 					underwear = sanitize_inlist(underwear, gender == MALE ? GLOB.underwear_m : GLOB.underwear_f, initial(underwear))
 					undershirt = sanitize_inlist(undershirt, gender == MALE ? GLOB.undershirt_m : GLOB.undershirt_f, initial(undershirt))
 
-				if("disabilities")				//please note: current code only allows nearsightedness as a disability
-					disabilities = !disabilities//if you want to add actual disabilities, code that selects them should be here
-
 				if("hear_adminhelps")
 					toggles_sound ^= SOUND_ADMINHELP
 
@@ -1733,7 +1741,7 @@ var/const/MAX_SAVE_SLOTS = 10
 	if(CONFIG_GET(flag/humans_need_surnames))
 		var/firstspace = findtext(real_name, " ")
 		var/name_length = length(real_name)
-		if(!firstspace)	//we need a surname
+		if(!firstspace) //we need a surname
 			real_name += " [pick(last_names)]"
 		else if(firstspace == name_length)
 			real_name += "[pick(last_names)]"
@@ -1803,10 +1811,10 @@ var/const/MAX_SAVE_SLOTS = 10
 		var/status = organ_data[name]
 		var/obj/limb/O = character.get_limb(name)
 		if(O)
-//			if(status == "amputated")
-//				O.amputated = 1
-//				O.status |= LIMB_DESTROYED
-//				O.destspawn = 1
+// if(status == "amputated")
+// O.amputated = 1
+// O.status |= LIMB_DESTROYED
+// O.destspawn = 1
 			if(status == "cyborg")
 				O.status |= LIMB_ROBOT
 		else
@@ -1916,7 +1924,7 @@ var/const/MAX_SAVE_SLOTS = 10
 	if(CONFIG_GET(flag/humans_need_surnames))
 		var/firstspace = findtext(real_name, " ")
 		var/name_length = length(real_name)
-		if(!firstspace)	//we need a surname
+		if(!firstspace) //we need a surname
 			real_name += " [pick(last_names)]"
 		else if(firstspace == name_length)
 			real_name += "[pick(last_names)]"
@@ -1956,7 +1964,7 @@ var/const/MAX_SAVE_SLOTS = 10
 		for(var/i=1, i<=MAX_SAVE_SLOTS, i++)
 			S.cd = "/character[i]"
 			S["real_name"] >> name
-			if(!name)	name = "Character[i]"
+			if(!name) name = "Character[i]"
 			if(i==default_slot)
 				name = "<b>[name]</b>"
 			dat += "<a href='?_src_=prefs;preference=changeslot;num=[i];'>[name]</a><br>"
@@ -2006,8 +2014,8 @@ var/const/MAX_SAVE_SLOTS = 10
 
 	alert("Press OK below, and then input the key sequence!")
 
-	RegisterSignal(owner, COMSIG_CLIENT_KEY_DOWN, .proc/parse_key_down)
-	RegisterSignal(owner, COMSIG_CLIENT_KEY_UP, .proc/set_key_buf)
+	RegisterSignal(owner, COMSIG_CLIENT_KEY_DOWN, PROC_REF(parse_key_down))
+	RegisterSignal(owner, COMSIG_CLIENT_KEY_UP, PROC_REF(set_key_buf))
 	winset(owner, null, "mainwindow.macro=keyreader")
 	UNTIL(key_buf)
 	winset(owner, null, "mainwindow.macro=[old]")

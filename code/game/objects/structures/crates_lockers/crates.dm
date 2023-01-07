@@ -119,19 +119,16 @@
 /obj/structure/closet/crate/ex_act(severity)
 	switch(severity)
 		if(0 to EXPLOSION_THRESHOLD_LOW)
-			if (prob(50))
-				qdel(src)
+			if(prob(50))
+				deconstruct(FALSE)
 			return
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
-			for(var/obj/O in src.contents)
-				if(prob(50))
-					qdel(O)
-			qdel(src)
+			contents_explosion(severity)
+			deconstruct(FALSE)
 			return
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
-			for(var/obj/O in src.contents)
-				qdel(O)
-			qdel(src)
+			contents_explosion(severity)
+			deconstruct(FALSE)
 			return
 		else
 	return
@@ -413,7 +410,7 @@
 	name = "\improper minecart"
 	desc = "Essentially a big metal bucket on wheels. This one has a modern plastic shroud."
 	icon_state = "closed_mcart"
-	density = 1
+	density = TRUE
 	icon_opened = "open_mcart"
 	icon_closed = "closed_mcart"
 
@@ -421,7 +418,7 @@
 	name = "\improper minecart"
 	desc = "Essentially a big metal bucket on wheels. This one has a modern plastic shroud."
 	icon_state = "closed_mcart_y"
-	density = 1
+	density = TRUE
 	icon_opened = "open_mcart_y"
 	icon_closed = "closed_mcart_y"
 

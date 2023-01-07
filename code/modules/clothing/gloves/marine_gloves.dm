@@ -80,8 +80,8 @@
 /obj/item/clothing/gloves/marine/M3G
 	name = "\improper M3-G4 Grenadier gloves"
 	desc = "A pair of plated, but nimble, gloves."
-	icon_state = "black"
-	item_state = "bgloves"
+	icon_state = "grenadier"
+	item_state = "grenadier"
 	armor_melee = CLOTHING_ARMOR_VERYHIGH
 	armor_bullet = CLOTHING_ARMOR_VERYHIGH
 	armor_laser = CLOTHING_ARMOR_MEDIUMHIGH
@@ -90,6 +90,7 @@
 	armor_internaldamage = CLOTHING_ARMOR_VERYHIGH
 	unacidable = TRUE
 	flags_item = MOB_LOCK_ON_EQUIP|NO_CRYO_STORE
+	adopts_squad_color = FALSE
 
 /obj/item/clothing/gloves/marine/veteran
 	name = "armored gloves"

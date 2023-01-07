@@ -2,17 +2,18 @@
 
 /obj/ovipositor
 	name = "Egg Sac"
+	icon = 'icons/mob/xenos/ovipositor.dmi'
 	icon_state = "ovipositor"
 	unacidable = TRUE
 	var/begin_decay_time = 0
 	health = 50
 	var/decay_ready = 0
-	var/decayed = 0		// This is here so later on we can use the ovpositor molt for research. ~BMC777
+	var/decayed = 0 // This is here so later on we can use the ovpositor molt for research. ~BMC777
 	var/destroyed = 0
 
 /obj/ovipositor/Initialize(mapload, ...)
 	. = ..()
-	icon = get_icon_from_source(CONFIG_GET(string/alien_queen_ovipositor))
+
 	begin_decay_time = world.timeofday + QUEEN_OVIPOSITOR_DECAY_TIME
 	process_decay()
 
@@ -28,7 +29,7 @@
 			destroyed = 1
 			explode()
 
-		sleep(10)	// Process every second.
+		sleep(10) // Process every second.
 
 /obj/ovipositor/proc/do_decay()
 	icon_state = "ovipositor_molted"
@@ -37,7 +38,7 @@
 
 	var/turf/T = get_turf(src)
 	if (T)
-		T.overlays += image(get_icon_from_source(CONFIG_GET(string/alien_queen_ovipositor)), "ovipositor_molted", ATMOS_DEVICE_LAYER) //ATMOS_DEVICE_LAYER so that the ovi is above weeds, blood, and resin weed nodes.
+		T.overlays += image('icons/mob/xenos/ovipositor.dmi', "ovipositor_molted", ATMOS_DEVICE_LAYER) //ATMOS_DEVICE_LAYER so that the ovi is above weeds, blood, and resin weed nodes.
 
 	qdel(src)
 
@@ -48,7 +49,7 @@
 
 	var/turf/T = get_turf(src)
 	if (T)
-		T.overlays += image(get_icon_from_source(CONFIG_GET(string/alien_queen_ovipositor)), "ovipositor_gibbed", ATMOS_DEVICE_LAYER)
+		T.overlays += image('icons/mob/xenos/ovipositor.dmi', "ovipositor_gibbed", ATMOS_DEVICE_LAYER)
 
 	qdel(src)
 

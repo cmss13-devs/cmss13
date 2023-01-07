@@ -9,6 +9,10 @@
 
 	listed_products = list()
 
+/obj/structure/machinery/cm_vending/clothing/antag/Initialize()
+	. = ..()
+	vend_flags |= VEND_FACTION_THEMES
+
 /obj/structure/machinery/cm_vending/clothing/antag/get_listed_products(var/mob/user)
 	if(!user)
 		var/list/all_equipment = list()
@@ -34,18 +38,6 @@
 			listed_products[/datum/equipment_preset/clf] = GLOB.gear_path_presets_list[/datum/equipment_preset/clf].get_antag_clothing_equipment()
 		products_sets = listed_products[/datum/equipment_preset/clf]
 	return products_sets
-
-/obj/structure/machinery/cm_vending/clothing/antag/ui_static_data(mob/user)
-	var/list/data = ..()
-	var/mob/living/carbon/human/H = user
-	var/adaptive_vendor_theme = VENDOR_THEME_COMPANY	//for potential future PMC version
-	switch(H.faction)
-		if(FACTION_UPP)
-			adaptive_vendor_theme = VENDOR_THEME_UPP
-		if(FACTION_CLF)
-			adaptive_vendor_theme = VENDOR_THEME_CLF
-	data["theme"] = adaptive_vendor_theme
-	return data
 
 //--------------RANDOM EQUIPMENT AND GEAR------------------------
 

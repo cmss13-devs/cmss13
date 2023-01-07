@@ -28,7 +28,7 @@ GLOBAL_LIST_EMPTY(command_apc_list)
 		"rear right" = list(-1, 2)
 	)
 
-	entrance_speed = 0.5
+	entrance_speed = 0.5 SECONDS
 
 	required_skill = SKILL_VEHICLE_LARGE
 

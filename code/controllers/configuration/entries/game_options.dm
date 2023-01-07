@@ -30,7 +30,7 @@
 	integer = FALSE
 	min_val = -1
 
-/datum/config_entry/number/movedelay	//Used for modifying movement speed for mobs.
+/datum/config_entry/number/movedelay //Used for modifying movement speed for mobs.
 	abstract_type = /datum/config_entry/number/movedelay
 
 /datum/config_entry/number/movedelay/run_delay
@@ -63,7 +63,7 @@
 
 /datum/config_entry/flag/jobs_have_minimal_access
 
-/datum/config_entry/number/minimal_access_threshold	//If the number of players is larger than this threshold, minimal access will be turned on.
+/datum/config_entry/number/minimal_access_threshold //If the number of players is larger than this threshold, minimal access will be turned on.
 	config_entry_value = 10
 	min_val = 0
 
@@ -71,7 +71,7 @@
 
 /datum/config_entry/flag/allow_ai
 
-/datum/config_entry/flag/allow_ai_multicam	// allow ai multicamera mode
+/datum/config_entry/flag/allow_ai_multicam // allow ai multicamera mode
 
 /datum/config_entry/flag/fun_allowed //a lot of LRP features
 
@@ -109,3 +109,8 @@
 	min_val = ANTIGRIEF_DISABLED
 	max_val = ANTIGRIEF_ENABLED
 	config_entry_value = ANTIGRIEF_NEW_PLAYERS
+
+/// Relative inclusion path for nightmare configuration files
+/datum/config_entry/string/nightmare_path
+	config_entry_value = "maps/Nightmare/"
+

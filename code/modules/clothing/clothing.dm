@@ -2,7 +2,7 @@
 	name = "clothing"
 	pickupvol = 40
 	dropvol = 40
-	var/eye_protection = 0 //used for headgear, masks, and glasses, to see how much they protect eyes from bright lights.
+	var/eye_protection = EYE_PROTECTION_NONE //used for headgear, masks, and glasses, to see how much they protect eyes from bright lights.
 	var/armor_melee = 0
 	var/armor_bullet = 0
 	var/armor_laser = 0
@@ -44,7 +44,7 @@
 		return
 
 /obj/item/clothing/attack_hand(mob/user as mob)
-	if (drag_unequip && ishuman(usr) && src.loc == user)	//make it harder to accidentally undress yourself
+	if (drag_unequip && ishuman(usr) && src.loc == user) //make it harder to accidentally undress yourself
 		return
 
 	..()
@@ -122,6 +122,7 @@
 	icon_state = "earmuffs"
 	item_state = "earmuffs"
 	flags_equip_slot = SLOT_EAR
+	clothing_traits = list(TRAIT_EAR_PROTECTION)
 
 /obj/item/clothing/ears/earmuffs/New()
 	. = ..()
@@ -264,7 +265,7 @@
 	else
 		var/list/nicename = null
 		var/list/tankcheck = null
-		var/breathes = "oxygen"    //default, we'll check later
+		var/breathes = "oxygen" //default, we'll check later
 		if(ishuman(C))
 			var/mob/living/carbon/human/H = C
 			breathes = H.species.breath_type
@@ -357,7 +358,7 @@
 	if(items_allowed && items_allowed.len)
 		for (var/i in items_allowed)
 			if(istype(I, i))
-				if(stored_item)	return
+				if(stored_item) return
 				stored_item = I
 				M.drop_inv_item_to_loc(I, src)
 				to_chat(M, "<div class='notice'>You slide the [I] into [src].</div>")
@@ -367,17 +368,18 @@
 				break
 
 /obj/item/clothing/equipped(mob/user, slot, silent)
-	if(slot != WEAR_L_HAND && slot != WEAR_R_HAND && slot != WEAR_L_STORE && slot != WEAR_R_STORE  && slot != WEAR_J_STORE) //is it going to an actual clothing slot rather than a pocket, hand, or backpack?
+	if(is_valid_slot(slot, TRUE)) //is it going to a matching clothing slot?
 		if(!silent && LAZYLEN(equip_sounds))
 			playsound_client(user.client, pick(equip_sounds), null, ITEM_EQUIP_VOLUME)
 		if(clothing_traits_active)
 			for(var/trait in clothing_traits)
-				ADD_TRAIT(user, trait, TRAIT_SOURCE_EQUIPMENT(flags_equip_slot))
+				ADD_TRAIT(user, trait, TRAIT_SOURCE_EQUIPMENT(slot))
 	..()
 
 /obj/item/clothing/unequipped(mob/user, slot)
-	for(var/trait in clothing_traits)
-		REMOVE_TRAIT(user, trait, TRAIT_SOURCE_EQUIPMENT(flags_equip_slot))
+	if(is_valid_slot(slot, TRUE))
+		for(var/trait in clothing_traits)
+			REMOVE_TRAIT(user, trait, TRAIT_SOURCE_EQUIPMENT(slot))
 	. = ..()
 
 /obj/item/clothing/proc/get_pockets()

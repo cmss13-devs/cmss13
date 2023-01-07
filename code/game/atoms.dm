@@ -1,6 +1,5 @@
 
 /atom
-	var/name_label /// Labels put onto the atom by a hand labeler. usually in the format "[initial(name)] ([name_label])"
 	var/desc_lore = null
 
 	plane = GAME_PLANE
@@ -64,7 +63,7 @@
 	var/do_initialize = SSatoms.initialized
 	if(do_initialize != INITIALIZATION_INSSATOMS)
 		args[1] = do_initialize == INITIALIZATION_INNEW_MAPLOAD
-		if(SSatoms.InitAtom(src, args))
+		if(SSatoms.InitAtom(src, FALSE, args))
 			//we were deleted
 			return
 
@@ -128,6 +127,9 @@ directive is properly returned.
 /atom/proc/is_open_container()
 	return flags_atom & OPENCONTAINER
 
+/atom/proc/is_open_container_or_can_be_dispensed_into()
+	return flags_atom & OPENCONTAINER || flags_atom & CAN_BE_DISPENSED_INTO
+
 /atom/proc/can_be_syringed()
 	return flags_atom & CAN_BE_SYRINGED
 
@@ -159,11 +161,11 @@ directive is properly returned.
 	return
 
 /*
- *	atom/proc/search_contents_for(path,list/filter_path=null)
+ * atom/proc/search_contents_for(path,list/filter_path=null)
  * Recursevly searches all atom contens (including contents contents and so on).
  *
  * ARGS: path - search atom contents for atoms of this type
- *	   list/filter_path - if set, contents of atoms not of types in this list are excluded from search.
+ *    list/filter_path - if set, contents of atoms not of types in this list are excluded from search.
  *
  * RETURNS: list of found atoms
  */
@@ -185,7 +187,11 @@ directive is properly returned.
 
 /atom/proc/examine(mob/user)
 	var/list/examine_strings = get_examine_text(user)
+	if(!examine_strings)
+		log_debug("Attempted to create an examine block with no strings! Atom : [src], user : [user]")
+		return
 	to_chat(user, examine_block(examine_strings.Join("\n")))
+	SEND_SIGNAL(src, COMSIG_PARENT_EXAMINE, user, examine_strings)
 
 /atom/proc/get_examine_text(mob/user)
 	. = list()
@@ -200,8 +206,12 @@ directive is properly returned.
 /atom/proc/relaymove()
 	return
 
-/atom/proc/ex_act()
-	return
+/atom/proc/contents_explosion(severity)
+	for(var/atom/A in contents)
+		A.ex_act(severity)
+
+/atom/proc/ex_act(severity)
+	contents_explosion(severity)
 
 /atom/proc/fire_act()
 	return
@@ -349,7 +359,10 @@ Parameters are passed from New.
 // EFFECTS
 /atom/proc/extinguish_acid()
 	for(var/datum/effects/acid/A in effects_list)
-		qdel(A)
+		if(A.cleanse_acid())
+			qdel(A)
+			return TRUE
+	return FALSE
 
 // Movement
 /atom/proc/add_temp_pass_flags(flags_to_add)
@@ -396,23 +409,33 @@ Parameters are passed from New.
 		return
 	var/client/usr_client = usr.client
 	var/list/paramslist = list()
-	if(href_list["statpanel_item_middleclick"])
-		paramslist["middle"] = "1"
-	if(href_list["statpanel_item_shiftclick"])
-		paramslist["shift"] = "1"
-	if(href_list["statpanel_item_ctrlclick"])
-		paramslist["ctrl"] = "1"
-	if(href_list["statpanel_item_altclick"])
-		paramslist["alt"] = "1"
-	if(href_list["desc_lore"])
-		show_browser(usr, "<BODY><TT>[replacetext(desc_lore, "\n", "<BR>")]</TT></BODY>", name, name, "size=500x200")
-		onclose(usr, "[name]")
+
 	if(href_list["statpanel_item_click"])
-		// first of all make sure we valid
+		switch(href_list["statpanel_item_click"])
+			if("left")
+				paramslist[LEFT_CLICK] = "1"
+			if("right")
+				paramslist[RIGHT_CLICK] = "1"
+			if("middle")
+				paramslist[MIDDLE_CLICK] = "1"
+			else
+				return
+
+		if(href_list["statpanel_item_shiftclick"])
+			paramslist[SHIFT_CLICK] = "1"
+		if(href_list["statpanel_item_ctrlclick"])
+			paramslist[CTRL_CLICK] = "1"
+		if(href_list["statpanel_item_altclick"])
+			paramslist[ALT_CLICK] = "1"
+
 		var/mouseparams = list2params(paramslist)
 		usr_client.ignore_next_click = FALSE
 		usr_client.Click(src, loc, TRUE, mouseparams)
 		return TRUE
+
+	if(href_list["desc_lore"])
+		show_browser(usr, "<BODY><TT>[replacetext(desc_lore, "\n", "<BR>")]</TT></BODY>", name, name, "size=500x200")
+		onclose(usr, "[name]")
 
 ///This proc is called on atoms when they are loaded into a shuttle
 /atom/proc/connect_to_shuttle(obj/docking_port/mobile/port, obj/docking_port/stationary/dock, idnum, override=FALSE)
@@ -421,7 +444,7 @@ Parameters are passed from New.
 /**
  * Hook for running code when a dir change occurs
  *
- * Not recommended to use, listen for the [COMSIG_ATOM_DIR_CHANGE] signal instead (sent by this proc)
+ * Not recommended to override, listen for the [COMSIG_ATOM_DIR_CHANGE] signal instead (sent by this proc)
  */
 /atom/proc/setDir(newdir)
 	SHOULD_CALL_PARENT(TRUE)
@@ -438,7 +461,7 @@ Parameters are passed from New.
 
 /atom/proc/update_filters()
 	filters = null
-	filter_data = sortTim(filter_data, /proc/cmp_filter_data_priority, TRUE)
+	filter_data = sortTim(filter_data, GLOBAL_PROC_REF(cmp_filter_data_priority), TRUE)
 	for(var/f in filter_data)
 		var/list/data = filter_data[f]
 		var/list/arguments = data.Copy()
@@ -536,3 +559,7 @@ Parameters are passed from New.
 
 /atom/proc/handle_flamer_fire_crossed(var/obj/flamer_fire/fire)
 	return
+
+/atom/proc/get_orbit_size()
+	var/icon/I = icon(icon, icon_state, dir)
+	return (I.Width() + I.Height()) * 0.5

@@ -3,7 +3,7 @@
 	desc = "..."
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "watertank"
-	density = 1
+	density = TRUE
 	anchored = 0
 	health = 100 // Can be destroyed in 2-4 slashes.
 	flags_atom = CAN_BE_SYRINGED
@@ -36,6 +36,8 @@
 			. += SPAN_NOTICE(" [R.volume] units of [R.name]")
 	else
 		. += SPAN_NOTICE(" Nothing.")
+	if(reagents)
+		. += SPAN_NOTICE("Total volume: [reagents.total_volume] / [reagents.maximum_volume].")
 
 /obj/structure/reagent_dispensers/Destroy()
 	playsound(src.loc, 'sound/effects/slosh.ogg', 50, 1, 3)
@@ -59,7 +61,7 @@
 
 /obj/structure/reagent_dispensers/proc/healthcheck()
 	if(health <= 0)
-		qdel(src)
+		deconstruct(FALSE)
 
 /obj/structure/reagent_dispensers/bullet_act(var/obj/item/projectile/Proj)
 	health -= Proj.damage
@@ -103,16 +105,14 @@
 	switch(severity)
 		if(0 to EXPLOSION_THRESHOLD_LOW)
 			if(prob(5))
-				new /obj/effect/particle_effect/water(src.loc)
-				qdel(src)
+				deconstruct(FALSE)
 				return
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			if(prob(50))
-				new /obj/effect/particle_effect/water(src.loc)
-				qdel(src)
+				deconstruct(FALSE)
 				return
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
-			qdel(src)
+			deconstruct(FALSE)
 			return
 		else
 	return
@@ -124,6 +124,11 @@
 	var/N = tgui_input_list(usr, "Amount per transfer from this:","[src]", possible_transfer_amounts)
 	if(N)
 		amount_per_transfer_from_this = N
+
+/obj/structure/reagent_dispensers/attackby(obj/item/hit_item, mob/living/user)
+	if(istype(hit_item, /obj/item/reagent_container))
+		return
+	..()
 
 //Dispensers
 /obj/structure/reagent_dispensers/watertank
@@ -315,7 +320,7 @@
 /obj/structure/reagent_dispensers/fueltank/proc/explode(var/force)
 	reagents.source_mob = source_mob
 	if(reagents.handle_volatiles() || force)
-		qdel(src)
+		deconstruct(FALSE)
 		return
 
 	exploding = FALSE
@@ -390,6 +395,7 @@
 	desc = "A reagent tank, typically used to store large quantities of chemicals."
 
 	chemical = null
+	dispensing = FALSE //Empty fuel tanks start by accepting chemicals by default. Can't dispense nothing!
 	icon_state = "tank_normal"
 
 /obj/structure/reagent_dispensers/fueltank/custom/Initialize(mapload, volume)
@@ -423,7 +429,7 @@
 	icon_state = "peppertank"
 	anchored = 1
 	wrenchable =  FALSE
-	density = 0
+	density = FALSE
 	amount_per_transfer_from_this = 45
 	chemical = "condensedcapsaicin"
 
@@ -462,6 +468,6 @@
 	amount_per_transfer_from_this = 10
 	anchored = 1
 	wrenchable = FALSE
-	density = 0
+	density = FALSE
 	chemical = "virusfood"
 

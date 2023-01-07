@@ -30,6 +30,7 @@
 		if(DIRT_TYPE_MARS) I.color = "#FF5500"
 		if(DIRT_TYPE_SNOW) I.color = "#EBEBEB"
 		if(DIRT_TYPE_SAND) I.color = "#ab804b"
+		if(DIRT_TYPE_SHALE) I.color = "#1c2142"
 	overlays -= I
 	if(dirt_amt)
 		overlays += I
@@ -172,9 +173,9 @@
 			return "sand"
 
 /obj/item/tool/shovel/proc/check_dirt_type()
-    if(dirt_amt <= 0)
-        dirt_type = NO_DIRT
-    return dirt_type
+	if(dirt_amt <= 0)
+		dirt_type = NO_DIRT
+	return dirt_type
 
 /obj/item/tool/shovel/spade
 	name = "spade"

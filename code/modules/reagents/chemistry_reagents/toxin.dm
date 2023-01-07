@@ -1,6 +1,7 @@
 
-
-//////////////////////////Poison stuff///////////////////////
+//*****************************************************************************************************/
+//****************************************Poison stuff*************************************************/
+//*****************************************************************************************************/
 
 /datum/reagent/toxin
 	name = "Generic Toxin"
@@ -217,7 +218,7 @@
 	chemclass = CHEM_CLASS_UNCOMMON
 	properties = list(PROPERTY_RELAXING = 8, PROPERTY_HYPOXEMIC = 4, PROPERTY_TOXIC = 2)
 
-/datum/reagent/toxin/beer2	//disguised as normal beer for use by emagged brobots
+/datum/reagent/toxin/beer2 //disguised as normal beer for use by emagged brobots
 	name = "Beer"
 	id = "beer2"
 	description = "An alcoholic beverage made from malted grains, hops, yeast, and water. The fermentation appears to be incomplete." //If the players manage to analyze this, they deserve to know something is wrong.

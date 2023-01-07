@@ -7,7 +7,7 @@
 
 	var/verbose = (alert("Verbose?",,"Yes","No") == "Yes")
 
-	if(alert("Are you sure?",,"Yes","No") == "No")
+	if(alert("Are you sure?",,"Yes","No") != "Yes")
 		return
 
 	log_admin("[key_name(src)] ran ALL test cases! verbose=[verbose]")

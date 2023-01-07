@@ -26,7 +26,7 @@
 
 	to_chat(src, SPAN_XENOWARNING("You begin burrowing yourself into the ground."))
 	if(!do_after(src, 1.5 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
-		addtimer(CALLBACK(src, .proc/do_burrow_cooldown), (caste ? caste.burrow_cooldown : 5 SECONDS))
+		addtimer(CALLBACK(src, PROC_REF(do_burrow_cooldown)), (caste ? caste.burrow_cooldown : 5 SECONDS))
 		return
 	// TODO Make immune to all damage here.
 	to_chat(src, SPAN_XENOWARNING("You burrow yourself into the ground."))
@@ -36,12 +36,12 @@
 	anchored = TRUE
 	density = FALSE
 	if(caste.fire_immunity == FIRE_IMMUNITY_NONE)
-		RegisterSignal(src, COMSIG_LIVING_PREIGNITION, .proc/fire_immune)
-		RegisterSignal(src, COMSIG_LIVING_FLAMER_CROSSED, .proc/flamer_crossed_immune)
+		RegisterSignal(src, COMSIG_LIVING_PREIGNITION, PROC_REF(fire_immune))
+		RegisterSignal(src, COMSIG_LIVING_FLAMER_CROSSED, PROC_REF(flamer_crossed_immune))
 	update_canmove()
 	update_icons()
-	addtimer(CALLBACK(src, .proc/do_burrow_cooldown), (caste ? caste.burrow_cooldown : 5 SECONDS))
-	burrow_timer = world.time + 90		// How long we can be burrowed
+	addtimer(CALLBACK(src, PROC_REF(do_burrow_cooldown)), (caste ? caste.burrow_cooldown : 5 SECONDS))
+	burrow_timer = world.time + 90 // How long we can be burrowed
 	process_burrow()
 
 /mob/living/carbon/Xenomorph/proc/process_burrow()
@@ -52,7 +52,7 @@
 	if(observed_xeno)
 		overwatch(observed_xeno, TRUE)
 	if(burrow)
-		addtimer(CALLBACK(src, .proc/process_burrow), 1 SECONDS)
+		addtimer(CALLBACK(src, PROC_REF(process_burrow)), 1 SECONDS)
 
 /mob/living/carbon/Xenomorph/proc/burrow_off()
 	if(caste_type && GLOB.xeno_datum_list[caste_type])
@@ -68,7 +68,7 @@
 	density = TRUE
 	for(var/mob/living/carbon/human/H in loc)
 		H.apply_effect(2, WEAKEN)
-	addtimer(CALLBACK(src, .proc/do_burrow_cooldown), (caste ? caste.burrow_cooldown : 5 SECONDS))
+	addtimer(CALLBACK(src, PROC_REF(do_burrow_cooldown)), (caste ? caste.burrow_cooldown : 5 SECONDS))
 	update_canmove()
 	update_icons()
 
@@ -81,6 +81,9 @@
 
 
 /mob/living/carbon/Xenomorph/proc/tunnel(var/turf/T)
+	if(!check_state())
+		return
+
 	if(!burrow)
 		to_chat(src, SPAN_NOTICE("You must be burrowed to do this."))
 		return
@@ -121,7 +124,7 @@
 		tunnel = FALSE
 		to_chat(src, SPAN_NOTICE("You stop tunneling."))
 		used_tunnel = TRUE
-		addtimer(CALLBACK(src, .proc/do_tunnel_cooldown), (caste ? caste.tunnel_cooldown : 5 SECONDS))
+		addtimer(CALLBACK(src, PROC_REF(do_tunnel_cooldown)), (caste ? caste.tunnel_cooldown : 5 SECONDS))
 		return
 
 	if(!T || T.density)
@@ -137,7 +140,7 @@
 		tunnel = FALSE
 		do_tunnel(T)
 	if(tunnel && T)
-		addtimer(CALLBACK(src, .proc/process_tunnel, T), 1 SECONDS)
+		addtimer(CALLBACK(src, PROC_REF(process_tunnel), T), 1 SECONDS)
 
 /mob/living/carbon/Xenomorph/proc/do_tunnel(var/turf/T)
 	to_chat(src, SPAN_NOTICE("You tunnel to your destination."))
@@ -195,13 +198,15 @@
 	create_stomp() //Adds the visual effect. Wom wom wom
 	used_tremor = 1
 
-	for(var/mob/living/carbon/M in range(7, loc))
-		to_chat(M, SPAN_WARNING("You struggle to remain on your feet as the ground shakes beneath your feet!"))
-		shake_camera(M, 2, 3)
-
-	for(var/mob/living/carbon/human/H in range(3, loc))
-		to_chat(H, SPAN_WARNING("The violent tremors make you lose your footing!"))
-		H.apply_effect(1, WEAKEN)
+	for(var/mob/living/carbon/carbon_target in range(7, loc))
+		to_chat(carbon_target, SPAN_WARNING("You struggle to remain on your feet as the ground shakes beneath your feet!"))
+		shake_camera(carbon_target, 2, 3)
+		if(get_dist(loc, carbon_target) <= 3 && !src.can_not_harm(carbon_target))
+			if(carbon_target.mob_size >= MOB_SIZE_BIG)
+				carbon_target.apply_effect(1, SLOW)
+			else
+				carbon_target.apply_effect(1, WEAKEN)
+			to_chat(carbon_target, SPAN_WARNING("The violent tremors make you lose your footing!"))
 
 	spawn(caste.tremor_cooldown)
 		used_tremor = 0

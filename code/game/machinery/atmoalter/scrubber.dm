@@ -3,7 +3,7 @@
 
 	icon = 'icons/obj/structures/machinery/atmos.dmi'
 	icon_state = "pscrubber:0"
-	density = 1
+	density = TRUE
 
 
 	var/on = 0
@@ -46,7 +46,7 @@
 	anchored = 1
 
 	chan
-	use_power = 0
+	use_power = USE_POWER_NONE
 
 	var/global/gid = 1
 	var/id = 0

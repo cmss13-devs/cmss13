@@ -7,10 +7,10 @@
 	icon_state = "power"
 
 	//computer stuff
-	density = 1
+	density = TRUE
 	anchored = 1.0
 	var/circuit = /obj/item/circuitboard/computer/powermonitor
-	use_power = 1
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 300
 	active_power_usage = 300
 
@@ -59,7 +59,7 @@
 
 		if(L.len > 0)
 			var/total_demand = 0
-			t += "Area                           Eqp./Lgt./Env.  Load   Cell<HR>"
+			t += "Area    Eqp./Lgt./Env.  Load   Cell<HR>"
 
 			var/list/S = list(" Off","AOff","  On", " AOn")
 			var/list/chg = list("N","C","F")

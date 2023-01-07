@@ -41,7 +41,7 @@
 	caste_type = XENO_CASTE_HIVELORD
 	name = XENO_CASTE_HIVELORD
 	desc = "A builder of really big hives."
-	icon = 'icons/mob/hostiles/hivelord.dmi'
+	icon = 'icons/mob/xenos/hivelord.dmi'
 	icon_size = 64
 	icon_state = "Hivelord Walking"
 	plasma_types = list(PLASMA_PURPLE,PLASMA_PHEROMONE)
@@ -62,9 +62,14 @@
 		/datum/action/xeno_action/onclick/choose_resin, //second macro
 		/datum/action/xeno_action/activable/secrete_resin/hivelord, //third macro
 		/datum/action/xeno_action/activable/transfer_plasma/hivelord, // to be consistent with drone placement
-		/datum/action/xeno_action/onclick/toggle_speed, //fourth macro
+		/datum/action/xeno_action/active_toggle/toggle_speed, //fourth macro
+		)
+
+	inherent_verbs = list(
+		/mob/living/carbon/Xenomorph/proc/rename_tunnel,
+		/mob/living/carbon/Xenomorph/proc/set_hugger_reserve_for_morpher,
 		)
 	mutation_type = HIVELORD_NORMAL
 
-	icon_xeno = 'icons/mob/hostiles/hivelord.dmi'
+	icon_xeno = 'icons/mob/xenos/hivelord.dmi'
 	icon_xenonid = 'icons/mob/xenonids/hivelord.dmi'

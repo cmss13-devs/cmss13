@@ -56,3 +56,6 @@
 
 /mob/living/carbon/Xenomorph/check_fire_intensity_resistance()
 	return caste.fire_intensity_resistance
+
+/mob/living/carbon/Xenomorph/alter_ghost(var/mob/dead/observer/ghost)
+	ghost.icon_state = "[mutation_type] [caste.caste_type] Running"

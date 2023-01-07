@@ -175,7 +175,7 @@
 		if("PRG_edit")
 			if(!authenticated || !target_id_card)
 				return
-			var/new_name = params["name"]	// reject_bad_name() can be added here
+			var/new_name = params["name"] // reject_bad_name() can be added here
 			if(!new_name)
 				visible_message(SPAN_NOTICE("[src] buzzes rudely."))
 				return
@@ -424,24 +424,24 @@
 	set name = "Eject ID Card"
 	set src in oview(1)
 
-	if(!usr || usr.stat || usr.lying)	return
+	if(!usr || usr.stat || usr.lying) return
 
 	if(user_id_card)
 		user_id_card.loc = get_turf(src)
 		if(!usr.get_active_hand() && istype(usr,/mob/living/carbon/human))
 			usr.put_in_hands(user_id_card)
-		if(operable())	// Powered. Console can response.
+		if(operable()) // Powered. Console can response.
 			visible_message("<span class='bold'>[src]</span> states, \"AUTH LOGOUT: Session end confirmed.\"")
 		else
 			to_chat(usr, "You remove \the [user_id_card] from \the [src].")
-		authenticated = FALSE	// No card - no access
+		authenticated = FALSE // No card - no access
 		user_id_card = null
 
 	else if(target_id_card)
 		target_id_card.loc = get_turf(src)
 		if(!usr.get_active_hand() && istype(usr,/mob/living/carbon/human))
 			usr.put_in_hands(target_id_card)
-		if(operable())	// Powered. Make comp proceed ejection
+		if(operable()) // Powered. Make comp proceed ejection
 			GLOB.data_core.manifest_modify(target_id_card.registered_name, target_id_card.registered_ref, target_id_card.assignment, target_id_card.rank)
 			target_id_card.name = text("[target_id_card.registered_name]'s ID Card ([target_id_card.assignment])")
 			visible_message("<span class='bold'>[src]</span> states, \"CARD EJECT: Data imprinted. Updating database... Success.\"")
@@ -490,7 +490,7 @@
 	set name = "Eject ID Card"
 	set src in view(1)
 
-	if(!usr || usr.stat || usr.lying)	return
+	if(!usr || usr.stat || usr.lying) return
 
 	if(ishuman(usr) && ID_to_modify)
 		to_chat(usr, "You remove \the [ID_to_modify] from \the [src].")
@@ -657,16 +657,16 @@
 			person_to_modify = user
 
 /// How often the sensor data is updated
-#define SENSORS_UPDATE_PERIOD	10 SECONDS //How often the sensor data updates.
+#define SENSORS_UPDATE_PERIOD 10 SECONDS //How often the sensor data updates.
 /// The job sorting ID associated with otherwise unknown jobs
-#define UNKNOWN_JOB_ID			998
+#define UNKNOWN_JOB_ID 998
 
 /obj/structure/machinery/computer/crew
 	name = "crew monitoring computer"
 	desc = "Used to monitor active health sensors built into the wearer's uniform.  You can see that the console highlights ship areas with BLUE and remote locations with RED."
 	icon_state = "crew"
 	density = TRUE
-	use_power = 1
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 250
 	active_power_usage = 500
 	var/faction = FACTION_MARINE
@@ -762,7 +762,7 @@ GLOBAL_LIST_EMPTY_TYPED(crewmonitor, /datum/crewmonitor)
 	// Update active users UI
 	for(var/H in ui_sources)
 		var/datum/tgui/ui = SStgui.try_update_ui(H, src)
-		if(!ui)	// What are you doing in list?
+		if(!ui) // What are you doing in list?
 			ui_sources -= H
 
 /datum/crewmonitor/ui_close(mob/M)
@@ -862,7 +862,7 @@ GLOBAL_LIST_EMPTY_TYPED(crewmonitor, /datum/crewmonitor)
 				if(entry["name"] == params["name"])
 					H = locate(entry["ref"])
 					break
-			if(!H)	// Sanity check
+			if(!H) // Sanity check
 				to_chat(AI, SPAN_NOTICE("ERROR: unable to track subject with ID '[params["name"]]'"))
 			else
 				// We do not care is there camera or no - we just know his location
@@ -888,7 +888,6 @@ GLOBAL_LIST_EMPTY_TYPED(crewmonitor, /datum/crewmonitor)
 				JOB_CHIEF_POLICE = 20,
 				JOB_WARDEN = 21,
 				JOB_POLICE = 22,
-				JOB_POLICE_CADET = 23,
 				// 30-39: MedSci
 				JOB_CMO = 30,
 				JOB_RESEARCHER = 31,

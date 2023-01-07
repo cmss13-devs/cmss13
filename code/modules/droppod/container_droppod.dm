@@ -49,9 +49,9 @@
 		cell_explosion(loc, land_exp_power, land_exp_falloff, create_cause_data("[src]"))
 
 	if(should_recall)
-		addtimer(CALLBACK(src, .proc/recall), return_time)
+		addtimer(CALLBACK(src, PROC_REF(recall)), return_time)
 
-	addtimer(CALLBACK(src, .proc/open), open_time)
+	addtimer(CALLBACK(src, PROC_REF(open)), open_time)
 	indestructible = FALSE
 
 /obj/structure/droppod/container/warn_turf(var/turf/T)
@@ -75,7 +75,7 @@
 			if(isXeno(user)) return
 			var/obj/item/grab/G = W
 			if(G.grabbed_thing)
-				src.MouseDrop_T(G.grabbed_thing, user)      //act like they were dragged onto the closet
+				src.MouseDrop_T(G.grabbed_thing, user)   //act like they were dragged onto the closet
 			return
 
 		if(W.flags_item & ITEM_ABSTRACT)
@@ -144,7 +144,7 @@
 		if(!A.anchored)
 			A.forceMove(src)
 
-/obj/structure/droppod/container/destroy(deconstruct)
+/obj/structure/droppod/container/deconstruct()
 	for(var/i in contents)
 		var/atom/movable/A = i
 		A.forceMove(loc)

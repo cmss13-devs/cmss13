@@ -82,7 +82,7 @@
 /obj/item/clothing/head/beret/cm/squadberet/equipped(mob/user, slot)
 	. = ..()
 	self_set()
-	RegisterSignal(user, COMSIG_SET_SQUAD, .proc/self_set, TRUE)
+	RegisterSignal(user, COMSIG_SET_SQUAD, PROC_REF(self_set), TRUE)
 
 /obj/item/clothing/head/beret/cm/squadberet/dropped(mob/user)
 	. = ..()
@@ -122,6 +122,7 @@
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
 	)
+	flags_obj = OBJ_NO_HELMET_BAND|OBJ_IS_HELMET_GARB
 
 /obj/item/clothing/head/headband/Initialize(mapload, ...)
 	. = ..()
@@ -133,9 +134,60 @@
 /obj/item/clothing/head/headband/tan
 	icon_state = "headbandtan"
 
+/obj/item/clothing/head/headband/brown
+	icon_state = "headbandbrown"
+
+/obj/item/clothing/head/headband/gray
+	icon_state = "headbandgray"
+
 /obj/item/clothing/head/headband/rebel
 	desc = "A headband made from a simple strip of cloth. The words \"DOWN WITH TYRANTS\" are emblazoned on the front."
 	icon_state = "rebelband"
+
+/obj/item/clothing/head/headband/squad
+	icon_state = "headband%SQUAD%"
+
+	var/static/list/valid_icon_states
+
+/obj/item/clothing/head/headband/squad/Initialize(mapload, ...)
+	. = ..()
+	if(!valid_icon_states)
+		valid_icon_states = icon_states(icon)
+	adapt_to_squad()
+
+/obj/item/clothing/head/headband/squad/proc/update_clothing_wrapper(var/mob/living/carbon/human/wearer)
+	SIGNAL_HANDLER
+
+	var/is_worn_by_wearer = recursive_holder_check(src) == wearer
+	if(is_worn_by_wearer)
+		update_clothing_icon()
+	else
+		UnregisterSignal(wearer, COMSIG_SET_SQUAD) // we can't set this in dropped, because dropping into a helmet unsets it and then it never updates
+
+/obj/item/clothing/head/headband/squad/update_clothing_icon()
+	adapt_to_squad()
+	if(istype(loc, /obj/item/storage/internal) && istype(loc.loc, /obj/item/clothing/head/helmet))
+		var/obj/item/clothing/head/helmet/headwear = loc.loc
+		headwear.update_icon()
+	return ..()
+
+/obj/item/clothing/head/headband/squad/pickup(mob/user, silent)
+	. = ..()
+	adapt_to_squad()
+
+/obj/item/clothing/head/headband/squad/equipped(mob/user, slot, silent)
+	RegisterSignal(user, COMSIG_SET_SQUAD, PROC_REF(update_clothing_wrapper), TRUE)
+	adapt_to_squad()
+	return ..()
+
+/obj/item/clothing/head/headband/squad/proc/adapt_to_squad()
+	var/squad_color = "gray"
+	var/mob/living/carbon/human/wearer = recursive_holder_check(src)
+	if(istype(wearer) && wearer.assigned_squad)
+		var/squad_name = lowertext(wearer.assigned_squad.name)
+		if("headband[squad_name]" in valid_icon_states)
+			squad_color = squad_name
+	icon_state = replacetext(initial(icon_state), "%SQUAD%", squad_color)
 
 /obj/item/clothing/head/headband/rambo
 	desc = "It flutters in the face of the wind, defiant and unrestrained, like the man who wears it."
@@ -167,7 +219,7 @@
 		)
 	var/base_cap_icon
 	var/flags_marine_hat = HAT_GARB_OVERLAY|HAT_CAN_FLIP
-	var/obj/item/storage/internal/pockets
+	var/obj/item/storage/internal/headgear/pockets
 	var/list/allowed_hat_items = list(
 						/obj/item/storage/fancy/cigarettes/emeraldgreen = "hat_cig_cig",
 						/obj/item/storage/fancy/cigarettes/kpack = "hat_cig_kpack",
@@ -190,10 +242,17 @@
 						/obj/item/clothing/head/headband = "hat_headbandgreen",
 						/obj/item/clothing/head/headband/tan = "hat_headbandtan",
 						/obj/item/clothing/head/headband/red = "hat_headbandred",
+						/obj/item/clothing/head/headband/brown = "hat_headbandbrown",
+						/obj/item/clothing/head/headband/gray = "hat_headbandgray",
+						/obj/item/clothing/head/headband/squad = HAT_GARB_RELAY_ICON_STATE,
 						/obj/item/prop/helmetgarb/lucky_feather = "lucky_feather",
 						/obj/item/prop/helmetgarb/lucky_feather/blue = "lucky_feather_blue",
 						/obj/item/prop/helmetgarb/lucky_feather/purple = "lucky_feather_purple",
 						/obj/item/prop/helmetgarb/lucky_feather/yellow = "lucky_feather_yellow")
+	var/storage_slots = 1
+	var/storage_slots_reserved_for_garb = 1
+	var/storage_max_w_class = SIZE_TINY
+	var/storage_max_storage_space = 4
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
 	)
@@ -204,11 +263,13 @@
 		select_gamemode_skin(type)
 	base_cap_icon = icon_state
 	helmet_overlays = list("item") //To make things simple.
-	pockets = new/obj/item/storage/internal(src)
-	pockets.storage_slots = 1
-	pockets.max_w_class = 0
+
+	pockets = new(src)
+	pockets.storage_slots = storage_slots + storage_slots_reserved_for_garb
+	pockets.slots_reserved_for_garb = storage_slots_reserved_for_garb
+	pockets.max_w_class = storage_max_w_class
 	pockets.bypass_w_limit = allowed_hat_items
-	pockets.max_storage_space = 1
+	pockets.max_storage_space = storage_max_storage_space
 
 /obj/item/clothing/head/cmcap/attack_hand(mob/user)
 	if(loc != user)
@@ -232,23 +293,25 @@
 	update_icon()
 
 /obj/item/clothing/head/cmcap/update_icon()
-    if(ismob(loc))
-        var/mob/M = loc
-        M.update_inv_head()
+	if(ismob(loc))
+		var/mob/M = loc
+		M.update_inv_head()
 
 /obj/item/clothing/head/cmcap/get_mob_overlay(mob/user_mob, slot)
-	var/image/ret = ..()
-	if(slot == WEAR_HEAD)
-		if(length(pockets.contents) && (flags_marine_hat & HAT_GARB_OVERLAY))
-			var/obj/O = pockets.contents[1]
-			if(O.type in allowed_hat_items)
-				var/garb_state = allowed_hat_items[O.type]
-				if(garb_state == HAT_GARB_RELAY_ICON_STATE)
-					garb_state = "hat_[O.icon_state]"
-				var/image/I = overlay_image('icons/mob/humans/onmob/helmet_garb.dmi', "[garb_state]", color, RESET_COLOR)
-				ret.overlays += I
+	var/image/return_image = ..()
+	if(!slot == WEAR_HEAD)
+		return
 
-	return ret
+	if(length(pockets.contents) && (flags_marine_hat & HAT_GARB_OVERLAY))
+		for(var/obj/garb_object in pockets.contents)
+			if(garb_object.type in allowed_hat_items)
+				var/garb_state = allowed_hat_items[garb_object.type]
+				if(garb_state == HAT_GARB_RELAY_ICON_STATE)
+					garb_state = "hat_[garb_object.icon_state]"
+				var/image/garb_image = overlay_image('icons/mob/humans/onmob/helmet_garb.dmi', "[garb_state]", color, RESET_COLOR)
+				return_image.overlays += garb_image
+
+	return return_image
 
 /obj/item/clothing/head/cmcap/has_garb_overlay()
 	return flags_marine_hat & HAT_GARB_OVERLAY
@@ -373,7 +436,7 @@
 
 /obj/item/clothing/head/helmet/beret/marine/mp/cmp
 	name = "\improper USCM chief MP beret"
-	desc = "A Kevlar reinforced beret with the USCM Military Police Lieutenant Commander insignia emblazoned on it. This durable headwear provides comparable protection to a M10 helmet, but in a much more stylish package. It shines with the glow of corrupt authority and a smudge of doughnut."
+	desc = "A Kevlar reinforced beret with the USCM Military Police First Lieutenant insignia emblazoned on it. This durable headwear provides comparable protection to a M10 helmet, but in a much more stylish package. It shines with the glow of corrupt authority and a smudge of doughnut."
 	icon_state = "beretwo"
 
 /obj/item/clothing/head/helmet/beret/marine/mp/mppeaked

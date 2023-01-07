@@ -998,9 +998,7 @@
 "du" = (
 /obj/effect/landmark/crap_item,
 /turf/open/floor/plating,
-/area/shuttle/drop2/LV624{
-	name = "\improper Almayer Dropship 2"
-	})
+/area/shuttle/drop2/LV624)
 "dw" = (
 /turf/open/floor/plating{
 	dir = 4;
@@ -1835,7 +1833,7 @@
 /obj/structure/barricade/wooden{
 	dir = 4
 	},
-/obj/item/weapon/gun/revolver/m44/custom,
+/obj/item/weapon/gun/revolver/m44,
 /obj/structure/machinery/defenses/sentry/premade/dumb{
 	dir = 4
 	},
@@ -4780,9 +4778,7 @@
 /area/event/underground_no_CAS/dynamic)
 "px" = (
 /turf/open/floor/plating,
-/area/shuttle/drop2/LV624{
-	name = "\improper Almayer Dropship 2"
-	})
+/area/shuttle/drop2/LV624)
 "py" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/reagentgrinder,
@@ -6769,9 +6765,7 @@
 "vk" = (
 /obj/effect/landmark/crap_item,
 /turf/open/floor/plating,
-/area/shuttle/drop1/LV624{
-	name = "\improper Almayer Dropship 1"
-	})
+/area/shuttle/drop1/LV624)
 "vl" = (
 /obj/effect/spider/stickyweb,
 /mob/living/simple_animal/mouse/gray,
@@ -7169,10 +7163,10 @@
 /area/event/metal/dynamic)
 "wz" = (
 /obj/structure/surface/table,
-/obj/item/weapon/gun/shotgun/pump/cmb,
-/obj/item/weapon/gun/shotgun/pump/cmb,
-/obj/item/weapon/gun/shotgun/pump/cmb,
-/obj/item/weapon/gun/shotgun/pump/cmb,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
 /turf/open/floor{
 	icon_state = "darkred2";
 	tag = "icon-darkred2"
@@ -11324,7 +11318,7 @@
 	},
 /area/event/metal/dynamic)
 "Jj" = (
-/obj/item/weapon/gun/revolver/m44/custom,
+/obj/item/weapon/gun/revolver/m44,
 /turf/open/floor/prison{
 	icon_state = "cell_stripe";
 	tag = "icon-cell_stripe"
@@ -13111,9 +13105,7 @@
 "OQ" = (
 /obj/effect/landmark/hunter_secondary,
 /turf/open/floor/plating,
-/area/shuttle/drop1/LV624{
-	name = "\improper Almayer Dropship 1"
-	})
+/area/shuttle/drop1/LV624)
 "OT" = (
 /obj/structure/barricade/metal/wired{
 	dir = 4;
@@ -16334,9 +16326,7 @@
 /area/event/underground_no_CAS/dynamic)
 "Zj" = (
 /turf/open/floor/plating,
-/area/shuttle/drop1/LV624{
-	name = "\improper Almayer Dropship 1"
-	})
+/area/shuttle/drop1/LV624)
 "Zk" = (
 /obj/structure/fence,
 /turf/open/floor{

@@ -1,11 +1,11 @@
 /*
  * Holds procs designed to help with filtering text
  * Contains groups:
- *			SQL sanitization
- *			Text sanitization
- *			Text searches
- *			Text modification
- *			Misc
+ * SQL sanitization
+ * Text sanitization
+ * Text searches
+ * Text modification
+ * Misc
  */
 
 
@@ -63,16 +63,16 @@
 
 //Returns null if there is any bad text in the string
 /proc/reject_bad_text(var/text, var/max_length=512)
-	if(length(text) > max_length)	return			//message too long
+	if(length(text) > max_length) return //message too long
 	var/non_whitespace = 0
 	for(var/i=1, i<=length(text), i++)
 		switch(text2ascii(text,i))
-			if(62,60,92,47)	return			//rejects the text if it contains these bad characters: <, >, \ or /
-			if(127 to 255)	return			//rejects weird letters like �
-			if(0 to 31)		return			//more weird stuff
-			if(32)			continue		//whitespace
-			else			non_whitespace = 1
-	if(non_whitespace)		return text		//only accepts the text if it has some non-spaces
+			if(62,60,92,47) return //rejects the text if it contains these bad characters: <, >, \ or /
+			if(127 to 255) return //rejects weird letters like �
+			if(0 to 31) return //more weird stuff
+			if(32) continue //whitespace
+			else non_whitespace = 1
+	if(non_whitespace) return text //only accepts the text if it has some non-spaces
 
 // Used to get a sanitized input.
 /proc/stripped_input(var/mob/user, var/message = "", var/title = "", var/default = "", var/max_length=MAX_MESSAGE_LEN)
@@ -89,30 +89,30 @@
 	if(!t_in || length(t_in) > max_length)
 		return //Rejects the input if it is null or if it is longer then the max length allowed
 
-	var/number_of_alphanumeric	= 0
-	var/last_char_group			= 0
+	var/number_of_alphanumeric = 0
+	var/last_char_group = 0
 	var/t_out = ""
 
 	for(var/i=1, i<=length(t_in), i++)
 		var/ascii_char = text2ascii(t_in,i)
 		switch(ascii_char)
 			// A  .. Z
-			if(65 to 90)			//Uppercase Letters
+			if(65 to 90) //Uppercase Letters
 				t_out += ascii2text(ascii_char)
 				number_of_alphanumeric++
 				last_char_group = 4
 
 			// a  .. z
-			if(97 to 122)			//Lowercase Letters
+			if(97 to 122) //Lowercase Letters
 				if(last_char_group<2)
-					t_out += ascii2text(ascii_char-32)	//Force uppercase first character
+					t_out += ascii2text(ascii_char-32) //Force uppercase first character
 				else
 					t_out += ascii2text(ascii_char)
 				number_of_alphanumeric++
 				last_char_group = 4
 
 			// 0  .. 9
-			if(48 to 57)			//Numbers
+			if(48 to 57) //Numbers
 				if(!last_char_group || !allow_numbers) //suppress at start of string
 					continue
 				t_out += ascii2text(ascii_char)
@@ -120,14 +120,14 @@
 				last_char_group = 3
 
 			// '  -  .
-			if(39,45,46)			//Common name punctuation
+			if(39,45,46) //Common name punctuation
 				if(!last_char_group || !allow_signs)
 					continue
 				t_out += ascii2text(ascii_char)
 				last_char_group = 2
 
 			// ~  |  @  :  #  $  %  &  *  +
-			if(126,124,64,58,35,36,37,38,42,43)			//Other symbols that we'll allow (mainly for AI)
+			if(126,124,64,58,35,36,37,38,42,43) //Other symbols that we'll allow (mainly for AI)
 				if(!last_char_group || !allow_numbers || !allow_signs) //suppress at start of string
 					continue
 				t_out += ascii2text(ascii_char)
@@ -136,21 +136,21 @@
 			//Space
 			if(32)
 				if(last_char_group <= 1)
-					continue	//suppress double-spaces and spaces at start of string
+					continue //suppress double-spaces and spaces at start of string
 				t_out += ascii2text(ascii_char)
 				last_char_group = 1
 			else
 				return
 
 	if(number_of_alphanumeric < 2)
-		return		//protects against tiny names like "A" and also names like "' ' ' ' ' ' ' '"
+		return //protects against tiny names like "A" and also names like "' ' ' ' ' ' ' '"
 
 	if(last_char_group == 1)
-		t_out = copytext(t_out,1,length(t_out))	//removes the last character (in this case a space)
+		t_out = copytext(t_out,1,length(t_out)) //removes the last character (in this case a space)
 
-	for(var/bad_name in list("space","floor","wall","r-wall","monkey","unknown","inactive ai"))	//prevents these common metagamey names
+	for(var/bad_name in list("space","floor","wall","r-wall","monkey","unknown","inactive ai")) //prevents these common metagamey names
 		if(cmptext(t_out,bad_name))
-			return	//(not case sensitive)
+			return //(not case sensitive)
 
 	return t_out
 
@@ -219,7 +219,7 @@
 
 //Used in preferences' SetFlavorText and human's set_flavor verb
 //Previews a string of len or less length
-proc/TextPreview(var/string,var/len=40)
+/proc/TextPreview(var/string,var/len=40)
 	var/string_length = length(string)
 	if(!string_length)
 		return "\[...\]"
@@ -228,7 +228,7 @@ proc/TextPreview(var/string,var/len=40)
 	else
 		return "[copytext(string, 1, len - 3)]..."
 
-proc/strip_improper(input_text)
+/proc/strip_improper(input_text)
 	return replacetext(replacetext(input_text, "\proper", ""), "\improper", "")
 
 // Used to remove the string shortcuts for a clean transfer
@@ -255,7 +255,7 @@ proc/strip_improper(input_text)
 	if(!next_space)
 		next_space = leng - next_backslash
 
-	if(!next_space)	//trailing bs
+	if(!next_space) //trailing bs
 		return string
 
 	var/base = next_backslash == 1 ? "" : copytext(string, 1, next_backslash)

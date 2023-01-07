@@ -3,7 +3,7 @@
 
 GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 		APC_WIRE_MAIN_POWER   = "Main power",
-		APC_WIRE_IDSCAN 	  = "ID scanner"
+		APC_WIRE_IDSCAN   = "ID scanner"
 	))
 
 #define APC_COVER_CLOSED 0
@@ -74,7 +74,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 	icon = 'icons/obj/structures/machinery/power.dmi'
 	icon_state = "apc_mapicon"
 	anchored = 1
-	use_power = 0
+	use_power = USE_POWER_NONE
 	req_one_access = list(ACCESS_CIVILIAN_ENGINEERING, ACCESS_MARINE_ENGINEERING)
 	unslashable = TRUE
 	unacidable = TRUE
@@ -84,7 +84,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 
 	var/obj/item/cell/cell
 	var/start_charge = 90 //Initial cell charge %
-	var/cell_type = /obj/item/cell/apc //0 = no cell, 1 = regular, 2 = high-cap (x5) <- old, now it's just 0 = no cell, otherwise dictate cellcapacity by changing this value. 1 used to be 1000, 2 was 2500
+	var/cell_type = /obj/item/cell/apc/empty //0 = no cell, 1 = regular, 2 = high-cap (x5) <- old, now it's just 0 = no cell, otherwise dictate cellcapacity by changing this value. 1 used to be 1000, 2 was 2500
 
 	var/opened = APC_COVER_CLOSED
 	var/shorted = 0
@@ -154,7 +154,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 		name = "\improper [area.name] APC"
 		stat |= MAINT
 		update_icon()
-		addtimer(CALLBACK(src, .proc/update), 5)
+		addtimer(CALLBACK(src, PROC_REF(update)), 5)
 
 	start_processing()
 
@@ -364,7 +364,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 	update_icon()
 	make_terminal()
 
-	addtimer(CALLBACK(src, .proc/update), 5)
+	addtimer(CALLBACK(src, PROC_REF(update)), 5)
 
 /obj/structure/machinery/power/apc/get_examine_text(mob/user)
 	. = list(desc)
@@ -428,7 +428,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 		status_overlays_environ[3] = image(icon, "apco2-2")
 		status_overlays_environ[4] = image(icon, "apco2-3")
 
-	var/update = check_updates()	//Returns 0 if no need to update icons.
+	var/update = check_updates() //Returns 0 if no need to update icons.
 									//1 if we need to update the icon_state
 									//2 if we need to update the overlays
 	if(!update)
@@ -741,16 +741,10 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 		SPAN_NOTICE("You start welding [src]'s frame."))
 		playsound(src.loc, 'sound/items/Welder.ogg', 25, 1)
 		if(do_after(user, 50 * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-			if(!src || !WT.remove_fuel(3, user)) return
-			if((stat & BROKEN) || opened == 2)
-				new /obj/item/stack/sheet/metal(loc)
-				user.visible_message(SPAN_NOTICE("[user] welds [src]'s frame apart."),
-				SPAN_NOTICE("You weld [src]'s frame apart."))
-			else
-				new /obj/item/frame/apc(loc)
-				user.visible_message(SPAN_NOTICE("[user] welds [src]'s frame off the wall."),
-				SPAN_NOTICE("You weld [src]'s frame off the wall."))
-			qdel(src)
+			if(!src || !WT.remove_fuel(3, user))
+				return
+			user.visible_message(SPAN_NOTICE("[user] welds [src]'s frame apart."), SPAN_NOTICE("You weld [src]'s frame apart."))
+			deconstruct()
 			return
 	else if(istype(W, /obj/item/frame/apc) && opened && (stat & BROKEN))
 		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
@@ -784,6 +778,14 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 				return attack_hand(user)
 			user.visible_message(SPAN_DANGER("[user] hits [src] with \the [W]!"), \
 			SPAN_DANGER("You hit [src] with \the [W]!"))
+
+/obj/structure/machinery/power/apc/deconstruct(disassembled = TRUE)
+	if(disassembled)
+		if((stat & BROKEN) || opened == 2)
+			new /obj/item/stack/sheet/metal(loc)
+		else
+			new /obj/item/frame/apc(loc)
+	return ..()
 
 //Attack with hand - remove cell (if cover open) or interact with the APC
 /obj/structure/machinery/power/apc/attack_hand(mob/user)
@@ -862,7 +864,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 				return
 			user.put_in_hands(cell)
 			cell.add_fingerprint(user)
-			cell.updateicon()
+			cell.update_icon()
 
 			src.cell = null
 			user.visible_message(SPAN_NOTICE("[user] removes the power cell from [src]!"),
@@ -889,7 +891,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 /obj/structure/machinery/power/apc/proc/get_wire_descriptions()
 	return list(
 		APC_WIRE_MAIN_POWER   = "Main power",
-		APC_WIRE_IDSCAN       = "ID scanner"
+		APC_WIRE_IDSCAN    = "ID scanner"
 	)
 
 /obj/structure/machinery/power/apc/proc/isWireCut(var/wire)
@@ -909,8 +911,6 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 			shorted = 1
 			if(with_message)
 				visible_message(SPAN_WARNING("\The [src] begins flashing error messages wildly!"))
-			SSclues.create_print(get_turf(user), user, "The fingerprint contains specks of wire.")
-			SEND_SIGNAL(user, COMSIG_MOB_APC_CUT_WIRE, src)
 
 		if(APC_WIRE_IDSCAN)
 			locked = 0
@@ -1094,7 +1094,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 			if(cell.charge >= required_power * CELLRATE) //Can we draw enough from cell to cover what's left over?
 				cell.use(required_power * CELLRATE)
 
-			else if (autoflag != 0)	//Not enough power available to run the last tick!
+			else if (autoflag != 0) //Not enough power available to run the last tick!
 				chargecount = 0
 				//This turns everything off in the case that there is still a charge left on the battery, just not enough to run the room.
 				equipment = autoset(equipment, 0)
@@ -1243,14 +1243,14 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
 			if(cell)
 				cell.ex_act(severity) //More lags woohoo
-			qdel(src)
+			deconstruct(FALSE)
 			return
 
 /obj/structure/machinery/power/apc/proc/set_broken()
 
 	//Aesthetically much better!
 	visible_message(SPAN_WARNING("[src]'s screen flickers with warnings briefly!"))
-	addtimer(CALLBACK(src, .proc/do_set_broken), rand(2, 5))
+	addtimer(CALLBACK(src, PROC_REF(do_set_broken)), rand(2, 5))
 
 /obj/structure/machinery/power/apc/proc/do_set_broken()
 	visible_message(SPAN_DANGER("[src]'s screen suddenly explodes in rain of sparks and small debris!"))
@@ -1310,7 +1310,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 	update_icon()
 
 /obj/structure/machinery/power/apc/antag
-	cell_type = /obj/item/cell/apc/full
+	cell_type = /obj/item/cell/apc
 	req_one_access = list(ACCESS_ILLEGAL_PIRATE)
 
 //------Almayer APCs ------//

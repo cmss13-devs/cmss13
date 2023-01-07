@@ -31,7 +31,7 @@
 	caste_type = XENO_CASTE_WARRIOR
 	name = XENO_CASTE_WARRIOR
 	desc = "A beefy, alien with an armored carapace."
-	icon = 'icons/mob/hostiles/warrior.dmi'
+	icon = 'icons/mob/xenos/warrior.dmi'
 	icon_size = 64
 	icon_state = "Warrior Walking"
 	plasma_types = list(PLASMA_CATECHOLAMINE)
@@ -52,7 +52,7 @@
 
 	mutation_type = WARRIOR_NORMAL
 	claw_type = CLAW_TYPE_SHARP
-	icon_xeno = 'icons/mob/hostiles/warrior.dmi'
+	icon_xeno = 'icons/mob/xenos/warrior.dmi'
 	icon_xenonid = 'icons/mob/xenonids/warrior.dmi'
 
 	var/lunging = FALSE // whether or not the warrior is currently lunging (holding) a target
@@ -95,7 +95,7 @@
 			visible_message(SPAN_XENOWARNING("\The [src] grabs [L] by the throat!"), \
 			SPAN_XENOWARNING("You grab [L] by the throat!"))
 			lunging = TRUE
-			addtimer(CALLBACK(src, .proc/stop_lunging), get_xeno_stun_duration(L, 2) SECONDS + 1 SECONDS)
+			addtimer(CALLBACK(src, PROC_REF(stop_lunging)), get_xeno_stun_duration(L, 2) SECONDS + 1 SECONDS)
 
 /mob/living/carbon/Xenomorph/Warrior/proc/stop_lunging(var/world_time)
 	lunging = FALSE
@@ -108,11 +108,11 @@
 /datum/behavior_delegate/warrior_base
 	name = "Base Warrior Behavior Delegate"
 
-	var/slash_charge_cdr = 0.30 SECONDS // Amount to reduce charge cooldown by per slash
+	var/slash_charge_cdr = 0.20 SECONDS // Amount to reduce charge cooldown by per slash
 	var/lifesteal_percent = 7
 	var/max_lifesteal = 9
-	var/lifesteal_range =  3
-	var/lifesteal_lock_duration = 20
+	var/lifesteal_range =  3 // Marines within 3 tiles of range will give the warrior extra health
+	var/lifesteal_lock_duration = 20 // This will remove the glow effect on warrior after 2 seconds
 	var/color = "#6c6f24"
 	var/emote_cooldown = 0
 
@@ -133,6 +133,9 @@
 
 /datum/behavior_delegate/warrior_base/melee_attack_additional_effects_target(mob/living/carbon/A)
 	..()
+
+	if(SEND_SIGNAL(bound_xeno, COMSIG_XENO_PRE_HEAL) & COMPONENT_CANCEL_XENO_HEAL)
+		return
 
 	var/final_lifesteal = lifesteal_percent
 	var/list/mobs_in_range = oviewers(lifesteal_range, bound_xeno)
@@ -158,7 +161,7 @@
 			bound_xeno.emote("roar")
 			bound_xeno.xeno_jitter(1 SECONDS)
 			emote_cooldown = world.time + 5 SECONDS
-		addtimer(CALLBACK(src, .proc/lifesteal_lock), lifesteal_lock_duration/2)
+		addtimer(CALLBACK(src, PROC_REF(lifesteal_lock)), lifesteal_lock_duration/2)
 
 	bound_xeno.gain_health(Clamp(final_lifesteal / 100 * (bound_xeno.maxHealth - bound_xeno.health), 20, 40))
 

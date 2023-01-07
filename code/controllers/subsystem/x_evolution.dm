@@ -18,7 +18,7 @@ SUBSYSTEM_DEF(xevolution)
 	for(var/hivenumber in GLOB.hive_datum)
 		HS = GLOB.hive_datum[hivenumber]
 		boost_power[HS.hivenumber] = 1
-	return ..()
+	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/xevolution/fire(resumed = FALSE)
 	var/datum/hive_status/HS

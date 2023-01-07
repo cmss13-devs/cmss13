@@ -1,7 +1,7 @@
-#define VISION_MODE_OFF		0
-#define VISION_MODE_NVG		1
-#define VISION_MODE_THERMAL	2
-#define VISION_MODE_MESON	3
+#define VISION_MODE_OFF 0
+#define VISION_MODE_NVG 1
+#define VISION_MODE_THERMAL 2
+#define VISION_MODE_MESON 3
 
 ///parent type
 /obj/item/clothing/mask/gas/yautja
@@ -34,7 +34,7 @@
 	flags_item = ITEM_PREDATOR
 	filtered_gases = list("phoron", "sleeping_agent", "carbon_dioxide")
 	gas_filter_strength = 3
-	eye_protection = 2
+	eye_protection = EYE_PROTECTION_WELDING
 	var/current_goggles = VISION_MODE_OFF
 	vision_impair = VISION_IMPAIR_NONE
 	unacidable = TRUE
@@ -56,20 +56,6 @@
 	icon_state = "pred_mask[mask_number]_[armor_material]"
 
 	LAZYSET(item_state_slots, WEAR_FACE, "pred_mask[mask_number]_[armor_material]")
-	if(elder_restricted) //Not possible for non-elders.
-		switch(mask_number)
-			if(1341)
-				name = "\improper 'Mask of the Dragon'"
-				icon_state = "pred_mask_elder_tr"
-				LAZYSET(item_state_slots, WEAR_FACE, "pred_mask_elder_tr")
-			if(7128)
-				name = "\improper 'Mask of the Swamp Horror'"
-				icon_state = "pred_mask_elder_joshuu"
-				LAZYSET(item_state_slots, WEAR_FACE, "pred_mask_elder_joshuu")
-			if(4879)
-				name = "\improper 'Mask of the Ambivalent Collector'"
-				icon_state = "pred_mask_elder_n"
-				LAZYSET(item_state_slots, WEAR_FACE, "pred_mask_elder_n")
 
 /obj/item/clothing/mask/gas/yautja/pickup(mob/living/user)
 	if(isYautja(user))
@@ -201,6 +187,7 @@
 	armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_rad = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
+	eye_protection = EYE_PROTECTION_WELDING
 	anti_hug = 100
 
 /obj/item/clothing/mask/gas/yautja/hunter/toggle_zoom()

@@ -56,7 +56,7 @@
 
 	if(M.nutrition + (holder.nutriment_factor * level) >= NUTRITION_MAX)
 		M.nutrition = NUTRITION_MAX
-		holder.volume = 0
+		return
 	else
 		M.nutrition += holder.nutriment_factor * level
 
@@ -148,8 +148,7 @@
 		var/mob/living/carbon/human/H = M
 		var/datum/internal_organ/liver/L = H.internal_organs_by_name["liver"]
 		if(L)
-			L.damage += POTENCY_MULTIPLIER_LOW * potency
-
+			L.take_damage(POTENCY_MULTIPLIER_LOW * potency, TRUE)
 /datum/chem_property/neutral/hallucinogenic
 	name = PROPERTY_HALLUCINOGENIC
 	code = "HLG"
@@ -538,12 +537,12 @@
 	M.reagents.remove_all_type(/datum/reagent/ethanol, potency, 0, 1)
 	M.stuttering = max(M.stuttering - POTENCY_MULTIPLIER_MEDIUM * potency, 0)
 	M.confused = max(M.confused - POTENCY_MULTIPLIER_MEDIUM * potency, 0)
-	M.eye_blurry = max(M.eye_blurry - POTENCY_MULTIPLIER_MEDIUM * potency, 0)
+	M.ReduceEyeBlur(POTENCY_MULTIPLIER_MEDIUM * potency)
 	M.drowsyness = max(M.drowsyness - POTENCY_MULTIPLIER_MEDIUM * potency, 0)
 	M.dizziness = max(M.dizziness - POTENCY_MULTIPLIER_MEDIUM * potency, 0)
 	M.jitteriness = max(M.jitteriness - POTENCY_MULTIPLIER_MEDIUM * potency, 0)
 	if(potency >= POTENCY_MAX_TIER_1)
-		M.eye_blind = 0
+		M.SetEyeBlind(0)
 		M.silent = 0
 
 /datum/chem_property/neutral/focusing/process_overdose(mob/living/M, var/potency = 1)

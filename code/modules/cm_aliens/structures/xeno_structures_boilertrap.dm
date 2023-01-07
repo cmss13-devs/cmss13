@@ -6,8 +6,8 @@
 	desc = "It looks like a trap for catching tallhosts."
 	name = "resin hole"
 	icon_state = "trap_boiler"
-	density = 0
-	opacity = 0
+	density = FALSE
+	opacity = FALSE
 	anchored = 1
 	health = 1
 	layer = RESIN_STRUCTURE_LAYER
@@ -45,7 +45,7 @@
 
 /obj/effect/alien/resin/boilertrap/bullet_act(obj/item/projectile/P)
 	var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags
-	if(ammo_flags & (AMMO_XENO_ACID|AMMO_XENO_TOX))
+	if(ammo_flags & (AMMO_XENO))
 		return
 	return ..()
 
@@ -75,7 +75,7 @@
 /obj/effect/hole_tripwire_boiler
 	name = "hole tripwire"
 	anchored = TRUE
-	mouse_opacity = 0
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	invisibility = 101
 	unacidable = TRUE //You never know
 	var/obj/effect/alien/resin/boilertrap/linked_trap

@@ -1,13 +1,13 @@
 
-var/list/unansweredAhelps = list()			//This feels inefficient, but I can't think of a better way. Stores the message indexed by CID
+var/list/unansweredAhelps = list() //This feels inefficient, but I can't think of a better way. Stores the message indexed by CID
 
-GLOBAL_LIST_EMPTY(WYFaxes)			//Departmental faxes
+GLOBAL_LIST_EMPTY(WYFaxes) //Departmental faxes
 GLOBAL_LIST_EMPTY(USCMFaxes)
 GLOBAL_LIST_EMPTY(ProvostFaxes)
-GLOBAL_LIST_EMPTY(GeneralFaxes)		//Inter-machine faxes
-GLOBAL_LIST_EMPTY(fax_contents)		//List of fax contents to maintain it even if source paper is deleted
+GLOBAL_LIST_EMPTY(GeneralFaxes) //Inter-machine faxes
+GLOBAL_LIST_EMPTY(fax_contents) //List of fax contents to maintain it even if source paper is deleted
 
-GLOBAL_LIST_EMPTY(failed_fultons) 	//A list of fultoned items which weren't collected and fell back down
+GLOBAL_LIST_EMPTY(failed_fultons) //A list of fultoned items which weren't collected and fell back down
 
 GLOBAL_LIST_INIT_TYPED(custom_huds_list, /datum/custom_hud, setup_all_huds())
 GLOBAL_LIST_INIT_TYPED(custom_human_huds, /datum/custom_hud, setup_human_huds())
@@ -15,13 +15,13 @@ GLOBAL_LIST_INIT_TYPED(custom_human_huds, /datum/custom_hud, setup_human_huds())
 //Since it didn't really belong in any other category, I'm putting this here
 //This is for procs to replace all the goddamn 'in world's that are chilling around the code
 
-var/readied_players = 0								//How many players are readied up in the lobby
+var/readied_players = 0 //How many players are readied up in the lobby
 
 GLOBAL_LIST_EMPTY_TYPED(other_factions_human_list, /mob/living/carbon/human)
 
-var/global/list/ai_mob_list = list()				//List of all AIs
+var/global/list/ai_mob_list = list() //List of all AIs
 
-GLOBAL_LIST_EMPTY(freed_mob_list) 	// List of mobs freed for ghosts
+GLOBAL_LIST_EMPTY(freed_mob_list) // List of mobs freed for ghosts
 
 GLOBAL_LIST_INIT(available_taskbar_icons, setup_taskbar_icons())
 
@@ -70,19 +70,17 @@ GLOBAL_LIST_INIT_TYPED(resin_mark_meanings, /datum/xeno_mark_define, setup_resin
 GLOBAL_REFERENCE_LIST_INDEXED(xeno_datum_list, /datum/caste_datum, caste_type)
 
 //Chem Stuff
-var/global/list/chemical_reactions_filtered_list	//List of all /datum/chemical_reaction datums filtered by reaction components. Used during chemical reactions
-var/global/list/chemical_reactions_list		//List of all /datum/chemical_reaction datums indexed by reaction id. Used to search for the result instead of the components.
-var/global/list/chemical_reagents_list		//List of all /datum/reagent datums indexed by reagent id. Used by chemistry stuff
-var/global/list/chemical_properties_list	//List of all /datum/chem_property datums indexed by property name
-var/global/list/chemical_objective_list	 = list()	//List of all objective reagents indexed by ID associated with the objective value
-var/global/list/chemical_identified_list = list()	//List of all identified objective reagents indexed by ID associated with the objective value
+var/global/list/chemical_reactions_filtered_list //List of all /datum/chemical_reaction datums filtered by reaction components. Used during chemical reactions
+var/global/list/chemical_reactions_list //List of all /datum/chemical_reaction datums indexed by reaction id. Used to search for the result instead of the components.
+var/global/list/chemical_reagents_list //List of all /datum/reagent datums indexed by reagent id. Used by chemistry stuff
+var/global/list/chemical_properties_list //List of all /datum/chem_property datums indexed by property name
 //List of all id's from classed /datum/reagent datums indexed by class or tier. Used by chemistry generator and chem spawners.
 var/global/list/list/chemical_gen_classes_list = list("C" = list(),"C1" = list(),"C2" = list(),"C3" = list(),"C4" = list(),"C5" = list(),"C6" = list(),"T1" = list(),"T2" = list(),"T3" = list(),"T4" = list(),"tau" = list())
 //properties generated in chemicals, helps to make sure the same property doesn't show up 10 times
 GLOBAL_LIST_INIT_TYPED(generated_properties, /list, list("positive" = list(), "negative" = list(), "neutral" = list()))
 
-GLOBAL_LIST_INIT_TYPED(ammo_list, /datum/ammo, setup_ammo())					//List of all ammo types. Used by guns to tell the projectile how to act.
-GLOBAL_REFERENCE_LIST_INDEXED(joblist, /datum/job, title)					//List of all jobstypes, minus borg and AI
+GLOBAL_LIST_INIT_TYPED(ammo_list, /datum/ammo, setup_ammo()) //List of all ammo types. Used by guns to tell the projectile how to act.
+GLOBAL_REFERENCE_LIST_INDEXED(joblist, /datum/job, title) //List of all jobstypes, minus borg and AI
 
 /*Surgical lists.
 surgery_invasiveness_levels lists possible incision depths.
@@ -124,7 +122,7 @@ GLOBAL_LIST_INIT_TYPED(all_yautja_capes, /obj/item/clothing/yautja_cape, setup_y
 //Languages/species/whitelist.
 GLOBAL_LIST_INIT_TYPED(all_species, /datum/species, setup_species())
 GLOBAL_REFERENCE_LIST_INDEXED(all_languages, /datum/language, name)
-GLOBAL_LIST_INIT(language_keys, setup_language_keys())					//table of say codes for all languages
+GLOBAL_LIST_INIT(language_keys, setup_language_keys()) //table of say codes for all languages
 
 // Origins
 GLOBAL_REFERENCE_LIST_INDEXED(origins, /datum/origin, name)
@@ -155,12 +153,12 @@ GLOBAL_LIST_INIT(poster_designs, subtypesof(/datum/poster))
 
 //Preferences stuff
 	// Ethnicities
-GLOBAL_REFERENCE_LIST_INDEXED(ethnicities_list, /datum/ethnicity, name)			// Stores /datum/ethnicity indexed by name
+GLOBAL_REFERENCE_LIST_INDEXED(ethnicities_list, /datum/ethnicity, name) // Stores /datum/ethnicity indexed by name
 	// Body Types
-GLOBAL_REFERENCE_LIST_INDEXED(body_types_list, /datum/body_type, name)			// Stores /datum/body_type indexed by name
+GLOBAL_REFERENCE_LIST_INDEXED(body_types_list, /datum/body_type, name) // Stores /datum/body_type indexed by name
 	//Hairstyles
-GLOBAL_REFERENCE_LIST_INDEXED(hair_styles_list, /datum/sprite_accessory/hair, name)			//stores /datum/sprite_accessory/hair indexed by name
-GLOBAL_REFERENCE_LIST_INDEXED(facial_hair_styles_list, /datum/sprite_accessory/facial_hair, name)	//stores /datum/sprite_accessory/facial_hair indexed by name
+GLOBAL_REFERENCE_LIST_INDEXED(hair_styles_list, /datum/sprite_accessory/hair, name) //stores /datum/sprite_accessory/hair indexed by name
+GLOBAL_REFERENCE_LIST_INDEXED(facial_hair_styles_list, /datum/sprite_accessory/facial_hair, name) //stores /datum/sprite_accessory/facial_hair indexed by name
 GLOBAL_REFERENCE_LIST_INDEXED(hair_gradient_list, /datum/sprite_accessory/hair_gradient, name)
 GLOBAL_REFERENCE_LIST_INDEXED(yautja_hair_styles_list, /datum/sprite_accessory/yautja_hair, name)
 
@@ -177,8 +175,49 @@ var/global/list/pass_flags_cache = list()
 //Parameterss cache
 var/global/list/paramslist_cache = list()
 
-#define cached_key_number_decode(key_number_data) cached_params_decode(key_number_data, /proc/key_number_decode)
-#define cached_number_list_decode(number_list_data) cached_params_decode(number_list_data, /proc/number_list_decode)
+//Turf Edge info uberlist -- a list whos states contain GLOB.edgeinfo_X keyed as different icon_states
+var/global/list/turf_edgeinfo_cache = list()
+
+#define FULL_EDGE 1
+#define HALF_EDGE_RIGHT 2
+#define HALF_EDGE_LEFT 3
+//right and left looking from the turf who makes an overlay towards its neighbor thats it overlays upon
+
+//These are ordered just like sprites are in the dm dmi editor: 2/SOUTH then 1/NORTH then 4/EAST then 8/WEST
+GLOBAL_LIST_INIT(edgeinfo_full, list(
+								list(FULL_EDGE, FULL_EDGE, FULL_EDGE, FULL_EDGE),
+								list(FULL_EDGE, FULL_EDGE, FULL_EDGE, FULL_EDGE),
+								list(FULL_EDGE, FULL_EDGE, FULL_EDGE, FULL_EDGE),
+								list(FULL_EDGE, FULL_EDGE, FULL_EDGE, FULL_EDGE)
+								))
+
+GLOBAL_LIST_INIT(edgeinfo_edge, list(
+								list(null, FULL_EDGE, HALF_EDGE_LEFT, HALF_EDGE_RIGHT),
+								list(FULL_EDGE, null, HALF_EDGE_RIGHT, HALF_EDGE_LEFT),
+								list(HALF_EDGE_LEFT, HALF_EDGE_RIGHT, null, FULL_EDGE),
+								list(HALF_EDGE_RIGHT, HALF_EDGE_LEFT, FULL_EDGE, null)
+								))
+
+GLOBAL_LIST_INIT(edgeinfo_corner, list(
+								list( HALF_EDGE_LEFT, FULL_EDGE,FULL_EDGE, HALF_EDGE_RIGHT),
+								list(HALF_EDGE_RIGHT, FULL_EDGE, HALF_EDGE_LEFT, FULL_EDGE),
+								list(FULL_EDGE, HALF_EDGE_LEFT, FULL_EDGE, HALF_EDGE_LEFT),
+								list(FULL_EDGE, HALF_EDGE_RIGHT, HALF_EDGE_RIGHT, FULL_EDGE)
+								))
+
+GLOBAL_LIST_INIT(edgeinfo_corner2, list(
+								list(null, HALF_EDGE_LEFT, null,  HALF_EDGE_RIGHT),
+								list(HALF_EDGE_RIGHT, null, HALF_EDGE_RIGHT, null),
+								list(null, HALF_EDGE_RIGHT, HALF_EDGE_LEFT, null),
+								list(HALF_EDGE_LEFT, null, null, HALF_EDGE_LEFT)
+								))
+
+#undef FULL_EDGE
+#undef HALF_EDGE_RIGHT
+#undef HALF_EDGE_LEFT
+
+#define cached_key_number_decode(key_number_data) cached_params_decode(key_number_data, GLOBAL_PROC_REF(key_number_decode))
+#define cached_number_list_decode(number_list_data) cached_params_decode(number_list_data, GLOBAL_PROC_REF(number_list_decode))
 
 /proc/cached_params_decode(var/params_data, var/decode_proc)
 	. = paramslist_cache[params_data]
@@ -274,8 +313,8 @@ var/global/list/paramslist_cache = list()
 		if(gap < 1)
 			gap = 1
 		for(var/i = 1; gap + i <= length(surgeries); i++)
-			var/datum/surgery/l = surgeries[i]		//Fucking hate
-			var/datum/surgery/r = surgeries[gap+i]	//how lists work here
+			var/datum/surgery/l = surgeries[i] //Fucking hate
+			var/datum/surgery/r = surgeries[gap+i] //how lists work here
 			if(l.priority < r.priority)
 				surgeries.Swap(i, gap + i)
 				swapped = 1
@@ -309,7 +348,7 @@ var/global/list/paramslist_cache = list()
 	//faction event messages
 	var/list/custom_event_info_list = list()
 	var/datum/custom_event_info/CEI = new /datum/custom_event_info
-	CEI.faction = "Global"		//the old public one for whole server to see
+	CEI.faction = "Global" //the old public one for whole server to see
 	custom_event_info_list[CEI.faction] = CEI
 	for(var/T in FACTION_LIST_HUMANOID)
 		CEI = new /datum/custom_event_info
@@ -370,7 +409,7 @@ var/global/list/paramslist_cache = list()
 		if(islist(chemical_reactions_filtered_list[reaction]))
 			var/list/L = chemical_reactions_filtered_list[reaction]
 			for(var/t in L)
-				. += "    has: [t]\n"
+				. += " has: [t]\n"
 	world << .
 */
 

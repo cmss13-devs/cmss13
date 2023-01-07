@@ -2856,7 +2856,7 @@
 /turf/open/floor/prison,
 /area/whiskey_outpost/inside/living)
 "iV" = (
-/obj/structure/machinery/autodoc/event{
+/obj/structure/machinery/medical_pod/autodoc/unskilled{
 	dir = 1
 	},
 /obj/effect/decal/medical_decals{
@@ -2956,7 +2956,7 @@
 	},
 /area/whiskey_outpost/inside/hospital)
 "jj" = (
-/obj/structure/machinery/bodyscanner{
+/obj/structure/machinery/medical_pod/bodyscanner{
 	dir = 1
 	},
 /obj/effect/decal/medical_decals{
@@ -2970,7 +2970,7 @@
 	},
 /area/whiskey_outpost/inside/hospital)
 "jk" = (
-/obj/structure/machinery/autodoc/event,
+/obj/structure/machinery/medical_pod/autodoc/unskilled,
 /obj/effect/decal/medical_decals{
 	dir = 8;
 	icon_state = "docstripingdir";
@@ -3445,7 +3445,7 @@
 	},
 /area/whiskey_outpost/outside/north/platform)
 "kJ" = (
-/obj/structure/machinery/sleeper,
+/obj/structure/machinery/medical_pod/sleeper,
 /obj/effect/decal/medical_decals{
 	icon_state = "docstriping";
 	tag = "icon-docstriping"
@@ -3528,7 +3528,7 @@
 	},
 /area/whiskey_outpost/outside/south)
 "kX" = (
-/obj/structure/machinery/sleeper{
+/obj/structure/machinery/medical_pod/sleeper{
 	dir = 1
 	},
 /obj/effect/decal/medical_decals{
@@ -3918,7 +3918,7 @@
 /turf/closed/wall,
 /area/whiskey_outpost/outside/south/far)
 "mv" = (
-/obj/structure/machinery/bodyscanner,
+/obj/structure/machinery/medical_pod/bodyscanner,
 /obj/effect/decal/medical_decals{
 	dir = 1;
 	icon_state = "docstripingdir";
@@ -7793,7 +7793,7 @@
 	},
 /area/whiskey_outpost/inside/bunker)
 "yQ" = (
-/obj/structure/machinery/autodoc/event{
+/obj/structure/machinery/medical_pod/autodoc/unskilled{
 	dir = 1
 	},
 /turf/open/floor{
@@ -9324,7 +9324,7 @@
 	},
 /area/whiskey_outpost/outside/south)
 "Eb" = (
-/obj/structure/machinery/autodoc/event,
+/obj/structure/machinery/medical_pod/autodoc/unskilled,
 /turf/open/floor{
 	dir = 5;
 	icon_state = "whitegreen";
@@ -11245,7 +11245,7 @@
 	},
 /area/whiskey_outpost/inside/bunker/bunker/front)
 "Ln" = (
-/obj/structure/machinery/bodyscanner,
+/obj/structure/machinery/medical_pod/bodyscanner,
 /obj/structure/machinery/light/small{
 	dir = 8
 	},
@@ -12411,7 +12411,7 @@
 /turf/open/gm/river,
 /area/whiskey_outpost/outside/river/west)
 "PT" = (
-/obj/structure/machinery/sleeper,
+/obj/structure/machinery/medical_pod/sleeper,
 /turf/open/floor{
 	dir = 10;
 	icon_state = "whitegreen";
@@ -12498,7 +12498,7 @@
 	},
 /area/whiskey_outpost/outside/north/beach)
 "Qm" = (
-/obj/structure/machinery/sleeper{
+/obj/structure/machinery/medical_pod/sleeper{
 	dir = 1
 	},
 /turf/open/floor{
@@ -13881,7 +13881,7 @@
 	},
 /area/whiskey_outpost/outside/north)
 "Vx" = (
-/obj/structure/machinery/bodyscanner{
+/obj/structure/machinery/medical_pod/bodyscanner{
 	dir = 1
 	},
 /obj/structure/machinery/light/small{

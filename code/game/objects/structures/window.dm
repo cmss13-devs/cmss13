@@ -3,7 +3,7 @@
 	desc = "A glass window. It looks thin and flimsy. A few knocks with anything should shatter it."
 	icon = 'icons/turf/walls/windows.dmi'
 	icon_state = "window"
-	density = 1
+	density = TRUE
 	anchored = 1
 	layer = WINDOW_LAYER
 	flags_atom = ON_BORDER|FPRINT
@@ -35,7 +35,7 @@
 		update_nearby_icons()
 
 /obj/structure/window/Destroy()
-	density = 0
+	density = FALSE
 	if(is_full_window())
 		update_nearby_icons()
 	. = ..()
@@ -144,7 +144,7 @@
 		SEND_SIGNAL(M, COMSIG_MOB_WINDOW_EXPLODED, src)
 
 	handle_debris(severity, explosion_direction)
-	qdel(src)
+	deconstruct(FALSE)
 	return
 
 /obj/structure/window/get_explosion_resistance(direction)
@@ -273,7 +273,7 @@
 			to_chat(user, (anchored ? SPAN_NOTICE("You have fastened the window to the floor.") : SPAN_NOTICE("You have unfastened the window.")))
 		else if(static_frame && state == 0)
 			SEND_SIGNAL(user, COMSIG_MOB_DISASSEMBLE_WINDOW, src)
-			disassemble_window()
+			deconstruct(TRUE)
 	else if(HAS_TRAIT(W, TRAIT_TOOL_CROWBAR) && reinf && state <= 1 && !not_deconstructable)
 		state = 1 - state
 		playsound(loc, 'sound/items/Crowbar.ogg', 25, 1)
@@ -292,18 +292,19 @@
 /obj/structure/window/proc/is_full_window()
 	return !(flags_atom & ON_BORDER)
 
-/obj/structure/window/proc/disassemble_window()
-	if(reinf)
-		new /obj/item/stack/sheet/glass/reinforced(loc, 2)
-	else
-		new /obj/item/stack/sheet/glass/reinforced(loc, 2)
-	qdel(src)
+/obj/structure/window/deconstruct(disassembled = TRUE)
+	if(disassembled)
+		if(reinf)
+			new /obj/item/stack/sheet/glass/reinforced(loc, 2)
+		else
+			new /obj/item/stack/sheet/glass(loc, 2)
+	return ..()
 
 
 /obj/structure/window/proc/shatter_window(create_debris)
 	if(create_debris)
 		handle_debris()
-	qdel(src)
+	deconstruct(FALSE)
 
 /obj/structure/window/clicked(mob/user, list/mods)
 	if(mods["alt"])
@@ -418,7 +419,7 @@
 	desc = "A tinted glass window. It looks rather strong and opaque. Might take a few good hits to shatter it."
 	icon_state = "twindow"
 	basestate = "twindow"
-	opacity = 1
+	opacity = TRUE
 
 /obj/structure/window/reinforced/tinted/frosted
 	name = "privacy window"
@@ -526,34 +527,19 @@
 		var/location = get_turf(src)
 		playsound(src, "windowshatter", 50, 1)
 		handle_debris(severity, explosion_direction)
-		shatter_window(0)
+		deconstruct(disassembled = FALSE)
 		create_shrapnel(location, rand(1,5), explosion_direction, , /datum/ammo/bullet/shrapnel/light/glass, cause_data)
 	else
 		qdel(src)
 	return
 
 
-/obj/structure/window/framed/disassemble_window()
-	if(window_frame)
-		var/obj/structure/window_frame/WF = new window_frame(loc)
-		WF.icon_state = "[WF.basestate][junction]_frame"
-		WF.setDir(dir)
-	..()
-
-/obj/structure/window/framed/shatter_window(create_debris)
+/obj/structure/window/framed/deconstruct(disassembled = TRUE)
 	if(window_frame)
 		var/obj/structure/window_frame/new_window_frame = new window_frame(loc, TRUE)
 		new_window_frame.icon_state = "[new_window_frame.basestate][junction]_frame"
 		new_window_frame.setDir(dir)
-	..()
-
-
-/obj/structure/window/framed/proc/drop_window_frame()
-	if(window_frame)
-		var/obj/structure/window_frame/new_window_frame = new window_frame(loc, TRUE)
-		new_window_frame.icon_state = "[new_window_frame.basestate][junction]_frame"
-		new_window_frame.setDir(dir)
-	qdel(src)
+	return ..()
 
 /obj/structure/window/framed/almayer
 	name = "reinforced window"
@@ -590,7 +576,7 @@
 	window_frame = /obj/structure/window_frame/almayer/white
 
 /obj/structure/window/framed/almayer/white/hull
-	name = "research window"
+	name = "hull window"
 	desc = "An ultra-reinforced window designed to keep research a secure area. This one was made out of exotic materials to prevent hull breaches. No way to get through here."
 	not_damageable = 1
 	not_deconstructable = 1
@@ -616,7 +602,7 @@
 /obj/structure/window/framed/colony/reinforced/tinted
 	name =  "tinted reinforced window"
 	desc = "A glass window with a special rod matrix inside a wall frame. It looks rather strong. Might take a few good hits to shatter it. This one is opaque. You have an uneasy feeling someone might be watching from the other side."
-	opacity = 1
+	opacity = TRUE
 
 /obj/structure/window/framed/colony/reinforced/hull
 	name = "hull window"
@@ -782,7 +768,7 @@
 
 /obj/structure/window/framed/solaris/reinforced/tinted
 	desc = "A tinted glass window. It looks rather strong and opaque. Might take a few good hits to shatter it."
-	opacity = 1
+	opacity = TRUE
 
 //GREYBOX DEV WINDOWS
 
@@ -945,4 +931,4 @@
 		else
 			P.setDir(EAST)
 
-	INVOKE_ASYNC(P, /obj/structure/machinery/door.proc/close)
+	INVOKE_ASYNC(P, TYPE_PROC_REF(/obj/structure/machinery/door, close))

@@ -30,9 +30,9 @@
 	. = ..()
 
 /obj/item/device/assembly/signaller/activate()
-	if(cooldown > 0)	return 0
+	if(cooldown > 0) return 0
 	cooldown = 2
-	addtimer(CALLBACK(src, .proc/process_cooldown), 1 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(process_cooldown)), 1 SECONDS)
 
 	signal()
 	return 1
@@ -142,5 +142,6 @@
 	radio_connection = SSradio.add_object(src, frequency, RADIO_CHAT)
 
 /obj/item/device/assembly/signaller/Destroy()
+	SSradio.remove_object(src, frequency)
 	radio_connection = null
 	return ..()

@@ -10,9 +10,9 @@
 	if(NO_BLOOD in species.flags)
 		return
 
-	if(stat != DEAD && bodytemperature >= 170)	//Dead or cryosleep people do not pump the blood.
+	if(stat != DEAD && bodytemperature >= 170) //Dead or cryosleep people do not pump the blood.
 		//Blood regeneration if there is some space
-		if(blood_volume < BLOOD_VOLUME_NORMAL)
+		if(blood_volume < max_blood)
 			blood_volume += 0.1 // regenerate blood VERY slowly
 
 		var/b_volume = blood_volume
@@ -42,7 +42,7 @@
 					oxyloss += 3
 			if(BLOOD_VOLUME_BAD to BLOOD_VOLUME_OKAY)
 				if(eye_blurry < 50)
-					eye_blurry += 6
+					AdjustEyeBlur(6)
 				if(oxyloss < 50)
 					oxyloss += 10
 				oxyloss += 2
@@ -66,6 +66,12 @@
 			else if(nutrition >= 200)
 				nutrition -= 3
 
+// Xeno blood regeneration
+/mob/living/carbon/Xenomorph/handle_blood()
+	if(stat != DEAD) //Only living xenos regenerate blood
+		//Blood regeneration if there is some space
+		if(blood_volume < max_blood)
+			blood_volume = min(blood_volume + 1, max_blood)
 
 //Makes a blood drop, leaking amt units of blood from the mob
 /mob/living/carbon/proc/drip(amt)
@@ -132,11 +138,11 @@
 
 //Gets blood from mob to the container, preserving all data in it.
 /mob/living/carbon/proc/take_blood(obj/O, amount)
-	if(!O.reagents)
+	if(!O.reagents || amount <= 0 || blood_volume <= 0)
 		return
 
 	if(blood_volume < amount)
-		return
+		amount = blood_volume
 
 	var/b_id = get_blood_id()
 	if(!b_id)
@@ -157,8 +163,11 @@
 	. = ..()
 
 /mob/living/carbon/Xenomorph/take_blood(obj/O, var/amount)
-	if(!O.reagents)
+	if(!O.reagents || amount <= 0 || blood_volume <= 0)
 		return
+
+	if(blood_volume < amount)
+		amount = blood_volume
 
 	var/b_id = get_blood_id()
 	if(!b_id)
@@ -171,6 +180,7 @@
 	for(var/plasma in plasmas)
 		O.reagents.add_reagent(plasma,amount / plasmas.len) //An even amount of each plasma and blood type
 
+	blood_volume = max(0, blood_volume - amount)
 	return 1
 
 

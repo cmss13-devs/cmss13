@@ -92,8 +92,6 @@
 				border_rk = "command"
 			if(JOB_POLICE)
 				marine_rk = "mp"
-			if(JOB_POLICE_CADET)
-				marine_rk = "mpcadet"
 			if(JOB_WARDEN)
 				marine_rk = "warden"
 				border_rk = "command"

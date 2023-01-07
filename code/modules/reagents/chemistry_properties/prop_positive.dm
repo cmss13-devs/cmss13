@@ -124,7 +124,7 @@
 	name = PROPERTY_NERVESTIMULATING
 	code = "NST"
 	description = "Increases neuron communication speed across synapses resulting in improved reaction time, awareness and muscular control."
-	rarity = PROPERTY_UNCOMMON
+	rarity = PROPERTY_RARE
 	category = PROPERTY_TYPE_STIMULANT
 	value = 3
 
@@ -136,7 +136,7 @@
 	if(potency > CREATE_MAX_TIER_1)
 		M.stuttering = max(M.stuttering - POTENCY_MULTIPLIER_MEDIUM * potency, 0)
 		M.confused = max(M.confused - POTENCY_MULTIPLIER_MEDIUM * potency, 0)
-		M.eye_blurry = max(M.eye_blurry - POTENCY_MULTIPLIER_MEDIUM * potency, 0)
+		M.ReduceEyeBlur(POTENCY_MULTIPLIER_MEDIUM * potency)
 		M.drowsyness = max(M.drowsyness - POTENCY_MULTIPLIER_MEDIUM * potency, 0)
 		M.dizziness = max(M.dizziness - POTENCY_MULTIPLIER_MEDIUM * potency, 0)
 		M.jitteriness = max(M.jitteriness - POTENCY_MULTIPLIER_MEDIUM * potency, 0)
@@ -157,7 +157,7 @@
 	name = PROPERTY_MUSCLESTIMULATING
 	code = "MST"
 	description = "Stimulates neuromuscular junctions increasing the force of muscle contractions, resulting in increased strength. High doses might exhaust the cardiac muscles."
-	rarity = PROPERTY_UNCOMMON
+	rarity = PROPERTY_RARE
 	category = PROPERTY_TYPE_STIMULANT
 
 /datum/chem_property/positive/musclestimulating/process(mob/living/M, var/potency = 1)
@@ -196,20 +196,21 @@
 /datum/chem_property/positive/painkilling/process(mob/living/M, var/potency = 1, delta_time)
 	if(!..())
 		return
-
-	M.pain.apply_pain_reduction(PAIN_REDUCTION_MULTIPLIER * potency)
+	var/effective_potency = (CHECK_BITFIELD(M.disabilities, OPIATE_RECEPTOR_DEFICIENCY) ? potency * 0.25 : potency)
+	M.pain.apply_pain_reduction(PAIN_REDUCTION_MULTIPLIER * effective_potency)
 
 /datum/chem_property/positive/painkilling/process_overdose(mob/living/M, var/potency = 1, delta_time)
 	if(!..())
 		return
-
-	M.pain.apply_pain_reduction(PAIN_REDUCTION_MULTIPLIER * potency)
-	M.hallucination = max(M.hallucination, potency) //Hallucinations and tox damage
-	M.apply_damage(0.5 *  potency * delta_time, TOX)
+	var/effective_potency = (CHECK_BITFIELD(M.disabilities, OPIATE_RECEPTOR_DEFICIENCY) ? potency * 0.25 : potency)
+	M.pain.apply_pain_reduction(PAIN_REDUCTION_MULTIPLIER * effective_potency)
+	M.hallucination = max(M.hallucination, effective_potency) //Hallucinations and tox damage
+	M.apply_damage(0.5 *  effective_potency * delta_time, TOX)
 
 /datum/chem_property/positive/painkilling/process_critical(mob/living/M, var/potency = 1)
-	M.apply_internal_damage(POTENCY_MULTIPLIER_HIGH * potency, "liver")
-	M.apply_damage(potency, BRAIN)
+	var/effective_potency = (CHECK_BITFIELD(M.disabilities, OPIATE_RECEPTOR_DEFICIENCY) ? potency * 0.25 : potency)
+	M.apply_internal_damage(POTENCY_MULTIPLIER_HIGH * effective_potency, "liver")
+	M.apply_damage(effective_potency, BRAIN)
 	M.apply_damage(3, OXY)
 
 /datum/chem_property/positive/hepatopeutic
@@ -283,8 +284,8 @@
 	if(!ishuman(M))
 		return
 	M.apply_internal_damage(-potency, "eyes")
-	M.eye_blurry = max(M.eye_blurry-POTENCY_MULTIPLIER_VHIGH*potency , 0)
-	M.eye_blind = max(M.eye_blind-POTENCY_MULTIPLIER_VHIGH*potency , 0)
+	M.ReduceEyeBlur(POTENCY_MULTIPLIER_VHIGH*potency)
+	M.ReduceEyeBlind(POTENCY_MULTIPLIER_VHIGH*potency)
 
 /datum/chem_property/positive/oculopeutic/process_overdose(mob/living/M, var/potency = 1)
 	M.apply_damage(potency, TOX)
@@ -489,7 +490,7 @@
 /datum/chem_property/positive/electrogenetic
 	name = PROPERTY_ELECTROGENETIC
 	code = "EGN"
-	description = "Stimulates cardiac muscles when exposed to electric shock and provides general healing. Useful in restarting the heart in combination with a defibrilator. Can not be ingested."
+	description = "Stimulates cardiac muscles when exposed to electric shock and provides general healing. Useful in restarting the heart in combination with a defibrillator. Can not be ingested."
 	rarity = PROPERTY_COMMON
 	category = PROPERTY_TYPE_REACTANT
 	value = 1
@@ -540,7 +541,7 @@
 	if(H.check_tod() && H.is_revivable() && H.health > HEALTH_THRESHOLD_DEAD)
 		to_chat(H, SPAN_NOTICE("You feel your heart struggling as you suddenly feel a spark, making it desperately try to continue pumping."))
 		playsound_client(H.client, 'sound/effects/Heart Beat Short.ogg', 35)
-		addtimer(CALLBACK(H, /mob/living/carbon/human.proc/handle_revive), 50, TIMER_UNIQUE)
+		addtimer(CALLBACK(H, TYPE_PROC_REF(/mob/living/carbon/human, handle_revive)), 50, TIMER_UNIQUE)
 	else if (potency > POTENCY_MAX_TIER_1 && H.check_tod() && H.is_revivable() && H.health < HEALTH_THRESHOLD_DEAD) //Will heal if level is 7 or greater
 		to_chat(H, SPAN_NOTICE("You feel a faint spark in your chest."))
 		H.apply_damage(-potency * POTENCY_MULTIPLIER_LOW, BRUTE)

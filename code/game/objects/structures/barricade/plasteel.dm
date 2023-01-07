@@ -14,7 +14,7 @@
 	destroyed_stack_amount = 4
 	barricade_hitsound = 'sound/effects/metalhit.ogg'
 	barricade_type = "plasteel"
-	density = 0
+	density = FALSE
 	closed = TRUE
 	can_wire = TRUE
 	repair_materials = list("plasteel" = 0.3)
@@ -51,7 +51,7 @@
 
 	switch(build_state)
 		if(BARRICADE_BSTATE_SECURED)
-			. += SPAN_INFO("The protection panel is still tighly screwed in place.")
+			. += SPAN_INFO("The protection panel is still tightly screwed in place.")
 		if(BARRICADE_BSTATE_UNSECURED)
 			. += SPAN_INFO("The protection panel has been removed, you can see the anchor bolts.")
 		if(BARRICADE_BSTATE_MOVABLE)
@@ -198,7 +198,7 @@
 					user.visible_message(SPAN_NOTICE("[user] takes [src]'s panels apart."),
 					SPAN_NOTICE("You take [src]'s panels apart."))
 					playsound(loc, 'sound/items/Deconstruct.ogg', 25, 1)
-					destroy(TRUE) //Note : Handles deconstruction too !
+					deconstruct(TRUE) //Note : Handles deconstruction too !
 				else busy = FALSE
 				return
 
@@ -237,7 +237,7 @@
 		return
 	playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
 	closed = 0
-	density = 1
+	density = TRUE
 	if(linked)
 		for(var/direction in cardinal)
 			for(var/obj/structure/barricade/plasteel/cade in get_step(src, direction))
@@ -250,7 +250,7 @@
 		return
 	playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
 	closed = 1
-	density = 0
+	density = FALSE
 	if(linked)
 		for(var/direction in cardinal)
 			for(var/obj/structure/barricade/plasteel/cade in get_step(src, direction))

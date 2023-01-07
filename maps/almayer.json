@@ -3,8 +3,5 @@
     "map_path": "map_files/USS_Almayer",
     "map_file": "USS_Almayer.dmm",
     "traits": [{"Marine Main Ship": true}],
-	    "nightmare": {
-        "scenario": "maps/Nightmare/maps/USS_Almayer/scenario.json",
-        "mapgen": "maps/Nightmare/maps/USS_Almayer/mapgen.json"
-    }
+    "nightmare_path": "maps/Nightmare/maps/USS_Almayer/"
 }

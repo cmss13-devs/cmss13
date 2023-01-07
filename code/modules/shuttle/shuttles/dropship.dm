@@ -1,4 +1,5 @@
 #define ALMAYER_DROPSHIP_LZ1 "almayer-hangar-lz1"
+#define ALMAYER_DROPSHIP_LZ2 "almayer-hangar-lz2"
 
 #define LV_624_LZ1 "lv624-lz1"
 #define LV_624_LZ2 "lv624-lz2"

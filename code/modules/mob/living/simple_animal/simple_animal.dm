@@ -225,16 +225,6 @@
 	if(icon_gib)
 		new /obj/effect/overlay/temp/gib_animation/animal(loc, src, icon_gib)
 
-
-
-
-
-/mob/living/simple_animal/emote(var/act, var/type, var/message, player_caused)
-	if(act)
-		if(act == "scream")
-			act = "whimper" //ugly hack to stop animals screaming when crushed :P
-		..(act, message, player_caused) //if the animal has a ckey then it will log the message
-
 /mob/living/simple_animal/attack_animal(mob/living/M as mob)
 	if(M.melee_damage_upper == 0)
 		M.emote("[M.friendly] [src]")

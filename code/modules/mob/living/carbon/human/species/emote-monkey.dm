@@ -1,5 +1,6 @@
 /datum/emote/living/carbon/human/primate
 	species_type_allowed_typecache = list(/datum/species/monkey)
+	keybind = FALSE
 
 /datum/emote/living/carbon/human/primate/jump
 	key = "jump"

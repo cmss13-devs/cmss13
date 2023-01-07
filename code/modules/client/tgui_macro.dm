@@ -1,10 +1,9 @@
-GLOBAL_LIST_INIT(ui_data_keybindings, generate_keybind_ui_data())
+GLOBAL_LIST_EMPTY(ui_data_keybindings)
 
 /proc/generate_keybind_ui_data()
-	. = list()
-	for (var/name in GLOB.keybindings_by_name)
+	for(var/name in GLOB.keybindings_by_name)
 		var/datum/keybinding/kb = GLOB.keybindings_by_name[name]
-		.[kb.category] += list(list(
+		GLOB.ui_data_keybindings[kb.category] += list(list(
 			"name" = kb.name,
 			"full_name" = kb.full_name,
 			"hotkey" = kb.hotkey_keys,

@@ -1,5 +1,6 @@
 /datum/emote/living/carbon/human/yautja
 	species_type_allowed_typecache = list(/datum/species/yautja)
+	keybind_category = CATEGORY_YAUTJA_EMOTE
 
 /datum/emote/living/carbon/human/yautja/anytime
 	key = "anytime"

@@ -29,6 +29,7 @@
 /datum/emote/help
 	key = "help"
 	mob_type_ignore_stat_typecache = list(/mob/dead/observer)
+	keybind = FALSE
 
 /datum/emote/help/run_emote(mob/user, params, type_override, intentional)
 	. = ..()
@@ -47,3 +48,12 @@
 	message += "."
 	message = message.Join("")
 	to_chat(user, message)
+
+/datum/emote/custom
+	key = "me"
+	key_third_person = "custom"
+	keybind = FALSE
+
+/datum/emote/custom/run_emote(mob/user, params, type_override, intentional = FALSE, prefix)
+	message = params
+	return ..()

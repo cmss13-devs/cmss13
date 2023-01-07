@@ -48,6 +48,10 @@
 	var/say_message
 	/// What volume should the sound be played at?
 	var/volume = 50
+	/// Should this emote generate a keybind?
+	var/keybind = TRUE
+	/// Does this emote have a custom keybind category?
+	var/keybind_category = CATEGORY_EMOTE
 
 /datum/emote/New()
 	switch(mob_type_allowed_typecache)

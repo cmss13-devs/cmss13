@@ -1,5 +1,6 @@
 /datum/emote/living/carbon/human
 	mob_type_allowed_typecache = list(/mob/living/carbon/human)
+	keybind_category = CATEGORY_HUMAN_EMOTE
 
 	/// Species that can use this emote.
 	var/list/species_type_allowed_typecache = list(/datum/species/human, /datum/species/synthetic, /datum/species/yautja)

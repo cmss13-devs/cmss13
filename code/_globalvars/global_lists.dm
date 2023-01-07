@@ -444,6 +444,10 @@ var/global/list/available_specialist_kit_boxes = list(
 			"Demo" = 2,
 			)
 
+/proc/init_global_referenced_datums()
+	init_keybindings()
+	generate_keybind_ui_data()
+
 /proc/init_emote_list()
 	. = list()
 	for(var/path in subtypesof(/datum/emote))

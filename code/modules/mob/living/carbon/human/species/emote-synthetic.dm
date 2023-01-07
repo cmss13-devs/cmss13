@@ -1,5 +1,6 @@
 /datum/emote/living/carbon/human/synthetic/working_joe
 	species_type_allowed_typecache = list(/datum/species/synthetic/colonial/working_joe)
+	keybind_category = CATEGORY_SYNTH_EMOTE
 	volume = 75
 
 /datum/emote/living/carbon/human/synthetic/working_joe/alwaysknow

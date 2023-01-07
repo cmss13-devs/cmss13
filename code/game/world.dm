@@ -63,7 +63,7 @@ var/list/reboot_sfx = file2list("config/reboot_sfx.txt")
 	//Emergency Fix
 	//end-emergency fix
 
-	. = ..()
+	init_global_referenced_datums()
 
 	var/testing_locally = (world.params && world.params["local_test"])
 	var/running_tests = (world.params && world.params["run_tests"])

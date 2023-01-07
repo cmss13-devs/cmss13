@@ -1,5 +1,6 @@
 /datum/emote/living/brain
 	mob_type_allowed_typecache = list(/mob/living/brain)
+	keybind = FALSE
 
 /datum/emote/brain/can_run_emote(mob/user, status_check = TRUE, intentional = FALSE)
 	. = ..()

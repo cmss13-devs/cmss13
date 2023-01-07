@@ -13,9 +13,9 @@
 /obj/effect/decal/warning_stripes/setDir(newdir)
 	. = ..()
 	switch(newdir)
-		if(1)
+		if(NORTH)
 			icon_state = initial_icon_state
-		if(2)
+		if(SOUTH)
 			switch(initial_icon_state)
 				if("W")
 					icon_state = "E"
@@ -34,7 +34,7 @@
 				if("NE-out")
 					icon_state = "SW-out"
 
-		if(4)
+		if(EAST)
 			switch(initial_icon_state)
 				if("W")
 					icon_state = "N"
@@ -52,7 +52,7 @@
 					icon_state = "NE-out"
 				if("NE-out")
 					icon_state = "SE-out"
-		if(8)
+		if(WEST)
 			switch(initial_icon_state)
 				if("W")
 					icon_state = "S"

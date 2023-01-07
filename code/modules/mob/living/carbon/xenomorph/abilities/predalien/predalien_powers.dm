@@ -10,7 +10,7 @@
 	if(!check_and_use_plasma_owner())
 		return
 
-	playsound(xeno.loc, screech_sound_effect, 75, 0, status = 0)
+	playsound(xeno.loc, pick(predalien_roar), 75, 0, status = 0)
 	xeno.visible_message(SPAN_XENOHIGHDANGER("[xeno] emits a guttural roar!"))
 	xeno.create_shriekwave(color = "#FF0000")
 

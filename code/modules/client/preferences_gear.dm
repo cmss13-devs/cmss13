@@ -188,6 +188,18 @@ var/global/list/gear_datums = list()
 	slot = WEAR_FACE
 	cost = 1
 
+/datum/gear/balaclava
+	display_name = "Black Balaclava"
+	path = /obj/item/clothing/mask/balaclava
+	slot = WEAR_FACE
+	cost = 2
+
+/datum/gear/balaclava/green
+	display_name = "Green Balaclava"
+	path = /obj/item/clothing/mask/balaclava/tactical
+	slot = WEAR_FACE
+	cost = 2
+
 /datum/gear/coif
 	display_name = "Coif"
 	path = /obj/item/clothing/mask/rebreather/scarf
@@ -685,4 +697,10 @@ var/global/list/gear_datums = list()
 	display_name = "PDT/L Kit"
 	path = /obj/item/storage/box/pdt_kit
 	cost = 3
+	slot = WEAR_IN_BACK
+
+/datum/gear/sunscreen_stick
+	display_name = "USCM Issue Sunscreen"
+	path = /obj/item/facepaint/sunscreen_stick
+	cost = 1 //The cadmium poisoning pays for the discounted cost longterm
 	slot = WEAR_IN_BACK

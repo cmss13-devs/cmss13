@@ -1,5 +1,0 @@
-author: "Segrain"
-delete-after: True
-changes:
-  - bugfix: "Splitting stacks actually works now."
-  - bugfix: "Aliens and telekinetics no longer can abuse splitting stacks."

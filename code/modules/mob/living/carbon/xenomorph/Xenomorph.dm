@@ -292,6 +292,8 @@
 	var/icon_xeno
 	var/icon_xenonid
 
+	bubble_icon = "alien"
+
 	/////////////////////////////////////////////////////////////////////
 	//
 	// Phero related vars

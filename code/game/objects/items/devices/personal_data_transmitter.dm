@@ -166,3 +166,13 @@
 /obj/item/storage/box/pdt_kit/fill_preset_inventory()
 	new /obj/item/device/pdt_locator_tube(src, new /obj/item/clothing/accessory/pdt_bracelet(src))
 	new /obj/item/cell/crap(src) //it not fitting is intentional
+
+/// THE ADVANCED VERSION... ADMIN SPAWN ONLY... USES TGUI RADAR... \\\
+
+/obj/item/storage/box/pdt_kit/advanced
+	name = "advanced PDT/L Battle Buddy kit"
+	desc = "Contains a PDT/L set, consisting of the advanced PDT bracelet and its sister locator tube, alongside a spare cell seemingly wedged into the kit."
+
+/obj/item/storage/box/pdt_kit/advanced/fill_preset_inventory()
+	new /obj/item/device/pdt_locator_tube(src, new /obj/item/clothing/accessory/pdt_bracelet(src))
+	new /obj/item/cell/crap(src) //it not fitting is intentional

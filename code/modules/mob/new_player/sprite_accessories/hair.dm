@@ -718,9 +718,9 @@
 	icon_state = "hair_oxton"
 
 /datum/sprite_accessory/hair/row_braid
-    name = "Row Braid"
+	name = "Row Braid"
 	icon_state = "hair_row_braid_s"
 
 /datum/sprite_accessory/hair/croft
-    name = "Croft"
+	name = "Croft"
 	icon_state ="hair_croft_s"

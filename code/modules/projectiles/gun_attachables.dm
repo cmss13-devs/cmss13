@@ -1493,8 +1493,8 @@ Defined in conflicts.dm of the #defines folder.
 	hud_offset_mod = 10 //A sprite long enough to touch the Moon.
 
 /obj/item/attachable/stock/smg
-	name = "submachinegun stock"
-	desc = "A rare ARMAT stock distributed in small numbers to USCM forces. Compatible with the M39, this stock reduces recoil and improves accuracy, but at a reduction to handling and agility. Seemingly a bit more effective in a brawl"
+	name = "submachinegun solid stock"
+	desc = "A rare ARMAT solid stock distributed in small numbers to USCM forces. Compatible with the M39, this stock reduces recoil and improves accuracy, but at a reduction to handling and agility. Seemingly a bit more effective in a brawl"
 	slot = "stock"
 	melee_mod = 15
 	size_mod = 1
@@ -1506,19 +1506,21 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/stock/smg/New()
 	..()
+	//buffs
 	accuracy_mod = HIT_ACCURACY_MULT_TIER_7
 	recoil_mod = -RECOIL_AMOUNT_TIER_4
 	scatter_mod = -SCATTER_AMOUNT_TIER_8
 	burst_scatter_mod = -2
-	delay_mod = 0
-	wield_delay_mod = WIELD_DELAY_FAST
-	movement_onehanded_acc_penalty_mod = -MOVEMENT_ACCURACY_PENALTY_MULT_TIER_5
+	//debuffs
+	wield_delay_mod = WIELD_DELAY_VERY_FAST
 	aim_speed_mod = CONFIG_GET(number/slowdown_low)
-
+	accuracy_unwielded_mod = -HIT_ACCURACY_MULT_TIER_10
+	recoil_unwielded_mod = RECOIL_AMOUNT_TIER_3
+	scatter_unwielded_mod = SCATTER_AMOUNT_TIER_10
 
 /obj/item/attachable/stock/smg/collapsible
 	name = "submachinegun folding stock"
-	desc = "A Kirchner brand K2 M39 folding stock, standard issue in the USCM. The stock, when extended, reduces recoil and improves accuracy, but at a reduction to handling and size. Seemingly a bit more effective in a brawl. This stock can collapse in, removing all positive and negative effects."
+	desc = "A Kirchner brand K2 M39 folding stock, standard issue in the USCM. The stock, when extended, reduces recoil and improves accuracy, but at a reduction to handling. Seemingly a bit more effective in a brawl. This stock can collapse in allowing it to fit on a belt."
 	slot = "stock"
 	melee_mod = 10
 	size_mod = 1
@@ -1540,7 +1542,6 @@ Defined in conflicts.dm of the #defines folder.
 	scatter_mod = -SCATTER_AMOUNT_TIER_8
 	wield_delay_mod = WIELD_DELAY_VERY_FAST
 	burst_scatter_mod = -1
-	delay_mod = 0
 	movement_onehanded_acc_penalty_mod = -MOVEMENT_ACCURACY_PENALTY_MULT_TIER_5
 	//it makes stuff much worse when one handed
 	accuracy_unwielded_mod = -HIT_ACCURACY_MULT_TIER_3

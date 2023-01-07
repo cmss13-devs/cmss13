@@ -95,9 +95,14 @@
 		to_chat(user, SPAN_WARNING("This item is not suitable for the gibber!"))
 		return
 
-	if( !iscarbon(G.grabbed_thing) && !istype(G.grabbed_thing, /mob/living/simple_animal) )
+	if(!iscarbon(G.grabbed_thing) && !istype(G.grabbed_thing, /mob/living/simple_animal))
 		to_chat(user, SPAN_WARNING("This item is not suitable for the gibber!"))
 		return
+
+	if(istype(G.grabbed_thing, /mob/living/carbon/human))
+		to_chat(user, SPAN_WARNING("Are you insane?"))
+		return
+
 	var/mob/living/M = G.grabbed_thing
 	if(user.grab_level < GRAB_AGGRESSIVE && !istype(G.grabbed_thing, /mob/living/carbon/Xenomorph))
 		to_chat(user, SPAN_WARNING("You need a better grip to do that!"))
@@ -165,10 +170,6 @@
 				totalslabs = 6
 			else
 				totalslabs += X.tier
-	else
-		if(istypestrict(occupant, /mob/living/carbon/human))
-			meat_template = /obj/item/reagent_container/food/snacks/meat/human
-			totalslabs = 3
 
 	var/obj/item/reagent_container/food/snacks/meat/allmeat[totalslabs]
 	for(var/i in 1 to totalslabs)

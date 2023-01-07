@@ -63236,7 +63236,7 @@
 	pixel_x = 4
 	},
 /obj/item/tool/kitchen/knife{
-	step_x = -9
+	pixel_x = -9
 	},
 /turf/open/floor/prison{
 	icon_state = "kitchen"

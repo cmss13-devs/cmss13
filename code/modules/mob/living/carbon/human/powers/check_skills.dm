@@ -37,7 +37,7 @@
 		var/datum/skill/skilldatum = get_skill(skillname)
 
 		skills_data_list += list(list(
-			"name" = skilldatum.readable_skill_name ? skilldatum.readable_skill_name : skilldatum.skill_name
+			"name" = skilldatum.readable_skill_name ? skilldatum.readable_skill_name : skilldatum.skill_name,
 			"realname" = skilldatum.skill_name,
 			"level" = get_skill_level(skillname),
 			"maxlevel" = skilldatum.max_skill_level

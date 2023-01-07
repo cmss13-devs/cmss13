@@ -10,7 +10,7 @@
 #define HUMAN_STRIP_DELAY 40 //takes 40ds = 4s to strip someone.
 #define POCKET_STRIP_DELAY 20
 
-///////////////////LIMB DEFINES///////////////////
+///////////////////LIMB FLAGS///////////////////
 
 #define LIMB_ORGANIC (1<<0)
 #define LIMB_ROBOT (1<<1)
@@ -175,3 +175,8 @@
 #define RELIGION_AGNOSTICISM "Agnostic"
 
 #define MAXIMUM_DROPPED_OBJECTS_REMEMBERED 2
+
+///////////////////MISC HUMAN FLAGS (LINKED TO VAR: FLAGS_HUMAN_MISC)///////////////////
+
+#define HUMAN_FLAG_CHANGED (1<<0)
+

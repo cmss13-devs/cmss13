@@ -188,6 +188,18 @@ var/global/list/gear_datums = list()
 	slot = WEAR_FACE
 	cost = 1
 
+/datum/gear/balaclava
+	display_name = "Black Balaclava"
+	path = /obj/item/clothing/mask/balaclava
+	slot = WEAR_FACE
+	cost = 2
+
+/datum/gear/balaclava/green
+	display_name = "Green Balaclava"
+	path = /obj/item/clothing/mask/balaclava/tactical
+	slot = WEAR_FACE
+	cost = 2
+
 /datum/gear/coif
 	display_name = "Coif"
 	path = /obj/item/clothing/mask/rebreather/scarf

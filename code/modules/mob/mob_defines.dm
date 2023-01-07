@@ -235,6 +235,9 @@
 	///the mob's tgui player panel
 	var/datum/player_panel/mob_panel
 
+	///the mob's tgui player panel
+	var/datum/language_menu/mob_language_menu
+
 	var/datum/focus
 
 	///the current turf being examined in the stat panel

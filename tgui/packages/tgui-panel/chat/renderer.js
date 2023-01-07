@@ -190,6 +190,8 @@ class ChatRenderer {
       const text = setting.highlightText;
       const highlightColor = setting.highlightColor;
       const highlightWholeMessage = setting.highlightWholeMessage;
+      const matchWord = setting.matchWord;
+      const matchCase = setting.matchCase;
       const allowedRegex = /^[a-z0-9_\-$/^[\s\]\\]+$/gi;
       const lines = String(text)
         .split(',')
@@ -230,8 +232,15 @@ class ChatRenderer {
         }
       }
       const regexStr = regexExpressions.join('|');
+      const flags = 'g' + (matchCase ? '' : 'i');
+      // setting regex overrides matchword
       if (regexStr) {
-        highlightRegex = new RegExp('(' + regexStr + ')', 'gi');
+        highlightRegex = new RegExp('(' + regexStr + ')', flags);
+      } else {
+        const pattern = `${matchWord ? '\\b' : ''}(${lines.join('|')})${
+          matchWord ? '\\b' : ''
+        }`;
+        highlightRegex = new RegExp(pattern, flags);
       }
       // Lazy init
       if (!this.highlightParsers) {

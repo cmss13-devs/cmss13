@@ -3,7 +3,7 @@
 /datum/supply_packs/Smartgunner_kit
 	name = "M56B Smartgun System Package (x1)"
 	contains = list(/obj/item/storage/box/m56_system)
-	cost = 50
+	cost = 100
 	containertype = /obj/structure/closet/crate/weapon
 	containername = "\improper M56B Smartgun System Package"
 	group = "Restricted Equipment"

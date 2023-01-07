@@ -1,25 +1,12 @@
 //large item crates
 
-/datum/supply_packs/floodlight
-	name = "floodlight crate (x4)"
-	contains = list(
-					/obj/structure/machinery/floodlight,
-					/obj/structure/machinery/floodlight,
-					/obj/structure/machinery/floodlight,
-					/obj/structure/machinery/floodlight,
-					)
-	cost = 20
-	containertype = /obj/structure/largecrate
-	containername = "\improper Floodlights Crate"
-	group = "Operations"
-
 /datum/supply_packs/powerloader
 	name = "powerloader crate"
 	contains = list(
 					/obj/vehicle/powerloader,
 					/obj/item/pamphlet/skill/powerloader,
 					)
-	cost = 20
+	cost = 25
 	containertype = /obj/structure/largecrate
 	containername = "\improper Powerloader Crate"
 	group = "Operations"

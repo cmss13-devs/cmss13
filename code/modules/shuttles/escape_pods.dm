@@ -1,12 +1,12 @@
 //=========================================================================================
 //===================================Shuttle Datum=========================================
 //=========================================================================================
-#define STATE_IDLE			4 //Pod is idle, not ready to launch.
-#define STATE_BROKEN		5 //Pod failed to launch, is now broken.
-#define STATE_READY			6 //Pod is armed and ready to go.
-#define STATE_DELAYED		7 //Pod is being delayed from launching automatically.
-#define STATE_LAUNCHING		8 //Pod is about to launch.
-#define STATE_LAUNCHED		9 //Pod has successfully launched.
+#define STATE_IDLE 4 //Pod is idle, not ready to launch.
+#define STATE_BROKEN 5 //Pod failed to launch, is now broken.
+#define STATE_READY 6 //Pod is armed and ready to go.
+#define STATE_DELAYED 7 //Pod is being delayed from launching automatically.
+#define STATE_LAUNCHING 8 //Pod is about to launch.
+#define STATE_LAUNCHED 9 //Pod has successfully launched.
 /*Other states are located in docking_program.dm, but they aren't important here.
 This is built upon a weird network of different states, including docking states, moving
 states, process states, and so forth. It's disorganized, but I tried to keep it in line
@@ -290,8 +290,8 @@ As such, a new tracker datum must be constructed to follow proper child inherita
 	//id_tag is the generic connection tag.
 
 	//receive_user_command(command)
-	//	if(dock_state == STATE_READY)
-	//		..(command)
+	// if(dock_state == STATE_READY)
+	// ..(command)
 
 /datum/computer/file/embedded_program/docking/simple/escape_pod/prepare_for_undocking()
 	playsound(master,'sound/effects/escape_pod_warmup.ogg', 50, 1)
@@ -450,36 +450,3 @@ As such, a new tracker datum must be constructed to follow proper child inherita
 #undef STATE_READY
 #undef STATE_BROKEN
 #undef STATE_LAUNCHED
-
-/*
-//Leaving this commented out for the CL pod, which should have a way to open from the outside.
-
-//This controller is for the escape pod berth (station side)
-/obj/structure/machinery/embedded_controller/radio/simple_docking_controller/escape_pod_berth
-	name = "escape pod berth controller"
-
-/obj/structure/machinery/embedded_controller/radio/simple_docking_controller/escape_pod_berth/Initialize()
-	. = ..()
-	docking_program = new/datum/computer/file/embedded_program/docking/simple/escape_pod(src)
-	program = docking_program
-
-/obj/structure/machinery/embedded_controller/radio/simple_docking_controller/escape_pod_berth/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
-	var/armed = null
-	if (istype(docking_program, /datum/computer/file/embedded_program/docking/simple/escape_pod))
-		var/datum/computer/file/embedded_program/docking/simple/escape_pod/P = docking_program
-		armed = P.armed
-
-	var/data[] = list(
-		"docking_status" = docking_program.get_docking_status(),
-		"override_enabled" = docking_program.override_enabled,
-		"armed" = armed,
-	)
-
-	ui = nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
-
-	if (!ui)
-		ui = new(user, src, ui_key, "escape_pod_berth_console.tmpl", name, 470, 290)
-		ui.set_initial_data(data)
-		ui.open()
-		ui.set_auto_update(1)
-*/

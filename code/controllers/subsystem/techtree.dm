@@ -1,6 +1,6 @@
 SUBSYSTEM_DEF(techtree)
 	name = "Tech Tree"
-	init_order	= SS_INIT_TECHTREE
+	init_order = SS_INIT_TECHTREE
 
 	flags = SS_NO_FIRE
 

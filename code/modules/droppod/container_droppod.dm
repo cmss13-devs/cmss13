@@ -75,7 +75,7 @@
 			if(isXeno(user)) return
 			var/obj/item/grab/G = W
 			if(G.grabbed_thing)
-				src.MouseDrop_T(G.grabbed_thing, user)      //act like they were dragged onto the closet
+				src.MouseDrop_T(G.grabbed_thing, user)   //act like they were dragged onto the closet
 			return
 
 		if(W.flags_item & ITEM_ABSTRACT)

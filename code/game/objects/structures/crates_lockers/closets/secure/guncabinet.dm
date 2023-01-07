@@ -66,7 +66,7 @@
 		deconstruct(FALSE)
 
 /obj/structure/closet/secure_closet/guncabinet/mp_armory
-//	req_access = list(ACCESS_MARINE_BRIG)
+// req_access = list(ACCESS_MARINE_BRIG)
 	req_level = SEC_LEVEL_RED
 
 /obj/structure/closet/secure_closet/guncabinet/mp_armory/Initialize()
@@ -82,7 +82,7 @@
 
 /obj/structure/closet/secure_closet/guncabinet/riot_control
 	name = "riot control equipment closet"
-//	req_access = list(ACCESS_MARINE_BRIG)
+// req_access = list(ACCESS_MARINE_BRIG)
 	storage_capacity = 55 //lots of stuff to fit in
 	req_level = SEC_LEVEL_RED
 

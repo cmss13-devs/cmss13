@@ -481,6 +481,53 @@ GLOBAL_PROTECT(AdminProcCallSpamPrevention)
 
 	message_staff("[key_name_admin(usr)] has given [M.key] null skills.")
 
+/client/proc/admin_create_account(mob/target in GLOB.mob_list)
+	set category = null
+	set name = "Create Bank Account"
+
+	if(!ishuman(target))
+		to_chat(src, SPAN_WARNING("This only works on humans"))
+		return
+
+	var/mob/living/carbon/human/account_user = target
+
+	if(account_user.mind?.initial_account)
+		var/warning = tgui_alert(src, "They already have an account, proceeding will delete it. Are you sure you wish to continue?", "Confirm", list("Proceed", "Cancel"))
+		if(warning != "Proceed")
+			return
+		else
+			QDEL_NULL(account_user.mind.initial_account)
+
+	var/datum/money_account/generated_account
+
+	var/starting_amount = tgui_input_number(src, "How much money should they start with?", "Pick starting amount", 30, 100000, 0)
+	if(!starting_amount)
+		starting_amount = 0
+
+	var/custom_paygrade = tgui_input_list(src, "Select paygrade of account", "Account paygrade", GLOB.paygrades)
+	if(!custom_paygrade)
+		to_chat(src, SPAN_WARNING("They must have a paygrade!"))
+		return
+
+
+	var/datum/paygrade/account_paygrade = GLOB.paygrades[custom_paygrade]
+	var/obj/item/card/id/card = account_user.wear_id
+	generated_account = create_account(account_user.real_name, starting_amount, account_paygrade)
+	if(card)
+		card.associated_account_number = generated_account.account_number
+		card.paygrade = account_paygrade
+	if(account_user.mind)
+		var/remembered_info = ""
+		remembered_info += "<b>Your account number is:</b> #[generated_account.account_number]<br>"
+		remembered_info += "<b>Your account pin is:</b> [generated_account.remote_access_pin]<br>"
+		remembered_info += "<b>Your account funds are:</b> $[generated_account.money]<br>"
+
+		if(generated_account.transaction_log.len)
+			var/datum/transaction/T = generated_account.transaction_log[1]
+			remembered_info += "<b>Your account was created:</b> [T.time], [T.date] at [T.source_terminal]<br>"
+		account_user.mind.store_memory(remembered_info)
+		account_user.mind.initial_account = generated_account
+
 /client/proc/cmd_assume_direct_control(var/mob/M in GLOB.mob_list)
 	set name = "Control Mob"
 	set desc = "Assume control of the mob"

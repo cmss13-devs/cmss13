@@ -161,7 +161,7 @@
 				if(!subspace_transmission)
 					channels = list()
 				//else
-				//	recalculateChannels()
+				// recalculateChannels()
 				. = TRUE
 
 /obj/item/device/radio/proc/text_wires()
@@ -183,7 +183,7 @@
 			channel_key = key
 			break
 	return {"
-			<tr><td><B>[chan_name]</B>	[channel_key]</td>
+			<tr><td><B>[chan_name]</B> [channel_key]</td>
 			<td><A href='byond://?src=\ref[src];ch_name=[chan_name];listen=[!list]'>[list ? "Engaged" : "Disengaged"]</A></td></tr>
 			"}
 
@@ -210,7 +210,7 @@
 	if(!M || !message) return
 
 	//  Uncommenting this. To the above comment:
-	// 	The permacell radios aren't suppose to be able to transmit, this isn't a bug and this "fix" is just making radio wires useless. -Giacom
+	// The permacell radios aren't suppose to be able to transmit, this isn't a bug and this "fix" is just making radio wires useless. -Giacom
 	if(!(src.wires & WIRE_TRANSMIT)) // The device has to have all its wires and shit intact
 		return
 
@@ -241,7 +241,7 @@
 	//#### Tagging the signal with all appropriate identity values ####//
 
 	// ||-- The mob's name identity --||
-	var/displayname = M.name	// grab the display name (name you get when you hover over someone's icon)
+	var/displayname = M.name // grab the display name (name you get when you hover over someone's icon)
 	var/real_name = M.real_name // mob's real name
 	var/voicemask = 0 // the speaker is wearing a voice mask
 
@@ -453,7 +453,7 @@
 		R.cell_use_power(C.active_usage)
 
 /obj/item/device/radio/borg/attackby(obj/item/W as obj, mob/user as mob)
-//	..()
+// ..()
 	user.set_interaction(src)
 	if (!(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER) || (istype(W, /obj/item/device/encryptionkey))))
 		return

@@ -99,13 +99,13 @@
 			to_chat(M, "<span class='game deadsay'><span class='prefix'>DEAD:</span> <span class='name'>[name] (<a href='byond://?src=\ref[M];track=\ref[src]'>F</a>)</span> says, <span class='message'>\"[message]\"</span></span>")
 
 		else if(M.client && M.client.admin_holder && (M.client.admin_holder.rights & R_MOD) && M.client.prefs && (M.client.prefs.toggles_chat & CHAT_DEAD) ) // Show the message to admins/mods with deadchat toggled on
-			to_chat(M, "<span class='game deadsay'><span class='prefix'>DEAD:</span> <span class='name'>[name]</span> says, <span class='message'>\"[message]\"</span></span>")	//Admins can hear deadchat, if they choose to, no matter if they're blind/deaf or not.
+			to_chat(M, "<span class='game deadsay'><span class='prefix'>DEAD:</span> <span class='name'>[name]</span> says, <span class='message'>\"[message]\"</span></span>") //Admins can hear deadchat, if they choose to, no matter if they're blind/deaf or not.
 
 	if(length(langchat_listeners))
 		langchat_speech(message, langchat_listeners, GLOB.all_languages, skip_language_check = TRUE)
 
 /mob/proc/say_understands(var/mob/other,var/datum/language/speaking = null)
-	if (src.stat == 2)		//Dead
+	if (src.stat == 2) //Dead
 		return 1
 
 	//Universal speak makes everything understandable, for obvious reasons.
@@ -132,12 +132,12 @@
 	return 0
 
 /*
-   ***Deprecated***
-   let this be handled at the hear_say or hear_radio proc
-   This is left in for robot speaking when humans gain binary channel access until I get around to rewriting
-   robot_talk() proc.
-   There is no language handling build into it however there is at the /mob level so we accept the call
-   for it but just ignore it.
+***Deprecated***
+let this be handled at the hear_say or hear_radio proc
+This is left in for robot speaking when humans gain binary channel access until I get around to rewriting
+robot_talk() proc.
+There is no language handling build into it however there is at the /mob level so we accept the call
+for it but just ignore it.
 */
 
 /mob/proc/say_quote(var/message, var/datum/language/speaking = null)

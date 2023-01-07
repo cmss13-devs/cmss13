@@ -291,9 +291,9 @@
 		var/datum/D = thing
 		i++
 		//try one of 3 methods to shorten the type text:
-		//	fancy type,
-		//	fancy type with the base type removed from the begaining,
-		//	the type with the base type removed from the begaining
+		// fancy type,
+		// fancy type with the base type removed from the begaining,
+		// the type with the base type removed from the begaining
 		var/fancytype = types[D.type]
 		if (findtext(fancytype, types[type]))
 			fancytype = copytext(fancytype, length(types[type]) + 1)

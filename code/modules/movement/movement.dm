@@ -8,10 +8,10 @@
 	return TRUE
 
 /*
- *	Checks whether an atom can pass through the calling atom into its target turf.
- *	Returns the blocking direction.
- *		If the atom's movement is not blocked, returns 0.
- *		If the object is completely solid, returns ALL
+ * Checks whether an atom can pass through the calling atom into its target turf.
+ * Returns the blocking direction.
+ * If the atom's movement is not blocked, returns 0.
+ * If the object is completely solid, returns ALL
  */
 /atom/proc/BlockedPassDirs(atom/movable/mover, target_dir)
 	var/reverse_dir = REVERSE_DIR(dir)
@@ -33,10 +33,10 @@
 		return BLOCKED_MOVEMENT
 
 /*
- *	Checks whether an atom can leave its current turf through the calling atom.
- *	Returns the blocking direction.
- *		If the atom's movement is not blocked, returns 0 (no directions)
- *		If the object is completely solid, returns all directions
+ * Checks whether an atom can leave its current turf through the calling atom.
+ * Returns the blocking direction.
+ * If the atom's movement is not blocked, returns 0 (no directions)
+ * If the object is completely solid, returns all directions
  */
 /atom/proc/BlockedExitDirs(atom/movable/mover, target_dir)
 	var/flags_can_pass = pass_flags.flags_can_pass_all|flags_can_pass_all_temp|pass_flags.flags_can_pass_behind|flags_can_pass_behind_temp
@@ -123,12 +123,12 @@
 					old_area.Exited(src, destination)
 			for(var/atom/movable/AM in oldloc)
 				AM.Uncrossed(src)
-//			var/turf/oldturf = get_turf(oldloc)  // TODO: maploader
-//			var/turf/destturf = get_turf(destination)
-//			var/old_z = (oldturf ? oldturf.z : null)
-//			var/dest_z = (destturf ? destturf.z : null)
-//			if(old_z != dest_z)
-//				onTransitZ(old_z, dest_z)
+// var/turf/oldturf = get_turf(oldloc)  // TODO: maploader
+// var/turf/destturf = get_turf(destination)
+// var/old_z = (oldturf ? oldturf.z : null)
+// var/dest_z = (destturf ? destturf.z : null)
+// if(old_z != dest_z)
+// onTransitZ(old_z, dest_z)
 			destination.Entered(src, oldloc)
 			if(destarea && old_area != destarea)
 				destarea.Entered(src, oldloc)

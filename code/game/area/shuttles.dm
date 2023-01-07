@@ -11,9 +11,9 @@
 
 
 ///area/shuttle/Initialize()
-//	if(!canSmoothWithAreas)
-//		canSmoothWithAreas = type
-//	. = ..()
+// if(!canSmoothWithAreas)
+// canSmoothWithAreas = type
+// . = ..()
 
 /area/shuttle/PlaceOnTopReact(list/new_baseturfs, turf/fake_turf_type, flags)
 	. = ..()

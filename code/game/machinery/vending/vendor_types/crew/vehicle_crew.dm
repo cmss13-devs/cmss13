@@ -12,7 +12,7 @@
 
 	unslashable = TRUE
 
-	vend_delay = 40
+	vend_delay = 4 SECONDS
 	vend_sound = 'sound/machines/medevac_extend.ogg'
 
 	var/selected_vehicle
@@ -34,7 +34,7 @@
 	T = get_step(T, SOUTH)
 	return T
 
-/obj/structure/machinery/cm_vending/gear/vehicle_crew/tip_over()	//we don't do this here
+/obj/structure/machinery/cm_vending/gear/vehicle_crew/tip_over() //we don't do this here
 	return
 
 /obj/structure/machinery/cm_vending/gear/vehicle_crew/flip_back()
@@ -51,7 +51,7 @@
 	UnregisterSignal(SSdcs, COMSIG_GLOB_VEHICLE_ORDERED)
 
 	selected_vehicle = "APC"
-	available_categories &= ~(VEHICLE_ARMOR_AVAILABLE|VEHICLE_INTEGRAL_AVAILABLE)	//APC lacks these, so we need to remove these flags to be able to access spare parts section
+	available_categories &= ~(VEHICLE_ARMOR_AVAILABLE|VEHICLE_INTEGRAL_AVAILABLE) //APC lacks these, so we need to remove these flags to be able to access spare parts section
 
 /obj/structure/machinery/cm_vending/gear/vehicle_crew/get_listed_products(mob/user)
 	var/list/display_list = list()
@@ -72,7 +72,7 @@
 	else if(selected_vehicle == "APC")
 		if(available_categories)
 			display_list = GLOB.cm_vending_vehicle_crew_apc
-		else		//APC stuff costs more to prevent 4000 points spent on shitton of ammunition
+		else //APC stuff costs more to prevent 4000 points spent on shitton of ammunition
 			display_list = GLOB.cm_vending_vehicle_crew_apc_spare
 	return display_list
 
@@ -80,7 +80,7 @@
 	. = list()
 	. += ui_static_data(user)
 
-	if(supply_controller.tank_points)		//we steal points from supply_controller, meh-he-he. Solely to be able to modify amount of points in vendor if needed by just changing one var.
+	if(supply_controller.tank_points) //we steal points from supply_controller, meh-he-he. Solely to be able to modify amount of points in vendor if needed by just changing one var.
 		available_points_to_display = supply_controller.tank_points
 		supply_controller.tank_points = 0
 	.["current_m_points"] = available_points_to_display
@@ -88,7 +88,7 @@
 	var/list/ui_listed_products = get_listed_products(user)
 	var/list/stock_values = list()
 	for (var/i in 1 to length(ui_listed_products))
-		var/list/myprod = ui_listed_products[i]	//we take one list from listed_products
+		var/list/myprod = ui_listed_products[i] //we take one list from listed_products
 		var/prod_available = FALSE
 		var/p_cost = myprod[2]
 		var/avail_flag = myprod[4]

@@ -13,7 +13,7 @@
 //======================================\\
 
 /*
-				 EQUIPMENT
+				EQUIPMENT
 */
 
 //======================================\\
@@ -897,13 +897,13 @@
 	new /obj/item/tool/surgery/stabilizer_gel(src)
 	new /obj/item/tool/surgery/healing_gun(src)
 	new /obj/item/tool/surgery/wound_clamp(src)
-	new	/obj/item/device/healthanalyzer/alien(src)
-	new	/obj/item/reagent_container/hypospray/autoinjector/yautja(src)
-	new	/obj/item/reagent_container/hypospray/autoinjector/yautja(src)
-	new	/obj/item/reagent_container/hypospray/autoinjector/yautja(src)
-	new	/obj/item/tool/surgery/healing_gel/(src)
-	new	/obj/item/tool/surgery/healing_gel/(src)
-	new	/obj/item/tool/surgery/healing_gel/(src)
+	new /obj/item/device/healthanalyzer/alien(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/yautja(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/yautja(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/yautja(src)
+	new /obj/item/tool/surgery/healing_gel/(src)
+	new /obj/item/tool/surgery/healing_gel/(src)
+	new /obj/item/tool/surgery/healing_gel/(src)
 
 /obj/item/storage/medicomp/update_icon()
 	if(!contents.len)

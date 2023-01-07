@@ -1,4 +1,0 @@
-author: "carlarctg"
-delete-after: True
-changes:
-  - bugfix: "Fixed entering APC being 0.1 seconds instead of 1 second."

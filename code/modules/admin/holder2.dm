@@ -4,18 +4,18 @@ GLOBAL_VAR_INIT(href_token, GenerateToken())
 GLOBAL_PROTECT(href_token)
 
 /datum/admins
-	var/rank			= "Temporary Admin"
-	var/list/extra_titles		= null
-	var/client/owner	= null
+	var/rank = "Temporary Admin"
+	var/list/extra_titles = null
+	var/client/owner = null
 	var/rights = 0
-	var/fakekey			= null
+	var/fakekey = null
 
 	var/list/datum/marked_datums = list()
 
-	var/admincaster_screen = 0	//See newscaster.dm under machinery for a full description
+	var/admincaster_screen = 0 //See newscaster.dm under machinery for a full description
 	var/datum/feed_message/admincaster_feed_message = new /datum/feed_message   //These two will act as admin_holders.
 	var/datum/feed_channel/admincaster_feed_channel = new /datum/feed_channel
-	var/admincaster_signature	//What you'll sign the newsfeeds as
+	var/admincaster_signature //What you'll sign the newsfeeds as
 
 	var/href_token
 
@@ -114,7 +114,7 @@ you will have to do something like if(client.admin_holder.rights & R_ADMIN) your
 				return 1
 			if(usr.client.admin_holder.rights != other.admin_holder.rights)
 				if( (usr.client.admin_holder.rights & other.admin_holder.rights) == other.admin_holder.rights )
-					return 1	//we have all the rights they have and more
+					return 1 //we have all the rights they have and more
 		to_chat(usr, "<font color='red'>Error: Cannot proceed. They have more or equal rights to us.</font>")
 	return 0
 
@@ -161,7 +161,7 @@ you will have to do something like if(client.admin_holder.rights & R_ADMIN) your
 	if(target != GLOBAL_PROC)
 		GLOB.LastAdminCalledTargetRef = "[REF(target)]"
 
-	GLOB.AdminProcCaller = ckey	//if this runtimes, too bad for you
+	GLOB.AdminProcCaller = ckey //if this runtimes, too bad for you
 	++GLOB.AdminProcCallCount
 	. = world.WrapAdminProcCall(target, procname, arguments)
 	if(--GLOB.AdminProcCallCount == 0)

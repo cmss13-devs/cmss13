@@ -155,7 +155,7 @@
 
 	M.key = key
 	if(M.client) M.client.change_view(world_view_size)
-//	M.Login()	//wat
+// M.Login() //wat
 	return
 
 /*/mob/dead/observer/verb/observe()

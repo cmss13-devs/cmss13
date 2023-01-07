@@ -1,8 +1,8 @@
 
 #define COLOR_BONUS_DAMAGE "#c3ce2f"
- /// Max alpha for the filter outline.
+/// Max alpha for the filter outline.
 #define BONUS_DAMAGE_MAX_ALPHA 200
- /// Loss of stack every second once it's been more than 5 seconds since last_stack.
+/// Loss of stack every second once it's been more than 5 seconds since last_stack.
 #define BONUS_DAMAGE_STACK_LOSS_PER_SECOND 5
 
 

@@ -228,7 +228,7 @@
 		wielded_item.zoom(src)
 	..()
 	if(hud_used.l_hand_hud_object && hud_used.r_hand_hud_object)
-		if(hand)	//This being 1 means the left hand is in use
+		if(hand) //This being 1 means the left hand is in use
 			hud_used.l_hand_hud_object.icon_state = "hand_active"
 			hud_used.r_hand_hud_object.icon_state = "hand_inactive"
 		else
@@ -404,8 +404,8 @@
 	show_browser(user, dat, name, "mob[name]")
 
 //generates realistic-ish pulse output based on preset levels
-/mob/living/carbon/proc/get_pulse(var/method)	//method 0 is for hands, 1 is for machines, more accurate
-	var/temp = 0								//see setup.dm:694
+/mob/living/carbon/proc/get_pulse(var/method) //method 0 is for hands, 1 is for machines, more accurate
+	var/temp = 0 //see setup.dm:694
 	switch(src.pulse)
 		if(PULSE_NONE)
 			return "0"
@@ -423,7 +423,7 @@
 			return num2text(method ? temp : temp + rand(-10, 10))
 		if(PULSE_THREADY)
 			return method ? ">250" : "extremely weak and fast, patient's artery feels like a thread"
-//			output for machines^	^^^^^^^output for people^^^^^^^^^
+// output for machines^ ^^^^^^^output for people^^^^^^^^^
 
 /mob/living/carbon/verb/mob_sleep()
 	set name = "Sleep"

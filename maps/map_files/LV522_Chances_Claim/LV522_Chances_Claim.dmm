@@ -13554,7 +13554,7 @@
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	dir = 8;
 	locked = 1;
-	name = "\improper Marshall Head Office";
+	name = "\improper Marshals Head Office";
 	req_access = null
 	},
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -15501,7 +15501,7 @@
 "how" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	dir = 1;
-	name = "\improper Marshall Office";
+	name = "\improper Marshals Office";
 	req_access = null
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -25182,7 +25182,7 @@
 /area/lv522/outdoors/colony_streets/north_west_street)
 "lea" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass{
-	name = "\improper Marshall Office Interrogation";
+	name = "\improper Marshals Office Interrogation";
 	req_access = null
 	},
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -44828,7 +44828,7 @@
 "sPp" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	dir = 1;
-	name = "\improper Marshall Office Armory";
+	name = "\improper Marshals Office Armory";
 	req_access = null
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -58459,7 +58459,7 @@
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	icon_state = "door_locked";
 	locked = 1;
-	name = "\improper Marshall Office Armory";
+	name = "\improper Marshals Office Armory";
 	req_access = null
 	},
 /obj/structure/pipes/standard/simple/hidden/green{

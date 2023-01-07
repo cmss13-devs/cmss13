@@ -1,12 +1,12 @@
 /obj/item/ashtray
 	icon = 'icons/obj/items/ashtray.dmi'
 
-	var/max_butts 	= 0
-	var/empty_desc 	= ""
-	var/icon_empty 	= ""
-	var/icon_half  	= ""
-	var/icon_full  	= ""
-	var/icon_broken	= ""
+	var/max_butts = 0
+	var/empty_desc = ""
+	var/icon_empty = ""
+	var/icon_half = ""
+	var/icon_full = ""
+	var/icon_broken = ""
 
 /obj/item/ashtray/attackby(obj/item/W as obj, mob/user as mob)
 	if (health < 1)

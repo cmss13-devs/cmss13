@@ -437,11 +437,11 @@ SUBSYSTEM_DEF(vote)
 
 // possible_vote_types JSON TABLE FOR THE CLIENT MENU
 // PARAMETERS
-// name					string		display name
-// icon					string		font awesome icon
-// color 				string		color, not in hex
-// admin_only			boolean		controls whether an option is admin_only
-// variable_required	string		The vote may not be activated (by non-admins) if a variable passed in data does not evaluate to true.
+// name string display name
+// icon string font awesome icon
+// color string color, not in hex
+// admin_only boolean controls whether an option is admin_only
+// variable_required string The vote may not be activated (by non-admins) if a variable passed in data does not evaluate to true.
 GLOBAL_LIST_INIT(possible_vote_types, list(
 	"restart" = list(
 		"name" = "Restart Vote",

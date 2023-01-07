@@ -1,10 +1,10 @@
 SUBSYSTEM_DEF(mapview)
-	name          = "Mapview"
-	wait          = 1 MINUTES
-	flags         = SS_POST_FIRE_TIMING
-	runlevels     = RUNLEVEL_GAME | RUNLEVEL_POSTGAME
-	priority      = SS_PRIORITY_MAPVIEW
-	init_order    = SS_INIT_MAPVIEW
+	name   = "Mapview"
+	wait   = 1 MINUTES
+	flags  = SS_POST_FIRE_TIMING
+	runlevels  = RUNLEVEL_GAME | RUNLEVEL_POSTGAME
+	priority   = SS_PRIORITY_MAPVIEW
+	init_order = SS_INIT_MAPVIEW
 	var/list/map_machines = list()
 	var/ready = FALSE
 	var/updated = FALSE

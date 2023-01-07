@@ -38,7 +38,7 @@
 	if(.)
 		return .
 
-	return ..()	//default pager ban stuff
+	return ..() //default pager ban stuff
 
 
 #endif

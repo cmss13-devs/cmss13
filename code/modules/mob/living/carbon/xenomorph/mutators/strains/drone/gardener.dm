@@ -1,6 +1,6 @@
 /datum/xeno_mutator/gardener
 	name = "STRAIN: Drone - Gardener"
-	description = "You trade most of your abilities aside from pheromones and planting weeds to gain the abilities to plant potent resin fruits for your sisters."
+	description = "You trade your choice of resin secretions, your corrosive acid, and the ability to transfer plasma for the ability to plant hardier weeds, temporarily reinforce structures with your plasma, and to plant potent resin fruits for your sisters by secreting your vital fluids at the cost of a bit of your health for each fruit you shape."
 	cost = MUTATOR_COST_EXPENSIVE
 	individual_only = TRUE
 	caste_whitelist = list(XENO_CASTE_DRONE) //Only drone.
@@ -92,24 +92,24 @@
 	var/turf/target_turf = xeno.loc
 
 	if(!istype(target_turf))
-		to_chat(xeno, SPAN_WARNING("You can't do that here."))
+		to_chat(xeno, SPAN_WARNING("You cannot plant a fruit without a weed garden."))
 		return
 
 	var/obj/effect/alien/weeds/target_weeds = locate(/obj/effect/alien/weeds) in target_turf
 	if(!target_weeds)
-		to_chat(xeno, SPAN_WARNING("There's no weed to place it on!"))
+		to_chat(xeno, SPAN_WARNING("The are no weeds to plant a fruit within!"))
 		return
 
 	if(target_weeds.hivenumber != xeno.hivenumber)
-		to_chat(xeno, SPAN_WARNING("This weed is toxic to the fruit. Can't plant it here!"))
+		to_chat(xeno, SPAN_WARNING("These weeds do not belong to your hive; they reject your fruit."))
 		return
 
 	if(locate(/obj/effect/alien/resin/trap) in range(1, target_turf))
-		to_chat(xeno, SPAN_XENOWARNING("This is too close to a resin hole!"))
+		to_chat(xeno, SPAN_XENOWARNING("This location is too close to a resin hole!"))
 		return
 
 	if(locate(/obj/effect/alien/resin/fruit) in range(1, target_turf))
-		to_chat(xeno, SPAN_XENOWARNING("This is too close to another fruit!"))
+		to_chat(xeno, SPAN_XENOWARNING("This location is too close to another fruit!"))
 		return
 
 	if (check_and_use_plasma_owner())
@@ -120,7 +120,7 @@
 			qdel(old_fruit)
 
 		xeno.visible_message(SPAN_XENONOTICE("\The [xeno] secretes fluids and shape it into a fruit!"), \
-		SPAN_XENONOTICE("You secrete a portion of your vital fluids and shape it into a fruit!"), null, 5)
+		SPAN_XENONOTICE("You secrete a portion of your vital fluids and shape them into a fruit!"), null, 5)
 
 		var/obj/effect/alien/resin/fruit/fruit = new xeno.selected_fruit(target_weeds.loc, target_weeds, xeno)
 		if(!fruit)
@@ -235,7 +235,6 @@
 			. = TRUE
 		if("refresh_ui")
 			. = TRUE
-
 /*
 	Resin Surge
 */
@@ -400,7 +399,6 @@
 
 	fruit_sac_overlay_icon.color = fruit_sac_color
 	bound_xeno.overlays += fruit_sac_overlay_icon
-
 /*
 Swapping to greater fruit changes the color to #17991B
 Swapping to spore fruit changes the color to #994617

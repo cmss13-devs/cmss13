@@ -141,8 +141,8 @@
 	name = "sticky resin"
 	desc = "A layer of disgusting sticky slime."
 	icon_state = "sticky"
-	density = 0
-	opacity = 0
+	density = FALSE
+	opacity = FALSE
 	health = HEALTH_RESIN_XENO_STICKY
 	layer = RESIN_STRUCTURE_LAYER
 	plane = FLOOR_PLANE
@@ -171,8 +171,8 @@
 	desc = "A small cluster of bone spikes. Ouch."
 	icon = 'icons/obj/structures/alien/structures.dmi'
 	icon_state = "resin_spike"
-	density = 0
-	opacity = 0
+	density = FALSE
+	opacity = FALSE
 	health = HEALTH_RESIN_XENO_SPIKE
 	layer = RESIN_STRUCTURE_LAYER
 	should_track_build = TRUE
@@ -271,7 +271,7 @@
 	X.hive.mark_ui.update_all_data()
 
 	for(var/mob/living/carbon/Xenomorph/XX in X.hive.totalXenos)
-		XX.hud_set_marks()		//this should be a hud thing, but that code is too confusing so I am doing it here
+		XX.hud_set_marks() //this should be a hud thing, but that code is too confusing so I am doing it here
 
 	addtimer(CALLBACK(src, PROC_REF(check_for_weeds)), 30 SECONDS, TIMER_UNIQUE)
 
@@ -284,7 +284,7 @@
 		XX.built_structures -= src
 		if(!XX.client)
 			continue
-		XX.client.images -= seenMeaning		 //this should be a hud thing, but that code is too confusing so I am doing it here
+		XX.client.images -= seenMeaning  //this should be a hud thing, but that code is too confusing so I am doing it here
 		XX.hive.mark_ui.update_all_data()
 
 	for(var/mob/living/carbon/Xenomorph/X in xenos_tracking) //no floating references :0)
@@ -385,8 +385,8 @@
 	playsound(loc, "alien_resin_move", 25)
 	flick("[mineralType]opening",src)
 	sleep(3)
-	density = 0
-	opacity = 0
+	density = FALSE
+	opacity = FALSE
 	state = 1
 	update_icon()
 	isSwitchingStates = 0
@@ -407,8 +407,8 @@
 	playsound(loc, "alien_resin_move", 25)
 	flick("[mineralType]closing",src)
 	sleep(3)
-	density = 1
-	opacity = 1
+	density = TRUE
+	opacity = TRUE
 	state = 0
 	update_icon()
 	isSwitchingStates = 0

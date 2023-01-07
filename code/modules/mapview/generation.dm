@@ -111,7 +111,7 @@ var/global/list/faction_to_tacmap_color = list(
 
 /proc/draw_vehicles(var/icon/tacmap)
 	for(var/obj/vehicle/multitile/V as anything in GLOB.all_multi_vehicles)
-		if(V.visible_in_tacmap && is_ground_level(V.z))	//don't need colony/hostile vehicle to show
+		if(V.visible_in_tacmap && is_ground_level(V.z)) //don't need colony/hostile vehicle to show
 			tacmap.DrawBox(rgb(0,153,77),V.x-1,V.y-1,V.x+1,V.y+1)
 			tacmap.DrawBox(rgb(128,255,128),V.x-1,V.y)
 			tacmap.DrawBox(rgb(128,255,128),V.x+1,V.y)

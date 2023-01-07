@@ -48,8 +48,8 @@
 
 
 // /obj/structure/resource_node/get_examine_text(mob/user)
-// 	..()
-// 	to_chat(user, "It has [amount_left] resources left.")
+// ..()
+// to_chat(user, "It has [amount_left] resources left.")
 
 /obj/structure/resource_node/ex_act(severity)
 	return

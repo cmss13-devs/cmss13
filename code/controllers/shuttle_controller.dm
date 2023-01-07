@@ -1,6 +1,6 @@
 /datum/controller/shuttle_controller
-	var/list/shuttles	//maps shuttle tags to shuttle datums, so that they can be looked up.
-	var/list/process_shuttles	//simple list of shuttles, for processing
+	var/list/shuttles //maps shuttle tags to shuttle datums, so that they can be looked up.
+	var/list/process_shuttles //simple list of shuttles, for processing
 	var/list/locs_crash
 
 /datum/controller/shuttle_controller/process()
@@ -393,7 +393,7 @@
 //This is called by gameticker after all the machines and radio frequencies have been properly initialized
 /datum/controller/shuttle_controller/proc/setup_shuttle_docks()
 	var/datum/shuttle/shuttle
-	var/list/dock_controller_map = list()	//so we only have to iterate once through each list
+	var/list/dock_controller_map = list() //so we only have to iterate once through each list
 
 	for(var/shuttle_tag in shuttles)
 		shuttle = shuttles[shuttle_tag]
@@ -403,7 +403,7 @@
 
 	//search for the controllers, if we have one.
 	if(dock_controller_map.len)
-		for(var/obj/structure/machinery/embedded_controller/radio/C in machines)	//only radio controllers are supported at the moment
+		for(var/obj/structure/machinery/embedded_controller/radio/C in machines) //only radio controllers are supported at the moment
 			if (istype(C.program, /datum/computer/file/embedded_program/docking))
 				if(dock_controller_map[C.id_tag])
 					shuttle = dock_controller_map[C.id_tag]
@@ -413,10 +413,10 @@
 
 	//sanity check
 	//NO SANITY
-//	if (dock_controller_map.len || dock_controller_map_station.len || dock_controller_map_offsite.len)
-//		var/dat = ""
-//		for (var/dock_tag in dock_controller_map + dock_controller_map_station + dock_controller_map_offsite)
-//			dat += "\"[dock_tag]\", "
+// if (dock_controller_map.len || dock_controller_map_station.len || dock_controller_map_offsite.len)
+// var/dat = ""
+// for (var/dock_tag in dock_controller_map + dock_controller_map_station + dock_controller_map_offsite)
+// dat += "\"[dock_tag]\", "
 
 	//makes all shuttles docked to something at round start go into the docked state
 	for(var/shuttle_tag in shuttles)

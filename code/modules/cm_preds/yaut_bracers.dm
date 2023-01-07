@@ -28,7 +28,7 @@
 	armor_rad = CLOTHING_ARMOR_MEDIUM
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
 
-	var/notification_sound = TRUE	// Whether the bracer pings when a message comes or not
+	var/notification_sound = TRUE // Whether the bracer pings when a message comes or not
 	var/charge = 1500
 	var/charge_max = 1500
 	var/cloaked = 0

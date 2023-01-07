@@ -4,7 +4,7 @@
 	icon_state = "floor_beaconf"
 	name = "Bluespace Gigabeacon"
 	desc = "A device that draws power from bluespace and creates a permanent tracking beacon."
-	level = 1		// underfloor
+	level = 1 // underfloor
 	layer = UNDERFLOOR_OBJ_LAYER
 	anchored = 1
 	use_power = USE_POWER_IDLE

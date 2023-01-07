@@ -6322,9 +6322,7 @@
 /area/lv624/ground/river/west_river)
 "aBo" = (
 /turf/open/floor/plating,
-/area/shuttle/drop2/LV624{
-	name = "\improper Almayer Dropship 2"
-	})
+/area/shuttle/drop2/LV624)
 "aBp" = (
 /obj/structure/prop/mech/tesla_energy_relay{
 	layer = 2.5
@@ -7201,9 +7199,7 @@
 "aEq" = (
 /obj/effect/landmark/crap_item,
 /turf/open/floor/plating,
-/area/shuttle/drop2/LV624{
-	name = "\improper Almayer Dropship 2"
-	})
+/area/shuttle/drop2/LV624)
 "aEs" = (
 /obj/structure/fence,
 /turf/open/gm/dirtgrassborder{
@@ -7521,9 +7517,7 @@
 /area/lv624/lazarus/quartstorage)
 "aFc" = (
 /turf/open/floor/plating,
-/area/shuttle/drop1/LV624{
-	name = "\improper Almayer Dropship 1"
-	})
+/area/shuttle/drop1/LV624)
 "aFh" = (
 /obj/structure/window/reinforced/tinted,
 /obj/structure/machinery/door/window,
@@ -7961,9 +7955,7 @@
 "aGC" = (
 /obj/effect/landmark/hunter_secondary,
 /turf/open/floor/plating,
-/area/shuttle/drop1/LV624{
-	name = "\improper Almayer Dropship 1"
-	})
+/area/shuttle/drop1/LV624)
 "aGE" = (
 /obj/structure/machinery/landinglight/ds1/delaytwo{
 	dir = 8;
@@ -8045,9 +8037,7 @@
 "aGU" = (
 /obj/effect/landmark/crap_item,
 /turf/open/floor/plating,
-/area/shuttle/drop1/LV624{
-	name = "\improper Almayer Dropship 1"
-	})
+/area/shuttle/drop1/LV624)
 "aGV" = (
 /obj/structure/flora/bush/ausbushes/var3/sunnybush,
 /turf/open/gm/river,

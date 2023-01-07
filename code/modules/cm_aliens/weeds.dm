@@ -1,6 +1,6 @@
-#define BLOCK_NOTHING 				0
-#define BLOCK_SPECIAL_STRUCTURES	1
-#define BLOCK_ALL_STRUCTURES		2
+#define BLOCK_NOTHING 0
+#define BLOCK_SPECIAL_STRUCTURES 1
+#define BLOCK_ALL_STRUCTURES 2
 
 /obj/effect/alien/weeds
 	name = "weeds"
@@ -576,7 +576,7 @@
 	parent_cluster.damaged = TRUE
 
 /obj/effect/resin_construct
-	mouse_opacity = 0
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	icon = 'icons/mob/xenos/effects.dmi'
 
 /obj/effect/resin_construct/door

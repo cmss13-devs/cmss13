@@ -17,15 +17,15 @@
 	var/embeddable = TRUE //FALSE if unembeddable
 	var/embedded_organ = null
 	var/attack_speed = 11  //+3, Adds up to 10.  Added an extra 4 removed from /mob/proc/do_click()
-	 ///Used in attackby() to say how something was attacked "[x] has been [z.attack_verb] by [y] with [z]"
+	///Used in attackby() to say how something was attacked "[x] has been [z.attack_verb] by [y] with [z]"
 	var/list/attack_verb
 
 	health = null
 
 	rebounds = TRUE
 
-	var/sharp = 0		// whether this item cuts
-	var/edge = 0		// whether this item is more likely to dismember
+	var/sharp = 0 // whether this item cuts
+	var/edge = 0 // whether this item is more likely to dismember
 	var/pry_capable = 0 //whether this item can be used to pry things open.
 	var/heat_source = 0 //whether this item is a source of heat, and how hot it is (in Kelvin).
 
@@ -53,8 +53,8 @@
 	var/w_class = SIZE_MEDIUM
 	var/storage_cost = null
 	flags_atom = FPRINT
-	var/flags_item = NO_FLAGS	//flags for item stuff that isn't clothing/equipping specific.
-	var/flags_equip_slot = NO_FLAGS		//This is used to determine on which slots an item can fit.
+	var/flags_item = NO_FLAGS //flags for item stuff that isn't clothing/equipping specific.
+	var/flags_equip_slot = NO_FLAGS //This is used to determine on which slots an item can fit.
 
 	//Since any item can now be a piece of clothing, this has to be put here so all items share it.
 	var/flags_inventory = NO_FLAGS //This flag is used for various clothing/equipment item stuff
@@ -95,15 +95,15 @@
 
 	var/list/item_state_slots //overrides the default
 
-	var/mob/living/carbon/human/locked_to_mob = null	// If the item uses flag MOB_LOCK_ON_PICKUP, this is the mob owner reference.
+	var/mob/living/carbon/human/locked_to_mob = null // If the item uses flag MOB_LOCK_ON_PICKUP, this is the mob owner reference.
 
 	var/list/equip_sounds //Sounds played when this item is equipped
 	var/list/unequip_sounds //Same but when unequipped
 
-	 ///Vision impairing effect if worn on head/mask/glasses.
+	///Vision impairing effect if worn on head/mask/glasses.
 	var/vision_impair = VISION_IMPAIR_NONE
 
-	 ///Used for stepping onto flame and seeing how much dmg you take and if you're ignited.
+	///Used for stepping onto flame and seeing how much dmg you take and if you're ignited.
 	var/fire_intensity_resistance
 
 	var/map_specific_decoration = FALSE
@@ -276,7 +276,7 @@ cases. Override_icon_state should be a list.*/
 						failure = 1
 						continue
 					success = 1
-					S.handle_item_insertion(I, TRUE, user)	//The 1 stops the "You put the [src] into [S]" insertion message from being displayed.
+					S.handle_item_insertion(I, TRUE, user) //The 1 stops the "You put the [src] into [S]" insertion message from being displayed.
 				if(success && !failure)
 					to_chat(user, SPAN_NOTICE("You put everything in [S]."))
 				else if(success)

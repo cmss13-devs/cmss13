@@ -48,8 +48,8 @@
 		return f_style
 
 /proc/random_name(gender, species = "Human")
-	if(gender==FEMALE)	return capitalize(pick(first_names_female)) + " " + capitalize(pick(last_names))
-	else				return capitalize(pick(first_names_male)) + " " + capitalize(pick(last_names))
+	if(gender==FEMALE) return capitalize(pick(first_names_female)) + " " + capitalize(pick(last_names))
+	else return capitalize(pick(first_names_male)) + " " + capitalize(pick(last_names))
 
 /proc/has_species(var/mob/M, var/species)
 	if(!M || !istype(M,/mob/living/carbon/human))

@@ -22,9 +22,9 @@
 	icon_state = "large_grenade_custom"
 	allowed_containers = list(/obj/item/reagent_container/glass)
 	max_container_volume = 180
-	reaction_limits = list(	"max_ex_power" = 215,	"base_ex_falloff" = 90,	"max_ex_shards" = 32,
-							"max_fire_rad" = 5,		"max_fire_int" = 20,	"max_fire_dur" = 24,
-							"min_fire_rad" = 1,		"min_fire_int" = 3,		"min_fire_dur" = 3
+	reaction_limits = list( "max_ex_power" = 215, "base_ex_falloff" = 90, "max_ex_shards" = 32,
+							"max_fire_rad" = 5, "max_fire_int" = 20, "max_fire_dur" = 24,
+							"min_fire_rad" = 1, "min_fire_int" = 3, "min_fire_dur" = 3
 	)
 	underslug_launchable = FALSE
 	has_blast_wave_dampener = TRUE

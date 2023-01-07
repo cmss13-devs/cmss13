@@ -42,6 +42,6 @@
 *The higher the level, the more information you can see
 */
 
-#define DETAIL_LEVEL_HEALTHANALYSER	0
-#define DETAIL_LEVEL_BODYSCAN		1
-#define DETAIL_LEVEL_FULL			2
+#define DETAIL_LEVEL_HEALTHANALYSER 0
+#define DETAIL_LEVEL_BODYSCAN 1
+#define DETAIL_LEVEL_FULL 2

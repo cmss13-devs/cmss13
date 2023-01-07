@@ -17,23 +17,23 @@ INVOKING THE CALLBACK:
 
 HELP TO PROC TYPEPATH SHORTCUTS (Purely based on the path in the code)
 	Global proc while in another global proc:
-		.procname
+		GLOBAL_PROC_REF
 		Example:
-			CALLBACK(GLOBAL_PROC, .some_proc_here)
+			CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(some_proc_here))
 
 	Proc defined on current(src) object (when in a /proc/ and NOT AN OVERRIDE) OR overridden at src or any of it's parents:
-		.procname
+		PROC_REF
 		Example:
-			CALLBACK(src, .some_proc_here)
+			CALLBACK(src, PROC_REF(some_proc_here))
 
 
 	When the above doesn't apply:
-		.proc/procname
+		PROC_REF
 		Example:
 			CALLBACK(src, PROC_REF(some_proc_here))
 
 	Proc defined on a parent of a some type:
-		/some/type/.proc/some_proc_here
+		TYPE_PROC_REF(/some/type, some_proc_here)
 
 	If you can't do the above or want to be sure, use the full path (/type/of/thing/proc/procname)
 */

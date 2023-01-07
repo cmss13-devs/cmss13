@@ -103,7 +103,7 @@ length to avoid portals or something i guess?? Not that they're counted right no
 	var/f
 	var/g
 	var/h
-	var/nt		// Nodes traversed
+	var/nt // Nodes traversed
 
 /PathNode/New(s,p,pg,ph,pnt)
 	source = s

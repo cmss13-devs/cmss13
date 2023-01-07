@@ -3,7 +3,7 @@
 	desc = "A shuttle control computer."
 	icon_state = "syndishuttle"
 	req_access = list( )
-//	interaction_flags = INTERACT_MACHINE_TGUI
+// interaction_flags = INTERACT_MACHINE_TGUI
 	var/shuttleId
 	var/possible_destinations = ""
 	var/admin_controlled
@@ -47,14 +47,14 @@
 
 	if(href_list["move"])
 		var/obj/docking_port/mobile/M = SSshuttle.getShuttle(shuttleId)
-//		if(!(M.shuttle_flags & GAMEMODE_IMMUNE) && world.time < SSticker.round_start_time + SSticker.mode.deploy_time_lock)
-//			to_chat(usr, "<span class='warning'>The engines are still refueling.</span>")
-//			return TRUE
+// if(!(M.shuttle_flags & GAMEMODE_IMMUNE) && world.time < SSticker.round_start_time + SSticker.mode.deploy_time_lock)
+// to_chat(usr, "<span class='warning'>The engines are still refueling.</span>")
+// return TRUE
 		if(!M.can_move_topic(usr))
 			return TRUE
 		if(!(href_list["move"] in valid_destinations()))
 			log_admin("[key_name(usr)] may be attempting a href dock exploit on [src] with target location \"[href_list["move"]]\"")
-//			message_admins("[ADMIN_TPMONTY(usr)] may be attempting a href dock exploit on [src] with target location \"[href_list["move"]]\"")
+// message_admins("[ADMIN_TPMONTY(usr)] may be attempting a href dock exploit on [src] with target location \"[href_list["move"]]\"")
 			return TRUE
 		var/previous_status = M.mode
 		log_game("[key_name(usr)] has sent the shuttle [M] to [href_list["move"]]")

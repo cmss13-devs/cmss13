@@ -327,9 +327,8 @@
 		H.apply_armoured_damage(get_xeno_damage_slash(H, damage), ARMOR_MELEE, BRUTE) // just for consistency
 
 	// Heal
-	X.gain_health(heal_amount)
-
-
+	if(!X.on_fire)
+		X.gain_health(heal_amount)
 
 	// Fling
 	var/facing = get_dir(X, H)
@@ -427,7 +426,8 @@
 		valid_count++
 
 	// This is the heal
-	xeno.gain_health(Clamp(valid_count * lifesteal_per_marine, 0, max_lifesteal))
+	if(!xeno.on_fire)
+		xeno.gain_health(Clamp(valid_count * lifesteal_per_marine, 0, max_lifesteal))
 
 	xeno.frozen = 0
 	xeno.anchored = 0

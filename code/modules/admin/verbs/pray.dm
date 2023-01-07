@@ -3,7 +3,7 @@
 	set name = "Pray"
 
 	msg = strip_html(msg)
-	if(!msg)	return
+	if(!msg) return
 
 	if(usr.client)
 		if(usr.client.prefs.muted & MUTE_PRAY)

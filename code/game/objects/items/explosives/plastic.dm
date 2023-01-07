@@ -9,9 +9,9 @@
 	w_class = SIZE_SMALL
 	allowed_sensors = list(/obj/item/device/assembly/prox_sensor, /obj/item/device/assembly/signaller, /obj/item/device/assembly/timer)
 	max_container_volume = 180
-	reaction_limits = list(	"max_ex_power" = 260,	"base_ex_falloff" = 90,	"max_ex_shards" = 64,
-							"max_fire_rad" = 6,		"max_fire_int" = 26,	"max_fire_dur" = 30,
-							"min_fire_rad" = 2,		"min_fire_int" = 4,		"min_fire_dur" = 5
+	reaction_limits = list( "max_ex_power" = 260, "base_ex_falloff" = 90, "max_ex_shards" = 64,
+							"max_fire_rad" = 6, "max_fire_int" = 26, "max_fire_dur" = 30,
+							"min_fire_rad" = 2, "min_fire_int" = 4, "min_fire_dur" = 5
 	)
 
 	var/deploying_time = 50
@@ -22,7 +22,7 @@
 	var/overlay_image = "plastic-explosive2"
 	var/image/overlay
 	var/list/breachable = list(/obj/structure/window, /turf/closed, /obj/structure/machinery/door, /obj/structure/mineral_door , /obj/structure/cargo_container)
-	antigrief_protection = TRUE	//Should it be checked by antigrief?
+	antigrief_protection = TRUE //Should it be checked by antigrief?
 
 /obj/item/explosive/plastic/Destroy()
 	disarm()

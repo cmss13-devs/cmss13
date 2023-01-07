@@ -6,9 +6,9 @@
 	desc = "It looks like a weird egg."
 	name = "egg"
 	icon_state = "Egg Growing"
-	density = 0
+	density = FALSE
 	anchored = 1
-	layer = LYING_BETWEEN_MOB_LAYER	//to stop hiding eggs under corpses
+	layer = LYING_BETWEEN_MOB_LAYER //to stop hiding eggs under corpses
 	health = 80
 	plane = GAME_PLANE
 	var/list/egg_triggers = list()
@@ -136,7 +136,7 @@
 	child.flags_embryo = flags_embryo
 	flags_embryo = NO_FLAGS // Lose the embryo flags when passed on
 
-	if(X && X.caste.can_hold_facehuggers && (!X.l_hand || !X.r_hand))	//sanity checks
+	if(X && X.caste.can_hold_facehuggers && (!X.l_hand || !X.r_hand)) //sanity checks
 		X.put_in_hands(child)
 		return
 
@@ -267,7 +267,7 @@
 	name = "egg trigger"
 	icon = 'icons/effects/effects.dmi'
 	anchored = 1
-	mouse_opacity = 0
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	invisibility = INVISIBILITY_MAXIMUM
 	var/obj/effect/alien/egg/linked_egg
 	var/obj/effect/alien/resin/special/eggmorph/linked_eggmorph

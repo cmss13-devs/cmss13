@@ -168,8 +168,8 @@ Gunshots/explosions/opening doors/less rare audio (done)
 								halbody = image('icons/mob/humans/human.dmi',target,"husk_l",TURF_LAYER)
 							if(2,3)
 								halbody = image('icons/mob/humans/human.dmi',target,"husk_s",TURF_LAYER)
-	//						if(5)
-	//							halbody = image('xcomalien.dmi',target,"chryssalid",TURF_LAYER)
+	// if(5)
+	// halbody = image('xcomalien.dmi',target,"chryssalid",TURF_LAYER)
 
 						if(client) client.images += halbody
 						spawn(rand(50,80)) //Only seen for a brief moment.
@@ -177,12 +177,12 @@ Gunshots/explosions/opening doors/less rare audio (done)
 							halbody = null
 			if(71 to 72)
 				//Fake death
-//				src.sleeping_willingly = 1
+// src.sleeping_willingly = 1
 				src.sleeping = 20
 				hal_crit = 1
 				hal_screwyhud = 1
 				spawn(rand(50,100))
-//					src.sleeping_willingly = 0
+// src.sleeping_willingly = 0
 					src.sleeping = 0
 					hal_crit = 0
 					hal_screwyhud = 0
@@ -232,9 +232,9 @@ Gunshots/explosions/opening doors/less rare audio (done)
 	icon_state = null
 	name = ""
 	desc = ""
-	density = 0
+	density = FALSE
 	anchored = 1
-	opacity = 0
+	opacity = FALSE
 	var/mob/living/carbon/human/my_target = null
 	var/weapon_name = null
 	var/obj/item/weap = null
@@ -345,19 +345,19 @@ var/list/non_fakeattack_weapons = list(/obj/item/device/aicard,\
 	/obj/item/clothing/suit/space/uscm, /obj/item/tank)
 
 /proc/fake_attack(var/mob/living/target)
-//	var/list/possible_clones = new/list()
+// var/list/possible_clones = new/list()
 	var/mob/living/carbon/human/clone = null
 	var/clone_weapon = null
 
 	for(var/mob/living/carbon/human/H in GLOB.alive_mob_list)
 		if(H.stat || H.lying) continue
-//		possible_clones += H
+// possible_clones += H
 		clone = H
-		break	//changed the code a bit. Less randomised, but less work to do. Should be ok, world.contents aren't stored in any particular order.
+		break //changed the code a bit. Less randomised, but less work to do. Should be ok, world.contents aren't stored in any particular order.
 
-//	if(!possible_clones.len) return
-//	clone = pick(possible_clones)
-	if(!clone)	return
+// if(!possible_clones.len) return
+// clone = pick(possible_clones)
+	if(!clone) return
 
 	//var/obj/effect/fake_attacker/F = new/obj/effect/fake_attacker(outside_range(target))
 	var/obj/effect/fake_attacker/F = new/obj/effect/fake_attacker(target.loc)

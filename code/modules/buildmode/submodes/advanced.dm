@@ -15,8 +15,8 @@
 	var/list/ignore_vars = list("old_turf", "loc", "ckey", "key", "vars", "verbs", \
 		"locs", "contents", "vis_locs", "vis_contents", "client", "linked_pylons", \
 		"x", "y", "z", "disposed")
- 	// Might be better to move to a whitelist system instead. If there are too many runtimes/issues,
- 	// turn this into a whitelist system and whitelist vars like icon_state, overlays and ids
+	// Might be better to move to a whitelist system instead. If there are too many runtimes/issues,
+	// turn this into a whitelist system and whitelist vars like icon_state, overlays and ids
 
 	var/list/ignore_types = list(/atom)
 

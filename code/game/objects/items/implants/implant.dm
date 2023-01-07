@@ -34,7 +34,7 @@
 /obj/item/implant/proc/islegal()
 	return 0
 
-/obj/item/implant/proc/meltdown()	//breaks it down, making implant unrecongizible
+/obj/item/implant/proc/meltdown() //breaks it down, making implant unrecongizible
 	to_chat(imp_in, SPAN_WARNING("You feel something melting inside [part ? "your [part.display_name]" : "you"]!"))
 	if (part)
 		part.take_damage(burn = 15, used_weapon = "Electronics meltdown")
@@ -82,7 +82,7 @@ Implant Specifics:<BR>"}
 		return dat
 
 /obj/item/implant/tracking/emp_act(severity)
-	if (malfunction)	//no, dawg, you can't malfunction while you are malfunctioning
+	if (malfunction) //no, dawg, you can't malfunction while you are malfunctioning
 		return
 	malfunction = MALFUNCTION_TEMPORARY
 
@@ -92,7 +92,7 @@ Implant Specifics:<BR>"}
 			if(prob(60))
 				meltdown()
 		if(2)
-			delay = rand(5 MINUTES, 15 MINUTES)	//from 5 to 15 minutes of free time
+			delay = rand(5 MINUTES, 15 MINUTES) //from 5 to 15 minutes of free time
 
 	spawn(delay)
 		malfunction--
@@ -124,7 +124,7 @@ Implant Specifics:<BR>"}
 
 
 /obj/item/implant/dexplosive/activate(var/cause)
-	if((!cause) || (!src.imp_in))	return 0
+	if((!cause) || (!src.imp_in)) return 0
 	explosion(src, -1, 0, 2, 3, 0)//This might be a bit much, dono will have to see.
 	if(src.imp_in)
 		src.imp_in.gib()
@@ -182,10 +182,10 @@ Implant Specifics:<BR>"}
 					imp_in.visible_message(SPAN_DANGER(malf_msg))
 					playsound(loc, 'sound/items/countdown.ogg', 25, 1, 6)
 					sleep(25)
-					if (istype(part,/obj/limb/chest) ||	\
-						istype(part,/obj/limb/groin) ||	\
+					if (istype(part,/obj/limb/chest) || \
+						istype(part,/obj/limb/groin) || \
 						istype(part,/obj/limb/head))
-						part.createwound(BRUISE, 60)	//mangle them instead
+						part.createwound(BRUISE, 60) //mangle them instead
 						explosion(get_turf(imp_in), -1, -1, 2, 3)
 						qdel(src)
 					else
@@ -220,18 +220,18 @@ Implant Specifics:<BR>"}
 		return
 	malfunction = MALFUNCTION_TEMPORARY
 	switch (severity)
-		if (2.0)	//Weak EMP will make implant tear limbs off.
+		if (2.0) //Weak EMP will make implant tear limbs off.
 			if (prob(50))
 				small_boom()
-		if (1.0)	//strong EMP will melt implant either making it go off, or disarming it
+		if (1.0) //strong EMP will melt implant either making it go off, or disarming it
 			if (prob(70))
 				if (prob(50))
 					small_boom()
 				else
 					if (prob(50))
-						activate()		//50% chance of bye bye
+						activate() //50% chance of bye bye
 					else
-						meltdown()		//50% chance of implant disarming
+						meltdown() //50% chance of implant disarming
 	spawn (20)
 		malfunction--
 
@@ -247,10 +247,10 @@ Implant Specifics:<BR>"}
 			if (ishuman(imp_in) && part)
 				//No tearing off these parts since it's pretty much killing
 				//and you can't replace groins
-				if (istype(part,/obj/limb/chest) ||	\
-					istype(part,/obj/limb/groin) ||	\
+				if (istype(part,/obj/limb/chest) || \
+					istype(part,/obj/limb/groin) || \
 					istype(part,/obj/limb/head))
-					part.createwound(BRUISE, 60)	//mangle them instead
+					part.createwound(BRUISE, 60) //mangle them instead
 				else
 					part.droplimb(0, 0, "dismemberment")
 			explosion(get_turf(imp_in), -1, -1, 2, 3)
@@ -296,7 +296,7 @@ the implant may become unstable and either pre-maturely inject the subject or si
 
 
 /obj/item/implant/chem/activate(var/cause)
-	if((!cause) || (!src.imp_in))	return 0
+	if((!cause) || (!src.imp_in)) return 0
 	var/mob/living/carbon/R = src.imp_in
 	src.reagents.trans_to(R, cause)
 	to_chat(R, "You hear a faint *beep*.")
@@ -344,7 +344,7 @@ the implant may become unstable and either pre-maturely inject the subject or si
 	return dat
 
 /obj/item/implant/loyalty/implanted(mob/M)
-	if(!ishuman(M))	return
+	if(!ishuman(M)) return
 	if(isYautja(M)) return
 	var/mob/living/carbon/human/H = M
 	to_chat(H, SPAN_NOTICE("You are now tagged as a WY loyalist and will be monitored by their central headquarters. You retain your free will and mental faculties."))
@@ -370,7 +370,7 @@ the implant may become unstable and either pre-maturely inject the subject or si
 
 
 /obj/item/implant/adrenalin/trigger(emote, mob/source as mob)
-	if (src.uses < 1)	return 0
+	if (src.uses < 1) return 0
 	if (emote == "pale")
 		src.uses--
 		to_chat(source, SPAN_NOTICE(" You feel a sudden surge of energy!"))
@@ -431,16 +431,16 @@ the implant may become unstable and either pre-maturely inject the subject or si
 			qdel(a)
 			STOP_PROCESSING(SSobj, src)
 
-/obj/item/implant/death_alarm/emp_act(severity)			//for some reason alarms stop going off in case they are emp'd, even without this
-	if (malfunction)		//so I'm just going to add a meltdown chance here
+/obj/item/implant/death_alarm/emp_act(severity) //for some reason alarms stop going off in case they are emp'd, even without this
+	if (malfunction) //so I'm just going to add a meltdown chance here
 		return
 	malfunction = MALFUNCTION_TEMPORARY
 
-	activate("emp")	//let's shout that this dude is dead
+	activate("emp") //let's shout that this dude is dead
 	if(severity == 1)
-		if(prob(40))	//small chance of obvious meltdown
+		if(prob(40)) //small chance of obvious meltdown
 			meltdown()
-		else if (prob(60))	//but more likely it will just quietly die
+		else if (prob(60)) //but more likely it will just quietly die
 			malfunction = MALFUNCTION_PERMANENT
 		STOP_PROCESSING(SSobj, src)
 

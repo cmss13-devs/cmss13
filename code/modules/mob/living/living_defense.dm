@@ -62,7 +62,7 @@
 		else
 			playsound(loc, 'sound/effects/thud.ogg', 25, TRUE, falloff = 2)
 
-	O.throwing = 0		//it hit, so stop moving
+	O.throwing = 0 //it hit, so stop moving
 
 	var/mob/M
 	if(ismob(LM.thrower))

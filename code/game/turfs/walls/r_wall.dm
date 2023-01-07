@@ -2,8 +2,8 @@
 	name = "reinforced wall"
 	desc = "A huge chunk of reinforced metal used to separate rooms."
 	icon_state = "r_wall_mapicon"
-	opacity = 1
-	density = 1
+	opacity = TRUE
+	density = TRUE
 
 	damage_cap = HEALTH_WALL_REINFORCED
 	max_temperature = 6000
@@ -21,7 +21,7 @@
 		return
 
 	//get the user's location
-	if( !istype(user.loc, /turf) )	return	//can't do this stuff whilst inside objects and such
+	if( !istype(user.loc, /turf) ) return //can't do this stuff whilst inside objects and such
 
 	//THERMITE related stuff. Calls src.thermitemelt() which handles melting walls and the relevant effects
 	if(thermite)

@@ -1,18 +1,18 @@
-#define VOWEL_CLASS_FRONT_CLOSE		1	//i and ü
-#define VOWEL_CLASS_BACK_CLOSE		2	//u
-#define VOWEL_CLASS_FRONT_MID		3	//e
-#define VOWEL_CLASS_BACK_MID		4	//o
-#define VOWEL_CLASS_OPEN			5	//a
+#define VOWEL_CLASS_FRONT_CLOSE 1 //i and ü
+#define VOWEL_CLASS_BACK_CLOSE 2 //u
+#define VOWEL_CLASS_FRONT_MID 3 //e
+#define VOWEL_CLASS_BACK_MID 4 //o
+#define VOWEL_CLASS_OPEN 5 //a
 
-#define FINAL_TYPE_OPEN				1 //no n or ng
-#define FINAL_TYPE_DENTAL			2 //n
-#define FINAL_TYPE_VELAR			3 //ng
+#define FINAL_TYPE_OPEN 1 //no n or ng
+#define FINAL_TYPE_DENTAL 2 //n
+#define FINAL_TYPE_VELAR 3 //ng
 
-#define INITIAL_TYPE_N				1
-#define INITIAL_TYPE_G				2
+#define INITIAL_TYPE_N 1
+#define INITIAL_TYPE_G 2
 
 ///How likely the syllable is not to have a consonant at the start, needs to be kinda high
-#define CHINESE_SOUND_ZERO_INITIAL_CHANCE	15
+#define CHINESE_SOUND_ZERO_INITIAL_CHANCE 15
 
 /proc/randomly_generate_chinese_word(var/syllables = pick(60;1, 35;2, 5;3))
 	var/datum/chinese_syllable/C = new /datum/chinese_syllable

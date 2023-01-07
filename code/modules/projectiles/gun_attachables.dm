@@ -13,11 +13,11 @@ All attachment offsets are now in a list, including stocks. Guns that don't take
 ~N
 
 Defined in conflicts.dm of the #defines folder.
-#define ATTACH_REMOVABLE	1
-#define ATTACH_ACTIVATION	2
-#define ATTACH_PROJECTILE	4
-#define ATTACH_RELOADABLE	8
-#define ATTACH_WEAPON		16
+#define ATTACH_REMOVABLE 1
+#define ATTACH_ACTIVATION 2
+#define ATTACH_PROJECTILE 4
+#define ATTACH_RELOADABLE 8
+#define ATTACH_WEAPON 16
 */
 
 /obj/item/attachable
@@ -44,27 +44,27 @@ Defined in conflicts.dm of the #defines folder.
 	//These bonuses are applied only as the gun fires a projectile.
 
 	//These are flat bonuses applied and are passive, though they may be applied at different points.
-	var/accuracy_mod 	= 0 //Modifier to firing accuracy, works off a multiplier.
+	var/accuracy_mod = 0 //Modifier to firing accuracy, works off a multiplier.
 	var/accuracy_unwielded_mod = 0 //same as above but for onehanded.
-	var/damage_mod 		= 0 //Modifer to the damage mult, works off a multiplier.
+	var/damage_mod = 0 //Modifer to the damage mult, works off a multiplier.
 	var/damage_falloff_mod = 0 //Modifier to damage falloff, works off a multiplier.
 	var/damage_buildup_mod = 0 //Modifier to damage buildup, works off a multiplier.
 	var/range_min_mod = 0 //Modifier to minimum effective range, tile value.
 	var/range_max_mod = 0 //Modifier to maximum effective range, tile value.
-	var/melee_mod 		= 0 //Changing to a flat number so this actually doesn't screw up the calculations.
-	var/scatter_mod 	= 0 //Increases or decreases scatter chance.
+	var/melee_mod = 0 //Changing to a flat number so this actually doesn't screw up the calculations.
+	var/scatter_mod = 0 //Increases or decreases scatter chance.
 	var/scatter_unwielded_mod = 0 //same as above but for onehanded firing.
-	var/recoil_mod 		= 0 //If positive, adds recoil, if negative, lowers it. Recoil can't go below 0.
+	var/recoil_mod = 0 //If positive, adds recoil, if negative, lowers it. Recoil can't go below 0.
 	var/recoil_unwielded_mod = 0 //same as above but for onehanded firing.
 	var/burst_scatter_mod = 0 //Modifier to scatter from wielded burst fire, works off a multiplier.
-	var/light_mod 		= 0 //Adds an x-brightness flashlight to the weapon, which can be toggled on and off.
-	var/delay_mod 		= 0 //Changes firing delay. Cannot go below 0.
-	var/burst_mod 		= 0 //Changes burst rate. 1 == 0.
-	var/size_mod 		= 0 //Increases the weight class.
-	var/aim_speed_mod	= 0 //Changes the aiming speed slowdown of the wearer by this value.
-	var/wield_delay_mod	= 0 //How long ADS takes (time before firing)
+	var/light_mod = 0 //Adds an x-brightness flashlight to the weapon, which can be toggled on and off.
+	var/delay_mod = 0 //Changes firing delay. Cannot go below 0.
+	var/burst_mod = 0 //Changes burst rate. 1 == 0.
+	var/size_mod = 0 //Increases the weight class.
+	var/aim_speed_mod = 0 //Changes the aiming speed slowdown of the wearer by this value.
+	var/wield_delay_mod = 0 //How long ADS takes (time before firing)
 	var/movement_onehanded_acc_penalty_mod = 0 //Modifies accuracy/scatter penalty when firing onehanded while moving.
-	var/velocity_mod    = 0 // Added velocity to bullets
+	var/velocity_mod = 0 // Added velocity to bullets
 	var/hud_offset_mod  = 0 //How many pixels to adjust the gun's sprite coords by. Ideally, this should keep the gun approximately centered.
 
 	var/activation_sound = 'sound/weapons/handling/gun_underbarrel_activate.ogg'
@@ -72,8 +72,8 @@ Defined in conflicts.dm of the #defines folder.
 
 	var/flags_attach_features = ATTACH_REMOVABLE
 
-	var/current_rounds 	= 0 //How much it has.
-	var/max_rounds 		= 0 //How much ammo it can store
+	var/current_rounds = 0 //How much it has.
+	var/max_rounds = 0 //How much ammo it can store
 
 	var/attachment_action_type
 
@@ -855,8 +855,8 @@ Defined in conflicts.dm of the #defines folder.
 
 //variable zoom scopes, they go between 2x and 4x zoom.
 
-#define ZOOM_LEVEL_2X	0
-#define ZOOM_LEVEL_4X	1
+#define ZOOM_LEVEL_2X 0
+#define ZOOM_LEVEL_4X 1
 
 /obj/item/attachable/scope/variable_zoom
 	name = "S10 variable zoom telescopic scope"
@@ -1028,7 +1028,7 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/scope/mini_iff/activate_attachment(obj/item/weapon/gun/G, mob/living/carbon/user, turn_off)
 	if(do_after(user, 8, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
-		allows_movement	= 1
+		allows_movement = 1
 		. = ..()
 
 /obj/item/attachable/scope/mini_iff/apply_scoped_buff(obj/item/weapon/gun/G, mob/living/carbon/user)
@@ -1693,8 +1693,8 @@ Defined in conflicts.dm of the #defines folder.
 		G.recalculate_attachment_bonuses()
 	else
 		to_chat(user, SPAN_NOTICE("You fold [src]."))
-		R.flags_equip_slot |= SLOT_WAIST	// Allow to be worn on the belt when folded
-		R.folded = TRUE		// We can't shoot anymore, its folded
+		R.flags_equip_slot |= SLOT_WAIST // Allow to be worn on the belt when folded
+		R.folded = TRUE // We can't shoot anymore, its folded
 		icon_state = "44stock_folded"
 		size_mod = 0
 		hud_offset_mod = 4
@@ -1747,8 +1747,8 @@ Defined in conflicts.dm of the #defines folder.
 	// Some attachments may be fired. So here are the variables related to that.
 	/// Ammo to fire the attachment with
 	var/datum/ammo/ammo = null
-	var/max_range 		= 0 //Determines # of tiles distance the attachable can fire, if it's not a projectile.
-	var/last_fired 	//When the attachment was last fired.
+	var/max_range = 0 //Determines # of tiles distance the attachable can fire, if it's not a projectile.
+	var/last_fired //When the attachment was last fired.
 	var/attachment_firing_delay = 0 //the delay between shots, for attachments that fires stuff
 	var/fire_sound = null //Sound to play when firing it alternately
 	var/gun_original_damage_mult = 1 //so you don't buff the underbarrell gun with charger for the wrong weapon
@@ -1814,7 +1814,7 @@ Defined in conflicts.dm of the #defines folder.
 	var/grenade_pass_flags
 	var/list/loaded_grenades //list of grenade types loaded in the UGL
 	var/breech_open = FALSE // is the UGL open for loading?
-	var/cocked = TRUE		// has the UGL been cocked via opening and closing the breech?
+	var/cocked = TRUE // has the UGL been cocked via opening and closing the breech?
 	var/open_sound = 'sound/weapons/handling/ugl_open.ogg'
 	var/close_sound = 'sound/weapons/handling/ugl_close.ogg'
 
@@ -1829,8 +1829,8 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/attached_gun/grenade/get_examine_text(mob/user)
 	. = ..()
-	if(current_rounds) 	. += "It has [current_rounds] grenade\s left."
-	else 				. += "It's empty."
+	if(current_rounds) . += "It has [current_rounds] grenade\s left."
+	else . += "It's empty."
 
 /obj/item/attachable/attached_gun/grenade/unique_action(mob/user)
 	if(!ishuman(usr))
@@ -2106,8 +2106,8 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/attached_gun/shotgun/get_examine_text(mob/user)
 	. = ..()
-	if(current_rounds > 0) 	. += "It has [current_rounds] shell\s left."
-	else 					. += "It's empty."
+	if(current_rounds > 0) . += "It has [current_rounds] shell\s left."
+	else . += "It's empty."
 
 /obj/item/attachable/attached_gun/shotgun/set_bullet_traits()
 	LAZYADD(traits_to_give_attached, list(

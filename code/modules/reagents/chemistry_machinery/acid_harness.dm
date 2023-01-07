@@ -1,41 +1,41 @@
 //------------------ACID DEFINES--------------------//
-#define ACID_LOGIC_OR								"OR"
-#define ACID_LOGIC_AND								"AND"
+#define ACID_LOGIC_OR "OR"
+#define ACID_LOGIC_AND "AND"
 //Damage types
-#define ACID_SCAN_DAMAGE_BRUTE						1
-#define ACID_SCAN_DAMAGE_BURN						2
-#define ACID_SCAN_DAMAGE_TOXIN						4
-#define ACID_SCAN_DAMAGE_OXYGEN						8
-#define ACID_SCAN_DAMAGE_CLONE						16
-#define ACID_SCAN_DAMAGE_HEART						32
-#define ACID_SCAN_DAMAGE_LIVER						64
-#define ACID_SCAN_DAMAGE_LUNGS						128
-#define ACID_SCAN_DAMAGE_KIDNEYS					256
-#define ACID_SCAN_DAMAGE_BRAIN						512
+#define ACID_SCAN_DAMAGE_BRUTE 1
+#define ACID_SCAN_DAMAGE_BURN 2
+#define ACID_SCAN_DAMAGE_TOXIN 4
+#define ACID_SCAN_DAMAGE_OXYGEN 8
+#define ACID_SCAN_DAMAGE_CLONE 16
+#define ACID_SCAN_DAMAGE_HEART 32
+#define ACID_SCAN_DAMAGE_LIVER 64
+#define ACID_SCAN_DAMAGE_LUNGS 128
+#define ACID_SCAN_DAMAGE_KIDNEYS 256
+#define ACID_SCAN_DAMAGE_BRAIN 512
 
 //Conditions
-#define ACID_SCAN_CONDITION_VITALS					1
-#define ACID_SCAN_CONDITION_BLEEDING				2
-#define ACID_SCAN_CONDITION_BLEEDING_INTERNAL		4
-#define ACID_SCAN_CONDITION_BLOODLOSS_HIGH			8
-#define ACID_SCAN_CONDITION_FRACTURE				16
-#define ACID_SCAN_CONDITION_SPLINT					32
-#define ACID_SCAN_CONDITION_ORGAN_DAMAGED			64
-#define ACID_SCAN_CONDITION_ORGAN_FAILURE			128
-#define ACID_SCAN_CONDITION_DEATH	 				256
-#define ACID_SCAN_CONDITION_DEFIB					512
-#define ACID_SCAN_CONDITION_CONCUSSION				1024
-#define ACID_SCAN_CONDITION_INTOXICATION			2048
-#define ACID_SCAN_CONDITION_FOREIGN_OBJECT			4096
+#define ACID_SCAN_CONDITION_VITALS 1
+#define ACID_SCAN_CONDITION_BLEEDING 2
+#define ACID_SCAN_CONDITION_BLEEDING_INTERNAL 4
+#define ACID_SCAN_CONDITION_BLOODLOSS_HIGH 8
+#define ACID_SCAN_CONDITION_FRACTURE 16
+#define ACID_SCAN_CONDITION_SPLINT 32
+#define ACID_SCAN_CONDITION_ORGAN_DAMAGED 64
+#define ACID_SCAN_CONDITION_ORGAN_FAILURE 128
+#define ACID_SCAN_CONDITION_DEATH 256
+#define ACID_SCAN_CONDITION_DEFIB 512
+#define ACID_SCAN_CONDITION_CONCUSSION 1024
+#define ACID_SCAN_CONDITION_INTOXICATION 2048
+#define ACID_SCAN_CONDITION_FOREIGN_OBJECT 4096
 
 //Vitals status
-#define ACID_VITALS_OPTIMAL							1
-#define ACID_VITALS_NOMINAL							2
-#define ACID_VITALS_DROPPING						4
-#define ACID_VITALS_LOW								8
-#define ACID_VITALS_CRITICAL						16
-#define ACID_VITALS_EMERGENCY						32
-#define ACID_VITALS_DEAD							64
+#define ACID_VITALS_OPTIMAL 1
+#define ACID_VITALS_NOMINAL 2
+#define ACID_VITALS_DROPPING 4
+#define ACID_VITALS_LOW 8
+#define ACID_VITALS_CRITICAL 16
+#define ACID_VITALS_EMERGENCY 32
+#define ACID_VITALS_DEAD 64
 
 /obj/item/storage/internal/accessory/black_vest/acid_harness
 	storage_slots = 2
@@ -196,16 +196,16 @@
 	var/mob/living/carbon/human/user
 
 	var/inject_amount = 5
-	var/inject_damage_threshold = 20 			//How much damage before we inject?
+	var/inject_damage_threshold = 20 //How much damage before we inject?
 	var/inject_logic = ACID_LOGIC_OR
-	var/inject_damage_types 					//We inject if damage is above the threshold
-	var/inject_conditions 						//We inject if the any of the conditions are TRUE
-	var/inject_vitals							//The vitals statuses that we set the vitals status condition to true under
+	var/inject_damage_types //We inject if damage is above the threshold
+	var/inject_conditions //We inject if the any of the conditions are TRUE
+	var/inject_vitals //The vitals statuses that we set the vitals status condition to true under
 
-	var/last_damage_scan 						//So we can tell if there's new damage since the last scan.
-	var/last_condition_scan 					//So we can tell if there's a new condition since the last scan.
-	var/last_vitals_scan = ACID_VITALS_OPTIMAL 	//We need to know the last scan to tell if we are improving or not
-	var/vitals_improving = TRUE 				//We don't need to inject if we're still improving
+	var/last_damage_scan //So we can tell if there's new damage since the last scan.
+	var/last_condition_scan //So we can tell if there's a new condition since the last scan.
+	var/last_vitals_scan = ACID_VITALS_OPTIMAL //We need to know the last scan to tell if we are improving or not
+	var/vitals_improving = TRUE //We don't need to inject if we're still improving
 
 	//Current status
 	var/boot_status = FALSE

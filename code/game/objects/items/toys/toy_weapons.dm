@@ -1,7 +1,7 @@
 /*
- *		Toy gun
- *		Toy crossbow
- *		Toy swords
+ * Toy gun
+ * Toy crossbow
+ * Toy swords
 */
 
 
@@ -189,7 +189,7 @@
 	icon = 'icons/obj/items/toy.dmi'
 	icon_state = "null"
 	anchored = 1
-	density = 0
+	density = FALSE
 
 
 /*

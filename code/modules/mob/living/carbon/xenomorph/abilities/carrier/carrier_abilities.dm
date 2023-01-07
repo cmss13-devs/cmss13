@@ -23,3 +23,6 @@
 /datum/action/xeno_action/onclick/set_hugger_reserve
 	name = "Set Hugger Reserve"
 	action_icon_state = "xeno_banish"
+
+/datum/action/xeno_action/activable/retrieve_egg/shaman
+	ability_primacy = XENO_PRIMARY_ACTION_5

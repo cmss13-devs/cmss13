@@ -6,12 +6,12 @@
 		return 0
 
 	if(stat == DEAD) //DEAD. BROWN BREAD. SWIMMING WITH THE SPESS CARP
-		blinded = 1
+		blinded = TRUE
 		silent = 0
 	else //ALIVE. LIGHTS ARE ON
 		if(health <= HEALTH_THRESHOLD_DEAD || (species.has_organ["brain"] && !has_brain()))
 			death(last_damage_data)
-			blinded = 1
+			blinded = TRUE
 			silent = 0
 			return 1
 
@@ -54,7 +54,7 @@
 				new /datum/effects/crit/human(src)
 
 		if(knocked_out)
-			blinded = 1
+			blinded = TRUE
 			stat = UNCONSCIOUS
 			if(regular_update && halloss > 0)
 				apply_damage(-3, HALLOSS)
@@ -68,7 +68,7 @@
 						sleeping = max(sleeping - 1, 0)
 				if(prob(2) && health && !hal_crit)
 					addtimer(CALLBACK(src, PROC_REF(emote), "snore"))
-			blinded = 1
+			blinded = TRUE
 			stat = UNCONSCIOUS
 		else
 			stat = CONSCIOUS
@@ -79,18 +79,18 @@
 			return
 		//Eyes
 		if(!species.has_organ["eyes"]) //Presumably if a species has no eyes, they see via something else.
-			eye_blind = 0
+			SetEyeBlind(0)
 			if(stat == CONSCIOUS) //even with 'eye-less' vision, unconsciousness makes you blind
-				blinded = 0
+				blinded = FALSE
 			SetEyeBlur(0)
-		else if(!has_eyes())           //Eyes cut out? Permablind.
-			eye_blind =  1
-			blinded =    1
+		else if(!has_eyes()) //Eyes cut out? Permablind.
+			SetEyeBlind(1)
+			blinded = 1
 			// we don't need to blur vision if they are blind...
-		else if(eye_blind)		       //Blindness, heals slowly over time
-			eye_blind =  max(eye_blind - 1, 0)
-			blinded =    1
-		else if(eye_blurry)	           //Blurry eyes heal slowly
+		else if(eye_blind) //Blindness, heals slowly over time
+			ReduceEyeBlind(1)
+			blinded = TRUE
+		else if(eye_blurry) //Blurry eyes heal slowly
 			ReduceEyeBlur(1)
 
 		//Ears
@@ -125,7 +125,7 @@
 			speech_problem_flag = 1
 			apply_effect(1, WEAKEN)
 			silent = 1
-			blinded = 1
+			blinded = TRUE
 			use_me = 0
 			pain.apply_pain_reduction(PAIN_REDUCTION_FULL)
 			paralyzed--

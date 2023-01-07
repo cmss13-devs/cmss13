@@ -1,5 +1,5 @@
 //**********************************************************************
-//						Cyborg Spec Items
+// Cyborg Spec Items
 //***********************************************************************/
 //Might want to move this into several files later but for now it works here
 /obj/item/robot/stun
@@ -30,7 +30,7 @@
 	icon_state = "shock"
 
 //**********************************************************************
-//						HUD/SIGHT things
+// HUD/SIGHT things
 //***********************************************************************/
 /obj/item/robot/sight
 	icon = 'icons/obj/structures/props/decals.dmi'

@@ -933,9 +933,9 @@
 
 	target.last_damage_data = create_cause_data(initial(stabbing_xeno.caste_type), stabbing_xeno)
 
-	 /// To reset the direction if they haven't moved since then in below callback.
+	/// To reset the direction if they haven't moved since then in below callback.
 	var/last_dir = stabbing_xeno.dir
-	 /// Direction var to make the tail stab look cool and immersive.
+	/// Direction var to make the tail stab look cool and immersive.
 	var/stab_direction
 
 	var/stab_overlay
@@ -956,7 +956,7 @@
 	stabbing_xeno.setDir(stab_direction)
 	stabbing_xeno.emote("tail")
 
-	 /// Ditto.
+	/// Ditto.
 	var/new_dir = stabbing_xeno.dir
 
 	addtimer(CALLBACK(src, PROC_REF(reset_direction), stabbing_xeno, last_dir, new_dir), 0.5 SECONDS)

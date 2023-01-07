@@ -4,13 +4,13 @@
 	icon_state = "security"
 	desc = "A remote control for a door."
 	req_access = list(ACCESS_MARINE_BRIG)
-	anchored = TRUE    		// can't pick it up
-	density = FALSE       		// can walk through it.
+	anchored = TRUE // can't pick it up
+	density = FALSE // can walk through it.
 	unacidable = TRUE
 	indestructible = TRUE
 
-	var/id = null     		// id of door it controls.
-	var/picture_state		// icon_state of alert picture, if not displaying text/numbers
+	var/id = null // id of door it controls.
+	var/picture_state // icon_state of alert picture, if not displaying text/numbers
 	var/list/obj/structure/machinery/targets = list()
 	var/list/obj/item/paper/incident/incident_reports = list()
 	var/obj/item/paper/incident/current_report = null

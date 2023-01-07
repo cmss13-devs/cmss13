@@ -1,5 +1,5 @@
 //****************************************************
-//				EXTERNAL ORGANS
+// EXTERNAL ORGANS
 //****************************************************/
 /obj/limb
 	name = "limb"
@@ -158,7 +158,7 @@
 */
 
 /obj/limb/emp_act(severity)
-	if(!(status & (LIMB_ROBOT|LIMB_SYNTHSKIN)))	//meatbags do not care about EMP
+	if(!(status & (LIMB_ROBOT|LIMB_SYNTHSKIN))) //meatbags do not care about EMP
 		return
 	var/probability = 30
 	var/damage = 15
@@ -399,7 +399,7 @@ This function completely restores a damaged organ to perfect condition.
 	damage_state = "=="
 	if(status & LIMB_SYNTHSKIN)
 		status = LIMB_SYNTHSKIN
-	else if(status & LIMB_ROBOT)	//Robotic organs stay robotic.  Fix because right click rejuvinate makes IPC's organs organic.
+	else if(status & LIMB_ROBOT) //Robotic organs stay robotic.  Fix because right click rejuvinate makes IPC's organs organic.
 		status = LIMB_ROBOT
 	else
 		status = LIMB_ORGANIC
@@ -421,7 +421,7 @@ This function completely restores a damaged organ to perfect condition.
 
 	// remove embedded objects and drop them on the floor
 	for(var/obj/implanted_object in implants)
-		if(!istype(implanted_object,/obj/item/implant))	// We don't want to remove REAL implants. Just shrapnel etc.
+		if(!istype(implanted_object,/obj/item/implant)) // We don't want to remove REAL implants. Just shrapnel etc.
 			implanted_object.forceMove(owner.loc)
 			implants -= implanted_object
 			if(is_sharp(implanted_object) || istype(implanted_object, /obj/item/shard/shrapnel))
@@ -554,7 +554,7 @@ This function completely restores a damaged organ to perfect condition.
 //Determines if we even need to process this organ.
 
 /obj/limb/proc/need_process()
-	if(status & LIMB_DESTROYED)	//Missing limb is missing
+	if(status & LIMB_DESTROYED) //Missing limb is missing
 		return FALSE
 	if(status & LIMB_BROKEN) // Causes things to drop and may be healed by bonemending chem.
 		return TRUE
@@ -607,11 +607,11 @@ This function completely restores a damaged organ to perfect condition.
 		// Internal wounds get worse over time. Low temperatures (cryo) stop them.
 		if(W.internal)
 			if(owner.bodytemperature < T0C && (owner.reagents.get_reagent_amount("cryoxadone") || owner.reagents.get_reagent_amount("clonexadone"))) // IB is healed in cryotubes
-				if(W.created + 2 MINUTES <= world.time)	// sped up healing due to cryo magics
+				if(W.created + 2 MINUTES <= world.time) // sped up healing due to cryo magics
 					remove_all_bleeding(FALSE, TRUE)
 					wounds -= W
 					wound_disappeared = TRUE
-					if(istype(owner.loc, /obj/structure/machinery/cryo_cell))	// check in case they cheesed the location
+					if(istype(owner.loc, /obj/structure/machinery/cryo_cell)) // check in case they cheesed the location
 						var/obj/structure/machinery/cryo_cell/cell = owner.loc
 						cell.display_message("internal bleeding is")
 			if(owner.reagents.get_reagent_amount("thwei") >= 0.05)
@@ -708,6 +708,10 @@ This function completely restores a damaged organ to perfect condition.
 		b_icon = "mesomorphic"
 	else
 		b_icon = B.icon_name
+
+	if(isSpeciesYautja(owner))
+		e_icon = owner.ethnicity
+		b_icon = owner.body_type
 
 	icon = race_icon
 	icon_state = "[get_limb_icon_name(owner.species, b_icon, owner.gender, icon_name, e_icon)]"
@@ -830,7 +834,7 @@ This function completely restores a damaged organ to perfect condition.
 		if(parent && !amputation)
 			var/datum/wound/W
 			if(max_damage < 50) W = new/datum/wound/lost_limb/small(max_damage)
-			else 				W = new/datum/wound/lost_limb(max_damage)
+			else W = new/datum/wound/lost_limb(max_damage)
 
 			parent.wounds += W
 			parent.update_damages()
@@ -843,7 +847,7 @@ This function completely restores a damaged organ to perfect condition.
 		if(!surgery_in_progress)
 			reset_limb_surgeries()
 
-		var/obj/organ	//Dropped limb object
+		var/obj/organ //Dropped limb object
 		switch(body_part)
 			if(BODY_FLAG_HEAD)
 				if(owner.species.flags & IS_SYNTHETIC) //special head for synth to allow brainmob to talk without an MMI
@@ -1125,7 +1129,7 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 
 ///Returns total damage, or, if broken, the minimum fracture threshold, whichever is higher.
 /obj/limb/proc/get_damage()
-	return max(brute_dam + burn_dam, perma_injury)	//could use health?
+	return max(brute_dam + burn_dam, perma_injury) //could use health?
 
 
 /obj/limb/proc/is_usable()
@@ -1382,12 +1386,12 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 	if (disfigured)
 		return
 	if(type == "brute")
-		owner.visible_message(SPAN_DANGER("You hear a sickening cracking sound coming from \the [owner]'s face."),	\
-		SPAN_DANGER("<b>Your face becomes an unrecognizible mangled mess!</b>"),	\
+		owner.visible_message(SPAN_DANGER("You hear a sickening cracking sound coming from \the [owner]'s face."), \
+		SPAN_DANGER("<b>Your face becomes an unrecognizible mangled mess!</b>"), \
 		SPAN_DANGER("You hear a sickening crack."))
 	else
-		owner.visible_message(SPAN_DANGER("[owner]'s face melts away, turning into a mangled mess!"),	\
-		SPAN_DANGER("<b>Your face melts off!</b>"),	\
+		owner.visible_message(SPAN_DANGER("[owner]'s face melts away, turning into a mangled mess!"), \
+		SPAN_DANGER("<b>Your face melts off!</b>"), \
 		SPAN_DANGER("You hear a sickening sizzle."))
 	disfigured = 1
 	owner.name = owner.get_visible_name()

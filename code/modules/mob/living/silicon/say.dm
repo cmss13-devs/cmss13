@@ -41,13 +41,13 @@
 	if(copytext(message,1,2) == "*")
 		return emote(copytext(message,2))
 
-	var/bot_type = 0			//Let's not do a fuck ton of type checks, thanks.
+	var/bot_type = 0 //Let's not do a fuck ton of type checks, thanks.
 	if(isAI(src))
 		bot_type = IS_AI
 	else if(isrobot(src))
 		bot_type = IS_ROBOT
 
-	var/mob/living/silicon/ai/AI = src		//and let's not declare vars over and over and over for these guys.
+	var/mob/living/silicon/ai/AI = src //and let's not declare vars over and over and over for these guys.
 	var/mob/living/silicon/robot/R = src
 
 	//Must be concious to speak

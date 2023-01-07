@@ -11,7 +11,7 @@
 	//blinded get reset each cycle and then get activated later in the
 	//code. Very ugly. I dont care. Moving this stuff here so its easy
 	//to find it.
-	blinded = null
+	blinded = FALSE
 
 	//Handle temperature/pressure differences between body and environment
 	handle_environment()
@@ -65,21 +65,21 @@
 	return //TODO: DEFERRED
 
 
-/mob/living/brain/handle_regular_status_updates(regular_update = TRUE)	//TODO: comment out the unused bits >_>
+/mob/living/brain/handle_regular_status_updates(regular_update = TRUE) //TODO: comment out the unused bits >_>
 	updatehealth()
 
-	if(stat == DEAD)	//DEAD. BROWN BREAD. SWIMMING WITH THE SPESS CARP
-		blinded = 1
+	if(stat == DEAD) //DEAD. BROWN BREAD. SWIMMING WITH THE SPESS CARP
+		blinded = TRUE
 		silent = 0
-	else				//ALIVE. LIGHTS ARE ON
+	else //ALIVE. LIGHTS ARE ON
 		if( !container && (health < HEALTH_THRESHOLD_DEAD || ((world.time - timeofhostdeath) > CONFIG_GET(number/revival_brain_life))) )
 			death(last_damage_data)
-			blinded = 1
+			blinded = TRUE
 			silent = 0
 			return 1
 
 		//Handling EMP effect in the Life(), it's made VERY simply, and has some additional effects handled elsewhere
-		if(emp_damage && regular_update)			//This is pretty much a damage type only used by MMIs, dished out by the emp_act
+		if(emp_damage && regular_update) //This is pretty much a damage type only used by MMIs, dished out by the emp_act
 			if(!(container && istype(container, /obj/item/device/mmi)))
 				emp_damage = 0
 			else
@@ -88,8 +88,8 @@
 				if(31 to INFINITY)
 					emp_damage = 30//Let's not overdo it
 				if(21 to 30)//High level of EMP damage, unable to see, hear, or speak
-					eye_blind = 1
-					blinded = 1
+					SetEyeBlind(1)
+					blinded = TRUE
 					SetEarDeafness(1)
 					silent = 1
 					if(!alert)//Sounds an alarm, but only once per 'level'
@@ -100,8 +100,8 @@
 						emp_damage--
 				if(20)
 					alert = 0
-					blinded = 0
-					eye_blind = 0
+					blinded = FALSE
+					SetEyeBlind(0)
 					SetEarDeafness(0)
 					silent = 0
 					emp_damage--

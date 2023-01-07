@@ -37,7 +37,7 @@
 
 	faction = FACTION_UPP
 
-//SPACE BEARS! SQUEEEEEEEE~     OW! FUCK! IT BIT MY HAND OFF!!
+//SPACE BEARS! SQUEEEEEEEE~  OW! FUCK! IT BIT MY HAND OFF!!
 /mob/living/simple_animal/hostile/bear/Hudson
 	name = "Hudson"
 	desc = ""
@@ -74,7 +74,7 @@
 					stance_step = max(0, stance_step) //If we have not seen a mob in a while, the stance_step will be negative, we need to reset it to 0 as soon as we see a mob again.
 					stance_step++
 					found_mob = 1
-					src.setDir(get_dir(src,target_mob))	//Keep staring at the mob
+					src.setDir(get_dir(src,target_mob)) //Keep staring at the mob
 
 					if(stance_step in list(1,4,7)) //every 3 ticks
 						var/action = pick( list( "growls at [target_mob]", "stares angrily at [target_mob]", "prepares to attack [target_mob]", "closely watches [target_mob]" ) )
@@ -89,7 +89,7 @@
 				stance = HOSTILE_STANCE_ATTACK
 
 		if(HOSTILE_STANCE_ATTACKING)
-			if(stance_step >= 20)	//attacks for 20 ticks, then it gets tired and needs to rest
+			if(stance_step >= 20) //attacks for 20 ticks, then it gets tired and needs to rest
 				INVOKE_ASYNC(src, PROC_REF(custom_emote),1, "is worn out and needs to rest" )
 				stance = HOSTILE_STANCE_TIRED
 				stance_step = 0
@@ -113,7 +113,7 @@
 	..()
 
 /mob/living/simple_animal/hostile/bear/Process_Spacemove(var/check_drift = 0)
-	return	//No drifting in space for space bears!
+	return //No drifting in space for space bears!
 
 /mob/living/simple_animal/hostile/bear/FindTarget()
 	. = ..()

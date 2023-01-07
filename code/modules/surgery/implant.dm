@@ -1,7 +1,7 @@
 //Procedures in this file: Putting items in body cavity. Implant removal. Embedded object removal.
 
 //////////////////////////////////////////////////////////////////
-//					ITEM PLACEMENT SURGERY						//
+// ITEM PLACEMENT SURGERY //
 //////////////////////////////////////////////////////////////////
 
 //Implant and removal surgeries allow either removing the implant just inserted or replacing a removed one with a new item.
@@ -244,7 +244,7 @@
 
 
 //////////////////////////////////////////////////////////////////
-//				EMBEDDED ITEM REMOVAL SURGERY					//
+// EMBEDDED ITEM REMOVAL SURGERY //
 //////////////////////////////////////////////////////////////////
 
 /datum/surgery/embedded

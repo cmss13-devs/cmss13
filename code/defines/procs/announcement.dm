@@ -1,12 +1,12 @@
-#define COMMAND_ANNOUNCE		"Command Announcement"
-#define UPP_COMMAND_ANNOUNCE	"UPP Command Announcement"
-#define CLF_COMMAND_ANNOUNCE	"CLF Command Announcement"
-#define PMC_COMMAND_ANNOUNCE	"PMC Command Announcement"
-#define QUEEN_ANNOUNCE			"The words of the Queen reverberate in your head..."
-#define QUEEN_MOTHER_ANNOUNCE	"Queen Mother Psychic Directive"
-#define XENO_GENERAL_ANNOUNCE	"You sense something unusual..."	//general xeno announcement that don't involve Queen, for nuke for example
-#define YAUTJA_ANNOUNCE			"You receive a message from your ship AI..."	//preds announcement
-#define HIGHER_FORCE_ANNOUNCE 	SPAN_ANNOUNCEMENT_HEADER_BLUE("Unknown Higher Force")
+#define COMMAND_ANNOUNCE "Command Announcement"
+#define UPP_COMMAND_ANNOUNCE "UPP Command Announcement"
+#define CLF_COMMAND_ANNOUNCE "CLF Command Announcement"
+#define PMC_COMMAND_ANNOUNCE "PMC Command Announcement"
+#define QUEEN_ANNOUNCE "The words of the Queen reverberate in your head..."
+#define QUEEN_MOTHER_ANNOUNCE "Queen Mother Psychic Directive"
+#define XENO_GENERAL_ANNOUNCE "You sense something unusual..." //general xeno announcement that don't involve Queen, for nuke for example
+#define YAUTJA_ANNOUNCE "You receive a message from your ship AI..." //preds announcement
+#define HIGHER_FORCE_ANNOUNCE SPAN_ANNOUNCEMENT_HEADER_BLUE("Unknown Higher Force")
 
 //xenomorph hive announcement
 /proc/xeno_announcement(var/message, var/hivenumber, var/title = QUEEN_ANNOUNCE)
@@ -14,7 +14,7 @@
 	if(hivenumber == "everything")
 		for(var/mob/M in targets)
 			var/mob/living/carbon/Xenomorph/X = M
-			if(!isobserver(X) && !istype(X))	//filter out any potential non-xenomorphs/observers mobs
+			if(!isobserver(X) && !istype(X)) //filter out any potential non-xenomorphs/observers mobs
 				targets.Remove(X)
 
 		announcement_helper(message, title, targets, sound(get_sfx("queen"),wait = 0,volume = 50))
@@ -23,7 +23,7 @@
 			if(isobserver(M))
 				continue
 			var/mob/living/carbon/X = M
-			if(!istype(X) || !X.ally_of_hivenumber(hivenumber))	//additionally filter out those of wrong hive
+			if(!istype(X) || !X.ally_of_hivenumber(hivenumber)) //additionally filter out those of wrong hive
 				targets.Remove(X)
 
 		announcement_helper(message, title, targets, sound(get_sfx("queen"),wait = 0,volume = 50))
@@ -34,20 +34,20 @@
 	var/list/targets = GLOB.human_mob_list + GLOB.dead_mob_list
 	if(faction_to_display == FACTION_MARINE)
 		for(var/mob/M in targets)
-			if(isobserver(M))		//observers see everything
+			if(isobserver(M)) //observers see everything
 				continue
 			var/mob/living/carbon/human/H = M
-			if(!istype(H) || H.stat != CONSCIOUS || isYautja(H))	//base human checks
+			if(!istype(H) || H.stat != CONSCIOUS || isYautja(H)) //base human checks
 				targets.Remove(H)
 				continue
 			if(is_mainship_level(H.z)) // People on ship see everything
 				continue
-			if((H.faction != faction_to_display && !add_PMCs) || (H.faction != faction_to_display && add_PMCs && !(H.faction in FACTION_LIST_WY)))	//faction checks
+			if((H.faction != faction_to_display && !add_PMCs) || (H.faction != faction_to_display && add_PMCs && !(H.faction in FACTION_LIST_WY))) //faction checks
 				targets.Remove(H)
 
 	else if(faction_to_display == "Everyone (-Yautja)")
 		for(var/mob/M in targets)
-			if(isobserver(M))		//observers see everything
+			if(isobserver(M)) //observers see everything
 				continue
 			var/mob/living/carbon/human/H = M
 			if(!istype(H) || H.stat != CONSCIOUS || isYautja(H))
@@ -55,7 +55,7 @@
 
 	else
 		for(var/mob/M in targets)
-			if(isobserver(M))		//observers see everything
+			if(isobserver(M)) //observers see everything
 				continue
 			var/mob/living/carbon/human/H = M
 			if(!istype(H) || H.stat != CONSCIOUS || isYautja(H))
@@ -73,7 +73,7 @@
 /proc/yautja_announcement(var/message, var/title = YAUTJA_ANNOUNCE, var/sound_to_play = sound('sound/misc/notice1.ogg'))
 	var/list/targets = GLOB.human_mob_list + GLOB.dead_mob_list
 	for(var/mob/M in targets)
-		if(isobserver(M))		//observers see everything
+		if(isobserver(M)) //observers see everything
 			continue
 		var/mob/living/carbon/human/H = M
 		if(!isYautja(H) || H.stat != CONSCIOUS)
@@ -134,7 +134,7 @@
 
 //the announcement proc that handles announcing for each mob in targets list
 /proc/announcement_helper(var/message, var/title, var/list/targets, var/sound_to_play)
-	if(!message || !title || !sound_to_play || !targets)	//Shouldn't happen
+	if(!message || !title || !sound_to_play || !targets) //Shouldn't happen
 		return
 	for(var/mob/T in targets)
 		if(istype(T, /mob/new_player))

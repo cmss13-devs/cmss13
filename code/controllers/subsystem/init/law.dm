@@ -1,7 +1,7 @@
 SUBSYSTEM_DEF(law_init)
-	name       = "Law Init"
+	name    = "Law Init"
 	init_order = SS_INIT_LAW
-	flags      = SS_NO_FIRE
+	flags   = SS_NO_FIRE
 
 	var/list/laws = list() // All laws
 	var/list/optional_law = list()

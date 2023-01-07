@@ -139,7 +139,7 @@
 	var/list/_entries_by_type = list()
 	entries_by_type = _entries_by_type
 
-	for(var/I in typesof(/datum/config_entry))	//typesof is faster in this case
+	for(var/I in typesof(/datum/config_entry)) //typesof is faster in this case
 		var/datum/config_entry/E = I
 		if(initial(E.abstract_type) == I)
 			continue

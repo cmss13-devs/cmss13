@@ -41,7 +41,7 @@
 	update_canmove()
 	update_icons()
 	addtimer(CALLBACK(src, PROC_REF(do_burrow_cooldown)), (caste ? caste.burrow_cooldown : 5 SECONDS))
-	burrow_timer = world.time + 90		// How long we can be burrowed
+	burrow_timer = world.time + 90 // How long we can be burrowed
 	process_burrow()
 
 /mob/living/carbon/Xenomorph/proc/process_burrow()

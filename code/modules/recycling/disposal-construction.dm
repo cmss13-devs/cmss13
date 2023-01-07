@@ -8,13 +8,13 @@
 	icon = 'icons/obj/pipes/disposal.dmi'
 	icon_state = "conpipe-s"
 	anchored = 0
-	density = 0
+	density = FALSE
 	matter = list("metal" = 1850)
 	level = 2
 	var/ptype = 0
 	// 0=straight, 1=bent, 2=junction-j1, 3=junction-j2, 4=junction-y, 5=trunk, 6=disposal bin, 7=outlet, 8=inlet
 
-	var/dpdir = 0	// directions as disposalpipe
+	var/dpdir = 0 // directions as disposalpipe
 	var/base_state = "pipe-s"
 
 	// update iconstate and dpdir due to dir and type
@@ -87,13 +87,13 @@
 	else
 		icon_state = base_state
 
-	if(invisibility)				// if invisible, fade icon
+	if(invisibility) // if invisible, fade icon
 		alpha = 128
 
 	// hide called by levelupdate if turf intact status changes
 	// change visibility status and force update of icon
 /obj/structure/disposalconstruct/hide(var/intact)
-	invisibility = (intact && level==1) ? 101: 0	// hide if floor is intact
+	invisibility = (intact && level==1) ? 101: 0 // hide if floor is intact
 	update()
 
 
@@ -210,9 +210,9 @@
 			anchored = 0
 			if(ispipe)
 				level = 2
-				density = 0
+				density = FALSE
 			else
-				density = 1
+				density = TRUE
 			to_chat(user, "You detach the [nicetype] from the underfloor.")
 		else
 			if(ptype>=6 && ptype <= 8) // Disposal or outlet
@@ -236,9 +236,9 @@
 			anchored = 1
 			if(ispipe)
 				level = 1 // We don't want disposal bins to disappear under the floors
-				density = 0
+				density = FALSE
 			else
-				density = 1 // We don't want disposal bins or outlets to go density 0
+				density = TRUE // We don't want disposal bins or outlets to go density 0
 			to_chat(user, "You attach the [nicetype] to the underfloor.")
 		playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
 		update()

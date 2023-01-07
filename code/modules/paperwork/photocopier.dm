@@ -3,17 +3,17 @@
 	icon = 'icons/obj/structures/machinery/library.dmi'
 	icon_state = "bigscanner"
 	anchored = 1
-	density = 1
+	density = TRUE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 30
 	active_power_usage = 200
 	power_channel = POWER_CHANNEL_EQUIP
-	var/obj/item/paper/copy = null	//what's in the copier!
+	var/obj/item/paper/copy = null //what's in the copier!
 	var/obj/item/photo/photocopy = null
 	var/obj/item/paper_bundle/bundle = null
-	var/copies = 1	//how many copies to print!
+	var/copies = 1 //how many copies to print!
 	var/toner = 30 //how much toner is left! woooooo~
-	var/maxcopies = 10	//how many copies can be copied at once- idea shamelessly stolen from bs12's copier!
+	var/maxcopies = 10 //how many copies can be copied at once- idea shamelessly stolen from bs12's copier!
 
 /obj/structure/machinery/photocopier/attack_remote(mob/user as mob)
 	return attack_hand(user)
@@ -196,13 +196,13 @@
 
 /obj/structure/machinery/photocopier/proc/copy(obj/item/paper/original)
 	var/obj/item/paper/copy = new /obj/item/paper (loc)
-	if(toner > 10)	//lots of toner, make it dark
+	if(toner > 10) //lots of toner, make it dark
 		copy.info = "<font color = #101010>"
-	else			//no toner? shitty copies for you!
+	else //no toner? shitty copies for you!
 		copy.info = "<font color = #808080>"
 	var/copied = original.info
-	copied = replacetext(copied, "<font face=\"[copy.deffont]\" color=", "<font face=\"[copy.deffont]\" nocolor=")	//state of the art techniques in action
-	copied = replacetext(copied, "<font face=\"[copy.crayonfont]\" color=", "<font face=\"[copy.crayonfont]\" nocolor=")	//This basically just breaks the existing color tag, which we need to do because the innermost tag takes priority.
+	copied = replacetext(copied, "<font face=\"[copy.deffont]\" color=", "<font face=\"[copy.deffont]\" nocolor=") //state of the art techniques in action
+	copied = replacetext(copied, "<font face=\"[copy.crayonfont]\" color=", "<font face=\"[copy.crayonfont]\" nocolor=") //This basically just breaks the existing color tag, which we need to do because the innermost tag takes priority.
 	copy.info += copied
 	copy.info += "</font>"
 	copy.name = original.name // -- Doohl
@@ -215,7 +215,7 @@
 	copy.update_icon()
 
 	//Iterates through stamps and puts a matching gray overlay onto the copy
-	var/image/img                                //
+	var/image/img //
 	for (var/j = 1, j <= original.ico.len, j++)
 		if (findtext(original.ico[j], "cap") || findtext(original.ico[j], "cent"))
 			img = image('icons/obj/items/paper.dmi', "paper_stamp-circle")
@@ -244,11 +244,11 @@
 	var/icon/I = icon(photocopy.icon, photocopy.icon_state)
 	var/icon/img = icon(photocopy.img)
 	var/icon/tiny = icon(photocopy.tiny)
-	if(toner > 10)	//plenty of toner, go straight greyscale
-		I.MapColors(rgb(77,77,77), rgb(150,150,150), rgb(28,28,28), rgb(0,0,0))		//I'm not sure how expensive this is, but given the many limitations of photocopying, it shouldn't be an issue.
+	if(toner > 10) //plenty of toner, go straight greyscale
+		I.MapColors(rgb(77,77,77), rgb(150,150,150), rgb(28,28,28), rgb(0,0,0)) //I'm not sure how expensive this is, but given the many limitations of photocopying, it shouldn't be an issue.
 		img.MapColors(rgb(77,77,77), rgb(150,150,150), rgb(28,28,28), rgb(0,0,0))
 		tiny.MapColors(rgb(77,77,77), rgb(150,150,150), rgb(28,28,28), rgb(0,0,0))
-	else			//not much toner left, lighten the photo
+	else //not much toner left, lighten the photo
 		I.MapColors(rgb(77,77,77), rgb(150,150,150), rgb(28,28,28), rgb(100,100,100))
 		img.MapColors(rgb(77,77,77), rgb(150,150,150), rgb(28,28,28), rgb(100,100,100))
 		tiny.MapColors(rgb(77,77,77), rgb(150,150,150), rgb(28,28,28), rgb(100,100,100))
@@ -258,7 +258,7 @@
 	p.name = photocopy.name
 	p.desc = photocopy.desc
 	p.scribble = photocopy.scribble
-	toner -= 5	//photos use a lot of ink!
+	toner -= 5 //photos use a lot of ink!
 	if(toner < 0)
 		toner = 0
 	return p

@@ -96,9 +96,9 @@
 
 /obj/item/weapon/gun/flamer/proc/get_fire_sound()
 	var/list/fire_sounds = list(
-					 'sound/weapons/gun_flamethrower1.ogg',
-					 'sound/weapons/gun_flamethrower2.ogg',
-					 'sound/weapons/gun_flamethrower3.ogg')
+							'sound/weapons/gun_flamethrower1.ogg',
+							'sound/weapons/gun_flamethrower2.ogg',
+							'sound/weapons/gun_flamethrower3.ogg')
 	return pick(fire_sounds)
 
 /obj/item/weapon/gun/flamer/Fire(atom/target, mob/living/user, params, reflex)
@@ -377,7 +377,7 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 	name = "fire"
 	desc = "Ouch!"
 	anchored = 1
-	mouse_opacity = 0
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	icon = 'icons/effects/fire.dmi'
 	icon_state = "dynamic_2"
 	layer = BELOW_OBJ_LAYER
@@ -385,7 +385,7 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 	var/firelevel = 12 //Tracks how much "fire" there is. Basically the timer of how long the fire burns
 	var/burnlevel = 10 //Tracks how HOT the fire is. This is basically the heat level of the fire and determines the temperature.
 
-	 /// After the fire is created, for 0.5 seconds this variable will be TRUE.
+	/// After the fire is created, for 0.5 seconds this variable will be TRUE.
 	var/initial_burst = TRUE
 
 	var/flame_icon = "dynamic"

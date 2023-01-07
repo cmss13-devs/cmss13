@@ -131,7 +131,7 @@
 
 /mob/living/simple_animal/cow/death()
 	. = ..()
-	if(!.)	return //was already dead
+	if(!.) return //was already dead
 	if(last_damage_data)
 		var/mob/user = last_damage_data.resolve_mob()
 		if(user)
@@ -146,7 +146,7 @@
 		spawn(rand(20,50))
 			if(!stat && M)
 				icon_state = icon_living
-				var/list/responses = list(	"[src] looks at you imploringly.",
+				var/list/responses = list( "[src] looks at you imploringly.",
 											"[src] looks at you pleadingly",
 											"[src] looks at you with a resigned expression.",
 											"[src] seems resigned to its fate.")

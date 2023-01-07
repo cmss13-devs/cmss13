@@ -31,7 +31,7 @@
 	var/list/locs_land = list()
 	//Could be a list, but I don't see a reason considering shuttles aren't bloated with variables.
 	var/sound_target = 136//Where the sound will originate from. Must be a list index, usually the center bottom (engines).
-	var/sound/sound_takeoff	= 'sound/effects/engine_startup.ogg'//Takeoff sounds.
+	var/sound/sound_takeoff = 'sound/effects/engine_startup.ogg'//Takeoff sounds.
 	var/sound/sound_landing = 'sound/effects/engine_landing.ogg'//Landing sounds.
 	var/sound/sound_moving //Movement sounds, usually not applicable.
 	var/sound/sound_misc //Anything else, like escape pods.
@@ -167,7 +167,7 @@
 		if (WAIT_ARRIVE)
 			if (moving_status == SHUTTLE_IDLE)
 				dock()
-				in_use = null	//release lock
+				in_use = null //release lock
 				process_state = WAIT_FINISH
 
 		if (WAIT_FINISH)
@@ -222,7 +222,7 @@
 
 	if (moving_status != SHUTTLE_WARMUP)
 		recharging = 0
-		return	//someone cancelled the launch
+		return //someone cancelled the launch
 
 	if(transit_gun_mission)
 		travel_time = move_time * 1.5 //fire missions not made shorter by optimization.
@@ -415,7 +415,7 @@
 
 	if (moving_status == SHUTTLE_IDLE)
 		recharging = 0
-		return	//someone canceled the launch
+		return //someone canceled the launch
 
 	var/travel_time = 0
 	travel_time = DROPSHIP_CRASH_TRANSIT_DURATION
@@ -629,7 +629,7 @@
 	sleep(warmup_time)
 
 	if (moving_status == SHUTTLE_IDLE)
-		return	//someone cancelled the launch
+		return //someone cancelled the launch
 
 	moving_status = SHUTTLE_INTRANSIT //shouldn't matter but just to be safe
 
@@ -771,16 +771,16 @@
 //Kinda messy proc, but the best solution to prevent shearing of multitile vehicles
 //Alternatives include:
 //1. A ticker that verifies that all multi_tile vics aren't out of wack
-//		-Two problems here, intersection of movement and verication would cause issues and this idea is dumb and expensive
+// -Two problems here, intersection of movement and verication would cause issues and this idea is dumb and expensive
 //2. Somewhere in the shuttle_backend, every time you move a multi_tile vic hitbox or root, tell the vic to update when the move completes
-//		-Issues here are that this is not atomic at all and vics get left behind unless the entirety of them is on the shuttle/elevator,
-//			plus then part of the vic would be in space since elevators leave that behind
+// -Issues here are that this is not atomic at all and vics get left behind unless the entirety of them is on the shuttle/elevator,
+// plus then part of the vic would be in space since elevators leave that behind
 /datum/shuttle/ferry/elevator/preflight_checks()
 	for(var/obj/structure/machinery/door/airlock/multi_tile/elevator/E in main_doors)
 		//If there is part of a multitile vic in any of the turfs the door occupies, cancel
 		//An argument can be made for tanks being allowed to block the door, but
-		//	that would make this already relatively expensive and inefficent even more so
-		//	--MadSnailDisease
+		// that would make this already relatively expensive and inefficent even more so
+		// --MadSnailDisease
 		for(var/obj/vehicle/multitile/M in E.loc)
 			if(M) return 0
 

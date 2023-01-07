@@ -8,7 +8,7 @@
 	melee_vehicle_damage = XENO_DAMAGE_TIER_3
 	max_health = XENO_HEALTH_TIER_9
 	plasma_gain = XENO_PLASMA_GAIN_TIER_6
-	plasma_max = XENO_PLASMA_TIER_4
+	plasma_max = XENO_PLASMA_TIER_5
 	crystal_max = XENO_CRYSTAL_LOW
 	xeno_explosion_resistance = XENO_EXPLOSIVE_ARMOR_TIER_2
 	armor_deflection = XENO_NO_ARMOR
@@ -24,7 +24,7 @@
 
 	hugger_nurturing = TRUE
 	huggers_max = 16
-	eggs_max = 7
+	eggs_max = 8
 
 	tackle_min = 2
 	tackle_max = 4

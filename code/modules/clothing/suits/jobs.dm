@@ -344,7 +344,7 @@
 		else
 			to_chat(usr, "You attempt to button-up the velcro on your [src], before promptly realising how retarded you are.")
 			return
-	update_clothing_icon()	//so our overlays update
+	update_clothing_icon() //so our overlays update
 
 //Windbreakers
 /obj/item/clothing/suit/storage/windbreaker

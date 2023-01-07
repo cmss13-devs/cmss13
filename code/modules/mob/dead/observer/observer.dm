@@ -8,10 +8,10 @@
 	desc = "It's a g-g-g-g-ghooooost!" //jinkies!
 	icon = 'icons/mob/mob.dmi'
 	icon_state = "ghost"
-	density = 0
+	density = FALSE
 	canmove = TRUE
-	blinded = 0
-	anchored = 1	//  don't get pushed around
+	blinded = FALSE
+	anchored = 1 //  don't get pushed around
 	invisibility = INVISIBILITY_OBSERVER
 	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
 	plane = GHOST_PLANE
@@ -30,10 +30,10 @@
 							"Xeno Status HUD" = FALSE
 							)
 	universal_speak = 1
-	var/updatedir = TRUE	//Do we have to update our dir as the ghost moves around?
+	var/updatedir = TRUE //Do we have to update our dir as the ghost moves around?
 	var/atom/movable/following = null
 	var/datum/orbit_menu/orbit_menu
-	var/mob/observetarget = null	//The target mob that the ghost is observing. Used as a reference in logout()
+	var/mob/observetarget = null //The target mob that the ghost is observing. Used as a reference in logout()
 	var/datum/health_scan/last_health_display
 	var/ghost_orbit = GHOST_ORBIT_CIRCLE
 	var/own_orbit_size = 0
@@ -57,8 +57,8 @@
 
 	var/turf/spawn_turf
 	if(ismob(body))
-		spawn_turf = get_turf(body)				//Where is the body located?
-		attack_log = body.attack_log	//preserve our attack logs by copying them to our ghost
+		spawn_turf = get_turf(body) //Where is the body located?
+		attack_log = body.attack_log //preserve our attack logs by copying them to our ghost
 		life_kills_total = body.life_kills_total //kills also copy over
 
 		appearance = body.appearance
@@ -80,15 +80,15 @@
 		see_invisible = INVISIBILITY_OBSERVER
 		see_in_dark = 100
 
-		mind = body.mind	//we don't transfer the mind but we keep a reference to it.
+		mind = body.mind //we don't transfer the mind but we keep a reference to it.
 
 	if(!own_orbit_size)
 		own_orbit_size = 32
 
-	if(!isturf(spawn_turf)) spawn_turf = get_turf(pick(GLOB.latejoin))			//Safety in case we cannot find the body's position
+	if(!isturf(spawn_turf)) spawn_turf = get_turf(pick(GLOB.latejoin)) //Safety in case we cannot find the body's position
 	forceMove(spawn_turf)
 
-	if(!name)							//To prevent nameless ghosts
+	if(!name) //To prevent nameless ghosts
 		name = capitalize(pick(first_names_male)) + " " + capitalize(pick(last_names))
 	change_real_name(src, name)
 
@@ -238,8 +238,8 @@
 				if("Faction Wey-Yu HUD")
 					H = huds[MOB_HUD_FACTION_WY]
 					H.add_hud_to(src)
-				if("Faction RESS HUD")
-					H = huds[MOB_HUD_FACTION_RESS]
+				if("Faction TWE HUD")
+					H = huds[MOB_HUD_FACTION_TWE]
 					H.add_hud_to(src)
 				if("Faction CLF HUD")
 					H = huds[MOB_HUD_FACTION_CLF]
@@ -276,7 +276,7 @@ Works together with spawning an observer, noted above.
 		return
 	if(aghosted)
 		src.aghosted = TRUE
-	var/mob/dead/observer/ghost = new(loc, src)	//Transfer safety to observer spawning proc.
+	var/mob/dead/observer/ghost = new(loc, src) //Transfer safety to observer spawning proc.
 	ghost.can_reenter_corpse = can_reenter_corpse
 	ghost.timeofdeath = timeofdeath //BS12 EDIT
 
@@ -347,7 +347,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		if(response == "Aghost")
 			client.admin_ghost()
 			return
-		if(response != "Ghost")	return	//didn't want to ghost after-all
+		if(response != "Ghost") return //didn't want to ghost after-all
 		AdjustSleeping(2) // Sleep so you will be properly recognized as ghosted
 		var/turf/location = get_turf(src)
 		if(location) //to avoid runtime when a mob ends up in nullspace
@@ -387,7 +387,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		if(last_area)
 			last_area.Exited(src)
 
-	for(var/obj/effect/step_trigger/S in new_turf)	//<-- this is dumb
+	for(var/obj/effect/step_trigger/S in new_turf) //<-- this is dumb
 		S.Crossed(src)
 
 /mob/dead/observer/get_examine_text(mob/user)
@@ -407,7 +407,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		to_chat(src, "<span style='color: red;'>You have no body.</span>")
 		return
 
-	if(mind.original.key && copytext(mind.original.key,1,2)!="@")	//makes sure we don't accidentally kick any clients
+	if(mind.original.key && copytext(mind.original.key,1,2)!="@") //makes sure we don't accidentally kick any clients
 		to_chat(src, "<span style='color: red;'>Another consciousness is in your body...It is resisting you.</span>")
 		return
 
@@ -448,7 +448,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		return
 
 	var/area/thearea = tgui_input_list(usr, "Area to jump to", "BOOYEA", return_sorted_areas())
-	if(!thearea)	return
+	if(!thearea) return
 
 	var/list/L = list()
 	for(var/turf/T in get_area_turfs(thearea.type))
@@ -546,7 +546,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 
 		var/list/dest = list() //List of possible destinations (mobs)
-		var/target = null	   //Chosen target.
+		var/target = null    //Chosen target.
 
 		dest += getmobs() //Fill list, prompt user with list
 		target = tgui_input_list(usr, "Please, select a player!", "Jump to Mob", dest)
@@ -555,10 +555,10 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 			return
 		else
 			var/mob/M = dest[target] //Destination mob
-			var/mob/A = src			 //Source mob
+			var/mob/A = src  //Source mob
 			var/turf/T = get_turf(M) //Turf of the destination mob
 
-			if(T && isturf(T))	//Make sure the turf exists, then move the source to that destination.
+			if(T && isturf(T)) //Make sure the turf exists, then move the source to that destination.
 				A.forceMove(T)
 				following = null
 			else

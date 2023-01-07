@@ -3,7 +3,7 @@
 	It had actual momentum, rolling thanks to momentum and so on. We had to cut out any rolling, cause it made vehicle controls
 	pretty inconvenient even without lags. The reason why it wasn't removed entirely is because I want vehicles to keep the ability
 	to achieve top speed, to be able to move actually FAST in long-range travel on big maps, but not have sonic speed during engagements.
-	 - Jeser
+	- Jeser
 
 	original description:
 		Vehicles have momentum, which makes the movement code a bit complex.

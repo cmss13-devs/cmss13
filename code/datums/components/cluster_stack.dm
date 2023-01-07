@@ -1,20 +1,20 @@
 
 #define COLOR_CLUSTER "#c75a51"
- /// Max alpha for the filter outline.
+/// Max alpha for the filter outline.
 #define CLUSTER_MAX_ALPHA 200
- /// Once cluster_stacks reaches this number, it triggers apply_cluster_stacks() and resets to zero.
+/// Once cluster_stacks reaches this number, it triggers apply_cluster_stacks() and resets to zero.
 #define MAX_CLUSTER_STACKS 15
- /// Loss of stack every second once it's been more than 5 seconds since last_stack.
+/// Loss of stack every second once it's been more than 5 seconds since last_stack.
 #define CLUSTER_STACK_LOSS_PER_SECOND AMOUNT_PER_TIME(2, 1)
 
 //stacks up to 15 while counting all damage, then at 15 explodes inside the target, dealing 35% of the counted damage
 /datum/component/cluster_stack
 	dupe_mode = COMPONENT_DUPE_UNIQUE_PASSARGS
-	 /// Count of how many cluster rounds are in the current stack.
+	/// Count of how many cluster rounds are in the current stack.
 	var/cluster_stacks = 0
-	 /// Counter of how much damage each cluster round did, 30% of which will be given to the target of apply_cluster_stacks()
+	/// Counter of how much damage each cluster round did, 30% of which will be given to the target of apply_cluster_stacks()
 	var/damage_counter = 0
-	 /// Last world.time that the afflicted was hit by a cluster round.
+	/// Last world.time that the afflicted was hit by a cluster round.
 	var/last_stack
 
 /datum/component/cluster_stack/Initialize(var/cluster_stacks, var/damage_counter, var/time)

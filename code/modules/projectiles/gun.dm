@@ -532,7 +532,7 @@
 		return
 
 	if(href_list["list_stats"]&& !(flags_gun_features & GUN_UNUSUAL_DESIGN))
-		tgui_interact(user)
+		tgui_interact(usr)
 
 // TGUI GOES HERE \\
 
@@ -544,6 +544,9 @@
 
 /obj/item/weapon/gun/ui_state(mob/user)
 	return GLOB.always_state
+
+/obj/item/weapon/gun/ui_assets(mob/user)
+	. = ..()
 
 /obj/item/weapon/gun/ui_data(mob/user)
 	var/list/data = list()
@@ -615,14 +618,14 @@
 	data["two_handed_only"] = (flags_gun_features & GUN_WIELDED_FIRING_ONLY)
 	data["recoil"] = max(gun_recoil, 0.1)
 	data["unwielded_recoil"] = max(recoil_unwielded, 0.1)
-	data["has_ammo"] = has_ammo,
+	data["has_ammo"] = has_ammo
 	data["automatic"] = (flags_gun_features & GUN_HAS_FULL_AUTO)
 	data["ammo_name"] = ammo_name
 	data["damage"] = damage
 	data["falloff"] = falloff
 	data["total_projectile_amount"] = bonus_projectile_amount+1
 	data["armor_punch"] = armor_punch
-	data["penetration"] = penetration,
+	data["penetration"] = penetration
 	data["accuracy"] = accuracy * accuracy_mult
 	data["unwielded_accuracy"] = accuracy * accuracy_mult_unwielded
 	data["min_accuracy"] = min_accuracy
@@ -656,16 +659,6 @@
 /obj/item/weapon/gun/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 0)
 	var/datum/asset/assets = get_asset_datum(/datum/asset/nanoui/weapons)
 	assets.send(user)
-
-
-
-	ui = nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
-
-	if (!ui)
-		ui = new(user, src, ui_key, "weapon_stats.tmpl", "USCM Weapon Codex", 850, 915)
-		ui.set_initial_data(data)
-		ui.set_auto_update(FALSE)
-		ui.open()
 
 /obj/item/weapon/gun/wield(var/mob/user)
 

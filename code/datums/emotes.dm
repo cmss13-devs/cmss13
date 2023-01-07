@@ -82,21 +82,24 @@
 
 	msg = replace_pronoun(user, msg)
 
+	if(say_message)
+		user.say(say_message)
+
+	var/tmp_sound = get_sound(user)
+	if(TIMER_COOLDOWN_CHECK(user, type) || TIMER_COOLDOWN_CHECK(user, COOLDOWN_MOB_AUDIO))
+		to_chat(user, SPAN_NOTICE("You just did an audible emote. Wait awhile."))
+	else if(tmp_sound && should_play_sound(user, intentional))
+		TIMER_COOLDOWN_START(user, type, audio_cooldown)
+		TIMER_COOLDOWN_START(user, COOLDOWN_MOB_AUDIO, 20 SECONDS)
+		playsound(user, tmp_sound, volume, vary)
+
+	log_emote("[user.name]/[user.key] : [msg ? msg : key]")
+
 	if(!msg)
 		return
 
 	var/paygrade = user.get_paygrade()
 	var/formatted_message = "<b>[paygrade][user]</b> [msg]"
-
-	log_emote("[user.name]/[user.key] : [msg]")
-
-	if(say_message)
-		user.say(say_message)
-
-	var/tmp_sound = get_sound(user)
-	if(tmp_sound && should_play_sound(user, intentional) && !TIMER_COOLDOWN_CHECK(user, type))
-		TIMER_COOLDOWN_START(user, type, audio_cooldown)
-		playsound(user, tmp_sound, volume, vary)
 
 	var/user_turf = get_turf(user)
 	if (user.client)
@@ -220,7 +223,7 @@
 				if(DEAD)
 					to_chat(user, SPAN_WARNING("You cannot [key] while dead!"))
 			return FALSE
-		if(hands_use_check && (!user.r_hand && !user.l_hand))
+		if(hands_use_check && (user.r_hand && user.l_hand))
 			if(!intentional)
 				return FALSE
 			to_chat(user, SPAN_WARNING("You cannot use your hands to [key] right now!"))

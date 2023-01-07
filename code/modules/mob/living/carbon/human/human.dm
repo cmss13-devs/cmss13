@@ -1693,3 +1693,49 @@
 	. += "<option value='?_src_=vars;setspecies=\ref[src]'>Set Species</option>"
 	. += "<option value='?_src_=vars;selectequipment=\ref[src]'>Select Equipment</option>"
 	. += "<option value='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminspawncookie=\ref[src]'>Give Cookie</option>"
+
+/mob/living/carbon/human/verb/pose()
+	set name = "Set Pose"
+	set desc = "Sets a description which will be shown when someone examines you."
+	set category = "IC"
+
+	pose =  strip_html(input(usr, "This is [src]. \He is...", "Pose", null)  as text)
+
+/mob/living/carbon/human/verb/set_flavor()
+	set name = "Set Flavour Text"
+	set desc = "Sets an extended description of your character's features."
+	set category = "IC"
+
+	var/HTML = "<body>"
+	HTML += "<tt>"
+	HTML += "<a href='byond://?src=\ref[src];flavor_change=general'>General:</a> "
+	HTML += TextPreview(flavor_texts["general"])
+	HTML += "<br>"
+	HTML += "<a href='byond://?src=\ref[src];flavor_change=head'>Head:</a> "
+	HTML += TextPreview(flavor_texts["head"])
+	HTML += "<br>"
+	HTML += "<a href='byond://?src=\ref[src];flavor_change=face'>Face:</a> "
+	HTML += TextPreview(flavor_texts["face"])
+	HTML += "<br>"
+	HTML += "<a href='byond://?src=\ref[src];flavor_change=eyes'>Eyes:</a> "
+	HTML += TextPreview(flavor_texts["eyes"])
+	HTML += "<br>"
+	HTML += "<a href='byond://?src=\ref[src];flavor_change=torso'>Body:</a> "
+	HTML += TextPreview(flavor_texts["torso"])
+	HTML += "<br>"
+	HTML += "<a href='byond://?src=\ref[src];flavor_change=arms'>Arms:</a> "
+	HTML += TextPreview(flavor_texts["arms"])
+	HTML += "<br>"
+	HTML += "<a href='byond://?src=\ref[src];flavor_change=hands'>Hands:</a> "
+	HTML += TextPreview(flavor_texts["hands"])
+	HTML += "<br>"
+	HTML += "<a href='byond://?src=\ref[src];flavor_change=legs'>Legs:</a> "
+	HTML += TextPreview(flavor_texts["legs"])
+	HTML += "<br>"
+	HTML += "<a href='byond://?src=\ref[src];flavor_change=feet'>Feet:</a> "
+	HTML += TextPreview(flavor_texts["feet"])
+	HTML += "<br>"
+	HTML += "<hr />"
+	HTML +="<a href='?src=\ref[src];flavor_change=done'>\[Done\]</a>"
+	HTML += "<tt>"
+	show_browser(src, HTML, "Update Flavor Text", "flavor_changes", "size=430x300")

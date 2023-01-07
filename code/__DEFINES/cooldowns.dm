@@ -1,3 +1,5 @@
+#define COOLDOWN_MOB_AUDIO "mob_audio_cooldown"
+
 //TIMER COOLDOWN MACROS
 
 #define COMSIG_CD_STOP(cd_index) "cooldown_[cd_index]"

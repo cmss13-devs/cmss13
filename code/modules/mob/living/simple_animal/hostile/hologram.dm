@@ -243,30 +243,30 @@
 	icon_state = "toxin"
 
 /mob/living/simple_animal/hostile/alien/hologram/Move(atom/new_loc)
-    var/d = get_dir(src, new_loc)
-    var/is_diagonal = d & (d - 1)
-    if(is_diagonal)
-        // d1 and d2 are the component directions
-        var/d1 = d & (NORTH | SOUTH)
-        var/d2 = d & (EAST | WEST)
-        // swap d1 and d2 50% of the time so we don't favor any direction
-        if(prob(50))
-            var/t = d1
-            d1 = d2
-            d2 = t
+	var/d = get_dir(src, new_loc)
+	var/is_diagonal = d & (d - 1)
+	if(is_diagonal)
+		// d1 and d2 are the component directions
+		var/d1 = d & (NORTH | SOUTH)
+		var/d2 = d & (EAST | WEST)
+		// swap d1 and d2 50% of the time so we don't favor any direction
+		if(prob(50))
+			var/t = d1
+			d1 = d2
+			d2 = t
 
-        // try moving in the d1 direction
-        dir = d1
-        if(step(src, d1))
-            return 1
+		// try moving in the d1 direction
+		dir = d1
+		if(step(src, d1))
+			return 1
 
-        // if that fails, try moving in the d2 direction
-        dir = d2
-        if(step(src, d2))
-            return 1
+		// if that fails, try moving in the d2 direction
+		dir = d2
+		if(step(src, d2))
+			return 1
 
-        return 0
+		return 0
      
-    // if the move wasn't diagonal
-    else
-        return ..()
+	// if the move wasn't diagonal
+	else
+		return ..()

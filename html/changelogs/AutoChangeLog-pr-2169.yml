@@ -1,4 +1,0 @@
-author: "Molto"
-delete-after: True
-changes:
-  - bugfix: "fixed marine qdel on hijack"

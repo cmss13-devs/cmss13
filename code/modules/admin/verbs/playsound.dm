@@ -58,7 +58,7 @@
 		"Meme" = SOUND_ADMIN_MEME,
 		"Atmospheric" = SOUND_ADMIN_ATMOSPHERIC
 	)
-	var/style = tgui_input_list(src, "Who do you want to play this to?", "Select Listeners", list("Globally", "Xenos", "Marines", "All Inview", "Single Inview"))
+	var/style = tgui_input_list(src, "Who do you want to play this to?", "Select Listeners", list("Globally", "Xenos", "Marines", "Ghosts", "All Inview", "Single Inview"))
 	var/sound_type = tgui_input_list(src, "What kind of sound is this?", "Select Sound Type", sound_type_list)
 	sound_type = sound_type_list[sound_type]
 	switch(style)
@@ -68,6 +68,8 @@
 			targets = GLOB.xeno_mob_list + GLOB.dead_mob_list
 		if("Marines")
 			targets = GLOB.human_mob_list + GLOB.dead_mob_list
+		if("Ghosts")
+			targets = GLOB.observer_list + GLOB.dead_mob_list
 		if("All Inview")
 			targets = viewers(usr.client.view, src)
 		if("Single Inview")
@@ -138,7 +140,7 @@
 		"Meme" = SOUND_ADMIN_MEME,
 		"Atmospheric" = SOUND_ADMIN_ATMOSPHERIC
 	)
-	var/style = tgui_input_list(src, "Who do you want to play this to?", "Select Listeners", list("Globally", "Xenos", "Marines", "All Inview", "Single Inview"))
+	var/style = tgui_input_list(src, "Who do you want to play this to?", "Select Listeners", list("Globally", "Xenos", "Marines", "Ghosts", "All Inview", "Single Inview"))
 	var/sound_type = tgui_input_list(src, "What kind of sound is this?", "Select Sound Type", sound_type_list)
 	sound_type = sound_type_list[sound_type]
 	switch(style)
@@ -148,6 +150,8 @@
 			targets = GLOB.xeno_mob_list + GLOB.dead_mob_list
 		if("Marines")
 			targets = GLOB.human_mob_list + GLOB.dead_mob_list
+		if("Ghosts")
+			targets = GLOB.observer_list + GLOB.dead_mob_list
 		if("All Inview")
 			targets = viewers(usr.client.view, src)
 		if("Single Inview")

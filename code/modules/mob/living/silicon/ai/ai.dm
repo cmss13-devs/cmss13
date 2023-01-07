@@ -116,7 +116,6 @@ var/list/ai_verbs_default = list(
 		add_ai_verbs(src)
 
 	//Languages
-	add_language(LANGUAGE_BINARY, 1)
 	add_language(LANGUAGE_ENGLISH, 1)
 	add_language(LANGUAGE_RUSSIAN, 1)
 	add_language(LANGUAGE_XENOMORPH, 0)

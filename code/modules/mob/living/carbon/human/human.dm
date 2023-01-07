@@ -900,23 +900,24 @@
 /mob/living/carbon/human/get_eye_protection()
 	var/number = 0
 
-	if(species && !species.has_organ["eyes"]) return 2//No eyes, can't hurt them.
+	if(species && !species.has_organ["eyes"])
+		return EYE_PROTECTION_WELDING //No eyes, can't hurt them.
 
 	if(!internal_organs_by_name)
-		return 2
+		return EYE_PROTECTION_WELDING
 	var/datum/internal_organ/eyes/I = internal_organs_by_name["eyes"]
 	if(I)
 		if(I.cut_away)
-			return 2
+			return EYE_PROTECTION_WELDING
 		if(I.robotic == ORGAN_ROBOT)
-			return 2
+			return EYE_PROTECTION_WELDING
 	else
-		return 2
+		return EYE_PROTECTION_WELDING
 
 	if(istype(head, /obj/item/clothing))
 		var/obj/item/clothing/C = head
 		number += C.eye_protection
-	if(istype(wear_mask))
+	if(istype(wear_mask, /obj/item/clothing))
 		number += wear_mask.eye_protection
 	if(glasses)
 		number += glasses.eye_protection

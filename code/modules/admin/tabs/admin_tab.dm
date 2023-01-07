@@ -406,7 +406,7 @@
 	remove_verb(src, /client/proc/enable_admin_verbs)
 
 	if(!(admin_holder.rights & R_DEBUG))
-		remove_verb(src, /client/proc/proccall_atom)
+		remove_verb(src, /client/proc/callproc_datum)
 	if(!(admin_holder.rights & R_POSSESS))
 		remove_verb(src, /client/proc/release)
 		remove_verb(src, /client/proc/possess)

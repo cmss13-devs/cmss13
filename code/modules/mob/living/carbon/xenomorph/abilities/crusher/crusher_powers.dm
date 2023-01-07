@@ -36,9 +36,41 @@
 /datum/action/xeno_action/activable/pounce/crusher_charge/pre_windup_effects()
 	RegisterSignal(owner, COMSIG_XENO_PRE_CALCULATE_ARMOURED_DAMAGE_PROJECTILE, PROC_REF(check_directional_armor))
 
+	var/mob/living/carbon/Xenomorph/xeno_owner = owner
+	if(!istype(xeno_owner) || xeno_owner.mutation_type != CRUSHER_NORMAL)
+		return
+
+	var/datum/behavior_delegate/crusher_base/crusher_delegate = xeno_owner.behavior_delegate
+	if(!istype(crusher_delegate))
+		return
+
+	crusher_delegate.is_charging = TRUE
+	xeno_owner.update_icons()
+
 /datum/action/xeno_action/activable/pounce/crusher_charge/post_windup_effects(var/interrupted)
 	..()
 	UnregisterSignal(owner, COMSIG_XENO_PRE_CALCULATE_ARMOURED_DAMAGE_PROJECTILE)
+	var/mob/living/carbon/Xenomorph/xeno_owner = owner
+	if(!istype(xeno_owner) || xeno_owner.mutation_type != CRUSHER_NORMAL)
+		return
+
+	var/datum/behavior_delegate/crusher_base/crusher_delegate = xeno_owner.behavior_delegate
+	if(!istype(crusher_delegate))
+		return
+
+	addtimer(CALLBACK(src, PROC_REF(undo_charging_icon)), 0.5 SECONDS) // let the icon be here for a bit, it looks cool
+
+/datum/action/xeno_action/activable/pounce/crusher_charge/proc/undo_charging_icon()
+	var/mob/living/carbon/Xenomorph/xeno_owner = owner
+	if(!istype(xeno_owner) || xeno_owner.mutation_type != CRUSHER_NORMAL)
+		return
+
+	var/datum/behavior_delegate/crusher_base/crusher_delegate = xeno_owner.behavior_delegate
+	if(!istype(crusher_delegate))
+		return
+
+	crusher_delegate.is_charging = FALSE
+	xeno_owner.update_icons()
 
 /datum/action/xeno_action/activable/pounce/crusher_charge/proc/check_directional_armor(mob/living/carbon/Xenomorph/X, list/damagedata)
 	SIGNAL_HANDLER

@@ -25,7 +25,7 @@
 
 /datum/equipment_preset/synth/load_skills(mob/living/carbon/human/H)
 	. = ..()
-	if(isColonySynthetic(H))
+	if(isColonySynthetic(H) && !isWorkingJoe(H))
 		H.set_skills(/datum/skills/colonial_synthetic)
 
 	H.allow_gun_usage = FALSE
@@ -154,6 +154,7 @@
 	assignment = JOB_WORKING_JOE
 	rank = JOB_WORKING_JOE
 	skills = /datum/skills/working_joe
+	languages = list(LANGUAGE_ENGLISH, LANGUAGE_APOLLO, LANGUAGE_RUSSIAN, LANGUAGE_JAPANESE, LANGUAGE_GERMAN, LANGUAGE_SPANISH, LANGUAGE_CHINESE)
 
 /datum/equipment_preset/synth/working_joe/New()
 	. = ..()

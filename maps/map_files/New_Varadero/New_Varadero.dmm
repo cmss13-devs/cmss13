@@ -4850,9 +4850,7 @@
 /turf/open/floor/wood,
 /area/varadero/interior/records)
 "epm" = (
-/obj/item/weapon/gun/energy/rxfm5_eva{
-	icon_state = "rxfm5_eva_stripped"
-	},
+/obj/item/weapon/gun/energy/rxfm5_eva,
 /turf/open/floor/wood,
 /area/varadero/interior/hall_SE)
 "epr" = (
@@ -10518,9 +10516,7 @@
 	pixel_x = -14;
 	pixel_y = 2
 	},
-/obj/item/weapon/gun/energy/rxfm5_eva{
-	icon_state = "rxfm5_eva_stripped"
-	},
+/obj/item/weapon/gun/energy/rxfm5_eva,
 /turf/open/floor/shiva{
 	icon_state = "blue"
 	},

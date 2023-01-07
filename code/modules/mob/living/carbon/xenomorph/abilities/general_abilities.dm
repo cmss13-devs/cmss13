@@ -261,6 +261,8 @@
 /// Any effects to apply to the xenomorph after the windup finishes (or is interrupted)
 /datum/action/xeno_action/activable/pounce/proc/post_windup_effects(var/interrupted)
 	SHOULD_CALL_PARENT(TRUE)
+	if(!owner)
+		return
 	owner.flags_atom &= ~DIRLOCK
 
 /datum/action/xeno_action/onclick/toggle_long_range
@@ -411,7 +413,7 @@
 	macro_path = /datum/action/xeno_action/verb/verb_bombard
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_1
-	xeno_cooldown = 245
+	xeno_cooldown = 230
 
 	// Range and other config
 	var/effect_range = 3

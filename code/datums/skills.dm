@@ -153,7 +153,7 @@
 
 /datum/skill/jtac
 	skill_name = SKILL_JTAC
-	readable_skill_name = SKILL_JTAC
+	readable_skill_name = "JTAC"
 	skill_level = SKILL_JTAC_NOVICE
 	max_skill_level = SKILL_JTAC_MAX
 

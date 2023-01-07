@@ -1,4 +1,4 @@
-import { capitalize } from 'common/string';
+import { capitalizeAll } from 'common/string';
 import { Fragment } from 'inferno';
 import { useBackend } from '../backend';
 import { Section, Box, ProgressBar, Slider, NoticeBox, Button } from '../components';
@@ -43,7 +43,7 @@ const SkillsView = (props, context) => {
   return skills.map((skill, index) => (
     <Fragment key={index}>
       <ProgressBar value={skill.level / skill.maxlevel}>
-        {capitalize(skill.name)}: {skill.level}/{skill.maxlevel}
+        {capitalizeAll(skill.name)}: {skill.level}/{skill.maxlevel}
       </ProgressBar>
       <Box height="3px" />
     </Fragment>
@@ -67,7 +67,7 @@ const SkillsEdit = (props, context) => {
             oldlevel: skill.level,
           })
         }>
-        {capitalize(skill.name)}: {skill.level}/{skill.maxlevel}
+        {capitalizeAll(skill.name)}: {skill.level}/{skill.maxlevel}
       </Slider>
       <Box height="3px" />
     </Fragment>

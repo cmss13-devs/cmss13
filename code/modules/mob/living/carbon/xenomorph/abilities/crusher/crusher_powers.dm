@@ -34,11 +34,43 @@
 	return
 
 /datum/action/xeno_action/activable/pounce/crusher_charge/pre_windup_effects()
-	RegisterSignal(owner, COMSIG_XENO_PRE_CALCULATE_ARMOURED_DAMAGE_PROJECTILE, .proc/check_directional_armor)
+	RegisterSignal(owner, COMSIG_XENO_PRE_CALCULATE_ARMOURED_DAMAGE_PROJECTILE, PROC_REF(check_directional_armor))
+
+	var/mob/living/carbon/Xenomorph/xeno_owner = owner
+	if(!istype(xeno_owner) || xeno_owner.mutation_type != CRUSHER_NORMAL)
+		return
+
+	var/datum/behavior_delegate/crusher_base/crusher_delegate = xeno_owner.behavior_delegate
+	if(!istype(crusher_delegate))
+		return
+
+	crusher_delegate.is_charging = TRUE
+	xeno_owner.update_icons()
 
 /datum/action/xeno_action/activable/pounce/crusher_charge/post_windup_effects(var/interrupted)
 	..()
 	UnregisterSignal(owner, COMSIG_XENO_PRE_CALCULATE_ARMOURED_DAMAGE_PROJECTILE)
+	var/mob/living/carbon/Xenomorph/xeno_owner = owner
+	if(!istype(xeno_owner) || xeno_owner.mutation_type != CRUSHER_NORMAL)
+		return
+
+	var/datum/behavior_delegate/crusher_base/crusher_delegate = xeno_owner.behavior_delegate
+	if(!istype(crusher_delegate))
+		return
+
+	addtimer(CALLBACK(src, PROC_REF(undo_charging_icon)), 0.5 SECONDS) // let the icon be here for a bit, it looks cool
+
+/datum/action/xeno_action/activable/pounce/crusher_charge/proc/undo_charging_icon()
+	var/mob/living/carbon/Xenomorph/xeno_owner = owner
+	if(!istype(xeno_owner) || xeno_owner.mutation_type != CRUSHER_NORMAL)
+		return
+
+	var/datum/behavior_delegate/crusher_base/crusher_delegate = xeno_owner.behavior_delegate
+	if(!istype(crusher_delegate))
+		return
+
+	crusher_delegate.is_charging = FALSE
+	xeno_owner.update_icons()
 
 /datum/action/xeno_action/activable/pounce/crusher_charge/proc/check_directional_armor(mob/living/carbon/Xenomorph/X, list/damagedata)
 	SIGNAL_HANDLER
@@ -180,8 +212,8 @@
 	xeno.explosivearmor_modifier += 1000
 	xeno.recalculate_armor()
 
-	addtimer(CALLBACK(src, .proc/remove_explosion_immunity), 25, TIMER_UNIQUE|TIMER_OVERRIDE)
-	addtimer(CALLBACK(src, .proc/remove_shield), 70, TIMER_UNIQUE|TIMER_OVERRIDE)
+	addtimer(CALLBACK(src, PROC_REF(remove_explosion_immunity)), 25, TIMER_UNIQUE|TIMER_OVERRIDE)
+	addtimer(CALLBACK(src, PROC_REF(remove_shield)), 70, TIMER_UNIQUE|TIMER_OVERRIDE)
 
 	apply_cooldown()
 	..()
@@ -222,14 +254,14 @@
 	var/will_charge = "[activated ? "now" : "no longer"]"
 	to_chat(Xeno, SPAN_XENONOTICE("You will [will_charge] charge when moving."))
 	if(activated)
-		RegisterSignal(Xeno, COMSIG_MOVABLE_MOVED, .proc/handle_movement)
-		RegisterSignal(Xeno, COMSIG_MOB_KNOCKED_DOWN, .proc/handle_movement)
-		RegisterSignal(Xeno, COMSIG_ATOM_DIR_CHANGE, .proc/handle_dir_change)
-		RegisterSignal(Xeno, COMSIG_XENO_RECALCULATE_SPEED, .proc/update_speed)
-		RegisterSignal(Xeno, COMSIG_XENO_STOP_MOMENTUM, .proc/stop_momentum)
-		RegisterSignal(Xeno, COMSIG_MOVABLE_ENTERED_RIVER, .proc/handle_river)
-		RegisterSignal(Xeno, COMSIG_LIVING_PRE_COLLIDE, .proc/handle_collision)
-		RegisterSignal(Xeno, COMSIG_XENO_START_CHARGING, .proc/start_charging)
+		RegisterSignal(Xeno, COMSIG_MOVABLE_MOVED, PROC_REF(handle_movement))
+		RegisterSignal(Xeno, COMSIG_MOB_KNOCKED_DOWN, PROC_REF(handle_movement))
+		RegisterSignal(Xeno, COMSIG_ATOM_DIR_CHANGE, PROC_REF(handle_dir_change))
+		RegisterSignal(Xeno, COMSIG_XENO_RECALCULATE_SPEED, PROC_REF(update_speed))
+		RegisterSignal(Xeno, COMSIG_XENO_STOP_MOMENTUM, PROC_REF(stop_momentum))
+		RegisterSignal(Xeno, COMSIG_MOVABLE_ENTERED_RIVER, PROC_REF(handle_river))
+		RegisterSignal(Xeno, COMSIG_LIVING_PRE_COLLIDE, PROC_REF(handle_collision))
+		RegisterSignal(Xeno, COMSIG_XENO_START_CHARGING, PROC_REF(start_charging))
 		button.icon_state = "template_active"
 	else
 		stop_momentum()
@@ -282,8 +314,8 @@
 	LM.thrower = Xeno
 	LM.spin = FALSE
 	LM.pass_flags = PASS_CRUSHER_CHARGE
-	LM.collision_callbacks = list(/mob/living/carbon/human = CALLBACK(src, .proc/handle_mob_collision))
-	LM.end_throw_callbacks = list(CALLBACK(src, .proc/on_end_throw, start_charging))
+	LM.collision_callbacks = list(/mob/living/carbon/human = CALLBACK(src, PROC_REF(handle_mob_collision)))
+	LM.end_throw_callbacks = list(CALLBACK(src, PROC_REF(on_end_throw), start_charging))
 
 	Xeno.launch_towards(LM)
 

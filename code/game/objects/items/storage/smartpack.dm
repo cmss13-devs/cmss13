@@ -1,7 +1,7 @@
-#define BACKPACK_LIGHT_LEVEL	6
-#define PROTECTIVE_COST			50
-#define REPAIR_COST				100
-#define IMMOBILE_COST			20
+#define BACKPACK_LIGHT_LEVEL 6
+#define PROTECTIVE_COST 50
+#define REPAIR_COST 100
+#define IMMOBILE_COST 20
 
 /obj/item/storage/backpack/marine/smartpack
 	name = "\improper S-V42 prototype smartpack"
@@ -12,13 +12,14 @@
 	max_storage_space = 14
 	worn_accessible = TRUE
 	actions_types = list(/datum/action/item_action/toggle)
+	xeno_types = null
 
 	var/show_exoskeleton = FALSE
 
-	var/flashlight_cooldown = 0 			//Cooldown for toggling the light
-	var/light_state = FALSE					//Is the light on or off
+	var/flashlight_cooldown = 0 //Cooldown for toggling the light
+	var/light_state = FALSE //Is the light on or off
 
-	var/battery_charge = SMARTPACK_MAX_POWER_STORED	//How much power are we storing
+	var/battery_charge = SMARTPACK_MAX_POWER_STORED //How much power are we storing
 	var/activated_form = FALSE
 	var/immobile_form = FALSE
 	var/repairing = FALSE
@@ -200,7 +201,7 @@
 	to_chat(user, SPAN_INFO("The current charge reads [battery_charge]/[SMARTPACK_MAX_POWER_STORED]"))
 	update_icon(user)
 
-	addtimer(CALLBACK(src, .proc/protective_form_cooldown, user), protective_form_cooldown)
+	addtimer(CALLBACK(src, PROC_REF(protective_form_cooldown), user), protective_form_cooldown)
 
 /obj/item/storage/backpack/marine/smartpack/proc/protective_form_cooldown(var/mob/living/carbon/human/H)
 	activated_form = FALSE
@@ -241,7 +242,7 @@
 	update_icon(user)
 	activated_form = TRUE
 
-	addtimer(CALLBACK(src, .proc/immobile_form_cooldown, user), immobile_form_cooldown)
+	addtimer(CALLBACK(src, PROC_REF(immobile_form_cooldown), user), immobile_form_cooldown)
 
 /obj/item/storage/backpack/marine/smartpack/proc/immobile_form_cooldown(mob/user)
 	activated_form = FALSE
@@ -280,7 +281,7 @@
 	to_chat(user, SPAN_INFO("The current charge reads [battery_charge]/[SMARTPACK_MAX_POWER_STORED]"))
 	H.visible_message(SPAN_DANGER("[name] beeps, \"Completed the repairing process. Charge now reads [battery_charge]/[SMARTPACK_MAX_POWER_STORED].\""))
 
-	addtimer(CALLBACK(src, .proc/repair_form_cooldown, user), repair_form_cooldown)
+	addtimer(CALLBACK(src, PROC_REF(repair_form_cooldown), user), repair_form_cooldown)
 
 /obj/item/storage/backpack/marine/smartpack/proc/repair_form_cooldown(mob/user)
 	repairing = FALSE

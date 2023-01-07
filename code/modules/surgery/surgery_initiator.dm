@@ -4,7 +4,7 @@
 	  *
 	  */
 
-proc/initiate_surgery_moment(obj/item/tool, mob/living/carbon/target, obj/limb/affecting, mob/living/user)
+/proc/initiate_surgery_moment(obj/item/tool, mob/living/carbon/target, obj/limb/affecting, mob/living/user)
 	if(!tool)
 		return FALSE
 

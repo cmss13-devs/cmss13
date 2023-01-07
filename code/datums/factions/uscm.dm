@@ -92,8 +92,6 @@
 				border_rk = "command"
 			if(JOB_POLICE)
 				marine_rk = "mp"
-			if(JOB_POLICE_CADET)
-				marine_rk = "mpcadet"
 			if(JOB_WARDEN)
 				marine_rk = "warden"
 				border_rk = "command"
@@ -143,6 +141,10 @@
 				marine_rk = "tisio"
 			if(JOB_TIS_SA)
 				marine_rk = "tissa"
+			if(JOB_RIOT)
+				marine_rk = "rmp"
+			if(JOB_RIOT_CHIEF)
+				marine_rk = "crmp"
 		if(marine_rk)
 			var/image/I = image('icons/mob/hud/marine_hud.dmi', H, "hudsquad")
 			I.color = "#5A934A"

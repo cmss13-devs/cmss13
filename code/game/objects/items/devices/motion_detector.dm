@@ -1,9 +1,9 @@
 
-#define MOTION_DETECTOR_LONG	0
-#define MOTION_DETECTOR_SHORT	1
+#define MOTION_DETECTOR_LONG 0
+#define MOTION_DETECTOR_SHORT 1
 
-#define MOTION_DETECTOR_RANGE_LONG	14
-#define MOTION_DETECTOR_RANGE_SHORT	7
+#define MOTION_DETECTOR_RANGE_LONG 14
+#define MOTION_DETECTOR_RANGE_SHORT 7
 
 /obj/effect/detector_blip
 	icon = 'icons/obj/items/marine-items.dmi'
@@ -170,7 +170,7 @@
 
 /obj/item/device/motiondetector/proc/refresh_blip_pool()
 	for(var/X in blip_pool) //we dump and remake the blip pool every few minutes
-		if(blip_pool[X])	//to clear blips assigned to mobs that are long gone.
+		if(blip_pool[X]) //to clear blips assigned to mobs that are long gone.
 			qdel(blip_pool[X])
 	blip_pool = list()
 
@@ -211,7 +211,7 @@
 	var/list/ping_candidates = SSquadtree.players_in_range(range_bounds, cur_turf.z, QTREE_EXCLUDE_OBSERVER | QTREE_SCAN_MOBS)
 
 	for(var/A in ping_candidates)
-		var/mob/living/M = A	//do this to skip the unnecessary istype() check; everything in ping_candidate is a mob already
+		var/mob/living/M = A //do this to skip the unnecessary istype() check; everything in ping_candidate is a mob already
 		if(M == loc) continue //device user isn't detected
 		if(world.time > M.l_move_time + 20) continue //hasn't moved recently
 		if(isrobot(M)) continue
@@ -273,7 +273,7 @@
 
 		DB.screen_loc = "[Clamp(c_view + 1 - view_x_offset + (target.x - user.x), 1, 2*c_view+1)],[Clamp(c_view + 1 - view_y_offset + (target.y - user.y), 1, 2*c_view+1)]"
 		user.client.screen += DB
-		addtimer(CALLBACK(src, .proc/clear_pings, user, DB), 1 SECONDS)
+		addtimer(CALLBACK(src, PROC_REF(clear_pings), user, DB), 1 SECONDS)
 
 /obj/item/device/motiondetector/proc/clear_pings(mob/user, var/obj/effect/detector_blip/DB)
 	if(user.client)

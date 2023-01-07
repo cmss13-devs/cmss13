@@ -51,7 +51,7 @@ SUBSYSTEM_DEF(decorator)
 		if(!(object.flags_atom & ATOM_DECORATED))
 			object.Decorate(deferable = FALSE)
 		CHECK_TICK
-	return ..()
+	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/decorator/fire(resumed)
 	if(Master.map_loading || !initialized)

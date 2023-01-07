@@ -66,6 +66,7 @@
 /obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep/wo
 	req_access = list()
 	req_one_access = list()
+	vend_flags = VEND_CLUTTER_PROTECTION | VEND_LIMITED_INVENTORY | VEND_TO_HAND | VEND_LOAD_AMMO_BOXES
 
 /obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep/wo/populate_product_list(var/scale)
 	listed_products = list(

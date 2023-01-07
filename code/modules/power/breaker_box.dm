@@ -12,7 +12,7 @@
 	var/icon_state_on = "bbox_on"
 	var/icon_state_off = "bbox_off"
 	flags_atom = FPRINT
-	density = 1
+	density = TRUE
 	anchored = 1
 	var/on = 0
 	var/busy = FALSE
@@ -54,7 +54,7 @@
 
 	busy = TRUE
 	for(var/mob/O in viewers(user))
-		O.show_message(text(SPAN_DANGER("[user] started reprogramming [src]!")), 1)
+		O.show_message(text(SPAN_DANGER("[user] started reprogramming [src]!")), SHOW_MESSAGE_VISIBLE)
 
 	if(do_after(user, 300, INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD)) // 30s for non-AIs as humans have to manually reprogram it and rapid switching may cause some lag / powernet updates flood. If AIs spam it they can be easily traced.
 		set_state(!on)

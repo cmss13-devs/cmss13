@@ -9,7 +9,7 @@ var/list/ob_type_fuel_requirements
 	desc = "The USCM Orbital Cannon System. Used for shooting large targets on the planet that is orbited. It accelerates its payload with solid fuel for devastating results upon impact."
 	icon = 'icons/effects/128x128.dmi'
 	icon_state = "OBC_unloaded"
-	density = 1
+	density = TRUE
 	anchored = 1
 	layer = LADDER_LAYER
 	bound_width = 128
@@ -226,7 +226,7 @@ var/list/ob_type_fuel_requirements
 	desc = "The orbital cannon's loading tray."
 	icon = 'icons/obj/structures/props/almayer_props64.dmi'
 	icon_state = "cannon_tray"
-	density = 1
+	density = TRUE
 	anchored = 1
 	throwpass = TRUE
 	climbable = TRUE
@@ -313,7 +313,7 @@ var/list/ob_type_fuel_requirements
 
 /obj/structure/ob_ammo
 	name = "theoretical ob ammo"
-	density = 1
+	density = TRUE
 	anchored = 1
 	throwpass = TRUE
 	climbable = TRUE
@@ -360,8 +360,8 @@ var/list/ob_type_fuel_requirements
 		else
 			relative_dir = get_dir(M, target)
 		M.show_message( \
-			SPAN_HIGHDANGER("The sky erupts into flames [SPAN_UNDERLINE(relative_dir ? ("to the " + dir2text(relative_dir)) : "right above you")]!"), 1, \
-			SPAN_HIGHDANGER("You hear a very loud sound coming from above to the [SPAN_UNDERLINE(relative_dir ? ("to the " + dir2text(relative_dir)) : "right above you")]!"), 2 \
+			SPAN_HIGHDANGER("The sky erupts into flames [SPAN_UNDERLINE(relative_dir ? ("to the " + dir2text(relative_dir)) : "right above you")]!"), SHOW_MESSAGE_VISIBLE, \
+			SPAN_HIGHDANGER("You hear a very loud sound coming from above to the [SPAN_UNDERLINE(relative_dir ? ("to the " + dir2text(relative_dir)) : "right above you")]!"), SHOW_MESSAGE_AUDIBLE \
 		)
 	sleep(OB_TRAVEL_TIMING/3)
 
@@ -371,15 +371,15 @@ var/list/ob_type_fuel_requirements
 		else
 			relative_dir = get_dir(M, target)
 		M.show_message( \
-			SPAN_HIGHDANGER("The sky roars louder [SPAN_UNDERLINE(relative_dir ? ("to the " + dir2text(relative_dir)) : "right above you")]!"), 1, \
-			SPAN_HIGHDANGER("The sound becomes louder [SPAN_UNDERLINE(relative_dir ? ("to the " + dir2text(relative_dir)) : "right above you")]!"), 2 \
+			SPAN_HIGHDANGER("The sky roars louder [SPAN_UNDERLINE(relative_dir ? ("to the " + dir2text(relative_dir)) : "right above you")]!"), SHOW_MESSAGE_VISIBLE, \
+			SPAN_HIGHDANGER("The sound becomes louder [SPAN_UNDERLINE(relative_dir ? ("to the " + dir2text(relative_dir)) : "right above you")]!"), SHOW_MESSAGE_AUDIBLE \
 		)
 	sleep(OB_TRAVEL_TIMING/3)
 
 	for(var/mob/M in range(15, target))
 		M.show_message( \
-			SPAN_HIGHDANGER("OH GOD THE SKY WILL EXPLODE!!!"), 1, \
-			SPAN_HIGHDANGER("YOU SHOULDN'T BE HERE!"), 2 \
+			SPAN_HIGHDANGER("OH GOD THE SKY WILL EXPLODE!!!"), SHOW_MESSAGE_VISIBLE, \
+			SPAN_HIGHDANGER("YOU SHOULDN'T BE HERE!"), SHOW_MESSAGE_AUDIBLE \
 		)
 	sleep(OB_TRAVEL_TIMING/3)
 
@@ -488,7 +488,7 @@ var/list/ob_type_fuel_requirements
 
 /obj/structure/ob_ammo/warhead/cluster/proc/fire_in_a_hole(var/turf/loc)
 	new /obj/effect/overlay/temp/blinking_laser (loc)
-	addtimer(CALLBACK(GLOBAL_PROC, .proc/cell_explosion, loc, explosion_power, explosion_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data(initial(name), source_mob)), 1 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, PROC_REF(cell_explosion), loc, explosion_power, explosion_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data(initial(name), source_mob)), 1 SECONDS)
 
 /obj/structure/ob_ammo/ob_fuel
 	name = "solid fuel"

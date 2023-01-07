@@ -160,7 +160,7 @@
 
 /obj/item/trash/snack_bowl
 	name = "Snack bowl"
-	icon_state	= "snack_bowl"
+	icon_state = "snack_bowl"
 
 /obj/item/trash/tray
 	name = "Tray"

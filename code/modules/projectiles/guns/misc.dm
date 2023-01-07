@@ -107,7 +107,7 @@
 	icon = 'icons/obj/items/chemistry.dmi'
 	icon_state = "null"
 	anchored = 1
-	density = 0
+	density = FALSE
 
 /obj/effect/syringe_gun_dummy/Initialize()
 		create_reagents(15)

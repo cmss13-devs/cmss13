@@ -1,5 +1,0 @@
-author: "carlarctg"
-delete-after: True
-changes:
-  - balance: "M3-H armor renamed to M3-EOD armor."
-  - balance: "M3-EOD armor is now highly resistant to ballistics and explosives, and has lost its additional acid protection."

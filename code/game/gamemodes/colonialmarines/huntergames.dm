@@ -91,7 +91,7 @@ var/waiting_for_drop_votes = 0
 	name = "Hunter Games"
 	config_tag = "Hunter Games"
 	required_players = 1
-	flags_round_type	= MODE_NO_LATEJOIN
+	flags_round_type = MODE_NO_LATEJOIN
 	latejoin_larva_drop = 0 //You never know
 
 	var/checkwin_counter = 0

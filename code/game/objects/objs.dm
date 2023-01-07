@@ -4,7 +4,7 @@
 	//determines whether or not the object can be destroyed by an explosion
 	var/indestructible = FALSE
 	var/health = null
-	var/reliability = 100	//Used by SOME devices to determine how reliable they are.
+	var/reliability = 100 //Used by SOME devices to determine how reliable they are.
 	var/crit_fail = 0
 	unacidable = FALSE //universal "unacidabliness" var, here so you can use it in any obj.
 	animate_movement = 2
@@ -27,6 +27,8 @@
 
 	var/flags_obj = NO_FLAGS
 
+	var/renamedByPlayer = FALSE //set when a player uses a pen on a renamable object
+
 /obj/Initialize(mapload, ...)
 	. = ..()
 	if(garbage)
@@ -40,7 +42,7 @@
 
 // object is being physically reduced into parts
 /obj/proc/deconstruct(disassembled = TRUE)
-	density = 0
+	density = FALSE
 	qdel(src)
 
 /obj/item/proc/is_used_on(obj/O, mob/user)
@@ -222,11 +224,11 @@
 		return
 
 	if(density)
-		density = 0
+		density = FALSE
 		if(!step(M, get_dir(M, src)) && loc != M.loc)
-			density = 1
+			density = TRUE
 			return
-		density = 1
+		density = TRUE
 	else
 		if(M.loc != src.loc)
 			step_towards(M, src) //buckle if you're right next to it
@@ -326,9 +328,9 @@
 	var/spritesheet = FALSE
 	if(icon_override)
 		mob_icon = icon_override
-		if(slot == 	WEAR_L_HAND)
+		if(slot == WEAR_L_HAND)
 			mob_state = "[mob_state]_l"
-		if(slot == 	WEAR_R_HAND)
+		if(slot == WEAR_R_HAND)
 			mob_state = "[mob_state]_r"
 	else if(use_spritesheet(bodytype, slot, mob_state))
 		spritesheet = TRUE

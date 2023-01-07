@@ -14,8 +14,8 @@
 
 	max_temperature = 18000 //K, walls will take damage if they're next to a fire hotter than this
 
-	opacity = 1
-	density = 1
+	opacity = TRUE
+	density = TRUE
 
 	tiles_with = list(
 		/turf/closed/wall,
@@ -126,7 +126,7 @@
 	flick("containment_wall_divide_lowering", src)
 	icon_state = "containment_wall_divide_lowered"
 	SetOpacity(0)
-	density = 0
+	density = FALSE
 	operating = FALSE
 	change_weeds()
 
@@ -137,7 +137,7 @@
 	flick("containment_wall_divide_rising", src)
 	icon_state = "containment_wall_divide"
 	SetOpacity(1)
-	density = 1
+	density = TRUE
 	operating = FALSE
 
 	change_weeds()
@@ -185,7 +185,7 @@
 /turf/closed/wall/almayer/research/containment/wall/purple
 	name = "cell window"
 	icon_state = "containment_window"
-	opacity = 0
+	opacity = FALSE
 
 
 
@@ -224,7 +224,7 @@
 	name = "wall"
 	icon = 'icons/turf/walls/walls.dmi'
 	icon_state = "riveted"
-	opacity = 1
+	opacity = TRUE
 	hull = 1
 
 
@@ -237,14 +237,14 @@
 /turf/closed/wall/indestructible/fakeglass
 	name = "window"
 	icon_state = "fakewindows"
-	opacity = 0
+	opacity = FALSE
 
 /turf/closed/wall/indestructible/splashscreen
 	name = "Lobby Art"
 	desc = "Assorted artworks."
 	icon = 'icons/lobby/title.dmi'
 	icon_state = ""
-//	icon_state = "title_holiday"
+// icon_state = "title_holiday"
 	layer = FLY_LAYER
 	special_icon = 1
 
@@ -270,7 +270,7 @@
 
 /turf/closed/wall/indestructible/invisible
 	icon_state = "invisible"
-	mouse_opacity = 0
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
 
 
@@ -548,7 +548,7 @@
 	name = "solaris ridge colony wall"
 	icon = 'icons/turf/walls/solaris/solaris.dmi'
 	icon_state = "solaris_interior"
-	desc = "Tough looking walls that have been blasted by sand since they day they were erected. A testament to human willpower."
+	desc = "Tough looking walls that have been blasted by sand since the day they were erected. A testament to human willpower."
 	walltype = WALL_SOLARIS
 
 /turf/closed/wall/solaris/reinforced
@@ -558,6 +558,7 @@
 	max_temperature = 28000
 
 /turf/closed/wall/solaris/reinforced/hull
+	icon_state = "solaris_interior_h"
 	hull = 1
 
 /turf/closed/wall/solaris/reinforced/hull/lv522
@@ -733,7 +734,7 @@
 	icon_state = "membrane"
 	walltype = WALL_MEMBRANE
 	damage_cap = HEALTH_WALL_XENO_MEMBRANE
-	opacity = 0
+	opacity = FALSE
 	alpha = 180
 
 /turf/closed/wall/resin/membrane/can_bombard(var/mob/living/carbon/Xenomorph/X)
@@ -892,9 +893,9 @@
 		set_hive_data(src, hive)
 	recalculate_structure()
 	update_tied_turf(loc)
-	RegisterSignal(src, COMSIG_ATOM_TURF_CHANGE, .proc/update_tied_turf)
-	RegisterSignal(src, COMSIG_MOVABLE_XENO_START_PULLING, .proc/allow_xeno_drag)
-	RegisterSignal(src, COMSIG_MOVABLE_PULLED, .proc/continue_allowing_drag)
+	RegisterSignal(src, COMSIG_ATOM_TURF_CHANGE, PROC_REF(update_tied_turf))
+	RegisterSignal(src, COMSIG_MOVABLE_XENO_START_PULLING, PROC_REF(allow_xeno_drag))
+	RegisterSignal(src, COMSIG_MOVABLE_PULLED, PROC_REF(continue_allowing_drag))
 
 /obj/structure/alien/movable_wall/ex_act(severity, direction)
 	take_damage(severity)
@@ -1011,7 +1012,7 @@
 
 	if(tied_turf)
 		UnregisterSignal(tied_turf, COMSIG_TURF_ENTER)
-	RegisterSignal(T, COMSIG_TURF_ENTER, .proc/check_for_move)
+	RegisterSignal(T, COMSIG_TURF_ENTER, PROC_REF(check_for_move))
 	tied_turf = T
 
 /obj/structure/alien/movable_wall/forceMove(atom/dest)
@@ -1099,17 +1100,18 @@
 		return
 
 	var/obj/item/projectile/new_proj = new(src, construction_data ? construction_data : create_cause_data(initial(name)))
-	new_proj.generate_bullet(P.ammo, special_flags = P.projectile_override_flags|AMMO_HOMING)
+	new_proj.generate_bullet(P.ammo)
 	new_proj.damage = P.damage * reflection_multiplier // don't make it too punishing
 	new_proj.accuracy = HIT_ACCURACY_TIER_7 // 35% chance to hit something
 
 	// Move back to who fired you.
-	RegisterSignal(new_proj, COMSIG_BULLET_PRE_HANDLE_TURF, .proc/bullet_ignore_turf)
+	RegisterSignal(new_proj, COMSIG_BULLET_PRE_HANDLE_TURF, PROC_REF(bullet_ignore_turf))
 	new_proj.permutated |= src
 
 	var/angle = Get_Angle(src, P.firer) + rand(30, -30)
 	var/atom/target = get_angle_target_turf(src, angle, get_dist(src, P.firer))
-	new_proj.fire_at(target, P.firer, src, reflect_range, speed = P.ammo.shell_speed, is_shrapnel = TRUE)
+	new_proj.projectile_flags |= PROJECTILE_SHRAPNEL
+	new_proj.fire_at(target, P.firer, src, reflect_range, speed = P.ammo.shell_speed)
 
 	return TRUE
 
@@ -1223,7 +1225,7 @@
 	if(mapload)
 		ScrapeAway()
 		return
-	addtimer(CALLBACK(src, .proc/ScrapeAway), duration)
+	addtimer(CALLBACK(src, PROC_REF(ScrapeAway)), duration)
 
 
 /turf/closed/wall/resin/can_be_dissolved()

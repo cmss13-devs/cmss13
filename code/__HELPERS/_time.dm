@@ -1,4 +1,8 @@
-#define MIDNIGHT_ROLLOVER		864000	//number of deciseconds in a day
+#define MIDNIGHT_ROLLOVER 864000 //number of deciseconds in a day
+
+#define MILLISECONDS *0.01
+
+#define DECISECONDS *1 //the base unit all of these defines are scaled by, because byond uses that as a unit of measurement for some fucking reason
 
 #define SECONDS *10
 
@@ -78,6 +82,10 @@ var/rollovercheck_last_timeofday = 0
 #define DS2TICKS(DS) ((DS)/world.tick_lag)
 
 #define TICKS2DS(T) ((T) TICKS)
+
+#define MS2DS(T) ((T) MILLISECONDS)
+
+#define DS2MS(T) ((T) * 100)
 
 //Takes a value of time in deciseconds.
 //Returns a text value of that number in hours, minutes, or seconds.

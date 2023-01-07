@@ -43,7 +43,7 @@
 	if(admin_holder && ((R_ADMIN & admin_holder.rights) || (R_MOD & admin_holder.rights)))
 		for(var/client/C in GLOB.clients)
 			var/entry = "[C.key]"
-			if(C.mob)	//Juuuust in case
+			if(C.mob) //Juuuust in case
 				if(istype(C.mob, /mob/new_player))
 					entry += " - In Lobby"
 					counted_humanoids["Lobby"]++

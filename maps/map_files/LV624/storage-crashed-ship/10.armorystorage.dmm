@@ -164,8 +164,8 @@
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/weapon/gun/smg/nailgun,
 /obj/item/weapon/gun/smg/nailgun,
-/obj/item/ammo_box/magazine/smg/nailgun,
-/obj/item/ammo_box/magazine/smg/nailgun,
+/obj/item/ammo_box/magazine/nailgun,
+/obj/item/ammo_box/magazine/nailgun,
 /turf/open/floor{
 	icon_state = "dark"
 	},

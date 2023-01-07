@@ -34,8 +34,8 @@
 	blood_color = "#EEEEEE"
 
 	has_organ = list(
-		"heart" =    /datum/internal_organ/heart/prosthetic,
-		"brain" =    /datum/internal_organ/brain/prosthetic,
+		"heart" = /datum/internal_organ/heart/prosthetic,
+		"brain" = /datum/internal_organ/brain/prosthetic,
 		)
 
 	knock_down_reduction = 5
@@ -48,12 +48,12 @@
 	)
 
 /datum/species/synthetic/handle_post_spawn(mob/living/carbon/human/H)
-	H.set_languages(list(LANGUAGE_ENGLISH, LANGUAGE_RUSSIAN, LANGUAGE_JAPANESE, LANGUAGE_CHINESE, LANGUAGE_GERMAN, LANGUAGE_SPANISH, LANGUAGE_YAUTJA, LANGUAGE_XENOMORPH))
+	H.set_languages(ALL_SYNTH_LANGUAGES)
 	GLOB.alive_human_list -= H
 	return ..()
 
 /datum/species/synthetic/apply_signals(var/mob/living/carbon/human/H)
-	RegisterSignal(H, COMSIG_HUMAN_IMPREGNATE, .proc/cancel_impregnate, TRUE)
+	RegisterSignal(H, COMSIG_HUMAN_IMPREGNATE, PROC_REF(cancel_impregnate), TRUE)
 
 /datum/species/synthetic/proc/cancel_impregnate(datum/source)
 	SIGNAL_HANDLER

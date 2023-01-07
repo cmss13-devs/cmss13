@@ -1,7 +1,7 @@
 GLOBAL_SUBTYPE_PATHS_LIST_INDEXED(nightmare_node_map, /datum/nmnode, id)
 
 SUBSYSTEM_DEF(nightmare)
-	name       = "Nightmare"
+	name    = "Nightmare"
 	init_order = SS_INIT_NIGHTMARE
 	flags = SS_NO_FIRE
 
@@ -25,7 +25,7 @@ SUBSYSTEM_DEF(nightmare)
 	load_map_config(NIGHTMARE_CTX_SHIP, SHIP_MAP)
 	for(var/context_name in contexts)
 		resolve_nodes(context_name, NIGHTMARE_ACT_SCENARIO)
-	return ..()
+	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/nightmare/proc/resolve_nodes(context_name, scope)
 	var/datum/nmcontext/context = contexts[context_name]

@@ -1,13 +1,23 @@
+#define KEYBOARD_SOUND_VOLUME 5
+
 /obj/structure/machinery/computer/shuttle
 	name = "shuttle console"
 	desc = "A shuttle control computer."
 	icon_state = "syndishuttle"
 	req_access = list( )
-//	interaction_flags = INTERACT_MACHINE_TGUI
+// interaction_flags = INTERACT_MACHINE_TGUI
 	var/shuttleId
-	var/possible_destinations = ""
+	var/possible_destinations = list()
 	var/admin_controlled
 
+/obj/structure/machinery/computer/shuttle/proc/is_disabled()
+	return FALSE
+
+/obj/structure/machinery/computer/shuttle/proc/disable()
+	return
+
+/obj/structure/machinery/computer/shuttle/proc/enable()
+	return
 
 /obj/structure/machinery/computer/shuttle/tgui_interact(mob/user)
 	. = ..()
@@ -47,24 +57,24 @@
 
 	if(href_list["move"])
 		var/obj/docking_port/mobile/M = SSshuttle.getShuttle(shuttleId)
-//		if(!(M.shuttle_flags & GAMEMODE_IMMUNE) && world.time < SSticker.round_start_time + SSticker.mode.deploy_time_lock)
-//			to_chat(usr, "<span class='warning'>The engines are still refueling.</span>")
-//			return TRUE
+// if(!(M.shuttle_flags & GAMEMODE_IMMUNE) && world.time < SSticker.round_start_time + SSticker.mode.deploy_time_lock)
+// to_chat(usr, "<span class='warning'>The engines are still refueling.</span>")
+// return TRUE
 		if(!M.can_move_topic(usr))
 			return TRUE
 		if(!(href_list["move"] in valid_destinations()))
 			log_admin("[key_name(usr)] may be attempting a href dock exploit on [src] with target location \"[href_list["move"]]\"")
-//			message_admins("[ADMIN_TPMONTY(usr)] may be attempting a href dock exploit on [src] with target location \"[href_list["move"]]\"")
+// message_admins("[ADMIN_TPMONTY(usr)] may be attempting a href dock exploit on [src] with target location \"[href_list["move"]]\"")
 			return TRUE
 		var/previous_status = M.mode
 		log_game("[key_name(usr)] has sent the shuttle [M] to [href_list["move"]]")
 		switch(SSshuttle.moveShuttle(shuttleId, href_list["move"], 1))
-			if(0)
+			if(DOCKING_SUCCESS)
 				if(previous_status != SHUTTLE_IDLE)
 					visible_message("<span class='notice'>Destination updated, recalculating route.</span>")
 				else
 					visible_message("<span class='notice'>Shuttle departing. Please stand away from the doors.</span>")
-			if(1)
+			if(DOCKING_NULL_SOURCE)
 				to_chat(usr, "<span class='warning'>Invalid shuttle requested.</span>")
 				return TRUE
 			else
@@ -74,6 +84,151 @@
 /obj/structure/machinery/computer/shuttle/connect_to_shuttle(obj/docking_port/mobile/port, obj/docking_port/stationary/dock, idnum, override=FALSE)
 	if(port && (shuttleId == initial(shuttleId) || override))
 		shuttleId = port.id
+
+/obj/structure/machinery/computer/shuttle/ert
+	name = "transport shuttle"
+	desc = "A transport shuttle flight computer."
+	icon_state = "syndishuttle"
+	req_access = list()
+	breakable = FALSE
+	var/disabled = FALSE
+
+/obj/structure/machinery/computer/shuttle/ert/is_disabled()
+	return disabled
+
+/obj/structure/machinery/computer/shuttle/ert/disable()
+	disabled = TRUE
+
+/obj/structure/machinery/computer/shuttle/ert/enable()
+	disabled = FALSE
+
+/obj/structure/machinery/computer/shuttle/ert/tgui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if (!ui)
+		var/obj/docking_port/mobile/shuttle = SSshuttle.getShuttle(shuttleId)
+		ui = new(user, src, "NavigationShuttle", "[shuttle.name] Navigation Computer")
+		ui.open()
+
+
+/obj/structure/machinery/computer/shuttle/ert/ui_status(mob/user, datum/ui_state/state)
+	. = ..()
+	if(inoperable())
+		return UI_CLOSE
+	if(disabled)
+		return UI_UPDATE
+
+
+/obj/structure/machinery/computer/shuttle/ert/ui_state(mob/user)
+	return GLOB.not_incapacitated_and_adjacent_strict_state
+
+/obj/structure/machinery/computer/shuttle/ert/ui_static_data(mob/user)
+	. = ..(user)
+	var/obj/docking_port/mobile/shuttle = SSshuttle.getShuttle(shuttleId)
+	// we convert the time to seconds for rendering to ui
+	.["max_flight_duration"] = shuttle.callTime / 10
+	.["max_refuel_duration"] = shuttle.rechargeTime / 10
+	.["max_engine_start_duration"] = shuttle.ignitionTime / 10
+
+/obj/structure/machinery/computer/shuttle/ert/ui_data(mob/user)
+	var/obj/docking_port/mobile/emergency_response/ert = SSshuttle.getShuttle(shuttleId)
+	var/list/docks = SSshuttle.stationary
+	. = list()
+	.["shuttle_mode"] = ert.mode
+	.["flight_time"] = ert.timeLeft(0)
+	.["is_disabled"] = disabled
+
+	var/door_count = length(ert.doors)
+	var/locked_count = 0
+	for(var/obj/structure/machinery/door/airlock/air as anything in ert.doors)
+		if(air.locked)
+			locked_count++
+	.["locked_down"] = door_count == locked_count
+
+	if(ert.destination)
+		.["target_destination"] = ert.destination.name
+
+	.["destinations"] = list()
+	for(var/obj/docking_port/stationary/emergency_response/dock in docks)
+		var/dock_reserved = FALSE
+		for(var/obj/docking_port/mobile/other_shuttle in SSshuttle.mobile)
+			if(dock == other_shuttle.destination)
+				dock_reserved = TRUE
+				break
+		var/can_dock = ert.canDock(dock)
+		var/list/dockinfo = list(
+			"id" = dock.id,
+			"name" = dock.name,
+			"available" = can_dock == SHUTTLE_CAN_DOCK && !dock_reserved,
+			"error" = can_dock,
+		)
+		.["destinations"] += list(dockinfo)
+
+/obj/structure/machinery/computer/shuttle/ert/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+	. = ..()
+	if(.)
+		return
+	if(disabled)
+		return
+
+	var/obj/docking_port/mobile/emergency_response/ert = SSshuttle.getShuttle(shuttleId)
+	switch(action)
+		if("move")
+			if(ert.mode != SHUTTLE_IDLE)
+				to_chat(usr, SPAN_WARNING("You can't move to a new destination whilst in transit."))
+				return TRUE
+			var/dockId = params["target"]
+			var/list/local_data = ui_data(usr)
+			var/found = FALSE
+			playsound(loc, get_sfx("terminal_button"), KEYBOARD_SOUND_VOLUME, 1)
+			for(var/destination in local_data["destinations"])
+				if(destination["id"] == dockId)
+					found = TRUE
+					break
+			if(!found)
+				log_admin("[key_name(usr)] may be attempting a href dock exploit on [src] with target location \"[dockId]\"")
+				to_chat(usr, SPAN_WARNING("The [dockId] dock is not available at this time."))
+				return
+			var/obj/docking_port/stationary/dock = SSshuttle.getDock(dockId)
+			var/dock_reserved = FALSE
+			for(var/obj/docking_port/mobile/other_shuttle in SSshuttle.mobile)
+				if(dock == other_shuttle.destination)
+					dock_reserved = TRUE
+					break
+			if(dock_reserved)
+				to_chat(usr, SPAN_WARNING("\The [dock] is currently in use."))
+				return TRUE
+			SSshuttle.moveShuttle(ert.id, dock.id, TRUE)
+			to_chat(usr, SPAN_NOTICE("You begin the launch sequence to [dock]."))
+			return TRUE
+		if("button-push")
+			playsound(loc, get_sfx("terminal_button"), KEYBOARD_SOUND_VOLUME, 1)
+			return FALSE
+		if("open")
+			if(ert.mode == SHUTTLE_CALL || ert.mode == SHUTTLE_RECALL)
+				return TRUE
+			ert.control_doors("open")
+		if("close")
+			if(ert.mode == SHUTTLE_CALL || ert.mode == SHUTTLE_RECALL)
+				return TRUE
+			ert.control_doors("close")
+		if("lockdown")
+			if(ert.mode == SHUTTLE_CALL || ert.mode == SHUTTLE_RECALL)
+				return TRUE
+			ert.control_doors("force-lock")
+		if("lock")
+			if(ert.mode == SHUTTLE_CALL || ert.mode == SHUTTLE_RECALL)
+				return TRUE
+			ert.control_doors("lock")
+		if("unlock")
+			if(ert.mode == SHUTTLE_CALL || ert.mode == SHUTTLE_RECALL)
+				return TRUE
+			ert.control_doors("unlock")
+
+/obj/structure/machinery/computer/shuttle/ert/attack_hand(mob/user)
+	. = ..(user)
+	if(.)
+		return TRUE
+	tgui_interact(user)
 
 /obj/structure/machinery/computer/shuttle/lifeboat
 	name = "lifeboat console"

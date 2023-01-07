@@ -95,7 +95,7 @@
 			visible_message(SPAN_XENOWARNING("\The [src] grabs [L] by the throat!"), \
 			SPAN_XENOWARNING("You grab [L] by the throat!"))
 			lunging = TRUE
-			addtimer(CALLBACK(src, .proc/stop_lunging), get_xeno_stun_duration(L, 2) SECONDS + 1 SECONDS)
+			addtimer(CALLBACK(src, PROC_REF(stop_lunging)), get_xeno_stun_duration(L, 2) SECONDS + 1 SECONDS)
 
 /mob/living/carbon/Xenomorph/Warrior/proc/stop_lunging(var/world_time)
 	lunging = FALSE
@@ -134,6 +134,9 @@
 /datum/behavior_delegate/warrior_base/melee_attack_additional_effects_target(mob/living/carbon/A)
 	..()
 
+	if(SEND_SIGNAL(bound_xeno, COMSIG_XENO_PRE_HEAL) & COMPONENT_CANCEL_XENO_HEAL)
+		return
+
 	var/final_lifesteal = lifesteal_percent
 	var/list/mobs_in_range = oviewers(lifesteal_range, bound_xeno)
 
@@ -158,7 +161,7 @@
 			bound_xeno.emote("roar")
 			bound_xeno.xeno_jitter(1 SECONDS)
 			emote_cooldown = world.time + 5 SECONDS
-		addtimer(CALLBACK(src, .proc/lifesteal_lock), lifesteal_lock_duration/2)
+		addtimer(CALLBACK(src, PROC_REF(lifesteal_lock)), lifesteal_lock_duration/2)
 
 	bound_xeno.gain_health(Clamp(final_lifesteal / 100 * (bound_xeno.maxHealth - bound_xeno.health), 20, 40))
 

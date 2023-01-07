@@ -96,9 +96,9 @@
 
 /obj/item/weapon/gun/flamer/proc/get_fire_sound()
 	var/list/fire_sounds = list(
-					 'sound/weapons/gun_flamethrower1.ogg',
-					 'sound/weapons/gun_flamethrower2.ogg',
-					 'sound/weapons/gun_flamethrower3.ogg')
+							'sound/weapons/gun_flamethrower1.ogg',
+							'sound/weapons/gun_flamethrower2.ogg',
+							'sound/weapons/gun_flamethrower3.ogg')
 	return pick(fire_sounds)
 
 /obj/item/weapon/gun/flamer/Fire(atom/target, mob/living/user, params, reflex)
@@ -222,7 +222,7 @@
 
 	playsound(to_fire, src.get_fire_sound(), 50, TRUE)
 
-	new /obj/flamer_fire(to_fire, create_cause_data(initial(name), user), R, max_range, current_mag.reagents, flameshape, target, CALLBACK(src, .proc/show_percentage, user), fuel_pressure, fire_type)
+	new /obj/flamer_fire(to_fire, create_cause_data(initial(name), user), R, max_range, current_mag.reagents, flameshape, target, CALLBACK(src, PROC_REF(show_percentage), user), fuel_pressure, fire_type)
 
 /obj/item/weapon/gun/flamer/proc/show_percentage(var/mob/living/user)
 	if(current_mag)
@@ -377,7 +377,7 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 	name = "fire"
 	desc = "Ouch!"
 	anchored = 1
-	mouse_opacity = 0
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	icon = 'icons/effects/fire.dmi'
 	icon_state = "dynamic_2"
 	layer = BELOW_OBJ_LAYER
@@ -385,7 +385,7 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 	var/firelevel = 12 //Tracks how much "fire" there is. Basically the timer of how long the fire burns
 	var/burnlevel = 10 //Tracks how HOT the fire is. This is basically the heat level of the fire and determines the temperature.
 
-	 /// After the fire is created, for 0.5 seconds this variable will be TRUE.
+	/// After the fire is created, for 0.5 seconds this variable will be TRUE.
 	var/initial_burst = TRUE
 
 	var/flame_icon = "dynamic"
@@ -450,7 +450,7 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 
 	update_flame()
 
-	addtimer(CALLBACK(src, .proc/un_burst_flame), 0.5 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(un_burst_flame)), 0.5 SECONDS)
 	START_PROCESSING(SSobj, src)
 
 	to_call = C
@@ -550,7 +550,7 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 			if(istype(SM))
 				SM.track_shot_hit(weapon_cause_data.cause_name)
 
-	RegisterSignal(SSdcs, COMSIG_GLOB_WEATHER_CHANGE, .proc/update_in_weather_status)
+	RegisterSignal(SSdcs, COMSIG_GLOB_WEATHER_CHANGE, PROC_REF(update_in_weather_status))
 
 /obj/flamer_fire/Destroy()
 	SetLuminosity(0)

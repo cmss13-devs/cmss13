@@ -1,5 +1,5 @@
 //The mob should have a gender you want before running this proc. Will run fine without H
-datum/preferences/proc/randomize_appearance(var/mob/living/carbon/human/H)
+/datum/preferences/proc/randomize_appearance(var/mob/living/carbon/human/H)
 	if(H)
 		if(H.gender == MALE)
 			gender = MALE
@@ -22,7 +22,7 @@ datum/preferences/proc/randomize_appearance(var/mob/living/carbon/human/H)
 	if(H)
 		copy_appearance_to(H,1)
 
-datum/preferences/proc/randomize_hair_color(var/target = "hair")
+/datum/preferences/proc/randomize_hair_color(var/target = "hair")
 	if(prob (75) && target == "facial") // Chance to inherit hair color
 		r_facial = r_hair
 		g_facial = g_hair
@@ -82,7 +82,7 @@ datum/preferences/proc/randomize_hair_color(var/target = "hair")
 			g_facial = green
 			b_facial = blue
 
-datum/preferences/proc/randomize_eyes_color()
+/datum/preferences/proc/randomize_eyes_color()
 	var/red
 	var/green
 	var/blue
@@ -132,7 +132,7 @@ datum/preferences/proc/randomize_eyes_color()
 
 
 
-datum/preferences/proc/randomize_skin_color()
+/datum/preferences/proc/randomize_skin_color()
 	var/red
 	var/green
 	var/blue
@@ -260,8 +260,6 @@ datum/preferences/proc/randomize_skin_color()
 			return /datum/equipment_preset/synth/uscm
 		if(JOB_WORKING_JOE)
 			return /datum/equipment_preset/synth/working_joe
-		if(JOB_POLICE_CADET)
-			return /datum/equipment_preset/uscm_ship/uscm_police/mp_cadet
 		if(JOB_POLICE)
 			return /datum/equipment_preset/uscm_ship/uscm_police/mp
 		if(JOB_CHIEF_POLICE)

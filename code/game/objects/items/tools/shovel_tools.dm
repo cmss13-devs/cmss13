@@ -173,9 +173,9 @@
 			return "sand"
 
 /obj/item/tool/shovel/proc/check_dirt_type()
-    if(dirt_amt <= 0)
-        dirt_type = NO_DIRT
-    return dirt_type
+	if(dirt_amt <= 0)
+		dirt_type = NO_DIRT
+	return dirt_type
 
 /obj/item/tool/shovel/spade
 	name = "spade"

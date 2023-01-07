@@ -93,7 +93,7 @@
 	var/list/stock_values = list()
 	for (var/i in 1 to length(ui_listed_products))
 		var/prod_available = TRUE
-		var/list/myprod = ui_listed_products[i]	//we take one list from listed_products
+		var/list/myprod = ui_listed_products[i] //we take one list from listed_products
 		var/uniform_path = myprod[3]
 		if(uniform_path in vended_items)
 			prod_available = FALSE
@@ -155,3 +155,101 @@
 			IT.add_fingerprint(usr)
 			LAZYADD(id_card.vended_items, item_path)
 			return TRUE
+
+//A clothing vendor for admins and devs to test all the clothes in the game
+/obj/structure/machinery/cm_vending/clothing/super_snowflake
+	name = "\improper Super Snowflake Vendor"
+	desc = "WARNING: The quantity of clothes contained within can slow down reality."
+	icon_state = "snowflake"
+	use_points = TRUE //"use points", but everything is free
+	show_points = FALSE
+	use_snowflake_points = FALSE
+	vendor_theme = VENDOR_THEME_COMPANY
+	vend_flags = VEND_CLUTTER_PROTECTION | VEND_TO_HAND
+	vend_delay = 1 SECONDS
+	var/list/items
+	var/list/obj/item/item_types
+
+/obj/structure/machinery/cm_vending/clothing/super_snowflake/get_listed_products(mob/user)
+	//If we don't have an object type, we ask the user to supply it
+	if(!item_types)
+		var/obj/item/chosen = get_item_category_from_user()
+		if(!chosen)
+			return
+		item_types = list(chosen)
+
+	if(!items)
+		items = list()
+		for(var/obj/item/item_type as anything in item_types)
+			add_items(item_type)
+
+	return items
+
+/obj/structure/machinery/cm_vending/clothing/super_snowflake/proc/get_item_category_from_user()
+	var/item = tgui_input_text(usr,"What item to stock?", "Stock Vendor","")
+	if(!item)
+		return
+	var/list/types = typesof(/obj/item)
+	var/list/matches = new()
+
+	//Figure out which object they might be trying to fetch
+	for(var/path in types)
+		if(findtext("[path]", item))
+			matches += path
+
+	if(matches.len==0)
+		return
+
+	var/obj/item/chosen
+	if(matches.len==1)
+		chosen = matches[1]
+	else
+		//If we have multiple options, let them select which one they meant
+		chosen = tgui_input_list(usr, "Select an object type", "Select Object", matches)
+
+	return chosen
+
+/obj/structure/machinery/cm_vending/clothing/super_snowflake/proc/add_items(var/obj/item/item_type)
+	for(var/obj/item/I as anything in typesof(item_type))
+		items += list(list(initial(I.name), 0, I, null, VENDOR_ITEM_REGULAR))
+
+/obj/structure/machinery/cm_vending/clothing/super_snowflake/get_vv_options()
+	. = ..()
+	. += "<option value='?_src_=vars;add_items_to_vendor=\ref[src]'>Add Items To Vendor</option>"
+
+/obj/structure/machinery/cm_vending/clothing/super_snowflake/proc/add_items_to_vendor()
+	if(!check_rights(R_MOD))
+		to_chat(usr, SPAN_WARNING("This option isn't for you."))
+		return
+
+	var/obj/item/chosen = get_item_category_from_user()
+	if(!chosen)
+		return
+	add_items(chosen)
+
+	log_admin("[key_name(usr)] added an item [chosen] to [src].")
+	msg_admin_niche("[key_name(usr)] added an item [chosen] to [src].")
+
+/obj/structure/machinery/cm_vending/clothing/super_snowflake/uniform
+	name = "\improper Super Snowflake Vendor, Uniforms"
+	item_types = list(/obj/item/clothing/under)
+
+/obj/structure/machinery/cm_vending/clothing/super_snowflake/glasses
+	name = "\improper Super Snowflake Vendor, Glasses"
+	item_types = list(/obj/item/clothing/glasses)
+
+/obj/structure/machinery/cm_vending/clothing/super_snowflake/shoes
+	name = "\improper Super Snowflake Vendor, Shoes"
+	item_types = list(/obj/item/clothing/shoes)
+
+/obj/structure/machinery/cm_vending/clothing/super_snowflake/helmet
+	name = "\improper Super Snowflake Vendor, Helmets"
+	item_types = list(/obj/item/clothing/head)
+
+/obj/structure/machinery/cm_vending/clothing/super_snowflake/suit
+	name = "\improper Super Snowflake Vendor, Suits"
+	item_types = list(/obj/item/clothing/suit)
+
+/obj/structure/machinery/cm_vending/clothing/super_snowflake/backpack
+	name = "\improper Super Snowflake Vendor, Backpacks"
+	item_types = list(/obj/item/storage/backpack)

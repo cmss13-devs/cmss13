@@ -25,9 +25,9 @@
 	zenomorf.recalculate_speed()
 
 	/// Though the ability's other buffs are supposed to last for its duration, it's only supposed to enhance one spit.
-	RegisterSignal(zenomorf, COMSIG_XENO_POST_SPIT, .proc/disable_spatter)
+	RegisterSignal(zenomorf, COMSIG_XENO_POST_SPIT, PROC_REF(disable_spatter))
 
-	addtimer(CALLBACK(src, .proc/remove_effects), duration)
+	addtimer(CALLBACK(src, PROC_REF(remove_effects)), duration)
 
 	apply_cooldown()
 	..()
@@ -59,4 +59,4 @@
 	var/target = ..()
 	if(iscarbon(target))
 		var/mob/living/carbon/carbon_target = target
-		carbon_target.reagents.add_reagent("molecularacid", 5)
+		carbon_target.reagents.add_reagent("molecularacid", 2)

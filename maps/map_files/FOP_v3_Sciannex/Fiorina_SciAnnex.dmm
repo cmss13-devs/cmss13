@@ -6972,7 +6972,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/station/medbay)
 "ecF" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited{
 	pixel_y = 32
 	},
 /turf/open/floor/prison{
@@ -16964,7 +16964,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/maintenance)
 "kbb" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med,
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited,
 /turf/closed/wall/r_wall/prison_unmeltable,
 /area/fiorina/tumor/aux_engi)
 "kbg" = (
@@ -23475,7 +23475,7 @@
 	},
 /area/fiorina/tumor/ice_lab)
 "nQq" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med,
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited,
 /turf/closed/wall/prison,
 /area/fiorina/station/medbay)
 "nQN" = (
@@ -28065,7 +28065,7 @@
 	},
 /area/fiorina/lz/near_lzI)
 "qHG" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited{
 	pixel_y = 25
 	},
 /turf/open/floor/plating/plating_catwalk,
@@ -28859,7 +28859,7 @@
 	},
 /area/fiorina/station/security)
 "rfd" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med,
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited,
 /turf/closed/wall/prison,
 /area/fiorina/tumor/ice_lab)
 "rfo" = (
@@ -36711,7 +36711,7 @@
 /area/fiorina/station/civres_blue)
 "vVu" = (
 /obj/structure/surface/rack,
-/obj/item/ammo_box/magazine/smg/nailgun,
+/obj/item/ammo_box/magazine/nailgun,
 /turf/open/floor/prison{
 	icon_state = "darkbrownfull2";
 	tag = "icon-darkbrownfull2"

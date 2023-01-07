@@ -56,7 +56,7 @@
 	name = "Folding Barricades (x3)"
 	cost = 20
 	containertype = /obj/structure/closet/crate/supply
-	containername = "\improper folding barricades crate"
+	containername = "folding barricades crate"
 	group = "Engineering"
 
 /datum/supply_packs/smescoil

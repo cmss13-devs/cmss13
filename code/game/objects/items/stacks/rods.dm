@@ -39,7 +39,7 @@
 		var/obj/item/stack/sheet/new_item = new sheet_path(user.loc)
 		new_item.add_to_stacks(user)
 		for (var/mob/M as anything in viewers(src))
-			M.show_message(SPAN_DANGER("[src] is shaped into metal by [user.name] with the weldingtool."), 3, SPAN_DANGER("You hear welding."), 2)
+			M.show_message(SPAN_DANGER("[src] is shaped into metal by [user.name] with the weldingtool."), SHOW_MESSAGE_VISIBLE, SPAN_DANGER("You hear welding."), SHOW_MESSAGE_AUDIBLE)
 		use(used_per_sheet)
 
 GLOBAL_LIST_INIT(rod_recipes, list (

@@ -1,7 +1,7 @@
 //Species unarmed attacks
 /datum/unarmed_attack
-	var/attack_verb = list("attack")	// Empty hand hurt intent verb.
-	var/damage = 0						// Extra empty hand attack damage.
+	var/attack_verb = list("attack") // Empty hand hurt intent verb.
+	var/damage = 0 // Extra empty hand attack damage.
 	var/attack_sound = "punch"
 	var/miss_sound = 'sound/weapons/punchmiss.ogg'
 	var/shredding = FALSE // Calls the old attack_alien() behavior on objects/mobs when on harm intent.

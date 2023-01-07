@@ -1,4 +1,0 @@
-author: "stanalbatross"
-delete-after: True
-changes:
-  - bugfix: "fixed a runtime on WO that was happening due to there being no defcon objectives"

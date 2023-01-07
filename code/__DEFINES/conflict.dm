@@ -18,10 +18,8 @@
 #define AMMO_ENERGY (1<<4)
 #define AMMO_ROCKET (1<<5)
 #define AMMO_SNIPER (1<<6)
-
 /// Primarily for railgun but can be implemented for other projectiles that are for antitank and antistructure (wall/machine)
 #define AMMO_ANTISTRUCT (1<<7)
-
 #define AMMO_SKIPS_ALIENS (1<<8)
 #define AMMO_IGNORE_ARMOR (1<<9)
 #define AMMO_IGNORE_RESIST (1<<10)
@@ -30,12 +28,10 @@
 //                              (1<<13) unused, previously was AMMO_SCANS_NEARBY
 #define AMMO_STOPPED_BY_COVER (1<<14)
 #define AMMO_SPECIAL_EMBED (1<<15)
-
 /// If the projectile hits a dense turf it'll do on_hit_turf on the turf just in front of the turf instead of on the turf itself
 #define AMMO_STRIKES_SURFACE (1<<16)
 /// Whether or not the bullet hits the target that was clicked or if it keeps travelling
 #define AMMO_HITS_TARGET_TURF (1<<17)
-
 #define AMMO_ALWAYS_FF (1<<18)
 //                              (1<<19) unused, previously was AMMO_HOMING
 /// Can't be deflected
@@ -84,10 +80,8 @@
 //Gun attachable related flags.
 #define ATTACH_REMOVABLE 1
 #define ATTACH_ACTIVATION 2
-
 /// for attachments that fire bullets
 #define ATTACH_PROJECTILE 4
-
 #define ATTACH_RELOADABLE 8
 /// is a weapon that fires stuff
 #define ATTACH_WEAPON 16

@@ -223,6 +223,45 @@
 			store_huggers_from_egg_morpher(morpher)
 			return
 
+	//Transfer huggers from one Carrier to another
+	if(istype(T, /mob/living/carbon/Xenomorph))
+		var/mob/living/carbon/Xenomorph/other_xeno = T
+		if(other_xeno.hivenumber != hivenumber)
+			to_chat(src, SPAN_WARNING("Can't give another Hive your precious treasures!"))
+			return
+		if(isturf(other_xeno.loc) && Adjacent(other_xeno))
+			if(other_xeno.huggers_max <= 0)
+				to_chat(src, SPAN_XENONOTICE("The target can't store huggers!"))
+				return
+			if(other_xeno.huggers_cur >= other_xeno.huggers_max)
+				to_chat(src, SPAN_XENONOTICE("The target is full!"))
+				return
+			var/transfer_max = other_xeno.huggers_max - other_xeno.huggers_cur
+			if(transfer_max > huggers_cur)
+				transfer_max = huggers_cur
+
+			var/huggers_to_transfer = tgui_input_number(usr, "How many huggers do you want to give them?", "How many to give?", 0, transfer_max, transfer_max)
+			
+			if(!huggers_to_transfer)
+				return
+			//Still need to be next to them
+			if(!isturf(other_xeno.loc) || !Adjacent(other_xeno))
+				to_chat(src, SPAN_WARNING("[other_xeno] ran away..."))
+				return
+			//Making sure the numbers are still alright...
+			if(huggers_to_transfer > huggers_cur)
+				huggers_to_transfer = huggers_cur
+			transfer_max = other_xeno.huggers_max - other_xeno.huggers_cur
+			if(huggers_to_transfer > transfer_max)
+				huggers_to_transfer = transfer_max
+			if(!huggers_to_transfer)
+				return
+			other_xeno.huggers_cur += huggers_to_transfer
+			huggers_cur -= huggers_to_transfer
+			to_chat(src, SPAN_XENONOTICE("You gave [other_xeno] [huggers_to_transfer] huggers!"))
+			to_chat(other_xeno, SPAN_XENONOTICE("[src] gave you [huggers_to_transfer] huggers!"))
+			return
+
 	var/obj/item/clothing/mask/facehugger/F = get_active_hand()
 	if(!F) //empty active hand
 		//if no hugger in active hand, we take one from our storage
@@ -291,6 +330,45 @@
 				for(E in egg_turf)
 					if(eggs_cur < eggs_max)
 						store_egg(E)
+			return
+
+	//Carriers can give other carriers their eggs. Very useful for Eggsac to Shaman transfers!
+	if(istype(T, /mob/living/carbon/Xenomorph))
+		var/mob/living/carbon/Xenomorph/other_xeno = T
+		if(other_xeno.hivenumber != hivenumber)
+			to_chat(src, SPAN_WARNING("Can't give another Hive your precious treasures!"))
+			return
+		if(isturf(other_xeno.loc) && Adjacent(other_xeno))
+			if(other_xeno.eggs_max <= 0)
+				to_chat(src, SPAN_XENONOTICE("The target can't store eggs!"))
+				return
+			if(other_xeno.eggs_cur >= other_xeno.eggs_max)
+				to_chat(src, SPAN_XENONOTICE("The target is full!"))
+				return
+			var/transfer_max = other_xeno.eggs_max - other_xeno.eggs_cur
+			if(transfer_max > eggs_cur)
+				transfer_max = eggs_cur
+
+			var/eggs_to_transfer = tgui_input_number(usr, "How many eggs do you want to give them?", "How many to give?", 0, transfer_max, transfer_max)
+			
+			if(!eggs_to_transfer)
+				return
+			//Still need to be next to them
+			if(!isturf(other_xeno.loc) || !Adjacent(other_xeno))
+				to_chat(src, SPAN_WARNING("[other_xeno] ran away..."))
+				return
+			//Making sure the numbers are still alright...
+			if(eggs_to_transfer > eggs_cur)
+				eggs_to_transfer = eggs_cur
+			transfer_max = other_xeno.eggs_max - other_xeno.eggs_cur
+			if(eggs_to_transfer > transfer_max)
+				eggs_to_transfer = transfer_max
+			if(!eggs_to_transfer)
+				return
+			other_xeno.eggs_cur += eggs_to_transfer
+			eggs_cur -= eggs_to_transfer
+			to_chat(src, SPAN_XENONOTICE("You gave [other_xeno] [eggs_to_transfer] eggs!"))
+			to_chat(other_xeno, SPAN_XENONOTICE("[src] gave you [eggs_to_transfer] eggs!"))
 			return
 
 	var/obj/item/xeno_egg/E = get_active_hand()

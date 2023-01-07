@@ -797,10 +797,10 @@
 			. -= evasion
 
 /mob/living/simple_animal/get_projectile_hit_chance(obj/item/projectile/P)
-    . = ..()
-    if(.)
-        if(evasion > 0)
-            . -= evasion
+	. = ..()
+	if(.)
+		if(evasion > 0)
+			. -= evasion
 
 /mob/living/silicon/robot/drone/get_projectile_hit_chance(obj/item/projectile/P)
 	return FALSE // just stop them getting hit by projectiles completely

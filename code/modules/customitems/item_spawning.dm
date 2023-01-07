@@ -38,7 +38,7 @@ GLOBAL_LIST_FILE_LOAD(custom_items, "config/custom_items.txt")
 						I.blood_type = C.blood_type
 						//replace old ID
 						qdel(C)
-						ok = M.equip_if_possible(I, WEAR_ID, 0)	//if 1, last argument deletes on fail
+						ok = M.equip_if_possible(I, WEAR_ID, 0) //if 1, last argument deletes on fail
 						break
 				else if(istype(Item,/obj/item/storage/belt))
 					var/obj/item/storage/belt/I = Item

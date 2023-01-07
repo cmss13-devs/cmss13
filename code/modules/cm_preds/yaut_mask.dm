@@ -1,7 +1,7 @@
-#define VISION_MODE_OFF		0
-#define VISION_MODE_NVG		1
-#define VISION_MODE_THERMAL	2
-#define VISION_MODE_MESON	3
+#define VISION_MODE_OFF 0
+#define VISION_MODE_NVG 1
+#define VISION_MODE_THERMAL 2
+#define VISION_MODE_MESON 3
 
 ///parent type
 /obj/item/clothing/mask/gas/yautja
@@ -34,7 +34,7 @@
 	flags_item = ITEM_PREDATOR
 	filtered_gases = list("phoron", "sleeping_agent", "carbon_dioxide")
 	gas_filter_strength = 3
-	eye_protection = 2
+	eye_protection = EYE_PROTECTION_WELDING
 	var/current_goggles = VISION_MODE_OFF
 	vision_impair = VISION_IMPAIR_NONE
 	unacidable = TRUE
@@ -187,6 +187,7 @@
 	armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_rad = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
+	eye_protection = EYE_PROTECTION_WELDING
 	anti_hug = 100
 
 /obj/item/clothing/mask/gas/yautja/hunter/toggle_zoom()

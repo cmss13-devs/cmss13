@@ -61,7 +61,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	current_mag.chamber_position++ //We move the position up when loading ammo. New rounds are always fired next, in order loaded.
 	current_mag.chamber_contents[current_mag.chamber_position] = selection //Just moves up one, unless the mag is full.
 	if(current_mag.current_rounds == 1 && !in_chamber) //The previous proc in the reload() cycle adds ammo, so the best workaround here,
-		update_icon()	//This is not needed for now. Maybe we'll have loaded sprites at some point, but I doubt it. Also doesn't play well with double barrel.
+		update_icon() //This is not needed for now. Maybe we'll have loaded sprites at some point, but I doubt it. Also doesn't play well with double barrel.
 		ready_in_chamber()
 		cock_gun(user)
 	if(user)
@@ -712,7 +712,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	seal_sound = 'sound/weapons/handling/gun_mou_close.ogg'//replace w/ uniques
 	cocked_sound = null //We don't want this.
 	attachable_allowed = list()
-	delay_style	= WEAPON_DELAY_NO_FIRE //This is a heavy, bulky weapon, and tricky to snapshot with.
+	delay_style = WEAPON_DELAY_NO_FIRE //This is a heavy, bulky weapon, and tricky to snapshot with.
 	flags_equip_slot = SLOT_BACK
 	actions_types = list(/datum/action/item_action/specialist/twobore_brace)
 	starting_attachment_types = list(/obj/item/attachable/stock/twobore)
@@ -742,9 +742,9 @@ can cause issues with ammo types getting mixed up during the burst.
 	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 21,"rail_x" = 15, "rail_y" = 22, "under_x" = 21, "under_y" = 16, "stock_x" = 0, "stock_y" = 16)
 
 /obj/item/weapon/gun/shotgun/double/twobore/proc/brace(mob/living/carbon/human/user)
-	RegisterSignal(user, COMSIG_MOVABLE_MOVED, .proc/unbrace, user)
-	RegisterSignal(src, COMSIG_ITEM_DROPPED, .proc/unbrace, user)
-	RegisterSignal(src, COMSIG_ITEM_EQUIPPED, .proc/unbrace, user)
+	RegisterSignal(user, COMSIG_MOVABLE_MOVED, PROC_REF(unbrace), user)
+	RegisterSignal(src, COMSIG_ITEM_DROPPED, PROC_REF(unbrace), user)
+	RegisterSignal(src, COMSIG_ITEM_EQUIPPED, PROC_REF(unbrace), user)
 	braced = TRUE
 
 ///Returns TRUE if the gun was braced.
@@ -989,7 +989,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	*/
 
 //More or less chambers the round instead of load_into_chamber().
-/obj/item/weapon/gun/shotgun/pump/proc/pump_shotgun(mob/user)	//We can't fire bursts with pumps.
+/obj/item/weapon/gun/shotgun/pump/proc/pump_shotgun(mob/user) //We can't fire bursts with pumps.
 	if(world.time < (recent_pump + pump_delay) )
 		return //Don't spam it.
 	if(pumped)

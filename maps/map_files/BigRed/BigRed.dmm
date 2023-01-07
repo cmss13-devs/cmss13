@@ -7362,12 +7362,12 @@
 	},
 /area/bigredv2/caves/lambda/breakroom)
 "ati" = (
-/obj/effect/landmark/corpsespawner/pmc,
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 1;
 	tag = "icon-intact-supply (NORTH)"
 	},
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/corpsespawner/pmc,
 /turf/open/floor{
 	icon_state = "darkpurple2";
 	tag = "icon-darkpurple2"
@@ -8404,7 +8404,7 @@
 /obj/structure/machinery/power/apc{
 	dir = 1;
 	name = "Dormitories APC";
-	pixel_y = 16
+	pixel_y = 25
 	},
 /turf/open/floor,
 /area/bigredv2/outside/dorms)
@@ -11456,12 +11456,6 @@
 	},
 /area/bigredv2/outside/nw)
 "aDB" = (
-/obj/structure/machinery/embedded_controller/radio/airlock/access_controller{
-	id_tag = "viro_controller";
-	pixel_y = 28;
-	tag_exterior_door = "viro_ext";
-	tag_interior_door = "viro_int"
-	},
 /turf/open/floor{
 	dir = 5;
 	icon_state = "whitegreen";

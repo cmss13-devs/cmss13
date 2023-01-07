@@ -1,0 +1,4 @@
+author: "ThePiachu"
+delete-after: True
+changes:
+  - bugfix: "Egg Plasma now preserves the hive number of the egg / Eggsac it came from."

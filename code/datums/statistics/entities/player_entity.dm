@@ -1,5 +1,5 @@
-#define PREFFILE_VERSION_MIN	3
-#define PREFFILE_VERSION_MAX	3
+#define PREFFILE_VERSION_MIN 3
+#define PREFFILE_VERSION_MAX 3
 
 /datum/entity/statistic
 	var/name = null

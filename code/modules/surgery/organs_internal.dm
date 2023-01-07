@@ -1,7 +1,7 @@
 /*Procedures in this file: chest + groin organ repair surgery, legacy prosthetic organ repair
 and organ transplant code which may come in handy in future but haven't been edited at all.*/
 //////////////////////////////////////////////////////////////////
-//						ORGAN SURGERIES							//
+// ORGAN SURGERIES //
 //////////////////////////////////////////////////////////////////
 
 /datum/surgery/organ_repair
@@ -35,7 +35,7 @@ and organ transplant code which may come in handy in future but haven't been edi
 		/obj/item/stack/medical/bruise_pack = SURGERY_TOOL_MULT_AWFUL
 		)
 	time = 3 SECONDS
-	repeat_step	= TRUE
+	repeat_step = TRUE
 
 /datum/surgery_step/repair_organs/repeat_step_criteria(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	for(var/datum/internal_organ/IO as anything in surgery.affected_limb.internal_organs)
@@ -111,13 +111,13 @@ and organ transplant code which may come in handy in future but haven't been edi
 
 /*
 //----------------------------------//
-//		UNUPDATED LEGACY CODE		//
+// UNUPDATED LEGACY CODE //
 //----------------------------------//
 
 /datum/surgery_step/internal/fix_organ_robotic //For artificial organs
 	allowed_tools = list(
 	/obj/item/stack/nanopaste = 100,   \
-	/obj/item/tool/surgery/bonegel = 30,     \
+	/obj/item/tool/surgery/bonegel = 30,  \
 	/obj/item/tool/screwdriver = 70, \
 	)
 
@@ -170,9 +170,9 @@ and organ transplant code which may come in handy in future but haven't been edi
 
 /datum/surgery_step/internal/detach_organ
 	allowed_tools = list()
-	/obj/item/tool/surgery/scalpel = 100,		\
-	/obj/item/tool/kitchen/knife = 75,	\
-	/obj/item/shard = 50, 		\
+	/obj/item/tool/surgery/scalpel = 100, \
+	/obj/item/tool/kitchen/knife = 75, \
+	/obj/item/shard = 50, \
 	)
 
 	min_duration = SCALPEL_MIN_DURATION
@@ -238,8 +238,8 @@ and organ transplant code which may come in handy in future but haven't been edi
 
 /datum/surgery_step/internal/remove_organ
 	allowed_tools = list()
-	/obj/item/tool/surgery/hemostat = 100,           \
-	/obj/item/tool/wirecutters = 75,         \
+	/obj/item/tool/surgery/hemostat = 100,    \
+	/obj/item/tool/wirecutters = 75,  \
 	/obj/item/tool/kitchen/utensil/fork = 20
 	)
 
@@ -350,7 +350,7 @@ and organ transplant code which may come in handy in future but haven't been edi
 		return SPECIAL_SURGERY_INVALID
 
 	var/o_is = (O.gender == PLURAL) ? "are"   : "is"
-	var/o_a =  (O.gender == PLURAL) ? ""      : "a "
+	var/o_a =  (O.gender == PLURAL) ? ""   : "a "
 	var/o_do = (O.gender == PLURAL) ? "don't" : "doesn't"
 
 	if(target.species.has_organ[O.organ_tag])
@@ -397,11 +397,11 @@ and organ transplant code which may come in handy in future but haven't been edi
 		var/datum/reagent/blood/transplant_blood = locate(/datum/reagent/blood) in O.reagents.reagent_list
 		if(!transplant_blood)
 			O.organ_data.transplant_data = list()
-			O.organ_data.transplant_data["species"]    = target.species.name
+			O.organ_data.transplant_data["species"] = target.species.name
 			O.organ_data.transplant_data["blood_type"] = target.blood_type
 		else
 			O.organ_data.transplant_data = list()
-			O.organ_data.transplant_data["species"]    = transplant_blood.data_properties["species"]
+			O.organ_data.transplant_data["species"] = transplant_blood.data_properties["species"]
 			O.organ_data.transplant_data["blood_type"] = transplant_blood.data_properties["blood_type"]
 
 		O.organ_data.organ_holder = null

@@ -7,8 +7,8 @@
 	w_class = SIZE_SMALL
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 10
-	var/obj/item/tool/pen/haspen		//The stored pen.
-	var/obj/item/toppaper	//The topmost piece of paper.
+	var/obj/item/tool/pen/haspen //The stored pen.
+	var/obj/item/toppaper //The topmost piece of paper.
 	flags_equip_slot = SLOT_WAIST
 
 /obj/item/clipboard/Initialize()
@@ -68,7 +68,7 @@
 	else
 		dat += "<A href='?src=\ref[src];addpen=1'>Add Pen</A><BR><HR>"
 
-	//The topmost paper. I don't think there's any way to organise contents in byond, so this is what we're stuck with.	-Pete
+	//The topmost paper. I don't think there's any way to organise contents in byond, so this is what we're stuck with. -Pete
 	if(toppaper)
 		var/obj/item/paper/P = toppaper
 		dat += "<A href='?src=\ref[src];write=\ref[P]'>Write</A> <A href='?src=\ref[src];remove=\ref[P]'>Remove</A> - <A href='?src=\ref[src];read=\ref[P]'>[P.name]</A><BR><HR>"

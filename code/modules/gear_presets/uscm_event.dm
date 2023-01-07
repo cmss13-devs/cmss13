@@ -120,7 +120,7 @@
 		name = "USCM O-10C - Assistant Commandant of the Marine Corps (High Command)"
 		paygrade = "MO10C"
 
-/datum/equipment_preset/uscm_event/general/
+/datum/equipment_preset/uscm_event/general/o10s
 		name = "USCM O-10S - Commandant of the Marine Corps (High Command)"
 		paygrade = "MO10S"
 

@@ -5,7 +5,7 @@
 	layer = MOB_LAYER
 	luminosity = 3
 	use_power = USE_POWER_NONE
-	var/obj/item/card/id/botcard			// the ID card that the bot "holds"
+	var/obj/item/card/id/botcard // the ID card that the bot "holds"
 	var/on = 1
 	unslashable = TRUE
 	health = 0 //do not forget to set health for your bot!
@@ -47,7 +47,7 @@
 			. += SPAN_DANGER("[src]'s parts look very loose!")
 
 /obj/structure/machinery/bot/attack_animal(var/mob/living/simple_animal/M as mob)
-	if(M.melee_damage_upper == 0)	return
+	if(M.melee_damage_upper == 0) return
 	health -= M.melee_damage_upper
 	visible_message(SPAN_DANGER("<B>[M] has [M.attacktext] [src]!</B>"))
 	M.attack_log += text("\[[time_stamp()]\] <font color='red'>attacked [src.name]</font>")
@@ -157,7 +157,7 @@
 	if(A == null || B == null) return 1
 	var/adir = get_dir(A,B)
 	var/rdir = get_dir(B,A)
-	if((adir & (NORTH|SOUTH)) && (adir & (EAST|WEST)))	//diagonal
+	if((adir & (NORTH|SOUTH)) && (adir & (EAST|WEST))) //diagonal
 		var/iStep = get_step(A,adir&(NORTH|SOUTH))
 		if(!LinkBlockedWithAccess(A,iStep, ID) && !LinkBlockedWithAccess(iStep,B,ID))
 			return 0
@@ -183,16 +183,16 @@
 // Checks doors against access with given ID
 /proc/DirBlockedWithAccess(turf/loc,var/dir,var/obj/item/card/id/ID)
 	for(var/obj/structure/window/D in loc)
-		if(!D.density)			continue
-		if(D.dir == SOUTHWEST)	return 1
-		if(D.dir == dir)		return 1
+		if(!D.density) continue
+		if(D.dir == SOUTHWEST) return 1
+		if(D.dir == dir) return 1
 
 	for(var/obj/structure/machinery/door/D in loc)
-		if(!D.density)			continue
+		if(!D.density) continue
 		if(istype(D, /obj/structure/machinery/door/window))
-			if( dir & D.dir )	return !D.check_access(ID)
+			if( dir & D.dir ) return !D.check_access(ID)
 
-			//if((dir & SOUTH) && (D.dir & (EAST|WEST)))		return !D.check_access(ID)
-			//if((dir & EAST ) && (D.dir & (NORTH|SOUTH)))	return !D.check_access(ID)
-		else return !D.check_access(ID)	// it's a real, air blocking door
+			//if((dir & SOUTH) && (D.dir & (EAST|WEST))) return !D.check_access(ID)
+			//if((dir & EAST ) && (D.dir & (NORTH|SOUTH))) return !D.check_access(ID)
+		else return !D.check_access(ID) // it's a real, air blocking door
 	return 0

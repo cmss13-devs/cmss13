@@ -55,7 +55,7 @@ var/datum/cameranet/cameranet = new()
 		var/datum/camerachunk/c = chunk
 		c.add(ai)
 
-// Updates the chunks that the turf is located in. Use this when obstacles are destroyed or	when doors open.
+// Updates the chunks that the turf is located in. Use this when obstacles are destroyed or when doors open.
 
 /datum/cameranet/proc/updateVisibility(atom/A, var/opacity_check = 1)
 
@@ -88,7 +88,7 @@ var/datum/cameranet/cameranet = new()
 	if(c.can_use())
 		majorChunkChange(c, 1)
 	//else
-	//	majorChunkChange(c, 0)
+	// majorChunkChange(c, 0)
 
 // Never access this proc directly!!!!
 // This will update the chunk and all the surrounding chunks.

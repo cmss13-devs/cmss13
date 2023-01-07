@@ -10,7 +10,7 @@
 	pixel_x = -48
 	pixel_y = -48
 
-	density = TRUE	//come on, it's huge
+	density = TRUE //come on, it's huge
 
 	activatable = TRUE
 	cooldown = 150
@@ -216,7 +216,7 @@
 
 	var/turf/origin_turf = get_turf(src)
 	origin_turf = locate(origin_turf.x + origins[1], origin_turf.y + origins[2], origin_turf.z)
-	origin_turf = get_step(get_step(origin_turf, owner.dir), owner.dir)	//this should get us tile in front of tank to prevent grenade being stuck under us.
+	origin_turf = get_step(get_step(origin_turf, owner.dir), owner.dir) //this should get us tile in front of tank to prevent grenade being stuck under us.
 
 	var/obj/item/projectile/P = generate_bullet(user, origin_turf)
 	SEND_SIGNAL(P, COMSIG_BULLET_USER_EFFECTS, owner.seats[VEHICLE_GUNNER])

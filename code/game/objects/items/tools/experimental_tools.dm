@@ -90,7 +90,7 @@
 				if(H.job)
 					role = H.job
 				else if(istype(H.wear_id, /obj/item/card/id)) //decapitated marine is mindless,
-					var/obj/item/card/id/ID = H.wear_id		//we use their ID to get their role.
+					var/obj/item/card/id/ID = H.wear_id //we use their ID to get their role.
 					if(ID.rank)
 						role = ID.rank
 
@@ -322,7 +322,7 @@
 
 	if(detaching)
 		overlays += "+draining"
-		addtimer(CALLBACK(src, .proc/update_icon), attach_time)
+		addtimer(CALLBACK(src, PROC_REF(update_icon)), attach_time)
 
 	else if(attaching)
 		overlays += "+filling"
@@ -356,7 +356,7 @@
 	. += SPAN_INFO("It has [currentpercent]% charge left in its internal battery.")
 
 /obj/item/tool/portadialysis/proc/painful_detach()
-	if(!attached)	//sanity
+	if(!attached) //sanity
 		return
 	attached.visible_message(SPAN_WARNING("\The [src]'s needle is ripped out of [attached], doesn't that hurt?"))
 	to_chat(attached, SPAN_WARNING("Ow! A needle is ripped out of you!"))

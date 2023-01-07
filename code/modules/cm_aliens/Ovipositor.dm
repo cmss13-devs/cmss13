@@ -8,7 +8,7 @@
 	var/begin_decay_time = 0
 	health = 50
 	var/decay_ready = 0
-	var/decayed = 0		// This is here so later on we can use the ovpositor molt for research. ~BMC777
+	var/decayed = 0 // This is here so later on we can use the ovpositor molt for research. ~BMC777
 	var/destroyed = 0
 
 /obj/ovipositor/Initialize(mapload, ...)
@@ -29,7 +29,7 @@
 			destroyed = 1
 			explode()
 
-		sleep(10)	// Process every second.
+		sleep(10) // Process every second.
 
 /obj/ovipositor/proc/do_decay()
 	icon_state = "ovipositor_molted"

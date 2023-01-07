@@ -18,7 +18,7 @@
 /datum/decorator/christmas/queen/screech/decorate(var/mob/living/carbon/Xenomorph/Queen/queen)
 	if(!istype(queen))
 		return
-	queen.screech_sound_effect = 'sound/voice/alien_queen_xmas.ogg'
+	queen.screech_sound_effect_list = list('sound/voice/alien_queen_xmas.ogg','sound/voice/alien_queen_xmas_2.ogg')
 
 /datum/decorator/christmas/queen/hat/decorate(var/mob/living/carbon/Xenomorph/Queen/queen)
 	if(!istype(queen))
@@ -32,6 +32,7 @@
 /datum/decorator/christmas/barbed_wire/decorate(var/obj/item/stack/barbed_wire/wire)
 	if(!istype(wire))
 		return
+	wire.name = "christmas wire"
 	wire.desc = "A bulbed, festive, and dangerous length of wire."
 	wire.attack_verb = list("hit", "whacked", "sliced", "festivized")
 	wire.icon = 'icons/obj/items/marine-items_christmas.dmi'
@@ -75,7 +76,7 @@
 /datum/decorator/christmas/food/decorate(obj/structure/machinery/cm_vending/sorted/marine_food/dispenser)
 	// This happens during atom init before vending init, so we can hotswap the list before it gets processed
 	dispenser.listed_products = list(
-		list("CHRISTMAS MEALS", -1, null, null),		//Jummy Christmas Food
+		list("CHRISTMAS MEALS", -1, null, null), //Jummy Christmas Food
 		list("Xmas Prepared Meal (Fruitcake)", 25, /obj/item/reagent_container/food/snacks/mre_pack/xmas3, VENDOR_ITEM_REGULAR),
 		list("Xmas Prepared Meal (Gingerbread Cookies)", 25, /obj/item/reagent_container/food/snacks/mre_pack/xmas2, VENDOR_ITEM_REGULAR),
 		list("Xmas Prepared Meal (Sugar Cookies)", 25, /obj/item/reagent_container/food/snacks/mre_pack/xmas1, VENDOR_ITEM_REGULAR),
@@ -96,4 +97,4 @@
 /datum/decorator/christmas/builder_list/decorate(var/mob/living/carbon/Xenomorph/Xeno)
 	if(!istype(Xeno))
 		return
-	LAZYADD(Xeno.resin_build_order, /datum/resin_construction/resin_obj/festivizer)
+	LAZYDISTINCTADD(Xeno.resin_build_order, /datum/resin_construction/resin_obj/festivizer)

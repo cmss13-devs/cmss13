@@ -8,26 +8,26 @@
 	name = "power storage unit"
 	desc = "A high-capacity superconducting magnetic energy storage (SMES) unit."
 	icon_state = "smes"
-	density = 1
+	density = TRUE
 	anchored = 1
 	use_power = USE_POWER_NONE
 	directwired = 0
 
-	var/loaddemand = 0		//For use in restore()
-	var/capacity = 5e6		//Maximum amount of power it can hold
-	var/charge = 0		//Current amount of power it holds
+	var/loaddemand = 0 //For use in restore()
+	var/capacity = 5e6 //Maximum amount of power it can hold
+	var/charge = 0 //Current amount of power it holds
 	var/last_charge = 0
 
-	var/inputting = 0		//1 if it's actually inputting, 0 if not //used to be var/charging
-	var/input_attempt = 0		//1 if it's trying to charge, 0 if not. //used to be var/chargemode
-	var/input_level = 0		//Amount of power it tries to charge from powernet //used to be var/chargelevel
+	var/inputting = 0 //1 if it's actually inputting, 0 if not //used to be var/charging
+	var/input_attempt = 0 //1 if it's trying to charge, 0 if not. //used to be var/chargemode
+	var/input_level = 0 //Amount of power it tries to charge from powernet //used to be var/chargelevel
 	var/input_level_max = 200000
-	var/input_available	= 0	//how much power it can get
+	var/input_available = 0 //how much power it can get
 
-	var/outputting = 1			//1 if it's outputting power, 0 if not. //used to be var/online
-	var/output_level = 50000		//Amount of power it tries to output //used to be var/output
+	var/outputting = 1 //1 if it's outputting power, 0 if not. //used to be var/online
+	var/output_level = 50000 //Amount of power it tries to output //used to be var/output
 	var/output_level_max = 200000
-	var/output_used = 0			//Amount of power it actually outputs to the powernet //used to be var/lastout
+	var/output_used = 0 //Amount of power it actually outputs to the powernet //used to be var/lastout
 	var/last_outputting = 0
 	var/last_output = 0
 
@@ -66,7 +66,7 @@
 
 /obj/structure/machinery/power/smes/proc/updateicon()
 	overlays.Cut()
-	if(stat & BROKEN)	return
+	if(stat & BROKEN) return
 
 	overlays += image('icons/obj/structures/machinery/power.dmi', "smes_op[outputting]")
 
@@ -87,7 +87,7 @@
 /obj/structure/machinery/power/smes/proc/chargedisplay()
 	return round(5.5*charge/(capacity ? capacity : 5e6))
 
-#define SMESRATE 0.05			// rate of internal charge to external power
+#define SMESRATE 0.05 // rate of internal charge to external power
 
 
 /obj/structure/machinery/power/smes/process()
@@ -104,9 +104,9 @@
 		//Use inputting to let the player know whether we were able to obtain our target load.
 		//TODO: Add a meter to tell players how much charge we are actually getting, and only set inputting to 0 when we are unable to get any charge at all.
 		if(input_attempt)
-			var/target_load = min((capacity-charge)/SMESRATE, input_level)		// charge at set rate, limited to spare capacity
-			var/actual_load = add_load(target_load)		// add the load to the terminal side network
-			charge += actual_load * SMESRATE	// increase the charge
+			var/target_load = min((capacity-charge)/SMESRATE, input_level) // charge at set rate, limited to spare capacity
+			var/actual_load = add_load(target_load) // add the load to the terminal side network
+			charge += actual_load * SMESRATE // increase the charge
 			input_available = actual_load
 
 			if (actual_load >= target_load) // Did we charge at full rate?
@@ -116,12 +116,12 @@
 			else // Or not at all?
 				inputting = 0
 
-	if(outputting)		// if outputting
-		output_used = min( charge/SMESRATE, output_level)		//limit output to that stored
-		charge -= output_used*SMESRATE		// reduce the storage (may be recovered in /restore() if excessive)
-		add_avail(output_used)				// add output to powernet (smes side)
+	if(outputting) // if outputting
+		output_used = min( charge/SMESRATE, output_level) //limit output to that stored
+		charge -= output_used*SMESRATE // reduce the storage (may be recovered in /restore() if excessive)
+		add_avail(output_used) // add output to powernet (smes side)
 		if(charge < 0.0001)
-			outputting = 0					// stop output if charge falls to zero
+			outputting = 0 // stop output if charge falls to zero
 
 	// only update icon if state changed
 	if(last_disp != chargedisplay() || last_chrg != inputting || last_onln != outputting)
@@ -139,18 +139,18 @@
 		loaddemand = 0
 		return
 
-	var/excess = powernet.netexcess		// this was how much wasn't used on the network last ptick, minus any removed by other SMESes
+	var/excess = powernet.netexcess // this was how much wasn't used on the network last ptick, minus any removed by other SMESes
 
-	excess = min(output_used, excess)				// clamp it to how much was actually output by this SMES last ptick
+	excess = min(output_used, excess) // clamp it to how much was actually output by this SMES last ptick
 
-	excess = min((capacity-charge)/SMESRATE, excess)	// for safety, also limit recharge by space capacity of SMES (shouldn't happen)
+	excess = min((capacity-charge)/SMESRATE, excess) // for safety, also limit recharge by space capacity of SMES (shouldn't happen)
 
 	// now recharge this amount
 
 	var/clev = chargedisplay()
 
 	charge += excess * SMESRATE
-	powernet.netexcess -= excess		// remove the excess from the powernet, so later SMESes don't try to use it
+	powernet.netexcess -= excess // remove the excess from the powernet, so later SMESes don't try to use it
 
 	loaddemand = output_used-excess
 

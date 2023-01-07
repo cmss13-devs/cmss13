@@ -1,7 +1,7 @@
 /*
 /turf
 
-	/open - all turfs with density = 0 are turf/open
+	/open - all turfs with density = FALSE are turf/open
 
 		/floor - floors are constructed floor as opposed to natural grounds
 
@@ -11,7 +11,7 @@
 
 		/snow - snow is one type of non-floor open turf
 
-	/closed - all turfs with density = 1 are turf/closed
+	/closed - all turfs with density = TRUE are turf/closed
 
 		/wall - walls are constructed walls as opposed to natural solid turfs
 
@@ -86,7 +86,7 @@
 		Entered(AM)
 
 	if(luminosity)
-		if(light)	WARNING("[type] - Don't set lights up manually during New(), We do it automatically.")
+		if(light) WARNING("[type] - Don't set lights up manually during New(), We do it automatically.")
 		trueLuminosity = luminosity * luminosity
 		light = new(src)
 
@@ -260,13 +260,13 @@
 	return 0
 /turf/proc/is_carpet_floor()
 	return 0
-/turf/proc/return_siding_icon_state()		//used for grass floors, which have siding.
+/turf/proc/return_siding_icon_state() //used for grass floors, which have siding.
 	return 0
 
 /turf/proc/inertial_drift(atom/movable/A as mob|obj)
 	if(A.anchored)
 		return
-	if(!(A.last_move_dir))	return
+	if(!(A.last_move_dir)) return
 	if((istype(A, /mob/) && src.x > 2 && src.x < (world.maxx - 1) && src.y > 2 && src.y < (world.maxy-1)))
 		var/mob/M = A
 		if(M.Process_Spacemove(1))
@@ -347,14 +347,14 @@
 	var/old_lumcount = lighting_lumcount - initial(lighting_lumcount)
 
 	//if(src.type == new_turf_path) // Put this back if shit starts breaking
-	//	return src
+	// return src
 
 	var/pylons = linked_pylons
 
 	var/list/old_baseturfs = baseturfs
 
 	changing_turf = TRUE
-	qdel(src)	//Just get the side effects and call Destroy
+	qdel(src) //Just get the side effects and call Destroy
 	var/turf/W = new path(src)
 
 	for(var/i in W.contents)
@@ -555,10 +555,10 @@
 	return NOT_WEEDABLE
 
 /turf/open/auto_turf/shale/layer1/is_weedable()
-	return FALSE 
+	return FALSE
 
 /turf/open/auto_turf/shale/layer2/is_weedable()
-	return FALSE 
+	return FALSE
 
 /turf/closed/wall/is_weedable()
 	return FULLY_WEEDABLE //so we can spawn weeds on the walls
@@ -749,7 +749,7 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 /turf/proc/copyTurf(turf/T)
 	if(T.type != type)
 		var/obj/O
-		if(underlays.len)	//we have underlays, which implies some sort of transparency, so we want to a snapshot of the previous turf as an underlay
+		if(underlays.len) //we have underlays, which implies some sort of transparency, so we want to a snapshot of the previous turf as an underlay
 			O = new()
 			O.underlays.Add(T)
 		T.ChangeTurf(type)
@@ -760,8 +760,8 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 	if(T.icon != icon)
 		T.icon = icon
 	//if(color)
-	//	T.atom_colours = atom_colours.Copy()
-	//	T.update_atom_colour()
+	// T.atom_colours = atom_colours.Copy()
+	// T.update_atom_colour()
 	if(T.dir != dir)
 		T.setDir(dir)
 	return T

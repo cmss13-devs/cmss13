@@ -23,7 +23,7 @@
 	falloff = falloff_
 	footstep_sounds = footstep_sounds_
 
-	RegisterSignal(parent, list(COMSIG_MOVABLE_MOVED), .proc/play_simplestep) 
+	RegisterSignal(parent, list(COMSIG_MOVABLE_MOVED), PROC_REF(play_simplestep))
 
 /datum/component/footstep/proc/prepare_step()
 	var/turf/open/T = get_turf(parent)

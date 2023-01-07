@@ -14,7 +14,7 @@
 
 /mob/proc/async_gib(var/cause)
 	gibbing = TRUE
-	INVOKE_ASYNC(src, .proc/gib, cause)
+	INVOKE_ASYNC(src, PROC_REF(gib), cause)
 
 
 /mob/proc/gib_animation()
@@ -71,6 +71,8 @@
 
 	update_sight()
 
+	remove_typing_indicator()
+
 	drop_r_hand()
 	drop_l_hand()
 
@@ -91,7 +93,7 @@
 
 	track_death_calculations()
 
-	INVOKE_ASYNC(src, .proc/handle_death_cause, cause_data, get_turf(src))
+	INVOKE_ASYNC(src, PROC_REF(handle_death_cause), cause_data, get_turf(src))
 
 	med_hud_set_health()
 	med_hud_set_armor()
@@ -111,7 +113,7 @@
 		var/mob/cause_mob = cause_data.resolve_mob()
 		if(cause_mob)
 			if(isYautja(cause_mob) && cause_mob.client && cause_mob != src)
-				INVOKE_ASYNC(cause_mob.client, /client.proc/add_honor, max(life_kills_total, default_honor_value))
+				INVOKE_ASYNC(cause_mob.client, TYPE_PROC_REF(/client, add_honor), max(life_kills_total, default_honor_value))
 
 			if(isXeno(cause_mob))
 				var/mob/living/carbon/Xenomorph/X = cause_mob

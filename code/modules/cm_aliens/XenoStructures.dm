@@ -157,12 +157,20 @@
 
 /obj/effect/alien/resin/sticky/Crossed(atom/movable/AM)
 	. = ..()
+
+	// if the mob is getting pulled or thrown then we make sure the slowdown speed will not be stacked.
+	if(AM.pulledby)
+		return
+
+	if(AM.throwing)
+		return
+
 	var/mob/living/carbon/human/H = AM
-	if(istype(H) && !H.lying && !H.ally_of_hivenumber(hivenumber) && !H.pulledby)
+	if(istype(H) && !H.lying && !H.ally_of_hivenumber(hivenumber))
 		H.next_move_slowdown += slow_amt
 		return .
 	var/mob/living/carbon/Xenomorph/X = AM
-	if(istype(X) && !X.ally_of_hivenumber(hivenumber) && !X.pulledby)
+	if(istype(X) && !X.ally_of_hivenumber(hivenumber))
 		X.next_move_slowdown += slow_amt
 		return .
 

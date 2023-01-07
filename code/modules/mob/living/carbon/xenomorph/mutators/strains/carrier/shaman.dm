@@ -8,9 +8,7 @@
 		/datum/action/xeno_action/activable/throw_hugger,
 		/datum/action/xeno_action/onclick/emit_pheromones,
 		/datum/action/xeno_action/onclick/plant_weeds,
-		/datum/action/xeno_action/onclick/place_trap,
-		/datum/action/xeno_action/activable/retrieve_egg,
-		/datum/action/xeno_action/onclick/set_hugger_reserve,
+		/datum/action/xeno_action/onclick/place_trap
 	)
 	mutator_actions_to_add = list(
 		/datum/action/xeno_action/activable/sacrifice_egg/hide_pain, //first macro
@@ -79,13 +77,12 @@
 		return FALSE
 	return TRUE
 
-
 /datum/action/xeno_action/activable/sacrifice_egg/hide_pain
-	name = "Hide Pain (100)"
+	name = "Hide Pain"
 	action_icon_state = "hide_pain"
 	ability_name = "hide pain"
 	macro_path = /datum/action/xeno_action/verb/verb_hide_pain
-	action_type = XENO_ACTION_ACTIVATE
+	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_1
 	var/windup_delay = 25
 	var/hide_pain_seconds = 30 SECONDS
@@ -152,7 +149,7 @@
 		effect_overlay.flick_overlay(X, 20)
 		xenomorphs_in_range += X
 
-	addtimer(CALLBACK(xeno_behavior, TYPE_PROC_REF(/datum/behavior_delegate/carrier_shaman, reset_shaman_ability)), action_def.get_cooldown())
+	addtimer(CALLBACK(BD, TYPE_PROC_REF(/datum/behavior_delegate/carrier_shaman, reset_shaman_ability)), action_def.get_cooldown())
 
 	for(var/mob/living/carbon/Xenomorph/X as anything in xenomorphs_in_range)
 		X.wound_icon_carrier.alpha = 0
@@ -172,7 +169,7 @@
 	action_icon_state = "screech"
 	ability_name = "frenzied scream"
 	macro_path = /datum/action/xeno_action/verb/verb_egg_sacr_scream
-	action_type = XENO_ACTION_ACTIVATE
+	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_2
 	var/windup_delay = 30
 	var/scream_range = 5
@@ -221,20 +218,6 @@
 
 	var/image/effect_overlay = get_busy_icon(ACTION_RED_POWER_UP)
 
-	var/effect_power = 0
-	for(var/mob/living/carbon/Xenomorph/X in range(action_def.get_gather_range(), src) - src)
-		if(X.stat == DEAD)
-			continue
-		if(!X.shaman_interactive) // Shamans are disconnected from the effect
-			continue
-		if(!hive.is_ally(X))
-			continue
-
-		to_chat(X, SPAN_XENONOTICE("Your mind emits a strange wave of thoughts that even other creatures can feel!"))
-
-		effect_overlay.flick_overlay(X, 20)
-		effect_power++
-
 	addtimer(CALLBACK(BD, TYPE_PROC_REF(/datum/behavior_delegate/carrier_shaman, reset_shaman_ability)), action_def.get_cooldown())
 
 	visible_message(SPAN_XENONOTICE("\The [src] squashes the egg into a pulp."), SPAN_XENONOTICE("You squash the egg into a mess of acid, blood, and gore! The collective psychic scream will stun nearby enemies!"), null, 8)
@@ -276,18 +259,13 @@
 
 	return TRUE
 
-
-/datum/action/xeno_action/activable/sacrifice_egg/radius_pheromones
-	name = "Adrenal Pheromones (300)"
-	action_icon_state = "emit_pheromones"
-	ability_name = "adrenal pheromones"
-	macro_path = /datum/action/xeno_action/verb/verb_egg_sacr_scream
-	action_type = XENO_ACTION_ACTIVATE
+/datum/action/xeno_action/activable/sacrifice_egg/firewalk
+	name = "Firewalk"
+	action_icon_state = "firewalk"
+	ability_name = "firewalk"
+	macro_path = /datum/action/xeno_action/verb/verb_egg_sacr_firewalk
+	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_3
-	var/pheromone_strength_per_xeno = 0.5
-	var/pheromone_strength_base = 1
-	var/gather_range = 3
-	var/pheromone_time = 300
 	var/windup_delay = 25
 	var/firewalk_range = 7
 	var/firewalk_seconds = 15 SECONDS
@@ -346,7 +324,7 @@
 		effect_overlay.flick_overlay(X, 20)
 		allies_in_range += X
 
-	addtimer(CALLBACK(xeno_behavior, TYPE_PROC_REF(/datum/behavior_delegate/carrier_shaman, reset_shaman_ability)), action_def.get_cooldown())
+	addtimer(CALLBACK(BD, TYPE_PROC_REF(/datum/behavior_delegate/carrier_shaman, reset_shaman_ability)), action_def.get_cooldown())
 
 	for(var/mob/living/carbon/Xenomorph/X as anything in allies_in_range)
 		X.ExtinguishMob()
@@ -364,7 +342,6 @@
 	playsound(loc, "alien_drool", 25)
 	visible_message(SPAN_XENOWARNING("\The [src] begins to emit fire resistant phermones."), SPAN_XENOWARNING("You begin to emit fire resistant pheromones."), null, 5)
 
-	addtimer(CALLBACK(src, TYPE_PROC_REF(/mob/living/carbon/Xenomorph/Carrier, egg_sacr_pheromones_disable)), 30 SECONDS)
 	return TRUE
 
 /mob/living/carbon/Xenomorph/Carrier/proc/firewalk_immune_off(var/mob/living/carbon/X)
@@ -448,9 +425,6 @@
 			BD.fakexeno.FindTarget()
 			addtimer(CALLBACK(src, PROC_REF(egg_sacr_mindtrick_disable), BD.fakexeno), action_def.mindtrick_seconds - 1 SECONDS)
 			addtimer(CALLBACK(GLOBAL_PROC, PROC_REF(qdel), BD.fakexeno), action_def.mindtrick_seconds)
-
-		effect_overlay.flick_overlay(X, 20)
-		effect_power++
 
 	addtimer(CALLBACK(BD, TYPE_PROC_REF(/datum/behavior_delegate/carrier_shaman, reset_shaman_ability)), action_def.get_cooldown())
 

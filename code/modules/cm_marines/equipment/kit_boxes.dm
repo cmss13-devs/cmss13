@@ -138,14 +138,14 @@
 	new /obj/item/device/binoculars(src)
 
 /obj/item/storage/box/spec/heavy_grenadier/m92
-	desc = "A large case containing an M92 grenade launcher."
+	desc = "A large case containing a M92 grenade launcher."
 
 /obj/item/storage/box/spec/heavy_grenadier/m92/fill_preset_inventory()
 	new /obj/item/storage/belt/grenade/large/full(src)
 	new /obj/item/weapon/gun/launcher/grenade/m92(src)
 
 /obj/item/storage/box/spec/heavy_grenadier/sharp
-	desc = "A large case containing an P9 SHARP Rifle."
+	desc = "A large case containing a P9 SHARP Rifle."
 
 /obj/item/storage/box/spec/heavy_grenadier/sharp/fill_preset_inventory()
 	new /obj/item/ammo_magazine/rifle/sharp/explosive(src)

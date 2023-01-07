@@ -1,4 +1,0 @@
-author: "carlarctg"
-delete-after: True
-changes:
-  - bugfix: "Fixed being unable to utilize smartguns and M2Cs with clickdrag override preference and harm/disarm intent enabled."

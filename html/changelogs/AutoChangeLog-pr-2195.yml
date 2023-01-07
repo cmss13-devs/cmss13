@@ -1,5 +1,0 @@
-author: "Segrain"
-delete-after: True
-changes:
-  - bugfix: "Markup for bold text can now be used for the first word or words in the spoken sentence without it being interpreted as a failed *emote."
-  - qol: "*emotes are no longer case sensitive (e.g. saying \"*salute\", \"*Salute\" and \"*SALUTE\" are equally valid ways to salute)."

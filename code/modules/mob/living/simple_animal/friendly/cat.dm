@@ -111,7 +111,15 @@
 	icon_state = "cat"
 	icon_living = "cat"
 	icon_dead = "cat_dead"
-	holder_type = /obj/item/holder/blackcat
+	holder_type = /obj/item/holder/cat/blackcat/Runtime
+
+/mob/living/simple_animal/cat/blackcat
+	name = "black cat"
+	desc = "It's a cat, now in black!"
+	icon_state = "cat"
+	icon_living = "cat"
+	icon_dead = "cat_dead"
+	holder_type = /obj/item/holder/cat/blackcat/
 
 /mob/living/simple_animal/cat/Jones
 	name = "Jones"
@@ -122,7 +130,7 @@
 	icon_dead = "cat2_dead"
 	health = 50
 	maxHealth = 50
-	holder_type = /obj/item/holder/Jones
+	holder_type = /obj/item/holder/cat/Jones
 
 /mob/living/simple_animal/cat/kitten
 	name = "kitten"
@@ -130,5 +138,5 @@
 	icon_state = "kitten"
 	icon_living = "kitten"
 	icon_dead = "kitten_dead"
-	holder_type = /obj/item/holder/kitten
+	holder_type = /obj/item/holder/cat/kitten
 	gender = NEUTER

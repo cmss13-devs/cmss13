@@ -77,7 +77,6 @@
 	active_thinking_indicator.pixel_x = bubble_icon_x_offset
 	active_thinking_indicator.pixel_y = bubble_icon_y_offset
 	overlays += active_thinking_indicator
-	addtimer(CALLBACK(src, PROC_REF(remove_thinking_indicator)), 30 SECONDS, TIMER_OVERRIDE|TIMER_UNIQUE|TIMER_STOPPABLE)
 
 /mob/living/remove_thinking_indicator()
 	if(!active_thinking_indicator)
@@ -94,7 +93,6 @@
 	active_typing_indicator.pixel_x = bubble_icon_x_offset
 	active_typing_indicator.pixel_y = bubble_icon_y_offset
 	overlays += active_typing_indicator
-	addtimer(CALLBACK(src, PROC_REF(remove_typing_indicator)), 30 SECONDS, TIMER_OVERRIDE|TIMER_UNIQUE|TIMER_STOPPABLE)
 
 /mob/living/remove_typing_indicator()
 	if(!active_typing_indicator)

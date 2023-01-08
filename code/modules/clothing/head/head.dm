@@ -564,7 +564,6 @@ D
 	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
 	flags_inventory = BLOCKSHARPOBJ
 	flags_inv_hide = HIDEEARS
-	anti_hug = 1
 
 /obj/item/clothing/head/ushanka/attack_self(mob/user)
 	..()
@@ -584,7 +583,6 @@ D
 	desc = "Fuzzy."
 	icon_state = "bearpelt"
 	siemens_coefficient = 2.0
-	anti_hug = 4
 	flags_armor_protection = BODY_FLAG_HEAD|BODY_FLAG_CHEST|BODY_FLAG_ARMS
 	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
 	armor_bullet = CLOTHING_ARMOR_MEDIUMLOW

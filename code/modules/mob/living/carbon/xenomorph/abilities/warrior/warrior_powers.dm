@@ -328,21 +328,22 @@
 		return
 
 	var/datum/behavior_delegate/warrior_knight/knight_delegate = Knight.behavior_delegate
+	knight_delegate.bulwark_enabled = TRUE
 
 	var/img_alpha_mult
 	if(knight_delegate.abilities_enhanced)
-		knight_delegate.clarity_stacks = 2
+		knight_delegate.clarity_stacks = 3
 		img_alpha_mult = ALPHA_SHIELD_FULL_ENHANCED
 		knight_delegate.current_color = knight_delegate.enhanced_color
-		Knight.balloon_alert_to_viewers("*forms an enhanced defensive shell*", "*you form an enhanced defensive shell*", text_color = knight_delegate.current_color)
 	else
-		knight_delegate.clarity_stacks = 1
+		knight_delegate.clarity_stacks = 2
 		knight_delegate.current_color = knight_delegate.un_enhanced_color
 		img_alpha_mult = ALPHA_SHIELD_FULL
-		Knight.balloon_alert_to_viewers("*forms a defensive shell*", "*you form a defensive shell*", text_color = knight_delegate.current_color)
 
 	RegisterSignal(Knight, COMSIG_XENO_BULLET_ACT, PROC_REF(reduce_bullet_damage))
 	RegisterSignal(Knight, list(COMSIG_LIVING_APPLY_EFFECT, COMSIG_LIVING_ADJUST_EFFECT, COMSIG_LIVING_SET_EFFECT), PROC_REF(reduce_stuns))
+	RegisterSignal(Knight, COMSIG_MOB_SHAKE_CAMERA, PROC_REF(resist_screenshake))
+	RegisterSignal(Knight, COMSIG_LIVING_AMMO_KNOCKBACK, PROC_REF(resist_pushback))
 	RegisterSignal(Knight, COMSIG_ITEM_ATTEMPT_ATTACK, PROC_REF(resist_melee))
 	button.icon_state = "template_active"
 	button.color = knight_delegate.current_color
@@ -362,12 +363,14 @@
 
 	var/datum/behavior_delegate/warrior_knight/knight_delegate = zenomorf.behavior_delegate
 
+	var/reduction_mult = 1
 	if(projectiledata["ammo_flags"] & AMMO_DIRECT_HIT)
-		return
+		reduction_mult = direct_hit_penetration_multiplier
+
 	else if(knight_delegate.abilities_enhanced)
-		projectiledata["damage_result"] *= enhanced_damage_reduction
+		projectiledata["damage_result"] *= enhanced_damage_reduction * reduction_mult
 	else
-		projectiledata["damage_result"] *= normal_damage_reduction
+		projectiledata["damage_result"] *= normal_damage_reduction * reduction_mult
 
 /datum/action/xeno_action/onclick/bulwark/proc/reduce_stuns(var/mob/xeno_byproduct_param, var/effect_amount, var/effect_type, var/effect_flags)
 	SIGNAL_HANDLER
@@ -375,16 +378,27 @@
 
 	if(xeno.mutation_type != WARRIOR_KNIGHT)
 		return
+	// Slows and other soft CC are wiped without breaking clarity.
+	if(effect_type in list(SLOW, SUPERSLOW, DAZE))
+		return COMPONENT_CANCEL_EFFECT
 
 	// Effect checks: Needs to be a stun that immobilizes, needs to be above 0 (Won't absorb stun reduction!).
 	if(!(effect_type in list(STUN, WEAKEN, PARALYZE)) || !(effect_amount > 0) || effect_flags & (EFFECT_FLAG_NATURAL))
 		return
+
 	// Clarity check.
 	if(shatter_shield())
 		return COMPONENT_CANCEL_EFFECT
 	else
 		return
 
+/datum/action/xeno_action/onclick/bulwark/proc/resist_screenshake()
+	SIGNAL_HANDLER
+	return COMPONENT_CANCEL_SHAKE
+
+/datum/action/xeno_action/onclick/bulwark/proc/resist_pushback()
+	SIGNAL_HANDLER
+	return COMPONENT_CANCEL_PUSHBACK
 
 /datum/action/xeno_action/onclick/bulwark/proc/resist_melee(var/mob/Knight, var/mob/living/attacker, var/obj/item/hitting_item)
 	SIGNAL_HANDLER
@@ -413,12 +427,12 @@
 	if(knight_delegate.clarity_stacks)
 		playsound(Knight, "ballistic_shield_hit", 25, TRUE)
 		to_chat(Knight, SPAN_XENOWARNING("Your bulwark glows and cracks as you resist an attack. You have [knight_delegate.clarity_stacks] clarity left."))
-		Knight.balloon_alert_to_viewers("*the shell cracks*", "*your shell cracks*", text_color = knight_delegate.current_color)
+		Knight.balloon_alert_to_viewers("*cracked*", text_color = knight_delegate.current_color)
 		Knight.create_bulwark_image(ALPHA_SHIELD_CRACKED, "cracked")
 	else
 		playsound(Knight, "shield_shatter", 25, TRUE)
 		to_chat(Knight, SPAN_XENOWARNING("Your bulwark shatters you resist an attack! You have no clarity left."))
-		Knight.balloon_alert_to_viewers("*the shell shatters*", "*your shell shatters*", text_color = knight_delegate.current_color)
+		Knight.balloon_alert_to_viewers("*shattered*", text_color = knight_delegate.current_color)
 		Knight.create_bulwark_image(ALPHA_SHIELD_SHATTERED, "shattered")
 	return TRUE
 
@@ -429,7 +443,7 @@
 		return
 
 	var/datum/behavior_delegate/warrior_knight/knight_delegate = xeno.behavior_delegate
-
+	knight_delegate.bulwark_enabled = FALSE
 	knight_delegate.clarity_stacks = 0
 
 	button.icon_state = "template"
@@ -437,16 +451,14 @@
 	xeno.remove_head_layer()
 	qdel(current_shield_image)
 
-	UnregisterSignal(xeno, COMSIG_XENO_BULLET_ACT)
-	UnregisterSignal(xeno, list(COMSIG_LIVING_APPLY_EFFECT, COMSIG_LIVING_ADJUST_EFFECT, COMSIG_LIVING_SET_EFFECT))
-	UnregisterSignal(xeno, COMSIG_ITEM_ATTEMPT_ATTACK)
+	UnregisterSignal(xeno, list(COMSIG_LIVING_APPLY_EFFECT, COMSIG_LIVING_ADJUST_EFFECT, COMSIG_LIVING_SET_EFFECT, COMSIG_MOB_SHAKE_CAMERA, COMSIG_ITEM_ATTEMPT_ATTACK, COMSIG_XENO_BULLET_ACT))
 
 	to_chat(xeno, SPAN_XENODANGER("You feel your defensive shell dissipate!"))
 	return
 
 	// this is seriously the only thing i could think of. i hate pounce code!!
 /datum/action/xeno_action/activable/pounce/leap/use_ability(atom/t_atom)
-	pounce_to = t_atom
+	pounce_to = get_turf(t_atom)
 	pounce_from = get_turf(owner)
 	..()
 
@@ -467,7 +479,7 @@
 		//ensure neither are 0 (as that would be a straight line) or identical (as that would be a clean diagonal)
 		if(to_x && from_y && (to_x != from_y) && \
 		//then make sure we're targeting the mob or its turf directly, otherwise we could aim an L-leap colliding with someone diagonally next to us and own them
-		(ismob(pounce_to) || locate(/mob/living) in get_turf(pounce_to)))
+		(locate(/mob/living) in pounce_to))
 			//and now we have a knight leap!
 			knight_delegate.owned = TRUE //followed up on in the next proc
 			knockdown = TRUE
@@ -487,11 +499,11 @@
 		if(knight_delegate.abilities_enhanced)
 			zenomorf.visible_message(SPAN_XENODANGER("The [zenomorf] slams directly onto [L], stunning and throwing them back!"), SPAN_XENODANGER("You slam directly onto [L], stunning and throwing them back!"))
 			L.apply_effect(leap_knock_dur, WEAKEN)
-			L.apply_armoured_damage(get_xeno_damage_slash(L, zenomorf.melee_damage_upper), ARMOR_MELEE, BRUTE)
+			L.apply_armoured_damage(get_xeno_damage_slash(L, zenomorf.melee_damage_upper), ARMOR_MELEE, BRUTE, penetration = leap_bonus_ap)
 			xeno_throw_human(L, zenomorf, zenomorf.dir, 2)
 		else
 			zenomorf.visible_message(SPAN_XENODANGER("The [zenomorf] leaps directly onto [L], throwing them back!"), SPAN_XENODANGER("You leap directly onto [L], throwing them back!"))
-			L.apply_armoured_damage(get_xeno_damage_slash(L, zenomorf.melee_damage_lower), ARMOR_MELEE, BRUTE)
+			L.apply_armoured_damage(get_xeno_damage_slash(L, zenomorf.melee_damage_lower), ARMOR_MELEE, BRUTE, penetration = leap_bonus_ap)
 			xeno_throw_human(L, zenomorf, zenomorf.dir, 1)
 		if(isXeno(L))
 			L.emote("roar")

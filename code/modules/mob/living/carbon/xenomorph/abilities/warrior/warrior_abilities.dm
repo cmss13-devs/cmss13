@@ -103,12 +103,12 @@
 	macro_path = /datum/action/xeno_action/verb/verb_pike
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_1
-	xeno_cooldown = 4 SECONDS
+	xeno_cooldown = 3 SECONDS
 
 	//Config
 
 	/// Basic ability damage.
-	var/pike_damage = 25
+	var/pike_damage = 35
 	/// Reach of the ability in tiles.
 	var/pike_len = 3
 
@@ -120,13 +120,15 @@
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_2
 	plasma_cost = 0
-	xeno_cooldown = 25 SECONDS // effectively 15, starts on activate
+	xeno_cooldown = 13 + 12 SECONDS
 
 	/// Config
 
-	var/shield_duration = 10 SECONDS
-	var/normal_damage_reduction = 0.8
-	var/enhanced_damage_reduction = 0.6
+	var/shield_duration = 12 SECONDS
+	var/normal_damage_reduction = 0.6
+	var/enhanced_damage_reduction = 0.45
+
+	var/direct_hit_penetration_multiplier = 0.5
 
 	var/image/current_shield_image
 
@@ -138,16 +140,16 @@
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_3
 	plasma_cost = 0
-	xeno_cooldown = 7 SECONDS
+	xeno_cooldown = 5 SECONDS
 
 	freeze_self = FALSE
-	distance = 3 //tiles
-	slash = TRUE
-	can_be_shield_blocked = TRUE
+	distance = 4 //tiles
 	knockdown = FALSE
 	knockdown_duration = 0.5 // i'll be real this is jank bypass (more jank)
+	tracks_target = FALSE
 
 	var/leap_knock_dur = 1 //SECONDS - already ran as seconds in proc
+	var/leap_bonus_ap = 10
 
 	var/atom/pounce_to
 	var/atom/pounce_from

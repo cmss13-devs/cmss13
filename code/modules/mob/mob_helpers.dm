@@ -234,7 +234,11 @@ It's fairly easy to fix if dealing with single letters but not so much with comp
 #define PIXELS_PER_STRENGTH_VAL 24
 
 /proc/shake_camera(var/mob/M, var/steps = 1, var/strength = 1, var/time_per_step = 1)
+
 	if(!M?.client || (M.shakecamera > world.time))
+		return
+
+	if(SEND_SIGNAL(M, COMSIG_MOB_SHAKE_CAMERA) & COMPONENT_CANCEL_SHAKE)
 		return
 
 	M.shakecamera = world.time + steps * time_per_step

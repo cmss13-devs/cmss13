@@ -351,6 +351,13 @@
 #define COMSIG_MOB_MOVE_OR_LOOK "mob_move_or_look"
 	#define COMPONENT_OVERRIDE_MOB_MOVE_OR_LOOK (1<<0)
 
+/// from /proc/shake_camera()
+#define COMSIG_MOB_SHAKE_CAMERA "mob_shake_camera"
+	#define COMPONENT_CANCEL_SHAKE (1<<0)
+
+#define COMSIG_MOB_PUSHBACK "mob_pushback"
+	#define COMPONENT_CANCEL_PUSHBACK (1<<0)
+
 #define COMSIG_MOVABLE_TURF_ENTER "movable_turf_enter"
 #define COMSIG_TURF_ENTER "turf_enter"
 	#define COMPONENT_TURF_ALLOW_MOVEMENT (1<<0)
@@ -448,6 +455,10 @@
 /// From /mob/living/Collide(): (atom/A)
 #define COMSIG_LIVING_PRE_COLLIDE "living_pre_collide"
 	#define COMPONENT_LIVING_COLLIDE_HANDLED (1<<0)
+
+/// From /datum/ammo/proc/knockback()
+#define COMSIG_LIVING_AMMO_KNOCKBACK "living_ammo_knockback"
+	#define COMPONENT_CANCEL_KNOCKBACK (1<<0)
 
 /// From /mob/living/carbon/human/MouseDrop_T(atom/dropping, mob/user)
 //this is a jank way to use signals, but you would need to rework the entire proc otherwise

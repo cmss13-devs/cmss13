@@ -108,6 +108,9 @@
 	if(L.mob_size >= MOB_SIZE_BIG)
 		return //Big xenos are not affected.
 
+	if(SEND_SIGNAL(L, COMSIG_LIVING_AMMO_KNOCKBACK) & COMPONENT_CANCEL_KNOCKBACK)
+		return
+
 	shake_camera(L, 3, 4)
 
 	if(isCarbonSizeXeno(L))

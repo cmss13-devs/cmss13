@@ -25,7 +25,6 @@
 		return
 
 	var/mob/living/carbon/Xenomorph/Warrior/Knight = mutator_set.xeno
-	Knight.speed_modifier += XENO_SPEED_SLOWMOD_TIER_5
 	Knight.health_modifier += XENO_HEALTH_MOD_MED
 	Knight.armor_modifier += XENO_ARMOR_MOD_SMALL
 	Knight.explosivearmor_modifier += XENO_EXPLOSIVE_ARMOR_TIER_4
@@ -48,6 +47,9 @@
 
 	/// If the Knight is on weeds, and thus has its abilities enhanced.
 	var/abilities_enhanced = FALSE
+
+	/// If bulwark is on - allows abilities to stay enhanced offweeds.
+	var/bulwark_enabled = FALSE
 
 	/// Clarity stacks, gained with Bulwark.
 	var/clarity_stacks = 0
@@ -102,9 +104,9 @@
 		if(knight_delegate.abilities_enhanced)
 			return
 		knight_delegate.buff()
-	//If neither are true, try to debuff if not already debuffed.
+	//If neither are true, try to debuff if not already debuffed. If bulwark is on, don't debuff - let them stay offweeds for a bit.
 	else
-		if(!knight_delegate.abilities_enhanced)
+		if(!knight_delegate.abilities_enhanced || bulwark_enabled)
 			return
 		knight_delegate.debuff()
 

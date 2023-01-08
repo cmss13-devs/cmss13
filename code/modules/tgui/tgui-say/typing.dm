@@ -73,9 +73,11 @@
 /mob/living/create_thinking_indicator()
 	if(active_thinking_indicator || active_typing_indicator || !thinking_IC || stat != CONSCIOUS )
 		return FALSE
-	active_thinking_indicator = image('icons/mob/effects/talk.dmi', icon_state = "[bubble_icon]3", layer = TYPING_LAYER, pixel_x = bubble_icon_x_offset, pixel_y = bubble_icon_y_offset)
-	active_thinking_indicator.appearance_flags = KEEP_APART
+	active_thinking_indicator = mutable_appearance('icons/mob/effects/talk.dmi', icon_state = "[bubble_icon]3", layer = TYPING_LAYER)
+	active_thinking_indicator.pixel_x = bubble_icon_x_offset
+	active_thinking_indicator.pixel_y = bubble_icon_y_offset
 	overlays += active_thinking_indicator
+	addtimer(CALLBACK(src, PROC_REF(remove_thinking_indicator)), 30 SECONDS, TIMER_OVERRIDE|TIMER_UNIQUE|TIMER_STOPPABLE)
 
 /mob/living/remove_thinking_indicator()
 	if(!active_thinking_indicator)
@@ -88,9 +90,11 @@
 		return FALSE
 	if(!thinking_IC && !override_thinking)
 		return FALSE
-	active_typing_indicator = image('icons/mob/effects/talk.dmi', icon_state = "[bubble_icon]0", layer = TYPING_LAYER, pixel_x = bubble_icon_x_offset, pixel_y = bubble_icon_y_offset)
-	active_thinking_indicator.appearance_flags = KEEP_APART
+	active_typing_indicator = mutable_appearance('icons/mob/effects/talk.dmi', icon_state = "[bubble_icon]0", layer = TYPING_LAYER)
+	active_thinking_indicator.pixel_x = bubble_icon_x_offset
+	active_thinking_indicator.pixel_y = bubble_icon_y_offset
 	overlays += active_typing_indicator
+	addtimer(CALLBACK(src, PROC_REF(remove_typing_indicator)), 30 SECONDS, TIMER_OVERRIDE|TIMER_UNIQUE|TIMER_STOPPABLE)
 
 /mob/living/remove_typing_indicator()
 	if(!active_typing_indicator)
@@ -102,4 +106,3 @@
 	thinking_IC = FALSE
 	remove_thinking_indicator()
 	remove_typing_indicator()
-

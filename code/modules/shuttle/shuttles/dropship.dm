@@ -55,6 +55,32 @@
 /obj/docking_port/mobile/marine_dropship/proc/get_door_data()
 	return door_control.get_data()
 
+/obj/docking_port/mobile/marine_dropship/Initialize(mapload)
+	. = ..()
+	door_control = new()
+	for(var/place in shuttle_areas)
+		for(var/obj/structure/machinery/door/air in place)
+			switch(air.id)
+				if("starboard_door")
+					door_control.add_door(air, "starboard")
+				if("port_door")
+					door_control.add_door(air, "port")
+				if("aft_door")
+					door_control.add_door(air, "aft")
+
+/obj/docking_port/mobile/marine_dropship/Destroy(force)
+	. = ..()
+	qdel(door_control)
+
+/obj/docking_port/mobile/marine_dropship/proc/control_doors(var/action, var/direction, var/force)
+	// its been locked down by the queen
+	if(door_override)
+		return
+	door_control.control_doors(action, direction, force)
+
+/obj/docking_port/mobile/marine_dropship/proc/is_door_locked(var/direction)
+	return door_control.is_door_locked(direction)
+
 /obj/docking_port/mobile/marine_dropship/alamo
 	name = "Alamo"
 	id = DROPSHIP_ALAMO

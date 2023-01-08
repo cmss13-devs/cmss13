@@ -181,6 +181,7 @@
 
 /obj/item/pamphlet/language/monkey
 	name = "scribbled drawings"
+	gender = PLURAL
 	desc = "A piece of paper covered in crude depictions of bananas and various types of primates. Probably drawn by a three-year-old child - or an unusually intelligent marine."
 	trait = /datum/character_trait/language/primitive
 

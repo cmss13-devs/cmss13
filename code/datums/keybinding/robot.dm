@@ -71,7 +71,7 @@
 
 /datum/keybinding/robot/unequip_module
 	hotkey_keys = list("Q")
-	classic_keys = list()
+	classic_keys = list("Unbound")
 	name = "unequip_module"
 	full_name = "Unequip module"
 	description = "Unequips the active module"

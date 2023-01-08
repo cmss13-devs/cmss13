@@ -1,6 +1,7 @@
 // Fulton baloon deployment devices, used to gather and send crates, dead things, and other objective-based items into space for collection.
 
-var/global/list/deployed_fultons = list() // A list of fultons currently airborne.
+/// A list of fultons currently airborne.
+var/global/list/deployed_fultons = list()
 
 /obj/item/stack/fulton
 	name = "fulton recovery device"

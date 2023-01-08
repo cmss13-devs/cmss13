@@ -7,7 +7,8 @@
 	var/paint_type = "green"
 	w_class = SIZE_TINY
 	var/uses = 10
-	var/open = TRUE //for lipstick
+	/// for lipstick
+	var/open = TRUE
 
 //FACEPAINT
 /obj/item/facepaint/green
@@ -121,12 +122,14 @@
 
 /obj/item/facepaint/lipstick/purple
 	name = "purple lipstick"
-	paint_type = "purp_lipstick" //not 'purple' because dream maker farts if the name is too long
+	/// not 'purple' because dream maker farts if the name is too long
+	paint_type = "purp_lipstick"
 	icon_state_open = "lipstick_purple"
 
 /obj/item/facepaint/lipstick/maroon
 	name = "maroon lipstick"
-	paint_type = "marn_lipstick" //not 'maroon' because dream maker farts if the name is too long
+	/// not 'maroon' because dream maker farts if the name is too long
+	paint_type = "marn_lipstick"
 	icon_state_open = "lipstick_maroon"
 
 /obj/item/facepaint/lipstick/jade

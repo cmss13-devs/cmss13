@@ -271,6 +271,8 @@ var/global/list/datum/stack_recipe/cardboard_recipes = list ( \
 		null, \
 		new/datum/stack_recipe("empty box of MREs", /obj/item/ammo_box/magazine/misc/mre/empty), \
 		new/datum/stack_recipe("empty box of M94 Marking Flare Packs", /obj/item/ammo_box/magazine/misc/flares/empty), \
+		new/datum/stack_recipe("empty box of flashlights", /obj/item/ammo_box/magazine/misc/flashlight/empty), \
+		new/datum/stack_recipe("empty box of High-Capacity Power Cells", /obj/item/ammo_box/magazine/misc/power_cell/empty), \
 		null, \
 		new/datum/stack_recipe("empty magazine box (M16)", /obj/item/ammo_box/magazine/M16/empty), \
 		new/datum/stack_recipe("empty magazine box (M16 AP)", /obj/item/ammo_box/magazine/M16/ap/empty), \

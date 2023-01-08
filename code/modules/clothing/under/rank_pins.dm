@@ -1,6 +1,7 @@
 //ranks
 /obj/item/clothing/accessory/ranks
 	name = "rank pins"
+	gender = PLURAL
 	desc = "A set of rank pins, used to denote the paygrade of someone within the military."
 	icon_state = "ranks_enlisted"
 	var/rank = "Private"

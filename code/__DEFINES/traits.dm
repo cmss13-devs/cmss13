@@ -159,6 +159,8 @@
 #define TRAIT_SPOTTER_LAZED "t_spotter_lazed"
 /// If the mob has ear protection. Protects from external ear damage effects. Includes explosions, firing the RPG, screeching DEAFNESS only, and flashbangs.
 #define TRAIT_EAR_PROTECTION "t_ear_protection"
+/// If the mob is Santa. Enough said.
+#define TRAIT_SANTA "t_santa"
 /// If the mob is wearing bimex glasses. Used for badass laser deflection flavor text.
 #define TRAIT_BIMEX "t_bimex"
 
@@ -184,8 +186,14 @@
 // GUN TRAITS
 #define TRAIT_GUN_SILENCED "t_gun_silenced"
 
+// Miscellaneous item traits.
+// Do NOT bloat this category, if needed make a new category (like shoe traits, xeno item traits...)
+
 //If an item with this trait is in an ear slot, no other item with this trait can fit in the other ear slot
 #define TRAIT_ITEM_EAR_EXCLUSIVE "t_item_ear_exclusive"
+
+//This item will force clickdrag to work even if the preference to disable is enabled. (Full-auto items)
+#define TRAIT_OVERRIDE_CLICKDRAG "t_override_clickdrag"
 
 //List of all traits
 GLOBAL_LIST_INIT(mob_traits, list(
@@ -229,3 +237,6 @@ GLOBAL_LIST_INIT(mob_traits, list(
 #define TRAIT_SOURCE_ABILITY(ability) "t_s_ability_[ability]"
 ///Status trait forced by the xeno action charge
 #define TRAIT_SOURCE_XENO_ACTION_CHARGE "t_s_xeno_action_charge"
+
+///Status trait from weapons?? buh
+#define TRAIT_SOURCE_WEAPON "t_s_weapon"

@@ -30,7 +30,7 @@
 	ui = SStgui.try_update_ui(user, src, ui)
 	if (!ui)
 		var/obj/docking_port/mobile/shuttle = SSshuttle.getShuttle(shuttleId)
-		ui = new(user, src, "NavigationShuttle", "[shuttle.name] Flight Computer")
+		ui = new(user, src, "DropshipFlightControl", "[shuttle.name] Flight Computer")
 		ui.open()
 
 /obj/structure/machinery/computer/shuttle/dropship/flight/ui_status(mob/user, datum/ui_state/state)
@@ -50,6 +50,7 @@
 	.["max_flight_duration"] = shuttle.callTime / 10
 	.["max_refuel_duration"] = shuttle.rechargeTime / 10
 	.["max_engine_start_duration"] = shuttle.ignitionTime / 10
+	.["door_data"] = list("port", "starboard", "aft")
 
 /obj/structure/machinery/computer/shuttle/dropship/flight/attack_hand(mob/user)
 	. = ..(user)

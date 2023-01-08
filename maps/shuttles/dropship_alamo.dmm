@@ -248,7 +248,9 @@
 	},
 /area/shuttle/drop1/sulaco)
 "rS" = (
-/obj/structure/machinery/door/airlock/dropship_hatch,
+/obj/structure/machinery/door/airlock/dropship_hatch{
+	id = "port_door"
+	},
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15";
 	tag = "icon-rasputin15"
@@ -469,7 +471,9 @@
 	},
 /area/shuttle/drop1/sulaco)
 "HS" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/ds1,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/ds1{
+	id = "aft_door"
+	},
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15";
 	tag = "icon-rasputin15"
@@ -567,7 +571,8 @@
 /area/shuttle/drop1/sulaco)
 "Pf" = (
 /obj/structure/machinery/door/airlock/dropship_hatch{
-	dir = 8
+	dir = 8;
+	id = "starboard_door"
 	},
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15";

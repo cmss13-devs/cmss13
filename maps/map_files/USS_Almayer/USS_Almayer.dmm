@@ -23770,7 +23770,9 @@
 /turf/open/floor/almayer,
 /area/almayer/hallways/hangar)
 "bFR" = (
-/obj/docking_port/stationary/marine_dropship/almayer_hangar_1,
+/obj/docking_port/stationary/marine_dropship/almayer_hangar_1{
+	dwidth = 1
+	},
 /turf/open/floor/plating,
 /area/almayer/hallways/hangar)
 "bGb" = (
@@ -106923,7 +106925,7 @@ baI
 baI
 baI
 baI
-bFR
+baI
 bGM
 bHB
 iGN
@@ -107126,7 +107128,7 @@ baI
 baI
 baI
 baI
-baI
+bFR
 bGN
 bHB
 xAY

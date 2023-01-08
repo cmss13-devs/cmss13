@@ -4,6 +4,9 @@
 #define LV_624_LZ1 "lv624-lz1"
 #define LV_624_LZ2 "lv624-lz2"
 
+#define DROPSHIP_ALAMO "dropship_alamo"
+#define DROPSHIP_NORMANDY "dropship_normandy"
+
 /obj/docking_port/mobile/marine_dropship
 	width = 11
 	height = 21
@@ -49,15 +52,23 @@
 /obj/docking_port/mobile/marine_dropship/proc/is_door_locked(var/direction)
 	return door_control.is_door_locked(direction)
 
+/obj/docking_port/mobile/marine_dropship/proc/get_door_data()
+	return door_control.get_data()
+
 /obj/docking_port/mobile/marine_dropship/alamo
 	name = "Alamo"
 	id = DROPSHIP_ALAMO
+
+/obj/docking_port/mobile/marine_dropship/normandy
+	name = "Normandy"
+	id = DROPSHIP_NORMANDY
 
 /obj/docking_port/stationary/marine_dropship
 	dir = NORTH
 	width = 11
 	height = 21
 	var/list/landing_lights = list()
+	var/auto_open = FALSE
 
 /obj/docking_port/stationary/marine_dropship/Initialize(mapload)
 	. = ..()
@@ -110,12 +121,19 @@
 /obj/docking_port/stationary/marine_dropship/almayer_hangar_1
 	name = "Almayer Hangar bay 1"
 	id = ALMAYER_DROPSHIP_LZ1
+	auto_open = TRUE
 	roundstart_template = /datum/map_template/shuttle/alamo
 
 /obj/docking_port/stationary/marine_dropship/almayer_hangar_2
 	name = "Almayer Hangar bay 2"
 	id = ALMAYER_DROPSHIP_LZ2
+	auto_open = TRUE
+	roundstart_template = /datum/map_template/shuttle/normandy
 
 /datum/map_template/shuttle/alamo
 	name = "Alamo"
-	shuttle_id = "dropship_alamo"
+	shuttle_id = DROPSHIP_ALAMO
+
+/datum/map_template/shuttle/normandy
+	name = "Normandy"
+	shuttle_id = DROPSHIP_NORMANDY

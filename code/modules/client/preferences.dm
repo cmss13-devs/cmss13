@@ -35,6 +35,9 @@ var/const/MAX_SAVE_SLOTS = 10
 	var/default_slot = 1 //Holder so it doesn't default to slot 1, rather the last one used
 	var/savefile_version = 0
 
+	var/tgui_say = TRUE
+	var/tgui_say_light_mode = FALSE
+
 	//non-preference stuff
 	var/warns = 0
 	var/muted = 0
@@ -527,6 +530,8 @@ var/const/MAX_SAVE_SLOTS = 10
 			dat += "<h2><b><u>Input Settings:</u></b></h2>"
 			dat += "<b>Mode:</b> <a href='?_src_=prefs;preference=hotkeys'><b>[(hotkeys) ? "Hotkeys Mode" : "Send to Chat"]</b></a><br>"
 			dat += "<b>Keybinds:</b> <a href='?_src_=prefs;preference=viewmacros'><b>View Keybinds</b></a><br>"
+			dat += "<br><b>Say Input Style:</b> <a href='?_src_=prefs;preference=inputstyle'><b>[tgui_say ? "Modern (default)" : "Legacy"]</b></a><br>"
+			dat += "<b>Say Input Color:</b> <a href='?_src_=prefs;preference=inputcolor'><b>[tgui_say_light_mode ? "Lightmode" : "Darkmode (default)"]</b></a><br>"
 
 			dat += "<h2><b><u>UI Customization:</u></b></h2>"
 			dat += "<b>Style:</b> <a href='?_src_=prefs;preference=ui'><b>[UI_style]</b></a><br>"
@@ -1679,6 +1684,32 @@ var/const/MAX_SAVE_SLOTS = 10
 					if (!plane_master)
 						return
 					plane_master.backdrop(user?.client.mob)
+
+				if("inputstyle")
+					var/result = tgui_alert(user, "Which input style do you want?", "Input Style", list("Modern", "Legacy"))
+					if(!result)
+						return
+					if(result == "Legacy")
+						tgui_say = FALSE
+						to_chat(user, SPAN_NOTICE("You're now using the old interface."))
+					else
+						tgui_say = TRUE
+						to_chat(user, SPAN_NOTICE("You're now using the new interface."))
+					user?.client.update_special_keybinds()
+					save_preferences()
+
+				if("inputcolor")
+					var/result = tgui_alert(user, "Which input color do you want?", "Input Style", list("Darkmode", "Lightmode"))
+					if(!result)
+						return
+					if(result == "Lightmode")
+						tgui_say_light_mode = TRUE
+						to_chat(user, SPAN_NOTICE("You're now using the say interface whitemode."))
+					else
+						tgui_say_light_mode = FALSE
+						to_chat(user, SPAN_NOTICE("You're now using the say interface darkmode."))
+					user?.client.tgui_say?.load()
+					save_preferences()
 
 				if("save")
 					if(save_cooldown > world.time)

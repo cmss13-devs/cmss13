@@ -254,5 +254,14 @@
 
 	var/datum/click_intercept
 
+
 	///list of weakrefs of recently dropped objects
 	var/list/remembered_dropped_objects = list()
+
+	///the icon currently used for the typing indicator's bubble
+	var/mutable_appearance/active_typing_indicator
+	///the icon currently used for the thinking indicator's bubble
+	var/mutable_appearance/active_thinking_indicator
+	/// User is thinking in character. Used to revert to thinking state after stop_typing
+	var/thinking_IC = FALSE
+

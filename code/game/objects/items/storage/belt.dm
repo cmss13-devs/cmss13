@@ -987,6 +987,11 @@
 	for(var/i = 1 to storage_slots - 1)
 		new /obj/item/ammo_magazine/pistol(src)
 
+/obj/item/storage/belt/gun/m4a3/training/fill_preset_inventory()
+	handle_item_insertion(new /obj/item/weapon/gun/pistol/m4a3/training())
+	for(var/i = 1 to storage_slots - 1)
+		new /obj/item/ammo_magazine/pistol/rubber(src)
+
 /obj/item/storage/belt/gun/m4a3/commander/fill_preset_inventory()
 	handle_item_insertion(new /obj/item/weapon/gun/pistol/m4a3/custom())
 	new /obj/item/ammo_magazine/pistol/ap(src)

@@ -51,6 +51,7 @@
 
 /obj/docking_port/mobile/marine_dropship/alamo
 	name = "Alamo"
+	id = DROPSHIP_ALAMO
 
 /obj/docking_port/stationary/marine_dropship
 	dir = NORTH
@@ -94,6 +95,9 @@
 /obj/docking_port/stationary/marine_dropship/on_departure(obj/docking_port/mobile/departing_shuttle)
 	. = ..()
 	turn_off_landing_lights()
+	if(istype(departing_shuttle, /obj/docking_port/mobile/marine_dropship))
+		var/obj/docking_port/mobile/marine_dropship/dropship = departing_shuttle
+		dropship.control_doors("force-lock-launch", "all", force=TRUE)
 
 /obj/docking_port/stationary/marine_dropship/lv642_lz1
 	name = "Nexus Landing Zone"

@@ -68,7 +68,7 @@
 /area/shuttle/drop1/sulaco)
 "dU" = (
 /obj/structure/machinery/door_control{
-	id = "sh_dropship1";
+	id = "dropship_alamo";
 	name = "Dropship Lockdown";
 	normaldoorcontrol = 3;
 	pixel_y = -19;

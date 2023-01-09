@@ -54509,7 +54509,7 @@
 "kYa" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	dir = 2;
-	id = "OutterShutter";
+	id = "OuterShutter";
 	name = "\improper Saferoom Shutters"
 	},
 /turf/open/floor/almayer{
@@ -69877,7 +69877,7 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic,
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	dir = 2;
-	id = "OutterShutter";
+	id = "OuterShutter";
 	name = "\improper Saferoom Shutters"
 	},
 /turf/open/floor/almayer{

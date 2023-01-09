@@ -303,7 +303,7 @@
 
 /obj/structure/machinery/door_control/airlock/use_button(mob/living/user, var/force = FALSE)
 	if(inoperable())
-		to_chat(user, SPAN_WARNING("[src] doesn't seem to be working."))
+		to_chat(user, SPAN_WARNING("\The [src] doesn't seem to be working."))
 		return
 
 	use_power(5)

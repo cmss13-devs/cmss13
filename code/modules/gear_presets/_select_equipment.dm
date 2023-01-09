@@ -21,6 +21,8 @@
 	var/faction = FACTION_NEUTRAL
 	var/list/faction_group
 	var/origin_override
+	var/minimap_icon
+	var/always_minimap_visible = TRUE
 
 	//Uniform data
 	var/utility_under = null

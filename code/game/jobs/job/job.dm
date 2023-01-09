@@ -34,6 +34,9 @@
 	/// When set to true, SSticker won't call spawn_in_player, instead calling the job's spawn_and_equip proc
 	var/handle_spawn_and_equip = FALSE
 
+	var/minimap_icon
+	var/always_visible = FALSE
+
 /datum/job/New()
 	. = ..()
 

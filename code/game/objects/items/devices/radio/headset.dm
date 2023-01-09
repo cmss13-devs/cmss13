@@ -38,6 +38,11 @@
 	var/hud_type = MOB_HUD_FACTION_USCM
 	var/default_freq
 
+	///The type of minimap this headset gives access to
+	var/datum/action/minimap/minimap_type = /datum/action/minimap/marine
+
+	var/mob/living/carbon/human/wearer = null
+
 /obj/item/device/radio/headset/Initialize()
 	. = ..()
 	keys = list()
@@ -57,6 +62,13 @@
 		for(var/cycled_channel in radiochannels)
 			if(radiochannels[cycled_channel] == frequency)
 				default_freq = cycled_channel
+
+	if(headset_hud_on)
+		add_minimap()
+
+/obj/item/device/radio/headset/Destroy()
+	wearer = null
+	return ..()
 
 /obj/item/device/radio/headset/proc/set_volume_setting()
 	set name = "Set Headset Volume"
@@ -221,6 +233,7 @@
 			COMSIG_LIVING_REJUVENATED,
 			COMSIG_HUMAN_REVIVED,
 		), PROC_REF(turn_on))
+		wearer = user
 		RegisterSignal(user, COMSIG_MOB_LOGIN, PROC_REF(add_hud_tracker))
 		if(headset_hud_on)
 			var/datum/mob_hud/H = huds[hud_type]
@@ -230,6 +243,8 @@
 				user.show_hud_tracker()
 			if(misc_tracking)
 				SStracking.start_misc_tracking(user)
+			if(headset_hud_on)
+				add_minimap()
 
 /obj/item/device/radio/headset/dropped(mob/living/carbon/human/user)
 	UnregisterSignal(user, list(
@@ -245,6 +260,7 @@
 			user.hide_hud_tracker()
 		if(misc_tracking)
 			SStracking.stop_misc_tracking(user)
+	user = null
 	..()
 
 /obj/item/device/radio/headset/proc/add_hud_tracker(var/mob/living/carbon/human/user)
@@ -275,12 +291,14 @@
 					user.show_hud_tracker()
 				if(misc_tracking)
 					SStracking.start_misc_tracking(user)
+				add_minimap()
 			else
 				H.remove_hud_from(usr)
 				if(user.hud_used?.locate_leader)
 					user.hide_hud_tracker()
 				if(misc_tracking)
 					SStracking.stop_misc_tracking(user)
+				remove_minimap()
 	to_chat(usr, SPAN_NOTICE("You toggle [src]'s headset HUD [headset_hud_on ? "on":"off"]."))
 	playsound(src,'sound/machines/click.ogg', 20, 1)
 
@@ -300,6 +318,72 @@
 		return
 	to_chat(user, SPAN_NOTICE("You set your headset's tracker to point to <b>[new_track]</b>."))
 	locate_setting = tracking_options[new_track]
+
+/obj/item/device/radio/headset/proc/add_minimap()
+	remove_minimap()
+	var/datum/action/minimap/mini = new minimap_type
+	mini.give_to(wearer)
+	INVOKE_NEXT_TICK(src, .proc/update_minimap_icon, wearer) //Mobs are spawned inside nullspace sometimes so this is to avoid that hijinks
+
+/obj/item/device/radio/headset/proc/update_minimap_icon()
+	SIGNAL_HANDLER
+	SSminimaps.remove_marker(wearer)
+	if(!wearer.assigned_equipment_preset || !wearer.assigned_equipment_preset)
+		return
+	var/marker_flags = initial(minimap_type.marker_flags)
+	if(wearer.assigned_equipment_preset.always_minimap_visible == TRUE || wearer.stat == DEAD) //We show to all marines if we have this flag, separated by faction
+		if(hud_type == MOB_HUD_FACTION_USCM)
+			marker_flags = MINIMAP_FLAG_MARINE
+		else if(hud_type == MOB_HUD_FACTION_UPP)
+			marker_flags = MINIMAP_FLAG_MARINE_REBEL
+		else if(hud_type == MOB_HUD_FACTION_PMC)
+			marker_flags = MINIMAP_FLAG_MARINE_SOM
+	if(wearer.undefibbable)
+		SSminimaps.add_marker(wearer, wearer.z, marker_flags, "undefibbable")
+		return
+	if(wearer.stat == DEAD)
+		SSminimaps.add_marker(wearer, wearer.z, marker_flags, "defibbable")
+		return
+	if(wearer.assigned_squad)
+		SSminimaps.add_marker(wearer, wearer.z, marker_flags, lowertext(wearer.assigned_squad.name)+"_"+wearer.assigned_equipment_preset.minimap_icon)
+		return
+	SSminimaps.add_marker(wearer, wearer.z, marker_flags, wearer.assigned_equipment_preset.minimap_icon)
+
+///Change the minimap icon to a dead icon
+/obj/item/device/radio/headset/proc/set_dead_on_minimap()
+	SIGNAL_HANDLER
+	SSminimaps.remove_marker(wearer)
+	if(!wearer.assigned_equipment_preset || !wearer.assigned_equipment_preset.minimap_icon)
+		return
+	var/marker_flags
+	if(hud_type == MOB_HUD_FACTION_USCM)
+		marker_flags = MINIMAP_FLAG_MARINE
+	else if(hud_type == MOB_HUD_FACTION_UPP)
+		marker_flags = MINIMAP_FLAG_MARINE_REBEL
+	else if(hud_type == MOB_HUD_FACTION_PMC)
+		marker_flags = MINIMAP_FLAG_MARINE_SOM
+	SSminimaps.add_marker(wearer, wearer.z, marker_flags, "defibbable")
+
+///Change the minimap icon to a undefibbable icon
+/obj/item/device/radio/headset/proc/set_undefibbable_on_minimap(mob/living/carbon/human/wearer)
+	SIGNAL_HANDLER
+	SSminimaps.remove_marker(wearer)
+	if(!wearer.assigned_equipment_preset || !wearer.assigned_equipment_preset.minimap_icon)
+		return
+	var/marker_flags
+	if(hud_type == MOB_HUD_FACTION_USCM)
+		marker_flags = MINIMAP_FLAG_MARINE
+	else if(hud_type == MOB_HUD_FACTION_UPP)
+		marker_flags = MINIMAP_FLAG_MARINE_REBEL
+	else if(hud_type == MOB_HUD_FACTION_PMC)
+		marker_flags = MINIMAP_FLAG_MARINE_SOM
+	SSminimaps.add_marker(wearer, wearer.z, marker_flags, "undefibbable")
+
+/obj/item/device/radio/headset/proc/remove_minimap(mob/living/carbon/human/wearer)
+	SSminimaps.remove_marker(wearer)
+	for(var/datum/action/action as anything in wearer.actions)
+		if(istype(action, /datum/action/item_action/minimap))
+			action.remove_from(wearer)
 
 /obj/item/device/radio/headset/binary
 	initial_keys = list(/obj/item/device/encryptionkey/binary)

@@ -81,7 +81,7 @@ const GeneralInfo = (props, context) => {
               {automatic ? (
                 <img src={resolveAsset('auto.png')} />
               ) : (
-                <img src={resolveAsset('disabled_auto.png')} />
+                <img src={resolveAsset('disabled_automatic.png')} />
               )}
             </Flex.Item>
           </Flex>
@@ -139,9 +139,9 @@ const Scatter = (props, context) => {
       <ProgressBar value={scatter / scatter_max} ranges={GreedRedRange}>
         Wielded scatter: {scatter} / {scatter_max}
       </ProgressBar>
-      <Box height="5px" />
       {!two_handed_only ? (
         <Fragment>
+          <Box height="5px" />
           <ProgressBar
             value={unwielded_scatter / scatter_max}
             ranges={GreedRedRange}>
@@ -193,7 +193,9 @@ const AmmoInfo = (props, context) => {
   const { data } = useBackend(context);
   const { ammo_name } = data;
   return (
-    <Section title={'Ammo Info (' + ammo_name + ')'}>
+    <Section title="Ammo Info">
+      <Box textAlign="center">Loaded ammo: {ammo_name}</Box>
+      <Box height="5px" />
       <Damage />
       <Accuracy />
       <Range />
@@ -269,15 +271,15 @@ const Range = (props, context) => {
 
 const ArmourPen = (props, context) => {
   const { data } = useBackend(context);
-  const { penetration, penetration_max, punch, punch_max } = data;
+  const { penetration, penetration_max, armor_punch, punch_max } = data;
   return (
     <Fragment>
-      <ProgressBar value={penetration / penetration_max} ranges={GreedRedRange}>
+      <ProgressBar value={penetration / penetration_max} ranges={RedGreenRange}>
         Armour penetration: {penetration} / {penetration_max}
       </ProgressBar>
       <Box height="5px" />
-      <ProgressBar value={punch / punch_max} ranges={GreedRedRange}>
-        Armour punch: {punch} / {punch_max}
+      <ProgressBar value={armor_punch / punch_max} ranges={RedGreenRange}>
+        Armour punch: {armor_punch} / {punch_max}
       </ProgressBar>
     </Fragment>
   );

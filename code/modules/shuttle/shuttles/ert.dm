@@ -177,6 +177,12 @@
 	height = 13
 	var/is_external = FALSE
 
+/obj/docking_port/stationary/emergency_response/on_arrival(obj/docking_port/mobile/arriving_shuttle)
+	. = ..()
+	if(istype(arriving_shuttle, /obj/docking_port/mobile/emergency_response))
+		var/obj/docking_port/mobile/emergency_response/ert = arriving_shuttle
+		ert.control_doors("unlock", force = FALSE)
+
 /obj/docking_port/stationary/emergency_response/port1
 	name = "Almayer starboard landing pad"
 	dir = NORTH

@@ -36,7 +36,6 @@
 
 /datum/skill/firearms
 	skill_name = SKILL_FIREARMS
-	readable_skill_name = SKILL_FIREARMS
 	skill_level = SKILL_FIREARMS_DEFAULT
 	max_skill_level = SKILL_FIREARMS_MAX
 
@@ -48,25 +47,21 @@
 
 /datum/skill/endurance
 	skill_name = SKILL_ENDURANCE
-	readable_skill_name = SKILL_ENDURANCE
 	skill_level = SKILL_ENDURANCE_WEAK
 	max_skill_level = SKILL_ENDURANCE_MAX
 
 /datum/skill/engineer
 	skill_name = SKILL_ENGINEER
-	readable_skill_name = SKILL_ENGINEER
 	skill_level = SKILL_ENGINEER_DEFAULT
 	max_skill_level = SKILL_ENGINEER_MAX
 
 /datum/skill/construction
 	skill_name = SKILL_CONSTRUCTION
-	readable_skill_name = SKILL_CONSTRUCTION
 	skill_level = SKILL_CONSTRUCTION_DEFAULT
 	max_skill_level = SKILL_CONSTRUCTION_MAX
 
 /datum/skill/leadership
 	skill_name = SKILL_LEADERSHIP
-	readable_skill_name = SKILL_LEADERSHIP
 	skill_level = SKILL_LEAD_NOVICE
 	max_skill_level = SKILL_LEAD_MAX
 
@@ -86,13 +81,11 @@
 
 /datum/skill/medical
 	skill_name = SKILL_MEDICAL
-	readable_skill_name = SKILL_MEDICAL
 	skill_level = SKILL_MEDICAL_DEFAULT
 	max_skill_level = SKILL_MEDICAL_MAX
 
 /datum/skill/surgery
 	skill_name = SKILL_SURGERY
-	readable_skill_name = SKILL_SURGERY
 	skill_level = SKILL_SURGERY_DEFAULT
 	max_skill_level = SKILL_SURGERY_MAX
 
@@ -117,7 +110,6 @@
 
 /datum/skill/research
 	skill_name = SKILL_RESEARCH
-	readable_skill_name = SKILL_RESEARCH
 	skill_level = SKILL_RESEARCH_DEFAULT
 	max_skill_level = SKILL_RESEARCH_MAX
 
@@ -129,25 +121,21 @@
 
 /datum/skill/pilot
 	skill_name = SKILL_PILOT
-	readable_skill_name = SKILL_PILOT
 	skill_level = SKILL_PILOT_DEFAULT
 	max_skill_level = SKILL_PILOT_MAX
 
 /datum/skill/police
 	skill_name = SKILL_POLICE
-	readable_skill_name = SKILL_POLICE
 	skill_level = SKILL_POLICE_DEFAULT
 	max_skill_level = SKILL_POLICE_MAX
 
 /datum/skill/powerloader
 	skill_name = SKILL_POWERLOADER
-	readable_skill_name = SKILL_POWERLOADER
 	skill_level = SKILL_POWERLOADER_DEFAULT
 	max_skill_level = SKILL_POWERLOADER_MAX
 
 /datum/skill/vehicles
 	skill_name = SKILL_VEHICLE
-	readable_skill_name = SKILL_VEHICLE
 	skill_level = SKILL_VEHICLE_DEFAULT
 	max_skill_level = SKILL_VEHICLE_MAX
 
@@ -159,19 +147,16 @@
 
 /datum/skill/execution
 	skill_name = SKILL_EXECUTION
-	readable_skill_name = SKILL_EXECUTION
 	skill_level = SKILL_EXECUTION_DEFAULT
 	max_skill_level = SKILL_EXECUTION_MAX
 
 /datum/skill/intel
 	skill_name = SKILL_INTEL
-	readable_skill_name = SKILL_INTEL
 	skill_level = SKILL_INTEL_NOVICE
 	max_skill_level = SKILL_INTEL_MAX
 
 /datum/skill/domestic
 	skill_name = SKILL_DOMESTIC
-	readable_skill_name = SKILL_DOMESTIC
 	skill_level = SKILL_DOMESTIC_NONE
 	max_skill_level = SKILL_DOMESTIC_MAX
 

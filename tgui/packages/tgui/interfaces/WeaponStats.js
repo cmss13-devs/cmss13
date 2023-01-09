@@ -1,5 +1,6 @@
 import { Fragment } from 'inferno';
 import { map } from 'common/collections';
+import { resolveAsset } from '../assets';
 import { useBackend } from '../backend';
 import { ProgressBar, Section, Box, Flex, Table, Divider } from '../components';
 import { Window } from '../layouts';
@@ -21,10 +22,15 @@ export const WeaponStats = (props, context) => {
   const { has_ammo } = data;
 
   return (
-    <Window width={has_ammo ? 600 : 300} height={600}>
+    <Window width={has_ammo ? 600 : 300} height={has_ammo ? 500 : 400}>
       <Window.Content>
-        <DamageTable />
-        <Divider />
+        <GeneralInfo />
+        {has_ammo ? (
+          <Fragment>
+            <DamageTable />
+            <Divider />
+          </Fragment>
+        ) : null}
         <Flex direction="row">
           <Flex.Item grow>
             <WeaponInfo />
@@ -37,6 +43,51 @@ export const WeaponStats = (props, context) => {
         </Flex>
       </Window.Content>
     </Window>
+  );
+};
+
+const GeneralInfo = (props, context) => {
+  const { data } = useBackend(context);
+  const { name, desc, automatic, burst_amount, two_handed_only, auto_only } =
+    data;
+  return (
+    <Section>
+      <Flex direction="column">
+        <Flex.Item>
+          <Box textAlign="center" bold>
+            {name}
+          </Box>
+        </Flex.Item>
+        <Flex.Item>
+          <Box textAlign="center">{desc}</Box>
+        </Flex.Item>
+        <Flex.Item align="center">
+          <Flex direction="row">
+            <Flex.Item>
+              {!auto_only ? (
+                <img src={resolveAsset('single.png')} />
+              ) : (
+                <img src={resolveAsset('disabled_single.png')} />
+              )}
+            </Flex.Item>
+            <Flex.Item>
+              {!auto_only && burst_amount > 1 ? (
+                <img src={resolveAsset('burst.png')} />
+              ) : (
+                <img src={resolveAsset('disabled_burst.png')} />
+              )}
+            </Flex.Item>
+            <Flex.Item>
+              {automatic ? (
+                <img src={resolveAsset('auto.png')} />
+              ) : (
+                <img src={resolveAsset('disabled_auto.png')} />
+              )}
+            </Flex.Item>
+          </Flex>
+        </Flex.Item>
+      </Flex>
+    </Section>
   );
 };
 
@@ -239,6 +290,7 @@ const DamageTable = (props, context) => {
     damage_armor_profile_xeno,
     damage_armor_profile_armorbreak,
     damage_armor_profile_headers,
+    glob_armourbreak,
   } = data;
   return (
     <Section title="Damage table">
@@ -265,6 +317,14 @@ const DamageTable = (props, context) => {
             damage_armor_profile_marine
           )}
         </Table.Row>
+        {!glob_armourbreak ? (
+          <Table.Row>
+            <Table.Cell textAlign="left">Armor break</Table.Cell>
+            {map((entry, i) => <Table.Cell key={i}>{entry}</Table.Cell>)(
+              damage_armor_profile_armorbreak
+            )}
+          </Table.Row>
+        ) : null}
       </Table>
     </Section>
   );

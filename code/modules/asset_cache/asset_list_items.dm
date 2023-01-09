@@ -347,3 +347,13 @@
 	assets = list(
 		"ghost.png" = 'html/images/ghost.png'
 	)
+
+/datum/asset/simple/firemodes
+	assets = list(
+		"auto.png" = 'html/images/auto.png',
+		"disabled_auto.png" = 'html/images/disabled_auto.png',
+		"burst.png" = 'html/images/burst.png',
+		"disabled_burst.png" = 'html/images/disabled_burst.png',
+		"single.png" = 'html/images/single.png',
+		"disabled_single.png" = 'html/images/disabled_single.png',
+	)

@@ -543,7 +543,7 @@
 		ui.open()
 
 /obj/item/weapon/gun/ui_state(mob/user)
-	return GLOB.always_state
+	return GLOB.always_state // can't interact why should I care
 
 /obj/item/weapon/gun/ui_data(mob/user)
 	var/list/data = list()
@@ -602,10 +602,11 @@
 			damage_armor_profile_headers.Add(i)
 			damage_armor_profile_marine.Add(round(armor_damage_reduction(GLOB.marine_ranged_stats, damage, i, penetration)))
 			damage_armor_profile_xeno.Add(round(armor_damage_reduction(GLOB.xeno_ranged_stats, damage, i, penetration)))
-			if(i != 0)
-				damage_armor_profile_armorbreak.Add("[round(armor_break_calculation(GLOB.xeno_ranged_stats, damage, i, penetration, in_ammo.pen_armor_punch, armor_punch)/i)]%")
-			else
-				damage_armor_profile_armorbreak.Add("N/A")
+			if(!GLOB.xeno_general.armor_ignore_integrity)
+				if(i != 0)
+					damage_armor_profile_armorbreak.Add("[round(armor_break_calculation(GLOB.xeno_ranged_stats, damage, i, penetration, in_ammo.pen_armor_punch, armor_punch)/i)]%")
+				else
+					damage_armor_profile_armorbreak.Add("N/A")
 
 	var/rpm = max(fire_delay, 1)
 	var/burst_rpm = max((fire_delay * 1.5 + (burst_amount - 1) * burst_delay)/max(burst_amount, 1), 0.0001)
@@ -617,7 +618,6 @@
 	data["two_handed_only"] = (flags_gun_features & GUN_WIELDED_FIRING_ONLY)
 	data["recoil"] = max(gun_recoil, 0.1)
 	data["unwielded_recoil"] = max(recoil_unwielded, 0.1)
-	data["automatic"] = (flags_gun_features & GUN_HAS_FULL_AUTO)
 	data["firerate"] = round(1 MINUTES / rpm) // 3 minutes so that the values look greater than they actually are
 	data["burst_firerate"] = round(1 MINUTES / burst_rpm)
 	data["firerate_second"] = round(1 SECONDS / rpm, 0.01)
@@ -664,8 +664,15 @@
 	data["falloff_max"] = DAMAGE_FALLOFF_TIER_1
 	data["penetration_max"] = ARMOR_PENETRATION_TIER_10
 	data["punch_max"] = 5
+	data["glob_armourbreak"] = GLOB.xeno_general.armor_ignore_integrity
+	data["automatic"] = flags_gun_features & GUN_HAS_FULL_AUTO
+	data["auto_only"] = flags_gun_features & GUN_FULL_AUTO_ONLY
 
 	return data
+
+/datum/orbit_menu/ui_assets(mob/user)
+	. = ..() || list()
+	. += get_asset_datum(/datum/asset/simple/firemodes)
 
 // END TGUI \\
 

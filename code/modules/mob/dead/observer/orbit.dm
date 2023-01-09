@@ -68,6 +68,7 @@
 	var/list/misc = list()
 	var/list/npcs = list()
 	var/list/vehicles = list()
+	var/list/escaped = list()
 
 	var/is_admin = check_other_rights(user.client, R_ADMIN, FALSE)
 	var/list/pois = getpois(skip_mindless = !is_admin, specify_dead_role = FALSE)
@@ -121,7 +122,9 @@
 				serialized["job"] = id_card?.assignment ? id_card.assignment : human.job
 				serialized["nickname"] = human.real_name
 
-				if(isSynth(human) && !isInfiltratorSynthetic(human))
+				if(SSticker.mode.is_in_endgame == TRUE && !is_mainship_level(M.z))
+					escaped += list(serialized)
+				else if(isSynth(human) && !isInfiltratorSynthetic(human))
 					synthetics += list(serialized)
 				else if(isYautja(human))
 					predators += list(serialized)
@@ -152,6 +155,7 @@
 	data["misc"] = misc
 	data["npcs"] = npcs
 	data["vehicles"] = vehicles
+	data["escaped"] = escaped
 
 	return data
 

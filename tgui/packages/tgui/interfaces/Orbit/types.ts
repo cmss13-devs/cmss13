@@ -14,6 +14,7 @@ export type OrbitData = {
   misc: Observable[];
   npcs: Observable[];
   vehicles: Observable[];
+  escaped: Observable[];
 };
 
 export type Observable = {

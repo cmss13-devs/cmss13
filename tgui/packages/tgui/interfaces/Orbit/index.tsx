@@ -2,7 +2,7 @@ import { filter, sortBy } from 'common/collections';
 import { flow } from 'common/fp';
 import { capitalizeFirst } from 'common/string';
 import { useBackend, useLocalState } from 'tgui/backend';
-import { Button, Collapsible, Icon, Input, LabeledList, NoticeBox, Section, Stack } from 'tgui/components';
+import { Button, Collapsible, Icon, Input, LabeledList, Section, Stack } from 'tgui/components';
 import { Window } from 'tgui/layouts';
 import { getDisplayColor, getDisplayName, isJobOrNameMatch } from './helpers';
 import type { Observable, OrbitData } from './types';
@@ -111,21 +111,27 @@ const ObservableContent = (props, context) => {
     misc = [],
     npcs = [],
     vehicles = [],
+    escaped = [],
   } = data;
 
   return (
     <Stack vertical>
       <ObservableSection color="blue" section={marines} title="Marines" />
       <ObservableSection color="teal" section={humans} title="Humans" />
-      <ObservableSection color="violet" section={xenos} title="Xenomorphs" />
+      <ObservableSection color="xeno" section={xenos} title="Xenomorphs" />
       <ObservableSection color="good" section={survivors} title="Survivors" />
       <ObservableSection
         color="average"
         section={ert_members}
         title="ERT Members"
       />
-      <ObservableSection color="grey" section={synthetics} title="Synthetics" />
+      <ObservableSection
+        color="light-grey"
+        section={synthetics}
+        title="Synthetics"
+      />
       <ObservableSection color="green" section={predators} title="Predators" />
+      <ObservableSection color="olive" section={escaped} title="Escaped" />
       <ObservableSection section={vehicles} title="Vehicles" />
       <ObservableSection section={dead} title="Dead" />
       <ObservableSection section={ghosts} title="Ghosts" />
@@ -216,20 +222,15 @@ const ObservableTooltip = (props: { item: Observable }) => {
   const displayHealth = !!health && health >= 0 ? `${health}%` : 'Critical';
 
   return (
-    <>
-      <NoticeBox textAlign="center" nowrap>
-        Last Known Data
-      </NoticeBox>
-      <LabeledList>
-        {!!full_name && (
-          <LabeledList.Item label="Full Name">{full_name}</LabeledList.Item>
-        )}
-        {!!caste && <LabeledList.Item label="Caste">{caste}</LabeledList.Item>}
-        {!!job && <LabeledList.Item label="Job">{job}</LabeledList.Item>}
-        {!!health && (
-          <LabeledList.Item label="Health">{displayHealth}</LabeledList.Item>
-        )}
-      </LabeledList>
-    </>
+    <LabeledList>
+      {!!full_name && (
+        <LabeledList.Item label="Full Name">{full_name}</LabeledList.Item>
+      )}
+      {!!caste && <LabeledList.Item label="Caste">{caste}</LabeledList.Item>}
+      {!!job && <LabeledList.Item label="Job">{job}</LabeledList.Item>}
+      {!!health && (
+        <LabeledList.Item label="Health">{displayHealth}</LabeledList.Item>
+      )}
+    </LabeledList>
   );
 };

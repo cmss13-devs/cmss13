@@ -148,16 +148,10 @@
 	var/list/shuttle_map = list()
 	for(var/obj/docking_port/mobile/emergency_response/ert_shuttles in SSshuttle.mobile)
 		shuttle_map[ert_shuttles.name] = ert_shuttles.id
-	var/tag = tgui_input_list(usr, "Which ERT shuttle should be force launched?", "Select an ERT Shuttle:", shuttle_map))
-	if(!tag) return
+	var/tag = tgui_input_list(usr, "Which ERT shuttle should be force launched?", "Select an ERT Shuttle:", shuttle_map)
+	if(!tag)
+		return
 
-	var/list/shuttle_map = list(
-		"Response Shuttle" = MOBILE_SHUTTLE_ID_ERT1,
-		"PMC Shuttle" = MOBILE_SHUTTLE_ID_ERT2,
-		"UPP Shuttle" = MOBILE_SHUTTLE_ID_ERT3,
-		"Mini Shuttle" = MOBILE_SHUTTLE_ID_ERT_SMALL,
-		"Boarding Shuttle" = MOBILE_SHUTTLE_ID_ERT_BIG
-	)
 	var/shuttleId = shuttle_map[tag]
 	var/list/docks = SSshuttle.stationary
 	var/list/targets = list()

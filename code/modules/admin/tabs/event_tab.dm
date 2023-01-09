@@ -164,13 +164,15 @@
 			target_names +=  list(dock.name)
 	var/dock_name = tgui_input_list(usr, "Where on the [MAIN_SHIP_NAME] should the shuttle dock?", "Select a docking zone:", target_names)
 	var/launched = FALSE
+	if(!dock_name)
+		return
 	for(var/obj/docking_port/stationary/emergency_response/dock as anything in targets)
 		if(dock.name == dock_name)
 			var/obj/docking_port/stationary/target = SSshuttle.getDock(dock.id)
 			ert.request(target)
 			launched=TRUE
 	if(!launched)
-		message_staff("Warning: Unable to launch this Distress shuttle at this moment. Aborting.")
+		to_chat(usr, SPAN_WARNING("Unable to launch this Distress shuttle at this moment. Aborting."))
 		return
 
 	message_staff("[key_name_admin(usr)] force launched a distress shuttle ([tag])")

@@ -1,0 +1,4 @@
+author: "theflyingflail"
+delete-after: True
+changes:
+  - bugfix: "fixed broken spawner on big red nightmare insert"

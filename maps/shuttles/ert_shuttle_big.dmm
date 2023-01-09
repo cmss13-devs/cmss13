@@ -796,8 +796,8 @@
 /area/shuttle/ert)
 "Qb" = (
 /obj/docking_port/mobile/emergency_response/big,
-/turf/template_noop,
-/area/template_noop)
+/turf/closed/wall/almayer/white/hull,
+/area/shuttle/ert)
 "Qr" = (
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -1138,7 +1138,7 @@ Tp
 Tp
 Tp
 Tp
-Qb
+Tp
 "}
 (2,1,1) = {"
 Tp
@@ -1386,7 +1386,7 @@ NB
 rv
 rv
 YN
-PE
+Qb
 "}
 (10,1,1) = {"
 zZ

@@ -42,7 +42,7 @@
 	if(external_only)
 		door_list = external_doors
 
-	for(var/obj/structure/machinery/door/door as anything in door_list)
+	for(var/obj/structure/machinery/door/airlock/door in door_list)
 		var/is_external = door.borders_space()
 		// do not allow the user to normally control external doors
 		if(!force && is_external)

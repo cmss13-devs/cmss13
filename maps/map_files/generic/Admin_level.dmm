@@ -844,10 +844,6 @@
 "kx" = (
 /turf/closed/wall/indestructible/splashscreen,
 /area/start)
-"mB" = (
-/obj/docking_port/stationary/emergency_response/idle_port5,
-/turf/open/floor/plating,
-/area/adminlevel/ert_station)
 "mX" = (
 /obj/docking_port/stationary/lifeboat_dock/admin{
 	id = "admin-lifeboat1";
@@ -1982,6 +1978,12 @@
 "Ji" = (
 /turf/open/space/transit/east/shuttlespace_ew13,
 /area/space)
+"Jl" = (
+/obj/docking_port/stationary/emergency_response/idle_port5{
+	dwidth = 8
+	},
+/turf/open/floor/plating,
+/area/adminlevel/ert_station)
 "Js" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
@@ -7629,7 +7631,6 @@ aa
 wW
 KW
 FB
-mB
 FB
 FB
 FB
@@ -7638,6 +7639,7 @@ FB
 FB
 FB
 FB
+Jl
 FB
 FB
 FB

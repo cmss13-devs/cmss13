@@ -13236,6 +13236,12 @@
 	tag = "icon-wall9"
 	},
 /area/almayer/evacuation/pod8)
+"aLE" = (
+/obj/docking_port/stationary/emergency_response/external/hangar_starboard{
+	dwidth = 8
+	},
+/turf/open/space,
+/area/space)
 "aLF" = (
 /obj/structure/largecrate/random/barrel/white,
 /turf/open/floor/almayer{
@@ -28773,6 +28779,12 @@
 	},
 /turf/open/floor/plating,
 /area/almayer/squads/bravo)
+"bTg" = (
+/obj/docking_port/stationary/emergency_response/external/hangar_port{
+	dwidth = 8
+	},
+/turf/open/space,
+/area/space)
 "bTh" = (
 /obj/structure/disposalpipe/segment,
 /obj/effect/landmark/shuttle_loc/marine_crs/dropship,
@@ -51314,10 +51326,6 @@
 	tag = "icon-sterile_green_side (NORTH)"
 	},
 /area/almayer/shipboard/brig/surgery)
-"jAK" = (
-/obj/docking_port/stationary/emergency_response/external/hangar_starboard,
-/turf/open/space,
-/area/space)
 "jBy" = (
 /obj/structure/machinery/light{
 	dir = 4;
@@ -72349,10 +72357,6 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/command/lifeboat)
-"sLA" = (
-/obj/docking_port/stationary/emergency_response/external/hangar_port,
-/turf/open/space,
-/area/space)
 "sMs" = (
 /obj/structure/machinery/door/airlock/almayer/maint/reinforced{
 	dir = 1
@@ -99743,7 +99747,6 @@ aaa
 aaa
 aaa
 aaa
-jAK
 aaa
 aaa
 aaa
@@ -99751,6 +99754,7 @@ aaa
 aaa
 aaa
 aaa
+aLE
 aaa
 aaa
 aaa
@@ -99807,7 +99811,6 @@ aag
 ajZ
 aaa
 aaa
-sLA
 aaa
 aaa
 aaa
@@ -99816,6 +99819,7 @@ aaa
 aaa
 aaa
 aaa
+bTg
 aaa
 aaa
 aaa

@@ -49581,7 +49581,7 @@
 	dir = 8
 	},
 /obj/structure/bed/chair{
-	dir = 3
+	dir = 16
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";

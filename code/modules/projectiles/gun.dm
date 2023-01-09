@@ -610,13 +610,26 @@
 	var/rpm = max(fire_delay, 1)
 	var/burst_rpm = max((fire_delay * 1.5 + (burst_amount - 1) * burst_delay)/max(burst_amount, 1), 0.0001)
 
+	// weapon info
+
 	data["name"] = name
 	data["desc"] = desc
 	data["two_handed_only"] = (flags_gun_features & GUN_WIELDED_FIRING_ONLY)
 	data["recoil"] = max(gun_recoil, 0.1)
 	data["unwielded_recoil"] = max(recoil_unwielded, 0.1)
-	data["has_ammo"] = has_ammo
 	data["automatic"] = (flags_gun_features & GUN_HAS_FULL_AUTO)
+	data["firerate"] = round(1 MINUTES / rpm) // 3 minutes so that the values look greater than they actually are
+	data["burst_firerate"] = round(1 MINUTES / burst_rpm)
+	data["firerate_second"] = round(1 SECONDS / rpm, 0.01)
+	data["burst_firerate_second"] = round(1 SECONDS / burst_rpm, 0.01)
+	data["scatter"] = max(0.1, scatter + src.scatter)
+	data["unwielded_scatter"] = max(0.1, scatter + scatter_unwielded)
+	data["burst_scatter"] = src.burst_scatter_mult
+	data["burst_amount"] = burst_amount
+
+	// ammo info
+
+	data["has_ammo"] = has_ammo
 	data["ammo_name"] = ammo_name
 	data["damage"] = damage
 	data["falloff"] = falloff
@@ -627,14 +640,21 @@
 	data["unwielded_accuracy"] = accuracy * accuracy_mult_unwielded
 	data["min_accuracy"] = min_accuracy
 	data["max_range"] = max_range
-	data["scatter"] = max(0.1, scatter + src.scatter)
-	data["unwielded_scatter"] = max(0.1, scatter + scatter_unwielded)
-	data["burst_scatter"] = src.burst_scatter_mult
-	data["burst_amount"] = burst_amount
-	data["firerate"] = round(1 MINUTES / rpm) // 3 minutes so that the values look greater than they actually are
-	data["burst_firerate"] = round(1 MINUTES / burst_rpm)
-	data["firerate_second"] = round(1 SECONDS / rpm, 0.01)
-	data["burst_firerate_second"] = round(1 SECONDS / burst_rpm, 0.01)
+
+	// damage table data
+
+	data["damage_armor_profile_headers"] = damage_armor_profile_headers
+	data["damage_armor_profile_marine"] = damage_armor_profile_marine
+	data["damage_armor_profile_xeno"] = damage_armor_profile_xeno
+	data["damage_armor_profile_armorbreak"] = damage_armor_profile_armorbreak
+
+	return data
+
+/obj/item/weapon/gun/ui_static_data(mob/user)
+	var/list/data = list()
+
+	// consts (maxes)
+
 	data["recoil_max"] = RECOIL_AMOUNT_TIER_1
 	data["scatter_max"] = SCATTER_AMOUNT_TIER_1
 	data["firerate_max"] = 1 MINUTES / FIRE_DELAY_TIER_10
@@ -644,10 +664,6 @@
 	data["falloff_max"] = DAMAGE_FALLOFF_TIER_1
 	data["penetration_max"] = ARMOR_PENETRATION_TIER_10
 	data["punch_max"] = 5
-	data["damage_armor_profile_headers"] = damage_armor_profile_headers
-	data["damage_armor_profile_marine"] = damage_armor_profile_marine
-	data["damage_armor_profile_xeno"] = damage_armor_profile_xeno
-	data["damage_armor_profile_armorbreak"] = damage_armor_profile_armorbreak
 
 	return data
 

@@ -11,6 +11,8 @@ The map template shuttle_id points to the file in folder `maps\shuttles`. It als
 
 Shuttle map templates are used to define what the shuttle should look like.
 
-## Shuttle dimenions
+## Shuttle dimensions
 
 When defining the shuttle dimensions, define the height/width as if it was orienting north. The subsystem will properly line everything up, this allows for stationary docks to be in different orientations to their defined map template.
+
+A shuttle has a height, width, dheight and dwidth. The height and width is the size of the shuttle, with respect to its direction. If the template direction is North/South then width is your X coordinate and height is your Y. If the template direction is East/West then width is your Y direction and height is your X. On stationary docking ports, you can specify dwidth and dheight (auto generated for mobile), these are offsets for how your shuttle should land on the site. When a mobile port lands on a stationary port it wants to place the bottom left of the shuttle turfs on the stationary port. The dwidth/dheight allows you to offset this.

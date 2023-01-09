@@ -658,6 +658,14 @@
 	/obj/item/device/flashlight/flare
 	)
 
+/obj/item/clothing/accessory/storage/holster/mess_tech
+	hold = /obj/item/storage/internal/accessory/holster/mess_tech
+
+/obj/item/storage/internal/accessory/holster/mess_tech/fill_preset_inventory()
+	handle_item_insertion(new /obj/item/weapon/gun/pistol/m4a3/training())
+	new /obj/item/ammo_magazine/pistol/rubber(src)
+	new /obj/item/ammo_magazine/pistol/rubber(src)
+
 /obj/item/storage/internal/accessory/holster/on_stored_atom_del(atom/movable/AM)
 	if(AM == current_gun)
 		current_gun = null

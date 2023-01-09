@@ -1,0 +1,6 @@
+author: "stanalbatross"
+delete-after: True
+changes:
+  - ui: "added tgui radars that can be used for the precise tracking of atoms"
+  - rscadd: "converted the handheld crew monitor to use a radar."
+  - rscadd: "added an unobtainable advanced version of the PDT/L that uses a radar"

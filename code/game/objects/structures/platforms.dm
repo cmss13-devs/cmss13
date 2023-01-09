@@ -61,6 +61,23 @@
 /obj/structure/platform/ex_act()
 	return
 
+/obj/structure/platform/attackby(obj/item/W, mob/user)
+	..()
+	if(user.pulling)
+		if(!can_climb(user))
+			return
+		user.visible_message(SPAN_WARNING("[user] starts dragging \the [user.pulling] onto \the [src]"),\
+		SPAN_WARNING("You start dragging \the [user.pulling] onto \the [src]."))
+		if(!do_after(user, 3 SECONDS * user.get_skill_duration_multiplier(SKILL_FIREMAN), INTERRUPT_ALL, BUSY_ICON_HOSTILE, user.pulling, INTERRUPT_MOVED, BUSY_ICON_HOSTILE))
+			return
+		if(user.pulling)
+			if(!can_climb(user))
+				return
+			var/turf/move_to_turf = get_step(get_turf(src), dir)
+			user.pulling.forceMove(move_to_turf)
+			user.visible_message(SPAN_WARNING("[user] finishes dragging \the [user.pulling] onto \the [src]"),\
+			SPAN_WARNING("You finish dragging \the [user.pulling] onto \the [src]."))
+
 /obj/structure/platform_decoration
 	name = "platform"
 	desc = "A square metal surface resting on four legs."

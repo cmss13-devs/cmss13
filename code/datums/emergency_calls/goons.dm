@@ -44,6 +44,7 @@
 	name = "Weyland-Yutani Goon (Chemical Investigation Squad)"
 	mob_max = 6
 	mob_min = 2
+	max_medics = 1
 	var/checked_objective = FALSE
 
 /datum/emergency_call/goon/chem_retrieval/New()
@@ -56,6 +57,31 @@
 		objectives = "Secure all documents, samples and chemicals related to [objective_info] from [MAIN_SHIP_NAME] research department."
 	objectives += "Assume at least 30 units are located within the department. If they can not make more that should be all. Cooperate with the onboard CL to ensure all who know the complete recipe are kept silenced with a contract of confidentiality. All humans who have ingested the chemical must be brought back dead or alive. Viral scan is required for any humans who is suspected of ingestion. Full termination of the department is authorized if they do not cooperate, but this should be avoided UNLESS ABSOLUTELY NECESSARY. Assisting with [MAIN_SHIP_NAME] current operation is only allowed after successful retrieval and with a signed contract between the CL and acting commander of [MAIN_SHIP_NAME]."
 	checked_objective = TRUE
+
+/datum/emergency_call/goon/chem_retrieval/create_member(datum/mind/M, var/turf/override_spawn_loc)
+	var/turf/spawn_loc = override_spawn_loc ? override_spawn_loc : get_spawn_point()
+
+	if(!istype(spawn_loc))
+		return //Didn't find a useable spawn point.
+
+	var/mob/living/carbon/human/mob = new(spawn_loc)
+	M.transfer_to(mob, TRUE)
+
+	if(!leader && HAS_FLAG(mob.client.prefs.toggles_ert, PLAY_LEADER) && check_timelock(mob.client, JOB_SQUAD_LEADER, time_required_for_job))
+		leader = mob
+		to_chat(mob, SPAN_ROLE_HEADER("You are a Weyland-Yutani Corporate Security Lead!"))
+		arm_equipment(mob, /datum/equipment_preset/goon/lead, TRUE, TRUE)
+	else if(medics < max_medics && HAS_FLAG(mob.client.prefs.toggles_ert, PLAY_MEDIC) && check_timelock(mob.client, JOB_SQUAD_MEDIC, time_required_for_job))
+		medics++
+		to_chat(mob, SPAN_ROLE_HEADER("You are a Weyland-Yutani Corporate Research Consultant!"))
+		arm_equipment(mob, /datum/equipment_preset/goon/researcher, TRUE, TRUE)
+	else
+		to_chat(mob, SPAN_ROLE_HEADER("You are a Weyland-Yutani Corporate Security Officer!"))
+		arm_equipment(mob, /datum/equipment_preset/goon/standard, TRUE, TRUE)
+
+	print_backstory(mob)
+
+	addtimer(CALLBACK(GLOBAL_PROC, PROC_REF(to_chat), mob, SPAN_BOLD("Objectives:</b> [objectives]")), 1 SECONDS)
 
 /datum/emergency_call/goon/platoon
 	name = "Weyland-Yutani Corporate Security (Platoon)"

@@ -9,7 +9,7 @@ import type { Observable, OrbitData } from './types';
 
 export const Orbit = (props, context) => {
   return (
-    <Window title="Orbit" width={400} height={550}>
+    <Window title="Orbit" width={500} height={700}>
       <Window.Content scrollable>
         <Stack fill vertical>
           <Stack.Item>

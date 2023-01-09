@@ -119,7 +119,7 @@
 	icon_state = "cat"
 	icon_living = "cat"
 	icon_dead = "cat_dead"
-	holder_type = /obj/item/holder/cat/blackcat/
+	holder_type = /obj/item/holder/cat/blackcat
 
 /mob/living/simple_animal/cat/Jones
 	name = "Jones"

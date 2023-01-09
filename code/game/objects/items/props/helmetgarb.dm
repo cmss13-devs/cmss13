@@ -30,6 +30,7 @@
 
 /obj/item/prop/helmetgarb/spent_slug
 	name = "spent slugs"
+	gender = PLURAL
 	desc = "For when you need to knock your target down with superior stopping power. These three have already been fired."
 	icon_state = "spent_slug"
 

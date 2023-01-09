@@ -488,8 +488,10 @@
 	var/status = canDock(S)
 	if(status == SHUTTLE_CAN_DOCK)
 		return TRUE
+	if(status == SHUTTLE_ALREADY_DOCKED)
+		return TRUE
 	else
-		if(status != SHUTTLE_ALREADY_DOCKED && !silent) // SHUTTLE_ALREADY_DOCKED is no cause for error
+		if(!silent) // SHUTTLE_ALREADY_DOCKED is no cause for error
 			var/msg = "Shuttle [src] cannot dock at [S], error: [status]"
 			message_admins(msg)
 		// We're already docked there, don't need to do anything.

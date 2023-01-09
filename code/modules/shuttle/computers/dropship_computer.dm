@@ -4,7 +4,7 @@
 	icon = 'icons/obj/structures/machinery/shuttle-parts.dmi'
 	icon_state = "console"
 	req_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_DROPSHIP, ACCESS_WY_CORPORATE_DS)
-
+	var/is_set_flyby = FALSE
 	var/disabled = FALSE
 	var/compatible_landing_zones = list()
 
@@ -65,8 +65,10 @@
 	.["is_disabled"] = disabled
 	.["locked_down"] = FALSE
 	if(shuttle.destination)
-		.["target_destination"] = shuttle.destination.name
+		.["target_destination"] = shuttle.in_flyby? "Flyby" : shuttle.destination.name
 	.["destinations"] = list()
+	.["door_status"] = shuttle.get_door_data()
+	.["flight_configuration"] = is_set_flyby ? "flyby" : "ferry"
 
 	for(var/obj/docking_port/stationary/dock in compatible_landing_zones)
 		var/dock_reserved = FALSE
@@ -95,6 +97,10 @@
 			if(shuttle.mode != SHUTTLE_IDLE)
 				to_chat(usr, SPAN_WARNING("You can't move to a new destination whilst in transit."))
 				return TRUE
+			if(is_set_flyby)
+				to_chat(usr, SPAN_NOTICE("You begin the launch sequence for a flyby."))
+				shuttle.send_for_flyby()
+				return TRUE
 			var/dockId = params["target"]
 			var/list/local_data = ui_data(usr)
 			var/found = FALSE
@@ -122,3 +128,17 @@
 		if("button-push")
 			playsound(loc, get_sfx("terminal_button"), KEYBOARD_SOUND_VOLUME, 1)
 			return FALSE
+		if("door-control")
+			if(shuttle.mode == SHUTTLE_CALL || shuttle.mode == SHUTTLE_RECALL)
+				return TRUE
+			var/interaction = params["interaction"]
+			var/location = params["location"]
+			shuttle.control_doors(interaction, location)
+		if("set-ferry")
+			is_set_flyby = FALSE
+		if("set-flyby")
+			is_set_flyby = TRUE
+		if("cancel-flyby")
+			if(shuttle.in_flyby && shuttle.timer && shuttle.timeLeft(1) >= 5 SECONDS)
+				shuttle.setTimer(5 SECONDS)
+

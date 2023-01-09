@@ -5,6 +5,7 @@
 #define SHUTTLE_CALL    "called"
 #define SHUTTLE_DOCKED  "docked"
 #define SHUTTLE_STRANDED   "stranded"
+#define SHUTTLE_CRASHED   "crashed"
 #define SHUTTLE_ESCAPE  "escape"
 #define SHUTTLE_ENDGAME "endgame: game over"
 #define SHUTTLE_RECHARGING "recharging"
@@ -100,3 +101,6 @@
 #define MOBILE_SHUTTLE_LIFEBOAT_PORT "lifeboat-port"
 #define MOBILE_SHUTTLE_LIFEBOAT_STARBOARD "lifeboat-starboard"
 #define MOBILE_SHUTTLE_VEHICLE_ELEVATOR "vehicle_elevator"
+
+#define DROPSHIP_ALAMO "dropship_alamo"
+#define DROPSHIP_NORMANDY "dropship_normandy"

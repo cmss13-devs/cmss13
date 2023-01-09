@@ -22,7 +22,7 @@ interface NavigationProps {
   locked_down: 0 | 1;
 }
 
-const CancelLaunchButton = (_, context) => {
+export const CancelLaunchButton = (_, context) => {
   const [siteselection, setSiteSelection] = useSharedState<string | undefined>(
     context,
     'target_site',
@@ -38,7 +38,7 @@ const CancelLaunchButton = (_, context) => {
   );
 };
 
-const LaunchButton = (_, context) => {
+export const LaunchButton = (_, context) => {
   const { act } = useBackend<NavigationProps>(context);
   const [siteselection] = useSharedState<string | undefined>(
     context,

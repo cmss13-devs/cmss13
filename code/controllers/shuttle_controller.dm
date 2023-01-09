@@ -50,7 +50,7 @@
 	shuttle1.location = 0
 	shuttle1.warmup_time = DROPSHIP_WARMUP_TIME
 	shuttle1.move_time = DROPSHIP_TRANSIT_DURATION
-	shuttle1.shuttle_tag = "[MAIN_SHIP_NAME] Dropship 1"
+	shuttle1.shuttle_tag = DROPSHIP_ALAMO
 	shuttle1.info_tag = "Almayer Dropship"
 	shuttle1.can_be_optimized = TRUE
 	shuttle1.can_do_gun_mission = TRUE
@@ -64,7 +64,7 @@
 	shuttle1.location = 0
 	shuttle1.warmup_time = DROPSHIP_WARMUP_TIME
 	shuttle1.move_time = DROPSHIP_TRANSIT_DURATION
-	shuttle1.shuttle_tag = "[MAIN_SHIP_NAME] Dropship 2"
+	shuttle1.shuttle_tag = DROPSHIP_NORMANDY
 	shuttle1.info_tag = "Almayer Dropship"
 	shuttle1.can_be_optimized = TRUE
 	shuttle1.can_do_gun_mission = TRUE

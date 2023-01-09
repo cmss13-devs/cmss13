@@ -369,7 +369,7 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 			return // its been locked down by the queen
 
 		var/ship_id = "sh_dropship1"
-		if(shuttle_tag == "[MAIN_SHIP_NAME] Dropship 2")
+		if(shuttle_tag == DROPSHIP_NORMANDY)
 			ship_id = "sh_dropship2"
 
 		for(var/obj/structure/machinery/door/airlock/dropship_hatch/M in machines)
@@ -408,7 +408,7 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 
 	if(href_list["release"])
 		var/ship_id = "sh_dropship1"
-		if(shuttle_tag == "[MAIN_SHIP_NAME] Dropship 2")
+		if(shuttle_tag == DROPSHIP_NORMANDY)
 			ship_id = "sh_dropship2"
 
 		for(var/obj/structure/machinery/door/airlock/dropship_hatch/M in machines)
@@ -432,7 +432,7 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 			return // its been locked down by the queen
 
 		var/ship_id = "sh_dropship1"
-		if(shuttle_tag == "[MAIN_SHIP_NAME] Dropship 2")
+		if(shuttle_tag == DROPSHIP_NORMANDY)
 			ship_id = "sh_dropship2"
 
 		for(var/obj/structure/machinery/door/airlock/dropship_hatch/M in machines)
@@ -459,7 +459,7 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 			return // its been locked down by the queen
 
 		var/ship_id = "sh_dropship1"
-		if(shuttle_tag == "[MAIN_SHIP_NAME] Dropship 2")
+		if(shuttle_tag == DROPSHIP_NORMANDY)
 			ship_id = "sh_dropship2"
 		var/obj/structure/machinery/door/airlock/multi_tile/almayer/reardoor
 		switch(ship_id)
@@ -538,7 +538,7 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 
 /obj/structure/machinery/computer/shuttle_control/dropship1/Initialize()
 	. = ..()
-	shuttle_tag = "[MAIN_SHIP_NAME] Dropship 1"
+	shuttle_tag = DROPSHIP_ALAMO
 
 /obj/structure/machinery/computer/shuttle_control/dropship1/onboard
 	name = "\improper 'Alamo' flight controls"
@@ -562,7 +562,7 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 
 /obj/structure/machinery/computer/shuttle_control/dropship2/Initialize()
 	. = ..()
-	shuttle_tag = "[MAIN_SHIP_NAME] Dropship 2"
+	shuttle_tag = DROPSHIP_NORMANDY
 
 /obj/structure/machinery/computer/shuttle_control/dropship2/onboard
 	name = "\improper 'Normandy' flight controls"

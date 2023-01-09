@@ -789,7 +789,7 @@
 		door_override = 1
 
 		var/ship_id = "sh_dropship1"
-		if(shuttle_tag == "[MAIN_SHIP_NAME] Dropship 2")
+		if(shuttle_tag == DROPSHIP_NORMANDY)
 			ship_id = "sh_dropship2"
 
 		for(var/obj/structure/machinery/door/airlock/dropship_hatch/D in machines)
@@ -826,9 +826,9 @@
 		var/shuttle_tag
 		switch(id)
 			if("sh_dropship1")
-				shuttle_tag = "[MAIN_SHIP_NAME] Dropship 1"
+				shuttle_tag = DROPSHIP_ALAMO
 			if("sh_dropship2")
-				shuttle_tag = "[MAIN_SHIP_NAME] Dropship 2"
+				shuttle_tag = DROPSHIP_NORMANDY
 			if("gr_transport1")
 				shuttle_tag = "Ground Transport 1"
 			else

@@ -145,7 +145,10 @@
 	if(!check_rights(R_EVENT))
 		return
 
-	var/tag = tgui_input_list(usr, "Which ERT shuttle should be force launched?", "Select an ERT Shuttle:", list("Response Shuttle", "PMC Shuttle", "UPP Shuttle", "Boarding Shuttle", "Mini Shuttle"))
+	var/list/shuttle_map = list()
+	for(var/obj/docking_port/mobile/emergency_response/ert_shuttles in SSshuttle.mobile)
+		shuttle_map[ert_shuttles.name] = ert_shuttles.id
+	var/tag = tgui_input_list(usr, "Which ERT shuttle should be force launched?", "Select an ERT Shuttle:", shuttle_map))
 	if(!tag) return
 
 	var/list/shuttle_map = list(

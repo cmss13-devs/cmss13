@@ -1,0 +1,5 @@
+author: "stanalbatross"
+delete-after: True
+changes:
+  - ui: "converted the check skills menu to TGUI"
+  - admin: "changed the edit skills vv dropdown from a clunky series of input lists to the new check skills menu TGUI"

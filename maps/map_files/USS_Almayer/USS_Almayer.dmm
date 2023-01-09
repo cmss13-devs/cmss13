@@ -49581,9 +49581,7 @@
 	dir = 8
 	},
 /obj/structure/bed/chair{
-	buckling_y = 6;
-	dir = 1;
-	pixel_y = 6
+	dir = 3
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";

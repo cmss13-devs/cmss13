@@ -67,8 +67,8 @@ SUBSYSTEM_DEF(minimaps)
 		var/smallest_x = SCREEN_PIXEL_SIZE
 		var/largest_y = 0
 		var/smallest_y = SCREEN_PIXEL_SIZE
-		for(var/xval=1 to SCREEN_PIXEL_SIZE step 2) //step 2 is twice as fast :)
-			for(var/yval=1 to SCREEN_PIXEL_SIZE step 2) //keep in mind 1 wide giant straight lines will offset wierd but you shouldnt be mapping those anyway right???
+		for(var/xval=1 to SCREEN_PIXEL_SIZE step 2)
+			for(var/yval=1 to SCREEN_PIXEL_SIZE step 2)
 				if(!icon_gen.GetPixel(xval, yval))
 					continue
 				if(xval > largest_x)
@@ -93,7 +93,7 @@ SUBSYSTEM_DEF(minimaps)
 	for(var/i=1 to length(earlyadds)) //lateload icons
 		earlyadds[i].Invoke()
 	earlyadds = null //then clear them
-	return ..()
+	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/minimaps/stat_entry(msg)
 	msg = "Upd:[length(update_targets_unsorted)] Mark: [length(removal_cbs)]"
@@ -275,8 +275,10 @@ SUBSYSTEM_DEF(minimaps)
 	if(!removal_cbs[source]) //already removed
 		return
 	UnregisterSignal(source, list(COMSIG_PARENT_QDELETING, COMSIG_MOVABLE_MOVED, COMSIG_MOVABLE_Z_CHANGED))
+	var/turf/turf_gotten = get_turf(source)
+	var/z_level = turf_gotten.z
 	for(var/flag in GLOB.all_minimap_flags)
-		var/ref = minimaps_by_z["[source.z]"].images_assoc["[flag]"]
+		var/ref = minimaps_by_z["[z_level]"].images_assoc["[flag]"]
 		ref -=  source //see above
 	images_by_source -= source
 	removal_cbs[source].Invoke()
@@ -320,7 +322,7 @@ SUBSYSTEM_DEF(minimaps)
 /**
  * Action that gives the owner access to the minimap pool
  */
-/datum/action/item_action/minimap
+/datum/action/minimap
 	name = "Toggle Minimap"
 	action_icon_state = "minimap"
 	///Flags to allow the owner to see others of this type
@@ -397,14 +399,6 @@ SUBSYSTEM_DEF(minimaps)
 	marker_flags = MINIMAP_FLAG_MARINE
 	default_overwatch_level = 2
 
-/datum/action/minimap/marine/rebel
-	minimap_flags = MINIMAP_FLAG_MARINE_REBEL
-	marker_flags = MINIMAP_FLAG_MARINE_REBEL
-
-/datum/action/minimap/som
-	minimap_flags = MINIMAP_FLAG_MARINE_SOM
-	marker_flags = MINIMAP_FLAG_MARINE_SOM
-
 /datum/action/minimap/observer
-	minimap_flags = MINIMAP_FLAG_XENO|MINIMAP_FLAG_MARINE|MINIMAP_FLAG_MARINE_REBEL|MINIMAP_FLAG_MARINE_SOM|MINIMAP_FLAG_EXCAVATION_ZONE
+	minimap_flags = MINIMAP_FLAG_XENO|MINIMAP_FLAG_MARINE|MINIMAP_FLAG_EXCAVATION_ZONE
 	marker_flags = NONE

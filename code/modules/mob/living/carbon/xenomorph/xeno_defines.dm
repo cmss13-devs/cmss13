@@ -107,6 +107,11 @@
 	var/list/resin_build_order
 	var/minimum_xeno_playtime = 0
 
+	/// Iconstate for the xeno on the minimap
+	var/minimap_icon = "xenominion"
+	///The iconstate for leadered xenos on the minimap, added as overlay
+	var/minimap_leadered_overlay = "xenoleader"
+
 
 /datum/caste_datum/can_vv_modify()
 	return FALSE
@@ -406,6 +411,8 @@
 	xeno.hud_update() // To add leader star
 	open_xeno_leader_positions -= leader_num
 
+	xeno.update_minimap_icon(makeleader = TRUE)
+
 	give_action(xeno, /datum/action/xeno_action/activable/info_marker)
 
 	hive_ui.update_xeno_keys()
@@ -436,6 +443,8 @@
 	for(var/obj/effect/alien/resin/marker/leaderless_mark in resin_marks) //no resin_mark limit abuse
 		if(leaderless_mark.createdby == xeno.nicknumber)
 			qdel(leaderless_mark)
+
+	xeno.update_minimap_icon(makeleader = FALSE)
 
 	remove_action(xeno, /datum/action/xeno_action/activable/info_marker)
 

@@ -63,9 +63,6 @@
 			if(radiochannels[cycled_channel] == frequency)
 				default_freq = cycled_channel
 
-	if(headset_hud_on)
-		add_minimap()
-
 /obj/item/device/radio/headset/Destroy()
 	wearer = null
 	return ..()
@@ -243,8 +240,7 @@
 				user.show_hud_tracker()
 			if(misc_tracking)
 				SStracking.start_misc_tracking(user)
-			if(headset_hud_on)
-				add_minimap()
+			add_minimap()
 
 /obj/item/device/radio/headset/dropped(mob/living/carbon/human/user)
 	UnregisterSignal(user, list(
@@ -260,7 +256,8 @@
 			user.hide_hud_tracker()
 		if(misc_tracking)
 			SStracking.stop_misc_tracking(user)
-	user = null
+		remove_minimap()
+	wearer = null
 	..()
 
 /obj/item/device/radio/headset/proc/add_hud_tracker(var/mob/living/carbon/human/user)
@@ -321,33 +318,35 @@
 
 /obj/item/device/radio/headset/proc/add_minimap()
 	remove_minimap()
-	var/datum/action/minimap/mini = new minimap_type
-	mini.give_to(wearer)
 	INVOKE_NEXT_TICK(src, .proc/update_minimap_icon, wearer) //Mobs are spawned inside nullspace sometimes so this is to avoid that hijinks
 
 /obj/item/device/radio/headset/proc/update_minimap_icon()
 	SIGNAL_HANDLER
 	SSminimaps.remove_marker(wearer)
-	if(!wearer.assigned_equipment_preset || !wearer.assigned_equipment_preset)
+	if(!wearer.assigned_equipment_preset || !wearer.assigned_equipment_preset.minimap_icon)
 		return
 	var/marker_flags = initial(minimap_type.marker_flags)
+	var/turf/turf_gotten = get_turf(wearer)
+	var/z_level = turf_gotten.z
 	if(wearer.assigned_equipment_preset.always_minimap_visible == TRUE || wearer.stat == DEAD) //We show to all marines if we have this flag, separated by faction
 		if(hud_type == MOB_HUD_FACTION_USCM)
 			marker_flags = MINIMAP_FLAG_MARINE
 		else if(hud_type == MOB_HUD_FACTION_UPP)
-			marker_flags = MINIMAP_FLAG_MARINE_REBEL
+			marker_flags = MINIMAP_FLAG_MARINE_UPP
 		else if(hud_type == MOB_HUD_FACTION_PMC)
-			marker_flags = MINIMAP_FLAG_MARINE_SOM
+			marker_flags = MINIMAP_FLAG_MARINE_PMC
+		else if(hud_type == MOB_HUD_FACTION_CLF)
+			marker_flags = MINIMAP_FLAG_MARINE_CLF
 	if(wearer.undefibbable)
-		SSminimaps.add_marker(wearer, wearer.z, marker_flags, "undefibbable")
+		SSminimaps.add_marker(wearer, z_level, marker_flags, "undefibbable")
 		return
 	if(wearer.stat == DEAD)
-		SSminimaps.add_marker(wearer, wearer.z, marker_flags, "defibbable")
+		SSminimaps.add_marker(wearer, z_level, marker_flags, "defibbable")
 		return
 	if(wearer.assigned_squad)
-		SSminimaps.add_marker(wearer, wearer.z, marker_flags, lowertext(wearer.assigned_squad.name)+"_"+wearer.assigned_equipment_preset.minimap_icon)
+		SSminimaps.add_marker(wearer, z_level, marker_flags, lowertext(wearer.assigned_squad.name)+"_"+wearer.assigned_equipment_preset.minimap_icon)
 		return
-	SSminimaps.add_marker(wearer, wearer.z, marker_flags, wearer.assigned_equipment_preset.minimap_icon)
+	SSminimaps.add_marker(wearer, z_level, marker_flags, wearer.assigned_equipment_preset.minimap_icon)
 
 ///Change the minimap icon to a dead icon
 /obj/item/device/radio/headset/proc/set_dead_on_minimap()
@@ -359,13 +358,17 @@
 	if(hud_type == MOB_HUD_FACTION_USCM)
 		marker_flags = MINIMAP_FLAG_MARINE
 	else if(hud_type == MOB_HUD_FACTION_UPP)
-		marker_flags = MINIMAP_FLAG_MARINE_REBEL
+		marker_flags = MINIMAP_FLAG_MARINE_UPP
 	else if(hud_type == MOB_HUD_FACTION_PMC)
-		marker_flags = MINIMAP_FLAG_MARINE_SOM
-	SSminimaps.add_marker(wearer, wearer.z, marker_flags, "defibbable")
+		marker_flags = MINIMAP_FLAG_MARINE_PMC
+	else if(hud_type == MOB_HUD_FACTION_CLF)
+		marker_flags = MINIMAP_FLAG_MARINE_CLF
+	var/turf/turf_gotten = get_turf(wearer)
+	var/z_level = turf_gotten.z
+	SSminimaps.add_marker(wearer, z_level, marker_flags, "defibbable")
 
 ///Change the minimap icon to a undefibbable icon
-/obj/item/device/radio/headset/proc/set_undefibbable_on_minimap(mob/living/carbon/human/wearer)
+/obj/item/device/radio/headset/proc/set_undefibbable_on_minimap()
 	SIGNAL_HANDLER
 	SSminimaps.remove_marker(wearer)
 	if(!wearer.assigned_equipment_preset || !wearer.assigned_equipment_preset.minimap_icon)
@@ -374,16 +377,17 @@
 	if(hud_type == MOB_HUD_FACTION_USCM)
 		marker_flags = MINIMAP_FLAG_MARINE
 	else if(hud_type == MOB_HUD_FACTION_UPP)
-		marker_flags = MINIMAP_FLAG_MARINE_REBEL
+		marker_flags = MINIMAP_FLAG_MARINE_UPP
 	else if(hud_type == MOB_HUD_FACTION_PMC)
-		marker_flags = MINIMAP_FLAG_MARINE_SOM
-	SSminimaps.add_marker(wearer, wearer.z, marker_flags, "undefibbable")
+		marker_flags = MINIMAP_FLAG_MARINE_PMC
+	else if(hud_type == MOB_HUD_FACTION_CLF)
+		marker_flags = MINIMAP_FLAG_MARINE_CLF
+	var/turf/turf_gotten = get_turf(wearer)
+	var/z_level = turf_gotten.z
+	SSminimaps.add_marker(wearer, z_level, marker_flags, "undefibbable")
 
-/obj/item/device/radio/headset/proc/remove_minimap(mob/living/carbon/human/wearer)
+/obj/item/device/radio/headset/proc/remove_minimap()
 	SSminimaps.remove_marker(wearer)
-	for(var/datum/action/action as anything in wearer.actions)
-		if(istype(action, /datum/action/item_action/minimap))
-			action.remove_from(wearer)
 
 /obj/item/device/radio/headset/binary
 	initial_keys = list(/obj/item/device/encryptionkey/binary)

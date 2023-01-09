@@ -698,3 +698,13 @@
 	if(tracked_marker)
 		tracked_marker.xenos_tracking -= src
 	tracked_marker = null
+
+/mob/living/carbon/Xenomorph/proc/update_minimap_icon(makeleader = TRUE)
+	if(istype(caste, /datum/caste_datum/queen))
+		return
+
+	SSminimaps.remove_marker(src)
+	if(makeleader)
+		SSminimaps.add_marker(src, z, MINIMAP_FLAG_XENO, caste.minimap_icon, overlay_iconstates=list(caste.minimap_leadered_overlay))
+	else
+		SSminimaps.add_marker(src, z, MINIMAP_FLAG_XENO, caste.minimap_icon)

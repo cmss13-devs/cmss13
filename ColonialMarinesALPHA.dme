@@ -1283,6 +1283,7 @@
 #include "code\modules\admin\verbs\SDQL2\SDQL_2_wrappers.dm"
 #include "code\modules\admin\verbs\varedit\filteriffic.dm"
 #include "code\modules\admin\verbs\varedit\varedit.dm"
+#include "code\modules\almayer\cic_maptable.dm"
 #include "code\modules\almayer\machinery.dm"
 #include "code\modules\animations\animation_library.dm"
 #include "code\modules\assembly\assembly.dm"

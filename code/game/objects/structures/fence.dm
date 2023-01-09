@@ -8,6 +8,7 @@
 	layer = WINDOW_LAYER
 	flags_atom = FPRINT
 	health = 50
+	minimap_color = MINIMAP_FENCE
 	var/health_max = 50
 	var/cut = 0 //Cut fences can be passed through
 	var/junction = 0 //Because everything is terrible, I'm making this a fence-level var

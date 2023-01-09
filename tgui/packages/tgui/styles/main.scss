@@ -67,6 +67,7 @@
 @include meta.load-css('./interfaces/TechNode.scss');
 @include meta.load-css('./interfaces/VendingSorted.scss');
 @include meta.load-css('./interfaces/common/ElectricalPanel.scss');
+@include meta.load-css('./interfaces/TacticalMap.scss');
 
 // Layouts
 @include meta.load-css('./layouts/Layout.scss');

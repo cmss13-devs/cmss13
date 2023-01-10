@@ -705,6 +705,7 @@
 		<A href='?src=\ref[src];[HrefToken()];events=blackout'>Break all lights</A><BR>
 		<A href='?src=\ref[src];[HrefToken()];events=whiteout'>Repair all lights</A><BR>
 		<A href='?src=\ref[src];[HrefToken()];events=comms_blackout'>Trigger a Communication Blackout</A><BR>
+		<A href='?src=\ref[src];[HrefToken()];events=destructible_terrain'>Enable destructible terrain</A><BR>
 		<BR>
 		<B>Misc</B><BR>
 		<A href='?src=\ref[src];[HrefToken()];events=medal'>Award a medal</A><BR>

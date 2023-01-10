@@ -1524,6 +1524,7 @@
 #include "code\modules\emoji\emoji_parse.dm"
 #include "code\modules\events\_events.dm"
 #include "code\modules\events\comms_blackout.dm"
+#include "code\modules\events\destructible_terrain.dm"
 #include "code\modules\fishing\bait\generic.dm"
 #include "code\modules\fishing\datums\generic.dm"
 #include "code\modules\fishing\datums\helpers.dm"

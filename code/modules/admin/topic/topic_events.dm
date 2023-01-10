@@ -37,6 +37,11 @@
 			else
 				communications_blackout(1)
 			message_staff("[key_name_admin(usr)] triggered a communications blackout.")
+		if("destructible_terrain")
+			if(alert(usr, "Are you sure you want to make all ground-level terrain destructible?", "Confirmation", "Yes", "No") != "Yes")
+				return
+			enable_destructible_terrain()
+			message_staff("[key_name_admin(usr)] enabled destrictible terrain.")
 		if("blackout")
 			if(alert(usr, "Are you sure you want to do this?", "Confirmation", "Yes", "No") != "Yes")
 				return

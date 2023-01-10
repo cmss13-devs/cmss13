@@ -1,0 +1,11 @@
+author: "mullenpaul"
+delete-after: True
+changes:
+  - refactor: "mini shuttle now using tg shuttle framework"
+  - refactor: "big shuttle now using tg shuttle framework"
+  - refactor: "ert shuttle lockdown now only affects external doors, doors which board a space tile can't be controlled from ui"
+  - mapadd: "added map template for mini shuttle - north orientation"
+  - mapadd: "added map template for big shuttle - north orientation"
+  - admin: "admin force ert shuttle points to all new ert shuttles, removing all references to old shuttle code"
+  - maptweak: "added external docking ports for port and starboard hangar and port and starboard upper engi"
+  - maptweak: "added button to toggle the interior podlocks at upper engi podlocks"

@@ -42,6 +42,10 @@
 		update_nearby_icons()
 	. = ..()
 
+/obj/structure/window/setDir(newdir)
+	. = ..()
+	update_icon()
+
 /obj/structure/window/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
 	if (PF)

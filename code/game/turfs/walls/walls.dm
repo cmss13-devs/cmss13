@@ -60,6 +60,11 @@
 	update_icon()
 
 
+/turf/closed/wall/setDir(newDir)
+	..()
+	update_connections(FALSE)
+	update_icon()
+
 /turf/closed/wall/ChangeTurf(newtype, ...)
 	QDEL_NULL(acided_hole)
 

@@ -327,6 +327,8 @@
 		return
 	var/marker_flags = minimap_type
 	var/turf/turf_gotten = get_turf(wearer)
+	if(!turf_gotten)
+		return
 	var/z_level = turf_gotten.z
 	if(wearer.assigned_equipment_preset.always_minimap_visible == TRUE || wearer.stat == DEAD) //We show to all marines if we have this flag, separated by faction
 		if(hud_type == MOB_HUD_FACTION_USCM)

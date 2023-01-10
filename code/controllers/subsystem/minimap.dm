@@ -387,7 +387,7 @@ SUBSYSTEM_DEF(minimaps)
 /datum/action/minimap/remove_from(mob/M)
 	. = ..()
 	if(minimap_displayed)
-		owner.client.screen -= map
+		owner?.client?.screen -= map
 		minimap_displayed = FALSE
 
 /**

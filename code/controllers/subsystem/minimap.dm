@@ -217,7 +217,12 @@ SUBSYSTEM_DEF(minimaps)
 
 	var/image/blip = image(icon, iconstate, pixel_x = MINIMAP_PIXEL_FROM_WORLD(target.x) + minimaps_by_z["[zlevel]"].x_offset, pixel_y = MINIMAP_PIXEL_FROM_WORLD(target.y) + minimaps_by_z["[zlevel]"].y_offset)
 	if(color_code)
-		blip.color = color_code
+		var/icon_state = "background"
+		if("[iconstate]_background" in icon_states('icons/ui_icons/map_blips.dmi'))
+			icon_state = "[iconstate]_background"
+		var/mutable_appearance/underlay = mutable_appearance('icons/ui_icons/map_blips.dmi', icon_state)
+		underlay.color = color_code
+		blip.underlays += underlay
 
 	for(var/i in overlay_iconstates)
 		blip.overlays += image(icon, i)

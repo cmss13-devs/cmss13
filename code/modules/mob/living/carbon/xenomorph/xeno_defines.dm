@@ -108,7 +108,7 @@
 	var/minimum_xeno_playtime = 0
 
 	/// Iconstate for the xeno on the minimap
-	var/minimap_icon = "xenominion"
+	var/minimap_icon = "xeno"
 	///The iconstate for leadered xenos on the minimap, added as overlay
 	var/minimap_leadered_overlay = "xenoleader"
 

@@ -45,6 +45,8 @@
 
 	minimum_xeno_playtime = 9 HOURS
 
+	minimap_icon = "xenoqueen"
+
 /proc/update_living_queens() // needed to update when you change a queen to a different hive
 	outer_loop:
 		var/datum/hive_status/hive

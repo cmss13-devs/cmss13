@@ -23,6 +23,8 @@
 
 	heal_resting = 1.5
 
+	minimap_icon = "lurker"
+
 /mob/living/carbon/Xenomorph/Lurker
 	caste_type = XENO_CASTE_LURKER
 	name = XENO_CASTE_LURKER

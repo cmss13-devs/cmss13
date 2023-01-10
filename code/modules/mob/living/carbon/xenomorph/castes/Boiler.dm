@@ -28,6 +28,8 @@
 	tacklestrength_min = 3
 	tacklestrength_max = 4
 
+	minimap_icon = "boiler"
+
 /mob/living/carbon/Xenomorph/Boiler
 	caste_type = XENO_CASTE_BOILER
 	name = XENO_CASTE_BOILER

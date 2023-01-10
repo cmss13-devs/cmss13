@@ -246,3 +246,39 @@ color_matrix_recolor_rgb is more complex, but gives more precise control over th
 	M[6] -= M[2]
 	M[7] -= M[3]
 	return M
+
+///Converts RGB shorthands into RGBA matrices complete of constants rows (ergo a 20 keys list in byond).
+/proc/color_to_full_rgba_matrix(color)
+	if(istext(color))
+		var/list/L = ReadRGB(color)
+		if(!L)
+			CRASH("Invalid/unsupported color format argument in color_to_full_rgba_matrix()")
+		return list(L[1]/255,0,0,0, 0,L[2]/255,0,0, 0,0,L[3]/255,0, 0,0,0,L.len>3?L[4]/255:1, 0,0,0,0)
+	else if(!islist(color)) //invalid format
+		return color_matrix_identity()
+	var/list/L = color
+	switch(L.len)
+		if(3 to 5) // row-by-row hexadecimals
+			. = list()
+			for(var/a in 1 to L.len)
+				var/list/rgb = ReadRGB(L[a])
+				for(var/b in rgb)
+					. += b/255
+				if(length(rgb) % 4) // RGB has no alpha instruction
+					. += a != 4 ? 0 : 1
+			if(L.len < 4) //missing both alphas and constants rows
+				. += list(0,0,0,1, 0,0,0,0)
+			else if(L.len < 5) //missing constants row
+				. += list(0,0,0,0)
+		if(9 to 12) //RGB
+			. = list(L[1],L[2],L[3],0, L[4],L[5],L[6],0, L[7],L[8],L[9],0, 0,0,0,1)
+			for(var/b in 1 to 3)  //missing constants row
+				. += L.len < 9+b ? 0 : L[9+b]
+			. += 0
+		if(16 to 20) // RGBA
+			. = L.Copy()
+			if(L.len < 20) //missing constants row
+				for(var/b in 1 to 20-L.len)
+					. += 0
+		else
+			CRASH("Invalid/unsupported color format argument in color_to_full_rgba_matrix()")

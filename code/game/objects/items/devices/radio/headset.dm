@@ -38,8 +38,8 @@
 	var/hud_type = MOB_HUD_FACTION_USCM
 	var/default_freq
 
-	///The type of minimap this headset gives access to
-	var/datum/action/minimap/minimap_type = /datum/action/minimap/marine
+	///The type of minimap this headset is added to
+	var/minimap_type = MINIMAP_FLAG_MARINE
 
 	var/mob/living/carbon/human/wearer = null
 
@@ -325,7 +325,7 @@
 	SSminimaps.remove_marker(wearer)
 	if(!wearer.assigned_equipment_preset || !wearer.assigned_equipment_preset.minimap_icon)
 		return
-	var/marker_flags = initial(minimap_type.marker_flags)
+	var/marker_flags = minimap_type
 	var/turf/turf_gotten = get_turf(wearer)
 	var/z_level = turf_gotten.z
 	if(wearer.assigned_equipment_preset.always_minimap_visible == TRUE || wearer.stat == DEAD) //We show to all marines if we have this flag, separated by faction
@@ -344,7 +344,7 @@
 		SSminimaps.add_marker(wearer, z_level, marker_flags, "defibbable")
 		return
 	if(wearer.assigned_squad)
-		SSminimaps.add_marker(wearer, z_level, marker_flags, wearer.assigned_equipment_preset.minimap_icon, color_code = squad_colors[wearer.assigned_squad.color])
+		SSminimaps.add_marker(wearer, z_level, marker_flags, wearer.assigned_equipment_preset.minimap_icon, color_code = wearer.assigned_squad.minimap_color)
 		return
 	SSminimaps.add_marker(wearer, z_level, marker_flags, wearer.assigned_equipment_preset.minimap_icon)
 

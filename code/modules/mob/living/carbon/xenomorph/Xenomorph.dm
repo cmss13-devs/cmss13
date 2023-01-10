@@ -422,7 +422,7 @@
 	add_abilities()
 	recalculate_actions()
 
-	SSminimaps.add_marker(src, z, hud_flags = MINIMAP_FLAG_XENO, iconstate = caste.minimap_icon)
+	INVOKE_NEXT_TICK(SSminimaps.add_marker(src, z, hud_flags = MINIMAP_FLAG_XENO, iconstate = caste.minimap_icon))
 
 	sight |= SEE_MOBS
 	see_invisible = SEE_INVISIBLE_LIVING

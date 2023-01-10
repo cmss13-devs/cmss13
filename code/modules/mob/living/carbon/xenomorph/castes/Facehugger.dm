@@ -12,6 +12,8 @@
 	evolution_allowed = FALSE
 	can_be_revived = FALSE
 
+	minimap_icon = "facehugger"
+
 /mob/living/carbon/Xenomorph/Facehugger
 	name = XENO_CASTE_FACEHUGGER
 	caste_type = XENO_CASTE_FACEHUGGER

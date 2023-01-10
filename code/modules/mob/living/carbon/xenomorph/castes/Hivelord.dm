@@ -32,6 +32,8 @@
 
 	aura_strength = 2.5
 
+	minimap_icon = "hivelord"
+
 /datum/caste_datum/hivelord/New()
 	. = ..()
 

@@ -65,21 +65,16 @@
 	return data
 
 /datum/tacmap/ui_status(mob/user)
-	if(isdatum(owner))
+	if(!(isatom(owner)))
 		return UI_INTERACTIVE
 
 	var/dist = get_dist(owner, user)
-	// Open and interact if 1-0 tiles away.
 	if(dist <= 1)
 		return UI_INTERACTIVE
-	// View only if 2-3 tiles away.
 	else if(dist <= 2)
 		return UI_UPDATE
-	// Disable if 5 tiles away.
-	else if(dist <= 5)
-		return UI_DISABLED
-	// Otherwise, we got nothing.
-	return UI_CLOSE
+	else
+		return UI_CLOSE
 
 /datum/tacmap_holder
 	var/map_ref

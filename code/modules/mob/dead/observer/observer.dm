@@ -3,6 +3,22 @@
 	can_block_movement = FALSE
 	recalculate_move_delay = FALSE
 
+/mob/dead/forceMove(atom/destination)
+	var/turf/old_turf = get_turf(src)
+	var/turf/new_turf = get_turf(destination)
+	if (old_turf?.z != new_turf?.z)
+		onTransitZ(old_turf?.z, new_turf?.z)
+	var/oldloc = loc
+	loc = destination
+	Moved(oldloc, NONE, TRUE)
+
+/mob/dead/abstract_move(atom/destination)
+	var/turf/old_turf = get_turf(src)
+	var/turf/new_turf = get_turf(destination)
+	if (old_turf?.z != new_turf?.z)
+		onTransitZ(old_turf?.z, new_turf?.z)
+	return ..()
+
 /mob/dead/observer
 	name = "ghost"
 	desc = "It's a g-g-g-g-ghooooost!" //jinkies!
@@ -166,6 +182,13 @@
 /mob/dead/observer/Login()
 	..()
 	client.move_delay = MINIMAL_MOVEMENT_INTERVAL
+
+	for(var/datum/action/actions as anything in actions)
+		if(actions.type == /datum/action/minimap/observer)
+			return
+
+	var/datum/action/minimap/observer/mini = new
+	mini.give_to(src)
 
 /mob/dead/observer/Destroy()
 	QDEL_NULL(orbit_menu)
@@ -458,7 +481,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		to_chat(src, "<span style='color: red;'>No area available.</span>")
 		return
 
-	usr.loc = pick(L)
+	usr.forceMove(pick(L))
 	following = null
 
 /mob/dead/observer/proc/scan_health(var/mob/living/target in oview())

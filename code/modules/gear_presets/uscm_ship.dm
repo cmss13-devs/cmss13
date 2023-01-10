@@ -51,6 +51,8 @@
 	role_comm_title = "CL"
 	skills = /datum/skills/civilian
 
+	minimap_icon = "cl"
+
 	utility_under = list(/obj/item/clothing/under/liaison_suit/outing)
 	utility_hat = list()
 	utility_gloves = list()
@@ -118,6 +120,8 @@
 	minimum_age = 27
 	skills = /datum/skills/CE
 
+	minimap_icon = "ce"
+
 	utility_under = list(/obj/item/clothing/under/marine/officer/ce)
 
 /datum/equipment_preset/uscm_ship/chief_engineer/load_gear(mob/living/carbon/human/H)
@@ -149,6 +153,8 @@
 	paygrade = "ME2"
 	role_comm_title = "MT"
 	skills = /datum/skills/MT
+
+	minimap_icon = "mt"
 
 	utility_under = list(/obj/item/clothing/under/marine/officer/engi)
 
@@ -193,6 +199,8 @@
 	role_comm_title = "OT"
 	skills = /datum/skills/OT
 
+	minimap_icon = "ot"
+
 	utility_under = list(/obj/item/clothing/under/marine/officer/engi)
 
 /datum/equipment_preset/uscm_ship/ordn/load_gear(mob/living/carbon/human/H)
@@ -236,6 +244,8 @@
 	minimum_age = 27
 	skills = /datum/skills/RO
 
+	minimap_icon = "ro"
+
 	utility_under = list(/obj/item/clothing/under/rank/ro_suit)
 
 /datum/equipment_preset/uscm_ship/ro/load_gear(mob/living/carbon/human/H)
@@ -264,6 +274,8 @@
 	paygrade = "ME2"
 	role_comm_title = "CT"
 	skills = /datum/skills/CT
+
+	minimap_icon = "ct"
 
 	utility_under = list(/obj/item/clothing/under/rank/cargotech)
 
@@ -300,6 +312,8 @@
 	role_comm_title = "CO"
 	minimum_age = 30
 	skills = /datum/skills/commander
+
+	minimap_icon = "co"
 
 	utility_under = list(/obj/item/clothing/under/marine,/obj/item/clothing/under/marine/officer/command)
 	utility_hat = list(/obj/item/clothing/head/cmcap,/obj/item/clothing/head/beret/cm/tan)
@@ -397,6 +411,8 @@
 	minimum_age = 35
 	skills = /datum/skills/XO
 
+	minimap_icon = "xo"
+
 	dress_extra = list(/obj/item/storage/large_holster/ceremonial_sword/full)
 
 /datum/equipment_preset/uscm_ship/xo/New()
@@ -433,6 +449,8 @@
 	minimum_age = 25
 	skills = /datum/skills/SO
 
+	minimap_icon = "so"
+
 /datum/equipment_preset/uscm_ship/so/load_gear(mob/living/carbon/human/H)
 	var/backItem = /obj/item/storage/backpack/satchel
 	if (H.client && H.client.prefs && (H.client.prefs.backbag == 1))
@@ -462,6 +480,8 @@
 	role_comm_title = "SEA"
 	minimum_age = 40
 	skills = /datum/skills/SEA
+
+	minimap_icon = "sea"
 
 	service_hat = list(/obj/item/clothing/head/cmcap, /obj/item/clothing/head/drillhat)
 
@@ -518,6 +538,8 @@
 	role_comm_title = "DP"
 	skills = /datum/skills/pilot
 
+	minimap_icon = "po"
+
 /datum/equipment_preset/uscm_ship/po/load_gear(mob/living/carbon/human/H)
 	var/backItem = /obj/item/storage/backpack/satchel
 	if(H.client && H.client.prefs && (H.client.prefs.backbag == 1))
@@ -565,6 +587,8 @@
 	paygrade = "ME5"
 	role_comm_title = "DCC"
 	skills = /datum/skills/crew_chief
+
+	minimap_icon = "dcc"
 
 /datum/equipment_preset/uscm_ship/dcc/load_gear(mob/living/carbon/human/H)
 	var/backItem = /obj/item/storage/backpack/satchel
@@ -653,6 +677,8 @@
 	paygrade = "ME2"
 	role_comm_title = "MST"
 	skills = /datum/skills/mess_technician
+
+	minimap_icon = "mst"
 
 	utility_under = list(/obj/item/clothing/under/marine/chef)
 

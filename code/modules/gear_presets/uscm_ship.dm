@@ -538,7 +538,7 @@
 	role_comm_title = "DP"
 	skills = /datum/skills/pilot
 
-	minimap_icon = "po"
+	minimap_icon = "pilot"
 
 /datum/equipment_preset/uscm_ship/po/load_gear(mob/living/carbon/human/H)
 	var/backItem = /obj/item/storage/backpack/satchel

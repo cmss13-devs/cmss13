@@ -461,6 +461,16 @@
 /area/wayfinder/hull/lower_hull/l_a_p
 	name = "\improper Lower Aft-Port Hull"
 
+/area/wayfinder/hull/starboard_warehouse
+	name = "\improper Starboard Warehouse"
+
+/area/wayfinder/hull/starboard_warehouse_mini
+	name = "\improper Secondary Starboard Warehouse"
+/area/wayfinder/hull/port_warehouse
+	name = "\improper Port Warehouse"
+
+/area/wayfinder/hull/port_warehouse_mini
+	name = "\improper Secondary Port Warehouse"
 /area/wayfinder/living/cryo_cells
 	name = "\improper Cryo Cells"
 	icon_state = "cryo"
@@ -587,6 +597,10 @@
 
 /area/wayfinder/medical
 	icon_state = "medical"
+
+/area/wayfinder/medical/cmo
+	icon_state = "Chief Medical Officer Office"
+
 
 /area/wayfinder/medical/fore_medical_lobby
 	name = "\improper Medical Fore Lobby"

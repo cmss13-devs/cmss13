@@ -20,6 +20,7 @@ var/datum/controller/supply/supply_controller = new()
 	ambience_exterior = AMBIENCE_ALMAYER
 	fake_zlevel = 1
 
+//used by shuttle/ferry/supply/multi
 /area/supply/station/level_1
 	fake_zlevel = 1
 
@@ -28,6 +29,15 @@ var/datum/controller/supply/supply_controller = new()
 
 /area/supply/station/level_3
 	fake_zlevel = 3
+
+/area/supply/transit
+	name = "Supply Shuttle"
+	icon_state = "shuttle3"
+	luminosity = 1
+	lighting_use_dynamic = 0
+	requires_power = 0
+	ambience_exterior = AMBIENCE_ALMAYER
+	fake_zlevel = 0
 
 /area/supply/dock //DO NOT TURN THE lighting_use_dynamic STUFF ON FOR SHUTTLES. IT BREAKS THINGS.
 	name = "Supply Shuttle"
@@ -51,6 +61,18 @@ var/datum/controller/supply/supply_controller = new()
 	requires_power = 0
 
 //SUPPLY PACKS MOVED TO /code/defines/obj/supplypacks.dm
+
+/turf/closed/wall/supply_shaft
+	icon = 'icons/turf/walls/supply_shaft.dmi'
+	icon_state = "0_0"
+	hull = TRUE
+	var/animation_offset = 0 //map_edited, for the animation yo!
+
+/turf/closed/wall/supply_shaft/proc/set_movement_dir(movement_dir)
+	if(movement_dir  != null)
+		icon_state = "[animation_offset]_[movement_dir]"
+	else
+		icon_state = initial(icon_state)
 
 /obj/structure/plasticflaps //HOW DO YOU CALL THOSE THINGS ANYWAY
 	name = "\improper plastic flaps"

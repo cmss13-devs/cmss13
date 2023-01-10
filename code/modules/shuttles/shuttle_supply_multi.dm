@@ -27,10 +27,18 @@
 	var/target_zlevel = 1
 	var/obj/structure/elevator_control_mount/in_elevator_controller
 	replacement_turf_type = /turf/open/floor/almayer/empty/multi_elevator
+	var/obj/effect/elevator/animation_overlay/elevator_animation_2
+	var/list/transit_location_walls = list()
+	var/area/shaft_area
 
 /datum/shuttle/ferry/supply/multi/New()
 	elevator_animation = new()
 	elevator_animation.pixel_y = -192
+
+	for(var/area/A in all_areas)
+		if(istype(A, /area/supply/transit))
+			shaft_area = A
+			break
 
 	for(var/obj/effect/projector/P in projectors)
 		for(var/turf/T in GLOB.supply_elevator_turfs)
@@ -74,6 +82,13 @@
 			elevator_effects["[i]NE"].pixel_y = -128
 			elevator_effects["[i]NE"].vis_contents += elevator_animation
 
+	var/list/all_directions = list(NORTH, SOUTH, EAST, WEST, NORTHEAST, NORTHWEST, SOUTHEAST, SOUTHWEST)
+
+	for(var/turf/T in shaft_area)
+		for(var/i in all_directions)
+			if(istype(get_step(T, i), /turf/closed/wall/supply_shaft))
+				transit_location_walls |= get_step(T, i)
+
 	//playsound(locate(Elevator_x,Elevator_y,Elevator_z), 'sound/machines/cargo_alarm.ogg', 50, 0)  //<-- play this when sending offsite
 
 /datum/shuttle/ferry/supply/multi/add_structures()
@@ -97,6 +112,19 @@
 		return get_area(GLOB.supply_elevator_turfs[target_zlevel])
 
 	return area_offsite
+
+/datum/shuttle/ferry/supply/multi/proc/get_movement_direction()
+	//0 means DOWN; 1 means UP
+	if(!target_zlevel)
+		return 0
+
+	else if(!fake_zlevel)
+		return 1
+
+	else if(target_zlevel < fake_zlevel)
+		return 1
+	else
+		return 0
 
 /datum/shuttle/ferry/supply/multi/at_station()
 	return fake_zlevel
@@ -126,7 +154,7 @@
 		if (moving_status == SHUTTLE_IDLE)
 			return	//someone cancelled the launch
 
-		if (target_zlevel != supply_controller.primary_fake_zlevel)
+		if (!target_zlevel)
 			if(fake_zlevel == supply_controller.primary_fake_zlevel)
 				raise_railings()
 			sleep(12)
@@ -137,7 +165,7 @@
 				if(fake_zlevel == supply_controller.primary_fake_zlevel)
 					lower_railings()
 				return
-		else	//at centcom
+		else if(!fake_zlevel)	//at centcom
 			supply_controller.buy()
 
 		//We pretend it's a long_jump by making the shuttle stay at centcom for the "in-transit" period.
@@ -157,13 +185,9 @@
 				o.plane = elevator_animation.plane
 
 		//If we are at the away_area then we are just pretending to move, otherwise actually do the move
-		if (target_zlevel && fake_zlevel == null)
+		if(get_movement_direction())
 			move_elevator_up(origin, destination)
-		else if(target_zlevel == null && fake_zlevel)
-			move_elevator_down(origin, destination)
-		else if(fake_zlevel < target_zlevel)
-			move_elevator_up(origin, destination)
-		else if(fake_zlevel > target_zlevel)
+		else
 			move_elevator_down(origin, destination)
 
 		var/area/target_area
@@ -177,9 +201,10 @@
 		stop_gears()
 		elevator_animation.vis_contents.Cut()
 
-		if (!at_station())	//at centcom
+		var/at_station_result = at_station()
+		if (!at_station_result)	//at centcom
 			handle_sell()
-		else
+		else if(at_station_result == supply_controller.primary_fake_zlevel)
 			lower_railings()
 
 		spawn(0)
@@ -204,6 +229,8 @@
 /datum/shuttle/ferry/supply/multi/move(area/origin, area/destination)
 	update_shaft_projectors(1)
 	update_shaft_effects(1)
+	for(var/turf/closed/wall/supply_shaft/SS in transit_location_walls)
+		SS.set_movement_dir(get_movement_direction())
 	..()
 	for(var/turf/T in get_area(GLOB.supply_elevator_turfs[target_zlevel]))
 		T.layer = initial(T.layer)
@@ -215,7 +242,6 @@
 	update_shaft_projectors(2)
 
 /datum/shuttle/ferry/supply/multi/proc/update_shaft_effects(mode)
-	message_admins("update_shaft_effects()-->mode:[mode] \n target_zlevel:[target_zlevel] \n fake_zlevel:[fake_zlevel]")
 	switch(mode)
 		if(1)
 			if(target_zlevel)
@@ -246,7 +272,6 @@
 	//this assumes the projectors are from lower zlevels [FROM INSIDE A SHAFT]
 	//and that lower zlevels are ordered from 1 up moving downwards
 	//all logic handled by /datum/controller/subsystem/fz_transitions/fire()
-	message_admins("update_shaft_projectors()-->mode:[mode] \n target_zlevel:[target_zlevel] \n fake_zlevel:[fake_zlevel]")
 	switch(mode)
 		if(1)
 			if(target_zlevel && target_zlevel + 1 <= length(GLOB.supply_elevator_turfs))

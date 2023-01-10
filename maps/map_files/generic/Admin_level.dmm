@@ -493,6 +493,12 @@
 	},
 /turf/open/space/transit/east/shuttlespace_ew4,
 /area/space)
+"da" = (
+/turf/closed/wall/supply_shaft{
+	dir = 8;
+	animation_offset = 3
+	},
+/area/centcom/control)
 "dg" = (
 /turf/open/space/transit/north/shuttlespace_ns4,
 /area/almayer/evacuation/stranded/pod9)
@@ -3152,6 +3158,11 @@
 	},
 /turf/open/space,
 /area/space/almayer/lifeboat_dock)
+"mZ" = (
+/turf/closed/wall/supply_shaft{
+	dir = 1
+	},
+/area/centcom/control)
 "ne" = (
 /turf/open/space/transit/east/shuttlespace_ew8,
 /area/space)
@@ -3234,6 +3245,12 @@
 	},
 /turf/open/space/transit/east/shuttlespace_ew6,
 /area/space)
+"ol" = (
+/turf/closed/wall/supply_shaft{
+	dir = 1;
+	animation_offset = 2
+	},
+/area/centcom/control)
 "op" = (
 /obj/structure/machinery/cryopod,
 /obj/structure/sign/safety/cryo{
@@ -3443,7 +3460,7 @@
 	icon_state = "test_floor5";
 	tag = "icon-test_floor5"
 	},
-/area/space)
+/area/supply/transit)
 "sy" = (
 /obj/effect/step_trigger/teleporter/random{
 	affect_ghosts = 1;
@@ -3544,6 +3561,12 @@
 	icon_state = "kitchen"
 	},
 /area/adminlevel/ert_station)
+"us" = (
+/turf/closed/wall/supply_shaft{
+	animation_offset = "corner";
+	dir = 4
+	},
+/area/centcom/control)
 "uI" = (
 /turf/open/floor/almayer{
 	icon_state = "red";
@@ -3598,6 +3621,11 @@
 	tag = "icon-sterile"
 	},
 /area/adminlevel/ert_station)
+"vs" = (
+/turf/closed/wall/supply_shaft{
+	animation_offset = 4
+	},
+/area/centcom/control)
 "vB" = (
 /obj/structure/surface/table/reinforced/black,
 /obj/effect/spawner/random/toy,
@@ -3789,11 +3817,20 @@
 	icon_state = "kitchen"
 	},
 /area/adminlevel/ert_station)
+"yV" = (
+/turf/closed/wall/supply_shaft{
+	animation_offset = "corner";
+	dir = 8
+	},
+/area/centcom/control)
 "yY" = (
 /turf/closed/shuttle/lifeboat{
 	icon_state = "0,5"
 	},
 /area/shuttle/distress/start_small)
+"zf" = (
+/turf/closed/wall/supply_shaft,
+/area/centcom/control)
 "zg" = (
 /obj/structure/machinery/chem_dispenser/soda{
 	density = 0;
@@ -3863,6 +3900,12 @@
 	tag = "icon-sterile_green_side (NORTHWEST)"
 	},
 /area/adminlevel/ert_station)
+"zT" = (
+/turf/closed/wall/supply_shaft{
+	dir = 8;
+	animation_offset = 2
+	},
+/area/centcom/control)
 "Al" = (
 /obj/structure/machinery/door/poddoor/shutters/transit{
 	id = "s_umbilical"
@@ -4000,6 +4043,11 @@
 	tag = "icon-redfull"
 	},
 /area/adminlevel/ert_station)
+"CM" = (
+/turf/closed/wall/supply_shaft{
+	animation_offset = 2
+	},
+/area/centcom/control)
 "CN" = (
 /obj/structure/sign/safety/bathunisex{
 	pixel_x = -17
@@ -4146,6 +4194,12 @@
 	tag = "icon-red (WEST)"
 	},
 /area/adminlevel/ert_station)
+"EC" = (
+/turf/closed/wall/supply_shaft{
+	dir = 8;
+	animation_offset = 4
+	},
+/area/centcom/control)
 "EI" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/item/clothing/suit/chef/classic,
@@ -4155,7 +4209,7 @@
 /area/adminlevel/ert_station)
 "EP" = (
 /turf/open/floor/plating/bare_catwalk,
-/area/space)
+/area/supply/transit)
 "ET" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 1;
@@ -4225,6 +4279,12 @@
 	tag = "icon-silver"
 	},
 /area/adminlevel/ert_station/shuttle_dispatch)
+"FZ" = (
+/turf/closed/wall/supply_shaft{
+	dir = 4;
+	animation_offset = 3
+	},
+/area/centcom/control)
 "Ge" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -4346,14 +4406,31 @@
 	tag = "icon-sterile"
 	},
 /area/adminlevel/ert_station)
+"GX" = (
+/turf/closed/wall/supply_shaft{
+	animation_offset = 3
+	},
+/area/centcom/control)
 "Hj" = (
 /turf/closed/shuttle/lifeboat{
 	icon_state = "0,0"
 	},
 /area/shuttle/distress/start_small)
+"Hx" = (
+/turf/closed/wall/supply_shaft{
+	dir = 1;
+	animation_offset = 4
+	},
+/area/centcom/control)
 "HB" = (
 /turf/open/space/transit/north/shuttlespace_ns4,
 /area/almayer/evacuation/stranded/pod18)
+"HC" = (
+/turf/closed/wall/supply_shaft{
+	dir = 4;
+	animation_offset = 1
+	},
+/area/centcom/control)
 "HL" = (
 /obj/structure/sign/catclock{
 	pixel_x = 32
@@ -4475,6 +4552,12 @@
 	tag = "icon-sterile"
 	},
 /area/adminlevel/ert_station)
+"JQ" = (
+/turf/closed/wall/supply_shaft{
+	dir = 1;
+	animation_offset = 1
+	},
+/area/centcom/control)
 "JT" = (
 /obj/structure/sink{
 	dir = 8;
@@ -4489,6 +4572,12 @@
 /obj/structure/machinery/cm_vending/sorted/walkman,
 /turf/open/floor/wood/ship,
 /area/adminlevel/ert_station)
+"JY" = (
+/turf/closed/wall/supply_shaft{
+	dir = 1;
+	animation_offset = 3
+	},
+/area/centcom/control)
 "JZ" = (
 /obj/structure/bed/chair/office/light{
 	dir = 4;
@@ -4691,6 +4780,12 @@
 	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/ert_station)
+"Mj" = (
+/turf/closed/wall/supply_shaft{
+	animation_offset = "corner";
+	dir = 1
+	},
+/area/centcom/control)
 "Mk" = (
 /obj/structure/sign/safety,
 /turf/closed/wall,
@@ -4719,6 +4814,12 @@
 	tag = "icon-sterile"
 	},
 /area/adminlevel/ert_station)
+"MX" = (
+/turf/closed/wall/supply_shaft{
+	dir = 8;
+	animation_offset = 1
+	},
+/area/centcom/control)
 "Nc" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
@@ -4772,10 +4873,11 @@
 /turf/closed/wall,
 /area/adminlevel/ert_station)
 "NP" = (
-/turf/closed/wall/almayer/outer{
-	name = "reinforced hull"
+/turf/closed/wall/supply_shaft{
+	dir = 4;
+	animation_offset = 2
 	},
-/area/space)
+/area/centcom/control)
 "NU" = (
 /obj/structure/machinery/vending/cola,
 /turf/open/floor/almayer{
@@ -4834,6 +4936,11 @@
 /obj/structure/sign/safety/maint,
 /turf/closed/wall,
 /area/adminlevel/ert_station)
+"OG" = (
+/turf/closed/wall/supply_shaft{
+	animation_offset = 1
+	},
+/area/centcom/control)
 "OI" = (
 /obj/structure/reagent_dispensers/watertank,
 /turf/open/floor/almayer{
@@ -4886,6 +4993,11 @@
 	tag = "icon-silver (WEST)"
 	},
 /area/adminlevel/ert_station)
+"PB" = (
+/turf/closed/wall/supply_shaft{
+	dir = 8
+	},
+/area/centcom/control)
 "PE" = (
 /turf/open/floor/engine,
 /area/adminlevel/simulation)
@@ -4988,6 +5100,11 @@
 	tag = "icon-sterile"
 	},
 /area/adminlevel/ert_station)
+"Rz" = (
+/turf/closed/wall/supply_shaft{
+	dir = 4
+	},
+/area/centcom/control)
 "RF" = (
 /turf/open/floor/almayer{
 	icon_state = "sterile_green";
@@ -5093,6 +5210,11 @@
 	icon_state = "tcomms"
 	},
 /area/shuttle/distress/start_small)
+"SI" = (
+/turf/closed/wall/supply_shaft{
+	animation_offset = "corner"
+	},
+/area/centcom/control)
 "SM" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/computer/station_alert{
@@ -5362,6 +5484,12 @@
 	tag = "icon-sterile"
 	},
 /area/adminlevel/ert_station)
+"We" = (
+/turf/closed/wall/supply_shaft{
+	dir = 4;
+	animation_offset = 4
+	},
+/area/centcom/control)
 "Wn" = (
 /turf/open/floor/almayer{
 	dir = 1;
@@ -15702,11 +15830,11 @@ aa
 aC
 aa
 aa
-aa
-aa
-aa
-aa
-aa
+as
+as
+as
+as
+as
 aa
 aa
 as
@@ -15853,21 +15981,21 @@ bj
 aa
 aC
 aa
+SI
+We
+FZ
 NP
-NP
-NP
-NP
-NP
-NP
-NP
+HC
+Rz
+us
 as
-NP
-NP
-NP
-NP
-NP
-NP
-NP
+fn
+fn
+fn
+fn
+fn
+fn
+fn
 as
 TT
 as
@@ -16005,21 +16133,21 @@ aY
 aa
 aC
 aa
-NP
+zf
 EP
 EP
 EP
 EP
 EP
-NP
+Hx
 as
-NP
-as
-as
+fn
 as
 as
 as
-NP
+as
+as
+fn
 as
 TT
 as
@@ -16157,21 +16285,21 @@ bj
 aa
 aC
 aa
-NP
+OG
 EP
 sr
 EP
 sr
 EP
-NP
+JY
 as
-NP
-as
-as
+fn
 as
 as
 as
-NP
+as
+as
+fn
 as
 TT
 as
@@ -16309,21 +16437,21 @@ aY
 aa
 aC
 aa
-NP
+CM
 EP
 EP
 EP
 EP
 EP
-NP
+ol
 as
-NP
+fn
 as
 as
 ae
 as
 as
-NP
+fn
 as
 TT
 as
@@ -16461,21 +16589,21 @@ bj
 aa
 aC
 aa
-NP
+GX
 EP
 sr
 EP
 sr
 EP
-NP
+JQ
 as
-NP
-as
-as
+fn
 as
 as
 as
-NP
+as
+as
+fn
 as
 TT
 as
@@ -16613,21 +16741,21 @@ aY
 aa
 aC
 aa
-NP
+vs
 EP
 EP
 EP
 EP
 EP
-NP
+mZ
 as
-NP
-as
-as
+fn
 as
 as
 as
-NP
+as
+as
+fn
 as
 TT
 as
@@ -16765,21 +16893,21 @@ bj
 aa
 aC
 aa
-NP
-NP
-NP
-NP
-NP
-NP
-NP
+yV
+PB
+MX
+zT
+da
+EC
+Mj
 as
-NP
-NP
-NP
-NP
-NP
-NP
-NP
+fn
+fn
+fn
+fn
+fn
+fn
+fn
 as
 TT
 as
@@ -16918,11 +17046,11 @@ as
 aC
 aa
 aa
-aa
-aa
-aa
-aa
-aa
+as
+as
+as
+as
+as
 aa
 aa
 aa
@@ -17974,11 +18102,11 @@ as
 as
 as
 as
-as
-as
-as
-as
-as
+aa
+aa
+aa
+aa
+aa
 TT
 as
 fn

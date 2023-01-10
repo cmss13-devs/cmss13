@@ -254,30 +254,41 @@
 		for(var/obj/effect/decal/cleanable/C in contents) //for the off chance of someone bleeding mid=flight
 			qdel(C)
 
+/turf/open/floor/almayer/empty/multi_elevator
+	var/is_bottom_of_shaft = FALSE
+
 /turf/open/floor/almayer/empty/multi_elevator/Entered(atom/movable/AM)
-	if(AM == src ||	istype(AM, /obj/effect/projector) || istype(AM, /obj/effect/landmark/multi_fakezlevel_supply_elevator) || istype(AM, /obj/effect/step_trigger/clone_cleaner) || istype(AM, /obj/effect/elevator/supply/multi) || istype(AM, /atom/movable/clone))
+	if(AM == src || istype(AM, /obj/docking_port/stationary/vehicle_elevator) || istype(AM, /obj/structure) ||	istype(AM, /obj/effect/projector) || istype(AM, /obj/effect/landmark/multi_fakezlevel_supply_elevator) || istype(AM, /obj/effect/step_trigger/clone_cleaner) || istype(AM, /obj/effect/elevator/supply/multi) || istype(AM, /atom/movable/clone))
 		return
 	. = ..()
 
 /turf/open/floor/almayer/empty/multi_elevator/enter_depths(atom/movable/AM)
 	if(AM.throwing == 0 && istype(get_turf(AM), type))
-		var/datum/shuttle/ferry/supply/multi/the_cargo_elevator = supply_controller.shuttle
-		var/area/my_area = get_area(src)
+		//This is assuming the shaft is alined across fake_zlevels -- if you're getting moved to random locations blame the mappers
+		var/turf/fallonto_turf = get_turf(src)
+		var/area/my_area = get_area(fallonto_turf)
+		if(my_area.fake_zlevel != 3)
+			for(var/i=0; i<101; i++)
+				fallonto_turf = get_step(fallonto_turf, WEST)
+		else
+			fallonto_turf = ..(AM)
+			return
+		AM.forceMove(fallonto_turf)
 
-		if(!the_cargo_elevator.fake_zlevel || the_cargo_elevator.fake_zlevel > my_area.fake_zlevel)
-			var/obj/structure/disposalholder/H = new()
-			AM.forceMove(H)
-		else if(the_cargo_elevator.fake_zlevel < my_area.fake_zlevel)
-			AM.forceMove(GLOB.supply_elevator_turfs[the_cargo_elevator.fake_zlevel])
-			if(ishuman(AM))
-				var/mob/living/carbon/human/human_who_fell = AM
-				human_who_fell.take_overall_damage(30 * (the_cargo_elevator.fake_zlevel - my_area.fake_zlevel), 0, FALSE, FALSE, "Blunt Trauma")
-				for(var/i in human_who_fell.limbs)
-					if(istype(i, /obj/limb/leg/l_leg/) || istype(i, /obj/limb/leg/r_leg))
-						var/obj/limb/leg/human_who_fells_leg = i
-						human_who_fells_leg.take_damage_bone_break(15 * (the_cargo_elevator.fake_zlevel - my_area.fake_zlevel))
-			//playsound here of stuff clattering on the elevator floor below
+		if(ishuman(AM))
+			var/mob/living/carbon/human/human_who_fell = AM
+			human_who_fell.take_overall_damage(rand(40, 60), 0, FALSE, FALSE, "Blunt Trauma")
+			human_who_fell.KnockDown(5)
+			for(var/i in human_who_fell.limbs)
+				if(istype(i, /obj/limb/leg/l_leg/) || istype(i, /obj/limb/leg/r_leg))
+					var/obj/limb/leg/human_who_fells_leg = i
+					human_who_fells_leg.take_damage_bone_break(35)
+			to_chat(human_who_fell, SPAN_WARNING("You fall into empty space!"))
 
+		if(ismob(AM))
+			playsound(AM, 'sound/effects/body_fall.ogg', 50, 1)
+		else
+			playsound(AM, 'sound/effects/shaft_fall.ogg',50, 1)
 	else
 		for(var/obj/effect/decal/cleanable/C in contents) //for the off chance of someone bleeding mid=flight
 			qdel(C)

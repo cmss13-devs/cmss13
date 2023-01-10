@@ -226,7 +226,7 @@
 		H.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/sechud/prescription(H), WEAR_EYES)
 	else
 		H.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/sechud(H), WEAR_EYES)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/beret/marine/mp/provost(H), WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/beret/marine/mp/provost(H), WEAR_HEAD)
 	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/shotgun/large/riot(H), WEAR_L_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/shotgun/large/slug(H), WEAR_R_STORE)
@@ -268,7 +268,7 @@
 		H.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/sechud/prescription(H), WEAR_EYES)
 	else
 		H.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/sechud(H), WEAR_EYES)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/beret/marine/mp/provost/senior(H), WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/beret/marine/mp/provost/senior(H), WEAR_HEAD)
 	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/shotgun/large/riot(H), WEAR_L_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/shotgun/large/slug(H), WEAR_R_STORE)
@@ -312,7 +312,7 @@
 		H.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/sechud/prescription(H), WEAR_EYES)
 	else
 		H.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/sechud(H), WEAR_EYES)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/beret/marine/mp/provost/senior(H), WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/beret/marine/mp/provost/senior(H), WEAR_HEAD)
 	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/device/taperecorder(H), WEAR_L_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(H), WEAR_R_STORE)
@@ -346,7 +346,7 @@
 		H.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/sechud/prescription(H), WEAR_EYES)
 	else
 		H.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/sechud(H), WEAR_EYES)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/beret/marine/mp/provost/senior(H), WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/beret/marine/mp/provost/senior(H), WEAR_HEAD)
 	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/device/taperecorder(H), WEAR_L_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(H), WEAR_R_STORE)
@@ -534,7 +534,7 @@
 		H.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/sechud/prescription(H), WEAR_EYES)
 	else
 		H.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/sechud(H), WEAR_EYES)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/beret/marine/mp/tis(H), WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/beret/marine/mp/tis(H), WEAR_HEAD)
 	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/device/taperecorder(H), WEAR_L_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/pistol/pmc_mateba(H), WEAR_R_STORE)

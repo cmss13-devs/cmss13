@@ -223,7 +223,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth_snowflake, list(
 	list("Surgical Cap, Blue", 12, /obj/item/clothing/head/surgery/purple, null, VENDOR_ITEM_REGULAR),
 	list("Surgical Cap, Green", 12, /obj/item/clothing/head/surgery/green, null, VENDOR_ITEM_REGULAR),
 	list("Ushanka", 12, /obj/item/clothing/head/ushanka, null, VENDOR_ITEM_REGULAR),
-	list("MP Cap", 12, /obj/item/clothing/head/helmet/beret/marine/mp/mpcap, null, VENDOR_ITEM_REGULAR),
+	list("MP Cap", 12, /obj/item/clothing/head/beret/marine/mp/mpcap, null, VENDOR_ITEM_REGULAR),
 	list("RO Cap", 12, /obj/item/clothing/head/cmcap/req, null, VENDOR_ITEM_REGULAR),
 	list("Officer Cap", 12, /obj/item/clothing/head/cmcap/ro, null, VENDOR_ITEM_REGULAR),
 

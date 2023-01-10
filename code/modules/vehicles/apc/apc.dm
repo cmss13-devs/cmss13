@@ -201,7 +201,7 @@ GLOBAL_LIST_EMPTY(command_apc_list)
 /obj/effect/vehicle_spawner/apc/spawn_vehicle()
 	var/obj/vehicle/multitile/apc/APC = new (loc)
 
-	SSminimaps.add_marker(APC, APC.z, MINIMAP_FLAG_MARINE, "uav")
+	SSminimaps.add_marker(APC, APC.z, MINIMAP_FLAG_MARINE, "apc")
 
 	load_misc(APC)
 	load_fpw(APC)

@@ -183,12 +183,7 @@
 	..()
 	client.move_delay = MINIMAL_MOVEMENT_INTERVAL
 
-	for(var/datum/action/actions as anything in actions)
-		if(actions.type == /datum/action/minimap/observer)
-			return
-
-	var/datum/action/minimap/observer/mini = new
-	mini.give_to(src)
+	give_action(src, /datum/action/minimap/observer)
 
 /mob/dead/observer/Destroy()
 	QDEL_NULL(orbit_menu)

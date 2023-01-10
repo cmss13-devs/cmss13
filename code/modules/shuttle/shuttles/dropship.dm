@@ -18,9 +18,6 @@
 	callTime = DROPSHIP_TRANSIT_DURATION
 	rechargeTime = SHUTTLE_RECHARGE
 
-/obj/docking_port/mobile/marine_dropship/proc/get_door_data()
-	return door_control.get_data()
-
 /obj/docking_port/mobile/marine_dropship/Initialize(mapload)
 	. = ..()
 	door_control = new()
@@ -42,15 +39,6 @@
 	in_flyby = TRUE
 	var/obj/docking_port/stationary/dockedAt = get_docked()
 	SSshuttle.moveShuttle(src.id, dockedAt.id, callTime)
-
-/obj/docking_port/mobile/marine_dropship/proc/control_doors(var/action, var/direction, var/force)
-	// its been locked down by the queen
-	if(door_override)
-		return
-	door_control.control_doors(action, direction, force)
-
-/obj/docking_port/mobile/marine_dropship/proc/is_door_locked(var/direction)
-	return door_control.is_door_locked(direction)
 
 /obj/docking_port/mobile/marine_dropship/proc/get_door_data()
 	return door_control.get_data()

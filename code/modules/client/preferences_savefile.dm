@@ -129,6 +129,7 @@
 	S["toggles_ert"] >> toggles_ert
 	S["toggles_admin"] >> toggles_admin
 	S["UI_style"] >> UI_style
+	S["tgui_say"] >> tgui_say
 	S["UI_style_color"] >> UI_style_color
 	S["UI_style_alpha"] >> UI_style_alpha
 	S["item_animation_pref_level"] >> item_animation_pref_level
@@ -190,6 +191,7 @@
 	ooccolor = sanitize_hexcolor(ooccolor, CONFIG_GET(string/ooc_color_default))
 	lastchangelog = sanitize_text(lastchangelog, initial(lastchangelog))
 	UI_style = sanitize_inlist(UI_style, list("white", "dark", "midnight", "orange", "old"), initial(UI_style))
+	tgui_say = sanitize_integer(tgui_say, FALSE, TRUE, TRUE)
 	be_special = sanitize_integer(be_special, 0, 65535, initial(be_special))
 	default_slot = sanitize_integer(default_slot, 1, MAX_SAVE_SLOTS, initial(default_slot))
 	toggles_chat = sanitize_integer(toggles_chat, 0, 65535, initial(toggles_chat))
@@ -259,6 +261,11 @@
 
 	S["remembered_key_bindings"] << GLOB.keybindings_by_name
 
+	if(toggles_chat & SHOW_TYPING)
+		owner.typing_indicators = FALSE
+	else
+		owner.typing_indicators = TRUE
+
 	if(!observer_huds)
 		observer_huds = list("Medical HUD" = FALSE, "Security HUD" = FALSE, "Squad HUD" = FALSE, "Xeno Status HUD" = FALSE)
 
@@ -280,6 +287,7 @@
 	S["UI_style"] << UI_style
 	S["UI_style_color"] << UI_style_color
 	S["UI_style_alpha"] << UI_style_alpha
+	S["tgui_say"] << tgui_say
 	S["item_animation_pref_level"] << item_animation_pref_level
 	S["pain_overlay_pref_level"] << pain_overlay_pref_level
 	S["stylesheet"] << stylesheet

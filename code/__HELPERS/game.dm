@@ -182,8 +182,6 @@
 					. |= M // Since we're already looping through mobs, why bother using |= ? This only slows things down.
 	return .
 
-#define SIGN(X) ((X<0)?-1:1)
-
 /proc/inLineOfSight(X1,Y1,X2,Y2,Z=1,PX1=16.5,PY1=16.5,PX2=16.5,PY2=16.5)
 	var/turf/T
 	if(X1==X2)

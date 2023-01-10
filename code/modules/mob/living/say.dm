@@ -72,8 +72,6 @@ var/list/department_radio_keys = list(
 /mob/living/proc/remove_speech_bubble(var/mutable_appearance/speech_bubble, var/list_of_mobs)
 	overlays -= speech_bubble
 
-	speech_bubble = null
-
 /mob/living/say(message, datum/language/speaking = null, verb="says", alt_name="", italics=0, message_range = world_view_size, sound/speech_sound, sound_vol, nolog = 0, message_mode = null, bubble_type = bubble_icon)
 	var/turf/T
 
@@ -126,18 +124,16 @@ var/list/department_radio_keys = list(
 					listening |= M
 
 		var/speech_bubble_test = say_test(message)
-		var/image/speech_bubble = image(icon = 'icons/mob/effects/talk.dmi', loc = src, icon_state = "[bubble_type][speech_bubble_test]")
-		speech_bubble.plane = ABOVE_GAME_PLANE
+		var/image/speech_bubble = image('icons/mob/effects/talk.dmi', src, "[bubble_type][speech_bubble_test]", FLY_LAYER)
 
 		var/not_dead_speaker = (stat != DEAD)
 		if(not_dead_speaker)
 			langchat_speech(message, listening, speaking)
 		for(var/mob/M as anything in listening)
-			if(not_dead_speaker)
-				M << speech_bubble
 			M.hear_say(message, verb, speaking, alt_name, italics, src, speech_sound, sound_vol)
+		overlays += speech_bubble
 
-		addtimer(CALLBACK(src, PROC_REF(remove_speech_bubble), speech_bubble, listening), 30)
+		addtimer(CALLBACK(src, PROC_REF(remove_speech_bubble), speech_bubble), 3 SECONDS)
 
 		for(var/obj/O as anything in listening_obj)
 			if(O) //It's possible that it could be deleted in the meantime.

@@ -207,3 +207,16 @@
 					CB.Invoke(src)
 				else
 					CB.Invoke()
+
+/atom/movable/proc/throw_random_direction(range, speed = 0, atom/thrower, spin, launch_type = NORMAL_LAUNCH, pass_flags = NO_FLAGS)
+	var/throw_direction = pick(CARDINAL_ALL_DIRS)
+
+	var/turf/furthest_turf = get_turf(src)
+	var/turf/temp_turf = get_turf(src)
+	for (var/x in 1 to range)
+		temp_turf = get_step(furthest_turf, throw_direction)
+		if (!temp_turf)
+			break
+		furthest_turf = temp_turf
+
+	throw_atom(furthest_turf, range, speed, thrower, spin, launch_type, pass_flags)

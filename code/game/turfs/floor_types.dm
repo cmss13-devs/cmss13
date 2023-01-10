@@ -238,28 +238,49 @@
 /turf/open/floor/almayer/empty/proc/enter_depths(var/atom/movable/AM)
 	if(AM.throwing == 0 && istype(get_turf(AM), /turf/open/floor/almayer/empty))
 		AM.visible_message(SPAN_WARNING("[AM] falls into the depths!"), SPAN_WARNING("You fall into the depths!"))
-		for(var/i in GLOB.disposal_retrieval_list)
-			var/obj/structure/disposaloutlet/retrieval/R = i
-			if(R.z != src.z) continue
-			var/obj/structure/disposalholder/H = new()
-			AM.forceMove(H)
-			sleep(10)
-			H.forceMove(R)
-			for(var/mob/living/M in H)
-				M.take_overall_damage(100, 0, "Blunt Trauma")
-			sleep(20)
-			for(var/mob/living/M in H)
-				M.take_overall_damage(20, 0, "Blunt Trauma")
-			for(var/obj/effect/decal/cleanable/C in contents) //get rid of blood
-				qdel(C)
-			R.expel(H)
+		if(!ishuman(AM))
+			qdel(AM)
 			return
+		var/mob/living/carbon/human/thrown_human = AM
+		for(var/atom/computer as anything in supply_controller.bound_supply_computer_list)
+			computer.balloon_alert_to_viewers("you hear horrifying noises coming from the elevator!")
 
-		qdel(AM)
+		var/area/area_shuttle = supply_controller.shuttle?.get_location_area()
+		if(!area_shuttle)
+			return
+		var/list/turflist = list()
+		for(var/turf/turf in area_shuttle)
+			turflist |= turf
+
+		thrown_human.forceMove(pick(turflist))
+
+		var/timer = 0.5 SECONDS
+		for(var/index in 1 to 10)
+			timer += 0.5 SECONDS
+			addtimer(CALLBACK(src, PROC_REF(crush_human), thrown_human), timer)
+		return
 
 	else
 		for(var/obj/effect/decal/cleanable/C in contents) //for the off chance of someone bleeding mid=flight
 			qdel(C)
+
+/turf/open/floor/almayer/empty/proc/crush_human(var/mob/living/carbon/human/mauled_human)
+
+	mauled_human.visible_message(SPAN_HIGHDANGER("The machinery crushes [mauled_human]"), SPAN_HIGHDANGER("The elevator machinery is CRUSHING YOU!"))
+
+	var/genderscream = mauled_human.gender == MALE ? "male_scream" : "female_scream"
+	if(mauled_human.stat != DEAD)
+		mauled_human.emote("scream")
+		playsound_area(get_area(src), genderscream, 25)
+
+	mauled_human.throw_random_direction(2, spin = TRUE)
+	apply_effect(5, WEAKEN)
+	shake_camera(mauled_human, 20, 1)
+	mauled_human.apply_armoured_damage(60, ARMOR_MELEE, BRUTE, rand_zone())
+
+	if(prob(4))
+		var/obj/limb/dropped_limb = pick(mauled_human.limbs)
+		dropped_limb.droplimb(FALSE, FALSE, "machinery")
 
 //Others
 /turf/open/floor/almayer/uscm

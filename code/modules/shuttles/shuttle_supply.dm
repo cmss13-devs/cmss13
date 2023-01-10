@@ -154,6 +154,8 @@
 	return (moving_status == SHUTTLE_IDLE)
 
 /datum/shuttle/ferry/supply/proc/raise_railings()
+	if(supply_controller.black_market_enabled) // no safety railings!
+		return
 	var/effective = 0
 	for(var/obj/structure/machinery/door/poddoor/M in machines)
 		if(M.id == railing_id && !M.density)

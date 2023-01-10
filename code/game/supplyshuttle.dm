@@ -6,6 +6,8 @@
 #define SUPPLY_COST_MULTIPLIER 1.08
 #define ASRS_COST_MULTIPLIER 1.2
 
+#define KILL_MENDOZA -1
+
 GLOBAL_LIST_EMPTY_TYPED(asrs_empty_space_tiles_list, /turf/open/floor/almayer/empty)
 
 var/datum/controller/supply/supply_controller = new()
@@ -497,12 +499,6 @@ var/datum/controller/supply/supply_controller = new()
 /datum/controller/supply/proc/forbidden_atoms_check(atom/A)
 	if(istype(A,/mob/living) && !black_market_enabled)
 		return 1
-	if(istype(A,/obj/item/disk/nuclear))
-		return 1
-	if(istype(A,/obj/item/device/radio/beacon))
-		return 1
-	if(istype(A,/obj/item/stack/sheet/mineral/phoron))
-		return 1
 
 	for(var/i=1, i<=A.contents.len, i++)
 		var/atom/B = A.contents[i]
@@ -529,27 +525,31 @@ var/datum/controller/supply/supply_controller = new()
 
 		//black market points
 		if(black_market_enabled)
-			var/points_to_add
-			if(istype(movable_atom, /obj))
-				var/obj/black_object = movable_atom
-				if(black_object.black_market_value)
-					if(istype(black_object, /obj/item/stack))
-						var/obj/item/stack/black_stack = black_object
-						points_to_add += (black_stack.black_market_value * black_stack.amount)
-					else
-						points_to_add += black_object.black_market_value
-			else if(istype(movable_atom, /mob/living))
-				var/mob/black_mob = movable_atom
-				var/result = handle_special_mob_insert(black_mob)
-				if(result)
-					points_to_add += result
+			var/points_to_add = get_black_market_value(movable_atom)
+			if(points_to_add == KILL_MENDOZA)
+				kill_mendoza()
 			black_market_sold_items[movable_atom.type] += 1
-			// so they cant sell the same thing over and over and over
-			points_to_add = POSITIVE(points_to_add - black_market_sold_items[movable_atom.type] * 0.5)
 			black_market_points += points_to_add
 
+		// Don't disintegrate humans! Maul their corpse instead. >:)
+		if(ishuman(movable_atom))
+			maul_human(movable_atom)
+
 		// Delete everything else.
-		qdel(movable_atom)
+		else qdel(movable_atom)
+
+/datum/controller/supply/proc/maul_human(var/mob/living/carbon/human/mauled_human)
+
+	for(var/atom/computer as anything in bound_supply_computer_list)
+		computer.balloon_alert_to_viewers("you hear horrifying noises coming from the elevator!")
+
+	var/genderscream = mauled_human.gender == MALE ? "male_scream" : "female_scream"
+	if(mauled_human.stat != DEAD)
+		mauled_human.emote("scream")
+		play_sound_handler(genderscream, 0.5 SECONDS)
+
+	for(var/i in 1 to 15)
+		mauled_human.apply_armoured_damage(40, ARMOR_MELEE, BRUTE, rand_zone())
 
 //Buyin
 /datum/controller/supply/proc/buy()
@@ -1135,7 +1135,27 @@ var/datum/controller/supply/supply_controller = new()
 			temp += "If you see any, er.. 'elite' equipment, be sure to throw it down here. I know a few people that'd offer quite the amount of money for a USCM commander's gun, or pet. Even the armor is worth a fortune. Don't kill yourself doin' it, though.<BR>"
 			temp += "Hell, any kind of wildlife too, actually! Anythin' that isn't a replicant animal is worth a truly ridiculous sum back on Terra, I'll give ya quite the amount of points for 'em. As long as it isn't plannin' on killing me.<BR>"
 
-/datum/controller/supply/proc/handle_special_mob_insert(var/mob/living/black_mob)
+/proc/get_black_market_value(var/atom/movable/movable_atom)
+	var/return_value
+	if(isobj(movable_atom))
+		var/obj/black_object = movable_atom
+		if(black_object.black_market_value)
+			if(istype(black_object, /obj/item/stack))
+				var/obj/item/stack/black_stack = black_object
+				return_value += (black_stack.black_market_value * black_stack.amount)
+			else
+				return_value += black_object.black_market_value
+	else if(isliving(movable_atom))
+		var/mob/black_mob = movable_atom
+		var/result = handle_special_mob_insert(black_mob)
+		if(result)
+			return_value += result
+
+	// so they cant sell the same thing over and over and over
+	return_value = POSITIVE(return_value - supply_controller.black_market_sold_items[movable_atom.type] * 0.5)
+	return return_value
+
+/proc/handle_special_mob_insert(var/mob/living/black_mob)
 	var/return_value
 	if(isanimal(black_mob))
 		return_value = 25 // no death check - he can sell the hide or something i guess.
@@ -1145,15 +1165,13 @@ var/datum/controller/supply/supply_controller = new()
 			return_value = 50 //mendoza likes pets
 		else
 			return_value = 0
-	if(istype(black_mob, /mob/living/simple_animal/hostile) || istype(black_mob, /mob/living/carbon/Xenomorph) && !istype(black_mob, /mob/living/simple_animal/hostile/retaliate))
+	if(isanimalhostile(black_mob) || isXeno(black_mob) && !isanimalretaliate(black_mob))
 		var/mob/living/hit_hostile = black_mob
 		if(hit_hostile.stat != DEAD)
-			return_value = kill_mendoza() //you fucked up
+			return_value = KILL_MENDOZA
 		else
 			return_value = 25
 
-	// so they cant sell the same thing over and over and over
-	return_value = POSITIVE(return_value - supply_controller.black_market_sold_items[black_mob.type] * 0.5)
 	return return_value
 
 /datum/controller/supply/proc/kill_mendoza()

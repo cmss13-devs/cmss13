@@ -10,8 +10,7 @@
 
 IMPORTANT NOTE!!!!!
 
-black market prices are NOT based on real or in-universe costs. they are based on how much the insane cargo-technician gives a damn about the crate.
-
+black market prices are NOT based on real or in-universe costs. they are based on how much the insane cargo-technician inside the elevator gives a damn about the crate.
 
 ----
 
@@ -33,9 +32,17 @@ black market prices are NOT based on real or in-universe costs. they are based o
 	//no special name so it can be hidden
 
 /obj/structure/largecrate/black_market/unpack()
-	for(var/obj/O in contents)
-		O.black_market_value = 0 //no nesting
+	for(var/obj/content_obj in contents)
+		content_obj.black_market_value = 0 //no free points
+		recursive_points_wipe(content_obj, 1)
 	..()
+
+/obj/structure/largecrate/black_market/proc/recursive_points_wipe(obj/content_obj, var/recursion)
+	if(recursion > 3) // sanity
+		return
+	for(var/obj/nested_obj in content_obj.contents)
+		nested_obj.black_market_value = 0
+		recursive_points_wipe(nested_obj, recursion++)
 
 /* --- SEIZED ITEMS --- */
 

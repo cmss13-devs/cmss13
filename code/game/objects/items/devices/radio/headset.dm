@@ -232,6 +232,8 @@
 		), PROC_REF(turn_on))
 		wearer = user
 		RegisterSignal(user, COMSIG_MOB_LOGIN, PROC_REF(add_hud_tracker))
+		RegisterSignal(user, COMSIG_MOB_DEATH, PROC_REF(set_dead_on_minimap))
+		RegisterSignal(user, COMSIG_HUMAN_SET_UNDEFIBBABLE, PROC_REF(set_undefibbable_on_minimap))
 		if(headset_hud_on)
 			var/datum/mob_hud/H = huds[hud_type]
 			H.add_hud_to(user)
@@ -246,7 +248,9 @@
 	UnregisterSignal(user, list(
 		COMSIG_LIVING_REJUVENATED,
 		COMSIG_HUMAN_REVIVED,
-		COMSIG_MOB_LOGIN
+		COMSIG_MOB_LOGIN,
+		COMSIG_MOB_DEATH,
+		COMSIG_HUMAN_SET_UNDEFIBBABLE
 	))
 	if(user.has_item_in_ears(src)) //dropped() is called before the inventory reference is update.
 		var/datum/mob_hud/H = huds[hud_type]
@@ -269,6 +273,7 @@
 /obj/item/device/radio/headset/proc/turn_on()
 	SIGNAL_HANDLER
 	on = TRUE
+	update_minimap_icon()
 
 /obj/item/device/radio/headset/proc/toggle_squadhud()
 	set name = "Toggle Headset HUD"
@@ -367,7 +372,10 @@
 		marker_flags = MINIMAP_FLAG_MARINE_CLF
 	var/turf/turf_gotten = get_turf(wearer)
 	var/z_level = turf_gotten.z
-	SSminimaps.add_marker(wearer, z_level, marker_flags, "defibbable")
+	if(wearer.assigned_squad)
+		SSminimaps.add_marker(wearer, z_level, marker_flags, wearer.assigned_equipment_preset.minimap_icon, overlay_iconstates = list("defibbable"), color_code = wearer.assigned_squad.minimap_color)
+		return
+	SSminimaps.add_marker(wearer, z_level, marker_flags, wearer.assigned_equipment_preset.minimap_icon, overlay_iconstates = list("defibbable"))
 
 ///Change the minimap icon to a undefibbable icon
 /obj/item/device/radio/headset/proc/set_undefibbable_on_minimap()
@@ -386,7 +394,10 @@
 		marker_flags = MINIMAP_FLAG_MARINE_CLF
 	var/turf/turf_gotten = get_turf(wearer)
 	var/z_level = turf_gotten.z
-	SSminimaps.add_marker(wearer, z_level, marker_flags, "undefibbable")
+	if(wearer.assigned_squad)
+		SSminimaps.add_marker(wearer, z_level, marker_flags, wearer.assigned_equipment_preset.minimap_icon, overlay_iconstates = list("undefibbable"), color_code = wearer.assigned_squad.minimap_color)
+		return
+	SSminimaps.add_marker(wearer, z_level, marker_flags, wearer.assigned_equipment_preset.minimap_icon, overlay_iconstates = list("undefibbable"))
 
 /obj/item/device/radio/headset/proc/remove_minimap()
 	SSminimaps.remove_marker(wearer)

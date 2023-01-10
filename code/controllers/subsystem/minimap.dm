@@ -235,7 +235,7 @@ SUBSYSTEM_DEF(minimaps)
 	if(ismovableatom(target))
 		RegisterSignal(target, COMSIG_MOVABLE_Z_CHANGED, PROC_REF(on_z_change))
 		RegisterSignal(target, COMSIG_MOVABLE_MOVED, PROC_REF(on_move))
-	removal_cbs[target] = CALLBACK(src, PROC_REF(removeimage), blip, target)
+	removal_cbs[target] = CALLBACK(src, PROC_REF(removeimage), blip, target, zlevel)
 	RegisterSignal(target, COMSIG_PARENT_QDELETING, PROC_REF(remove_marker))
 
 
@@ -243,9 +243,9 @@ SUBSYSTEM_DEF(minimaps)
 /**
  * removes an image from raw tracked lists, invoked by callback
  */
-/datum/controller/subsystem/minimaps/proc/removeimage(image/blip, atom/target)
+/datum/controller/subsystem/minimaps/proc/removeimage(image/blip, atom/target, zlevel)
 	for(var/flag in GLOB.all_minimap_flags)
-		var/ref = minimaps_by_z["[target.z]"].images_raw["[flag]"]
+		var/ref = minimaps_by_z["[zlevel]"].images_raw["[flag]"]
 		ref -= blip // see above http://www.byond.com/forum/post/2661309
 	removal_cbs -= target
 

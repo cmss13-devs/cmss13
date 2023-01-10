@@ -213,6 +213,8 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 	items -= occupant //Don't delete the occupant
 	items -= announce //or the autosay radio.
 
+	SSminimaps.remove_marker(src)
+
 	var/list/dept_console = GLOB.frozen_items["REQ"]
 	if(ishuman(occupant))
 		var/mob/living/carbon/human/H = occupant

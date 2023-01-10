@@ -300,6 +300,7 @@ t. optimisticdude
 	name = "surgical drapes"
 	desc = "Used to cover a limb prior to the beginning of a surgical procedure"
 	icon_state = "drapes"
+	gender = PLURAL
 	w_class = SIZE_SMALL
 	flags_item = NOBLUDGEON
 

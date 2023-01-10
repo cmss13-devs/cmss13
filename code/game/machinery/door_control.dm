@@ -241,7 +241,7 @@
 	name = "railing controls"
 	desc = "Allows for raising and lowering the guard rails on the vehicle ASRS elevator when it's raised."
 	id = "vehicle_elevator_railing_aux"
-
+	gender = PLURAL
 	var/busy = FALSE
 
 /obj/structure/machinery/door_control/railings/use_button(mob/living/user, var/force = FALSE)

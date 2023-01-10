@@ -1,5 +1,6 @@
 /obj/effect/decal/warning_stripes
 	name = "warning stripes"
+	gender = PLURAL
 	icon = 'icons/effects/warning_stripes.dmi'
 	layer = WEED_LAYER
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT

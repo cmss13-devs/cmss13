@@ -5,7 +5,6 @@
 	icon_state = "seed"
 	flags_atom = NO_FLAGS
 	w_class = SIZE_TINY
-
 	var/seed_type
 	var/datum/seed/seed
 	var/modified = 0

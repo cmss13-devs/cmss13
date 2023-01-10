@@ -8,6 +8,7 @@
 	icon = 'icons/mob/xenos/weeds.dmi'
 	icon_state = "base"
 
+	gender = PLURAL
 	anchored = TRUE
 	density = FALSE
 	layer = WEED_LAYER

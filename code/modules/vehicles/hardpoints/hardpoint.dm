@@ -231,17 +231,27 @@
 	// Update dir
 	setDir(turn(dir, deg))
 
-//for status window
-/obj/item/hardpoint/proc/get_hardpoint_info()
-	var/dat = "<hr>"
-	dat += "[name]<br>"
+//for le tgui
+/obj/item/hardpoint/proc/get_tgui_info()
+	var/list/data = list()
+
+	data["name"] = name
+
 	if(health <= 0)
-		dat += "Integrity: <font color=\"red\">\[DESTROYED\]</font>"
+		data["health"] = null
 	else
-		dat += "Integrity: [round(get_integrity_percent())]%"
-		if(ammo)
-			dat += " | Ammo: [ammo ? (ammo.current_rounds ? ammo.current_rounds : "<font color=\"red\">0</font>") : "<font color=\"red\">0</font>"]/[ammo ? ammo.max_rounds : "<font color=\"red\">0</font>"] | Mags: [LAZYLEN(backup_clips) ? LAZYLEN(backup_clips) : "<font color=\"red\">0</font>"]/[max_clips]"
-	return dat
+		data["health"] = round(get_integrity_percent())
+
+	if(ammo)
+		data["uses_ammo"] = TRUE
+		data["current_rounds"] = ammo.current_rounds
+		data["max_rounds"] = ammo.max_rounds
+		data["mags"] = LAZYLEN(backup_clips)
+		data["max_mags"] = max_clips
+	else
+		data["uses_ammo"] = FALSE
+
+	return data
 
 // Traces backwards from the gun origin to the vehicle to check for obstacles between the vehicle and the muzzle
 /obj/item/hardpoint/proc/clear_los(var/atom/A)

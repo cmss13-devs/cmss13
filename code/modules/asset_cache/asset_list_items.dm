@@ -348,6 +348,13 @@
 		"ghost.png" = 'html/images/ghost.png'
 	)
 
+/datum/asset/simple/radar_assets
+	assets = list(
+		"ntosradarbackground.png" = 'icons/images/ui_images/ntosradar_background.png',
+		"ntosradarpointer.png" = 'icons/images/ui_images/ntosradar_pointer.png',
+		"ntosradarpointerS.png" = 'icons/images/ui_images/ntosradar_pointer_S.png'
+	)
+
 /datum/asset/simple/firemodes
 	assets = list(
 		"auto.png" = 'html/images/auto.png',

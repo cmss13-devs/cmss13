@@ -318,7 +318,7 @@
 
 /obj/item/device/radio/headset/proc/add_minimap()
 	remove_minimap()
-	INVOKE_NEXT_TICK(src, .proc/update_minimap_icon, wearer) //Mobs are spawned inside nullspace sometimes so this is to avoid that hijinks
+	INVOKE_NEXT_TICK(src, PROC_REF(update_minimap_icon), wearer) //Mobs are spawned inside nullspace sometimes so this is to avoid that hijinks
 
 /obj/item/device/radio/headset/proc/update_minimap_icon()
 	SIGNAL_HANDLER

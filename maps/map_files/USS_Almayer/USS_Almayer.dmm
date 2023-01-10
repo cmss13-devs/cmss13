@@ -3702,6 +3702,10 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
+/obj/item/device/cotablet,
+/obj/structure/closet/secure_closet/cmdcabinet{
+	pixel_y = 24
+	},
 /turf/open/floor/almayer{
 	icon_state = "sterile";
 	tag = "icon-sterile"
@@ -80533,17 +80537,6 @@
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/command/lifeboat)
-"wbX" = (
-/obj/structure/closet/secure_closet/cmdcabinet{
-	pixel_y = 24
-	},
-/obj/item/device/cotablet,
-/turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "silver";
-	tag = "icon-silver (NORTH)"
-	},
-/area/almayer/command/cic)
 "wcn" = (
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/upper_hull/u_f_s)
@@ -106532,7 +106525,7 @@ asQ
 awG
 ayI
 wVW
-wbX
+asc
 avY
 avY
 aAE

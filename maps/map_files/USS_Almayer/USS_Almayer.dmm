@@ -85644,7 +85644,9 @@
 /turf/open/floor/plating,
 /area/almayer/shipboard/brig/perma)
 "yeo" = (
-/obj/structure/machinery/cm_vending/clothing/dress,
+/obj/structure/machinery/cm_vending/clothing/dress{
+	req_access = list(1)
+	},
 /turf/open/floor/wood/ship,
 /area/almayer/living/commandbunks)
 "yev" = (

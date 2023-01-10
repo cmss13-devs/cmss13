@@ -92,6 +92,10 @@
 		if(number_of_orbiters)
 			serialized["orbiters"] = number_of_orbiters
 
+		if(isobserver(M))
+			ghosts += list(serialized)
+			continue
+
 		if(M.stat == DEAD)
 			dead += list(serialized)
 			continue
@@ -109,6 +113,7 @@
 				if(xeno.caste)
 					var/datum/caste_datum/caste = xeno.caste
 					serialized["caste"] = caste.display_name
+					serialized["icon"] = caste.minimap_icon
 				xenos += list(serialized)
 				continue
 
@@ -121,6 +126,10 @@
 
 				serialized["job"] = id_card?.assignment ? id_card.assignment : human.job
 				serialized["nickname"] = human.real_name
+				serialized["icon"] = human.assigned_equipment_preset.minimap_icon
+
+				if(human.assigned_squad)
+					serialized["squad_color"] = human.assigned_squad.minimap_color
 
 				if(SSticker.mode.is_in_endgame == TRUE && !is_mainship_level(M.z))
 					escaped += list(serialized)
@@ -138,8 +147,6 @@
 					humans += list(serialized)
 				continue
 
-		else if(isobserver(M))
-			ghosts += list(serialized)
 		else if(isAI(M))
 			humans += list(serialized)
 
@@ -156,6 +163,7 @@
 	data["npcs"] = npcs
 	data["vehicles"] = vehicles
 	data["escaped"] = escaped
+	data["icons"] = GLOB.minimap_icons
 
 	return data
 

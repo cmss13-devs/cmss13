@@ -2,7 +2,7 @@ import { filter, sortBy } from 'common/collections';
 import { flow } from 'common/fp';
 import { capitalizeFirst } from 'common/string';
 import { useBackend, useLocalState } from 'tgui/backend';
-import { Button, Collapsible, Icon, Input, LabeledList, Section, Stack } from 'tgui/components';
+import { Box, Button, Collapsible, Icon, Input, LabeledList, Section, Stack } from 'tgui/components';
 import { Window } from 'tgui/layouts';
 import { getDisplayColor, getDisplayName, isJobOrNameMatch } from './helpers';
 import type { Observable, OrbitData } from './types';
@@ -194,7 +194,8 @@ const ObservableItem = (
 ) => {
   const { act } = useBackend<OrbitData>(context);
   const { color, item } = props;
-  const { health, full_name, nickname, orbiters, ref } = item;
+  const { health, icon, full_name, nickname, orbiters, ref, squad_color } =
+    item;
 
   return (
     <Button
@@ -202,6 +203,7 @@ const ObservableItem = (
       onClick={() => act('orbit', { ref: ref })}
       tooltip={!!health && <ObservableTooltip item={item} />}
       tooltipPosition="bottom-start">
+      {!!icon && <ObservableIcon icon={icon} squad_color={squad_color} />}
       {capitalizeFirst(getDisplayName(full_name, nickname))}
       {!!orbiters && (
         <>
@@ -232,5 +234,31 @@ const ObservableTooltip = (props: { item: Observable }) => {
         <LabeledList.Item label="Health">{displayHealth}</LabeledList.Item>
       )}
     </LabeledList>
+  );
+};
+
+/** Generates a small icon for buttons based on ICONMAP */
+const ObservableIcon = (
+  props: { icon: Observable['icon']; squad_color: Observable['squad_color'] },
+  context
+) => {
+  const { data } = useBackend<OrbitData>(context);
+  const { icons = [] } = data;
+  const { icon, squad_color } = props;
+  if (!icon || !icons[icon]) {
+    return null;
+  }
+
+  return (
+    <Box
+      as="img"
+      mr={1.5}
+      src={`data:image/jpeg;base64,${icons[icon]}`}
+      style={{
+        transform: 'scale(2) translatey(-1px)',
+        '-ms-interpolation-mode': 'nearest-neighbor',
+        'background-color': squad_color ? squad_color : null,
+      }}
+    />
   );
 };

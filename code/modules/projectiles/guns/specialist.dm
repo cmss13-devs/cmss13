@@ -748,7 +748,7 @@
 /obj/item/weapon/gun/launcher/grenade/afterattack(atom/target, mob/user, flag) //Not actually after the attack. After click, more like.
 	if(able_to_fire(user))
 		if(get_dist(target,user) <= 2)
-			to_chat(user, SPAN_WARNING("The grenade launcher beeps a warning noise. You are too close!"))
+			to_chat(user, SPAN_WARNING("\The [src] beeps a warning noise. You are too close!"))
 			return
 		fire_grenade(target,user)
 

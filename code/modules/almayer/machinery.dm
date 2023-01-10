@@ -135,6 +135,40 @@
 	icon = 'icons/obj/structures/machinery/computer.dmi'
 	icon_state = "retro2"
 
+/obj/structure/machinery/prop/almayer/CICmap
+	name = "map table"
+	desc = "A table that displays a map of the current target location"
+	icon = 'icons/obj/structures/machinery/computer.dmi'
+	icon_state = "maptable"
+	use_power = USE_POWER_IDLE
+	density = TRUE
+	idle_power_usage = 2
+	///flags that we want to be shown when you interact with this table
+	var/datum/tacmap/map
+	var/minimap_type = MINIMAP_FLAG_MARINE
+
+/obj/structure/machinery/prop/almayer/CICmap/Initialize()
+	. = ..()
+	map = new(src, minimap_type)
+
+/obj/structure/machinery/prop/almayer/CICmap/Destroy()
+	QDEL_NULL(map)
+	return ..()
+
+/obj/structure/machinery/prop/almayer/CICmap/attack_hand(mob/user)
+	. = ..()
+
+	map.tgui_interact(user)
+
+/obj/structure/machinery/prop/almayer/CICmap/upp
+	minimap_type = MINIMAP_FLAG_MARINE_UPP
+
+/obj/structure/machinery/prop/almayer/CICmap/clf
+	minimap_type = MINIMAP_FLAG_MARINE_CLF
+
+/obj/structure/machinery/prop/almayer/CICmap/pmc
+	minimap_type = MINIMAP_FLAG_MARINE_PMC
+
 //Nonpower using props
 
 /obj/structure/prop/almayer

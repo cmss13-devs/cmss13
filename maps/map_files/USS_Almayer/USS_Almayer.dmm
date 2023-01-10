@@ -42556,7 +42556,6 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/hull/upper_hull/u_f_p)
-<<<<<<< HEAD
 "fGY" = (
 /obj/structure/machinery/door_control{
 	id = "panicroomback";
@@ -42569,11 +42568,6 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/hull/lower_hull/l_f_s)
-"fHa" = (
-/turf/open/space/basic,
-/area/shuttle/distress/arrive_n_engi)
-=======
->>>>>>> a23bfb6028 (simplified maps as learnt that tgshuttles does not require areas)
 "fHc" = (
 /obj/structure/surface/table/almayer,
 /obj/item/clothing/head/hardhat{

@@ -16,7 +16,7 @@ SUBSYSTEM_DEF(minimaps)
 	name = "Minimaps"
 	init_order = SS_INIT_MINIMAP
 	priority = SS_PRIORITY_MINIMAPS
-	wait = 10
+	wait = 1 SECONDS
 	runlevels = RUNLEVEL_GAME | RUNLEVEL_POSTGAME
 	///Minimap hud display datums sorted by zlevel
 	var/list/datum/hud_displays/minimaps_by_z = list()
@@ -34,6 +34,8 @@ SUBSYSTEM_DEF(minimaps)
 	var/list/datum/callback/earlyadds = list()
 	///assoc list of minimap objects that are hashed so we have to update as few as possible
 	var/list/hashed_minimaps = list()
+	/// associated list of tacmap datums with a hash
+	var/list/hashed_tacmaps = list()
 
 /datum/controller/subsystem/minimaps/Initialize(start_timeofday)
 	for(var/level=1 to length(SSmapping.z_list))
@@ -93,6 +95,7 @@ SUBSYSTEM_DEF(minimaps)
 	for(var/i=1 to length(earlyadds)) //lateload icons
 		earlyadds[i].Invoke()
 	earlyadds = null //then clear them
+
 	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/minimaps/stat_entry(msg)
@@ -205,7 +208,7 @@ SUBSYSTEM_DEF(minimaps)
  * * icon: icon file we want to use for this blip, 'icons/UI_icons/map_blips.dmi' by default
  * * overlay_iconstates: list of iconstates to use as overlay. Used for xeno leader icons.
  */
-/datum/controller/subsystem/minimaps/proc/add_marker(atom/target, zlevel, hud_flags = NONE, iconstate, icon = 'icons/ui_icons/map_blips.dmi', list/overlay_iconstates)
+/datum/controller/subsystem/minimaps/proc/add_marker(atom/target, zlevel, hud_flags = NONE, iconstate, icon = 'icons/ui_icons/map_blips.dmi', list/overlay_iconstates, color_code)
 	if(!isatom(target) || !zlevel || !hud_flags || !iconstate || !icon)
 		CRASH("Invalid marker added to subsystem")
 	if(!initialized)
@@ -213,6 +216,8 @@ SUBSYSTEM_DEF(minimaps)
 		return
 
 	var/image/blip = image(icon, iconstate, pixel_x = MINIMAP_PIXEL_FROM_WORLD(target.x) + minimaps_by_z["[zlevel]"].x_offset, pixel_y = MINIMAP_PIXEL_FROM_WORLD(target.y) + minimaps_by_z["[zlevel]"].y_offset)
+	if(color_code)
+		blip.color = color_code
 
 	for(var/i in overlay_iconstates)
 		blip.overlays += image(icon, i)
@@ -270,16 +275,20 @@ SUBSYSTEM_DEF(minimaps)
 /**
  * Removes an atom and it's blip from the subsystem
  */
-/datum/controller/subsystem/minimaps/proc/remove_marker(atom/source)
+/datum/controller/subsystem/minimaps/proc/remove_marker(atom/source, minimap_flag)
 	SIGNAL_HANDLER
 	if(!removal_cbs[source]) //already removed
 		return
 	UnregisterSignal(source, list(COMSIG_PARENT_QDELETING, COMSIG_MOVABLE_MOVED, COMSIG_MOVABLE_Z_CHANGED))
 	var/turf/turf_gotten = get_turf(source)
 	var/z_level = turf_gotten.z
-	for(var/flag in GLOB.all_minimap_flags)
-		var/ref = minimaps_by_z["[z_level]"].images_assoc["[flag]"]
-		ref -=  source //see above
+	if(minimap_flag)
+		var/ref = minimaps_by_z["[z_level]"].images_assoc["[minimap_flag]"]
+		ref -= source
+	else
+		for(var/flag in GLOB.all_minimap_flags)
+			var/ref = minimaps_by_z["[z_level]"].images_assoc["[flag]"]
+			ref -= source //see above
 	images_by_source -= source
 	removal_cbs[source].Invoke()
 	removal_cbs -= source
@@ -301,6 +310,15 @@ SUBSYSTEM_DEF(minimaps)
 		CRASH("Empty and unusable minimap generated for '[zlevel]-[flags]'") //Can be caused by atoms calling this proc before minimap subsystem initializing.
 	hashed_minimaps[hash] = map
 	return map
+
+/datum/controller/subsystem/minimaps/proc/fetch_tacmap_datum(zlevel, flags)
+	var/hash = "[zlevel]-[flags]"
+	if(hashed_tacmaps[hash])
+		return hashed_tacmaps[hash]
+
+	var/datum/tacmap_holder/tacmap = new(null, zlevel, flags)
+	hashed_tacmaps[hash] = tacmap
+	return tacmap
 
 ///Default HUD screen minimap object
 /atom/movable/screen/minimap
@@ -386,19 +404,10 @@ SUBSYSTEM_DEF(minimaps)
 /datum/action/minimap/xeno
 	minimap_flags = MINIMAP_FLAG_XENO
 
-/datum/action/minimap/researcher
-	minimap_flags = MINIMAP_FLAG_MARINE|MINIMAP_FLAG_EXCAVATION_ZONE
-	marker_flags = MINIMAP_FLAG_MARINE
-
 /datum/action/minimap/marine
 	minimap_flags = MINIMAP_FLAG_MARINE
 	marker_flags = MINIMAP_FLAG_MARINE
 
-/datum/action/minimap/ai
-	minimap_flags = MINIMAP_FLAG_MARINE
-	marker_flags = MINIMAP_FLAG_MARINE
-	default_overwatch_level = 2
-
 /datum/action/minimap/observer
-	minimap_flags = MINIMAP_FLAG_XENO|MINIMAP_FLAG_MARINE|MINIMAP_FLAG_EXCAVATION_ZONE
+	minimap_flags = MINIMAP_FLAG_XENO|MINIMAP_FLAG_MARINE
 	marker_flags = NONE

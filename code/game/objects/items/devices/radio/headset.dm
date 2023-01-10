@@ -344,7 +344,7 @@
 		SSminimaps.add_marker(wearer, z_level, marker_flags, "defibbable")
 		return
 	if(wearer.assigned_squad)
-		SSminimaps.add_marker(wearer, z_level, marker_flags, lowertext(wearer.assigned_squad.name)+"_"+wearer.assigned_equipment_preset.minimap_icon)
+		SSminimaps.add_marker(wearer, z_level, marker_flags, wearer.assigned_equipment_preset.minimap_icon, color_code = squad_colors[wearer.assigned_squad.color])
 		return
 	SSminimaps.add_marker(wearer, z_level, marker_flags, wearer.assigned_equipment_preset.minimap_icon)
 

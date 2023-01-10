@@ -208,6 +208,7 @@
 
 /obj/structure/machinery/sensortower/stop_processing()
 	SSticker.toweractive = FALSE
+	SSminimaps_update.remove_xenos_from_minimap()
 	..()
 
 /obj/structure/machinery/sensortower/start_processing()

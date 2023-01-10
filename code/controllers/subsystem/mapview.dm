@@ -1,50 +1,57 @@
-SUBSYSTEM_DEF(mapview)
-	name   = "Mapview"
-	wait   = 1 MINUTES
-	flags  = SS_POST_FIRE_TIMING
-	runlevels  = RUNLEVEL_GAME | RUNLEVEL_POSTGAME
-	priority   = SS_PRIORITY_MAPVIEW
+SUBSYSTEM_DEF(minimaps_update)
+	name = "Minimaps Update"
+	wait = 30 SECONDS
+	flags = SS_POST_FIRE_TIMING
+	runlevels = RUNLEVEL_GAME | RUNLEVEL_POSTGAME
+	priority = SS_PRIORITY_MAPVIEW
 	init_order = SS_INIT_MAPVIEW
-	var/list/map_machines = list()
-	var/ready = FALSE
-	var/updated = FALSE
-	var/list/currentrun
+	var/list/minimap_added
 
-/datum/controller/subsystem/mapview/Initialize(start_timeofday)
-	RegisterSignal(SSdcs, COMSIG_GLOB_MODE_PRESETUP, PROC_REF(pre_round_start))
+/datum/controller/subsystem/minimaps_update/Initialize(start_timeofday)
+	minimap_added = list()
 	return SS_INIT_SUCCESS
 
-/datum/controller/subsystem/mapview/proc/pre_round_start()
-	SIGNAL_HANDLER
-	generate_tacmap(TACMAP_BASE_OCCLUDED) // for orbital forces
-	generate_tacmap(TACMAP_BASE_OPEN) // for groundside forces
-	ready = TRUE
+/datum/controller/subsystem/minimaps_update/fire(resumed = FALSE)
+	update_xenos_in_tower_range()
 
-/datum/controller/subsystem/mapview/fire(resumed = FALSE)
-	if(!ready || !RoleAuthority)
-		return
-	if(!resumed)
-		currentrun = map_machines.Copy()
-		updated = FALSE
+/datum/controller/subsystem/minimaps_update/proc/update_xenos_in_tower_range()
+	if(SSticker.toweractive)
+		add_xenos_to_minimap()
+	else
 
-	while(length(currentrun))
-		var/obj/structure/machinery/MM = currentrun[currentrun.len]
-		currentrun.len--
+		if(length(GLOB.command_apc_list))
+			for(var/obj/vehicle/multitile/apc/command/current_apc as anything in GLOB.command_apc_list)
 
-		var/obj/structure/machinery/computer/communications/C = MM
-		if(istype(C) && C.current_mapviewer)
-			if(!updated)
-				overlay_tacmap(TACMAP_DEFAULT)
-			C.update_mapview()
-			updated = TRUE
+				var/turf/apc_turf = get_turf(current_apc)
+				if(current_apc.health == 0 || !current_apc.visible_in_tacmap || !is_ground_level(apc_turf))
+					continue
 
-		var/obj/structure/machinery/prop/almayer/CICmap/M = MM
-		if(istype(M) && M.current_viewers.len)
-			M.update_mapview()
+				for(var/mob/living/carbon/Xenomorph/current_xeno as anything in GLOB.living_xeno_list)
+					var/turf/xeno_turf = get_turf(current_xeno)
+					if(!is_ground_level(xeno_turf))
+						continue
 
-		var/obj/structure/machinery/computer/overwatch/O = MM
-		if(istype(O) && O.current_squad && O.current_mapviewer)
-			O.update_mapview()
+					if(get_dist(current_apc, current_xeno) <= current_apc.sensor_radius)
+						if(WEAKREF(current_xeno) in minimap_added)
+							return
 
-		if (MC_TICK_CHECK)
+						SSminimaps.add_marker(current_xeno, current_xeno.z, hud_flags = MINIMAP_FLAG_MARINE, iconstate = current_xeno.caste.minimap_icon)
+						minimap_added += WEAKREF(current_xeno)
+					else
+						if(WEAKREF(current_xeno) in minimap_added)
+							SSminimaps.remove_marker(current_xeno, MINIMAP_FLAG_MARINE)
+							minimap_added -= current_xeno
+
+/datum/controller/subsystem/minimaps_update/proc/remove_xenos_from_minimap()
+	for(var/mob/living/carbon/Xenomorph/current_xeno as anything in GLOB.living_xeno_list)
+		if(WEAKREF(current_xeno) in minimap_added)
+			SSminimaps.remove_marker(current_xeno, MINIMAP_FLAG_MARINE)
+			minimap_added -= current_xeno
+
+/datum/controller/subsystem/minimaps_update/proc/add_xenos_to_minimap()
+	for(var/mob/living/carbon/Xenomorph/current_xeno as anything in GLOB.living_xeno_list)
+		if(WEAKREF(current_xeno) in minimap_added)
 			return
+
+		SSminimaps.add_marker(current_xeno, current_xeno.z, hud_flags = MINIMAP_FLAG_MARINE, iconstate = current_xeno.caste.minimap_icon)
+		minimap_added += WEAKREF(current_xeno)

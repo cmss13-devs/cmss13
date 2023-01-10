@@ -648,7 +648,4 @@
 	set desc = "This opens a tactical map, where you can see where every xenomorph is."
 	set category = "Alien"
 
-	var/icon/O = overlay_tacmap(TACMAP_XENO, TACMAP_BASE_OPEN, hivenumber)
-	if(O)
-		src << browse_rsc(O, "marine_minimap.png")
-		show_browser(src, "<img src=marine_minimap.png>", "Xeno Tacmap", "marineminimap", "size=[(map_sizes[1]*2)+50]x[(map_sizes[2]*2)+50]", closeref = src)
+	hive.tacmap.tgui_interact(src)

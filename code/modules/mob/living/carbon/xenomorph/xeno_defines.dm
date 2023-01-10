@@ -276,11 +276,15 @@
 	/// How many huggers can the hive support
 	var/playable_hugger_limit = 0
 
+	var/datum/tacmap/tacmap
+	var/minimap_type = MINIMAP_FLAG_XENO
+
 /datum/hive_status/New()
 	mutators.hive = src
 	hive_ui = new(src)
 	mark_ui = new(src)
 	faction_ui = new(src)
+	tacmap = new(src, minimap_type)
 	if(!internal_faction)
 		internal_faction = name
 

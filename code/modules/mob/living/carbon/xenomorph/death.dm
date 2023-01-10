@@ -82,6 +82,7 @@
 			to_chat(hive.living_xeno_queen, SPAN_XENONOTICE("A leader has fallen!")) //alert queens so they can choose another leader
 
 	hud_update() //updates the overwatch hud to remove the upgrade chevrons, gold star, etc
+	SSminimaps.remove_marker(src)
 
 	if(behavior_delegate)
 		behavior_delegate.handle_death(src)

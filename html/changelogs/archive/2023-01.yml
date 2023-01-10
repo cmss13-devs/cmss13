@@ -253,3 +253,31 @@
   stanalbatross:
   - code_imp: changed a few instances of gender strings to defines
   - bugfix: fixed many, many instances of things not properly being tagged as plural
+2023-01-10:
+  BeagleGaming1:
+  - admin: Fixes "Object Narrate" not returning properly sometimes
+  Huffie56:
+  - rscadd: adding a panic room in hangar that can be open via an MP office that as
+      an armory to quickly respond to hostile coming from DS's
+  IowaPotatoFarmer:
+  - bugfix: Fixed a sentry in the LV-624 CLF nightmare insert that was facing the
+      wrong way.
+  Kitsunemitsu:
+  - bugfix: fixed an error with SL timelocks.
+  NewyearnewmeUwu:
+  - rscadd: adds a few chaplain helmet patches to the chapel in the Almayer.
+  - maptweak: adds a few chaplain helmet patches to the chapel in the Almayer.
+  carlarctg:
+  - rscdel: Disables New Varadero from the map pool.
+  stanalbatross:
+  - ui: added tgui radars that can be used for the precise tracking of atoms
+  - rscadd: converted the handheld crew monitor to use a radar.
+  - rscadd: added an unobtainable advanced version of the PDT/L that uses a radar
+  - ui: converted the vehicle status menu to tgui
+  - bugfix: fixed a potential runtime in quadtrees
+  - ui: converted the check skills menu to TGUI
+  - admin: changed the edit skills vv dropdown from a clunky series of input lists
+      to the new check skills menu TGUI
+  - bugfix: fixed a lot of instances of being able to telekinetically alt-click things
+  theflyingflail:
+  - bugfix: fixed broken spawner on big red nightmare insert

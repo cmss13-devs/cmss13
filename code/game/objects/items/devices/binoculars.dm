@@ -85,11 +85,11 @@
 		QDEL_NULL(coord)
 
 /obj/item/device/binoculars/range/clicked(mob/user, list/mods)
-	if(!ishuman(usr))
-		return
 	if(mods["ctrl"])
+		if(!CAN_PICKUP(user, src))
+			return ..()
 		stop_targeting(user)
-		return 1
+		return TRUE
 	return ..()
 
 /obj/item/device/binoculars/range/handle_click(var/mob/living/carbon/human/user, var/atom/A, var/list/mods)
@@ -215,9 +215,9 @@
 	. += SPAN_NOTICE("[src] is currently set to [mode ? "range finder" : "CAS marking"] mode.")
 
 /obj/item/device/binoculars/range/designator/clicked(mob/user, list/mods)
-	if(!ishuman(usr))
-		return
-	if(mods["alt"] && loc == user)
+	if(mods["alt"])
+		if(!CAN_PICKUP(user, src))
+			return ..()
 		toggle_bino_mode(user)
 		return TRUE
 	return ..()

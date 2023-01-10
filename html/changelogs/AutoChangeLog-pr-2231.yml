@@ -1,4 +1,0 @@
-author: "IowaPotatoFarmer"
-delete-after: True
-changes:
-  - bugfix: "Fixed a sentry in the LV-624 CLF nightmare insert that was facing the wrong way."

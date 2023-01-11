@@ -428,7 +428,7 @@ their unique feature is that a direct hit will buff your damage and firerate
 	SIGNAL_HANDLER
 
 	user.client?.mouse_pointer_icon = get_fired_mouse_pointer(floating_penetration)
-	addtimer(CALLBACK(src, PROC_REF(update_mouse_pointer), user), 4, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_CLIENT_TIME)
+	addtimer(CALLBACK(src, PROC_REF(update_mouse_pointer), user), 0.4 SECONDS, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_CLIENT_TIME)
 
 /obj/item/weapon/gun/lever_action/xm88/proc/update_mouse_pointer(mob/user)
 	SIGNAL_HANDLER
@@ -438,33 +438,33 @@ their unique feature is that a direct hit will buff your damage and firerate
 /obj/item/weapon/gun/lever_action/xm88/proc/get_mouse_pointer(level)
 	switch(level)
 		if(FLOATING_PENETRATION_TIER_0)
-			return 'icons/effects/mouse_pointer/xm88-0.dmi'
+			return 'icons/effects/mouse_pointer/xm88/xm88-0.dmi'
 		if(FLOATING_PENETRATION_TIER_1)
-			return 'icons/effects/mouse_pointer/xm88-1.dmi'
+			return 'icons/effects/mouse_pointer/xm88/xm88-1.dmi'
 		if(FLOATING_PENETRATION_TIER_2)
-			return 'icons/effects/mouse_pointer/xm88-2.dmi'
+			return 'icons/effects/mouse_pointer/xm88/xm88-2.dmi'
 		if(FLOATING_PENETRATION_TIER_3)
-			return 'icons/effects/mouse_pointer/xm88-3.dmi'
+			return 'icons/effects/mouse_pointer/xm88/xm88-3.dmi'
 		if(FLOATING_PENETRATION_TIER_4)
-			return 'icons/effects/mouse_pointer/xm88-4.dmi'
+			return 'icons/effects/mouse_pointer/xm88/xm88-4.dmi'
 		else
-			return 'icons/effects/mouse_pointer/xm88-0.dmi'
+			return 'icons/effects/mouse_pointer/xm88/xm88-0.dmi'
 
 
 /obj/item/weapon/gun/lever_action/xm88/proc/get_fired_mouse_pointer(level)
 	switch(level)
 		if(FLOATING_PENETRATION_TIER_0)
-			return 'icons/effects/mouse_pointer/xm88-fired-0.dmi'
+			return 'icons/effects/mouse_pointer/xm88/xm88-fired-0.dmi'
 		if(FLOATING_PENETRATION_TIER_1)
-			return 'icons/effects/mouse_pointer/xm88-fired-1.dmi'
+			return 'icons/effects/mouse_pointer/xm88/xm88-fired-1.dmi'
 		if(FLOATING_PENETRATION_TIER_2)
-			return 'icons/effects/mouse_pointer/xm88-fired-2.dmi'
+			return 'icons/effects/mouse_pointer/xm88/xm88-fired-2.dmi'
 		if(FLOATING_PENETRATION_TIER_3)
-			return 'icons/effects/mouse_pointer/xm88-fired-3.dmi'
+			return 'icons/effects/mouse_pointer/xm88/xm88-fired-3.dmi'
 		if(FLOATING_PENETRATION_TIER_4)
-			return 'icons/effects/mouse_pointer/xm88-fired-4.dmi'
+			return 'icons/effects/mouse_pointer/xm88/xm88-fired-4.dmi'
 		else
-			return 'icons/effects/mouse_pointer/xm88-fired-0.dmi'
+			return 'icons/effects/mouse_pointer/xm88/xm88-fired-0.dmi'
 
 /obj/item/weapon/gun/lever_action/xm88/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 27, "muzzle_y" = 17, "rail_x" = 11, "rail_y" = 21, "under_x" = 22, "under_y" = 13, "stock_x" = 12, "stock_y" = 15)

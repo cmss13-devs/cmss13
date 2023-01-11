@@ -33,7 +33,7 @@
 	reagents.add_reagent("neurotoxin", 30)
 
 /obj/item/reagent_container/food/drinks/bottle/holywater/bong
-	name = "Flask of Hippie Water"
+	name = "flask of hippie water"
 	desc = "Formerly a flask of the chaplain's holy water, this one has been repurposed as... something else visually similar."
 
 /obj/item/reagent_container/food/drinks/bottle/holywater/bong/Initialize()

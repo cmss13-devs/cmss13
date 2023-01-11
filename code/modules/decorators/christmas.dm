@@ -18,7 +18,7 @@
 /datum/decorator/christmas/queen/screech/decorate(var/mob/living/carbon/Xenomorph/Queen/queen)
 	if(!istype(queen))
 		return
-	queen.screech_sound_effect = 'sound/voice/alien_queen_xmas.ogg'
+	queen.screech_sound_effect_list = list('sound/voice/alien_queen_xmas.ogg','sound/voice/alien_queen_xmas_2.ogg')
 
 /datum/decorator/christmas/queen/hat/decorate(var/mob/living/carbon/Xenomorph/Queen/queen)
 	if(!istype(queen))
@@ -32,6 +32,7 @@
 /datum/decorator/christmas/barbed_wire/decorate(var/obj/item/stack/barbed_wire/wire)
 	if(!istype(wire))
 		return
+	wire.name = "christmas wire"
 	wire.desc = "A bulbed, festive, and dangerous length of wire."
 	wire.attack_verb = list("hit", "whacked", "sliced", "festivized")
 	wire.icon = 'icons/obj/items/marine-items_christmas.dmi'

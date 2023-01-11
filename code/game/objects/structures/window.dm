@@ -3,7 +3,7 @@
 	desc = "A glass window. It looks thin and flimsy. A few knocks with anything should shatter it."
 	icon = 'icons/turf/walls/windows.dmi'
 	icon_state = "window"
-	density = 1
+	density = TRUE
 	anchored = 1
 	layer = WINDOW_LAYER
 	flags_atom = ON_BORDER|FPRINT
@@ -35,10 +35,14 @@
 		update_nearby_icons()
 
 /obj/structure/window/Destroy()
-	density = 0
+	density = FALSE
 	if(is_full_window())
 		update_nearby_icons()
 	. = ..()
+
+/obj/structure/window/setDir(newdir)
+	. = ..()
+	update_icon()
 
 /obj/structure/window/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
@@ -419,7 +423,7 @@
 	desc = "A tinted glass window. It looks rather strong and opaque. Might take a few good hits to shatter it."
 	icon_state = "twindow"
 	basestate = "twindow"
-	opacity = 1
+	opacity = TRUE
 
 /obj/structure/window/reinforced/tinted/frosted
 	name = "privacy window"
@@ -602,7 +606,7 @@
 /obj/structure/window/framed/colony/reinforced/tinted
 	name =  "tinted reinforced window"
 	desc = "A glass window with a special rod matrix inside a wall frame. It looks rather strong. Might take a few good hits to shatter it. This one is opaque. You have an uneasy feeling someone might be watching from the other side."
-	opacity = 1
+	opacity = TRUE
 
 /obj/structure/window/framed/colony/reinforced/hull
 	name = "hull window"
@@ -768,7 +772,7 @@
 
 /obj/structure/window/framed/solaris/reinforced/tinted
 	desc = "A tinted glass window. It looks rather strong and opaque. Might take a few good hits to shatter it."
-	opacity = 1
+	opacity = TRUE
 
 //GREYBOX DEV WINDOWS
 

@@ -485,8 +485,8 @@
 //a lean mean machine, pretty inaccurate unless you play its dance.
 
 /obj/item/weapon/gun/revolver/small
-	name = "\improper S&W .357 Model 48 revolver"
-	desc = "A lean .357 made by Smith & Wesson. A timeless classic, from antiquity to the future. This specific model is known to be wildly inaccurate, yet extremely lethal."
+	name = "\improper S&W .38 model 37 revolver"
+	desc = "A lean .38 made by Smith & Wesson. A timeless classic, from antiquity to the future. This specific model is known to be wildly inaccurate, yet extremely lethal."
 	icon_state = "sw357"
 	item_state = "ny762" //PLACEHOLDER
 	fire_sound = 'sound/weapons/gun_44mag2.ogg'
@@ -513,7 +513,7 @@
 		to_chat(user, SPAN_NOTICE("Your badass trick inspires you. Your next few shots will be focused!"))
 		accuracy_mult = BASE_ACCURACY_MULT * 2
 		accuracy_mult_unwielded = BASE_ACCURACY_MULT * 2
-		addtimer(CALLBACK(src, PROC_REF(recalculate_attachment_bonuses)), 8 SECONDS)
+		addtimer(CALLBACK(src, PROC_REF(recalculate_attachment_bonuses)), 3 SECONDS)
 
 
 //-------------------------------------------------------
@@ -634,7 +634,8 @@
 	item_state = "amateba"
 	current_mag = /obj/item/ammo_magazine/internal/revolver/mateba/explosive
 	color = "#FF0000"
-	fire_sound = 'sound/voice/alien_queen_xmas.ogg'
+	fire_sound = null
+	fire_sounds = list('sound/voice/alien_queen_xmas.ogg', 'sound/voice/alien_queen_xmas_2.ogg')
 	starting_attachment_types = list(/obj/item/attachable/heavy_barrel)
 
 /obj/item/weapon/gun/revolver/mateba/engraved
@@ -680,7 +681,6 @@
 						//Under
 						/obj/item/attachable/gyro,
 						/obj/item/attachable/lasersight,
-						/obj/item/attachable/burstfire_assembly
 	)
 
 /obj/item/weapon/gun/revolver/cmb/click_empty(mob/user)
@@ -700,8 +700,6 @@
 /obj/item/weapon/gun/revolver/cmb/set_gun_config_values()
 	..()
 	fire_delay = FIRE_DELAY_TIER_6
-	burst_amount = BURST_AMOUNT_TIER_3
-	burst_delay = FIRE_DELAY_TIER_7
 	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_4
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_4
 	scatter = SCATTER_AMOUNT_TIER_7

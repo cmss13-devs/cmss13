@@ -302,26 +302,34 @@
 	detforce = 50
 
 /obj/item/weapon/melee/twohanded/breacher
-	name = "\improper B5 Breaching Hammer"
-	desc = "This 100-pound monstrosity of a sledgehammer is made of solid tungsten carbide, and packs enough force in its swing to take down walls with ease. It can punch through steel and concrete, hit like a truck, and is utterly unusable by anyone who isn't superhuman."
+	name = "\improper D2 Breaching Hammer"
+	desc = "A much lighter version of the B5 Breaching Hammer, this destructive tool packs enough force in its swings to take down walls with relative ease. It can punch through almost anything, hit like a truck, and unlike its predecessor it can be wielded by most adult humans."
 	icon = 'icons/obj/items/experimental_tools.dmi'
-	icon_state = "breacher"
-	item_state = "breacher"
+	icon_state = "d2_breacher"
+	item_state = "d2_breacher"
 	force = MELEE_FORCE_NORMAL
-	force_wielded = MELEE_FORCE_VERY_STRONG
+	force_wielded = MELEE_FORCE_NORMAL
 	w_class = SIZE_LARGE
 	flags_item = TWOHANDED
 	flags_equip_slot = SLOT_BACK
-
 	attack_verb = list("pulverized", "smashed", "thwacked", "crushed", "hammered", "wrecked")
+	var/really_heavy = FALSE
 
-/obj/item/weapon/melee/twohanded/breacher/pickup(mob/user)
-	if(!HAS_TRAIT(user, TRAIT_SUPER_STRONG))
+/obj/item/weapon/melee/twohanded/breacher/synth
+	name = "\improper B5 Breaching Hammer"
+	desc = "This 100-pound monstrosity of a sledgehammer is made of solid tungsten carbide, and packs enough force in its swing to take down walls with ease. It can punch through steel and concrete, hit like a truck, and is utterly unusable by anyone who isn't superhuman."
+	icon_state = "syn_breacher"
+	item_state = "syn_breacher"
+	force_wielded = MELEE_FORCE_VERY_STRONG
+	really_heavy = TRUE
+
+/obj/item/weapon/melee/twohanded/breacher/synth/pickup(mob/user)
+	if(!(HAS_TRAIT(user, TRAIT_SUPER_STRONG)))
 		to_chat(user, SPAN_WARNING("You barely manage to lift \the [src] above your knees. This thing will probably be useless to you."))
 		return
 	..()
 
-/obj/item/weapon/melee/twohanded/breacher/attack(target as mob, mob/living/user as mob)
+/obj/item/weapon/melee/twohanded/breacher/synth/attack(target as mob, mob/living/user as mob)
 	if(!HAS_TRAIT(user, TRAIT_SUPER_STRONG))
 		to_chat(user, SPAN_WARNING("\The [src] is too heavy for you to use as a weapon!"))
 		return

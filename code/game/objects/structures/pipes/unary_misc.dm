@@ -3,7 +3,7 @@
 	desc = "Cools gas when connected to pipe network"
 	icon = 'icons/obj/structures/machinery/cryogenics.dmi'
 	icon_state = "freezer_0"
-	density = 1
+	density = TRUE
 	anchored = TRUE
 
 	var/opened = 0 //for deconstruction
@@ -36,7 +36,7 @@
 	desc = "Exchanges heat between two input gases. Setup for fast heat transfer"
 	icon = 'icons/obj/pipes/heat_exchanger.dmi'
 	icon_state = "intact"
-	density = 1
+	density = TRUE
 
 /obj/structure/pipes/unary/heat_exchanger/update_icon()
 	if(length(connected_to))
@@ -50,7 +50,7 @@
 	desc = "Heats gas when connected to a pipe network"
 	icon = 'icons/obj/structures/machinery/cryogenics.dmi'
 	icon_state = "heater_0"
-	density = 1
+	density = TRUE
 	anchored = 1.0
 	var/opened = 0 //for deconstruction
 
@@ -107,7 +107,7 @@
 /obj/structure/pipes/unary/oxygen_generator
 	icon = 'icons/obj/pipes/oxygen_generator.dmi'
 	icon_state = "intact_off"
-	density = 1
+	density = TRUE
 	name = "Oxygen Generator"
 	desc = ""
 	dir = SOUTH

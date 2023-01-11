@@ -292,6 +292,8 @@
 	var/icon_xeno
 	var/icon_xenonid
 
+	bubble_icon = "alien"
+
 	/////////////////////////////////////////////////////////////////////
 	//
 	// Phero related vars
@@ -791,7 +793,7 @@
 ///get_eye_protection()
 ///Returns a number between -1 to 2
 /mob/living/carbon/Xenomorph/get_eye_protection()
-	return 2
+	return EYE_PROTECTION_WELDING
 
 /mob/living/carbon/Xenomorph/get_pull_miltiplier()
 	return pull_multiplier
@@ -1063,5 +1065,5 @@
 		return
 	return ..()
 
-/mob/living/carbon/Xenomorph/handle_blood_splatter(var/splatter_dir)
-	new /obj/effect/temp_visual/dir_setting/bloodsplatter/xenosplatter(loc, splatter_dir)
+/mob/living/carbon/Xenomorph/handle_blood_splatter(var/splatter_dir, duration)
+	new /obj/effect/temp_visual/dir_setting/bloodsplatter/xenosplatter(loc, splatter_dir, duration)

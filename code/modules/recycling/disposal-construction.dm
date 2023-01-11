@@ -8,7 +8,7 @@
 	icon = 'icons/obj/pipes/disposal.dmi'
 	icon_state = "conpipe-s"
 	anchored = 0
-	density = 0
+	density = FALSE
 	matter = list("metal" = 1850)
 	level = 2
 	var/ptype = 0
@@ -210,9 +210,9 @@
 			anchored = 0
 			if(ispipe)
 				level = 2
-				density = 0
+				density = FALSE
 			else
-				density = 1
+				density = TRUE
 			to_chat(user, "You detach the [nicetype] from the underfloor.")
 		else
 			if(ptype>=6 && ptype <= 8) // Disposal or outlet
@@ -236,9 +236,9 @@
 			anchored = 1
 			if(ispipe)
 				level = 1 // We don't want disposal bins to disappear under the floors
-				density = 0
+				density = FALSE
 			else
-				density = 1 // We don't want disposal bins or outlets to go density 0
+				density = TRUE // We don't want disposal bins or outlets to go density 0
 			to_chat(user, "You attach the [nicetype] to the underfloor.")
 		playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
 		update()

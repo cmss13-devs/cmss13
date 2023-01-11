@@ -37,10 +37,12 @@
 
 /obj/item/trash/cheesie
 	name = "Cheesie honkers"
+	gender = PLURAL
 	icon_state = "cheesie_honkers"
 
 /obj/item/trash/chips
 	name = "Chips"
+	gender = PLURAL
 	icon_state = "chips"
 
 /obj/item/trash/chunk
@@ -80,6 +82,7 @@
 
 /obj/item/trash/raisins
 	name = "4no raisins"
+	gender = PLURAL
 	icon_state= "4no_raisins"
 
 /obj/item/trash/semki
@@ -92,6 +95,7 @@
 
 /obj/item/trash/syndi_cakes
 	name = "Syndi cakes"
+	gender = PLURAL
 	icon_state = "syndi_cakes"
 
 /obj/item/trash/uscm_mre
@@ -102,10 +106,12 @@
 
 /obj/item/trash/waffles
 	name = "Waffles"
+	gender = PLURAL
 	icon_state = "waffles"
 
 /obj/item/trash/wy_chips_pepper
 	name = "Weyland-Yutani Pepper Chips"
+	gender = PLURAL
 	icon_state = "wy_chips_pepper"
 	desc = "An oily empty bag that once held Weyland-Yutani Pepper Chips."
 

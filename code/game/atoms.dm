@@ -444,7 +444,7 @@ Parameters are passed from New.
 /**
  * Hook for running code when a dir change occurs
  *
- * Not recommended to use, listen for the [COMSIG_ATOM_DIR_CHANGE] signal instead (sent by this proc)
+ * Not recommended to override, listen for the [COMSIG_ATOM_DIR_CHANGE] signal instead (sent by this proc)
  */
 /atom/proc/setDir(newdir)
 	SHOULD_CALL_PARENT(TRUE)

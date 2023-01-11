@@ -29,14 +29,14 @@
 /obj/item/ore/glass
 	name = "impure silicates"
 	icon_state = "Glass ore"
-
+	gender = PLURAL
 	oretag = "sand"
 	black_market_value = 15
 
 /obj/item/ore/phoron
 	name = "phoron crystals"
 	icon_state = "Phoron ore"
-
+	gender = PLURAL
 	oretag = "phoron"
 	black_market_value = 25
 
@@ -57,7 +57,7 @@
 /obj/item/ore/diamond
 	name = "diamonds"
 	icon_state = "Diamond ore"
-
+	gender = PLURAL
 	oretag = "diamond"
 	black_market_value = 30
 

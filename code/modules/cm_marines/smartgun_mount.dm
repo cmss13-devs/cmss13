@@ -232,7 +232,7 @@
 	icon = 'icons/turf/whiskeyoutpost.dmi'
 	icon_state = "M56D_mount"
 	anchored = 0
-	density = 1
+	density = TRUE
 	layer = ABOVE_MOB_LAYER
 	projectile_coverage = PROJECTILE_COVERAGE_LOW
 	var/gun_mounted = FALSE //Has the gun been mounted?
@@ -417,7 +417,7 @@
 	anchored = 1
 	unslashable = TRUE
 	unacidable = TRUE //stop the xeno me(l)ta.
-	density = 1
+	density = TRUE
 	layer = ABOVE_MOB_LAYER //no hiding the hmg beind corpse
 	use_power = USE_POWER_NONE
 	projectile_coverage = PROJECTILE_COVERAGE_LOW
@@ -946,14 +946,15 @@
 		user.unset_interaction()
 
 /obj/structure/machinery/m56d_hmg/clicked(var/mob/user, var/list/mods) //Making it possible to toggle burst fire. Perhaps have altclick be the safety on the gun?
-	if (isobserver(user)) return
-
 	if (mods["ctrl"])
-		if(operator != user) return //only the operatore can toggle fire mode
+		if(operator != user)
+			return ..()//only the operatore can toggle fire mode
+		if(!CAN_PICKUP(user, src))
+			return ..()
 		burst_fire = !burst_fire
 		to_chat(user, SPAN_NOTICE("You set [src] to [burst_fire ? "burst fire" : "single fire"] mode."))
 		playsound(src.loc, 'sound/items/Deconstruct.ogg', 25, 1)
-		return 1
+		return TRUE
 	return ..()
 
 /obj/structure/machinery/m56d_hmg/proc/CrusherImpact()
@@ -1168,7 +1169,7 @@
 	var/grip_dir = null
 	var/fold_time = 1.5 SECONDS
 	var/repair_time = 5 SECONDS
-	density = 1
+	density = TRUE
 	health = 230
 	health_max = 230
 	var/list/cadeblockers = list()
@@ -1239,7 +1240,7 @@
 /obj/structure/blocker/anti_cade
 	health = INFINITY
 	anchored = 1
-	density = 0
+	density = FALSE
 	unacidable = TRUE
 	indestructible = TRUE
 	invisibility = 101 // no looking at it with alt click
@@ -1470,12 +1471,13 @@
 // TOGGLE MODE
 
 /obj/structure/machinery/m56d_hmg/auto/clicked(var/mob/user, var/list/mods, var/atom/A)
-	if (isobserver(user)) return
-
 	if (mods["ctrl"])
-		if(operator != user) return
-		to_chat(user, SPAN_NOTICE("You try to toggle a burst-mode on the M2C, but realize that it doesn't exist."))
-		return
+		if(operator != user)
+			return ..()
+		if(!CAN_PICKUP(user, src))
+			return ..()
+		to_chat(user, SPAN_NOTICE("You try to toggle a burst-mode on \the [src], but realize that it doesn't exist."))
+		return TRUE
 
 	return ..()
 
@@ -1554,6 +1556,7 @@
 
 /obj/structure/machinery/m56d_hmg/auto/on_set_interaction(mob/user)
 	..()
+	ADD_TRAIT(user, TRAIT_OVERRIDE_CLICKDRAG, TRAIT_SOURCE_WEAPON)
 	if(user.client)
 		RegisterSignal(user.client, COMSIG_CLIENT_LMB_DOWN, PROC_REF(auto_fire_start))
 		RegisterSignal(user.client, COMSIG_CLIENT_LMB_UP, PROC_REF(auto_fire_stop))
@@ -1564,6 +1567,7 @@
 // DISMOUNT THE MG
 
 /obj/structure/machinery/m56d_hmg/auto/on_unset_interaction(mob/user)
+	REMOVE_TRAIT(user, TRAIT_OVERRIDE_CLICKDRAG, TRAIT_SOURCE_WEAPON)
 	UnregisterSignal(user, list(
 		COMSIG_MOVABLE_PRE_MOVE,
 		COMSIG_MOB_POST_UPDATE_CANMOVE

@@ -255,7 +255,7 @@
 	storage_slots = null
 	use_sound = "pillbottle"
 	max_storage_space = 16
-	var/skilllock = SKILL_MEDICAL_DEFAULT
+	var/skilllock = SKILL_MEDICAL_MEDIC
 	var/pill_type_to_fill //type of pill to use to fill in the bottle in /Initialize()
 	var/bottle_lid = TRUE //Whether it shows a visual lid when opened or closed.
 	var/display_maptext = TRUE
@@ -422,7 +422,6 @@
 	name = "\improper Kelotane pill bottle"
 	icon_state = "pill_canister2"
 	pill_type_to_fill = /obj/item/reagent_container/pill/kelotane
-	skilllock = SKILL_MEDICAL_MEDIC
 	maptext_label = "Kl"
 
 /obj/item/storage/pill_bottle/kelotane/skillless
@@ -432,7 +431,6 @@
 	name = "\improper Dylovene pill bottle"
 	icon_state = "pill_canister6"
 	pill_type_to_fill = /obj/item/reagent_container/pill/antitox
-	skilllock = SKILL_MEDICAL_MEDIC
 	maptext_label = "Dy"
 
 
@@ -443,7 +441,6 @@
 	name = "\improper Inaprovaline pill bottle"
 	icon_state = "pill_canister3"
 	pill_type_to_fill = /obj/item/reagent_container/pill/inaprovaline
-	skilllock = SKILL_MEDICAL_MEDIC
 	maptext_label = "In"
 
 /obj/item/storage/pill_bottle/inaprovaline/skillless
@@ -453,7 +450,6 @@
 	name = "\improper Tramadol pill bottle"
 	icon_state = "pill_canister5"
 	pill_type_to_fill = /obj/item/reagent_container/pill/tramadol
-	skilllock = SKILL_MEDICAL_MEDIC
 	maptext_label = "Tr"
 
 /obj/item/storage/pill_bottle/tramadol/skillless
@@ -463,7 +459,6 @@
 	name = "\improper Spaceacillin pill bottle"
 	icon_state = "pill_canister4"
 	pill_type_to_fill = /obj/item/reagent_container/pill/spaceacillin
-	skilllock = SKILL_MEDICAL_MEDIC
 	maptext_label = "Sp"
 
 /obj/item/storage/pill_bottle/spaceacillin/skillless
@@ -473,7 +468,6 @@
 	name = "\improper Bicaridine pill bottle"
 	icon_state = "pill_canister11"
 	pill_type_to_fill = /obj/item/reagent_container/pill/bicaridine
-	skilllock = SKILL_MEDICAL_MEDIC
 	maptext_label = "Bi"
 
 /obj/item/storage/pill_bottle/bicaridine/skillless
@@ -483,7 +477,6 @@
 	name = "\improper Dexalin pill bottle"
 	icon_state = "pill_canister1"
 	pill_type_to_fill = /obj/item/reagent_container/pill/dexalin
-	skilllock = SKILL_MEDICAL_MEDIC
 	maptext_label = "Dx"
 
 /obj/item/storage/pill_bottle/dexalin/skillless
@@ -494,7 +487,6 @@
 	name = "\improper Alkysine pill bottle"
 	icon_state = "pill_canister7"
 	pill_type_to_fill = /obj/item/reagent_container/pill/alkysine
-	skilllock = SKILL_MEDICAL_MEDIC
 	maptext_label = "Al"
 
 /obj/item/storage/pill_bottle/alkysine/skillless
@@ -505,7 +497,6 @@
 	name = "\improper Imidazoline pill bottle"
 	icon_state = "pill_canister9"
 	pill_type_to_fill = /obj/item/reagent_container/pill/imidazoline
-	skilllock = SKILL_MEDICAL_MEDIC
 	maptext_label = "Im"
 
 /obj/item/storage/pill_bottle/imidazoline/skillless
@@ -516,7 +507,6 @@
 	name = "\improper Peridaxon pill bottle"
 	icon_state = "pill_canister10"
 	pill_type_to_fill = /obj/item/reagent_container/pill/peridaxon
-	skilllock = SKILL_MEDICAL_MEDIC
 	maptext_label = "Pr"
 
 /obj/item/storage/pill_bottle/peridaxon/skillless
@@ -527,7 +517,6 @@
 	name = "\improper Russian red pill bottle"
 	icon_state = "pill_canister"
 	pill_type_to_fill = /obj/item/reagent_container/pill/russianRed
-	skilllock = SKILL_MEDICAL_MEDIC
 	maptext_label = "Rr"
 
 /obj/item/storage/pill_bottle/russianRed/skillless
@@ -538,7 +527,6 @@
 	name = "\improper Quickclot pill bottle"
 	icon_state = "pill_canister8"
 	pill_type_to_fill = /obj/item/reagent_container/pill/quickclot
-	skilllock = SKILL_MEDICAL_MEDIC
 	maptext_label = "Qc"
 
 /obj/item/storage/pill_bottle/quickclot/skillless
@@ -604,7 +592,6 @@
 /obj/item/storage/pill_bottle/mystery
 	name = "\improper Weird-looking pill bottle"
 	desc = "You can't seem to identify this."
-	skilllock = SKILL_MEDICAL_MEDIC
 
 /obj/item/storage/pill_bottle/mystery/Initialize()
 	icon_state = "pill_canister[rand(1, 12)]"
@@ -625,7 +612,6 @@
 	name = "\improper Stimulant pill bottle"
 	icon_state = "pill_canister12"
 	pill_type_to_fill = /obj/item/reagent_container/pill/stimulant
-	skilllock = SKILL_MEDICAL_MEDIC
 	maptext_label = "ST"
 
 /obj/item/storage/pill_bottle/stimulant/skillless

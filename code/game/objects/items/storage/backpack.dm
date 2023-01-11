@@ -88,7 +88,7 @@
 
 /obj/item/storage/backpack/equipped(mob/user, slot, silent)
 	if(slot == WEAR_BACK)
-		mouse_opacity = 2 //so it's easier to click when properly equipped.
+		mouse_opacity = MOUSE_OPACITY_OPAQUE //so it's easier to click when properly equipped.
 		if(use_sound && !silent)
 			playsound(loc, use_sound, 15, TRUE, 6)
 		if(!worn_accessible) //closes it if it's open.
@@ -227,11 +227,41 @@
 	storage_slots = 30
 	max_w_class = SIZE_MASSIVE
 	worn_accessible = TRUE
+	actions_types = list(/datum/action/item_action/specialist/santabag)
 
 /obj/item/storage/backpack/santabag/Initialize()
 	. = ..()
-	for(var/total_storage_slots in 1 to storage_slots)
+	refill_santa_bag()
+
+/obj/item/storage/backpack/santabag/proc/refill_santa_bag(var/mob/living/user)
+	var/current_items = length(contents)
+	var/total_to_refill = storage_slots - current_items
+	for(var/total_storage_slots in 1 to total_to_refill)
 		new /obj/item/m_gift(src)
+	if(!user)
+		return
+	playsound(user, 'sound/items/jingle_long.wav', 25, TRUE)
+	to_chat(user, SPAN_GREEN("You use the magic of Christmas to refill your gift bag!"))
+
+/obj/item/storage/backpack/santabag/item_action_slot_check(mob/user, slot)
+	if(HAS_TRAIT(user, TRAIT_SANTA)) //Only the Santa himself knows how to use this bag properly.
+		return TRUE
+
+/datum/action/item_action/specialist/santabag/New(var/mob/living/user, var/obj/item/holder)
+	..()
+	name = "Refill Gift Bag"
+	action_icon_state = holder?.icon_state
+	button.name = name
+	button.overlays.Cut()
+	button.overlays += image(holder?.icon_state, button, action_icon_state)
+
+/datum/action/item_action/specialist/santabag/can_use_action()
+	return TRUE
+
+/datum/action/item_action/specialist/santabag/action_activate()
+	var/obj/item/storage/backpack/santabag/santa_bag = holder_item
+	santa_bag.refill_santa_bag(owner)
+	update_button_icon()
 
 /obj/item/storage/backpack/cultpack
 	name = "trophy rack"
@@ -619,7 +649,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 /obj/item/storage/backpack/general_belt/equipped(mob/user, slot)
 	switch(slot)
 		if(WEAR_WAIST, WEAR_J_STORE) //The G8 can be worn on several armours.
-			mouse_opacity = 2 //so it's easier to click when properly equipped.
+			mouse_opacity = MOUSE_OPACITY_OPAQUE //so it's easier to click when properly equipped.
 	..()
 
 /obj/item/storage/backpack/general_belt/dropped(mob/user)

@@ -14,8 +14,8 @@
 
 	max_temperature = 18000 //K, walls will take damage if they're next to a fire hotter than this
 
-	opacity = 1
-	density = 1
+	opacity = TRUE
+	density = TRUE
 
 	tiles_with = list(
 		/turf/closed/wall,
@@ -126,7 +126,7 @@
 	flick("containment_wall_divide_lowering", src)
 	icon_state = "containment_wall_divide_lowered"
 	SetOpacity(0)
-	density = 0
+	density = FALSE
 	operating = FALSE
 	change_weeds()
 
@@ -137,7 +137,7 @@
 	flick("containment_wall_divide_rising", src)
 	icon_state = "containment_wall_divide"
 	SetOpacity(1)
-	density = 1
+	density = TRUE
 	operating = FALSE
 
 	change_weeds()
@@ -185,7 +185,7 @@
 /turf/closed/wall/almayer/research/containment/wall/purple
 	name = "cell window"
 	icon_state = "containment_window"
-	opacity = 0
+	opacity = FALSE
 
 
 
@@ -224,7 +224,7 @@
 	name = "wall"
 	icon = 'icons/turf/walls/walls.dmi'
 	icon_state = "riveted"
-	opacity = 1
+	opacity = TRUE
 	hull = 1
 
 
@@ -237,7 +237,7 @@
 /turf/closed/wall/indestructible/fakeglass
 	name = "window"
 	icon_state = "fakewindows"
-	opacity = 0
+	opacity = FALSE
 
 /turf/closed/wall/indestructible/splashscreen
 	name = "Lobby Art"
@@ -270,7 +270,7 @@
 
 /turf/closed/wall/indestructible/invisible
 	icon_state = "invisible"
-	mouse_opacity = 0
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
 
 
@@ -558,6 +558,7 @@
 	max_temperature = 28000
 
 /turf/closed/wall/solaris/reinforced/hull
+	icon_state = "solaris_interior_h"
 	hull = 1
 
 /turf/closed/wall/solaris/reinforced/hull/lv522
@@ -733,7 +734,7 @@
 	icon_state = "membrane"
 	walltype = WALL_MEMBRANE
 	damage_cap = HEALTH_WALL_XENO_MEMBRANE
-	opacity = 0
+	opacity = FALSE
 	alpha = 180
 
 /turf/closed/wall/resin/membrane/can_bombard(var/mob/living/carbon/Xenomorph/X)

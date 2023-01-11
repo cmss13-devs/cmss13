@@ -156,8 +156,8 @@
 	name = "\improper M577 armored personnel carrier"
 	desc = "A large, armored behemoth capable of ferrying marines around. \nThis one is sitting nonfunctional."
 	anchored = 1
-	opacity = 1
-	density = 1
+	opacity = TRUE
+	density = TRUE
 	icon = 'icons/obj/apc.dmi'
 	icon_state = "apc"
 

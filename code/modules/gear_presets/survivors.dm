@@ -13,6 +13,8 @@
 
 	access = list(ACCESS_CIVILIAN_PUBLIC)
 
+	minimap_icon = "surv"
+
 /datum/equipment_preset/survivor/load_name(mob/living/carbon/human/H, var/randomise)
 	H.gender = pick(MALE, FEMALE)
 	var/datum/preferences/A = new

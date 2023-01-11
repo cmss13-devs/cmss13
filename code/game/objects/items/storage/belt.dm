@@ -350,6 +350,33 @@
 	new /obj/item/handcuffs(src)
 	new /obj/item/reagent_container/spray/pepper(src)
 
+/obj/item/storage/belt/security/MP/CMB
+    name = "\improper CMB Duty Belt"
+    desc = "The black duty belt used to carry the instruments of a Colonial Marshal. It is a heavy duty belt with various pouches for various law enforcement items."
+    storage_slots = 8
+    max_w_class = SIZE_MEDIUM
+    max_storage_space = 30
+
+
+/obj/item/storage/belt/security/MP/CMB/full()
+    new /obj/item/weapon/gun/energy/taser(src)
+    new /obj/item/device/flash(src)
+    new /obj/item/weapon/melee/baton(src)
+    new /obj/item/reagent_container/spray/pepper(src)
+    new /obj/item/device/clue_scanner(src)
+    new /obj/item/handcuffs(src)
+    new /obj/item/handcuffs(src)
+    new /obj/item/explosive/grenade/flashbang(src)
+
+/obj/item/storage/belt/security/MP/CMB/synth()
+    new /obj/item/explosive/grenade/flashbang(src)
+    new /obj/item/device/flash(src)
+    new /obj/item/weapon/melee/baton(src)
+    new /obj/item/reagent_container/spray/pepper(src)
+    new /obj/item/device/clue_scanner(src)
+    new /obj/item/handcuffs(src)
+    new /obj/item/handcuffs(src)
+    new /obj/item/explosive/grenade/flashbang(src)
 
 /obj/item/storage/belt/marine
 	name = "\improper M276 pattern ammo load rig"

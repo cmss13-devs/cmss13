@@ -62,5 +62,6 @@
 //1-Channel ERTs
 #define RADIO_CHANNEL_DUTCH_DOZEN "DD"
 #define RADIO_CHANNEL_VAI "VAI"
+#define RADIO_CHANNEL_CMB "CMB"
 
 #define RADIO_CHANNEL_YAUTJA "Yautja"

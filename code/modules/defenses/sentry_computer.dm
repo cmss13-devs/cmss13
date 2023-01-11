@@ -18,6 +18,7 @@
 	var/screen_state = 0
 	var/list/registered_tools = list()
 	var/list/faction_group
+	var/silent = FALSE
 
 	/// The turf where the camera was last updated.
 	var/turf/last_camera_turf
@@ -125,7 +126,7 @@
 	INVOKE_ASYNC(src, PROC_REF(send_message), message)
 
 /obj/item/device/sentry_computer/proc/send_message(var/message)
-	if(transceiver)
+	if(!silent && transceiver)
 		transceiver.talk_into(voice, "[message]", RADIO_CHANNEL_SENTY)
 
 /obj/item/device/sentry_computer/attack_hand(mob/user)

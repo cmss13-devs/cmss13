@@ -220,8 +220,7 @@
 	var/filter_size = EXOSKELETON_OFF_FILTER_SIZE
 	if(show_exoskeleton)
 		filter_size = EXOSKELETON_ON_FILTER_SIZE
-	var/filter_priority = 1
-	user.add_filter("synth_protective_form", filter_priority, list("type" = "outline", "color" = filter_color, "size" = filter_size))
+	user.add_filter("synth_protective_form", priority = 1, params = list("type" = "outline", "color" = filter_color, "size" = filter_size))
 
 	addtimer(CALLBACK(src, PROC_REF(protective_form_cooldown), user), protective_form_cooldown)
 
@@ -260,8 +259,7 @@
 		var/filter_size = EXOSKELETON_OFF_FILTER_SIZE
 		if(show_exoskeleton)
 			filter_size = EXOSKELETON_ON_FILTER_SIZE
-		var/filter_priority = 1
-		user.add_filter("synth_immobile_form", filter_priority, list("type" = "outline", "color" = filter_color, "size" = filter_size))
+		user.add_filter("synth_immobile_form", priority = 1, params = list("type" = "outline", "color" = filter_color, "size" = filter_size))
 	else
 		user.status_flags |= CANPUSH
 		user.anchored = FALSE

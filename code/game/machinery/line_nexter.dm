@@ -3,7 +3,7 @@
 	name = "Turnstile"
 	desc = "a one-way barrier combined with a bar to pull people out of line."
 	icon = 'icons/obj/structures/barricades.dmi'
-	density = 1
+	density = TRUE
 	icon_state = "turnstile"
 	anchored = 1
 	flags_atom = ON_BORDER

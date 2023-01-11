@@ -292,6 +292,8 @@
 	var/icon_xeno
 	var/icon_xenonid
 
+	bubble_icon = "alien"
+
 	/////////////////////////////////////////////////////////////////////
 	//
 	// Phero related vars
@@ -791,7 +793,7 @@
 ///get_eye_protection()
 ///Returns a number between -1 to 2
 /mob/living/carbon/Xenomorph/get_eye_protection()
-	return 2
+	return EYE_PROTECTION_WELDING
 
 /mob/living/carbon/Xenomorph/get_pull_miltiplier()
 	return pull_multiplier

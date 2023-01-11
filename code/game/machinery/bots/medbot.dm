@@ -8,7 +8,7 @@
 	desc = "A little medical robot. He looks somewhat underwhelmed."
 	icon = 'icons/obj/structures/machinery/aibots.dmi'
 	icon_state = "medibot0"
-	density = 0
+	density = FALSE
 	anchored = 0
 	health = 20
 	maxhealth = 20

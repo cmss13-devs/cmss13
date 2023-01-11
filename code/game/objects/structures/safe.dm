@@ -29,7 +29,7 @@ FLOOR SAFES
 	icon = 'icons/obj/structures/structures.dmi'
 	icon_state = "safe"
 	anchored = 1
-	density = 1
+	density = TRUE
 	layer = BELOW_OBJ_LAYER
 	unslashable = TRUE
 	unacidable = TRUE
@@ -209,7 +209,7 @@ FLOOR SAFES
 /obj/structure/safe/floor
 	name = "floor safe"
 	icon_state = "floorsafe"
-	density = 0
+	density = FALSE
 	level = 1 //underfloor
 	layer = UNDERFLOOR_OBJ_LAYER
 

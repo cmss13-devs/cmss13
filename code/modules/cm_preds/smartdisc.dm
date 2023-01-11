@@ -127,7 +127,7 @@
 	maxHealth = 60
 	health = 60
 	attack_same = 0
-	density = 0
+	density = FALSE
 	mob_size = MOB_SIZE_SMALL
 
 	harm_intent_damage = 10

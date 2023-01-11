@@ -212,26 +212,26 @@ var/global/list/job_command_roles = JOB_COMMAND_ROLES_LIST
 
 #define CLF_JOB_LIST list(JOB_CLF, JOB_CLF_ENGI, JOB_CLF_MEDIC, JOB_CLF_SPECIALIST, JOB_CLF_LEADER, JOB_CLF_COMMANDER, JOB_CLF_SYNTH)
 
-//-------- RESS --------//
-#define JOB_RESS_REPRESENTATIVE "RESS Representative"
+//-------- TWE --------//
+#define JOB_TWE_REPRESENTATIVE "TWE Representative"
 
-#define JOB_RESS_YONTO "RMC Yonto"
-#define JOB_RESS_SANTO "RMC Santo"
-#define JOB_RESS_NITO "RMC Nito"
-#define JOB_RESS_ITTO "RMC Itto"
+#define JOB_TWE_YONTO "RMC Yonto"
+#define JOB_TWE_SANTO "RMC Santo"
+#define JOB_TWE_NITO "RMC Nito"
+#define JOB_TWE_ITTO "RMC Itto"
 
-#define RESS_COMMANDO_JOB_LIST list(JOB_RESS_YONTO, JOB_RESS_SANTO, JOB_RESS_NITO, JOB_RESS_ITTO)
+#define TWE_COMMANDO_JOB_LIST list(JOB_TWE_YONTO, JOB_TWE_SANTO, JOB_TWE_NITO, JOB_TWE_ITTO)
 
-#define JOB_RESS_SEAMAN "RESS Seaman"
-#define JOB_RESS_LSEAMAN "RESS Leading Seaman"
-#define JOB_RESS_SO "RESS Standing Officer"
-#define JOB_RESS_WO "RESS Warrant Officer"
-#define JOB_RESS_CPT "RESS Captain"
-#define JOB_RESS_ADM "RESS Admiral"
-#define JOB_RESS_GADM "RESS Grand Admiral"
-#define JOB_RESS_ER "RESS Emperor"
+#define JOB_TWE_SEAMAN "TWE Seaman"
+#define JOB_TWE_LSEAMAN "TWE Leading Seaman"
+#define JOB_TWE_SO "TWE Standing Officer"
+#define JOB_TWE_WO "TWE Warrant Officer"
+#define JOB_TWE_CPT "TWE Captain"
+#define JOB_TWE_ADM "TWE Admiral"
+#define JOB_TWE_GADM "TWE Grand Admiral"
+#define JOB_TWE_ER "TWE Emperor"
 
-#define RESS_OFFICER_JOB_LIST list(JOB_RESS_SEAMAN, JOB_RESS_LSEAMAN, JOB_RESS_SO, JOB_RESS_WO, JOB_RESS_CPT, JOB_RESS_ADM, JOB_RESS_GADM, JOB_RESS_ER)
+#define TWE_OFFICER_JOB_LIST list(JOB_TWE_SEAMAN, JOB_TWE_LSEAMAN, JOB_TWE_SO, JOB_TWE_WO, JOB_TWE_CPT, JOB_TWE_ADM, JOB_TWE_GADM, JOB_TWE_ER)
 
 //-------- PROVOST --------//
 #define JOB_PROVOST_ENFORCER "Provost Enforcer"
@@ -243,6 +243,9 @@ var/global/list/job_command_roles = JOB_COMMAND_ROLES_LIST
 #define JOB_PROVOST_CMARSHAL "Provost Chief Marshal"
 
 #define PROVOST_JOB_LIST list(JOB_PROVOST_ENFORCER, JOB_PROVOST_TML, JOB_PROVOST_ADVISOR, JOB_PROVOST_INSPECTOR, JOB_PROVOST_MARSHAL, JOB_PROVOST_SMARSHAL, JOB_PROVOST_CMARSHAL)
+
+#define JOB_RIOT "Riot Control"
+#define JOB_RIOT_CHIEF "Chief Riot Control"
 
 //-------- UAAC --------//
 #define JOB_TIS_IO "UAAC-TIS Intelligence Officer"
@@ -276,8 +279,8 @@ var/global/list/job_command_roles = JOB_COMMAND_ROLES_LIST
 #define XENO_ANCIENT 3
 #define XENO_PRIME 4
 
-#define JOB_OBSERVER "Observer" // For monthly time tracking
-
+/// For monthly time tracking
+#define JOB_OBSERVER "Observer"
 #define TIMELOCK_JOB(role_id, hours) new/datum/timelock(role_id, hours, role_id)
 
 //For displaying groups of jobs. Used by new player's latejoin menu and by crew manifest.

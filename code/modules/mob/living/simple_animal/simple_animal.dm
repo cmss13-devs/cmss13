@@ -80,7 +80,7 @@
 			GLOB.alive_mob_list += src
 			stat = CONSCIOUS
 			lying = 0
-			density = 1
+			density = TRUE
 			reload_fullscreens()
 		return 0
 
@@ -363,8 +363,9 @@
 		return
 
 	if(copytext(message,1,2) == "*")
-		INVOKE_ASYNC(src, PROC_REF(emote), copytext(message,2))
-		return
+		if(!findtext(message, "*", 2)) //Second asterisk means it is markup for *bold*, not an *emote.
+			INVOKE_ASYNC(src, PROC_REF(emote), lowertext(copytext(message,2)))
+			return
 
 	if(stat)
 		return

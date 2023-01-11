@@ -75,7 +75,8 @@
 		return say_dead(message)
 
 	if(copytext(message,1,2) == "*")
-		return emote(copytext(message,2), 1, null, TRUE) //TRUE arg means emote was caused by player (e.g. no an auto scream when hurt).
+		if(!findtext(message, "*", 2)) //Second asterisk means it is markup for *bold*, not an *emote.
+			return emote(lowertext(copytext(message,2)), 1, null, TRUE) //TRUE arg means emote was caused by player (e.g. no an auto scream when hurt).
 
 	if(name != GetVoice())
 		alt_name = "(as [get_id_name("Unknown")])"
@@ -304,8 +305,10 @@ for it but just ignore it.
 
 	return returns
 
-/mob/living/carbon/human/binarycheck()
+/mob/living/carbon/human/hear_apollo()
 	var/obj/item/device/radio/headset/dongle = get_type_in_ears(/obj/item/device/radio/headset)
-	if (dongle && dongle.translate_binary)
+	if (dongle && dongle.translate_apollo)
+		return TRUE
+	for(var/datum/language/apollo/link in languages)
 		return TRUE
 	return FALSE

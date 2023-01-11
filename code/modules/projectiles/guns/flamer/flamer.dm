@@ -377,7 +377,7 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 	name = "fire"
 	desc = "Ouch!"
 	anchored = 1
-	mouse_opacity = 0
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	icon = 'icons/effects/fire.dmi'
 	icon_state = "dynamic_2"
 	layer = BELOW_OBJ_LAYER

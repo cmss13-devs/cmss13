@@ -6,7 +6,7 @@
 	name = "Wall Locker"
 	icon = 'icons/obj/structures/props/walllocker.dmi'
 	icon_state = "wall-locker"
-	density = 0
+	density = FALSE
 	anchored = 1
 	icon_closed = "wall-locker"
 	icon_opened = "wall-lockeropen"

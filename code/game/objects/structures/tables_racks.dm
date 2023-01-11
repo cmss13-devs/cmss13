@@ -14,7 +14,7 @@
 	desc = "A square metal surface resting on four legs. Useful to put stuff on. Can be flipped in emergencies to act as cover."
 	icon = 'icons/obj/structures/tables.dmi'
 	icon_state = "table"
-	density = 1
+	density = TRUE
 	anchored = 1.0
 	layer = TABLE_LAYER
 	throwpass = 1 //You can throw objects over this, despite it's density.")
@@ -598,7 +598,7 @@
 	desc = "A bunch of metal shelves stacked on top of eachother. Excellent for storage purposes, less so as cover."
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "rack"
-	density = 1
+	density = TRUE
 	layer = TABLE_LAYER
 	anchored = 1.0
 	throwpass = 1 //You can throw objects over this, despite it's density.
@@ -652,7 +652,7 @@
 			new parts(loc)
 	else
 		new /obj/item/stack/sheet/metal(loc)
-	density = 0
+	density = FALSE
 	return ..()
 
 /obj/structure/surface/rack/ex_act(severity, direction)

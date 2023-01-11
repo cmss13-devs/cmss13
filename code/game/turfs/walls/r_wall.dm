@@ -2,8 +2,8 @@
 	name = "reinforced wall"
 	desc = "A huge chunk of reinforced metal used to separate rooms."
 	icon_state = "r_wall_mapicon"
-	opacity = 1
-	density = 1
+	opacity = TRUE
+	density = TRUE
 
 	damage_cap = HEALTH_WALL_REINFORCED
 	max_temperature = 6000
@@ -39,10 +39,11 @@
 		return
 
 	if(istype(W, /obj/item/weapon/melee/twohanded/breacher))
+		var/obj/item/weapon/melee/twohanded/breacher/current_hammer = W
 		if(user.action_busy)
 			return
-		if(!HAS_TRAIT(user, TRAIT_SUPER_STRONG))
-			to_chat(user, SPAN_WARNING("You can't use \the [W] properly!"))
+		if(!(HAS_TRAIT(user, TRAIT_SUPER_STRONG) || !current_hammer.really_heavy))
+			to_chat(user, SPAN_WARNING("You can't use \the [current_hammer] properly!"))
 			return
 
 		to_chat(user, SPAN_NOTICE("You start taking down \the [src]."))
@@ -239,7 +240,7 @@
 	name = "heavy reinforced wall"
 	desc = "A huge chunk of ultra-reinforced metal used to separate rooms. Looks virtually indestructible."
 	icon = 'icons/turf/walls/prison.dmi'
-	icon_state = "rwall"
+	icon_state = "hwall"
 	walltype = WALL_REINFORCED
 	hull = 1
 
@@ -263,6 +264,7 @@
 /turf/closed/wall/r_wall/biodome/biodome_unmeltable
 	name = "heavy reinforced wall"
 	desc = "A huge chunk of ultra-reinforced metal used to separate rooms. Looks virtually indestructible."
+	icon_state = "h_dome"
 	hull = 1
 
 /turf/closed/wall/r_wall/biodome/biodome_unmeltable/ex_act(severity) //Should make it indestructible

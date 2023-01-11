@@ -79,7 +79,7 @@
 	name = "body scanner console"
 	icon = 'icons/obj/structures/machinery/cryogenics.dmi'
 	icon_state = "body_scannerconsole"
-	density = 0
+	density = FALSE
 	anchored = TRUE
 	dir = SOUTH
 	unslashable = TRUE

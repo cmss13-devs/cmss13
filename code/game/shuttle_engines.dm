@@ -6,8 +6,8 @@
 	name = "shuttle window"
 	icon = 'icons/turf/podwindows.dmi'
 	icon_state = "1"
-	density = 1
-	opacity = 0
+	density = TRUE
+	opacity = FALSE
 	anchored = 1
 	unslashable = TRUE
 	unacidable = TRUE
@@ -21,7 +21,7 @@
 
 /obj/structure/shuttle/engine
 	name = "engine"
-	density = 1
+	density = TRUE
 	anchored = 1.0
 	unslashable = TRUE
 	unacidable = TRUE
@@ -37,7 +37,7 @@
 /obj/structure/shuttle/engine/propulsion
 	name = "propulsion"
 	icon_state = "propulsion"
-	opacity = 1
+	opacity = TRUE
 
 /obj/structure/shuttle/engine/propulsion/burst
 	name = "burst"
@@ -59,4 +59,4 @@
 	icon_state = "diagonalWall"
 	name = "wall"
 	layer = ABOVE_TURF_LAYER
-	density = 1
+	density = TRUE

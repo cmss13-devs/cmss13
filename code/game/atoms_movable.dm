@@ -192,7 +192,7 @@
 
 /atom/movable/proc/create_clone_movable(shift_x, shift_y)
 	var/atom/movable/clone/C = new /atom/movable/clone(src.loc)
-	C.density = 0
+	C.density = FALSE
 	C.proj_x = shift_x
 	C.proj_y = shift_y
 

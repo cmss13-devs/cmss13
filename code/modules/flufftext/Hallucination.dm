@@ -232,9 +232,9 @@ Gunshots/explosions/opening doors/less rare audio (done)
 	icon_state = null
 	name = ""
 	desc = ""
-	density = 0
+	density = FALSE
 	anchored = 1
-	opacity = 0
+	opacity = FALSE
 	var/mob/living/carbon/human/my_target = null
 	var/weapon_name = null
 	var/obj/item/weap = null

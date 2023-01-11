@@ -15,7 +15,7 @@
 /obj/item/storage/belt/equipped(mob/user, slot)
 	switch(slot)
 		if(WEAR_WAIST, WEAR_J_STORE, WEAR_BACK)
-			mouse_opacity = 2 //so it's easier to click when properly equipped.
+			mouse_opacity = MOUSE_OPACITY_OPAQUE //so it's easier to click when properly equipped.
 	..()
 
 /obj/item/storage/belt/dropped(mob/user)

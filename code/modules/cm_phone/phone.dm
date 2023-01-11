@@ -31,6 +31,9 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 	var/timeout_timer_id
 	var/timeout_duration = 30 SECONDS
 
+	var/network_receive = FACTION_MARINE
+	var/list/networks_transmit = list(FACTION_MARINE)
+
 /obj/structure/transmitter/hidden
 	callable = FALSE
 
@@ -72,12 +75,14 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 	|| !T.enabled\
 )
 
-/proc/get_transmitters()
+/obj/structure/transmitter/proc/get_transmitters()
 	var/list/phone_list = list()
 
 	for(var/t in GLOB.transmitters)
 		var/obj/structure/transmitter/T = t
 		if(TRANSMITTER_UNAVAILABLE(T) || !T.callable) // Phone not available
+			continue
+		if(!(T.network_receive in networks_transmit))
 			continue
 
 		var/id = T.phone_id
@@ -532,6 +537,10 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 	UnregisterSignal(attached_to, COMSIG_MOVABLE_MOVED)
 	reset_tether()
 
+
+/obj/structure/transmitter/colony_net
+	network_receive = FACTION_COLONIST
+	networks_transmit = list(FACTION_COLONIST)
 
 //rotary desk phones (need a touch tone handset at some point)
 /obj/structure/transmitter/rotary

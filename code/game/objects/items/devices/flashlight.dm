@@ -105,31 +105,31 @@
 	add_fingerprint(user)
 	if(on && user.zone_selected == "eyes")
 
-		if((user.getBrainLoss() >= 60) && prob(50))	//too dumb to use flashlight properly
-			return ..()	//just hit them in the head
+		if((user.getBrainLoss() >= 60) && prob(50)) //too dumb to use flashlight properly
+			return ..() //just hit them in the head
 
-		if((!ishuman(user) || SSticker) && SSticker.mode.name != "monkey")	//don't have dexterity
+		if((!ishuman(user) || SSticker) && SSticker.mode.name != "monkey") //don't have dexterity
 			to_chat(user, SPAN_NOTICE("You don't have the dexterity to do this!"))
 			return
 
-		var/mob/living/carbon/human/H = M	//mob has protective eyewear
+		var/mob/living/carbon/human/H = M //mob has protective eyewear
 		if(ishuman(H) && ((H.head && H.head.flags_inventory & COVEREYES) || (H.wear_mask && H.wear_mask.flags_inventory & COVEREYES) || (H.glasses && H.glasses.flags_inventory & COVEREYES)))
 			to_chat(user, SPAN_NOTICE("You're going to need to remove that [(H.head && H.head.flags_inventory & COVEREYES) ? "helmet" : (H.wear_mask && H.wear_mask.flags_inventory & COVEREYES) ? "mask": "glasses"] first."))
 			return
 
-		if(M == user)	//they're using it on themselves
+		if(M == user) //they're using it on themselves
 			M.flash_eyes()
 			M.visible_message(SPAN_NOTICE("[M] directs [src] to \his eyes."), \
-									 SPAN_NOTICE("You wave the light in front of your eyes! Trippy!"))
+							SPAN_NOTICE("You wave the light in front of your eyes! Trippy!"))
 			return
 
 		user.visible_message(SPAN_NOTICE("[user] directs [src] to [M]'s eyes."), \
-							 SPAN_NOTICE("You direct [src] to [M]'s eyes."))
+							SPAN_NOTICE("You direct [src] to [M]'s eyes."))
 
-		if(istype(M, /mob/living/carbon/human))	//robots and aliens are unaffected
-			if(M.stat == DEAD || M.sdisabilities & DISABILITY_BLIND)	//mob is dead or fully blind
+		if(istype(M, /mob/living/carbon/human)) //robots and aliens are unaffected
+			if(M.stat == DEAD || M.sdisabilities & DISABILITY_BLIND) //mob is dead or fully blind
 				to_chat(user, SPAN_NOTICE("[M] pupils does not react to the light!"))
-			else	//they're okay!
+			else //they're okay!
 				M.flash_eyes()
 				to_chat(user, SPAN_NOTICE("[M]'s pupils narrow."))
 	else
@@ -263,7 +263,7 @@
 	brightness_on = 5 //As bright as a flashlight, but more disposable. Doesn't burn forever though
 	icon_state = "flare"
 	item_state = "flare"
-	actions = list()	//just pull it manually, neckbeard.
+	actions = list() //just pull it manually, neckbeard.
 	raillight_compatible = 0
 	can_be_broken = FALSE
 	var/burnt_out = FALSE
@@ -272,8 +272,10 @@
 	var/on_damage = 7
 	var/ammo_datum = /datum/ammo/flare
 
+	/// Whether to use flame overlays for this flare type
+	var/show_flame = TRUE
 	/// Tint for the greyscale flare flame
-	var/flame_tint = "#ddbbbb"
+	var/flame_tint = "#ffcccc"
 	/// Color correction, added to the whole flame overlay
 	var/flame_base_tint = "#ff0000"
 	// "But, why are there two colors?"
@@ -290,15 +292,16 @@
 	. = ..()
 	if(on)
 		icon_state = "[initial(icon_state)]-on"
-		var/image/flame = image('icons/obj/items/lighting.dmi', src, "flare_flame")
-		flame.color = flame_tint
-		flame.appearance_flags = KEEP_APART|RESET_COLOR|RESET_TRANSFORM
-		var/image/flame_base = image('icons/obj/items/lighting.dmi', src, "flare_flame")
-		flame_base.color = flame_base_tint
-		flame_base.appearance_flags = KEEP_APART|RESET_COLOR
-		flame_base.blend_mode = BLEND_ADD
-		flame.overlays += flame_base
-		overlays += flame
+		if(show_flame)
+			var/image/flame = image('icons/obj/items/lighting.dmi', src, "flare_flame")
+			flame.color = flame_tint
+			flame.appearance_flags = KEEP_APART|RESET_COLOR|RESET_TRANSFORM
+			var/image/flame_base = image('icons/obj/items/lighting.dmi', src, "flare_flame")
+			flame_base.color = flame_base_tint
+			flame_base.appearance_flags = KEEP_APART|RESET_COLOR
+			flame_base.blend_mode = BLEND_ADD
+			flame.overlays += flame_base
+			overlays += flame
 	else if(burnt_out)
 		icon_state = "[initial(icon_state)]-empty"
 	else
@@ -406,8 +409,9 @@
 	desc = "It's really bright, and unreachable."
 	icon_state = "" //No sprite
 	invisibility = 101 //Can't be seen or found, it's "up in the sky"
-	mouse_opacity = 0
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	brightness_on = 7 //Way brighter than most lights
+	show_flame = FALSE
 
 /obj/item/device/flashlight/flare/on/illumination/Initialize()
 	. = ..()
@@ -430,6 +434,7 @@
 	brightness_on = 7
 	anchored = 1//can't be picked up
 	ammo_datum = /datum/ammo/flare/starshell
+	show_flame = FALSE
 
 /obj/item/device/flashlight/flare/on/starshell_ash/Initialize(mapload, ...)
 	if(mapload)
@@ -477,7 +482,7 @@
 	name = "lantern"
 	icon_state = "lantern"
 	desc = "A mining lantern."
-	brightness_on = 6			// luminosity when on
+	brightness_on = 6 // luminosity when on
 
 //Signal Flare
 /obj/item/device/flashlight/flare/signal
@@ -505,7 +510,7 @@
 
 	if(.)
 		faction = user.faction
-		addtimer(CALLBACK(src, .proc/activate_signal, user), 5 SECONDS)
+		addtimer(CALLBACK(src, PROC_REF(activate_signal), user), 5 SECONDS)
 
 /obj/item/device/flashlight/flare/signal/activate_signal(mob/living/carbon/human/user)
 	..()

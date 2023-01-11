@@ -11,20 +11,20 @@
 	var/giver_player_id
 
 /datum/entity_meta/statistic_medal
-    entity_type = /datum/entity/statistic/medal
-    table_name = "log_player_statistic_medal"
-    field_types = list(
-        "player_id" = DB_FIELDTYPE_BIGINT,
-        "round_id" = DB_FIELDTYPE_BIGINT,
+	entity_type = /datum/entity/statistic/medal
+	table_name = "log_player_statistic_medal"
+	field_types = list(
+		"player_id" = DB_FIELDTYPE_BIGINT,
+		"round_id" = DB_FIELDTYPE_BIGINT,
 
-        "medal_type" = DB_FIELDTYPE_STRING_LARGE,
-        "recipient_name" = DB_FIELDTYPE_STRING_LARGE,
-        "recipient_role" = DB_FIELDTYPE_STRING_LARGE,
-        "citation" = DB_FIELDTYPE_STRING_MAX,
+		"medal_type" = DB_FIELDTYPE_STRING_LARGE,
+		"recipient_name" = DB_FIELDTYPE_STRING_LARGE,
+		"recipient_role" = DB_FIELDTYPE_STRING_LARGE,
+		"citation" = DB_FIELDTYPE_STRING_MAX,
 
-        "giver_name" = DB_FIELDTYPE_STRING_LARGE,
+		"giver_name" = DB_FIELDTYPE_STRING_LARGE,
 		"giver_player_id" = DB_FIELDTYPE_BIGINT
-    )
+	)
 
 /datum/view_record/medal_view
 	var/player_id
@@ -117,7 +117,7 @@
 					break
 		var/datum/entity/player_stats/human/human_stats = setup_human_stats()
 		human_stats.count_niche_stat(STATISTICS_NICHE_MEDALS, -1, rank)
-		
+
 		for(var/datum/entity/statistic/medal/medal as anything in human_stats.medal_list)
 			if(medal.round_id == round_id && medal.recipient_name == recipient.real_name && medal.medal_type == medal_type && medal.citation == citation)
 				human_stats.medal_list.Remove(medal)
@@ -125,4 +125,4 @@
 				break
 
 	return TRUE
-	
+

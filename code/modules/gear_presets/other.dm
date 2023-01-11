@@ -206,7 +206,7 @@
 	paygrade = "Freelancer Leader"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = "Freelancer Warlord"
-	languages = list(LANGUAGE_ENGLISH, LANGUAGE_RUSSIAN, LANGUAGE_CHINESE, LANGUAGE_JAPANESE, LANGUAGE_YAUTJA)
+	languages = list(LANGUAGE_ENGLISH, LANGUAGE_RUSSIAN, LANGUAGE_CHINESE, LANGUAGE_JAPANESE)
 
 	skills = /datum/skills/freelancer/SL
 

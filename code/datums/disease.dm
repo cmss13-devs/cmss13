@@ -29,7 +29,7 @@ var/list/diseases = typesof(/datum/disease) - /datum/disease
 	var/carrier = 0 //there will be a small chance that the person will be a carrier
 	var/curable = 0 //can this disease be cured? (By itself...)
 	var/list/strain_data = list() //This is passed on to infectees
-	var/stage_prob = 4		// probability of advancing to next stage, default 4% per check
+	var/stage_prob = 4 // probability of advancing to next stage, default 4% per check
 	var/agent = "some microbes"//name of the disease agent
 	var/permeability_mod = 1//permeability modifier coefficient.
 	var/desc = null//description. Leave it null and this disease won't show in med records.
@@ -162,7 +162,7 @@ var/list/diseases = typesof(/datum/disease) - /datum/disease
 			var/saved_type = "[type]"
 			affected_mob.resistances += text2path(saved_type)
 		remove_virus()
-	qdel(src)	//delete the datum to stop it processing
+	qdel(src) //delete the datum to stop it processing
 	return
 
 
@@ -177,7 +177,7 @@ var/list/diseases = typesof(/datum/disease) - /datum/disease
 
 /datum/disease/New(var/process=TRUE)//process = 1 - adding the object to global list. List is processed by master controller.
 	cure_list = list(cure_id) // to add more cures, add more vars to this list in the actual disease's New()
-	if(process)				 // Viruses in list are considered active.
+	if(process)  // Viruses in list are considered active.
 		active_diseases += src
 	initial_spread = spread
 

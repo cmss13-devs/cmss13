@@ -25,7 +25,7 @@
 	desc = "A 10x24mm incendiary ammunition box. Used to refill M41A MK2 and L42A incendiary magazines. It comes with a leather strap allowing to wear it on the back."
 	overlay_content = "_incen"
 	default_ammo = /datum/ammo/bullet/rifle/incendiary
-	bullet_amount = 400		//Incen is OP
+	bullet_amount = 400 //Incen is OP
 	max_bullet_amount = 400
 
 /obj/item/ammo_box/rounds/incen/empty
@@ -79,7 +79,7 @@
 	caliber = "10x20mm"
 	overlay_content = "_incen"
 	default_ammo = /datum/ammo/bullet/smg/incendiary
-	bullet_amount = 400		//Incen is OP
+	bullet_amount = 400 //Incen is OP
 	max_bullet_amount = 400
 
 /obj/item/ammo_box/rounds/smg/incen/empty

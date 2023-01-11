@@ -13,11 +13,11 @@ All attachment offsets are now in a list, including stocks. Guns that don't take
 ~N
 
 Defined in conflicts.dm of the #defines folder.
-#define ATTACH_REMOVABLE	1
-#define ATTACH_ACTIVATION	2
-#define ATTACH_PROJECTILE	4
-#define ATTACH_RELOADABLE	8
-#define ATTACH_WEAPON		16
+#define ATTACH_REMOVABLE 1
+#define ATTACH_ACTIVATION 2
+#define ATTACH_PROJECTILE 4
+#define ATTACH_RELOADABLE 8
+#define ATTACH_WEAPON 16
 */
 
 /obj/item/attachable
@@ -44,27 +44,27 @@ Defined in conflicts.dm of the #defines folder.
 	//These bonuses are applied only as the gun fires a projectile.
 
 	//These are flat bonuses applied and are passive, though they may be applied at different points.
-	var/accuracy_mod 	= 0 //Modifier to firing accuracy, works off a multiplier.
+	var/accuracy_mod = 0 //Modifier to firing accuracy, works off a multiplier.
 	var/accuracy_unwielded_mod = 0 //same as above but for onehanded.
-	var/damage_mod 		= 0 //Modifer to the damage mult, works off a multiplier.
+	var/damage_mod = 0 //Modifer to the damage mult, works off a multiplier.
 	var/damage_falloff_mod = 0 //Modifier to damage falloff, works off a multiplier.
 	var/damage_buildup_mod = 0 //Modifier to damage buildup, works off a multiplier.
 	var/range_min_mod = 0 //Modifier to minimum effective range, tile value.
 	var/range_max_mod = 0 //Modifier to maximum effective range, tile value.
-	var/melee_mod 		= 0 //Changing to a flat number so this actually doesn't screw up the calculations.
-	var/scatter_mod 	= 0 //Increases or decreases scatter chance.
+	var/melee_mod = 0 //Changing to a flat number so this actually doesn't screw up the calculations.
+	var/scatter_mod = 0 //Increases or decreases scatter chance.
 	var/scatter_unwielded_mod = 0 //same as above but for onehanded firing.
-	var/recoil_mod 		= 0 //If positive, adds recoil, if negative, lowers it. Recoil can't go below 0.
+	var/recoil_mod = 0 //If positive, adds recoil, if negative, lowers it. Recoil can't go below 0.
 	var/recoil_unwielded_mod = 0 //same as above but for onehanded firing.
 	var/burst_scatter_mod = 0 //Modifier to scatter from wielded burst fire, works off a multiplier.
-	var/light_mod 		= 0 //Adds an x-brightness flashlight to the weapon, which can be toggled on and off.
-	var/delay_mod 		= 0 //Changes firing delay. Cannot go below 0.
-	var/burst_mod 		= 0 //Changes burst rate. 1 == 0.
-	var/size_mod 		= 0 //Increases the weight class.
-	var/aim_speed_mod	= 0 //Changes the aiming speed slowdown of the wearer by this value.
-	var/wield_delay_mod	= 0 //How long ADS takes (time before firing)
+	var/light_mod = 0 //Adds an x-brightness flashlight to the weapon, which can be toggled on and off.
+	var/delay_mod = 0 //Changes firing delay. Cannot go below 0.
+	var/burst_mod = 0 //Changes burst rate. 1 == 0.
+	var/size_mod = 0 //Increases the weight class.
+	var/aim_speed_mod = 0 //Changes the aiming speed slowdown of the wearer by this value.
+	var/wield_delay_mod = 0 //How long ADS takes (time before firing)
 	var/movement_onehanded_acc_penalty_mod = 0 //Modifies accuracy/scatter penalty when firing onehanded while moving.
-	var/velocity_mod    = 0 // Added velocity to bullets
+	var/velocity_mod = 0 // Added velocity to bullets
 	var/hud_offset_mod  = 0 //How many pixels to adjust the gun's sprite coords by. Ideally, this should keep the gun approximately centered.
 
 	var/activation_sound = 'sound/weapons/handling/gun_underbarrel_activate.ogg'
@@ -72,8 +72,8 @@ Defined in conflicts.dm of the #defines folder.
 
 	var/flags_attach_features = ATTACH_REMOVABLE
 
-	var/current_rounds 	= 0 //How much it has.
-	var/max_rounds 		= 0 //How much ammo it can store
+	var/current_rounds = 0 //How much it has.
+	var/max_rounds = 0 //How much ammo it can store
 
 	var/attachment_action_type
 
@@ -224,21 +224,26 @@ Defined in conflicts.dm of the #defines folder.
 	return TRUE
 
 /obj/item/attachable/proc/handle_attachment_description()
+	var/base_attachment_desc
 	switch(slot)
 		if("rail")
-			return "It has a [icon2html(src)] [name] mounted on the top.<br>"
+			base_attachment_desc = "It has a [icon2html(src)] [name] mounted on the top."
 		if("muzzle")
-			return "It has a [icon2html(src)] [name] mounted on the front.<br>"
+			base_attachment_desc = "It has a [icon2html(src)] [name] mounted on the front."
 		if("stock")
-			return "It has a [icon2html(src)] [name] for a stock.<br>"
+			base_attachment_desc = "It has a [icon2html(src)] [name] for a stock."
 		if("under")
 			var/output = "It has a [icon2html(src)] [name]"
 			if(flags_attach_features & ATTACH_WEAPON)
 				output += " ([current_rounds]/[max_rounds])"
-			output += " mounted underneath.<br>"
-			return output
-	return "It has a [icon2html(src)] [name] attached.<br>"
+			output += " mounted underneath."
+			base_attachment_desc = output
+		else
+			base_attachment_desc = "It has a [icon2html(src)] [name] attached."
+	return handle_pre_break_attachment_description(base_attachment_desc) + "<br>"
 
+/obj/item/attachable/proc/handle_pre_break_attachment_description(base_description_text as text)
+	return base_description_text
 
 // ======== Muzzle Attachments ======== //
 
@@ -615,7 +620,7 @@ Defined in conflicts.dm of the #defines folder.
 	remove_attached_item()
 
 	attached_item = S.master_object
-	RegisterSignal(attached_item, COMSIG_PARENT_QDELETING, .proc/remove_attached_item)
+	RegisterSignal(attached_item, COMSIG_PARENT_QDELETING, PROC_REF(remove_attached_item))
 	activation = new /datum/action/item_action/toggle(src, S.master_object)
 
 	if(ismob(S.master_object.loc))
@@ -823,7 +828,7 @@ Defined in conflicts.dm of the #defines folder.
 		G.fire_delay += delay_scoped_nerf
 		G.damage_falloff_mult += damage_falloff_scoped_buff
 		using_scope = TRUE
-		RegisterSignal(user, COMSIG_LIVING_ZOOM_OUT, .proc/remove_scoped_buff)
+		RegisterSignal(user, COMSIG_LIVING_ZOOM_OUT, PROC_REF(remove_scoped_buff))
 
 /obj/item/attachable/scope/proc/remove_scoped_buff(mob/living/carbon/user, obj/item/weapon/gun/G)
 	SIGNAL_HANDLER
@@ -855,8 +860,8 @@ Defined in conflicts.dm of the #defines folder.
 
 //variable zoom scopes, they go between 2x and 4x zoom.
 
-#define ZOOM_LEVEL_2X	0
-#define ZOOM_LEVEL_4X	1
+#define ZOOM_LEVEL_2X 0
+#define ZOOM_LEVEL_4X 1
 
 /obj/item/attachable/scope/variable_zoom
 	name = "S10 variable zoom telescopic scope"
@@ -923,7 +928,7 @@ Defined in conflicts.dm of the #defines folder.
 	desc = "Oppa! How did you get this off glorious Stalin weapon? Blyat, put back on and do job tovarish. Yankee is not shoot self no?"
 
 /obj/item/attachable/scope/variable_zoom/eva
-	name = "RX-M5 EVA telescopic variable scope"
+	name = "RXF-M5 EVA telescopic variable scope"
 	icon_state = "rxfm5_eva_scope"
 	attach_icon = "rxfm5_eva_scope_a"
 	desc = "A civilian-grade scope that can be switched between short and long range magnification, intended for use in extraterrestrial scouting. Looks ridiculous on a pistol."
@@ -1028,7 +1033,7 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/scope/mini_iff/activate_attachment(obj/item/weapon/gun/G, mob/living/carbon/user, turn_off)
 	if(do_after(user, 8, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
-		allows_movement	= 1
+		allows_movement = 1
 		. = ..()
 
 /obj/item/attachable/scope/mini_iff/apply_scoped_buff(obj/item/weapon/gun/G, mob/living/carbon/user)
@@ -1693,8 +1698,8 @@ Defined in conflicts.dm of the #defines folder.
 		G.recalculate_attachment_bonuses()
 	else
 		to_chat(user, SPAN_NOTICE("You fold [src]."))
-		R.flags_equip_slot |= SLOT_WAIST	// Allow to be worn on the belt when folded
-		R.folded = TRUE		// We can't shoot anymore, its folded
+		R.flags_equip_slot |= SLOT_WAIST // Allow to be worn on the belt when folded
+		R.folded = TRUE // We can't shoot anymore, its folded
 		icon_state = "44stock_folded"
 		size_mod = 0
 		hud_offset_mod = 4
@@ -1747,8 +1752,8 @@ Defined in conflicts.dm of the #defines folder.
 	// Some attachments may be fired. So here are the variables related to that.
 	/// Ammo to fire the attachment with
 	var/datum/ammo/ammo = null
-	var/max_range 		= 0 //Determines # of tiles distance the attachable can fire, if it's not a projectile.
-	var/last_fired 	//When the attachment was last fired.
+	var/max_range = 0 //Determines # of tiles distance the attachable can fire, if it's not a projectile.
+	var/last_fired //When the attachment was last fired.
 	var/attachment_firing_delay = 0 //the delay between shots, for attachments that fires stuff
 	var/fire_sound = null //Sound to play when firing it alternately
 	var/gun_original_damage_mult = 1 //so you don't buff the underbarrell gun with charger for the wrong weapon
@@ -1785,7 +1790,7 @@ Defined in conflicts.dm of the #defines folder.
 	else if(!turn_off)
 		if(user)
 			to_chat(user, SPAN_NOTICE("You are now using [src]."))
-			playsound(user, gun_activate_sound, 45, 1)
+			playsound(user, gun_activate_sound, 60, 1)
 		G.active_attachable = src
 		gun_original_damage_mult = G.damage_mult
 		G.damage_mult = 1
@@ -1814,7 +1819,7 @@ Defined in conflicts.dm of the #defines folder.
 	var/grenade_pass_flags
 	var/list/loaded_grenades //list of grenade types loaded in the UGL
 	var/breech_open = FALSE // is the UGL open for loading?
-	var/cocked = TRUE		// has the UGL been cocked via opening and closing the breech?
+	var/cocked = TRUE // has the UGL been cocked via opening and closing the breech?
 	var/open_sound = 'sound/weapons/handling/ugl_open.ogg'
 	var/close_sound = 'sound/weapons/handling/ugl_close.ogg'
 
@@ -1829,8 +1834,8 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/attached_gun/grenade/get_examine_text(mob/user)
 	. = ..()
-	if(current_rounds) 	. += "It has [current_rounds] grenade\s left."
-	else 				. += "It's empty."
+	if(current_rounds) . += "It has [current_rounds] grenade\s left."
+	else . += "It's empty."
 
 /obj/item/attachable/attached_gun/grenade/unique_action(mob/user)
 	if(!ishuman(usr))
@@ -1979,17 +1984,19 @@ Defined in conflicts.dm of the #defines folder.
 	name = "mini flamethrower"
 	icon_state = "flamethrower"
 	attach_icon = "flamethrower_a"
-	desc = "A weapon-mounted refillable flamethrower attachment.\nIt is designed for short bursts."
+	desc = "A weapon-mounted refillable flamethrower attachment. It has a secondary setting for a more intense flame with far less propulsion ability and heavy fuel usage."
 	w_class = SIZE_MEDIUM
-	current_rounds = 20
-	max_rounds = 20
-	max_range = 4
+	current_rounds = 40
+	max_rounds = 40
+	max_range = 5
 	slot = "under"
 	fire_sound = 'sound/weapons/gun_flamethrower3.ogg'
-	activation_sound = 'sound/weapons/handling/gun_underbarrel_flamer_activate.ogg'
+	gun_activate_sound = 'sound/weapons/handling/gun_underbarrel_flamer_activate.ogg'
 	flags_attach_features = ATTACH_REMOVABLE|ATTACH_ACTIVATION|ATTACH_RELOADABLE|ATTACH_WEAPON
 	var/burn_level = BURN_LEVEL_TIER_1
 	var/burn_duration = BURN_TIME_TIER_1
+	var/round_usage_per_tile = 1
+	var/intense_mode = FALSE
 
 /obj/item/attachable/attached_gun/flamer/New()
 	..()
@@ -1997,8 +2004,35 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/attached_gun/flamer/get_examine_text(mob/user)
 	. = ..()
-	if(current_rounds > 0) . += "It has [current_rounds] unit\s of fuel left."
-	else . += "It's empty."
+	if(intense_mode)
+		. += "It is currently using a more intense and volatile flame."
+	else
+		. += "It is using a normal and stable flame."
+	if(current_rounds > 0)
+		. += "It has [current_rounds] unit\s of fuel left."
+	else
+		. += "It's empty."
+
+/obj/item/attachable/attached_gun/flamer/unique_action(mob/user)
+	..()
+	playsound(user,'sound/weapons/handling/flamer_ignition.ogg', 25, 1)
+	if(intense_mode)
+		to_chat(user, SPAN_WARNING("You change \the [src] back to using a normal and more stable flame."))
+		round_usage_per_tile = 1
+		burn_level = BURN_LEVEL_TIER_1
+		burn_duration = BURN_TIME_TIER_1
+		max_range = 5
+		intense_mode = FALSE
+	else
+		to_chat(user, SPAN_WARNING("You change \the [src] to use a more intense and volatile flame."))
+		round_usage_per_tile = 5
+		burn_level = BURN_LEVEL_TIER_5
+		burn_duration = BURN_TIME_TIER_2
+		max_range = 2
+		intense_mode = TRUE
+
+/obj/item/attachable/attached_gun/flamer/handle_pre_break_attachment_description(base_description_text as text)
+	return base_description_text + " It is on [intense_mode ? "intense" : "normal"] mode."
 
 /obj/item/attachable/attached_gun/flamer/reload_attachment(obj/item/ammo_magazine/flamer_tank/FT, mob/user)
 	if(istype(FT))
@@ -2025,9 +2059,21 @@ Defined in conflicts.dm of the #defines folder.
 	if(get_dist(user,target) > max_range+4)
 		to_chat(user, SPAN_WARNING("Too far to fire the attachment!"))
 		return
-	if(current_rounds && ..())
-		unleash_flame(target, user)
 
+	if(!istype(loc, /obj/item/weapon/gun))
+		to_chat(user, SPAN_WARNING("\The [src] must be attached to a gun!"))
+		return
+
+	var/obj/item/weapon/gun/attached_gun = loc
+
+	if(!(attached_gun.flags_item & WIELDED))
+		to_chat(user, SPAN_WARNING("You must wield \the [attached_gun] to fire \the [src]!"))
+		return
+
+	if(current_rounds > round_usage_per_tile && ..())
+		unleash_flame(target, user)
+		if(attached_gun.last_fired < world.time)
+			attached_gun.last_fired = world.time
 
 /obj/item/attachable/attached_gun/flamer/proc/unleash_flame(atom/target, mob/living/user)
 	set waitfor = 0
@@ -2040,12 +2086,12 @@ Defined in conflicts.dm of the #defines folder.
 		if(T == user.loc)
 			prev_T = T
 			continue
-		if(!current_rounds)
+		if(!current_rounds || current_rounds < round_usage_per_tile)
 			break
 		if(distance >= max_range)
 			break
 
-		current_rounds--
+		current_rounds -= round_usage_per_tile
 		var/datum/cause_data/cause_data = create_cause_data(initial(name), user)
 		if(T.density)
 			T.flamer_fire_act(0, cause_data)
@@ -2097,7 +2143,7 @@ Defined in conflicts.dm of the #defines folder.
 	ammo = /datum/ammo/bullet/shotgun/buckshot/masterkey
 	slot = "under"
 	fire_sound = 'sound/weapons/gun_shotgun_u7.ogg'
-	activation_sound = 'sound/weapons/handling/gun_u7_activate.ogg'
+	gun_activate_sound = 'sound/weapons/handling/gun_u7_activate.ogg'
 	flags_attach_features = ATTACH_REMOVABLE|ATTACH_ACTIVATION|ATTACH_PROJECTILE|ATTACH_RELOADABLE|ATTACH_WEAPON
 
 /obj/item/attachable/attached_gun/shotgun/New()
@@ -2106,8 +2152,8 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/attached_gun/shotgun/get_examine_text(mob/user)
 	. = ..()
-	if(current_rounds > 0) 	. += "It has [current_rounds] shell\s left."
-	else 					. += "It's empty."
+	if(current_rounds > 0) . += "It has [current_rounds] shell\s left."
+	else . += "It's empty."
 
 /obj/item/attachable/attached_gun/shotgun/set_bullet_traits()
 	LAZYADD(traits_to_give_attached, list(
@@ -2361,7 +2407,14 @@ Defined in conflicts.dm of the #defines folder.
 	scatter_mod = SCATTER_AMOUNT_TIER_9
 	recoil_mod = RECOIL_AMOUNT_TIER_5
 
+/obj/item/attachable/bipod/Attach(obj/item/weapon/gun/G)
+	..()
+
+	RegisterSignal(G, COMSIG_ITEM_DROPPED, PROC_REF(handle_drop))
+
 /obj/item/attachable/bipod/Detach(var/mob/user, var/obj/item/weapon/gun/detaching_gub)
+	UnregisterSignal(detaching_gub, COMSIG_ITEM_DROPPED)
+
 	if(bipod_deployed)
 		undeploy_bipod(detaching_gub)
 	..()
@@ -2380,6 +2433,16 @@ Defined in conflicts.dm of the #defines folder.
 		for(var/datum/action/A as anything in gun.actions)
 			A.update_button_icon()
 
+/obj/item/attachable/bipod/proc/handle_drop(obj/item/weapon/gun/G, mob/living/carbon/human/user)
+	SIGNAL_HANDLER
+
+	UnregisterSignal(user, COMSIG_MOB_MOVE_OR_LOOK)
+
+	if(bipod_deployed)
+		undeploy_bipod(G)
+		user.apply_effect(1, SUPERSLOW)
+		user.apply_effect(2, SLOW)
+
 /obj/item/attachable/bipod/proc/undeploy_bipod(obj/item/weapon/gun/G)
 	bipod_deployed = FALSE
 	accuracy_mod = -HIT_ACCURACY_MULT_TIER_5
@@ -2392,10 +2455,13 @@ Defined in conflicts.dm of the #defines folder.
 	if(isliving(G.loc))
 		user = G.loc
 		UnregisterSignal(user, COMSIG_MOB_MOVE_OR_LOOK)
-	playsound(user,'sound/items/m56dauto_rotate.ogg', 55, 1)
+
 	if(G.flags_gun_features & GUN_SUPPORT_PLATFORM)
 		G.remove_bullet_trait("iff")
-	update_icon()
+
+	if(!QDELETED(G))
+		playsound(user,'sound/items/m56dauto_rotate.ogg', 55, 1)
+		update_icon()
 
 /obj/item/attachable/bipod/activate_attachment(obj/item/weapon/gun/G,mob/living/user, turn_off)
 	if(turn_off)
@@ -2424,7 +2490,7 @@ Defined in conflicts.dm of the #defines folder.
 				G.recalculate_attachment_bonuses()
 
 				initial_mob_dir = user.dir
-				RegisterSignal(user, COMSIG_MOB_MOVE_OR_LOOK, .proc/handle_mob_move_or_look)
+				RegisterSignal(user, COMSIG_MOB_MOVE_OR_LOOK, PROC_REF(handle_mob_move_or_look))
 
 				if(G.flags_gun_features & GUN_SUPPORT_PLATFORM)
 					G.add_bullet_trait(BULLET_TRAIT_ENTRY_ID("iff", /datum/element/bullet_trait_iff))

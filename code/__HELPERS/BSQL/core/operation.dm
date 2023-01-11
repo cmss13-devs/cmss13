@@ -40,7 +40,7 @@ BSQL_DEL_PROC(/datum/BSQL_Operation)
 		return
 	var/error = world._BSQL_Internal_Call("BlockOnOperation", connection.id, id)
 	if(error)
-		if(error == "Operation timed out!")	//match this with the implementation
+		if(error == "Operation timed out!") //match this with the implementation
 			return FALSE
 		BSQL_ERROR("Error waiting for operation [id] for connection [connection.id]! [error]")
 		return

@@ -5,9 +5,9 @@
 	knockdown = FALSE
 
 	distance = 5
-	knockdown = FALSE                // Should we knock down the target?
-	slash = FALSE                    // Do we slash upon reception?
-	freeze_self = FALSE                // Should we freeze ourselves after the lunge?
+	knockdown = FALSE // Should we knock down the target?
+	slash = FALSE // Do we slash upon reception?
+	freeze_self = FALSE // Should we freeze ourselves after the lunge?
 	should_destroy_objects = TRUE   // Only used for ravager charge
 
 /datum/action/xeno_action/onclick/predalien_roar
@@ -19,7 +19,7 @@
 	xeno_cooldown = 25 SECONDS
 	plasma_cost = 50
 
-	var/screech_sound_effect = "sound/voice/predalien_roar.ogg"
+	var/predalien_roar = list("sound/voice/predalien_roar.ogg")
 	var/bonus_damage_scale = 2.5
 	var/bonus_speed_scale = 0.05
 

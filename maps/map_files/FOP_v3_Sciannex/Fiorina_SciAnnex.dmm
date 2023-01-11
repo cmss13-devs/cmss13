@@ -36711,7 +36711,7 @@
 /area/fiorina/station/civres_blue)
 "vVu" = (
 /obj/structure/surface/rack,
-/obj/item/ammo_box/magazine/smg/nailgun,
+/obj/item/ammo_box/magazine/nailgun,
 /turf/open/floor/prison{
 	icon_state = "darkbrownfull2";
 	tag = "icon-darkbrownfull2"

@@ -91,7 +91,7 @@
 	var/dat = {"<TT>
 <A href='?src=\ref[src];power=1'>Turn [on ? "Off" : "On"]</A><BR>
 <B>Frequency/Code</B> for electropack:<BR>
-Frequency: [format_frequency(frequency)]<BR>
+Frequency: [format_frequency(frequency)] kHz<BR>
 
 Code:
 <A href='byond://?src=\ref[src];code=-5'>-</A>

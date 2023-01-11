@@ -53,11 +53,12 @@ map sorokyne_strata
 	minplayers 130
 endmap
 
-map LV522_Chances_Claim
+map lv522_chances_claim
 	minplayers 130
 endmap
 
 map new_varadero
+	disabled
 endmap
 
 map whiskey_outpost_v2

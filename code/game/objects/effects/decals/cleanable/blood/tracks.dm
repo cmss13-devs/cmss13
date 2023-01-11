@@ -42,6 +42,7 @@
 
 /obj/effect/decal/cleanable/blood/tracks/footprints
 	name = "footprints"
+	gender = PLURAL
 	desc = "Whoops..."
 	coming_state = "human1"
 	going_state  = "human2"
@@ -49,6 +50,7 @@
 
 /obj/effect/decal/cleanable/blood/tracks/wheels
 	name = "tracks"
+	gender = PLURAL
 	desc = "Whoops..."
 	coming_state = "wheels"
 	going_state  = ""

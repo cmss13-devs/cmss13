@@ -10,6 +10,7 @@
 
 /obj/effect/decal/cleanable/blood/gibs/xeno
 	name = "steaming gibs"
+	gender = PLURAL
 	desc = "Gnarly..."
 	icon_state = "xgib1"
 	random_icon_states = list("xgib1", "xgib2", "xgib3", "xgib4", "xgib5", "xgib6")

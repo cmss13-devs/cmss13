@@ -1,7 +1,7 @@
-#define INPUT_CONTAINER	0
-#define INPUT_TURING	1
+#define INPUT_CONTAINER 0
+#define INPUT_TURING 1
 
-#define MODE_SPLIT 		0
+#define MODE_SPLIT 0
 #define MODE_DISTRIBUTE 1
 
 /obj/structure/machinery/centrifuge
@@ -31,7 +31,7 @@
 		return
 	connected_turing = locate(/obj/structure/machinery/autodispenser) in range(tether_range, src)
 	if(connected_turing)
-		RegisterSignal(connected_turing, COMSIG_PARENT_QDELETING, .proc/cleanup)
+		RegisterSignal(connected_turing, COMSIG_PARENT_QDELETING, PROC_REF(cleanup))
 		visible_message(SPAN_NOTICE("<b>The [src] beeps:</b> Turing Dispenser connected."))
 
 /obj/structure/machinery/centrifuge/attackby(obj/item/B, mob/living/user)
@@ -110,6 +110,7 @@
 	if(!ui)
 		ui = new(user, src, "Centrifuge", "[src.name]")
 		ui.open()
+
 /obj/structure/machinery/centrifuge/ui_state(mob/user)
 	return GLOB.not_incapacitated_and_adjacent_state
 

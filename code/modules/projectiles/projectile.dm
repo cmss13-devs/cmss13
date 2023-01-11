@@ -1,37 +1,37 @@
 //Some debug variables. Toggle them to 1 in order to see the related debug messages. Helpful when testing out formulas.
-#define DEBUG_HIT_CHANCE	0
-#define DEBUG_HUMAN_DEFENSE	0
-#define DEBUG_XENO_DEFENSE	0
+#define DEBUG_HIT_CHANCE 0
+#define DEBUG_HUMAN_DEFENSE 0
+#define DEBUG_XENO_DEFENSE 0
 
 //The actual bullet objects.
 /obj/item/projectile
 	name = "projectile"
 	icon = 'icons/obj/items/weapons/projectiles.dmi'
 	icon_state = "bullet"
-	density = 0
+	density = FALSE
 	unacidable = TRUE
 	anchored = 1 //You will not have me, space wind!
 	flags_atom = NOINTERACT //No real need for this, but whatever. Maybe this flag will do something useful in the future.
-	mouse_opacity = 0
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	invisibility = 100 // We want this thing to be invisible when it drops on a turf because it will be on the user's turf. We then want to make it visible as it travels.
 	layer = FLY_LAYER
 
 	var/datum/ammo/ammo //The ammo data which holds most of the actual info.
 
-	var/def_zone = "chest"	//So we're not getting empty strings.
+	var/def_zone = "chest" //So we're not getting empty strings.
 	var/p_x = 0
 	var/p_y = 0 // the pixel location of the clicked/aimed location in target turf
 
-	var/current 		 = null
-	var/atom/shot_from 	 = null // the object which shot us
-	var/atom/original 	 = null // the original target clicked
-	var/atom/firer 		 = null // Who shot it
+	var/current  = null
+	var/atom/shot_from  = null // the object which shot us
+	var/atom/original  = null // the original target clicked
+	var/atom/firer  = null // Who shot it
 
 	var/turf/target_turf = null
-	var/turf/starting 	 = null // the projectile's starting turf
+	var/turf/starting  = null // the projectile's starting turf
 
-	var/turf/path[]  	 = null
-	var/permutated[] 	 = null // we've passed through these atoms, don't try to hit them again
+	var/turf/path[]  = null
+	var/permutated[]  = null // we've passed through these atoms, don't try to hit them again
 
 	/// Additional ammo flags applied to the projectile
 	var/projectile_override_flags = NONE
@@ -55,8 +55,8 @@
 	var/damage_falloff = 0 //how much effectiveness in damage the projectile loses per tiles travelled beyond the effective range
 	var/damage_buildup = 0 //how much effectiveness in damage the projectile loses before the effective range
 
-	var/effective_range_min	= 0	//What minimum range the projectile deals full damage, builds up the closer you get. 0 for no minimum. Set by the weapon.
-	var/effective_range_max	= 0	//What maximum range the projectile deals full damage, tapers off using damage_falloff after hitting this value. 0 for no maximum. Set by the weapon.
+	var/effective_range_min = 0 //What minimum range the projectile deals full damage, builds up the closer you get. 0 for no minimum. Set by the weapon.
+	var/effective_range_max = 0 //What maximum range the projectile deals full damage, tapers off using damage_falloff after hitting this value. 0 for no maximum. Set by the weapon.
 
 	var/scatter = 0
 	var/distance_travelled = 0
@@ -124,15 +124,15 @@
 	return FALSE //We do not want anything to delete these, simply to make sure that all the bullet references are not runtiming. Otherwise, constantly need to check if the bullet exists.
 
 /obj/item/projectile/proc/generate_bullet(datum/ammo/ammo_datum, bonus_damage = 0, special_flags = 0, var/mob/bullet_generator)
-	ammo 		= ammo_datum
-	name 		= ammo.name
-	icon 		= ammo.icon
-	icon_state 	= ammo.icon_state
-	damage 		= ammo.damage + bonus_damage //Mainly for emitters.
-	scatter		= ammo.scatter
+	ammo = ammo_datum
+	name = ammo.name
+	icon = ammo.icon
+	icon_state = ammo.icon_state
+	damage = ammo.damage + bonus_damage //Mainly for emitters.
+	scatter = ammo.scatter
 	accuracy   += ammo.accuracy
 	accuracy   *= rand(PROJ_VARIANCE_LOW-ammo.accuracy_var_low, PROJ_VARIANCE_HIGH+ammo.accuracy_var_high) * PROJ_BASE_ACCURACY_MULT//Rand only works with integers.
-	damage     *= rand(PROJ_VARIANCE_LOW-ammo.damage_var_low, PROJ_VARIANCE_HIGH+ammo.damage_var_high) * PROJ_BASE_DAMAGE_MULT
+	damage  *= rand(PROJ_VARIANCE_LOW-ammo.damage_var_low, PROJ_VARIANCE_HIGH+ammo.damage_var_high) * PROJ_BASE_DAMAGE_MULT
 	damage_falloff = ammo.damage_falloff
 	damage_buildup = ammo.damage_buildup
 	hit_effect_color = ammo.hit_effect_color
@@ -383,9 +383,7 @@
 	// Explosive ammo always explodes on the turf of the clicked target
 	// So does ammo that's flagged to always hit the target
 	if(((ammo_flags & AMMO_EXPLOSIVE) || (ammo_flags & AMMO_HITS_TARGET_TURF)) && T == target_turf)
-		ammo.on_hit_turf(T,src)
-		T?.bullet_act(src)
-		return TRUE
+		hit_turf = TRUE
 
 	for(var/atom/movable/clone/C in T) //Handle clones if there are any
 		if(isobj(C.mstr) && handle_object(C.mstr))
@@ -459,7 +457,7 @@
 
 		var/hit_roll = rand(1,100)
 
-		if(original != L || hit_roll > hit_chance-base_miss_chance[def_zone]-20)	// If hit roll is high or the firer wasn't aiming at this mob, we still hit but now we might hit the wrong body part
+		if(original != L || hit_roll > hit_chance-base_miss_chance[def_zone]-20) // If hit roll is high or the firer wasn't aiming at this mob, we still hit but now we might hit the wrong body part
 			def_zone = rand_zone()
 		else
 			SEND_SIGNAL(firer, COMSIG_DIRECT_BULLET_HIT, L)
@@ -522,10 +520,10 @@
 		return FALSE
 
 //----------------------------------------------------------
-				//				    	\\
+				// \\
 				//  HITTING THE TARGET  \\
-				//						\\
-				//						\\
+				// \\
+				// \\
 //----------------------------------------------------------
 
 
@@ -566,7 +564,7 @@
 
 	return TRUE
 
- //Used by machines and structures to calculate shooting past cover
+//Used by machines and structures to calculate shooting past cover
 /obj/proc/calculate_cover_hit_boolean(obj/item/projectile/P, var/distance = 0, var/cade_direction_correct = FALSE)
 	if(istype(P.shot_from, /obj/item/hardpoint)) //anything shot from a tank gets a bonus to bypassing cover
 		distance -= 3
@@ -801,7 +799,7 @@
 			if(X.hivenumber == hivenumber)
 				return FALSE
 
-		if(mob_size >= MOB_SIZE_BIG)	. += 10
+		if(mob_size >= MOB_SIZE_BIG) . += 10
 		if(evasion > 0)
 			. -= evasion
 
@@ -822,10 +820,10 @@
 		animation_flash_color(hit_mob, shield_effect_color)
 
 //----------------------------------------------------------
-				//				    \\
-				//    OTHER PROCS	\\
-				//					\\
-				//					\\
+				// \\
+				// OTHER PROCS \\
+				// \\
+				// \\
 //----------------------------------------------------------
 
 /atom/proc/bullet_act(obj/item/projectile/P)
@@ -1032,7 +1030,7 @@
 		//only apply the blood splatter if we do damage
 		handle_blood_splatter(get_dir(P.starting, loc))
 
-		apply_damage(damage_result,P.ammo.damage_type, P.def_zone)	//Deal the damage.
+		apply_damage(damage_result,P.ammo.damage_type, P.def_zone) //Deal the damage.
 		if(xeno_shields.len)
 			P.play_shielded_hit_effect(src)
 		else
@@ -1122,10 +1120,10 @@
 
 
 //----------------------------------------------------------
-					//				    \\
-					//    OTHER PROCS	\\
-					//					\\
-					//					\\
+					// \\
+					// OTHER PROCS \\
+					// \\
+					// \\
 //----------------------------------------------------------
 
 
@@ -1145,7 +1143,7 @@
 	rotate.Turn(P.angle)
 	I.transform = rotate
 	// Need to do this in order to prevent the ping from being deleted
-	addtimer(CALLBACK(I, /image/.proc/flick_overlay, src, 3), 1)
+	addtimer(CALLBACK(I, TYPE_PROC_REF(/image, flick_overlay), src, 3), 1)
 
 /mob/proc/bullet_message(obj/item/projectile/P)
 	if(!P)

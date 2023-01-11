@@ -6,6 +6,7 @@
 	icon_state = "guns"
 	req_access = list(ACCESS_MARINE_PILOT)
 	vendor_role = list(JOB_PILOT, JOB_DROPSHIP_CREW_CHIEF)
+	vend_flags = VEND_CLUTTER_PROTECTION | VEND_LIMITED_INVENTORY | VEND_TO_HAND
 
 	listed_products = list(
 		list("PRIMARY FIREARMS", -1, null, null),
@@ -51,6 +52,12 @@
 	return
 
 //------------CLOTHING VENDOR---------------
+
+/obj/effect/essentials_set/po_alternate
+	spawned_gear_list = list(
+		/obj/item/clothing/under/marine/officer/pilot/flight,
+		/obj/item/clothing/suit/storage/jacket/marine/pilot
+	)
 
 GLOBAL_LIST_INIT(cm_vending_clothing_pilot_officer, list(
 		list("STANDARD EQUIPMENT (TAKE ALL)", 0, null, null, null),
@@ -129,6 +136,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_pilot_officer, list(
 		list("M44 Heavy Speed Loader (.44)", 10, /obj/item/ammo_magazine/revolver/heavy, null, VENDOR_ITEM_REGULAR),
 
 		list("UTILITIES", 0, null, null, null),
+		list("PO Flightsuit Kit", 10, /obj/effect/essentials_set/po_alternate, null, VENDOR_ITEM_REGULAR),
 		list("Fire Extinguisher (portable)", 5, /obj/item/tool/extinguisher/mini, null, VENDOR_ITEM_REGULAR),
 		list("Large General Pouch", 15, /obj/item/storage/pouch/general/large, null, VENDOR_ITEM_REGULAR),
 		list("Large Magazine Pouch", 15, /obj/item/storage/pouch/magazine/large, null, VENDOR_ITEM_REGULAR),

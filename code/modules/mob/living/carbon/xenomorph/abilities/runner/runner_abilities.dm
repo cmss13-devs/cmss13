@@ -9,12 +9,12 @@
 	plasma_cost = 0
 
 	// Config options
-	knockdown = TRUE				// Should we knock down the target?
+	knockdown = TRUE // Should we knock down the target?
 	knockdown_duration = 1
-	slash = FALSE					// Do we slash upon reception?
-	freeze_self = TRUE				// Should we freeze ourselves after the lunge?
-	freeze_time = 5					// 5 for runners
-	can_be_shield_blocked = TRUE	// Some legacy stuff, self explanatory
+	slash = FALSE // Do we slash upon reception?
+	freeze_self = TRUE // Should we freeze ourselves after the lunge?
+	freeze_time = 5 // 5 for runners
+	can_be_shield_blocked = TRUE // Some legacy stuff, self explanatory
 
 /datum/action/xeno_action/onclick/toggle_long_range/runner
 	handles_movement = FALSE

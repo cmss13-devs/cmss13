@@ -8,21 +8,21 @@
 		ui_datum = GLOB.custom_huds_list[HUD_MIDNIGHT]
 
 	gear = list(
-		"i_clothing" =   list("loc" = ui_datum.ui_iclothing, "slot" = WEAR_BODY, 		"state" = "center", "toggle" = 1, "dir" = SOUTH),
-		"o_clothing" =   list("loc" = ui_datum.ui_oclothing, "slot" = WEAR_JACKET, 		"state" = "equip",  "toggle" = 1),
-		"mask" =         list("loc" = ui_datum.ui_mask,      "slot" = WEAR_FACE, 		"state" = "mask",  	"toggle" = 1),
-		"gloves" =       list("loc" = ui_datum.ui_gloves,    "slot" = WEAR_HANDS,    	"state" = "gloves", "toggle" = 1),
-		"eyes" =         list("loc" = ui_datum.ui_glasses,   "slot" = WEAR_EYES,   		"state" = "glasses","toggle" = 1),
-		"wear_l_ear" =   list("loc" = ui_datum.ui_wear_l_ear,  "slot" = WEAR_L_EAR,     	"state" = "ears",   "toggle" = 1),
-		"wear_r_ear" =   list("loc" = ui_datum.ui_wear_r_ear,  "slot" = WEAR_R_EAR,     	"state" = "ears",   "toggle" = 1),
-		"head" =         list("loc" = ui_datum.ui_head,      "slot" = WEAR_HEAD,      	"state" = "hair",   "toggle" = 1),
-		"shoes" =        list("loc" = ui_datum.ui_shoes,     "slot" = WEAR_FEET,     	"state" = "shoes",  "toggle" = 1),
-		"suit storage" = list("loc" = ui_datum.ui_sstore1,   "slot" = WEAR_J_STORE,   	"state" = "suit_storage"),
-		"back" =         list("loc" = ui_datum.ui_back,      "slot" = WEAR_BACK,      	"state" = "back"),
-		"id" =           list("loc" = ui_datum.ui_id,        "slot" = WEAR_ID,   		"state" = "id"),
-		"storage1" =     list("loc" = ui_datum.ui_storage1,  "slot" = WEAR_L_STORE,   	"state" = "pocket"),
-		"storage2" =     list("loc" = ui_datum.ui_storage2,  "slot" = WEAR_R_STORE,   	"state" = "pocket"),
-		"belt" =         list("loc" = ui_datum.ui_belt,      "slot" = WEAR_WAIST,      	"state" = "belt")
+		"i_clothing" =   list("loc" = ui_datum.ui_iclothing, "slot" = WEAR_BODY, "state" = "center", "toggle" = 1, "dir" = SOUTH),
+		"o_clothing" =   list("loc" = ui_datum.ui_oclothing, "slot" = WEAR_JACKET, "state" = "equip",  "toggle" = 1),
+		"mask" =  list("loc" = ui_datum.ui_mask,   "slot" = WEAR_FACE, "state" = "mask", "toggle" = 1),
+		"gloves" =    list("loc" = ui_datum.ui_gloves, "slot" = WEAR_HANDS, "state" = "gloves", "toggle" = 1),
+		"eyes" =  list("loc" = ui_datum.ui_glasses,   "slot" = WEAR_EYES, "state" = "glasses","toggle" = 1),
+		"wear_l_ear" =   list("loc" = ui_datum.ui_wear_l_ear,  "slot" = WEAR_L_EAR, "state" = "ears",   "toggle" = 1),
+		"wear_r_ear" =   list("loc" = ui_datum.ui_wear_r_ear,  "slot" = WEAR_R_EAR, "state" = "ears",   "toggle" = 1),
+		"head" =  list("loc" = ui_datum.ui_head,   "slot" = WEAR_HEAD, "state" = "hair",   "toggle" = 1),
+		"shoes" = list("loc" = ui_datum.ui_shoes,  "slot" = WEAR_FEET, "state" = "shoes",  "toggle" = 1),
+		"suit storage" = list("loc" = ui_datum.ui_sstore1,   "slot" = WEAR_J_STORE, "state" = "suit_storage"),
+		"back" =  list("loc" = ui_datum.ui_back,   "slot" = WEAR_BACK, "state" = "back"),
+		"id" =    list("loc" = ui_datum.ui_id, "slot" = WEAR_ID, "state" = "id"),
+		"storage1" =  list("loc" = ui_datum.ui_storage1,  "slot" = WEAR_L_STORE, "state" = "pocket"),
+		"storage2" =  list("loc" = ui_datum.ui_storage2,  "slot" = WEAR_R_STORE, "state" = "pocket"),
+		"belt" =  list("loc" = ui_datum.ui_belt,   "slot" = WEAR_WAIST, "state" = "belt")
 		)
 	if(iszombie(owner))
 		gear = list()
@@ -233,9 +233,9 @@
 		inv_box.alpha = ui_alpha
 
 		var/list/slot_data =  gear[gear_slot]
-		inv_box.name =        gear_slot
+		inv_box.name = gear_slot
 		inv_box.screen_loc =  slot_data["loc"]
-		inv_box.slot_id =     slot_data["slot"]
+		inv_box.slot_id =  slot_data["slot"]
 		inv_box.icon_state =  slot_data["state"]
 
 		if(slot_data["dir"])

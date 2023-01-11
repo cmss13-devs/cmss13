@@ -267,7 +267,7 @@
 	var/obj/limb/L = pick(H.limbs)
 	if(L.internal_organs)
 		var/datum/internal_organ/O = pick(L.internal_organs)//Organs can't bleed, so we just damage them
-		O.damage += POTENCY_MULTIPLIER_LOW * potency
+		O.take_damage(POTENCY_MULTIPLIER_LOW * potency)
 
 /datum/chem_property/negative/hemorrhaging/process_critical(mob/living/M, var/potency = 1, delta_time)
 	if(prob(10 * potency * delta_time) && ishuman(M))
@@ -379,7 +379,7 @@
 	var/mob/living/carbon/human/H = M
 	var/datum/internal_organ/eyes/L = H.internal_organs_by_name["eyes"]
 	if(L)
-		L.damage += POTENCY_MULTIPLIER_LOW * potency
+		L.take_damage(POTENCY_MULTIPLIER_LOW * potency)
 
 /datum/chem_property/negative/oculotoxic/process_overdose(mob/living/M, var/potency = 1, delta_time)
 	M.sdisabilities |= DISABILITY_BLIND

@@ -611,7 +611,7 @@
 	name = "Weyland-Yutani PMC (Site Director)"
 	flags = EQUIPMENT_PRESET_EXTRA
 
-	languages = list(LANGUAGE_ENGLISH, LANGUAGE_RUSSIAN, LANGUAGE_JAPANESE, LANGUAGE_GERMAN, LANGUAGE_SPANISH, LANGUAGE_CHINESE)
+	languages = ALL_HUMAN_LANGUAGES
 
 	assignment = JOB_PMC_DIRECTOR
 	rank = JOB_PMC_DIRECTOR
@@ -651,7 +651,7 @@
 		name = "Weyland-Yutani PMC (Support Synthetic)"
 		flags = EQUIPMENT_PRESET_EXTRA
 
-		languages = list(LANGUAGE_ENGLISH, LANGUAGE_RUSSIAN, LANGUAGE_JAPANESE, LANGUAGE_YAUTJA, LANGUAGE_XENOMORPH, LANGUAGE_GERMAN, LANGUAGE_SPANISH, LANGUAGE_CHINESE)
+		languages = ALL_SYNTH_LANGUAGES
 
 		skills = /datum/skills/synthetic
 		idtype = /obj/item/card/id/data

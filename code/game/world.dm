@@ -10,13 +10,13 @@ var/list/reboot_sfx = file2list("config/reboot_sfx.txt")
 	turf = /turf/open/space/basic
 	area = /area/space
 	view = "15x15"
-	cache_lifespan = 0	//stops player uploaded stuff from being kept in the rsc past the current session
+	cache_lifespan = 0 //stops player uploaded stuff from being kept in the rsc past the current session
 	hub = "Exadv1.spacestation13"
 
 /world/New()
 	var/debug_server = world.GetConfig("env", "AUXTOOLS_DEBUG_DLL")
 	if (debug_server)
-		call(debug_server, "auxtools_init")()
+		LIBCALL(debug_server, "auxtools_init")()
 		enable_debugging()
 	internal_tick_usage = 0.2 * world.tick_lag
 	hub_password = "kMZy3U5jJHSiBQjr"
@@ -74,7 +74,7 @@ var/list/reboot_sfx = file2list("config/reboot_sfx.txt")
 		RoleAuthority = new /datum/authority/branch/role()
 		to_world(SPAN_DANGER("\b Job setup complete"))
 
-	if(!EvacuationAuthority)		EvacuationAuthority = new
+	if(!EvacuationAuthority) EvacuationAuthority = new
 
 	change_tick_lag(CONFIG_GET(number/ticklag))
 	GLOB.timezoneOffset = text2num(time2text(0,"hh")) * 36000
@@ -86,7 +86,7 @@ var/list/reboot_sfx = file2list("config/reboot_sfx.txt")
 	obfs_x = rand(-500, 500) //A number between -100 and 100
 	obfs_y = rand(-500, 500) //A number between -100 and 100
 
-	spawn(3000)		//so we aren't adding to the round-start lag
+	spawn(3000) //so we aren't adding to the round-start lag
 		if(CONFIG_GET(flag/ToRban))
 			ToRban_autoupdate()
 
@@ -157,7 +157,7 @@ var/world_topic_spam_protect_time = world.timeofday
 		for(var/client/C in GLOB.clients)
 			if(C.admin_holder)
 				if(C.admin_holder.fakekey)
-					continue	//so stealthmins aren't revealed by the hub
+					continue //so stealthmins aren't revealed by the hub
 				admins++
 			s["player[n]"] = C.key
 			n++
@@ -208,7 +208,7 @@ var/world_topic_spam_protect_time = world.timeofday
 			continue
 		var/client/C = thing
 		C?.tgui_panel?.send_roundrestart()
-		if(server)	//if you set a server location in config.txt, it sends you there instead of trying to reconnect to the same world address. -- NeoFite
+		if(server) //if you set a server location in config.txt, it sends you there instead of trying to reconnect to the same world address. -- NeoFite
 			C << link("byond://[server]")
 
 	if(TgsAvailable())
@@ -280,16 +280,16 @@ var/failed_db_connections = 0
 var/failed_old_db_connections = 0
 
 // /hook/startup/proc/connectDB()
-// 	if(!setup_database_connection())
-// 		world.log << "Your server failed to establish a connection with the feedback database."
-// 	else
-// 		world.log << "Feedback database connection established."
-// 	return 1
+// if(!setup_database_connection())
+// world.log << "Your server failed to establish a connection with the feedback database."
+// else
+// world.log << "Feedback database connection established."
+// return 1
 
 var/datum/BSQL_Connection/connection
 /proc/setup_database_connection()
 
-	if(failed_db_connections > FAILED_DB_CONNECTION_CUTOFF)	//If it failed to establish a connection more than 5 times in a row, don't bother attempting to conenct anymore.
+	if(failed_db_connections > FAILED_DB_CONNECTION_CUTOFF) //If it failed to establish a connection more than 5 times in a row, don't bother attempting to conenct anymore.
 		return 0
 
 
@@ -336,7 +336,7 @@ var/datum/BSQL_Connection/connection
 	//SSmobs.MaxZChanged()
 
 /** For initializing and starting byond-tracy when BYOND_TRACY is defined
- *	byond-tracy is a useful profiling tool that allows the user to view the CPU usage and execution time of procs as they run.
+ * byond-tracy is a useful profiling tool that allows the user to view the CPU usage and execution time of procs as they run.
 */
 /world/proc/prof_init()
 	var/lib
@@ -349,6 +349,6 @@ var/datum/BSQL_Connection/connection
 		else
 			CRASH("unsupported platform")
 
-	var/init = call(lib, "init")()
+	var/init = LIBCALL(lib, "init")()
 	if("0" != init)
 		CRASH("[lib] init error: [init]")

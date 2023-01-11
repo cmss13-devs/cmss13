@@ -10,7 +10,7 @@
 	pixel_x = -48
 	pixel_y = -48
 
-	density = TRUE	//come on, it's huge
+	density = TRUE //come on, it's huge
 
 	activatable = TRUE
 	cooldown = 150
@@ -106,19 +106,24 @@
 		return TRUE
 	..()
 
-/obj/item/hardpoint/holder/tank_turret/get_hardpoint_info()
-	var/dat = "<hr>"
-	dat += "M34A2-A Turret Smoke Screen<br>"
-	if(health <= 0)
-		dat += "Integrity: <font color=\"red\">\[DESTROYED\]</font>"
-	else
-		dat += "Integrity: [round(get_integrity_percent())]%"
-		if(ammo)
-			dat += " | Uses left: [ammo ? (ammo.current_rounds ? ammo.current_rounds / 2 : "<font color=\"red\">0</font>") : "<font color=\"red\">0</font>"]/[ammo ? ammo.max_rounds / 2 : "<font color=\"red\">0</font>"] | Mags: [LAZYLEN(backup_clips) ? LAZYLEN(backup_clips) : "<font color=\"red\">0</font>"]/[max_clips]"
+
+/obj/item/hardpoint/holder/tank_turret/get_tgui_info()
+	var/list/data = list()
+
+	data += list(list( // turret smokescreen data
+		"name" = "M34A2-A Turret Smoke Screen",
+		"health" = health <= 0 ? null : round(get_integrity_percent()),
+		"uses_ammo" = TRUE,
+		"current_rounds" = ammo.current_rounds / 2,
+		"max_rounds"= ammo.max_rounds / 2,
+		"mags" = LAZYLEN(backup_clips),
+		"max_mags" = max_clips,
+	))
 
 	for(var/obj/item/hardpoint/H in hardpoints)
-		dat += H.get_hardpoint_info()
-	return dat
+		data += list(H.get_tgui_info())
+
+	return data
 
 //gyro ON locks the turret in one direction, OFF will make turret turning when tank turns
 /obj/item/hardpoint/holder/tank_turret/proc/toggle_gyro(var/mob/user)
@@ -216,7 +221,7 @@
 
 	var/turf/origin_turf = get_turf(src)
 	origin_turf = locate(origin_turf.x + origins[1], origin_turf.y + origins[2], origin_turf.z)
-	origin_turf = get_step(get_step(origin_turf, owner.dir), owner.dir)	//this should get us tile in front of tank to prevent grenade being stuck under us.
+	origin_turf = get_step(get_step(origin_turf, owner.dir), owner.dir) //this should get us tile in front of tank to prevent grenade being stuck under us.
 
 	var/obj/item/projectile/P = generate_bullet(user, origin_turf)
 	SEND_SIGNAL(P, COMSIG_BULLET_USER_EFFECTS, owner.seats[VEHICLE_GUNNER])

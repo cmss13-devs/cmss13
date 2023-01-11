@@ -1,4 +1,0 @@
-author: "ThePiachu"
-delete-after: True
-changes:
-  - qol: "Now you won't even try transferring plasma to xenos that don't use plasma, saving you the effort and letting you know you misclicked."

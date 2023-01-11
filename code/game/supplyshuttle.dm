@@ -125,6 +125,9 @@ var/datum/controller/supply/supply_controller = new()
 	if(istype(hit_item, /obj/item/spacecash))
 		if(can_order_contraband)
 			var/obj/item/spacecash/slotted_cash = hit_item
+			if(slotted_cash.counterfeit == TRUE)
+				to_chat(user, SPAN_NOTICE("You find a small horizontal slot at the bottom of the console. You try to feed \the [slotted_cash] into it, but it rejects it! Maybe it's counterfeit?"))
+				return
 			to_chat(user, SPAN_NOTICE("You find a small horizontal slot at the bottom of the console. You feed \the [slotted_cash] into it.."))
 			supply_controller.black_market_points += slotted_cash.worth
 			qdel(slotted_cash)
@@ -548,10 +551,8 @@ var/datum/controller/supply/supply_controller = new()
 
 	mauled_human.visible_message(SPAN_HIGHDANGER("The machinery crushes [mauled_human]"), SPAN_HIGHDANGER("The elevator machinery is CRUSHING YOU!"))
 
-	var/genderscream = mauled_human.gender == MALE ? "male_scream" : "female_scream"
 	if(mauled_human.stat != DEAD)
 		mauled_human.emote("scream")
-		playsound_area(get_area(src), genderscream, 25)
 
 	mauled_human.throw_random_direction(2, spin = TRUE)
 	mauled_human.apply_effect(5, WEAKEN)

@@ -257,7 +257,7 @@
 		var/timer = 0.5 SECONDS
 		for(var/index in 1 to 10)
 			timer += 0.5 SECONDS
-			addtimer(CALLBACK(src, GLOBAL_PROC_REF(maul_human), thrown_human), timer)
+			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(maul_human), thrown_human), timer)
 		return
 
 	else

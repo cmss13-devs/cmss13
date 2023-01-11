@@ -13,10 +13,26 @@
 	throw_range = 2
 	w_class = SIZE_TINY
 	var/worth = 15
+	/// 'Counterfeit' bills cannot be inserted into the black market for dosh.
+	var/counterfeit = FALSE
+
+/obj/item/spacecash/Initialize(mapload, ...)
+	. = ..()
+	update_value()
+
+/obj/item/spacecash/proc/update_value()
+	if(counterfeit)
+		return
+	black_market_value = worth // While money can be inserted directly into the console, this will allow CTs to detect if the money is 'counterfeit' with their scanner.
 
 /obj/item/spacecash/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/spacecash))
-		if(istype(W, /obj/item/spacecash/ewallet)) return 0
+		var/obj/item/spacecash/attack_cash
+		if(istype(attack_cash, /obj/item/spacecash/ewallet))
+			return FALSE
+		if(attack_cash.counterfeit != src.counterfeit)
+			to_chat(user, SPAN_NOTICE("These two stacks of money seem different, somehow..."))
+			return
 
 		var/obj/item/spacecash/bundle/bundle
 		if(!istype(W, /obj/item/spacecash/bundle))
@@ -24,10 +40,12 @@
 			user.temp_drop_inv_item(cash)
 			bundle = new (src.loc)
 			bundle.worth += cash.worth
+			bundle.update_value()
 			qdel(cash)
 		else //is bundle
 			bundle = W
 		bundle.worth += src.worth
+		bundle.update_value()
 		bundle.update_icon()
 		if(istype(user, /mob/living/carbon/human))
 			var/mob/living/carbon/human/h_user = user
@@ -134,6 +152,8 @@
 	name = "500 dollars"
 	icon_state = "spacecash500"
 	desc = "Five US Government minted hundred-dollar bills. All of them have pictures of Ben Franklin on them. They all eagarly glare at you, making you feel as if you owe them something. "
+	/// By default any huge sum of cash like this is 'counterfeit' so that it doesn't break the Black Market.
+	counterfeit = TRUE
 	worth = 500
 
 /obj/item/spacecash/c1000
@@ -141,6 +161,8 @@
 	icon_state = "spacecash1000"
 	desc = "Ten US Government minted hundred-dollar bills. Every single damn one of them has Ben Fucking Franklin on them. The court of Bens sit impatiently, as if each one thought they alone belonged to you. This coven of angry Bens have all since learned about your relations with the other Bens, and they want answers."
 	worth = 1000
+	/// By default any huge sum of cash like this is 'counterfeit' so that it doesn't break the Black Market.
+	counterfeit = TRUE
 
 /proc/spawn_money(var/sum, spawnloc, mob/living/carbon/human/human_user as mob)
 	if(sum in list(1000,500,200,100,50,20,10,1))

@@ -18065,7 +18065,6 @@
 "beZ" = (
 /obj/structure/platform_decoration{
 	dir = 8;
-	tag = "icon-platform_deco (EAST)"
 	},
 /turf/open/floor/almayer,
 /area/almayer/living/chapel)

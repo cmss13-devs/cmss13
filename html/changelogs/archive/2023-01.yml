@@ -244,3 +244,58 @@
   - bugfix: Fixes all monkeys being unknown.
   realforest2001:
   - bugfix: Riot Control now have functional HUD icons again
+2023-01-09:
+  QuickLode:
+  - bugfix: removed unintended slowdown from the M4 light synthetic armor on nightmare
+  - spellcheck: fixes WWeyland-Yutani and Genadier
+  ThePiachu:
+  - bugfix: Fixed dme file order.
+  stanalbatross:
+  - code_imp: changed a few instances of gender strings to defines
+  - bugfix: fixed many, many instances of things not properly being tagged as plural
+2023-01-10:
+  BeagleGaming1:
+  - admin: Fixes "Object Narrate" not returning properly sometimes
+  Huffie56:
+  - rscadd: adding a panic room in hangar that can be open via an MP office that as
+      an armory to quickly respond to hostile coming from DS's
+  IowaPotatoFarmer:
+  - bugfix: Fixed a sentry in the LV-624 CLF nightmare insert that was facing the
+      wrong way.
+  Kitsunemitsu:
+  - bugfix: fixed an error with SL timelocks.
+  NewyearnewmeUwu:
+  - rscadd: adds a few chaplain helmet patches to the chapel in the Almayer.
+  - maptweak: adds a few chaplain helmet patches to the chapel in the Almayer.
+  carlarctg:
+  - rscdel: Disables New Varadero from the map pool.
+  stanalbatross:
+  - ui: added tgui radars that can be used for the precise tracking of atoms
+  - rscadd: converted the handheld crew monitor to use a radar.
+  - rscadd: added an unobtainable advanced version of the PDT/L that uses a radar
+  - ui: converted the vehicle status menu to tgui
+  - bugfix: fixed a potential runtime in quadtrees
+  - ui: converted the check skills menu to TGUI
+  - admin: changed the edit skills vv dropdown from a clunky series of input lists
+      to the new check skills menu TGUI
+  - bugfix: fixed a lot of instances of being able to telekinetically alt-click things
+  theflyingflail:
+  - bugfix: fixed broken spawner on big red nightmare insert
+2023-01-11:
+  BeagleGaming1:
+  - admin: 'Event Item - D2 Breaching Hammer: A breaching hammer usable by anybody
+      without any additional requirements'
+  harryob:
+  - ui: the orbit menu gives you a little extra info
+  mullenpaul:
+  - refactor: mini shuttle now using tg shuttle framework
+  - refactor: big shuttle now using tg shuttle framework
+  - refactor: ert shuttle lockdown now only affects external doors, doors which board
+      a space tile can't be controlled from ui
+  - mapadd: added map template for mini shuttle - north orientation
+  - mapadd: added map template for big shuttle - north orientation
+  - admin: admin force ert shuttle points to all new ert shuttles, removing all references
+      to old shuttle code
+  - maptweak: added external docking ports for port and starboard hangar and port
+      and starboard upper engi
+  - maptweak: added button to toggle the interior podlocks at upper engi podlocks

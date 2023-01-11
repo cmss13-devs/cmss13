@@ -115,6 +115,7 @@
  */
 /obj/item/tool/wirecutters
 	name = "wirecutters"
+	gender = PLURAL
 	desc = "This cuts wires."
 	icon = 'icons/obj/items/items.dmi'
 	icon_state = "cutters"

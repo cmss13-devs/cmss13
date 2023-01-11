@@ -5,14 +5,12 @@
 	icon_state = "crew_monitor"
 	flags_equip_slot = SLOT_WAIST
 	w_class = SIZE_SMALL
+	var/datum/radar/lifeline/radar
+	var/faction = FACTION_MARINE
 
-	var/cooldown_to_use = 0
-
-/obj/item/tool/crew_monitor/attack_self(var/mob/user)
-	..()
-
-	if(cooldown_to_use > world.time)
-		return
+/obj/item/tool/crew_monitor/Initialize(mapload, ...)
+	. = ..()
+	radar = new /datum/radar/lifeline(src, faction)
 
 	ui_interact(user)
 
@@ -121,13 +119,17 @@
 			else
 				misc_roles += marine_infos
 
-		for(var/i in squad_roles)
-			dat += squad_roles[i]
-		dat += misc_roles
+/obj/item/tool/crew_monitor/Destroy()
+	QDEL_NULL(radar)
+	. = ..()
 
-	dat += "</table>"
-	dat += "<br><hr>"
-	return dat
+/obj/item/tool/crew_monitor/attack_self(var/mob/user)
+	. = ..()
+	radar.tgui_interact(user)
+
+/obj/item/tool/crew_monitor/dropped(mob/user)
+	. = ..()
+	SStgui.close_uis(src)
 
 /obj/item/clothing/suit/auto_cpr
 	name = "autocompressor"

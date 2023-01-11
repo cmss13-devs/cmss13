@@ -1,6 +1,7 @@
 
 /obj/item/circuitboard/airlock
 	name = "airlock electronics"
+	gender = PLURAL
 	icon_state = "door_electronics"
 	//It should be tiny! -Agouri
 	w_class = SIZE_SMALL

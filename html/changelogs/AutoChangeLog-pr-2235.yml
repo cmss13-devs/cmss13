@@ -1,5 +1,0 @@
-author: "QuickLode"
-delete-after: True
-changes:
-  - bugfix: "removed unintended slowdown from the M4 light synthetic armor on nightmare"
-  - spellcheck: "fixes WWeyland-Yutani and Genadier"

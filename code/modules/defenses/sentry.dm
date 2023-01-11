@@ -385,6 +385,7 @@
 		target = pick(unconscious_targets)
 
 	if(!target) //No targets, don't bother firing
+		update_minimap_icon()
 		return
 
 	update_minimap_icon()

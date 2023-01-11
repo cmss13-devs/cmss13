@@ -1,29 +1,45 @@
 //Life variables
-#define HUMAN_MAX_OXYLOSS 1 //Defines how much oxyloss humans can get per tick. A tile with no air at all (such as space) applies this value, otherwise it's a percentage of it.
-#define HUMAN_CRIT_MAX_OXYLOSS 1 //The amount of damage you'll get when in critical condition. We want this to be a 5 minute deal = 300s. There are 50HP to get through, so (1/6)*last_tick_duration per second. Breaths however only happen every 3 ticks.
+
+/// Defines how much oxyloss humans can get per tick. A tile with no air at all (such as space) applies this value, otherwise it's a percentage of it.
+#define HUMAN_MAX_OXYLOSS 1
+/// The amount of damage you'll get when in critical condition. We want this to be a 5 minute deal = 300s. There are 50HP to get through, so (1/6)*last_tick_duration per second. Breaths however only happen every 3 ticks.
+#define HUMAN_CRIT_MAX_OXYLOSS 1
 
 ///////////////////HUMAN BLOODTYPES///////////////////
 #define HUMAN_BLOODTYPES list("O-","O+","A-","A+","B-","B+","AB-","AB+")
 
-#define HUMAN_MAX_PALENESS 30 //this is added to human skin tone to get value of pale_max variable
+/// this is added to human skin tone to get value of pale_max variable
+#define HUMAN_MAX_PALENESS 30
 
-#define HUMAN_STRIP_DELAY 40 //takes 40ds = 4s to strip someone.
+/// takes 40ds = 4s to strip someone.
+#define HUMAN_STRIP_DELAY 40
 #define POCKET_STRIP_DELAY 20
 
-///////////////////LIMB DEFINES///////////////////
+///////////////////LIMB FLAGS///////////////////
 
 #define LIMB_ORGANIC (1<<0)
 #define LIMB_ROBOT (1<<1)
-#define LIMB_SYNTHSKIN (1<<2) // not completely robot, but pseudohuman
+
+/// not completely robot, but pseudohuman
+#define LIMB_SYNTHSKIN (1<<2)
+
 #define LIMB_BROKEN (1<<3)
-#define LIMB_DESTROYED (1<<4) //limb is missing
+
+/// limb is missing
+#define LIMB_DESTROYED (1<<4)
 #define LIMB_SPLINTED (1<<5)
-#define LIMB_MUTATED (1<<6) //limb is deformed by mutations
-#define LIMB_AMPUTATED (1<<7) //limb was amputated cleanly or destroyed limb was cleaned up, thus causing no pain
-#define LIMB_SPLINTED_INDESTRUCTIBLE (1<<8) // Splint is indestructible
-#define LIMB_UNCALIBRATED_PROSTHETIC (1<<9) //A prosthetic that's been attached to the body but not connected to the brain.
+
+/// limb is deformed by mutations
+#define LIMB_MUTATED (1<<6)
+/// limb was amputated cleanly or destroyed limb was cleaned up, thus causing no pain
+#define LIMB_AMPUTATED (1<<7)
+/// Splint is indestructible
+#define LIMB_SPLINTED_INDESTRUCTIBLE (1<<8)
+/// A prosthetic that's been attached to the body but not connected to the brain.
+#define LIMB_UNCALIBRATED_PROSTHETIC (1<<9)
 
 ///////////////////WOUND DEFINES///////////////////
+
 //wound flags. Different examine text + bandage overlays + whether various medical items can be used.
 #define WOUND_BANDAGED (1<<0)
 #define WOUND_SUTURED (1<<1)
@@ -33,8 +49,11 @@
 #define SUTURED_FULLY (1<<1)
 
 //return values for bandaging/salving.
-#define WOUNDS_BANDAGED (1<<0) //Relevant wounds exist, bandaged them.
-#define WOUNDS_ALREADY_TREATED (1<<1) //Relevant wounds exist, but they're already bandaged.
+
+/// Relevant wounds exist, bandaged them.
+#define WOUNDS_BANDAGED (1<<0)
+/// Relevant wounds exist, but they're already bandaged.
+#define WOUNDS_ALREADY_TREATED (1<<1)
 
 ///////////////OLD SURGERY DEFINES, USED BY AUTODOC///////////////
 #define HEMOSTAT_MIN_DURATION 20
@@ -100,14 +119,23 @@
 #define UNDERWEAR_LAYER 41
 #define UNDERSHIRT_LAYER 40
 #define MUTANTRACE_LAYER 39
-#define FLAY_LAYER 38 //For use by Hunter Flay
+
+/// For use by Hunter Flay
+#define FLAY_LAYER 38
+
 #define DAMAGE_LAYER 37
 #define UNIFORM_LAYER 36
-#define TAIL_LAYER 35 //bs12 specific. this hack is probably gonna come back to haunt me
+
+/// bs12 specific. this hack is probably gonna come back to haunt me
+#define TAIL_LAYER 35
+
 #define ID_LAYER 34
 #define SHOES_LAYER 33
 #define GLOVES_LAYER 32
-#define MEDICAL_LAYER 31 //For splint and gauze overlays
+
+/// For splint and gauze overlays
+#define MEDICAL_LAYER 31
+
 #define SUIT_LAYER 30
 #define SUIT_GARB_LAYER 29
 #define SUIT_SQUAD_LAYER 28
@@ -120,7 +148,9 @@
 #define FACIAL_LAYER 21
 #define EARS_LAYER 20
 #define FACEMASK_LAYER 19
-#define HEADSHOT_LAYER 18 //Unrevivable headshot overlays, suicide/execution.
+
+/// Unrevivable headshot overlays, suicide/execution.
+#define HEADSHOT_LAYER 18
 #define HEAD_LAYER 17
 #define HEAD_SQUAD_LAYER 16
 #define HEAD_GARB_LAYER_2 15 // These actual defines are unused but this space within the overlays list is
@@ -128,16 +158,24 @@
 #define HEAD_GARB_LAYER_4 13 //  |
 #define HEAD_GARB_LAYER_5 12 // End here
 #define HEAD_GARB_LAYER 11
-#define BACK_FRONT_LAYER 10 // For backpacks when mob is facing north
+
+/// For backpacks when mob is facing north
+#define BACK_FRONT_LAYER 10
 #define COLLAR_LAYER 9
 #define HANDCUFF_LAYER 8
 #define LEGCUFF_LAYER 7
 #define L_HAND_LAYER 6
 #define R_HAND_LAYER 5
-#define BURST_LAYER 4 //Chestburst overlay
-#define TARGETED_LAYER 3 //for target sprites when held at gun point, and holo cards.
-#define FIRE_LAYER 2 //If you're on fire //BS12: Layer for the target overlay from weapon targeting system
-#define EFFECTS_LAYER 1  //If you're hit by an acid DoT
+
+/// Chestburst overlay
+#define BURST_LAYER 4
+/// for target sprites when held at gun point, and holo cards.
+#define TARGETED_LAYER 3
+/// If you're on fire
+#define FIRE_LAYER 2
+/// If you're hit by an acid DoT
+#define EFFECTS_LAYER 1
+
 #define TOTAL_LAYERS 41
 //////////////////////////////////
 
@@ -173,3 +211,7 @@
 #define RELIGION_MINOR "Minor Religion"
 #define RELIGION_ATHEISM "Atheism"
 #define RELIGION_AGNOSTICISM "Agnostic"
+
+///////////////////MISC HUMAN FLAGS (LINKED TO VAR: FLAGS_HUMAN_MISC)///////////////////
+
+#define HUMAN_FLAG_CHANGED (1<<0)

@@ -3,6 +3,7 @@
 
 /obj/item/clothing/glasses/thermal
 	name = "Optical Thermal Scanner"
+	gender = NEUTER
 	desc = "Thermals in the shape of glasses."
 	icon_state = "thermal"
 	item_state = "glasses"
@@ -40,6 +41,7 @@
 
 /obj/item/clothing/glasses/thermal/syndi/bug_b_gone
 	name = "Bug-B Gone Thermal Goggles"
+	gender = PLURAL
 	desc = "For all your bug hunting needs!"
 	icon_state = "rwelding-g"
 	deactive_state = "rwelding-gup"
@@ -62,6 +64,7 @@
 
 /obj/item/clothing/glasses/thermal/jensen
 	name = "Optical Thermal Implants"
+	gender = PLURAL
 	desc = "A set of implantable lenses designed to augment your vision"
 	icon_state = "thermalimplants"
 	item_state = "syringe_kit"

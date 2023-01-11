@@ -8,6 +8,8 @@ export const createHighlightSetting = (obj) => ({
   highlightText: '',
   highlightColor: '#ffdd44',
   highlightWholeMessage: true,
+  matchWord: false,
+  matchCase: false,
   ...obj,
 });
 

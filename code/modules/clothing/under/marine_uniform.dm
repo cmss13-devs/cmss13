@@ -650,6 +650,7 @@
 	icon_state = "clown"
 	worn_state = "clown"
 	flags_atom = NO_SNOW_TYPE|NO_NAME_OVERRIDE //Let's make them keep their original name.
+	black_market_value = 25
 
 /obj/item/clothing/under/pizza
 	name = "pizza delivery uniform"

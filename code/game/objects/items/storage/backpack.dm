@@ -242,6 +242,7 @@
 	name = "Giggles von Honkerton"
 	desc = "This, this thing. It fills you with the dread of a bygone age. A land of grey coveralls and mentally unstable crewmen. Of traitors and hooligans. Thank god you're in the Marines now."
 	icon_state = "clownpack"
+	black_market_value = 25
 
 //==========================//COLONY/CIVILIAN PACKS\\================================\\
 

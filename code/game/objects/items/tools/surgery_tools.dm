@@ -120,6 +120,7 @@
 	flags_item = ANIMATED_SURGICAL_TOOL
 	///The likelihood an incision made with this will be bloodless.
 	var/bloodlessprob = 60
+	black_market_value = 25
 
 /obj/item/tool/surgery/scalpel/laser/improved
 	name = "laser scalpel"
@@ -128,6 +129,7 @@
 	damtype = "fire"
 	force = 12.0
 	bloodlessprob = 80
+	black_market_value = 35
 
 /obj/item/tool/surgery/scalpel/laser/advanced
 	name = "advanced laser scalpel"
@@ -147,6 +149,7 @@
 	icon_state = "pict_system"
 	w_class = SIZE_SMALL
 	force = 7.5
+	black_market_value = 25
 
 /obj/item/tool/surgery/scalpel/manager
 	name = "incision management system"
@@ -154,6 +157,7 @@
 	icon_state = "scalpel_manager"
 	force = 7.5
 	flags_item = ANIMATED_SURGICAL_TOOL
+	black_market_value = 25
 
 /*
  * Circular Saw

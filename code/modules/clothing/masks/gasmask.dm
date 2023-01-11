@@ -120,6 +120,7 @@
 	icon_state = "clown"
 	item_state = "clown_hat"
 	vision_impair = VISION_IMPAIR_NONE
+	black_market_value = 25
 
 /obj/item/clothing/mask/gas/mime
 	name = "mime mask"

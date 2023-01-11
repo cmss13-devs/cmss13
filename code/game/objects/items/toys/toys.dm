@@ -442,6 +442,7 @@
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 15
 	attack_verb = list("HONKED")
+	black_market_value = 25
 	var/spam_flag = 0
 	var/sound_effect = 'sound/items/bikehorn.ogg'
 

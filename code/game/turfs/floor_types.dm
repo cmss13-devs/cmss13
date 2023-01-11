@@ -257,30 +257,12 @@
 		var/timer = 0.5 SECONDS
 		for(var/index in 1 to 10)
 			timer += 0.5 SECONDS
-			addtimer(CALLBACK(src, PROC_REF(crush_human), thrown_human), timer)
+			addtimer(CALLBACK(src, GLOBAL_PROC_REF(maul_human), thrown_human), timer)
 		return
 
 	else
 		for(var/obj/effect/decal/cleanable/C in contents) //for the off chance of someone bleeding mid=flight
 			qdel(C)
-
-/turf/open/floor/almayer/empty/proc/crush_human(var/mob/living/carbon/human/mauled_human)
-
-	mauled_human.visible_message(SPAN_HIGHDANGER("The machinery crushes [mauled_human]"), SPAN_HIGHDANGER("The elevator machinery is CRUSHING YOU!"))
-
-	var/genderscream = mauled_human.gender == MALE ? "male_scream" : "female_scream"
-	if(mauled_human.stat != DEAD)
-		mauled_human.emote("scream")
-		playsound_area(get_area(src), genderscream, 25)
-
-	mauled_human.throw_random_direction(2, spin = TRUE)
-	apply_effect(5, WEAKEN)
-	shake_camera(mauled_human, 20, 1)
-	mauled_human.apply_armoured_damage(60, ARMOR_MELEE, BRUTE, rand_zone())
-
-	if(prob(4))
-		var/obj/limb/dropped_limb = pick(mauled_human.limbs)
-		dropped_limb.droplimb(FALSE, FALSE, "machinery")
 
 //Others
 /turf/open/floor/almayer/uscm

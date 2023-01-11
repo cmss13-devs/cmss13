@@ -493,6 +493,14 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 	)
 	dollar_cost = 10
 
+/datum/supply_packs/contraband/seized/rxf_m5
+	name = "RXF-M5 EVA laser pistol (recharger included)"
+	contains = list(
+			/obj/item/weapon/gun/energy/rxfm5_eva,
+			/obj/structure/machinery/recharger/unanchored
+	)
+	dollar_cost = 30
+
 /* --- SHIPSIDE CONTRABAND --- */
 
 /*
@@ -1024,3 +1032,17 @@ Things that don't fit anywhere else. If they're meant for shipside use, they pro
 	contained_mob = pick( ( subtypesof(/mob/living/simple_animal) - typesof(/mob/living/simple_animal/hostile) ) + fit_hostiles + monkey_mobs)
 	new contained_mob(loc)
 	. = ..()
+
+/datum/supply_packs/contraband/miscellaneous/potted_plant
+	name = "potted plant"
+	dollar_cost = 50
+	contains = list(
+		/obj/structure/flora/pottedplant/random/unanchored
+	)
+
+/datum/supply_packs/contraband/miscellaneous/cargo_tug
+	name = "cargo tug"
+	dollar_cost = 50
+	contains = list(
+		/obj/vehicle/train/cargo/engine
+	)

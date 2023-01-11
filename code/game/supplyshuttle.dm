@@ -533,23 +533,34 @@ var/datum/controller/supply/supply_controller = new()
 
 		// Don't disintegrate humans! Maul their corpse instead. >:)
 		if(ishuman(movable_atom))
-			maul_human(movable_atom)
+			var/timer = 0.5 SECONDS
+			for(var/index in 1 to 10)
+				timer += 0.5 SECONDS
+				addtimer(CALLBACK(src, PROC_REF(maul_human), movable_atom), timer)
 
 		// Delete everything else.
 		else qdel(movable_atom)
 
-/datum/controller/supply/proc/maul_human(var/mob/living/carbon/human/mauled_human)
+/proc/maul_human(var/mob/living/carbon/human/mauled_human)
 
-	for(var/atom/computer as anything in bound_supply_computer_list)
+	for(var/atom/computer as anything in supply_controller.bound_supply_computer_list)
 		computer.balloon_alert_to_viewers("you hear horrifying noises coming from the elevator!")
+
+	mauled_human.visible_message(SPAN_HIGHDANGER("The machinery crushes [mauled_human]"), SPAN_HIGHDANGER("The elevator machinery is CRUSHING YOU!"))
 
 	var/genderscream = mauled_human.gender == MALE ? "male_scream" : "female_scream"
 	if(mauled_human.stat != DEAD)
 		mauled_human.emote("scream")
-		play_sound_handler(genderscream, 0.5 SECONDS)
+		playsound_area(get_area(src), genderscream, 25)
 
-	for(var/i in 1 to 15)
-		mauled_human.apply_armoured_damage(40, ARMOR_MELEE, BRUTE, rand_zone())
+	mauled_human.throw_random_direction(2, spin = TRUE)
+	mauled_human.apply_effect(5, WEAKEN)
+	shake_camera(mauled_human, 20, 1)
+	mauled_human.apply_armoured_damage(60, ARMOR_MELEE, BRUTE, rand_zone())
+
+	if(prob(4))
+		var/obj/limb/dropped_limb = pick(mauled_human.limbs)
+		dropped_limb.droplimb(FALSE, FALSE, "machinery")
 
 //Buyin
 /datum/controller/supply/proc/buy()

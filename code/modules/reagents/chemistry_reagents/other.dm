@@ -937,7 +937,10 @@
 		//it turns into an actual embryo at this point
 		volume = 0
 		var/obj/item/alien_embryo/embryo = new /obj/item/alien_embryo(H)
-		embryo.hivenumber = XENO_HIVE_NORMAL
+		if(data_properties && data_properties["hive_number"])
+			embryo.hivenumber = data_properties["hive_number"]
+		else
+			embryo.hivenumber = XENO_HIVE_NORMAL
 		to_chat(H, SPAN_WARNING("Your stomach cramps and you suddenly feel very sick!"))
 
 /datum/reagent/plasma/neurotoxin

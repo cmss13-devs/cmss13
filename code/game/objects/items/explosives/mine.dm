@@ -256,7 +256,7 @@
 /obj/effect/mine_tripwire
 	name = "claymore tripwire"
 	anchored = TRUE
-	mouse_opacity = 0
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	invisibility = 101
 	unacidable = TRUE //You never know
 	var/obj/item/explosive/mine/linked_claymore

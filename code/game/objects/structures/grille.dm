@@ -3,7 +3,7 @@
 	name = "grille"
 	icon = 'icons/obj/structures/structures.dmi'
 	icon_state = "grille"
-	density = 1
+	density = TRUE
 	anchored = 1
 	debris = list(/obj/item/stack/rods)
 	flags_atom = FPRINT|CONDUCT
@@ -47,7 +47,7 @@
 
 /obj/structure/grille/fence/healthcheck()
 	if(health <= 0)
-		density = 0
+		density = FALSE
 		destroyed = 1
 		handle_debris()
 		qdel(src)
@@ -188,7 +188,7 @@
 	if(health <= 0)
 		if(!destroyed)
 			icon_state = "brokengrille"
-			density = 0
+			density = FALSE
 			destroyed = 1
 			handle_debris()
 

@@ -14,8 +14,8 @@
 	name = "splatter"
 	desc = "It burns! It burns like hygiene!"
 	icon_state = "splatter"
-	density = 0
-	opacity = 0
+	density = FALSE
+	opacity = FALSE
 	anchored = 1
 
 /obj/effect/xenomorph/splatter/New() //Self-deletes after creation & animation
@@ -27,8 +27,8 @@
 	name = "splatter"
 	desc = "It burns! It burns like hygiene!"
 	icon_state = "acidblob"
-	density = 0
-	opacity = 0
+	density = FALSE
+	opacity = FALSE
 	anchored = 1
 
 /obj/effect/xenomorph/splatterblob/New() //Self-deletes after creation & animation
@@ -40,11 +40,11 @@
 	name = "splatter"
 	desc = "It burns! It burns like hygiene!"
 	icon_state = "acid2"
-	density = 0
-	opacity = 0
+	density = FALSE
+	opacity = FALSE
 	anchored = 1
 	layer = ABOVE_OBJ_LAYER
-	mouse_opacity = 0
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	var/datum/cause_data/cause_data
 
 	var/hivenumber = XENO_HIVE_NORMAL
@@ -115,7 +115,7 @@
 					continue
 
 				apply_spray(M)
-				M.apply_armoured_damage(damage_amount * XVX_ACID_DAMAGEMULT, ARMOR_BIO, BURN) // Deal extra damage when first placing ourselves down.
+				M.apply_armoured_damage(get_xeno_damage_acid(M, damage_amount), ARMOR_BIO, BURN) // Deal extra damage when first placing ourselves down.
 
 			continue
 
@@ -283,8 +283,8 @@
 	name = "acid"
 	desc = "Burbling corrosive stuff. I wouldn't want to touch it."
 	icon_state = "acid_normal"
-	density = 0
-	opacity = 0
+	density = FALSE
+	opacity = FALSE
 	anchored = 1
 	unacidable = TRUE
 	var/atom/acid_t
@@ -400,7 +400,7 @@
 	name = "???"
 	desc = ""
 	icon_state = "boiler_bombard"
-	mouse_opacity = 0
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
 	// Config-ish values
 	var/damage = 20
@@ -461,7 +461,7 @@
 	name = "???"
 	desc = ""
 	icon_state = "xeno_telegraph_red"
-	mouse_opacity = 0
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
 /obj/effect/xenomorph/xeno_telegraph/New(loc, ttl = 10)
 	..(loc)
@@ -488,7 +488,7 @@
 	name = "???"
 	desc = ""
 	icon_state = "boiler_bombard"
-	mouse_opacity = 0
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
 	var/damage = 20
 	var/message = null

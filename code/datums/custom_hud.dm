@@ -137,7 +137,7 @@
 	element.frame_hud.icon_state = "dark"
 	element.frame_hud.screen_loc = UI_FRAME_LOC
 	element.frame_hud.layer = ABOVE_HUD_LAYER
-	element.frame_hud.mouse_opacity = 0
+	element.frame_hud.mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	element.frame_hud.alpha = ui_alpha
 	element.frame_hud.color = ui_color
 	element.static_inventory += element.frame_hud
@@ -147,7 +147,7 @@
 	element.pulse_line.icon_state = "pulse_good"
 	element.pulse_line.screen_loc = UI_FRAME_LOC
 	element.pulse_line.layer = ABOVE_HUD_LAYER
-	element.pulse_line.mouse_opacity = 0
+	element.pulse_line.mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	element.static_inventory += element.pulse_line
 
 /datum/custom_hud/alien

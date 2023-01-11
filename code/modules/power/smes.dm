@@ -8,7 +8,7 @@
 	name = "power storage unit"
 	desc = "A high-capacity superconducting magnetic energy storage (SMES) unit."
 	icon_state = "smes"
-	density = 1
+	density = TRUE
 	anchored = 1
 	use_power = USE_POWER_NONE
 	directwired = 0

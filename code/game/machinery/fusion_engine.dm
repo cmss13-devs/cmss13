@@ -14,7 +14,7 @@
 	unslashable = TRUE
 	unacidable = TRUE   //NOPE.jpg
 	anchored = 1
-	density = 1
+	density = TRUE
 
 	var/power_gen_percent = 0 //50,000W at full capacity
 	var/buildstate = 0 //What state of building it are we on, 0-3, 1 is "broken", the default

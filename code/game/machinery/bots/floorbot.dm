@@ -8,7 +8,7 @@
 	desc = "A little floor repairing robot, he looks so excited!"
 	icon = 'icons/obj/structures/machinery/aibots.dmi'
 	icon_state = "floorbot0"
-	density = 0
+	density = FALSE
 	anchored = 0
 	health = 25
 	maxhealth = 25

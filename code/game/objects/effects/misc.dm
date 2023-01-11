@@ -4,7 +4,7 @@
 	desc = "It's a ... present?"
 	icon = 'icons/obj/items/items.dmi'
 	icon_state = "strangepresent"
-	density = 1
+	density = TRUE
 	anchored = 0
 
 
@@ -18,7 +18,7 @@
 	icon_state = "blank"
 	anchored = 1
 	layer = 99
-	mouse_opacity = 0
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	unacidable = TRUE//Just to be sure.
 
 /obj/effect/beam

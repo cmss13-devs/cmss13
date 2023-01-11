@@ -165,7 +165,7 @@
 	w_class = SIZE_LARGE
 	max_w_class = SIZE_LARGE
 	anchored = 1.0
-	density = 0
+	density = FALSE
 	cant_hold = list(/obj/item/storage/secure/briefcase)
 
 /obj/item/storage/secure/safe/fill_preset_inventory()

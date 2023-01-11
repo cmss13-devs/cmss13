@@ -74,22 +74,19 @@
 
 /obj/structure/vehicle_locker/clicked(var/mob/living/carbon/human/user, var/list/mods)
 	..()
-	if(!istype(user))
-		return
-
-	if(user.is_mob_incapacitated())
-		return
+	if(!CAN_PICKUP(user, src))
+		return ..()
 
 	if(user.get_active_hand())
-		return
+		return ..()
 
 	if(!role_restriction.Find(user.job))
 		to_chat(user, SPAN_WARNING("You cannot access \the [name]."))
-		return
+		return TRUE
 
 	if(Adjacent(user))
 		container.open(user)
-		return
+		return TRUE
 
 //due to how /internal coded, this doesn't work, so we used workaround above
 /obj/structure/vehicle_locker/attack_hand(var/mob/user)
@@ -212,26 +209,23 @@
 	return container.attackby(W, user)
 
 /obj/structure/vehicle_locker/med/clicked(var/mob/living/carbon/human/user, var/list/mods)
-	if(!istype(user))
-		return
-
-	if(user.is_mob_incapacitated())
-		return
+	if(!CAN_PICKUP(user, src))
+		return ..()
 
 	if(user.get_active_hand())
-		return
+		return ..()
 
 	if(!role_restriction.Find(user.job))
 		to_chat(user, SPAN_WARNING("You cannot access \the [name]."))
-		return
+		return TRUE
 
 	if(!has_tray)
 		to_chat(user, SPAN_WARNING("\The [name] doesn't have a surgical tray installed!"))
-		return
+		return TRUE
 
 	if(Adjacent(user))
 		container.open(user)
-		return
+		return TRUE
 
 /obj/structure/vehicle_locker/med/MouseDrop(var/obj/over_object)
 	var/mob/living/carbon/human/user = usr

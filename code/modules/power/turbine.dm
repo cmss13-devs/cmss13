@@ -4,7 +4,7 @@
 	icon = 'icons/obj/pipes/pipes3.dmi'
 	icon_state = "compressor"
 	anchored = 1
-	density = 1
+	density = TRUE
 	var/obj/structure/machinery/power/turbine/turbine
 	var/turf/inturf
 	var/starter = 0
@@ -19,7 +19,7 @@
 	icon = 'icons/obj/pipes/pipes3.dmi'
 	icon_state = "turbine"
 	anchored = 1
-	density = 1
+	density = TRUE
 	var/obj/structure/machinery/compressor/compressor
 	directwired = 1
 	var/turf/outturf
@@ -32,4 +32,4 @@
 	icon_state = "turbinecomp"
 	circuit = /obj/item/circuitboard/computer/turbine_control
 	anchored = 1
-	density = 1
+	density = TRUE

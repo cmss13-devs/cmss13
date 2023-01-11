@@ -1,5 +1,5 @@
 /mob
-	density = 1
+	density = TRUE
 	layer = MOB_LAYER
 	animate_movement = 2
 	rebounds = TRUE
@@ -125,6 +125,7 @@
 	var/life_steps_total = 0
 	var/life_kills_total = 0
 	var/life_damage_taken_total = 0
+	var/festivizer_hits_total = 0
 
 	var/life_value = 1 // when killed, the killee gets this much added to its life_kills_total
 	var/default_honor_value = 1 // when killed by a yautja, this determines the minimum amount of honor gained
@@ -234,6 +235,9 @@
 	///the mob's tgui player panel
 	var/datum/player_panel/mob_panel
 
+	///the mob's tgui player panel
+	var/datum/language_menu/mob_language_menu
+
 	var/datum/focus
 
 	///the current turf being examined in the stat panel
@@ -249,3 +253,10 @@
 	var/list/important_radio_channels = list()
 
 	var/datum/click_intercept
+
+	///the icon currently used for the typing indicator's bubble
+	var/mutable_appearance/active_typing_indicator
+	///the icon currently used for the thinking indicator's bubble
+	var/mutable_appearance/active_thinking_indicator
+	/// User is thinking in character. Used to revert to thinking state after stop_typing
+	var/thinking_IC = FALSE

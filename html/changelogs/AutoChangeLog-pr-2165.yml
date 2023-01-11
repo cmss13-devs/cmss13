@@ -1,5 +1,0 @@
-author: "thwompa"
-delete-after: True
-changes:
-  - imageadd: "added new synth charging station sprites"
-  - imagedel: "removed old cyborg chaging sprites"

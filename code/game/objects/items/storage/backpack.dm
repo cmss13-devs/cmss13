@@ -462,6 +462,9 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	uniform_restricted = list(/obj/item/clothing/under/marine/rto)
 	var/obj/structure/transmitter/internal/internal_transmitter
 
+	var/phone_category = "RTO"
+	var/network_receive = FACTION_MARINE
+	var/list/networks_transmit = list(FACTION_MARINE)
 	var/base_icon
 
 /datum/action/item_action/rto_pack/use_phone/New(var/mob/living/user, var/obj/item/holder)
@@ -487,8 +490,10 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	. = ..()
 	internal_transmitter = new(src)
 	internal_transmitter.relay_obj = src
-	internal_transmitter.phone_category = "RTO"
+	internal_transmitter.phone_category = phone_category
 	internal_transmitter.enabled = FALSE
+	internal_transmitter.network_receive = network_receive
+	internal_transmitter.networks_transmit = networks_transmit
 	RegisterSignal(internal_transmitter, COMSIG_TRANSMITTER_UPDATE_ICON, PROC_REF(check_for_ringing))
 	GLOB.radio_packs += src
 
@@ -564,15 +569,22 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	else
 		. = ..()
 
+/obj/item/storage/backpack/marine/satchel/rto/upp_net
+	network_receive = FACTION_UPP
+	networks_transmit = list(FACTION_UPP)
+
 /obj/item/storage/backpack/marine/satchel/rto/small
 	name = "\improper USCM Small Radio Telephone Pack"
 	max_storage_space = 10
 
 	uniform_restricted = null
+	phone_category = "Marine"
 
-/obj/item/storage/backpack/marine/satchel/rto/small/Initialize()
-	. = ..()
-	internal_transmitter.phone_category = "Marine"
+
+/obj/item/storage/backpack/marine/satchel/rto/small/upp_net
+	network_receive = FACTION_UPP
+	networks_transmit = list(FACTION_UPP)
+	phone_category = "Soldier"
 
 /obj/item/storage/backpack/marine/satchel/rto/io
 	uniform_restricted = list(/obj/item/clothing/under/marine/officer/intel)

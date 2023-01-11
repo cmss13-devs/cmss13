@@ -23,7 +23,7 @@ export type Observable = {
   health?: number;
   icon?: string;
   job?: string;
-  squad_color?: string;
+  background_color?: string;
   full_name: string;
   nickname?: string;
   orbiters?: number;

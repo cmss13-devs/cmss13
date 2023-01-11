@@ -21,7 +21,9 @@
 	var/faction = FACTION_NEUTRAL
 	var/list/faction_group
 	var/origin_override
+
 	var/minimap_icon = "private"
+	var/minimap_background = MINIMAP_ICON_USCM
 	var/always_minimap_visible = TRUE
 
 	//Uniform data
@@ -47,6 +49,7 @@
 	var/dress_extra = null
 
 	var/list/uniform_sets = null
+
 
 
 /datum/equipment_preset/New()

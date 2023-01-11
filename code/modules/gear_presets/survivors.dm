@@ -14,6 +14,7 @@
 	access = list(ACCESS_CIVILIAN_PUBLIC)
 
 	minimap_icon = "surv"
+	minimap_background = MINIMAP_ICON_CIVILIAN
 
 	var/survivor_variant = CIVILIAN_SURVIVOR
 

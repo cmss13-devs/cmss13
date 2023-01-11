@@ -208,7 +208,7 @@ SUBSYSTEM_DEF(minimaps)
  * * icon: icon file we want to use for this blip, 'icons/UI_icons/map_blips.dmi' by default
  * * overlay_iconstates: list of iconstates to use as overlay. Used for xeno leader icons.
  */
-/datum/controller/subsystem/minimaps/proc/add_marker(atom/target, zlevel, hud_flags = NONE, iconstate, icon = 'icons/ui_icons/map_blips.dmi', list/overlay_iconstates, color_code)
+/datum/controller/subsystem/minimaps/proc/add_marker(atom/target, zlevel, hud_flags = NONE, iconstate, icon = 'icons/ui_icons/map_blips.dmi', list/overlay_iconstates, color_code, background = "background")
 	if(!isatom(target) || !zlevel || !hud_flags || !iconstate || !icon)
 		CRASH("Invalid marker added to subsystem")
 	if(!initialized)
@@ -217,10 +217,7 @@ SUBSYSTEM_DEF(minimaps)
 
 	var/image/blip = image(icon, iconstate, pixel_x = MINIMAP_PIXEL_FROM_WORLD(target.x) + minimaps_by_z["[zlevel]"].x_offset, pixel_y = MINIMAP_PIXEL_FROM_WORLD(target.y) + minimaps_by_z["[zlevel]"].y_offset)
 	if(color_code)
-		var/icon_state = "background"
-		if("[iconstate]_background" in icon_states('icons/ui_icons/map_blips.dmi'))
-			icon_state = "[iconstate]_background"
-		var/mutable_appearance/underlay = mutable_appearance('icons/ui_icons/map_blips.dmi', icon_state)
+		var/mutable_appearance/underlay = mutable_appearance('icons/ui_icons/map_blips.dmi', background)
 		underlay.color = color_code
 		blip.underlays += underlay
 
@@ -272,10 +269,12 @@ SUBSYSTEM_DEF(minimaps)
  */
 /datum/controller/subsystem/minimaps/proc/on_move(atom/movable/source, oldloc)
 	SIGNAL_HANDLER
-	if(!source.z)
-		return //this can happen legitimately when you go into pipes, it shouldnt but thats how it is
-	images_by_source[source].pixel_x = MINIMAP_PIXEL_FROM_WORLD(source.x) + minimaps_by_z["[source.z]"].x_offset
-	images_by_source[source].pixel_y = MINIMAP_PIXEL_FROM_WORLD(source.y) + minimaps_by_z["[source.z]"].y_offset
+
+	var/source_z = source.z
+	if(!source_z)
+		return
+	images_by_source[source].pixel_x = MINIMAP_PIXEL_FROM_WORLD(source.x) + minimaps_by_z["[source_z]"].x_offset
+	images_by_source[source].pixel_y = MINIMAP_PIXEL_FROM_WORLD(source.y) + minimaps_by_z["[source_z]"].y_offset
 
 /**
  * Removes an atom and it's blip from the subsystem

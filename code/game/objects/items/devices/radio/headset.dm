@@ -274,7 +274,6 @@
 /obj/item/device/radio/headset/proc/turn_on()
 	SIGNAL_HANDLER
 	on = TRUE
-	update_minimap_icon()
 
 /obj/item/device/radio/headset/proc/toggle_squadhud()
 	set name = "Toggle Headset HUD"
@@ -347,20 +346,20 @@
 			marker_flags = MINIMAP_FLAG_MARINE_CLF
 	if(wearer.undefibbable)
 		if(wearer.assigned_squad)
-			SSminimaps.add_marker(wearer, z_level, marker_flags, wearer.assigned_equipment_preset.minimap_icon, overlay_iconstates = list("undefibbable"), color_code = wearer.assigned_squad.minimap_color)
+			SSminimaps.add_marker(wearer, z_level, marker_flags, wearer.assigned_equipment_preset.minimap_icon, overlay_iconstates = list("undefibbable"), color_code = wearer.assigned_squad.minimap_color, background = "squad-background")
 		else
-			SSminimaps.add_marker(wearer, z_level, marker_flags, wearer.assigned_equipment_preset.minimap_icon, overlay_iconstates = list("undefibbable"))
+			SSminimaps.add_marker(wearer, z_level, marker_flags, wearer.assigned_equipment_preset.minimap_icon, overlay_iconstates = list("undefibbable"), color_code = wearer.assigned_equipment_preset.minimap_background)
 		return
 	if(wearer.stat == DEAD)
 		if(wearer.assigned_squad)
-			SSminimaps.add_marker(wearer, z_level, marker_flags, wearer.assigned_equipment_preset.minimap_icon, overlay_iconstates = list("defibbable"), color_code = wearer.assigned_squad.minimap_color)
+			SSminimaps.add_marker(wearer, z_level, marker_flags, wearer.assigned_equipment_preset.minimap_icon, overlay_iconstates = list("defibbable"), color_code = wearer.assigned_squad.minimap_color, background = "squad-background")
 		else
-			SSminimaps.add_marker(wearer, z_level, marker_flags, wearer.assigned_equipment_preset.minimap_icon, overlay_iconstates = list("defibbable"))
+			SSminimaps.add_marker(wearer, z_level, marker_flags, wearer.assigned_equipment_preset.minimap_icon, overlay_iconstates = list("defibbable", color_code = wearer.assigned_equipment_preset.minimap_background))
 		return
 	if(wearer.assigned_squad)
-		SSminimaps.add_marker(wearer, z_level, marker_flags, wearer.assigned_equipment_preset.minimap_icon, color_code = wearer.assigned_squad.minimap_color)
+		SSminimaps.add_marker(wearer, z_level, marker_flags, wearer.assigned_equipment_preset.minimap_icon, color_code = wearer.assigned_squad.minimap_color, background = "squad-background")
 		return
-	SSminimaps.add_marker(wearer, z_level, marker_flags, wearer.assigned_equipment_preset.minimap_icon)
+	SSminimaps.add_marker(wearer, z_level, marker_flags, wearer.assigned_equipment_preset.minimap_icon, color_code = wearer.assigned_equipment_preset.minimap_background)
 
 ///Change the minimap icon to a dead icon
 /obj/item/device/radio/headset/proc/set_dead_on_minimap()

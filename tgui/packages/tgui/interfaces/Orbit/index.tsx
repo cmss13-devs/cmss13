@@ -194,7 +194,7 @@ const ObservableItem = (
 ) => {
   const { act } = useBackend<OrbitData>(context);
   const { color, item } = props;
-  const { health, icon, full_name, nickname, orbiters, ref, squad_color } =
+  const { health, icon, full_name, nickname, orbiters, ref, background_color } =
     item;
 
   return (
@@ -203,7 +203,9 @@ const ObservableItem = (
       onClick={() => act('orbit', { ref: ref })}
       tooltip={!!health && <ObservableTooltip item={item} />}
       tooltipPosition="bottom-start">
-      {!!icon && <ObservableIcon icon={icon} squad_color={squad_color} />}
+      {!!icon && (
+        <ObservableIcon icon={icon} background_color={background_color} />
+      )}
       {capitalizeFirst(getDisplayName(full_name, nickname))}
       {!!orbiters && (
         <>
@@ -239,12 +241,15 @@ const ObservableTooltip = (props: { item: Observable }) => {
 
 /** Generates a small icon for buttons based on ICONMAP */
 const ObservableIcon = (
-  props: { icon: Observable['icon']; squad_color: Observable['squad_color'] },
+  props: {
+    icon: Observable['icon'];
+    background_color: Observable['background_color'];
+  },
   context
 ) => {
   const { data } = useBackend<OrbitData>(context);
   const { icons = [] } = data;
-  const { icon, squad_color } = props;
+  const { icon, background_color } = props;
   if (!icon || !icons[icon]) {
     return null;
   }
@@ -252,12 +257,12 @@ const ObservableIcon = (
   return (
     <Box
       as="img"
-      mr={1.5}
+      mr={1.3}
       src={`data:image/jpeg;base64,${icons[icon]}`}
       style={{
         transform: 'scale(2) translatey(-1px)',
         '-ms-interpolation-mode': 'nearest-neighbor',
-        'background-color': squad_color ? squad_color : null,
+        'background-color': background_color ? background_color : null,
       }}
     />
   );

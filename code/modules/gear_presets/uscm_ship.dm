@@ -52,6 +52,7 @@
 	skills = /datum/skills/civilian
 
 	minimap_icon = "cl"
+	minimap_background = MINIMAP_ICON_CIVILIAN
 
 	utility_under = list(/obj/item/clothing/under/liaison_suit/outing)
 	utility_hat = list()

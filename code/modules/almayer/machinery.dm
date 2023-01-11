@@ -384,8 +384,11 @@
 /obj/structure/prop/almayer/cannon_cable_connector/bullet_act()
 	return
 
-
-
+/obj/structure/prop/almayer/joey
+	name = "Workin' Joey"
+	desc = "This Working Joe is one of many bought off the then-dying Seegson to boost the Almayer's synthetic pool. This particular model was in an accident back in '79 where it lost the ability to walk and was promptly shoved into maint. It's been shoved into a sparking recharge station full of questionably-safe wires, and lays dormant."
+	icon = 'icons/obj/structures/machinery/vending.dmi'
+	icon_state = "working_joey"
 
 
 

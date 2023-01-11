@@ -181,7 +181,7 @@
 					to_chat(user, SPAN_WARNING("You amplify the broadcasting function with \the [multitool], and a red light starts blinking on and off on the board. Put it back in?"))
 					contraband_enabled = TRUE
 				else
-					to_chat(user, SPAN_WARNING("You weaken the broadcasting function with \the [multitool], and the red light stops blinking, turning off. It's probably good now.."))
+					to_chat(user, SPAN_WARNING("You weaken the broadcasting function with \the [multitool], and the red light stops blinking, turning off. It's probably good now."))
 					contraband_enabled = FALSE
 	else ..()
 

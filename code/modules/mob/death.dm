@@ -54,7 +54,7 @@
 		stack_trace("death called with string cause ([cause_data]) instead of datum")
 		cause_data = create_cause_data(cause_data)
 
-	stat = DEAD
+	set_stat(DEAD)
 
 	update_canmove()
 

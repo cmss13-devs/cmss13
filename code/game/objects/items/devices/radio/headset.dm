@@ -231,6 +231,7 @@
 			COMSIG_HUMAN_REVIVED,
 		), PROC_REF(turn_on))
 		wearer = user
+		RegisterSignal(user, COMSIG_MOB_STAT_SET_ALIVE, PROC_REF(update_minimap_icon))
 		RegisterSignal(user, COMSIG_MOB_LOGIN, PROC_REF(add_hud_tracker))
 		RegisterSignal(user, COMSIG_MOB_DEATH, PROC_REF(set_dead_on_minimap))
 		RegisterSignal(user, COMSIG_HUMAN_SET_UNDEFIBBABLE, PROC_REF(set_undefibbable_on_minimap))
@@ -345,10 +346,16 @@
 		else if(hud_type == MOB_HUD_FACTION_CLF)
 			marker_flags = MINIMAP_FLAG_MARINE_CLF
 	if(wearer.undefibbable)
-		SSminimaps.add_marker(wearer, z_level, marker_flags, "undefibbable")
+		if(wearer.assigned_squad)
+			SSminimaps.add_marker(wearer, z_level, marker_flags, wearer.assigned_equipment_preset.minimap_icon, overlay_iconstates = list("undefibbable"), color_code = wearer.assigned_squad.minimap_color)
+		else
+			SSminimaps.add_marker(wearer, z_level, marker_flags, wearer.assigned_equipment_preset.minimap_icon, overlay_iconstates = list("undefibbable"))
 		return
 	if(wearer.stat == DEAD)
-		SSminimaps.add_marker(wearer, z_level, marker_flags, "defibbable")
+		if(wearer.assigned_squad)
+			SSminimaps.add_marker(wearer, z_level, marker_flags, wearer.assigned_equipment_preset.minimap_icon, overlay_iconstates = list("defibbable"), color_code = wearer.assigned_squad.minimap_color)
+		else
+			SSminimaps.add_marker(wearer, z_level, marker_flags, wearer.assigned_equipment_preset.minimap_icon, overlay_iconstates = list("defibbable"))
 		return
 	if(wearer.assigned_squad)
 		SSminimaps.add_marker(wearer, z_level, marker_flags, wearer.assigned_equipment_preset.minimap_icon, color_code = wearer.assigned_squad.minimap_color)

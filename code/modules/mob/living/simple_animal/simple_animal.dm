@@ -78,7 +78,7 @@
 			icon_state = icon_living
 			GLOB.dead_mob_list -= src
 			GLOB.alive_mob_list += src
-			stat = CONSCIOUS
+			set_stat(CONSCIOUS)
 			lying = 0
 			density = TRUE
 			reload_fullscreens()

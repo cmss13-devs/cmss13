@@ -71,7 +71,7 @@
 		to_chat(usr, "You have to repair the borg before using this module!")
 		return 0
 
-	R.stat = 0
+	R.set_stat(CONSCIOUS)
 	return 1
 
 

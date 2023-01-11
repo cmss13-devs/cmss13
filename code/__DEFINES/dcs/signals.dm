@@ -491,6 +491,10 @@
 #define COMSIG_HUMAN_EQUIPPED_ITEM "human_equipped_item"
 //from /mob/living/carbon/human/Life()
 #define COMSIG_HUMAN_SET_UNDEFIBBABLE "human_set_undefibbable"
+//from /mob/living/set_stat()
+#define COMSIG_MOB_STAT_SET_ALIVE "mob_stat_set_alive"
+//from /mob/living/set_stat()
+#define COMSIG_MOB_STAT_SET_DEAD "mob_stat_set_dead"
 
 ///from /datum/component/bonus_damage_stack
 #define COMSIG_BONUS_DAMAGE "bonus_damage"

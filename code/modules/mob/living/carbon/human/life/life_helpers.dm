@@ -314,7 +314,7 @@
 	last_damage_data = null
 	statistic_tracked = FALSE
 	tod = null
-	stat = UNCONSCIOUS
+	set_stat(UNCONSCIOUS)
 	emote("gasp")
 	regenerate_icons()
 	reload_fullscreens()

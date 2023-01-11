@@ -84,6 +84,7 @@
 		/obj/vehicle/multitile/proc/open_controls_guide,
 		/obj/vehicle/multitile/proc/name_vehicle,
 	))
+	SStgui.close_user_uis(M, src)
 	if(seat == VEHICLE_DRIVER)
 		remove_verb(M.client, list(
 			/obj/vehicle/multitile/proc/toggle_door_lock,

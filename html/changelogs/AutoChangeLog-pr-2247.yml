@@ -1,5 +1,0 @@
-author: "stanalbatross"
-delete-after: True
-changes:
-  - code_imp: "changed a few instances of gender strings to defines"
-  - bugfix: "fixed many, many instances of things not properly being tagged as plural"

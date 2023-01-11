@@ -47,6 +47,7 @@ var/datum/controller/supply/supply_controller = new()
 	desc = "Completely impassable - or are they?"
 	icon = 'icons/obj/structures/props/stationobjs.dmi' //Change this.
 	icon_state = "plasticflaps"
+	gender = PLURAL
 	density = FALSE
 	anchored = TRUE
 	layer = MOB_LAYER

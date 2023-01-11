@@ -111,8 +111,10 @@ DEFINES in setup.dm, referenced here.
 
 /obj/item/weapon/gun/clicked(var/mob/user, var/list/mods)
 	if (mods["alt"])
+		if(!CAN_PICKUP(user, src))
+			return ..()
 		toggle_gun_safety()
-		return 1
+		return TRUE
 	return (..())
 
 /obj/item/weapon/gun/mob_can_equip(mob/user)

@@ -188,6 +188,7 @@
 
 /obj/effect/decal/cleanable/spiderling_remains
 	name = "spiderling remains"
+	gender = PLURAL
 	desc = "Green squishy mess."
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "greenshatter"

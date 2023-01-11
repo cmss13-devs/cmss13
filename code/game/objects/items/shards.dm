@@ -237,6 +237,7 @@
 
 /obj/item/shard/shrapnel/bone_chips
 	name = "bone shrapnel chips"
+	gender = PLURAL
 	icon_state = "shrapnel"
 	desc = "It looks like it came from a prehistoric animal."
 	damage_on_move = 0.6

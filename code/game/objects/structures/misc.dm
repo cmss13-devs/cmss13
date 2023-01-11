@@ -139,6 +139,7 @@
 	icon = 'icons/obj/structures/structures.dmi'
 	desc = "Stairs.  You walk up and down them."
 	icon_state = "rampbottom"
+	gender = PLURAL
 	unslashable = TRUE
 	unacidable = TRUE
 	health = null

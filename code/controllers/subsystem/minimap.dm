@@ -16,7 +16,7 @@ SUBSYSTEM_DEF(minimaps)
 	name = "Minimaps"
 	init_order = SS_INIT_MINIMAP
 	priority = SS_PRIORITY_MINIMAPS
-	wait = 15 SECONDS
+	wait = 5 SECONDS
 	runlevels = RUNLEVEL_GAME | RUNLEVEL_POSTGAME
 	///Minimap hud display datums sorted by zlevel
 	var/list/datum/hud_displays/minimaps_by_z = list()

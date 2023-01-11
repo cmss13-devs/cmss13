@@ -1,0 +1,4 @@
+author: "stanalbatross"
+delete-after: True
+changes:
+  - balance: "increased the queen timelock to 10 hours of xeno, 5 hours of drone, and 3 hours of t3"

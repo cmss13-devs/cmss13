@@ -1,0 +1,9 @@
+author: "Puckaboo2"
+delete-after: True
+changes:
+  - rscdel: "Removed some code that disabled cooldowns on fruits."
+  - bugfix: "Resin Fruits now have cooldowns again."
+  - balance: "Greater and Lesser Resin Fruits have a cooldown of 5, up from 0 and down from the previous 10."
+  - bugfix: "Gardener's overlays no longer overlap when she switches icon states."
+  - bugfix: "Healer and Gardener's dead overlays will not appear whilst ghosted."
+  - imagedel: "Made the Gardener and Healer's dead icon states empty so the overlay will not appear whilst ghosted."

@@ -34,7 +34,7 @@
 	minimap_icon = "mp"
 
 	utility_under = list(/obj/item/clothing/under/marine/mp)
-	utility_hat = list(/obj/item/clothing/head/helmet/beret/marine/mp)
+	utility_hat = list(/obj/item/clothing/head/beret/marine/mp)
 	utility_extra = list(/obj/item/clothing/head/cmcap, /obj/item/clothing/head/beret/cm, /obj/item/clothing/head/beret/cm/tan)
 
 	service_over = list(/obj/item/clothing/suit/storage/jacket/marine/service/mp)
@@ -54,7 +54,7 @@
 		H.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/sechud/prescription(H), WEAR_EYES)
 	else
 		H.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/sechud(H), WEAR_EYES)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/beret/marine/mp(H), WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/beret/marine/mp(H), WEAR_HEAD)
 	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/device/taperecorder(H), WEAR_L_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/medium(H), WEAR_R_STORE)
@@ -98,7 +98,7 @@
 	minimap_icon = "warden"
 
 	utility_under = list(/obj/item/clothing/under/marine/warden)
-	utility_hat = list(/obj/item/clothing/head/helmet/beret/marine/mp/warden)
+	utility_hat = list(/obj/item/clothing/head/beret/marine/mp/warden)
 	utility_extra = list(/obj/item/clothing/head/cmcap, /obj/item/clothing/head/beret/cm, /obj/item/clothing/head/beret/cm/tan)
 
 	service_over = list(/obj/item/clothing/suit/storage/jacket/marine/service/warden)
@@ -118,7 +118,7 @@
 		H.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/sechud/prescription(H), WEAR_EYES)
 	else
 		H.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/sechud(H), WEAR_EYES)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/beret/marine/mp/warden(H), WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/beret/marine/mp/warden(H), WEAR_HEAD)
 	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/device/taperecorder(H), WEAR_L_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(H), WEAR_R_STORE)
@@ -158,7 +158,7 @@
 	minimap_icon = "cmp"
 
 	utility_under = list(/obj/item/clothing/under/marine/officer/warrant)
-	utility_hat = list(/obj/item/clothing/head/helmet/beret/marine/mp/cmp)
+	utility_hat = list(/obj/item/clothing/head/beret/marine/mp/cmp)
 	utility_extra = list(/obj/item/clothing/head/cmcap, /obj/item/clothing/head/beret/cm, /obj/item/clothing/head/beret/cm/tan)
 
 	service_over = list(/obj/item/clothing/suit/storage/jacket/marine/service/cmp)
@@ -178,7 +178,7 @@
 		H.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/sechud/prescription(H), WEAR_EYES)
 	else
 		H.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/sechud(H), WEAR_EYES)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/beret/marine/mp/cmp(H), WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/beret/marine/mp/cmp(H), WEAR_HEAD)
 	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/device/taperecorder(H), WEAR_L_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(H), WEAR_R_STORE)
@@ -198,7 +198,7 @@
 	skills = /datum/skills/CMP
 
 	utility_under = list(/obj/item/clothing/under/marine/officer/warrant)
-	utility_hat = list(/obj/item/clothing/head/helmet/beret/marine/mp/cmp)
+	utility_hat = list(/obj/item/clothing/head/beret/marine/mp/cmp)
 	utility_extra = list(/obj/item/clothing/head/cmcap, /obj/item/clothing/head/beret/cm, /obj/item/clothing/head/beret/cm/tan)
 
 /datum/equipment_preset/uscm_ship/uscm_police/riot_mp/New()

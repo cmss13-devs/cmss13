@@ -15,6 +15,8 @@
 
 	minimap_icon = "surv"
 
+	var/survivor_variant = CIVILIAN_SURVIVOR
+
 /datum/equipment_preset/survivor/load_name(mob/living/carbon/human/H, var/randomise)
 	H.gender = pick(MALE, FEMALE)
 	var/datum/preferences/A = new
@@ -49,6 +51,8 @@
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	idtype = /obj/item/card/id/silver/clearance_badge/scientist
 	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_MEDBAY, ACCESS_CIVILIAN_ENGINEERING)
+
+	survivor_variant = SCIENTIST_SURVIVOR
 
 /datum/equipment_preset/survivor/scientist/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/virologist(H), WEAR_BODY)
@@ -165,6 +169,7 @@
 	idtype = /obj/item/card/id/silver/clearance_badge
 	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_MEDBAY)
 
+	survivor_variant = MEDICAL_SURVIVOR
 
 /datum/equipment_preset/survivor/doctor/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/medical(H), WEAR_BODY)
@@ -293,6 +298,8 @@
 	)
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
 
+	survivor_variant = CORPORATE_SURVIVOR
+
 /datum/equipment_preset/survivor/corporate/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit/formal(H), WEAR_BODY)
 	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
@@ -351,6 +358,8 @@
 		ACCESS_CIVILIAN_COMMAND,
 	)
 
+	survivor_variant = SECURITY_SURVIVOR
+
 /datum/equipment_preset/survivor/security/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/security(H), WEAR_BODY)
 	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
@@ -374,7 +383,7 @@
 /datum/equipment_preset/survivor/security/trijent/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/head_of_security/navyblue(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/sec(H), WEAR_BACK)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/beret/marine/mp/mpcap(H), WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/beret/marine/mp/mpcap(H), WEAR_HEAD)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/CMB(H), WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/jackboots(H), WEAR_FEET)
 
@@ -494,6 +503,8 @@
 	skills = /datum/skills/civilian/survivor/prisoner
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	access = list(ACCESS_CIVILIAN_PUBLIC)
+
+	survivor_variant = SECURITY_SURVIVOR
 
 /datum/equipment_preset/survivor/prisoner/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/color/orange(H), WEAR_BODY)
@@ -664,6 +675,8 @@
 		ACCESS_CIVILIAN_ENGINEERING,
 		ACCESS_CIVILIAN_LOGISTICS
 		)
+
+	survivor_variant = ENGINEERING_SURVIVOR
 
 /datum/equipment_preset/survivor/engineer/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/engineer(H), WEAR_BODY)
@@ -934,6 +947,8 @@
 		ACCESS_CIVILIAN_COMMAND,
 	)
 
+	survivor_variant = SECURITY_SURVIVOR
+
 /datum/equipment_preset/survivor/colonial_marshal/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/CM_uniform(H), WEAR_BODY)
 	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
@@ -1028,6 +1043,8 @@
 		ACCESS_CIVILIAN_LOGISTICS
 		)
 
+	survivor_variant = CORPORATE_SURVIVOR
+
 /datum/equipment_preset/survivor/interstellar_commerce_commission_liason/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit(H), WEAR_BODY)
 	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
@@ -1090,6 +1107,7 @@
 		ACCESS_WY_CORPORATE,
 		ACCESS_CIVILIAN_LOGISTICS
 		)
+	survivor_variant = CORPORATE_SURVIVOR
 
 /datum/equipment_preset/survivor/interstellar_human_rights_observer/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit/suspenders(H), WEAR_BODY)
@@ -1134,6 +1152,8 @@
 		ACCESS_CIVILIAN_LOGISTICS
 	)
 
+	survivor_variant = SECURITY_SURVIVOR
+
 /datum/equipment_preset/survivor/goon/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/WY, WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/PMC/corporate, WEAR_BODY)
@@ -1173,6 +1193,7 @@
 		ACCESS_WY_CORPORATE,
 		ACCESS_CIVILIAN_LOGISTICS
 		)
+	survivor_variant = SECURITY_SURVIVOR
 
 /datum/equipment_preset/survivor/pmc/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/PMC, WEAR_L_EAR)
@@ -1210,6 +1231,9 @@
 		ACCESS_MARINE_MEDBAY
 	)
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
+
+	survivor_variant = CORPORATE_SURVIVOR
+
 /datum/equipment_preset/survivor/wy/manager/load_gear(mob/living/carbon/human/H)
 
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/suit_jacket/manager(H), WEAR_BODY)

@@ -171,7 +171,6 @@
 /obj/item/clothing/suit/storage/marine/veteran/PMC/light/synth{
 	desc = "A modification of the standard Armat Systems M3 armor. This variant was designed for PMC Support Units in the field, offering protection and storage while not restricting movement. This set seems damaged...";
 	name = "damaged M4 synthetic PMC armor";
-	slowdown = 1;
 	pixel_x = -5;
 	pixel_y = -5
 	},

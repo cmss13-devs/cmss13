@@ -25,13 +25,13 @@
 /obj/item/ore/glass
 	name = "impure silicates"
 	icon_state = "Glass ore"
-
+	gender = PLURAL
 	oretag = "sand"
 
 /obj/item/ore/phoron
 	name = "phoron crystals"
 	icon_state = "Phoron ore"
-
+	gender = PLURAL
 	oretag = "phoron"
 
 /obj/item/ore/silver
@@ -49,7 +49,7 @@
 /obj/item/ore/diamond
 	name = "diamonds"
 	icon_state = "Diamond ore"
-
+	gender = PLURAL
 	oretag = "diamond"
 
 /obj/item/ore/osmium

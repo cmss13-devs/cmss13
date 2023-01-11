@@ -104,4 +104,3 @@
 	thinking_IC = FALSE
 	remove_thinking_indicator()
 	remove_typing_indicator()
-

@@ -87,11 +87,9 @@
 
 			M.flick_attack_overlay(src, "slash")
 			var/obj/limb/affecting
-			affecting = get_limb(rand_zone(M.zone_selected, 70))
-			if(!affecting) //No organ, just get a random one
-				affecting = get_limb(rand_zone(null, 0))
-			if(!affecting) //Still nothing??
-				affecting = get_limb("chest") //Gotta have a torso?!
+			affecting = get_limb(rand_zone(M.zone_selected, 25))
+			if(!affecting)
+				affecting = get_limb("chest") //Default to torso if we don't get a proper limb
 
 			var/armor_block = getarmor(affecting, ARMOR_MELEE)
 

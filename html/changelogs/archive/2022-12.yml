@@ -816,3 +816,170 @@
       #V compared to USCM :V) using V/M/N/J/U General/T Commando'
   - rscadd: CLF channels are A Med/B Engi/C Cmd/D CCT/G General
   - rscadd: PMC channels are E Engi/F Med/P General/O CCT/Z Cmd /K Whiteout
+2022-12-24:
+  SpartanBobby:
+  - bugfix: fixed a misplaced wall in CIC cryo
+  Stalkerino:
+  - bugfix: renamed lethal mode to IFF on the M46C and the M56
+  carlarctg:
+  - rscdel: Removed almost all the PMC corpses from all the maps. Replaced them with
+      W-Y Security Guards (goons)
+  - rscadd: Sprinkled some soul in some nightmare inserts that hosted these PMC corpses
+      because i cannot help myself. For example the LV crash and hydro holds have
+      some wooden barricades, the big red admin hold got some mostly-empty M41 magazine
+      boxes.
+  - rscadd: Almost all of the PMC corpse spawns' NSG 23s and magazines were replaced
+      with corpo M41s equipped with rubber bullets. Where relevant, there are also
+      normal magazines that can be picked up, such as the big red offices crashed
+      ship.
+  fira:
+  - bugfix: Increased contrast and fixed adjustment on flare flames.
+  - rscadd: Flares shot by flare gun will now align on landing similar to thrown ones.
+2022-12-25:
+  Casper:
+  - refactor: MP JAS computer now uses TGUI
+  Morrow:
+  - bugfix: Fixes goon corpse headset preset
+  ThePiachu:
+  - qol: Xenos without plasma won't try building special structures anymore.
+  - code_imp: Made a variable have a more descriptive name.
+  stanalbatross:
+  - bugfix: fixed examining vehicle parts not returning anything
+  - bugfix: fixed vendors being able to vend to your hand while you are not adjacent
+      to them
+  - bugfix: fixed hardpoint removal list staying on your screen if you tried to x
+      out of it
+  - bugfix: people with vehicle skill but without engi skill can now also see hardpoint
+      integrity
+  - code_imp: fixed all trailing slashes at the ends of paths in the codebase
+  - balance: deep ocean water on NV will now toss you around and massively slow you
+      down to discourage you from going in it
+  - balance: added an extra flank route to the predship cave on NV
+  - bugfix: made the big LZ doors on NV visible again
+2022-12-26:
+  ChainsawMullet:
+  - rscdel: Removed R-1NG bell from Engineer vendors and map spawns.
+  Molto:
+  - spellcheck: fixed Solaris wall typo
+  Stalkerino:
+  - spellcheck: fixed a typo when a larva spawns in the spawn pool
+  somepersondunno:
+  - spellcheck: fixed 2 typos for a vampire lurker ability.
+2022-12-27:
+  BeagleGaming1:
+  - spellcheck: Shortened Commanding Officer Survivor in job preferences to only take
+      one line
+  Molto:
+  - spellcheck: fixed punctuation of some desc
+  Segrain:
+  - bugfix: Contractors ERT once again gets its proper equipment.
+  ThePiachu:
+  - rscadd: Observers can now join as Facehuggers using any planted egg or a Carrier.
+  - rscadd: Ghosts now have a verb to join as a Facehugger from a Carrier or an Egg
+      Morpher (egg list would be too cluttered).
+  - code_imp: Refactored the code around joining as a Facehugger to be less Egg Morpher
+      centric.
+  - balance: Rebalanced how many Facehuggers a Hive can support. Now it's based on
+      Xeno population rather than Marine population.
+  - bugfix: Fixed Acider and Hedgehog overlays persisting after their death.
+  - code_imp: Tiny refactor to Warden overlay cutting as well.
+  carlarctg:
+  - bugfix: Fix entering a ghosted xeno not removing ghostize sleep.
+  harryob:
+  - code_imp: all instances of relative pathing against our styleguide have been changed.
+  insertnamehere123:
+  - bugfix: fixed a bug where a healer drone could use healing salve on burning xenos
+  stanalbatross:
+  - refactor: changed the botany machines to tgui
+  - rscdel: removed the 5s cooldown on every action using the botany machines. Research
+      should not be limited by arbitrary long cooldowns with these.
+  - rscadd: 'added three new changelog labels: ui, mapadd, and maptweak!'
+  - ui: converted the A.C.I.D. harness to use TGUI
+2022-12-28:
+  BeagleGaming1:
+  - admin: Adds a staff flag that can toggle whether Predators can big SD while not
+      on the hunting grounds
+  Casper:
+  - bugfix: fixes TGUI runtime
+  - spellcheck: fixes tech tree start-up text
+  - bugfix: corrects signaller frequency UI
+  Huffie56:
+  - refactor: Fix indentation change four space indentation into a tabulation in .dm
+      files.
+  Morrow:
+  - bugfix: 'reverts overwatch refactor
+
+      :cl:'
+  Skegal:
+  - rscadd: Added Full Body Paint to Loadout
+  ThePiachu:
+  - bugfix: Fixed a runtime caused by fires being mid-smothering while weather changed.
+  - bugfix: Fixed a Vanguard Praetorian runtime.
+  - refactor: Refactored Vanguard shield code a bit to remove unnecesary typecasting.
+  - code_imp: Refactored the code around listing squad members for the Overwatch Console,
+      Crew Monitor and the Groundside Operations Computer.
+  carlarctg:
+  - balance: Increased amount of slots in the SU-6's belt from 6 to 7.
+  - balance: Smartpistol kit spawns with a full belt instead of two spare magazines.
+  - balance: Increased Smartpistol damage from 25 to 30, reduced armor-piercing from
+      25 to 20.
+  - imageadd: Adds an alternate PO flightsuit (and jacket) for sale in the equipment
+      vendor. Located on the dorms next to CIC.
+  fira:
+  - bugfix: Fixed Flaregun to have terrible unwielded accuracy, instead of completely
+      negative.
+  - bugfix: Scatter is not applied to ground-targeted weaponry (like Flaregun) as
+      it would cause projectiles to miss wide to max range.
+  harryob:
+  - bugfix: a couple subsystems now report their initialisation correctly.
+  stanalbatross:
+  - ui: converted the rarely used gas tanks to tgui
+2022-12-29:
+  Casper:
+  - bugfix: sling pouch is now more reliable while moving
+  - bugfix: fixed bipod slow never being removed on weapon drop
+  Lacasitospro:
+  - bugfix: Fixes webbings' side states being too bulky
+  ThePiachu:
+  - rscadd: Re-added the old objective of rescuing survivors. Now each survivor rescued
+      alive and brought to Almayer will net the USCM a good deal of points for their
+      Techweb.
+  carlarctg:
+  - bugfix: Fix bug in which xenos couldn't eat fruit below default max health
+  - rscadd: Adds a cosmetic garb slot to boonie hats and other USCM caps.
+  - code_imp: Slightly improved cmcap code.
+  - bugfix: Fixed entering APC being 0.1 seconds instead of 1 second.
+  harryob:
+  - code_imp: 515 compatibility is here
+2022-12-30:
+  Molto:
+  - bugfix: fixed the gsmes sprite overlay
+  stanalbatross:
+  - qol: converted the M46c's verbs to hud buttons. Sprites by Nauticall.
+  - qol: added a "toggle id lock" hud button to the CO smartgun
+  - bugfix: fixed the queen spawn picker tgui input list leaving you in the lobby
+      art if you let it time out. If you let this happen, if will now pick a random
+      spawn.
+  - balance: you can no longer remove bullets from HPR mags
+  - bugfix: lockers no longer paralyse you when getting out of them
+  - bugfix: berets no longer make the sounds of armour being taken off
+2022-12-31:
+  Huffie56:
+  - rscadd: Added emergency shutter and buttons to activate the alarm that where missing.
+  - rscdel: Remove some shutters between canteen and squad prep.
+  - bugfix: fixed some emergency shutters being in the wrong direction.
+  - rscadd: changed the all internal layout of PO quarter, standartize DCC/PO bunkroomsize
+      added a new bathroom.
+  Morrow:
+  - bugfix: Fixes runtime with pre-mapped decapitated heads
+  chowdermcarthor:
+  - bugfix: Walls that are indestructible will now show it in the description.
+  - bugfix: The synthetic's breaching hammer no longer allows you to attempt to destroy
+      an indestructible wall.
+  stanalbatross:
+  - bugfix: fixed a ton of instances where organs were not using the take_damage proc,
+      resulting in them not properly breaking
+  - code_imp: made a ton of eye_blind things use the procs for it
+  thwompa:
+  - maptweak: Converted vacant space in the lower-starboard hull maint area to a secret
+      hideout.

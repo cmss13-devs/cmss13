@@ -37,9 +37,9 @@
 	return 1
 
 /obj/item/device/assembly_holder/proc/attach(var/obj/item/device/D, var/obj/item/device/D2, var/mob/user)
-	if((!D)||(!D2))	return 0
-	if((!isassembly(D))||(!isassembly(D2)))	return 0
-	if((D:secured)||(D2:secured))	return 0
+	if((!D)||(!D2)) return 0
+	if((!isassembly(D))||(!isassembly(D2))) return 0
+	if((D:secured)||(D2:secured)) return 0
 	if(user)
 		user.temp_drop_inv_item(D)
 		if(D2.loc == user)
@@ -61,8 +61,8 @@
 	return 1
 
 /obj/item/device/assembly_holder/attach_special(var/obj/O, var/mob/user)
-	if(!O)	return
-	if(!O.IsSpecialAssembly())	return 0
+	if(!O) return
+	if(!O.IsSpecialAssembly()) return 0
 
 /obj/item/device/assembly_holder/update_icon()
 	overlays.Cut()
@@ -152,8 +152,8 @@
 			return
 		if(istype(a_left,a_right.type))//If they are the same type it causes issues due to window code
 			switch(alert("Which side would you like to use?",,"Left","Right"))
-				if("Left")	a_left.attack_self(user)
-				if("Right")	a_right.attack_self(user)
+				if("Left") a_left.attack_self(user)
+				if("Right") a_right.attack_self(user)
 			return
 		else
 			if(!istype(a_left,/obj/item/device/assembly/igniter))
@@ -175,7 +175,7 @@
 		qdel(src)
 
 /obj/item/device/assembly_holder/process_activation(var/obj/D, var/normal = 1, var/special = 1)
-	if(!D)	return 0
+	if(!D) return 0
 	if(!secured)
 		visible_message("[icon2html(src, hearers(src))] *beep* *beep*", "*beep* *beep*")
 	if((normal) && (a_right) && (a_left))

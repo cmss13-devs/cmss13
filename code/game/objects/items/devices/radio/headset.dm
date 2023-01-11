@@ -12,7 +12,7 @@
 
 	flags_equip_slot = SLOT_EAR
 	inherent_traits = list(TRAIT_ITEM_EAR_EXCLUSIVE)
-	var/translate_binary = FALSE
+	var/translate_apollo = FALSE
 	var/translate_hive = FALSE
 	var/maximum_keys = 3
 	var/list/initial_keys //Typepaths of objects to be created at initialisation.
@@ -78,9 +78,9 @@
 
 /obj/item/device/radio/headset/handle_message_mode(mob/living/M as mob, message, channel)
 	if (channel == RADIO_CHANNEL_SPECIAL)
-		if (translate_binary)
-			var/datum/language/binary = GLOB.all_languages[LANGUAGE_BINARY]
-			binary.broadcast(M, message)
+		if (translate_apollo)
+			var/datum/language/apollo = GLOB.all_languages[LANGUAGE_APOLLO]
+			apollo.broadcast(M, message)
 		if (translate_hive)
 			var/datum/language/hivemind = GLOB.all_languages[LANGUAGE_HIVEMIND]
 			hivemind.broadcast(M, message)
@@ -131,7 +131,7 @@
 	add_fingerprint(usr)
 
 /obj/item/device/radio/headset/attackby(obj/item/W as obj, mob/user as mob)
-//	..()
+// ..()
 	user.set_interaction(src)
 	if ( !(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER) || (istype(W, /obj/item/device/encryptionkey)) ))
 		return
@@ -176,9 +176,8 @@
 		SSradio.remove_object(src, radiochannels[ch_name])
 		secure_radio_connections[ch_name] = null
 	channels = list()
-	translate_binary = FALSE
+	translate_apollo = FALSE
 	translate_hive = FALSE
-	syndie = FALSE
 
 	tracking_options = length(inbuilt_tracking_options) ? inbuilt_tracking_options.Copy() : list()
 	for(var/i in keys)
@@ -190,12 +189,10 @@
 			channels[ch_name] = key.channels[ch_name]
 		for(var/tracking_option in key.tracking_options)
 			tracking_options[tracking_option] = key.tracking_options[tracking_option]
-		if(key.translate_binary)
-			translate_binary = TRUE
+		if(key.translate_apollo)
+			translate_apollo = TRUE
 		if(key.translate_hive)
 			translate_hive = TRUE
-		if(key.syndie)
-			syndie = TRUE
 
 	if(length(tracking_options))
 		var/list/tracking_stuff = list()
@@ -223,8 +220,8 @@
 		RegisterSignal(user, list(
 			COMSIG_LIVING_REJUVENATED,
 			COMSIG_HUMAN_REVIVED,
-		), .proc/turn_on)
-		RegisterSignal(user, COMSIG_MOB_LOGIN, .proc/add_hud_tracker)
+		), PROC_REF(turn_on))
+		RegisterSignal(user, COMSIG_MOB_LOGIN, PROC_REF(add_hud_tracker))
 		if(headset_hud_on)
 			var/datum/mob_hud/H = huds[hud_type]
 			H.add_hud_to(user)
@@ -314,7 +311,7 @@
 	icon_state = "radio"
 	item_state = "headset"
 	initial_keys = list(/obj/item/device/encryptionkey/ai_integrated)
-	var/myAi = null    // Atlantis: Reference back to the AI which has this radio.
+	var/myAi = null // Atlantis: Reference back to the AI which has this radio.
 	var/disabledAi = 0 // Atlantis: Used to manually disable AI's integrated radio via intellicard menu.
 
 /obj/item/device/radio/headset/ai_integrated/receive_range(freq, level)
@@ -730,9 +727,9 @@
 			for(var/ch_name in channels)
 				secure_radio_connections[ch_name] = SSradio.add_object(src, radiochannels[ch_name],  RADIO_CHAT)
 			recalculateChannels()
-			if(H.mind && H.hud_used && H.hud_used.locate_leader)	//make SL tracker visible
+			if(H.mind && H.hud_used && H.hud_used.locate_leader) //make SL tracker visible
 				H.hud_used.locate_leader.alpha = 255
-				H.hud_used.locate_leader.mouse_opacity = 1
+				H.hud_used.locate_leader.mouse_opacity = MOUSE_OPACITY_ICON
 
 //Distress (ERT) headsets.
 
@@ -787,10 +784,6 @@
 	initial_keys = list(/obj/item/device/encryptionkey/colony)
 	has_hud = TRUE
 	hud_type = MOB_HUD_FACTION_UPP
-
-/obj/item/device/radio/headset/distress/UPP/recalculateChannels()
-	..()
-	syndie = 1
 
 /obj/item/device/radio/headset/distress/UPP/cct
 	name = "UPP-CCT headset"

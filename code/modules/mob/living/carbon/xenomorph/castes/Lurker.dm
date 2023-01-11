@@ -58,7 +58,7 @@
 	name = "Base Lurker Behavior Delegate"
 
 	// Config
-	var/invis_recharge_time = 150      // 15 seconds to recharge invisibility.
+	var/invis_recharge_time = 150   // 15 seconds to recharge invisibility.
 	var/invis_start_time = -1 // Special value for when we're not invisible
 	var/invis_duration = 300  // so we can display how long the lurker is invisible to it
 	var/buffed_slash_damage_ratio = 1.2
@@ -119,7 +119,7 @@
 
 	// SLIGHTLY hacky because we need to maintain lots of other state on the lurker
 	// whenever invisibility is on/off CD and when it's active.
-	addtimer(CALLBACK(src, .proc/regen_invisibility), invis_recharge_time)
+	addtimer(CALLBACK(src, PROC_REF(regen_invisibility)), invis_recharge_time)
 
 	invis_start_time = -1
 

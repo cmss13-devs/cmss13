@@ -8,7 +8,7 @@
 	var/bleed_layer = 0 //snow layer
 	var/wet = 0 //whether the turf is wet (only used by floors).
 	var/supports_surgery = TRUE
-	var/scorchable = FALSE	//if TRUE set to be an icon_state which is the full sprite version of whatever gets scorched --> for border turfs like grass edges and shorelines
+	var/scorchable = FALSE //if TRUE set to be an icon_state which is the full sprite version of whatever gets scorched --> for border turfs like grass edges and shorelines
 	var/scorchedness = 0 //how scorched is this turf 0 to 3
 	var/icon_state_before_scorching //this is really dumb, blame the mappers...
 
@@ -70,13 +70,13 @@
 			overlays += I
 
 	if(scorchedness)
-		if(!icon_state_before_scorching)				//I hate you mappers, stop var editting turfs
+		if(!icon_state_before_scorching) //I hate you mappers, stop var editting turfs
 			icon_state_before_scorching = icon_state
 		var/new_icon_state = "[icon_state_before_scorching]_scorched[scorchedness]"
-		if(icon_state != new_icon_state)				//no point in updating the icon_state if it would be updated to be the same thing that it was
+		if(icon_state != new_icon_state) //no point in updating the icon_state if it would be updated to be the same thing that it was
 			icon_state = new_icon_state
-			for(var/i in GLOB.cardinals)				//but we still check so that we can update our neighbor's overlays if we do
-				var/turf/open/T = get_step(src, i)		//since otherwise they'd be stuck with overlays that were made with
+			for(var/i in GLOB.cardinals) //but we still check so that we can update our neighbor's overlays if we do
+				var/turf/open/T = get_step(src, i) //since otherwise they'd be stuck with overlays that were made with
 				T.update_icon()
 		for(var/i in GLOB.cardinals)
 			var/turf/open/T = get_step(src, i)
@@ -102,26 +102,26 @@
 	// depending on the heat_level either will singe or progressively increase the scorchedness up to level 3
 	// heat_level's logic has been written to scale with /obj/flamer_fire's burnlevel --- greenfire=15,orangefire=30,bluefire=40,whitefire=80
 
-	if(scorchedness == 3)					//already scorched to hell, no point in doing anything more
+	if(scorchedness == 3) //already scorched to hell, no point in doing anything more
 		return
 
 	switch(heat_level)
 		if(0)
 			return
 
-		if(1) 						// 1 only singes
-			if(!scorchedness)  		// we only singe that which hasnt burned
+		if(1) // 1 only singes
+			if(!scorchedness) // we only singe that which hasnt burned
 				scorchedness = 1
 
 		if(2 to 30)
-			scorchedness = Clamp(scorchedness + 1, 0, 3)	//increase scorch by 1 (not that hot of a fire)
+			scorchedness = Clamp(scorchedness + 1, 0, 3) //increase scorch by 1 (not that hot of a fire)
 
 		if(31 to 60)
-			scorchedness = Clamp(scorchedness + 2, 0, 3)	//increase scorch by 2 (hotter fire)
+			scorchedness = Clamp(scorchedness + 2, 0, 3) //increase scorch by 2 (hotter fire)
 
 		if(61 to INFINITY)
-			scorchedness = 3								//max out the scorchedness (hottest fire)
-			var/turf/open/singe_target 						//super heats singe the surrounding singeables
+			scorchedness = 3 //max out the scorchedness (hottest fire)
+			var/turf/open/singe_target //super heats singe the surrounding singeables
 			for(var/i in GLOB.cardinals)
 				singe_target = get_step(src, i)
 				if(istype(singe_target, /turf/open))
@@ -379,6 +379,7 @@
 	var/cover_icon_state = "grate"
 	var/default_name = "river"
 	var/no_overlay = FALSE
+	var/base_river_slowdown = 1.75
 	baseturfs = /turf/open/gm/river
 	supports_surgery = FALSE
 
@@ -426,7 +427,7 @@
 
 	if(!covered)
 		var/mob/living/carbon/C = AM
-		var/river_slowdown = 1.75
+		var/river_slowdown = base_river_slowdown
 
 		if(ishuman(C))
 			var/mob/living/carbon/human/H = AM
@@ -439,9 +440,9 @@
 						Y.decloak(H, TRUE)
 
 		else if(isXeno(C))
-			river_slowdown = 1.3
+			river_slowdown -= 0.7
 			if(isXenoBoiler(C))
-				river_slowdown = -0.5
+				river_slowdown -= 1
 
 		var/new_slowdown = C.next_move_slowdown + river_slowdown
 		C.next_move_slowdown = new_slowdown
@@ -488,6 +489,30 @@
 
 /turf/open/gm/river/ocean
 	color = "#dae3e2"
+	base_river_slowdown = 4 // VERY. SLOW.
+
+/turf/open/gm/river/ocean/Entered(atom/movable/AM)
+	. = ..()
+	if(prob(20)) // fuck you
+		if(!ismob(AM))
+			return
+		var/mob/unlucky_mob = AM
+		var/turf/target_turf = get_random_turf_in_range(AM.loc, 3, 0)
+		var/datum/launch_metadata/LM = new()
+		LM.target = target_turf
+		LM.range = get_dist(AM.loc, target_turf)
+		LM.speed = SPEED_FAST
+		LM.thrower = unlucky_mob
+		LM.spin = TRUE
+		LM.pass_flags = NO_FLAGS
+		to_chat(unlucky_mob, SPAN_WARNING("The ocean currents sweep you off your feet and throw you away!"))
+		unlucky_mob.launch_towards(LM)
+		return
+
+	if(world.time % 5)
+		if(ismob(AM))
+			var/mob/rivermob = AM
+			to_chat(rivermob, SPAN_WARNING("Moving through the incredibly deep ocean slows you down a lot!"))
 
 /turf/open/gm/coast
 	name = "coastline"
@@ -520,7 +545,7 @@
 	name = "empty space"
 	icon = 'icons/turf/floors/floors.dmi'
 	icon_state = "black"
-	density = 1
+	density = TRUE
 	supports_surgery = FALSE
 
 /turf/open/gm/empty/is_weedable()
@@ -581,7 +606,7 @@
 	var/bushes_spawn = 1
 	var/plants_spawn = 1
 	name = "wet grass"
-	desc = "Thick, long wet grass"
+	desc = "Thick, long, wet grass."
 	icon = 'icons/turf/floors/jungle.dmi'
 	icon_state = "grass1"
 	var/icon_spawn_state = "grass1"
@@ -743,7 +768,7 @@
 
 /turf/open/jungle/water/deep
 	plants_spawn = 0
-	density = 1
+	density = TRUE
 	icon_state = "water2"
 	icon_spawn_state = "water2"
 
@@ -778,7 +803,7 @@
 	icon_state = "plating"
 
 /turf/open/shuttle/brig // Added this floor tile so that I have a separate turf to check in the shuttle -- Polymorph
-	name = "Brig floor"        // Also added it into the 2x3 brig area of the shuttle.
+	name = "Brig floor" // Also added it into the 2x3 brig area of the shuttle.
 	icon_state = "floor4"
 
 /turf/open/shuttle/escapepod

@@ -22,10 +22,10 @@
 var/datum/controller/subsystem/entity_manager/SSentity_manager
 
 /datum/controller/subsystem/entity_manager
-	name          = "Entity Manager"
-	init_order    = SS_INIT_ENTITYMANAGER
-	init_stage    = INITSTAGE_EARLY
-	priority      = SS_PRIORITY_ENTITY
+	name   = "Entity Manager"
+	init_order = SS_INIT_ENTITYMANAGER
+	init_stage = INITSTAGE_EARLY
+	priority   = SS_PRIORITY_ENTITY
 	runlevels = RUNLEVELS_DEFAULT|RUNLEVEL_LOBBY
 	var/datum/db/adapter/adapter
 	var/list/datum/entity_meta/tables
@@ -121,7 +121,7 @@ var/datum/controller/subsystem/entity_manager/SSentity_manager
 		var/list/value = meta.unmap(item, FALSE)
 		unmap.Add(list(value))
 
-	adapter.insert_table(meta.table_name, unmap, CALLBACK(src, /datum/controller/subsystem/entity_manager.proc/after_insert, meta, to_insert))
+	adapter.insert_table(meta.table_name, unmap, CALLBACK(src, TYPE_PROC_REF(/datum/controller/subsystem/entity_manager, after_insert), meta, to_insert))
 
 /datum/controller/subsystem/entity_manager/proc/after_insert(var/datum/entity_meta/meta, var/list/datum/entity/inserted_entities, first_id)
 	var/currid = text2num("[first_id]")
@@ -148,7 +148,7 @@ var/datum/controller/subsystem/entity_manager/SSentity_manager
 		var/list/value = meta.unmap(item)
 		unmap.Add(list(value))
 
-	adapter.update_table(meta.table_name, unmap, CALLBACK(src, /datum/controller/subsystem/entity_manager.proc/after_update, meta, to_update))
+	adapter.update_table(meta.table_name, unmap, CALLBACK(src, TYPE_PROC_REF(/datum/controller/subsystem/entity_manager, after_update), meta, to_update))
 
 /datum/controller/subsystem/entity_manager/proc/after_update(var/datum/entity_meta/meta, var/list/datum/entity/updated_entities)
 	for(var/datum/entity/IE in updated_entities)
@@ -165,7 +165,7 @@ var/datum/controller/subsystem/entity_manager/SSentity_manager
 	for(var/datum/entity/item in to_delete)
 		ids += item.id
 
-	adapter.delete_table(meta.table_name, ids, CALLBACK(src, /datum/controller/subsystem/entity_manager.proc/after_delete, meta, to_delete))
+	adapter.delete_table(meta.table_name, ids, CALLBACK(src, TYPE_PROC_REF(/datum/controller/subsystem/entity_manager, after_delete), meta, to_delete))
 
 /datum/controller/subsystem/entity_manager/proc/after_delete(var/datum/entity_meta/meta, var/list/datum/entity/deleted_entities)
 	for(var/datum/entity/IE in deleted_entities)
@@ -181,7 +181,7 @@ var/datum/controller/subsystem/entity_manager/SSentity_manager
 	for(var/datum/entity/item in to_select)
 		ids += item.id
 
-	adapter.read_table(meta.table_name, ids, CALLBACK(src, /datum/controller/subsystem/entity_manager.proc/after_select, meta, to_select))
+	adapter.read_table(meta.table_name, ids, CALLBACK(src, TYPE_PROC_REF(/datum/controller/subsystem/entity_manager, after_select), meta, to_select))
 
 /datum/controller/subsystem/entity_manager/proc/after_select(var/datum/entity_meta/meta, var/list/datum/entity/selected_entities, uqid, var/list/results)
 	for(var/list/IE in results)
@@ -207,7 +207,7 @@ var/datum/controller/subsystem/entity_manager/SSentity_manager
 	if(meta.hints & DB_TABLEHINT_LOCAL)
 		after_filter(filter, meta, CB, null, meta.filter_assoc_list(meta.managed, filter))
 		return
-	adapter.read_filter(meta.table_name, filter, CALLBACK(src, /datum/controller/subsystem/entity_manager.proc/after_filter, filter, meta, CB), sync)
+	adapter.read_filter(meta.table_name, filter, CALLBACK(src, TYPE_PROC_REF(/datum/controller/subsystem/entity_manager, after_filter), filter, meta, CB), sync)
 
 /datum/controller/subsystem/entity_manager/proc/after_filter(var/datum/db/filter, var/datum/entity_meta/meta, var/datum/callback/CB, quid, var/list/results)
 	var/list/datum/entity/resultset
@@ -255,7 +255,7 @@ var/datum/controller/subsystem/entity_manager/SSentity_manager
 	var/datum/entity/ET = meta.make_new_by_key(key)
 	if(!ET.__key_synced)
 		ET.__key_synced = TRUE
-		adapter.read_filter(meta.table_name, DB_COMP(meta.key_field, DB_EQUALS, key), CALLBACK(src, /datum/controller/subsystem/entity_manager.proc/after_select_by_key, ET, meta))
+		adapter.read_filter(meta.table_name, DB_COMP(meta.key_field, DB_EQUALS, key), CALLBACK(src, TYPE_PROC_REF(/datum/controller/subsystem/entity_manager, after_select_by_key), ET, meta))
 	return ET
 
 /datum/controller/subsystem/entity_manager/proc/after_select_by_key(var/datum/entity/ET, var/datum/entity_meta/meta, quid, var/list/results)
@@ -281,7 +281,7 @@ var/datum/controller/subsystem/entity_manager/SSentity_manager
 	if(!meta)
 		return null
 	var/list/result = list()
-	adapter.read_view(meta, filter, CALLBACK(src, /datum/controller/subsystem/entity_manager.proc/after_view, meta, result), TRUE)
+	adapter.read_view(meta, filter, CALLBACK(src, TYPE_PROC_REF(/datum/controller/subsystem/entity_manager, after_view), meta, result), TRUE)
 	return result
 
 /datum/controller/subsystem/entity_manager/proc/after_view(var/datum/entity_view_meta/meta, var/list/to_write, quid, var/list/results)

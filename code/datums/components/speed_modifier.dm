@@ -1,5 +1,5 @@
-#define MAX_ALPHA 					35
-#define GLOW_COLOR 					"#7a0000"
+#define MAX_ALPHA 35
+#define GLOW_COLOR "#7a0000"
 
 //Adjusts the speed of a xenomorph the component is on. Humans will take or heal stamina damage.
 
@@ -52,8 +52,8 @@
 
 /datum/component/speed_modifier/RegisterWithParent()
 	START_PROCESSING(SSdcs, src)
-	RegisterSignal(parent, COMSIG_XENO_MOVEMENT_DELAY, .proc/apply_speed_modifier)
-	RegisterSignal(parent, COMSIG_XENO_APPEND_TO_STAT, .proc/stat_append)
+	RegisterSignal(parent, COMSIG_XENO_MOVEMENT_DELAY, PROC_REF(apply_speed_modifier))
+	RegisterSignal(parent, COMSIG_XENO_APPEND_TO_STAT, PROC_REF(stat_append))
 
 /datum/component/speed_modifier/UnregisterFromParent()
 	STOP_PROCESSING(SSdcs, src)

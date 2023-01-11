@@ -41,8 +41,8 @@
 		if(T == loc)
 			prev_T = T
 			continue
-		if(!ammo.current_rounds) 	break
-		if(distance >= max_range) 	break
+		if(!ammo.current_rounds) break
+		if(distance >= max_range) break
 		if(prev_T && LinkBlocked(prev_T, T))
 			break
 		ammo.current_rounds--

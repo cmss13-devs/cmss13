@@ -1,0 +1,9 @@
+author: "carlarctg"
+delete-after: True
+changes:
+  - bugfix: "Fixed the bug in which neurotoxin spits did not cause a red damage flicker on the target (It happened because it technically deals no damage.)"
+  - code_imp: "Added a new variable, hit_effect_color, that governs on if the ammo/projectile will, if not null, create a damage overlay on hit."
+  - rscadd: "Implemented support for differently-colored hit overlays. Tasers have a yellow overlay, stunning plasma bolts have a blue one, and the admin monkey gun has a brown one. Everything else stays red."
+  - qol: "When a marine is hit by acid blood spray, a sizzling sound will play, alongside the blood visually splattering on them and causing a red hit overlay."
+  - rscadd: "Flamethrowers will cause a flame-colored hit overlay to appear on the target if they've been directly ignited by it."
+  - rscadd: "Shielded Xenomorphs will override hit colors and flicker yellow instead."

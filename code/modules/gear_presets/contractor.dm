@@ -109,6 +109,7 @@
 	name = "Military Contractor (Standard)"
 	paygrade = "VAI"
 	role_comm_title = "Merc"
+	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = "VAIPO Mercenary"
 	rank = JOB_CONTRACTOR_ST
 	skills = /datum/skills/contractor
@@ -195,6 +196,7 @@
 	name = "Military Contractor (Machinegunner)"
 	paygrade = "VAI-G"
 	role_comm_title = "MG"
+	flags = EQUIPMENT_PRESET_EXTRA
 
 	assignment = "VAIPO Automatic Rifleman"
 	rank = JOB_CONTRACTOR_MG
@@ -240,6 +242,7 @@
 	paygrade = "VAI-E"
 
 	role_comm_title = "Eng"
+	flags = EQUIPMENT_PRESET_EXTRA
 
 	assignment = "VAIPO Engineering Specialist"
 	rank = JOB_CONTRACTOR_ENGI
@@ -285,6 +288,7 @@
 	name = "Military Contractor (Medic)"
 	paygrade = "VAI-M"
 	role_comm_title = "Med"
+	flags = EQUIPMENT_PRESET_EXTRA
 
 	assignment = "VAIMS Medical Specialist"
 	rank = JOB_CONTRACTOR_MEDIC
@@ -330,6 +334,7 @@
 	name = "Military Contractor (Leader)"
 	paygrade = "VAI-L"
 	role_comm_title = "TL"
+	flags = EQUIPMENT_PRESET_EXTRA
 
 	assignment = "VAIPO Team Leader"
 	rank = JOB_CONTRACTOR_TL
@@ -379,6 +384,7 @@
 	name = "Military Contractor (Synthetic)"
 	paygrade = "VAI-S"
 	role_comm_title = "Syn"
+	flags = EQUIPMENT_PRESET_EXTRA
 
 	assignment = "VAIPO Support Synthetic"
 	rank = JOB_CONTRACTOR_SYN
@@ -450,7 +456,7 @@
 	//limbs
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/veteran/PMC/knife, WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran, WEAR_HANDS)
-	H.equip_to_slot_or_del(new /obj/item/weapon/melee/twohanded/breacher, WEAR_L_HAND)
+	H.equip_to_slot_or_del(new /obj/item/weapon/melee/twohanded/breacher/synth, WEAR_L_HAND)
 	//póckets
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/construction/full_barbed_wire, WEAR_L_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/tactical, WEAR_R_STORE)
@@ -469,6 +475,7 @@
 	name = "Military Contractor (Covert Standard)"
 	paygrade = "VAI"
 	role_comm_title = "Merc"
+	flags = EQUIPMENT_PRESET_EXTRA
 
 	assignment = "VAISO Mercenary"
 	rank = JOB_CONTRACTOR_COVST
@@ -557,6 +564,7 @@
 	name = "Military Contractor (Covert Machinegunner)"
 	paygrade = "VAI-G"
 	role_comm_title = "MG"
+	flags = EQUIPMENT_PRESET_EXTRA
 
 	assignment = "VAISO Automatic Rifleman"
 	rank = JOB_CONTRACTOR_COVMG
@@ -609,6 +617,7 @@
 	paygrade = "VAI-E"
 
 	role_comm_title = "Eng"
+	flags = EQUIPMENT_PRESET_EXTRA
 
 	assignment = "VAISO Engineering Specialist"
 	rank = JOB_CONTRACTOR_COVENG
@@ -660,6 +669,7 @@
 	name = "Military Contractor (Covert Medic)"
 	paygrade = "VAI-M"
 	role_comm_title = "Med"
+	flags = EQUIPMENT_PRESET_EXTRA
 
 	assignment = "VAIMS Medical Specialist"
 	rank = JOB_CONTRACTOR_COVMED
@@ -711,6 +721,7 @@
 	name = "Military Contractor (Covert Leader)"
 	paygrade = "VAI-L"
 	role_comm_title = "TL"
+	flags = EQUIPMENT_PRESET_EXTRA
 
 	assignment = "VAISO Team Leader"
 	rank = JOB_CONTRACTOR_COVTL
@@ -761,6 +772,7 @@
 	name = "Military Contractor (Covert Synthetic)"
 	paygrade = "VAI-S"
 	role_comm_title = "Syn"
+	flags = EQUIPMENT_PRESET_EXTRA
 
 	assignment = "VAISO Support Synthetic"
 	rank = JOB_CONTRACTOR_COVSYN
@@ -835,7 +847,7 @@
 	//limbs
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/veteran/PMC/knife, WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran, WEAR_HANDS)
-	H.equip_to_slot_or_del(new /obj/item/weapon/melee/twohanded/breacher, WEAR_L_HAND)
+	H.equip_to_slot_or_del(new /obj/item/weapon/melee/twohanded/breacher/synth, WEAR_L_HAND)
 	//póckets
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/construction/full_barbed_wire, WEAR_L_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/tactical, WEAR_R_STORE)

@@ -144,7 +144,7 @@
 ///For digging shrapnel out of OTHER people, not yourself. Triggered by human/attackby() so target is definitely human. User might not be.
 /obj/item/proc/dig_out_shrapnel_check(mob/living/carbon/human/target, mob/living/carbon/human/user)
 	if(user.a_intent == INTENT_HELP && (target == user || skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))) //Squad medics and above, or yourself
-		INVOKE_ASYNC(src, /obj/item.proc/dig_out_shrapnel, target, user)
+		INVOKE_ASYNC(src, TYPE_PROC_REF(/obj/item, dig_out_shrapnel), target, user)
 		return TRUE
 	return FALSE
 
@@ -202,9 +202,9 @@
 
 		if(!embedded_human.stat && embedded_human.pain.feels_pain && embedded_human.pain.reduction_pain < PAIN_REDUCTION_HEAVY)
 			if(prob(25))
-				INVOKE_ASYNC(embedded_human, /mob.proc/emote, "pain")
+				INVOKE_ASYNC(embedded_human, TYPE_PROC_REF(/mob, emote), "pain")
 			else
-				INVOKE_ASYNC(embedded_human, /mob.proc/emote, "me", 1, pick("winces.", "grimaces.", "flinches."))
+				INVOKE_ASYNC(embedded_human, TYPE_PROC_REF(/mob, emote), "me", 1, pick("winces.", "grimaces.", "flinches."))
 
 	else
 		to_chat(user, SPAN_NOTICE("You couldn't find any shrapnel."))

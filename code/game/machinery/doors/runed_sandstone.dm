@@ -22,7 +22,7 @@
 		return FALSE
 
 /obj/structure/machinery/door/airlock/sandstone/runed/attackby(obj/item/W as obj, mob/user as mob)
-//	..()
+// ..()
 	user.set_interaction(src)
 	if (!istype(W, /obj/item/weapon/wristblades || !isYautja(user)))
 		return
@@ -63,22 +63,22 @@
 //ASYNC procs (Probably ok to get rid of)
 /obj/structure/machinery/door/airlock/sandstone/runed/proc/open_door()
 	if(src.density)
-		INVOKE_ASYNC(src, .proc/open)
+		INVOKE_ASYNC(src, PROC_REF(open))
 	return TRUE
 
 /obj/structure/machinery/door/airlock/sandstone/runed/proc/close_door()
 	if(!src.density)
-		INVOKE_ASYNC(src, .proc/close)
+		INVOKE_ASYNC(src, PROC_REF(close))
 	return TRUE
 
 /obj/structure/machinery/door/airlock/sandstone/runed/proc/lock_door()
 	if(!src.locked)
-		INVOKE_ASYNC(src, .proc/lock)
+		INVOKE_ASYNC(src, PROC_REF(lock))
 	return TRUE
 
 /obj/structure/machinery/door/airlock/sandstone/runed/proc/unlock_door()
 	if(src.locked)
-		INVOKE_ASYNC(src, .proc/unlock)
+		INVOKE_ASYNC(src, PROC_REF(unlock))
 	return TRUE
 
 /// Stops the door being interacted with, without wristblades.

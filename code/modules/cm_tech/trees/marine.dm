@@ -18,7 +18,7 @@ GLOBAL_LIST_EMPTY(marine_leaders)
 
 /datum/techtree/marine/New()
 	. = ..()
-	RegisterSignal(SSdcs, COMSIG_GLOB_POST_SETUP, .proc/setup_leader)
+	RegisterSignal(SSdcs, COMSIG_GLOB_POST_SETUP, PROC_REF(setup_leader))
 
 /datum/techtree/marine/proc/setup_leader(datum/source)
 	SIGNAL_HANDLER
@@ -54,8 +54,8 @@ GLOBAL_LIST_EMPTY(marine_leaders)
 		return
 	remove_leader()
 
-	RegisterSignal(H, COMSIG_MOVABLE_MOVED, .proc/handle_zlevel_check)
-	RegisterSignal(H, COMSIG_MOB_DEATH, .proc/handle_death)
+	RegisterSignal(H, COMSIG_MOVABLE_MOVED, PROC_REF(handle_zlevel_check))
+	RegisterSignal(H, COMSIG_MOB_DEATH, PROC_REF(handle_death))
 
 	leader = H
 
@@ -71,8 +71,8 @@ GLOBAL_LIST_EMPTY(marine_leaders)
 /datum/techtree/marine/proc/handle_death(var/mob/living/carbon/human/H)
 	SIGNAL_HANDLER
 	if((H.job in job_cannot_be_overriden) && (!dead_leader || !dead_leader.check_tod()))
-		RegisterSignal(H, COMSIG_PARENT_QDELETING, .proc/cleanup_dead_leader)
-		RegisterSignal(H, COMSIG_HUMAN_REVIVED, .proc/readd_leader)
+		RegisterSignal(H, COMSIG_PARENT_QDELETING, PROC_REF(cleanup_dead_leader))
+		RegisterSignal(H, COMSIG_HUMAN_REVIVED, PROC_REF(readd_leader))
 		dead_leader = H
 	remove_leader()
 

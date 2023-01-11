@@ -156,14 +156,36 @@
 	return ..()
 
 /datum/equipment_preset/synth/survivor/medical_synth
-	name = "Survivor - Synthetic - Medical Synth"
+	name = "Survivor - Synthetic - Nurse Synth"
 	equipment_to_spawn = list(
-		WEAR_HEAD = /obj/item/clothing/head/nursehat,
+		WEAR_R_EAR = /obj/item/device/flashlight/pen,
 		WEAR_FACE = /obj/item/clothing/mask/surgical,
 		WEAR_EYES = /obj/item/clothing/glasses/hud/health,
 		WEAR_BODY = /obj/item/clothing/under/rank/medical,
 		WEAR_BACK = /obj/item/storage/backpack/satchel/med,
+		WEAR_IN_BACK = /obj/item/device/healthanalyzer
 		WEAR_JACKET = /obj/item/clothing/suit/storage/labcoat/cmo,
+		WEAR_WAIST = /obj/item/storage/belt/medical/lifesaver/full,
+		WEAR_HANDS = /obj/item/clothing/gloves/latex,
+		WEAR_R_STORE = /obj/item/storage/pouch/tools/full,
+		WEAR_FEET = /obj/item/clothing/shoes/marine/knife
+	)
+
+	survivor_variant = MEDICAL_SURVIVOR
+
+/datum/equipment_preset/synth/survivor/emt_synth
+	name = "Survivor - Synthetic - EMT Synth"
+	equipment_to_spawn = list(
+		WEAR_R_EAR = /obj/item/device/flashlight/pen,
+		WEAR_FACE = /obj/item/clothing/mask/surgical,
+		WEAR_EYES = /obj/item/clothing/glasses/hud/health,
+		WEAR_BODY = /obj/item/clothing/under/rank/medical,
+		WEAR_BACK = /obj/item/storage/backpack/satchel/med,
+		WEAR_IN_BACK = /obj/item/storage/firstaid/adv,
+		WEAR_IN_BACK = /obj/item/device/healthanalyzer,
+		WEAR_IN_BACK = /obj/item/roller,
+		WEAR_IN_BACK = /obj/item/tool/extinguisher/mini,
+		WEAR_JACKET = /obj/item/clothing/suit/storage/hazardvest/black,
 		WEAR_WAIST = /obj/item/storage/belt/medical/lifesaver/full,
 		WEAR_HANDS = /obj/item/clothing/gloves/latex,
 		WEAR_R_STORE = /obj/item/storage/pouch/tools/full,
@@ -202,41 +224,13 @@
 		WEAR_IN_BACK = /obj/item/weapon/gun/smg/nailgun/compact,
 		WEAR_IN_BACK = /obj/item/ammo_magazine/smg/nailgun,
 		WEAR_IN_BACK = /obj/item/ammo_magazine/smg/nailgun,
-		WEAR_JACKET = /obj/item/clothing/suit/storage/hazardvest,
+		WEAR_JACKET = /obj/item/clothing/suit/storage/hazardvest/yellow,
 		WEAR_WAIST = /obj/item/storage/belt/utility/full,
 		WEAR_R_STORE = /obj/item/storage/pouch/tools/full,
 		WEAR_FEET = /obj/item/clothing/shoes/marine/knife
 	)
 
 	survivor_variant = ENGINEERING_SURVIVOR
-
-/datum/equipment_preset/synth/survivor/security_synth
-	name = "Survivor - Synthetic - Security Synth"
-	equipment_to_spawn = list(
-		WEAR_HEAD = /obj/item/clothing/head/soft/sec,
-		WEAR_EYES = /obj/item/clothing/glasses/sunglasses/sechud,
-		WEAR_BODY = /obj/item/clothing/under/rank/security2,
-		WEAR_BACK = /obj/item/storage/backpack/satchel/sec,
-		WEAR_IN_BACK = /obj/item/weapon/melee/telebaton,
-		WEAR_WAIST = /obj/item/storage/belt/security/MP/full,
-		WEAR_HANDS = /obj/item/clothing/gloves/black,
-		WEAR_R_STORE = /obj/item/storage/pouch/tools/full,
-		WEAR_FEET = /obj/item/clothing/shoes/marine/knife
-	)
-
-	survivor_variant = SECURITY_SURVIVOR
-
-/datum/equipment_preset/synth/survivor/corporate_synth
-	name = "Survivor - Synthetic - Corporate Synth"
-	equipment_to_spawn = list(
-		WEAR_BODY = /obj/item/clothing/under/suit_jacket/trainee,
-		WEAR_BACK = /obj/item/storage/backpack/satchel/lockable,
-		WEAR_WAIST = /obj/item/storage/belt/utility/full,
-		WEAR_HANDS = /obj/item/clothing/gloves/botanic_leather,
-		WEAR_FEET = /obj/item/clothing/shoes/dress
-	)
-
-	survivor_variant = CORPORATE_SURVIVOR
 
 /datum/equipment_preset/synth/survivor/corporate_synth/load_gear(mob/living/carbon/human/H)
 	..()
@@ -268,8 +262,8 @@
 		WEAR_EYES = /obj/item/clothing/glasses/mgoggles,
 		WEAR_BODY = /obj/item/clothing/under/rank/chef,
 		WEAR_BACK = /obj/item/storage/backpack/satchel/vir,
-		WEAR_IN_BACK = /obj/item/book/manual/chef_recipes,
-		WEAR_IN_BACK = /obj/item/pizzabox,
+		WEAR_IN_BACK = /obj/item/reagent_container/food/snacks/sliceable/lemoncake,
+		WEAR_IN_BACK = /obj/item/pizzabox/margherita,
 		WEAR_IN_BACK = /obj/item/reagent_container/spray/cleaner,
 		WEAR_JACKET = /obj/item/clothing/suit/chef,
 		WEAR_HANDS = /obj/item/clothing/gloves/latex,
@@ -313,8 +307,79 @@
 
 	survivor_variant = SECURITY_SURVIVOR
 
+/datum/equipment_preset/synth/survivor/cmb_synth
+    name = "Survivor - Synthetic - CMB Synth"
+    equipment_to_spawn = list(
+        WEAR_HEAD = /obj/item/clothing/head/beret/centcom/officer,
+        WEAR_L_EAR = /obj/item/device/radio/headset/distress/CMB,
+        WEAR_EYES = /obj/item/clothing/glasses/sunglasses/sechud,
+        WEAR_BODY = /obj/item/clothing/under/CM_uniform,
+        WEAR_BACK = /obj/item/storage/backpack/satchel/sec,
+        WEAR_IN_BACK = /obj/item/device/taperecorder,
+        WEAR_IN_BACK = /obj/item/device/camera,
+        WEAR_JACKET = /obj/item/clothing/suit/storage/CMB,
+        WEAR_IN_JACKET = /obj/item/weapon/melee/telebaton,
+        WEAR_WAIST = /obj/item/storage/belt/security/MP/CMB/synth,
+        WEAR_HANDS = /obj/item/clothing/gloves/marine/veteran,
+        WEAR_R_STORE = /obj/item/storage/pouch/tools/full,
+        WEAR_FEET = /obj/item/clothing/shoes/marine/knife
+    )
+
+    survivor_variant = SECURITY_SURVIVOR
+
+/datum/equipment_preset/synth/survivor/security_synth
+	name = "Survivor - Synthetic - Colony Security Synth"
+	equipment_to_spawn = list(
+		WEAR_HEAD = /obj/item/clothing/head/soft/sec/corp,
+		WEAR_EYES = /obj/item/clothing/glasses/sunglasses/sechud,
+		WEAR_BODY = /obj/item/clothing/under/rank/security2,
+		WEAR_BACK = /obj/item/storage/backpack/satchel/sec,
+		WEAR_IN_BACK = /obj/item/weapon/melee/telebaton,
+		WEAR_WAIST = /obj/item/storage/belt/security/MP/full,
+		WEAR_HANDS = /obj/item/clothing/gloves/black,
+		WEAR_R_STORE = /obj/item/storage/pouch/tools/full,
+		WEAR_FEET = /obj/item/clothing/shoes/marine/knife
+	)
+
+	survivor_variant = SECURITY_SURVIVOR
+
+/datum/equipment_preset/synth/survivor/protection_synth
+   name = "Survivor - Synthetic - Corporate Protection Synth"
+    equipment_to_spawn = list(
+        WEAR_HEAD = /obj/item/clothing/head/helmet/marine/veteran/PMC,
+        WEAR_L_EAR = /obj/item/device/radio/headset/distress/PMC
+        WEAR_EYES = /obj/item/clothing/glasses/sunglasses/sechud,
+        WEAR_BODY = /obj/item/clothing/under/marine/veteran/PMC,
+        WEAR_ACCESSORY = /obj/item/clothing/accessory/storage/droppouch,
+        WEAR_BACK = /obj/item/storage/backpack/lightpack,
+        WEAR_JACKET = /obj/item/clothing/suit/storage/webbing,
+        WEAR_IN_JACKET = /obj/item/weapon/melee/telebaton,
+        WEAR_IN_JACKET = /obj/item/device/binoculars,
+        WEAR_HANDS = /obj/item/clothing/gloves/marine/veteran/PMC,
+        WEAR_FEET = /obj/item/clothing/shoes/veteran/PMC/knife
+    )
+
+    survivor_variant = SECURITY_SURVIVOR
+
+/datum/equipment_preset/synth/survivor/corporate_synth
+	name = "Survivor - Synthetic - Corporate Clerical Synth"
+	equipment_to_spawn = list(
+		WEAR_BODY = /obj/item/clothing/under/suit_jacket/trainee,
+		WEAR_BACK = /obj/item/storage/backpack/satchel/lockable,
+		WEAR_IN_BACK = /obj/item/paper,
+		WEAR_IN_BACK = /obj/item/paper,
+		WEAR_IN_BACK = /obj/item/paper/research_notes/good,
+		WEAR_IN_BACK = /obj/item/tool/pen/clicky,
+		WEAR_IN_BACK = /obj/item/device/taperecorder,
+		WEAR_WAIST = /obj/item/storage/belt/utility/full,
+		WEAR_HANDS = /obj/item/clothing/gloves/botanic_leather,
+		WEAR_FEET = /obj/item/clothing/shoes/dress
+	)
+
+	survivor_variant = CORPORATE_SURVIVOR
+
 /datum/equipment_preset/synth/survivor/radiation_synth
-	name = "Survivor - Synthetic - Radiation Synth"
+	name = "Survivor - Synthetic - Biohazard Synth"
 	equipment_to_spawn = list(
 		WEAR_HEAD = /obj/item/clothing/head/bio_hood,
 		WEAR_BODY = /obj/item/clothing/under/rank/scientist,
@@ -350,7 +415,7 @@
 
 /datum/equipment_preset/synth/working_joe/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/synthetic/joe(H), WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine(H), WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/satchel(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/storage/belt/utility/full(H), WEAR_WAIST)
 	//New equipment added as of 5-20-22

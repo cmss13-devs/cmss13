@@ -12,8 +12,7 @@
 #define LANGUAGE_XENOMORPH "Xenomorph"
 #define LANGUAGE_HIVEMIND "Hivemind"
 
-#define LANGUAGE_BINARY "Robot Talk"
-#define LANGUAGE_DRONE "Drone Talk"
+#define LANGUAGE_APOLLO "Apollo Link"
 
 #define LANGUAGE_TELEPATH "Telepath Implant"
 

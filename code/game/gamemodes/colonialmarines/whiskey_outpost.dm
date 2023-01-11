@@ -451,7 +451,7 @@
 
 	name = "Recycler"
 	desc = "Instructions: Place objects you want to destroy on top of it and use the machine. Use with care"
-	density = 0
+	density = FALSE
 	anchored = 1
 	unslashable = TRUE
 	unacidable = TRUE

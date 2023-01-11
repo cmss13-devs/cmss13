@@ -134,7 +134,7 @@ For the other part of the code, check silicon say.dm. Particularly robot talk.*/
 /obj/structure/machinery/hologram/holopad/proc/create_holo(mob/living/silicon/ai/A, turf/T = loc)
 	hologram = new(T)//Spawn a blank effect at the location.
 	hologram.icon = A.holo_icon
-	hologram.mouse_opacity = 0//So you can't click on it.
+	hologram.mouse_opacity = MOUSE_OPACITY_TRANSPARENT//So you can't click on it.
 	hologram.layer = FLY_LAYER//Above all the other objects/mobs. Or the vast majority of them.
 	hologram.anchored = 1//So space wind cannot drag it.
 	hologram.name = "[A.name] (Hologram)"//If someone decides to right click.

@@ -11,8 +11,8 @@
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "smoke"
 	anchored = 1
-	density = 1
-	//opacity = 1
+	density = TRUE
+	//opacity = TRUE
 	unslashable = TRUE
 	unacidable = TRUE
 
@@ -66,11 +66,11 @@ var/global/east_riverstart = 0
 
 /obj/effect/blocker/toxic_water
 	anchored = 1
-	density = 0
-	opacity = 0
+	density = FALSE
+	opacity = FALSE
 	unacidable = TRUE
 	layer = ABOVE_FLY_LAYER //to make it visible in the map editor
-	mouse_opacity = 0
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	icon = 'icons/old_stuff/mark.dmi'
 
 	var/dispersing = 0
@@ -254,7 +254,7 @@ var/global/east_riverstart = 0
 	icon = 'icons/old_stuff/mark.dmi'
 	icon_state = "spawn_shuttle_move"
 	layer = ABOVE_FLY_LAYER - 0.1 //to make it visible in the map editor
-	mouse_opacity = 0
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	var/id = null
 
 /obj/structure/machinery/dispersal_initiator/New()

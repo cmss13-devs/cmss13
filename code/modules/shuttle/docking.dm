@@ -102,6 +102,7 @@
 // check_poddoors()
 	old_dock?.on_departure(src)
 	new_dock.last_dock_time = world.time
+	new_dock.on_arrival(src)
 	setDir(new_dock.dir)
 
 	// remove any stragglers just in case, and clear the list

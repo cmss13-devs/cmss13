@@ -251,7 +251,7 @@
 	else
 		clear_fullscreen("blind")
 
-	if(interactee)
+	if(interactee && isatom(interactee))
 		interactee.check_eye(src)
 	else if(client && !client.adminobs)
 		reset_view(null)

@@ -4,7 +4,7 @@
 	desc = "Mirror mirror on the wall, who's the most robust of them all?"
 	icon = 'icons/obj/structures/props/watercloset.dmi'
 	icon_state = "mirror"
-	density = 0
+	density = FALSE
 	anchored = 1
 	var/shattered = 0
 

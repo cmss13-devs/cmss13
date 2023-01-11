@@ -10,7 +10,7 @@
 	gender = NEUTER
 	braintype = "Robot"
 	lawupdate = 0
-	density = 1
+	density = TRUE
 	req_access = list(ACCESS_MARINE_ENGINEERING, ACCESS_MARINE_RESEARCH)
 	integrated_light_power = 2
 	local_transmit = 1
@@ -37,7 +37,6 @@
 
 
 	add_verb(src, /mob/living/proc/hide)
-	add_language(LANGUAGE_DRONE, 1)
 
 	if(camera && ("Robots" in camera.network))
 		camera.network.Add("Engineering")

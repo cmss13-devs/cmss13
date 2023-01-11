@@ -583,7 +583,7 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 	unslashable = TRUE
 	unacidable = TRUE
 	exproof = 1
-	density = 0
+	density = FALSE
 	req_access = null
 
 /obj/structure/machinery/computer/shuttle_control/ice_colony/proc/animate_on()
@@ -617,7 +617,7 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 	unslashable = TRUE
 	unacidable = TRUE
 	exproof = 1
-	density = 0
+	density = FALSE
 	req_access = null
 
 /obj/structure/machinery/computer/shuttle_control/trijent/proc/animate_on()

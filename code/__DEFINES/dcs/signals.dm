@@ -137,6 +137,8 @@
 #define COMSIG_MOB_RESISTED "mob_resist"
 /// From /mob/living/verb/resist()
 #define COMSIG_MOB_RECALCULATE_CLIENT_COLOR "mob_recalc_client_color"
+///from /mob/living/carbon/human/proc/force_say(): ()
+#define COMSIG_HUMAN_FORCESAY "human_forcesay"
 
 /// From /obj/item/proc/unequipped()
 #define COMSIG_MOB_ITEM_UNEQUIPPED "mob_item_unequipped"
@@ -467,6 +469,8 @@
 #define COMSIG_SHUTTLE_SETMODE "shuttle_setmode"
 /// shuttle crushing something
 #define COMSIG_MOVABLE_SHUTTLE_CRUSH "movable_shuttle_crush"
+/// shuttle door registration
+#define COMSIG_REGISTER_DOOR_TO_SHUTTLE "register_door_to_shuttle"
 
 ///from base of /atom/movable/proc/set_glide_size(): (target)
 #define COMSIG_MOVABLE_UPDATE_GLIDE_SIZE "movable_glide_size"

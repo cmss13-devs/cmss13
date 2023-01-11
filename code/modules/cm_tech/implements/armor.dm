@@ -122,7 +122,7 @@
 
 	if(damage_to_nullify)
 		playsound(user, armor_hitsound, 25, TRUE)
-		P.play_damage_effect(user)
+		P.play_hit_effect(user)
 		return COMPONENT_CANCEL_BULLET_ACT
 
 /obj/item/clothing/accessory/health/proc/take_slash_damage(mob/living/user, list/slashdata)

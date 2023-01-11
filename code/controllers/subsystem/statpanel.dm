@@ -66,6 +66,12 @@ SUBSYSTEM_DEF(statpanels)
 			if(target.stat_tab == "Tickets" && num_fires % default_wait == 0)
 				set_tickets_tab(target)
 
+			if(!length(GLOB.sdql2_queries) && ("SDQL2" in target.panel_tabs))
+				target.stat_panel.send_message("remove_sdql2")
+
+			else if(length(GLOB.sdql2_queries) && (target.stat_tab == "SDQL2" || !("SDQL2" in target.panel_tabs)) && (num_fires % default_wait == 0))
+				set_SDQL2_tab(target)
+
 		if(target.mob)
 			var/mob/target_mob = target.mob
 
@@ -201,6 +207,17 @@ SUBSYSTEM_DEF(statpanels)
 	for(var/datum/controller/subsystem/sub_system as anything in Master.subsystems)
 		mc_data[++mc_data.len] = list("\[[sub_system.state_letter()]][sub_system.name]", sub_system.stat_entry(), text_ref(sub_system))
 
+/// Sets the current tab to the SDQL tab
+/datum/controller/subsystem/statpanels/proc/set_SDQL2_tab(client/target)
+	var/list/sdql2_initial = list()
+	//sdql2_initial[length(sdql2_initial)++] = list("", "Access Global SDQL2 List", REF(GLOB.sdql2_vv_statobj))
+	var/list/sdql2_querydata = list()
+	//for(var/datum/sdql2_query/query as anything in GLOB.sdql2_queries)
+		//sdql2_querydata = query.generate_stat()
+
+	sdql2_initial += sdql2_querydata
+	target.stat_panel.send_message("update_sdql2", sdql2_initial)
+
 ///immediately update the active statpanel tab of the target client
 /datum/controller/subsystem/statpanels/proc/immediate_send_stat_data(client/target)
 	if(!target.stat_panel.is_ready())
@@ -248,6 +265,11 @@ SUBSYSTEM_DEF(statpanels)
 		set_tickets_tab(target)
 		return TRUE
 
+	if(!length(GLOB.sdql2_queries) && ("SDQL2" in target.panel_tabs))
+		target.stat_panel.send_message("remove_sdql2")
+
+	else if(length(GLOB.sdql2_queries) && target.stat_tab == "SDQL2")
+		set_SDQL2_tab(target)
 
 /// Stat panel window declaration
 /client/var/datum/tgui_window/stat_panel

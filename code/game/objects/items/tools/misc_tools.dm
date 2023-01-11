@@ -20,7 +20,8 @@
 	item_state = "flight"
 	var/label = null
 	var/labels_left = 50
-	var/mode = 0 //off or on.
+	/// off or on.
+	var/mode = 0
 	var/label_sound = 'sound/items/component_pickup.ogg'
 	var/remove_label_sound = 'sound/items/paper_ripped.ogg'
 
@@ -159,7 +160,8 @@
 	throw_range = 15
 	matter = list("metal" = 10)
 	inherent_traits = list(TRAIT_TOOL_PEN)
-	var/pen_colour = "black" //what colour the ink is!
+	/// what colour the ink is!
+	var/pen_colour = "black"
 	var/on = TRUE
 	var/clicky = FALSE
 
@@ -298,8 +300,10 @@
 
 /obj/item/tool/pen/sleepypen/Initialize()
 	. = ..()
-	create_reagents(30) //Used to be 300
-	reagents.add_reagent("chloralhydrate", 22) //Used to be 100 sleep toxin//30 Chloral seems to be fatal, reducing it to 22./N
+	/// Used to be 300
+	create_reagents(30)
+	/// Used to be 100 sleep toxin//30 Chloral seems to be fatal, reducing it to 22./N
+	reagents.add_reagent("chloralhydrate", 22)
 
 
 /obj/item/tool/pen/sleepypen/attack(mob/M as mob, mob/user as mob)
@@ -307,7 +311,8 @@
 		return
 	..()
 	if(reagents.total_volume)
-		if(M.reagents) reagents.trans_to(M, 50) //used to be 150
+		/// used to be 150
+		if(M.reagents) reagents.trans_to(M, 50)
 	return
 
 

@@ -90,7 +90,8 @@
 				if(H.job)
 					role = H.job
 				else if(istype(H.wear_id, /obj/item/card/id)) //decapitated marine is mindless,
-					var/obj/item/card/id/ID = H.wear_id //we use their ID to get their role.
+					/// we use their ID to get their role.
+					var/obj/item/card/id/ID = H.wear_id
 					if(ID.rank)
 						role = ID.rank
 
@@ -129,7 +130,7 @@
 	return dat
 
 /obj/item/clothing/suit/auto_cpr
-	name = "autocompressor" //autocompressor
+	name = "autocompressor"
 	desc = "A device that gives regular compression to the victim's ribcage, used in case of urgent heart issues.\nClick a person with it to place it on them."
 	icon = 'icons/obj/items/experimental_tools.dmi'
 	icon_state = "autocomp"
@@ -263,7 +264,8 @@
 	if(world.time > last_pump + 10 SECONDS)
 		last_pump = world.time
 		if(H.stat == UNCONSCIOUS)
-			var/suff = min(H.getOxyLoss(), 10) //Pre-merge level, less healing, more prevention of dying.
+			/// Pre-merge level, less healing, more prevention of dying.
+			var/suff = min(H.getOxyLoss(), 10)
 			H.apply_damage(-suff, OXY)
 			H.updatehealth()
 			H.affected_message(H,

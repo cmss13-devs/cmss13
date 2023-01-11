@@ -711,4 +711,9 @@ var/global/list/gear_datums = list()
 	display_name = "WY Tape Recorder"
 	path = /obj/item/device/taperecorder/colony/loadout
 	cost = 3
+
+/datum/gear/chaplain_patch
+	display_name = "USCM Chaplain Helmet Patch"
+	path = /obj/item/prop/helmetgarb/chaplain_patch
+	cost = 1 //similar price to flairs
 	slot = WEAR_IN_BACK

@@ -456,7 +456,7 @@
 	//limbs
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/veteran/PMC/knife, WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran, WEAR_HANDS)
-	H.equip_to_slot_or_del(new /obj/item/weapon/melee/twohanded/breacher, WEAR_L_HAND)
+	H.equip_to_slot_or_del(new /obj/item/weapon/melee/twohanded/breacher/synth, WEAR_L_HAND)
 	//póckets
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/construction/full_barbed_wire, WEAR_L_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/tactical, WEAR_R_STORE)
@@ -847,7 +847,7 @@
 	//limbs
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/veteran/PMC/knife, WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran, WEAR_HANDS)
-	H.equip_to_slot_or_del(new /obj/item/weapon/melee/twohanded/breacher, WEAR_L_HAND)
+	H.equip_to_slot_or_del(new /obj/item/weapon/melee/twohanded/breacher/synth, WEAR_L_HAND)
 	//póckets
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/construction/full_barbed_wire, WEAR_L_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/tactical, WEAR_R_STORE)

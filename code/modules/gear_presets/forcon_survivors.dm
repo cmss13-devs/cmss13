@@ -168,7 +168,7 @@
 
 /datum/equipment_preset/survivor/forecon/grenadier
 	name = "Survivor - USCM Reconnaissance Grenadier"
-	assignment = "Reconnaissance Genadier"
+	assignment = "Reconnaissance Grenadier"
 	skills = /datum/skills/military/survivor/forecon_grenadier
 
 /datum/equipment_preset/survivor/forecon/grenadier/load_gear(mob/living/carbon/human/H)

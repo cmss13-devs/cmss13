@@ -416,7 +416,7 @@ their unique feature is that a direct hit will buff your damage and firerate
 	. = ..()
 
 	user.client?.mouse_pointer_icon = get_mouse_pointer(floating_penetration)
-	RegisterSignal(user, COMSIG_MOB_PRE_CLICK, PROC_REF(update_fired_mouse_pointer))
+	RegisterSignal(user, COMSIG_MOB_FIRED_GUN, PROC_REF(update_fired_mouse_pointer))
 
 /obj/item/weapon/gun/lever_action/xm88/unwield(mob/user)
 	. = ..()
@@ -428,6 +428,7 @@ their unique feature is that a direct hit will buff your damage and firerate
 	SIGNAL_HANDLER
 
 	user.client?.mouse_pointer_icon = get_fired_mouse_pointer(floating_penetration)
+	addtimer(CALLBACK(src, PROC_REF(update_mouse_pointer), user), 4, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_CLIENT_TIME)
 
 /obj/item/weapon/gun/lever_action/xm88/proc/update_mouse_pointer(mob/user)
 	SIGNAL_HANDLER

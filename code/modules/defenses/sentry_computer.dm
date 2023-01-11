@@ -148,6 +148,11 @@
 	else
 		. += "It has no battery inserted."
 
+	if(setup)
+		. += "The laptop can be dragged towards you to pick it up."
+	else
+		. += "The laptop must be placed on a table to be used."
+
 /obj/item/device/sentry_computer/process()
 	if(on)
 		if(cell)

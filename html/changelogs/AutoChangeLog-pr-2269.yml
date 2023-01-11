@@ -1,0 +1,4 @@
+author: "Morrow"
+delete-after: True
+changes:
+  - balance: "Custom pill bottles now require medic skill to open"

@@ -278,6 +278,9 @@
 				victim.take_limb_damage(0, dmg["damage"]) //Sizzledam! This automagically burns a random existing body part.
 				victim.add_blood(get_blood_color(), BLOOD_BODY)
 				acid_splash_last = world.time
+				handle_blood_splatter(get_dir(src, victim), 1 SECONDS)
+				playsound(victim, "acid_sizzle", 25, TRUE)
+				animation_flash_color(victim, get_blood_color()) //pain hit flicker
 
 /mob/living/carbon/Xenomorph/get_target_lock(var/access_to_check)
 	if(isnull(access_to_check))

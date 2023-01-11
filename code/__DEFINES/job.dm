@@ -30,6 +30,22 @@ var/global/list/job_squad_roles = JOB_SQUAD_ROLES_LIST
 #define JOB_SYNTH_SURVIVOR "Synth Survivor"
 #define JOB_CO_SURVIVOR "CO Survivor"
 
+#define ANY_SURVIVOR "Any Survivor"
+#define CIVILIAN_SURVIVOR "Civilian Survivor"
+#define SECURITY_SURVIVOR "Security Survivor"
+#define SCIENTIST_SURVIVOR "Scientist Survivor"
+#define MEDICAL_SURVIVOR "Medical Survivor"
+#define ENGINEERING_SURVIVOR "Engineering Survivor"
+#define CORPORATE_SURVIVOR "Corporate Survivor"
+#define SURVIVOR_VARIANT_LIST list(ANY_SURVIVOR, CIVILIAN_SURVIVOR, SECURITY_SURVIVOR, SCIENTIST_SURVIVOR, MEDICAL_SURVIVOR, ENGINEERING_SURVIVOR, CORPORATE_SURVIVOR)
+
+#define SPAWN_PRIORITY_VERY_HIGH 1
+#define SPAWN_PRIORITY_HIGH 2
+#define SPAWN_PRIORITY_MEDIUM 3
+#define SPAWN_PRIORITY_LOW 4
+#define SPAWN_PRIORITY_VERY_LOW 5
+#define LOWEST_SPAWN_PRIORITY 5
+
 #define JOB_CMO "Chief Medical Officer"
 #define JOB_DOCTOR "Doctor"
 #define JOB_NURSE "Nurse"
@@ -79,7 +95,10 @@ var/global/list/job_command_roles = JOB_COMMAND_ROLES_LIST
 #define JOB_MARINE_RAIDER_ROLES_LIST list(JOB_MARINE_RAIDER, JOB_MARINE_RAIDER_SL, JOB_MARINE_RAIDER_CD)
 
 #define JOB_HUMAN_ROLES  /datum/timelock/human
+
 #define JOB_XENO_ROLES   /datum/timelock/xeno
+#define JOB_DRONE_ROLES /datum/timelock/drone
+#define JOB_T3_ROLES /datum/timelock/tier3
 
 #define JOB_STOWAWAY "Stowaway"
 

@@ -1126,7 +1126,7 @@ var/datum/controller/supply/supply_controller = new()
 	switch(rng)
 		if(1 to 5)
 			temp += "Sometimes I... hear things down 'ere. Crates bein' opened, shufflin', sometimes.. even breathing and chewin'. Even when the ASRS is on maintenance mode.<BR>"
-			temp += "Last month I swear i glimped some shirtless madman runnin' by at the edge of my screen. This place is haunted.<BR>"
+			temp += "Last month I swear I glimped some shirtless madman runnin' by at the edge of my screen. This place is haunted.<BR>"
 		if(6 to 10)
 			temp += "You know how I said there was a full aisle of autodoc crates? I just found <i>another!</i><BR>"
 			temp += "This one has body scanners, sleepers, WeyMeds.. why the fuck aren't these on the supply list? Why are they here to begin with?<BR>"

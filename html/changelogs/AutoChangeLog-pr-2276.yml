@@ -1,4 +1,0 @@
-author: "stanalbatross"
-delete-after: True
-changes:
-  - bugfix: "fixed an oversight that made you unable to fire non-dangerous grenades close up from grenade launchers"

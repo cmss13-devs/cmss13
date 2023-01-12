@@ -475,7 +475,18 @@
 	name = "W-Y Space Station"
 	})
 "eo" = (
-/obj/structure/surface/table/reinforced/prison,
+/obj/structure/surface/table/almayer,
+/obj/item/storage/box/gloves{
+	pixel_x = 5;
+	pixel_y = 8
+	},
+/obj/item/storage/box/masks{
+	pixel_x = 5
+	},
+/obj/item/tool/hand_labeler{
+	pixel_x = -8;
+	pixel_y = 3
+	},
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "sterile_green_side";
@@ -951,8 +962,8 @@
 	})
 "hg" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer/containment{
-	id = "Containment Cell 4";
-	name = "\improper Containment Cell 4"
+	id = "W-Y Containment Cell";
+	name = "\improper W-Y Containment Cell"
 	},
 /obj/structure/machinery/door/airlock/almayer/research/glass/reinforced{
 	dir = 1;
@@ -1102,11 +1113,6 @@
 	icon_state = "sterile_green_side";
 	tag = "icon-sterile_green_side (EAST)"
 	},
-/area/adminlevel/ert_station/shuttle_dispatch{
-	name = "W-Y Space Station"
-	})
-"iZ" = (
-/turf/open/floor/almayer/research/containment/corner1,
 /area/adminlevel/ert_station/shuttle_dispatch{
 	name = "W-Y Space Station"
 	})
@@ -1482,6 +1488,29 @@
 	dir = 1;
 	icon_state = "w-y1";
 	tag = "icon-sterile_green_corner (NORTH)"
+	},
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
+"pH" = (
+/obj/structure/surface/table/almayer,
+/obj/item/paper_bin/wy{
+	pixel_x = 6;
+	pixel_y = 5
+	},
+/obj/item/clipboard{
+	pixel_x = -8
+	},
+/obj/item/folder/white{
+	pixel_x = -8
+	},
+/obj/item/tool/pen{
+	pixel_x = 8
+	},
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "sterile_green_side";
+	tag = "icon-sterile_green_side (EAST)"
 	},
 /area/adminlevel/ert_station/shuttle_dispatch{
 	name = "W-Y Space Station"
@@ -2019,22 +2048,6 @@
 	tag = "icon-sterile_green_corner (NORTH)"
 	},
 /area/adminlevel/ert_station)
-"xV" = (
-/obj/structure/machinery/flasher{
-	alpha = 1;
-	id = "Containment Cell 4";
-	layer = 2.1;
-	name = "Mounted Flash";
-	pixel_x = -15;
-	pixel_y = 30
-	},
-/turf/open/floor/almayer/research/containment/corner_var1{
-	icon_state = "containment_corner_variant_2";
-	tag = "icon-containment_corner_variant_2"
-	},
-/area/adminlevel/ert_station/shuttle_dispatch{
-	name = "W-Y Space Station"
-	})
 "xW" = (
 /turf/open/floor/almayer{
 	dir = 1;
@@ -2511,9 +2524,8 @@
 "DX" = (
 /obj/structure/machinery/door_display/research_cell{
 	dir = 8;
-	has_wall_divider = 1;
 	id = "W-Y Containment Cell";
-	name = "Cell 2 Control";
+	name = "W-Y Containment Cell";
 	pixel_x = 14;
 	pixel_y = 8
 	},
@@ -2797,6 +2809,14 @@
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile";
 	tag = "icon-sterile"
+	},
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
+"Ho" = (
+/turf/open/floor/almayer/research/containment/corner{
+	dir = 1;
+	tag = "icon-containment_corner (NORTH)"
 	},
 /area/adminlevel/ert_station/shuttle_dispatch{
 	name = "W-Y Space Station"
@@ -3710,6 +3730,11 @@
 	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/ert_station)
+"So" = (
+/turf/open/floor/almayer/research/containment/entrance,
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
 "Sr" = (
 /turf/open/space,
 /area/space/almayer/lifeboat_dock)
@@ -3986,6 +4011,22 @@
 	},
 /turf/open/space/transit/east/shuttlespace_ew14,
 /area/space)
+"Vb" = (
+/obj/structure/machinery/flasher{
+	alpha = 1;
+	id = "W-Y Containment Cell";
+	layer = 2.1;
+	name = "Mounted Flash";
+	pixel_x = -15;
+	pixel_y = 30
+	},
+/turf/open/floor/almayer/research/containment/corner_var1{
+	icon_state = "containment_corner_variant_2";
+	tag = "icon-containment_corner_variant_2"
+	},
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
 "Vf" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "NE-out";
@@ -4205,7 +4246,10 @@
 	},
 /area/adminlevel/ert_station)
 "Yq" = (
-/obj/structure/surface/table/reinforced/prison,
+/obj/structure/surface/table/almayer,
+/obj/item/storage/toolbox/electrical,
+/obj/item/circuitboard/apc,
+/obj/item/tool/screwdriver,
 /turf/open/floor/plating/almayer,
 /area/adminlevel/ert_station/shuttle_dispatch{
 	name = "W-Y Space Station"
@@ -18397,9 +18441,9 @@ KK
 KK
 KK
 WO
-po
+Vb
 VP
-xV
+po
 Pk
 Oi
 as
@@ -18549,7 +18593,7 @@ KK
 KK
 KK
 hg
-ju
+So
 Uw
 ju
 Pk
@@ -18701,9 +18745,9 @@ KK
 KK
 YA
 rC
-iZ
-VP
 DQ
+VP
+Ho
 Pk
 Oi
 as
@@ -18849,7 +18893,7 @@ dG
 XC
 hX
 LB
-eo
+pH
 eo
 DX
 Gc

@@ -61,9 +61,40 @@
 	tag = "icon-sterile"
 	},
 /area/adminlevel/ert_station)
+"ap" = (
+/obj/item/storage/fancy/cigar,
+/obj/item/reagent_container/food/drinks/bottle/sake{
+	layer = 3.6;
+	pixel_x = 9;
+	pixel_y = 16
+	},
+/obj/item/reagent_container/food/drinks/bottle/sake{
+	layer = 3.6;
+	pixel_y = 16
+	},
+/obj/item/reagent_container/food/drinks/bottle/sake{
+	layer = 3.6;
+	pixel_x = -9;
+	pixel_y = 16
+	},
+/obj/structure/surface/table/woodentable/fancy,
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
 "as" = (
 /turf/open/space/basic,
 /area/space)
+"aw" = (
+/obj/structure/machinery/cm_vending/sorted/marine_food,
+/turf/open/floor/almayer{
+	dir = 9;
+	icon_state = "green";
+	tag = "icon-green (NORTHWEST)"
+	},
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
 "az" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
@@ -141,9 +172,42 @@
 	tag = "icon-silver"
 	},
 /area/adminlevel/ert_station)
+"bs" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_18";
+	tag = "icon-plant-10"
+	},
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
+"by" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/closet/secure_closet/surgical{
+	pixel_x = -30
+	},
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "sterile_green_side";
+	tag = "icon-sterile_green_side (WEST)"
+	},
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
 "bz" = (
 /turf/open/space/transit/north/shuttlespace_ns4,
 /area/space)
+"bR" = (
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/turf/open/floor/almayer{
+	icon_state = "floor";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
 "bU" = (
 /turf/open/space/transit/north/shuttlespace_ns4,
 /area/almayer/evacuation/stranded/pod1)
@@ -181,6 +245,12 @@
 "cb" = (
 /turf/open/space/transit/north/shuttlespace_ns4,
 /area/almayer/evacuation/stranded/pod14)
+"cg" = (
+/obj/structure/machinery/vending/cigarette,
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
 "ch" = (
 /turf/open/space/transit/north/shuttlespace_ns4,
 /area/almayer/evacuation/stranded/pod3)
@@ -254,6 +324,15 @@
 "cJ" = (
 /turf/open/space/transit/east/shuttlespace_ew7,
 /area/space)
+"cM" = (
+/obj/structure/toilet,
+/turf/open/floor/almayer{
+	icon_state = "dark_sterile";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
 "cU" = (
 /obj/effect/step_trigger/teleporter/random{
 	affect_ghosts = 1;
@@ -276,6 +355,14 @@
 "di" = (
 /turf/open/space/transit/north/shuttlespace_ns4,
 /area/almayer/evacuation/stranded/pod11)
+"dl" = (
+/obj/structure/bed/chair/comfy/beige{
+	dir = 1
+	},
+/turf/open/floor/carpet,
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
 "dr" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_22";
@@ -286,7 +373,9 @@
 	icon_state = "silver";
 	tag = "icon-sterile"
 	},
-/area/adminlevel/ert_station/shuttle_dispatch)
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
 "ds" = (
 /turf/closed/wall/almayer/outer{
 	name = "reinforced hull"
@@ -335,7 +424,9 @@
 /area/space)
 "dG" = (
 /turf/open/floor/plating/almayer,
-/area/adminlevel/ert_station/shuttle_dispatch)
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
 "dH" = (
 /obj/effect/step_trigger/teleporter/random{
 	affect_ghosts = 1;
@@ -368,6 +459,21 @@
 "ej" = (
 /turf/open/floor/plating/bare_catwalk,
 /area/supply/dock)
+"em" = (
+/obj/structure/machinery/sleep_console,
+/turf/open/floor/almayer{
+	icon_state = "dark_sterile";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
+"es" = (
+/obj/structure/bookcase/manuals/engineering,
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
 "ev" = (
 /turf/open/floor/carpet{
 	dir = 9;
@@ -425,7 +531,9 @@
 	icon_state = "silver";
 	tag = "icon-green (EAST)"
 	},
-/area/adminlevel/ert_station/shuttle_dispatch)
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
 "eU" = (
 /turf/open/floor/carpet{
 	dir = 8;
@@ -559,6 +667,17 @@
 	icon_state = "mono"
 	},
 /area/centcom/control)
+"fS" = (
+/obj/structure/machinery/door/airlock/almayer/research/glass/reinforced{
+	name = "\improper Medical Bay"
+	},
+/turf/open/floor/almayer{
+	icon_state = "test_floor4";
+	tag = "icon-test_floor4"
+	},
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
 "fW" = (
 /turf/open/floor/carpet{
 	dir = 6;
@@ -566,6 +685,22 @@
 	tag = "icon-carpetside (SOUTHEAST)"
 	},
 /area/centcom/living)
+"fX" = (
+/obj/structure/machinery/door/airlock/almayer/medical{
+	dir = 1;
+	id_tag = "or03";
+	name = "Operating Theatre 3";
+	req_access = null;
+	req_one_access = null;
+	req_one_access_txt = "2;8;19"
+	},
+/turf/open/floor/almayer{
+	icon_state = "test_floor4";
+	tag = "icon-test_floor4"
+	},
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
 "gb" = (
 /obj/structure/machinery/autolathe/full,
 /turf/open/floor/almayer{
@@ -788,7 +923,34 @@
 	icon_state = "floor";
 	tag = "icon-sterile"
 	},
-/area/adminlevel/ert_station/shuttle_dispatch)
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
+"ha" = (
+/obj/structure/window/framed/almayer/white,
+/obj/structure/machinery/door/firedoor/border_only/almayer,
+/turf/open/floor/plating,
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
+"hg" = (
+/obj/structure/machinery/door/poddoor/shutters/almayer/containment{
+	id = "Containment Cell 4";
+	name = "\improper Containment Cell 4"
+	},
+/obj/structure/machinery/door/airlock/almayer/research/glass/reinforced{
+	dir = 1;
+	id = "Containment Cell 4";
+	locked = 1;
+	name = "\improper Containment Cell 4"
+	},
+/turf/open/floor/almayer{
+	icon_state = "test_floor4";
+	tag = "icon-test_floor4"
+	},
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
 "hp" = (
 /turf/closed/wall/indestructible,
 /area/start)
@@ -799,14 +961,57 @@
 	tag = "icon-sterile_green_side (NORTHWEST)"
 	},
 /area/adminlevel/ert_station)
-"hP" = (
-/obj/docking_port/stationary/emergency_response/idle_port1,
-/turf/open/floor/plating,
-/area/adminlevel/ert_station)
+"hM" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/tool/surgery/scalpel{
+	pixel_x = -1;
+	pixel_y = 10
+	},
+/obj/item/stack/cable_coil,
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "green";
+	tag = "icon-green (EAST)"
+	},
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
+"hX" = (
+/obj/structure/surface/table/almayer,
+/obj/item/storage/box/autoinjectors{
+	pixel_x = -6;
+	pixel_y = 7
+	},
+/obj/item/storage/box/autoinjectors{
+	pixel_x = -6;
+	pixel_y = -1
+	},
+/obj/item/device/mass_spectrometer{
+	pixel_x = 8
+	},
+/turf/open/floor/almayer{
+	icon_state = "sterile_green_corner";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
 "hZ" = (
 /obj/structure/sign/poster/art,
 /turf/closed/wall/r_wall/unmeltable,
 /area/adminlevel/ert_station)
+"if" = (
+/obj/structure/sink{
+	dir = 1;
+	pixel_y = -10
+	},
+/turf/open/floor/almayer{
+	icon_state = "sterile_green_side";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
 "ii" = (
 /turf/open/space/transit/east/shuttlespace_ew10,
 /area/space)
@@ -817,6 +1022,35 @@
 	tag = "icon-sterile"
 	},
 /area/adminlevel/ert_station)
+"iA" = (
+/turf/closed/wall/almayer,
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
+"iG" = (
+/obj/structure/closet/secure_closet/medical2,
+/turf/open/floor/almayer{
+	icon_state = "sterile_green_corner";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
+"iI" = (
+/obj/structure/machinery/cryopod{
+	pixel_y = 6
+	},
+/obj/structure/machinery/light{
+	dir = 8;
+	tag = "icon-tube1 (WEST)"
+	},
+/turf/open/floor/almayer{
+	icon_state = "cargo";
+	tag = "icon-bluecorner (NORTH)"
+	},
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
 "iL" = (
 /obj/structure/machinery/status_display{
 	pixel_y = 30
@@ -826,6 +1060,40 @@
 	tag = "icon-emerald (NORTH)"
 	},
 /area/adminlevel/ert_station)
+"iQ" = (
+/turf/closed/wall/almayer/research/containment/wall/corner,
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
+"iT" = (
+/obj/structure/machinery/door/airlock/almayer/generic{
+	name = "\improper Pilot's Office";
+	req_one_access_txt = "3;22;2;19"
+	},
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
+"iY" = (
+/obj/structure/machinery/door_control{
+	id = "or03";
+	name = "Surgery Door Release";
+	normaldoorcontrol = 1;
+	pixel_x = 23
+	},
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "sterile_green_side";
+	tag = "icon-sterile_green_side (EAST)"
+	},
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
+"iZ" = (
+/turf/open/floor/almayer/research/containment/corner1,
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
 "ja" = (
 /turf/open/floor/plating,
 /area/admin/droppod/loading)
@@ -833,10 +1101,40 @@
 /obj/effect/landmark/newplayer_start,
 /turf/open/floor,
 /area/start)
+"jn" = (
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "green";
+	tag = "icon-green (WEST)"
+	},
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
+"ju" = (
+/turf/open/floor/almayer/research/containment/floor2{
+	dir = 1;
+	tag = "icon-containment_floor_2 (NORTH)"
+	},
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
 "kn" = (
 /obj/docking_port/stationary/emergency_response/idle_port3,
 /turf/open/floor/plating,
 /area/adminlevel/ert_station)
+"ko" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/door/window/eastleft{
+	req_access_txt = "8";
+	dir = 2
+	},
+/turf/open/floor/almayer{
+	icon_state = "sterile_green";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
 "ks" = (
 /obj/docking_port/stationary/emergency_response/idle_port2,
 /turf/open/floor/plating,
@@ -844,6 +1142,78 @@
 "kx" = (
 /turf/closed/wall/indestructible/splashscreen,
 /area/start)
+"ky" = (
+/obj/structure/sink{
+	dir = 8;
+	pixel_x = -12;
+	pixel_y = 2
+	},
+/turf/open/floor/almayer{
+	icon_state = "dark_sterile";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
+"kV" = (
+/obj/structure/machinery/cryopod/right{
+	pixel_y = 6
+	},
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/almayer{
+	icon_state = "cargo";
+	tag = "icon-bluecorner (NORTH)"
+	},
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
+"kZ" = (
+/obj/structure/machinery/recharge_station,
+/turf/open/floor/plating/almayer,
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
+"lz" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/sign/safety/bathunisex{
+	pixel_x = -17
+	},
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
+"lE" = (
+/turf/open/floor/almayer{
+	dir = 9;
+	icon_state = "green";
+	tag = "icon-green (NORTHWEST)"
+	},
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
+"mS" = (
+/obj/item/trash/uscm_mre,
+/turf/open/floor/almayer{
+	icon_state = "floor";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
+"mT" = (
+/obj/structure/machinery/cm_vending/sorted/medical/chemistry/no_access{
+	req_access = null
+	},
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "sterile_green_corner";
+	tag = "icon-sterile_green_corner (NORTH)"
+	},
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
 "mX" = (
 /obj/docking_port/stationary/lifeboat_dock/admin{
 	id = "admin-lifeboat1";
@@ -854,23 +1224,51 @@
 "ne" = (
 /turf/open/space/transit/east/shuttlespace_ew8,
 /area/space)
+"nx" = (
+/obj/structure/bed,
+/obj/item/bedsheet/medical,
+/turf/open/floor/almayer{
+	icon_state = "sterile_green_corner";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
 "nB" = (
 /turf/open/space/transit/east/shuttlespace_ew4,
 /area/space)
+"nE" = (
+/obj/structure/window/framed/almayer,
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 2;
+	tag = "icon-door_open"
+	},
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	id = "cl_shutters";
+	name = "\improper Privacy Shutters"
+	},
+/turf/open/floor/plating,
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
 "nP" = (
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "silvercorner";
 	tag = "icon-silvercorner"
 	},
-/area/adminlevel/ert_station/shuttle_dispatch)
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
 "nU" = (
 /obj/structure/bed/sofa/vert/grey,
 /turf/open/floor/almayer{
 	icon_state = "floor";
 	tag = "icon-sterile"
 	},
-/area/adminlevel/ert_station/shuttle_dispatch)
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
 "oa" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/structure/machinery/computer/emails{
@@ -932,6 +1330,14 @@
 	tag = "icon-red (NORTHWEST)"
 	},
 /area/adminlevel/ert_station)
+"ou" = (
+/turf/closed/wall/almayer/research/containment/wall/corner{
+	dir = 8;
+	tag = "icon-containment_wall_corner (WEST)"
+	},
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
 "oB" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer{
@@ -939,7 +1345,9 @@
 	icon_state = "silver";
 	tag = "icon-sterile"
 	},
-/area/adminlevel/ert_station/shuttle_dispatch)
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
 "oQ" = (
 /obj/effect/step_trigger/teleporter/random{
 	affect_ghosts = 1;
@@ -977,6 +1385,16 @@
 	tag = "icon-red"
 	},
 /area/adminlevel/ert_station)
+"pe" = (
+/obj/structure/machinery/medical_pod/autodoc/unskilled,
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "sterile_green_side";
+	tag = "icon-sterile_green_side (WEST)"
+	},
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
 "pm" = (
 /turf/open/floor/almayer{
 	dir = 1;
@@ -984,6 +1402,14 @@
 	tag = "icon-sterile_green_side (NORTH)"
 	},
 /area/adminlevel/ert_station)
+"po" = (
+/turf/open/floor/almayer/research/containment/corner{
+	dir = 4;
+	tag = "icon-containment_corner (EAST)"
+	},
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
 "pq" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
@@ -991,7 +1417,48 @@
 	icon_state = "floor";
 	tag = "icon-sterile"
 	},
-/area/adminlevel/ert_station/shuttle_dispatch)
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
+"pr" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/item/folder/black,
+/obj/item/storage/bible/booze,
+/turf/open/floor/carpet,
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
+"py" = (
+/obj/item/reagent_container/food/drinks/bottle/whiskey{
+	desc = "A premium double-malt whiskey, this bottle was gifted to the Captain of the USS Almayer after the completion of the ship's space trials by the VADM. himself.";
+	pixel_x = 1;
+	pixel_y = 16
+	},
+/obj/item/reagent_container/food/drinks/bottle/whiskey{
+	pixel_x = 9;
+	pixel_y = 16
+	},
+/obj/item/reagent_container/food/drinks/bottle/whiskey{
+	pixel_x = -7;
+	pixel_y = 16
+	},
+/obj/item/clothing/mask/cigarette/pipe{
+	pixel_y = 5
+	},
+/obj/structure/surface/table/woodentable/fancy,
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
+"pD" = (
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "w-y1";
+	tag = "icon-sterile_green_corner (NORTH)"
+	},
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
 "pP" = (
 /obj/item/newspaper,
 /turf/open/floor/carpet{
@@ -1008,14 +1475,18 @@
 	icon_state = "silver";
 	tag = "icon-sterile"
 	},
-/area/adminlevel/ert_station/shuttle_dispatch)
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
 "qi" = (
 /obj/structure/flora/pottedplant/random,
 /turf/open/floor/almayer{
 	icon_state = "floor";
 	tag = "icon-sterile"
 	},
-/area/adminlevel/ert_station/shuttle_dispatch)
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
 "ql" = (
 /obj/effect/step_trigger/teleporter/random{
 	affect_ghosts = 1;
@@ -1069,6 +1540,27 @@
 	tag = "icon-sterile_green_side (NORTHEAST)"
 	},
 /area/adminlevel/ert_station)
+"rC" = (
+/turf/closed/wall/almayer/research/containment/wall/purple{
+	dir = 4;
+	icon_state = "containment_window_h";
+	tag = "icon-containment_window (WEST)"
+	},
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
+"rO" = (
+/obj/structure/machinery/bioprinter{
+	stored_metal = 125
+	},
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "sterile_green_corner";
+	tag = "icon-sterile_green_corner (EAST)"
+	},
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
 "rR" = (
 /obj/structure/closet/secure_closet/freezer/fridge/full,
 /obj/item/reagent_container/food/condiment/enzyme,
@@ -1076,6 +1568,11 @@
 	icon_state = "kitchen"
 	},
 /area/adminlevel/ert_station)
+"sh" = (
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
 "sj" = (
 /obj/structure/machinery/faxmachine,
 /obj/structure/surface/table/reinforced/prison,
@@ -1097,6 +1594,53 @@
 	},
 /turf/open/space/transit/east/shuttlespace_ew5,
 /area/space)
+"sH" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/device/flashlight/pen{
+	pixel_x = 7;
+	pixel_y = 3
+	},
+/obj/item/paper_bin/uscm{
+	pixel_x = -5;
+	pixel_y = 8
+	},
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "green";
+	tag = "icon-green (EAST)"
+	},
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
+"sL" = (
+/obj/structure/machinery/door/airlock/almayer/research/glass/reinforced{
+	name = "\improper Medical Bay";
+	dir = 2
+	},
+/obj/structure/sign/safety/med_cryo{
+	pixel_x = -17
+	},
+/turf/open/floor/almayer{
+	icon_state = "test_floor4";
+	tag = "icon-test_floor4"
+	},
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
+"sS" = (
+/obj/structure/machinery/autodoc_console,
+/turf/open/floor/almayer{
+	icon_state = "dark_sterile";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
+"sY" = (
+/turf/closed/wall/almayer/research/containment/wall/west,
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
 "th" = (
 /obj/structure/machinery/medical_pod/bodyscanner,
 /turf/open/floor/almayer{
@@ -1104,10 +1648,25 @@
 	tag = "icon-sterile"
 	},
 /area/adminlevel/ert_station)
+"tw" = (
+/obj/structure/machinery/chem_master,
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "sterile_green_side";
+	tag = "icon-sterile_green_side (NORTH)"
+	},
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
 "tx" = (
 /obj/structure/machinery/hologram/holopad,
 /turf/open/floor/carpet,
 /area/centcom/living)
+"tG" = (
+/turf/closed/wall/almayer/research/containment/wall/east,
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
 "tP" = (
 /obj/structure/machinery/computer/security/wooden_tv{
 	desc = "An old TV hooked up to a video cassette recorder, you can even use it to time shift WOW.";
@@ -1125,6 +1684,17 @@
 	tag = "icon-sterile"
 	},
 /area/adminlevel/ert_station)
+"ua" = (
+/obj/structure/machinery/door/airlock/almayer/research/glass/reinforced{
+	name = "\improper Medical Research"
+	},
+/turf/open/floor/almayer{
+	icon_state = "test_floor4";
+	tag = "icon-test_floor4"
+	},
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
 "uc" = (
 /obj/docking_port/stationary/lifeboat_dock/admin{
 	id = "admin-lifeboat2";
@@ -1220,6 +1790,13 @@
 	tag = "icon-sterile"
 	},
 /area/adminlevel/ert_station)
+"vv" = (
+/obj/item/device/flashlight/lamp/green,
+/obj/structure/surface/table/woodentable/fancy,
+/turf/open/floor/carpet,
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
 "vB" = (
 /obj/structure/surface/table/reinforced/black,
 /obj/effect/spawner/random/toy,
@@ -1228,7 +1805,9 @@
 	icon_state = "silver";
 	tag = "icon-silver (NORTHEAST)"
 	},
-/area/adminlevel/ert_station/shuttle_dispatch)
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
 "vD" = (
 /turf/open/floor/carpet{
 	desc = "Plush, waterproof carpet. Apparently it's fire resistant while remaining quite soft.";
@@ -1248,6 +1827,14 @@
 	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/ert_station)
+"vG" = (
+/turf/open/floor/almayer{
+	icon_state = "cargo";
+	tag = "icon-bluecorner (NORTH)"
+	},
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
 "vH" = (
 /obj/effect/step_trigger/teleporter/random{
 	affect_ghosts = 1;
@@ -1261,13 +1848,25 @@
 	},
 /turf/open/space/transit/east/shuttlespace_ew15,
 /area/space)
+"vK" = (
+/obj/structure/machinery/medical_pod/bodyscanner,
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "sterile_green_side";
+	tag = "icon-sterile_green_side (WEST)"
+	},
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
 "vN" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer{
 	icon_state = "silver";
 	tag = "icon-silver"
 	},
-/area/adminlevel/ert_station/shuttle_dispatch)
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
 "wj" = (
 /turf/open/floor/almayer{
 	dir = 1;
@@ -1281,7 +1880,9 @@
 	icon_state = "silver";
 	tag = "icon-silver (WEST)"
 	},
-/area/adminlevel/ert_station/shuttle_dispatch)
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
 "wr" = (
 /obj/structure/machinery/body_scanconsole,
 /turf/open/floor/almayer{
@@ -1321,7 +1922,9 @@
 "wY" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic2/autoname,
 /turf/open/floor/plating/almayer,
-/area/adminlevel/ert_station/shuttle_dispatch)
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
 "xb" = (
 /obj/structure/machinery/door/airlock/almayer/engineering{
 	name = "\improper Engineering Storage"
@@ -1331,6 +1934,12 @@
 	tag = "icon-sterile"
 	},
 /area/adminlevel/ert_station)
+"xl" = (
+/obj/structure/surface/table/woodentable/fancy,
+/turf/open/floor/carpet,
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
 "xr" = (
 /turf/open/space/basic,
 /area/space/almayer/lifeboat_dock)
@@ -1347,6 +1956,15 @@
 	},
 /turf/open/space/transit/east/shuttlespace_ew3,
 /area/space)
+"xG" = (
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "green";
+	tag = "icon-green"
+	},
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
 "xJ" = (
 /obj/effect/step_trigger/teleporter/random{
 	affect_ghosts = 1;
@@ -1374,6 +1992,31 @@
 	tag = "icon-sterile_green_corner (NORTH)"
 	},
 /area/adminlevel/ert_station)
+"xV" = (
+/obj/structure/machinery/flasher{
+	alpha = 1;
+	id = "Containment Cell 4";
+	layer = 2.1;
+	name = "Mounted Flash";
+	pixel_x = -15;
+	pixel_y = 30
+	},
+/turf/open/floor/almayer/research/containment/corner_var1{
+	icon_state = "containment_corner_variant_2";
+	tag = "icon-containment_corner_variant_2"
+	},
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
+"xW" = (
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "sterile_green_corner";
+	tag = "icon-sterile_green_corner (NORTH)"
+	},
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
 "xX" = (
 /turf/open/space/transit/east/shuttlespace_ew12,
 /area/space)
@@ -1386,13 +2029,49 @@
 	icon_state = "kitchen"
 	},
 /area/adminlevel/ert_station)
+"yq" = (
+/obj/docking_port/stationary/emergency_response/idle_port1,
+/turf/open/floor/plating,
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
+"yr" = (
+/obj/structure/bed/chair/comfy/beige,
+/turf/open/floor/carpet,
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
+"yv" = (
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 2;
+	tag = "icon-door_open"
+	},
+/obj/structure/machinery/door/airlock/almayer/generic{
+	dir = 2;
+	name = "\improper Weyland-Yutani Office"
+	},
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	id = "cl_shutters";
+	name = "\improper Privacy Shutters"
+	},
+/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/almayer{
+	icon_state = "test_floor4";
+	tag = "icon-test_floor4"
+	},
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
 "yx" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
 	tag = "icon-W"
 	},
 /turf/open/floor/plating/almayer,
-/area/adminlevel/ert_station/shuttle_dispatch)
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
 "yC" = (
 /obj/structure/machinery/gibber{
 	pixel_y = 10
@@ -1421,6 +2100,15 @@
 	icon_state = "kitchen"
 	},
 /area/adminlevel/ert_station)
+"zj" = (
+/obj/structure/sign/safety/debark_lounge{
+	pixel_x = 15;
+	pixel_y = -32
+	},
+/turf/open/floor/plating/almayer,
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
 "zk" = (
 /obj/structure/machinery/chem_dispenser/beer{
 	density = 0;
@@ -1431,6 +2119,14 @@
 	icon_state = "kitchen"
 	},
 /area/adminlevel/ert_station)
+"zl" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+	name = "\improper Preperation Room"
+	},
+/turf/open/floor/plating/almayer,
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
 "zn" = (
 /obj/structure/machinery/cm_vending/sorted/medical/no_access{
 	req_access = null
@@ -1455,6 +2151,30 @@
 	tag = "icon-red"
 	},
 /area/adminlevel/ert_station)
+"zx" = (
+/obj/structure/machinery/door/airlock/almayer/medical{
+	dir = 2;
+	name = "Syntetic Unit Storage";
+	req_access_txt = "25";
+	req_one_access = null
+	},
+/turf/open/floor/almayer{
+	icon_state = "test_floor4";
+	tag = "icon-test_floor4"
+	},
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
+"zy" = (
+/obj/structure/machinery/iv_drip,
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "sterile_green_side";
+	tag = "icon-sterile_green_side (EAST)"
+	},
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
 "zB" = (
 /obj/structure/machinery/disposal,
 /obj/effect/decal/cleanable/dirt,
@@ -1463,7 +2183,9 @@
 	icon_state = "silver";
 	tag = "icon-sterile"
 	},
-/area/adminlevel/ert_station/shuttle_dispatch)
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
 "zO" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/structure/machinery/recharger,
@@ -1476,6 +2198,35 @@
 	tag = "icon-sterile_green_side (NORTHWEST)"
 	},
 /area/adminlevel/ert_station)
+"Au" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/reagent_container/spray/cleaner{
+	desc = "Someone has crossed out the Space from Space Cleaner and written in Surgery. 'Do not remove under punishment of death!!!' is scrawled on the back.";
+	name = "Surgery Cleaner"
+	},
+/obj/structure/machinery/camera/autoname/almayer{
+	dir = 4;
+	name = "ship-grade camera";
+	tag = "icon-camera (WEST)"
+	},
+/obj/structure/machinery/light,
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "sterile_green_corner";
+	tag = "icon-sterile_green_corner (WEST)"
+	},
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
+"Ax" = (
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "greencorner";
+	tag = "icon-greencorner (NORTH)"
+	},
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
 "AH" = (
 /turf/open/space/transit/east/shuttlespace_ew1,
 /area/space)
@@ -1495,9 +2246,37 @@
 	tag = "icon-sterile"
 	},
 /area/adminlevel/ert_station)
+"AO" = (
+/obj/structure/machinery/cm_vending/sorted/medical/no_access{
+	req_access = null
+	},
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "sterile_green_corner";
+	tag = "icon-sterile_green_corner (WEST)"
+	},
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
 "AS" = (
 /turf/closed/wall/almayer/outer,
 /area/tdome/tdome2)
+"AY" = (
+/obj/structure/machinery/vending/coffee,
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "green";
+	tag = "icon-green (NORTHEAST)"
+	},
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
+"Bm" = (
+/obj/structure/sign/safety/medical,
+/turf/closed/wall/almayer/white/outer_tile,
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
 "Bw" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -1505,7 +2284,9 @@
 	},
 /obj/effect/decal/cleanable/blood/oil/streak,
 /turf/open/floor/plating/almayer,
-/area/adminlevel/ert_station/shuttle_dispatch)
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
 "BD" = (
 /obj/effect/landmark/thunderdome/two,
 /obj/effect/decal/warning_stripes{
@@ -1518,6 +2299,15 @@
 	tag = "icon-blue (NORTHEAST)"
 	},
 /area/tdome/tdome2)
+"BJ" = (
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "w-y0";
+	tag = "icon-sterile_green_corner (NORTH)"
+	},
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
 "BO" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "NW-out";
@@ -1525,7 +2315,9 @@
 	tag = "icon-NW-out"
 	},
 /turf/open/floor/plating/almayer,
-/area/adminlevel/ert_station/shuttle_dispatch)
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
 "BU" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_20";
@@ -1567,7 +2359,9 @@
 	icon_state = "silver";
 	tag = "icon-silver (SOUTHWEST)"
 	},
-/area/adminlevel/ert_station/shuttle_dispatch)
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
 "CI" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/bedsheetbin{
@@ -1628,14 +2422,18 @@
 	icon_state = "floor";
 	tag = "icon-sterile"
 	},
-/area/adminlevel/ert_station/shuttle_dispatch)
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
 "Dv" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer{
 	icon_state = "floor";
 	tag = "icon-sterile"
 	},
-/area/adminlevel/ert_station/shuttle_dispatch)
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
 "Dw" = (
 /obj/structure/closet/secure_closet/brig,
 /obj/item/book/manual/marine_law,
@@ -1652,7 +2450,26 @@
 	tag = "icon-N"
 	},
 /turf/open/floor/plating/almayer,
-/area/adminlevel/ert_station/shuttle_dispatch)
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
+"DJ" = (
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "green";
+	tag = "icon-green (EAST)"
+	},
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
+"DQ" = (
+/turf/open/floor/almayer/research/containment/corner_var1{
+	dir = 4;
+	tag = "icon-containment_corner_variant_1 (EAST)"
+	},
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
 "DV" = (
 /turf/open/floor/almayer{
 	icon_state = "tcomms"
@@ -1693,7 +2510,9 @@
 	tag = "icon-W"
 	},
 /turf/open/floor/plating/almayer,
-/area/adminlevel/ert_station/shuttle_dispatch)
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
 "Ez" = (
 /turf/open/floor/almayer{
 	dir = 4;
@@ -1725,7 +2544,9 @@
 	icon_state = "silver";
 	tag = "icon-silver (WEST)"
 	},
-/area/adminlevel/ert_station/shuttle_dispatch)
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
 "Fo" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -1767,7 +2588,16 @@
 	icon_state = "silver";
 	tag = "icon-silver"
 	},
-/area/adminlevel/ert_station/shuttle_dispatch)
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
+"Gc" = (
+/turf/closed/wall/almayer/research/containment/wall/corner{
+	dir = 4
+	},
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
 "Ge" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -1843,6 +2673,20 @@
 "Gw" = (
 /turf/open/space/transit/east/shuttlespace_ew14,
 /area/space)
+"Gx" = (
+/obj/structure/window/framed/almayer/white,
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	id = "or3privacyshutter";
+	name = "\improper Privacy Shutters"
+	},
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 2;
+	tag = "icon-door_open"
+	},
+/turf/open/floor/plating,
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
 "GB" = (
 /turf/open/floor/almayer{
 	dir = 1;
@@ -1877,6 +2721,15 @@
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med/souto,
 /turf/closed/wall,
 /area/adminlevel/ert_station)
+"GI" = (
+/obj/structure/machinery/body_scanconsole,
+/turf/open/floor/almayer{
+	icon_state = "dark_sterile";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
 "GM" = (
 /turf/open/space/transit/east/shuttlespace_ew2,
 /area/space)
@@ -1889,6 +2742,15 @@
 	tag = "icon-sterile"
 	},
 /area/adminlevel/ert_station)
+"GU" = (
+/obj/structure/machinery/optable,
+/turf/open/floor/almayer{
+	icon_state = "dark_sterile";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
 "HB" = (
 /turf/open/space/transit/north/shuttlespace_ns4,
 /area/almayer/evacuation/stranded/pod18)
@@ -1901,11 +2763,20 @@
 	icon_state = "silver";
 	tag = "icon-green (EAST)"
 	},
-/area/adminlevel/ert_station/shuttle_dispatch)
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
+"HM" = (
+/turf/closed/wall/almayer/white,
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
 "HW" = (
 /obj/docking_port/stationary/emergency_response/idle_port4,
 /turf/open/floor/plating/almayer,
-/area/adminlevel/ert_station/shuttle_dispatch)
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
 "HX" = (
 /obj/structure/sign/safety/med_life_support,
 /turf/closed/wall,
@@ -1921,6 +2792,17 @@
 	tag = "icon-sterile"
 	},
 /area/adminlevel/ert_station)
+"Ib" = (
+/obj/structure/machinery/chem_dispenser,
+/obj/item/reagent_container/glass/beaker/bluespace,
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "sterile_green_side";
+	tag = "icon-sterile_green_side (NORTH)"
+	},
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
 "Il" = (
 /obj/structure/machinery/bioprinter{
 	stored_metal = 1000
@@ -1948,6 +2830,18 @@
 	tag = "icon-red"
 	},
 /area/adminlevel/ert_station)
+"Ix" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "sterile_green_side";
+	tag = "icon-sterile_green_side (EAST)"
+	},
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
 "ID" = (
 /obj/structure/machinery/disposal,
 /turf/open/floor/almayer{
@@ -1965,6 +2859,15 @@
 	},
 /turf/open/floor/carpet,
 /area/adminlevel/ert_station)
+"IH" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+	dir = 1;
+	name = "\improper Shuttle hangar"
+	},
+/turf/open/floor/plating/almayer,
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
 "IO" = (
 /turf/open/floor/almayer{
 	dir = 10;
@@ -1975,6 +2878,24 @@
 "IR" = (
 /turf/closed/wall/r_wall/unmeltable,
 /area/adminlevel/simulation)
+"IV" = (
+/obj/structure/machinery/cm_vending/sorted/medical/blood{
+	req_access = null
+	},
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "sterile_green_corner";
+	tag = "icon-sterile_green_corner (NORTH)"
+	},
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
+"Ja" = (
+/obj/structure/sign/safety/med_life_support,
+/turf/closed/wall/almayer/white/outer_tile,
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
 "Ji" = (
 /turf/open/space/transit/east/shuttlespace_ew13,
 /area/space)
@@ -1984,6 +2905,20 @@
 	},
 /turf/open/floor/plating,
 /area/adminlevel/ert_station)
+"Jn" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/centrifuge{
+	pixel_x = -2;
+	pixel_y = 7
+	},
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "sterile_green_side";
+	tag = "icon-sterile_green_side (NORTH)"
+	},
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
 "Js" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
@@ -2012,9 +2947,41 @@
 /obj/structure/machinery/cm_vending/sorted/walkman,
 /turf/open/floor/wood/ship,
 /area/adminlevel/ert_station)
+"JX" = (
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "sterile_green_corner";
+	tag = "icon-sterile_green_corner (WEST)"
+	},
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
+"Kj" = (
+/obj/structure/machinery/door_control{
+	dir = 1;
+	id = "or3privacyshutter";
+	name = "Privacy Shutters";
+	pixel_y = -25
+	},
+/obj/structure/machinery/iv_drip,
+/turf/open/floor/almayer{
+	icon_state = "sterile_green_side";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
 "Kk" = (
 /turf/closed/wall/mineral/gold,
 /area/adminlevel/ert_station)
+"Kp" = (
+/obj/structure/bookcase{
+	icon_state = "book-5"
+	},
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
 "Kq" = (
 /turf/open/floor/almayer{
 	icon_state = "redfull";
@@ -2045,6 +3012,14 @@
 	icon_state = "tcomms"
 	},
 /area/adminlevel/ert_station)
+"KK" = (
+/turf/open/floor/almayer{
+	icon_state = "dark_sterile";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
 "KM" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -2062,6 +3037,17 @@
 	},
 /turf/open/floor/plating/almayer,
 /area/adminlevel/ert_station)
+"La" = (
+/obj/structure/machinery/cm_vending/clothing/antag{
+	name = "\improper Response Team Automated Equipment Rack"
+	},
+/turf/open/floor/almayer{
+	icon_state = "greenfull";
+	tag = "icon-greenfull"
+	},
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
 "Ld" = (
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med/souto{
 	pixel_y = 32
@@ -2072,19 +3058,14 @@
 	icon_state = "silver";
 	tag = "icon-sterile"
 	},
-/area/adminlevel/ert_station/shuttle_dispatch)
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
 "Lt" = (
 /turf/open/floor/almayer{
 	icon_state = "greencorner";
 	tag = "icon-greencorner"
 	},
-/area/adminlevel/ert_station)
-"Ly" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	tag = "icon-E"
-	},
-/turf/open/floor/plating/almayer,
 /area/adminlevel/ert_station)
 "LA" = (
 /obj/structure/surface/table/gamblingtable,
@@ -2099,6 +3080,15 @@
 /obj/item/coin/uranium,
 /turf/open/floor/wood/ship,
 /area/adminlevel/ert_station)
+"LB" = (
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "sterile_green_side";
+	tag = "icon-sterile_green_side (EAST)"
+	},
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
 "LD" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -2155,6 +3145,16 @@
 	tag = "icon-emerald (NORTH)"
 	},
 /area/adminlevel/ert_station)
+"LY" = (
+/obj/structure/machinery/medical_pod/sleeper,
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "sterile_green_side";
+	tag = "icon-sterile_green_side (WEST)"
+	},
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
 "LZ" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 8;
@@ -2170,6 +3170,27 @@
 	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/ert_station)
+"Mf" = (
+/obj/structure/machinery/shower{
+	dir = 4;
+	tag = "icon-shower (EAST)"
+	},
+/turf/open/floor/almayer{
+	icon_state = "dark_sterile";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
+"Mh" = (
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "sterile_green_corner";
+	tag = "icon-sterile_green_corner (EAST)"
+	},
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
 "Mk" = (
 /obj/structure/sign/safety,
 /turf/closed/wall,
@@ -2195,6 +3216,53 @@
 	tag = "icon-sterile"
 	},
 /area/adminlevel/ert_station)
+"ML" = (
+/obj/structure/sign/nosmoking_1,
+/turf/closed/wall/almayer/white/outer_tile,
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
+"MN" = (
+/obj/structure/machinery/cryopod{
+	pixel_y = 6
+	},
+/turf/open/floor/almayer{
+	icon_state = "cargo";
+	tag = "icon-bluecorner (NORTH)"
+	},
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
+"MR" = (
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "sterile_green_side";
+	tag = "icon-sterile_green_side (NORTH)"
+	},
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
+"MS" = (
+/obj/structure/machinery/cryopod/right{
+	pixel_y = 6
+	},
+/turf/open/floor/almayer{
+	icon_state = "cargo";
+	tag = "icon-bluecorner (NORTH)"
+	},
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
+"MW" = (
+/obj/structure/bed,
+/obj/item/bedsheet/medical,
+/turf/open/floor/almayer{
+	icon_state = "dark_sterile";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
 "Nc" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
@@ -2202,7 +3270,9 @@
 	tag = "icon-SW-out"
 	},
 /turf/open/floor/plating/almayer,
-/area/adminlevel/ert_station/shuttle_dispatch)
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
 "Ni" = (
 /obj/structure/curtain/open/shower,
 /turf/open/floor/almayer{
@@ -2228,7 +3298,9 @@
 	icon_state = "silver";
 	tag = "icon-sterile"
 	},
-/area/adminlevel/ert_station/shuttle_dispatch)
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
 "Nx" = (
 /obj/structure/barricade/handrail{
 	dir = 1;
@@ -2236,6 +3308,15 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/ert_station)
+"NC" = (
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "sterile_green_side";
+	tag = "icon-sterile_green_side (WEST)"
+	},
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
 "NE" = (
 /obj/structure/machinery/disposal,
 /turf/open/floor/almayer{
@@ -2258,9 +3339,22 @@
 "NZ" = (
 /turf/open/floor/carpet,
 /area/adminlevel/ert_station)
+"Of" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/item/paper{
+	pixel_x = 3;
+	pixel_y = 3
+	},
+/obj/item/tool/lighter/zippo/gold,
+/turf/open/floor/carpet,
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
 "Oi" = (
 /turf/closed/wall/r_wall/unmeltable,
-/area/adminlevel/ert_station/shuttle_dispatch)
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
 "Oj" = (
 /turf/open/floor/almayer{
 	icon_state = "plating_striped";
@@ -2276,6 +3370,23 @@
 	},
 /turf/open/space,
 /area/space)
+"Ot" = (
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "plating";
+	tag = "icon-blue (NORTHEAST)"
+	},
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
+"Oy" = (
+/turf/open/floor/almayer{
+	icon_state = "green";
+	tag = "icon-green"
+	},
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
 "OC" = (
 /obj/structure/sign/poster/hunk,
 /obj/structure/window/framed/colony/reinforced/hull,
@@ -2299,6 +3410,20 @@
 	tag = "icon-test_floor5"
 	},
 /area/adminlevel/ert_station)
+"OJ" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/recharger,
+/obj/item/device/defibrillator/upgraded,
+/obj/item/clothing/glasses/hud/health,
+/obj/item/roller,
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "sterile_green_side";
+	tag = "icon-sterile_green_side (NORTH)"
+	},
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
 "OK" = (
 /obj/effect/landmark/thunderdome/one,
 /obj/effect/decal/warning_stripes{
@@ -2314,6 +3439,11 @@
 "OT" = (
 /turf/closed/wall/almayer/outer,
 /area/tdome/tdomeobserve)
+"Pk" = (
+/turf/closed/wall/almayer/research/containment/wall/south,
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
 "Po" = (
 /obj/structure/bed,
 /obj/item/bedsheet,
@@ -2325,7 +3455,9 @@
 	tag = "icon-S"
 	},
 /turf/open/floor/plating/almayer,
-/area/adminlevel/ert_station/shuttle_dispatch)
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
 "Pr" = (
 /turf/open/floor/almayer{
 	dir = 4;
@@ -2374,6 +3506,15 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/ert_station)
+"Qo" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	tag = "icon-E"
+	},
+/turf/open/floor/plating/almayer,
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
 "Qq" = (
 /obj/structure/bed/sofa/vert/grey/top,
 /obj/effect/decal/cleanable/dirt,
@@ -2381,7 +3522,9 @@
 	icon_state = "floor";
 	tag = "icon-sterile"
 	},
-/area/adminlevel/ert_station/shuttle_dispatch)
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
 "Qr" = (
 /turf/open/floor/almayer{
 	icon_state = "floor";
@@ -2413,6 +3556,11 @@
 	icon_state = "tcomms"
 	},
 /area/tdome/tdomeobserve)
+"QN" = (
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
 "Rj" = (
 /obj/structure/window/framed/colony,
 /turf/open/floor/almayer{
@@ -2500,6 +3648,19 @@
 	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/ert_station)
+"Sp" = (
+/obj/structure/machinery/camera/autoname/almayer/containment/hidden{
+	dir = 8;
+	name = "ship-grade camera";
+	tag = "icon-camera (EAST)"
+	},
+/turf/open/floor/almayer/research/containment/floor2{
+	dir = 8;
+	tag = "icon-containment_floor_2 (WEST)"
+	},
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
 "Sr" = (
 /turf/open/space,
 /area/space/almayer/lifeboat_dock)
@@ -2522,6 +3683,20 @@
 	tag = "icon-sterile"
 	},
 /area/adminlevel/ert_station)
+"SX" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/book/manual/surgery,
+/obj/structure/sign/safety/biohazard{
+	pixel_x = -17
+	},
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "sterile_green_side";
+	tag = "icon-sterile_green_side (WEST)"
+	},
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
 "Ti" = (
 /turf/open/floor/almayer{
 	dir = 1;
@@ -2552,6 +3727,24 @@
 	tag = "icon-blue (NORTHEAST)"
 	},
 /area/tdome/tdomeobserve)
+"To" = (
+/turf/open/floor/almayer{
+	dir = 6;
+	icon_state = "green";
+	tag = "icon-green (SOUTHEAST)"
+	},
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
+"Tz" = (
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "w-y2";
+	tag = "icon-sterile_green_corner (NORTH)"
+	},
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
 "TA" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
@@ -2625,7 +3818,9 @@
 	icon_state = "floor";
 	tag = "icon-sterile"
 	},
-/area/adminlevel/ert_station/shuttle_dispatch)
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
 "Ua" = (
 /obj/structure/machinery/cm_vending/gear/antag{
 	hacked = 1;
@@ -2651,14 +3846,25 @@
 	icon_state = "silver";
 	tag = "icon-green (EAST)"
 	},
-/area/adminlevel/ert_station/shuttle_dispatch)
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
 "Ur" = (
 /obj/structure/bed/sofa/vert/grey/bot,
 /turf/open/floor/almayer{
 	icon_state = "floor";
 	tag = "icon-sterile"
 	},
-/area/adminlevel/ert_station/shuttle_dispatch)
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
+"Us" = (
+/turf/closed/wall/almayer/research/containment/wall/corner{
+	dir = 1
+	},
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
 "Ut" = (
 /turf/open/floor/almayer{
 	dir = 1;
@@ -2666,9 +3872,23 @@
 	tag = "icon-greencorner (NORTH)"
 	},
 /area/adminlevel/ert_station)
+"Uw" = (
+/turf/open/floor/almayer/research/containment/floor2,
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
 "Uz" = (
 /turf/open/space/transit/east/shuttlespace_ew5,
 /area/space)
+"UA" = (
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/antag_guns,
+/turf/open/floor/almayer{
+	icon_state = "greenfull";
+	tag = "icon-greenfull"
+	},
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
 "UI" = (
 /obj/structure/surface/table/gamblingtable,
 /obj/item/toy/deck{
@@ -2679,14 +3899,31 @@
 	icon_state = "floor";
 	tag = "icon-sterile"
 	},
-/area/adminlevel/ert_station/shuttle_dispatch)
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
+"UO" = (
+/obj/structure/machinery/cm_vending/gear/antag{
+	hacked = 1;
+	name = "\improper Response Team Automated Gear Rack";
+	use_snowflake_points = 1
+	},
+/turf/open/floor/almayer{
+	icon_state = "greenfull";
+	tag = "icon-greenfull"
+	},
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
 "UQ" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "SE-out";
 	tag = "icon-SE-out"
 	},
 /turf/open/floor/plating/almayer,
-/area/adminlevel/ert_station/shuttle_dispatch)
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
 "UW" = (
 /obj/effect/step_trigger/teleporter/random{
 	affect_ghosts = 1;
@@ -2706,7 +3943,14 @@
 	tag = "icon-NE-out"
 	},
 /turf/open/floor/plating/almayer,
-/area/adminlevel/ert_station/shuttle_dispatch)
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
+"Vh" = (
+/turf/open/floor/plating,
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
 "Vp" = (
 /obj/effect/step_trigger/teleporter/random{
 	affect_ghosts = 1;
@@ -2748,7 +3992,17 @@
 	icon_state = "silvercorner";
 	tag = "icon-silvercorner"
 	},
-/area/adminlevel/ert_station/shuttle_dispatch)
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
+"VP" = (
+/turf/open/floor/almayer/research/containment/floor2{
+	dir = 8;
+	tag = "icon-containment_floor_2 (WEST)"
+	},
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
 "VQ" = (
 /obj/effect/step_trigger/teleporter/random{
 	affect_ghosts = 1;
@@ -2769,13 +4023,20 @@
 	tag = "icon-sterile"
 	},
 /area/adminlevel/ert_station)
+"VT" = (
+/turf/open/floor/carpet,
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
 "Wn" = (
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "silver";
 	tag = "icon-sterile"
 	},
-/area/adminlevel/ert_station/shuttle_dispatch)
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
 "WA" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
@@ -2783,7 +4044,17 @@
 	},
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/plating/almayer,
-/area/adminlevel/ert_station/shuttle_dispatch)
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
+"WC" = (
+/turf/open/floor/almayer{
+	icon_state = "sterile_green_corner";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
 "WG" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -2803,6 +4074,15 @@
 	},
 /turf/open/floor/carpet,
 /area/adminlevel/ert_station)
+"WO" = (
+/turf/closed/wall/almayer/research/containment/wall/purple{
+	dir = 8;
+	icon_state = "containment_window_h";
+	tag = "icon-containment_window (WEST)"
+	},
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
 "WP" = (
 /obj/structure/machinery/newscaster{
 	pixel_y = 32
@@ -2813,11 +4093,28 @@
 	icon_state = "silver";
 	tag = "icon-sterile"
 	},
-/area/adminlevel/ert_station/shuttle_dispatch)
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
 "WQ" = (
 /obj/structure/machinery/vending/cigarette/colony,
 /turf/open/floor/wood/ship,
 /area/adminlevel/ert_station)
+"Xg" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/stack/sheet/metal{
+	layer = 2.9;
+	pixel_y = 6
+	},
+/obj/item/tool/shovel/etool/folded,
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "green";
+	tag = "icon-green (WEST)"
+	},
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
 "Xi" = (
 /obj/structure/sign/poster/music,
 /turf/closed/wall,
@@ -2835,6 +4132,11 @@
 	},
 /turf/open/floor/carpet,
 /area/adminlevel/ert_station)
+"XC" = (
+/turf/closed/wall/almayer/white/outer_tile,
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
 "XR" = (
 /turf/open/floor/almayer{
 	dir = 10;
@@ -2867,7 +4169,9 @@
 	icon_state = "floor";
 	tag = "icon-sterile"
 	},
-/area/adminlevel/ert_station/shuttle_dispatch)
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
 "Yy" = (
 /obj/structure/machinery/chem_dispenser,
 /obj/item/reagent_container/glass/beaker/bluespace,
@@ -2876,6 +4180,14 @@
 	tag = "icon-sterile"
 	},
 /area/adminlevel/ert_station)
+"YA" = (
+/turf/open/floor/almayer{
+	icon_state = "sterile_green_side";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
 "YE" = (
 /obj/structure/machinery/chem_master,
 /obj/structure/machinery/status_display{
@@ -2926,6 +4238,22 @@
 	tag = "icon-bluefull"
 	},
 /area/tdome/tdome1)
+"Ze" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/device/multitool{
+	desc = "A large handheld tool used to override various machine functions. Primarily used to pulse Airlock and APC wires on a shortwave frequency. It contains a small data buffer as well. This one is comically oversized. Made in Texas.";
+	icon_state = "multitool_big";
+	name = "\improper Oversized Security Access Tuner";
+	pixel_y = 8
+	},
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "green";
+	tag = "icon-green (EAST)"
+	},
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
 "Zh" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/storage/surgical_tray,
@@ -2976,6 +4304,16 @@
 	tag = "icon-sterile"
 	},
 /area/adminlevel/ert_station)
+"ZH" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/item/paper_bin/uscm,
+/obj/item/tool/pen{
+	pixel_y = 7
+	},
+/turf/open/floor/carpet,
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
 "ZI" = (
 /obj/structure/barricade/handrail,
 /turf/open/floor/plating/plating_catwalk,
@@ -3528,24 +4866,24 @@ aa
 aa
 aC
 aa
-wW
-wW
-wW
-wW
-wW
-wW
-wW
-wW
-wW
-wW
-wW
-wW
-wW
-wW
-wW
-wW
-wW
-wW
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
 wW
 wW
 wW
@@ -3680,24 +5018,24 @@ aa
 aa
 aC
 aa
-wW
-Ya
-Ly
-Ly
-Ly
-Ly
-Ly
-Ly
-Ly
-Ly
-Ly
-Ly
-Ly
-Ly
-Ly
-Ly
-Ly
-Ya
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
 wW
 Ya
 TA
@@ -3832,24 +5170,24 @@ aa
 aa
 aC
 aa
-wW
-KW
-FB
-FB
-FB
-FB
-FB
-FB
-FB
-FB
-FB
-FB
-FB
-FB
-FB
-FB
-FB
-Fo
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
 wW
 KW
 FB
@@ -3984,24 +5322,24 @@ aa
 aa
 aC
 aa
-wW
-KW
-FB
-FB
-FB
-FB
-FB
-FB
-FB
-FB
-FB
-FB
-FB
-FB
-FB
-hP
-FB
-Fo
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
 wW
 KW
 FB
@@ -4136,24 +5474,24 @@ aa
 aa
 aC
 aa
-wW
-KW
-FB
-FB
-FB
-FB
-FB
-FB
-FB
-FB
-FB
-FB
-FB
-FB
-FB
-FB
-FB
-Fo
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
 wW
 KW
 FB
@@ -4288,24 +5626,24 @@ aa
 aa
 aC
 aa
-wW
-KW
-FB
-FB
-FB
-FB
-FB
-FB
-FB
-FB
-FB
-FB
-FB
-FB
-FB
-FB
-FB
-Fo
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
 wW
 KW
 FB
@@ -4440,24 +5778,24 @@ aa
 aa
 aC
 aa
-wW
-KW
-FB
-FB
-FB
-FB
-FB
-FB
-FB
-FB
-FB
-FB
-FB
-FB
-FB
-FB
-FB
-Fo
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
 wW
 KW
 FB
@@ -4592,24 +5930,24 @@ aa
 aa
 aC
 aa
-wW
-KW
-FB
-FB
-FB
-FB
-FB
-FB
-FB
-FB
-FB
-FB
-FB
-FB
-FB
-FB
-FB
-Fo
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
 wW
 KW
 FB
@@ -4744,24 +6082,24 @@ aa
 aa
 aC
 aa
-wW
-KW
-FB
-FB
-FB
-FB
-FB
-FB
-FB
-FB
-FB
-FB
-FB
-FB
-FB
-FB
-FB
-Fo
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
 wW
 KW
 FB
@@ -4896,24 +6234,24 @@ aa
 aa
 aC
 aa
-wW
-KW
-FB
-FB
-FB
-FB
-FB
-FB
-FB
-FB
-FB
-FB
-FB
-FB
-FB
-FB
-FB
-Fo
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
 wW
 KW
 FB
@@ -5048,24 +6386,24 @@ aa
 aa
 aC
 aa
-wW
-KW
-FB
-FB
-FB
-FB
-FB
-FB
-FB
-FB
-FB
-FB
-FB
-FB
-FB
-FB
-FB
-Fo
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
 wW
 KW
 FB
@@ -5200,24 +6538,24 @@ aa
 aa
 aC
 aa
-wW
-Ya
-Js
-Js
-Js
-Js
-Js
-Js
-Js
-Js
-Js
-Js
-Js
-Js
-Js
-Js
-Js
-Ya
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
 wW
 Ya
 Js
@@ -5364,9 +6702,9 @@ wW
 wW
 wW
 wW
-PT
 wW
-FO
+wW
+wW
 wW
 wW
 wW
@@ -13029,36 +14367,36 @@ aa
 "}
 (67,1,1) = {"
 as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
 as
 as
 as
@@ -13181,6 +14519,7 @@ aa
 "}
 (68,1,1) = {"
 as
+aC
 as
 as
 as
@@ -13209,8 +14548,7 @@ as
 as
 as
 as
-as
-as
+aC
 as
 as
 as
@@ -13333,36 +14671,36 @@ aa
 "}
 (69,1,1) = {"
 as
+aC
+as
+as
+as
+as
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
 as
 as
 as
 as
 as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
+aC
 as
 as
 as
@@ -13485,36 +14823,36 @@ aa
 "}
 (70,1,1) = {"
 as
+aC
+as
+as
+as
+as
+Oi
+dG
+Qo
+Qo
+Qo
+Qo
+Qo
+Qo
+Qo
+Qo
+Qo
+Qo
+Qo
+Qo
+Qo
+Qo
+Qo
+dG
+Oi
 as
 as
 as
 as
 as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
+aC
 as
 as
 as
@@ -13637,36 +14975,36 @@ aa
 "}
 (71,1,1) = {"
 as
+aC
+as
+as
+as
+as
+Oi
+Pq
+Vh
+Vh
+Vh
+Vh
+Vh
+Vh
+Vh
+Vh
+Vh
+Vh
+Vh
+Vh
+Vh
+Vh
+Vh
+DD
+Oi
 as
 as
 as
 as
 as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
+aC
 as
 as
 as
@@ -13789,36 +15127,36 @@ aa
 "}
 (72,1,1) = {"
 as
+aC
+as
+as
+as
+as
+Oi
+Pq
+Vh
+Vh
+Vh
+Vh
+Vh
+Vh
+Vh
+Vh
+Vh
+Vh
+Vh
+Vh
+Vh
+yq
+Vh
+DD
+Oi
 as
 as
 as
 as
 as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
+aC
 as
 as
 as
@@ -13941,36 +15279,36 @@ aa
 "}
 (73,1,1) = {"
 as
+aC
+as
+as
+as
+as
+Oi
+Pq
+Vh
+Vh
+Vh
+Vh
+Vh
+Vh
+Vh
+Vh
+Vh
+Vh
+Vh
+Vh
+Vh
+Vh
+Vh
+DD
+Oi
 as
 as
 as
 as
 as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
+aC
 as
 as
 as
@@ -14093,36 +15431,36 @@ aa
 "}
 (74,1,1) = {"
 as
+aC
+as
+as
+as
+as
+Oi
+Pq
+Vh
+Vh
+Vh
+Vh
+Vh
+Vh
+Vh
+Vh
+Vh
+Vh
+Vh
+Vh
+Vh
+Vh
+Vh
+DD
+Oi
 as
 as
 as
 as
 as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
+aC
 as
 as
 as
@@ -14245,36 +15583,36 @@ aa
 "}
 (75,1,1) = {"
 as
+aC
+as
+as
+as
+as
+Oi
+Pq
+Vh
+Vh
+Vh
+Vh
+Vh
+Vh
+Vh
+Vh
+Vh
+Vh
+Vh
+Vh
+Vh
+Vh
+Vh
+DD
+Oi
 as
 as
 as
 as
 as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
+aC
 as
 as
 as
@@ -14397,36 +15735,36 @@ aa
 "}
 (76,1,1) = {"
 as
+aC
+as
+as
+as
+as
+Oi
+Pq
+Vh
+Vh
+Vh
+Vh
+Vh
+Vh
+Vh
+Vh
+Vh
+Vh
+Vh
+Vh
+Vh
+Vh
+Vh
+DD
+Oi
 as
 as
 as
 as
 as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-aa
-aa
-as
-as
-as
-as
-as
-as
-as
+aC
 as
 as
 as
@@ -14549,36 +15887,36 @@ aa
 "}
 (77,1,1) = {"
 as
+aC
+as
+as
+as
+as
+Oi
+Pq
+Vh
+Vh
+Vh
+Vh
+Vh
+Vh
+Vh
+Vh
+Vh
+Vh
+Vh
+Vh
+Vh
+Vh
+Vh
+DD
+Oi
 as
 as
 as
 as
 as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
+aC
 as
 as
 as
@@ -14701,36 +16039,36 @@ aa
 "}
 (78,1,1) = {"
 as
+aC
+as
+as
+as
+as
+Oi
+Pq
+Vh
+Vh
+Vh
+Vh
+Vh
+Vh
+Vh
+Vh
+Vh
+Vh
+Vh
+Vh
+Vh
+Vh
+Vh
+DD
+Oi
 as
 as
 as
 as
 as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
+aC
 as
 as
 as
@@ -14853,36 +16191,36 @@ aa
 "}
 (79,1,1) = {"
 as
+aC
+as
+as
+as
+as
+Oi
+Pq
+Vh
+Vh
+Vh
+Vh
+Vh
+Vh
+Vh
+Vh
+Vh
+Vh
+Vh
+Vh
+Vh
+Vh
+Vh
+DD
+Oi
 as
 as
 as
 as
 as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
+aC
 as
 as
 as
@@ -15005,36 +16343,36 @@ aa
 "}
 (80,1,1) = {"
 as
+aC
+as
+as
+as
+as
+Oi
+dG
+yx
+yx
+yx
+yx
+yx
+yx
+yx
+yx
+yx
+yx
+yx
+yx
+yx
+yx
+yx
+dG
+Oi
 as
 as
 as
 as
 as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
+aC
 as
 as
 as
@@ -15157,36 +16495,36 @@ aa
 "}
 (81,1,1) = {"
 as
+aC
 as
+Oi
+Oi
+Oi
+Oi
+iA
+iA
+iA
+iA
+iA
+iA
+iA
+iA
+dG
+IH
+XC
+XC
+XC
+XC
+XC
+XC
+HM
+Oi
+Oi
+Oi
+Oi
+Oi
 as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
+aC
 as
 as
 as
@@ -15309,36 +16647,36 @@ aa
 "}
 (82,1,1) = {"
 as
+aC
 as
+Oi
+MN
+MN
+iI
+MN
+MN
+lE
+Xg
+jn
+vG
+UA
+iA
+dG
+zj
+XC
+IV
+LY
+vK
+pe
+AO
+Gx
+xW
+SX
+by
+Au
+Oi
 as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
+aC
 as
 as
 as
@@ -15461,36 +16799,36 @@ aa
 "}
 (83,1,1) = {"
 as
+aC
 as
+Oi
+QN
+QN
+QN
+QN
+QN
+xG
+gX
+gX
+vG
+UO
+iA
+dG
+dG
+XC
+MR
+em
+GI
+sS
+KK
+Gx
+MR
+KK
+KK
+if
+Oi
 as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
+aC
 as
 as
 as
@@ -15613,36 +16951,36 @@ aa
 "}
 (84,1,1) = {"
 as
+aC
 as
+Oi
+gX
+gX
+gX
+gX
+gX
+gX
+gX
+gX
+vG
+La
+iA
+dG
+dG
+XC
+OJ
+KK
+KK
+KK
+KK
+fX
+KK
+KK
+GU
+Kj
+Oi
 as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
+aC
 as
 as
 as
@@ -15765,36 +17103,36 @@ aa
 "}
 (85,1,1) = {"
 as
+aC
 as
+Oi
+gX
+gX
+gX
+gX
+gX
+gX
+gX
+gX
+gX
+gX
+zl
+dG
+dG
+XC
+MR
+KK
+KK
+KK
+KK
+Gx
+MR
+KK
+KK
+YA
+Oi
 as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
+aC
 as
 as
 as
@@ -15917,36 +17255,36 @@ aa
 "}
 (86,1,1) = {"
 as
+aC
 as
+Oi
+QN
+QN
+QN
+QN
+QN
+xG
+gX
+gX
+gX
+gX
+dG
+dG
+dG
+XC
+nx
+MW
+KK
+zy
+KK
+Gx
+iG
+iY
+Ix
+rO
+Oi
 as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
+aC
 as
 as
 as
@@ -16069,36 +17407,36 @@ as
 "}
 (87,1,1) = {"
 as
+aC
 as
+Oi
+MS
+MS
+kV
+MS
+MS
+xG
+gX
+gX
+gX
+Oy
+iA
+dG
+dG
+XC
+XC
+ML
+fS
+XC
+fS
+HM
+HM
+HM
+HM
+HM
+Oi
 as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
+aC
 as
 as
 as
@@ -16221,36 +17559,36 @@ as
 "}
 (88,1,1) = {"
 as
+aC
 as
+Oi
+iA
+iA
+iA
+iA
+aw
+Ax
+bR
+bR
+mS
+Oy
+iA
+dG
+dG
+Ja
+xW
+NC
+KK
+ha
+KK
+NC
+JX
+HM
+dG
+kZ
+Oi
 as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
+aC
 as
 as
 as
@@ -16373,36 +17711,36 @@ as
 "}
 (89,1,1) = {"
 as
+aC
 as
+Oi
+cM
+ky
+Mf
+iA
+AY
+DJ
+hM
+sH
+Ze
+To
+iA
+dG
+dG
+sL
+KK
+KK
+KK
+ko
+KK
+KK
+KK
+zx
+dG
+dG
+Oi
 as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
+aC
 as
 as
 as
@@ -16525,36 +17863,36 @@ as
 "}
 (90,1,1) = {"
 as
+aC
 as
+Oi
+iA
+iT
+iA
+iA
+iA
+iA
+iA
+iA
+iA
+iA
+iA
+dG
+dG
+Bm
+WC
+LB
+KK
+ha
+KK
+LB
+Mh
+HM
+dG
+dG
+Oi
 as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
+aC
 as
 as
 as
@@ -16677,36 +18015,36 @@ as
 "}
 (91,1,1) = {"
 as
+aC
 as
+Oi
+sh
+sh
+sh
+sh
+sh
+sh
+sh
+lz
+sh
+nE
+dG
+dG
+dG
+XC
+XC
+ML
+ua
+XC
+ua
+XC
+XC
+XC
+XC
+XC
+Oi
 as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
+aC
 as
 as
 as
@@ -16829,36 +18167,36 @@ as
 "}
 (92,1,1) = {"
 as
+aC
 as
+Oi
+cg
+VT
+xl
+xl
+VT
+VT
+sh
+bs
+sh
+nE
+dG
+dG
+dG
+XC
+mT
+NC
+KK
+NC
+KK
+Us
+sY
+sY
+sY
+ou
+Oi
 as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
+aC
 as
 as
 as
@@ -16981,36 +18319,36 @@ as
 "}
 (93,1,1) = {"
 as
+aC
 as
+Oi
+py
+VT
+VT
+ZH
+dl
+VT
+VT
+VT
+sh
+nE
+Ot
+BJ
+Ot
+XC
+Ib
+KK
+KK
+KK
+KK
+WO
+po
+VP
+xV
+Pk
+Oi
 as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
+aC
 as
 as
 as
@@ -17133,36 +18471,36 @@ as
 "}
 (94,1,1) = {"
 as
+aC
 as
+Oi
+ap
+VT
+yr
+pr
+VT
+VT
+VT
+VT
+VT
+yv
+Ot
+pD
+Ot
+XC
+tw
+KK
+KK
+KK
+KK
+hg
+ju
+Uw
+ju
+Pk
+Oi
 as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
+aC
 as
 as
 as
@@ -17285,36 +18623,36 @@ as
 "}
 (95,1,1) = {"
 as
+aC
 as
+Oi
+Kp
+VT
+VT
+Of
+dl
+VT
+VT
+VT
+sh
+nE
+Ot
+Tz
+Ot
+XC
+Jn
+KK
+KK
+KK
+YA
+rC
+iZ
+Sp
+DQ
+Pk
+Oi
 as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
+aC
 as
 as
 as
@@ -17437,36 +18775,36 @@ as
 "}
 (96,1,1) = {"
 as
+aC
 as
+Oi
+es
+VT
+xl
+vv
+VT
+VT
+sh
+sh
+sh
+nE
+dG
+dG
+dG
+XC
+hX
+LB
+LB
+LB
+Mh
+Gc
+tG
+tG
+tG
+iQ
+Oi
 as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
+aC
 as
 as
 as
@@ -17589,36 +18927,36 @@ as
 "}
 (97,1,1) = {"
 as
+aC
 as
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
 as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
+aC
 as
 as
 as
@@ -17741,6 +19079,7 @@ as
 "}
 (98,1,1) = {"
 as
+aC
 as
 as
 as
@@ -17769,8 +19108,7 @@ as
 as
 as
 as
-as
-as
+aC
 as
 as
 as
@@ -17893,36 +19231,36 @@ as
 "}
 (99,1,1) = {"
 as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
 as
 as
 as

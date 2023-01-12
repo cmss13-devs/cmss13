@@ -199,7 +199,13 @@ const ObservableItem = (
 
   return (
     <Button
-      color={color ? 'dark-blue' : 'grey'}
+      color={'transparent'}
+      style={{
+        'border-color': color ? '#2185d0' : 'grey',
+        'border-style': 'solid',
+        'border-width': '1px',
+        'color': color ? 'white' : 'grey',
+      }}
       onClick={() => act('orbit', { ref: ref })}
       tooltip={!!health && <ObservableTooltip item={item} />}
       tooltipPosition="bottom-start">

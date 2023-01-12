@@ -168,11 +168,12 @@
 /// playtime for t3 castes and queen
 /client/proc/get_total_t3_playtime()
 	var/total_t3_playtime = 0
-
-	for(var/datum/caste_datum/caste as anything in RoleAuthority.castes_by_name)
+	var/datum/caste_datum/caste
+	for(var/caste_name in RoleAuthority.castes_by_name)
+		caste = RoleAuthority.castes_by_name[caste_name]
 		if(caste.tier < 3)
 			continue
-		total_t3_playtime += get_job_playtime(src, caste)
+		total_t3_playtime += get_job_playtime(src, caste_name)
 
 	return total_t3_playtime
 

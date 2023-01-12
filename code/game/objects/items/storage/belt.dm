@@ -357,8 +357,7 @@
     max_w_class = SIZE_MEDIUM
     max_storage_space = 30
 
-
-/obj/item/storage/belt/security/MP/CMB/full()
+/obj/item/storage/belt/security/MP/CMB/full/fill_preset_inventory()
     new /obj/item/weapon/gun/energy/taser(src)
     new /obj/item/device/flash(src)
     new /obj/item/weapon/melee/baton(src)
@@ -368,7 +367,7 @@
     new /obj/item/handcuffs(src)
     new /obj/item/explosive/grenade/flashbang(src)
 
-/obj/item/storage/belt/security/MP/CMB/synth()
+/obj/item/storage/belt/security/MP/CMB/synth/fill_preset_inventory()
     new /obj/item/explosive/grenade/flashbang(src)
     new /obj/item/device/flash(src)
     new /obj/item/weapon/melee/baton(src)

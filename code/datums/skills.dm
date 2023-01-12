@@ -1555,7 +1555,7 @@ CONTRACTORS
 COLONIAL MARSHALS
 ---------------------
 */
-/datum/skills/cmb
+/datum/skills/CMB
     name = "CMB Deputy"
     skills = list(
         SKILL_POLICE = SKILL_POLICE_SKILLED,
@@ -1570,7 +1570,7 @@ COLONIAL MARSHALS
         SKILL_ENDURANCE = SKILL_ENDURANCE_MASTER,
     )
 
-/datum/skills/cmb/leader
+/datum/skills/CMB/leader
     name = "CMB Marshal"
     skills = list(
         SKILL_POLICE = SKILL_POLICE_SKILLED,

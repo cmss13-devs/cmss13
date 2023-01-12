@@ -464,7 +464,9 @@
 	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
 	suit_restricted = list(/obj/item/clothing/suit/storage/marine/veteran/PMC,
 							/obj/item/clothing/suit/storage/marine/smartgunner/veteran/PMC,
-							/obj/item/clothing/suit/armor/vest/security)//For survivors.
+							/obj/item/clothing/suit/armor/vest/security,
+							/obj/item/clothing/suit/storage/hazardvest,
+							/obj/item/clothing/suit/storage/webbing)//For survivors.
 
 /obj/item/clothing/under/marine/veteran/PMC/leader
 	name = "\improper PMC command fatigues"

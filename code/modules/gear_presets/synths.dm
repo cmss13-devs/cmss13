@@ -90,7 +90,7 @@
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom/synth(H), WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/synthetic(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/RO(H), WEAR_JACKET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/brown(H), WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/storage/belt/utility/full(H), WEAR_WAIST)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/yellow(H), WEAR_HANDS)
 	H.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/black_vest/brown_vest(H), WEAR_ACCESSORY)
@@ -113,9 +113,11 @@
 	var/list/equipment_to_spawn = list(
 		WEAR_BODY = /obj/item/clothing/under/rank/synthetic/joe,
 		WEAR_BACK = /obj/item/storage/backpack/marine/satchel,
+		WEAR_IN_BACK = /obj/item/tool/weldingtool/hugetank,
 		WEAR_WAIST = /obj/item/storage/belt/utility/full,
 		WEAR_R_STORE = /obj/item/storage/pouch/tools/full,
-		WEAR_FEET = /obj/item/clothing/shoes/marine/knife
+		WEAR_FEET = /obj/item/clothing/shoes/marine/knife,
+		WEAR_L_HAND = /obj/item/weapon/melee/twohanded/fireaxe
 	)
 
 	var/survivor_variant = CIVILIAN_SURVIVOR
@@ -146,7 +148,6 @@
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress(H), WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full(H), WEAR_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/synth/full(H), WEAR_L_STORE)
-	H.equip_to_slot_or_del(new /obj/item/weapon/melee/twohanded/fireaxe(H), WEAR_L_HAND)
 
 /datum/equipment_preset/synth/survivor/load_id(mob/living/carbon/human/H, client/mob_client)
 	var/obj/item/clothing/under/uniform = H.w_uniform
@@ -163,13 +164,14 @@
 		WEAR_EYES = /obj/item/clothing/glasses/hud/health,
 		WEAR_BODY = /obj/item/clothing/under/rank/medical,
 		WEAR_BACK = /obj/item/storage/backpack/satchel/med,
-		WEAR_IN_BACK = /obj/item/device/healthanalyzer,
 		WEAR_IN_BACK = /obj/item/roller/surgical,
 		WEAR_JACKET = /obj/item/clothing/suit/storage/hazardvest/black,
+		WEAR_IN_JACKET = /obj/item/device/healthanalyzer,
 		WEAR_WAIST = /obj/item/storage/belt/medical/lifesaver/full,
 		WEAR_HANDS = /obj/item/clothing/gloves/latex,
 		WEAR_R_STORE = /obj/item/storage/pouch/tools/full,
-		WEAR_FEET = /obj/item/clothing/shoes/marine/knife
+		WEAR_FEET = /obj/item/clothing/shoes/marine/knife,
+		WEAR_L_HAND = /obj/item/weapon/melee/twohanded/fireaxe
 	)
 
 	survivor_variant = MEDICAL_SURVIVOR
@@ -184,14 +186,15 @@
 		WEAR_BODY = /obj/item/clothing/under/colonist/ua_civvies,
 		WEAR_BACK = /obj/item/storage/backpack/satchel/med,
 		WEAR_IN_BACK = /obj/item/storage/firstaid/adv,
-		WEAR_IN_BACK = /obj/item/device/healthanalyzer,
-		WEAR_IN_BACK = /obj/item/roller,
 		WEAR_IN_BACK = /obj/item/tool/extinguisher/mini,
+		WEAR_IN_BACK = /obj/item/roller,
 		WEAR_JACKET = /obj/item/clothing/suit/storage/windbreaker/windbreaker_fr,
+		WEAR_IN_JACKET = /obj/item/device/healthanalyzer,
 		WEAR_WAIST = /obj/item/storage/belt/medical/full,
 		WEAR_HANDS = /obj/item/clothing/gloves/latex,
 		WEAR_R_STORE = /obj/item/storage/pouch/tools/full,
-		WEAR_FEET = /obj/item/clothing/shoes/marine/knife
+		WEAR_FEET = /obj/item/clothing/shoes/marine/knife,
+		WEAR_L_HAND = /obj/item/weapon/melee/twohanded/fireaxe
 	)
 
 	survivor_variant = MEDICAL_SURVIVOR
@@ -204,14 +207,15 @@
 		WEAR_EYES = /obj/item/clothing/glasses/hud/health,
 		WEAR_BODY = /obj/item/clothing/under/rank/scientist,
 		WEAR_BACK = /obj/item/storage/backpack/satchel/vir,
-		WEAR_IN_BACK = /obj/item/device/motiondetector,
+		WEAR_IN_BACK = /obj/item/reagent_container/glass/beaker/vial/random/good,
 		WEAR_JACKET = /obj/item/clothing/suit/storage/labcoat/science,
 		WEAR_IN_JACKET = /obj/item/paper/research_notes/good,
-		WEAR_IN_JACKET = /obj/item/reagent_container/glass/beaker/vial/random/good,
 		WEAR_WAIST = /obj/item/storage/belt/medical/lifesaver/full,
 		WEAR_HANDS = /obj/item/clothing/gloves/purple,
+		WEAR_R_HAND = /obj/item/device/motiondetector,
 		WEAR_R_STORE = /obj/item/storage/pouch/tools/full,
-		WEAR_FEET = /obj/item/clothing/shoes/marine/knife
+		WEAR_FEET = /obj/item/clothing/shoes/marine/knife,
+		WEAR_L_HAND = /obj/item/weapon/melee/twohanded/fireaxe
 	)
 
 	survivor_variant = SCIENTIST_SURVIVOR
@@ -222,14 +226,15 @@
 		WEAR_HEAD = /obj/item/clothing/head/hardhat,
 		WEAR_BODY = /obj/item/clothing/under/rank/engineer,
 		WEAR_BACK = /obj/item/storage/backpack/satchel/eng,
-		WEAR_IN_BACK = /obj/item/weapon/melee/twohanded/fireaxe,
-		WEAR_IN_BACK = /obj/item/weapon/gun/smg/nailgun/compact,
-		WEAR_IN_BACK = /obj/item/ammo_magazine/smg/nailgun,
 		WEAR_IN_BACK = /obj/item/ammo_magazine/smg/nailgun,
 		WEAR_JACKET = /obj/item/clothing/suit/storage/hazardvest/yellow,
+		WEAR_IN_JACKET = /obj/item/ammo_magazine/smg/nailgun,
+		WEAR_IN_JACKET = /obj/item/ammo_magazine/smg/nailgun,
+		WEAR_J_STORE = /obj/item/weapon/gun/smg/nailgun/compact,
 		WEAR_WAIST = /obj/item/storage/belt/utility/full,
 		WEAR_R_STORE = /obj/item/storage/pouch/tools/full,
-		WEAR_FEET = /obj/item/clothing/shoes/marine/knife
+		WEAR_FEET = /obj/item/clothing/shoes/marine/knife,
+		WEAR_L_HAND = /obj/item/weapon/melee/twohanded/fireaxe
 	)
 
 	survivor_variant = ENGINEERING_SURVIVOR
@@ -245,15 +250,16 @@
 		WEAR_EYES = /obj/item/clothing/glasses/mgoggles,
 		WEAR_BODY = /obj/item/clothing/under/rank/janitor,
 		WEAR_BACK = /obj/item/storage/backpack/satchel/vir,
-		WEAR_IN_BACK = /obj/item/reagent_container/spray/cleaner,
 		WEAR_IN_BACK = /obj/item/reagent_container/glass/bucket,
-		WEAR_IN_BACK = /obj/item/tool/mop,
 		WEAR_IN_BACK = /obj/item/tool/wet_sign,
 		WEAR_IN_BACK = /obj/item/storage/bag/trash,
 		WEAR_JACKET = /obj/item/clothing/suit/storage/hazardvest,
+		WEAR_IN_JACKET = /obj/item/reagent_container/spray/cleaner,
 		WEAR_HANDS = /obj/item/clothing/gloves/purple,
+		WEAR_R_HAND = /obj/item/tool/mop,
 		WEAR_R_STORE = /obj/item/storage/pouch/tools/full,
-		WEAR_FEET = /obj/item/clothing/shoes/galoshes
+		WEAR_FEET = /obj/item/clothing/shoes/galoshes,
+		WEAR_L_HAND = /obj/item/weapon/melee/twohanded/fireaxe
 	)
 
 /datum/equipment_preset/synth/survivor/chef_synth
@@ -265,11 +271,11 @@
 		WEAR_BODY = /obj/item/clothing/under/rank/chef,
 		WEAR_BACK = /obj/item/storage/backpack/satchel/vir,
 		WEAR_IN_BACK = /obj/item/reagent_container/food/snacks/sliceable/lemoncake,
-		WEAR_IN_BACK = /obj/item/pizzabox/margherita,
-		WEAR_IN_BACK = /obj/item/reagent_container/spray/cleaner,
+		WEAR_R_HAND = /obj/item/pizzabox/margherita,
 		WEAR_JACKET = /obj/item/clothing/suit/chef,
 		WEAR_HANDS = /obj/item/clothing/gloves/latex,
-		WEAR_FEET = /obj/item/clothing/shoes/marine/knife
+		WEAR_FEET = /obj/item/clothing/shoes/marine/knife,
+		WEAR_L_HAND = /obj/item/weapon/melee/twohanded/fireaxe
 	)
 
 /datum/equipment_preset/synth/survivor/teacher_synth
@@ -278,13 +284,14 @@
 		WEAR_EYES = /obj/item/clothing/glasses/regular/hipster,
 		WEAR_BODY = /obj/item/clothing/under/colonist/wy_davisone,
 		WEAR_BACK = /obj/item/storage/backpack/satchel/norm,
-		WEAR_IN_BACK = /obj/item/storage/fancy/crayons,
 		WEAR_IN_BACK = /obj/item/reagent_container/food/snacks/wrapped/booniebars,
 		WEAR_IN_BACK = /obj/item/reagent_container/food/snacks/wy_chips/pepper,
 		WEAR_IN_BACK = /obj/item/reagent_container/spray/cleaner,
 		WEAR_JACKET = /obj/item/clothing/suit/storage/bomber/alt,
 		WEAR_IN_JACKET = /obj/item/storage/box/pdt_kit,
-		WEAR_FEET = /obj/item/clothing/shoes/marine/knife
+		WEAR_R_HAND = /obj/item/storage/fancy/crayons,
+		WEAR_FEET = /obj/item/clothing/shoes/marine/knife,
+		WEAR_L_HAND = /obj/item/storage/large_holster/machete/full
 	)
 
 /datum/equipment_preset/synth/survivor/bartender_synth
@@ -294,15 +301,16 @@
 		WEAR_FACE = /obj/item/clothing/mask/gas/fake_mustache,
 		WEAR_BODY = /obj/item/clothing/under/waiter,
 		WEAR_BACK = /obj/item/storage/backpack/satchel,
-		WEAR_IN_BACK = /obj/item/storage/beer_pack,
 		WEAR_IN_BACK = /obj/item/reagent_container/food/drinks/bottle/tequila,
 		WEAR_IN_BACK = /obj/item/reagent_container/food/drinks/bottle/cognac,
 		WEAR_IN_BACK = /obj/item/reagent_container/food/drinks/bottle/grenadine,
 		WEAR_IN_BACK = /obj/item/reagent_container/food/drinks/bottle/rum,
 		WEAR_JACKET = /obj/item/clothing/suit/storage/lawyer/bluejacket,
 		WEAR_HANDS = /obj/item/clothing/gloves/marine/black,
+		WEAR_R_HAND = /obj/item/storage/beer_pack,
 		WEAR_R_STORE = /obj/item/storage/pouch/tools/full,
-		WEAR_FEET = /obj/item/clothing/shoes/marine/knife
+		WEAR_FEET = /obj/item/clothing/shoes/marine/knife,
+		WEAR_L_HAND = /obj/item/weapon/melee/twohanded/fireaxe
 	)
 
 /datum/equipment_preset/synth/survivor/detective_synth
@@ -312,50 +320,53 @@
 		WEAR_EYES = /obj/item/clothing/glasses/sunglasses/sechud,
 		WEAR_BODY = /obj/item/clothing/under/det,
 		WEAR_BACK = /obj/item/storage/backpack/satchel/sec,
-		WEAR_IN_BACK = /obj/item/weapon/melee/telebaton,
-		WEAR_IN_BACK = /obj/item/book/manual/detective,
+		WEAR_IN_BACK = /obj/item/folder,
 		WEAR_IN_BACK = /obj/item/device/taperecorder,
-		WEAR_IN_BACK = /obj/item/device/camera,
 		WEAR_JACKET = /obj/item/clothing/suit/storage/det_suit/black,
+		WEAR_IN_JACKET = /obj/item/weapon/melee/telebaton,
 		WEAR_WAIST = /obj/item/storage/belt/security/MP/full,
 		WEAR_HANDS = /obj/item/clothing/gloves/black,
-		WEAR_FEET = /obj/item/clothing/shoes/marine/knife
+		WEAR_R_HAND = /obj/item/device/camera,
+		WEAR_FEET = /obj/item/clothing/shoes/marine/knife,
+		WEAR_L_HAND = /obj/item/weapon/melee/twohanded/fireaxe
 	)
 
 	survivor_variant = SECURITY_SURVIVOR
 
 /datum/equipment_preset/synth/survivor/cmb_synth
-    name = "Survivor - Synthetic - CMB Synth"
-    equipment_to_spawn = list(
-        WEAR_HEAD = /obj/item/clothing/head/beret/centcom/officer,
-        WEAR_L_EAR = /obj/item/device/radio/headset/distress/CMB,
-        WEAR_EYES = /obj/item/clothing/glasses/sunglasses/sechud,
-        WEAR_BODY = /obj/item/clothing/under/CM_uniform,
-        WEAR_BACK = /obj/item/storage/backpack/satchel/sec,
-        WEAR_IN_BACK = /obj/item/device/taperecorder,
-        WEAR_IN_BACK = /obj/item/device/camera,
-        WEAR_JACKET = /obj/item/clothing/suit/storage/CMB,
-        WEAR_IN_JACKET = /obj/item/weapon/melee/telebaton,
-        WEAR_WAIST = /obj/item/storage/belt/security/MP/CMB/synth,
-        WEAR_HANDS = /obj/item/clothing/gloves/marine/veteran,
-        WEAR_R_STORE = /obj/item/storage/pouch/tools/full,
-        WEAR_FEET = /obj/item/clothing/shoes/marine/knife
-    )
+	name = "Survivor - Synthetic - CMB Synth"
+	equipment_to_spawn = list(
+		WEAR_HEAD = /obj/item/clothing/head/beret/centcom/officer,
+		WEAR_L_EAR = /obj/item/device/radio/headset/distress/CMB,
+		WEAR_EYES = /obj/item/clothing/glasses/sunglasses/sechud,
+		WEAR_BODY = /obj/item/clothing/under/CM_uniform,
+		WEAR_BACK = /obj/item/storage/backpack/satchel/sec,
+		WEAR_IN_BACK = /obj/item/device/camera,
+		WEAR_JACKET = /obj/item/clothing/suit/storage/CMB,
+		WEAR_IN_JACKET = /obj/item/weapon/melee/telebaton,
+		WEAR_IN_JACKET = /obj/item/device/taperecorder,
+		WEAR_WAIST = /obj/item/storage/belt/security/MP/CMB/synth,
+		WEAR_HANDS = /obj/item/clothing/gloves/marine/veteran,
+		WEAR_R_STORE = /obj/item/storage/pouch/tools/full,
+		WEAR_FEET = /obj/item/clothing/shoes/marine/knife,
+		WEAR_L_HAND = /obj/item/storage/large_holster/machete/full
+	)
 
-    survivor_variant = SECURITY_SURVIVOR
+	survivor_variant = SECURITY_SURVIVOR
 
 /datum/equipment_preset/synth/survivor/security_synth
 	name = "Survivor - Synthetic - Colony Security Synth"
 	equipment_to_spawn = list(
 		WEAR_HEAD = /obj/item/clothing/head/soft/sec/corp,
 		WEAR_EYES = /obj/item/clothing/glasses/sunglasses/sechud,
-		WEAR_BODY = /obj/item/clothing/under/rank/security2,
+		WEAR_BODY = /obj/item/clothing/head/soft/sec/corp,
 		WEAR_BACK = /obj/item/storage/backpack/satchel/sec,
 		WEAR_IN_BACK = /obj/item/weapon/melee/telebaton,
 		WEAR_WAIST = /obj/item/storage/belt/security/MP/full,
 		WEAR_HANDS = /obj/item/clothing/gloves/black,
 		WEAR_R_STORE = /obj/item/storage/pouch/tools/full,
-		WEAR_FEET = /obj/item/clothing/shoes/marine/knife
+		WEAR_FEET = /obj/item/clothing/shoes/marine/knife,
+		WEAR_L_HAND = /obj/item/weapon/melee/twohanded/fireaxe
 	)
 
 	survivor_variant = SECURITY_SURVIVOR
@@ -368,12 +379,16 @@
         WEAR_EYES = /obj/item/clothing/glasses/sunglasses/sechud,
 		WEAR_BODY = /obj/item/clothing/under/marine/veteran/PMC,
 		WEAR_ACCESSORY = /obj/item/clothing/accessory/storage/droppouch,
+		WEAR_IN_ACCESSORY = /obj/item/handcuffs/zip,
+		WEAR_IN_ACCESSORY = /obj/item/handcuffs/zip,
 		WEAR_BACK = /obj/item/storage/backpack/lightpack,
+		WEAR_IN_BACK = /obj/item/explosive/grenade/flashbang,
 		WEAR_JACKET = /obj/item/clothing/suit/storage/webbing,
 		WEAR_IN_JACKET = /obj/item/weapon/melee/telebaton,
 		WEAR_IN_JACKET = /obj/item/device/binoculars,
 		WEAR_HANDS = /obj/item/clothing/gloves/marine/veteran/PMC,
-		WEAR_FEET = /obj/item/clothing/shoes/veteran/PMC/knife
+		WEAR_FEET = /obj/item/clothing/shoes/veteran/PMC/knife,
+		WEAR_L_HAND = /obj/item/storage/large_holster/machete/full
 	)
 
 	survivor_variant = SECURITY_SURVIVOR
@@ -385,12 +400,15 @@
 		WEAR_BACK = /obj/item/storage/backpack/satchel/lockable,
 		WEAR_IN_BACK = /obj/item/paper,
 		WEAR_IN_BACK = /obj/item/paper,
+		WEAR_IN_BACK = /obj/item/folder,
+		WEAR_IN_BACK = /obj/item/clipboard,
 		WEAR_IN_BACK = /obj/item/paper/research_notes/good,
 		WEAR_IN_BACK = /obj/item/tool/pen/clicky,
 		WEAR_IN_BACK = /obj/item/device/taperecorder,
 		WEAR_WAIST = /obj/item/storage/belt/utility/full,
 		WEAR_HANDS = /obj/item/clothing/gloves/botanic_leather,
-		WEAR_FEET = /obj/item/clothing/shoes/dress
+		WEAR_FEET = /obj/item/clothing/shoes/dress,
+		WEAR_L_HAND = /obj/item/weapon/melee/twohanded/fireaxe
 	)
 
 	survivor_variant = CORPORATE_SURVIVOR
@@ -402,11 +420,13 @@
 		WEAR_BODY = /obj/item/clothing/under/rank/scientist,
 		WEAR_BACK = /obj/item/storage/backpack/satchel,
 		WEAR_IN_BACK = /obj/item/storage/firstaid/toxin,
-		WEAR_IN_BACK = /obj/item/device/motiondetector,
+		WEAR_IN_BACK = /obj/item/tool/weldingtool/hugetank,
 		WEAR_JACKET = /obj/item/clothing/suit/bio_suit,
 		WEAR_WAIST = /obj/item/tank/emergency_oxygen/double,
 		WEAR_HANDS = /obj/item/clothing/gloves/black,
-		WEAR_FEET = /obj/item/clothing/shoes/marine/knife
+		WEAR_R_HAND = /obj/item/device/motiondetector,
+		WEAR_FEET = /obj/item/clothing/shoes/marine/knife,
+		WEAR_L_HAND = /obj/item/weapon/melee/twohanded/fireaxe
 	)
 
 	survivor_variant = ENGINEERING_SURVIVOR

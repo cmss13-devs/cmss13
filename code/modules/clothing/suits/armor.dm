@@ -41,6 +41,16 @@
 	armor_bio = CLOTHING_ARMOR_MEDIUM
 	armor_rad = CLOTHING_ARMOR_LOW
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUMLOW
+	allowed = list(/obj/item/weapon/gun/,
+		/obj/item/tank/emergency_oxygen,
+		/obj/item/device/flashlight,
+		/obj/item/ammo_magazine/,
+		/obj/item/weapon/melee/baton,
+		/obj/item/handcuffs,
+		/obj/item/device/binoculars,
+		/obj/item/storage/large_holster/machete,
+		/obj/item/storage/belt/gun/m4a3,
+		/obj/item/storage/belt/gun/m44)
 
 
 

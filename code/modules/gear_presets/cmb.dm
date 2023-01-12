@@ -28,7 +28,7 @@
 	H.r_eyes = colors[eye_color][1]
 	H.g_eyes = colors[eye_color][2]
 	H.b_eyes = colors[eye_color][3]
-	idtype = /obj/item/card/id/data
+	idtype = /obj/item/card/id/general
 	if(H.gender == MALE)
 		random_name = "[pick(first_names_male)] [pick(last_names)]"
 		H.h_style = pick("Crewcut", "Shaved Head", "Buzzcut", "Undercut", "Side Undercut", "Pvt. Joker", "Marine Fade", "Low Fade", "Medium Fade", "High Fade", "No Fade", "Coffee House Cut", "Flat Top",)
@@ -106,9 +106,9 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/CMB/standard
-	name = "Colonial Marshal Deputy"
+	name = "CMB - Colonial Marshal Deputy"
 	paygrade = "GS-9"
-	role_comm_title = "DEP"
+	role_comm_title = "CMB DEP"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = "CMB Deputy"
 	rank = JOB_CMB
@@ -156,12 +156,12 @@
 			H.equip_to_slot_or_del(new /obj/item/ammo_magazine/handful/shotgun/buckshot, WEAR_IN_R_STORE)
 			H.equip_to_slot_or_del(new /obj/item/ammo_magazine/handful/shotgun, WEAR_IN_R_STORE)
 			H.equip_to_slot_or_del(new /obj/item/ammo_magazine/handful/shotgun, WEAR_IN_R_STORE)
-			H.equip_to_slot_or_del(new /obj/item/ammo_magazine/shotgun/beanbag, WEAR_IN_R_STORE)
+			H.equip_to_slot_or_del(new /obj/item/ammo_magazine/handful/shotgun/beanbag, WEAR_IN_R_STORE)
 		if(7 to 8)
 			H.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/holster, WEAR_ACCESSORY)
 			H.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/highpower, WEAR_IN_ACCESSORY)
-			H.equip_to_slot_or_del(new /datum/ammo/bullet/pistol/highpower, WEAR_IN_ACCESSORY)
-			H.equip_to_slot_or_del(new /datum/ammo/bullet/pistol/highpower, WEAR_IN_ACCESSORY)
+			H.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/highpower, WEAR_IN_ACCESSORY)
+			H.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/highpower, WEAR_IN_ACCESSORY)
 			H.equip_to_slot_or_del(new /obj/item/weapon/gun/shotgun/pump/dual_tube/cmb, WEAR_J_STORE)
 			H.equip_to_slot_or_del(new /obj/item/handcuffs/zip, WEAR_IN_BACK)
 			H.equip_to_slot_or_del(new /obj/item/explosive/plastic/breaching_charge, WEAR_IN_BACK)
@@ -172,7 +172,7 @@
 			H.equip_to_slot_or_del(new /obj/item/ammo_magazine/handful/shotgun/buckshot, WEAR_IN_R_STORE)
 			H.equip_to_slot_or_del(new /obj/item/ammo_magazine/handful/shotgun, WEAR_IN_R_STORE)
 			H.equip_to_slot_or_del(new /obj/item/ammo_magazine/handful/shotgun, WEAR_IN_R_STORE)
-			H.equip_to_slot_or_del(new /obj/item/ammo_magazine/shotgun/beanbag, WEAR_IN_R_STORE)
+			H.equip_to_slot_or_del(new /obj/item/ammo_magazine/handful/shotgun/beanbag, WEAR_IN_R_STORE)
 		if(9 to 10)
 			H.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/holster, WEAR_ACCESSORY)
 			H.equip_to_slot_or_del(new /obj/item/weapon/gun/revolver/cmb, WEAR_IN_ACCESSORY)
@@ -191,9 +191,9 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/CMB/leader
-	name = "The Colonial Marshal"
+	name = "CMB - The Colonial Marshal"
 	paygrade = "GS-13"
-	role_comm_title = "MAR"
+	role_comm_title = "CMB MAR"
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	assignment = "CMB Marshal"
@@ -230,7 +230,7 @@
 	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/handful/shotgun/buckshot/incendiary, WEAR_IN_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/handful/shotgun/incendiary, WEAR_IN_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/handful/shotgun, WEAR_IN_R_STORE)
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/shotgun/beanbag, WEAR_IN_R_STORE)
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/handful/shotgun/beanbag, WEAR_IN_R_STORE)
 	//backpack
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/sec, WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/holdout, WEAR_IN_BACK)
@@ -244,7 +244,7 @@
 
 //*****************************************************************************************************/
 /datum/equipment_preset/CMB/synth
-	name = "Colonial Marshal Synthetic"
+	name = "CMB - Colonial Marshal Investigative Synthetic"
 	paygrade = "GS-C.9"
 	role_comm_title = "CMB SYN"
 	flags = EQUIPMENT_PRESET_EXTRA
@@ -303,7 +303,6 @@
 	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/revolver/cmb, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/explosive/plastic/breaching_charge, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/flashbang, WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/flashbang, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/device/radio, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/device/camera, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/device/taperecorder, WEAR_IN_BACK)
@@ -350,10 +349,10 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/CMB/liaison
-	name = "ICC Liaison - CMB"
+	name = "CMB - ICC Liaison"
 	paygrade = "GS-6"
 	idtype = /obj/item/card/id/silver/cl
-	role_comm_title = "ICC"
+	role_comm_title = "ICC Rep."
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	assignment = "Interstellar Commerce Commission Corporate Liaison"
@@ -386,6 +385,7 @@
 	H.equip_to_slot_or_del(new /obj/item/tool/lighter/zippo, WEAR_IN_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/spacecash/c1000, WEAR_IN_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/spacecash/c1000, WEAR_IN_R_STORE)
+	H.equip_to_slot_or_del(new /obj/item/device/taperecorder, WEAR_IN_R_STORE)
 	//backpack and stuff in it
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/lockable/liaison, WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/reagent_container/spray/pepper, WEAR_IN_BACK)
@@ -395,14 +395,13 @@
 	H.equip_to_slot_or_del(new /obj/item/folder/blue, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/device/radio, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/clipboard, WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/device/taperecorder, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/tool/crowbar/red, WEAR_IN_BACK)
 
 
 //*****************************************************************************************************/
 
 /datum/equipment_preset/CMB/observer
-	name = "Interstellar Human Rights Observer - CMB"
+	name = "CMB - Interstellar Human Rights Observer"
 	paygrade = "GS-3"
 	role_comm_title = "OBS"
 	flags = EQUIPMENT_PRESET_EXTRA

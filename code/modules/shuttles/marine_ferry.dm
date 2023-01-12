@@ -540,16 +540,15 @@
 				break
 		sleep(1)
 
-	for(var/i in GLOB.alive_human_list) //knock down mobs
-		var/mob/living/carbon/human/M = i
-		if(M.z != T_trg.z) continue
-		if(M.buckled)
-			to_chat(M, SPAN_WARNING("You are jolted against [M.buckled]!"))
-			shake_camera(M, 3, 1)
+	for(var/mob/living/carbon/affected_mob in (GLOB.alive_human_list + GLOB.living_xeno_list)) //knock down mobs
+		if(affected_mob.z != T_trg.z) continue
+		if(affected_mob.buckled)
+			to_chat(affected_mob, SPAN_WARNING("You are jolted against [affected_mob.buckled]!"))
+			shake_camera(affected_mob, 3, 1)
 		else
-			to_chat(M, SPAN_WARNING("The floor jolts under your feet!"))
-			shake_camera(M, 10, 1)
-			M.apply_effect(3, WEAKEN)
+			to_chat(affected_mob, SPAN_WARNING("The floor jolts under your feet!"))
+			shake_camera(affected_mob, 10, 1)
+			affected_mob.apply_effect(3, WEAKEN)
 
 	addtimer(CALLBACK(src, PROC_REF(disable_latejoin)), 3 MINUTES) // latejoin cryorines have 3 minutes to get the hell out
 

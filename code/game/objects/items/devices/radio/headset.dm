@@ -64,6 +64,7 @@
 				default_freq = cycled_channel
 
 /obj/item/device/radio/headset/Destroy()
+	SSminimaps.remove_marker(wearer)
 	wearer = null
 	return ..()
 
@@ -233,8 +234,8 @@
 		wearer = user
 		RegisterSignal(user, COMSIG_MOB_STAT_SET_ALIVE, PROC_REF(update_minimap_icon))
 		RegisterSignal(user, COMSIG_MOB_LOGIN, PROC_REF(add_hud_tracker))
-		RegisterSignal(user, COMSIG_MOB_DEATH, PROC_REF(set_dead_on_minimap))
-		RegisterSignal(user, COMSIG_HUMAN_SET_UNDEFIBBABLE, PROC_REF(set_undefibbable_on_minimap))
+		RegisterSignal(user, COMSIG_MOB_DEATH, PROC_REF(update_minimap_icon))
+		RegisterSignal(user, COMSIG_HUMAN_SET_UNDEFIBBABLE, PROC_REF(update_minimap_icon))
 		if(headset_hud_on)
 			var/datum/mob_hud/H = huds[hud_type]
 			H.add_hud_to(user)
@@ -243,7 +244,7 @@
 				user.show_hud_tracker()
 			if(misc_tracking)
 				SStracking.start_misc_tracking(user)
-			add_minimap()
+			INVOKE_NEXT_TICK(src, PROC_REF(update_minimap_icon), wearer)
 
 /obj/item/device/radio/headset/dropped(mob/living/carbon/human/user)
 	UnregisterSignal(user, list(
@@ -293,7 +294,7 @@
 					user.show_hud_tracker()
 				if(misc_tracking)
 					SStracking.start_misc_tracking(user)
-				add_minimap()
+				update_minimap_icon()
 			else
 				H.remove_hud_from(usr)
 				if(user.hud_used?.locate_leader)
@@ -321,10 +322,6 @@
 	to_chat(user, SPAN_NOTICE("You set your headset's tracker to point to <b>[new_track]</b>."))
 	locate_setting = tracking_options[new_track]
 
-/obj/item/device/radio/headset/proc/add_minimap()
-	SSminimaps.remove_marker(wearer)
-	INVOKE_NEXT_TICK(src, PROC_REF(update_minimap_icon), wearer) //Mobs are spawned inside nullspace sometimes so this is to avoid that hijinks
-
 /obj/item/device/radio/headset/proc/update_minimap_icon()
 	SIGNAL_HANDLER
 	SSminimaps.remove_marker(wearer)
@@ -335,6 +332,7 @@
 	if(!turf_gotten)
 		return
 	var/z_level = turf_gotten.z
+
 	if(wearer.assigned_equipment_preset.always_minimap_visible == TRUE || wearer.stat == DEAD) //We show to all marines if we have this flag, separated by faction
 		if(hud_type == MOB_HUD_FACTION_USCM)
 			marker_flags = MINIMAP_FLAG_MARINE
@@ -344,62 +342,30 @@
 			marker_flags = MINIMAP_FLAG_MARINE_PMC
 		else if(hud_type == MOB_HUD_FACTION_CLF)
 			marker_flags = MINIMAP_FLAG_MARINE_CLF
+
 	if(wearer.undefibbable)
-		if(wearer.assigned_squad)
-			SSminimaps.add_marker(wearer, z_level, marker_flags, wearer.assigned_equipment_preset.minimap_icon, overlay_iconstates = list("undefibbable"), color_code = wearer.assigned_squad.minimap_color, background = "squad-background")
-		else
-			SSminimaps.add_marker(wearer, z_level, marker_flags, wearer.assigned_equipment_preset.minimap_icon, overlay_iconstates = list("undefibbable"), color_code = wearer.assigned_equipment_preset.minimap_background)
+		set_undefibbable_on_minimap(z_level, marker_flags)
 		return
+
 	if(wearer.stat == DEAD)
-		if(wearer.assigned_squad)
-			SSminimaps.add_marker(wearer, z_level, marker_flags, wearer.assigned_equipment_preset.minimap_icon, overlay_iconstates = list("defibbable"), color_code = wearer.assigned_squad.minimap_color, background = "squad-background")
-		else
-			SSminimaps.add_marker(wearer, z_level, marker_flags, wearer.assigned_equipment_preset.minimap_icon, overlay_iconstates = list("defibbable", color_code = wearer.assigned_equipment_preset.minimap_background))
+		set_dead_on_minimap(z_level, marker_flags)
 		return
+
 	if(wearer.assigned_squad)
 		SSminimaps.add_marker(wearer, z_level, marker_flags, wearer.assigned_equipment_preset.minimap_icon, color_code = wearer.assigned_squad.minimap_color, background = "squad-background")
 		return
-	SSminimaps.add_marker(wearer, z_level, marker_flags, wearer.assigned_equipment_preset.minimap_icon, color_code = wearer.assigned_equipment_preset.minimap_background)
+
+	SSminimaps.add_marker(wearer, z_level, marker_flags, wearer.assigned_equipment_preset.minimap_icon, color_code = wearer.assigned_equipment_preset?.minimap_background)
 
 ///Change the minimap icon to a dead icon
-/obj/item/device/radio/headset/proc/set_dead_on_minimap()
-	SIGNAL_HANDLER
-	SSminimaps.remove_marker(wearer)
-	if(!wearer.assigned_equipment_preset || !wearer.assigned_equipment_preset.minimap_icon)
-		return
-	var/marker_flags
-	if(hud_type == MOB_HUD_FACTION_USCM)
-		marker_flags = MINIMAP_FLAG_MARINE
-	else if(hud_type == MOB_HUD_FACTION_UPP)
-		marker_flags = MINIMAP_FLAG_MARINE_UPP
-	else if(hud_type == MOB_HUD_FACTION_PMC)
-		marker_flags = MINIMAP_FLAG_MARINE_PMC
-	else if(hud_type == MOB_HUD_FACTION_CLF)
-		marker_flags = MINIMAP_FLAG_MARINE_CLF
-	var/turf/turf_gotten = get_turf(wearer)
-	var/z_level = turf_gotten.z
+/obj/item/device/radio/headset/proc/set_dead_on_minimap(z_level, marker_flags)
 	if(wearer.assigned_squad)
 		SSminimaps.add_marker(wearer, z_level, marker_flags, wearer.assigned_equipment_preset.minimap_icon, overlay_iconstates = list("defibbable"), color_code = wearer.assigned_squad.minimap_color)
 		return
 	SSminimaps.add_marker(wearer, z_level, marker_flags, wearer.assigned_equipment_preset.minimap_icon, overlay_iconstates = list("defibbable"), color_code = wearer.assigned_equipment_preset.minimap_background)
 
 ///Change the minimap icon to a undefibbable icon
-/obj/item/device/radio/headset/proc/set_undefibbable_on_minimap()
-	SIGNAL_HANDLER
-	SSminimaps.remove_marker(wearer)
-	if(!wearer.assigned_equipment_preset || !wearer.assigned_equipment_preset.minimap_icon)
-		return
-	var/marker_flags
-	if(hud_type == MOB_HUD_FACTION_USCM)
-		marker_flags = MINIMAP_FLAG_MARINE
-	else if(hud_type == MOB_HUD_FACTION_UPP)
-		marker_flags = MINIMAP_FLAG_MARINE_UPP
-	else if(hud_type == MOB_HUD_FACTION_PMC)
-		marker_flags = MINIMAP_FLAG_MARINE_PMC
-	else if(hud_type == MOB_HUD_FACTION_CLF)
-		marker_flags = MINIMAP_FLAG_MARINE_CLF
-	var/turf/turf_gotten = get_turf(wearer)
-	var/z_level = turf_gotten.z
+/obj/item/device/radio/headset/proc/set_undefibbable_on_minimap(z_level, marker_flags)
 	if(wearer.assigned_squad)
 		SSminimaps.add_marker(wearer, z_level, marker_flags, wearer.assigned_equipment_preset.minimap_icon, overlay_iconstates = list("undefibbable"), color_code = wearer.assigned_squad.minimap_color)
 		return

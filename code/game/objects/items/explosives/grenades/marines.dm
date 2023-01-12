@@ -14,7 +14,7 @@
 	icon_state = "grenade"
 	det_time = 40
 	item_state = "grenade_hedp"
-	dangerous = 1
+	dangerous = TRUE
 	underslug_launchable = TRUE
 	var/explosion_power = 100
 	var/explosion_falloff = 25
@@ -202,7 +202,7 @@
 	det_time = 40
 	item_state = "grenade_fire"
 	flags_equip_slot = SLOT_WAIST
-	dangerous = 1
+	dangerous = TRUE
 	underslug_launchable = TRUE
 	var/flame_level = BURN_TIME_TIER_5 + 5 //Type B standard, 50 base + 5 from chemfire code.
 	var/burn_level = BURN_LEVEL_TIER_2
@@ -334,7 +334,7 @@
 	item_state = "grenade_phos"
 	underslug_launchable = TRUE
 	var/datum/effect_system/smoke_spread/phosphorus/smoke
-	dangerous = 1
+	dangerous = TRUE
 	harmful = TRUE
 	var/smoke_radius = 3
 
@@ -490,7 +490,7 @@
 	desc = "A harmless reusable version of the M40 HEDP, used for training. Capable of being loaded in the M92 Launcher, or thrown by hand."
 	icon_state = "training_grenade"
 	item_state = "grenade_training"
-	dangerous = 0
+	dangerous = FALSE
 	harmful = FALSE
 	antigrief_protection = FALSE
 

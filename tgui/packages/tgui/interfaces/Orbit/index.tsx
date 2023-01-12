@@ -4,7 +4,7 @@ import { capitalizeFirst } from 'common/string';
 import { useBackend, useLocalState } from 'tgui/backend';
 import { Box, Button, Collapsible, ColorBox, Icon, Input, LabeledList, Section, Stack } from 'tgui/components';
 import { Window } from 'tgui/layouts';
-import { getDisplayColor, getDisplayName, isJobOrNameMatch } from './helpers';
+import { getDisplayName, isJobOrNameMatch, getHealthColor } from './helpers';
 import type { Observable, OrbitData } from './types';
 
 export const Orbit = (props, context) => {
@@ -199,14 +199,16 @@ const ObservableItem = (
 
   return (
     <Button
-      color={'dark-blue'}
+      color={color ? 'dark-blue' : 'grey'}
       onClick={() => act('orbit', { ref: ref })}
       tooltip={!!health && <ObservableTooltip item={item} />}
       tooltipPosition="bottom-start">
-      <ColorBox
-        color={getDisplayColor(item, !!color)}
-        style={{ 'margin-right': '0.5em' }}
-      />
+      {!!health && (
+        <ColorBox
+          color={getHealthColor(health)}
+          style={{ 'margin-right': '0.5em' }}
+        />
+      )}
       {capitalizeFirst(getDisplayName(full_name, nickname))}
       {!!orbiters && (
         <>

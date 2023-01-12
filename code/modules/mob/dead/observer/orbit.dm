@@ -133,7 +133,7 @@
 				else
 					serialized["background_color"] = human.assigned_equipment_preset.minimap_background
 
-				if(SSticker.mode.is_in_endgame == TRUE && !is_mainship_level(M.z))
+				if(SSticker.mode.is_in_endgame == TRUE && !is_mainship_level(M.z) && !(human.faction in FACTION_LIST_ERT))
 					escaped += list(serialized)
 				else if(isSynth(human) && !isInfiltratorSynthetic(human))
 					synthetics += list(serialized)

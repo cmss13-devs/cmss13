@@ -778,6 +778,7 @@
 	name = "PMC-CCT headset"
 	desc = "A special headset used by corporate personnel. Channels are as follows: :o - colony, #e - engineering, #o - JTAC, #p - general"
 	initial_keys = list(/obj/item/device/encryptionkey/colony, /obj/item/device/encryptionkey/PMC/engi, /obj/item/device/encryptionkey/mcom/cl)
+
 /obj/item/device/radio/headset/distress/PMC/cct/hvh
 	initial_keys = list(/obj/item/device/encryptionkey/colony, /obj/item/device/encryptionkey/PMC/engi)
 
@@ -785,6 +786,7 @@
 	name = "PMC-MED headset"
 	desc = "A special headset used by corporate personnel. Channels are as follows: :o - colony, #f - medical, #p - general"
 	initial_keys = list(/obj/item/device/encryptionkey/colony, /obj/item/device/encryptionkey/PMC/medic, /obj/item/device/encryptionkey/mcom/cl)
+
 /obj/item/device/radio/headset/distress/PMC/medic/hvh
 	initial_keys = list(/obj/item/device/encryptionkey/colony, /obj/item/device/encryptionkey/PMC/medic)
 
@@ -792,6 +794,7 @@
 	name = "PMC-CMD headset"
 	desc = "A special headset used by corporate personnel. Channels are as follows: :o - colony, #z - command, #f - medical, #e - engineering, #o - JTAC, #p - general"
 	initial_keys = list(/obj/item/device/encryptionkey/colony, /obj/item/device/encryptionkey/PMC/command, /obj/item/device/encryptionkey/mcom/cl)
+
 /obj/item/device/radio/headset/distress/PMC/command/hvh
 	initial_keys = list(/obj/item/device/encryptionkey/colony, /obj/item/device/encryptionkey/PMC/command)
 
@@ -800,6 +803,7 @@
 	desc = "A special headset used by corporate directors. Channels are as follows: :o - colony, #z - command, #f - medical, #e - engineering, #o - JTAC, #p - general"
 	maximum_keys = 4
 	initial_keys = list(/obj/item/device/encryptionkey/colony, /obj/item/device/encryptionkey/PMC/command, /obj/item/device/encryptionkey/commando, /obj/item/device/encryptionkey/mcom/cl)
+
 /obj/item/device/radio/headset/distress/PMC/command/director/hvh
 	maximum_keys = 3
 	initial_keys = list(/obj/item/device/encryptionkey/colony, /obj/item/device/encryptionkey/PMC/command, /obj/item/device/encryptionkey/commando)

@@ -462,7 +462,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	uniform_restricted = list(/obj/item/clothing/under/marine/rto)
 	var/obj/structure/transmitter/internal/internal_transmitter
 
-	var/phone_category = "RTO"
+	var/phone_category = PHONE_RTO
 	var/network_receive = FACTION_MARINE
 	var/list/networks_transmit = list(FACTION_MARINE)
 	var/base_icon
@@ -578,13 +578,13 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	max_storage_space = 10
 
 	uniform_restricted = null
-	phone_category = "Marine"
+	phone_category = PHONE_MARINE
 
 
 /obj/item/storage/backpack/marine/satchel/rto/small/upp_net
 	network_receive = FACTION_UPP
 	networks_transmit = list(FACTION_UPP)
-	phone_category = "Soldier"
+	phone_category = PHONE_UPP_SOLDIER
 
 /obj/item/storage/backpack/marine/satchel/rto/io
 	uniform_restricted = list(/obj/item/clothing/under/marine/officer/intel)

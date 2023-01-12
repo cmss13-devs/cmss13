@@ -35,6 +35,12 @@
 	tag = "icon-blue (NORTHEAST)"
 	},
 /area/tdome)
+"ai" = (
+/obj/structure/machinery/autolathe/full,
+/turf/open/floor/plating/almayer,
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
 "aj" = (
 /obj/structure/machinery/cm_vending/sorted/tech/tool_storage,
 /obj/effect/spider/stickyweb,
@@ -464,6 +470,16 @@
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile";
 	tag = "icon-sterile"
+	},
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
+"eo" = (
+/obj/structure/surface/table/reinforced/prison,
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "sterile_green_side";
+	tag = "icon-sterile_green_side (EAST)"
 	},
 /area/adminlevel/ert_station/shuttle_dispatch{
 	name = "W-Y Space Station"
@@ -2209,6 +2225,12 @@
 	tag = "icon-sterile_green_side (NORTHWEST)"
 	},
 /area/adminlevel/ert_station)
+"An" = (
+/obj/structure/machinery/cm_vending/sorted/tech/electronics_storage,
+/turf/open/floor/plating/almayer,
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
 "Au" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/reagent_container/spray/cleaner{
@@ -3688,19 +3710,6 @@
 	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/ert_station)
-"Sp" = (
-/obj/structure/machinery/camera/autoname/almayer/containment/hidden{
-	dir = 8;
-	name = "ship-grade camera";
-	tag = "icon-camera (EAST)"
-	},
-/turf/open/floor/almayer/research/containment/floor2{
-	dir = 8;
-	tag = "icon-containment_floor_2 (WEST)"
-	},
-/area/adminlevel/ert_station/shuttle_dispatch{
-	name = "W-Y Space Station"
-	})
 "Sr" = (
 /turf/open/space,
 /area/space/almayer/lifeboat_dock)
@@ -4195,6 +4204,12 @@
 	tag = "icon-sterile"
 	},
 /area/adminlevel/ert_station)
+"Yq" = (
+/obj/structure/surface/table/reinforced/prison,
+/turf/open/floor/plating/almayer,
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
 "Ys" = (
 /turf/open/floor/almayer{
 	dir = 5;
@@ -17624,7 +17639,7 @@ KK
 NC
 JX
 HM
-dG
+Yq
 kZ
 Oi
 as
@@ -17928,8 +17943,8 @@ KK
 LB
 Mh
 HM
-dG
-dG
+An
+ai
 Oi
 as
 aC
@@ -18687,7 +18702,7 @@ KK
 YA
 rC
 iZ
-Sp
+VP
 DQ
 Pk
 Oi
@@ -18834,8 +18849,8 @@ dG
 XC
 hX
 LB
-LB
-LB
+eo
+eo
 DX
 Gc
 tG

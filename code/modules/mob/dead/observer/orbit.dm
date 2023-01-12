@@ -70,7 +70,7 @@
 	var/list/vehicles = list()
 	var/list/escaped = list()
 
-	var/is_admin = check_other_rights(user.client, R_ADMIN, FALSE)
+	var/is_admin = check_other_rights(user?.client, R_ADMIN, FALSE)
 	var/list/pois = getpois(skip_mindless = !is_admin, specify_dead_role = FALSE)
 	for(var/name in pois)
 		var/list/serialized = list()

@@ -126,7 +126,9 @@
 
 				serialized["job"] = id_card?.assignment ? id_card.assignment : human.job
 				serialized["nickname"] = human.real_name
-				serialized["icon"] = human.assigned_equipment_preset.minimap_icon
+
+				var/icon = human.assigned_equipment_preset?.minimap_icon
+				serialized["icon"] = icon ? icon : "private"
 
 				if(human.assigned_squad)
 					serialized["background_color"] = human.assigned_squad.color ? squad_colors[human.assigned_squad.color] : human.assigned_squad.minimap_color

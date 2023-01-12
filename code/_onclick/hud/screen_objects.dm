@@ -103,6 +103,8 @@
 	user.update_action_buttons()
 	return 1
 
+/atom/movable/screen/action_button/ghost/minimap/get_button_screen_loc(button_number)
+	return "SOUTH:6,CENTER+1:24"
 
 /atom/movable/screen/storage
 	name = "storage"

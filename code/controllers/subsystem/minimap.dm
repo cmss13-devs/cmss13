@@ -415,6 +415,7 @@ SUBSYSTEM_DEF(minimaps)
 /datum/action/minimap/observer
 	minimap_flags = MINIMAP_FLAG_XENO|MINIMAP_FLAG_MARINE
 	marker_flags = NONE
+	hidden = TRUE
 
 /datum/tacmap
 	var/allowed_flags = MINIMAP_FLAG_MARINE

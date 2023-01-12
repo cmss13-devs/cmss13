@@ -53,6 +53,7 @@
 	var/datum/health_scan/last_health_display
 	var/ghost_orbit = GHOST_ORBIT_CIRCLE
 	var/own_orbit_size = 0
+	var/datum/action/minimap/observer/minimap
 	alpha = 127
 
 /mob/dead/observer/verb/toggle_ghostsee()
@@ -107,6 +108,9 @@
 	if(!name) //To prevent nameless ghosts
 		name = capitalize(pick(first_names_male)) + " " + capitalize(pick(last_names))
 	change_real_name(src, name)
+
+	minimap = new
+	minimap.give_to(src)
 
 	if(SSticker.mode && SSticker.mode.flags_round_type & MODE_PREDATOR)
 		addtimer(CALLBACK(GLOBAL_PROC, PROC_REF(to_chat), src, "<span style='color: red;'>This is a <B>PREDATOR ROUND</B>! If you are whitelisted, you may Join the Hunt!</span>"), 2 SECONDS)
@@ -182,8 +186,6 @@
 /mob/dead/observer/Login()
 	..()
 	client.move_delay = MINIMAL_MOVEMENT_INTERVAL
-
-	give_action(src, /datum/action/minimap/observer)
 
 /mob/dead/observer/Destroy()
 	QDEL_NULL(orbit_menu)

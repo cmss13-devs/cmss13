@@ -261,7 +261,7 @@
 			user.hide_hud_tracker()
 		if(misc_tracking)
 			SStracking.stop_misc_tracking(user)
-		remove_minimap()
+		SSminimaps.remove_marker(user)
 	wearer = null
 	..()
 
@@ -300,7 +300,7 @@
 					user.hide_hud_tracker()
 				if(misc_tracking)
 					SStracking.stop_misc_tracking(user)
-				remove_minimap()
+				SSminimaps.remove_marker(wearer)
 	to_chat(usr, SPAN_NOTICE("You toggle [src]'s headset HUD [headset_hud_on ? "on":"off"]."))
 	playsound(src,'sound/machines/click.ogg', 20, 1)
 
@@ -322,7 +322,7 @@
 	locate_setting = tracking_options[new_track]
 
 /obj/item/device/radio/headset/proc/add_minimap()
-	remove_minimap()
+	SSminimaps.remove_marker(wearer)
 	INVOKE_NEXT_TICK(src, PROC_REF(update_minimap_icon), wearer) //Mobs are spawned inside nullspace sometimes so this is to avoid that hijinks
 
 /obj/item/device/radio/headset/proc/update_minimap_icon()
@@ -381,7 +381,7 @@
 	if(wearer.assigned_squad)
 		SSminimaps.add_marker(wearer, z_level, marker_flags, wearer.assigned_equipment_preset.minimap_icon, overlay_iconstates = list("defibbable"), color_code = wearer.assigned_squad.minimap_color)
 		return
-	SSminimaps.add_marker(wearer, z_level, marker_flags, wearer.assigned_equipment_preset.minimap_icon, overlay_iconstates = list("defibbable"))
+	SSminimaps.add_marker(wearer, z_level, marker_flags, wearer.assigned_equipment_preset.minimap_icon, overlay_iconstates = list("defibbable"), color_code = wearer.assigned_equipment_preset.minimap_background)
 
 ///Change the minimap icon to a undefibbable icon
 /obj/item/device/radio/headset/proc/set_undefibbable_on_minimap()
@@ -403,10 +403,7 @@
 	if(wearer.assigned_squad)
 		SSminimaps.add_marker(wearer, z_level, marker_flags, wearer.assigned_equipment_preset.minimap_icon, overlay_iconstates = list("undefibbable"), color_code = wearer.assigned_squad.minimap_color)
 		return
-	SSminimaps.add_marker(wearer, z_level, marker_flags, wearer.assigned_equipment_preset.minimap_icon, overlay_iconstates = list("undefibbable"))
-
-/obj/item/device/radio/headset/proc/remove_minimap()
-	SSminimaps.remove_marker(wearer)
+	SSminimaps.add_marker(wearer, z_level, marker_flags, wearer.assigned_equipment_preset.minimap_icon, overlay_iconstates = list("undefibbable"), color_code = wearer.assigned_equipment_preset.minimap_background)
 
 /obj/item/device/radio/headset/binary
 	initial_keys = list(/obj/item/device/encryptionkey/binary)

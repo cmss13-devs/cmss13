@@ -6,7 +6,7 @@
 	var/brightness_on = 4 //luminosity when on
 	var/on = 0
 	var/hardhat_color = "yellow" //Determines used sprites: hardhat[on]_[hardhat_color]
-	armor_melee = CLOTHING_ARMOR_MEDIUM
+	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
 	armor_bullet = CLOTHING_ARMOR_LOW
 	armor_laser = CLOTHING_ARMOR_LOW
 	armor_energy = CLOTHING_ARMOR_LOW

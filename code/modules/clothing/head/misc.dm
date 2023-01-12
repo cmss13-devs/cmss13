@@ -147,7 +147,7 @@
 	icon_state = "hgpiratecap"
 	item_state = "hgpiratecap"
 	flags_armor_protection = 0
-	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_melee = CLOTHING_ARMOR_MEDIUM
 	armor_bullet = CLOTHING_ARMOR_MEDIUMLOW
 	armor_laser = CLOTHING_ARMOR_LOW
 	armor_energy = CLOTHING_ARMOR_LOW
@@ -185,7 +185,7 @@
 	desc = "Belongs to someone very important. Has minor protection to all damage types"
 	flags_armor_protection = BODY_FLAG_HEAD
 
-	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_melee = CLOTHING_ARMOR_MEDIUM
 	armor_bullet = CLOTHING_ARMOR_MEDIUMLOW
 	armor_laser = CLOTHING_ARMOR_LOW
 	armor_energy = CLOTHING_ARMOR_LOW
@@ -201,7 +201,7 @@
 	desc = "Belongs to someone important. Offers minor protection from all forms of damage."
 	flags_armor_protection = BODY_FLAG_HEAD
 
-	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
+	armor_melee = CLOTHING_ARMOR_LOW
 	armor_bullet = CLOTHING_ARMOR_LOW
 	armor_laser = CLOTHING_ARMOR_LOW
 	armor_energy = CLOTHING_ARMOR_LOW

@@ -1,4 +1,4 @@
-/datum/equipment_preset/cmb
+/datum/equipment_preset/CMB
 	name = "Colonial Marshal"
 
 	assignment = "CMB Deputy"
@@ -112,7 +112,7 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = "CMB Deputy"
 	rank = JOB_CMB
-	skills = /datum/skills/cmb
+	skills = /datum/skills/CMB
 	faction = FACTION_CMB
 	faction_group = list(FACTION_LIST_MARINE_CMB)
 
@@ -190,7 +190,7 @@
 
 //*****************************************************************************************************/
 
-/datum/equipment_preset/cmb/leader
+/datum/equipment_preset/CMB/leader
 	name = "The Colonial Marshal"
 	paygrade = "GS-13"
 	role_comm_title = "MAR"
@@ -365,7 +365,7 @@
 /datum/equipment_preset/CMB/liaison/load_gear(mob/living/carbon/human/H)
 
     //clothes
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/cmb/icc, WEAR_L_EAR)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/CMB/ICC, WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit/formal, WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/holster, WEAR_ACCESSORY)
 	H.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/mod88, WEAR_IN_ACCESSORY)

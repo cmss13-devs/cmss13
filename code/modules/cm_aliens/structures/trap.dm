@@ -6,8 +6,8 @@
 	desc = "It looks like a hiding hole."
 	name = "resin hole"
 	icon_state = "trap0"
-	density = 0
-	opacity = 0
+	density = FALSE
+	opacity = FALSE
 	anchored = 1
 	health = 5
 	layer = RESIN_STRUCTURE_LAYER
@@ -345,7 +345,7 @@
 /obj/effect/hole_tripwire
 	name = "hole tripwire"
 	anchored = 1
-	mouse_opacity = 0
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	invisibility = 101
 	unacidable = TRUE //You never know
 	var/obj/effect/alien/resin/trap/linked_trap

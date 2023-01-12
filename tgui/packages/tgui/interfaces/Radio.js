@@ -1,4 +1,3 @@
-import { map } from 'common/collections';
 import { toFixed } from 'common/math';
 import { useBackend } from '../backend';
 import { Box, Button, LabeledList, NumberInput, Section } from '../components';
@@ -19,18 +18,18 @@ export const Radio = (props, context) => {
     subspace,
     subspaceSwitchable,
   } = data;
+
+  const radioChannels = data.channels;
+
   const tunedChannel = RADIO_CHANNELS.find(
     (channel) => channel.freq === frequency
   );
-  const channels = map((value, key) => ({
-    name: key,
-    status: !!value,
-  }))(data.channels);
+
   // Calculate window height
   let height = 106;
   if (subspace) {
-    if (channels.length > 0) {
-      height += channels.length * 21 + 6;
+    if (radioChannels.length > 0) {
+      height += radioChannels.length * 21 + 6;
     } else {
       height += 24;
     }
@@ -104,17 +103,17 @@ export const Radio = (props, context) => {
             </LabeledList.Item>
             {!!subspace && (
               <LabeledList.Item label="Channels">
-                {channels.length === 0 && (
+                {radioChannels.length === 0 && (
                   <Box inline color="bad">
                     No encryption keys installed.
                   </Box>
                 )}
-                {channels.map((channel) => (
-                  <Box key={channel.name}>
+                {radioChannels.map((channel) => (
+                  <Box key={channel}>
                     <Button
                       icon={channel.status ? 'check-square-o' : 'square-o'}
                       selected={channel.status}
-                      content={channel.name}
+                      content={channel.name + ' ' + channel.hotkey}
                       onClick={() =>
                         act('channel', {
                           channel: channel.name,

@@ -43,7 +43,7 @@ var/list/ai_verbs_default = list(
 	icon = 'icons/mob/AI.dmi'//
 	icon_state = "ai"
 	anchored = 1 // -- TLE
-	density = 1
+	density = TRUE
 	status_flags = CANSTUN|CANKNOCKOUT
 	med_hud = MOB_HUD_MEDICAL_BASIC
 	sec_hud = MOB_HUD_SECURITY_BASIC
@@ -102,7 +102,7 @@ var/list/ai_verbs_default = list(
 	SetName(pickedName)
 	anchored = 1
 	canmove = 0
-	density = 1
+	density = TRUE
 	forceMove(loc)
 
 	holo_icon = getHologramIcon(icon('icons/mob/AI.dmi',"holo1"))
@@ -116,7 +116,6 @@ var/list/ai_verbs_default = list(
 		add_ai_verbs(src)
 
 	//Languages
-	add_language(LANGUAGE_BINARY, 1)
 	add_language(LANGUAGE_ENGLISH, 1)
 	add_language(LANGUAGE_RUSSIAN, 1)
 	add_language(LANGUAGE_XENOMORPH, 0)

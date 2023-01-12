@@ -1,5 +1,6 @@
 /obj/effect/decal/prints
 	name = "suspicious prints"
+	gender = PLURAL
 	icon = 'icons/effects/fingerprints.dmi'
 	icon_state = "prints"
 	anchored = TRUE

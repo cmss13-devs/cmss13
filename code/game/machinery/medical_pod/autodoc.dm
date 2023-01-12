@@ -590,7 +590,7 @@
 	var/obj/structure/machinery/medical_pod/autodoc/connected = null
 	dir = SOUTH
 	anchored = 1 //About time someone fixed this.
-	density = 0
+	density = FALSE
 	unslashable = TRUE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 40

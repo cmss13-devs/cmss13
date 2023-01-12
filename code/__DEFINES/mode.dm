@@ -103,9 +103,9 @@
 //=================================================
 
 //=================================================
-#define PAIN_OVERLAY_BLURRY						0 //Blurs your screen a varying amount depending on eye_blur.
-#define PAIN_OVERLAY_IMPAIR						1 //Impairs your screen like a welding helmet does depending on eye_blur.
-#define PAIN_OVERLAY_LEGACY						2 //Creates a legacy blurring effect over your screen if you have any eye_blur at all. Not recommended.
+#define PAIN_OVERLAY_BLURRY 0 //Blurs your screen a varying amount depending on eye_blur.
+#define PAIN_OVERLAY_IMPAIR 1 //Impairs your screen like a welding helmet does depending on eye_blur.
+#define PAIN_OVERLAY_LEGACY 2 //Creates a legacy blurring effect over your screen if you have any eye_blur at all. Not recommended.
 //=================================================
 
 
@@ -191,14 +191,15 @@ var/global/list/whitelist_hierarchy = list(WHITELIST_NORMAL, WHITELIST_COUNCIL, 
 #define WHITELIST_COMMANDER_COUNCIL_LEGACY (1<<7)
 #define WHITELIST_COMMANDER_LEADER (1<<8)
 
-#define WHITELIST_SYNTHETIC (1<<9)
-#define WHITELIST_SYNTHETIC_COUNCIL (1<<10)
+#define WHITELIST_JOE (1<<9)
+#define WHITELIST_SYNTHETIC (1<<10)
+#define WHITELIST_SYNTHETIC_COUNCIL (1<<11)
 ///Old holders of SYNTHETIC_COUNCIL for 3 months
-#define WHITELIST_SYNTHETIC_COUNCIL_LEGACY (1<<11)
-#define WHITELIST_SYNTHETIC_LEADER (1<<12)
+#define WHITELIST_SYNTHETIC_COUNCIL_LEGACY (1<<12)
+#define WHITELIST_SYNTHETIC_LEADER (1<<13)
 
-#define WHITELIST_MENTOR (1<<13)
-#define WHITELISTS_GENERAL (WHITELIST_YAUTJA|WHITELIST_COMMANDER|WHITELIST_SYNTHETIC|WHITELIST_MENTOR)
+#define WHITELIST_MENTOR (1<<14)
+#define WHITELISTS_GENERAL (WHITELIST_YAUTJA|WHITELIST_COMMANDER|WHITELIST_SYNTHETIC|WHITELIST_MENTOR|WHITELIST_JOE)
 #define WHITELISTS_COUNCIL (WHITELIST_YAUTJA_COUNCIL|WHITELIST_COMMANDER_COUNCIL|WHITELIST_SYNTHETIC_COUNCIL)
 #define WHITELISTS_LEGACY_COUNCIL (WHITELIST_YAUTJA_COUNCIL_LEGACY|WHITELIST_COMMANDER_COUNCIL_LEGACY|WHITELIST_SYNTHETIC_COUNCIL_LEGACY)
 #define WHITELISTS_LEADER (WHITELIST_YAUTJA_LEADER|WHITELIST_COMMANDER_LEADER|WHITELIST_SYNTHETIC_LEADER)
@@ -238,7 +239,7 @@ var/global/list/whitelist_hierarchy = list(WHITELIST_NORMAL, WHITELIST_COUNCIL, 
 #define FACTION_MARINE "USCM"
 #define FACTION_SURVIVOR "Survivor"
 #define FACTION_UPP "UPP"
-#define FACTION_RESS "RESS"
+#define FACTION_TWE "TWE"
 #define FACTION_WY "Wey-Yu"
 #define FACTION_CLF "CLF"
 #define FACTION_PMC "PMC"
@@ -263,7 +264,7 @@ var/global/list/whitelist_hierarchy = list(WHITELIST_NORMAL, WHITELIST_COUNCIL, 
 #define FACTION_LIST_WY list(FACTION_PMC, FACTION_WY_DEATHSQUAD, FACTION_WY)
 #define FACTION_LIST_MARINE_WY list(FACTION_MARINE, FACTION_PMC, FACTION_WY_DEATHSQUAD, FACTION_WY)
 #define FACTION_LIST_MARINE_UPP list(FACTION_MARINE, FACTION_UPP)
-#define FACTION_LIST_MARINE_RESS list(FACTION_MARINE, FACTION_RESS)
+#define FACTION_LIST_MARINE_TWE list(FACTION_MARINE, FACTION_TWE)
 
 // Xenomorphs
 #define FACTION_PREDALIEN "Predalien"

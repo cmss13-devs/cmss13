@@ -97,6 +97,19 @@
 	w_class = SIZE_TINY;
 	flags_equip_slot = null
 
-/obj/item/holder/mouse/Doc
+/obj/item/holder/mouse/white
+	icon_state = "mouse_white"
+
+/obj/item/holder/mouse/gray
+	icon_state = "mouse_gray"
+
+/obj/item/holder/mouse/brown
+	icon_state = "mouse_brown"
+
+/obj/item/holder/mouse/white/Doc
 	name = "Doc"
 	desc = "Senior researcher of the Almayer. Likes: cheese, experiments, explosions."
+
+/obj/item/holder/mouse/brown/Tom
+	name = "Tom"
+	desc = "Jerry the cat is not amused."

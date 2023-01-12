@@ -2,7 +2,7 @@
 	name = "\improper gear"
 	icon_state = "gear"
 	anchored = 1
-	density = 0
+	density = FALSE
 	unslashable = TRUE
 	unacidable = TRUE
 	use_power = USE_POWER_NONE
@@ -21,9 +21,9 @@
 	anchored = 1
 	unslashable = TRUE
 	unacidable = TRUE
-	density = 0
+	density = FALSE
 	use_power = USE_POWER_NONE
-	opacity = 1
+	opacity = TRUE
 	layer = ABOVE_MOB_LAYER
 	var/id
 

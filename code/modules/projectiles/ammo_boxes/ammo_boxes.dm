@@ -309,9 +309,6 @@
 			to_chat(user, SPAN_WARNING("\The [src] must be on the ground to be used."))
 			return
 		if(AM.flags_magazine & AMMUNITION_REFILLABLE)
-			if(AM.flags_magazine & AMMUNITION_CANNOT_REMOVE_BULLETS)
-				to_chat(user, SPAN_WARNING("You can't remove ammo from \the [AM]!"))
-				return
 			if(default_ammo != AM.default_ammo)
 				to_chat(user, SPAN_WARNING("Those aren't the same rounds. Better not mix them up."))
 				return
@@ -321,6 +318,9 @@
 
 			var/dumping = FALSE // we REFILL BOX (dump to it) on harm intent, otherwise we refill FROM box
 			if(user.a_intent == INTENT_HARM)
+				if(AM.flags_magazine & AMMUNITION_CANNOT_REMOVE_BULLETS)
+					to_chat(user, SPAN_WARNING("You can't remove ammo from \the [AM]!"))
+					return
 				dumping = TRUE
 
 			var/transfering   = 0   // Amount of bullets we're trying to transfer

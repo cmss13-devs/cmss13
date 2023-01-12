@@ -144,7 +144,7 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 	icon = 'icons/obj/structures/machinery/cryogenics.dmi'
 	icon_state = "cryo_rear"
 	anchored = 1
-	density = 1
+	density = TRUE
 
 	var/orient_right = null //Flips the sprite.
 
@@ -166,7 +166,7 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 	desc = "A large automated capsule with LED displays intended to put anyone inside into 'hypersleep', a form of non-cryogenic statis used on most ships, linked to a long-term hypersleep bay on a lower level."
 	icon = 'icons/obj/structures/machinery/cryogenics.dmi'
 	icon_state = "body_scanner_open"
-	density = 1
+	density = TRUE
 	anchored = 1
 
 	var/mob/living/occupant = null //Person waiting to be despawned.
@@ -232,7 +232,7 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 	var/list/deleteall = list(/obj/item/clothing/mask/cigarette, \
 	/obj/item/clothing/glasses/sunglasses, \
 	/obj/item/clothing/glasses/mgoggles, \
-	/obj/item/clothing/head/helmet/beret/marine/mp, \
+	/obj/item/clothing/head/beret/marine/mp, \
 	/obj/item/clothing/gloves/black, \
 	/obj/item/weapon/melee/baton, \
 	/obj/item/weapon/gun/energy/taser, \

@@ -26,7 +26,7 @@
 	name = "laser camera"
 	invuln = TRUE
 	icon_state = ""
-	mouse_opacity = 0
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	network = list(CAMERA_NET_LASER_TARGETS)
 	unslashable = TRUE
 	unacidable = TRUE
@@ -116,7 +116,7 @@
 	name = "landing zone camera"
 	invuln = TRUE
 	icon_state = "editor_icon"//for the map editor
-	mouse_opacity = 0
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	network = list(CAMERA_NET_LANDING_ZONES)
 	invisibility = 101 //fuck you init()
 

@@ -1,5 +1,0 @@
-author: "stanalbatross"
-delete-after: True
-changes:
-  - bugfix: "fixed /sorted vendors showing points when they don't use them"
-  - qol: "marine food vendors and the req attachment vendor no longer have vend delay"

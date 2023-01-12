@@ -136,6 +136,9 @@
 /datum/behavior_delegate/warrior_base/melee_attack_additional_effects_target(mob/living/carbon/A)
 	..()
 
+	if(SEND_SIGNAL(bound_xeno, COMSIG_XENO_PRE_HEAL) & COMPONENT_CANCEL_XENO_HEAL)
+		return
+
 	var/final_lifesteal = lifesteal_percent
 	var/list/mobs_in_range = oviewers(lifesteal_range, bound_xeno)
 

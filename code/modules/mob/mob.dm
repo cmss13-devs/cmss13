@@ -26,6 +26,7 @@
 
 	clear_fullscreens()
 	QDEL_NULL(mob_panel)
+	QDEL_NULL(mob_language_menu)
 	QDEL_NULL_LIST(open_uis)
 
 	tgui_open_uis = null
@@ -78,6 +79,12 @@
 	QDEL_NULL(mob_panel)
 
 	mob_panel = new(src)
+
+/mob/proc/create_language_menu()
+	QDEL_NULL(mob_language_menu)
+
+	mob_language_menu = new(src)
+
 
 /mob/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
@@ -718,7 +725,7 @@ note dizziness decrements automatically in the mob's Life() proc.
 
 	return canmove
 
-/mob/proc/facedir(var/ndir, var/specific_dir)
+/mob/proc/face_dir(var/ndir, var/specific_dir)
 	if(!canface()) return 0
 	if(dir != ndir)
 		flags_atom &= ~DIRLOCK
@@ -736,12 +743,12 @@ note dizziness decrements automatically in the mob's Life() proc.
 
 /mob/proc/set_face_dir(var/newdir)
 	if(SEND_SIGNAL(src, COMSIG_MOB_SET_FACE_DIR, newdir) & COMPONENT_CANCEL_SET_FACE_DIR)
-		facedir(newdir)
+		face_dir(newdir)
 		return
 
 	if(newdir == dir && flags_atom & DIRLOCK)
 		flags_atom &= ~DIRLOCK
-	else if (facedir(newdir))
+	else if (face_dir(newdir))
 		flags_atom |= DIRLOCK
 
 
@@ -1068,6 +1075,19 @@ note dizziness decrements automatically in the mob's Life() proc.
 	. += "<option value='?_src_=vars;remverb=\ref[src]'>Remove Verb</option>"
 
 	. += "<option value='?_src_=vars;gib=\ref[src]'>Gib</option>"
+
+/mob/vv_edit_var(var_name, var_value)
+	switch(var_name)
+		if(NAMEOF(src, stat))
+			if((var_value < CONSCIOUS) || (var_value > DEAD))
+				return FALSE
+			if((stat == DEAD) && ((var_value == CONSCIOUS) || (var_value == UNCONSCIOUS)))
+				GLOB.dead_mob_list -= src
+				GLOB.alive_mob_list += src
+			if(((stat == CONSCIOUS) || (stat == UNCONSCIOUS)) && (var_value == DEAD))
+				GLOB.alive_mob_list -= src
+				GLOB.dead_mob_list += src
+	return ..()
 
 /mob/Topic(href, href_list)
 	. = ..()

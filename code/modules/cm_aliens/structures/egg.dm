@@ -6,7 +6,7 @@
 	desc = "It looks like a weird egg."
 	name = "egg"
 	icon_state = "Egg Growing"
-	density = 0
+	density = FALSE
 	anchored = 1
 	layer = LYING_BETWEEN_MOB_LAYER //to stop hiding eggs under corpses
 	health = 80
@@ -75,6 +75,7 @@
 	var/mob/living/carbon/Xenomorph/X = user
 	if(istype(X) && status == EGG_GROWN && mods["ctrl"] && X.caste.can_hold_facehuggers)
 		Burst(FALSE, FALSE, X)
+		return TRUE
 
 	return ..()
 
@@ -267,7 +268,7 @@
 	name = "egg trigger"
 	icon = 'icons/effects/effects.dmi'
 	anchored = 1
-	mouse_opacity = 0
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	invisibility = INVISIBILITY_MAXIMUM
 	var/obj/effect/alien/egg/linked_egg
 	var/obj/effect/alien/resin/special/eggmorph/linked_eggmorph

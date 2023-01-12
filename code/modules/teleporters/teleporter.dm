@@ -171,7 +171,7 @@
 		flick(animation_holder.icon_state, animation_holder)
 
 /obj/effect/teleporter_vfx
-	mouse_opacity = 0
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "teleport"
 	var/animation_duration = ANIMATION_DURATION // 18 frames long

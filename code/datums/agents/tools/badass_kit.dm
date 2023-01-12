@@ -18,4 +18,4 @@
 	flags_armor_protection = BODY_FLAG_EYES|BODY_FLAG_FACE
 
 	armor_energy = CLOTHING_ARMOR_HARDCORE
-	eye_protection = 2
+	eye_protection = EYE_PROTECTION_WELDING

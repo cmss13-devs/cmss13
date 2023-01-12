@@ -8,7 +8,7 @@
 	icon_state = "platform"
 	climbable = TRUE
 	anchored = TRUE
-	density = 1
+	density = TRUE
 	throwpass = TRUE //You can throw objects over this, despite its density.
 	layer = OBJ_LAYER
 	breakable = FALSE
@@ -67,7 +67,7 @@
 	icon = 'icons/obj/structures/props/platforms.dmi'
 	icon_state = "platform_deco"
 	anchored = TRUE
-	density = 0
+	density = FALSE
 	throwpass = TRUE
 	layer = OBJ_LAYER
 	breakable = FALSE

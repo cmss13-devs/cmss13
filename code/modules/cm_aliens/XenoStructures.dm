@@ -141,8 +141,8 @@
 	name = "sticky resin"
 	desc = "A layer of disgusting sticky slime."
 	icon_state = "sticky"
-	density = 0
-	opacity = 0
+	density = FALSE
+	opacity = FALSE
 	health = HEALTH_RESIN_XENO_STICKY
 	layer = RESIN_STRUCTURE_LAYER
 	plane = FLOOR_PLANE
@@ -171,8 +171,8 @@
 	desc = "A small cluster of bone spikes. Ouch."
 	icon = 'icons/obj/structures/alien/structures.dmi'
 	icon_state = "resin_spike"
-	density = 0
-	opacity = 0
+	density = FALSE
+	opacity = FALSE
 	health = HEALTH_RESIN_XENO_SPIKE
 	layer = RESIN_STRUCTURE_LAYER
 	should_track_build = TRUE
@@ -385,8 +385,8 @@
 	playsound(loc, "alien_resin_move", 25)
 	flick("[mineralType]opening",src)
 	sleep(3)
-	density = 0
-	opacity = 0
+	density = FALSE
+	opacity = FALSE
 	state = 1
 	update_icon()
 	isSwitchingStates = 0
@@ -407,8 +407,8 @@
 	playsound(loc, "alien_resin_move", 25)
 	flick("[mineralType]closing",src)
 	sleep(3)
-	density = 1
-	opacity = 1
+	density = TRUE
+	opacity = TRUE
 	state = 0
 	update_icon()
 	isSwitchingStates = 0

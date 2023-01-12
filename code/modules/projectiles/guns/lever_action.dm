@@ -431,8 +431,6 @@ their unique feature is that a direct hit will buff your damage and firerate
 	addtimer(CALLBACK(src, PROC_REF(update_mouse_pointer), user), 0.4 SECONDS, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_CLIENT_TIME)
 
 /obj/item/weapon/gun/lever_action/xm88/proc/update_mouse_pointer(mob/user)
-	SIGNAL_HANDLER
-
 	user.client?.mouse_pointer_icon = get_mouse_pointer(floating_penetration)
 
 /obj/item/weapon/gun/lever_action/xm88/proc/get_mouse_pointer(level)

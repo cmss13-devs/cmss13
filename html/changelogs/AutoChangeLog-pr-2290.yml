@@ -1,0 +1,4 @@
+author: "realforest2001"
+delete-after: True
+changes:
+  - bugfix: "Fixed the melee skill define on forecon survivors which was causing skill menu runtime."

@@ -1,4 +1,5 @@
 import { Fragment } from 'inferno';
+import { classes } from 'common/react';
 import { map } from 'common/collections';
 import { resolveAsset } from '../assets';
 import { useBackend } from '../backend';
@@ -22,7 +23,7 @@ export const WeaponStats = (props, context) => {
   const { has_ammo } = data;
 
   return (
-    <Window width={has_ammo ? 600 : 300} height={has_ammo ? 500 : 400}>
+    <Window width={has_ammo ? 600 : 300} height={has_ammo ? 600 : 500}>
       <Window.Content>
         <GeneralInfo />
         {has_ammo ? (
@@ -48,8 +49,15 @@ export const WeaponStats = (props, context) => {
 
 const GeneralInfo = (props, context) => {
   const { data } = useBackend(context);
-  const { name, desc, automatic, burst_amount, two_handed_only, auto_only } =
-    data;
+  const {
+    name,
+    desc,
+    automatic,
+    burst_amount,
+    two_handed_only,
+    auto_only,
+    baseicon,
+  } = data;
   return (
     <Section>
       <Flex direction="column">
@@ -57,6 +65,14 @@ const GeneralInfo = (props, context) => {
           <Box textAlign="center" bold>
             {name}
           </Box>
+        </Flex.Item>
+        <Flex.Item align="center">
+          <Box height="5px" />
+          <Box
+            align="center"
+            className={classes(['gunlineart96x96', baseicon])}
+          />
+          <Box height="5px" />
         </Flex.Item>
         <Flex.Item>
           <Box textAlign="center">{desc}</Box>

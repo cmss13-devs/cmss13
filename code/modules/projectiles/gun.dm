@@ -613,6 +613,8 @@
 
 	// weapon info
 
+	data["baseicon"] = base_gun_icon
+
 	data["name"] = name
 	data["desc"] = desc
 	data["two_handed_only"] = (flags_gun_features & GUN_WIELDED_FIRING_ONLY)
@@ -670,9 +672,10 @@
 
 	return data
 
-/datum/orbit_menu/ui_assets(mob/user)
+/obj/item/weapon/gun/ui_assets(mob/user)
 	. = ..() || list()
 	. += get_asset_datum(/datum/asset/simple/firemodes)
+	. += get_asset_datum(/datum/asset/spritesheet/gun_lineart)
 
 // END TGUI \\
 

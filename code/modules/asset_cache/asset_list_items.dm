@@ -343,6 +343,14 @@
 		Insert("[icon_name]_big", iconBig)
 	return ..()
 
+/datum/asset/spritesheet/gun_lineart
+	name = "gunlineart"
+
+/datum/asset/spritesheet/gun_lineart/register()
+	InsertAll("", 'icons/obj/items/weapons/guns/lineart.dmi')
+	..()
+
+
 /datum/asset/simple/orbit
 	assets = list(
 		"ghost.png" = 'html/images/ghost.png'
@@ -364,3 +372,4 @@
 		"single.png" = 'html/images/single.png',
 		"disabled_single.png" = 'html/images/disabled_single.png',
 	)
+

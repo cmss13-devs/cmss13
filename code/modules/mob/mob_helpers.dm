@@ -368,7 +368,11 @@ It's fairly easy to fix if dealing with single letters but not so much with comp
 			zone.selecting = next_in_list(usr.zone_selected, DEFENSE_ZONES_LIVING)
 		if("prev")
 			zone.selecting = prev_in_list(usr.zone_selected, DEFENSE_ZONES_LIVING)
+	select_zone_override(zone)
 	zone.update_icon(usr)
+
+/mob/proc/select_zone_override(atom/movable/screen/zone_sel/zone)
+	return
 
 #define DURATION_MULTIPLIER_TIER_1 0.75
 #define DURATION_MULTIPLIER_TIER_2 0.5

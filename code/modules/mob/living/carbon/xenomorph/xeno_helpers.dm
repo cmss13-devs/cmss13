@@ -59,3 +59,18 @@
 
 /mob/living/carbon/Xenomorph/alter_ghost(var/mob/dead/observer/ghost)
 	ghost.icon_state = "[mutation_type] [caste.caste_type] Running"
+
+/mob/living/carbon/Xenomorph/select_zone_override(atom/movable/screen/zone_sel/zone)
+	if(zone.selecting == "r_hand")
+		zone.selecting = "r_arm"
+
+	if(zone.selecting == "l_hand")
+		zone.selecting = "l_arm"
+
+	if(zone.selecting == "r_foot")
+		zone.selecting = "r_leg"
+
+	if(zone.selecting == "l_foot")
+		zone.selecting = "l_leg"
+
+	return

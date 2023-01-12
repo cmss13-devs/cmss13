@@ -802,15 +802,9 @@
 			qdel(S)
 	for(var/mob/living/carbon/Xenomorph/xeno as anything in totalXenos)
 		if(get_area(xeno) != hijacked_dropship && xeno.loc && is_ground_level(xeno.loc.z))
-			if(xeno.hunter_data.hunted && !isXenoQueen(xeno))
-				to_chat(xeno, SPAN_XENOANNOUNCE("The Queen has left without you, seperating you from her hive! You must defend yourself from the headhunter before you can enter hibernation..."))
+			if(!isXenoQueen(xeno))
+				to_chat(xeno, SPAN_XENOANNOUNCE("The Queen has left without you, seperating you from her hive!"))
 				xeno.set_hive_and_update(XENO_HIVE_FORSAKEN)
-			else
-				to_chat(xeno, SPAN_XENOANNOUNCE("The Queen has left without you, you quickly find a hiding place to enter hibernation as you lose touch with the hive mind."))
-				if(xeno.stomach_contents.len)
-					xeno.devour_timer = 0
-					xeno.handle_stomach_contents()
-				qdel(xeno)
 			stored_larva++
 	for(var/i in GLOB.alive_mob_list)
 		var/mob/living/potential_host = i

@@ -1,0 +1,315 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/template_noop,
+/area/shuttle/ert)
+"g" = (
+/turf/template_noop,
+/area/template_noop)
+"h" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	tag = "icon-N";
+	dir = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	tag = "icon-W";
+	dir = 1
+	},
+/turf/open/floor/plating/almayer,
+/area/shuttle/ert)
+"i" = (
+/obj/structure/closet/walllocker/emerglocker{
+	pixel_x = -32;
+	pixel_y = -32
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	tag = "icon-W";
+	dir = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	tag = "icon-S";
+	dir = 1
+	},
+/turf/open/floor/plating/almayer,
+/area/shuttle/ert)
+"k" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/computer/security{
+	network = list("Military","Almayer");
+	dir = 4
+	},
+/turf/open/floor/almayer{
+	icon_state = "tcomms"
+	},
+/area/shuttle/ert)
+"o" = (
+/turf/closed/wall/r_wall/biodome/biodome_unmeltable,
+/area/shuttle/ert)
+"q" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "NE-out";
+	tag = "icon-NE-out";
+	dir = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "NW-out";
+	layer = 2.5;
+	tag = "icon-NW-out";
+	dir = 1
+	},
+/turf/open/floor/plating/almayer,
+/area/shuttle/ert)
+"s" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	tag = "icon-S";
+	dir = 1
+	},
+/turf/open/floor/plating/almayer,
+/area/shuttle/ert)
+"t" = (
+/obj/structure/bed/chair/dropship/pilot{
+	dir = 1;
+	tag = "icon-pilot_chair (NORTH)"
+	},
+/obj/effect/landmark/ert_spawns/distress_pizza,
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	tag = "icon-W";
+	dir = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	tag = "icon-S";
+	dir = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	tag = "icon-N";
+	dir = 1
+	},
+/turf/open/floor/almayer{
+	icon_state = "tcomms"
+	},
+/area/shuttle/ert)
+"v" = (
+/obj/structure/closet/hydrant{
+	pixel_y = 32
+	},
+/obj/item/storage/toolbox/emergency{
+	pixel_x = 3;
+	pixel_y = 3
+	},
+/obj/item/tool/crowbar,
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	tag = "icon-N";
+	dir = 1
+	},
+/turf/open/floor/plating/almayer,
+/area/shuttle/ert)
+"w" = (
+/obj/structure/window/framed/corsat/hull{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/shuttle/ert)
+"x" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	tag = "icon-E-corner";
+	dir = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	tag = "icon-N";
+	dir = 1
+	},
+/turf/open/floor/plating/almayer,
+/area/shuttle/ert)
+"A" = (
+/obj/structure/bed/chair/dropship/passenger{
+	dir = 1
+	},
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/lifeboat{
+	pixel_x = 32
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/shuttle/ert)
+"C" = (
+/obj/docking_port/mobile/emergency_response/small,
+/turf/closed/wall/r_wall/biodome/biodome_unmeltable,
+/area/shuttle/ert)
+"D" = (
+/obj/structure/bed/chair/dropship/passenger{
+	dir = 1
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/shuttle/ert)
+"E" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/computer/shuttle/ert/small,
+/turf/open/floor/almayer{
+	icon_state = "tcomms"
+	},
+/area/shuttle/ert)
+"F" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic2{
+	dir = 1;
+	id = "port_door"
+	},
+/turf/open/floor/plating/almayer,
+/area/shuttle/ert)
+"H" = (
+/obj/effect/landmark/ert_spawns/distress_pizza,
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	tag = "icon-E-corner";
+	dir = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	tag = "icon-N";
+	dir = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "SW-out";
+	pixel_x = -1;
+	tag = "icon-SW-out";
+	dir = 1
+	},
+/turf/open/floor/almayer{
+	icon_state = "tcomms"
+	},
+/area/shuttle/ert)
+"I" = (
+/obj/structure/machinery/door/airlock/almayer/generic/autoname{
+	dir = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	tag = "icon-E-corner";
+	dir = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	tag = "icon-W";
+	dir = 1
+	},
+/turf/open/floor/plating/almayer,
+/area/shuttle/ert)
+"K" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/computer/crew/alt,
+/turf/open/floor/almayer{
+	icon_state = "tcomms"
+	},
+/area/shuttle/ert)
+"O" = (
+/turf/open/floor/plating/almayer,
+/area/shuttle/ert)
+"Q" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/computer/station_alert{
+	dir = 8
+	},
+/turf/open/floor/almayer{
+	icon_state = "tcomms"
+	},
+/area/shuttle/ert)
+"W" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic2{
+	dir = 1;
+	id = "starboard_door"
+	},
+/turf/open/floor/plating/almayer,
+/area/shuttle/ert)
+"Z" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	tag = "icon-E-corner";
+	dir = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	tag = "icon-S";
+	dir = 1
+	},
+/turf/open/floor/plating/almayer,
+/area/shuttle/ert)
+
+(1,1,1) = {"
+g
+o
+o
+o
+O
+F
+o
+o
+C
+"}
+(2,1,1) = {"
+o
+o
+k
+o
+h
+i
+D
+o
+a
+"}
+(3,1,1) = {"
+w
+E
+t
+o
+v
+s
+D
+o
+a
+"}
+(4,1,1) = {"
+w
+K
+H
+I
+q
+s
+D
+o
+a
+"}
+(5,1,1) = {"
+o
+o
+Q
+o
+x
+Z
+A
+o
+a
+"}
+(6,1,1) = {"
+g
+o
+o
+o
+O
+W
+o
+o
+o
+"}

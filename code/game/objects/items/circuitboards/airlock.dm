@@ -1,6 +1,7 @@
 
 /obj/item/circuitboard/airlock
 	name = "airlock electronics"
+	gender = PLURAL
 	icon_state = "door_electronics"
 	w_class = SIZE_SMALL //It should be tiny! -Agouri
 	matter = list("metal" = 50,"glass" = 50)

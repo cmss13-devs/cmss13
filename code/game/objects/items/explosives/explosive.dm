@@ -48,7 +48,9 @@
 	. = ..()
 
 /obj/item/explosive/clicked(mob/user, list/mods)
-	if(Adjacent(user) && mods["alt"])
+	if(mods["alt"])
+		if(!CAN_PICKUP(user, src))
+			return ..()
 		if(!has_blast_wave_dampener)
 			to_chat(user, SPAN_WARNING("\The [src] doesn't have blast wave dampening."))
 			return

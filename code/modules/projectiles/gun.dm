@@ -707,10 +707,15 @@
 			wield_time += 3
 		else
 			wield_time -= 2*user.skills.get_skill_level(SKILL_FIREARMS)
+
+	if(flags_gun_features & GUN_FULL_AUTO_ON)
+		ADD_TRAIT(user, TRAIT_OVERRIDE_CLICKDRAG, TRAIT_SOURCE_WEAPON)
+
 	return 1
 
 /obj/item/weapon/gun/unwield(var/mob/user)
 	. = ..()
+	REMOVE_TRAIT(user, TRAIT_OVERRIDE_CLICKDRAG, TRAIT_SOURCE_WEAPON)
 	if(.)
 		slowdown = initial(slowdown)
 
@@ -1274,7 +1279,7 @@ and you're good to go.
 			last_fired = world.time //This is incorrect if firing an attached undershotgun, but the user is too dead to care.
 			SEND_SIGNAL(user, COMSIG_MOB_FIRED_GUN, src)
 
-			projectile_to_fire.play_damage_effect(user)
+			projectile_to_fire.play_hit_effect(user)
 			// No projectile code to handhold us, we do the cleaning ourselves:
 			QDEL_NULL(projectile_to_fire)
 			in_chamber = null

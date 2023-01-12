@@ -166,6 +166,9 @@
 	icon_state = "xeno_painoverlay"
 	layer = FULLSCREEN_PAIN_LAYER
 
+/atom/movable/screen/fullscreen/laser_blind
+	icon_state = "impairedoverlay1"
+
 //Weather overlays//
 
 /atom/movable/screen/fullscreen/weather

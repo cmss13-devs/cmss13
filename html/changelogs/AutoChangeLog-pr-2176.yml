@@ -1,4 +1,0 @@
-author: "silencer_pl, forest2001"
-delete-after: True
-changes:
-  - admin: "Adds a variable called admin_console that allows the use of camera consoles from the admin z level."

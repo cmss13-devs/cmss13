@@ -50,6 +50,8 @@ SUBSYSTEM_DEF(quadtree)
 
 /datum/controller/subsystem/quadtree/proc/players_in_range(datum/shape/range, z_level, flags = 0)
 	var/list/players = list()
+	if(!cur_quadtrees)
+		return players
 	if(z_level && cur_quadtrees.len >= z_level)
 		var/datum/quadtree/Q = cur_quadtrees[z_level]
 		if(!Q)

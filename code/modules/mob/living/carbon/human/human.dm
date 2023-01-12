@@ -11,7 +11,8 @@
 			set_species()
 
 	create_reagents(1000)
-	change_real_name(src, "unknown")
+	if(!real_name || !name)
+		change_real_name(src, "unknown")
 
 	. = ..()
 
@@ -900,23 +901,24 @@
 /mob/living/carbon/human/get_eye_protection()
 	var/number = 0
 
-	if(species && !species.has_organ["eyes"]) return 2//No eyes, can't hurt them.
+	if(species && !species.has_organ["eyes"])
+		return EYE_PROTECTION_WELDING //No eyes, can't hurt them.
 
 	if(!internal_organs_by_name)
-		return 2
+		return EYE_PROTECTION_WELDING
 	var/datum/internal_organ/eyes/I = internal_organs_by_name["eyes"]
 	if(I)
 		if(I.cut_away)
-			return 2
+			return EYE_PROTECTION_WELDING
 		if(I.robotic == ORGAN_ROBOT)
-			return 2
+			return EYE_PROTECTION_WELDING
 	else
-		return 2
+		return EYE_PROTECTION_WELDING
 
 	if(istype(head, /obj/item/clothing))
 		var/obj/item/clothing/C = head
 		number += C.eye_protection
-	if(istype(wear_mask))
+	if(istype(wear_mask, /obj/item/clothing))
 		number += wear_mask.eye_protection
 	if(glasses)
 		number += glasses.eye_protection
@@ -1415,35 +1417,6 @@
 			return TRUE
 		else //unequipped or deactivated
 			clear_fullscreen("glasses_vision", 0)
-
-/mob/living/carbon/human/verb/checkSkills()
-	set name = "Check Skills"
-	set category = "IC"
-	set src = usr
-
-	var/dat
-	if(!usr || !usr.skills)
-		dat += "NULL<br/>"
-	else
-		dat += "CQC: [usr.skills.get_skill_level(SKILL_CQC)]<br/>"
-		dat += "Melee: [usr.skills.get_skill_level(SKILL_MELEE_WEAPONS)]<br/>"
-		dat += "Firearms: [usr.skills.get_skill_level(SKILL_FIREARMS)]<br/>"
-		dat += "Specialist Weapons: [usr.skills.get_skill_level(SKILL_SPEC_WEAPONS)]<br/>"
-		dat += "Endurance: [usr.skills.get_skill_level(SKILL_ENDURANCE)]<br/>"
-		dat += "Engineer: [usr.skills.get_skill_level(SKILL_ENGINEER)]<br/>"
-		dat += "Construction: [usr.skills.get_skill_level(SKILL_CONSTRUCTION)]<br/>"
-		dat += "Leadership: [usr.skills.get_skill_level(SKILL_LEADERSHIP)]<br/>"
-		dat += "Medical: [usr.skills.get_skill_level(SKILL_MEDICAL)]<br/>"
-		dat += "Surgery: [usr.skills.get_skill_level(SKILL_SURGERY)]<br/>"
-		dat += "Research: [usr.skills.get_skill_level(SKILL_RESEARCH)]<br/>"
-		dat += "Pilot: [usr.skills.get_skill_level(SKILL_PILOT)]<br/>"
-		dat += "Police: [usr.skills.get_skill_level(SKILL_POLICE)]<br/>"
-		dat += "Powerloader: [usr.skills.get_skill_level(SKILL_POWERLOADER)]<br/>"
-		dat += "Vehicles: [usr.skills.get_skill_level(SKILL_VEHICLE)]<br/>"
-		dat += "JTAC: [usr.skills.get_skill_level(SKILL_JTAC)]<br/>"
-		dat += "Domestics: [usr.skills.get_skill_level(SKILL_DOMESTIC)]<br/>"
-
-	show_browser(src, dat, "Skills", "checkskills")
 
 /mob/living/carbon/human/verb/remove_your_splints()
 	set name = "Remove Your Splints"

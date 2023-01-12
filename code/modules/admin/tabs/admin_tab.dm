@@ -406,12 +406,10 @@
 	remove_verb(src, /client/proc/enable_admin_verbs)
 
 	if(!(admin_holder.rights & R_DEBUG))
-		remove_verb(src, /client/proc/proccall_atom)
+		remove_verb(src, /client/proc/callproc_datum)
 	if(!(admin_holder.rights & R_POSSESS))
 		remove_verb(src, /client/proc/release)
 		remove_verb(src, /client/proc/possess)
-	if(!(admin_holder.rights & R_EVENT))
-		remove_verb(src, /client/proc/cmd_admin_object_narrate)
 
 /client/proc/hide_admin_verbs()
 	set name = "Admin Verbs - Hide"

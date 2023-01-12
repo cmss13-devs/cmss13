@@ -136,8 +136,8 @@
 
 /obj/item/device/internal_implant/nvg/on_implanted(var/mob/living/M)
 	. = ..()
-	RegisterSignal(M, COMSIG_HUMAN_POST_UPDATE_SIGHT, .proc/give_nvg)
-	RegisterSignal(M, COMSIG_MOB_DEATH, .proc/remove_health)
+	RegisterSignal(M, COMSIG_HUMAN_POST_UPDATE_SIGHT, PROC_REF(give_nvg))
+	RegisterSignal(M, COMSIG_MOB_DEATH, PROC_REF(remove_health))
 	give_nvg(M)
 
 /obj/item/device/internal_implant/nvg/proc/remove_health(var/mob/living/M)
@@ -177,7 +177,7 @@
 		COMSIG_MOB_TAKE_DAMAGE,
 		COMSIG_HUMAN_TAKE_DAMAGE,
 		COMSIG_XENO_TAKE_DAMAGE
-	), .proc/check_revive)
+	), PROC_REF(check_revive))
 
 /obj/item/device/internal_implant/rejuv/proc/check_revive(var/mob/living/M, list/damagedata, damagetype)
 	SIGNAL_HANDLER
@@ -188,7 +188,7 @@
 			COMSIG_XENO_TAKE_DAMAGE
 		))
 
-		INVOKE_ASYNC(src, .proc/revive, M)
+		INVOKE_ASYNC(src, PROC_REF(revive), M)
 
 /obj/item/device/internal_implant/rejuv/proc/revive(var/mob/living/M)
 	M.heal_all_damage()
@@ -216,10 +216,10 @@
 
 /obj/item/device/internal_implant/agility/on_implanted(mob/living/M)
 	. = ..()
-	RegisterSignal(M, COMSIG_HUMAN_POST_MOVE_DELAY, .proc/handle_movedelay)
-	RegisterSignal(M, COMSIG_LIVING_CLIMB_STRUCTURE, .proc/handle_climbing)
-	RegisterSignal(M, COMSIG_HUMAN_CARRY, .proc/handle_fireman)
-	RegisterSignal(M, COMSIG_MOB_GRAB_UPGRADE, .proc/handle_grab)
+	RegisterSignal(M, COMSIG_HUMAN_POST_MOVE_DELAY, PROC_REF(handle_movedelay))
+	RegisterSignal(M, COMSIG_LIVING_CLIMB_STRUCTURE, PROC_REF(handle_climbing))
+	RegisterSignal(M, COMSIG_HUMAN_CARRY, PROC_REF(handle_fireman))
+	RegisterSignal(M, COMSIG_MOB_GRAB_UPGRADE, PROC_REF(handle_grab))
 
 /obj/item/device/internal_implant/agility/proc/handle_movedelay(var/mob/living/M, list/movedata)
 	SIGNAL_HANDLER
@@ -256,8 +256,8 @@
 		COMSIG_MOB_TAKE_DAMAGE,
 		COMSIG_HUMAN_TAKE_DAMAGE,
 		COMSIG_XENO_TAKE_DAMAGE
-	), .proc/handle_damage)
-	RegisterSignal(M, COMSIG_HUMAN_BONEBREAK_PROBABILITY, .proc/handle_bonebreak)
+	), PROC_REF(handle_damage))
+	RegisterSignal(M, COMSIG_HUMAN_BONEBREAK_PROBABILITY, PROC_REF(handle_bonebreak))
 
 /obj/item/device/internal_implant/subdermal_armor/proc/handle_damage(var/mob/living/M, list/damagedata, damagetype)
 	SIGNAL_HANDLER

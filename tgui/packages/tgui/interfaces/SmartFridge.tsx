@@ -57,7 +57,7 @@ const Contents = (
   if (allItems.length === 0) {
     return (
       <Section title={props.title}>
-        <span>No items present</span>
+        <NoticeBox danger>No items present!</NoticeBox>
       </Section>
     );
   }

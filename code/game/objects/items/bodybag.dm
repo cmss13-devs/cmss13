@@ -65,7 +65,7 @@
 	close_sound = 'sound/items/zip.ogg'
 	var/item_path = /obj/item/bodybag
 	var/open_cooldown = 0 //the active var that tracks the cooldown for opening and closing
-	density = 0
+	density = FALSE
 	anchored = 0
 	layer = ABOVE_OBJ_LAYER //To layer above rollerbeds.
 	drag_delay = 2 //slightly easier than to drag the body directly.
@@ -150,7 +150,7 @@
 
 /obj/structure/closet/bodybag/close()
 	if(..())
-		density = 0
+		density = FALSE
 		update_name()
 		return 1
 	return 0
@@ -162,8 +162,8 @@
 /obj/structure/closet/bodybag/MouseDrop(over_object, src_location, over_location)
 	..()
 	if(over_object == usr && Adjacent(usr) && !roller_buckled)
-		if(!ishuman(usr))	return
-		if(contents.len)	return 0
+		if(!ishuman(usr)) return
+		if(contents.len) return 0
 		visible_message(SPAN_NOTICE("[usr] folds up [name]."))
 		var/obj/item/I = new item_path(get_turf(src), src)
 		usr.put_in_hands(I)

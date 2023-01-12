@@ -1,4 +1,4 @@
-/mob/living/silicon/ai/Login()	//ThisIsDumb(TM) TODO: tidy this up �_� ~Carn
+/mob/living/silicon/ai/Login() //ThisIsDumb(TM) TODO: tidy this up �_� ~Carn
 	..()
 	regenerate_icons()
 

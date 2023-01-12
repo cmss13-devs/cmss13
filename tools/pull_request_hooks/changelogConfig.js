@@ -68,6 +68,27 @@ export const CHANGELOG_ENTRIES = [
 	],
 
 	[
+		["mapadd"],
+		{
+			placeholders: ["added a new map or section to a map"],
+		},
+	],
+
+	[
+		["maptweak"],
+		{
+			placeholders: ["tweaked a map"],
+		},
+	],
+
+	[
+		["ui"],
+		{
+			placeholders: ["changed something relating to user interfaces"],
+		},
+	],
+
+	[
 		["spellcheck", "typo"],
 		{
 			placeholders: ["fixed a few typos"],

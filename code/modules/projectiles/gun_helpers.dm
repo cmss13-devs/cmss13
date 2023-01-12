@@ -9,19 +9,19 @@ ERROR CODE I2: null ammo while load_into_chamber() <------------- Somehow the am
 ERROR CODE R1: negative current_rounds on examine. <------------ Applies to ammunition only. Ammunition should never have negative rounds after spawn.
 
 DEFINES in setup.dm, referenced here.
-#define GUN_CAN_POINTBLANK		1
-#define GUN_TRIGGER_SAFETY		2
-#define GUN_UNUSUAL_DESIGN		4
-#define GUN_SILENCED			8
-#define GUN_AUTOMATIC			16
-#define GUN_INTERNAL_MAG		32
-#define GUN_AUTO_EJECTOR		64
-#define GUN_AMMO_COUNTER		128
-#define GUN_BURST_ON			256
-#define GUN_BURST_FIRING		512
-#define GUN_FLASHLIGHT_ON		1024
-#define GUN_WY_RESTRICTED		2048
-#define GUN_SPECIALIST			4096
+#define GUN_CAN_POINTBLANK 1
+#define GUN_TRIGGER_SAFETY 2
+#define GUN_UNUSUAL_DESIGN 4
+#define GUN_SILENCED 8
+#define GUN_AUTOMATIC 16
+#define GUN_INTERNAL_MAG 32
+#define GUN_AUTO_EJECTOR 64
+#define GUN_AMMO_COUNTER 128
+#define GUN_BURST_ON 256
+#define GUN_BURST_FIRING 512
+#define GUN_FLASHLIGHT_ON 1024
+#define GUN_WY_RESTRICTED 2048
+#define GUN_SPECIALIST 4096
 
 	NOTES
 
@@ -103,16 +103,18 @@ DEFINES in setup.dm, referenced here.
 */
 
 //----------------------------------------------------------
-			//							  \\
+			//   \\
 			// EQUIPMENT AND INTERACTION  \\
-			//							  \\
-			//						   	  \\
+			//   \\
+			//   \\
 //----------------------------------------------------------
 
 /obj/item/weapon/gun/clicked(var/mob/user, var/list/mods)
 	if (mods["alt"])
+		if(!CAN_PICKUP(user, src))
+			return ..()
 		toggle_gun_safety()
-		return 1
+		return TRUE
 	return (..())
 
 /obj/item/weapon/gun/mob_can_equip(mob/user)
@@ -250,7 +252,7 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 		return
 	if (!retrieval_check(user, retrieval_slot))
 		return
-	addtimer(CALLBACK(src, .proc/retrieve_to_slot, user, retrieval_slot), 0.3 SECONDS, TIMER_UNIQUE|TIMER_NO_HASH_WAIT)
+	addtimer(CALLBACK(src, PROC_REF(retrieve_to_slot), user, retrieval_slot), 0.3 SECONDS, TIMER_UNIQUE|TIMER_NO_HASH_WAIT)
 
 /obj/item/weapon/gun/attack_self(mob/user)
 	..()
@@ -273,7 +275,7 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 	if (!ishuman(user))
 		return
 
-	addtimer(CALLBACK(src, .proc/sling_return, user), 3, TIMER_UNIQUE|TIMER_OVERRIDE)
+	addtimer(CALLBACK(src, PROC_REF(sling_return), user), 3, TIMER_UNIQUE|TIMER_OVERRIDE)
 
 /obj/item/weapon/gun/proc/sling_return(var/mob/living/carbon/human/user)
 	if (!loc || !user)
@@ -356,10 +358,10 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 
 
 //----------------------------------------------------------
-				//						 \\
+				//  \\
 				// GENERIC HELPER PROCS  \\
-				//						 \\
-				//						 \\
+				//  \\
+				//  \\
 //----------------------------------------------------------
 
 /obj/item/weapon/proc/unique_action(mob/user) //moved this up a path to make macroing for other weapons easier -spookydonut
@@ -517,10 +519,10 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 	return held_item
 
 //----------------------------------------------------------
-					//				   \\
+					//    \\
 					// GUN VERBS PROCS \\
-					//				   \\
-					//				   \\
+					//    \\
+					//    \\
 //----------------------------------------------------------
 
 
@@ -691,9 +693,9 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 		if(!(flags_gun_features & GUN_FULL_AUTO_ON))
 			stack_trace("[src] has GUN_FULL_AUTO_ONLY flag but not GUN_FULL_AUTO_ON.")
 			flags_gun_features |= GUN_FULL_AUTO_ON
-			RegisterSignal(user.client, COMSIG_CLIENT_LMB_DOWN, .proc/full_auto_start)
-			RegisterSignal(user.client, COMSIG_CLIENT_LMB_UP, .proc/full_auto_stop)
-			RegisterSignal(user.client, COMSIG_CLIENT_LMB_DRAG, .proc/full_auto_new_target)
+			RegisterSignal(user.client, COMSIG_CLIENT_LMB_DOWN, PROC_REF(full_auto_start))
+			RegisterSignal(user.client, COMSIG_CLIENT_LMB_UP, PROC_REF(full_auto_stop))
+			RegisterSignal(user.client, COMSIG_CLIENT_LMB_DRAG, PROC_REF(full_auto_new_target))
 			return
 
 		to_chat(user, SPAN_NOTICE("\The [src] can only be fired in full auto mode!"))
@@ -707,14 +709,15 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 			flags_gun_features |= GUN_FULL_AUTO_ON
 
 			// Register the full auto click listeners
-			RegisterSignal(user.client, COMSIG_CLIENT_LMB_DOWN, .proc/full_auto_start)
-			RegisterSignal(user.client, COMSIG_CLIENT_LMB_UP, .proc/full_auto_stop)
-			RegisterSignal(user.client, COMSIG_CLIENT_LMB_DRAG, .proc/full_auto_new_target)
+			RegisterSignal(user.client, COMSIG_CLIENT_LMB_DOWN, PROC_REF(full_auto_start))
+			RegisterSignal(user.client, COMSIG_CLIENT_LMB_UP, PROC_REF(full_auto_stop))
+			RegisterSignal(user.client, COMSIG_CLIENT_LMB_DRAG, PROC_REF(full_auto_new_target))
 
 			to_chat(user, SPAN_NOTICE("[icon2html(src, user)] You set [src] to full auto mode."))
 			return
 		else if(flags_gun_features & GUN_FULL_AUTO_ON)
 			flags_gun_features &= ~GUN_FULL_AUTO_ON
+			REMOVE_TRAIT(user, TRAIT_OVERRIDE_CLICKDRAG, TRAIT_SOURCE_WEAPON)
 			full_auto_stop() // If the LMBUP hasn't been called for any reason.
 			UnregisterSignal(user.client, list(
 				COMSIG_CLIENT_LMB_DOWN,
@@ -872,7 +875,7 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 
 /obj/item/weapon/gun/verb/toggle_auto_eject_verb()
 	set category = "Weapons"
-	set	name = "Toggle Auto Eject"
+	set name = "Toggle Auto Eject"
 	set desc = "Enable/Disable the gun's magazine ejection system"
 	set src = usr.contents
 

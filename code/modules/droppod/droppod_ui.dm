@@ -180,11 +180,11 @@ GLOBAL_LIST_INIT(droppod_target_mode, list(
 
 	switch(mode)
 		if(TARGET_MODE_DROPOFF)
-			RegisterSignal(holder, COMSIG_CLIENT_RESET_VIEW, .proc/mouse_dropoff, TRUE)
-			RegisterSignal(holder, COMSIG_CLIENT_PRE_CLICK, .proc/select_dropoff_target, TRUE)
+			RegisterSignal(holder, COMSIG_CLIENT_RESET_VIEW, PROC_REF(mouse_dropoff), TRUE)
+			RegisterSignal(holder, COMSIG_CLIENT_PRE_CLICK, PROC_REF(select_dropoff_target), TRUE)
 		if(TARGET_MODE_LAUNCH)
-			RegisterSignal(holder, COMSIG_CLIENT_RESET_VIEW, .proc/mouse_launch, TRUE)
-			RegisterSignal(holder, COMSIG_CLIENT_PRE_CLICK, .proc/select_launch_target, TRUE)
+			RegisterSignal(holder, COMSIG_CLIENT_RESET_VIEW, PROC_REF(mouse_launch), TRUE)
+			RegisterSignal(holder, COMSIG_CLIENT_PRE_CLICK, PROC_REF(select_launch_target), TRUE)
 		else
 			UnregisterSignal(holder, list(
 				COMSIG_CLIENT_RESET_VIEW,

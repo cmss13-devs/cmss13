@@ -1,13 +1,13 @@
 /datum/shuttle/ferry
-	var/location = 0	//0 = at area_station, 1 = at area_offsite
-	var/direction = 0	//0 = going to station, 1 = going to offsite.
+	var/location = 0 //0 = at area_station, 1 = at area_offsite
+	var/direction = 0 //0 = going to station, 1 = going to offsite.
 	var/process_state = IDLE_STATE
 
-	var/in_use = null	//tells the controller whether this shuttle needs processing
+	var/in_use = null //tells the controller whether this shuttle needs processing
 	var/already_moving = 0 //makes sure we do not call the move shuttle proc twice.
 	var/area_transition
-	var/move_time = 0		//the time spent in the transition area
-	var/transit_direction = null	//needed for area/move_contents_to() to properly handle shuttle corners - not exactly sure how it works.
+	var/move_time = 0 //the time spent in the transition area
+	var/transit_direction = null //needed for area/move_contents_to() to properly handle shuttle corners - not exactly sure how it works.
 
 	var/area/area_station
 	var/area/area_offsite
@@ -22,7 +22,7 @@
 	var/last_locked = 0 //world.time value to determine if it can be contested
 	var/door_override = 0 //similar to queen_locked, but only affects doors
 	var/last_door_override = 0 //world.time value to determine if it can be contested
-	
+
 	var/in_transit_time_left = 0
 
 /datum/shuttle/ferry/short_jump(var/area/origin,var/area/destination)
@@ -106,7 +106,7 @@
 		if (WAIT_ARRIVE)
 			if (moving_status == SHUTTLE_IDLE)
 				dock()
-				in_use = null	//release lock
+				in_use = null //release lock
 				process_state = WAIT_FINISH
 
 		if (WAIT_FINISH)
@@ -116,7 +116,7 @@
 
 /datum/shuttle/ferry/current_dock_target()
 	var/dock_target
-	if (!location)	//station
+	if (!location) //station
 		dock_target = dock_target_station
 	else
 		dock_target = dock_target_offsite
@@ -126,7 +126,7 @@
 /datum/shuttle/ferry/proc/launch(var/user)
 	if (!can_launch()) return
 
-	in_use = user	//obtain an exclusive lock on the shuttle
+	in_use = user //obtain an exclusive lock on the shuttle
 	locked = 1
 
 	process_state = WAIT_LAUNCH
@@ -135,7 +135,7 @@
 /datum/shuttle/ferry/proc/force_launch(var/user)
 	if (!can_force()) return
 
-	in_use = user	//obtain an exclusive lock on the shuttle
+	in_use = user //obtain an exclusive lock on the shuttle
 
 	process_state = FORCE_LAUNCH
 
@@ -149,12 +149,12 @@
 	if (docking_controller && !docking_controller.undocked())
 		docking_controller.force_undock()
 
-	addtimer(CALLBACK(src, .proc/dock), 10)
+	addtimer(CALLBACK(src, PROC_REF(dock)), 10)
 
 	return
 
 /datum/shuttle/ferry/proc/can_launch()
-	if(moving_status != SHUTTLE_IDLE || locked || in_use) 
+	if(moving_status != SHUTTLE_IDLE || locked || in_use)
 		return FALSE
 	return TRUE
 
@@ -181,5 +181,5 @@
 //This can be used by subtypes to do things when the shuttle arrives.
 /datum/shuttle/ferry/proc/arrived()
 	locked = 0
-	return	//do nothing for now
+	return //do nothing for now
 

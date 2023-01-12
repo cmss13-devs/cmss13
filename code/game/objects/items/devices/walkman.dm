@@ -339,7 +339,7 @@
 	songs = list("side1" = list("sound/music/walkman/pop1/1-1-1.ogg",\
 								"sound/music/walkman/pop1/1-1-2.ogg",\
 								"sound/music/walkman/pop1/1-1-3.ogg"),\
-				 "side2" = list("sound/music/walkman/pop1/1-2-1.ogg",\
+				"side2" = list("sound/music/walkman/pop1/1-2-1.ogg",\
 								"sound/music/walkman/pop1/1-2-2.ogg",\
 								"sound/music/walkman/pop1/1-2-3.ogg"))
 
@@ -352,7 +352,7 @@
 	songs = list("side1" = list("sound/music/walkman/pop2/2-1-1.ogg",\
 								"sound/music/walkman/pop2/2-1-2.ogg",\
 								"sound/music/walkman/pop2/2-1-3.ogg"),\
-				 "side2" = list("sound/music/walkman/pop2/2-2-1.ogg",\
+				"side2" = list("sound/music/walkman/pop2/2-2-1.ogg",\
 								"sound/music/walkman/pop2/2-2-2.ogg",\
 								"sound/music/walkman/pop2/2-2-3.ogg"))
 
@@ -365,7 +365,7 @@
 	songs = list("side1" = list("sound/music/walkman/pop3/3-1-1.ogg",\
 								"sound/music/walkman/pop3/3-1-2.ogg",\
 								"sound/music/walkman/pop3/3-1-3.ogg"),\
-				 "side2" = list("sound/music/walkman/pop3/3-2-1.ogg",\
+				"side2" = list("sound/music/walkman/pop3/3-2-1.ogg",\
 								"sound/music/walkman/pop3/3-2-2.ogg",\
 								"sound/music/walkman/pop3/3-2-3.ogg"))
 
@@ -378,7 +378,7 @@
 	songs = list("side1" = list("sound/music/walkman/pop4/4-1-1.ogg",\
 								"sound/music/walkman/pop4/4-1-2.ogg",\
 								"sound/music/walkman/pop4/4-1-3.ogg"),\
-				 "side2" = list("sound/music/walkman/pop4/4-2-1.ogg",\
+				"side2" = list("sound/music/walkman/pop4/4-2-1.ogg",\
 								"sound/music/walkman/pop4/4-2-2.ogg",\
 								"sound/music/walkman/pop4/4-2-3.ogg"))
 
@@ -391,7 +391,7 @@
 	songs = list("side1" = list("sound/music/walkman/heavymetal/5-1-1.ogg",\
 								"sound/music/walkman/heavymetal/5-1-2.ogg",\
 								"sound/music/walkman/heavymetal/5-1-3.ogg"),\
-				 "side2" = list("sound/music/walkman/heavymetal/5-2-1.ogg",\
+				"side2" = list("sound/music/walkman/heavymetal/5-2-1.ogg",\
 								"sound/music/walkman/heavymetal/5-2-2.ogg",\
 								"sound/music/walkman/heavymetal/5-2-3.ogg"))
 
@@ -404,7 +404,7 @@
 	songs = list("side1" = list("sound/music/walkman/hairmetal/6-1-1.ogg",\
 								"sound/music/walkman/hairmetal/6-1-2.ogg",\
 								"sound/music/walkman/hairmetal/6-1-3.ogg"),\
-				 "side2" = list("sound/music/walkman/hairmetal/6-2-1.ogg",\
+				"side2" = list("sound/music/walkman/hairmetal/6-2-1.ogg",\
 								"sound/music/walkman/hairmetal/6-2-2.ogg",\
 								"sound/music/walkman/hairmetal/6-2-3.ogg"))
 
@@ -417,7 +417,7 @@
 	songs = list("side1" = list("sound/music/walkman/indie/7-1-1.ogg",\
 								"sound/music/walkman/indie/7-1-2.ogg",\
 								"sound/music/walkman/indie/7-1-3.ogg"),\
-				 "side2" = list("sound/music/walkman/indie/7-2-1.ogg",\
+				"side2" = list("sound/music/walkman/indie/7-2-1.ogg",\
 								"sound/music/walkman/indie/7-2-2.ogg",\
 								"sound/music/walkman/indie/7-2-3.ogg"))
 
@@ -430,7 +430,7 @@
 	songs = list("side1" = list("sound/music/walkman/hiphop/8-1-1.ogg",\
 								"sound/music/walkman/hiphop/8-1-2.ogg",\
 								"sound/music/walkman/hiphop/8-1-3.ogg"),\
-				 "side2" = list("sound/music/walkman/hiphop/8-2-1.ogg",\
+				"side2" = list("sound/music/walkman/hiphop/8-2-1.ogg",\
 								"sound/music/walkman/hiphop/8-2-2.ogg",\
 								"sound/music/walkman/hiphop/8-2-3.ogg"))
 
@@ -443,7 +443,7 @@
 	songs = list("side1" = list("sound/music/walkman/nam/9-1-1.ogg",\
 								"sound/music/walkman/nam/9-1-2.ogg",\
 								"sound/music/walkman/nam/9-1-3.ogg"),\
-				 "side2" = list("sound/music/walkman/nam/9-2-1.ogg",\
+				"side2" = list("sound/music/walkman/nam/9-2-1.ogg",\
 								"sound/music/walkman/nam/9-2-2.ogg",\
 								"sound/music/walkman/nam/9-2-3.ogg"))
 
@@ -457,7 +457,7 @@
 								"sound/music/walkman/surf/10-1-2.ogg",\
 								"sound/music/walkman/surf/10-1-3.ogg",\
 								"sound/music/walkman/surf/10-1-4.ogg"),\
-				 "side2" = list("sound/music/walkman/surf/10-2-1.ogg",\
+				"side2" = list("sound/music/walkman/surf/10-2-1.ogg",\
 								"sound/music/walkman/surf/10-2-2.ogg",\
 								"sound/music/walkman/surf/10-2-3.ogg",\
 								"sound/music/walkman/surf/10-2-4.ogg"))

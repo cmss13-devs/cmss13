@@ -29,8 +29,8 @@ var/datum/test_manager/test_executor = new
 // @param case - The test case to run
 // @param verbose - Whether or not to log the result of the test
 // @return success - TEST_PASS if the test succeeded
-//                   TEST_FAIL if the test failed
-//                   TEST_ERROR if the test threw an error
+//    TEST_FAIL if the test failed
+//    TEST_ERROR if the test threw an error
 /datum/test_manager/proc/run_individual_test(var/datum/test_case/case, var/verbose=FALSE)
 	if(!case)
 		return TEST_FAIL

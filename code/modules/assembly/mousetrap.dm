@@ -99,7 +99,7 @@
 	if(armed)
 		finder.visible_message(SPAN_WARNING("[finder] accidentally sets off [src], breaking their fingers."),SPAN_WARNING("You accidentally trigger [src]!"))
 		triggered(finder, finder.hand ? "l_hand" : "r_hand")
-		return 1	//end the search!
+		return 1 //end the search!
 	return 0
 
 

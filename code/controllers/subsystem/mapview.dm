@@ -1,17 +1,17 @@
 SUBSYSTEM_DEF(mapview)
-	name          = "Mapview"
-	wait          = 1 MINUTES
-	flags         = SS_POST_FIRE_TIMING
-	runlevels     = RUNLEVEL_GAME | RUNLEVEL_POSTGAME
-	priority      = SS_PRIORITY_MAPVIEW
-	init_order    = SS_INIT_MAPVIEW
+	name   = "Mapview"
+	wait   = 1 MINUTES
+	flags  = SS_POST_FIRE_TIMING
+	runlevels  = RUNLEVEL_GAME | RUNLEVEL_POSTGAME
+	priority   = SS_PRIORITY_MAPVIEW
+	init_order = SS_INIT_MAPVIEW
 	var/list/map_machines = list()
 	var/ready = FALSE
 	var/updated = FALSE
 	var/list/currentrun
 
 /datum/controller/subsystem/mapview/Initialize(start_timeofday)
-	RegisterSignal(SSdcs, COMSIG_GLOB_MODE_PRESETUP, .proc/pre_round_start)
+	RegisterSignal(SSdcs, COMSIG_GLOB_MODE_PRESETUP, PROC_REF(pre_round_start))
 	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/mapview/proc/pre_round_start()

@@ -9,19 +9,19 @@
 	visible = 0.0
 	use_power = USE_POWER_NONE
 	flags_atom = ON_BORDER
-	opacity = 0
+	opacity = FALSE
 	var/obj/item/circuitboard/airlock/electronics = null
 	air_properties_vary_with_direction = 1
 
 /obj/structure/machinery/door/window/Initialize()
 	. = ..()
-	addtimer(CALLBACK(src, .proc/update_icon), 1)
+	addtimer(CALLBACK(src, PROC_REF(update_icon)), 1)
 	if (src.req_access && src.req_access.len)
 		src.icon_state = "[src.icon_state]"
 		src.base_state = src.icon_state
 
 /obj/structure/machinery/door/window/Destroy()
-	density = 0
+	density = FALSE
 	playsound(src, "windowshatter", 50, 1)
 	. = ..()
 
@@ -70,7 +70,7 @@
 	src.icon_state = text("[]open", src.base_state)
 	sleep(10)
 
-	src.density = 0
+	src.density = FALSE
 
 	if(operating == 1) //emag again
 		src.operating = 0
@@ -84,7 +84,7 @@
 	playsound(src.loc, 'sound/machines/windowdoor.ogg', 25, 1)
 	src.icon_state = src.base_state
 
-	src.density = 1
+	src.density = TRUE
 
 	sleep(10)
 
@@ -115,7 +115,7 @@
 			ae.fried = TRUE
 			ae.update_icon()
 			operating = 0
-		src.density = 0
+		src.density = FALSE
 		qdel(src)
 		return
 
@@ -284,7 +284,7 @@
 	base_state = "right"
 
 /obj/structure/machinery/door/window/tinted
-	opacity = 1
+	opacity = TRUE
 
 /obj/structure/machinery/door/window/ultra
 	name = "Ultra-reinforced glass door"

@@ -8,8 +8,8 @@
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 7
 	layer = LOWER_ITEM_LAYER
-	var/amount = 30					//How much paper is in the bin.
-	var/list/papers = new/list()	//List of papers put in the bin for reference.
+	var/amount = 30 //How much paper is in the bin.
+	var/list/papers = new/list() //List of papers put in the bin for reference.
 	var/list/paper_types = list("Carbon-Copy", "Company Document")
 	var/sec_paper_type = "Carbon-Copy"
 
@@ -22,7 +22,7 @@
 
 /obj/item/paper_bin/MouseDrop(atom/over_object)
 	if(over_object == usr && ishuman(usr) && !usr.is_mob_restrained() && !usr.stat && (loc == usr || in_range(src, usr)))
-		if(!usr.get_active_hand())		//if active hand is empty
+		if(!usr.get_active_hand()) //if active hand is empty
 			attack_hand(usr, 1, 1)
 
 	return
@@ -40,7 +40,7 @@
 			update_icon()
 
 		var/obj/item/paper/P
-		if(papers.len > 0)	//If there's any custom paper on the stack, use that instead of creating a new paper.
+		if(papers.len > 0) //If there's any custom paper on the stack, use that instead of creating a new paper.
 			P = papers[papers.len]
 			papers.Remove(P)
 		else

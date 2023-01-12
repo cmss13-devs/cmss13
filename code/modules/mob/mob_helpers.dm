@@ -374,6 +374,9 @@ It's fairly easy to fix if dealing with single letters but not so much with comp
 /mob/proc/select_zone_override(atom/movable/screen/zone_sel/zone)
 	return
 
+/mob/proc/select_overlay_override(atom/movable/screen/zone_sel/zone)
+	return
+
 #define DURATION_MULTIPLIER_TIER_1 0.75
 #define DURATION_MULTIPLIER_TIER_2 0.5
 #define DURATION_MULTIPLIER_TIER_3 0.25

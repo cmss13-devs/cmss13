@@ -74,3 +74,24 @@
 		zone.selecting = "l_leg"
 
 	return
+
+/mob/living/carbon/Xenomorph/select_overlay_override(atom/movable/screen/zone_sel/zone)
+
+	var/additional_overlay
+	if(zone.selecting == "r_arm")
+		additional_overlay = "r_hand"
+
+	if(zone.selecting == "l_arm")
+		additional_overlay = "l_hand"
+
+	if(zone.selecting == "r_leg")
+		additional_overlay = "r_foot"
+
+	if(zone.selecting == "l_leg")
+		additional_overlay = "l_foot"
+
+	if(!additional_overlay)
+		return
+
+	zone.overlays += image('icons/mob/hud/zone_sel.dmi', additional_overlay)
+	return

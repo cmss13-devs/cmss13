@@ -163,10 +163,22 @@
 	if(!user_turf)
 		return
 
+	if(pickup_recent_item_on_turf(user_turf))
+		return
+
+	var/range_list = range(1, src)
+	range_list -= user_turf
+	for(var/turf/nearby_turf in range_list)
+		if(pickup_recent_item_on_turf(nearby_turf))
+			return
+
+/mob/proc/pickup_recent_item_on_turf(turf/check_turf)
 	for(var/datum/weakref/weak_ref as anything in remembered_dropped_objects)
 		var/obj/previously_held_object = weak_ref.resolve()
-		if(previously_held_object.in_contents_of(user_turf))
-			src.put_in_hands(previously_held_object, drop_on_fail = FALSE)
+		if(previously_held_object.in_contents_of(check_turf))
+			put_in_hands(previously_held_object, drop_on_fail = FALSE)
+			return TRUE
+	return FALSE
 
 /mob/proc/remember_dropped_object(obj/dropped_object)
 	var/weak_ref = WEAKREF(dropped_object)

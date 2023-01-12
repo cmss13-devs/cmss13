@@ -41,7 +41,7 @@
 		return src.healthstring
 
 /*
- *	Diskette Box
+ * Diskette Box
  */
 
 

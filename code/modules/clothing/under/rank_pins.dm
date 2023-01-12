@@ -1,6 +1,7 @@
 //ranks
 /obj/item/clothing/accessory/ranks
 	name = "rank pins"
+	gender = PLURAL
 	desc = "A set of rank pins, used to denote the paygrade of someone within the military."
 	icon_state = "ranks_enlisted"
 	var/rank = "Private"
@@ -16,7 +17,7 @@
 	desc = "[initial(desc)] This one is for the rank <b>[get_paygrades(rank_short, 1)]</b>"
 
 /*################################################
-################    MARINE     ###################
+################ MARINE  ###################
 ################################################*/
 //ENLISTED
 /obj/item/clothing/accessory/ranks/marine/e1
@@ -141,7 +142,7 @@
 	icon_state = "ranks_flagofficer"
 
 /*################################################
-################    NAVY     #####################
+################ NAVY  #####################
 ################################################*/
 //ENLISTED
 /obj/item/clothing/accessory/ranks/navy/e1
@@ -274,7 +275,7 @@
 	icon_state = "ranks_pvstofficer"
 
 /*################################################
-#################    SPECIAL     #################
+################# SPECIAL  #################
 ################################################*/
 /obj/item/clothing/accessory/ranks/special/insp
 	name = "rank boards"

@@ -30,6 +30,7 @@
 
 /obj/item/prop/helmetgarb/spent_slug
 	name = "spent slugs"
+	gender = PLURAL
 	desc = "For when you need to knock your target down with superior stopping power. These three have already been fired."
 	icon_state = "spent_slug"
 
@@ -127,8 +128,8 @@
 
 	attached_item = MO
 
-	RegisterSignal(attached_item, COMSIG_PARENT_QDELETING, .proc/remove_attached_item)
-	RegisterSignal(attached_item, COMSIG_ITEM_EQUIPPED, .proc/toggle_check)
+	RegisterSignal(attached_item, COMSIG_PARENT_QDELETING, PROC_REF(remove_attached_item))
+	RegisterSignal(attached_item, COMSIG_ITEM_EQUIPPED, PROC_REF(toggle_check))
 
 	if(ismob(attached_item.loc))
 		set_attached_mob(attached_item.loc)
@@ -253,8 +254,8 @@
 	activation = new /datum/action/item_action/toggle(src, attached_item)
 	activation.give_to(attached_mob)
 	add_verb(attached_mob, /obj/item/prop/helmetgarb/helmet_nvg/proc/toggle)
-	RegisterSignal(attached_mob, COMSIG_HUMAN_XENO_ATTACK, .proc/break_nvg)
-	RegisterSignal(attached_item, COMSIG_ITEM_DROPPED, .proc/remove_attached_mob)
+	RegisterSignal(attached_mob, COMSIG_HUMAN_XENO_ATTACK, PROC_REF(break_nvg))
+	RegisterSignal(attached_item, COMSIG_ITEM_DROPPED, PROC_REF(remove_attached_mob))
 
 /obj/item/prop/helmetgarb/helmet_nvg/proc/remove_attached_item()
 	SIGNAL_HANDLER
@@ -302,7 +303,7 @@
 	if(nightvision)
 		remove_nvg()
 
-	RegisterSignal(user, COMSIG_HUMAN_POST_UPDATE_SIGHT, .proc/update_sight)
+	RegisterSignal(user, COMSIG_HUMAN_POST_UPDATE_SIGHT, PROC_REF(update_sight))
 
 	user.add_client_color_matrix("nvg", 99, color_matrix_multiply(color_matrix_saturation(0), color_matrix_from_string("#7aff7a")))
 	user.overlay_fullscreen("nvg", /atom/movable/screen/fullscreen/flash/noise/nvg)
@@ -414,7 +415,7 @@
 			activation.update_button_icon()
 
 		if(shape != NVG_SHAPE_COSMETIC)
-			RegisterSignal(user, COMSIG_MOB_CHANGE_VIEW, .proc/change_view) // will flip non-cosmetic nvgs back up when zoomed
+			RegisterSignal(user, COMSIG_MOB_CHANGE_VIEW, PROC_REF(change_view)) // will flip non-cosmetic nvgs back up when zoomed
 
 	else
 		to_chat(user, SPAN_NOTICE("You push \the [src] back up onto your helmet."))
@@ -510,3 +511,9 @@
 	name = "10x99mm XM42B casing pipe"
 	desc = "The XM42B was an experimental weapons platform briefly fielded by the USCM and Wey-Yu PMC teams. It was manufactured by ARMAT systems at the Atlas weapons facility. Unfortunately the project had its funding pulled alongside the M5 integrated gasmask program. This spent casing has been converted into a pipe, but there is too much tar in the mouthpiece for it to be useable."
 	icon_state = "bullet_pipe"
+
+/obj/item/prop/helmetgarb/chaplain_patch
+	name = "\improper USCM chaplain helmet patch"
+	desc = "This patch is all that remains of the Chaplaincy of the USS Almayer, along with the Chaplains themselves. Both no longer exist as a result of losses suffered during Operation Tychon Tackle."
+	icon_state = "chaplain_patch"
+	flags_obj = OBJ_NO_HELMET_BAND

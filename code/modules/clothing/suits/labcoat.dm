@@ -47,21 +47,21 @@
 	restricted_accessory_slots = list(ACCESSORY_SLOT_ARMBAND)
 	var/buttoned = TRUE
 
-	verb/toggle()
-		set name = "Toggle Labcoat Buttons"
-		set category = "Object"
-		set src in usr
+/obj/item/clothing/suit/storage/labcoat/verb/toggle()
+	set name = "Toggle Labcoat Buttons"
+	set category = "Object"
+	set src in usr
 
-		if(!usr.canmove || usr.stat || usr.is_mob_restrained())
-			return 0
+	if(!usr.canmove || usr.stat || usr.is_mob_restrained())
+		return 0
 
-		if(src.buttoned == TRUE)
-			src.icon_state = "[initial(icon_state)]_open"
-			src.buttoned = FALSE
-		else
-			src.icon_state = initial(icon_state) //doesn't need to be a string
-			src.buttoned = TRUE
-		update_clothing_icon()
+	if(src.buttoned == TRUE)
+		src.icon_state = "[initial(icon_state)]_open"
+		src.buttoned = FALSE
+	else
+		src.icon_state = initial(icon_state) //doesn't need to be a string
+		src.buttoned = TRUE
+	update_clothing_icon()
 
 /obj/item/clothing/suit/storage/labcoat/red
 	name = "red labcoat"

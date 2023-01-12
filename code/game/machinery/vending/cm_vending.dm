@@ -32,12 +32,12 @@
 	var/hackable = FALSE
 	var/hacked = FALSE
 
-	var/vendor_theme = VENDOR_THEME_COMPANY		//sets vendor theme in NanoUI
+	var/vendor_theme = VENDOR_THEME_COMPANY //sets vendor theme in NanoUI
 
-	var/list/vendor_role = list()	//to be compared with assigned_role to only allow those to use that machine. Converted to list by Jeser 09.05.20
-	var/squad_tag = ""				//same to restrict vendor to specified squad
+	var/list/vendor_role = list() //to be compared with assigned_role to only allow those to use that machine. Converted to list by Jeser 09.05.20
+	var/squad_tag = "" //same to restrict vendor to specified squad
 
-	var/use_points = FALSE			//disabling these two grants unlimited access to items for adminab... I mean, events purposes
+	var/use_points = FALSE //disabling these two grants unlimited access to items for adminab... I mean, events purposes
 	var/use_snowflake_points = FALSE
 
 	var/available_points_to_display = 0
@@ -47,8 +47,8 @@
 	var/gloves_type = /obj/item/clothing/gloves/marine
 	var/headset_type = /obj/item/device/radio/headset/almayer/marine
 
-	var/vend_delay = 0		//delaying vending of an item (for drinks machines animation, for example). Make sure to synchronize this with animation duration
-	var/vend_sound			//use with caution. Potential spam
+	var/vend_delay = 0 //delaying vending of an item (for drinks machines animation, for example). Make sure to synchronize this with animation duration
+	var/vend_sound //use with caution. Potential spam
 
 	var/vend_x_offset = 0
 	var/vend_y_offset = 0
@@ -61,12 +61,12 @@
 
 /*
 Explanation on stat flags:
-BROKEN						vendor is not operational and it's not a power issue
-NOPOWER						vendor has no power
-MAINT						we have to actually do a maintenance on vendor with tools to fix it
-IN_REPAIR(REPAIR_STEPS)		for maintenance repair steps
-TIPPED_OVER					for flipped sprite
-IN_USE						used for vending/denying
+BROKEN vendor is not operational and it's not a power issue
+NOPOWER vendor has no power
+MAINT we have to actually do a maintenance on vendor with tools to fix it
+IN_REPAIR(REPAIR_STEPS) for maintenance repair steps
+TIPPED_OVER for flipped sprite
+IN_USE used for vending/denying
 */
 
 //------------GENERAL PROCS---------------
@@ -84,18 +84,18 @@ IN_USE						used for vending/denying
 
 	//restoring sprite to initial
 	overlays.Cut()
-	//icon_state = initial(icon_state)	//shouldn't be needed but just in case
+	//icon_state = initial(icon_state) //shouldn't be needed but just in case
 	var/matrix/A = matrix()
 	apply_transform(A)
 
-	if(stat & NOPOWER || stat & TIPPED_OVER)		//tipping off without breaking uses "_off" sprite
+	if(stat & NOPOWER || stat & TIPPED_OVER) //tipping off without breaking uses "_off" sprite
 		overlays += image(icon, "[icon_state]_off")
-	if(stat & MAINT)		//if we require maintenance, then it is completely "_broken"
+	if(stat & MAINT) //if we require maintenance, then it is completely "_broken"
 		icon_state = "[initial(icon_state)]_broken"
-		if(stat & IN_REPAIR)	//if someone started repairs, they unscrewed "_panel"
+		if(stat & IN_REPAIR) //if someone started repairs, they unscrewed "_panel"
 			overlays += image(icon, "[icon_state]_panel")
 
-	if(stat & TIPPED_OVER)		//finally, if it is tipped over, flip the sprite
+	if(stat & TIPPED_OVER) //finally, if it is tipped over, flip the sprite
 		A.Turn(90)
 		apply_transform(A)
 
@@ -136,7 +136,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 //get which turf the vendor will dispense its products on.
 /obj/structure/machinery/cm_vending/proc/get_appropriate_vend_turf()
 	var/turf/T = loc
-	if(vend_x_offset != 0 || vend_y_offset != 0)	//this check should be more less expensive than using locate to locate your own tile every vending.
+	if(vend_x_offset != 0 || vend_y_offset != 0) //this check should be more less expensive than using locate to locate your own tile every vending.
 		T = locate(x + vend_x_offset, y + vend_y_offset, z)
 	return T
 
@@ -322,14 +322,14 @@ GLOBAL_LIST_EMPTY(vending_products)
 
 //------------MAINTENANCE PROCS---------------
 
-/obj/structure/machinery/cm_vending/proc/malfunction()	//proper malfunction, that requires MAINTenance
+/obj/structure/machinery/cm_vending/proc/malfunction() //proper malfunction, that requires MAINTenance
 	if(stat & MAINT)
 		return
 	stat &= ~WORKING
 	stat |= (BROKEN|MAINT)
 	update_icon()
 
-/obj/structure/machinery/cm_vending/proc/tip_over()		//tipping over, flipping back is enough, unless vendor was broken before being tipped over
+/obj/structure/machinery/cm_vending/proc/tip_over() //tipping over, flipping back is enough, unless vendor was broken before being tipped over
 	stat |= TIPPED_OVER
 	density = FALSE
 	if(!(stat & MAINT))
@@ -340,7 +340,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 /obj/structure/machinery/cm_vending/proc/flip_back()
 	density = TRUE
 	stat &= ~TIPPED_OVER
-	if(!(stat & MAINT))		//we fix vendor only if it was tipped over while working. No magic fixing of broken and then tipped over vendors.
+	if(!(stat & MAINT)) //we fix vendor only if it was tipped over while working. No magic fixing of broken and then tipped over vendors.
 		stat &= ~BROKEN
 		stat |= WORKING
 	update_icon()
@@ -537,10 +537,10 @@ GLOBAL_LIST_EMPTY(vending_products)
 			else
 				// if vendor has no costs and is inventory limited
 				var/inventory_count = itemspec[2]
-				if(inventory_count <= 0)	//to avoid dropping more than one product when there's
+				if(inventory_count <= 0) //to avoid dropping more than one product when there's
 					to_chat(usr, SPAN_WARNING("[itemspec[1]] is out of stock."))
 					vend_fail()
-					return TRUE		// one left and the player spam click during a lagspike.
+					return TRUE // one left and the player spam click during a lagspike.
 
 			vendor_successful_vend(src, itemspec, user)
 	add_fingerprint(user)
@@ -746,7 +746,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 	.["vendor_type"] = "base"
 	.["theme"] = vendor_theme
 	if(vend_flags & VEND_FACTION_THEMES)
-		.["theme"] = VENDOR_THEME_COMPANY	//for potential future PMC version
+		.["theme"] = VENDOR_THEME_COMPANY //for potential future PMC version
 		var/mob/living/carbon/human/human = user
 		switch(human.faction)
 			if(FACTION_UPP)
@@ -801,6 +801,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 	icon_state = "guns_rack"
 	vendor_theme = VENDOR_THEME_USCM
 	vend_flags = VEND_CLUTTER_PROTECTION | VEND_LIMITED_INVENTORY | VEND_TO_HAND
+	show_points = FALSE
 
 	//this here is made to provide ability to restock vendors with different subtypes of same object, like handmade and manually filled ammo boxes.
 	var/list/corresponding_types_list
@@ -1048,20 +1049,20 @@ GLOBAL_LIST_INIT(cm_vending_gear_corresponding_types_list, list(
 /proc/vendor_user_inventory_list(var/vendor, mob/user, var/cost_index=2, var/priority_index=5)
 	. = list()
 	// default list format
-	//	(
-	// 		name: str
-	//		cost
-	//		item reference
-	//		allowed to buy flag
-	//		item priority (mandatory/recommended/regular)
-	//	)
+	// (
+	// name: str
+	// cost
+	// item reference
+	// allowed to buy flag
+	// item priority (mandatory/recommended/regular)
+	// )
 	var/obj/structure/machinery/cm_vending/vending_machine = vendor
 	var/list/ui_listed_products = vending_machine.get_listed_products(user)
 
 	for (var/i in 1 to length(ui_listed_products))
-		var/list/myprod = ui_listed_products[i]	//we take one list from listed_products
+		var/list/myprod = ui_listed_products[i] //we take one list from listed_products
 
-		var/p_name = myprod[1]					//taking it's name
+		var/p_name = myprod[1] //taking it's name
 		var/p_cost = cost_index == null ? 0 : myprod[cost_index]
 		var/item_ref = myprod[3]
 		var/priority = myprod[priority_index]
@@ -1105,8 +1106,8 @@ GLOBAL_LIST_INIT(cm_vending_gear_corresponding_types_list, list(
 	var/list/ui_categories = list()
 
 	for (var/i in 1 to length(ui_listed_products))
-		var/list/myprod = ui_listed_products[i]	//we take one list from listed_products
-		var/p_amount = myprod[2]				//amount left
+		var/list/myprod = ui_listed_products[i] //we take one list from listed_products
+		var/p_amount = myprod[2] //amount left
 		ui_categories += list(p_amount)
 	.["stock_listing"] = ui_categories
 
@@ -1117,13 +1118,13 @@ GLOBAL_LIST_INIT(cm_vending_gear_corresponding_types_list, list(
 	. = list()
 	var/list/ui_listed_products = vending_machine.get_listed_products(user)
 	// list format
-	//	(
-	// 		name: str
-	//		cost
-	//		item reference
-	//		allowed to buy flag
-	//		item priority (mandatory/recommended/regular)
-	//	)
+	// (
+	// name: str
+	// cost
+	// item reference
+	// allowed to buy flag
+	// item priority (mandatory/recommended/regular)
+	// )
 
 	var/list/stock_values = list()
 
@@ -1140,7 +1141,7 @@ GLOBAL_LIST_INIT(cm_vending_gear_corresponding_types_list, list(
 			points = H.marine_points
 
 	for (var/i in 1 to length(ui_listed_products))
-		var/list/myprod = ui_listed_products[i]	//we take one list from listed_products
+		var/list/myprod = ui_listed_products[i] //we take one list from listed_products
 		var/prod_available = FALSE
 		var/p_cost = myprod[2]
 		var/avail_flag = myprod[4]
@@ -1159,12 +1160,12 @@ GLOBAL_LIST_INIT(cm_vending_gear_corresponding_types_list, list(
 	var/vend_flags = vendor.vend_flags
 
 	var/turf/target_turf = vendor.get_appropriate_vend_turf(user)
-	if(LAZYLEN(itemspec))	//making sure it's not empty
+	if(LAZYLEN(itemspec)) //making sure it's not empty
 		if(vendor.vend_delay)
 			vendor.overlays.Cut()
 			vendor.icon_state = "[initial(vendor.icon_state)]_vend"
 			if(vendor.vend_sound)
-				playsound(vendor.loc, vendor.vend_sound, 25, 1, 2)	//heard only near vendor
+				playsound(vendor.loc, vendor.vend_sound, 25, 1, 2) //heard only near vendor
 			sleep(vendor.vend_delay)
 
 		var/prod_type = itemspec[3]
@@ -1203,7 +1204,7 @@ GLOBAL_LIST_INIT(cm_vending_gear_corresponding_types_list, list(
 
 		if(vend_flags & VEND_UNIFORM_AUTOEQUIP)
 			// autoequip
-			if(istype(new_item, /obj/item) && new_item.flags_equip_slot != NO_FLAGS)	//auto-equipping feature here
+			if(istype(new_item, /obj/item) && new_item.flags_equip_slot != NO_FLAGS) //auto-equipping feature here
 				if(new_item.flags_equip_slot == SLOT_ACCESSORY)
 					if(user.w_uniform)
 						var/obj/item/clothing/clothing = user.w_uniform
@@ -1213,8 +1214,9 @@ GLOBAL_LIST_INIT(cm_vending_gear_corresponding_types_list, list(
 					user.equip_to_appropriate_slot(new_item)
 
 		if(vend_flags & VEND_TO_HAND)
-			if (user.client?.prefs && (user.client?.prefs?.toggle_prefs & TOGGLE_VEND_ITEM_TO_HAND))
-				user.put_in_any_hand_if_possible(new_item, disable_warning = TRUE)
+			if(user.client?.prefs && (user.client?.prefs?.toggle_prefs & TOGGLE_VEND_ITEM_TO_HAND))
+				if(vendor.Adjacent(user))
+					user.put_in_any_hand_if_possible(new_item, disable_warning = TRUE)
 	else
 		to_chat(user, SPAN_WARNING("ERROR: itemspec is missing. Please report this to admins."))
 		sleep(15)
@@ -1252,9 +1254,9 @@ GLOBAL_LIST_INIT(cm_vending_gear_corresponding_types_list, list(
 /*
 /obj/structure/machinery/vending/proc/get_wire_descriptions()
 	return list(
-		VENDING_WIRE_EXTEND    = "Inventory control computer",
-		VENDING_WIRE_IDSCAN    = "ID scanner",
-		VENDING_WIRE_SHOCK     = "Ground safety",
+		VENDING_WIRE_EXTEND = "Inventory control computer",
+		VENDING_WIRE_IDSCAN = "ID scanner",
+		VENDING_WIRE_SHOCK  = "Ground safety",
 		VENDING_WIRE_SHOOT_INV = "Dispenser motor control"
 	)
 

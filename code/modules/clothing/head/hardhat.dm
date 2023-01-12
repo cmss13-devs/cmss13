@@ -28,8 +28,8 @@
 	icon_state = "hardhat[on]_[hardhat_color]"
 	item_state = "hardhat[on]_[hardhat_color]"
 
-	if(on)	user.SetLuminosity(brightness_on, FALSE, src)
-	else	user.SetLuminosity(0, FALSE, src)
+	if(on) user.SetLuminosity(brightness_on, FALSE, src)
+	else user.SetLuminosity(0, FALSE, src)
 
 	if(ismob(loc))
 		var/mob/M = loc

@@ -55,7 +55,7 @@
 	if(O.luminosity) //it can't make light as an overlay
 		return
 	O.forceMove(src)
-	RegisterSignal(O, COMSIG_ATOM_DECORATED, .proc/decorate_update)
+	RegisterSignal(O, COMSIG_ATOM_DECORATED, PROC_REF(decorate_update))
 	if(update)
 		draw_item_overlays()
 

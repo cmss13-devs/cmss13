@@ -59,7 +59,7 @@
 
 /datum/behavior_delegate/praetorian_base
 	name = "Base Praetorian Behavior Delegate"
-	 ///reward for hitting shots instead of spamming acid ball
+	///reward for hitting shots instead of spamming acid ball
 	var/reward_shield = 15
 
 /datum/behavior_delegate/praetorian_base/ranged_attack_additional_effects_target(atom/A)

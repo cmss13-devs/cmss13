@@ -1,4 +1,0 @@
-author: "Morrow"
-delete-after: True
-changes:
-  - rscdel: "Removes the ability for the festivizer to work on mobs or vehicles"

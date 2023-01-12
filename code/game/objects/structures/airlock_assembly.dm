@@ -1,13 +1,13 @@
-#define STATE_STANDARD 		0
-#define STATE_CIRCUIT		1
-#define STATE_WIRES			2
-#define STATE_SCREWDRIVER	3
+#define STATE_STANDARD 0
+#define STATE_CIRCUIT 1
+#define STATE_WIRES 2
+#define STATE_SCREWDRIVER 3
 
-#define AIRLOCK_MATERIAL_COST	5
+#define AIRLOCK_MATERIAL_COST 5
 
-#define AIRLOCK_NOGLASS		0
-#define AIRLOCK_GLASSIN		1
-#define AIRLOCK_CANTGLASS	2
+#define AIRLOCK_NOGLASS 0
+#define AIRLOCK_GLASSIN 1
+#define AIRLOCK_CANTGLASS 2
 
 /obj/structure/airlock_assembly
 	name = "airlock assembly"

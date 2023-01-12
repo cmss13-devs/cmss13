@@ -18,7 +18,7 @@
 	var/desiredstate = 0 // Zero is closed, 1 is open.
 	var/specialfunctions = 1
 	/*
-	Bitflag, 	1= open
+	Bitflag, 1= open
 				2= idscan,
 				4= bolts
 				8= shock
@@ -29,7 +29,7 @@
 	var/exposedwires = 0
 	var/wires = 3
 	/*
-	Bitflag,	1=checkID
+	Bitflag, 1=checkID
 				2=Network Access
 	*/
 
@@ -109,9 +109,9 @@
 		if(D.id_tag == src.id)
 			if(specialfunctions & OPEN)
 				if (D.density)
-					INVOKE_ASYNC(D, /obj/structure/machinery/door.proc/open)
+					INVOKE_ASYNC(D, TYPE_PROC_REF(/obj/structure/machinery/door, open))
 				else
-					INVOKE_ASYNC(D, /obj/structure/machinery/door.proc/close)
+					INVOKE_ASYNC(D, TYPE_PROC_REF(/obj/structure/machinery/door, close))
 			if(desiredstate == 1)
 				if(specialfunctions & IDSCAN)
 					D.remoteDisabledIdScanner = 1
@@ -143,9 +143,9 @@
 					if(S.moving_status == SHUTTLE_INTRANSIT)
 						return FALSE
 			if(M.density)
-				INVOKE_ASYNC(M, /obj/structure/machinery/door.proc/open)
+				INVOKE_ASYNC(M, TYPE_PROC_REF(/obj/structure/machinery/door, open))
 			else
-				INVOKE_ASYNC(M, /obj/structure/machinery/door.proc/close)
+				INVOKE_ASYNC(M, TYPE_PROC_REF(/obj/structure/machinery/door, close))
 
 /obj/structure/machinery/door_control/verb/push_button()
 	set name = "Push Button"
@@ -217,7 +217,7 @@
 
 	for(var/obj/structure/machinery/door/poddoor/M in machines)
 		if(M.id == src.id)
-			INVOKE_ASYNC(M, /obj/structure/machinery/door.proc/open)
+			INVOKE_ASYNC(M, TYPE_PROC_REF(/obj/structure/machinery/door, open))
 
 	sleep(20)
 
@@ -229,7 +229,7 @@
 
 	for(var/obj/structure/machinery/door/poddoor/M in machines)
 		if(M.id == src.id)
-			INVOKE_ASYNC(M, /obj/structure/machinery/door.proc/close)
+			INVOKE_ASYNC(M, TYPE_PROC_REF(/obj/structure/machinery/door, close))
 
 	icon_state = "launcherbtt"
 	active = 0
@@ -241,7 +241,7 @@
 	name = "railing controls"
 	desc = "Allows for raising and lowering the guard rails on the vehicle ASRS elevator when it's raised."
 	id = "vehicle_elevator_railing_aux"
-
+	gender = PLURAL
 	var/busy = FALSE
 
 /obj/structure/machinery/door_control/railings/use_button(mob/living/user, var/force = FALSE)
@@ -296,3 +296,29 @@
 
 /obj/structure/machinery/door_control/brbutton/alt
 	icon_state = "big_red_button_tablev"
+
+/obj/structure/machinery/door_control/airlock
+	icon = 'icons/obj/structures/machinery/computer.dmi'
+	icon_state = "elevator_screen"
+
+/obj/structure/machinery/door_control/airlock/use_button(mob/living/user, var/force = FALSE)
+	if(inoperable())
+		to_chat(user, SPAN_WARNING("\The [src] doesn't seem to be working."))
+		return
+
+	use_power(5)
+	add_fingerprint(user)
+	to_chat(user, SPAN_NOTICE("You press \the [name] button."))
+
+	switch(normaldoorcontrol)
+		if(CONTROL_NORMAL_DOORS)
+			handle_door()
+		if(CONTROL_POD_DOORS)
+			handle_pod()
+		if(CONTROL_DROPSHIP)
+			handle_dropship(id)
+
+	desiredstate = !desiredstate
+
+/obj/structure/machinery/door_control/power_change()
+	return

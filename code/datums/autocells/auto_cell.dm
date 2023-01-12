@@ -6,7 +6,7 @@
 */
 
 // No neighbors
-#define NEIGHBORS_NONE     0
+#define NEIGHBORS_NONE  0
 // Cardinal neighborhood
 #define NEIGHBORS_CARDINAL 1
 // Ordinal neighborhood

@@ -7,7 +7,7 @@
 	anchored = 1
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 4
-	active_power_usage = 15000	//15 kW
+	active_power_usage = 15000 //15 kW
 	var/obj/item/charging = null
 	var/percent_charge_complete = 0
 	var/list/allowed_devices = list(/obj/item/weapon/melee/baton, /obj/item/cell, /obj/item/weapon/gun/energy, /obj/item/device/defibrillator, /obj/item/tool/portadialysis, /obj/item/clothing/suit/auto_cpr)
@@ -202,7 +202,7 @@
 			B.bcell.charge = 0
 	..(severity)
 
-/obj/structure/machinery/recharger/update_icon()	//we have an update_icon() in addition to the stuff in process to make it feel a tiny bit snappier.
+/obj/structure/machinery/recharger/update_icon() //we have an update_icon() in addition to the stuff in process to make it feel a tiny bit snappier.
 	src.overlays = 0
 	if((inoperable()))
 		return
@@ -239,7 +239,7 @@
 	name = "wall recharger"
 	icon = 'icons/obj/structures/props/stationobjs.dmi'
 	icon_state = "wrecharger0"
-	active_power_usage = 25000	//25 kW , It's more specialized than the standalone recharger (guns and batons only) so make it more powerful
+	active_power_usage = 25000 //25 kW , It's more specialized than the standalone recharger (guns and batons only) so make it more powerful
 	allowed_devices = list(/obj/item/weapon/gun/energy, /obj/item/weapon/melee/baton)
 	icon_state_charged = "wrecharger2"
 	icon_state_idle = "wrecharger0"

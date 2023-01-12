@@ -13,7 +13,7 @@
 
 var/global/datum/entity/statistic/round/round_statistics
 var/global/list/datum/entity/player_entity/player_entities = list()
-var/global/cas_tracking_id_increment = 0	//this var used to assign unique tracking_ids to tacbinos and signal flares
+var/global/cas_tracking_id_increment = 0 //this var used to assign unique tracking_ids to tacbinos and signal flares
 /datum/game_mode
 	var/name = "invalid"
 	var/config_tag = null
@@ -99,7 +99,7 @@ var/global/cas_tracking_id_increment = 0	//this var used to assign unique tracki
 	for(var/obj/effect/landmark/structure_spawner/SS in GLOB.structure_spawners)
 		SS.post_setup()
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_MODE_POSTSETUP)
-	addtimer(CALLBACK(GLOBAL_PROC, /proc/display_roundstart_logout_report), ROUNDSTART_LOGOUT_REPORT_TIME)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(display_roundstart_logout_report)), ROUNDSTART_LOGOUT_REPORT_TIME)
 
 	for(var/mob/new_player/np in GLOB.new_player_list)
 		np.new_player_panel_proc()
@@ -120,7 +120,7 @@ var/global/cas_tracking_id_increment = 0	//this var used to assign unique tracki
 	if(EvacuationAuthority.dest_status == NUKE_EXPLOSION_FINISHED || EvacuationAuthority.dest_status == NUKE_EXPLOSION_GROUND_FINISHED )
 		return TRUE
 
-/datum/game_mode/proc/cleanup()	//This is called when the round has ended but not the game, if any cleanup would be necessary in that case.
+/datum/game_mode/proc/cleanup() //This is called when the round has ended but not the game, if any cleanup would be necessary in that case.
 	return
 
 /datum/game_mode/proc/announce_ending()
@@ -210,7 +210,7 @@ var/global/cas_tracking_id_increment = 0	//this var used to assign unique tracki
 			candidates += player.mind
 			players -= player
 
-	return candidates		//Returns:	The number of people who had the antagonist role set to yes
+	return candidates //Returns: The number of people who had the antagonist role set to yes
 
 
 ///////////////////////////////////
@@ -281,7 +281,7 @@ var/global/cas_tracking_id_increment = 0	//this var used to assign unique tracki
 
 
 		if(L.ckey && L.client)
-			if(L.client.inactivity >= (ROUNDSTART_LOGOUT_REPORT_TIME * 0.5))	//Connected, but inactive (alt+tabbed or something)
+			if(L.client.inactivity >= (ROUNDSTART_LOGOUT_REPORT_TIME * 0.5)) //Connected, but inactive (alt+tabbed or something)
 				msg += "<b>[key_name(L)]</b>, the [L.job] (<font color='#ffcc00'><b>Connected, Inactive</b></font>)\n"
 				continue //AFK client
 			if(L.stat)

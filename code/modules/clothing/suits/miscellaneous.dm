@@ -1,8 +1,8 @@
 /*
  * Contains:
- *		Lasertag
- *		Costume
- *		Misc
+ * Lasertag
+ * Costume
+ * Misc
  */
 
 /*
@@ -256,13 +256,13 @@
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_FEET|BODY_FLAG_ARMS|BODY_FLAG_HANDS
 	flags_inv_hide = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT|HIDETAIL
 
-	equipped(var/mob/user, var/slot)
-		if(slot == WEAR_JACKET && ishuman(user))
-			var/mob/living/carbon/human/H = user
-			H.drop_inv_item_on_ground(H.handcuffed)
-			H.drop_l_hand()
-			H.drop_r_hand()
-		..()
+/obj/item/clothing/suit/straight_jacket/equipped(var/mob/user, var/slot)
+	if(slot == WEAR_JACKET && ishuman(user))
+		var/mob/living/carbon/human/H = user
+		H.drop_inv_item_on_ground(H.handcuffed)
+		H.drop_l_hand()
+		H.drop_r_hand()
+	..()
 
 /obj/item/clothing/suit/ianshirt
 	name = "worn shirt"

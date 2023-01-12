@@ -10,7 +10,7 @@
 /atom/movable/screen/text
 	icon = null
 	icon_state = null
-	mouse_opacity = 0
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	plane = CINEMATIC_PLANE
 	layer = CINEMATIC_LAYER
 	maptext_height = 480
@@ -20,7 +20,7 @@
 /atom/movable/screen/cinematic
 	plane = CINEMATIC_PLANE
 	layer = CINEMATIC_LAYER
-	mouse_opacity = 0
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	screen_loc = "1,0"
 
 /atom/movable/screen/cinematic/explosion
@@ -28,7 +28,7 @@
 	icon_state = "intro_ship"
 
 /atom/movable/screen/inventory
-	var/slot_id	//The indentifier for the slot. It has nothing to do with ID cards.
+	var/slot_id //The indentifier for the slot. It has nothing to do with ID cards.
 
 
 /atom/movable/screen/close
@@ -138,23 +138,23 @@
 	name = "Allow Walking"
 	icon_state = "no_walk0"
 
-	update_icon(mob/user)
-		if(user.gun_mode)
-			if(user.target_can_move)
-				icon_state = "no_walk1"
-				name = "Disallow Walking"
-			else
-				icon_state = "no_walk0"
-				name = "Allow Walking"
-			screen_loc = initial(screen_loc)
-			return
-		screen_loc = null
+/atom/movable/screen/gun/move/update_icon(mob/user)
+	if(user.gun_mode)
+		if(user.target_can_move)
+			icon_state = "no_walk1"
+			name = "Disallow Walking"
+		else
+			icon_state = "no_walk0"
+			name = "Allow Walking"
+		screen_loc = initial(screen_loc)
+		return
+	screen_loc = null
 
 /atom/movable/screen/gun/move/clicked(var/mob/user)
 	if (..())
 		return 1
 
-	if(gun_click_time > world.time - 30)	//give them 3 seconds between mode changes.
+	if(gun_click_time > world.time - 30) //give them 3 seconds between mode changes.
 		return 1
 	if(!isgun(user.get_held_item()))
 		to_chat(user, "You need your gun in your active hand to do that!")
@@ -168,24 +168,24 @@
 	name = "Allow Running"
 	icon_state = "no_run0"
 
-	update_icon(mob/user)
-		if(user.gun_mode)
-			if(user.target_can_move)
-				if(user.target_can_run)
-					icon_state = "no_run1"
-					name = "Disallow Running"
-				else
-					icon_state = "no_run0"
-					name = "Allow Running"
-				screen_loc = initial(screen_loc)
-				return
-		screen_loc = null
+/atom/movable/screen/gun/run/update_icon(mob/user)
+	if(user.gun_mode)
+		if(user.target_can_move)
+			if(user.target_can_run)
+				icon_state = "no_run1"
+				name = "Disallow Running"
+			else
+				icon_state = "no_run0"
+				name = "Allow Running"
+			screen_loc = initial(screen_loc)
+			return
+	screen_loc = null
 
 /atom/movable/screen/gun/run/clicked(var/mob/user)
 	if (..())
 		return 1
 
-	if(gun_click_time > world.time - 30)	//give them 3 seconds between mode changes.
+	if(gun_click_time > world.time - 30) //give them 3 seconds between mode changes.
 		return 1
 	if(!isgun(user.get_held_item()))
 		to_chat(user, "You need your gun in your active hand to do that!")
@@ -199,23 +199,23 @@
 	name = "Allow Item Use"
 	icon_state = "no_item0"
 
-	update_icon(mob/user)
-		if(user.gun_mode)
-			if(user.target_can_click)
-				icon_state = "no_item1"
-				name = "Allow Item Use"
-			else
-				icon_state = "no_item0"
-				name = "Disallow Item Use"
-			screen_loc = initial(screen_loc)
-			return
-		screen_loc = null
+/atom/movable/screen/gun/item/update_icon(mob/user)
+	if(user.gun_mode)
+		if(user.target_can_click)
+			icon_state = "no_item1"
+			name = "Allow Item Use"
+		else
+			icon_state = "no_item0"
+			name = "Disallow Item Use"
+		screen_loc = initial(screen_loc)
+		return
+	screen_loc = null
 
 /atom/movable/screen/gun/item/clicked(var/mob/user)
 	if (..())
 		return 1
 
-	if(gun_click_time > world.time - 30)	//give them 3 seconds between mode changes.
+	if(gun_click_time > world.time - 30) //give them 3 seconds between mode changes.
 		return 1
 	if(!isgun(user.get_held_item()))
 		to_chat(user, "You need your gun in your active hand to do that!")
@@ -229,11 +229,11 @@
 	name = "Toggle Gun Mode"
 	icon_state = "gun0"
 
-	update_icon(mob/user)
-		if(user.gun_mode)
-			icon_state = "gun1"
-		else
-			icon_state = "gun0"
+/atom/movable/screen/gun/mode/update_icon(mob/user)
+	if(user.gun_mode)
+		icon_state = "gun1"
+	else
+		icon_state = "gun0"
 
 /atom/movable/screen/gun/mode/clicked(var/mob/user)
 	if (..())
@@ -321,7 +321,7 @@
 	icon = 'icons/mob/hud/screen1_robot.dmi'
 
 /atom/movable/screen/clicked(var/mob/user)
-	if(!user)	return 1
+	if(!user) return 1
 
 	switch(name)
 		if("equip")
@@ -547,7 +547,7 @@
 	name = "health"
 	icon_state = "health0"
 	icon = 'icons/mob/hud/human_midnight.dmi'
-	mouse_opacity = 0
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
 /atom/movable/screen/pull
 	name = "stop pulling"
@@ -575,7 +575,7 @@
 	icon = 'icons/mob/hud/human_midnight.dmi'
 	icon_state = "trackoff"
 	alpha = 0 //invisible
-	mouse_opacity = 0
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
 /atom/movable/screen/squad_leader_locator/clicked(mob/living/carbon/human/user, mods)
 	if(!istype(user))

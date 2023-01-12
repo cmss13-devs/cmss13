@@ -45,8 +45,8 @@
 /turf/proc/clean(atom/source)
 	if(source.reagents.has_reagent("water", 1))
 		clean_cleanables()
-	source.reagents.reaction(src, TOUCH, 10)	//10 is the multiplier for the reaction effect. probably needed to wet the floor properly.
-	source.reagents.remove_any(1)				//reaction() doesn't use up the reagents
+	source.reagents.reaction(src, TOUCH, 10) //10 is the multiplier for the reaction effect. probably needed to wet the floor properly.
+	source.reagents.remove_any(1) //reaction() doesn't use up the reagents
 
 
 /obj/item/tool/mop/afterattack(atom/A, mob/living/user, proximity)

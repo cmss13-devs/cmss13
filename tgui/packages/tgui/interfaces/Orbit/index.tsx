@@ -2,7 +2,7 @@ import { filter, sortBy } from 'common/collections';
 import { flow } from 'common/fp';
 import { capitalizeFirst } from 'common/string';
 import { useBackend, useLocalState } from 'tgui/backend';
-import { Box, Button, Collapsible, Icon, Input, LabeledList, Section, Stack } from 'tgui/components';
+import { Box, Button, Collapsible, ColorBox, Icon, Input, LabeledList, Section, Stack } from 'tgui/components';
 import { Window } from 'tgui/layouts';
 import { getDisplayColor, getDisplayName, isJobOrNameMatch } from './helpers';
 import type { Observable, OrbitData } from './types';
@@ -199,13 +199,14 @@ const ObservableItem = (
 
   return (
     <Button
-      color={getDisplayColor(item, !!color)}
+      color={'dark-blue'}
       onClick={() => act('orbit', { ref: ref })}
       tooltip={!!health && <ObservableTooltip item={item} />}
       tooltipPosition="bottom-start">
-      {!!icon && (
-        <ObservableIcon icon={icon} background_color={background_color} />
-      )}
+      <ColorBox
+        color={getDisplayColor(item, !!color)}
+        style={{ 'margin-right': '0.5em' }}
+      />
       {capitalizeFirst(getDisplayName(full_name, nickname))}
       {!!orbiters && (
         <>
@@ -221,7 +222,7 @@ const ObservableItem = (
 /** Displays some info on the mob as a tooltip. */
 const ObservableTooltip = (props: { item: Observable }) => {
   const {
-    item: { caste, health, job, full_name },
+    item: { caste, health, job, full_name, icon, background_color },
   } = props;
   const displayHealth = !!health && health >= 0 ? `${health}%` : 'Critical';
 
@@ -230,8 +231,22 @@ const ObservableTooltip = (props: { item: Observable }) => {
       {!!full_name && (
         <LabeledList.Item label="Full Name">{full_name}</LabeledList.Item>
       )}
-      {!!caste && <LabeledList.Item label="Caste">{caste}</LabeledList.Item>}
-      {!!job && <LabeledList.Item label="Job">{job}</LabeledList.Item>}
+      {!!caste && (
+        <LabeledList.Item label="Caste">
+          {!!icon && (
+            <ObservableIcon icon={icon} background_color={background_color} />
+          )}
+          {caste}
+        </LabeledList.Item>
+      )}
+      {!!job && (
+        <LabeledList.Item label="Job">
+          {!!icon && (
+            <ObservableIcon icon={icon} background_color={background_color} />
+          )}
+          {job}
+        </LabeledList.Item>
+      )}
       {!!health && (
         <LabeledList.Item label="Health">{displayHealth}</LabeledList.Item>
       )}
@@ -263,6 +278,7 @@ const ObservableIcon = (
         transform: 'scale(2) translatey(-1px)',
         '-ms-interpolation-mode': 'nearest-neighbor',
         'background-color': background_color ? background_color : null,
+        'vertical-align': 'middle',
       }}
     />
   );

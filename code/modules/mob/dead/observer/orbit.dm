@@ -112,7 +112,7 @@
 				var/mob/living/carbon/Xenomorph/xeno = player
 				if(xeno.caste)
 					var/datum/caste_datum/caste = xeno.caste
-					serialized["caste"] = caste.display_name
+					serialized["caste"] = caste.caste_type
 					serialized["icon"] = caste.minimap_icon
 				xenos += list(serialized)
 				continue

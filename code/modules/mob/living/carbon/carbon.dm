@@ -11,6 +11,9 @@
 	if(SSweather.is_weather_event)
 		handle_weather(delta_time)
 
+	if(stat != CONSCIOUS)
+		remove_all_indicators()
+
 /mob/living/carbon/Destroy()
 	stomach_contents?.Cut()
 

@@ -21,6 +21,7 @@
 	var/list/range_turfs = list()
 
 	var/colony_camera_mapload = TRUE
+	var/admin_console = FALSE
 
 /obj/structure/machinery/computer/security/Initialize(mapload)
 	. = ..()
@@ -51,7 +52,7 @@
 	return attack_hand(user)
 
 /obj/structure/machinery/computer/security/attack_hand(mob/user)
-	if(is_admin_level(z))
+	if(!admin_console && is_admin_level(z))
 		to_chat(user, SPAN_DANGER("<b>Unable to establish a connection</b>: \black You're too far away from the ship!"))
 		return
 	if(inoperable())

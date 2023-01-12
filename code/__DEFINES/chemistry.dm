@@ -61,13 +61,21 @@
 #define REAGENT_CANCEL "cancel"
 
 //Reagent generation classifications
-#define CHEM_CLASS_NONE  0 //Default. Chemicals not used in the chem generator
-#define CHEM_CLASS_BASIC 1 //Chemicals that can be dispensed directly from the dispenser (iron, oxygen)
-#define CHEM_CLASS_COMMON    2 //Chemicals which recipe is commonly known and made (bicaridine, alkysine, salt)
-#define CHEM_CLASS_UNCOMMON  3 //Chemicals which recipe is uncommonly known and made (spacedrugs, foaming agent)
-#define CHEM_CLASS_RARE  4 //Chemicals without a recipe but can be obtained on the Almayer, or requires rare components
-#define CHEM_CLASS_SPECIAL   5 //Chemicals without a recipe and can't be obtained on the Almayer, or requires special components
-#define CHEM_CLASS_ULTRA 6 //Randomly generated chemicals
+
+/// Default. Chemicals not used in the chem generator
+#define CHEM_CLASS_NONE 0
+/// Chemicals that can be dispensed directly from the dispenser (iron, oxygen)
+#define CHEM_CLASS_BASIC 1
+/// Chemicals which recipe is commonly known and made (bicaridine, alkysine, salt)
+#define CHEM_CLASS_COMMON 2
+/// Chemicals which recipe is uncommonly known and made (spacedrugs, foaming agent)
+#define CHEM_CLASS_UNCOMMON 3
+/// Chemicals without a recipe but can be obtained on the Almayer, or requires rare components
+#define CHEM_CLASS_RARE 4
+/// Chemicals without a recipe and can't be obtained on the Almayer, or requires special components
+#define CHEM_CLASS_SPECIAL 5
+/// Randomly generated chemicals
+#define CHEM_CLASS_ULTRA 6
 
 //chem effect flags, used to quickly check if the mob has a chem that provides a special effect
 #define CHEM_EFFECT_RESIST_FRACTURE (1<<0)
@@ -86,12 +94,20 @@
 #define PLASMA_ROYAL "royalplasma"
 
 // Flags for Reagent
-#define REAGENT_TYPE_MEDICAL (1<<0) // Used to restrict recipes in the generator from employing all reagents of this type
-#define REAGENT_SCANNABLE (1<<1) // Whether the reagent shows up on health analysers.
-#define REAGENT_NOT_INGESTIBLE (1<<2) // Whether the reagent canNOT be ingested and must be delivered through injection. Used by electrogenetic property.
-#define REAGENT_CANNOT_OVERDOSE (1<<3) // Whether the reagent canNOT trigger its overdose effects. Used by regulating property. For ordinary reagents with no overdose effect, instead keep var/overdose at 0.
+
+/// Used to restrict recipes in the generator from employing all reagents of this type
+#define REAGENT_TYPE_MEDICAL (1<<0)
+/// Whether the reagent shows up on health analysers.
+#define REAGENT_SCANNABLE (1<<1)
+/// Whether the reagent canNOT be ingested and must be delivered through injection. Used by electrogenetic property.
+#define REAGENT_NOT_INGESTIBLE (1<<2)
+/// Whether the reagent canNOT trigger its overdose effects. Used by regulating property. For ordinary reagents with no overdose effect, instead keep var/overdose at 0.
+#define REAGENT_CANNOT_OVERDOSE (1<<3)
+
 #define REAGENT_TYPE_STIMULANT (1<<4)
-#define REAGENT_NO_GENERATION (1<<5) // Reagent doesn't randomly generate in chemicals
+
+/// Reagent doesn't randomly generate in chemicals
+#define REAGENT_NO_GENERATION (1<<5)
 
 /*
 	properties defines
@@ -204,12 +220,19 @@
 
 
 //Property rarity
-#define PROPERTY_DISABLED 0 //the property is disabled and can't spawn anywhere, however is still functional
-#define PROPERTY_COMMON 1 //can be generated anywhere and available in round start chems
-#define PROPERTY_UNCOMMON 2 //can be generated anywhere, but not available in round start chems
-#define PROPERTY_RARE 3 //can only be generated at specific gen_tiers, but can also be made through specific property combinations
-#define PROPERTY_LEGENDARY 4 //can strictly only be generated at specific gen_tiers
-#define PROPERTY_ADMIN 5 //can only be spawned through admin powers
+
+/// the property is disabled and can't spawn anywhere, however is still functional
+#define PROPERTY_DISABLED 0
+/// can be generated anywhere and available in round start chems
+#define PROPERTY_COMMON 1
+/// can be generated anywhere, but not available in round start chems
+#define PROPERTY_UNCOMMON 2
+/// can only be generated at specific gen_tiers, but can also be made through specific property combinations
+#define PROPERTY_RARE 3
+/// can strictly only be generated at specific gen_tiers
+#define PROPERTY_LEGENDARY 4
+/// can only be spawned through admin powers
+#define PROPERTY_ADMIN 5
 
 //Property category
 #define PROPERTY_TYPE_ALL 0
@@ -235,8 +258,11 @@
 #define INJECTOR_PERCENTAGE_OF_OD 0.5
 
 //defines for research level multipliers
-#define RESEARCH_LEVEL_INCREASE_MULTIPLIER 3 //Scales cost of increasing clearance using credits
-#define TECHTREE_LEVEL_MULTIPLIER 2 //Scales tech level to max amplification level
+
+/// Scales cost of increasing clearance using credits
+#define RESEARCH_LEVEL_INCREASE_MULTIPLIER 3
+/// Scales tech level to max amplification level
+#define TECHTREE_LEVEL_MULTIPLIER 2
 
 //Property cost multipliers for the chemical simulator
 #define PROPERTY_COST_MAX 8
@@ -268,11 +294,21 @@
 /*
 	Chemical explosions/fires
 */
-#define CHEM_FIRE_PENETRATION_THRESHOLD 10 //The minimum amount of a fire penetrating chemical required to turn a fire into fire penetrating
-#define CHEM_FIRE_STAR_THRESHOLD 30 //An intensity greater than this will cause a fire to be star shape
+
+/// The minimum amount of a fire penetrating chemical required to turn a fire into fire penetrating
+#define CHEM_FIRE_PENETRATION_THRESHOLD 10
+/// An intensity greater than this will cause a fire to be star shape
+#define CHEM_FIRE_STAR_THRESHOLD 30
+
 #define CHEM_FIRE_IRREGULAR_THRESHOLD 15
-#define CHEM_FIRE_PHOSPHORUS_PER_RADIUS 10 //Amount of phosphorus that equals 1 radius of white phosphorus smoke
-#define EXPLOSION_PHORON_THRESHOLD 10 //The minimum amount of phoron required to turn shrapnel into incendiary shrapnel
+
+/// Amount of phosphorus that equals 1 radius of white phosphorus smoke
+#define CHEM_FIRE_PHOSPHORUS_PER_RADIUS 10
+/// The minimum amount of phoron required to turn shrapnel into incendiary shrapnel
+#define EXPLOSION_PHORON_THRESHOLD 10
+
 #define EXPLOSION_MIN_FALLOFF 25
 #define EXPLOSION_BASE_SHARDS 4
-#define INCENDIARY_SHARDS_MAX_REDUCTION 4 //The maximum amount of shards is divided by this number if the shards are incendiary
+
+/// The maximum amount of shards is divided by this number if the shards are incendiary
+#define INCENDIARY_SHARDS_MAX_REDUCTION	4

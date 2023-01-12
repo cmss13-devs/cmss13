@@ -130,6 +130,7 @@
 
 /client/var/cached_xeno_playtime
 
+/// playtime for all castes
 /client/proc/get_total_xeno_playtime(var/skip_cache = FALSE)
 	if(cached_xeno_playtime && !skip_cache)
 		return cached_xeno_playtime
@@ -150,6 +151,30 @@
 	cached_xeno_playtime = total_xeno_playtime
 
 	return total_xeno_playtime
+
+/// playtime for drone and drone evolution castes
+/client/proc/get_total_drone_playtime()
+	var/total_drone_playtime = 0
+
+	var/list/drone_evo_castes = list(XENO_CASTE_DRONE, XENO_CASTE_CARRIER, XENO_CASTE_BURROWER, XENO_CASTE_HIVELORD, XENO_CASTE_QUEEN)
+
+	for(var/caste in RoleAuthority.castes_by_name)
+		if(!(caste in drone_evo_castes))
+			continue
+		total_drone_playtime += get_job_playtime(src, caste)
+
+	return total_drone_playtime
+
+/// playtime for t3 castes and queen
+/client/proc/get_total_t3_playtime()
+	var/total_t3_playtime = 0
+
+	for(var/datum/caste_datum/caste as anything in RoleAuthority.castes_by_name)
+		if(caste.tier < 3)
+			continue
+		total_t3_playtime += get_job_playtime(src, caste)
+
+	return total_t3_playtime
 
 /datum/caste_datum/proc/can_play_caste(var/client/client)
 	if(!CONFIG_GET(flag/use_timelocks))
@@ -782,6 +807,9 @@
 				xeno.set_hive_and_update(XENO_HIVE_FORSAKEN)
 			else
 				to_chat(xeno, SPAN_XENOANNOUNCE("The Queen has left without you, you quickly find a hiding place to enter hibernation as you lose touch with the hive mind."))
+				if(xeno.stomach_contents.len)
+					xeno.devour_timer = 0
+					xeno.handle_stomach_contents()
 				qdel(xeno)
 			stored_larva++
 	for(var/i in GLOB.alive_mob_list)

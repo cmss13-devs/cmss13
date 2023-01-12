@@ -82,10 +82,11 @@
 		return TRUE //no afterattack
 
 	if(istype(W, /obj/item/weapon/melee/twohanded/breacher))
+		var/obj/item/weapon/melee/twohanded/breacher/current_hammer = W
 		if(user.action_busy)
 			return
-		if(!HAS_TRAIT(user, TRAIT_SUPER_STRONG))
-			to_chat(user, SPAN_WARNING("You can't use \the [W] properly!"))
+		if(!(HAS_TRAIT(user, TRAIT_SUPER_STRONG) || !current_hammer.really_heavy))
+			to_chat(user, SPAN_WARNING("You can't use \the [current_hammer] properly!"))
 			return
 
 		to_chat(user, SPAN_NOTICE("You start taking down \the [src]."))

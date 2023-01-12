@@ -8,6 +8,7 @@
 	icon = 'icons/mob/xenos/weeds.dmi'
 	icon_state = "base"
 
+	gender = PLURAL
 	anchored = TRUE
 	density = FALSE
 	layer = WEED_LAYER
@@ -72,8 +73,9 @@
 			addtimer(CALLBACK(src, PROC_REF(weed_expand)), WEED_BASE_GROW_SPEED / max(weed_strength, 1))
 
 	var/turf/T = get_turf(src)
-	T.weeds = src
-	weeded_turf = T
+	if(T)
+		T.weeds = src
+		weeded_turf = T
 
 	RegisterSignal(src, list(
 		COMSIG_ATOM_TURF_CHANGE,

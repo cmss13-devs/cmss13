@@ -149,6 +149,11 @@
 				if(mre_pack.isopened)
 					to_chat(user, SPAN_WARNING("\The [W] was already opened and isn't suitable for storing in \the [src]."))
 					return
+			else if(istype(W, /obj/item/cell/high))
+				var/obj/item/cell/high/cell = W
+				if(cell.charge != cell.maxcharge)
+					to_chat(user, SPAN_WARNING("\The [W] needs to be fully charged before it can be stored in \the [src]."))
+					return
 			if(item_box.contents.len < item_box.num_of_magazines)
 				user.drop_inv_item_to_loc(W, src)
 				item_box.contents += W

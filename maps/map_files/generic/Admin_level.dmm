@@ -940,9 +940,9 @@
 	},
 /obj/structure/machinery/door/airlock/almayer/research/glass/reinforced{
 	dir = 1;
-	id = "Containment Cell 4";
+	id = "W-Y Containment Cell";
 	locked = 1;
-	name = "\improper Containment Cell 4"
+	name = "\improper W-Y Containment Cell"
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4";
@@ -1244,7 +1244,7 @@
 	tag = "icon-door_open"
 	},
 /obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = "cl_shutters";
+	id = "W-Y office";
 	name = "\improper Privacy Shutters"
 	},
 /turf/open/floor/plating,
@@ -1293,6 +1293,17 @@
 	tag = "icon-silver"
 	},
 /area/adminlevel/ert_station)
+"oi" = (
+/obj/structure/machinery/door_control{
+	id = "W-Y office";
+	name = "W-Y office";
+	pixel_x = 25;
+	req_access_txt = "200"
+	},
+/turf/open/floor/plating/almayer,
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
 "ok" = (
 /obj/effect/step_trigger/teleporter/random{
 	affect_ghosts = 1;
@@ -2051,7 +2062,7 @@
 	name = "\improper Weyland-Yutani Office"
 	},
 /obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = "cl_shutters";
+	id = "W-Y office";
 	name = "\improper Privacy Shutters"
 	},
 /obj/structure/pipes/standard/simple/hidden/supply,
@@ -2475,6 +2486,23 @@
 	icon_state = "tcomms"
 	},
 /area/tdome)
+"DX" = (
+/obj/structure/machinery/door_display/research_cell{
+	dir = 8;
+	has_wall_divider = 1;
+	id = "W-Y Containment Cell";
+	name = "Cell 2 Control";
+	pixel_x = 14;
+	pixel_y = 8
+	},
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "sterile_green_corner";
+	tag = "icon-sterile_green_corner (EAST)"
+	},
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
 "Ee" = (
 /obj/effect/landmark/thunderdome/one,
 /turf/open/floor/almayer{
@@ -2748,6 +2776,18 @@
 	icon_state = "dark_sterile";
 	tag = "icon-sterile"
 	},
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
+"Hu" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/structure/machinery/door_control{
+	id = "W-Y office";
+	name = "W-Y office";
+	pixel_x = 25;
+	req_access_txt = "200"
+	},
+/turf/open/floor/carpet,
 /area/adminlevel/ert_station/shuttle_dispatch{
 	name = "W-Y Space Station"
 	})
@@ -18780,7 +18820,7 @@ as
 Oi
 es
 VT
-xl
+Hu
 vv
 VT
 VT
@@ -18788,7 +18828,7 @@ sh
 sh
 sh
 nE
-dG
+oi
 dG
 dG
 XC
@@ -18796,7 +18836,7 @@ hX
 LB
 LB
 LB
-Mh
+DX
 Gc
 tG
 tG

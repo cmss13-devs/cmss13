@@ -33,7 +33,7 @@
 		linked_console = null
 	. = ..()
 
-/obj/structure/dropship_equipment/attackby(obj/item/I, mob/user)
+/obj/structure/dropship_equipment/after_attack_by(obj/item/I, mob/user)
 	if(istype(I, /obj/item/powerloader_clamp))
 		var/obj/item/powerloader_clamp/PC = I
 		if(PC.loaded)

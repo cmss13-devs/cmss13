@@ -91,7 +91,7 @@
 
 	update_icon()
 
-/obj/structure/machinery/brig_cell/attackby(var/obj/item/W, var/mob/living/user)
+/obj/structure/machinery/brig_cell/after_attack_by(var/obj/item/W, var/mob/living/user)
 	if(!istype(W, /obj/item/paper/incident))
 		return
 

@@ -100,7 +100,7 @@
 
 
 //copied from computer.dm
-/obj/structure/machinery/power/monitor/attackby(obj/item/I, user as mob)
+/obj/structure/machinery/power/monitor/after_attack_by(obj/item/I, user as mob)
 	if(HAS_TRAIT(I, TRAIT_TOOL_SCREWDRIVER) && circuit)
 		playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
 		if(do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))

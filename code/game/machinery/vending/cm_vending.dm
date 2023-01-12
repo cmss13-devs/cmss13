@@ -582,7 +582,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 	return GLOB.not_incapacitated_and_adjacent_strict_state
 
 
-/obj/structure/machinery/cm_vending/attackby(obj/item/W, mob/user)
+/obj/structure/machinery/cm_vending/after_attack_by(obj/item/W, mob/user)
 	// Repairing process
 	if(stat & TIPPED_OVER)
 		to_chat(user, SPAN_WARNING("You need to set [src] back upright first."))

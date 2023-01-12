@@ -71,7 +71,7 @@
 /obj/structure/pipes/vents/hide()
 	update_underlays()
 
-/obj/structure/pipes/vents/attackby(obj/item/W, mob/user)
+/obj/structure/pipes/vents/after_attack_by(obj/item/W, mob/user)
 	if(iswelder(W))
 		var/weldtime = 50
 		if(HAS_TRAIT(W, TRAIT_TOOL_SIMPLE_BLOWTORCH))

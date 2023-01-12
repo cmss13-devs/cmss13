@@ -42,7 +42,7 @@
 	machine_id = "[station_name] Acc. DB #[num_financial_terminals++]"
 	..()
 
-/obj/structure/machinery/account_database/attackby(obj/O, mob/user)
+/obj/structure/machinery/account_database/after_attack_by(obj/O, mob/user)
 	if(!istype(O, /obj/item/card/id))
 		return ..()
 

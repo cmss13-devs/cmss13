@@ -381,7 +381,7 @@
 
 	return data
 
-/obj/structure/machinery/computer/card/attackby(obj/O, mob/user)
+/obj/structure/machinery/computer/card/after_attack_by(obj/O, mob/user)
 	if(istype(O, /obj/item/card/id))
 		if(!operable())
 			to_chat(user, SPAN_NOTICE("You tried to inject \the [O] but \the [src] remains silent."))
@@ -596,7 +596,7 @@
 	data["squads"] = squads
 	return data
 
-/obj/structure/machinery/computer/squad_changer/attackby(obj/O as obj, mob/user as mob)
+/obj/structure/machinery/computer/squad_changer/after_attack_by(obj/O as obj, mob/user as mob)
 	if(user)
 		add_fingerprint(user)
 	if(ishuman(user))

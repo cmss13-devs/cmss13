@@ -171,7 +171,7 @@
 				nextstate = CLOSED
 				close()
 
-/obj/structure/machinery/door/firedoor/attackby(obj/item/C as obj, mob/user as mob)
+/obj/structure/machinery/door/firedoor/after_attack_by(obj/item/C as obj, mob/user as mob)
 	add_fingerprint(user)
 	if(operating)
 		return//Already doing something.

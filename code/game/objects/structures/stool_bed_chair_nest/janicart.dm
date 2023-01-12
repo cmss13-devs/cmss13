@@ -29,7 +29,7 @@
 		. += "\A [mybag] is hanging on the [callme]."
 
 
-/obj/structure/bed/chair/janicart/attackby(obj/item/I, mob/user)
+/obj/structure/bed/chair/janicart/after_attack_by(obj/item/I, mob/user)
 	if(istype(I, /obj/item/tool/mop))
 		var/obj/item/tool/mop/mop = I
 		if(reagents.total_volume > 1)

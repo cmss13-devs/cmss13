@@ -60,7 +60,7 @@
 	return // HOLOTABLE DOES NOT GIVE A FUCK
 
 
-/obj/structure/surface/table/holotable/attackby(obj/item/W, mob/user)
+/obj/structure/surface/table/holotable/after_attack_by(obj/item/W, mob/user)
 	if (istype(W, /obj/item/grab) && get_dist(src,user)<=1)
 		var/obj/item/grab/G = W
 		if(ismob(G.grabbed_thing))
@@ -138,7 +138,7 @@
 	var/side = ""
 	var/id = ""
 
-/obj/structure/holohoop/attackby(obj/item/W as obj, mob/user as mob)
+/obj/structure/holohoop/after_attack_by(obj/item/W as obj, mob/user as mob)
 	if (istype(W, /obj/item/grab) && get_dist(src,user)<=1)
 		var/obj/item/grab/G = W
 		if(ismob(G.grabbed_thing))
@@ -201,7 +201,7 @@
 	to_chat(user, "The station AI is not to interact with these devices!")
 	return
 
-/obj/structure/machinery/readybutton/attackby(obj/item/W as obj, mob/user as mob)
+/obj/structure/machinery/readybutton/after_attack_by(obj/item/W as obj, mob/user as mob)
 	to_chat(user, "The device is a solid button, there's nothing you can do with it!")
 
 /obj/structure/machinery/readybutton/attack_hand(mob/user as mob)
@@ -259,7 +259,7 @@
 /obj/structure/surface/rack/holorack/attack_hand(mob/user as mob)
 	return
 
-/obj/structure/surface/rack/holorack/attackby(obj/item/W as obj, mob/user as mob)
+/obj/structure/surface/rack/holorack/after_attack_by(obj/item/W as obj, mob/user as mob)
 	if (HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
 		to_chat(user, "It's a holorack!  You can't unwrench it!")
 		return

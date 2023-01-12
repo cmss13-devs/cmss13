@@ -30,7 +30,7 @@
 		. += "It has no bucket."
 
 
-/obj/structure/janitorialcart/attackby(obj/item/I, mob/user)
+/obj/structure/janitorialcart/after_attack_by(obj/item/I, mob/user)
 	if(istype(I, /obj/item/storage/bag/trash) && !mybag)
 		user.drop_held_item()
 		mybag = I

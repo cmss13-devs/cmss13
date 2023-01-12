@@ -54,7 +54,7 @@
 	var/list/internal_log = list()
 	var/mode = 0  // 0 - making pass, 1 - viewing logs
 
-/obj/structure/machinery/computer/guestpass/attackby(obj/O, mob/user)
+/obj/structure/machinery/computer/guestpass/after_attack_by(obj/O, mob/user)
 	if(istype(O, /obj/item/card/id))
 		if(!giver)
 			if(user.drop_held_item())

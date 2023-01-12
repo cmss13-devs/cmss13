@@ -206,7 +206,7 @@
 
 	SStgui.update_uis(src)
 
-/obj/structure/mortar/attackby(obj/item/O, mob/user)
+/obj/structure/mortar/after_attack_by(obj/item/O, mob/user)
 	if(istype(O, /obj/item/mortar_shell))
 		var/obj/item/mortar_shell/mortar_shell = O
 		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))

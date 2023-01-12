@@ -116,7 +116,7 @@
 	healthcheck()
 	return 1
 
-/obj/structure/grille/attackby(obj/item/W as obj, mob/user as mob)
+/obj/structure/grille/after_attack_by(obj/item/W as obj, mob/user as mob)
 	if(HAS_TRAIT(W, TRAIT_TOOL_WIRECUTTERS))
 		if(!shock(user, 100))
 			playsound(loc, 'sound/items/Wirecutter.ogg', 25, 1)

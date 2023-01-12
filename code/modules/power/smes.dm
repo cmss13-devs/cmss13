@@ -209,7 +209,7 @@
 	tgui_interact(user)
 
 
-/obj/structure/machinery/power/smes/attackby(var/obj/item/W as obj, var/mob/user as mob)
+/obj/structure/machinery/power/smes/after_attack_by(var/obj/item/W as obj, var/mob/user as mob)
 	if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER))
 		if(!open_hatch)
 			open_hatch = 1

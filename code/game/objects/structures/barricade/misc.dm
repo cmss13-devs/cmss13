@@ -24,7 +24,7 @@
 
 
 //Item Attack
-/obj/structure/barricade/snow/attackby(obj/item/W, mob/user)
+/obj/structure/barricade/snow/after_attack_by(obj/item/W, mob/user)
 	for(var/obj/effect/xenomorph/acid/A in src.loc)
 		if(A.acid_t == src)
 			to_chat(user, "You can't get near that, it's melting!")
@@ -79,7 +79,7 @@
 	repair_materials = list("wood" = 1)
 	metallic = FALSE
 
-/obj/structure/barricade/wooden/attackby(obj/item/W as obj, mob/user as mob)
+/obj/structure/barricade/wooden/after_attack_by(obj/item/W as obj, mob/user as mob)
 	for(var/obj/effect/xenomorph/acid/A in src.loc)
 		if(A.acid_t == src)
 			to_chat(user, "You can't get near that, it's melting!")

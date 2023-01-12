@@ -961,7 +961,7 @@
 		take_damage(M.melee_damage_lower*RESIN_XENO_DAMAGE_MULTIPLIER)
 	return XENO_ATTACK_ACTION
 
-/obj/structure/alien/movable_wall/attackby(obj/item/W, mob/living/user)
+/obj/structure/alien/movable_wall/after_attack_by(obj/item/W, mob/living/user)
 	if(!(W.flags_item & NOBLUDGEON))
 		user.animation_attack_on(src)
 		user.next_move += W.attack_speed

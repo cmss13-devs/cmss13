@@ -94,7 +94,7 @@
 	if(linked_storage)
 		RegisterSignal(linked_storage, COMSIG_PARENT_QDELETING, PROC_REF(cleanup))
 
-/obj/structure/machinery/autodispenser/attackby(obj/item/B, mob/living/user)
+/obj/structure/machinery/autodispenser/after_attack_by(obj/item/B, mob/living/user)
 	if(!skillcheck(user, SKILL_RESEARCH, SKILL_RESEARCH_TRAINED))
 		to_chat(user, SPAN_WARNING("You have no idea how to use this."))
 		return

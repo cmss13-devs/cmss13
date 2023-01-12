@@ -36,7 +36,7 @@
 		to_chat(usr, "There is nothing to remove from the console.")
 	return
 
-/obj/structure/machinery/computer/med_data/attackby(obj/item/O as obj, user as mob)
+/obj/structure/machinery/computer/med_data/after_attack_by(obj/item/O as obj, user as mob)
 	if(istype(O, /obj/item/card/id) && !scan)
 		if(usr.drop_held_item())
 			O.forceMove(src)

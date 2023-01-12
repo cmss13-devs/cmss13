@@ -261,7 +261,7 @@ var/list/ob_type_fuel_requirements
 	if(fuel_amt)
 		overlays += image("cannon_tray_[fuel_amt]")
 
-/obj/structure/orbital_tray/attackby(obj/item/I, mob/user)
+/obj/structure/orbital_tray/after_attack_by(obj/item/I, mob/user)
 	if(istype(I, /obj/item/powerloader_clamp))
 		var/obj/item/powerloader_clamp/PC = I
 		if(!PC.linked_powerloader)
@@ -322,7 +322,7 @@ var/list/ob_type_fuel_requirements
 	var/is_solid_fuel = 0
 	var/source_mob
 
-/obj/structure/ob_ammo/attackby(obj/item/I, mob/user)
+/obj/structure/ob_ammo/after_attack_by(obj/item/I, mob/user)
 	if(istype(I, /obj/item/powerloader_clamp))
 		var/obj/item/powerloader_clamp/PC = I
 		if(!PC.linked_powerloader)

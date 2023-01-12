@@ -548,7 +548,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 	add_fingerprint(usr)
 	update_icon()
 
-/obj/structure/machinery/door/airlock/attackby(obj/item/C, mob/user)
+/obj/structure/machinery/door/airlock/after_attack_by(obj/item/C, mob/user)
 	if(istype(C, /obj/item/clothing/mask/cigarette))
 		if(isElectrified())
 			var/obj/item/clothing/mask/cigarette/L = C

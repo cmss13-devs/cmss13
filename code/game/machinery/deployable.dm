@@ -28,7 +28,7 @@
 	if (PF)
 		PF.flags_can_pass_all = PASS_HIGH_OVER_ONLY|PASS_AROUND|PASS_UNDER
 
-/obj/structure/machinery/deployable/barrier/attackby(obj/item/W as obj, mob/user as mob)
+/obj/structure/machinery/deployable/barrier/after_attack_by(obj/item/W as obj, mob/user as mob)
 	if (istype(W, /obj/item/card/id/))
 		if (src.allowed(user))
 			src.locked = !src.locked

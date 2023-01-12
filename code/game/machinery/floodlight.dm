@@ -73,7 +73,7 @@
 	updateicon()
 
 
-/obj/structure/machinery/floodlight/attackby(obj/item/W as obj, mob/user as mob)
+/obj/structure/machinery/floodlight/after_attack_by(obj/item/W as obj, mob/user as mob)
 	if(!ishuman(user))
 		return
 
@@ -128,7 +128,7 @@
 /obj/structure/machinery/floodlight/landing/attack_hand()
 	return
 
-/obj/structure/machinery/floodlight/landing/attackby()
+/obj/structure/machinery/floodlight/landing/after_attack_by()
 	return
 
 /obj/structure/machinery/floodlight/landing/floor

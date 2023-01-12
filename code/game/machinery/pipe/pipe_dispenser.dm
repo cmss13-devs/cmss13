@@ -95,7 +95,7 @@
 			addtimer(VARSET_CALLBACK(src, wait, FALSE), 1.5 SECONDS)
 	return
 
-/obj/structure/machinery/pipedispenser/attackby(var/obj/item/W as obj, var/mob/user as mob)
+/obj/structure/machinery/pipedispenser/after_attack_by(var/obj/item/W as obj, var/mob/user as mob)
 	src.add_fingerprint(usr)
 	if (istype(W, /obj/item/pipe) || istype(W, /obj/item/pipe_meter))
 		to_chat(usr, SPAN_NOTICE(" You put [W] back to [src]."))

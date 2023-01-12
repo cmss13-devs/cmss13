@@ -8,7 +8,7 @@
 	..()
 	return
 
-/obj/structure/machinery/door/unpowered/attackby(obj/item/I as obj, mob/user as mob)
+/obj/structure/machinery/door/unpowered/after_attack_by(obj/item/I as obj, mob/user as mob)
 	if(src.locked)
 		return
 	..()

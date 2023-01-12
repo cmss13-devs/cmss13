@@ -82,7 +82,7 @@
 	else
 		icon_state = "circ-run"
 
-/obj/structure/pipes/binary/circulator/attackby(obj/item/W as obj, mob/user as mob)
+/obj/structure/pipes/binary/circulator/after_attack_by(obj/item/W as obj, mob/user as mob)
 	if(HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
 		anchored = !anchored
 		to_chat(user, SPAN_NOTICE(" You [anchored ? "secure" : "unsecure"] the bolts holding [src] to the floor."))

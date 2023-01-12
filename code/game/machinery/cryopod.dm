@@ -376,7 +376,7 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 	QDEL_NULL(occupant)
 	stop_processing()
 
-/obj/structure/machinery/cryopod/attackby(obj/item/W, mob/living/user)
+/obj/structure/machinery/cryopod/after_attack_by(obj/item/W, mob/living/user)
 
 	if(istype(W, /obj/item/grab))
 		if(isXeno(user)) return

@@ -238,7 +238,7 @@
 	return
 
 
-/obj/structure/machinery/computer/pandemic/attackby(obj/item/I, mob/living/user)
+/obj/structure/machinery/computer/pandemic/after_attack_by(obj/item/I, mob/living/user)
 	if(istype(I, /obj/item/reagent_container/glass))
 		if(inoperable())
 			return

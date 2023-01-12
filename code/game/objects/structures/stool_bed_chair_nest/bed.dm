@@ -149,7 +149,7 @@
 				qdel(src)
 
 
-/obj/structure/bed/attackby(obj/item/W, mob/user)
+/obj/structure/bed/after_attack_by(obj/item/W, mob/user)
 	if(HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
 		if(buildstacktype)
 			playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
@@ -189,7 +189,7 @@
 	accepts_bodybag = TRUE
 	base_bed_icon = "roller"
 
-/obj/structure/bed/roller/attackby(obj/item/W, mob/user)
+/obj/structure/bed/roller/after_attack_by(obj/item/W, mob/user)
 	if(istype(W,/obj/item/roller_holder) && !buckled_bodybag)
 		if(buckled_mob || buckled_bodybag)
 			manual_unbuckle()

@@ -14,7 +14,7 @@
 			I.forceMove(src)
 	update_icon()
 
-/obj/structure/bookcase/attackby(obj/O as obj, mob/user as mob)
+/obj/structure/bookcase/after_attack_by(obj/O as obj, mob/user as mob)
 	if(istype(O, /obj/item/book))
 		user.drop_held_item()
 		O.forceMove(src)

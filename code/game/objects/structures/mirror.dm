@@ -86,7 +86,7 @@
 	return 1
 
 
-/obj/structure/mirror/attackby(obj/item/I as obj, mob/user as mob)
+/obj/structure/mirror/after_attack_by(obj/item/I as obj, mob/user as mob)
 	if(shattered)
 		playsound(src.loc, 'sound/effects/hit_on_shattered_glass.ogg', 25, 1)
 		return

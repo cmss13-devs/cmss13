@@ -301,7 +301,7 @@
 	if(disk)
 		to_chat(user, SPAN_NOTICE("[disk] is currently being uploaded to ARES."))
 
-/obj/structure/machinery/computer/disk_reader/attackby(obj/item/W, mob/living/user)
+/obj/structure/machinery/computer/disk_reader/after_attack_by(obj/item/W, mob/living/user)
 	if(istype(W, /obj/item/disk/objective))
 		if(istype(disk))
 			to_chat(user, SPAN_WARNING("There is a disk in the drive being uploaded already!"))

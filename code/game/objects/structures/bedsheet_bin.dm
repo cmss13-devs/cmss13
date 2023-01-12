@@ -106,7 +106,7 @@ LINEN BINS
 		else icon_state = "linenbin-full"
 
 
-/obj/structure/bedsheetbin/attackby(obj/item/I as obj, mob/user as mob)
+/obj/structure/bedsheetbin/after_attack_by(obj/item/I as obj, mob/user as mob)
 	if(istype(I, /obj/item/bedsheet))
 		if(user.drop_held_item())
 			I.forceMove(src)

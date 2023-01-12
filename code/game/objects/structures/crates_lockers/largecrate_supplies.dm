@@ -337,7 +337,7 @@
 	playsound(src, unpacking_sound, 35)
 	qdel(src)
 
-/obj/structure/largecrate/machine/attackby(obj/item/W as obj, mob/user as mob)
+/obj/structure/largecrate/machine/after_attack_by(obj/item/W as obj, mob/user as mob)
 	if(HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))
 		if(turf_blocked_check())
 			to_chat(user, SPAN_WARNING("You need a clear space[dir_needed ? " to the [dir2text(dir_needed)] of the crate" : ""] in order to unpack \the [src]."))

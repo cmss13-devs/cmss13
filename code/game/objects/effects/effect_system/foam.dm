@@ -199,7 +199,7 @@
 /obj/structure/foamed_metal/fire_act()
 	take_damage(FOAMED_METAL_FIRE_ACT_DMG)
 
-/obj/structure/foamed_metal/attackby(var/obj/item/I, var/mob/user)
+/obj/structure/foamed_metal/after_attack_by(var/obj/item/I, var/mob/user)
 	if(I.force)
 		to_chat(user, SPAN_NOTICE("You [I.sharp ? "hack" : "smash" ] off a chunk of the foamed metal with \the [I]."))
 		if(I.sharp)

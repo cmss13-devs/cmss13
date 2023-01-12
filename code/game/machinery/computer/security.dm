@@ -22,7 +22,7 @@
 	var/sortBy = "name"
 	var/order = 1 // -1 = Descending - 1 = Ascending
 
-/obj/structure/machinery/computer/secure_data/attackby(obj/item/O as obj, user as mob)
+/obj/structure/machinery/computer/secure_data/after_attack_by(obj/item/O as obj, user as mob)
 
 	if(istype(O, /obj/item/device/clue_scanner) && !scanner)
 		var/obj/item/device/clue_scanner/S = O

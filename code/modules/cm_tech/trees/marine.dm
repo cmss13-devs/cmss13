@@ -131,7 +131,7 @@ GLOBAL_LIST_EMPTY(tech_controls_marine)
 	return ..()
 
 // Disallow deconstructing
-/obj/structure/machinery/computer/tech_control/attackby(obj/item/I, mob/user)
+/obj/structure/machinery/computer/tech_control/after_attack_by(obj/item/I, mob/user)
 	return
 
 /obj/structure/machinery/computer/tech_control/attack_hand(var/mob/M)

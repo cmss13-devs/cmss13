@@ -156,7 +156,7 @@
 			return
 	return try_to_activate_door(user)
 
-/obj/structure/machinery/door/window/attackby(obj/item/I, mob/user)
+/obj/structure/machinery/door/window/after_attack_by(obj/item/I, mob/user)
 
 	//If it's in the process of opening/closing, ignore the click
 	if (src.operating == 1)
@@ -299,5 +299,5 @@
 	return ..()
 
 // No damage taken.
-/obj/structure/machinery/door/window/ultra/attackby(obj/item/I, mob/user)
+/obj/structure/machinery/door/window/ultra/after_attack_by(obj/item/I, mob/user)
 	return try_to_activate_door(user)

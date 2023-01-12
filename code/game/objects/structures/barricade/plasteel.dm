@@ -62,7 +62,7 @@
 	..()
 	busy = FALSE
 
-/obj/structure/barricade/plasteel/attackby(obj/item/W, mob/user)
+/obj/structure/barricade/plasteel/after_attack_by(obj/item/W, mob/user)
 	if(iswelder(W))
 		if(!HAS_TRAIT(W, TRAIT_TOOL_BLOWTORCH))
 			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))

@@ -118,7 +118,7 @@
 	. += SPAN_BLUE("Health: [health]/[max_health]")
 
 
-/obj/structure/resource_node/attackby(obj/item/W, mob/user)
+/obj/structure/resource_node/after_attack_by(obj/item/W, mob/user)
 	if(!ishuman(user))
 		return
 

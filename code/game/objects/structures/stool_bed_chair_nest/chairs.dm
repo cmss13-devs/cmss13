@@ -73,7 +73,7 @@
 	if(stacked_size)
 		stack_collapse()
 
-/obj/structure/bed/chair/attackby(obj/item/I, mob/user)
+/obj/structure/bed/chair/after_attack_by(obj/item/I, mob/user)
 	if(HAS_TRAIT(I, TRAIT_TOOL_WRENCH) && stacked_size)
 		to_chat(user, SPAN_NOTICE("You'll need to unstack the chairs before you can take one apart."))
 		return FALSE
@@ -437,7 +437,7 @@
 		fold_down(1)
 		return XENO_ATTACK_ACTION
 
-/obj/structure/bed/chair/dropship/passenger/shuttle_chair/attackby(obj/item/W, mob/living/user)
+/obj/structure/bed/chair/dropship/passenger/shuttle_chair/after_attack_by(obj/item/W, mob/living/user)
 	if(HAS_TRAIT(W, TRAIT_TOOL_WRENCH) && chair_state == DROPSHIP_CHAIR_BROKEN)
 		to_chat(user, SPAN_WARNING("\The [src] appears to be broken and needs welding."))
 		return
@@ -458,7 +458,7 @@
 	else
 		return
 
-/obj/structure/bed/chair/dropship/passenger/attackby(obj/item/W, mob/living/user)
+/obj/structure/bed/chair/dropship/passenger/after_attack_by(obj/item/W, mob/living/user)
 	if(HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
 		switch(chair_state)
 			if(DROPSHIP_CHAIR_UNFOLDED)

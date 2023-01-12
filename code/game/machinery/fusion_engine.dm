@@ -119,7 +119,7 @@
 	return TRUE
 
 
-/obj/structure/machinery/power/fusion_engine/attackby(obj/item/O, mob/user)
+/obj/structure/machinery/power/fusion_engine/after_attack_by(obj/item/O, mob/user)
 	if(istype(O, /obj/item/fuelCell))
 		if(is_on)
 			to_chat(user, SPAN_WARNING("The [src] needs to be turned off first."))

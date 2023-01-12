@@ -258,7 +258,7 @@
 	if(I.loc != loc)
 		step(I, get_dir(I, src))
 
-/obj/structure/surface/table/attackby(obj/item/W, mob/user, click_data)
+/obj/structure/surface/table/after_attack_by(obj/item/W, mob/user, click_data)
 	if(!W) return
 	if(istype(W, /obj/item/grab) && get_dist(src, user) <= 1)
 		if(isXeno(user)) return
@@ -508,7 +508,7 @@
 /obj/structure/surface/table/reinforced/flip(var/direction)
 	return 0 //No, just no. It's a full desk, you can't flip that
 
-/obj/structure/surface/table/reinforced/attackby(obj/item/W as obj, mob/user as mob)
+/obj/structure/surface/table/reinforced/after_attack_by(obj/item/W as obj, mob/user as mob)
 	if (iswelder(W))
 		if(!HAS_TRAIT(W, TRAIT_TOOL_BLOWTORCH))
 			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
@@ -629,7 +629,7 @@
 	if(I.loc != loc)
 		step(I, get_dir(I, src))
 
-/obj/structure/surface/rack/attackby(obj/item/W, mob/user, click_data)
+/obj/structure/surface/rack/after_attack_by(obj/item/W, mob/user, click_data)
 	if(HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
 		deconstruct(TRUE)
 		playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)

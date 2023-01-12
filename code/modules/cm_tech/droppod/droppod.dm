@@ -68,7 +68,7 @@
 	if(droppod_flags & DROPPOD_STRIPPED)
 		icon_state = "[icon_state]_stripped"
 
-/obj/structure/droppod/attackby(obj/item/W, mob/user)
+/obj/structure/droppod/after_attack_by(obj/item/W, mob/user)
 	if(!ishuman(user))
 		return . = ..()
 

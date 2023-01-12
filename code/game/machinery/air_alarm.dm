@@ -945,7 +945,7 @@ table tr:first-child th:first-child { border: none;}
 	updateUsrDialog()
 
 
-/obj/structure/machinery/alarm/attackby(obj/item/W as obj, mob/user as mob)
+/obj/structure/machinery/alarm/after_attack_by(obj/item/W as obj, mob/user as mob)
 	src.add_fingerprint(user)
 
 	switch(buildstage)

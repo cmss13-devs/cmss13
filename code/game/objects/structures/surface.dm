@@ -135,7 +135,7 @@
 	if(!LAZYISIN(contents, O))//in case attack_hand did not pick up the item
 		detach_item(O)
 
-/obj/structure/surface/attackby(obj/item/W, mob/user, click_data)
+/obj/structure/surface/after_attack_by(obj/item/W, mob/user, click_data)
 	var/obj/item/O = get_item(click_data)
 	if(!O || click_data["ctrl"])//holding the ctrl key will force it to place the object
 		// Placing stuff on tables

@@ -49,7 +49,7 @@
 /obj/structure/machinery/door_control/attack_alien(mob/user as mob)
 	return
 
-/obj/structure/machinery/door_control/attackby(obj/item/W, mob/user as mob)
+/obj/structure/machinery/door_control/after_attack_by(obj/item/W, mob/user as mob)
 	return src.attack_hand(user)
 
 /obj/structure/machinery/door_control/proc/handle_dropship(var/ship_id)
@@ -198,7 +198,7 @@
 /obj/structure/machinery/driver_button/attack_remote(mob/user as mob)
 	return src.attack_hand(user)
 
-/obj/structure/machinery/driver_button/attackby(obj/item/W, mob/user as mob)
+/obj/structure/machinery/driver_button/after_attack_by(obj/item/W, mob/user as mob)
 	return src.attack_hand(user)
 
 /obj/structure/machinery/driver_button/attack_hand(mob/user as mob)

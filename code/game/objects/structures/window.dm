@@ -213,7 +213,7 @@
 	if(M.melee_damage_upper <= 0) return
 	attack_generic(M, M.melee_damage_upper)
 
-/obj/structure/window/attackby(obj/item/W, mob/living/user)
+/obj/structure/window/after_attack_by(obj/item/W, mob/living/user)
 	if(istype(W, /obj/item/grab) && get_dist(src, user) < 2)
 		if(isXeno(user)) return
 		var/obj/item/grab/G = W

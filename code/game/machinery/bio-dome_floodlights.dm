@@ -102,7 +102,7 @@
 	else
 		icon_state = "flood_s_off"
 
-/obj/structure/machinery/hydro_floodlight/attackby(obj/item/W as obj, mob/user as mob)
+/obj/structure/machinery/hydro_floodlight/after_attack_by(obj/item/W as obj, mob/user as mob)
 	var/obj/item/tool/weldingtool/WT = W
 	if(istype(WT))
 		if(!damaged) return

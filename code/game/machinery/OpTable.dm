@@ -234,7 +234,7 @@
 
 	take_victim(H, H)
 
-/obj/structure/machinery/optable/attackby(obj/item/W, mob/living/user)
+/obj/structure/machinery/optable/after_attack_by(obj/item/W, mob/living/user)
 	if(istype(W, /obj/item/tank/anesthetic))
 		if(!anes_tank)
 			user.drop_inv_item_to_loc(W, src)

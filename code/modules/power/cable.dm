@@ -1,6 +1,6 @@
 // attach a wire to a power machine - leads from the turf you are standing on
 
-/obj/structure/machinery/power/attackby(obj/item/W, mob/user)
+/obj/structure/machinery/power/after_attack_by(obj/item/W, mob/user)
 
 	if(istype(W, /obj/item/stack/cable_coil))
 
@@ -89,7 +89,7 @@
 	alpha = invisibility ? 127 : 255
 
 
-/obj/structure/cable/attackby(obj/item/W, mob/user)
+/obj/structure/cable/after_attack_by(obj/item/W, mob/user)
 
 	var/turf/T = src.loc
 	if(T.intact_tile)

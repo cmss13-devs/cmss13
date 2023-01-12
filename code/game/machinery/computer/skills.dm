@@ -22,7 +22,7 @@
 	var/order = 1 // -1 = Descending - 1 = Ascending
 
 
-/obj/structure/machinery/computer/skills/attackby(obj/item/O as obj, user as mob)
+/obj/structure/machinery/computer/skills/after_attack_by(obj/item/O as obj, user as mob)
 	if(istype(O, /obj/item/card/id) && !scan)
 		if(usr.drop_held_item())
 			O.forceMove(src)

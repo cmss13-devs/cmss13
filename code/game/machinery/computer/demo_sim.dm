@@ -62,7 +62,7 @@
 	if(!COOLDOWN_FINISHED(src, detonation_cooldown))
 		. += SPAN_WARNING("The processors are currently cooling, [COOLDOWN_TIMELEFT(src, detonation_cooldown)/10] seconds remaining")
 
-/obj/structure/machinery/computer/demo_sim/attackby(obj/item/B, mob/living/user)
+/obj/structure/machinery/computer/demo_sim/after_attack_by(obj/item/B, mob/living/user)
 	if(inoperable())
 		return
 	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))

@@ -123,7 +123,7 @@
 	if(N)
 		amount_per_transfer_from_this = N
 
-/obj/structure/reagent_dispensers/attackby(obj/item/hit_item, mob/living/user)
+/obj/structure/reagent_dispensers/after_attack_by(obj/item/hit_item, mob/living/user)
 	if(istype(hit_item, /obj/item/reagent_container))
 		return
 	..()
@@ -206,7 +206,7 @@
 	else
 		. = ..()
 
-/obj/structure/reagent_dispensers/fueltank/attackby(obj/item/W as obj, mob/user as mob)
+/obj/structure/reagent_dispensers/fueltank/after_attack_by(obj/item/W as obj, mob/user as mob)
 	src.add_fingerprint(user)
 
 	if(user.action_busy)

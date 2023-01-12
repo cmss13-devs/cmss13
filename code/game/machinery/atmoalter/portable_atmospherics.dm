@@ -8,7 +8,7 @@
 	return 1
 
 
-/obj/structure/machinery/portable_atmospherics/attackby(obj/item/W, mob/user)
+/obj/structure/machinery/portable_atmospherics/after_attack_by(obj/item/W, mob/user)
 	if((istype(W, /obj/item/device/analyzer)) && Adjacent(user))
 		visible_message(SPAN_DANGER("[user] has used [W] on [icon2html(icon, viewers(src))]"))
 		to_chat(user, SPAN_NOTICE(" Results of analysis of [icon2html(icon, user)]"))
@@ -23,7 +23,7 @@
 	var/last_power_draw = 0
 	var/obj/item/cell/cell
 
-/obj/structure/machinery/portable_atmospherics/powered/attackby(obj/item/I, mob/user)
+/obj/structure/machinery/portable_atmospherics/powered/after_attack_by(obj/item/I, mob/user)
 	if(istype(I, /obj/item/cell))
 		if(cell)
 			to_chat(user, "There is already a power cell installed.")

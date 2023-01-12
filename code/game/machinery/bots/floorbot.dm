@@ -74,7 +74,7 @@
 	return
 
 
-/obj/structure/machinery/bot/floorbot/attackby(var/obj/item/W , mob/user as mob)
+/obj/structure/machinery/bot/floorbot/after_attack_by(var/obj/item/W , mob/user as mob)
 	if(istype(W, /obj/item/stack/tile/plasteel))
 		var/obj/item/stack/tile/plasteel/T = W
 		if(src.amount >= 50)

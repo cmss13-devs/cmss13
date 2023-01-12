@@ -21,7 +21,7 @@
 			O.welded = 0
 	qdel(src)
 
-/obj/structure/bigDelivery/attackby(obj/item/W as obj, mob/user as mob)
+/obj/structure/bigDelivery/after_attack_by(obj/item/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/device/destTagger))
 		var/obj/item/device/destTagger/O = W
 		if(O.currTag)
@@ -404,7 +404,7 @@
 	update()
 	return
 
-/obj/structure/machinery/disposal/deliveryChute/attackby(var/obj/item/I, var/mob/user)
+/obj/structure/machinery/disposal/deliveryChute/after_attack_by(var/obj/item/I, var/mob/user)
 	if(!I || !user)
 		return
 

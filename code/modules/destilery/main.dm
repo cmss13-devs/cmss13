@@ -60,7 +60,7 @@
 	QDEL_NULL(milled_item)
 	busy = FALSE
 
-/obj/structure/machinery/mill/attackby(var/obj/item/W as obj, mob/user as mob)
+/obj/structure/machinery/mill/after_attack_by(var/obj/item/W as obj, mob/user as mob)
 	if(istype(W,/obj/item/reagent_container/food))
 		if(user.drop_inv_item_to_loc(W, src))
 			input += W
@@ -133,7 +133,7 @@
 	QDEL_NULL(fermenting_item)
 	busy = FALSE
 
-/obj/structure/machinery/fermenter/attackby(var/obj/item/W as obj, mob/user as mob)
+/obj/structure/machinery/fermenter/after_attack_by(var/obj/item/W as obj, mob/user as mob)
 	if(istype(W,/obj/item/reagent_container/food))
 		if(user.drop_inv_item_to_loc(W, src))
 			input += W
@@ -197,7 +197,7 @@
 	QDEL_NULL(destilling_item)
 	busy = FALSE
 
-/obj/structure/machinery/still/attackby(var/obj/item/W as obj, mob/user as mob)
+/obj/structure/machinery/still/after_attack_by(var/obj/item/W as obj, mob/user as mob)
 	if(istype(W,/obj/item/reagent_container/food))
 		if(user.drop_inv_item_to_loc(W, loc))
 			input += W
@@ -281,7 +281,7 @@
 	output += spinning_item
 	busy = FALSE
 
-/obj/structure/machinery/centrifuge/attackby(var/obj/item/W as obj, mob/user as mob)
+/obj/structure/machinery/centrifuge/after_attack_by(var/obj/item/W as obj, mob/user as mob)
 	if(istype(W,/obj/item/reagent_container/food))
 		if(user.drop_inv_item_to_loc(W, src))
 			input += W

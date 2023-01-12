@@ -14,7 +14,7 @@
 		icon_state = "shutter0"
 	return
 
-/obj/structure/machinery/door/poddoor/shutters/attackby(obj/item/C as obj, mob/user as mob)
+/obj/structure/machinery/door/poddoor/shutters/after_attack_by(obj/item/C as obj, mob/user as mob)
 	add_fingerprint(user)
 	if(!C.pry_capable)
 		return
@@ -132,7 +132,7 @@
 /obj/structure/machinery/door/poddoor/shutters/almayer/uniform_vendors/ex_act(severity)
 		return
 
-/obj/structure/machinery/door/poddoor/shutters/almayer/uniform_vendors/attackby(obj/item/attacking_item, mob/user)
+/obj/structure/machinery/door/poddoor/shutters/almayer/uniform_vendors/after_attack_by(obj/item/attacking_item, mob/user)
 	if(HAS_TRAIT(attacking_item, TRAIT_TOOL_CROWBAR))
 		return
 	..()

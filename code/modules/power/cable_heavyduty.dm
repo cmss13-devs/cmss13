@@ -9,7 +9,7 @@
 	desc = "This cable is tough. It cannot be cut with simple hand tools."
 	layer = BELOW_ATMOS_PIPE_LAYER
 
-/obj/structure/cable/heavyduty/attackby(obj/item/W, mob/user)
+/obj/structure/cable/heavyduty/after_attack_by(obj/item/W, mob/user)
 
 	var/turf/T = src.loc
 	if(T.intact_tile)

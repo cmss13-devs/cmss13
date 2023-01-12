@@ -14,7 +14,7 @@
 
 	var/charge_amount = 1000
 
-/obj/structure/machinery/recharger/attackby(obj/item/G as obj, mob/user as mob)
+/obj/structure/machinery/recharger/after_attack_by(obj/item/G as obj, mob/user as mob)
 	if(istype(user,/mob/living/silicon))
 		return
 

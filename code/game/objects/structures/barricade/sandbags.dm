@@ -60,7 +60,7 @@
 	if(changed && is_wired)
 		maxhealth += 50
 
-/obj/structure/barricade/sandbags/attackby(obj/item/W, mob/user)
+/obj/structure/barricade/sandbags/after_attack_by(obj/item/W, mob/user)
 	for(var/obj/effect/xenomorph/acid/A in src.loc)
 		if(A.acid_t == src)
 			to_chat(user, "You can't get near that, it's melting!")

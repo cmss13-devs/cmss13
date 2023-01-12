@@ -83,7 +83,7 @@
 	attack_generic(M, M.melee_damage_upper)
 
 
-/obj/structure/inflatable/attackby(obj/item/W as obj, mob/user as mob)
+/obj/structure/inflatable/after_attack_by(obj/item/W as obj, mob/user as mob)
 	if(!istype(W)) return
 
 	if (can_puncture(W))

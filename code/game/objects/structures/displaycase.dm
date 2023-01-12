@@ -56,7 +56,7 @@
 	return
 
 
-/obj/structure/displaycase/attackby(obj/item/W as obj, mob/user as mob)
+/obj/structure/displaycase/after_attack_by(obj/item/W as obj, mob/user as mob)
 	src.health -= W.force
 	src.healthcheck()
 	..()

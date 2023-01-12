@@ -10,7 +10,7 @@
 	var/obj/item/circuitboard/computer/circuit = null
 // weight = 1.0E8
 
-/obj/structure/computerframe/attackby(obj/item/P as obj, mob/user as mob)
+/obj/structure/computerframe/after_attack_by(obj/item/P as obj, mob/user as mob)
 	switch(state)
 		if(0)
 			if(HAS_TRAIT(P, TRAIT_TOOL_WRENCH))

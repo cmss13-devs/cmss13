@@ -34,7 +34,7 @@
 	return
 
 
-/obj/structure/machinery/juicer/attackby(var/obj/item/O as obj, var/mob/user as mob)
+/obj/structure/machinery/juicer/after_attack_by(var/obj/item/O as obj, var/mob/user as mob)
 	if(HAS_TRAIT(O, TRAIT_TOOL_WRENCH))
 		. = ..()
 	if (istype(O,/obj/item/reagent_container/glass) || \

@@ -33,7 +33,7 @@
 	if(charging)
 		. += "Current charge: [charging.charge] ([charging.percent()]%)"
 
-/obj/structure/machinery/cell_charger/attackby(obj/item/W, mob/user)
+/obj/structure/machinery/cell_charger/after_attack_by(obj/item/W, mob/user)
 	if(stat & BROKEN)
 		return
 

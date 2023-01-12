@@ -127,7 +127,7 @@
 	stop_processing()
 	unset_range()
 
-/obj/structure/machinery/defenses/sentry/attackby(var/obj/item/O, var/mob/user)
+/obj/structure/machinery/defenses/sentry/after_attack_by(var/obj/item/O, var/mob/user)
 	if(QDELETED(O) || QDELETED(user))
 		return
 
@@ -396,7 +396,7 @@
 	. = ..()
 	. += SPAN_NOTICE("It seems this one's bolts have been securely welded into the floor, and the access panel locked. You can't interact with it.")
 
-/obj/structure/machinery/defenses/sentry/premade/attackby(var/obj/item/O, var/mob/user)
+/obj/structure/machinery/defenses/sentry/premade/after_attack_by(var/obj/item/O, var/mob/user)
 	return
 
 /obj/structure/machinery/defenses/sentry/premade/power_on()

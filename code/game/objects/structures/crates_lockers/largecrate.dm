@@ -32,7 +32,7 @@
 	return ..()
 
 
-/obj/structure/largecrate/attackby(obj/item/W as obj, mob/user as mob)
+/obj/structure/largecrate/after_attack_by(obj/item/W as obj, mob/user as mob)
 	if(HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))
 		unpack()
 		user.visible_message(SPAN_NOTICE("[user] pries \the [src] open."), \
@@ -57,7 +57,7 @@
 /obj/structure/largecrate/lisa
 	icon_state = "lisacrate"
 
-/obj/structure/largecrate/lisa/attackby(obj/item/W as obj, mob/user as mob) //ugly but oh well
+/obj/structure/largecrate/lisa/after_attack_by(obj/item/W as obj, mob/user as mob) //ugly but oh well
 	if(HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))
 		new /mob/living/simple_animal/corgi/Lisa(loc)
 	..()
@@ -66,7 +66,7 @@
 	name = "cow crate"
 	icon_state = "lisacrate"
 
-/obj/structure/largecrate/cow/attackby(obj/item/W as obj, mob/user as mob)
+/obj/structure/largecrate/cow/after_attack_by(obj/item/W as obj, mob/user as mob)
 	if(HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))
 		new /mob/living/simple_animal/cow(loc)
 	..()
@@ -75,7 +75,7 @@
 	name = "goat crate"
 	icon_state = "lisacrate"
 
-/obj/structure/largecrate/goat/attackby(obj/item/W as obj, mob/user as mob)
+/obj/structure/largecrate/goat/after_attack_by(obj/item/W as obj, mob/user as mob)
 	if(HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))
 		new /mob/living/simple_animal/hostile/retaliate/goat(loc)
 	..()
@@ -84,7 +84,7 @@
 	name = "chicken crate"
 	icon_state = "lisacrate"
 
-/obj/structure/largecrate/chick/attackby(obj/item/W as obj, mob/user as mob)
+/obj/structure/largecrate/chick/after_attack_by(obj/item/W as obj, mob/user as mob)
 	if(HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))
 		var/num = rand(4, 6)
 		for(var/i = 0, i < num, i++)
@@ -253,7 +253,7 @@
 	icon_state = "secure_crate_strapped"
 	var/strapped = 1
 
-/obj/structure/largecrate/random/secure/attackby(var/obj/item/W as obj, var/mob/user as mob)
+/obj/structure/largecrate/random/secure/after_attack_by(var/obj/item/W as obj, var/mob/user as mob)
 	if (!strapped)
 		..()
 		return

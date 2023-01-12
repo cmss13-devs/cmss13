@@ -135,7 +135,7 @@
 			sleep(15)
 		updateUsrDialog()
 
-/obj/structure/machinery/photocopier/attackby(obj/item/O as obj, mob/user as mob)
+/obj/structure/machinery/photocopier/after_attack_by(obj/item/O as obj, mob/user as mob)
 	if(istype(O, /obj/item/paper))
 		if(!copy && !photocopy && !bundle)
 			if(user.drop_inv_item_to_loc(O, src))

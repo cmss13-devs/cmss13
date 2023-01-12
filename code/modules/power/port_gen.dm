@@ -26,7 +26,7 @@
 /obj/structure/machinery/power/port_gen/process()
 ideally we're looking to generate 5000
 
-/obj/structure/machinery/power/port_gen/attackby(obj/item/W, mob/user)
+/obj/structure/machinery/power/port_gen/after_attack_by(obj/item/W, mob/user)
 tank [un]loading stuff
 
 /obj/structure/machinery/power/port_gen/attack_hand(mob/user)
@@ -207,7 +207,7 @@ display round(lastgen) and phorontank amount
 /obj/structure/machinery/power/port_gen/pacman/proc/overheat()
 	explosion(src.loc, 2, 5, 2, -1)
 
-/obj/structure/machinery/power/port_gen/pacman/attackby(var/obj/item/O as obj, var/mob/user as mob)
+/obj/structure/machinery/power/port_gen/pacman/after_attack_by(var/obj/item/O as obj, var/mob/user as mob)
 	if(istype(O, sheet_path))
 		var/obj/item/stack/addstack = O
 		var/amount = min((max_sheets - sheets), addstack.amount)

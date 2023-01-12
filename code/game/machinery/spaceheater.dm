@@ -42,7 +42,7 @@
 		cell.emp_act(severity)
 	..(severity)
 
-/obj/structure/machinery/space_heater/attackby(obj/item/I, mob/user)
+/obj/structure/machinery/space_heater/after_attack_by(obj/item/I, mob/user)
 	if(istype(I, /obj/item/cell))
 		if(open)
 			if(cell)

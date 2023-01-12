@@ -31,7 +31,7 @@
 		hub.com = src
 		hub.setDir(dir)
 
-/obj/structure/machinery/computer/teleporter/attackby(I as obj, mob/living/user as mob)
+/obj/structure/machinery/computer/teleporter/after_attack_by(I as obj, mob/living/user as mob)
 	if(istype(I, /obj/item/card/data/))
 		var/obj/item/card/data/C = I
 		if(inoperable() & (C.function != "teleporter"))
@@ -313,7 +313,7 @@
 	overlays.Cut()
 	overlays += image('icons/obj/structures/props/stationobjs.dmi', icon_state = "controller-wires")
 
-/obj/structure/machinery/teleport/station/attackby(var/obj/item/W)
+/obj/structure/machinery/teleport/station/after_attack_by(var/obj/item/W)
 	src.attack_hand()
 
 /obj/structure/machinery/teleport/station/attack_remote()

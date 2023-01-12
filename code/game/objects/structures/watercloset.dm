@@ -130,7 +130,7 @@
 	icon_state = "toilet[open][cistern]"
 	cistern_overlay.icon_state = "cistern[cistern]"
 
-/obj/structure/toilet/attackby(obj/item/I, mob/living/user)
+/obj/structure/toilet/after_attack_by(obj/item/I, mob/living/user)
 	if(istype(I, /obj/item/tool/crowbar))
 		to_chat(user, SPAN_NOTICE("You start to [cistern ? "replace the lid on the cistern" : "lift the lid off the cistern"]."))
 		playsound(loc, 'sound/effects/stonedoor_openclose.ogg', 25, 1)
@@ -188,7 +188,7 @@
 	density = FALSE
 	anchored = 1
 
-/obj/structure/urinal/attackby(obj/item/I, mob/living/user)
+/obj/structure/urinal/after_attack_by(obj/item/I, mob/living/user)
 	if(istype(I, /obj/item/grab))
 		if(isXeno(user)) return
 		var/obj/item/grab/G = I
@@ -247,7 +247,7 @@
 	else
 		stop_processing()
 
-/obj/structure/machinery/shower/attackby(obj/item/I as obj, mob/user as mob)
+/obj/structure/machinery/shower/after_attack_by(obj/item/I as obj, mob/user as mob)
 	if(I.type == /obj/item/device/analyzer)
 		to_chat(user, SPAN_NOTICE("The water temperature seems to be [watertemp]."))
 	if(HAS_TRAIT(I, TRAIT_TOOL_WRENCH))
@@ -483,7 +483,7 @@
 		V.show_message(SPAN_NOTICE("[user] washes their hands using \the [src]."), SHOW_MESSAGE_VISIBLE)
 
 
-/obj/structure/sink/attackby(obj/item/O as obj, mob/user as mob)
+/obj/structure/sink/after_attack_by(obj/item/O as obj, mob/user as mob)
 	if(busy)
 		to_chat(user, SPAN_DANGER("Someone's already washing here."))
 		return
@@ -548,7 +548,7 @@
 	..()
 	icon_state = "puddle"
 
-/obj/structure/sink/puddle/attackby(obj/item/O as obj, mob/user as mob)
+/obj/structure/sink/puddle/after_attack_by(obj/item/O as obj, mob/user as mob)
 	icon_state = "puddle-splash"
 	..()
 	icon_state = "puddle"

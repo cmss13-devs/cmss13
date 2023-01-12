@@ -73,7 +73,7 @@ var/bomb_set = FALSE
 	INVOKE_ASYNC(src, TYPE_PROC_REF(/atom, attack_hand), M)
 	return XENO_ATTACK_ACTION
 
-/obj/structure/machinery/nuclearbomb/attackby(obj/item/O as obj, mob/user as mob)
+/obj/structure/machinery/nuclearbomb/after_attack_by(obj/item/O as obj, mob/user as mob)
 	if(anchored && timing && bomb_set && HAS_TRAIT(O, TRAIT_TOOL_WIRECUTTERS))
 		user.visible_message(SPAN_DANGER("[user] begins to defuse \the [src]."), SPAN_DANGER("You begin to defuse \the [src]. This will take some time..."))
 		if(do_after(user, 150 * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))

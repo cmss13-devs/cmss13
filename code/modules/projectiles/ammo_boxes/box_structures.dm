@@ -121,7 +121,7 @@
 	else
 		to_chat(user, SPAN_NOTICE("\The [src] is empty."))
 
-/obj/structure/magazine_box/attackby(obj/item/W, mob/living/user)
+/obj/structure/magazine_box/after_attack_by(obj/item/W, mob/living/user)
 	if(burning)
 		to_chat(user, SPAN_DANGER("It's on fire and might explode!"))
 		return

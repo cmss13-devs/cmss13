@@ -14,7 +14,7 @@
 	//brightness_on = 4 //uncomment these when the lighting fixes get in
 	return
 
-/obj/structure/sign/double/barsign/attackby(obj/item/I, mob/user)
+/obj/structure/sign/double/barsign/after_attack_by(obj/item/I, mob/user)
 	if(istype(I, /obj/item/card/id))
 		var/obj/item/card/id/card = I
 		if(ACCESS_CIVILIAN_PUBLIC in card.GetAccess())

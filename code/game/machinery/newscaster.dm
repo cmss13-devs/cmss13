@@ -695,7 +695,7 @@ var/list/obj/structure/machinery/newscaster/allCasters = list() //Global list th
 			src.updateUsrDialog()
 
 
-/obj/structure/machinery/newscaster/attackby(obj/item/I as obj, mob/user as mob)
+/obj/structure/machinery/newscaster/after_attack_by(obj/item/I as obj, mob/user as mob)
 
 	if (src.isbroken)
 		playsound(src.loc, 'sound/effects/hit_on_shattered_glass.ogg', 25, 1)

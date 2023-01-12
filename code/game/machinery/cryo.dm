@@ -144,7 +144,7 @@
 			. = TRUE
 	updateUsrDialog()
 
-/obj/structure/machinery/cryo_cell/attackby(obj/item/W, mob/living/user)
+/obj/structure/machinery/cryo_cell/after_attack_by(obj/item/W, mob/living/user)
 	if(istype(W, /obj/item/reagent_container/glass))
 		if(beaker)
 			to_chat(user, SPAN_WARNING("A beaker is already loaded into the machine."))

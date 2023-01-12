@@ -82,7 +82,7 @@
 	update_icon()
 
 
-/obj/structure/morgue/attackby(obj/item/W, mob/user)
+/obj/structure/morgue/after_attack_by(obj/item/W, mob/user)
 	if(istype(W, /obj/item/weapon/zombie_claws))
 		attack_hand()
 		return

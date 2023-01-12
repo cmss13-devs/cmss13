@@ -163,7 +163,7 @@
 	else
 		return "[nominative] is being affected by some power-related issue."
 
-/obj/structure/machinery/vending/attackby(obj/item/W, mob/user)
+/obj/structure/machinery/vending/after_attack_by(obj/item/W, mob/user)
 	if(is_tipped_over)
 		to_chat(user, "Tip it back upright first!")
 		return FALSE

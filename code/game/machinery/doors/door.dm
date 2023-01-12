@@ -131,7 +131,7 @@
 		flick("door_deny", src)
 
 
-/obj/structure/machinery/door/attackby(obj/item/I, mob/user)
+/obj/structure/machinery/door/after_attack_by(obj/item/I, mob/user)
 	if(!(I.flags_item & NOBLUDGEON))
 		try_to_activate_door(user)
 		return 1

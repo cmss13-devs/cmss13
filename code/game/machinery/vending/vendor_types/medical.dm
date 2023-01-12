@@ -62,7 +62,7 @@
 	if(healthscan)
 		. += SPAN_NOTICE("The [src.name] offers assisted medical scan, for ease of usage with minimal training. Present the target in front of the scanner to scan.")
 
-/obj/structure/machinery/cm_vending/sorted/medical/attackby(var/obj/item/I, var/mob/user)
+/obj/structure/machinery/cm_vending/sorted/medical/after_attack_by(var/obj/item/I, var/mob/user)
 	if(stat == WORKING && LAZYLEN(chem_refill) && (istype(I, /obj/item/reagent_container/hypospray/autoinjector) || istype(I, /obj/item/reagent_container/glass/bottle))) // only if we are completely fine and working
 		if(!hacked)
 			if(!allowed(user))

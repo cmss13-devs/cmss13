@@ -11,7 +11,7 @@
 	var/occupied = 0
 	var/meattype = 0 // 0 - Nothing, 1 - Monkey, 2 - Xeno
 
-/obj/structure/kitchenspike/attackby(obj/item/grab/G, mob/user)
+/obj/structure/kitchenspike/after_attack_by(obj/item/grab/G, mob/user)
 	if(!istype(G, /obj/item/grab))
 		return
 	to_chat(user, SPAN_DANGER("They are too big for the spike, try something smaller!"))

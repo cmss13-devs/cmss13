@@ -82,7 +82,7 @@
 			qdel(src)
 			return
 
-/obj/structure/window_frame/attackby(obj/item/W, mob/living/user)
+/obj/structure/window_frame/after_attack_by(obj/item/W, mob/living/user)
 	if(istype(W, sheet_type))
 		var/obj/item/stack/sheet/sheet = W
 		if(sheet.get_amount() < 2)
@@ -174,7 +174,7 @@
 	basestate = "white_window"
 	window_type = /obj/structure/window/framed/almayer/white
 
-/obj/structure/window_frame/almayer/requisitions/attackby(obj/item/W, mob/living/user)
+/obj/structure/window_frame/almayer/requisitions/after_attack_by(obj/item/W, mob/living/user)
 	if(istype(W, sheet_type))
 		to_chat(user, SPAN_WARNING("You can't repair this window."))
 		return

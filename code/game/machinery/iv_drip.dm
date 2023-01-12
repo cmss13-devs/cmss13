@@ -59,7 +59,7 @@
 			start_processing()
 
 
-/obj/structure/machinery/iv_drip/attackby(obj/item/W, mob/living/user)
+/obj/structure/machinery/iv_drip/after_attack_by(obj/item/W, mob/living/user)
 	if (istype(W, /obj/item/reagent_container))
 		if(beaker)
 			to_chat(user, SPAN_WARNING("There is already a reagent container loaded!"))

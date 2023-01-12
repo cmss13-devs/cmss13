@@ -21,7 +21,7 @@
 /obj/structure/extinguisher_cabinet/alt
 	icon_state = "extinguisher_alt"
 
-/obj/structure/extinguisher_cabinet/attackby(obj/item/O, mob/user)
+/obj/structure/extinguisher_cabinet/after_attack_by(obj/item/O, mob/user)
 	if(isrobot(user))
 		return
 	if(istype(O, /obj/item/tool/extinguisher))

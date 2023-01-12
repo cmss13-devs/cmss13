@@ -113,7 +113,7 @@
 		return TRUE
 	return FALSE
 
-/obj/structure/machinery/defenses/attackby(var/obj/item/O as obj, mob/user as mob)
+/obj/structure/machinery/defenses/after_attack_by(var/obj/item/O as obj, mob/user as mob)
 	if(QDELETED(O))
 		return
 

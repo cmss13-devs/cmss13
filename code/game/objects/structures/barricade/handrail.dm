@@ -66,7 +66,7 @@
 	reinforced = !reinforced
 	update_icon()
 
-/obj/structure/barricade/handrail/attackby(obj/item/W, mob/user)
+/obj/structure/barricade/handrail/after_attack_by(obj/item/W, mob/user)
 	for(var/obj/effect/xenomorph/acid/A in src.loc)
 		if(A.acid_t == src)
 			to_chat(user, "You can't get near that, it's melting!")

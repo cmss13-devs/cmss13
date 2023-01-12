@@ -8,7 +8,7 @@
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 100 //Watts, I hope.  Just enough to do the computer and display things.
 
-/obj/structure/machinery/power/generator/attackby(obj/item/W as obj, mob/user as mob)
+/obj/structure/machinery/power/generator/after_attack_by(obj/item/W as obj, mob/user as mob)
 	if(HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
 		anchored = !anchored
 		to_chat(user, SPAN_NOTICE(" You [anchored ? "secure" : "unsecure"] the bolts holding [src] to the floor."))

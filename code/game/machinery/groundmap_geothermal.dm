@@ -133,7 +133,7 @@
 	start_processing()
 	return 1
 
-/obj/structure/machinery/power/geothermal/attackby(var/obj/item/O as obj, var/mob/user as mob)
+/obj/structure/machinery/power/geothermal/after_attack_by(var/obj/item/O as obj, var/mob/user as mob)
 	if(iswelder(O))
 		if(!HAS_TRAIT(O, TRAIT_TOOL_BLOWTORCH))
 			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
@@ -319,7 +319,7 @@
 	else
 		icon_state = "flood_s_off"
 
-/obj/structure/machinery/colony_floodlight/attackby(obj/item/I, mob/user)
+/obj/structure/machinery/colony_floodlight/after_attack_by(obj/item/I, mob/user)
 	if(damaged)
 		if(HAS_TRAIT(I, TRAIT_TOOL_SCREWDRIVER))
 			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))

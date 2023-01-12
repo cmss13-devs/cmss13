@@ -127,7 +127,7 @@ text("<A href='?src=\ref[src];operation=oddbutton'>[src.oddbutton ? "Yes" : "No"
 			to_chat(usr, SPAN_NOTICE("You press the weird button."))
 			src.updateUsrDialog()
 
-/obj/structure/machinery/bot/cleanbot/attackby(obj/item/W, mob/user as mob)
+/obj/structure/machinery/bot/cleanbot/after_attack_by(obj/item/W, mob/user as mob)
 	if (istype(W, /obj/item/card/id))
 		if(src.allowed(usr) && !open)
 			src.locked = !src.locked

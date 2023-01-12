@@ -43,7 +43,7 @@
 		P.remove_connection(src)
 	. = ..()
 
-/obj/structure/pipes/attackby(var/obj/item/W, var/mob/user)
+/obj/structure/pipes/after_attack_by(var/obj/item/W, var/mob/user)
 	if(!HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
 		return ..()
 

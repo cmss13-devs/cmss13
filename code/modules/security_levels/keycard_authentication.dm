@@ -26,7 +26,7 @@
 	to_chat(user, "The station AI is not to interact with these devices.")
 	return
 
-/obj/structure/machinery/keycard_auth/attackby(obj/item/W as obj, mob/user as mob)
+/obj/structure/machinery/keycard_auth/after_attack_by(obj/item/W as obj, mob/user as mob)
 	if(inoperable())
 		to_chat(user, "This device is not powered.")
 		return
@@ -182,7 +182,7 @@ var/global/maint_all_access = 1
 	card_type = /obj/item/card/data/prison
 	window_desc = "This device is used to override the security lockdown. It requires both of the authentication disks, which can be found in the security offices of various cell blocks around the station."
 
-/obj/structure/machinery/keycard_auth/lockdown/attackby(obj/item/W as obj, mob/user as mob)
+/obj/structure/machinery/keycard_auth/lockdown/after_attack_by(obj/item/W as obj, mob/user as mob)
 	if(inoperable())
 		to_chat(user, "This device is not powered.")
 		return

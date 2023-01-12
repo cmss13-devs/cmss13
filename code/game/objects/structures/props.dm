@@ -20,7 +20,7 @@
 	bound_height = 96
 	var/on = FALSE//if this is set to on by default, the drill will start on, doi
 
-/obj/structure/prop/dam/drill/attackby(obj/item/W, mob/user)
+/obj/structure/prop/dam/drill/after_attack_by(obj/item/W, mob/user)
 	. = ..()
 	if(isXeno(user))
 		return
@@ -128,7 +128,7 @@
 		Update()
 	return
 
-/obj/structure/prop/dam/torii/attackby(obj/item/W, mob/user)
+/obj/structure/prop/dam/torii/after_attack_by(obj/item/W, mob/user)
 	var/L
 	if(lit)
 		return
@@ -489,7 +489,7 @@
 	bound_width = 32
 	bound_height = 96
 
-/obj/structure/prop/turbine/attackby(obj/item/W, mob/user)
+/obj/structure/prop/turbine/after_attack_by(obj/item/W, mob/user)
 	. = ..()
 	if(isXeno(user))
 		return
@@ -899,7 +899,7 @@
 		helmet = null
 	return ..()
 
-/obj/structure/prop/wooden_cross/attackby(obj/item/W, mob/living/user)
+/obj/structure/prop/wooden_cross/after_attack_by(obj/item/W, mob/living/user)
 	if(istype(W, /obj/item/clothing/head))
 		if(helmet)
 			to_chat(user, SPAN_WARNING("[helmet] is already resting atop [src]!"))

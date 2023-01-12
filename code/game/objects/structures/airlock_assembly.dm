@@ -51,7 +51,7 @@
 	helpmessage += "You can name it with a [SPAN_HELPFUL("pen")]."
 	. += SPAN_NOTICE(helpmessage)
 
-/obj/structure/airlock_assembly/attackby(obj/item/W as obj, mob/user as mob)
+/obj/structure/airlock_assembly/after_attack_by(obj/item/W as obj, mob/user as mob)
 	if(user.action_busy)
 		return TRUE //no afterattack
 

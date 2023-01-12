@@ -9,7 +9,7 @@
 	var/obj/item/device/mmi/brain = null
 
 
-/obj/structure/AIcore/attackby(obj/item/P as obj, mob/user as mob)
+/obj/structure/AIcore/after_attack_by(obj/item/P as obj, mob/user as mob)
 	switch(state)
 		if(0)
 			if(HAS_TRAIT(P, TRAIT_TOOL_WRENCH))
@@ -155,7 +155,7 @@
 	anchored = 1
 	state = 20//So it doesn't interact based on the above. Not really necessary.
 
-/obj/structure/AIcore/deactivated/attackby(var/obj/item/device/aicard/A as obj, var/mob/user as mob)
+/obj/structure/AIcore/deactivated/after_attack_by(var/obj/item/device/aicard/A as obj, var/mob/user as mob)
 	if(istype(A, /obj/item/device/aicard))//Is it?
 		A.transfer_ai("INACTIVE","AICARD",src,user)
 	return

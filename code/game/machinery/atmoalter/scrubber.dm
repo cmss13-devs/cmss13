@@ -72,7 +72,7 @@
 		icon_state = "scrubber:0"
 
 
-/obj/structure/machinery/portable_atmospherics/powered/scrubber/huge/attackby(var/obj/item/I as obj, var/mob/user as mob)
+/obj/structure/machinery/portable_atmospherics/powered/scrubber/huge/after_attack_by(var/obj/item/I as obj, var/mob/user as mob)
 	if(HAS_TRAIT(I, TRAIT_TOOL_WRENCH))
 		if(on)
 			to_chat(user, SPAN_NOTICE(" Turn it off first!"))
@@ -100,7 +100,7 @@
 /obj/structure/machinery/portable_atmospherics/powered/scrubber/huge/stationary
 	name = "Stationary Air Scrubber"
 
-/obj/structure/machinery/portable_atmospherics/powered/scrubber/huge/stationary/attackby(var/obj/item/I as obj, var/mob/user as mob)
+/obj/structure/machinery/portable_atmospherics/powered/scrubber/huge/stationary/after_attack_by(var/obj/item/I as obj, var/mob/user as mob)
 	if(HAS_TRAIT(I, TRAIT_TOOL_WRENCH))
 		to_chat(user, SPAN_NOTICE(" The bolts are too tight for you to unscrew!"))
 		return

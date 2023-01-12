@@ -96,7 +96,7 @@
 	else
 		icon_state = mineralType
 
-/obj/structure/mineral_door/attackby(obj/item/W, mob/living/user)
+/obj/structure/mineral_door/after_attack_by(obj/item/W, mob/living/user)
 	if(istype(W,/obj/item/tool/pickaxe))
 		var/obj/item/tool/pickaxe/digTool = W
 		to_chat(user, "You start digging the [name].")
@@ -187,7 +187,7 @@
 /obj/structure/mineral_door/transparent/phoron
 	mineralType = "phoron"
 
-/obj/structure/mineral_door/transparent/phoron/attackby(obj/item/W as obj, mob/user as mob)
+/obj/structure/mineral_door/transparent/phoron/after_attack_by(obj/item/W as obj, mob/user as mob)
 	if(iswelder(W))
 		var/obj/item/tool/weldingtool/WT = W
 		if(WT.remove_fuel(0, user))

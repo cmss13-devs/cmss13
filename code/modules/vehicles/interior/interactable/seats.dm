@@ -119,7 +119,7 @@
 /obj/structure/bed/chair/comfy/vehicle/rotate()
 	set hidden = TRUE
 
-/obj/structure/bed/chair/comfy/vehicle/attackby(obj/item/W, mob/living/user)
+/obj/structure/bed/chair/comfy/vehicle/after_attack_by(obj/item/W, mob/living/user)
 	return
 
 /obj/structure/bed/chair/comfy/vehicle/attack_alien(var/mob/living/carbon/Xenomorph/X, var/dam_bonus)
@@ -409,7 +409,7 @@
 		playsound(loc, pick('sound/effects/metalhit.ogg', 'sound/weapons/alien_claw_metal1.ogg', 'sound/weapons/alien_claw_metal2.ogg', 'sound/weapons/alien_claw_metal3.ogg'), 25, 1)
 		break_seat()
 
-/obj/structure/bed/chair/vehicle/attackby(obj/item/W, mob/living/user)
+/obj/structure/bed/chair/vehicle/after_attack_by(obj/item/W, mob/living/user)
 	if((iswelder(W) && broken))
 		if(!HAS_TRAIT(W, TRAIT_TOOL_BLOWTORCH))
 			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))

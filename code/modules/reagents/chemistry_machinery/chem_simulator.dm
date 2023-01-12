@@ -61,7 +61,7 @@
 		icon_state = "modifier_off"
 	nanomanager.update_uis(src) // update all UIs attached to src
 
-/obj/structure/machinery/chem_simulator/attackby(obj/item/B, mob/living/user)
+/obj/structure/machinery/chem_simulator/after_attack_by(obj/item/B, mob/living/user)
 	if(!skillcheck(user, SKILL_RESEARCH, SKILL_RESEARCH_TRAINED))
 		to_chat(user, SPAN_WARNING("You have no idea how to use this."))
 		return

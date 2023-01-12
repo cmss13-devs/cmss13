@@ -165,7 +165,7 @@
 
 // attackby code
 
-/obj/structure/machinery/medical_pod/attackby(obj/item/W, mob/user)
+/obj/structure/machinery/medical_pod/after_attack_by(obj/item/W, mob/user)
 
 	if(!ishuman(user))
 		return // no
@@ -214,7 +214,7 @@
 		go_in(to_put_in, user)
 		add_fingerprint(user)
 
-/obj/structure/machinery/medical_pod/autodoc/attackby(obj/item/W, mob/living/user)
+/obj/structure/machinery/medical_pod/autodoc/after_attack_by(obj/item/W, mob/living/user)
 	. = ..()
 	if(istype(W, /obj/item/stack/sheet/metal))
 		if(stored_metal == max_metal)

@@ -32,7 +32,7 @@
 	else
 		return 0
 
-/obj/structure/machinery/door/poddoor/attackby(obj/item/W, mob/user)
+/obj/structure/machinery/door/poddoor/after_attack_by(obj/item/W, mob/user)
 	add_fingerprint(user)
 	if(!W.pry_capable)
 		return
@@ -295,7 +295,7 @@
 	unslashable = TRUE
 	unacidable = TRUE
 
-/obj/structure/machinery/door/poddoor/almayer/locked/attackby(obj/item/C as obj, mob/user as mob)
+/obj/structure/machinery/door/poddoor/almayer/locked/after_attack_by(obj/item/C as obj, mob/user as mob)
 	if(HAS_TRAIT(C, TRAIT_TOOL_CROWBAR))
 		return
 	..()

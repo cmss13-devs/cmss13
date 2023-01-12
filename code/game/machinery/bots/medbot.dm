@@ -175,7 +175,7 @@
 	src.updateUsrDialog()
 	return
 
-/obj/structure/machinery/bot/medbot/attackby(obj/item/W as obj, mob/user as mob)
+/obj/structure/machinery/bot/medbot/after_attack_by(obj/item/W as obj, mob/user as mob)
 	if (istype(W, /obj/item/card/id))
 		if (src.allowed(user) && !open)
 			src.locked = !src.locked

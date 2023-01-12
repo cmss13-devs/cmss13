@@ -508,7 +508,7 @@
 
 	return
 
-/obj/structure/machinery/portable_atmospherics/hydroponics/attackby(var/obj/item/O as obj, var/mob/user as mob)
+/obj/structure/machinery/portable_atmospherics/hydroponics/after_attack_by(var/obj/item/O as obj, var/mob/user as mob)
 
 	if (O.is_open_container())
 		return 0
@@ -740,7 +740,7 @@
 	use_power = USE_POWER_NONE
 	draw_warnings = 0
 
-/obj/structure/machinery/portable_atmospherics/hydroponics/soil/attackby(var/obj/item/O as obj, var/mob/user as mob)
+/obj/structure/machinery/portable_atmospherics/hydroponics/soil/after_attack_by(var/obj/item/O as obj, var/mob/user as mob)
 	if(istype(O, /obj/item/tool/shovel))
 		to_chat(user, "You clear up [src]!")
 		qdel(src)

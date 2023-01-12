@@ -115,7 +115,7 @@
 		light_disabled = 0
 		toggle_cam_status(user, TRUE)
 
-/obj/structure/machinery/camera/attackby(obj/item/W, mob/living/user as mob)
+/obj/structure/machinery/camera/after_attack_by(obj/item/W, mob/living/user as mob)
 
 	// DECONSTRUCTION
 	if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER))

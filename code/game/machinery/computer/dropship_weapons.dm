@@ -40,7 +40,7 @@
 	user.set_interaction(src)
 	ui_interact(user)
 
-/obj/structure/machinery/computer/dropship_weapons/attackby(var/obj/item/W, mob/user as mob)
+/obj/structure/machinery/computer/dropship_weapons/after_attack_by(var/obj/item/W, mob/user as mob)
 	if(istype(W, /obj/item/frame/matrix))
 		var/obj/item/frame/matrix/MATRIX = W
 		if(MATRIX.state == ASSEMBLY_LOCKED)

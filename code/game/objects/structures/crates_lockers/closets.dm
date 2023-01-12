@@ -200,7 +200,7 @@
 			A.forceMove(src.loc)
 		qdel(src)
 
-/obj/structure/closet/attackby(obj/item/W, mob/living/user)
+/obj/structure/closet/after_attack_by(obj/item/W, mob/living/user)
 	if(src.opened)
 		if(istype(W, /obj/item/grab))
 			if(isXeno(user)) return

@@ -163,7 +163,7 @@
 			replace_beaker(usr)
 			. = TRUE
 
-/obj/structure/machinery/chem_dispenser/attackby(obj/item/reagent_container/B, mob/user)
+/obj/structure/machinery/chem_dispenser/after_attack_by(obj/item/reagent_container/B, mob/user)
 	if(isrobot(user))
 		return
 	if(istype(B, /obj/item/reagent_container/glass) || istype(B, /obj/item/reagent_container/food))
@@ -206,7 +206,7 @@
 	"watermelonjuice","tomatojuice","carrotjuice","berryjuice","grapejuice","lemonjuice","banana")
 	var/hackedcheck = 0
 
-/obj/structure/machinery/chem_dispenser/soda/attackby(var/obj/item/B as obj, var/mob/user as mob)
+/obj/structure/machinery/chem_dispenser/soda/after_attack_by(var/obj/item/B as obj, var/mob/user as mob)
 	..()
 	if(HAS_TRAIT(B, TRAIT_TOOL_MULTITOOL))
 		if(hackedcheck == 0)
@@ -248,7 +248,7 @@
 	dispensable_reagents = list("water","ice","sodawater","sugar","tonic","beer","kahlua","whiskey","sake","wine","vodka","gin","rum","vermouth","cognac","ale","mead","thirteenloko","tequila")
 	var/hackedcheck = 0
 
-/obj/structure/machinery/chem_dispenser/beer/attackby(var/obj/item/B as obj, var/mob/user as mob)
+/obj/structure/machinery/chem_dispenser/beer/after_attack_by(var/obj/item/B as obj, var/mob/user as mob)
 	..()
 
 	if(HAS_TRAIT(B, TRAIT_TOOL_MULTITOOL))

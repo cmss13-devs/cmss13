@@ -34,7 +34,7 @@
 	SSmapview.map_machines -= src
 	return ..()
 
-/obj/structure/machinery/computer/overwatch/attackby(var/obj/I as obj, var/mob/user as mob)  //Can't break or disassemble.
+/obj/structure/machinery/computer/overwatch/after_attack_by(var/obj/I as obj, var/mob/user as mob)  //Can't break or disassemble.
 	return
 
 /obj/structure/machinery/computer/overwatch/bullet_act(var/obj/item/projectile/Proj) //Can't shoot it

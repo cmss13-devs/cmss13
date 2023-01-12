@@ -66,7 +66,7 @@
 		icon_state = (beaker?"[base_state]1":"[base_state]0")
 
 
-/obj/structure/machinery/chem_master/attackby(obj/item/B, mob/living/user)
+/obj/structure/machinery/chem_master/after_attack_by(obj/item/B, mob/living/user)
 	if(istype(B, /obj/item/reagent_container/glass))
 		var/obj/item/old_beaker = beaker
 		beaker = B

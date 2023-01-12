@@ -45,7 +45,7 @@ PLANT_CUT_MACHETE = 3 = Needs at least a machete to be cut down
 	if(icon_tag)
 		icon_state = "[icon_tag]_[rand(1,variations)]"
 
-/obj/structure/flora/attackby(obj/item/W, mob/living/user)
+/obj/structure/flora/after_attack_by(obj/item/W, mob/living/user)
 	if(cut_level &~PLANT_NO_CUT && W.sharp > IS_SHARP_ITEM_SIMPLE)
 		if(cut_level & PLANT_CUT_MACHETE && W.sharp == IS_SHARP_ITEM_ACCURATE)
 			cut_hits--
@@ -521,7 +521,7 @@ ICE GRASS
 						H.next_move_slowdown = new_slowdown
 						to_chat(H, SPAN_WARNING("You got completely tangeled in [src]! Oh boy..."))
 
-/obj/structure/flora/jungle/thickbush/attackby(obj/item/I as obj, mob/user as mob)
+/obj/structure/flora/jungle/thickbush/after_attack_by(obj/item/I as obj, mob/user as mob)
 	//hatchets and shiet can clear away undergrowth
 	if(I && (I.sharp >= IS_SHARP_ITEM_ACCURATE) && !stump)
 		var/damage = rand(2,5)

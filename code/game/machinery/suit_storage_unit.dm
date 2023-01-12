@@ -234,7 +234,7 @@
 
 
 
-/obj/structure/machinery/suit_storage_unit/attackby(obj/item/I, mob/living/user)
+/obj/structure/machinery/suit_storage_unit/after_attack_by(obj/item/I, mob/living/user)
 
 	if(!(stat & NOPOWER))
 

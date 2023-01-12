@@ -26,7 +26,7 @@
 	unacidable = TRUE
 
 	//We dont want anyone to mess with it
-/obj/structure/machinery/telecomms/relay/preset/ice_colony/attackby()
+/obj/structure/machinery/telecomms/relay/preset/ice_colony/after_attack_by()
 	return
 
 /obj/structure/machinery/telecomms/relay/preset/tower
@@ -112,7 +112,7 @@
 	else
 		icon_state = "[initial(icon_state)]_off"
 
-/obj/structure/machinery/telecomms/relay/preset/tower/attackby(obj/item/I, mob/user)
+/obj/structure/machinery/telecomms/relay/preset/tower/after_attack_by(obj/item/I, mob/user)
 	if(iswelder(I))
 		if(!HAS_TRAIT(I, TRAIT_TOOL_BLOWTORCH))
 			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
@@ -235,7 +235,7 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 		message_admins("[key_name(user)] turned \the [src] in [commarea] OFF. (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[commloc.loc.x];Y=[commloc.loc.y];Z=[commloc.loc.z]'>JMP</a>)")
 	toggle_cooldown = world.time + 40
 
-/obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/attackby(obj/item/I, mob/user)
+/obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/after_attack_by(obj/item/I, mob/user)
 	if(HAS_TRAIT(I, TRAIT_TOOL_MULTITOOL))
 		if(inoperable() || (health <= initial(health) * 0.5))
 			to_chat(user, SPAN_WARNING("\The [src.name] needs repairs to have frequencies added to its software!"))

@@ -47,7 +47,7 @@
 				I.forceMove(src)
 
 
-/obj/structure/filingcabinet/attackby(obj/item/P as obj, mob/user as mob)
+/obj/structure/filingcabinet/after_attack_by(obj/item/P as obj, mob/user as mob)
 	if(HAS_TRAIT(P, TRAIT_TOOL_WRENCH))
 		..()
 	else

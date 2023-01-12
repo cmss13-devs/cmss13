@@ -303,7 +303,7 @@
 		user.put_in_hands(P)
 		qdel(src)
 
-/obj/structure/machinery/m56d_post/attackby(obj/item/O, mob/user)
+/obj/structure/machinery/m56d_post/after_attack_by(obj/item/O, mob/user)
 	if(!ishuman(user)) //first make sure theres no funkiness
 		return
 
@@ -510,7 +510,7 @@
 		icon_state = "[icon_full]"
 	return
 
-/obj/structure/machinery/m56d_hmg/attackby(var/obj/item/O as obj, mob/user as mob) //This will be how we take it apart.
+/obj/structure/machinery/m56d_hmg/after_attack_by(var/obj/item/O as obj, mob/user as mob) //This will be how we take it apart.
 	if(!ishuman(user))
 		return ..()
 
@@ -1302,7 +1302,7 @@
 	update_damage_state()
 	update_icon()
 
-/obj/structure/machinery/m56d_hmg/auto/attackby(var/obj/item/O as obj, mob/user as mob)
+/obj/structure/machinery/m56d_hmg/auto/after_attack_by(var/obj/item/O as obj, mob/user as mob)
 	if(!ishuman(user))
 		return
 	// RELOADING

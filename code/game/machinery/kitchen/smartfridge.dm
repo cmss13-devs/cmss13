@@ -65,7 +65,7 @@
 //*   Item Adding
 //********************/
 
-/obj/structure/machinery/smartfridge/attackby(var/obj/item/O as obj, var/mob/user as mob)
+/obj/structure/machinery/smartfridge/after_attack_by(var/obj/item/O as obj, var/mob/user as mob)
 	if(HAS_TRAIT(O, TRAIT_TOOL_WRENCH))
 		. = ..()
 		return

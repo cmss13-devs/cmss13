@@ -303,7 +303,7 @@
 	desc = "A memorial to all Admins and Moderators who have retired from CM. No mentor names are present."
 
 
-/obj/structure/prop/almayer/ship_memorial/attackby(obj/item/I, mob/user)
+/obj/structure/prop/almayer/ship_memorial/after_attack_by(obj/item/I, mob/user)
 	if(istype(I, /obj/item/dogtag))
 		var/obj/item/dogtag/D = I
 		if(D.fallen_names)
@@ -407,7 +407,7 @@
 	idle_power_usage = 20
 
 //What is this even doing? Why is it making a new item?
-/obj/structure/machinery/cryobag_recycler/attackby(obj/item/W, mob/user) //Hope this works. Don't see why not.
+/obj/structure/machinery/cryobag_recycler/after_attack_by(obj/item/W, mob/user) //Hope this works. Don't see why not.
 	..()
 	if (istype(W, /obj/item))
 		if(W.name == "used stasis bag") //possiblity for abuse, but fairly low considering its near impossible to rename something without VV

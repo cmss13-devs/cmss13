@@ -23,7 +23,7 @@
 	. = ..()
 	. += SPAN_INFO("Drag its sprite onto yourself to undeploy.")
 
-/obj/structure/barricade/deployable/attackby(obj/item/W, mob/user)
+/obj/structure/barricade/deployable/after_attack_by(obj/item/W, mob/user)
 
 	if(iswelder(W))
 		if(!HAS_TRAIT(W, TRAIT_TOOL_BLOWTORCH))

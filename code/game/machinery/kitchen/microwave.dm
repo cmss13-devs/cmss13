@@ -58,7 +58,7 @@
 //*   Item Adding
 //********************/
 
-/obj/structure/machinery/microwave/attackby(var/obj/item/O as obj, var/mob/user as mob)
+/obj/structure/machinery/microwave/after_attack_by(var/obj/item/O as obj, var/mob/user as mob)
 	if(broken > 0)
 		if(broken == 2 && HAS_TRAIT(O, TRAIT_TOOL_SCREWDRIVER)) // If it's broken and they're using a screwdriver
 			user.visible_message( \

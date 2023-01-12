@@ -113,7 +113,7 @@
 // screwdriver: open/close hatch
 // cell: insert it
 // other: chance to knock rider off bot
-/obj/structure/machinery/bot/mulebot/attackby(var/obj/item/I, var/mob/user)
+/obj/structure/machinery/bot/mulebot/after_attack_by(var/obj/item/I, var/mob/user)
 	if(istype(I,/obj/item/cell) && open && !cell)
 		var/obj/item/cell/C = I
 		if(user.drop_inv_item_to_loc(C, src))

@@ -82,7 +82,7 @@
 	else
 		startgibbing(user)
 
-/obj/structure/machinery/gibber/attackby(obj/item/grab/G as obj, mob/user as mob)
+/obj/structure/machinery/gibber/after_attack_by(obj/item/grab/G as obj, mob/user as mob)
 	if(occupant)
 		to_chat(user, SPAN_WARNING("The gibber is full, empty it first!"))
 		return

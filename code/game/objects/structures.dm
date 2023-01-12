@@ -38,11 +38,16 @@
 			deconstruct(FALSE)
 
 /obj/structure/attackby(obj/item/W, mob/user)
+	user.next_move += W.attack_speed
 	if(HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
 		if(user.action_busy)
 			return TRUE
 		toggle_anchored(W, user)
 		return TRUE
+	after_attack_by(W, user)
+
+/obj/structure/proc/after_attack_by(obj/item/W, mob/user)
+	return
 
 /obj/structure/ex_act(severity, direction)
 	if(indestructible)

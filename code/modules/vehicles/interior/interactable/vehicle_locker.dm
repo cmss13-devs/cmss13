@@ -107,7 +107,7 @@
 	if (container.handle_mousedrop(user, over_object))
 		..(over_object)
 
-/obj/structure/vehicle_locker/attackby(var/obj/item/W, var/mob/living/carbon/human/user)
+/obj/structure/vehicle_locker/after_attack_by(var/obj/item/W, var/mob/living/carbon/human/user)
 	if(!Adjacent(user))
 		return
 	if(user.is_mob_incapacitated())
@@ -193,7 +193,7 @@
 	. = ..()
 	. += has_tray ? SPAN_HELPFUL("Right-click to remove the surgical tray from the locker.") : SPAN_WARNING("The surgical tray has been removed.")
 
-/obj/structure/vehicle_locker/med/attackby(var/obj/item/W, var/mob/living/carbon/human/user)
+/obj/structure/vehicle_locker/med/after_attack_by(var/obj/item/W, var/mob/living/carbon/human/user)
 	if(!Adjacent(user))
 		return
 	if(user.is_mob_incapacitated())

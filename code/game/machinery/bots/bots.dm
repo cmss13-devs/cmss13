@@ -56,7 +56,7 @@
 		new /obj/effect/decal/cleanable/blood/oil(src.loc)
 	healthcheck()
 
-/obj/structure/machinery/bot/attackby(obj/item/W as obj, mob/user as mob)
+/obj/structure/machinery/bot/after_attack_by(obj/item/W as obj, mob/user as mob)
 	if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER))
 		if(!locked)
 			open = !open

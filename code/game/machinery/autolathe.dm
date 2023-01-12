@@ -78,7 +78,7 @@
 
 	update_printable()
 
-/obj/structure/machinery/autolathe/attackby(var/obj/item/O as obj, var/mob/user as mob)
+/obj/structure/machinery/autolathe/after_attack_by(var/obj/item/O as obj, var/mob/user as mob)
 	if (HAS_TRAIT(O, TRAIT_TOOL_SCREWDRIVER))
 		if (!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 			to_chat(user, SPAN_WARNING("You are not trained to dismantle machines..."))

@@ -213,7 +213,7 @@
 	playsound(loc, 'sound/machines/twobeep.ogg', 15, 1)
 	return TRUE
 
-/obj/structure/machinery/computer/sentencing/attackby(var/obj/item/O, var/mob/user)
+/obj/structure/machinery/computer/sentencing/after_attack_by(var/obj/item/O, var/mob/user)
 	if (istype(O, /obj/item/paper/incident))
 		if (current_menu == "main")
 			var/obj/item/paper/incident/paper = O

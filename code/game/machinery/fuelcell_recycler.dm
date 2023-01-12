@@ -14,7 +14,7 @@
 	unslashable = TRUE
 	unacidable = TRUE
 
-/obj/structure/machinery/fuelcell_recycler/attackby(obj/item/I, mob/user)
+/obj/structure/machinery/fuelcell_recycler/after_attack_by(obj/item/I, mob/user)
 	if(istype(I, /obj/item/fuelCell))
 		if(!cell_left)
 			if(user.drop_inv_item_to_loc(I, src))

@@ -11,7 +11,7 @@
 	var/processing = FALSE
 	var/status = 0
 
-/obj/structure/machinery/reagent_analyzer/attackby(obj/item/B, mob/living/user)
+/obj/structure/machinery/reagent_analyzer/after_attack_by(obj/item/B, mob/living/user)
 	if(processing)
 		to_chat(user, SPAN_WARNING("The [src] is still processing!"))
 		return

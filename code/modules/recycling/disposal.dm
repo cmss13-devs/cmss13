@@ -49,7 +49,7 @@
 		PF.flags_can_pass_all = PASS_HIGH_OVER_ONLY|PASS_AROUND
 
 //Attack by item places it in to disposal
-/obj/structure/machinery/disposal/attackby(var/obj/item/I, var/mob/user)
+/obj/structure/machinery/disposal/after_attack_by(var/obj/item/I, var/mob/user)
 	if(stat & BROKEN || !I || !user)
 		return
 
@@ -779,7 +779,7 @@
 		deconstruct(TRUE)
 
 //Attack by item. Weldingtool: unfasten and convert to obj/disposalconstruct
-/obj/structure/disposalpipe/attackby(var/obj/item/I, var/mob/user)
+/obj/structure/disposalpipe/after_attack_by(var/obj/item/I, var/mob/user)
 
 	var/turf/T = loc
 	if(T.intact_tile)
@@ -1093,7 +1093,7 @@
 	else
 		name = initial(name)
 
-/obj/structure/disposalpipe/tagger/attackby(var/obj/item/I, var/mob/user)
+/obj/structure/disposalpipe/tagger/after_attack_by(var/obj/item/I, var/mob/user)
 	if(..())
 		return
 
@@ -1162,7 +1162,7 @@
 
 	dpdir = sortdir|posdir|negdir
 
-/obj/structure/disposalpipe/sortjunction/attackby(var/obj/item/I, var/mob/user)
+/obj/structure/disposalpipe/sortjunction/after_attack_by(var/obj/item/I, var/mob/user)
 	if(..())
 		return
 
@@ -1265,7 +1265,7 @@
 	update()
 
 //Override attackby so we disallow trunkremoval when somethings ontop
-/obj/structure/disposalpipe/trunk/attackby(var/obj/item/I, var/mob/user)
+/obj/structure/disposalpipe/trunk/after_attack_by(var/obj/item/I, var/mob/user)
 
 	//Disposal constructors
 	var/obj/structure/disposalconstruct/C = locate() in loc
@@ -1372,7 +1372,7 @@
 					AM.throw_atom(target, 3, SPEED_FAST)
 		qdel(H)
 
-/obj/structure/disposaloutlet/attackby(var/obj/item/I, var/mob/user)
+/obj/structure/disposaloutlet/after_attack_by(var/obj/item/I, var/mob/user)
 	if(!I || !user)
 		return
 	add_fingerprint(user)
@@ -1420,7 +1420,7 @@
 	GLOB.disposal_retrieval_list += src
 	return ..()
 
-/obj/structure/disposaloutlet/retrieval/attackby(var/obj/item/I, var/mob/user)
+/obj/structure/disposaloutlet/retrieval/after_attack_by(var/obj/item/I, var/mob/user)
 	return
 
 //Called when movable is expelled from a disposal pipe or outlet, by default does nothing, override for special behaviour

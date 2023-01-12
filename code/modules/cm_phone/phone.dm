@@ -308,7 +308,7 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 	P.handle_hear(message, L, speaking)
 	attached_to.handle_hear(message, L, speaking)
 
-/obj/structure/transmitter/attackby(obj/item/W, mob/user)
+/obj/structure/transmitter/after_attack_by(obj/item/W, mob/user)
 	if(W == attached_to)
 		recall_phone()
 	else

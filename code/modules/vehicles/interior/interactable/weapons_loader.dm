@@ -13,7 +13,7 @@
 	var/obj/vehicle/multitile/vehicle = null
 
 // Loading new magazines
-/obj/structure/weapons_loader/attackby(var/obj/item/I, var/mob/user)
+/obj/structure/weapons_loader/after_attack_by(var/obj/item/I, var/mob/user)
 	if(!istype(I, /obj/item/ammo_magazine/hardpoint))
 		return ..()
 

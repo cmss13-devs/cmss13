@@ -316,7 +316,7 @@ As such, a new tracker datum must be constructed to follow proper child inherita
 /obj/structure/machinery/cryopod/evacuation/ex_act(severity)
 	return FALSE
 
-/obj/structure/machinery/cryopod/evacuation/attackby(obj/item/grab/G, mob/user)
+/obj/structure/machinery/cryopod/evacuation/after_attack_by(obj/item/grab/G, mob/user)
 	if(istype(G))
 		if(being_forced)
 			to_chat(user, SPAN_WARNING("There's something forcing it open!"))
@@ -434,7 +434,7 @@ As such, a new tracker datum must be constructed to follow proper child inherita
 /obj/structure/machinery/door/airlock/evacuation/Collided()
 	return FALSE
 
-/obj/structure/machinery/door/airlock/evacuation/attackby()
+/obj/structure/machinery/door/airlock/evacuation/after_attack_by()
 	return FALSE
 
 /obj/structure/machinery/door/airlock/evacuation/attack_hand()

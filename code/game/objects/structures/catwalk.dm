@@ -17,7 +17,7 @@
 	..()
 	icon_state = base_state
 
-/obj/structure/catwalk/attackby(obj/item/W as obj, mob/user as mob)
+/obj/structure/catwalk/after_attack_by(obj/item/W as obj, mob/user as mob)
 	if (HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))
 		if(covered)
 			var/obj/item/stack/catwalk/R = new(usr.loc)

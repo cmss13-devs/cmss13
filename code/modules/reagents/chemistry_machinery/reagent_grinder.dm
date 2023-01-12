@@ -75,7 +75,7 @@
 	return
 
 
-/obj/structure/machinery/reagentgrinder/attackby(obj/item/O, mob/living/user)
+/obj/structure/machinery/reagentgrinder/after_attack_by(obj/item/O, mob/living/user)
 	if(istype(O,/obj/item/reagent_container/glass) || istype(O,/obj/item/reagent_container/food/drinks/drinkingglass) || istype(O,/obj/item/reagent_container/food/drinks/shaker))
 		var/obj/item/old_beaker = beaker
 		beaker = O

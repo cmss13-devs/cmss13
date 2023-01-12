@@ -95,7 +95,7 @@
 	frequency.post_signal(src, signal, filter = RADIO_NAVBEACONS)
 
 
-/obj/structure/machinery/navbeacon/attackby(var/obj/item/I, var/mob/user)
+/obj/structure/machinery/navbeacon/after_attack_by(var/obj/item/I, var/mob/user)
 	var/turf/T = loc
 	if(T.intact_tile)
 		return // prevent intraction when T-scanner revealed

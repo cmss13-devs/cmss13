@@ -53,7 +53,7 @@ GLOBAL_DATUM(railgun_eye_location, /datum/coords)
 		return INITIALIZE_HINT_QDEL
 	target_z = GLOB.railgun_eye_location.z_pos
 
-/obj/structure/machinery/computer/railgun/attackby(var/obj/I as obj, var/mob/user as mob)  //Can't break or disassemble.
+/obj/structure/machinery/computer/railgun/after_attack_by(var/obj/I as obj, var/mob/user as mob)  //Can't break or disassemble.
 	return
 
 /obj/structure/machinery/computer/railgun/bullet_act(var/obj/item/projectile/Proj) //Can't shoot it

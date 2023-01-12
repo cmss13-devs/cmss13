@@ -42,7 +42,7 @@
 	..()
 	icon_state = "[base_state]_[state]"
 
-/obj/structure/machinery/constructable_frame/attackby(obj/item/P as obj, mob/user as mob)
+/obj/structure/machinery/constructable_frame/after_attack_by(obj/item/P as obj, mob/user as mob)
 	if(P.crit_fail)
 		to_chat(user, SPAN_DANGER("This part is faulty, you cannot add this to the machine!"))
 		return

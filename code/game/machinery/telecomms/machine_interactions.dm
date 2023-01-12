@@ -15,7 +15,7 @@
 	var/deconstructable = FALSE
 
 
-/obj/structure/machinery/telecomms/attackby(obj/item/P as obj, mob/user as mob)
+/obj/structure/machinery/telecomms/after_attack_by(obj/item/P as obj, mob/user as mob)
 
 	// Using a multitool lets you access the receiver's interface
 	if(istype(P, /obj/item/device/multitool))

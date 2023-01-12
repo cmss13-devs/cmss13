@@ -43,7 +43,7 @@
 		new /obj/item/stack/sheet/metal(get_turf(src.loc), sheets_refunded)
 	return ..()
 
-/obj/structure/machinery/light_construct/attackby(obj/item/W as obj, mob/user as mob)
+/obj/structure/machinery/light_construct/after_attack_by(obj/item/W as obj, mob/user as mob)
 	src.add_fingerprint(user)
 	if (HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
 		if (src.stage == 1)
@@ -319,7 +319,7 @@
 
 // attack with item - insert light (if right type), otherwise try to break the light
 
-/obj/structure/machinery/light/attackby(obj/item/W, mob/user)
+/obj/structure/machinery/light/after_attack_by(obj/item/W, mob/user)
 
 	//Light replacer code
 	if(istype(W, /obj/item/device/lightreplacer))

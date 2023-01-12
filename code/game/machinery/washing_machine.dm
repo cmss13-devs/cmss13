@@ -70,7 +70,7 @@
 /obj/structure/machinery/washing_machine/update_icon()
 	icon_state = "wm_[state][panel]"
 
-/obj/structure/machinery/washing_machine/attackby(obj/item/W as obj, mob/user as mob)
+/obj/structure/machinery/washing_machine/after_attack_by(obj/item/W as obj, mob/user as mob)
 	/*if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER))
 		panel = !panel
 		to_chat(user, SPAN_NOTICE(" you [panel ? "))open" : "close"] the [src]'s maintenance panel"*/

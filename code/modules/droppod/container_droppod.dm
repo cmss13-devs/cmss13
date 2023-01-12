@@ -69,7 +69,7 @@
 	open(user)
 
 
-/obj/structure/droppod/container/attackby(obj/item/W, mob/user)
+/obj/structure/droppod/container/after_attack_by(obj/item/W, mob/user)
 	if(droppod_flags & DROPPOD_OPEN)
 		if(istype(W, /obj/item/grab))
 			if(isXeno(user)) return

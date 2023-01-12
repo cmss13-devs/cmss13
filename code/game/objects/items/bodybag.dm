@@ -88,7 +88,7 @@
 		else
 			name = "[bag_name] (empty)"
 
-/obj/structure/closet/bodybag/attackby(obj/item/W, mob/user)
+/obj/structure/closet/bodybag/after_attack_by(obj/item/W, mob/user)
 	if(HAS_TRAIT(W, TRAIT_TOOL_PEN))
 		var/prior_label_text
 		var/datum/component/label/labelcomponent = src.GetComponent(/datum/component/label)
@@ -216,7 +216,7 @@
 	if(CB)
 		used = CB.used
 
-/obj/structure/closet/bodybag/cryobag/attackby(obj/item/I, mob/living/user)
+/obj/structure/closet/bodybag/cryobag/after_attack_by(obj/item/I, mob/living/user)
 	if(!istype(I, /obj/item/device/healthanalyzer))
 		return
 	if(!stasis_mob)

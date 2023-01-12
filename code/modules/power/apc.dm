@@ -548,7 +548,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 			updating_icon = 0
 
 //Attack with an item - open/close cover, insert cell, or (un)lock interface
-/obj/structure/machinery/power/apc/attackby(obj/item/W, mob/user)
+/obj/structure/machinery/power/apc/after_attack_by(obj/item/W, mob/user)
 
 	if(isRemoteControlling(user) && get_dist(src, user) > 1)
 		return attack_hand(user)

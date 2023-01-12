@@ -37,7 +37,7 @@
 	else
 		to_chat(user, SPAN_WARNING("It doesn't have any bait attached!"))
 
-/obj/structure/prop/fishing/pole_interactive/attackby(obj/item/I, mob/user)
+/obj/structure/prop/fishing/pole_interactive/after_attack_by(obj/item/I, mob/user)
 	if(istype(I, /obj/item/fish_bait))
 		if(loaded_bait)
 			to_chat(user, SPAN_WARNING("\The [src] already has bait loaded onto the hook!"))

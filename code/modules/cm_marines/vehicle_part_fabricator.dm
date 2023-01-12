@@ -164,7 +164,7 @@
 
 	return static_data
 
-/obj/structure/machinery/part_fabricator/dropship/attackby(obj/item/I, mob/user)
+/obj/structure/machinery/part_fabricator/dropship/after_attack_by(obj/item/I, mob/user)
 	if(istype(I, /obj/item/powerloader_clamp))
 		var/obj/item/powerloader_clamp/PC = I
 		recycle_equipment(PC, user)

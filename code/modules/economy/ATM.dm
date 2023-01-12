@@ -42,7 +42,7 @@ log transactions
 	spark_system.set_up(5, 0, src)
 	spark_system.attach(src)
 
-/obj/structure/machinery/atm/attackby(obj/item/I as obj, mob/user as mob)
+/obj/structure/machinery/atm/after_attack_by(obj/item/I as obj, mob/user as mob)
 	if(inoperable())
 		to_chat(user, SPAN_NOTICE("You try to use it ,but it appears to be unpowered!"))
 		return //so it doesnt brazil IDs when unpowered

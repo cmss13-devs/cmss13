@@ -37,7 +37,7 @@
 
 	tgui_interact(user)
 
-/obj/structure/machinery/bioprinter/attackby(obj/item/W, mob/user)
+/obj/structure/machinery/bioprinter/after_attack_by(obj/item/W, mob/user)
 	if(istype(W, /obj/item/stack/sheet/metal))
 		if(stored_metal == max_metal)
 			to_chat(user, SPAN_WARNING("\The [src] is full!"))

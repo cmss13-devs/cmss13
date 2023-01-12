@@ -58,7 +58,7 @@
 		interior.exit(M)
 	return XENO_NO_DELAY_ACTION
 
-/obj/structure/interior_exit/vehicle/attackby(var/obj/item/O, var/mob/M)
+/obj/structure/interior_exit/vehicle/after_attack_by(var/obj/item/O, var/mob/M)
 	attack_hand(M)
 
 /obj/structure/interior_exit/attack_ghost(mob/dead/observer/user)

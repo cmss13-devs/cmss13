@@ -79,7 +79,7 @@
 	health -= severity/2
 	healthcheck()
 
-/obj/structure/tunnel/attackby(obj/item/W as obj, mob/user as mob)
+/obj/structure/tunnel/after_attack_by(obj/item/W as obj, mob/user as mob)
 	if(!isXeno(user))
 		return ..()
 	return attack_alien(user)

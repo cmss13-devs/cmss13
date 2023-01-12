@@ -66,7 +66,7 @@ FIRE ALARM
 	if(prob(50/severity)) alarm()
 	..()
 
-/obj/structure/machinery/firealarm/attackby(obj/item/held_object as obj, mob/user as mob)
+/obj/structure/machinery/firealarm/after_attack_by(obj/item/held_object as obj, mob/user as mob)
 	src.add_fingerprint(user)
 
 	if (HAS_TRAIT(held_object, TRAIT_TOOL_SCREWDRIVER) && buildstage == 2)

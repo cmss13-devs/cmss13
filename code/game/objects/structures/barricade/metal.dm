@@ -37,7 +37,7 @@
 		if(BARRICADE_UPGRADE_EXPLOSIVE)
 			. += SPAN_NOTICE("The cade is protected by an explosive upgrade.")
 
-/obj/structure/barricade/metal/attackby(obj/item/W, mob/user)
+/obj/structure/barricade/metal/after_attack_by(obj/item/W, mob/user)
 	if(iswelder(W))
 		if(!HAS_TRAIT(W, TRAIT_TOOL_BLOWTORCH))
 			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))

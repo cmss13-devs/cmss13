@@ -80,7 +80,7 @@
 	else
 		to_chat(user, SPAN_NOTICE("Access Denied"))
 
-/obj/structure/closet/secure_closet/attackby(obj/item/W, mob/living/user)
+/obj/structure/closet/secure_closet/after_attack_by(obj/item/W, mob/living/user)
 	if(src.opened)
 		if(istype(W, /obj/item/grab))
 			var/obj/item/grab/G = W

@@ -40,7 +40,7 @@
 	var/combat_equipment = TRUE
 
 
-/obj/structure/ship_ammo/attackby(obj/item/I, mob/user)
+/obj/structure/ship_ammo/after_attack_by(obj/item/I, mob/user)
 	if(istype(I, /obj/item/powerloader_clamp))
 		var/obj/item/powerloader_clamp/PC = I
 		if(!PC.linked_powerloader)

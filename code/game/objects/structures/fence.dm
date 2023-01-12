@@ -83,7 +83,7 @@
 	if(M.melee_damage_upper <= 0) return
 	attack_generic(M, M.melee_damage_upper)
 
-/obj/structure/fence/attackby(obj/item/W, mob/user)
+/obj/structure/fence/after_attack_by(obj/item/W, mob/user)
 
 	if(istype(W, /obj/item/stack/barbed_wire) && health < health_max)
 		if(!skillcheck(user, SKILL_CONSTRUCTION, SKILL_CONSTRUCTION_ENGI))

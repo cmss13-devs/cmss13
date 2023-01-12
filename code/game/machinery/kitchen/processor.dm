@@ -69,7 +69,7 @@
 		return P
 	return 0
 
-/obj/structure/machinery/processor/attackby(var/obj/item/O as obj, var/mob/user as mob)
+/obj/structure/machinery/processor/after_attack_by(var/obj/item/O as obj, var/mob/user as mob)
 	if(processing)
 		to_chat(user, SPAN_DANGER("The processor is in the process of processing."))
 		return 1

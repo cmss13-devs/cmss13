@@ -247,7 +247,7 @@
 	move_mob_inside(usr)
 	return
 
-/obj/structure/machinery/recharge_station/attackby(var/obj/item/W, var/mob/living/user)
+/obj/structure/machinery/recharge_station/after_attack_by(var/obj/item/W, var/mob/living/user)
 	if(istype(W, /obj/item/grab))
 		if(isXeno(user)) return
 		var/obj/item/grab/G = W

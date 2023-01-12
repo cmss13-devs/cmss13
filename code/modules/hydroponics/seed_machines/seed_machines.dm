@@ -43,7 +43,7 @@
 	visible_message("[icon2html(src, viewers(src))] [src] pings unhappily, flashing a red warning light.")
 	playsound(src, 'sound/machines/buzz-two.ogg', 25, TRUE)
 
-/obj/structure/machinery/botany/attackby(obj/item/W as obj, mob/user as mob)
+/obj/structure/machinery/botany/after_attack_by(obj/item/W as obj, mob/user as mob)
 	if(istype(W,/obj/item/seeds))
 		if(seed)
 			to_chat(user, SPAN_WARNING("There is already a seed loaded."))

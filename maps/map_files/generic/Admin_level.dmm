@@ -194,6 +194,21 @@
 "bz" = (
 /turf/open/space/transit/north/shuttlespace_ns4,
 /area/space)
+"bJ" = (
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad{
+	req_access = null;
+	req_one_access = null;
+	req_one_access_txt = "15;16;21";
+	vend_x_offset = 0;
+	vend_y_offset = 0
+	},
+/turf/open/floor/almayer{
+	icon_state = "greenfull";
+	tag = "icon-greenfull"
+	},
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
 "bR" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/device/multitool{
@@ -700,6 +715,15 @@
 /area/adminlevel/ert_station/shuttle_dispatch{
 	name = "W-Y Space Station"
 	})
+"fU" = (
+/turf/open/floor/carpet{
+	dir = 1;
+	icon_state = "carpetside";
+	tag = "icon-carpetside (NORTH)"
+	},
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
 "fW" = (
 /turf/open/floor/carpet{
 	dir = 6;
@@ -1043,21 +1067,6 @@
 /area/adminlevel/ert_station/shuttle_dispatch{
 	name = "W-Y Space Station"
 	})
-"iI" = (
-/obj/structure/machinery/cryopod{
-	pixel_y = 6
-	},
-/obj/structure/machinery/light{
-	dir = 8;
-	tag = "icon-tube1 (WEST)"
-	},
-/turf/open/floor/almayer{
-	icon_state = "cargo";
-	tag = "icon-bluecorner (NORTH)"
-	},
-/area/adminlevel/ert_station/shuttle_dispatch{
-	name = "W-Y Space Station"
-	})
 "iL" = (
 /obj/structure/machinery/status_display{
 	pixel_y = 30
@@ -1067,15 +1076,6 @@
 	tag = "icon-emerald (NORTH)"
 	},
 /area/adminlevel/ert_station)
-"iM" = (
-/obj/structure/machinery/cm_vending/clothing/antag,
-/turf/open/floor/almayer{
-	icon_state = "floor";
-	tag = "icon-sterile"
-	},
-/area/adminlevel/ert_station/shuttle_dispatch{
-	name = "W-Y Space Station"
-	})
 "iQ" = (
 /turf/closed/wall/almayer/research/containment/wall/corner,
 /area/adminlevel/ert_station/shuttle_dispatch{
@@ -1157,20 +1157,6 @@
 /area/adminlevel/ert_station/shuttle_dispatch{
 	name = "W-Y Space Station"
 	})
-"kV" = (
-/obj/structure/machinery/cryopod/right{
-	pixel_y = 6
-	},
-/obj/structure/machinery/light{
-	dir = 4
-	},
-/turf/open/floor/almayer{
-	icon_state = "cargo";
-	tag = "icon-bluecorner (NORTH)"
-	},
-/area/adminlevel/ert_station/shuttle_dispatch{
-	name = "W-Y Space Station"
-	})
 "kZ" = (
 /obj/structure/machinery/recharge_station,
 /turf/open/floor/plating/almayer,
@@ -1183,6 +1169,22 @@
 	icon_state = "green";
 	tag = "icon-green (NORTHWEST)"
 	},
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
+"lG" = (
+/obj/structure/surface/table/woodentable/fancy,
+/turf/open/floor/carpet{
+	dir = 8;
+	icon_state = "carpetside";
+	tag = "icon-carpetside (WEST)"
+	},
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
+"mt" = (
+/obj/structure/flora/pottedplant,
+/turf/open/floor/plating/almayer,
 /area/adminlevel/ert_station/shuttle_dispatch{
 	name = "W-Y Space Station"
 	})
@@ -1408,7 +1410,9 @@
 /obj/structure/surface/table/woodentable/fancy,
 /obj/item/folder/black,
 /obj/item/storage/bible/booze,
-/turf/open/floor/carpet,
+/turf/open/floor/carpet{
+	icon_state = "carpetside"
+	},
 /area/adminlevel/ert_station/shuttle_dispatch{
 	name = "W-Y Space Station"
 	})
@@ -1547,15 +1551,6 @@
 	tag = "icon-sterile_green_side (NORTHEAST)"
 	},
 /area/adminlevel/ert_station)
-"rn" = (
-/obj/structure/machinery/cm_vending/sorted/cargo_guns/antag_guns,
-/turf/open/floor/almayer{
-	icon_state = "floor";
-	tag = "icon-sterile"
-	},
-/area/adminlevel/ert_station/shuttle_dispatch{
-	name = "W-Y Space Station"
-	})
 "rC" = (
 /turf/closed/wall/almayer/research/containment/wall/purple{
 	dir = 4;
@@ -1660,6 +1655,24 @@
 /obj/structure/machinery/hologram/holopad,
 /turf/open/floor/carpet,
 /area/centcom/living)
+"tA" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_20";
+	tag = "icon-plant-10"
+	},
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
+"tE" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_21";
+	tag = "icon-plant-10"
+	},
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
 "tG" = (
 /turf/closed/wall/almayer/research/containment/wall/east,
 /area/adminlevel/ert_station/shuttle_dispatch{
@@ -1791,7 +1804,11 @@
 "vv" = (
 /obj/item/device/flashlight/lamp/green,
 /obj/structure/surface/table/woodentable/fancy,
-/turf/open/floor/carpet,
+/turf/open/floor/carpet{
+	dir = 6;
+	icon_state = "carpetside";
+	tag = "icon-carpetside (SOUTHEAST)"
+	},
 /area/adminlevel/ert_station/shuttle_dispatch{
 	name = "W-Y Space Station"
 	})
@@ -1903,20 +1920,6 @@
 	tag = "icon-blue (NORTHEAST)"
 	},
 /area/tdome/tdomeobserve)
-"wx" = (
-/obj/structure/machinery/cm_vending/sorted/cargo_guns/antag_guns{
-	hacked = 1;
-	name = "\improper Response Team Automated Guns Rack";
-	use_power = 0;
-	use_snowflake_points = 1
-	},
-/turf/open/floor/almayer{
-	icon_state = "floor";
-	tag = "icon-sterile"
-	},
-/area/adminlevel/ert_station/shuttle_dispatch{
-	name = "W-Y Space Station"
-	})
 "wA" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/structure/machinery/computer/emails{
@@ -1948,7 +1951,11 @@
 /area/adminlevel/ert_station)
 "xl" = (
 /obj/structure/surface/table/woodentable/fancy,
-/turf/open/floor/carpet,
+/turf/open/floor/carpet{
+	dir = 10;
+	icon_state = "carpetside";
+	tag = "icon-carpetside (SOUTHWEST)"
+	},
 /area/adminlevel/ert_station/shuttle_dispatch{
 	name = "W-Y Space Station"
 	})
@@ -2290,6 +2297,14 @@
 "Bm" = (
 /obj/structure/sign/safety/medical,
 /turf/closed/wall/almayer/white/outer_tile,
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
+"Br" = (
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/turf/open/floor/plating/almayer,
 /area/adminlevel/ert_station/shuttle_dispatch{
 	name = "W-Y Space Station"
 	})
@@ -2799,7 +2814,11 @@
 	pixel_x = 25;
 	req_access_txt = "200"
 	},
-/turf/open/floor/carpet,
+/turf/open/floor/carpet{
+	dir = 4;
+	icon_state = "carpetside";
+	tag = "icon-carpetside (EAST)"
+	},
 /area/adminlevel/ert_station/shuttle_dispatch{
 	name = "W-Y Space Station"
 	})
@@ -2911,6 +2930,20 @@
 	},
 /turf/open/floor/carpet,
 /area/adminlevel/ert_station)
+"IF" = (
+/obj/structure/machinery/cm_vending/sorted/attachments/squad{
+	req_access = null;
+	req_one_access = null;
+	req_one_access_txt = "15;16;21";
+	vend_y_offset = 0
+	},
+/turf/open/floor/almayer{
+	icon_state = "greenfull";
+	tag = "icon-greenfull"
+	},
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
 "IH" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	dir = 1;
@@ -3229,6 +3262,15 @@
 	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/ert_station)
+"Mb" = (
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep,
+/turf/open/floor/almayer{
+	icon_state = "greenfull";
+	tag = "icon-greenfull"
+	},
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
 "Mf" = (
 /obj/structure/machinery/shower{
 	dir = 4;
@@ -3309,6 +3351,17 @@
 	icon_state = "cargo";
 	tag = "icon-bluecorner (NORTH)"
 	},
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
+"MT" = (
+/obj/structure/machinery/door_control{
+	id = "W-Y office";
+	name = "W-Y office";
+	req_access_txt = "200";
+	pixel_y = 25
+	},
+/turf/open/floor/plating/almayer,
 /area/adminlevel/ert_station/shuttle_dispatch{
 	name = "W-Y Space Station"
 	})
@@ -3405,7 +3458,9 @@
 	pixel_y = 3
 	},
 /obj/item/tool/lighter/zippo/gold,
-/turf/open/floor/carpet,
+/turf/open/floor/carpet{
+	icon_state = "carpetside"
+	},
 /area/adminlevel/ert_station/shuttle_dispatch{
 	name = "W-Y Space Station"
 	})
@@ -3537,6 +3592,16 @@
 	tag = "icon-silver (WEST)"
 	},
 /area/adminlevel/ert_station)
+"PD" = (
+/obj/structure/bed/chair{
+	buckling_y = 6;
+	dir = 1;
+	pixel_y = 6
+	},
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
 "PE" = (
 /turf/open/floor/engine,
 /area/adminlevel/simulation)
@@ -3774,17 +3839,6 @@
 	tag = "icon-sterile"
 	},
 /area/adminlevel/ert_station)
-"SU" = (
-/obj/structure/machinery/cm_vending/clothing/antag{
-	name = "\improper Response Team Automated Equipment Rack"
-	},
-/turf/open/floor/almayer{
-	icon_state = "floor";
-	tag = "icon-sterile"
-	},
-/area/adminlevel/ert_station/shuttle_dispatch{
-	name = "W-Y Space Station"
-	})
 "SX" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/book/manual/surgery,
@@ -3838,6 +3892,12 @@
 /area/adminlevel/ert_station/shuttle_dispatch{
 	name = "W-Y Space Station"
 	})
+"Ty" = (
+/obj/structure/surface/table/reinforced/prison,
+/turf/open/floor/plating/almayer,
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
 "Tz" = (
 /turf/open/floor/almayer{
 	dir = 1;
@@ -3877,17 +3937,6 @@
 	},
 /turf/open/space/transit/east/shuttlespace_ew2,
 /area/space)
-"TJ" = (
-/obj/structure/machinery/door_control{
-	id = "W-Y office";
-	name = "W-Y office";
-	pixel_x = -25;
-	req_access_txt = "200"
-	},
-/turf/open/floor/plating/almayer,
-/area/adminlevel/ert_station/shuttle_dispatch{
-	name = "W-Y Space Station"
-	})
 "TS" = (
 /turf/open/space/transit/east/shuttlespace_ew6,
 /area/space)
@@ -3993,6 +4042,15 @@
 "Uz" = (
 /turf/open/space/transit/east/shuttlespace_ew5,
 /area/space)
+"UC" = (
+/turf/open/floor/carpet{
+	dir = 9;
+	icon_state = "carpetside";
+	tag = "icon-carpetside (NORTHWEST)"
+	},
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
 "UI" = (
 /obj/structure/surface/table/gamblingtable,
 /obj/item/toy/deck{
@@ -4312,6 +4370,15 @@
 	tag = "icon-sterile"
 	},
 /area/adminlevel/ert_station)
+"YH" = (
+/turf/open/floor/carpet{
+	dir = 5;
+	icon_state = "carpetside";
+	tag = "icon-carpetside (NORTHEAST)"
+	},
+/area/adminlevel/ert_station/shuttle_dispatch{
+	name = "W-Y Space Station"
+	})
 "YJ" = (
 /obj/structure/machinery/medical_pod/autodoc/unskilled,
 /turf/open/floor/almayer{
@@ -4408,7 +4475,9 @@
 /obj/item/tool/pen{
 	pixel_y = 7
 	},
-/turf/open/floor/carpet,
+/turf/open/floor/carpet{
+	icon_state = "carpetside"
+	},
 /area/adminlevel/ert_station/shuttle_dispatch{
 	name = "W-Y Space Station"
 	})
@@ -16598,14 +16667,14 @@ as
 Oi
 MN
 MN
-iI
+MN
 MN
 MN
 lE
 UO
-UO
-UO
-UO
+IF
+bJ
+Mb
 iA
 dG
 zj
@@ -16905,8 +16974,8 @@ gX
 gX
 gX
 gX
-rn
-wx
+gX
+gX
 gX
 gX
 gX
@@ -17057,8 +17126,8 @@ gX
 gX
 gX
 gX
-iM
-SU
+gX
+gX
 gX
 gX
 gX
@@ -17358,7 +17427,7 @@ as
 Oi
 MS
 MS
-kV
+MS
 MS
 MS
 xG
@@ -17820,7 +17889,7 @@ iA
 iA
 iA
 iA
-ua
+iA
 iA
 iA
 dG
@@ -17970,11 +18039,11 @@ sh
 sh
 sh
 sh
+tA
 nE
-TJ
-dG
-dG
-dG
+mt
+Br
+Br
 dG
 dG
 XC
@@ -18117,14 +18186,14 @@ aC
 as
 Oi
 cg
-VT
-xl
+UC
+lG
 xl
 sh
 sh
+PD
 nE
-dG
-dG
+Ty
 dG
 dG
 dG
@@ -18269,14 +18338,14 @@ aC
 as
 Oi
 py
-VT
+fU
 VT
 ZH
 dl
 sh
-nE
-dG
-dG
+sh
+iA
+MT
 Ot
 BJ
 Ot
@@ -18421,13 +18490,13 @@ aC
 as
 Oi
 ap
-VT
+fU
 yr
 pr
 sh
 sh
+sh
 yv
-dG
 dG
 Ot
 pD
@@ -18573,13 +18642,13 @@ aC
 as
 Oi
 Kp
-VT
+fU
 VT
 Of
 dl
 sh
+PD
 nE
-dG
 dG
 Ot
 Tz
@@ -18725,13 +18794,13 @@ aC
 as
 Oi
 es
-VT
+YH
 Hu
 vv
 sh
 sh
+tE
 nE
-dG
 Kc
 Kc
 dG

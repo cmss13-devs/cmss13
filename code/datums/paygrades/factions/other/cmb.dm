@@ -5,24 +5,23 @@
 /datum/paygrade/cmb/standard
 	paygrade = "GS-9"
 	name = "CMB Deputy"
-	prefix = "DEP"
+	prefix = "Dep."
 
 /datum/paygrade/cmb/leader
 	paygrade = "GS-13"
 	name = "CMB Marshal"
-	prefix = "MAR"
+	prefix = "Marshal"
 
 /datum/paygrade/cmb/syn
 	paygrade = "GS-C.9"
 	name = "CMB Investigative Synthetic"
-	prefix = "CMB SYN"
+	prefix = "Det."
 
 /datum/paygrade/cmb/liaison
 	paygrade = "GS-6"
 	name = "Interstellar Commerce Commission Corporate Liaison"
-	prefix = "ICC"
+	prefix = "Exec."
 
 /datum/paygrade/cmb/observer
 	paygrade = "GS-3"
 	name = "Interstellar Human Rights Observer"
-	prefix = "OBS"

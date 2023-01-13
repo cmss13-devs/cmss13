@@ -29,10 +29,6 @@
 	ambience_exterior = AMBIENCE_LV624
 	icon_state = "shuttle"
 
-/area/shuttle/drop1/Haunted
-	name = "\improper Dropship Alamo"
-	icon_state = "shuttle"
-
 /area/shuttle/drop1/prison
 	name = "\improper Dropship Alamo"
 	ambience_exterior = AMBIENCE_PRISON
@@ -82,10 +78,6 @@
 /area/shuttle/drop2/LV624
 	name = "\improper Dropship Normandy"
 	ambience_exterior = AMBIENCE_LV624
-	icon_state = "shuttle2"
-
-/area/shuttle/drop2/Haunted
-	name = "\improper Dropship Normandy"
 	icon_state = "shuttle2"
 
 /area/shuttle/drop2/prison

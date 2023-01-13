@@ -69,12 +69,16 @@ SUBSYSTEM_DEF(atoms)
 		BadInitializeCalls[the_type] |= BAD_INIT_QDEL_BEFORE
 		return TRUE
 
+	#ifdef UNIT_TESTS
 	var/start_tick = world.time
+	#endif
 
 	var/result = A.Initialize(arglist(arguments))
 
+	#ifdef UNIT_TESTS
 	if(start_tick != world.time)
 		BadInitializeCalls[the_type] |= BAD_INIT_SLEPT
+	#endif
 
 	var/qdeleted = FALSE
 

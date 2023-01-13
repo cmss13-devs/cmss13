@@ -1,0 +1,4 @@
+author: "mullenpaul"
+delete-after: True
+changes:
+  - maptweak: "moved the external starboard shuttle ert docking port so that space does not appear between the shuttle and the hangar"

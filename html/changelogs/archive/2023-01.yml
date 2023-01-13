@@ -299,3 +299,46 @@
   - maptweak: added external docking ports for port and starboard hangar and port
       and starboard upper engi
   - maptweak: added button to toggle the interior podlocks at upper engi podlocks
+2023-01-12:
+  Geeves, Unknownity:
+  - rscadd: Added survivor variant picking, in the character creation menu, under
+      special roles. This makes it so you only spawn as that survivor type, unless
+      you hit a special spawn, such as CLF or FORECON, for example.
+  - rscadd: Added survivor spawner priority, so that the CLF and PMC spawners are
+      used before others.
+  Morrow:
+  - maptweak: Adds access requirement to CO's uniform vendor.
+  - balance: Removed armor and decap protection from all berets and subtypes
+  - balance: Custom pill bottles now require medic skill to open
+  Puckaboo2:
+  - rscdel: Removed some code that disabled cooldowns on fruits.
+  - bugfix: Resin Fruits now have cooldowns again.
+  - balance: Greater and Lesser Resin Fruits have a cooldown of 5, up from 0 and down
+      from the previous 10.
+  - bugfix: Gardener's overlays no longer overlap when she switches icon states.
+  - bugfix: Healer and Gardener's dead overlays will not appear whilst ghosted.
+  - imagedel: Made the Gardener and Healer's dead icon states empty so the overlay
+      will not appear whilst ghosted.
+  Segrain:
+  - bugfix: Broken arms/hands once again drop the held items from correct hand.
+  carlarctg:
+  - bugfix: Fixed the bug in which neurotoxin spits did not cause a red damage flicker
+      on the target (It happened because it technically deals no damage.)
+  - code_imp: Added a new variable, hit_effect_color, that governs on if the ammo/projectile
+      will, if not null, create a damage overlay on hit.
+  - rscadd: Implemented support for differently-colored hit overlays. Tasers have
+      a yellow overlay, stunning plasma bolts have a blue one, and the admin monkey
+      gun has a brown one. Everything else stays red.
+  - qol: When a marine is hit by acid blood spray, a sizzling sound will play, alongside
+      the blood visually splattering on them and causing a red hit overlay.
+  - rscadd: Flamethrowers will cause a flame-colored hit overlay to appear on the
+      target if they've been directly ignited by it.
+  - rscadd: Shielded Xenomorphs will override hit colors and flicker yellow instead.
+  stanalbatross:
+  - bugfix: fixed an oversight that made you unable to fire non-dangerous grenades
+      close up from grenade launchers
+  - balance: removed antihug from ushankas and bear pelts
+  - balance: increased the queen timelock to 10 hours of xeno, 5 hours of drone, and
+      3 hours of t3
+  - code_imp: ported the sound loops subsystem from tg
+  - soundadd: the tape recorder will now hiss during playback

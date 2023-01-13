@@ -1,5 +1,0 @@
-author: "Geeves, Unknownity"
-delete-after: True
-changes:
-  - rscadd: "Added survivor variant picking, in the character creation menu, under special roles. This makes it so you only spawn as that survivor type, unless you hit a special spawn, such as CLF or FORECON, for example."
-  - rscadd: "Added survivor spawner priority, so that the CLF and PMC spawners are used before others."

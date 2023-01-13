@@ -42,4 +42,10 @@
 							O.create_clone_movable(vector_x, vector_y, layer_override)
 				return TRUE
 			else
+				for(var/atom/movable/O in loc.contents)
+					O.clone.proj_x = vector_x //Make sure projection is correct
+					O.clone.proj_y = vector_y
+				if(loc.clone)
+					loc.destroy_clone()
+					loc.create_clone()
 				return FALSE

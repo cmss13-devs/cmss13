@@ -3,6 +3,10 @@
 #define SEND_SOUND(target, sound) DIRECT_OUTPUT(target, sound)
 #define WRITE_FILE(file, text) DIRECT_OUTPUT(file, text)
 
+//This is an external call, "true" and "false" are how rust parses out booleans
+#define WRITE_LOG(log, text) rustg_log_write(log, text, "true")
+#define WRITE_LOG_NO_FORMAT(log, text) rustg_log_write(log, text, "false")
+
 //print an error message to world.log
 
 
@@ -11,7 +15,6 @@
 // in the logs.  ascii character 13 = CR
 
 /var/global/log_end= world.system_type == UNIX ? ascii2text(13) : ""
-
 
 /proc/error(msg)
 	world.log << "## ERROR: [msg][log_end]"
@@ -201,9 +204,6 @@
 	GLOB.STUI.tgui.Add("\[[time_stamp()]]TGUI: [entry]")
 	GLOB.STUI.processing |= STUI_LOG_TGUI
 
-//wrapper macros for easier grepping
-#define WRITE_LOG(log, text) rustg_log_write(log, text, "true")
-
 GLOBAL_VAR(config_error_log)
 GLOBAL_PROTECT(config_error_log)
 
@@ -214,3 +214,9 @@ GLOBAL_PROTECT(config_error_log)
 
 /proc/log_admin_private(text)
 	log_admin(text)
+
+#if defined(UNIT_TESTS) || defined(SPACEMAN_DMM)
+/proc/log_test(text)
+	WRITE_LOG(GLOB.test_log, text)
+	SEND_TEXT(world.log, text)
+#endif

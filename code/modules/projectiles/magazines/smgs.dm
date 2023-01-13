@@ -135,8 +135,6 @@
 	var/jam_chance = PPSH_STICK_MAGAZINE_JAM_CHANCE
 	var/new_item_state = "ppsh17b"
 
-#undef PPSH_STICK_MAGAZINE_JAM_CHANCE
-#undef PPSH_DRUM_MAGAZINE_JAM_CHANCE
 
 /obj/item/ammo_magazine/smg/ppsh/extended
 	name = "\improper PPSh-17b drum magazine (7.62x25mm)"
@@ -149,6 +147,9 @@
 	bonus_mag_wield_delay = WIELD_DELAY_VERY_FAST
 	jam_chance = PPSH_DRUM_MAGAZINE_JAM_CHANCE
 	new_item_state = "ppsh17b_d"
+
+#undef PPSH_STICK_MAGAZINE_JAM_CHANCE
+#undef PPSH_DRUM_MAGAZINE_JAM_CHANCE
 
 //-------------------------------------------------------
 //GENERIC UZI //Based on the uzi submachinegun, of course.

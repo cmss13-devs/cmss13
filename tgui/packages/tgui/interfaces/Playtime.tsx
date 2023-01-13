@@ -15,6 +15,7 @@ interface PlaytimeRecord {
 interface PlaytimeData {
   stored_human_playtime: PlaytimeRecord[];
   stored_xeno_playtime: PlaytimeRecord[];
+  stored_other_playtime: PlaytimeRecord[];
 }
 
 const PlaytimeRow = (props: { data: PlaytimeRecord }, context) => {
@@ -67,8 +68,12 @@ export const Playtime = (props, context) => {
     data.stored_xeno_playtime.length > 0
       ? data.stored_xeno_playtime[0].playtime
       : 0;
+  const otherTime =
+    data.stored_other_playtime.length > 0
+      ? data.stored_other_playtime[0].playtime
+      : 0;
   return (
-    <Window theme={selected === 'human' ? 'usmc' : 'hive_status'}>
+    <Window theme={selected !== 'xeno' ? 'usmc' : 'hive_status'}>
       <Window.Content className="PlaytimeInterface" scrollable>
         <Tabs fluid={1}>
           <Tabs.Tab
@@ -81,12 +86,20 @@ export const Playtime = (props, context) => {
             onClick={() => setSelected('xeno')}>
             Xeno ({xenoTime} hr)
           </Tabs.Tab>
+          <Tabs.Tab
+            selected={selected === 'other'}
+            onClick={() => setSelected('other')}>
+            Other ({otherTime} hr)
+          </Tabs.Tab>
         </Tabs>
         {selected === 'human' && (
           <PlaytimeTable data={data.stored_human_playtime} />
         )}
         {selected === 'xeno' && (
           <PlaytimeTable data={data.stored_xeno_playtime} />
+        )}
+        {selected === 'other' && (
+          <PlaytimeTable data={data.stored_other_playtime} />
         )}
       </Window.Content>
     </Window>

@@ -216,6 +216,7 @@ can cause issues with ammo types getting mixed up during the burst.
 /obj/item/weapon/gun/shotgun/merc/damaged
 	name = "damaged custom built shotgun"
 	desc = "A cobbled-together pile of scrap and alien wood. Point end towards things you want to die. Has a burst fire feature, as if it needed it. Well, it had one, this one's barrel has apparently exploded outwards like an overripe grape. Guess that's what happens when you DIY a shotgun."
+	icon_state = "cshotgun_bad"
 
 /obj/item/weapon/gun/shotgun/merc/damaged/set_gun_config_values()
 	..()
@@ -597,6 +598,7 @@ can cause issues with ammo types getting mixed up during the burst.
 /obj/item/weapon/gun/shotgun/double/damaged
 	name = "semi-sawn-off Spearhead Rival 78"
 	desc = "A double barrel shotgun produced by Spearhead. Archaic, sturdy, affordable. For some reason it seems that someone tried to saw through the barrel and gave up halfway through. This probably isn't going to be the greatest gun for combat.."
+	icon_state = "dshotgun_bad_o"
 
 /obj/item/weapon/gun/shotgun/double/damaged/set_gun_config_values()
 	..()

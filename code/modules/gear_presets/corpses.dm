@@ -454,7 +454,7 @@
 	idtype = /obj/item/card/id/general
 	assignment = "Bridge Officer"
 	uses_special_name = TRUE
-	paygrade = "WY-1B-X"
+	paygrade = "CL2"
 	access = list(
 		ACCESS_CIVILIAN_PUBLIC,
 		ACCESS_CIVILIAN_LOGISTICS,
@@ -666,7 +666,7 @@
 /datum/equipment_preset/corpse/wy/manager
 	name = "Corpse - Corporate Supervisor"
 	flags = EQUIPMENT_PRESET_EXTRA
-	paygrade = "WY-5G"
+	paygrade = "CL7"
 	assignment = "Colony Supervisor"
 	role_comm_title = "Supervisor"
 	rank = FACTION_WY

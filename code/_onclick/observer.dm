@@ -50,6 +50,7 @@
 						message = SPAN_WARNING("[message]")
 						to_chat(src, message)
 						to_chat(src, SPAN_WARNING("You must wait 2.5 minutes before rejoining the game!"))
+						ManualFollow(A)
 						return FALSE
 
 				if(alert(src, "Are you sure you want to transfer yourself into [X]?", "Confirm Transfer", "Yes", "No") != "Yes")

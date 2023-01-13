@@ -56,6 +56,7 @@
 	valid_accessory_slots = list(ACCESSORY_SLOT_ARMOR_A, ACCESSORY_SLOT_ARMOR_L, ACCESSORY_SLOT_ARMOR_S, ACCESSORY_SLOT_ARMOR_M)
 	var/thrall = FALSE//Used to affect icon generation.
 	fire_intensity_resistance = 10
+	black_market_value = 100
 
 /obj/item/clothing/suit/armor/yautja/Initialize(mapload, armor_number = rand(1,7), armor_material = "ebony", elder_restricted = 0)
 	. = ..()
@@ -230,6 +231,7 @@
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
 	var/thrall = FALSE//Used to affect icon generation.
 	fire_intensity_resistance = 10
+	black_market_value = 50
 
 /obj/item/clothing/shoes/yautja/New(location, boot_number = rand(1,4), armor_material = "ebony")
 	..()
@@ -298,6 +300,7 @@
 	armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_rad = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
+	black_market_value = 50
 
 //=================//\\=================\\
 //======================================\\
@@ -318,6 +321,7 @@
 	frequency = YAUT_FREQ
 	unacidable = TRUE
 	ignore_z = TRUE
+	black_market_value = 100
 
 /obj/item/device/radio/headset/yautja/talk_into(mob/living/M as mob, message, channel, var/verb = "commands", var/datum/language/speaking)
 	if(!isYautja(M)) //Nope.
@@ -359,6 +363,7 @@
 	flags_item = ITEM_PREDATOR
 	storage_slots = 12
 	max_storage_space = 30
+	black_market_value = 50
 
 
 /obj/item/device/yautja_teleporter
@@ -374,6 +379,7 @@
 	force = 1
 	throwforce = 1
 	unacidable = TRUE
+	black_market_value = 100
 	var/timer = 0
 
 /obj/item/device/yautja_teleporter/attack_self(mob/user)
@@ -675,6 +681,7 @@
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
 	icon_state = "yauttrap0"
 	desc = "A bizarre Yautja device used for trapping and killing prey."
+	black_market_value = 50
 	var/armed = 0
 	var/datum/effects/tethering/tether_effect
 	var/tether_range = 5
@@ -892,6 +899,7 @@
 					/obj/item/device/healthanalyzer/alien,
 					/obj/item/tool/surgery/healing_gel
 					)
+	black_market_value = 10
 
 /obj/item/storage/medicomp/full/fill_preset_inventory()
 	new /obj/item/tool/surgery/stabilizer_gel(src)

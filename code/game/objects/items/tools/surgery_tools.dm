@@ -320,6 +320,7 @@ t. optimisticdude
 	throwforce = 1.0
 	w_class = SIZE_SMALL
 	flags_item = ITEM_PREDATOR
+	black_market_value = 50
 
 /obj/item/tool/surgery/healing_gun
 	name = "healing gun"
@@ -330,6 +331,7 @@ t. optimisticdude
 	w_class = SIZE_SMALL
 	flags_item = ITEM_PREDATOR|ANIMATED_SURGICAL_TOOL
 	var/loaded  = TRUE
+	black_market_value = 50
 
 /obj/item/tool/surgery/healing_gun/update_icon()
 	if(loaded)
@@ -361,6 +363,7 @@ t. optimisticdude
 	throwforce = 1.0
 	w_class = SIZE_SMALL
 	flags_item = ITEM_PREDATOR
+	black_market_value = 15
 
 /obj/item/tool/surgery/wound_clamp
 	name = "wound clamp"
@@ -370,6 +373,7 @@ t. optimisticdude
 	throwforce = 1.0
 	w_class = SIZE_SMALL
 	flags_item = ITEM_PREDATOR|ANIMATED_SURGICAL_TOOL
+	black_market_value = 15
 
 
 //XENO AUTOPSY TOOL

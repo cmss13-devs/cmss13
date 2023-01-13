@@ -149,6 +149,7 @@ FORENSIC SCANNER
 	item_state = "analyzer"
 	desc = "An alien design hand-held body scanner able to distinguish vital signs of the subject. The front panel is able to provide the basic readout of the subject's status."
 	alien = TRUE
+	black_market_value = 35
 
 /obj/item/device/analyzer
 	desc = "A hand-held environmental scanner which reports current gas levels."

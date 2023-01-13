@@ -64,7 +64,6 @@
 				default_freq = cycled_channel
 
 /obj/item/device/radio/headset/Destroy()
-	SSminimaps.remove_marker(wearer)
 	wearer = null
 	return ..()
 
@@ -262,7 +261,7 @@
 			user.hide_hud_tracker()
 		if(misc_tracking)
 			SStracking.stop_misc_tracking(user)
-		SSminimaps.remove_marker(user)
+		SSminimaps.remove_marker(wearer)
 	wearer = null
 	..()
 

@@ -70,7 +70,9 @@
 	var/list/vehicles = list()
 	var/list/escaped = list()
 
-	var/is_admin = check_other_rights(user?.client, R_ADMIN, FALSE)
+	var/is_admin = FALSE
+	if(user && user.client)
+		is_admin = check_other_rights(user.client, R_ADMIN, FALSE)
 	var/list/pois = getpois(skip_mindless = !is_admin, specify_dead_role = FALSE)
 	for(var/name in pois)
 		var/list/serialized = list()
@@ -133,7 +135,7 @@
 				if(human.assigned_squad)
 					serialized["background_color"] = human.assigned_squad.color ? squad_colors[human.assigned_squad.color] : human.assigned_squad.minimap_color
 				else
-					serialized["background_color"] = human.assigned_equipment_preset.minimap_background
+					serialized["background_color"] = human.assigned_equipment_preset?.minimap_background
 
 				if(SSticker.mode.is_in_endgame == TRUE && !is_mainship_level(M.z) && !(human.faction in FACTION_LIST_ERT))
 					escaped += list(serialized)

@@ -9,6 +9,7 @@
 
 	// You're not coming back from being gibbed. Stop tracking here
 	SSround_recording.recorder.stop_tracking(src)
+	SSminimaps.remove_marker(src)
 
 	qdel(src)
 

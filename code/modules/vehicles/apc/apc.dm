@@ -78,6 +78,13 @@ GLOBAL_LIST_EMPTY(command_apc_list)
 
 	vehicle_ram_multiplier = VEHICLE_TRAMPLE_DAMAGE_APC_REDUCTION
 
+/obj/vehicle/multitile/apc/Initialize()
+	. = ..()
+
+	var/turf/gotten_turf = get_turf(src)
+	if(gotten_turf && gotten_turf.z)
+		SSminimaps.add_marker(src, gotten_turf.z, MINIMAP_FLAG_MARINE, "apc")
+
 /obj/vehicle/multitile/apc/load_role_reserved_slots()
 	var/datum/role_reserved_slots/RRS = new
 	RRS.category_name = "Crewmen"
@@ -201,8 +208,6 @@ GLOBAL_LIST_EMPTY(command_apc_list)
 //PRESET: FPWs, no hardpoints
 /obj/effect/vehicle_spawner/apc/spawn_vehicle()
 	var/obj/vehicle/multitile/apc/APC = new (loc)
-
-	SSminimaps.add_marker(APC, APC.z, MINIMAP_FLAG_MARINE, "apc")
 
 	load_misc(APC)
 	load_fpw(APC)

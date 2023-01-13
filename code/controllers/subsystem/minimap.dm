@@ -285,6 +285,8 @@ SUBSYSTEM_DEF(minimaps)
 		return
 	UnregisterSignal(source, list(COMSIG_PARENT_QDELETING, COMSIG_MOVABLE_MOVED, COMSIG_MOVABLE_Z_CHANGED))
 	var/turf/turf_gotten = get_turf(source)
+	if(!turf_gotten)
+		return
 	var/z_level = turf_gotten.z
 	if(minimap_flag)
 		var/ref = minimaps_by_z["[z_level]"].images_assoc["[minimap_flag]"]

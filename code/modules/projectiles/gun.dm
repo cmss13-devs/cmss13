@@ -613,7 +613,7 @@
 
 	// weapon info
 
-	data["baseicon"] = base_gun_icon
+	data["icon"] = SSassets.transport.get_asset_url("[base_gun_icon].png")
 
 	data["name"] = name
 	data["desc"] = desc

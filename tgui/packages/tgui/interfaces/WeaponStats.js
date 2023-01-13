@@ -1,5 +1,4 @@
 import { Fragment } from 'inferno';
-import { classes } from 'common/react';
 import { map } from 'common/collections';
 import { resolveAsset } from '../assets';
 import { useBackend } from '../backend';
@@ -57,6 +56,7 @@ const GeneralInfo = (props, context) => {
     two_handed_only,
     auto_only,
     baseicon,
+    icon,
   } = data;
   return (
     <Section>
@@ -68,10 +68,9 @@ const GeneralInfo = (props, context) => {
         </Flex.Item>
         <Flex.Item align="center">
           <Box height="5px" />
-          <Box
-            align="center"
-            className={classes(['gunlineart96x96', baseicon])}
-          />
+          <Box align="center">
+            <img src={resolveAsset(icon)} />
+          </Box>
           <Box height="5px" />
         </Flex.Item>
         <Flex.Item>

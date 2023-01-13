@@ -30905,7 +30905,6 @@
 "caO" = (
 /turf/open/floor/almayer{
 	dir = 4;
-	icon_regular_floor = null;
 	icon_state = "cargo_arrow"
 	},
 /area/almayer/living/briefing)
@@ -37969,7 +37968,6 @@
 	},
 /turf/open/floor/almayer{
 	dir = 4;
-	icon_regular_floor = null;
 	icon_state = "cargo_arrow"
 	},
 /area/almayer/living/briefing)
@@ -38055,7 +38053,6 @@
 /area/almayer/hallways/starboard_hallway)
 "dRT" = (
 /turf/open/floor/almayer{
-	icon_regular_floor = null;
 	icon_state = "cargo_arrow"
 	},
 /area/almayer/living/briefing)
@@ -84662,7 +84659,6 @@
 "xqL" = (
 /turf/open/floor/almayer{
 	dir = 1;
-	icon_regular_floor = null;
 	icon_state = "cargo_arrow"
 	},
 /area/almayer/living/briefing)

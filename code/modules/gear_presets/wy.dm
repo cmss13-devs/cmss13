@@ -1,6 +1,6 @@
 /datum/equipment_preset/wy
 	name = "WY"
-	paygrade = "WY-XA"
+	paygrade = "CL1"
 
 	faction = FACTION_WY
 	rank = FACTION_WY
@@ -37,7 +37,7 @@
 	name = "Corporate - A - Trainee"
 	flags = EQUIPMENT_PRESET_EXTRA
 
-	paygrade = "WY-XA"
+	paygrade = "CL1"
 
 /datum/equipment_preset/wy/trainee/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/suit_jacket/trainee(H), WEAR_BODY)
@@ -46,27 +46,27 @@
 /datum/equipment_preset/wy/junior_exec
 	name = "Corporate - B - Junior Executive"
 	flags = EQUIPMENT_PRESET_EXTRA
-	paygrade = "WY-XB"
+	paygrade = "CL2"
 
 /datum/equipment_preset/wy/exec
 	name = "Corporate - C - Executive"
 	flags = EQUIPMENT_PRESET_EXTRA
-	paygrade = "WY-XC"
+	paygrade = "CL3"
 
 /datum/equipment_preset/wy/senior_exec
 	name = "Corporate - D - Senior Executive"
 	flags = EQUIPMENT_PRESET_EXTRA
-	paygrade = "WY-XD"
+	paygrade = "CL4"
 
 /datum/equipment_preset/wy/exec_spec
 	name = "Corporate - E - Executive Specialist"
 	flags = EQUIPMENT_PRESET_EXTRA
-	paygrade = "WY-XE"
+	paygrade = "CL5"
 
 /datum/equipment_preset/wy/exec_supervisor
 	name = "Corporate - F - Executive Supervisor"
 	flags = EQUIPMENT_PRESET_EXTRA
-	paygrade = "WY-XF"
+	paygrade = "CL6"
 
 /datum/equipment_preset/wy/manager
 	name = "Corporate Manager"
@@ -90,22 +90,22 @@
 /datum/equipment_preset/wy/manager/assistant_manager
 	name = "Corporate - G - Assistant Manager"
 	flags = EQUIPMENT_PRESET_EXTRA
-	paygrade = "WY-XG"
+	paygrade = "CL7"
 
 /datum/equipment_preset/wy/manager/division_manager
 	name = "Corporate - H - Division Manager"
 	flags = EQUIPMENT_PRESET_EXTRA
-	paygrade = "WY-XH"
+	paygrade = "CL8"
 
 /datum/equipment_preset/wy/manager/chief_executive
 	name = "Corporate - I - Chief Executive"
 	flags = EQUIPMENT_PRESET_EXTRA
-	paygrade = "WY-XI"
+	paygrade = "CL9"
 
 /datum/equipment_preset/wy/manager/director
 	name = "Corporate - J - Director"
 	flags = EQUIPMENT_PRESET_EXTRA
-	paygrade = "WY-XJ"
+	paygrade = "CL10"
 	skills = /datum/skills/civilian/manager/director
 
 /datum/equipment_preset/wy/manager/director/load_gear(mob/living/carbon/human/H)

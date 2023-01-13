@@ -80,7 +80,7 @@
 	return TRUE
 
 /obj/item/device/sentry_computer/proc/setup(var/obj/structure/surface/target)
-	if (do_after(usr, 10, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
+	if (do_after(usr, 1 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
 		setup = TRUE
 		usr.drop_inv_item_to_loc(src, target.loc)
 	else
@@ -181,11 +181,22 @@
 		var/obj/item/device/multitool/tool = object
 		var/id = tool.serial_number
 		playsound(src, 'sound/machines/keyboard2.ogg', 25, FALSE)
-		if (do_after(usr, 10, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
-			if(tool.remove_encryption_key(serial_number))
-				to_chat(user, SPAN_NOTICE("You unload the encryption key to \the [tool]."))
+
+		if(tool.remove_encryption_key(serial_number))
+			to_chat(user, SPAN_NOTICE("You begin unloading the encryption key from \the [tool]."))
+			if (do_after(usr, 1 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
+				to_chat(user, SPAN_NOTICE("You unload the encryption key from \the [tool]."))
 				registered_tools -= list(id)
-			else
+		else
+			if(length(tool.encryption_keys) > 0)
+				to_chat(user, SPAN_NOTICE("Removing existing encryption keys."))
+				if (do_after(usr, 1 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
+					for(var/key_id in tool.encryption_keys)
+						var/obj/item/device/sentry_computer/key_object = tool.encryption_keys[key_id]
+						key_object.registered_tools -= id
+					tool.encryption_keys = list()
+			to_chat(usr, SPAN_NOTICE("You begin encryption key to \the [tool]."))
+			if (do_after(usr, 1 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
 				to_chat(user, SPAN_NOTICE("You load an encryption key to \the [tool]."))
 				registered_tools += list(id)
 				tool.load_encryption_key(serial_number, src)

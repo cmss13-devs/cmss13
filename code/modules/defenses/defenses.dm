@@ -186,35 +186,52 @@
 		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 			to_chat(user, SPAN_WARNING("You don't have the training to do this."))
 			return
+		// if the sentry can have key interacted with
+		// and if the multitool is able to do it
+		// we need to ask what to do
+		var/list/multitool_actions = list()
+		var/obj/item/device/multitool/tool = O
+		if(encryptable && !linked_laptop && length(tool.encryption_keys) > 0)
+			multitool_actions += "encrypt"
+		if(encryptable && linked_laptop)
+			multitool_actions += "decrypt"
+		if(encryptable && !linked_laptop)
+			multitool_actions += "disassemble"
 
-		if(friendly_faction(user.faction) && encryptable)
-			var/obj/item/device/multitool/tool = O
-			if(length(tool.encryption_keys) > 0)
-				if(!linked_laptop)
-					// register
-					var/key_found = FALSE
-					for(var/i in tool.encryption_keys)
-						var/obj/item = tool.encryption_keys[i]
-						if(istype(item, /obj/item/device/sentry_computer))
-							var/obj/item/device/sentry_computer/computer = item
-							to_chat(usr, SPAN_NOTICE("Attempting link to [item.name] [computer.serial_number]."))
-							playsound(src, 'sound/machines/scanning.ogg', 25, FALSE)
-							computer.register(tool, user, src)
-							key_found = TRUE
-							break
-					if(!key_found)
-						to_chat(user, SPAN_WARNING("No valid encryption key found. Link \the [tool.name] with a sentry computer."))
-					return
-				else
-					// unregister
+		var/result = null
+		if(length(multitool_actions) > 1)
+			result = tgui_input_list(user, "What do you want to do with the multitool", "Multitool interaction", multitool_actions)
+		else if (length(multitool_actions) == 1)
+			result = multitool_actions[1]
+
+		if(!result)
+			return
+		switch(result)
+			if("encrypt")
+				var/key_found = FALSE
+				for(var/i in tool.encryption_keys)
+					var/obj/item = tool.encryption_keys[i]
+					if(istype(item, /obj/item/device/sentry_computer))
+						var/obj/item/device/sentry_computer/computer = item
+						to_chat(usr, SPAN_NOTICE("Attempting link to [item.name] [computer.serial_number]."))
+						playsound(src, 'sound/machines/scanning.ogg', 25, FALSE)
+						computer.register(tool, user, src)
+						key_found = TRUE
+						break
+				if(!key_found)
+					to_chat(user, SPAN_WARNING("No valid encryption key found. Link \the [tool.name] with a sentry computer."))
+				return
+			if("decrypt")
+				// unregister
+				var/loaded_key = linked_laptop.serial_number
+				if(length(tool.encryption_keys) == 0)
+					to_chat(usr, SPAN_NOTICE("\The [src.name] is encrypted. To use \the [tool.name] it must be paired with the laptop [linked_laptop.serial_number]."))
+				if(tool.encryption_keys[loaded_key])
 					to_chat(usr, SPAN_NOTICE("Attempting decryption of [name]."))
-					var/loaded_key = linked_laptop.serial_number
-					if(tool.encryption_keys[loaded_key])
-						linked_laptop.unregister(tool, user, src)
-					else
-						to_chat(usr, SPAN_WARNING("\The [src.name] is already encrypted by laptop [linked_laptop.serial_number]."))
-					return
-
+					linked_laptop.unregister(tool, user, src)
+				else
+					to_chat(usr, SPAN_WARNING("\The [src.name] is already encrypted by laptop [linked_laptop.serial_number]. You must load its encryption key to decrypt."))
+				return
 		if(health < health_max * 0.25)
 			to_chat(user, SPAN_WARNING("\The [src] is too damaged to pick up!"))
 			return

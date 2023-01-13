@@ -362,7 +362,7 @@
 	name = "Corpse - Corporate Liaison"
 	assignment = "Corporate Liaison"
 	xenovictim = TRUE
-	paygrade = "WY-2B-X"
+	paygrade = "CL2"
 	access = list(
 		ACCESS_CIVILIAN_PUBLIC,
 		ACCESS_CIVILIAN_LOGISTICS,

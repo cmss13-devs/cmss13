@@ -41468,8 +41468,7 @@
 	},
 /area/almayer/shipboard/brig/perma)
 "fgm" = (
-/obj/structure/sign/safety/hvac_old{
-	pixel_x = 8;
+/obj/structure/machinery/atm{
 	pixel_y = 32
 	},
 /turf/open/floor/almayer{
@@ -56827,16 +56826,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig/cic_hallway)
-"lPG" = (
-/obj/structure/bed/chair{
-	dir = 1
-	},
-/turf/open/floor/almayer{
-	dir = 8;
-	icon_state = "green";
-	tag = "icon-green (WEST)"
-	},
-/area/almayer/squads/req)
 "lQj" = (
 /obj/structure/machinery/door_control{
 	id = "InnerShutter";
@@ -82460,6 +82449,10 @@
 /area/almayer/evacuation/pod3)
 "wIr" = (
 /obj/structure/machinery/cm_vending/clothing/senior_officer,
+/obj/structure/sign/safety/hvac_old{
+	pixel_x = 8;
+	pixel_y = 32
+	},
 /turf/open/floor/almayer{
 	icon_state = "cargo";
 	tag = "icon-bluecorner (NORTH)"

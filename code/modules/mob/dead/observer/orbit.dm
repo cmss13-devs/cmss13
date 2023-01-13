@@ -65,6 +65,7 @@
 	var/list/predators = list()
 	var/list/dead = list()
 	var/list/ghosts = list()
+	var/list/animals = list()
 	var/list/misc = list()
 	var/list/npcs = list()
 	var/list/vehicles = list()
@@ -137,6 +138,8 @@
 				else
 					humans += list(serialized)
 				continue
+			if(isanimal(player))
+				animals += list(serialized)
 
 		else if(isobserver(M))
 			ghosts += list(serialized)
@@ -152,6 +155,7 @@
 	data["predators"] = predators
 	data["dead"] = dead
 	data["ghosts"] = ghosts
+	data["animals"] = animals
 	data["misc"] = misc
 	data["npcs"] = npcs
 	data["vehicles"] = vehicles

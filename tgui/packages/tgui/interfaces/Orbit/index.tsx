@@ -108,6 +108,7 @@ const ObservableContent = (props, context) => {
     predators = [],
     dead = [],
     ghosts = [],
+    animals = [],
     misc = [],
     npcs = [],
     vehicles = [],
@@ -135,6 +136,7 @@ const ObservableContent = (props, context) => {
       <ObservableSection section={vehicles} title="Vehicles" />
       <ObservableSection section={dead} title="Dead" />
       <ObservableSection section={ghosts} title="Ghosts" />
+      <ObservableSection section={animals} title="Animals" />
       <ObservableSection section={misc} title="Misc" />
       <ObservableSection section={npcs} title="NPCs" />
     </Stack>

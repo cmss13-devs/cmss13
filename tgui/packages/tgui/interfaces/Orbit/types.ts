@@ -11,6 +11,7 @@ export type OrbitData = {
   predators: Observable[];
   dead: Observable[];
   ghosts: Observable[];
+  animals: Observable[];
   misc: Observable[];
   npcs: Observable[];
   vehicles: Observable[];

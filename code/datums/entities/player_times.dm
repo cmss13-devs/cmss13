@@ -46,25 +46,25 @@ BSQL_PROTECT_DATUM(/datum/entity/player_time)
 
 /datum/view_record/playtime/proc/get_nanoui_data(no_icons = FALSE)
 
-    var/icon_display
-    switch(total_minutes MINUTES_TO_DECISECOND)
-        if(JOB_PLAYTIME_TIER_1 to JOB_PLAYTIME_TIER_2)
-            icon_display = "tier1_big"
-        if(JOB_PLAYTIME_TIER_2 to JOB_PLAYTIME_TIER_3)
-            icon_display = "tier2_big"
-        if(JOB_PLAYTIME_TIER_3 to JOB_PLAYTIME_TIER_4)
-            icon_display = "tier3_big"
-        if(JOB_PLAYTIME_TIER_4 to INFINITY)
-            icon_display = "tier4_big"
+	var/icon_display
+	switch(total_minutes MINUTES_TO_DECISECOND)
+		if(JOB_PLAYTIME_TIER_1 to JOB_PLAYTIME_TIER_2)
+			icon_display = "tier1_big"
+		if(JOB_PLAYTIME_TIER_2 to JOB_PLAYTIME_TIER_3)
+			icon_display = "tier2_big"
+		if(JOB_PLAYTIME_TIER_3 to JOB_PLAYTIME_TIER_4)
+			icon_display = "tier3_big"
+		if(JOB_PLAYTIME_TIER_4 to INFINITY)
+			icon_display = "tier4_big"
 
-    var/playtime_percentage = min((total_minutes MINUTES_TO_DECISECOND) / JOB_PLAYTIME_TIER_4, 1)
-    return list(
-        "job" = role_id,
-        "playtime" = round(total_minutes MINUTES_TO_HOURS, 0.1),
-        "bgcolor" = "rgb(0, [Floor(128 * playtime_percentage)], [Floor(255 * playtime_percentage)])",
-        "textcolor" = "#FFFFFF",
-        "icondisplay" = icon_display
-    )
+	var/playtime_percentage = min((total_minutes MINUTES_TO_DECISECOND) / JOB_PLAYTIME_TIER_4, 1)
+	return list(
+		"job" = role_id,
+		"playtime" = round(total_minutes MINUTES_TO_HOURS, 0.1),
+		"bgcolor" = "rgb(0, [Floor(128 * playtime_percentage)], [Floor(255 * playtime_percentage)])",
+		"textcolor" = "#FFFFFF",
+		"icondisplay" = icon_display
+	)
 
 /datum/entity/player/tgui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)

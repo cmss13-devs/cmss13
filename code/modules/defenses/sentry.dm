@@ -392,6 +392,9 @@
 	fire(target)
 
 /obj/structure/machinery/defenses/sentry/proc/update_minimap_icon()
+	if(!SSminimaps.initialized)
+		return
+
 	SSminimaps.remove_marker(src)
 	if(!z)
 		return

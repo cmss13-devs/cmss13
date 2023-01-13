@@ -52,6 +52,7 @@
 	stamina = new /datum/stamina(src)
 
 /mob/living/carbon/human/Destroy()
+	SSminimaps.remove_marker(src)
 
 	remove_from_all_mob_huds()
 	assigned_equipment_preset = null

@@ -675,7 +675,7 @@
 /obj/item/weapon/gun/ui_assets(mob/user)
 	. = ..() || list()
 	. += get_asset_datum(/datum/asset/simple/firemodes)
-	. += get_asset_datum(/datum/asset/spritesheet/gun_lineart)
+	//. += get_asset_datum(/datum/asset/spritesheet/gun_lineart)
 
 // END TGUI \\
 

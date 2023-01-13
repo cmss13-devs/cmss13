@@ -138,7 +138,7 @@
 		return
 
 	if(bound_xeno.stat == DEAD)
-		salve_applied_icon.icon_state = "Healer Drone Knocked Down"
+		salve_applied_icon.icon_state = "Healer Drone Dead"
 	else if(bound_xeno.lying)
 		if((bound_xeno.resting || bound_xeno.sleeping) && (!bound_xeno.knocked_down && !bound_xeno.knocked_out && bound_xeno.health > 0))
 			salve_applied_icon.icon_state = "Healer Drone Sleeping"

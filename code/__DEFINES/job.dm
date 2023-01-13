@@ -95,7 +95,10 @@ var/global/list/job_command_roles = JOB_COMMAND_ROLES_LIST
 #define JOB_MARINE_RAIDER_ROLES_LIST list(JOB_MARINE_RAIDER, JOB_MARINE_RAIDER_SL, JOB_MARINE_RAIDER_CD)
 
 #define JOB_HUMAN_ROLES  /datum/timelock/human
+
 #define JOB_XENO_ROLES   /datum/timelock/xeno
+#define JOB_DRONE_ROLES /datum/timelock/drone
+#define JOB_T3_ROLES /datum/timelock/tier3
 
 #define JOB_STOWAWAY "Stowaway"
 

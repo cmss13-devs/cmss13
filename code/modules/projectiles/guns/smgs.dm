@@ -275,12 +275,13 @@
 			playsound(src, 'sound/weapons/handling/gun_jam_click.ogg', 35, TRUE)
 			to_chat(user, SPAN_WARNING("Your gun is jammed! Mash Unique-Action to unjam it!"))
 			user.balloon_alert_to_viewers("*click*", "*jammed*")
+			balloon_alert(user, "*jammed*")
 		return
 	else if(prob(ppsh_mag?.jam_chance))
 		jammed = TRUE
 		playsound(src, 'sound/weapons/handling/gun_jam_initial_click.ogg', 50, FALSE)
-		user.visible_message(SPAN_DANGER("[src] makes a noticeable clicking noise!"), SPAN_HIGHDANGER("Your gun suddenly jams and refuses to fire! Mash Unique-Action to unjam it."))
-		user.balloon_alert_to_viewers("*click*", "your gun jams!")
+		user.visible_message(SPAN_DANGER("[src] makes a noticeable clicking noise!"), SPAN_HIGHDANGER("\The [src] suddenly jams and refuses to fire! Mash Unique-Action to unjam it."))
+		balloon_alert(user, "*jammed*")
 		return
 	else
 		. = ..()
@@ -322,6 +323,8 @@
 	if(ppsh_mag && ppsh_mag.new_item_state)
 		item_state = ppsh_mag.new_item_state
 		ppsh_mag.update_icon()
+
+#undef PPSH_UNJAM_CHANCE
 
 //-------------------------------------------------------
 //GENERIC UZI //Based on the uzi submachinegun, of course.
@@ -437,13 +440,13 @@
 		if(world.time % 3)
 			playsound(src, 'sound/weapons/handling/gun_jam_click.ogg', 35, TRUE)
 			to_chat(user, SPAN_WARNING("Your gun is jammed! Mash Unique-Action to unjam it!"))
-			user.balloon_alert_to_viewers("*click*", "*jammed*")
+			balloon_alert(user, "*jammed*")
 		return
 	else if(prob(uzi_mag.jam_chance))
 		jammed = TRUE
 		playsound(src, 'sound/weapons/handling/gun_jam_initial_click.ogg', 35, TRUE)
-		user.visible_message(SPAN_DANGER("[src] makes a noticeable clicking noise!"), SPAN_HIGHDANGER("Your gun suddenly jams and refuses to fire! Mash Unique-Action to unjam it."))
-		user.balloon_alert_to_viewers("*click*", "your gun jams!")
+		user.visible_message(SPAN_DANGER("[src] makes a noticeable clicking noise!"), SPAN_HIGHDANGER("\The [src] suddenly jams and refuses to fire! Mash Unique-Action to unjam it."))
+		balloon_alert(user, "*jammed*")
 		return
 	else
 		. = ..()

@@ -983,10 +983,6 @@
 	damage_falloff = DAMAGE_FALLOFF_TIER_7
 	scatter = SCATTER_AMOUNT_TIER_5
 
-/datum/ammo/bullet/smg/ppsh/stan
-	name = "stan submachinegun bullet"
-	damage = 24
-
 /*
 //======
 					Rifle Ammo

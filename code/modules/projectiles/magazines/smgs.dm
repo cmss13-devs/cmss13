@@ -135,6 +135,9 @@
 	var/jam_chance = PPSH_STICK_MAGAZINE_JAM_CHANCE
 	var/new_item_state = "ppsh17b"
 
+#undef PPSH_STICK_MAGAZINE_JAM_CHANCE
+#undef PPSH_DRUM_MAGAZINE_JAM_CHANCE
+
 /obj/item/ammo_magazine/smg/ppsh/extended
 	name = "\improper PPSh-17b drum magazine (7.62x25mm)"
 	desc = "The iconic PPSh-17b drum magazine. Carries double the amount of bullets than the stick version, but may cause handling and feeding issues. Your call which one's better."
@@ -186,6 +189,9 @@
 	bonus_overlay = "uzi_ext"
 	max_rounds = 32
 	jam_chance = UZI_EXTENDED_MAGAZINE_JAM_CHANCE
+
+#undef UZI_NORMAL_MAGAZINE_JAM_CHANCE
+#undef UZI_EXTENDED_MAGAZINE_JAM_CHANCE
 
 //-------------------------------------------------------
 //FP9000 //Based on the FN P90

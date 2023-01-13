@@ -36,7 +36,8 @@
 /datum/equipment_preset/wy/trainee
 	name = "Corporate - A - Trainee"
 	flags = EQUIPMENT_PRESET_EXTRA
-
+	assignment = JOB_TRAINEE
+	rank = JOB_TRAINEE
 	paygrade = "CL1"
 
 /datum/equipment_preset/wy/trainee/load_gear(mob/living/carbon/human/H)
@@ -46,65 +47,65 @@
 /datum/equipment_preset/wy/junior_exec
 	name = "Corporate - B - Junior Executive"
 	flags = EQUIPMENT_PRESET_EXTRA
+	assignment = JOB_JUNIOR_EXECUTIVE
+	rank = JOB_JUNIOR_EXECUTIVE
 	paygrade = "CL2"
 
 /datum/equipment_preset/wy/exec
 	name = "Corporate - C - Executive"
 	flags = EQUIPMENT_PRESET_EXTRA
+	assignment = JOB_EXECUTIVE
+	rank = JOB_EXECUTIVE
 	paygrade = "CL3"
 
 /datum/equipment_preset/wy/senior_exec
 	name = "Corporate - D - Senior Executive"
 	flags = EQUIPMENT_PRESET_EXTRA
+	assignment = JOB_SENIOR_EXECUTIVE
+	rank = JOB_SENIOR_EXECUTIVE
 	paygrade = "CL4"
 
 /datum/equipment_preset/wy/exec_spec
 	name = "Corporate - E - Executive Specialist"
 	flags = EQUIPMENT_PRESET_EXTRA
+	assignment = JOB_EXECUTIVE_SPECIALIST
+	rank = JOB_EXECUTIVE_SPECIALIST
 	paygrade = "CL5"
 
 /datum/equipment_preset/wy/exec_supervisor
 	name = "Corporate - F - Executive Supervisor"
 	flags = EQUIPMENT_PRESET_EXTRA
+	assignment = JOB_EXECUTIVE_SUPERVISOR
+	rank = JOB_EXECUTIVE_SUPERVISOR
 	paygrade = "CL6"
 
-/datum/equipment_preset/wy/manager
-	name = "Corporate Manager"
-	paygrade = "WY-XG"
-	access = list()
-	skills = /datum/skills/civilian/manager
-	idtype = /obj/item/card/id/silver/clearance_badge/manager
-	headset_type = /obj/item/device/radio/headset/distress/PMC
-
-/datum/equipment_preset/wy/manager/New()
-	. = ..()
-	access = get_all_accesses() + get_all_centcom_access()
-
-/datum/equipment_preset/wy/manager/load_gear(mob/living/carbon/human/H)
-	H.equip_to_slot_or_del(new /obj/item/clothing/under/suit_jacket/manager(H), WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/manager(H), WEAR_JACKET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/manager(H), WEAR_HEAD)
-	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/vp78(H), WEAR_WAIST)
-	..()
 
 /datum/equipment_preset/wy/manager/assistant_manager
 	name = "Corporate - G - Assistant Manager"
 	flags = EQUIPMENT_PRESET_EXTRA
+	assignment = JOB_ASSISTANT_MANAGER
+	rank = JOB_ASSISTANT_MANAGER
 	paygrade = "CL7"
 
 /datum/equipment_preset/wy/manager/division_manager
 	name = "Corporate - H - Division Manager"
 	flags = EQUIPMENT_PRESET_EXTRA
+	assignment = JOB_DIVISION_MANAGER
+	rank = JOB_DIVISION_MANAGER
 	paygrade = "CL8"
 
 /datum/equipment_preset/wy/manager/chief_executive
 	name = "Corporate - I - Chief Executive"
 	flags = EQUIPMENT_PRESET_EXTRA
+	assignment = JOB_CHIEF_EXECUTIVE
+	rank = JOB_CHIEF_EXECUTIVE
 	paygrade = "CL9"
 
 /datum/equipment_preset/wy/manager/director
 	name = "Corporate - J - Director"
 	flags = EQUIPMENT_PRESET_EXTRA
+	assignment = JOB_DIRECTOR
+	rank = JOB_DIRECTOR
 	paygrade = "CL10"
 	skills = /datum/skills/civilian/manager/director
 

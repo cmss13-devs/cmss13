@@ -598,7 +598,7 @@ can cause issues with ammo types getting mixed up during the burst.
 /obj/item/weapon/gun/shotgun/double/damaged
 	name = "semi-sawn-off Spearhead Rival 78"
 	desc = "A double barrel shotgun produced by Spearhead. Archaic, sturdy, affordable. For some reason it seems that someone tried to saw through the barrel and gave up halfway through. This probably isn't going to be the greatest gun for combat.."
-	icon_state = "dshotgun_bad_o"
+	icon_state = "dshotgun_bad"
 
 /obj/item/weapon/gun/shotgun/double/damaged/set_gun_config_values()
 	..()

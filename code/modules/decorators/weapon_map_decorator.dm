@@ -49,7 +49,7 @@
 	r_icon = 'icons/obj/items/weapons/guns/guns_by_map/jungle/guns_righthand.dmi'
 	b_icon = 'icons/obj/items/weapons/guns/guns_by_map/jungle/back.dmi'
 	j_icon = 'icons/obj/items/weapons/guns/guns_by_map/jungle/suit_slot.dmi'
-	map_array = list(MAP_LV_624, MAP_HAUNTED_HOUSE_V2, MAP_RUNTIME,MAP_NEW_VARADERO)
+	map_array = list(MAP_LV_624, MAP_RUNTIME,MAP_NEW_VARADERO)
 
 /datum/decorator/weapon_map_decorator/snow
 	c_icon = 'icons/obj/items/weapons/guns/guns_by_map/snow/guns_obj.dmi'

@@ -118,6 +118,11 @@
 	soundscape_playlist = SCAPE_PL_ELEVATOR_MUSIC
 	icon_state = "yellow"
 
+/area/adminlevel/ert_station/uscss_royce
+	name = "USCSS Royce"
+	icon_state = "green"
+	requires_power = 0
+
 //Simulation area
 /area/adminlevel/simulation
 	name = "Simulated Reality"

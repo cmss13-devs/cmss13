@@ -25,7 +25,6 @@
 
 /datum/equipment_preset/wy/load_id(mob/living/carbon/human/H)
 	. = ..()
-	H.apply_wy_rank_code(load_rank(), assignment, role_comm_title)
 
 /datum/equipment_preset/wy/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new headset_type(H), WEAR_L_EAR)

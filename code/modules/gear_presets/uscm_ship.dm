@@ -47,7 +47,7 @@
 	)
 	assignment = JOB_CORPORATE_LIAISON
 	rank = JOB_CORPORATE_LIAISON
-	paygrade = "WY-XB-X"
+	paygrade = "CL2"
 	role_comm_title = "CL"
 	skills = /datum/skills/civilian
 
@@ -84,11 +84,11 @@
 		var/playtime = get_job_playtime(H.client, rank)
 		if(H.client.prefs.playtime_perks)
 			if(playtime > JOB_PLAYTIME_TIER_4)
-				return "WY-XE"
+				return "CL5"
 			else if(playtime > JOB_PLAYTIME_TIER_3)
-				return "WY-XD"
+				return "CL4"
 			else if(playtime > JOB_PLAYTIME_TIER_2)
-				return "WY-XC"
+				return "CL3"
 			else
 				return paygrade
 	return paygrade

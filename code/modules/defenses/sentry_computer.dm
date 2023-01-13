@@ -19,6 +19,7 @@
 	var/list/registered_tools = list()
 	var/list/faction_group
 	var/silent = FALSE
+	var/can_identify_target = FALSE
 
 	/// The turf where the camera was last updated.
 	var/turf/last_camera_turf
@@ -105,7 +106,9 @@
 	if(length(sentrygun.nickname) > 0)
 		displayname = sentrygun.nickname
 	var/areaname = get_area(sentrygun)
-	var/message = "[displayname]:[areaname] Engaged [sentrygun.target]."
+	var/message = "[displayname]:[areaname] Engaged"
+	if(can_identify_target)
+		message += " [sentrygun.target]"
 	INVOKE_ASYNC(src, PROC_REF(send_message), message)
 
 /obj/item/device/sentry_computer/proc/handle_low_ammo(var/obj/structure/machinery/defenses/sentry/sentrygun)
@@ -125,9 +128,11 @@
 	var/message = "[displayname]:[areaname] out of ammo."
 	INVOKE_ASYNC(src, PROC_REF(send_message), message)
 
-/obj/item/device/sentry_computer/proc/send_message(var/message)
+/obj/item/device/sentry_computer/proc/send_message(var/message, var/show_message=TRUE)
 	if(!silent && transceiver)
 		transceiver.talk_into(voice, "[message]", RADIO_CHANNEL_SENTY)
+		if(show_message)
+			voice.say(message)
 
 /obj/item/device/sentry_computer/attack_hand(mob/user)
 	if(setup)
@@ -193,7 +198,7 @@
 		pair_sentry(defence)
 		to_chat(user, SPAN_NOTICE("\The [defence] has been encrypted."))
 		var/message = "[defence] added to [src]"
-		INVOKE_ASYNC(src, PROC_REF(send_message), message)
+		INVOKE_ASYNC(src, PROC_REF(send_message), message, FALSE)
 
 /obj/item/device/sentry_computer/proc/unregister(var/tool, mob/user, var/sentry_gun)
 	var/obj/structure/machinery/defenses/sentry/sentry = sentry_gun
@@ -202,7 +207,7 @@
 			unpair_sentry(sentry)
 			to_chat(user, SPAN_NOTICE("\The [sentry] has been decrypted."))
 			var/message = "[sentry] removed from from [src]"
-			INVOKE_ASYNC(src, PROC_REF(send_message), message)
+			INVOKE_ASYNC(src, PROC_REF(send_message), message, FALSE)
 	else
 		to_chat(user, SPAN_WARNING("\The [sentry] is already encrypted by laptop [sentry.linked_laptop.serial_number]."))
 

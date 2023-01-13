@@ -2686,6 +2686,7 @@
 	pixel_x = 25;
 	req_access_txt = "200"
 	},
+/obj/structure/machinery/faxmachine,
 /turf/open/floor/carpet{
 	dir = 4;
 	icon_state = "carpetside";

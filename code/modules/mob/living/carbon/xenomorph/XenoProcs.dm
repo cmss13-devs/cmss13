@@ -394,6 +394,10 @@
 			victim.acid_damage = 0
 			victim.forceMove(get_true_turf(loc))
 
+			if(ishuman(victim))
+				var/mob/living/carbon/human/current_human = victim
+				current_human.update_minimap_icon()
+
 			visible_message(SPAN_XENOWARNING("[src] hurls out the contents of their stomach!"), \
 			SPAN_XENOWARNING("You hurl out the contents of your stomach!"), null, 5)
 			playsound(get_true_location(loc), 'sound/voice/alien_drool2.ogg', 50, 1)

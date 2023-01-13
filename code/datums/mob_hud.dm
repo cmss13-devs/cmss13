@@ -347,14 +347,6 @@ var/list/datum/mob_hud/huds = list(
 
 	holder4.icon_state = "hudblank"
 
-	var/obj/item/device/radio/headset/headset
-	if(istype(wear_l_ear, /obj/item/device/radio/headset))
-		headset = wear_l_ear
-	else if(istype(wear_r_ear, /obj/item/device/radio/headset))
-		headset = wear_r_ear
-	if(headset)
-		headset.update_minimap_icon()
-
 	if(species && species.flags & IS_SYNTHETIC)
 		holder3.icon_state = "hudsynth" // xenos have less awareness of synth status
 		if(HAS_TRAIT(src, TRAIT_INFILTRATOR_SYNTH))

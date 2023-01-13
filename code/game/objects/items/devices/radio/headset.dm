@@ -231,7 +231,10 @@
 			COMSIG_HUMAN_REVIVED,
 		), PROC_REF(turn_on))
 		wearer = user
+		RegisterSignal(user, COMSIG_MOB_STAT_SET_ALIVE, PROC_REF(update_minimap_icon))
 		RegisterSignal(user, COMSIG_MOB_LOGIN, PROC_REF(add_hud_tracker))
+		RegisterSignal(user, COMSIG_MOB_DEATH, PROC_REF(update_minimap_icon))
+		RegisterSignal(user, COMSIG_HUMAN_SET_UNDEFIBBABLE, PROC_REF(update_minimap_icon))
 		if(headset_hud_on)
 			var/datum/mob_hud/H = huds[hud_type]
 			H.add_hud_to(user)

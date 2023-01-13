@@ -40,6 +40,7 @@
 	targets = null
 	other_targets = null
 	target = null
+	SSminimaps.remove_marker(src)
 	QDEL_NULL(range_bounds)
 	QDEL_NULL(spark_system)
 	QDEL_NULL(ammo)

@@ -28,7 +28,7 @@ SUBSYSTEM_DEF(minimaps)
 	var/list/atom/update_targets_unsorted = list()
 	///Assoc list of removal callbacks to invoke to remove images from the raw lists
 	var/list/datum/callback/removal_cbs = list()
-	///list of holders for data relating to tracked zlevel and tracked atum
+	///list of holders for data relating to tracked zlevel and tracked atom
 	var/list/datum/minimap_updator/updators_by_datum = list()
 	///list of callbacks we need to invoke late because Initialize happens early
 	var/list/datum/callback/earlyadds = list()
@@ -211,6 +211,8 @@ SUBSYSTEM_DEF(minimaps)
 /datum/controller/subsystem/minimaps/proc/add_marker(atom/target, zlevel, hud_flags = NONE, iconstate, icon = 'icons/ui_icons/map_blips.dmi', list/overlay_iconstates, color_code, background = "background")
 	if(!isatom(target) || !zlevel || !hud_flags || !iconstate || !icon)
 		CRASH("Invalid marker added to subsystem")
+	if(images_by_source[target])
+		CRASH("Duplicate marker added to subsystem")
 	if(!initialized)
 		earlyadds += CALLBACK(src, PROC_REF(add_marker), target, zlevel, hud_flags, iconstate, icon)
 		return

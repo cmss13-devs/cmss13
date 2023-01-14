@@ -239,8 +239,6 @@
 	var/obj/effect/alien/weeds/W = locate(/obj/effect/alien/weeds) in loc
 	if (W)
 		if (W.linked_hive.hivenumber == hivenumber)
-			if(weedwalking_activated)
-				. -= 1.5
 			. *= 0.95
 
 	var/obj/effect/alien/resin/sticky/fast/FR = locate(/obj/effect/alien/resin/sticky/fast) in loc

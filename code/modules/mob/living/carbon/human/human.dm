@@ -1174,14 +1174,14 @@
 		//additional things to change when we're no longer that species
 		oldspecies.post_species_loss(src)
 		if(oldspecies.weed_slowdown_mult != 1)
-			UnregisterSignal(src, COMSIG_MOB_WEEDS_CROSSED)
+			UnregisterSignal(src, COMSIG_MOB_WEED_SLOWDOWN)
 
 	mob_flags = species.mob_flags
 	for(var/T in species.mob_inherent_traits)
 		ADD_TRAIT(src, T, TRAIT_SOURCE_SPECIES)
 
 	if(species.weed_slowdown_mult != 1)
-		RegisterSignal(src, COMSIG_MOB_WEEDS_CROSSED, .proc/handle_weed_slowdown)
+		RegisterSignal(src, COMSIG_MOB_WEED_SLOWDOWN, .proc/handle_weed_slowdown)
 
 	species.create_organs(src)
 

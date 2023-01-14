@@ -84,7 +84,7 @@
 
 /datum/behavior_delegate/hivelord_base/proc/toggle_resin_walker()
 	if(!resin_walker)
-		RegisterSignal(bound_xeno, COMSIG_XENO_MOVEMENT_DELAY, .proc/handle_resin_walker)
+		RegisterSignal(bound_xeno, COMSIG_XENO_MOVEMENT_DELAY, PROC_REF(handle_resin_walker))
 		resin_walker = TRUE
 		return TRUE
 	else

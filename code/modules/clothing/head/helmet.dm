@@ -321,6 +321,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	/obj/item/ammo_magazine/handful = "bullet",
 	/obj/item/prop/helmetgarb/riot_shield = "helmet_riot_shield",
 	/obj/item/attachable/flashlight = HELMET_GARB_RELAY_ICON_STATE,
+	/obj/item/prop/helmetgarb/chaplain_patch = "chaplain_patch",
 
 	// MEDICAL
 	/obj/item/stack/medical/bruise_pack ="brutepack (bandages)",
@@ -361,7 +362,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
 	)
 
-	var/obj/item/storage/internal/helmet/pockets
+	var/obj/item/storage/internal/headgear/pockets
 	var/storage_slots = 2 // keep in mind, one slot is reserved for garb items
 	var/storage_slots_reserved_for_garb = 1
 	var/storage_max_w_class = SIZE_TINY // can hold tiny items only, EXCEPT for glasses & metal flask.
@@ -370,7 +371,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	//speciality does NOTHING if you have NO_NAME_OVERRIDE
 
 /obj/item/clothing/head/helmet/marine/New(loc,
-	new_protection[]	= list(MAP_ICE_COLONY = ICE_PLANET_min_cold_protection_temperature))
+	new_protection[] = list(MAP_ICE_COLONY = ICE_PLANET_min_cold_protection_temperature))
 	if(!(flags_atom & NO_NAME_OVERRIDE))
 		name = "[specialty]"
 		if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
@@ -543,14 +544,14 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 			flags_inventory &= ~(COVEREYES|COVERMOUTH)
 			flags_inv_hide &= ~(HIDEEYES|HIDEFACE)
 			icon_state = base_icon_state
-			eye_protection = 0
+			eye_protection = EYE_PROTECTION_NONE
 			to_chat(usr, "You <b>deactivate</b> the [src]'s welding screen.")
 		else
 			vision_impair = VISION_IMPAIR_MAX
 			flags_inventory |= COVEREYES|COVERMOUTH
 			flags_inv_hide |= HIDEEYES|HIDEFACE
 			icon_state = "[base_icon_state]_on"
-			eye_protection = 2
+			eye_protection = EYE_PROTECTION_WELDING
 			to_chat(usr, "You <b>activate</b> the [src]'s welding screen.")
 
 		protection_on = !protection_on
@@ -560,7 +561,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 			if(H.head == src)
 				H.update_tint()
 
-		update_clothing_icon()	//so our mob-overlays update
+		update_clothing_icon() //so our mob-overlays update
 
 		for(var/X in actions)
 			var/datum/action/A = X
@@ -708,7 +709,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUMLOW
 	flags_inventory = BLOCKSHARPOBJ
 	flags_inv_hide = HIDEEARS|HIDETOPHAIR
-	flags_marine_helmet = NO_FLAGS
+	flags_marine_helmet = HELMET_GARB_OVERLAY
 	flags_item = MOB_LOCK_ON_EQUIP
 	specialty = "M45 ghillie"
 
@@ -1063,7 +1064,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	icon_state = "skullcapm"
 
 /obj/item/clothing/head/helmet/skullcap/jungle/New(loc, type,
-	new_protection[] 	= list(MAP_ICE_COLONY = ICE_PLANET_min_cold_protection_temperature))
+	new_protection[] = list(MAP_ICE_COLONY = ICE_PLANET_min_cold_protection_temperature))
 	select_gamemode_skin(type,, new_protection)
 	..()
 	switch(icon_state)
@@ -1144,13 +1145,13 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 			vision_impair = VISION_IMPAIR_NONE
 			flags_inventory &= ~(COVEREYES|COVERMOUTH)
 			flags_inv_hide &= ~(HIDEEYES|HIDEFACE)
-			eye_protection = 0
+			eye_protection = EYE_PROTECTION_NONE
 			to_chat(usr, "You <b>deactivate</b> the [src]'s welding screen.")
 		else
 			vision_impair = VISION_IMPAIR_MAX
 			flags_inventory |= COVEREYES|COVERMOUTH
 			flags_inv_hide |= HIDEEYES|HIDEFACE
-			eye_protection = 2
+			eye_protection = EYE_PROTECTION_WELDING
 			to_chat(usr, "You <b>activate</b> the [src]'s welding screen.")
 
 		protection_on = !protection_on
@@ -1207,10 +1208,10 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	overlays += /obj/effect/overlay/danger
 	playsound(loc, 'sound/weapons/armbomb.ogg', 25, 1, 6)
 
-	addtimer(CALLBACK(src, .proc/prime), det_time)
+	addtimer(CALLBACK(src, PROC_REF(prime)), det_time)
 
 /obj/item/clothing/head/helmet/marine/specialist/hefa/proc/prime()
-	INVOKE_ASYNC(src, .proc/boom)
+	INVOKE_ASYNC(src, PROC_REF(boom))
 
 // Values nabbed from the HEFA nade
 /obj/item/clothing/head/helmet/marine/specialist/hefa/proc/boom()

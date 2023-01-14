@@ -1,0 +1,364 @@
+2023-01-01:
+  BeagleGaming1:
+  - bugfix: Fixes inconsistent sounds for certain modes of the plasma caster
+  Joe Lampost, sleepynecrons(wei):
+  - rscadd: Adds both bone and crimson Armour variants for preds
+  Shad0vvs, Sleepynecrons:
+  - rscadd: Added Predator skin colors (cyan, green, purple, blue, red, black), chosen
+      in the preferences screen. (Sprites by Sleepynecrons (wei))
+  ThePiachu:
+  - balance: Base and Shaman Carriers now have 500 base plasma, up from 400. Eggsac
+      remains at 600 plasma.
+  - balance: Base and Shaman Carriers can now store up to 8 eggs, up from 7. Eggsac
+      now can store a whopping 12 eggs, up from 7. Be careful not to die while carrying
+      those and give Marines greeno material!
+  - balance: Shaman can now plant weeds. This bumped all their other abilities one
+      slot over shortcut-wise.
+  - qol: Eggsac's egg generation ability is now a toggle that uses plasma per tick
+      to generate eggs at an ongoing rate until full or out of plasma.
+  - code_imp: Hivelord's Resin Walker now uses the same toggle structure.
+  - bugfix: Hivelord's Resin Walker now deactivates properly when you run out of plasma.
+  - bugfix: Fixed a runtime around Shaman's ability initialisation.
+  carlarctg:
+  - rscadd: Added a preference for eye blurring. Can be defaut blur, vision impair,
+      or the legacy blurring effect.
+  kugamo:
+  - rscadd: Weather now effects acid, lasting shorter and damaging less.
+  - balance: Weather's effects on fires have been nerfed by a few points.
+  stanalbatross:
+  - bugfix: fixed /sorted vendors showing points when they don't use them
+  - qol: marine food vendors and the req attachment vendor no longer have vend delay
+  - bugfix: fixed vaulting through windows
+  - bugfix: fixed ' " / breaking in the megaphone
+  - ui: converted the turing dispenser to tgui
+  thwompa:
+  - imageadd: added new synth charging station sprites
+  - imagedel: removed old cyborg chaging sprites
+2023-01-02:
+  BeagleGaming1:
+  - bugfix: Stops Janitorial Cart from deleting buckets
+  Casper:
+  - bugfix: xenos are now set on fire if they travel through an acid hole which is
+      on fire
+  Molto:
+  - bugfix: fixed marine qdel on hijack
+  Segrain:
+  - bugfix: HPR magazines once again can be refilled from boxes of loose ammunition.
+  Sleepynecrons:
+  - bugfix: fixed green skin on predator having an invisible hand
+  SpartanBobby:
+  - bugfix: New Varadero now has correct camo-conforming undershirts meaning people
+      will not spawn bra/shirtless
+  ThePiachu:
+  - bugfix: Fixed a xeno overwatch runtime.
+  realforest2001:
+  - code_imp: Reordered checks for joining the hunt.
+  - rscadd: Added backend whitelist flag for Working Joe, allowing staff to use WJ
+      without having Synthetic.
+  - rscadd: Rebranded Binary Language as Apollo Link, an ARES subprocessor that WY
+      definitely did not steal from Seegson.
+  - rscadd: Changed the Working Joe late-join broadcast to use general comms rather
+      than an intrusive announcement.
+  - admin: Added a verb for staff to talk as ARES on the Apollo Link.
+  - rscdel: Removed Drone Talk as an unnecessary language.
+  silencer_pl, forest2001:
+  - admin: Adds a variable called admin_console that allows the use of camera consoles
+      from the admin z level.
+  somepersondunno:
+  - bugfix: fixed an issue regarding prae strains and girders
+  stanalbatross:
+  - code_imp: converted three base byond vars to true/false bools
+  - ui: converted disposals to tgui
+2023-01-03:
+  QuickLoad:
+  - spellcheck: fixed typos regarding Colonial Marshals
+  Stanalbatross, TheDonkified:
+  - ui: re-added the old multiple highlight system, originally made by thedonkified.
+      You can add up to 10 individual highlights, customise their colours, and toggle
+      if they highlight the whole message or not.
+  - ui: you can now use regex for text highlighting. The syntax is /[regex expression]/,
+      eg /dog[0-9]/. There are no quantifiers, but you can use capture groups. The
+      regex must read a minimum of two characters.
+  realforest2001:
+  - spellcheck: Changes mentions of RESS to TWE to keep consistent and lore accurate.
+  stanalbatross:
+  - balance: increased clothesline cooldown from 14s to 16s
+  - balance: beserker rav buffed slash will now slow instead of superslow, and its
+      duration will be 3.5s as intended instead of 0.6s
+  - balance: ravs can no longer heal from clothesline/eviscerate while on fire
+  - rscdel: removed the airlock docking controller and embedded airlock controllers,
+      they were completely unused
+  - rscdel: removed the centcom accounts database, which was only used in one proc
+      and was only present on the admin level.
+  - admin: added a mob event verb to make an account
+2023-01-04:
+  Casper:
+  - bugfix: boiler bombard cooldown now only applies if the shot actually fires
+  Huffie56:
+  - rscadd: add buttons for Inner and Outer Blast door of secure storage    for you
+      to find out where.
+  - rscdel: deleted Nexus lockdown and garage shutter button in armory but it's still
+      in mapping data.
+  - balance: adding the ability for survivor to get in secure storage on LV-624.
+  - code_imp: separated Inner and outer blast door instead of being a single entity.
+  Segrain:
+  - bugfix: Money accounts are once again properly created.
+  Sleepynecrons:
+  - imageadd: New sprites for Praetorian's Vanguard, Dancer and Warden strains. Changes
+      Oppressor palette back to base Prae
+  ThePiachu:
+  - rscadd: Added some rechargers and battery chargers to LV-522.
+  - balance: ChemMaster's internal volume now matches that of a Bluespace Beaker so
+      you can more efficiently utilise it to its full pill making potential.
+  - qol: The Reagent Tanks now display the total volume used by all of their chemicals
+      so you know exactly how full it is when containing a complex chemical mix.
+  Zonespace27:
+  - admin: Added SDQL2 tools, allowing for more granular mass VV/proc calling/data
+      collecting.
+  - refactor: Refactored VV backend
+  carlarctg:
+  - rscadd: Aiming a shot on a sniper rifle now adds a red laser beam that connects
+      the target and the aimer. Spotting designators will emanate a faint yellow one.
+      Both will slowly increase in alpha from 0 to max as the tracking progresses.
+  - balance: The sniper's laser beam can be disabled with a button, but keeping it
+      enabled reduces aiming shot time. Cloaked spotters will not cause a beam to
+      appear.
+  - imageadd: Completely resprited the indicators for spotting (it's now yellow) and
+      aiming (it's now red, usually)
+  - imageadd: The XM42B and PMC sniper rifles have more intense blue lasers and reticles.
+  - rscadd: Stepping through laser beams will check for eye protection, if it isn't
+      sufficient, and the small probability chance passes, the target will scream
+      in pain! Completely flavor. If they have enough eye protection, it will bounce
+      off their headgear, and if said protection is BiMex patented personal shades
+      it will create a cool visual effect.
+  - refactor: Refactored eye_protection to have three levels, flavor, flashes, and
+      welding. Sunglasses have flavor protection, sechuds have flash protection, welding
+      gear has welding protection.
+  - imageadd: The spotter's designator now has a white band on it to distinguish it
+      from the rest.
+  - rscadd: Chance's claim EMPTY explosive magazines are now EMPTY HEAP magazines.
+  harryob:
+  - admin: fixed logging when you leave buildmode
+  stanalbatross:
+  - bugfix: vehicle entry speeds will no longer be extraneously multiplied
+  - qol: you can now alt-click stacks to split off items from them. As a result of
+      this, attacking a stack in your offhand with one of the same type will no longer
+      ask you how many you want to merge into it.
+2023-01-05:
+  Segrain:
+  - bugfix: Splitting stacks actually works now.
+  - bugfix: Aliens and telekinetics no longer can abuse splitting stacks.
+  carlarctg:
+  - rscadd: Adds attacking animations to all Xeno abilities that lacked them.
+  - rscadd: Made said abilities cause the xeno to face the target.
+  - rscadd: Said abilities also cause an attack flicker overlay.
+  - rscadd: Dancer Impale now plays a stronger hit sound and hit animation.
+  - balance: Base crushers lower their crest while charging.
+  - rscadd: Abominations spin around when devastating a target.
+  - code_imp: changed facedir() into face_dir()
+  - balance: Changed the Smith & Wesson's caliber from .357 to .38 to remove compatibility
+      between its rounds and the Spearhead revolver's.
+  - balance: Reduced the amount of time the Smith & Wesson's trick buff lasts.
+  - rscdel: The CMB Spearhead revolver can no longer fire in bursts nor fit the burst-fire
+      assembly.
+  mullenpaul:
+  - refactor: ert dropships reworked to now use the tg shuttles system
+  - refactor: ert dropships now have tgui interface for controls
+  - imageadd: ert dropships now have cardinal directions for all sprites - placeholders
+  - rscdel: remove old ert shuttles
+  - rscdel: removed transit shutters on ert shuttles and the Almayer landing pads
+  - refactor: shuttle manipulator now can disable the shuttle computer
+  - bugfix: Shuttle Manipulator page now properly references lifeboats and vehicle
+      elevator
+2023-01-06:
+  CapCamIII:
+  - rscadd: Adds 2 new char setup loadout items, a black and green balaclava, 2 points
+      each.
+  - bugfix: Balaclava object sprite has a correct offset now.
+  Morrow:
+  - rscadd: New intense mode for underbarrel flamethrower which uses more fuel, is
+      more effective, and with less range.
+  - balance: Buffed range and max fuel for the underbarrel flamethrower.
+  - code_imp: Changed around attachment description functions for smarter usage.
+  - bugfix: Underbarrel guns will now use the correct activation noise
+  - soundadd: Activation noise for underbarrel guns slightly louder
+  Segrain:
+  - bugfix: Markup for bold text can now be used for the first word or words in the
+      spoken sentence without it being interpreted as a failed *emote.
+  - qol: '*emotes are no longer case sensitive (e.g. saying "*salute", "*Salute" and
+      "*SALUTE" are equally valid ways to salute).'
+  carlarctg:
+  - rscadd: Added a fun fact for amount of items festivized - only plays if any item
+      was actually festivized. Text alternates based on amount of festivization.
+  - rscadd: Added jingling sounds to the festivizer.
+  - rscadd: Santa can now refill his bag with an item action.
+  - soundadd: Added a new MERRY CHRISTMAS! sound that plays alongside the others with
+      the Festeba and queen's screech.
+  - code_imp: Screech now works as a list that an item is picked from.
+  - bugfix: Fixed being unable to utilize smartguns and M2Cs with clickdrag override
+      preference and harm/disarm intent enabled.
+  - balance: Warriors no longer lifesteal while on fire.
+  - bugfix: Fixed S&W speedloaders having a broken sprite.
+  - bugfix: Fixes rats being white as holder items
+  - code_imp: Added an XvX acid multiplier check proc.
+  - bugfix: Fixed xenomorph acid traps dealing too much damage.
+  harryob:
+  - bugfix: eye blur now actually saves as a preference, instead of being discarded
+  realforest2001:
+  - bugfix: Alamo and Normandy now use their correct intercom frequencies.
+  - rscadd: Added subtypes of intercoms for use on the dropships, so they're not instances
+      that will endlessly break if frequencies change again.
+  stanalbatross:
+  - ui: added the match word and match case options back to highlight settings, match
+      word is overidden if regex is used
+  - ui: radio TGUI now shows channel prefixes again
+  - code_imp: cleaned up radio code a bit, removed a deprecated var
+  - bugfix: fixed a few runtimes with blockedpassdirs and blockedexitdirs
+  - admin: added an option to play midis/sounds to ghosts only
+2023-01-07:
+  Casper:
+  - bugfix: fixes pardon mechanic
+  - refactor: brig timer now uses TGUI
+  ThePiachu, Iamtheguy:
+  - rscadd: Added a flashlight and battery box to make the FOBs a little bit more
+      organised.
+  carlarctg:
+  - bugfix: FIxes some NV laser pistols having broken icons
+  realforest2001:
+  - qol: Adds mapper sprites to the walls for CORSAT, Prison & Solaris
+  stanalbatross:
+  - ui: converted the language menu to tgui
+  - bugfix: fixed two common runtimes
+  - code_imp: added a better log to the tgui input number error log so the offending
+      tgui number input can be easier identified
+2023-01-08:
+  Huffie56:
+  - refactor: '`Principally changed // comment to /// comment with the proper format
+      so that it fallow the current documentation standard.'
+  Newyearnewme:
+  - rscadd: Added sunscreen. Now you can enjoy those rays without risking damage from
+      UV rays!
+  ThePiachu:
+  - bugfix: Egg Plasma now preserves the hive number of the egg / Eggsac it came from.
+  carlarctg:
+  - bugfix: Fixes all monkeys being unknown.
+  realforest2001:
+  - bugfix: Riot Control now have functional HUD icons again
+2023-01-09:
+  QuickLode:
+  - bugfix: removed unintended slowdown from the M4 light synthetic armor on nightmare
+  - spellcheck: fixes WWeyland-Yutani and Genadier
+  ThePiachu:
+  - bugfix: Fixed dme file order.
+  stanalbatross:
+  - code_imp: changed a few instances of gender strings to defines
+  - bugfix: fixed many, many instances of things not properly being tagged as plural
+2023-01-10:
+  BeagleGaming1:
+  - admin: Fixes "Object Narrate" not returning properly sometimes
+  Huffie56:
+  - rscadd: adding a panic room in hangar that can be open via an MP office that as
+      an armory to quickly respond to hostile coming from DS's
+  IowaPotatoFarmer:
+  - bugfix: Fixed a sentry in the LV-624 CLF nightmare insert that was facing the
+      wrong way.
+  Kitsunemitsu:
+  - bugfix: fixed an error with SL timelocks.
+  NewyearnewmeUwu:
+  - rscadd: adds a few chaplain helmet patches to the chapel in the Almayer.
+  - maptweak: adds a few chaplain helmet patches to the chapel in the Almayer.
+  carlarctg:
+  - rscdel: Disables New Varadero from the map pool.
+  stanalbatross:
+  - ui: added tgui radars that can be used for the precise tracking of atoms
+  - rscadd: converted the handheld crew monitor to use a radar.
+  - rscadd: added an unobtainable advanced version of the PDT/L that uses a radar
+  - ui: converted the vehicle status menu to tgui
+  - bugfix: fixed a potential runtime in quadtrees
+  - ui: converted the check skills menu to TGUI
+  - admin: changed the edit skills vv dropdown from a clunky series of input lists
+      to the new check skills menu TGUI
+  - bugfix: fixed a lot of instances of being able to telekinetically alt-click things
+  theflyingflail:
+  - bugfix: fixed broken spawner on big red nightmare insert
+2023-01-11:
+  BeagleGaming1:
+  - admin: 'Event Item - D2 Breaching Hammer: A breaching hammer usable by anybody
+      without any additional requirements'
+  harryob:
+  - ui: the orbit menu gives you a little extra info
+  mullenpaul:
+  - refactor: mini shuttle now using tg shuttle framework
+  - refactor: big shuttle now using tg shuttle framework
+  - refactor: ert shuttle lockdown now only affects external doors, doors which board
+      a space tile can't be controlled from ui
+  - mapadd: added map template for mini shuttle - north orientation
+  - mapadd: added map template for big shuttle - north orientation
+  - admin: admin force ert shuttle points to all new ert shuttles, removing all references
+      to old shuttle code
+  - maptweak: added external docking ports for port and starboard hangar and port
+      and starboard upper engi
+  - maptweak: added button to toggle the interior podlocks at upper engi podlocks
+2023-01-12:
+  Geeves, Unknownity:
+  - rscadd: Added survivor variant picking, in the character creation menu, under
+      special roles. This makes it so you only spawn as that survivor type, unless
+      you hit a special spawn, such as CLF or FORECON, for example.
+  - rscadd: Added survivor spawner priority, so that the CLF and PMC spawners are
+      used before others.
+  Morrow:
+  - maptweak: Adds access requirement to CO's uniform vendor.
+  - balance: Removed armor and decap protection from all berets and subtypes
+  - balance: Custom pill bottles now require medic skill to open
+  Puckaboo2:
+  - rscdel: Removed some code that disabled cooldowns on fruits.
+  - bugfix: Resin Fruits now have cooldowns again.
+  - balance: Greater and Lesser Resin Fruits have a cooldown of 5, up from 0 and down
+      from the previous 10.
+  - bugfix: Gardener's overlays no longer overlap when she switches icon states.
+  - bugfix: Healer and Gardener's dead overlays will not appear whilst ghosted.
+  - imagedel: Made the Gardener and Healer's dead icon states empty so the overlay
+      will not appear whilst ghosted.
+  Segrain:
+  - bugfix: Broken arms/hands once again drop the held items from correct hand.
+  carlarctg:
+  - bugfix: Fixed the bug in which neurotoxin spits did not cause a red damage flicker
+      on the target (It happened because it technically deals no damage.)
+  - code_imp: Added a new variable, hit_effect_color, that governs on if the ammo/projectile
+      will, if not null, create a damage overlay on hit.
+  - rscadd: Implemented support for differently-colored hit overlays. Tasers have
+      a yellow overlay, stunning plasma bolts have a blue one, and the admin monkey
+      gun has a brown one. Everything else stays red.
+  - qol: When a marine is hit by acid blood spray, a sizzling sound will play, alongside
+      the blood visually splattering on them and causing a red hit overlay.
+  - rscadd: Flamethrowers will cause a flame-colored hit overlay to appear on the
+      target if they've been directly ignited by it.
+  - rscadd: Shielded Xenomorphs will override hit colors and flicker yellow instead.
+  stanalbatross:
+  - bugfix: fixed an oversight that made you unable to fire non-dangerous grenades
+      close up from grenade launchers
+  - balance: removed antihug from ushankas and bear pelts
+  - balance: increased the queen timelock to 10 hours of xeno, 5 hours of drone, and
+      3 hours of t3
+  - code_imp: ported the sound loops subsystem from tg
+  - soundadd: the tape recorder will now hiss during playback
+2023-01-14:
+  Morrow:
+  - bugfix: Fixed deploying a M2C backwards to jump through dense objects
+  Segrain:
+  - bugfix: Queen timelock now correctly calculates playtime as T3 castes.
+  - bugfix: Ghillie helmet is no longer exempt from having cosmetic accessories.
+  - bugfix: Sniper rifle's "toggle laser" action is no longer bound to the same key
+      as "aimed shot" action.
+  - qol: Sniper rifle's laser can now be toggled by pressing the "toggle burst" button.
+  harryob:
+  - refactor: ports unit tests from tg
+  - bugfix: fixes a runtime on a couple of unused admin maps. woo.
+  mullenpaul:
+  - maptweak: moved the external starboard shuttle ert docking port so that space
+      does not appear between the shuttle and the hangar
+  realforest2001:
+  - bugfix: Fixed the melee skill define on forecon survivors which was causing skill
+      menu runtime.
+  stanalbatross:
+  - rscdel: removed the unmaintained haunted house event map

@@ -1,6 +1,6 @@
-#define SENTRY_FIREANGLE 	135
-#define SENTRY_RANGE 		5
-#define SENTRY_MUZZLELUM	3
+#define SENTRY_FIREANGLE 135
+#define SENTRY_RANGE 5
+#define SENTRY_MUZZLELUM 3
 
 /obj/structure/machinery/defenses/sentry
 	name = "\improper UA 571-C sentry gun"
@@ -223,7 +223,7 @@
 	actual_fire(A)
 
 	if(targets.len)
-		addtimer(CALLBACK(src, .proc/get_target), fire_delay)
+		addtimer(CALLBACK(src, PROC_REF(get_target)), fire_delay)
 
 /obj/structure/machinery/defenses/sentry/proc/actual_fire(var/atom/A)
 	var/obj/item/projectile/P = new(src, create_cause_data(initial(name), owner_mob, src))
@@ -249,7 +249,7 @@
 		return
 
 	SetLuminosity(SENTRY_MUZZLELUM)
-	addtimer(CALLBACK(src, /atom.proc/SetLuminosity, -SENTRY_MUZZLELUM), 10)
+	addtimer(CALLBACK(src, TYPE_PROC_REF(/atom, SetLuminosity), -SENTRY_MUZZLELUM), 10)
 
 	var/image_layer = layer + 0.1
 	var/offset = 13

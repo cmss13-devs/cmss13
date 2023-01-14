@@ -13,7 +13,7 @@ They're all essentially identical when it comes to getting the job done.
 	flags_atom = FPRINT|CONDUCT
 	flags_equip_slot = SLOT_WAIST
 	matter = list("metal" = 1000)
-	 //Low.
+	//Low.
 	throwforce = 2
 	w_class = SIZE_SMALL
 	throw_speed = SPEED_SLOW
@@ -78,6 +78,9 @@ They're all essentially identical when it comes to getting the job done.
 /obj/item/ammo_magazine/attack_hand(mob/user)
 	if(flags_magazine & AMMUNITION_REFILLABLE) //actual refillable magazine, not just a handful of bullets or a fuel tank.
 		if(src == user.get_inactive_hand()) //Have to be holding it in the hand.
+			if(flags_magazine & AMMUNITION_CANNOT_REMOVE_BULLETS)
+				to_chat(user, SPAN_WARNING("You can't remove ammo from \the [src]!"))
+				return
 			if (current_rounds > 0)
 				if(create_handful(user))
 					return
@@ -117,7 +120,7 @@ They're all essentially identical when it comes to getting the job done.
 		qdel(source) //Dangerous. Can mean future procs break if they reference the source. Have to account for this.
 	else source.update_icon()
 
-	if(!istype(src, /obj/item/ammo_magazine/internal) && !istype(src, /obj/item/ammo_magazine/shotgun) && !istype(source, /obj/item/ammo_magazine/shotgun))	//if we are shotgun or revolver or whatever not using normal mag system
+	if(!istype(src, /obj/item/ammo_magazine/internal) && !istype(src, /obj/item/ammo_magazine/shotgun) && !istype(source, /obj/item/ammo_magazine/shotgun)) //if we are shotgun or revolver or whatever not using normal mag system
 		playsound(loc, pick('sound/weapons/handling/mag_refill_1.ogg', 'sound/weapons/handling/mag_refill_2.ogg', 'sound/weapons/handling/mag_refill_3.ogg'), 25, 1)
 
 	update_icon(S)
@@ -131,7 +134,7 @@ They're all essentially identical when it comes to getting the job done.
 		amount_to_transfer = transfer_amount ? min(current_rounds, transfer_amount) : min(current_rounds, transfer_handful_amount)
 		new_handful.generate_handful(default_ammo, caliber, transfer_handful_amount, amount_to_transfer, gun_type)
 		current_rounds -= amount_to_transfer
-		if(!istype(src, /obj/item/ammo_magazine/internal) && !istype(src, /obj/item/ammo_magazine/shotgun))	//if we are shotgun or revolver or whatever not using normal mag system
+		if(!istype(src, /obj/item/ammo_magazine/internal) && !istype(src, /obj/item/ammo_magazine/shotgun)) //if we are shotgun or revolver or whatever not using normal mag system
 			playsound(loc, pick('sound/weapons/handling/mag_refill_1.ogg', 'sound/weapons/handling/mag_refill_2.ogg', 'sound/weapons/handling/mag_refill_3.ogg'), 25, 1)
 
 		if(user)
@@ -156,7 +159,7 @@ They're all essentially identical when it comes to getting the job done.
 		var/severity = round(current_rounds / 50)
 		//the more ammo inside, the faster and harder it cooks off
 		if(severity > 0)
-			addtimer(CALLBACK(GLOBAL_PROC, .proc/explosion, loc, -1, ((severity > 4) ? 0 : -1), Clamp(severity, 0, 1), Clamp(severity, 0, 2), 1, 0, 0, flame_cause_data), max(5 - severity, 2))
+			addtimer(CALLBACK(GLOBAL_PROC, PROC_REF(explosion), loc, -1, ((severity > 4) ? 0 : -1), Clamp(severity, 0, 1), Clamp(severity, 0, 2), 1, 0, 0, flame_cause_data), max(5 - severity, 2))
 
 	if(!QDELETED(src))
 		qdel(src)
@@ -175,7 +178,7 @@ They're all essentially identical when it comes to getting the job done.
 	var/chamber_closed = 1 //Starts out closed. Depends on firearm.
 
 //Helper proc, to allow us to see a percentage of how full the magazine is.
-/obj/item/ammo_magazine/proc/get_ammo_percent()		// return % charge of cell
+/obj/item/ammo_magazine/proc/get_ammo_percent() // return % charge of cell
 	return 100.0*current_rounds/max_rounds
 
 //----------------------------------------------------------------//

@@ -1,23 +1,23 @@
-#define AIRLOCK_WIRE_MAIN_POWER     1
+#define AIRLOCK_WIRE_MAIN_POWER  1
 #define AIRLOCK_WIRE_BACKUP_POWER   2
-#define AIRLOCK_WIRE_DOOR_BOLTS     3
-#define AIRLOCK_WIRE_OPEN_DOOR      4
-#define AIRLOCK_WIRE_IDSCAN         5
-#define AIRLOCK_WIRE_LIGHT          6
-#define AIRLOCK_WIRE_SAFETY         7
-#define AIRLOCK_WIRE_SPEED          8
-#define AIRLOCK_WIRE_ELECTRIFY      9
+#define AIRLOCK_WIRE_DOOR_BOLTS  3
+#define AIRLOCK_WIRE_OPEN_DOOR   4
+#define AIRLOCK_WIRE_IDSCAN  5
+#define AIRLOCK_WIRE_LIGHT   6
+#define AIRLOCK_WIRE_SAFETY  7
+#define AIRLOCK_WIRE_SPEED   8
+#define AIRLOCK_WIRE_ELECTRIFY   9
 
 GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 		AIRLOCK_WIRE_MAIN_POWER   = "Main power",
 		AIRLOCK_WIRE_BACKUP_POWER = "Backup power",
 		AIRLOCK_WIRE_DOOR_BOLTS   = "Door bolts",
-		AIRLOCK_WIRE_OPEN_DOOR    = "Door motors",
-		AIRLOCK_WIRE_IDSCAN       = "ID scanner",
-		AIRLOCK_WIRE_LIGHT        = "Bolt lights",
-		AIRLOCK_WIRE_SAFETY       = "Proximity sensor",
-		AIRLOCK_WIRE_SPEED        = "Motor speed override",
-		AIRLOCK_WIRE_ELECTRIFY    = "Ground safety"
+		AIRLOCK_WIRE_OPEN_DOOR = "Door motors",
+		AIRLOCK_WIRE_IDSCAN    = "ID scanner",
+		AIRLOCK_WIRE_LIGHT = "Bolt lights",
+		AIRLOCK_WIRE_SAFETY    = "Proximity sensor",
+		AIRLOCK_WIRE_SPEED = "Motor speed override",
+		AIRLOCK_WIRE_ELECTRIFY = "Ground safety"
 	))
 
 /obj/structure/machinery/door/airlock
@@ -48,7 +48,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 	normalspeed = 1
 	var/obj/item/circuitboard/airlock/electronics = null
 	var/hasShocked = 0 //Prevents multiple shocks from happening
-	var/secured_wires = 0	//for mapping use
+	var/secured_wires = 0 //for mapping use
 
 	var/no_panel = 0 //the airlock has no panel that can be screwdrivered open
 	var/not_weldable = 0 // stops people welding the door if true
@@ -213,8 +213,8 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 			//tries to open the door without ID
 			//will succeed only if the ID wire is cut or the door requires no access
 			if(!requiresID() || check_access(null))
-				if(density)	open()
-				else		close()
+				if(density) open()
+				else close()
 
 		if(AIRLOCK_WIRE_SAFETY)
 			safe = !safe
@@ -379,7 +379,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 	if(!arePowerSystemsOn())
 		return FALSE
 	if(hasShocked)
-		return FALSE	//Already shocked someone recently?
+		return FALSE //Already shocked someone recently?
 	if(..())
 		hasShocked = 1
 		sleep(10)
@@ -726,7 +726,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 	if(!forced)
 		if( !arePowerSystemsOn() || isWireCut(AIRLOCK_WIRE_OPEN_DOOR) )
 			return FALSE
-	use_power(360)	//360 W seems much more appropriate for an actuator moving an industrial door capable of crushing people
+	use_power(360) //360 W seems much more appropriate for an actuator moving an industrial door capable of crushing people
 	if(istype(src, /obj/structure/machinery/door/airlock/glass))
 		playsound(loc, 'sound/machines/windowdoor.ogg', 25, 1)
 	else
@@ -744,7 +744,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 	if(safe)
 		for(var/turf/turf in locs)
 			if(locate(/mob/living) in turf)
-			//	playsound(loc, 'sound/machines/buzz-two.ogg', 25, 0)	//THE BUZZING IT NEVER STOPS	-Pete
+			// playsound(loc, 'sound/machines/buzz-two.ogg', 25, 0) //THE BUZZING IT NEVER STOPS -Pete
 				spawn (60 + openspeed)
 					close()
 				return
@@ -769,7 +769,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 
 	break_resin_objects()
 
-	use_power(360)	//360 W seems much more appropriate for an actuator moving an industrial door capable of crushing people
+	use_power(360) //360 W seems much more appropriate for an actuator moving an industrial door capable of crushing people
 	if(istype(src, /obj/structure/machinery/door/airlock/glass))
 		playsound(loc, 'sound/machines/windowdoor.ogg', 25, 1)
 	else
@@ -839,7 +839,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 		things_to_shmush |= i.contents
 	for(var/x in things_to_shmush)
 		for(var/i in resin_door_shmushereds)
-			if(istype(x,i)) 								//I would like to just use a if(locate() in ) here but Im not gonna add every child to GLOB.resin_door_shmushereds so it works
+			if(istype(x,i)) //I would like to just use a if(locate() in ) here but Im not gonna add every child to GLOB.resin_door_shmushereds so it works
 				playsound(loc, "alien_resin_break", 25)
 				visible_message(SPAN_WARNING("The [src.name] closes on the [x], shmushing it!"))
 				if(isturf(x))

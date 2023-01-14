@@ -17,36 +17,36 @@
 	var/icon_broken = "lockbox+b"
 
 
-	attackby(obj/item/W as obj, mob/user as mob)
-		if (istype(W, /obj/item/card/id))
-			if(src.broken)
-				to_chat(user, SPAN_DANGER("It appears to be broken."))
+/obj/item/storage/lockbox/attackby(obj/item/W as obj, mob/user as mob)
+	if (istype(W, /obj/item/card/id))
+		if(src.broken)
+			to_chat(user, SPAN_DANGER("It appears to be broken."))
+			return
+		if(src.allowed(user))
+			src.locked = !( src.locked )
+			if(src.locked)
+				src.icon_state = src.icon_locked
+				to_chat(user, SPAN_DANGER("You lock the [src.name]!"))
 				return
-			if(src.allowed(user))
-				src.locked = !( src.locked )
-				if(src.locked)
-					src.icon_state = src.icon_locked
-					to_chat(user, SPAN_DANGER("You lock the [src.name]!"))
-					return
-				else
-					src.icon_state = src.icon_closed
-					to_chat(user, SPAN_DANGER("You unlock the [src.name]!"))
-					return
 			else
-				to_chat(user, SPAN_DANGER("Access denied"))
-		if(!locked)
-			..()
+				src.icon_state = src.icon_closed
+				to_chat(user, SPAN_DANGER("You unlock the [src.name]!"))
+				return
 		else
-			to_chat(user, SPAN_DANGER("It's locked!"))
-		return
+			to_chat(user, SPAN_DANGER("Access denied"))
+	if(!locked)
+		..()
+	else
+		to_chat(user, SPAN_DANGER("It's locked!"))
+	return
 
 
-	show_to(mob/user as mob)
-		if(locked)
-			to_chat(user, SPAN_DANGER("It's locked!"))
-		else
-			..()
-		return
+/obj/item/storage/lockbox/show_to(mob/user as mob)
+	if(locked)
+		to_chat(user, SPAN_DANGER("It's locked!"))
+	else
+		..()
+	return
 
 
 /obj/item/storage/lockbox/loyalty

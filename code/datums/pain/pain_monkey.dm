@@ -1,12 +1,12 @@
 /datum/pain/monkey
-	max_pain 			= 200
+	max_pain = 200
 
-	threshold_mild 				= 10
-	threshold_discomforting 	= 20
-	threshold_moderate			= 40
-	threshold_distressing		= 50
-	threshold_severe			= 65
-	threshold_horrible			= 75
+	threshold_mild = 10
+	threshold_discomforting = 20
+	threshold_moderate = 40
+	threshold_distressing = 50
+	threshold_severe = 65
+	threshold_horrible = 75
 
 /datum/pain/monkey/activate_mild()
 	pain_slowdown = PAIN_SPEED_LOW

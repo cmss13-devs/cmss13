@@ -1,5 +1,5 @@
 /mob
-	density = 1
+	density = TRUE
 	layer = MOB_LAYER
 	animate_movement = 2
 	rebounds = TRUE
@@ -36,31 +36,31 @@
 	var/computer_id = null //to track the players
 	var/list/attack_log = list( )
 	var/atom/movable/interactee //the thing that the mob is currently interacting with (e.g. a computer, another mob (stripping a mob), manning a hmg)
-	var/sdisabilities = 0	//Carbon
-	var/disabilities = 0	//Carbon
+	var/sdisabilities = 0 //Carbon
+	var/disabilities = 0 //Carbon
 	var/atom/movable/pulling = null
 	var/next_move = null
-	var/next_move_slowdown = 0	// Amount added during the next movement_delay(), then is reset.
+	var/next_move_slowdown = 0 // Amount added during the next movement_delay(), then is reset.
 	var/speed = 0 //Speed that modifies the movement delay of a given mob
 	var/recalculate_move_delay = TRUE // Whether move delay needs to be recalculated, on by default so that new mobs actually get movement delay calculated upon creation
 	var/crawling = FALSE
 	var/can_crawl = TRUE
-	var/monkeyizing = null	//Carbon
+	var/monkeyizing = null //Carbon
 	var/hand = null
 
 	// status effects that decrease over time \\
 
 	/// timer for blinding
-	var/eye_blind = 0	//Carbon
+	var/eye_blind = 0 //Carbon
 	/// Does the mob have blurry sight
 	var/eye_blurry = 0 //Carbon
-	var/ear_deaf = 0		//Carbon
-	var/ear_damage = 0	//Carbon
-	var/stuttering = 0	//Carbon
-	var/slurring = 0		//Carbon
-	var/paralyzed = 0		//Carbon
-	var/druggy = 0			//Carbon
-	var/confused = 0		//Carbon
+	var/ear_deaf = 0 //Carbon
+	var/ear_damage = 0 //Carbon
+	var/stuttering = 0 //Carbon
+	var/slurring = 0 //Carbon
+	var/paralyzed = 0 //Carbon
+	var/druggy = 0 //Carbon
+	var/confused = 0 //Carbon
 	var/drowsyness = 0.0//Carbon
 	var/dizziness = 0//Carbon
 	var/jitteriness = 0//Carbon
@@ -78,9 +78,9 @@
 	// bool status effects \\
 
 	/// bool that tracks if blind
-	var/blinded = 0
-	var/sleeping = 0		//Carbon
-	var/resting = 0			//Carbon
+	var/blinded = FALSE
+	var/sleeping = 0 //Carbon
+	var/resting = 0 //Carbon
 	var/is_floating = 0
 	var/is_dizzy = 0
 	var/is_jittery = 0
@@ -101,10 +101,10 @@
 	var/lastpuke = 0
 	unacidable = FALSE
 	var/mob_size = MOB_SIZE_HUMAN
-	var/list/embedded = list()          // Embedded items, since simple mobs don't have organs.
-	var/list/datum/language/languages = list()         // For speaking/listening.
+	var/list/embedded = list()   // Embedded items, since simple mobs don't have organs.
+	var/list/datum/language/languages = list()  // For speaking/listening.
 	var/list/speak_emote = list("says") // Verbs used when speaking. Defaults to 'say' if speak_emote is null.
-	var/emote_type = 1		// Define emote default type, 1 for seen emotes, 2 for heard emotes
+	var/emote_type = 1 // Define emote default type, 1 for seen emotes, 2 for heard emotes
 
 	var/name_archive //For admin things like possession
 
@@ -125,18 +125,19 @@
 	var/life_steps_total = 0
 	var/life_kills_total = 0
 	var/life_damage_taken_total = 0
+	var/festivizer_hits_total = 0
 
 	var/life_value = 1 // when killed, the killee gets this much added to its life_kills_total
 	var/default_honor_value = 1 // when killed by a yautja, this determines the minimum amount of honor gained
 
-	var/bodytemperature = 310.055	//98.7 F
+	var/bodytemperature = 310.055 //98.7 F
 	var/old_x = 0
 	var/old_y = 0
 
 	var/charges = 0.0
 	var/nutrition = NUTRITION_NORMAL//Carbon
 
-	var/overeatduration = 0		// How long this guy is overeating //Carbon
+	var/overeatduration = 0 // How long this guy is overeating //Carbon
 	var/recovery_constant = 1
 	var/a_intent = INTENT_HELP//Living
 	var/m_intent = MOVE_INTENT_RUN
@@ -165,7 +166,7 @@
 
 	var/voice_name = "unidentifiable voice"
 
-	var/job = null					// Internal job title used when mob is spawned. Preds are "Predator", Xenos are "Xenomorph", Marines have their actual job title
+	var/job = null // Internal job title used when mob is spawned. Preds are "Predator", Xenos are "Xenomorph", Marines have their actual job title
 	var/comm_title = ""
 	var/faction = FACTION_NEUTRAL
 	var/faction_group
@@ -183,7 +184,7 @@
 
 	mouse_drag_pointer = MOUSE_ACTIVE_POINTER
 
-	var/status_flags = CANKNOCKDOWN|CANPUSH|STATUS_FLAGS_DEBILITATE	//bitflags defining which status effects can be inflicted (replaces canweaken, canstun, etc)
+	var/status_flags = CANKNOCKDOWN|CANPUSH|STATUS_FLAGS_DEBILITATE //bitflags defining which status effects can be inflicted (replaces canweaken, canstun, etc)
 
 	var/area/lastarea = null
 	var/obj/control_object //Used by admins to possess objects. All mobs should have this var
@@ -213,7 +214,7 @@
 
 	var/action_busy //whether the mob is currently doing an action that takes time (do_after proc)
 	var/resisting // whether the mob is currently resisting (primarily for do_after proc)
-	var/clicked_something 	// a list of booleans for if a mob did a specific click
+	var/clicked_something // a list of booleans for if a mob did a specific click
 							// only left click, shift click, right click, and middle click
 
 	var/datum/cause_data/last_damage_data // for tracking whatever damaged us last
@@ -234,6 +235,9 @@
 	///the mob's tgui player panel
 	var/datum/player_panel/mob_panel
 
+	///the mob's tgui player panel
+	var/datum/language_menu/mob_language_menu
+
 	var/datum/focus
 
 	///the current turf being examined in the stat panel
@@ -249,3 +253,10 @@
 	var/list/important_radio_channels = list()
 
 	var/datum/click_intercept
+
+	///the icon currently used for the typing indicator's bubble
+	var/mutable_appearance/active_typing_indicator
+	///the icon currently used for the thinking indicator's bubble
+	var/mutable_appearance/active_thinking_indicator
+	/// User is thinking in character. Used to revert to thinking state after stop_typing
+	var/thinking_IC = FALSE

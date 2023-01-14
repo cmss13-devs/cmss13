@@ -1,5 +1,0 @@
-author: "Casper"
-delete-after: True
-changes:
-  - qol: "Fire alarms now trigger on click"
-  - bugfix: "Fixed fire alarm sprite issues"

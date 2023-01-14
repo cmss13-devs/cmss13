@@ -3,7 +3,7 @@
 	desc = "It's a basic storage unit."
 	icon = 'icons/obj/structures/closet.dmi'
 	icon_state = "closed"
-	density = 1
+	density = TRUE
 	layer = BELOW_OBJ_LAYER
 	var/icon_closed = "closed"
 	var/icon_opened = "open"
@@ -30,7 +30,7 @@
 
 /obj/structure/closet/Initialize()
 	. = ..()
-	if(!opened && fill_from_loc)		// if closed, any item at the crate's loc is put in the contents
+	if(!opened && fill_from_loc) // if closed, any item at the crate's loc is put in the contents
 		for(var/obj/item/I in src.loc)
 			if(I.density || I.anchored || I == src)
 				continue
@@ -81,7 +81,7 @@
 	for(var/mob/M in src)
 		M.forceMove(loc)
 		if(exit_stun)
-			M.apply_effect(exit_stun, PARALYZE) //Action delay when going out of a closet
+			M.apply_effect(exit_stun, STUN) //Action delay when going out of a closet
 		M.update_canmove() //Force the delay to go in action immediately
 		if(!M.lying)
 			M.visible_message(SPAN_WARNING("[M] suddenly gets out of [src]!"),
@@ -100,7 +100,7 @@
 	opened = 1
 	update_icon()
 	playsound(src.loc, open_sound, 15, 1)
-	density = 0
+	density = FALSE
 	return 1
 
 /obj/structure/closet/proc/close()
@@ -114,13 +114,13 @@
 		stored_units = store_items(stored_units)
 	if(store_mobs)
 		stored_units = store_mobs(stored_units)
-		RegisterSignal(src, COMSIG_OBJ_FLASHBANGED, .proc/flashbang)
+		RegisterSignal(src, COMSIG_OBJ_FLASHBANGED, PROC_REF(flashbang))
 
 	opened = 0
 	update_icon()
 
 	playsound(src.loc, close_sound, 15, 1)
-	density = 1
+	density = TRUE
 	return 1
 
 /obj/structure/closet/proc/store_items(var/stored_units)
@@ -206,7 +206,7 @@
 			if(isXeno(user)) return
 			var/obj/item/grab/G = W
 			if(G.grabbed_thing)
-				src.MouseDrop_T(G.grabbed_thing, user)      //act like they were dragged onto the closet
+				src.MouseDrop_T(G.grabbed_thing, user)   //act like they were dragged onto the closet
 			return
 		if(W.flags_item & ITEM_ABSTRACT)
 			return 0

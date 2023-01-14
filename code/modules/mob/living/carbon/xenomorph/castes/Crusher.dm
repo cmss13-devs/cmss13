@@ -206,6 +206,9 @@
 
 	var/aoe_slash_damage_reduction = 0.40
 
+	/// Utilized to update charging animation.
+	var/is_charging = FALSE
+
 /datum/behavior_delegate/crusher_base/melee_attack_additional_effects_target(mob/living/carbon/A)
 
 	if (!isXenoOrHuman(A))
@@ -268,6 +271,6 @@
 	. += "Shield: [shield_total]"
 
 /datum/behavior_delegate/crusher_base/on_update_icons()
-	if(bound_xeno.throwing) //Let it build up a bit so we're not changing icons every single turf
+	if(bound_xeno.throwing || is_charging) //Let it build up a bit so we're not changing icons every single turf
 		bound_xeno.icon_state = "[bound_xeno.mutation_icon_state || bound_xeno.mutation_type] Crusher Charging"
 		return TRUE

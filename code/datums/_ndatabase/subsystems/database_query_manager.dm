@@ -22,12 +22,12 @@
 var/datum/controller/subsystem/database_query_manager/SSdatabase
 
 /datum/controller/subsystem/database_query_manager
-	name          = "Database QM"
-	wait		  = 1
-	init_order    = SS_INIT_DATABASE
-	init_stage    = INITSTAGE_EARLY
-	priority      = SS_PRIORITY_DATABASE // Low prio SS_TICKER
-	flags         = SS_TICKER
+	name   = "Database QM"
+	wait   = 1
+	init_order = SS_INIT_DATABASE
+	init_stage = INITSTAGE_EARLY
+	priority   = SS_PRIORITY_DATABASE // Low prio SS_TICKER
+	flags  = SS_TICKER
 
 	var/datum/db/connection/connection
 	var/datum/db/connection_settings/settings
@@ -178,7 +178,7 @@ var/datum/controller/subsystem/database_query_manager/SSdatabase
 	var/list/Lines = file2list(filename)
 	var/list/result = list()
 	for(var/t in Lines)
-		if(!t)	continue
+		if(!t) continue
 
 		t = trim(t)
 		if(length(t) == 0)

@@ -134,7 +134,7 @@
 		if(!momentum)
 			return
 		var/lol = get_ranged_target_turf(Xeno, charge_dir, momentum/2)
-		INVOKE_ASYNC(Xeno, /atom/movable.proc/throw_atom, lol, momentum/2, SPEED_FAST, null, TRUE)
+		INVOKE_ASYNC(Xeno, TYPE_PROC_REF(/atom/movable, throw_atom), lol, momentum/2, SPEED_FAST, null, TRUE)
 		stop_momentum()
 		return
 	if(!isturf(Xeno.loc))
@@ -188,7 +188,7 @@
 				dist = momentum * 0.25
 			step(Mob, ram_dir, dist)
 			Mob.take_overall_armored_damage(momentum * 6)
-			INVOKE_ASYNC(Mob, /mob/living/carbon/human.proc/emote,"pain")
+			INVOKE_ASYNC(Mob, TYPE_PROC_REF(/mob/living/carbon/human, emote),"pain")
 			shake_camera(Mob, 7,3)
 			animation_flash_color(Mob)
 

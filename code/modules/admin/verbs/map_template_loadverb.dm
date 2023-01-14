@@ -50,7 +50,7 @@
 		if("Normal")
 			M = new /datum/map_template(map, "[map]", TRUE)
 		//if("Shuttle")
-		//	M = new /datum/map_template/shuttle(map, "[map]", TRUE)
+		// M = new /datum/map_template/shuttle(map, "[map]", TRUE)
 		else
 			return
 	if(!M.cached_map)

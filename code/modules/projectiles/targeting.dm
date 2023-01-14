@@ -20,8 +20,8 @@
 	if(lock_time > world.time - 2) return
 	.
 	if(ismob(A) && isliving(A) && !(A in target))
-		Aim(A) 	//Clicked a mob, aim at them
-	else  		//Didn't click someone, check if there is anyone along that guntrace
+		Aim(A) //Clicked a mob, aim at them
+	else //Didn't click someone, check if there is anyone along that guntrace
 		var/mob/living/M = GunTrace(user.x,user.y,A.x,A.y,user.z,user)  //Find dat mob.
 		if(M && isliving(M) && (M in view(user)) && !(M in target))
 			Aim(M) //Aha!  Aim at them!
@@ -61,7 +61,8 @@
 
 //Yay, math!
 
-#define SIGN(X) ((X<0)?-1:1)
+/// Gets the sign of x, returns -1 if negative, 0 if 0, 1 if positive
+#define SIGN(x) ( ((x) > 0) - ((x) < 0) )
 
 /proc/GunTrace(X1,Y1,X2,Y2,Z=1,exc_obj,PX1=16,PY1=16,PX2=16,PY2=16)
 	//bluh << "Tracin' [X1],[Y1] to [X2],[Y2] on floor [Z]."

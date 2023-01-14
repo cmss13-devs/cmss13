@@ -210,7 +210,8 @@
 			if("encrypt")
 				var/key_found = FALSE
 				for(var/i in tool.encryption_keys)
-					var/obj/item = tool.encryption_keys[i]
+					var/datum/weakref/ref = tool.encryption_keys[i]
+					var/obj/item = ref.resolve()
 					if(istype(item, /obj/item/device/sentry_computer))
 						var/obj/item/device/sentry_computer/computer = item
 						to_chat(usr, SPAN_NOTICE("Attempting link to [item.name] [computer.serial_number]."))

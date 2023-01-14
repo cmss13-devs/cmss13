@@ -24,7 +24,7 @@
 	var/list/encryption_keys = list()
 
 /obj/item/device/multitool/proc/load_encryption_key(var/key, var/obj/object)
-	encryption_keys[key] = object
+	encryption_keys[key] = WEAKREF(object)
 
 /obj/item/device/multitool/proc/has_encryption_key(var/key)
 	if(encryption_keys[key])

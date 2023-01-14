@@ -416,6 +416,7 @@ const SentryCamera = (
   });
   const sentry_name = sentry?.name ?? 'Unknown';
   const sentry_area = sentry?.area ?? 'Unknown';
+
   return (
     <Flex direction="column" align="stretch" className="SentryCameraStack">
       <Flex.Item>
@@ -436,6 +437,16 @@ const SentryCamera = (
       <Flex.Item>
         <Box height={1} />
       </Flex.Item>
+      {sentry !== undefined && sentry.camera_available === 0 && (
+        <>
+          <Flex.Item>
+            <span>No camera is available on {sentry.name}</span>
+          </Flex.Item>
+          <Flex.Item>
+            <Box height={1} />
+          </Flex.Item>
+        </>
+      )}
       <Flex.Item>
         <Flex justify="center">
           <Flex.Item>

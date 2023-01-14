@@ -54,7 +54,7 @@
 	faction_group = FACTION_LIST_MARINE
 	transceiver.forceMove(src)
 	transceiver.set_frequency(SENTRY_FREQ)
-	transceiver.config(list(RADIO_CHANNEL_SENTY=1))
+	transceiver.config(list(RADIO_CHANNEL_SENTRY=1))
 	voice.name = "[name]:[serial_number]"
 	voice.forceMove(src)
 
@@ -128,11 +128,10 @@
 	var/message = "[displayname]:[areaname] out of ammo."
 	INVOKE_ASYNC(src, PROC_REF(send_message), message)
 
-/obj/item/device/sentry_computer/proc/send_message(var/message, var/show_message=TRUE)
+/obj/item/device/sentry_computer/proc/send_message(var/message)
 	if(!silent && transceiver)
-		transceiver.talk_into(voice, "[message]", RADIO_CHANNEL_SENTY)
-		if(show_message)
-			voice.say(message)
+		transceiver.talk_into(voice, "[message]", RADIO_CHANNEL_SENTRY)
+		voice.say(message)
 
 /obj/item/device/sentry_computer/attack_hand(mob/user)
 	if(setup)
@@ -192,9 +191,11 @@
 				to_chat(user, SPAN_NOTICE("Removing existing encryption keys."))
 				if (do_after(usr, 1 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
 					for(var/key_id in tool.encryption_keys)
-						var/obj/item/device/sentry_computer/key_object = tool.encryption_keys[key_id]
+						var/datum/weakref/ref = tool.encryption_keys[key_id]
+						var/obj/item/device/sentry_computer/key_object = ref.resolve()
 						key_object.registered_tools -= id
 					tool.encryption_keys = list()
+				to_chat(user, SPAN_NOTICE("Existing encryption keys cleared."))
 			to_chat(usr, SPAN_NOTICE("You begin encryption key to \the [tool]."))
 			if (do_after(usr, 1 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
 				to_chat(user, SPAN_NOTICE("You load an encryption key to \the [tool]."))
@@ -209,7 +210,7 @@
 		pair_sentry(defence)
 		to_chat(user, SPAN_NOTICE("\The [defence] has been encrypted."))
 		var/message = "[defence] added to [src]"
-		INVOKE_ASYNC(src, PROC_REF(send_message), message, FALSE)
+		INVOKE_ASYNC(src, PROC_REF(send_message), message)
 
 /obj/item/device/sentry_computer/proc/unregister(var/tool, mob/user, var/sentry_gun)
 	var/obj/structure/machinery/defenses/sentry/sentry = sentry_gun
@@ -218,7 +219,7 @@
 			unpair_sentry(sentry)
 			to_chat(user, SPAN_NOTICE("\The [sentry] has been decrypted."))
 			var/message = "[sentry] removed from from [src]"
-			INVOKE_ASYNC(src, PROC_REF(send_message), message, FALSE)
+			INVOKE_ASYNC(src, PROC_REF(send_message), message)
 	else
 		to_chat(user, SPAN_WARNING("\The [sentry] is already encrypted by laptop [sentry.linked_laptop.serial_number]."))
 

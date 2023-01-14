@@ -38,7 +38,7 @@
 	name = "Sentry Network Status Encryption Key"
 	desc = "Automated channel to broadcast sentry gun updates"
 	icon_state = "eng_key"
-	channels = list(RADIO_CHANNEL_SENTY = TRUE)
+	channels = list(RADIO_CHANNEL_SENTRY = TRUE)
 
 /obj/item/device/encryptionkey/engi
 	name = "Engineering Radio Encryption Key"

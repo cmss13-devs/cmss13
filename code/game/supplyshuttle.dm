@@ -987,7 +987,7 @@ var/datum/controller/supply/supply_controller = new()
 	circuit = /obj/item/circuitboard/computer/supplycomp/vehicle
 	// Can only retrieve one vehicle per round
 	var/spent = FALSE
-	var/tank_unlocked = FALSE
+	var/tank_unlocked = TRUE
 	var/list/allowed_roles = list(JOB_CREWMAN)
 
 	var/list/vehicles
@@ -1030,7 +1030,8 @@ var/datum/controller/supply/supply_controller = new()
 	vehicles = list(
 		new/datum/vehicle_order/apc(),
 		new/datum/vehicle_order/apc/med(),
-		new/datum/vehicle_order/apc/cmd()
+		new/datum/vehicle_order/apc/cmd(),
+		new/datum/vehicle_order/tank()
 	)
 
 	if(!VehicleElevatorConsole)

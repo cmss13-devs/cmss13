@@ -315,7 +315,7 @@ their unique feature is that a direct hit will buff your damage and firerate
 
 /obj/item/weapon/gun/lever_action/r4t
 	name = "R4T lever-action rifle"
-	desc = "This rifle was very shortly handed out to USCM marines in field testing, but was rejected for a plethora of reasons very quickly. Despite that, it left a deep impact on some of the marines who were able to utilize it, and it remains a favored weapon for hunting and ex-USCM mercenary usage."
+	desc = "This lever-action was designed for small scout operations in harsh environments such as the jungle or particularly windy deserts, as such its internal mechanisms are simple yet robust."
 	icon_state = "r4t"
 	item_state = "r4t"
 	flags_equip_slot = SLOT_BACK

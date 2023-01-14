@@ -94,13 +94,13 @@
 
 //------------
 //R4T lever action rifle
-/obj/item/storage/box/guncase/r4t
-	name = "\improper R4T lever action rifle field-test case"
-	desc = "A vintage field-testing case containing the R4T lever action rifle, never opened. Where the hell did you find this? Comes with an ammunition belt, the optional revolver attachment for it, two boxes of ammunition, a sling, and a stock for the rifle."
+/obj/item/storage/box/guncase/r4t_scout
+	name = "\improper R4T lever action rifle case"
+	desc = "A gun case containing the R4T lever action rifle, intended for scouting. Comes with an ammunition belt, the optional revolver attachment for it, two boxes of ammunition, a sling, and a stock for the rifle."
 	storage_slots = 7
-	can_hold = list(/obj/item/weapon/gun/lever_action/r4t, /obj/item/attachable/stock/r4t, /obj/item/attachable/magnetic_harness/lever_sling, /obj/item/ammo_magazine/lever_action, /obj/item/ammo_magazine/lever_action/training, /obj/item/storage/belt/shotgun/lever_action, /obj/item/storage/belt/gun/m44/lever_action/attach_holster)
+	can_hold = list(/obj/item/weapon/gun/lever_action/r4t, /obj/item/attachable/stock/r4t, /obj/item/attachable/magnetic_harness/lever_sling, /obj/item/ammo_magazine/lever_action, /obj/item/ammo_magazine/lever_action/training, /obj/item/storage/belt/shotgun/lever_action, /obj/item/storage/belt/gun/m44/lever_action/attach_holster, /obj/item/device/motiondetector/m717)
 
-/obj/item/storage/box/guncase/r4t/fill_preset_inventory()
+/obj/item/storage/box/guncase/r4t_scout/fill_preset_inventory()
 	new /obj/item/weapon/gun/lever_action/r4t(src)
 	new /obj/item/attachable/stock/r4t(src)
 	new /obj/item/attachable/magnetic_harness/lever_sling(src)

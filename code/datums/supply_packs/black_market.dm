@@ -501,6 +501,17 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 	)
 	dollar_cost = 30
 
+/datum/supply_packs/contraband/seized/r4t
+	name = "R4T hunting rifle case (x3 ammo boxes)"
+	contains = list(
+			/obj/item/weapon/gun/lever_action/r4t,
+			/obj/item/attachable/stock/r4t,
+			/obj/item/ammo_magazine/lever_action,
+			/obj/item/ammo_magazine/lever_action,
+			/obj/item/ammo_magazine/lever_action/training
+	)
+	dollar_cost = 75
+
 /* --- SHIPSIDE CONTRABAND --- */
 
 /*
@@ -742,11 +753,6 @@ USCM spare items, miscellaneous gear that's too niche and distant (or restricted
 	name = "surplus MK-45 Automagnum case"
 	dollar_cost = 35
 	contains = list(/obj/item/storage/box/guncase/mk45_automag)
-
-/datum/supply_packs/contraband/surplus/r4t
-	name = "surplus R4T field-testing case"
-	dollar_cost = 75
-	contains = list(/obj/item/storage/box/guncase/r4t)
 
 /datum/supply_packs/contraband/surplus/nsg23_marine
 	name = "surplus NSG 23 assault rifle case"

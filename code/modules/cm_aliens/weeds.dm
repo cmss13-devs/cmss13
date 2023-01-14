@@ -160,8 +160,6 @@
 
 	var/mob/living/crossing_mob = atom_movable
 
-	SEND_SIGNAL(crossing_mob, COMSIG_MOB_WEEDS_CROSS, src)
-
 	var/weed_slow = weed_strength
 
 	if(crossing_mob.ally_of_hivenumber(linked_hive.hivenumber))

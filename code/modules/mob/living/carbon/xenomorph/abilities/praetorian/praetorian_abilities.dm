@@ -284,10 +284,10 @@
 	activation_delay = TRUE
 	activation_delay_length = 5
 
-/datum/action/xeno_action/activable/warden_heal
-	name = "Protect"
-	action_icon_state = "transfer_health"
-	ability_name = "protect"
+/datum/action/xeno_action/activable/warden_assist
+	name = "Assist Xeno"
+	action_icon_state = "prae_assist"
+	ability_name = "assist"
 	// todo: macro
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_3
@@ -301,6 +301,7 @@
 	var/heal_cost = 100
 	var/heal_amount = 150
 
+	//Aren't these shield variables obsolete after we removed prae's shield toggle?
 	var/shield_cost = 100
 	var/shield_amount = 125
 	var/shield_duration = 1 MINUTES
@@ -338,12 +339,12 @@
 	if (WH.curr_effect_type == WARDEN_HEAL_HP)
 		action_icon_result = "warden_rejuvenate"
 		WH.curr_effect_type = WARDEN_HEAL_DEBUFFS
-		to_chat(X, SPAN_XENOWARNING("You will now protect your allies by rejuvenating them!"))
+		to_chat(X, SPAN_XENOWARNING("You will assist your allies by rejuvenating them!"))
 
 	else
 		action_icon_result = "warden_heal"
 		WH.curr_effect_type = WARDEN_HEAL_HP
-		to_chat(X, SPAN_XENOWARNING("You will now protect your allies with a heal!"))
+		to_chat(X, SPAN_XENOWARNING("You will assist your allies by healing them!"))
 
 	button.overlays.Cut()
 	button.overlays += image('icons/mob/hud/actions_xeno.dmi', button, action_icon_result)

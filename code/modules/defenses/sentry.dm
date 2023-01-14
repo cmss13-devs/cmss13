@@ -99,8 +99,6 @@
 	else
 		overlays += "[defense_type] uac_[sentry_type]"
 
-	update_minimap_icon()
-
 
 /obj/structure/machinery/defenses/sentry/attack_hand_checks(var/mob/user)
 	if(immobile)
@@ -131,7 +129,7 @@
 	visible_message("[icon2html(src, viewers(src))] [SPAN_NOTICE("The [name] powers down and goes silent.")]")
 	stop_processing()
 	unset_range()
-	update_minimap_icon()
+	SSminimaps.remove_marker(src)
 
 /obj/structure/machinery/defenses/sentry/attackby(var/obj/item/O, var/mob/user)
 	if(QDELETED(O) || QDELETED(user))

@@ -632,6 +632,7 @@ can cause issues with ammo types getting mixed up during the burst.
 						/obj/item/attachable/lasersight,
 						/obj/item/attachable/stock/mou53)
 	map_specific_decoration = TRUE
+	fire_delay_group = list(FIRE_DELAY_GROUP_MOU53)
 
 /obj/item/weapon/gun/shotgun/double/mou53/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 18,"rail_x" = 11, "rail_y" = 21, "under_x" = 17, "under_y" = 15, "stock_x" = 10, "stock_y" = 9) //Weird stock values, make sure any new stock matches the old sprite placement in the .dmi

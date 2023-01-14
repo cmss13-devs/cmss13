@@ -55,6 +55,7 @@
 	transceiver.forceMove(src)
 	transceiver.set_frequency(SENTRY_FREQ)
 	transceiver.config(list(RADIO_CHANNEL_SENTRY=1))
+	transceiver.subspace_transmission = TRUE
 	voice.name = "[name]:[serial_number]"
 	voice.forceMove(src)
 

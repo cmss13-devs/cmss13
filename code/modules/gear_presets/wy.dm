@@ -1,6 +1,6 @@
 /datum/equipment_preset/wy
 	name = "WY"
-	paygrade = "WY1"
+	paygrade = "WYC1"
 
 	faction = FACTION_WY
 	rank = FACTION_WY
@@ -38,7 +38,7 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = JOB_TRAINEE
 	rank = JOB_TRAINEE
-	paygrade = "WY1"
+	paygrade = "WYC1"
 
 /datum/equipment_preset/wy/trainee/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/suit_jacket/trainee(H), WEAR_BODY)
@@ -49,35 +49,35 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = JOB_JUNIOR_EXECUTIVE
 	rank = JOB_JUNIOR_EXECUTIVE
-	paygrade = "WY2"
+	paygrade = "WYC2"
 
 /datum/equipment_preset/wy/exec
 	name = "Corporate - C - Executive"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = JOB_EXECUTIVE
 	rank = JOB_EXECUTIVE
-	paygrade = "WY3"
+	paygrade = "WYC3"
 
 /datum/equipment_preset/wy/senior_exec
 	name = "Corporate - D - Senior Executive"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = JOB_SENIOR_EXECUTIVE
 	rank = JOB_SENIOR_EXECUTIVE
-	paygrade = "WY4"
+	paygrade = "WYC4"
 
 /datum/equipment_preset/wy/exec_spec
 	name = "Corporate - E - Executive Specialist"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = JOB_EXECUTIVE_SPECIALIST
 	rank = JOB_EXECUTIVE_SPECIALIST
-	paygrade = "WY5"
+	paygrade = "WYC5"
 
 /datum/equipment_preset/wy/exec_supervisor
 	name = "Corporate - F - Executive Supervisor"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = JOB_EXECUTIVE_SUPERVISOR
 	rank = JOB_EXECUTIVE_SUPERVISOR
-	paygrade = "WY6"
+	paygrade = "WYC6"
 
 
 /datum/equipment_preset/wy/manager/assistant_manager
@@ -85,28 +85,28 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = JOB_ASSISTANT_MANAGER
 	rank = JOB_ASSISTANT_MANAGER
-	paygrade = "WY7"
+	paygrade = "WYC7"
 
 /datum/equipment_preset/wy/manager/division_manager
 	name = "Corporate - H - Division Manager"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = JOB_DIVISION_MANAGER
 	rank = JOB_DIVISION_MANAGER
-	paygrade = "WY8"
+	paygrade = "WYC8"
 
 /datum/equipment_preset/wy/manager/chief_executive
 	name = "Corporate - I - Chief Executive"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = JOB_CHIEF_EXECUTIVE
 	rank = JOB_CHIEF_EXECUTIVE
-	paygrade = "WY9"
+	paygrade = "WYC9"
 
 /datum/equipment_preset/wy/manager/director
 	name = "Corporate - J - Director"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = JOB_DIRECTOR
 	rank = JOB_DIRECTOR
-	paygrade = "WY10"
+	paygrade = "WYC10"
 	skills = /datum/skills/civilian/manager/director
 
 /datum/equipment_preset/wy/manager/director/load_gear(mob/living/carbon/human/H)

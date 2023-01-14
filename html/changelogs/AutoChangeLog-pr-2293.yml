@@ -1,4 +1,0 @@
-author: "Segrain"
-delete-after: True
-changes:
-  - bugfix: "Queen timelock now correctly calculates playtime as T3 castes."

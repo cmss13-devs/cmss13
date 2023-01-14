@@ -342,3 +342,23 @@
       3 hours of t3
   - code_imp: ported the sound loops subsystem from tg
   - soundadd: the tape recorder will now hiss during playback
+2023-01-14:
+  Morrow:
+  - bugfix: Fixed deploying a M2C backwards to jump through dense objects
+  Segrain:
+  - bugfix: Queen timelock now correctly calculates playtime as T3 castes.
+  - bugfix: Ghillie helmet is no longer exempt from having cosmetic accessories.
+  - bugfix: Sniper rifle's "toggle laser" action is no longer bound to the same key
+      as "aimed shot" action.
+  - qol: Sniper rifle's laser can now be toggled by pressing the "toggle burst" button.
+  harryob:
+  - refactor: ports unit tests from tg
+  - bugfix: fixes a runtime on a couple of unused admin maps. woo.
+  mullenpaul:
+  - maptweak: moved the external starboard shuttle ert docking port so that space
+      does not appear between the shuttle and the hangar
+  realforest2001:
+  - bugfix: Fixed the melee skill define on forecon survivors which was causing skill
+      menu runtime.
+  stanalbatross:
+  - rscdel: removed the unmaintained haunted house event map

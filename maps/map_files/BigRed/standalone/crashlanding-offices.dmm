@@ -810,12 +810,20 @@
 	},
 /area/bigredv2/outside/office_complex)
 "cw" = (
+/obj/item/weapon/gun/rifle/nsg23/no_lock/stripped{
+	name = "smashed NSG 23 assault rifle";
+	desc = "A rare sight, this rifle is seen most commonly in the hands of Weyland-Yutani PMCs. Compared to the M41A MK2, it has noticeably improved handling and vastly improved performance at long and medium range, but compares similarly up close. This one seems to have been heavily damaged from impact, you can still see some debris that resembles a scope and underbarrel attachment point on it."
+	},
 /turf/open/shuttle/dropship{
 	tag = "icon-rasputin5";
 	icon_state = "rasputin12"
 	},
 /area/bigredv2/outside/office_complex)
 "cx" = (
+/obj/effect/spawner/gibspawner/human,
+/obj/item/limb/arm/l_arm,
+/obj/item/limb/leg/l_leg,
+/obj/item/limb/hand/r_hand,
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin8";
 	tag = "icon-rasputin7"
@@ -1228,8 +1236,7 @@
 /area/bigredv2/outside/office_complex)
 "dH" = (
 /obj/effect/decal/cleanable/blood,
-/obj/effect/landmark/corpsespawner/pmc,
-/obj/item/weapon/gun/rifle/nsg23/no_lock,
+/obj/effect/landmark/corpsespawner/wygoon,
 /turf/open/shuttle/dropship{
 	icon_state = "floor8";
 	tag = "icon-rasputin7"
@@ -1238,10 +1245,7 @@
 "dI" = (
 /obj/structure/surface/rack,
 /obj/item/ammo_magazine/rifle/nsg23,
-/obj/item/ammo_magazine/rifle/nsg23,
-/obj/item/ammo_magazine/rifle/nsg23,
-/obj/item/ammo_magazine/rifle/nsg23,
-/obj/item/ammo_magazine/rifle/nsg23,
+/obj/item/ammo_magazine/rifle/nsg23/extended,
 /turf/open/shuttle/dropship{
 	tag = "icon-rasputin15";
 	icon_state = "rasputin15"
@@ -1273,7 +1277,6 @@
 /area/bigredv2/outside/office_complex)
 "dM" = (
 /obj/structure/surface/rack,
-/obj/item/storage/firstaid,
 /turf/open/shuttle/dropship{
 	tag = "icon-rasputin15";
 	icon_state = "rasputin15"
@@ -1282,6 +1285,9 @@
 "dN" = (
 /obj/structure/surface/rack,
 /obj/item/device/flashlight,
+/obj/item/ammo_magazine/pistol/rubber,
+/obj/item/ammo_magazine/pistol/rubber,
+/obj/item/ammo_magazine/pistol/rubber,
 /turf/open/shuttle/dropship{
 	tag = "icon-rasputin15";
 	icon_state = "rasputin15"
@@ -1478,6 +1484,47 @@
 	icon_state = "platingdmg1"
 	},
 /area/bigredv2/outside/office_complex)
+"fG" = (
+/obj/structure/bed/chair/dropship/passenger{
+	dir = 8
+	},
+/obj/item/device/radio/headset/distress/PMC,
+/turf/open/shuttle/dropship{
+	tag = "icon-rasputin15";
+	icon_state = "rasputin15"
+	},
+/area/bigredv2/outside/office_complex)
+"jx" = (
+/obj/effect/decal/cleanable/blood{
+	icon_state = "gib6";
+	dir = 1
+	},
+/obj/item/limb/leg/l_leg,
+/turf/open/shuttle/dropship{
+	tag = "icon-rasputin3";
+	icon_state = "rasputin3"
+	},
+/area/bigredv2/outside/office_complex)
+"od" = (
+/obj/structure/bed/chair/dropship/passenger{
+	dir = 4
+	},
+/obj/item/clothing/gloves/marine/veteran/PMC,
+/turf/open/shuttle/dropship{
+	tag = "icon-rasputin15";
+	icon_state = "rasputin15"
+	},
+/area/bigredv2/outside/office_complex)
+"oF" = (
+/obj/structure/bed/chair/dropship/passenger{
+	dir = 4
+	},
+/obj/item/clothing/under/marine/veteran/PMC,
+/turf/open/shuttle/dropship{
+	tag = "icon-rasputin15";
+	icon_state = "rasputin15"
+	},
+/area/bigredv2/outside/office_complex)
 "qX" = (
 /obj/effect/decal/cleanable/blood,
 /obj/effect/landmark/corpsespawner/pmc,
@@ -1492,11 +1539,65 @@
 	dir = 8
 	},
 /obj/effect/decal/cleanable/blood,
-/obj/effect/landmark/corpsespawner/pmc,
-/obj/item/weapon/gun/rifle/nsg23/no_lock,
+/obj/effect/spawner/gibspawner/human,
+/obj/item/clothing/head/helmet/marine/veteran/PMC,
+/obj/item/clothing/under/marine/veteran/PMC,
+/obj/item/clothing/head/helmet/marine/veteran/PMC,
 /turf/open/shuttle/dropship{
 	tag = "icon-rasputin15";
 	icon_state = "rasputin15"
+	},
+/area/bigredv2/outside/office_complex)
+"rK" = (
+/obj/structure/bed/chair/dropship/passenger{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/blood,
+/obj/effect/landmark/corpsespawner/wygoon,
+/turf/open/shuttle/dropship{
+	tag = "icon-rasputin15";
+	icon_state = "rasputin15"
+	},
+/area/bigredv2/outside/office_complex)
+"si" = (
+/obj/item/clothing/head/helmet/marine/veteran/PMC,
+/turf/open/shuttle/dropship{
+	tag = "icon-rasputin3";
+	icon_state = "rasputin3"
+	},
+/area/bigredv2/outside/office_complex)
+"sR" = (
+/obj/item/storage/firstaid,
+/turf/open/shuttle/dropship{
+	tag = "icon-rasputin3";
+	icon_state = "rasputin3"
+	},
+/area/bigredv2/outside/office_complex)
+"uC" = (
+/obj/effect/spawner/gibspawner/human,
+/obj/item/weapon/gun/rifle/m41a/corporate{
+	current_mag = /obj/item/ammo_magazine/rifle/rubber;
+	name = "battered M41A pulse rifle MK2";
+	pixel_x = 4;
+	desc = "A Weyland-Yutani creation, this M41A MK2 comes equipped in corporate white. Uses 10x24mm caseless ammunition. It seems to be pretty battered and broken up.."
+	},
+/turf/open/shuttle/dropship{
+	tag = "icon-rasputin3";
+	icon_state = "rasputin3"
+	},
+/area/bigredv2/outside/office_complex)
+"uL" = (
+/obj/item/weapon/gun/rifle/nsg23/no_lock,
+/turf/open/shuttle/dropship{
+	tag = "icon-rasputin3";
+	icon_state = "rasputin3"
+	},
+/area/bigredv2/outside/office_complex)
+"vw" = (
+/obj/item/limb/arm/l_arm,
+/turf/open/shuttle/dropship{
+	icon_state = "floor8";
+	tag = "icon-rasputin7"
 	},
 /area/bigredv2/outside/office_complex)
 "yS" = (
@@ -1514,11 +1615,47 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/blood,
-/obj/effect/landmark/corpsespawner/pmc,
-/obj/item/weapon/gun/rifle/nsg23/no_lock,
+/obj/item/limb/leg/r_leg,
+/obj/item/weapon/gun/pistol/m4a3/training{
+	name = "dented M4A3 service pistol"
+	},
+/obj/effect/landmark/corpsespawner/wygoon,
 /turf/open/shuttle/dropship{
 	tag = "icon-rasputin15";
 	icon_state = "rasputin15"
+	},
+/area/bigredv2/outside/office_complex)
+"Bu" = (
+/obj/effect/decal/cleanable/blood,
+/obj/effect/spawner/gibspawner/human,
+/obj/item/limb/arm/l_arm,
+/obj/item/limb/leg/l_leg,
+/obj/item/limb/hand/r_hand,
+/turf/open/shuttle/dropship{
+	tag = "icon-rasputin3";
+	icon_state = "rasputin3"
+	},
+/area/bigredv2/outside/office_complex)
+"EE" = (
+/obj/structure/bed/chair/dropship/passenger{
+	dir = 8
+	},
+/obj/item/limb/hand/l_hand,
+/turf/open/shuttle/dropship{
+	tag = "icon-rasputin15";
+	icon_state = "rasputin15"
+	},
+/area/bigredv2/outside/office_complex)
+"GG" = (
+/obj/item/weapon/gun/rifle/m41a/corporate{
+	current_mag = /obj/item/ammo_magazine/rifle/rubber;
+	name = "battered M41A pulse rifle MK2";
+	pixel_x = 4;
+	desc = "A Weyland-Yutani creation, this M41A MK2 comes equipped in corporate white. Uses 10x24mm caseless ammunition. It seems to be pretty battered and broken up.."
+	},
+/turf/open/shuttle/dropship{
+	tag = "icon-rasputin3";
+	icon_state = "rasputin3"
 	},
 /area/bigredv2/outside/office_complex)
 "Ha" = (
@@ -1529,6 +1666,26 @@
 	dir = 1
 	},
 /area/bigredv2/outside/se)
+"Lk" = (
+/obj/structure/bed/chair/dropship/passenger{
+	dir = 4
+	},
+/obj/item/device/radio/headset/distress/PMC,
+/turf/open/shuttle/dropship{
+	tag = "icon-rasputin15";
+	icon_state = "rasputin15"
+	},
+/area/bigredv2/outside/office_complex)
+"NK" = (
+/obj/structure/surface/rack,
+/obj/item/ammo_magazine/rifle/rubber,
+/obj/item/ammo_magazine/rifle/rubber,
+/obj/item/ammo_magazine/rifle/rubber,
+/turf/open/shuttle/dropship{
+	tag = "icon-rasputin15";
+	icon_state = "rasputin15"
+	},
+/area/bigredv2/outside/office_complex)
 "PR" = (
 /turf/open/floor{
 	tag = "icon-asteroidfloor (NORTH)";
@@ -1541,6 +1698,16 @@
 	dir = 8
 	},
 /obj/effect/landmark/survivor_spawner/bigred_crashed_cl,
+/turf/open/shuttle/dropship{
+	tag = "icon-rasputin15";
+	icon_state = "rasputin15"
+	},
+/area/bigredv2/outside/office_complex)
+"Ra" = (
+/obj/structure/bed/chair/dropship/passenger{
+	dir = 8
+	},
+/obj/item/clothing/gloves/marine/veteran/PMC,
 /turf/open/shuttle/dropship{
 	tag = "icon-rasputin15";
 	icon_state = "rasputin15"
@@ -1849,7 +2016,7 @@ dP
 aV
 bk
 bk
-bk
+od
 cE
 cM
 cM
@@ -1875,9 +2042,9 @@ bc
 bc
 bc
 bc
-qX
+Bu
 dF
-bk
+oF
 cu
 bk
 bk
@@ -1904,8 +2071,8 @@ Qc
 bp
 bp
 dG
-bc
-bc
+si
+GG
 bc
 dz
 bc
@@ -1922,7 +2089,7 @@ aV
 aV
 Vg
 bk
-bk
+Lk
 yS
 bk
 cu
@@ -1946,10 +2113,10 @@ bt
 aD
 aP
 aW
-bc
+uL
 bn
 rF
-dE
+jx
 dE
 dE
 bc
@@ -1974,8 +2141,8 @@ aE
 aQ
 aV
 aV
-bm
-bp
+vw
+EE
 dA
 bp
 bp
@@ -1988,7 +2155,7 @@ bm
 dR
 dI
 dS
-bv
+NK
 cE
 dm
 dv
@@ -2002,7 +2169,7 @@ aN
 bv
 dL
 bm
-bk
+od
 bk
 bk
 cu
@@ -2010,7 +2177,7 @@ bk
 bk
 bk
 bk
-bk
+oF
 cv
 dz
 dJ
@@ -2031,16 +2198,16 @@ aQ
 bo
 bc
 bc
-dz
+uC
 bc
-bc
+sR
 bc
 bc
 bc
 bc
 cx
 dA
-bp
+fG
 bp
 bp
 cF
@@ -2056,7 +2223,7 @@ dX
 dY
 aN
 bp
-rF
+rK
 bp
 aV
 dM
@@ -2065,7 +2232,7 @@ bv
 aV
 bp
 dA
-bp
+Ra
 cF
 cN
 cN

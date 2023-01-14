@@ -9,9 +9,9 @@
 	return GLOB.not_incapacitated_state
 
 /datum/squad/ui_data(mob/user)
-	if(!squad_info_data.len)					//initial first update of data
+	if(!squad_info_data.len) //initial first update of data
 		update_all_squad_info()
-	if(squad_info_data["total_mar"] != count)	//updates for new marines
+	if(squad_info_data["total_mar"] != count) //updates for new marines
 		update_free_mar()
 		if(squad_leader && squad_info_data["sl"]["name"] != squad_leader.real_name)
 			update_squad_leader()

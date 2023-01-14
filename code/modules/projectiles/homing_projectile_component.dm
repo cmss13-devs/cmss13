@@ -22,7 +22,7 @@
 	src.homing_target = homing_target
 
 /datum/component/homing_projectile/RegisterWithParent()
-	RegisterSignal(parent, COMSIG_BULLET_TERMINAL, .proc/terminal_retarget)
+	RegisterSignal(parent, COMSIG_BULLET_TERMINAL, PROC_REF(terminal_retarget))
 
 /datum/component/homing_projectile/UnregisterFromParent()
 	UnregisterSignal(parent, COMSIG_BULLET_TERMINAL)

@@ -6,7 +6,7 @@
 	icon = 'icons/obj/structures/machinery/computer.dmi'
 	icon_state = "airtunnel0e"
 	anchored = 1
-	density = 1
+	density = TRUE
 	var/obj/structure/machinery/gravity_generator = null
 
 
@@ -16,7 +16,7 @@
 	icon = 'icons/obj/structures/props/singularity.dmi'
 	icon_state = "TheSingGen"
 	anchored = 1
-	density = 1
+	density = TRUE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 200
 	active_power_usage = 1000

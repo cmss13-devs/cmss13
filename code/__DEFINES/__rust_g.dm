@@ -59,24 +59,26 @@
  * * height: The height of the grid.
  */
 #define rustg_cnoise_generate(percentage, smoothing_iterations, birth_limit, death_limit, width, height) \
-    call(RUST_G, "cnoise_generate")(percentage, smoothing_iterations, birth_limit, death_limit, width, height)
+	RUSTG_CALL(RUST_G, "cnoise_generate")(percentage, smoothing_iterations, birth_limit, death_limit, width, height)
 
-#define rustg_dmi_strip_metadata(fname) call(RUST_G, "dmi_strip_metadata")(fname)
-#define rustg_dmi_create_png(path, width, height, data) call(RUST_G, "dmi_create_png")(path, width, height, data)
-#define rustg_dmi_resize_png(path, width, height, resizetype) call(RUST_G, "dmi_resize_png")(path, width, height, resizetype)
+#define rustg_dmi_strip_metadata(fname) RUSTG_CALL(RUST_G, "dmi_strip_metadata")(fname)
+#define rustg_dmi_create_png(path, width, height, data) RUSTG_CALL(RUST_G, "dmi_create_png")(path, width, height, data)
+#define rustg_dmi_resize_png(path, width, height, resizetype) RUSTG_CALL(RUST_G, "dmi_resize_png")(path, width, height, resizetype)
 
-#define rustg_file_read(fname) call(RUST_G, "file_read")(fname)
-#define rustg_file_exists(fname) call(RUST_G, "file_exists")(fname)
-#define rustg_file_write(text, fname) call(RUST_G, "file_write")(text, fname)
-#define rustg_file_append(text, fname) call(RUST_G, "file_append")(text, fname)
+#define rustg_file_read(fname) RUSTG_CALL(RUST_G, "file_read")(fname)
+#define rustg_file_exists(fname) RUSTG_CALL(RUST_G, "file_exists")(fname)
+#define rustg_file_write(text, fname) RUSTG_CALL(RUST_G, "file_write")(text, fname)
+#define rustg_file_append(text, fname) RUSTG_CALL(RUST_G, "file_append")(text, fname)
+#define rustg_file_get_line_count(fname) text2num(RUSTG_CALL(RUST_G, "file_get_line_count")(fname))
+#define rustg_file_seek_line(fname, line) RUSTG_CALL(RUST_G, "file_seek_line")(fname, "[line]")
 
 #ifdef RUSTG_OVERRIDE_BUILTINS
-    #define file2text(fname) rustg_file_read("[fname]")
-    #define text2file(text, fname) rustg_file_append(text, "[fname]")
+	#define file2text(fname) rustg_file_read("[fname]")
+	#define text2file(text, fname) rustg_file_append(text, "[fname]")
 #endif
 
-#define rustg_git_revparse(rev) call(RUST_G, "rg_git_revparse")(rev)
-#define rustg_git_commit_date(rev) call(RUST_G, "rg_git_commit_date")(rev)
+#define rustg_git_revparse(rev) RUSTG_CALL(RUST_G, "rg_git_revparse")(rev)
+#define rustg_git_commit_date(rev) RUSTG_CALL(RUST_G, "rg_git_commit_date")(rev)
 
 #define RUSTG_HTTP_METHOD_GET "get"
 #define RUSTG_HTTP_METHOD_PUT "put"
@@ -84,27 +86,27 @@
 #define RUSTG_HTTP_METHOD_PATCH "patch"
 #define RUSTG_HTTP_METHOD_HEAD "head"
 #define RUSTG_HTTP_METHOD_POST "post"
-#define rustg_http_request_blocking(method, url, body, headers, options) call(RUST_G, "http_request_blocking")(method, url, body, headers, options)
-#define rustg_http_request_async(method, url, body, headers, options) call(RUST_G, "http_request_async")(method, url, body, headers, options)
-#define rustg_http_check_request(req_id) call(RUST_G, "http_check_request")(req_id)
+#define rustg_http_request_blocking(method, url, body, headers, options) RUSTG_CALL(RUST_G, "http_request_blocking")(method, url, body, headers, options)
+#define rustg_http_request_async(method, url, body, headers, options) RUSTG_CALL(RUST_G, "http_request_async")(method, url, body, headers, options)
+#define rustg_http_check_request(req_id) RUSTG_CALL(RUST_G, "http_check_request")(req_id)
 
 #define RUSTG_JOB_NO_RESULTS_YET "NO RESULTS YET"
 #define RUSTG_JOB_NO_SUCH_JOB "NO SUCH JOB"
 #define RUSTG_JOB_ERROR "JOB PANICKED"
 
-#define rustg_json_is_valid(text) (call(RUST_G, "json_is_valid")(text) == "true")
+#define rustg_json_is_valid(text) (RUSTG_CALL(RUST_G, "json_is_valid")(text) == "true")
 
-#define rustg_log_write(fname, text, format) call(RUST_G, "log_write")(fname, text, format)
-/proc/rustg_log_close_all() return call(RUST_G, "log_close_all")()
+#define rustg_log_write(fname, text, format) RUSTG_CALL(RUST_G, "log_write")(fname, text, format)
+/proc/rustg_log_close_all() return RUSTG_CALL(RUST_G, "log_close_all")()
 
-#define rustg_noise_get_at_coordinates(seed, x, y) call(RUST_G, "noise_get_at_coordinates")(seed, x, y)
+#define rustg_noise_get_at_coordinates(seed, x, y) RUSTG_CALL(RUST_G, "noise_get_at_coordinates")(seed, x, y)
 
-#define rustg_sql_connect_pool(options) call(RUST_G, "sql_connect_pool")(options)
-#define rustg_sql_query_async(handle, query, params) call(RUST_G, "sql_query_async")(handle, query, params)
-#define rustg_sql_query_blocking(handle, query, params) call(RUST_G, "sql_query_blocking")(handle, query, params)
-#define rustg_sql_connected(handle) call(RUST_G, "sql_connected")(handle)
-#define rustg_sql_disconnect_pool(handle) call(RUST_G, "sql_disconnect_pool")(handle)
-#define rustg_sql_check_query(job_id) call(RUST_G, "sql_check_query")("[job_id]")
+#define rustg_sql_connect_pool(options) RUSTG_CALL(RUST_G, "sql_connect_pool")(options)
+#define rustg_sql_query_async(handle, query, params) RUSTG_CALL(RUST_G, "sql_query_async")(handle, query, params)
+#define rustg_sql_query_blocking(handle, query, params) RUSTG_CALL(RUST_G, "sql_query_blocking")(handle, query, params)
+#define rustg_sql_connected(handle) RUSTG_CALL(RUST_G, "sql_connected")(handle)
+#define rustg_sql_disconnect_pool(handle) RUSTG_CALL(RUST_G, "sql_disconnect_pool")(handle)
+#define rustg_sql_check_query(job_id) RUSTG_CALL(RUST_G, "sql_check_query")("[job_id]")
 
 #define rustg_time_microseconds(id) text2num(RUSTG_CALL(RUST_G, "time_microseconds")(id))
 #define rustg_time_milliseconds(id) text2num(RUSTG_CALL(RUST_G, "time_milliseconds")(id))
@@ -138,3 +140,4 @@
 	#define url_encode(text) rustg_url_encode(text)
 	#define url_decode(text) rustg_url_decode(text)
 #endif
+

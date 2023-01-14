@@ -1,6 +1,6 @@
 //Procedures in this file: Synth head reattachment
 //////////////////////////////////////////////////////////////////
-//					  REATTACHING ROBOHEAD	     				//
+//   REATTACHING ROBOHEAD //
 //////////////////////////////////////////////////////////////////
 
 /datum/surgery/head_reattach
@@ -61,7 +61,7 @@
 	log_interact(user, target, "[key_name(user)] began to peel back tattered skin around [key_name(target)]'s neck with \the [tool].")
 
 /datum/surgery_step/peel_skin/success(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
-	user.visible_message(SPAN_NOTICE("[user] draws back the ragged flesh of [target]'s neck stump."),	\
+	user.visible_message(SPAN_NOTICE("[user] draws back the ragged flesh of [target]'s neck stump."), \
 	SPAN_NOTICE("You draw back the ragged flesh of [target]'s neck stump."))
 
 	surgery.affected_limb.setAmputatedTree()
@@ -90,7 +90,7 @@
 	log_interact(user, target, "[key_name(user)] started to attach [tool] to [key_name(target)]'s reshaped neck.")
 
 /datum/surgery_step/reattach_head/success(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/head_reattach/surgery)
-	user.visible_message(SPAN_NOTICE("[user] reattaches [target]'s head to the bones and musculature of \his body."),	\
+	user.visible_message(SPAN_NOTICE("[user] reattaches [target]'s head to the bones and musculature of \his body."), \
 	SPAN_NOTICE("You reattach [target]'s head to the bones and musculature of \his body."))
 	log_interact(user, target, "[key_name(user)] attached [tool] to [key_name(target)]'s neck.")
 
@@ -129,7 +129,7 @@
 	log_interact(user, target, "[key_name(user)] started to reshape [key_name(target)]'s head esophagal and vocal region with \the [tool].")
 
 /datum/surgery_step/mend_connections/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
-	user.visible_message(SPAN_NOTICE("[user] finishes reconstructing [target]'s throat."),	\
+	user.visible_message(SPAN_NOTICE("[user] finishes reconstructing [target]'s throat."), \
 	SPAN_NOTICE("You finish reconstructing [target]'s throat."))
 
 	log_interact(user, target, "[key_name(user)] reshaped [key_name(target)]'s head esophagal and vocal region with \the [tool].")
@@ -154,7 +154,7 @@
 	log_interact(user, target, "[key_name(user)] started to adjust the area around [key_name(target)]'s neck with \the [tool].")
 
 /datum/surgery_step/cauterize/reposition_flesh/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/head_reattach/surgery)
-	user.visible_message(SPAN_NOTICE("[user] finishes adjusting [target]'s neck."),	\
+	user.visible_message(SPAN_NOTICE("[user] finishes adjusting [target]'s neck."), \
 	SPAN_NOTICE("You finish adjusting [target]'s neck."))
 	log_interact(user, target, "[key_name(user)] adjusted the area around [key_name(target)]'s neck with \the [tool].")
 
@@ -165,7 +165,7 @@
 	if(surgery.patient_head.brainmob.mind)
 		surgery.patient_head.brainmob.mind.transfer_to(target)
 
-	else	// attempt to transfer linked ghost if not found
+	else // attempt to transfer linked ghost if not found
 		for(var/mob/dead/observer/G in GLOB.observer_list)
 			if(istype(G) && G.mind && G.mind.original == surgery.patient_head.brainmob && G.can_reenter_corpse)
 				G.mind.original = target

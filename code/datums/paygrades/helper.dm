@@ -2,7 +2,7 @@
 	if(!paygrade) return
 
 	// Format: WY-XX-X
-    // WY has a special paygrade syntax, so it is handled separately. This should really be more modular, but can be done in the future.
+	// WY has a special paygrade syntax, so it is handled separately. This should really be more modular, but can be done in the future.
 	if(copytext(paygrade, 1, 3) == "WY")
 		var/rank_info = copytext(paygrade, 3)
 
@@ -25,9 +25,9 @@
 		if(P.prefix)//Actual rank prefix
 			NP =  "[NP][P.prefix] "
 			if(P.prefix == "C")//Override for Civilian ranks that don't have occupational prefixes.
-				if(gender && gender == "female")
+				if(gender && gender == FEMALE)
 					NP = "Ms. "
-				else if(gender && gender == "male")
+				else if(gender && gender == MALE)
 					NP = "Mr. "
 				else
 					NP = "Mx. " //inclusivity win!

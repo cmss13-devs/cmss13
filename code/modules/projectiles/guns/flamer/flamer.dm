@@ -96,9 +96,9 @@
 
 /obj/item/weapon/gun/flamer/proc/get_fire_sound()
 	var/list/fire_sounds = list(
-					 'sound/weapons/gun_flamethrower1.ogg',
-					 'sound/weapons/gun_flamethrower2.ogg',
-					 'sound/weapons/gun_flamethrower3.ogg')
+							'sound/weapons/gun_flamethrower1.ogg',
+							'sound/weapons/gun_flamethrower2.ogg',
+							'sound/weapons/gun_flamethrower3.ogg')
 	return pick(fire_sounds)
 
 /obj/item/weapon/gun/flamer/Fire(atom/target, mob/living/user, params, reflex)
@@ -222,7 +222,7 @@
 
 	playsound(to_fire, src.get_fire_sound(), 50, TRUE)
 
-	new /obj/flamer_fire(to_fire, create_cause_data(initial(name), user), R, max_range, current_mag.reagents, flameshape, target, CALLBACK(src, .proc/show_percentage, user), fuel_pressure, fire_type)
+	new /obj/flamer_fire(to_fire, create_cause_data(initial(name), user), R, max_range, current_mag.reagents, flameshape, target, CALLBACK(src, PROC_REF(show_percentage), user), fuel_pressure, fire_type)
 
 /obj/item/weapon/gun/flamer/proc/show_percentage(var/mob/living/user)
 	if(current_mag)
@@ -377,7 +377,7 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 	name = "fire"
 	desc = "Ouch!"
 	anchored = 1
-	mouse_opacity = 0
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	icon = 'icons/effects/fire.dmi'
 	icon_state = "dynamic_2"
 	layer = BELOW_OBJ_LAYER
@@ -385,7 +385,7 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 	var/firelevel = 12 //Tracks how much "fire" there is. Basically the timer of how long the fire burns
 	var/burnlevel = 10 //Tracks how HOT the fire is. This is basically the heat level of the fire and determines the temperature.
 
-	 /// After the fire is created, for 0.5 seconds this variable will be TRUE.
+	/// After the fire is created, for 0.5 seconds this variable will be TRUE.
 	var/initial_burst = TRUE
 
 	var/flame_icon = "dynamic"
@@ -450,7 +450,7 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 
 	update_flame()
 
-	addtimer(CALLBACK(src, .proc/un_burst_flame), 0.5 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(un_burst_flame)), 0.5 SECONDS)
 	START_PROCESSING(SSobj, src)
 
 	to_call = C
@@ -491,12 +491,12 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 			var/new_layer = S.bleed_layer - 1
 			S.changing_layer(new_layer)
 
-	for(var/mob/living/M in loc) //Deal bonus damage if someone's caught directly in initial stream
-		if(M.stat == DEAD)
+	for(var/mob/living/ignited_morb in loc) //Deal bonus damage if someone's caught directly in initial stream
+		if(ignited_morb.stat == DEAD)
 			continue
 
-		if(ishuman(M))
-			var/mob/living/carbon/human/H = M //fixed :s
+		if(ishuman(ignited_morb))
+			var/mob/living/carbon/human/H = ignited_morb //fixed :s
 
 			if(weapon_cause_data)
 				var/mob/user = weapon_cause_data.resolve_mob()
@@ -519,38 +519,39 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 				if(weapon_cause_data.cause_name)
 					H.track_shot_hit(weapon_cause_data.cause_name, H)
 
-		var/fire_intensity_resistance = M.check_fire_intensity_resistance()
+		var/fire_intensity_resistance = ignited_morb.check_fire_intensity_resistance()
 		var/firedamage = max(burn_dam - fire_intensity_resistance, 0)
 		if(!firedamage)
 			continue
 
-		var/sig_result = SEND_SIGNAL(M, COMSIG_LIVING_FLAMER_FLAMED, tied_reagent)
+		var/sig_result = SEND_SIGNAL(ignited_morb, COMSIG_LIVING_FLAMER_FLAMED, tied_reagent)
 
 		if(!(sig_result & COMPONENT_NO_IGNITE))
 			switch(fire_variant)
 				if(FIRE_VARIANT_TYPE_B) //Armor Shredding Greenfire, super easy to pat out. 50 duration -> 10 stacks (1 pat/resist)
-					M.TryIgniteMob(round(tied_reagent.durationfire / 5), tied_reagent)
+					ignited_morb.TryIgniteMob(round(tied_reagent.durationfire / 5), tied_reagent)
 				else
-					M.TryIgniteMob(tied_reagent.durationfire, tied_reagent)
+					ignited_morb.TryIgniteMob(tied_reagent.durationfire, tied_reagent)
 
 		if(sig_result & COMPONENT_NO_BURN)
 			continue
 
-		M.last_damage_data = weapon_cause_data
-		M.apply_damage(firedamage, BURN)
+		ignited_morb.last_damage_data = weapon_cause_data
+		ignited_morb.apply_damage(firedamage, BURN)
+		animation_flash_color(ignited_morb, tied_reagent.burncolor) //pain hit flicker
 
 		var/msg = "Augh! You are roasted by the flames!"
-		if (isXeno(M))
-			to_chat(M, SPAN_XENODANGER(msg))
+		if (isXeno(ignited_morb))
+			to_chat(ignited_morb, SPAN_XENODANGER(msg))
 		else
-			to_chat(M, SPAN_HIGHDANGER(msg))
+			to_chat(ignited_morb, SPAN_HIGHDANGER(msg))
 
 		if(weapon_cause_data)
 			var/mob/SM = weapon_cause_data.resolve_mob()
 			if(istype(SM))
 				SM.track_shot_hit(weapon_cause_data.cause_name)
 
-	RegisterSignal(SSdcs, COMSIG_GLOB_WEATHER_CHANGE, .proc/update_in_weather_status)
+	RegisterSignal(SSdcs, COMSIG_GLOB_WEATHER_CHANGE, PROC_REF(update_in_weather_status))
 
 /obj/flamer_fire/Destroy()
 	SetLuminosity(0)

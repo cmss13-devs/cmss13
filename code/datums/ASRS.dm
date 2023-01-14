@@ -3,13 +3,13 @@
 //Note these should never show up to buy and some will only show up later in the round.
 //BIG NOTE: Don't add living things to crates, that's bad, it will break the shuttle.
 //We use the cost to determine the spawn chance this equals out the crates that spawn later in the round.
-#define ASRS_HIGHEST_WEIGHT		0 //warning this weight wont change.
-#define ASRS_VERY_HIGH_WEIGHT	5
-#define ASRS_HIGH_WEIGHT		15
-#define ASRS_MEDIUM_WEIGHT		25
-#define ASRS_LOW_WEIGHT			35
-#define ASRS_VERY_LOW_WEIGHT	50
-#define ASRS_LOWEST_WEIGHT		100
+#define ASRS_HIGHEST_WEIGHT 0 //warning this weight wont change.
+#define ASRS_VERY_HIGH_WEIGHT 5
+#define ASRS_HIGH_WEIGHT 15
+#define ASRS_MEDIUM_WEIGHT 25
+#define ASRS_LOW_WEIGHT 35
+#define ASRS_VERY_LOW_WEIGHT 50
+#define ASRS_LOWEST_WEIGHT 100
 
 //===================================
 // Rounds

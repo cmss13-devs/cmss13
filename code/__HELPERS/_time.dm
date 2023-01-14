@@ -1,4 +1,4 @@
-#define MIDNIGHT_ROLLOVER		864000	//number of deciseconds in a day
+#define MIDNIGHT_ROLLOVER 864000 //number of deciseconds in a day
 
 #define MILLISECONDS *0.01
 

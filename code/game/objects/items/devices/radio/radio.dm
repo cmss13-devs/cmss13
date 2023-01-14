@@ -20,7 +20,6 @@
 	var/subspace_transmission = 0
 	/// If true, subspace_transmission can be toggled at will.
 	var/subspace_switchable = FALSE
-	var/syndie = 0//Holder to see if it's a syndicate encrpyed radio
 	var/maxf = 1499
 	var/volume = RADIO_VOLUME_QUIET
 	///if false it will just default to RADIO_VOLUME_QUIET every time
@@ -32,7 +31,6 @@
 	w_class = SIZE_SMALL
 
 	matter = list("glass" = 25,"metal" = 75)
-		//FREQ_BROADCASTING = 2
 
 	var/datum/radio_frequency/radio_connection
 	var/list/datum/radio_frequency/secure_radio_connections = new
@@ -82,7 +80,6 @@
 
 /obj/item/device/radio/attack_self(mob/user as mob)
 	..()
-	user.set_interaction(src)
 	tgui_interact(user)
 
 /obj/item/device/radio/ui_state(mob/user)
@@ -108,9 +105,18 @@
 	data["minFrequency"] = freerange ? MIN_FREE_FREQ : MIN_FREQ
 	data["maxFrequency"] = freerange ? MAX_FREE_FREQ : MAX_FREQ
 	data["freqlock"] = freqlock
-	data["channels"] = list()
+
+	var/list/radio_channels = list()
+
 	for(var/channel in channels)
-		data["channels"][channel] = channels[channel] & FREQ_LISTENING
+		var/channel_key = channel_to_prefix(channel)
+		radio_channels += list(list(
+			"name" = channel,
+			"status" = channels[channel] & FREQ_LISTENING,
+			"hotkey" = channel_key))
+
+	data["channels"] = radio_channels
+
 	data["command"] = volume
 	data["useCommand"] = use_volume
 	data["subspace"] = subspace_transmission
@@ -161,7 +167,7 @@
 				if(!subspace_transmission)
 					channels = list()
 				//else
-				//	recalculateChannels()
+				// recalculateChannels()
 				. = TRUE
 
 /obj/item/device/radio/proc/text_wires()
@@ -177,13 +183,9 @@
 
 /obj/item/device/radio/proc/text_sec_channel(var/chan_name, var/chan_stat)
 	var/list = !!(chan_stat&FREQ_LISTENING)!=0
-	var/channel_key
-	for(var/key in department_radio_keys)
-		if(department_radio_keys[key] == chan_name)
-			channel_key = key
-			break
+	var/channel_key = channel_to_prefix(chan_name)
 	return {"
-			<tr><td><B>[chan_name]</B>	[channel_key]</td>
+			<tr><td><B>[chan_name]</B> [channel_key]</td>
 			<td><A href='byond://?src=\ref[src];ch_name=[chan_name];listen=[!list]'>[list ? "Engaged" : "Disengaged"]</A></td></tr>
 			"}
 
@@ -210,7 +212,7 @@
 	if(!M || !message) return
 
 	//  Uncommenting this. To the above comment:
-	// 	The permacell radios aren't suppose to be able to transmit, this isn't a bug and this "fix" is just making radio wires useless. -Giacom
+	// The permacell radios aren't suppose to be able to transmit, this isn't a bug and this "fix" is just making radio wires useless. -Giacom
 	if(!(src.wires & WIRE_TRANSMIT)) // The device has to have all its wires and shit intact
 		return
 
@@ -241,7 +243,7 @@
 	//#### Tagging the signal with all appropriate identity values ####//
 
 	// ||-- The mob's name identity --||
-	var/displayname = M.name	// grab the display name (name you get when you hover over someone's icon)
+	var/displayname = M.name // grab the display name (name you get when you hover over someone's icon)
 	var/real_name = M.real_name // mob's real name
 	var/voicemask = 0 // the speaker is wearing a voice mask
 
@@ -410,7 +412,6 @@
 
 /obj/item/device/radio/attackby(obj/item/W as obj, mob/user as mob)
 	..()
-	user.set_interaction(src)
 	if (!HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER))
 		return
 	b_stat = !( b_stat )
@@ -453,8 +454,7 @@
 		R.cell_use_power(C.active_usage)
 
 /obj/item/device/radio/borg/attackby(obj/item/W as obj, mob/user as mob)
-//	..()
-	user.set_interaction(src)
+// ..()
 	if (!(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER) || (istype(W, /obj/item/device/encryptionkey))))
 		return
 
@@ -495,7 +495,6 @@
 
 /obj/item/device/radio/borg/proc/recalculateChannels()
 	src.channels = list()
-	src.syndie = 0
 
 	var/mob/living/silicon/robot/D = src.loc
 	if(D.module)
@@ -510,10 +509,6 @@
 				continue
 			src.channels += ch_name
 			src.channels[ch_name] += keyslot.channels[ch_name]
-
-		if(keyslot.syndie)
-			src.syndie = 1
-
 
 	for (var/ch_name in src.channels)
 		secure_radio_connections[ch_name] = SSradio.add_object(src, radiochannels[ch_name],  RADIO_CHAT)
@@ -578,8 +573,6 @@
 
 /obj/item/device/radio/off
 	listening = 0
-
-
 
 //MARINE RADIO
 

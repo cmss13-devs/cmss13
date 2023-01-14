@@ -117,6 +117,7 @@
 
 
 /obj/item/weapon/zombie_claws
+	gender = PLURAL
 	name = "claws"
 	icon = 'icons/mob/humans/species/r_zombie.dmi'
 	icon_state = "claw_l"
@@ -225,6 +226,7 @@
 
 /obj/item/clothing/glasses/zombie_eyes
 	name = "zombie eyes"
+	gender = PLURAL
 	icon_state = "stub"
 	item_state = "BLANK"
 	w_class = SIZE_SMALL

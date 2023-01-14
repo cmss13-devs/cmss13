@@ -79,6 +79,21 @@
 	rank = JOB_EXECUTIVE_SUPERVISOR
 	paygrade = "WYC6"
 
+/datum/equipment_preset/wy/manager
+	skills = /datum/skills/civilian/manager
+	idtype = /obj/item/card/id/silver/clearance_badge/manager
+	headset_type = /obj/item/device/radio/headset/distress/PMC
+
+/datum/equipment_preset/wy/manager/New()
+	. = ..()
+	access = get_all_accesses() + get_all_centcom_access()
+
+/datum/equipment_preset/wy/manager/load_gear(mob/living/carbon/human/H)
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/suit_jacket/manager(H), WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/manager(H), WEAR_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/manager(H), WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/vp78(H), WEAR_WAIST)
+	..()
 
 /datum/equipment_preset/wy/manager/assistant_manager
 	name = "Corporate - G - Assistant Manager"

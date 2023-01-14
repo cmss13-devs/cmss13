@@ -540,7 +540,7 @@ var/datum/controller/supply/supply_controller = new()
 			var/timer = 0.5 SECONDS
 			for(var/index in 1 to 10)
 				timer += 0.5 SECONDS
-				addtimer(CALLBACK(src, PROC_REF(maul_human), movable_atom), timer)
+				addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(maul_human), movable_atom), timer)
 
 		// Delete everything else.
 		else qdel(movable_atom)

@@ -57,7 +57,6 @@
 		set_range()
 	targets = SSquadtree.players_in_range(range_bounds, z, QTREE_SCAN_MOBS | QTREE_EXCLUDE_OBSERVER)
 	if(!targets)
-		update_minimap_icon()
 		return FALSE
 
 	if(!target && targets.len)
@@ -122,14 +121,12 @@
 	visible_message("[icon2html(src, viewers(src))] [SPAN_NOTICE("The [name] buzzes in a monotone voice: 'Default systems initiated'")]")
 	start_processing()
 	set_range()
-	update_minimap_icon()
 
 /obj/structure/machinery/defenses/sentry/power_off_action()
 	SetLuminosity(0)
 	visible_message("[icon2html(src, viewers(src))] [SPAN_NOTICE("The [name] powers down and goes silent.")]")
 	stop_processing()
 	unset_range()
-	SSminimaps.remove_marker(src)
 
 /obj/structure/machinery/defenses/sentry/attackby(var/obj/item/O, var/mob/user)
 	if(QDELETED(O) || QDELETED(user))
@@ -384,31 +381,9 @@
 		target = pick(unconscious_targets)
 
 	if(!target) //No targets, don't bother firing
-		update_minimap_icon()
 		return
 
-	update_minimap_icon()
 	fire(target)
-
-/obj/structure/machinery/defenses/sentry/proc/update_minimap_icon()
-	if(!SSminimaps.initialized)
-		return
-
-	SSminimaps.remove_marker(src)
-	if(!z)
-		return
-	var/marker_flags
-	if(faction_group == FACTION_MARINE)
-		marker_flags = MINIMAP_FLAG_MARINE
-	else if(faction_group == FACTION_CLF)
-		marker_flags = MINIMAP_FLAG_MARINE_CLF
-	else if(faction_group == FACTION_UPP)
-		marker_flags = MINIMAP_FLAG_MARINE_CLF
-	else if(faction_group == FACTION_PMC)
-		marker_flags = MINIMAP_FLAG_MARINE_PMC
-	else
-		marker_flags = MINIMAP_FLAG_MARINE
-	SSminimaps.add_marker(src, z, marker_flags, "sentry[target ? "_firing" : "_passive"]")
 
 /obj/structure/machinery/defenses/sentry/premade
 	name = "UA-577 Gauss Turret"

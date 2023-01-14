@@ -264,7 +264,6 @@
 	// an easily modularizable way. So, here you go.
 	//
 	//////////////////////////////////////////////////////////////////
-	var/weedwalking_activated = FALSE //Hivelord's weedwalking
 	var/tunnel = FALSE
 	var/stealth = FALSE // for check on lurker invisibility
 	var/burrow = FALSE

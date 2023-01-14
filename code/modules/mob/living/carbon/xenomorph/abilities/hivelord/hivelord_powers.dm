@@ -22,9 +22,11 @@
 			return
 		to_chat(xeno, SPAN_NOTICE("You become one with the resin. You feel the urge to run!"))
 		button.icon_state = "template_active"
+		action_active = TRUE
 	else
 		to_chat(xeno, SPAN_WARNING("You feel less in tune with the resin."))
 		button.icon_state = "template"
+		action_active = FALSE
 		return
 
 	xeno.recalculate_move_delay = TRUE

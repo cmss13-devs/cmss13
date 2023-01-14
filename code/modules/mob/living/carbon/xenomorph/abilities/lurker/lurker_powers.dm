@@ -99,45 +99,6 @@
 
 // VAMPIRE LURKER
 
-/datum/action/xeno_action/activable/tail_stab/vampire/pre_ability_act(var/mob/living/carbon/Xenomorph/stabbing_xeno, var/atom/targetted_atom)
-
-	if(!iscarbon(targetted_atom))
-		return
-
-	var/mob/living/carbon/targetted_carbon = targetted_atom
-
-	if(!(targetted_carbon.knocked_out || targetted_carbon.stat == UNCONSCIOUS)) //called knocked out because for some reason .stat seems to have a delay .
-		return
-
-	if(stabbing_xeno.action_busy)
-		return
-
-	if(!stabbing_xeno.Adjacent(targetted_carbon))
-		to_chat(stabbing_xeno, SPAN_XENONOTICE("[targetted_carbon] is too far away to headbite, so you try to tail stab them instead!"))
-		return
-
-	stabbing_xeno.visible_message(SPAN_DANGER("[stabbing_xeno] grabs [targetted_carbon]’s head aggressively."), \
-	SPAN_XENOWARNING("You grab [targetted_carbon]’s head aggressively."), max_distance = 5)
-
-	if(!do_after(stabbing_xeno, 0.75 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
-		return TRUE //if they return false/null, it should still cancel the tail stab
-
-	if(targetted_carbon.stat == DEAD)
-		return TRUE
-
-	to_chat(stabbing_xeno, SPAN_XENOHIGHDANGER("You pierce [targetted_carbon]’s head with your inner jaw!"))
-	stabbing_xeno.visible_message(SPAN_DANGER("[stabbing_xeno] pierces [targetted_carbon]’s head with its inner jaw!"))
-	playsound(targetted_carbon,'sound/weapons/alien_bite2.ogg', 50, TRUE)
-	stabbing_xeno.flick_attack_overlay(targetted_carbon, "tail")
-	targetted_carbon.apply_armoured_damage(200, ARMOR_MELEE, BRUTE, "head", 5) //DIE
-	targetted_carbon.death(create_cause_data("Headbite", stabbing_xeno), FALSE, "executed by headbite")
-	stabbing_xeno.gain_health(150)
-	stabbing_xeno.xeno_jitter(1 SECONDS)
-	stabbing_xeno.flick_heal_overlay(3 SECONDS, "#00B800")
-	log_attack("[key_name(stabbing_xeno)] was executed by [key_name(targetted_carbon)] with a headbite!")
-	stabbing_xeno.emote("roar")
-	return TRUE
-
 /datum/action/xeno_action/activable/pounce/rush/additional_effects(mob/living/living_target) //pounce effects
 	var/mob/living/carbon/target = living_target
 	var/mob/living/carbon/Xenomorph/xeno = owner
@@ -148,7 +109,7 @@
 	target.apply_armoured_damage(get_xeno_damage_slash(target, xeno.caste.melee_damage_upper), ARMOR_MELEE, BRUTE, "chest")
 	playsound(get_turf(target), 'sound/weapons/alien_claw_flesh3.ogg', 30, TRUE)
 	shake_camera(target, 2, 1)
-	apply_cooldown_override(40)
+	apply_cooldown(0.65)
 
 /datum/action/xeno_action/activable/flurry/use_ability(atom/targeted_atom) //flurry ability
 	var/mob/living/carbon/Xenomorph/xeno = owner
@@ -229,6 +190,8 @@
 	if(xeno.mutation_type != LURKER_VAMPIRE)
 		return
 
+	xeno.emote("tail")
+
 // Get line of turfs
 	var/list/turf/target_turfs = list()
 
@@ -284,13 +247,8 @@
 			hit_target = carbone
 			break
 
-	var/cd_mod = 1
-
 	if(!hit_target)
-		to_chat(xeno, SPAN_XENODANGER("You swing your tail in front of you!"))
-		xeno.emote("tail")
-		cd_mod = 0.2
-		apply_cooldown(cd_mod)
+		apply_cooldown()
 		return
 
 	// Variables to buff if it's a direct aimed hit.
@@ -312,7 +270,7 @@
 		stab_overlay = "tail"
 
 		if(hit_target.mob_size < MOB_SIZE_BIG)
-			xeno_throw_human(hit_target, xeno, get_dir(xeno, hit_target), 2) // only a 'real' throw if it's a direct hit
+			xeno_throw_human(hit_target, xeno, get_dir(xeno, hit_target), 1) // only a 'real' throw if it's a direct hit. Same distance
 
 	else
 		to_chat(xeno, SPAN_XENOHIGHDANGER("You slam [hit_target] with your tail and push it backwards!"))
@@ -322,13 +280,12 @@
 		stab_overlay = "slam"
 
 		if(hit_target.mob_size < MOB_SIZE_BIG)
-			step_away(hit_target, xeno, 1, 2)
+			step_away(hit_target, xeno)
 
 	/// To reset the direction if they haven't moved since then in below callback.
 	var/last_dir = xeno.dir
 
 	xeno.setDir(stab_direction)
-	xeno.emote("tail")
 	xeno.flick_attack_overlay(hit_target, stab_overlay)
 
 	var/new_dir = xeno.dir
@@ -344,7 +301,7 @@
 	hit_target.last_damage_data = create_cause_data(xeno.caste_type, xeno)
 	log_attack("[key_name(xeno)] attacked [key_name(hit_target)] with Tail Jab")
 
-	apply_cooldown(cd_mod)
+	apply_cooldown()
 	..()
 	return
 
@@ -352,3 +309,45 @@
 	// If the xenomorph is still holding the same direction as the tail stab animation's changed it to, reset it back to the old direction so the xenomorph isn't stuck facing backwards.
 	if(new_dir == xeno.dir)
 		xeno.setDir(last_dir)
+
+/datum/action/xeno_action/activable/headbite/use_ability(atom/target_atom)
+	var/mob/living/carbon/Xenomorph/xeno = owner
+
+	if(!iscarbon(target_atom))
+		return
+
+	var/mob/living/carbon/target_carbon = target_atom
+
+	if(!(target_carbon.knocked_out || target_carbon.stat == UNCONSCIOUS)) //called knocked out because for some reason .stat seems to have a delay .
+		to_chat(xeno, SPAN_XENOHIGHDANGER("You can only headbite an unconscious, adjacent target!"))
+		return
+
+	if(!xeno.Adjacent(target_carbon))
+		to_chat(xeno, SPAN_XENOHIGHDANGER("You can only headbite an unconscious, adjacent target!"))
+		return
+
+	if(xeno.action_busy)
+		return
+
+	xeno.visible_message(SPAN_DANGER("[xeno] grabs [target_carbon]’s head aggressively."), \
+	SPAN_XENOWARNING("You grab [target_carbon]’s head aggressively."))
+
+	if(!do_after(xeno, 0.75 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, numticks = 2))
+		return
+
+	if(target_carbon.stat == DEAD)
+		to_chat(xeno, SPAN_XENODANGER("They died before you could finish headbiting them! Be more careful next time!"))
+		return
+
+	to_chat(xeno, SPAN_XENOHIGHDANGER("You pierce [target_carbon]’s head with your inner jaw!"))
+	playsound(target_carbon,'sound/weapons/alien_bite2.ogg', 50, TRUE)
+	xeno.visible_message(SPAN_DANGER("[xeno] pierces [target_carbon]’s head with its inner jaw!"))
+	xeno.flick_attack_overlay(target_carbon, "tail")
+	target_carbon.apply_armoured_damage(200, ARMOR_MELEE, BRUTE, "head", 5) //DIE
+	target_carbon.death(create_cause_data("executed by headbite", xeno), FALSE)
+	xeno.gain_health(150)
+	xeno.xeno_jitter(1 SECONDS)
+	xeno.flick_heal_overlay(3 SECONDS, "#00B800")
+	xeno.emote("roar")
+	log_attack("[key_name(xeno)] was executed by [key_name(target_carbon)] with a headbite!")
+	return TRUE

@@ -1,3 +1,4 @@
+
 /datum/xeno_mutator/Vampire
 	name = "STRAIN: Lurker - Vampire"
 	description = "You lose the ability to cloak in exchange for faster speed and armor, along with extra abilities that will allow you to bleed your opponents and execute them, granting you great healing."
@@ -8,13 +9,12 @@
 		/datum/action/xeno_action/onclick/lurker_invisibility,
 		/datum/action/xeno_action/onclick/lurker_assassinate,
 		/datum/action/xeno_action/activable/pounce/lurker,
-		/datum/action/xeno_action/activable/tail_stab
 	)
 	mutator_actions_to_add = list(
-		/datum/action/xeno_action/activable/tail_stab/vampire,
 		/datum/action/xeno_action/activable/pounce/rush,
 		/datum/action/xeno_action/activable/flurry,
-		/datum/action/xeno_action/activable/tail_jab
+		/datum/action/xeno_action/activable/tail_jab,
+		/datum/action/xeno_action/activable/headbite
 	)
 	keystone = TRUE
 

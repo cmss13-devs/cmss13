@@ -76,17 +76,14 @@
 
 // VAMP LURKER ABILITIES
 
-/datum/action/xeno_action/activable/tail_stab/vampire
-	name = "Wicked Tail Stab"
-
 /datum/action/xeno_action/activable/pounce/rush
 	name = "Rush"
 	action_icon_state = "pounce"
-	ability_name = "Rush"
+	ability_name = "rush"
 	macro_path = /datum/action/xeno_action/verb/verb_rush
 	ability_primacy = XENO_PRIMARY_ACTION_1
 	action_type = XENO_ACTION_CLICK
-	xeno_cooldown = 60
+	xeno_cooldown = 6 SECONDS
 	plasma_cost = 0
 
 	// Config options
@@ -97,17 +94,26 @@
 /datum/action/xeno_action/activable/flurry
 	name = "Flurry"
 	action_icon_state = "rav_spike"
-	ability_name = "Flurry"
+	ability_name = "flurry"
 	macro_path = /datum/action/xeno_action/verb/verb_flurry
 	ability_primacy = XENO_PRIMARY_ACTION_2
 	action_type = XENO_ACTION_CLICK
-	xeno_cooldown = 30
+	xeno_cooldown = 3 SECONDS
 
 /datum/action/xeno_action/activable/tail_jab
 	name = "Tail Jab"
 	action_icon_state = "prae_pierce"
-	ability_name = "Tail Jab"
+	ability_name = "tail jab"
 	macro_path = /datum/action/xeno_action/verb/verb_tail_jab
 	ability_primacy = XENO_PRIMARY_ACTION_3
 	action_type = XENO_ACTION_CLICK
-	xeno_cooldown = 70
+	xeno_cooldown = 7 SECONDS
+
+/datum/action/xeno_action/activable/headbite
+	name = "Headbite"
+	action_icon_state = "headbite"
+	ability_name = "headbite"
+	macro_path = /datum/action/xeno_action/verb/verb_headbite
+	ability_primacy = XENO_PRIMARY_ACTION_4
+	action_type = XENO_ACTION_CLICK
+	xeno_cooldown = 0 SECONDS

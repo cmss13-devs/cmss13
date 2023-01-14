@@ -155,7 +155,7 @@
 	remember_dropped_object(I)
 	return u_equip(I, get_step(src, 0), nomoveupdate, force) // Drops on turf instead of loc
 
-/mob/proc/pickup_recent()
+/mob/living/carbon/human/proc/pickup_recent()
 	if(!remembered_dropped_objects)
 		return
 
@@ -171,7 +171,7 @@
 		if(pickup_recent_item_on_turf(nearby_turf))
 			return
 
-/mob/proc/pickup_recent_item_on_turf(turf/check_turf)
+/mob/living/carbon/human/proc/pickup_recent_item_on_turf(turf/check_turf)
 	for(var/datum/weakref/weak_ref as anything in remembered_dropped_objects)
 		var/obj/previously_held_object = weak_ref.resolve()
 		if(previously_held_object.in_contents_of(check_turf))

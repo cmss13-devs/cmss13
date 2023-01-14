@@ -14,6 +14,17 @@ SUBSYSTEM_DEF(minimaps_update)
 /datum/controller/subsystem/minimaps_update/fire(resumed = FALSE)
 	update_xenos_in_tower_range()
 
+	// slaughter harry if this is not removed before merge
+	for(var/z in SSminimaps.minimaps_by_z)
+		var/datum/hud_displays/hud = SSminimaps.minimaps_by_z[z]
+		for(var/list/flags as anything in hud.images_assoc)
+			var/list/associated_blips = list()
+			for(var/index as anything in flags)
+				associated_blips += flags[index]
+			for(var/image/blip as anything in hud.images_raw[flags])
+				if(!(blip in associated_blips))
+					qdel(blip)
+
 /datum/controller/subsystem/minimaps_update/proc/update_xenos_in_tower_range()
 	if(SSticker.toweractive)
 		add_xenos_to_minimap()

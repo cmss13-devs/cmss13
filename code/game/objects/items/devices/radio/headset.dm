@@ -41,7 +41,7 @@
 	///The type of minimap this headset is added to
 	var/minimap_type = MINIMAP_FLAG_MARINE
 
-	var/mob/living/carbon/human/wearer = null
+	var/mob/living/carbon/human/wearer
 
 /obj/item/device/radio/headset/Initialize()
 	. = ..()
@@ -323,6 +323,9 @@
 
 /obj/item/device/radio/headset/proc/update_minimap_icon()
 	SIGNAL_HANDLER
+	if(!has_hud)
+		return
+
 	SSminimaps.remove_marker(wearer)
 	if(!wearer.assigned_equipment_preset || !wearer.assigned_equipment_preset.minimap_icon)
 		return

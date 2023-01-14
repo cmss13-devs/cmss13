@@ -1,0 +1,4 @@
+author: "realforest2001"
+delete-after: True
+changes:
+  - bugfix: "Ckey-ing into a simplemob no longer makes the mob disappear from the orbit menu."

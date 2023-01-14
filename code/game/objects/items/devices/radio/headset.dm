@@ -251,7 +251,8 @@
 		COMSIG_HUMAN_REVIVED,
 		COMSIG_MOB_LOGIN,
 		COMSIG_MOB_DEATH,
-		COMSIG_HUMAN_SET_UNDEFIBBABLE
+		COMSIG_HUMAN_SET_UNDEFIBBABLE,
+		COMSIG_MOB_STAT_SET_ALIVE
 	))
 	if(user.has_item_in_ears(src)) //dropped() is called before the inventory reference is update.
 		var/datum/mob_hud/H = huds[hud_type]

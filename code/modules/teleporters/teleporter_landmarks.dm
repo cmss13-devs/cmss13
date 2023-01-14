@@ -1,5 +1,5 @@
 /*
-*       Backend for CORSAT (and potential other, future teleporters)
+*    Backend for CORSAT (and potential other, future teleporters)
 */
 
 
@@ -12,8 +12,8 @@
 	icon = 'icons/old_stuff/mark.dmi'
 	icon_state = "spawn_shuttle"
 
-	var/location_id       // Which location this is
-	var/index             // just that, which index in the location list this gets loaded into
+	var/location_id    // Which location this is
+	var/index  // just that, which index in the location list this gets loaded into
 	var/linked_teleporter // Which teleporter to load this marker into (hardcode this by teleporter ID)
 
 // Put us into the glob list handled by the landmarks SS

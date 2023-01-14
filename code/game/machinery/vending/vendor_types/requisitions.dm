@@ -175,7 +175,7 @@
 
 /obj/structure/machinery/cm_vending/sorted/cargo_guns/cargo/get_appropriate_vend_turf(var/mob/living/carbon/human/H)
 	var/turf/turf_to_vent_to
-	if(vend_x_offset != 0 || vend_y_offset != 0)	//this will allow to avoid code below that suits only Almayer.
+	if(vend_x_offset != 0 || vend_y_offset != 0) //this will allow to avoid code below that suits only Almayer.
 		turf_to_vent_to = locate(x + vend_x_offset, y + vend_y_offset, z)
 	else
 		turf_to_vent_to = get_turf(get_step(src, NORTH))
@@ -412,10 +412,10 @@
 //Special cargo-specific vendor with vending offsets
 /obj/structure/machinery/cm_vending/sorted/cargo_ammo/cargo
 	vend_flags = VEND_CLUTTER_PROTECTION | VEND_LIMITED_INVENTORY | VEND_LOAD_AMMO_BOXES //We want to vend to turf not hand, since we are in requisitions
-	
+
 /obj/structure/machinery/cm_vending/sorted/cargo_ammo/cargo/get_appropriate_vend_turf(var/mob/living/carbon/human/H)
 	var/turf/turf_to_vent_to
-	if(vend_x_offset != 0 || vend_y_offset != 0)	//this will allow to avoid code below that suits only Almayer.
+	if(vend_x_offset != 0 || vend_y_offset != 0) //this will allow to avoid code below that suits only Almayer.
 		turf_to_vent_to = locate(x + vend_x_offset, y + vend_y_offset, z)
 	else
 		turf_to_vent_to = get_turf(get_step(src, NORTHWEST))
@@ -437,8 +437,6 @@
 	req_access = list(ACCESS_MARINE_CARGO)
 	vendor_theme = VENDOR_THEME_USCM
 	icon_state = "req_attach"
-
-	vend_delay = 3
 
 /obj/structure/machinery/cm_vending/sorted/attachments/vend_fail()
 	return
@@ -491,7 +489,7 @@
 
 /obj/structure/machinery/cm_vending/sorted/attachments/get_appropriate_vend_turf(var/mob/living/carbon/human/H)
 	var/turf/turf_to_vent_to
-	if(vend_x_offset != 0 || vend_y_offset != 0)	//this will allow to avoid code below that suits only Almayer.
+	if(vend_x_offset != 0 || vend_y_offset != 0) //this will allow to avoid code below that suits only Almayer.
 		turf_to_vent_to = locate(x + vend_x_offset, y + vend_y_offset, z)
 	else
 		turf_to_vent_to = get_turf(get_step(src, NORTHEAST))

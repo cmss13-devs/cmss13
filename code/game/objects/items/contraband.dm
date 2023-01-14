@@ -2,7 +2,8 @@
 
 //Illicit drugs~
 /obj/item/storage/pill_bottle/happy
-	name = "Happy pills"
+	name = "happy pills"
+	gender = PLURAL
 	desc = "Highly illegal drug. When you want to see the rainbow."
 	skilllock = SKILL_MEDICAL_DEFAULT
 

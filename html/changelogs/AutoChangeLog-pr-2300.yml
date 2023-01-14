@@ -1,0 +1,4 @@
+author: "Segrain"
+delete-after: True
+changes:
+  - bugfix: "Removed exploit allowing stacking multiple resin traps on the same turf."

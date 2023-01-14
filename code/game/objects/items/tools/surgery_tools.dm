@@ -300,6 +300,7 @@ t. optimisticdude
 	name = "surgical drapes"
 	desc = "Used to cover a limb prior to the beginning of a surgical procedure"
 	icon_state = "drapes"
+	gender = PLURAL
 	w_class = SIZE_SMALL
 	flags_item = NOBLUDGEON
 
@@ -400,7 +401,7 @@ t. optimisticdude
 					resetting = 0
 
 /obj/item/tool/surgery/WYautopsy/attack(mob/living/carbon/Xenomorph/T as mob, mob/living/user as mob)
-/*	set category = "Autopsy"
+/* set category = "Autopsy"
 	set name = "Perform Alien Autopsy"
 	set src in usr*/
 	if(resetting)

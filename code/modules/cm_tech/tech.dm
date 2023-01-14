@@ -56,9 +56,9 @@
 	return TRUE
 
 /** Called when a tech is unlocked. Usually, benefits can be applied here
-  * however, the purchase can still be cancelled by returning FALSE
-  *
-  * If you sleep in this proc, you must call can_unlock after the sleep ends to make sure you can still purchase the tech in question
+* however, the purchase can still be cancelled by returning FALSE
+*
+* If you sleep in this proc, you must call can_unlock after the sleep ends to make sure you can still purchase the tech in question
 **/
 /datum/tech/proc/on_unlock(mob/user)
 	SHOULD_CALL_PARENT(TRUE)

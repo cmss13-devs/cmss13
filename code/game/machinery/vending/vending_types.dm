@@ -9,7 +9,7 @@
 	desc = ""
 	icon = ''
 	icon_state = ""
-	vend_delay = 15
+	vend_delay = 1.5 SECONDS
 	products = list()
 	contraband = list()
 	premium = list()
@@ -22,7 +22,7 @@
 	//product_ads = "Have a drink!;Drink up!;It's good for you!;Would you like a hot joe?;I'd kill for some coffee!;The best beans in the galaxy.;Only the finest brew for you.;Mmmm. Nothing like a coffee.;I like coffee, don't you?;Coffee helps you work!;Try some tea.;We hope you like the best!;Try our new chocolate!;Admin conspiracies"
 	icon_state = "coffee"
 	icon_vend = "coffee-vend"
-	vend_delay = 34
+	vend_delay = 3.4 SECONDS
 	idle_power_usage = 211 //refrigerator - believe it or not, this is actually the average power consumption of a refrigerated vending machine according to NRCan.
 	vend_power_usage = 85000 //85 kJ to heat a 250 mL cup of coffee
 	products = list(/obj/item/reagent_container/food/drinks/coffee/marine = 25,
@@ -139,7 +139,7 @@
 	desc = "If you want to get cancer, might as well do it in style!"
 	product_slogans = "L.S./M.F.T.! Lucky Strikes Means Fine Tobacco.;For a classic style that lights up every time, there's always Zippo!;The FDA would like to remind you that tobacco products cause cancer and increased fatigue.;Real men smoke Lucky Strikes!;Serving the US Armed Forces for over two-hundred years!;Life's short, smoke a Lucky!;L.S./M.F.T.!;Lucky Strike is first again!;You just can't beat a Lucky Strike!;The preferred cigarette of Carlos Hathcock!;First again with tobacco-men!"
 	product_ads = "Real men smoke Lucky Strikes!;Serving the US Armed Forces for over two-hundred years!;Life's short, smoke a Lucky!;L.S./M.F.T.!;Lucky Strike is first again!;You just can't beat a Lucky Strike!;The preferred cigarette of Carlos Hathcock!;First again with tobacco-men!"
-	vend_delay = 14
+	vend_delay = 1.4 SECONDS
 	icon_state = "cigs"
 	products = list(/obj/item/storage/fancy/cigarettes/lucky_strikes = 50,
 					/obj/item/storage/fancy/cigar/tarbacktube = 20,
@@ -209,11 +209,11 @@
 					/obj/item/reagent_container/food/snacks/donut/normal = 12,
 					/obj/item/storage/box/evidence = 6,
 					/obj/item/clothing/head/helmet/marine/MP = 6,
-					/obj/item/clothing/head/helmet/beret/marine/mp/mppeaked = 6,
-					/obj/item/clothing/head/helmet/beret/marine/mp/mpcap = 6,
+					/obj/item/clothing/head/beret/marine/mp/mppeaked = 6,
+					/obj/item/clothing/head/beret/marine/mp/mpcap = 6,
 					/obj/item/clothing/under/marine/mp = 2,
 					/obj/item/storage/belt/security/MP = 6,
-					/obj/item/clothing/head/helmet/beret/marine/mp = 6,
+					/obj/item/clothing/head/beret/marine/mp = 6,
 					/obj/item/clothing/glasses/sunglasses/sechud = 3,
 					/obj/item/device/radio/headset = 6)
 	contraband = list(/obj/item/clothing/glasses/sunglasses = 2,/obj/item/storage/donut_box = 2)
@@ -324,10 +324,10 @@
 
 			if(ispath(typepath,/obj/item/weapon/gun) || ispath(typepath,/obj/item/ammo_magazine) || ispath(typepath,/obj/item/explosive/grenade) || ispath(typepath,/obj/item/weapon/gun/flamer) || ispath(typepath,/obj/item/storage) )
 				R.display_color = "black"
-//			else if(ispath(typepath,/obj/item/clothing) || ispath(typepath,/obj/item/storage))
-//				R.display_color = "green"
-//			else if(ispath(typepath,/obj/item/reagent_container) || ispath(typepath,/obj/item/stack/medical))
-//				R.display_color = "blue"
+// else if(ispath(typepath,/obj/item/clothing) || ispath(typepath,/obj/item/storage))
+// R.display_color = "green"
+// else if(ispath(typepath,/obj/item/reagent_container) || ispath(typepath,/obj/item/stack/medical))
+// R.display_color = "blue"
 			else
 				R.display_color = "white"
 
@@ -354,7 +354,7 @@
 	desc = "Contains Weyland-Yutani approved recreational items, like Walkmans and Cards."
 	icon_state = "walkman"
 	product_ads = "The only place to have fun in the entire Marine Corps!;You'll find no better music from here to Arcturus!;Instructions not included with decks of cards!;No volume controls - you don't need them!;All products responsibly made by people having just as much fun as you will be!"
-	vend_delay = 5
+	vend_delay = 0.5 SECONDS
 	idle_power_usage = 200
 
 	products = list(/obj/item/device/cassette_tape/pop1 = 10,

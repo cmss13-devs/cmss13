@@ -319,7 +319,7 @@
 			playsound(loc, rand(0, 100) < 95 ? 'sound/voice/alien_pounce.ogg' : 'sound/voice/alien_pounce2.ogg', 25, 1)
 		canmove = FALSE
 		frozen = TRUE
-		pounceAction.freeze_timer_id = addtimer(CALLBACK(src, .proc/unfreeze), pounceAction.freeze_time, TIMER_STOPPABLE)
+		pounceAction.freeze_timer_id = addtimer(CALLBACK(src, PROC_REF(unfreeze)), pounceAction.freeze_time, TIMER_STOPPABLE)
 
 	pounceAction.additional_effects(M)
 
@@ -483,7 +483,7 @@
 	jitter_time--
 
 	if(jitter_time)
-		addtimer(CALLBACK(src, /mob/living/carbon/Xenomorph.proc/xeno_jitter, jitter_time), 1) // The fuck, use a processing SS, TODO FIXME AHH
+		addtimer(CALLBACK(src, TYPE_PROC_REF(/mob/living/carbon/Xenomorph, xeno_jitter), jitter_time), 1) // The fuck, use a processing SS, TODO FIXME AHH
 	else
 		//endwhile - reset the pixel offsets to zero
 		pixel_x = old_x
@@ -509,7 +509,7 @@
 		nocrit = TRUE
 		if(wowave < 15)
 			maxHealth = ((maxHealth+abs(crit_health))*(wowave/15)*(3/4))+((maxHealth)*1/4) //if it's wo we give xeno's less hp in lower rounds. This makes help the marines feel good.
-			health	= ((health+abs(crit_health))*(wowave/15)*(3/4))+((health)*1/4) //if it's wo we give xeno's less hp in lower rounds. This makes help the marines feel good.
+			health = ((health+abs(crit_health))*(wowave/15)*(3/4))+((health)*1/4) //if it's wo we give xeno's less hp in lower rounds. This makes help the marines feel good.
 		else
 			maxHealth = maxHealth+abs(crit_health) // From round 15 and on we give them only a slight boost
 			health = health+abs(crit_health) // From round 15 and on we give them only a slight boost
@@ -621,7 +621,7 @@
 	if(!TC)
 		TC = new(tackle_min + tackle_min_offset, tackle_max + tackle_max_offset, tackle_chance*tackle_mult)
 		LAZYSET(tackle_counter, M, TC)
-		RegisterSignal(M, COMSIG_MOB_KNOCKED_DOWN, .proc/tackle_handle_lying_changed)
+		RegisterSignal(M, COMSIG_MOB_KNOCKED_DOWN, PROC_REF(tackle_handle_lying_changed))
 
 	if (TC.tackle_reset_id)
 		deltimer(TC.tackle_reset_id)
@@ -629,7 +629,7 @@
 
 	. = TC.attempt_tackle(tackle_bonus)
 	if (!.)
-		TC.tackle_reset_id = addtimer(CALLBACK(src, .proc/reset_tackle, M), 4 SECONDS, TIMER_UNIQUE | TIMER_STOPPABLE)
+		TC.tackle_reset_id = addtimer(CALLBACK(src, PROC_REF(reset_tackle), M), 4 SECONDS, TIMER_UNIQUE | TIMER_STOPPABLE)
 	else
 		reset_tackle(M)
 

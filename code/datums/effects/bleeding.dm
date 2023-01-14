@@ -1,13 +1,13 @@
 #define BICAOD_BLOOD_REDUCTION 0.67 //15 OD ticks to heal 1 blood loss
 #define CRYO_BLOOD_REDUCTION 0.67
 #define THWEI_BLOOD_REDUCTION 0.75
-#define BLOOD_ADD_PENALTY	1.5
+#define BLOOD_ADD_PENALTY 1.5
 
 /datum/effects/bleeding
 	effect_name = "bleeding"
 	duration = null
 	flags = NO_PROCESS_ON_DEATH | DEL_ON_UNDEFIBBABLE
-	var/blood_loss = 0			//How much blood to lose every tick
+	var/blood_loss = 0 //How much blood to lose every tick
 	var/obj/limb/limb = null
 	var/blood_duration_multiplier = 2.5
 	var/blood_loss_divider = 80

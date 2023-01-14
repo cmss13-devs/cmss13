@@ -25,9 +25,9 @@
 
 /obj/effect/step_trigger/thrower
 	var/direction = SOUTH // the direction of throw
-	var/tiles = 3	// if 0: forever until atom hits a stopper
+	var/tiles = 3 // if 0: forever until atom hits a stopper
 	var/immobilize = 1 // if nonzero: prevents mobs from moving while they're being flung
-	var/speed = 1	// delay of movement
+	var/speed = 1 // delay of movement
 	var/facedir = 0 // if 1: atom faces the direction of movement
 	var/nostop = 0 // if 1: will only be stopped by teleporters
 	var/list/affecting = list()
@@ -105,7 +105,7 @@
 /* Seamless vector teleporter - to be used with projectors */
 
 /obj/effect/step_trigger/teleporter_vector
-	var/vector_x = 0	//Teleportation vector
+	var/vector_x = 0 //Teleportation vector
 	var/vector_y = 0
 	var/vector_z = 0
 	affect_ghosts = 1
@@ -146,7 +146,7 @@
 /obj/effect/step_trigger/teleporter
 	icon = 'icons/old_stuff/debug_group.dmi'
 	icon_state = "red"
-	var/teleport_x = 0	// teleportation coordinates (if one is null, then no teleport!)
+	var/teleport_x = 0 // teleportation coordinates (if one is null, then no teleport!)
 	var/teleport_y = 0
 	var/teleport_z = 0
 
@@ -190,15 +190,15 @@
 
 /obj/effect/step_trigger/teleporter/yautja_ship/Trigger(atom/movable/A)
 	var/turf/destination
-	if(length(GLOB.yautja_teleports))	//We have some possible locations.
-		var/pick = tgui_input_list(usr, "Where do you want to go today?", "Locations", GLOB.yautja_teleport_descs)	//Pick one of them in the list.)
+	if(length(GLOB.yautja_teleports)) //We have some possible locations.
+		var/pick = tgui_input_list(usr, "Where do you want to go today?", "Locations", GLOB.yautja_teleport_descs) //Pick one of them in the list.)
 		destination = GLOB.yautja_teleport_descs[pick]
 	if(!destination || (A.loc != loc))
 		return
-	teleport_x = destination.x	//Configure the destination locations.
+	teleport_x = destination.x //Configure the destination locations.
 	teleport_y = destination.y
 	teleport_z = destination.z
-	..(A, 1)	//Run the parent proc for teleportation. Tell it to play the animation.
+	..(A, 1) //Run the parent proc for teleportation. Tell it to play the animation.
 
 /* Random teleporter, teleports atoms to locations ranging from teleport_x - teleport_x_offset, etc */
 

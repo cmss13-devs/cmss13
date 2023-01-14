@@ -1,6 +1,6 @@
-#define	CLIMB_DELAY_SHORT		0.2 SECONDS
-#define	CLIMB_DELAY_MEDIUM		1 SECONDS
-#define CLIMB_DELAY_LONG		2 SECONDS
+#define CLIMB_DELAY_SHORT 0.2 SECONDS
+#define CLIMB_DELAY_MEDIUM 1 SECONDS
+#define CLIMB_DELAY_LONG 2 SECONDS
 
 /obj/structure
 	icon = 'icons/obj/structures/structures.dmi'

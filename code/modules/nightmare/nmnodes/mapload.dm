@@ -35,10 +35,10 @@
  * Inserts a map file among a set of variations in a folder
  * param: path: some/folder/, landmark
  * files within should be named with a prefix indicating weighting:
- *    some/folder/20.destroyed.dmm
- *    some/folder/50.spaced.dmm
+ * some/folder/20.destroyed.dmm
+ * some/folder/50.spaced.dmm
  * using + instead of dot means to keep map contents, eg.
- *    some/folder/20+extras.dmm is added on top
+ * some/folder/20+extras.dmm is added on top
  */
 /datum/nmnode/mapload/variations
 	id = "map_variations"
@@ -65,7 +65,7 @@
 		filelist += filename
 		var/w = text2num(matcher.group[1])
 		weights  += w
-		sum      += w
+		sum   += w
 	var/roll = rand(1, sum)
 	sum = 0
 	for(var/i in 1 to length(filelist))

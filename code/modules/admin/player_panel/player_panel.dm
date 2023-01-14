@@ -393,9 +393,9 @@
 		if(check_rights(R_MOD, 0))
 			dat += "<b>Evacuation:</b> "
 			switch(EvacuationAuthority.evac_status)
-				if(EVACUATION_STATUS_STANDING_BY) dat += 	"STANDING BY"
-				if(EVACUATION_STATUS_INITIATING) dat += 	"IN PROGRESS: [EvacuationAuthority.get_status_panel_eta()]"
-				if(EVACUATION_STATUS_COMPLETE) dat += 		"COMPLETE"
+				if(EVACUATION_STATUS_STANDING_BY) dat += "STANDING BY"
+				if(EVACUATION_STATUS_INITIATING) dat += "IN PROGRESS: [EvacuationAuthority.get_status_panel_eta()]"
+				if(EVACUATION_STATUS_COMPLETE) dat += "COMPLETE"
 			dat += "<br>"
 
 			dat += "<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];evac_authority=init_evac'>Initiate Evacuation</a><br>"
@@ -406,10 +406,10 @@
 		if(check_rights(R_ADMIN, 0))
 			dat += "<b>Self-Destruct:</b> "
 			switch(EvacuationAuthority.dest_status)
-				if(NUKE_EXPLOSION_INACTIVE) dat += 		"INACTIVE"
-				if(NUKE_EXPLOSION_ACTIVE) dat += 		"ACTIVE"
-				if(NUKE_EXPLOSION_IN_PROGRESS) dat += 	"IN PROGRESS"
-				if(NUKE_EXPLOSION_FINISHED, NUKE_EXPLOSION_GROUND_FINISHED) dat += 		"FINISHED"
+				if(NUKE_EXPLOSION_INACTIVE) dat += "INACTIVE"
+				if(NUKE_EXPLOSION_ACTIVE) dat += "ACTIVE"
+				if(NUKE_EXPLOSION_IN_PROGRESS) dat += "IN PROGRESS"
+				if(NUKE_EXPLOSION_FINISHED, NUKE_EXPLOSION_GROUND_FINISHED) dat += "FINISHED"
 			dat += "<br>"
 
 			dat += "<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];evac_authority=init_dest'>Unlock Self-Destruct control panel for humans</a><br>"

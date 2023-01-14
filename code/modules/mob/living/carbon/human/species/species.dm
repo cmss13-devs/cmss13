@@ -3,38 +3,38 @@
 */
 
 /datum/species
-	 ///Used for isx(y) checking of species groups
+	///Used for isx(y) checking of species groups
 	var/group
 
-	var/name                                             // Species name.
+	var/name  // Species name.
 	var/name_plural
 
-	var/icobase = 'icons/mob/humans/species/r_human.dmi'    // Normal icon set.
+	var/icobase = 'icons/mob/humans/species/r_human.dmi' // Normal icon set.
 	var/deform = 'icons/mob/humans/species/r_def_human.dmi' // Mutated icon set.
 	var/icobase_source // if we want to use sourcing system
 	var/deform_source
-	var/eyes = "eyes_s"                                  // Icon for eyes.
-	var/uses_ethnicity = FALSE						 //Set to TRUE to load proper ethnicities and what have you
+	var/eyes = "eyes_s"   // Icon for eyes.
+	var/uses_ethnicity = FALSE  //Set to TRUE to load proper ethnicities and what have you
 
-	var/primitive                              // Lesser form, if any (ie. monkey for humans)
-	var/tail                                   // Name of tail image in species effects icon file.
-	var/datum/unarmed_attack/unarmed           // For empty hand harm-intent attack
+	var/primitive   // Lesser form, if any (ie. monkey for humans)
+	var/tail    // Name of tail image in species effects icon file.
+	var/datum/unarmed_attack/unarmed    // For empty hand harm-intent attack
 	var/datum/unarmed_attack/secondary_unarmed // For empty hand harm-intent attack if the first fails.
 	var/slowdown = 0
-	var/gluttonous        // Can eat some mobs. 1 for monkeys, 2 for people.
+	var/gluttonous // Can eat some mobs. 1 for monkeys, 2 for people.
 	var/rarity_value = 1  // Relative rarity/collector value for this species. Only used by ninja and cultists atm.
-	var/unarmed_type =           /datum/unarmed_attack
+	var/unarmed_type =    /datum/unarmed_attack
 	var/secondary_unarmed_type = /datum/unarmed_attack/bite
-	var/pain_type              = /datum/pain/human
-	var/stamina_type           = /datum/stamina
+	var/pain_type   = /datum/pain/human
+	var/stamina_type    = /datum/stamina
 
 	var/timed_hug = TRUE
 
-	var/list/speech_sounds        // A list of sounds to potentially play when speaking.
+	var/list/speech_sounds // A list of sounds to potentially play when speaking.
 	var/list/speech_chance
 	var/has_fine_manipulation = 1 // Can use small items.
 	var/can_emote = TRUE
-	var/insulated                 // Immune to electrocution and glass shards to the feet.
+	var/insulated  // Immune to electrocution and glass shards to the feet.
 
 	// Some species-specific gibbing data.
 	var/gibbed_anim = "gibbed-h"
@@ -46,7 +46,7 @@
 
 	var/breath_type = "oxygen"   // Non-oxygen gas breathed, if any.
 	var/poison_type = "phoron"   // Poisonous air.
-	var/exhale_type = "carbon_dioxide"      // Exhaled gas type.
+	var/exhale_type = "carbon_dioxide"   // Exhaled gas type.
 
 	var/total_health = 100  //new maxHealth
 
@@ -58,23 +58,23 @@
 	var/heat_level_2 = 400  // Heat damage level 2 above this point.
 	var/heat_level_3 = 1000 // Heat damage level 2 above this point.
 
-	var/body_temperature = 310.15	//non-IS_SYNTHETIC species will try to stabilize at this temperature. (also affects temperature processing)
-	var/reagent_tag                 //Used for metabolizing reagents.
+	var/body_temperature = 310.15 //non-IS_SYNTHETIC species will try to stabilize at this temperature. (also affects temperature processing)
+	var/reagent_tag  //Used for metabolizing reagents.
 
 	var/darksight = 2
 	var/default_lighting_alpha = LIGHTING_PLANE_ALPHA_VISIBLE
 
-	var/brute_mod = null    // Physical damage reduction/malus.
-	var/burn_mod = null     // Burn damage reduction/malus.
+	var/brute_mod = null // Physical damage reduction/malus.
+	var/burn_mod = null  // Burn damage reduction/malus.
 
-	var/flags = 0       // Various specific features.
+	var/flags = 0    // Various specific features.
 
-	var/list/abilities = list()	// For species-derived or admin-given powers
+	var/list/abilities = list() // For species-derived or admin-given powers
 
 	var/blood_color = "#A10808" //Red.
 	var/flesh_color = "#FFC896" //Pink.
-	var/base_color      //Used when setting species.
-	var/hair_color      //If the species only has one hair color
+	var/base_color   //Used when setting species.
+	var/hair_color   //If the species only has one hair color
 
 	//Used in icon caching.
 	var/race_key = 0
@@ -83,19 +83,19 @@
 	// Species-specific abilities.
 	var/list/inherent_verbs
 	var/list/has_organ = list(
-		"heart" =    /datum/internal_organ/heart,
-		"lungs" =    /datum/internal_organ/lungs,
-		"liver" =    /datum/internal_organ/liver,
+		"heart" = /datum/internal_organ/heart,
+		"lungs" = /datum/internal_organ/lungs,
+		"liver" = /datum/internal_organ/liver,
 		"kidneys" =  /datum/internal_organ/kidneys,
-		"brain" =    /datum/internal_organ/brain,
-		"eyes" =     /datum/internal_organ/eyes
+		"brain" = /datum/internal_organ/brain,
+		"eyes" =  /datum/internal_organ/eyes
 		)
 
 	var/knock_down_reduction = 1 //how much the knocked_down effect is reduced per Life call.
 	var/stun_reduction = 1 //how much the stunned effect is reduced per Life call.
 	var/knock_out_reduction = 1 //same thing
 
-	 /// If different from 1, a signal is registered on post_spawn().
+	/// If different from 1, a signal is registered on post_spawn().
 	var/weed_slowdown_mult = 1
 
 	var/acid_blood_dodge_chance = 0
@@ -107,7 +107,7 @@
 	var/blood_mask = 'icons/effects/blood.dmi'
 
 	var/mob_flags = NO_FLAGS // The mob flags to give their mob
-	 /// Status traits to give to the mob.
+	/// Status traits to give to the mob.
 	var/list/mob_inherent_traits
 
 	var/ignores_stripdrag_flag = FALSE
@@ -242,8 +242,8 @@
 		H.visible_message(SPAN_NOTICE("[H] plays <b>[protagonist_plays]</b>![winner_text]"), SPAN_NOTICE("You play <b>[protagonist_plays]</b>![winner_text]"), max_distance = 5)
 		target.visible_message(SPAN_NOTICE("[target] plays <b>[antagonist_plays]</b>![winner_text]"), SPAN_NOTICE("You play <b>[antagonist_plays]</b>![winner_text]"), max_distance = 5)
 		playsound(target, "clownstep", 35, TRUE)
-		INVOKE_ASYNC(GLOBAL_PROC, .proc/do_after, H, 8, INTERRUPT_NONE, play_to_emote[protagonist_plays])
-		INVOKE_ASYNC(GLOBAL_PROC, .proc/do_after, target, 8, INTERRUPT_NONE, play_to_emote[antagonist_plays])
+		INVOKE_ASYNC(GLOBAL_PROC, PROC_REF(do_after), H, 8, INTERRUPT_NONE, play_to_emote[protagonist_plays])
+		INVOKE_ASYNC(GLOBAL_PROC, PROC_REF(do_after), target, 8, INTERRUPT_NONE, play_to_emote[antagonist_plays])
 		H.animation_attack_on(target)
 		target.animation_attack_on(H)
 		H.start_audio_emote_cooldown(5 SECONDS)

@@ -12,9 +12,9 @@ SUBSYSTEM_DEF(mapping)
 
 	var/list/areas_in_z = list()
 
-	var/list/turf/unused_turfs = list()				//Not actually unused turfs they're unused but reserved for use for whatever requests them. "[zlevel_of_turf]" = list(turfs)
-	var/list/datum/turf_reservations		//list of turf reservations
-	var/list/used_turfs = list()				//list of turf = datum/turf_reservation
+	var/list/turf/unused_turfs = list() //Not actually unused turfs they're unused but reserved for use for whatever requests them. "[zlevel_of_turf]" = list(turfs)
+	var/list/datum/turf_reservations //list of turf reservations
+	var/list/used_turfs = list() //list of turf = datum/turf_reservation
 
 	var/list/reservation_ready = list()
 	var/clearing_reserved_turfs = FALSE
@@ -63,7 +63,7 @@ SUBSYSTEM_DEF(mapping)
 	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/mapping/proc/wipe_reservations(wipe_safety_delay = 100)
-	if(clearing_reserved_turfs || !initialized)			//in either case this is just not needed.
+	if(clearing_reserved_turfs || !initialized) //in either case this is just not needed.
 		return
 	clearing_reserved_turfs = TRUE
 	message_admins("Clearing dynamic reservation space.")
@@ -157,7 +157,7 @@ SUBSYSTEM_DEF(mapping)
 		INIT_ANNOUNCE("Loading [ship_map.map_name]...")
 		Loadship(FailedZs, ship_map.map_name, ship_map.map_path, ship_map.map_file, ship_map.traits, ZTRAITS_MAIN_SHIP)
 
-	if(LAZYLEN(FailedZs))	//but seriously, unless the server's filesystem is messed up this will never happen
+	if(LAZYLEN(FailedZs)) //but seriously, unless the server's filesystem is messed up this will never happen
 		var/msg = "RED ALERT! The following map files failed to load: [FailedZs[1]]"
 		if(FailedZs.len > 1)
 			for(var/I in 2 to FailedZs.len)
@@ -264,8 +264,8 @@ SUBSYSTEM_DEF(mapping)
 
 //This is not for wiping reserved levels, use wipe_reservations() for that.
 /datum/controller/subsystem/mapping/proc/initialize_reserved_level(z)
-	UNTIL(!clearing_reserved_turfs)				//regardless, lets add a check just in case.
-	clearing_reserved_turfs = TRUE			//This operation will likely clear any existing reservations, so lets make sure nothing tries to make one while we're doing it.
+	UNTIL(!clearing_reserved_turfs) //regardless, lets add a check just in case.
+	clearing_reserved_turfs = TRUE //This operation will likely clear any existing reservations, so lets make sure nothing tries to make one while we're doing it.
 	if(!level_trait(z,ZTRAIT_RESERVED))
 		clearing_reserved_turfs = FALSE
 		CRASH("Invalid z level prepared for reservations.")
@@ -293,17 +293,17 @@ SUBSYSTEM_DEF(mapping)
 
 //DO NOT CALL THIS PROC DIRECTLY, CALL wipe_reservations().
 /datum/controller/subsystem/mapping/proc/do_wipe_turf_reservations()
-	UNTIL(initialized)							//This proc is for AFTER init, before init turf reservations won't even exist and using this will likely break things.
+	UNTIL(initialized) //This proc is for AFTER init, before init turf reservations won't even exist and using this will likely break things.
 	for(var/i in turf_reservations)
 		var/datum/turf_reservation/TR = i
 		if(!QDELETED(TR))
 			qdel(TR, TRUE)
 	UNSETEMPTY(turf_reservations)
 	var/list/clearing = list()
-	for(var/l in unused_turfs)			//unused_turfs is a assoc list by z = list(turfs)
+	for(var/l in unused_turfs) //unused_turfs is a assoc list by z = list(turfs)
 		if(islist(unused_turfs[l]))
 			clearing |= unused_turfs[l]
-	clearing |= used_turfs		//used turfs is an associative list, BUT, reserve_turfs() can still handle it. If the code above works properly, this won't even be needed as the turfs would be freed already.
+	clearing |= used_turfs //used turfs is an associative list, BUT, reserve_turfs() can still handle it. If the code above works properly, this won't even be needed as the turfs would be freed already.
 	unused_turfs.Cut()
 	used_turfs.Cut()
 	reserve_turfs(clearing)

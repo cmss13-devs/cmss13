@@ -517,54 +517,62 @@
 		if (B.burrow)
 			return
 
-	if(!X.check_plasma(plasma_cost))
-		return
 	var/turf/T = get_turf(X)
-
-	if(!istype(T) || T.is_weedable() < FULLY_WEEDABLE || !can_xeno_build(T))
-		to_chat(X, SPAN_WARNING("You can't do that here."))
+	if(!istype(T))
+		to_chat(X, SPAN_XENOWARNING("You can't do that here."))
 		return
-
 	var/area/AR = get_area(T)
-
 	if(istype(AR,/area/shuttle/drop1/lz1) || istype(AR,/area/shuttle/drop2/lz2) || GLOB.interior_manager.interior_z == X.z)
 		to_chat(X, SPAN_WARNING("You sense this is not a suitable area for creating a resin hole."))
 		return
-
-	var/obj/effect/alien/weeds/alien_weeds = locate() in T
+	var/obj/effect/alien/weeds/alien_weeds = T.check_xeno_trap_placement(X)
 	if(!alien_weeds)
-		to_chat(X, SPAN_WARNING("You can only shape on weeds. Find some resin before you start building!"))
 		return
-
-	if(alien_weeds.linked_hive.hivenumber != X.hivenumber)
-		to_chat(X, SPAN_WARNING("These weeds don't belong to your hive!"))
-		return
-
-	if(!X.check_alien_construction(T,check_doors=TRUE))
-		return
-
-	if(locate(/obj/effect/alien/resin/trap) in orange(1, T)) // obj/effect/alien/resin presence is checked on turf by check_alien_construction, so we just check orange.
-		to_chat(X, SPAN_XENOWARNING("This is too close to another resin hole!"))
-		return
-
-	if(locate(/obj/effect/alien/resin/fruit) in orange(1, T))
-		to_chat(X, SPAN_XENOWARNING("This is too close to a fruit!"))
-		return
-
 	if(istype(alien_weeds, /obj/effect/alien/weeds/node))
 		to_chat(X, SPAN_NOTICE("You start uprooting the node so you can put the resin hole in its place..."))
 		if(!do_after(X, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC, target, INTERRUPT_ALL))
 			return
-		var/obj/effect/alien/weeds/the_replacer = new /obj/effect/alien/weeds(alien_weeds.loc)
+		if(!T.check_xeno_trap_placement(X))
+			return
+		var/obj/effect/alien/weeds/the_replacer = new /obj/effect/alien/weeds(T)
 		the_replacer.hivenumber = X.hivenumber
 		the_replacer.linked_hive = X.hive
 		set_hive_data(the_replacer, X.hivenumber)
 		qdel(alien_weeds)
 
+	if(!X.check_plasma(plasma_cost))
+		return
 	X.use_plasma(plasma_cost)
 	playsound(X.loc, "alien_resin_build", 25)
-	new /obj/effect/alien/resin/trap(X.loc, X)
+	new /obj/effect/alien/resin/trap(T, X)
 	to_chat(X, SPAN_XENONOTICE("You place a resin hole on the weeds, it still needs a sister to fill it with acid."))
+
+/turf/proc/check_xeno_trap_placement(mob/living/carbon/Xenomorph/X)
+	if(is_weedable() < FULLY_WEEDABLE || !can_xeno_build(src))
+		to_chat(X, SPAN_XENOWARNING("You can't do that here."))
+		return FALSE
+
+	var/obj/effect/alien/weeds/alien_weeds = locate() in src
+	if(!alien_weeds)
+		to_chat(X, SPAN_XENOWARNING("You can only shape on weeds. Find some resin before you start building!"))
+		return FALSE
+
+	if(alien_weeds.linked_hive.hivenumber != X.hivenumber)
+		to_chat(X, SPAN_XENOWARNING("These weeds don't belong to your hive!"))
+		return FALSE
+
+	if(!X.check_alien_construction(src, check_doors = TRUE))
+		return FALSE
+
+	if(locate(/obj/effect/alien/resin/trap) in orange(1, src)) // obj/effect/alien/resin presence is checked on turf by check_alien_construction, so we just check orange.
+		to_chat(X, SPAN_XENOWARNING("This is too close to another resin hole!"))
+		return FALSE
+
+	if(locate(/obj/effect/alien/resin/fruit) in orange(1, src))
+		to_chat(X, SPAN_XENOWARNING("This is too close to a fruit!"))
+		return FALSE
+
+	return alien_weeds
 
 /datum/action/xeno_action/activable/place_construction/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/X = owner
@@ -765,8 +773,6 @@
 	if (!X.can_bombard_turf(T, range, bombard_source))
 		return FALSE
 
-	apply_cooldown()
-
 	X.visible_message(SPAN_XENODANGER("[X] digs itself into place!"), SPAN_XENODANGER("You dig yourself into place!"))
 	if (!do_after(X, activation_delay, interrupt_flags, BUSY_ICON_HOSTILE))
 		to_chat(X, SPAN_XENODANGER("You decide to cancel your bombard."))
@@ -777,6 +783,8 @@
 
 	if (!check_and_use_plasma_owner())
 		return FALSE
+
+	apply_cooldown()
 
 	X.visible_message(SPAN_XENODANGER("[X] launches a massive ball of acid at [A]!"), SPAN_XENODANGER("You launch a massive ball of acid at [A]!"))
 	playsound(get_turf(X), 'sound/effects/blobattack.ogg', 25, 1)
@@ -795,7 +803,7 @@
 	else if(!T.can_bombard(owner))
 		return
 
-	addtimer(CALLBACK(src, .proc/new_effect, T, owner), 2*(orig_depth - dist_left))
+	addtimer(CALLBACK(src, PROC_REF(new_effect), T, owner), 2*(orig_depth - dist_left))
 
 	for(var/mob/living/L in T)
 		to_chat(L, SPAN_XENOHIGHDANGER("You see a massive ball of acid flying towards you!"))
@@ -933,9 +941,9 @@
 
 	target.last_damage_data = create_cause_data(initial(stabbing_xeno.caste_type), stabbing_xeno)
 
-	 /// To reset the direction if they haven't moved since then in below callback.
+	/// To reset the direction if they haven't moved since then in below callback.
 	var/last_dir = stabbing_xeno.dir
-	 /// Direction var to make the tail stab look cool and immersive.
+	/// Direction var to make the tail stab look cool and immersive.
 	var/stab_direction
 
 	var/stab_overlay
@@ -956,10 +964,10 @@
 	stabbing_xeno.setDir(stab_direction)
 	stabbing_xeno.emote("tail")
 
-	 /// Ditto.
+	/// Ditto.
 	var/new_dir = stabbing_xeno.dir
 
-	addtimer(CALLBACK(src, .proc/reset_direction, stabbing_xeno, last_dir, new_dir), 0.5 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(reset_direction), stabbing_xeno, last_dir, new_dir), 0.5 SECONDS)
 
 	stabbing_xeno.animation_attack_on(target)
 	stabbing_xeno.flick_attack_overlay(target, stab_overlay)

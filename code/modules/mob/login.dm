@@ -1,8 +1,8 @@
 /// Handles setting lastKnownIP and computer_id for use by the ban systems
 /mob/proc/update_Login_details()
 	if(client)
-		lastKnownIP	= client.address
-		computer_id	= client.computer_id
+		lastKnownIP = client.address
+		computer_id = client.computer_id
 
 /mob/Login()
 	if(!client)
@@ -19,7 +19,7 @@
 	update_Login_details()
 
 	client.images = null
-	client.screen = null				//remove hud items just in case
+	client.screen = null //remove hud items just in case
 	if(!hud_used)
 		create_hud()
 	if(hud_used)

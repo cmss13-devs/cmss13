@@ -152,7 +152,6 @@
 	#define COMPONENT_CANCEL_SET_FACE_DIR (1<<0)
 
 /// From /obj/effect/alien/weeds/Crossed(atom/movable/AM)
-#define COMSIG_MOB_WEEDS_CROSS "mob_weeds_cross"
 #define COMSIG_MOB_WEED_SLOWDOWN "mob_weeds_slowdown"
 
 #define COMSIG_MOB_TAKE_DAMAGE "mob_take_damage"

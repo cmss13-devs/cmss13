@@ -36,7 +36,7 @@
 		if(fail) return
 
 	if(skip_this == 1)
-		//if(src.virus)				< -- this used to replace the current disease. Not anymore!
+		//if(src.virus) < -- this used to replace the current disease. Not anymore!
 			//src.virus.cure(0)
 		var/datum/disease/v = virus.Copy()
 		src.viruses += v

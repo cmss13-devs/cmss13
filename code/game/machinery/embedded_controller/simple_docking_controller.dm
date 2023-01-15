@@ -15,7 +15,7 @@
 
 /datum/computer/file/embedded_program/docking/simple/New(var/obj/structure/machinery/embedded_controller/M)
 	..(M)
-	memory["door_status"] = list(state = "closed", lock = "locked")		//assume closed and locked in case the doors dont report in
+	memory["door_status"] = list(state = "closed", lock = "locked") //assume closed and locked in case the doors dont report in
 
 	if (istype(M, /obj/structure/machinery/embedded_controller/radio/simple_docking_controller))
 		var/obj/structure/machinery/embedded_controller/radio/simple_docking_controller/controller = M
@@ -23,7 +23,7 @@
 		tag_door = controller.tag_door? controller.tag_door : "[id_tag]_hatch"
 
 		spawn(10)
-			signal_door("update")		//signals connected doors to update their status
+			signal_door("update") //signals connected doors to update their status
 
 
 /datum/computer/file/embedded_program/docking/simple/receive_signal(datum/signal/signal, receive_method, receive_param)
@@ -59,8 +59,8 @@
 	post_signal(signal, RADIO_AIRLOCK)
 
 ///datum/computer/file/embedded_program/docking/simple/proc/signal_mech_sensor(var/command)
-//	signal_door(command)
-//	return
+// signal_door(command)
+// return
 
 /datum/computer/file/embedded_program/docking/simple/proc/open_door()
 	if(memory["door_status"]["state"] == "closed")
@@ -78,11 +78,11 @@
 
 //tell the docking port to start getting ready for docking - e.g. pressurize
 /datum/computer/file/embedded_program/docking/simple/prepare_for_docking()
-	return		//don't need to do anything
+	return //don't need to do anything
 
 //are we ready for docking?
 /datum/computer/file/embedded_program/docking/simple/ready_for_docking()
-	return 1	//don't need to do anything
+	return 1 //don't need to do anything
 
 //we are docked, open the doors or whatever.
 /datum/computer/file/embedded_program/docking/simple/finish_docking()

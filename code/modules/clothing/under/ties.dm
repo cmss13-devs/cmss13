@@ -4,15 +4,15 @@
 	icon = 'icons/obj/items/clothing/ties.dmi'
 	icon_state = "bluetie"
 	w_class = SIZE_SMALL
-	var/image/inv_overlay = null	//overlay used when attached to clothing.
-	var/obj/item/clothing/has_suit = null		//the suit the tie may be attached to
+	var/image/inv_overlay = null //overlay used when attached to clothing.
+	var/obj/item/clothing/has_suit = null //the suit the tie may be attached to
 	var/slot = ACCESSORY_SLOT_DECOR
 	var/list/mob_overlay = list()
 	var/overlay_state = null
 	var/list/accessory_icons = list(WEAR_BODY = 'icons/mob/humans/onmob/ties.dmi', WEAR_JACKET = 'icons/mob/humans/onmob/ties.dmi')
 	///Jumpsuit flags that cause the accessory to be hidden. format: "x" OR "(x|y|z)" (w/o quote marks).
 	var/jumpsuit_hide_states
-	var/high_visibility	//if it should appear on examine without detailed view
+	var/high_visibility //if it should appear on examine without detailed view
 	var/removable = TRUE
 	flags_equip_slot = SLOT_ACCESSORY
 	sprite_sheets = list(SPECIES_MONKEY = 'icons/mob/humans/species/monkeys/onmob/ties_monkey.dmi')
@@ -64,7 +64,7 @@
 //default attack_hand behaviour
 /obj/item/clothing/accessory/attack_hand(mob/user as mob)
 	if(has_suit)
-		return	//we aren't an object on the ground so don't call parent. If overriding to give special functions to a host item, return TRUE so that the host doesn't continue its own attack_hand.
+		return //we aren't an object on the ground so don't call parent. If overriding to give special functions to a host item, return TRUE so that the host doesn't continue its own attack_hand.
 	..()
 
 ///Extra text to append when attached to another clothing item and the host clothing is examined.
@@ -96,8 +96,8 @@
 			if(body_part)
 				var/their = "their"
 				switch(M.gender)
-					if(MALE)	their = "his"
-					if(FEMALE)	their = "her"
+					if(MALE) their = "his"
+					if(FEMALE) their = "her"
 
 				var/sound = "pulse"
 				var/sound_strength
@@ -138,7 +138,7 @@
 /obj/item/clothing/accessory/medal/on_attached(obj/item/clothing/S, mob/living/user, silent)
 	. = ..()
 	if(.)
-		RegisterSignal(S, COMSIG_ITEM_PICKUP, .proc/remove_medal)
+		RegisterSignal(S, COMSIG_ITEM_PICKUP, PROC_REF(remove_medal))
 
 /obj/item/clothing/accessory/medal/proc/remove_medal(var/obj/item/clothing/C, var/mob/user)
 	SIGNAL_HANDLER
@@ -217,9 +217,9 @@
 
 			if(!H.stat && H.pain.feels_pain)
 				if(prob(35))
-					INVOKE_ASYNC(H, /mob.proc/emote, "pain")
+					INVOKE_ASYNC(H, TYPE_PROC_REF(/mob, emote), "pain")
 				else
-					INVOKE_ASYNC(H, /mob.proc/emote, "me", 1, "winces.")
+					INVOKE_ASYNC(H, TYPE_PROC_REF(/mob, emote), "me", 1, "winces.")
 
 	if(U.can_attach_accessory(src) && user.drop_held_item())
 		U.attach_accessory(H, src, TRUE)
@@ -621,15 +621,15 @@
 	hold = /obj/item/storage/internal/accessory/drop_pouch
 
 /obj/item/storage/internal/accessory/drop_pouch
-	w_class = SIZE_LARGE	//Allow storage containers that's medium or below
+	w_class = SIZE_LARGE //Allow storage containers that's medium or below
 	storage_slots = null
 	max_w_class = SIZE_MEDIUM
-	max_storage_space = 6	//weight system like backpacks, hold enough for 2 medium (normal) size items, or 3 small items, or 6 tiny items
-	cant_hold = list(	//Prevent inventory powergame
+	max_storage_space = 6 //weight system like backpacks, hold enough for 2 medium (normal) size items, or 3 small items, or 6 tiny items
+	cant_hold = list( //Prevent inventory powergame
 		/obj/item/storage/firstaid,
 		/obj/item/storage/bible,
 		)
-	storage_flags = NONE	//no verb, no quick draw, no tile gathering
+	storage_flags = NONE //no verb, no quick draw, no tile gathering
 
 /obj/item/clothing/accessory/storage/holster
 	name = "shoulder holster"
@@ -656,8 +656,7 @@
 	/obj/item/ammo_magazine/revolver,
 	/obj/item/weapon/gun/flare,
 	/obj/item/device/flashlight/flare
-
-	 )
+	)
 
 /obj/item/storage/internal/accessory/holster/on_stored_atom_del(atom/movable/AM)
 	if(AM == current_gun)
@@ -772,12 +771,13 @@
 /obj/item/storage/box/holobadge
 	name = "holobadge box"
 	desc = "A box claiming to contain holobadges."
-	New()
-		new /obj/item/clothing/accessory/holobadge(src)
-		new /obj/item/clothing/accessory/holobadge(src)
-		new /obj/item/clothing/accessory/holobadge(src)
-		new /obj/item/clothing/accessory/holobadge(src)
-		new /obj/item/clothing/accessory/holobadge/cord(src)
-		new /obj/item/clothing/accessory/holobadge/cord(src)
-		..()
-		return
+
+/obj/item/storage/box/holobadge/New()
+	new /obj/item/clothing/accessory/holobadge(src)
+	new /obj/item/clothing/accessory/holobadge(src)
+	new /obj/item/clothing/accessory/holobadge(src)
+	new /obj/item/clothing/accessory/holobadge(src)
+	new /obj/item/clothing/accessory/holobadge/cord(src)
+	new /obj/item/clothing/accessory/holobadge/cord(src)
+	..()
+	return

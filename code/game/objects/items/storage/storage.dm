@@ -9,17 +9,17 @@
 	name = "storage"
 	icon = 'icons/obj/items/storage.dmi'
 	w_class = SIZE_MEDIUM
-	var/list/can_hold = new/list() 					//List of objects which this item can store (if set, it can't store anything else)
-	var/list/cant_hold = new/list() 				//List of objects which this item can't store (in effect only if can_hold isn't set)
-	var/list/bypass_w_limit = new/list() 			//a list of objects which this item can store despite not passing the w_class limit
-	var/list/click_border_start = new/list() 		//In slotless storage, stores areas where clicking will refer to the associated item
+	var/list/can_hold = new/list() //List of objects which this item can store (if set, it can't store anything else)
+	var/list/cant_hold = new/list() //List of objects which this item can't store (in effect only if can_hold isn't set)
+	var/list/bypass_w_limit = new/list() //a list of objects which this item can store despite not passing the w_class limit
+	var/list/click_border_start = new/list() //In slotless storage, stores areas where clicking will refer to the associated item
 	var/list/click_border_end = new/list()
-	var/list/hearing_items							//A list of items that use hearing for the purpose of performance
-	var/max_w_class = SIZE_SMALL 					//Max size of objects that this object can store
-	var/max_storage_space = 14 						//The sum of the storage costs of all the items in this storage item.
-	var/storage_slots = 7 							//The number of storage slots in this container.
+	var/list/hearing_items //A list of items that use hearing for the purpose of performance
+	var/max_w_class = SIZE_SMALL //Max size of objects that this object can store
+	var/max_storage_space = 14 //The sum of the storage costs of all the items in this storage item.
+	var/storage_slots = 7 //The number of storage slots in this container.
 	var/atom/movable/screen/storage/boxes = null
-	var/atom/movable/screen/storage/storage_start = null 	//storage UI
+	var/atom/movable/screen/storage/storage_start = null //storage UI
 	var/atom/movable/screen/storage/storage_continue = null
 	var/atom/movable/screen/storage/storage_end = null
 	var/atom/movable/screen/storage/stored_start = null
@@ -27,11 +27,11 @@
 	var/atom/movable/screen/storage/stored_end = null
 	var/atom/movable/screen/close/closer = null
 	var/foldable = null
-	var/use_sound = "rustle"						//sound played when used. null for no sound.
-	var/opened = FALSE 								//Has it been opened before?
-	var/list/content_watchers 						//list of mobs currently seeing the storage's contents
+	var/use_sound = "rustle" //sound played when used. null for no sound.
+	var/opened = FALSE //Has it been opened before?
+	var/list/content_watchers //list of mobs currently seeing the storage's contents
 	var/storage_flags = STORAGE_FLAGS_DEFAULT
-	var/has_gamemode_skin = FALSE					///Whether to use map-variant skins.
+	var/has_gamemode_skin = FALSE ///Whether to use map-variant skins.
 
 
 /obj/item/storage/MouseDrop(obj/over_object as obj)
@@ -118,7 +118,7 @@
 /obj/item/storage/proc/add_to_watchers(mob/user)
 	if(!(user in content_watchers))
 		LAZYADD(content_watchers, user)
-		RegisterSignal(user, COMSIG_PARENT_QDELETING, .proc/watcher_deleted)
+		RegisterSignal(user, COMSIG_PARENT_QDELETING, PROC_REF(watcher_deleted))
 
 /obj/item/storage/proc/del_from_watchers(mob/watcher)
 	if(watcher in content_watchers)
@@ -175,7 +175,7 @@
 
 	if (storage_flags & STORAGE_CONTENT_NUM_DISPLAY)
 		for (var/datum/numbered_display/ND in display_contents)
-			ND.sample_object.mouse_opacity = 2
+			ND.sample_object.mouse_opacity = MOUSE_OPACITY_OPAQUE
 			ND.sample_object.screen_loc = "[cx]:16,[cy]:16"
 			ND.sample_object.maptext = "<font color='white'>[(ND.number > 1)? "[ND.number]" : ""]</font>"
 			ND.sample_object.layer = ABOVE_HUD_LAYER
@@ -186,7 +186,7 @@
 				cy--
 	else
 		for (var/obj/item/O in contents)
-			O.mouse_opacity = 2 //So storage items that start with contents get the opacity trick.
+			O.mouse_opacity = MOUSE_OPACITY_OPAQUE //So storage items that start with contents get the opacity trick.
 			O.screen_loc = "[cx]:[16+O.hud_offset],[cy]:16"
 			O.layer = ABOVE_HUD_LAYER
 			O.plane = ABOVE_HUD_PLANE
@@ -433,7 +433,7 @@ var/list/global/item_storage_box_cache = list()
 		return 0
 
 	if(W.w_class >= src.w_class && (isstorage(W)))
-		if(!istype(src, /obj/item/storage/backpack/holding))	//bohs should be able to hold backpacks again. The override for putting a boh in a boh is in backpack.dm.
+		if(!istype(src, /obj/item/storage/backpack/holding)) //bohs should be able to hold backpacks again. The override for putting a boh in a boh is in backpack.dm.
 			if(!stop_messages)
 				to_chat(usr, SPAN_NOTICE("[src] cannot hold [W] as it's a storage item of the same size."))
 			return 0 //To prevent the stacking of same sized storage items.
@@ -476,7 +476,7 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 	for(var/mob/M in can_see_content())
 		show_to(M)
 	if (storage_slots)
-		W.mouse_opacity = 2 //not having to click the item's tiny sprite to take it out of the storage.
+		W.mouse_opacity = MOUSE_OPACITY_OPAQUE //not having to click the item's tiny sprite to take it out of the storage.
 	update_icon()
 
 ///Call this proc to handle the removal of an item from the storage item. The item will be moved to the atom sent as new_target.
@@ -678,6 +678,10 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 	if(user.action_busy)
 		return
 
+	if(ammo_dumping.flags_magazine & AMMUNITION_CANNOT_REMOVE_BULLETS)
+		to_chat(user, SPAN_WARNING("You can't remove ammo from \the [ammo_dumping]!"))
+		return
+
 	if(ammo_dumping.flags_magazine & AMMUNITION_HANDFUL_BOX)
 		var/handfuls = round(ammo_dumping.current_rounds / amount_to_dump, 1) //The number of handfuls, we round up because we still want the last one that isn't full
 		if(ammo_dumping.current_rounds != 0)
@@ -869,7 +873,7 @@ Returns FALSE if the atom isn't somewhere inside the container's contents.**/
 		cur_atom = cur_atom.loc
 
 	if(!cur_atom)
-		return FALSE	//inside something with a null loc.
+		return FALSE //inside something with a null loc.
 
 /**Like get storage depth to, but returns the depth to the nearest turf, inclusively
 Returns FALSE if no top level turf (a loc was null somewhere, or a non-turf atom's loc was an area somehow).**/

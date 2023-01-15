@@ -5,7 +5,7 @@ var/bomb_set = FALSE
 	desc = "Nuke the entire site from orbit, it's the only way to be sure. Too bad we don't have any orbital nukes."
 	icon = 'icons/obj/structures/machinery/nuclearbomb.dmi'
 	icon_state = "nuke"
-	density = 1
+	density = TRUE
 	unslashable = TRUE
 	unacidable = TRUE
 	anchored = 0
@@ -70,7 +70,7 @@ var/bomb_set = FALSE
 		stop_processing()
 
 /obj/structure/machinery/nuclearbomb/attack_alien(mob/living/carbon/Xenomorph/M)
-	INVOKE_ASYNC(src, /atom.proc/attack_hand, M)
+	INVOKE_ASYNC(src, TYPE_PROC_REF(/atom, attack_hand), M)
 	return XENO_ATTACK_ACTION
 
 /obj/structure/machinery/nuclearbomb/attackby(obj/item/O as obj, mob/user as mob)
@@ -300,17 +300,17 @@ var/bomb_set = FALSE
 
 //unified all announcements to one proc
 /obj/structure/machinery/nuclearbomb/proc/announce_to_players(var/timer_warning)
-	if(timer_warning)	//we check for timer warnings first
+	if(timer_warning) //we check for timer warnings first
 		//humans part
 		var/list/humans_other = GLOB.human_mob_list + GLOB.dead_mob_list
 		var/list/humans_USCM = list()
 		for(var/mob/M in humans_other)
 			var/mob/living/carbon/human/H = M
-			if(istype(H))							//if it's unconsious human or yautja, we remove them
+			if(istype(H)) //if it's unconsious human or yautja, we remove them
 				if(H.stat != CONSCIOUS || isYautja(H))
 					humans_other.Remove(M)
 					continue
-			if(M.faction == FACTION_MARINE || M.faction == FACTION_SURVIVOR)			//separating marines from other factions. Survs go here too
+			if(M.faction == FACTION_MARINE || M.faction == FACTION_SURVIVOR) //separating marines from other factions. Survs go here too
 				humans_USCM += M
 				humans_other -= M
 		announcement_helper("WARNING.\n\nDETONATION IN [round(timeleft/10)] SECONDS.", "[MAIN_AI_SYSTEM] Nuclear Tracker", humans_USCM, 'sound/misc/notice1.ogg')
@@ -339,11 +339,11 @@ var/bomb_set = FALSE
 	var/list/humans_USCM = list()
 	for(var/mob/M in humans_other)
 		var/mob/living/carbon/human/H = M
-		if(istype(H))							//if it's unconsious human or yautja, we remove them
+		if(istype(H)) //if it's unconsious human or yautja, we remove them
 			if(H.stat != CONSCIOUS || isYautja(H))
 				humans_other.Remove(M)
 				continue
-		if(M.faction == FACTION_MARINE || M.faction == FACTION_SURVIVOR)			//separating marines from other factions. Survs go here too
+		if(M.faction == FACTION_MARINE || M.faction == FACTION_SURVIVOR) //separating marines from other factions. Survs go here too
 			humans_USCM += M
 			humans_other -= M
 	var/datum/hive_status/hive

@@ -17,8 +17,8 @@
 	return
 
 //turf/open/desert/desert
-//	name = "desert"
-//	icon_state = "desert1"
+// name = "desert"
+// icon_state = "desert1"
 
 /turf/open/desert/dirt
 	name = "desert"
@@ -45,11 +45,11 @@
 	name = "riverbed"
 	icon_state = "dirt1"
 //turf/open/desert/riverbed/dirt2
-//	name = "riverbed"
-//	icon_state = "dirt2"
+// name = "riverbed"
+// icon_state = "dirt2"
 //turf/open/desert/riverbed/dirt3
-//	name = "riverbed"
-//	icon_state = "dirt3"
+// name = "riverbed"
+// icon_state = "dirt3"
 
 //desert floor
 /turf/open/desert/rock

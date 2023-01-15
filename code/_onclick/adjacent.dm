@@ -38,8 +38,8 @@
 
 	// Not orthagonal
 	var/in_dir = get_dir(neighbor,src) // eg. northwest (1+8)
-	var/d1 = in_dir&(in_dir-1)		// eg west		(1+8)&(8) = 8
-	var/d2 = in_dir - d1			// eg north		(1+8) - 8 = 1
+	var/d1 = in_dir&(in_dir-1) // eg west (1+8)&(8) = 8
+	var/d2 = in_dir - d1 // eg north (1+8) - 8 = 1
 
 	for(var/d in list(d1,d2))
 		if(!T0.ClickCross(d, border_only = 1))
@@ -136,7 +136,7 @@ Quick adjacency (to turf):
 				var/obj/structure/window/W = target_atom
 				if (!istype(W))
 					return FALSE
-				else if (!W.is_full_window())	//exception for breaking full tile windows on top of single pane windows
+				else if (!W.is_full_window()) //exception for breaking full tile windows on top of single pane windows
 					return FALSE
 
 		else if( !border_only ) // dense, not on border, cannot pass over
@@ -144,12 +144,12 @@ Quick adjacency (to turf):
 	return TRUE
 
 /*
- *	handle_barriers checks if src is going to be attacked by A, or if A will instead attack a barrier. For now only considers
- *	a single barrier on each direction.
+ * handle_barriers checks if src is going to be attacked by A, or if A will instead attack a barrier. For now only considers
+ * a single barrier on each direction.
  *
- *	I am considering making it so that handle_barriers will loop through ALL blocking objects, though this requires testing
- *	for performance impact.
- *	Assumes dist <= 1
+ * I am considering making it so that handle_barriers will loop through ALL blocking objects, though this requires testing
+ * for performance impact.
+ * Assumes dist <= 1
  */
 /atom/proc/handle_barriers(var/atom/A, var/list/atom/ignore = list(), pass_flags)
 	ignore |= src // Make sure that you ignore your target
@@ -164,8 +164,8 @@ Quick adjacency (to turf):
 	)
 	var/list/dense_blockers
 
-	var/rd1 = rdir&(rdir-1)		// eg west		(1+8)&(8) = 8
-	var/rd2 = rdir - rd1		// eg north		(1+8) - 8 = 1
+	var/rd1 = rdir&(rdir-1) // eg west (1+8)&(8) = 8
+	var/rd2 = rdir - rd1 // eg north (1+8) - 8 = 1
 	var/fd1 = fdir&(fdir-1)
 	var/fd2 = fdir - fd1
 

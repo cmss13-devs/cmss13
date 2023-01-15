@@ -4,13 +4,13 @@
 //Returns the thing in our active hand
 /mob/proc/get_active_hand()
 	RETURN_TYPE(/obj/item)
-	if(hand)	return l_hand
-	else		return r_hand
+	if(hand) return l_hand
+	else return r_hand
 
 //Returns the thing in our inactive hand
 /mob/proc/get_inactive_hand()
-	if(hand)	return r_hand
-	else		return l_hand
+	if(hand) return r_hand
+	else return l_hand
 
 /mob/proc/get_hands()
 	if(hand)
@@ -67,13 +67,13 @@
 
 //Puts the item into our active hand if possible. returns 1 on success.
 /mob/proc/put_in_active_hand(var/obj/item/W)
-	if(hand)	return put_in_l_hand(W)
-	else		return put_in_r_hand(W)
+	if(hand) return put_in_l_hand(W)
+	else return put_in_r_hand(W)
 
 //Puts the item into our inactive hand if possible. returns 1 on success.
 /mob/proc/put_in_inactive_hand(var/obj/item/W)
-	if(hand)	return put_in_r_hand(W)
-	else		return put_in_l_hand(W)
+	if(hand) return put_in_r_hand(W)
+	else return put_in_l_hand(W)
 
 //Puts the item into our active hand if possible. Failing that it tries our inactive hand. Returns 1 on success.
 //If both fail it drops it on the floor and returns 0.
@@ -110,7 +110,7 @@
 	update_inv_back()
 	return TRUE
 
-/mob/proc/drop_item_v()		//this is dumb.
+/mob/proc/drop_item_v() //this is dumb.
 	if(stat == CONSCIOUS && isturf(loc))
 		return drop_held_item()
 	return FALSE
@@ -206,7 +206,7 @@
 	if(hasvar(src,"wear_id")) if(src:wear_id) items += src:wear_id
 	if(hasvar(src,"wear_mask")) if(src:wear_mask) items += src:wear_mask
 	if(hasvar(src,"wear_suit")) if(src:wear_suit) items += src:wear_suit
-//	if(hasvar(src,"w_radio")) if(src:w_radio) items += src:w_radio  commenting this out since headsets go on your ears now PLEASE DON'T BE MAD KEELIN
+// if(hasvar(src,"w_radio")) if(src:w_radio) items += src:w_radio  commenting this out since headsets go on your ears now PLEASE DON'T BE MAD KEELIN
 	if(hasvar(src,"w_uniform")) if(src:w_uniform) items += src:w_uniform
 
 	//if(hasvar(src,"l_hand")) if(src:l_hand) items += src:l_hand

@@ -5,8 +5,8 @@
 	. = ..()
 	if(!isitem(target))
 		return ELEMENT_INCOMPATIBLE
-	RegisterSignal(target, COMSIG_ITEM_PICKUP, .proc/item_picked_up)
-	RegisterSignal(target, COMSIG_ITEM_DROPPED, .proc/item_dropped)
+	RegisterSignal(target, COMSIG_ITEM_PICKUP, PROC_REF(item_picked_up))
+	RegisterSignal(target, COMSIG_ITEM_DROPPED, PROC_REF(item_dropped))
 
 
 	if(!is_honorable_carrier(recursive_holder_check(target)))

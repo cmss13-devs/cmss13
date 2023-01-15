@@ -40,12 +40,14 @@
 	layer = ABOVE_XENO_LAYER
 	var/splatter_type = "splatter"
 
-/obj/effect/temp_visual/dir_setting/bloodsplatter/Initialize(mapload, set_dir)
+/obj/effect/temp_visual/dir_setting/bloodsplatter/Initialize(mapload, set_dir, fx_duration)
 	if(IS_DIAGONAL_DIR(set_dir))
 		icon_state = "[splatter_type][pick(1, 2, 6)]"
 	else
 		icon_state = "[splatter_type][pick(3, 4, 5)]"
 	. = ..()
+	if(fx_duration)
+		duration = fx_duration
 	var/target_pixel_x = 0
 	var/target_pixel_y = 0
 	switch(set_dir)

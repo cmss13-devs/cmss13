@@ -34,6 +34,7 @@
 
 /obj/item/circuitboard/airalarm
 	name = "air alarm electronics"
+	gender = PLURAL
 	icon_state = "door_electronics"
 	desc = "Looks like a circuit. Probably is."
 
@@ -41,6 +42,7 @@
 
 /obj/item/circuitboard/firealarm
 	name = "fire alarm electronics"
+	gender = PLURAL
 	icon_state = "door_electronics"
 	desc = "A circuit. It has a label on it, it says \"Can handle heat levels up to 40 degrees celsius!\""
 
@@ -61,4 +63,5 @@
 // Tracker Electronic
 /obj/item/circuitboard/solar_tracker
 	name = "tracker electronics"
+	gender = PLURAL
 	icon_state = "door_electronics"

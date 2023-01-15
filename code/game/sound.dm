@@ -17,6 +17,7 @@
 	var/z
 	var/y_s_offset // Vertical sound offset
 	var/x_s_offset // Horizontal sound offset
+
 /proc/get_free_channel()
 	var/static/cur_chan = 1
 	. = cur_chan++

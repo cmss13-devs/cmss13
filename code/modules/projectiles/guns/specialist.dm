@@ -218,7 +218,6 @@
 
 // Snipers may enable or disable their laser tracker at will.
 /datum/action/item_action/specialist/toggle_laser
-	ability_primacy = SPEC_PRIMARY_ACTION_2
 
 /datum/action/item_action/specialist/toggle_laser/New(var/mob/living/user, var/obj/item/holder)
 	..()
@@ -256,11 +255,22 @@
 	if(owner.get_held_item() != sniper_rifle)
 		to_chat(owner, SPAN_WARNING("How do you expect to do this without the sniper rifle in your hand?"))
 		return FALSE
+	sniper_rifle.toggle_laser(owner, src)
 
-	sniper_rifle.enable_aimed_shot_laser = !sniper_rifle.enable_aimed_shot_laser
-	owner.visible_message(SPAN_NOTICE("[owner] flips a switch on \the [sniper_rifle] and [sniper_rifle.enable_aimed_shot_laser ? "enables" : "disables"] its targeting laser."))
-	playsound(owner, 'sound/machines/click.ogg', 15, TRUE)
-	update_button_icon()
+/obj/item/weapon/gun/rifle/sniper/proc/toggle_laser(mob/user, var/datum/action/toggling_action)
+	enable_aimed_shot_laser = !enable_aimed_shot_laser
+	to_chat(user, SPAN_NOTICE("You flip a switch on \the [src] and [enable_aimed_shot_laser ? "enable" : "disable"] its targeting laser."))
+	playsound(user, 'sound/machines/click.ogg', 15, TRUE)
+	if(!toggling_action)
+		toggling_action = locate(/datum/action/item_action/specialist/toggle_laser) in actions
+	if(toggling_action)
+		toggling_action.update_button_icon()
+
+/obj/item/weapon/gun/rifle/sniper/toggle_burst(mob/user)
+	if(has_aimed_shot)
+		toggle_laser(user)
+	else
+		..()
 
 //Pow! Headshot.
 /obj/item/weapon/gun/rifle/sniper/M42A
@@ -748,8 +758,10 @@
 /obj/item/weapon/gun/launcher/grenade/afterattack(atom/target, mob/user, flag) //Not actually after the attack. After click, more like.
 	if(able_to_fire(user))
 		if(get_dist(target,user) <= 2)
-			to_chat(user, SPAN_WARNING("The grenade launcher beeps a warning noise. You are too close!"))
-			return
+			var/obj/item/explosive/grenade/nade = cylinder.contents[1]
+			if(nade.dangerous)
+				to_chat(user, SPAN_WARNING("The grenade launcher beeps a warning noise. You are too close!"))
+				return
 		fire_grenade(target,user)
 
 

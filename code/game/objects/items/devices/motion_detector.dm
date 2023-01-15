@@ -101,6 +101,8 @@
 	if (isobserver(user) || isXeno(user)) return
 
 	if (mods["alt"])
+		if(!CAN_PICKUP(user, src))
+			return ..()
 		if(!long_range_locked)
 			toggle_mode(usr)
 		else

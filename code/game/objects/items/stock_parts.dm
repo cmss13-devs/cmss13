@@ -197,9 +197,7 @@
 /obj/item/stock_parts/smes_coil
 	name = "Superconducting Magnetic Coil"
 	desc = "Heavy-duty superconducting magnetic coil, mainly used in construction of SMES units."
-	/// Just few icons patched together. If someone wants to make better icon, feel free to do so!
 	icon_state = "smes_coil"
-	/// It's LARGE (backpack size)
 	w_class = SIZE_LARGE
 	var/ChargeCapacity = 5000000
 	var/IOCapacity = 250000

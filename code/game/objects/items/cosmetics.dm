@@ -122,13 +122,11 @@
 
 /obj/item/facepaint/lipstick/purple
 	name = "purple lipstick"
-	/// not 'purple' because dream maker farts if the name is too long
 	paint_type = "purp_lipstick"
 	icon_state_open = "lipstick_purple"
 
 /obj/item/facepaint/lipstick/maroon
 	name = "maroon lipstick"
-	/// not 'maroon' because dream maker farts if the name is too long
 	paint_type = "marn_lipstick"
 	icon_state_open = "lipstick_maroon"
 

@@ -302,7 +302,6 @@
 	. = ..()
 	/// Used to be 300
 	create_reagents(30)
-	/// Used to be 100 sleep toxin//30 Chloral seems to be fatal, reducing it to 22./N
 	reagents.add_reagent("chloralhydrate", 22)
 
 
@@ -311,7 +310,6 @@
 		return
 	..()
 	if(reagents.total_volume)
-		/// used to be 150
 		if(M.reagents) reagents.trans_to(M, 50)
 	return
 

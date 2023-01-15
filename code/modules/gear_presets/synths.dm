@@ -376,7 +376,7 @@
 	equipment_to_spawn = list(
 		WEAR_HEAD = /obj/item/clothing/head/helmet/marine/veteran/PMC,
 		WEAR_L_EAR = /obj/item/device/radio/headset/distress/PMC,
-        WEAR_EYES = /obj/item/clothing/glasses/sunglasses/sechud,
+		WEAR_EYES = /obj/item/clothing/glasses/sunglasses/sechud,
 		WEAR_BODY = /obj/item/clothing/under/marine/veteran/PMC,
 		WEAR_ACCESSORY = /obj/item/clothing/accessory/storage/droppouch,
 		WEAR_IN_ACCESSORY = /obj/item/explosive/grenade/flashbang,

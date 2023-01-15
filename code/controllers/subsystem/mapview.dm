@@ -6,6 +6,7 @@ SUBSYSTEM_DEF(minimaps_update)
 	priority = SS_PRIORITY_MAPVIEW
 	init_order = SS_INIT_MAPVIEW
 	var/list/minimap_added
+	var/ghosts_cleared = 0
 
 /datum/controller/subsystem/minimaps_update/Initialize(start_timeofday)
 	minimap_added = list()
@@ -14,16 +15,17 @@ SUBSYSTEM_DEF(minimaps_update)
 /datum/controller/subsystem/minimaps_update/fire(resumed = FALSE)
 	update_xenos_in_tower_range()
 
-	// slaughter harry if this is not removed before merge
 	for(var/z in SSminimaps.minimaps_by_z)
 		var/datum/hud_displays/hud = SSminimaps.minimaps_by_z[z]
-		for(var/list/flags as anything in hud.images_assoc)
+		for(var/flags as anything in hud.images_assoc)
 			var/list/associated_blips = list()
-			for(var/index as anything in flags)
-				associated_blips += flags[index]
+			for(var/index as anything in hud.images_assoc[flags])
+				var/list/raw = hud.images_assoc[flags]
+				associated_blips += raw[index]
 			for(var/image/blip as anything in hud.images_raw[flags])
 				if(!(blip in associated_blips))
-					qdel(blip)
+					hud.images_raw[flags] -= blip
+					ghosts_cleared++
 
 /datum/controller/subsystem/minimaps_update/proc/update_xenos_in_tower_range()
 	if(SSticker.toweractive)

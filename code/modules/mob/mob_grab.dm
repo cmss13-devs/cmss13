@@ -134,7 +134,6 @@
 				X.visible_message(SPAN_WARNING("[X] devours [pulled]!"), \
 					SPAN_WARNING("You devour [pulled]!"), null, 5)
 
-				SSminimaps.remove_marker(pulled)
 				//IMPORTANT CODER NOTE: Due to us using the old lighting engine, we need to hacky hack hard to get this working properly
 				//So we're just going to get the lights out of here by forceMoving them to a far-away place
 				//They will be recovered when regurgitating, since this also calls forceMove

@@ -682,8 +682,6 @@
 		hive.remove_hive_leader(src, light_mode = TRUE)
 	SStracking.stop_tracking("hive_[hivenumber]", src)
 
-	SSminimaps.remove_marker(src)
-
 	// Only handle free slots if the xeno is not in tdome
 	if(!is_admin_level(z))
 		var/selected_caste = GLOB.xeno_datum_list[caste_type]?.type

@@ -229,8 +229,7 @@ SUBSYSTEM_DEF(minimaps)
 	images_by_source[target] = blip
 	for(var/flag in bitfield2list(hud_flags))
 		minimaps_by_z["[zlevel]"].images_assoc["[flag]"][target] = blip
-		var/ref = minimaps_by_z["[zlevel]"].images_raw["[flag]"] //what the fuck? you might be thinking, yea well this is a byond bug thanks
-		ref += blip //workaround see http://www.byond.com/forum/post/2661309
+		minimaps_by_z["[zlevel]"].images_raw["[flag]"] += blip
 	if(ismovableatom(target))
 		RegisterSignal(target, COMSIG_MOVABLE_Z_CHANGED, PROC_REF(on_z_change))
 		RegisterSignal(target, COMSIG_MOVABLE_MOVED, PROC_REF(on_move))
@@ -244,8 +243,7 @@ SUBSYSTEM_DEF(minimaps)
  */
 /datum/controller/subsystem/minimaps/proc/removeimage(image/blip, atom/target, zlevel)
 	for(var/flag in GLOB.all_minimap_flags)
-		var/ref = minimaps_by_z["[zlevel]"].images_raw["[flag]"]
-		ref -= blip // see above http://www.byond.com/forum/post/2661309
+		minimaps_by_z["[zlevel]"].images_raw["[flag]"] -= blip
 	removal_cbs -= target
 
 /**
@@ -256,15 +254,13 @@ SUBSYSTEM_DEF(minimaps)
 	for(var/flag in GLOB.all_minimap_flags)
 		if(!minimaps_by_z["[oldz]"]?.images_assoc["[flag]"][source])
 			continue
-		//see previous byond bug comments http://www.byond.com/forum/post/2661309
 		var/ref_old = minimaps_by_z["[oldz]"].images_assoc["[flag]"][source]
+
 		minimaps_by_z["[newz]"].images_assoc["[flag]"][source] = ref_old
-		var/rawold = minimaps_by_z["[oldz]"].images_raw["[flag]"]
-		var/rawnew = minimaps_by_z["[newz]"].images_raw["[flag]"]
-		rawold -= ref_old
-		rawnew += ref_old
-		var/anotherref = minimaps_by_z["[oldz]"].images_assoc["[flag]"]
-		anotherref -= source
+		minimaps_by_z["[newz]"].images_raw["[flag]"] += ref_old
+
+		minimaps_by_z["[oldz]"].images_assoc["[flag]"] -= source
+		minimaps_by_z["[oldz]"].images_raw["[flag]"] -= ref_old
 
 /**
  * Simple proc, updates overlay position on the map when a atom moves
@@ -291,12 +287,10 @@ SUBSYSTEM_DEF(minimaps)
 		return
 	var/z_level = turf_gotten.z
 	if(minimap_flag)
-		var/ref = minimaps_by_z["[z_level]"].images_assoc["[minimap_flag]"]
-		ref -= source
+		minimaps_by_z["[z_level]"].images_assoc["[minimap_flag]"] -= source
 	else
 		for(var/flag in GLOB.all_minimap_flags)
-			var/ref = minimaps_by_z["[z_level]"].images_assoc["[flag]"]
-			ref -= source //see above
+			minimaps_by_z["[z_level]"].images_assoc["[flag]"] -= source
 	images_by_source -= source
 	removal_cbs[source].Invoke()
 	removal_cbs -= source

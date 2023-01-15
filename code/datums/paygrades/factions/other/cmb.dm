@@ -15,7 +15,6 @@
 /datum/paygrade/cmb/syn
 	paygrade = "GS-C.9"
 	name = "CMB Investigative Synthetic"
-	prefix = "Det."
 
 /datum/paygrade/cmb/liaison
 	paygrade = "GS-6"

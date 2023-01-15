@@ -128,7 +128,7 @@
 	H.equip_to_slot_or_del(new /obj/item/weapon/melee/telebaton, WEAR_IN_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/storage/belt/security/MP/CMB/full, WEAR_WAIST)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran, WEAR_HANDS)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/beret/centcom/officer, WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/beret/centcom/officer, WEAR_HEAD) //placeholder
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/veteran/PMC/knife, WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/sechud, WEAR_EYES)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full, WEAR_L_STORE)
@@ -218,7 +218,7 @@
 	H.equip_to_slot_or_del(new /obj/item/weapon/gun/shotgun/pump/dual_tube/cmb/m3717, WEAR_J_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/belt/security/MP/CMB/full, WEAR_WAIST)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran, WEAR_HANDS)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/beret/centcom/officer, WEAR_HEAD) //placeholder
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/beret/sec/hos, WEAR_HEAD) //placeholder
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/veteran/PMC/knife, WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/sechud, WEAR_EYES)
 	//pouches
@@ -234,7 +234,7 @@
 	//backpack
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/sec, WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/holdout, WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/revolver/cmb/normalpoint, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/m15/rubber, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/revolver/cmb, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/device/radio, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/device/flashlight, WEAR_IN_BACK)
@@ -318,6 +318,7 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/droppouch, WEAR_ACCESSORY)
 	H.equip_to_slot_or_del(new /obj/item/device/defibrillator/upgraded, WEAR_IN_ACCESSORY)
 	H.equip_to_slot_or_del(new /obj/item/device/healthanalyzer, WEAR_IN_ACCESSORY)
+	H.equip_to_slot_or_del(new /obj/item/reagent_container/food/snacks/candy, WEAR_IN_ACCESSORY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/CMB, WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/device/binoculars/range/designator, WEAR_IN_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/weapon/melee/telebaton, WEAR_IN_JACKET)
@@ -373,9 +374,12 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/accessory/health/ceramic_plate, WEAR_ACCESSORY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/hardhat/white, WEAR_HEAD)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/hazardvest/yellow, WEAR_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/reagent_container/spray/pepper, WEAR_IN_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/folder/blue, WEAR_IN_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/device/flashlight, WEAR_J_STORE)
 	//holding
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/insulated, WEAR_HANDS)
+	H.equip_to_slot_or_del(new /obj/item/clipboard, WEAR_L_HAND)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/veteran/PMC/knife, WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses, WEAR_EYES)
 	//pouches
@@ -388,13 +392,10 @@
 	H.equip_to_slot_or_del(new /obj/item/device/taperecorder, WEAR_IN_R_STORE)
 	//backpack and stuff in it
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/lockable/liaison, WEAR_BACK)
-	H.equip_to_slot_or_del(new /obj/item/reagent_container/spray/pepper, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/tool/pen/clicky, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/paper/carbon, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/paper/carbon, WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/folder/blue, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/device/radio, WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/clipboard, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/tool/crowbar/red, WEAR_IN_BACK)
 
 

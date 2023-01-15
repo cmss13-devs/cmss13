@@ -931,7 +931,7 @@
 
 /datum/equipment_preset/survivor/colonial_marshal
 	name = "Survivor - Colonial Marshal"
-	assignment = "Colonial Marshal"
+	assignment = "CMB Deputy"
 	skills = /datum/skills/civilian/survivor/marshal
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	idtype = /obj/item/card/id/silver/cl
@@ -992,7 +992,7 @@
 
 /datum/equipment_preset/survivor/colonial_marshal/solaris
 	name = "Survivor - Solaris Colonial Marshal"
-	assignment = "Solaris Colonial Marshal"
+	assignment = "Solaris CMB Deputy"
 
 /datum/equipment_preset/survivor/colonial_marshal/solaris/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/CM_uniform(H), WEAR_BODY)
@@ -1005,7 +1005,7 @@
 
 /datum/equipment_preset/survivor/colonial_marshal/kutjevo
 	name = "Survivor - Kutjevo Colonial Marshal"
-	assignment = "Kutjevo Colonial Marshal"
+	assignment = "Kutjevo CMB Deputy"
 
 /datum/equipment_preset/survivor/colonial_marshal/kutjevo/load_gear(mob/living/carbon/human/H)
 	add_random_kutjevo_survivor_uniform(H)
@@ -1017,7 +1017,7 @@
 
 /datum/equipment_preset/survivor/colonial_marshal/shiva
 	name = "Survivor - Shiva Colonial Marshal"
-	assignment = "Shiva Snowball Colonial Marshal"
+	assignment = "Shiva Snowball CMB Deputy"
 
 /datum/equipment_preset/survivor/colonial_marshal/shiva/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/security/corp(H), WEAR_BODY)

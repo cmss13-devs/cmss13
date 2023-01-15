@@ -362,3 +362,11 @@
       menu runtime.
   stanalbatross:
   - rscdel: removed the unmaintained haunted house event map
+2023-01-15:
+  Morrow:
+  - bugfix: Xenos will be properly stunned while on the Almayer when hijack lands
+  Segrain:
+  - bugfix: Removed exploit allowing stacking multiple resin traps on the same turf.
+  realforest2001:
+  - bugfix: Ckey-ing into a simplemob no longer makes the mob disappear from the orbit
+      menu.

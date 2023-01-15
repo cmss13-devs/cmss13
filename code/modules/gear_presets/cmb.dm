@@ -3,8 +3,8 @@
 
 	assignment = "CMB Deputy"
 	rank = JOB_CMB
-	idtype = /obj/item/card/id/data
 	faction = FACTION_CMB
+	faction_group = list(FACTION_LIST_MARINE_CMB)
 
 /datum/equipment_preset/CMB/New()
 	. = ..()
@@ -28,7 +28,6 @@
 	H.r_eyes = colors[eye_color][1]
 	H.g_eyes = colors[eye_color][2]
 	H.b_eyes = colors[eye_color][3]
-	idtype = /obj/item/card/id/general
 	if(H.gender == MALE)
 		random_name = "[pick(first_names_male)] [pick(last_names)]"
 		H.h_style = pick("Crewcut", "Shaved Head", "Buzzcut", "Undercut", "Side Undercut", "Pvt. Joker", "Marine Fade", "Low Fade", "Medium Fade", "High Fade", "No Fade", "Coffee House Cut", "Flat Top",)
@@ -48,7 +47,7 @@
 	name = "Colonial Marshal"
 	faction = FACTION_CMB
 	rank = JOB_CMB
-	idtype = /obj/item/card/id/data
+	idtype = /obj/item/card/id/deputy
 	faction = FACTION_CMB
 	faction_group = list(FACTION_LIST_MARINE_CMB)
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_SPANISH, LANGUAGE_RUSSIAN)
@@ -83,7 +82,6 @@
 	H.r_eyes = colors[eye_color][1]
 	H.g_eyes = colors[eye_color][2]
 	H.b_eyes = colors[eye_color][3]
-	idtype = /obj/item/card/id/data
 	if(H.gender == MALE)
 		H.h_style = pick("Crewcut", "Shaved Head", "Buzzcut", "Undercut", "Side Undercut", "Pvt. Joker", "Marine Fade", "Low Fade", "Medium Fade", "High Fade", "No Fade", "Coffee House Cut", "Flat Top",)
 		H.f_style = pick("5 O'clock Shadow", "Shaved", "Full Beard", "3 O'clock Moustache", "5 O'clock Shadow", "5 O'clock Moustache", "7 O'clock Shadow", "7 O'clock Moustache",)
@@ -128,7 +126,7 @@
 	H.equip_to_slot_or_del(new /obj/item/weapon/melee/telebaton, WEAR_IN_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/storage/belt/security/MP/CMB/full, WEAR_WAIST)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran, WEAR_HANDS)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/beret/centcom/officer, WEAR_HEAD) //placeholder
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/CMB, WEAR_HEAD)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/veteran/PMC/knife, WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/sechud, WEAR_EYES)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full, WEAR_L_STORE)
@@ -193,6 +191,7 @@
 /datum/equipment_preset/CMB/leader
 	name = "CMB - The Colonial Marshal"
 	paygrade = "GS-13"
+	idtype = /obj/item/card/id/marshal
 	role_comm_title = "CMB MAR"
 	flags = EQUIPMENT_PRESET_EXTRA
 
@@ -218,7 +217,7 @@
 	H.equip_to_slot_or_del(new /obj/item/weapon/gun/shotgun/pump/dual_tube/cmb/m3717, WEAR_J_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/belt/security/MP/CMB/full, WEAR_WAIST)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran, WEAR_HANDS)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/beret/sec/hos, WEAR_HEAD) //placeholder
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/CMB, WEAR_HEAD)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/veteran/PMC/knife, WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/sechud, WEAR_EYES)
 	//pouches
@@ -246,6 +245,7 @@
 /datum/equipment_preset/CMB/synth
 	name = "CMB - Colonial Marshal Investigative Synthetic"
 	paygrade = "GS-C.9"
+	idtype = /obj/item/card/id/deputy
 	role_comm_title = "CMB SYN"
 	flags = EQUIPMENT_PRESET_EXTRA
 
@@ -310,7 +310,7 @@
 	H.equip_to_slot_or_del(new headset_type, WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/device/flashlight/pen, WEAR_R_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/sechud, WEAR_EYES)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/beret/centcom/officer, WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/CMB, WEAR_HEAD)
 	//uniform
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/CM_uniform, WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/accessory/health/ceramic_plate, WEAR_ACCESSORY)
@@ -404,6 +404,7 @@
 /datum/equipment_preset/CMB/observer
 	name = "CMB - Interstellar Human Rights Observer"
 	paygrade = "GS-3"
+	idtype = /obj/item/card/id/lanyard
 	role_comm_title = "OBS"
 	flags = EQUIPMENT_PRESET_EXTRA
 
@@ -447,3 +448,241 @@
 	H.equip_to_slot_or_del(new /obj/item/clipboard, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/device/taperecorder, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/tool/crowbar, WEAR_IN_BACK)
+
+
+//############ Anchorpoint Station Colonial Marines - They serve as reinforcements for the Colonial Marshals of Anchorpoint Station. #############
+//Anchorpoint Station Squad Marine - Similar to the Movie squad but nerfed a bit.
+
+/datum/equipment_preset/uscm/CMB
+	name = "USCM Anchorpoint Station Squad Marine"
+	flags = EQUIPMENT_PRESET_EXTRA|EQUIPMENT_PRESET_MARINE
+
+	access = list(ACCESS_MARINE_PREP)
+	assignment = "Anchorpoint Station Marine Rifleman"
+	rank = JOB_SQUAD_MARINE
+	paygrade = "ME2"
+	role_comm_title = "A-RFN"
+	skills = /datum/skills/pfc/crafty
+
+/datum/equipment_preset/uscm/CMB/load_status(mob/living/carbon/human/H)
+	. = ..()
+	H.nutrition = rand(NUTRITION_MAX, NUTRITION_NORMAL)
+
+/datum/equipment_preset/uscm/CMB/load_rank(mob/living/carbon/human/H)
+	if(H.client)
+		if(get_job_playtime(H.client, rank) < JOB_PLAYTIME_TIER_1)
+			return "ME1"
+	return paygrade
+
+/datum/equipment_preset/uscm/CMB/load_gear(mob/living/carbon/human/H)
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine, WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/holster, WEAR_ACCESSORY)
+	H.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/m4a3, WEAR_IN_ACCESSORY)
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/hp, WEAR_IN_ACCESSORY)
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/rubber, WEAR_IN_ACCESSORY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch, WEAR_ACCESSORY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine, WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/prop/helmetgarb/helmet_gasmask, WEAR_IN_HELMET)
+	H.equip_to_slot_or_del(new /obj/item/reagent_container/hypospray/autoinjector/emergency/skillless, WEAR_IN_HELMET)
+	H.equip_to_slot_or_del(new /obj/item/stack/medical/bruise_pack, WEAR_IN_HELMET)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/marine/cryo, WEAR_L_EAR)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/light, WEAR_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE, WEAR_IN_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/storage/box/MRE, WEAR_IN_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/satchel, WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/weapon/melee/baton, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine, WEAR_HANDS)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife, WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/ammo_box/rounds, WEAR_L_HAND)
+	H.equip_to_slot_or_del(new /obj/item/storage/box/m94, WEAR_R_HAND)
+	H.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/m41aMK1/anchorpoint/gl, WEAR_J_STORE)
+	H.equip_to_slot_or_del(new /obj/item/storage/belt/marine/m41amk1, WEAR_WAIST)
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m41aMK1/ap, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m41aMK1/ap, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/storage/box/packet/high_explosive, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/storage/box/packet/high_explosive, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/flare/full, WEAR_R_STORE)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full, WEAR_L_STORE)
+
+//Anchorpoint Station Marine Squad Leader
+
+/datum/equipment_preset/uscm/CMB/leader
+	name = "USCM Anchorpoint Station Team Leader"
+	flags = EQUIPMENT_PRESET_EXTRA|EQUIPMENT_PRESET_MARINE
+
+	access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_LEADER, ACCESS_MARINE_DROPSHIP)
+	assignment = "Anchorpoint Station Marine Team Leader"
+	rank = JOB_SQUAD_LEADER
+	paygrade = "ME5"
+	role_comm_title = "A-TL"
+	minimum_age = 25
+	skills = /datum/skills/SL
+
+/datum/equipment_preset/uscm/CMB/leader/load_gear(mob/living/carbon/human/H)
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine, WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/holster, WEAR_ACCESSORY)
+	H.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/m4a3/custom, WEAR_IN_ACCESSORY)
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/hp, WEAR_IN_ACCESSORY)
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/rubber, WEAR_IN_ACCESSORY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch, WEAR_ACCESSORY)
+	H.equip_to_slot_or_del(new /obj/item/storage/large_holster/m37, WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/weapon/gun/shotgun/pump, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/sensor, WEAR_EYES)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/leader, WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/prop/helmetgarb/helmet_gasmask, WEAR_IN_HELMET)
+	H.equip_to_slot_or_del(new /obj/item/reagent_container/hypospray/autoinjector/emergency/skillless, WEAR_IN_HELMET)
+	H.equip_to_slot_or_del(new /obj/item/stack/medical/bruise_pack, WEAR_IN_HELMET)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/marine/cryo/lead, WEAR_L_EAR)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/leader, WEAR_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/device/binoculars/range/designator, WEAR_IN_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/explosive/plastic/breaching_charge, WEAR_IN_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/m15, WEAR_IN_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine, WEAR_HANDS)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife, WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/m41aMK1/anchorpoint, WEAR_J_STORE)
+	H.equip_to_slot_or_del(new /obj/item/device/motiondetector, WEAR_WAIST)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full, WEAR_L_STORE)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large, WEAR_R_STORE)
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m41aMK1/heap, WEAR_IN_R_STORE)
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m41aMK1/heap, WEAR_IN_R_STORE)
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m41aMK1/heap, WEAR_IN_R_STORE) // he's collected the squad's supply of these magazines on request of OW
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m41aMK1/heap, WEAR_IN_R_STORE)
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/shotgun/buckshot, WEAR_L_HAND)
+
+//Anchorpoint Station Marine RTO - technical specialist, has the responsibility of engineering as well
+/datum/equipment_preset/uscm/CMB/rto
+	name = "USCM Anchorpoint Station Technical Specialist"
+	flags = EQUIPMENT_PRESET_EXTRA|EQUIPMENT_PRESET_MARINE
+
+	access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_RTO_PREP)
+	assignment = "Anchorpoint Station Marine Technical Specialist"
+	rank = JOB_SQUAD_RTO
+	paygrade = "ME4"
+	role_comm_title = "A-TS"
+	skills = /datum/skills/rto
+
+/datum/equipment_preset/uscm/CMB/rto/load_gear(mob/living/carbon/human/H)
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/rto, WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/holster, WEAR_ACCESSORY)
+	H.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/m4a3, WEAR_IN_ACCESSORY)
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/hp, WEAR_IN_ACCESSORY)
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/rubber, WEAR_IN_ACCESSORY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch, WEAR_ACCESSORY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife, WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/rto, WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/prop/helmetgarb/helmet_gasmask, WEAR_IN_HELMET)
+	H.equip_to_slot_or_del(new /obj/item/reagent_container/hypospray/autoinjector/emergency/skillless, WEAR_IN_HELMET)
+	H.equip_to_slot_or_del(new /obj/item/stack/medical/bruise_pack, WEAR_IN_HELMET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/welding/superior, WEAR_EYES)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/marine/cryo/rto, WEAR_L_EAR)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/rto, WEAR_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m41aMK1/ap, WEAR_IN_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m41aMK1/ap, WEAR_IN_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/device/binoculars/range/designator, WEAR_IN_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE, WEAR_IN_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/yellow, WEAR_HANDS)
+	H.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/satchel/rto, WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/device/motiondetector, WEAR_L_HAND)
+	H.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/m41aMK1/anchorpoint, WEAR_J_STORE)
+	H.equip_to_slot_or_del(new /obj/item/storage/belt/utility/full, WEAR_WAIST)
+	H.equip_to_slot_or_del(new /obj/item/defenses/handheld/sentry/mini, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/explosive/plastic/breaching_charge, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/explosive/plastic/breaching_charge, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m41aMK1, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m41aMK1, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/construction/full, WEAR_R_STORE)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full, WEAR_L_STORE)
+
+	H.back.pickup()
+
+//Anchorpoint Station Corpsman
+/datum/equipment_preset/uscm/CMB/medic
+	name = "USCM Anchorpoint Station Corpsman"
+	flags = EQUIPMENT_PRESET_EXTRA|EQUIPMENT_PRESET_MARINE
+
+	access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_MEDPREP, ACCESS_MARINE_MEDBAY)
+	assignment = "Anchorpoint Station Corpsman"
+	rank = JOB_SQUAD_MEDIC
+	paygrade = "ME3"
+	role_comm_title = "A-HM"
+	skills = /datum/skills/combat_medic
+
+	utility_under = list(/obj/item/clothing/under/marine/medic)
+
+/datum/equipment_preset/uscm/CMB/medic/load_gear(mob/living/carbon/human/H)
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/medic, WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/holster, WEAR_ACCESSORY)
+	H.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/m4a3, WEAR_IN_ACCESSORY)
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/hp, WEAR_IN_ACCESSORY)
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/rubber, WEAR_IN_ACCESSORY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch, WEAR_ACCESSORY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/medic, WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/prop/helmetgarb/helmet_gasmask, WEAR_IN_HELMET)
+	H.equip_to_slot_or_del(new /obj/item/reagent_container/hypospray/autoinjector/emergency/skillless, WEAR_IN_HELMET)
+	H.equip_to_slot_or_del(new /obj/item/stack/medical/bruise_pack, WEAR_IN_HELMET)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/marine/cryo/med, WEAR_L_EAR)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/light, WEAR_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m41aMK1/ap, WEAR_IN_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE, WEAR_IN_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/medic, WEAR_BACK)
+	if(prob(50))
+		H.equip_to_slot_or_del(new /obj/item/clothing/mask/surgical, WEAR_FACE)
+	H.equip_to_slot_or_del(new /obj/item/roller, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/storage/firstaid/adv, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/device/defibrillator, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/storage/belt/medical/lifesaver/full, WEAR_WAIST)
+	H.equip_to_slot_or_del(new /obj/item/reagent_container/hypospray/autoinjector/adrenaline, WEAR_IN_BELT)
+	H.equip_to_slot_or_del(new /obj/item/reagent_container/hypospray/autoinjector/adrenaline, WEAR_IN_BELT)
+	H.equip_to_slot_or_del(new /obj/item/reagent_container/hypospray/autoinjector/emergency/skillless, WEAR_IN_BELT)
+	H.equip_to_slot_or_del(new /obj/item/reagent_container/hypospray/autoinjector/emergency/skillless, WEAR_IN_BELT)
+	H.equip_to_slot_or_del(new /obj/item/bodybag/cryobag, WEAR_IN_BELT)
+	if(H.disabilities & NEARSIGHTED)
+		H.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health/prescription, WEAR_EYES)
+	else
+		H.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health, WEAR_EYES)
+	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine, WEAR_HANDS)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife, WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/storage/box/MRE, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/storage/box/MRE, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/m41aMK1/anchorpoint, WEAR_J_STORE)
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m41aMK1/ap, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m41aMK1, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/medical, WEAR_L_STORE)
+	H.equip_to_slot_or_del(new /obj/item/tool/surgery/surgical_line, WEAR_IN_L_STORE)
+	H.equip_to_slot_or_del(new /obj/item/tool/surgery/synthgraft, WEAR_IN_L_STORE)
+	H.equip_to_slot_or_del(new /obj/item/device/healthanalyzer, WEAR_IN_L_STORE)
+	H.equip_to_slot_or_del(new /obj/item/storage/pill_bottle/imidazoline, WEAR_IN_L_STORE)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/flare/full, WEAR_R_STORE)
+
+//Anchorpoint Station Marine Smartgunnner
+/datum/equipment_preset/uscm/CMB/smartgunner
+	name = "USCM Anchorpoint Station Smartgunner"
+	flags = EQUIPMENT_PRESET_EXTRA|EQUIPMENT_PRESET_MARINE
+
+	access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_SMARTPREP)
+	assignment = "Anchorpoint Station Marine Smartgunner"
+	rank = JOB_SQUAD_SMARTGUN
+	paygrade = "ME3"
+	role_comm_title = "A-SG"
+	skills = /datum/skills/smartgunner
+
+/datum/equipment_preset/uscm/CMB/smartgunner/load_gear(mob/living/carbon/human/H)
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine, WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/smartgun_powerpack, WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/holster, WEAR_ACCESSORY)
+	H.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/m4a3/custom, WEAR_IN_ACCESSORY)
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/hp, WEAR_IN_ACCESSORY)
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/rubber, WEAR_IN_ACCESSORY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch, WEAR_ACCESSORY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/smartgunner, WEAR_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE, WEAR_IN_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/stack/medical/bruise_pack, WEAR_IN_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/night/m56_goggles, WEAR_EYES)
+	H.equip_to_slot_or_del(new /obj/item/weapon/gun/smartgun, WEAR_J_STORE)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/flare/full, WEAR_R_STORE)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full, WEAR_L_STORE)
+	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine, WEAR_HANDS)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife, WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/storage/belt/marine/smartgunner/full/, WEAR_WAIST)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/headband/red, WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/marine/cryo, WEAR_L_EAR)

@@ -336,7 +336,7 @@
 /datum/equipment_preset/synth/survivor/cmb_synth
 	name = "Survivor - Synthetic - CMB Synth"
 	equipment_to_spawn = list(
-		WEAR_HEAD = /obj/item/clothing/head/beret/centcom/officer,
+		WEAR_HEAD = /obj/item/clothing/head/CMB,
 		WEAR_L_EAR = /obj/item/device/radio/headset/distress/CMB,
 		WEAR_EYES = /obj/item/clothing/glasses/sunglasses/sechud,
 		WEAR_BODY = /obj/item/clothing/under/CM_uniform,

@@ -228,6 +228,7 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 			/obj/item/ammo_magazine/rifle/m16
 	)
 	dollar_cost = 35
+	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/seized/ar10
 	name = "AR10 rifle crate (x5 magazines)"
@@ -239,6 +240,7 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 			/obj/item/ammo_magazine/rifle/ar10
 	)
 	dollar_cost = 30
+	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/seized/mar40
 	name = "MAR-40 battle rifle crate (x4 magazines)"
@@ -250,6 +252,7 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 			/obj/item/ammo_magazine/rifle/mar40
 	)
 	dollar_cost = 35
+	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/seized/mar30
 	name = "MAR-30 battle carbine crate (x5 magazines)"
@@ -262,6 +265,7 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 			/obj/item/ammo_magazine/rifle/mar40
 	)
 	dollar_cost = 30
+	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/seized/mar50
 	name = "MAR-50 light machine gun crate (x3 drum magazines)"
@@ -272,6 +276,7 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 			/obj/item/ammo_magazine/rifle/mar40/lmg
 	)
 	dollar_cost = 40
+	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/seized/hunting
 	name = "Basira-Armstrong hunting rifle crate (x5 magazines)"
@@ -284,6 +289,7 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 			/obj/item/ammo_magazine/rifle/hunting
 	)
 	dollar_cost = 5
+	containertype = /obj/structure/largecrate/black_market
 
 // Shotguns
 
@@ -294,6 +300,7 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 			/obj/item/ammo_magazine/shotgun/buckshot,
 	)
 	dollar_cost = 45
+	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/seized/custom
 	name = "custom-built shotgun crate (x1 box)"
@@ -302,6 +309,7 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 			/obj/item/ammo_magazine/shotgun,
 	)
 	dollar_cost = 50
+	containertype = /obj/structure/largecrate/black_market
 
 // SMGs
 
@@ -316,6 +324,7 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 			/obj/item/ammo_magazine/smg/fp9000
 	)
 	dollar_cost = 25
+	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/seized/mp27
 	name = "MP-27 submachinegun crate (x5 magazines)"
@@ -328,6 +337,7 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 			/obj/item/ammo_magazine/smg/mp27
 	)
 	dollar_cost = 20
+	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/seized/mp5
 	name = "MP5 submachinegun crate (x5 magazines)"
@@ -340,6 +350,7 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 			/obj/item/ammo_magazine/smg/mp5
 	)
 	dollar_cost = 25
+	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/seized/uzi
 	name = "UZI submachinegun crate (x5 magazines)"
@@ -352,6 +363,7 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 			/obj/item/ammo_magazine/smg/uzi
 	)
 	dollar_cost = 10
+	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/seized/mac15
 	name = "MAC-15 submachinegun crate (x5 magazines)"
@@ -364,6 +376,7 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 			/obj/item/ammo_magazine/smg/mac15
 	)
 	dollar_cost = 5
+	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/seized/ppsh
 	name = "PPSh-17b submachinegun crate (x5 magazines)"
@@ -376,6 +389,7 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 			/obj/item/ammo_magazine/smg/ppsh
 	)
 	dollar_cost = 15
+	containertype = /obj/structure/largecrate/black_market
 
 //Pistols
 
@@ -391,6 +405,7 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 			/obj/item/ammo_magazine/pistol/b92fs
 	)
 	dollar_cost = 10
+	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/seized/heavy
 	name = "Desert Eagle crate (x4 magazines)"
@@ -402,6 +417,7 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 			/obj/item/ammo_magazine/pistol/heavy
 	)
 	dollar_cost = 45
+	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/seized/c99
 	name = "Korovin PK-9 pistol crate (x6 magazines)"
@@ -415,6 +431,7 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 			/obj/item/ammo_magazine/pistol/c99
 	)
 	dollar_cost = 5
+	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/seized/kt42
 	name = "KT-42 Automag pistol (x5 magazines)"
@@ -427,6 +444,7 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 			/obj/item/ammo_magazine/pistol/kt42
 	)
 	dollar_cost = 15
+	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/seized/holdout
 	name = "holdout pistol (x7 magazines)"
@@ -441,6 +459,7 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 			/obj/item/ammo_magazine/pistol/holdout
 	)
 	dollar_cost = 5
+	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/seized/skorpion
 	name = "CZ-81 machine pistol (x4 magazines)"
@@ -452,6 +471,7 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 			/obj/item/ammo_magazine/pistol/skorpion
 	)
 	dollar_cost = 15
+	containertype = /obj/structure/largecrate/black_market
 
 //Revolvers
 
@@ -466,6 +486,7 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 			/obj/item/ammo_magazine/revolver/cmb
 	)
 	dollar_cost = 20
+	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/seized/small
 	name = "S&W revolver (x6 magazines)"
@@ -479,6 +500,7 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 			/obj/item/ammo_magazine/revolver/small
 	)
 	dollar_cost = 15
+	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/seized/nagant
 	name = "N-Y 7.62mm revolver (x6 magazines)"
@@ -492,6 +514,7 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 			/obj/item/ammo_magazine/revolver/upp
 	)
 	dollar_cost = 10
+	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/seized/rxf_m5
 	name = "RXF-M5 EVA laser pistol (recharger included)"
@@ -500,6 +523,7 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 			/obj/structure/machinery/recharger/unanchored
 	)
 	dollar_cost = 30
+	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/seized/r4t
 	name = "R4T hunting rifle case (x3 ammo boxes)"
@@ -511,6 +535,7 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 			/obj/item/ammo_magazine/lever_action/training
 	)
 	dollar_cost = 75
+	containertype = /obj/structure/largecrate/black_market
 
 /* --- SHIPSIDE CONTRABAND --- */
 
@@ -557,6 +582,7 @@ Primarily made up of things that would be best utilized, well, shipside. Recreat
 					/obj/item/reagent_container/food/drinks/bottle/beer/craft/mono
 	)
 	dollar_cost = 35
+	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/shipside/confiscated_medicine
 	name = "confiscated medicinal supplies crate"
@@ -573,6 +599,7 @@ Primarily made up of things that would be best utilized, well, shipside. Recreat
 					/obj/item/storage/pill_bottle/zombie_powder
 	)
 	dollar_cost = 25
+	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/shipside/confiscated_cuisine
 	name = "confiscated cuisine supplies crate"
@@ -613,6 +640,7 @@ Primarily made up of things that would be best utilized, well, shipside. Recreat
 		/obj/item/reagent_container/food/condiment/hotsauce/franks/macho
 	)
 	dollar_cost = 15
+	containertype = /obj/structure/largecrate/black_market
 
 
 /datum/supply_packs/contraband/shipside/confiscated_nicotine
@@ -628,6 +656,7 @@ Primarily made up of things that would be best utilized, well, shipside. Recreat
 		/obj/item/storage/fancy/cigar/tarbacktube
 	)
 	dollar_cost = 45
+	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/shipside/confiscated_miscellaneous
 	name = "confiscated miscellaneous items crate"
@@ -668,6 +697,7 @@ Primarily made up of things that would be best utilized, well, shipside. Recreat
 		/obj/item/pamphlet/language/spanish
 		)
 	dollar_cost = 30
+	containertype = /obj/structure/largecrate/black_market
 
 
 /* --- SURPLUS EQUIPMENT --- */
@@ -753,26 +783,31 @@ USCM spare items, miscellaneous gear that's too niche and distant (or restricted
 	name = "surplus MK-45 Automagnum case"
 	dollar_cost = 35
 	contains = list(/obj/item/storage/box/guncase/mk45_automag)
+	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/surplus/nsg23_marine
 	name = "surplus NSG 23 assault rifle case"
 	dollar_cost = 45
 	contains = list(/obj/item/storage/box/guncase/nsg23_marine)
+	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/surplus/m3717
 	name = "surplus M37-17 pump shotgun case"
 	dollar_cost = 80
 	contains = list(/obj/item/storage/box/guncase/m3717)
+	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/surplus/m1911
 	name = "surplus M1911 service pistol case"
 	dollar_cost = 10
 	contains = list(/obj/item/storage/box/guncase/m1911)
+	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/surplus/m1911/socom
 	name = "surplus SOCOM M1911 service pistol case"
 	dollar_cost = 25
 	contains = list(/obj/item/storage/box/guncase/m1911/socom)
+	containertype = /obj/structure/largecrate/black_market
 
 /* --- DEEP STORAGE --- */
 
@@ -796,6 +831,7 @@ This is where the RO can reclaim their lost honor and purchase the M44 custom, t
 		/obj/item/prop/helmetgarb/spacejam_tickets
 		)
 	dollar_cost = 5
+	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/deep_storage/broken_nvgs
 	name = "Broken Night Vision Goggles"
@@ -803,6 +839,7 @@ This is where the RO can reclaim their lost honor and purchase the M44 custom, t
 		/obj/item/prop/helmetgarb/helmet_nvg/cosmetic
 		)
 	dollar_cost = 10
+	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/deep_storage/xm42b_pipe
 	name = "10x99mm XM42B casing"
@@ -810,6 +847,7 @@ This is where the RO can reclaim their lost honor and purchase the M44 custom, t
 		/obj/item/prop/helmetgarb/bullet_pipe
 		)
 	dollar_cost = 10
+	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/deep_storage/trimmed_wire
 	name = "Trimmed Barbed Wire"
@@ -817,6 +855,7 @@ This is where the RO can reclaim their lost honor and purchase the M44 custom, t
 		/obj/item/prop/helmetgarb/trimmed_wire
 		)
 	dollar_cost = 10
+	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/deep_storage/lucky_feather_random
 	name = "Lucky Feather"
@@ -828,6 +867,7 @@ This is where the RO can reclaim their lost honor and purchase the M44 custom, t
 		/obj/item/prop/helmetgarb/lucky_feather/yellow
 		)
 	dollar_cost = 10
+	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/deep_storage/rosary
 	name = "Rosary"
@@ -835,6 +875,7 @@ This is where the RO can reclaim their lost honor and purchase the M44 custom, t
 		/obj/item/prop/helmetgarb/rosary
 		)
 	dollar_cost = 10
+	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/deep_storage/rabbitsfoot
 	name = "Rabbit's Foot"
@@ -842,6 +883,7 @@ This is where the RO can reclaim their lost honor and purchase the M44 custom, t
 		/obj/item/prop/helmetgarb/rabbitsfoot
 		)
 	dollar_cost = 10
+	containertype = /obj/structure/largecrate/black_market
 
 // Masks
 
@@ -855,6 +897,7 @@ This is where the RO can reclaim their lost honor and purchase the M44 custom, t
 		/obj/item/clothing/mask/rebreather/scarf/tacticalmask/tan
 		)
 	dollar_cost = 10
+	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/deep_storage/skull_balaclava_random
 	name = "Skull Balaclava"
@@ -864,6 +907,7 @@ This is where the RO can reclaim their lost honor and purchase the M44 custom, t
 		/obj/item/clothing/mask/rebreather/skull
 		)
 	dollar_cost = 10
+	containertype = /obj/structure/largecrate/black_market
 
 
 /datum/supply_packs/contraband/deep_storage/skull_facepaint
@@ -872,6 +916,7 @@ This is where the RO can reclaim their lost honor and purchase the M44 custom, t
 		/obj/item/facepaint/skull
 		)
 	dollar_cost = 10
+	containertype = /obj/structure/largecrate/black_market
 
 //Glasses
 
@@ -881,6 +926,7 @@ This is where the RO can reclaim their lost honor and purchase the M44 custom, t
 		/obj/item/clothing/glasses/sunglasses/aviator
 		)
 	dollar_cost = 10
+	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/deep_storage/ballistic_goggles_random
 	name = "Ballistic Goggles"
@@ -891,6 +937,7 @@ This is where the RO can reclaim their lost honor and purchase the M44 custom, t
 		/obj/item/clothing/glasses/mgoggles/black
 		)
 	dollar_cost = 10
+	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/deep_storage/bimex_shades
 	name = "BiMex Personal Shades"
@@ -898,6 +945,7 @@ This is where the RO can reclaim their lost honor and purchase the M44 custom, t
 		/obj/item/clothing/glasses/sunglasses/big
 		)
 	dollar_cost = 15
+	containertype = /obj/structure/largecrate/black_market
 
 // Headgear
 
@@ -909,6 +957,7 @@ This is where the RO can reclaim their lost honor and purchase the M44 custom, t
 		/obj/item/clothing/head/cmbandana/tan
 		)
 	dollar_cost = 10
+	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/deep_storage/uscm_earpiece
 	name = "USCM Earpiece"
@@ -917,6 +966,7 @@ This is where the RO can reclaim their lost honor and purchase the M44 custom, t
 		/obj/item/clothing/head/headset
 		)
 	dollar_cost = 10
+	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/deep_storage/uscm_headband
 	name = "USCM Headband"
@@ -929,6 +979,7 @@ This is where the RO can reclaim their lost honor and purchase the M44 custom, t
 		/obj/item/clothing/head/headband/tan
 		)
 	dollar_cost = 10
+	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/deep_storage/uscm_boonie_hat
 	name = "USCM Boonie Hat"
@@ -938,6 +989,7 @@ This is where the RO can reclaim their lost honor and purchase the M44 custom, t
 		/obj/item/clothing/head/cmcap/boonie
 		)
 	dollar_cost = 10
+	containertype = /obj/structure/largecrate/black_market
 
 //Misc
 
@@ -947,6 +999,7 @@ This is where the RO can reclaim their lost honor and purchase the M44 custom, t
 		/obj/item/storage/box/pdt_kit
 		)
 	dollar_cost = 10
+	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/deep_storage/lucky_lime
 	name = "Frozen Lime"
@@ -954,6 +1007,7 @@ This is where the RO can reclaim their lost honor and purchase the M44 custom, t
 		/obj/item/reagent_container/food/snacks/grown/lime
 		)
 	dollar_cost = 5
+	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/deep_storage/uno_reverse_random
 	name = "Uno Reverse Card"
@@ -965,6 +1019,7 @@ This is where the RO can reclaim their lost honor and purchase the M44 custom, t
 		/obj/item/toy/handcard/uno_reverse_yellow
 		)
 	dollar_cost = 10
+	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/deep_storage/jungle_boots
 	name = "Jungle Pattern Combat Boots"
@@ -972,6 +1027,7 @@ This is where the RO can reclaim their lost honor and purchase the M44 custom, t
 		/obj/item/clothing/shoes/marine/jungle
 		)
 	dollar_cost = 10
+	containertype = /obj/structure/largecrate/black_market
 
 //Weapons
 
@@ -981,6 +1037,7 @@ This is where the RO can reclaim their lost honor and purchase the M44 custom, t
 		/obj/item/attachable/bayonet/upp_replica
 		)
 	dollar_cost = 10
+	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/deep_storage/cartridge_bayonet
 	name = "M8 Cartridge Bayonet Kit"
@@ -988,6 +1045,7 @@ This is where the RO can reclaim their lost honor and purchase the M44 custom, t
 		/obj/item/storage/box/c02_knife
 		)
 	dollar_cost = 10
+	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/deep_storage/m43_holdout
 	name = "M43 Holdout Pistol"
@@ -995,6 +1053,7 @@ This is where the RO can reclaim their lost honor and purchase the M44 custom, t
 		/obj/item/storage/box/m43
 		)
 	dollar_cost = 10
+	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/deep_storage/m4a3_c
 	name = "M4A3 Custom Pistol"
@@ -1002,6 +1061,7 @@ This is where the RO can reclaim their lost honor and purchase the M44 custom, t
 		/obj/item/weapon/gun/pistol/m4a3/custom
 		)
 	dollar_cost = 35
+	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/deep_storage/m44_c
 	name = "M44 Custom Revolver"
@@ -1009,6 +1069,7 @@ This is where the RO can reclaim their lost honor and purchase the M44 custom, t
 		/obj/item/weapon/gun/revolver/m44/custom
 		)
 	dollar_cost = 70
+	containertype = /obj/structure/largecrate/black_market
 
 /* --- MISCELLANEOUS --- */
 
@@ -1040,15 +1101,17 @@ Things that don't fit anywhere else. If they're meant for shipside use, they pro
 	. = ..()
 
 /datum/supply_packs/contraband/miscellaneous/potted_plant
-	name = "potted plant"
+	name = "potted plant crate"
 	dollar_cost = 50
 	contains = list(
 		/obj/structure/flora/pottedplant/random/unanchored
 	)
+	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/miscellaneous/cargo_tug
-	name = "cargo tug"
+	name = "cargo tug crate"
 	dollar_cost = 50
 	contains = list(
 		/obj/vehicle/train/cargo/engine
 	)
+	containertype = /obj/structure/largecrate/black_market

@@ -67,3 +67,35 @@ jobs:
           source $HOME/BYOND/byond/bin/byondsetup
           tools/build/build --ci dm -DCIBUILDING -DCITESTING -DALL_MAPS
 
+  find_all_maps:
+    if: "!contains(github.event.head_commit.message, '[ci skip]')"
+    name: Find Maps to Test
+    runs-on: ubuntu-20.04
+    outputs:
+      maps: ${{ steps.map_finder.outputs.maps }}
+    concurrency:
+      group: find_all_maps-${{ github.ref }}
+      cancel-in-progress: true
+    steps:
+      - uses: actions/checkout@v3
+      - name: Find Maps
+        id: map_finder
+        run: |
+          echo "$(ls -mw0 maps/*.json)" > maps_output.txt
+          sed -i -e s+maps/+\"+g -e s+.json+\"+g maps_output.txt
+          echo "Maps: $(cat maps_output.txt)"
+          echo "maps={\"paths\":[$(cat maps_output.txt)]}" >> $GITHUB_OUTPUT
+  run_all_tests:
+    if: "!contains(github.event.head_commit.message, '[ci skip]')"
+    name: Unit Tests
+    needs: [find_all_maps]
+    strategy:
+      fail-fast: false
+      matrix:
+        map: ${{ fromJSON(needs.find_all_maps.outputs.maps).paths }}
+    concurrency:
+      group: run_all_tests-${{ github.ref }}-${{ matrix.map }}
+      cancel-in-progress: true
+    uses: ./.github/workflows/run_unit_tests.yml
+    with:
+      map: ${{ matrix.map }}

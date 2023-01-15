@@ -967,6 +967,28 @@
 	stamina_damage = 10
 	shrapnel_chance = 0
 
+/datum/ammo/bullet/smg/mp27
+	name = "simple submachinegun bullet"
+	damage = 40
+	accurate_range = 5
+	effective_range_max = 7
+	penetration = 0
+	shell_speed = AMMO_SPEED_TIER_6
+	damage_falloff = DAMAGE_FALLOFF_TIER_6
+	scatter = SCATTER_AMOUNT_TIER_6
+	accuracy = HIT_ACCURACY_TIER_2
+
+// less damage than the m39, but better falloff, range, and AP
+
+/datum/ammo/bullet/smg/ppsh
+	name = "crude submachinegun bullet"
+	damage = 26
+	accurate_range = 7
+	effective_range_max = 7
+	penetration = ARMOR_PENETRATION_TIER_2
+	damage_falloff = DAMAGE_FALLOFF_TIER_7
+	scatter = SCATTER_AMOUNT_TIER_5
+
 /*
 //======
 					Rifle Ammo

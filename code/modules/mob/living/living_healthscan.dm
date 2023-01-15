@@ -60,15 +60,36 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 		ui.open()
 		ui.set_autoupdate(FALSE)
 
+/datum/health_scan/proc/get_death_value(mob/target_mob)
+	if(target_mob.stat == DEAD || target_mob.status_flags & FAKEDEATH)
+		return TRUE
+	else
+		return FALSE
+
+/datum/health_scan/proc/get_oxy_value(mob/target_mob)
+	if(!(target_mob.status_flags & FAKEDEATH))
+		return target_mob.getOxyLoss()
+
+	var/total_mob_damage = target_mob.getBruteLoss() + target_mob.getFireLoss() + target_mob.getToxLoss() + target_mob.getCloneLoss()
+
+	// Fake death will make the scanner think they died of oxygen damage, thus it returns enough damage to kill minus already recieved damage.
+	return round(POSITIVE(200 - total_mob_damage))
+
+/datum/health_scan/proc/get_health_value(mob/living/target_mob)
+	if(!(target_mob.status_flags & FAKEDEATH))
+		return target_mob.health
+
+	return min(-100, target_mob.health)
+
 /datum/health_scan/ui_data(mob/user, var/data_detail_level = null)
 	var/list/data = list(
 		"patient" = target_mob.name,
-		"dead" = target_mob.stat == DEAD,
-		"health" = target_mob.health,
+		"dead" = get_death_value(target_mob),
+		"health" = get_health_value(target_mob),
 		"total_brute" = round(target_mob.getBruteLoss()),
 		"total_burn" = round(target_mob.getFireLoss()),
 		"toxin" = round(target_mob.getToxLoss()),
-		"oxy" = round(target_mob.getOxyLoss()),
+		"oxy" = get_oxy_value(target_mob),
 		"clone" = round(target_mob.getCloneLoss()),
 		"blood_type" = target_mob.blood_type,
 		"blood_amount" = target_mob.blood_volume,

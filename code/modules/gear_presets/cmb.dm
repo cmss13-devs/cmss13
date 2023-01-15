@@ -364,7 +364,7 @@
 
 /datum/equipment_preset/CMB/liaison/load_gear(mob/living/carbon/human/H)
 
-    //clothes
+	//clothes
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/CMB/ICC, WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit/formal, WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/holster, WEAR_ACCESSORY)
@@ -416,7 +416,7 @@
 
 /datum/equipment_preset/CMB/observer/load_gear(mob/living/carbon/human/H)
 
-    //clothes
+	//clothes
 	H.equip_to_slot_or_del(new headset_type, WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/device/flashlight/pen, WEAR_R_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit/suspenders, WEAR_BODY)

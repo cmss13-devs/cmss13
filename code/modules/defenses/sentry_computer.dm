@@ -24,7 +24,7 @@
 	/// The turf where the camera was last updated.
 	var/turf/last_camera_turf
 
-	var/obj/item/device/radio/transceiver = new /obj/item/device/radio
+	var/obj/item/device/radio/marine/transceiver = new /obj/item/device/radio/marine
 	var/mob/living/voice = new /mob/living/silicon
 
 	// Stuff needed to render the map

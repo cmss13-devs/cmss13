@@ -636,26 +636,31 @@ Additional game mode variables.
 	if(istype(ghost.current, /mob/living) && ghost.current.first_xeno)
 		picked_spawn = xeno_turf
 	else
-		picked_spawn = pick(GLOB.survivor_spawns)
+		for(var/priority = 1 to LOWEST_SPAWN_PRIORITY)
+			if(length(GLOB.survivor_spawns_by_priority["[priority]"]))
+				picked_spawn = pick(GLOB.survivor_spawns_by_priority["[priority]"])
+				break
 	if(istype(picked_spawn, /obj/effect/landmark/survivor_spawner))
 		return survivor_event_transform(ghost.current, picked_spawn, is_synth, is_CO)
 	else
 		return survivor_non_event_transform(ghost.current, picked_spawn, is_synth, is_CO)
 
-/datum/game_mode/proc/survivor_old_equipment(var/mob/living/carbon/human/H, var/is_synth = FALSE, var/is_CO = FALSE)
+/datum/game_mode/proc/survivor_old_equipment(var/mob/living/carbon/human/equipping_human, var/is_synth = FALSE, var/is_CO = FALSE)
 	var/list/survivor_types = SSmapping.configs[GROUND_MAP].survivor_types
 
 	if(is_synth)
-		survivor_types = SSmapping.configs[GROUND_MAP].synth_survivor_types
+		survivor_types = equipping_human.client?.prefs?.preferred_survivor_variant != ANY_SURVIVOR && length(SSmapping.configs[GROUND_MAP].synth_survivor_types_by_variant[equipping_human.client.prefs.preferred_survivor_variant]) ? SSmapping.configs[GROUND_MAP].synth_survivor_types_by_variant[equipping_human.client.prefs.preferred_survivor_variant] : SSmapping.configs[GROUND_MAP].synth_survivor_types
+	else
+		survivor_types = equipping_human.client?.prefs?.preferred_survivor_variant != ANY_SURVIVOR && length(SSmapping.configs[GROUND_MAP].survivor_types_by_variant[equipping_human.client.prefs.preferred_survivor_variant]) ? SSmapping.configs[GROUND_MAP].survivor_types_by_variant[equipping_human.client.prefs.preferred_survivor_variant] : SSmapping.configs[GROUND_MAP].survivor_types
 	if(is_CO)
 		survivor_types = SSmapping.configs[GROUND_MAP].CO_survivor_types
 
 	//Give them proper jobs and stuff here later
 	var/randjob = pick(survivor_types)
 	var/not_a_xenomorph = TRUE
-	if(H.first_xeno)
+	if(equipping_human.first_xeno)
 		not_a_xenomorph = FALSE
-	arm_equipment(H, randjob, FALSE, not_a_xenomorph)
+	arm_equipment(equipping_human, randjob, FALSE, not_a_xenomorph)
 
 
 /datum/game_mode/proc/survivor_event_transform(var/mob/living/carbon/human/H, var/obj/effect/landmark/survivor_spawner/spawner, var/is_synth = FALSE, var/is_CO = FALSE)

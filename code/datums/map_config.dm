@@ -33,8 +33,10 @@
 	var/weather_holder
 
 	var/list/survivor_types
+	var/list/survivor_types_by_variant
 
 	var/list/synth_survivor_types
+	var/list/synth_survivor_types_by_variant
 
 	var/list/CO_survivor_types
 
@@ -70,7 +72,16 @@
 	)
 
 	synth_survivor_types = list(
-		/datum/equipment_preset/synth/survivor
+		/datum/equipment_preset/synth/survivor/medical_synth,
+		/datum/equipment_preset/synth/survivor/scientist_synth,
+		/datum/equipment_preset/synth/survivor/engineer_synth,
+		/datum/equipment_preset/synth/survivor/security_synth,
+		/datum/equipment_preset/synth/survivor/corporate_synth,
+		/datum/equipment_preset/synth/survivor/janitor_synth,
+		/datum/equipment_preset/synth/survivor/chef_synth,
+		/datum/equipment_preset/synth/survivor/bartender_synth,
+		/datum/equipment_preset/synth/survivor/detective_synth,
+		/datum/equipment_preset/synth/survivor/radiation_synth
 	)
 
 /proc/load_map_config(filename, default, delete_after, error_if_missing = TRUE)
@@ -176,6 +187,13 @@
 		pathed_survivor_types += survivor_typepath
 	survivor_types = pathed_survivor_types.Copy()
 
+	survivor_types_by_variant = list()
+	for(var/surv_type in survivor_types)
+		var/datum/equipment_preset/survivor/surv_equipment = surv_type
+		var/survivor_variant = initial(surv_equipment.survivor_variant)
+		if(!survivor_types_by_variant[survivor_variant]) survivor_types_by_variant[survivor_variant] = list()
+		survivor_types_by_variant[survivor_variant] += surv_type
+
 	if(islist(json["synth_survivor_types"]))
 		synth_survivor_types = json["synth_survivor_types"]
 	else if ("synth_survivor_types" in json)
@@ -192,6 +210,13 @@
 				continue
 		pathed_synth_survivor_types += synth_survivor_typepath
 	synth_survivor_types = pathed_synth_survivor_types.Copy()
+
+	synth_survivor_types_by_variant = list()
+	for(var/surv_type in synth_survivor_types)
+		var/datum/equipment_preset/synth/survivor/surv_equipment = surv_type
+		var/survivor_variant = initial(surv_equipment.survivor_variant)
+		if(!synth_survivor_types_by_variant[survivor_variant]) synth_survivor_types_by_variant[survivor_variant] = list()
+		synth_survivor_types_by_variant[survivor_variant] += surv_type
 
 	if(islist(json["CO_survivor_types"]))
 		CO_survivor_types = json["CO_survivor_types"]

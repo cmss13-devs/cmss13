@@ -31,7 +31,7 @@
 	var/list/locs_land = list()
 	//Could be a list, but I don't see a reason considering shuttles aren't bloated with variables.
 	var/sound_target = 136//Where the sound will originate from. Must be a list index, usually the center bottom (engines).
-	var/sound/sound_takeoff	= 'sound/effects/engine_startup.ogg'//Takeoff sounds.
+	var/sound/sound_takeoff = 'sound/effects/engine_startup.ogg'//Takeoff sounds.
 	var/sound/sound_landing = 'sound/effects/engine_landing.ogg'//Landing sounds.
 	var/sound/sound_moving //Movement sounds, usually not applicable.
 	var/sound/sound_misc //Anything else, like escape pods.
@@ -116,7 +116,7 @@
 
 /datum/shuttle/ferry/marine/proc/prepare_automated_launch()
 	ai_silent_announcement("The [name] will automatically depart in [automated_launch_delay * 0.1] seconds")
-	automated_launch_timer = addtimer(CALLBACK(src, .proc/automated_launch), automated_launch_delay, TIMER_UNIQUE | TIMER_OVERRIDE | TIMER_STOPPABLE)
+	automated_launch_timer = addtimer(CALLBACK(src, PROC_REF(automated_launch)), automated_launch_delay, TIMER_UNIQUE | TIMER_OVERRIDE | TIMER_STOPPABLE)
 
 /datum/shuttle/ferry/marine/proc/automated_launch()
 	if(!queen_locked)
@@ -140,7 +140,7 @@
 				announce_preflight_failure()
 				if(automated_launch)
 					ai_silent_announcement("Automated launch of [name] failed. New launch in [DROPSHIP_AUTO_RETRY_COOLDOWN] SECONDS.")
-					automated_launch_timer = addtimer(CALLBACK(src, .proc/automated_launch), automated_launch_delay)
+					automated_launch_timer = addtimer(CALLBACK(src, PROC_REF(automated_launch)), automated_launch_delay)
 
 				process_state = IDLE_STATE
 				in_use = null
@@ -167,7 +167,7 @@
 		if (WAIT_ARRIVE)
 			if (moving_status == SHUTTLE_IDLE)
 				dock()
-				in_use = null	//release lock
+				in_use = null //release lock
 				process_state = WAIT_FINISH
 
 		if (WAIT_FINISH)
@@ -222,7 +222,7 @@
 
 	if (moving_status != SHUTTLE_WARMUP)
 		recharging = 0
-		return	//someone cancelled the launch
+		return //someone cancelled the launch
 
 	if(transit_gun_mission)
 		travel_time = move_time * 1.5 //fire missions not made shorter by optimization.
@@ -415,7 +415,7 @@
 
 	if (moving_status == SHUTTLE_IDLE)
 		recharging = 0
-		return	//someone canceled the launch
+		return //someone canceled the launch
 
 	var/travel_time = 0
 	travel_time = DROPSHIP_CRASH_TRANSIT_DURATION
@@ -540,18 +540,18 @@
 				break
 		sleep(1)
 
-	for(var/i in GLOB.alive_human_list) //knock down mobs
-		var/mob/living/carbon/human/M = i
-		if(M.z != T_trg.z) continue
-		if(M.buckled)
-			to_chat(M, SPAN_WARNING("You are jolted against [M.buckled]!"))
-			shake_camera(M, 3, 1)
+	for(var/mob/living/carbon/affected_mob in (GLOB.alive_human_list + GLOB.living_xeno_list)) //knock down mobs
+		if(affected_mob.z != T_trg.z) 
+			continue
+		if(affected_mob.buckled)
+			to_chat(affected_mob, SPAN_WARNING("You are jolted against [affected_mob.buckled]!"))
+			shake_camera(affected_mob, 3, 1)
 		else
-			to_chat(M, SPAN_WARNING("The floor jolts under your feet!"))
-			shake_camera(M, 10, 1)
-			M.apply_effect(3, WEAKEN)
+			to_chat(affected_mob, SPAN_WARNING("The floor jolts under your feet!"))
+			shake_camera(affected_mob, 10, 1)
+			affected_mob.apply_effect(3, WEAKEN)
 
-	addtimer(CALLBACK(src, .proc/disable_latejoin), 3 MINUTES) // latejoin cryorines have 3 minutes to get the hell out
+	addtimer(CALLBACK(src, PROC_REF(disable_latejoin)), 3 MINUTES) // latejoin cryorines have 3 minutes to get the hell out
 
 	var/list/turfs_trg = get_shuttle_turfs(T_trg, info_datums) //Final destination turfs <insert bad jokey reference here>
 
@@ -629,7 +629,7 @@
 	sleep(warmup_time)
 
 	if (moving_status == SHUTTLE_IDLE)
-		return	//someone cancelled the launch
+		return //someone cancelled the launch
 
 	moving_status = SHUTTLE_INTRANSIT //shouldn't matter but just to be safe
 
@@ -652,11 +652,11 @@
 	for(var/turf/T in L) // For every turf
 		for(var/obj/structure/machinery/door/D in T) // For every relevant door there
 			if(!D.density && istype(D, /obj/structure/machinery/door/poddoor/shutters/transit))
-				INVOKE_ASYNC(D, /obj/structure/machinery/door.proc/close) // Pod can't close if blocked
+				INVOKE_ASYNC(D, TYPE_PROC_REF(/obj/structure/machinery/door, close)) // Pod can't close if blocked
 			if(iselevator && istype(D, /obj/structure/machinery/door/airlock)) // Just close. Why is this here though...?
-				INVOKE_ASYNC(D, /obj/structure/machinery/door.proc/close)
+				INVOKE_ASYNC(D, TYPE_PROC_REF(/obj/structure/machinery/door, close))
 			else if(istype(D, /obj/structure/machinery/door/airlock/dropship_hatch) || istype(D, /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear))
-				INVOKE_ASYNC(src, .proc/force_close_launch, D) // The whole shabang
+				INVOKE_ASYNC(src, PROC_REF(force_close_launch), D) // The whole shabang
 
 /datum/shuttle/ferry/marine/force_close_launch(var/obj/structure/machinery/door/AL)
 	if(!iselevator)
@@ -682,7 +682,7 @@
 		for(var/obj/structure/machinery/door/poddoor/shutters/P in T)
 			if(!istype(P)) continue
 			if(P.density)
-				INVOKE_ASYNC(P, /obj/structure/machinery/door.proc/close)
+				INVOKE_ASYNC(P, TYPE_PROC_REF(/obj/structure/machinery/door, close))
 				//No break since transit shutters are the same parent type
 
 		if (iselevator)
@@ -691,7 +691,7 @@
 				if(A.locked)
 					A.unlock()
 				if(A.density)
-					INVOKE_ASYNC(A, /obj/structure/machinery/door.proc/close)
+					INVOKE_ASYNC(A, TYPE_PROC_REF(/obj/structure/machinery/door, close))
 				break
 		else
 			for(var/obj/structure/machinery/door/airlock/dropship_hatch/M in T)
@@ -771,16 +771,16 @@
 //Kinda messy proc, but the best solution to prevent shearing of multitile vehicles
 //Alternatives include:
 //1. A ticker that verifies that all multi_tile vics aren't out of wack
-//		-Two problems here, intersection of movement and verication would cause issues and this idea is dumb and expensive
+// -Two problems here, intersection of movement and verication would cause issues and this idea is dumb and expensive
 //2. Somewhere in the shuttle_backend, every time you move a multi_tile vic hitbox or root, tell the vic to update when the move completes
-//		-Issues here are that this is not atomic at all and vics get left behind unless the entirety of them is on the shuttle/elevator,
-//			plus then part of the vic would be in space since elevators leave that behind
+// -Issues here are that this is not atomic at all and vics get left behind unless the entirety of them is on the shuttle/elevator,
+// plus then part of the vic would be in space since elevators leave that behind
 /datum/shuttle/ferry/elevator/preflight_checks()
 	for(var/obj/structure/machinery/door/airlock/multi_tile/elevator/E in main_doors)
 		//If there is part of a multitile vic in any of the turfs the door occupies, cancel
 		//An argument can be made for tanks being allowed to block the door, but
-		//	that would make this already relatively expensive and inefficent even more so
-		//	--MadSnailDisease
+		// that would make this already relatively expensive and inefficent even more so
+		// --MadSnailDisease
 		for(var/obj/vehicle/multitile/M in E.loc)
 			if(M) return 0
 

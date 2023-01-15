@@ -55,7 +55,7 @@
 	name = "hailer"
 	desc = "Used by obese officers to save their breath for running."
 	icon_state = "voice0"
-	item_state = "flash_device"	//looks exactly like a flash (and nothing like a flashbang)
+	item_state = "flash_device" //looks exactly like a flash (and nothing like a flashbang)
 	w_class = SIZE_TINY
 	flags_atom = FPRINT|CONDUCT
 

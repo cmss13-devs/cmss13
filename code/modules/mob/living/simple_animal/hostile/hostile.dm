@@ -1,6 +1,6 @@
 /mob/living/simple_animal/hostile
 	faction = "hostile"
-	var/stance = HOSTILE_STANCE_IDLE	//Used to determine behavior
+	var/stance = HOSTILE_STANCE_IDLE //Used to determine behavior
 	var/mob/living/target_mob
 	var/attack_same = 0
 	var/ranged = 0
@@ -77,7 +77,7 @@
 	if(!(target_mob in ListTargets(10)))
 		LostTarget()
 		return 0
-	if(get_dist(src, target_mob) <= 1)	//Attacking
+	if(get_dist(src, target_mob) <= 1) //Attacking
 		AttackingTarget()
 		return 1
 

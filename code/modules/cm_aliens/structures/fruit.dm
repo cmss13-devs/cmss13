@@ -4,8 +4,8 @@
 	name = XENO_FRUIT_LESSER
 	desc = "A fruit that can be eaten to immediately recover health."
 	icon_state = "fruit_lesser_immature"
-	density = 0
-	opacity = 0
+	density = FALSE
+	opacity = FALSE
 	anchored = TRUE
 	health = 25
 	layer = BUSH_LAYER // technically a plant amiright
@@ -50,11 +50,11 @@
 
 	bound_xeno = X
 	hivenumber = X.hivenumber
-	RegisterSignal(W, COMSIG_PARENT_QDELETING, .proc/on_weed_expire)
-	RegisterSignal(X, COMSIG_PARENT_QDELETING, .proc/handle_xeno_qdel)
+	RegisterSignal(W, COMSIG_PARENT_QDELETING, PROC_REF(on_weed_expire))
+	RegisterSignal(X, COMSIG_PARENT_QDELETING, PROC_REF(handle_xeno_qdel))
 	set_hive_data(src, hivenumber)
 	//Keep timer value here
-	timer_id = addtimer(CALLBACK(src, .proc/mature), time_to_mature * W.fruit_growth_multiplier, TIMER_UNIQUE | TIMER_STOPPABLE)
+	timer_id = addtimer(CALLBACK(src, PROC_REF(mature)), time_to_mature * W.fruit_growth_multiplier, TIMER_UNIQUE | TIMER_STOPPABLE)
 	. = ..()
 	// Need to do it here because baseline initialize override the icon through config.
 	icon = 'icons/mob/xenos/fruits.dmi'
@@ -113,7 +113,7 @@
 	else
 		// Restart the timer.
 		var/new_maturity_time = timeleft - maturity_increase
-		timer_id = addtimer(CALLBACK(src, .proc/mature), new_maturity_time, TIMER_UNIQUE | TIMER_STOPPABLE)
+		timer_id = addtimer(CALLBACK(src, PROC_REF(mature)), new_maturity_time, TIMER_UNIQUE | TIMER_STOPPABLE)
 		time_to_mature = new_maturity_time
 
 
@@ -165,7 +165,7 @@
 	return XENO_NO_DELAY_ACTION
 
 /obj/effect/alien/resin/fruit/proc/prevent_consume(mob/living/carbon/Xenomorph/xeno)
-	if(!(flags & CAN_CONSUME_AT_FULL_HEALTH) && xeno.health >= xeno.caste.max_health)
+	if(!(flags & CAN_CONSUME_AT_FULL_HEALTH) && xeno.health >= xeno.maxHealth)
 		to_chat(xeno, SPAN_XENODANGER("You are at full health! This would be a waste..."))
 		return XENO_NO_DELAY_ACTION
 	return FALSE
@@ -344,7 +344,7 @@
 	to_chat(X, SPAN_XENOWARNING("One of your resin fruits has been picked."))
 	X.current_fruits.Add(src)
 	bound_xeno = X
-	RegisterSignal(X, COMSIG_PARENT_QDELETING, .proc/handle_xeno_qdel)
+	RegisterSignal(X, COMSIG_PARENT_QDELETING, PROC_REF(handle_xeno_qdel))
 
 /obj/item/reagent_container/food/snacks/resin_fruit/proc/handle_xeno_qdel()
 	SIGNAL_HANDLER

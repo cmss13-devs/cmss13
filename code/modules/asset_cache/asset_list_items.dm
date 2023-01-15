@@ -152,7 +152,7 @@
 /datum/asset/spritesheet/chat/register()
 	InsertAll("emoji", 'icons/emoji.dmi')
 	// pre-loading all lanugage icons also helps to avoid meta
-/*	InsertAll("language", 'icons/misc/language.dmi')
+/* InsertAll("language", 'icons/misc/language.dmi')
 	// catch languages which are pulling icons from another file
 	for(var/path in typesof(/datum/language))
 		var/datum/language/L = path
@@ -346,4 +346,11 @@
 /datum/asset/simple/orbit
 	assets = list(
 		"ghost.png" = 'html/images/ghost.png'
+	)
+
+/datum/asset/simple/radar_assets
+	assets = list(
+		"ntosradarbackground.png" = 'icons/images/ui_images/ntosradar_background.png',
+		"ntosradarpointer.png" = 'icons/images/ui_images/ntosradar_pointer.png',
+		"ntosradarpointerS.png" = 'icons/images/ui_images/ntosradar_pointer_S.png'
 	)

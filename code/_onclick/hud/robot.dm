@@ -135,12 +135,12 @@
 	gun_move_icon = new /atom/movable/screen/gun/move()
 	gun_move_icon.screen_loc = ui_robot_datum.ui_gun2
 	gun_move_icon.update_icon(owner)
-	static_inventory +=	gun_move_icon
+	static_inventory += gun_move_icon
 
 	gun_run_icon = new /atom/movable/screen/gun/run()
 	gun_run_icon.screen_loc = ui_robot_datum.ui_gun3
 	gun_run_icon.update_icon(owner)
-	static_inventory +=	gun_run_icon
+	static_inventory += gun_run_icon
 
 
 

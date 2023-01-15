@@ -16,7 +16,7 @@
 	. = ..()
 
 	new_player_panel()
-	addtimer(CALLBACK(src, .proc/lobby), 4 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(lobby)), 4 SECONDS)
 
 /mob/new_player/proc/lobby()
 	if(!client)

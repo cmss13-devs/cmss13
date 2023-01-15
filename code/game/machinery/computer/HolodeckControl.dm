@@ -49,9 +49,9 @@
 	name = "table"
 	desc = "A square piece of metal standing on four metal legs. It can not move."
 	icon_state = "table"
-	density = 1
+	density = TRUE
 	anchored = 1.0
-	throwpass = 1	//You can throw objects over this, despite it's density.
+	throwpass = 1 //You can throw objects over this, despite it's density.
 
 /obj/structure/surface/table/holotable/attack_animal(mob/living/user as mob) //Removed code for larva since it doesn't work. Previous code is now a larva ability. /N
 	return attack_hand(user)
@@ -108,7 +108,7 @@
 	icon = 'icons/turf/walls/windows.dmi'
 	icon_state = "rwindow"
 	desc = "A window."
-	density = 1
+	density = TRUE
 	layer = WINDOW_LAYER
 	anchored = 1.0
 	flags_atom = ON_BORDER
@@ -133,7 +133,7 @@
 	icon = 'icons/obj/structures/props/misc.dmi'
 	icon_state = "hoop"
 	anchored = 1
-	density = 1
+	density = TRUE
 	throwpass = 1
 	var/side = ""
 	var/id = ""

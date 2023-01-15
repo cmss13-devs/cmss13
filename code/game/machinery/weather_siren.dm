@@ -3,7 +3,7 @@
 	desc = "A siren used to play weather warnings for the colony."
 	icon = 'icons/obj/structures/machinery/loudspeaker.dmi'
 	icon_state = "loudspeaker"
-	density = 0
+	density = FALSE
 	anchored = 1
 	unacidable = 1
 	unslashable = 1

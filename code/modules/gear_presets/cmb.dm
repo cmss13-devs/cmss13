@@ -628,6 +628,7 @@
 	if(prob(50))
 		H.equip_to_slot_or_del(new /obj/item/clothing/mask/surgical, WEAR_FACE)
 	H.equip_to_slot_or_del(new /obj/item/roller, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/roller, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/storage/firstaid/adv, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/device/defibrillator, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/storage/belt/medical/lifesaver/full, WEAR_WAIST)

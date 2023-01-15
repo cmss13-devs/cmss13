@@ -274,7 +274,6 @@
 		if(world.time % 3)
 			playsound(src, 'sound/weapons/handling/gun_jam_click.ogg', 35, TRUE)
 			to_chat(user, SPAN_WARNING("Your gun is jammed! Mash Unique-Action to unjam it!"))
-			user.balloon_alert_to_viewers("*click*", "*jammed*")
 			balloon_alert(user, "*jammed*")
 		return
 	else if(prob(ppsh_mag?.jam_chance))

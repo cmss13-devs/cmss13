@@ -405,7 +405,7 @@
 	max_ammo_count = 1
 	ammo_name = "area denial sentry"
 	travelling_time = 0 // handled by droppod
-	point_cost = 600
+	point_cost = 500
 	accuracy_range = 0 // pinpoint
 	max_inaccuracy = 0
 

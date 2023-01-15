@@ -300,7 +300,6 @@
 
 /obj/item/tool/pen/sleepypen/Initialize()
 	. = ..()
-	/// Used to be 300
 	create_reagents(30)
 	reagents.add_reagent("chloralhydrate", 22)
 

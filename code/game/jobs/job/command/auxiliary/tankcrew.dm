@@ -1,7 +1,7 @@
 /datum/job/command/tank_crew
 	title = JOB_CREWMAN
-	total_positions = 2
-	spawn_positions = 2
+	total_positions = 0
+	spawn_positions = 0
 	allow_additional = 1
 	scaled = 0
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT

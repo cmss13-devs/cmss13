@@ -50,8 +50,7 @@
 	SIGNAL_HANDLER
 	UnregisterSignal(SSdcs, COMSIG_GLOB_VEHICLE_ORDERED)
 
-	if(istype(V, /obj/vehicle/multitile/tank))
-		selected_vehicle = "TANK"
+	selected_vehicle = "TANK"
 
 	if(istype(V, /obj/vehicle/multitile/apc))
 		available_categories &= ~(VEHICLE_ARMOR_AVAILABLE|VEHICLE_INTEGRAL_AVAILABLE) //APC lacks these, so we need to remove these flags to be able to access spare parts section
@@ -70,7 +69,7 @@
 	if(selected_vehicle == "TANK")
 		if(available_categories)
 			display_list = GLOB.cm_vending_vehicle_crew_tank
-		else
+		else //Tank stuff was tweaked to be more expensive
 			display_list = GLOB.cm_vending_vehicle_crew_tank_spare
 
 	else if(selected_vehicle == "APC")

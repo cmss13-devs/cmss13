@@ -19,8 +19,7 @@
 		SENTRY_CATEGORY_IFF = FACTION_USCM,
 	)
 
-/obj/structure/machinery/defenses/sentry/flamer/handle_rof(var/level)
-	burst = 1
+/obj/structure/machinery/defenses/sentry/flamer/handle_rof(level)
 	switch(level)
 		if(ROF_SINGLE)
 			accuracy_mult = 1

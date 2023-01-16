@@ -1,8 +1,10 @@
-#define SENTRY_FIREANGLE 	135
-#define SENTRY_RANGE 		5
-#define SENTRY_MUZZLELUM	3
+#define SENTRY_FIREANGLE 135
+#define SENTRY_RANGE 5
+#define SENTRY_MUZZLELUM 3
 #define SENTRY_ENGAGED_TIMEOUT 60 SECONDS
 #define SENTRY_LOW_AMMO_TIMEOUT 20 SECONDS
+#define SENTRY_LOW_AMMO_ALERT_PERCENTAGE 0.25
+
 /obj/structure/machinery/defenses/sentry
 	name = "\improper UA 571-C sentry gun"
 	icon = 'icons/obj/structures/machinery/defenses/sentry.dmi'
@@ -30,9 +32,9 @@
 	var/burst = 1
 	handheld_type = /obj/item/defenses/handheld/sentry
 
-	var/enaged_timer = null
-	var/low_ammo_timer = null
-	var/sent_empty_ammo = FALSE
+	var/enaged_timer = null // timer triggered when sentry gun shoots at a target to not spam the laptop
+	var/low_ammo_timer = null // timer triggered when sentry gun is low on ammo to not spam the laptop
+	var/sent_empty_ammo = FALSE // timer triggered when sentry gun is out of ammo to not spam the laptop
 
 	// action list is configurable for all subtypes, this is just an example
 	choice_categories = list(
@@ -59,9 +61,6 @@
 	targets = null
 	other_targets = null
 	target = null
-	if(linked_laptop)
-		linked_laptop.unpair_sentry(src)
-		linked_laptop = null
 	QDEL_NULL(range_bounds)
 	QDEL_NULL(spark_system)
 	QDEL_NULL(ammo)
@@ -137,13 +136,13 @@
 			if(SENTRY_CATEGORY_ROF)
 				handle_rof(selection)
 				return TRUE
-	else
-		if(category == "nickname")
-			nickname = selection
-			return TRUE
 	return FALSE
 
-/obj/structure/machinery/defenses/sentry/proc/handle_rof(var/level)
+/**
+ * Update the rate of fire in the sentry gun.
+ * @param level: level of rate of fire, typically single, burst or full auto.
+ */
+/obj/structure/machinery/defenses/sentry/proc/handle_rof(level)
 	switch(level)
 		if(ROF_SINGLE)
 			burst = 1
@@ -273,7 +272,7 @@
 
 	if(omni_directional)
 		setDir(get_dir(src, A))
-	for(var/i in 0 to burst - 1)
+	for(var/i in 1 to burst)
 		if(actual_fire(A))
 			break
 
@@ -284,7 +283,7 @@
 		SEND_SIGNAL(src, COMSIG_SENTRY_ENGAGED_ALERT, src)
 		enaged_timer = addtimer(CALLBACK(src, PROC_REF(reset_engaged_timer)), SENTRY_ENGAGED_TIMEOUT)
 
-	if(ammo && !low_ammo_timer && ammo.current_rounds != 0 && ammo.current_rounds < (ammo.max_rounds * 0.25))
+	if(!low_ammo_timer && ammo?.current_rounds && (ammo?.current_rounds < (ammo?.max_rounds * SENTRY_LOW_AMMO_ALERT_PERCENTAGE)))
 		SEND_SIGNAL(src, COMSIG_SENTRY_LOW_AMMO_ALERT, src)
 		low_ammo_timer = addtimer(CALLBACK(src, PROC_REF(reset_low_ammo_timer)), SENTRY_LOW_AMMO_TIMEOUT)
 
@@ -466,7 +465,7 @@
 	static = TRUE
 
 /obj/structure/machinery/defenses/sentry/premade/Initialize()
-	..()
+	. = ..()
 	if(selected_categories[SENTRY_CATEGORY_IFF])
 		selected_categories[SENTRY_CATEGORY_IFF] = FACTION_USCM
 
@@ -512,7 +511,7 @@
 	faction_group = list(FACTION_MARINE, FACTION_COLONIST)
 
 /obj/structure/machinery/defenses/sentry/premade/deployable/colony/Initialize()
-	..()
+	. = ..()
 	choice_categories[SENTRY_CATEGORY_IFF] = list(FACTION_COLONY, FACTION_WEYLAND)
 	selected_categories[SENTRY_CATEGORY_IFF] = FACTION_COLONY
 
@@ -521,9 +520,9 @@
 	density = TRUE
 	faction_group = FACTION_LIST_MARINE
 	omni_directional = TRUE
-	var/obj/structure/dropship_equipment/sentry_holder/deployment_system
 	choice_categories = list()
 	selected_categories = list()
+	var/obj/structure/dropship_equipment/sentry_holder/deployment_system
 
 /obj/structure/machinery/defenses/sentry/premade/dropship/Destroy()
 	if(deployment_system)

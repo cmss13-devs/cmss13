@@ -1,36 +1,40 @@
-#define DEFAULT_MAP_SIZE 15
+#define DEFAULT_CAMERA_SIZE 15
 
+/**
+ * Sentry gun computer which links to defensive structures.
+ */
 /obj/item/device/sentry_computer
-	name = "sentry computer"
+	name = "\improper Sentry Gun Network Laptop"
 	desc = "A laptop loaded with sentry control software."
 	icon = 'icons/obj/structures/props/sentrycomp.dmi'
 	icon_state = "sentrycomp_cl"
-	var/setup = FALSE
-	var/open = FALSE
-	var/on = FALSE
-	var/obj/structure/machinery/defenses/sentry/paired_sentry = list()
-	var/obj/structure/machinery/defenses/sentry/current
-	var/cell_type = /obj/item/cell/high
-	var/obj/item/cell/cell
-	var/power_consumption = 1
 	w_class = SIZE_SMALL
-	var/state = 0
-	var/screen_state = 0
+
+	var/setup = FALSE // if the laptop has been placed on a table
+	var/open = FALSE // if the laptop has been opened (the model not tgui)
+	var/on = FALSE // if the laptop is turned on and powered
+	var/list/paired_sentry = list() // list of paired defences
+	var/obj/structure/machinery/defenses/sentry/current // defensive structure which has the camera active
+	var/cell_type = /obj/item/cell/high
+	var/obj/item/cell/cell // battery in the laptop
+	var/power_consumption = 1 // multiplier for how much power to drain per linked device
 	var/list/registered_tools = list()
+	var/silent = FALSE // if the laptop should annouce events on radio, for live server testing
+	var/can_identify_target = FALSE // if the laptop should broadcast what it is shooting at
+
 	var/list/faction_group
-	var/silent = FALSE
-	var/can_identify_target = FALSE
+	var/screen_state = 0 // controls the 'loading' animation
 
 	/// The turf where the camera was last updated.
 	var/turf/last_camera_turf
 
-	var/obj/item/device/radio/marine/transceiver = new /obj/item/device/radio/marine
-	var/mob/living/voice = new /mob/living/silicon
+	var/obj/item/device/radio/marine/transceiver = new /obj/item/device/radio/marine // radio which broadcasts updates
+	var/mob/living/voice = new /mob/living/silicon // the hidden mob which voices updates
 
 	// Stuff needed to render the map
-	var/map_name
-	var/atom/movable/screen/map_view/cam_screen
-	var/atom/movable/screen/background/cam_background
+	var/map_name // asset name for the game map
+	var/atom/movable/screen/map_view/cam_screen // camera screen which renders the world
+	var/atom/movable/screen/background/cam_background // camera screen which shows a blank error
 
 	/// All turfs within range of the currently active camera
 	var/list/range_turfs = list()
@@ -62,31 +66,34 @@
 /obj/item/device/sentry_computer/Destroy()
 	. = ..()
 	QDEL_NULL(cell)
-	qdel(cam_background)
-	qdel(cam_screen)
-	qdel(transceiver)
-	qdel(voice)
+	QDEL_NULL(cam_background)
+	QDEL_NULL(cam_screen)
+	QDEL_NULL(transceiver)
+	QDEL_NULL(voice)
+	last_camera_turf = null
+	current = null
+	registered_tools = null
+	paired_sentry = null
 
 /obj/item/device/sentry_computer/Move(NewLoc, direct)
 	..()
 	if(setup || open || on)
 		teardown()
 
-
-/obj/item/device/sentry_computer/proc/has_los(var/atom/watcher, var/atom/target)
-	var/list/turf/path = getline2(watcher, target, include_from_atom = FALSE)
-	for(var/turf/point in path)
-		if(point.opacity)
-			return FALSE
-	return TRUE
-
-/obj/item/device/sentry_computer/proc/setup(var/obj/structure/surface/target)
+/**
+ * Set the laptop up on a table.
+ * @param target: table which is being used to host the laptop.
+ */
+/obj/item/device/sentry_computer/proc/setup(obj/structure/surface/target)
 	if (do_after(usr, 1 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
 		setup = TRUE
 		usr.drop_inv_item_to_loc(src, target.loc)
 	else
 		to_chat(usr, SPAN_WARNING("You fail to setup the laptop"))
 
+/**
+ * Called to reset the state of the laptop to closed and inactive.
+ */
 /obj/item/device/sentry_computer/proc/teardown()
 	setup = FALSE
 	open = FALSE
@@ -97,54 +104,69 @@
 
 /obj/item/device/sentry_computer/MouseDrop(atom/dropping, mob/user)
 	teardown()
-	usr.put_in_any_hand_if_possible(src, disable_warning = TRUE)
+	user.put_in_any_hand_if_possible(src, disable_warning = TRUE)
 
 /obj/item/device/sentry_computer/emp_act(severity)
 	return TRUE
 
-/obj/item/device/sentry_computer/proc/handle_engaged(var/obj/structure/machinery/defenses/sentry/sentrygun)
+/**
+ * Handler for when a linked sentry gun engages a target.
+ * @param sentrygun: gun which has fired.
+ */
+/obj/item/device/sentry_computer/proc/handle_engaged(obj/structure/machinery/defenses/sentry/sentrygun)
 	var/displayname = sentrygun.name
-	if(length(sentrygun.nickname) > 0)
+	if(length(sentrygun.nickname))
 		displayname = sentrygun.nickname
-	var/areaname = get_area(sentrygun)
-	var/message = "[displayname]:[areaname] Engaged"
+	var/message = "[displayname]:[get_area(sentrygun)] Engaged"
 	if(can_identify_target)
 		message += " [sentrygun.target]"
 	INVOKE_ASYNC(src, PROC_REF(send_message), message)
 
-/obj/item/device/sentry_computer/proc/handle_low_ammo(var/obj/structure/machinery/defenses/sentry/sentrygun)
-	if(sentrygun.ammo)
-		var/displayname = sentrygun.name
-		if(length(sentrygun.nickname) > 0)
-			displayname = sentrygun.nickname
-		var/areaname = get_area(sentrygun)
-		var/message = "[displayname]:[areaname] Low ammo [sentrygun.ammo.current_rounds]/[sentrygun.ammo.max_rounds]."
-		INVOKE_ASYNC(src, PROC_REF(send_message), message)
-
-/obj/item/device/sentry_computer/proc/handle_empty_ammo(var/obj/structure/machinery/defenses/sentry/sentrygun)
+/**
+ * Handler for when a linked sentry has low ammo.
+ * @param sentrygun: gun which is low on ammo.
+ */
+/obj/item/device/sentry_computer/proc/handle_low_ammo(obj/structure/machinery/defenses/sentry/sentrygun)
+	if(!sentrygun.ammo)
+		return
 	var/displayname = sentrygun.name
-	if(length(sentrygun.nickname) > 0)
+	if(length(sentrygun.nickname))
+		displayname = sentrygun.nickname
+	var/areaname = get_area(sentrygun)
+	var/message = "[displayname]:[areaname] Low ammo [sentrygun.ammo.current_rounds]/[sentrygun.ammo.max_rounds]."
+	INVOKE_ASYNC(src, PROC_REF(send_message), message)
+
+/**
+ * Handler for when a linked sentry has no ammo.
+ * @param sentrygun: sentry gun which has ran out of ammo.
+ */
+/obj/item/device/sentry_computer/proc/handle_empty_ammo(obj/structure/machinery/defenses/sentry/sentrygun)
+	var/displayname = sentrygun.name
+	if(length(sentrygun.nickname))
 		displayname = sentrygun.nickname
 	var/areaname = get_area(sentrygun)
 	var/message = "[displayname]:[areaname] out of ammo."
 	INVOKE_ASYNC(src, PROC_REF(send_message), message)
 
-/obj/item/device/sentry_computer/proc/send_message(var/message)
+/**
+ * Broadcast a message to those nearby and on sentry radio.
+ * @param message: message to broadcast.
+ */
+/obj/item/device/sentry_computer/proc/send_message(message)
 	if(!silent && transceiver)
 		transceiver.talk_into(voice, "[message]", RADIO_CHANNEL_SENTRY)
 		voice.say(message)
 
 /obj/item/device/sentry_computer/attack_hand(mob/user)
-	if(setup)
-		if(!on)
-			icon_state = "sentrycomp_on"
-			on = TRUE
-			START_PROCESSING(SSobj, src)
-			playsound(src,  'sound/machines/terminal_on.ogg', 25, FALSE)
-		else
-			tgui_interact(user)
+	if(!setup)
+		return ..()
+	if(!on)
+		icon_state = "sentrycomp_on"
+		on = TRUE
+		START_PROCESSING(SSobj, src)
+		playsound(src, 'sound/machines/terminal_on.ogg', 25, FALSE)
 	else
-		..()
+		tgui_interact(user)
 
 /obj/item/device/sentry_computer/get_examine_text()
 	. = ..()
@@ -159,17 +181,18 @@
 		. += "The laptop must be placed on a table to be used."
 
 /obj/item/device/sentry_computer/process()
-	if(on)
-		if(cell)
-			var/energy_cost = length(paired_sentry) * power_consumption * CELLRATE
-			if(cell.charge >= (energy_cost))
-				cell.use(energy_cost)
-			else
-				icon_state = "sentrycomp_op"
-				on = FALSE
-				playsound(src,  'sound/machines/terminal_off.ogg', 25, FALSE)
+	if(!on || !cell)
+		return
 
-/obj/item/device/sentry_computer/attackby(var/obj/item/object, mob/user)
+	var/energy_cost = length(paired_sentry) * power_consumption * CELLRATE
+	if(cell.charge >= (energy_cost))
+		cell.use(energy_cost)
+	else
+		icon_state = "sentrycomp_op"
+		on = FALSE
+		playsound(src,  'sound/machines/terminal_off.ogg', 25, FALSE)
+
+/obj/item/device/sentry_computer/attackby(obj/item/object, mob/user)
 	if(istype(object, /obj/item/cell))
 		var/obj/item/cell/new_cell = object
 		to_chat(user, SPAN_NOTICE("The new cell contains: [new_cell.charge] power."))
@@ -188,7 +211,7 @@
 				to_chat(user, SPAN_NOTICE("You unload the encryption key from \the [tool]."))
 				registered_tools -= list(id)
 		else
-			if(length(tool.encryption_keys) > 0)
+			if(length(tool.encryption_keys))
 				to_chat(user, SPAN_NOTICE("Removing existing encryption keys."))
 				if (do_after(usr, 1 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
 					for(var/key_id in tool.encryption_keys)
@@ -205,49 +228,76 @@
 	else
 		..()
 
-/obj/item/device/sentry_computer/proc/register(var/tool, mob/user, var/sentry_gun)
+/**
+ * Run checks and register a sentry gun to this sentry computer.
+ * @param tool: tool which was used to link.
+ * @param user: mob which initiated the link.
+ * @param defensive_structure: defensive structure which is to be linked.
+ */
+/obj/item/device/sentry_computer/proc/register(tool, mob/user, defensive_structure)
+	if (!do_after(user, 1 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
+		return
+
+	var/obj/structure/machinery/defenses/defense = defensive_structure
+	pair_sentry(defense)
+	to_chat(user, SPAN_NOTICE("[defense] has been encrypted."))
+	var/message = "[defense] added to [src]"
+	INVOKE_ASYNC(src, PROC_REF(send_message), message)
+
+/**
+ * Run checks and unregister a sentry gun from this sentry computer.
+ * @param tool: tool which was used to unlink.
+ * @param user: mob which initiated the unlink.
+ * @param defensive_structure: defensive structure which is to be unlinked.
+ */
+/obj/item/device/sentry_computer/proc/unregister(tool, mob/user, sentry_gun)
+	var/obj/structure/machinery/defenses/sentry/sentry = sentry_gun
+	if(sentry.linked_laptop != src)
+		to_chat(user, SPAN_WARNING("[sentry] is already encrypted by laptop [sentry.linked_laptop.serial_number]."))
+		return
+
 	if (do_after(user, 1 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
-		var/obj/structure/machinery/defenses/defence = sentry_gun
-		pair_sentry(defence)
-		to_chat(user, SPAN_NOTICE("\The [defence] has been encrypted."))
-		var/message = "[defence] added to [src]"
+		unpair_sentry(sentry)
+		to_chat(user, SPAN_NOTICE("[sentry] has been decrypted."))
+		var/message = "[sentry] removed from from [src]"
 		INVOKE_ASYNC(src, PROC_REF(send_message), message)
 
-/obj/item/device/sentry_computer/proc/unregister(var/tool, mob/user, var/sentry_gun)
-	var/obj/structure/machinery/defenses/sentry/sentry = sentry_gun
-	if(sentry.linked_laptop == src)
-		if (do_after(user, 1 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
-			unpair_sentry(sentry)
-			to_chat(user, SPAN_NOTICE("\The [sentry] has been decrypted."))
-			var/message = "[sentry] removed from from [src]"
-			INVOKE_ASYNC(src, PROC_REF(send_message), message)
-	else
-		to_chat(user, SPAN_WARNING("\The [sentry] is already encrypted by laptop [sentry.linked_laptop.serial_number]."))
-
-/obj/item/device/sentry_computer/proc/sentry_destroyed(var/sentry_gun)
+/**
+ * Handler for when a linked sentry gun is destroyed.
+ * @param sentry_gun: sentry gun which is currently being destroyed.
+ */
+/obj/item/device/sentry_computer/proc/sentry_destroyed(sentry_gun)
 	var/obj/structure/machinery/defenses/sentry/sentry = sentry_gun
 	if(sentry.linked_laptop == src)
 		unpair_sentry(sentry)
 	var/displayname = sentry.name
-	if(length(sentry.nickname) > 0)
+	if(length(sentry.nickname))
 		displayname = sentry.nickname
 	var/areaname = get_area(sentry)
 	var/message = "[displayname]:[areaname] lost contact."
 	INVOKE_ASYNC(src, PROC_REF(send_message), message)
 	playsound(src,  'sound/machines/buzz-two.ogg', 25, FALSE)
 
-/obj/item/device/sentry_computer/proc/pair_sentry(var/obj/structure/machinery/defenses/target)
+/**
+ * Links the target sentry gun to this laptop, linking signals and storing data.
+ * @params target: defensive structure to link.
+ */
+/obj/item/device/sentry_computer/proc/pair_sentry(obj/structure/machinery/defenses/target)
 	target.linked_laptop = src
-	paired_sentry +=list(target)
+	paired_sentry += list(target)
 	update_static_data_for_all_viewers()
 	RegisterSignal(target, COMSIG_SENTRY_ENGAGED_ALERT, PROC_REF(handle_engaged))
 	RegisterSignal(target, COMSIG_SENTRY_LOW_AMMO_ALERT, PROC_REF(handle_low_ammo))
 	RegisterSignal(target, COMSIG_SENTRY_EMPTY_AMMO_ALERT, PROC_REF(handle_empty_ammo))
 	RegisterSignal(target, COMSIG_SENTRY_DESTROYED_ALERT, PROC_REF(sentry_destroyed))
 
-/obj/item/device/sentry_computer/proc/unpair_sentry(var/obj/structure/machinery/defenses/target)
+/**
+ * Unlinks the target sentry gun from this laptop, unlinking signals and removing from internal storage lists.
+ * @params target: defensive structure to unlink
+ */
+/obj/item/device/sentry_computer/proc/unpair_sentry(obj/structure/machinery/defenses/target)
 	target.linked_laptop = null
-	paired_sentry -=list(target)
+	paired_sentry -= list(target)
 	update_static_data_for_all_viewers()
 	UnregisterSignal(target, COMSIG_SENTRY_ENGAGED_ALERT)
 	UnregisterSignal(target, COMSIG_SENTRY_LOW_AMMO_ALERT)
@@ -257,9 +307,6 @@
 	if(current == target)
 		current = null
 		update_active_camera()
-
-/obj/item/device/sentry_computer/proc/attempted_link(mob/linker)
-	playsound(loc, 'sound/machines/twobeep.ogg', 50, 1)
 
 /obj/item/device/sentry_computer/ui_status(mob/user, datum/ui_state/state)
 	. = ..()
@@ -306,25 +353,26 @@
 
 	var/index = 1
 
-	for(var/sentry in paired_sentry)
+	for(var/obj/structure/machinery/defenses/defense as anything in paired_sentry)
 		var/list/sentry_holder = list()
-		var/obj/structure/machinery/defenses/defence = sentry
-		if(current == defence)
+		if(current == defense)
 			.["camera_target"] = index
 		index++
 
-		sentry_holder["area"] = get_area(defence)
-		sentry_holder["active"] = defence.turned_on
-		sentry_holder["nickname"] = defence.nickname
-		sentry_holder["camera_available"] = defence.has_camera && defence.placed
+		sentry_holder["area"] = get_area(defense)
+		sentry_holder["active"] = defense.turned_on
+		sentry_holder["nickname"] = defense.nickname
+		sentry_holder["camera_available"] = defense.has_camera && defense.placed
 		sentry_holder["selection_state"] = list()
-		sentry_holder["kills"] = defence.kills
-		sentry_holder["iff_status"] = defence.faction_group
-		sentry_holder["health"] = defence.health
-		for(var/category in defence.selected_categories)
-			sentry_holder["selection_state"] += list(list("[category]", defence.selected_categories[category]))
-		if(istype(defence, /obj/structure/machinery/defenses/sentry))
-			var/obj/structure/machinery/defenses/sentry/sentrygun = sentry
+		sentry_holder["kills"] = defense.kills
+		sentry_holder["iff_status"] = defense.faction_group
+		sentry_holder["health"] = defense.health
+
+		for(var/category in defense.selected_categories)
+			sentry_holder["selection_state"] += list(list("[category]", defense.selected_categories[category]))
+
+		if(istype(defense, /obj/structure/machinery/defenses/sentry))
+			var/obj/structure/machinery/defenses/sentry/sentrygun = defense
 			sentry_holder["rounds"] = sentrygun.ammo.current_rounds
 			sentry_holder["max_rounds"] = sentrygun.ammo.max_rounds
 			sentry_holder["engaged"] = length(sentrygun.targets)
@@ -363,7 +411,7 @@
 					update_active_camera()
 					return TRUE
 				if("ping")
-					paired_sentry[sentry_index].identify()
+					playsound(paired_sentry[sentry_index], 'sound/machines/twobeep.ogg', 50, 1)
 					return FALSE
 
 	switch(action)
@@ -379,17 +427,21 @@
 			playsound(src, get_sfx("terminal_button"), 25, FALSE)
 			return FALSE
 
-
+/**
+ * Set the displayed camera to the static not-connected.
+ */
 /obj/item/device/sentry_computer/proc/show_camera_static()
 	cam_screen.vis_contents.Cut()
 	last_camera_turf = null
 	cam_background.icon_state = "scanline2"
-	cam_background.fill_rect(1, 1, DEFAULT_MAP_SIZE, DEFAULT_MAP_SIZE)
+	cam_background.fill_rect(1, 1, DEFAULT_CAMERA_SIZE, DEFAULT_CAMERA_SIZE)
 
-
+/**
+ * Update camera settings and redraw camera on the current variable.
+ */
 /obj/item/device/sentry_computer/proc/update_active_camera()
 	// Show static if can't use the camera
-	if(current == null || !(current?.has_camera == TRUE) || !(current?.placed == 1))
+	if(isnull(current) || !current.has_camera || current.placed != 1)
 		show_camera_static()
 		return
 
@@ -403,8 +455,7 @@
 	// If we're not forcing an update for some reason and the cameras are in the same location,
 	// we don't need to update anything.
 	// Most security cameras will end here as they're not moving.
-	var/newturf = get_turf(cam_location)
-	if(last_camera_turf == newturf)
+	if(last_camera_turf == get_turf(cam_location))
 		return
 
 	// Cameras that get here are moving, and are likely attached to some moving atom such as cyborgs.
@@ -433,7 +484,3 @@
 	cam_screen.vis_contents = visible_turfs
 	cam_background.icon_state = "clear"
 	cam_background.fill_rect(1, 1, size_x, size_y)
-
-	// non sentry related stuff
-
-

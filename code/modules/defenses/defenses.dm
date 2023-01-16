@@ -36,6 +36,7 @@
 	// Defence Laptop
 	var/nickname = ""
 	var/encryptable = TRUE
+	// laptop which is currently linked to the sentry
 	var/obj/item/device/sentry_computer/linked_laptop = null
 	var/has_camera = FALSE
 	var/list/choice_categories = list()
@@ -101,23 +102,33 @@
 	power_off_action()
 	update_icon()
 
-/obj/structure/machinery/defenses/proc/identify()
-	playsound(loc, 'sound/machines/twobeep.ogg', 50, 1)
-
-/obj/structure/machinery/defenses/proc/update_choice(mob/user, var/category, var/selection)
-	. = FALSE
+/**
+ * Update state category for this structure.
+ * @param user: user who has initiated this change.
+ * @param category: category of change.
+ * @param selection: configuration value for category.
+ */
+/obj/structure/machinery/defenses/proc/update_choice(mob/user, category, selection)
 	if(category in selected_categories)
 		selected_categories[category] = selection
 		switch(category)
 			if(SENTRY_CATEGORY_IFF)
 				handle_iff(selection)
 				return TRUE
-	else
-		if(category == "nickname")
-			nickname = selection
-			return TRUE
+		return FALSE
 
-/obj/structure/machinery/defenses/proc/handle_iff(var/selection)
+	switch(category)
+		if("nickname")
+			nickname = selection
+			message_staff("[key_name_admin(user)] has labelled structure to [nickname]", user.x, user.y, user.z)
+			return TRUE
+	return FALSE
+
+/**
+ * Update the IFF status of this structure.
+ * @param selection: faction selection string.
+ */
+/obj/structure/machinery/defenses/proc/handle_iff(selection)
 	switch(selection)
 		if(FACTION_USCM)
 			faction_group = FACTION_LIST_MARINE
@@ -214,24 +225,24 @@
 					var/obj/item = ref.resolve()
 					if(istype(item, /obj/item/device/sentry_computer))
 						var/obj/item/device/sentry_computer/computer = item
-						to_chat(usr, SPAN_NOTICE("Attempting link to [item.name] [computer.serial_number]."))
+						to_chat(usr, SPAN_NOTICE("Attempting link to [item] [computer.serial_number]."))
 						playsound(src, 'sound/machines/scanning.ogg', 25, FALSE)
 						computer.register(tool, user, src)
 						key_found = TRUE
 						break
 				if(!key_found)
-					to_chat(user, SPAN_WARNING("No valid encryption key found. Link \the [tool.name] with a sentry computer."))
+					to_chat(user, SPAN_WARNING("No valid encryption key found. Link \the [tool] with a sentry computer."))
 				return
 			if("decrypt")
 				// unregister
 				var/loaded_key = linked_laptop.serial_number
 				if(length(tool.encryption_keys) == 0)
-					to_chat(usr, SPAN_NOTICE("\The [src.name] is encrypted. To use \the [tool.name] it must be paired with the laptop [linked_laptop.serial_number]."))
+					to_chat(usr, SPAN_NOTICE("\The [src] is encrypted. To use \the [tool] it must be paired with the laptop [linked_laptop.serial_number]."))
 				if(tool.encryption_keys[loaded_key])
-					to_chat(usr, SPAN_NOTICE("Attempting decryption of [name]."))
+					to_chat(usr, SPAN_NOTICE("Attempting decryption of [src]."))
 					linked_laptop.unregister(tool, user, src)
 				else
-					to_chat(usr, SPAN_WARNING("\The [src.name] is already encrypted by laptop [linked_laptop.serial_number]. You must load its encryption key to decrypt."))
+					to_chat(usr, SPAN_WARNING("\The [src] is already encrypted by laptop [linked_laptop.serial_number]. You must load its encryption key to decrypt."))
 				return
 		if(health < health_max * 0.25)
 			to_chat(user, SPAN_WARNING("\The [src] is too damaged to pick up!"))
@@ -241,8 +252,8 @@
 			to_chat(user, SPAN_WARNING("\The [src] is bolted to the ground!"))
 			return
 
-		if(linked_laptop != null)
-			to_chat(user, SPAN_WARNING("\The [src] is currently encrypted by [linked_laptop]. To deconstruct \the [src.name] it must first be unlinked."))
+		if(isnull(linked_laptop))
+			to_chat(user, SPAN_WARNING("\The [src] is currently encrypted by [linked_laptop]. To deconstruct \the [src] it must first be unlinked."))
 			return
 
 		user.visible_message(SPAN_NOTICE("[user] begins disassembling \the [src]."), SPAN_NOTICE("You begin disassembling \the [src]."))
@@ -355,7 +366,7 @@
 		if(!can_be_near_defense)
 			for(var/obj/structure/machinery/defenses/def in urange(defense_check_range, loc))
 				if(def != src && def.turned_on && !def.can_be_near_defense)
-					to_chat(user, SPAN_WARNING("This is too close to a [def.name]!"))
+					to_chat(user, SPAN_WARNING("This is too close to a [def]!"))
 					return
 
 		power_on()
@@ -381,7 +392,7 @@
 
 	if(health <= 0 && stat != DEFENSE_DESTROYED)
 		stat |= DEFENSE_DESTROYED
-		SEND_SIGNAL(src, COMSIG_SENTRY_DESTROYED_ALERT, src)
+		SEND_SIGNAL(src, COMSIG_SENTRY_DESTROYED_ALERT)
 		destroyed_action()
 		return
 
@@ -431,7 +442,7 @@
 
 /obj/structure/machinery/defenses/bullet_act(var/obj/item/projectile/P)
 	bullet_ping(P)
-	visible_message(SPAN_WARNING("[src] is hit by the [P.name]!"))
+	visible_message(SPAN_WARNING("[src] is hit by the [P]!"))
 	var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags
 	if(ammo_flags & AMMO_ACIDIC) //Fix for xenomorph spit doing baby damage.
 		update_health(round(P.damage/3))
@@ -448,6 +459,9 @@
 	if(owner_mob)
 		owner_mob = null
 	HD = null // FIXME: Might also need to delete. Unsure.
+	if(linked_laptop)
+		linked_laptop.unpair_sentry(src)
+		linked_laptop = null
 	. = ..()
 
 /obj/structure/machinery/defenses/verb/toggle_turret_locks_verb()

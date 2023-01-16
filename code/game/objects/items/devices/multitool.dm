@@ -23,15 +23,15 @@
 
 	var/list/encryption_keys = list()
 
-/obj/item/device/multitool/proc/load_encryption_key(var/key, var/obj/object)
+/obj/item/device/multitool/proc/load_encryption_key(key, obj/object)
 	encryption_keys[key] = WEAKREF(object)
 
-/obj/item/device/multitool/proc/has_encryption_key(var/key)
+/obj/item/device/multitool/proc/has_encryption_key(key)
 	if(encryption_keys[key])
 		return TRUE
 	return FALSE
 
-/obj/item/device/multitool/proc/remove_encryption_key(var/key)
+/obj/item/device/multitool/proc/remove_encryption_key(key)
 	return encryption_keys.Remove(key)
 
 /obj/item/device/multitool/attack(mob/M as mob, mob/user as mob)

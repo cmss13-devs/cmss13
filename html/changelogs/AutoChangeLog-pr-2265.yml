@@ -1,0 +1,4 @@
+author: "Morrow"
+delete-after: True
+changes:
+  - balance: "Gives queen an ability to sacrifice larva for evolution points"

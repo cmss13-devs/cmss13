@@ -32,14 +32,14 @@
 	if(boiler.is_zoomed)
 		boiler.zoom_out()
 
-	B.viewsize = TRAPPER_VIEWRANGE
-	B.mutation_type = BOILER_TRAPPER
-	B.plasma_types -= PLASMA_NEUROTOXIN
-	B.armor_modifier -= XENO_ARMOR_MOD_VERYLARGE // no armor
-	B.health_modifier -= XENO_HEALTH_MOD_MED
+	boiler.viewsize = TRAPPER_VIEWRANGE
+	boiler.mutation_type = BOILER_TRAPPER
+	boiler.plasma_types -= PLASMA_NEUROTOXIN
+	boiler.armor_modifier -= XENO_ARMOR_MOD_VERYLARGE // no armor
+	boiler.health_modifier -= XENO_HEALTH_MOD_MED
 
-	B.speed_modifier += XENO_SPEED_SLOWMOD_TIER_5 // compensating for base buffs
-	B.recalculate_everything()
+	boiler.speed_modifier += XENO_SPEED_SLOWMOD_TIER_5 // compensating for base buffs
+	boiler.recalculate_everything()
 
 	apply_behavior_holder(boiler)
 

@@ -2750,7 +2750,7 @@
 	icon_state = "neuro_glob"
 	ping = "ping_x"
 	debilitate = list(19,21,0,0,11,12,0,0)
-	flags_ammo_behavior = AMMO_XENO_TOX|AMMO_SKIPS_ALIENS|AMMO_EXPLOSIVE|AMMO_IGNORE_RESIST|AMMO_HITS_TARGET_TURF|AMMO_ACIDIC
+	flags_ammo_behavior = AMMO_SKIPS_ALIENS|AMMO_EXPLOSIVE|AMMO_IGNORE_RESIST|AMMO_HITS_TARGET_TURF|AMMO_ACIDIC
 	var/datum/effect_system/smoke_spread/smoke_system
 	spit_cost = 200
 	pre_spit_warn = TRUE

@@ -49,7 +49,7 @@
 	tileoffset = 4
 	viewsize = 7
 
-	icon_xeno = 'icons/mob/hostiles/boiler.dmi'
+	icon_xeno = 'icons/mob/xenos/boiler.dmi'
 	icon_xenonid = 'icons/mob/xenonids/boiler.dmi'
 
 	var/datum/effect_system/smoke_spread/xeno_acid/smoke

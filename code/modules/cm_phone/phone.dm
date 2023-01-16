@@ -78,21 +78,21 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 /obj/structure/transmitter/proc/get_transmitters()
 	var/list/phone_list = list()
 
-	for(var/t in GLOB.transmitters)
-		var/obj/structure/transmitter/T = t
-		if(TRANSMITTER_UNAVAILABLE(T) || !T.callable) // Phone not available
+	for(var/possible_phone in GLOB.transmitters)
+		var/obj/structure/transmitter/target_phone = possible_phone
+		if(TRANSMITTER_UNAVAILABLE(target_phone) || !target_phone.callable) // Phone not available
 			continue
-		if(!(T.network_receive in networks_transmit))
+		if(!(target_phone.network_receive in networks_transmit))
 			continue
 
-		var/id = T.phone_id
+		var/id = target_phone.phone_id
 		var/num_id = 1
 		while(id in phone_list)
-			id = "[T.phone_id] [num_id]"
+			id = "[target_phone.phone_id] [num_id]"
 			num_id++
 
-		T.phone_id = id
-		phone_list[id] = T
+		target_phone.phone_id = id
+		phone_list[id] = target_phone
 
 	return phone_list
 

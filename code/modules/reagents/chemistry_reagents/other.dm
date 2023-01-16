@@ -698,9 +698,9 @@
 	description = "Known as Ultra Thick Napthal Fuel, a sticky combustible liquid chemical, typically used with flamethrowers."
 	burncolor = "#EE6515"
 	properties = list(
-		PROPERTY_INTENSITY 	= BURN_LEVEL_TIER_5,
-		PROPERTY_DURATION 	= BURN_TIME_TIER_2,
-		PROPERTY_RADIUS 	= 5
+		PROPERTY_INTENSITY = BURN_LEVEL_TIER_5,
+		PROPERTY_DURATION = BURN_TIME_TIER_2,
+		PROPERTY_RADIUS = 5
 	)
 
 // This is gellie fuel. Green Flames.
@@ -713,9 +713,9 @@
 	burncolor = "#00ff00"
 	burn_sprite = "green"
 	properties = list(
-		PROPERTY_INTENSITY 	= BURN_LEVEL_TIER_2,
-		PROPERTY_DURATION 	= BURN_TIME_TIER_5,
-		PROPERTY_RADIUS 	= 7
+		PROPERTY_INTENSITY = BURN_LEVEL_TIER_2,
+		PROPERTY_DURATION = BURN_TIME_TIER_5,
+		PROPERTY_RADIUS = 7
 	)
 	fire_type = FIRE_VARIANT_TYPE_B //Armor Shredding Greenfire
 
@@ -728,9 +728,9 @@
 	burncolor = "#00b8ff"
 	burn_sprite = "blue"
 	properties = list(
-		PROPERTY_INTENSITY 	= BURN_LEVEL_TIER_7,
-		PROPERTY_DURATION 	= BURN_TIME_TIER_4,
-		PROPERTY_RADIUS 	= 6
+		PROPERTY_INTENSITY = BURN_LEVEL_TIER_7,
+		PROPERTY_DURATION = BURN_TIME_TIER_4,
+		PROPERTY_RADIUS = 6
 	)
 
 // This is the green flamer fuel for the pyro.
@@ -743,9 +743,9 @@
 	burncolor = "#00ff00"
 	burn_sprite = "green"
 	properties = list(
-		PROPERTY_INTENSITY 	= BURN_LEVEL_TIER_2,
-		PROPERTY_DURATION 	= BURN_TIME_TIER_5,
-		PROPERTY_RADIUS 	= 6
+		PROPERTY_INTENSITY = BURN_LEVEL_TIER_2,
+		PROPERTY_DURATION = BURN_TIME_TIER_5,
+		PROPERTY_RADIUS = 6
 	)
 	fire_type = FIRE_VARIANT_TYPE_B //Armor Shredding Greenfire
 
@@ -757,10 +757,10 @@
 	burncolor = "#800080"
 	burn_sprite = "dynamic"
 	properties = list(
-		PROPERTY_INTENSITY 			= BURN_LEVEL_TIER_2,
-		PROPERTY_DURATION 			= BURN_TIME_TIER_5,
-		PROPERTY_RADIUS 			= 6,
-		PROPERTY_FIRE_PENETRATING	= 1
+		PROPERTY_INTENSITY = BURN_LEVEL_TIER_2,
+		PROPERTY_DURATION = BURN_TIME_TIER_5,
+		PROPERTY_RADIUS = 6,
+		PROPERTY_FIRE_PENETRATING = 1
 	)
 
 /datum/reagent/chlorinetrifluoride
@@ -937,7 +937,10 @@
 		//it turns into an actual embryo at this point
 		volume = 0
 		var/obj/item/alien_embryo/embryo = new /obj/item/alien_embryo(H)
-		embryo.hivenumber = XENO_HIVE_NORMAL
+		if(data_properties && data_properties["hive_number"])
+			embryo.hivenumber = data_properties["hive_number"]
+		else
+			embryo.hivenumber = XENO_HIVE_NORMAL
 		to_chat(H, SPAN_WARNING("Your stomach cramps and you suddenly feel very sick!"))
 
 /datum/reagent/plasma/neurotoxin

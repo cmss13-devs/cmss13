@@ -26,6 +26,7 @@
 
 	clear_fullscreens()
 	QDEL_NULL(mob_panel)
+	QDEL_NULL(mob_language_menu)
 	QDEL_NULL_LIST(open_uis)
 
 	tgui_open_uis = null
@@ -79,6 +80,12 @@
 
 	mob_panel = new(src)
 
+/mob/proc/create_language_menu()
+	QDEL_NULL(mob_language_menu)
+
+	mob_language_menu = new(src)
+
+
 /mob/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
 	if (PF)
@@ -100,7 +107,7 @@
 
 /mob/proc/show_message(msg, type, alt, alt_type, message_flags = CHAT_TYPE_OTHER)//Message, type of message (1 or 2), alternative message, alt message type (1 or 2)
 
-	if(!client || !client.prefs)	return
+	if(!client || !client.prefs) return
 
 	if (type)
 		if(type & SHOW_MESSAGE_VISIBLE && (sdisabilities & DISABILITY_BLIND || blinded) )//Vision related
@@ -180,6 +187,15 @@
 	for(var/mob/M as anything in viewers(view_dist, src))
 		M.show_message(message, SHOW_MESSAGE_VISIBLE, blind_message, SHOW_MESSAGE_AUDIBLE, message_flags)
 
+// Show a message to all mobs in earshot of this atom
+// Use for objects performing only audible actions
+// message is output to anyone who can see, e.g. "The [src] does something!"
+/atom/proc/audible_message(message, max_distance, message_flags = CHAT_TYPE_OTHER)
+	var/hear_dist = 7
+	if(max_distance) hear_dist = max_distance
+	for(var/mob/M as anything in hearers(hear_dist, src.loc))
+		M.show_message(message, 2, message_flags = message_flags)
+
 /atom/proc/ranged_message(message, blind_message, max_distance, message_flags = CHAT_TYPE_OTHER)
 	var/view_dist = 7
 	if(max_distance) view_dist = max_distance
@@ -250,7 +266,7 @@
 	var/start_loc = W.loc
 
 	if(W.time_to_equip && !ignore_delay)
-		INVOKE_ASYNC(src, .proc/equip_to_slot_timed, W, slot, redraw_mob, permanent, start_loc, del_on_fail, disable_warning)
+		INVOKE_ASYNC(src, PROC_REF(equip_to_slot_timed), W, slot, redraw_mob, permanent, start_loc, del_on_fail, disable_warning)
 		return TRUE
 
 	equip_to_slot(W, slot, disable_warning) //This proc should not ever fail.
@@ -441,7 +457,7 @@
 	if(istype(AM, /atom/movable/clone))
 		AM = AM.mstr //If AM is a clone, refer to the real target
 
-	if ( QDELETED(AM) || !usr || src==AM || !isturf(loc) || !isturf(AM.loc) )	//if there's no person pulling OR the person is pulling themself OR the object being pulled is inside something: abort!
+	if ( QDELETED(AM) || !usr || src==AM || !isturf(loc) || !isturf(AM.loc) ) //if there's no person pulling OR the person is pulling themself OR the object being pulled is inside something: abort!
 		return
 
 	if (AM.anchored || AM.throwing)
@@ -556,10 +572,10 @@ below 100 is not dizzy
 	if(!istype(src, /mob/living/carbon/human)) // for the moment, only humans get dizzy
 		return
 
-	dizziness = min(1000, dizziness + amount)	// store what will be new value
+	dizziness = min(1000, dizziness + amount) // store what will be new value
 													// clamped to max 1000
 	if(dizziness > 100 && !is_dizzy)
-		INVOKE_ASYNC(src, .proc/dizzy_process)
+		INVOKE_ASYNC(src, PROC_REF(dizzy_process))
 
 
 /*
@@ -593,10 +609,10 @@ note dizziness decrements automatically in the mob's Life() proc.
 
 /mob/living/carbon/human/make_jittery(var/amount)
 	if(stat == DEAD) return //dead humans can't jitter
-	jitteriness = min(1000, jitteriness + amount)	// store what will be new value
+	jitteriness = min(1000, jitteriness + amount) // store what will be new value
 													// clamped to max 1000
 	if(jitteriness > 100 && !is_jittery)
-		INVOKE_ASYNC(src, .proc/jittery_process)
+		INVOKE_ASYNC(src, PROC_REF(jittery_process))
 
 
 // Typo from the oriignal coder here, below lies the jitteriness process. So make of his code what you will, the previous comment here was just a copypaste of the above.
@@ -605,9 +621,9 @@ note dizziness decrements automatically in the mob's Life() proc.
 	//var/old_y = pixel_y
 	is_jittery = 1
 	while(jitteriness > 100)
-//		var/amplitude = jitteriness*(sin(jitteriness * 0.044 * world.time) + 1) / 70
-//		pixel_x = amplitude * sin(0.008 * jitteriness * world.time)
-//		pixel_y = amplitude * cos(0.008 * jitteriness * world.time)
+// var/amplitude = jitteriness*(sin(jitteriness * 0.044 * world.time) + 1) / 70
+// pixel_x = amplitude * sin(0.008 * jitteriness * world.time)
+// pixel_y = amplitude * cos(0.008 * jitteriness * world.time)
 
 		var/amplitude = min(4, jitteriness / 100)
 		pixel_x = old_x + rand(-amplitude, amplitude)
@@ -642,9 +658,9 @@ note dizziness decrements automatically in the mob's Life() proc.
 	var/half_period = period / 2
 	var/quarter_period = period / 4
 
-	animate(src, pixel_y = top, time = quarter_period, easing = SINE_EASING|EASE_OUT, loop = -1)		//up
-	animate(pixel_y = bottom, time = half_period, easing = SINE_EASING, loop = -1)						//down
-	animate(pixel_y = old_y, time = quarter_period, easing = SINE_EASING|EASE_IN, loop = -1)			//back
+	animate(src, pixel_y = top, time = quarter_period, easing = SINE_EASING|EASE_OUT, loop = -1) //up
+	animate(pixel_y = bottom, time = half_period, easing = SINE_EASING, loop = -1) //down
+	animate(pixel_y = old_y, time = quarter_period, easing = SINE_EASING|EASE_IN, loop = -1) //back
 
 /mob/proc/stop_floating()
 	animate(src, pixel_y = old_y, time = 5, easing = SINE_EASING|EASE_IN) //halt animation
@@ -653,12 +669,12 @@ note dizziness decrements automatically in the mob's Life() proc.
 
 // facing verbs
 /mob/proc/canface()
-	if(!canmove)						return 0
-	if(client.moving)					return 0
-	if(stat==2)						return 0
-	if(anchored)						return 0
-	if(monkeyizing)						return 0
-	if(is_mob_restrained())					return 0
+	if(!canmove) return 0
+	if(client.moving) return 0
+	if(stat==2) return 0
+	if(anchored) return 0
+	if(monkeyizing) return 0
+	if(is_mob_restrained()) return 0
 	return 1
 
 //Updates canmove, lying and icons. Could perhaps do with a rename but I can't think of anything to describe it.
@@ -709,8 +725,8 @@ note dizziness decrements automatically in the mob's Life() proc.
 
 	return canmove
 
-/mob/proc/facedir(var/ndir, var/specific_dir)
-	if(!canface())	return 0
+/mob/proc/face_dir(var/ndir, var/specific_dir)
+	if(!canface()) return 0
 	if(dir != ndir)
 		flags_atom &= ~DIRLOCK
 		setDir(ndir)
@@ -727,12 +743,12 @@ note dizziness decrements automatically in the mob's Life() proc.
 
 /mob/proc/set_face_dir(var/newdir)
 	if(SEND_SIGNAL(src, COMSIG_MOB_SET_FACE_DIR, newdir) & COMPONENT_CANCEL_SET_FACE_DIR)
-		facedir(newdir)
+		face_dir(newdir)
 		return
 
 	if(newdir == dir && flags_atom & DIRLOCK)
 		flags_atom &= ~DIRLOCK
-	else if (facedir(newdir))
+	else if (face_dir(newdir))
 		flags_atom |= DIRLOCK
 
 
@@ -891,13 +907,13 @@ note dizziness decrements automatically in the mob's Life() proc.
 
 /mob/living/proc/handle_knocked_down(var/bypass_client_check = FALSE)
 	if(knocked_down && (bypass_client_check || client))
-		knocked_down = max(knocked_down-1,0)	//before you get mad Rockdtben: I done this so update_canmove isn't called multiple times
+		knocked_down = max(knocked_down-1,0) //before you get mad Rockdtben: I done this so update_canmove isn't called multiple times
 		knocked_down_callback_check()
 	return knocked_down
 
 /mob/living/proc/handle_knocked_out(var/bypass_client_check = FALSE)
 	if(knocked_out && (bypass_client_check || client))
-		knocked_out = max(knocked_out-1,0)	//before you get mad Rockdtben: I done this so update_canmove isn't called multiple times
+		knocked_out = max(knocked_out-1,0) //before you get mad Rockdtben: I done this so update_canmove isn't called multiple times
 		knocked_out_callback_check()
 	return knocked_out
 
@@ -1059,6 +1075,19 @@ note dizziness decrements automatically in the mob's Life() proc.
 	. += "<option value='?_src_=vars;remverb=\ref[src]'>Remove Verb</option>"
 
 	. += "<option value='?_src_=vars;gib=\ref[src]'>Gib</option>"
+
+/mob/vv_edit_var(var_name, var_value)
+	switch(var_name)
+		if(NAMEOF(src, stat))
+			if((var_value < CONSCIOUS) || (var_value > DEAD))
+				return FALSE
+			if((stat == DEAD) && ((var_value == CONSCIOUS) || (var_value == UNCONSCIOUS)))
+				GLOB.dead_mob_list -= src
+				GLOB.alive_mob_list += src
+			if(((stat == CONSCIOUS) || (stat == UNCONSCIOUS)) && (var_value == DEAD))
+				GLOB.alive_mob_list -= src
+				GLOB.dead_mob_list += src
+	return ..()
 
 /mob/Topic(href, href_list)
 	. = ..()

@@ -157,7 +157,7 @@
 
 	M.key = key
 	if(M.client) M.client.change_view(world_view_size)
-//	M.Login()	//wat
+// M.Login() //wat
 	return
 
 /*/mob/dead/observer/verb/observe()
@@ -184,19 +184,19 @@
 
 /mob/verb/eastface()
 	set hidden = 1
-	return facedir(EAST)
+	return face_dir(EAST)
 
 /mob/verb/westface()
 	set hidden = 1
-	return facedir(WEST)
+	return face_dir(WEST)
 
 /mob/verb/northface()
 	set hidden = 1
-	return facedir(NORTH)
+	return face_dir(NORTH)
 
 /mob/verb/southface()
 	set hidden = 1
-	return facedir(SOUTH)
+	return face_dir(SOUTH)
 
 
 /mob/verb/northfaceperm()

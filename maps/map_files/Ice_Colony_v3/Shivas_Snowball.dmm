@@ -1633,7 +1633,7 @@
 	},
 /area/shiva/interior/colony/medseceng)
 "agM" = (
-/obj/item/ammo_box/magazine/smg/nailgun,
+/obj/item/ammo_box/magazine/nailgun,
 /turf/open/auto_turf/snow/layer1,
 /area/shiva/exterior/cp_colony_grounds)
 "agR" = (
@@ -13670,8 +13670,8 @@
 	},
 /area/shiva/interior/colony/botany)
 "iji" = (
-/obj/effect/landmark/corpsespawner/pmc,
 /obj/effect/decal/cleanable/blood/gibs/core,
+/obj/effect/landmark/corpsespawner/wygoon,
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/colony/central)
 "ijq" = (

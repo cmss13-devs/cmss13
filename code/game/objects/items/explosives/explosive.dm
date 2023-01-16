@@ -19,9 +19,9 @@
 	var/max_container_volume = 120
 	var/current_container_volume = 0
 	var/assembly_stage = ASSEMBLY_EMPTY //The assembly_stage of the assembly
-	var/list/reaction_limits = list("max_ex_power" = 175,	"base_ex_falloff" = 75,	"max_ex_shards" = 32,
-									"max_fire_rad" = 5,		"max_fire_int" = 20,	"max_fire_dur" = 24,
-									"min_fire_rad" = 1,		"min_fire_int" = 3,		"min_fire_dur" = 3
+	var/list/reaction_limits = list("max_ex_power" = 175, "base_ex_falloff" = 75, "max_ex_shards" = 32,
+									"max_fire_rad" = 5, "max_fire_int" = 20, "max_fire_dur" = 24,
+									"min_fire_rad" = 1, "min_fire_int" = 3, "min_fire_dur" = 3
 	)
 	var/falloff_mode = EXPLOSION_FALLOFF_SHAPE_LINEAR
 	var/use_dir = FALSE
@@ -48,7 +48,9 @@
 	. = ..()
 
 /obj/item/explosive/clicked(mob/user, list/mods)
-	if(Adjacent(user) && mods["alt"])
+	if(mods["alt"])
+		if(!CAN_PICKUP(user, src))
+			return ..()
 		if(!has_blast_wave_dampener)
 			to_chat(user, SPAN_WARNING("\The [src] doesn't have blast wave dampening."))
 			return
@@ -243,7 +245,7 @@
 
 /obj/item/explosive/proc/toggle_blast_dampener_verb()
 	set category = "Weapons"
-	set	name = "Toggle Blast Wave Dampener"
+	set name = "Toggle Blast Wave Dampener"
 	set desc = "Enable/Disable the Explosive Blast Wave Dampener"
 	set src in usr
 

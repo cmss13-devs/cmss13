@@ -174,7 +174,7 @@
 				LAZYADD(faction_group, i)
 		power_off()
 		HD.forceMove(T)
-		HD.set_name_label(name_label)
+		transfer_label_component(HD)
 		HD.dropped = 1
 		HD.update_icon()
 		placed = 0
@@ -299,7 +299,7 @@
 		damaged_action(damage)
 
 	if(stat == DEFENSE_DAMAGED)
-		density = 0
+		density = FALSE
 	else
 		density = initial(density)
 

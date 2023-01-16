@@ -17,7 +17,7 @@
 /obj/structure/pipes/trinary/filter
 	icon = 'icons/obj/pipes/filter.dmi'
 	icon_state = "map"
-	density = 0
+	density = FALSE
 	level = 1
 	name = "Gas filter"
 
@@ -74,7 +74,7 @@
 /obj/structure/pipes/trinary/mixer
 	icon = 'icons/obj/pipes/mixer.dmi'
 	icon_state = "map"
-	density = 0
+	density = FALSE
 	level = 1
 	name = "Gas mixer"
 

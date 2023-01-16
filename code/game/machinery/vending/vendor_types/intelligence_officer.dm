@@ -122,6 +122,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_intelligence_officer, list(
 	icon_state = "guns"
 	req_access = list(ACCESS_MARINE_BRIDGE)
 	vendor_role = list(JOB_INTEL)
+	vend_flags = VEND_CLUTTER_PROTECTION | VEND_LIMITED_INVENTORY | VEND_TO_HAND
 
 /obj/structure/machinery/cm_vending/sorted/cargo_guns/intelligence_officer/get_listed_products(mob/user)
 	return GLOB.cm_vending_guns_intelligence_officer

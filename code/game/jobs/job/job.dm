@@ -1,22 +1,22 @@
 /datum/job
 	//The name of the job
-	var/title = ""				 //The internal title for the job, used for the job ban system and so forth. Don't change these, change the disp_title instead.
-	var/disp_title				 //Determined on new(). Usually the same as the title, but doesn't have to be. Set this to override what the player sees in the game as their title.
-	var/role_ban_alternative	// If the roleban title needs to be an extra check, like Xenomorphs = Alien.
+	var/title = ""  //The internal title for the job, used for the job ban system and so forth. Don't change these, change the disp_title instead.
+	var/disp_title  //Determined on new(). Usually the same as the title, but doesn't have to be. Set this to override what the player sees in the game as their title.
+	var/role_ban_alternative // If the roleban title needs to be an extra check, like Xenomorphs = Alien.
 
-	var/total_positions 	= 0 //How many players can be this job
-	var/spawn_positions 	= 0 //How many players can spawn in as this job
+	var/total_positions = 0 //How many players can be this job
+	var/spawn_positions = 0 //How many players can spawn in as this job
 	var/total_positions_so_far = 0 //How many slots were open in this round. Used to prevent slots locking with decreasing amount of alive players
-	var/allow_additional	= 0 //Can admins modify positions to it
+	var/allow_additional = 0 //Can admins modify positions to it
 	var/scaled = 0
-	var/current_positions 	= 0 //How many players have this job
-	var/supervisors 		= "" //Supervisors, who this person answers to directly. Should be a string, shown to the player when they enter the game.
-	var/selection_class 	= "" // Job Selection span class (for background color)
+	var/current_positions = 0 //How many players have this job
+	var/supervisors = "" //Supervisors, who this person answers to directly. Should be a string, shown to the player when they enter the game.
+	var/selection_class = "" // Job Selection span class (for background color)
 
-	var/late_joinable 		= TRUE
+	var/late_joinable = TRUE
 
 	var/flags_startup_parameters = NO_FLAGS //These flags are used to determine how to load the role, and some other parameters.
-	var/flags_whitelist = NO_FLAGS 			//Only used by whitelisted roles. Can be a single whitelist flag, or a combination of them.
+	var/flags_whitelist = NO_FLAGS //Only used by whitelisted roles. Can be a single whitelist flag, or a combination of them.
 
 	//If you have use_timelocks config option enabled, this option will add a requirement for players to have the prerequisite roles have at least x minimum playtime before unlocking.
 	var/list/minimum_playtimes
@@ -157,7 +157,7 @@
 		var/user_has_preexisting_account = account_user.mind?.initial_account
 		if(card && !user_has_preexisting_account)
 			var/datum/paygrade/account_paygrade = GLOB.paygrades[card.paygrade]
-			generated_account = create_account(account_user.real_name, rand(30, 50), null, account_paygrade)
+			generated_account = create_account(account_user.real_name, rand(30, 50), account_paygrade)
 			card.associated_account_number = generated_account.account_number
 			if(account_user.mind)
 				var/remembered_info = ""
@@ -234,9 +234,9 @@
 
 	// Update the character icons
 	// This is done in set_species when the mob is created as well, but
-	INVOKE_ASYNC(new_character, /mob/living/carbon/human.proc/regenerate_icons)
-	INVOKE_ASYNC(new_character, /mob/living/carbon/human.proc/update_body, 1, 0)
-	INVOKE_ASYNC(new_character, /mob/living/carbon/human.proc/update_hair)
+	INVOKE_ASYNC(new_character, TYPE_PROC_REF(/mob/living/carbon/human, regenerate_icons))
+	INVOKE_ASYNC(new_character, TYPE_PROC_REF(/mob/living/carbon/human, update_body), 1, 0)
+	INVOKE_ASYNC(new_character, TYPE_PROC_REF(/mob/living/carbon/human, update_hair))
 
 	return new_character
 
@@ -269,7 +269,7 @@
 		if(flags_startup_parameters & ROLE_ADD_TO_SQUAD) //Are we a muhreen? Randomize our squad. This should go AFTER IDs. //TODO Robust this later.
 			RoleAuthority.randomize_squad(human)
 
-		if(Check_WO() && job_squad_roles.Find(GET_DEFAULT_ROLE(human.job)))	//activates self setting proc for marine headsets for WO
+		if(Check_WO() && job_squad_roles.Find(GET_DEFAULT_ROLE(human.job))) //activates self setting proc for marine headsets for WO
 			var/datum/game_mode/whiskey_outpost/WO = SSticker.mode
 			WO.self_set_headset(human)
 

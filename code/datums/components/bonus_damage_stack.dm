@@ -1,8 +1,8 @@
 
 #define COLOR_BONUS_DAMAGE "#c3ce2f"
- /// Max alpha for the filter outline.
+/// Max alpha for the filter outline.
 #define BONUS_DAMAGE_MAX_ALPHA 200
- /// Loss of stack every second once it's been more than 5 seconds since last_stack.
+/// Loss of stack every second once it's been more than 5 seconds since last_stack.
 #define BONUS_DAMAGE_STACK_LOSS_PER_SECOND 5
 
 
@@ -51,8 +51,8 @@
 
 /datum/component/bonus_damage_stack/RegisterWithParent()
 	START_PROCESSING(SSdcs, src)
-	RegisterSignal(parent, COMSIG_XENO_APPEND_TO_STAT, .proc/stat_append)
-	RegisterSignal(parent, COMSIG_BONUS_DAMAGE, .proc/get_bonus_damage)
+	RegisterSignal(parent, COMSIG_XENO_APPEND_TO_STAT, PROC_REF(stat_append))
+	RegisterSignal(parent, COMSIG_BONUS_DAMAGE, PROC_REF(get_bonus_damage))
 
 /datum/component/bonus_damage_stack/UnregisterFromParent()
 	STOP_PROCESSING(SSdcs, src)

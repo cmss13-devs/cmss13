@@ -1,4 +1,0 @@
-author: "stanalbatross"
-delete-after: True
-changes:
-  - rscadd: "charger crushers, upon charging welding fuel tanks, will now cause them to explode"

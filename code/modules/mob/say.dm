@@ -43,7 +43,7 @@
 
 	if(!client?.attempt_talking(message))
 		return
-	set_typing_indicator(0)
+
 	usr.say(message)
 
 /mob/verb/me_verb(message as text)
@@ -54,7 +54,6 @@
 	if(!client?.attempt_talking(message))
 		return
 
-	set_typing_indicator(0)
 	if(use_me)
 		usr.emote("me",usr.emote_type,message, TRUE)
 	else
@@ -99,13 +98,13 @@
 			to_chat(M, "<span class='game deadsay'><span class='prefix'>DEAD:</span> <span class='name'>[name] (<a href='byond://?src=\ref[M];track=\ref[src]'>F</a>)</span> says, <span class='message'>\"[message]\"</span></span>")
 
 		else if(M.client && M.client.admin_holder && (M.client.admin_holder.rights & R_MOD) && M.client.prefs && (M.client.prefs.toggles_chat & CHAT_DEAD) ) // Show the message to admins/mods with deadchat toggled on
-			to_chat(M, "<span class='game deadsay'><span class='prefix'>DEAD:</span> <span class='name'>[name]</span> says, <span class='message'>\"[message]\"</span></span>")	//Admins can hear deadchat, if they choose to, no matter if they're blind/deaf or not.
+			to_chat(M, "<span class='game deadsay'><span class='prefix'>DEAD:</span> <span class='name'>[name]</span> says, <span class='message'>\"[message]\"</span></span>") //Admins can hear deadchat, if they choose to, no matter if they're blind/deaf or not.
 
 	if(length(langchat_listeners))
 		langchat_speech(message, langchat_listeners, GLOB.all_languages, skip_language_check = TRUE)
 
 /mob/proc/say_understands(var/mob/other,var/datum/language/speaking = null)
-	if (src.stat == 2)		//Dead
+	if (src.stat == 2) //Dead
 		return 1
 
 	//Universal speak makes everything understandable, for obvious reasons.
@@ -132,12 +131,12 @@
 	return 0
 
 /*
-   ***Deprecated***
-   let this be handled at the hear_say or hear_radio proc
-   This is left in for robot speaking when humans gain binary channel access until I get around to rewriting
-   robot_talk() proc.
-   There is no language handling build into it however there is at the /mob level so we accept the call
-   for it but just ignore it.
+***Deprecated***
+let this be handled at the hear_say or hear_radio proc
+This is left in for robot speaking when humans gain binary channel access until I get around to rewriting
+robot_talk() proc.
+There is no language handling build into it however there is at the /mob level so we accept the call
+for it but just ignore it.
 */
 
 /mob/proc/say_quote(var/message, var/datum/language/speaking = null)
@@ -194,3 +193,55 @@
 			return L
 
 	return null
+
+/mob/var/hud_typing = 0 //set when typing in an input window instead of chatline
+
+/mob/verb/say_wrapper()
+	set name = ".Say"
+	set hidden = TRUE
+
+	if(client.typing_indicators)
+		create_typing_indicator(TRUE)
+		hud_typing = -1
+	var/message = input("","say (text)") as text
+	if(client.typing_indicators)
+		hud_typing = NONE
+		remove_typing_indicator()
+	if(message)
+		say_verb(message)
+
+/mob/verb/me_wrapper()
+	set name = ".Me"
+	set hidden = TRUE
+
+	if(client.typing_indicators)
+		create_typing_indicator(TRUE)
+		hud_typing = -1
+	var/message = input("","me (text)") as text
+	if(client.typing_indicators)
+		hud_typing = NONE
+		remove_typing_indicator()
+	if(message)
+		me_verb(message)
+
+/// Sets typing indicator for a couple seconds, for use with client-side comm verbs
+/mob/verb/timed_typing()
+	set name = ".typing"
+	set hidden = TRUE
+	set instant = TRUE
+
+	if(client.typing_indicators)
+		// Don't override wrapper's indicators
+		if(hud_typing == -1)
+			return
+		create_typing_indicator(TRUE)
+		hud_typing = addtimer(CALLBACK(src, PROC_REF(timed_typing_clear)), 5 SECONDS, TIMER_OVERRIDE|TIMER_UNIQUE|TIMER_STOPPABLE)
+
+/// Clears timed typing indicators
+/mob/proc/timed_typing_clear()
+	if(client.typing_indicators)
+		// Check it's one of ours
+		if(hud_typing == -1)
+			return
+		hud_typing = NONE
+		remove_typing_indicator()

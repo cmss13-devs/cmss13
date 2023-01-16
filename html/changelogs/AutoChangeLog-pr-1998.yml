@@ -1,4 +1,0 @@
-author: "stanalbatross"
-delete-after: True
-changes:
-  - code_imp: "converted 1500 instances of 4 spaces being used instead of tabs to tabs"

@@ -73,7 +73,7 @@
 	var/strid = "[id]"
 	if(managed[strid])
 		return managed[strid]
-	var/datum/entity/ET = new entity_type()	
+	var/datum/entity/ET = new entity_type() 
 	ET.metadata = src
 	if(id)
 		ET.id = text2num(id)
@@ -91,7 +91,7 @@
 	var/strval = "[key_value]"
 	if(key_managed[strval])
 		return key_managed[strval]
-	var/datum/entity/ET = new entity_type()	
+	var/datum/entity/ET = new entity_type() 
 	ET.metadata = src
 	ET.vars[key_field] = key_value
 	key_managed[strval] = ET

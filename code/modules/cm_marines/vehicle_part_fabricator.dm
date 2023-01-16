@@ -2,7 +2,7 @@
 /obj/structure/machinery/part_fabricator
 	name = "part fabricator"
 	desc = "A large automated 3D printer for producing runtime errors."
-	density = 1
+	density = TRUE
 	anchored = 1
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 20
@@ -60,7 +60,7 @@
 	spend_point_store(cost)
 	icon_state = "drone_fab_active"
 	busy = TRUE
-	addtimer(CALLBACK(src, .proc/do_build_part, part_type), 10 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(do_build_part), part_type), 10 SECONDS)
 
 /obj/structure/machinery/part_fabricator/proc/do_build_part(part_type)
 	busy = FALSE

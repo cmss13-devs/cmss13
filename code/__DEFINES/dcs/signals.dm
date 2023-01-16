@@ -67,6 +67,12 @@
 #define COMSIG_TOPIC "handle_topic"
 /// from datum ui_act (usr, action)
 #define COMSIG_UI_ACT "COMSIG_UI_ACT"
+///from base of atom/attackby(): (/obj/item, /mob/living, params)
+#define COMSIG_PARENT_ATTACKBY "atom_attackby"
+///Return this in response if you don't want afterattack to be called
+	#define COMPONENT_NO_AFTERATTACK (1<<0)
+///from base of atom/examine(): (/mob, list/examine_text)
+#define COMSIG_PARENT_EXAMINE "atom_examine"
 
 /// fires on the target datum when an element is attached to it (/datum/element)
 #define COMSIG_ELEMENT_ATTACH "element_attach"
@@ -131,13 +137,15 @@
 #define COMSIG_MOB_RESISTED "mob_resist"
 /// From /mob/living/verb/resist()
 #define COMSIG_MOB_RECALCULATE_CLIENT_COLOR "mob_recalc_client_color"
+///from /mob/living/carbon/human/proc/force_say(): ()
+#define COMSIG_HUMAN_FORCESAY "human_forcesay"
 
 /// From /obj/item/proc/unequipped()
 #define COMSIG_MOB_ITEM_UNEQUIPPED "mob_item_unequipped"
 
 /// For when a mob is devoured by a Xeno
 #define COMSIG_MOB_DEVOURED "mob_devoured"
-	#define COMPONENT_CANCEL_DEVOUR	(1<<0)
+	#define COMPONENT_CANCEL_DEVOUR (1<<0)
 // Reserved for tech trees
 #define COMSIG_MOB_ENTER_TREE "mob_enter_tree"
 	#define COMPONENT_CANCEL_TREE_ENTRY (1<<0)
@@ -162,7 +170,7 @@
 #define COMSIG_CLIENT_RESET_VIEW "client_reset_view"
 ///called in /client/change_view()
 #define COMSIG_MOB_CHANGE_VIEW "mob_change_view"
-	#define COMPONENT_OVERRIDE_VIEW	(1<<0)
+	#define COMPONENT_OVERRIDE_VIEW (1<<0)
 
 #define COMSIG_MOB_POST_CLICK "mob_post_click"
 
@@ -204,9 +212,9 @@
 #define COMSIG_LIVING_FLAMER_CROSSED "living_flamer_crossed"
 /// From /obj/flamer_fire/Initialize
 #define COMSIG_LIVING_FLAMER_FLAMED "living_flamer_flamed"
-	#define COMPONENT_NO_BURN		(1<<0)
-	#define COMPONENT_NO_IGNITE		(1<<1)
-	#define COMPONENT_XENO_FRENZY	(1<<2)
+	#define COMPONENT_NO_BURN (1<<0)
+	#define COMPONENT_NO_IGNITE (1<<1)
+	#define COMPONENT_XENO_FRENZY (1<<2)
 /// From /obj/item/proc/unzoom
 #define COMSIG_LIVING_ZOOM_OUT "living_zoom_out"
 
@@ -248,7 +256,7 @@
 #define COMSIG_XENO_ALIEN_ATTACK "xeno_alien_attack"
 
 #define COMSIG_XENO_OVERWATCH_XENO "xeno_overwatch_xeno"
-#define COMSIG_XENO_STOP_OVERWATCH	"xeno_stop_overwatch"
+#define COMSIG_XENO_STOP_OVERWATCH "xeno_stop_overwatch"
 #define COMSIG_XENO_STOP_OVERWATCH_XENO "xeno_stop_overwatch_xeno"
 
 #define COMSIG_XENO_PRE_HEAL "xeno_pre_heal"
@@ -338,8 +346,8 @@
 ///from /turf/closed/wall/proc/place_poster
 #define COMSIG_POSTER_PLACED "poster_placed"
 
-#define COMSIG_CLIENT_MOB_MOVE	"client_mob_move"
-	#define COMPONENT_OVERRIDE_MOVE	(1<<0)
+#define COMSIG_CLIENT_MOB_MOVE "client_mob_move"
+	#define COMPONENT_OVERRIDE_MOVE (1<<0)
 
 #define COMSIG_MOB_MOVE_OR_LOOK "mob_move_or_look"
 	#define COMPONENT_OVERRIDE_MOB_MOVE_OR_LOOK (1<<0)
@@ -365,7 +373,7 @@
 #define COMSIG_MOB_POST_UPDATE_CANMOVE "mob_can_move"
 
 #define COMSIG_GRENADE_PRE_PRIME "grenade_pre_prime"
-	#define COMPONENT_GRENADE_PRIME_CANCEL	(1<<0)
+	#define COMPONENT_GRENADE_PRIME_CANCEL (1<<0)
 
 #define COMSIG_OBJ_FLASHBANGED "flashbanged"
 
@@ -461,6 +469,8 @@
 #define COMSIG_SHUTTLE_SETMODE "shuttle_setmode"
 /// shuttle crushing something
 #define COMSIG_MOVABLE_SHUTTLE_CRUSH "movable_shuttle_crush"
+/// shuttle door registration
+#define COMSIG_REGISTER_DOOR_TO_SHUTTLE "register_door_to_shuttle"
 
 ///from base of /atom/movable/proc/set_glide_size(): (target)
 #define COMSIG_MOVABLE_UPDATE_GLIDE_SIZE "movable_glide_size"

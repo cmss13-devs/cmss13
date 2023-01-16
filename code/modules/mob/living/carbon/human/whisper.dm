@@ -18,7 +18,7 @@
 	if (src.stat)
 		return
 
-	message =  trim(strip_html(message))	//made consistent with say
+	message =  trim(strip_html(message)) //made consistent with say
 
 	if(name != GetVoice())
 		alt_name = "(as [get_id_name("Unknown")])"
@@ -64,7 +64,7 @@
 	listening |= src
 
 	//ghosts
-	for (var/mob/M in GLOB.dead_mob_list)	//does this include players who joined as observers as well?
+	for (var/mob/M in GLOB.dead_mob_list) //does this include players who joined as observers as well?
 		if (!(M.client))
 			continue
 		if((M.stat == DEAD || isobserver(M)) && M.client && (M.client.prefs.toggles_chat & CHAT_GHOSTEARS))
@@ -80,7 +80,7 @@
 	for (var/obj/O in view(message_range, src))
 		spawn (0)
 			if (O)
-				O.hear_talk(src, message)	//O.hear_talk(src, message, verb, speaking)
+				O.hear_talk(src, message) //O.hear_talk(src, message, verb, speaking)
 
 	var/list/eavesdropping = hearers(eavesdropping_range, src)
 	eavesdropping -= src
@@ -103,7 +103,7 @@
 		M.hear_say(message, verb, speaking, alt_name, italics, src)
 
 	if (eavesdropping.len)
-		var/new_message = stars(message)	//hopefully passing the message twice through stars() won't hurt... I guess if you already don't understand the language, when they speak it too quietly to hear normally you would be able to catch even less.
+		var/new_message = stars(message) //hopefully passing the message twice through stars() won't hurt... I guess if you already don't understand the language, when they speak it too quietly to hear normally you would be able to catch even less.
 		for(var/mob/M in eavesdropping)
 			if(not_dead_speaker)
 				M << speech_bubble

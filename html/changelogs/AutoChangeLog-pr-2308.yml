@@ -1,0 +1,6 @@
+author: "Mister-moon1"
+delete-after: True
+changes:
+  - code_imp: "changed the way WY ranks are issued"
+  - admin: "removed the div code from \"select_equipment\""
+  - bugfix: "fixed CL job codes"

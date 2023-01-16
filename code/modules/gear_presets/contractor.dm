@@ -8,7 +8,7 @@
 
 /datum/equipment_preset/contractor/New()
 	. = ..()
-	access = get_all_accesses()
+	access = get_all_accesses() + get_all_centcom_access()
 
 /datum/equipment_preset/contractor/load_name(mob/living/carbon/human/H, var/randomise)
 	H.gender = pick(80;MALE,20;FEMALE)
@@ -53,7 +53,7 @@
 	faction_group = FACTION_LIST_ERT
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_SPANISH, LANGUAGE_RUSSIAN)
 	var/human_versus_human = FALSE
-	var/headset_type = /obj/item/device/radio/headset/distress/PMC
+	var/headset_type = /obj/item/device/radio/headset/distress/contractor
 
 /datum/equipment_preset/contractor/New()
 	. = ..()
@@ -110,21 +110,15 @@
 	paygrade = "VAI"
 	role_comm_title = "Merc"
 	flags = EQUIPMENT_PRESET_EXTRA
-
-	idtype = /obj/item/card/id/data
 	assignment = "VAIPO Mercenary"
 	rank = JOB_CONTRACTOR_ST
 	skills = /datum/skills/contractor
 	faction = FACTION_CONTRACTOR
 
-/datum/equipment_preset/contractor/New()
-	. = ..()
-	access = get_antagonist_pmc_access()
-
-/datum/equipment_preset/contractor/duty/load_gear(mob/living/carbon/human/H)
+/datum/equipment_preset/contractor/duty/standard/load_gear(mob/living/carbon/human/H)
 
 	var/choice = rand(1,10)
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/contractor, WEAR_L_EAR)
+	H.equip_to_slot_or_del(new headset_type, WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/tshirt/gray_blu, WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/accessory/holobadge/cord, WEAR_ACCESSORY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/light/vest, WEAR_JACKET)
@@ -204,18 +198,13 @@
 	role_comm_title = "MG"
 	flags = EQUIPMENT_PRESET_EXTRA
 
-	idtype = /obj/item/card/id/data
 	assignment = "VAIPO Automatic Rifleman"
 	rank = JOB_CONTRACTOR_MG
 	skills = /datum/skills/contractor/heavy
 	faction = FACTION_CONTRACTOR
 
-/datum/equipment_preset/contractor/duty/heavy/New()
-	. = ..()
-	access = get_antagonist_pmc_access()
-
 /datum/equipment_preset/contractor/duty/heavy/load_gear(mob/living/carbon/human/H)
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/contractor, WEAR_L_EAR)
+	H.equip_to_slot_or_del(new headset_type, WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/tshirt/gray_blu, WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/webbing, WEAR_ACCESSORY)
 	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/mar40/lmg, WEAR_IN_ACCESSORY)
@@ -255,21 +244,16 @@
 	role_comm_title = "Eng"
 	flags = EQUIPMENT_PRESET_EXTRA
 
-	idtype = /obj/item/card/id/data
 	assignment = "VAIPO Engineering Specialist"
 	rank = JOB_CONTRACTOR_ENGI
 	skills = /datum/skills/contractor/engi
 	faction = FACTION_CONTRACTOR
 
-/datum/equipment_preset/contractor/duty/engi/New()
-	. = ..()
-	access = get_antagonist_pmc_access()
-
 /datum/equipment_preset/contractor/duty/engi/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/tshirt/w_br, WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/black_vest/tool_webbing, WEAR_ACCESSORY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/accessory/holobadge/cord, WEAR_ACCESSORY)
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/contractor, WEAR_L_EAR)
+	H.equip_to_slot_or_del(new headset_type, WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/light/vest, WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/device/binoculars/range/designator, WEAR_IN_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/mar40/carbine/tactical, WEAR_J_STORE)
@@ -306,20 +290,15 @@
 	role_comm_title = "Med"
 	flags = EQUIPMENT_PRESET_EXTRA
 
-	idtype = /obj/item/card/id/data
 	assignment = "VAIMS Medical Specialist"
 	rank = JOB_CONTRACTOR_MEDIC
 	skills = /datum/skills/contractor/medic
 	faction = FACTION_CONTRACTOR
 
-/datum/equipment_preset/contractor/duty/medic/New()
-	. = ..()
-	access = get_antagonist_pmc_access()
-
 /datum/equipment_preset/contractor/duty/medic/load_gear(mob/living/carbon/human/H)
 	//clothing
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/tshirt/w_br, WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/contractor, WEAR_L_EAR)
+	H.equip_to_slot_or_del(new headset_type, WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/light/vest, WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/surg_vest/equipped, WEAR_ACCESSORY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/accessory/holobadge/cord, WEAR_ACCESSORY)
@@ -357,19 +336,14 @@
 	role_comm_title = "TL"
 	flags = EQUIPMENT_PRESET_EXTRA
 
-	idtype = /obj/item/card/id/data
 	assignment = "VAIPO Team Leader"
 	rank = JOB_CONTRACTOR_TL
 	skills = /datum/skills/contractor/leader
 	faction = FACTION_CONTRACTOR
 
-/datum/equipment_preset/contractor/duty/leader/New()
-	. = ..()
-	access = get_antagonist_pmc_access()
-
 /datum/equipment_preset/contractor/duty/leader/load_gear(mob/living/carbon/human/H)
 	//clothes
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/contractor, WEAR_L_EAR)
+	H.equip_to_slot_or_del(new headset_type, WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/tshirt/r_bla, WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/black_vest, WEAR_ACCESSORY)
 	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE, WEAR_IN_ACCESSORY)
@@ -412,11 +386,10 @@
 	role_comm_title = "Syn"
 	flags = EQUIPMENT_PRESET_EXTRA
 
-	idtype = /obj/item/card/id/data
 	assignment = "VAIPO Support Synthetic"
 	rank = JOB_CONTRACTOR_SYN
 	faction = FACTION_CONTRACTOR
-	languages = list(LANGUAGE_ENGLISH, LANGUAGE_RUSSIAN, LANGUAGE_JAPANESE, LANGUAGE_YAUTJA, LANGUAGE_XENOMORPH, LANGUAGE_GERMAN, LANGUAGE_SPANISH, LANGUAGE_CHINESE)
+	languages = ALL_SYNTH_LANGUAGES
 
 /datum/equipment_preset/contractor/duty/synth/load_skills(mob/living/carbon/human/H)
 		H.set_skills(/datum/skills/synthetic)
@@ -451,7 +424,6 @@
 	H.r_eyes = colors[eye_color][1]
 	H.g_eyes = colors[eye_color][2]
 	H.b_eyes = colors[eye_color][3]
-	idtype = /obj/item/card/id/data
 
 /datum/equipment_preset/contractor/duty/synth/load_race(mob/living/carbon/human/H)
 	H.set_species(SYNTH_GEN_THREE)
@@ -466,7 +438,7 @@
 	H.equip_to_slot_or_del(new /obj/item/roller/surgical, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/storage/box/packet/smoke, WEAR_IN_BACK)
 	//face
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/contractor, WEAR_L_EAR)
+	H.equip_to_slot_or_del(new headset_type, WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/night/experimental_mesons, WEAR_EYES)
 	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/big, WEAR_FACE)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine, WEAR_HEAD)
@@ -484,7 +456,7 @@
 	//limbs
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/veteran/PMC/knife, WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran, WEAR_HANDS)
-	H.equip_to_slot_or_del(new /obj/item/weapon/melee/twohanded/breacher, WEAR_L_HAND)
+	H.equip_to_slot_or_del(new /obj/item/weapon/melee/twohanded/breacher/synth, WEAR_L_HAND)
 	//póckets
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/construction/full_barbed_wire, WEAR_L_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/tactical, WEAR_R_STORE)
@@ -505,20 +477,15 @@
 	role_comm_title = "Merc"
 	flags = EQUIPMENT_PRESET_EXTRA
 
-	idtype = /obj/item/card/id/data
 	assignment = "VAISO Mercenary"
 	rank = JOB_CONTRACTOR_COVST
 	skills = /datum/skills/contractor
 	faction = FACTION_CONTRACTOR
 
-/datum/equipment_preset/contractor/covert/standard/New()
-	. = ..()
-	access = get_antagonist_pmc_access()
-
 /datum/equipment_preset/contractor/covert/load_gear(mob/living/carbon/human/H)
 
 	var/choice = rand(1,10)
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/contractor, WEAR_L_EAR)
+	H.equip_to_slot_or_del(new headset_type, WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/colonist/ua_civvies, WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/accessory/holobadge/cord, WEAR_ACCESSORY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/light/vest, WEAR_JACKET)
@@ -599,7 +566,6 @@
 	role_comm_title = "MG"
 	flags = EQUIPMENT_PRESET_EXTRA
 
-	idtype = /obj/item/card/id/data
 	assignment = "VAISO Automatic Rifleman"
 	rank = JOB_CONTRACTOR_COVMG
 	skills = /datum/skills/contractor/heavy
@@ -611,7 +577,7 @@
 	access = get_antagonist_pmc_access()
 
 /datum/equipment_preset/contractor/covert/heavy/load_gear(mob/living/carbon/human/H)
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/contractor, WEAR_L_EAR)
+	H.equip_to_slot_or_del(new headset_type, WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/colonist/ua_civvies, WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/webbing, WEAR_ACCESSORY)
 	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/mar40/lmg, WEAR_IN_ACCESSORY)
@@ -653,7 +619,6 @@
 	role_comm_title = "Eng"
 	flags = EQUIPMENT_PRESET_EXTRA
 
-	idtype = /obj/item/card/id/data
 	assignment = "VAISO Engineering Specialist"
 	rank = JOB_CONTRACTOR_COVENG
 	skills = /datum/skills/contractor/engi
@@ -668,7 +633,7 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/colonist/wy_davisone, WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/black_vest/tool_webbing, WEAR_ACCESSORY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/accessory/holobadge/cord, WEAR_ACCESSORY)
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/contractor, WEAR_L_EAR)
+	H.equip_to_slot_or_del(new headset_type, WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/light/vest, WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/device/binoculars/range/designator, WEAR_IN_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/mar40/carbine/tactical, WEAR_J_STORE)
@@ -706,7 +671,6 @@
 	role_comm_title = "Med"
 	flags = EQUIPMENT_PRESET_EXTRA
 
-	idtype = /obj/item/card/id/data
 	assignment = "VAIMS Medical Specialist"
 	rank = JOB_CONTRACTOR_COVMED
 	skills = /datum/skills/contractor/medic
@@ -720,7 +684,7 @@
 /datum/equipment_preset/contractor/covert/medic/load_gear(mob/living/carbon/human/H)
 	//clothing
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/colonist/wy_davisone, WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/contractor, WEAR_L_EAR)
+	H.equip_to_slot_or_del(new headset_type, WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/light/vest, WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/surg_vest/equipped, WEAR_ACCESSORY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/accessory/holobadge/cord, WEAR_ACCESSORY)
@@ -759,19 +723,14 @@
 	role_comm_title = "TL"
 	flags = EQUIPMENT_PRESET_EXTRA
 
-	idtype = /obj/item/card/id/data
 	assignment = "VAISO Team Leader"
 	rank = JOB_CONTRACTOR_COVTL
 	skills = /datum/skills/contractor/leader
 	faction = FACTION_CONTRACTOR
 
-/datum/equipment_preset/contractor/covert/leader/New()
-	. = ..()
-	access = get_antagonist_pmc_access()
-
 /datum/equipment_preset/contractor/covert/leader/load_gear(mob/living/carbon/human/H)
 	//clothes
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/contractor, WEAR_L_EAR)
+	H.equip_to_slot_or_del(new headset_type, WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/colonist/ua_civvies, WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/black_vest, WEAR_ACCESSORY)
 	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE, WEAR_IN_ACCESSORY)
@@ -815,12 +774,11 @@
 	role_comm_title = "Syn"
 	flags = EQUIPMENT_PRESET_EXTRA
 
-	idtype = /obj/item/card/id/data
 	assignment = "VAISO Support Synthetic"
 	rank = JOB_CONTRACTOR_COVSYN
 	skills = /datum/skills/synthetic
 	faction = FACTION_CONTRACTOR
-	languages = list(LANGUAGE_ENGLISH, LANGUAGE_RUSSIAN, LANGUAGE_JAPANESE, LANGUAGE_YAUTJA, LANGUAGE_XENOMORPH, LANGUAGE_GERMAN, LANGUAGE_SPANISH, LANGUAGE_CHINESE)
+	languages = ALL_SYNTH_LANGUAGES
 
 /datum/equipment_preset/contractor/covert/synth/load_skills(mob/living/carbon/human/H)
 		H.set_skills(/datum/skills/synthetic)
@@ -870,7 +828,7 @@
 	H.equip_to_slot_or_del(new /obj/item/roller/surgical, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/storage/box/packet/smoke, WEAR_IN_BACK)
 	//face
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/contractor, WEAR_L_EAR)
+	H.equip_to_slot_or_del(new headset_type, WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/night/experimental_mesons, WEAR_EYES)
 	H.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/PMC, WEAR_FACE)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/covert, WEAR_HEAD)
@@ -889,7 +847,7 @@
 	//limbs
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/veteran/PMC/knife, WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran, WEAR_HANDS)
-	H.equip_to_slot_or_del(new /obj/item/weapon/melee/twohanded/breacher, WEAR_L_HAND)
+	H.equip_to_slot_or_del(new /obj/item/weapon/melee/twohanded/breacher/synth, WEAR_L_HAND)
 	//póckets
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/construction/full_barbed_wire, WEAR_L_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/tactical, WEAR_R_STORE)

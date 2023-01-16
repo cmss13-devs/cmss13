@@ -1790,9 +1790,7 @@
 	color = "#b29082"
 	},
 /turf/open/floor/sandstone/runed,
-/area/lv624/ground/caves/sand_temple{
-	color = "#b29082"
-	})
+/area/lv624/ground/caves/sand_temple)
 "UU" = (
 /obj/structure/xenoautopsy/tank/broken,
 /turf/open/shuttle{

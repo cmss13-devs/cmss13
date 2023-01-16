@@ -134,7 +134,7 @@
 			if(H.wear_id && istype(H.wear_id.GetID(), /obj/item/card/id/syndicate))
 				continue
 
-		 // Now, are they viewable by a camera? (This is last because it's the most intensive check)
+		// Now, are they viewable by a camera? (This is last because it's the most intensive check)
 		if(!near_camera(M))
 			continue
 
@@ -177,13 +177,13 @@
 	cameraFollow = null
 
 /mob/living/silicon/ai/proc/ai_actual_track(mob/living/target as mob)
-	if(!istype(target))	return
+	if(!istype(target)) return
 	var/mob/living/silicon/ai/U = usr
 
 	U.cameraFollow = target
 	//U << text("Now tracking [] on camera.", target.name)
 	//if (U.interactee == null)
-	//	U.set_interaction(U)
+	// U.set_interaction(U)
 	to_chat(U, "Now tracking [target.name] on camera.")
 
 	spawn (0)

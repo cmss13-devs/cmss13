@@ -34,9 +34,9 @@
 /obj/structure/inflatable
 	name = "inflatable wall"
 	desc = "An inflated membrane. Do not puncture."
-	density = 1
+	density = TRUE
 	anchored = 1
-	opacity = 0
+	opacity = FALSE
 
 	icon = 'icons/obj/items/inflatable.dmi'
 	icon_state = "wall"
@@ -67,13 +67,13 @@
 	return
 
 
-/obj/structure/inflatable/proc/attack_generic(mob/living/user, damage = 0)	//used by attack_animal
+/obj/structure/inflatable/proc/attack_generic(mob/living/user, damage = 0) //used by attack_animal
 	health -= damage
 	user.animation_attack_on(src)
 	if(health <= 0)
 		user.visible_message(SPAN_DANGER("[user] tears open [src]!"))
 		deflate(1)
-	else	//for nicer text~
+	else //for nicer text~
 		user.visible_message(SPAN_DANGER("[user] tears at [src]!"))
 
 /obj/structure/inflatable/attack_animal(mob/user as mob)
@@ -148,7 +148,7 @@
 /obj/structure/inflatable/popped
 	name = "popped inflatable wall"
 	desc = "It used to be an inflatable wall, now it's just a mess of plastic."
-	density = 0
+	density = FALSE
 	anchored = 1
 	deflated = TRUE
 
@@ -166,9 +166,9 @@
 
 /obj/structure/inflatable/door //Based on mineral door code
 	name = "inflatable door"
-	density = 1
+	density = TRUE
 	anchored = 1
-	opacity = 0
+	opacity = FALSE
 
 	icon = 'icons/obj/items/inflatable.dmi'
 	icon_state = "door_closed"
@@ -211,8 +211,8 @@
 	//playsound(loc, 'sound/effects/stonedoor_openclose.ogg', 25, 1)
 	flick("door_opening",src)
 	sleep(10)
-	density = 0
-	opacity = 0
+	density = FALSE
+	opacity = FALSE
 	state = 1
 	update_icon()
 	isSwitchingStates = 0
@@ -222,8 +222,8 @@
 	//playsound(loc, 'sound/effects/stonedoor_openclose.ogg', 25, 1)
 	flick("door_closing",src)
 	sleep(10)
-	density = 1
-	opacity = 0
+	density = TRUE
+	opacity = FALSE
 	state = 0
 	update_icon()
 	isSwitchingStates = 0

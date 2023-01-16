@@ -151,8 +151,8 @@
 	new /obj/item/clothing/head/helmet/marine/specialist(src)
 	new /obj/item/clothing/suit/storage/marine/specialist(src)
 
- //-----------------SPEC KIT BOX------------------
- //For events/WO, allows the user to choose a specalist kit out of available ones in spec_kit_boxes_left list in gloabl_lists.dm
+//-----------------SPEC KIT BOX------------------
+//For events/WO, allows the user to choose a specalist kit out of available ones in spec_kit_boxes_left list in gloabl_lists.dm
 
 /obj/item/spec_kit
 	name = "specialist kit"

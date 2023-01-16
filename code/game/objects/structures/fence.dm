@@ -3,7 +3,7 @@
 	desc = "A large metal mesh strewn between two poles. Intended as a cheap way to separate areas, while allowing one to see through it."
 	icon = 'icons/obj/structures/props/fence.dmi'
 	icon_state = "fence0"
-	density = 1
+	density = TRUE
 	anchored = 1
 	layer = WINDOW_LAYER
 	flags_atom = FPRINT
@@ -104,7 +104,7 @@
 				R.use(amount_needed)
 				health = health_max
 				cut = 0
-				density = 1
+				density = TRUE
 				update_icon()
 				playsound(loc, 'sound/items/Wirecutter.ogg', 25, 1)
 				user.visible_message(SPAN_NOTICE("[user] repairs [src] with [R]."),
@@ -183,7 +183,7 @@
 /obj/structure/fence/proc/cut_grille()
 	health = 0
 	cut = 1
-	density = 0
+	density = FALSE
 	update_icon() //Make it appear cut through!
 
 /obj/structure/fence/Initialize(mapload, start_dir = null, constructed = 0)
@@ -196,7 +196,7 @@
 	update_nearby_icons()
 
 /obj/structure/fence/Destroy()
-	density = 0
+	density = FALSE
 	update_nearby_icons()
 	. = ..()
 

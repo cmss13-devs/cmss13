@@ -111,6 +111,10 @@
 	if(percentage_acid)
 		holder.overlays += image('icons/mob/hud/hud.dmi', "xenoenergy[percentage_acid]")
 
+/datum/behavior_delegate/runner_acider/handle_death(mob/M)
+	var/image/holder = bound_xeno.hud_list[PLASMA_HUD]
+	holder.overlays.Cut()
+
 /datum/behavior_delegate/runner_acider/proc/do_caboom()
 	if(!bound_xeno)
 		return
@@ -145,7 +149,7 @@
 		target_living.apply_damage(damage, BURN)
 	playsound(bound_xeno, 'sound/effects/blobattack.ogg', 75)
 	if(bound_xeno.client && bound_xeno.hive)
-		addtimer(CALLBACK(bound_xeno.hive, /datum/hive_status.proc/free_respawn, bound_xeno.client), 5 SECONDS)
+		addtimer(CALLBACK(bound_xeno.hive, TYPE_PROC_REF(/datum/hive_status, free_respawn), bound_xeno.client), 5 SECONDS)
 	bound_xeno.gib()
 
 /mob/living/carbon/Xenomorph/Runner/ventcrawl_carry()

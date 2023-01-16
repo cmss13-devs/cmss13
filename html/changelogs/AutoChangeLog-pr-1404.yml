@@ -1,0 +1,8 @@
+author: "Tisx"
+delete-after: True
+changes:
+  - balance: "Changed HIRR slug characteristics"
+  - balance: "HIRR slugs are now able to send mobs flying up to 3 tiles on impact."
+  - balance: "HIRR slugs will now BOUNCE off of mobs impacted and will still be consider ACTIVE until it stops moving"
+  - balance: "Decreased debuff modifiers for large mobs (T3/T4 Xenos) to account for changes above"
+  - balance: "Slightly increased base debuffs to account for HIRR impact flight time (time right after impact) (up for debate)"

@@ -50,7 +50,7 @@
 	idtype = /obj/item/card/id/deputy
 	faction = FACTION_CMB
 	faction_group = list(FACTION_LIST_MARINE_CMB)
-	languages = list(LANGUAGE_ENGLISH, LANGUAGE_SPANISH, LANGUAGE_RUSSIAN)
+	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
 	var/human_versus_human = FALSE
 	var/headset_type = /obj/item/device/radio/headset/distress/CMB
 
@@ -198,6 +198,8 @@
 	assignment = "CMB Marshal"
 	rank = JOB_CMB_TL
 	skills = /datum/skills/CMB/leader
+	minimum_age = 30
+	languages = ALL_HUMAN_LANGUAGES
 	faction = FACTION_CMB
 	faction_group = list(FACTION_LIST_MARINE_CMB)
 
@@ -359,6 +361,7 @@
 	assignment = "Interstellar Commerce Commission Corporate Liaison"
 	rank = JOB_CMB_ICC
 	skills = /datum/skills/civilian/survivor
+	languages = list(LANGUAGE_ENGLISH, LANGUAGE_SPANISH, LANGUAGE_JAPANESE)
 	faction = FACTION_CMB
 	faction_group = list(FACTION_LIST_MARINE_CMB)
 
@@ -411,6 +414,7 @@
 	assignment = "Interstellar Human Rights Observer"
 	rank = JOB_CMB_OBS
 	skills = /datum/skills/civilian/survivor/doctor
+	languages = list(LANGUAGE_ENGLISH, LANGUAGE_SPANISH, LANGUAGE_RUSSIAN)
 	faction = FACTION_CMB
 	faction_group = list(FACTION_LIST_MARINE_CMB)
 

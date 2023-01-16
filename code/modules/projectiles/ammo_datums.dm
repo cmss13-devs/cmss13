@@ -1808,7 +1808,7 @@
 	damage_armor_punch = 3
 
 /datum/ammo/bullet/smartgun/m56_fpw
-	name = "m56 FPW bullet"
+	name = "M56 FPW bullet"
 	icon_state = "redbullet"
 	flags_ammo_behavior = AMMO_BALLISTIC
 

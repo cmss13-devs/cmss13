@@ -27,7 +27,7 @@
 
 /obj/item/spacecash/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/spacecash))
-		var/obj/item/spacecash/attack_cash
+		var/obj/item/spacecash/attack_cash = W
 		if(istype(attack_cash, /obj/item/spacecash/ewallet))
 			return FALSE
 		if(attack_cash.counterfeit != src.counterfeit)

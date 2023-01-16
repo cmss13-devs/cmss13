@@ -46,7 +46,7 @@ const PlaytimeTable = (props: { data: PlaytimeRecord[] }, context) => {
   return (
     <Table>
       {props.data
-        .slice(1)
+        .slice(props.data.length > 1 ? 1 : 0)
         .filter((x) => x.playtime !== 0)
         .map((x) => (
           <TableRow key={x.job} className="PlaytimeRow">

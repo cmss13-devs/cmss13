@@ -2731,6 +2731,34 @@
 	shell_speed = AMMO_SPEED_TIER_2
 	added_spit_delay = 0
 
+
+/datum/ammo/xeno/acid/marking
+	name = "marking spit"
+
+	damage= 15
+	shell_speed = AMMO_SPEED_TIER_2
+	accuracy = HIT_ACCURACY_TIER_10*8
+	flags_ammo_behavior = AMMO_SKIPS_ALIENS
+	max_range = 32
+
+/datum/ammo/xeno/acid/marking/on_hit_mob(mob/M, obj/item/projectile/P)
+	. = ..()
+	M.AddComponent(/datum/component/bonus_damage_stack, 100, world.time)
+	for(var/mob/living/carbon/Xenomorph/X in range(5, M))
+
+		var/overshield_amount = 100
+		var/shield_duration = 30 SECONDS
+		var/shield_decay = 10
+
+		if (!istype(X) || !X.check_state())
+			return
+
+		if(X.stat == DEAD)
+			continue
+
+		to_chat(X, SPAN_XENOBOLDNOTICE("You feel energized as the acid hits the target!"))
+		X.add_xeno_shield(overshield_amount*1, XENO_SHIELD_SOURCE_MARKER, duration = shield_duration, decay_amount_per_second = shield_decay)
+
 /datum/ammo/xeno/acid/dot
 	name = "acid spit"
 

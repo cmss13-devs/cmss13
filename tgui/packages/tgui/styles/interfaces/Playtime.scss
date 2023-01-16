@@ -9,9 +9,8 @@
     border: 1px solid white;
     border-radius: 4px;
   }
-
-  tr {
-    border-bottom: 1px solid white;
+  .Table__cell {
+    border-bottom: 1px solid white !important;
   }
   tr:nth-child(even) {
     background-color: rgba(base.$color-bg, 0.5);

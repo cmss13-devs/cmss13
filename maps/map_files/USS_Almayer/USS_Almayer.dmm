@@ -54512,7 +54512,6 @@
 	},
 /area/almayer/hull/lower_hull/l_f_s)
 "kYo" = (
-/obj/effect/landmark/start/tank_crew,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/tankerbunks)
 "kYK" = (

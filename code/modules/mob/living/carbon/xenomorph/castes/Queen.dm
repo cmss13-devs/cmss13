@@ -801,6 +801,7 @@
 		/datum/action/xeno_action/onclick/screech, //custom macro, Screech
 		// These are new and their arrangement matters:
 		/datum/action/xeno_action/onclick/remove_eggsac,
+		/datum/action/xeno_action/onclick/give_evo_points,
 		/datum/action/xeno_action/onclick/set_xeno_lead,
 		/datum/action/xeno_action/activable/queen_heal, //first macro
 		/datum/action/xeno_action/activable/queen_give_plasma, //second macro

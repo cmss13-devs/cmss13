@@ -1,5 +1,0 @@
-author: "stanalbatross"
-delete-after: True
-changes:
-  - code_imp: "ported the sound loops subsystem from tg"
-  - soundadd: "the tape recorder will now hiss during playback"

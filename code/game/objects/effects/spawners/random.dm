@@ -31,6 +31,8 @@
 // creates the random item
 /obj/effect/spawner/random/proc/spawn_item()
 	var/build_path = item_to_spawn()
+	if(isnull(build_path))
+		return
 	return (new build_path(src.loc))
 
 
@@ -142,7 +144,7 @@
 	desc = "This is a random kit."
 	icon_state = "random_kit"
 
-/obj/effect/spawner/random/toy/item_to_spawn()
+/obj/effect/spawner/random/supply_kit/item_to_spawn()
 	return pick(prob(3);/obj/item/storage/box/kit/pursuit,\
 				prob(3);/obj/item/storage/box/kit/mini_intel,\
 				prob(3);/obj/item/storage/box/kit/mini_jtac,\

@@ -157,6 +157,9 @@
 	for(var/obj/structure/structure in loc)
 		structure.update_health(-land_damage)
 
+	for(var/obj/structure/machinery/defenses/sentry/launchable in loc)
+		qdel(launchable)
+
 	for(var/mob/mob in view(7, loc))
 		shake_camera(mob, 4, 5)
 

@@ -400,6 +400,12 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 						"icon" = "window-close",
 						"colour" = "red"
 						))
+				if(has_pain && CHECK_BITFIELD(human_target_mob.disabilities, OPIATE_RECEPTOR_DEFICIENCY))
+					advice += list(list(
+						"advice" = "Patient is resistant to painkillers and may require other means of sedation.",
+						"icon" = "window-close",
+						"colour" = "red"
+				))
 		if(advice.len)
 			data["advice"] = advice
 		else

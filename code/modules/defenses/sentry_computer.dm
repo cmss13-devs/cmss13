@@ -400,18 +400,19 @@
 		// the action represents a sentry
 		var/sentry_index = params["index"]
 		if(paired_sentry[sentry_index])
-			var/result = paired_sentry[sentry_index].update_choice(usr, action, params["selection"])
+			var/obj/structure/machinery/defenses/sentry = paired_sentry[sentry_index]
+			var/result = sentry.update_choice(usr, action, params["selection"])
 			if(result)
 				playsound(src, get_sfx("terminal_button"), 25, FALSE)
 				return TRUE
 			switch(action)
 				if("set-camera")
-					current = paired_sentry[sentry_index]
+					current = sentry
 					playsound(src, get_sfx("terminal_button"), 25, FALSE)
 					update_active_camera()
 					return TRUE
 				if("ping")
-					playsound(paired_sentry[sentry_index], 'sound/machines/twobeep.ogg', 50, 1)
+					playsound(sentry, 'sound/machines/twobeep.ogg', 50, 1)
 					return FALSE
 
 	switch(action)

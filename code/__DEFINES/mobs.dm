@@ -333,6 +333,7 @@
 
 // Spitter strain flags
 #define SPITTER_NORMAL "Normal"
+#define SPITTER_MARKER "Marker"
 
 // Boiler strain flags
 #define BOILER_NORMAL "Normal"

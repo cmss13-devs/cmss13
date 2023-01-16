@@ -60,3 +60,11 @@
 	if(iscarbon(target))
 		var/mob/living/carbon/carbon_target = target
 		carbon_target.reagents.add_reagent("molecularacid", 2)
+
+// Marker abilities
+
+/datum/action/xeno_action/activable/xeno_spit/marker
+	name = "Marking spit"
+	action_icon_state = "Marking_spit"
+	ability_name = "Marking spit"
+	macro_path = /datum/action/xeno_action/verb/verb_xeno_spit

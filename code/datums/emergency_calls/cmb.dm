@@ -17,7 +17,7 @@
 /datum/emergency_call/CMB/New()
 	..()
 	arrival_message = "Incoming Transmission: [MAIN_SHIP_NAME], This is Anchorpoint Station with the Colonial Marshal Bureau. We are receiving your distress signal and are dispatching a nearby team to board with you now. Standby."
-	objectives = "Investigate the distress signal aboard the [MAIN_SHIP_NAME], and assist the crew with rescue if possible. If necessary, a contingent of Colonial Marines may be ready to act as a QRF to reinforce you."
+	objectives = "Investigate the distress signal aboard the [MAIN_SHIP_NAME], and assist the crew with rescue if possible. If necessary, a contingent of our Colonial Marines may be ready to act as a QRF to reinforce you."
 
 	will_spawn_icc_liaison = prob(50)
 	will_spawn_cmb_observer = prob(20)
@@ -30,6 +30,9 @@
 
 	var/mob/living/carbon/human/mob = new(spawn_loc)
 	M.transfer_to(mob, TRUE)
+
+	will_spawn_icc_liaison = prob(50)
+	will_spawn_cmb_observer = prob(20)
 
 	if(!leader && HAS_FLAG(mob.client.prefs.toggles_ert, PLAY_LEADER) && check_timelock(mob.client, JOB_SQUAD_LEADER, time_required_for_job))
 		leader = mob
@@ -61,7 +64,7 @@
 		to_chat(M, SPAN_BOLD("You are the Colonial Marshal, originally from [pick(70;"The United Americas", 20;"Sol", 10;"a colony on the frontier")]."))
 		to_chat(M, SPAN_BOLD("You started in the Marshals through [pick(50; "pursuing a career during college", 40;"working for law enforcement", 10;"being recruited for your skills")]."))
 		to_chat(M, SPAN_BOLD("Rising through positions across the galaxy, you have become renown for your steadfast commitment to justice, fighting against crime and corruption alike."))
-		to_chat(M, SPAN_BOLD("Enroute to a [pick(20; "homicide", 20;"corporate corruption investigation", 10; "hostage situation", 10;"terrorist attack", 10;"prisoner transfer", 10;"drug raid", 10;"barricaded fugitive situation", 5;"suspected smuggling incident", 5;"human trafficing situation" )] you were diverted by your command at Anchorpoint Station to the [MAIN_SHIP_NAME] because of a distress beacon."))
+		to_chat(M, SPAN_BOLD("Enroute to a [pick(20; "homicide", 20;"corporate corruption investigation", 10; "hostage situation", 10;"terrorist attack", 10;"prisoner transfer", 10;"drug raid", 10;"barricaded fugitive situation", 5;"suspected smuggling incident", 5;"human trafficking situation" )] you were diverted by your command at Anchorpoint Station to the [MAIN_SHIP_NAME] because of a distress beacon."))
 		to_chat(M, SPAN_BOLD("The laws of Earth stretch beyond the Sol. Where others are tempted and fall to corruption, you stay steadfast in your morals."))
 		to_chat(M, SPAN_BOLD("Corporate Officers chase after paychecks and promotions, but you are motivated to do your sworn duty and care for the population, no matter how far or isolated a colony may be."))
 		to_chat(M, SPAN_BOLD("You've seen a lot during your time in the Neroid Sector, but you're here because you're the best, doing the right thing to make the frontier a better place."))
@@ -153,7 +156,7 @@
 		to_chat(M, SPAN_BOLD("You are the Anchorpoint QRF Team Leader, originally from [pick(70;"The United Americas", 20;"Sol", 10;"a colony on the frontier")]."))
 		to_chat(M, SPAN_BOLD("You've served on The Station for [pick(50; "a Sol year, and a tour of duty", 40;"a couple months", 10;"six years, three tours")]."))
 		to_chat(M, SPAN_BOLD("Living, training and working alongside Colonial Marshals at Anchorpoint Station has kept you well disciplined, and you've always felt proud to be the cavalry. ."))
-		to_chat(M, SPAN_BOLD("During your time at Anchorpoint, you [pick(20; "had your life saved by a Colonial Marshal", 20;"quelled a corporate riot", 10; "defended the station against a UPP incursion", 10;"experienced a pathogenic outbreak", 10;"assisted the Colonial Marshals during an enacted martial law", 10;"were deployed to the USS Almayer, and understand its layout", 10;"assisted the Colonial Marshals with barricaded fugitive situation", 5;"helped the ICC take down a suspected smuggling ring", 5;"helped take down a human trafficing scheme alongside the Colonial Marshals" )]."))
+		to_chat(M, SPAN_BOLD("During your time at Anchorpoint, you [pick(20; "had your life saved by a Colonial Marshal", 20;"quelled a corporate riot", 10; "defended the station against a UPP incursion", 10;"experienced a pathogenic outbreak", 10;"assisted the Colonial Marshals during an enacted martial law", 10;"were deployed to the USS Almayer, and understand its layout", 10;"assisted the Colonial Marshals with barricaded fugitive situation", 5;"helped the ICC take down a suspected smuggling ring", 5;"helped take down a human trafficking scheme alongside the Colonial Marshals" )]."))
 		to_chat(M, SPAN_BOLD("Working on conjunction with the Colonial Marshals on many incidents has created a comradery between your organizations. The Marshals handle investigations and policing, while you come in to get the job done during riots or incursions. Any job where heavy lifting was required, you were there."))
 		to_chat(M, SPAN_BOLD("On command's guidance, you've collected the spare HEAP magazines to avoid excessive property damage, redistribute them at your descretion."))
 		to_chat(M, SPAN_BOLD("You were activated as a part of a Quick Reaction Force to reinforce Colonial Marshals in distress."))
@@ -163,7 +166,7 @@
 		to_chat(M, SPAN_BOLD("You are the Anchorpoint QRF Team Smartgunner, originally from [pick(70;"The United Americas", 20;"Sol", 10;"a colony on the frontier")]."))
 		to_chat(M, SPAN_BOLD("You've served on The Station for [pick(45; "a Sol year, and a tour of duty", 20;"a couple months", 5;"six long years, three consecutive tours")]."))
 		to_chat(M, SPAN_BOLD("Living, training and working alongside Colonial Marshals at Anchorpoint Station has kept you well disciplined, and you've always felt proud to be the cavalry. ."))
-		to_chat(M, SPAN_BOLD("During your time at Anchorpoint, you [pick(20; "had your life saved by a Colonial Marshal", 20;"quelled a corporate riot", 10; "defended the station against a UPP incursion", 10;"experienced a pathogenic outbreak", 10;"assisted the Colonial Marshals during an enacted martial law", 10;"were deployed to the USS Almayer, and understand its layout", 10;"assisted the Colonial Marshals with barricaded fugitive situation", 5;"helped the ICC take down a suspected smuggling ring", 5;"helped take down a human trafficing scheme alongside the Colonial Marshals" )]."))
+		to_chat(M, SPAN_BOLD("During your time at Anchorpoint, you [pick(20; "had your life saved by a Colonial Marshal", 20;"quelled a corporate riot", 10; "defended the station against a UPP incursion", 10;"experienced a pathogenic outbreak", 10;"assisted the Colonial Marshals during an enacted martial law", 10;"were deployed to the USS Almayer, and understand its layout", 10;"assisted the Colonial Marshals with barricaded fugitive situation", 5;"helped the ICC take down a suspected smuggling ring", 5;"helped take down a human trafficking scheme alongside the Colonial Marshals" )]."))
 		to_chat(M, SPAN_BOLD("Working on conjunction with the Colonial Marshals on many incidents has created a comradery between your organizations. The Marshals handle investigations and policing, while you come in to get the job done during riots or incursions. Any job where heavy lifting was required, you were there."))
 		to_chat(M, SPAN_BOLD("You were activated as a part of a Quick Reaction Force to reinforce Colonial Marshals in distress."))
 		to_chat(M, SPAN_BOLD("You weren't sure if it was a false alarm or not. Turns out it isn't.. But you've been waiting for an excuse to let loose that M56."))
@@ -172,7 +175,7 @@
 		to_chat(M, SPAN_BOLD("You are the Anchorpoint QRF Team Corpsman, originally from [pick(70;"The United Americas", 20;"Sol", 10;"a colony on the frontier")]."))
 		to_chat(M, SPAN_BOLD("You've served on The Station for [pick(45; "a Sol year, and a tour of duty", 20;"a couple months", 5;"six long years, three consecutive tours")]."))
 		to_chat(M, SPAN_BOLD("Living, training and working alongside Colonial Marshals at Anchorpoint Station has kept you well disciplined, and you've always felt proud to be the cavalry. ."))
-		to_chat(M, SPAN_BOLD("During your time at Anchorpoint, you [pick(20; "had your life saved by a Colonial Marshal", 20;"quelled a corporate riot", 10; "defended the station against a UPP incursion", 10;"experienced a pathogenic outbreak", 10;"assisted the Colonial Marshals during an enacted martial law", 10;"were deployed to the USS Almayer, and understand its layout", 10;"assisted the Colonial Marshals with barricaded fugitive situation", 5;"helped the ICC take down a suspected smuggling ring", 5;"helped take down a human trafficing scheme alongside the Colonial Marshals" )]."))
+		to_chat(M, SPAN_BOLD("During your time at Anchorpoint, you [pick(20; "had your life saved by a Colonial Marshal", 20;"quelled a corporate riot", 10; "defended the station against a UPP incursion", 10;"experienced a pathogenic outbreak", 10;"assisted the Colonial Marshals during an enacted martial law", 10;"were deployed to the USS Almayer, and understand its layout", 10;"assisted the Colonial Marshals with barricaded fugitive situation", 5;"helped the ICC take down a suspected smuggling ring", 5;"helped take down a human trafficking scheme alongside the Colonial Marshals" )]."))
 		to_chat(M, SPAN_BOLD("Working on conjunction with the Colonial Marshals on many incidents has created a comradery between your organizations. The Marshals handle investigations and policing, while you come in to get the job done during riots or incursions. Any job where heavy lifting was required, you were there."))
 		to_chat(M, SPAN_BOLD("You were activated as a part of a Quick Reaction Force to reinforce Colonial Marshals in distress."))
 		to_chat(M, SPAN_BOLD("You weren't sure if it was a false alarm or not. It isn't.."))
@@ -181,7 +184,7 @@
 		to_chat(M, SPAN_BOLD("You are the Anchorpoint QRF Team Technical Specialist, originally from [pick(70;"The United Americas", 20;"Sol", 10;"a colony on the frontier")]."))
 		to_chat(M, SPAN_BOLD("You've served on The Station for [pick(45; "a Sol year, and a tour of duty", 20;"a couple months", 5;"six long years, three consecutive tours")]."))
 		to_chat(M, SPAN_BOLD("Living, training and working alongside Colonial Marshals at Anchorpoint Station has kept you well disciplined, and you've always felt proud to be the cavalry. ."))
-		to_chat(M, SPAN_BOLD("During your time at Anchorpoint, you [pick(20; "had your life saved by a Colonial Marshal", 20;"quelled a corporate riot", 10; "defended the station against a UPP incursion", 10;"experienced a pathogenic outbreak", 10;"assisted the Colonial Marshals during an enacted martial law", 10;"were deployed to the USS Almayer, and understand its layout", 10;"assisted the Colonial Marshals with barricaded fugitive situation", 5;"helped the ICC take down a suspected smuggling ring", 5;"helped take down a human trafficing scheme alongside the Colonial Marshals" )]."))
+		to_chat(M, SPAN_BOLD("During your time at Anchorpoint, you [pick(20; "had your life saved by a Colonial Marshal", 20;"quelled a corporate riot", 10; "defended the station against a UPP incursion", 10;"experienced a pathogenic outbreak", 10;"assisted the Colonial Marshals during an enacted martial law", 10;"were deployed to the USS Almayer, and understand its layout", 10;"assisted the Colonial Marshals with barricaded fugitive situation", 5;"helped the ICC take down a suspected smuggling ring", 5;"helped take down a human trafficking scheme alongside the Colonial Marshals" )]."))
 		to_chat(M, SPAN_BOLD("Working on conjunction with the Colonial Marshals on many incidents has created a comradery between your organizations. The Marshals handle investigations and policing, while you come in to get the job done during riots or incursions. Any job where heavy lifting was required, you were there."))
 		to_chat(M, SPAN_BOLD("You were activated as a part of a Quick Reaction Force to reinforce Colonial Marshals in distress."))
 		to_chat(M, SPAN_BOLD("You weren't sure if it was a false alarm or not. It isn't.."))
@@ -190,7 +193,7 @@
 		to_chat(M, SPAN_BOLD("You are a Rifleman of the Anchorpoint Team QRF, originally from [pick(70;"The United Americas", 20;"Sol", 10;"a colony on the frontier")]."))
 		to_chat(M, SPAN_BOLD("You've served on The Station for [pick(45; "a Sol year, and a tour of duty", 20;"a couple months", 5;"six long years, three consecutive tours")]."))
 		to_chat(M, SPAN_BOLD("Living, training and working alongside Colonial Marshals at Anchorpoint Station has kept you well disciplined, and you've always felt proud to be the cavalry. ."))
-		to_chat(M, SPAN_BOLD("During your time at Anchorpoint, you [pick(20; "had your life saved by a Colonial Marshal", 20;"quelled a corporate riot", 10; "defended the station against a UPP incursion", 10;"experienced a pathogenic outbreak", 10;"assisted the Colonial Marshals during an enacted martial law", 10;"were deployed to the USS Almayer, and understand its layout", 10;"assisted the Colonial Marshals with barricaded fugitive situation", 5;"helped the ICC take down a suspected smuggling ring", 5;"helped take down a human trafficing scheme alongside the Colonial Marshals" )]."))
+		to_chat(M, SPAN_BOLD("During your time at Anchorpoint, you [pick(20; "had your life saved by a Colonial Marshal", 20;"quelled a corporate riot", 10; "defended the station against a UPP incursion", 10;"experienced a pathogenic outbreak", 10;"assisted the Colonial Marshals during an enacted martial law", 10;"were deployed to the USS Almayer, and understand its layout", 10;"assisted the Colonial Marshals with barricaded fugitive situation", 5;"helped the ICC take down a suspected smuggling ring", 5;"helped take down a human trafficking scheme alongside the Colonial Marshals" )]."))
 		to_chat(M, SPAN_BOLD("Working on conjunction with the Colonial Marshals on many incidents has created a comradery between your organizations. The Marshals handle investigations and policing, while you come in to get the job done during riots or incursions. Any job where heavy lifting was required, you were there."))
 		to_chat(M, SPAN_BOLD("You were activated as a part of a Quick Reaction Force to reinforce Colonial Marshals in distress."))
 		to_chat(M, SPAN_BOLD("You weren't sure if it was a false alarm or not. It isn't.."))

@@ -312,7 +312,7 @@
 	var/mob/living/carbon/Xenomorph/target_xeno
 
 	for(var/mob/living/carbon/Xenomorph/xeno in user_xeno.hive.totalXenos)
-		if(xeno.name == choice)
+		if(html_encode(xeno.name) == html_encode(choice))
 			target_xeno = xeno
 			break
 
@@ -342,7 +342,6 @@
 	if(!user_xeno.check_state() || !check_and_use_plasma_owner(plasma_cost) || target_xeno.health < 0 || user_xeno.hive.stored_larva < required_larva)
 		return
 
-	// Let everyone know they were banished
 	to_chat(target_xeno, SPAN_XENOWARNING("\The [user_xeno] has given you evolution points! Use them well."))
 	to_chat(user_xeno, SPAN_XENOWARNING("\The [target_xeno] was given [evo_points_per_larva] evolution points."))
 

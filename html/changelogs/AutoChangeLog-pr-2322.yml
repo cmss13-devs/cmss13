@@ -1,0 +1,4 @@
+author: "carlarctg"
+delete-after: True
+changes:
+  - rscdel: "Reverts the damage flicker change. The only effect that changes color is being tased now."

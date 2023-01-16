@@ -55,8 +55,6 @@
 
 	/// The flicker that plays when a bullet hits a target. Usually red. Can be nulled so it doesn't show up at all.
 	var/hit_effect_color = "#FF0000"
-	/// The flicker that plays when a bullet hits a shielded xeno. Usually yellow. Can be nulled so it doesn't show up at all.
-	var/shield_effect_color = "#FFFF00"
 
 /datum/ammo/New()
 	set_bullet_traits()
@@ -579,7 +577,6 @@
 	damage = 15
 	damage_var_high = PROJECTILE_VARIANCE_TIER_5
 	shell_speed = AMMO_SPEED_TIER_2
-	hit_effect_color = "#705014"
 
 /datum/ammo/bullet/pistol/mankey/set_bullet_traits()
 	. = ..()
@@ -966,6 +963,28 @@
 	damage = 0
 	stamina_damage = 10
 	shrapnel_chance = 0
+
+/datum/ammo/bullet/smg/mp27
+	name = "simple submachinegun bullet"
+	damage = 40
+	accurate_range = 5
+	effective_range_max = 7
+	penetration = 0
+	shell_speed = AMMO_SPEED_TIER_6
+	damage_falloff = DAMAGE_FALLOFF_TIER_6
+	scatter = SCATTER_AMOUNT_TIER_6
+	accuracy = HIT_ACCURACY_TIER_2
+
+// less damage than the m39, but better falloff, range, and AP
+
+/datum/ammo/bullet/smg/ppsh
+	name = "crude submachinegun bullet"
+	damage = 26
+	accurate_range = 7
+	effective_range_max = 7
+	penetration = ARMOR_PENETRATION_TIER_2
+	damage_falloff = DAMAGE_FALLOFF_TIER_7
+	scatter = SCATTER_AMOUNT_TIER_5
 
 /*
 //======
@@ -2281,7 +2300,6 @@
 
 	damage = 0
 	flags_ammo_behavior = AMMO_ENERGY|AMMO_IGNORE_RESIST
-	hit_effect_color = "#0000FF" // only non-lethals get a different color - indicates stun
 
 /datum/ammo/energy/yautja/caster/bolt
 	name = "plasma bolt"
@@ -2296,7 +2314,6 @@
 
 	damage = 0
 	flags_ammo_behavior = AMMO_ENERGY|AMMO_IGNORE_RESIST
-	hit_effect_color = "#0000FF" // only non-lethals get a different color - indicates stun
 
 /datum/ammo/energy/yautja/caster/bolt/stun/on_hit_mob(mob/M, obj/item/projectile/P)
 	var/mob/living/carbon/C = M
@@ -2357,7 +2374,6 @@
 	flags_ammo_behavior = AMMO_ENERGY|AMMO_IGNORE_RESIST
 	accurate_range = 20
 	max_range = 20
-	hit_effect_color = "#0000FF" // only non-lethals get a different color - indicates stun
 
 	var/stun_range = 4 // Big
 	var/stun_time = 6
@@ -2597,7 +2613,6 @@
 	flags_ammo_behavior = AMMO_SKIPS_ALIENS|AMMO_EXPLOSIVE
 	added_spit_delay = 5
 	spit_cost = 40
-	hit_effect_color = "#680068"
 
 	shell_speed = AMMO_SPEED_TIER_3
 	accuracy_var_high = PROJECTILE_VARIANCE_TIER_4
@@ -2644,7 +2659,6 @@
 	max_range = 8 // 7 will disappear on diagonals. i love shitcode
 	penetration = ARMOR_PENETRATION_TIER_2
 	shell_speed = AMMO_SPEED_TIER_3
-	hit_effect_color = "#FF0000"
 
 /datum/ammo/xeno/acid/on_shield_block(mob/M, obj/item/projectile/P)
 	burst(M,P,damage_type)
@@ -2766,7 +2780,6 @@
 
 	accuracy_var_high = PROJECTILE_VARIANCE_TIER_4
 	max_range = 32
-	hit_effect_color = "#FF0000"
 
 /datum/ammo/xeno/boiler_gas/New()
 	..()
@@ -2826,7 +2839,6 @@
 	bonus_projectiles_amount = EXTRA_PROJECTILES_TIER_7
 	shrapnel_type = /obj/item/shard/shrapnel/bone_chips
 	shrapnel_chance = 60
-	hit_effect_color = "#FF0000"
 
 /datum/ammo/xeno/bone_chips/on_hit_mob(mob/M, obj/item/projectile/P)
 	if(iscarbon(M))
@@ -2878,7 +2890,6 @@
 	damage = XENO_DAMAGE_TIER_5
 	max_range = 4
 	accuracy = HIT_ACCURACY_TIER_MAX
-	hit_effect_color = "#FF0000"
 
 /datum/ammo/xeno/oppressor_tail/on_bullet_generation(var/obj/item/projectile/generated_projectile, var/mob/bullet_generator)
 	//The projectile has no icon, so the overlay shows up in FRONT of the projectile, and the beam connects to it in the middle.

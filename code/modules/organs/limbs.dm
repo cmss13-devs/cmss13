@@ -1275,7 +1275,7 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 	body_part = BODY_FLAG_ARM_LEFT
 	has_stump_icon = TRUE
 
-/obj/limb/hand/l_hand/process()
+/obj/limb/arm/l_arm/process()
 	..()
 	process_grasp(owner.l_hand, "left hand")
 
@@ -1294,7 +1294,7 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 	body_part = BODY_FLAG_ARM_RIGHT
 	has_stump_icon = TRUE
 
-/obj/limb/hand/l_hand/process()
+/obj/limb/arm/r_arm/process()
 	..()
 	process_grasp(owner.r_hand, "right hand")
 
@@ -1329,7 +1329,7 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 	body_part = BODY_FLAG_HAND_RIGHT
 	has_stump_icon = TRUE
 
-/obj/limb/hand/l_hand/process()
+/obj/limb/hand/r_hand/process()
 	..()
 	process_grasp(owner.r_hand, "right hand")
 

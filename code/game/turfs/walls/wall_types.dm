@@ -634,7 +634,7 @@
 	icon = 'icons/turf/walls/ice_colony/shiva_turfs.dmi'
 
 /turf/closed/wall/shiva/ice
-	name = "black ice sabs"
+	name = "black ice slabs"
 	icon_state = "shiva_ice"
 	desc = "Slabs on slabs of dirty black ice crusted over ancient rock formations. The permafrost fluctuates between 20in and 12in during the summer months."
 	walltype = WALL_SHIVA_ICE //Not a metal wall

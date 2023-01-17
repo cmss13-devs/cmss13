@@ -1,7 +1,7 @@
 
 /mob/living/proc/has_brain()
 	return 1
-T
+
 /mob/living/proc/has_eyes()
 	return 1
 

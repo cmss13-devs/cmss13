@@ -341,64 +341,43 @@
 	smokeranking = SMOKE_RANK_BOILER
 
 //No effect when merely entering the smoke turf, for balance reasons
-/obj/effect/particle_effect/smoke/xeno_weak/Crossed(mob/living/carbon/M as mob)
+/obj/effect/particle_effect/smoke/xeno_weak/Crossed(mob/living/carbon/Moob as mob)
 	return
 
-/obj/effect/particle_effect/smoke/xeno_weak/affect(var/mob/living/carbon/M) // This applies every tick someone is in the smoke
+/obj/effect/particle_effect/smoke/xeno_weak/affect(var/mob/living/carbon/Moob) // This applies every tick someone is in the smoke
 	..()
-	if(isXeno(M))
+	if(isXeno(Moob))
 		return
-	if(isYautja(M) && prob(75))
+	if(isYautja(Moob) && prob(75))
 		return
-	if(M.stat == DEAD)
+	if(Moob.stat == DEAD)
 		return
-	if(HAS_TRAIT(M, TRAIT_NESTED) && M.status_flags & XENO_HOST)
+	if(HAS_TRAIT(Moob, TRAIT_NESTED) && Moob.status_flags & XENO_HOST)
 		return
-	if(ishuman(M))
-		var/mob/living/carbon/human/H = M
+	if(ishuman(Moob))
+		var/mob/living/carbon/human/H = Moob
 		if(H.chem_effect_flags & CHEM_EFFECT_RESIST_NEURO)
 			return
 	var/effect_amt = round(6 + amount*6)
-	M.eye_blurry = max(M.eye_blurry, effect_amt)
-	M.apply_effect(max(M.eye_blurry, effect_amt), EYE_BLUR)
-	M.apply_damage(5, OXY) //  Base "I can't breath oxyloss" Slightly more longer lasting then stamina damage
-	M.apply_stamina_damage(18) // Slowdown progressively gets worse until they eventually get stunned
-	M.make_dizzy(30)
-	if(M.dizziness > 50)
-		switch(prob)
-			if(75)
-				M.SetEarDeafness(max(M.ear_deaf, round(effect_amt*1.5))) //Paralysis of hearing system, aka deafness
-				to_chat(M, SPAN_HIGHDANGER("Your ears ring terribly! You can't hear!"))
-			if(75)
-				to_chat(M, SPAN_HIGHDANGER("Your eyes sting. You can't see!"))
-				M.eye_blind = max(M.eye_blind, round(effect_amt/4))
-			if(50)
-				M.apply_effect(10,pick(SLUR,STUTTER))
-				M.apply_effect(10,AGONY)  // Fake crit, a good way to induce panic
-				to_chat(M, SPAN_HIGHDANGER("You panic as disorientation overtakes you!"))
-	if(M.dizziness > 60)
-		if(prob(75)) // Blindness now garunteed after 2 ticks in smoke
-			M.SetEarDeafness(max(M.ear_deaf, round(effect_amt*1.5))) //Paralysis of hearing system, aka deafness
-		if(prob(75)) //Eye exposure damage
-			to_chat(M, SPAN_DANGER("Your eyes sting. You can't see!"))
-			M.eye_blind = max(M.eye_blind, round(effect_amt/4))
-	if(M.coughedtime != 1 && !M.stat) //Coughing/gasping
-		M.coughedtime = 1
+	Moob.eye_blurry = max(Moob.eye_blurry, effect_amt)
+	Moob.apply_effect(max(Moob.eye_blurry, effect_amt), EYE_BLUR)
+	Moob.apply_damage(5, OXY) //  Base "I can't breath oxyloss" Slightly more longer lasting then stamina damage
+// new shit
+	var/datum/effects/neurotoxin/neuro_effect = locate() in Moob.effects_list
+	if(!neuro_effect)
+		neuro_effect = new /datum/effects/neurotoxin(Moob)
+		neuro_effect.strength = effect_amt
+	neuro_effect.duration += 5
+
+	if(Moob.coughedtime != 1 && !Moob.stat) //Coughing/gasping
+		Moob.coughedtime = 1
 		if(prob(50))
-			M.Slow(1)
-			M.emote("cough")
+			Moob.Slow(1)
+			Moob.emote("cough")
 		else
-			M.emote("gasp")
-		addtimer(VARSET_CALLBACK(M, coughedtime, 0), 1.5 SECONDS)
-	if(prob(10))
-		to_chat(M, SPAN_HIGHDANGER("You stumble!"))
-		step(M, pick(CARDINAL_ALL_DIRS))
-		M.apply_effect(5, DAZE) // Unable to talk and weldervision
-		M.make_jittery(25)
-		M.make_dizzy(55)
-		M.emote("pain")
-		M.apply_damage(5, TOX) // Blood toxicity
-	to_chat(M, SPAN_DANGER(pick("Your body is going numb, almost as if it is paralyzed!", "Your limbs start seizing up!", "You feel lightheaded!","Your skin tingles as the gas consumes you!")))
+			Moob.emote("gasp")
+		addtimer(VARSET_CALLBACK(Moob, coughedtime, 0), 1.5 SECONDS)
+	to_chat(Moob, SPAN_DANGER("Your skin tingles as the gas consumes you!"))
 
 /obj/effect/particle_effect/smoke/xeno_weak_fire
 	time_to_live = 16
@@ -408,50 +387,50 @@
 	smokeranking = SMOKE_RANK_BOILER
 
 //No effect when merely entering the smoke turf, for balance reasons
-/obj/effect/particle_effect/smoke/xeno_weak_fire/Crossed(var/mob/living/carbon/M as mob)
-	if(!istype(M))
+/obj/effect/particle_effect/smoke/xeno_weak_fire/Crossed(var/mob/living/carbon/Moob as mob)
+	if(!istype(Moob))
 		return
 
-	M.ExtinguishMob()
+	Moob.ExtinguishMob()
 	. = ..()
 
-/obj/effect/particle_effect/smoke/xeno_weak_fire/affect(var/mob/living/carbon/M)
+/obj/effect/particle_effect/smoke/xeno_weak_fire/affect(var/mob/living/carbon/Moob)
 	..()
 
-	if(isXeno(M))
+	if(isXeno(Moob))
 		return
-	if(isYautja(M) && prob(75))
+	if(isYautja(Moob) && prob(75))
 		return
-	if(M.stat == DEAD)
+	if(Moob.stat == DEAD)
 		return
-	if(HAS_TRAIT(M, TRAIT_NESTED) && M.status_flags & XENO_HOST)
+	if(HAS_TRAIT(Moob, TRAIT_NESTED) && Moob.status_flags & XENO_HOST)
 		return
 
 	var/effect_amt = round(6 + amount*6)
 
-	M.apply_damage(9, OXY) // MUCH harsher
-	M.SetEarDeafness(max(M.ear_deaf, round(effect_amt*1.5))) //Paralysis of hearing system, aka deafness
-	if(!M.eye_blind) //Eye exposure damage
-		to_chat(M, SPAN_DANGER("Your eyes sting. You can't see!"))
-	M.SetEyeBlind(round(effect_amt/3))
-	if(M.coughedtime != 1 && !M.stat) //Coughing/gasping
-		M.coughedtime = 1
+	Moob.apply_damage(9, OXY) // MUCH harsher
+	Moob.SetEarDeafness(max(Moob.ear_deaf, round(effect_amt*1.5))) //Paralysis of hearing system, aka deafness
+	if(!Moob.eye_blind) //Eye exposure damage
+		to_chat(Moob, SPAN_DANGER("Your eyes sting. You can't see!"))
+	Moob.SetEyeBlind(round(effect_amt/3))
+	if(Moob.coughedtime != 1 && !Moob.stat) //Coughing/gasping
+		Moob.coughedtime = 1
 		if(prob(50))
-			M.emote("cough")
+			Moob.emote("cough")
 		else
-			M.emote("gasp")
-		addtimer(VARSET_CALLBACK(M, coughedtime, 0), 1.5 SECONDS)
+			Moob.emote("gasp")
+		addtimer(VARSET_CALLBACK(Moob, coughedtime, 0), 1.5 SECONDS)
 	if (prob(20))
-		M.apply_effect(1, WEAKEN)
+		Moob.apply_effect(1, WEAKEN)
 
 	//Topical damage (neurotoxin on exposed skin)
-	to_chat(M, SPAN_DANGER("Your body is going numb, almost as if paralyzed!"))
+	to_chat(Moob, SPAN_DANGER("Your body is going numb, almost as if paralyzed!"))
 	if(prob(40 + round(amount*15))) //Highly likely to drop items due to arms/hands seizing up
-		M.drop_held_item()
-	if(ishuman(M))
-		var/mob/living/carbon/human/H = M
-		H.temporary_slowdown = max(H.temporary_slowdown, 4) //One tick every two second
-		H.recalculate_move_delay = TRUE
+		Moob.drop_held_item()
+	if(ishuman(Moob))
+		var/mob/living/carbon/human/Human = Moob
+		Human.temporary_slowdown = max(Human.temporary_slowdown, 4) //One tick every two second
+		Human.recalculate_move_delay = TRUE
 
 /obj/effect/particle_effect/smoke/xeno_weak_fire/spread_smoke(direction)
 	set waitfor = 0

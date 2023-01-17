@@ -839,6 +839,7 @@
 #include "code\game\objects\structures.dm"
 #include "code\game\objects\effects\acid_hole.dm"
 #include "code\game\objects\effects\aliens.dm"
+#include "code\datums\effects\neurotoxin.dm"
 #include "code\game\objects\effects\effect.dm"
 #include "code\game\objects\effects\elevator.dm"
 #include "code\game\objects\effects\glowshroom.dm"

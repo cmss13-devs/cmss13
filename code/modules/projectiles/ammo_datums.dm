@@ -1439,6 +1439,7 @@
 	bonus_projectiles_amount = 0
 	accurate_range = 4
 	max_range = 5 //make use of the ablaze property
+	shell_speed = AMMO_SPEED_TIER_4 // so they hit before the main shell stuns
 
 
 /datum/ammo/bullet/shotgun/heavy/slug

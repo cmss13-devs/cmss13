@@ -394,3 +394,25 @@
       you to mash the unique action hotkey. Comes with unique SFX. The PPSH's base
       stats have been significantly improved as well, making it a longer-ranged, less
       falloff, but less damage alternative to the M39.
+2023-01-17:
+  Mister-moon1:
+  - code_imp: changed the way WY ranks are issued
+  - admin: removed the div code from "select_equipment"
+  - bugfix: fixed CL job codes
+  Morrow:
+  - bugfix: Fixes Almayer chapel corner platforms
+  - balance: Gives queen an ability to sacrifice larva for evolution points
+  Tisx:
+  - bugfix: Moved the sprites of the M79's rail attachments back a few pixels to make
+      it more flush with the weapon.
+  - balance: Changed HIRR slug characteristics
+  - balance: HIRR slugs are now able to send mobs flying up to 3 tiles on impact.
+  - balance: HIRR slugs will now BOUNCE off of mobs impacted and will still be consider
+      ACTIVE until it stops moving
+  - balance: Decreased debuff modifiers for large mobs (T3/T4 Xenos) to account for
+      changes above
+  - balance: Slightly increased base debuffs to account for HIRR impact flight time
+      (time right after impact) (up for debate)
+  carlarctg:
+  - rscdel: Reverts the damage flicker change. The only effect that changes color
+      is being tased now.

@@ -251,15 +251,6 @@
 
 	sleep(warmup_time) //Warming up
 
-	if(!queen_locked)
-		for(var/turf/T in turfs_src)
-			var/mob/living/carbon/Xenomorph/X = locate(/mob/living/carbon/Xenomorph) in T
-			if(X && X.stat != DEAD)
-				var/name = "Unidentified Lifesigns"
-				var/input = "Unidentified lifesigns detected onboard. Recommendation: lockdown of exterior access ports, including ducting and ventilation."
-				shipwide_ai_announcement(input, name, 'sound/AI/unidentified_lifesigns.ogg')
-				set_security_level(SEC_LEVEL_RED)
-				break
 
 	moving_status = SHUTTLE_INTRANSIT
 
@@ -340,6 +331,16 @@
 	turfs_trg = get_shuttle_turfs(T_trg, info_datums)
 
 	open_doors(turfs_trg) //And now open the doors
+
+	if(!queen_locked)
+		for(var/turf/T in turfs_trg)
+			var/mob/living/carbon/Xenomorph/X = locate(/mob/living/carbon/Xenomorph) in T
+			if(X && X.stat != DEAD)
+				var/name = "Unidentified Lifesigns"
+				var/input = "Unidentified lifesigns detected onboard. Recommendation: lockdown of exterior access ports, including ducting and ventilation."
+				shipwide_ai_announcement(input, name, 'sound/AI/unidentified_lifesigns.ogg')
+				set_security_level(SEC_LEVEL_RED)
+				break
 
 	//END: Heavy lifting backend
 
@@ -541,7 +542,7 @@
 		sleep(1)
 
 	for(var/mob/living/carbon/affected_mob in (GLOB.alive_human_list + GLOB.living_xeno_list)) //knock down mobs
-		if(affected_mob.z != T_trg.z) 
+		if(affected_mob.z != T_trg.z)
 			continue
 		if(affected_mob.buckled)
 			to_chat(affected_mob, SPAN_WARNING("You are jolted against [affected_mob.buckled]!"))

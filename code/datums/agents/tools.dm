@@ -102,7 +102,7 @@
 /obj/item/stack/points
 	name = "credits"
 	singular_name = "credit"
-
+	gender = PLURAL
 	icon_state = "point"
 
 	stack_id = "antag points"

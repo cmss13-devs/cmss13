@@ -263,7 +263,7 @@
 
 /obj/structure/bed/nest/proc/healthcheck()
 	if(health <= 0)
-		density = 0
+		density = FALSE
 		deconstruct()
 
 /obj/structure/bed/nest/fire_act()

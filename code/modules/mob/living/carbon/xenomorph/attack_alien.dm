@@ -940,7 +940,7 @@
 	if(!unacidable)
 		M.animation_attack_on(src)
 		if(!opened)
-			var/difficulty = 70	//if its just closed we can smash open quite easily
+			var/difficulty = 70 //if its just closed we can smash open quite easily
 			if(welded)
 				difficulty = 30 // if its welded shut it should be harder to smash open
 			if(prob(difficulty))
@@ -1015,7 +1015,7 @@
 /obj/structure/machinery/vending/proc/tip_over()
 	var/matrix/A = matrix()
 	is_tipped_over = TRUE
-	density = 0
+	density = FALSE
 	A.Turn(90)
 	apply_transform(A)
 	malfunction()
@@ -1023,7 +1023,7 @@
 /obj/structure/machinery/vending/proc/flip_back()
 	icon_state = initial(icon_state)
 	is_tipped_over = FALSE
-	density = 1
+	density = TRUE
 	var/matrix/A = matrix()
 	apply_transform(A)
 	stat &= ~BROKEN //Remove broken. MAGICAL REPAIRS

@@ -5,7 +5,7 @@
 	icon = 'icons/obj/structures/machinery/stock_parts.dmi'
 	icon_state = "box_0"
 	var/base_state = "box"
-	density = 0
+	density = FALSE
 	anchored = 1
 	use_power = USE_POWER_NONE
 	var/requirements_left
@@ -39,8 +39,8 @@
 	desc = initial(desc) + SPAN_WARNING(requirements_left)
 
 /obj/structure/machinery/constructable_frame/update_icon()
-    ..()
-    icon_state = "[base_state]_[state]"
+	..()
+	icon_state = "[base_state]_[state]"
 
 /obj/structure/machinery/constructable_frame/attackby(obj/item/P as obj, mob/user as mob)
 	if(P.crit_fail)

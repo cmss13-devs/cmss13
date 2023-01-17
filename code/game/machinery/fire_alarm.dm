@@ -19,7 +19,7 @@ FIRE ALARM
 /obj/structure/machinery/firealarm/Initialize(mapload, dir, building)
 	. = ..()
 	if(is_mainship_level(z))
-		RegisterSignal(SSdcs, COMSIG_GLOB_SECURITY_LEVEL_CHANGED, .proc/sec_changed)
+		RegisterSignal(SSdcs, COMSIG_GLOB_SECURITY_LEVEL_CHANGED, PROC_REF(sec_changed))
 
 /obj/structure/machinery/firealarm/proc/sec_changed(datum/source, new_sec)
 	SIGNAL_HANDLER
@@ -53,7 +53,7 @@ FIRE ALARM
 /obj/structure/machinery/firealarm/fire_act(temperature, volume)
 	if(src.detecting)
 		if(temperature > T0C+200)
-			src.alarm()			// added check of detector status here
+			src.alarm() // added check of detector status here
 	return
 
 /obj/structure/machinery/firealarm/attack_remote(mob/user as mob)
@@ -127,7 +127,7 @@ FIRE ALARM
 
 /obj/structure/machinery/firealarm/power_change()
 	..()
-	addtimer(CALLBACK(src, .proc/update_icon), rand(0,15))
+	addtimer(CALLBACK(src, PROC_REF(update_icon)), rand(0,15))
 
 /obj/structure/machinery/firealarm/attack_hand(mob/user as mob)
 	if(user.stat || inoperable())

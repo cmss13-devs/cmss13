@@ -113,7 +113,7 @@
 	set name = "Set Ticklag"
 	set desc = "Sets a new tick lag. Recommend you don't mess with this too much! Stable, time-tested ticklag value is 0.9"
 
-	if(!check_rights(R_DEBUG))	return
+	if(!check_rights(R_DEBUG)) return
 	if(!ishost(usr) || alert("Are you sure you want to do this?",, "Yes", "No") != "Yes") return
 	var/newtick = tgui_input_number(src, "Sets a new tick lag. Please don't mess with this too much! The stable, time-tested ticklag value is 0.9","Lag of Tick", world.tick_lag)
 	//I've used ticks of 2 before to help with serious singulo lags
@@ -156,7 +156,7 @@
 	set name = "Reload Admins"
 	set category = "Debug"
 	if(alert("Are you sure you want to do this?",, "Yes", "No") != "Yes") return
-	if(!check_rights(R_SERVER))	return
+	if(!check_rights(R_SERVER)) return
 
 	message_staff("[usr.ckey] manually reloaded admins.")
 	load_admins()

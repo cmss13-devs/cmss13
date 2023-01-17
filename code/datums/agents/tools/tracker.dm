@@ -29,7 +29,7 @@
 	active = TRUE
 	update_icon()
 
-	addtimer(CALLBACK(src, .proc/deactive), ping_duration)
+	addtimer(CALLBACK(src, PROC_REF(deactive)), ping_duration)
 
 /obj/item/device/tracker/proc/deactive()
 	active = FALSE
@@ -40,6 +40,8 @@
 		return ..()
 
 	if(mods["alt"])
+		if(!CAN_PICKUP(user, src))
+			return ..()
 		select_object(user)
 		return TRUE
 

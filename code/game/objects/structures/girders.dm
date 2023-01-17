@@ -1,16 +1,16 @@
-#define STATE_STANDARD 			0
-#define STATE_DISMANTLING		1
-#define STATE_WALL 				2
-#define STATE_REINFORCED_WALL 	3
-#define STATE_DISPLACED			4
+#define STATE_STANDARD 0
+#define STATE_DISMANTLING 1
+#define STATE_WALL 2
+#define STATE_REINFORCED_WALL 3
+#define STATE_DISPLACED 4
 
-#define STATE_SCREWDRIVER 		1
-#define STATE_WIRECUTTER 		2
-#define STATE_METAL 			3
-#define STATE_PLASTEEL 			4
-#define STATE_RODS 				5
+#define STATE_SCREWDRIVER 1
+#define STATE_WIRECUTTER 2
+#define STATE_METAL 3
+#define STATE_PLASTEEL 4
+#define STATE_RODS 5
 
-#define GIRDER_UPGRADE_MATERIAL_COST	5
+#define GIRDER_UPGRADE_MATERIAL_COST 5
 
 /obj/structure/girder
 	icon_state = "girder"
@@ -82,10 +82,11 @@
 		return TRUE //no afterattack
 
 	if(istype(W, /obj/item/weapon/melee/twohanded/breacher))
+		var/obj/item/weapon/melee/twohanded/breacher/current_hammer = W
 		if(user.action_busy)
 			return
-		if(!HAS_TRAIT(user, TRAIT_SUPER_STRONG))
-			to_chat(user, SPAN_WARNING("You can't use \the [W] properly!"))
+		if(!(HAS_TRAIT(user, TRAIT_SUPER_STRONG) || !current_hammer.really_heavy))
+			to_chat(user, SPAN_WARNING("You can't use \the [current_hammer] properly!"))
 			return
 
 		to_chat(user, SPAN_NOTICE("You start taking down \the [src]."))

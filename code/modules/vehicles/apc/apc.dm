@@ -28,7 +28,7 @@ GLOBAL_LIST_EMPTY(command_apc_list)
 		"rear right" = list(-1, 2)
 	)
 
-	entrance_speed = 0.5
+	entrance_speed = 0.5 SECONDS
 
 	required_skill = SKILL_VEHICLE_LARGE
 
@@ -124,6 +124,7 @@ GLOBAL_LIST_EMPTY(command_apc_list)
 		/obj/vehicle/multitile/proc/get_status_info,
 		/obj/vehicle/multitile/proc/open_controls_guide,
 	))
+	SStgui.close_user_uis(M, src)
 	if(seat == VEHICLE_DRIVER)
 		remove_verb(M.client, list(
 			/obj/vehicle/multitile/proc/toggle_door_lock,

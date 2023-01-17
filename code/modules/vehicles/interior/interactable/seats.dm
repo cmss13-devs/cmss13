@@ -107,7 +107,7 @@
 				to_chat(user, SPAN_WARNING("You are unable to use heavy weaponry."))
 			return
 
-	for(var/obj/item/I in user.contents)		//prevents shooting while zoomed in, but zoom can still be activated and used without shooting
+	for(var/obj/item/I in user.contents) //prevents shooting while zoomed in, but zoom can still be activated and used without shooting
 		if(I.zoom)
 			I.zoom(user)
 
@@ -320,7 +320,7 @@
 	chairbar = image('icons/obj/vehicles/interiors/general.dmi', "vehicle_bars")
 	chairbar.layer = ABOVE_MOB_LAYER
 
-	addtimer(CALLBACK(src, .proc/setup_buckle_offsets), 1 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(setup_buckle_offsets)), 1 SECONDS)
 
 	handle_rotation()
 

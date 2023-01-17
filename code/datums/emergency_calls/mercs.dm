@@ -75,7 +75,7 @@
 		to_chat(H, SPAN_ROLE_HEADER("You are a Freelancer Mercenary!"))
 	print_backstory(H)
 
-	addtimer(CALLBACK(GLOBAL_PROC, .proc/to_chat, H, SPAN_BOLD("Objectives: [objectives]")), 1 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, PROC_REF(to_chat), H, SPAN_BOLD("Objectives: [objectives]")), 1 SECONDS)
 
 /datum/emergency_call/mercs/platoon
 	name = "Freelancers (Platoon)"
@@ -143,7 +143,7 @@
 	M.transfer_to(H, TRUE)
 	H.job = "Mercenary"
 
-	if(!leader && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_LEADER) && check_timelock(H.client, JOB_SQUAD_LEADER, time_required_for_job))       //First one spawned is always the leader.
+	if(!leader && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_LEADER) && check_timelock(H.client, JOB_SQUAD_LEADER, time_required_for_job))    //First one spawned is always the leader.
 		leader = H
 		arm_equipment(H, /datum/equipment_preset/other/elite_merc/leader, TRUE, TRUE)
 		to_chat(H, SPAN_ROLE_HEADER("You are the Elite Mercenary leader!"))
@@ -164,4 +164,4 @@
 		to_chat(H, SPAN_ROLE_HEADER("You are an Elite Mercenary!"))
 	print_backstory(H)
 
-	addtimer(CALLBACK(GLOBAL_PROC, .proc/to_chat, H, SPAN_BOLD("Objectives: [objectives]")), 1 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, PROC_REF(to_chat), H, SPAN_BOLD("Objectives: [objectives]")), 1 SECONDS)

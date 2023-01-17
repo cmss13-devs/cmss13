@@ -1,6 +1,6 @@
 SUBSYSTEM_DEF(techtree)
 	name = "Tech Tree"
-	init_order	= SS_INIT_TECHTREE
+	init_order = SS_INIT_TECHTREE
 
 	flags = SS_NO_FIRE
 
@@ -68,7 +68,7 @@ SUBSYSTEM_DEF(techtree)
 				node.on_tree_insertion(tree)
 
 		tree.generate_tree()
-		var/msg = "Loaded [tree.name] Techtree!"
+		var/msg = "Loaded [tree.name]!"
 		to_chat(world, "<span class='boldannounce'>[msg]</span>")
 
 	return SS_INIT_SUCCESS

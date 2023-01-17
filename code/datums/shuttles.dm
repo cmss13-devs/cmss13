@@ -58,7 +58,7 @@
 	. = ..()
 	if(!.)
 		return
-	var/list/turfs = block(	locate(.[MAP_MINX], .[MAP_MINY], .[MAP_MINZ]),
+	var/list/turfs = block( locate(.[MAP_MINX], .[MAP_MINY], .[MAP_MINZ]),
 							locate(.[MAP_MAXX], .[MAP_MAXY], .[MAP_MAXZ]))
 	for(var/i in 1 to turfs.len)
 		var/turf/place = turfs[i]
@@ -101,5 +101,5 @@
 		M.movement_force = movement_force.Copy()
 
 /datum/map_template/shuttle/vehicle
-	shuttle_id = "vehicle_elevator"
+	shuttle_id = MOBILE_SHUTTLE_VEHICLE_ELEVATOR
 	name = "Vehicle Elevator"

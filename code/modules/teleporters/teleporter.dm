@@ -3,15 +3,15 @@
 */
 
 /datum/teleporter
-	var/list/locations          // Complex list of turfs by ID
-	var/list/linked_consoles    // Consoles linked to this abstract teleporter
-	var/id                      // Our teleporter UUID string
+	var/list/locations   // Complex list of turfs by ID
+	var/list/linked_consoles // Consoles linked to this abstract teleporter
+	var/id   // Our teleporter UUID string
 
 	COOLDOWN_DECLARE(next_teleport_time)
 
-	var/cooldown                // int to cool down
+	var/cooldown // int to cool down
 
-	var/name                    // User-friendly name
+	var/name // User-friendly name
 
 /datum/teleporter/New()
 	locations = list()
@@ -171,7 +171,7 @@
 		flick(animation_holder.icon_state, animation_holder)
 
 /obj/effect/teleporter_vfx
-	mouse_opacity = 0
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "teleport"
 	var/animation_duration = ANIMATION_DURATION // 18 frames long

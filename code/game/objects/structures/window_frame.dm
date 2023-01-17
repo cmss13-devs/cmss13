@@ -4,7 +4,7 @@
 	icon = 'icons/turf/walls/window_frames.dmi'
 	icon_state = "window0_frame"
 	layer = WINDOW_FRAME_LAYER
-	density = 1
+	density = TRUE
 	throwpass = TRUE
 	climbable = 1 //Small enough to vault over, but you do need to vault over it
 	health = 600
@@ -62,7 +62,7 @@
 	relativewall()
 
 /obj/structure/window_frame/Destroy()
-	density = 0
+	density = FALSE
 	update_nearby_icons()
 	for(var/obj/effect/alien/weeds/weedwall/frame/WF in loc)
 		qdel(WF)
@@ -103,7 +103,7 @@
 		if(buildstacktype)
 			to_chat(user, SPAN_NOTICE(" You start to deconstruct [src]."))
 			playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
-			if(do_after(user, 30 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))	// takes 3 seconds to deconstruct
+			if(do_after(user, 30 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD)) // takes 3 seconds to deconstruct
 				playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
 				to_chat(user, SPAN_NOTICE("You deconstruct [src]."))
 				SEND_SIGNAL(user, COMSIG_MOB_DISASSEMBLE_W_FRAME, src)

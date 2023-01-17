@@ -40,6 +40,7 @@
 #define COMSIG_KB_CLIENT_SAY_DOWN "keybinding_client_say_down"
 #define COMSIG_KB_CLIENT_ME_DOWN "keybinding_client_me_down"
 #define COMSIG_KB_CLIENT_WHISPER_DOWN "keybinding_client_whisper_down"
+#define COMSIG_KG_CLIENT_RADIO_DOWN "keybinding_client_radio_down"
 
 //Human
 #define COMSIG_KB_HUMAN_QUICKEQUIP_DOWN "keybinding_human_quickequip_down"
@@ -67,6 +68,8 @@
 #define COMSIG_KB_HUMAN_WEAPON_UNLOAD "keybinding_human_weapon_unload"
 #define COMSIG_KB_HUMAN_WEAPON_ATTACHMENT "keybinding_human_weapon_attachment"
 #define COMSIG_KB_HUMAN_WEAPON_ATTACHMENT_RAIL "keybinding_human_weapon_attachment_rail"
+
+#define COMSIG_KB_HUMAN_WEAPON_TOGGLE_IFF "keybinding_human_weapon_toggle_iff"
 
 //Living
 #define COMSIG_KB_SURGERY_INTENT_DOWN "keybinding_living_surgery_intent_down"

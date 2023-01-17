@@ -12,7 +12,7 @@
 	var/icon_state_on = "bbox_on"
 	var/icon_state_off = "bbox_off"
 	flags_atom = FPRINT
-	density = 1
+	density = TRUE
 	anchored = 1
 	var/on = 0
 	var/busy = FALSE

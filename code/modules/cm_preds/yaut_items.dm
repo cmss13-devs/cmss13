@@ -149,7 +149,7 @@
 	flags_equip_slot = SLOT_BACK
 	flags_item = ITEM_PREDATOR
 	unacidable = TRUE
-	var/clan_rank_required = CLAN_RANK_LEADER_INT
+	var/clan_rank_required = CLAN_RANK_ELDER_INT
 	var/councillor_override = FALSE
 
 /obj/item/clothing/yautja_cape/Initialize(mapload, var/new_color = "#654321")

@@ -186,12 +186,11 @@
 			return
 		if("No")
 			new_name = random_name(target_mob.gender)
-			GLOB.data_core.manifest_modify(new_name, WEAKREF(target_mob))
 		if("Yes")
 			var/raw_name = input(user, "Choose the new name:", "Name Input")  as text|null
 			if(!isnull(raw_name)) // Check to ensure that the user entered text (rather than cancel.)
 				new_name = reject_bad_name(raw_name)
-				GLOB.data_core.manifest_modify(new_name, WEAKREF(target_mob))
+				
 
 	if(!new_name)
 		to_chat(user, SPAN_NOTICE("Invalid name. The name should be at least 2 and at most [MAX_NAME_LEN] characters long. It may only contain the characters A-Z, a-z, -, ' and ."))
@@ -206,6 +205,7 @@
 		return
 
 	target_mob.change_real_name(target_mob, new_name)
+	GLOB.data_core.manifest_modify(new_name, WEAKREF(target_mob))
 	if(ishuman(target_mob))
 		var/mob/living/carbon/human/target_human = target_mob
 		if(target_human.wear_id && target_human.wear_id.registered_ref == WEAKREF(target_human))

@@ -794,6 +794,12 @@
 	if(admin_holder)
 		admin_holder.create_xenos(usr)
 
+/client/proc/create_custom_xeno()
+	set name = "Create Custom Xeno"
+	set category = "Admin.Events"
+	if(admin_holder)
+		admin_holder.create_custom_xeno(usr)
+
 /client/proc/clear_mutineers()
 	set name = "Clear All Mutineers"
 	set category = "Admin.Events"

@@ -313,3 +313,23 @@
 				for(var/A in value)
 					if(var_source.vars.Find(A))
 						. += A
+
+/**
+ * Returns a list of var names belonging to a specific type
+ *
+ * This only returns the variables of the type in question, not those of their parents, for this behaviour just iterate over vars
+ */
+/proc/type2listofvars(the_type)
+	var/atom/child = new the_type
+	var/child_var_names = list()
+	var/atom/parent = new child.parent_type
+	var/parent_var_names = list()
+
+	for(var/var_name in parent.vars)
+		parent_var_names += var_name
+	for(var/var_name in child.vars)
+		child_var_names += var_name
+
+	qdel(child)
+	qdel(parent)
+	return child_var_names - parent_var_names

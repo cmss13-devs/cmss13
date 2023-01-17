@@ -217,9 +217,11 @@
 	if(QDELETED(owner_mob))
 		owner_mob = src
 
-	if(omni_directional)
-		setDir(get_dir(src, A))
-
+	if(omni_directional && (dir != get_cardinal_dir(src, A))) //thanks to carlarc for the bulk of this -newyearnearmeUWU
+		setDir(get_cardinal_dir(src, A))
+		playsound(loc, 'sound/mecha/mechturn.ogg', 50, 1)
+		last_fired = world.time + 0.5 SECONDS
+		return
 	actual_fire(A)
 
 	if(targets.len)

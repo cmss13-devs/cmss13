@@ -45,14 +45,14 @@
 	max_rounds = 6
 
 
-//SVD //Based on the actual Dragunov sniper rifle.
+//SVD //Based on the actual Dragunov designated marksman rifle.
 
 /obj/item/ammo_magazine/sniper/svd
 	name = "\improper SVD magazine (7.62x54mmR)"
-	desc = "A large caliber magazine for the SVD sniper rifle."
+	desc = "A large caliber magazine for the SVD designated marksman rifle."
 	caliber = "7.62x54mmR"
 	icon_state = "svd"
-	default_ammo = /datum/ammo/bullet/sniper/svd
+	default_ammo = /datum/ammo/bullet/sniper/crude
 	max_rounds = 10
 	gun_type = /obj/item/weapon/gun/rifle/sniper/svd
 

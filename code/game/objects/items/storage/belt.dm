@@ -436,9 +436,9 @@
 	for(var/i = 1 to storage_slots)
 		new /obj/item/ammo_magazine/smg/mp5 (src)
 
-/obj/item/storage/belt/marine/hunting/fill_preset_inventory() // Hunting Rifle
+/obj/item/storage/belt/marine/abr40/fill_preset_inventory() // Hunting Rifle
 	for(var/i = 1 to storage_slots)
-		new /obj/item/ammo_magazine/rifle/hunting(src)
+		new /obj/item/ammo_magazine/rifle/l42a/abr40(src)
 
 /obj/item/storage/belt/marine/fp9000/fill_preset_inventory() // FP9000
 	for(var/i = 1 to storage_slots)

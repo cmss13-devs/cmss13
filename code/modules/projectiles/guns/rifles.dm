@@ -1301,6 +1301,7 @@
 						/obj/item/attachable/extended_barrel,
 						/obj/item/attachable/magnetic_harness,
 						/obj/item/attachable/stock/carbine,
+						/obj/item/attachable/stock/carbine/wood,
 						/obj/item/attachable/bipod,
 						/obj/item/attachable/lasersight,
 						/obj/item/attachable/scope,
@@ -1318,7 +1319,6 @@
 /obj/item/weapon/gun/rifle/l42a/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 19,"rail_x" = 12, "rail_y" = 20, "under_x" = 18, "under_y" = 15, "stock_x" = 22, "stock_y" = 10)
 
-
 /obj/item/weapon/gun/rifle/l42a/set_gun_config_values()
 	..()
 	fire_delay = FIRE_DELAY_TIER_8
@@ -1330,54 +1330,84 @@
 	damage_falloff_mult = 0
 	scatter = SCATTER_AMOUNT_TIER_8
 
-
 /obj/item/weapon/gun/rifle/l42a/training
 	current_mag = /obj/item/ammo_magazine/rifle/l42a/rubber
 
 //-------------------------------------------------------
 //-------------------------------------------------------
-//Basira-Armstrong rifle (Used by the CLF)
+//ABR-40 hunting rifle
 
-/obj/item/weapon/gun/rifle/hunting
-	name = "\improper Basira-Armstrong rifle"
-	desc = "Named after its eccentric designers, the Basira-Armstrong is a civilian semi-automatic rifle frequently found in the outer colonies. Despite its legally-mandated limited magazine capacity, its light weight and legendary accuracy makes it popular among hunters and competitive shooters."
-	icon_state = "hunting"
-	item_state = "hunting"
-	reload_sound = 'sound/weapons/handling/l42_reload.ogg'
-	unload_sound = 'sound/weapons/handling/l42_unload.ogg'
-	fire_sound = 'sound/weapons/gun_carbine.ogg'
-	current_mag = /obj/item/ammo_magazine/rifle/hunting
+// Civilian version of the L42A, used for hunting, and also by undersupplied paramilitary groups.
+
+/obj/item/weapon/gun/rifle/l42a/abr40
+	name = "\improper ABR-40 hunting rifle"
+	desc = "The ABR-40 was created after the striking popularity of the L42 battle rifle as a hunting rifle for civilians. Sporting faux wooden furniture and a legally-mandated 12 round magazine, it's still highly accurate and deadly, a favored pick of experienced hunters and retired Marines. However, it's very limited in attachment selection, only being able to fit rail attachments, and the differences in design from the L42 force an awkward pose when attempting to hold it one-handed. Removing the stock is not recommended."
+	icon_state = "abr40"
+	item_state = "abr40"
+	current_mag = /obj/item/ammo_magazine/rifle/l42a/abr40
 	attachable_allowed = list(
-						/obj/item/attachable/suppressor,
+						//Barrel
 						/obj/item/attachable/bayonet,
 						/obj/item/attachable/bayonet/upp,
+						/obj/item/attachable/bayonet/c02,
+						//Rail
 						/obj/item/attachable/reddot,
 						/obj/item/attachable/reflex,
 						/obj/item/attachable/flashlight,
-						/obj/item/attachable/extended_barrel,
 						/obj/item/attachable/magnetic_harness,
-						/obj/item/attachable/lasersight,
 						/obj/item/attachable/scope,
 						/obj/item/attachable/scope/mini,
-						/obj/item/attachable/scope/mini_iff,
 						/obj/item/attachable/scope/mini/hunting,
-						/obj/item/attachable/stock/hunting,
+						//Stock
+						/obj/item/attachable/stock/carbine,
+						/obj/item/attachable/stock/carbine/wood,
+						/obj/item/attachable/stock/carbine/wood/tactical,
 						)
-	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
-	wield_delay = WIELD_DELAY_VERY_FAST
-	aim_slowdown = SLOWDOWN_ADS_QUICK
-	starting_attachment_types = list(/obj/item/attachable/scope/mini/hunting,/obj/item/attachable/stock/hunting)
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_WIELDED_FIRING_ONLY|GUN_AMMO_COUNTER
+	wield_delay = WIELD_DELAY_FAST
+	starting_attachment_types = list(/obj/item/attachable/stock/carbine/wood, /obj/item/attachable/scope/mini/hunting)
+	map_specific_decoration = FALSE
 
-/obj/item/weapon/gun/rifle/hunting/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 17,"rail_x" = 5, "rail_y" = 18, "under_x" = 25, "under_y" = 14, "stock_x" = 18, "stock_y" = 10)
-
-/obj/item/weapon/gun/rifle/hunting/set_gun_config_values()
+// Identical to the L42 in stats, *except* for extra recoil and scatter that are nulled by keeping the stock on.
+/obj/item/weapon/gun/rifle/l42a/abr40/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_7
-	burst_amount = 0
-	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_10
-	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_4
-	scatter = SCATTER_AMOUNT_TIER_10
-	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_6
-	recoil_unwielded = RECOIL_AMOUNT_TIER_4
-	damage_falloff_mult = 0
+	accuracy_mult = (BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_5) - HIT_ACCURACY_MULT_TIER_10
+	recoil = RECOIL_AMOUNT_TIER_4
+	scatter = (SCATTER_AMOUNT_TIER_8) + SCATTER_AMOUNT_TIER_5
+
+
+/obj/item/weapon/gun/rifle/l42a/abr40/tactical
+	desc = "The ABR-40 was created after the striking popularity of the L42 battle rifle as a hunting rifle for civilians, and naturally fell into the hands of many underfunded paramilitary groups and insurrections in turn, especially due to its cross-compatibility with L42A magazines. This specific rifle seems to have unique tacticool blue-black furniture alongside some miscellaneous aftermarket modding."
+	icon_state = "abr40_tac"
+	item_state = "abr40_tac"
+	current_mag = /obj/item/ammo_magazine/rifle/l42a/ap
+	attachable_allowed = list(
+						//Barrel
+						/obj/item/attachable/suppressor,
+						/obj/item/attachable/bayonet,
+						/obj/item/attachable/bayonet/upp,
+						/obj/item/attachable/bayonet/c02,
+						//Rail
+						/obj/item/attachable/reddot,
+						/obj/item/attachable/reflex,
+						/obj/item/attachable/flashlight,
+						/obj/item/attachable/magnetic_harness,
+						/obj/item/attachable/scope,
+						/obj/item/attachable/scope/mini,
+						/obj/item/attachable/scope/mini/hunting,
+						//Under
+						/obj/item/attachable/flashlight/grip,
+						//Stock
+						/obj/item/attachable/stock/carbine,
+						/obj/item/attachable/stock/carbine/wood,
+						/obj/item/attachable/stock/carbine/wood/tactical,
+						)
+	starting_attachment_types = list(/obj/item/attachable/stock/carbine/wood/tactical, /obj/item/attachable/suppressor)
+	random_spawn_chance = 100
+	random_spawn_rail = list(
+				/obj/item/attachable/reflex,
+				/obj/item/attachable/magnetic_harness,
+				/obj/item/attachable/scope
+				)
+	random_under_chance = 50
+	random_spawn_under = list(/obj/item/attachable/flashlight/grip)

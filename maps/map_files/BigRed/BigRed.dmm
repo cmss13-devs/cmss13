@@ -39935,7 +39935,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/caves/lambda/xenobiology)
 "vzL" = (
-/obj/item/weapon/gun/boltaction/colony,
+/obj/item/weapon/gun/boltaction,
 /turf/open/floor/plating{
 	dir = 8;
 	icon_state = "platingdmg3";

@@ -52,7 +52,6 @@
 				evolution_stored += progress_amount
 		else
 			evolution_stored += progress_amount
-			evolve_message()
 
 /mob/living/carbon/Xenomorph/proc/evolve_message()
 	to_chat(src, SPAN_XENODANGER("Your carapace crackles and your tendons strengthen. You are ready to <a href='?src=\ref[src];evolve=1;'>evolve</a>!")) //Makes this bold so the Xeno doesn't miss it

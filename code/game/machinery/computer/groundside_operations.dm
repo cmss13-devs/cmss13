@@ -10,7 +10,7 @@
 	var/datum/squad/current_squad = null
 
 	var/datum/tacmap/tacmap
-	var/minimap_type = MINIMAP_FLAG_MARINE
+	var/minimap_type = MINIMAP_FLAG_USCM
 
 	var/is_announcement_active = TRUE
 	var/announcement_title = COMMAND_ANNOUNCE
@@ -317,7 +317,7 @@
 	add_pmcs = FALSE
 	lz_selection = FALSE
 	has_squad_overwatch = FALSE
-	minimap_type = MINIMAP_FLAG_MARINE_UPP
+	minimap_type = MINIMAP_FLAG_UPP
 
 /obj/structure/machinery/computer/groundside_operations/clf
 	announcement_title = CLF_COMMAND_ANNOUNCE
@@ -325,11 +325,11 @@
 	add_pmcs = FALSE
 	lz_selection = FALSE
 	has_squad_overwatch = FALSE
-	minimap_type = MINIMAP_FLAG_MARINE_CLF
+	minimap_type = MINIMAP_FLAG_CLF
 
 /obj/structure/machinery/computer/groundside_operations/pmc
 	announcement_title = PMC_COMMAND_ANNOUNCE
 	announcement_faction = FACTION_PMC
 	lz_selection = FALSE
 	has_squad_overwatch = FALSE
-	minimap_type = MINIMAP_FLAG_MARINE_PMC
+	minimap_type = MINIMAP_FLAG_PMC

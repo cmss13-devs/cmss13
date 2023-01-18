@@ -44,7 +44,7 @@
 	var/stat_msg2
 
 	var/datum/tacmap/tacmap
-	var/minimap_type = MINIMAP_FLAG_MARINE
+	var/minimap_type = MINIMAP_FLAG_USCM
 
 	processing = TRUE
 

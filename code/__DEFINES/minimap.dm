@@ -1,14 +1,14 @@
 
 #define MINIMAP_FLAG_XENO (1<<0)
-#define MINIMAP_FLAG_MARINE (1<<1)
-#define MINIMAP_FLAG_MARINE_PMC (1<<2)
-#define MINIMAP_FLAG_MARINE_UPP (1<<3)
-#define MINIMAP_FLAG_MARINE_CLF (1<<4)
-#define MINIMAP_FLAG_EXCAVATION_ZONE (1<<5)
-#define MINIMAP_FLAG_ALL (1<<6) - 1
+#define MINIMAP_FLAG_USCM (1<<1)
+#define MINIMAP_FLAG_PMC (1<<2)
+#define MINIMAP_FLAG_UPP (1<<3)
+#define MINIMAP_FLAG_CLF (1<<4)
+#define MINIMAP_FLAG_ALL (1<<5) - 1
 
 ///Converts the overworld x and y to minimap x and y values
-#define MINIMAP_PIXEL_FROM_WORLD(val) (val*2-3)
+#define MINIMAP_SCALE 2
+#define MINIMAP_PIXEL_FROM_WORLD(val) (val * MINIMAP_SCALE - 3)
 
 //actual size of a users screen in pixels
 #define SCREEN_PIXEL_SIZE 480
@@ -52,8 +52,18 @@ GLOBAL_LIST_INIT(all_minimap_flags, bitfield2list(MINIMAP_FLAG_ALL))
 #define MINIMAP_SQUAD_FOXTROT "#fe7b2e"
 #define MINIMAP_SQUAD_SOF "#400000"
 
-#define MINIMAP_ICON_CIVILIAN "#7D4820"
-#define MINIMAP_ICON_USCM "#000000"
+#define MINIMAP_ICON_BACKGROUND_CIVILIAN "#7D4820"
+#define MINIMAP_ICON_BACKGROUND_CIC "#3f3f3f"
+#define MINIMAP_ICON_BACKGROUND_USCM "#888888"
+#define MINIMAP_ICON_BACKGROUND_XENO "#3a064d"
+
+#define MINIMAP_ICON_COLOR_COMMANDER "#c6fcfc"
+#define MINIMAP_ICON_COLOR_HEAD "#F0C542"
+#define MINIMAP_ICON_COLOR_BRONZE "#eb9545"
+
+#define MINIMAP_ICON_COLOR_DOCTOR "#b83737"
+#define MINIMAP_ICON_COLOR_NURSE "#7a7a7a"
+
 
 //Prison
 #define MINIMAP_AREA_CELL_MAX "#570101ee"

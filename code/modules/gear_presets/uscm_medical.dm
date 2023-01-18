@@ -18,7 +18,8 @@
 	role_comm_title = "CMO"
 	skills = /datum/skills/CMO
 
-	minimap_icon = "cmo"
+	minimap_icon = list("medic" = MINIMAP_ICON_COLOR_HEAD)
+	minimap_background = MINIMAP_ICON_BACKGROUND_CIC
 
 	utility_under = list(/obj/item/clothing/under/rank/chief_medical_officer)
 	utility_hat = list(/obj/item/clothing/head/cmo)
@@ -74,7 +75,7 @@
 	role_comm_title = "Doc"
 	skills = /datum/skills/doctor
 
-	minimap_icon = "doctor"
+	minimap_icon = list("medic" = MINIMAP_ICON_COLOR_DOCTOR)
 
 	utility_under = list(/obj/item/clothing/under/rank/medical/green)
 	utility_hat = list(/obj/item/clothing/head/surgery/green)
@@ -129,7 +130,7 @@
 	role_comm_title = "Nurse"
 	skills = /datum/skills/nurse
 
-	minimap_icon = "nurse"
+	minimap_icon = list("medic" = MINIMAP_ICON_COLOR_NURSE)
 
 	utility_under = list(/obj/item/clothing/under/rank/medical/green)
 	utility_hat = list(/obj/item/clothing/head/surgery/green)

@@ -145,7 +145,7 @@
 	idle_power_usage = 2
 	///flags that we want to be shown when you interact with this table
 	var/datum/tacmap/map
-	var/minimap_type = MINIMAP_FLAG_MARINE
+	var/minimap_type = MINIMAP_FLAG_USCM
 
 /obj/structure/machinery/prop/almayer/CICmap/Initialize()
 	. = ..()
@@ -161,13 +161,13 @@
 	map.tgui_interact(user)
 
 /obj/structure/machinery/prop/almayer/CICmap/upp
-	minimap_type = MINIMAP_FLAG_MARINE_UPP
+	minimap_type = MINIMAP_FLAG_UPP
 
 /obj/structure/machinery/prop/almayer/CICmap/clf
-	minimap_type = MINIMAP_FLAG_MARINE_CLF
+	minimap_type = MINIMAP_FLAG_CLF
 
 /obj/structure/machinery/prop/almayer/CICmap/pmc
-	minimap_type = MINIMAP_FLAG_MARINE_PMC
+	minimap_type = MINIMAP_FLAG_PMC
 
 //Nonpower using props
 

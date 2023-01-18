@@ -6,11 +6,10 @@
  * Minimaps are a low priority subsystem that fires relatively often
  * the Initialize proc for this subsystem draws the maps as one of the last initializing subsystems
  *
- * Fire() for this subsystem doens't actually updates anything, and purely just reapplies the overlays that it already tracks
+ * Fire() for this subsystem doesn't actually update anything, and purely just reapplies the overlays that it already tracks
  * actual updating of marker locations is handled by [/datum/controller/subsystem/minimaps/proc/on_move]
  * and zlevel changes are handled in [/datum/controller/subsystem/minimaps/proc/on_z_change]
  * tracking of the actual atoms you want to be drawn on is done by means of datums holding info pertaining to them with [/datum/hud_displays]
- * There is a byond bug to be aware of when working with minimaps, see [/datum/hud_displays] and http://www.byond.com/forum/post/2661309
  */
 SUBSYSTEM_DEF(minimaps)
 	name = "Minimaps"
@@ -36,6 +35,8 @@ SUBSYSTEM_DEF(minimaps)
 	var/list/hashed_minimaps = list()
 	/// associated list of tacmap datums with a hash
 	var/list/hashed_tacmaps = list()
+	/// weakrefs of xenos temporarily added to the marine minimap
+	var/list/minimap_added = list()
 
 /datum/controller/subsystem/minimaps/Initialize(start_timeofday)
 	for(var/level=1 to length(SSmapping.z_list))
@@ -60,7 +61,7 @@ SUBSYSTEM_DEF(minimaps)
 					icon_gen.DrawBox(BlendRGB(location.minimap_color, turfloc.minimap_color, 0.5), xval, yval)
 					continue
 				icon_gen.DrawBox(location.minimap_color, xval, yval)
-		icon_gen.Scale(480*2,480*2) //scale it up x2 to make it easer to see
+		icon_gen.Scale(480 * MINIMAP_SCALE ,480 * MINIMAP_SCALE) //scale it up x2 to make it easer to see
 		icon_gen.Crop(1, 1, min(icon_gen.Width(), 480), min(icon_gen.Height(), 480)) //then cut all the empty pixels
 
 		//generation is done, now we need to center the icon to someones view, this can be left out if you like it ugly and will halve SSinit time
@@ -82,8 +83,8 @@ SUBSYSTEM_DEF(minimaps)
 				else if(yval < smallest_y)
 					smallest_y = yval
 
-		minimaps_by_z["[level]"].x_offset = FLOOR((SCREEN_PIXEL_SIZE-largest_x-smallest_x)/2, 1)
-		minimaps_by_z["[level]"].y_offset = FLOOR((SCREEN_PIXEL_SIZE-largest_y-smallest_y)/2, 1)
+		minimaps_by_z["[level]"].x_offset = FLOOR((SCREEN_PIXEL_SIZE-largest_x-smallest_x) / MINIMAP_SCALE, 1)
+		minimaps_by_z["[level]"].y_offset = FLOOR((SCREEN_PIXEL_SIZE-largest_y-smallest_y) / MINIMAP_SCALE, 1)
 
 		icon_gen.Shift(EAST, minimaps_by_z["[level]"].x_offset)
 		icon_gen.Shift(NORTH, minimaps_by_z["[level]"].y_offset)
@@ -111,6 +112,20 @@ SUBSYSTEM_DEF(minimaps)
 	updators_by_datum = SSminimaps.updators_by_datum
 
 /datum/controller/subsystem/minimaps/fire(resumed)
+	if(times_fired % 6)
+		update_special_minimaps()
+
+		for(var/z in minimaps_by_z)
+			var/datum/hud_displays/hud = minimaps_by_z[z]
+			for(var/flags as anything in hud.images_assoc)
+				var/list/associated_blips = list()
+				for(var/index as anything in hud.images_assoc[flags])
+					var/list/raw = hud.images_assoc[flags]
+					associated_blips += raw[index]
+				for(var/image/blip as anything in hud.images_raw[flags])
+					if(!(blip in associated_blips))
+						hud.images_raw[flags] -= blip
+
 	var/static/iteration = 0
 	if(!iteration) //on first iteration clear all overlays
 		for(var/iter=1 to length(update_targets_unsorted))
@@ -208,20 +223,22 @@ SUBSYSTEM_DEF(minimaps)
  * * icon: icon file we want to use for this blip, 'icons/UI_icons/map_blips.dmi' by default
  * * overlay_iconstates: list of iconstates to use as overlay. Used for xeno leader icons.
  */
-/datum/controller/subsystem/minimaps/proc/add_marker(atom/target, zlevel, hud_flags = NONE, iconstate, icon = 'icons/ui_icons/map_blips.dmi', list/overlay_iconstates, color_code, background = "background")
-	if(!isatom(target) || !zlevel || !hud_flags || !iconstate || !icon)
+/datum/controller/subsystem/minimaps/proc/add_marker(atom/target, zlevel, hud_flags = NONE, iconstate, icon = 'icons/ui_icons/map_blips.dmi', list/overlay_iconstates, image/given_image)
+	if(!isatom(target) || !zlevel || !hud_flags || ((!iconstate || !icon) && !given_image))
 		CRASH("Invalid marker added to subsystem")
 	if(images_by_source[target])
 		CRASH("Duplicate marker added to subsystem")
 	if(!initialized)
-		earlyadds += CALLBACK(src, PROC_REF(add_marker), target, zlevel, hud_flags, iconstate, icon)
+		earlyadds += CALLBACK(src, PROC_REF(add_marker), target, zlevel, hud_flags, iconstate, icon, overlay_iconstates, given_image)
 		return
 
-	var/image/blip = image(icon, iconstate, pixel_x = MINIMAP_PIXEL_FROM_WORLD(target.x) + minimaps_by_z["[zlevel]"].x_offset, pixel_y = MINIMAP_PIXEL_FROM_WORLD(target.y) + minimaps_by_z["[zlevel]"].y_offset)
-	if(color_code)
-		var/mutable_appearance/underlay = mutable_appearance('icons/ui_icons/map_blips.dmi', background)
-		underlay.color = color_code
-		blip.underlays += underlay
+	var/image/blip
+	if(!given_image)
+		blip = image(icon, iconstate, pixel_x = MINIMAP_PIXEL_FROM_WORLD(target.x) + minimaps_by_z["[zlevel]"].x_offset, pixel_y = MINIMAP_PIXEL_FROM_WORLD(target.y) + minimaps_by_z["[zlevel]"].y_offset)
+	else
+		given_image.pixel_x = MINIMAP_PIXEL_FROM_WORLD(target.x) + minimaps_by_z["[zlevel]"].x_offset
+		given_image.pixel_y = MINIMAP_PIXEL_FROM_WORLD(target.y) + minimaps_by_z["[zlevel]"].y_offset
+		blip = given_image
 
 	for(var/i in overlay_iconstates)
 		blip.overlays += image(icon, i)
@@ -322,6 +339,49 @@ SUBSYSTEM_DEF(minimaps)
 	hashed_tacmaps[hash] = tacmap
 	return tacmap
 
+/datum/controller/subsystem/minimaps/proc/update_special_minimaps()
+	if(SSticker.toweractive)
+		add_xenos_to_minimap()
+	else
+		if(length(GLOB.command_apc_list))
+			for(var/obj/vehicle/multitile/apc/command/current_apc as anything in GLOB.command_apc_list)
+				var/turf/apc_turf = get_turf(current_apc)
+				if(current_apc.health == 0 || !current_apc.visible_in_tacmap || !is_ground_level(apc_turf))
+					continue
+
+				for(var/mob/living/carbon/Xenomorph/current_xeno as anything in GLOB.living_xeno_list)
+					var/turf/xeno_turf = get_turf(current_xeno)
+					if(!is_ground_level(xeno_turf))
+						continue
+
+					if(get_dist(current_apc, current_xeno) <= current_apc.sensor_radius)
+						if(WEAKREF(current_xeno) in minimap_added)
+							return
+
+						remove_marker(current_xeno)
+						add_marker(current_xeno, current_xeno.z, hud_flags = MINIMAP_FLAG_USCM|MINIMAP_FLAG_XENO, iconstate = current_xeno.caste.minimap_icon)
+						minimap_added += WEAKREF(current_xeno)
+					else
+						if(WEAKREF(current_xeno) in minimap_added)
+							remove_marker(current_xeno, MINIMAP_FLAG_USCM)
+							minimap_added -= current_xeno
+
+/datum/controller/subsystem/minimaps/proc/remove_xenos_from_minimap()
+	for(var/mob/living/carbon/Xenomorph/current_xeno as anything in GLOB.living_xeno_list)
+		if(WEAKREF(current_xeno) in minimap_added)
+			remove_marker(current_xeno)
+			minimap_added -= current_xeno
+
+/datum/controller/subsystem/minimaps/proc/add_xenos_to_minimap()
+	for(var/mob/living/carbon/Xenomorph/current_xeno as anything in GLOB.living_xeno_list)
+		if(WEAKREF(current_xeno) in minimap_added)
+			return
+
+		remove_marker(current_xeno)
+		add_marker(current_xeno, current_xeno.z, hud_flags = MINIMAP_FLAG_USCM, iconstate = current_xeno.caste.minimap_icon)
+		minimap_added += WEAKREF(current_xeno)
+
+
 ///Default HUD screen minimap object
 /atom/movable/screen/minimap
 	name = "Minimap"
@@ -407,16 +467,16 @@ SUBSYSTEM_DEF(minimaps)
 	minimap_flags = MINIMAP_FLAG_XENO
 
 /datum/action/minimap/marine
-	minimap_flags = MINIMAP_FLAG_MARINE
-	marker_flags = MINIMAP_FLAG_MARINE
+	minimap_flags = MINIMAP_FLAG_USCM
+	marker_flags = MINIMAP_FLAG_USCM
 
 /datum/action/minimap/observer
-	minimap_flags = MINIMAP_FLAG_XENO|MINIMAP_FLAG_MARINE
+	minimap_flags = MINIMAP_FLAG_XENO|MINIMAP_FLAG_USCM
 	marker_flags = NONE
 	hidden = TRUE
 
 /datum/tacmap
-	var/allowed_flags = MINIMAP_FLAG_MARINE
+	var/allowed_flags = MINIMAP_FLAG_USCM
 	///by default Zlevel 3, groundside is targeted
 	var/targeted_zlevel = 3
 	var/atom/owner

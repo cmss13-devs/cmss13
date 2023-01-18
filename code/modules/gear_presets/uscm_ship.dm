@@ -52,7 +52,7 @@
 	skills = /datum/skills/civilian
 
 	minimap_icon = "cl"
-	minimap_background = MINIMAP_ICON_CIVILIAN
+	minimap_background = MINIMAP_ICON_BACKGROUND_CIVILIAN
 
 	utility_under = list(/obj/item/clothing/under/liaison_suit/outing)
 	utility_hat = list()
@@ -121,7 +121,8 @@
 	minimum_age = 27
 	skills = /datum/skills/CE
 
-	minimap_icon = "ce"
+	minimap_icon = list("engi" = MINIMAP_ICON_COLOR_HEAD)
+	minimap_background = MINIMAP_ICON_BACKGROUND_CIC
 
 	utility_under = list(/obj/item/clothing/under/marine/officer/ce)
 
@@ -155,7 +156,7 @@
 	role_comm_title = "MT"
 	skills = /datum/skills/MT
 
-	minimap_icon = "mt"
+	minimap_icon = "engi"
 
 	utility_under = list(/obj/item/clothing/under/marine/officer/engi)
 
@@ -314,7 +315,8 @@
 	minimum_age = 30
 	skills = /datum/skills/commander
 
-	minimap_icon = "co"
+	minimap_icon = list("cic" = MINIMAP_ICON_COLOR_COMMANDER)
+	minimap_background = MINIMAP_ICON_BACKGROUND_CIC
 
 	utility_under = list(/obj/item/clothing/under/marine,/obj/item/clothing/under/marine/officer/command)
 	utility_hat = list(/obj/item/clothing/head/cmcap,/obj/item/clothing/head/beret/cm/tan)
@@ -412,7 +414,8 @@
 	minimum_age = 35
 	skills = /datum/skills/XO
 
-	minimap_icon = "xo"
+	minimap_icon = list("cic" = MINIMAP_ICON_COLOR_HEAD)
+	minimap_background = MINIMAP_ICON_BACKGROUND_CIC
 
 	dress_extra = list(/obj/item/storage/large_holster/ceremonial_sword/full)
 
@@ -450,7 +453,8 @@
 	minimum_age = 25
 	skills = /datum/skills/SO
 
-	minimap_icon = "so"
+	minimap_icon = list("cic" = MINIMAP_ICON_COLOR_BRONZE)
+	minimap_background = MINIMAP_ICON_BACKGROUND_CIC
 
 /datum/equipment_preset/uscm_ship/so/load_gear(mob/living/carbon/human/H)
 	var/backItem = /obj/item/storage/backpack/satchel

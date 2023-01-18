@@ -175,7 +175,7 @@ GLOBAL_LIST_INIT(iron_recipes, list ( \
 	perunit = 2000
 	sheettype = "phoron"
 	stack_id = "phoron"
-	black_market_value = 30
+	black_market_value = 10
 
 /obj/item/stack/sheet/mineral/phoron/small_stack
 	amount = STACK_10

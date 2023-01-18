@@ -152,16 +152,20 @@
 	name = "500 dollars"
 	icon_state = "spacecash500"
 	desc = "Five US Government minted hundred-dollar bills. All of them have pictures of Ben Franklin on them. They all eagarly glare at you, making you feel as if you owe them something. "
-	/// By default any huge sum of cash like this is 'counterfeit' so that it doesn't break the Black Market.
-	counterfeit = TRUE
 	worth = 500
+
+/obj/item/spacecash/c500/counterfeit
+	// If you're going to slap down huge sums of cash in easily reachable spots for RP or flavor reasons, make them counterfeit, so they don't break the black market - they will be rejected.
+	counterfeit = TRUE
 
 /obj/item/spacecash/c1000
 	name = "1000 dollars"
 	icon_state = "spacecash1000"
 	desc = "Ten US Government minted hundred-dollar bills. Every single damn one of them has Ben Fucking Franklin on them. The court of Bens sit impatiently, as if each one thought they alone belonged to you. This coven of angry Bens have all since learned about your relations with the other Bens, and they want answers."
 	worth = 1000
-	/// By default any huge sum of cash like this is 'counterfeit' so that it doesn't break the Black Market.
+
+/obj/item/spacecash/c1000/counterfeit
+	// If you're going to slap down huge sums of cash in easily reachable spots for RP or flavor reasons, make them counterfeit, so they don't break the black market - they will be rejected.
 	counterfeit = TRUE
 
 /proc/spawn_money(var/sum, spawnloc, mob/living/carbon/human/human_user as mob)

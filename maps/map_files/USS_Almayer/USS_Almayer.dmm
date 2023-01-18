@@ -18721,16 +18721,6 @@
 	tag = "icon-red"
 	},
 /area/almayer/squads/alpha)
-"bgZ" = (
-/obj/structure/bed/chair{
-	tag = "icon-chair (WEST)";
-	dir = 4
-	},
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
-	},
-/area/almayer/squads/req)
 "bhf" = (
 /obj/structure/machinery/light{
 	dir = 4;
@@ -18857,8 +18847,8 @@
 /obj/structure/safe,
 /obj/item/coin/platinum,
 /obj/item/attachable/suppressor,
-/obj/item/spacecash/c1000,
-/obj/item/spacecash/c1000,
+/obj/item/spacecash/c1000/countefeit,
+/obj/item/spacecash/c1000/countefeit,
 /obj/item/clothing/accessory/storage/holster,
 /obj/item/weapon/gun/pistol/mod88,
 /obj/item/ammo_magazine/pistol/mod88/rubber,
@@ -35703,19 +35693,13 @@
 	},
 /area/almayer/living/captain_mess)
 "cTf" = (
-/obj/structure/surface/table/almayer,
-/obj/item/reagent_container/food/snacks/kepler_crisps{
-	pixel_x = 8;
-	pixel_y = 4
-	},
-/obj/item/toy/deck{
-	pixel_x = -4;
-	pixel_y = 1
+/obj/structure/machinery/cryopod/right{
+	layer = 3.1;
+	pixel_y = 13
 	},
 /turf/open/floor/almayer{
-	dir = 6;
-	icon_state = "green";
-	tag = "icon-green (SOUTHEAST)"
+	icon_state = "cargo";
+	tag = "icon-bluecorner (NORTH)"
 	},
 /area/almayer/squads/req)
 "cTC" = (
@@ -38304,17 +38288,9 @@
 	},
 /area/almayer/engineering/engine_core)
 "dWg" = (
-/obj/structure/bed/chair{
-	tag = "icon-chair (WEST)";
-	dir = 4
-	},
-/obj/structure/pipes/vents/pump{
-	dir = 1
-	},
-/turf/open/floor/almayer{
-	icon_state = "green";
-	tag = "icon-green"
-	},
+/obj/effect/landmark/start/cargo,
+/obj/structure/machinery/light,
+/turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/req)
 "dWk" = (
 /obj/structure/surface/table/almayer,
@@ -46816,10 +46792,7 @@
 /area/almayer/engineering/upper_engineering/notunnel)
 "hzg" = (
 /obj/effect/decal/cleanable/blood/oil,
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
-	},
+/turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/req)
 "hzs" = (
 /obj/structure/bed,
@@ -49037,11 +49010,11 @@
 	},
 /area/almayer/hull/lower_hull/l_m_p)
 "ixQ" = (
-/turf/open/floor/almayer{
-	dir = 4;
-	icon_state = "green";
-	tag = "icon-green (WEST)"
+/obj/effect/decal/warning_stripes{
+	icon_state = "SE-out";
+	tag = "icon-SE-out"
 	},
+/turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/req)
 "iyq" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer/open{
@@ -51168,8 +51141,9 @@
 /obj/structure/closet/secure_closet/cargotech,
 /obj/item/clothing/accessory/storage/webbing,
 /turf/open/floor/almayer{
-	icon_state = "cargo";
-	tag = "icon-bluecorner (NORTH)"
+	dir = 1;
+	icon_state = "green";
+	tag = "icon-green (NORTH)"
 	},
 /area/almayer/squads/req)
 "jrm" = (
@@ -53360,9 +53334,13 @@
 	pixel_x = 8;
 	pixel_y = 32
 	},
+/obj/structure/machinery/light{
+	dir = 1
+	},
 /turf/open/floor/almayer{
-	icon_state = "cargo";
-	tag = "icon-bluecorner (NORTH)"
+	dir = 1;
+	icon_state = "green";
+	tag = "icon-green (NORTH)"
 	},
 /area/almayer/squads/req)
 "ksp" = (
@@ -54654,10 +54632,13 @@
 	dir = 10;
 	tag = "icon-intact-supply (SOUTHWEST)"
 	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	tag = "icon-E-corner"
+	},
 /turf/open/floor/almayer{
-	dir = 4;
 	icon_state = "greencorner";
-	tag = "icon-greencorner (EAST)"
+	tag = "icon-greencorner"
 	},
 /area/almayer/squads/req)
 "kWq" = (
@@ -56658,16 +56639,6 @@
 	tag = "icon-red (NORTHEAST)"
 	},
 /area/almayer/hallways/stern_hallway)
-"lKN" = (
-/obj/structure/bed/chair{
-	dir = 1
-	},
-/turf/open/floor/almayer{
-	dir = 5;
-	icon_state = "green";
-	tag = "icon-green (WEST)"
-	},
-/area/almayer/squads/req)
 "lLC" = (
 /obj/structure/surface/table/almayer,
 /turf/open/floor/almayer,
@@ -60263,10 +60234,7 @@
 /area/almayer/medical/medical_science)
 "nqx" = (
 /obj/structure/pipes/standard/manifold/hidden/supply,
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
-	},
+/turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/req)
 "nqD" = (
 /obj/item/ammo_box/magazine/misc/mre,
@@ -60646,12 +60614,17 @@
 /area/almayer/shipboard/port_missiles)
 "nwY" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 5;
-	tag = "icon-intact-supply (NORTHEAST)"
+	dir = 9;
+	tag = "icon-intact-supply (SOUTHEAST)"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	tag = "icon-E-corner"
 	},
 /turf/open/floor/almayer{
+	dir = 6;
 	icon_state = "green";
-	tag = "icon-green"
+	tag = "icon-green (SOUTHEAST)"
 	},
 /area/almayer/squads/req)
 "nxK" = (
@@ -61636,6 +61609,20 @@
 	tag = "icon-orange (NORTHEAST)"
 	},
 /area/almayer/living/gym)
+"nUa" = (
+/obj/structure/bed/chair{
+	dir = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	tag = "icon-S"
+	},
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "green";
+	tag = "icon-green (WEST)"
+	},
+/area/almayer/squads/req)
 "nUd" = (
 /obj/structure/reagent_dispensers/watertank,
 /obj/item/reagent_container/spray/cleaner{
@@ -65693,6 +65680,16 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/medical/morgue)
+"pMJ" = (
+/obj/structure/bed/chair{
+	dir = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	tag = "icon-S"
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/squads/req)
 "pML" = (
 /obj/structure/pipes/vents/pump{
 	dir = 8
@@ -69963,20 +69960,10 @@
 	},
 /area/almayer/command/airoom)
 "rCK" = (
-/obj/structure/surface/table/almayer,
-/obj/item/ashtray/plastic,
-/obj/item/trash/cigbutt{
-	pixel_y = 8;
-	pixel_x = 1
-	},
-/obj/item/reagent_container/food/drinks/cans/souto/diet/cherry{
-	pixel_x = -9;
-	pixel_y = 12
-	},
+/obj/structure/machinery/cryopod/right,
 /turf/open/floor/almayer{
-	dir = 4;
-	icon_state = "green";
-	tag = "icon-green (WEST)"
+	icon_state = "cargo";
+	tag = "icon-bluecorner (NORTH)"
 	},
 /area/almayer/squads/req)
 "rCL" = (
@@ -70023,16 +70010,23 @@
 /turf/open/floor/wood/ship,
 /area/almayer/living/commandbunks)
 "rDe" = (
-/obj/structure/machinery/cryopod/right{
-	pixel_y = 6
+/obj/structure/surface/table/almayer,
+/obj/item/reagent_container/food/snacks/kepler_crisps{
+	pixel_x = 8;
+	pixel_y = 4
+	},
+/obj/item/toy/deck{
+	pixel_x = -4;
+	pixel_y = 1
 	},
 /obj/structure/sign/safety/cryo{
 	pixel_x = 8;
 	pixel_y = 33
 	},
 /turf/open/floor/almayer{
-	icon_state = "cargo";
-	tag = "icon-bluecorner (NORTH)"
+	dir = 6;
+	icon_state = "green";
+	tag = "icon-green (SOUTHEAST)"
 	},
 /area/almayer/squads/req)
 "rDi" = (
@@ -73995,7 +73989,7 @@
 	pixel_y = 30
 	},
 /obj/structure/surface/table/almayer,
-/obj/item/spacecash/c1000,
+/obj/item/spacecash/c1000/countefeit,
 /obj/item/storage/box/drinkingglasses,
 /obj/item/storage/fancy/cigar,
 /turf/open/floor/almayer,
@@ -78181,6 +78175,23 @@
 	tag = "icon-red (NORTHWEST)"
 	},
 /area/almayer/hallways/stern_hallway)
+"uWI" = (
+/obj/structure/surface/table/almayer,
+/obj/item/ashtray/plastic,
+/obj/item/trash/cigbutt{
+	pixel_y = 8;
+	pixel_x = 1
+	},
+/obj/item/reagent_container/food/drinks/cans/souto/diet/cherry{
+	pixel_x = -9;
+	pixel_y = 12
+	},
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "green";
+	tag = "icon-green (NORTH)"
+	},
+/area/almayer/squads/req)
 "uWP" = (
 /obj/structure/machinery/door/airlock/almayer/medical/glass{
 	name = "\improper Medical Storage";
@@ -79756,6 +79767,15 @@
 	allow_construction = 0
 	},
 /area/almayer/shipboard/brig/chief_mp_office)
+"vBU" = (
+/obj/structure/pipes/vents/pump{
+	dir = 1
+	},
+/turf/open/floor/almayer{
+	icon_state = "green";
+	tag = "icon-green"
+	},
+/area/almayer/squads/req)
 "vCg" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
@@ -84010,6 +84030,10 @@
 	tag = "icon-test_floor4"
 	},
 /area/almayer/hull/lower_hull/l_a_p)
+"xnI" = (
+/obj/effect/landmark/start/requisition,
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/squads/req)
 "xnR" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
 	dir = 1;
@@ -84575,6 +84599,18 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/hull/upper_hull/u_f_p)
+"xyY" = (
+/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	tag = "icon-E-corner"
+	},
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "green";
+	tag = "icon-green (WEST)"
+	},
+/area/almayer/squads/req)
 "xzf" = (
 /obj/structure/machinery/disposal,
 /obj/structure/disposalpipe/trunk{
@@ -130272,7 +130308,7 @@ jre
 dXG
 nqx
 hzg
-mrM
+vBU
 fIX
 fnI
 ipa
@@ -130474,7 +130510,7 @@ bdl
 krZ
 ixQ
 kWk
-bEg
+xyY
 nwY
 bKA
 fnI
@@ -130674,10 +130710,10 @@ bNs
 nwb
 mrM
 bdl
-ufJ
+uWI
+pMJ
+xnI
 ayj
-tjl
-bgZ
 dWg
 bdl
 oTe
@@ -130878,8 +130914,8 @@ iYt
 bMa
 bdl
 rDe
-ayj
-lKN
+nUa
+ufJ
 rCK
 cTf
 bdl

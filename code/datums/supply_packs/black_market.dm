@@ -188,7 +188,6 @@ Non-USCM items, from CLF, UPP, colonies, etc. Mostly combat-related.
 			else
 				new /obj/item/weapon/gun/rifle/mar40/lmg(src)
 				new /obj/item/ammo_magazine/rifle/mar40/lmg(src)
-				new /obj/item/ammo_magazine/rifle/mar40/lmg(src)
 		if(7) //VAIPO
 			if(prob(50))
 				new /obj/item/weapon/gun/rifle/mar40/tactical(src)
@@ -219,7 +218,7 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 // Rifles
 
 /datum/supply_packs/contraband/seized/m16
-	name = "M16 rifle crate (x4 magazines)"
+	name = "M16 rifle crate (x4 magazines included)"
 	contains = list(
 			/obj/item/weapon/gun/rifle/m16,
 			/obj/item/ammo_magazine/rifle/m16,
@@ -231,7 +230,7 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/seized/ar10
-	name = "AR10 rifle crate (x5 magazines)"
+	name = "AR10 rifle crate (x5 magazines included)"
 	contains = list(
 			/obj/item/weapon/gun/rifle/ar10,
 			/obj/item/ammo_magazine/rifle/ar10,
@@ -242,20 +241,8 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 	dollar_cost = 30
 	containertype = /obj/structure/largecrate/black_market
 
-/datum/supply_packs/contraband/seized/mar40
-	name = "MAR-40 battle rifle crate (x4 magazines)"
-	contains = list(
-			/obj/item/weapon/gun/rifle/mar40,
-			/obj/item/ammo_magazine/rifle/mar40,
-			/obj/item/ammo_magazine/rifle/mar40,
-			/obj/item/ammo_magazine/rifle/mar40,
-			/obj/item/ammo_magazine/rifle/mar40
-	)
-	dollar_cost = 35
-	containertype = /obj/structure/largecrate/black_market
-
 /datum/supply_packs/contraband/seized/mar30
-	name = "MAR-30 battle carbine crate (x5 magazines)"
+	name = "MAR-30 battle carbine crate (x5 magazines included)"
 	contains = list(
 			/obj/item/weapon/gun/rifle/mar40/carbine,
 			/obj/item/ammo_magazine/rifle/mar40,
@@ -267,19 +254,8 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 	dollar_cost = 30
 	containertype = /obj/structure/largecrate/black_market
 
-/datum/supply_packs/contraband/seized/mar50
-	name = "MAR-50 light machine gun crate (x3 drum magazines)"
-	contains = list(
-			/obj/item/weapon/gun/rifle/mar40/lmg,
-			/obj/item/ammo_magazine/rifle/mar40/lmg,
-			/obj/item/ammo_magazine/rifle/mar40/lmg,
-			/obj/item/ammo_magazine/rifle/mar40/lmg
-	)
-	dollar_cost = 40
-	containertype = /obj/structure/largecrate/black_market
-
 /datum/supply_packs/contraband/seized/hunting
-	name = "Basira-Armstrong hunting rifle crate (x5 magazines)"
+	name = "Basira-Armstrong hunting rifle crate (x5 magazines included)"
 	contains = list(
 			/obj/item/weapon/gun/rifle/hunting,
 			/obj/item/ammo_magazine/rifle/hunting,
@@ -294,7 +270,7 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 // Shotguns
 
 /datum/supply_packs/contraband/seized/sawny
-	name = "Sawn-off Spearhead Rival 78 crate (x1 box)"
+	name = "Sawn-off Spearhead Rival 78 crate (x1 ammo box included)"
 	contains = list(
 			/obj/item/weapon/gun/shotgun/double/damaged, //its not actually sawed off........... get fuked
 			/obj/item/ammo_magazine/shotgun/buckshot,
@@ -303,7 +279,7 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/seized/custom
-	name = "custom-built shotgun crate (x1 box)"
+	name = "custom-built shotgun crate (x1 ammo box included)"
 	contains = list(
 			/obj/item/weapon/gun/shotgun/merc/damaged,
 			/obj/item/ammo_magazine/shotgun,
@@ -314,7 +290,7 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 // SMGs
 
 /datum/supply_packs/contraband/seized/fp9000
-	name = "FN FP9000 submachinegun crate (x5 magazines)"
+	name = "FN FP9000 submachinegun crate (x5 magazines included)"
 	contains = list(
 			/obj/item/weapon/gun/smg/fp9000,
 			/obj/item/ammo_magazine/smg/fp9000,
@@ -327,7 +303,7 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/seized/mp27
-	name = "MP-27 submachinegun crate (x5 magazines)"
+	name = "MP-27 submachinegun crate (x5 magazines included)"
 	contains = list(
 			/obj/item/weapon/gun/smg/mp27,
 			/obj/item/ammo_magazine/smg/mp27,
@@ -340,7 +316,7 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/seized/mp5
-	name = "MP5 submachinegun crate (x5 magazines)"
+	name = "MP5 submachinegun crate (x5 magazines included)"
 	contains = list(
 			/obj/item/weapon/gun/smg/mp5,
 			/obj/item/ammo_magazine/smg/mp5,
@@ -353,7 +329,7 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/seized/uzi
-	name = "UZI submachinegun crate (x5 magazines)"
+	name = "UZI submachinegun crate (x5 magazines included)"
 	contains = list(
 			/obj/item/weapon/gun/smg/uzi,
 			/obj/item/ammo_magazine/smg/uzi,
@@ -366,7 +342,7 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/seized/mac15
-	name = "MAC-15 submachinegun crate (x5 magazines)"
+	name = "MAC-15 submachinegun crate (x5 magazines included)"
 	contains = list(
 			/obj/item/weapon/gun/smg/mac15,
 			/obj/item/ammo_magazine/smg/mac15,
@@ -379,7 +355,7 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/seized/ppsh
-	name = "PPSh-17b submachinegun crate (x5 magazines)"
+	name = "PPSh-17b submachinegun crate (x5 magazines included)"
 	contains = list(
 			/obj/item/weapon/gun/smg/ppsh,
 			/obj/item/ammo_magazine/smg/ppsh,
@@ -394,7 +370,7 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 //Pistols
 
 /datum/supply_packs/contraband/seized/b92fs
-	name = "Beretta pistol crate (x6 magazines)"
+	name = "Beretta pistol crate (x6 magazines included)"
 	contains = list(
 			/obj/item/weapon/gun/pistol/b92fs,
 			/obj/item/ammo_magazine/pistol/b92fs,
@@ -408,7 +384,7 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/seized/heavy
-	name = "Desert Eagle crate (x4 magazines)"
+	name = "Desert Eagle crate (x4 magazines included)"
 	contains = list(
 			/obj/item/weapon/gun/pistol/heavy,
 			/obj/item/ammo_magazine/pistol/heavy,
@@ -420,7 +396,7 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/seized/c99
-	name = "Korovin PK-9 pistol crate (x6 magazines)"
+	name = "Korovin PK-9 pistol crate (x6 magazines included)"
 	contains = list(
 			/obj/item/weapon/gun/pistol/c99,
 			/obj/item/ammo_magazine/pistol/c99,
@@ -434,7 +410,7 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/seized/kt42
-	name = "KT-42 Automag pistol (x5 magazines)"
+	name = "KT-42 Automag pistol (x5 magazines included)"
 	contains = list(
 			/obj/item/weapon/gun/pistol/kt42,
 			/obj/item/ammo_magazine/pistol/kt42,
@@ -447,7 +423,7 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/seized/holdout
-	name = "holdout pistol (x7 magazines)"
+	name = "holdout pistol (x7 magazines included)"
 	contains = list(
 			/obj/item/weapon/gun/pistol/holdout,
 			/obj/item/ammo_magazine/pistol/holdout,
@@ -462,7 +438,7 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/seized/skorpion
-	name = "CZ-81 machine pistol (x4 magazines)"
+	name = "CZ-81 machine pistol (x4 magazines included)"
 	contains = list(
 			/obj/item/weapon/gun/pistol/skorpion,
 			/obj/item/ammo_magazine/pistol/skorpion,
@@ -476,7 +452,7 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 //Revolvers
 
 /datum/supply_packs/contraband/seized/cmb
-	name = "CMB Spearhead revolver (x5 magazines)"
+	name = "CMB Spearhead revolver (x5 magazines included)"
 	contains = list(
 			/obj/item/weapon/gun/revolver/cmb,
 			/obj/item/ammo_magazine/revolver/cmb,
@@ -489,7 +465,7 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/seized/small
-	name = "S&W revolver (x6 magazines)"
+	name = "S&W revolver (x6 magazines included)"
 	contains = list(
 			/obj/item/weapon/gun/revolver/small,
 			/obj/item/ammo_magazine/revolver/small,
@@ -503,7 +479,7 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/seized/nagant
-	name = "N-Y 7.62mm revolver (x6 magazines)"
+	name = "N-Y 7.62mm revolver (x6 magazines included)"
 	contains = list(
 			/obj/item/weapon/gun/revolver/nagant,
 			/obj/item/ammo_magazine/revolver/upp,
@@ -526,7 +502,7 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/seized/r4t
-	name = "R4T hunting rifle case (x3 ammo boxes)"
+	name = "R4T hunting rifle case (x3 ammo boxes included)"
 	contains = list(
 			/obj/item/weapon/gun/lever_action/r4t,
 			/obj/item/attachable/stock/r4t,

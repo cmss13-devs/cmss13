@@ -202,38 +202,11 @@ GLOBAL_LIST_INIT(cm_vending_vehicle_crew_tank_spare, list(
 GLOBAL_LIST_INIT(cm_vending_vehicle_crew_apc, list(
 	list("STARTING KIT SELECTION:", 0, null, null, null),
 
-	list("PRIMARY WEAPON", 0, null, null, null),
-	list("PARS-159 Boyars Dualcannon", 0, /obj/effect/essentials_set/apc/dualcannon, VEHICLE_PRIMARY_AVAILABLE, VENDOR_ITEM_MANDATORY),
-
-	list("SECONDARY WEAPON", 0, null, null, null),
-	list("RE-RE700 Frontal Cannon", 0, /obj/effect/essentials_set/apc/frontalcannon, VEHICLE_SECONDARY_AVAILABLE, VENDOR_ITEM_MANDATORY),
-
-	list("SUPPORT MODULE", 0, null, null, null),
-	list("M-97F Flare Launcher", 0, /obj/effect/essentials_set/apc/flarelauncher, VEHICLE_SUPPORT_AVAILABLE, VENDOR_ITEM_MANDATORY),
-
 	list("WHEELS", 0, null, null, null),
 	list("APC Wheels", 0, /obj/item/hardpoint/locomotion/apc_wheels, VEHICLE_TREADS_AVAILABLE, VENDOR_ITEM_MANDATORY)))
 
 GLOBAL_LIST_INIT(cm_vending_vehicle_crew_apc_spare, list(
 	list("SPARE PARTS SELECTION:", 0, null, null, null),
-
-	list("PRIMARY WEAPON", 0, null, null, null),
-	list("PARS-159 Boyars Dualcannon", 500, /obj/item/hardpoint/primary/dualcannon, null, VENDOR_ITEM_REGULAR),
-
-	list("PRIMARY AMMUNITION", 0, null, null, null),
-	list("PARS-159 Dualcannon Magazine", 150, /obj/item/ammo_magazine/hardpoint/ace_autocannon, null, VENDOR_ITEM_REGULAR),
-
-	list("SECONDARY WEAPON", 0, null, null, null),
-	list("RE-RE700 Frontal Cannon", 400, /obj/item/hardpoint/secondary/frontalcannon, null, VENDOR_ITEM_REGULAR),
-
-	list("SECONDARY AMMUNITION", 0, null, null, null),
-	list("RE-RE700 Frontal Cannon Magazine", 150, /obj/item/ammo_magazine/hardpoint/tank_glauncher, null, VENDOR_ITEM_REGULAR),
-
-	list("SUPPORT MODULE", 0, null, null, null),
-	list("M-97F Flare Launcher", 300, /obj/item/hardpoint/support/flare_launcher, null, VENDOR_ITEM_REGULAR),
-
-	list("SUPPORT AMMUNITION", 0, null, null, null),
-	list("M-97F Flare Launcher Magazine", 50, /obj/item/ammo_magazine/hardpoint/flare_launcher, null, VENDOR_ITEM_REGULAR),
 
 	list("WHEELS", 0, null, null, null),
 	list("APC Wheels", 200, /obj/item/hardpoint/locomotion/apc_wheels, null, VENDOR_ITEM_REGULAR)))

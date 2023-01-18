@@ -62,7 +62,7 @@
 	return
 
 /obj/structure/platform/attackby(obj/item/W, mob/user)
-	..()
+	. = ..()
 	if(user.pulling)
 		if(!can_climb(user))
 			return

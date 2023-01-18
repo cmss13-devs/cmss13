@@ -169,10 +169,6 @@
 "pv" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/effect/spawner/random/toolbox,
-/obj/item/prop/helmetgarb/prescription_bottle{
-	pixel_y = 12;
-	pixel_x = -9
-	},
 /turf/open/floor/prison{
 	icon_state = "yellowfull"
 	},
@@ -509,11 +505,7 @@
 /area/fiorina/station/lowsec)
 "Md" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/item/weapon/gun/pistol/b92fs{
-	pixel_x = -3;
-	pixel_y = 8
-	},
-/obj/item/ammo_magazine/pistol/b92fs,
+/obj/effect/spawner/random/tool,
 /turf/open/floor/prison{
 	icon_state = "yellowfull"
 	},
@@ -709,7 +701,7 @@ ep
 ra
 Dm
 vW
-jr
+yn
 Iv
 kv
 pJ
@@ -805,7 +797,7 @@ rq
 VL
 Kf
 lU
-ev
+II
 ev
 jr
 iq

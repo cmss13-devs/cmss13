@@ -152,7 +152,6 @@
 
 //drop the inventory item on the ground
 /mob/proc/drop_inv_item_on_ground(obj/item/I, nomoveupdate, force)
-	remember_dropped_object(I)
 	return u_equip(I, get_step(src, 0), nomoveupdate, force) // Drops on turf instead of loc
 
 /mob/living/carbon/human/proc/pickup_recent()
@@ -179,7 +178,7 @@
 			return TRUE
 	return FALSE
 
-/mob/proc/remember_dropped_object(obj/dropped_object)
+/mob/living/carbon/human/proc/remember_dropped_object(obj/dropped_object)
 	var/weak_ref = WEAKREF(dropped_object)
 
 	if(!(weak_ref in remembered_dropped_objects))

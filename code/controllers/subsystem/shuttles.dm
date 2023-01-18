@@ -418,7 +418,6 @@ SUBSYSTEM_DEF(shuttle)
 		existing_shuttle.jumpToNullSpace()
 
 	// update underlays
-	world.log << "dropship [preview_shuttle],[preview_shuttle.x],[preview_shuttle.y] [D.x],[D.y],[D.z]"
 	for(var/area/A as anything in preview_shuttle.shuttle_areas)
 		for(var/turf/T as anything in A)
 			if(istype(T, /turf/closed/shuttle))

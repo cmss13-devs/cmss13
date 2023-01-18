@@ -74,9 +74,9 @@
 			if(!can_climb(user))
 				return
 			var/turf/move_to_turf = get_step(get_turf(src), dir)
-			user.pulling.forceMove(move_to_turf)
 			user.visible_message(SPAN_WARNING("[user] finishes dragging \the [user.pulling] onto \the [src]"),\
 			SPAN_WARNING("You finish dragging \the [user.pulling] onto \the [src]."))
+			user.pulling.forceMove(move_to_turf)
 
 /obj/structure/platform_decoration
 	name = "platform"

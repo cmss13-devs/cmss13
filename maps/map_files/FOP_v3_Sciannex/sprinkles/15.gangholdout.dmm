@@ -1,0 +1,856 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"at" = (
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor/prison{
+	icon_state = "floor_plate";
+	tag = "icon-floor_plate"
+	},
+/area/fiorina/station/lowsec)
+"bd" = (
+/obj/item/prop/helmetgarb/spent_buckshot,
+/turf/open/floor/prison{
+	dir = 1;
+	icon_state = "yellow"
+	},
+/area/fiorina/station/lowsec)
+"by" = (
+/turf/closed/wall/r_wall/prison,
+/area/fiorina/station/lowsec)
+"cr" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb{
+	pixel_x = -2
+	},
+/turf/open/floor/prison{
+	icon_state = "yellowfull"
+	},
+/area/fiorina/station/lowsec)
+"cJ" = (
+/turf/open/floor/prison{
+	icon_state = "yellow"
+	},
+/area/fiorina/station/lowsec)
+"cS" = (
+/obj/structure/bed/roller,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/prison{
+	icon_state = "floor_plate";
+	tag = "icon-floor_plate"
+	},
+/area/fiorina/station/lowsec)
+"ep" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/clothing/head/helmet/marine/veteran/ua_riot{
+	pixel_x = -5;
+	pixel_y = 3
+	},
+/obj/item/weapon/stunprod{
+	pixel_x = 4
+	},
+/turf/open/floor/prison{
+	icon_state = "floor_plate";
+	tag = "icon-floor_plate"
+	},
+/area/fiorina/station/lowsec)
+"ev" = (
+/turf/open/floor/prison{
+	icon_state = "yellowfull"
+	},
+/area/fiorina/station/lowsec)
+"fR" = (
+/obj/structure/machinery/cm_vending/sorted/marine_food{
+	desc = "Prison meal vendor, containing preprepared meals fit for the dregs of society.";
+	name = "\improper Fiorina Green Block Canteen Vendor"
+	},
+/obj/item/spacecash/c100{
+	pixel_x = -5;
+	pixel_y = 15
+	},
+/turf/open/floor/prison,
+/area/fiorina/station/lowsec)
+"hp" = (
+/obj/item/stool{
+	dir = 1
+	},
+/turf/open/floor/prison{
+	icon_state = "yellowfull"
+	},
+/area/fiorina/station/lowsec)
+"hE" = (
+/obj/structure/barricade/wooden{
+	dir = 1
+	},
+/turf/open/floor/prison,
+/area/fiorina/station/lowsec)
+"iq" = (
+/obj/effect/landmark/survivor_spawner/fiorina_gangmember,
+/turf/open/floor/prison,
+/area/fiorina/station/lowsec)
+"iC" = (
+/obj/structure/barricade/wooden,
+/turf/open/floor/prison{
+	dir = 6;
+	icon_state = "yellow"
+	},
+/area/fiorina/station/lowsec)
+"jr" = (
+/turf/open/floor/prison{
+	icon_state = "floor_plate";
+	tag = "icon-floor_plate"
+	},
+/area/fiorina/station/lowsec)
+"ka" = (
+/obj/item/prop/helmetgarb/spent_buckshot,
+/turf/open/floor/prison{
+	icon_state = "floor_plate";
+	tag = "icon-floor_plate"
+	},
+/area/fiorina/station/lowsec)
+"kb" = (
+/turf/template_noop,
+/area/fiorina/station/lowsec)
+"kv" = (
+/obj/structure/barricade/wooden{
+	dir = 8
+	},
+/turf/open/floor/prison{
+	icon_state = "floor_plate";
+	tag = "icon-floor_plate"
+	},
+/area/fiorina/station/lowsec)
+"lU" = (
+/obj/item/ammo_magazine/rifle/m16{
+	current_rounds = 0
+	},
+/turf/open/floor/prison{
+	icon_state = "yellowfull"
+	},
+/area/fiorina/station/lowsec)
+"lW" = (
+/obj/structure/largecrate/random/secure{
+	pixel_x = -3
+	},
+/turf/open/floor/prison,
+/area/fiorina/station/lowsec)
+"mQ" = (
+/obj/item/ammo_magazine/rifle/m16{
+	current_rounds = 0
+	},
+/turf/open/floor/prison{
+	dir = 5;
+	icon_state = "yellow"
+	},
+/area/fiorina/station/lowsec)
+"nx" = (
+/turf/open/floor/prison,
+/area/fiorina/station/disco)
+"oi" = (
+/obj/structure/largecrate/random/barrel{
+	pixel_x = -10;
+	pixel_y = 3
+	},
+/obj/structure/largecrate/random/barrel/green{
+	pixel_x = 10;
+	pixel_y = -3
+	},
+/obj/structure/largecrate/random/barrel/white{
+	pixel_y = 17;
+	layer = 3.2
+	},
+/turf/open/floor/prison{
+	dir = 1;
+	icon_state = "yellow"
+	},
+/area/fiorina/station/lowsec)
+"oF" = (
+/obj/item/stack/sheet/wood,
+/turf/open/floor/prison,
+/area/fiorina/station/disco)
+"pv" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/effect/spawner/random/toolbox,
+/obj/item/prop/helmetgarb/prescription_bottle{
+	pixel_y = 12;
+	pixel_x = -9
+	},
+/turf/open/floor/prison{
+	icon_state = "yellowfull"
+	},
+/area/fiorina/station/lowsec)
+"pJ" = (
+/obj/structure/machinery/light/double/blue{
+	pixel_y = -1
+	},
+/obj/structure/barricade/wooden{
+	dir = 8
+	},
+/obj/item/ammo_magazine/rifle/m16{
+	current_rounds = 0
+	},
+/turf/open/floor/prison{
+	icon_state = "yellow"
+	},
+/area/fiorina/station/lowsec)
+"qi" = (
+/obj/item/ammo_magazine/rifle/m16{
+	current_rounds = 0
+	},
+/turf/open/floor/prison{
+	dir = 1;
+	icon_state = "yellow"
+	},
+/area/fiorina/station/lowsec)
+"qO" = (
+/obj/structure/barricade/wooden{
+	dir = 4
+	},
+/obj/item/tool/weldingtool,
+/turf/open/floor/prison{
+	icon_state = "floor_plate";
+	tag = "icon-floor_plate"
+	},
+/area/fiorina/station/lowsec)
+"qX" = (
+/obj/structure/girder,
+/turf/open/floor/plating/prison,
+/area/fiorina/station/lowsec)
+"ra" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/map/FOP_map,
+/obj/item/tool/pen,
+/turf/open/floor/prison{
+	icon_state = "floor_plate";
+	tag = "icon-floor_plate"
+	},
+/area/fiorina/station/lowsec)
+"rd" = (
+/obj/structure/bed/chair{
+	dir = 8;
+	tag = "icon-chair (WEST)";
+	pixel_x = -5;
+	pixel_y = 3
+	},
+/turf/open/floor/prison{
+	icon_state = "yellowfull"
+	},
+/area/fiorina/station/lowsec)
+"rq" = (
+/obj/effect/spawner/gibspawner/xeno,
+/turf/open/floor/prison,
+/area/fiorina/station/lowsec)
+"rJ" = (
+/obj/structure/machinery/light/double/blue{
+	dir = 1;
+	pixel_y = 21
+	},
+/obj/item/ammo_magazine/rifle/m16{
+	current_rounds = 0
+	},
+/turf/open/floor/prison{
+	icon_state = "floor_plate";
+	tag = "icon-floor_plate"
+	},
+/area/fiorina/station/lowsec)
+"uM" = (
+/obj/item/prop/helmetgarb/spent_buckshot,
+/turf/open/floor/prison{
+	dir = 4;
+	icon_state = "yellow"
+	},
+/area/fiorina/station/lowsec)
+"vn" = (
+/obj/item/trash/USCMtray{
+	name = "\improper Tray"
+	},
+/turf/open/floor/prison,
+/area/fiorina/station/lowsec)
+"vW" = (
+/obj/structure/reagent_dispensers/water_cooler/stacks{
+	pixel_y = 17;
+	pixel_x = -8
+	},
+/turf/open/floor/prison{
+	icon_state = "floor_plate";
+	tag = "icon-floor_plate"
+	},
+/area/fiorina/station/lowsec)
+"we" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_22";
+	tag = "icon-pottedplant_10"
+	},
+/turf/open/floor/prison{
+	icon_state = "yellowfull"
+	},
+/area/fiorina/station/lowsec)
+"ww" = (
+/obj/item/clothing/glasses/welding,
+/turf/open/floor/prison{
+	icon_state = "floor_plate";
+	tag = "icon-floor_plate"
+	},
+/area/fiorina/station/lowsec)
+"xU" = (
+/obj/item/stool{
+	dir = 1;
+	pixel_y = 16
+	},
+/obj/effect/landmark/survivor_spawner/fiorina_gangmember,
+/turf/open/floor/prison{
+	icon_state = "yellowfull"
+	},
+/area/fiorina/station/lowsec)
+"xW" = (
+/obj/structure/bed/chair{
+	dir = 8;
+	tag = "icon-chair (WEST)";
+	pixel_x = -5;
+	pixel_y = 3
+	},
+/turf/open/floor/prison{
+	icon_state = "floor_plate";
+	tag = "icon-floor_plate"
+	},
+/area/fiorina/station/lowsec)
+"yn" = (
+/obj/item/trash/USCMtray{
+	name = "\improper Tray"
+	},
+/turf/open/floor/prison{
+	icon_state = "floor_plate";
+	tag = "icon-floor_plate"
+	},
+/area/fiorina/station/lowsec)
+"yO" = (
+/obj/structure/largecrate/random/secure{
+	pixel_x = 5
+	},
+/obj/structure/largecrate/random/secure{
+	pixel_x = 15;
+	pixel_y = 15;
+	layer = 3.2
+	},
+/turf/open/floor/prison,
+/area/fiorina/station/lowsec)
+"zy" = (
+/obj/item/ammo_casing{
+	icon_state = "casing_9_1"
+	},
+/turf/open/floor/prison{
+	icon_state = "yellow"
+	},
+/area/fiorina/station/lowsec)
+"AA" = (
+/obj/structure/machinery/light/double/blue{
+	pixel_y = -1
+	},
+/turf/open/floor/prison{
+	icon_state = "yellow"
+	},
+/area/fiorina/station/lowsec)
+"Bs" = (
+/obj/structure/machinery/light/double/blue{
+	dir = 4;
+	pixel_x = 10;
+	pixel_y = -3
+	},
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor/prison{
+	icon_state = "floor_plate";
+	tag = "icon-floor_plate"
+	},
+/area/fiorina/station/lowsec)
+"BI" = (
+/obj/item/ammo_magazine/rifle/m16{
+	current_rounds = 0
+	},
+/turf/open/floor/prison{
+	icon_state = "floor_plate";
+	tag = "icon-floor_plate"
+	},
+/area/fiorina/station/lowsec)
+"BZ" = (
+/obj/structure/machinery/cm_vending/sorted/marine_food{
+	desc = "Prison meal vendor, containing preprepared meals fit for the dregs of society.";
+	name = "\improper Fiorina Green Block Canteen Vendor"
+	},
+/turf/open/floor/prison,
+/area/fiorina/station/lowsec)
+"CT" = (
+/obj/structure/machinery/light/double/blue{
+	dir = 4;
+	pixel_x = 10;
+	pixel_y = 13
+	},
+/turf/open/floor/prison{
+	icon_state = "floor_plate";
+	tag = "icon-floor_plate"
+	},
+/area/fiorina/station/lowsec)
+"CY" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+	dir = 2;
+	icon = 'icons/obj/structures/doors/2x1prepdoor.dmi';
+	welded = 1
+	},
+/turf/open/floor/plating/prison,
+/area/fiorina/station/lowsec)
+"Dm" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/weapon/gun/rifle/m16{
+	pixel_y = 7
+	},
+/turf/open/floor/prison{
+	icon_state = "floor_plate";
+	tag = "icon-floor_plate"
+	},
+/area/fiorina/station/lowsec)
+"Eh" = (
+/obj/item/ammo_box/magazine/M16/empty,
+/turf/open/floor/prison{
+	icon_state = "yellowfull"
+	},
+/area/fiorina/station/lowsec)
+"EI" = (
+/obj/structure/barricade/wooden,
+/turf/open/floor/prison{
+	icon_state = "yellow"
+	},
+/area/fiorina/station/lowsec)
+"FS" = (
+/obj/effect/decal/cleanable/blood/drip,
+/obj/item/ammo_casing{
+	icon_state = "casing_6_1"
+	},
+/turf/open/floor/prison{
+	icon_state = "floor_plate";
+	tag = "icon-floor_plate"
+	},
+/area/fiorina/station/lowsec)
+"GW" = (
+/obj/structure/largecrate/random/case,
+/turf/open/floor/prison,
+/area/fiorina/station/lowsec)
+"GX" = (
+/obj/effect/decal/cleanable/blood/drip,
+/obj/item/ammo_casing{
+	icon_state = "casing_7_1"
+	},
+/turf/open/floor/prison{
+	icon_state = "yellowfull"
+	},
+/area/fiorina/station/lowsec)
+"Hi" = (
+/obj/structure/barricade/deployable{
+	dir = 1
+	},
+/turf/open/floor/prison{
+	icon_state = "floor_plate";
+	tag = "icon-floor_plate"
+	},
+/area/fiorina/station/lowsec)
+"HD" = (
+/turf/closed/wall/prison,
+/area/fiorina/station/lowsec)
+"HS" = (
+/obj/item/storage/firstaid/regular,
+/turf/open/floor/prison{
+	icon_state = "yellowfull"
+	},
+/area/fiorina/station/lowsec)
+"In" = (
+/turf/open/floor/plating/prison,
+/area/fiorina/station/lowsec)
+"Iv" = (
+/obj/structure/barricade/wooden{
+	dir = 8
+	},
+/turf/open/floor/prison{
+	dir = 1;
+	icon_state = "yellow"
+	},
+/area/fiorina/station/lowsec)
+"II" = (
+/obj/item/trash/USCMtray{
+	name = "\improper Tray"
+	},
+/turf/open/floor/prison{
+	icon_state = "yellowfull"
+	},
+/area/fiorina/station/lowsec)
+"Kf" = (
+/obj/item/prop/helmetgarb/spent_buckshot,
+/turf/open/floor/prison{
+	icon_state = "yellowfull"
+	},
+/area/fiorina/station/lowsec)
+"Ku" = (
+/turf/closed/wall/r_wall/prison_unmeltable,
+/area/fiorina/station/lowsec)
+"KJ" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/weapon/melee/butterfly/switchblade{
+	pixel_x = -3;
+	pixel_y = 6
+	},
+/obj/item/explosive/grenade/incendiary/molotov{
+	pixel_x = 8;
+	pixel_y = 3
+	},
+/turf/open/floor/prison{
+	icon_state = "yellowfull"
+	},
+/area/fiorina/station/lowsec)
+"KR" = (
+/obj/effect/landmark/survivor_spawner/fiorina_gangleader,
+/turf/open/floor/prison{
+	icon_state = "yellowfull"
+	},
+/area/fiorina/station/lowsec)
+"Md" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/weapon/gun/pistol/b92fs{
+	pixel_x = -3;
+	pixel_y = 8
+	},
+/obj/item/ammo_magazine/pistol/b92fs,
+/turf/open/floor/prison{
+	icon_state = "yellowfull"
+	},
+/area/fiorina/station/lowsec)
+"Nh" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor/prison,
+/area/fiorina/station/disco)
+"NP" = (
+/obj/structure/machinery/light/double/blue{
+	pixel_y = -1
+	},
+/turf/open/floor/prison,
+/area/fiorina/station/disco)
+"Pa" = (
+/obj/structure/barricade/deployable{
+	dir = 1
+	},
+/obj/item/ammo_magazine/rifle/m16{
+	current_rounds = 0
+	},
+/turf/open/floor/prison{
+	icon_state = "floor_plate";
+	tag = "icon-floor_plate"
+	},
+/area/fiorina/station/lowsec)
+"PD" = (
+/turf/open/floor/prison{
+	dir = 1;
+	icon_state = "yellow"
+	},
+/area/fiorina/station/lowsec)
+"PR" = (
+/obj/effect/decal/cleanable/blood,
+/obj/item/ammo_casing{
+	dir = 6;
+	icon_state = "casing_10_1"
+	},
+/turf/open/floor/prison{
+	icon_state = "yellowfull"
+	},
+/area/fiorina/station/lowsec)
+"Qk" = (
+/obj/effect/landmark/survivor_spawner/fiorina_gangmember,
+/turf/open/floor/prison{
+	icon_state = "floor_plate";
+	tag = "icon-floor_plate"
+	},
+/area/fiorina/station/lowsec)
+"Qz" = (
+/obj/structure/barricade/wooden,
+/turf/open/floor/prison,
+/area/fiorina/station/disco)
+"QN" = (
+/obj/effect/landmark/survivor_spawner/fiorina_gangmember,
+/turf/open/floor/prison{
+	icon_state = "yellowfull"
+	},
+/area/fiorina/station/lowsec)
+"QU" = (
+/obj/structure/barricade/wooden{
+	dir = 4
+	},
+/turf/open/floor/prison{
+	icon_state = "floor_plate";
+	tag = "icon-floor_plate"
+	},
+/area/fiorina/station/lowsec)
+"Rk" = (
+/obj/structure/largecrate/random/case/double,
+/obj/structure/largecrate/random/mini/small_case/b{
+	layer = 3.2;
+	pixel_x = -4;
+	pixel_y = 18
+	},
+/turf/open/floor/prison{
+	icon_state = "floor_plate";
+	tag = "icon-floor_plate"
+	},
+/area/fiorina/station/lowsec)
+"RF" = (
+/obj/structure/barricade/wooden{
+	dir = 4
+	},
+/obj/structure/barricade/wooden{
+	dir = 4;
+	pixel_y = 13
+	},
+/turf/open/floor/prison{
+	icon_state = "floor_plate";
+	tag = "icon-floor_plate"
+	},
+/area/fiorina/station/lowsec)
+"TK" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/ashtray/bronze{
+	icon_state = "ashtray_full_bl";
+	pixel_x = -8;
+	pixel_y = 7
+	},
+/obj/item/storage/fancy/cigarettes/lucky_strikes{
+	pixel_x = 5;
+	pixel_y = 5
+	},
+/obj/item/tool/lighter/random{
+	pixel_x = -5;
+	pixel_y = -2
+	},
+/turf/open/floor/prison{
+	icon_state = "floor_plate";
+	tag = "icon-floor_plate"
+	},
+/area/fiorina/station/lowsec)
+"TQ" = (
+/obj/item/stool{
+	dir = 1;
+	pixel_y = 16
+	},
+/turf/open/floor/prison{
+	icon_state = "yellowfull"
+	},
+/area/fiorina/station/lowsec)
+"Uf" = (
+/obj/structure/largecrate/random/secure,
+/turf/open/floor/prison{
+	icon_state = "yellow"
+	},
+/area/fiorina/station/lowsec)
+"Vw" = (
+/obj/item/stack/sheet/metal,
+/turf/open/floor/prison,
+/area/fiorina/station/lowsec)
+"VL" = (
+/obj/structure/barricade/wooden{
+	dir = 1
+	},
+/turf/open/floor/prison{
+	icon_state = "floor_plate";
+	tag = "icon-floor_plate"
+	},
+/area/fiorina/station/lowsec)
+"Wg" = (
+/obj/item/stool{
+	dir = 1
+	},
+/obj/effect/landmark/survivor_spawner/fiorina_gangmember,
+/turf/open/floor/prison{
+	icon_state = "yellowfull"
+	},
+/area/fiorina/station/lowsec)
+"XC" = (
+/turf/open/floor/prison,
+/area/fiorina/station/lowsec)
+"XF" = (
+/obj/structure/largecrate/random/barrel,
+/turf/open/floor/prison,
+/area/fiorina/station/lowsec)
+"Zj" = (
+/obj/item/stack/sheet/wood,
+/turf/open/floor/prison,
+/area/fiorina/station/lowsec)
+"ZW" = (
+/obj/effect/decal/cleanable/blood/drip,
+/obj/item/ammo_casing{
+	icon_state = "casing_7_1"
+	},
+/turf/open/floor/prison{
+	dir = 1;
+	icon_state = "yellow"
+	},
+/area/fiorina/station/lowsec)
+
+(1,1,1) = {"
+kb
+kb
+HD
+HD
+HD
+HD
+HD
+HD
+HD
+oi
+Rk
+Uf
+"}
+(2,1,1) = {"
+HD
+HD
+HD
+TK
+ep
+ra
+Dm
+vW
+jr
+Iv
+kv
+pJ
+"}
+(3,1,1) = {"
+Ku
+HD
+fR
+xW
+ev
+rd
+ev
+Eh
+jr
+bd
+Qk
+zy
+"}
+(4,1,1) = {"
+nx
+HD
+BZ
+jr
+II
+ev
+KR
+ev
+jr
+qi
+ka
+cJ
+"}
+(5,1,1) = {"
+NP
+HD
+vn
+at
+ev
+hp
+pv
+TQ
+jr
+PD
+jr
+AA
+"}
+(6,1,1) = {"
+nx
+HD
+HD
+rJ
+GX
+Wg
+cr
+TQ
+jr
+ZW
+BI
+EI
+"}
+(7,1,1) = {"
+Nh
+hE
+BZ
+VL
+lU
+hp
+Md
+xU
+yn
+mQ
+uM
+iC
+"}
+(8,1,1) = {"
+oF
+rq
+Vw
+VL
+QN
+hp
+KJ
+TQ
+jr
+jr
+FS
+jr
+"}
+(9,1,1) = {"
+Nh
+Zj
+rq
+VL
+Kf
+lU
+ev
+ev
+jr
+iq
+XC
+we
+"}
+(10,1,1) = {"
+Qz
+GW
+yO
+Pa
+PR
+Kf
+QN
+ev
+ww
+XC
+XC
+HS
+"}
+(11,1,1) = {"
+Qz
+XF
+lW
+Hi
+RF
+QU
+jr
+CT
+QU
+qO
+Bs
+cS
+"}
+(12,1,1) = {"
+NP
+by
+by
+HD
+In
+qX
+by
+by
+In
+CY
+by
+by
+"}

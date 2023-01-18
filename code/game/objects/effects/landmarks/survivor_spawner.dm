@@ -75,6 +75,30 @@
 
 	spawn_priority = SPAWN_PRIORITY_VERY_HIGH
 
+/obj/effect/landmark/survivor_spawner/fiorina_gangleader
+	equipment = /datum/equipment_preset/survivor/gangleader
+	intro_text = list("<h2>You are the leader of a prison gang!</h2>",\
+	"<span class='notice'>You are aware of the xenomorph threat.</span>",\
+	"<span class='danger'>Your primary objective is to survive. If you want to assault the hive - adminhelp.</span>")
+	story_text = "You are the leader of a prison gang. When the xenomorphs breached containment and began killing or capturing everyone on the station, you and your gang gathered together to hold out in the cafeteria. With your leadership and the undying loyalty of your gang members, you've have been successful at fending off the xenomorphs... for now."
+	roundstart_damage_min = 3
+	roundstart_damage_min = 10
+	roundstart_damage_times = 2
+
+	spawn_priority = SPAWN_PRIORITY_VERY_HIGH
+
+/obj/effect/landmark/survivor_spawner/fiorina_gangmember
+	equipment = /datum/equipment_preset/survivor/prisoner
+	intro_text = list("<h2>You are a member of a prison gang!</h2>",\
+	"<span class='notice'>You are aware of the xenomorph threat.</span>",\
+	"<span class='danger'>Your primary objective is to survive. If you want to assault the hive - adminhelp.</span>")
+	story_text = "You are a member of a prison gang. When the xenomorphs breached containment and began killing or capturing everyone on the station, you and your fellow gang members gathered together and decided to hold out in the cafeteria. Under your gang leader's leadership, you've been effective in fending off the xenomorphs... for now."
+	roundstart_damage_min = 3
+	roundstart_damage_min = 10
+	roundstart_damage_times = 2
+
+	spawn_priority = SPAWN_PRIORITY_HIGH
+
 
 //Military Survivors//
 

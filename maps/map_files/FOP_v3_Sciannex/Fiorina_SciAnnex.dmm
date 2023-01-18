@@ -23610,6 +23610,14 @@
 /obj/effect/spawner/random/technology_scanner,
 /turf/open/floor/plating/prison,
 /area/fiorina/maintenance)
+"nUL" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "gangholdout"
+	},
+/turf/open/floor/prison{
+	icon_state = "yellow"
+	},
+/area/fiorina/station/lowsec)
 "nVq" = (
 /turf/open/floor/prison{
 	dir = 1;
@@ -79223,7 +79231,7 @@ kqC
 kqC
 pHu
 mcc
-vei
+nUL
 kqC
 wII
 bjk

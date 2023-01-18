@@ -362,3 +362,69 @@
       menu runtime.
   stanalbatross:
   - rscdel: removed the unmaintained haunted house event map
+2023-01-15:
+  Morrow:
+  - bugfix: Xenos will be properly stunned while on the Almayer when hijack lands
+  Segrain:
+  - bugfix: Removed exploit allowing stacking multiple resin traps on the same turf.
+  realforest2001:
+  - bugfix: Ckey-ing into a simplemob no longer makes the mob disappear from the orbit
+      menu.
+2023-01-16:
+  Morrow:
+  - spellcheck: Shivas walls are now properly named "black ice slabs"
+  NewyearnewmeUwu:
+  - spellcheck: fixed a vamp lurk typo involving Rush
+  carlarctg:
+  - balance: The MP27 is a now robust and ergonomic option with no wield slowdown
+      now, though it does have a lot of scatter due to its dense bullets and cheap
+      construction. However, due to a factory mixup almost all of its magazines have
+      been randomly manufactured as 20, 30, or 40-rounders.
+  - rscadd: The MP5 is, effectively, a slightly slower firing but more damage dealing
+      M39, with small-sized magazines.
+  - rscadd: The FN FP9K is now a VERY robust, quick-shooting, long-ranged SMG that
+      mantains its AP bullets and small-sized 50 rounder mags. Keep an eye out for
+      these.
+  - rscadd: The MAC-15 and Uzi are now bursting inaccurate beasts, the latter a slightly
+      slower firing, slighty more damaging version. Both have recieved extended magazine
+      sprites and overlays, the latter's also having a small jam chance..
+  - imageadd: The PPSH has special codersprite stick magazines and inhands now! Fitting
+      a drum magazine there will cause the gun to have worse handling, with more slowdown,
+      worse aim delay.... and jamming! Both the PPSH and uzi can now jam, needing
+      you to mash the unique action hotkey. Comes with unique SFX. The PPSH's base
+      stats have been significantly improved as well, making it a longer-ranged, less
+      falloff, but less damage alternative to the M39.
+2023-01-17:
+  Mister-moon1:
+  - code_imp: changed the way WY ranks are issued
+  - admin: removed the div code from "select_equipment"
+  - bugfix: fixed CL job codes
+  Morrow:
+  - bugfix: Fixes Almayer chapel corner platforms
+  - balance: Gives queen an ability to sacrifice larva for evolution points
+  Tisx:
+  - bugfix: Moved the sprites of the M79's rail attachments back a few pixels to make
+      it more flush with the weapon.
+  - balance: Changed HIRR slug characteristics
+  - balance: HIRR slugs are now able to send mobs flying up to 3 tiles on impact.
+  - balance: HIRR slugs will now BOUNCE off of mobs impacted and will still be consider
+      ACTIVE until it stops moving
+  - balance: Decreased debuff modifiers for large mobs (T3/T4 Xenos) to account for
+      changes above
+  - balance: Slightly increased base debuffs to account for HIRR impact flight time
+      (time right after impact) (up for debate)
+  carlarctg:
+  - rscdel: Reverts the damage flicker change. The only effect that changes color
+      is being tased now.
+2023-01-18:
+  Manoel34:
+  - spellcheck: Corrects the description of PMC Sniper helmet.
+  Morrow:
+  - bugfix: Fixes queen sacrifice ability runtiming from not finding the selected
+      xeno
+  - code_imp: Removed a misleading comment
+  NewyearnewmeUwu:
+  - bugfix: fixed omnisentry stacking
+  Skegal:
+  - rscadd: Added two haircut
+  - imageadd: added hair_row_braid_s / hair_croft_s in human_hair.dmi

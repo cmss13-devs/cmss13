@@ -285,7 +285,7 @@
 	assignment = "Corporate Liaison"
 	skills = /datum/skills/civilian/survivor
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
-	paygrade = "WY-XB-X"
+	paygrade = "WYC2"
 	idtype = /obj/item/card/id/silver/clearance_badge/cl
 	access = list(
 		ACCESS_CIVILIAN_PUBLIC,
@@ -318,11 +318,11 @@
 		var/playtime = get_job_playtime(H.client, JOB_CORPORATE_LIAISON)
 		if(H.client.prefs.playtime_perks)
 			if(playtime > JOB_PLAYTIME_TIER_4)
-				return "WY-XE"
+				return "WYC5"
 			else if(playtime > JOB_PLAYTIME_TIER_3)
-				return "WY-XD"
+				return "WYC4"
 			else if(playtime > JOB_PLAYTIME_TIER_2)
-				return "WY-XC"
+				return "WYC3"
 			else
 				return paygrade
 	return paygrade

@@ -525,3 +525,9 @@
 
 // Used for smothering fires upon weather event start/stop
 #define COMSIG_GLOB_WEATHER_CHANGE "!weather_event_changed"
+
+// sentry laptop
+#define COMSIG_SENTRY_ENGAGED_ALERT "signal_sentry_engaged"
+#define COMSIG_SENTRY_LOW_AMMO_ALERT "signal_sentry_low_ammo"
+#define COMSIG_SENTRY_EMPTY_AMMO_ALERT "signal_sentry_empty_ammo"
+#define COMSIG_SENTRY_DESTROYED_ALERT "signal_sentry_destroyed"

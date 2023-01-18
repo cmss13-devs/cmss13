@@ -9,8 +9,24 @@
 	health = 200
 	health_max = 200
 
-/obj/structure/machinery/defenses/sentry/flamer/Initialize()
-	. = ..()
+	choice_categories = list(
+		// SENTRY_CATEGORY_ROF = list(ROF_SINGLE, ROF_FULL_AUTO),
+		SENTRY_CATEGORY_IFF = list(FACTION_USCM, FACTION_WEYLAND, FACTION_HUMAN),
+	)
+
+	selected_categories = list(
+		SENTRY_CATEGORY_ROF = ROF_SINGLE,
+		SENTRY_CATEGORY_IFF = FACTION_USCM,
+	)
+
+/obj/structure/machinery/defenses/sentry/flamer/handle_rof(level)
+	switch(level)
+		if(ROF_SINGLE)
+			accuracy_mult = 1
+			fire_delay = 4
+		if(ROF_FULL_AUTO)
+			accuracy_mult = 0.1
+			fire_delay = 0.5
 
 /obj/structure/machinery/defenses/sentry/flamer/actual_fire(var/atom/A)
 	var/obj/item/projectile/P = new(create_cause_data(initial(name), owner_mob))

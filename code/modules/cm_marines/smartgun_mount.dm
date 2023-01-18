@@ -946,14 +946,15 @@
 		user.unset_interaction()
 
 /obj/structure/machinery/m56d_hmg/clicked(var/mob/user, var/list/mods) //Making it possible to toggle burst fire. Perhaps have altclick be the safety on the gun?
-	if (isobserver(user)) return
-
 	if (mods["ctrl"])
-		if(operator != user) return //only the operatore can toggle fire mode
+		if(operator != user)
+			return ..()//only the operatore can toggle fire mode
+		if(!CAN_PICKUP(user, src))
+			return ..()
 		burst_fire = !burst_fire
 		to_chat(user, SPAN_NOTICE("You set [src] to [burst_fire ? "burst fire" : "single fire"] mode."))
 		playsound(src.loc, 'sound/items/Deconstruct.ogg', 25, 1)
-		return 1
+		return TRUE
 	return ..()
 
 /obj/structure/machinery/m56d_hmg/proc/CrusherImpact()
@@ -1066,6 +1067,10 @@
 	if(rotate_check.density)
 		to_chat(user, SPAN_WARNING("You can't set up \the [src] that way, there's a wall behind you!"))
 		return FALSE
+	for(var/obj/structure/potential_blocker in rotate_check)
+		if(potential_blocker.density)
+			to_chat(user, SPAN_WARNING("You can't set up \the [src] that way, there's \a [potential_blocker] behind you!"))
+			return FALSE
 	if((locate(/obj/structure/barricade) in ACR) || (locate(/obj/structure/window_frame) in ACR) || (locate(/obj/structure/window) in ACR) || (locate(/obj/structure/windoor_assembly) in ACR))
 		to_chat(user, SPAN_WARNING("There are barriers nearby, you can't set up \the [src] here!"))
 		return FALSE
@@ -1470,12 +1475,13 @@
 // TOGGLE MODE
 
 /obj/structure/machinery/m56d_hmg/auto/clicked(var/mob/user, var/list/mods, var/atom/A)
-	if (isobserver(user)) return
-
 	if (mods["ctrl"])
-		if(operator != user) return
-		to_chat(user, SPAN_NOTICE("You try to toggle a burst-mode on the M2C, but realize that it doesn't exist."))
-		return
+		if(operator != user)
+			return ..()
+		if(!CAN_PICKUP(user, src))
+			return ..()
+		to_chat(user, SPAN_NOTICE("You try to toggle a burst-mode on \the [src], but realize that it doesn't exist."))
+		return TRUE
 
 	return ..()
 
@@ -1554,6 +1560,7 @@
 
 /obj/structure/machinery/m56d_hmg/auto/on_set_interaction(mob/user)
 	..()
+	ADD_TRAIT(user, TRAIT_OVERRIDE_CLICKDRAG, TRAIT_SOURCE_WEAPON)
 	if(user.client)
 		RegisterSignal(user.client, COMSIG_CLIENT_LMB_DOWN, PROC_REF(auto_fire_start))
 		RegisterSignal(user.client, COMSIG_CLIENT_LMB_UP, PROC_REF(auto_fire_stop))
@@ -1564,6 +1571,7 @@
 // DISMOUNT THE MG
 
 /obj/structure/machinery/m56d_hmg/auto/on_unset_interaction(mob/user)
+	REMOVE_TRAIT(user, TRAIT_OVERRIDE_CLICKDRAG, TRAIT_SOURCE_WEAPON)
 	UnregisterSignal(user, list(
 		COMSIG_MOVABLE_PRE_MOVE,
 		COMSIG_MOB_POST_UPDATE_CANMOVE

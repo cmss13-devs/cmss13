@@ -15,6 +15,7 @@
 
 /obj/structure/prop/souto_land/streamer
 	name = "orange streamers"
+	gender = PLURAL
 	desc = "They flutter softly. Poignant."
 	icon_state = "streamers"
 	layer = ABOVE_MOB_LAYER

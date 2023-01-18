@@ -241,7 +241,7 @@
 	name = "railing controls"
 	desc = "Allows for raising and lowering the guard rails on the vehicle ASRS elevator when it's raised."
 	id = "vehicle_elevator_railing_aux"
-
+	gender = PLURAL
 	var/busy = FALSE
 
 /obj/structure/machinery/door_control/railings/use_button(mob/living/user, var/force = FALSE)
@@ -296,3 +296,29 @@
 
 /obj/structure/machinery/door_control/brbutton/alt
 	icon_state = "big_red_button_tablev"
+
+/obj/structure/machinery/door_control/airlock
+	icon = 'icons/obj/structures/machinery/computer.dmi'
+	icon_state = "elevator_screen"
+
+/obj/structure/machinery/door_control/airlock/use_button(mob/living/user, var/force = FALSE)
+	if(inoperable())
+		to_chat(user, SPAN_WARNING("\The [src] doesn't seem to be working."))
+		return
+
+	use_power(5)
+	add_fingerprint(user)
+	to_chat(user, SPAN_NOTICE("You press \the [name] button."))
+
+	switch(normaldoorcontrol)
+		if(CONTROL_NORMAL_DOORS)
+			handle_door()
+		if(CONTROL_POD_DOORS)
+			handle_pod()
+		if(CONTROL_DROPSHIP)
+			handle_dropship(id)
+
+	desiredstate = !desiredstate
+
+/obj/structure/machinery/door_control/power_change()
+	return

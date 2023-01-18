@@ -129,9 +129,11 @@
 	S["toggles_ert"] >> toggles_ert
 	S["toggles_admin"] >> toggles_admin
 	S["UI_style"] >> UI_style
+	S["tgui_say"] >> tgui_say
 	S["UI_style_color"] >> UI_style_color
 	S["UI_style_alpha"] >> UI_style_alpha
 	S["item_animation_pref_level"] >> item_animation_pref_level
+	S["pain_overlay_pref_level"] >> pain_overlay_pref_level
 	S["stylesheet"] >> stylesheet
 	S["window_skin"] >> window_skin
 	S["fps"] >> fps
@@ -173,6 +175,8 @@
 	S["synth_status"] >> synth_status
 	S["key_bindings"] >> key_bindings
 
+	S["preferred_survivor_variant"]	>> preferred_survivor_variant
+
 	S["grade_path"] >> sea_path
 	var/list/remembered_key_bindings
 	S["remembered_key_bindings"] >> remembered_key_bindings
@@ -189,6 +193,7 @@
 	ooccolor = sanitize_hexcolor(ooccolor, CONFIG_GET(string/ooc_color_default))
 	lastchangelog = sanitize_text(lastchangelog, initial(lastchangelog))
 	UI_style = sanitize_inlist(UI_style, list("white", "dark", "midnight", "orange", "old"), initial(UI_style))
+	tgui_say = sanitize_integer(tgui_say, FALSE, TRUE, TRUE)
 	be_special = sanitize_integer(be_special, 0, 65535, initial(be_special))
 	default_slot = sanitize_integer(default_slot, 1, MAX_SAVE_SLOTS, initial(default_slot))
 	toggles_chat = sanitize_integer(toggles_chat, 0, 65535, initial(toggles_chat))
@@ -203,6 +208,7 @@
 	UI_style_color = sanitize_hexcolor(UI_style_color, initial(UI_style_color))
 	UI_style_alpha = sanitize_integer(UI_style_alpha, 0, 255, initial(UI_style_alpha))
 	item_animation_pref_level = sanitize_integer(item_animation_pref_level, SHOW_ITEM_ANIMATIONS_NONE, SHOW_ITEM_ANIMATIONS_ALL, SHOW_ITEM_ANIMATIONS_ALL)
+	pain_overlay_pref_level = sanitize_integer(pain_overlay_pref_level, PAIN_OVERLAY_BLURRY, PAIN_OVERLAY_LEGACY, PAIN_OVERLAY_BLURRY)
 	window_skin = sanitize_integer(window_skin, 0, 65535, initial(window_skin))
 	ghost_vision_pref = sanitize_inlist(ghost_vision_pref, list(GHOST_VISION_LEVEL_NO_NVG, GHOST_VISION_LEVEL_MID_NVG, GHOST_VISION_LEVEL_FULL_NVG), GHOST_VISION_LEVEL_MID_NVG)
 	ghost_orbit = sanitize_inlist(ghost_orbit, GLOB.ghost_orbits, initial(ghost_orbit))
@@ -234,6 +240,7 @@
 	commander_status = sanitize_inlist(commander_status, whitelist_hierarchy, initial(commander_status))
 	commander_sidearm   = sanitize_inlist(commander_sidearm, list("Mateba","Colonel's Mateba","Golden Desert Eagle","Desert Eagle"), initial(commander_sidearm))
 	sea_path = sanitize_inlist(sea_path, list("Command", "Technical"), initial(sea_path))
+	preferred_survivor_variant = sanitize_inlist(preferred_survivor_variant, SURVIVOR_VARIANT_LIST, ANY_SURVIVOR)
 	yautja_status = sanitize_inlist(yautja_status, whitelist_hierarchy + list("Elder"), initial(yautja_status))
 	synth_status = sanitize_inlist(synth_status, whitelist_hierarchy, initial(synth_status))
 	key_bindings = sanitize_keybindings(key_bindings)
@@ -257,6 +264,11 @@
 
 	S["remembered_key_bindings"] << GLOB.keybindings_by_name
 
+	if(toggles_chat & SHOW_TYPING)
+		owner.typing_indicators = FALSE
+	else
+		owner.typing_indicators = TRUE
+
 	if(!observer_huds)
 		observer_huds = list("Medical HUD" = FALSE, "Security HUD" = FALSE, "Squad HUD" = FALSE, "Xeno Status HUD" = FALSE)
 
@@ -278,7 +290,9 @@
 	S["UI_style"] << UI_style
 	S["UI_style_color"] << UI_style_color
 	S["UI_style_alpha"] << UI_style_alpha
+	S["tgui_say"] << tgui_say
 	S["item_animation_pref_level"] << item_animation_pref_level
+	S["pain_overlay_pref_level"] << pain_overlay_pref_level
 	S["stylesheet"] << stylesheet
 	S["be_special"] << be_special
 	S["default_slot"] << default_slot
@@ -325,6 +339,8 @@
 	S["pred_h_style"] << predator_h_style
 	S["pred_skin_color"] << predator_skin_color
 	S["pred_flavor_text"] << predator_flavor_text
+
+	S["preferred_survivor_variant"] << preferred_survivor_variant
 
 	S["commander_status"] << commander_status
 	S["co_sidearm"] << commander_sidearm

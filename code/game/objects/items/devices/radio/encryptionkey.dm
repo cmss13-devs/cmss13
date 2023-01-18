@@ -7,7 +7,6 @@
 	w_class = SIZE_TINY
 	var/translate_apollo = FALSE
 	var/translate_hive = FALSE
-	var/syndie = FALSE //Signifies that it de-crypts Syndicate transmissions
 	var/list/channels = list()
 	var/list/tracking_options
 	var/abstract = FALSE
@@ -34,6 +33,12 @@
 	desc = "Integrated encryption key"
 	icon_state = "cap_key"
 	channels = list(RADIO_CHANNEL_ALMAYER = TRUE, RADIO_CHANNEL_COMMAND = TRUE, RADIO_CHANNEL_MP = TRUE, RADIO_CHANNEL_ENGI = TRUE, RADIO_CHANNEL_MEDSCI = TRUE, RADIO_CHANNEL_REQ = TRUE, SQUAD_MARINE_1 = TRUE, SQUAD_MARINE_2 = TRUE, SQUAD_MARINE_3 = TRUE, SQUAD_MARINE_4 = TRUE, SQUAD_MARINE_5 = TRUE, SQUAD_MARINE_CRYO = FALSE, RADIO_CHANNEL_JTAC = TRUE, RADIO_CHANNEL_INTEL = TRUE)
+
+/obj/item/device/encryptionkey/sentry_laptop
+	name = "Sentry Network Status Encryption Key"
+	desc = "Automated channel to broadcast sentry gun updates"
+	icon_state = "eng_key"
+	channels = list(RADIO_CHANNEL_SENTRY = TRUE)
 
 /obj/item/device/encryptionkey/engi
 	name = "Engineering Radio Encryption Key"
@@ -233,7 +238,6 @@
 /obj/item/device/encryptionkey/upp
 	name = "\improper UPP Radio Encryption Key"
 	icon_state = "upp_key"
-	syndie = TRUE
 	channels = list(RADIO_CHANNEL_UPP_GEN = TRUE)
 
 /obj/item/device/encryptionkey/upp/engi
@@ -256,7 +260,6 @@
 /obj/item/device/encryptionkey/clf
 	name = "\improper CLF Radio Encryption Key"
 	icon_state = "stripped_key"
-	syndie = TRUE
 	channels = list(RADIO_CHANNEL_CLF_GEN = TRUE)
 
 /obj/item/device/encryptionkey/clf/engi

@@ -137,6 +137,8 @@
 #define COMSIG_MOB_RESISTED "mob_resist"
 /// From /mob/living/verb/resist()
 #define COMSIG_MOB_RECALCULATE_CLIENT_COLOR "mob_recalc_client_color"
+///from /mob/living/carbon/human/proc/force_say(): ()
+#define COMSIG_HUMAN_FORCESAY "human_forcesay"
 
 /// From /obj/item/proc/unequipped()
 #define COMSIG_MOB_ITEM_UNEQUIPPED "mob_item_unequipped"
@@ -152,7 +154,7 @@
 	#define COMPONENT_CANCEL_SET_FACE_DIR (1<<0)
 
 /// From /obj/effect/alien/weeds/Crossed(atom/movable/AM)
-#define COMSIG_MOB_WEEDS_CROSSED "mob_weeds_crossed"
+#define COMSIG_MOB_WEED_SLOWDOWN "mob_weeds_slowdown"
 
 #define COMSIG_MOB_TAKE_DAMAGE "mob_take_damage"
 #define COMSIG_XENO_TAKE_DAMAGE "xeno_take_damage"
@@ -467,6 +469,8 @@
 #define COMSIG_SHUTTLE_SETMODE "shuttle_setmode"
 /// shuttle crushing something
 #define COMSIG_MOVABLE_SHUTTLE_CRUSH "movable_shuttle_crush"
+/// shuttle door registration
+#define COMSIG_REGISTER_DOOR_TO_SHUTTLE "register_door_to_shuttle"
 
 ///from base of /atom/movable/proc/set_glide_size(): (target)
 #define COMSIG_MOVABLE_UPDATE_GLIDE_SIZE "movable_glide_size"
@@ -521,3 +525,9 @@
 
 // Used for smothering fires upon weather event start/stop
 #define COMSIG_GLOB_WEATHER_CHANGE "!weather_event_changed"
+
+// sentry laptop
+#define COMSIG_SENTRY_ENGAGED_ALERT "signal_sentry_engaged"
+#define COMSIG_SENTRY_LOW_AMMO_ALERT "signal_sentry_low_ammo"
+#define COMSIG_SENTRY_EMPTY_AMMO_ALERT "signal_sentry_empty_ammo"
+#define COMSIG_SENTRY_DESTROYED_ALERT "signal_sentry_destroyed"

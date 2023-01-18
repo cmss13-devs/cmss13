@@ -1,5 +1,7 @@
 #define to_world_log(message)    world.log << (message)
-#define debug_msg(message)   to_world(message) // A message define designed to be easily found and deleted
+
+/// A message define designed to be easily found and deleted
+#define debug_msg(message)   to_world(message)
 #define debug_log(message)   to_world_log(message)
 #define sound_to(target, sound)  target << (sound)
 #define to_file(file_entry, source_var)  file_entry << (source_var)

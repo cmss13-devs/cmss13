@@ -268,7 +268,7 @@
 	var/ovipositor = FALSE //whether the Queen is attached to an ovipositor
 	var/queen_ability_cooldown = 0
 	var/egg_amount = 0 //amount of eggs inside the queen
-	var/screech_sound_effect = 'sound/voice/alien_queen_screech.ogg' //the noise the Queen makes when she screeches. Done this way for VV purposes.
+	var/screech_sound_effect_list = list('sound/voice/alien_queen_screech.ogg') //the noise the Queen makes when she screeches. Done this way for VV purposes.
 	var/egg_planting_range = 3 // in ovipositor queen can plant egg up to this amount of tiles away from her position
 	var/queen_ovipositor_icon
 	var/queen_standing_icon
@@ -346,6 +346,8 @@
 
 	var/queen_aged = FALSE
 	var/queen_age_timer_id = TIMER_ID_NULL
+
+	bubble_icon = "alienroyal"
 
 /mob/living/carbon/Xenomorph/Queen/can_destroy_special()
 	return TRUE
@@ -799,6 +801,7 @@
 		/datum/action/xeno_action/onclick/screech, //custom macro, Screech
 		// These are new and their arrangement matters:
 		/datum/action/xeno_action/onclick/remove_eggsac,
+		/datum/action/xeno_action/onclick/give_evo_points,
 		/datum/action/xeno_action/onclick/set_xeno_lead,
 		/datum/action/xeno_action/activable/queen_heal, //first macro
 		/datum/action/xeno_action/activable/queen_give_plasma, //second macro
@@ -823,6 +826,8 @@
 	resting = FALSE
 	update_canmove()
 	update_icons()
+	bubble_icon_x_offset = 32
+	bubble_icon_y_offset = 32
 
 	for(var/mob/living/carbon/Xenomorph/leader in hive.xeno_leader_list)
 		leader.handle_xeno_leader_pheromones()
@@ -848,6 +853,8 @@
 		return
 	ovipositor = FALSE
 	update_icons()
+	bubble_icon_x_offset = initial(bubble_icon_x_offset)
+	bubble_icon_y_offset = initial(bubble_icon_y_offset)
 	new /obj/ovipositor(loc)
 
 	if(observed_xeno)

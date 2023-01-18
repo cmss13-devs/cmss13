@@ -1,6 +1,9 @@
 #define SENTRY_FIREANGLE 135
 #define SENTRY_RANGE 5
 #define SENTRY_MUZZLELUM 3
+#define SENTRY_ENGAGED_TIMEOUT 60 SECONDS
+#define SENTRY_LOW_AMMO_TIMEOUT 20 SECONDS
+#define SENTRY_LOW_AMMO_ALERT_PERCENTAGE 0.25
 
 /obj/structure/machinery/defenses/sentry
 	name = "\improper UA 571-C sentry gun"
@@ -22,9 +25,30 @@
 	var/omni_directional = FALSE
 	var/sentry_range = SENTRY_RANGE
 
+	has_camera = TRUE
+
 	var/damage_mult = 1
 	var/accuracy_mult = 1
+	var/burst = 1
 	handheld_type = /obj/item/defenses/handheld/sentry
+
+	/// timer triggered when sentry gun shoots at a target to not spam the laptop
+	var/engaged_timer = null
+	/// timer triggered when sentry gun is low on ammo to not spam the laptop
+	var/low_ammo_timer = null
+	/// timer triggered when sentry gun is out of ammo to not spam the laptop
+	var/sent_empty_ammo = FALSE
+
+	/// action list is configurable for all subtypes, this is just an example
+	choice_categories = list(
+		// SENTRY_CATEGORY_ROF = list(ROF_SINGLE, ROF_BURST, ROF_FULL_AUTO),
+		SENTRY_CATEGORY_IFF = list(FACTION_USCM, FACTION_WEYLAND, FACTION_HUMAN),
+	)
+
+	selected_categories = list(
+		// SENTRY_CATEGORY_ROF = ROF_SINGLE,
+		SENTRY_CATEGORY_IFF = FACTION_USCM,
+	)
 
 /obj/structure/machinery/defenses/sentry/Initialize()
 	. = ..()
@@ -105,6 +129,37 @@
 
 	return TRUE
 
+/obj/structure/machinery/defenses/sentry/update_choice(mob/user, var/category, var/selection)
+	. = ..()
+	if(.)
+		return
+	if(category in selected_categories)
+		selected_categories[category] = selection
+		switch(category)
+			if(SENTRY_CATEGORY_ROF)
+				handle_rof(selection)
+				return TRUE
+	return FALSE
+
+/**
+ * Update the rate of fire in the sentry gun.
+ * @param level: level of rate of fire, typically single, burst or full auto.
+ */
+/obj/structure/machinery/defenses/sentry/proc/handle_rof(level)
+	switch(level)
+		if(ROF_SINGLE)
+			burst = 1
+			accuracy_mult = 1
+			fire_delay = 4
+		if(ROF_BURST)
+			burst = 3
+			accuracy_mult = 0.6
+			fire_delay = 12
+		if(ROF_FULL_AUTO)
+			burst = 1
+			accuracy_mult = 0.5
+			fire_delay = 0.5
+
 /obj/structure/machinery/defenses/sentry/get_examine_text(mob/user)
 	. = ..()
 	if(ammo)
@@ -176,6 +231,7 @@
 		ammo = O
 		user.drop_held_item(O)
 		O.forceMove(src)
+		sent_empty_ammo = FALSE
 		update_icon()
 		return
 
@@ -204,7 +260,7 @@
 	if(!(world.time-last_fired >= fire_delay) || !turned_on || !ammo || QDELETED(target))
 		return
 
-	if(world.time-last_fired >= 300) //if we haven't fired for a while, beep first
+	if(world.time-last_fired >= 30 SECONDS) //if we haven't fired for a while, beep first
 		playsound(loc, 'sound/machines/twobeep.ogg', 50, 1)
 		sleep(3)
 
@@ -219,29 +275,48 @@
 
 	if(omni_directional)
 		setDir(get_dir(src, A))
-
-	actual_fire(A)
+	for(var/i in 1 to burst)
+		if(actual_fire(A))
+			break
 
 	if(targets.len)
 		addtimer(CALLBACK(src, PROC_REF(get_target)), fire_delay)
 
-/obj/structure/machinery/defenses/sentry/proc/actual_fire(var/atom/A)
-	var/obj/item/projectile/P = new(src, create_cause_data(initial(name), owner_mob, src))
-	P.generate_bullet(new ammo.default_ammo)
-	P.damage *= damage_mult
-	P.accuracy *= accuracy_mult
-	GIVE_BULLET_TRAIT(P, /datum/element/bullet_trait_iff, faction_group)
-	P.fire_at(A, src, owner_mob, P.ammo.max_range, P.ammo.shell_speed, null)
-	muzzle_flash(Get_Angle(get_turf(src), A))
+	if(!engaged_timer)
+		SEND_SIGNAL(src, COMSIG_SENTRY_ENGAGED_ALERT, src)
+		engaged_timer = addtimer(CALLBACK(src, PROC_REF(reset_engaged_timer)), SENTRY_ENGAGED_TIMEOUT)
+
+	if(!low_ammo_timer && ammo?.current_rounds && (ammo?.current_rounds < (ammo?.max_rounds * SENTRY_LOW_AMMO_ALERT_PERCENTAGE)))
+		SEND_SIGNAL(src, COMSIG_SENTRY_LOW_AMMO_ALERT, src)
+		low_ammo_timer = addtimer(CALLBACK(src, PROC_REF(reset_low_ammo_timer)), SENTRY_LOW_AMMO_TIMEOUT)
+
+/obj/structure/machinery/defenses/sentry/proc/reset_engaged_timer()
+	engaged_timer = null
+
+/obj/structure/machinery/defenses/sentry/proc/reset_low_ammo_timer()
+	low_ammo_timer = null
+
+/obj/structure/machinery/defenses/sentry/proc/actual_fire(var/atom/target)
+	var/obj/item/projectile/new_projectile = new(src, create_cause_data(initial(name), owner_mob, src))
+	new_projectile.generate_bullet(new ammo.default_ammo)
+	new_projectile.damage *= damage_mult
+	new_projectile.accuracy *= accuracy_mult
+	GIVE_BULLET_TRAIT(new_projectile, /datum/element/bullet_trait_iff, faction_group)
+	new_projectile.fire_at(target, src, owner_mob, new_projectile.ammo.max_range, new_projectile.ammo.shell_speed, null, FALSE)
+	muzzle_flash(Get_Angle(get_turf(src), target))
 	ammo.current_rounds--
 	track_shot()
 	if(ammo.current_rounds == 0)
 		handle_empty()
+		return TRUE
+	return FALSE
 
 /obj/structure/machinery/defenses/sentry/proc/handle_empty()
 	visible_message("[icon2html(src, viewers(src))] <span class='warning'>The [name] beeps steadily and its ammo light blinks red.</span>")
 	playsound(loc, 'sound/weapons/smg_empty_alarm.ogg', 25, 1)
 	update_icon()
+	sent_empty_ammo = TRUE
+	SEND_SIGNAL(src, COMSIG_SENTRY_EMPTY_AMMO_ALERT, src)
 
 //Mostly taken from gun code.
 /obj/structure/machinery/defenses/sentry/proc/muzzle_flash(var/angle)
@@ -254,12 +329,12 @@
 	var/image_layer = layer + 0.1
 	var/offset = 13
 
-	var/image/I = image('icons/obj/items/weapons/projectiles.dmi',src,"muzzle_flash",image_layer)
+	var/image/flash = image('icons/obj/items/weapons/projectiles.dmi',src,"muzzle_flash",image_layer)
 	var/matrix/rotate = matrix() //Change the flash angle.
 	rotate.Translate(0, offset)
 	rotate.Turn(angle)
-	I.transform = rotate
-	I.flick_overlay(src, 3)
+	flash.transform = rotate
+	flash.flick_overlay(src, 3)
 
 /obj/structure/machinery/defenses/sentry/proc/get_target(var/atom/movable/new_target)
 	if(!islist(targets))
@@ -392,6 +467,11 @@
 	faction_group = FACTION_LIST_MARINE
 	static = TRUE
 
+/obj/structure/machinery/defenses/sentry/premade/Initialize()
+	. = ..()
+	if(selected_categories[SENTRY_CATEGORY_IFF])
+		selected_categories[SENTRY_CATEGORY_IFF] = FACTION_USCM
+
 /obj/structure/machinery/defenses/sentry/premade/get_examine_text(mob/user)
 	. = ..()
 	. += SPAN_NOTICE("It seems this one's bolts have been securely welded into the floor, and the access panel locked. You can't interact with it.")
@@ -433,11 +513,18 @@
 /obj/structure/machinery/defenses/sentry/premade/deployable/colony
 	faction_group = list(FACTION_MARINE, FACTION_COLONIST)
 
+/obj/structure/machinery/defenses/sentry/premade/deployable/colony/Initialize()
+	. = ..()
+	choice_categories[SENTRY_CATEGORY_IFF] = list(FACTION_COLONY, FACTION_WEYLAND)
+	selected_categories[SENTRY_CATEGORY_IFF] = FACTION_COLONY
+
 //the turret inside the shuttle sentry deployment system
 /obj/structure/machinery/defenses/sentry/premade/dropship
 	density = TRUE
 	faction_group = FACTION_LIST_MARINE
 	omni_directional = TRUE
+	choice_categories = list()
+	selected_categories = list()
 	var/obj/structure/dropship_equipment/sentry_holder/deployment_system
 
 /obj/structure/machinery/defenses/sentry/premade/dropship/Destroy()
@@ -459,6 +546,18 @@
 	accuracy_mult = 4
 	damage_mult = 2
 	handheld_type = /obj/item/defenses/handheld/sentry/dmr
+
+	choice_categories = list(
+		SENTRY_CATEGORY_IFF = list(FACTION_USCM, FACTION_WEYLAND, FACTION_HUMAN),
+	)
+
+	selected_categories = list(
+		SENTRY_CATEGORY_IFF = FACTION_USCM,
+	)
+
+
+/obj/structure/machinery/defenses/sentry/dmr/handle_rof(var/level)
+	return
 
 /obj/structure/machinery/defenses/sentry/dmr/set_range()
 	switch(dir)

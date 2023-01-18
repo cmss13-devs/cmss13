@@ -2,7 +2,6 @@
 /area/shuttle
 	ceiling = CEILING_METAL
 	requires_power = 0
-	test_exemptions = MAP_TEST_EXEMPTION_SPACE
 	ambience_exterior = AMBIENCE_ALMAYER
 	ceiling_muffle = FALSE
 
@@ -28,10 +27,6 @@
 /area/shuttle/drop1/LV624
 	name = "\improper Dropship Alamo"
 	ambience_exterior = AMBIENCE_LV624
-	icon_state = "shuttle"
-
-/area/shuttle/drop1/Haunted
-	name = "\improper Dropship Alamo"
 	icon_state = "shuttle"
 
 /area/shuttle/drop1/prison
@@ -83,10 +78,6 @@
 /area/shuttle/drop2/LV624
 	name = "\improper Dropship Normandy"
 	ambience_exterior = AMBIENCE_LV624
-	icon_state = "shuttle2"
-
-/area/shuttle/drop2/Haunted
-	name = "\improper Dropship Normandy"
 	icon_state = "shuttle2"
 
 /area/shuttle/drop2/prison

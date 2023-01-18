@@ -77,6 +77,7 @@
 	density = FALSE
 	anchored = 1
 	layer = OBJ_LAYER
+	gender = PLURAL
 	icon = 'icons/obj/items/chemistry.dmi'
 	icon_state = "molten"
 

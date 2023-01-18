@@ -44,7 +44,7 @@
 
 	// radio which broadcasts updates
 	var/obj/item/device/radio/marine/transceiver = new /obj/item/device/radio/marine
-	 // the hidden mob which voices updates
+	// the hidden mob which voices updates
 	var/mob/living/voice = new /mob/living/silicon
 
 	// Stuff needed to render the map

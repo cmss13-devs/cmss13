@@ -34,7 +34,7 @@
 
 	/// timer triggered when sentry gun shoots at a target to not spam the laptop
 	var/engaged_timer = null
-	 /// timer triggered when sentry gun is low on ammo to not spam the laptop
+	/// timer triggered when sentry gun is low on ammo to not spam the laptop
 	var/low_ammo_timer = null
 	/// timer triggered when sentry gun is out of ammo to not spam the laptop
 	var/sent_empty_ammo = FALSE

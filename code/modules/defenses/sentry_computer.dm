@@ -10,16 +10,32 @@
 	icon_state = "sentrycomp_cl"
 	w_class = SIZE_SMALL
 
-	var/setup = FALSE // if the laptop has been placed on a table
-	var/open = FALSE // if the laptop has been opened (the model not tgui)
-	var/on = FALSE // if the laptop is turned on and powered
-	var/list/paired_sentry = list() // list of paired defences
-	var/obj/structure/machinery/defenses/sentry/current // defensive structure which has the camera active
+	/// if the laptop has been placed on a table
+	var/setup = FALSE
+	
+	/// if the laptop has been opened (the model not tgui)
+	var/open = FALSE 
+	
+	/// if the laptop is turned on and powered
+	var/on = FALSE 
+	
+	/// list of paired defences
+	var/list/paired_sentry = list() 
+	
+	/// defensive structure which has the camera active
+	var/obj/structure/machinery/defenses/sentry/current 
 	var/cell_type = /obj/item/cell/high
-	var/obj/item/cell/cell // battery in the laptop
-	var/power_consumption = 1 // multiplier for how much power to drain per linked device
+	
+	/// battery in the laptop
+	var/obj/item/cell/cell 
+	
+	/// multiplier for how much power to drain per linked device
+	var/power_consumption = 1 
 	var/list/registered_tools = list()
-	var/silent = FALSE // if the laptop should annouce events on radio, for live server testing
+	
+	/// if the laptop should announce events on radio, for live server testing
+	var/silent = FALSE 
+	
 	var/can_identify_target = FALSE // if the laptop should broadcast what it is shooting at
 
 	var/list/faction_group

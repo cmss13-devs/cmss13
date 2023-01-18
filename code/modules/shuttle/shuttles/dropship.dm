@@ -4,9 +4,6 @@
 #define LV_624_LZ1 "lv624-lz1"
 #define LV_624_LZ2 "lv624-lz2"
 
-#define DROPSHIP_ALAMO "dropship_alamo"
-#define DROPSHIP_NORMANDY "dropship_normandy"
-
 /obj/docking_port/mobile/marine_dropship
 	width = 11
 	height = 21

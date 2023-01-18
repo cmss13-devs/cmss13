@@ -18,11 +18,11 @@
 	var/obj/item/ammo_magazine/ammo = new /obj/item/ammo_magazine/sentry
 	var/sentry_type = "sentry" //Used for the icon
 	display_additional_stats = TRUE
-
 	var/omni_directional = FALSE
 	var/sentry_range = SENTRY_RANGE
 	var/has_lifespan = FALSE //Used for omnisentry lifespan.
 	var/lifespan = 0 //See above.
+	var/fire_drain = 3 //This drains 3 seconds per shot
 	var/damage_mult = 1
 	var/accuracy_mult = 1
 	handheld_type = /obj/item/defenses/handheld/sentry
@@ -62,8 +62,8 @@
 	if(!target && targets.len)
 		target = pick(targets)
 	if(has_lifespan == TRUE)
-		src.lifespan = src.lifespan-1
-		if(src.lifespan <= 0)
+		lifespan =- 1
+		if(lifespan <= 0)
 			handle_empty()
 
 	get_target(target)
@@ -236,7 +236,7 @@
 
 /obj/structure/machinery/defenses/sentry/proc/actual_fire(var/atom/A)
 	if (has_lifespan == TRUE)
-		lifespan = lifespan - 5 //change this if need be
+		lifespan =- fire_drain
 	var/obj/item/projectile/P = new(src, create_cause_data(initial(name), owner_mob, src))
 	P.generate_bullet(new ammo.default_ammo)
 	P.damage *= damage_mult
@@ -533,7 +533,7 @@
 	faction_group = FACTION_LIST_MARINE
 	omni_directional = TRUE
 	has_lifespan = TRUE
-	lifespan = 300
+	lifespan = 600 //10 minutes of *passive* lifetime
 	immobile = TRUE
 	static = TRUE
 	var/obj/structure/machinery/camera/cas/linked_cam

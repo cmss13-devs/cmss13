@@ -14,7 +14,7 @@
 /obj/item/clothing/accessory/ranks/New()
 	..()
 	name = "[initial(name)] ([rank_short])"
-	desc = "[initial(desc)] This one is for the rank <b>[get_paygrades(rank_short)]</b>"
+	desc = "[initial(desc)] This one is for the rank <b>[get_paygrades(rank_short)]</b>."
 
 /*################################################
 ################ MARINE  ###################

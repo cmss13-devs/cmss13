@@ -101,22 +101,19 @@
 
 //XENO
 /datum/combat_configuration/xeno
-	critical_chance = 4
+	critical_chance = 0
 	armor_minimal_efficiency = 0.05
 	armor_effective_health = 0.1
 	armor_steps = 5
 	non_null_damage_mult = 4
 	armor_full_deflection_mult = 2
 	armor_integrity_damage_mult = 4
-	//Xeno has low randomness of armor
-	armor_random_range = 10
+	armor_random_range = 0
 	armor_ignore_integrity = 1
 
 /datum/combat_configuration/xeno/ranged
 
 /datum/combat_configuration/xeno/ranged/stats
-	critical_chance = 0
-	armor_random_range = 0
 
 /datum/combat_configuration/xeno/melee
 	damage_initial_multiplier = 1.5

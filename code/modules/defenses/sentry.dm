@@ -32,11 +32,14 @@
 	var/burst = 1
 	handheld_type = /obj/item/defenses/handheld/sentry
 
-	var/enaged_timer = null // timer triggered when sentry gun shoots at a target to not spam the laptop
-	var/low_ammo_timer = null // timer triggered when sentry gun is low on ammo to not spam the laptop
-	var/sent_empty_ammo = FALSE // timer triggered when sentry gun is out of ammo to not spam the laptop
+	/// timer triggered when sentry gun shoots at a target to not spam the laptop
+	var/enaged_timer = null 
+	 /// timer triggered when sentry gun is low on ammo to not spam the laptop
+	var/low_ammo_timer = null
+	/// timer triggered when sentry gun is out of ammo to not spam the laptop
+	var/sent_empty_ammo = FALSE 
 
-	// action list is configurable for all subtypes, this is just an example
+	/// action list is configurable for all subtypes, this is just an example
 	choice_categories = list(
 		// SENTRY_CATEGORY_ROF = list(ROF_SINGLE, ROF_BURST, ROF_FULL_AUTO),
 		SENTRY_CATEGORY_IFF = list(FACTION_USCM, FACTION_WEYLAND, FACTION_HUMAN),

@@ -342,7 +342,7 @@
 	to_chat(xeno, SPAN_XENOHIGHDANGER("You pierce [target_carbon]’s head with your inner jaw!"))
 	playsound(target_carbon,'sound/weapons/alien_bite2.ogg', 50, TRUE)
 	xeno.visible_message(SPAN_DANGER("[xeno] pierces [target_carbon]’s head with its inner jaw!"))
-	xeno.flick_attack_overlay(target_carbon, "tail")
+	xeno.flick_attack_overlay(target_carbon, "bite")
 	target_carbon.apply_armoured_damage(200, ARMOR_MELEE, BRUTE, "head", 5) //DIE
 	target_carbon.death(create_cause_data("executed by headbite", xeno), FALSE)
 	xeno.gain_health(150)

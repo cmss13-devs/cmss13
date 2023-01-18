@@ -55,6 +55,8 @@
 				INVOKE_ASYNC(victim, TYPE_PROC_REF(/mob, emote), "scream") //Topkek
 			victim.take_limb_damage(0, 12) //Sizzledam! This automagically burns a random existing body part.
 			victim.add_blood("#dffc00", BLOOD_BODY)
+			playsound(victim, "acid_sizzle", 25, TRUE)
+			animation_flash_color(victim, "#FF0000") //pain hit flicker
 
 /datum/surgery_step/cut_larval_pseudoroots/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	user.affected_message(target,

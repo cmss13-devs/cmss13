@@ -744,7 +744,7 @@ body
 			to_chat(usr, "Failed! Something went wrong.")
 
 	else if(href_list["edit_skill"])
-		if(!check_rights(R_SPAWN))
+		if(!check_rights(R_VAREDIT))
 			return
 
 		var/mob/living/carbon/human/H = locate(href_list["edit_skill"])
@@ -755,25 +755,7 @@ body
 		if(!H.skills)
 			H.skills = new /datum/skills/pfc(H)
 
-		var/selected_skill = tgui_input_list(usr, "Please choose a skill to edit.","Skills", GLOB.all_skills)
-		if(!selected_skill)
-			return
-
-		if(!H)
-			to_chat(usr, "Mob doesn't exist anymore")
-			return
-
-		var/new_skill_level = tgui_input_number(usr, "Select a new level for the [selected_skill] skill ","New Skill Level")
-
-		if(isnull(new_skill_level))
-			return
-
-		if(!H)
-			to_chat(usr, "Mob doesn't exist anymore")
-			return
-
-		H.skills.set_skill(selected_skill, new_skill_level)
-		to_chat(usr, "[H]'s [selected_skill] skill is now set to [new_skill_level].")
+		H.skills.tgui_interact(usr)
 
 	else if(href_list["addlanguage"])
 		if(!check_rights(R_SPAWN))

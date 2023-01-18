@@ -117,54 +117,10 @@
 	tag = "icon-sterile_green_corner (NORTH)"
 	},
 /area/tdome)
-"aG" = (
-/turf/open/space/transit/north/shuttlespace_ns10,
-/area/space)
-"aH" = (
-/turf/open/space/transit/north/shuttlespace_ns15,
-/area/space)
 "aK" = (
 /obj/structure/closet/cabinet,
 /turf/open/floor/carpet,
 /area/adminlevel/ert_station)
-"aN" = (
-/turf/open/space/transit/north/shuttlespace_ns11,
-/area/space)
-"aO" = (
-/turf/open/space/transit/north/shuttlespace_ns14,
-/area/space)
-"aP" = (
-/turf/open/space/transit/north/shuttlespace_ns12,
-/area/space)
-"aQ" = (
-/turf/open/space/transit/north/shuttlespace_ns13,
-/area/space)
-"aT" = (
-/obj/effect/step_trigger/teleporter/random{
-	affect_ghosts = 1;
-	name = "escapeshuttle_leave";
-	teleport_x = 25;
-	teleport_x_offset = 245;
-	teleport_y = 25;
-	teleport_y_offset = 245;
-	teleport_z = 1;
-	teleport_z_offset = 1
-	},
-/turf/open/space/transit/north/shuttlespace_ns13,
-/area/space)
-"aU" = (
-/obj/effect/step_trigger/teleporter/random{
-	affect_ghosts = 1;
-	name = "escapeshuttle_leave";
-	teleport_x = 25;
-	teleport_x_offset = 245;
-	teleport_y = 25;
-	teleport_y_offset = 245;
-	teleport_z = 1;
-	teleport_z_offset = 1
-	},
-/turf/open/space/transit/north/shuttlespace_ns12,
-/area/space)
 "aX" = (
 /obj/effect/step_trigger/teleporter/random{
 	affect_ghosts = 1;
@@ -178,83 +134,6 @@
 	},
 /turf/open/space/transit/north/shuttlespace_ns4,
 /area/space)
-"aY" = (
-/obj/effect/step_trigger/teleporter/random{
-	affect_ghosts = 1;
-	name = "escapeshuttle_leave";
-	teleport_x = 25;
-	teleport_x_offset = 245;
-	teleport_y = 25;
-	teleport_y_offset = 245;
-	teleport_z = 1;
-	teleport_z_offset = 1
-	},
-/turf/open/space/transit/north/shuttlespace_ns11,
-/area/space)
-"aZ" = (
-/obj/effect/step_trigger/teleporter/random{
-	affect_ghosts = 1;
-	name = "escapeshuttle_leave";
-	teleport_x = 25;
-	teleport_x_offset = 245;
-	teleport_y = 25;
-	teleport_y_offset = 245;
-	teleport_z = 1;
-	teleport_z_offset = 1
-	},
-/turf/open/space/transit/north/shuttlespace_ns9,
-/area/space)
-"ba" = (
-/turf/open/space,
-/area/almayer/ert_port)
-"be" = (
-/obj/effect/step_trigger/teleporter/random{
-	affect_ghosts = 1;
-	name = "escapeshuttle_leave";
-	teleport_x = 25;
-	teleport_x_offset = 245;
-	teleport_y = 25;
-	teleport_y_offset = 245;
-	teleport_z = 1;
-	teleport_z_offset = 1
-	},
-/turf/open/space/transit/north/shuttlespace_ns3,
-/area/space)
-"bg" = (
-/turf/open/space/transit/north/shuttlespace_ns9,
-/area/space)
-"bh" = (
-/obj/effect/step_trigger/teleporter/random{
-	affect_ghosts = 1;
-	name = "escapeshuttle_leave";
-	teleport_x = 25;
-	teleport_x_offset = 245;
-	teleport_y = 25;
-	teleport_y_offset = 245;
-	teleport_z = 1;
-	teleport_z_offset = 1
-	},
-/turf/open/space/transit/north/shuttlespace_ns2,
-/area/space)
-"bi" = (
-/turf/open/space/transit/north/shuttlespace_ns8,
-/area/space)
-"bj" = (
-/obj/effect/step_trigger/teleporter/random{
-	affect_ghosts = 1;
-	name = "escapeshuttle_leave";
-	teleport_x = 25;
-	teleport_x_offset = 245;
-	teleport_y = 25;
-	teleport_y_offset = 245;
-	teleport_z = 1;
-	teleport_z_offset = 1
-	},
-/turf/open/space/transit/north/shuttlespace_ns1,
-/area/space)
-"bm" = (
-/turf/open/space/transit/north/shuttlespace_ns7,
-/area/space)
 "bn" = (
 /obj/structure/closet/boxinggloves,
 /turf/open/floor/almayer{
@@ -262,101 +141,8 @@
 	tag = "icon-silver"
 	},
 /area/adminlevel/ert_station)
-"bs" = (
-/turf/open/space/transit/north/shuttlespace_ns6,
-/area/space)
-"bx" = (
-/turf/open/space/transit/north/shuttlespace_ns5,
-/area/space)
 "bz" = (
 /turf/open/space/transit/north/shuttlespace_ns4,
-/area/space)
-"bA" = (
-/obj/effect/step_trigger/teleporter/random{
-	affect_ghosts = 1;
-	name = "escapeshuttle_leave";
-	teleport_x = 25;
-	teleport_x_offset = 245;
-	teleport_y = 25;
-	teleport_y_offset = 245;
-	teleport_z = 1;
-	teleport_z_offset = 1
-	},
-/turf/open/space/transit/north/shuttlespace_ns5,
-/area/space)
-"bM" = (
-/turf/open/space/transit/north/shuttlespace_ns3,
-/area/space)
-"bN" = (
-/obj/effect/step_trigger/teleporter/random{
-	affect_ghosts = 1;
-	name = "escapeshuttle_leave";
-	teleport_x = 25;
-	teleport_x_offset = 245;
-	teleport_y = 25;
-	teleport_y_offset = 245;
-	teleport_z = 1;
-	teleport_z_offset = 1
-	},
-/turf/open/space/transit/north/shuttlespace_ns6,
-/area/space)
-"bO" = (
-/turf/open/space/transit/north/shuttlespace_ns2,
-/area/space)
-"bP" = (
-/obj/effect/step_trigger/teleporter/random{
-	affect_ghosts = 1;
-	name = "escapeshuttle_leave";
-	teleport_x = 25;
-	teleport_x_offset = 245;
-	teleport_y = 25;
-	teleport_y_offset = 245;
-	teleport_z = 1;
-	teleport_z_offset = 1
-	},
-/turf/open/space/transit/north/shuttlespace_ns7,
-/area/space)
-"bQ" = (
-/turf/open/space/transit/north/shuttlespace_ns1,
-/area/space)
-"bR" = (
-/obj/effect/step_trigger/teleporter/random{
-	affect_ghosts = 1;
-	name = "escapeshuttle_leave";
-	teleport_x = 25;
-	teleport_x_offset = 245;
-	teleport_y = 25;
-	teleport_y_offset = 245;
-	teleport_z = 1;
-	teleport_z_offset = 1
-	},
-/turf/open/space/transit/north/shuttlespace_ns8,
-/area/space)
-"bS" = (
-/obj/effect/step_trigger/teleporter/random{
-	affect_ghosts = 1;
-	name = "escapeshuttle_leave";
-	teleport_x = 25;
-	teleport_x_offset = 245;
-	teleport_y = 25;
-	teleport_y_offset = 245;
-	teleport_z = 1;
-	teleport_z_offset = 1
-	},
-/turf/open/space/transit/north/shuttlespace_ns10,
-/area/space)
-"bT" = (
-/obj/effect/step_trigger/teleporter/random{
-	affect_ghosts = 1;
-	name = "escapeshuttle_leave";
-	teleport_x = 25;
-	teleport_x_offset = 245;
-	teleport_y = 25;
-	teleport_y_offset = 245;
-	teleport_z = 1;
-	teleport_z_offset = 1
-	},
-/turf/open/space/transit/north/shuttlespace_ns14,
 /area/space)
 "bU" = (
 /turf/open/space/transit/north/shuttlespace_ns4,
@@ -418,15 +204,6 @@
 	tag = "icon-sterile"
 	},
 /area/adminlevel/ert_station)
-"cx" = (
-/obj/structure/bed/chair/dropship/passenger{
-	dir = 4
-	},
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
-	},
-/area/shuttle/distress/start_small)
 "cz" = (
 /turf/open/space/transit/north/shuttlespace_ns4,
 /area/almayer/evacuation/stranded/pod15)
@@ -490,9 +267,6 @@
 	},
 /turf/open/space/transit/east/shuttlespace_ew4,
 /area/space)
-"de" = (
-/turf/open/space/transit/north/shuttlespace_ns13,
-/area/almayer/ert_port)
 "dg" = (
 /turf/open/space/transit/north/shuttlespace_ns4,
 /area/almayer/evacuation/stranded/pod9)
@@ -527,12 +301,6 @@
 "dy" = (
 /turf/open/floor/wood,
 /area/centcom/living)
-"dz" = (
-/obj/structure/machinery/door/poddoor/shutters/transit{
-	id = "n_umbilical"
-	},
-/turf/open/floor/plating/almayer,
-/area/shuttle/distress/start_big)
 "dC" = (
 /obj/effect/step_trigger/teleporter/random{
 	affect_ghosts = 1;
@@ -584,15 +352,6 @@
 	},
 /turf/open/space/transit/north/shuttlespace_ns4,
 /area/space)
-"dP" = (
-/obj/structure/machinery/door/poddoor/shutters/transit{
-	id = "s_engi"
-	},
-/turf/open/floor/plating/almayer,
-/area/shuttle/distress/start_small)
-"dQ" = (
-/turf/open/space,
-/area/shuttle/distress/transit_upp)
 "dR" = (
 /obj/effect/step_trigger/teleporter/random{
 	affect_ghosts = 1;
@@ -609,17 +368,6 @@
 "ej" = (
 /turf/open/floor/plating/bare_catwalk,
 /area/supply/dock)
-"eu" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "S";
-	tag = "icon-S"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	tag = "icon-E-corner"
-	},
-/turf/open/floor/plating/almayer,
-/area/shuttle/distress/start_small)
 "ev" = (
 /turf/open/floor/carpet{
 	dir = 9;
@@ -670,9 +418,6 @@
 	tag = "icon-redfull"
 	},
 /area/adminlevel/ert_station)
-"eJ" = (
-/turf/open/space,
-/area/shuttle/distress/transit_big)
 "eQ" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer{
@@ -713,11 +458,6 @@
 	tag = "icon-carpetside (EAST)"
 	},
 /area/centcom/living)
-"fj" = (
-/turf/closed/shuttle/lifeboat{
-	icon_state = "0,6"
-	},
-/area/shuttle/distress/start_small)
 "fn" = (
 /turf/closed/wall/almayer/outer{
 	name = "reinforced hull"
@@ -735,13 +475,6 @@
 /obj/structure/prop/almayer/ship_memorial/centcomm,
 /turf/open/floor/carpet,
 /area/centcom/living)
-"fw" = (
-/obj/structure/machinery/door/poddoor/shutters/transit{
-	id = "n_umbilical"
-	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic2,
-/turf/open/floor/plating/almayer,
-/area/shuttle/distress/start_big)
 "fx" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/item/reagent_container/food/snacks/muffin{
@@ -778,18 +511,6 @@
 	icon_state = "mono"
 	},
 /area/centcom/control)
-"fH" = (
-/obj/structure/machinery/door/airlock/almayer/generic,
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	tag = "icon-N"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "S";
-	tag = "icon-S"
-	},
-/turf/open/floor/plating/almayer,
-/area/shuttle/distress/start_small)
 "fL" = (
 /turf/open/floor/carpet{
 	dir = 10;
@@ -1078,13 +799,10 @@
 	tag = "icon-sterile_green_side (NORTHWEST)"
 	},
 /area/adminlevel/ert_station)
-"hN" = (
-/turf/open/floor/plating,
-/area/space/almayer/lifeboat_dock)
 "hP" = (
 /obj/docking_port/stationary/emergency_response/idle_port1,
 /turf/open/floor/plating,
-/area/almayer/ert_port)
+/area/adminlevel/ert_station)
 "hZ" = (
 /obj/structure/sign/poster/art,
 /turf/closed/wall/r_wall/unmeltable,
@@ -1108,1287 +826,24 @@
 	tag = "icon-emerald (NORTH)"
 	},
 /area/adminlevel/ert_station)
-"iU" = (
-/turf/closed/wall/almayer/white,
-/area/shuttle/distress/start_big)
-"iV" = (
-/obj/structure/machinery/door/poddoor/shutters/transit{
-	id = "s_umbilical"
-	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic2,
-/turf/open/floor/plating/almayer,
-/area/shuttle/distress/start_big)
-"iW" = (
-/obj/structure/window/framed/almayer/white,
-/turf/open/floor/plating,
-/area/shuttle/distress/start_big)
 "ja" = (
 /turf/open/floor/plating,
 /area/admin/droppod/loading)
-"je" = (
-/obj/structure/closet/crate,
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
-	},
-/area/shuttle/distress/start_big)
 "ji" = (
 /obj/effect/landmark/newplayer_start,
 /turf/open/floor,
 /area/start)
-"jv" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	tag = "icon-W"
-	},
-/turf/open/floor/plating/almayer,
-/area/shuttle/distress/start_big)
 "kn" = (
 /obj/docking_port/stationary/emergency_response/idle_port3,
 /turf/open/floor/plating,
-/area/almayer/ert_port)
+/area/adminlevel/ert_station)
 "ks" = (
 /obj/docking_port/stationary/emergency_response/idle_port2,
 /turf/open/floor/plating,
-/area/almayer/ert_port)
-"kt" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	tag = "icon-E"
-	},
-/turf/open/floor/plating/almayer,
-/area/shuttle/distress/start_big)
-"ku" = (
-/obj/structure/largecrate/random/barrel/red,
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
-	},
-/area/shuttle/distress/start_big)
+/area/adminlevel/ert_station)
 "kx" = (
 /turf/closed/wall/indestructible/splashscreen,
 /area/start)
-"ky" = (
-/obj/structure/closet/secure_closet/personal,
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
-	},
-/area/shuttle/distress/start_big)
-"kz" = (
-/obj/structure/surface/table/almayer,
-/obj/item/device/flashlight/lamp,
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
-	},
-/area/shuttle/distress/start_big)
-"kA" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
-/obj/structure/surface/rack,
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
-	},
-/area/shuttle/distress/start_big)
-"kB" = (
-/obj/structure/largecrate/random/case/small,
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
-	},
-/area/shuttle/distress/start_big)
-"kC" = (
-/obj/structure/machinery/bioprinter{
-	stored_metal = 1000
-	},
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
-	},
-/area/shuttle/distress/start_big)
-"kD" = (
-/obj/structure/sink{
-	pixel_y = 28
-	},
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
-	},
-/area/shuttle/distress/start_big)
-"kE" = (
-/obj/structure/closet/secure_closet/medical2,
-/obj/item/storage/box/gloves{
-	pixel_x = -5;
-	pixel_y = -5
-	},
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
-	},
-/area/shuttle/distress/start_big)
-"kF" = (
-/obj/item/storage/surgical_tray,
-/obj/structure/surface/table/almayer,
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
-	},
-/area/shuttle/distress/start_big)
-"kG" = (
-/obj/structure/machinery/microwave,
-/obj/structure/surface/table/almayer,
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
-	},
-/area/shuttle/distress/start_big)
-"kH" = (
-/turf/open/floor/almayer,
-/area/shuttle/distress/start_big)
-"kI" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
-/obj/structure/bed,
-/obj/item/bedsheet/brown,
-/turf/open/floor/almayer,
-/area/shuttle/distress/start_big)
-"kJ" = (
-/obj/structure/largecrate/random/barrel/blue,
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
-	},
-/area/shuttle/distress/start_big)
-"kK" = (
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
-	},
-/area/shuttle/distress/start_big)
-"kL" = (
-/obj/structure/machinery/door/airlock/almayer/medical{
-	name = "Operating Theatre";
-	req_one_access = null
-	},
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
-	},
-/area/shuttle/distress/start_big)
-"kM" = (
-/obj/structure/machinery/optable,
-/obj/item/tank/anesthetic,
-/obj/item/clothing/mask/breath/medical,
-/obj/structure/machinery/light{
-	dir = 4
-	},
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
-	},
-/area/shuttle/distress/start_big)
-"kN" = (
-/obj/structure/surface/table/almayer,
-/obj/item/storage/box/donkpockets,
-/obj/item/storage/box/donkpockets,
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
-	},
-/area/shuttle/distress/start_big)
-"kO" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	tag = "icon-W"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	tag = "icon-N"
-	},
-/turf/open/floor/plating/almayer,
-/area/shuttle/distress/start_big)
-"kP" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	tag = "icon-E"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	tag = "icon-N"
-	},
-/turf/open/floor/plating/almayer,
-/area/shuttle/distress/start_big)
-"kQ" = (
-/obj/structure/bed,
-/obj/item/bedsheet/brown,
-/turf/open/floor/almayer,
-/area/shuttle/distress/start_big)
-"kR" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic2,
-/turf/open/floor/plating/almayer,
-/area/shuttle/distress/start_big)
-"kS" = (
-/obj/structure/machinery/cm_vending/sorted/medical/no_access,
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
-	},
-/area/shuttle/distress/start_big)
-"kT" = (
-/obj/structure/machinery/iv_drip,
-/obj/structure/mirror{
-	pixel_y = -28
-	},
-/obj/item/reagent_container/blood/OMinus,
-/obj/item/reagent_container/blood/OMinus,
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
-	},
-/area/shuttle/distress/start_big)
-"kU" = (
-/obj/structure/surface/table/almayer,
-/obj/item/storage/pouch/medkit,
-/obj/item/storage/pouch/medkit,
-/obj/item/storage/pouch/medical,
-/obj/item/storage/pouch/medical,
-/obj/item/storage/belt/medical/lifesaver/full,
-/obj/item/storage/belt/medical/lifesaver/full,
-/obj/item/reagent_container/spray/cleaner{
-	desc = "Someone has crossed out the Space from Space Cleaner and written in Surgery. 'Do not remove under punishment of death!!!' is scrawled on the back.";
-	name = "Surgery Cleaner"
-	},
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
-	},
-/area/shuttle/distress/start_big)
-"kW" = (
-/obj/structure/bed/chair/office/light,
-/turf/open/floor{
-	dir = 8;
-	icon_state = "carpet10-8";
-	tag = "icon-carpet10-8 (WEST)"
-	},
-/area/shuttle/distress/start_big)
-"kX" = (
-/turf/open/floor/wood,
-/area/shuttle/distress/start_big)
-"kY" = (
-/obj/structure/surface/table/almayer,
-/obj/item/paper_bin,
-/obj/item/tool/pen,
-/turf/open/floor/wood,
-/area/shuttle/distress/start_big)
-"kZ" = (
-/obj/structure/machinery/door/airlock/almayer/generic{
-	dir = 2;
-	name = "Crew Bunks"
-	},
-/turf/open/floor/plating/almayer,
-/area/shuttle/distress/start_big)
-"la" = (
-/obj/structure/bed/chair/dropship/passenger{
-	dir = 4
-	},
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
-	},
-/area/shuttle/distress/start_big)
-"lb" = (
-/obj/structure/bed/chair/dropship/passenger{
-	dir = 8
-	},
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
-	},
-/area/shuttle/distress/start_big)
-"lc" = (
-/obj/structure/machinery/door/airlock/almayer/medical{
-	dir = 2;
-	name = "Operating Theatre";
-	req_one_access = null
-	},
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
-	},
-/area/shuttle/distress/start_big)
-"ld" = (
-/obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/communications{
-	dir = 4
-	},
-/obj/structure/machinery/light{
-	dir = 8
-	},
-/turf/open/floor{
-	dir = 8;
-	icon_state = "carpet5-1";
-	tag = "icon-carpet5-1 (WEST)"
-	},
-/area/shuttle/distress/start_big)
-"le" = (
-/obj/structure/surface/table/almayer,
-/obj/item/device/flashlight/lamp/green,
-/turf/open/floor{
-	dir = 8;
-	icon_state = "carpet9-4";
-	tag = "icon-carpet9-4 (WEST)"
-	},
-/area/shuttle/distress/start_big)
-"lf" = (
-/obj/structure/bed,
-/obj/item/bedsheet/rd,
-/turf/open/floor/wood,
-/area/shuttle/distress/start_big)
-"lg" = (
-/obj/structure/surface/rack,
-/obj/item/storage/belt/utility/full,
-/obj/item/storage/backpack/marine/satchel/tech,
-/obj/item/storage/toolbox/electrical,
-/obj/item/clothing/accessory/storage/webbing,
-/obj/item/cell/infinite,
-/obj/item/cell/infinite,
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
-	},
-/area/shuttle/distress/start_big)
-"lh" = (
-/obj/structure/machinery/cm_vending/sorted/tech/electronics_storage,
-/obj/item/device/radio/intercom{
-	freerange = 1;
-	name = "General Listening Channel";
-	pixel_y = 28
-	},
-/obj/structure/machinery/light{
-	dir = 4
-	},
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
-	},
-/area/shuttle/distress/start_big)
-"li" = (
-/obj/structure/surface/rack,
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
-	},
-/area/shuttle/distress/start_big)
-"lj" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	tag = "icon-W"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	tag = "icon-E"
-	},
-/turf/open/floor/plating/almayer,
-/area/shuttle/distress/start_big)
-"lk" = (
-/obj/structure/bed/chair/dropship/passenger,
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
-	},
-/area/shuttle/distress/start_big)
-"ll" = (
-/obj/structure/bed/chair/dropship/passenger,
-/obj/structure/machinery/light{
-	dir = 1
-	},
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
-	},
-/area/shuttle/distress/start_big)
-"lm" = (
-/obj/structure/surface/rack,
-/obj/item/storage/toolbox/mechanical,
-/obj/item/device/radio,
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
-	},
-/area/shuttle/distress/start_big)
-"ln" = (
-/obj/structure/surface/rack,
-/obj/item/storage/firstaid/regular,
-/obj/item/storage/belt/medical/lifesaver/full,
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
-	},
-/area/shuttle/distress/start_big)
-"lo" = (
-/obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_21";
-	tag = "icon-plant-10"
-	},
-/turf/open/floor/wood,
-/area/shuttle/distress/start_big)
-"lp" = (
-/obj/structure/bed/chair/office/light{
-	dir = 1
-	},
-/turf/open/floor/wood,
-/area/shuttle/distress/start_big)
-"lq" = (
-/obj/structure/closet/secure_closet/personal/cabinet,
-/turf/open/floor/wood,
-/area/shuttle/distress/start_big)
-"lr" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
-/obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/security{
-	network = list("Military","Almayer")
-	},
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
-	},
-/area/shuttle/distress/start_big)
-"lt" = (
-/obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/secure_data,
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
-	},
-/area/shuttle/distress/start_big)
-"lu" = (
-/obj/structure/machinery/autolathe,
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
-	},
-/area/shuttle/distress/start_big)
-"lv" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	tag = "icon-N"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	tag = "icon-W"
-	},
-/turf/open/floor/plating/almayer,
-/area/shuttle/distress/start_big)
-"lw" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	tag = "icon-N"
-	},
-/turf/open/floor/plating/almayer,
-/area/shuttle/distress/start_big)
-"lx" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "SE-out";
-	tag = "icon-SE-out"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "NE-out";
-	tag = "icon-NE-out"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "NW-out";
-	tag = "icon-NW-out"
-	},
-/turf/open/floor/plating/almayer,
-/area/shuttle/distress/start_big)
-"ly" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	tag = "icon-N"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "S";
-	tag = "icon-S"
-	},
-/turf/open/floor/plating/almayer,
-/area/shuttle/distress/start_big)
-"lz" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "SW-out";
-	tag = "icon-SW-out"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "NW-out";
-	tag = "icon-NW-out"
-	},
-/turf/open/floor/plating/almayer,
-/area/shuttle/distress/start_big)
-"lA" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "SE-out";
-	tag = "icon-SE-out"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "NE-out";
-	tag = "icon-NE-out"
-	},
-/turf/open/floor/plating/almayer,
-/area/shuttle/distress/start_big)
-"lB" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "SE-out";
-	tag = "icon-SE-out"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "SW-out";
-	tag = "icon-SW-out"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "NE-out";
-	tag = "icon-NE-out"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "NW-out";
-	tag = "icon-NW-out"
-	},
-/turf/open/floor/plating/almayer,
-/area/shuttle/distress/start_big)
-"lC" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	tag = "icon-N"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "S";
-	tag = "icon-S"
-	},
-/turf/open/floor/almayer{
-	dir = 5;
-	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
-	},
-/area/shuttle/distress/start_big)
-"lD" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	tag = "icon-N"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "SW-out";
-	tag = "icon-SW-out"
-	},
-/turf/open/floor/plating/almayer,
-/area/shuttle/distress/start_big)
-"lE" = (
-/obj/structure/machinery/door/airlock/almayer/command{
-	dir = 1;
-	name = "Captain's Quarters"
-	},
-/turf/open/floor/plating/almayer,
-/area/shuttle/distress/start_big)
-"lF" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	tag = "icon-N"
-	},
-/turf/open/floor/almayer{
-	icon_state = "tcomms"
-	},
-/area/shuttle/distress/start_big)
-"lG" = (
-/obj/structure/bed/chair/office/light{
-	dir = 1
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	tag = "icon-N"
-	},
-/turf/open/floor/plating/almayer,
-/area/shuttle/distress/start_big)
-"lH" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	tag = "icon-N"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	tag = "icon-E"
-	},
-/turf/open/floor/almayer{
-	icon_state = "tcomms"
-	},
-/area/shuttle/distress/start_big)
-"lI" = (
-/obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/card{
-	dir = 8
-	},
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
-	},
-/area/shuttle/distress/start_big)
-"lJ" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	tag = "icon-N"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "S";
-	tag = "icon-S"
-	},
-/obj/structure/machinery/power/apc/almayer{
-	cell_type = /obj/item/cell/hyper;
-	dir = 8
-	},
-/turf/open/floor/almayer{
-	icon_state = "tcomms"
-	},
-/area/shuttle/distress/start_big)
-"lL" = (
-/turf/open/floor/plating/almayer,
-/area/shuttle/distress/start_big)
-"lM" = (
-/obj/structure/machinery/door/airlock/almayer/engineering{
-	name = "Aft Storage"
-	},
-/turf/open/floor/plating/almayer,
-/area/shuttle/distress/start_big)
-"lN" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	tag = "icon-E"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	tag = "icon-W"
-	},
-/turf/open/floor/plating/almayer,
-/area/shuttle/distress/start_big)
-"lO" = (
-/obj/structure/machinery/door/airlock/almayer/command{
-	name = "Bridge"
-	},
-/turf/open/floor/plating/almayer,
-/area/shuttle/distress/start_big)
-"lP" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "S";
-	tag = "icon-S"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	tag = "icon-N"
-	},
-/obj/structure/machinery/light/small,
-/turf/open/floor/plating/almayer,
-/area/shuttle/distress/start_big)
-"lQ" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "S";
-	tag = "icon-S"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	tag = "icon-N"
-	},
-/turf/open/floor/plating/almayer,
-/area/shuttle/distress/start_big)
-"lR" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "SE-out";
-	tag = "icon-SE-out"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "SW-out";
-	tag = "icon-SW-out"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "NW-out";
-	tag = "icon-NW-out"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "NE-out";
-	tag = "icon-NE-out"
-	},
-/turf/open/floor/plating/almayer,
-/area/shuttle/distress/start_big)
-"lS" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "S";
-	tag = "icon-S"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	tag = "icon-N"
-	},
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
-/turf/open/floor/plating/almayer,
-/area/shuttle/distress/start_big)
-"lT" = (
-/turf/open/floor/almayer{
-	icon_state = "tcomms"
-	},
-/area/shuttle/distress/start_big)
-"lU" = (
-/obj/structure/bed/chair/office/light{
-	dir = 4;
-	tag = ""
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	tag = "icon-E"
-	},
-/turf/open/floor/plating/almayer,
-/area/shuttle/distress/start_big)
-"lV" = (
-/obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/shuttle_control/ert/terminal{
-	dir = 8;
-	shuttle_tag = "Distress_Big"
-	},
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
-	},
-/area/shuttle/distress/start_big)
-"lW" = (
-/obj/structure/surface/table/almayer,
-/obj/item/stack/sheet/metal{
-	amount = 50;
-	pixel_x = 3;
-	pixel_y = 3
-	},
-/obj/item/stack/sheet/metal{
-	amount = 50;
-	pixel_x = 3;
-	pixel_y = 3
-	},
-/obj/item/stack/sheet/wood{
-	amount = 50
-	},
-/obj/item/stack/sheet/wood{
-	amount = 50
-	},
-/obj/item/stack/sheet/plasteel{
-	amount = 30
-	},
-/obj/item/stack/sheet/plasteel{
-	amount = 30
-	},
-/obj/item/stack/sheet/glass{
-	amount = 50
-	},
-/obj/item/stack/sheet/glass{
-	amount = 50
-	},
-/obj/item/stack/cable_coil,
-/obj/item/stack/cable_coil,
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
-	},
-/area/shuttle/distress/start_big)
-"lX" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "S";
-	tag = "icon-S"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	tag = "icon-W"
-	},
-/turf/open/floor/plating/almayer,
-/area/shuttle/distress/start_big)
-"lY" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "S";
-	tag = "icon-S"
-	},
-/turf/open/floor/plating/almayer,
-/area/shuttle/distress/start_big)
-"lZ" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "SE-out";
-	tag = "icon-SE-out"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "SW-out";
-	tag = "icon-SW-out"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "NE-out";
-	tag = "icon-NE-out"
-	},
-/turf/open/floor/plating/almayer,
-/area/shuttle/distress/start_big)
-"ma" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "SE-out";
-	tag = "icon-SE-out"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "NW-out";
-	tag = "icon-NW-out"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "SW-out";
-	tag = "icon-SW-out"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "NE-out";
-	tag = "icon-NE-out"
-	},
-/turf/open/floor/plating/almayer,
-/area/shuttle/distress/start_big)
-"mb" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "S";
-	tag = "icon-S"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "NW-out";
-	tag = "icon-NW-out"
-	},
-/turf/open/floor/plating/almayer,
-/area/shuttle/distress/start_big)
-"mc" = (
-/obj/structure/machinery/door/airlock/almayer/command{
-	dir = 1;
-	name = "Captain's Storage"
-	},
-/turf/open/floor/plating/almayer,
-/area/shuttle/distress/start_big)
-"md" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "S";
-	tag = "icon-S"
-	},
-/turf/open/floor/almayer{
-	icon_state = "tcomms"
-	},
-/area/shuttle/distress/start_big)
-"me" = (
-/obj/structure/bed/chair/office/light,
-/obj/effect/decal/warning_stripes{
-	icon_state = "S";
-	tag = "icon-S"
-	},
-/turf/open/floor/plating/almayer,
-/area/shuttle/distress/start_big)
-"mf" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "S";
-	tag = "icon-S"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	tag = "icon-E"
-	},
-/turf/open/floor/almayer{
-	icon_state = "tcomms"
-	},
-/area/shuttle/distress/start_big)
-"mg" = (
-/obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/communications{
-	dir = 8
-	},
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
-	},
-/area/shuttle/distress/start_big)
-"mh" = (
-/obj/structure/surface/rack,
-/obj/item/storage/belt/utility/full,
-/obj/item/storage/backpack/marine/engineerpack,
-/obj/item/storage/toolbox/mechanical,
-/obj/item/clothing/accessory/storage/webbing,
-/obj/item/clothing/glasses/welding,
-/obj/item/clothing/glasses/welding,
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
-	},
-/area/shuttle/distress/start_big)
-"mi" = (
-/obj/structure/reagent_dispensers/fueltank,
-/obj/structure/machinery/light{
-	dir = 4
-	},
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
-	},
-/area/shuttle/distress/start_big)
-"mk" = (
-/obj/structure/bed/chair/dropship/passenger,
-/obj/structure/machinery/light,
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
-	},
-/area/shuttle/distress/start_big)
-"ml" = (
-/obj/structure/surface/table/almayer,
-/obj/item/clothing/suit/armor/bulletproof,
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
-	},
-/area/shuttle/distress/start_big)
-"mm" = (
-/obj/structure/closet/secure_closet/personal,
-/obj/item/ammo_magazine/shotgun/buckshot,
-/obj/item/ammo_magazine/shotgun/buckshot,
-/obj/item/ammo_magazine/shotgun/beanbag{
-	pixel_x = -3;
-	pixel_y = -5
-	},
-/obj/item/weapon/gun/shotgun/combat,
-/obj/item/weapon/gun/shotgun/combat,
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
-	},
-/area/shuttle/distress/start_big)
-"mn" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	tag = "icon-W"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	tag = "icon-W"
-	},
-/turf/open/floor/plating/almayer,
-/area/shuttle/distress/start_big)
-"mo" = (
-/obj/structure/surface/rack,
-/obj/item/ammo_magazine/smg/m39,
-/obj/item/ammo_magazine/smg/m39,
-/obj/item/ammo_magazine/smg/m39,
-/obj/item/weapon/gun/smg/m39/elite,
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
-	},
-/area/shuttle/distress/start_big)
-"mp" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
-/obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/med_data/laptop,
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
-	},
-/area/shuttle/distress/start_big)
-"mq" = (
-/obj/structure/machinery/computer/crew,
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
-	},
-/area/shuttle/distress/start_big)
-"mr" = (
-/obj/structure/surface/table/almayer,
-/obj/item/paper_bin,
-/obj/item/tool/pen,
-/obj/item/tool/pen,
-/obj/item/tool/pen,
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
-	},
-/area/shuttle/distress/start_big)
-"ms" = (
-/obj/structure/machinery/door/airlock/almayer/generic{
-	dir = 2;
-	name = "Secure Storage"
-	},
-/turf/open/floor/plating/almayer,
-/area/shuttle/distress/start_big)
-"mt" = (
-/obj/structure/machinery/door/airlock/almayer/generic{
-	dir = 2;
-	name = "Crew Lockers"
-	},
-/turf/open/floor/plating/almayer,
-/area/shuttle/distress/start_big)
-"mu" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
-/obj/structure/surface/table/almayer,
-/obj/item/ammo_magazine/pistol/mod88{
-	pixel_x = 5
-	},
-/obj/item/ammo_magazine/pistol/mod88{
-	pixel_x = 5
-	},
-/obj/item/weapon/gun/pistol/mod88{
-	pixel_y = 4
-	},
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
-	},
-/area/shuttle/distress/start_big)
-"mv" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	tag = "icon-N"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "S";
-	tag = "icon-S"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	tag = "icon-W"
-	},
-/turf/open/floor/plating/almayer,
-/area/shuttle/distress/start_big)
-"mw" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	tag = "icon-W"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "SW-out";
-	tag = "icon-SW-out"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "NW-out";
-	tag = "icon-NW-out"
-	},
-/turf/open/floor/plating/almayer,
-/area/shuttle/distress/start_big)
-"mx" = (
-/obj/structure/closet/secure_closet/securecom{
-	desc = "You could probably get thrown out an airlock just by looking at this...";
-	name = "captain's secure box"
-	},
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
-	},
-/area/shuttle/distress/start_big)
-"my" = (
-/obj/structure/machinery/cryopod/right,
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
-	},
-/area/shuttle/distress/start_big)
-"mz" = (
-/obj/structure/surface/rack,
-/obj/item/storage/toolbox/emergency{
-	pixel_x = 3;
-	pixel_y = 3
-	},
-/obj/item/storage/toolbox/emergency{
-	pixel_x = 3;
-	pixel_y = 3
-	},
-/obj/item/storage/box/m94,
-/obj/item/storage/box/m94,
-/obj/item/storage/box/zipcuffs,
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
-	},
-/area/shuttle/distress/start_big)
-"mA" = (
-/obj/structure/closet,
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
-	},
-/area/shuttle/distress/start_big)
-"mB" = (
-/obj/structure/machinery/door/window/westright{
-	dir = 2
-	},
-/obj/item/tool/soap,
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
-	},
-/area/shuttle/distress/start_big)
-"mC" = (
-/obj/structure/surface/rack,
-/obj/item/ammo_magazine/smg/m39,
-/obj/item/ammo_magazine/smg/m39,
-/obj/item/weapon/gun/smg/m39/elite,
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
-	},
-/area/shuttle/distress/start_big)
-"mD" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	tag = "icon-W"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "S";
-	tag = "icon-S"
-	},
-/turf/open/floor/plating/almayer,
-/area/shuttle/distress/start_big)
-"mE" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	tag = "icon-E"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "S";
-	tag = "icon-S"
-	},
-/turf/open/floor/plating/almayer,
-/area/shuttle/distress/start_big)
-"mF" = (
-/obj/structure/reagent_dispensers/watertank,
-/obj/item/clothing/mask/gas,
-/obj/item/clothing/mask/gas,
-/obj/item/tool/extinguisher,
-/obj/item/tool/extinguisher,
-/obj/structure/machinery/light{
-	dir = 4
-	},
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
-	},
-/area/shuttle/distress/start_big)
-"mG" = (
-/obj/structure/largecrate/random/barrel/white,
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
-	},
-/area/shuttle/distress/start_big)
-"mH" = (
-/obj/structure/closet,
-/obj/structure/machinery/light{
-	dir = 8
-	},
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
-	},
-/area/shuttle/distress/start_big)
-"mI" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	tag = "icon-W"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "SE-out";
-	tag = "icon-SE-out"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "NE-out";
-	tag = "icon-NE-out"
-	},
-/turf/open/floor/plating/almayer,
-/area/shuttle/distress/start_big)
-"mJ" = (
-/obj/structure/machinery/door/airlock/almayer/generic{
-	name = "Restroom"
-	},
-/turf/open/floor/plating/almayer,
-/area/shuttle/distress/start_big)
-"mL" = (
-/obj/structure/surface/table/almayer,
-/obj/item/paper_bin{
-	pixel_x = -5;
-	pixel_y = 5
-	},
-/obj/item/storage/box/wy_mre,
-/obj/item/storage/box/wy_mre,
-/obj/item/storage/box/wy_mre,
-/obj/item/tool/pen,
-/obj/item/tool/pen,
-/obj/item/tool/pen,
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
-	},
-/area/shuttle/distress/start_big)
-"mM" = (
-/obj/structure/surface/table/almayer,
-/obj/item/clipboard,
-/obj/item/clipboard,
-/obj/item/folder,
-/obj/item/folder,
-/obj/item/tool/crowbar,
-/obj/item/tool/crowbar,
-/obj/item/tool/hand_labeler,
-/obj/item/tool/hand_labeler,
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
-	},
-/area/shuttle/distress/start_big)
-"mN" = (
-/obj/structure/surface/table/almayer,
-/obj/structure/largecrate/random/case/small{
-	pixel_y = 5
-	},
-/obj/item/storage/backpack/lightpack,
-/obj/item/storage/backpack/lightpack,
-/obj/item/storage/backpack/lightpack,
-/obj/item/storage/box/bodybags{
-	pixel_x = 5;
-	pixel_y = 5
-	},
-/obj/item/device/radio,
-/obj/item/device/radio,
-/obj/item/device/radio,
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
-	},
-/area/shuttle/distress/start_big)
-"mO" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
-/obj/structure/largecrate/random/case/double,
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
-	},
-/area/shuttle/distress/start_big)
-"mP" = (
-/obj/structure/surface/table/almayer,
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
-	},
-/area/shuttle/distress/start_big)
-"mQ" = (
-/obj/structure/toilet{
-	dir = 1;
-	tag = "icon-toilet00 (NORTH)"
-	},
-/turf/open/floor{
-	icon_state = "freezerfloor"
-	},
-/area/shuttle/distress/start_big)
 "mX" = (
 /obj/docking_port/stationary/lifeboat_dock/admin{
 	id = "admin-lifeboat1";
@@ -2399,24 +854,9 @@
 "ne" = (
 /turf/open/space/transit/east/shuttlespace_ew8,
 /area/space)
-"nu" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "NE-out";
-	tag = "icon-NE-out"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "SE-out";
-	tag = "icon-SE-out"
-	},
-/turf/open/floor/plating/almayer,
-/area/shuttle/distress/start_small)
 "nB" = (
 /turf/open/space/transit/east/shuttlespace_ew4,
 /area/space)
-"nF" = (
-/obj/structure/window/framed/corsat/hull,
-/turf/open/floor/plating,
-/area/shuttle/distress/start_small)
 "nP" = (
 /turf/open/floor/almayer{
 	dir = 8;
@@ -2537,13 +977,6 @@
 	tag = "icon-red"
 	},
 /area/adminlevel/ert_station)
-"pi" = (
-/obj/structure/machinery/door/poddoor/shutters/transit{
-	id = "n_engi"
-	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic2,
-/turf/open/floor/plating/almayer,
-/area/shuttle/distress/start_small)
 "pm" = (
 /turf/open/floor/almayer{
 	dir = 1;
@@ -2559,21 +992,6 @@
 	tag = "icon-sterile"
 	},
 /area/adminlevel/ert_station/shuttle_dispatch)
-"pE" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	tag = "icon-W"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	tag = "icon-N"
-	},
-/obj/structure/closet/walllocker/emerglocker{
-	pixel_x = -32;
-	pixel_y = 32
-	},
-/turf/open/floor/plating/almayer,
-/area/shuttle/distress/start_small)
 "pP" = (
 /obj/item/newspaper,
 /turf/open/floor/carpet{
@@ -2611,11 +1029,6 @@
 	},
 /turf/open/space/transit/east/shuttlespace_ew8,
 /area/space)
-"qr" = (
-/turf/closed/shuttle/lifeboat{
-	icon_state = "0,1"
-	},
-/area/shuttle/distress/start_small)
 "qu" = (
 /obj/structure/transmitter/hidden{
 	dir = 8;
@@ -2656,17 +1069,6 @@
 	tag = "icon-sterile_green_side (NORTHEAST)"
 	},
 /area/adminlevel/ert_station)
-"rF" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	tag = "icon-N"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	tag = "icon-E-corner"
-	},
-/turf/open/floor/plating/almayer,
-/area/shuttle/distress/start_small)
 "rR" = (
 /obj/structure/closet/secure_closet/freezer/fridge/full,
 /obj/item/reagent_container/food/condiment/enzyme,
@@ -2695,12 +1097,6 @@
 	},
 /turf/open/space/transit/east/shuttlespace_ew5,
 /area/space)
-"sL" = (
-/obj/structure/machinery/door/poddoor/shutters/transit{
-	id = "n_engi"
-	},
-/turf/open/floor/plating/almayer,
-/area/shuttle/distress/start_small)
 "th" = (
 /obj/structure/machinery/medical_pod/bodyscanner,
 /turf/open/floor/almayer{
@@ -2729,18 +1125,6 @@
 	tag = "icon-sterile"
 	},
 /area/adminlevel/ert_station)
-"tZ" = (
-/obj/structure/bed/chair/dropship/passenger{
-	dir = 4
-	},
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med/lifeboat{
-	pixel_y = -32
-	},
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
-	},
-/area/shuttle/distress/start_small)
 "uc" = (
 /obj/docking_port/stationary/lifeboat_dock/admin{
 	id = "admin-lifeboat2";
@@ -3027,11 +1411,6 @@
 	icon_state = "kitchen"
 	},
 /area/adminlevel/ert_station)
-"yY" = (
-/turf/closed/shuttle/lifeboat{
-	icon_state = "0,5"
-	},
-/area/shuttle/distress/start_small)
 "zg" = (
 /obj/structure/machinery/chem_dispenser/soda{
 	density = 0;
@@ -3085,10 +1464,6 @@
 	tag = "icon-sterile"
 	},
 /area/adminlevel/ert_station/shuttle_dispatch)
-"zE" = (
-/obj/structure/window/framed/almayer/white/hull,
-/turf/open/floor/plating,
-/area/shuttle/distress/start_big)
 "zO" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/structure/machinery/recharger,
@@ -3101,23 +1476,6 @@
 	tag = "icon-sterile_green_side (NORTHWEST)"
 	},
 /area/adminlevel/ert_station)
-"Al" = (
-/obj/structure/machinery/door/poddoor/shutters/transit{
-	id = "s_umbilical"
-	},
-/turf/open/floor/plating/almayer,
-/area/shuttle/distress/start_big)
-"Am" = (
-/obj/structure/surface/rack,
-/obj/item/storage/firstaid/adv{
-	pixel_x = 2;
-	pixel_y = -5
-	},
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
-	},
-/area/shuttle/distress/start_big)
 "AH" = (
 /turf/open/space/transit/east/shuttlespace_ew1,
 /area/space)
@@ -3160,13 +1518,6 @@
 	tag = "icon-blue (NORTHEAST)"
 	},
 /area/tdome/tdome2)
-"BN" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	tag = "icon-W"
-	},
-/turf/open/floor/plating/almayer,
-/area/shuttle/distress/start_small)
 "BO" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "NW-out";
@@ -3244,25 +1595,6 @@
 	},
 /turf/open/floor/wood/ship,
 /area/adminlevel/ert_station)
-"CO" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "S";
-	tag = "icon-S"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	tag = "icon-E-corner"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "NW-out";
-	layer = 2.5;
-	tag = "icon-NW-out"
-	},
-/obj/effect/landmark/ert_spawns/distress_pizza,
-/turf/open/floor/almayer{
-	icon_state = "tcomms"
-	},
-/area/shuttle/distress/start_small)
 "CU" = (
 /turf/open/floor/prison{
 	icon_state = "kitchen"
@@ -3347,9 +1679,6 @@
 	},
 /turf/open/space/transit/east/shuttlespace_ew9,
 /area/space)
-"Ek" = (
-/turf/open/space/basic,
-/area/shuttle/distress/transit_small)
 "En" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/item/book/manual/chef_recipes,
@@ -3397,15 +1726,6 @@
 	tag = "icon-silver (WEST)"
 	},
 /area/adminlevel/ert_station/shuttle_dispatch)
-"Fd" = (
-/obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/security{
-	network = list("Military","Almayer")
-	},
-/turf/open/floor/almayer{
-	icon_state = "tcomms"
-	},
-/area/shuttle/distress/start_small)
 "Fo" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -3569,11 +1889,6 @@
 	tag = "icon-sterile"
 	},
 /area/adminlevel/ert_station)
-"Hj" = (
-/turf/closed/shuttle/lifeboat{
-	icon_state = "0,0"
-	},
-/area/shuttle/distress/start_small)
 "HB" = (
 /turf/open/space/transit/north/shuttlespace_ns4,
 /area/almayer/evacuation/stranded/pod18)
@@ -3586,6 +1901,10 @@
 	icon_state = "silver";
 	tag = "icon-green (EAST)"
 	},
+/area/adminlevel/ert_station/shuttle_dispatch)
+"HW" = (
+/obj/docking_port/stationary/emergency_response/idle_port4,
+/turf/open/floor/plating/almayer,
 /area/adminlevel/ert_station/shuttle_dispatch)
 "HX" = (
 /obj/structure/sign/safety/med_life_support,
@@ -3602,21 +1921,6 @@
 	tag = "icon-sterile"
 	},
 /area/adminlevel/ert_station)
-"Ia" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	tag = "icon-E-corner"
-	},
-/obj/structure/closet/hydrant{
-	pixel_x = 32
-	},
-/obj/item/storage/toolbox/emergency{
-	pixel_x = 3;
-	pixel_y = 3
-	},
-/obj/item/tool/crowbar,
-/turf/open/floor/plating/almayer,
-/area/shuttle/distress/start_small)
 "Il" = (
 /obj/structure/machinery/bioprinter{
 	stored_metal = 1000
@@ -3671,22 +1975,15 @@
 "IR" = (
 /turf/closed/wall/r_wall/unmeltable,
 /area/adminlevel/simulation)
-"Jc" = (
-/turf/closed/wall/r_wall/biodome/biodome_unmeltable,
-/area/shuttle/distress/start_small)
 "Ji" = (
 /turf/open/space/transit/east/shuttlespace_ew13,
 /area/space)
 "Jl" = (
-/turf/open/floor/plating,
-/area/almayer/ert_port)
-"Jo" = (
-/obj/structure/machinery/door/poddoor/shutters/transit{
-	id = "s_engi"
+/obj/docking_port/stationary/emergency_response/idle_port5{
+	dwidth = 8
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic2,
-/turf/open/floor/plating/almayer,
-/area/shuttle/distress/start_small)
+/turf/open/floor/plating,
+/area/adminlevel/ert_station)
 "Js" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
@@ -3701,19 +1998,6 @@
 	tag = "icon-sterile"
 	},
 /area/adminlevel/ert_station)
-"JH" = (
-/obj/effect/step_trigger/teleporter/random{
-	affect_ghosts = 1;
-	name = "escapeshuttle_leave";
-	teleport_x = 25;
-	teleport_x_offset = 245;
-	teleport_y = 25;
-	teleport_y_offset = 245;
-	teleport_z = 1;
-	teleport_z_offset = 1
-	},
-/turf/open/space/transit/north/shuttlespace_ns11,
-/area/almayer/ert_port)
 "JT" = (
 /obj/structure/sink{
 	dir = 8;
@@ -3728,26 +2012,6 @@
 /obj/structure/machinery/cm_vending/sorted/walkman,
 /turf/open/floor/wood/ship,
 /area/adminlevel/ert_station)
-"JZ" = (
-/obj/structure/bed/chair/office/light{
-	dir = 4;
-	tag = ""
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	tag = "icon-E-corner"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	tag = "icon-N"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	tag = "icon-W"
-	},
-/obj/effect/landmark/ert_spawns/distress_pizza,
-/turf/open/floor/plating/almayer,
-/area/shuttle/distress/start_small)
 "Kk" = (
 /turf/closed/wall/mineral/gold,
 /area/adminlevel/ert_station)
@@ -3787,9 +2051,6 @@
 	},
 /turf/open/floor/wood/ship,
 /area/adminlevel/ert_station)
-"KO" = (
-/turf/open/space/basic,
-/area/almayer/ert_port)
 "KQ" = (
 /obj/structure/machinery/cm_vending/sorted/boozeomat,
 /turf/open/floor/wood/ship,
@@ -3812,18 +2073,6 @@
 	tag = "icon-sterile"
 	},
 /area/adminlevel/ert_station/shuttle_dispatch)
-"Li" = (
-/obj/structure/mirror{
-	pixel_x = 30
-	},
-/obj/structure/sink{
-	dir = 4;
-	pixel_x = 11
-	},
-/turf/open/floor{
-	icon_state = "freezerfloor"
-	},
-/area/shuttle/distress/start_big)
 "Lt" = (
 /turf/open/floor/almayer{
 	icon_state = "greencorner";
@@ -3925,9 +2174,6 @@
 /obj/structure/sign/safety,
 /turf/closed/wall,
 /area/adminlevel/ert_station)
-"Mt" = (
-/turf/closed/wall/almayer/white/hull,
-/area/shuttle/distress/start_big)
 "Mw" = (
 /turf/open/floor/almayer{
 	dir = 6;
@@ -4030,19 +2276,6 @@
 	},
 /turf/open/space,
 /area/space)
-"Ou" = (
-/obj/effect/step_trigger/teleporter/random{
-	affect_ghosts = 1;
-	name = "escapeshuttle_leave";
-	teleport_x = 25;
-	teleport_x_offset = 245;
-	teleport_y = 25;
-	teleport_y_offset = 245;
-	teleport_z = 1;
-	teleport_z_offset = 1
-	},
-/turf/open/space/transit/north/shuttlespace_ns15,
-/area/space)
 "OC" = (
 /obj/structure/sign/poster/hunk,
 /obj/structure/window/framed/colony/reinforced/hull,
@@ -4078,17 +2311,6 @@
 	tag = "icon-blue (NORTHEAST)"
 	},
 /area/tdome/tdome1)
-"OR" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	tag = "icon-W"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "S";
-	tag = "icon-S"
-	},
-/turf/open/floor/plating/almayer,
-/area/shuttle/distress/start_small)
 "OT" = (
 /turf/closed/wall/almayer/outer,
 /area/tdome/tdomeobserve)
@@ -4152,21 +2374,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/ert_station)
-"Qp" = (
-/obj/structure/surface/table/almayer,
-/obj/item/clipboard,
-/obj/item/folder/red{
-	pixel_x = -2;
-	pixel_y = 3
-	},
-/obj/item/handcuffs,
-/obj/item/handcuffs,
-/obj/item/handcuffs,
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
-	},
-/area/shuttle/distress/start_big)
 "Qq" = (
 /obj/structure/bed/sofa/vert/grey/top,
 /obj/effect/decal/cleanable/dirt,
@@ -4296,48 +2503,10 @@
 "Sr" = (
 /turf/open/space,
 /area/space/almayer/lifeboat_dock)
-"Ss" = (
-/obj/effect/step_trigger/teleporter/random{
-	affect_ghosts = 1;
-	name = "escapeshuttle_leave";
-	teleport_x = 25;
-	teleport_x_offset = 245;
-	teleport_y = 25;
-	teleport_y_offset = 245;
-	teleport_z = 1;
-	teleport_z_offset = 1
-	},
-/turf/open/space/transit/north/shuttlespace_ns13,
-/area/almayer/ert_port)
-"St" = (
-/obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/crew/alt{
-	dir = 8;
-	pixel_y = 4
-	},
-/turf/open/floor/plating/almayer,
-/area/shuttle/distress/start_small)
 "Sw" = (
 /obj/structure/machinery/newscaster/security_unit,
 /turf/closed/wall/r_wall/unmeltable,
 /area/adminlevel/ert_station)
-"Sz" = (
-/obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/shuttle_control/ert/terminal{
-	dir = 8;
-	shuttle_tag = "Distress_Small"
-	},
-/turf/open/floor/almayer{
-	icon_state = "tcomms"
-	},
-/area/shuttle/distress/start_small)
-"SM" = (
-/obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/station_alert{
-	dir = 1
-	},
-/turf/open/floor/plating/almayer,
-/area/shuttle/distress/start_small)
 "ST" = (
 /obj/structure/machinery/door/airlock/almayer/medical/glass{
 	dir = 1;
@@ -4649,21 +2818,6 @@
 /obj/structure/machinery/vending/cigarette/colony,
 /turf/open/floor/wood/ship,
 /area/adminlevel/ert_station)
-"Xa" = (
-/obj/structure/surface/table/almayer,
-/obj/item/folder/black{
-	pixel_x = 3;
-	pixel_y = 5
-	},
-/obj/item/map/current_map{
-	pixel_y = -5
-	},
-/turf/open/floor{
-	dir = 8;
-	icon_state = "carpet6-2";
-	tag = "icon-carpet6-2 (WEST)"
-	},
-/area/shuttle/distress/start_big)
 "Xi" = (
 /obj/structure/sign/poster/music,
 /turf/closed/wall,
@@ -4706,19 +2860,6 @@
 	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/ert_station)
-"Yt" = (
-/obj/effect/step_trigger/teleporter/random{
-	affect_ghosts = 1;
-	name = "escapeshuttle_leave";
-	teleport_x = 25;
-	teleport_x_offset = 245;
-	teleport_y = 25;
-	teleport_y_offset = 245;
-	teleport_z = 1;
-	teleport_z_offset = 1
-	},
-/turf/open/space/transit/north/shuttlespace_ns9,
-/area/almayer/ert_port)
 "Yu" = (
 /obj/structure/bed/sofa/vert/grey,
 /obj/effect/decal/cleanable/dirt,
@@ -4779,9 +2920,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/ert_station)
-"Zb" = (
-/turf/open/floor/plating,
-/area/adminlevel/ert_station/shuttle_dispatch)
 "Zd" = (
 /turf/open/floor/almayer{
 	icon_state = "bluefull";
@@ -5849,36 +3987,36 @@ aa
 wW
 KW
 FB
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
 hP
 FB
 Fo
 wW
 KW
 FB
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
 ks
 FB
 Fo
@@ -6001,37 +4139,37 @@ aa
 wW
 KW
 FB
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
 FB
 Fo
 wW
 KW
 FB
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
 FB
 Fo
 wW
@@ -6153,37 +4291,37 @@ aa
 wW
 KW
 FB
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
 FB
 Fo
 wW
 KW
 FB
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
 FB
 Fo
 wW
@@ -6305,37 +4443,37 @@ aa
 wW
 KW
 FB
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
 FB
 Fo
 wW
 KW
 FB
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
 FB
 Fo
 wW
@@ -6457,37 +4595,37 @@ aa
 wW
 KW
 FB
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
 FB
 Fo
 wW
 KW
 FB
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
 FB
 Fo
 wW
@@ -6609,37 +4747,37 @@ aa
 wW
 KW
 FB
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
 FB
 Fo
 wW
 KW
 FB
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
 FB
 Fo
 wW
@@ -6761,37 +4899,37 @@ aa
 wW
 KW
 FB
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
 FB
 Fo
 wW
 KW
 FB
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
 FB
 Fo
 wW
@@ -9499,11 +7637,11 @@ FB
 FB
 FB
 FB
-Mt
-zE
-Mt
-zE
-Mt
+FB
+FB
+Jl
+FB
+FB
 FB
 FB
 FB
@@ -9515,18 +7653,18 @@ Fo
 wW
 KW
 FB
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
 kn
 FB
 Fo
@@ -9650,13 +7788,13 @@ FB
 FB
 FB
 FB
-Mt
-Mt
-lu
-lJ
-lW
-Mt
-Mt
+FB
+FB
+FB
+FB
+FB
+FB
+FB
 FB
 FB
 FB
@@ -9667,19 +7805,19 @@ Fo
 wW
 KW
 FB
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
 FB
 Fo
 wW
@@ -9802,13 +7940,13 @@ FB
 FB
 FB
 FB
-zE
-lg
-lv
-lz
-lX
-mh
-zE
+FB
+FB
+FB
+FB
+FB
+FB
+FB
 FB
 FB
 FB
@@ -9819,19 +7957,19 @@ Fo
 wW
 KW
 FB
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
 FB
 Fo
 wW
@@ -9951,19 +8089,19 @@ KW
 FB
 FB
 FB
-Mt
-zE
-Mt
-Mt
-lh
-lw
-lL
-lY
-mi
-Mt
-Mt
-zE
-Mt
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
 FB
 FB
 FB
@@ -9971,19 +8109,19 @@ Fo
 wW
 KW
 FB
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
 FB
 Fo
 wW
@@ -10102,40 +8240,40 @@ wW
 KW
 FB
 FB
-Mt
-Mt
-kG
-kN
-iU
-iU
-iU
-lM
-iU
-iU
-iU
-my
-my
-Mt
-Mt
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
 FB
 FB
 Fo
 wW
 KW
 FB
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
 FB
 Fo
 wW
@@ -10254,40 +8392,40 @@ wW
 KW
 FB
 FB
-zE
-ky
-kH
-kO
-iU
-li
-lw
-lL
-lY
-Am
-iU
-jv
-mD
-mL
-zE
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
 FB
 FB
 Fo
 wW
 KW
 FB
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
 FB
 Fo
 wW
@@ -10406,40 +8544,40 @@ wW
 KW
 FB
 FB
-zE
-ky
-kH
-kP
-kZ
-lj
-lx
-kt
-lZ
-lj
-ms
-kt
-mE
-mM
-zE
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
 FB
 FB
 Fo
 wW
 KW
 FB
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
-Jl
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
 FB
 Fo
 wW
@@ -10558,21 +8696,21 @@ wW
 KW
 FB
 FB
-Mt
-kz
-kI
-kQ
-iU
-lk
-ly
-lk
-ly
-lk
-iU
-mz
-mF
-mN
-Mt
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
 FB
 FB
 Fo
@@ -10709,23 +8847,23 @@ aa
 wW
 KW
 FB
-Mt
-Mt
-iU
-iU
-iU
-iU
-ll
-ly
-lk
-ly
-mk
-iU
-iU
-iU
-iU
-Mt
-Mt
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
 FB
 Fo
 wW
@@ -10861,23 +8999,23 @@ aa
 wW
 KW
 FB
-Mt
-je
-kA
-kJ
-iW
-la
-lm
-ly
-lk
-ly
-li
-la
-iW
-mG
-mO
-li
-Mt
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
 FB
 Fo
 wW
@@ -10938,28 +9076,28 @@ aa
 aa
 "}
 (41,1,1) = {"
-aa
-bS
-aY
-aU
-aT
-bT
-Ou
-bT
-aT
-aU
-bN
-bS
-aZ
-bR
-bP
-bN
-bA
-aX
-be
-bh
-bj
-aa
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
 as
 as
 as
@@ -11013,23 +9151,23 @@ aa
 wW
 KW
 FB
-iV
-jv
-jv
-jv
-kR
-jv
-jv
-lz
-jv
-lz
-jv
-jv
-kR
-jv
-jv
-jv
-fw
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
 FB
 Fo
 wW
@@ -11090,53 +9228,53 @@ aa
 aa
 "}
 (42,1,1) = {"
-aa
-Ou
-aO
-aQ
-aP
-aN
-aG
-bg
-bi
-bm
-bs
-bx
-bz
-bM
-bO
-bQ
-aH
-aO
-aQ
-aP
-aY
-aa
 as
 as
-be
-bh
-bj
-bS
-aY
-aU
-aT
-bT
-Ou
-bT
-aT
-aU
-bN
-bS
-aZ
-bR
-bP
-bN
-bA
-aX
-be
-bh
-bj
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
 aa
 aC
 aC
@@ -11165,23 +9303,23 @@ aa
 wW
 KW
 FB
-Al
-kt
-kt
-kt
-lL
-kt
-kt
-lA
-kt
-lA
-kt
-kt
-lL
-kt
-kt
-kt
-dz
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
 FB
 Fo
 wW
@@ -11242,53 +9380,53 @@ aa
 aa
 "}
 (43,1,1) = {"
-aa
-bS
-aN
-aP
-aQ
-aO
-aH
-aO
-aQ
-aP
-bs
-aG
-bg
-bi
-bm
-bs
-bx
-bz
-bM
-bO
-bj
-aa
 as
 as
-aT
-aP
-aN
-aH
-aO
-aQ
-aP
-aN
-aG
-bg
-bi
-bm
-bs
-bx
-bz
-bM
-bO
-bQ
-aH
-aO
-aQ
-aP
-aY
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
 aa
 aC
 aa
@@ -11317,23 +9455,23 @@ aa
 wW
 KW
 FB
-Mt
-ku
-kB
-kK
-iW
-lb
-li
-ly
-lk
-ly
-li
-lb
-iW
-li
-mP
-je
-Mt
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
 FB
 Fo
 wW
@@ -11394,53 +9532,53 @@ aa
 aa
 "}
 (44,1,1) = {"
-aa
-Ou
-aO
-aQ
-aP
-aN
-aG
-bg
-bi
-bm
-bs
-bx
-bz
-bM
-bO
-bQ
-aH
-aO
-aQ
-aP
-aY
-aa
 as
 as
-be
-bO
-bQ
-aG
-aN
-aP
-aQ
-aO
-aC
-aC
-aC
-aC
-aC
-aC
-aC
-bi
-bm
-bs
-bx
-bz
-bM
-bO
-bj
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
 aa
 aC
 aa
@@ -11469,23 +9607,23 @@ aa
 wW
 KW
 FB
-Mt
-Mt
-iU
-kL
-iU
-iU
-ll
-ly
-lk
-ly
-mk
-iU
-iU
-iU
-iU
-Mt
-Mt
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
 FB
 Fo
 wW
@@ -11546,53 +9684,53 @@ aa
 aa
 "}
 (45,1,1) = {"
-aa
-bS
-aN
-aP
-aQ
-aO
-aH
-aO
-aQ
-aP
-bs
-aG
-bg
-bi
-bm
-bs
-bx
-bz
-bM
-bO
-bj
-aa
 as
 as
-aT
-aP
-aN
-aH
-aO
-aQ
-aP
-aC
-aC
-eJ
-eJ
-eJ
-eJ
-eJ
-aC
-aC
-bO
-bQ
-aH
-aO
-aQ
-aP
-aY
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
 aa
 aC
 aa
@@ -11622,21 +9760,21 @@ wW
 KW
 FB
 FB
-Mt
-kC
-kK
-kS
-iU
-lk
-ly
-lk
-ly
-lk
-iU
-mA
-mH
-mA
-Mt
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
 FB
 FB
 Fo
@@ -11698,53 +9836,53 @@ aa
 aa
 "}
 (46,1,1) = {"
-aa
-Ou
-aO
-aQ
-aP
-aN
-aG
-bg
-bi
-bm
-bs
-bx
-bz
-bM
-bO
-bQ
-aH
-aO
-aQ
-aP
-aY
-aa
 as
 as
-be
-bO
-bQ
-aG
-aN
-aP
-aQ
-aC
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-aC
-bm
-bs
-bx
-bz
-bM
-bO
-bj
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
 aa
 aC
 aa
@@ -11774,21 +9912,21 @@ wW
 KW
 FB
 FB
-Mt
-kD
-kH
-kK
-lc
-lj
-lB
-lN
-ma
-lj
-mt
-lN
-mI
-lN
-zE
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
 FB
 FB
 Fo
@@ -11850,53 +9988,53 @@ aa
 aa
 "}
 (47,1,1) = {"
-aa
-bS
-aN
-aP
-aQ
-aX
-be
-bh
-bj
-bh
-be
-aX
-bA
-bN
-bP
-bR
-aZ
-bS
-aY
-aP
-aT
-aa
 as
 as
-aT
-aP
-aN
-aH
-aC
-aC
-aC
-aC
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-aC
-aC
-aC
-aC
-aO
-aQ
-aP
-aY
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
 aa
 aC
 aa
@@ -11926,21 +10064,21 @@ wW
 KW
 FB
 FB
-Mt
-kE
-kH
-kT
-iU
-lk
-lC
-lk
-ly
-lk
-iU
-iU
-mJ
-iU
-Mt
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
 FB
 FB
 Fo
@@ -12002,53 +10140,53 @@ aa
 aa
 "}
 (48,1,1) = {"
-aa
-Ou
-aO
-aQ
-aP
-JH
-ba
-ba
-ba
-ba
-ba
-ba
-ba
-ba
-ba
-ba
-ba
-ba
-bT
-aQ
-aU
-aa
 as
 as
-be
-bO
-bQ
-aC
-aC
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-aC
-aC
-bM
-bO
-bj
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
 aa
 aC
 aa
@@ -12078,21 +10216,21 @@ wW
 KW
 FB
 FB
-Mt
-kF
-kM
-kU
-iU
-ln
-lD
-jv
-mb
-ln
-iU
-mB
-Li
-mQ
-Mt
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
 FB
 FB
 Fo
@@ -12154,53 +10292,53 @@ aa
 aa
 "}
 (49,1,1) = {"
-aa
-bS
-aN
-aP
-aT
-Yt
-ba
-ba
-ba
-ba
-ba
-ba
-ba
-ba
-ba
-ba
-ba
-ba
-aY
-aP
-aT
-aa
 as
 as
-aT
-aP
-aN
-aC
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-aC
-aQ
-aP
-aY
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
 aa
 aC
 aa
@@ -12230,21 +10368,21 @@ wW
 KW
 FB
 FB
-Mt
-Mt
-Mt
-iU
-iU
-iU
-iU
-lO
-iU
-iU
-iU
-iU
-Mt
-Mt
-Mt
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
 FB
 FB
 Fo
@@ -12306,53 +10444,53 @@ aa
 aa
 "}
 (50,1,1) = {"
-aa
-Ou
-aO
-aQ
-aU
-ba
-ba
-ba
-ba
-ba
-ba
-ba
-ba
-ba
-ba
-ba
-ba
-ba
-bT
-aQ
-aU
-aa
 as
 as
-be
-bO
-bQ
-aC
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-aC
-bM
-bO
-bj
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
 aa
 aC
 aa
@@ -12384,17 +10522,17 @@ FB
 FB
 FB
 FB
-Mt
-Xa
-ld
-lo
-iU
-lP
-iU
-ml
-mu
-ml
-Mt
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
 FB
 FB
 FB
@@ -12458,53 +10596,53 @@ aa
 aa
 "}
 (51,1,1) = {"
-aa
-bS
-aN
-aP
-aT
-ba
-ba
-ba
-ba
-ba
-ba
-ba
-ba
-ba
-ba
-ba
-ba
-ba
-aY
-aP
-aT
-aa
 as
 as
-aT
-aP
-aN
-aC
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-aC
-aQ
-aP
-aY
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
 aa
 aC
 aa
@@ -12536,17 +10674,17 @@ FB
 FB
 FB
 FB
-zE
-kW
-le
-lp
-iU
-lQ
-iW
-mm
-mv
-mm
-Mt
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
 FB
 FB
 FB
@@ -12610,53 +10748,53 @@ aa
 aa
 "}
 (52,1,1) = {"
-aa
-Ou
-aO
-aQ
-aU
-ba
-ba
-ba
-ba
-ba
-ba
-ba
-ba
-ba
-ba
-ba
-ba
-ba
-bT
-aQ
-aU
-aa
 as
 as
-be
-bO
-aC
-aC
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-aC
-aC
-bO
-bj
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
 aa
 aC
 aa
@@ -12688,17 +10826,17 @@ FB
 FB
 FB
 FB
-zE
-kX
-kX
-kX
-lE
-lR
-mc
-mn
-mw
-mn
-Mt
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
 FB
 FB
 FB
@@ -12762,53 +10900,53 @@ aa
 aa
 "}
 (53,1,1) = {"
-aa
-bS
-aN
-aP
-aT
-Yt
-ba
-ba
-ba
-ba
-ba
-ba
-ba
-ba
-ba
-ba
-ba
-ba
-aY
-aP
-aT
-aa
 as
 as
-aT
-aP
-aC
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-aC
-aP
-aY
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
 aa
 aC
 aa
@@ -12840,17 +10978,17 @@ FB
 FB
 FB
 FB
-Mt
-kY
-lf
-lq
-iU
-lS
-iW
-mo
-mx
-mC
-Mt
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
 FB
 FB
 FB
@@ -12868,12 +11006,12 @@ Dv
 FT
 Oi
 Pq
-Jc
-qr
-Hj
-fj
-yY
-Jc
+HW
+dG
+dG
+dG
+dG
+dG
 DD
 Oi
 as
@@ -12914,53 +11052,53 @@ aa
 aa
 "}
 (54,1,1) = {"
-aa
-Ou
-aO
-aQ
-aP
-JH
-ba
-ba
-ba
-ba
-ba
-ba
-ba
-ba
-ba
-ba
-ba
-ba
-bT
-aQ
-aU
-aa
 as
 as
-be
-bO
-aC
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-aC
-bO
-bj
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
 aa
 aC
 aa
@@ -12992,17 +11130,17 @@ FB
 FB
 FB
 FB
-Mt
-zE
-Mt
-iU
-iU
-lO
-iU
-iU
-Mt
-Mt
-Mt
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
+FB
 FB
 FB
 FB
@@ -13020,12 +11158,12 @@ Ur
 FT
 Oi
 Pq
-Jc
-Jc
-Jc
-Jc
-Jc
-Jc
+dG
+dG
+dG
+dG
+dG
+dG
 Bw
 Oi
 as
@@ -13066,53 +11204,53 @@ aa
 aa
 "}
 (55,1,1) = {"
-aa
-bS
-aN
-aP
-aQ
-aX
-be
-bh
-bj
-bh
-be
-aX
-bA
-bN
-bP
-bR
-aZ
-bS
-aY
-aP
-aT
-aa
 as
 as
-aT
-aP
-aC
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-aC
-aP
-aY
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
 aa
 aC
 aa
@@ -13146,13 +11284,13 @@ FB
 FB
 FB
 FB
-Mt
-lr
-lF
-lL
-md
-mp
-Mt
+FB
+FB
+FB
+FB
+FB
+FB
+FB
 FB
 FB
 FB
@@ -13172,12 +11310,12 @@ gX
 vN
 Oi
 Pq
-Jc
-cx
-cx
-cx
-tZ
-Jc
+dG
+dG
+dG
+dG
+dG
+dG
 DD
 Oi
 as
@@ -13218,53 +11356,53 @@ aa
 aa
 "}
 (56,1,1) = {"
-aa
-bS
-aN
-aP
-aQ
-aO
-aH
-aO
-aQ
-aP
-bs
-aG
-bg
-bi
-bm
-bs
-bx
-bz
-bM
-bO
-bj
-aa
 as
 as
-be
-bO
-aC
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-aC
-bO
-bj
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
 aa
 aC
 aa
@@ -13298,13 +11436,13 @@ FB
 FB
 FB
 FB
-zE
-Qp
-lG
-lT
-me
-mq
-zE
+FB
+FB
+FB
+FB
+FB
+FB
+FB
 FB
 FB
 FB
@@ -13324,12 +11462,12 @@ gX
 nP
 wY
 Pq
-Jo
-pE
-BN
-BN
-OR
-pi
+dG
+dG
+dG
+dG
+dG
+dG
 DD
 Oi
 as
@@ -13370,53 +11508,53 @@ aa
 aa
 "}
 (57,1,1) = {"
-aa
-Ou
-aO
-aQ
-aP
-aN
-aG
-bg
-bi
-bm
-bs
-bx
-bz
-bM
-bO
-bQ
-aH
-aO
-aQ
-aP
-aY
-aa
 as
 as
-aT
-aP
-aC
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-aC
-aP
-aY
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
 aa
 aC
 aa
@@ -13450,13 +11588,13 @@ FB
 FB
 FB
 FB
-Mt
-lt
-lH
-lU
-mf
-mr
-Mt
+FB
+FB
+FB
+FB
+FB
+FB
+FB
 FB
 FB
 FB
@@ -13476,12 +11614,12 @@ gX
 VI
 dG
 Pq
-dP
-rF
-Ia
-nu
-eu
-sL
+dG
+dG
+dG
+dG
+dG
+dG
 DD
 Oi
 as
@@ -13522,53 +11660,53 @@ aa
 aa
 "}
 (58,1,1) = {"
-aa
-bS
-aN
-aP
-aQ
-aO
-aH
-aO
-aQ
-aP
-bs
-aG
-bg
-bi
-bm
-bs
-bx
-bz
-bM
-bO
-bj
-aa
 as
 as
-be
-bO
-aC
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-aC
-bO
-bj
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
 aa
 aC
 aa
@@ -13602,13 +11740,13 @@ FB
 FB
 FB
 FB
-Mt
-Mt
-lI
-lV
-mg
-Mt
-Mt
+FB
+FB
+FB
+FB
+FB
+FB
+FB
 FB
 FB
 FB
@@ -13628,12 +11766,12 @@ Dv
 FT
 Oi
 Pq
-Jc
-Jc
-Jc
-fH
-Jc
-Jc
+dG
+dG
+dG
+dG
+dG
+dG
 DD
 Oi
 as
@@ -13674,53 +11812,53 @@ aa
 aa
 "}
 (59,1,1) = {"
-aa
-Ou
-aO
-aQ
-aP
-aN
-aG
-bg
-bi
-bm
-bs
-bx
-bz
-bM
-bO
-bQ
-aH
-aO
-aQ
-aP
-aY
-aa
 as
 as
-aT
-aP
-aC
-aC
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-aC
-aC
-aP
-aY
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
 aa
 aC
 aa
@@ -13755,11 +11893,11 @@ FB
 FB
 FB
 FB
-Mt
-zE
-zE
-zE
-Mt
+FB
+FB
+FB
+FB
+FB
 FB
 FB
 FB
@@ -13780,12 +11918,12 @@ Ur
 FT
 Oi
 Pq
-Jc
-Fd
-JZ
-CO
-SM
-Jc
+dG
+dG
+dG
+dG
+dG
+dG
 DD
 Oi
 as
@@ -13826,53 +11964,53 @@ aa
 aa
 "}
 (60,1,1) = {"
-aa
-bS
-aN
-aP
-aQ
-aO
-aH
-aO
-aQ
-aP
-bs
-aG
-bg
-bi
-bm
-bs
-bx
-bz
-bM
-bO
-bj
-aa
 as
 as
-be
-bO
-bQ
-aC
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-aC
-bM
-bO
-bj
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
 aa
 aC
 aa
@@ -13932,12 +12070,12 @@ gX
 FT
 Oi
 Pq
-Jc
-Jc
-Sz
-St
-Jc
-Jc
+dG
+dG
+dG
+dG
+dG
+dG
 DD
 Oi
 as
@@ -13978,53 +12116,53 @@ aa
 aa
 "}
 (61,1,1) = {"
-aa
-Ou
-bT
-aT
-aU
-aY
-bS
-aZ
-bR
-bP
-bN
-bA
-aX
-be
-bh
-bj
-Ou
-bT
-aT
-aU
-aY
-aa
 as
 as
-aT
-aP
-aN
-aC
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-aC
-aQ
-aP
-aY
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
 aa
 aC
 aa
@@ -14084,12 +12222,12 @@ Ur
 vN
 Oi
 Pq
-Zb
-Jc
-nF
-nF
-Jc
-Zb
+dG
+dG
+dG
+dG
+dG
+dG
 DD
 Oi
 as
@@ -14130,53 +12268,53 @@ aa
 aa
 "}
 (62,1,1) = {"
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
 as
 as
-be
-bO
-bQ
-aC
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-aC
-bM
-bO
-bj
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
 aa
 aC
 aa
@@ -14282,53 +12420,53 @@ aa
 aa
 "}
 (63,1,1) = {"
-aa
-bS
-aY
-aU
-aT
-bT
-Ou
-bT
-aT
-aU
-bN
-bS
-aZ
-bR
-bP
-bN
-bA
-aX
-be
-bh
-bj
-aa
 as
 as
-aT
-aP
-aN
-aC
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-aC
-aQ
-aP
-aY
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
 aa
 aC
 aa
@@ -14434,53 +12572,53 @@ aa
 aa
 "}
 (64,1,1) = {"
-aa
-Ou
-aO
-aQ
-aP
-aN
-aG
-bg
-bi
-bm
-bs
-bx
-bz
-bM
-bO
-bQ
-aH
-aO
-aQ
-aP
-aY
-aa
 as
 as
-be
-bO
-bQ
-aC
-aC
-aC
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-aC
-aC
-aC
-bM
-bO
-bj
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
 aa
 aC
 aa
@@ -14586,53 +12724,53 @@ aa
 aa
 "}
 (65,1,1) = {"
-aa
-bS
-aN
-aP
-aQ
-aO
-aH
-aO
-aQ
-aP
-bs
-aG
-bg
-bi
-bm
-bs
-bx
-bz
-bM
-bO
-bj
-aa
 as
 as
-aT
-aP
-aN
-aH
-aO
-aC
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-aC
-aH
-aO
-aQ
-aP
-aY
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
 aa
 aC
 aa
@@ -14738,53 +12876,53 @@ aa
 aa
 "}
 (66,1,1) = {"
-aa
-Ou
-aO
-aQ
-aP
-aN
-aG
-bg
-bi
-bm
-bs
-bx
-bz
-bM
-bO
-bQ
-aH
-aO
-aQ
-aP
-aY
-aa
 as
 as
-be
-bO
-bQ
-aG
-aN
-aC
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-aC
-bx
-bz
-bM
-bO
-bj
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
 aa
 aC
 aa
@@ -14890,53 +13028,53 @@ aa
 aa
 "}
 (67,1,1) = {"
-aa
-bS
-aN
-aP
-aQ
-aO
-aH
-aO
-aQ
-aP
-bs
-aG
-bg
-bi
-bm
-bs
-bx
-bz
-bM
-bO
-bj
-aa
 as
 as
-aT
-aP
-aN
-aH
-aO
-aC
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-aC
-aH
-aO
-aQ
-aP
-aY
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
 aa
 aC
 aa
@@ -15017,80 +13155,80 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
 aa
 "}
 (68,1,1) = {"
-aa
-Ou
-aO
-aQ
-aP
-aQ
-aG
-bg
-bi
-bm
-bs
-bx
-bz
-bM
-bO
-bQ
-aH
-aO
-aQ
-aP
-aY
-aa
 as
 as
-be
-bO
-bQ
-aG
-aN
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+aa
 aC
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-aC
-bx
-bz
-bM
-bO
-bj
-aa
-aC
 aa
 fn
 fn
@@ -15169,78 +13307,78 @@ as
 as
 as
 as
-aa
-bS
-aY
-aU
-aT
-bT
-Ou
-bT
-aT
-aU
-bN
-bS
-aZ
-bR
-bP
-bN
-bA
-aX
-be
-bh
-bj
-aa
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
 aa
 "}
 (69,1,1) = {"
-aa
-bS
-aN
-aP
-aQ
-aT
-be
-bh
-bj
-bh
-be
-aX
-bA
-bN
-bP
-bR
-aZ
-bS
-aY
-aP
-aT
-aa
 as
 as
-aT
-aP
-aN
-aH
-aO
-aC
-aC
-aC
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-aC
-aC
-aC
-aH
-aO
-aQ
-aP
-aY
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
 aa
 aC
 aa
@@ -15321,78 +13459,78 @@ as
 as
 as
 as
-aa
-Ou
-aO
-aQ
-aP
-aN
-aG
-bg
-bi
-bm
-bs
-bx
-bz
-bM
-bO
-bQ
-aH
-aO
-aQ
-aP
-aY
-aa
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
 aa
 "}
 (70,1,1) = {"
-aa
-Ou
-aO
-aQ
-aP
-Ss
-ba
-ba
-ba
-ba
-ba
-ba
-ba
-ba
-ba
-ba
-ba
-ba
-bT
-aQ
-aU
-aa
 as
 as
-be
-bO
-bQ
-aG
-aN
-aP
-aQ
-aC
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-aC
-bm
-bs
-bx
-bz
-bM
-bO
-bj
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
 aa
 aC
 aa
@@ -15473,78 +13611,78 @@ as
 as
 as
 as
-aa
-bS
-aN
-aP
-aQ
-aO
-aH
-aO
-aQ
-aP
-bs
-aG
-bg
-bi
-bm
-bs
-bx
-bz
-bM
-bO
-bj
-aa
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
 aa
 "}
 (71,1,1) = {"
-aa
-bS
-aN
-aP
-aT
-Ss
-ba
-ba
-ba
-ba
-ba
-ba
-ba
-ba
-ba
-ba
-ba
-ba
-aY
-aP
-aT
-aa
 as
 as
-aT
-aP
-aN
-aH
-aO
-aQ
-aP
-aC
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-aC
-bO
-bQ
-aH
-aO
-aQ
-aP
-aY
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
 aa
 aC
 aa
@@ -15625,78 +13763,78 @@ as
 as
 as
 as
-aa
-Ou
-aO
-aQ
-aP
-aN
-aG
-bg
-bi
-bm
-bs
-bx
-bz
-bM
-bO
-bQ
-aH
-aO
-aQ
-aP
-aY
-aa
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
 aa
 "}
 (72,1,1) = {"
-aa
-Ou
-aO
-aQ
-aU
-de
-ba
-ba
-ba
-ba
-ba
-ba
-ba
-ba
-ba
-ba
-ba
-ba
-bT
-aQ
-aU
-aa
 as
 as
-be
-bO
-bQ
-aG
-aN
-aP
-aQ
-aC
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-eJ
-aC
-bm
-bs
-bx
-bz
-bM
-bO
-bj
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
 aa
 aC
 aa
@@ -15777,78 +13915,78 @@ as
 as
 as
 as
-aa
-bS
-aN
-aP
-aQ
-aO
-aH
-aO
-aQ
-aP
-bs
-aG
-bg
-bi
-bm
-bs
-bx
-bz
-bM
-bO
-bj
-aa
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
 aa
 "}
 (73,1,1) = {"
-aa
-bS
-aN
-aP
-aT
-de
-ba
-ba
-ba
-ba
-ba
-ba
-ba
-ba
-ba
-ba
-ba
-ba
-aY
-aP
-aT
-aa
 as
 as
-aT
-aP
-aN
-aH
-aO
-aQ
-aP
-aC
-aC
-eJ
-eJ
-eJ
-eJ
-eJ
-aC
-aC
-bO
-bQ
-aH
-aO
-aQ
-aP
-aY
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
 aa
 aC
 aa
@@ -15929,78 +14067,78 @@ as
 as
 as
 as
-aa
-Ou
-aO
-aQ
-aP
-aN
-aG
-bg
-bi
-bm
-bs
-bx
-bz
-bM
-bO
-bQ
-aH
-aO
-aQ
-aP
-aY
-aa
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
 aa
 "}
 (74,1,1) = {"
-aa
-Ou
-aO
-aQ
-aU
-de
-ba
-ba
-ba
-ba
-ba
-ba
-ba
-ba
-ba
-ba
-ba
-ba
-bT
-aQ
-aU
-aa
 as
 as
-be
-bO
-bQ
-aG
-aN
-aP
-aQ
-aO
-aC
-aC
-aC
-aC
-aC
-aC
-aC
-bi
-bm
-bs
-bx
-bz
-bM
-bO
-bj
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
 aa
 aC
 aa
@@ -16081,78 +14219,78 @@ as
 as
 as
 as
-aa
-bS
-aN
-aP
-aQ
-aX
-be
-bh
-bj
-bh
-be
-aX
-bA
-bN
-bP
-bR
-aZ
-bS
-aY
-aP
-aT
-aa
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
 aa
 "}
 (75,1,1) = {"
-aa
-bS
-aN
-aP
-aT
-Ss
-ba
-ba
-ba
-ba
-ba
-ba
-ba
-ba
-ba
-ba
-ba
-ba
-aY
-aP
-aT
-aa
 as
 as
-aT
-aP
-aN
-aH
-aO
-aQ
-aP
-aN
-aG
-bg
-bi
-bm
-bs
-bx
-bz
-bM
-bO
-bQ
-aH
-aO
-aQ
-aP
-aY
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
 aa
 aC
 aa
@@ -16233,78 +14371,78 @@ as
 as
 as
 as
-aa
-Ou
-aO
-aQ
-aP
-aY
-dQ
-dQ
-dQ
-dQ
-dQ
-dQ
-dQ
-dQ
-dQ
-dQ
-dQ
-dQ
-bT
-aQ
-aU
-aa
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
 aa
 "}
 (76,1,1) = {"
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
 aa
-Ou
-aO
-aQ
-aP
-Ss
-ba
-ba
-ba
-ba
-ba
-ba
-ba
-ba
-ba
-ba
-ba
-ba
-bT
-aQ
-aU
 aa
-aa
-aa
-be
-bh
-bj
-bS
-aY
-aU
-aT
-bT
-Ou
-bT
-aT
-aU
-bN
-bS
-aZ
-bR
-bP
-bN
-bA
-aX
-be
-bh
-bj
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
 aC
 aC
 aC
@@ -16333,20 +14471,6 @@ xr
 xr
 xr
 xr
-hN
-xr
-xr
-Gm
-xX
-xX
-xX
-xX
-xX
-Gm
-xr
-xr
-xr
-xr
 xr
 xr
 xr
@@ -16355,6 +14479,20 @@ xX
 xX
 xX
 xX
+xX
+Gm
+xr
+xr
+xr
+xr
+xr
+xr
+xr
+Gm
+xX
+xX
+xX
+xX
 Gm
 as
 as
@@ -16385,53 +14523,53 @@ as
 as
 as
 as
-aa
-bS
-aN
-aP
-aT
-aZ
-dQ
-dQ
-dQ
-dQ
-dQ
-dQ
-dQ
-dQ
-dQ
-dQ
-dQ
-dQ
-aY
-aP
-aT
-aa
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
 aa
 "}
 (77,1,1) = {"
-aa
-bS
-aN
-aP
-aQ
-aT
-be
-bh
-bj
-bh
-be
-aX
-bA
-bN
-bP
-bR
-aZ
-bS
-aY
-aP
-aT
-aa
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
 as
 as
 as
@@ -16537,53 +14675,53 @@ as
 as
 as
 as
-aa
-Ou
-aO
-aQ
-aU
-dQ
-dQ
-dQ
-dQ
-dQ
-dQ
-dQ
-dQ
-dQ
-dQ
-dQ
-dQ
-dQ
-bT
-aQ
-aU
-aa
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
 aa
 "}
 (78,1,1) = {"
-aa
-bS
-aN
-aP
-aQ
-aQ
-aH
-aO
-aQ
-aP
-bs
-aG
-bg
-bi
-bm
-bs
-bx
-bz
-bM
-bO
-bj
-aa
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
 as
 as
 as
@@ -16689,53 +14827,53 @@ as
 as
 as
 as
-aa
-bS
-aN
-aP
-aT
-dQ
-dQ
-dQ
-dQ
-dQ
-dQ
-dQ
-dQ
-dQ
-dQ
-dQ
-dQ
-dQ
-aY
-aP
-aT
-aa
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
 aa
 "}
 (79,1,1) = {"
-aa
-Ou
-aO
-aQ
-aP
-aN
-aG
-bg
-bi
-bm
-bs
-bx
-bz
-bM
-bO
-bQ
-aH
-aO
-aQ
-aP
-aY
-aa
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
 as
 as
 as
@@ -16822,7 +14960,6 @@ as
 as
 aa
 aa
-aa
 as
 as
 as
@@ -16841,53 +14978,54 @@ as
 as
 as
 as
-aa
-Ou
-aO
-aQ
-aU
-dQ
-dQ
-dQ
-dQ
-dQ
-dQ
-dQ
-dQ
-dQ
-dQ
-dQ
-dQ
-dQ
-bT
-aQ
-aU
-aa
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
 aa
 "}
 (80,1,1) = {"
-aa
-bS
-aN
-aP
-aQ
-aO
-aH
-aO
-aQ
-aP
-bs
-aG
-bg
-bi
-bm
-bs
-bx
-bz
-bM
-bO
-bj
-aa
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
 as
 as
 as
@@ -16974,7 +15112,6 @@ as
 as
 aa
 aa
-aa
 as
 as
 as
@@ -16993,53 +15130,54 @@ as
 as
 as
 as
-aa
-bS
-aN
-aP
-aT
-aZ
-dQ
-dQ
-dQ
-dQ
-dQ
-dQ
-dQ
-dQ
-dQ
-dQ
-dQ
-dQ
-aY
-aP
-aT
-aa
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
 aa
 "}
 (81,1,1) = {"
-aa
-Ou
-aO
-aQ
-aP
-aN
-aG
-bg
-bi
-bm
-bs
-bx
-bz
-bM
-bO
-bQ
-aH
-aO
-aQ
-aP
-aY
-aa
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
 as
 as
 as
@@ -17126,72 +15264,72 @@ as
 as
 aa
 aa
-aa
-TT
-TT
-TT
-TT
-TT
-TT
-TT
-TT
-TT
-TT
-TT
-TT
-TT
-TT
-TT
-TT
-TT
-TT
-aa
-Ou
-aO
-aQ
-aP
-aY
-dQ
-dQ
-dQ
-dQ
-dQ
-dQ
-dQ
-dQ
-dQ
-dQ
-dQ
-dQ
-bT
-aQ
-aU
-aa
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
 aa
 "}
 (82,1,1) = {"
-aa
-bS
-aN
-aP
-aQ
-aO
-aH
-aO
-aQ
-aP
-bs
-aG
-bg
-bi
-bm
-bs
-bx
-bz
-bM
-bO
-bj
-aa
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
 as
 as
 as
@@ -17278,72 +15416,72 @@ as
 as
 aa
 aa
-aa
-TT
-PK
-PK
-PK
-PK
-PK
-PK
-PK
-PK
-PK
-PK
-PK
-PK
-PK
-PK
-PK
-PK
-TT
-aa
-bS
-aN
-aP
-aQ
-aX
-be
-bh
-bj
-bh
-be
-aX
-bA
-bN
-bP
-bR
-aZ
-bS
-aY
-aP
-aT
-aa
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
 aa
 "}
 (83,1,1) = {"
-aa
-Ou
-bT
-aT
-aU
-aY
-bS
-aZ
-bR
-bP
-bN
-bA
-aX
-be
-bh
-bj
-Ou
-bT
-aT
-aU
-aY
-aa
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
 as
 as
 as
@@ -17430,72 +15568,72 @@ as
 as
 aa
 aa
-aa
-TT
-AH
-AH
-AH
-AH
-AH
-Ek
-Ek
-Ek
-Ek
-Ek
-Ek
-AH
-AH
-AH
-AH
-AH
-TT
-aa
-bS
-aN
-aP
-aQ
-aO
-aH
-aO
-aQ
-aP
-bs
-aG
-bg
-bi
-bm
-bs
-bx
-bz
-bM
-bO
-bj
-aa
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
 aa
 "}
 (84,1,1) = {"
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
 as
 as
 as
@@ -17582,51 +15720,50 @@ as
 as
 aa
 aa
-aa
-TT
-GM
-GM
-GM
-GM
-GM
-Ek
-Ek
-Ek
-Ek
-Ek
-Ek
-GM
-GM
-GM
-GM
-GM
-TT
-aa
-Ou
-aO
-aQ
-aP
-aN
-aG
-bg
-bi
-bm
-bs
-bx
-bz
-bM
-bO
-bQ
-aH
-aO
-aQ
-aP
-aY
-aa
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
 aa
 "}
 (85,1,1) = {"
-aa
 as
 as
 as
@@ -17647,7 +15784,8 @@ as
 as
 as
 as
-aa
+as
+as
 as
 as
 as
@@ -17734,47 +15872,47 @@ as
 as
 aa
 aa
-aa
-TT
-FI
-FI
-FI
-FI
-FI
-Ek
-Ek
-Ek
-Ek
-Ek
-Ek
-FI
-FI
-FI
-FI
-FI
-TT
-aa
-bS
-aN
-aP
-aQ
-aO
-aH
-aO
-aQ
-aP
-bs
-aG
-bg
-bi
-bm
-bs
-bx
-bz
-bM
-bO
-bj
-aa
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
 aa
 "}
 (86,1,1) = {"
@@ -17887,45 +16025,45 @@ as
 as
 as
 as
-TT
-nB
-nB
-nB
-nB
-nB
-Ek
-Ek
-Ek
-Ek
-Ek
-Ek
-nB
-nB
-nB
-nB
-nB
-TT
 as
-Ou
-aO
-aQ
-aP
-aN
-aG
-bg
-bi
-bm
-bs
-bx
-bz
-bM
-bO
-bQ
-aH
-aO
-aQ
-aP
-aY
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
 as
 as
 "}
@@ -18039,45 +16177,45 @@ as
 as
 as
 as
-TT
-Uz
-Uz
-Uz
-Uz
-Uz
-Ek
-Ek
-Ek
-Ek
-Ek
-Ek
-Uz
-Uz
-Uz
-Uz
-Uz
-TT
 as
-bS
-aN
-aP
-aQ
-aO
-aH
-aO
-aQ
-aP
-bs
-aG
-bg
-bi
-bm
-bs
-bx
-bz
-bM
-bO
-bj
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
 as
 as
 "}
@@ -18191,45 +16329,45 @@ as
 as
 as
 as
-TT
-TS
-TS
-TS
-TS
-TS
-Ek
-Ek
-Ek
-Ek
-Ek
-Ek
-TS
-TS
-TS
-TS
-TS
-TT
 as
-Ou
-bT
-aT
-aU
-aY
-bS
-aZ
-bR
-bP
-bN
-bA
-aX
-be
-bh
-bj
-Ou
-bT
-aT
-aU
-aY
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
 as
 as
 "}
@@ -18343,24 +16481,24 @@ as
 as
 as
 as
-TT
-cJ
-cJ
-cJ
-cJ
-cJ
-Ek
-Ek
-Ek
-Ek
-Ek
-Ek
-cJ
-cJ
-cJ
-cJ
-cJ
-TT
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
 as
 as
 as
@@ -18495,24 +16633,24 @@ as
 as
 as
 as
-TT
-ne
-ne
-ne
-ne
-ne
-Ek
-Ek
-Ek
-Ek
-Ek
-Ek
-ne
-ne
-ne
-ne
-ne
-TT
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
 as
 as
 as
@@ -18647,24 +16785,24 @@ as
 as
 as
 as
-TT
-GE
-GE
-GE
-GE
-GE
-GE
-Ek
-Ek
-Ek
-Ek
-GE
-GE
-GE
-GE
-GE
-GE
-TT
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
 as
 as
 as
@@ -18799,24 +16937,24 @@ as
 as
 as
 as
-TT
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-TT
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
 as
 as
 as
@@ -18951,24 +17089,24 @@ as
 as
 as
 as
-TT
-Db
-Db
-Db
-Db
-Db
-Db
-Db
-Db
-Db
-Db
-Db
-Db
-Db
-Db
-Db
-Db
-TT
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
 as
 as
 as
@@ -19103,24 +17241,6 @@ as
 as
 as
 as
-TT
-xX
-xX
-xX
-xX
-xX
-xX
-xX
-xX
-xX
-xX
-xX
-xX
-xX
-xX
-xX
-xX
-TT
 as
 as
 as
@@ -19132,7 +17252,25 @@ as
 as
 as
 as
-KO
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
 as
 as
 as
@@ -19255,24 +17393,24 @@ as
 as
 as
 as
-TT
-Ji
-Ji
-Ji
-Ji
-Ji
-Ji
-Ji
-Ji
-Ji
-Ji
-Ji
-Ji
-Ji
-Ji
-Ji
-Ji
-TT
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
 as
 as
 as
@@ -19407,24 +17545,24 @@ as
 as
 as
 as
-TT
-Gw
-Gw
-Gw
-Gw
-Gw
-Gw
-Gw
-Gw
-Gw
-Gw
-Gw
-Gw
-Gw
-Gw
-Gw
-Gw
-TT
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
 as
 as
 as
@@ -19559,24 +17697,24 @@ as
 as
 as
 as
-TT
-PK
-PK
-PK
-PK
-PK
-PK
-PK
-PK
-PK
-PK
-PK
-PK
-PK
-PK
-PK
-PK
-TT
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
 as
 as
 as
@@ -19711,24 +17849,24 @@ as
 as
 as
 as
-TT
-AH
-AH
-AH
-AH
-AH
-AH
-AH
-AH
-AH
-AH
-AH
-AH
-AH
-AH
-AH
-AH
-TT
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
 as
 as
 as
@@ -19863,24 +18001,24 @@ as
 as
 as
 as
-TT
-TT
-TT
-TT
-TT
-TT
-TT
-TT
-TT
-TT
-TT
-TT
-TT
-TT
-TT
-TT
-TT
-TT
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
 as
 as
 as

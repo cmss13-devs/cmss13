@@ -1,5 +1,0 @@
-author: "realforest2001"
-delete-after: True
-changes:
-  - bugfix: "Alamo and Normandy now use their correct intercom frequencies."
-  - rscadd: "Added subtypes of intercoms for use on the dropships, so they're not instances that will endlessly break if frequencies change again."

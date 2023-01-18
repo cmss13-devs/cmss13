@@ -53,6 +53,9 @@
 
 	var/flamer_reagent_type = /datum/reagent/napalm/ut
 
+	/// The flicker that plays when a bullet hits a target. Usually red. Can be nulled so it doesn't show up at all.
+	var/hit_effect_color = "#FF0000"
+
 /datum/ammo/New()
 	set_bullet_traits()
 
@@ -195,9 +198,9 @@
 		M.apply_damage(damage,damage_type)
 
 		if(XNO && XNO.xeno_shields.len)
-			P.play_shielded_damage_effect(M)
+			P.play_shielded_hit_effect(M)
 		else
-			P.play_damage_effect(M)
+			P.play_hit_effect(M)
 
 /datum/ammo/proc/fire_bonus_projectiles(obj/item/projectile/original_P)
 	set waitfor = 0
@@ -960,6 +963,28 @@
 	damage = 0
 	stamina_damage = 10
 	shrapnel_chance = 0
+
+/datum/ammo/bullet/smg/mp27
+	name = "simple submachinegun bullet"
+	damage = 40
+	accurate_range = 5
+	effective_range_max = 7
+	penetration = 0
+	shell_speed = AMMO_SPEED_TIER_6
+	damage_falloff = DAMAGE_FALLOFF_TIER_6
+	scatter = SCATTER_AMOUNT_TIER_6
+	accuracy = HIT_ACCURACY_TIER_2
+
+// less damage than the m39, but better falloff, range, and AP
+
+/datum/ammo/bullet/smg/ppsh
+	name = "crude submachinegun bullet"
+	damage = 26
+	accurate_range = 7
+	effective_range_max = 7
+	penetration = ARMOR_PENETRATION_TIER_2
+	damage_falloff = DAMAGE_FALLOFF_TIER_7
+	scatter = SCATTER_AMOUNT_TIER_5
 
 /*
 //======
@@ -2206,6 +2231,7 @@
 	stamina_damage = 45
 	accuracy = HIT_ACCURACY_TIER_8
 	shell_speed = AMMO_SPEED_TIER_1 // Slightly faster
+	hit_effect_color = "#FFFF00"
 
 /datum/ammo/energy/taser/on_hit_mob(mob/M, obj/item/projectile/P)
 	if(ishuman(M))
@@ -2561,7 +2587,7 @@
 		hit_someone = TRUE
 		CB.Invoke(M, power, insta_neuro)
 
-		P.play_damage_effect(M)
+		P.play_hit_effect(M)
 
 	return hit_someone
 

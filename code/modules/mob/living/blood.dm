@@ -178,7 +178,12 @@
 		plasmas += plasma
 
 	for(var/plasma in plasmas)
-		O.reagents.add_reagent(plasma,amount / plasmas.len) //An even amount of each plasma and blood type
+		//An even amount of each plasma and blood type
+		if(plasma == PLASMA_EGG)
+			//Preserve hive_number for the possible larva
+			O.reagents.add_reagent(plasma, amount / plasmas.len, list("hive_number" = hivenumber))
+		else
+			O.reagents.add_reagent(plasma, amount / plasmas.len)
 
 	blood_volume = max(0, blood_volume - amount)
 	return 1

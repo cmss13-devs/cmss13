@@ -235,6 +235,9 @@
 	///the mob's tgui player panel
 	var/datum/player_panel/mob_panel
 
+	///the mob's tgui player panel
+	var/datum/language_menu/mob_language_menu
+
 	var/datum/focus
 
 	///the current turf being examined in the stat panel
@@ -250,3 +253,10 @@
 	var/list/important_radio_channels = list()
 
 	var/datum/click_intercept
+
+	///the icon currently used for the typing indicator's bubble
+	var/mutable_appearance/active_typing_indicator
+	///the icon currently used for the thinking indicator's bubble
+	var/mutable_appearance/active_thinking_indicator
+	/// User is thinking in character. Used to revert to thinking state after stop_typing
+	var/thinking_IC = FALSE

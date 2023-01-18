@@ -1,8 +1,0 @@
-author: "carlarctg"
-delete-after: True
-changes:
-  - rscadd: "Added a fun fact for amount of items festivized - only plays if any item was actually festivized. Text alternates based on amount of festivization."
-  - rscadd: "Added jingling sounds to the festivizer."
-  - rscadd: "Santa can now refill his bag with an item action."
-  - soundadd: "Added a new MERRY CHRISTMAS! sound that plays alongside the others with the Festeba and queen's screech."
-  - code_imp: "Screech now works as a list that an item is picked from."

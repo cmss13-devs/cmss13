@@ -275,7 +275,7 @@
 				acid_splash_last = world.time
 				handle_blood_splatter(get_dir(src, victim), 1 SECONDS)
 				playsound(victim, "acid_sizzle", 25, TRUE)
-				animation_flash_color(victim, get_blood_color()) //pain hit flicker
+				animation_flash_color(victim, "#FF0000") //pain hit flicker
 
 /mob/living/carbon/Xenomorph/get_target_lock(var/access_to_check)
 	if(isnull(access_to_check))

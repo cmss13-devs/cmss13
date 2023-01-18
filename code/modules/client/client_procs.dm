@@ -301,6 +301,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		if(isnull(address) || (address in localhost_addresses))
 			var/datum/admins/admin = new("!localhost!", R_EVERYTHING, ckey)
 			admin.associate(src)
+			RoleAuthority.roles_whitelist[ckey] = WHITELIST_EVERYTHING
 
 	//Admin Authorisation
 	admin_holder = admin_datums[ckey]

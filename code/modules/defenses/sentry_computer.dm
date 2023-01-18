@@ -44,13 +44,21 @@
 	/// The turf where the camera was last updated.
 	var/turf/last_camera_turf
 
-	var/obj/item/device/radio/marine/transceiver = new /obj/item/device/radio/marine // radio which broadcasts updates
-	var/mob/living/voice = new /mob/living/silicon // the hidden mob which voices updates
+	// radio which broadcasts updates
+	var/obj/item/device/radio/marine/transceiver = new /obj/item/device/radio/marine 
+	 // the hidden mob which voices updates
+	var/mob/living/voice = new /mob/living/silicon
 
 	// Stuff needed to render the map
-	var/map_name // asset name for the game map
-	var/atom/movable/screen/map_view/cam_screen // camera screen which renders the world
-	var/atom/movable/screen/background/cam_background // camera screen which shows a blank error
+	
+	/// asset name for the game map
+	var/map_name 
+	
+	/// camera screen which renders the world
+	var/atom/movable/screen/map_view/cam_screen 
+	
+	/// camera screen which shows a blank error
+	var/atom/movable/screen/background/cam_background 
 
 	/// All turfs within range of the currently active camera
 	var/list/range_turfs = list()

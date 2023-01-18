@@ -1,0 +1,4 @@
+author: "carlarctg"
+delete-after: True
+changes:
+  - refactor: "Refactored hivelord resin walker to be behaviour delegate based rather than brute force typechecking."

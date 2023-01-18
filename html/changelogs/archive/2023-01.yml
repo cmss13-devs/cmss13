@@ -416,3 +416,15 @@
   carlarctg:
   - rscdel: Reverts the damage flicker change. The only effect that changes color
       is being tased now.
+2023-01-18:
+  Manoel34:
+  - spellcheck: Corrects the description of PMC Sniper helmet.
+  Morrow:
+  - bugfix: Fixes queen sacrifice ability runtiming from not finding the selected
+      xeno
+  - code_imp: Removed a misleading comment
+  NewyearnewmeUwu:
+  - bugfix: fixed omnisentry stacking
+  Skegal:
+  - rscadd: Added two haircut
+  - imageadd: added hair_row_braid_s / hair_croft_s in human_hair.dmi

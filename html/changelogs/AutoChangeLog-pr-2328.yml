@@ -1,5 +1,0 @@
-author: "Morrow"
-delete-after: True
-changes:
-  - bugfix: "Fixes queen sacrifice ability runtiming from not finding the selected xeno"
-  - code_imp: "Removed a misleading comment"

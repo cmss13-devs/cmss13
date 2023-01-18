@@ -1,5 +1,0 @@
-author: "Skegal"
-delete-after: True
-changes:
-  - rscadd: "Added two haircut"
-  - imageadd: "added hair_row_braid_s / hair_croft_s in human_hair.dmi"

@@ -11,7 +11,7 @@
 	gun_type = null
 
 /obj/item/ammo_magazine/sentry/dropped
-	max_rounds = 250
+	max_rounds = 500
 
 /obj/item/ammo_magazine/sentry/premade
 	max_rounds = 99999

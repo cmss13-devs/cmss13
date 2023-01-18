@@ -33,10 +33,10 @@
 	var/placed = 0
 	var/obj/item/defenses/handheld/HD
 
-	// Defence Laptop
+	/// Defence Laptop
 	var/nickname = ""
 	var/encryptable = TRUE
-	// laptop which is currently linked to the sentry
+	/// laptop which is currently linked to the sentry
 	var/obj/item/device/sentry_computer/linked_laptop = null
 	var/has_camera = FALSE
 	var/list/choice_categories = list()

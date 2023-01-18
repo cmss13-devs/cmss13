@@ -190,7 +190,6 @@
 			var/raw_name = input(user, "Choose the new name:", "Name Input")  as text|null
 			if(!isnull(raw_name)) // Check to ensure that the user entered text (rather than cancel.)
 				new_name = reject_bad_name(raw_name)
-				
 
 	if(!new_name)
 		to_chat(user, SPAN_NOTICE("Invalid name. The name should be at least 2 and at most [MAX_NAME_LEN] characters long. It may only contain the characters A-Z, a-z, -, ' and ."))

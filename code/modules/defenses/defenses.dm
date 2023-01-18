@@ -237,12 +237,12 @@
 				// unregister
 				var/loaded_key = linked_laptop.serial_number
 				if(length(tool.encryption_keys) == 0)
-					to_chat(usr, SPAN_NOTICE("\The [src] is encrypted. To use \the [tool] it must be paired with the laptop [linked_laptop.serial_number]."))
+					to_chat(user, SPAN_NOTICE("\The [src] is encrypted. To use \the [tool] it must be paired with the laptop [linked_laptop.serial_number]."))
 				if(tool.encryption_keys[loaded_key])
-					to_chat(usr, SPAN_NOTICE("Attempting decryption of [src]."))
+					to_chat(user, SPAN_NOTICE("Attempting decryption of [src]."))
 					linked_laptop.unregister(tool, user, src)
 				else
-					to_chat(usr, SPAN_WARNING("\The [src] is already encrypted by laptop [linked_laptop.serial_number]. You must load its encryption key to decrypt."))
+					to_chat(user, SPAN_WARNING("\The [src] is already encrypted by laptop [linked_laptop.serial_number]. You must load its encryption key to decrypt."))
 				return
 		if(health < health_max * 0.25)
 			to_chat(user, SPAN_WARNING("\The [src] is too damaged to pick up!"))

@@ -1,5 +1,3 @@
-#define DEFAULT_CAMERA_SIZE 15
-
 /**
  * Sentry gun computer which links to defensive structures.
  */
@@ -12,30 +10,30 @@
 
 	/// if the laptop has been placed on a table
 	var/setup = FALSE
-	
+
 	/// if the laptop has been opened (the model not tgui)
-	var/open = FALSE 
-	
+	var/open = FALSE
+
 	/// if the laptop is turned on and powered
-	var/on = FALSE 
-	
+	var/on = FALSE
+
 	/// list of paired defences
-	var/list/paired_sentry = list() 
-	
+	var/list/paired_sentry = list()
+
 	/// defensive structure which has the camera active
-	var/obj/structure/machinery/defenses/sentry/current 
+	var/obj/structure/machinery/defenses/sentry/current
 	var/cell_type = /obj/item/cell/high
-	
+
 	/// battery in the laptop
-	var/obj/item/cell/cell 
-	
+	var/obj/item/cell/cell
+
 	/// multiplier for how much power to drain per linked device
-	var/power_consumption = 1 
+	var/power_consumption = 1
 	var/list/registered_tools = list()
-	
+
 	/// if the laptop should announce events on radio, for live server testing
-	var/silent = FALSE 
-	
+	var/silent = FALSE
+
 	var/can_identify_target = FALSE // if the laptop should broadcast what it is shooting at
 
 	var/list/faction_group
@@ -45,20 +43,20 @@
 	var/turf/last_camera_turf
 
 	// radio which broadcasts updates
-	var/obj/item/device/radio/marine/transceiver = new /obj/item/device/radio/marine 
+	var/obj/item/device/radio/marine/transceiver = new /obj/item/device/radio/marine
 	 // the hidden mob which voices updates
 	var/mob/living/voice = new /mob/living/silicon
 
 	// Stuff needed to render the map
-	
+
 	/// asset name for the game map
-	var/map_name 
-	
+	var/map_name
+
 	/// camera screen which renders the world
-	var/atom/movable/screen/map_view/cam_screen 
-	
+	var/atom/movable/screen/map_view/cam_screen
+
 	/// camera screen which shows a blank error
-	var/atom/movable/screen/background/cam_background 
+	var/atom/movable/screen/background/cam_background
 
 	/// All turfs within range of the currently active camera
 	var/list/range_turfs = list()
@@ -459,7 +457,7 @@
 	cam_screen.vis_contents.Cut()
 	last_camera_turf = null
 	cam_background.icon_state = "scanline2"
-	cam_background.fill_rect(1, 1, DEFAULT_CAMERA_SIZE, DEFAULT_CAMERA_SIZE)
+	cam_background.fill_rect(1, 1, 15, 15)
 
 /**
  * Update camera settings and redraw camera on the current variable.

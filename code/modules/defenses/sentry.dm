@@ -33,11 +33,11 @@
 	handheld_type = /obj/item/defenses/handheld/sentry
 
 	/// timer triggered when sentry gun shoots at a target to not spam the laptop
-	var/enaged_timer = null 
+	var/engaged_timer = null
 	 /// timer triggered when sentry gun is low on ammo to not spam the laptop
 	var/low_ammo_timer = null
 	/// timer triggered when sentry gun is out of ammo to not spam the laptop
-	var/sent_empty_ammo = FALSE 
+	var/sent_empty_ammo = FALSE
 
 	/// action list is configurable for all subtypes, this is just an example
 	choice_categories = list(
@@ -282,16 +282,16 @@
 	if(targets.len)
 		addtimer(CALLBACK(src, PROC_REF(get_target)), fire_delay)
 
-	if(!enaged_timer)
+	if(!engaged_timer)
 		SEND_SIGNAL(src, COMSIG_SENTRY_ENGAGED_ALERT, src)
-		enaged_timer = addtimer(CALLBACK(src, PROC_REF(reset_engaged_timer)), SENTRY_ENGAGED_TIMEOUT)
+		engaged_timer = addtimer(CALLBACK(src, PROC_REF(reset_engaged_timer)), SENTRY_ENGAGED_TIMEOUT)
 
 	if(!low_ammo_timer && ammo?.current_rounds && (ammo?.current_rounds < (ammo?.max_rounds * SENTRY_LOW_AMMO_ALERT_PERCENTAGE)))
 		SEND_SIGNAL(src, COMSIG_SENTRY_LOW_AMMO_ALERT, src)
 		low_ammo_timer = addtimer(CALLBACK(src, PROC_REF(reset_low_ammo_timer)), SENTRY_LOW_AMMO_TIMEOUT)
 
 /obj/structure/machinery/defenses/sentry/proc/reset_engaged_timer()
-	enaged_timer = null
+	engaged_timer = null
 
 /obj/structure/machinery/defenses/sentry/proc/reset_low_ammo_timer()
 	low_ammo_timer = null

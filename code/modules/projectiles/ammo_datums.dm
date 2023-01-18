@@ -1369,26 +1369,6 @@
 					8 GAUGE SHOTGUN AMMO
 */
 
-/datum/ammo/bullet/shotgun/heavy/knockback(mob/living/target, obj/item/projectile/P, max_range = 2, throw_distance = 2)
-	if(!target)
-		return
-	if(P.distance_travelled > max_range || !throw_distance)
-		return
-
-	if(target.mob_size >= MOB_SIZE_BIG)
-		return //Big xenos are not affected.
-
-	target.apply_effect(1, WEAKEN)
-	target.apply_effect(2, SLOW)
-	target.visible_message(target, SPAN_DANGER("The massive impact sends [target] flying!"), SPAN_HIGHDANGER("The massive impact sends you flying!"))
-
-	var/direction
-	if(target == P.firer)
-		direction = turn(P.dir, 180) //they fly backawards
-	else
-		direction = P.dir
-	target.fling_mob(P.firer, direction, distance = throw_distance)
-
 /datum/ammo/bullet/shotgun/heavy/buckshot
 	name = "heavy buckshot shell"
 	icon_state = "buckshot"
@@ -1405,17 +1385,13 @@
 	pen_armor_punch = 0
 
 /datum/ammo/bullet/shotgun/heavy/buckshot/on_hit_mob(mob/M,obj/item/projectile/P)
-	knockback(M, P, max_range = 2, throw_distance = 2)
+	knockback(M,P)
 
 /datum/ammo/bullet/shotgun/heavy/buckshot/spread
 	name = "additional heavy buckshot"
 	max_range = 4
 	scatter = SCATTER_AMOUNT_TIER_1
-	shell_speed = AMMO_SPEED_TIER_4 // so they hit before the main shell stuns
 	bonus_projectiles_amount = 0
-
-/datum/ammo/bullet/shotgun/heavy/buckshot/spread/on_hit_mob(mob/M,obj/item/projectile/P)
-	return
 
 //basically the same
 /datum/ammo/bullet/shotgun/heavy/buckshot/dragonsbreath
@@ -1453,7 +1429,7 @@
 	damage_armor_punch = 2
 
 /datum/ammo/bullet/shotgun/heavy/slug/on_hit_mob(mob/M,obj/item/projectile/P)
-	knockback(M, P, max_range = 6, throw_distance = 1)
+	heavy_knockback(M, P, 7)
 
 /datum/ammo/bullet/shotgun/heavy/beanbag
 	name = "heavy beanbag slug"
@@ -1471,7 +1447,11 @@
 	shell_speed = AMMO_SPEED_TIER_2
 
 /datum/ammo/bullet/shotgun/heavy/beanbag/on_hit_mob(mob/M, obj/item/projectile/P)
-	knockback(M, P, max_range = 6, throw_distance = 1)
+	if(!M || M == P.firer)
+		return
+	if(ishuman(M))
+		var/mob/living/carbon/human/H = M
+		shake_camera(H, 2, 1)
 
 /datum/ammo/bullet/shotgun/heavy/flechette
 	name = "heavy flechette shell"

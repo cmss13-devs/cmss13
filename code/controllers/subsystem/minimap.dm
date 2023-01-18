@@ -241,7 +241,7 @@ SUBSYSTEM_DEF(minimaps)
 		blip = given_image
 
 	for(var/i in overlay_iconstates)
-		overlay = image(icon, i)
+		var/image/overlay = image(icon, i)
 		overlay.appearance_flags = RESET_COLOR
 		blip.overlays += overlay
 

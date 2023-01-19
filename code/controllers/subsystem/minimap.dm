@@ -411,7 +411,7 @@ SUBSYSTEM_DEF(minimaps)
 	marker_flags = MINIMAP_FLAG_MARINE
 
 /datum/action/minimap/observer
-	minimap_flags = MINIMAP_FLAG_XENO|MINIMAP_FLAG_MARINE
+	minimap_flags = MINIMAP_FLAG_XENO|MINIMAP_FLAG_MARINE|MINIMAP_FLAG_UPP|MINIMAP_FLAG_CLF|MINIMAP_FLAG_UPP
 	marker_flags = NONE
 	hidden = TRUE
 

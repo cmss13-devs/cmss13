@@ -163,4 +163,4 @@
 	announcement_title = PMC_COMMAND_ANNOUNCE
 	announcement_faction = FACTION_PMC
 
-	minimap_type = MINIMAP_FLAG_MARINE_PMC
+	minimap_type = MINIMAP_FLAG_PMC

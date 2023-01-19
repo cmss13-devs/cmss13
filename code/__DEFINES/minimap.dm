@@ -1,11 +1,10 @@
 
 #define MINIMAP_FLAG_XENO (1<<0)
 #define MINIMAP_FLAG_MARINE (1<<1)
-#define MINIMAP_FLAG_MARINE_PMC (1<<2)
-#define MINIMAP_FLAG_MARINE_UPP (1<<3)
-#define MINIMAP_FLAG_MARINE_CLF (1<<4)
-#define MINIMAP_FLAG_EXCAVATION_ZONE (1<<5)
-#define MINIMAP_FLAG_ALL (1<<6) - 1
+#define MINIMAP_FLAG_PMC (1<<2)
+#define MINIMAP_FLAG_UPP (1<<3)
+#define MINIMAP_FLAG_CLF (1<<4)
+#define MINIMAP_FLAG_ALL (1<<5) - 1
 
 ///Converts the overworld x and y to minimap x and y values
 #define MINIMAP_PIXEL_FROM_WORLD(val) (val*2-3)

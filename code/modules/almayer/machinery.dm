@@ -161,13 +161,13 @@
 	map.tgui_interact(user)
 
 /obj/structure/machinery/prop/almayer/CICmap/upp
-	minimap_type = MINIMAP_FLAG_MARINE_UPP
+	minimap_type = MINIMAP_FLAG_UPP
 
 /obj/structure/machinery/prop/almayer/CICmap/clf
-	minimap_type = MINIMAP_FLAG_MARINE_CLF
+	minimap_type = MINIMAP_FLAG_CLF
 
 /obj/structure/machinery/prop/almayer/CICmap/pmc
-	minimap_type = MINIMAP_FLAG_MARINE_PMC
+	minimap_type = MINIMAP_FLAG_PMC
 
 //Nonpower using props
 

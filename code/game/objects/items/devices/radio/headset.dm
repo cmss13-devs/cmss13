@@ -340,11 +340,11 @@
 		if(hud_type == MOB_HUD_FACTION_USCM)
 			marker_flags = MINIMAP_FLAG_MARINE
 		else if(hud_type == MOB_HUD_FACTION_UPP)
-			marker_flags = MINIMAP_FLAG_MARINE_UPP
+			marker_flags = MINIMAP_FLAG_UPP
 		else if(hud_type == MOB_HUD_FACTION_PMC)
-			marker_flags = MINIMAP_FLAG_MARINE_PMC
+			marker_flags = MINIMAP_FLAG_PMC
 		else if(hud_type == MOB_HUD_FACTION_CLF)
-			marker_flags = MINIMAP_FLAG_MARINE_CLF
+			marker_flags = MINIMAP_FLAG_CLF
 
 	if(wearer.undefibbable)
 		set_undefibbable_on_minimap(z_level, marker_flags)

@@ -143,11 +143,6 @@
 	icon_state = "jtac_key"
 	channels = list(RADIO_CHANNEL_INTEL = TRUE)
 
-/obj/item/device/encryptionkey/cct
-	name = "\improper CCT Radio Encryption Key"
-	icon_state = "jtac_key"
-	channels = list(RADIO_CHANNEL_CCT = TRUE)
-
 /obj/item/device/encryptionkey/squadlead
 	name = "\improper Squad Leader Radio Encryption Key"
 	icon_state = "sl_key"

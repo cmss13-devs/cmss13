@@ -377,12 +377,12 @@
 
 	mutators.xeno = src
 
-	if(caste_type && GLOB.xeno_datum_list[caste_type])
+	if(caste_type && caste_type != XENO_CASTE_CUSTOM && GLOB.xeno_datum_list[caste_type])
 		caste = GLOB.xeno_datum_list[caste_type]
-	else
-		to_world("something went very wrong")
-		return
-
+	//else
+	//	//TODO.. UNCOMMENT THIS
+	//	to_world("something went very wrong")
+	//	return
 	update_icon_source()
 
 	acid_splash_cooldown = caste.acid_splash_cooldown

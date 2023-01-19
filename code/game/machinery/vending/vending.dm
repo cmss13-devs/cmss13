@@ -1,5 +1,5 @@
-#define CAT_HIDDEN list("name" = "Hidden", "icon" = "user-secret")
-#define CAT_COIN list("name" = "Premium", "icon" = "Coin")
+#define CAT_HIDDEN list("name" = "Contraband", "icon" = "user-secret")
+#define CAT_COIN list("name" = "Premium", "icon" = "coins")
 
 
 
@@ -790,7 +790,7 @@
 
 	switch(wire)
 		if(VENDING_WIRE_EXTEND)
-			src.extended_inventory = 0
+			src.extended_inventory = TRUE
 			visible_message(SPAN_NOTICE("A weak yellow light turns off underneath \the [src]."))
 		if(VENDING_WIRE_SHOCK)
 			src.seconds_electrified = -1
@@ -805,7 +805,7 @@
 
 	switch(wire)
 		if(VENDING_WIRE_EXTEND)
-			src.extended_inventory = 1
+			src.extended_inventory = FALSE
 			visible_message(SPAN_NOTICE("A weak yellow light turns on underneath \the [src]."))
 		if(VENDING_WIRE_SHOCK)
 			src.seconds_electrified = 0

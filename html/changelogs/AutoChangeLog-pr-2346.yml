@@ -1,4 +1,0 @@
-author: "mullenpaul"
-delete-after: True
-changes:
-  - bugfix: "sentry guns can be deconstructed without being linked to a laptop"

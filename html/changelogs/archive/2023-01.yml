@@ -428,3 +428,25 @@
   Skegal:
   - rscadd: Added two haircut
   - imageadd: added hair_row_braid_s / hair_croft_s in human_hair.dmi
+2023-01-19:
+  BeagleGaming1:
+  - admin: Resetting Human Names from the player panel updates the crew manifest
+  Morrow:
+  - rscadd: You can now drag things onto platforms.
+  carlarctg:
+  - refactor: Refactored hivelord resin walker to be behaviour delegate based rather
+      than brute force typechecking.
+  mullenpaul:
+  - bugfix: sentry guns can be deconstructed without being linked to a laptop
+  mullenpaul, monkeysfist101:
+  - rscadd: added sentry laptop to game
+  - rscadd: new radio channel for sentry gun updates, only listenable on radio headsets
+  - balance: allowed for the configuration of IFF groups of sentry guns
+  - refactor: multitools now can store encryption keys
+  - refactor: added UI to manage sentry guns
+  - imageadd: added sentry laptop sprite
+  - bugfix: should have removed phantom icons being rendered in mortar camera and
+      security camera
+  stanalbatross:
+  - qol: control-clicking a xeno as a ghost will now always make you orbit them
+  - qol: reduced message spam when control-clicking xenos as a ghost

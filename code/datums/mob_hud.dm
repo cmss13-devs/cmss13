@@ -310,12 +310,11 @@ var/list/datum/mob_hud/huds = list(
 	if(stat == DEAD)
 		holder.icon_state = "hudhealth-100"
 	else
-		var/percentage = round(health*100/species.total_health, 10)
-		if(percentage > -1)
-			holder.icon_state = "hudhealth[percentage]"
-		else if(percentage > -49)
+		if(perc_health > -1)
+			holder.icon_state = "hudhealth[perc_health]"
+		else if(perc_health > -49)
 			holder.icon_state = "hudhealth-0"
-		else if(percentage > -99)
+		else if(perc_health > -99)
 			holder.icon_state = "hudhealth-50"
 		else
 			holder.icon_state = "hudhealth-100"

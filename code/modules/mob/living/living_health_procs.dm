@@ -1,6 +1,20 @@
 
 //procs directly related to mob health
+/mob/living/Life(delta_time)
+	var/new_perc_health
+	if(isXeno(src))
+		var/mob/living/carbon/Xenomorph/Xeno = src
+		new_perc_health = round(health*100/Xeno.caste.max_health, 10)
+	else if(ishuman(src))
+		var/mob/living/carbon/human/Dummy = src
+		new_perc_health = round(health*100/Dummy.species.total_health, 10)
+	else
+		new_perc_health = round(health*100/maxHealth, 10)
 
+
+	if(perc_health != new_perc_health)
+		perc_health = new_perc_health
+	..()
 
 /mob/living/getBruteLoss()
 	return bruteloss

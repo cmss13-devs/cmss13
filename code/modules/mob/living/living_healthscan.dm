@@ -64,7 +64,7 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 	var/list/data = list(
 		"patient" = target_mob.name,
 		"dead" = target_mob.stat == DEAD,
-		"health" = target_mob.health,
+		"perc_health" = target_mob.perc_health,
 		"total_brute" = round(target_mob.getBruteLoss()),
 		"total_burn" = round(target_mob.getFireLoss()),
 		"toxin" = round(target_mob.getToxLoss()),
@@ -485,7 +485,7 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 		OX = fake_oxy > 50 ? "<b>[fake_oxy]</b>" : fake_oxy
 		dat += "\nHealth Analyzer for [src]:\n\tOverall Status: <b>DEAD</b>\n"
 	else
-		dat += "\nHealth Analyzer results for [src]:\n\tOverall Status: [src.stat > 1 ? "<b>DEAD</b>" : "<b>[src.health - src.halloss]% healthy"]</b>\n"
+		dat += "\nHealth Analyzer results for [src]:\n\tOverall Status: [src.stat > 1 ? "<b>DEAD</b>" : "<b>[src.perc_health - src.halloss]% healthy"]</b>\n"
 	dat += "\tType: [SET_CLASS("Oxygen", INTERFACE_BLUE)]-[SET_CLASS("Toxin", INTERFACE_GREEN)]-[SET_CLASS("Burns", INTERFACE_ORANGE)]-[SET_CLASS("Brute", INTERFACE_RED)]\n"
 	dat += "\tDamage: \t[SET_CLASS(OX, INTERFACE_BLUE)] - [SET_CLASS(TX, INTERFACE_GREEN)] - [SET_CLASS(BU, INTERFACE_ORANGE)] - [SET_CLASS(BR, INTERFACE_RED)]\n"
 	dat += "\tUntreated: {B}=Burns,{T}=Trauma,{F}=Fracture\n"

@@ -1,15 +1,5 @@
 import { useBackend } from '../backend';
-import {
-  Section,
-  ProgressBar,
-  Box,
-  LabeledList,
-  NoticeBox,
-  Stack,
-  Icon,
-  Divider,
-  Flex,
-} from '../components';
+import { Section, ProgressBar, Box, LabeledList, NoticeBox, Stack, Icon, Divider, Flex } from '../components';
 import { Window } from '../layouts';
 
 export const HealthScan = (props, context) => {
@@ -17,7 +7,7 @@ export const HealthScan = (props, context) => {
   const {
     patient,
     dead,
-    health,
+    perc_health,
     total_brute,
     total_burn,
     toxin,
@@ -75,23 +65,23 @@ export const HealthScan = (props, context) => {
           ) : null}
           <LabeledList>
             <LabeledList.Item label="Health">
-              {health >= 0 ? (
+              {perc_health >= 0 ? (
                 <ProgressBar
-                  value={health / 100}
+                  value={perc_health / 100}
                   ranges={{
                     good: [0.7, Infinity],
                     average: [0.2, 0.7],
                     bad: [-Infinity, 0.2],
                   }}>
-                  {health}% healthy
+                  {perc_health}% healthy
                 </ProgressBar>
               ) : (
                 <ProgressBar
-                  value={1 + health / 100}
+                  value={1 + perc_health / 100}
                   ranges={{
                     bad: [-Infinity, Infinity],
                   }}>
-                  {health}% healthy
+                  {perc_health}% healthy
                 </ProgressBar>
               )}
             </LabeledList.Item>
@@ -101,8 +91,8 @@ export const HealthScan = (props, context) => {
                   {permadead
                     ? 'Permanently deceased'
                     : Synthetic
-                    ? 'Central power system shutdown, reboot possible.'
-                    : 'Cardiac arrest, defibrillation possible'}
+                      ? 'Central power system shutdown, reboot possible.'
+                      : 'Cardiac arrest, defibrillation possible'}
                 </Box>
               </LabeledList.Item>
             ) : null}

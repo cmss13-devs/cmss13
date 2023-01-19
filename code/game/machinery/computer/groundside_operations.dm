@@ -10,7 +10,7 @@
 	var/datum/squad/current_squad = null
 
 	var/datum/tacmap/tacmap
-	var/minimap_type = MINIMAP_FLAG_MARINE
+	var/minimap_type = MINIMAP_FLAG_USCM
 
 	var/is_announcement_active = TRUE
 	var/announcement_title = COMMAND_ANNOUNCE

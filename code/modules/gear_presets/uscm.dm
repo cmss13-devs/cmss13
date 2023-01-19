@@ -746,6 +746,8 @@
 	role_comm_title = "RTO"
 	skills = /datum/skills/rto
 
+	minimap_icon = "rto"
+
 /datum/equipment_preset/uscm/rto_equipped/load_gear(mob/living/carbon/human/H)
 	//TODO: add backpacks and satchels
 	var/obj/item/clothing/under/marine/rto/U = new(H)

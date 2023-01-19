@@ -9,6 +9,7 @@ export type OrbitData = {
   ert_members: Observable[];
   synthetics: Observable[];
   predators: Observable[];
+  animals: Observable[];
   dead: Observable[];
   ghosts: Observable[];
   misc: Observable[];

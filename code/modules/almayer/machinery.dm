@@ -145,7 +145,7 @@
 	idle_power_usage = 2
 	///flags that we want to be shown when you interact with this table
 	var/datum/tacmap/map
-	var/minimap_type = MINIMAP_FLAG_MARINE
+	var/minimap_type = MINIMAP_FLAG_USCM
 
 /obj/structure/machinery/prop/almayer/CICmap/Initialize()
 	. = ..()

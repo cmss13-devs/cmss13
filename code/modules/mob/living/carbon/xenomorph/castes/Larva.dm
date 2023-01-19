@@ -113,7 +113,7 @@
 	else
 		progress = ""
 
-	name = "\improper [name_prefix][progress]Larva ([nicknumber])"
+	name = "[name_prefix][progress]Larva ([nicknumber])"
 
 	if(istype(src,/mob/living/carbon/Xenomorph/Larva/predalien)) state = "Predalien " //Sort of a hack.
 

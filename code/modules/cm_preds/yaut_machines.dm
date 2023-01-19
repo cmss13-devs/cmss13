@@ -4,4 +4,4 @@
 	icon = 'icons/turf/walls/hunter.dmi'
 	icon_state = "globe"
 
-	minimap_type = MINIMAP_FLAG_MARINE|MINIMAP_FLAG_MARINE
+	minimap_type = MINIMAP_FLAG_XENO|MINIMAP_FLAG_USCM

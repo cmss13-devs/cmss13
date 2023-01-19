@@ -63,6 +63,7 @@
 	var/list/ert_members = list()
 	var/list/synthetics = list()
 	var/list/predators = list()
+	var/list/animals = list()
 	var/list/dead = list()
 	var/list/ghosts = list()
 	var/list/misc = list()
@@ -152,6 +153,8 @@
 				else
 					humans += list(serialized)
 				continue
+			if(isanimal(player))
+				animals += list(serialized)
 
 		else if(isAI(M))
 			humans += list(serialized)
@@ -163,6 +166,7 @@
 	data["ert_members"] = ert_members
 	data["synthetics"] = synthetics
 	data["predators"] = predators
+	data["animals"] = animals
 	data["dead"] = dead
 	data["ghosts"] = ghosts
 	data["misc"] = misc

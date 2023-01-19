@@ -704,7 +704,4 @@
 		return
 
 	SSminimaps.remove_marker(src)
-	if(makeleader)
-		SSminimaps.add_marker(src, z, MINIMAP_FLAG_XENO, caste.minimap_icon, overlay_iconstates=list(caste.minimap_leadered_overlay))
-	else
-		SSminimaps.add_marker(src, z, MINIMAP_FLAG_XENO, caste.minimap_icon)
+	add_minimap_marker()

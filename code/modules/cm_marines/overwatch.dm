@@ -26,7 +26,7 @@
 	var/faction = FACTION_MARINE
 
 	var/datum/tacmap/tacmap
-	var/minimap_type = MINIMAP_FLAG_MARINE
+	var/minimap_type = MINIMAP_FLAG_USCM
 
 /obj/structure/machinery/computer/overwatch/Initialize()
 	. = ..()

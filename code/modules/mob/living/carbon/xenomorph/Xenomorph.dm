@@ -504,7 +504,10 @@
 		return COMPONENT_SCREECH_ACT_CANCEL
 
 /mob/living/carbon/Xenomorph/proc/add_minimap_marker()
-	SSminimaps.add_marker(src, z, hud_flags = MINIMAP_FLAG_XENO, iconstate = caste.minimap_icon)
+	if(IS_XENO_LEADER(src))
+		SSminimaps.add_marker(src, z, hud_flags = MINIMAP_FLAG_XENO, given_image = caste.get_minimap_icon(), overlay_iconstates = list(caste.minimap_leadered_overlay))
+		return
+	SSminimaps.add_marker(src, z, hud_flags = MINIMAP_FLAG_XENO, given_image = caste.get_minimap_icon())
 
 /mob/living/carbon/Xenomorph/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()

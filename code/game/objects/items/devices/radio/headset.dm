@@ -39,7 +39,7 @@
 	var/default_freq
 
 	///The type of minimap this headset is added to
-	var/minimap_type = MINIMAP_FLAG_MARINE
+	var/minimap_type = MINIMAP_FLAG_USCM
 
 	var/mob/living/carbon/human/wearer
 
@@ -338,7 +338,7 @@
 
 	if(wearer.assigned_equipment_preset.always_minimap_visible == TRUE || wearer.stat == DEAD) //We show to all marines if we have this flag, separated by faction
 		if(hud_type == MOB_HUD_FACTION_USCM)
-			marker_flags = MINIMAP_FLAG_MARINE
+			marker_flags = MINIMAP_FLAG_USCM
 		else if(hud_type == MOB_HUD_FACTION_UPP)
 			marker_flags = MINIMAP_FLAG_UPP
 		else if(hud_type == MOB_HUD_FACTION_PMC)
@@ -354,25 +354,15 @@
 		set_dead_on_minimap(z_level, marker_flags)
 		return
 
-	if(wearer.assigned_squad)
-		SSminimaps.add_marker(wearer, z_level, marker_flags, wearer.assigned_equipment_preset.minimap_icon, color_code = wearer.assigned_squad.minimap_color, background = "squad-background")
-		return
-
-	SSminimaps.add_marker(wearer, z_level, marker_flags, wearer.assigned_equipment_preset.minimap_icon, color_code = wearer.assigned_equipment_preset?.minimap_background)
+	SSminimaps.add_marker(wearer, z_level, marker_flags, given_image = wearer.assigned_equipment_preset.get_minimap_icon(wearer))
 
 ///Change the minimap icon to a dead icon
 /obj/item/device/radio/headset/proc/set_dead_on_minimap(z_level, marker_flags)
-	if(wearer.assigned_squad)
-		SSminimaps.add_marker(wearer, z_level, marker_flags, wearer.assigned_equipment_preset.minimap_icon, overlay_iconstates = list("defibbable"), color_code = wearer.assigned_squad.minimap_color)
-		return
-	SSminimaps.add_marker(wearer, z_level, marker_flags, wearer.assigned_equipment_preset.minimap_icon, overlay_iconstates = list("defibbable"), color_code = wearer.assigned_equipment_preset.minimap_background)
+	SSminimaps.add_marker(wearer, z_level, marker_flags, given_image = wearer.assigned_equipment_preset.get_minimap_icon(wearer), overlay_iconstates = list("defibbable"))
 
 ///Change the minimap icon to a undefibbable icon
 /obj/item/device/radio/headset/proc/set_undefibbable_on_minimap(z_level, marker_flags)
-	if(wearer.assigned_squad)
-		SSminimaps.add_marker(wearer, z_level, marker_flags, wearer.assigned_equipment_preset.minimap_icon, overlay_iconstates = list("undefibbable"), color_code = wearer.assigned_squad.minimap_color)
-		return
-	SSminimaps.add_marker(wearer, z_level, marker_flags, wearer.assigned_equipment_preset.minimap_icon, overlay_iconstates = list("undefibbable"), color_code = wearer.assigned_equipment_preset.minimap_background)
+	SSminimaps.add_marker(wearer, z_level, marker_flags, given_image = wearer.assigned_equipment_preset.get_minimap_icon(wearer), overlay_iconstates = list("undefibbable"))
 
 /obj/item/device/radio/headset/binary
 	initial_keys = list(/obj/item/device/encryptionkey/binary)

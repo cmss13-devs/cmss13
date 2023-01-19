@@ -83,7 +83,7 @@ GLOBAL_LIST_EMPTY(command_apc_list)
 
 	var/turf/gotten_turf = get_turf(src)
 	if(gotten_turf && gotten_turf.z)
-		SSminimaps.add_marker(src, gotten_turf.z, MINIMAP_FLAG_MARINE, "apc")
+		SSminimaps.add_marker(src, gotten_turf.z, MINIMAP_FLAG_USCM, "apc", 'icons/ui_icons/map_blips_large.dmi')
 
 /obj/vehicle/multitile/apc/load_role_reserved_slots()
 	var/datum/role_reserved_slots/RRS = new

@@ -593,7 +593,7 @@
 	idtype = /obj/item/card/id/silver/cl
 
 	minimap_icon = "surv"
-	minimap_background = MINIMAP_ICON_CIVILIAN
+	minimap_background = MINIMAP_ICON_BACKGROUND_CIVILIAN
 
 /datum/equipment_preset/wo/reporter/load_gear(mob/living/carbon/human/H)
 	var/backItem = /obj/item/storage/backpack/satchel

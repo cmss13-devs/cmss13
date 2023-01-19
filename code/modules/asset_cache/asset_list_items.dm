@@ -12,20 +12,12 @@
 		"jquery.min.js" = 'html/jquery.min.js',
 	)
 
-/datum/asset/nanoui
+/datum/asset/directory
 	var/list/common = list()
+	var/list/common_dirs = list()
+	var/list/uncommon_dirs = list()
 
-	var/list/common_dirs = list(
-		"nano/css/",
-		"nano/images/",
-		"nano/js/",
-		"nano/js/uiscripts/",
-	)
-	var/list/uncommon_dirs = list(
-		"nano/templates/",
-	)
-
-/datum/asset/nanoui/register()
+/datum/asset/directory/register()
 	// Crawl the directories to find files.
 	for(var/path in common_dirs)
 		var/list/filenames = flist(path)
@@ -46,7 +38,7 @@
 				continue
 			SSassets.transport.register_asset(filename, fcopy_rsc(path + filename))
 
-/datum/asset/nanoui/send(client, uncommon, var/send_only_temp = FALSE)
+/datum/asset/directory/send(client, uncommon, var/send_only_temp = FALSE)
 	if(!client)
 		log_debug("Warning! Tried to send nanoui data with a null client! (asset_list_items.dm line 76)")
 		return
@@ -58,16 +50,25 @@
 	if(!send_only_temp)
 		SSassets.transport.send_assets(client, common)
 
-/datum/asset/nanoui/weapons
-	common = list()
+/datum/asset/directory/nanoui
+	common_dirs = list(
+		"nano/css/",
+		"nano/images/",
+		"nano/js/",
+		"nano/js/uiscripts/",
+	)
+	uncommon_dirs = list(
+		"nano/templates/",
+	)
 
+/datum/asset/directory/nanoui/weapons
 	common_dirs = list(
 		"nano/images/weapons/",
 	)
 
 	uncommon_dirs = list()
 
-/datum/asset/nanoui/weapons/send(client)
+/datum/asset/directory/nanoui/weapons/send(client)
 	if(!client)
 		log_debug("Warning! Tried to send nanoui weapon data with a null client! (asset_list_items.dm line 93)")
 		return
@@ -376,6 +377,14 @@
 		Insert("[icon_name]_big", iconBig)
 	return ..()
 
+/datum/asset/spritesheet/gun_lineart
+	name = "gunlineart"
+
+/datum/asset/spritesheet/gun_lineart/register()
+	InsertAll("", 'icons/obj/items/weapons/guns/lineart.dmi')
+	..()
+
+
 /datum/asset/simple/orbit
 	assets = list(
 		"ghost.png" = 'html/images/ghost.png'
@@ -387,3 +396,14 @@
 		"ntosradarpointer.png" = 'icons/images/ui_images/ntosradar_pointer.png',
 		"ntosradarpointerS.png" = 'icons/images/ui_images/ntosradar_pointer_S.png'
 	)
+
+/datum/asset/simple/firemodes
+	assets = list(
+		"auto.png" = 'html/images/auto.png',
+		"disabled_auto.png" = 'html/images/disabled_automatic.png',
+		"burst.png" = 'html/images/burst.png',
+		"disabled_burst.png" = 'html/images/disabled_burst.png',
+		"single.png" = 'html/images/single.png',
+		"disabled_single.png" = 'html/images/disabled_single.png',
+	)
+

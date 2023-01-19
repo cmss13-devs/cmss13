@@ -1178,7 +1178,7 @@
 	name = "Survivor - PMC"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	assignment = "Weyland-Yutani PMC (Standard)"
-	faction = FACTION_PMC
+	faction = FACTION_SURVIVOR
 	faction_group = list(FACTION_WY, FACTION_MARINE, FACTION_SURVIVOR, FACTION_PMC)
 	rank = JOB_PMC
 	paygrade = "PMC-OP"

@@ -4,11 +4,11 @@
 
 /obj/effect/blocker/sorokyne_cold_water
 	anchored = 1
-	density = 0
-	opacity = 0
+	density = FALSE
+	opacity = FALSE
 	unacidable = 1
 	layer = ABOVE_FLY_LAYER //to make it visible in the map editor
-	mouse_opacity = 0
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	icon = 'icons/landmarks.dmi'
 
 	icon_state = "map_blocker_hazard"

@@ -111,7 +111,8 @@
 	desc = "A pamphlet used to quickly impart vital knowledge. This one has a powerloader insignia. The title reads 'Moving freight and squishing heads - a practical guide to Caterpillar P-5000 Work Loader'."
 	icon_state = "pamphlet_powerloader"
 	trait = /datum/character_trait/skills/powerloader
-	bypass_pamphlet_limit = TRUE //it's really not necessary to stop people from learning powerloader skill
+	/// it's really not necessary to stop people from learning powerloader skill
+	bypass_pamphlet_limit = TRUE
 
 /obj/item/pamphlet/skill/police
 	name = "Policing instructional pamphlet"
@@ -181,6 +182,7 @@
 
 /obj/item/pamphlet/language/monkey
 	name = "scribbled drawings"
+	gender = PLURAL
 	desc = "A piece of paper covered in crude depictions of bananas and various types of primates. Probably drawn by a three-year-old child - or an unusually intelligent marine."
 	trait = /datum/character_trait/language/primitive
 

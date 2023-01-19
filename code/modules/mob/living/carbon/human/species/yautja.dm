@@ -6,6 +6,7 @@
 	burn_mod = 0.65
 	reagent_tag = IS_YAUTJA
 	mob_flags = KNOWS_TECHNOLOGY
+	uses_ethnicity = TRUE
 	flags = IS_WHITELISTED|HAS_SKIN_COLOR|NO_CLONE_LOSS|NO_POISON|NO_NEURO|SPECIAL_BONEBREAK|NO_SHRAPNEL|HAS_HARDCRIT
 	mob_inherent_traits = list(
 		TRAIT_YAUTJA_TECH,
@@ -212,7 +213,7 @@
 
 /datum/species/yautja/handle_on_fire(humanoidmob)
 	. = ..()
-	INVOKE_ASYNC(humanoidmob, /mob.proc/emote, pick("pain", "scream"))
+	INVOKE_ASYNC(humanoidmob, TYPE_PROC_REF(/mob, emote), pick("pain", "scream"))
 
 /datum/species/yautja/handle_paygrades()
 	return ""

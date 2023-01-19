@@ -1,9 +1,9 @@
 /* Cards
  * Contains:
- *		DATA CARD
- *		ID CARD
- *		FINGERPRINT CARD HOLDER
- *		FINGERPRINT CARD
+ * DATA CARD
+ * ID CARD
+ * FINGERPRINT CARD HOLDER
+ * FINGERPRINT CARD
  */
 
 
@@ -64,7 +64,8 @@
 	var/faction = FACTION_NEUTRAL
 	var/list/faction_group
 
-	var/registered_name = "Unknown" // The name registered_name on the card
+	/// The name registered_name on the card
+	var/registered_name = "Unknown"
 	var/registered_ref = null
 	var/registered_gid = 0
 	flags_equip_slot = SLOT_ID
@@ -72,15 +73,21 @@
 	var/blood_type = "\[UNSET\]"
 
 	//alt titles are handled a bit weirdly in order to unobtrusively integrate into existing ID system
-	var/assignment = null	//can be alt title or the actual job
-	var/rank = null			//actual job
-	var/paygrade = "ME1"  // Marine's paygrade
-	var/claimedgear = 1 // For medics and engineers to 'claim' a locker
+
+	/// can be alt title or the actual job
+	var/assignment = null
+	/// actual job
+	var/rank = null
+	/// Marine's paygrade
+	var/paygrade = "ME1"
+	/// For medics and engineers to 'claim' a locker
+	var/claimedgear = 1
 
 	var/list/uniform_sets = null
 	var/list/vended_items
 
-	var/pinned_on_uniform = TRUE //whether the id's onmob overlay only appear when wearing a uniform
+	/// whether the id's onmob overlay only appear when wearing a uniform
+	var/pinned_on_uniform = TRUE
 
 	var/modification_log = list()
 
@@ -200,9 +207,10 @@
 	icon_state = "pmc"
 	registered_name = "The Corporation"
 	assignment = "Corporate Mercenary"
-	New()
-		access = get_all_centcom_access()
-		..()
+
+/obj/item/card/id/pmc/New()
+	access = get_all_centcom_access()
+	..()
 
 /obj/item/card/id/pmc/ds
 	name = "\improper Corporate holo-badge"
@@ -215,8 +223,9 @@
 	icon_state = "general"
 	registered_name = "The USCM"
 	assignment = "General"
-	New()
-		access = get_all_centcom_access()
+
+/obj/item/card/id/general/New()
+	access = get_all_centcom_access()
 
 /obj/item/card/id/provost
 	name = "provost holo-badge"
@@ -224,8 +233,9 @@
 	icon_state = "provost"
 	registered_name = "Provost Office"
 	assignment = "Provost"
-	New()
-		access = get_all_centcom_access()
+
+/obj/item/card/id/provost/New()
+	access = get_all_centcom_access()
 
 /obj/item/card/id/syndicate
 	name = "agent card"
@@ -308,9 +318,10 @@
 	item_state = "gold_id"
 	registered_name = "Captain"
 	assignment = "Captain"
-	New()
-		access = get_all_marine_access()
-		..()
+
+/obj/item/card/id/captains_spare/New()
+	access = get_all_marine_access()
+	..()
 
 /obj/item/card/id/centcom
 	name = "\improper CentCom. ID"
@@ -318,9 +329,10 @@
 	icon_state = "centcom"
 	registered_name = "Central Command"
 	assignment = "General"
-	New()
-		access = get_all_centcom_access()
-		..()
+
+/obj/item/card/id/centcom/New()
+	access = get_all_centcom_access()
+	..()
 
 
 /obj/item/card/id/equipped(mob/living/carbon/human/H, slot)

@@ -40,7 +40,7 @@
 	unslashable = TRUE
 	unacidable = TRUE
 	exproof = 1
-	density = 1
+	density = TRUE
 	req_access = null
 	shuttle_tag = "Hangar"
 
@@ -51,7 +51,7 @@
 	unslashable = TRUE
 	unacidable = TRUE
 	exproof = 1
-	density = 1
+	density = TRUE
 	req_access = null
 	shuttle_tag = "Maintenance"
 
@@ -691,12 +691,16 @@
 	icon_state = "selfdestruct"
 	fake_zlevel = 1 // upperdeck
 
+/area/almayer/ert_port
+	name = "\improper ERT Docking Port"
+	icon_state = "lifeboat"
+	flags_area = AREA_NOTUNNEL
+
 /area/space/almayer/lifeboat_dock
 	name = "\improper Lifeboat Docking Port"
-	icon = 'icons/turf/area_almayer.dmi'
 	icon_state = "lifeboat"
 	fake_zlevel = 1 // upperdeck
-	flags_atom = AREA_NOTUNNEL
+	flags_area = AREA_NOTUNNEL
 
 /area/almayer/evacuation
 	icon = 'icons/turf/areas.dmi'
@@ -725,7 +729,6 @@
 /area/almayer/evacuation/pod18
 
 /area/almayer/evacuation/stranded
-	test_exemptions = MAP_TEST_EXEMPTION_SPACE
 
 //Placeholder.
 /area/almayer/evacuation/stranded/pod1

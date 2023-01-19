@@ -153,7 +153,7 @@
 	occupant.update_med_icon()
 
 	if(exit_stun)
-		occupant.stunned = max(occupant.stunned, exit_stun) //Action delay when going out
+		occupant.apply_effect(exit_stun, STUN) //Action delay when going out
 		occupant.update_canmove() //Force the delay to go in action immediately
 		occupant.visible_message(SPAN_WARNING("[occupant] pops out of \the [src]!"),
 		SPAN_WARNING("You get out of \the [src] and get your bearings!"))

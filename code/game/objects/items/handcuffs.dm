@@ -13,10 +13,12 @@
 	matter = list("metal" = 500)
 
 	var/dispenser = 0
-	var/breakouttime = 1 MINUTES // 1 minute
-	var/single_use = 0 //determines if handcuffs will be deleted on removal
+	var/breakouttime = 1 MINUTES
+	/// determines if handcuffs will be deleted on removal
+	var/single_use = 0
 	var/cuff_sound = 'sound/weapons/handcuffs.ogg'
-	var/cuff_delay = 4 SECONDS //how many deciseconds it takes to cuff someone
+	/// how many deciseconds it takes to cuff someone
+	var/cuff_delay = 4 SECONDS
 
 /obj/item/handcuffs/attack(mob/living/carbon/C, mob/user)
 	if(!istype(C))
@@ -95,11 +97,9 @@
 	cuff_sound = 'sound/weapons/cablecuff.ogg'
 	cuff_delay = 20
 
-	place_handcuffs(mob/living/carbon/target, mob/user)
-		..()
-		flags_item |= DELONDROP
-
-
+/obj/item/handcuffs/zip/place_handcuffs(mob/living/carbon/target, mob/user)
+	..()
+	flags_item |= DELONDROP
 
 /obj/item/handcuffs/cable
 	name = "cable restraints"
@@ -162,7 +162,7 @@
 				return
 
 		spawn(30)
-			if(!C)	return
+			if(!C) return
 			if(p_loc == user.loc && p_loc_m == C.loc)
 				C.handcuffed = new /obj/item/handcuffs(C)
 				C.handcuff_update()
@@ -186,7 +186,7 @@
 	matter = list("metal" = 500)
 
 	var/dispenser = 0
-	var/breakouttime = 2 MINUTES //2 minutes
+	var/breakouttime = 2 MINUTES
 
 /obj/item/restraints/attack(mob/living/carbon/C as mob, mob/user as mob)
 	if(!istype(C, /mob/living/carbon/Xenomorph))
@@ -199,7 +199,7 @@
 		for(var/mob/O in viewers(user, null))
 			O.show_message(SPAN_DANGER("<B>[user] is trying to put restraints on [C]!</B>"), SHOW_MESSAGE_VISIBLE)
 		spawn(30)
-			if(!C)	return
+			if(!C) return
 			if(p_loc == user.loc && p_loc_m == C.loc)
 				C.handcuffed = new /obj/item/restraints(C)
 				C.handcuff_update()

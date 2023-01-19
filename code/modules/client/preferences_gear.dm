@@ -7,12 +7,12 @@ var/global/list/gear_datums = list()
 	return 1
 
 /datum/gear
-	var/display_name         // Name/index.
-	var/path                 // Path to item.
-	var/cost                 // Number of points used.
-	var/slot                 // Slot to equip to.
+	var/display_name  // Name/index.
+	var/path  // Path to item.
+	var/cost  // Number of points used.
+	var/slot  // Slot to equip to.
 	var/list/allowed_roles   // Roles that can spawn with this item.
-	var/whitelisted          // Term to check the whitelist for..
+	var/whitelisted   // Term to check the whitelist for..
 	var/list/allowed_origins
 
 // This is sorted both by slot and alphabetically! Don't fuck it up!
@@ -188,6 +188,18 @@ var/global/list/gear_datums = list()
 	slot = WEAR_FACE
 	cost = 1
 
+/datum/gear/balaclava
+	display_name = "Black Balaclava"
+	path = /obj/item/clothing/mask/balaclava
+	slot = WEAR_FACE
+	cost = 2
+
+/datum/gear/balaclava/green
+	display_name = "Green Balaclava"
+	path = /obj/item/clothing/mask/balaclava/tactical
+	slot = WEAR_FACE
+	cost = 2
+
 /datum/gear/coif
 	display_name = "Coif"
 	path = /obj/item/clothing/mask/rebreather/scarf
@@ -351,6 +363,12 @@ var/global/list/gear_datums = list()
 	path = /obj/item/facepaint/skull
 	slot = WEAR_IN_BACK
 	cost = 4 //there needs to be some reason to NOT use this badass facepaint or every marine will have it
+
+/datum/gear/fullbodyfacepaint
+	display_name = "Fullbody Paint"
+	path = /obj/item/facepaint/sniper
+	slot = WEAR_IN_BACK
+	cost = 4 //To match with the skull paint amount of point, gave this amount of point for the same reason of the skull facepaint
 
 /datum/gear/aceofspades
 	display_name = "Ace of Spades"
@@ -679,4 +697,16 @@ var/global/list/gear_datums = list()
 	display_name = "PDT/L Kit"
 	path = /obj/item/storage/box/pdt_kit
 	cost = 3
+	slot = WEAR_IN_BACK
+
+/datum/gear/sunscreen_stick
+	display_name = "USCM Issue Sunscreen"
+	path = /obj/item/facepaint/sunscreen_stick
+	cost = 1 //The cadmium poisoning pays for the discounted cost longterm
+	slot = WEAR_IN_BACK
+
+/datum/gear/chaplain_patch
+	display_name = "USCM Chaplain Helmet Patch"
+	path = /obj/item/prop/helmetgarb/chaplain_patch
+	cost = 1 //similar price to flairs
 	slot = WEAR_IN_BACK

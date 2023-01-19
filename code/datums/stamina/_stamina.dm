@@ -1,13 +1,13 @@
 /datum/stamina
-	var/mob/living/source_mob         = null
+	var/mob/living/source_mob  = null
 
-	var/current_stamina     = 100
-	var/max_stamina         = 100
+	var/current_stamina  = 100
+	var/max_stamina  = 100
 
-	var/stamina_slowdown    = 0
-	var/current_level       = STAMINA_LEVEL_1
+	var/stamina_slowdown = 0
+	var/current_level    = STAMINA_LEVEL_1
 
-	var/has_stamina         = TRUE
+	var/has_stamina  = TRUE
 	var/stamina_rest_period = 0
 
 	var/list/stamina_levels = list(

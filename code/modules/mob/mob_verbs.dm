@@ -37,8 +37,10 @@
 	if(!SSentity_manager.ready)
 		to_chat(src, "DB is still starting up, please wait")
 		return
+	world.log << "view stats"
 	if(client && client.player_entity)
-		client.player_data.ui_interact(src)
+		world.log << "client check good"
+		client.player_data.tgui_interact(src)
 
 /mob/verb/toggle_high_toss()
 	set name = "Toggle High Toss"
@@ -155,7 +157,7 @@
 
 	M.key = key
 	if(M.client) M.client.change_view(world_view_size)
-//	M.Login()	//wat
+// M.Login() //wat
 	return
 
 /*/mob/dead/observer/verb/observe()
@@ -182,19 +184,19 @@
 
 /mob/verb/eastface()
 	set hidden = 1
-	return facedir(EAST)
+	return face_dir(EAST)
 
 /mob/verb/westface()
 	set hidden = 1
-	return facedir(WEST)
+	return face_dir(WEST)
 
 /mob/verb/northface()
 	set hidden = 1
-	return facedir(NORTH)
+	return face_dir(NORTH)
 
 /mob/verb/southface()
 	set hidden = 1
-	return facedir(SOUTH)
+	return face_dir(SOUTH)
 
 
 /mob/verb/northfaceperm()

@@ -1,0 +1,9 @@
+author: "realforest2001"
+delete-after: True
+changes:
+  - rscadd: "Added PMC faction radios."
+  - rscadd: "Changed all instances of PMC radios on maps to be hvh versions so they can't call the Almayer."
+  - rscadd: "Changed liaison survivors to have WY radios rather than PMC radios for same reason."
+  - rscdel: "Removed CCT encryption key as it no longer works."
+  - bugfix: "Fixed incorrect channel prefix descriptions on faction radios."
+  - rscadd: "Added mortar kit subspawns for each HVH faction."

@@ -38,9 +38,11 @@ explosion resistance exactly as much as their health
 	var/active_spread_num = 0
 	var/power = 0
 	var/falloff = 20
-	var/reflected_power = 0 //used to amplify explosions in confined areas
+	/// used to amplify explosions in confined areas
+	var/reflected_power = 0
 	var/reflection_multiplier = 1.5
-	var/reflection_amplification_limit = 1 //1 = 100% increase
+	/// 1 = 100% increase
+	var/reflection_amplification_limit = 1
 	var/minimum_spread_power = 0
 	var/datum/cause_data/explosion_cause_data
 	//var/overlap_number = 0
@@ -342,7 +344,7 @@ explosion resistance exactly as much as their health
 		target = locate(target.x + round( scatter_x , 1),target.y + round( scatter_y , 1),target.z) //Locate an adjacent turf.
 
 	//time for the explosion to destroy windows, walls, etc which might be in the way
-	INVOKE_ASYNC(src, /atom/movable.proc/throw_atom, target, range, speed, null, TRUE)
+	INVOKE_ASYNC(src, TYPE_PROC_REF(/atom/movable, throw_atom), target, range, speed, null, TRUE)
 
 	return
 
@@ -386,6 +388,6 @@ explosion resistance exactly as much as their health
 		target = locate(target.x + round( scatter_x , 1),target.y + round( scatter_y , 1),target.z) //Locate an adjacent turf.
 
 	//time for the explosion to destroy windows, walls, etc which might be in the way
-	INVOKE_ASYNC(src, /atom/movable.proc/throw_atom, target, range, speed, null, spin)
+	INVOKE_ASYNC(src, TYPE_PROC_REF(/atom/movable, throw_atom), target, range, speed, null, spin)
 
 	return

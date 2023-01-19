@@ -4,13 +4,13 @@
 //Returns the thing in our active hand
 /mob/proc/get_active_hand()
 	RETURN_TYPE(/obj/item)
-	if(hand)	return l_hand
-	else		return r_hand
+	if(hand) return l_hand
+	else return r_hand
 
 //Returns the thing in our inactive hand
 /mob/proc/get_inactive_hand()
-	if(hand)	return r_hand
-	else		return l_hand
+	if(hand) return r_hand
+	else return l_hand
 
 /mob/proc/get_hands()
 	if(hand)
@@ -67,18 +67,18 @@
 
 //Puts the item into our active hand if possible. returns 1 on success.
 /mob/proc/put_in_active_hand(var/obj/item/W)
-	if(hand)	return put_in_l_hand(W)
-	else		return put_in_r_hand(W)
+	if(hand) return put_in_l_hand(W)
+	else return put_in_r_hand(W)
 
 //Puts the item into our inactive hand if possible. returns 1 on success.
 /mob/proc/put_in_inactive_hand(var/obj/item/W)
-	if(hand)	return put_in_r_hand(W)
-	else		return put_in_l_hand(W)
+	if(hand) return put_in_r_hand(W)
+	else return put_in_l_hand(W)
 
 //Puts the item into our active hand if possible. Failing that it tries our inactive hand. Returns 1 on success.
 //If both fail it drops it on the floor and returns 0.
 //This is probably the main one you need to know :)
-/mob/proc/put_in_hands(var/obj/item/W)
+/mob/proc/put_in_hands(var/obj/item/W, drop_on_fail = TRUE)
 	if(!W)
 		return FALSE
 	if(put_in_active_hand(W))
@@ -86,9 +86,10 @@
 	else if(put_in_inactive_hand(W))
 		return TRUE
 	else
-		W.forceMove(get_turf(src))
-		W.layer = initial(W.layer)
-		W.dropped(src)
+		if(drop_on_fail)
+			W.forceMove(get_turf(src))
+			W.layer = initial(W.layer)
+			W.dropped(src)
 		return FALSE
 
 //Puts the item into our back if possible. Returns 1 on success.
@@ -110,7 +111,7 @@
 	update_inv_back()
 	return TRUE
 
-/mob/proc/drop_item_v()		//this is dumb.
+/mob/proc/drop_item_v() //this is dumb.
 	if(stat == CONSCIOUS && isturf(loc))
 		return drop_held_item()
 	return FALSE
@@ -152,6 +153,38 @@
 //drop the inventory item on the ground
 /mob/proc/drop_inv_item_on_ground(obj/item/I, nomoveupdate, force)
 	return u_equip(I, get_step(src, 0), nomoveupdate, force) // Drops on turf instead of loc
+
+/mob/living/carbon/human/proc/pickup_recent()
+	if(!remembered_dropped_objects)
+		return
+
+	var/turf/user_turf = get_turf(src)
+	if(!user_turf)
+		return
+
+	if(pickup_recent_item_on_turf(user_turf))
+		return
+
+	var/range_list = orange(1, src)
+	for(var/turf/nearby_turf in range_list)
+		if(pickup_recent_item_on_turf(nearby_turf))
+			return
+
+/mob/living/carbon/human/proc/pickup_recent_item_on_turf(turf/check_turf)
+	for(var/datum/weakref/weak_ref as anything in remembered_dropped_objects)
+		var/obj/previously_held_object = weak_ref.resolve()
+		if(previously_held_object.in_contents_of(check_turf))
+			put_in_hands(previously_held_object, drop_on_fail = FALSE)
+			return TRUE
+	return FALSE
+
+/mob/living/carbon/human/proc/remember_dropped_object(obj/dropped_object)
+	var/weak_ref = WEAKREF(dropped_object)
+
+	if(!(weak_ref in remembered_dropped_objects))
+		if(length(remembered_dropped_objects) >= MAXIMUM_DROPPED_OBJECTS_REMEMBERED)
+			popleft(remembered_dropped_objects)
+		remembered_dropped_objects += weak_ref
 
 //Never use this proc directly. nomoveupdate is used when we don't want the item to react to
 // its new loc (e.g.triggering mousetraps)
@@ -206,7 +239,7 @@
 	if(hasvar(src,"wear_id")) if(src:wear_id) items += src:wear_id
 	if(hasvar(src,"wear_mask")) if(src:wear_mask) items += src:wear_mask
 	if(hasvar(src,"wear_suit")) if(src:wear_suit) items += src:wear_suit
-//	if(hasvar(src,"w_radio")) if(src:w_radio) items += src:w_radio  commenting this out since headsets go on your ears now PLEASE DON'T BE MAD KEELIN
+// if(hasvar(src,"w_radio")) if(src:w_radio) items += src:w_radio  commenting this out since headsets go on your ears now PLEASE DON'T BE MAD KEELIN
 	if(hasvar(src,"w_uniform")) if(src:w_uniform) items += src:w_uniform
 
 	//if(hasvar(src,"l_hand")) if(src:l_hand) items += src:l_hand

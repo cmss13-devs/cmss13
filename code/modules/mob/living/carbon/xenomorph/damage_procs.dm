@@ -274,10 +274,13 @@
 				victim.visible_message(SPAN_DANGER("\The [victim] is scalded with hissing green blood!"), \
 				SPAN_DANGER("You are splattered with sizzling blood! IT BURNS!"))
 				if(prob(60) && !victim.stat && victim.pain.feels_pain)
-					INVOKE_ASYNC(victim, /mob.proc/emote, "scream") //Topkek
+					INVOKE_ASYNC(victim, TYPE_PROC_REF(/mob, emote), "scream") //Topkek
 				victim.take_limb_damage(0, dmg["damage"]) //Sizzledam! This automagically burns a random existing body part.
 				victim.add_blood(get_blood_color(), BLOOD_BODY)
 				acid_splash_last = world.time
+				handle_blood_splatter(get_dir(src, victim), 1 SECONDS)
+				playsound(victim, "acid_sizzle", 25, TRUE)
+				animation_flash_color(victim, "#FF0000") //pain hit flicker
 
 /mob/living/carbon/Xenomorph/get_target_lock(var/access_to_check)
 	if(isnull(access_to_check))

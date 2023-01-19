@@ -8,6 +8,7 @@
 	/// The amount of nightvision these glasses have. This should be a number between 0 and 1.
 	var/lighting_alpha = LIGHTING_PLANE_ALPHA_VISIBLE
 	var/invisa_view = FALSE
+	var/eye_tint = FALSE //Used for photosensitivity.
 	var/prescription = FALSE
 	var/toggleable = FALSE
 	var/toggle_on_sound = 'sound/machines/click.ogg'
@@ -28,6 +29,8 @@
 	. = ..()
 	if(prescription)
 		AddElement(/datum/element/poor_eyesight_correction)
+	if(eye_tint)
+		AddElement(/datum/element/photo_sensitivity_correction)
 
 /obj/item/clothing/glasses/get_icon_state(mob/user_mob, slot)
 	var/item_state_slot_state = LAZYACCESS(item_state_slots, slot)
@@ -149,6 +152,7 @@
 	desc = "Goggles used to shield the eyes of workers on Kutjevo. N95Z Rated Goggles."
 	icon_state = "kutjevo_goggles"
 	item_state = "kutjevo_goggles"
+	eye_tint = TRUE
 
 /obj/item/clothing/glasses/eyepatch
 	name = "eyepatch"
@@ -191,6 +195,7 @@
 	icon_state = "hipster_glasses"
 	item_state = "hipster_glasses"
 	flags_equip_slot = SLOT_EYES|SLOT_FACE
+	eye_tint = TRUE
 
 /obj/item/clothing/glasses/threedglasses
 	desc = "A long time ago, people used these glasses to makes images from screens three-dimensional."
@@ -207,6 +212,7 @@
 	item_state = "gglasses"
 	flags_armor_protection = 0
 	flags_equip_slot = SLOT_EYES|SLOT_FACE
+	eye_tint = TRUE
 
 /obj/item/clothing/glasses/jensen
 	name = "Augmented sunglasses"
@@ -214,6 +220,7 @@
 	icon_state = "jensenshades"
 	item_state = "jensenshades"
 	flags_equip_slot = SLOT_EYES|SLOT_FACE
+	eye_tint = TRUE
 
 /obj/item/clothing/glasses/mbcg
 	name = "Prescription Marine RPG glasses"
@@ -233,6 +240,7 @@
 	vision_flags = SEE_TURFS
 	toggleable = 1
 	actions_types = list(/datum/action/item_action/toggle)
+	eye_tint = TRUE
 
 /obj/item/clothing/glasses/disco_fever
 	name = "malfunctioning AR visor"
@@ -377,6 +385,7 @@
 	flags_equip_slot = SLOT_EYES|SLOT_FACE
 	flags_obj = OBJ_NO_HELMET_BAND|OBJ_IS_HELMET_GARB
 	eye_protection = EYE_PROTECTION_FLAVOR
+	eye_tint = TRUE
 	var/activated = FALSE
 	var/active_icon_state = "mgoggles_down"
 	var/inactive_icon_state = "mgoggles"
@@ -460,11 +469,15 @@
 		icon_state = active_icon_state
 		if(prescription == TRUE && user.head == attached_item)
 			ADD_TRAIT(user, TRAIT_NEARSIGHTED_EQUIPMENT, TRAIT_SOURCE_EQUIPMENT(/obj/item/clothing/glasses/mgoggles/prescription))
+		if(eye_tint == TRUE && user.head == attached_item)
+			ADD_TRAIT(user, TRAIT_PHOTOSENSITIVITY_EQUIPMENT, TRAIT_SOURCE_EQUIPMENT(/obj/item/clothing/glasses/mgoggles))
 	else
 		to_chat(user, SPAN_NOTICE("You push the goggles up."))
 		icon_state = inactive_icon_state
 		if(prescription == TRUE)
 			REMOVE_TRAIT(user, TRAIT_NEARSIGHTED_EQUIPMENT, TRAIT_SOURCE_EQUIPMENT(/obj/item/clothing/glasses/mgoggles/prescription))
+		if(eye_tint == TRUE)
+			REMOVE_TRAIT(user, TRAIT_PHOTOSENSITIVITY_EQUIPMENT, TRAIT_SOURCE_EQUIPMENT(/obj/item/clothing/glasses/mgoggles))
 
 	attached_item.update_icon()
 
@@ -479,6 +492,7 @@
 	actions_types = list(/datum/action/item_action/toggle)
 	flags_inventory = COVEREYES
 	flags_inv_hide = HIDEEYES
+	eye_tint = TRUE
 	eye_protection = EYE_PROTECTION_WELDING
 	has_tint = TRUE
 	vision_impair = VISION_IMPAIR_MAX
@@ -544,6 +558,7 @@
 	icon_state = "sun"
 	item_state = "sunglasses"
 	darkness_view = -1
+	eye_tint = TRUE
 	flags_equip_slot = SLOT_EYES|SLOT_FACE
 	eye_protection = EYE_PROTECTION_FLAVOR
 

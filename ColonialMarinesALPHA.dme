@@ -390,6 +390,7 @@
 #include "code\datums\elements\bloody_feet.dm"
 #include "code\datums\elements\drop_retrieval.dm"
 #include "code\datums\elements\mouth_drop_item.dm"
+#include "code\datums\elements\photo_sensitivity_correction.dm"
 #include "code\datums\elements\poor_eyesight_correction.dm"
 #include "code\datums\elements\suturing.dm"
 #include "code\datums\elements\yautja_tracked_item.dm"

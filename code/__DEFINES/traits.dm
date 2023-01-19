@@ -147,6 +147,8 @@
 #define TRAIT_TWOBORE_TRAINING "t_twobore"
 /// If the mob has equipment that alleviates nearsightedness
 #define TRAIT_NEARSIGHTED_EQUIPMENT "t_nearsighted_eq"
+/// If the mob has equipment that alleviates photosensitivty
+#define TRAIT_PHOTOSENSITIVITY_EQUIPMENT "t_photosensitivity_eq"
 /// If the mob is affected by drag delay.area
 #define TRAIT_DEXTROUS "t_dextrous"
 /// If the mob is currently charging (xeno only)

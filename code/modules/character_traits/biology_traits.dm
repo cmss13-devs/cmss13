@@ -32,3 +32,17 @@
 /datum/character_trait/biology/opiate_receptor_deficiency/unapply_trait(mob/living/carbon/human/target)
 	..()
 	DISABLE_BITFIELD(target.disabilities, OPIATE_RECEPTOR_DEFICIENCY)
+
+/datum/character_trait/biology/photo_sensitivity
+	trait_name = "Photosensitive"
+	trait_desc = "Whether due to genetics or just a bad hangover, you can't function very well without some tinted glasses on."
+	applyable = TRUE
+	cost = 1
+
+/datum/character_trait/biology/photo_sensitivity/apply_trait(mob/living/carbon/human/target)
+	..()
+	ENABLE_BITFIELD(target.disabilities, PHOTOSENSITIVITY)
+
+/datum/character_trait/biology/photo_sensitivity/unapply_trait(mob/living/carbon/human/target)
+	..()
+	DISABLE_BITFIELD(target.disabilities, PHOTOSENSITIVITY)

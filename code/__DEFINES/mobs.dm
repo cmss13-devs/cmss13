@@ -45,12 +45,13 @@
 //=================================================
 
 //disabilities
-#define NEARSIGHTED 1
-#define EPILEPSY 2
-#define COUGHING 4
-#define TOURETTES 8
-#define NERVOUS 16
-#define OPIATE_RECEPTOR_DEFICIENCY 32
+#define NEARSIGHTED (1<<0)
+#define EPILEPSY (1<<1)
+#define COUGHING (1<<2)
+#define TOURETTES (1<<3)
+#define NERVOUS (1<<4)
+#define OPIATE_RECEPTOR_DEFICIENCY (1<<5)
+#define PHOTOSENSITIVITY (1<<6)
 //=================================================
 
 //sdisabilities

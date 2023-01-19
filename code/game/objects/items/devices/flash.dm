@@ -93,7 +93,12 @@
 		if(iscarbon(M))
 			flashfail = !M.flash_eyes()
 			if(!flashfail)
-				M.apply_effect(10, WEAKEN)
+				if(M.disabilities & PHOTOSENSITIVITY)
+					M.apply_effect(15, WEAKEN)
+					M.emote("pain")
+					to_chat(M, SPAN_HIGHDANGER("Your eyes burn!"))
+				else
+					M.apply_effect(10, WEAKEN)
 
 		else if(isSilicon(M))
 			M.apply_effect(rand(5,10), WEAKEN)

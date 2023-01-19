@@ -1,6 +1,6 @@
 import { classes } from 'common/react';
 import { useBackend } from '../../backend';
-import { Box, Button, Icon, Flex, NoticeBox, Stack } from '../../components';
+import { Box, Button, Icon, Flex, NoticeBox, Stack, ColorBox } from '../../components';
 import { BoxProps } from '../../components/Box';
 import { Table, TableRow } from '../../components/Table';
 
@@ -90,18 +90,18 @@ const ElectricalPanelClosed = (props: BoxProps, context) => {
 const WireControl = (props: { wire: WireSpec; index: number }, context) => {
   const { data, act } = useBackend<ElectricalData>(context);
   const target = props.index + 1;
+  let boxColor = 'green';
+  if (props.wire.cut) {
+    boxColor = 'red';
+  }
+  if (!data.electrical.powered) {
+    boxColor = 'grey';
+  }
   return (
     <Stack>
       <Stack.Item grow>{props.wire.desc}</Stack.Item>
       <Stack.Item>
-        <div
-          className={classes([
-            'led',
-            props.wire.cut === 0 && 'led-green',
-            props.wire.cut === 1 && 'led-red',
-            data.electrical.powered === 1 && 'led-off',
-          ])}
-        />
+        <ColorBox color={boxColor} align={'center'} />
       </Stack.Item>
       <Stack.Item>
         {props.wire.cut === 0 && (

@@ -87,10 +87,12 @@ GLOBAL_LIST_INIT(gt_evolutions, list(
 ))
 
 /datum/gene_tailor
-	/// The types of every attribute in the selected template, possible types : text, number, path, other
-	var/list/stored_types = list()
+	/// The types of every attribute in the selected template
+	var/list/stored_caste_types = list()
+	var/list/stored_xeno_types = list()
 	/// The baseline of the custom xeno, helps the user get a rough ideas of what the stats of a xeno are, they're not going to build it from the ground up
 	var/mob/living/carbon/Xenomorph/selected_template = /mob/living/carbon/Xenomorph/Runner
+	var/mob/living/carbon/Xenomorph/stat_stick
 
 /datum/gene_tailor/tgui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
@@ -108,20 +110,14 @@ GLOBAL_LIST_INIT(gt_evolutions, list(
 	.["glob_gt_evolutions"] = GLOB.gt_evolutions
 	var/list/xeno_stats = list()
 	var/list/caste_stats = list()
-	var/mob/living/carbon/Xenomorph/stat_stick = new selected_template
+	stat_stick = new selected_template
 	for(var/var_name in type2listofvars(stat_stick.parent_type))
 		xeno_stats[var_name] = stat_stick.vars[var_name]
 	for(var/var_name in type2listofvars(stat_stick.caste.parent_type))
-		var/var_value = stat_stick.caste.vars[var_name]
-		caste_stats[var_name] =  var_value
-		if(istext(var_value))
-			stored_types[var_name] = "text"
-		else if(isnum(var_value))
-			stored_types[var_name] = "number"
-		else if(ispath(var_value))
-			stored_types[var_name] = "path"
-		else
-			stored_types[var_name] = "other"
+		caste_stats[var_name] = stat_stick.caste.vars[var_name]
+
+	stored_xeno_types = get_data_types(stat_stick)
+	stored_caste_types = get_data_types(stat_stick.caste)
 
 	.["xeno_stats"] = xeno_stats
 	.["caste_stats"] = caste_stats
@@ -138,22 +134,71 @@ GLOBAL_LIST_INIT(gt_evolutions, list(
 		if("set_type")
 			//BOGUS
 		if("spawn_mob")
-			sanitize_input(params["caste_stats"], params["to_change_stats"])
-			spawn_mob(usr, params["caste_stats"], params["to_change_stats"])
+			sanitize_input(params["caste_stats"], params["xeno_stats"], params["to_change_stats"])
+			spawn_mob(params["caste_stats"], params["xeno_stats"])
 
-/datum/gene_tailor/proc/sanitize_input(list/inputs, list/to_change)
-	for(var/var_to_change in to_change)
-		inputs[var_to_change] = sanitize(inputs[var_to_change])
-		switch(stored_types[var_to_change])
+/**
+ * Returns an assoc list of target's attribute types {var_name : var_type}
+ * Possible types are : "text", "number", "path", "other"
+ *
+ */
+/datum/gene_tailor/proc/get_data_types(atom/target)
+	var/list/result = list()
+	for(var/var_name in type2listofvars(target.parent_type))
+		var/var_value = target.vars[var_name]
+		if(istext(var_value))
+			result[var_name] = "text"
+		else if(isnum(var_value))
+			result[var_name] = "number"
+		else if(ispath(var_value))
+			result[var_name] = "path"
+		else
+			result[var_name] = "other"
+
+	return result
+
+/datum/gene_tailor/proc/sanitize_input(list/caste_inputs, list/xeno_inputs, list/to_change)
+	for(var/var_name in caste_inputs)
+		if(istext(caste_inputs[var_name]))
+			caste_inputs[var_name] = sanitize(caste_inputs[var_name])
+		switch(stored_caste_types[var_name])
 			if("text") continue
-			if("number") inputs[var_to_change] = text2num(inputs[var_to_change])
-			if("path") inputs[var_to_change] = text2path(inputs[var_to_change])
-			//Probably a list or something instancied by the constructor, either way we don't want it touched
-			if("other") WARNING("[var_to_change] from is not a type supported by the gene tailor and should not have been edited")
+			if("number") caste_inputs[var_name] = text2num(caste_inputs[var_name])
+			if("path") caste_inputs[var_name] = text2path(caste_inputs[var_name])
+			//Either a list or something instancied by the constructor, we should not touch this
+			if("other") continue
 
-/datum/gene_tailor/proc/spawn_mob(mob/user, list/caste_stats, list/to_change)
-	var/datum/caste_datum/custom/custom_caste = new
+	for(var/var_name in xeno_inputs)
+		if(istext(xeno_inputs[var_name]))
+			xeno_inputs[var_name] = sanitize(xeno_inputs[var_name])
+		switch(stored_xeno_types[var_name])
+			if("text") continue
+			if("number") xeno_inputs[var_name] = text2num(xeno_inputs[var_name])
+			if("path") xeno_inputs[var_name] = text2path(xeno_inputs[var_name])
+			//Either a list or something instancied by the constructor, we should not touch this
+			if("other") continue
+
 	for(var/var_to_change in to_change)
-		custom_caste.vars[var_to_change] = caste_stats[var_to_change]
+		if(stored_caste_types[var_to_change] == "other")
+			WARNING("[var_to_change] is not of a type supported by the gene tailor, changes to it will be ignored")
+
+/datum/gene_tailor/proc/spawn_mob(list/caste_stats, list/xeno_stats)
+	var/datum/caste_datum/custom/custom_caste = new
+	for(var/var_name in caste_stats)
+		if(stored_caste_types[var_name] != "other")
+			custom_caste.vars[var_name] = caste_stats[var_name]
 
 	var/mob/living/carbon/Xenomorph/Custom/custom_xeno = new(usr.loc, custom_caste)
+
+	for(var/var_name in xeno_stats)
+		if(stored_xeno_types[var_name] != "other")
+			custom_xeno.vars[var_name] = xeno_stats[var_name]
+
+	custom_xeno.icon = stat_stick.icon
+	custom_xeno.stored_visuals["icon_source_caste"] = stat_stick.caste.caste_type
+	custom_xeno.stored_visuals["pixel_x"] = stat_stick.pixel_x
+	custom_xeno.stored_visuals["pixel_y"] = stat_stick.pixel_y
+	custom_xeno.stored_visuals["old_x"] = stat_stick.old_x
+	custom_xeno.stored_visuals["old_y"] = stat_stick.old_y
+	custom_xeno.stored_visuals["base_pixel_x"] = stat_stick.base_pixel_x
+	custom_xeno.stored_visuals["base_pixel_y"] = stat_stick.base_pixel_y

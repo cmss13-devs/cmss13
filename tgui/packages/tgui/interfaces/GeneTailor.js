@@ -218,6 +218,7 @@ export const GeneTailor = (props, context) => {
                   onClick={() =>
                     act('spawn_mob', {
                       caste_stats: custom_caste_stats,
+                      xeno_stats: custom_xeno_stats,
                       to_change_stats: changed_values,
                     })}
             />

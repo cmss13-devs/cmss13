@@ -1,8 +1,8 @@
 import { classes } from 'common/react';
 import { useBackend } from '../../backend';
-import { Box, Button, Icon, Flex, NoticeBox } from '../../components';
+import { Box, Button, Icon, Flex, NoticeBox, Stack } from '../../components';
 import { BoxProps } from '../../components/Box';
-import { Table, TableCell, TableRow } from '../../components/Table';
+import { Table, TableRow } from '../../components/Table';
 
 interface ElectricalData {
   electrical: MachineElectrical;
@@ -61,8 +61,8 @@ const ElectricalPanelClosed = (props: BoxProps, context) => {
             </Flex.Item>
             <Flex.Item>
               <span>
-                Electrical hazard <br />
-                Authorised personnel only
+                Electrical Hazard <br />
+                Authorised Personnel Only
               </span>
             </Flex.Item>
           </Flex>
@@ -91,9 +91,9 @@ const WireControl = (props: { wire: WireSpec; index: number }, context) => {
   const { data, act } = useBackend<ElectricalData>(context);
   const target = props.index + 1;
   return (
-    <>
-      <TableCell>{props.wire.desc}</TableCell>
-      <TableCell>
+    <Stack>
+      <Stack.Item grow>{props.wire.desc}</Stack.Item>
+      <Stack.Item>
         <div
           className={classes([
             'led',
@@ -102,29 +102,32 @@ const WireControl = (props: { wire: WireSpec; index: number }, context) => {
             data.electrical.powered === 1 && 'led-off',
           ])}
         />
-      </TableCell>
-      <TableCell>
+      </Stack.Item>
+      <Stack.Item>
         {props.wire.cut === 0 && (
           <Button
             icon="scissors"
             onClick={() => act('cutwire', { wire: target })}
+            tooltip={'Cut'}
           />
         )}
         {props.wire.cut === 1 && (
           <Button
             icon="wrench"
             onClick={() => act('fixwire', { wire: target })}
+            tooltip={'Fix'}
           />
         )}
-      </TableCell>
-      <TableCell>
+      </Stack.Item>
+      <Stack.Item>
         <Button
           icon="wave-square"
           disabled={props.wire.cut === 1}
           onClick={() => act('pulsewire', { wire: target })}
+          tooltip={'Pulse'}
         />
-      </TableCell>
-    </>
+      </Stack.Item>
+    </Stack>
   );
 };
 

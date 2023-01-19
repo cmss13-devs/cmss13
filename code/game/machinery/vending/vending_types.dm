@@ -338,7 +338,6 @@
 			R.category=CAT_COIN
 			coin_records += R
 		else
-			R.category=CAT_NORMAL
 			product_records += R
 
 		if(delay_product_spawn)

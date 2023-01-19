@@ -1,6 +1,7 @@
-#define CAT_NORMAL 0
-#define CAT_HIDDEN 1
-#define CAT_COIN 2
+#define CAT_HIDDEN list("name" = "Hidden", "icon" = "user-secret")
+#define CAT_COIN list("name" = "Premium", "icon" = "Coin")
+
+
 
 #define VENDING_WIRE_EXTEND 1
 #define VENDING_WIRE_IDSCAN 2
@@ -16,7 +17,7 @@
 	var/max_amount
 	var/price = 0
 	var/display_color = "white"
-	var/category = CAT_NORMAL
+	var/category
 
 /obj/structure/machinery/vending
 	name = "Vendomat"
@@ -70,7 +71,7 @@
 	/// icon_state when failing to vend
 	var/icon_deny
 	/// shock customers like an airlock.
-	var/seconds_electrified = FALSE
+	var/seconds_electrified = 0
 	/// fire items at customers! We're broken!
 	var/shoot_inventory = FALSE
 	/// stop spouting those godawful pitches!
@@ -161,7 +162,6 @@
 			R.category=CAT_COIN
 			coin_records += R
 		else
-			R.category=CAT_NORMAL
 			product_records += R
 
 		R.product_name = initial(temp_path.name)
@@ -306,44 +306,16 @@
 			attack_hand(user)
 		return
 	else if(istype(W, /obj/item/coin))
+		if(coin)
+			user.balloon_alert(user, "already a coin!")
+			return
 		if(user.drop_inv_item_to_loc(W, src))
 			coin = W
 			to_chat(user, SPAN_NOTICE(" You insert the [W] into the [src]"))
-			ui_interact(user)
-		return
-	else if (istype(W, /obj/item/spacecash/ewallet))
-		if(user.drop_inv_item_to_loc(W, src))
-			ewallet = W
-			to_chat(user, SPAN_NOTICE(" You insert the [W] into the [src]"))
-			ui_interact(user)
+			tgui_interact(user)
 		return
 
 	..()
-
-/obj/structure/machinery/vending/proc/GetProductIndex(var/datum/data/vending_product/P)
-	var/list/plist
-	switch(P.category)
-		if(CAT_NORMAL)
-			plist=product_records
-		if(CAT_HIDDEN)
-			plist=hidden_records
-		if(CAT_COIN)
-			plist=coin_records
-		else
-			warning("UNKNOWN CATEGORY [P.category] IN TYPE [P.product_path] INSIDE [type]!")
-	return plist.Find(P)
-
-/obj/structure/machinery/vending/proc/GetProductByID(var/pid, var/category)
-	switch(category)
-		if(CAT_NORMAL)
-			return product_records[pid]
-		if(CAT_HIDDEN)
-			return hidden_records[pid]
-		if(CAT_COIN)
-			return coin_records[pid]
-		else
-			warning("UNKNOWN PRODUCT: PID: [pid], CAT: [category] INSIDE [type]!")
-			return null
 
 /obj/structure/machinery/vending/attack_hand(mob/user)
 	if(is_tipped_over)
@@ -374,11 +346,48 @@
 
 /obj/structure/machinery/vending/ui_act(action, params)
 	. = ..()
+
+	var/mob/user = usr
+
 	if(.)
 		return
 	switch(action)
 		if("vend")
 			. = vend(params)
+		if("cutwire")
+			if(!panel_open)
+				return FALSE
+			var/obj/item/held_item = user.get_held_item()
+			if (!held_item || !HAS_TRAIT(held_item, TRAIT_TOOL_WIRECUTTERS))
+				to_chat(user, "You need wirecutters!")
+				return TRUE
+
+			var/wire = params["wire"]
+			cut(wire)
+			return TRUE
+		if("fixwire")
+			if(!panel_open)
+				return FALSE
+			var/obj/item/held_item = user.get_held_item()
+			if (!held_item || !HAS_TRAIT(held_item, TRAIT_TOOL_WIRECUTTERS))
+				to_chat(user, "You need wirecutters!")
+				return TRUE
+			var/wire = params["wire"]
+			mend(wire)
+			return TRUE
+		if("pulsewire")
+			if(!panel_open)
+				return FALSE
+			var/obj/item/held_item = user.get_held_item()
+			if (!held_item || !HAS_TRAIT(held_item, TRAIT_TOOL_MULTITOOL))
+				to_chat(user, "You need multitool!")
+				return TRUE
+			var/wire = params["wire"]
+			if (isWireCut(wire))
+				to_chat(usr, "You can't pulse a cut wire.")
+				return TRUE
+			pulse(wire)
+			return TRUE
 
 /obj/structure/machinery/vending/proc/can_vend(user, silent=FALSE)
 	. = FALSE
@@ -389,11 +398,11 @@
 		return
 	return TRUE
 
-/obj/structure/machinery/vending/proc/vend(list/params, list/greyscale_colors)
+/obj/structure/machinery/vending/proc/vend(list/params)
 	var/mob/user = usr
 
 	. = TRUE
-	if(!can_vend(usr))
+	if(!can_vend(user))
 		return
 	vend_ready = FALSE //One thing at a time!!
 	var/datum/data/vending_product/record = locate(params["ref"])
@@ -410,7 +419,7 @@
 			return
 	else if(!(record in record_to_check))
 		vend_ready = TRUE
-		message_admins("Vending machine exploit attempted by [key_name_admin(usr)]!")
+		message_admins("Vending machine exploit attempted by [key_name_admin(user)]!")
 		return
 	if(record.amount <= 0)
 		speak("Sold out of [record.name].")
@@ -426,29 +435,32 @@
 		flick(icon_deny,src)
 		vend_ready = TRUE
 		return
-	else if(!get_account(user_id.associated_account_number))
+	else if(!get_account(user_id.associated_account_number) && price_to_use)
 		speak("No account found.")
 		flick(icon_deny,src)
 		vend_ready = TRUE
 		return
-	var/datum/money_account/account = get_account(user_id.associated_account_number)
 	if(coin_records.Find(record))
 		if(!coin)
 			speak("Coin required.")
+			vend_ready = TRUE
 			return
 		if(coin.string_attached)
 			if(prob(50))
 				to_chat(user, SPAN_NOTICE("You successfully pull the coin out before the [src] could swallow it."))
+				user.put_in_hands(coin)
 			else
 				to_chat(user, SPAN_NOTICE("You weren't able to pull the coin out fast enough, the machine ate it, string and all."))
 				QDEL_NULL(coin)
 		else
 			QDEL_NULL(coin)
-	if(price_to_use && !transfer_money(account))
-		speak("You do not possess the funds to purchase [record.name].")
-		flick(icon_deny, src)
-		vend_ready = TRUE
-		return
+	if(price_to_use)
+		var/datum/money_account/account = get_account(user_id.associated_account_number)
+		if(!transfer_money(account, record))
+			speak("You do not possess the funds to purchase [record.product_name].")
+			flick(icon_deny, src)
+			vend_ready = TRUE
+			return
 
 	speak(vend_reply)
 	use_power(active_power_usage)
@@ -456,13 +468,14 @@
 		flick(icon_vend, src)
 	var/obj/item/vended_item
 	vended_item = new record.product_path(get_turf(src))
+	record.amount--
 	if(user.Adjacent(src) && user.put_in_hands(vended_item))
-		to_chat(user, SPAN_NOTICE("You take [vended_item] out of the slot."))
+		to_chat(user, SPAN_NOTICE("You take \the [record.product_name] out of the slot."))
 	else
-		to_chat(user, SPAN_WARNING("[capitalize(vended_item)] falls onto the floor!"))
+		to_chat(user, SPAN_WARNING("\The [record.product_name] falls onto the floor!"))
 	vend_ready = TRUE
 
-/obj/structure/machinery/vending/proc/transfer_money(datum/money_account/user_account)
+/obj/structure/machinery/vending/proc/transfer_money(datum/money_account/user_account, datum/data/vending_product/currently_vending)
 	var/transaction_amount = currently_vending.price
 	if(!(transaction_amount <= user_account.money))
 		return FALSE
@@ -504,22 +517,37 @@
 	if(ishuman(user))
 		var/mob/living/carbon/human/human_user = user
 		id_card = human_user.get_idcard()
-	var/datum/money_account/account = get_account(id_card.associated_account_number)
-	if(account)
-		.["user"] = list()
-		.["user"]["name"] = account.owner_name
-		.["user"]["cash"] = account.money
+	if(id_card)
+		var/datum/money_account/account = get_account(id_card.associated_account_number)
+		if(account)
+			.["user"] = list()
+			.["user"]["name"] = account.owner_name
+			.["user"]["cash"] = account.money
+			.["user"]["job"] =  id_card.assignment
 	.["stock"] = list()
 
 	for (var/datum/data/vending_product/product_record in product_records + coin_records + hidden_records)
 		var/list/product_data = list(
-			name = product_record.name,
+			name = product_record.product_name,
 			amount = product_record.amount,
 		)
 
-		.["stock"][product_record.name] = product_data
+		.["stock"][product_record.product_name] = product_data
 
 	.["extended_inventory"] = extended_inventory
+
+	var/list/wire_descriptions = get_wire_descriptions()
+	var/list/panel_wires = list()
+	for(var/wire = 1 to wire_descriptions.len)
+		panel_wires += list(list("desc" = wire_descriptions[wire], "cut" = isWireCut(wire)))
+
+	.["electrical"] = list(
+		"electrified" = seconds_electrified > 0,
+		"panel_open" = panel_open,
+		"wires" = panel_wires,
+		"shoot_inventory" = shoot_inventory,
+		"powered" = TRUE,
+	)
 
 /obj/structure/machinery/vending/ui_static_data(mob/user)
 	var/list/data = list()
@@ -568,6 +596,8 @@
 
 	return out_records
 
+/obj/structure/machinery/vending/ui_assets(mob/user)
+	return list(get_asset_datum(/datum/asset/spritesheet/vending))
 
 /obj/structure/machinery/vending/proc/release_item(var/datum/data/vending_product/R, var/delay_vending = 0, var/mob/living/carbon/human/user)
 	set waitfor = 0

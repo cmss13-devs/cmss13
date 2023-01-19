@@ -3,6 +3,7 @@ import { capitalizeAll } from 'common/string';
 import { useBackend, useLocalState } from 'tgui/backend';
 import { Box, Button, Icon, LabeledList, NoticeBox, Section, Stack, Table } from 'tgui/components';
 import { Window } from 'tgui/layouts';
+import { ElectricalPanel } from './common/ElectricalPanel';
 
 type VendingData = {
   department: string;
@@ -41,6 +42,7 @@ type HiddenRecord = ProductRecord & {
 type UserData = {
   name: string;
   cash: number;
+  job?: string;
 };
 
 type StockItem = {
@@ -123,6 +125,9 @@ export const Vending = (props, context) => {
               />
             </Stack.Item>
           )}
+          <Stack.Item>
+            <ElectricalPanel />
+          </Stack.Item>
         </Stack>
       </Window.Content>
     </Window>
@@ -136,7 +141,7 @@ export const UserDetails = (props, context) => {
 
   if (!user) {
     return (
-      <NoticeBox>No ID detected! Contact the Head of Personnel.</NoticeBox>
+      <NoticeBox>No ID detected! Contact your nearest supervisor.</NoticeBox>
     );
   } else {
     return (
@@ -148,6 +153,9 @@ export const UserDetails = (props, context) => {
           <Stack.Item>
             <LabeledList>
               <LabeledList.Item label="User">{user.name}</LabeledList.Item>
+              <LabeledList.Item label="Occupation">
+                {user.job || 'Unemployed'}
+              </LabeledList.Item>
             </LabeledList>
           </Stack.Item>
         </Stack>
@@ -177,7 +185,7 @@ const ProductDisplay = (
       buttons={
         !!user && (
           <Box fontSize="16px" color="green">
-            {(user && user.cash) || 0} cr <Icon name="coins" color="gold" />
+            ${(user && user.cash) || 0} <Icon name="coins" color="gold" />
           </Box>
         )
       }>
@@ -258,7 +266,7 @@ const ProductImage = (props) => {
     />
   ) : (
     <span
-      className={classes(['vending32x32', product.path])}
+      className={classes(['goods-vending32x32', product.path])}
       style={{
         'vertical-align': 'middle',
         'horizontal-align': 'middle',
@@ -305,10 +313,12 @@ const ProductButton = (props, context) => {
   const { act, data } = useBackend<VendingData>(context);
   const { access } = data;
   const { custom, disabled, free, product, redPrice } = props;
-  const customPrice = access ? 'FREE' : product.price + ' cr';
-  let standardPrice = product.price + ' cr';
+  const customPrice = access ? 'FREE' : '$' + product.price;
+  let standardPrice = product.price ? '$' + product.price : 'FREE';
   if (free) {
     standardPrice = 'FREE';
+  } else if (product.category === 'Premium') {
+    standardPrice = 'COIN';
   }
   return custom ? (
     <Button

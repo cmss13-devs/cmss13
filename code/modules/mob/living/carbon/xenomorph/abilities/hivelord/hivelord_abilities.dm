@@ -18,12 +18,17 @@
 
 /datum/action/xeno_action/active_toggle/toggle_speed/can_use_action()
 	var/mob/living/carbon/Xenomorph/Hivelord/xeno = owner
-	if(xeno && !xeno.is_mob_incapacitated() && !xeno.lying && !xeno.buckled && (xeno.weedwalking_activated || xeno.plasma_stored >= plasma_cost))
+	if(xeno && !xeno.is_mob_incapacitated() && !xeno.lying && !xeno.buckled)
 		return TRUE
 
 /datum/action/xeno_action/active_toggle/toggle_speed/give_to(mob/living/living_mob)
 	. = ..()
 	var/mob/living/carbon/Xenomorph/Hivelord/xeno = owner
-	if(xeno.weedwalking_activated)
+	var/datum/behavior_delegate/hivelord_base/hivelord_delegate = xeno.behavior_delegate
+
+	if(!istype(hivelord_delegate))
+		return
+
+	if(hivelord_delegate.resin_walker == TRUE)
 		button.icon_state = "template_active"
 		action_active = TRUE

@@ -97,6 +97,7 @@
 					M.apply_effect(15, WEAKEN)
 					M.emote("pain")
 					to_chat(M, SPAN_HIGHDANGER("Your eyes burn!"))
+					M.apply_internal_damage(rand(1, 5), "eyes")
 				else
 					M.apply_effect(10, WEAKEN)
 

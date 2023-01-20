@@ -898,14 +898,16 @@
 		return canmove
 
 /mob/living/carbon/Xenomorph/Queen/handle_special_state()
+	. = ..()
 	if(ovipositor)
 		return TRUE
-	return FALSE
+	return .
 
 /mob/living/carbon/Xenomorph/Queen/handle_special_wound_states(severity)
 	. = ..()
 	if(ovipositor)
 		return "Queen_ovipositor_[severity]" // I don't actually have it, but maybe one day.
+	return .
 
 /mob/living/carbon/Xenomorph/Queen/proc/in_egg_plant_range(var/turf/T)
 	if(!ovipositor)

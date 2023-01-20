@@ -72,23 +72,20 @@
 	return
 
 /mob/living/carbon/Xenomorph/lay_down()
-	if(hardcore)
-		to_chat(src, SPAN_WARNING("No time to rest, must KILL!"))
+
+	if(!behavior_delegate.on_resting())
 		return
 
-	if(fortify)
-		to_chat(src, SPAN_WARNING("You cannot rest while fortified!"))
+	if(hardcore)
+		to_chat(src, SPAN_WARNING("No time to rest, must KILL!"))
 		return
 
 	if(burrow)
 		to_chat(src, SPAN_WARNING("You cannot rest while burrowed!"))
 		return
 
-	if(crest_defense)
-		to_chat(src, SPAN_WARNING("You cannot rest while your crest is down!"))
-		return
-
 	return ..()
+
 
 /datum/action/xeno_action/onclick/xeno_resting/use_ability(atom/target)
 	var/mob/living/carbon/Xenomorph/xeno = owner

@@ -90,7 +90,10 @@
 //Hot hot Aliens on Aliens action.
 //Actually just used for eating people.
 /mob/living/carbon/Xenomorph/attack_alien(mob/living/carbon/Xenomorph/M)
-	if (M.fortify || M.burrow)
+	if (M.burrow)
+		return XENO_NO_DELAY_ACTION
+
+	if(!M.behavior_delegate.on_attack_mob())
 		return XENO_NO_DELAY_ACTION
 
 	if(isXenoLarva(M)) //Larvas can't eat people

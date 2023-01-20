@@ -197,9 +197,8 @@
 		to_chat(src, SPAN_WARNING("You must be at full health to evolve."))
 		return FALSE
 
-	if(agility || fortify || crest_defense)
-		to_chat(src, SPAN_WARNING("You cannot evolve while in this stance."))
-		return FALSE
+	if(!behavior_delegate.on_evolve())
+		return
 
 	if(world.time < (SSticker.mode.round_time_lobby + XENO_ROUNDSTART_PROGRESS_TIME_2))
 		if(caste_type == XENO_CASTE_LARVA || caste_type == XENO_CASTE_PREDALIEN_LARVA)

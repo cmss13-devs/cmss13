@@ -9,7 +9,10 @@
 
 
 /mob/living/carbon/human/attack_alien(mob/living/carbon/Xenomorph/M, dam_bonus)
-	if(M.fortify || M.burrow)
+	if(M.burrow)
+		return XENO_NO_DELAY_ACTION
+
+	if(!M.behavior_delegate.on_attack_mob())
 		return XENO_NO_DELAY_ACTION
 
 	//Reviewing the four primary intents
@@ -215,7 +218,10 @@
 
 //Every other type of nonhuman mob
 /mob/living/attack_alien(mob/living/carbon/Xenomorph/M)
-	if(M.fortify || M.burrow)
+	if(M.burrow)
+		return XENO_NO_DELAY_ACTION
+
+	if(!M.behavior_delegate.on_attack_mob())
 		return XENO_NO_DELAY_ACTION
 
 	switch(M.a_intent)

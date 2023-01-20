@@ -270,13 +270,19 @@
 	addtimer(CALLBACK(src, PROC_REF(remove_overlay), X_HEAD_LAYER), 20)
 
 /mob/living/carbon/Xenomorph/proc/handle_special_state()
-	return FALSE
+	SHOULD_CALL_PARENT(TRUE)
+	var/result = behavior_delegate.on_special_state()
+	return result
 
 /mob/living/carbon/Xenomorph/proc/handle_special_wound_states()
-	return FALSE
+	SHOULD_CALL_PARENT(TRUE)
+	var/result = behavior_delegate.on_wound_states()
+	return result
 
 /mob/living/carbon/Xenomorph/proc/handle_special_backpack_states()
-	return ""
+	SHOULD_CALL_PARENT(TRUE)
+	var/result = behavior_delegate.on_special_backpack_states()
+	return result
 
 // Shamelessly inspired from the equivalent proc on TGCM
 /mob/living/carbon/Xenomorph/proc/update_wounds()

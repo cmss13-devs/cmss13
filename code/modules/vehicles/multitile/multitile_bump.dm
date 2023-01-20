@@ -745,37 +745,6 @@
 	else
 		return . = ..()
 
-//DEFENDER
-/mob/living/carbon/Xenomorph/Defender/handle_vehicle_bump(var/obj/vehicle/multitile/V)
-	if(fortify)
-		if(V.vehicle_flags & VEHICLE_CLASS_WEAK) //defenders being able to completely block armored vehicles by crawling into a boulder is ridiculous
-			visible_message(SPAN_DANGER("[src] digs it's claws into the ground, anchoring itself in place and halting [V] in it's tracks!"),
-			SPAN_DANGER("You dig your claws into the ground, stopping [V] in it's tracks!"))
-			return FALSE
-		else if(V.vehicle_flags & VEHICLE_CLASS_LIGHT)
-			visible_message(SPAN_DANGER("[src] digs it's claws into the ground, slowing [V]'s movement!"),
-			SPAN_DANGER("You dig your claws into the ground, slowing [V]'s movement!"))
-			var/mob_moved = step(src, V.last_move_dir)
-			V.move_momentum = Floor(V.move_momentum/3)
-			V.update_next_move()
-			return mob_moved
-
-		//medium-to-heavy vehicles will still push fortified defender back but without dealing damage. Need to change snowplow effects later
-		if(!is_mob_incapacitated())
-			playsound(loc, "punch", 25, 1)
-			visible_message(SPAN_DANGER("\The [V] rams fortified [src], pushing it away!"), SPAN_DANGER("You can't stop \the [V] from pushing you when it rams you!"))
-			var/list/slots = V.get_activatable_hardpoints()
-			for(var/slot in slots)
-				var/obj/item/hardpoint/H = V.hardpoints[slot]
-				if(!H) continue
-				H.livingmob_interact(src)
-
-			var/mob_moved = step(src, V.last_move_dir)
-			return mob_moved
-
-	else
-		return . = ..()
-
 //CRUSHER CHARGE COLLISION
 //Crushers going top speed can charge into & move vehicles with broken/without locmotion module
 /obj/vehicle/multitile/Collided(var/atom/A)

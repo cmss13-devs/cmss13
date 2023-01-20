@@ -16,7 +16,7 @@
 
 /datum/emergency_call/CMB/New()
 	..()
-	arrival_message = "Incoming Transmission: [MAIN_SHIP_NAME], This is Anchorpoint Station with the Colonial Marshal Bureau. We are receiving your distress signal and are dispatching a nearby team to board with you now. Standby."
+	arrival_message = "Incoming Transmission: [MAIN_SHIP_NAME], this is Anchorpoint Station with the Colonial Marshal Bureau. We are receiving your distress signal and are dispatching a nearby team to board with you now. Standby."
 	objectives = "Investigate the distress signal aboard the [MAIN_SHIP_NAME], and assist the crew with rescue if possible. If necessary, a contingent of our Colonial Marines may be ready to act as a QRF to reinforce you."
 
 	will_spawn_icc_liaison = prob(50)
@@ -114,7 +114,7 @@
 
 /datum/emergency_call/CMB/anchorpoint/New()
 	..()
-	arrival_message = "Incoming Transmission: [MAIN_SHIP_NAME], This is Anchorpoint Station. Be advised, a QRF Team our Colonial Marines is attempting to board you. Open your ports, transmitting docking codes now. Standby."
+	arrival_message = "Incoming Transmission: [MAIN_SHIP_NAME], this is Anchorpoint Station. Be advised, a QRF Team of our Colonial Marines is currently attempting to board you. Open your ports, transmitting docking codes now. Standby."
 	objectives = "QRF Team. You are here to reinforce the CMB team we deployed earlier. Make contact and work with the CMB Marshal and their deputies. Facilitate their protection and evacuation if necessary. Secondary Objective: Investigate the reason for distress aboard the [MAIN_SHIP_NAME], and assist the crew if possible."
 
 /datum/emergency_call/CMB/anchorpoint/create_member(datum/mind/M, var/turf/override_spawn_loc)

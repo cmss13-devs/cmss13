@@ -252,7 +252,7 @@
 			to_chat(user, SPAN_WARNING("\The [src] is bolted to the ground!"))
 			return
 
-		if(isnull(linked_laptop))
+		if(linked_laptop)
 			to_chat(user, SPAN_WARNING("\The [src] is currently encrypted by [linked_laptop]. To deconstruct \the [src] it must first be unlinked."))
 			return
 

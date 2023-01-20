@@ -627,25 +627,27 @@ Parameters are passed from New.
 		usr.client.cmd_admin_emp(src)
 
 	if(href_list[VV_HK_MODIFY_TRANSFORM] && check_rights(R_VAREDIT))
-		var/result = input(usr, "Choose the transformation to apply","Transform Mod") as null|anything in list("Scale","Translate","Rotate")
+		var/result = tgui_input_list(usr, "Choose the transformation to apply","Transform Mod", list("Scale","Translate","Rotate"))
+		if(!result)
+			return
 		var/matrix/M = transform
 		if(!result)
 			return
 		switch(result)
 			if("Scale")
-				var/x = input(usr, "Choose x mod","Transform Mod") as null|num
-				var/y = input(usr, "Choose y mod","Transform Mod") as null|num
+				var/x = tgui_input_number(usr, "Choose x mod","Transform Mod")
+				var/y = tgui_input_number(usr, "Choose y mod","Transform Mod")
 				if(isnull(x) || isnull(y))
 					return
 				transform = M.Scale(x,y)
 			if("Translate")
-				var/x = input(usr, "Choose x mod (negative = left, positive = right)","Transform Mod") as null|num
-				var/y = input(usr, "Choose y mod (negative = down, positive = up)","Transform Mod") as null|num
+				var/x = tgui_input_number(usr, "Choose x mod (negative = left, positive = right)","Transform Mod")
+				var/y = tgui_input_number(usr, "Choose y mod (negative = down, positive = up)","Transform Mod")
 				if(isnull(x) || isnull(y))
 					return
 				transform = M.Translate(x,y)
 			if("Rotate")
-				var/angle = input(usr, "Choose angle to rotate","Transform Mod") as null|num
+				var/angle = tgui_input_number(usr, "Choose angle to rotate","Transform Mod")
 				if(isnull(angle))
 					return
 				transform = M.Turn(angle)

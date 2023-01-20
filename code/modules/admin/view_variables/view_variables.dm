@@ -103,8 +103,8 @@
 	<head>
 		<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'>
 		<title>[title]</title>
-		<link rel="stylesheet" type="text/css" href="[SSassets.transport.get_asset_url("common.css")]">
 		<link rel="stylesheet" type="text/css" href="[SSassets.transport.get_asset_url("view_variables.css")]">
+		<link rel="stylesheet" type="text/css" href="[SSassets.transport.get_asset_url("common.css")]">
 	</head>
 	<body onload='selectTextField()' onkeydown='return handle_keydown()' onkeyup='handle_keyup()'>
 		<script type="text/javascript">
@@ -227,8 +227,7 @@
 					</td>
 					<td width='50%'>
 						<div align='center'>
-							<a id='refresh_link' href='?_src_=vars;
-datumrefresh=[refid];[HrefToken()]'>Refresh</a>
+							<a id='refresh_link' href='?_src_=vars;datumrefresh=[refid];[HrefToken()]'>Refresh</a>
 							<form>
 								<select name="file" size="1"
 									onchange="handle_dropdown(this)"

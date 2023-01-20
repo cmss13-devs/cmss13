@@ -1,6 +1,6 @@
 /datum/xeno_mutator/eggsac
 	name = "STRAIN: Carrier - Eggsac"
-	description = "In exchange for your ability to store huggers, you gain the ability to form new eggs by sacrificing your plasma stores."
+	description = "In exchange for your ability to store huggers and place traps, you gain the ability to form new eggs by sacrificing your plasma stores."
 	cost = MUTATOR_COST_EXPENSIVE
 	individual_only = TRUE
 	caste_whitelist = list(XENO_CASTE_CARRIER)

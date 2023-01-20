@@ -1,6 +1,6 @@
 /datum/xeno_mutator/hedgehog
 	name = "STRAIN: Ravager - Hedgehog"
-	description = "You build up shards internally over time and also when taking damage that increase your armor's resilience. You can use these to power several abilities, offensive and defensive in nature."
+	description = "You lose your empower, charge, and scissor cut for the ability to be come a mobile, spiky tank. You build up shards internally over time and also when taking damage that increase your armor's resilience. You can use these to power several abilities, offensive and defensive in nature."
 	flavor_description = "In the midst of the Chaos of the battlefield, there is also opportunity."
 	cost = MUTATOR_COST_EXPENSIVE
 	individual_only = TRUE

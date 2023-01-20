@@ -1,6 +1,6 @@
 /datum/xeno_mutator/resinwhisperer
 	name = "STRAIN: Hivelord - Resin Whisperer"
-	description = "You lose the ability to make thick resin and offer up some of your acid and plasma reserves to enhance your vision and gain a stronger connection to the resin. You can now remotely place resin structures!"
+	description = "You your corrosive acid, lose the ability to make thick resin, and sacrifice a fifth of your plasma reserves to enhance your vision and gain a stronger connection to the resin. You can now remotely place resin structures!"
 	cost = MUTATOR_COST_EXPENSIVE
 	individual_only = TRUE
 	caste_whitelist = list(XENO_CASTE_HIVELORD)
@@ -22,7 +22,7 @@
 	if(!.)
 		return
 
-	var/mob/living/carbon/xenomorph/hivelord/hivelord = mutator_set.xeno
+	var/mob/living/carbon/Xenomorph/Hivelord/hivelord = mutator_set.xeno
 	hivelord.plasmapool_modifier = 0.8 // -20% plasma pool
 	hivelord.extra_build_dist = 12 // 1 + 12 = 13 tile build range
 	hivelord.can_stack_builds = TRUE
@@ -83,7 +83,7 @@
 		else
 			build_speed_mod = initial(build_speed_mod)
 
-	var/mob/living/carbon/xenomorph/hivelord = owner
+	var/mob/living/carbon/Xenomorph/hivelord = owner
 	if(!..())
 		return
 
@@ -98,6 +98,6 @@
 /datum/action/xeno_action/verb/verb_coerce_resin()
 	set category = "Alien"
 	set name = "Coerce Resin"
-	set hidden = TRUE
+	set hidden = 1
 	var/action_name = "Coerce Resin (150)"
 	handle_xeno_macro(src, action_name)

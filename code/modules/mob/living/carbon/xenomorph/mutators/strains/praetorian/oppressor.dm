@@ -1,7 +1,7 @@
 /datum/xeno_mutator/praetorian_oppressor
 	// Dread it, run from it, destiny still arrives.. or should I say, I do
 	name = "STRAIN: Praetorian - Oppressor"
-	description = "You abandon your speed to gain a powerful hook ability. Your slashes deal increased damage to prone targets, and you gain a powerful punch that devastates weakened opponents and makes your other abilities recharge faster."
+	description = "You abandon your dash and all of your acid-based abilities. In exchange, your slashes deal increased damage to prone targets, and you gain a powerful punch that devastates weakened opponents and makes your other abilities recharge faster."
 	flavor_description = "Dread it. Run from it. The Hive still arrives. Or, more accurately, you do."
 	cost = MUTATOR_COST_EXPENSIVE
 	individual_only = TRUE

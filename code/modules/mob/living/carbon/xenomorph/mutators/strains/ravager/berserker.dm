@@ -1,6 +1,6 @@
 /datum/xeno_mutator/berserker
 	name = "STRAIN: Ravager - Berserker"
-	description = "You decrease your health and increase your speed to become a close range melee monster. Build up rage by slashing to increase your attack speed, movement speed, and armor; once you reach max rage you can go nuclear with eviscerate."
+	description = "You lose your scissor cut, charge, and empower abilities, decrease your health and increase your speed to gain 3 new abilities that makes a close range melee monster. Build up rage by slashing to increase your attack speed, movement speed, and armor; once you reach max rage you can go nuclear with eviscerate."
 	flavor_description = "Crush and butcher, maim and rage, until the tallhosts are finished."
 	cost = MUTATOR_COST_EXPENSIVE
 	individual_only = TRUE

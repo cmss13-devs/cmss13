@@ -621,7 +621,7 @@ Parameters are passed from New.
 					message_admins(SPAN_NOTICE("[key_name(usr)] has added [amount] units of [chosen_id] to [src]"))
 
 	if(href_list[VV_HK_TRIGGER_EXPLOSION] && check_rights(R_EVENT))
-		usr.client.drop_bomb(src)
+		usr.client.handle_bomb_drop(src)
 
 	if(href_list[VV_HK_TRIGGER_EMP] && check_rights(R_EVENT))
 		usr.client.cmd_admin_emp(src)

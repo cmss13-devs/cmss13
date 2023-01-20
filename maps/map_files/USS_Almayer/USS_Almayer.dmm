@@ -40300,6 +40300,20 @@
 	tag = "icon-green (WEST)"
 	},
 /area/almayer/living/offices)
+"eLt" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4;
+	tag = "icon-intact-supply (EAST)"
+	},
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "sterile_green_side";
+	tag = "icon-sterile_green_side (WEST)"
+	},
+/area/almayer/medical/lower_medical_lobby)
 "eLz" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 1;
@@ -43075,6 +43089,13 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/medical/chemistry)
+"fWu" = (
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "sterile_green_side";
+	tag = "icon-sterile_green_side (EAST)"
+	},
+/area/almayer/medical/lower_medical_lobby)
 "fWT" = (
 /obj/structure/machinery/door/airlock/almayer/engineering{
 	dir = 2;
@@ -46280,6 +46301,7 @@
 	},
 /area/almayer/shipboard/starboard_point_defense)
 "hrJ" = (
+/obj/structure/machinery/cm_vending/sorted/medical,
 /obj/structure/sign/safety/autodoc{
 	pixel_x = 20;
 	pixel_y = -32
@@ -59878,6 +59900,15 @@
 	tag = "icon-test_floor4"
 	},
 /area/almayer/medical/lower_medical_lobby)
+"noJ" = (
+/obj/structure/disposalpipe/segment,
+/obj/structure/pipes/standard/simple/hidden/supply,
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "sterile_green_side";
+	tag = "icon-sterile_green_side (NORTH)"
+	},
+/area/almayer/medical/lower_medical_lobby)
 "noV" = (
 /obj/structure/sign/safety/storage{
 	pixel_x = 8;
@@ -63036,6 +63067,20 @@
 	icon_state = "kitchen"
 	},
 /area/almayer/living/grunt_rnr)
+"oKd" = (
+/obj/structure/disposalpipe/segment{
+	dir = 1;
+	icon_state = "pipe-c"
+	},
+/obj/structure/pipes/standard/manifold/hidden/supply{
+	dir = 8;
+	tag = "icon-map-supply (WEST)"
+	},
+/turf/open/floor/almayer{
+	icon_state = "sterile_green";
+	tag = "icon-sterile"
+	},
+/area/almayer/medical/lower_medical_lobby)
 "oKx" = (
 /obj/structure/machinery/firealarm{
 	pixel_y = 28
@@ -70017,7 +70062,7 @@
 	tag = "icon-map-supply (WEST)"
 	},
 /turf/open/floor/almayer{
-	icon_state = "dark_sterile";
+	icon_state = "sterile_green";
 	tag = "icon-sterile"
 	},
 /area/almayer/medical/lower_medical_lobby)
@@ -72486,6 +72531,14 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/l_m_p)
+"sRs" = (
+/obj/structure/disposalpipe/segment,
+/obj/structure/pipes/standard/simple/hidden/supply,
+/turf/open/floor/almayer{
+	icon_state = "sterile_green_side";
+	tag = "icon-sterile"
+	},
+/area/almayer/medical/lower_medical_lobby)
 "sRD" = (
 /obj/structure/surface/table/almayer,
 /obj/item/storage/toolbox/electrical,
@@ -80837,6 +80890,14 @@
 	allow_construction = 0
 	},
 /area/almayer/shipboard/brig/lobby)
+"wis" = (
+/obj/structure/pipes/standard/simple/hidden/supply,
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "sterile_green_side";
+	tag = "icon-sterile_green_side (NORTH)"
+	},
+/area/almayer/medical/lower_medical_lobby)
 "wiz" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -112881,13 +112942,13 @@ rJC
 bei
 dUi
 bei
-bei
+fWu
 bei
 ben
 bei
 bei
 bei
-bei
+fWu
 bei
 dUi
 bei
@@ -113083,15 +113144,15 @@ bep
 rBU
 bep
 sGs
-qxi
+sRs
 rNn
-qxi
+noJ
 svQ
 jjn
 qxi
-qxi
-udr
-imo
+sRs
+oKd
+wis
 vQj
 imo
 vQj
@@ -113287,13 +113348,13 @@ bei
 bei
 bei
 bei
-ben
+eLt
 bei
 gls
 cAm
 bwH
 bei
-ben
+eLt
 bei
 bei
 bei
@@ -116334,7 +116395,7 @@ vhX
 gDW
 beA
 beA
-jbO
+pnC
 dBH
 bky
 ryt
@@ -116537,7 +116598,7 @@ xMs
 cjW
 beA
 beA
-bqR
+jbO
 kan
 quv
 rZB

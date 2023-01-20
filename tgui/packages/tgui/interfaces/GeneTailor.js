@@ -1,4 +1,4 @@
-import { useBackend, useLocalState } from '../backend';
+import { backendUpdate, useBackend, useLocalState } from '../backend';
 import {
   Input,
   Button,
@@ -12,6 +12,7 @@ import {
   LabeledList,
   Collapsible,
 } from '../components';
+import { UI_UPDATE } from '../constants';
 import { Window } from '../layouts';
 var custom_caste_stats;
 var custom_xeno_stats;
@@ -25,7 +26,7 @@ const PAGES = [
   },
   {
     title: 'Abilities',
-    component: () => PlaceHolderActions,
+    component: () => AbilityActions,
     color: 'green',
     icon: 'bolt-lightning',
   },
@@ -50,12 +51,18 @@ const StatActions = (props, context) => {
   let fluff_stats =  ["caste_desc", "tier", "display_name", "is_intelligent", "fire_immunity", "fire_intensity_resistance", "aura_strength", "build_time_mult", "can_hold_facehuggers", "can_hold_eggs", "can_be_queen_healed", "can_be_revived", "can_vent_crawl", "caste_luminosity", "hugger_nurturing", "huggers_max", "throwspeed", "hugger_delay", "eggs_max", "egg_cooldown"];
   const [pageIndex, setPageIndex] = useLocalState(context, 'pageIndex', 0);
   //Should probably be a state so it actually updates
-  const setCustomStat = (key, value) => {
+  const setCustomCastStat = (key, value) => {
       custom_caste_stats[key] = value;
       if(!changed_values.includes(key)){
         changed_values.push(key);
       }
   };
+  const setCustomXenoStat = (key, value) => {
+    custom_xeno_stats[key] = value;
+    if(!changed_values.includes(key)){
+      changed_values.push(key);
+    }
+};
   return (
     <Section>
       <Collapsible title="Combat statistics">
@@ -68,7 +75,7 @@ const StatActions = (props, context) => {
             <LabeledList.Item label={element}>
               <Input
                 value={custom_caste_stats[element]}
-                onInput={(key, val) => setCustomStat(element, val)}/>
+                onInput={(key, val) => setCustomCastStat(element, val)}/>
             </LabeledList.Item>
             );
         })}
@@ -81,7 +88,9 @@ const StatActions = (props, context) => {
             }
             return(
             <LabeledList.Item label={element}>
-              <Input value={custom_caste_stats[element]}/>
+              <Input
+                value={custom_caste_stats[element]}
+                onInput={(key, val) => setCustomCastStat(element, val)}/>
             </LabeledList.Item>
               );
         })}
@@ -93,7 +102,9 @@ const StatActions = (props, context) => {
             }
             return(
             <LabeledList.Item label={element}>
-              <Input value={custom_caste_stats[element]}/>
+              <Input
+                value={custom_caste_stats[element]}
+                onInput={(key, val) => setCustomCastStat(element, val)}/>
             </LabeledList.Item>
               );
         })}
@@ -110,7 +121,9 @@ const StatActions = (props, context) => {
             }
             return(
             <LabeledList.Item label={element}>
-              <Input value={custom_xeno_stats[element]}/>
+              <Input
+                value={custom_xeno_stats[element]}
+                onInput={(key, val) => setCustomXenoStat(element, val)}/>
             </LabeledList.Item>
               );
         })}
@@ -168,6 +181,52 @@ const EvolutionActions = (props, context) => {
     </Section>
   );
 };
+
+const AbilityActions = (props, context) => {
+  const { act, data } = useBackend(context);
+  const {xeno_abilities, xeno_passives} = data;
+  const [Abilities, setAbilities] = useLocalState(context, 'Abilities', []);
+  return (
+    <Stack vertical>
+      <Stack.Item>
+        <Section title="Passives" buttons={
+          <Box>
+            <Button icon="plus" onClick={() => act("add_delegate")}/>
+            <Button icon="minus" onClick={() => act("remove_delegate")}/>
+          </Box>
+          }>
+        </Section>
+        <LabeledList>
+          {Object.values(xeno_passives).map((value) => {
+            return (
+              <LabeledList.Item textAlign="left">
+                {value}
+              </LabeledList.Item>
+            );
+          })}
+        </LabeledList>
+      </Stack.Item>
+      <Stack.Item>
+        <Section title="Abilities" buttons={
+          <Box>
+            <Button icon="plus" onClick={() => act("add_ability")}/>
+            <Button icon="minus" onClick={() => act("remove_ability")}/>
+          </Box>
+          }>
+        </Section>
+        <LabeledList>
+          {Object.values(xeno_abilities).map((value) => {
+            return (
+              <LabeledList.Item textAlign="left">
+                {value}
+              </LabeledList.Item>
+            );
+          })}
+        </LabeledList>
+      </Stack.Item>
+    </Stack>
+  );
+}
 const PlaceHolderActions = (props, context) => {
   const { act, data } = useBackend(context);
   return;
@@ -175,11 +234,11 @@ const PlaceHolderActions = (props, context) => {
 export const GeneTailor = (props, context) => {
   const types = ["caste", "strain"];
   const { act, data } = useBackend(context);
-  const {xeno_stats, caste_stats} = data;
-  const setTemplate = () => {
+  const {xeno_stats, caste_stats, selected_template} = data;
+  if(selected_template){
     custom_caste_stats= Object.keys(caste_stats).sort().reduce((obj, key) => {obj[key] = caste_stats[key];return obj;},{});
     custom_xeno_stats= Object.keys(xeno_stats).sort().reduce((obj, key) => {obj[key] = xeno_stats[key];return obj;},{});
-  };
+  }
 
   const [pageIndex, setPageIndex] = useLocalState(context, 'pageIndex', 1);
   const PageComponent = PAGES[pageIndex].component();
@@ -207,11 +266,12 @@ export const GeneTailor = (props, context) => {
                 <Dropdown/>
               </LabeledList.Item>
               <LabeledList.Item label="Template">
-                <Button color="red" content="Load template" align="center" onClick={() => setTemplate()}/>
+                <Button color={selected_template ? "good" : "bad"} content={selected_template ? selected_template : "Load a template"} align="center"
+                  onClick={() => (act('load_template'))}/>
               </LabeledList.Item>
             </LabeledList>
         </Section>
-        <Section width="98%" position = "fixed" bottom ="0px" >
+        <Section width="788px" position = "fixed" bottom ="0px" >
           <Stack>
             <Button color="red" content="Apply type" width="50%" height="25px" align="center"/>
             <Button color="green" content="Spawn Mob" width="50%" height="25px" align="center"
@@ -230,9 +290,6 @@ export const GeneTailor = (props, context) => {
               <Section fitted>
                 <Tabs horizontal fluid>
                   {PAGES.map((page, i) => {
-                    if (page.canAccess && !page.canAccess(data)) {
-                      return;
-                    }
                     return (
                       <Tabs.Tab
                         key={i}
@@ -248,7 +305,7 @@ export const GeneTailor = (props, context) => {
               </Section>
             </Stack.Item>
             <Stack.Item grow mt={5} mr={1}>
-              <Section  height="380px" scrollable fill>
+              <Section  height="360px" scrollable fill>
                 <PageComponent/>
               </Section>
             </Stack.Item>

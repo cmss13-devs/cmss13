@@ -87,12 +87,21 @@ GLOBAL_LIST_INIT(gt_evolutions, list(
 ))
 
 /datum/gene_tailor
-	/// The types of every attribute in the selected template
+	/// The types of every attribute of the caste in the selected template
 	var/list/stored_caste_types = list()
+	/// The types of every attribute of the xeno in the selected template
 	var/list/stored_xeno_types = list()
+	/// Compile-time values of the attribute of the xeno in the selected template
+	var/list/xeno_stats = list()
+	/// Compile-time values of the attribute of the xeno in the selected template
+	var/list/caste_stats = list()
 	/// The baseline of the custom xeno, helps the user get a rough ideas of what the stats of a xeno are, they're not going to build it from the ground up
-	var/mob/living/carbon/Xenomorph/selected_template = /mob/living/carbon/Xenomorph/Runner
+	var/selected_template
 	var/mob/living/carbon/Xenomorph/stat_stick
+	///The passives picked
+	var/list/xeno_delegates = list()
+	///The abilities picked
+	var/list/xeno_abilities = list()
 
 /datum/gene_tailor/tgui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
@@ -103,13 +112,70 @@ GLOBAL_LIST_INIT(gt_evolutions, list(
 
 /datum/gene_tailor/ui_data(mob/user)
 	var/list/data = list()
+	data["selected_template"] = selected_template
+	data["xeno_abilities"] = xeno_abilities
+	data["xeno_passives"] = xeno_delegates
 	return data
 
 /datum/gene_tailor/ui_static_data(mob/user)
 	. = ..()
+	if(!selected_template)
+		return
+
 	.["glob_gt_evolutions"] = GLOB.gt_evolutions
-	var/list/xeno_stats = list()
-	var/list/caste_stats = list()
+	.["xeno_stats"] = xeno_stats
+	.["caste_stats"] = caste_stats
+
+/datum/gene_tailor/ui_state(mob/user)
+	return GLOB.admin_state
+
+/datum/gene_tailor/ui_act(action, params)
+	if(..())
+		return
+	if(!selected_template && action != "load_template")
+		tgui_alert(usr, "Please select a template first !", "No template detected", list("OK"), timeout = FALSE)
+		return
+	switch(action)
+		if("spawn_mob")
+			sanitize_input(params["caste_stats"], params["xeno_stats"], params["to_change_stats"])
+			spawn_mob(params["caste_stats"], params["xeno_stats"])
+		if("load_template")
+			load_template()
+		if("add_ability")
+			var/list/pickable_abilities = subtypesof(/datum/action/xeno_action/onclick) + subtypesof(/datum/action/xeno_action/activable) + subtypesof(/datum/action/xeno_action/active_toggle) - list(/datum/action/xeno_action/onclick/xeno_resting, /datum/action/xeno_action/onclick/regurgitate, /datum/action/xeno_action/watch_xeno, /datum/action/xeno_action/activable/tail_stab)
+			var/ability_choice = tgui_input_list(usr, "Select an ability to add, you DO NOT need to add generic abilities like rest, they are included by default.", "Add an Ability", pickable_abilities)
+			if(!ability_choice)
+				return
+			xeno_abilities += ability_choice
+			update_static_data(usr)
+		if("remove_ability")
+			var/ability_choice = tgui_input_list(usr, "Select an ability to remove.", "Remove an Ability", xeno_abilities)
+			if(!ability_choice)
+				return
+			xeno_abilities -= ability_choice
+			update_static_data(usr)
+		if("add_delegate")
+			var/delegate_choice = tgui_input_list(usr, "Select a passive to add.", "Add a Passive", subtypesof(/datum/behavior_delegate))
+			if(!delegate_choice)
+				return
+			xeno_delegates += delegate_choice
+			update_static_data(usr)
+		if("remove_delegate")
+			var/delegate_choice = tgui_input_list(usr, "Select a passive to remove.", "Remove a Passive", xeno_delegates)
+			if(!delegate_choice)
+				return
+			xeno_delegates -= delegate_choice
+			update_static_data(usr)
+
+/datum/gene_tailor/Destroy(force, ...)
+	QDEL_NULL(stat_stick)
+	. = ..()
+
+/datum/gene_tailor/proc/load_template()
+	selected_template = tgui_input_list(usr, "Select a template from which the custom xenomorph will be based of.", "Load a template", subtypesof(/mob/living/carbon/Xenomorph) - /mob/living/carbon/Xenomorph/Custom)
+	if(!selected_template)
+		return
+	QDEL_NULL(stat_stick)
 	stat_stick = new selected_template
 	for(var/var_name in type2listofvars(stat_stick.parent_type))
 		xeno_stats[var_name] = stat_stick.vars[var_name]
@@ -118,29 +184,10 @@ GLOBAL_LIST_INIT(gt_evolutions, list(
 
 	stored_xeno_types = get_data_types(stat_stick)
 	stored_caste_types = get_data_types(stat_stick.caste)
-
-	.["xeno_stats"] = xeno_stats
-	.["caste_stats"] = caste_stats
-	qdel(stat_stick)
-
-/datum/gene_tailor/ui_state(mob/user)
-	return GLOB.admin_state
-
-/datum/gene_tailor/ui_act(action, params)
-	if(..())
-		return
-
-	switch(action)
-		if("set_type")
-			//BOGUS
-		if("spawn_mob")
-			sanitize_input(params["caste_stats"], params["xeno_stats"], params["to_change_stats"])
-			spawn_mob(params["caste_stats"], params["xeno_stats"])
-
+	update_static_data(usr)
 /**
  * Returns an assoc list of target's attribute types {var_name : var_type}
  * Possible types are : "text", "number", "path", "other"
- *
  */
 /datum/gene_tailor/proc/get_data_types(atom/target)
 	var/list/result = list()
@@ -178,10 +225,6 @@ GLOBAL_LIST_INIT(gt_evolutions, list(
 			//Either a list or something instancied by the constructor, we should not touch this
 			if("other") continue
 
-	for(var/var_to_change in to_change)
-		if(stored_caste_types[var_to_change] == "other")
-			WARNING("[var_to_change] is not of a type supported by the gene tailor, changes to it will be ignored")
-
 /datum/gene_tailor/proc/spawn_mob(list/caste_stats, list/xeno_stats)
 	var/datum/caste_datum/custom/custom_caste = new
 	for(var/var_name in caste_stats)
@@ -191,9 +234,15 @@ GLOBAL_LIST_INIT(gt_evolutions, list(
 	var/mob/living/carbon/Xenomorph/Custom/custom_xeno = new(usr.loc, custom_caste)
 
 	for(var/var_name in xeno_stats)
-		if(stored_xeno_types[var_name] != "other")
+		if(stored_xeno_types[var_name] != "other" && !(var_name in stored_caste_types))
 			custom_xeno.vars[var_name] = xeno_stats[var_name]
 
+	var/datum/behavior_delegate/Custom/custom_delegate = new(xeno_delegates, custom_xeno)
+	custom_xeno.behavior_delegate = custom_delegate
+	custom_xeno.base_actions += list(/datum/action/xeno_action/onclick/xeno_resting, /datum/action/xeno_action/onclick/regurgitate, /datum/action/xeno_action/watch_xeno, /datum/action/xeno_action/activable/tail_stab)
+	custom_xeno.base_actions += xeno_abilities
+	custom_xeno.add_abilities()
+	custom_xeno.recalculate_everything()
 	custom_xeno.icon = stat_stick.icon
 	custom_xeno.stored_visuals["icon_source_caste"] = stat_stick.caste.caste_type
 	custom_xeno.stored_visuals["pixel_x"] = stat_stick.pixel_x

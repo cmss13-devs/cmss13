@@ -339,7 +339,7 @@
 	if (WH.curr_effect_type == WARDEN_HEAL_HP)
 		action_icon_result = "warden_rejuvenate"
 		WH.curr_effect_type = WARDEN_HEAL_DEBUFFS
-		to_chat(X, SPAN_XENOWARNING("You will now assist your allies by removing their debuffs!"))
+		to_chat(X, SPAN_XENOWARNING("You will now assist your allies by curing their ailments!"))
 
 	else
 		action_icon_result = "warden_heal"

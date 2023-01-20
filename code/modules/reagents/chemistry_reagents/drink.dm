@@ -623,20 +623,32 @@
 	id = "doctorsdelight"
 	description = "A gulp a day keeps the MediBot away. That's probably for the best."
 	reagent_state = LIQUID
+	overdose = HIGH_REAGENTS_OVERDOSE // no metahealers :clown:
 	color = "#FF8CFF" // rgb: 255, 140, 255
 	nutriment_factor = 1 * FOOD_METABOLISM
+
+/datum/reagent/doctor_delight/reaction_mob(mob/living/M, method=TOUCH, volume)
+	if(method == INGEST) // we only healing you once per ingestion
+		if(M:getOxyLoss() && prob(50)) M:apply_damage(-5, OXY)
+		if(M:getBruteLoss() && prob(60)) M:heal_limb_damage(5,0)
+		if(M:getFireLoss() && prob(50)) M:heal_limb_damage(0,5)
+		if(M:getToxLoss() && prob(50)) M:apply_damage(-5, TOX)
 
 /datum/reagent/doctor_delight/on_mob_life(mob/living/M)
 	. = ..()
 	if(!.) return
 	M:nutrition += nutriment_factor
 	holder.remove_reagent(src.id, FOOD_METABOLISM)
-	if(M:getOxyLoss() && prob(50)) M:apply_damage(-2, OXY)
-	if(M:getBruteLoss() && prob(60)) M:heal_limb_damage(2,0)
-	if(M:getFireLoss() && prob(50)) M:heal_limb_damage(0,2)
-	if(M:getToxLoss() && prob(50)) M:apply_damage(-2, TOX)
-	if(M.dizziness !=0) M.dizziness = max(0,M.dizziness-15)
-	if(M.confused !=0) M.confused = max(0,M.confused - 5)
+	if(volume > overdose)
+		if(prob(10))
+			to_chat(M, SPAN_WARNING("You feel ill... you think you need to see a doctor!"))
+		M.apply_damage(1, BURN)
+		M.apply_damage(1, BRUTE)
+		M.apply_damage(1, OXY)
+		M.apply_damage(1, TOX)
+	else
+		if(M.dizziness !=0) M.dizziness = max(0,M.dizziness-15)
+		if(M.confused !=0) M.confused = max(0,M.confused - 5)
 
 /datum/reagent/drink/cold/kiraspecial
 	name = "Kira Special"

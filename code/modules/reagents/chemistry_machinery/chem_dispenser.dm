@@ -211,21 +211,22 @@
 /obj/structure/machinery/chem_dispenser/soda/attackby(var/obj/item/B as obj, var/mob/user as mob)
 	..()
 	if(HAS_TRAIT(B, TRAIT_TOOL_MULTITOOL))
-		if(hackedcheck == 0)
-			to_chat(user, "You change the mode from 'Soda Magic' to 'Milking Time'.")
-			dispensable_reagents += list("milk","soymilk")
-			hackedcheck = 1
-			return
+		if(do_after(user, 2 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+			if(hackedcheck == 0)
+				to_chat(user, "You change the mode from 'Soda Magic' to 'Milking Time'.")
+				dispensable_reagents += list("milk","soymilk")
+				hackedcheck = 1
+				return
 
-		else
-			to_chat(user, "You change the mode from 'Milking Time' to 'Soda Magic'.")
-			dispensable_reagents -= list("milk","soymilk")
-			hackedcheck = 0
-			return
+			else
+				to_chat(user, "You change the mode from 'Milking Time' to 'Soda Magic'.")
+				dispensable_reagents -= list("milk","soymilk")
+				hackedcheck = 0
+				return
 	else if(HAS_TRAIT(B, TRAIT_TOOL_WRENCH))
 		if(!wrenchable) return
 
-		if(do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+		if(do_after(user, 2 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 			if(!src) return
 			playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
 			switch (anchored)
@@ -254,17 +255,18 @@
 	..()
 
 	if(HAS_TRAIT(B, TRAIT_TOOL_MULTITOOL))
-		if(hackedcheck == 0)
-			to_chat(user, "You disable the 'Weyland-Yutani-are-cheap-bastards' lock, enabling hidden and very expensive boozes.")
-			dispensable_reagents += list("goldschlager","patron","absinthe")
-			hackedcheck = 1
-			return
+		if(do_after(user, 2 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+			if(hackedcheck == 0)
+				to_chat(user, "You disable the 'Weyland-Yutani-are-cheap-bastards' lock, enabling hidden and very expensive boozes.")
+				dispensable_reagents += list("goldschlager","patron","absinthe")
+				hackedcheck = 1
+				return
 
-		else
-			to_chat(user, "You re-enable the 'Weyland-Yutani-are-cheap-bastards' lock, disabling hidden and very expensive boozes.")
-			dispensable_reagents -= list("goldschlager","patron","absinthe")
-			hackedcheck = 0
-			return
+			else
+				to_chat(user, "You re-enable the 'Weyland-Yutani-are-cheap-bastards' lock, disabling hidden and very expensive boozes.")
+				dispensable_reagents -= list("goldschlager","patron","absinthe")
+				hackedcheck = 0
+				return
 	else if(HAS_TRAIT(B, TRAIT_TOOL_WRENCH))
 		if(!wrenchable) return
 

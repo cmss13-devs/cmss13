@@ -63,7 +63,7 @@
 					body += "<a href='?src=\ref[src];[HrefToken()];adminplayeropts="+ref+"'>PP</a> - "
 					body += "<a href='?src=\ref[src];[HrefToken()];playerpanelextended="+ref+"'>PPE</a> - "
 					body += "<a href='?src=\ref[src];[HrefToken()];notes=show;mob="+ref+"'>N</a> - "
-					body += "<a href='?_src_=vars;Vars="+ref+"'>VV</a> - "
+					body += "<a href='?_src_=vars;[HrefToken(forceGlobal = TRUE)];Vars="+ref+"'>VV</a> - "
 					body += "<a href='?src=\ref[src];[HrefToken()];traitor="+ref+"'>TP</a> - "
 					body += "<a href='?src=\ref[usr];priv_msg="+key+"'>PM</a> - "
 					body += "<a href='?src=\ref[src];[HrefToken()];subtlemessage="+ref+"'>SM</a> - "

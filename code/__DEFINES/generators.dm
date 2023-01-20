@@ -8,7 +8,7 @@
 #define GEN_SQUARE "square"
 #define GEN_CUBE "cube"
 
-///particle editor var modifiers
+//particle editor var modifiers
 #define P_DATA_GENERATOR "generator"
 #define P_DATA_ICON_ADD "icon_add"
 #define P_DATA_ICON_REMOVE "icon_remove"

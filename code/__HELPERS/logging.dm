@@ -220,3 +220,16 @@ GLOBAL_PROTECT(config_error_log)
 	WRITE_LOG(GLOB.test_log, text)
 	SEND_TEXT(world.log, text)
 #endif
+
+#if defined(REFERENCE_DOING_IT_LIVE)
+#define log_reftracker(msg) log_harddel("## REF SEARCH [msg]")
+
+/proc/log_harddel(text)
+	WRITE_LOG(GLOB.harddel_log, text)
+
+#elif defined(REFERENCE_TRACKING) // Doing it locally
+#define log_reftracker(msg) log_world("## REF SEARCH [msg]")
+
+#else //Not tracking at all
+#define log_reftracker(msg)
+#endif

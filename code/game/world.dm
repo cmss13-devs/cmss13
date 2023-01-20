@@ -83,9 +83,7 @@ var/list/reboot_sfx = file2list("config/reboot_sfx.txt")
 
 	if(!EvacuationAuthority) EvacuationAuthority = new
 
-	world.log << world.tick_lag
 	change_tick_lag(CONFIG_GET(number/ticklag))
-	world.log << CONFIG_GET(number/ticklag)
 	GLOB.timezoneOffset = text2num(time2text(0,"hh")) * 36000
 
 	Master.Initialize(10, FALSE, TRUE)

@@ -14,7 +14,7 @@
 
 
 /datum/emergency_call/xenos/spawn_items()
-	var/turf/drop_spawn	= get_spawn_point(TRUE)
+	var/turf/drop_spawn = get_spawn_point(TRUE)
 	if(istype(drop_spawn))
 		new /obj/effect/alien/weeds/node(drop_spawn) //drop some weeds for xeno plasma regen.
 

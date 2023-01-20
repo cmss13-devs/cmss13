@@ -130,6 +130,7 @@
 		list("Fire Extinguisher (Portable)", round(scale * 3), /obj/item/tool/extinguisher/mini, VENDOR_ITEM_REGULAR),
 		list("High-Capacity Power Cell", round(scale * 1), /obj/item/cell/high, VENDOR_ITEM_REGULAR),
 		list("Fulton Device Stack", round(scale * 1), /obj/item/stack/fulton, VENDOR_ITEM_REGULAR),
+		list("Sentry Gun Network Laptop", 4, /obj/item/device/sentry_computer, VENDOR_ITEM_REGULAR),
 		list("JTAC Pamphlet", round(scale * 1), /obj/item/pamphlet/skill/jtac, VENDOR_ITEM_REGULAR),
 		list("Engineering Pamphlet", round(scale * 1), /obj/item/pamphlet/skill/engineer, VENDOR_ITEM_REGULAR),
 		list("Powerloader Certification", round(scale * 0.1), /obj/item/pamphlet/skill/powerloader, VENDOR_ITEM_REGULAR),
@@ -175,7 +176,7 @@
 
 /obj/structure/machinery/cm_vending/sorted/cargo_guns/cargo/get_appropriate_vend_turf(var/mob/living/carbon/human/H)
 	var/turf/turf_to_vent_to
-	if(vend_x_offset != 0 || vend_y_offset != 0)	//this will allow to avoid code below that suits only Almayer.
+	if(vend_x_offset != 0 || vend_y_offset != 0) //this will allow to avoid code below that suits only Almayer.
 		turf_to_vent_to = locate(x + vend_x_offset, y + vend_y_offset, z)
 	else
 		turf_to_vent_to = get_turf(get_step(src, NORTH))
@@ -412,10 +413,10 @@
 //Special cargo-specific vendor with vending offsets
 /obj/structure/machinery/cm_vending/sorted/cargo_ammo/cargo
 	vend_flags = VEND_CLUTTER_PROTECTION | VEND_LIMITED_INVENTORY | VEND_LOAD_AMMO_BOXES //We want to vend to turf not hand, since we are in requisitions
-	
+
 /obj/structure/machinery/cm_vending/sorted/cargo_ammo/cargo/get_appropriate_vend_turf(var/mob/living/carbon/human/H)
 	var/turf/turf_to_vent_to
-	if(vend_x_offset != 0 || vend_y_offset != 0)	//this will allow to avoid code below that suits only Almayer.
+	if(vend_x_offset != 0 || vend_y_offset != 0) //this will allow to avoid code below that suits only Almayer.
 		turf_to_vent_to = locate(x + vend_x_offset, y + vend_y_offset, z)
 	else
 		turf_to_vent_to = get_turf(get_step(src, NORTHWEST))
@@ -437,8 +438,6 @@
 	req_access = list(ACCESS_MARINE_CARGO)
 	vendor_theme = VENDOR_THEME_USCM
 	icon_state = "req_attach"
-
-	vend_delay = 3
 
 /obj/structure/machinery/cm_vending/sorted/attachments/vend_fail()
 	return
@@ -491,7 +490,7 @@
 
 /obj/structure/machinery/cm_vending/sorted/attachments/get_appropriate_vend_turf(var/mob/living/carbon/human/H)
 	var/turf/turf_to_vent_to
-	if(vend_x_offset != 0 || vend_y_offset != 0)	//this will allow to avoid code below that suits only Almayer.
+	if(vend_x_offset != 0 || vend_y_offset != 0) //this will allow to avoid code below that suits only Almayer.
 		turf_to_vent_to = locate(x + vend_x_offset, y + vend_y_offset, z)
 	else
 		turf_to_vent_to = get_turf(get_step(src, NORTHEAST))
@@ -604,6 +603,7 @@
 		list("Engineering Radio Encryption Key", 5, /obj/item/device/encryptionkey/engi, VENDOR_ITEM_REGULAR),
 		list("Intel Radio Encryption Key", 5, /obj/item/device/encryptionkey/intel, VENDOR_ITEM_REGULAR),
 		list("JTAC Radio Encryption Key", 5, /obj/item/device/encryptionkey/jtac, VENDOR_ITEM_REGULAR),
+		list("Sentry Gun Network Encryption Key", 8, /obj/item/device/encryptionkey/sentry_laptop, VENDOR_ITEM_REGULAR),
 		list("Marine Radio Headset", 5, /obj/item/device/radio/headset/almayer, VENDOR_ITEM_REGULAR),
 		list("Supply Radio Encryption Key", 5, /obj/item/device/encryptionkey/req, VENDOR_ITEM_REGULAR),
 

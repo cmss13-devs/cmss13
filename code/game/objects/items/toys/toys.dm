@@ -1,15 +1,15 @@
 /* Toys!
  * Contains:
- *		Balloons
- *		Fake telebeacon
- *		Fake singularity
- *      Toy mechs
- *		Crayons
- *		Snap pops
- *		Water flower
- *      Therapy dolls
- *      Inflatable duck
- *		Other things
+ * Balloons
+ * Fake telebeacon
+ * Fake singularity
+ * Toy mechs
+ * Crayons
+ * Snap pops
+ * Water flower
+ * Therapy dolls
+ * Inflatable duck
+ * Other things
  */
 
 
@@ -144,15 +144,15 @@
 	icon_state = "snappop"
 	w_class = SIZE_TINY
 
-	launch_impact(atom/hit_atom)
-		..()
-		var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
-		s.set_up(3, 1, src)
-		s.start()
-		new /obj/effect/decal/cleanable/ash(src.loc)
-		src.visible_message(SPAN_DANGER("The [src.name] explodes!"),SPAN_DANGER("You hear a snap!"))
-		playsound(src, 'sound/effects/snap.ogg', 25, 1)
-		qdel(src)
+/obj/item/toy/snappop/launch_impact(atom/hit_atom)
+	..()
+	var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
+	s.set_up(3, 1, src)
+	s.start()
+	new /obj/effect/decal/cleanable/ash(src.loc)
+	src.visible_message(SPAN_DANGER("The [src.name] explodes!"),SPAN_DANGER("You hear a snap!"))
+	playsound(src, 'sound/effects/snap.ogg', 25, 1)
+	qdel(src)
 
 /obj/item/toy/snappop/Crossed(H as mob|obj)
 	if((ishuman(H))) //i guess carp and shit shouldn't set them off
@@ -379,7 +379,7 @@
 	name = "beach ball"
 	icon_state = "beachball"
 	item_state = "beachball"
-	density = 0
+	density = FALSE
 	anchored = 0
 	w_class = SIZE_SMALL
 	force = 0.0
@@ -421,8 +421,8 @@
 		comment = "Ouch, bad luck."
 	icon_state = "[name][result]"
 	user.visible_message(SPAN_NOTICE("[user] has thrown [src]. It lands on [result]. [comment]"), \
-						 SPAN_NOTICE("You throw [src]. It lands on a [result]. [comment]"), \
-						 SPAN_NOTICE("You hear [src] landing on a [result]. [comment]"))
+						SPAN_NOTICE("You throw [src]. It lands on a [result]. [comment]"), \
+						SPAN_NOTICE("You hear [src] landing on a [result]. [comment]"))
 
 
 
@@ -465,7 +465,7 @@
 
 	if(world.time > last_hug_time)
 		user.visible_message(SPAN_NOTICE("[user] hugs [src]! How cute! "), \
-							 SPAN_NOTICE("You hug [src]. Dawwww... "))
+							SPAN_NOTICE("You hug [src]. Dawwww... "))
 		last_hug_time = world.time + 50 //5 second cooldown
 
 /obj/item/toy/farwadoll/pred
@@ -484,25 +484,25 @@
 	crit_fail = 0
 
 /obj/item/computer3_part/toybox
-	var/list/prizes = list(	/obj/item/storage/box/snappops			= 2,
-							/obj/item/toy/blink								= 2,
-							/obj/item/toy/sword								= 2,
-							/obj/item/toy/gun								= 2,
-							/obj/item/toy/crossbow							= 2,
-							/obj/item/clothing/suit/syndicatefake			= 2,
-							/obj/item/storage/fancy/crayons			= 2,
-							/obj/item/toy/spinningtoy						= 2,
-							/obj/item/toy/prize/ripley						= 1,
-							/obj/item/toy/prize/fireripley					= 1,
-							/obj/item/toy/prize/deathripley					= 1,
-							/obj/item/toy/prize/gygax						= 1,
-							/obj/item/toy/prize/durand						= 1,
-							/obj/item/toy/prize/honk						= 1,
-							/obj/item/toy/prize/marauder					= 1,
-							/obj/item/toy/prize/seraph						= 1,
-							/obj/item/toy/prize/mauler						= 1,
-							/obj/item/toy/prize/odysseus					= 1,
-							/obj/item/toy/prize/phazon						= 1
+	var/list/prizes = list( /obj/item/storage/box/snappops = 2,
+							/obj/item/toy/blink = 2,
+							/obj/item/toy/sword = 2,
+							/obj/item/toy/gun = 2,
+							/obj/item/toy/crossbow = 2,
+							/obj/item/clothing/suit/syndicatefake = 2,
+							/obj/item/storage/fancy/crayons = 2,
+							/obj/item/toy/spinningtoy = 2,
+							/obj/item/toy/prize/ripley = 1,
+							/obj/item/toy/prize/fireripley = 1,
+							/obj/item/toy/prize/deathripley = 1,
+							/obj/item/toy/prize/gygax = 1,
+							/obj/item/toy/prize/durand = 1,
+							/obj/item/toy/prize/honk = 1,
+							/obj/item/toy/prize/marauder = 1,
+							/obj/item/toy/prize/seraph = 1,
+							/obj/item/toy/prize/mauler = 1,
+							/obj/item/toy/prize/odysseus = 1,
+							/obj/item/toy/prize/phazon = 1
 							)
 
 /obj/item/toy/festivizer
@@ -510,6 +510,7 @@
 	desc = "State of the art, WY-brand, high tech... ah who are we kidding, it's just a festivizer. You spot a label on it that says: <i> Attention: This device does not cover item in festive wire, but rather paints it a festive color. </i> What a rip!"
 	icon = 'icons/obj/items/marine-items_christmas.dmi'
 	icon_state = "festive_wire"
+	attack_speed = 0.8 SECONDS
 
 /obj/item/toy/festivizer/get_examine_text(mob/user)
 	. = ..()
@@ -529,8 +530,10 @@
 	target.color = list(1,0,0,0, 0,1,0,0, 0,0,1,0, 0,0,0,1, red? 0.2 : 0,!red? 0.2 : 0,0,0)
 	target.visible_message(SPAN_GREEN("\The [target] has been festivized by [user]! Merry Christmas!"))
 	to_chat(user, SPAN_GREEN("You festivize \the [target]! Merry Christmas!"))
+	playsound(user, pick(95;'sound/items/jingle_short.wav', 5;'sound/items/jingle_long.wav'), 25, TRUE)
 	if(prob(5))
-		playsound(target, 'sound/voice/alien_queen_xmas.ogg', 25, TRUE)
+		playsound(target, pick('sound/voice/alien_queen_xmas.ogg', 'sound/voice/alien_queen_xmas_2.ogg'), 25, TRUE)
+	user.festivizer_hits_total++
 
 /obj/item/toy/festivizer/attack_alien(mob/living/carbon/Xenomorph/M)
 	attack_hand(M) //xenos can use them too.

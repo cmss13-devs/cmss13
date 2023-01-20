@@ -17,7 +17,7 @@
 	return ..()
 
 /obj/item/device/assembly/timer/activate()
-	if(!..())	return 0//Cooldown check
+	if(!..()) return 0//Cooldown check
 
 	time = clamp(round(time), TIMER_MINIMUM_TIME, TIMER_MAXIMUM_TIME)
 	timing = !timing
@@ -42,12 +42,12 @@
 
 
 /obj/item/device/assembly/timer/proc/timer_end()
-	if(!secured)	return 0
+	if(!secured) return 0
 	pulse(0)
 	if(!holder)
 		visible_message("[icon2html(src, hearers(src))] *beep* *beep*", "*beep* *beep*")
 	cooldown = 2
-	addtimer(CALLBACK(src, .proc/process_cooldown), 1 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(process_cooldown)), 1 SECONDS)
 	STOP_PROCESSING(SSobj, src)
 	return
 

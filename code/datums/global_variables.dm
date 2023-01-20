@@ -271,7 +271,7 @@
 		names = sortList(names)
 
 		variable = tgui_input_list(usr, "Which var?","Var", names)
-		if(!variable)	return
+		if(!variable) return
 		var_value = global.vars[variable]
 
 		if(variable in locked && !check_rights(R_DEBUG))

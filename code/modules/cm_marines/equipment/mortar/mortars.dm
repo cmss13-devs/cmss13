@@ -8,7 +8,7 @@
 	anchored = TRUE
 	unslashable = TRUE
 	unacidable = TRUE
-	density = 1
+	density = TRUE
 	// So you can't hide it under corpses
 	layer = ABOVE_MOB_LAYER
 	flags_atom = RELAY_CLICK
@@ -265,7 +265,7 @@
 			for(var/mob/M in range(7))
 				shake_camera(M, 3, 1)
 
-			addtimer(CALLBACK(src, .proc/handle_shell, T, mortar_shell), travel_time)
+			addtimer(CALLBACK(src, PROC_REF(handle_shell), T, mortar_shell), travel_time)
 
 	if(HAS_TRAIT(O, TRAIT_TOOL_WRENCH))
 		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))

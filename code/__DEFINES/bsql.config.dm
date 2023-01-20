@@ -6,7 +6,7 @@
 #ifndef TESTING
 #define BSQL_PROTECT_DATUM(path) \
 ##path/is_datum_protected(){\
-    return TRUE;\
+	return TRUE;\
 }
 #else
 #define BSQL_PROTECT_DATUM(path)

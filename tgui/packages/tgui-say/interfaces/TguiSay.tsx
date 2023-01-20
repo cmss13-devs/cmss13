@@ -49,6 +49,7 @@ export class TguiSay extends Component<{}, State> {
           <Dragzone theme={theme} left />
           {!!theme && (
             <button
+              key="options"
               className={getCss('button', theme)}
               onclick={onClick}
               type="submit">
@@ -56,6 +57,7 @@ export class TguiSay extends Component<{}, State> {
             </button>
           )}
           <TextArea
+            key="type"
             className={getCss('textarea', theme)}
             dontUseTabForIndent
             innerRef={innerRef}
@@ -67,6 +69,16 @@ export class TguiSay extends Component<{}, State> {
             selfClear
             value={edited && value}
           />
+          {!!theme && (
+            <button
+              key="escape"
+              className={getCss('button', theme)}
+              onclick={onEscape}
+              type="submit"
+              style={{ 'width': '2rem', 'margin-right': '5px' }}>
+              X
+            </button>
+          )}
           <Dragzone theme={theme} right />
         </div>
         <Dragzone theme={theme} bottom />

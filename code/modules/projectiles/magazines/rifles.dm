@@ -215,6 +215,7 @@
 	icon_state = "m41ae2"
 	max_rounds = 300
 	gun_type = /obj/item/weapon/gun/rifle/lmg
+	flags_magazine = AMMUNITION_CANNOT_REMOVE_BULLETS|AMMUNITION_REFILLABLE
 
 /obj/item/ammo_magazine/rifle/lmg/holo_target
 	name = "\improper M41AE2 ammo box (10x24mm holo-target)"

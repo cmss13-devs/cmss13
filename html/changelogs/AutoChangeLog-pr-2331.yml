@@ -1,0 +1,4 @@
+author: "CometBlaze"
+delete-after: True
+changes:
+  - code_imp: "Pre-set emotes now use langchat"

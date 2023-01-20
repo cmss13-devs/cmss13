@@ -23,7 +23,7 @@
 	permissions_required = R_BAN
 
 /datum/player_action/eorgban/act(var/client/user, var/mob/target, var/list/params)
-	if(target.client && target.client.admin_holder)	return	//admins cannot be banned. Even if they could, the ban doesn't affect them anyway
+	if(target.client && target.client.admin_holder) return //admins cannot be banned. Even if they could, the ban doesn't affect them anyway
 
 	if(!target.ckey)
 		to_chat(user, SPAN_DANGER("<B>Warning: Mob ckey for [target.name] not found.</b>"))
@@ -204,6 +204,7 @@
 		return
 
 	target_mob.change_real_name(target_mob, new_name)
+	GLOB.data_core.manifest_modify(new_name, WEAKREF(target_mob))
 	if(ishuman(target_mob))
 		var/mob/living/carbon/human/target_human = target_mob
 		if(target_human.wear_id && target_human.wear_id.registered_ref == WEAKREF(target_human))

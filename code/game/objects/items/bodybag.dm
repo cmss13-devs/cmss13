@@ -64,13 +64,17 @@
 	open_sound = 'sound/items/zip.ogg'
 	close_sound = 'sound/items/zip.ogg'
 	var/item_path = /obj/item/bodybag
-	var/open_cooldown = 0 //the active var that tracks the cooldown for opening and closing
-	density = 0
+	/// the active var that tracks the cooldown for opening and closing
+	var/open_cooldown = 0
+	density = FALSE
 	anchored = 0
-	layer = ABOVE_OBJ_LAYER //To layer above rollerbeds.
-	drag_delay = 2 //slightly easier than to drag the body directly.
-	var/obj/structure/bed/roller/roller_buckled //the roller bed this bodybag is attached to.
-	///How many extra pixels to offset the bag by when buckled, since rollerbeds are set up to offset a centered horizontal human sprite.
+	/// To layer above rollerbeds.
+	layer = ABOVE_OBJ_LAYER
+	/// slightly easier than to drag the body directly.
+	drag_delay = 2
+	/// the roller bed this bodybag is attached to.
+	var/obj/structure/bed/roller/roller_buckled
+	/// How many extra pixels to offset the bag by when buckled, since rollerbeds are set up to offset a centered horizontal human sprite.
 	var/buckle_offset = 5
 	store_items = FALSE
 
@@ -150,7 +154,7 @@
 
 /obj/structure/closet/bodybag/close()
 	if(..())
-		density = 0
+		density = FALSE
 		update_name()
 		return 1
 	return 0
@@ -162,8 +166,8 @@
 /obj/structure/closet/bodybag/MouseDrop(over_object, src_location, over_location)
 	..()
 	if(over_object == usr && Adjacent(usr) && !roller_buckled)
-		if(!ishuman(usr))	return
-		if(contents.len)	return 0
+		if(!ishuman(usr)) return
+		if(contents.len) return 0
 		visible_message(SPAN_NOTICE("[usr] folds up [name]."))
 		var/obj/item/I = new item_path(get_turf(src), src)
 		usr.put_in_hands(I)
@@ -206,10 +210,13 @@
 	icon = 'icons/obj/cryobag.dmi'
 	item_path = /obj/item/bodybag/cryobag
 	store_items = FALSE
-	var/mob/living/carbon/human/stasis_mob //the mob in stasis
+	/// the mob in stasis
+	var/mob/living/carbon/human/stasis_mob
 	var/used = 0
-	var/last_use = 0 //remembers the value of used, to delay crostasis start.
-	var/max_uses = 1800 //15 mins of usable cryostasis
+	/// remembers the value of used, to delay crostasis start.
+	var/last_use = 0
+	/// 15 mins of usable cryostasis
+	var/max_uses = 1800
 
 /obj/structure/closet/bodybag/cryobag/Initialize(mapload, obj/item/bodybag/cryobag/CB)
 	. = ..()

@@ -110,6 +110,27 @@ Class Procs:
 	projectile_coverage = PROJECTILE_COVERAGE_MEDIUM
 	var/power_machine = FALSE //Whether the machine should process on power, or normal processor
 
+/obj/structure/machinery/vv_get_dropdown()
+	. = ..()
+	VV_DROPDOWN_OPTION("", "-----MACHINERY-----")
+	VV_DROPDOWN_OPTION(VV_HK_TOGGLEPOWER, "Toggle Needs Power")
+
+/obj/structure/machinery/vv_do_topic(list/href_list)
+	. = ..()
+	if(href_list[VV_HK_TOGGLEPOWER])
+		if(!check_rights(R_VAREDIT))
+			return
+
+		var/obj/structure/machinery/O = locate(href_list[VV_HK_TOGGLEPOWER])
+		if(!istype(O))
+			to_chat(usr, "This can only be used on instances of type /obj/structure/machinery")
+			return
+
+		O.needs_power = !O.needs_power
+		O.power_change()
+		message_staff("[key_name(src, TRUE)] has toggled needs_power to [O.needs_power] on [O] in [O.loc.loc] ([O.x],[O.y],[O.z]).", O.x, O.y, O.z)
+
+
 /obj/structure/machinery/Initialize(mapload, ...)
 	. = ..()
 	machines += src

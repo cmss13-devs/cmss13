@@ -10,8 +10,6 @@ GLOBAL_PROTECT(href_token)
 	var/rights = 0
 	var/fakekey = null
 
-	var/list/datum/marked_datums = list()
-
 	var/admincaster_screen = 0 //See newscaster.dm under machinery for a full description
 	var/datum/feed_message/admincaster_feed_message = new /datum/feed_message   //These two will act as admin_holders.
 	var/datum/feed_channel/admincaster_feed_channel = new /datum/feed_channel
@@ -19,10 +17,14 @@ GLOBAL_PROTECT(href_token)
 
 	var/href_token
 
+	var/datum/marked_datum
+	var/list/datum/tagged_datums
+
 	///Whether this admin is invisiminning
 	var/invisimined = FALSE
 
 	var/datum/filter_editor/filteriffic
+	var/datum/particle_editor/particle_test
 
 /datum/admins/New(initial_rank = "Temporary Admin", initial_rights = 0, ckey, list/new_extra_titles)
 	if(!ckey)

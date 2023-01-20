@@ -22,3 +22,22 @@
 	blood_volume = BLOOD_VOLUME_NORMAL
 
 	var/datum/huntdata/hunter_data //Stores all information relating to Hunters for use with their HUD and other systems.
+
+/mob/living/carbon/vv_get_dropdown()
+	. = ..()
+	VV_DROPDOWN_OPTION("", "-----CARBON-----")
+	VV_DROPDOWN_OPTION(VV_HK_CHANGEHIVENUMBER, "Change Hive Number")
+
+/mob/living/carbon/vv_do_topic(list/href_list)
+	. = ..()
+
+	if(href_list[VV_HK_CHANGEHIVENUMBER])
+		if(!check_rights(R_DEBUG|R_ADMIN))
+			return
+
+		var/mob/living/carbon/X = locate(href_list[VV_HK_CHANGEHIVENUMBER])
+		if(!istype(X))
+			to_chat(usr, "This can only be done to instances of type /mob/living/carbon")
+			return
+
+		usr.client.cmd_admin_change_their_hivenumber(X)

@@ -1656,11 +1656,3 @@
 	if(species)
 		slot_equipment_priority = species.slot_equipment_priority
 	return ..(W,ignore_delay,slot_equipment_priority)
-
-/mob/living/carbon/human/get_vv_options()
-	. = ..()
-	. += "<option value>-----HUMAN-----</option>"
-	. += "<option value='?_src_=vars;edit_skill=\ref[src]'>Edit Skills</option>"
-	. += "<option value='?_src_=vars;setspecies=\ref[src]'>Set Species</option>"
-	. += "<option value='?_src_=vars;selectequipment=\ref[src]'>Select Equipment</option>"
-	. += "<option value='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminspawncookie=\ref[src]'>Give Cookie</option>"

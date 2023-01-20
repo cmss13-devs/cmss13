@@ -40,6 +40,50 @@
 	. = ..()
 	remove_from_garbage(src)
 
+/obj/vv_get_dropdown()
+	. = ..()
+	VV_DROPDOWN_OPTION(VV_HK_EXPLODE, "Trigger Explosion")
+	VV_DROPDOWN_OPTION(VV_HK_EMPULSE, "Trigger EM Pulse")
+	VV_DROPDOWN_OPTION(VV_HK_SETMATRIX, "Set Base Matrix")
+	VV_DROPDOWN_OPTION("", "-----OBJECT-----")
+	VV_DROPDOWN_OPTION(VV_HK_MASS_DEL_TYPE, "Delete all of type")
+
+/obj/vv_do_topic(list/href_list)
+	. = ..()
+
+	if(href_list[VV_HK_SETMATRIX])
+		if(!check_rights(R_DEBUG|R_ADMIN|R_VAREDIT))
+			return
+
+		var/atom/A = locate(href_list[VV_HK_SETMATRIX])
+		if(!isobj(A) && !ismob(A))
+			to_chat(usr, "This can only be done to instances of type /obj and /mob")
+			return
+
+		if(!LAZYLEN(usr.client.stored_matrices))
+			to_chat(usr, "You don't have any matrices stored!")
+			return
+
+		var/matrix_name = tgui_input_list(usr, "Choose a matrix", "Matrix", (usr.client.stored_matrices + "Revert to Default" + "Cancel"))
+		if(!matrix_name || matrix_name == "Cancel")
+			return
+		else if (matrix_name == "Revert to Default")
+			A.base_transform = null
+			A.transform = matrix()
+			A.disable_pixel_scaling()
+			return
+
+		var/matrix/MX = LAZYACCESS(usr.client.stored_matrices, matrix_name)
+		if(!MX)
+			return
+
+		A.base_transform = MX
+		A.transform = MX
+
+		if (alert(usr, "Would you like to enable pixel scaling?", "Confirm", "Yes", "No") == "Yes")
+			A.enable_pixel_scaling()
+
+
 // object is being physically reduced into parts
 /obj/proc/deconstruct(disassembled = TRUE)
 	density = FALSE

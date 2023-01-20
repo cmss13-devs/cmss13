@@ -213,6 +213,7 @@ block( \
 #define SEC_LEVEL_DELTA 3
 
 //Alarm levels.
+// flags_alarm_state
 #define ALARM_WARNING_FIRE (1<<0)
 #define ALARM_WARNING_ATMOS (1<<1)
 #define ALARM_WARNING_EVAC (1<<2)
@@ -526,6 +527,7 @@ block( \
 
 // Performance toggle flags
 /// Set conservative MC timings on game start
+// perf_flags
 #define PERF_TOGGLE_LAZYSS (1<<0)
 /// Disable bloody footprints
 #define PERF_TOGGLE_NOBLOODPRINTS (1<<1)

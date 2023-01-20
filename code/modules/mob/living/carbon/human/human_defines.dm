@@ -180,3 +180,101 @@
 	cached_human_playtime = total_marine_playtime
 
 	return total_marine_playtime
+
+/mob/living/carbon/human/vv_get_dropdown()
+	. = ..()
+	VV_DROPDOWN_OPTION("", "-----HUMAN-----")
+	VV_DROPDOWN_OPTION(VV_HK_SET_SPECIES, "Set Species")
+	VV_DROPDOWN_OPTION(VV_HK_MAKE_MONKEY, "Make Monkey")
+	VV_DROPDOWN_OPTION(VV_HK_MAKE_ALIEN, "Make Alien")
+	VV_DROPDOWN_OPTION(VV_HK_MAKE_ROBOT, "Make Robot")
+	. += "<option value='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminspawncookie=\ref[src]'>Give Cookie</option>"
+
+/mob/living/carbon/human/vv_do_topic(list/href_list)
+	. = ..()
+
+	if(href_list[VV_HK_MAKE_MONKEY])
+		if(!check_rights(R_SPAWN))
+			return
+
+		var/mob/living/carbon/human/H = locate(href_list[VV_HK_MAKE_MONKEY])
+		if(!istype(H))
+			to_chat(usr, "This can only be done to instances of type /mob/living/carbon/human")
+			return
+
+		if(alert("Confirm mob type change?",,"Transform","Cancel") != "Transform") return
+		if(!H)
+			to_chat(usr, "Mob doesn't exist anymore")
+			return
+		H.monkeyize()
+
+
+	if(href_list[VV_HK_MAKE_ROBOT])
+		if(!check_rights(R_SPAWN))
+			return
+
+		var/mob/living/carbon/human/H = locate(href_list[VV_HK_MAKE_ROBOT])
+		if(!istype(H))
+			to_chat(usr, "This can only be done to instances of type /mob/living/carbon/human")
+			return
+
+		if(alert("Confirm mob type change?",,"Transform","Cancel") != "Transform") return
+		if(!H)
+			to_chat(usr, "Mob doesn't exist anymore")
+			return
+		H.Robotize()
+
+
+	if(href_list[VV_HK_MAKE_ALIEN])
+		if(!check_rights(R_SPAWN))
+			return
+
+		var/mob/living/carbon/human/H = locate(href_list[VV_HK_MAKE_ALIEN])
+		if(!istype(H))
+			to_chat(usr, "This can only be done to instances of type /mob/living/carbon/human")
+			return
+
+		if(alert("Confirm mob type change?",,"Transform","Cancel") != "Transform") return
+		if(!H)
+			to_chat(usr, "Mob doesn't exist anymore")
+			return
+		usr.client.cmd_admin_alienize(H)
+
+
+	if(href_list[VV_HK_SET_SPECIES])
+		if(!check_rights(R_SPAWN))
+			return
+
+		var/mob/living/carbon/human/H = locate(href_list[VV_HK_SET_SPECIES])
+		if(!istype(H))
+			to_chat(usr, "This can only be done to instances of type /mob/living/carbon/human")
+			return
+
+		var/new_species = tgui_input_list(usr, "Please choose a new species.","Species",GLOB.all_species)
+
+		if(!new_species) return
+
+		if(!H)
+			to_chat(usr, "Mob doesn't exist anymore")
+			return
+
+		if(H.set_species(new_species))
+			to_chat(usr, "Set species of [H] to [H.species].")
+		else
+			to_chat(usr, "Failed! Something went wrong.")
+
+
+	if(href_list[VV_HK_EDIT_SKILL])
+		if(!check_rights(R_VAREDIT))
+			return
+
+		var/mob/living/carbon/human/H = locate(href_list[VV_HK_EDIT_SKILL])
+		if(!istype(H))
+			to_chat(usr, "This can only be done to instances of type /mob/living/carbon/human")
+			return
+
+		if(!H.skills)
+			H.skills = new /datum/skills/pfc(H)
+
+		H.skills.tgui_interact(usr)
+

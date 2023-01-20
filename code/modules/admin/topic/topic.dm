@@ -1558,11 +1558,11 @@
 				where = "onfloor"
 
 		if (where == "inmarked" )
-			if (!marked_datums.len)
+			if (!marked_datum)
 				to_chat(usr, "You don't have any datum marked. Abandoning spawn.")
 				return
 			else
-				var/datum/D = input_marked_datum(marked_datums)
+				var/datum/D = marked_datum
 				if(!D)
 					return
 
@@ -1579,7 +1579,7 @@
 					if ("relative")
 						target = locate(loc.x + X,loc.y + Y,loc.z + Z)
 			if ("inmarked")
-				var/datum/D = input_marked_datum(marked_datums)
+				var/datum/D = marked_datum
 				if(!D)
 					to_chat(usr, "Invalid marked datum. Abandoning.")
 					return
@@ -1764,6 +1764,35 @@
 		message_staff("[key_name_admin(usr)] has canceled the self-destruct.")
 		destroy_cancel = 1
 		return
+
+	if(href_list["tag_datum"])
+		if(!check_rights(R_ADMIN))
+			return
+		var/datum/datum_to_tag = locate(href_list["tag_datum"])
+		if(!datum_to_tag)
+			return
+		return add_tagged_datum(datum_to_tag)
+
+	if(href_list["del_tag"])
+		if(!check_rights(R_ADMIN))
+			return
+		var/datum/datum_to_remove = locate(href_list["del_tag"])
+		if(!datum_to_remove)
+			return
+		return remove_tagged_datum(datum_to_remove)
+
+	if(href_list["show_tags"])
+		if(!check_rights(R_ADMIN))
+			return
+		return display_tags()
+
+	if(href_list["mark_datum"])
+		if(!check_rights(R_ADMIN))
+			return
+		var/datum/datum_to_mark = locate(href_list["mark_datum"])
+		if(!datum_to_mark)
+			return
+		return usr.client?.mark_datum(datum_to_mark)
 
 	return
 

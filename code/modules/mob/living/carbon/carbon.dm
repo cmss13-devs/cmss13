@@ -513,10 +513,3 @@
 			. += SPAN_GREEN("[src] was thralled by [src.hunter_data.thralled_set.real_name] for '[src.hunter_data.thralled_reason]'.")
 		else if(src.hunter_data.gear)
 			. += SPAN_RED("[src] was marked as carrying gear by [src.hunter_data.gear_set].")
-
-/mob/living/carbon/get_vv_options()
-	. = ..()
-	. += "<option value>-----CARBON-----</option>"
-	. += "<option value='?_src_=vars;changehivenumber=\ref[src]'>Change Hivenumber</option>"
-	. += "<option value='?_src_=vars;addtrait=\ref[src]'>Add Trait</option>"
-	. += "<option value='?_src_=vars;removetrait=\ref[src]'>Remove Trait</option>"

@@ -71,12 +71,12 @@
 	if(src.mob)
 		togglebuildmode(src.mob)
 
-/client/proc/drop_bomb()
+/client/proc/drop_bomb(atom/target)
 	set name = "Drop Bomb"
 	set desc = "Cause an explosion of varying strength at your location."
 	set category = "Admin.Fun"
 
-	var/turf/epicenter = mob.loc
+	var/turf/epicenter = target ? target : mob.loc
 	var/custom_limit = 5000
 	var/list/choices = list("Small Bomb", "Medium Bomb", "Big Bomb", "Custom Bomb")
 	var/list/falloff_shape_choices = list("CANCEL", "Linear", "Exponential")

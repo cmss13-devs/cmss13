@@ -65,7 +65,8 @@
 	var/faction = FACTION_NEUTRAL
 	var/list/faction_group
 
-	var/registered_name = "Unknown" // The name registered_name on the card
+	/// The name registered_name on the card
+	var/registered_name = "Unknown"
 	var/registered_ref = null
 	var/registered_gid = 0
 	flags_equip_slot = SLOT_ID
@@ -73,15 +74,21 @@
 	var/blood_type = "\[UNSET\]"
 
 	//alt titles are handled a bit weirdly in order to unobtrusively integrate into existing ID system
-	var/assignment = null //can be alt title or the actual job
-	var/rank = null //actual job
-	var/paygrade = "ME1"  // Marine's paygrade
-	var/claimedgear = 1 // For medics and engineers to 'claim' a locker
+
+	/// can be alt title or the actual job
+	var/assignment = null
+	/// actual job
+	var/rank = null
+	/// Marine's paygrade
+	var/paygrade = "ME1"
+	/// For medics and engineers to 'claim' a locker
+	var/claimedgear = 1
 
 	var/list/uniform_sets = null
 	var/list/vended_items
 
-	var/pinned_on_uniform = TRUE //whether the id's onmob overlay only appear when wearing a uniform
+	/// whether the id's onmob overlay only appear when wearing a uniform
+	var/pinned_on_uniform = TRUE
 
 	var/modification_log = list()
 

@@ -1,0 +1,4 @@
+author: "stanalbatross"
+delete-after: True
+changes:
+  - ui: "remade the weapon status nanoui into tgui"

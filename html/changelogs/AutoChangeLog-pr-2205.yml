@@ -1,0 +1,4 @@
+author: "stanalbatross"
+delete-after: True
+changes:
+  - code_imp: "changed some alerts to tgui alerts and fixed issues with them that caused their code to run when they were closed"

@@ -1,0 +1,4 @@
+author: "Kitsunemitsu"
+delete-after: True
+changes:
+  - bugfix: "fixed Commander and Lt Commander radio names on WO"

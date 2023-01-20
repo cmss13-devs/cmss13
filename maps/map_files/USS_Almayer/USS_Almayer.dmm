@@ -18099,9 +18099,8 @@
 	},
 /area/almayer/medical/lower_medical_lobby)
 "beZ" = (
-/obj/structure/platform{
+/obj/structure/platform_decoration{
 	dir = 8;
-	icon_state = "platform_deco"
 	},
 /turf/open/floor/almayer,
 /area/almayer/living/chapel)
@@ -37008,9 +37007,8 @@
 	},
 /area/almayer/hull/upper_hull/u_f_p)
 "dtZ" = (
-/obj/structure/platform{
-	dir = 4;
-	icon_state = "platform_deco"
+/obj/structure/platform_decoration{
+	dir = 4
 	},
 /turf/open/floor/almayer,
 /area/almayer/living/chapel)
@@ -100229,8 +100227,8 @@ aaa
 aaa
 aaa
 aaa
-aLE
 aaa
+aLE
 aaa
 aaa
 aaa

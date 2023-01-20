@@ -17,6 +17,16 @@
 	health_max = 150
 	display_additional_stats = TRUE
 
+	has_camera = FALSE
+
+	choice_categories = list(
+		SENTRY_CATEGORY_IFF = list(FACTION_USCM, FACTION_WEYLAND, FACTION_HUMAN),
+	)
+
+	selected_categories = list(
+		SENTRY_CATEGORY_IFF = FACTION_USCM,
+	)
+
 
 /obj/structure/machinery/defenses/tesla_coil/Initialize()
 	. = ..()

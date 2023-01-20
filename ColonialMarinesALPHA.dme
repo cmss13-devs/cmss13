@@ -6,6 +6,7 @@
 // BEGIN_FILE_DIR
 #define FILE_DIR .
 // END_FILE_DIR
+
 // BEGIN_PREFERENCES
 #define DEBUG
 // END_PREFERENCES
@@ -79,6 +80,7 @@
 #include "code\__DEFINES\qdel.dm"
 #include "code\__DEFINES\radio.dm"
 #include "code\__DEFINES\regex.dm"
+#include "code\__DEFINES\sentry_laptop_configurations.dm"
 #include "code\__DEFINES\shuttles.dm"
 #include "code\__DEFINES\skills.dm"
 #include "code\__DEFINES\sounds.dm"
@@ -89,13 +91,13 @@
 #include "code\__DEFINES\subsystems.dm"
 #include "code\__DEFINES\surgery.dm"
 #include "code\__DEFINES\techtree.dm"
-#include "code\__DEFINES\tests.dm"
 #include "code\__DEFINES\text.dm"
 #include "code\__DEFINES\tgs.config.dm"
 #include "code\__DEFINES\tgs.dm"
 #include "code\__DEFINES\tgui.dm"
 #include "code\__DEFINES\traits.dm"
 #include "code\__DEFINES\turf_flags.dm"
+#include "code\__DEFINES\unit_tests.dm"
 #include "code\__DEFINES\urls.dm"
 #include "code\__DEFINES\vehicle.dm"
 #include "code\__DEFINES\vendors.dm"
@@ -1497,6 +1499,7 @@
 #include "code\modules\defenses\handheld.dm"
 #include "code\modules\defenses\planted_flag.dm"
 #include "code\modules\defenses\sentry.dm"
+#include "code\modules\defenses\sentry_computer.dm"
 #include "code\modules\defenses\sentry_flamer.dm"
 #include "code\modules\defenses\tesla_coil.dm"
 #include "code\modules\desert_dam\filtration\consoles.dm"
@@ -2072,21 +2075,6 @@
 #include "code\modules\teleporters\teleporter_admin_verbs.dm"
 #include "code\modules\teleporters\teleporter_console.dm"
 #include "code\modules\teleporters\teleporter_landmarks.dm"
-#include "code\modules\test\test_case.dm"
-#include "code\modules\test\test_manager.dm"
-#include "code\modules\test\test_verbs.dm"
-#include "code\modules\test\maps\test_no_blocked_doors.dm"
-#include "code\modules\test\maps\test_no_blocked_windows.dm"
-#include "code\modules\test\maps\test_no_space_inside.dm"
-#include "code\modules\test\maps\test_pipes_connected.dm"
-#include "code\modules\test\maps\test_set_maps.dm"
-#include "code\modules\test\sprites\test_hair_sprites.dm"
-#include "code\modules\test\sprites\test_plating_sprites.dm"
-#include "code\modules\test\sprites\test_set_sprites.dm"
-#include "code\modules\test\testenv\test_area.dm"
-#include "code\modules\test\testenv\test_environment.dm"
-#include "code\modules\test\testenv\environments\tank_gallery.dm"
-#include "code\modules\test\testenv\environments\example\envstring.dm"
 #include "code\modules\tgchat\cm_shims.dm"
 #include "code\modules\tgchat\message.dm"
 #include "code\modules\tgchat\to_chat.dm"
@@ -2130,6 +2118,7 @@
 #include "code\modules\tgui_panel\external.dm"
 #include "code\modules\tgui_panel\telemetry.dm"
 #include "code\modules\tgui_panel\tgui_panel.dm"
+#include "code\modules\unit_tests\_unit_tests.dm"
 #include "code\modules\vehicles\cargo_train.dm"
 #include "code\modules\vehicles\powerloader.dm"
 #include "code\modules\vehicles\train.dm"

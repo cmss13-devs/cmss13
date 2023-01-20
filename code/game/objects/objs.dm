@@ -1,16 +1,18 @@
 /obj
-	//Used to store information about the contents of the object.
+	/// Used to store information about the contents of the object.
 	var/list/matter
-	//determines whether or not the object can be destroyed by an explosion
+	/// determines whether or not the object can be destroyed by an explosion
 	var/indestructible = FALSE
 	var/health = null
-	var/reliability = 100 //Used by SOME devices to determine how reliable they are.
+	/// Used by SOME devices to determine how reliable they are.
+	var/reliability = 100
 	var/crit_fail = 0
-	unacidable = FALSE //universal "unacidabliness" var, here so you can use it in any obj.
+	/// universal "unacidabliness" var, here so you can use it in any obj.
+	unacidable = FALSE
 	animate_movement = 2
 	var/throwforce = 1
-	var/in_use = FALSE // If we have a user using us, this will be set on. We will check if the user has stopped using us, and thus stop updating and LAGGING EVERYTHING!
-
+	/// If we have a user using us, this will be set on. We will check if the user has stopped using us, and thus stop updating and LAGGING EVERYTHING!
+	var/in_use = FALSE
 	var/mob/living/buckled_mob
 	var/buckle_lying = FALSE //Is the mob buckled in a lying position
 	var/can_buckle = FALSE
@@ -18,16 +20,19 @@
 	cares about surface conditions. The lowest multiplier of objects on the tile is used.**/
 	var/surgery_duration_multiplier = SURGERY_SURFACE_MULT_AWFUL
 
-	var/projectile_coverage = 0 //an object's "projectile_coverage" var indicates the maximum probability of blocking a projectile, assuming density and throwpass. Used by barricades, tables and window frames
-	var/garbage = FALSE //set to true if the item is garbage and should be deleted after awhile
+	/// an object's "projectile_coverage" var indicates the maximum probability of blocking a projectile, assuming density and throwpass. Used by barricades, tables and window frames
+	var/projectile_coverage = 0
+	/// set to true if the item is garbage and should be deleted after awhile
+	var/garbage = FALSE
+
 	var/list/req_access = null
 	var/list/req_one_access = null
 	var/req_access_txt = null
 	var/req_one_access_txt = null
 
 	var/flags_obj = NO_FLAGS
-
-	var/renamedByPlayer = FALSE //set when a player uses a pen on a renamable object
+	/// set when a player uses a pen on a renamable object
+	var/renamedByPlayer = FALSE
 
 	/// How much this item is worth when lowered into the ASRS pit while the black market is unlocked.
 	var/black_market_value = 0

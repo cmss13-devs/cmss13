@@ -210,6 +210,11 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 				FACTION_MERCENARY,
 				FACTION_FREELANCER,
 			) return TRUE
+
+		for(var/faction in user.faction_group)
+			if(faction in FACTION_LIST_WY)
+				return TRUE
+
 		if(user.faction in FACTION_LIST_WY)
 			return TRUE
 

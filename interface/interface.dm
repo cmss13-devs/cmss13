@@ -4,7 +4,7 @@
 	set desc = "Visit the wiki."
 	set hidden = TRUE
 	if( CONFIG_GET(string/wikiurl) )
-		if(alert("This will open the wiki in your browser. Are you sure?",,"Yes","No")=="No")
+		if(tgui_alert(src, "This will open the wiki in your browser. Are you sure?", "Confirm", list("Yes", "No")) != "Yes")
 			return
 		src << link(CONFIG_GET(string/wikiurl))
 	else
@@ -16,7 +16,7 @@
 	set desc = "Visit the forum."
 	set hidden = TRUE
 	if( CONFIG_GET(string/forumurl) )
-		if(alert("This will open the forum in your browser. Are you sure?",,"Yes","No")=="No")
+		if(tgui_alert(src, "This will open the forum in your browser. Are you sure?", "Confirm", list("Yes", "No")) != "Yes")
 			return
 		src << link(CONFIG_GET(string/forumurl))
 	else
@@ -28,7 +28,7 @@
 	set desc = "Read our rules."
 	set hidden = TRUE
 	if( CONFIG_GET(string/rulesurl) )
-		if(alert("This will open the rules in your browser. Are you sure?",,"Yes","No")=="No")
+		if(tgui_alert(src, "This will open the rules in your browser. Are you sure?", "Confirm", list("Yes", "No")) != "Yes")
 			return
 		src << link(CONFIG_GET(string/rulesurl))
 	else
@@ -52,6 +52,9 @@
 	set desc = "Join our Discord! Meet and talk with other players in the server."
 	set hidden = TRUE
 
+	if(tgui_alert(src, "This will open the discord in your browser. Are you sure?", "Confirm", list("Yes", "No")) != "Yes")
+		return
+
 	src << link("https://discord.gg/cmss13")
 	return
 
@@ -60,8 +63,12 @@
 	set desc = "Submit a bug."
 	set hidden = TRUE
 
-	if(alert("Please search for the bug first to make sure you aren't posting a duplicate.",,"Ok","Cancel")=="Cancel")
+	if(tgui_alert(src, "Please search for the bug first to make sure you aren't posting a duplicate.", "No dupe bugs please", list("OK", "Cancel")) != "OK")
 		return
+
+	if(tgui_alert(src, "This will open the GitHub in your browser. Are you sure?", "Confirm", list("Yes", "No")) != "Yes")
+		return
+
 	src << link(URL_ISSUE_TRACKER)
 	return
 

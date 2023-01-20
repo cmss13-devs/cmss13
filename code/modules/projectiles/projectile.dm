@@ -69,8 +69,6 @@
 
 	/// The flicker that plays when a bullet hits a target. Usually red. Can be nulled so it doesn't show up at all.
 	var/hit_effect_color = "#FF0000"
-	/// The flicker that plays when a bullet hits a shielded xeno. Usually yellow. Can be nulled so it doesn't show up at all.
-	var/shield_effect_color = "#FFFF00"
 
 /obj/item/projectile/Initialize(mapload, var/datum/cause_data/cause_data)
 	. = ..()
@@ -136,7 +134,6 @@
 	damage_falloff = ammo.damage_falloff
 	damage_buildup = ammo.damage_buildup
 	hit_effect_color = ammo.hit_effect_color
-	shield_effect_color = ammo.shield_effect_color
 	projectile_override_flags = special_flags
 
 	ammo_datum.on_bullet_generation(src, bullet_generator)
@@ -816,8 +813,8 @@
 /obj/item/projectile/proc/play_shielded_hit_effect(mob/hit_mob)
 	if(ammo.sound_shield_hit)
 		playsound(hit_mob, ammo.sound_shield_hit, 50, 1)
-	if(hit_mob.stat != DEAD && !isnull(shield_effect_color))
-		animation_flash_color(hit_mob, shield_effect_color)
+	if(hit_mob.stat != DEAD && !isnull(hit_effect_color))
+		animation_flash_color(hit_mob, hit_effect_color)
 
 //----------------------------------------------------------
 				// \\

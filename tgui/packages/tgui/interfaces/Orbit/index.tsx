@@ -106,6 +106,7 @@ const ObservableContent = (props, context) => {
     ert_members = [],
     synthetics = [],
     predators = [],
+    animals = [],
     dead = [],
     ghosts = [],
     misc = [],
@@ -133,6 +134,7 @@ const ObservableContent = (props, context) => {
       <ObservableSection color="green" section={predators} title="Predators" />
       <ObservableSection color="olive" section={escaped} title="Escaped" />
       <ObservableSection section={vehicles} title="Vehicles" />
+      <ObservableSection section={animals} title="Animals" />
       <ObservableSection section={dead} title="Dead" />
       <ObservableSection section={ghosts} title="Ghosts" />
       <ObservableSection section={misc} title="Misc" />

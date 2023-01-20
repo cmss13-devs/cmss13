@@ -1488,7 +1488,7 @@
 /obj/structure/bed/chair/dropship/passenger{
 	dir = 8
 	},
-/obj/item/device/radio/headset/distress/PMC,
+/obj/item/device/radio/headset/distress/PMC/hvh,
 /turf/open/shuttle/dropship{
 	tag = "icon-rasputin15";
 	icon_state = "rasputin15"
@@ -1670,7 +1670,7 @@
 /obj/structure/bed/chair/dropship/passenger{
 	dir = 4
 	},
-/obj/item/device/radio/headset/distress/PMC,
+/obj/item/device/radio/headset/distress/PMC/hvh,
 /turf/open/shuttle/dropship{
 	tag = "icon-rasputin15";
 	icon_state = "rasputin15"

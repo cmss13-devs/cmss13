@@ -86,7 +86,8 @@
 	icon = 'icons/obj/items/weapons/guns/ammo.dmi'
 	icon_state = "custom_rocket_no_fuel"
 	desc = "An undetonated anti-tank rocket that probably hit something soft. You really shouldn't drop this..."
-	matter = list("metal" = 11250) //same as custom warhead
+	/// same as custom warhead
+	matter = list("metal" = 11250)
 	w_class = SIZE_LARGE
 	force = 20
 	throw_range = 5
@@ -98,8 +99,10 @@
 	var/detonating = 0
 	var/thrown = 0
 	var/cause = null
-	var/drop_sensitivity = 25 //% chance of it detonating when dropped. THIS ALSO TRIGGERS WHEN PUTTING IT IN A BAG.
-	var/impact_sensitivity = 75 //% chance of it detonating when thrown and hitting an atom.
+	/// % chance of it detonating when dropped. THIS ALSO TRIGGERS WHEN PUTTING IT IN A BAG.
+	var/drop_sensitivity = 25
+	/// % chance of it detonating when thrown and hitting an atom.
+	var/impact_sensitivity = 75
 
 /obj/item/large_shrapnel/at_rocket_dud/dropped(mob/user)
 	. = ..()

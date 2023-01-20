@@ -786,7 +786,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 
 /obj/item/clothing/head/helmet/marine/veteran/PMC/sniper
 	name = "\improper PMC sniper helmet"
-	desc = "A helmet worn by PMC Marksmen"
+	desc = "A helmet worn by PMC Marksmen."
 	icon_state = "pmc_sniper_hat"
 	flags_armor_protection = BODY_FLAG_HEAD|BODY_FLAG_FACE|BODY_FLAG_EYES
 	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH

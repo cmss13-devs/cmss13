@@ -625,10 +625,18 @@
 	reagent_state = LIQUID
 	color = "#FF8CFF" // rgb: 255, 140, 255
 	nutriment_factor = 1 * FOOD_METABOLISM
+	overdose = VERYHIGH_REAGENTS_OVERDOSE
 
 /datum/reagent/doctor_delight/on_mob_life(mob/living/M)
 	. = ..()
 	if(!.) return
+
+	if(volume > overdose)
+		if(prob(7))
+			to_chat(M, SPAN_WARNING("You feel ill... you think you need to see a doctor!"))
+		M.apply_damage(1, TOX)
+		return
+
 	M:nutrition += nutriment_factor
 	holder.remove_reagent(src.id, FOOD_METABOLISM)
 	if(M:getOxyLoss() && prob(50)) M:apply_damage(-2, OXY)

@@ -30,6 +30,8 @@
 #define REAGENTS_OVERDOSE_CRITICAL 50
 #define HIGH_REAGENTS_OVERDOSE 60
 #define HIGH_REAGENTS_OVERDOSE_CRITICAL 100
+#define VERYHIGH_REAGENTS_OVERDOSE 90
+#define VERYHIGH_REAGENTS_OVERDOSE_CRITICAL 150
 
 
 // How many units of reagent are consumed per tick, by default.

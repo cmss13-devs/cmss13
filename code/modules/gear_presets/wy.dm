@@ -82,7 +82,7 @@
 /datum/equipment_preset/wy/manager
 	skills = /datum/skills/civilian/manager
 	idtype = /obj/item/card/id/silver/clearance_badge/manager
-	headset_type = /obj/item/device/radio/headset/distress/PMC
+	headset_type = /obj/item/device/radio/headset/distress/PMC/command
 
 /datum/equipment_preset/wy/manager/New()
 	. = ..()
@@ -123,6 +123,7 @@
 	rank = JOB_DIRECTOR
 	paygrade = "WYC10"
 	skills = /datum/skills/civilian/manager/director
+	headset_type = /obj/item/device/radio/headset/distress/PMC/command/director
 
 /datum/equipment_preset/wy/manager/director/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/suit_jacket/director(H), WEAR_BODY)

@@ -1,0 +1,4 @@
+author: "Segrain"
+delete-after: True
+changes:
+  - bugfix: "Queen once again can actually launch a hijacked dropship on crash course."

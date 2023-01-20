@@ -1,4 +1,0 @@
-author: "Tisx"
-delete-after: True
-changes:
-  - bugfix: "Moved the sprites of the M79's rail attachments back a few pixels to make it more flush with the weapon."

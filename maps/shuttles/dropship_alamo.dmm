@@ -584,7 +584,7 @@
 /area/shuttle/drop1/sulaco)
 "Py" = (
 /obj/structure/blocker/invisible_wall,
-/obj/structure/machinery/computer/shuttle_control/dropship1/onboard,
+/obj/structure/machinery/computer/shuttle/dropship/flight,
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15";
 	tag = "icon-rasputin15"

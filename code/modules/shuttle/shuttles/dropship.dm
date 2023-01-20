@@ -8,12 +8,14 @@
 	width = 11
 	height = 21
 	preferred_direction = SOUTH
+	callTime = DROPSHIP_TRANSIT_DURATION
+	rechargeTime = SHUTTLE_RECHARGE
+
 	var/list/hatches = list()
 	var/datum/door_controller/aggregate/door_control
 	var/door_override = FALSE
 	var/in_flyby = FALSE
-	callTime = DROPSHIP_TRANSIT_DURATION
-	rechargeTime = SHUTTLE_RECHARGE
+	var/is_hijacked = FALSE
 
 /obj/docking_port/mobile/marine_dropship/Initialize(mapload)
 	. = ..()
@@ -140,6 +142,9 @@
 	id = ALMAYER_DROPSHIP_LZ2
 	auto_open = TRUE
 	roundstart_template = /datum/map_template/shuttle/normandy
+
+/obj/docking_port/stationary/marine_dropship/crash_site
+	auto_open = TRUE
 
 /datum/map_template/shuttle/alamo
 	name = "Alamo"

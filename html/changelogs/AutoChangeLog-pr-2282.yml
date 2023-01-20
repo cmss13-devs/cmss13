@@ -1,5 +1,0 @@
-author: "realforest2001"
-delete-after: True
-changes:
-  - rscadd: "Adds networks to phones. Phone A can only call other phones who receive one of Phone A's transmit networks."
-  - rscadd: "RTO packs set their category on initialize via a variable rather than hardcode, allowing for customisation in maps."

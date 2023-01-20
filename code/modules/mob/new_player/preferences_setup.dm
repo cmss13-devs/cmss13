@@ -243,6 +243,8 @@
 			return /datum/equipment_preset/uscm_ship/commander
 		if(JOB_SO)
 			return /datum/equipment_preset/uscm_ship/so
+		if(JOB_FO)
+			return /datum/equipment_preset/uscm_ship/fo
 		if(JOB_XO)
 			return /datum/equipment_preset/uscm_ship/xo
 		if(JOB_INTEL)

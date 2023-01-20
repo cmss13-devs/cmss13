@@ -420,6 +420,42 @@
 
 //*****************************************************************************************************/
 
+/datum/equipment_preset/uscm_ship/fo
+	name = "USCM Field Officer (FO)"
+	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
+
+	idtype = /obj/item/card/id/silver
+	access = list(ACCESS_MARINE_COMMANDER,
+		ACCESS_MARINE_BRIDGE,
+		ACCESS_MARINE_BRIG,
+		ACCESS_MARINE_DROPSHIP,
+		ACCESS_MARINE_LOGISTICS,
+		ACCESS_MARINE_MEDBAY,
+		ACCESS_MARINE_PREP,
+		ACCESS_MARINE_ALPHA,
+		ACCESS_MARINE_BRAVO,
+		ACCESS_MARINE_CHARLIE,
+		ACCESS_MARINE_DELTA)
+
+	assignment = JOB_FO
+	rank = JOB_FO
+	paygrade = "MO1"
+	role_comm_title = "FO"
+	minimum_age = 25
+	skills = /datum/skills/SO	//Honestly only needs SO skills.
+
+/datum/equipment_preset/uscm_ship/fo/load_gear(mob/living/carbon/human/H)
+	var/backItem = /obj/item/storage/backpack/satchel
+	if (H.client && H.client.prefs && (H.client.prefs.backbag == 1))
+		backItem = /obj/item/storage/backpack/marine
+
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom(H), WEAR_L_EAR)
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/command(H), WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
+	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
+
+//*****************************************************************************************************/
+
 /datum/equipment_preset/uscm_ship/so
 	name = "USCM Staff Officer (SO)"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE

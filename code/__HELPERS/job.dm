@@ -58,6 +58,7 @@
 	return list(
 			JOB_CO,
 			JOB_XO,
+			JOB_FO,
 			JOB_SO,
 			JOB_INTEL,
 			JOB_PILOT,

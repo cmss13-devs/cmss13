@@ -876,8 +876,9 @@ GLOBAL_LIST_EMPTY_TYPED(crewmonitor, /datum/crewmonitor)
 				// 00-10: Command
 				JOB_CO = 00,
 				JOB_XO = 01,
-				JOB_SO = 02,
-				JOB_SEA = 03,
+				JOB_FO = 02,
+				JOB_SO = 03,
+				JOB_SEA = 04,
 				// 10-19: Aux Command (Synth isn't Aux head, but important - make him bold)
 				JOB_SYNTH = 10,
 				JOB_PILOT = 11,

@@ -145,8 +145,8 @@
 	name = "rat"
 	},
 /obj/structure/sign/safety/bathunisex{
-	pixel_y = 25;
-	pixel_x = 8
+	pixel_x = 8;
+	pixel_y = 25
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -4105,8 +4105,8 @@
 /obj/item/paper,
 /obj/item/device/whistle,
 /obj/structure/sign/safety/bathunisex{
-	pixel_y = 25;
-	pixel_x = 8
+	pixel_x = 8;
+	pixel_y = 25
 	},
 /turf/open/floor/wood/ship,
 /area/almayer/living/commandbunks)
@@ -18094,7 +18094,7 @@
 /area/almayer/medical/lower_medical_lobby)
 "beZ" = (
 /obj/structure/platform_decoration{
-	dir = 8;
+	dir = 8
 	},
 /turf/open/floor/almayer,
 /area/almayer/living/chapel)
@@ -31289,12 +31289,12 @@
 /area/almayer/living/cryo_cells)
 "ccc" = (
 /obj/structure/sign/safety/bathunisex{
-	pixel_y = 25;
-	pixel_x = 8
+	pixel_x = 8;
+	pixel_y = 25
 	},
 /obj/structure/sign/safety/bathunisex{
-	pixel_y = -25;
-	pixel_x = 8
+	pixel_x = 8;
+	pixel_y = -25
 	},
 /turf/open/floor/almayer,
 /area/almayer/living/pilotbunks)
@@ -35801,13 +35801,12 @@
 	},
 /area/almayer/engineering/lower_engineering)
 "cWy" = (
-/obj/structure/closet/secure_closet/freezer/fridge,
-/obj/item/reagent_container/food/snacks/packaged_burger,
-/obj/item/reagent_container/food/snacks/packaged_burger,
-/obj/item/reagent_container/food/snacks/packaged_burger,
+/obj/structure/machinery/cm_vending/clothing/field_officer{
+	pixel_x = -32
+	},
 /turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
+	icon_state = "bluefull";
+	tag = "icon-bluefull"
 	},
 /area/almayer/living/bridgebunks)
 "cWA" = (
@@ -39620,8 +39619,8 @@
 	pixel_x = -6
 	},
 /obj/item/paper_bin/uscm{
-	pixel_y = 12;
-	pixel_x = 8
+	pixel_x = 8;
+	pixel_y = 12
 	},
 /turf/open/floor/almayer,
 /area/almayer/living/pilotbunks)
@@ -52482,8 +52481,8 @@
 	id = "OfficeSafeRoom";
 	name = "Office Safe Room";
 	pixel_x = 5;
-	req_access_txt = "3";
-	pixel_y = 5
+	pixel_y = 5;
+	req_access_txt = "3"
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -52766,8 +52765,8 @@
 	pixel_y = 13
 	},
 /obj/structure/sign/safety/bathunisex{
-	pixel_y = 25;
-	pixel_x = 8
+	pixel_x = 8;
+	pixel_y = 25
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -58882,6 +58881,20 @@
 	tag = "icon-bluecorner (NORTH)"
 	},
 /area/almayer/living/offices)
+"mTj" = (
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 2;
+	tag = "icon-door_open"
+	},
+/obj/structure/machinery/door/airlock/almayer/command/reinforced{
+	dir = 1;
+	name = "\improper Field Officer's Quarters"
+	},
+/turf/open/floor/almayer{
+	icon_state = "test_floor4";
+	tag = "icon-test_floor4"
+	},
+/area/almayer/living/bridgebunks)
 "mTk" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 1
@@ -60910,8 +60923,8 @@
 /area/almayer/command/lifeboat)
 "nJy" = (
 /obj/structure/sign/safety/bathunisex{
-	pixel_y = 25;
-	pixel_x = 8
+	pixel_x = 8;
+	pixel_y = 25
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -66024,6 +66037,17 @@
 	tag = "icon-red (NORTHEAST)"
 	},
 /area/almayer/shipboard/brig/perma)
+"qam" = (
+/obj/structure/machinery/light{
+	dir = 8;
+	tag = "icon-tube1 (WEST)"
+	},
+/obj/effect/landmark/start/field,
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/living/bridgebunks)
 "qau" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4;
@@ -72598,11 +72622,11 @@
 	dir = 8
 	},
 /obj/structure/reagent_dispensers/beerkeg/alt_dark{
-	pixel_x = -7;
-	pixel_y = 10;
 	anchored = 1;
+	chemical = null;
 	density = 0;
-	chemical = null
+	pixel_x = -7;
+	pixel_y = 10
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -75109,8 +75133,8 @@
 	pixel_y = 29
 	},
 /obj/structure/sign/safety/bathunisex{
-	pixel_y = 25;
-	pixel_x = 8
+	pixel_x = 8;
+	pixel_y = 25
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -77893,8 +77917,8 @@
 /area/almayer/living/basketball)
 "vak" = (
 /obj/structure/sign/safety/security{
-	pixel_y = 32;
-	pixel_x = 15
+	pixel_x = 15;
+	pixel_y = 32
 	},
 /turf/closed/wall/almayer,
 /area/almayer/hallways/starboard_umbilical)
@@ -83544,8 +83568,8 @@
 "xmJ" = (
 /obj/structure/closet,
 /obj/structure/sign/safety/bathunisex{
-	pixel_y = 25;
-	pixel_x = 8
+	pixel_x = 8;
+	pixel_y = 25
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -84176,8 +84200,8 @@
 	tag = "icon-intact-supply (NORTHEAST)"
 	},
 /obj/structure/sign/safety/bathunisex{
-	pixel_y = 25;
-	pixel_x = 8
+	pixel_x = 8;
+	pixel_y = 25
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "SE-out";
@@ -84302,8 +84326,8 @@
 	},
 /obj/structure/largecrate/random/barrel/red,
 /obj/item/reagent_container/food/drinks/cans/cola{
-	pixel_y = 16;
-	pixel_x = -2
+	pixel_x = -2;
+	pixel_y = 16
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -85773,16 +85797,16 @@
 /obj/structure/surface/table/almayer,
 /obj/item/trash/crushed_cup,
 /obj/item/reagent_container/food/drinks/cup{
-	pixel_y = 9;
-	pixel_x = -5
+	pixel_x = -5;
+	pixel_y = 9
 	},
 /obj/item/spacecash/c10{
 	pixel_x = 5;
 	pixel_y = 10
 	},
 /obj/item/ashtray/plastic{
-	pixel_y = -10;
-	pixel_x = 5
+	pixel_x = 5;
+	pixel_y = -10
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -107410,10 +107434,10 @@ aWq
 aXb
 aGr
 ceK
-sxD
-bhJ
-bMh
+aES
 cWy
+qam
+brS
 aES
 gpe
 xuB
@@ -107615,7 +107639,7 @@ ceK
 eua
 aES
 eBd
-brS
+ceK
 cpj
 aES
 fgx
@@ -107818,7 +107842,7 @@ aVX
 aES
 aES
 aES
-aES
+mTj
 aES
 aES
 gaO

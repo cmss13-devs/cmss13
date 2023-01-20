@@ -150,7 +150,7 @@
 /datum/asset/spritesheet/chat
 	name = "chat"
 
-/datum/asset/spritesheet/chat/register()
+/datum/asset/spritesheet/chat/create_spritesheets()
 	InsertAll("emoji", 'icons/emoji.dmi')
 	// pre-loading all lanugage icons also helps to avoid meta
 /* InsertAll("language", 'icons/misc/language.dmi')
@@ -161,13 +161,14 @@
 		if (icon != 'icons/misc/language.dmi')
 			var/icon_state = initial(L.icon_state)
 			Insert("language-[icon_state]", icon, icon_state=icon_state)*/
-	..()
 
 
 /datum/asset/spritesheet/choose_resin
 	name = "chooseresin"
 
-/datum/asset/spritesheet/choose_resin/register()
+/datum/asset/spritesheet/choose_resin/create_spritesheets()
+	var/list/queued_icons = list()
+
 	for (var/k in GLOB.resin_constructions_list)
 		var/datum/resin_construction/RC = k
 
@@ -175,7 +176,7 @@
 		var/icon_state = initial(RC.construction_name)
 		var/icon_name = replacetext(icon_state, " ", "-")
 
-		if (sprites[icon_name])
+		if (icon_name in queued_icons)
 			continue
 
 		var/icon_states_list = icon_states(icon_file)
@@ -190,19 +191,19 @@
 			icon_file = 'icons/turf/floors/floors.dmi'
 			icon_state = ""
 
+		queued_icons += icon_name
+
 		var/icon/iconNormal = icon(icon_file, icon_state, SOUTH)
 		Insert(icon_name, iconNormal)
 
 		var/icon/iconBig = icon(icon_file, icon_state, SOUTH)
 		iconBig.Scale(iconNormal.Width()*2, iconNormal.Height()*2)
 		Insert("[icon_name]_big", iconBig)
-	return ..()
-
 
 /datum/asset/spritesheet/playtime_rank
 	name = "playtimerank"
 
-/datum/asset/spritesheet/playtime_rank/register()
+/datum/asset/spritesheet/playtime_rank/create_spritesheets()
 	var/icon_file = 'icons/mob/hud/hud.dmi'
 	var/tier1_state = "hudxenoupgrade1"
 	var/tier2_state = "hudxenoupgrade2"
@@ -230,12 +231,11 @@
 	tier4_icon.Crop(6,30,18,18)
 	tier4_icon.Scale(32, 32)
 	Insert("tier4_big", tier4_icon)
-	return ..()
 
 /datum/asset/spritesheet/choose_mark
 	name = "choosemark"
 
-/datum/asset/spritesheet/choose_mark/register()
+/datum/asset/spritesheet/choose_mark/create_spritesheets()
 	for (var/k in GLOB.resin_mark_meanings)
 		var/datum/xeno_mark_define/RC = k
 
@@ -264,12 +264,11 @@
 		var/icon/iconBig = icon(icon_file, icon_state, SOUTH)
 		iconBig.Scale(iconNormal.Width()*2, iconNormal.Height()*2)
 		Insert("[icon_name]_big", iconBig)
-	return ..()
 
 /datum/asset/spritesheet/ranks
 	name = "squadranks"
 
-/datum/asset/spritesheet/ranks/register()
+/datum/asset/spritesheet/ranks/create_spritesheets()
 	var/icon_file = 'icons/mob/hud/marine_hud.dmi'
 	var/list/squads = list("Alpha", "Bravo", "Charlie", "Delta", "Foxtrot", "Cryo")
 
@@ -299,12 +298,11 @@
 			background.Scale(16,16)
 
 			Insert("squad-[squad]-hud-[iconref[1]]", background)
-	return ..()
 
 /datum/asset/spritesheet/vending_products
 	name = "vending"
 
-/datum/asset/spritesheet/vending_products/register()
+/datum/asset/spritesheet/vending_products/create_spritesheets()
 	for (var/k in GLOB.vending_products)
 		var/atom/item = k
 		var/icon_file = initial(item.icon)
@@ -342,13 +340,11 @@
 		var/imgid = replacetext(replacetext("[k]", "/obj/item/", ""), "/", "-")
 
 		Insert(imgid, I)
-	return ..()
-
 
 /datum/asset/spritesheet/choose_fruit
 	name = "choosefruit"
 
-/datum/asset/spritesheet/choose_fruit/register()
+/datum/asset/spritesheet/choose_fruit/create_spritesheets()
 	var/icon_file = 'icons/mob/xenos/fruits.dmi'
 	var/icon_states_list = icon_states(icon_file)
 	for(var/obj/effect/alien/resin/fruit/fruit as anything in typesof(/obj/effect/alien/resin/fruit))
@@ -375,15 +371,12 @@
 		var/icon/iconBig = icon(icon_file, icon_state, SOUTH)
 		iconBig.Scale(iconNormal.Width()*2, iconNormal.Height()*2)
 		Insert("[icon_name]_big", iconBig)
-	return ..()
 
 /datum/asset/spritesheet/gun_lineart
 	name = "gunlineart"
 
-/datum/asset/spritesheet/gun_lineart/register()
+/datum/asset/spritesheet/gun_lineart/create_spritesheets()
 	InsertAll("", 'icons/obj/items/weapons/guns/lineart.dmi')
-	..()
-
 
 /datum/asset/simple/orbit
 	assets = list(

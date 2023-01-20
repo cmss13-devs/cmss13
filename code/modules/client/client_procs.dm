@@ -287,12 +287,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	tgui_panel = new(src, "browseroutput")
 	tgui_say = new(src, "tgui_say")
 
-	// Change the way they should download resources.
-	var/static/next_external_rsc = 0
-	var/list/external_rsc_urls = CONFIG_GET(keyed_list/external_rsc_urls)
-	if(length(external_rsc_urls))
-		next_external_rsc = WRAP(next_external_rsc+1, 1, external_rsc_urls.len+1)
-		preload_rsc = external_rsc_urls[next_external_rsc]
+	send_resources()
 
 	player_entity = setup_player_entity(ckey)
 
@@ -430,6 +425,33 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	view = world_view_size
 
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_CLIENT_LOGIN, src)
+
+/// Send resources to the client.
+/// Sends both game resources and browser assets.
+/client/proc/send_resources()
+#if (PRELOAD_RSC == 0)
+	var/static/next_external_rsc = 0
+	var/list/external_rsc_urls = CONFIG_GET(keyed_list/external_rsc_urls)
+	if(length(external_rsc_urls.len))
+		next_external_rsc = WRAP(next_external_rsc+1, 1, external_rsc_urls.len+1)
+		preload_rsc = external_rsc_urls[next_external_rsc]
+#endif
+
+	spawn (10) //removing this spawn causes all clients to not get verbs.
+
+		//load info on what assets the client has
+		src << browse('code/modules/asset_cache/validate_assets.html', "window=asset_cache_browser")
+
+		//Precache the client with all other assets slowly, so as to not block other browse() calls
+		if (CONFIG_GET(flag/asset_simple_preload))
+			addtimer(CALLBACK(SSassets.transport, /datum/asset_transport.proc/send_assets_slow, src, SSassets.transport.preload), 5 SECONDS)
+
+		#if (PRELOAD_RSC == 0)
+		for (var/name in GLOB.vox_sounds)
+			var/file = GLOB.vox_sounds[name]
+			Export("##action=load_rsc", file)
+			stoplag()
+		#endif
 
 	//////////////
 	//DISCONNECT//

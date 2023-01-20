@@ -169,6 +169,7 @@ var/list/admin_verbs_debug = list(
 	/client/proc/cmd_admin_delete,
 	/client/proc/cmd_debug_del_all,
 	/client/proc/reload_admins,
+	/client/proc/toggle_cdn,
 	/client/proc/reload_whitelist,
 	/client/proc/restart_controller,
 	/client/proc/debug_controller,

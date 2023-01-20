@@ -527,6 +527,9 @@ This maintains a list of ip addresses that are able to bypass topic filtering.
 
 /datum/config_entry/string/adminhelp_ahelp_link
 
+/datum/config_entry/flag/cache_assets
+	default = TRUE
+
 /// logs all timers in buckets on automatic bucket reset (Useful for timer debugging)
 /datum/config_entry/flag/log_timers_on_bucket_reset
 

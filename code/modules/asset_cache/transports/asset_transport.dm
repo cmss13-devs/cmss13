@@ -12,25 +12,34 @@
 
 /// Called when the transport is loaded by the config controller, not called on the default transport unless it gets loaded by a config change.
 /datum/asset_transport/proc/Load()
-	for(var/client/C in GLOB.clients)
-		addtimer(CALLBACK(src, PROC_REF(send_assets_slow), C, preload), 1 SECONDS)
+	if (CONFIG_GET(flag/asset_simple_preload))
+		for(var/client/C in GLOB.clients)
+			addtimer(CALLBACK(src, PROC_REF(send_assets_slow), C, preload), 1 SECONDS)
 
 /// Initialize - Called when SSassets initializes.
 /datum/asset_transport/proc/Initialize(list/assets)
 	preload = assets.Copy()
+	if (!CONFIG_GET(flag/asset_simple_preload))
+		return
 	for(var/client/C in GLOB.clients)
 		addtimer(CALLBACK(src, PROC_REF(send_assets_slow), C, preload), 1 SECONDS)
 
 
-/// Register a browser asset with the asset cache system
-/// asset_name - the identifier of the asset
-/// asset - the actual asset file (or an asset_cache_item datum)
-/// returns a /datum/asset_cache_item.
-/// mutiple calls to register the same asset under the same asset_name return the same datum
-/datum/asset_transport/proc/register_asset(asset_name, asset)
+/**
+ * Register a browser asset with the asset cache system.
+ * returns a /datum/asset_cache_item.
+ * mutiple calls to register the same asset under the same asset_name return the same datum.
+ *
+ * Arguments:
+ * * asset_name - the identifier of the asset.
+ * * asset - the actual asset file (or an asset_cache_item datum).
+ * * file_hash - optional, a hash of the contents of the asset files contents. used so asset_cache_item doesnt have to hash it again
+ * * dmi_file_path - optional, means that the given asset is from the rsc and thus we dont need to do some expensive operations
+ */
+/datum/asset_transport/proc/register_asset(asset_name, asset, file_hash, dmi_file_path)
 	var/datum/asset_cache_item/ACI = asset
 	if (!istype(ACI))
-		ACI = new(asset_name, asset)
+		ACI = new(asset_name, asset, file_hash, dmi_file_path)
 		if (!ACI || !ACI.hash)
 			CRASH("ERROR: Invalid asset: [asset_name]:[asset]:[ACI]")
 	if (SSassets.cache[asset_name])
@@ -40,6 +49,7 @@
 		OACI.namespace = OACI.namespace || ACI.namespace
 		if (OACI.hash != ACI.hash)
 			var/error_msg = "ERROR: new asset added to the asset cache with the same name as another asset: [asset_name] existing asset hash: [OACI.hash] new asset hash:[ACI.hash]"
+			stack_trace(error_msg)
 			log_asset(error_msg)
 		else
 			if (length(ACI.namespace))
@@ -72,10 +82,10 @@
 /// asset_list - A list of asset filenames to be sent to the client. Can optionally be assoicated with the asset's asset_cache_item datum.
 /// Returns TRUE if any assets were sent.
 /datum/asset_transport/proc/send_assets(client/client, list/asset_list)
-	if(!istype(client))
-		if(ismob(client))
+	if (!istype(client))
+		if (ismob(client))
 			var/mob/M = client
-			if(M.client)
+			if (M.client)
 				client = M.client
 			else //no stacktrace because this will mainly happen because the client went away
 				return
@@ -104,12 +114,15 @@
 		if (!keep_local_name)
 			new_asset_name = "asset.[ACI.hash][ACI.ext]"
 		if (client.sent_assets[new_asset_name] == asset_hash)
+			#ifdef TESTING
+				log_asset("DEBUG: Skipping send of `[asset_name]` (as `[new_asset_name]`) for `[client]` because it already exists in the client's sent_assets list")
+			#endif
 			continue
 		unreceived[asset_name] = ACI
 
 	if (unreceived.len)
 		if (unreceived.len >= ASSET_CACHE_TELL_CLIENT_AMOUNT)
-			to_chat(client, "Sending Resources...")
+			to_chat(client, "<span class='infoplain'>Sending Resources...</span>")
 
 		for (var/asset_name in unreceived)
 			var/new_asset_name = asset_name
@@ -125,13 +138,13 @@
 
 			client.sent_assets[new_asset_name] = ACI.hash
 
-		addtimer(CALLBACK(client, /client/proc/asset_cache_update_json), 1 SECONDS, TIMER_UNIQUE|TIMER_OVERRIDE)
+		addtimer(CALLBACK(client, TYPE_PROC_REF(/client, asset_cache_update_json)), 1 SECONDS, TIMER_UNIQUE|TIMER_OVERRIDE)
 		return TRUE
 	return FALSE
 
 
 /// Precache files without clogging up the browse() queue, used for passively sending files on connection start.
-/datum/asset_transport/proc/send_assets_slow(client/client, list/files, filerate = 3)
+/datum/asset_transport/proc/send_assets_slow(client/client, list/files, filerate = 6)
 	var/startingfilerate = filerate
 	for (var/file in files)
 		if (!client)

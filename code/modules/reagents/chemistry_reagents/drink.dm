@@ -632,11 +632,6 @@
 	M:nutrition += nutriment_factor
 	holder.remove_reagent(src.id, FOOD_METABOLISM)
 	if(M:getOxyLoss() && prob(50)) M:apply_damage(-2, OXY)
-	if(M:getBruteLoss() && prob(60)) M:heal_limb_damage(2,0)
-	if(M:getFireLoss() && prob(50)) M:heal_limb_damage(0,2)
-	if(M:getToxLoss() && prob(50)) M:apply_damage(-2, TOX)
-	if(M.dizziness !=0) M.dizziness = max(0,M.dizziness-15)
-	if(M.confused !=0) M.confused = max(0,M.confused - 5)
 
 /datum/reagent/drink/cold/kiraspecial
 	name = "Kira Special"

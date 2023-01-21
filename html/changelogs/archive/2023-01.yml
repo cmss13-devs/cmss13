@@ -494,3 +494,6 @@
   - ui: remade the weapon status nanoui into tgui
   - code_imp: changed some alerts to tgui alerts and fixed issues with them that caused
       their code to run when they were closed
+2023-01-21:
+  Segrain:
+  - bugfix: Queen once again can actually launch a hijacked dropship on crash course.

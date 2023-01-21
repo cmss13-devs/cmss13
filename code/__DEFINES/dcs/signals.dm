@@ -133,6 +133,8 @@
 #define COMSIG_MOB_KNOCKED_DOWN "mob_knocked_down"
 /// For when a mob is dragged
 #define COMSIG_MOB_DRAGGED "mob_dragged"
+/// From /mob/verb/stop_pulling()
+#define COMSIG_MOB_STOPPED_PULLING "mob_stopped_pulling"
 /// From /mob/living/verb/resist()
 #define COMSIG_MOB_RESISTED "mob_resist"
 /// From /mob/living/verb/resist()

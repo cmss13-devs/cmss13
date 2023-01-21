@@ -728,9 +728,9 @@
 
 
 
-/mob/living/carbon/Xenomorph/start_pulling(atom/movable/AM, lunge, no_msg)
+/mob/living/carbon/Xenomorph/start_pulling(atom/movable/AM, no_msg)
 	if(SEND_SIGNAL(AM, COMSIG_MOVABLE_XENO_START_PULLING, src) & COMPONENT_ALLOW_PULL)
-		return do_pull(AM, lunge, no_msg)
+		return do_pull(AM, no_msg)
 
 	if(!isliving(AM))
 		return FALSE

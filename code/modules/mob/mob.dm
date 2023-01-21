@@ -450,10 +450,10 @@
 	hand = !hand
 
 //attempt to pull/grab something. Returns true upon success.
-/mob/proc/start_pulling(atom/movable/AM, lunge, no_msg)
+/mob/proc/start_pulling(atom/movable/AM, no_msg)
 	return
 
-/mob/living/start_pulling(atom/movable/clone/AM, lunge, no_msg)
+/mob/living/start_pulling(atom/movable/clone/AM, no_msg)
 	if(istype(AM, /atom/movable/clone))
 		AM = AM.mstr //If AM is a clone, refer to the real target
 
@@ -496,9 +496,9 @@
 	if(!pull_response) // If I'm not allowed to pull you I won't. Stop here.
 		return FALSE
 
-	return do_pull(AM, lunge, no_msg)
+	return do_pull(AM, no_msg)
 
-/mob/living/proc/do_pull(atom/movable/clone/AM, lunge, no_msg)
+/mob/living/proc/do_pull(atom/movable/clone/AM, no_msg)
 	if(pulling)
 		stop_pulling()
 

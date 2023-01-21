@@ -221,6 +221,7 @@
 	set category = "IC"
 
 	if(pulling)
+		SEND_SIGNAL(src,COMSIG_MOB_STOPPED_PULLING, pulling)
 		var/mob/M = pulling
 		pulling.pulledby = null
 		pulling = null

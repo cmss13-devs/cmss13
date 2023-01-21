@@ -55,50 +55,8 @@
 	icon_xeno = 'icons/mob/xenos/warrior.dmi'
 	icon_xenonid = 'icons/mob/xenonids/warrior.dmi'
 
-	var/lunging = FALSE // whether or not the warrior is currently lunging (holding) a target
 /mob/living/carbon/Xenomorph/Warrior/throw_item(atom/target)
 	toggle_throw_mode(THROW_MODE_OFF)
-
-/mob/living/carbon/Xenomorph/Warrior/stop_pulling()
-	if(isliving(pulling) && lunging)
-		lunging = FALSE // To avoid extreme cases of stopping a lunge then quickly pulling and stopping to pull someone else
-		var/mob/living/lunged = pulling
-		lunged.set_effect(0, STUN)
-		lunged.set_effect(0, WEAKEN)
-	return ..()
-
-/mob/living/carbon/Xenomorph/Warrior/start_pulling(atom/movable/AM, lunge)
-	if (!check_state() || agility)
-		return FALSE
-
-	if(!isliving(AM))
-		return FALSE
-	var/mob/living/L = AM
-	var/should_neckgrab = !(src.can_not_harm(L)) && lunge
-
-	if(!QDELETED(L) && !QDELETED(L.pulledby) && L != src ) //override pull of other mobs
-		visible_message(SPAN_WARNING("[src] has broken [L.pulledby]'s grip on [L]!"), null, null, 5)
-		L.pulledby.stop_pulling()
-
-	. = ..(L, lunge, should_neckgrab)
-
-	if(.) //successful pull
-		if(isXeno(L))
-			var/mob/living/carbon/Xenomorph/X = L
-			if(X.tier >= 2) // Tier 2 castes or higher immune to warrior grab stuns
-				return .
-
-		if(should_neckgrab && L.mob_size < MOB_SIZE_BIG)
-			L.drop_held_items()
-			L.apply_effect(get_xeno_stun_duration(L, 2), WEAKEN)
-			L.pulledby = src
-			visible_message(SPAN_XENOWARNING("\The [src] grabs [L] by the throat!"), \
-			SPAN_XENOWARNING("You grab [L] by the throat!"))
-			lunging = TRUE
-			addtimer(CALLBACK(src, PROC_REF(stop_lunging)), get_xeno_stun_duration(L, 2) SECONDS + 1 SECONDS)
-
-/mob/living/carbon/Xenomorph/Warrior/proc/stop_lunging(var/world_time)
-	lunging = FALSE
 
 /mob/living/carbon/Xenomorph/Warrior/hitby(atom/movable/AM)
 	if(ishuman(AM))
@@ -119,17 +77,17 @@
 /datum/behavior_delegate/warrior_base/melee_attack_additional_effects_self()
 	..()
 
-	var/datum/action/xeno_action/activable/lunge/cAction1 = get_xeno_action_by_type(bound_xeno, /datum/action/xeno_action/activable/lunge)
-	if (!cAction1.action_cooldown_check())
-		cAction1.reduce_cooldown(slash_charge_cdr)
+	var/datum/action/xeno_action/activable/lunge/lunge_action = get_xeno_action_by_type(bound_xeno, /datum/action/xeno_action/activable/lunge)
+	if (lunge_action && !lunge_action.action_cooldown_check())
+		lunge_action.reduce_cooldown(slash_charge_cdr)
 
-	var/datum/action/xeno_action/activable/fling/cAction2 = get_xeno_action_by_type(bound_xeno, /datum/action/xeno_action/activable/fling)
-	if (!cAction2.action_cooldown_check())
-		cAction2.reduce_cooldown(slash_charge_cdr)
+	var/datum/action/xeno_action/activable/fling/fling_action = get_xeno_action_by_type(bound_xeno, /datum/action/xeno_action/activable/fling)
+	if (!fling_action.action_cooldown_check())
+		fling_action.reduce_cooldown(slash_charge_cdr)
 
-	var/datum/action/xeno_action/activable/warrior_punch/cAction3 = get_xeno_action_by_type(bound_xeno, /datum/action/xeno_action/activable/warrior_punch)
-	if (!cAction3.action_cooldown_check())
-		cAction3.reduce_cooldown(slash_charge_cdr)
+	var/datum/action/xeno_action/activable/warrior_punch/warrior_punch_action = get_xeno_action_by_type(bound_xeno, /datum/action/xeno_action/activable/warrior_punch)
+	if (!warrior_punch_action.action_cooldown_check())
+		warrior_punch_action.reduce_cooldown(slash_charge_cdr)
 
 /datum/behavior_delegate/warrior_base/melee_attack_additional_effects_target(mob/living/carbon/A)
 	..()
@@ -152,16 +110,15 @@
 
 		final_lifesteal++
 
-// This part is then outside the for loop
-		if(final_lifesteal >= max_lifesteal)
-			bound_xeno.add_filter("empower_rage", 1, list("type" = "outline", "color" = color, "size" = 1, "alpha" = 90))
-			bound_xeno.visible_message(SPAN_DANGER("[bound_xeno.name] glows as it heals even more from its injuries!."), SPAN_XENODANGER("You glow as you heal even more from your injuries!"))
-			bound_xeno.flick_heal_overlay(2 SECONDS, "#00B800")
-		if(istype(bound_xeno) && world.time > emote_cooldown && bound_xeno)
-			bound_xeno.emote("roar")
-			bound_xeno.xeno_jitter(1 SECONDS)
-			emote_cooldown = world.time + 5 SECONDS
-		addtimer(CALLBACK(src, PROC_REF(lifesteal_lock)), lifesteal_lock_duration/2)
+	if(final_lifesteal >= max_lifesteal)
+		bound_xeno.add_filter("empower_rage", 1, list("type" = "outline", "color" = color, "size" = 1, "alpha" = 90))
+		bound_xeno.visible_message(SPAN_DANGER("[bound_xeno.name] glows as it heals even more from its injuries!."), SPAN_XENODANGER("You glow as you heal even more from your injuries!"))
+		bound_xeno.flick_heal_overlay(2 SECONDS, "#00B800")
+	if(istype(bound_xeno) && world.time > emote_cooldown && bound_xeno)
+		bound_xeno.emote("roar")
+		bound_xeno.xeno_jitter(1 SECONDS)
+		emote_cooldown = world.time + 5 SECONDS
+	addtimer(CALLBACK(src, PROC_REF(lifesteal_lock)), lifesteal_lock_duration/2)
 
 	bound_xeno.gain_health(Clamp(final_lifesteal / 100 * (bound_xeno.maxHealth - bound_xeno.health), 20, 40))
 

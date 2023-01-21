@@ -43,7 +43,6 @@
 	var/grab_range = 6
 	var/click_miss_cooldown = 15
 	var/twitch_message_cooldown = 0 //apparently this is necessary for a tiny code that makes the lunge message on cooldown not be spammable, doesn't need to be big so 5 will do.
-
 // Warrior Agility
 
 /datum/action/xeno_action/activable/warrior_punch

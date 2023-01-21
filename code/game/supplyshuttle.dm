@@ -583,6 +583,16 @@ var/datum/controller/supply/supply_controller = new()
 			shoppinglist.Cut()
 			return
 
+		if(order.object.contraband == TRUE && prob(5))
+		// Mendoza loaded the wrong order in. What a dunce!
+			var/list/contraband_list
+			for(var/supply_name in supply_controller.supply_packs)
+				var/datum/supply_packs/supply_pack = supply_controller.supply_packs[supply_name]
+				if(supply_pack.contraband == FALSE)
+					continue
+				LAZYADD(contraband_list, supply_pack)
+			order.object = pick(contraband_list)
+
 		// Container generation
 		var/turf/target_turf = pick(clear_turfs)
 		clear_turfs.Remove(target_turf)

@@ -16,8 +16,6 @@ black market prices are NOT based on real or in-universe costs. they are based o
 
 */
 
-
-
 /datum/supply_packs/contraband//base
 	name = "contraband crate"
 	contains = null
@@ -29,6 +27,8 @@ black market prices are NOT based on real or in-universe costs. they are based o
 	dollar_cost = 50
 
 /obj/structure/largecrate/black_market
+	/// Wipes points from objects inside to avoid infinite farming.
+	var/points_wipe = TRUE
 	//no special name so it can be hidden
 
 /obj/structure/largecrate/black_market/unpack()
@@ -38,7 +38,7 @@ black market prices are NOT based on real or in-universe costs. they are based o
 	..()
 
 /obj/structure/largecrate/black_market/proc/recursive_points_wipe(obj/content_obj, var/recursion)
-	if(recursion > 3) // sanity
+	if(!points_wipe || recursion > 3) // sanity
 		return
 	for(var/obj/nested_obj in content_obj.contents)
 		nested_obj.black_market_value = 0
@@ -358,8 +358,8 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 	name = "PPSh-17b submachinegun crate (x5 magazines included)"
 	contains = list(
 			/obj/item/weapon/gun/smg/ppsh,
-			/obj/item/ammo_magazine/smg/ppsh,
-			/obj/item/ammo_magazine/smg/ppsh,
+			/obj/item/ammo_magazine/smg/ppsh/extended,
+			/obj/item/ammo_magazine/smg/ppsh/extended,
 			/obj/item/ammo_magazine/smg/ppsh,
 			/obj/item/ammo_magazine/smg/ppsh,
 			/obj/item/ammo_magazine/smg/ppsh
@@ -1092,3 +1092,215 @@ Things that don't fit anywhere else. If they're meant for shipside use, they pro
 		/obj/vehicle/train/cargo/engine
 	)
 	containertype = /obj/structure/largecrate/black_market
+
+/datum/supply_packs/contraband/miscellaneous/clf_supplies
+	name = "unmarked CLF supply crate"
+	dollar_cost = 50
+	contains = list(
+		/obj/vehicle/train/cargo/engine
+	)
+	containertype = /obj/structure/largecrate/black_market/clf_supplies
+
+/obj/structure/largecrate/black_market/clf_supplies
+	name = "unmarked CLF supply crate"
+	desc = "What's in the box? Only one way to find out!"
+	icon_state = "chest"
+	/// If you want to use this in mapping, you can force-set the contents via this.
+	var/forced_rng
+
+/obj/structure/largecrate/black_market/clf_supplies/unpack()
+	var/loot_luck = rand(1, 100)
+	if(forced_rng)
+		loot_luck = forced_rng
+	var/loot_message
+	switch(loot_luck)
+		if(1 to 5)
+		// Random sheets! Could be iron, could be diamonds.
+			for(var/i in 1 to 5)
+				var/sheet_type = pick(subtypesof(/obj/item/stack/sheet))
+				var/obj/item/stack/sheet/sheet_stack = new sheet_type(loc)
+				if(sheet_stack.amount == 1)
+					sheet_stack.amount = rand(1, 5)
+			loot_message = SPAN_NOTICE("Oh sheet, it's a bunch of sheets!")
+		if(6 to 10)
+		// Elite recovered gear.
+			var/list/armor_to_pick = list(
+				// Y8 Miner (default)
+				/obj/item/clothing/under/marine/veteran/mercenary/miner,
+				/obj/item/clothing/suit/storage/marine/veteran/mercenary/miner,
+				/obj/item/clothing/head/helmet/marine/veteran/mercenary/miner,
+				// K12 Ceramic (Heavy-ish)
+				/obj/item/clothing/under/marine/veteran/mercenary,
+				/obj/item/clothing/suit/storage/marine/veteran/mercenary,
+				/obj/item/clothing/head/helmet/marine/veteran/mercenary,
+				// Z7 Support (Support)
+				/obj/item/clothing/head/helmet/marine/veteran/mercenary,
+				/obj/item/clothing/suit/storage/marine/veteran/mercenary/support,
+				/obj/item/clothing/head/helmet/marine/veteran/mercenary/support/engineer
+				// You get three random pieces. If you want to complete the set you need to keep rolling the dice!
+				)
+			for(var/i in 1 to 3)
+				var/picked_type = pick(armor_to_pick)
+				new picked_type(loc)
+			loot_message = SPAN_NOTICE("It's some strange elite gear...?")
+		if(11 to 15)
+			//Skorpion
+			new /obj/item/weapon/gun/pistol/skorpion(loc)
+			new /obj/item/ammo_magazine/pistol/skorpion(loc)
+			new /obj/item/ammo_magazine/pistol/skorpion(loc)
+			new /obj/item/ammo_magazine/pistol/skorpion(loc)
+			// EVA
+			new /obj/item/weapon/gun/energy/rxfm5_eva(loc)
+			// Somehow they found a Webley.
+			new /obj/item/weapon/gun/revolver/m44/custom/webley(loc)
+			new /obj/item/ammo_magazine/revolver/webley(loc)
+			new /obj/item/ammo_magazine/revolver/webley(loc)
+			new /obj/item/ammo_magazine/revolver/webley(loc)
+			loot_message = SPAN_NOTICE("It's some CLF pistol armaments!")
+		if(16 to 20)
+			// PPSH
+			new /obj/item/weapon/gun/smg/ppsh/with_drum_mag(loc)
+			new /obj/item/ammo_magazine/smg/ppsh/extended(loc)
+			new /obj/item/ammo_magazine/smg/ppsh/extended(loc)
+			new /obj/item/ammo_magazine/smg/ppsh/extended(loc)
+			// MAC-15
+			new /obj/item/weapon/gun/smg/mac15/extended(loc)
+			new /obj/item/ammo_magazine/smg/mac15/extended(loc)
+			new /obj/item/ammo_magazine/smg/mac15/extended(loc)
+			new /obj/item/ammo_magazine/smg/mac15/extended(loc)
+			loot_message = SPAN_NOTICE("It's some CLF SMG armaments.")
+		if(21 to 25)
+			// Discovered Yautja ruins.. (None of these will trigger any alarms. They are far too old, degraded, and useless for any Yautja to care.)
+			new /obj/item/clothing/mask/gas/yautja/damaged(loc)
+			new /obj/item/clothing/suit/armor/yautja_flavor(loc)
+			new /obj/item/clothing/shoes/yautja_flavor(loc)
+			new /obj/item/weapon/melee/twohanded/yautja/glaive/damaged(loc)
+			new /obj/item/stack/yautja_rope(loc)
+			new /obj/item/stack/medical/advanced/bruise_pack/predator(loc)
+			new /obj/item/stack/medical/advanced/ointment/predator(loc)
+			loot_message = SPAN_NOTICE("It's some strange ancient gear...?")
+		if(26 to 30)
+			// Dutch gear.
+			new /obj/item/storage/pouch/medical/socmed/dutch/unmarked(loc)
+			new /obj/item/storage/large_holster/machete/arnold/full(loc)
+			new /obj/item/clothing/head/helmet/marine/veteran/dutch/cap(loc)
+			loot_message = SPAN_NOTICE("It's some dusty, old equipment. Smells like the jungle.")
+		if(31 to 35)
+		// Damaged lunge mines, don't let the marines near these. Not even *close* to effective against even a runner.
+			new /obj/item/weapon/melee/twohanded/lungemine/damaged(loc)
+			new /obj/item/weapon/melee/twohanded/lungemine/damaged(loc)
+			new /obj/item/weapon/melee/twohanded/lungemine/damaged(loc)
+			loot_message = SPAN_NOTICE("It's a bunch of lunge mines..?")
+		if(36 to 40)
+		// CLF nades!
+			loot_message = SPAN_NOTICE("It's a package of assorted CLF grenades!")
+			var/list/nades_to_pick = list(
+				/obj/item/explosive/grenade/empgrenade,
+				/obj/item/explosive/grenade/custom/ied,
+				/obj/item/explosive/grenade/incendiary/molotov,
+				/obj/item/explosive/grenade/custom/ied_incendiary,
+				/obj/item/explosive/grenade/phosphorus/clf,
+				/obj/item/explosive/grenade/smokebomb,
+				/obj/item/explosive/grenade/smokebomb/airburst,
+				/obj/item/explosive/grenade/flashbang/noskill,
+				/obj/item/explosive/grenade/custom/antiweed
+				)
+			for(var/i in 1 to 4)
+				var/picked_type = pick(nades_to_pick)
+				var/obj/item/explosive/grenade/new_nade = new picked_type(loc)
+				if(new_nade.hand_throwable && prob(7))
+					loot_message = SPAN_HIGHDANGER("It was booby trapped! RUN!")
+					new_nade.prime()
+		if(41 to 45)
+		// Molotovs and supplies to make more...
+			new /obj/item/explosive/grenade/incendiary/molotov(loc)
+			new /obj/item/explosive/grenade/incendiary/molotov(loc)
+			new /obj/item/paper_bin(loc)
+			new /obj/item/reagent_container/food/drinks/bottle/whiskey(loc)
+			new /obj/item/reagent_container/food/drinks/bottle/kahlua(loc)
+			new /obj/item/reagent_container/food/drinks/bottle/rum(loc)
+			loot_message = SPAN_NOTICE("It's a bunch of finished and unfinished molotovs.")
+		if(46 to 50)
+		// Spare CLF gear!
+			new /obj/effect/essentials_set/random/clf_shoes(loc)
+			new /obj/item/clothing/under/colonist/clf(loc)
+			new /obj/effect/essentials_set/random/clf_armor(loc)
+			new /obj/effect/essentials_set/random/clf_gloves(loc)
+			new /obj/effect/essentials_set/random/clf_head(loc)
+			new /obj/effect/essentials_set/random/clf_belt(loc)
+			loot_message = SPAN_NOTICE("It's a spare set of CLF equipment. You probably shouldn't wear this...")
+		// That was the good 50%. Now it's time for the bad.
+		if(51 to 55)
+		// Random junk
+			new /obj/effect/essentials_set/random/clf_bonus_item(loc)
+			new /obj/effect/essentials_set/random/clf_bonus_item(loc)
+			new /obj/effect/essentials_set/random/clf_bonus_item(loc)
+			new /obj/effect/essentials_set/random/clf_bonus_item(loc)
+			new /obj/effect/essentials_set/random/clf_bonus_item(loc)
+			loot_message = SPAN_NOTICE("It's a bunch of random junk...")
+		if(56 to 60)
+		// Egg cluster, oh no!
+			new /obj/effect/spider/eggcluster(loc)
+			loot_message = SPAN_WARNING("What the hell is this?")
+		if(61 to 65)
+		// Actual spider!!
+			new /mob/living/simple_animal/hostile/giant_spider(loc)
+			loot_message = SPAN_DANGER("It's a giant spider!!")
+		if(66 to 70)
+		// Actual dead spider!!
+			var/mob/living/spider = new /mob/living/simple_animal/hostile/giant_spider(loc)
+			spider.death()
+			loot_message = SPAN_DANGER("It's a giant spider!! Oh, guess there were no air holes.")
+		if(71 to 75)
+		// Many small spiders. Yes, there's a 20% chance of something spider-related coming out of this box.
+			for(var/i in 1 to 10)
+				new /obj/effect/spider/spiderling(loc)
+			loot_message = SPAN_DANGER("SPIDERS!! AAAAAAAH!!")
+		if(76 to 80)
+		// CLF corpse!! Why is this here? Don't ask.
+			var/mob/living/carbon/human/corpse = new /mob/living/carbon/human(loc)
+			corpse.create_hud() //Need to generate hud before we can equip anything apparently...
+
+			var/corpse_type = pick(/datum/equipment_preset/corpse/clf/burst, /datum/equipment_preset/corpse/clf)
+			arm_equipment(corpse, corpse_type, TRUE, FALSE) // I didn't choose the shitcode life, the shitcode life chose me
+
+			loot_message = SPAN_HIGHDANGER("IT'S A CORPSE!!")
+		if(81 to 85)
+		// Costumes.
+			new /obj/effect/landmark/costume/random(loc)
+			new /obj/effect/landmark/costume/random(loc)
+			new /obj/effect/landmark/costume/random(loc)
+			loot_message = SPAN_NOTICE("What the hell is this..?")
+		if(86 to 90)
+		// Random supply garbage.
+			new /obj/effect/spawner/random/tool(loc)
+			new /obj/effect/spawner/random/tool(loc)
+			new /obj/effect/spawner/random/tech_supply(loc)
+			new /obj/effect/spawner/random/tech_supply(loc)
+			new /obj/effect/spawner/random/tech_supply(loc)
+			new /obj/effect/spawner/random/toy(loc)
+			new /obj/effect/spawner/random/toy(loc)
+			new /obj/effect/spawner/random/toy(loc)
+			loot_message = SPAN_NOTICE("It's just a bunch of junk!")
+		if(91 to 95)
+		// We don't really have any other kind of booby trap so this will do
+			new /obj/item/explosive/grenade/spawnergrenade/claymore_launcher(loc)
+			loot_message = SPAN_HIGHDANGER("It was booby trapped! RUN!")
+		if(96 to 99)
+		// Oh boy. Big booby trap!
+			var/obj/item/mortar_shell/frag/fragshell = new(loc)
+			var/obj/item/explosive/grenade/incendiary/molotov/molotov = new(loc)
+			molotov.prime()
+			fragshell.balloon_alert_to_viewers("the mortar shell makes an awful hissing noise!")
+			addtimer(CALLBACK(fragshell, TYPE_PROC_REF(/obj/item/mortar_shell/frag, detonate), loc), 5 SECONDS)
+			QDEL_IN(fragshell, 5.5 SECONDS)
+			loot_message = SPAN_HIGHDANGER("RUN!!!")
+		if(100)
+		// You got real fuckin' unlucky kid :joker:
+			new /obj/item/explosive/grenade/spawnergrenade/claymore_launcher(loc)
+			new /obj/item/explosive/grenade/spawnergrenade/claymore_launcher(loc)
+			new /obj/item/explosive/grenade/spawnergrenade/claymore_launcher(loc)
+			loot_message = SPAN_HIGHDANGER("It was SUPER booby trapped! RUN!")
+
+	visible_message(loot_message, max_distance = 4)
+	..()

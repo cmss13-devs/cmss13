@@ -460,7 +460,9 @@
 #define COMSIG_MOB_GRAB_UPGRADE "grab_upgrade"
 
 /// From /datum/action/xeno_action/proc/use_ability_wrapper(): (mob/owner)
-#define COMSIG_XENO_ACTION_USED "xeno_action_used"
+#define COMSIG_XENO_ACTION_PRE_USE "xeno_action_pre_use"
+/// From /datum/action/xeno_action/proc/use_ability_wrapper(): (mob/owner)
+#define COMSIG_XENO_ACTION_POST_USE "xeno_action_post_use"
 /// From /mob/living/carbon/Xenomorph/proc/check_blood_splash()
 #define COMSIG_XENO_DEAL_ACID_DAMAGE "xeno_deal_acid_damage"
 /// From /mob/living/carbon/Xenomorph/proc/recalculate_speed()

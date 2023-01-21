@@ -217,7 +217,7 @@
 			button.overlays += image('icons/mob/xenos/fruits.dmi', button, initial(fruit.mature_icon_state))
 			xeno.selected_fruit = selected_type
 			. = TRUE
-			
+
 		if("refresh_ui")
 			. = TRUE
 /*
@@ -368,6 +368,7 @@
 	var/mutable_appearance/fruit_sac_overlay_icon
 
 /datum/behavior_delegate/drone_gardener/add_to_xeno()
+	..()
 	on_update_icons()
 
 /datum/behavior_delegate/drone_gardener/on_update_icons()

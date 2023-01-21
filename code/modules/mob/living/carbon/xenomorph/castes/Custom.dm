@@ -32,6 +32,7 @@
 		. += delegate.append_to_stat()
 
 /datum/behavior_delegate/Custom/add_to_xeno()
+	..()
 	for(var/datum/behavior_delegate/delegate in delegates)
 		delegate.add_to_xeno()
 

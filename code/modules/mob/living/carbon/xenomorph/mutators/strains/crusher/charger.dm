@@ -62,6 +62,7 @@
 	var/side_armor = 15
 
 /datum/behavior_delegate/crusher_charger/add_to_xeno()
+	..()
 	RegisterSignal(bound_xeno, COMSIG_MOB_SET_FACE_DIR, PROC_REF(cancel_dir_lock))
 	RegisterSignal(bound_xeno, COMSIG_XENO_PRE_CALCULATE_ARMOURED_DAMAGE_PROJECTILE, PROC_REF(apply_directional_armor))
 

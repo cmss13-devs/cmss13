@@ -43,7 +43,7 @@
 	return TRUE
 
 /**
- * The owner managed to be adjacent to the victim, doesn't necessarly mean anything else will happen
+ * The owner managed to be adjacent to the victim, doesn't necessarily mean anything else will happen
  */
 /datum/action/xeno_action/activable/lunge/proc/lunge_hit(atom/movable/victim)
 	var/mob/living/carbon/Xenomorph/xeno_owner = owner

@@ -112,18 +112,6 @@ SUBSYSTEM_DEF(minimaps)
 	updators_by_datum = SSminimaps.updators_by_datum
 
 /datum/controller/subsystem/minimaps/fire(resumed)
-	if(!(times_fired % 6))
-		for(var/z in minimaps_by_z)
-			var/datum/hud_displays/hud = minimaps_by_z[z]
-			for(var/flags as anything in hud.images_assoc)
-				var/list/associated_blips = list()
-				for(var/index as anything in hud.images_assoc[flags])
-					var/list/raw = hud.images_assoc[flags]
-					associated_blips += raw[index]
-				for(var/image/blip as anything in hud.images_raw[flags])
-					if(!(blip in associated_blips))
-						hud.images_raw[flags] -= blip
-
 	var/static/iteration = 0
 	if(!iteration) //on first iteration clear all overlays
 		for(var/iter=1 to length(update_targets_unsorted))
@@ -278,6 +266,9 @@ SUBSYSTEM_DEF(minimaps)
 
 		minimaps_by_z["[oldz]"].images_assoc["[flag]"] -= source
 		minimaps_by_z["[oldz]"].images_raw["[flag]"] -= ref_old
+
+		removal_cbs -= source
+		removal_cbs[source] = CALLBACK(src, PROC_REF(removeimage), ref_old, source, newz)
 
 /**
  * Simple proc, updates overlay position on the map when a atom moves

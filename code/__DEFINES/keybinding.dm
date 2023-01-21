@@ -40,6 +40,7 @@
 #define COMSIG_KB_CLIENT_SAY_DOWN "keybinding_client_say_down"
 #define COMSIG_KB_CLIENT_ME_DOWN "keybinding_client_me_down"
 #define COMSIG_KB_CLIENT_WHISPER_DOWN "keybinding_client_whisper_down"
+#define COMSIG_KG_CLIENT_RADIO_DOWN "keybinding_client_radio_down"
 
 //Human
 #define COMSIG_KB_HUMAN_QUICKEQUIP_DOWN "keybinding_human_quickequip_down"
@@ -55,6 +56,8 @@
 
 #define COMSIG_KB_HUMAN_SPECIALIST_ACTIVATION_ONE "keybinding_human_specialist_activation_one"
 #define COMSIG_KB_HUMAN_SPECIALIST_ACTIVATION_TWO "keybinding_human_specialist_activation_two"
+
+#define COMSIG_KG_HUMAN_PICK_UP "keybinding_human_pick_up"
 
 // Human Combat
 #define COMSIG_KB_HUMAN_WEAPON_FIELDSTRIP "keybinding_human_weapon_fieldstrip"

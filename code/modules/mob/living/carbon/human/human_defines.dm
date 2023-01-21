@@ -162,6 +162,9 @@
 	/// misc human flags
 	var/flags_human_misc = 0
 
+	///list of weakrefs of recently dropped objects
+	var/list/remembered_dropped_objects = list()
+
 /client/var/cached_human_playtime
 
 /client/proc/get_total_human_playtime(var/skip_cache = FALSE)

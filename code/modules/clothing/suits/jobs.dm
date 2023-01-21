@@ -429,6 +429,7 @@
 //Suspenders
 /obj/item/clothing/suit/suspenders
 	name = "suspenders"
+	gender = PLURAL
 	desc = "They suspend pants."
 	icon = 'icons/obj/items/clothing/belts.dmi'
 	icon_state = "suspenders"

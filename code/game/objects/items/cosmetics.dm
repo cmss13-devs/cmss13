@@ -7,7 +7,8 @@
 	var/paint_type = "green"
 	w_class = SIZE_TINY
 	var/uses = 10
-	var/open = TRUE //for lipstick
+	/// for lipstick
+	var/open = TRUE
 
 //FACEPAINT
 /obj/item/facepaint/green
@@ -39,6 +40,12 @@
 	desc = "Paint, for your face. Make your enemies need a change of underwear from the sheer terror a goddamn skull on your face will bring to them. WARNING: DOES NOT MIX WELL WITH BEARDS."
 	paint_type = "skull_camo"
 	icon_state = "skull_camo"
+
+/obj/item/facepaint/sunscreen_stick
+	name= "\improper USCM issue sunscreen"
+	desc = "A stick of SPF 50 sunscreen, issued to you by the good brass of the Corps. Whereas the previously issued sunscreen was toxic upon ingestion, this batch improves upon that by only containing excessive amounts of cadmium."
+	paint_type = "sunscreen_stick"
+	icon_state = "sunscreen_stick"
 
 /obj/item/facepaint/attack(mob/M, mob/user)
 	if(user.a_intent == INTENT_HARM)
@@ -115,12 +122,12 @@
 
 /obj/item/facepaint/lipstick/purple
 	name = "purple lipstick"
-	paint_type = "purp_lipstick" //not 'purple' because dream maker farts if the name is too long
+	paint_type = "purp_lipstick"
 	icon_state_open = "lipstick_purple"
 
 /obj/item/facepaint/lipstick/maroon
 	name = "maroon lipstick"
-	paint_type = "marn_lipstick" //not 'maroon' because dream maker farts if the name is too long
+	paint_type = "marn_lipstick"
 	icon_state_open = "lipstick_maroon"
 
 /obj/item/facepaint/lipstick/jade

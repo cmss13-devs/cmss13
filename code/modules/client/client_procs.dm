@@ -285,6 +285,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 
 	// Instantiate tgui panel
 	tgui_panel = new(src, "browseroutput")
+	tgui_say = new(src, "tgui_say")
 
 	// Change the way they should download resources.
 	var/static/next_external_rsc = 0
@@ -300,6 +301,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		if(isnull(address) || (address in localhost_addresses))
 			var/datum/admins/admin = new("!localhost!", R_EVERYTHING, ckey)
 			admin.associate(src)
+			RoleAuthority.roles_whitelist[ckey] = WHITELIST_EVERYTHING
 
 	//Admin Authorisation
 	admin_holder = admin_datums[ckey]
@@ -375,6 +377,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	addtimer(CALLBACK(src, PROC_REF(check_panel_loaded)), 30 SECONDS)
 
 	tgui_panel.initialize()
+	tgui_say.initialize()
 
 	var/datum/custom_event_info/CEI = GLOB.custom_event_info_list["Global"]
 	CEI.show_player_event_info(src)
@@ -652,14 +655,36 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 					movement_keys[key] = WEST
 				if("South")
 					movement_keys[key] = SOUTH
-				if("Say")
-					winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=\"say\\n.typing\"")
-				if("OOC")
-					winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=ooc")
-				if("LOOC")
-					winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=looc")
-				if("Me")
-					winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=\"me\\n.typing\"")
+				if(SAY_CHANNEL)
+					if(prefs.tgui_say)
+						var/say = tgui_say_create_open_command(SAY_CHANNEL)
+						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=[say]")
+					else
+						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=\"say\\n.typing\"")
+				if(COMMS_CHANNEL)
+					if(prefs.tgui_say)
+						var/radio = tgui_say_create_open_command(COMMS_CHANNEL)
+						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=[radio]")
+					else
+						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=\"say\\n.typing\"")
+				if(ME_CHANNEL)
+					if(prefs.tgui_say)
+						var/me = tgui_say_create_open_command(ME_CHANNEL)
+						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=[me]")
+					else
+						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=\"me\\n.typing\"")
+				if(OOC_CHANNEL)
+					if(prefs.tgui_say)
+						var/ooc = tgui_say_create_open_command(OOC_CHANNEL)
+						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=[ooc]")
+					else
+						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=ooc")
+				if(LOOC_CHANNEL)
+					if(prefs.tgui_say)
+						var/looc = tgui_say_create_open_command(LOOC_CHANNEL)
+						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=[looc]")
+					else
+						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=looc")
 				if("Whisper")
 					winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=whisper")
 

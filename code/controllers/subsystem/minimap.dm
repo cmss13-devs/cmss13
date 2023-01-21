@@ -112,9 +112,7 @@ SUBSYSTEM_DEF(minimaps)
 	updators_by_datum = SSminimaps.updators_by_datum
 
 /datum/controller/subsystem/minimaps/fire(resumed)
-	if(times_fired % 6)
-		update_special_minimaps()
-
+	if(!(times_fired % 6))
 		for(var/z in minimaps_by_z)
 			var/datum/hud_displays/hud = minimaps_by_z[z]
 			for(var/flags as anything in hud.images_assoc)
@@ -340,49 +338,6 @@ SUBSYSTEM_DEF(minimaps)
 	var/datum/tacmap_holder/tacmap = new(null, zlevel, flags)
 	hashed_tacmaps[hash] = tacmap
 	return tacmap
-
-/datum/controller/subsystem/minimaps/proc/update_special_minimaps()
-	if(SSticker.toweractive)
-		add_xenos_to_minimap()
-	else
-		if(length(GLOB.command_apc_list))
-			for(var/obj/vehicle/multitile/apc/command/current_apc as anything in GLOB.command_apc_list)
-				var/turf/apc_turf = get_turf(current_apc)
-				if(current_apc.health == 0 || !current_apc.visible_in_tacmap || !is_ground_level(apc_turf))
-					continue
-
-				for(var/mob/living/carbon/Xenomorph/current_xeno as anything in GLOB.living_xeno_list)
-					var/turf/xeno_turf = get_turf(current_xeno)
-					if(!is_ground_level(xeno_turf))
-						continue
-
-					if(get_dist(current_apc, current_xeno) <= current_apc.sensor_radius)
-						if(WEAKREF(current_xeno) in minimap_added)
-							return
-
-						remove_marker(current_xeno)
-						add_marker(current_xeno, current_xeno.z, hud_flags = MINIMAP_FLAG_USCM|MINIMAP_FLAG_XENO, iconstate = current_xeno.caste.minimap_icon)
-						minimap_added += WEAKREF(current_xeno)
-					else
-						if(WEAKREF(current_xeno) in minimap_added)
-							remove_marker(current_xeno, MINIMAP_FLAG_USCM)
-							minimap_added -= current_xeno
-
-/datum/controller/subsystem/minimaps/proc/remove_xenos_from_minimap()
-	for(var/mob/living/carbon/Xenomorph/current_xeno as anything in GLOB.living_xeno_list)
-		if(WEAKREF(current_xeno) in minimap_added)
-			remove_marker(current_xeno)
-			minimap_added -= current_xeno
-
-/datum/controller/subsystem/minimaps/proc/add_xenos_to_minimap()
-	for(var/mob/living/carbon/Xenomorph/current_xeno as anything in GLOB.living_xeno_list)
-		if(WEAKREF(current_xeno) in minimap_added)
-			return
-
-		remove_marker(current_xeno)
-		add_marker(current_xeno, current_xeno.z, hud_flags = MINIMAP_FLAG_USCM, iconstate = current_xeno.caste.minimap_icon)
-		minimap_added += WEAKREF(current_xeno)
-
 
 ///Default HUD screen minimap object
 /atom/movable/screen/minimap

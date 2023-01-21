@@ -452,7 +452,7 @@
 	xeno.hud_update() // To add leader star
 	open_xeno_leader_positions -= leader_num
 
-	xeno.update_minimap_icon(makeleader = TRUE)
+	xeno.update_minimap_icon()
 
 	give_action(xeno, /datum/action/xeno_action/activable/info_marker)
 
@@ -485,7 +485,7 @@
 		if(leaderless_mark.createdby == xeno.nicknumber)
 			qdel(leaderless_mark)
 
-	xeno.update_minimap_icon(makeleader = FALSE)
+	xeno.update_minimap_icon()
 
 	remove_action(xeno, /datum/action/xeno_action/activable/info_marker)
 

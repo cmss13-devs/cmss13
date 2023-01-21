@@ -546,7 +546,7 @@
 /obj/docking_port/mobile/proc/on_prearrival()
 	if(destination)
 		playsound(destination.return_center_turf(), landing_sound, 60, 0)
-		destination.on_prearrival()
+		destination.on_prearrival(src)
 	playsound(return_center_turf(), landing_sound, 60, 0)
 	return
 
@@ -692,9 +692,9 @@
 		if(SHUTTLE_CALL, SHUTTLE_PREARRIVAL)
 			if(prearrivalTime && mode != SHUTTLE_PREARRIVAL)
 				set_mode(SHUTTLE_PREARRIVAL)
-				on_prearrival()
 				setTimer(prearrivalTime)
 				return
+			on_prearrival()
 			var/error = initiate_docking(destination, preferred_direction)
 			if(error && error & (DOCKING_NULL_DESTINATION | DOCKING_NULL_SOURCE))
 				//var/msg = "A mobile dock in transit exited initiate_docking() with an error. This is most likely a mapping problem: Error: [error],  ([src]) ([previous][ADMIN_JMP(previous)] -> [destination][ADMIN_JMP(destination)])"

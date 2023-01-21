@@ -11,15 +11,20 @@
 	// Admin disabled
 	var/disabled = FALSE
 
-	// Is hijacked by opfor
-	var/hijacked = FALSE
-
 	// Is door control locked -- hijack
-	var/door_control_lost = FALSE
+	var/dropship_control_lost = FALSE
 	var/door_control_cooldown
 
 	// Landing zones which can be used
 	var/compatible_landing_zones = list()
+
+	// If the computer is on the dropship or remotely accessing it
+	var/is_remote = FALSE
+
+/obj/structure/machinery/computer/shuttle/dropship/flight/remote_control
+	icon = 'icons/obj/structures/machinery/computer.dmi'
+	icon_state = "shuttle"
+	is_remote = TRUE
 
 /obj/structure/machinery/computer/shuttle/dropship/flight/Initialize(mapload, ...)
 	. = ..()
@@ -32,6 +37,8 @@
 /obj/structure/machinery/computer/shuttle/dropship/flight/proc/get_landing_zones()
 	. = list()
 	for(var/obj/docking_port/stationary/marine_dropship/dock in SSshuttle.stationary)
+		if(istype(dock, /obj/docking_port/stationary/marine_dropship/crash_site))
+			continue
 		. += list(dock)
 
 /obj/structure/machinery/computer/shuttle/dropship/flight/is_disabled()
@@ -90,7 +97,8 @@
 		return UI_UPDATE
 
 /obj/structure/machinery/computer/shuttle/dropship/flight/ui_state(mob/user)
-	if(hijacked)
+	var/obj/docking_port/mobile/marine_dropship/shuttle = SSshuttle.getShuttle(shuttleId)
+	if(shuttle.is_hijacked)
 		return GLOB.never_state
 	return GLOB.not_incapacitated_and_adjacent_strict_state
 
@@ -108,52 +116,58 @@
 	if(.)
 		return TRUE
 
-	if(!hijacked)
+	// if the dropship has crashed don't allow more interactions
+	var/obj/docking_port/mobile/marine_dropship/shuttle = SSshuttle.getShuttle(shuttleId)
+	if(shuttle.mode == SHUTTLE_CRASHED)
+		to_chat(user, SPAN_NOTICE("\The [src] is not responsive"))
+		return
+
+	if(!shuttle.is_hijacked)
 		tgui_interact(user)
 
 /obj/structure/machinery/computer/shuttle/dropship/flight/attack_alien(mob/living/carbon/Xenomorph/xeno)
+	var/obj/docking_port/mobile/shuttle = SSshuttle.getShuttle(shuttleId)
+	if(shuttle.mode != SHUTTLE_IDLE || !xeno.caste || !xeno.caste.is_intelligent || is_remote)
+		to_chat(xeno, SPAN_NOTICE("Lights flash from the terminal but you can't comprehend their meaning."))
+		return
+
 	// door controls being overriden
+	if(!dropship_control_lost)
+		to_chat(xeno, SPAN_XENONOTICE("You override the doors."))
+		xeno_message(SPAN_XENOANNOUNCE("The doors of the metal bird have been overridden! Rejoice!"), 3, xeno.hivenumber)
 
-	if(xeno.caste && xeno.caste.is_intelligent)
-		if(!door_control_lost)
-			to_chat(xeno, SPAN_XENONOTICE("You override the doors."))
-			xeno_message(SPAN_XENOANNOUNCE("The doors of the metal bird have been overridden! Rejoice!"), 3, xeno.hivenumber)
+		var/obj/docking_port/mobile/marine_dropship/dropship = SSshuttle.getShuttle(shuttleId)
+		dropship.control_doors("unlock", "all", TRUE)
+		dropship_control_lost = TRUE
+		door_control_cooldown = addtimer(CALLBACK(src, PROC_REF(remove_door_lock)), SHUTTLE_LOCK_COOLDOWN)
+		announce_dchat("[xeno] has locked \the [dropship]", src)
+		return
 
-			var/obj/docking_port/mobile/marine_dropship/dropship = SSshuttle.getShuttle(shuttleId)
-			dropship.control_doors("unlock", "all", TRUE)
-			door_control_lost = TRUE
-			door_control_cooldown = addtimer(CALLBACK(src, PROC_REF(remove_door_lock)), /*SHUTTLE_LOCK_COOLDOWN*/ 30 SECONDS)
-			announce_dchat("[xeno] has locked \the [dropship]", src)
-			return
-		if(isXenoQueen(xeno) && door_control_lost)
-			//keyboard
-			for(var/i = 0; i < 5; i++)
-				playsound(loc, get_sfx("keyboard"), KEYBOARD_SOUND_VOLUME, 1)
-				if(!do_after(usr, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
-					return
-				if(i < 4)
-					playsound(loc, 'sound/machines/terminal_error.ogg', KEYBOARD_SOUND_VOLUME, 1)
-			playsound(loc, 'sound/machines/terminal_success.ogg', KEYBOARD_SOUND_VOLUME, 1)
-			hijack(xeno)
+	if(isXenoQueen(xeno) && dropship_control_lost)
+		//keyboard
+		for(var/i = 0; i < 5; i++)
+			playsound(loc, get_sfx("keyboard"), KEYBOARD_SOUND_VOLUME, 1)
+			if(!do_after(usr, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
+				return
+			if(i < 4)
+				playsound(loc, 'sound/machines/terminal_error.ogg', KEYBOARD_SOUND_VOLUME, 1)
+		playsound(loc, 'sound/machines/terminal_success.ogg', KEYBOARD_SOUND_VOLUME, 1)
+		hijack(xeno)
+		return
+
 
 /obj/structure/machinery/computer/shuttle/dropship/flight/proc/hijack(mob/user)
 
 	// select crash location
-	/*
-	var/list/crash_locations = list()
-	crash_locations += list(/area/almayer/hallways/hangar)
-	crash_locations += typesof(/area/almayer/medical)
-	crash_locations += list(/area/almayer/living/briefing)
-	crash_locations += list(/area/almayer/squads/req)
-	crash_locations += typesof(/area/almayer/command/cic)
-	crash_locations += typesof(/area/almayer/engineering)
-	var/result = tgui_input_list(user, "Where to 'land'?", "Dropship Hijack", crash_locations)
+	var/result = tgui_input_list(user, "Where to 'land'?", "Dropship Hijack", almayer_ship_sections)
 	if(!result)
 		return
-	*/
+
+	var/obj/docking_port/mobile/marine_dropship/dropship = SSshuttle.getShuttle(shuttleId)
+	var/area/target_area = dropship.select_crashsite(result)
 	// spawn crash location
 	var/list/turfs = list()
-	for(var/turf/T in get_area_turfs(/area/almayer/command/cic))
+	for(var/turf/T in get_area_turfs(target_area))
 		turfs += T
 
 	if(!turfs || !turfs.len)
@@ -170,10 +184,9 @@
 	target_site.name = "[shuttleId] crash site"
 	target_site.id = "crash_site_[shuttleId]"
 
-	var/obj/docking_port/mobile/marine_dropship/dropship = SSshuttle.getShuttle(shuttleId)
 	dropship.crashing = TRUE
 	dropship.is_hijacked = TRUE
-	hijacked = TRUE
+	dropship.target_zone = result
 
 	// move shuttle with long duration
 	SSshuttle.moveShuttle(shuttleId, target_site.id, DROPSHIP_CRASH_TRANSIT_DURATION)
@@ -187,10 +200,11 @@
 
 
 /obj/structure/machinery/computer/shuttle/dropship/flight/proc/remove_door_lock()
-	if(hijacked)
+	var/obj/docking_port/mobile/marine_dropship/shuttle = SSshuttle.getShuttle(shuttleId)
+	if(shuttle.is_hijacked)
 		return
 	playsound(loc, 'sound/machines/terminal_success.ogg', KEYBOARD_SOUND_VOLUME, 1)
-	door_control_lost = FALSE
+	dropship_control_lost = FALSE
 	if(door_control_cooldown)
 		door_control_cooldown = null
 
@@ -199,12 +213,15 @@
 	. = list()
 	.["shuttle_mode"] = shuttle.mode
 	.["flight_time"] = shuttle.timeLeft(0)
-	.["is_disabled"] = disabled
+	.["is_disabled"] = disabled || shuttle.is_hijacked
 	.["locked_down"] = FALSE
+	.["can_fly_by"] = !is_remote
 	if(shuttle.destination)
 		.["target_destination"] = shuttle.in_flyby? "Flyby" : shuttle.destination.name
 	.["destinations"] = list()
-	.["door_status"] = shuttle.get_door_data()
+
+	.["door_status"] = is_remote ? list() : shuttle.get_door_data()
+
 	.["flight_configuration"] = is_set_flyby ? "flyby" : "ferry"
 
 	for(var/obj/docking_port/stationary/dock in compatible_landing_zones)
@@ -226,10 +243,10 @@
 	. = ..()
 	if(.)
 		return
-	if(disabled)
+	var/obj/docking_port/mobile/marine_dropship/shuttle = SSshuttle.getShuttle(shuttleId)
+	if(disabled || shuttle.is_hijacked)
 		return
 	var/mob/user = usr
-	var/obj/docking_port/mobile/marine_dropship/shuttle = SSshuttle.getShuttle(shuttleId)
 	switch(action)
 		if("move")
 			update_equipment(FALSE)
@@ -272,7 +289,7 @@
 				return TRUE
 			var/interaction = params["interaction"]
 			var/location = params["location"]
-			if(!door_control_lost)
+			if(!dropship_control_lost)
 				shuttle.control_doors(interaction, location)
 			else
 				playsound(loc, 'sound/machines/terminal_error.ogg', KEYBOARD_SOUND_VOLUME, 1)

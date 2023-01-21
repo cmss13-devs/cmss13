@@ -9664,8 +9664,10 @@
 /obj/structure/window/reinforced/toughened{
 	dir = 8
 	},
-/obj/structure/machinery/computer/shuttle_control/dropship2{
-	dir = 4
+/obj/structure/machinery/computer/shuttle/dropship/flight/remote_control{
+	dir = 4;
+	shuttleId = "dropship_normandy";
+	name = "Normandy Remote Control Console"
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -9683,8 +9685,10 @@
 /obj/structure/window/reinforced/toughened{
 	dir = 4
 	},
-/obj/structure/machinery/computer/shuttle_control/dropship1{
-	dir = 8
+/obj/structure/machinery/computer/shuttle/dropship/flight/remote_control{
+	dir = 8;
+	shuttleId = "dropship_alamo";
+	name = "Alamo Remote Control Console"
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -17795,8 +17799,7 @@
 /area/almayer/medical/lower_medical_lobby)
 "beZ" = (
 /obj/structure/platform_decoration{
-	dir = 8;
-	
+	dir = 8
 	},
 /turf/open/floor/almayer,
 /area/almayer/living/chapel)

@@ -13,6 +13,7 @@ interface DropshipNavigationProps extends NavigationProps {
   has_flight_optimisation?: 0 | 1;
   is_flight_optimised?: 0 | 1;
   flight_configuration: 'flyby' | 'ferry';
+  can_fly_by?: 0 | 1;
 }
 
 const DropshipDoorControl = (_, context) => {
@@ -103,7 +104,7 @@ export const DropshipDestinationSelection = (_, context) => {
   );
   return (
     <Section
-      title="Select Destination"
+      title="Ferry Controls"
       buttons={
         <>
           <CancelLaunchButton />
@@ -144,25 +145,57 @@ export const DropshipDestinationSelection = (_, context) => {
   );
 };
 
-const RenderScreen = (props, context) => {
+const FlybyControl = (props, context) => {
   const { act, data } = useBackend<DropshipNavigationProps>(context);
   return (
+    <Section
+      title="Flyby Controls"
+      className="flybyControl"
+      buttons={
+        <>
+          {data.flight_configuration === 'flyby' && (
+            <Button icon="road" onClick={() => act('set-ferry')}>
+              Set ferry
+            </Button>
+          )}
+          {data.flight_configuration === 'ferry' && (
+            <Button icon="jet-fighter" onClick={() => act('set-flyby')}>
+              Set flyby
+            </Button>
+          )}
+          {data.shuttle_mode === 'called' && (
+            <Button onClick={() => act('cancel-flyby')}>cancel flyby</Button>
+          )}
+          {data.shuttle_mode === 'idle' && (
+            <Button
+              icon="rocket"
+              disabled={data.flight_configuration === 'ferry'}
+              onClick={() => act('move')}>
+              Launch
+            </Button>
+          )}
+        </>
+      }
+    />
+  );
+};
+
+const RenderScreen = (props, context) => {
+  const { data } = useBackend<DropshipNavigationProps>(context);
+  return (
     <>
-      <Section>
-        {data.flight_configuration === 'flyby' && (
-          <Button onClick={() => act('set-ferry')}>Set ferry</Button>
+      {data.can_fly_by === 1 &&
+        (data.shuttle_mode === 'idle' || data.shuttle_mode === 'called') && (
+          <FlybyControl />
         )}
-        {data.flight_configuration === 'ferry' && (
-          <Button onClick={() => act('set-flyby')}>Set flyby</Button>
+      {data.shuttle_mode === 'idle' &&
+        data.flight_configuration !== 'flyby' && (
+          <DropshipDestinationSelection />
         )}
-        <Button onClick={() => act('cancel-flyby')}>cancel flyby</Button>
-        <Button onClick={() => act('move')}>punch it</Button>
-      </Section>
-      {data.shuttle_mode === 'idle' && <DropshipDestinationSelection />}
       {data.shuttle_mode === 'igniting' && <LaunchCountdown />}
       {data.shuttle_mode === 'recharging' && <ShuttleRecharge />}
       {data.shuttle_mode === 'called' && <InFlightCountdown />}
-      <DropshipDoorControl />
+      {data.door_status.length > 0 && <DropshipDoorControl />}
     </>
   );
 };

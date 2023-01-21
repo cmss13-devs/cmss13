@@ -82,11 +82,11 @@
 		lunge_action.reduce_cooldown(slash_charge_cdr)
 
 	var/datum/action/xeno_action/activable/fling/fling_action = get_xeno_action_by_type(bound_xeno, /datum/action/xeno_action/activable/fling)
-	if (!fling_action.action_cooldown_check())
+	if (fling_action && !fling_action.action_cooldown_check())
 		fling_action.reduce_cooldown(slash_charge_cdr)
 
 	var/datum/action/xeno_action/activable/warrior_punch/warrior_punch_action = get_xeno_action_by_type(bound_xeno, /datum/action/xeno_action/activable/warrior_punch)
-	if (!warrior_punch_action.action_cooldown_check())
+	if (fling_action && !warrior_punch_action.action_cooldown_check())
 		warrior_punch_action.reduce_cooldown(slash_charge_cdr)
 
 /datum/behavior_delegate/warrior_base/melee_attack_additional_effects_target(mob/living/carbon/A)

@@ -89,6 +89,8 @@
 	. = ..()
 	if(!is_hijacked)
 		return
+	if(mode == SHUTTLE_CRASHED)
+		return
 	check_AA()
 	check_final_approach()
 
@@ -270,12 +272,34 @@
 			A.overload_lighting()
 			A.set_broken()
 
-	// explosion code
-	var/turf/sploded
+	var/centre_x = src.x + (width / 2)
+	//determine outside of ship location
+	var/y_travel = 1
+	if(src.y < ALMAYER_DECK_BOUNDARY)
+		y_travel = -1
+	var/obj/outer_target = new()
+	outer_target.x = centre_x
+	outer_target.y = ALMAYER_DECK_BOUNDARY + y_travel
+	outer_target.z = src.z
+	// find the outer point of the ship, the first turf that is not space
+	while(outer_target.y > 1 && istype(get_turf(outer_target), /turf/open/space))
+		outer_target.y += y_travel
+
+	// draw a line of explosions to the landing site
+
+	while(outer_target.y < src.y)
+		outer_target.y += (y_travel * 5)
+		var/turf/sploded
+		sploded = locate(outer_target.x + rand(-3, 3), outer_target.y, src.z)
+		//Fucking. Kaboom.
+		cell_explosion(sploded, 250, 20, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data("dropship crash")) //Clears out walls
+		sleep(3)
+
+	qdel(outer_target)
+	// landing site explosion code
 	var/explonum = rand(10,15)
 	for(var/j=0; j<explonum; j++)
-		sploded = locate(src.x + rand(-5, 15), src.y + rand(-5, 25), src.z)
-		//Fucking. Kaboom.
+		var/turf/sploded = locate(src.x + rand(-5, 15), src.y + rand(-5, 25), src.z)
 		cell_explosion(sploded, 250, 10, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data("dropship crash")) //Clears out walls
 		sleep(3)
 
@@ -315,11 +339,13 @@
 			affected_mob.apply_effect(3, WEAKEN)
 
 	// TODO this should be handled elsewhere
-	sleep(100)
-	arriving_shuttle.mode = SHUTTLE_CRASHED
+	// sleep(100)
 	if(SSticker.mode)
 		SSticker.mode.is_in_endgame = TRUE
 		SSticker.mode.force_end_at = (world.time + 25 MINUTES)
+
+/obj/docking_port/stationary/marine_dropship/crash_site/on_arrival(obj/docking_port/mobile/arriving_shuttle)
+	arriving_shuttle.mode = SHUTTLE_CRASHED
 
 /datum/map_template/shuttle/alamo
 	name = "Alamo"

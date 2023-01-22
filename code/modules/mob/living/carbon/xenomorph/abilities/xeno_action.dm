@@ -31,7 +31,7 @@
 /datum/action/xeno_action/New(Target, override_icon_state)
 	. = ..()
 	if(charges != NO_ACTION_CHARGES)
-		RegisterSignal(src, COMSIG_XENO_ACTION_USED, PROC_REF(remove_charge))
+		RegisterSignal(src, COMSIG_XENO_ACTION_POST_USE, PROC_REF(remove_charge))
 	if(charge_time)
 		charge_ready = FALSE
 	update_button_icon()
@@ -129,8 +129,10 @@
 /// A wrapper for use_ability that sends a signal
 /datum/action/xeno_action/proc/use_ability_wrapper(...)
 	// TODO: make hidden a part of can_use_action
-	if(!hidden && can_use_action() && use_ability(arglist(args)))
-		SEND_SIGNAL(src, COMSIG_XENO_ACTION_USED, owner)
+	if(!hidden && can_use_action())
+		SEND_SIGNAL(src, COMSIG_XENO_ACTION_PRE_USE)
+		var/ability_result = use_ability(arglist(args))
+		SEND_SIGNAL(src, COMSIG_XENO_ACTION_POST_USE, ability_result)
 
 // For actions that do something on each life tick
 /datum/action/xeno_action/proc/life_tick()
@@ -205,6 +207,7 @@
 // THIS PROC SHOULD NEVER BE OVERRIDDEN BY CHILDREN
 // AND SHOULD __ALWAYS__ BE CALLED IN USE_ABILITY
 /datum/action/xeno_action/proc/apply_cooldown(var/cooldown_modifier = 1)
+	SHOULD_NOT_OVERRIDE(TRUE)
 	if(!owner)
 		return
 	var/mob/living/carbon/Xenomorph/X = owner
@@ -256,6 +259,7 @@
 // Checks whether the action is on cooldown. Should not be overridden.
 // Returns TRUE if the action can be used and FALSE otherwise.
 /datum/action/xeno_action/proc/action_cooldown_check()
+	//SHOULD_NOT_OVERRIDE(TRUE)
 	return (cooldown_timer_id == TIMER_ID_NULL) && (!charge_time || charge_ready)
 
 // What occurs when a cooldown ends NATURALLY. Ties into ability_cooldown_over, which tells the source Xeno

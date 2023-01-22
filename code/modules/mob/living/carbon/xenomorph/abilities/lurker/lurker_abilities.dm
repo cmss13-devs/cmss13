@@ -9,7 +9,7 @@
 	distance = 6
 	knockdown = FALSE
 	knockdown_duration = 2.5
-	freeze_self = TRUE
+	freeze_self = FALSE
 	freeze_time = 15
 	can_be_shield_blocked = TRUE
 
@@ -52,14 +52,13 @@
 	macro_path = /datum/action/xeno_action/verb/verb_lurker_invisibility
 	ability_primacy = XENO_PRIMARY_ACTION_2
 	action_type = XENO_ACTION_CLICK
-	xeno_cooldown = 1 // This ability never goes off cooldown 'naturally'. Cooldown is applied manually as a super-large value in the use_ability proc
-					// and reset by the behavior_delegate whenever the ability ends (because it can be ended by things like slashes, that we can't easily track here)
+	xeno_cooldown = 10 SECONDS //The cooldown starts AFTER the invisibility ends, not when the ability is first used
 	plasma_cost = 20
-
-	var/duration = 30 SECONDS // 30 seconds base
-	var/invis_timer_id = TIMER_ID_NULL
+	//TODO.. change debug value
+	var/duration = 5 SECONDS
 	var/alpha_amount = 25
 	var/speed_buff = 0.20
+	COOLDOWN_DECLARE(invisibility_start)
 
 // tightly coupled 'buff next slash' action
 /datum/action/xeno_action/onclick/lurker_assassinate

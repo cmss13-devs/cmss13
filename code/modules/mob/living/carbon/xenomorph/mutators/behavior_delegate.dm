@@ -8,12 +8,15 @@
 // lands a slash, etc. The goal functionality is to modularize all extra behavior needed by strains in one place.
 // One of these is instanced onto every xeno and is also used to track all additional state needed by the strain itself.
 //
+<<<<<<< Updated upstream
+=======
 // Addendum
 //
-// This is datum is meant to be M.O.D.U.L.A.R, you should NOT assume your delegate will be held by any specific xenomoprh.
+// This datum is meant to be M.O.D.U.L.A.R, you should NOT assume your delegate will be held by any specific xenomoprh.
 // This also means xenomorphs should NOT assume they have any delegate in particular, if your strain/caste needs to call a specific proc from their
-// specific delegate, reconsider its necessity, this is for shared behaviour, not a fancy proc holder.
+// specific delegate, reconsider its necessity, this is for shared behaviors, not a fancy proc holder.
 //
+>>>>>>> Stashed changes
 // A brief flowchart
 //   xeno New() -OR- strain applicator
 // |
@@ -69,14 +72,19 @@
 		unregister_action(bound_xeno, ability)
 	return
 
+<<<<<<< Updated upstream
+=======
 /datum/behavior_delegate/proc/register_action(action)
+	SIGNAL_HANDLER
 	RegisterSignal(action, COMSIG_XENO_ACTION_PRE_USE, PROC_REF(pre_ability_cast))
 	RegisterSignal(action, COMSIG_XENO_ACTION_POST_USE, PROC_REF(post_ability_cast))
 
 /datum/behavior_delegate/proc/unregister_action(owner, action)
+	SIGNAL_HANDLER
 	UnregisterSignal(action, COMSIG_XENO_ACTION_PRE_USE)
 	UnregisterSignal(action, COMSIG_XENO_ACTION_POST_USE)
 
+>>>>>>> Stashed changes
 /**
  * Modifies the damage of a slash based on the current mutator state.
  * Do not override this proc unless you need to affect the rolled damage
@@ -125,11 +133,14 @@
 /// Handling the xeno icon state or overlays, return TRUE if icon state should not be changed
 /datum/behavior_delegate/proc/on_update_icons()
 	return
+<<<<<<< Updated upstream
+=======
 /**
  * Called just before an ability is used with every argument of said ability
  * ability : the ability that is about to be used
  */
 /datum/behavior_delegate/proc/pre_ability_cast(datum/action/xeno_action/ability)
+	SIGNAL_HANDLER
 	return
 
 /**
@@ -138,4 +149,6 @@
  * result : value returned by the ability
  */
 /datum/behavior_delegate/proc/post_ability_cast(datum/action/xeno_action/ability, result)
+	SIGNAL_HANDLER
 	return
+>>>>>>> Stashed changes

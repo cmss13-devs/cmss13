@@ -1,3 +1,7 @@
+/datum/action/xeno_action/onclick/lurker_invisibility/Destroy()
+	invisibility_off()
+	. = ..()
+
 /datum/action/xeno_action/onclick/lurker_invisibility/use_ability(atom/targeted_atom)
 	var/mob/living/carbon/Xenomorph/xeno = owner
 
@@ -15,41 +19,43 @@
 
 	xeno.speed_modifier -= speed_buff
 	xeno.recalculate_speed()
+	var/datum/action/xeno_action/activable/pounce/lurker/pounce_action = get_xeno_action_by_type(owner, /datum/action/xeno_action/activable/pounce/lurker)
+	if(pounce_action)
+		pounce_action.knockdown = TRUE
+		pounce_action.freeze_self = TRUE
 
-	if (xeno.mutation_type == LURKER_NORMAL)
-		var/datum/behavior_delegate/lurker_base/behavior = xeno.behavior_delegate
-		behavior.on_invisibility()
-
+	//Purely for the stat panel display, no mechanical purpose otherwise
+	COOLDOWN_START(src, invisibility_start, duration)
+	xeno.stealth = TRUE
+	var/datum.
 	// if we go off early, this also works fine.
-	invis_timer_id = addtimer(CALLBACK(src, PROC_REF(invisibility_off)), duration, TIMER_STOPPABLE)
+	addtimer(CALLBACK(src, PROC_REF(invisibility_off)), duration, TIMER_STOPPABLE)
 
 	// Only resets when invisibility ends
-	apply_cooldown_override(1000000000)
+	apply_cooldown_override(SPEED_OF_LIGHT)
 	..()
 	return
 
 /datum/action/xeno_action/onclick/lurker_invisibility/proc/invisibility_off()
-	if(!owner || owner.alpha == initial(owner.alpha))
+	var/mob/living/carbon/Xenomorph/xeno = owner
+	if(!owner || !xeno.stealth)
 		return
 
-	if (invis_timer_id != TIMER_ID_NULL)
-		deltimer(invis_timer_id)
-		invis_timer_id = TIMER_ID_NULL
+	animate(xeno, alpha = initial(xeno.alpha), time = 0.1 SECONDS, easing = QUAD_EASING)
+	to_chat(xeno, SPAN_XENOHIGHDANGER("You feel your invisibility end!"))
 
-	var/mob/living/carbon/Xenomorph/xeno = owner
-	if (istype(xeno))
-		animate(xeno, alpha = initial(xeno.alpha), time = 0.1 SECONDS, easing = QUAD_EASING)
-		to_chat(xeno, SPAN_XENOHIGHDANGER("You feel your invisibility end!"))
+	xeno.update_icons()
 
-		xeno.update_icons()
+	xeno.speed_modifier += speed_buff
+	xeno.recalculate_speed()
+	xeno.stealth = FALSE
 
-		xeno.speed_modifier += speed_buff
-		xeno.recalculate_speed()
+	var/datum/action/xeno_action/activable/pounce/lurker/pounce_action = get_xeno_action_by_type(owner, /datum/action/xeno_action/activable/pounce/lurker)
+	if(pounce_action)
+		pounce_action.knockdown = FALSE
+		pounce_action.freeze_self = FALSE
 
-		if (xeno.mutation_type == LURKER_NORMAL)
-			var/datum/behavior_delegate/lurker_base/behavior = xeno.behavior_delegate
-			if (istype(behavior))
-				behavior.on_invisibility_off()
+	addtimer(CALLBACK(src, PROC_REF(end_cooldown)), xeno_cooldown)
 
 /datum/action/xeno_action/onclick/lurker_invisibility/ability_cooldown_over()
 	to_chat(owner, SPAN_XENOHIGHDANGER("You are ready to use your invisibility again!"))
@@ -70,18 +76,11 @@
 	if (xeno.mutation_type != LURKER_NORMAL)
 		return
 
-	var/datum/behavior_delegate/lurker_base/behavior = xeno.behavior_delegate
-	if (istype(behavior))
-		behavior.next_slash_buffed = TRUE
-
-	to_chat(xeno, SPAN_XENOHIGHDANGER("Your next slash will deal increased damage!"))
-
-	addtimer(CALLBACK(src, PROC_REF(unbuff_slash)), buff_duration)
 	xeno.next_move = world.time + 1 // Autoattack reset
 
 	apply_cooldown()
 	..()
-	return
+	return buff_duration
 
 /datum/action/xeno_action/onclick/lurker_assassinate/proc/unbuff_slash()
 	var/mob/living/carbon/Xenomorph/xeno = owner

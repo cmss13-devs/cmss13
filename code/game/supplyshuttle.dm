@@ -1268,7 +1268,7 @@ var/datum/controller/supply/supply_controller = new()
 	req_access = list(ACCESS_MARINE_CREWMAN)
 	circuit = /obj/item/circuitboard/computer/supplycomp/vehicle
 	// Can only retrieve one vehicle per round
-	var/spent = FALSE
+	var/spent = TRUE
 	var/tank_unlocked = FALSE
 	var/list/allowed_roles = list(JOB_CREWMAN)
 

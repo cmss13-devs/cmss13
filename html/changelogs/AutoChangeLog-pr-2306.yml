@@ -1,4 +1,0 @@
-author: "mullenpaul, stanalbatross"
-delete-after: True
-changes:
-  - ui: "converted the playtime menu to tgui"

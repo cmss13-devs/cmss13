@@ -1,4 +1,0 @@
-author: "harryob"
-delete-after: True
-changes:
-  - qol: "instead of using macros for pickup, you can now use the built in keybind - defaulting to F, but can be changed. it remembers your last two dropped items"

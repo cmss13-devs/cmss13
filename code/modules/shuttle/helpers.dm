@@ -95,6 +95,9 @@
 			if("force-lock-launch")
 				INVOKE_ASYNC(src, PROC_REF(lockdown_door_launch), door)
 				is_locked = TRUE
+			if("force-unlock")
+				INVOKE_ASYNC(src, PROC_REF(force_lock_open_door), door)
+				is_locked = FALSE
 
 /datum/door_controller/single/proc/lockdown_door_launch(var/obj/structure/machinery/door/airlock/air)
 	for(var/mob/blocking_mob in air.loc) // Bump all mobs outta the way for outside airlocks of shuttles
@@ -111,5 +114,12 @@
 	air.safe = 0
 	air.unlock()
 	air.close()
+	air.lock()
+	air.safe = 1
+
+/datum/door_controller/proc/force_lock_open_door(var/obj/structure/machinery/door/airlock/air)
+	air.safe = 0
+	air.unlock()
+	air.open()
 	air.lock()
 	air.safe = 1

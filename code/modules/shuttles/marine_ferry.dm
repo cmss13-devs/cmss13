@@ -285,11 +285,6 @@
 
 	close_doors(turfs_int) // adding this for safety.
 
-	var/list/lightssource = get_landing_lights(T_src)
-	for(var/obj/structure/machinery/landinglight/F in lightssource)
-		if(F.id == shuttle_tag)
-			F.turn_off()
-
 	if(SSticker?.mode && !(SSticker.mode.flags_round_type & MODE_DS_LANDED)) //Launching on first drop.
 		SSticker.mode.ds_first_drop()
 
@@ -306,13 +301,6 @@
 	playsound_area(get_area(turfs_int[sound_target]), sound_landing, 100)
 	playsound(turfs_trg[sound_target], sound_landing, 100)
 	playsound_area(get_area(turfs_int[sound_target]), channel = SOUND_CHANNEL_AMBIENCE, status = SOUND_UPDATE)
-
-
-	var/list/lightsdest = get_landing_lights(T_trg)
-	for(var/obj/structure/machinery/landinglight/F in lightsdest)
-		if(F.id == shuttle_tag)
-			F.turn_on()
-
 	sleep(100) //Wait for it to finish.
 
 	if(EvacuationAuthority.dest_status == NUKE_EXPLOSION_FINISHED)
@@ -449,11 +437,6 @@
 	var/list/turfs_int = get_shuttle_turfs(T_int, info_datums) //Interim turfs
 
 	close_doors(turfs_int) // adding this for safety.
-
-	var/list/lights = get_landing_lights(T_src)
-	for(var/obj/structure/machinery/landinglight/F in lights)
-		if(F.id == shuttle_tag)
-			F.turn_off()
 
 	in_transit_time_left = travel_time
 	while(in_transit_time_left > 0)

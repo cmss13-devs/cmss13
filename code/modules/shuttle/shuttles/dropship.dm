@@ -204,7 +204,6 @@
 		outer_target.y += y_travel
 
 	// draw a line of explosions to the landing site
-	var/cause_data = create_cause_data("dropship crash")
 	while(outer_target.y < crash_site.y)
 		outer_target.y += (y_travel * 5)
 		var/turf/sploded = locate(outer_target.x + rand(-3, 3), outer_target.y, crash_site.z)

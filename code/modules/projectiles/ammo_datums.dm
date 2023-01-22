@@ -2735,23 +2735,23 @@
 /datum/ammo/xeno/acid/marking
 	name = "marking spit"
 
-	damage= 15
+	damage = 15
 	shell_speed = AMMO_SPEED_TIER_2
 	accuracy = HIT_ACCURACY_TIER_10*8
 	flags_ammo_behavior = AMMO_SKIPS_ALIENS
 	max_range = 32
 
-/datum/ammo/xeno/acid/marking/on_hit_mob(mob/M, obj/item/projectile/P)
+/datum/ammo/xeno/acid/marking/on_hit_mob(mob/Target, obj/item/projectile/P)
 	. = ..()
-	M.AddComponent(/datum/component/bonus_damage_stack, 100, world.time)
-	for(var/mob/living/carbon/Xenomorph/X in range(5, M))
+	Target.AddComponent(/datum/component/bonus_damage_stack, 100, 1 SECONDS)
+	for(var/mob/living/carbon/Xenomorph/X in range(5, Target))
 
 		var/overshield_amount = 100
 		var/shield_duration = 30 SECONDS
 		var/shield_decay = 10
 
 		if (!istype(X) || !X.check_state())
-			return
+			break
 
 		if(X.stat == DEAD)
 			continue

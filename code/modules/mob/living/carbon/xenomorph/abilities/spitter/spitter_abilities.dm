@@ -44,3 +44,12 @@
 
 /datum/action/xeno_action/activable/tail_stab/spitter
 	name = "Corrosive Tail Stab"
+
+//Marker abilities
+
+/datum/action/xeno_action/onclick/toggle_long_range/marker
+	should_delay = TRUE
+	delay = 20
+	ability_primacy = XENO_PRIMARY_ACTION_2
+	movement_buffer = 7
+

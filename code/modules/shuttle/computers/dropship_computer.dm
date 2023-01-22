@@ -141,6 +141,9 @@
 		dropship_control_lost = TRUE
 		door_control_cooldown = addtimer(CALLBACK(src, PROC_REF(remove_door_lock)), SHUTTLE_LOCK_COOLDOWN)
 		announce_dchat("[xeno] has locked \the [dropship]", src)
+
+		if(!GLOB.resin_lz_allowed)
+			set_lz_resin_allowed(TRUE)
 		return
 
 	if(isXenoQueen(xeno) && dropship_control_lost)
@@ -152,6 +155,9 @@
 			if(i < 4)
 				playsound(loc, 'sound/machines/terminal_error.ogg', KEYBOARD_SOUND_VOLUME, 1)
 		playsound(loc, 'sound/machines/terminal_success.ogg', KEYBOARD_SOUND_VOLUME, 1)
+		if(world.time < SHUTTLE_LOCK_TIME_LOCK)
+			to_chat(xeno, SPAN_XENODANGER("You can't mobilize the strength to hijack the shuttle yet. Please wait another [time_left_until(SHUTTLE_LOCK_TIME_LOCK, world.time, 1 MINUTES)] minutes before trying again."))
+			return
 		hijack(xeno)
 		return
 
@@ -172,6 +178,9 @@
 	dropship.is_hijacked = TRUE
 
 	hijack.fire()
+	if(almayer_orbital_cannon)
+		almayer_orbital_cannon.is_disabled = TRUE
+		addtimer(CALLBACK(almayer_orbital_cannon, .obj/structure/orbital_cannon/proc/enable), 10 MINUTES, TIMER_UNIQUE)
 
 	// when launched announce
 
@@ -276,6 +285,15 @@
 			is_set_flyby = FALSE
 		if("set-flyby")
 			is_set_flyby = TRUE
+		if("set-automate")
+			return
+			/* TODO
+				if(!dropship.automated_launch) //If we're toggling it on...
+					var/auto_delay
+					auto_delay = tgui_input_number(usr, "Set the delay for automated departure after recharging (seconds)", "Automated Departure Settings", DROPSHIP_MIN_AUTO_DELAY/10, DROPSHIP_MAX_AUTO_DELAY/10, DROPSHIP_MIN_AUTO_DELAY/10)
+					dropship.automated_launch_delay = Clamp(auto_delay SECONDS, DROPSHIP_MIN_AUTO_DELAY, DROPSHIP_MAX_AUTO_DELAY)
+					dropship.set_automated_launch(!dropship.automated_launch)
+			*/
 		if("cancel-flyby")
 			if(shuttle.in_flyby && shuttle.timer && shuttle.timeLeft(1) >= DROPSHIP_WARMUP_TIME)
 				shuttle.setTimer(DROPSHIP_WARMUP_TIME)

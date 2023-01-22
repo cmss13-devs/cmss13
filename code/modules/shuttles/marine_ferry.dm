@@ -97,12 +97,6 @@
 	var/list/L = s_info[info_tag]
 	info_datums = L.Copy()
 
-/datum/shuttle/ferry/marine/proc/launch_crash(user)
-	if(!can_launch()) return //There's another computer trying to launch something
-
-	in_use = user
-	process_state = FORCE_CRASH
-
 /datum/shuttle/ferry/marine/proc/set_automated_launch(bool_v)
 	automated_launch = bool_v
 	if(bool_v)
@@ -151,12 +145,6 @@
 				else short_jump()
 
 				process_state = WAIT_ARRIVE
-
-		if (FORCE_CRASH)
-			if(move_time) long_jump_crash()
-			else short_jump() //If there's no move time, we are doing this normally
-
-			process_state = WAIT_ARRIVE
 
 		if (FORCE_LAUNCH)
 			if (move_time) long_jump()

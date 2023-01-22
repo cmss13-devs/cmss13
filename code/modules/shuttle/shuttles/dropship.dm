@@ -343,6 +343,11 @@
 	playsound_area(get_area(crash_site), 'sound/effects/engine_landing.ogg', 100)
 	playsound_area(get_area(crash_site), channel = SOUND_CHANNEL_AMBIENCE, status = SOUND_UPDATE)
 
+	addtimer(CALLBACK(src, PROC_REF(disable_latejoin)), 3 MINUTES) // latejoin cryorines have 3 minutes to get the hell out
+
+/datum/dropship_hijack/almayer/proc/disable_latejoin()
+	enter_allowed = FALSE
+
 /datum/dropship_hijack/almayer/proc/get_crashsite_area(ship_section)
 	var/list/areas = list()
 	switch(ship_section)

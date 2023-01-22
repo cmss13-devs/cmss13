@@ -7351,6 +7351,12 @@
 "jYS" = (
 /turf/open/auto_turf/sand/layer2,
 /area/kutjevo/interior/colony_S_East)
+"jZJ" = (
+/obj/docking_port/stationary/marine_dropship/lz1{
+	name = "Dunes Landing Zone"
+	},
+/turf/open/floor/plating/kutjevo,
+/area/shuttle/drop1/kutjevo)
 "jZT" = (
 /turf/open/floor/kutjevo/colors/cyan/edge{
 	dir = 8
@@ -7663,6 +7669,12 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/colony_north)
+"kvd" = (
+/obj/docking_port/stationary/marine_dropship/lz2{
+	name = "NW Colony Landing Zone"
+	},
+/turf/open/floor/plating/kutjevo,
+/area/shuttle/drop2/kutjevo)
 "kvf" = (
 /obj/structure/platform_decoration/kutjevo/rock{
 	dir = 4
@@ -12152,12 +12164,6 @@
 	},
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/interior/complex/botany)
-"qwY" = (
-/obj/effect/landmark/shuttle_loc/marine_trg/landing{
-	name = "2"
-	},
-/turf/open/floor/plating/kutjevo,
-/area/kutjevo/exterior/lz_pad)
 "qxc" = (
 /obj/structure/barricade/metal/wired{
 	dir = 1
@@ -16702,12 +16708,6 @@
 /obj/item/tool/crowbar,
 /turf/open/floor/kutjevo/tan,
 /area/kutjevo/interior/complex/botany)
-"wyx" = (
-/obj/effect/landmark/shuttle_loc/marine_trg/landing{
-	name = "1"
-	},
-/turf/open/floor/plating/kutjevo,
-/area/kutjevo/exterior/lz_dunes)
 "wyy" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -20026,7 +20026,7 @@ lAI
 lAI
 nbV
 umo
-wyx
+nbV
 nbV
 qVc
 cWV
@@ -20193,7 +20193,7 @@ lAI
 lAI
 nbV
 nbV
-lAI
+jZJ
 nbV
 qVc
 cWV
@@ -21098,7 +21098,7 @@ ppX
 ppX
 hzN
 wqk
-qwY
+hzN
 hzN
 qTI
 xBm
@@ -21265,7 +21265,7 @@ ppX
 ppX
 hzN
 hzN
-ppX
+kvd
 hzN
 qTI
 xBm

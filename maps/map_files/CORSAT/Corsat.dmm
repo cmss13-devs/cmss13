@@ -53207,12 +53207,6 @@
 	icon_state = "purplewhite"
 	},
 /area/corsat/omega/complex)
-"oda" = (
-/obj/effect/landmark/shuttle_loc/marine_trg/ground{
-	name = "1"
-	},
-/turf/closed/wall/r_wall/biodome/biodome_unmeltable,
-/area/corsat/sigma/hangar/monorail)
 "odm" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/corsat{
@@ -55065,12 +55059,6 @@
 	icon_state = "bluegrey"
 	},
 /area/corsat/sigma/hangar/office)
-"pDo" = (
-/obj/effect/landmark/shuttle_loc/marine_int/ground{
-	name = "1"
-	},
-/turf/open/space/transit/east/shuttlespace_ew10,
-/area/space)
 "pDt" = (
 /obj/structure/surface/table,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -60183,12 +60171,6 @@
 	icon_state = "redcorner"
 	},
 /area/corsat/sigma/north)
-"tmH" = (
-/obj/effect/landmark/shuttle_loc/marine_src/ground{
-	name = "1"
-	},
-/turf/closed/wall/r_wall/biodome/biodome_unmeltable,
-/area/corsat/gamma/hangar/monorail)
 "tnS" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/computer/station_alert{
@@ -93813,7 +93795,7 @@ dKE
 dKE
 dKE
 dKE
-tmH
+aak
 blr
 blt
 ewN
@@ -105643,7 +105625,7 @@ pdg
 cPi
 pdg
 pdg
-pDo
+pdg
 pdg
 pdg
 pdg
@@ -121326,7 +121308,7 @@ npm
 npm
 npm
 npm
-oda
+akj
 rTo
 bmp
 nOj

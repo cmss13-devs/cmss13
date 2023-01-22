@@ -482,6 +482,22 @@
 	tgui_say?.load()
 	prefs.save_preferences()
 
+/client/verb/toggle_custom_cursors()
+	set name = "Toggle Custom Cursors"
+	set category = "Preferences.UI"
+	set desc = "Toggle Custom Cursors"
+
+	var/result = tgui_alert(src, "Do you want custom cursors enabled?", "Custom Cursors", list("Yes", "No"))
+	if(!result)
+		return
+	if(result == "Yes")
+		prefs.custom_cursors = TRUE
+		to_chat(src, SPAN_NOTICE("You're now using custom cursors."))
+	else
+		prefs.custom_cursors = FALSE
+		to_chat(src, SPAN_NOTICE("You're no longer using custom cursors."))
+	prefs.save_preferences()
+
 //------------ GHOST PREFERENCES ---------------------------------
 
 /client/proc/show_ghost_preferences() // Shows ghost-related preferences.

@@ -384,6 +384,9 @@
 
 #define COMSIG_ITEM_PICKUP "item_pickup"
 
+#define COMSIG_ITEM_ZOOM "item_zoom"
+#define COMSIG_ITEM_UNZOOM "item_pickup"
+
 #define COMSIG_ATTEMPT_MOB_PULL "attempt_mob_pull"
 	#define COMPONENT_CANCEL_MOB_PULL (1<<0)
 

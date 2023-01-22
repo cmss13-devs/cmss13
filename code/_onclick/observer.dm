@@ -24,28 +24,35 @@
 				return
 			if(alert(src, "Are you sure you want to re-enter your corpse?", "Confirm", "Yes", "No") == "Yes")
 				reenter_corpse()
-				return 1
+				return TRUE
 
 		if(ismob(A) || isVehicle(A))
-			if(isXeno(A) && SSticker.mode.check_xeno_late_join(src))		//if it's a xeno and all checks are alright, we are gonna try to take their body
+			if(isXeno(A) && SSticker.mode.check_xeno_late_join(src)) //if it's a xeno and all checks are alright, we are gonna try to take their body
 				var/mob/living/carbon/Xenomorph/X = A
 				if(X.stat == DEAD || is_admin_level(X.z) || X.aghosted)
 					to_chat(src, SPAN_WARNING("You cannot join as [X]."))
+					ManualFollow(X)
 					return
+
 				if(!SSticker.mode.xeno_bypass_timer)
+					if((!isXenoLarva(X) && X.away_timer < XENO_LEAVE_TIMER) || (isXenoLarva(X) && X.away_timer < XENO_LEAVE_TIMER_LARVA))
+						var/to_wait = XENO_LEAVE_TIMER - X.away_timer
+						if(isXenoLarva(X))
+							to_wait = XENO_LEAVE_TIMER_LARVA - X.away_timer
+						if(to_wait > 60 SECONDS) // don't spam for clearly non-AFK xenos
+							to_chat(src, SPAN_WARNING("That player hasn't been away long enough. Please wait [to_wait] second\s longer."))
+						ManualFollow(A)
+						return FALSE
+
 					var/deathtime = world.time - timeofdeath
 					if(deathtime < 2.5 MINUTES)
 						var/message = "You have been dead for [DisplayTimeText(deathtime)]."
 						message = SPAN_WARNING("[message]")
 						to_chat(src, message)
 						to_chat(src, SPAN_WARNING("You must wait 2.5 minutes before rejoining the game!"))
+						ManualFollow(A)
 						return FALSE
-					if((!isXenoLarva(X) && X.away_timer < XENO_LEAVE_TIMER) || (isXenoLarva(X) && X.away_timer < XENO_LEAVE_TIMER_LARVA))
-						var/to_wait = XENO_LEAVE_TIMER - X.away_timer
-						if(isXenoLarva(X))
-							to_wait = XENO_LEAVE_TIMER_LARVA - X.away_timer
-						to_chat(src, SPAN_WARNING("That player hasn't been away long enough. Please wait [to_wait] second\s longer."))
-						return FALSE
+
 				if(alert(src, "Are you sure you want to transfer yourself into [X]?", "Confirm Transfer", "Yes", "No") != "Yes")
 					return FALSE
 				if(((!isXenoLarva(X) && X.away_timer < XENO_LEAVE_TIMER) || (isXenoLarva(X) && X.away_timer < XENO_LEAVE_TIMER_LARVA)) || X.stat == DEAD) // Do it again, just in case

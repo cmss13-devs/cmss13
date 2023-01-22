@@ -194,7 +194,7 @@
 
 /atom/movable/proc/create_clone_movable(shift_x, shift_y, layer_override)
 	var/atom/movable/clone/C = new /atom/movable/clone(src.loc)
-	C.density = 0
+	C.density = FALSE
 	C.proj_x = shift_x
 	C.proj_y = shift_y
 	C.layer_override = layer_override
@@ -264,5 +264,5 @@
 
 /atom/movable/proc/safe_throw_at(atom/target, range, speed, mob/thrower, spin = TRUE)
 	//if((force < (move_resist * MOVE_FORCE_THROW_RATIO)) || (move_resist == INFINITY))
-	//	return
+	// return
 	return throw_atom(target, range, speed, thrower, spin)

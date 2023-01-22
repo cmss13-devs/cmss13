@@ -40,7 +40,7 @@
 	set name = "View Clan Info"
 	set category = "OOC.Records"
 
-	INVOKE_ASYNC(src, .proc/usr_view_clan_info)
+	INVOKE_ASYNC(src, PROC_REF(usr_view_clan_info))
 
 /client/proc/usr_view_clan_info(var/clan_id, var/force_clan_id = FALSE)
 	var/clan_to_get

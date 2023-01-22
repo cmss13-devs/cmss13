@@ -3,11 +3,11 @@ var/list/clones = list()
 var/list/clones_t = list()
 
 SUBSYSTEM_DEF(fz_transitions)
-	name			= "Z-Transitions"
-	wait			= 1 SECONDS
-	priority 		= SS_PRIORITY_FZ_TRANSITIONS
-	init_order		= SS_INIT_FZ_TRANSITIONS
-	flags     		= SS_KEEP_TIMING
+	name = "Z-Transitions"
+	wait = 1 SECONDS
+	priority = SS_PRIORITY_FZ_TRANSITIONS
+	init_order = SS_INIT_FZ_TRANSITIONS
+	flags = SS_KEEP_TIMING
 
 /datum/controller/subsystem/fz_transitions/stat_entry(msg)
 	msg = "P:[projectors.len]|C:[clones.len]|T:[clones_t.len]"

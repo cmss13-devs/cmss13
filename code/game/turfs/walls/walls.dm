@@ -3,7 +3,7 @@
 	desc = "A huge chunk of metal used to separate rooms."
 	icon = 'icons/turf/walls/walls.dmi'
 	icon_state = "0"
-	opacity = 1
+	opacity = TRUE
 	var/hull = 0 //1 = Can't be deconstructed by tools or thermite. Used for Sulaco walls
 	var/walltype = WALL_METAL
 	var/junctiontype //when walls smooth with one another, the type of junction each wall is.
@@ -59,6 +59,11 @@
 	update_connections(FALSE)
 	update_icon()
 
+
+/turf/closed/wall/setDir(newDir)
+	..()
+	update_connections(FALSE)
+	update_icon()
 
 /turf/closed/wall/ChangeTurf(newtype, ...)
 	QDEL_NULL(acided_hole)
@@ -128,6 +133,10 @@
 //Appearance
 /turf/closed/wall/get_examine_text(mob/user)
 	. = ..()
+
+	if(hull)
+		.+= SPAN_WARNING("You don't think you have any tools able to even scratch this.")
+		return //If it's indestructable, we don't want to give the wrong impression by saying "you can decon it with a welder"
 
 	if(!damage)
 		if (acided_hole)
@@ -251,7 +260,7 @@
 	O.icon = 'icons/effects/fire.dmi'
 	O.icon_state = "red_3"
 	O.anchored = 1
-	O.density = 1
+	O.density = TRUE
 	O.layer = FLY_LAYER
 
 	to_chat(user, SPAN_WARNING("The thermite starts melting through [src]."))
@@ -321,10 +330,14 @@
 			return
 
 	if(istype(W, /obj/item/weapon/melee/twohanded/breacher))
+		var/obj/item/weapon/melee/twohanded/breacher/current_hammer = W
 		if(user.action_busy)
 			return
-		if(!HAS_TRAIT(user, TRAIT_SUPER_STRONG))
-			to_chat(user, SPAN_WARNING("You can't use \the [W] properly!"))
+		if(!(HAS_TRAIT(user, TRAIT_SUPER_STRONG) || !current_hammer.really_heavy))
+			to_chat(user, SPAN_WARNING("You can't use \the [current_hammer] properly!"))
+			return
+		if(hull)
+			to_chat(user, SPAN_WARNING("Even with your immense strength, you can't bring down \the [src]."))
 			return
 
 		to_chat(user, SPAN_NOTICE("You start taking down \the [src]."))

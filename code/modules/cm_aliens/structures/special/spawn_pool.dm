@@ -146,7 +146,7 @@
 
 		QDEL_NULL(melting_body)
 	else
-		addtimer(CALLBACK(src, /obj/effect/alien/resin/special/pool.proc/melt_body, iterations), 2 SECONDS)
+		addtimer(CALLBACK(src, TYPE_PROC_REF(/obj/effect/alien/resin/special/pool, melt_body), iterations), 2 SECONDS)
 
 /obj/effect/alien/resin/special/pool/proc/can_spawn_larva()
 	if(linked_hive.hardcore)
@@ -160,8 +160,8 @@
 		if(isnull(new_xeno))
 			return FALSE
 
-		new_xeno.visible_message(SPAN_XENODANGER("A larva suddenly emerges out of from \the [src]!"),
-		SPAN_XENODANGER("You emerge out of \the [src] and awaken from your slumber. For the Hive!"))
+		new_xeno.visible_message(SPAN_XENODANGER("A larva suddenly emerges from \the [src]!"),
+		SPAN_XENODANGER("You emerge from \the [src] and awaken from your slumber. For the Hive!"))
 		msg_admin_niche("[key_name(new_xeno)] emerged from \a [src]. (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[src.x];Y=[src.y];Z=[src.z]'>JMP</a>)")
 		playsound(new_xeno, 'sound/effects/xeno_newlarva.ogg', 50, 1)
 		if(!SSticker.mode.transfer_xeno(xeno_candidate, new_xeno))
@@ -213,7 +213,7 @@
 		return
 
 	playsound(H, get_sfx("acid_sizzle"), 30)
-	addtimer(CALLBACK(src, .proc/do_human_damage, H), 3 SECONDS, TIMER_UNIQUE)
+	addtimer(CALLBACK(src, PROC_REF(do_human_damage), H), 3 SECONDS, TIMER_UNIQUE)
 
 	if(H.lying)
 		for(var/i in DEFENSE_ZONES_LIVING)

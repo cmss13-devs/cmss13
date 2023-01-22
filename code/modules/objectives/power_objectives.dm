@@ -20,7 +20,7 @@
 			if(!is_ground_level(colony_smes.loc.z))
 				continue
 			LAZYADD(power_objects, colony_smes)
-			RegisterSignal(colony_smes, COMSIG_PARENT_QDELETING, .proc/remove_machine)
+			RegisterSignal(colony_smes, COMSIG_PARENT_QDELETING, PROC_REF(remove_machine))
 
 /datum/cm_objective/power/proc/remove_machine(obj/structure/machinery/power/machine)
 	SIGNAL_HANDLER

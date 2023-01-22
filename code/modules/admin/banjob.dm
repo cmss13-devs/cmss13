@@ -7,8 +7,8 @@ won't recognize the older one, as an example.
 
 */
 
-var/jobban_runonce			// Updates legacy bans with new info
-var/jobban_keylist[0]		//to store the keys & ranks
+var/jobban_runonce // Updates legacy bans with new info
+var/jobban_keylist[0] //to store the keys & ranks
 
 /proc/check_jobban_path(X)
 	. = ckey(X)
@@ -86,7 +86,7 @@ var/jobban_keylist[0]		//to store the keys & ranks
 		to_chat(usr, "This can only be used on instances of type /mob")
 		return
 
-	if(!M.ckey)	//sanity
+	if(!M.ckey) //sanity
 		to_chat(usr, "This mob has no ckey")
 		return
 	if(!RoleAuthority)

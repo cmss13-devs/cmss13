@@ -14,8 +14,8 @@
 	src.stat_name = stat_name
 
 /datum/component/shield_slash/RegisterWithParent()
-	RegisterSignal(parent, COMSIG_XENO_SLASH_ADDITIONAL_EFFECTS_SELF, .proc/handle_shield_buildup)
-	RegisterSignal(parent, COMSIG_XENO_APPEND_TO_STAT, .proc/handle_stat_display)
+	RegisterSignal(parent, COMSIG_XENO_SLASH_ADDITIONAL_EFFECTS_SELF, PROC_REF(handle_shield_buildup))
+	RegisterSignal(parent, COMSIG_XENO_APPEND_TO_STAT, PROC_REF(handle_stat_display))
 
 /datum/component/shield_slash/UnregisterFromParent()
 	UnregisterSignal(parent, list(

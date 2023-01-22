@@ -4,7 +4,7 @@
 
 	melee_damage_lower = XENO_DAMAGE_TIER_6
 	melee_damage_upper = XENO_DAMAGE_TIER_6
-	melee_vehicle_damage = XENO_DAMAGE_TIER_7	//Queen and Ravs have extra multiplier when dealing damage in multitile_interaction.dm
+	melee_vehicle_damage = XENO_DAMAGE_TIER_7 //Queen and Ravs have extra multiplier when dealing damage in multitile_interaction.dm
 	max_health = XENO_HEALTH_TIER_9
 	plasma_gain = XENO_PLASMA_GAIN_TIER_9
 	plasma_max = XENO_PLASMA_TIER_3

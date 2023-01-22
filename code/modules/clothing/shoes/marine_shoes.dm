@@ -177,11 +177,11 @@
 	var/mob/living/carbon/human/human_user = user
 	if(src != human_user.shoes)
 		return
-	RegisterSignal(user, COMSIG_MOB_WEEDS_CROSSED, .proc/handle_weed_slowdown)
+	RegisterSignal(user, COMSIG_MOB_WEED_SLOWDOWN, PROC_REF(handle_weed_slowdown))
 
 /obj/item/clothing/shoes/hiking/unequipped(mob/user, slot, silent)
 	. = ..()
-	UnregisterSignal(user, COMSIG_MOB_WEEDS_CROSSED, .proc/handle_weed_slowdown)
+	UnregisterSignal(user, COMSIG_MOB_WEED_SLOWDOWN, PROC_REF(handle_weed_slowdown))
 
 /obj/item/clothing/shoes/hiking/proc/handle_weed_slowdown(mob/user, list/slowdata)
 	SIGNAL_HANDLER

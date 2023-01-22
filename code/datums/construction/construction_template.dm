@@ -34,24 +34,26 @@
 /datum/construction_template/proc/get_structure_image()
 	return image(build_icon, build_icon_state)
 
-/datum/construction_template/proc/add_crystal(var/mob/living/carbon/Xenomorph/M)
-	if(!istype(M))
+/datum/construction_template/proc/add_crystal(var/mob/living/carbon/Xenomorph/xeno)
+	if(!istype(xeno))
+		return
+	if(!xeno.plasma_max)
 		return
 	if(crystals_stored >= crystals_required)
-		to_chat(M, SPAN_WARNING("\The [name] does not require plasma."))
+		to_chat(xeno, SPAN_WARNING("\The [name] does not require plasma."))
 		return
-	to_chat(M, SPAN_NOTICE("You begin adding \the plasma to \the [name]."))
-	xeno_attack_delay(M)
-	if(!do_after(M, 40, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+	to_chat(xeno, SPAN_NOTICE("You begin adding \the plasma to \the [name]."))
+	xeno_attack_delay(xeno)
+	if(!do_after(xeno, 40, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 		return
 	//double-check amount required
 	if(crystals_stored >= crystals_required)
-		to_chat(M, SPAN_WARNING("\The [name] has enough plasma."))
+		to_chat(xeno, SPAN_WARNING("\The [name] has enough plasma."))
 		return
-	var/amount_to_use = min(M.plasma_stored, (crystals_required - crystals_stored))
+	var/amount_to_use = min(xeno.plasma_stored, (crystals_required - crystals_stored))
 	crystals_stored += amount_to_use
-	M.plasma_stored -= amount_to_use
-	to_chat(M, SPAN_WARNING("\The [name] requires [crystals_required - crystals_stored] more plasma."))
+	xeno.plasma_stored -= amount_to_use
+	to_chat(xeno, SPAN_WARNING("\The [name] requires [crystals_required - crystals_stored] more plasma."))
 	check_completion()
 
 // Xeno ressource collection

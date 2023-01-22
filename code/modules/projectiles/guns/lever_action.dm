@@ -4,9 +4,9 @@ mostly a copypaste of shotgun code but not *entirely*
 their unique feature is that a direct hit will buff your damage and firerate
 */
 
-#define USES_STREAKS					(1<<0)
-#define DANGEROUS_TO_ONEHAND_LEVER		(1<<1)
-#define MOVES_WHEN_LEVERING				(1<<2)
+#define USES_STREAKS (1<<0)
+#define DANGEROUS_TO_ONEHAND_LEVER (1<<1)
+#define MOVES_WHEN_LEVERING (1<<2)
 
 /obj/item/weapon/gun/lever_action
 	name = "lever-action rifle"
@@ -65,7 +65,7 @@ their unique feature is that a direct hit will buff your damage and firerate
 /obj/item/weapon/gun/lever_action/wield(var/mob/M)
 	. = ..()
 	if(. && (flags_gun_lever_action & USES_STREAKS))
-		RegisterSignal(M, COMSIG_DIRECT_BULLET_HIT, .proc/direct_hit_buff)
+		RegisterSignal(M, COMSIG_DIRECT_BULLET_HIT, PROC_REF(direct_hit_buff))
 
 /obj/item/weapon/gun/lever_action/unwield(var/mob/M)
 	. = ..()
@@ -113,7 +113,7 @@ their unique feature is that a direct hit will buff your damage and firerate
 	if(!(flags_gun_lever_action & USES_STREAKS))
 		return
 	apply_hit_buff(user, target, one_hand_lever) //this is a separate proc so it's configgable
-	addtimer(CALLBACK(src, .proc/reset_hit_buff, one_hand_lever), hit_buff_reset_cooldown, TIMER_OVERRIDE|TIMER_UNIQUE)
+	addtimer(CALLBACK(src, PROC_REF(reset_hit_buff), one_hand_lever), hit_buff_reset_cooldown, TIMER_OVERRIDE|TIMER_UNIQUE)
 
 /obj/item/weapon/gun/lever_action/proc/apply_hit_buff(mob/user, mob/target, var/one_hand_lever = FALSE)
 	lever_sound = lever_super_sound
@@ -161,7 +161,7 @@ their unique feature is that a direct hit will buff your damage and firerate
 	current_mag.chamber_position++ //We move the position up when loading ammo. New rounds are always fired next, in order loaded.
 	current_mag.chamber_contents[current_mag.chamber_position] = selection //Just moves up one, unless the mag is full.
 	if(current_mag.current_rounds == 1 && !in_chamber) //The previous proc in the reload() cycle adds ammo, so the best workaround here,
-		update_icon()	//This is not needed for now. Maybe we'll have loaded sprites at some point, but I doubt it. Also doesn't play well with double barrel.
+		update_icon() //This is not needed for now. Maybe we'll have loaded sprites at some point, but I doubt it. Also doesn't play well with double barrel.
 		ready_in_chamber()
 		cock_gun(user)
 	if(user) playsound(user, reload_sound, 25, TRUE)
@@ -349,11 +349,11 @@ their unique feature is that a direct hit will buff your damage and firerate
 
 //===================THE XM88===================\\
 
-#define FLOATING_PENETRATION_TIER_0	0
-#define FLOATING_PENETRATION_TIER_1	1
-#define FLOATING_PENETRATION_TIER_2	2
-#define FLOATING_PENETRATION_TIER_3	3
-#define FLOATING_PENETRATION_TIER_4	4
+#define FLOATING_PENETRATION_TIER_0 0
+#define FLOATING_PENETRATION_TIER_1 1
+#define FLOATING_PENETRATION_TIER_2 2
+#define FLOATING_PENETRATION_TIER_3 3
+#define FLOATING_PENETRATION_TIER_4 4
 
 /obj/item/weapon/gun/lever_action/xm88
 	name = "\improper XM88 heavy rifle"
@@ -411,6 +411,58 @@ their unique feature is that a direct hit will buff your damage and firerate
 	damage_mult = BASE_BULLET_DAMAGE_MULT
 	recoil = RECOIL_AMOUNT_TIER_3
 	recoil_unwielded = RECOIL_AMOUNT_TIER_1
+
+/obj/item/weapon/gun/lever_action/xm88/wield(mob/user)
+	. = ..()
+
+	user.client?.mouse_pointer_icon = get_mouse_pointer(floating_penetration)
+	RegisterSignal(user, COMSIG_MOB_FIRED_GUN, PROC_REF(update_fired_mouse_pointer))
+
+/obj/item/weapon/gun/lever_action/xm88/unwield(mob/user)
+	. = ..()
+
+	user.client?.mouse_pointer_icon = null
+	UnregisterSignal(user, COMSIG_MOB_FIRED_GUN)
+
+/obj/item/weapon/gun/lever_action/xm88/proc/update_fired_mouse_pointer(mob/user)
+	SIGNAL_HANDLER
+
+	user.client?.mouse_pointer_icon = get_fired_mouse_pointer(floating_penetration)
+	addtimer(CALLBACK(src, PROC_REF(update_mouse_pointer), user), 0.4 SECONDS, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_CLIENT_TIME)
+
+/obj/item/weapon/gun/lever_action/xm88/proc/update_mouse_pointer(mob/user)
+	user.client?.mouse_pointer_icon = get_mouse_pointer(floating_penetration)
+
+/obj/item/weapon/gun/lever_action/xm88/proc/get_mouse_pointer(level)
+	switch(level)
+		if(FLOATING_PENETRATION_TIER_0)
+			return 'icons/effects/mouse_pointer/xm88/xm88-0.dmi'
+		if(FLOATING_PENETRATION_TIER_1)
+			return 'icons/effects/mouse_pointer/xm88/xm88-1.dmi'
+		if(FLOATING_PENETRATION_TIER_2)
+			return 'icons/effects/mouse_pointer/xm88/xm88-2.dmi'
+		if(FLOATING_PENETRATION_TIER_3)
+			return 'icons/effects/mouse_pointer/xm88/xm88-3.dmi'
+		if(FLOATING_PENETRATION_TIER_4)
+			return 'icons/effects/mouse_pointer/xm88/xm88-4.dmi'
+		else
+			return 'icons/effects/mouse_pointer/xm88/xm88-0.dmi'
+
+
+/obj/item/weapon/gun/lever_action/xm88/proc/get_fired_mouse_pointer(level)
+	switch(level)
+		if(FLOATING_PENETRATION_TIER_0)
+			return 'icons/effects/mouse_pointer/xm88/xm88-fired-0.dmi'
+		if(FLOATING_PENETRATION_TIER_1)
+			return 'icons/effects/mouse_pointer/xm88/xm88-fired-1.dmi'
+		if(FLOATING_PENETRATION_TIER_2)
+			return 'icons/effects/mouse_pointer/xm88/xm88-fired-2.dmi'
+		if(FLOATING_PENETRATION_TIER_3)
+			return 'icons/effects/mouse_pointer/xm88/xm88-fired-3.dmi'
+		if(FLOATING_PENETRATION_TIER_4)
+			return 'icons/effects/mouse_pointer/xm88/xm88-fired-4.dmi'
+		else
+			return 'icons/effects/mouse_pointer/xm88/xm88-fired-0.dmi'
 
 /obj/item/weapon/gun/lever_action/xm88/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 27, "muzzle_y" = 17, "rail_x" = 11, "rail_y" = 21, "under_x" = 22, "under_y" = 13, "stock_x" = 12, "stock_y" = 15)

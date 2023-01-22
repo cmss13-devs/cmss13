@@ -132,6 +132,7 @@
  * ability : the ability that is about to be used
  */
 /datum/behavior_delegate/proc/pre_ability_cast(datum/action/xeno_action/ability)
+	SHOULD_CALL_PARENT(TRUE) //So they don't forget this is a signal handler and should not sleep
 	SIGNAL_HANDLER
 	return
 
@@ -141,5 +142,6 @@
  * result : value returned by the ability
  */
 /datum/behavior_delegate/proc/post_ability_cast(datum/action/xeno_action/ability, result)
+	SHOULD_CALL_PARENT(TRUE) //So they don't forget this is a signal handler and should not sleep
 	SIGNAL_HANDLER
 	return

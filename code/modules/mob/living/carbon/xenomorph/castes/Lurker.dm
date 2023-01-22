@@ -90,6 +90,7 @@
 
 
 /datum/behavior_delegate/lurker_base/post_ability_cast(datum/action/xeno_action/ability, result)
+	..()
 	if(istype(ability, /datum/action/xeno_action/onclick/lurker_assassinate) && result)
 		//result is the duration of the slash buff
 		next_slash_buffed = TRUE

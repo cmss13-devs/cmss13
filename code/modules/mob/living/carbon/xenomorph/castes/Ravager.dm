@@ -60,12 +60,11 @@
 
 // Mutator delegate for base ravager
 /datum/behavior_delegate/ravager_base
-	var/shield_decay_time = 15 SECONDS // Time in deciseconds before our shield decays
-	var/slash_charge_cdr = 4 SECONDS // Amount to reduce charge cooldown by per slash
-	var/knockdown_amount = 2
-	var/fling_distance = 3
+	/// Time in deciseconds before our shield decays
+	var/shield_decay_time = 15 SECONDS
+	/// Amount to reduce charge cooldown by per slash
+	var/slash_charge_cdr = 4 SECONDS
 	var/empower_targets = 0
-	var/super_empower_threshold = 3
 	var/dmg_buff_per_target = 2
 
 /datum/behavior_delegate/ravager_base/melee_attack_modify_damage(original_damage, mob/living/carbon/A)
@@ -103,3 +102,13 @@
 		QDEL_NULL(rav_shield)
 		to_chat(bound_xeno, SPAN_XENODANGER("You feel your shield decay!"))
 		bound_xeno.overlay_shields()
+
+/datum/behavior_delegate/ravager_base/post_ability_cast(datum/action/xeno_action/ability, result)
+	..()
+	if(istype(ability, /datum/action/xeno_action/onclick/empower) && result)
+		var/datum/action/xeno_action/onclick/empower/empower_action = get_xeno_action_by_type(bound_xeno, /datum/action/xeno_action/onclick/empower)
+		empower_targets = result
+		addtimer(CALLBACK(src, PROC_REF(remove_empower_targets)), empower_action.super_empower_duration)
+
+/datum/behavior_delegate/ravager_base/proc/remove_empower_targets()
+	empower_targets = 0

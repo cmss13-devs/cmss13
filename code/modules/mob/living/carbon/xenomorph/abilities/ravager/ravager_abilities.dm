@@ -16,6 +16,10 @@
 	slash = FALSE // Do we slash upon reception?
 	freeze_self = FALSE // Should we freeze ourselves after the lunge?
 	should_destroy_objects = TRUE   // Only used for ravager charge
+	/// Knockout value if the owner is currently super-empowered
+	var/knockdown_amount = 2
+	/// Fling disstance if the owner is currently super-empowered
+	var/fling_distance = 3
 
 // Base ravager shield ability
 /datum/action/xeno_action/onclick/empower
@@ -31,11 +35,13 @@
 	// Config values (mutable)
 	var/empower_range = 3
 	var/max_targets = 5
+	var/current_targets = 0
 	var/main_empower_base_shield = 0
 	var/initial_activation_shield = 75
 	var/shield_per_human = 80
 	var/time_until_timeout = 15 SECONDS
-
+	var/super_empower_threshold = 3
+	var/super_empower_duration = 5 SECONDS
 	// State
 	var/activated_once = FALSE
 

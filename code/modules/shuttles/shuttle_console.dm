@@ -272,8 +272,8 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 				if(crash_target == "Cancel")
 					return
 
-				var/i = alert("Warning: Once you launch the shuttle you will not be able to bring it back. Confirm anyways?", "WARNING", "Yes", "No")
-				if(i == "No")
+				var/i = tgui_alert(Q, "Warning: Once you launch the shuttle you will not be able to bring it back. Confirm anyways?", "WARNING", list("Yes", "No"))
+				if(i != "Yes")
 					return
 
 				if(shuttle.moving_status != SHUTTLE_IDLE || shuttle.locked || shuttle.location != 1 || !shuttle.alerts_allowed || !shuttle.queen_locked || shuttle.recharging)

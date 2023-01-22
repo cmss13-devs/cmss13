@@ -109,7 +109,7 @@
 	armor_full_deflection_mult = 2
 	armor_integrity_damage_mult = 4
 	armor_random_range = 0
-	armor_ignore_integrity = 1
+	armor_ignore_integrity = TRUE
 
 /datum/combat_configuration/xeno/ranged
 

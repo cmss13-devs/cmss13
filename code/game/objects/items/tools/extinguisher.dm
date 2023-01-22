@@ -30,7 +30,8 @@
 	desc = "A light and compact fibreglass-framed model fire extinguisher."
 	icon_state = "miniFE0"
 	item_state = "miniFE"
-	hitsound = null //it is much lighter, after all.
+	/// it is much lighter, after all.
+	hitsound = null
 	throwforce = 2
 	w_class = SIZE_SMALL
 	force = 3
@@ -50,7 +51,8 @@
 	power = PYRO_EXTINGUISHER_PWR
 
 /obj/item/tool/extinguisher/pyro/atmos_tank
-	max_water = 500000 //so it never runs out, theoretically
+	/// so it never runs out, theoretically
+	max_water = 500000
 
 /obj/item/tool/extinguisher/Initialize()
 	. = ..()

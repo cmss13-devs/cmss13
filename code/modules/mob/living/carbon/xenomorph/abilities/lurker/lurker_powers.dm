@@ -27,7 +27,6 @@
 	//Purely for the stat panel display, no mechanical purpose otherwise
 	COOLDOWN_START(src, invisibility_start, duration)
 	xeno.stealth = TRUE
-	var/datum.
 	// if we go off early, this also works fine.
 	addtimer(CALLBACK(src, PROC_REF(invisibility_off)), duration, TIMER_STOPPABLE)
 

@@ -76,7 +76,7 @@
 		new /datum/effects/xeno_slow(target_carbon, bound_xeno, null, null, get_xeno_stun_duration(target_carbon, slash_slow_duration))
 		next_slash_buffed = FALSE
 		var/datum/action/xeno_action/onclick/lurker_assassinate/ability = get_xeno_action_by_type(bound_xeno, /datum/action/xeno_action/onclick/lurker_assassinate)
-		if (ability && istype(ability))
+		if (ability)
 			ability.button.icon_state = "template"
 
 	return original_damage
@@ -84,9 +84,9 @@
 /datum/behavior_delegate/lurker_base/melee_attack_additional_effects_self()
 	..()
 
-	var/datum/action/xeno_action/onclick/lurker_invisibility/LIA = get_xeno_action_by_type(bound_xeno, /datum/action/xeno_action/onclick/lurker_invisibility)
-	if (LIA && istype(LIA))
-		LIA.invisibility_off()
+	var/datum/action/xeno_action/onclick/lurker_invisibility/invisibility_action = get_xeno_action_by_type(bound_xeno, /datum/action/xeno_action/onclick/lurker_invisibility)
+	if (invisibility_action)
+		invisibility_action.invisibility_off()
 
 
 /datum/behavior_delegate/lurker_base/post_ability_cast(datum/action/xeno_action/ability, result)

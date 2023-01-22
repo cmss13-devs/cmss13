@@ -417,6 +417,16 @@ SUBSYSTEM_DEF(shuttle)
 	if(existing_shuttle)
 		existing_shuttle.jumpToNullSpace()
 
+	// update underlays
+	for(var/area/A as anything in preview_shuttle.shuttle_areas)
+		for(var/turf/T as anything in A)
+			if(istype(T, /turf/closed/shuttle))
+				var/dx = T.x - preview_shuttle.x
+				var/dy = T.y - preview_shuttle.y
+				var/turf/target_lz = locate(D.x + dx, D.y + dy, D.z)
+				T.underlays.Cut()
+				T.underlays += mutable_appearance(target_lz.icon, target_lz.icon_state, TURF_LAYER, FLOOR_PLANE)
+
 	var/list/force_memory = preview_shuttle.movement_force
 	preview_shuttle.movement_force = list("KNOCKDOWN" = 0, "THROW" = 0)
 	preview_shuttle.initiate_docking(D)

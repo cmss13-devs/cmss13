@@ -1,0 +1,477 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"ax" = (
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin8";
+	tag = "icon-rasputin7"
+	},
+/area/shuttle/getty)
+"aY" = (
+/turf/closed/shuttle/getty{
+	icon_state = "80"
+	},
+/area/shuttle/getty)
+"de" = (
+/turf/closed/shuttle/getty{
+	icon_state = "68"
+	},
+/area/shuttle/getty)
+"ec" = (
+/turf/closed/shuttle/getty{
+	icon_state = "24"
+	},
+/area/shuttle/getty)
+"eE" = (
+/obj/structure/machinery/computer/dropship_weapons/dropship2,
+/turf/open/floor/plating,
+/area/shuttle/getty)
+"eK" = (
+/obj/structure/bed/chair/dropship/pilot{
+	dir = 1;
+	tag = "icon-pilot_chair (NORTH)"
+	},
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin15";
+	tag = "icon-rasputin15"
+	},
+/area/shuttle/getty)
+"eP" = (
+/turf/closed/shuttle/getty{
+	icon_state = "47"
+	},
+/area/shuttle/getty)
+"fp" = (
+/turf/closed/shuttle/getty{
+	icon_state = "88"
+	},
+/area/shuttle/getty)
+"fq" = (
+/turf/closed/shuttle/getty{
+	icon_state = "90"
+	},
+/area/shuttle/getty)
+"gd" = (
+/turf/closed/shuttle/getty{
+	icon_state = "92"
+	},
+/area/shuttle/getty)
+"hj" = (
+/turf/closed/shuttle/getty{
+	icon_state = "48"
+	},
+/area/shuttle/getty)
+"hA" = (
+/turf/closed/shuttle/getty{
+	icon_state = "74"
+	},
+/area/shuttle/getty)
+"ib" = (
+/turf/closed/shuttle/getty{
+	icon_state = "60"
+	},
+/area/shuttle/getty)
+"jv" = (
+/turf/closed/shuttle/getty{
+	icon_state = "79"
+	},
+/area/shuttle/getty)
+"jD" = (
+/turf/closed/shuttle/getty,
+/area/shuttle/getty)
+"kk" = (
+/turf/closed/shuttle/getty{
+	icon_state = "91"
+	},
+/area/shuttle/getty)
+"kU" = (
+/turf/closed/shuttle/getty{
+	icon_state = "55"
+	},
+/area/shuttle/getty)
+"la" = (
+/turf/closed/shuttle/getty{
+	icon_state = "69"
+	},
+/area/shuttle/getty)
+"lQ" = (
+/turf/closed/shuttle/getty{
+	icon_state = "42"
+	},
+/area/shuttle/getty)
+"nb" = (
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin7";
+	tag = "icon-rasputin7"
+	},
+/area/shuttle/getty)
+"nK" = (
+/turf/template_noop,
+/area/template_noop)
+"oN" = (
+/turf/closed/shuttle/getty{
+	icon_state = "67"
+	},
+/area/shuttle/getty)
+"oR" = (
+/turf/closed/shuttle/getty{
+	icon_state = "72"
+	},
+/area/shuttle/getty)
+"pd" = (
+/turf/closed/shuttle/getty{
+	icon_state = "70"
+	},
+/area/shuttle/getty)
+"pN" = (
+/turf/closed/shuttle/getty{
+	icon_state = "10"
+	},
+/area/shuttle/getty)
+"qQ" = (
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin6";
+	tag = "icon-rasputin6"
+	},
+/area/shuttle/getty)
+"rC" = (
+/turf/closed/shuttle/getty{
+	icon_state = "75"
+	},
+/area/shuttle/getty)
+"rN" = (
+/turf/closed/shuttle/getty{
+	icon_state = "52"
+	},
+/area/shuttle/getty)
+"rR" = (
+/turf/closed/shuttle/getty{
+	icon_state = "81"
+	},
+/area/shuttle/getty)
+"sH" = (
+/turf/closed/shuttle/getty{
+	icon_state = "89"
+	},
+/area/shuttle/getty)
+"tc" = (
+/turf/closed/shuttle/getty{
+	icon_state = "84"
+	},
+/area/shuttle/getty)
+"tx" = (
+/turf/closed/shuttle/getty{
+	icon_state = "66"
+	},
+/area/shuttle/getty)
+"vy" = (
+/turf/closed/shuttle/getty{
+	icon_state = "12"
+	},
+/area/shuttle/getty)
+"wo" = (
+/turf/closed/shuttle/getty{
+	icon_state = "82"
+	},
+/area/shuttle/getty)
+"wr" = (
+/turf/closed/shuttle/getty{
+	icon_state = "23"
+	},
+/area/shuttle/getty)
+"xN" = (
+/turf/closed/shuttle/getty{
+	icon_state = "71"
+	},
+/area/shuttle/getty)
+"xZ" = (
+/turf/closed/shuttle/getty{
+	icon_state = "56"
+	},
+/area/shuttle/getty)
+"zK" = (
+/turf/closed/shuttle/getty{
+	icon_state = "26"
+	},
+/area/shuttle/getty)
+"Af" = (
+/turf/closed/shuttle/getty{
+	icon_state = "3"
+	},
+/area/shuttle/getty)
+"BA" = (
+/turf/closed/shuttle/getty{
+	icon_state = "77"
+	},
+/area/shuttle/getty)
+"DW" = (
+/turf/closed/shuttle/getty{
+	icon_state = "13"
+	},
+/area/shuttle/getty)
+"Es" = (
+/turf/closed/shuttle/getty{
+	icon_state = "64"
+	},
+/area/shuttle/getty)
+"FX" = (
+/turf/closed/shuttle/getty{
+	icon_state = "4"
+	},
+/area/shuttle/getty)
+"GU" = (
+/obj/structure/machinery/computer/security/dropship/two,
+/turf/open/floor/plating,
+/area/shuttle/getty)
+"Ha" = (
+/turf/template_noop,
+/area/shuttle/getty)
+"Hd" = (
+/turf/closed/shuttle/getty{
+	icon_state = "6"
+	},
+/area/shuttle/getty)
+"IF" = (
+/turf/closed/shuttle/getty{
+	icon_state = "32"
+	},
+/area/shuttle/getty)
+"IH" = (
+/turf/closed/shuttle/getty{
+	icon_state = "73"
+	},
+/area/shuttle/getty)
+"II" = (
+/turf/closed/shuttle/getty{
+	icon_state = "5"
+	},
+/area/shuttle/getty)
+"JD" = (
+/turf/closed/shuttle/getty{
+	icon_state = "35"
+	},
+/area/shuttle/getty)
+"JX" = (
+/turf/closed/shuttle/getty{
+	icon_state = "51"
+	},
+/area/shuttle/getty)
+"Kq" = (
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin3";
+	tag = "icon-rasputin3"
+	},
+/area/shuttle/getty)
+"Ly" = (
+/turf/closed/shuttle/getty{
+	icon_state = "83"
+	},
+/area/shuttle/getty)
+"Lz" = (
+/obj/docking_port/mobile/getty,
+/turf/template_noop,
+/area/template_noop)
+"MA" = (
+/turf/closed/shuttle/getty{
+	icon_state = "78"
+	},
+/area/shuttle/getty)
+"Nt" = (
+/turf/closed/shuttle/getty{
+	icon_state = "25"
+	},
+/area/shuttle/getty)
+"NQ" = (
+/obj/structure/bed/chair/dropship/passenger/shuttle_chair{
+	dir = 4
+	},
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin15";
+	tag = "icon-rasputin15"
+	},
+/area/shuttle/getty)
+"Oc" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/getty,
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin4";
+	tag = "icon-rasputin7"
+	},
+/area/shuttle/getty)
+"PD" = (
+/turf/closed/shuttle/getty{
+	icon_state = "45"
+	},
+/area/shuttle/getty)
+"Si" = (
+/turf/closed/shuttle/getty{
+	icon_state = "53"
+	},
+/area/shuttle/getty)
+"UA" = (
+/turf/closed/shuttle/getty{
+	icon_state = "2"
+	},
+/area/shuttle/getty)
+"UU" = (
+/obj/structure/bed/chair/dropship/passenger/shuttle_chair{
+	dir = 8
+	},
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin15";
+	tag = "icon-rasputin15"
+	},
+/area/shuttle/getty)
+"WQ" = (
+/turf/closed/shuttle/getty{
+	icon_state = "65"
+	},
+/area/shuttle/getty)
+"WZ" = (
+/turf/closed/shuttle/getty{
+	icon_state = "46"
+	},
+/area/shuttle/getty)
+"Zq" = (
+/turf/closed/shuttle/getty{
+	icon_state = "61"
+	},
+/area/shuttle/getty)
+"ZL" = (
+/turf/closed/shuttle/getty{
+	icon_state = "76"
+	},
+/area/shuttle/getty)
+"ZR" = (
+/turf/closed/shuttle/getty{
+	icon_state = "44"
+	},
+/area/shuttle/getty)
+
+(1,1,1) = {"
+nK
+nK
+nK
+nK
+Ha
+ib
+WQ
+xN
+BA
+Ly
+Lz
+"}
+(2,1,1) = {"
+nK
+nK
+Ha
+IF
+wr
+Zq
+tx
+oR
+MA
+tc
+jD
+"}
+(3,1,1) = {"
+Ha
+Ha
+ZR
+kk
+ec
+vy
+oN
+IH
+jv
+sH
+UA
+"}
+(4,1,1) = {"
+rN
+hj
+PD
+lQ
+NQ
+NQ
+NQ
+NQ
+NQ
+pN
+Af
+"}
+(5,1,1) = {"
+Si
+GU
+eK
+qQ
+Kq
+Kq
+Kq
+Kq
+Kq
+Oc
+nK
+"}
+(6,1,1) = {"
+kU
+eE
+eK
+nb
+Kq
+Kq
+Kq
+Kq
+Kq
+ax
+nK
+"}
+(7,1,1) = {"
+xZ
+JX
+WZ
+lQ
+UU
+UU
+UU
+UU
+UU
+pN
+FX
+"}
+(8,1,1) = {"
+Ha
+Ha
+eP
+gd
+Nt
+DW
+de
+hA
+aY
+fq
+II
+"}
+(9,1,1) = {"
+nK
+nK
+Ha
+JD
+zK
+Zq
+la
+rC
+rR
+tc
+Hd
+"}
+(10,1,1) = {"
+nK
+nK
+nK
+nK
+Ha
+Es
+pd
+ZL
+wo
+fp
+nK
+"}

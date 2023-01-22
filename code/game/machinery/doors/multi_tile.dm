@@ -207,6 +207,10 @@
 	no_panel = 1
 	not_weldable = 1
 
+/obj/structure/machinery/door/airlock/multi_tile/almayer/getty
+	name = "\improper Gettysburg blast door"
+	icon = 'icons/obj/structures/doors/getty.dmi'
+
 /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/ex_act(severity)
 	return
 

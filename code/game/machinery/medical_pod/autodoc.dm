@@ -114,7 +114,7 @@
 
 /obj/structure/machinery/medical_pod/autodoc/proc/heal_limb(var/mob/living/carbon/human/human, var/brute, var/burn)
 	var/list/obj/limb/parts = human.get_damaged_limbs(brute,burn)
-	if(!parts.len)	return
+	if(!parts.len) return
 	var/obj/limb/picked = pick(parts)
 	if(picked.status & (LIMB_ROBOT|LIMB_SYNTHSKIN))
 		picked.heal_damage(brute, burn, TRUE)
@@ -590,7 +590,7 @@
 	var/obj/structure/machinery/medical_pod/autodoc/connected = null
 	dir = SOUTH
 	anchored = 1 //About time someone fixed this.
-	density = 0
+	density = FALSE
 	unslashable = TRUE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 40
@@ -649,9 +649,9 @@
 		if(occupant)
 			var/t1
 			switch(occupant.stat)
-				if(0)	t1 = "conscious"
-				if(1)	t1 = "<font color='blue'>unconscious</font>"
-				if(2)	t1 = "<font color='red'><b>dead</b></font>"
+				if(0) t1 = "conscious"
+				if(1) t1 = "<font color='blue'>unconscious</font>"
+				if(2) t1 = "<font color='red'><b>dead</b></font>"
 			var/operating
 			switch(connected.surgery)
 				if(0) operating = "Auto-Doc: STANDING BY"

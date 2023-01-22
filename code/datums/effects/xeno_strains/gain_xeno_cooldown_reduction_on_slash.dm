@@ -14,9 +14,9 @@
 	src.max_reduction_amount = max_reduction_amount
 	src.reduction_amount_per_slash = reduction_per_slash
 	RegisterSignal(A, list(
-    COMSIG_XENO_ALIEN_ATTACK,
-    COMSIG_HUMAN_ALIEN_ATTACK
-	), .proc/increase_cooldown_reduction)
+	COMSIG_XENO_ALIEN_ATTACK,
+	COMSIG_HUMAN_ALIEN_ATTACK
+	), PROC_REF(increase_cooldown_reduction))
 	QDEL_IN(src, duration)
 
 /datum/effects/gain_xeno_cooldown_reduction_on_slash/validate_atom(var/atom/A)

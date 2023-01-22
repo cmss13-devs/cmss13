@@ -1,4 +1,0 @@
-author: "ThePiachu"
-delete-after: True
-changes:
-  - bugfix: "Fixed a runtime caused by sending command orders to null clients."

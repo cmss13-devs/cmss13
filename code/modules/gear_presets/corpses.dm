@@ -117,7 +117,7 @@
 		H.equip_to_slot_or_del(new /obj/item/clothing/head/ushanka(H), WEAR_HEAD)
 
 //*****************************************************************************************************/
-                                 ///////////Civilians//////////////////////
+// Civilians
 
 /datum/equipment_preset/corpse/prisoner
 	name = "Corpse - Prisoner"
@@ -362,7 +362,7 @@
 	name = "Corpse - Corporate Liaison"
 	assignment = "Corporate Liaison"
 	xenovictim = TRUE
-	paygrade = "WY-2B-X"
+	paygrade = "WYC2"
 	access = list(
 		ACCESS_CIVILIAN_PUBLIC,
 		ACCESS_CIVILIAN_LOGISTICS,
@@ -381,7 +381,7 @@
 		H.equip_to_slot_or_del(new /obj/item/device/radio(H), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/vest(H), WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/mod88(H), WEAR_WAIST)
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/PMC(H), WEAR_L_EAR)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/WY(H), WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/device/radio(H), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/attachable/bayonet(H.back), WEAR_IN_BACK)
@@ -422,7 +422,7 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/jackboots(H), WEAR_FEET)
 
 //*****************************************************************************************************/
-                                /////////////////Officers//////////////////////
+								/////////////////Officers//////////////////////
 
 /datum/equipment_preset/corpse/bridgeofficer
 	name = "Corpse - Staff Officer"
@@ -454,7 +454,7 @@
 	idtype = /obj/item/card/id/general
 	assignment = "Bridge Officer"
 	uses_special_name = TRUE
-	paygrade = "WY-1B-X"
+	paygrade = "WYC2"
 	access = list(
 		ACCESS_CIVILIAN_PUBLIC,
 		ACCESS_CIVILIAN_LOGISTICS,
@@ -580,13 +580,9 @@
 	idtype = /obj/item/card/id/lanyard
 
 /datum/equipment_preset/corpse/colonist/random/load_gear(mob/living/carbon/human/H)
-	add_random_synth_survivor_equipment(H)
-	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
-		add_ice_colony_survivor_equipment(H)
-	else
-		H.equip_to_slot_or_del(new /obj/item/device/radio(H), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress(H), WEAR_L_EAR)
-	H.equip_to_slot_or_del(new /obj/item/device/radio(H), WEAR_IN_BACK)
+	var/random_surv_type = pick(SSmapping.configs[GROUND_MAP].survivor_types)
+	var/datum/equipment_preset/survivor/surv_equipment = new random_surv_type
+	surv_equipment.load_gear(H)
 
 /datum/equipment_preset/corpse/colonist/random/burst
 	name = "Corpse - Burst Colonist Random"
@@ -670,7 +666,7 @@
 /datum/equipment_preset/corpse/wy/manager
 	name = "Corpse - Corporate Supervisor"
 	flags = EQUIPMENT_PRESET_EXTRA
-	paygrade = "WY-5G"
+	paygrade = "WYC7"
 	assignment = "Colony Supervisor"
 	role_comm_title = "Supervisor"
 	rank = FACTION_WY
@@ -695,7 +691,7 @@
 		H.equip_to_slot_or_del(new /obj/item/device/radio(H), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/lockable/liaison, WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/manager(H), WEAR_JACKET)
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/PMC, WEAR_L_EAR)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/WY, WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/dress, WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/manager(H), WEAR_HEAD)
 	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/vp78(H), WEAR_WAIST)
@@ -813,7 +809,7 @@
 		)
 
 /datum/equipment_preset/corpse/pmc/load_gear(mob/living/carbon/human/H)
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/PMC, WEAR_L_EAR)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/PMC/hvh, WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/PMC, WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/PMC, WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/PMC, WEAR_HANDS)
@@ -830,6 +826,49 @@
 /datum/equipment_preset/corpse/pmc/burst
 	name = "Corpse - Burst Weyland-Yutani PMC (Standard)"
 	xenovictim = TRUE
+
+/datum/equipment_preset/corpse/pmc/goon
+	name = "Corpse - Weyland-Yutani Corporate (Goon)"
+	languages = list(LANGUAGE_ENGLISH)
+	assignment = JOB_WY_GOON
+	rank = JOB_WY_GOON
+	paygrade = "WEY-GOON"
+	skills = /datum/skills/MP
+
+/datum/equipment_preset/corpse/pmc/goon/load_gear(mob/living/carbon/human/H)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress, WEAR_L_EAR)
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/PMC/corporate, WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/PMC/light/corporate, WEAR_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran, WEAR_HANDS)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/PMC/corporate, WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/corporate, WEAR_FEET)
+
+	H.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack, WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/weapon/melee/baton, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/tool/crowbar, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/mod88_near_empty, WEAR_WAIST)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full, WEAR_R_STORE)
+
+/datum/equipment_preset/corpse/pmc/goon/lead
+	name = "Corpse - Weyland-Yutani Corporate Security Lead (Goon Lead)"
+	flags = EQUIPMENT_PRESET_EXTRA
+	assignment = JOB_WY_GOON_LEAD
+	rank = JOB_WY_GOON_LEAD
+	paygrade = "WEY-GOON-L"
+
+/datum/equipment_preset/corpse/pmc/goon/lead/load_gear(mob/living/carbon/human/H)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress, WEAR_L_EAR)
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/PMC/corporate/lead, WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/PMC/light/corporate/lead, WEAR_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran, WEAR_HANDS)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/PMC/corporate/lead, WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/corporate, WEAR_FEET)
+
+	H.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack, WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/weapon/melee/baton, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/tool/crowbar, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/mod88_near_empty, WEAR_WAIST)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full, WEAR_R_STORE)
 
 // Freelancer
 

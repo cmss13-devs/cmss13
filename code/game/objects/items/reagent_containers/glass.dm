@@ -221,13 +221,13 @@
 
 		var/percent = round((reagents.total_volume / volume) * 100)
 		switch(percent)
-			if(0 to 9)			filling.icon_state = "[icon_state]-10"
-			if(10 to 24) 		filling.icon_state = "[icon_state]10"
-			if(25 to 49)		filling.icon_state = "[icon_state]25"
-			if(50 to 74)		filling.icon_state = "[icon_state]50"
-			if(75 to 79)		filling.icon_state = "[icon_state]75"
-			if(80 to 90)		filling.icon_state = "[icon_state]80"
-			if(91 to INFINITY)	filling.icon_state = "[icon_state]100"
+			if(0 to 9) filling.icon_state = "[icon_state]-10"
+			if(10 to 24) filling.icon_state = "[icon_state]10"
+			if(25 to 49) filling.icon_state = "[icon_state]25"
+			if(50 to 74) filling.icon_state = "[icon_state]50"
+			if(75 to 79) filling.icon_state = "[icon_state]75"
+			if(80 to 90) filling.icon_state = "[icon_state]80"
+			if(91 to INFINITY) filling.icon_state = "[icon_state]100"
 
 		filling.color = mix_color_from_reagents(reagents.reagent_list)
 		overlays += filling
@@ -293,7 +293,7 @@
 	set category = "Object"
 	set name = "flush tank"
 	set src in usr
-	if(usr.is_mob_incapacitated())	return
+	if(usr.is_mob_incapacitated()) return
 	if(src.reagents.total_volume == 0)
 		to_chat(user, SPAN_WARNING("It's already empty!"))
 		return
@@ -393,7 +393,7 @@
 	if(tier)
 		random_chem = pick(chemical_gen_classes_list[tier])
 	else
-		random_chem = pick(	prob(3);pick(chemical_gen_classes_list["C1"]),\
+		random_chem = pick( prob(3);pick(chemical_gen_classes_list["C1"]),\
 							prob(5);pick(chemical_gen_classes_list["C2"]),\
 							prob(7);pick(chemical_gen_classes_list["C3"]),\
 							prob(10);pick(chemical_gen_classes_list["C4"]),\
@@ -485,7 +485,7 @@
 	amount_per_transfer_from_this = 100
 	possible_transfer_amounts = list(50,100,200,300,400)
 	volume = 400
-	splashable = FALSE				// you can't spill a canister
+	splashable = FALSE // you can't spill a canister
 	var/reagent = "hydrogen"
 
 /obj/item/reagent_container/glass/canister/Initialize()
@@ -616,9 +616,9 @@
 
 		var/percent = round((reagents.total_volume / volume) * 100)
 		switch(percent)
-			if(0 to 33) 		filling.icon_state = "[icon_state]-00-33"
-			if(34 to 65) 		filling.icon_state = "[icon_state]-34-65"
-			if(66 to INFINITY)	filling.icon_state = "[icon_state]-66-100"
+			if(0 to 33) filling.icon_state = "[icon_state]-00-33"
+			if(34 to 65) filling.icon_state = "[icon_state]-34-65"
+			if(66 to INFINITY) filling.icon_state = "[icon_state]-66-100"
 
 		filling.color = mix_color_from_reagents(reagents.reagent_list)
 		overlays += filling

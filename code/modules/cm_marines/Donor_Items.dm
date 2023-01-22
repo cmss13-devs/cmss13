@@ -427,7 +427,7 @@
 
 
 
-//	HELMETS/HATS/BERETS COSMETICS  ////////////////////////////////////////////////
+// HELMETS/HATS/BERETS COSMETICS  ////////////////////////////////////////////////
 
 //HEAD TEMPLATE (for Helmets/Hats/Berets)  ONLY TAKE NAME, DESC, ICON_STATE, AND ITEM_STATE.  Make a copy of those, and put the ckey of the person at the end after fluff
 /obj/item/clothing/head/helmet/marine/fluff
@@ -667,7 +667,7 @@
 	item_state = "camo_helm"
 
 /obj/item/clothing/head/helmet/marine/fluff/dino
-	name = "Snake's Bandanna"
+	name = "Snake's Bandana"
 	desc = "Property of The Boss.  DONOR ITEM"
 	icon_state = "snakeheadband"
 	item_state = "snakeheadband"
@@ -862,7 +862,7 @@
 	item_state = "killaninja12_u"
 
 
-//	UNIFORM/JUMPSUIT COSMETICS  ////////////////////////////////////////////////
+// UNIFORM/JUMPSUIT COSMETICS  ////////////////////////////////////////////////
 
 //UNIFORM TEMPLATE (for uniforms/jumpsuits)  ONLY TAKE NAME, DESC, ICON_STATE, ITEM_STATE,  AND ITEM_COLOR.  Make a copy of those, and put the ckey of the person at the end after fluff
 /obj/item/clothing/under/marine/fluff
@@ -1148,7 +1148,7 @@
 	flags_jumpsuit = FALSE
 
 
-//	MASK COSMETICS  ////////////////////////////////////////////////
+// MASK COSMETICS  ////////////////////////////////////////////////
 
 //MASK TEMPLATE (for masks)  ONLY TAKE NAME, DESC, ICON_STATE, ITEM_STATE,  AND ITEM_COLOR.  Make a copy of those, and put the ckey of the person at the end after fluff
 /obj/item/clothing/mask/fluff
@@ -1242,7 +1242,7 @@
 	flags_inventory = ALLOWREBREATH
 	flags_inv_hide = HIDEFACE
 
-//	BOOTS/SHOES COSMETICS  ////////////////////////////////////////////////
+// BOOTS/SHOES COSMETICS  ////////////////////////////////////////////////
 
 //FEET TEMPLATE (for masks)  ONLY TAKE NAME, DESC, ICON_STATE, ITEM_STATE,  AND ITEM_COLOR.  Make a copy of those, and put the ckey of the person at the end after fluff
 /obj/item/clothing/shoes/marine/fluff

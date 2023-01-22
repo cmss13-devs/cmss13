@@ -13,7 +13,7 @@
 //======================================\\
 
 /*
-				 EQUIPMENT
+				EQUIPMENT
 */
 
 //======================================\\
@@ -149,7 +149,7 @@
 	flags_equip_slot = SLOT_BACK
 	flags_item = ITEM_PREDATOR
 	unacidable = TRUE
-	var/clan_rank_required = CLAN_RANK_LEADER_INT
+	var/clan_rank_required = CLAN_RANK_ELDER_INT
 	var/councillor_override = FALSE
 
 /obj/item/clothing/yautja_cape/Initialize(mapload, var/new_color = "#654321")
@@ -172,7 +172,7 @@
 /obj/item/clothing/yautja_cape/ceremonial
 	name = PRED_YAUTJA_CEREMONIAL_CAPE
 	icon_state = "ceremonialcape"
-	councillor_override = TRUE
+	clan_rank_required = CLAN_RANK_ELDER_INT
 
 /obj/item/clothing/yautja_cape/third
 	name = PRED_YAUTJA_THIRD_CAPE
@@ -182,7 +182,7 @@
 /obj/item/clothing/yautja_cape/half
 	name = PRED_YAUTJA_HALF_CAPE
 	icon_state = "halfcape"
-	clan_rank_required = CLAN_RANK_ELITE_INT
+	clan_rank_required = CLAN_RANK_BLOODED_INT
 
 /obj/item/clothing/yautja_cape/quarter
 	name = PRED_YAUTJA_QUARTER_CAPE
@@ -192,8 +192,7 @@
 /obj/item/clothing/yautja_cape/poncho
 	name = PRED_YAUTJA_PONCHO
 	icon_state = "councilor_poncho"
-	clan_rank_required = CLAN_RANK_ADMIN_INT
-	councillor_override = TRUE
+	clan_rank_required = CLAN_RANK_BLOODED_INT
 
 /obj/item/clothing/shoes/yautja
 	name = "ancient alien greaves"
@@ -635,7 +634,7 @@
 	icon_state = initial(icon_state) + "_active"
 	active = 1
 	update_icon()
-	addtimer(CALLBACK(src, .proc/prime), det_time)
+	addtimer(CALLBACK(src, PROC_REF(prime)), det_time)
 
 /obj/item/explosive/grenade/spawnergrenade/hellhound/prime()
 	if(spawner_type && deliveryamt)
@@ -732,7 +731,7 @@
 
 	var/list/tether_effects = apply_tether(src, C, range = tether_range, resistable = TRUE)
 	tether_effect = tether_effects["tetherer_tether"]
-	RegisterSignal(tether_effect, COMSIG_PARENT_QDELETING, .proc/disarm)
+	RegisterSignal(tether_effect, COMSIG_PARENT_QDELETING, PROC_REF(disarm))
 
 	trapped_mob = C
 
@@ -749,7 +748,7 @@
 		var/mob/living/carbon/Xenomorph/X = C
 		C.emote("needhelp")
 		X.interference = 100 // Some base interference to give pred time to get some damage in, if it cannot land a single hit during this time pred is cheeks
-		RegisterSignal(X, COMSIG_XENO_PRE_HEAL, .proc/block_heal)
+		RegisterSignal(X, COMSIG_XENO_PRE_HEAL, PROC_REF(block_heal))
 	message_all_yautja("A hunting trap has caught something in [get_area_name(loc)]!")
 
 /obj/item/hunting_trap/proc/block_heal(mob/living/carbon/Xenomorph/xeno)
@@ -897,13 +896,13 @@
 	new /obj/item/tool/surgery/stabilizer_gel(src)
 	new /obj/item/tool/surgery/healing_gun(src)
 	new /obj/item/tool/surgery/wound_clamp(src)
-	new	/obj/item/device/healthanalyzer/alien(src)
-	new	/obj/item/reagent_container/hypospray/autoinjector/yautja(src)
-	new	/obj/item/reagent_container/hypospray/autoinjector/yautja(src)
-	new	/obj/item/reagent_container/hypospray/autoinjector/yautja(src)
-	new	/obj/item/tool/surgery/healing_gel/(src)
-	new	/obj/item/tool/surgery/healing_gel/(src)
-	new	/obj/item/tool/surgery/healing_gel/(src)
+	new /obj/item/device/healthanalyzer/alien(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/yautja(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/yautja(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/yautja(src)
+	new /obj/item/tool/surgery/healing_gel/(src)
+	new /obj/item/tool/surgery/healing_gel/(src)
+	new /obj/item/tool/surgery/healing_gel/(src)
 
 /obj/item/storage/medicomp/update_icon()
 	if(!contents.len)

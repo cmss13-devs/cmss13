@@ -6,7 +6,7 @@
 	icon = 'icons/effects/spacevines.dmi'
 	icon_state = "Light1"
 	anchored = 1
-	density = 0
+	density = FALSE
 	layer = FLY_LAYER
 
 	// Vars used by vines with seed data.
@@ -105,7 +105,7 @@
 			energy = 2
 			return
 
-		src.opacity = 1
+		src.opacity = TRUE
 		layer = FLY_LAYER
 	else if(!limited_growth)
 		src.icon_state = pick("Hvy1", "Hvy2", "Hvy3")
@@ -288,7 +288,7 @@
 	if(!istype(src.loc,/turf/open/floor))
 		qdel(src)
 
-	INVOKE_ASYNC(src, .proc/spawn_piece, src.loc)
+	INVOKE_ASYNC(src, PROC_REF(spawn_piece), src.loc)
 
 	START_PROCESSING(SSobj, src)
 

@@ -3,15 +3,15 @@
  * .. Sorry for the shitty path name, I couldnt think of a better one.
  *
  * WARNING: var/icon_type is used for both examine text and sprite name. Please look at the procs below and adjust your sprite names accordingly
- *		TODO: Cigarette boxes should be ported to this standard
+ * TODO: Cigarette boxes should be ported to this standard
  *
  * Contains:
- *		Donut Box
- *		Egg Box
- *		Candle Box
- *		Crayon Box
- *		Cigarette Box
- *		Cigar Box
+ * Donut Box
+ * Egg Box
+ * Candle Box
+ * Crayon Box
+ * Cigarette Box
+ * Cigar Box
  */
 
 /obj/item/storage/fancy

@@ -21,10 +21,10 @@
 				return
 			if(!message)
 				return
-			return INVOKE_ASYNC(src, /mob.proc/custom_emote, m_type, message, player_caused)
+			return INVOKE_ASYNC(src, TYPE_PROC_REF(/mob, custom_emote), m_type, message, player_caused)
 
 		if("custom")
-			return INVOKE_ASYNC(src, /mob.proc/custom_emote, m_type, message, player_caused)
+			return INVOKE_ASYNC(src, TYPE_PROC_REF(/mob, custom_emote), m_type, message, player_caused)
 
 		if("growl")
 			if(isXenoPredalien(src))
@@ -62,7 +62,7 @@
 		if("dance")
 
 			if(!is_mob_restrained())
-			//	message = "<B>The [name]</B> dances around!"
+			// message = "<B>The [name]</B> dances around!"
 				m_type = 1
 				spawn(0)
 					for(var/i in list(1,2,4,8,4,2,1,2,4,8,4,2,1,2,4,8,4,2,1,2,4,8,4,2,1,2,4,8,4,2,1,2,4,8,4,2,1,2,4,8,4,2,1,2))

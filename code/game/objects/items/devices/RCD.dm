@@ -9,8 +9,8 @@ RCD
 	desc = "A device used to rapidly build walls/floor."
 	icon = 'icons/obj/items/devices.dmi'
 	icon_state = "rcd"
-	opacity = 0
-	density = 0
+	opacity = FALSE
+	density = FALSE
 	anchored = 0.0
 	flags_atom = FPRINT|CONDUCT
 	force = 10.0
@@ -161,7 +161,7 @@ RCD
 						activate()
 						qdel(A)
 						return 1
-				return	0
+				return 0
 			return 0
 		else
 			to_chat(user, "ERROR: RCD in MODE: [mode] attempted use by [user]. Send this text #coderbus or an admin.")
@@ -197,8 +197,8 @@ RCD
 	icon = 'icons/obj/items/weapons/guns/ammo.dmi'
 	icon_state = "rcd"
 	item_state = "rcdammo"
-	opacity = 0
-	density = 0
+	opacity = FALSE
+	density = FALSE
 	anchored = 0.0
 
 	matter = list("metal" = 30000,"glass" = 15000)

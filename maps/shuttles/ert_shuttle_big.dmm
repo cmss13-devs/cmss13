@@ -1,0 +1,1638 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aN" = (
+/obj/structure/closet/secure_closet/medical2,
+/obj/item/storage/box/gloves{
+	pixel_x = -5;
+	pixel_y = -5
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/shuttle/ert)
+"bo" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	tag = "icon-E-corner";
+	dir = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	tag = "icon-S";
+	dir = 1
+	},
+/turf/open/floor/plating/almayer,
+/area/shuttle/ert)
+"cx" = (
+/obj/structure/surface/table/almayer,
+/obj/item/weapon/gun/pistol/mod88{
+	pixel_y = 4
+	},
+/obj/item/ammo_magazine/pistol/mod88{
+	pixel_x = 5
+	},
+/obj/item/ammo_magazine/pistol/mod88{
+	pixel_x = 5
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/shuttle/ert)
+"dx" = (
+/obj/structure/surface/table/almayer,
+/obj/item/storage/box/donkpockets,
+/obj/item/storage/box/donkpockets,
+/turf/open/floor/almayer,
+/area/shuttle/ert)
+"fq" = (
+/obj/structure/surface/table/almayer,
+/obj/item/paper_bin{
+	pixel_x = -5;
+	pixel_y = 5
+	},
+/obj/item/storage/box/wy_mre,
+/obj/item/storage/box/wy_mre,
+/obj/item/storage/box/wy_mre,
+/obj/item/tool/pen,
+/obj/item/tool/pen,
+/obj/item/tool/pen,
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/shuttle/ert)
+"fr" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "SE-out";
+	pixel_x = 1;
+	tag = "icon-SE-out";
+	dir = 1
+	},
+/turf/open/floor/plating/almayer,
+/area/shuttle/ert)
+"fJ" = (
+/obj/structure/bed/chair/office/light{
+	dir = 8
+	},
+/turf/open/floor/plating/almayer,
+/area/shuttle/ert)
+"gN" = (
+/obj/structure/bed/chair/office/light{
+	dir = 8
+	},
+/turf/open/floor/wood,
+/area/shuttle/ert)
+"hr" = (
+/obj/structure/surface/table/almayer,
+/obj/item/clipboard,
+/obj/item/folder/red{
+	pixel_x = -2;
+	pixel_y = 3
+	},
+/obj/item/handcuffs,
+/obj/item/handcuffs,
+/obj/item/handcuffs,
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/shuttle/ert)
+"hv" = (
+/obj/structure/bed/chair/office/light{
+	dir = 1
+	},
+/turf/open/floor/plating/almayer,
+/area/shuttle/ert)
+"hQ" = (
+/obj/structure/closet/secure_closet/personal,
+/obj/item/ammo_magazine/shotgun/buckshot,
+/obj/item/ammo_magazine/shotgun/buckshot,
+/obj/item/ammo_magazine/shotgun/beanbag{
+	pixel_x = -3;
+	pixel_y = -5
+	},
+/obj/item/weapon/gun/shotgun/combat,
+/obj/item/weapon/gun/shotgun/combat,
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/shuttle/ert)
+"hZ" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	tag = "icon-N";
+	dir = 1
+	},
+/turf/open/floor/plating/almayer,
+/area/shuttle/ert)
+"ig" = (
+/obj/structure/surface/rack,
+/obj/item/storage/belt/utility/full,
+/obj/item/storage/backpack/marine/satchel/tech,
+/obj/item/storage/toolbox/electrical,
+/obj/item/clothing/accessory/storage/webbing,
+/obj/item/cell/infinite,
+/obj/item/cell/infinite,
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/shuttle/ert)
+"iu" = (
+/obj/structure/surface/table/almayer,
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/shuttle/ert)
+"iN" = (
+/obj/structure/machinery/door/airlock/almayer/medical{
+	dir = 2;
+	name = "Operating Theatre";
+	req_one_access = null
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/shuttle/ert)
+"iP" = (
+/obj/structure/machinery/door/airlock/almayer/command{
+	name = "Bridge";
+	dir = 1
+	},
+/turf/open/floor/plating/almayer,
+/area/shuttle/ert)
+"ja" = (
+/obj/structure/largecrate/random/barrel/blue,
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/shuttle/ert)
+"jP" = (
+/obj/structure/closet/secure_closet/securecom{
+	desc = "You could probably get thrown out an airlock just by looking at this...";
+	name = "captain's secure box"
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/shuttle/ert)
+"jZ" = (
+/obj/structure/bed,
+/obj/item/bedsheet/rd,
+/turf/open/floor/wood,
+/area/shuttle/ert)
+"ke" = (
+/obj/structure/machinery/cryopod/right,
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/shuttle/ert)
+"la" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/computer/secure_data{
+	dir = 4
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/shuttle/ert)
+"lp" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	tag = "icon-N";
+	dir = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	tag = "icon-S";
+	dir = 1
+	},
+/turf/open/floor/plating/almayer,
+/area/shuttle/ert)
+"ls" = (
+/obj/structure/surface/rack,
+/obj/item/storage/firstaid/adv{
+	pixel_x = 2;
+	pixel_y = -5
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/shuttle/ert)
+"mH" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	tag = "icon-N";
+	dir = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	tag = "icon-S";
+	dir = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	tag = "icon-E-corner";
+	dir = 1
+	},
+/turf/open/floor/plating/almayer,
+/area/shuttle/ert)
+"nG" = (
+/obj/structure/machinery/iv_drip,
+/obj/item/reagent_container/blood/OMinus,
+/obj/item/reagent_container/blood/OMinus,
+/obj/structure/mirror{
+	pixel_x = 28
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/shuttle/ert)
+"oc" = (
+/obj/structure/surface/table/almayer,
+/obj/item/clipboard,
+/obj/item/clipboard,
+/obj/item/folder,
+/obj/item/folder,
+/obj/item/tool/crowbar,
+/obj/item/tool/crowbar,
+/obj/item/tool/hand_labeler,
+/obj/item/tool/hand_labeler,
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/shuttle/ert)
+"px" = (
+/obj/structure/bed/chair/dropship/passenger{
+	dir = 4
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/shuttle/ert)
+"pI" = (
+/obj/structure/surface/rack,
+/obj/item/storage/toolbox/mechanical,
+/obj/item/device/radio,
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/shuttle/ert)
+"qk" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/computer/communications{
+	dir = 8
+	},
+/turf/open/floor{
+	dir = 8;
+	icon_state = "carpet9-4";
+	tag = "icon-carpet9-4 (WEST)"
+	},
+/area/shuttle/ert)
+"qy" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "SE-out";
+	pixel_x = 1;
+	tag = "icon-SE-out";
+	dir = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "SW-out";
+	pixel_x = -1;
+	tag = "icon-SW-out";
+	dir = 1
+	},
+/turf/open/floor/plating/almayer,
+/area/shuttle/ert)
+"rv" = (
+/turf/open/floor/plating/almayer,
+/area/shuttle/ert)
+"ry" = (
+/obj/structure/machinery/door/window/westright{
+	dir = 4
+	},
+/obj/item/tool/soap,
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/shuttle/ert)
+"rG" = (
+/obj/structure/machinery/door/airlock/almayer/generic{
+	dir = 1;
+	name = "Restroom"
+	},
+/turf/open/floor/plating/almayer,
+/area/shuttle/ert)
+"rN" = (
+/obj/structure/surface/table/almayer,
+/obj/item/storage/surgical_tray,
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/shuttle/ert)
+"sI" = (
+/obj/structure/machinery/door/airlock/almayer/generic{
+	name = "Secure Storage"
+	},
+/turf/open/floor/plating/almayer,
+/area/shuttle/ert)
+"sW" = (
+/obj/structure/largecrate/random/case/double,
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/shuttle/ert)
+"tf" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/computer/card,
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/shuttle/ert)
+"ts" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "NE-out";
+	pixel_x = 2;
+	tag = "icon-NE-out";
+	dir = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "NW-out";
+	tag = "icon-NW-out";
+	dir = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "SE-out";
+	pixel_x = 1;
+	tag = "icon-SE-out";
+	dir = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "SW-out";
+	pixel_x = -1;
+	tag = "icon-SW-out";
+	dir = 1
+	},
+/turf/open/floor/plating/almayer,
+/area/shuttle/ert)
+"tG" = (
+/turf/open/floor/wood,
+/area/shuttle/ert)
+"ue" = (
+/obj/structure/bed,
+/obj/item/bedsheet/brown,
+/turf/open/floor/almayer,
+/area/shuttle/ert)
+"up" = (
+/obj/structure/largecrate/random/barrel/red,
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/shuttle/ert)
+"uO" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic2{
+	dir = 1;
+	id = "starboard_door"
+	},
+/turf/open/floor/plating/almayer,
+/area/shuttle/ert)
+"vj" = (
+/obj/structure/surface/table/almayer,
+/obj/item/paper_bin,
+/obj/item/tool/pen,
+/turf/open/floor/wood,
+/area/shuttle/ert)
+"vk" = (
+/turf/open/floor/almayer{
+	icon_state = "tcomms"
+	},
+/area/shuttle/ert)
+"vl" = (
+/obj/structure/machinery/cm_vending/sorted/tech/electronics_storage,
+/obj/item/device/radio/intercom{
+	freerange = 1;
+	name = "General Listening Channel";
+	pixel_x = -28
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/shuttle/ert)
+"vA" = (
+/obj/structure/bed/chair/office/light{
+	dir = 4;
+	tag = ""
+	},
+/turf/open/floor/plating/almayer,
+/area/shuttle/ert)
+"wc" = (
+/turf/open/floor/almayer,
+/area/shuttle/ert)
+"wK" = (
+/obj/structure/machinery/computer/crew,
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/shuttle/ert)
+"xK" = (
+/obj/structure/window/framed/almayer/white,
+/turf/open/floor/plating,
+/area/shuttle/ert)
+"yG" = (
+/obj/structure/sink{
+	dir = 8;
+	pixel_x = -11
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/shuttle/ert)
+"yQ" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	tag = "icon-S";
+	dir = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	tag = "icon-N";
+	dir = 1
+	},
+/turf/open/floor/plating/almayer,
+/area/shuttle/ert)
+"zd" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/computer/communications,
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/shuttle/ert)
+"zT" = (
+/obj/structure/surface/rack,
+/obj/item/storage/belt/utility/full,
+/obj/item/storage/backpack/marine/engineerpack,
+/obj/item/storage/toolbox/mechanical,
+/obj/item/clothing/accessory/storage/webbing,
+/obj/item/clothing/glasses/welding,
+/obj/item/clothing/glasses/welding,
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/shuttle/ert)
+"zZ" = (
+/obj/structure/window/framed/almayer/white/hull,
+/turf/open/floor/plating,
+/area/shuttle/ert)
+"Ad" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/microwave,
+/turf/open/floor/almayer,
+/area/shuttle/ert)
+"AE" = (
+/obj/structure/largecrate/random/case/small,
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/shuttle/ert)
+"AT" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	tag = "icon-W";
+	dir = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	tag = "icon-E-corner";
+	dir = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	tag = "icon-E-corner";
+	dir = 1
+	},
+/turf/open/floor/plating/almayer,
+/area/shuttle/ert)
+"AZ" = (
+/obj/structure/surface/table/almayer,
+/obj/item/device/flashlight/lamp/green,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "carpet10-8";
+	tag = "icon-carpet10-8 (WEST)"
+	},
+/area/shuttle/ert)
+"Bq" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "NE-out";
+	pixel_x = 2;
+	tag = "icon-NE-out";
+	dir = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "NW-out";
+	tag = "icon-NW-out";
+	dir = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "SE-out";
+	pixel_x = 1;
+	tag = "icon-SE-out";
+	dir = 1
+	},
+/turf/open/floor/plating/almayer,
+/area/shuttle/ert)
+"Cw" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	tag = "icon-W";
+	dir = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	tag = "icon-S";
+	dir = 1
+	},
+/turf/open/floor/plating/almayer,
+/area/shuttle/ert)
+"CX" = (
+/obj/structure/surface/rack,
+/obj/item/storage/toolbox/emergency{
+	pixel_x = 3;
+	pixel_y = 3
+	},
+/obj/item/storage/toolbox/emergency{
+	pixel_x = 3;
+	pixel_y = 3
+	},
+/obj/item/storage/box/m94,
+/obj/item/storage/box/m94,
+/obj/item/storage/box/zipcuffs,
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/shuttle/ert)
+"DC" = (
+/obj/structure/closet/secure_closet/personal,
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/shuttle/ert)
+"DO" = (
+/obj/structure/surface/table/almayer,
+/obj/item/device/flashlight/lamp,
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/shuttle/ert)
+"ER" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic2{
+	dir = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	tag = "icon-S";
+	dir = 1
+	},
+/turf/open/floor/plating/almayer,
+/area/shuttle/ert)
+"Gg" = (
+/obj/structure/machinery/door/airlock/almayer/medical{
+	name = "Operating Theatre";
+	req_one_access = null
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/shuttle/ert)
+"Ik" = (
+/obj/structure/closet,
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/shuttle/ert)
+"JE" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "NE-out";
+	pixel_x = 2;
+	tag = "icon-NE-out";
+	dir = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "NW-out";
+	tag = "icon-NW-out";
+	dir = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "SW-out";
+	pixel_x = -1;
+	tag = "icon-SW-out";
+	dir = 1
+	},
+/turf/open/floor/plating/almayer,
+/area/shuttle/ert)
+"Ke" = (
+/obj/structure/bed/chair/dropship/passenger{
+	dir = 8
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/shuttle/ert)
+"Kg" = (
+/obj/structure/machinery/door/airlock/almayer/generic{
+	name = "Crew Lockers"
+	},
+/turf/open/floor/plating/almayer,
+/area/shuttle/ert)
+"Kt" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_21";
+	tag = "icon-plant-10"
+	},
+/turf/open/floor/wood,
+/area/shuttle/ert)
+"KF" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	tag = "icon-W";
+	dir = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	tag = "icon-N";
+	dir = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "SE-out";
+	pixel_x = 1;
+	tag = "icon-SE-out";
+	dir = 1
+	},
+/turf/open/floor/plating/almayer,
+/area/shuttle/ert)
+"KS" = (
+/obj/structure/surface/rack,
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/shuttle/ert)
+"Lk" = (
+/obj/structure/reagent_dispensers/fueltank,
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/shuttle/ert)
+"LB" = (
+/obj/structure/largecrate/random/barrel/white,
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/shuttle/ert)
+"Ml" = (
+/turf/closed/wall/almayer/white,
+/area/shuttle/ert)
+"Mx" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/computer/med_data/laptop{
+	dir = 8
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/shuttle/ert)
+"MH" = (
+/obj/structure/machinery/optable,
+/obj/item/tank/anesthetic,
+/obj/item/clothing/mask/breath/medical,
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/shuttle/ert)
+"Nt" = (
+/obj/structure/surface/rack,
+/obj/item/ammo_magazine/smg/m39,
+/obj/item/ammo_magazine/smg/m39,
+/obj/item/weapon/gun/smg/m39/elite,
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/shuttle/ert)
+"NB" = (
+/obj/structure/machinery/door/airlock/almayer/engineering{
+	name = "Aft Storage";
+	dir = 2
+	},
+/turf/open/floor/plating/almayer,
+/area/shuttle/ert)
+"NL" = (
+/obj/structure/machinery/door/airlock/almayer/command{
+	name = "Captain's Storage"
+	},
+/turf/open/floor/plating/almayer,
+/area/shuttle/ert)
+"Oj" = (
+/obj/structure/surface/table/almayer,
+/obj/item/paper_bin,
+/obj/item/tool/pen,
+/obj/item/tool/pen,
+/obj/item/tool/pen,
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/shuttle/ert)
+"OF" = (
+/obj/structure/surface/table/almayer,
+/obj/item/clothing/suit/armor/bulletproof,
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/shuttle/ert)
+"Pf" = (
+/obj/structure/machinery/door/airlock/almayer/generic{
+	name = "Crew Bunks"
+	},
+/turf/open/floor/plating/almayer,
+/area/shuttle/ert)
+"PE" = (
+/turf/closed/wall/almayer/white/hull,
+/area/shuttle/ert)
+"Qb" = (
+/obj/docking_port/mobile/emergency_response/big,
+/turf/closed/wall/almayer/white/hull,
+/area/shuttle/ert)
+"Qr" = (
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/shuttle/ert)
+"Qx" = (
+/obj/structure/machinery/door/airlock/almayer/command{
+	name = "Captain's Quarters"
+	},
+/turf/open/floor/plating/almayer,
+/area/shuttle/ert)
+"QK" = (
+/obj/structure/surface/rack,
+/obj/item/storage/firstaid/regular,
+/obj/item/storage/belt/medical/lifesaver/full,
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/shuttle/ert)
+"QM" = (
+/obj/structure/surface/table/almayer,
+/obj/item/stack/sheet/metal{
+	amount = 50;
+	pixel_x = 3;
+	pixel_y = 3
+	},
+/obj/item/stack/sheet/metal{
+	amount = 50;
+	pixel_x = 3;
+	pixel_y = 3
+	},
+/obj/item/stack/sheet/wood{
+	amount = 50
+	},
+/obj/item/stack/sheet/wood{
+	amount = 50
+	},
+/obj/item/stack/sheet/plasteel{
+	amount = 30
+	},
+/obj/item/stack/sheet/plasteel{
+	amount = 30
+	},
+/obj/item/stack/sheet/glass{
+	amount = 50
+	},
+/obj/item/stack/sheet/glass{
+	amount = 50
+	},
+/obj/item/stack/cable_coil,
+/obj/item/stack/cable_coil,
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/shuttle/ert)
+"QQ" = (
+/obj/structure/machinery/bioprinter{
+	stored_metal = 1000
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/shuttle/ert)
+"Ro" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic2{
+	dir = 1;
+	id = "port_door"
+	},
+/turf/open/floor/plating/almayer,
+/area/shuttle/ert)
+"RG" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	tag = "icon-N";
+	dir = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	tag = "icon-S";
+	dir = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	tag = "icon-W";
+	dir = 1
+	},
+/turf/open/floor/plating/almayer,
+/area/shuttle/ert)
+"RN" = (
+/obj/structure/closet/secure_closet/personal/cabinet,
+/turf/open/floor/wood,
+/area/shuttle/ert)
+"So" = (
+/obj/structure/closet/crate,
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/shuttle/ert)
+"SQ" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/largecrate/random/case/small{
+	pixel_y = 5
+	},
+/obj/item/storage/backpack/lightpack,
+/obj/item/storage/backpack/lightpack,
+/obj/item/storage/backpack/lightpack,
+/obj/item/storage/box/bodybags{
+	pixel_x = 5;
+	pixel_y = 5
+	},
+/obj/item/device/radio,
+/obj/item/device/radio,
+/obj/item/device/radio,
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/shuttle/ert)
+"SZ" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	tag = "icon-W";
+	dir = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	tag = "icon-E-corner";
+	dir = 1
+	},
+/turf/open/floor/plating/almayer,
+/area/shuttle/ert)
+"Tj" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/computer/shuttle/ert/big,
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/shuttle/ert)
+"Tp" = (
+/turf/template_noop,
+/area/template_noop)
+"Tq" = (
+/obj/structure/bed/chair/dropship/passenger,
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/shuttle/ert)
+"Tv" = (
+/obj/structure/bed/chair/office/light{
+	dir = 4
+	},
+/turf/open/floor{
+	dir = 8;
+	icon_state = "carpet6-2";
+	tag = "icon-carpet6-2 (WEST)"
+	},
+/area/shuttle/ert)
+"TF" = (
+/obj/structure/surface/table/almayer,
+/obj/item/storage/pouch/medkit,
+/obj/item/storage/pouch/medkit,
+/obj/item/storage/pouch/medical,
+/obj/item/storage/pouch/medical,
+/obj/item/storage/belt/medical/lifesaver/full,
+/obj/item/storage/belt/medical/lifesaver/full,
+/obj/item/reagent_container/spray/cleaner{
+	desc = "Someone has crossed out the Space from Space Cleaner and written in Surgery. 'Do not remove under punishment of death!!!' is scrawled on the back.";
+	name = "Surgery Cleaner"
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/shuttle/ert)
+"TJ" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	tag = "icon-E-corner";
+	dir = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	tag = "icon-N";
+	dir = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "SW-out";
+	pixel_x = -1;
+	tag = "icon-SW-out";
+	dir = 1
+	},
+/turf/open/floor/plating/almayer,
+/area/shuttle/ert)
+"TO" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	tag = "icon-S";
+	dir = 1
+	},
+/turf/open/floor/plating/almayer,
+/area/shuttle/ert)
+"Uq" = (
+/obj/structure/machinery/cm_vending/sorted/medical/no_access,
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/shuttle/ert)
+"Vw" = (
+/obj/structure/reagent_dispensers/watertank,
+/obj/item/clothing/mask/gas,
+/obj/item/clothing/mask/gas,
+/obj/item/tool/extinguisher,
+/obj/item/tool/extinguisher,
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/shuttle/ert)
+"VW" = (
+/obj/structure/surface/table/almayer,
+/obj/item/folder/black{
+	pixel_x = 3;
+	pixel_y = 5
+	},
+/obj/item/map/current_map{
+	pixel_y = -5
+	},
+/turf/open/floor{
+	dir = 8;
+	icon_state = "carpet5-1";
+	tag = "icon-carpet5-1 (WEST)"
+	},
+/area/shuttle/ert)
+"WR" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/computer/security{
+	network = list("Military","Almayer");
+	dir = 4
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/shuttle/ert)
+"WW" = (
+/obj/structure/toilet{
+	dir = 8;
+	tag = "icon-toilet00 (WEST)"
+	},
+/turf/open/floor{
+	icon_state = "freezerfloor"
+	},
+/area/shuttle/ert)
+"XW" = (
+/obj/structure/sink{
+	pixel_y = 16
+	},
+/obj/structure/mirror{
+	pixel_y = 30
+	},
+/turf/open/floor{
+	icon_state = "freezerfloor"
+	},
+/area/shuttle/ert)
+"Yo" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "NE-out";
+	pixel_x = 2;
+	tag = "icon-NE-out";
+	dir = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "NW-out";
+	tag = "icon-NW-out";
+	dir = 1
+	},
+/turf/open/floor/plating/almayer,
+/area/shuttle/ert)
+"YN" = (
+/obj/structure/machinery/power/apc/almayer{
+	cell_type = /obj/item/cell/hyper
+	},
+/turf/open/floor/almayer{
+	icon_state = "tcomms"
+	},
+/area/shuttle/ert)
+"Zl" = (
+/obj/structure/bed/chair/dropship/passenger{
+	dir = 1
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/shuttle/ert)
+"Zy" = (
+/obj/structure/machinery/autolathe,
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/shuttle/ert)
+
+(1,1,1) = {"
+Tp
+Tp
+Tp
+Tp
+Tp
+Tp
+Tp
+Tp
+Tp
+Tp
+Tp
+Tp
+Tp
+Tp
+Tp
+PE
+PE
+rv
+Ro
+PE
+PE
+Tp
+Tp
+Tp
+Tp
+Tp
+Tp
+Tp
+Tp
+"}
+(2,1,1) = {"
+Tp
+Tp
+Tp
+Tp
+Tp
+Tp
+Tp
+Tp
+Tp
+Tp
+PE
+PE
+PE
+PE
+PE
+PE
+up
+hZ
+TO
+So
+PE
+PE
+zZ
+zZ
+PE
+Tp
+Tp
+Tp
+Tp
+"}
+(3,1,1) = {"
+Tp
+Tp
+Tp
+Tp
+Tp
+Tp
+Tp
+Tp
+Tp
+Tp
+PE
+rN
+aN
+yG
+QQ
+Ml
+AE
+hZ
+TO
+KS
+Ml
+DO
+DC
+DC
+PE
+PE
+Tp
+Tp
+Tp
+"}
+(4,1,1) = {"
+Tp
+Tp
+Tp
+Tp
+Tp
+PE
+PE
+zZ
+zZ
+PE
+PE
+MH
+wc
+wc
+Qr
+iN
+Qr
+hZ
+TO
+ja
+Ml
+ue
+wc
+wc
+Ad
+zZ
+Tp
+Tp
+Tp
+"}
+(5,1,1) = {"
+Tp
+Tp
+Tp
+Tp
+Tp
+zZ
+vj
+tG
+Tv
+VW
+Ml
+TF
+nG
+Qr
+Uq
+Ml
+xK
+hZ
+ER
+xK
+Ml
+ue
+rv
+rv
+dx
+PE
+Tp
+Tp
+Tp
+"}
+(6,1,1) = {"
+Tp
+PE
+PE
+zZ
+PE
+PE
+jZ
+tG
+AZ
+qk
+Ml
+Ml
+Ml
+Gg
+Ml
+Ml
+Tq
+hZ
+TO
+Zl
+Ml
+Ml
+Pf
+Ml
+Ml
+PE
+zZ
+PE
+Tp
+"}
+(7,1,1) = {"
+PE
+PE
+la
+hr
+WR
+Ml
+RN
+tG
+gN
+Kt
+Ml
+QK
+px
+RG
+px
+px
+KS
+hZ
+TO
+pI
+px
+px
+RG
+KS
+Ml
+vl
+ig
+PE
+PE
+"}
+(8,1,1) = {"
+zZ
+tf
+vk
+fJ
+vk
+Ml
+Ml
+Qx
+Ml
+Ml
+Ml
+KF
+SZ
+ts
+SZ
+SZ
+SZ
+Yo
+fr
+SZ
+SZ
+SZ
+JE
+Cw
+Ml
+rv
+rv
+Zy
+zZ
+"}
+(9,1,1) = {"
+zZ
+Tj
+hv
+vk
+rv
+iP
+rv
+rv
+rv
+rv
+iP
+yQ
+Zl
+lp
+Zl
+Zl
+Zl
+hZ
+TO
+Zl
+Zl
+Zl
+hZ
+TO
+NB
+rv
+rv
+YN
+Qb
+"}
+(10,1,1) = {"
+zZ
+zd
+vk
+vA
+vk
+Ml
+Ml
+NL
+Ml
+Ml
+Ml
+TJ
+SZ
+ts
+SZ
+SZ
+SZ
+Yo
+qy
+AT
+SZ
+SZ
+Bq
+bo
+Ml
+rv
+rv
+QM
+zZ
+"}
+(11,1,1) = {"
+PE
+PE
+Oj
+wK
+Mx
+Ml
+Nt
+rv
+hQ
+OF
+Ml
+QK
+Ke
+mH
+Ke
+Ke
+KS
+hZ
+TO
+KS
+Ke
+Ke
+mH
+ls
+Ml
+Lk
+zT
+PE
+PE
+"}
+(12,1,1) = {"
+Tp
+PE
+PE
+zZ
+PE
+PE
+jP
+rv
+rv
+cx
+Ml
+Ml
+Ml
+Kg
+Ml
+Ml
+Tq
+hZ
+TO
+Zl
+Ml
+Ml
+sI
+Ml
+Ml
+PE
+zZ
+PE
+Tp
+"}
+(13,1,1) = {"
+Tp
+Tp
+Tp
+Tp
+Tp
+zZ
+Nt
+rv
+hQ
+OF
+Ml
+ry
+Ml
+rv
+Ik
+Ml
+xK
+hZ
+ER
+xK
+Ml
+CX
+rv
+rv
+ke
+PE
+Tp
+Tp
+Tp
+"}
+(14,1,1) = {"
+Tp
+Tp
+Tp
+Tp
+Tp
+PE
+PE
+zZ
+zZ
+PE
+PE
+XW
+rG
+rv
+Ik
+Ml
+KS
+hZ
+TO
+LB
+Ml
+Vw
+rv
+rv
+ke
+zZ
+Tp
+Tp
+Tp
+"}
+(15,1,1) = {"
+Tp
+Tp
+Tp
+Tp
+Tp
+Tp
+Tp
+Tp
+Tp
+Tp
+PE
+WW
+Ml
+rv
+Ik
+Ml
+iu
+hZ
+TO
+sW
+Ml
+SQ
+oc
+fq
+PE
+PE
+Tp
+Tp
+Tp
+"}
+(16,1,1) = {"
+Tp
+Tp
+Tp
+Tp
+Tp
+Tp
+Tp
+Tp
+Tp
+Tp
+PE
+PE
+PE
+zZ
+PE
+PE
+So
+hZ
+TO
+KS
+PE
+PE
+zZ
+zZ
+PE
+Tp
+Tp
+Tp
+Tp
+"}
+(17,1,1) = {"
+Tp
+Tp
+Tp
+Tp
+Tp
+Tp
+Tp
+Tp
+Tp
+Tp
+Tp
+Tp
+Tp
+Tp
+Tp
+PE
+PE
+rv
+uO
+PE
+PE
+Tp
+Tp
+Tp
+Tp
+Tp
+Tp
+Tp
+Tp
+"}

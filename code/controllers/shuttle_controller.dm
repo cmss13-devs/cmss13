@@ -93,67 +93,6 @@
 
 	// END: CORSAT shuttles
 
-	//START: ALMAYER SHUTTLES AND EVAC PODS
-	var/datum/shuttle/ferry/marine/evacuation_pod/P
-	for(var/i = 1 to MAIN_SHIP_ESCAPE_POD_NUMBER)
-		P = new
-		P.shuttle_tag = MAIN_SHIP_NAME + " Evac [i]"
-		switch(i) //TODO: Do this procedurally.
-			if(2 to 3, 5 to 6, 8 to 9, 11 to 12, 14 to 15, 17 to 18) P.info_tag = "Alt Almayer Evac"
-		P.load_datums()
-		shuttles[P.shuttle_tag] = P
-		process_shuttles += P
-
-	//Big ert Shuttle
-	var/datum/shuttle/ferry/ert/ES
-	ES = new()
-	ES.location = 1
-	ES.use_umbilical = TRUE
-
-	for(var/area/A in all_areas)
-		if(A.type == /area/shuttle/distress/start_big)
-			ES.area_offsite = A
-			break
-
-	for(var/area/A in all_areas)
-		if(A.type == /area/shuttle/distress/arrive_n_hangar)
-			ES.area_station = A
-			break
-
-	for(var/area/A in all_areas)
-		if(A.type == /area/shuttle/distress/transit_big)
-			ES.area_transition = A
-			break
-
-	shuttles["Distress_Big"] = ES
-	process_shuttles += ES
-
-	//Small VIP Shuttle
-
-	ES = new()
-	ES.location = 1
-	ES.use_small_docks = TRUE
-
-	for(var/area/A in all_areas)
-		if(A.type == /area/shuttle/distress/start_small)
-			ES.area_offsite = A
-			break
-
-	for(var/area/A in all_areas)
-		if(A.type == /area/shuttle/distress/arrive_n_engi)
-			ES.area_station = A
-			break
-
-	for(var/area/A in all_areas)
-		if(A.type == /area/shuttle/distress/transit_small)
-			ES.area_transition = A
-			break
-
-	shuttles["Distress_Small"] = ES
-	process_shuttles += ES
-
-
-
 
 //---ELEVATOR---//
 	// Elevator I

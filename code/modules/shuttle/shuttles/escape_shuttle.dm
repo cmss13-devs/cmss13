@@ -21,9 +21,24 @@
 			air.indestructible = TRUE
 			air.unacidable = TRUE
 
+/obj/docking_port/mobile/escape_shuttle/proc/cancel_evac()
+	door_handler.control_doors("force-unlock")
+	evac_set = FALSE
+
+	var/obj/structure/machinery/computer/shuttle/escape_pod_panel/panel = getControlConsole()
+	if(panel.pod_state != STATE_READY && panel.pod_state != STATE_DELAYED)
+		return
+	panel.pod_state = STATE_IDLE
+	for(var/area/interior_area in shuttle_areas)
+		for(var/obj/structure/machinery/cryopod/evacuation/cryotube in interior_area)
+			cryotube.dock_state = STATE_IDLE
+
 /obj/docking_port/mobile/escape_shuttle/proc/prepare_evac()
 	door_handler.control_doors("force-unlock")
 	evac_set = TRUE
+	for(var/area/interior_area in shuttle_areas)
+		for(var/obj/structure/machinery/cryopod/evacuation/cryotube in interior_area)
+			cryotube.dock_state = STATE_READY
 
 /obj/docking_port/mobile/escape_shuttle/proc/evac_launch()
 	if(mode == SHUTTLE_CRASHED)

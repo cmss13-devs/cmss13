@@ -37441,12 +37441,6 @@
 	tag = "icon-bluefull"
 	},
 /area/almayer/command/cichallway)
-"eHU" = (
-/obj/effect/landmark/shuttle_loc/marine_src/evacuation{
-	name = "13"
-	},
-/turf/closed/wall/almayer,
-/area/almayer/hull/upper_hull/u_m_p)
 "eHY" = (
 /obj/structure/surface/rack,
 /turf/open/floor/almayer{
@@ -113358,7 +113352,7 @@ qVM
 qVM
 qVM
 qVM
-eHU
+qVM
 qVM
 qVM
 qVM

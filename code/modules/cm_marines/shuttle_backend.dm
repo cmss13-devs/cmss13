@@ -403,16 +403,6 @@ qdel(src)
 		if(istype(T, /turf/closed/shuttle))
 			T.underlays += mutable_appearance(T_src.icon, T_src.icon_state, TURF_LAYER, FLOOR_PLANE)
 
-/obj/effect/landmark/shuttle_loc/marine_src/evacuation
-
-/obj/effect/landmark/shuttle_loc/marine_src/evacuation/link_loc()
-	..()
-	var/datum/shuttle/ferry/marine/evacuation_pod/S = shuttle_controller.shuttles["[MAIN_SHIP_NAME] Evac [name]"]
-	if(!S)
-		log_debug("ERROR CODE SO1: unable to find shuttle with the tag of: ["[MAIN_SHIP_NAME] Evac [name]"].")
-		return FALSE
-	S.locs_dock[get_turf(src)] = rotation
-	S.link_support_units(get_turf(src)) //Process links.
 
 /obj/effect/landmark/shuttle_loc/marine_int/dropship/link_loc()
 	SHUTTLE_LINK_LOCATIONS("Dropship", S.locs_move)

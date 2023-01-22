@@ -112,14 +112,14 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 		evac_status = EVACUATION_STATUS_STANDING_BY
 		deactivate_lifeboats()
 		ai_announcement("Evacuation has been cancelled.", 'sound/AI/evacuate_cancelled.ogg')
-		var/datum/shuttle/ferry/marine/evacuation_pod/P
+
 		if(get_security_level() == "red")
 			for(var/obj/structure/machinery/status_display/SD in machines)
 				if(is_mainship_level(SD.z))
 					SD.set_picture("redalert")
-		for(var/i = 1 to MAIN_SHIP_ESCAPE_POD_NUMBER)
-			P = shuttle_controller.shuttles["[MAIN_SHIP_NAME] Evac [i]"]
-			P.toggle_ready()
+
+		for(var/obj/docking_port/mobile/escape_shuttle/shuttle in SSshuttle.mobile)
+			shuttle.cancel_evac()
 		return TRUE
 
 /datum/authority/branch/evacuation/proc/begin_launch() //Launches the pods.

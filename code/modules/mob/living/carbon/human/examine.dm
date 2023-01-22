@@ -203,8 +203,8 @@
 		if(ishuman(user) && !user.stat && Adjacent(user))
 			user.visible_message("<b>[user]</b> checks [src]'s pulse.", "You check [src]'s pulse.", null, 4)
 		spawn(15)
-			if(user && src && distance <= 1 && (user.stat != 1 || user.status_flags & FAKEDEATH))
-				if(pulse == PULSE_NONE)
+			if(user && src && distance <= 1)
+				if(pulse == PULSE_NONE || status_flags & FAKEDEATH)
 					to_chat(user, "<span class='deadsay'>[t_He] has no pulse[client ? "" : " and [t_his] soul has departed"]...</span>")
 				else
 					to_chat(user, "<span class='deadsay'>[t_He] has a pulse!</span>")

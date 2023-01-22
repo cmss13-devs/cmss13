@@ -928,7 +928,7 @@ Defined in conflicts.dm of the #defines folder.
 	desc = "Oppa! How did you get this off glorious Stalin weapon? Blyat, put back on and do job tovarish. Yankee is not shoot self no?"
 
 /obj/item/attachable/scope/variable_zoom/eva
-	name = "RX-M5 EVA telescopic variable scope"
+	name = "RXF-M5 EVA telescopic variable scope"
 	icon_state = "rxfm5_eva_scope"
 	attach_icon = "rxfm5_eva_scope_a"
 	desc = "A civilian-grade scope that can be switched between short and long range magnification, intended for use in extraterrestrial scouting. Looks ridiculous on a pistol."
@@ -2296,6 +2296,7 @@ Defined in conflicts.dm of the #defines folder.
 	P.generate_bullet(ammo_datum)
 	P.icon_state = "naptha_ball"
 	P.color = flamer_reagent.color
+	P.hit_effect_color = flamer_reagent.burncolor
 	P.fire_at(target, user, user, max_range, AMMO_SPEED_TIER_2, null)
 	var/turf/user_turf = get_turf(user)
 	playsound(user_turf, pick(fire_sounds), 50, TRUE)

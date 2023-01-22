@@ -70,8 +70,8 @@
 	var/datum/caste_datum/caste // Used to extract determine ALL Xeno stats.
 	var/speaking_key = "x"
 	var/speaking_noise = "alien_talk"
-	var/slash_verb = "slash"
-	var/slashes_verb = "slashes"
+	slash_verb = "slash"
+	slashes_verb = "slashes"
 	var/slash_sound = "alien_claw_flesh"
 	health = 5
 	maxHealth = 5
@@ -264,7 +264,6 @@
 	// an easily modularizable way. So, here you go.
 	//
 	//////////////////////////////////////////////////////////////////
-	var/weedwalking_activated = FALSE //Hivelord's weedwalking
 	var/tunnel = FALSE
 	var/stealth = FALSE // for check on lurker invisibility
 	var/burrow = FALSE
@@ -291,6 +290,8 @@
 
 	var/icon_xeno
 	var/icon_xenonid
+
+	bubble_icon = "alien"
 
 	/////////////////////////////////////////////////////////////////////
 	//
@@ -1063,5 +1064,5 @@
 		return
 	return ..()
 
-/mob/living/carbon/Xenomorph/handle_blood_splatter(var/splatter_dir)
-	new /obj/effect/temp_visual/dir_setting/bloodsplatter/xenosplatter(loc, splatter_dir)
+/mob/living/carbon/Xenomorph/handle_blood_splatter(var/splatter_dir, duration)
+	new /obj/effect/temp_visual/dir_setting/bloodsplatter/xenosplatter(loc, splatter_dir, duration)

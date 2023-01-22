@@ -698,3 +698,15 @@ var/global/list/gear_datums = list()
 	path = /obj/item/storage/box/pdt_kit
 	cost = 3
 	slot = WEAR_IN_BACK
+
+/datum/gear/sunscreen_stick
+	display_name = "USCM Issue Sunscreen"
+	path = /obj/item/facepaint/sunscreen_stick
+	cost = 1 //The cadmium poisoning pays for the discounted cost longterm
+	slot = WEAR_IN_BACK
+
+/datum/gear/chaplain_patch
+	display_name = "USCM Chaplain Helmet Patch"
+	path = /obj/item/prop/helmetgarb/chaplain_patch
+	cost = 1 //similar price to flairs
+	slot = WEAR_IN_BACK

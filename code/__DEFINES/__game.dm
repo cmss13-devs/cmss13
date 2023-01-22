@@ -6,7 +6,8 @@ block( \
 
 //Admin perms are in global.dm.
 
-#define NO_FLAGS 0 // To make it even more clear that something is a bitfield
+/// To make it even more clear that something is a bitfield.
+#define NO_FLAGS 0
 
 #define GLOBAL_PROC "magic BS"
 
@@ -24,6 +25,7 @@ block( \
 
 #define MAP_MAXSIZE 300
 
+
 #define MAP_ICE_COLONY "Ice Colony" // Highpop only
 #define MAP_LV_624 "LV-624"
 #define MAP_BIG_RED "Solaris Ridge"
@@ -35,14 +37,14 @@ block( \
 #define MAP_CORSAT "CORSAT" // Highpop only
 #define MAP_KUTJEVO "Kutjevo Refinery"
 #define MAP_ICE_COLONY_V3 "Shivas Snowball" //Ice Rework, low pop enabled.
-#define MAP_HAUNTED_HOUSE_V2 "Haunted House V2"
 #define MAP_RUNTIME "USS Runtime"
 #define MAP_LV522_CHANCES_CLAIM "LV-522 Chance's Claim" // Highpop Only
 #define MAP_NEW_VARADERO "New Varadero"//ice colony underground but as its own map
 
-#define PLAYERCOUNT_LOWPOP_MAP_LIMIT 130 // number of players before we switch to lowpop maps only (LV, BR, Prison)
-
-#define PREROUND_TIME 360 // time before the round starts
+/// Number of players before we switch to lowpop maps only (LV, BR, Prison).
+#define PLAYERCOUNT_LOWPOP_MAP_LIMIT 130
+/// Time before the round starts.
+#define PREROUND_TIME 360
 
 //A set of constants used to determine which type of mute an admin wishes to apply:
 //Please read and understand the muting/automuting stuff before changing these. MUTE_IC_AUTO etc = (MUTE_IC << 1)
@@ -87,7 +89,9 @@ block( \
 #define INVISIBILITY_ABSTRACT 101 //only used for abstract objects that aren't really "there" but can't be datums
 
 //Object specific defines
-#define CANDLE_LUM 3 //For how bright candles are
+
+/// For how bright candles are.
+#define CANDLE_LUM 3
 
 
 //Preference toggles//
@@ -174,18 +178,19 @@ block( \
 // and the time before it leaves again
 // note that this is multiplied by 10 in the shuttle controller. Hence, this is not defined in deciseconds but in real seconds
 
-#define DOCK_ATTEMPT_TIMEOUT 20 SECONDS //how long in ticks we wait before assuming the docking controller is broken or blown up.
+/// how long in ticks we wait before assuming the docking controller is broken or blown up.
+#define DOCK_ATTEMPT_TIMEOUT 20 SECONDS
 #define DROPSHIP_WARMUP_TIME 10 SECONDS
 #define DROPSHIP_DROP_MSG_DELAY 30 SECONDS
-#define DROPSHIP_TRANSIT_DURATION 100 SECONDS // 100 seconds
-#define DROPSHIP_CORSAT_DURATION 30 SECONDS  // 30 seconds
-#define ELEVATOR_TRANSIT_DURATION 5 SECONDS // 5 seconds
-#define TRANSIT_POD_TRANSIT_DURATION 30 SECONDS // 30 seconds
-#define DROPSHIP_CRASH_TRANSIT_DURATION 3 MINUTES // 180 seconds. 3 minutes
-#define ERT_SHUTTLE_TRANSIT_DURATION 30 SECONDS // what are these comments for
+#define DROPSHIP_TRANSIT_DURATION 100 SECONDS
+#define DROPSHIP_CORSAT_DURATION 30 SECONDS
+#define ELEVATOR_TRANSIT_DURATION 5 SECONDS
+#define TRANSIT_POD_TRANSIT_DURATION 30 SECONDS
+#define DROPSHIP_CRASH_TRANSIT_DURATION 3 MINUTES
+#define ERT_SHUTTLE_TRANSIT_DURATION 30 SECONDS
 
-#define SHUTTLE_RECHARGE  2 MINUTES // 2 minutes
-#define ELEVATOR_RECHARGE 15 SECONDS  // 15 seconds
+#define SHUTTLE_RECHARGE  2 MINUTES
+#define ELEVATOR_RECHARGE 15 SECONDS
 
 //Shuttle moving status
 //#define SHUTTLE_IDLE 0
@@ -223,15 +228,19 @@ block( \
 #define HOSTILE_STANCE_TIRED 5
 //=================================================
 
-#define ROUNDSTART_LOGOUT_REPORT_TIME 10 MINUTES //Amount of time (in deciseconds) after the rounds starts, that the player disconnect report is issued.
+/// Amount of time (in deciseconds) after the rounds starts, that the player disconnect report is issued.
+#define ROUNDSTART_LOGOUT_REPORT_TIME 10 MINUTES
 
 //=================================================
 //Game mode related defines.
 
-#define TRANSITIONEDGE 3 //Distance from edge to move to another z-level
+/// Distance from edge to move to another z-level.
+#define TRANSITIONEDGE 3
 
 //Flags for zone sleeping
-#define GET_RANDOM_FREQ rand(32000, 55000) //Frequency stuff only works with 45kbps oggs.
+
+/// Frequency stuff only works with 45kbps oggs.
+#define GET_RANDOM_FREQ rand(32000, 55000)
 
 
 // Ceilings
@@ -299,8 +308,11 @@ block( \
 
 #define BARRICADE_BSTATE_FORTIFIED 3 // Used by handrails to indicate reinforcing
 #define BARRICADE_BSTATE_SECURED 2 // fresh barricade
-#define BARRICADE_BSTATE_UNSECURED 1 // intermediate state before cade is movable (no apparent effect on health)
-#define BARRICADE_BSTATE_MOVABLE 0 // ready to be deconstructed and can be moved
+
+/// Intermediate state before cade is movable (no apparent effect on health).
+#define BARRICADE_BSTATE_UNSECURED 1
+/// Ready to be deconstructed and can be moved.
+#define BARRICADE_BSTATE_MOVABLE 0
 
 // Defines for sandbag build stages
 #define BARRICADE_SANDBAG_1 1
@@ -398,7 +410,9 @@ block( \
 #define SHUTTLE_GROUND   3
 
 // Misc game defines
-#define EXTINGUISHER_WATER_USE_AMT 5 // Amount of water consumed by extinguisher per use //why is this a define let alone a GLOBAL define oh my good lord
+
+/// Amount of water consumed by extinguisher per use.//why is this a define let alone a GLOBAL define oh my good lord
+#define EXTINGUISHER_WATER_USE_AMT 5
 
 // Chat delay amounts
 #define CHAT_SAY_DELAY   2
@@ -433,13 +447,15 @@ block( \
 #define CHAT_TYPE_TAKING_HIT 256
 #define CHAT_TYPE_PAIN 512
 
-#define CHAT_TYPE_ALL ((1<<16) - 1) // this is so if we have newer flags, we still have ALL working. This will work for 16 first flags
+/// This is so if we have newer flags, we still have ALL working. This will work for 16 first flags.
+#define CHAT_TYPE_ALL ((1<<16) - 1)
+
 #define CHAT_TYPE_TARGETS_ME CHAT_TYPE_TAKING_HIT
 
-// Used for pre-setting tgchat message type as combat messages
+/// Used for pre-setting tgchat message type as combat messages
 #define CHAT_TYPE_ALL_COMBAT (CHAT_TYPE_BEING_HIT|CHAT_TYPE_WEAPON_USE|CHAT_TYPE_ARMOR_DAMAGE|CHAT_TYPE_MELEE_HIT|CHAT_TYPE_COMBAT_ACTION|CHAT_TYPE_XENO_COMBAT|CHAT_TYPE_TAKING_HIT)
 
-// Window skin types
+/// Window skin types
 #define TOGGLE_WINDOW_SKIN 1
 
 // Quadtree values
@@ -453,7 +469,9 @@ block( \
 
 
 #define QTREE_EXCLUDE_OBSERVER 1
-#define QTREE_SCAN_MOBS 2 //Return mob list instead of client list
+
+/// Return mob list instead of client list.
+#define QTREE_SCAN_MOBS 2
 
 // Ship section bounds
 

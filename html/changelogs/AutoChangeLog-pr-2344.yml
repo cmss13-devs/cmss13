@@ -1,0 +1,4 @@
+author: "JackieEstegado"
+delete-after: True
+changes:
+  - balance: "Requisitions will now always start with at least one powerloader certificate."

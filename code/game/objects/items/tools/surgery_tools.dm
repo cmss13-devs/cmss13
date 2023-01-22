@@ -3,7 +3,8 @@
 // Surgery Tools
 /obj/item/tool/surgery
 	icon = 'icons/obj/items/surgery_tools.dmi'
-	attack_speed = 4 // reduced
+	/// reduced
+	attack_speed = 4
 
 /*
  * Retractor
@@ -248,8 +249,10 @@
 	name = "Synth-Graft"
 	desc = "An applicator for synthetic skin field grafts. The stuff reeks, itches like the dickens, hurts going on, and the colour is \
 		a perfectly averaged multiethnic tone that doesn't blend with <i>anyone's</i> complexion. But at least you don't have to stay in sickbay."
-	icon_state = "line" //Placeholder.
-	color = "yellow" //Placeholder, to distinguish from surgical line.
+	/// Placeholder.
+	icon_state = "line"
+	/// Placeholder, to distinguish from surgical line.
+	color = "yellow"
 	force = 0
 	throwforce = 1.0
 	w_class = SIZE_SMALL
@@ -300,6 +303,7 @@ t. optimisticdude
 	name = "surgical drapes"
 	desc = "Used to cover a limb prior to the beginning of a surgical procedure"
 	icon_state = "drapes"
+	gender = PLURAL
 	w_class = SIZE_SMALL
 	flags_item = NOBLUDGEON
 

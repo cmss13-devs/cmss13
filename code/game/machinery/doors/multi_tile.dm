@@ -129,6 +129,7 @@
 	tiles_with = list(
 		/obj/structure/window/framed/almayer,
 		/obj/structure/machinery/door/airlock)
+	var/multi_filler = list()
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/Initialize()
 	. = ..()
@@ -222,40 +223,35 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/handle_multidoor()
 	if(!(width > 1)) return //Bubblewrap
 
-	for(var/i = 1, i < width, i++)
-		if(dir in list(NORTH, SOUTH))
-			var/turf/T = locate(x, y + i, z)
-			T.SetOpacity(opacity)
-		else if(dir in list(EAST, WEST))
-			var/turf/T = locate(x + i, y, z)
-			T.SetOpacity(opacity)
-
+	update_filler_turfs()
 	if(dir in list(NORTH, SOUTH))
 		bound_height = world.icon_size * width
+		bound_width = world.icon_size
 	else if(dir in list(EAST, WEST))
 		bound_width = world.icon_size * width
+		bound_height = world.icon_size
 
 //We have to find these again since these doors are used on shuttles a lot so the turfs changes
 /obj/structure/machinery/door/airlock/multi_tile/almayer/proc/update_filler_turfs()
+	for(var/turf/T in multi_filler)
+		T.SetOpacity(null)
 
-	for(var/i = 1, i < width, i++)
-		if(dir in list(NORTH, SOUTH))
-			var/turf/T = locate(x, y + i, z)
-			if(T) T.SetOpacity(opacity)
-		else if(dir in list(EAST, WEST))
-			var/turf/T = locate(x + i, y, z)
-			if(T) T.SetOpacity(opacity)
+	multi_filler = list()
+	for(var/turf/T in get_filler_turfs())
+		T.SetOpacity(opacity)
+		multi_filler += list(T)
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/proc/get_filler_turfs()
-	var/list/filler_turfs = list()
+	. = list()
 	for(var/i = 1, i < width, i++)
 		if(dir in list(NORTH, SOUTH))
 			var/turf/T = locate(x, y + i, z)
-			if(T) filler_turfs += T
+			if(T)
+				. += list(T)
 		else if(dir in list(EAST, WEST))
 			var/turf/T = locate(x + i, y, z)
-			if(T) filler_turfs += T
-	return filler_turfs
+			if(T)
+				. += list(T)
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/open()
 	. = ..()

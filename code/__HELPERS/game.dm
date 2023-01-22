@@ -182,8 +182,6 @@
 					. |= M // Since we're already looping through mobs, why bother using |= ? This only slows things down.
 	return .
 
-#define SIGN(X) ((X<0)?-1:1)
-
 /proc/inLineOfSight(X1,Y1,X2,Y2,Z=1,PX1=16.5,PY1=16.5,PX2=16.5,PY2=16.5)
 	var/turf/T
 	if(X1==X2)
@@ -331,3 +329,28 @@
 	for(var/client/add_to in show_to)
 		add_to.images += image_to_show
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(remove_images_from_clients), image_to_show, show_to), duration, TIMER_CLIENT_TIME)
+
+/// Get active players who are playing in the round
+/proc/get_active_player_count(alive_check = FALSE, afk_check = FALSE, faction_check = FALSE, faction = FACTION_NEUTRAL)
+	var/active_players = 0
+	for(var/mob/current_mob in GLOB.player_list)
+		if(!(current_mob && current_mob.client))
+			continue
+		if(alive_check && current_mob.stat)
+			continue
+		else if(afk_check && current_mob.client.is_afk())
+			continue
+		else if(faction_check)
+			if(!isliving(current_mob))
+				continue
+			var/mob/living/current_living = current_mob
+			if(faction != current_living.faction)
+				continue
+		else if(isnewplayer(current_mob))
+			continue
+		else if(isobserver(current_mob))
+			var/mob/dead/observer/current_observer = current_mob
+			if(current_observer.started_as_observer)
+				continue
+		active_players++
+	return active_players

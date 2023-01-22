@@ -3,7 +3,6 @@
 /turf/closed/wall/r_wall/bunker,
 /area/event)
 "b" = (
-/obj/effect/landmark/start/tank_crew,
 /turf/open/floor/almayer{
 	icon_state = "plating"
 	},

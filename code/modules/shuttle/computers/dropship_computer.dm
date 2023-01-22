@@ -162,41 +162,18 @@
 	var/result = tgui_input_list(user, "Where to 'land'?", "Dropship Hijack", almayer_ship_sections)
 	if(!result)
 		return
-
 	var/obj/docking_port/mobile/marine_dropship/dropship = SSshuttle.getShuttle(shuttleId)
-	var/area/target_area = dropship.select_crashsite(result)
-	// spawn crash location
-	var/list/turfs = list()
-	for(var/turf/T in get_area_turfs(target_area))
-		turfs += T
-
-	if(!turfs || !turfs.len)
-		to_chat(src, "<span style='color: red;'>No area available.</span>")
-		return
-	var/turf/target = pick(turfs)
-
-	var/obj/docking_port/stationary/marine_dropship/crash_site/target_site = new()
-	target_site.x = target.x
-	target_site.y = target.y
-	target_site.z = target.z
-	target_site.dwidth = 1
-
-	target_site.name = "[shuttleId] crash site"
-	target_site.id = "crash_site_[shuttleId]"
+	var/datum/dropship_hijack/almayer/hijack = new()
+	dropship.hijack = hijack
+	hijack.shuttle = dropship
+	hijack.target_crash_site(result)
 
 	dropship.crashing = TRUE
 	dropship.is_hijacked = TRUE
-	dropship.target_zone = result
 
-	// move shuttle with long duration
-	SSshuttle.moveShuttle(shuttleId, target_site.id, DROPSHIP_CRASH_TRANSIT_DURATION)
+	hijack.fire()
 
-	if(round_statistics)
-		round_statistics.track_hijack()
 	// when launched announce
-	// deal with AA
-	// DROPSHIP ON COLLISION COURSE. CRASH IMMINENT
-
 
 
 /obj/structure/machinery/computer/shuttle/dropship/flight/proc/remove_door_lock()

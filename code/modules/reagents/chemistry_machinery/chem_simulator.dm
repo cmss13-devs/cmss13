@@ -1,16 +1,16 @@
-#define MODE_AMPLIFY 			1
-#define MODE_SUPPRESS 			2
-#define MODE_RELATE				3
-#define MODE_CREATE				4
+#define MODE_AMPLIFY 1
+#define MODE_SUPPRESS 2
+#define MODE_RELATE 3
+#define MODE_CREATE 4
 
-#define SIMULATION_FAILURE		-1
-#define SIMULATION_STAGE_OFF	0
-#define SIMULATION_STAGE_FINAL	1
-#define SIMULATION_STAGE_WAIT	2
-#define SIMULATION_STAGE_3		3
-#define SIMULATION_STAGE_4		4
-#define SIMULATION_STAGE_5		5
-#define SIMULATION_STAGE_BEGIN	6
+#define SIMULATION_FAILURE -1
+#define SIMULATION_STAGE_OFF 0
+#define SIMULATION_STAGE_FINAL 1
+#define SIMULATION_STAGE_WAIT 2
+#define SIMULATION_STAGE_3 3
+#define SIMULATION_STAGE_4 4
+#define SIMULATION_STAGE_5 5
+#define SIMULATION_STAGE_BEGIN 6
 
 /obj/structure/machinery/chem_simulator
 	name = "Synthesis Simulator"
@@ -19,7 +19,7 @@
 	icon_state = "modifier"
 	active_power_usage = 1000
 	layer = BELOW_OBJ_LAYER
-	density = 1
+	density = TRUE
 	bound_x = 32
 
 	var/obj/item/paper/research_report/target
@@ -147,12 +147,12 @@
 			data["property_data_list"][P.name] = P.level
 
 		data["template_filter"] = list(
-				"MED" = list(check_bitflag(template_filter, PROPERTY_TYPE_MEDICINE),	PROPERTY_TYPE_MEDICINE),
-				"TOX" = list(check_bitflag(template_filter, PROPERTY_TYPE_TOXICANT),	PROPERTY_TYPE_TOXICANT),
-				"STI" = list(check_bitflag(template_filter, PROPERTY_TYPE_STIMULANT),	PROPERTY_TYPE_STIMULANT),
-				"REA" = list(check_bitflag(template_filter, PROPERTY_TYPE_REACTANT),	PROPERTY_TYPE_REACTANT),
-				"IRR" = list(check_bitflag(template_filter, PROPERTY_TYPE_IRRITANT),	PROPERTY_TYPE_IRRITANT),
-				"MET" = list(check_bitflag(template_filter, PROPERTY_TYPE_METABOLITE),	PROPERTY_TYPE_METABOLITE)
+				"MED" = list(check_bitflag(template_filter, PROPERTY_TYPE_MEDICINE), PROPERTY_TYPE_MEDICINE),
+				"TOX" = list(check_bitflag(template_filter, PROPERTY_TYPE_TOXICANT), PROPERTY_TYPE_TOXICANT),
+				"STI" = list(check_bitflag(template_filter, PROPERTY_TYPE_STIMULANT), PROPERTY_TYPE_STIMULANT),
+				"REA" = list(check_bitflag(template_filter, PROPERTY_TYPE_REACTANT), PROPERTY_TYPE_REACTANT),
+				"IRR" = list(check_bitflag(template_filter, PROPERTY_TYPE_IRRITANT), PROPERTY_TYPE_IRRITANT),
+				"MET" = list(check_bitflag(template_filter, PROPERTY_TYPE_METABOLITE), PROPERTY_TYPE_METABOLITE)
 			)
 
 	else if(target && target.data && target.completed)

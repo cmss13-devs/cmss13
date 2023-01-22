@@ -169,3 +169,25 @@
 	var/obj/item/weapon/gun/held_item = human.get_held_item()
 	held_item.activate_rail_attachment_verb()
 	return TRUE
+
+/datum/keybinding/human/combat/toggle_iff
+	hotkey_keys = list()
+	classic_keys = list()
+	name = "toggle_iff"
+	full_name = "Toggle IFF"
+	keybind_signal = COMSIG_KB_HUMAN_WEAPON_TOGGLE_IFF
+
+/datum/keybinding/human/combat/toggle_iff/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/human/human = user.mob
+	var/obj/item/weapon/gun/held_item = human.get_held_item()
+	if(istype(held_item, /obj/item/weapon/gun/smartgun))
+		var/obj/item/weapon/gun/smartgun/clevergun = held_item
+		clevergun.toggle_lethal_mode(human)
+		return TRUE
+	else if(istype(held_item, /obj/item/weapon/gun/rifle/m46c))
+		var/obj/item/weapon/gun/rifle/m46c/COgun = held_item
+		COgun.toggle_iff(human)
+		return TRUE

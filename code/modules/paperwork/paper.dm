@@ -20,12 +20,12 @@
 	flags_armor_protection = BODY_FLAG_HEAD
 	attack_verb = list("bapped")
 
-	var/info		//What's actually written on the paper.
-	var/info_links	//A different version of the paper which includes html links at fields and EOF
-	var/stamps		//The (text for the) stamps on the paper.
-	var/fields		//Amount of user created fields
+	var/info //What's actually written on the paper.
+	var/info_links //A different version of the paper which includes html links at fields and EOF
+	var/stamps //The (text for the) stamps on the paper.
+	var/fields //Amount of user created fields
 	var/list/stamped
-	var/ico[0]      //Icons and
+	var/ico[0] //Icons and
 	var/offset_x[0] //offsets stored for later
 	var/offset_y[0] //usage by the photocopier
 	var/rigged = 0
@@ -129,10 +129,10 @@
 				H.update_body()
 			else
 				user.visible_message(SPAN_WARNING("[user] begins to wipe [H]'s face paint off with \the [src]."), \
-								 	 SPAN_NOTICE("You begin to wipe off [H]'s face paint."))
-				if(do_after(user, 10, INTERRUPT_ALL, BUSY_ICON_FRIENDLY) && do_after(H, 10, INTERRUPT_ALL, BUSY_ICON_GENERIC))	//user needs to keep their active hand, H does not.
+									SPAN_NOTICE("You begin to wipe off [H]'s face paint."))
+				if(do_after(user, 10, INTERRUPT_ALL, BUSY_ICON_FRIENDLY) && do_after(H, 10, INTERRUPT_ALL, BUSY_ICON_GENERIC)) //user needs to keep their active hand, H does not.
 					user.visible_message(SPAN_NOTICE("[user] wipes [H]'s face paint off with \the [src]."), \
-										 SPAN_NOTICE("You wipe off [H]'s face paint."))
+										SPAN_NOTICE("You wipe off [H]'s face paint."))
 					H.lip_style = null
 					H.update_body()
 
@@ -258,7 +258,7 @@
 
 		t = "<font face=\"[crayonfont]\" color=[P ? P.pen_colour : "black"]><b>[t]</b></font>"
 
-//	t = replacetext(t, "#", "") // Junk converted to nothing!
+// t = replacetext(t, "#", "") // Junk converted to nothing!
 
 //Count the fields
 	var/laststart = 1
@@ -543,7 +543,7 @@
 
 /obj/item/paper/lv_624/cheese
 	name = "paper= 'Note on the contents of the armoury'"
-	info = "<p>Seems the administrator had an extra shipment of cheese delivered in our last supply drop from Earth. We've got no space to store it in the main kitchen, and he wants it to \"age\" or something.</p><p>It's being kept in the armoury for now, seems it has the right conditions. Anyway, apologies about the smell.</p><p> - Marshall"
+	info = "<p>Seems the administrator had an extra shipment of cheese delivered in our last supply drop from Earth. We've got no space to store it in the main kitchen, and he wants it to \"age\" or something.</p><p>It's being kept in the armoury for now, seems it has the right conditions. Anyway, apologies about the smell.</p><p> - Marshal Johnson"
 
 /obj/item/paper/bigred/walls
 	name = "crumpled note"
@@ -632,7 +632,7 @@
 			if(note_type == "test")
 				random_chem = pick(chemical_gen_classes_list["T4"])
 			else
-				random_chem = pick(	prob(55);pick(chemical_gen_classes_list["T2"]),
+				random_chem = pick( prob(55);pick(chemical_gen_classes_list["T2"]),
 									prob(30);pick(chemical_gen_classes_list["T3"]),
 									prob(15);pick(chemical_gen_classes_list["T4"]))
 		if(!random_chem)

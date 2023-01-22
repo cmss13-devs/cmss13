@@ -40,24 +40,7 @@
 	else
 		switch(newrank)
 			if("Weyland-Yutani")
-				var/code = "WY-"
-
-				var/divisions = get_named_wy_ranks("division_code")
-				var/div = tgui_input_list(usr, "Select the Division at which they belong to.", "Division", divisions)
-
-				if(!div)
-					return
-				code += divisions[div]
-
-				var/ranks = get_named_wy_ranks("job_code")
-				var/rank = tgui_input_list(usr, "Select the Rank at which they are at.", "Rank", ranks)
-
-				if(!rank)
-					return
-				code += ranks[rank]
-
-				H.apply_wy_rank_code(code)
-
+			
 				H.faction = FACTION_WY
 				H.faction_group = FACTION_LIST_WY
 

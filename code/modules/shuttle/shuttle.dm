@@ -9,7 +9,7 @@
 	icon = 'icons/obj/items/devices.dmi'
 	icon_state = "pinonfar"
 
-//	resistance_flags = RESIST_ALL
+// resistance_flags = RESIST_ALL
 	anchored = TRUE
 
 	/**
@@ -236,9 +236,9 @@
 		var/area/place = get_area(src)
 		area_type = place?.type // We might be created in nullspace
 
-//	if(mapload)
-//		for(var/turf/T in return_turfs())
-//			T.flags_1 |= NO_RUINS_1
+// if(mapload)
+// for(var/turf/T in return_turfs())
+// T.flags_1 |= NO_RUINS_1
 
 	#ifdef DOCKING_PORT_HIGHLIGHT
 	highlight("#f00")
@@ -277,6 +277,10 @@
 		SSshuttle.action_load(roundstart_template, src)
 
 /obj/docking_port/stationary/proc/on_crash()
+	return
+
+/// Called when a new shuttle arrives
+/obj/docking_port/stationary/proc/on_arrival(obj/docking_port/mobile/arriving_shuttle)
 	return
 
 /// Called when the docked shuttle ignites
@@ -327,14 +331,14 @@
 
 	var/list/shuttle_areas
 
-	var/timer						//used as a timer (if you want time left to complete move, use timeLeft proc)
+	var/timer //used as a timer (if you want time left to complete move, use timeLeft proc)
 	var/last_timer_length
 
-	var/mode = SHUTTLE_IDLE			//current shuttle mode
-	var/callTime = 100				//time spent in transit (deciseconds). Should not be lower then 10 seconds without editing the animation of the hyperspace ripples.
-	var/ignitionTime = 55			// time spent "starting the engines". Also rate limits how often we try to reserve transit space if its ever full of transiting shuttles.
-	var/rechargeTime = 0			//time spent after arrival before being able to launch again
-	var/prearrivalTime = 0			//delay after call time finishes for sound effects, explosions, etc.
+	var/mode = SHUTTLE_IDLE //current shuttle mode
+	var/callTime = 100 //time spent in transit (deciseconds). Should not be lower then 10 seconds without editing the animation of the hyperspace ripples.
+	var/ignitionTime = 55 // time spent "starting the engines". Also rate limits how often we try to reserve transit space if its ever full of transiting shuttles.
+	var/rechargeTime = 0 //time spent after arrival before being able to launch again
+	var/prearrivalTime = 0 //delay after call time finishes for sound effects, explosions, etc.
 
 	var/landing_sound = 'sound/effects/engine_landing.ogg'
 	var/ignition_sound = 'sound/effects/engine_startup.ogg'
@@ -379,7 +383,7 @@
 		SSshuttle.mobile -= src
 		destination = null
 		previous = null
-		QDEL_NULL(assigned_transit)		//don't need it where we're goin'!
+		QDEL_NULL(assigned_transit) //don't need it where we're goin'!
 		shuttle_areas = null
 		remove_ripples()
 	return ..()
@@ -559,7 +563,7 @@
 	set_mode(SHUTTLE_RECALL)
 
 /obj/docking_port/mobile/proc/enterTransit()
-	if((SSshuttle.lockdown && !is_reserved_level(z)) || !canMove())	//emp went off, no escape
+	if((SSshuttle.lockdown && !is_reserved_level(z)) || !canMove()) //emp went off, no escape
 		set_mode(SHUTTLE_IDLE)
 		return
 	previous = null
@@ -601,7 +605,7 @@
 		var/turf/oldT = old_turfs[i]
 		if(!oldT || !istype(oldT.loc, area_type))
 			continue
-//		var/area/old_area = oldT.loc
+// var/area/old_area = oldT.loc
 		underlying_area.contents += oldT
 		//oldT.change_area(old_area, underlying_area) //lighting
 		oldT.empty(FALSE)
@@ -728,23 +732,23 @@
 		//for(var/place in shuttle_areas)
 			//var/area/shuttle/shuttle_area = place
 			//if(shuttle_area.parallax_movedir)
-			//	parallax_slowdown()
+			// parallax_slowdown()
 
 /obj/docking_port/mobile/proc/parallax_slowdown()
 	//for(var/place in shuttle_areas)
-	//	var/area/shuttle/shuttle_area = place
-	//	shuttle_area.parallax_movedir = FALSE
+	// var/area/shuttle/shuttle_area = place
+	// shuttle_area.parallax_movedir = FALSE
 	//if(assigned_transit && assigned_transit.assigned_area)
-	//	assigned_transit.assigned_area.parallax_movedir = FALSE
-//	var/list/L0 = return_ordered_turfs(x, y, z, dir)
-//	for (var/thing in L0)
-//		var/turf/T = thing
-//		if(!T || !istype(T.loc, area_type))
-//			continue
-//		for (var/thing2 in T)
-//			var/atom/movable/AM = thing2
-//			if (length(AM.client_mobs_in_contents))
-//				AM.update_parallax_contents()
+	// assigned_transit.assigned_area.parallax_movedir = FALSE
+// var/list/L0 = return_ordered_turfs(x, y, z, dir)
+// for (var/thing in L0)
+// var/turf/T = thing
+// if(!T || !istype(T.loc, area_type))
+// continue
+// for (var/thing2 in T)
+// var/atom/movable/AM = thing2
+// if (length(AM.client_mobs_in_contents))
+// AM.update_parallax_contents()
 
 /obj/docking_port/mobile/proc/check_transit_zone()
 	if(assigned_transit)
@@ -876,7 +880,7 @@
 		else
 			CRASH("Invalid hyperspace sound phase: [phase]")
 	for(var/A in areas)
-		for(var/obj/structure/machinery/door/E in A)	//dumb, I know, but playing it on the engines doesn't do it justice
+		for(var/obj/structure/machinery/door/E in A) //dumb, I know, but playing it on the engines doesn't do it justice
 			playsound(E, s, 100, FALSE, max(width, height) - WORLD_VIEW_NUM)
 */
 // Losing all initial engines should get you 2
@@ -893,11 +897,11 @@
 
 /obj/docking_port/mobile/proc/count_engines()
 	. = 0
-//	for(var/thing in shuttle_areas)
-//		var/area/shuttle/areaInstance = thing
-//		for(var/obj/structure/shuttle/engine/E in areaInstance.contents)
-//			if(!QDELETED(E))
-//				. += E.engine_power
+// for(var/thing in shuttle_areas)
+// var/area/shuttle/areaInstance = thing
+// for(var/obj/structure/shuttle/engine/E in areaInstance.contents)
+// if(!QDELETED(E))
+// . += E.engine_power
 
 // Double initial engines to get to 0.5 minimum
 // Lose all initial engines to get to 2
@@ -970,7 +974,7 @@
 /obj/docking_port/mobile/proc/set_mode(new_mode)
 	mode = new_mode
 	SEND_SIGNAL(src, COMSIG_SHUTTLE_SETMODE, mode)
-	INVOKE_ASYNC(src, .proc/update_ambience)
+	INVOKE_ASYNC(src, PROC_REF(update_ambience))
 
 /obj/docking_port/mobile/proc/can_move_topic(mob/user)
 	if(mode == SHUTTLE_RECHARGING)

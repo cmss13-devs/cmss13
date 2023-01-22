@@ -22,7 +22,7 @@
 			new /obj/item/explosive/grenade/flashbang/noskill(loc)
 			return INITIALIZE_HINT_QDEL
 		else if(SSticker.current_state < GAME_STATE_PLAYING)
-			RegisterSignal(SSdcs, COMSIG_GLOB_MODE_PRESETUP, .proc/replace_flashbang)
+			RegisterSignal(SSdcs, COMSIG_GLOB_MODE_PRESETUP, PROC_REF(replace_flashbang))
 	return ..()
 
 /obj/item/explosive/grenade/flashbang/proc/replace_flashbang()
@@ -171,7 +171,7 @@
 	det_time = 10
 	active = TRUE
 	w_class = SIZE_MASSIVE // We cheat a little, primed nades become massive so they cant be stored anywhere
-	addtimer(CALLBACK(src, .proc/prime), det_time)
+	addtimer(CALLBACK(src, PROC_REF(prime)), det_time)
 
 /obj/item/explosive/grenade/flashbang/cluster/prime()
 	for(var/i in 1 to rand(2,5))
@@ -192,7 +192,7 @@
 	var/temploc = get_turf(src)
 	//segments scatter in all directions
 	walk_away(src,temploc,rand(1,4))
-	addtimer(CALLBACK(src, .proc/prime), rand(10,20))
+	addtimer(CALLBACK(src, PROC_REF(prime)), rand(10,20))
 	return ..()
 
 //Segment spawns cluster versions of flashbangs, 3 total
@@ -210,7 +210,7 @@
 	var/temploc = get_turf(src)
 	walk_away(src,temploc,rand(1,4))
 	playsound(src.loc, 'sound/weapons/armbomb.ogg', 25, 1, 6)
-	addtimer(CALLBACK(src, .proc/prime), rand(10,20))
+	addtimer(CALLBACK(src, PROC_REF(prime)), rand(10,20))
 
 //special flashbang nade for events. Skills are not required neither affect the effect.
 //Knockdowns only within 3x3 area, causes temporary blindness, deafness and daze, depending on range and type of mob. Effects reduced when lying.
@@ -244,7 +244,7 @@
 				var/mob/living/carbon/Xenomorph/X = M
 				X.Daze(2)
 				X.SetEarDeafness(max(X.ear_deaf, 3))
-		else	//simple mobs?
+		else //simple mobs?
 			M.Stun(5)
 			M.KnockDown(1)
 
@@ -328,7 +328,7 @@
 	M.apply_effect(paralyze_amount, PARALYZE)
 
 	if(flash_amount)
-		M.flash_eyes(1, TRUE, /atom/movable/screen/fullscreen/flash, flash_amount)
+		M.flash_eyes(EYE_PROTECTION_FLASH, TRUE, /atom/movable/screen/fullscreen/flash, flash_amount)
 	if(deafen_amount)
 		M.SetEarDeafness(max(M.ear_deaf, deafen_amount))
 

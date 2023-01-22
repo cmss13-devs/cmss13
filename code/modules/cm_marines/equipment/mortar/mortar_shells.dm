@@ -212,5 +212,11 @@
 	new /obj/item/device/binoculars/range(src)
 	new /obj/item/device/binoculars/range(src)
 
-/obj/structure/closet/crate/secure/mortar_ammo/mortar_kit/cct
-	jtac_key_type = /obj/item/device/encryptionkey/cct
+/obj/structure/closet/crate/secure/mortar_ammo/mortar_kit/hvh
+	jtac_key_type = /obj/item/device/encryptionkey/upp/engi
+
+/obj/structure/closet/crate/secure/mortar_ammo/mortar_kit/hvh/pmc
+	jtac_key_type = /obj/item/device/encryptionkey/PMC/engi
+
+/obj/structure/closet/crate/secure/mortar_ammo/mortar_kit/hvh/clf
+	jtac_key_type = /obj/item/device/encryptionkey/clf/engi

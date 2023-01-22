@@ -1,8 +1,8 @@
 /* Diffrent misc types of tiles
  * Contains:
- *		Grass
- *		Wood
- *		Carpet
+ * Grass
+ * Wood
+ * Carpet
  */
 
 /obj/item/stack/tile

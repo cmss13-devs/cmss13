@@ -39,7 +39,7 @@
 	droppod_flags &= ~(DROPPOD_RETURNING|DROPPOD_DROPPED|DROPPOD_DROPPING)
 
 	warn_turf(loc)
-	addtimer(CALLBACK(src, .proc/drop_on_target, loc), drop_time)
+	addtimer(CALLBACK(src, PROC_REF(drop_on_target), loc), drop_time)
 	update_icon()
 
 
@@ -130,7 +130,7 @@
 	playsound(loc, landing_sound, 100, TRUE, 15)
 	animate(src, pixel_y = 0, time = dropping_time, easing = LINEAR_EASING)
 
-	addtimer(CALLBACK(src, .proc/land, T), dropping_time)
+	addtimer(CALLBACK(src, PROC_REF(land), T), dropping_time)
 
 /obj/structure/droppod/proc/land(var/turf/T)
 	playsound(T, land_sound, 100, FALSE, sound_range = 15)
@@ -157,10 +157,13 @@
 	for(var/obj/structure/structure in loc)
 		structure.update_health(-land_damage)
 
+	for(var/obj/structure/machinery/defenses/def in loc)
+		qdel(def)
+
 	for(var/mob/mob in view(7, loc))
 		shake_camera(mob, 4, 5)
 
-	addtimer(CALLBACK(src, .proc/open), open_time)
+	addtimer(CALLBACK(src, PROC_REF(open)), open_time)
 
 /obj/structure/droppod/proc/recall()
 	if(droppod_flags & DROPPOD_RETURNING)
@@ -180,7 +183,7 @@
 
 	var/pixels_to_take = 32*tiles_to_take
 	animate(src, pixel_y = pixels_to_take, time = dropping_time, easing = QUAD_EASING)
-	addtimer(CALLBACK(src, .proc/post_recall), dropping_time)
+	addtimer(CALLBACK(src, PROC_REF(post_recall)), dropping_time)
 
 /obj/structure/droppod/proc/post_recall()
 	qdel(src)

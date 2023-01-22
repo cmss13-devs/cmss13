@@ -16,9 +16,9 @@
 	flags_atom = FPRINT|CONDUCT
 	allowed_sensors = list(/obj/item/device/assembly/prox_sensor)
 	max_container_volume = 120
-	reaction_limits = list(	"max_ex_power" = 105,	"base_ex_falloff" = 60,	"max_ex_shards" = 32,
-							"max_fire_rad" = 5,		"max_fire_int" = 12,	"max_fire_dur" = 18,
-							"min_fire_rad" = 2,		"min_fire_int" = 3,		"min_fire_dur" = 3
+	reaction_limits = list( "max_ex_power" = 105, "base_ex_falloff" = 60, "max_ex_shards" = 32,
+							"max_fire_rad" = 5, "max_fire_int" = 12, "max_fire_dur" = 18,
+							"min_fire_rad" = 2, "min_fire_int" = 3, "min_fire_dur" = 3
 	)
 	angle = 60
 	use_dir = TRUE
@@ -256,7 +256,7 @@
 /obj/effect/mine_tripwire
 	name = "claymore tripwire"
 	anchored = TRUE
-	mouse_opacity = 0
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	invisibility = 101
 	unacidable = TRUE //You never know
 	var/obj/item/explosive/mine/linked_claymore

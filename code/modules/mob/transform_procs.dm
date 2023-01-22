@@ -102,7 +102,7 @@
 	O.gender = gender
 	O.invisibility = 0
 
-	if(mind)		//TODO
+	if(mind) //TODO
 		mind.transfer_to(O)
 		if(O.job == "Cyborg")
 			O.mind.original = O
@@ -196,7 +196,7 @@
 	canmove = 0
 	icon = null
 	invisibility = 101
-	for(var/t in limbs)	//this really should not be necessary
+	for(var/t in limbs) //this really should not be necessary
 		qdel(t)
 
 	var/mob/living/simple_animal/corgi/new_corgi = new /mob/living/simple_animal/corgi (loc)
@@ -269,7 +269,7 @@
 
 //Bad mobs! - Remember to add a comment explaining what's wrong with the mob
 	if(!MP)
-		return 0	//Sanity, this should never happen.
+		return 0 //Sanity, this should never happen.
 
 //Good mobs!
 	if(ispath(MP, /mob/living/simple_animal/cat))

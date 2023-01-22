@@ -38,7 +38,7 @@
 
 /obj/item/storage/large_holster/equipped(mob/user, slot)
 	if(slot == WEAR_BACK || slot == WEAR_WAIST || slot == WEAR_J_STORE)
-		mouse_opacity = 2 //so it's easier to click when properly equipped.
+		mouse_opacity = MOUSE_OPACITY_OPAQUE //so it's easier to click when properly equipped.
 	..()
 
 /obj/item/storage/large_holster/dropped(mob/user)
@@ -196,8 +196,8 @@
 /obj/item/storage/large_holster/fuelpack/Initialize()
 	. = ..()
 	fuel = new /obj/item/ammo_magazine/flamer_tank/large()
-	fuelB =	new /obj/item/ammo_magazine/flamer_tank/large/B()
-	fuelX =	new /obj/item/ammo_magazine/flamer_tank/large/X()
+	fuelB = new /obj/item/ammo_magazine/flamer_tank/large/B()
+	fuelX = new /obj/item/ammo_magazine/flamer_tank/large/X()
 	active_fuel = fuel
 	flamer_overlay = overlay_image('icons/obj/items/clothing/backpacks.dmi', "+m240t")
 

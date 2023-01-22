@@ -1,7 +1,7 @@
-#define TESLA_COIL_FIREDELAY 	20
-#define TESLA_COIL_RANGE 		3
-#define TESLA_COIL_DAZE_EFFECT 		5
-#define TESLA_COIL_SLOW_EFFECT 		3
+#define TESLA_COIL_FIREDELAY 20
+#define TESLA_COIL_RANGE 3
+#define TESLA_COIL_DAZE_EFFECT 5
+#define TESLA_COIL_SLOW_EFFECT 3
 
 /obj/structure/machinery/defenses/tesla_coil
 	name = "\improper 21S tesla coil"
@@ -16,6 +16,16 @@
 	health = 150
 	health_max = 150
 	display_additional_stats = TRUE
+
+	has_camera = FALSE
+
+	choice_categories = list(
+		SENTRY_CATEGORY_IFF = list(FACTION_USCM, FACTION_WEYLAND, FACTION_HUMAN),
+	)
+
+	selected_categories = list(
+		SENTRY_CATEGORY_IFF = FACTION_USCM,
+	)
 
 
 /obj/structure/machinery/defenses/tesla_coil/Initialize()

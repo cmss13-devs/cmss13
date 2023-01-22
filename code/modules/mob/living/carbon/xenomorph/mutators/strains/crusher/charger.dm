@@ -8,10 +8,10 @@
 
 
 // Momentum loss defines. 8 is maximum momentum
-#define CCA_MOMENTUM_LOSS_HALF 		4
-#define CCA_MOMENTUM_LOSS_THIRD 	3
-#define CCA_MOMENTUM_LOSS_QUARTER 	2
-#define CCA_MOMENTUM_LOSS_MIN 		1
+#define CCA_MOMENTUM_LOSS_HALF 4
+#define CCA_MOMENTUM_LOSS_THIRD 3
+#define CCA_MOMENTUM_LOSS_QUARTER 2
+#define CCA_MOMENTUM_LOSS_MIN 1
 
 
 /datum/xeno_mutator/charger
@@ -44,7 +44,7 @@
 	crusher.mutation_type = CRUSHER_CHARGER
 	crusher.small_explosives_stun = FALSE
 	crusher.health_modifier += XENO_HEALTH_MOD_LARGE
-	crusher.speed_modifier +=	XENO_SPEED_FASTMOD_TIER_3
+	crusher.speed_modifier += XENO_SPEED_FASTMOD_TIER_3
 	crusher.armor_modifier -= XENO_ARMOR_MOD_SMALL
 	crusher.damage_modifier -= XENO_DAMAGE_MOD_SMALL
 	crusher.ignore_aura = "frenzy" // no funny crushers going 7 morbillion kilometers per second
@@ -62,8 +62,8 @@
 	var/side_armor = 15
 
 /datum/behavior_delegate/crusher_charger/add_to_xeno()
-	RegisterSignal(bound_xeno, COMSIG_MOB_SET_FACE_DIR, .proc/cancel_dir_lock)
-	RegisterSignal(bound_xeno, COMSIG_XENO_PRE_CALCULATE_ARMOURED_DAMAGE_PROJECTILE, .proc/apply_directional_armor)
+	RegisterSignal(bound_xeno, COMSIG_MOB_SET_FACE_DIR, PROC_REF(cancel_dir_lock))
+	RegisterSignal(bound_xeno, COMSIG_XENO_PRE_CALCULATE_ARMOURED_DAMAGE_PROJECTILE, PROC_REF(apply_directional_armor))
 
 /datum/behavior_delegate/crusher_charger/proc/cancel_dir_lock()
 	SIGNAL_HANDLER
@@ -492,7 +492,7 @@
 		CrusherImpact()
 		var/datum/effect_system/spark_spread/sparks = new
 		update_health(charger_ability.momentum * 15)
-		if(operator)	operator.emote("pain")
+		if(operator) operator.emote("pain")
 		sparks.set_up(1, 1, loc)
 		sparks.start()
 		xeno.visible_message(

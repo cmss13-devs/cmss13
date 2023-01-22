@@ -146,11 +146,9 @@
 		var/mob/living/carbon/Xenomorph/target = L
 		to_chat(target, SPAN_XENODANGER("You are shaken and slowed by the sudden impact!"))
 		target.apply_effect(0.5, WEAKEN)
-		target.apply_effect(2, SUPERSLOW)
-		target.apply_effect(5, SLOW)
+		target.apply_effect(3, SLOW)
 	else
 		if(!isYautja(L)) //Not predators.
-			L.apply_effect(1, SUPERSLOW)
 			L.apply_effect(2, SLOW)
 			to_chat(L, SPAN_HIGHDANGER("The impact knocks you off-balance!"))
 		L.apply_stamina_damage(P.ammo.damage, P.def_zone, ARMOR_BULLET)

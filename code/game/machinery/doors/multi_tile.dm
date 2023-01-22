@@ -107,6 +107,13 @@
 		SSclues.create_print(get_turf(M), M, "The fingerprint contains bits of wire and metal specks.")
 	..()
 
+/obj/structure/machinery/door/airlock/multi_tile/almayer/elevator_3wide
+	name = "\improper Freight Elevator Hatch"
+	icon = 'icons/obj/structures/doors/3x1_elevator.dmi'
+	icon_state = "door_closed"
+	width = 3
+	openspeed = 5
+
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic
 	name = "\improper Airlock"
 	icon = 'icons/obj/structures/doors/2x1generic.dmi'
@@ -338,13 +345,6 @@
 	name = "\improper Dormitory Elevator Hatch"
 
 /obj/structure/machinery/door/airlock/multi_tile/elevator/freight
-	name = "\improper Freight Elevator Hatch"
-
-/obj/structure/machinery/door/airlock/multi_tile/elevator_3wide
-	icon = 'icons/obj/structures/doors/3x1_elevator.dmi'
-	icon_state = "door_closed"
-	width = 3
-	openspeed = 5
 	name = "\improper Freight Elevator Hatch"
 
 /obj/structure/machinery/door/airlock/multi_tile/elevator/access

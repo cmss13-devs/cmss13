@@ -67,6 +67,8 @@ var/datum/controller/supply/supply_controller = new()
 	icon_state = "0_0"
 	hull = TRUE
 	var/animation_offset = 0 //map_edited, for the animation yo!
+	layer = UNDER_TURF_LAYER - 0.1
+	plane = FLOOR_PLANE
 
 /turf/closed/wall/supply_shaft/proc/set_movement_dir(movement_dir)
 	if(movement_dir  != null)
@@ -762,7 +764,7 @@ var/datum/controller/supply/supply_controller = new()
 		if (shuttle)
 			if(supply_controller.multi_fakezlevel_elevator)
 				var/datum/shuttle/ferry/supply/multi/m_shuttle = supply_controller.shuttle
-				dat += "\nTarget level: <A href='?src=\ref[src];target=1'>[m_shuttle.target_zlevel]</A>"
+				dat += "\nTarget: <A href='?src=\ref[src];target=1'>[m_shuttle.choices_to_number(m_shuttle.target_zlevel)]</A>"
 				dat += "<BR>\n<BR>"
 				dat += "Platform position: "
 				if (shuttle.at_station())
@@ -772,8 +774,8 @@ var/datum/controller/supply/supply_controller = new()
 						switch(shuttle.docking_controller.get_docking_status())
 							if ("docked") dat += "Raised to level: [m_shuttle.fake_zlevel]<BR>"
 							if ("undocked") dat += "Lowered<BR>"
-							if ("docking") dat += "Raising to level [m_shuttle.fake_zlevel] [shuttle.can_force()? SPAN_WARNING("<A href='?src=\ref[src];force_send=1'>Force</A>") : ""]<BR>"
-							if ("undocking") dat += "Lowering [shuttle.can_force()? SPAN_WARNING("<A href='?src=\ref[src];force_send=1'>Force</A>") : ""]<BR>"
+							if ("docking") dat += "Moving to level [m_shuttle.fake_zlevel] [shuttle.can_force()? SPAN_WARNING("<A href='?src=\ref[src];force_send=1'>Force</A>") : ""]<BR>"
+							if ("undocking") dat += "Moving [shuttle.can_force()? SPAN_WARNING("<A href='?src=\ref[src];force_send=1'>Force</A>") : ""]<BR>"
 					else
 						dat += "Raised to level: [m_shuttle.fake_zlevel]<BR>"
 					if (shuttle.can_launch())
@@ -784,7 +786,6 @@ var/datum/controller/supply/supply_controller = new()
 						dat += "*ASRS is busy*"
 					dat += "<BR>\n<BR>"
 				else
-					dat += "\nPlatform position: "
 					if (shuttle.has_arrive_time())
 						dat += "Moving<BR>"
 					dat += "Lowered<BR>"
@@ -852,7 +853,11 @@ var/datum/controller/supply/supply_controller = new()
 
 	if(href_list["target"])
 		var/datum/shuttle/ferry/supply/multi/m_shuttle = supply_controller.shuttle
-		m_shuttle.target_zlevel = text2num(strip_html(input(usr,"Desired Level?:","Among us","") as null|text))
+		var/list/choices = list("ASRS" = 0,"Deck 1" = 1,"Deck 2" = 2,"Deck 3" = 3)
+		if(m_shuttle.moving_status == SHUTTLE_IDLE)
+			m_shuttle.target_zlevel =  m_shuttle.choices_to_number(tgui_input_list(usr, "Where should the shuttle move next?", "Pick Target", choices))
+		else
+			to_chat(usr, SPAN_WARNING("The Elevator cannot change targets while moving. Please wait."))
 
 	//Calling the shuttle
 	if(supply_controller.multi_fakezlevel_elevator)
@@ -868,10 +873,10 @@ var/datum/controller/supply/supply_controller = new()
 				temp = "Platform is already at target location.<BR><BR><A href='?src=\ref[src];mainmenu=1'>OK</A>"
 			else if(m_shuttle.target_zlevel > m_shuttle.fake_zlevel)
 				shuttle.launch(src)
-				temp = "Raising platform. \[[SPAN_WARNING("<A href='?src=\ref[src];force_send=1'>Force</A>")]\]<BR><BR><A href='?src=\ref[src];mainmenu=1'>OK</A>"
+				temp = "Lowering platform. \[[SPAN_WARNING("<A href='?src=\ref[src];force_send=1'>Force</A>")]\]<BR><BR><A href='?src=\ref[src];mainmenu=1'>OK</A>"
 			else
 				shuttle.launch(src)
-				temp = "Lowering platform. \[[SPAN_WARNING("<A href='?src=\ref[src];force_send=1'>Force</A>")]\]<BR><BR><A href='?src=\ref[src];mainmenu=1'>OK</A>"
+				temp = "Raising  platform. \[[SPAN_WARNING("<A href='?src=\ref[src];force_send=1'>Force</A>")]\]<BR><BR><A href='?src=\ref[src];mainmenu=1'>OK</A>"
 	else
 		if(href_list["send"])
 			if(shuttle.at_station())

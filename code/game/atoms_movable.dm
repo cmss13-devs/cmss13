@@ -208,6 +208,8 @@
 	src.clone = C
 
 /atom/movable/proc/update_clone()
+	if(!clone)
+		return
 	///---Var-Copy---////
 	clone.forceMove(locate(x + clone.proj_x, y + clone.proj_y, z))
 	//Translate clone position by projection factor

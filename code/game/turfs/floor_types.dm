@@ -265,15 +265,36 @@
 /turf/open/floor/almayer/empty/multi_elevator/enter_depths(atom/movable/AM)
 	if(AM.throwing == 0 && istype(get_turf(AM), type))
 		//This is assuming the shaft is alined across fake_zlevels -- if you're getting moved to random locations blame the mappers
+		//also that the fake zlevels of the shipmap are 101 tiles apart
 		var/turf/fallonto_turf = get_turf(src)
 		var/area/my_area = get_area(fallonto_turf)
-		if(my_area.fake_zlevel != 3)
-			for(var/i=0; i<101; i++)
-				fallonto_turf = get_step(fallonto_turf, WEST)
+		if(supply_controller.shuttle && istype(supply_controller.shuttle, /datum/shuttle/ferry/supply/multi))
+			var/datum/shuttle/ferry/supply/multi/m_shuttle = supply_controller.shuttle
+			if(m_shuttle.moving_status == SHUTTLE_INTRANSIT)
+				for(var/turf/T in m_shuttle.get_location_area())
+					fallonto_turf = T
+					AM.plane = FLOOR_PLANE
+					AM.layer = UNDER_TURF_LAYER
+					break
+			else if(my_area.fake_zlevel + 1 <= length(GLOB.supply_elevator_turfs))
+				for(var/i=0; i<101; i++)
+					fallonto_turf = get_step(fallonto_turf, WEST)
+			var/obj/effect/elevator/animation_overlay/falling_animation = new/obj/effect/elevator/animation_overlay()
+			vis_contents += falling_animation
+			falling_animation.vis_contents += AM
+			AM.plane = FLOOR_PLANE
+			AM.layer = UNDER_TURF_LAYER
+			animate(falling_animation, pixel_y = -160, alpha = 120, time = 0.5 SECONDS)
+			spawn(1 SECONDS)
+				vis_contents -= falling_animation
+				qdel(falling_animation)
+				if(m_shuttle.moving_status != SHUTTLE_INTRANSIT)
+					AM.plane = initial(AM.plane)
+					AM.layer = initial(AM.layer)
+			AM.forceMove(fallonto_turf)
+
 		else
-			fallonto_turf = ..(AM)
-			return
-		AM.forceMove(fallonto_turf)
+			..(AM)
 
 		if(ishuman(AM))
 			var/mob/living/carbon/human/human_who_fell = AM
@@ -286,9 +307,9 @@
 			to_chat(human_who_fell, SPAN_WARNING("You fall into empty space!"))
 
 		if(ismob(AM))
-			playsound(AM, 'sound/effects/body_fall.ogg', 50, 1)
+			playsound(get_turf(AM), 'sound/effects/body_fall.ogg', 50, 1)
 		else
-			playsound(AM, 'sound/effects/shaft_fall.ogg',50, 1)
+			playsound(get_turf(AM), 'sound/effects/shaft_fall.ogg',50, 1)
 	else
 		for(var/obj/effect/decal/cleanable/C in contents) //for the off chance of someone bleeding mid=flight
 			qdel(C)

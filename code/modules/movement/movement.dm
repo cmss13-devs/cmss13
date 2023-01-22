@@ -103,7 +103,6 @@
 /atom/movable/proc/moveToNullspace()
 	return doMove(null)
 
-
 /atom/movable/proc/doMove(atom/destination)
 	. = FALSE
 	if(destination)

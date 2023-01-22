@@ -14,6 +14,9 @@
 /obj/structure/bed/chair/Initialize()
 	. = ..()
 	handle_rotation()
+	update_overlays()
+	for(var/i=1;i<=stacked_size;i++)
+		contents += new/obj/item/weapon/melee/twohanded/folded_metal_chair
 
 /obj/structure/bed/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()

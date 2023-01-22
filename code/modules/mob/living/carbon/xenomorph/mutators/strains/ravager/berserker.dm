@@ -77,6 +77,9 @@
 		bound_xeno.recalculate_armor()
 		bound_xeno.recalculate_speed()
 		last_slash_time = world.time
+		var/datum/action/xeno_action/activable/eviscerate/eviscerate_action = get_xeno_action_by_type(bound_xeno, /datum/action/xeno_action/activable/eviscerate)
+		if(eviscerate_action)
+			eviscerate_action.rage = rage
 
 		if (rage == max_rage)
 			bound_xeno.add_filter("berserker_rage", 1, list("type" = "outline", "color" = "#000000ff", "size" = 1))
@@ -95,21 +98,73 @@
 	if (((last_slash_time + rage_decay_time) < world.time) && !(rage <= 0))
 		decrement_rage()
 
+/datum/behavior_delegate/ravager_berserker/melee_attack_modify_damage(original_damage, mob/living/carbon/A)
+	if (!isXenoOrHuman(A))
+		return original_damage
+
+	if (next_slash_buffed)
+		to_chat(bound_xeno, SPAN_XENOHIGHDANGER("You significantly strengthen your attack, slowing [A]!"))
+		to_chat(A, SPAN_XENOHIGHDANGER("You feel a sharp pain as [bound_xeno] slashes you, slowing you down!"))
+		A.apply_effect(get_xeno_stun_duration(A, slash_slow_duration), SLOW)
+		next_slash_buffed = FALSE
+
+	return original_damage
+
+/datum/behavior_delegate/ravager_berserker/pre_ability_cast(datum/action/xeno_action/ability)
+	. = ..()
+	//If we have any amount of rage, clothesline flings further and heals more
+	if(istype(ability, /datum/action/xeno_action/activable/clothesline))
+		if(!rage)
+			return
+		var/datum/action/xeno_action/activable/clothesline/clothesline_action = ability
+		clothesline_action.fling_dist += clothesline_action.additional_fling_enraged
+		clothesline_action.heal += clothesline_action.additional_healing_enraged
+		clothesline_action.debilitating = TRUE
+
+/datum/behavior_delegate/ravager_berserker/post_ability_cast(datum/action/xeno_action/ability, result)
+	. = ..()
+	switch(ability.type)
+		if(/datum/action/xeno_action/onclick/apprehend)
+			var/datum/action/xeno_action/onclick/apprehend/apprehend_action = ability
+			next_slash_buffed = TRUE
+			to_chat(bound_xeno, SPAN_XENODANGER("Your next slash will slow!"))
+			addtimer(CALLBACK(src, PROC_REF(unbuff_slash)), apprehend_action.buff_duration)
+		if(/datum/action/xeno_action/activable/clothesline)
+			var/datum/action/xeno_action/activable/clothesline/clothesline_action = ability
+			//result here represents the amount healed, any amount means the ability hit something and we should therefore decrement rage
+			if(result)
+				decrement_rage()
+			clothesline_action.fling_dist = initial(clothesline_action.fling_dist)
+			clothesline_action.heal = initial(clothesline_action.heal)
+			clothesline_action.debilitating = initial(clothesline_action.debilitating)
+		if(/datum/action/xeno_action/activable/eviscerate)
+			//Ability didn't work
+			if(!result)
+				return
+			decrement_rage(rage)
+
+
+/datum/behavior_delegate/ravager_berserker/proc/unbuff_slash()
+	// In case slash has already landed
+	if(!next_slash_buffed)
+		return
+	next_slash_buffed = FALSE
+	to_chat(bound_xeno, SPAN_XENODANGER("You have waited too long, your slash will no longer slow enemies!"))
+
 // Handles internal state from decrementing rage
 /datum/behavior_delegate/ravager_berserker/proc/decrement_rage(amount = 1)
 	if (rage_lock_start_time)
 		return
-	var/real_amount = amount
-	if (amount > rage)
-		real_amount = rage
-
-	rage -= real_amount
-	bound_xeno.armor_modifier -= armor_buff_per_rage*real_amount
-	bound_xeno.attack_speed_modifier += attack_delay_buff_per_rage*real_amount
-	bound_xeno.speed_modifier += movement_speed_buff_per_rage*real_amount
+	rage = max(0, rage - amount)
+	bound_xeno.armor_modifier -= armor_buff_per_rage * rage
+	bound_xeno.attack_speed_modifier += attack_delay_buff_per_rage * rage
+	bound_xeno.speed_modifier += movement_speed_buff_per_rage * rage
 	bound_xeno.recalculate_armor()
 	bound_xeno.recalculate_speed()
-	return
+	//Eviscerate has to be kept up-to-date because it simply wouldn't work without the delegate
+	var/datum/action/xeno_action/activable/eviscerate/eviscerate_action = get_xeno_action_by_type(bound_xeno, /datum/action/xeno_action/activable/eviscerate)
+	if(eviscerate_action)
+		eviscerate_action.rage = rage
 
 /datum/behavior_delegate/ravager_berserker/proc/rage_lock()
 	rage = max_rage
@@ -139,15 +194,3 @@
 	bound_xeno.remove_filter("berserker_lockdown")
 	rage_cooldown_start_time = 0
 	return
-
-/datum/behavior_delegate/ravager_berserker/melee_attack_modify_damage(original_damage, mob/living/carbon/A)
-	if (!isXenoOrHuman(A))
-		return original_damage
-
-	if (next_slash_buffed)
-		to_chat(bound_xeno, SPAN_XENOHIGHDANGER("You significantly strengthen your attack, slowing [A]!"))
-		to_chat(A, SPAN_XENOHIGHDANGER("You feel a sharp pain as [bound_xeno] slashes you, slowing you down!"))
-		A.apply_effect(get_xeno_stun_duration(A, slash_slow_duration), SLOW)
-		next_slash_buffed = FALSE
-
-	return original_damage

@@ -233,14 +233,6 @@
 	if (!check_and_use_plasma_owner())
 		return
 
-	var/datum/behavior_delegate/ravager_berserker/BD = xeno_owner.behavior_delegate
-	if (istype(BD))
-		BD.next_slash_buffed = TRUE
-
-	to_chat(xeno_owner, SPAN_XENODANGER("Your next slash will slow!"))
-
-	addtimer(CALLBACK(src, PROC_REF(unbuff_slash)), buff_duration)
-
 	xeno_owner.speed_modifier -= speed_buff
 	xeno_owner.recalculate_speed()
 
@@ -257,21 +249,7 @@
 		xeno_owner.recalculate_speed()
 		to_chat(xeno_owner, SPAN_XENOHIGHDANGER("You feel your speed wane!"))
 
-/datum/action/xeno_action/onclick/apprehend/proc/unbuff_slash()
-	var/mob/living/carbon/Xenomorph/xeno_owner = owner
-	if (!istype(xeno_owner))
-		return
-	var/datum/behavior_delegate/ravager_berserker/BD = xeno_owner.behavior_delegate
-	if (istype(BD))
-		// In case slash has already landed
-		if (!BD.next_slash_buffed)
-			return
-		BD.next_slash_buffed = FALSE
-
-	to_chat(xeno_owner, SPAN_XENODANGER("You have waited too long, your slash will no longer slow enemies!"))
-
-
-/datum/action/xeno_action/activable/clothesline/use_ability(atom/A)
+/datum/action/xeno_action/activable/clothesline/use_ability(atom/target)
 	var/mob/living/carbon/Xenomorph/xeno_owner = owner
 
 	if (!action_cooldown_check())
@@ -280,69 +258,61 @@
 	if (!xeno_owner.check_state())
 		return
 
-	if (!isXenoOrHuman(A) || xeno_owner.can_not_harm(A))
+	if (!isXenoOrHuman(target) || xeno_owner.can_not_harm(target))
 		to_chat(xeno_owner, SPAN_XENOWARNING("You must target a hostile!"))
 		return
 
-	if (!xeno_owner.Adjacent(A))
+	if (!xeno_owner.Adjacent(target))
 		to_chat(xeno_owner, SPAN_XENOWARNING("You must be adjacent to your target!"))
 		return
 
-	var/mob/living/carbon/H = A
-	var/heal_amount = base_heal
-	var/fling_distance = fling_dist_base
-	var/debilitate = TRUE // Do we apply neg. status effects to the target?
-
-	if (H.mob_size >= MOB_SIZE_BIG)
+	var/mob/living/carbon/carbon_target = target
+	if (carbon_target.mob_size >= MOB_SIZE_BIG)
 		to_chat(xeno_owner, SPAN_XENOWARNING("This creature is too massive to target"))
 		return
 
-	if (H.stat == DEAD)
+	if (carbon_target.stat == DEAD)
 		return
 
-	// All strain-specific behavior
-	if (xeno_owner.mutation_type == RAVAGER_BERSERKER)
-		var/datum/behavior_delegate/ravager_berserker/BD = xeno_owner.behavior_delegate
-
-		if (BD.rage >= 1)
-			BD.decrement_rage()
-			heal_amount += additional_healing_enraged
-		else
-			to_chat(xeno_owner, SPAN_XENOWARNING("Your rejuvenation was weaker without rage!"))
-			debilitate = FALSE
-			fling_distance--
+	if(heal == initial(heal))
+		to_chat(xeno_owner, SPAN_XENOWARNING("Your rejuvenation was weaker without rage!"))
 
 	// Damage
-	var/obj/limb/head/head = H.get_limb("head")
-	if(ishuman(H) && head)
-		H.apply_armoured_damage(damage, ARMOR_MELEE, BRUTE, "head")
+	var/obj/limb/head/head = carbon_target.get_limb("head")
+	if(ishuman(carbon_target) && head)
+		carbon_target.apply_armoured_damage(damage, ARMOR_MELEE, BRUTE, "head")
 	else
-		H.apply_armoured_damage(get_xeno_damage_slash(H, damage), ARMOR_MELEE, BRUTE) // just for consistency
+		carbon_target.apply_armoured_damage(get_xeno_damage_slash(carbon_target, damage), ARMOR_MELEE, BRUTE) // just for consistency
 
 	// Heal
 	if(!xeno_owner.on_fire)
-		xeno_owner.gain_health(heal_amount)
+		xeno_owner.gain_health(heal)
 
 	// Fling
-	var/facing = get_dir(xeno_owner, H)
+	var/facing = get_dir(xeno_owner, carbon_target)
 	var/turf/T = xeno_owner.loc
 	var/turf/temp = xeno_owner.loc
 
-	for (var/x in 0 to fling_distance-1)
+	for (var/x in 0 to fling_dist-1)
 		temp = get_step(T, facing)
 		if (!temp)
 			break
 		T = temp
 
-	H.throw_atom(T, fling_distance, SPEED_VERY_FAST, xeno_owner, TRUE)
+	carbon_target.throw_atom(T, fling_dist, SPEED_VERY_FAST, xeno_owner, TRUE)
 
 	// Negative stat effects
-	if (debilitate)
-		H.dazed += daze_amount
+	if (debilitating)
+		carbon_target.dazed += daze_amount
 
 	apply_cooldown()
 	..()
-	return
+	return heal
+
+/datum/action/xeno_action/activable/eviscerate/can_use_action()
+	. = ..()
+	if(!rage)
+		return FALSE
 
 /datum/action/xeno_action/activable/eviscerate/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/xeno = owner
@@ -360,25 +330,18 @@
 	var/max_lifesteal = 250
 	var/lifesteal_range =  1
 
-	if (xeno.mutation_type == RAVAGER_BERSERKER)
-		var/datum/behavior_delegate/ravager_berserker/behavior = xeno.behavior_delegate
-		if (behavior.rage == 0)
-			to_chat(xeno, SPAN_XENODANGER("You cannot eviscerate when you have 0 rage!"))
-			return
-		damage = damage_at_rage_levels[Clamp(behavior.rage, 1, behavior.max_rage)]
-		range = range_at_rage_levels[Clamp(behavior.rage, 1, behavior.max_rage)]
-		windup_reduction = windup_reduction_at_rage_levels[Clamp(behavior.rage, 1, behavior.max_rage)]
-		behavior.decrement_rage(behavior.rage)
-
-		apply_cooldown()
+	damage = damage_at_rage_levels[Clamp(rage, 1, damage_at_rage_levels.len+1)]
+	range = range_at_rage_levels[Clamp(rage, 1, damage_at_rage_levels.len+1)]
+	windup_reduction = windup_reduction_at_rage_levels[Clamp(, 1, damage_at_rage_levels.len+1)]
+	apply_cooldown()
 
 	if (range > 1)
 		xeno.visible_message(SPAN_XENOHIGHDANGER("[xeno] begins digging in for a massive strike!"), SPAN_XENOHIGHDANGER("You begin digging in for a massive strike!"))
 	else
 		xeno.visible_message(SPAN_XENODANGER("[xeno] begins digging in for a strike!"), SPAN_XENOHIGHDANGER("You begin digging in for a strike!"))
 
-	xeno.frozen = 1
-	xeno.anchored = 1
+	xeno.frozen = TRUE
+	xeno.anchored = TRUE
 	xeno.update_canmove()
 
 	if (do_after(xeno, (activation_delay - windup_reduction), INTERRUPT_ALL | BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
@@ -398,7 +361,7 @@
 			if (range > 1)
 				xeno.visible_message(SPAN_XENOHIGHDANGER("[xeno] rips open the guts of [human]!"), SPAN_XENOHIGHDANGER("You rip open the guts of [human]!"))
 				human.spawn_gibs()
-				playsound(get_turf(human), 'sound/effects/gibbed.ogg', 30, 1)
+				playsound(get_turf(human), 'sound/effects/gibbed.ogg', 30, TRUE)
 				human.apply_effect(get_xeno_stun_duration(human, 1), WEAKEN)
 			else
 				xeno.visible_message(SPAN_XENODANGER("[xeno] claws [human]!"), SPAN_XENODANGER("You claw [human]!"))
@@ -418,16 +381,16 @@
 
 		valid_count++
 
+	var/healed_amount
 	// This is the heal
 	if(!xeno.on_fire)
-		xeno.gain_health(Clamp(valid_count * lifesteal_per_marine, 0, max_lifesteal))
+		healed_amount = xeno.gain_health(Clamp(valid_count * lifesteal_per_marine, 0, max_lifesteal))
 
-	xeno.frozen = 0
-	xeno.anchored = 0
+	xeno.frozen = FALSE
+	xeno.anchored = FALSE
 	xeno.update_canmove()
-
 	..()
-	return
+	return healed_amount
 
 
 ////////// HEDGEHOG POWERS

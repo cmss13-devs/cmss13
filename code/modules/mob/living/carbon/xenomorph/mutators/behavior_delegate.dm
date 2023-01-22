@@ -12,7 +12,10 @@
 //
 // This datum is meant to be M.O.D.U.L.A.R, you should NOT assume your delegate will be held by any specific xenomoprh.
 // This also means xenomorphs should NOT assume they have any delegate in particular, if your strain/caste needs to call a specific proc from their
-// specific delegate, reconsider its necessity, this is for shared behaviors, not a fancy proc holder.
+// specific delegate, reconsider its necessity, this is for shared behaviors, not a proc holder for snowflake procs.
+//
+// However this doesn't mean the delegate shouldn't have special interactions with specific actions (ie. the ones from your strain/caste), that's perfectly fine,
+// but remember that the delegate is the one to dictate behaviors, not the other way around, your actions shouldn't make calls to the delegate
 //
 // A brief flowchart
 //   xeno New() -OR- strain applicator
@@ -129,7 +132,8 @@
 	return
 /**
  * Called just before an ability is used with every argument of said ability
- * ability : the ability that is about to be used
+ * Arguments :
+ * * ability - The ability that is about to be used.
  */
 /datum/behavior_delegate/proc/pre_ability_cast(datum/action/xeno_action/ability)
 	SHOULD_CALL_PARENT(TRUE) //So they don't forget this is a signal handler and should not sleep
@@ -138,8 +142,10 @@
 
 /**
  * Called just after an ability is used
- * ability : the ability that was just used
- * result : value returned by the ability
+ *
+ * Arguments:
+ * * ability - The ability that was just used.
+ * * result - Value returned by the ability.
  */
 /datum/behavior_delegate/proc/post_ability_cast(datum/action/xeno_action/ability, result)
 	SHOULD_CALL_PARENT(TRUE) //So they don't forget this is a signal handler and should not sleep

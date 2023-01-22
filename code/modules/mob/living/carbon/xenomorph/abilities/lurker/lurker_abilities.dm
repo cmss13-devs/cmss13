@@ -23,7 +23,7 @@
 		return
 
 	for(var/mob/living/carbon/carbon_hit in get_turf(xeno_owner))
-		if(!carbon_hit.ally_of_hivenumber(xeno_owner.hivenumber))
+		if(!xeno_owner.can_not_harm(carbon_hit))
 			invisibility_action.invisibility_off()
 			return
 

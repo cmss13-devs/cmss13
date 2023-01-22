@@ -1,9 +1,3 @@
-#define ALMAYER_DROPSHIP_LZ1 "almayer-hangar-lz1"
-#define ALMAYER_DROPSHIP_LZ2 "almayer-hangar-lz2"
-
-#define LV_624_LZ1 "lv624-lz1"
-#define LV_624_LZ2 "lv624-lz2"
-
 /obj/docking_port/mobile/marine_dropship
 	width = 11
 	height = 21
@@ -96,6 +90,7 @@
 	dir = NORTH
 	width = 11
 	height = 21
+	dwidth = 1
 	var/list/landing_lights = list()
 	var/auto_open = FALSE
 
@@ -139,14 +134,13 @@
 		var/obj/docking_port/mobile/marine_dropship/dropship = departing_shuttle
 		dropship.control_doors("force-lock-launch", "all", force=TRUE)
 
-/obj/docking_port/stationary/marine_dropship/lv642_lz1
-	name = "Nexus Landing Zone"
-	id = LV_624_LZ1
+/obj/docking_port/stationary/marine_dropship/lz1
+	name = "LZ1 Landing Zone"
+	id = DROPSHIP_LZ1
 
-/obj/docking_port/stationary/marine_dropship/lv642_lz2
-	name = "Robotics Landing Zone"
-	id = LV_624_LZ2
-
+/obj/docking_port/stationary/marine_dropship/lz2
+	name = "LZ2 Landing Zone"
+	id = DROPSHIP_LZ2
 /obj/docking_port/stationary/marine_dropship/almayer_hangar_1
 	name = "Almayer Hangar bay 1"
 	id = ALMAYER_DROPSHIP_LZ1
@@ -215,9 +209,9 @@
 		outer_target.y += (y_travel * 5)
 		var/turf/sploded = locate(outer_target.x + rand(-3, 3), outer_target.y, crash_site.z)
 
-		cell_explosion(sploded, 250, 20, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data) //Clears out walls
+		cell_explosion(sploded, 250, 20, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data("dropship crash")) //Clears out walls
 
-		INVOKE_ASYNC(GLOBAL_PROC, PROC_REF(flame_radius), cause_data, 6, sploded, 10, 5, FLAMESHAPE_DEFAULT, null)
+		INVOKE_ASYNC(GLOBAL_PROC, PROC_REF(flame_radius), create_cause_data("dropship crash"), 6, sploded, 10, 5, FLAMESHAPE_DEFAULT, null)
 		sleep(3)
 
 	qdel(outer_target)

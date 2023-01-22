@@ -14,6 +14,7 @@ interface DropshipNavigationProps extends NavigationProps {
   is_flight_optimised?: 0 | 1;
   flight_configuration: 'flyby' | 'ferry';
   can_fly_by?: 0 | 1;
+  can_set_automated?: 0 | 1;
 }
 
 const DropshipDoorControl = (_, context) => {
@@ -180,6 +181,10 @@ const FlybyControl = (props, context) => {
   );
 };
 
+const AutomatedControl = (props, context) => {
+  return <Section>f</Section>;
+};
+
 const RenderScreen = (props, context) => {
   const { data } = useBackend<DropshipNavigationProps>(context);
   return (
@@ -188,6 +193,7 @@ const RenderScreen = (props, context) => {
         (data.shuttle_mode === 'idle' || data.shuttle_mode === 'called') && (
           <FlybyControl />
         )}
+      {data.can_set_automated && <AutomatedControl />}
       {data.shuttle_mode === 'idle' &&
         data.flight_configuration !== 'flyby' && (
           <DropshipDestinationSelection />

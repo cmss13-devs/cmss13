@@ -6326,8 +6326,9 @@
 	},
 /area/lv624/ground/river/west_river)
 "aBo" = (
-/obj/docking_port/stationary/marine_dropship/lv642_lz2{
-	dwidth = 1
+/obj/docking_port/stationary/marine_dropship/lz2{
+	dwidth = 1;
+	name = "Robotics Landing Zone"
 	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz2)
@@ -9223,8 +9224,9 @@
 /turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/jungle/south_west_jungle)
 "aLz" = (
-/obj/docking_port/stationary/marine_dropship/lv642_lz1{
-	dwidth = 1
+/obj/docking_port/stationary/marine_dropship/lz1{
+	dwidth = 1;
+	name = "Nexus Landing Zone"
 	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz1)

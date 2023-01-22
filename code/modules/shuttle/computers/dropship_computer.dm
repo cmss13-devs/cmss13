@@ -193,6 +193,7 @@
 	.["is_disabled"] = disabled || shuttle.is_hijacked
 	.["locked_down"] = FALSE
 	.["can_fly_by"] = !is_remote
+	.["can_set_automated"] = is_remote
 	if(shuttle.destination)
 		.["target_destination"] = shuttle.in_flyby? "Flyby" : shuttle.destination.name
 	.["destinations"] = list()

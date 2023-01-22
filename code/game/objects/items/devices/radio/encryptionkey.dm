@@ -34,6 +34,12 @@
 	icon_state = "cap_key"
 	channels = list(RADIO_CHANNEL_ALMAYER = TRUE, RADIO_CHANNEL_COMMAND = TRUE, RADIO_CHANNEL_MP = TRUE, RADIO_CHANNEL_ENGI = TRUE, RADIO_CHANNEL_MEDSCI = TRUE, RADIO_CHANNEL_REQ = TRUE, SQUAD_MARINE_1 = TRUE, SQUAD_MARINE_2 = TRUE, SQUAD_MARINE_3 = TRUE, SQUAD_MARINE_4 = TRUE, SQUAD_MARINE_5 = TRUE, SQUAD_MARINE_CRYO = FALSE, RADIO_CHANNEL_JTAC = TRUE, RADIO_CHANNEL_INTEL = TRUE)
 
+/obj/item/device/encryptionkey/sentry_laptop
+	name = "Sentry Network Status Encryption Key"
+	desc = "Automated channel to broadcast sentry gun updates"
+	icon_state = "eng_key"
+	channels = list(RADIO_CHANNEL_SENTRY = TRUE)
+
 /obj/item/device/encryptionkey/engi
 	name = "Engineering Radio Encryption Key"
 	icon_state = "eng_key"
@@ -136,11 +142,6 @@
 	name = "\improper Intel Radio Encryption Key"
 	icon_state = "jtac_key"
 	channels = list(RADIO_CHANNEL_INTEL = TRUE)
-
-/obj/item/device/encryptionkey/cct
-	name = "\improper CCT Radio Encryption Key"
-	icon_state = "jtac_key"
-	channels = list(RADIO_CHANNEL_CCT = TRUE)
 
 /obj/item/device/encryptionkey/squadlead
 	name = "\improper Squad Leader Radio Encryption Key"

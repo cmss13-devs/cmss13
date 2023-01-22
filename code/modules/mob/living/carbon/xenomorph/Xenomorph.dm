@@ -70,8 +70,8 @@
 	var/datum/caste_datum/caste // Used to extract determine ALL Xeno stats.
 	var/speaking_key = "x"
 	var/speaking_noise = "alien_talk"
-	var/slash_verb = "slash"
-	var/slashes_verb = "slashes"
+	slash_verb = "slash"
+	slashes_verb = "slashes"
 	var/slash_sound = "alien_claw_flesh"
 	health = 5
 	maxHealth = 5
@@ -264,7 +264,6 @@
 	// an easily modularizable way. So, here you go.
 	//
 	//////////////////////////////////////////////////////////////////
-	var/weedwalking_activated = FALSE //Hivelord's weedwalking
 	var/tunnel = FALSE
 	var/stealth = FALSE // for check on lurker invisibility
 	var/burrow = FALSE

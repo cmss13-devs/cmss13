@@ -305,6 +305,11 @@
 			to_chat(user, SPAN_WARNING("You slice at the table, but only claw it up a little."))
 		return
 
+	if (istype(W, /obj/item/device/sentry_computer))
+		var/obj/item/device/sentry_computer/computer = W
+		computer.setup(src)
+		return
+
 	if(istype(W, /obj/item/explosive/grenade))
 		var/obj/item/explosive/grenade/detonating_grenade = W
 		if(detonating_grenade.active)

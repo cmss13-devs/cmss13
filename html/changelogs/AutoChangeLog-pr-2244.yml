@@ -1,4 +1,0 @@
-author: "Git-Nivrak"
-delete-after: True
-changes:
-  - balance: "Dancer doesn't lose its speed buff when slashing but also doesn't get the evasion buff."

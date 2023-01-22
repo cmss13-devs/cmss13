@@ -497,3 +497,9 @@
 2023-01-21:
   Segrain:
   - bugfix: Queen once again can actually launch a hijacked dropship on crash course.
+2023-01-22:
+  Git-Nivrak:
+  - balance: Dancer doesn't lose its speed buff when slashing but also doesn't get
+      the evasion buff.
+  thwomper, harryob:
+  - ui: your mouse cursor is now special when using the xm-88

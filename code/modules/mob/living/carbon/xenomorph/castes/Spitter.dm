@@ -55,11 +55,3 @@
 
 	icon_xeno = 'icons/mob/xenos/spitter.dmi'
 	icon_xenonid = 'icons/mob/xenonids/spitter.dmi'
-
-//Marker abilities
-
-/datum/action/xeno_action/onclick/toggle_long_range/marker
-	should_delay = TRUE
-	delay = 20
-	ability_primacy = XENO_PRIMARY_ACTION_4
-	movement_buffer = 7

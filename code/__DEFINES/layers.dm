@@ -132,6 +132,9 @@
 
 #define ABOVE_LIGHTING_PLANE 16
 
+#define CAMERA_STATIC_PLANE 200
+#define CAMERA_STATIC_LAYER 20
+
 /// blip from motion detector
 #define BELOW_FULLSCREEN_LAYER 16.9
 #define FULLSCREEN_LAYER 17

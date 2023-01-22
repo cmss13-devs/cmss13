@@ -76,7 +76,8 @@ var/list/ai_verbs_default = list(
 
 	var/mob/living/silicon/ai/parent = null
 
-	var/camera_light_on = 0 //Defines if the AI toggled the light on the camera it's looking through.
+	var/camera_light_on = FALSE
+	var/list/obj/structure/machinery/camera/lit_cameras = list()
 	var/datum/trackable/track = null
 	var/last_announcement = ""
 	var/datum/announcement/priority/announcement
@@ -310,7 +311,7 @@ var/list/ai_verbs_default = list(
 		unset_interaction()
 		src << browse(null, t1)
 	if (href_list["switchcamera"])
-		switchCamera(locate(href_list["switchcamera"])) in cameranet.cameras
+		switchCamera(locate(href_list["switchcamera"])) in GLOB.cameranet.cameras
 	if (href_list["showalerts"])
 		ai_alerts()
 	//Carn: holopad requests
@@ -417,7 +418,7 @@ var/list/ai_verbs_default = list(
 
 	var/mob/living/silicon/ai/U = usr
 
-	for (var/obj/structure/machinery/camera/C in cameranet.cameras)
+	for (var/obj/structure/machinery/camera/C in GLOB.cameranet.cameras)
 		if(!C.can_use())
 			continue
 
@@ -435,7 +436,7 @@ var/list/ai_verbs_default = list(
 	if(isnull(network))
 		network = old_network // If nothing is selected
 	else
-		for(var/obj/structure/machinery/camera/C in cameranet.cameras)
+		for(var/obj/structure/machinery/camera/C in GLOB.cameranet.cameras)
 			if(!C.can_use())
 				continue
 			if(network in C.network)
@@ -617,6 +618,30 @@ var/list/ai_verbs_default = list(
 		to_chat(src, SPAN_DANGER("System Error - Transceiver Disabled!"))
 		return 1
 	return 0
+
+/mob/living/silicon/ai/proc/light_cameras()
+	var/list/obj/structure/machinery/camera/add = list()
+	var/list/obj/structure/machinery/camera/remove = list()
+	var/list/obj/structure/machinery/camera/visible = list()
+	for(var/datum/camerachunk/CC in eyeobj.visibleCameraChunks)
+		for(var/obj/structure/machinery/camera/C in CC.cameras)
+			if(!C.can_use() || get_dist(C, eyeobj) > 7 || C.light_disabled)
+				continue
+			visible |= C
+
+	add = visible - lit_cameras
+	remove = lit_cameras - visible
+
+	for(var/obj/structure/machinery/camera/C in remove)
+		lit_cameras -= C //Removed from list before turning off the light so that it doesn't check the AI looking away.
+		C.SetLuminosity(0)
+
+	for(var/obj/structure/machinery/camera/C in add)
+		C.SetLuminosity(1)
+		lit_cameras |= C
+
+/mob/living/silicon/ai/proc/camera_visibility(mob/camera/eye/moved_eye)
+	GLOB.cameranet.visibility(moved_eye, client, use_static = moved_eye.use_static)
 
 #undef AI_CHECK_WIRELESS
 #undef AI_CHECK_RADIO

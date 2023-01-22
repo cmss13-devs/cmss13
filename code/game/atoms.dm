@@ -563,3 +563,7 @@ Parameters are passed from New.
 /atom/proc/get_orbit_size()
 	var/icon/I = icon(icon, icon_state, dir)
 	return (I.Width() + I.Height()) * 0.5
+
+//the sight changes to give to the mob whose perspective is set to that atom (e.g. A mob with nightvision loses its nightvision while looking through a normal camera)
+/atom/proc/update_remote_sight(mob/living/user)
+	return

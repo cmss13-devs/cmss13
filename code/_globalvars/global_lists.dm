@@ -1,6 +1,8 @@
 
 var/list/unansweredAhelps = list() //This feels inefficient, but I can't think of a better way. Stores the message indexed by CID
 
+GLOBAL_LIST_EMPTY(eyes)
+
 GLOBAL_LIST_EMPTY(WYFaxes) //Departmental faxes
 GLOBAL_LIST_EMPTY(USCMFaxes)
 GLOBAL_LIST_EMPTY(ProvostFaxes)
@@ -218,6 +220,8 @@ GLOBAL_LIST_INIT(edgeinfo_corner2, list(
 
 #define cached_key_number_decode(key_number_data) cached_params_decode(key_number_data, GLOBAL_PROC_REF(key_number_decode))
 #define cached_number_list_decode(number_list_data) cached_params_decode(number_list_data, GLOBAL_PROC_REF(number_list_decode))
+
+GLOBAL_LIST_INIT(ignored_atoms, typecacheof(list(/mob/dead, /obj/effect/landmark, /obj/docking_port, /obj/effect/particle_effect/sparks)))
 
 /proc/cached_params_decode(var/params_data, var/decode_proc)
 	. = paramslist_cache[params_data]

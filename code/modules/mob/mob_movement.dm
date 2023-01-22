@@ -134,6 +134,9 @@
 	if(!mob.canmove || mob.is_mob_incapacitated(TRUE) || (mob.lying && !mob.can_crawl))
 		return
 
+	if(mob.remote_control) //we're controlling something, our movement is relayed to it
+		return mob.remote_control.relaymove(mob, direct)
+
 	//Check if you are being grabbed and if so attemps to break it
 	if(mob.pulledby)
 		if(mob.is_mob_restrained(0))

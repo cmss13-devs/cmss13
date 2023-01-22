@@ -465,3 +465,20 @@
 	for(var/h in src.hud_possible)
 		src.clone.hud_list[h].icon_state = src.hud_list[h].icon_state
 
+/mob/living/proc/can_track(mob/living/user)
+	//basic fast checks go first. When overriding this proc, I recommend calling ..() at the end.
+	var/turf/T = get_turf(src)
+	if(!T)
+		return FALSE
+	if(is_admin_level(T.z))
+		return FALSE
+	if(user != null && src == user)
+		return FALSE
+	if(invisibility || alpha == 0)//cloaked
+		return FALSE
+
+	// Now, are they viewable by a camera? (This is last because it's the most intensive check)
+	if(!near_camera(src))
+		return FALSE
+
+	return TRUE

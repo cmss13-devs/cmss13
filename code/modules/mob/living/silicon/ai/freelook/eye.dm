@@ -30,7 +30,7 @@
 
 		T = get_turf(T)
 		forceMove(T)
-		cameranet.visibility(src)
+		GLOB.cameranet.visibility(src)
 		if(ai.client)
 			ai.client.eye = src
 		//Holopad
@@ -72,12 +72,6 @@
 		QDEL_NULL(eyeobj)
 	. = ..()
 
-/atom/proc/move_camera_by_click()
-	if(isRemoteControlling(usr))
-		var/mob/living/silicon/ai/AI = usr
-		if(AI.eyeobj && AI.client.eye == AI.eyeobj)
-			AI.eyeobj.setLoc(src)
-
 // This will move the AIEye. It will also cause lights near the eye to light up, if toggled.
 // This is handled in the proc below this one.
 
@@ -112,24 +106,6 @@
 	set name = "AI Core"
 
 	view_core()
-
-
-/mob/living/silicon/ai/proc/view_core()
-	camera = null
-	unset_interaction()
-
-	if(!src.eyeobj)
-		to_chat(src, "ERROR: Eyeobj not found. Creating new eye...")
-		src.eyeobj = new(src.loc)
-		src.eyeobj.ai = src
-		src.SetName(src.name)
-
-	if(client && client.eye)
-		client.eye = src
-	for(var/datum/camerachunk/c in eyeobj.visibleCameraChunks)
-		c.remove(eyeobj)
-	if(eyeobj)
-		src.eyeobj.setLoc(src)
 
 /mob/living/silicon/ai/proc/toggle_acceleration()
 	set category = "AI Commands"

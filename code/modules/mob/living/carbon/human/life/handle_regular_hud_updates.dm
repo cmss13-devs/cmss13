@@ -5,6 +5,8 @@
 	if(!client || QDELETED(client))
 		return FALSE
 
+	update_sight()
+
 	if(stat != DEAD) //the dead get zero fullscreens
 
 		if(stat == UNCONSCIOUS)

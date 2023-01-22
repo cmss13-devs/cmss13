@@ -1375,6 +1375,12 @@
 	lighting_alpha = default_lighting_alpha
 	sight &= ~(SEE_TURFS|SEE_MOBS|SEE_OBJS)
 	see_in_dark = species.darksight
+
+	if(client && client.eye != src)
+		var/atom/A = client.eye
+		if(A.update_remote_sight(src)) //returns 1 if we override all other sight updates.
+			return
+
 	if(glasses)
 		process_glasses(glasses)
 

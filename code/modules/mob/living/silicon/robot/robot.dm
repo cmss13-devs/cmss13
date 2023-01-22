@@ -867,7 +867,7 @@ var/list/robot_verbs_default = list(
 	//Disconnect it's camera so it's not so easily tracked.
 	if(src.camera)
 		src.camera.network = list()
-		cameranet.removeCamera(src.camera)
+		GLOB.cameranet.removeCamera(src.camera)
 
 
 /mob/living/silicon/robot/proc/ResetSecurityCodes()

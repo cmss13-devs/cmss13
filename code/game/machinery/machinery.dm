@@ -307,3 +307,6 @@ Class Procs:
 
 /obj/structure/machinery/ui_state(mob/user)
 	return GLOB.not_incapacitated_and_adjacent_state
+
+/obj/structure/machinery/proc/remove_eye_control(mob/living/user)
+	return

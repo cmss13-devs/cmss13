@@ -12,6 +12,8 @@
 	var/list/friends = list()
 	var/break_stuff_probability = 10
 	stop_automated_movement_when_pulled = 0
+	black_market_value = KILL_MENDOZA
+	dead_black_market_value = 25
 	var/destroy_surroundings = 1
 
 /mob/living/simple_animal/hostile/Destroy()

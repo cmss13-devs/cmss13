@@ -1160,41 +1160,14 @@ var/datum/controller/supply/supply_controller = new()
 
 /proc/get_black_market_value(var/atom/movable/movable_atom)
 	var/return_value
-	if(isobj(movable_atom))
-		var/obj/black_object = movable_atom
-		if(black_object.black_market_value)
-			if(istype(black_object, /obj/item/stack))
-				var/obj/item/stack/black_stack = black_object
-				return_value += (black_stack.black_market_value * black_stack.amount)
-			else
-				return_value += black_object.black_market_value
-	else if(isliving(movable_atom))
-		var/mob/black_mob = movable_atom
-		var/result = handle_special_mob_insert(black_mob)
-		if(result)
-			return_value += result
+	if(istype(movable_atom, /obj/item/stack))
+		var/obj/item/stack/black_stack = movable_atom
+		return_value += (black_stack.black_market_value * black_stack.amount)
+	else
+		return_value = movable_atom.black_market_value
 
 	// so they cant sell the same thing over and over and over
 	return_value = POSITIVE(return_value - supply_controller.black_market_sold_items[movable_atom.type] * 0.5)
-	return return_value
-
-/proc/handle_special_mob_insert(var/mob/living/black_mob)
-	var/return_value
-	if(isanimal(black_mob))
-		return_value = 25 // no death check - he can sell the hide or something i guess.
-	if(iscat(black_mob) || iscorgi(black_mob) || iscrab(black_mob))
-		var/mob/living/hit_pet = black_mob
-		if(hit_pet.stat != DEAD)
-			return_value = 50 //mendoza likes pets
-		else
-			return_value = 0
-	if(isanimalhostile(black_mob) || isXeno(black_mob) && !isanimalretaliate(black_mob))
-		var/mob/living/hit_hostile = black_mob
-		if(hit_hostile.stat != DEAD)
-			return_value = KILL_MENDOZA
-		else
-			return_value = 25
-
 	return return_value
 
 /datum/controller/supply/proc/kill_mendoza()

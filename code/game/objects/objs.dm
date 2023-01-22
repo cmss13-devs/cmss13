@@ -34,8 +34,6 @@
 	/// set when a player uses a pen on a renamable object
 	var/renamedByPlayer = FALSE
 
-	/// How much this item is worth when lowered into the ASRS pit while the black market is unlocked.
-	var/black_market_value = 0
 
 /obj/Initialize(mapload, ...)
 	. = ..()

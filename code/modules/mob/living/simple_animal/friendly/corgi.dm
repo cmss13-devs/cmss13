@@ -19,6 +19,8 @@
 	response_harm   = "kicks the"
 	see_in_dark = 5
 	mob_size = MOB_SIZE_SMALL
+	black_market_value = 50
+	dead_black_market_value = 0
 	var/obj/item/inventory_head
 	var/obj/item/inventory_back
 	var/facehugger

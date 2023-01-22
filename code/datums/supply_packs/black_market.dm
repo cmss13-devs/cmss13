@@ -16,6 +16,12 @@ black market prices are NOT based on real or in-universe costs. they are based o
 
 */
 
+// I don't think there's any better place for this to go.
+
+/atom/movable
+	/// How much this mob|object is worth when lowered into the ASRS pit while the black market is unlocked.
+	var/black_market_value = 0
+
 /datum/supply_packs/contraband//base
 	name = "contraband crate"
 	contains = null
@@ -1095,10 +1101,8 @@ Things that don't fit anywhere else. If they're meant for shipside use, they pro
 
 /datum/supply_packs/contraband/miscellaneous/clf_supplies
 	name = "unmarked CLF supply crate"
-	dollar_cost = 50
-	contains = list(
-		/obj/vehicle/train/cargo/engine
-	)
+	dollar_cost = 40
+	contains = list()
 	containertype = /obj/structure/largecrate/black_market/clf_supplies
 
 /obj/structure/largecrate/black_market/clf_supplies

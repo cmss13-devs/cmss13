@@ -151,7 +151,7 @@
 /datum/equipment_preset/survivor/forecon/smartgunner
 	name = "Survivor - USCM Reconnaissance Smartgunner"
 	assignment = "Reconnaissance Smartgunner"
-	skills = 	/datum/skills/military/survivor/forecon_smartgunner
+	skills = /datum/skills/military/survivor/forecon_smartgunner
 
 /datum/equipment_preset/survivor/forecon/smartgunner/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/smartgun_powerpack(H), WEAR_R_HAND)
@@ -168,7 +168,7 @@
 
 /datum/equipment_preset/survivor/forecon/grenadier
 	name = "Survivor - USCM Reconnaissance Grenadier"
-	assignment = "Reconnaissance Genadier"
+	assignment = "Reconnaissance Grenadier"
 	skills = /datum/skills/military/survivor/forecon_grenadier
 
 /datum/equipment_preset/survivor/forecon/grenadier/load_gear(mob/living/carbon/human/H)

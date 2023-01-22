@@ -1,13 +1,13 @@
 /* Kitchen tools
  * Contains:
- *		Utensils
- *		Spoons
- *		Forks
- *		Knives
- *		Kitchen knives
- *		Butcher's cleaver
- *		Rolling Pins
- *		Trays
+ * Utensils
+ * Spoons
+ * Forks
+ * Knives
+ * Kitchen knives
+ * Butcher's cleaver
+ * Rolling Pins
+ * Trays
  */
 
 /obj/item/tool/kitchen
@@ -26,7 +26,8 @@
 
 	attack_verb = list("attacked", "stabbed", "poked")
 	sharp = 0
-	var/loaded      //Descriptive string for currently loaded food object.
+	/// Descriptive string for currently loaded food object.
+	var/loaded
 
 /obj/item/tool/kitchen/utensil/Initialize()
 	. = ..()
@@ -209,7 +210,8 @@
 	w_class = SIZE_MEDIUM
 	flags_atom = FPRINT|CONDUCT
 	matter = list("metal" = 3000)
-	var/cooldown = 0	//shield bash cooldown. based on world.time
+	/// shield bash cooldown. based on world.time
+	var/cooldown = 0
 
 /obj/item/tool/kitchen/tray/attack(mob/living/carbon/M, mob/living/carbon/user)
 	to_chat(user, SPAN_WARNING("You accidentally slam yourself with the [src]!"))

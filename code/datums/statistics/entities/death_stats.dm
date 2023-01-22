@@ -30,37 +30,37 @@
 	var/z
 
 /datum/entity_meta/statistic_death
-    entity_type = /datum/entity/statistic/death
-    table_name = "log_player_statistic_death"
-    field_types = list(
-        "player_id" = DB_FIELDTYPE_BIGINT,
-        "round_id" = DB_FIELDTYPE_BIGINT,
+	entity_type = /datum/entity/statistic/death
+	table_name = "log_player_statistic_death"
+	field_types = list(
+		"player_id" = DB_FIELDTYPE_BIGINT,
+		"round_id" = DB_FIELDTYPE_BIGINT,
 
-        "role_name" = DB_FIELDTYPE_STRING_LARGE,
-        "faction_name" = DB_FIELDTYPE_STRING_LARGE,
-        "mob_name" = DB_FIELDTYPE_STRING_LARGE,
-        "area_name" = DB_FIELDTYPE_STRING_LARGE,
+		"role_name" = DB_FIELDTYPE_STRING_LARGE,
+		"faction_name" = DB_FIELDTYPE_STRING_LARGE,
+		"mob_name" = DB_FIELDTYPE_STRING_LARGE,
+		"area_name" = DB_FIELDTYPE_STRING_LARGE,
 
-        "cause_name" = DB_FIELDTYPE_STRING_LARGE,
+		"cause_name" = DB_FIELDTYPE_STRING_LARGE,
 		"cause_player_id" = DB_FIELDTYPE_BIGINT,
-        "cause_role_name" = DB_FIELDTYPE_STRING_LARGE,
-        "cause_faction_name" = DB_FIELDTYPE_STRING_LARGE,
+		"cause_role_name" = DB_FIELDTYPE_STRING_LARGE,
+		"cause_faction_name" = DB_FIELDTYPE_STRING_LARGE,
 
-        "total_steps" = DB_FIELDTYPE_INT,
-        "total_kills" = DB_FIELDTYPE_INT,
-        "time_of_death" = DB_FIELDTYPE_BIGINT,
-        "total_time_alive" = DB_FIELDTYPE_BIGINT,
-        "total_damage_taken" = DB_FIELDTYPE_INT,
+		"total_steps" = DB_FIELDTYPE_INT,
+		"total_kills" = DB_FIELDTYPE_INT,
+		"time_of_death" = DB_FIELDTYPE_BIGINT,
+		"total_time_alive" = DB_FIELDTYPE_BIGINT,
+		"total_damage_taken" = DB_FIELDTYPE_INT,
 
-        "total_brute" = DB_FIELDTYPE_INT,
-        "total_burn" = DB_FIELDTYPE_INT,
-        "total_oxy" = DB_FIELDTYPE_INT,
-        "total_tox" = DB_FIELDTYPE_INT,
+		"total_brute" = DB_FIELDTYPE_INT,
+		"total_burn" = DB_FIELDTYPE_INT,
+		"total_oxy" = DB_FIELDTYPE_INT,
+		"total_tox" = DB_FIELDTYPE_INT,
 
-        "x" = DB_FIELDTYPE_INT,
-        "y" = DB_FIELDTYPE_INT,
-        "z" = DB_FIELDTYPE_INT
-    )
+		"x" = DB_FIELDTYPE_INT,
+		"y" = DB_FIELDTYPE_INT,
+		"z" = DB_FIELDTYPE_INT
+	)
 
 /mob/proc/track_mob_death(var/datum/cause_data/cause_data, var/turf/death_loc)
 	if(!mind || statistic_exempt)

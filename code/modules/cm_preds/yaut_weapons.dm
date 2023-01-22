@@ -972,7 +972,7 @@
 					strength = "low power stun bolts"
 					charge_cost = 30
 					fire_delay = FIRE_DELAY_TIER_6
-					fire_sound = 'sound/weapons/pred_lasercannon.ogg'
+					fire_sound = 'sound/weapons/pred_plasmacaster_fire.ogg'
 					to_chat(user, SPAN_NOTICE("[src] will now fire [strength]."))
 					ammo = GLOB.ammo_list[/datum/ammo/energy/yautja/caster/stun]
 		if("lethal")
@@ -1010,7 +1010,7 @@
 			strength = "low power stun bolts"
 			charge_cost = 30
 			fire_delay = FIRE_DELAY_TIER_6
-			fire_sound = 'sound/weapons/pred_lasercannon.ogg'
+			fire_sound = 'sound/weapons/pred_plasmacaster_fire.ogg'
 			to_chat(usr, SPAN_NOTICE("[src] will now fire [strength]."))
 			ammo = GLOB.ammo_list[/datum/ammo/energy/yautja/caster/stun]
 

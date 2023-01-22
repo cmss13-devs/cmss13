@@ -1,6 +1,7 @@
 // Fulton baloon deployment devices, used to gather and send crates, dead things, and other objective-based items into space for collection.
 
-var/global/list/deployed_fultons = list() // A list of fultons currently airborne.
+/// A list of fultons currently airborne.
+var/global/list/deployed_fultons = list()
 
 /obj/item/stack/fulton
 	name = "fulton recovery device"
@@ -152,7 +153,7 @@ var/global/list/deployed_fultons = list() // A list of fultons currently airborn
 	deployed_fultons += src
 	attached_atom.overlays -= I
 
-	addtimer(CALLBACK(src, .proc/return_fulton, original_location), 150 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(return_fulton), original_location), 150 SECONDS)
 
 /obj/item/stack/fulton/proc/return_fulton(var/turf/return_turf)
 

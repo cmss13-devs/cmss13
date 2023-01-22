@@ -19,3 +19,10 @@
 	macro_path = /datum/action/xeno_action/verb/verb_retrieve_egg
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_4
+
+/datum/action/xeno_action/onclick/set_hugger_reserve
+	name = "Set Hugger Reserve"
+	action_icon_state = "xeno_banish"
+
+/datum/action/xeno_action/activable/retrieve_egg/shaman
+	ability_primacy = XENO_PRIMARY_ACTION_5

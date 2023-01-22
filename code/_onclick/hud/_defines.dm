@@ -13,8 +13,8 @@
 	Therefore, the top right corner (except during admin shenanigans) is at "15,15"
 */
 
-#define ui_monkey_mask "WEST+4:14,1:5"	//monkey
-#define ui_monkey_back "WEST+5:14,1:5"	//monkey
+#define ui_monkey_mask "WEST+4:14,1:5" //monkey
+#define ui_monkey_back "WEST+5:14,1:5" //monkey
 
 //Upper-middle right (damage indicators)
 #define ui_predator_power "EAST-1:28,9:13"

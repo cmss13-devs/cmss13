@@ -89,7 +89,7 @@
 			return
 
 		/* TODO - Reintroduce this when we get a proper round ID tracking,
-		    and we want to log it to database
+			and we want to log it to database
 
 		var/list/query_data = list()
 		if (!isnull(GLOB.round_id))

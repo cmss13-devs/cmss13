@@ -170,7 +170,7 @@ CULT
 
 	update_button_icon()
 
-	addtimer(CALLBACK(src, .proc/update_button_icon), amount)
+	addtimer(CALLBACK(src, PROC_REF(update_button_icon)), amount)
 
 /datum/action/human_action/activable/droppod
 	name = "Call Droppod"
@@ -251,7 +251,7 @@ CULT
 	message_staff("[key_name_admin(H)] called a tech droppod down at [get_area(assigned_droppod)].", T.x, T.y, T.z)
 	for(var/M in to_send_to)
 		to_chat(M, SPAN_BLUE("<b>SUPPLY DROP REQUEST:</b> Droppod requested at LONGITUDE: [obfuscate_x(T.x)], LATITUDE: [obfuscate_y(T.y)]. ETA [Floor(land_time*0.1)] seconds."))
-	RegisterSignal(assigned_droppod, COMSIG_PARENT_QDELETING, .proc/handle_droppod_deleted)
+	RegisterSignal(assigned_droppod, COMSIG_PARENT_QDELETING, PROC_REF(handle_droppod_deleted))
 */
 
 /datum/action/human_action/activable/droppod/proc/handle_droppod_deleted(var/obj/structure/droppod/tech/T)
@@ -321,9 +321,9 @@ CULT
 
 	var/mob/living/carbon/human/H = owner
 
-	var/input = alert(H, "Once obtained, you'll be unable to take it off. Confirm selection.", "Obtain Equipment","Yes","No")
+	var/input = tgui_alert(H, "Once obtained, you'll be unable to take it off. Confirm selection.", "Obtain Equipment", list("Yes","No"))
 
-	if(input == "No")
+	if(input != "Yes")
 		to_chat(H, SPAN_WARNING("You have decided not to obtain your equipment."))
 		return
 
@@ -504,7 +504,7 @@ CULT
 
 	to_chat(H, SPAN_NOTICE("Mutiny join request sent to [chosen]!"))
 
-	if(tgui_alert(chosen, "Do you want to be a mutineer?", "Become Mutineer", list("Yes", "No")) == "No")
+	if(tgui_alert(chosen, "Do you want to be a mutineer?", "Become Mutineer", list("Yes", "No")) != "Yes")
 		return
 
 	converted += chosen
@@ -522,7 +522,7 @@ CULT
 
 	var/mob/living/carbon/human/H = owner
 
-	if(tgui_alert(H, "Are you sure you want to begin the mutiny?", "Begin Mutiny?", list("Yes", "No")) == "No")
+	if(tgui_alert(H, "Are you sure you want to begin the mutiny?", "Begin Mutiny?", list("Yes", "No")) != "Yes")
 		return
 
 	shipwide_ai_announcement("DANGER: Communications received; a mutiny is in progress. Code: Detain, Arrest, Defend.")
@@ -544,7 +544,7 @@ CULT
 
 /datum/action/human_action/cancel_view/give_to(user)
 	. = ..()
-	RegisterSignal(user, COMSIG_MOB_RESET_VIEW, .proc/remove_from) // will delete the button even if you reset view by resisting or the verb
+	RegisterSignal(user, COMSIG_MOB_RESET_VIEW, PROC_REF(remove_from)) // will delete the button even if you reset view by resisting or the verb
 
 /datum/action/human_action/cancel_view/remove_from(mob/L)
 	. = ..()
@@ -562,15 +562,15 @@ CULT
 	H.client.pixel_x = 0
 	H.client.pixel_y = 0
 
- //Similar to a cancel-camera-view button, but for mobs that were buckled to special vehicle seats.
- //Unbuckles them, which handles the view and offsets resets and other stuff.
+//Similar to a cancel-camera-view button, but for mobs that were buckled to special vehicle seats.
+//Unbuckles them, which handles the view and offsets resets and other stuff.
 /datum/action/human_action/vehicle_unbuckle
 	name = "Vehicle Unbuckle"
 	action_icon_state = "unbuckle"
 
 /datum/action/human_action/vehicle_unbuckle/give_to(user)
 	. = ..()
-	RegisterSignal(user, COMSIG_MOB_RESET_VIEW, .proc/remove_from)//since unbuckling from special vehicle seats also resets the view, gonna use same signal
+	RegisterSignal(user, COMSIG_MOB_RESET_VIEW, PROC_REF(remove_from))//since unbuckling from special vehicle seats also resets the view, gonna use same signal
 
 /datum/action/human_action/vehicle_unbuckle/remove_from(mob/L)
 	. = ..()

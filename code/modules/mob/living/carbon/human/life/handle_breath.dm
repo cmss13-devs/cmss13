@@ -86,7 +86,7 @@
 					//Enough to make us sleep as well
 					if(SA_pp > 30)
 						sleeping = min(sleeping+4, 10)
-				else if(SA_pp > 1)	// There is sleeping gas in their lungs, but only a little, so give them a bit of a warning
+				else if(SA_pp > 1) // There is sleeping gas in their lungs, but only a little, so give them a bit of a warning
 					if(prob(20))
 						spawn(0) emote(pick("giggle", "laugh"))
 	apply_damage(-2, OXY)

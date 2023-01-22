@@ -151,7 +151,7 @@
 
 /datum/action/item_action
 	name = "Use item"
-	var/obj/item/holder_item	//the item that has this action in its list of actions. Is not necessarily the target
+	var/obj/item/holder_item //the item that has this action in its list of actions. Is not necessarily the target
 								//e.g. gun attachment action: target = attachment, holder = gun.
 	unique = FALSE
 

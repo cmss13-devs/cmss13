@@ -13,7 +13,8 @@
 	item_state = "pickaxe"
 	w_class = SIZE_LARGE
 	matter = list("metal" = 3750)
-	var/digspeed = 40 //moving the delay to an item var so R&D can make improved picks. --NEO
+	/// moving the delay to an item var so R&D can make improved picks. --NEO
+	var/digspeed = 40
 
 	attack_verb = list("hit", "pierced", "sliced", "attacked")
 	var/drill_sound = 'sound/weapons/Genhit.ogg'
@@ -35,7 +36,8 @@
 	desc = "This makes no metallurgic sense."
 
 /obj/item/tool/pickaxe/drill
-	name = "mining drill" // Can dig sand as well!
+	/// Can dig sand as well!
+	name = "mining drill"
 	icon_state = "handdrill"
 	item_state = "jackhammer"
 	digspeed = 30
@@ -47,7 +49,8 @@
 	name = "sonic jackhammer"
 	icon_state = "jackhammer"
 	item_state = "jackhammer"
-	digspeed = 20 //faster than drill, but cannot dig
+	/// faster than drill, but cannot dig
+	digspeed = 20
 
 	desc = "Cracks rocks with sonic blasts, perfect for killing cave lizards."
 	drill_verb = "hammering"
@@ -64,10 +67,11 @@
 	name = "plasma cutter"
 	icon_state = "plasmacutter"
 	item_state = "gun"
-	w_class = SIZE_MEDIUM //it is smaller than the pickaxe
+	/// it is smaller than the pickaxe
+	w_class = SIZE_MEDIUM
 	damtype = "fire"
-	digspeed = 20 //Can slice though normal walls, all girders, or be used in reinforced wall deconstruction/ light thermite on fire
-
+	/// Can slice though normal walls, all girders, or be used in reinforced wall deconstruction/ light thermite on fire
+	digspeed = 20
 	desc = "A rock cutter that uses bursts of hot plasma. You could use it to cut limbs off of xenos! Or, you know, mine stuff."
 	drill_verb = "cutting"
 	heat_source = 3800
@@ -84,7 +88,8 @@
 	name = "diamond mining drill"
 	icon_state = "diamonddrill"
 	item_state = "jackhammer"
-	digspeed = 5 //Digs through walls, girders, and can dig up sand
+	/// Digs through walls, girders, and can dig up sand
+	digspeed = 5
 
 	desc = "Yours is the drill that will pierce the heavens!"
 	drill_verb = "drilling"

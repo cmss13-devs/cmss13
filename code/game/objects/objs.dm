@@ -1,16 +1,18 @@
 /obj
-	//Used to store information about the contents of the object.
+	/// Used to store information about the contents of the object.
 	var/list/matter
-	//determines whether or not the object can be destroyed by an explosion
+	/// determines whether or not the object can be destroyed by an explosion
 	var/indestructible = FALSE
 	var/health = null
-	var/reliability = 100	//Used by SOME devices to determine how reliable they are.
+	/// Used by SOME devices to determine how reliable they are.
+	var/reliability = 100
 	var/crit_fail = 0
-	unacidable = FALSE //universal "unacidabliness" var, here so you can use it in any obj.
+	/// universal "unacidabliness" var, here so you can use it in any obj.
+	unacidable = FALSE
 	animate_movement = 2
 	var/throwforce = 1
-	var/in_use = FALSE // If we have a user using us, this will be set on. We will check if the user has stopped using us, and thus stop updating and LAGGING EVERYTHING!
-
+	/// If we have a user using us, this will be set on. We will check if the user has stopped using us, and thus stop updating and LAGGING EVERYTHING!
+	var/in_use = FALSE
 	var/mob/living/buckled_mob
 	var/buckle_lying = FALSE //Is the mob buckled in a lying position
 	var/can_buckle = FALSE
@@ -18,16 +20,19 @@
 	cares about surface conditions. The lowest multiplier of objects on the tile is used.**/
 	var/surgery_duration_multiplier = SURGERY_SURFACE_MULT_AWFUL
 
-	var/projectile_coverage = 0 //an object's "projectile_coverage" var indicates the maximum probability of blocking a projectile, assuming density and throwpass. Used by barricades, tables and window frames
-	var/garbage = FALSE //set to true if the item is garbage and should be deleted after awhile
+	/// an object's "projectile_coverage" var indicates the maximum probability of blocking a projectile, assuming density and throwpass. Used by barricades, tables and window frames
+	var/projectile_coverage = 0
+	/// set to true if the item is garbage and should be deleted after awhile
+	var/garbage = FALSE
+
 	var/list/req_access = null
 	var/list/req_one_access = null
 	var/req_access_txt = null
 	var/req_one_access_txt = null
 
 	var/flags_obj = NO_FLAGS
-
-	var/renamedByPlayer = FALSE //set when a player uses a pen on a renamable object
+	/// set when a player uses a pen on a renamable object
+	var/renamedByPlayer = FALSE
 
 /obj/Initialize(mapload, ...)
 	. = ..()
@@ -42,7 +47,7 @@
 
 // object is being physically reduced into parts
 /obj/proc/deconstruct(disassembled = TRUE)
-	density = 0
+	density = FALSE
 	qdel(src)
 
 /obj/item/proc/is_used_on(obj/O, mob/user)
@@ -224,11 +229,11 @@
 		return
 
 	if(density)
-		density = 0
+		density = FALSE
 		if(!step(M, get_dir(M, src)) && loc != M.loc)
-			density = 1
+			density = TRUE
 			return
-		density = 1
+		density = TRUE
 	else
 		if(M.loc != src.loc)
 			step_towards(M, src) //buckle if you're right next to it
@@ -328,9 +333,9 @@
 	var/spritesheet = FALSE
 	if(icon_override)
 		mob_icon = icon_override
-		if(slot == 	WEAR_L_HAND)
+		if(slot == WEAR_L_HAND)
 			mob_state = "[mob_state]_l"
-		if(slot == 	WEAR_R_HAND)
+		if(slot == WEAR_R_HAND)
 			mob_state = "[mob_state]_r"
 	else if(use_spritesheet(bodytype, slot, mob_state))
 		spritesheet = TRUE

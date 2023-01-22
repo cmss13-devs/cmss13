@@ -4,7 +4,7 @@
 	name = "placeholder"
 	desc = "Welcome to souto land! This prop shouldn't be used, so please gitlab this and notify a mapper!"
 	icon = 'icons/obj/structures/souto_land.dmi'
-	density = 0
+	density = FALSE
 	unacidable = TRUE
 	unslashable = TRUE
 	breakable = FALSE //can't destroy these
@@ -15,6 +15,7 @@
 
 /obj/structure/prop/souto_land/streamer
 	name = "orange streamers"
+	gender = PLURAL
 	desc = "They flutter softly. Poignant."
 	icon_state = "streamers"
 	layer = ABOVE_MOB_LAYER

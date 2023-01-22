@@ -111,7 +111,7 @@ var/global/list/faction_to_tacmap_color = list(
 
 /proc/draw_vehicles(var/icon/tacmap)
 	for(var/obj/vehicle/multitile/V as anything in GLOB.all_multi_vehicles)
-		if(V.visible_in_tacmap && is_ground_level(V.z))	//don't need colony/hostile vehicle to show
+		if(V.visible_in_tacmap && is_ground_level(V.z)) //don't need colony/hostile vehicle to show
 			tacmap.DrawBox(rgb(0,153,77),V.x-1,V.y-1,V.x+1,V.y+1)
 			tacmap.DrawBox(rgb(128,255,128),V.x-1,V.y)
 			tacmap.DrawBox(rgb(128,255,128),V.x+1,V.y)
@@ -184,7 +184,7 @@ var/global/list/faction_to_tacmap_color = list(
 	tacmap.Scale(map_sizes[1] * 2, map_sizes[2] * 2)
 	populated_mapview_types[tacmap_string] = tacmap
 	populated_mapview_type_updated[tacmap_string] = TRUE
-	addtimer(CALLBACK(GLOBAL_PROC, /proc/prepare_tacmap_for_update, tacmap_string), TACMAP_REFRESH_FREQUENCY)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(prepare_tacmap_for_update), tacmap_string), TACMAP_REFRESH_FREQUENCY)
 	return tacmap
 
 /proc/prepare_tacmap_for_update(var/tacmap_string = TACMAP_DEFAULT)

@@ -17,7 +17,18 @@
 	response_disarm = "gently pushes aside"
 	response_harm   = "kicks"
 	var/turns_since_scan = 0
-	var/mob/living/simple_animal/mouse/movement_target
+	var/mob/living/movement_target
+	var/list/hunting_targets = list(
+		/mob/living/simple_animal/mouse,
+		/mob/living/simple_animal/alien_slug,
+		/mob/living/simple_animal/bat,
+		/mob/living/simple_animal/parrot,
+		/mob/living/simple_animal/chick,
+		/mob/living/simple_animal/lizard,
+		/mob/living/carbon/Xenomorph/Facehugger,
+		/mob/living/carbon/Xenomorph/Larva
+	)
+	var/play_counter = 0
 	min_oxy = 16 //Require atleast 16kPA oxygen
 	minbodytemp = 223		//Below -50 Degrees Celcius
 	maxbodytemp = 323	//Above 50 Degrees Celcius
@@ -35,25 +46,29 @@
 
 /mob/living/simple_animal/cat/Life(delta_time)
 	//MICE!
+	if(stat == DEAD)
+		return ..()
+
 	if((src.loc) && isturf(src.loc))
 		if(stat != DEAD)
 			if(++miaow_counter >= rand(20, 30)) //Increase the meow variable each tick. Play it at random intervals.
 				playsound(loc, "cat_meow", 15, 1, 4)
 				miaow_counter = 0 //Reset the counter
 		if(!stat && !resting && !buckled)
-			for(var/mob/living/simple_animal/mouse/M in view(1,src))
-				if(!M.stat)
-					M.splat()
-					INVOKE_ASYNC(src, .proc/emote, pick("bites \the [M]!","toys with \the [M].","chomps on \the [M]!"))
+			for(var/mob/living/prey in view(1,src))
+				if(is_type_in_list(prey, hunting_targets) && play_counter < 5)
+					prey.splat(src)
+					play_counter++
+					visible_message(pick("bites \the [prey]!","toys with \the [prey].","chomps on \the [prey]!"))
 					movement_target = null
 					stop_automated_movement = 0
 					break
 
 	..()
 
-	for(var/mob/living/simple_animal/mouse/snack in oview(src, 3))
-		if(prob(15))
-			INVOKE_ASYNC(src, .proc/emote, pick("hisses and spits!","mrowls fiercely!","eyes [snack] hungrily."))
+	for(var/mob/living/snack in oview(src, 3))
+		if(is_type_in_list(snack, hunting_targets) && prob(15) && snack.stat != DEAD)
+			visible_message(pick("hisses and spits!","mrowls fiercely!","eyes [snack] hungrily."))
 		break
 
 	if(!stat && !resting && !buckled)
@@ -79,9 +94,12 @@
 		if( !movement_target || !(movement_target.loc in oview(src, 4)) )
 			movement_target = null
 			stop_automated_movement = 0
-			for(var/mob/living/simple_animal/mouse/snack in oview(src))
-				if(isturf(snack.loc) && !snack.stat)
+			for(var/mob/living/snack in oview(src))
+				if(isturf(snack.loc) && snack.stat != DEAD && is_type_in_list(snack, hunting_targets))
+					setDir(get_dir(src, snack))
+					balloon_alert_to_viewers("[src] pounces at [snack]")
 					movement_target = snack
+					play_counter = 0
 					break
 		if(movement_target)
 			stop_automated_movement = 1

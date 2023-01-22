@@ -17,3 +17,6 @@
 
 /mob/living/proc/check_fire_intensity_resistance()
 	return 0
+
+/mob/living/proc/splat(mob/killer)
+	death(create_cause_data("splatting", killer), FALSE, "splatting")

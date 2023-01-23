@@ -230,19 +230,24 @@ const PrintablesSection = (props, context) => {
                         <Box width="2.5px" />
                         <Flex.Item>
                           <Flex direction="row">
-                            {Object.keys(val.multipliers).map((entry) => (
-                              <Flex.Item key={entry}>
-                                <Button
-                                  content={'x' + entry}
-                                  onClick={() =>
-                                    act('make', {
-                                      index: val.index,
-                                      multiplier: entry,
-                                    })
-                                  }
-                                />
-                              </Flex.Item>
-                            ))}
+                            {Object.keys(val.multipliers).map(
+                              (entry, index) => (
+                                <Fragment key={index}>
+                                  {index !== 0 ? <Box width="2.5px" /> : null}
+                                  <Flex.Item>
+                                    <Button
+                                      content={'x' + entry}
+                                      onClick={() =>
+                                        act('make', {
+                                          index: val.index,
+                                          multiplier: entry,
+                                        })
+                                      }
+                                    />
+                                  </Flex.Item>
+                                </Fragment>
+                              )
+                            )}
                           </Flex>
                         </Flex.Item>
                       </Fragment>

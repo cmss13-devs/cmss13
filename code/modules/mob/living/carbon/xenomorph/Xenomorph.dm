@@ -96,7 +96,7 @@
 	var/counts_for_slots = TRUE
 	var/counts_for_roundend = TRUE
 	var/refunds_larva_if_banished = TRUE
-	var/shaman_interactive = TRUE // whether shaman abilities affect this xeno
+
 	var/can_hivemind_speak = TRUE
 
 	// Tackles

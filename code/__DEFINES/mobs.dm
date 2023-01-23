@@ -321,7 +321,6 @@
 
 // Carrier strain flags
 #define CARRIER_NORMAL "Normal"
-#define CARRIER_SHAMAN "Shaman"
 #define CARRIER_EGGSAC "Eggsac"
 
 // Burrower strain flags

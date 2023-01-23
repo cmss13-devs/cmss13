@@ -374,6 +374,10 @@
 
 	var/shuttle_flags = NONE
 
+	///Reference of the shuttle docker holding the mobile docking port
+	var/obj/structure/machinery/computer/camera_advanced/shuttle_docker/shuttle_computer
+
+
 /obj/docking_port/mobile/register()
 	. = ..()
 	SSshuttle.mobile += src

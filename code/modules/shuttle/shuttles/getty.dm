@@ -1,4 +1,5 @@
 #define SHUTTLE_GETTY "gettysburg"
+#define SHUTTLE_GETTY_CUSTOM "gettysburg_custom"
 
 /obj/docking_port/stationary/getty
 	name = "Gettysburg Hangar Pad"
@@ -22,5 +23,26 @@
 	rechargeTime = 30 SECONDS
 	dwidth = 0
 	dheight = 0
-
 	port_direction = SOUTH
+
+/obj/structure/machinery/computer/shuttle/getty
+	unacidable = TRUE
+	indestructible = TRUE
+	req_one_access = list(ACCESS_MARINE_DROPSHIP, ACCESS_MARINE_LEADER)
+	shuttleId = SHUTTLE_GETTY
+	possible_destinations = list(SHUTTLE_GETTY, SHUTTLE_GETTY_CUSTOM)
+
+/obj/structure/machinery/computer/camera_advanced/shuttle_docker/minidropship
+	name = "Gettysburg navigation computer"
+	desc = "Used to designate a precise transit location for the Gettysburg."
+	icon_state = "maptable"
+	req_one_access = list(ACCESS_MARINE_DROPSHIP, ACCESS_MARINE_LEADER)
+	shuttleId = SHUTTLE_GETTY
+	lock_override = CAMERA_LOCK_GROUND
+	shuttlePortId = "minidropship_custom"
+	view_range = "26x26"
+	x_offset = 0
+	y_offset = 0
+	designate_time = 100
+	indestructible = TRUE
+	unacidable = TRUE

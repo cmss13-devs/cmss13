@@ -83,12 +83,27 @@
 	if(ismob(target_atom))
 		add_internal_hitpoints(internal_hitpoints_per_attack)
 
+/datum/behavior_delegate/praetorian_warden/post_ability_cast(datum/action/xeno_action/ability, result)
+	. = ..()
+	switch(ability.type)
+		if(/datum/action/xeno_action/activable/warden_heal)
+			if(!result)
+				return
+			// Result is the ability internal_hp_cost
+			add_internal_hitpoints(-result)
+		if(/datum/action/xeno_action/activable/prae_retrieve)
+			if(!result)
+				return
+			// Result is the ability internal_hp_cost
+			add_internal_hitpoints(-result)
+
 /datum/behavior_delegate/praetorian_warden/proc/add_internal_hitpoints(amount)
 	if (amount > 0)
 		if (internal_hitpoints >= internal_hitpoints_max)
 			return
 		to_chat(bound_xeno, SPAN_XENODANGER("You feel your resources of health increase!"))
 	internal_hitpoints = Clamp(internal_hitpoints + amount, 0, internal_hitpoints_max)
+	update_abilities()
 
 /datum/behavior_delegate/praetorian_warden/proc/remove_internal_hitpoints(amount)
 	add_internal_hitpoints(-1*amount)
@@ -100,3 +115,11 @@
 	else
 		remove_internal_hitpoints(cost)
 		return TRUE
+
+/datum/behavior_delegate/praetorian_warden/proc/update_abilities()
+	var/datum/action/xeno_action/activable/warden_heal/heal_action = get_xeno_action_by_type(bound_xeno, /datum/action/xeno_action/activable/warden_heal)
+	var/datum/action/xeno_action/activable/prae_retrieve/retrieve_action = get_xeno_action_by_type(bound_xeno, /datum/action/xeno_action/activable/prae_retrieve)
+	if(heal_action)
+		heal_action.internal_hp = internal_hitpoints
+	if(retrieve_action)
+		retrieve_action.internal_hp = internal_hitpoints

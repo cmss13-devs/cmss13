@@ -89,6 +89,7 @@
 		holder.overlays += image('icons/mob/hud/hud.dmi', "xenoenergy[percentage_shards]")
 	update_abilities()
 	return
+
 /datum/behavior_delegate/ravager_hedgehog/post_ability_cast(datum/action/xeno_action/ability, result)
 	. = ..()
 	switch(ability.type)

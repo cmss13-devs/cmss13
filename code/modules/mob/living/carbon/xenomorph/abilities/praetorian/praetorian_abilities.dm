@@ -282,17 +282,14 @@
 	xeno_cooldown = 10 SECONDS
 	plasma_cost = 100
 
+	/// Pipe between the delegate and the action, will not work without the delegate
+	var/internal_hp
 	// Config
 
 	// These values are used to determine the
 	// "HP costs" and effects of the three different, toggle-able, heal types.
 	var/heal_cost = 100
 	var/heal_amount = 150
-
-	var/shield_cost = 100
-	var/shield_amount = 125
-	var/shield_duration = 1 MINUTES
-	var/shield_decay = 25
 
 	var/debuff_cost = 100
 
@@ -346,7 +343,9 @@
 	xeno_cooldown = 10 SECONDS
 	plasma_cost = 180
 
+	/// Pipe between the delegate and the action, will not work without the delegate
+	var/internal_hp
 	// Config
 	var/max_distance = 7
 	var/windup = 6
-	var/retrieve_cost = 100
+	var/internal_hp_cost = 100

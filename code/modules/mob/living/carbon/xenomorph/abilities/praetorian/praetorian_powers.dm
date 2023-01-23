@@ -752,7 +752,7 @@
 
 ///////// WARDEN POWERS
 
-/datum/action/xeno_action/activable/warden_heal/use_ability(atom/A)
+/datum/action/xeno_action/activable/warden_heal/use_ability(atom/target)
 	var/mob/living/carbon/Xenomorph/xeno_owner = owner
 	if (!istype(xeno_owner))
 		return
@@ -760,25 +760,25 @@
 	if (!action_cooldown_check())
 		return
 
-	if(!A || A.layer >= FLY_LAYER || !isturf(xeno_owner.loc) || !xeno_owner.check_state(TRUE))
+	if(!target || target.layer >= FLY_LAYER || !isturf(xeno_owner.loc) || !xeno_owner.check_state(TRUE))
 		return
 
-	if (!isXeno(A) || !xeno_owner.can_not_harm(A))
+	if (!isXeno(target) || !xeno_owner.can_not_harm(target))
 		to_chat(xeno_owner, SPAN_XENODANGER("You must target one of your sisters!"))
 		return
 
-	if (A == xeno_owner)
+	if (target == xeno_owner)
 		to_chat(xeno_owner, SPAN_XENODANGER("You cannot heal yourself!"))
 		return
 
-	if (A.z != xeno_owner.z)
+	if (target.z != xeno_owner.z)
 		to_chat(xeno_owner, SPAN_XENODANGER("That Sister is too far away!"))
 		return
 
-	var/mob/living/carbon/Xenomorph/targetXeno = A
+	var/mob/living/carbon/Xenomorph/xeno_target = target
 
-	if(targetXeno.stat == DEAD)
-		to_chat(xeno_owner, SPAN_WARNING("[targetXeno] is already dead!"))
+	if(xeno_target.stat == DEAD)
+		to_chat(xeno_owner, SPAN_WARNING("[xeno_target] is already dead!"))
 		return
 
 	if (!check_plasma_owner())
@@ -786,103 +786,49 @@
 
 	var/use_plasma = FALSE
 
-	if (curr_effect_type == WARDEN_HEAL_SHIELD)
-		if (SEND_SIGNAL(targetXeno, COMSIG_XENO_PRE_HEAL) & COMPONENT_CANCEL_XENO_HEAL)
-			to_chat(xeno_owner, SPAN_XENOWARNING("You cannot heal bolster the defenses of this xeno!"))
+	if (curr_effect_type == WARDEN_HEAL_HP)
+		if (!xeno_owner.Adjacent(target))
+			to_chat(xeno_owner, SPAN_XENODANGER("You must be within touching distance of [xeno_target]!"))
 			return
-
-		var/bonus_shield = 0
-
-		if (xeno_owner.mutation_type == PRAETORIAN_WARDEN)
-			var/datum/behavior_delegate/praetorian_warden/BD = xeno_owner.behavior_delegate
-			if (!istype(BD))
-				return
-
-			if (!BD.use_internal_hp_ability(shield_cost))
-				return
-
-			bonus_shield = BD.internal_hitpoints*0.5
-			if (!BD.use_internal_hp_ability(bonus_shield))
-				bonus_shield = 0
-
-		var/total_shield_amount = shield_amount + bonus_shield
-
-		if (xeno_owner.observed_xeno != null)
-			to_chat(xeno_owner, SPAN_XENOHIGHDANGER("You cannot shield [targetXeno] as effectively over distance!"))
-			total_shield_amount = total_shield_amount/4
-			targetXeno.visible_message(SPAN_BOLDNOTICE("[targetXeno]'s exoskeleton shimmers for a fraction of a second."))//marines probably should know if a xeno gets healed
-		else //so both visible messages don't appear at the same time
-			targetXeno.visible_message(SPAN_BOLDNOTICE("[xeno_owner] points at [targetXeno], and it shudders as its exoskeleton shimmers for a second!")) //this one is a bit less important than healing and rejuvenating
-		to_chat(xeno_owner, SPAN_XENODANGER("You bolster the defenses of [targetXeno]!")) //but i imagine it'll be useful for predators, survivors and for battle flavor
-		to_chat(targetXeno, SPAN_XENOHIGHDANGER("You feel your defenses bolstered by [xeno_owner]!"))
-
-		targetXeno.add_xeno_shield(total_shield_amount, XENO_SHIELD_SOURCE_WARDEN_PRAE, duration = shield_duration, decay_amount_per_second = shield_decay)
-		targetXeno.xeno_jitter(1 SECONDS)
-		targetXeno.flick_heal_overlay(3 SECONDS, "#FFA800") //D9F500
-		xeno_owner.add_xeno_shield(total_shield_amount*0.5, XENO_SHIELD_SOURCE_WARDEN_PRAE, duration = shield_duration, decay_amount_per_second = shield_decay) // xeno_owner is the prae itself
-		xeno_owner.xeno_jitter(1 SECONDS)
-		xeno_owner.flick_heal_overlay(3 SECONDS, "#FFA800") //D9F500
-		use_plasma = TRUE
-
-	else if (curr_effect_type == WARDEN_HEAL_HP)
-		if (!xeno_owner.Adjacent(A))
-			to_chat(xeno_owner, SPAN_XENODANGER("You must be within touching distance of [targetXeno]!"))
-			return
-		if (targetXeno.mutation_type == PRAETORIAN_WARDEN)
+		if (xeno_target.mutation_type == PRAETORIAN_WARDEN)
 			to_chat(xeno_owner, SPAN_XENODANGER("You cannot heal a sister of the same strain!"))
 			return
-		if (SEND_SIGNAL(targetXeno, COMSIG_XENO_PRE_HEAL) & COMPONENT_CANCEL_XENO_HEAL)
+		if (SEND_SIGNAL(xeno_target, COMSIG_XENO_PRE_HEAL) & COMPONENT_CANCEL_XENO_HEAL)
 			to_chat(xeno_owner, SPAN_XENOWARNING("You cannot heal this xeno!"))
 			return
 
 		var/bonus_heal = 0
 
-		if (xeno_owner.mutation_type == PRAETORIAN_WARDEN)
-			var/datum/behavior_delegate/praetorian_warden/BD = xeno_owner.behavior_delegate
-			if (!istype(BD))
-				return
-
-			if (!BD.use_internal_hp_ability(heal_cost))
-				return
-
-			bonus_heal = BD.internal_hitpoints*0.5
-			if (!BD.use_internal_hp_ability(bonus_heal))
-				bonus_heal = 0
-
-		to_chat(xeno_owner, SPAN_XENODANGER("You heal [targetXeno]!"))
-		to_chat(targetXeno, SPAN_XENOHIGHDANGER("You are healed by [xeno_owner]!"))
-		targetXeno.gain_health(heal_amount + bonus_heal)
-		targetXeno.visible_message(SPAN_BOLDNOTICE("[xeno_owner] places its claws on [targetXeno], and its wounds are quickly sealed!")) //marines probably should know if a xeno gets healed
+		if (internal_hp < heal_cost)
+			return
+		bonus_heal = max(0, (internal_hp - heal_cost) * 0.5)
+		to_chat(xeno_owner, SPAN_XENODANGER("You heal [xeno_target]!"))
+		to_chat(xeno_target, SPAN_XENOHIGHDANGER("You are healed by [xeno_owner]!"))
+		xeno_target.gain_health(heal_amount + bonus_heal)
+		xeno_target.visible_message(SPAN_BOLDNOTICE("[xeno_owner] places its claws on [xeno_target], and its wounds are quickly sealed!")) //marines probably should know if a xeno gets healed
 		xeno_owner.gain_health(heal_amount*0.5 + bonus_heal*0.5)
 		xeno_owner.flick_heal_overlay(3 SECONDS, "#00B800")
 		use_plasma = TRUE //it's already hard enough to gauge health without hp showing on the mob
-		targetXeno.flick_heal_overlay(3 SECONDS, "#00B800")//so the visible_message and recovery overlay will warn marines and possibly predators that the xenomorph has been healed!
-
+		xeno_target.flick_heal_overlay(3 SECONDS, "#00B800")//so the visible_message and recovery overlay will warn marines and possibly predators that the xenomorph has been healed!
+		. = bonus_heal + heal_cost
 	else if (curr_effect_type == WARDEN_HEAL_DEBUFFS)
 		if (xeno_owner.observed_xeno != null)
 			to_chat(xeno_owner, SPAN_XENOHIGHDANGER("You cannot rejuvenate targets through overwatch!"))
 			return
-
-		if (xeno_owner.mutation_type == PRAETORIAN_WARDEN)
-			var/datum/behavior_delegate/praetorian_warden/BD = xeno_owner.behavior_delegate
-			if (!istype(BD))
-				return
-
-			if (!BD.use_internal_hp_ability(debuff_cost))
-				return
-
-		to_chat(xeno_owner, SPAN_XENODANGER("You rejuvenate [targetXeno]!"))
-		to_chat(targetXeno, SPAN_XENOHIGHDANGER("You are rejuvenated by [xeno_owner]!"))
-		targetXeno.visible_message(SPAN_BOLDNOTICE("[xeno_owner] points at [targetXeno], and it spasms as it recuperates unnaturally quickly!")) //marines probably should know if a xeno gets rejuvenated
-		targetXeno.xeno_jitter(1 SECONDS) //it might confuse them as to why the queen got up half a second after being AT rocketed, and give them feedback on the Praetorian rejuvenating
-		targetXeno.flick_heal_overlay(3 SECONDS, "#F5007A") //therefore making the Praetorian a priority target
-		targetXeno.set_effect(0, PARALYZE)
-		targetXeno.set_effect(0, STUN)
-		targetXeno.set_effect(0, WEAKEN)
-		targetXeno.set_effect(0, DAZE)
-		targetXeno.set_effect(0, SLOW)
-		targetXeno.set_effect(0, SUPERSLOW)
+		to_chat(xeno_owner, SPAN_XENODANGER("You rejuvenate [xeno_target]!"))
+		to_chat(xeno_target, SPAN_XENOHIGHDANGER("You are rejuvenated by [xeno_owner]!"))
+		xeno_target.visible_message(SPAN_BOLDNOTICE("[xeno_owner] points at [xeno_target], and it spasms as it recuperates unnaturally quickly!")) //marines probably should know if a xeno gets rejuvenated
+		xeno_target.xeno_jitter(1 SECONDS) //it might confuse them as to why the queen got up half a second after being AT rocketed, and give them feedback on the Praetorian rejuvenating
+		xeno_target.flick_heal_overlay(3 SECONDS, "#F5007A") //therefore making the Praetorian a priority target
+		xeno_target.set_effect(0, PARALYZE)
+		xeno_target.set_effect(0, STUN)
+		xeno_target.set_effect(0, WEAKEN)
+		xeno_target.set_effect(0, DAZE)
+		xeno_target.set_effect(0, SLOW)
+		xeno_target.set_effect(0, SUPERSLOW)
+		. = debuff_cost
 		use_plasma = TRUE
+
 	if (use_plasma)
 		use_plasma_owner()
 
@@ -890,24 +836,20 @@
 	..()
 	return
 
-/datum/action/xeno_action/activable/prae_retrieve/use_ability(atom/A)
+/datum/action/xeno_action/activable/prae_retrieve/use_ability(atom/target)
 	var/mob/living/carbon/Xenomorph/xeno_owner = owner
 	if(!istype(xeno_owner))
-		return
-
-	var/datum/behavior_delegate/praetorian_warden/BD = xeno_owner.behavior_delegate
-	if(!istype(BD))
 		return
 
 	if(xeno_owner.observed_xeno != null)
 		to_chat(xeno_owner, SPAN_XENOHIGHDANGER("You cannot retrieve sisters through overwatch!"))
 		return
 
-	if(!isXeno(A) || !xeno_owner.can_not_harm(A))
+	if(!isXeno(target) || !xeno_owner.can_not_harm(target))
 		to_chat(xeno_owner, SPAN_XENODANGER("You must target one of your sisters!"))
 		return
 
-	if(A == xeno_owner)
+	if(target == xeno_owner)
 		to_chat(xeno_owner, SPAN_XENODANGER("You cannot retrieve yourself!"))
 		return
 
@@ -915,19 +857,19 @@
 		to_chat(xeno_owner, SPAN_XENODANGER("That sister cannot move!"))
 		return
 
-	if(!(A in view(7, xeno_owner)))
+	if(!(target in view(7, xeno_owner)))
 		to_chat(xeno_owner, SPAN_XENODANGER("That sister is too far away!"))
 		return
 
-	var/mob/living/carbon/Xenomorph/targetXeno = A
+	var/mob/living/carbon/Xenomorph/xeno_target = target
 
-	if(!(targetXeno.resting || targetXeno.stat == UNCONSCIOUS))
-		if(targetXeno.mob_size > MOB_SIZE_BIG)
-			to_chat(xeno_owner, SPAN_WARNING("[targetXeno] is too big to retrieve while standing up!"))
+	if(!(xeno_target.resting || xeno_target.stat == UNCONSCIOUS))
+		if(xeno_target.mob_size > MOB_SIZE_BIG)
+			to_chat(xeno_owner, SPAN_WARNING("[xeno_target] is too big to retrieve while standing up!"))
 			return
 
-	if(targetXeno.stat == DEAD)
-		to_chat(xeno_owner, SPAN_WARNING("[targetXeno] is already dead!"))
+	if(xeno_target.stat == DEAD)
+		to_chat(xeno_owner, SPAN_WARNING("[xeno_target] is already dead!"))
 		return
 
 	if(!action_cooldown_check() || xeno_owner.action_busy)
@@ -939,7 +881,7 @@
 	if(!check_plasma_owner())
 		return
 
-	if(!BD.use_internal_hp_ability(retrieve_cost))
+	if(internal_hp < internal_hp_cost)
 		return
 
 	if(!check_and_use_plasma_owner())
@@ -948,8 +890,8 @@
 	// Build our turflist
 	var/list/turf/turflist = list()
 	var/list/telegraph_atom_list = list()
-	var/facing = get_dir(xeno_owner, A)
-	var/reversefacing = get_dir(A, xeno_owner)
+	var/facing = get_dir(xeno_owner, target)
+	var/reversefacing = get_dir(target, xeno_owner)
 	var/turf/T = xeno_owner.loc
 	var/turf/temp = xeno_owner.loc
 	for(var/x in 0 to max_distance)
@@ -969,7 +911,7 @@
 				blocked = TRUE
 				break
 		if(blocked)
-			to_chat(xeno_owner, SPAN_XENOWARNING("You can't reach [targetXeno] with your resin retrieval hook!"))
+			to_chat(xeno_owner, SPAN_XENOWARNING("You can't reach [xeno_target] with your resin retrieval hook!"))
 			return
 
 		T = temp
@@ -978,14 +920,14 @@
 			break
 
 		turflist += T
-		facing = get_dir(T, A)
+		facing = get_dir(T, target)
 		telegraph_atom_list += new /obj/effect/xenomorph/xeno_telegraph/green(T, windup)
 
 	if(!length(turflist))
 		to_chat(xeno_owner, SPAN_XENOWARNING("You don't have any room to do your retrieve!"))
 		return
 
-	xeno_owner.visible_message(SPAN_XENODANGER("[xeno_owner] prepares to fire its resin retrieval hook at [A]!"), SPAN_XENODANGER("You prepare to fire your resin retrieval hook at [A]!"))
+	xeno_owner.visible_message(SPAN_XENODANGER("[xeno_owner] prepares to fire its resin retrieval hook at [target]!"), SPAN_XENODANGER("You prepare to fire your resin retrieval hook at [target]!"))
 	xeno_owner.emote("roar")
 
 	var/throw_target_turf = get_step(xeno_owner.loc, facing)
@@ -1016,23 +958,23 @@
 
 	var/successful_retrieve = FALSE
 	for(var/turf/target_turf in turflist)
-		if(targetXeno in target_turf)
+		if(xeno_target in target_turf)
 			successful_retrieve = TRUE
 			break
 
 	if(!successful_retrieve)
-		to_chat(xeno_owner, SPAN_XENOWARNING("You can't reach [targetXeno] with your resin retrieval hook!"))
+		to_chat(xeno_owner, SPAN_XENOWARNING("You can't reach [xeno_target] with your resin retrieval hook!"))
 		return
 
-	to_chat(targetXeno, SPAN_XENOBOLDNOTICE("You are pulled toward [xeno_owner]!"))
+	to_chat(xeno_target, SPAN_XENOBOLDNOTICE("You are pulled toward [xeno_owner]!"))
 
-	shake_camera(targetXeno, 10, 1)
-	var/throw_dist = get_dist(throw_target_turf, targetXeno)-1
+	shake_camera(xeno_target, 10, 1)
+	var/throw_dist = get_dist(throw_target_turf, xeno_target)-1
 	if(throw_target_turf == behind_turf)
 		throw_dist++
-		to_chat(xeno_owner, SPAN_XENOBOLDNOTICE("You fling [targetXeno] over your head with your resin hook, and they land behind you!"))
+		to_chat(xeno_owner, SPAN_XENOBOLDNOTICE("You fling [xeno_target] over your head with your resin hook, and they land behind you!"))
 	else
-		to_chat(xeno_owner, SPAN_XENOBOLDNOTICE("You fling [targetXeno] towards you with your resin hook, and they in front of you!"))
-	targetXeno.throw_atom(throw_target_turf, throw_dist, SPEED_VERY_FAST, pass_flags = PASS_MOB_THRU)
+		to_chat(xeno_owner, SPAN_XENOBOLDNOTICE("You fling [xeno_target] towards you with your resin hook, and they in front of you!"))
+	xeno_target.throw_atom(throw_target_turf, throw_dist, SPEED_VERY_FAST, pass_flags = PASS_MOB_THRU)
 	apply_cooldown()
-	return
+	return internal_hp_cost

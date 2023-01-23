@@ -112,3 +112,10 @@
 	name = "cinematic plane"
 	plane = CINEMATIC_PLANE
 	render_relay_plane = RENDER_PLANE_NON_GAME
+
+/atom/movable/screen/plane_master/camera_static
+	name = "camera static plane master"
+	plane = CAMERA_STATIC_PLANE
+	appearance_flags = PLANE_MASTER
+	blend_mode = BLEND_OVERLAY
+	render_relay_plane = GAME_PLANE

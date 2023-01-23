@@ -6,7 +6,7 @@ var/obj/structure/anti_air_cannon/almayer_aa_cannon
 	icon = 'icons/effects/128x128.dmi'
 	icon_state = "anti_air_cannon"
 	density = TRUE
-	anchored = 1
+	anchored = TRUE
 	layer = LADDER_LAYER
 	bound_width = 128
 	bound_height = 64

@@ -5,7 +5,7 @@
 	icon = 'icons/obj/structures/machinery/cryogenics2.dmi'
 	icon_state = "cell"
 	density = FALSE
-	anchored = 1.0
+	anchored = TRUE
 	layer = BELOW_OBJ_LAYER
 
 	var/temperature = 0

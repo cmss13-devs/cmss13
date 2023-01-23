@@ -53,8 +53,8 @@
 	if (user_xeno.observed_xeno != target_xeno)
 		return
 
-	var/confirm = alert(user_xeno, "Are you sure you want to deevolve [target_xeno] from [target_xeno.caste.caste_type] to [newcaste]?", , "Yes", "No")
-	if(confirm == "No")
+	var/confirm = tgui_alert(user_xeno, "Are you sure you want to deevolve [target_xeno] from [target_xeno.caste.caste_type] to [newcaste]?", "Deevolution", list("Yes", "No"))
+	if(confirm != "Yes")
 		return
 
 	var/reason = stripped_input(user_xeno, "Provide a reason for deevolving this xenomorph, [target_xeno]")
@@ -389,8 +389,8 @@
 		to_chat(user_xeno, SPAN_XENOWARNING("What's the point? They're already about to die."))
 		return
 
-	var/confirm = alert(user_xeno, "Are you sure you want to banish [target_xeno] from the hive? This should only be done with good reason. (Note this prevents them from rejoining the hive after dying for 30 minutes as well unless readmitted)", , "Yes", "No")
-	if(confirm == "No")
+	var/confirm = tgui_alert(user_xeno, "Are you sure you want to banish [target_xeno] from the hive? This should only be done with good reason. (Note this prevents them from rejoining the hive after dying for 30 minutes as well unless readmitted)", "Banishment", list("Yes", "No"))
+	if(confirm != "Yes")
 		return
 
 	var/reason = stripped_input(user_xeno, "Provide a reason for banishing [target_xeno]. This will be announced to the entire hive!")
@@ -455,8 +455,8 @@
 			to_chat(user_xeno, SPAN_XENOWARNING("This xenomorph isn't banished!"))
 			return
 
-		var/confirm = alert(user_xeno, "Are you sure you want to readmit [target_xeno] into the hive?", , "Yes", "No")
-		if(confirm == "No")
+		var/confirm = tgui_alert(user_xeno, "Are you sure you want to readmit [target_xeno] into the hive?", "Readmittance", list("Yes", "No"))
+		if(confirm != "Yes")
 			return
 
 		if(!user_xeno.check_state() || !check_and_use_plasma_owner(plasma_cost))

@@ -18,7 +18,7 @@
 	assignment = JOB_WO_CO
 	rank = JOB_WO_CO
 	paygrade = "MO2"
-	role_comm_title = "CO"
+	role_comm_title = "CDR"
 	skills = /datum/skills/commander
 	idtype = /obj/item/card/id/gold
 
@@ -99,7 +99,7 @@
 	assignment = JOB_WO_XO
 	rank = JOB_WO_XO
 	paygrade = "MO1"
-	role_comm_title = "XO"
+	role_comm_title = "LCDR"
 	skills = /datum/skills/XO
 	idtype = /obj/item/card/id/silver
 

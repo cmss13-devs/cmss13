@@ -13,7 +13,7 @@
 	name = "AI"
 	icon = 'icons/obj/structures/machinery/ai.dmi'
 	icon_state = "hydra"
-	anchored = 1
+	anchored = TRUE
 	canmove = 0
 	density = TRUE //Do not want to see past it.
 	bound_height = 64 //putting this in so we can't walk through our machine.

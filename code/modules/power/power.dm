@@ -1,7 +1,7 @@
 /obj/structure/machinery/power
 	name = null
 	icon = 'icons/obj/structures/machinery/power.dmi'
-	anchored = 1.0
+	anchored = TRUE
 	unslashable = TRUE
 	health = 0
 	var/datum/powernet/powernet = null

@@ -63,7 +63,7 @@
 
 	icon = 'icons/landmarks.dmi'
 	icon_state = "map_blocker"
-	anchored = 1.0
+	anchored = TRUE
 	unacidable = TRUE
 	density = FALSE
 

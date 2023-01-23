@@ -490,7 +490,7 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 	icon_state = "comm_server"
 	desc = "A compact machine used for portable subspace telecommunications processing."
 	density = TRUE
-	anchored = 1
+	anchored = TRUE
 	use_power = USE_POWER_NONE
 	idle_power_usage = 0
 	machinetype = 6

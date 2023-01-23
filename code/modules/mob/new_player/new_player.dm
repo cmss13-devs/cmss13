@@ -92,7 +92,7 @@
 				to_chat(src, "DB is still starting up, please wait")
 				return
 			if(client.player_data)
-				client.player_data.ui_interact(src)
+				client.player_data.tgui_interact(src)
 			return 1
 
 		if("ready")

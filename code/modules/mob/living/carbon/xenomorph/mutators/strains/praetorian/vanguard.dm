@@ -64,6 +64,19 @@
 	..()
 
 	last_combat_time = world.time
+/datum/behavior_delegate/praetorian_vanguard/post_ability_cast(datum/action/xeno_action/ability, result)
+	..()
+
+	if(istype(ability, datum/action/xeno_action/activable/pierce) && result)
+		// result represents the number of mob hit by pierce
+		var/datum/action/xeno_action/activable/pierce/pierce_action = get_xeno_action_by_type(bound_xeno, /datum/action/xeno_action/activable/pierce)
+		if (result >= pierce_action.shield_regen_threshold)
+			regen_shield()
+	else if(istype(ability, datum/action/xeno_action/activable/pounce/prae_dash) && result)
+		// result represents the number of mobs hit by the pounce RECAST
+		var/datum/action/xeno_action/activable/pounce/prae_dash/dash_action = get_xeno_action_by_type(bound_xeno, /datum/action/xeno_action/activable/pounce/prae_dash)
+		if (result >= dash_action.shield_regen_threshold)
+			regen_shield()
 
 /datum/behavior_delegate/praetorian_vanguard/proc/next_pierce_spin()
 	var/datum/action/xeno_action/activable/pierce/pAction = get_xeno_action_by_type(bound_xeno, /datum/action/xeno_action/activable/pierce)

@@ -74,20 +74,20 @@
 	ability_primacy = XENO_PRIMARY_ACTION_4
 
 /datum/action/xeno_action/onclick/toggle_cleave/can_use_action()
-	var/mob/living/carbon/Xenomorph/X = owner
-	if(X && !X.buckled && !X.is_mob_incapacitated())
+	var/mob/living/carbon/Xenomorph/xeno_owner = owner
+	if(xeno_owner && !xeno_owner.buckled && !xeno_owner.is_mob_incapacitated())
 		return TRUE
 
 /datum/action/xeno_action/onclick/toggle_cleave/use_ability(atom/A)
-	var/mob/living/carbon/Xenomorph/X = owner
+	var/mob/living/carbon/Xenomorph/xeno_owner = owner
 
-	if (!istype(X))
+	if (!istype(xeno_owner))
 		return
 
-	if(!X.check_state(1))
+	if(!xeno_owner.check_state(TRUE))
 		return
 
-	var/datum/action/xeno_action/activable/cleave/cAction = get_xeno_action_by_type(X, /datum/action/xeno_action/activable/cleave)
+	var/datum/action/xeno_action/activable/cleave/cAction = get_xeno_action_by_type(xeno_owner, /datum/action/xeno_action/activable/cleave)
 
 	if (!istype(cAction))
 		return
@@ -97,10 +97,10 @@
 	var/action_icon_result
 	if (cAction.root_toggle)
 		action_icon_result = "prae_cleave_root"
-		to_chat(X, SPAN_WARNING("You will now root marines with your cleave."))
+		to_chat(xeno_owner, SPAN_WARNING("You will now root marines with your cleave."))
 	else
 		action_icon_result = "prae_cleave_fling" // TODO: update
-		to_chat(X, SPAN_WARNING("You will now throw marines with your cleave."))
+		to_chat(xeno_owner, SPAN_WARNING("You will now throw marines with your cleave."))
 
 	button.overlays.Cut()
 	button.overlays += image('icons/mob/hud/actions_xeno.dmi', button, action_icon_result)
@@ -142,18 +142,6 @@
 
 	// Configurables
 	var/damage = 20
-
-
-// This one is more tightly coupled than I'd like, but oh well
-// unused
-/*datum/action/xeno_action/onclick/crush
-	name = "Crush"
-	action_icon_state = "prae_crush"
-	ability_name = "crush"
-	macro_path = /datum/action/xeno_action/verb/verb_crush
-	action_type = XENO_ACTION_ACTIVATE
-	xeno_cooldown = 100
-	plasma_cost = 80*/
 
 // Tail lash
 /datum/action/xeno_action/activable/tail_lash
@@ -319,31 +307,31 @@
 	ability_primacy = XENO_PRIMARY_ACTION_5
 
 /datum/action/xeno_action/onclick/prae_switch_heal_type/can_use_action()
-	var/mob/living/carbon/Xenomorph/X = owner
-	if(X && !X.buckled && !X.is_mob_incapacitated())
+	var/mob/living/carbon/Xenomorph/xeno_owner = owner
+	if(xeno_owner && !xeno_owner.buckled && !xeno_owner.is_mob_incapacitated())
 		return TRUE
 
 /datum/action/xeno_action/onclick/prae_switch_heal_type/use_ability(atom/A)
 
-	var/mob/living/carbon/Xenomorph/X = owner
+	var/mob/living/carbon/Xenomorph/xeno_owner = owner
 	var/action_icon_result
 
-	if(!X.check_state(1))
+	if(!xeno_owner.check_state(1))
 		return
 
-	var/datum/action/xeno_action/activable/warden_heal/WH = get_xeno_action_by_type(X, /datum/action/xeno_action/activable/warden_heal)
-	if (!istype(WH))
+	var/datum/action/xeno_action/activable/warden_heal/heal_action = get_xeno_action_by_type(xeno_owner, /datum/action/xeno_action/activable/warden_heal)
+	if (!istype(heal_action))
 		return
 
-	if (WH.curr_effect_type == WARDEN_HEAL_HP)
+	if (heal_action.curr_effect_type == WARDEN_HEAL_HP)
 		action_icon_result = "warden_rejuvenate"
-		WH.curr_effect_type = WARDEN_HEAL_DEBUFFS
-		to_chat(X, SPAN_XENOWARNING("You will now protect your allies by rejuvenating them!"))
+		heal_action.curr_effect_type = WARDEN_HEAL_DEBUFFS
+		to_chat(xeno_owner, SPAN_XENOWARNING("You will now protect your allies by rejuvenating them!"))
 
 	else
 		action_icon_result = "warden_heal"
-		WH.curr_effect_type = WARDEN_HEAL_HP
-		to_chat(X, SPAN_XENOWARNING("You will now protect your allies with a heal!"))
+		heal_action.curr_effect_type = WARDEN_HEAL_HP
+		to_chat(xeno_owner, SPAN_XENOWARNING("You will now protect your allies with a heal!"))
 
 	button.overlays.Cut()
 	button.overlays += image('icons/mob/hud/actions_xeno.dmi', button, action_icon_result)

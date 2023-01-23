@@ -1,36 +1,36 @@
 
 /datum/action/xeno_action/activable/pounce/crusher_charge/additional_effects_always()
-	var/mob/living/carbon/Xenomorph/X = owner
-	if (!istype(X))
+	var/mob/living/carbon/Xenomorph/xeno_owner = owner
+	if (!istype(xeno_owner))
 		return
 
-	for (var/mob/living/carbon/H in orange(1, get_turf(X)))
-		if(X.can_not_harm(H))
+	for (var/mob/living/carbon/carbon_target in orange(1, get_turf(xeno_owner)))
+		if(xeno_owner.can_not_harm(carbon_target))
 			continue
 
-		new /datum/effects/xeno_slow(H, X, null, null, 3.5 SECONDS)
-		to_chat(H, SPAN_XENODANGER("You are slowed as the impact of [X] shakes the ground!"))
+		new /datum/effects/xeno_slow(carbon_target, xeno_owner, ttl = 3.5 SECONDS)
+		to_chat(carbon_target, SPAN_XENODANGER("You are slowed as the impact of [xeno_owner] shakes the ground!"))
 
-/datum/action/xeno_action/activable/pounce/crusher_charge/additional_effects(mob/living/L)
-	if (!isXenoOrHuman(L))
+/datum/action/xeno_action/activable/pounce/crusher_charge/additional_effects(mob/living/target)
+	if (!isXenoOrHuman(target))
 		return
 
-	var/mob/living/carbon/H = L
-	if (H.stat == DEAD)
+	var/mob/living/carbon/carbon_target = target
+	if (carbon_target.stat == DEAD)
 		return
 
-	var/mob/living/carbon/Xenomorph/X = owner
-	if (!istype(X))
+	var/mob/living/carbon/Xenomorph/xeno_owner = owner
+	if (!istype(xeno_owner))
 		return
 
-	X.emote("roar")
-	L.apply_effect(2, WEAKEN)
-	X.visible_message(SPAN_XENODANGER("[X] overruns [H], brutally trampling them underfoot!"), SPAN_XENODANGER("You brutalize [H] as you crush them underfoot!"))
+	xeno_owner.emote("roar")
+	target.apply_effect(2, WEAKEN)
+	xeno_owner.visible_message(SPAN_XENODANGER("[xeno_owner] overruns [carbon_target], brutally trampling them underfoot!"), SPAN_XENODANGER("You brutalize [carbon_target] as you crush them underfoot!"))
 
-	H.apply_armoured_damage(get_xeno_damage_slash(H, direct_hit_damage), ARMOR_MELEE, BRUTE)
-	xeno_throw_human(H, X, X.dir, 3)
+	carbon_target.apply_armoured_damage(get_xeno_damage_slash(carbon_target, direct_hit_damage), ARMOR_MELEE, BRUTE)
+	xeno_throw_human(carbon_target, xeno_owner, xeno_owner.dir, 3)
 
-	H.last_damage_data = create_cause_data(X.caste_type, X)
+	carbon_target.last_damage_data = create_cause_data(xeno_owner.caste_type, xeno_owner)
 	return
 
 /datum/action/xeno_action/activable/pounce/crusher_charge/pre_windup_effects()
@@ -40,11 +40,7 @@
 	if(!istype(xeno_owner) || xeno_owner.mutation_type != CRUSHER_NORMAL)
 		return
 
-	var/datum/behavior_delegate/crusher_base/crusher_delegate = xeno_owner.behavior_delegate
-	if(!istype(crusher_delegate))
-		return
-
-	crusher_delegate.is_charging = TRUE
+	is_charging = TRUE
 	xeno_owner.update_icons()
 
 /datum/action/xeno_action/activable/pounce/crusher_charge/post_windup_effects(var/interrupted)
@@ -54,10 +50,6 @@
 	if(!istype(xeno_owner) || xeno_owner.mutation_type != CRUSHER_NORMAL)
 		return
 
-	var/datum/behavior_delegate/crusher_base/crusher_delegate = xeno_owner.behavior_delegate
-	if(!istype(crusher_delegate))
-		return
-
 	addtimer(CALLBACK(src, PROC_REF(undo_charging_icon)), 0.5 SECONDS) // let the icon be here for a bit, it looks cool
 
 /datum/action/xeno_action/activable/pounce/crusher_charge/proc/undo_charging_icon()
@@ -65,75 +57,71 @@
 	if(!istype(xeno_owner) || xeno_owner.mutation_type != CRUSHER_NORMAL)
 		return
 
-	var/datum/behavior_delegate/crusher_base/crusher_delegate = xeno_owner.behavior_delegate
-	if(!istype(crusher_delegate))
-		return
-
-	crusher_delegate.is_charging = FALSE
+	is_charging = FALSE
 	xeno_owner.update_icons()
 
-/datum/action/xeno_action/activable/pounce/crusher_charge/proc/check_directional_armor(mob/living/carbon/Xenomorph/X, list/damagedata)
+/datum/action/xeno_action/activable/pounce/crusher_charge/proc/check_directional_armor(mob/living/carbon/Xenomorph/xeno_owner, list/damagedata)
 	SIGNAL_HANDLER
 	var/projectile_direction = damagedata["direction"]
-	if(X.dir & REVERSE_DIR(projectile_direction))
+	if(xeno_owner.dir & REVERSE_DIR(projectile_direction))
 		// During the charge windup, crusher gets an extra 15 directional armor in the direction its charging
 		damagedata["armor"] += frontal_armor
 
 
 // This ties the pounce/throwing backend into the old collision backend
-/mob/living/carbon/Xenomorph/Crusher/pounced_obj(var/obj/O)
+/mob/living/carbon/Xenomorph/Crusher/pounced_obj(var/obj/victim)
 	var/datum/action/xeno_action/activable/pounce/crusher_charge/CCA = get_xeno_action_by_type(src, /datum/action/xeno_action/activable/pounce/crusher_charge)
-	if (istype(CCA) && !CCA.action_cooldown_check() && !(O.type in CCA.not_reducing_objects))
+	if (istype(CCA) && !CCA.action_cooldown_check() && !(victim.type in CCA.not_reducing_objects))
 		CCA.reduce_cooldown(50)
 
 	gain_plasma(10)
 
-	if (!handle_collision(O)) // Check old backend
-		obj_launch_collision(O)
+	if (!handle_collision(victim)) // Check old backend
+		obj_launch_collision(victim)
 
-/mob/living/carbon/Xenomorph/Crusher/pounced_turf(var/turf/T)
-	T.ex_act(EXPLOSION_THRESHOLD_VLOW, , create_cause_data(caste_type, src))
-	..(T)
+/mob/living/carbon/Xenomorph/Crusher/pounced_turf(var/turf/victim)
+	victim.ex_act(EXPLOSION_THRESHOLD_VLOW, , create_cause_data(caste_type, src))
+	..(victim)
 
 /datum/action/xeno_action/onclick/crusher_stomp/use_ability(atom/A)
-	var/mob/living/carbon/Xenomorph/X = owner
-	if (!istype(X))
+	var/mob/living/carbon/Xenomorph/xeno_owner = owner
+	if (!istype(xeno_owner))
 		return
 
 	if (!action_cooldown_check())
 		return
 
-	if (!X.check_state())
+	if (!xeno_owner.check_state())
 		return
 
 	if (!check_and_use_plasma_owner())
 		return
 
-	playsound(get_turf(X), 'sound/effects/bang.ogg', 25, 0)
-	X.visible_message(SPAN_XENODANGER("[X] smashes into the ground!"), SPAN_XENODANGER("You smash into the ground!"))
-	X.create_stomp()
+	playsound(get_turf(xeno_owner), 'sound/effects/bang.ogg', 25, FALSE)
+	xeno_owner.visible_message(SPAN_XENODANGER("[xeno_owner] smashes into the ground!"), SPAN_XENODANGER("You smash into the ground!"))
+	xeno_owner.create_stomp()
 
-	for (var/mob/living/carbon/H in get_turf(X))
-		if (H.stat == DEAD || X.can_not_harm(H))
+	for (var/mob/living/carbon/carbon_inrange in get_turf(xeno_owner))
+		if (carbon_inrange.stat == DEAD || xeno_owner.can_not_harm(carbon_inrange))
 			continue
 
-		new effect_type_base(H, X, , , get_xeno_stun_duration(H, effect_duration))
-		to_chat(H, SPAN_XENOHIGHDANGER("You are slowed as [X] knocks you off balance!"))
+		new effect_type_base(carbon_inrange, xeno_owner, ttl = get_xeno_stun_duration(carbon_inrange, effect_duration))
+		to_chat(carbon_inrange, SPAN_XENOHIGHDANGER("You are slowed as [xeno_owner] knocks you off balance!"))
 
-		if(H.mob_size < MOB_SIZE_BIG)
-			H.apply_effect(get_xeno_stun_duration(H, 0.2), WEAKEN)
+		if(carbon_inrange.mob_size < MOB_SIZE_BIG)
+			carbon_inrange.apply_effect(get_xeno_stun_duration(carbon_inrange, 0.2), WEAKEN)
 
-		H.apply_armoured_damage(get_xeno_damage_slash(H, damage), ARMOR_MELEE, BRUTE)
-		H.last_damage_data = create_cause_data(X.caste_type, X)
+		carbon_inrange.apply_armoured_damage(get_xeno_damage_slash(carbon_inrange, damage), ARMOR_MELEE, BRUTE)
+		carbon_inrange.last_damage_data = create_cause_data(xeno_owner.caste_type, xeno_owner)
 
-	for (var/mob/living/carbon/H in orange(distance, get_turf(X)))
-		if (H.stat == DEAD || X.can_not_harm(H))
+	for (var/mob/living/carbon/carbon_inrange in orange(distance, get_turf(xeno_owner)))
+		if (carbon_inrange.stat == DEAD || xeno_owner.can_not_harm(carbon_inrange))
 			continue
 
-		new effect_type_base(H, X, , , get_xeno_stun_duration(H, effect_duration))
-		if(H.mob_size < MOB_SIZE_BIG)
-			H.apply_effect(get_xeno_stun_duration(H, 0.2), WEAKEN)
-		to_chat(H, SPAN_XENOHIGHDANGER("You are slowed as [X] knocks you off balance!"))
+		new effect_type_base(carbon_inrange, xeno_owner, ttl = get_xeno_stun_duration(carbon_inrange, effect_duration))
+		if(carbon_inrange.mob_size < MOB_SIZE_BIG)
+			carbon_inrange.apply_effect(get_xeno_stun_duration(carbon_inrange, 0.2), WEAKEN)
+		to_chat(carbon_inrange, SPAN_XENOHIGHDANGER("You are slowed as [xeno_owner] knocks you off balance!"))
 
 	apply_cooldown()
 	..()
@@ -154,7 +142,7 @@
 	if (!check_and_use_plasma_owner())
 		return
 
-	playsound(get_turf(Xeno), 'sound/effects/bang.ogg', 25, 0)
+	playsound(get_turf(Xeno), 'sound/effects/bang.ogg', 25, FALSE)
 	Xeno.visible_message(SPAN_XENODANGER("[Xeno] smashes into the ground!"), SPAN_XENODANGER("You smash into the ground!"))
 	Xeno.create_stomp()
 
@@ -162,7 +150,7 @@
 		if (Human.stat == DEAD || Xeno.can_not_harm(Human))
 			continue
 
-		new effect_type_base(Human, Xeno, , , get_xeno_stun_duration(Human, effect_duration))
+		new effect_type_base(Human, Xeno, ttl = get_xeno_stun_duration(Human, effect_duration))
 		to_chat(Human, SPAN_XENOHIGHDANGER("You are BRUTALLY crushed and stomped on by [Xeno]!!!"))
 		shake_camera(Human, 10, 2)
 		if(Human.mob_size < MOB_SIZE_BIG)

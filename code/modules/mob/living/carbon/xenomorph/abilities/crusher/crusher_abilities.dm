@@ -23,6 +23,8 @@
 	var/frontal_armor = 15
 	// Object types that dont reduce cooldown when hit
 	var/list/not_reducing_objects = list()
+	/// Used for visual updates by the delegate
+	var/is_charging = FALSE
 
 
 /datum/action/xeno_action/activable/pounce/crusher_charge/New()

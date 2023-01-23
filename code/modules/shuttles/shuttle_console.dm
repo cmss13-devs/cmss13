@@ -272,7 +272,7 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 				if(crash_target == "Cancel")
 					return
 
-				var/i = tgui_alert("Warning: Once you launch the shuttle you will not be able to bring it back. Confirm anyways?", "WARNING", list("Yes", "No"))
+				var/i = tgui_alert(Q, "Warning: Once you launch the shuttle you will not be able to bring it back. Confirm anyways?", "WARNING", list("Yes", "No"))
 				if(i != "Yes")
 					return
 

@@ -1,6 +1,7 @@
 /obj/structure/machinery/pipedispenser
 	name = "Pipe Dispenser"
 	icon = 'icons/obj/structures/props/stationobjs.dmi'
+	desc = "A large machine used for dispensing pipes. Bolts anchor it to the ground, but you can move it around if you unwrench them."
 	icon_state = "pipe_d"
 	density = TRUE
 	anchored = 1

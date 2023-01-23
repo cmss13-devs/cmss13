@@ -43,9 +43,9 @@
 	name = "Praetorian Vanguard Behavior Delegate"
 
 	// Config
-	var/shield_recharge_time = 200  // 20 seconds to recharge 1-hit shield
-	var/pierce_spin_time = 10   // 1 second to use pierce
-	var/shield_decay_cleave_time = 15   // How long you have to buffed cleave after the shield fully decays
+	var/shield_recharge_time = 20 SECONDS  // 20 seconds to recharge 1-hit shield
+	var/pierce_spin_time = 1 SECONDS   // 1 second to use pierce
+	var/shield_decay_cleave_time = 1.5 SECONDS   // How long you have to buffed cleave after the shield fully decays
 
 	// State
 	var/last_combat_time = 0
@@ -64,15 +64,16 @@
 	..()
 
 	last_combat_time = world.time
+
 /datum/behavior_delegate/praetorian_vanguard/post_ability_cast(datum/action/xeno_action/ability, result)
 	..()
 
-	if(istype(ability, datum/action/xeno_action/activable/pierce) && result)
+	if(istype(ability, /datum/action/xeno_action/activable/pierce) && result)
 		// result represents the number of mob hit by pierce
 		var/datum/action/xeno_action/activable/pierce/pierce_action = get_xeno_action_by_type(bound_xeno, /datum/action/xeno_action/activable/pierce)
 		if (result >= pierce_action.shield_regen_threshold)
 			regen_shield()
-	else if(istype(ability, datum/action/xeno_action/activable/pounce/prae_dash) && result)
+	else if(istype(ability, /datum/action/xeno_action/activable/pounce/prae_dash) && result)
 		// result represents the number of mobs hit by the pounce RECAST
 		var/datum/action/xeno_action/activable/pounce/prae_dash/dash_action = get_xeno_action_by_type(bound_xeno, /datum/action/xeno_action/activable/pounce/prae_dash)
 		if (result >= dash_action.shield_regen_threshold)

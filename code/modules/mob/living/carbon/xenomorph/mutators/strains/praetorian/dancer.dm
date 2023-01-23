@@ -50,7 +50,6 @@
 	var/next_slash_buffed = FALSE
 	var/slash_evasion_buffed = FALSE
 	var/slash_evasion_timer = TIMER_ID_NULL
-	var/dodge_activated = FALSE
 
 /datum/behavior_delegate/praetorian_dancer/melee_attack_additional_effects_self()
 	..()
@@ -70,8 +69,10 @@
 	else
 		slash_evasion_timer = addtimer(CALLBACK(src, PROC_REF(remove_evasion_buff)), evasion_buff_ttl, TIMER_STOPPABLE | TIMER_OVERRIDE|TIMER_UNIQUE)
 
-	if (dodge_activated)
-		dodge_activated = FALSE
+	var/datum/action/xeno_action/onclick/prae_dodge/dodge_action = get_xeno_action_by_type(bound_xeno, /datum/action/xeno_action/onclick/prae_dodge)
+	if (dodge_action && dodge_action.dodge_activated)
+		dodge_action.dodge_activated = FALSE
+		dodge_action.button.icon_state = "template"
 		praetorian.remove_temp_pass_flags(PASS_MOB_THRU)
 		praetorian.speed_modifier += 0.5
 		praetorian.recalculate_speed()
@@ -89,7 +90,7 @@
 	for (var/datum/effects/dancer_tag/target_tag in target_carbon.effects_list)
 		qdel(target_tag)
 
-	new /datum/effects/dancer_tag(target_carbon, bound_xeno, , , 35)
+	new /datum/effects/dancer_tag(target_carbon, bound_xeno, ttl = 3.5 SECONDS)
 
 	if(ishuman(target_carbon))
 		var/mob/living/carbon/human/target_human = target_carbon

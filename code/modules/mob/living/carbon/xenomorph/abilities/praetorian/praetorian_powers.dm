@@ -1,3 +1,38 @@
+/datum/action/xeno_action/activable/prae_acid_ball/use_ability(atom/A)
+	var/mob/living/carbon/Xenomorph/xeno_owner = owner
+	if (!xeno_owner.check_state() || xeno_owner.action_busy)
+		return
+
+	if (!action_cooldown_check() && check_and_use_plasma_owner())
+		return
+
+	var/turf/current_turf = get_turf(xeno_owner)
+
+	if (!current_turf)
+		return
+
+	if (!do_after(xeno_owner, activation_delay, INTERRUPT_ALL | BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
+		to_chat(xeno_owner, SPAN_XENODANGER("You cancel your acid ball."))
+		return
+
+	if (!action_cooldown_check())
+		return
+
+	apply_cooldown()
+
+	to_chat(xeno_owner, SPAN_XENOWARNING("You lob a compressed ball of acid into the air!"))
+
+	var/obj/item/explosive/grenade/xeno_acid_grenade/grenade = new /obj/item/explosive/grenade/xeno_acid_grenade
+	grenade.cause_data = create_cause_data(initial(xeno_owner.caste_type), xeno_owner)
+	grenade.forceMove(get_turf(xeno_owner))
+	grenade.throw_atom(A, 5, SPEED_SLOW, xeno_owner, TRUE)
+	addtimer(CALLBACK(grenade, TYPE_PROC_REF(/obj/item/explosive, prime)), prime_delay)
+
+	..()
+	return
+
+///////// VANGUARD POWERS
+
 /datum/action/xeno_action/activable/pierce/use_ability(atom/target)
 	var/mob/living/carbon/Xenomorph/xeno_owner = owner
 	if (!action_cooldown_check())
@@ -392,7 +427,7 @@
 	oppressor_user.visible_message(SPAN_XENOWARNING("\The [oppressor_user] hits [target_carbon] in the [target_limb? target_limb.display_name : "chest"] with a devastatingly powerful punch!"), \
 	SPAN_XENOWARNING("You hit [target_carbon] in the [target_limb ? target_limb.display_name : "chest"] with a devastatingly powerful punch!"))
 	var/hitsound = pick('sound/weapons/punch1.ogg','sound/weapons/punch2.ogg','sound/weapons/punch3.ogg','sound/weapons/punch4.ogg')
-	playsound(target_carbon,hitsound, 50, 1)
+	playsound(target_carbon, hitsound, 50, TRUE)
 
 	oppressor_user.face_atom(target_carbon)
 	oppressor_user.animation_attack_on(target_carbon)
@@ -427,13 +462,13 @@
 	..()
 	return
 
-/datum/action/xeno_action/activable/tail_lash/use_ability(atom/A)
+/datum/action/xeno_action/activable/tail_lash/use_ability(atom/target)
 	var/mob/living/carbon/Xenomorph/xeno_owner = owner
 
 	if (!istype(xeno_owner) || !xeno_owner.check_state() || !action_cooldown_check())
 		return
 
-	if(!A || A.layer >= FLY_LAYER || !isturf(xeno_owner.loc))
+	if(!target || target.layer >= FLY_LAYER || !isturf(xeno_owner.loc))
 		return
 
 	if (!check_plasma_owner())
@@ -446,7 +481,7 @@
 
 	// Code to get a 2x3 area of turfs
 	var/turf/root = get_turf(xeno_owner)
-	var/facing = Get_Compass_Dir(xeno_owner, A)
+	var/facing = Get_Compass_Dir(xeno_owner, target)
 	var/turf/infront = get_step(root, facing)
 	var/turf/left = get_step(root, turn(facing, 90))
 	var/turf/right = get_step(root, turn(facing, -90))
@@ -516,7 +551,8 @@
 	return
 
 
-/////////// Dancer powers
+///////// DANCER POWERS
+
 /datum/action/xeno_action/activable/prae_impale/use_ability(atom/target_atom)
 	var/mob/living/carbon/Xenomorph/dancer_user = owner
 
@@ -546,16 +582,12 @@
 	if (!check_and_use_plasma_owner())
 		return
 
-	var/buffed = FALSE
 	apply_cooldown()
-	if (dancer_user.mutation_type == PRAETORIAN_DANCER)
-		var/found = FALSE
-		for (var/datum/effects/dancer_tag/dancer_tag_effect in target_carbon.effects_list)
-			found = TRUE
-			qdel(dancer_tag_effect)
-			break
-
-		buffed = found
+	var/buffed = FALSE
+	for (var/datum/effects/dancer_tag/dancer_tag_effect in target_carbon.effects_list)
+		buffed = TRUE
+		qdel(dancer_tag_effect)
+		break
 
 	if(ishuman(target_carbon))
 		var/mob/living/carbon/human/Hu = target_carbon
@@ -603,41 +635,25 @@
 	if (!check_and_use_plasma_owner())
 		return
 
-	if (xeno.mutation_type != PRAETORIAN_DANCER)
-		return
-
-	var/datum/behavior_delegate/praetorian_dancer/behavior = xeno.behavior_delegate
-	if (!istype(behavior))
-		return
-
-	behavior.dodge_activated = TRUE
 	button.icon_state = "template_active"
 	to_chat(xeno, SPAN_XENOHIGHDANGER("You can now dodge through mobs!"))
 	xeno.speed_modifier -= speed_buff_amount
 	xeno.add_temp_pass_flags(PASS_MOB_THRU)
 	xeno.recalculate_speed()
-
+	dodge_activated = TRUE
 	addtimer(CALLBACK(src, PROC_REF(remove_effects)), duration)
 
 	apply_cooldown()
 	..()
-	return
+	return TRUE
 
 /datum/action/xeno_action/onclick/prae_dodge/proc/remove_effects()
 	var/mob/living/carbon/Xenomorph/xeno = owner
-
 	if (!istype(xeno))
 		return
 
-	if (xeno.mutation_type != PRAETORIAN_DANCER)
-		return
-
-	var/datum/behavior_delegate/praetorian_dancer/behavior = xeno.behavior_delegate
-	if (!istype(behavior))
-		return
-
-	if (behavior.dodge_activated)
-		behavior.dodge_activated = FALSE
+	if (dodge_activated)
+		dodge_activated = FALSE
 		button.icon_state = "template"
 		xeno.speed_modifier += speed_buff_amount
 		xeno.remove_temp_pass_flags(PASS_MOB_THRU)
@@ -645,23 +661,23 @@
 		to_chat(xeno, SPAN_XENOHIGHDANGER("You can no longer dodge through mobs!"))
 
 /datum/action/xeno_action/activable/prae_tail_trip/use_ability(atom/target_atom)
-	var/mob/living/carbon/Xenomorph/dancer_user = owner
+	var/mob/living/carbon/Xenomorph/xeno_owner = owner
 
 	if (!action_cooldown_check())
 		return
 
-	if (!istype(dancer_user) || !dancer_user.check_state())
+	if (!istype(xeno_owner) || !xeno_owner.check_state())
 		return
 
-	if (!isXenoOrHuman(target_atom) || dancer_user.can_not_harm(target_atom))
-		to_chat(dancer_user, SPAN_XENODANGER("You must target a hostile!"))
+	if (!isXenoOrHuman(target_atom) || xeno_owner.can_not_harm(target_atom))
+		to_chat(xeno_owner, SPAN_XENODANGER("You must target a hostile!"))
 		apply_cooldown_override(click_miss_cooldown)
 		return
 
 	var/mob/living/carbon/target_carbon = target_atom
 
 	if (target_carbon.stat == DEAD)
-		to_chat(dancer_user, SPAN_XENOWARNING("[target_atom] is dead, why would you want to attack it?"))
+		to_chat(xeno_owner, SPAN_XENOWARNING("[target_atom] is dead, why would you want to attack it?"))
 		apply_cooldown_override(click_miss_cooldown)
 		return
 
@@ -669,43 +685,38 @@
 		return
 
 	var/buffed = FALSE
-
-	if (dancer_user.mutation_type == PRAETORIAN_DANCER)
-		var/found = FALSE
-		for (var/datum/effects/dancer_tag/dancer_tag_effect in target_carbon.effects_list)
-			found = TRUE
-			qdel(dancer_tag_effect)
-			break
-
-		buffed = found
+	for (var/datum/effects/dancer_tag/dancer_tag_effect in target_carbon.effects_list)
+		buffed = TRUE
+		qdel(dancer_tag_effect)
+		break
 
 	if(ishuman(target_carbon))
 		var/mob/living/carbon/human/target_human = target_carbon
 		target_human.update_xeno_hostile_hud()
 
-	var/dist = get_dist(dancer_user, target_carbon)
+	var/dist = get_dist(xeno_owner, target_carbon)
 
 	if (dist > range)
-		to_chat(dancer_user, SPAN_WARNING("[target_carbon] is too far away!"))
+		to_chat(xeno_owner, SPAN_WARNING("[target_carbon] is too far away!"))
 		return
 
 	if (dist > 1)
-		var/turf/targetTurf = get_step(dancer_user, get_dir(dancer_user, target_carbon))
+		var/turf/targetTurf = get_step(xeno_owner, get_dir(xeno_owner, target_carbon))
 		if (targetTurf.density)
-			to_chat(dancer_user, SPAN_WARNING("You can't attack through [targetTurf]!"))
+			to_chat(xeno_owner, SPAN_WARNING("You can't attack through [targetTurf]!"))
 			return
 		else
 			for (var/atom/atom_in_turf in targetTurf)
 				if (atom_in_turf.density && !atom_in_turf.throwpass && !istype(atom_in_turf, /obj/structure/barricade) && !istype(atom_in_turf, /mob/living))
-					to_chat(dancer_user, SPAN_WARNING("You can't attack through [atom_in_turf]!"))
+					to_chat(xeno_owner, SPAN_WARNING("You can't attack through [atom_in_turf]!"))
 					return
 
 	// Hmm today I will kill a marine while looking away from them
-	dancer_user.face_atom(target_carbon)
-	dancer_user.flick_attack_overlay(target_carbon, "disarm")
+	xeno_owner.face_atom(target_carbon)
+	xeno_owner.flick_attack_overlay(target_carbon, "disarm")
 
 	if (!buffed)
-		new /datum/effects/xeno_slow(target_carbon, dancer_user, null, null, get_xeno_stun_duration(target_carbon, slow_duration))
+		new /datum/effects/xeno_slow(target_carbon, xeno_owner, ttl = get_xeno_stun_duration(target_carbon, slow_duration))
 
 	var/stun_duration = stun_duration_default
 	var/daze_duration = 0
@@ -721,17 +732,17 @@
 		if(Xeno.mob_size >= MOB_SIZE_BIG)
 			xeno_smashed = TRUE
 			shake_camera(Xeno, 10, 1)
-			dancer_user.visible_message(SPAN_XENODANGER("[dancer_user] smashes [Xeno] with it's tail!"), SPAN_XENODANGER("You smash [Xeno] with your tail!"))
-			to_chat(Xeno, SPAN_XENOHIGHDANGER("You feel dizzy as [dancer_user] smashes you with their tail!"))
-			dancer_user.animation_attack_on(Xeno)
+			xeno_owner.visible_message(SPAN_XENODANGER("[xeno_owner] smashes [Xeno] with it's tail!"), SPAN_XENODANGER("You smash [Xeno] with your tail!"))
+			to_chat(Xeno, SPAN_XENOHIGHDANGER("You feel dizzy as [xeno_owner] smashes you with their tail!"))
+			xeno_owner.animation_attack_on(Xeno)
 
 	if(!xeno_smashed)
 		if (stun_duration > 0)
 			target_carbon.apply_effect(stun_duration, WEAKEN)
-		dancer_user.visible_message(SPAN_XENODANGER("[dancer_user] trips [target_atom] with it's tail!"), SPAN_XENODANGER("You trip [target_atom] with your tail!"))
-		dancer_user.spin_circle()
-		dancer_user.emote("tail")
-		to_chat(target_carbon, SPAN_XENOHIGHDANGER("You are swept off your feet by [dancer_user]!"))
+		xeno_owner.visible_message(SPAN_XENODANGER("[xeno_owner] trips [target_atom] with it's tail!"), SPAN_XENODANGER("You trip [target_atom] with your tail!"))
+		xeno_owner.spin_circle()
+		xeno_owner.emote("tail")
+		to_chat(target_carbon, SPAN_XENOHIGHDANGER("You are swept off your feet by [xeno_owner]!"))
 	if (daze_duration > 0)
 		target_carbon.apply_effect(daze_duration, DAZE)
 
@@ -739,38 +750,7 @@
 	..()
 	return
 
-/datum/action/xeno_action/activable/prae_acid_ball/use_ability(atom/A)
-	var/mob/living/carbon/Xenomorph/xeno_owner = owner
-	if (!xeno_owner.check_state() || xeno_owner.action_busy)
-		return
-
-	if (!action_cooldown_check() && check_and_use_plasma_owner())
-		return
-
-	var/turf/current_turf = get_turf(xeno_owner)
-
-	if (!current_turf)
-		return
-
-	if (!do_after(xeno_owner, activation_delay, INTERRUPT_ALL | BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
-		to_chat(xeno_owner, SPAN_XENODANGER("You cancel your acid ball."))
-		return
-
-	if (!action_cooldown_check())
-		return
-
-	apply_cooldown()
-
-	to_chat(xeno_owner, SPAN_XENOWARNING("You lob a compressed ball of acid into the air!"))
-
-	var/obj/item/explosive/grenade/xeno_acid_grenade/grenade = new /obj/item/explosive/grenade/xeno_acid_grenade
-	grenade.cause_data = create_cause_data(initial(xeno_owner.caste_type), xeno_owner)
-	grenade.forceMove(get_turf(xeno_owner))
-	grenade.throw_atom(A, 5, SPEED_SLOW, xeno_owner, TRUE)
-	addtimer(CALLBACK(grenade, TYPE_PROC_REF(/obj/item/explosive, prime)), prime_delay)
-
-	..()
-	return
+///////// WARDEN POWERS
 
 /datum/action/xeno_action/activable/warden_heal/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/xeno_owner = owner

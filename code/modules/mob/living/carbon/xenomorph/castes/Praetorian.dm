@@ -31,7 +31,7 @@
 /mob/living/carbon/Xenomorph/Praetorian
 	caste_type = XENO_CASTE_PRAETORIAN
 	name = XENO_CASTE_PRAETORIAN
-	desc = "target huge, looming beast of an alien."
+	desc = "A huge, looming beast of an alien."
 	icon_size = 64
 	icon_state = "Praetorian Walking"
 	plasma_types = list(PLASMA_PHEROMONE,PLASMA_NEUROTOXIN)

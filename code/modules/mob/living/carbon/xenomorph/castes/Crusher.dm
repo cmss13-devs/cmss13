@@ -70,120 +70,108 @@
 		return FALSE
 
 	//The entire thing needs to be way less specific and way more generic, less we get to snowflake every structure in the game in this single proc
-	switch(target.type)
-		if (/obj/structure/barricade)
-			var/obj/structure/barricade/collided_barricade = target
-			visible_message(SPAN_DANGER("[src] rams into [collided_barricade] and skids to a halt!"), SPAN_XENOWARNING("You ram into [collided_barricade] and skid to a halt!"))
-
-			collided_barricade.Collided(src)
-			. =  FALSE
-		if (/obj/vehicle/multitile)
-			var/obj/vehicle/multitile/collided_multitile = target
-			visible_message(SPAN_DANGER("[src] rams into [collided_multitile] and skids to a halt!"), SPAN_XENOWARNING("You ram into [collided_multitile] and skid to a halt!"))
-
-			collided_multitile.Collided(src)
+	if (istype(target, /obj/structure/barricade))
+		var/obj/structure/barricade/collided_barricade = target
+		visible_message(SPAN_DANGER("[src] rams into [collided_barricade] and skids to a halt!"), SPAN_XENOWARNING("You ram into [collided_barricade] and skid to a halt!"))
+		collided_barricade.Collided(src)
+		. =  FALSE
+	else if (istype(target, /obj/vehicle/multitile))
+		var/obj/vehicle/multitile/collided_multitile = target
+		visible_message(SPAN_DANGER("[src] rams into [collided_multitile] and skids to a halt!"), SPAN_XENOWARNING("You ram into [collided_multitile] and skid to a halt!"))
+		collided_multitile.Collided(src)
+		. = FALSE
+	else if (istype(target, /obj/structure/machinery/m56d_hmg))
+		var/obj/structure/machinery/m56d_hmg/collided_m56 = target
+		visible_message(SPAN_DANGER("[src] rams [collided_m56]!"), SPAN_XENODANGER("You ram [collided_m56]!"))
+		playsound(loc, "punch", 25, TRUE)
+		collided_m56.CrusherImpact()
+		. =  FALSE
+	else if (istype(target, /obj/structure/window))
+		var/obj/structure/window/collided_window = target
+		if (collided_window.unacidable)
 			. = FALSE
-		if (/obj/structure/machinery/m56d_hmg)
-			var/obj/structure/machinery/m56d_hmg/collided_m56 = target
-			visible_message(SPAN_DANGER("[src] rams [collided_m56]!"), SPAN_XENODANGER("You ram [collided_m56]!"))
-			playsound(loc, "punch", 25, TRUE)
-			collided_m56.CrusherImpact()
-
-			. =  FALSE
-		if (/obj/structure/window)
-			var/obj/structure/window/collided_window = target
-			if (collided_window.unacidable)
-				. = FALSE
-			else
-				collided_window.deconstruct(FALSE)
-				. =  TRUE // Continue throw
-		if (/obj/structure/machinery/door/airlock)
-			var/obj/structure/machinery/door/airlock/collided_airlock = target
-			if (collided_airlock.unacidable)
-				. = FALSE
-			else
-				collided_airlock.deconstruct()
-		if (/obj/structure/grille)
-			var/obj/structure/grille/collided_grille = target
-			if(collided_grille.unacidable)
-				. =  FALSE
-			else
-				collided_grille.health -=  80 //Usually knocks it down.
-				collided_grille.healthcheck()
-				. = TRUE
-		if (/obj/structure/surface/table)
-			var/obj/structure/surface/table/collided_table = target
-			collided_table.Crossed(src)
-			. = TRUE
-		if (/obj/structure/machinery/defenses)
-			var/obj/structure/machinery/defenses/collided_defense = target
-			visible_message(SPAN_DANGER("[src] rams [collided_defense]!"), SPAN_XENODANGER("You ram [collided_defense]!"))
-
-			if (!collided_defense.unacidable)
-				playsound(loc, "punch", 25, TRUE)
-				collided_defense.stat = 1
-				collided_defense.update_icon()
-				collided_defense.update_health(40)
-			. =  FALSE
-		if (/obj/structure/machinery/vending)
-			var/obj/structure/machinery/vending/collided_vending = target
-			if (collided_vending.unslashable)
-				. = FALSE
-			else
-				visible_message(SPAN_DANGER("[src] smashes straight into [collided_vending]!"), SPAN_XENODANGER("You smash straight into [collided_vending]!"))
-				playsound(loc, "punch", 25, TRUE)
-				collided_vending.tip_over()
-
-				var/impact_range = 1
-				var/turf/TA = get_diagonal_step(collided_vending, dir)
-				TA = get_step_away(TA, src)
-				var/launch_speed = 2
-				launch_towards(TA, impact_range, launch_speed)
-
-				. =  TRUE
-		if (/obj/structure/machinery/cm_vending)
-			var/obj/structure/machinery/cm_vending/collided_cm_vending = target
-			if (collided_cm_vending.unslashable)
-				. = FALSE
-			else
-				visible_message(SPAN_DANGER("[src] smashes straight into [collided_cm_vending]!"), SPAN_XENODANGER("You smash straight into [collided_cm_vending]!"))
-				playsound(loc, "punch", 25, TRUE)
-				collided_cm_vending.tip_over()
-
-				var/impact_range = 1
-				var/turf/TA = get_diagonal_step(collided_cm_vending, dir)
-				TA = get_step_away(TA, src)
-				var/launch_speed = 2
-				throw_atom(TA, impact_range, launch_speed)
-
-				. =  TRUE
 		else
-			if (!isobj(target))
-				return
-			var/obj/object_target = target
-			if (object_target.unacidable)
-				. = FALSE
-			else if (object_target.anchored)
-				visible_message(SPAN_DANGER("[src] crushes [object_target]!"), SPAN_XENODANGER("You crush [object_target]!"))
-				if(object_target.contents.len) //Hopefully won't auto-delete things inside crushed stuff.
-					var/turf/T = get_turf(src)
-					for(var/atom/movable/S in T.contents) S.forceMove(T)
-
-				qdel(object_target)
-				. = TRUE
-			else
-				if(object_target.buckled_mob)
-					object_target.unbuckle()
-				visible_message(SPAN_WARNING("[src] knocks [object_target] aside!"), SPAN_XENOWARNING("You knock [object_target] aside.")) //Canisters, crates etc. go flying.
-				playsound(loc, "punch", 25, 1)
-
-				var/impact_range = 2
-				var/turf/TA = get_diagonal_step(object_target, dir)
-				TA = get_step_away(TA, src)
-				var/launch_speed = 2
-				throw_atom(TA, impact_range, launch_speed)
-
-				. = TRUE
+			collided_window.deconstruct(FALSE)
+			. =  TRUE // Continue throw
+	else if (istype(target, /obj/structure/machinery/door/airlock))
+		var/obj/structure/machinery/door/airlock/collided_airlock = target
+		if (collided_airlock.unacidable)
+			. = FALSE
+		else
+			collided_airlock.deconstruct()
+	else if (istype(target, /obj/structure/grille))
+		var/obj/structure/grille/collided_grille = target
+		if(collided_grille.unacidable)
+			. =  FALSE
+		else
+			collided_grille.health -=  80 //Usually knocks it down.
+			collided_grille.healthcheck()
+			. = TRUE
+	else if (istype(target, /obj/structure/surface/table))
+		var/obj/structure/surface/table/collided_table = target
+		collided_table.Crossed(src)
+		. = TRUE
+	else if (istype(target, /obj/structure/machinery/defenses))
+		var/obj/structure/machinery/defenses/collided_defense = target
+		visible_message(SPAN_DANGER("[src] rams [collided_defense]!"), SPAN_XENODANGER("You ram [collided_defense]!"))
+		if (!collided_defense.unacidable)
+			playsound(loc, "punch", 25, TRUE)
+			collided_defense.stat = 1
+			collided_defense.update_icon()
+			collided_defense.update_health(40)
+		. =  FALSE
+	else if (istype(target, /obj/structure/machinery/vending))
+		var/obj/structure/machinery/vending/collided_vending = target
+		if (collided_vending.unslashable)
+			. = FALSE
+		else
+			visible_message(SPAN_DANGER("[src] smashes straight into [collided_vending]!"), SPAN_XENODANGER("You smash straight into [collided_vending]!"))
+			playsound(loc, "punch", 25, TRUE)
+			collided_vending.tip_over()
+			var/impact_range = 1
+			var/turf/TA = get_diagonal_step(collided_vending, dir)
+			TA = get_step_away(TA, src)
+			var/launch_speed = 2
+			launch_towards(TA, impact_range, launch_speed)
+			. =  TRUE
+	else if (istype(target, /obj/structure/machinery/cm_vending))
+		var/obj/structure/machinery/cm_vending/collided_cm_vending = target
+		if (collided_cm_vending.unslashable)
+			. = FALSE
+		else
+			visible_message(SPAN_DANGER("[src] smashes straight into [collided_cm_vending]!"), SPAN_XENODANGER("You smash straight into [collided_cm_vending]!"))
+			playsound(loc, "punch", 25, TRUE)
+			collided_cm_vending.tip_over()
+			var/impact_range = 1
+			var/turf/TA = get_diagonal_step(collided_cm_vending, dir)
+			TA = get_step_away(TA, src)
+			var/launch_speed = 2
+			throw_atom(TA, impact_range, launch_speed)
+			. =  TRUE
+	else
+		if (!isobj(target))
+			return
+		var/obj/object_target = target
+		if (object_target.unacidable)
+			. = FALSE
+		else if (object_target.anchored)
+			visible_message(SPAN_DANGER("[src] crushes [object_target]!"), SPAN_XENODANGER("You crush [object_target]!"))
+			if(object_target.contents.len) //Hopefully won't auto-delete things inside crushed stuff.
+				var/turf/T = get_turf(src)
+				for(var/atom/movable/S in T.contents) S.forceMove(T)
+			qdel(object_target)
+			. = TRUE
+		else
+			if(object_target.buckled_mob)
+				object_target.unbuckle()
+			visible_message(SPAN_WARNING("[src] knocks [object_target] aside!"), SPAN_XENOWARNING("You knock [object_target] aside.")) //Canisters, crates etc. go flying.
+			playsound(loc, "punch", 25, 1)
+			var/impact_range = 2
+			var/turf/TA = get_diagonal_step(object_target, dir)
+			TA = get_step_away(TA, src)
+			var/launch_speed = 2
+			throw_atom(TA, impact_range, launch_speed)
+			. = TRUE
 
 	if (!.)
 		update_icons()

@@ -72,7 +72,7 @@
 	color += num2text(alpha, 2, 16)
 	owner.add_filter("empower_rage", 1, list("type" = "outline", "color" = color, "size" = 3))
 
-	addtimer(CALLBACK(src, PROC_REF(weaken_superbuff)), (super_empower_duration) * (3/4))
+	addtimer(CALLBACK(src, PROC_REF(weaken_superbuff)), super_empower_duration * 0.75)
 
 /datum/action/xeno_action/onclick/empower/proc/weaken_superbuff()
 	owner.remove_filter("empower_rage")
@@ -81,7 +81,7 @@
 	color += num2text(alpha, 2, 16)
 	owner.add_filter("empower_rage", 1, list("type" = "outline", "color" = color, "size" = 3))
 
-	addtimer(CALLBACK(src, PROC_REF(remove_superbuff)), (super_empower_duration) * (1/4))
+	addtimer(CALLBACK(src, PROC_REF(remove_superbuff)), super_empower_duration * 0.25)
 
 /datum/action/xeno_action/onclick/empower/proc/remove_superbuff()
 	current_targets = 0

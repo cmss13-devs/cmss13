@@ -334,6 +334,8 @@
 	var/eggs_max = 0
 	var/laid_egg = 0
 
+	//Healer vars
+	var/salve_applied_recently = FALSE
 	//Taken from update_icon for all xeno's
 	var/list/overlays_standing[X_TOTAL_LAYERS]
 

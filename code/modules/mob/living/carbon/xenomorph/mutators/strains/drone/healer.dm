@@ -116,15 +116,17 @@
 	to_chat(target_xeno, SPAN_XENOWARNING("\The [src] covers your wounds with regenerative resin. You feel reinvigorated!"))
 	to_chat(src, SPAN_XENOWARNING("You regurgitate your vital fluids to create a regenerative resin and apply it to \the [target_xeno]'s wounds. You feel weakened...")) //The vital fluids mix with sticky saliva.
 	playsound(src, "alien_drool", 25)
-	var/datum/behavior_delegate/drone_healer/healer_delegate = src.behavior_delegate
-	healer_delegate.salve_applied_recently = TRUE
+	salve_applied_recently = TRUE
 	update_icons()
-	addtimer(CALLBACK(healer_delegate, /datum/behavior_delegate/drone_healer/proc/un_salve), 10 SECONDS, TIMER_OVERRIDE|TIMER_UNIQUE)
+	addtimer(CALLBACK(src, PROC_REF(un_salve)), 10 SECONDS, TIMER_OVERRIDE|TIMER_UNIQUE)
+
+/mob/living/carbon/Xenomorph/proc/un_salve()
+	salve_applied_recently = FALSE
+	update_icons()
 
 /datum/behavior_delegate/drone_healer
 	name = "Healer Drone Behavior Delegate"
 
-	var/salve_applied_recently = FALSE
 	var/mutable_appearance/salve_applied_icon
 
 /datum/behavior_delegate/drone_healer/on_update_icons()
@@ -134,7 +136,7 @@
 	bound_xeno.overlays -= salve_applied_icon
 	salve_applied_icon.overlays.Cut()
 
-	if(!salve_applied_recently)
+	if(!bound_xeno.salve_applied_recently)
 		return
 
 	if(bound_xeno.stat == DEAD)
@@ -148,7 +150,3 @@
 		salve_applied_icon.icon_state = "Healer Drone Walking"
 
 	bound_xeno.overlays += salve_applied_icon
-
-/datum/behavior_delegate/drone_healer/proc/un_salve()
-	salve_applied_recently = FALSE
-	bound_xeno.update_icons()

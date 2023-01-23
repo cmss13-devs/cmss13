@@ -1,7 +1,7 @@
 import { useBackend, useSharedState } from '../backend';
 import { Window } from '../layouts';
-import { Button, Flex, Section, Stack } from '../components';
-import { Box, LaunchButton, CancelLaunchButton, Icon, DisabledScreen, InFlightCountdown, LaunchCountdown, NavigationProps, ShuttleRecharge } from './NavigationShuttle';
+import { Box, Button, Flex, Icon, Section, Stack } from '../components';
+import { LaunchButton, CancelLaunchButton, DisabledScreen, InFlightCountdown, LaunchCountdown, NavigationProps, ShuttleRecharge } from './NavigationShuttle';
 
 interface DoorStatus {
   id: string;

@@ -2060,7 +2060,6 @@
 #include "code\modules\shuttle\shuttle.dm"
 #include "code\modules\shuttle\shuttle_rotate.dm"
 #include "code\modules\shuttle\vehicle_elevator.dm"
-#include "code\modules\shuttle\shuttles\ert.dm"
 #include "code\modules\shuttle\shuttles\escape_shuttle.dm"
 #include "code\modules\shuttles\escape_pods.dm"
 #include "code\modules\shuttles\marine_ferry.dm"

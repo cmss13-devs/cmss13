@@ -1030,7 +1030,7 @@ var/global/image/action_purple_power_up
  * Note: 'delay' should be divisible by numticks in order for the timing to work as intended. numticks should also be a whole number.
  */
 /proc/do_after(mob/user, delay, user_flags = INTERRUPT_ALL, show_busy_icon, atom/movable/target, target_flags = INTERRUPT_MOVED, show_target_icon, max_dist = 1, \
-		show_remaining_time = FALSE, numticks = DA_DEFAULT_NUM_TICKS) // These args should primarily be named args, since you only modify them in niche situations
+		show_remaining_time = FALSE, numticks = DA_DEFAULT_NUM_TICKS, datum/callback/extra_checks) // These args should primarily be named args, since you only modify them in niche situations
 	if(!istype(user) || delay < 0)
 		return FALSE
 
@@ -1106,6 +1106,9 @@ var/global/image/action_purple_power_up
 		sleep(delayfraction)
 		time_remaining -= delayfraction
 		if(!istype(L) || has_target && !istype(target)) // Checks if L exists and is not dead and if the target exists and is not destroyed
+			. = FALSE
+			break
+		if(extra_checks && !extra_checks.Invoke())
 			. = FALSE
 			break
 		if(user_flags & INTERRUPT_DIFF_LOC && L.loc != user_orig_loc || \
@@ -1203,7 +1206,6 @@ var/global/image/action_purple_power_up
 		)
 			. = FALSE
 			break
-
 	if(L && busy_icon)
 		L.overlays -= busy_icon
 	if(target && target_icon)

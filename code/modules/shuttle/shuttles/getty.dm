@@ -26,23 +26,27 @@
 	port_direction = SOUTH
 
 /obj/structure/machinery/computer/shuttle/getty
+	name = "\"Gettysburg\" transit computer"
+	icon = 'icons/obj/structures/machinery/shuttle-parts.dmi'
+	icon_state = "consoleright"
 	unacidable = TRUE
 	indestructible = TRUE
 	req_one_access = list(ACCESS_MARINE_DROPSHIP, ACCESS_MARINE_LEADER)
 	shuttleId = SHUTTLE_GETTY
 	possible_destinations = list(SHUTTLE_GETTY, SHUTTLE_GETTY_CUSTOM)
 
-/obj/structure/machinery/computer/camera_advanced/shuttle_docker/minidropship
-	name = "Gettysburg navigation computer"
+/obj/structure/machinery/computer/camera_advanced/shuttle_docker/getty
+	name = "\"Gettysburg\" navigation computer"
 	desc = "Used to designate a precise transit location for the Gettysburg."
-	icon_state = "maptable"
+	icon = 'icons/obj/structures/machinery/shuttle-parts.dmi'
+	icon_state = "consoleleft"
 	req_one_access = list(ACCESS_MARINE_DROPSHIP, ACCESS_MARINE_LEADER)
 	shuttleId = SHUTTLE_GETTY
 	lock_override = CAMERA_LOCK_GROUND
-	shuttlePortId = "minidropship_custom"
+	shuttlePortId = list(SHUTTLE_GETTY_CUSTOM)
 	view_range = "26x26"
-	x_offset = 0
-	y_offset = 0
-	designate_time = 100
+	x_offset = 4
+	y_offset = 5
+	designate_time = 10 SECONDS
 	indestructible = TRUE
 	unacidable = TRUE

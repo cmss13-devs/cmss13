@@ -21,7 +21,7 @@
 	},
 /area/shuttle/getty)
 "eE" = (
-/obj/structure/machinery/computer/dropship_weapons/dropship2,
+/obj/structure/machinery/computer/shuttle/getty,
 /turf/open/floor/plating,
 /area/shuttle/getty)
 "eK" = (
@@ -218,7 +218,7 @@
 	},
 /area/shuttle/getty)
 "GU" = (
-/obj/structure/machinery/computer/security/dropship/two,
+/obj/structure/machinery/computer/camera_advanced/shuttle_docker/getty,
 /turf/open/floor/plating,
 /area/shuttle/getty)
 "Ha" = (

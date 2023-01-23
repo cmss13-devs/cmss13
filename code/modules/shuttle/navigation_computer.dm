@@ -30,7 +30,7 @@
 	/// Vertical offset from the console of the origin tile when using it
 	var/y_offset = 0
 	/// Turfs that can be landed on
-	var/list/whitelist_turfs = list(/turf/open/auto_turf, /turf/open/floor)
+	var/list/whitelist_turfs = list(/turf/open/auto_turf, /turf/open/floor, /turf/open/gm)
 	/// Are we able to see hidden ports when using the console
 	var/see_hidden = FALSE
 	/// Delay of the place_action
@@ -161,11 +161,11 @@
 	if(designate_time && (landing_clear != SHUTTLE_DOCKER_BLOCKED))
 		to_chat(current_user, SPAN_WARNING("Targeting transit location, please wait [DisplayTimeText(designate_time)]..."))
 		designating_target_loc = the_eye.loc
-		var/wait_completed = do_after(current_user, designate_time, TRUE, designating_target_loc)
+		var/wait_completed = do_after(current_user, designate_time, TRUE, designating_target_loc, extra_checks = CALLBACK(src, /obj/structure/machinery/computer/camera_advanced/shuttle_docker/proc/canDesignateTarget))
 		designating_target_loc = null
 		if(!current_user)
 			return
-		if(!wait_completed || !designating_target_loc || !current_user || (eyeobj.loc != designating_target_loc) || (stat & (NOPOWER|BROKEN)) )
+		if(!wait_completed)
 			to_chat(current_user, SPAN_WARNING("Operation aborted."))
 			return
 		landing_clear = checkLandingSpot()

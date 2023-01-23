@@ -2809,6 +2809,33 @@
 	smoke_system.start()
 	T.visible_message(SPAN_DANGER("A glob of acid lands with a splat and explodes into noxious fumes!"))
 
+/datum/ammo/xeno/acid_shotgun
+	name = "acid ball"
+	ping = null
+	flags_ammo_behavior = AMMO_SKIPS_ALIENS|AMMO_STOPPED_BY_COVER|AMMO_IGNORE_ARMOR|AMMO_ACIDIC
+	bonus_projectiles_type = /datum/ammo/xeno/acid_shotgun/spread
+	hit_effect_color = "#FF0000"
+
+/datum/ammo/xeno/acid_shotgun/New()
+	..()
+	damage = 10
+	max_range = 5
+	damage_type = BURN
+	accuracy = HIT_ACCURACY_TIER_8
+	accuracy_var_low = PROJECTILE_VARIANCE_TIER_6
+	accuracy_var_high = PROJECTILE_VARIANCE_TIER_6
+	bonus_projectiles_amount = EXTRA_PROJECTILES_TIER_9
+	shrapnel_type = /datum/ammo/xeno/acid_shotgun/spread
+	shrapnel_chance = 100
+
+/datum/ammo/xeno/acid_shotgun/spread
+	name = "acid ball"
+
+/datum/ammo/xeno/acid_shotgun/spread/New()
+	..()
+	scatter = SCATTER_AMOUNT_TIER_1
+	bonus_projectiles_amount = 0
+	max_range = 4
 
 /datum/ammo/xeno/bone_chips
 	name = "bone chips"

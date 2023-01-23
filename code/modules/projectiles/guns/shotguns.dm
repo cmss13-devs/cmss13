@@ -458,6 +458,35 @@ can cause issues with ammo types getting mixed up during the burst.
 							/obj/item/attachable/attached_gun/extinguisher,
 							)
 
+/obj/item/weapon/gun/shotgun/type23/riot_control
+	name = "\improper Type 23-R riot control shotgun"
+	desc = "This slow semi-automatic shotgun chambers 8 gauge, and packs a mean punch. The -R version is designed for UPP colony security personnel and handling colony rioting, sporting an integrated vertical grip but lacking in attachment choices."
+	current_mag = /obj/item/ammo_magazine/internal/shotgun/type23/beanbag
+	attachable_allowed = list(
+						//Rail
+						/obj/item/attachable/reddot,
+						/obj/item/attachable/reflex,
+						/obj/item/attachable/flashlight,
+						/obj/item/attachable/magnetic_harness,
+						//Muzzle (nothing)
+						//Underbarrel
+						/obj/item/attachable/verticalgrip,
+						//Stock
+						/obj/item/attachable/stock/type23
+						)
+	flags_gun_features = GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER|GUN_INTERNAL_MAG
+	flags_equip_slot = SLOT_BACK
+	map_specific_decoration = FALSE
+	gauge = "8g"
+	starting_attachment_types = list(/obj/item/attachable/stock/type23)
+
+/obj/item/weapon/gun/shotgun/type23/riot_control/handle_starting_attachment()
+	. = ..()
+	var/obj/item/attachable/verticalgrip/integrated_grip = new(src)
+	integrated_grip.flags_attach_features &= ~ATTACH_REMOVABLE
+	integrated_grip.Attach(src)
+	update_attachable(integrated_grip.slot)
+
 //-------------------------------------------------------
 //DOUBLE SHOTTY
 

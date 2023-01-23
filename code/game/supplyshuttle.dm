@@ -1088,7 +1088,7 @@ var/datum/controller/supply/supply_controller = new()
 
 /obj/structure/machinery/computer/supplycomp/proc/handle_black_market()
 
-	temp = "<b>W-Y Dollars: $[supply_controller.black_market_points * BLACK_MARKET_TO_MONEY_MUPLTIPLIER]</b><BR>"
+	temp = "<b>W-Y Dollars: $[supply_controller.black_market_points]</b><BR>"
 	temp += "<A href='?src=\ref[src];order=categories'>Back to all categories</A><HR><BR><BR>"
 	temp += SPAN_DANGER("ERR0R UNK7OWN C4T2G#!$0-<HR><HR><HR>")
 	temp += "KHZKNHZH#0-"
@@ -1102,14 +1102,14 @@ var/datum/controller/supply/supply_controller = new()
 		temp += "<A href='?src=\ref[src];order=[supply_group_name]'>[supply_group_name]</A><BR>"
 
 /obj/structure/machinery/computer/supplycomp/proc/handle_black_market_groups()
-	temp = "<b>W-Y Dollars: $[supply_controller.black_market_points * BLACK_MARKET_TO_MONEY_MUPLTIPLIER]</b><BR>"
+	temp = "<b>W-Y Dollars: $[supply_controller.black_market_points]</b><BR>"
 	temp += "<A href='?src=\ref[src];order=Black Market'>Back to black market categories</A><HR><BR><BR>"
 	temp += "<b>Purchase from: [last_viewed_group]</b><BR><BR>"
 	for(var/supply_name in supply_controller.supply_packs )
 		var/datum/supply_packs/supply_pack = supply_controller.supply_packs[supply_name]
 		if(!is_buyable(supply_pack))
 			continue
-		temp += "<A href='?src=\ref[src];doorder=[supply_name]'>[supply_name]</A> Cost: $[round(supply_pack.dollar_cost) * BLACK_MARKET_TO_MONEY_MUPLTIPLIER]<BR>"
+		temp += "<A href='?src=\ref[src];doorder=[supply_name]'>[supply_name]</A> Cost: $[round(supply_pack.dollar_cost)]<BR>"
 
 /obj/structure/machinery/computer/supplycomp/proc/handle_mendoza_dialogue()
 

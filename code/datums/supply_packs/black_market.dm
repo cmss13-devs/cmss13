@@ -16,12 +16,6 @@ black market prices are NOT based on real or in-universe costs. they are based o
 
 */
 
-// I don't think there's any better place for this to go.
-
-/atom/movable
-	/// How much this mob|object is worth when lowered into the ASRS pit while the black market is unlocked.
-	var/black_market_value = 0
-
 /datum/supply_packs/contraband//base
 	name = "contraband crate"
 	contains = null
@@ -38,17 +32,21 @@ black market prices are NOT based on real or in-universe costs. they are based o
 	//no special name so it can be hidden
 
 /obj/structure/largecrate/black_market/unpack()
-	for(var/obj/content_obj in contents)
-		content_obj.black_market_value = 0 //no free points
-		recursive_points_wipe(content_obj, 1)
+	if(!points_wipe)
+		return ..()
+
+	for(var/atom/movable/content_atom in contents)
+		content_atom.black_market_value = 0 //no free points
+		recursive_points_wipe(content_atom, 1)
+
 	..()
 
-/obj/structure/largecrate/black_market/proc/recursive_points_wipe(obj/content_obj, var/recursion)
+/obj/structure/largecrate/black_market/proc/recursive_points_wipe(atom/movable/content_atom, var/recursion)
 	if(!points_wipe || recursion > 3) // sanity
 		return
-	for(var/obj/nested_obj in content_obj.contents)
-		nested_obj.black_market_value = 0
-		recursive_points_wipe(nested_obj, recursion++)
+	for(var/atom/movable/nested_atom in content_atom.contents)
+		nested_atom.black_market_value = 0
+		recursive_points_wipe(nested_atom, recursion++)
 
 /* --- SEIZED ITEMS --- */
 
@@ -178,7 +176,7 @@ Non-USCM items, from CLF, UPP, colonies, etc. Mostly combat-related.
 				new /obj/item/ammo_magazine/rifle/type71(src)
 				new /obj/item/ammo_magazine/rifle/type71(src)
 			else
-				new /obj/item/weapon/gun/shotgun/type23(src)
+				new /obj/item/weapon/gun/shotgun/type23/riot_control(src)
 				new /obj/item/ammo_magazine/handful/shotgun/heavy/beanbag(src)
 				new /obj/item/ammo_magazine/handful/shotgun/heavy/beanbag(src)
 				new /obj/item/ammo_magazine/handful/shotgun/heavy/flechette(src)
@@ -1138,7 +1136,7 @@ Things that don't fit anywhere else. If they're meant for shipside use, they pro
 				/obj/item/clothing/suit/storage/marine/veteran/mercenary,
 				/obj/item/clothing/head/helmet/marine/veteran/mercenary,
 				// Z7 Support (Support)
-				/obj/item/clothing/head/helmet/marine/veteran/mercenary,
+				/obj/item/clothing/under/marine/veteran/mercenary,
 				/obj/item/clothing/suit/storage/marine/veteran/mercenary/support,
 				/obj/item/clothing/head/helmet/marine/veteran/mercenary/support/engineer
 				// You get three random pieces. If you want to complete the set you need to keep rolling the dice!

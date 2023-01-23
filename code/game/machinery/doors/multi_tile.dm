@@ -209,7 +209,7 @@
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/getty
 	name = "\improper Gettysburg blast door"
-	icon = 'icons/obj/structures/doors/getty.dmi'
+	icon = 'icons/obj/structures/doors/getty-rear.dmi'
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/ex_act(severity)
 	return

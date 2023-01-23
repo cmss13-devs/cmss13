@@ -5,8 +5,8 @@
 	name = "Gettysburg Hangar Pad"
 	id = SHUTTLE_GETTY
 	roundstart_template = /datum/map_template/shuttle/getty
-	width = 10
-	height = 11
+	width = 8
+	height = 10
 
 /datum/map_template/shuttle/getty
 	name = "Gettysburg"
@@ -50,3 +50,11 @@
 	designate_time = 10 SECONDS
 	indestructible = TRUE
 	unacidable = TRUE
+	open_prompt = FALSE
+
+	var/current_state = STATE_ON_SHIP
+	var/damaged = FALSE
+
+
+
+

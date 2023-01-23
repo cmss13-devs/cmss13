@@ -6,13 +6,13 @@
 	},
 /area/shuttle/getty)
 "aY" = (
-/turf/closed/shuttle/getty{
-	icon_state = "80"
+/turf/closed/shuttle/getty/transparent{
+	icon_state = "rightlupperengine"
 	},
 /area/shuttle/getty)
 "de" = (
-/turf/closed/shuttle/getty{
-	icon_state = "68"
+/turf/closed/shuttle/getty/transparent{
+	icon_state = "rightupperengine"
 	},
 /area/shuttle/getty)
 "ec" = (
@@ -39,14 +39,9 @@
 	icon_state = "47"
 	},
 /area/shuttle/getty)
-"fp" = (
-/turf/closed/shuttle/getty{
-	icon_state = "88"
-	},
-/area/shuttle/getty)
 "fq" = (
 /turf/closed/shuttle/getty{
-	icon_state = "90"
+	icon_state = "rightlowerwalltoengine"
 	},
 /area/shuttle/getty)
 "gd" = (
@@ -55,27 +50,22 @@
 	},
 /area/shuttle/getty)
 "hj" = (
-/turf/closed/shuttle/getty{
+/turf/closed/shuttle/getty/transparent{
 	icon_state = "48"
 	},
 /area/shuttle/getty)
 "hA" = (
-/turf/closed/shuttle/getty{
-	icon_state = "74"
+/turf/closed/shuttle/getty/transparent{
+	icon_state = "rightmupperengine"
 	},
 /area/shuttle/getty)
 "ib" = (
-/turf/closed/shuttle/getty{
-	icon_state = "60"
-	},
-/area/shuttle/getty)
-"jv" = (
-/turf/closed/shuttle/getty{
-	icon_state = "79"
-	},
+/turf/template_noop,
 /area/shuttle/getty)
 "jD" = (
-/turf/closed/shuttle/getty,
+/turf/closed/shuttle/getty{
+	icon_state = "righttopwalltoengine"
+	},
 /area/shuttle/getty)
 "kk" = (
 /turf/closed/shuttle/getty{
@@ -83,18 +73,19 @@
 	},
 /area/shuttle/getty)
 "kU" = (
-/turf/closed/shuttle/getty{
+/turf/closed/shuttle/getty/transparent{
 	icon_state = "55"
-	},
-/area/shuttle/getty)
-"la" = (
-/turf/closed/shuttle/getty{
-	icon_state = "69"
 	},
 /area/shuttle/getty)
 "lQ" = (
 /turf/closed/shuttle/getty{
-	icon_state = "42"
+	icon_state = "93"
+	},
+/area/shuttle/getty)
+"mB" = (
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin15";
+	tag = "icon-rasputin15"
 	},
 /area/shuttle/getty)
 "nb" = (
@@ -106,24 +97,19 @@
 "nK" = (
 /turf/template_noop,
 /area/template_noop)
-"oN" = (
-/turf/closed/shuttle/getty{
-	icon_state = "67"
-	},
-/area/shuttle/getty)
 "oR" = (
 /turf/closed/shuttle/getty{
-	icon_state = "72"
-	},
-/area/shuttle/getty)
-"pd" = (
-/turf/closed/shuttle/getty{
-	icon_state = "70"
+	icon_state = "leftmupperwalltoengine"
 	},
 /area/shuttle/getty)
 "pN" = (
 /turf/closed/shuttle/getty{
 	icon_state = "10"
+	},
+/area/shuttle/getty)
+"qw" = (
+/turf/closed/shuttle/getty{
+	icon_state = "94"
 	},
 /area/shuttle/getty)
 "qQ" = (
@@ -132,54 +118,41 @@
 	tag = "icon-rasputin6"
 	},
 /area/shuttle/getty)
-"rC" = (
-/turf/closed/shuttle/getty{
-	icon_state = "75"
-	},
-/area/shuttle/getty)
 "rN" = (
 /turf/closed/shuttle/getty{
 	icon_state = "52"
 	},
 /area/shuttle/getty)
-"rR" = (
-/turf/closed/shuttle/getty{
-	icon_state = "81"
-	},
-/area/shuttle/getty)
 "sH" = (
 /turf/closed/shuttle/getty{
-	icon_state = "89"
+	icon_state = "leftlowerwalltoengine"
 	},
 /area/shuttle/getty)
 "tc" = (
 /turf/closed/shuttle/getty{
-	icon_state = "84"
+	icon_state = "rightmupperwalltoengine"
 	},
 /area/shuttle/getty)
 "tx" = (
 /turf/closed/shuttle/getty{
-	icon_state = "66"
+	icon_state = "lefttopwalltoengine"
 	},
 /area/shuttle/getty)
 "vy" = (
-/turf/closed/shuttle/getty{
-	icon_state = "12"
-	},
-/area/shuttle/getty)
-"wo" = (
-/turf/closed/shuttle/getty{
-	icon_state = "82"
+/obj/structure/machinery/door/airlock/dropship_hatch/getty,
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin15";
+	tag = "icon-rasputin15"
 	},
 /area/shuttle/getty)
 "wr" = (
-/turf/closed/shuttle/getty{
+/turf/closed/shuttle/getty/transparent{
 	icon_state = "23"
 	},
 /area/shuttle/getty)
 "xN" = (
-/turf/closed/shuttle/getty{
-	icon_state = "71"
+/turf/closed/shuttle/getty/transparent{
+	icon_state = "leftmupperengine"
 	},
 /area/shuttle/getty)
 "xZ" = (
@@ -188,7 +161,7 @@
 	},
 /area/shuttle/getty)
 "zK" = (
-/turf/closed/shuttle/getty{
+/turf/closed/shuttle/getty/transparent{
 	icon_state = "26"
 	},
 /area/shuttle/getty)
@@ -198,18 +171,17 @@
 	},
 /area/shuttle/getty)
 "BA" = (
-/turf/closed/shuttle/getty{
-	icon_state = "77"
+/turf/closed/shuttle/getty/transparent{
+	icon_state = "leftlupperengine"
 	},
 /area/shuttle/getty)
 "DW" = (
-/turf/closed/shuttle/getty{
-	icon_state = "13"
+/obj/structure/machinery/door/airlock/dropship_hatch/getty{
+	dir = 8
 	},
-/area/shuttle/getty)
-"Es" = (
-/turf/closed/shuttle/getty{
-	icon_state = "64"
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin15";
+	tag = "icon-rasputin15"
 	},
 /area/shuttle/getty)
 "FX" = (
@@ -222,7 +194,9 @@
 /turf/open/floor/plating,
 /area/shuttle/getty)
 "Ha" = (
-/turf/template_noop,
+/turf/closed/shuttle/getty{
+	icon_state = "rightlupperwalltoengine"
+	},
 /area/shuttle/getty)
 "Hd" = (
 /turf/closed/shuttle/getty{
@@ -230,13 +204,13 @@
 	},
 /area/shuttle/getty)
 "IF" = (
-/turf/closed/shuttle/getty{
+/turf/closed/shuttle/getty/transparent{
 	icon_state = "32"
 	},
 /area/shuttle/getty)
 "IH" = (
-/turf/closed/shuttle/getty{
-	icon_state = "73"
+/turf/closed/shuttle/getty/transparent{
+	icon_state = "rightlowerengine"
 	},
 /area/shuttle/getty)
 "II" = (
@@ -245,12 +219,12 @@
 	},
 /area/shuttle/getty)
 "JD" = (
-/turf/closed/shuttle/getty{
+/turf/closed/shuttle/getty/transparent{
 	icon_state = "35"
 	},
 /area/shuttle/getty)
 "JX" = (
-/turf/closed/shuttle/getty{
+/turf/closed/shuttle/getty/transparent{
 	icon_state = "51"
 	},
 /area/shuttle/getty)
@@ -261,17 +235,17 @@
 	},
 /area/shuttle/getty)
 "Ly" = (
-/turf/closed/shuttle/getty{
-	icon_state = "83"
+/turf/closed/shuttle/getty/transparent{
+	icon_state = "leftlowerengine"
 	},
 /area/shuttle/getty)
 "Lz" = (
 /obj/docking_port/mobile/getty,
-/turf/template_noop,
-/area/template_noop)
+/turf/closed/shuttle/getty,
+/area/shuttle/getty)
 "MA" = (
 /turf/closed/shuttle/getty{
-	icon_state = "78"
+	icon_state = "leftlupperwalltoengine"
 	},
 /area/shuttle/getty)
 "Nt" = (
@@ -295,13 +269,8 @@
 	tag = "icon-rasputin7"
 	},
 /area/shuttle/getty)
-"PD" = (
-/turf/closed/shuttle/getty{
-	icon_state = "45"
-	},
-/area/shuttle/getty)
 "Si" = (
-/turf/closed/shuttle/getty{
+/turf/closed/shuttle/getty/transparent{
 	icon_state = "53"
 	},
 /area/shuttle/getty)
@@ -320,23 +289,8 @@
 	},
 /area/shuttle/getty)
 "WQ" = (
-/turf/closed/shuttle/getty{
-	icon_state = "65"
-	},
-/area/shuttle/getty)
-"WZ" = (
-/turf/closed/shuttle/getty{
-	icon_state = "46"
-	},
-/area/shuttle/getty)
-"Zq" = (
-/turf/closed/shuttle/getty{
-	icon_state = "61"
-	},
-/area/shuttle/getty)
-"ZL" = (
-/turf/closed/shuttle/getty{
-	icon_state = "76"
+/turf/closed/shuttle/getty/transparent{
+	icon_state = "leftupperengine"
 	},
 /area/shuttle/getty)
 "ZR" = (
@@ -348,9 +302,8 @@
 (1,1,1) = {"
 nK
 nK
-nK
-nK
-Ha
+IF
+wr
 ib
 WQ
 xN
@@ -360,44 +313,29 @@ Lz
 "}
 (2,1,1) = {"
 nK
-nK
-Ha
-IF
-wr
-Zq
-tx
-oR
-MA
-tc
-jD
-"}
-(3,1,1) = {"
-Ha
-Ha
 ZR
 kk
 ec
 vy
-oN
-IH
-jv
+tx
+oR
+MA
 sH
 UA
 "}
-(4,1,1) = {"
+(3,1,1) = {"
 rN
 hj
-PD
 lQ
 NQ
-NQ
+mB
 NQ
 NQ
 NQ
 pN
 Af
 "}
-(5,1,1) = {"
+(4,1,1) = {"
 Si
 GU
 eK
@@ -406,11 +344,10 @@ Kq
 Kq
 Kq
 Kq
-Kq
 Oc
 nK
 "}
-(6,1,1) = {"
+(5,1,1) = {"
 kU
 eE
 eK
@@ -419,59 +356,42 @@ Kq
 Kq
 Kq
 Kq
-Kq
 ax
 nK
 "}
-(7,1,1) = {"
+(6,1,1) = {"
 xZ
 JX
-WZ
-lQ
+qw
 UU
-UU
+mB
 UU
 UU
 UU
 pN
 FX
 "}
-(8,1,1) = {"
-Ha
-Ha
+(7,1,1) = {"
+nK
 eP
 gd
 Nt
 DW
-de
-hA
-aY
+jD
+tc
+Ha
 fq
 II
 "}
-(9,1,1) = {"
+(8,1,1) = {"
 nK
 nK
-Ha
 JD
 zK
-Zq
-la
-rC
-rR
-tc
+ib
+de
+hA
+aY
+IH
 Hd
-"}
-(10,1,1) = {"
-nK
-nK
-nK
-nK
-Ha
-Es
-pd
-ZL
-wo
-fp
-nK
 "}

@@ -37,7 +37,7 @@
 
 /datum/xeno_mutator/charger/apply_mutator(datum/mutator_set/individual_mutators/mutator_set)
 	. = ..()
-	if (. == 0)
+	if (!.)
 		return
 
 	var/mob/living/carbon/Xenomorph/Crusher/crusher = mutator_set.xeno
@@ -83,8 +83,9 @@
 				return
 
 /datum/behavior_delegate/crusher_charger/on_update_icons()
-	if(HAS_TRAIT(bound_xeno, TRAIT_CHARGING) && !bound_xeno.lying)
-		bound_xeno.icon_state = "[bound_xeno.mutation_icon_state || bound_xeno.mutation_type] Crusher Charging"
+	var/charging_icon_state = "[bound_xeno.mutation_icon_state || bound_xeno.mutation_type] Crusher Charging"
+	if(HAS_TRAIT(bound_xeno, TRAIT_CHARGING) && !bound_xeno.lying && (charging_icon_state in icon_states(bound_xeno.icon)))
+		bound_xeno.icon_state = charging_icon_state
 		return TRUE
 
 // Fallback proc for shit that doesn't have a collision def
@@ -370,41 +371,42 @@
 // Fellow xenos
 
 /mob/living/carbon/Xenomorph/handle_charge_collision(mob/living/carbon/Xenomorph/xeno, datum/action/xeno_action/onclick/charger_charge/charger_ability)
-	if(charger_ability.momentum)
-		playsound(loc, "punch", 25, TRUE)
-		if(!xeno.ally_of_hivenumber(hivenumber))
-			attack_log += text("\[[time_stamp()]\] <font color='orange'>was xeno charged by [xeno] ([xeno.ckey])</font>")
-			xeno.attack_log += text("\[[time_stamp()]\] <font color='red'>xeno charged [src] ([ckey])</font>")
-			log_attack("[xeno] ([xeno.ckey]) xeno charged [src] ([ckey])")
-			apply_damage(charger_ability.momentum * 10, BRUTE) // half damage to avoid sillyness
-		if(anchored) //Ovipositor queen can't be pushed
-			charger_ability.stop_momentum()
-			return
-		if(isXenoQueen(src) || IS_XENO_LEADER(src) ||  isXenoBoiler(src)) // boilers because they have long c/d and warmups, get griefed hard if stunned
-			charger_ability.stop_momentum() // antigrief
-			return
-		if(HAS_TRAIT(src, TRAIT_CHARGING))
-			apply_effect(2, WEAKEN)
-			xeno.apply_effect(2, WEAKEN)
-			src.throw_atom(pick(cardinal),1,3,xeno,TRUE)
-			xeno.throw_atom(pick(cardinal),1,3,xeno,TRUE)
-			charger_ability.stop_momentum() // We assume the other crusher'sparks handle_charge_collision() kicks in and stuns us too.
-			playsound(get_turf(xeno), 'sound/effects/bang.ogg', 25, 0)
-			return
-		var/list/ram_dirs = get_perpen_dir(xeno.dir)
-		var/ram_dir = pick(ram_dirs)
-		var/cur_turf = get_turf(src)
-		var/target_turf = get_step(src, ram_dir)
-		if(LinkBlocked(src, cur_turf, target_turf))
-			xeno.emote("roar")
-			xeno.visible_message(SPAN_DANGER("[xeno] flings [src] over to the side!"),SPAN_DANGER( "You fling [src] out of the way!"))
-			to_chat(src, SPAN_XENOHIGHDANGER("[xeno] flings you out of its way! Move it!"))
-			apply_effect(1, WEAKEN) // brief flicker stun
-			src.throw_atom(src.loc,1,3,xeno,TRUE)
-		step(src, ram_dir, charger_ability.momentum * 0.5)
-		charger_ability.lose_momentum(CCA_MOMENTUM_LOSS_MIN)
-		return XENO_CHARGE_TRY_MOVE
-	charger_ability.stop_momentum()
+	if(!charger_ability.momentum)
+		charger_ability.stop_momentum()
+		return
+	playsound(loc, "punch", 25, TRUE)
+	if(!xeno.ally_of_hivenumber(hivenumber))
+		attack_log += text("\[[time_stamp()]\] <font color='orange'>was xeno charged by [xeno] ([xeno.ckey])</font>")
+		xeno.attack_log += text("\[[time_stamp()]\] <font color='red'>xeno charged [src] ([ckey])</font>")
+		log_attack("[xeno] ([xeno.ckey]) xeno charged [src] ([ckey])")
+		apply_damage(charger_ability.momentum * 10, BRUTE) // half damage to avoid sillyness
+	if(anchored) //Ovipositor queen can't be pushed
+		charger_ability.stop_momentum()
+		return
+	if(isXenoQueen(src) || IS_XENO_LEADER(src) ||  isXenoBoiler(src)) // boilers because they have long c/d and warmups, get griefed hard if stunned
+		charger_ability.stop_momentum() // antigrief
+		return
+	if(HAS_TRAIT(src, TRAIT_CHARGING))
+		apply_effect(2, WEAKEN)
+		xeno.apply_effect(2, WEAKEN)
+		src.throw_atom(pick(cardinal),1,3,xeno,TRUE)
+		xeno.throw_atom(pick(cardinal),1,3,xeno,TRUE)
+		charger_ability.stop_momentum() // We assume the other crusher'sparks handle_charge_collision() kicks in and stuns us too.
+		playsound(get_turf(xeno), 'sound/effects/bang.ogg', 25, 0)
+		return
+	var/list/ram_dirs = get_perpen_dir(xeno.dir)
+	var/ram_dir = pick(ram_dirs)
+	var/cur_turf = get_turf(src)
+	var/target_turf = get_step(src, ram_dir)
+	if(LinkBlocked(src, cur_turf, target_turf))
+		xeno.emote("roar")
+		xeno.visible_message(SPAN_DANGER("[xeno] flings [src] over to the side!"),SPAN_DANGER( "You fling [src] out of the way!"))
+		to_chat(src, SPAN_XENOHIGHDANGER("[xeno] flings you out of its way! Move it!"))
+		apply_effect(1, WEAKEN) // brief flicker stun
+		src.throw_atom(src.loc,1,3,xeno,TRUE)
+	step(src, ram_dir, charger_ability.momentum * 0.5)
+	charger_ability.lose_momentum(CCA_MOMENTUM_LOSS_MIN)
+	return XENO_CHARGE_TRY_MOVE
 
 // Other mobs
 

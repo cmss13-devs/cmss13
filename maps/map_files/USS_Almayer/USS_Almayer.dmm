@@ -47582,6 +47582,13 @@
 	pixel_x = 8;
 	pixel_y = 32
 	},
+/obj/structure/transmitter{
+	pixel_x = 16;
+	phone_category = "Almayer";
+	phone_id = "Flight Deck";
+	name = "Flight Deck Telephone";
+	dir = 8
+	},
 /turf/open/floor/almayer,
 /area/almayer/hallways/repair_bay)
 "hTc" = (
@@ -57771,19 +57778,6 @@
 	tag = "icon-bluecorner"
 	},
 /area/almayer/squads/delta)
-"mvu" = (
-/obj/structure/transmitter{
-	dir = 4;
-	pixel_x = -16;
-	phone_category = "Almayer";
-	phone_id = "Flight Deck";
-	name = "Flight Deck Telephone"
-	},
-/turf/open/floor/almayer{
-	icon_state = "cargo";
-	tag = "icon-bluecorner (NORTH)"
-	},
-/area/almayer/hallways/hangar)
 "mvI" = (
 /obj/structure/machinery/camera/autoname/almayer{
 	dir = 4;
@@ -106850,7 +106844,7 @@ eXq
 ooh
 pcl
 gHZ
-mvu
+pcl
 aMY
 pcl
 xNb

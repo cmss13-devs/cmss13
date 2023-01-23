@@ -130,6 +130,8 @@
 	plasma_cost = 0
 	xeno_cooldown = 9 SECONDS + 2 SECONDS // Left operand is the actual CD, right operand is the buffer for the shield duration
 
+	/// Pipe value updated by the delegate, will not work without it
+	var/shard_amount
 	// Config values
 	var/shield_duration = 20 // Shield lasts 2 seconds by default.
 	var/shield_amount = 500 // Shield HP amount
@@ -148,6 +150,8 @@
 	plasma_cost = 0
 	xeno_cooldown = 100
 
+	/// Pipe value updated by the delegate, will not work without it
+	var/shard_amount
 	// Config
 	var/shard_cost = 75
 	var/ammo_type = /datum/ammo/xeno/bone_chips
@@ -162,6 +166,8 @@
 	plasma_cost = 0
 	xeno_cooldown = 300
 
+	/// Pipe value updated by the delegate, will not work without it
+	var/shard_amount
 	// Config values
 	var/shard_cost = 50
 	var/ammo_type = /datum/ammo/xeno/bone_chips/spread

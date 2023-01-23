@@ -31,9 +31,9 @@
 	ravager.explosivearmor_modifier += XENO_EXPOSIVEARMOR_MOD_SMALL
 	ravager.speed_modifier += XENO_SPEED_SLOWMOD_TIER_8
 
-	apply_behavior_holder(ravager)
 
 	mutator_update_actions(ravager)
+	apply_behavior_holder(ravager)
 	mutator_set.recalculate_actions(description, flavor_description)
 
 	ravager.recalculate_everything()
@@ -61,6 +61,65 @@
 	. += "Bone Shards: [shards]/[max_shards]"
 	. += "Shards Armor Bonus: [times_armor_buffed*armor_buff_per_fifty_shards]"
 
+/datum/behavior_delegate/ravager_hedgehog/handle_death(mob/M)
+	var/image/holder = bound_xeno.hud_list[PLASMA_HUD]
+	holder.overlays.Cut()
+
+/datum/behavior_delegate/ravager_hedgehog/on_hitby_projectile()
+	if (!shards_locked)
+		shards = min(max_shards, shards + shards_per_projectile)
+		update_abilities()
+	return
+
+/datum/behavior_delegate/ravager_hedgehog/on_life()
+
+	if (!shards_locked)
+		shards = min(max_shards, shards + shard_gain_onlife)
+
+	var/armor_buff_count = shards/50 //0-6
+	bound_xeno.armor_modifier -= times_armor_buffed * armor_buff_per_fifty_shards
+	bound_xeno.armor_modifier += armor_buff_count * armor_buff_per_fifty_shards
+	bound_xeno.recalculate_armor()
+	times_armor_buffed = armor_buff_count
+
+	var/image/holder = bound_xeno.hud_list[PLASMA_HUD]
+	holder.overlays.Cut()
+	var/percentage_shards = round((shards / max_shards) * 100, 10)
+	if(percentage_shards)
+		holder.overlays += image('icons/mob/hud/hud.dmi', "xenoenergy[percentage_shards]")
+	update_abilities()
+	return
+/datum/behavior_delegate/ravager_hedgehog/post_ability_cast(datum/action/xeno_action/ability, result)
+	. = ..()
+	switch(ability.type)
+		if(/datum/action/xeno_action/onclick/spike_shield)
+			if(!result)
+				return
+			var/datum/action/xeno_action/onclick/spike_shield/shield_action = get_xeno_action_by_type(bound_xeno, /datum/action/xeno_action/onclick/spike_shield)
+			use_shards(shield_action.shard_cost)
+		if(/datum/action/xeno_action/activable/rav_spikes)
+			if(!result)
+				return
+			var/datum/action/xeno_action/activable/rav_spikes/spikes_action = get_xeno_action_by_type(bound_xeno, /datum/action/xeno_action/activable/rav_spikes)
+			use_shards(spikes_action.shard_cost)
+		if(/datum/action/xeno_action/onclick/spike_shed)
+			if(!result)
+				return
+			var/datum/action/xeno_action/onclick/spike_shed/shed_action = get_xeno_action_by_type(bound_xeno, /datum/action/xeno_action/onclick/spike_shed)
+			use_shards(shed_action.shard_cost)
+			lock_shards()
+
+/datum/behavior_delegate/ravager_hedgehog/proc/update_abilities()
+	var/datum/action/xeno_action/onclick/spike_shield/shield_action = get_xeno_action_by_type(bound_xeno, /datum/action/xeno_action/onclick/spike_shield)
+	var/datum/action/xeno_action/activable/rav_spikes/spikes_action = get_xeno_action_by_type(bound_xeno, /datum/action/xeno_action/activable/rav_spikes)
+	var/datum/action/xeno_action/onclick/spike_shed/shed_action = get_xeno_action_by_type(bound_xeno, /datum/action/xeno_action/onclick/spike_shed)
+	if(shield_action)
+		shield_action.shard_amount = shards
+	if(spikes_action)
+		spikes_action.shard_amount = shards
+	if(shed_action)
+		shed_action.shard_amount = shards
+
 /datum/behavior_delegate/ravager_hedgehog/proc/lock_shards()
 
 	if (!bound_xeno)
@@ -72,6 +131,7 @@
 	bound_xeno.recalculate_speed()
 
 	shards = 0
+	update_abilities()
 	shards_locked = TRUE
 	addtimer(CALLBACK(src, PROC_REF(unlock_shards)), shard_lock_duration)
 
@@ -98,31 +158,4 @@
 	if (!amount)
 		return
 	shards = max(0, shards - amount)
-
-/datum/behavior_delegate/ravager_hedgehog/on_life()
-
-	if (!shards_locked)
-		shards = min(max_shards, shards + shard_gain_onlife)
-
-	var/armor_buff_count = shards/50 //0-6
-	bound_xeno.armor_modifier -= times_armor_buffed * armor_buff_per_fifty_shards
-	bound_xeno.armor_modifier += armor_buff_count * armor_buff_per_fifty_shards
-	bound_xeno.recalculate_armor()
-	times_armor_buffed = armor_buff_count
-
-	var/image/holder = bound_xeno.hud_list[PLASMA_HUD]
-	holder.overlays.Cut()
-	var/percentage_shards = round((shards / max_shards) * 100, 10)
-	if(percentage_shards)
-		holder.overlays += image('icons/mob/hud/hud.dmi', "xenoenergy[percentage_shards]")
-	return
-
-
-/datum/behavior_delegate/ravager_hedgehog/handle_death(mob/M)
-	var/image/holder = bound_xeno.hud_list[PLASMA_HUD]
-	holder.overlays.Cut()
-
-/datum/behavior_delegate/ravager_hedgehog/on_hitby_projectile()
-	if (!shards_locked)
-		shards = min(max_shards, shards + shards_per_projectile)
-	return
+	update_abilities()

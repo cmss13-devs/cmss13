@@ -50,8 +50,8 @@
 	carrier.mutation_type = CARRIER_SHAMAN
 	carrier.shaman_interactive = FALSE
 	carrier.ignores_pheromones = TRUE
-	apply_behavior_holder(carrier)
 	mutator_update_actions(carrier)
+	apply_behavior_holder(carrier)
 	mutator_set.recalculate_actions(description, flavor_description)
 	carrier.phero_modifier = -carrier.caste.aura_strength
 	carrier.recalculate_pheromones()

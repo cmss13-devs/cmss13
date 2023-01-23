@@ -159,6 +159,7 @@
 	visible_message(SPAN_XENOWARNING("[src] vomits globs of vile stuff all over [O]. It begins to sizzle and melt under the bubbling mess of acid!"), \
 	SPAN_XENOWARNING("You vomit globs of vile stuff all over [O]. It begins to sizzle and melt under the bubbling mess of acid!"), null, 5)
 	playsound(loc, "sound/bullets/acid_impact1.ogg", 25)
+	return TRUE
 
 /proc/unroot_human(mob/living/carbon/H)
 	if (!isXenoOrHuman(H))

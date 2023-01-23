@@ -38,9 +38,9 @@
 	boiler.speed_modifier += XENO_SPEED_FASTMOD_TIER_3
 	boiler.recalculate_everything()
 
-	apply_behavior_holder(boiler)
-
 	mutator_update_actions(boiler)
+
+	apply_behavior_holder(boiler)
 	mutator_set.recalculate_actions(description, flavor_description)
 
 

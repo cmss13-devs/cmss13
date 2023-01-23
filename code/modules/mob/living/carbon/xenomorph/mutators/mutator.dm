@@ -62,6 +62,7 @@
 	name = "[name]"
 
 
+///If the mutator or delegate isn't working properly READ THE INSTRUCTIONS
 /datum/xeno_mutator/proc/apply_mutator(datum/mutator_set/MS)
 	if(!MS.can_purchase_mutator(name))
 		return FALSE

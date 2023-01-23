@@ -10,3 +10,4 @@
 #define issurface(X) (istype(X, /obj/structure/surface))
 #define ismovableatom(A) (ismovable(A))
 #define isatom(A) (isloc(A))
+#define isfloorturf(A) (istype(A, /turf/open/floor))

@@ -3,7 +3,7 @@
 	name = "web"
 	desc = "it's stringy and sticky"
 	icon = 'icons/effects/effects.dmi'
-	anchored = 1
+	anchored = TRUE
 	density = FALSE
 	health = 15
 
@@ -99,7 +99,7 @@
 	name = "spiderling"
 	desc = "It never stays still for long."
 	icon_state = "spiderling"
-	anchored = 0
+	anchored = FALSE
 	layer = BELOW_TABLE_LAYER
 	health = 3
 	var/amount_grown = -1
@@ -188,6 +188,7 @@
 
 /obj/effect/decal/cleanable/spiderling_remains
 	name = "spiderling remains"
+	gender = PLURAL
 	desc = "Green squishy mess."
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "greenshatter"

@@ -10,7 +10,7 @@
 	icon_state = "bullet"
 	density = FALSE
 	unacidable = TRUE
-	anchored = 1 //You will not have me, space wind!
+	anchored = TRUE //You will not have me, space wind!
 	flags_atom = NOINTERACT //No real need for this, but whatever. Maybe this flag will do something useful in the future.
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	invisibility = 100 // We want this thing to be invisible when it drops on a turf because it will be on the user's turf. We then want to make it visible as it travels.
@@ -66,6 +66,9 @@
 
 	/// The beam linked to the projectile. Can be utilized for things like grappling hooks, harpoon guns, tripwire guns, etc..
 	var/obj/effect/bound_beam
+
+	/// The flicker that plays when a bullet hits a target. Usually red. Can be nulled so it doesn't show up at all.
+	var/hit_effect_color = "#FF0000"
 
 /obj/item/projectile/Initialize(mapload, var/datum/cause_data/cause_data)
 	. = ..()
@@ -130,6 +133,7 @@
 	damage  *= rand(PROJ_VARIANCE_LOW-ammo.damage_var_low, PROJ_VARIANCE_HIGH+ammo.damage_var_high) * PROJ_BASE_DAMAGE_MULT
 	damage_falloff = ammo.damage_falloff
 	damage_buildup = ammo.damage_buildup
+	hit_effect_color = ammo.hit_effect_color
 	projectile_override_flags = special_flags
 
 	ammo_datum.on_bullet_generation(src, bullet_generator)
@@ -800,13 +804,17 @@
 	return FALSE // just stop them getting hit by projectiles completely
 
 
-/obj/item/projectile/proc/play_damage_effect(mob/M)
-	if(ammo.sound_hit) playsound(M, ammo.sound_hit, 50, 1)
-	if(M.stat != DEAD) animation_flash_color(M)
+/obj/item/projectile/proc/play_hit_effect(mob/hit_mob)
+	if(ammo.sound_hit)
+		playsound(hit_mob, ammo.sound_hit, 50, 1)
+	if(hit_mob.stat != DEAD && !isnull(hit_effect_color))
+		animation_flash_color(hit_mob, hit_effect_color)
 
-/obj/item/projectile/proc/play_shielded_damage_effect(mob/M)
-	if(ammo.sound_shield_hit) playsound(M, ammo.sound_shield_hit, 50, 1)
-	if(M.stat != DEAD) animation_flash_color(M)
+/obj/item/projectile/proc/play_shielded_hit_effect(mob/hit_mob)
+	if(ammo.sound_shield_hit)
+		playsound(hit_mob, ammo.sound_shield_hit, 50, 1)
+	if(hit_mob.stat != DEAD && !isnull(hit_effect_color))
+		animation_flash_color(hit_mob, hit_effect_color)
 
 //----------------------------------------------------------
 				// \\
@@ -834,7 +842,7 @@
 	if(damage)
 		bullet_message(P)
 		apply_damage(damage, P.ammo.damage_type, P.def_zone, 0, 0, P)
-		P.play_damage_effect(src)
+		P.play_hit_effect(src)
 
 	SEND_SIGNAL(P, COMSIG_BULLET_ACT_LIVING, src, damage, damage)
 
@@ -917,6 +925,7 @@
 	if(SEND_SIGNAL(src, COMSIG_HUMAN_BULLET_ACT, damage_result, ammo_flags, P) & COMPONENT_CANCEL_BULLET_ACT)
 		return
 
+	P.play_hit_effect(src)
 	if(damage || (ammo_flags & AMMO_SPECIAL_EMBED))
 
 		var/splatter_dir = get_dir(P.starting, loc)
@@ -924,7 +933,6 @@
 
 		. = TRUE
 		apply_damage(damage_result, P.ammo.damage_type, P.def_zone, firer = P.firer)
-		P.play_damage_effect(src)
 
 		if(P.ammo.shrapnel_chance > 0 && prob(P.ammo.shrapnel_chance + round(damage / 10)))
 			if(ammo_flags & AMMO_SPECIAL_EMBED)
@@ -1021,9 +1029,9 @@
 
 		apply_damage(damage_result,P.ammo.damage_type, P.def_zone) //Deal the damage.
 		if(xeno_shields.len)
-			P.play_shielded_damage_effect(src)
+			P.play_shielded_hit_effect(src)
 		else
-			P.play_damage_effect(src)
+			P.play_hit_effect(src)
 		if(!stat && prob(5 + round(damage_result / 4)))
 			var/pain_emote = prob(70) ? "hiss" : "roar"
 			emote(pain_emote)

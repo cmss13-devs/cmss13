@@ -36,12 +36,19 @@
 		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_iff)
 	))
 
-/obj/item/hardpoint/special/firing_port_weapon/get_hardpoint_info()
-	var/dat = "<hr>"
-	dat += "[name]<br>"
-	if(ammo)
-		dat += "Ammo: [ammo ? (ammo.current_rounds ? ammo.current_rounds : "<font color=\"red\">0</font>") : "<font color=\"red\">0</font>"]/[ammo ? ammo.max_rounds : "<font color=\"red\">0</font>"]"
-	return dat
+
+//for le tgui
+/obj/item/hardpoint/special/firing_port_weapon/get_tgui_info()
+	var/list/data = list()
+
+	data["name"] = name
+	data["uses_ammo"] = TRUE
+	data["current_rounds"] = ammo.current_rounds
+	data["max_rounds"] = ammo.max_rounds
+	data["fpw"] = TRUE
+
+	return data
+
 
 /obj/item/hardpoint/special/firing_port_weapon/can_activate(var/mob/user, var/atom/A)
 	if(!owner)

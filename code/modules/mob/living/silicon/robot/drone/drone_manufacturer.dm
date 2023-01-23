@@ -3,7 +3,7 @@
 	desc = "A large automated factory for producing maintenance drones."
 
 	density = TRUE
-	anchored = 1
+	anchored = TRUE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 20
 	active_power_usage = 5000

@@ -1,5 +1,6 @@
 /obj/item/device/binoculars
 	name = "binoculars"
+	gender = PLURAL
 	desc = "A military-issued pair of binoculars."
 	icon = 'icons/obj/items/binoculars.dmi'
 	icon_state = "binoculars"
@@ -44,6 +45,7 @@
 //RANGEFINDER with ability to acquire coordinates
 /obj/item/device/binoculars/range
 	name = "rangefinder"
+	gender = NEUTER
 	desc = "A pair of binoculars with a rangefinding function. Ctrl + Click turf to acquire it's coordinates. Ctrl + Click rangefinder to stop lasing."
 	icon_state = "rangefinder"
 	var/laser_cooldown = 0
@@ -83,11 +85,11 @@
 		QDEL_NULL(coord)
 
 /obj/item/device/binoculars/range/clicked(mob/user, list/mods)
-	if(!ishuman(usr))
-		return
 	if(mods["ctrl"])
+		if(!CAN_PICKUP(user, src))
+			return ..()
 		stop_targeting(user)
-		return 1
+		return TRUE
 	return ..()
 
 /obj/item/device/binoculars/range/handle_click(var/mob/living/carbon/human/user, var/atom/A, var/list/mods)
@@ -213,9 +215,9 @@
 	. += SPAN_NOTICE("[src] is currently set to [mode ? "range finder" : "CAS marking"] mode.")
 
 /obj/item/device/binoculars/range/designator/clicked(mob/user, list/mods)
-	if(!ishuman(usr))
-		return
-	if(mods["alt"] && loc == user)
+	if(mods["alt"])
+		if(!CAN_PICKUP(user, src))
+			return ..()
 		toggle_bino_mode(user)
 		return TRUE
 	return ..()
@@ -476,6 +478,7 @@
 //ADVANCED LASER DESIGNATER, was used for WO.
 /obj/item/device/binoculars/designator
 	name = "advanced laser designator" // Make sure they know this will kill people in the desc below.
+	gender = NEUTER
 	desc = "An advanced laser designator, used to mark targets for airstrikes and mortar fire. This one comes with two modes, one for IR laser which calls in a napalm airstrike upon the position, the other being a UV laser which calculates the distance for a mortar strike. On the side there is a label that reads:<span class='notice'> !!WARNING: Deaths from use of this tool will have the user held accountable!!</span>"
 	icon_state = "designator_e"
 
@@ -663,6 +666,6 @@
 	icon = 'icons/obj/items/binoculars.dmi'
 	icon_state = "las_r"
 	opacity = TRUE
-	anchored = 1
+	anchored = TRUE
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	unacidable = TRUE

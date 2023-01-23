@@ -1,7 +1,7 @@
 /obj/structure/machinery/chem_dispenser
 	name = "chem dispenser"
 	density = TRUE
-	anchored = 1
+	anchored = TRUE
 	icon = 'icons/obj/structures/machinery/science_machines.dmi'
 	icon_state = "dispenser"
 	use_power = USE_POWER_NONE
@@ -73,6 +73,8 @@
 
 /obj/structure/machinery/chem_dispenser/clicked(mob/user, list/mods)
 	if(mods["alt"])
+		if(!CAN_PICKUP(user, src))
+			return ..()
 		replace_beaker(user)
 	return ..()
 

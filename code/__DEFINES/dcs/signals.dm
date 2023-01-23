@@ -38,6 +38,11 @@
 ///from /proc/set_security_level
 #define COMSIG_GLOB_SECURITY_LEVEL_CHANGED "!security_level_changed"
 
+/// Called by (/datum/round_event_control/RunEvent).
+#define COMSIG_GLOB_RANDOM_EVENT "!random_event"
+	/// Do not allow this random event to continue.
+	#define CANCEL_RANDOM_EVENT (1<<0)
+
 //////////////////////////////////////////////////////////////////
 
 #define COMSIG_CLIENT_LMB_DOWN "client_lmb_down"
@@ -137,6 +142,8 @@
 #define COMSIG_MOB_RESISTED "mob_resist"
 /// From /mob/living/verb/resist()
 #define COMSIG_MOB_RECALCULATE_CLIENT_COLOR "mob_recalc_client_color"
+///from /mob/living/carbon/human/proc/force_say(): ()
+#define COMSIG_HUMAN_FORCESAY "human_forcesay"
 
 /// From /obj/item/proc/unequipped()
 #define COMSIG_MOB_ITEM_UNEQUIPPED "mob_item_unequipped"
@@ -152,7 +159,7 @@
 	#define COMPONENT_CANCEL_SET_FACE_DIR (1<<0)
 
 /// From /obj/effect/alien/weeds/Crossed(atom/movable/AM)
-#define COMSIG_MOB_WEEDS_CROSSED "mob_weeds_crossed"
+#define COMSIG_MOB_WEED_SLOWDOWN "mob_weeds_slowdown"
 
 #define COMSIG_MOB_TAKE_DAMAGE "mob_take_damage"
 #define COMSIG_XENO_TAKE_DAMAGE "xeno_take_damage"
@@ -523,3 +530,9 @@
 
 // Used for smothering fires upon weather event start/stop
 #define COMSIG_GLOB_WEATHER_CHANGE "!weather_event_changed"
+
+// sentry laptop
+#define COMSIG_SENTRY_ENGAGED_ALERT "signal_sentry_engaged"
+#define COMSIG_SENTRY_LOW_AMMO_ALERT "signal_sentry_low_ammo"
+#define COMSIG_SENTRY_EMPTY_AMMO_ALERT "signal_sentry_empty_ammo"
+#define COMSIG_SENTRY_DESTROYED_ALERT "signal_sentry_destroyed"

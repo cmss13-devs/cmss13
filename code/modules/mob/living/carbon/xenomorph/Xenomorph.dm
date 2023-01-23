@@ -70,8 +70,8 @@
 	var/datum/caste_datum/caste // Used to extract determine ALL Xeno stats.
 	var/speaking_key = "x"
 	var/speaking_noise = "alien_talk"
-	var/slash_verb = "slash"
-	var/slashes_verb = "slashes"
+	slash_verb = "slash"
+	slashes_verb = "slashes"
 	var/slash_sound = "alien_claw_flesh"
 	health = 5
 	maxHealth = 5
@@ -240,7 +240,7 @@
 	var/list/tackle_counter
 	var/evolving = FALSE // Whether the xeno is in the process of evolving
 	/// The damage dealt by a xeno whenever they take damage near someone
-	var/acid_blood_damage = 25
+	var/acid_blood_damage = 12
 	var/nocrit = FALSE
 	var/deselect_timer = 0 // Much like Carbon.last_special is a short tick record to prevent accidental deselects of abilities
 
@@ -267,7 +267,6 @@
 	// an easily modularizable way. So, here you go.
 	//
 	//////////////////////////////////////////////////////////////////
-	var/weedwalking_activated = FALSE //Hivelord's weedwalking
 	var/tunnel = FALSE
 	var/stealth = FALSE // for check on lurker invisibility
 	var/burrow = FALSE
@@ -294,6 +293,8 @@
 
 	var/icon_xeno
 	var/icon_xenonid
+
+	bubble_icon = "alien"
 
 	/////////////////////////////////////////////////////////////////////
 	//
@@ -1066,5 +1067,5 @@
 		return
 	return ..()
 
-/mob/living/carbon/Xenomorph/handle_blood_splatter(var/splatter_dir)
-	new /obj/effect/temp_visual/dir_setting/bloodsplatter/xenosplatter(loc, splatter_dir)
+/mob/living/carbon/Xenomorph/handle_blood_splatter(var/splatter_dir, duration)
+	new /obj/effect/temp_visual/dir_setting/bloodsplatter/xenosplatter(loc, splatter_dir, duration)

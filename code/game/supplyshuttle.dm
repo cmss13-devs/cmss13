@@ -47,8 +47,9 @@ var/datum/controller/supply/supply_controller = new()
 	desc = "Completely impassable - or are they?"
 	icon = 'icons/obj/structures/props/stationobjs.dmi' //Change this.
 	icon_state = "plasticflaps"
+	gender = PLURAL
 	density = FALSE
-	anchored = 1
+	anchored = TRUE
 	layer = MOB_LAYER
 	var/collide_message_busy // Timer to stop collision spam
 
@@ -314,7 +315,7 @@ var/datum/controller/supply/supply_controller = new()
 	icon = 'icons/old_stuff/mark.dmi'
 	name = "X"
 	invisibility = 101
-	anchored = 1
+	anchored = TRUE
 	opacity = FALSE
 */
 
@@ -985,7 +986,7 @@ var/datum/controller/supply/supply_controller = new()
 	req_access = list(ACCESS_MARINE_CREWMAN)
 	circuit = /obj/item/circuitboard/computer/supplycomp/vehicle
 	// Can only retrieve one vehicle per round
-	var/spent = FALSE
+	var/spent = TRUE
 	var/tank_unlocked = FALSE
 	var/list/allowed_roles = list(JOB_CREWMAN)
 

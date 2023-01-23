@@ -4,7 +4,7 @@
 	desc = "It opens and closes."
 	icon = 'icons/obj/structures/doors/Doorint.dmi'
 	icon_state = "door1"
-	anchored = 1
+	anchored = TRUE
 	opacity = TRUE
 	density = TRUE
 	throwpass = 0
@@ -72,6 +72,12 @@
 
 //process()
 	//return
+
+/obj/structure/machinery/door/proc/borders_space()
+	for(var/turf/target in range(1, src))
+		if(istype(target, /turf/open/space))
+			return TRUE
+	return FALSE
 
 /obj/structure/machinery/door/Collided(atom/movable/AM)
 	if(panel_open || operating) return

@@ -60,6 +60,11 @@
 	update_icon()
 
 
+/turf/closed/wall/setDir(newDir)
+	..()
+	update_connections(FALSE)
+	update_icon()
+
 /turf/closed/wall/ChangeTurf(newtype, ...)
 	QDEL_NULL(acided_hole)
 
@@ -254,7 +259,7 @@
 	O.desc = "Looks hot."
 	O.icon = 'icons/effects/fire.dmi'
 	O.icon_state = "red_3"
-	O.anchored = 1
+	O.anchored = TRUE
 	O.density = TRUE
 	O.layer = FLY_LAYER
 
@@ -325,10 +330,11 @@
 			return
 
 	if(istype(W, /obj/item/weapon/melee/twohanded/breacher))
+		var/obj/item/weapon/melee/twohanded/breacher/current_hammer = W
 		if(user.action_busy)
 			return
-		if(!HAS_TRAIT(user, TRAIT_SUPER_STRONG))
-			to_chat(user, SPAN_WARNING("You can't use \the [W] properly!"))
+		if(!(HAS_TRAIT(user, TRAIT_SUPER_STRONG) || !current_hammer.really_heavy))
+			to_chat(user, SPAN_WARNING("You can't use \the [current_hammer] properly!"))
 			return
 		if(hull)
 			to_chat(user, SPAN_WARNING("Even with your immense strength, you can't bring down \the [src]."))

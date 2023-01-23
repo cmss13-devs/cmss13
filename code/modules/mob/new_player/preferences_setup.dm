@@ -266,8 +266,6 @@
 			return /datum/equipment_preset/uscm_ship/uscm_police/cmp
 		if(JOB_WARDEN)
 			return /datum/equipment_preset/uscm_ship/uscm_police/warden
-		if(JOB_CREWMAN)
-			return /datum/equipment_preset/uscm/tank/full
 		if(JOB_SEA)
 			return /datum/equipment_preset/uscm_ship/sea
 		if(JOB_CHIEF_ENGINEER)
@@ -291,12 +289,14 @@
 		if(JOB_MESS_SERGEANT)
 			return /datum/equipment_preset/uscm_ship/chef
 		if(JOB_SURVIVOR)
-			if(length(SSmapping.configs[GROUND_MAP].survivor_types))
-				return pick(SSmapping.configs[GROUND_MAP].survivor_types)
+			var/list/survivor_types = preferred_survivor_variant != ANY_SURVIVOR && length(SSmapping.configs[GROUND_MAP].survivor_types_by_variant[preferred_survivor_variant]) ? SSmapping.configs[GROUND_MAP].survivor_types_by_variant[preferred_survivor_variant] : SSmapping.configs[GROUND_MAP].survivor_types
+			if(length(survivor_types))
+				return pick(survivor_types)
 			return /datum/equipment_preset/survivor
 		if(JOB_SYNTH_SURVIVOR)
-			if(length(SSmapping.configs[GROUND_MAP].synth_survivor_types))
-				return pick(SSmapping.configs[GROUND_MAP].synth_survivor_types)
+			var/list/survivor_types = preferred_survivor_variant != ANY_SURVIVOR && length(SSmapping.configs[GROUND_MAP].synth_survivor_types_by_variant[preferred_survivor_variant]) ? SSmapping.configs[GROUND_MAP].synth_survivor_types_by_variant[preferred_survivor_variant] : SSmapping.configs[GROUND_MAP].synth_survivor_types
+			if(length(survivor_types))
+				return pick(survivor_types)
 			return /datum/equipment_preset/synth/survivor
 		if(JOB_CO_SURVIVOR)
 			if(length(SSmapping.configs[GROUND_MAP].CO_survivor_types))

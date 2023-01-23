@@ -8,6 +8,7 @@
 	icon = 'icons/mob/xenos/weeds.dmi'
 	icon_state = "base"
 
+	gender = PLURAL
 	anchored = TRUE
 	density = FALSE
 	layer = WEED_LAYER
@@ -158,6 +159,7 @@
 /obj/effect/alien/weeds/Crossed(atom/movable/atom_movable)
 	if(!isliving(atom_movable))
 		return
+
 	var/mob/living/crossing_mob = atom_movable
 
 	var/weed_slow = weed_strength
@@ -168,7 +170,7 @@
 		return
 
 	var/list/slowdata = list("movement_slowdown" = weed_slow)
-	SEND_SIGNAL(crossing_mob, COMSIG_MOB_WEEDS_CROSSED, slowdata, src)
+	SEND_SIGNAL(crossing_mob, COMSIG_MOB_WEED_SLOWDOWN, slowdata, src)
 	var/final_slowdown = slowdata["movement_slowdown"]
 
 	crossing_mob.next_move_slowdown += POSITIVE(final_slowdown)

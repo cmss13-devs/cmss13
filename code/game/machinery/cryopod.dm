@@ -143,7 +143,7 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 	desc = "A bewildering tangle of machinery and pipes linking the hypersleep chambers to the hypersleep bay.."
 	icon = 'icons/obj/structures/machinery/cryogenics.dmi'
 	icon_state = "cryo_rear"
-	anchored = 1
+	anchored = TRUE
 	density = TRUE
 
 	var/orient_right = null //Flips the sprite.
@@ -167,7 +167,7 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 	icon = 'icons/obj/structures/machinery/cryogenics.dmi'
 	icon_state = "body_scanner_open"
 	density = TRUE
-	anchored = 1
+	anchored = TRUE
 
 	var/mob/living/occupant = null //Person waiting to be despawned.
 	var/orient_right = null // Flips the sprite.
@@ -232,7 +232,7 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 	var/list/deleteall = list(/obj/item/clothing/mask/cigarette, \
 	/obj/item/clothing/glasses/sunglasses, \
 	/obj/item/clothing/glasses/mgoggles, \
-	/obj/item/clothing/head/helmet/beret/marine/mp, \
+	/obj/item/clothing/head/beret/marine/mp, \
 	/obj/item/clothing/gloves/black, \
 	/obj/item/weapon/melee/baton, \
 	/obj/item/weapon/gun/energy/taser, \

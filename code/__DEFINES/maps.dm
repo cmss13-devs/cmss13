@@ -40,10 +40,10 @@ require only minor tweaks.
 #define ZTRAIT_ACIDRAIN "weather_acidrain"
 #define ZTRAIT_SANDSTORM "weather_sandstorm"
 
-// number - bombcap is multiplied by this before being applied to bombs
+/// number - bombcap is multiplied by this before being applied to bombs
 #define ZTRAIT_BOMBCAP_MULTIPLIER "Bombcap Multiplier"
 
-// number - default gravity if there's no gravity generators or area overrides present
+/// number - default gravity if there's no gravity generators or area overrides present
 #define ZTRAIT_GRAVITY "Gravity"
 
 // numeric offsets - e.g. {"Down": -1} means that chasms will fall to z - 1 rather than oblivion
@@ -51,13 +51,14 @@ require only minor tweaks.
 #define ZTRAIT_DOWN "Down"
 
 // enum - how space transitions should affect this level
+
 #define ZTRAIT_LINKAGE "Linkage"
-	// UNAFFECTED if absent - no space transitions
-	#define UNAFFECTED null
-	// SELFLOOPING - space transitions always self-loop
-	#define SELFLOOPING "Self"
-	// CROSSLINKED - mixed in with the cross-linked space pool
-	#define CROSSLINKED "Cross"
+/// UNAFFECTED if absent - no space transitions
+#define UNAFFECTED null
+/// SELFLOOPING - space transitions always self-loop
+#define SELFLOOPING "Self"
+/// CROSSLINKED - mixed in with the cross-linked space pool
+#define CROSSLINKED "Cross"
 
 // string - type path of the z-level's baseturf (defaults to space)
 #define ZTRAIT_BASETURF "Baseturf"
@@ -75,22 +76,27 @@ require only minor tweaks.
 #define DECLARE_LEVEL(NAME, TRAITS) list(DL_NAME = NAME, DL_TRAITS = TRAITS)
 
 // must correspond to _basemap.dm for things to work correctly
+
 #define DEFAULT_MAP_TRAITS list(\
 	DECLARE_LEVEL("CentCom", ZTRAITS_ADMIN),\
 	DECLARE_LEVEL("LowOrbit", ZTRAITS_LOWORBIT),\
 )
 
 // Camera lock flags
+
 #define CAMERA_LOCK_SHIP (1<<0)
-#define CAMERA_LOCK_GROUND  (1<<1)
+#define CAMERA_LOCK_GROUND (1<<1)
 #define CAMERA_LOCK_ADMIN (1<<2)
 
-//Reserved/Transit turf type
-#define RESERVED_TURF_TYPE /turf/open/space/basic //What the turf is when not being used
+///Reserved/Transit turf type
+
+/// What the turf is when not being used
+#define RESERVED_TURF_TYPE /turf/open/space/basic
 
 //Ruin Generation
 
-#define PLACEMENT_TRIES 100 //How many times we try to fit the ruin somewhere until giving up (really should just swap to some packing algo)
+/// How many times we try to fit the ruin somewhere until giving up (really should just swap to some packing algo)
+#define PLACEMENT_TRIES 100
 
 #define PLACE_DEFAULT "random"
 #define PLACE_SAME_Z "same"

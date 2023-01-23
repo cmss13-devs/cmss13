@@ -31,7 +31,7 @@
 /mob/living/carbon/Xenomorph/Praetorian
 	caste_type = XENO_CASTE_PRAETORIAN
 	name = XENO_CASTE_PRAETORIAN
-	desc = "A huge, looming beast of an alien."
+	desc = "target huge, looming beast of an alien."
 	icon_size = 64
 	icon_state = "Praetorian Walking"
 	plasma_types = list(PLASMA_PHEROMONE,PLASMA_NEUROTOXIN)
@@ -62,26 +62,26 @@
 	///reward for hitting shots instead of spamming acid ball
 	var/reward_shield = 15
 
-/datum/behavior_delegate/praetorian_base/ranged_attack_additional_effects_target(atom/A)
-	if (!ishuman(A))
+/datum/behavior_delegate/praetorian_base/ranged_attack_additional_effects_target(atom/target)
+	if (!ishuman(target))
 		return
 
-	var/mob/living/carbon/human/H = A
+	var/mob/living/carbon/human/human_target = target
 
-	var/datum/effects/prae_acid_stacks/PAS = null
-	for (var/datum/effects/prae_acid_stacks/prae_acid_stacks in H.effects_list)
-		PAS = prae_acid_stacks
+	var/datum/effects/prae_acid_stacks/stacks
+	for (var/datum/effects/prae_acid_stacks/prae_acid_stacks in human_target.effects_list)
+		stacks = prae_acid_stacks
 		break
 
-	if (PAS == null)
-		new /datum/effects/prae_acid_stacks(H)
+	if (!stacks)
+		new /datum/effects/prae_acid_stacks(human_target)
 		return
 	else
-		PAS.increment_stack_count()
+		stacks.increment_stack_count()
 		return
 
-/datum/behavior_delegate/praetorian_base/ranged_attack_additional_effects_self(atom/A)
-	if(!ismob(A))
+/datum/behavior_delegate/praetorian_base/ranged_attack_additional_effects_self(atom/target)
+	if(!ismob(target))
 		return
 	bound_xeno.add_xeno_shield(reward_shield, XENO_SHIELD_SOURCE_BASE_PRAE, add_shield_on = TRUE, max_shield = 45)
 	to_chat(bound_xeno, SPAN_NOTICE("Your exoskeleton shimmers for a fraction of a second as the acid coats your target."))

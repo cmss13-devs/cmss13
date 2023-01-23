@@ -87,6 +87,7 @@ var/VehicleGearConsole
 
 //Spawnpoints.
 var/list/fallen_list = list()
+var/list/fallen_list_cross = list()
 var/list/cardinal = list(NORTH, SOUTH, EAST, WEST)
 var/list/diagonals = list(NORTHEAST, NORTHWEST, SOUTHEAST, SOUTHWEST)
 var/list/alldirs = list(NORTH, SOUTH, EAST, WEST, NORTHEAST, NORTHWEST, SOUTHEAST, SOUTHWEST)

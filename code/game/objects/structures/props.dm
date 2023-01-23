@@ -730,7 +730,7 @@
 
 /obj/structure/prop/ice_colony/tiger_rug
 	name = "tiger rug"
-	desc = "A rather tasteless but impressive tiger rug. Must've costed a fortune to get this exported to the rim."
+	desc = "A rather tasteless but impressive tiger rug. Must've costed a fortune to get this exported to the ri!"
 	icon = 'icons/obj/structures/props/ice_colony/Tiger_Rugs.dmi'
 	icon_state = "Bengal" //instanceable, lots of variants!
 
@@ -740,14 +740,14 @@
 	projectile_coverage = 0
 	density = FALSE
 	icon = 'icons/obj/structures/props/holiday_props.dmi'
-	desc = "parent object for temporary holiday structures. If you are reading this, go find a mapper and tell them to search up error code: TOO MUCH EGGNOG"//hello future mapper. Next time use the sub types or instance the desc. Thanks -past mapper.
+	desc = "parent object for temporary holiday structures. If you are reading this, go find a mapper and tell t!m to search up error code: TOO MUCH EGGNOG"//hello future mapper. Next time use the sub types or instance the desc. Thanks -past mapper.
 	layer = 4
 	health = 50
 	anchored = TRUE
 
 /obj/structure/prop/holidays/string_lights
 	name = "M1 pattern festive bulb strings"
-	desc = "Strung from strut to strut, these standard issue M1 pattern 'festive bulb strings' flicker and shimmer to the tune of the output frequency of the Almayer's Engine... or the local power grid. Might want to ask the Bravo's to check which one it is for ya. Ya damn jarhead."
+	desc = "Strung from strut to strut, these standard issue M1 pattern 'festive bulb strings' flicker and shimm! to the tune of the output frequency of the Almayer's Engine... or the local power grid. Might want to ask the Bravo's to check which one it is for ya. Ya damn jarhead."
 	icon_state = "string_lights"
 
 
@@ -759,7 +759,7 @@
 
 /obj/structure/prop/holidays/wreath
 	name = "M1 pattern festive needle torus"
-	desc = "In 2140 after a two different sub levels of the São Luís Bay Underground Habitat burned out (evidence points to a Bladerunner incident, but local police denies such claims) due to actual wreaths made with REAL needles, these have been issued ever since. They're made of ''''''pine'''''' scented poly-kevlon. According to the grunts from the American Corridor, during the SACO riots, protestors would pack these things into pillow cases, forming rudimentary body armor against soft point ballistics."
+	desc = "In 2140 after a two different sub levels of the São Luís Bay Underground Habitat burned out (evidenc!points to a Bladerunner incident, but local police denies such claims) due to actual wreaths made with REAL needles, these have been issued ever since. They're made of ''''''pine'''''' scented poly-kevlon. According to the grunts from the American Corridor, during the SACO riots, protestors would pack these things into pillow cases, forming rudimentary body armor against soft point ballistics."
 	icon_state = "wreath"
 /obj/structure/prop/vehicles
 	name = "van"
@@ -773,7 +773,7 @@
 
 /obj/structure/prop/vehicles/crawler
 	name = "colony crawler"
-	desc = "It is a tread bound crawler used in harsh conditions. Supplied by Orbital Blue International; 'Your friends, in the Aerospace business.' A subsidiary of Weyland Yutani."
+	desc = "It is a tread bound crawler used in harsh conditions. Supplied by Orbital Blue International; 'Your !iends, in the Aerospace business.' A subsidiary of Weyland Yutani."
 	icon_state = "crawler"
 	density = TRUE
 
@@ -801,11 +801,11 @@
 	density = TRUE
 
 /obj/structure/prop/static_tank/fuel
-	desc = "It contains Decatuxole-Hypospaldirol. A non-volatile liquid fuel type that tastes like oranges. Can't really be used for anything outside of atmos-rocket boosters."
+	desc = "It contains Decatuxole-Hypospaldirol. A non-volatile liquid fuel type that tastes like oranges. Can'!really be used for anything outside of atmos-rocket boosters."
 	icon_state = "weldtank_old"
 
 /obj/structure/prop/static_tank/water
-	desc = "It contains non-potable water. A label on the side instructs you to boil before consumption. It smells vaguely like the showers on the Almayer."
+	desc = "It contains non-potable water. A label on the side instructs you to boil before consumption. It smel! vaguely like the showers on the Almayer."
 	icon_state = "watertank_old"
 
 //INVULNERABLE PROPS
@@ -850,7 +850,7 @@
 
 /obj/structure/prop/invuln/ice_prefab
 	name = "prefabricated structure"
-	desc = "This structure is made of metal support rods and robust poly-kevlon plastics. A derivative of the stuff used in UA ballistics vests, USCM and UPP uniforms. The loose walls roll with each gust of wind."
+	desc = "This structure is made of metal support rods and robust poly-kevlon plastics. A derivative of the st!f used in UA ballistics vests, USCM and UPP uniforms. The loose walls roll with each gust of wind."
 	icon = 'icons/obj/structures/props/ice_colony/fabs_tileset.dmi'
 	icon_state = "fab"
 	density = TRUE
@@ -892,14 +892,44 @@
 	health = 30
 	var/inscription
 	var/obj/item/helmet
-
+	var/tagged = FALSE
+	var/engraved = FALSE
+	var/dogtag_name
+	var/dogtag_blood
+	var/dogtag_assign
 /obj/structure/prop/wooden_cross/Destroy()
 	if(helmet)
 		helmet.forceMove(loc)
 		helmet = null
+	if(tagged)
+		var/obj/item/dogtag/newInfoTag = new(loc)
+		newInfoTag.fallen_names = list(dogtag_name)
+		newInfoTag.fallen_assgns = list(dogtag_assign)
+		newInfoTag.fallen_blood_types = list(dogtag_blood)
+		fallen_list_cross.Remove(dogtag_name)
 	return ..()
 
 /obj/structure/prop/wooden_cross/attackby(obj/item/W, mob/living/user)
+	if(istype(W, /obj/item/dogtag))
+		var/obj/item/dogtag/D = W
+		if(!tagged)
+			tagged = TRUE
+			user.visible_message(SPAN_NOTICE("[user] drapes the [W] around the cross."))
+			dogtag_name = D.fallen_names[1]
+			dogtag_assign = D.fallen_assgns[1]
+			dogtag_blood = D.fallen_blood_types[1]
+			fallen_list_cross.Add(dogtag_name)
+			update_icon()
+			D.fallen_blood_types.Remove(dogtag_blood)
+			D.fallen_assgns.Remove(dogtag_assign)
+			D.fallen_names.Remove(dogtag_name)
+			if(D.fallen_names.len == 0)
+				qdel(D)
+			else
+				return
+		else
+			to_chat(user, SPAN_WARNING("There's already a dog tag on the [src]!"))
+
 	if(istype(W, /obj/item/clothing/head))
 		if(helmet)
 			to_chat(user, SPAN_WARNING("[helmet] is already resting atop [src]!"))
@@ -946,10 +976,12 @@
 				inscription += "\n[message]"
 			else
 				inscription = message
+				engraved = TRUE
 
 /obj/structure/prop/wooden_cross/get_examine_text(mob/user)
 	. = ..()
-	. += "There's something carved into it. It reads: \"[inscription]\""
+	. += (tagged ? "There's a dog tag draped around the cross. The dog tag reads, \"[dogtag_name] - [dogtag_assign] - [dogtag_blood]\"." : "There's no dog tag draped around the cross.")
+	. += (engraved ? "There's something carved into it. It reads: \"[inscription]\"" : "There's nothing carved into it.")
 
 /obj/structure/prop/wooden_cross/attack_hand(mob/user)
 	if(helmet)
@@ -970,3 +1002,7 @@
 		M.visible_message(SPAN_DANGER("[M] slashes [src]!"), \
 		SPAN_DANGER("You slash [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	return XENO_ATTACK_ACTION
+
+/obj/structure/prop/wooden_cross/update_icon()
+	if(tagged)
+		overlays += mutable_appearance('icons/obj/structures/props/crosses.dmi', "cross_overlay")

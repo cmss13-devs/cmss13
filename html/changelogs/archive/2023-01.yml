@@ -450,3 +450,76 @@
   stanalbatross:
   - qol: control-clicking a xeno as a ghost will now always make you orbit them
   - qol: reduced message spam when control-clicking xenos as a ghost
+2023-01-20:
+  CometBlaze:
+  - code_imp: Pre-set emotes now use langchat
+  Git-Nivrak:
+  - qol: Warrior's punch now aims for the chest instead of not doing anything when
+      the limb targeted is missing.
+  Huffie56:
+  - code_imp: Principally changed // comment to /// comment with the proper format
+      so that it follow the current documentation standard.
+  Kitsunemitsu:
+  - bugfix: fixed Commander and Lt Commander radio names on WO
+  Morrow:
+  - bugfix: Fixes rank board/pin runtime.
+  - rscadd: Gives goon presets three zip cuffs.
+  NewyearnewmeUwu:
+  - spellcheck: fixed a donor item typo
+  - spellcheck: properly capitalized the M56 FPW bullet
+  Unknownity:
+  - bugfix: PMC Survivors can now use PMC weapons.
+  harryob:
+  - qol: instead of using macros for pickup, you can now use the built in keybind
+      - defaulting to F, but can be changed. it remembers your last two dropped items
+  joe lampost:
+  - code_imp: Removes the council and rank requirement on predator ponchos and most
+      of the capes
+  mullenpaul, stanalbatross:
+  - ui: converted the playtime menu to tgui
+  realforest2001:
+  - rscadd: Adds networks to phones. Phone A can only call other phones who receive
+      one of Phone A's transmit networks.
+  - rscadd: RTO packs set their category on initialize via a variable rather than
+      hardcode, allowing for customisation in maps.
+  - rscadd: Added PMC faction radios.
+  - rscadd: Changed all instances of PMC radios on maps to be hvh versions so they
+      can't call the Almayer.
+  - rscadd: Changed liaison survivors to have WY radios rather than PMC radios for
+      same reason.
+  - rscdel: Removed CCT encryption key as it no longer works.
+  - bugfix: Fixed incorrect channel prefix descriptions on faction radios.
+  - rscadd: Added mortar kit subspawns for each HVH faction.
+  stanalbatross:
+  - ui: remade the weapon status nanoui into tgui
+  - code_imp: changed some alerts to tgui alerts and fixed issues with them that caused
+      their code to run when they were closed
+2023-01-21:
+  Segrain:
+  - bugfix: Queen once again can actually launch a hijacked dropship on crash course.
+2023-01-22:
+  Git-Nivrak:
+  - balance: Dancer doesn't lose its speed buff when slashing but also doesn't get
+      the evasion buff.
+  thwomper, harryob:
+  - ui: your mouse cursor is now special when using the xm-88
+2023-01-23:
+  JackieEstegado:
+  - balance: Requisitions will now always start with at least one powerloader certificate.
+  LynxSolstice:
+  - rscdel: Removed ability to access vehicles during normal gameplay. Removed the
+      Vehicle Crewman role.
+  Mister-moon1:
+  - balance: changed amount of possible PMC snipers to 1, amount of possible PMC medics
+      to 2
+  carlarctg:
+  - balance: Adds an outline filter to synthetic protective and immobile forms. Blue
+      = Immobile, Green = Protective
+  - balance: The smartpack's visual-only exoskeleton has been set to default - but
+      is now only visible when in repair, protective, or immobile forms. T
+  harryob:
+  - code_imp: without adding any random events, the framework for random events has
+      now been added
+  nauticall:
+  - rscadd: Resprited the pipe dispenser, CAS laser battery, the crematorium, various
+      foodstuffs and ingredients, the portable dialysis machine, and the mounted flash.

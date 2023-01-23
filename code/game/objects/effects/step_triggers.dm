@@ -4,7 +4,7 @@
 	var/affect_ghosts = 0
 	var/stopper = 1 // stops throwers
 	invisibility = 101 // nope cant see this shit
-	anchored = 1
+	anchored = TRUE
 	icon = 'icons/landmarks.dmi'
 	icon_state = "trigger"
 

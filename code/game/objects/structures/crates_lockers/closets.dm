@@ -24,7 +24,7 @@
 	var/fill_from_loc = TRUE //Whether items from the tile are automatically moved inside the closet.
 	var/exit_stun = 2 //stun time upon exiting, if at all
 
-	anchored = 1 //Yep
+	anchored = TRUE //Yep
 
 	var/mob_size = 15
 

@@ -8,7 +8,7 @@
 	icon_state = "trap0"
 	density = FALSE
 	opacity = FALSE
-	anchored = 1
+	anchored = TRUE
 	health = 5
 	layer = RESIN_STRUCTURE_LAYER
 	var/list/tripwires = list()
@@ -344,7 +344,7 @@
 
 /obj/effect/hole_tripwire
 	name = "hole tripwire"
-	anchored = 1
+	anchored = TRUE
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	invisibility = 101
 	unacidable = TRUE //You never know

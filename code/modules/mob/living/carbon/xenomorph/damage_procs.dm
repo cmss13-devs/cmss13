@@ -254,7 +254,6 @@
 					decal.icon_state = pick(decal.random_icon_states)
 
 		var/splash_chance = 40 //Base chance of getting splashed. Decreases with # of victims.
-		var/distance = 0 //Distance, decreases splash chance.
 		var/i = 0 //Tally up our victims.
 
 		for(var/mob/living/carbon/human/victim in orange(radius, src)) //Loop through all nearby victims, including the tile.

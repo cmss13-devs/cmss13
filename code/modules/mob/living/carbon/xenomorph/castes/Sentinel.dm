@@ -84,7 +84,7 @@
 		to_chat(carbon_target, SPAN_XENOHIGHDANGER("You feel like you're about to fall over, as [bound_xeno] slashes you with its neurotoxin coated claws!"))
 		carbon_target.sway_jitter(times = 3, steps = round(NEURO_TOUCH_DELAY/3))
 		carbon_target.apply_effect(4, DAZE)
-		addtimer(CALLBACK(src, PROC_REF(paralyzing_slash), carbon_target), NEURO_TOUCH_DELAY)
+		addtimer(CALLBACK(src, PROC_REF(paralyzed), carbon_target), NEURO_TOUCH_DELAY)
 		next_slash_buffed = FALSE
 	if(!next_slash_buffed)
 		var/datum/action/xeno_action/onclick/paralyzing_slash/ability = get_xeno_action_by_type(bound_xeno, /datum/action/xeno_action/onclick/paralyzing_slash)
@@ -94,6 +94,23 @@
 
 #undef NEURO_TOUCH_DELAY
 
-/datum/behavior_delegate/sentinel_base/proc/paralyzing_slash(mob/living/carbon/human/human_target)
+/datum/behavior_delegate/sentinel_base/post_ability_cast(datum/action/xeno_action/ability, result)
+	. = ..()
+	if(istype(ability, /datum/action/xeno_action/onclick/paralyzing_slash) && result)
+		//The result means the ability should apply the buff
+		var/datum/action/xeno_action/onclick/paralyzing_slash/para_action = get_xeno_action_by_type(bound_xeno, /datum/action/xeno_action/onclick/paralyzing_slash)
+		to_chat(bound_xeno, SPAN_XENOHIGHDANGER("Your next slash will apply neurotoxin!"))
+		next_slash_buffed = TRUE
+		addtimer(CALLBACK(src, PROC_REF(nerf_slash)), para_action.buff_duration)
+
+/datum/behavior_delegate/sentinel_base/proc/nerf_slash()
+	if(!next_slash_buffed)
+		return
+	var/datum/action/xeno_action/onclick/paralyzing_slash/para_action = get_xeno_action_by_type(bound_xeno, /datum/action/xeno_action/onclick/paralyzing_slash)
+	to_chat(bound_xeno, SPAN_XENODANGER("You have waited too long, your slash will no longer apply neurotoxin!"))
+	next_slash_buffed = FALSE
+	para_action.button.icon_state = "template"
+
+/datum/behavior_delegate/sentinel_base/proc/paralyzed(mob/living/carbon/human/human_target)
 	human_target.apply_effect(2, WEAKEN)
 	to_chat(human_target, SPAN_XENOHIGHDANGER("You fall over, paralyzed by the toxin!"))

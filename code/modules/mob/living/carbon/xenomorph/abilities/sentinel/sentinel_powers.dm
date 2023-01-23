@@ -79,30 +79,8 @@
 
 	if (xeno.mutation_type != SENTINEL_NORMAL)
 		return
-
-	var/datum/behavior_delegate/sentinel_base/behavior = xeno.behavior_delegate
-	if (istype(behavior))
-		behavior.next_slash_buffed = TRUE
-
-	to_chat(xeno, SPAN_XENOHIGHDANGER("Your next slash will apply neurotoxin!"))
 	button.icon_state = "template_active"
-
-	addtimer(CALLBACK(src, PROC_REF(unbuff_slash)), buff_duration)
 
 	apply_cooldown()
 	..()
-	return
-
-/datum/action/xeno_action/onclick/paralyzing_slash/proc/unbuff_slash()
-	var/mob/living/carbon/Xenomorph/xeno = owner
-	if (!istype(xeno))
-		return
-	var/datum/behavior_delegate/sentinel_base/behavior = xeno.behavior_delegate
-	if (istype(behavior))
-		// In case slash has already landed
-		if (!behavior.next_slash_buffed)
-			return
-		behavior.next_slash_buffed = FALSE
-
-	to_chat(xeno, SPAN_XENODANGER("You have waited too long, your slash will no longer apply neurotoxin!"))
-	button.icon_state = "template"
+	return TRUE

@@ -14,14 +14,14 @@
 
 	xeno_owner.visible_message(SPAN_XENOWARNING("[xeno_owner] fires a burst of bone chips at [target]!"), SPAN_XENOWARNING("You fire a burst of bone chips at [target]!"))
 
-	var/turf/target = locate(target.x, target.y, target.z)
+	var/turf/target_turf = locate(target.x, target.y, target.z)
 	var/obj/item/projectile/bone_chip = new /obj/item/projectile(xeno_owner.loc, create_cause_data(initial(xeno_owner.caste_type), xeno_owner))
 
 	var/datum/ammo/chip_ammo = GLOB.ammo_list[ammo_type]
 
 	bone_chip.generate_bullet(chip_ammo)
 
-	bone_chip.fire_at(target, xeno_owner, xeno_owner, chip_ammo.max_range, chip_ammo.shell_speed)
+	bone_chip.fire_at(target_turf, xeno_owner, xeno_owner, chip_ammo.max_range, chip_ammo.shell_speed)
 
 	apply_cooldown()
 	..()

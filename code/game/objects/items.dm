@@ -139,6 +139,14 @@
 	/// lets us know if the item is an objective or not
 	var/is_objective = FALSE
 
+	/// Allows for bigger than 32x32 sprites.
+	var/worn_x_dimension = 32
+	var/worn_y_dimension = 32
+
+	/// Allows for bigger than 32x32 sprites, these govern inhand sprites. (Like a longer sword that's normal-sized on your back)
+	var/inhand_x_dimension = 32
+	var/inhand_y_dimension = 32
+
 	var/list/inherent_traits
 
 /obj/item/Initialize(mapload, ...)

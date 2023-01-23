@@ -208,3 +208,24 @@
 
 	else
 		to_chat(user, SPAN_NOTICE("You couldn't find any shrapnel."))
+
+// Demo and example of a 64x64 weapon.
+/obj/item/weapon/melee/ritual
+	name = "cool knife"
+	desc = "It shines with awesome coding power"
+	icon_state = "dark_blade"
+	item_state = "dark_blade"
+	force = MELEE_FORCE_VERY_STRONG
+	throwforce = MELEE_FORCE_WEAK
+	sharp = IS_SHARP_ITEM_BIG
+	edge = TRUE
+	w_class = SIZE_MEDIUM
+	hitsound = 'sound/weapons/bladeslice.ogg'
+	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
+	attack_speed = 7
+	inhand_x_dimension = 64
+	inhand_y_dimension = 64
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/items_lefthand_64.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/items_righthand_64.dmi'
+		)

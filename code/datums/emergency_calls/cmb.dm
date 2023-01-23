@@ -75,6 +75,7 @@
 		to_chat(M, SPAN_BOLD("You do not enforce or comply with Marine Law, however you have an understanding of it."))
 		to_chat(M, SPAN_BOLD("After receiving a software and law update in Sol, you were stationed at Anchorpoint Station to assist with CMB units on the frontier."))
 		to_chat(M, SPAN_BOLD("While enroute to an investigation you were diverted by your command to the [MAIN_SHIP_NAME] because of a distress beacon."))
+		to_chat(M, SPAN_BOLD("Should it be required, you are currently carrying the light munition and equipment reserves in your backpack to be given to your team."))
 		to_chat(M, SPAN_BOLD("Despite being stretched thin, the stalwart oath of the Marshals has continued to keep communities safe, with the CMB well respected by many. You are a representation of that oath, serve with distinction."))
 	else if(M == icc_liaison)
 		to_chat(M, SPAN_BOLD("You are an Interstellar Commerce Liaison, originally from [pick(70;"The United Americas", 25;"Sol", 5;"a colony on the frontier")]."))

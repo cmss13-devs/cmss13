@@ -503,3 +503,23 @@
       the evasion buff.
   thwomper, harryob:
   - ui: your mouse cursor is now special when using the xm-88
+2023-01-23:
+  JackieEstegado:
+  - balance: Requisitions will now always start with at least one powerloader certificate.
+  LynxSolstice:
+  - rscdel: Removed ability to access vehicles during normal gameplay. Removed the
+      Vehicle Crewman role.
+  Mister-moon1:
+  - balance: changed amount of possible PMC snipers to 1, amount of possible PMC medics
+      to 2
+  carlarctg:
+  - balance: Adds an outline filter to synthetic protective and immobile forms. Blue
+      = Immobile, Green = Protective
+  - balance: The smartpack's visual-only exoskeleton has been set to default - but
+      is now only visible when in repair, protective, or immobile forms. T
+  harryob:
+  - code_imp: without adding any random events, the framework for random events has
+      now been added
+  nauticall:
+  - rscadd: Resprited the pipe dispenser, CAS laser battery, the crematorium, various
+      foodstuffs and ingredients, the portable dialysis machine, and the mounted flash.

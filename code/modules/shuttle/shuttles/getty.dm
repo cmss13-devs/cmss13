@@ -1,6 +1,10 @@
 #define SHUTTLE_GETTY "gettysburg"
 #define SHUTTLE_GETTY_CUSTOM "gettysburg_custom"
 
+#define STATE_ON_SHIP "on_ship"
+#define STATE_ON_GROUND "on_ground"
+#define STATE_IN_ATMOSPHERE "in_atmosphere"
+
 /obj/docking_port/stationary/getty
 	name = "Gettysburg Hangar Pad"
 	id = SHUTTLE_GETTY
@@ -52,9 +56,29 @@
 	unacidable = TRUE
 	open_prompt = FALSE
 
+	COOLDOWN_DECLARE(launch_cooldown)
+
 	var/current_state = STATE_ON_SHIP
 	var/damaged = FALSE
 
+/obj/structure/machinery/computer/camera_advanced/shuttle_docker/getty/proc/to_atmosphere()
+	shuttle_port = SSshuttle.getShuttle(shuttleId)
+	shuttle_port.shuttle_computer = src
 
+	if(!(shuttle_port.shuttle_flags & GAMEMODE_IMMUNE) && world.time < SSticker.mode.round_time_lobby + SHUTTLE_TIME_LOCK)
+		to_chat(user, SPAN_WARNING("The shuttle is still undergoing pre-flight fueling and cannot depart yet. Please wait another [round((SSticker.mode.round_time_lobby + SHUTTLE_TIME_LOCK-world.time)/600)] minutes before trying again."))
+		return
+
+	if(!COOLDOWN_FINISHED)
+		to_chat(user, SPAN_WARNING("Engines are cooling down. Wait a moment."))
+
+	current_state = STATE_IN_ATMOSPHERE
+	SSshuttle.move_shuttle_to_transit(shuttleId, TRUE)
+
+
+/obj/structure/machinery/computer/camera_advanced/shuttle_docker/getty/proc/to_ship()
+	SSshuttle.moveShuttle(shuttleId, shuttleId, TRUE)
+
+/obj/structure/machinery/computer/camera_advanced/shuttle_docker/getty/ui_state(mob/user)
 
 

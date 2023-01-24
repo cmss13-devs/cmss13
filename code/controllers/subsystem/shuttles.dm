@@ -638,5 +638,12 @@ SUBSYSTEM_DEF(shuttle)
 					message_admins("[key_name_admin(usr)] loaded [mdp] with the shuttle manipulator.")
 					log_admin("[key_name(usr)] loaded [mdp] with the shuttle manipulator.</span>")
 
+/datum/controller/subsystem/shuttle/proc/move_shuttle_to_transit(shuttle_id, timed)
+	var/obj/docking_port/mobile/shuttle = getShuttle(shuttle_id)
+	var/obj/docking_port/statonary/transit = generate_transit_dock(shuttle)
+
+	if(!transit)
+		return
+	moveShuttleToDock(shuttle_id, transit, timed)
 
 #undef SHUTTLE_SPAWN_BUFFER

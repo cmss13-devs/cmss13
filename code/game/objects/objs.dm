@@ -61,9 +61,6 @@
 			return
 
 		var/atom/A = locate(href_list[VV_HK_SETMATRIX])
-		if(!isobj(A) && !ismob(A))
-			to_chat(usr, "This can only be done to instances of type /obj and /mob")
-			return
 
 		if(!LAZYLEN(usr.client.stored_matrices))
 			to_chat(usr, "You don't have any matrices stored!")

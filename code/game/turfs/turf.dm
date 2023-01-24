@@ -117,7 +117,6 @@
 	. = ..()
 	VV_DROPDOWN_OPTION(VV_HK_EXPLODE, "Trigger Explosion")
 	VV_DROPDOWN_OPTION(VV_HK_EMPULSE, "Trigger EM Pulse")
-	VV_DROPDOWN_OPTION(VV_HK_SETMATRIX, "Set Base Matrix")
 
 /turf/ex_act(severity)
 	return 0

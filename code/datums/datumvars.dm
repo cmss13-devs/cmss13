@@ -62,11 +62,11 @@
 
 		cell_explosion(A, 150, 100, , create_cause_data("divine intervention"))
 		message_staff("[key_name(src, TRUE)] has exploded [A]!")
-	if(href_list[VV_HK_SETMATRIX])
+	if(href_list[VV_HK_EMPULSE])
 		if(!check_rights(R_DEBUG))
 			return
 
-		var/atom/A = locate(href_list[VV_HK_SETMATRIX])
+		var/atom/A = locate(href_list[VV_HK_EMPULSE])
 		if(!isobj(A) && !ismob(A) && !isturf(A))
 			to_chat(usr, "This can only be done to instances of type /obj, /mob and /turf")
 			return

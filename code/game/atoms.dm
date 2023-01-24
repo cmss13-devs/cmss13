@@ -635,19 +635,19 @@ Parameters are passed from New.
 			return
 		switch(result)
 			if("Scale")
-				var/x = tgui_input_number(usr, "Choose x mod","Transform Mod")
-				var/y = tgui_input_number(usr, "Choose y mod","Transform Mod")
+				var/x = tgui_input_real_number(usr, "Choose x mod","Transform Mod")
+				var/y = tgui_input_real_number(usr, "Choose y mod","Transform Mod")
 				if(isnull(x) || isnull(y))
 					return
 				transform = M.Scale(x,y)
 			if("Translate")
-				var/x = tgui_input_number(usr, "Choose x mod (negative = left, positive = right)","Transform Mod")
-				var/y = tgui_input_number(usr, "Choose y mod (negative = down, positive = up)","Transform Mod")
+				var/x = tgui_input_real_number(usr, "Choose x mod (negative = left, positive = right)","Transform Mod")
+				var/y = tgui_input_real_number(usr, "Choose y mod (negative = down, positive = up)","Transform Mod")
 				if(isnull(x) || isnull(y))
 					return
 				transform = M.Translate(x,y)
 			if("Rotate")
-				var/angle = tgui_input_number(usr, "Choose angle to rotate","Transform Mod")
+				var/angle = tgui_input_real_number(usr, "Choose angle to rotate","Transform Mod")
 				if(isnull(angle))
 					return
 				transform = M.Turn(angle)

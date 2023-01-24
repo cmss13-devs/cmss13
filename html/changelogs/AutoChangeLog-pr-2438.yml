@@ -1,0 +1,5 @@
+author: "Segrain"
+delete-after: True
+changes:
+  - refactor: "Drinks are brought to be more in line with reagent system overall. Let me know if something breaks."
+  - bugfix: "Exploit involving legacy healing drink going infinite is put to an end."

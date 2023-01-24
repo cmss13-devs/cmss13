@@ -659,7 +659,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 				if(istype(da, /obj/structure/airlock_assembly/multi_tile))
 					da.setDir(dir)
 
-				da.anchored = 1
+				da.anchored = TRUE
 				if(mineral)
 					da.glass = mineral
 				//else if(glass)

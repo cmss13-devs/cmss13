@@ -4,7 +4,7 @@
 	icon_state = "juicer1"
 	layer = ABOVE_TABLE_LAYER
 	density = FALSE
-	anchored = 0
+	anchored = FALSE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 5
 	active_power_usage = 100

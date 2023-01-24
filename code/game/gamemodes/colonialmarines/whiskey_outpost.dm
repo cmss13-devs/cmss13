@@ -435,7 +435,7 @@
 				if(I && istype(I,/obj/item/stack/sheet/mineral/phoron) || istype(I,/obj/item/stack/rods) || istype(I,/obj/item/stack/sheet/glass) || istype(I,/obj/item/stack/sheet/metal) || istype(I,/obj/item/stack/sheet/plasteel) || istype(I,/obj/item/stack/sheet/wood))
 					I:amount = rand(30,50) //Give them more building materials.
 				if(I && istype(I,/obj/structure/machinery/floodlight))
-					I.anchored = 0
+					I.anchored = FALSE
 
 
 	else
@@ -452,7 +452,7 @@
 	name = "Recycler"
 	desc = "Instructions: Place objects you want to destroy on top of it and use the machine. Use with care"
 	density = FALSE
-	anchored = 1
+	anchored = TRUE
 	unslashable = TRUE
 	unacidable = TRUE
 	var/working = 0
@@ -598,7 +598,7 @@
 		return
 
 	activated = 1
-	anchored = 1
+	anchored = TRUE
 	w_class = 10
 	icon_state = "[icon_activated]"
 	playsound(src, 'sound/machines/twobeep.ogg', 15, 1)

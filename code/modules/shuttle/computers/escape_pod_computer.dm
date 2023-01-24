@@ -73,7 +73,8 @@
 			pod_state = pod_state == STATE_DELAYED ? STATE_READY : STATE_DELAYED
 			. = TRUE
 		if("lock_door")
-			if(shuttle.door_handler.doors[1].density) //Closed
+			var/obj/structure/machinery/door/target_door = shuttle.door_handler.doors[1]
+			if(target_door.density) //Closed
 				shuttle.door_handler.control_doors("force-unlock")
 			else //Open
 				shuttle.door_handler.control_doors("force-lock-launch")

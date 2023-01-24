@@ -21,6 +21,9 @@
 	// If the computer is on the dropship or remotely accessing it
 	var/is_remote = FALSE
 
+	var/is_ground_terminal = FALSE
+	var/obj/docking_port/stationary/marine_dropship/linked_lz
+
 /obj/structure/machinery/computer/shuttle/dropship/flight/remote_control
 	icon = 'icons/obj/structures/machinery/computer.dmi'
 	icon_state = "shuttle"
@@ -131,8 +134,13 @@
 		to_chat(xeno, SPAN_NOTICE("Lights flash from the terminal but you can't comprehend their meaning."))
 		return
 
+	if(is_remote && is_ground_terminal && isXenoQueen(xeno))
+		if(linked_lz)
+			SSshuttle.moveShuttle(shuttleId, linked_lz.id, TRUE)
+			return
+
 	// door controls being overriden
-	if(!dropship_control_lost)
+	if(!dropship_control_lost && !is_remote)
 		to_chat(xeno, SPAN_XENONOTICE("You override the doors."))
 		xeno_message(SPAN_XENOANNOUNCE("The doors of the metal bird have been overridden! Rejoice!"), 3, xeno.hivenumber)
 
@@ -146,7 +154,7 @@
 			set_lz_resin_allowed(TRUE)
 		return
 
-	if(isXenoQueen(xeno) && dropship_control_lost)
+	if(isXenoQueen(xeno) && dropship_control_lost && !is_remote)
 		//keyboard
 		for(var/i = 0; i < 5; i++)
 			playsound(loc, get_sfx("keyboard"), KEYBOARD_SOUND_VOLUME, 1)

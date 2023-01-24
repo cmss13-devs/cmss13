@@ -140,6 +140,9 @@
 		var/obj/docking_port/mobile/marine_dropship/dropship = arriving_shuttle
 		dropship.in_flyby = FALSE
 		dropship.control_doors("unlock", "all", force=TRUE)
+	if(is_ground_level(z) && !SSobjectives.first_drop_complete)
+		SSticker.mode.ds_first_landed(src)
+
 
 /obj/docking_port/stationary/marine_dropship/on_dock_ignition(obj/docking_port/mobile/departing_shuttle)
 	. = ..()

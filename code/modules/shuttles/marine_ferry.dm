@@ -4,23 +4,6 @@
 //Front-end this should look exactly the same, save for a minor timing difference (about 1-3 deciseconds)
 //Some of this code is ported from the previous shuttle system and modified for these purposes.
 
-
-/*
-/client/verb/TestAlmayerEvac()
-	set name = "Test Almayer Evac"
-
-	for(var/datum/shuttle/ferry/marine/M in shuttle_controller.process_shuttles)
-		if(M.info_tag == "Almayer Evac" || M.info_tag == "Alt Almayer Evac")
-			spawn(1)
-				M.short_jump()
-				to_world("LAUNCHED THING WITH TAG [M.shuttle_tag]")
-		else if(M.info_tag == "Almayer Dropship")
-			spawn(1)
-				M.short_jump()
-				to_world("LAUNCHED THING WITH TAG [M.shuttle_tag]")
-		else to_world("did not launch thing with tag [M.shuttle_tag]")
-*/
-
 /datum/shuttle/ferry/marine
 	var/shuttle_tag //Unique ID for finding which landmarks to use
 	var/info_tag //Identifies which coord datums to copy

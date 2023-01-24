@@ -808,42 +808,6 @@
 			CRASH("Shuttle crashed trying to override invalid rear door with shuttle id [ship_id]")
 		reardoor.unlock()
 
-/obj/structure/machinery/computer/shuttle_control/attack_alien(mob/living/carbon/xenomorph/M)
-	var/datum/shuttle/ferry/marine/shuttle = shuttle_controller.shuttles[shuttle_tag]
-	if(!istype(shuttle) || !(M.caste && M.caste.is_intelligent))
-		return ..()
-
-	attack_hand(M)
-	if(!shuttle.iselevator)
-		if(shuttle_tag != "Ground Transport 1")
-			shuttle.door_override(M, shuttle_tag)
-		if(onboard || shuttle_tag == "Ground Transport 1") //This is the shuttle's onboard console or the control console for the CORSAT monorail
-			shuttle.hijack(M, shuttle_tag)
-	return XENO_ATTACK_ACTION
-
-/obj/structure/machinery/door_control/attack_alien(mob/living/carbon/xenomorph/M)
-	if(M.caste && M.caste.is_intelligent && normaldoorcontrol == CONTROL_DROPSHIP)
-		var/shuttle_tag
-		switch(id)
-			if("sh_dropship1")
-				shuttle_tag = DROPSHIP_ALAMO
-			if("sh_dropship2")
-				shuttle_tag = DROPSHIP_NORMANDY
-			if("gr_transport1")
-				shuttle_tag = "Ground Transport 1"
-			else
-				return XENO_NO_DELAY_ACTION
-
-		var/datum/shuttle/ferry/marine/shuttle = shuttle_controller.shuttles[shuttle_tag]
-		shuttle.door_override(M, shuttle_tag)
-		xeno_attack_delay(M)
-
-		if(do_after(usr, 50, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
-			shuttle.hijack(M, shuttle_tag)
-		return XENO_NO_DELAY_ACTION
-	else
-		return ..()
-
 //APCs.
 /obj/structure/machinery/power/apc/attack_alien(mob/living/carbon/xenomorph/M)
 

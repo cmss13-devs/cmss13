@@ -92,13 +92,6 @@
 /obj/structure/machinery/door_control/proc/handle_pod()
 	for(var/obj/structure/machinery/door/poddoor/M in machines)
 		if(M.id == id)
-			var/datum/shuttle/ferry/marine/S
-			var/area/A = get_area(M)
-			for(var/i = 1 to 2)
-				if(istype(A, text2path("/area/shuttle/drop[i]")))
-					S = shuttle_controller.shuttles["[MAIN_SHIP_NAME] Dropship [i]"]
-					if(S.moving_status == SHUTTLE_INTRANSIT)
-						return FALSE
 			if(M.density)
 				INVOKE_ASYNC(M, TYPE_PROC_REF(/obj/structure/machinery/door, open))
 			else

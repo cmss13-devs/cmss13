@@ -52,7 +52,6 @@
 
 /obj/structure/machinery/computer/shuttle/dropship/flight/proc/update_equipment(var/optimised=FALSE)
 	var/obj/docking_port/mobile/marine_dropship/dropship = SSshuttle.getShuttle(shuttleId)
-	var/datum/shuttle/ferry/marine/FM = shuttle_controller.shuttles[shuttleId]
 
 	// initial flight time
 	var/flight_duration = DROPSHIP_TRANSIT_DURATION
@@ -68,12 +67,13 @@
 	if(optimised)
 		recharge_duration = SHUTTLE_RECHARGE * SHUTTLE_OPTIMIZE_FACTOR_RECHARGE
 
-	for(var/obj/structure/dropship_equipment/equipment as anything in FM.equipments)
+	for(var/obj/structure/dropship_equipment/equipment as anything in dropship.equipments)
 		// fuel enhancer
 		if(istype(equipment, /obj/structure/dropship_equipment/fuel/fuel_enhancer))
-			flight_duration = is_set_flyby
-				? flight_duration / SHUTTLE_FUEL_ENHANCE_FACTOR_TRAVEL
-				: flight_duration * SHUTTLE_FUEL_ENHANCE_FACTOR_TRAVEL
+			if(is_set_flyby)
+				flight_duration = flight_duration / SHUTTLE_FUEL_ENHANCE_FACTOR_TRAVEL
+			else
+				flight_duration = flight_duration * SHUTTLE_FUEL_ENHANCE_FACTOR_TRAVEL
 
 		// cooling system
 		if(istype(equipment, /obj/structure/dropship_equipment/fuel/cooling_system))

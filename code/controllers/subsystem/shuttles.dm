@@ -593,6 +593,7 @@ SUBSYSTEM_DEF(shuttle)
 					. = TRUE
 					var/obj/structure/machinery/computer/shuttle/console = M.getControlConsole()
 					console.disable()
+					message_staff("[key_name_admin(user)] set [M.id]'s disabled to TRUE.")
 					break
 		if("unlock")
 			for(var/i in mobile)
@@ -601,6 +602,7 @@ SUBSYSTEM_DEF(shuttle)
 					. = TRUE
 					var/obj/structure/machinery/computer/shuttle/console = M.getControlConsole()
 					console.enable()
+					message_staff("[key_name_admin(user)] set [M.id]'s disabled to FALSE.")
 					break
 		if("fly")
 			for(var/i in mobile)

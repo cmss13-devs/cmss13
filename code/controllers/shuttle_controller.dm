@@ -43,57 +43,6 @@
 
 	supply_controller.shuttle = shuttle
 
-	var/datum/shuttle/ferry/marine/shuttle1 //Because I am using shuttle_tag, which is only defined under /datum/shuttle/ferry/marine
-	//ALMAYER DROPSHIP 1
-	shuttle1 = new
-	shuttle1.name = "Alamo"
-	shuttle1.location = 0
-	shuttle1.warmup_time = DROPSHIP_WARMUP_TIME
-	shuttle1.move_time = DROPSHIP_TRANSIT_DURATION
-	shuttle1.shuttle_tag = DROPSHIP_ALAMO
-	shuttle1.info_tag = "Almayer Dropship"
-	shuttle1.can_be_optimized = TRUE
-	shuttle1.can_do_gun_mission = TRUE
-	shuttle1.load_datums()
-	shuttles[shuttle1.shuttle_tag] = shuttle1
-	process_shuttles += shuttle1
-
-	//ALMAYER DROPSHIP 2
-	shuttle1 = new
-	shuttle1.name = "Normandy"
-	shuttle1.location = 0
-	shuttle1.warmup_time = DROPSHIP_WARMUP_TIME
-	shuttle1.move_time = DROPSHIP_TRANSIT_DURATION
-	shuttle1.shuttle_tag = DROPSHIP_NORMANDY
-	shuttle1.info_tag = "Almayer Dropship"
-	shuttle1.can_be_optimized = TRUE
-	shuttle1.can_do_gun_mission = TRUE
-	shuttle1.load_datums()
-	shuttles[shuttle1.shuttle_tag] = shuttle1
-	process_shuttles += shuttle1
-
-	//END: ALMAYER SHUTTLES AND EVAC PODS
-
-	// START: CORSAT shuttle(s).. i mean monorails, what
-	// Added by Fourkhan, 5/31/2019 - 6/7/19
-	if (SSmapping.configs[GROUND_MAP].map_name)
-		shuttle1 = new
-		shuttle1.location = 0
-		shuttle1.warmup_time = 10 SECONDS
-		shuttle1.move_time = DROPSHIP_CORSAT_DURATION // 30s
-		shuttle1.shuttle_tag = "Ground Transport 1"
-		shuttle1.info_tag = "CORSAT Monorail"
-		shuttle1.can_be_optimized = FALSE
-		shuttle1.can_do_gun_mission = FALSE
-		shuttle1.sound_target = 37
-		shuttle1.load_datums()
-		shuttle1.alerts_allowed = 10
-		shuttles[shuttle1.shuttle_tag] = shuttle1
-		process_shuttles += shuttle1
-
-	// END: CORSAT shuttles
-
-
 //---ELEVATOR---//
 	// Elevator I
 	shuttle = new /datum/shuttle/ferry/elevator()

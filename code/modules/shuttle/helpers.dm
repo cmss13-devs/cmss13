@@ -12,7 +12,6 @@
 	door_controllers = null
 
 /datum/door_controller/aggregate/proc/add_door(var/door, var/direction)
-	. = ..()
 	if(!door_controllers[direction])
 		var/datum/door_controller/single/new_controller = new()
 		new_controller.is_locked = FALSE
@@ -29,7 +28,8 @@
 				return FALSE
 		return TRUE
 	if(door_controllers[direction])
-		return door_controllers[direction].is_locked
+		var/datum/door_controller/single/single_controller = door_controllers[direction]
+		return single_controller.is_locked
 	else
 		WARNING("Direction [direction] does not exist.")
 	return FALSE

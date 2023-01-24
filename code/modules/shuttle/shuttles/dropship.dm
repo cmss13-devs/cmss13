@@ -17,6 +17,8 @@
 	// Is hijacked by opfor
 	var/is_hijacked = FALSE
 	var/datum/dropship_hijack/almayer/hijack
+	// CAS gear
+	var/list/obj/structure/dropship_equipment/equipments = list()
 
 /obj/docking_port/mobile/marine_dropship/Initialize(mapload)
 	. = ..()

@@ -257,20 +257,6 @@
 
 	message_staff("[key_name_admin(usr)] canceled an emergency evacuation.")
 
-/datum/admins/proc/disable_shuttle_console()
-	set name = "Disable Shuttle Console"
-	set desc = "Prevents a shuttle control console from being accessed."
-	set category = "Admin.Events"
-	if(!SSticker.mode || !check_rights(R_ADMIN))
-		return
-
-	var/obj/structure/machinery/computer/shuttle_control/input = tgui_input_list(usr, "Choose which console to disable", "Shuttle Controls", GLOB.shuttle_controls)
-	if(!input)
-		return
-	input.disabled = !input.disabled
-
-	message_staff("[key_name_admin(usr)] set [input]'s disabled to [input.disabled].")
-
 /datum/admins/proc/add_req_points()
 	set name = "Add Requisitions Points"
 	set desc = "Add points to the ship requisitions department."
@@ -438,24 +424,6 @@
 		computer.hijack(usr)
 	else
 		to_chat(usr, SPAN_WARNING("Use the shuttle manipulator to normally move a shuttle"))
-
-/client/proc/force_ground_shuttle()
-	set name = "Force Ground Transport"
-	set desc = "Force a ground transport vehicle to launch"
-	set category = "Admin.Shuttles"
-
-	var/tag = tgui_input_list(usr, "Which vehicle should be force launched?", "Select a dropship:", list("Transport 1"))
-	if(!tag)
-		return
-
-	var/datum/shuttle/ferry/marine/dropship = shuttle_controller.shuttles["Ground" + " " + tag]
-	if(!dropship)
-		to_chat(src, SPAN_DANGER("Error: Attempted to force a dropship launch but the shuttle datum was null. Code: MSD_FSV_DIN_2</span>"))
-		to_chat(src, SPAN_DANGER("This is expected if map != CORSAT.</span>"))
-		log_admin("Error: Attempted to force a dropship launch but the shuttle datum was null. Code: MSD_FSV_DIN")
-		return
-
-	dropship.process_state = WAIT_LAUNCH
 
 /client/proc/cmd_admin_create_centcom_report()
 	set name = "Report: Faction"

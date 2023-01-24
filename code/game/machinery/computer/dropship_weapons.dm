@@ -57,8 +57,7 @@
 /obj/structure/machinery/computer/dropship_weapons/ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = 0)
 	var/data[0]
 	var/obj/docking_port/mobile/marine_dropship/dropship = SSshuttle.getShuttle(shuttle_tag)
-	var/datum/shuttle/ferry/marine/FM = shuttle_controller.shuttles[shuttle_tag]
-	if (!istype(FM))
+	if (!istype(dropship))
 		return
 
 	var/shuttle_state
@@ -97,9 +96,9 @@
 			continue
 		var/area/laser_area = get_area(LT.signal_loc)
 		targets_data += list(list("target_name" = "[LT.name] ([laser_area.name])", "target_tag" = LT.target_id))
-	shuttle_equipments = FM.equipments
+	shuttle_equipments = dropship.equipments
 	var/element_nbr = 1
-	for(var/X in FM.equipments)
+	for(var/X in dropship.equipments)
 		var/obj/structure/dropship_equipment/E = X
 		equipment_data += list(list("name"= sanitize(copytext(E.name,1,MAX_MESSAGE_LEN)), "eqp_tag" = element_nbr, "is_weapon" = E.is_weapon, "is_interactable" = E.is_interactable))
 		element_nbr++
@@ -200,7 +199,7 @@
 
 	data = list(
 		"shuttle_state" = shuttle_state,
-		"fire_mission_enabled" = FM.transit_gun_mission,
+		"fire_mission_enabled" = dropship.in_flyby,
 		"equipment_data" = equipment_data,
 		"targets_data" = targets_data,
 		"selected_eqp" = selected_eqp_name,
@@ -239,10 +238,6 @@
 		return
 
 	add_fingerprint(usr)
-
-	var/datum/shuttle/ferry/marine/shuttle = shuttle_controller.shuttles[shuttle_tag]
-	if (!istype(shuttle))
-		return
 
 	var/obj/docking_port/mobile/marine_dropship/dropship = SSshuttle.getShuttle(shuttle_tag)
 	if (!istype(dropship))
@@ -284,7 +279,7 @@
 				if(dropship.mode != SHUTTLE_CALL)
 					to_chat(usr, SPAN_WARNING("Dropship can only fire while in flight."))
 					return
-				if(shuttle.queen_locked)
+				if(dropship.door_override)
 					return
 				if(!selected_equipment || !selected_equipment.is_weapon)
 					to_chat(usr, SPAN_WARNING("No weapon selected."))

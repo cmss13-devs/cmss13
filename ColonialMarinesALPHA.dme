@@ -2066,7 +2066,6 @@
 #include "code\modules\shuttles\monorail_console.dm"
 #include "code\modules\shuttles\shuttle.dm"
 #include "code\modules\shuttles\shuttle_console.dm"
-#include "code\modules\shuttles\shuttle_ert.dm"
 #include "code\modules\shuttles\shuttle_ferry.dm"
 #include "code\modules\shuttles\shuttle_supply.dm"
 #include "code\modules\shuttles\shuttles_multi.dm"

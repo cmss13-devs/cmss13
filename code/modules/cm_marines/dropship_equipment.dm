@@ -13,7 +13,7 @@
 	var/is_weapon = FALSE //whether the equipment is a weapon usable for dropship bombardment.
 	var/obj/structure/machinery/computer/dropship_weapons/linked_console //the weapons console of the dropship we're installed on.
 	var/is_interactable = FALSE //whether they get a button when shown on the shuttle console's equipment list.
-	var/datum/shuttle/ferry/marine/linked_shuttle
+	var/obj/docking_port/mobile/marine_dropship/linked_shuttle
 	var/screen_mode = 0 //used by the dropship console code when this equipment is selected
 	var/point_cost = 0 //how many points it costs to build this with the fabricator, set to 0 if unbuildable.
 	var/skill_required = SKILL_PILOT_TRAINED
@@ -795,7 +795,7 @@
 	if(!linked_shuttle)
 		return
 
-	if(linked_shuttle.moving_status != SHUTTLE_INTRANSIT)
+	if(linked_shuttle.mode != SHUTTLE_CALL)
 		to_chat(user, SPAN_WARNING("[src] can only be used while in flight."))
 		return
 
@@ -868,7 +868,7 @@
 	if(!linked_shuttle)
 		return
 
-	if(linked_shuttle.moving_status != SHUTTLE_INTRANSIT)
+	if(linked_shuttle.mode != SHUTTLE_CALL)
 		to_chat(user, SPAN_WARNING("[src] can only be used while in flight."))
 		return
 
@@ -919,7 +919,7 @@
 	if(!linked_shuttle)
 		return
 
-	if(linked_shuttle.moving_status != SHUTTLE_INTRANSIT)
+	if(linked_shuttle.mode != SHUTTLE_CALL)
 		to_chat(user, SPAN_WARNING("[src] can only be used while in flight."))
 		return
 
@@ -962,7 +962,7 @@
 	else if(!ship_base) //uninstalled midway
 		fail = TRUE
 
-	else if(!linked_shuttle || linked_shuttle.moving_status != SHUTTLE_INTRANSIT)
+	else if(!linked_shuttle || linked_shuttle.mode != SHUTTLE_CALL)
 		fail = TRUE
 
 	if(fail)
@@ -1019,7 +1019,7 @@
 	if(!linked_shuttle)
 		return
 
-	if(linked_shuttle.moving_status != SHUTTLE_INTRANSIT)
+	if(linked_shuttle.mode != SHUTTLE_CALL)
 		to_chat(user, SPAN_WARNING("[src] can only be used while in flight."))
 		return
 
@@ -1065,7 +1065,7 @@
 	if(!linked_shuttle)
 		return
 
-	if(linked_shuttle.moving_status != SHUTTLE_INTRANSIT)
+	if(linked_shuttle.mode != SHUTTLE_CALL)
 		to_chat(user, SPAN_WARNING("[src] can only be used while in flight."))
 		return
 
@@ -1098,7 +1098,7 @@
 	else if(!ship_base) //uninstalled midway
 		fail = TRUE
 
-	else if(!linked_shuttle || linked_shuttle.moving_status != SHUTTLE_INTRANSIT)
+	else if(!linked_shuttle || linked_shuttle.mode != SHUTTLE_CALL)
 		fail = TRUE
 
 	if(fail)
@@ -1212,12 +1212,12 @@
 	icon_state = "rappel_hatch_closed"
 	qdel(warning_zone)
 
-/obj/structure/dropship_equipment/rappel_system/proc/can_use(mob/living/carbon/human/user)
-	if(linked_shuttle.moving_status != SHUTTLE_INTRANSIT)
+/obj/structure/dropship_equipment/rappel_system/proc/can_use(var/mob/living/carbon/human/user)
+	if(linked_shuttle.mode != SHUTTLE_CALL)
 		to_chat(user, SPAN_WARNING("\The [src] can only be used while in flight."))
 		return FALSE
 
-	if(!linked_shuttle.transit_gun_mission)
+	if(!linked_shuttle.in_flyby)
 		to_chat(user, SPAN_WARNING("\The [src] requires a flyby flight to be used."))
 		return FALSE
 

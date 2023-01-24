@@ -1,18 +1,4 @@
 //=========================================================================================
-//===================================Shuttle Datum=========================================
-//=========================================================================================
-#define STATE_IDLE 4 //Pod is idle, not ready to launch.
-#define STATE_BROKEN 5 //Pod failed to launch, is now broken.
-#define STATE_READY 6 //Pod is armed and ready to go.
-#define STATE_DELAYED 7 //Pod is being delayed from launching automatically.
-#define STATE_LAUNCHING 8 //Pod is about to launch.
-#define STATE_LAUNCHED 9 //Pod has successfully launched.
-/*Other states are located in docking_program.dm, but they aren't important here.
-This is built upon a weird network of different states, including docking states, moving
-states, process states, and so forth. It's disorganized, but I tried to keep it in line
-with the original.*/
-
-//=========================================================================================
 //================================Evacuation Sleeper=======================================
 //=========================================================================================
 

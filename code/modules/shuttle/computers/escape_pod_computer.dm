@@ -52,8 +52,8 @@
 			.["docking_status"] = STATE_LAUNCHING
 		if(SHUTTLE_CALL)
 			.["docking_status"] = STATE_LAUNCHED
-
-	.["door_state"] = shuttle.door_handler.doors[1].density
+	var/obj/structure/machinery/door/door = shuttle.door_handler.doors[1]
+	.["door_state"] = door.density
 	.["door_lock"] = shuttle.door_handler.is_locked
 	.["can_delay"] = TRUE//launch_status[2]
 

@@ -275,7 +275,7 @@
 			"mob_name" = sanitize(new_death.mob_name),
 			"job_name" = new_death.role_name,
 			"area_name" = sanitize_area(new_death.area_name),
-			"cause_name" = sanitize(new_death.cause_name),
+			"cause_name" = sanitize_area(new_death.cause_name),
 			"total_kills" = new_death.total_kills,
 			"total_damage" = damage_list,
 			"time_of_death" = new_time_of_death,

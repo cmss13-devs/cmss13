@@ -85,7 +85,7 @@
 				SPAN_DANGER("You lunge at [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 				return XENO_ATTACK_ACTION
 
-			M.flick_attack_overlay(src, "slash")
+			M.flick_attack_overlay(src, M.caste.melee_attack_animation)
 			var/obj/limb/affecting
 			affecting = get_limb(rand_zone(M.zone_selected, 70))
 			if(!affecting) //No organ, just get a random one
@@ -302,7 +302,7 @@
 /obj/vehicle/attack_alien(mob/living/carbon/Xenomorph/M)
 	if(M.a_intent == INTENT_HARM)
 		M.animation_attack_on(src)
-		M.flick_attack_overlay(src, "slash")
+		M.flick_attack_overlay(src, M.caste.melee_attack_animation)
 		health -= 15
 		playsound(loc, "alien_claw_metal", 25, 1)
 		M.visible_message(SPAN_DANGER("[M] [M.slashes_verb] [src]."),SPAN_DANGER("You [M.slash_verb] [src]."), null, 5, CHAT_TYPE_XENO_COMBAT)

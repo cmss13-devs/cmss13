@@ -162,7 +162,7 @@
 			M.attack_log += text("\[[time_stamp()]\] <font color='red'>[slash_verb]ed [key_name(src)]</font>")
 			log_attack("[key_name(M)] [slash_verb]ed [key_name(src)]")
 
-			M.flick_attack_overlay(src, "slash")
+			M.flick_attack_overlay(src, M.caste.melee_attack_animation)
 			playsound(loc, slash_sound, 25, 1)
 			apply_armoured_damage(damage, ARMOR_MELEE, BRUTE, effectiveness_mult = XVX_ARMOR_EFFECTIVEMULT)
 

@@ -66,7 +66,7 @@
 
 	if(firing)
 		M.animation_attack_on(src)
-		M.flick_attack_overlay(src, "slash")
+		M.flick_attack_overlay(src, M.caste.melee_attack_animation)
 		playsound(src, "acid_hit", 25, 1)
 		playsound(M, "alien_help", 25, 1)
 		M.apply_damage(10, BURN)
@@ -77,7 +77,7 @@
 	M.visible_message(SPAN_DANGER("[M] lashes at \the [src] and knocks it over!"),
 	SPAN_DANGER("You knock \the [src] over!"))
 	M.animation_attack_on(src)
-	M.flick_attack_overlay(src, "slash")
+	M.flick_attack_overlay(src, M.caste.melee_attack_animation)
 	playsound(loc, 'sound/effects/metalhit.ogg', 25)
 	var/obj/item/mortar_kit/MK = new /obj/item/mortar_kit(loc)
 	MK.name = name

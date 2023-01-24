@@ -282,7 +282,7 @@
 	M.visible_message(SPAN_DANGER("[M] has slashed [src]!"),
 	SPAN_DANGER("You slash [src]!"))
 	M.animation_attack_on(src)
-	M.flick_attack_overlay(src, "slash")
+	M.flick_attack_overlay(src, M.caste.melee_attack_animation)
 	playsound(loc, "alien_claw_metal", 25)
 	update_health(rand(M.melee_damage_lower,M.melee_damage_upper))
 	return XENO_ATTACK_ACTION
@@ -644,7 +644,7 @@
 	M.visible_message(SPAN_DANGER("[M] has slashed [src]!"),
 	SPAN_DANGER("You slash [src]!"))
 	M.animation_attack_on(src)
-	M.flick_attack_overlay(src, "slash")
+	M.flick_attack_overlay(src, M.caste.melee_attack_animation)
 	playsound(loc, "alien_claw_metal", 25)
 	update_health(rand(M.melee_damage_lower,M.melee_damage_upper))
 	return XENO_ATTACK_ACTION

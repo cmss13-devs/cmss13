@@ -212,7 +212,7 @@
 
 			if(ravager_user.can_not_harm(carbon_target))
 				continue
-			ravager_user.flick_attack_overlay(carbon_target, "slash")
+			ravager_user.flick_attack_overlay(carbon_target, ravager_user.caste.melee_attack_animation)
 			carbon_target.apply_armoured_damage(damage, ARMOR_MELEE, BRUTE)
 			playsound(get_turf(carbon_target), "alien_claw_flesh", 30, TRUE)
 

@@ -104,7 +104,7 @@
 	var/mob/living/carbon/Xenomorph/xeno = owner
 	target.apply_effect(5, DAZE)
 	target.sway_jitter(times = 2)
-	xeno.flick_attack_overlay(target, "slash")   //fake slash to prevent disarm abuse
+	xeno.flick_attack_overlay(target, xeno.caste.melee_attack_animation)   //fake slash to prevent disarm abuse
 	target.last_damage_data = create_cause_data(xeno.caste_type, xeno)
 	target.apply_armoured_damage(30, ARMOR_MELEE, BRUTE)
 	playsound(get_turf(target), 'sound/weapons/alien_claw_flesh3.ogg', 30, TRUE)
@@ -163,7 +163,7 @@
 
 			xeno.visible_message(SPAN_DANGER("[xeno] scratches [target] all around its body!"), \
 			SPAN_XENOWARNING("You slash [target] multiple times!"))
-			xeno.flick_attack_overlay(target, "slash")
+			xeno.flick_attack_overlay(target, xeno.caste.melee_attack_animation)
 			target.last_damage_data = create_cause_data(xeno.caste_type, xeno)
 			log_attack("[key_name(xeno)] attacked [key_name(target)] with Flurry")
 			target.apply_armoured_damage(30, ARMOR_MELEE, BRUTE)

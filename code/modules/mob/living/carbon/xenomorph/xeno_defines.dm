@@ -7,9 +7,14 @@
 	var/tier = 0
 	var/dead_icon = "Drone Dead"
 	var/language = LANGUAGE_XENOMORPH
+
 	var/melee_damage_lower = 10
 	var/melee_damage_upper = 20
 	var/melee_vehicle_damage = 10 //allows fine tuning melee damage to vehicles per caste.
+
+	/// Ravager uses a different animation. Possibly more in the future to come.
+	var/melee_attack_animation = "slash"
+
 	var/evasion = XENO_EVASION_NONE
 
 	var/speed = XENO_SPEED_TIER_10

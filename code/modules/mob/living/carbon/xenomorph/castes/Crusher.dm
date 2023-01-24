@@ -232,7 +232,7 @@
 		bound_xeno.visible_message(SPAN_DANGER("[bound_xeno] slashes [H]!"), \
 			SPAN_DANGER("You slash [H]!"), null, null, CHAT_TYPE_XENO_COMBAT)
 
-		bound_xeno.flick_attack_overlay(H, "slash")
+		bound_xeno.flick_attack_overlay(H, bound_xeno.caste.melee_attack_animation)
 
 		H.last_damage_data = create_cause_data(initial(bound_xeno.name), bound_xeno)
 

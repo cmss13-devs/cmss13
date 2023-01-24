@@ -63,7 +63,7 @@
 		if (H.stat == DEAD)
 			continue
 
-		X.flick_attack_overlay(H, "slash")
+		X.flick_attack_overlay(H, X.caste.melee_attack_animation)
 		H.apply_armoured_damage(get_xeno_damage_slash(H, damage), ARMOR_MELEE, BRUTE, null, 20)
 
 	if (target_mobs.len >= shield_regen_threshold)
@@ -125,7 +125,7 @@
 			continue
 
 
-		X.flick_attack_overlay(H, "slash")
+		X.flick_attack_overlay(H, X.caste.melee_attack_animation)
 		H.apply_armoured_damage(get_xeno_damage_slash(H, damage), ARMOR_MELEE, BRUTE)
 		playsound(get_turf(H), "alien_claw_flesh", 30, 1)
 

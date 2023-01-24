@@ -8,7 +8,7 @@
 	icon_state = "trap_boiler"
 	density = FALSE
 	opacity = FALSE
-	anchored = 1
+	anchored = TRUE
 	health = 1
 	layer = RESIN_STRUCTURE_LAYER
 	var/list/tripwires = list()

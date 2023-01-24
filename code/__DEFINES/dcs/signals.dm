@@ -40,6 +40,11 @@
 ///from /proc/set_security_level
 #define COMSIG_GLOB_SECURITY_LEVEL_CHANGED "!security_level_changed"
 
+/// Called by (/datum/round_event_control/RunEvent).
+#define COMSIG_GLOB_RANDOM_EVENT "!random_event"
+	/// Do not allow this random event to continue.
+	#define CANCEL_RANDOM_EVENT (1<<0)
+
 //////////////////////////////////////////////////////////////////
 
 #define COMSIG_CLIENT_LMB_DOWN "client_lmb_down"

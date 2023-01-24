@@ -3,7 +3,7 @@
 	desc = "It's thick and gooey. This probably isn't a safe place to be."
 	gender = PLURAL
 	density = FALSE
-	anchored = 1
+	anchored = TRUE
 	layer = ABOVE_WEED_LAYER
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	icon = 'icons/effects/blood.dmi'
@@ -128,7 +128,7 @@
 	desc = "They look bloody and gruesome."
 	gender = PLURAL
 	density = FALSE
-	anchored = 1
+	anchored = TRUE
 	layer = TURF_LAYER
 	icon = 'icons/effects/blood.dmi'
 	icon_state = "gibbl5"

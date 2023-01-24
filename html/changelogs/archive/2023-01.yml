@@ -494,3 +494,47 @@
   - ui: remade the weapon status nanoui into tgui
   - code_imp: changed some alerts to tgui alerts and fixed issues with them that caused
       their code to run when they were closed
+2023-01-21:
+  Segrain:
+  - bugfix: Queen once again can actually launch a hijacked dropship on crash course.
+2023-01-22:
+  Git-Nivrak:
+  - balance: Dancer doesn't lose its speed buff when slashing but also doesn't get
+      the evasion buff.
+  thwomper, harryob:
+  - ui: your mouse cursor is now special when using the xm-88
+2023-01-23:
+  JackieEstegado:
+  - balance: Requisitions will now always start with at least one powerloader certificate.
+  LynxSolstice:
+  - rscdel: Removed ability to access vehicles during normal gameplay. Removed the
+      Vehicle Crewman role.
+  Mister-moon1:
+  - balance: changed amount of possible PMC snipers to 1, amount of possible PMC medics
+      to 2
+  carlarctg:
+  - balance: Adds an outline filter to synthetic protective and immobile forms. Blue
+      = Immobile, Green = Protective
+  - balance: The smartpack's visual-only exoskeleton has been set to default - but
+      is now only visible when in repair, protective, or immobile forms. T
+  harryob:
+  - code_imp: without adding any random events, the framework for random events has
+      now been added
+  nauticall:
+  - rscadd: Resprited the pipe dispenser, CAS laser battery, the crematorium, various
+      foodstuffs and ingredients, the portable dialysis machine, and the mounted flash.
+2023-01-24:
+  JackieEstegado:
+  - bugfix: Laptops can no longer be picked up from afar, plus runtime fix.
+  Morrow:
+  - code_imp: Removed unused variable
+  NewyearnewmeUwu:
+  - rscadd: adds a telephone to the Almayer's hangar.
+  stanalbatross:
+  - balance: reduced acid blood splash damage to 12 from 25
+  - code_imp: cleaned up a bit of code to avoid an unneeded proc call in the code
+      that handled acid blood splashes
+  - ui: autolathes now use tgui
+  - code_imp: cleaned up autolathe code, made stuff use defines, proc-ified some stuff,
+      made bools use TRUEFALSE
+  - code_imp: made a few common vars use TRUEFALSE

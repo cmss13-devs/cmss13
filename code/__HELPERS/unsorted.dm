@@ -1110,8 +1110,9 @@ var/global/image/action_purple_power_up
 		time_remaining -= delayfraction
 		if(show_busy_icon)
 			if(has_busy_icon && user.alpha < 255)
-				busy_user.overlays -= busy_icon
-				has_busy_icon = FALSE
+				busy_user.overlays += busy_icon
+				busy_icon.alpha = user.alpha
+				has_busy_icon = TRUE
 			else if(!has_busy_icon && user.alpha == 255)
 				busy_user.overlays += busy_icon
 				has_busy_icon = TRUE

@@ -130,7 +130,7 @@
 	role_comm_title = "Nurse"
 	skills = /datum/skills/nurse
 
-	minimap_icon = list("medic" = MINIMAP_ICON_COLOR_NURSE)
+	minimap_icon = list("medic")
 
 	utility_under = list(/obj/item/clothing/under/rank/medical/green)
 	utility_hat = list(/obj/item/clothing/head/surgery/green)

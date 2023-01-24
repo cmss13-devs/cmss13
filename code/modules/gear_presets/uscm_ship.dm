@@ -246,6 +246,7 @@
 	minimum_age = 27
 	skills = /datum/skills/RO
 
+	minimap_background = MINIMAP_ICON_BACKGROUND_CIC
 	minimap_icon = list("ct" = MINIMAP_ICON_COLOR_HEAD)
 
 	utility_under = list(/obj/item/clothing/under/rank/ro_suit)

@@ -62,7 +62,6 @@ GLOBAL_LIST_INIT(all_minimap_flags, bitfield2list(MINIMAP_FLAG_ALL))
 #define MINIMAP_ICON_COLOR_BRONZE "#eb9545"
 
 #define MINIMAP_ICON_COLOR_DOCTOR "#b83737"
-#define MINIMAP_ICON_COLOR_NURSE "#7a7a7a"
 
 
 //Prison

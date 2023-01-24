@@ -20,6 +20,8 @@
 	// CAS gear
 	var/list/obj/structure/dropship_equipment/equipments = list()
 
+	var/landing_lights_on = FALSE
+
 /obj/docking_port/mobile/marine_dropship/Initialize(mapload)
 	. = ..()
 	door_control = new()
@@ -84,6 +86,12 @@
 
 	if(mode == SHUTTLE_CRASHED)
 		return
+
+	if(mode == SHUTTLE_CALL && timeLeft(1) < 10 SECONDS && !landing_lights_on)
+		if(istype(destination, /obj/docking_port/stationary/marine_dropship))
+			var/obj/docking_port/stationary/marine_dropship/dropzone = destination
+			dropzone.turn_on_landing_lights()
+
 	if(!is_hijacked)
 		return
 
@@ -101,9 +109,17 @@
 	link_landing_lights()
 
 /obj/docking_port/stationary/marine_dropship/proc/link_landing_lights()
-	var/area/landing_area = get_area(src)
-	for(var/obj/structure/machinery/landinglight/light in landing_area)
-		landing_lights += list(light)
+	var/list/coords = return_coords()
+	var/x0 = coords[1] - 5
+	var/y0 = coords[2] - 5
+	var/x1 = coords[3] + 5
+	var/y1 = coords[4] + 5
+
+	for(var/xscan = x0; xscan < x1; xscan++)
+		for(var/yscan = y0; yscan < y1; yscan++)
+			var/turf/searchspot = locate(xscan, yscan, src.z)
+			for(var/obj/structure/machinery/landinglight/L in searchspot)
+				landing_lights += L
 
 /obj/docking_port/stationary/marine_dropship/proc/turn_on_landing_lights()
 	for(var/obj/structure/machinery/landinglight/light in landing_lights)

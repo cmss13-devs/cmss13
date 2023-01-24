@@ -283,6 +283,7 @@
 /obj/docking_port/stationary/proc/on_arrival(obj/docking_port/mobile/arriving_shuttle)
 	return
 
+/// Called when a new shuttle is about to arrive
 /obj/docking_port/stationary/proc/on_prearrival(obj/docking_port/mobile/arriving_shuttle)
 	return
 

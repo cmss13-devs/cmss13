@@ -234,7 +234,7 @@
 		telegraph_atom_list += new /obj/effect/xenomorph/xeno_telegraph/red(var_turf, 0.25 SECONDS)
 
 	if(length(target_turfs))
-		xeno.animation_attack_on(target_turfs[target_turfs.len], 15)
+		xeno.animation_attack_on(target_turfs[target_turfs.len], pixel_offset = 16)
 
 	var/mob/living/carbon/hit_target
 	for (var/turf/target_turf as anything in target_turfs)
@@ -332,7 +332,7 @@
 	xeno.visible_message(SPAN_DANGER("[xeno] grabs [target_carbon]’s head aggressively."), \
 	SPAN_XENOWARNING("You grab [target_carbon]’s head aggressively."))
 
-	if(!do_after(xeno, 0.75 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, numticks = 2))
+	if(!do_after(xeno, 0.8 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, numticks = 2)) // would be 0.75 but that doesn't really work with numticks
 		return
 
 	if(target_carbon.stat == DEAD)
@@ -342,7 +342,8 @@
 	to_chat(xeno, SPAN_XENOHIGHDANGER("You pierce [target_carbon]’s head with your inner jaw!"))
 	playsound(target_carbon,'sound/weapons/alien_bite2.ogg', 50, TRUE)
 	xeno.visible_message(SPAN_DANGER("[xeno] pierces [target_carbon]’s head with its inner jaw!"))
-	xeno.flick_attack_overlay(target_carbon, "bite")
+	xeno.flick_attack_overlay(target_carbon, "headbite")
+	xeno.animation_attack_on(target_carbon, pixel_offset = 16)
 	target_carbon.apply_armoured_damage(200, ARMOR_MELEE, BRUTE, "head", 5) //DIE
 	target_carbon.death(create_cause_data("executed by headbite", xeno), FALSE)
 	xeno.gain_health(150)

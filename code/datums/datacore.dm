@@ -226,10 +226,13 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 	if(foundrecord)
 		if(assignment)
 			foundrecord.fields["rank"] = assignment
-		if (rank)
+		if(rank)
 			foundrecord.fields["real_rank"] = rank
-		if (p_stat)
+		if(p_stat)
 			foundrecord.fields["p_stat"] = p_stat
+		if(!use_name)
+			if(name)
+				foundrecord.fields["name"] = name
 		return TRUE
 	return FALSE
 

@@ -4,7 +4,7 @@
 	icon_state = "labcage1"
 	desc = "A glass lab container for storing interesting creatures."
 	density = TRUE
-	anchored = 1
+	anchored = TRUE
 	unacidable = FALSE
 	health = 30
 	var/occupied = 1

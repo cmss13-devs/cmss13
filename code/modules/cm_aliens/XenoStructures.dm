@@ -16,7 +16,7 @@
 	name = "resin"
 	desc = "Looks like some kind of slimy growth."
 	icon_state = "Resin1"
-	anchored = 1
+	anchored = TRUE
 	health = 200
 	unacidable = TRUE
 	var/should_track_build = FALSE

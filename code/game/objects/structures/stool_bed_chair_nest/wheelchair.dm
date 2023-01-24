@@ -2,7 +2,7 @@
 	name = "wheelchair"
 	desc = "You sit in this. Either by will or force."
 	icon_state = "wheelchair"
-	anchored = 0
+	anchored = FALSE
 	drag_delay = 1 //pulling something on wheels is easy
 	picked_up_item = null
 	var/bloodiness = 0

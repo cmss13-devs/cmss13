@@ -341,6 +341,6 @@ as having entered the turf.
 	name = "shockwave"
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "smoke"
-	anchored = 1
+	anchored = TRUE
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	layer = FLY_LAYER

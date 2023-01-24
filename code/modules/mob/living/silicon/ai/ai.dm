@@ -42,7 +42,7 @@ var/list/ai_verbs_default = list(
 	name = "AI"
 	icon = 'icons/mob/AI.dmi'//
 	icon_state = "ai"
-	anchored = 1 // -- TLE
+	anchored = TRUE // -- TLE
 	density = TRUE
 	status_flags = CANSTUN|CANKNOCKOUT
 	med_hud = MOB_HUD_MEDICAL_BASIC
@@ -100,7 +100,7 @@ var/list/ai_verbs_default = list(
 
 // aiPDA = new/obj/item/device/pda/ai(src)
 	SetName(pickedName)
-	anchored = 1
+	anchored = TRUE
 	canmove = 0
 	density = TRUE
 	forceMove(loc)
@@ -574,7 +574,7 @@ var/list/ai_verbs_default = list(
 				user.visible_message(SPAN_NOTICE("\The [user] decides not to unbolt \the [src]."))
 				return
 			user.visible_message(SPAN_NOTICE("\The [user] finishes unfastening \the [src]!"))
-			anchored = 0
+			anchored = FALSE
 			return
 		else
 			user.visible_message(SPAN_NOTICE("\The [user] starts to bolt \the [src] to the plating..."))
@@ -582,7 +582,7 @@ var/list/ai_verbs_default = list(
 				user.visible_message(SPAN_NOTICE("\The [user] decides not to bolt \the [src]."))
 				return
 			user.visible_message(SPAN_NOTICE("\The [user] finishes fastening down \the [src]!"))
-			anchored = 1
+			anchored = TRUE
 			return
 	else
 		return ..()

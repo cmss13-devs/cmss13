@@ -13,7 +13,7 @@
 	var/icon_state_off = "bbox_off"
 	flags_atom = FPRINT
 	density = TRUE
-	anchored = 1
+	anchored = TRUE
 	var/on = 0
 	var/busy = FALSE
 	var/directions = list(1,2,4,8,5,6,9,10)

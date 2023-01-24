@@ -22,7 +22,7 @@
 	name = "poster"
 	desc = "A large piece of cheap printed paper."
 	icon = 'icons/obj/structures/props/posters.dmi'
-	anchored = 1
+	anchored = TRUE
 	var/serial_number //determines the design of the poster
 	var/ruined = 0
 

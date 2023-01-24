@@ -67,7 +67,7 @@
 	/// the active var that tracks the cooldown for opening and closing
 	var/open_cooldown = 0
 	density = FALSE
-	anchored = 0
+	anchored = FALSE
 	/// To layer above rollerbeds.
 	layer = ABOVE_OBJ_LAYER
 	/// slightly easier than to drag the body directly.

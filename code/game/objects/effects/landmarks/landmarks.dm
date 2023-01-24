@@ -2,7 +2,7 @@
 	name = "landmark"
 	icon = 'icons/landmarks.dmi'
 	icon_state = "x2"
-	anchored = 1.0
+	anchored = TRUE
 	unacidable = TRUE
 
 	var/invisibility_value = INVISIBILITY_MAXIMUM

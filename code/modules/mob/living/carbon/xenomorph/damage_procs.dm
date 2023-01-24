@@ -254,15 +254,12 @@
 					decal.icon_state = pick(decal.random_icon_states)
 
 		var/splash_chance = 40 //Base chance of getting splashed. Decreases with # of victims.
-		var/distance = 0 //Distance, decreases splash chance.
 		var/i = 0 //Tally up our victims.
 
-		for(var/mob/living/carbon/human/victim in orange(radius,src)) //Loop through all nearby victims, including the tile.
-			distance = get_dist(src,victim)
-
-			splash_chance = 80 - (i * 5)
-			if(victim.loc == loc) splash_chance += 30 //Same tile? BURN
-			splash_chance += distance * -15
+		for(var/mob/living/carbon/human/victim in orange(radius, src)) //Loop through all nearby victims, including the tile.
+			splash_chance = 65 - (i * 5)
+			if(victim.loc == loc)
+				splash_chance += 30 //Same tile? BURN
 			if(victim.species?.acid_blood_dodge_chance)
 				splash_chance -= victim.species.acid_blood_dodge_chance
 

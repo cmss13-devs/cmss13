@@ -666,6 +666,6 @@
 	icon = 'icons/obj/items/binoculars.dmi'
 	icon_state = "las_r"
 	opacity = TRUE
-	anchored = 1
+	anchored = TRUE
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	unacidable = TRUE

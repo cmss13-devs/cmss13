@@ -4,7 +4,7 @@
 // Used for spray that you spray at walls, tables, hydrovats etc
 /obj/effect/decal/spraystill
 	density = FALSE
-	anchored = 1
+	anchored = TRUE
 	layer = FLY_LAYER
 
 //Used by spraybottles.
@@ -65,7 +65,7 @@
 	desc = "Remains of some unfortunate mecha. Completely unrepairable."
 	icon = 'icons/obj/structures/props/mech.dmi'
 	density = TRUE
-	anchored = 0
+	anchored = FALSE
 	opacity = FALSE
 	unacidable = FALSE
 

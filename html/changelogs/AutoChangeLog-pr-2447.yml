@@ -1,4 +1,0 @@
-author: "JackieEstegado"
-delete-after: True
-changes:
-  - bugfix: "Laptops can no longer be picked up from afar, plus runtime fix."

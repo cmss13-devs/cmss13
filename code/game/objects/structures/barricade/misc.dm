@@ -13,6 +13,7 @@
 	debris = list(/obj/item/stack/snow)
 	stack_amount = 3
 	destroyed_stack_amount = 0
+	wrenchable = FALSE
 	can_wire = FALSE
 	metallic = FALSE
 
@@ -75,6 +76,7 @@
 	barricade_hitsound = 'sound/effects/woodhit.ogg'
 	can_change_dmg_state = 0
 	barricade_type = "wooden"
+	wrenchable = FALSE
 	can_wire = FALSE
 	repair_materials = list("wood" = 1)
 	metallic = FALSE

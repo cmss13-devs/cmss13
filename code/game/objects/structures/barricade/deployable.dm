@@ -15,6 +15,7 @@
 	climbable = FALSE
 	unacidable = TRUE
 	anchored = TRUE
+	wrenchable = FALSE
 	repair_materials = list("metal" = 0.3, "plasteel" = 0.45)
 	var/build_state = BARRICADE_BSTATE_SECURED //Look at __game.dm for barricade defines
 	var/source_type = /obj/item/stack/folding_barricade //had to add this here, cause mapped in porta cades were unfoldable.

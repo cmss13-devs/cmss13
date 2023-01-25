@@ -13,6 +13,7 @@
 	barricade_type = "sandbag"
 	can_wire = TRUE
 	stack_amount = 1
+	wrenchable = FALSE
 	var/build_stage = BARRICADE_SANDBAG_1
 	metallic = FALSE
 

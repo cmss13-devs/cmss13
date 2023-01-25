@@ -897,6 +897,7 @@
 	var/dogtag_name
 	var/dogtag_blood
 	var/dogtag_assign
+
 /obj/structure/prop/wooden_cross/Destroy()
 	if(helmet)
 		helmet.forceMove(loc)
@@ -911,24 +912,22 @@
 
 /obj/structure/prop/wooden_cross/attackby(obj/item/W, mob/living/user)
 	if(istype(W, /obj/item/dogtag))
-		var/obj/item/dogtag/D = W
+		var/obj/item/dogtag/dog = W
 		if(!tagged)
 			tagged = TRUE
-			user.visible_message(SPAN_NOTICE("[user] drapes the [W] around the cross."))
-			dogtag_name = D.fallen_names[1]
-			dogtag_assign = D.fallen_assgns[1]
-			dogtag_blood = D.fallen_blood_types[1]
-			fallen_list_cross.Add(dogtag_name)
+			user.visible_message(SPAN_NOTICE("[user] drapes \the [W] around \the [src]."))
+			dogtag_name = popleft(dog.fallen_names)
+			dogtag_assign = popleft(dog.fallen_assgns)
+			dogtag_blood = popleft(dog.fallen_blood_types)
+			fallen_list_cross += dogtag_name
 			update_icon()
-			D.fallen_blood_types.Remove(dogtag_blood)
-			D.fallen_assgns.Remove(dogtag_assign)
-			D.fallen_names.Remove(dogtag_name)
-			if(D.fallen_names.len == 0)
-				qdel(D)
+			if(!length(dog.fallen_names))
+				qdel(dog)
 			else
 				return
 		else
-			to_chat(user, SPAN_WARNING("There's already a dog tag on the [src]!"))
+			to_chat(user, SPAN_WARNING("There's already a dog tag on \the [src]!"))
+			balloon_alert(user, "already a tag here!")
 
 	if(istype(W, /obj/item/clothing/head))
 		if(helmet)

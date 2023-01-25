@@ -110,7 +110,7 @@ const StatActions = (props, context) => {
         })}
       </Collapsible>
       <Collapsible title="Other" buttons={
-      <Tooltip content="Only change those if you know what you're doing, you've been warned">
+      <Tooltip content="Change those at your own risks">
         <Button icon="circle-question"/>
         </Tooltip>
         }>
@@ -218,7 +218,9 @@ const AbilityActions = (props, context) => {
           {Object.values(xeno_abilities).map((value) => {
             return (
               <LabeledList.Item textAlign="left">
+                <b>
                 {value}
+                </b>
               </LabeledList.Item>
             );
           })}
@@ -234,7 +236,7 @@ const PlaceHolderActions = (props, context) => {
 export const GeneTailor = (props, context) => {
   const types = ["caste", "strain"];
   const { act, data } = useBackend(context);
-  const {xeno_stats, caste_stats, selected_template} = data;
+  const {xeno_stats, caste_stats, selected_template, hives} = data;
   if(selected_template){
     custom_caste_stats= Object.keys(caste_stats).sort().reduce((obj, key) => {obj[key] = caste_stats[key];return obj;},{});
     custom_xeno_stats= Object.keys(xeno_stats).sort().reduce((obj, key) => {obj[key] = xeno_stats[key];return obj;},{});
@@ -250,31 +252,46 @@ export const GeneTailor = (props, context) => {
       <Window.Content>
         <Section md={1}>
             <LabeledList>
-              <LabeledList.Item label="Name">
-                <Input width={25}/>
+              <LabeledList.Item label="Template">
+                <Button color={selected_template ? "good" : "bad"} content={selected_template ? selected_template : "Load a template"} align="center"
+                  onClick={() => (act('load_template'))}/>
               </LabeledList.Item>
               <LabeledList.Item label="Type">
                 <Dropdown
-                    options={types}
-                    onClick={(value) =>
+                    width="200px"
+                    options={selected_template ? types : []}
+                    onSelected={(value) =>
                       act('set_type', {
                         selected_type: value
                       })}
                   />
               </LabeledList.Item>
               <LabeledList.Item label="Hive">
-                <Dropdown/>
+                <Dropdown
+                  width="200px"
+                  options={selected_template ? hives : []}
+                  onSelected={(value) =>
+                   custom_xeno_stats["hivenumber"] = value}
+                />
               </LabeledList.Item>
-              <LabeledList.Item label="Template">
-                <Button color={selected_template ? "good" : "bad"} content={selected_template ? selected_template : "Load a template"} align="center"
-                  onClick={() => (act('load_template'))}/>
+              <LabeledList.Item label="Name">
+                <Input
+                  width="200px"
+                  //placeholder={selected_template ? "" : "no template detected !"}
+                  onInput={(e, value) =>
+                    act('set_name', {
+                      name: value,
+                    })
+                  }
+                />
               </LabeledList.Item>
             </LabeledList>
         </Section>
         <Section width="788px" position = "fixed" bottom ="0px" >
           <Stack>
-            <Button color="red" content="Apply type" width="50%" height="25px" align="center"/>
-            <Button color="green" content="Spawn Mob" width="50%" height="25px" align="center"
+            <Button color="purple" content="Apply Genome" width="100%" height="25px" align="center"/>
+            <Button color="yellow" content="Transform Mob" width="100%" height="25px" align="center"/>
+            <Button color="green" content="Spawn Mob" width="100%" height="25px" align="center"
                   onClick={() =>
                     act('spawn_mob', {
                       caste_stats: custom_caste_stats,

@@ -102,6 +102,8 @@ GLOBAL_LIST_INIT(gt_evolutions, list(
 	var/list/xeno_delegates = list()
 	///The abilities picked
 	var/list/xeno_abilities = list()
+	/// The name
+	var/xeno_name
 
 /datum/gene_tailor/tgui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
@@ -119,6 +121,7 @@ GLOBAL_LIST_INIT(gt_evolutions, list(
 
 /datum/gene_tailor/ui_static_data(mob/user)
 	. = ..()
+	.["hives"] = ALL_XENO_HIVES
 	if(!selected_template)
 		return
 
@@ -143,7 +146,7 @@ GLOBAL_LIST_INIT(gt_evolutions, list(
 			load_template()
 		if("add_ability")
 			var/list/pickable_abilities = subtypesof(/datum/action/xeno_action/onclick) + subtypesof(/datum/action/xeno_action/activable) + subtypesof(/datum/action/xeno_action/active_toggle) - list(/datum/action/xeno_action/onclick/xeno_resting, /datum/action/xeno_action/onclick/regurgitate, /datum/action/xeno_action/watch_xeno, /datum/action/xeno_action/activable/tail_stab)
-			var/ability_choice = tgui_input_list(usr, "Select an ability to add, you DO NOT need to add generic abilities like rest, they are included by default.", "Add an Ability", pickable_abilities)
+			var/ability_choice = tgui_input_list(usr, "Select an ability to add", "Add an Ability", pickable_abilities)
 			if(!ability_choice)
 				return
 			xeno_abilities += ability_choice
@@ -160,6 +163,8 @@ GLOBAL_LIST_INIT(gt_evolutions, list(
 				return
 			xeno_delegates += delegate_choice
 			update_static_data(usr)
+		if("set_name")
+			xeno_name = sanitize(params["name"])
 		if("remove_delegate")
 			var/delegate_choice = tgui_input_list(usr, "Select a passive to remove.", "Remove a Passive", xeno_delegates)
 			if(!delegate_choice)
@@ -172,16 +177,20 @@ GLOBAL_LIST_INIT(gt_evolutions, list(
 	. = ..()
 
 /datum/gene_tailor/proc/load_template()
-	selected_template = tgui_input_list(usr, "Select a template from which the custom xenomorph will be based of.", "Load a template", subtypesof(/mob/living/carbon/Xenomorph) - /mob/living/carbon/Xenomorph/Custom)
+	selected_template = tgui_input_list(usr, "Select a template from which the custom xenomorph will be based of.", "Load a template", subtypesof(/mob/living/carbon/Xenomorph))
 	if(!selected_template)
 		return
 	QDEL_NULL(stat_stick)
 	stat_stick = new selected_template
+	xeno_abilities = list()
+	xeno_stats = list()
+	caste_stats = list()
 	for(var/var_name in type2listofvars(stat_stick.parent_type))
 		xeno_stats[var_name] = stat_stick.vars[var_name]
 	for(var/var_name in type2listofvars(stat_stick.caste.parent_type))
 		caste_stats[var_name] = stat_stick.caste.vars[var_name]
-
+	xeno_abilities = stat_stick.base_actions.Copy()
+	xeno_delegates = list(stat_stick.caste.behavior_delegate_type)
 	stored_xeno_types = get_data_types(stat_stick)
 	stored_caste_types = get_data_types(stat_stick.caste)
 	update_static_data(usr)
@@ -226,28 +235,34 @@ GLOBAL_LIST_INIT(gt_evolutions, list(
 			if("other") continue
 
 /datum/gene_tailor/proc/spawn_mob(list/caste_stats, list/xeno_stats)
-	var/datum/caste_datum/custom/custom_caste = new
+	var/datum/caste_datum/custom_caste = new stat_stick.caste.type
 	for(var/var_name in caste_stats)
 		if(stored_caste_types[var_name] != "other")
 			custom_caste.vars[var_name] = caste_stats[var_name]
 
-	var/mob/living/carbon/Xenomorph/Custom/custom_xeno = new(usr.loc, custom_caste)
+	var/mob/living/carbon/Xenomorph/custom_xeno = new selected_template(usr.loc, null, xeno_stats["hivenumber"], custom_caste)
 
 	for(var/var_name in xeno_stats)
 		if(stored_xeno_types[var_name] != "other" && !(var_name in stored_caste_types))
 			custom_xeno.vars[var_name] = xeno_stats[var_name]
 
-	var/datum/behavior_delegate/Custom/custom_delegate = new(xeno_delegates, custom_xeno)
-	custom_xeno.behavior_delegate = custom_delegate
-	custom_xeno.base_actions += list(/datum/action/xeno_action/onclick/xeno_resting, /datum/action/xeno_action/onclick/regurgitate, /datum/action/xeno_action/watch_xeno, /datum/action/xeno_action/activable/tail_stab)
-	custom_xeno.base_actions += xeno_abilities
+	for(var/datum/action in custom_xeno.base_actions)
+		qdel(remove_action(custom_xeno, action.type))
+
+	custom_xeno.name = xeno_name
+	custom_xeno.create_hud()
+	custom_xeno.base_actions = xeno_abilities
 	custom_xeno.add_abilities()
 	custom_xeno.recalculate_everything()
 	custom_xeno.icon = stat_stick.icon
-	custom_xeno.stored_visuals["icon_source_caste"] = stat_stick.caste.caste_type
-	custom_xeno.stored_visuals["pixel_x"] = stat_stick.pixel_x
-	custom_xeno.stored_visuals["pixel_y"] = stat_stick.pixel_y
-	custom_xeno.stored_visuals["old_x"] = stat_stick.old_x
-	custom_xeno.stored_visuals["old_y"] = stat_stick.old_y
-	custom_xeno.stored_visuals["base_pixel_x"] = stat_stick.base_pixel_x
-	custom_xeno.stored_visuals["base_pixel_y"] = stat_stick.base_pixel_y
+
+	var/datum/behavior_delegate/Custom/custom_delegate = new(xeno_delegates, custom_xeno)
+	custom_xeno.behavior_delegate = custom_delegate
+	//TODO.. refactor how xeno icon_states are handled
+	//custom_xeno.stored_visuals["icon_source_caste"] = stat_stick.caste.caste_type
+	//custom_xeno.stored_visuals["pixel_x"] = stat_stick.pixel_x
+	//custom_xeno.stored_visuals["pixel_y"] = stat_stick.pixel_y
+	//custom_xeno.stored_visuals["old_x"] = stat_stick.old_x
+	//custom_xeno.stored_visuals["old_y"] = stat_stick.old_y
+	//custom_xeno.stored_visuals["base_pixel_x"] = stat_stick.base_pixel_x
+	//custom_xeno.stored_visuals["base_pixel_y"] = stat_stick.base_pixel_y

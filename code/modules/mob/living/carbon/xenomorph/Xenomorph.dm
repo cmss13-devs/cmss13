@@ -116,6 +116,8 @@
 	var/crystal_max = 0
 
 	var/evasion = 0   // RNG "Armor"
+	/// Used for xenos built during runtime, their caste_datums are not singletons and should therefor be deleted
+	var/delete_caste_on_death = FALSE
 
 	// Armor
 	var/armor_deflection = 10 // Most important: "max armor"
@@ -175,7 +177,7 @@
 
 	/// List of actions (typepaths) that a
 	/// xenomorph type is given upon spawn
-	var/base_actions
+	var/list/base_actions
 
 	/// this is the resin mark that is currently being tracked by the xeno
 	var/obj/effect/alien/resin/marker/tracked_marker
@@ -342,7 +344,7 @@
 	var/atom/movable/vis_obj/xeno_wounds/wound_icon_carrier
 	var/atom/movable/vis_obj/xeno_pack/backpack_icon_carrier
 
-/mob/living/carbon/Xenomorph/Initialize(mapload, mob/living/carbon/Xenomorph/oldXeno, h_number)
+/mob/living/carbon/Xenomorph/Initialize(mapload, mob/living/carbon/Xenomorph/oldXeno, h_number, datum/caste_datum/pre_made_caste)
 	var/area/A = get_area(src)
 	if(A && A.statistic_exempt)
 		statistic_exempt = TRUE
@@ -379,12 +381,15 @@
 
 	mutators.xeno = src
 
-	if(caste_type && caste_type != XENO_CASTE_CUSTOM && GLOB.xeno_datum_list[caste_type])
+	if(pre_made_caste)
+		caste = pre_made_caste
+		delete_caste_on_death = TRUE
+
+	else if(caste_type && GLOB.xeno_datum_list[caste_type])
 		caste = GLOB.xeno_datum_list[caste_type]
-	//else
-	//	//TODO.. UNCOMMENT THIS
-	//	to_world("something went very wrong")
-	//	return
+	else
+		to_world("something went very wrong")
+		return
 	update_icon_source()
 
 	acid_splash_cooldown = caste.acid_splash_cooldown
@@ -670,6 +675,9 @@
 /mob/living/carbon/Xenomorph/Destroy()
 	GLOB.living_xeno_list -= src
 	GLOB.xeno_mob_list -= src
+
+	if(delete_caste_on_death)
+		QDEL_NULL(caste)
 
 	if(tracked_marker)
 		tracked_marker.xenos_tracking -= src

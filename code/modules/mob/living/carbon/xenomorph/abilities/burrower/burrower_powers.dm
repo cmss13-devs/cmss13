@@ -19,10 +19,6 @@
 		to_chat(src, SPAN_XENOWARNING("You can't burrow here!"))
 		return
 
-	//TODO.. figure out why this is even here
-	if(caste_type && caste_type != XENO_CASTE_CUSTOM && GLOB.xeno_datum_list[caste_type])
-		caste = GLOB.xeno_datum_list[caste_type]
-
 	used_burrow = TRUE
 
 	to_chat(src, SPAN_XENOWARNING("You begin burrowing yourself into the ground."))
@@ -57,7 +53,7 @@
 
 /mob/living/carbon/Xenomorph/proc/burrow_off()
 	//TODO.. figure out why this is even here
-	if(caste_type && caste_type != XENO_CASTE_CUSTOM && GLOB.xeno_datum_list[caste_type])
+	if(caste_type && GLOB.xeno_datum_list[caste_type])
 		caste = GLOB.xeno_datum_list[caste_type]
 	to_chat(src, SPAN_NOTICE("You resurface."))
 	burrow = FALSE

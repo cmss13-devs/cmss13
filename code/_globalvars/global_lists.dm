@@ -72,7 +72,7 @@ GLOBAL_REFERENCE_LIST_INDEXED(xeno_datum_list, /datum/caste_datum, caste_type)
 /// Assoc list of all custom cates made during runtime
 var/global/list/xeno_custom_datums = list()
 
-GLOBAL_REFERENCE_LIST_INDEXED(xeno_custom_datum_list, /datum/caste_datum/custom, caste_type)
+GLOBAL_REFERENCE_LIST_INDEXED(xeno_custom_datum_list, /datum/caste_datum, caste_type)
 //Chem Stuff
 var/global/list/chemical_reactions_filtered_list //List of all /datum/chemical_reaction datums filtered by reaction components. Used during chemical reactions
 var/global/list/chemical_reactions_list //List of all /datum/chemical_reaction datums indexed by reaction id. Used to search for the result instead of the components.

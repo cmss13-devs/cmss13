@@ -905,7 +905,7 @@
 		helmet.forceMove(loc)
 		helmet = null
 	if(tagged)
-		var/obj/item/dogtag/newInfoTag = new(loc)
+		var/obj/item/dogtag/new_info_tag = new(loc)
 		newInfoTag.fallen_names = list(dogtag_name)
 		newInfoTag.fallen_assgns = list(dogtag_assign)
 		newInfoTag.fallen_blood_types = list(dogtag_blood)

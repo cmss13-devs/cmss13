@@ -3,7 +3,7 @@
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "fuel"
 	layer = ABOVE_TURF_LAYER
-	anchored = 1
+	anchored = TRUE
 	var/amount = 1 //Basically moles.
 
 /obj/effect/decal/cleanable/liquid_fuel/Initialize(mapload, amt = 1)
@@ -37,7 +37,7 @@
 
 /obj/effect/decal/cleanable/liquid_fuel/flamethrower_fuel
 	icon_state = "mustard"
-	anchored = 0
+	anchored = FALSE
 
 /obj/effect/decal/cleanable/liquid_fuel/flamethrower_fuel/New(newLoc, amt = 1)
 	. = ..()

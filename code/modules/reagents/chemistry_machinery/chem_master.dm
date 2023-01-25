@@ -1,7 +1,7 @@
 /obj/structure/machinery/chem_master
 	name = "ChemMaster 3000"
 	density = TRUE
-	anchored = 1
+	anchored = TRUE
 	icon = 'icons/obj/structures/machinery/science_machines.dmi'
 	icon_state = "mixer0"
 	var/base_state = "mixer"

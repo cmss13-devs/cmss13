@@ -1,0 +1,5 @@
+author: "Molto"
+delete-after: True
+changes:
+  - bugfix: "fixed the m43 causing a honk once put in a holster"
+  - imageadd: "added the M43 belt-sprite"

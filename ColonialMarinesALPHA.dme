@@ -30,6 +30,7 @@
 #include "code\__DEFINES\access.dm"
 #include "code\__DEFINES\admin.dm"
 #include "code\__DEFINES\atmospherics.dm"
+#include "code\__DEFINES\autolathe.dm"
 #include "code\__DEFINES\blood.dm"
 #include "code\__DEFINES\bsql.config.dm"
 #include "code\__DEFINES\bsql.dm"

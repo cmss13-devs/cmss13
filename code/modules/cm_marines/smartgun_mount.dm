@@ -231,7 +231,7 @@
 	desc = "A foldable tripod mount for the M56D, provides stability to the M56D."
 	icon = 'icons/turf/whiskeyoutpost.dmi'
 	icon_state = "M56D_mount"
-	anchored = 0
+	anchored = FALSE
 	density = TRUE
 	layer = ABOVE_MOB_LAYER
 	projectile_coverage = PROJECTILE_COVERAGE_LOW
@@ -414,7 +414,7 @@
 	desc = "A deployable, heavy machine gun. While it is capable of taking the same rounds as the M56, it fires specialized tungsten rounds for increased armor penetration.<br>Drag its sprite onto yourself to man it. Ctrl-click it to toggle burst fire."
 	icon = 'icons/turf/whiskeyoutpost.dmi'
 	icon_state = "M56D"
-	anchored = 1
+	anchored = TRUE
 	unslashable = TRUE
 	unacidable = TRUE //stop the xeno me(l)ta.
 	density = TRUE
@@ -1243,7 +1243,7 @@
 // ANTI-CADE EFFECT, CREDIT TO WALTERMELDRON
 /obj/structure/blocker/anti_cade
 	health = INFINITY
-	anchored = 1
+	anchored = TRUE
 	density = FALSE
 	unacidable = TRUE
 	indestructible = TRUE

@@ -523,3 +523,25 @@
   nauticall:
   - rscadd: Resprited the pipe dispenser, CAS laser battery, the crematorium, various
       foodstuffs and ingredients, the portable dialysis machine, and the mounted flash.
+2023-01-24:
+  JackieEstegado:
+  - bugfix: Laptops can no longer be picked up from afar, plus runtime fix.
+  Morrow:
+  - code_imp: Removed unused variable
+  NewyearnewmeUwu:
+  - rscadd: adds a telephone to the Almayer's hangar.
+  stanalbatross:
+  - balance: reduced acid blood splash damage to 12 from 25
+  - code_imp: cleaned up a bit of code to avoid an unneeded proc call in the code
+      that handled acid blood splashes
+  - ui: autolathes now use tgui
+  - code_imp: cleaned up autolathe code, made stuff use defines, proc-ified some stuff,
+      made bools use TRUEFALSE
+  - code_imp: made a few common vars use TRUEFALSE
+2023-01-25:
+  Segrain:
+  - refactor: Drinks are brought to be more in line with reagent system overall. Let
+      me know if something breaks.
+  - bugfix: Exploit involving legacy healing drink going infinite is put to an end.
+  stanalbatross:
+  - ui: converted the kill panel to tgui

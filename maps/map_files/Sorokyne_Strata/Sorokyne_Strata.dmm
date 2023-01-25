@@ -5460,7 +5460,7 @@
 /area/strata/ag/interior/dorms/maintenance)
 "apT" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/computer/shuttle_control/dropship1,
+/obj/structure/machinery/computer/shuttle/dropship/flight/lz1,
 /turf/open/floor/plating,
 /area/strata/ag/interior/landingzone_1)
 "apU" = (
@@ -42252,7 +42252,7 @@
 /area/strata/ag/exterior/research_decks)
 "vJj" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/computer/shuttle_control/dropship2,
+/obj/structure/machinery/computer/shuttle/dropship/flight/lz2,
 /turf/open/floor/plating,
 /area/strata/ag/exterior/landingzone_2)
 "vJx" = (

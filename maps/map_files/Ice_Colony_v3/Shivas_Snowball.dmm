@@ -3684,7 +3684,7 @@
 /area/shiva/interior/valley_huts/disposals)
 "asU" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/computer/shuttle_control/dropship2,
+/obj/structure/machinery/computer/shuttle/dropship/flight/lz2,
 /turf/open/floor/shiva{
 	dir = 1
 	},
@@ -15523,7 +15523,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "W-corner"
 	},
-/obj/structure/machinery/computer/shuttle_control/dropship1,
+/obj/structure/machinery/computer/shuttle/dropship/flight/lz1,
 /turf/open/floor/plating,
 /area/shiva/exterior/lz1_console)
 "kfW" = (

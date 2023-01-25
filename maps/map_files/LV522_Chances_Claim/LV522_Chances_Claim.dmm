@@ -7465,10 +7465,7 @@
 	layer = 3.1;
 	name = "Remote Console Pod"
 	},
-/obj/structure/machinery/computer/shuttle_control/dropship2{
-	layer = 3.1;
-	pixel_y = -9
-	},
+/obj/structure/machinery/computer/shuttle/dropship/flight/lz2,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "floor_marked";
@@ -14368,10 +14365,7 @@
 	layer = 3.1;
 	name = "Remote Console Pod"
 	},
-/obj/structure/machinery/computer/shuttle_control/dropship1{
-	layer = 3.2;
-	pixel_y = -6
-	},
+/obj/structure/machinery/computer/shuttle/dropship/flight/lz1,
 /turf/open/floor/prison,
 /area/shuttle/drop1/lv522)
 "gVr" = (

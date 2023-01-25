@@ -589,7 +589,9 @@
 /area/bigredv2/outside/space_port)
 "aby" = (
 /obj/structure/surface/table,
-/obj/structure/machinery/computer/shuttle_control/dropship1,
+/obj/structure/machinery/computer/shuttle/dropship/flight/lz1{
+	dir = 4
+	},
 /turf/open/floor{
 	icon_state = "dark";
 	tag = "icon-dark"
@@ -38807,7 +38809,9 @@
 /area/bigredv2/caves/mining)
 "tgk" = (
 /obj/structure/surface/table,
-/obj/structure/machinery/computer/shuttle_control/dropship2,
+/obj/structure/machinery/computer/shuttle/dropship/flight/lz2{
+	dir = 4
+	},
 /turf/open/floor,
 /area/bigredv2/landing/console2)
 "tgF" = (
@@ -39336,6 +39340,10 @@
 	tag = "icon-mars_cave_4"
 	},
 /area/bigredv2/caves_se)
+"uey" = (
+/obj/structure/machinery/computer/shuttle/dropship/flight/lz2,
+/turf/closed/wall/solaris,
+/area/bigredv2/outside/dorms)
 "ufu" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood/oil,
@@ -61960,7 +61968,7 @@ amn
 amn
 amn
 amn
-amn
+uey
 amn
 amn
 aHD

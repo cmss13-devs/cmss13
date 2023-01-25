@@ -30789,7 +30789,7 @@
 /area/corsat/gamma/hangar/office)
 "bGI" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/shuttle_control/dropship1{
+/obj/structure/machinery/computer/shuttle/dropship/flight/lz1{
 	dir = 8
 	},
 /turf/open/floor/corsat{
@@ -57476,7 +57476,7 @@
 /area/corsat/sigma/hangar/security)
 "rrG" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/shuttle_control/dropship2{
+/obj/structure/machinery/computer/shuttle/dropship/flight/lz2{
 	dir = 4
 	},
 /turf/open/floor/corsat{

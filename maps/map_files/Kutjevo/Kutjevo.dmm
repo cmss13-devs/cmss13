@@ -738,7 +738,7 @@
 /area/kutjevo/interior/colony_South/power2)
 "bbc" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/computer/shuttle_control/dropship1,
+/obj/structure/machinery/computer/shuttle/dropship/flight/lz1,
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/exterior/lz_dunes)
 "bbL" = (
@@ -4690,7 +4690,7 @@
 /area/kutjevo/interior/colony_N_East)
 "fYE" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/shuttle_control/dropship2,
+/obj/structure/machinery/computer/shuttle/dropship/flight/lz2,
 /turf/open/floor/kutjevo/tan/alt_edge{
 	dir = 5
 	},

@@ -6785,7 +6785,9 @@
 "aqF" = (
 /obj/structure/surface/table/reinforced,
 /obj/structure/platform,
-/obj/structure/machinery/computer/shuttle_control/dropship2,
+/obj/structure/machinery/computer/shuttle/dropship/flight/lz2{
+	dir = 4
+	},
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "floor_marked";
@@ -30154,7 +30156,7 @@
 /area/prison/hallway/east)
 "bCT" = (
 /obj/structure/surface/table/reinforced,
-/obj/structure/machinery/computer/shuttle_control/dropship1,
+/obj/structure/machinery/computer/shuttle/dropship/flight/lz1,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "darkredfull2";

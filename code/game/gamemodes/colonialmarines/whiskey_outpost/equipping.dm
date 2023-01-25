@@ -11,15 +11,15 @@
 The local population warned you about establishing a base in the jungles of LV-624...
 Hold the outpost for one hour until the distress beacon can be broadcast to the remaining Dust Raiders!
 Coordinate your team and prepare defenses, whatever wiped out the patrols is en-route!
-Count on your Lieutenant Commander, and your Honor Guard Squad Leader to assist you!
-Stay alive, and Godspeed, commander!"}
+Count on the Outpost Commander, and your Honor Guard Squad Leader to assist you!
+Stay alive, and Godspeed, Major!"}
 
 /datum/job/command/commander/whiskey/announce_entry_message(mob/living/carbon/human/H)
 	if(..())
 		return
 	sleep(15)
 	if(H?.loc)
-		marine_announcement("All forces, Ground Commander [H.real_name] is in command!")
+		marine_announcement("All forces, the Regional Commander, Major [H.real_name] is in command!")
 
 
 
@@ -46,8 +46,8 @@ Destruction in inevitable. At the very least, you can assist in preventing other
 	gear_preset = /datum/equipment_preset/wo/xo
 
 /datum/job/command/executive/whiskey/generate_entry_message(mob/living/carbon/human/H)
-	. = {"You've been with the commander for as long as you can remember. You've always been the bookish nerd to the Honor Guard Squad Leader's jock; as such, you're the commander's right-hand man.
-Assist the commander in ensuring that Whiskey Outpost stands long enough for a distress signal to be sent out.
+	. = {"You've been with the regional commander for as long as you can remember. You've always been the bookish nerd to the Honor Guard Squad Leader's jock; as such, you're the Major's right-hand man.
+Having been given charge of the newly founded Whiskey Outpost you must now assist the Major in ensuring the outpost stands long enough for a distress signal to be sent out.
 Make the USCM proud!"}
 
 
@@ -62,7 +62,7 @@ Make the USCM proud!"}
 	gear_preset = /datum/equipment_preset/wo/cmp
 
 /datum/job/command/warrant/whiskey/generate_entry_message(mob/living/carbon/human/H)
-	. = {"The Commander is the best hope for this outpost! At least in your eyes. You two have saved each-other's asses enough times to testify to that, and have been together for longer than anyone cares to remember. You're his left-hand man, behind the Lieutenant Commander. You two are men. Manly men.
+	. = {"The Major is the best hope for this outpost! At least in your eyes. You two have saved each-other's asses enough times to testify to that, and have been together for longer than anyone cares to remember. You're his left-hand man, behind the Captain. You two are men. Manly men.
 Your veterans have lived enough years that they are able to command others using the overwatch consoles, but the young ones are still fresh out of boot camp - it's your job to shape 'em up into proper soldiers!
 You must lead his Honor guard, his elite unit of marines, to protect the commander, and ensure victory!
 "}
@@ -76,7 +76,7 @@ You must lead his Honor guard, his elite unit of marines, to protect the command
 	gear_preset = /datum/equipment_preset/wo/vhg
 
 /datum/job/command/bridge/whiskey/generate_entry_message(mob/living/carbon/human/H)
-	. = {"You were assigned to guard the commander in this hostile enviroment; that hasn't changed. Ensure your extra training and equipment isn't wasted!
+	. = {"You were assigned to guard the regional commander in this hostile enviroment; that hasn't changed. Ensure your extra training and equipment isn't wasted!
 You've survived through enough battles that you've been entrusted with more training, and can use overwatch consoles, as well as give orders.
 You're expected to defend not only the commander, but the bunker at large; leave the outside defenses to the marines.
 Glory to the commander. Glory to the USCM."}
@@ -90,7 +90,7 @@ Glory to the commander. Glory to the USCM."}
 	gear_preset = /datum/equipment_preset/wo/hgs
 
 /datum/job/command/tank_crew/whiskey/generate_entry_message(mob/living/carbon/human/H)
-	. = {"You were assigned to guard the commander in this hostile enviroment; that hasn't changed. Ensure your extra training and equipment isn't wasted!
+	. = {"You were assigned to guard the regional commander in this hostile enviroment; that hasn't changed. Ensure your extra training and equipment isn't wasted!
 You're expected to defend not only the commander, but the bunker at large; leave the outside defenses to the marines.
 You've been through much, and as such, have been given special-weapons training. Use it well.
 Glory to the commander. Glory to the USCM."}
@@ -104,7 +104,7 @@ Glory to the commander. Glory to the USCM."}
 	gear_preset = /datum/equipment_preset/wo/hg
 
 /datum/job/command/police/whiskey/generate_entry_message(mob/living/carbon/human/H)
-	. = {"You were assigned to guard the commander in this hostile enviroment; that hasn't changed. Ensure your extra training and equipment isn't wasted!
+	. = {"You were assigned to guard the regional commander in this hostile enviroment; that hasn't changed. Ensure your extra training and equipment isn't wasted!
 You're expected to defend not only the commander, but the bunker at large; leave the outside defenses to the marines.
 Glory to the commander. Glory to the USCM."}
 

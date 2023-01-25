@@ -122,8 +122,8 @@ var/global/list/job_command_roles = JOB_COMMAND_ROLES_LIST
 
 //-------------WO roles---------------
 
-#define JOB_WO_CO "Ground Commander"
-#define JOB_WO_XO "Lieutenant Commander"
+#define JOB_WO_CO "Regional Commander"
+#define JOB_WO_XO "Outpost Commander"
 #define JOB_WO_CHIEF_POLICE "Honor Guard Squad Leader"
 #define JOB_WO_SO "Veteran Honor Guard"
 #define JOB_WO_CREWMAN "Honor Guard Weapons Specialist"

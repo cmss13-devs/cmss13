@@ -17,8 +17,8 @@
 
 	assignment = JOB_WO_CO
 	rank = JOB_WO_CO
-	paygrade = "MO2"
-	role_comm_title = "CDR"
+	paygrade = "MO4"
+	role_comm_title = "R-CDR"
 	skills = /datum/skills/commander
 	idtype = /obj/item/card/id/gold
 
@@ -91,13 +91,13 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/wo/xo
-	name = "WO Lieutenant Commander"
+	name = "WO Executive Officer"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND_WO
 
 	assignment = JOB_WO_XO
 	rank = JOB_WO_XO
-	paygrade = "MO1"
-	role_comm_title = "LCDR"
+	paygrade = "MO3"
+	role_comm_title = "O-CDR"
 	skills = /datum/skills/XO
 	idtype = /obj/item/card/id/silver
 
@@ -138,7 +138,7 @@
 	access = list(ACCESS_MARINE_BRIG, ACCESS_MARINE_BRIDGE, ACCESS_MARINE_DROPSHIP, ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_PREP, ACCESS_MARINE_WO, ACCESS_MARINE_MEDBAY)
 	assignment = JOB_WO_CHIEF_POLICE
 	rank = JOB_WO_CHIEF_POLICE
-	paygrade = "ME5"
+	paygrade = "ME6"
 	role_comm_title = "HGSL"
 	skills = /datum/skills/honor_guard/lead
 	idtype = /obj/item/card/id/silver
@@ -174,7 +174,7 @@
 	access = list(ACCESS_MARINE_BRIDGE, ACCESS_MARINE_BRIG, ACCESS_MARINE_DROPSHIP, ACCESS_MARINE_LOGISTICS)
 	assignment = JOB_WO_SO
 	rank = JOB_WO_SO
-	paygrade = "ME4"
+	paygrade = "ME5"
 	role_comm_title = "VHG"
 	skills = /datum/skills/honor_guard/vet
 	idtype = /obj/item/card/id/silver
@@ -214,7 +214,7 @@
 	access = list(ACCESS_MARINE_BRIDGE, ACCESS_MARINE_DROPSHIP, ACCESS_MARINE_LOGISTICS)
 	assignment = JOB_WO_CREWMAN
 	rank = JOB_WO_CREWMAN
-	paygrade = "ME3"
+	paygrade = "ME4"
 	role_comm_title = "HGS"
 	skills = /datum/skills/honor_guard/spec
 	idtype = /obj/item/card/id/gold
@@ -252,7 +252,7 @@
 	access = list(ACCESS_MARINE_BRIG, ACCESS_MARINE_BRIDGE, ACCESS_MARINE_DROPSHIP, ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_PREP, ACCESS_MARINE_MEDBAY)
 	assignment = JOB_WO_POLICE
 	rank = JOB_WO_POLICE
-	paygrade = "ME2"
+	paygrade = "ME3"
 	role_comm_title = "HG"
 	skills = /datum/skills/honor_guard
 

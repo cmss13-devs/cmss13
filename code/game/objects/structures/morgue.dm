@@ -12,7 +12,7 @@
 	var/morgue_type = "morgue"
 	var/tray_path = /obj/structure/morgue_tray
 	var/morgue_open = 0
-	anchored = 1
+	anchored = TRUE
 	throwpass = 1
 
 /obj/structure/morgue/Initialize()
@@ -129,7 +129,7 @@
 	density = TRUE
 	layer = OBJ_LAYER
 	var/obj/structure/morgue/linked_morgue = null
-	anchored = 1
+	anchored = TRUE
 	throwpass = 1
 	var/bloody = FALSE
 
@@ -176,7 +176,7 @@
 
 /obj/structure/morgue/crematorium
 	name = "crematorium"
-	desc = "A human incinerator. Works well on barbeque nights."
+	desc = "A human incinerator. Works well on barbecue nights."
 	icon_state = "crema1"
 	dir = SOUTH
 	tray_path = /obj/structure/morgue_tray/crematorium

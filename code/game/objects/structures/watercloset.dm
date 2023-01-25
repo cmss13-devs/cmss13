@@ -6,7 +6,7 @@
 	icon = 'icons/obj/structures/props/watercloset.dmi'
 	icon_state = "toilet00"
 	density = FALSE
-	anchored = 1
+	anchored = TRUE
 	can_buckle = TRUE
 	var/open = 0 //if the lid is up
 	var/cistern = 0 //if the cistern bit is open
@@ -186,7 +186,7 @@
 	icon = 'icons/obj/structures/props/watercloset.dmi'
 	icon_state = "urinal"
 	density = FALSE
-	anchored = 1
+	anchored = TRUE
 
 /obj/structure/urinal/after_attack_by(obj/item/I, mob/living/user)
 	if(istype(I, /obj/item/grab))
@@ -211,7 +211,7 @@
 	icon = 'icons/obj/structures/props/watercloset.dmi'
 	icon_state = "shower"
 	density = FALSE
-	anchored = 1
+	anchored = TRUE
 	use_power = USE_POWER_NONE
 	var/on = 0
 	var/obj/effect/mist/mymist = null
@@ -231,7 +231,7 @@
 	icon = 'icons/obj/structures/props/watercloset.dmi'
 	icon_state = "mist"
 	layer = FLY_LAYER
-	anchored = 1
+	anchored = TRUE
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
 /obj/structure/machinery/shower/attack_hand(mob/M as mob)
@@ -433,7 +433,7 @@
 	icon = 'icons/obj/structures/props/watercloset.dmi'
 	icon_state = "sink_emptied_animation"
 	desc = "A sink used for washing one's hands and face."
-	anchored = 1
+	anchored = TRUE
 	var/busy = FALSE //Something's being washed at the moment
 
 /obj/structure/sink/Initialize()

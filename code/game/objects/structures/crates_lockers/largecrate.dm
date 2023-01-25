@@ -4,7 +4,7 @@
 	icon = 'icons/obj/structures/crates.dmi'
 	icon_state = "densecrate"
 	density = TRUE
-	anchored = 0
+	anchored = FALSE
 	var/parts_type = /obj/item/stack/sheet/wood
 	var/unpacking_sound = 'sound/effects/woodhit.ogg'
 

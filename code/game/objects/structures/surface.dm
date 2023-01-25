@@ -8,7 +8,8 @@
 	)
 	//add items there that behave like structures for whatever dumb reason
 	var/list/blacklisted_item_types = list(
-		/obj/item/device/radio/intercom
+		/obj/item/device/radio/intercom,
+		/obj/item/device/sentry_computer
 	)
 
 /obj/structure/surface/Initialize()

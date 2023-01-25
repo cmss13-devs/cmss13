@@ -15,7 +15,7 @@
 	icon = 'icons/obj/structures/tables.dmi'
 	icon_state = "table"
 	density = TRUE
-	anchored = 1.0
+	anchored = TRUE
 	layer = TABLE_LAYER
 	throwpass = 1 //You can throw objects over this, despite it's density.")
 	climbable = 1
@@ -303,6 +303,11 @@
 			deconstruct()
 		else
 			to_chat(user, SPAN_WARNING("You slice at the table, but only claw it up a little."))
+		return
+
+	if (istype(W, /obj/item/device/sentry_computer))
+		var/obj/item/device/sentry_computer/computer = W
+		computer.setup(src)
 		return
 
 	if(istype(W, /obj/item/explosive/grenade))
@@ -600,7 +605,7 @@
 	icon_state = "rack"
 	density = TRUE
 	layer = TABLE_LAYER
-	anchored = 1.0
+	anchored = TRUE
 	throwpass = 1 //You can throw objects over this, despite it's density.
 	breakable = 1
 	climbable = 1

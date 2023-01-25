@@ -4,7 +4,7 @@
 	name = "\improper recharger"
 	icon = 'icons/obj/structures/props/stationobjs.dmi'
 	icon_state = "recharger"
-	anchored = 1
+	anchored = TRUE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 4
 	active_power_usage = 15000 //15 kW

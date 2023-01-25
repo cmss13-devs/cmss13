@@ -3,7 +3,7 @@
 	icon = 'icons/obj/structures/machinery/geothermal.dmi'
 	icon_state = "weld"
 	desc = "A thermoelectric generator sitting atop a plasma-filled borehole. This one is heavily damaged. Use a blowtorch, wirecutters, then wrench to repair it."
-	anchored = 1
+	anchored = TRUE
 	density = TRUE
 	directwired = 0  //Requires a cable directly underneath
 	unslashable = TRUE
@@ -205,7 +205,7 @@
 	icon_state = "panelnopower"
 	desc = "This switch controls the floodlights surrounding the archaeology complex. It only functions when there is power."
 	density = FALSE
-	anchored = 1
+	anchored = TRUE
 	var/ispowered = FALSE
 	var/turned_on = 0 //has to be toggled in engineering
 	use_power = USE_POWER_IDLE
@@ -291,7 +291,7 @@
 	icon = 'icons/obj/structures/machinery/big_floodlight.dmi'
 	icon_state = "flood_s_off"
 	density = TRUE
-	anchored = 1
+	anchored = TRUE
 	layer = WINDOW_LAYER
 	var/damaged = 0 //Can be smashed by xenos
 	var/is_lit = 0 //whether the floodlight is switched to on or off. Does not necessarily mean it emits light.

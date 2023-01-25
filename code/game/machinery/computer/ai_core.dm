@@ -1,6 +1,6 @@
 /obj/structure/AIcore
 	density = TRUE
-	anchored = 0
+	anchored = FALSE
 	name = "AI core"
 	icon = 'icons/obj/structures/machinery/AI.dmi'
 	icon_state = "0"
@@ -16,7 +16,7 @@
 				playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
 				if(do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 					to_chat(user, SPAN_NOTICE(" You wrench the frame into place."))
-					anchored = 1
+					anchored = TRUE
 					state = 1
 			if(iswelder(P))
 				var/obj/item/tool/weldingtool/WT = P
@@ -37,7 +37,7 @@
 				playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
 				if(do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 					to_chat(user, SPAN_NOTICE(" You unfasten the frame."))
-					anchored = 0
+					anchored = FALSE
 					state = 0
 			if(istype(P, /obj/item/circuitboard/aicore) && !circuit)
 				if(user.drop_held_item())
@@ -152,7 +152,7 @@
 	name = "Inactive AI"
 	icon = 'icons/obj/structures/machinery/AI.dmi'
 	icon_state = "ai-empty"
-	anchored = 1
+	anchored = TRUE
 	state = 20//So it doesn't interact based on the above. Not really necessary.
 
 /obj/structure/AIcore/deactivated/after_attack_by(var/obj/item/device/aicard/A as obj, var/mob/user as mob)

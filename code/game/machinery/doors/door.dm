@@ -4,7 +4,7 @@
 	desc = "It opens and closes."
 	icon = 'icons/obj/structures/doors/Doorint.dmi'
 	icon_state = "door1"
-	anchored = 1
+	anchored = TRUE
 	opacity = TRUE
 	density = TRUE
 	throwpass = 0

@@ -667,7 +667,7 @@
 	item_state = "camo_helm"
 
 /obj/item/clothing/head/helmet/marine/fluff/dino
-	name = "Snake's Bandanna"
+	name = "Snake's Bandana"
 	desc = "Property of The Boss.  DONOR ITEM"
 	icon_state = "snakeheadband"
 	item_state = "snakeheadband"

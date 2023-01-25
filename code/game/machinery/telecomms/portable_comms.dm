@@ -6,7 +6,7 @@
 	required_skill = SKILL_ENGINEER_ENGI
 	required_dismantle_skill = 5
 	density = TRUE
-	anchored = 0
+	anchored = FALSE
 	unslashable = TRUE
 	unacidable = TRUE
 

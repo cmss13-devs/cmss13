@@ -48,6 +48,10 @@ GLOBAL_DATUM(railgun_eye_location, /datum/coords)
 
 /obj/structure/machinery/computer/railgun/Initialize()
 	. = ..()
+
+	if(is_admin_level(SSmapping.ground_start) || is_mainship_level(SSmapping.ground_start))
+		return
+
 	if(!GLOB.railgun_eye_location)
 		stack_trace("Railgun eye location is not initialised! There is no landmark for it on [SSmapping.configs[GROUND_MAP].map_name]")
 		return INITIALIZE_HINT_QDEL

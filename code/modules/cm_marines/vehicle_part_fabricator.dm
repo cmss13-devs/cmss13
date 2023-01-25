@@ -3,7 +3,7 @@
 	name = "part fabricator"
 	desc = "A large automated 3D printer for producing runtime errors."
 	density = TRUE
-	anchored = 1
+	anchored = TRUE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 20
 	icon = 'icons/obj/structures/machinery/drone_fab.dmi'

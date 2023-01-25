@@ -9,7 +9,7 @@
 	icon = 'icons/obj/structures/machinery/aibots.dmi'
 	icon_state = "floorbot0"
 	density = FALSE
-	anchored = 0
+	anchored = FALSE
 	health = 25
 	maxhealth = 25
 	//weight = 1.0E7
@@ -238,7 +238,7 @@
 		return
 	if(src.amount <= 0)
 		return
-	src.anchored = 1
+	src.anchored = TRUE
 	src.icon_state = "floorbot-c"
 	if(istype(target, /turf/open/space/))
 		visible_message(SPAN_DANGER("[src] begins to repair the hole"))
@@ -249,7 +249,7 @@
 			src.repairing = 0
 			src.amount--
 			src.updateicon()
-			src.anchored = 0
+			src.anchored = FALSE
 			src.target = null
 	else
 		visible_message(SPAN_DANGER("[src] begins to improve the floor."))
@@ -259,7 +259,7 @@
 			src.repairing = 0
 			src.amount--
 			src.updateicon()
-			src.anchored = 0
+			src.anchored = FALSE
 			src.target = null
 
 /obj/structure/machinery/bot/floorbot/proc/eattile(var/obj/item/stack/tile/plasteel/T)

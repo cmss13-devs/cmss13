@@ -426,6 +426,9 @@
 	var/knockout_time = 0.1
 	var/dazed_time = 0.5
 	var/inactive_icon = "chemg"
+	var/throw_max = 3 //What is the max range the baton can push/fling someone
+	var/throw_min = 1 //what is the min range the baton can push/fling
+	var/ram_distance = 2 //How far can the baton bounce after impacting a mob, Also how many times it can bounce
 	has_arm_sound = FALSE
 	throwforce = 10
 	antigrief_protection = FALSE
@@ -436,28 +439,41 @@
 	icon_state = initial(icon_state)
 	w_class = initial(w_class)
 	throwforce = initial(throwforce)
+	throw_max = initial(throw_max)
+	throw_min = initial(throw_min)
+	ram_distance = initial(ram_distance)
 
 /obj/item/explosive/grenade/slug/launch_impact(atom/hit_atom)
 	if(!active)
 		return
 	if(ismob(hit_atom))
 		impact_mob(hit_atom)
+		ram_distance -- //for max pinballing.
 	icon_state = inactive_icon
 
 /obj/item/explosive/grenade/slug/proc/impact_mob(mob/living/M)
+	var/direction = Get_Angle(src,M)
+	var/target_turf = get_angle_target_turf(src,direction,throw_max)
+	var/fling = rand(throw_min,throw_max) //WEEEEEEEEEEEEEEEEEEEE What is going to be put into throw_atom
+	var/random_tile = 0 //random tile for bounce
+
 	playsound(M.loc, impact_sound, 75, 1)
 	M.apply_damage(impact_damage, BRUTE)
+
+	random_tile = get_random_turf_in_range(src,ram_distance,ram_distance) //getting random tile for bounce
+	src.throw_atom(random_tile,ram_distance,SPEED_FAST,src,TRUE,NORMAL_LAUNCH,NO_FLAGS) //time for a little trolling
 
 	if(isYautja(M)|| isSynth(M))
 		M.apply_effect(slowdown_time * 0.5, SLOW)
 		M.apply_effect(dazed_time * 0.5, DAZE)
 
 	if(M.mob_size >= MOB_SIZE_BIG)//big xenos not KO'ed
-		M.apply_effect(slowdown_time * 1.5, SLOW)//They are slowed more :trol:
-		M.apply_effect(dazed_time * 1.5, DAZE)
+		M.apply_effect(slowdown_time * 1.2, SLOW)//They are slowed more :trol:
+		M.apply_effect(dazed_time * 1.2, DAZE)
 		return
 
 	M.apply_effect(knockout_time, WEAKEN)//but little xenos and humans are
+	M.throw_atom(target_turf,fling,SPEED_AVERAGE,M,TRUE)
 	M.apply_effect(slowdown_time, SLOW)
 	M.apply_effect(dazed_time, DAZE)
 	return
@@ -470,9 +486,9 @@
 	inactive_icon = "baton_slug"
 	antigrief_protection = FALSE
 	impact_damage = 15
-	slowdown_time = 1.6
-	knockout_time = 0.4
-	dazed_time = 1.5
+	slowdown_time = 2
+	knockout_time = 0.8
+	dazed_time = 1.7
 
 /obj/item/explosive/grenade/slug/baton/Initialize()
 	. = ..()

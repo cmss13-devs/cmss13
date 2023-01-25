@@ -10,7 +10,7 @@
 	icon_state = "table2-idle"
 	density = TRUE
 	layer = TABLE_LAYER
-	anchored = 1
+	anchored = TRUE
 	unslashable = TRUE
 	unacidable = TRUE
 	climbable = TRUE

@@ -6,7 +6,7 @@
 	icon_state = "box_0"
 	var/base_state = "box"
 	density = FALSE
-	anchored = 1
+	anchored = TRUE
 	use_power = USE_POWER_NONE
 	var/requirements_left
 	var/obj/item/circuitboard/machine/circuit = null
@@ -64,7 +64,7 @@
 						user.visible_message(SPAN_NOTICE("[user] adds cables to [src]."),
 						SPAN_NOTICE("You add cables to [src]."))
 						state = CONSTRUCTION_STATE_PROGRESS
-						anchored = 1
+						anchored = TRUE
 						update_desc()
 			else if(HAS_TRAIT(P, TRAIT_TOOL_WRENCH))
 				if(!skillcheck(user, SKILL_ENGINEER, required_dismantle_skill))

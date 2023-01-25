@@ -5,7 +5,7 @@
 	icon = 'icons/obj/items/items.dmi'
 	icon_state = "strangepresent"
 	density = TRUE
-	anchored = 0
+	anchored = FALSE
 
 
 
@@ -16,7 +16,7 @@
 	var/mark = ""
 	icon = 'icons/old_stuff/mark.dmi'
 	icon_state = "blank"
-	anchored = 1
+	anchored = TRUE
 	layer = 99
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	unacidable = TRUE//Just to be sure.
@@ -36,7 +36,7 @@
 	name = "begin"
 	icon = 'icons/obj/structures/props/stationobjs.dmi'
 	icon_state = "begin"
-	anchored = 1.0
+	anchored = TRUE
 	unacidable = TRUE
 
 
@@ -54,7 +54,7 @@
 /obj/effect/projection
 	name = "Projection"
 	desc = "This looks like a projection of something."
-	anchored = 1.0
+	anchored = TRUE
 
 
 /obj/effect/shut_controller
@@ -70,7 +70,7 @@
 	name = "engine exhaust"
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "exhaust"
-	anchored = 1
+	anchored = TRUE
 
 /obj/effect/engine_exhaust/New(var/turf/nloc, var/ndir, var/temp)
 	setDir(ndir)

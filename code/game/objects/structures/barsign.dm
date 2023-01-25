@@ -1,7 +1,7 @@
 /obj/structure/sign/double/barsign
 	icon = 'icons/obj/structures/props/barsigns.dmi'
 	icon_state = "empty"
-	anchored = 1
+	anchored = TRUE
 
 /obj/structure/sign/double/barsign/New()
 	..()

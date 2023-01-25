@@ -909,7 +909,7 @@
 		newInfoTag.fallen_names = list(dogtag_name)
 		newInfoTag.fallen_assgns = list(dogtag_assign)
 		newInfoTag.fallen_blood_types = list(dogtag_blood)
-		fallen_list_cross.Remove(dogtag_name)
+		fallen_list_cross -= dogtag_name
 	return ..()
 
 /obj/structure/prop/wooden_cross/attackby(obj/item/W, mob/living/user)

@@ -49,7 +49,7 @@ var/datum/controller/supply/supply_controller = new()
 	icon_state = "plasticflaps"
 	gender = PLURAL
 	density = FALSE
-	anchored = 1
+	anchored = TRUE
 	layer = MOB_LAYER
 	var/collide_message_busy // Timer to stop collision spam
 
@@ -315,7 +315,7 @@ var/datum/controller/supply/supply_controller = new()
 	icon = 'icons/old_stuff/mark.dmi'
 	name = "X"
 	invisibility = 101
-	anchored = 1
+	anchored = TRUE
 	opacity = FALSE
 */
 

@@ -7,7 +7,7 @@
 	name = "egg"
 	icon_state = "Egg Growing"
 	density = FALSE
-	anchored = 1
+	anchored = TRUE
 	layer = LYING_BETWEEN_MOB_LAYER //to stop hiding eggs under corpses
 	health = 80
 	plane = GAME_PLANE
@@ -267,7 +267,7 @@
 /obj/effect/egg_trigger
 	name = "egg trigger"
 	icon = 'icons/effects/effects.dmi'
-	anchored = 1
+	anchored = TRUE
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	invisibility = INVISIBILITY_MAXIMUM
 	var/obj/effect/alien/egg/linked_egg

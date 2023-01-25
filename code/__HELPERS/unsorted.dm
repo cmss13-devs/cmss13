@@ -1344,7 +1344,7 @@ var/global/image/action_purple_power_up
 						var/obj/corner = new()
 						corner.forceMove(X)
 						corner.density = TRUE
-						corner.anchored = 1
+						corner.anchored = TRUE
 						corner.icon = X.icon
 						corner.icon_state = replacetext(X.icon_state, "_s", "_f")
 						corner.tag = "delete me"

@@ -158,8 +158,8 @@
 	for(var/obj/structure/structure in loc)
 		structure.update_health(-land_damage)
 
-		// Deal damage exclusively to barricades on landing, used for sentry post
-		if(istype(structure, /obj/structure/barricade))
+		// Deal damage exclusively to barricades/tables on landing, used for sentry post
+		if(istype(structure, /obj/structure/barricade) || istype(structure, /obj/structure/surface/table))
 			structure.update_health(barricade_damage)
 
 	for(var/obj/structure/machinery/defenses/def in loc)

@@ -328,8 +328,11 @@
 /obj/structure/machinery/computer/communications/attack_hand(var/mob/user as mob)
 	if(..()) return FALSE
 
-	//Should be refactored later, if there's another ship that can appear during a mode with a comm console.
-	if(!istype(loc.loc, /area/almayer/command/cic)) //Has to be in the CIC. Can also be a generic CIC area to communicate, if wanted.
+	var/do_continue = FALSE
+	//Should be refactored later, if there's another ship that can appear during a mode with a comm console. ~~ !!OH LIKE NOW!? FOR ME >:()
+	if(istype(loc.loc, /area/almayer/command/cic) || istype(loc.loc, /area/wayfinder/command/cic))
+		do_continue = TRUE
+	if(!do_continue) //Has to be in the CIC. Can also be a generic CIC area to communicate, if wanted.
 		to_chat(usr, SPAN_WARNING("Unable to establish a connection."))
 		return FALSE
 

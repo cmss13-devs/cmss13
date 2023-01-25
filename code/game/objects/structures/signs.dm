@@ -88,6 +88,11 @@
 /obj/structure/sign/double/maltesefalcon/right
 	icon_state = "maltesefalcon-right"
 
+/obj/structure/sign/deck_number
+	icon = 'icons/obj/structures/props/almayer_props.dmi'
+	icon_state = "deck1"
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+
 //============//
 //  Banners  //
 //==========//

@@ -51,7 +51,7 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 	var/evac_status = EVACUATION_STATUS_STANDING_BY //What it's doing now? It can be standing by, getting ready to launch, or finished.
 
 	var/obj/structure/machinery/self_destruct/console/dest_master //The main console that does the brunt of the work.
-	var/dest_rods[] //Slave devices to make the explosion work.
+	var/list/dest_rods = list()//Slave devices to make the explosion work.
 	var/dest_cooldown //How long it takes between rods, determined by the amount of total rods present.
 	var/dest_index = 1 //What rod the thing is currently on.
 	var/dest_status = NUKE_EXPLOSION_INACTIVE
@@ -66,7 +66,6 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 		log_debug("ERROR CODE SD1: could not find master self-destruct console")
 		to_world(SPAN_DEBUG("ERROR CODE SD1: could not find master self-destruct console"))
 		return FALSE
-	dest_rods = new
 	for(var/obj/structure/machinery/self_destruct/rod/I in dest_master.loc.loc) dest_rods += I
 	if(!dest_rods.len)
 		log_debug("ERROR CODE SD2: could not find any self-destruct rods")
@@ -370,6 +369,20 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 	name = "self-destruct control panel"
 	icon_state = "console"
 	req_one_access = list(ACCESS_MARINE_CE, ACCESS_MARINE_CMO, ACCESS_MARINE_CAPTAIN, ACCESS_MARINE_COMMANDER)
+
+/obj/structure/machinery/self_destruct/console/Initialize(mapload, ...)
+	. = ..()
+
+	if(EvacuationAuthority && !EvacuationAuthority.dest_master)
+		EvacuationAuthority.dest_master = src
+		for(var/obj/structure/machinery/self_destruct/rod/I in range(20, get_turf(src)))
+			EvacuationAuthority.dest_rods += I
+		if(!EvacuationAuthority.dest_rods.len)
+			log_debug("ERROR CODE SD2: could not find any self-destruct rods")
+			to_world(SPAN_DEBUG("ERROR CODE SD2: could not find any self-destruct rods"))
+			QDEL_NULL(EvacuationAuthority.dest_master)
+			return FALSE
+		EvacuationAuthority.dest_cooldown = SELF_DESTRUCT_ROD_STARTUP_TIME / EvacuationAuthority.dest_rods.len
 
 /obj/structure/machinery/self_destruct/console/Destroy()
 	. = ..()

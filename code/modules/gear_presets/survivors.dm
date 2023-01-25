@@ -1213,7 +1213,7 @@
 /datum/equipment_preset/survivor/wy/manager
 	name = "Survivor - Corporate Supervisor"
 	flags = EQUIPMENT_PRESET_EXTRA
-	paygrade = "WY-5G"
+	paygrade = "WYC7"
 	skills = /datum/skills/civilian/manager_survivor
 	assignment = "Colony Supervisor"
 	role_comm_title = "Supervisor"

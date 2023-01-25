@@ -1,0 +1,4 @@
+author: "realforest2001"
+delete-after: True
+changes:
+  - rscadd: "Added phones to Lazarus Landing. Also added phones to the CLF ship insert, on an independant network."

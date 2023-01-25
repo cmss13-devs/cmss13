@@ -502,7 +502,9 @@
 							/obj/item/toy/prize/seraph = 1,
 							/obj/item/toy/prize/mauler = 1,
 							/obj/item/toy/prize/odysseus = 1,
-							/obj/item/toy/prize/phazon = 1
+							/obj/item/toy/prize/phazon = 1,
+							/obj/item/clothing/shoes/slippers = 1,
+							/obj/item/clothing/shoes/slippers_worn = 1
 							)
 
 /obj/item/toy/festivizer

@@ -405,18 +405,19 @@
 	max_ammo_count = 1
 	ammo_name = "area denial sentry"
 	travelling_time = 0 // handled by droppod
-	point_cost = 600
+	point_cost = 800
 	accuracy_range = 0 // pinpoint
 	max_inaccuracy = 0
 
 /obj/structure/ship_ammo/sentry/detonate_on(turf/impact)
 	var/obj/structure/droppod/equipment/sentry/droppod = new(impact, /obj/structure/machinery/defenses/sentry/launchable, source_mob)
+	droppod.barricade_damage = 500
 	droppod.drop_time = 5 SECONDS
 	droppod.launch(impact)
 	qdel(src)
 
 /obj/structure/ship_ammo/sentry/can_fire_at(turf/impact, mob/user)
-	for(var/obj/structure/machinery/defenses/def in urange(2, impact))
+	for(var/obj/structure/machinery/defenses/def in urange(4, impact))
 		to_chat(user, SPAN_WARNING("The selected drop site is too close to another deployed defense!"))
 		return FALSE
 	if(istype(impact, /turf/closed))

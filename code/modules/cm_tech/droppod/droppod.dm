@@ -14,6 +14,7 @@
 	var/droppod_flags = NO_FLAGS
 
 	var/land_damage = 5000
+	var/barricade_damage = 0
 	var/tiles_to_take = 15
 
 	var/drop_time = 0
@@ -156,6 +157,10 @@
 
 	for(var/obj/structure/structure in loc)
 		structure.update_health(-land_damage)
+
+		// Deal damage exclusively to barricades on landing, used for sentry post
+		if(istype(structure, /obj/structure/barricade))
+			structure.update_health(barricade_damage)
 
 	for(var/obj/structure/machinery/defenses/def in loc)
 		qdel(def)

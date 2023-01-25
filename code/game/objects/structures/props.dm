@@ -892,9 +892,9 @@
 	health = 30
 	var/inscription
 	var/obj/item/helmet
-	//This is for cross dogtags.
+	///This is for cross dogtags.
 	var/tagged = FALSE
-	//This is for cross engraving/writing.
+	///This is for cross engraving/writing.
 	var/engraved = FALSE
 	var/dogtag_name
 	var/dogtag_blood

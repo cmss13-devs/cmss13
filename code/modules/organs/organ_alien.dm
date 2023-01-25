@@ -156,7 +156,7 @@
 	organ_tag = "resin spinner"
 	organ_type = /datum/internal_organ/xenos/resinspinner
 
-//VOX ORGANS.
+
 /datum/internal_organ/stack
 	name = "cortical stack"
 	removed_type = /obj/item/organ/stack

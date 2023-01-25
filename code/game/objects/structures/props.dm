@@ -892,8 +892,8 @@
 	health = 30
 	var/inscription
 	var/obj/item/helmet
-	var/tagged = FALSE
-	var/engraved = FALSE
+	var/tagged = FALSE //This is for cross dogtags.
+	var/engraved = FALSE //This is for cross engraving/writing.
 	var/dogtag_name
 	var/dogtag_blood
 	var/dogtag_assign
@@ -915,7 +915,7 @@
 		var/obj/item/dogtag/dog = W
 		if(!tagged)
 			tagged = TRUE
-			user.visible_message(SPAN_NOTICE("[user] drapes \the [W] around \the [src]."))
+			user.visible_message(SPAN_NOTICE("[user] drapes the [W] around the [src]."))
 			dogtag_name = popleft(dog.fallen_names)
 			dogtag_assign = popleft(dog.fallen_assgns)
 			dogtag_blood = popleft(dog.fallen_blood_types)
@@ -926,7 +926,7 @@
 			else
 				return
 		else
-			to_chat(user, SPAN_WARNING("There's already a dog tag on \the [src]!"))
+			to_chat(user, SPAN_WARNING("There's already a dog tag on the [src]!"))
 			balloon_alert(user, "already a tag here!")
 
 	if(istype(W, /obj/item/clothing/head))

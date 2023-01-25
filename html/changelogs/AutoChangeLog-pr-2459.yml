@@ -1,0 +1,4 @@
+author: "realforest2001"
+delete-after: True
+changes:
+  - rscadd: "Added phones to Solaris Ridge, split between the Colony, Lambda Labs and Eta Labs as categories. All share the same network however."

@@ -273,7 +273,6 @@
 	VV_DROPDOWN_OPTION(VV_HK_GIB, "Gib")
 	VV_DROPDOWN_OPTION(VV_HK_DROP_ALL, "Drop All")
 	VV_DROPDOWN_OPTION(VV_HK_DIRECT_CONTROL, "Assume Direct Control")
-	VV_DROPDOWN_OPTION(VV_HK_PLAYER_PANEL, "Open Player Panel")
 	VV_DROPDOWN_OPTION(VV_HK_ADD_VERB, "Add Verb")
 	VV_DROPDOWN_OPTION(VV_HK_REMOVE_VERB, "Remove Verb")
 	VV_DROPDOWN_OPTION(VV_HK_SELECT_EQUIPMENT, "Select Equipment")
@@ -281,10 +280,6 @@
 	VV_DROPDOWN_OPTION(VV_HK_ADD_LANGUAGE, "Add Language")
 	VV_DROPDOWN_OPTION(VV_HK_REMOVE_LANGUAGE, "Remove Language")
 	VV_DROPDOWN_OPTION(VV_HK_REGEN_ICONS, "Regenerate Icons")
-	VV_DROPDOWN_OPTION(VV_HK_ADD_ORGAN, "Add Organ")
-	VV_DROPDOWN_OPTION(VV_HK_REMOVE_ORGAN, "Remove Organ")
-	VV_DROPDOWN_OPTION(VV_HK_ADD_LIMB, "Add Limb")
-	VV_DROPDOWN_OPTION(VV_HK_REMOVE_LIMB, "Remove Limb")
 
 /mob/vv_do_topic(list/href_list)
 	. = ..()
@@ -292,8 +287,6 @@
 	if(href_list[VV_HK_SETMATRIX])
 		if(!check_rights(R_DEBUG|R_ADMIN|R_VAREDIT))
 			return
-
-		var/atom/A = locate(href_list[VV_HK_SETMATRIX])
 
 		if(!LAZYLEN(usr.client.stored_matrices))
 			to_chat(usr, "You don't have any matrices stored!")
@@ -303,143 +296,91 @@
 		if(!matrix_name || matrix_name == "Cancel")
 			return
 		else if (matrix_name == "Revert to Default")
-			A.base_transform = null
-			A.transform = matrix()
-			A.disable_pixel_scaling()
+			base_transform = null
+			transform = matrix()
+			disable_pixel_scaling()
 			return
 
 		var/matrix/MX = LAZYACCESS(usr.client.stored_matrices, matrix_name)
 		if(!MX)
 			return
 
-		A.base_transform = MX
-		A.transform = MX
+		base_transform = MX
+		transform = MX
 
 		if (alert(usr, "Would you like to enable pixel scaling?", "Confirm", "Yes", "No") == "Yes")
-			A.enable_pixel_scaling()
+			enable_pixel_scaling()
 
 	if(href_list[VV_HK_GIVE_DISEASE])
 		if(!check_rights(R_ADMIN))
 			return
 
-		var/mob/M = locate(href_list[VV_HK_GIVE_DISEASE])
-		if(!istype(M))
-			to_chat(usr, "This can only be used on instances of type /mob")
-			return
-
-		usr.client.give_disease(M)
+		usr.client.give_disease(src)
 
 	if(href_list[VV_HK_BUILDMODE])
 		if(!check_rights(R_ADMIN))
 			return
 
-		var/mob/M = locate(href_list[VV_HK_BUILDMODE])
-		if(!istype(M))
-			to_chat(usr, "This can only be used on instances of type /mob")
-			return
-
-		if(!M.client || !M.client.admin_holder || !(M.client.admin_holder.rights & R_MOD))
+		if(!client || !client.admin_holder || !(client.admin_holder.rights & R_MOD))
 			to_chat(usr, "This can only be used on people with +MOD permissions")
 			return
 
-		log_admin("[key_name(usr)] has toggled buildmode on [key_name(M)]")
-		message_staff("[key_name_admin(usr)] has toggled buildmode on [key_name_admin(M)]")
+		log_admin("[key_name(usr)] has toggled buildmode on [key_name(src)]")
+		message_staff("[key_name_admin(usr)] has toggled buildmode on [key_name_admin(src)]")
 
-		togglebuildmode(M)
+		togglebuildmode(src)
 
 	if(href_list[VV_HK_GIB])
-		if(!check_rights(0))
+		if(!check_rights(R_MOD))
 			return
 
-		var/mob/M = locate(href_list[VV_HK_GIB])
-		if(!istype(M))
-			to_chat(usr, "This can only be used on instances of type /mob")
-			return
-
-		usr.client.cmd_admin_gib(M)
+		usr.client.cmd_admin_gib(src)
 
 	if(href_list[VV_HK_DROP_ALL])
 		if(!check_rights(R_DEBUG|R_ADMIN))
 			return
 
-		var/mob/M = locate(href_list[VV_HK_DROP_ALL])
-		if(!istype(M))
-			to_chat(usr, "This can only be used on instances of type /mob")
-			return
-
 		if(usr.client)
-			usr.client.cmd_admin_drop_everything(M)
+			usr.client.cmd_admin_drop_everything(src)
 
 	if(href_list[VV_HK_DIRECT_CONTROL])
-		if(!check_rights(0))
-			return
-
-		var/mob/M = locate(href_list[VV_HK_DIRECT_CONTROL])
-		if(!istype(M))
-			to_chat(usr, "This can only be used on instances of type /mob")
+		if(!check_rights(R_ADMIN))
 			return
 
 		if(usr.client)
-			usr.client.cmd_assume_direct_control(M)
-
-	if(href_list[VV_HK_PLAYER_PANEL])
-		if(!check_rights(0))
-			return
-
-		var/mob/M = locate(href_list[VV_HK_PLAYER_PANEL])
-		if(!istype(M))
-			to_chat(usr, "This can only be used on instances of type /mob")
-			return
+			usr.client.cmd_assume_direct_control(src)
 
 	if(href_list[VV_HK_ADD_VERB])
 		if(!check_rights(R_DEBUG))
 			return
 
-		var/mob/living/H = locate(href_list[VV_HK_ADD_VERB])
-
-		if(!istype(H))
-			to_chat(usr, "This can only be done to instances of type /mob/living")
-			return
 		var/list/possibleverbs = list()
 		possibleverbs += "Cancel" // One for the top...
 		possibleverbs += typesof(/mob/proc,/mob/verb,/mob/living/proc,/mob/living/verb)
-		switch(H.type)
+		switch(type)
 			if(/mob/living/carbon/human)
 				possibleverbs += typesof(/mob/living/carbon/proc,/mob/living/carbon/verb,/mob/living/carbon/human/verb,/mob/living/carbon/human/proc)
 			if(/mob/living/silicon/robot)
 				possibleverbs += typesof(/mob/living/silicon/proc,/mob/living/silicon/robot/proc,/mob/living/silicon/robot/verb)
 			if(/mob/living/silicon/ai)
 				possibleverbs += typesof(/mob/living/silicon/proc,/mob/living/silicon/ai/proc)
-		possibleverbs -= H.verbs
+		possibleverbs -= verbs
 		possibleverbs += "Cancel" // ...And one for the bottom
 
 		var/verb = tgui_input_list(usr, "Select a verb!", "Verbs", possibleverbs)
-		if(!H)
-			to_chat(usr, "Mob doesn't exist anymore")
-			return
 		if(!verb || verb == "Cancel")
 			return
 		else
-			add_verb(H, verb)
+			add_verb(src, verb)
 
 	if(href_list[VV_HK_SELECT_EQUIPMENT])
 		if(!check_rights(R_SPAWN))
 			return
 
-		var/mob/living/carbon/human/H = locate(href_list[VV_HK_SELECT_EQUIPMENT])
-		if(!istype(H))
-			to_chat(usr, "This can only be done to instances of type /mob/living/carbon/human")
-			return
-
-		usr.client.cmd_admin_dress(H)
+		usr.client.cmd_admin_dress(src)
 
 	if(href_list[VV_HK_ADD_LANGUAGE])
 		if(!check_rights(R_SPAWN))
-			return
-
-		var/mob/H = locate(href_list[VV_HK_ADD_LANGUAGE])
-		if(!istype(H))
-			to_chat(usr, "This can only be done to instances of type /mob")
 			return
 
 		var/new_language = tgui_input_list(usr, "Please choose a language to add.","Language", GLOB.all_languages)
@@ -447,12 +388,8 @@
 		if(!new_language)
 			return
 
-		if(!H)
-			to_chat(usr, "Mob doesn't exist anymore")
-			return
-
-		if(H.add_language(new_language))
-			to_chat(usr, "Added [new_language] to [H].")
+		if(add_language(new_language))
+			to_chat(usr, "Added [new_language] to [src].")
 		else
 			to_chat(usr, "Mob already knows that language.")
 
@@ -460,26 +397,17 @@
 		if(!check_rights(R_SPAWN))
 			return
 
-		var/mob/H = locate(href_list[VV_HK_REMOVE_LANGUAGE])
-		if(!istype(H))
-			to_chat(usr, "This can only be done to instances of type /mob")
-			return
-
-		if(!H.languages.len)
+		if(!languages.len)
 			to_chat(usr, "This mob knows no languages.")
 			return
 
-		var/datum/language/rem_language = tgui_input_list(usr, "Please choose a language to remove.","Language", H.languages)
+		var/datum/language/rem_language = tgui_input_list(usr, "Please choose a language to remove.","Language", languages)
 
 		if(!rem_language)
 			return
 
-		if(!H)
-			to_chat(usr, "Mob doesn't exist anymore")
-			return
-
-		if(H.remove_language(rem_language.name))
-			to_chat(usr, "Removed [rem_language] from [H].")
+		if(remove_language(rem_language.name))
+			to_chat(usr, "Removed [rem_language] from [src].")
 		else
 			to_chat(usr, "Mob doesn't know that language.")
 
@@ -487,152 +415,16 @@
 		if(!check_rights(R_DEBUG))
 			return
 
-		var/mob/H = locate(href_list[VV_HK_REMOVE_VERB])
+		var/verb = tgui_input_list(usr, "Please choose a verb to remove.","Verbs", verbs)
 
-		if(!istype(H))
-			to_chat(usr, "This can only be done to instances of type /mob")
-			return
-		var/verb = tgui_input_list(usr, "Please choose a verb to remove.","Verbs", H.verbs)
-		if(!H)
-			to_chat(usr, "Mob doesn't exist anymore")
-			return
 		if(!verb)
 			return
 		else
-			remove_verb(H, verb)
+			remove_verb(src, verb)
 
 	if(href_list[VV_HK_REGEN_ICONS])
-		if(!check_rights(0))
+		if(!check_rights(R_MOD))
 			return
 
-		var/mob/M = locate(href_list[VV_HK_REGEN_ICONS])
-		if(!ismob(M))
-			to_chat(usr, "This can only be done to instances of type /mob")
-			return
-		M.regenerate_icons()
+		src.regenerate_icons()
 
-	if(href_list[VV_HK_ADD_ORGAN])
-		if(!check_rights(R_SPAWN))
-			return
-
-		var/mob/living/carbon/M = locate(href_list[VV_HK_ADD_ORGAN])
-		if(!istype(M))
-			to_chat(usr, "This can only be done to instances of type /mob/living/carbon")
-			return
-
-		var/new_organ = tgui_input_list(usr, "Please choose an organ to add.","Organ",null, typesof(/datum/internal_organ)-/datum/internal_organ)
-
-		if(!new_organ)
-			return FALSE
-
-		if(!M)
-			to_chat(usr, "Mob doesn't exist anymore")
-			return
-
-		if(locate(new_organ) in M.internal_organs)
-			to_chat(usr, "Mob already has that organ.")
-			return
-
-		if(istype(M,/mob/living/carbon/human))
-			var/mob/living/carbon/human/H = M
-			var/datum/internal_organ/I = new new_organ(H)
-
-			var/organ_slot = input(usr, "Which slot do you want the organ to go in ('default' for default)?")  as text|null
-
-			if(!organ_slot)
-				return
-
-			if(organ_slot != "default")
-				organ_slot = sanitize(copytext(organ_slot,1,MAX_MESSAGE_LEN))
-			else
-				if(I.removed_type)
-					var/obj/item/organ/O = new I.removed_type()
-					organ_slot = O.organ_tag
-					qdel(O)
-				else
-					organ_slot = "unknown organ"
-
-			if(H.internal_organs_by_name[organ_slot])
-				to_chat(usr, "[H] already has an organ in that slot.")
-				qdel(I)
-				return
-
-			H.internal_organs_by_name[organ_slot] = I
-			to_chat(usr, "Added new [new_organ] to [H] as slot [organ_slot].")
-		else
-			new new_organ(M)
-			to_chat(usr, "Added new [new_organ] to [M].")
-
-	if(href_list[VV_HK_REMOVE_ORGAN])
-		if(!check_rights(R_SPAWN))
-			return
-
-		var/mob/living/carbon/M = locate(href_list[VV_HK_REMOVE_ORGAN])
-		if(!istype(M))
-			to_chat(usr, "This can only be done to instances of type /mob/living/carbon")
-			return
-
-		var/rem_organ = tgui_input_list(usr, "Please choose an organ to remove.","Organ",null, M.internal_organs)
-
-		if(!M)
-			to_chat(usr, "Mob doesn't exist anymore")
-			return
-
-		if(!(locate(rem_organ) in M.internal_organs))
-			to_chat(usr, "Mob does not have that organ.")
-			return
-
-		to_chat(usr, "Removed [rem_organ] from [M].")
-		qdel(rem_organ)
-
-	if(href_list[VV_HK_ADD_LIMB])
-		if(!check_rights(R_SPAWN))
-			return
-
-		var/mob/living/carbon/human/M = locate(href_list[VV_HK_ADD_LIMB])
-		if(!istype(M))
-			to_chat(usr, "This can only be done to instances of type /mob/living/carbon/human")
-			return
-
-		var/new_limb = tgui_input_list(usr, "Please choose an organ to add.","Organ", typesof(/obj/limb)-/obj/limb)
-
-		if(!M)
-			to_chat(usr, "Mob doesn't exist anymore")
-			return
-
-		var/obj/limb/EO = locate(new_limb) in M.limbs
-		if(!EO)
-			return
-		if(!(EO.status & LIMB_DESTROYED))
-			to_chat(usr, "Mob already has that organ.")
-			return
-
-		EO.status = NO_FLAGS
-		EO.perma_injury = 0
-		EO.reset_limb_surgeries()
-		M.update_body(0)
-		M.updatehealth()
-		M.UpdateDamageIcon()
-
-	if(href_list[VV_HK_REMOVE_LIMB])
-		if(!check_rights(R_SPAWN))
-			return
-
-		var/mob/living/carbon/human/M = locate(href_list[VV_HK_REMOVE_LIMB])
-		if(!istype(M))
-			to_chat(usr, "This can only be done to instances of type /mob/living/carbon/human")
-			return
-
-		var/rem_limb = tgui_input_list(usr, "Please choose a limb to remove.","Organ", M.limbs)
-
-		if(!M)
-			to_chat(usr, "Mob doesn't exist anymore")
-			return
-
-		var/obj/limb/EO = locate(rem_limb) in M.limbs
-		if(!EO)
-			return
-		if(EO.status & LIMB_DESTROYED)
-			to_chat(usr, "Mob doesn't have that limb.")
-			return
-		EO.droplimb()

@@ -671,11 +671,7 @@ Parameters are passed from New.
 		if(!check_rights(R_DEBUG|R_VAREDIT))
 			return
 
-		var/atom/A = locate(href_list[VV_HK_ENABLEPIXELSCALING])
-		if(!istype(A, /atom))
-			return
-
-		A.enable_pixel_scaling()
+		enable_pixel_scaling()
 
 /atom/vv_get_header()
 	. = ..()

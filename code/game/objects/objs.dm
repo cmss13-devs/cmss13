@@ -60,8 +60,6 @@
 		if(!check_rights(R_DEBUG|R_ADMIN|R_VAREDIT))
 			return
 
-		var/atom/A = locate(href_list[VV_HK_SETMATRIX])
-
 		if(!LAZYLEN(usr.client.stored_matrices))
 			to_chat(usr, "You don't have any matrices stored!")
 			return
@@ -70,20 +68,20 @@
 		if(!matrix_name || matrix_name == "Cancel")
 			return
 		else if (matrix_name == "Revert to Default")
-			A.base_transform = null
-			A.transform = matrix()
-			A.disable_pixel_scaling()
+			base_transform = null
+			transform = matrix()
+			disable_pixel_scaling()
 			return
 
 		var/matrix/MX = LAZYACCESS(usr.client.stored_matrices, matrix_name)
 		if(!MX)
 			return
 
-		A.base_transform = MX
-		A.transform = MX
+		base_transform = MX
+		transform = MX
 
 		if (alert(usr, "Would you like to enable pixel scaling?", "Confirm", "Yes", "No") == "Yes")
-			A.enable_pixel_scaling()
+			enable_pixel_scaling()
 
 
 // object is being physically reduced into parts

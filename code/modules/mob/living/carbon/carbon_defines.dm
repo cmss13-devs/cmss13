@@ -35,9 +35,4 @@
 		if(!check_rights(R_DEBUG|R_ADMIN))
 			return
 
-		var/mob/living/carbon/X = locate(href_list[VV_HK_CHANGEHIVENUMBER])
-		if(!istype(X))
-			to_chat(usr, "This can only be done to instances of type /mob/living/carbon")
-			return
-
-		usr.client.cmd_admin_change_their_hivenumber(X)
+		usr.client.cmd_admin_change_their_hivenumber(src)

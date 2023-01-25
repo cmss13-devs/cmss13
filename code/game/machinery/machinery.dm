@@ -121,14 +121,9 @@ Class Procs:
 		if(!check_rights(R_VAREDIT))
 			return
 
-		var/obj/structure/machinery/O = locate(href_list[VV_HK_TOGGLEPOWER])
-		if(!istype(O))
-			to_chat(usr, "This can only be used on instances of type /obj/structure/machinery")
-			return
-
-		O.needs_power = !O.needs_power
-		O.power_change()
-		message_staff("[key_name(src, TRUE)] has toggled needs_power to [O.needs_power] on [O] in [O.loc.loc] ([O.x],[O.y],[O.z]).", O.x, O.y, O.z)
+		needs_power = !needs_power
+		power_change()
+		message_staff("[key_name(src, TRUE)] has toggled needs_power to [needs_power] on [src] in [get_area(src)] ([x],[y],[z]).", x, y, z)
 
 
 /obj/structure/machinery/Initialize(mapload, ...)

@@ -26,6 +26,7 @@
 #define VV_TEXT_LOCATE "Custom Reference Locate"
 #define VV_PROCCALL_RETVAL "Return Value of Proccall"
 #define VV_WEAKREF "Weak Reference Datum"
+#define VV_MATRIX "Matrix"
 
 #define VV_MSG_MARKED "<br><font size='1' color='red'><b>Marked Object</b></font>"
 #define VV_MSG_TAGGED(num) "<br><font size='1' color='red'><b>Tagged Datum #[num]</b></font>"

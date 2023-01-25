@@ -31,6 +31,9 @@
 	else if(isweakref(var_value))
 		. = VV_WEAKREF
 
+	else if(istype(var_value, /matrix))
+		. = VV_MATRIX
+
 	else if(isdatum(var_value))
 		. = VV_DATUM_REFERENCE
 
@@ -50,6 +53,7 @@
 
 	else if(isfile(var_value))
 		. = VV_FILE
+
 	else
 		. = VV_NULL
 
@@ -82,6 +86,7 @@
 				VV_TEXT_LOCATE,
 				VV_PROCCALL_RETVAL,
 				VV_WEAKREF,
+				VV_MATRIX,
 				)
 
 		var/markstring
@@ -328,6 +333,24 @@
 
 		if(VV_INFINITY)
 			.["value"] = INFINITY
+
+		if(VV_MATRIX)
+			if(!stored_matrices)
+				.["class"] = null
+				to_chat(usr, SPAN_NOTICE("No matrices!"))
+				return
+
+			var/matrix_name = tgui_input_list(usr, "Choose a matrix", "Matrix", (stored_matrices + "Cancel"))
+			if(!matrix_name || matrix_name == "Cancel")
+				.["class"] = null
+				return
+
+			var/matrix/M = LAZYACCESS(stored_matrices, matrix_name)
+			if(!M)
+				.["class"] = null
+				return
+
+			.["value"] = M
 
 /proc/get_fancy_list_of_atom_types()
 	var/static/list/pre_generated_list

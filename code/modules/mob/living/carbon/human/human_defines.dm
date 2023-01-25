@@ -191,6 +191,10 @@
 	VV_DROPDOWN_OPTION(VV_HK_MAKE_MONKEY, "Make Monkey")
 	VV_DROPDOWN_OPTION(VV_HK_MAKE_ALIEN, "Make Alien")
 	VV_DROPDOWN_OPTION(VV_HK_MAKE_ROBOT, "Make Robot")
+	VV_DROPDOWN_OPTION(VV_HK_ADD_ORGAN, "Add Organ")
+	VV_DROPDOWN_OPTION(VV_HK_REMOVE_ORGAN, "Remove Organ")
+	VV_DROPDOWN_OPTION(VV_HK_ADD_LIMB, "Add Limb")
+	VV_DROPDOWN_OPTION(VV_HK_REMOVE_LIMB, "Remove Limb")
 	. += "<option value='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminspawncookie=\ref[src]'>Give Cookie</option>"
 
 /mob/living/carbon/human/vv_do_topic(list/href_list)
@@ -200,69 +204,43 @@
 		if(!check_rights(R_SPAWN))
 			return
 
-		var/mob/living/carbon/human/H = locate(href_list[VV_HK_MAKE_MONKEY])
-		if(!istype(H))
-			to_chat(usr, "This can only be done to instances of type /mob/living/carbon/human")
+		if(alert("Confirm mob type change?",,"Transform","Cancel") != "Transform")
 			return
 
-		if(alert("Confirm mob type change?",,"Transform","Cancel") != "Transform") return
-		if(!H)
-			to_chat(usr, "Mob doesn't exist anymore")
-			return
-		H.monkeyize()
+		monkeyize()
 
 
 	if(href_list[VV_HK_MAKE_ROBOT])
 		if(!check_rights(R_SPAWN))
 			return
 
-		var/mob/living/carbon/human/H = locate(href_list[VV_HK_MAKE_ROBOT])
-		if(!istype(H))
-			to_chat(usr, "This can only be done to instances of type /mob/living/carbon/human")
+		if(alert("Confirm mob type change?",,"Transform","Cancel") != "Transform")
 			return
 
-		if(alert("Confirm mob type change?",,"Transform","Cancel") != "Transform") return
-		if(!H)
-			to_chat(usr, "Mob doesn't exist anymore")
-			return
-		H.Robotize()
+		Robotize()
 
 
 	if(href_list[VV_HK_MAKE_ALIEN])
 		if(!check_rights(R_SPAWN))
 			return
 
-		var/mob/living/carbon/human/H = locate(href_list[VV_HK_MAKE_ALIEN])
-		if(!istype(H))
-			to_chat(usr, "This can only be done to instances of type /mob/living/carbon/human")
+		if(alert("Confirm mob type change?",,"Transform","Cancel") != "Transform")
 			return
 
-		if(alert("Confirm mob type change?",,"Transform","Cancel") != "Transform") return
-		if(!H)
-			to_chat(usr, "Mob doesn't exist anymore")
-			return
-		usr.client.cmd_admin_alienize(H)
+		usr.client.cmd_admin_alienize(src)
 
 
 	if(href_list[VV_HK_SET_SPECIES])
 		if(!check_rights(R_SPAWN))
 			return
 
-		var/mob/living/carbon/human/H = locate(href_list[VV_HK_SET_SPECIES])
-		if(!istype(H))
-			to_chat(usr, "This can only be done to instances of type /mob/living/carbon/human")
-			return
-
 		var/new_species = tgui_input_list(usr, "Please choose a new species.","Species",GLOB.all_species)
 
-		if(!new_species) return
-
-		if(!H)
-			to_chat(usr, "Mob doesn't exist anymore")
+		if(!new_species)
 			return
 
-		if(H.set_species(new_species))
-			to_chat(usr, "Set species of [H] to [H.species].")
+		if(set_species(new_species))
+			to_chat(usr, "Set species of [src] to [src.species].")
 		else
 			to_chat(usr, "Failed! Something went wrong.")
 
@@ -271,13 +249,93 @@
 		if(!check_rights(R_VAREDIT))
 			return
 
-		var/mob/living/carbon/human/H = locate(href_list[VV_HK_EDIT_SKILL])
-		if(!istype(H))
-			to_chat(usr, "This can only be done to instances of type /mob/living/carbon/human")
+		if(!skills)
+			skills = new /datum/skills/pfc(src)
+
+		skills.tgui_interact(usr)
+
+	if(href_list[VV_HK_ADD_ORGAN])
+		if(!check_rights(R_SPAWN))
 			return
 
-		if(!H.skills)
-			H.skills = new /datum/skills/pfc(H)
+		var/new_organ = tgui_input_list(usr, "Please choose an organ to add.","Organ",null, typesof(/datum/internal_organ)-/datum/internal_organ)
 
-		H.skills.tgui_interact(usr)
+		if(!new_organ)
+			return FALSE
+
+		if(locate(new_organ) in internal_organs)
+			to_chat(usr, "Mob already has that organ.")
+			return
+
+		var/datum/internal_organ/I = new new_organ(src)
+
+		var/organ_slot = input(usr, "Which slot do you want the organ to go in ('default' for default)?")  as text|null
+
+		if(!organ_slot)
+			return
+
+		if(organ_slot != "default")
+			organ_slot = sanitize(copytext(organ_slot,1,MAX_MESSAGE_LEN))
+		else
+			if(I.removed_type)
+				var/obj/item/organ/O = new I.removed_type()
+				organ_slot = O.organ_tag
+				qdel(O)
+			else
+				organ_slot = "unknown organ"
+
+		if(internal_organs_by_name[organ_slot])
+			to_chat(usr, "[src] already has an organ in that slot.")
+			qdel(I)
+			return
+
+		internal_organs_by_name[organ_slot] = I
+		to_chat(usr, "Added new [new_organ] to [src] as slot [organ_slot].")
+
+	if(href_list[VV_HK_REMOVE_ORGAN])
+		if(!check_rights(R_SPAWN))
+			return
+
+		var/rem_organ = tgui_input_list(usr, "Please choose an organ to remove.","Organ",null, internal_organs)
+
+		if(!(locate(rem_organ) in internal_organs))
+			to_chat(usr, "Mob does not have that organ.")
+			return
+
+		to_chat(usr, "Removed [rem_organ] from [src].")
+		qdel(rem_organ)
+
+	if(href_list[VV_HK_ADD_LIMB])
+		if(!check_rights(R_SPAWN))
+			return
+
+		var/new_limb = tgui_input_list(usr, "Please choose an organ to add.","Organ", typesof(/obj/limb)-/obj/limb)
+
+		var/obj/limb/EO = locate(new_limb) in limbs
+		if(!EO)
+			return
+		if(!(EO.status & LIMB_DESTROYED))
+			to_chat(usr, "Mob already has that organ.")
+			return
+
+		EO.status = NO_FLAGS
+		EO.perma_injury = 0
+		EO.reset_limb_surgeries()
+		update_body(0)
+		updatehealth()
+		UpdateDamageIcon()
+
+	if(href_list[VV_HK_REMOVE_LIMB])
+		if(!check_rights(R_SPAWN))
+			return
+
+		var/rem_limb = tgui_input_list(usr, "Please choose a limb to remove.","Organ", limbs)
+
+		var/obj/limb/EO = locate(rem_limb) in limbs
+		if(!EO)
+			return
+		if(EO.status & LIMB_DESTROYED)
+			to_chat(usr, "Mob doesn't have that limb.")
+			return
+		EO.droplimb()
 

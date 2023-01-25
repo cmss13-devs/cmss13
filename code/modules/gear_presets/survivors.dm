@@ -934,7 +934,7 @@
 	assignment = "CMB Deputy"
 	skills = /datum/skills/civilian/survivor/marshal
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
-	idtype = /obj/item/card/id/silver/cl
+	idtype = /obj/item/card/id/deputy
 	access = list(
 		ACCESS_CIVILIAN_PUBLIC,
 		ACCESS_CIVILIAN_RESEARCH,
@@ -1035,7 +1035,7 @@
 
 /datum/equipment_preset/survivor/interstellar_commerce_commission_liason
 	name = "Survivor - Interstellar Commerce Commission Liaison"
-	assignment = "Interstellar Commerce Commission Liaison"
+	assignment = "Interstellar Commerce Commission Corporate Liaison"
 	skills = /datum/skills/civilian/survivor
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	access = list(
@@ -1063,10 +1063,11 @@
 
 /datum/equipment_preset/survivor/interstellar_commerce_commission_liason/corsat
 	name = "Survivor - Interstellar Commerce Commission Liaison CORSAT"
-	assignment = "Interstellar Commerce Commission Liaison"
+	assignment = "Interstellar Commerce Commission Corporate Liaison"
 
 /datum/equipment_preset/survivor/interstellar_commerce_commission_liason/corsat/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit/formal(H), WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/hardhat/white(H), WEAR_HEAD)
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/CMB/ICC, WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/vest(H), WEAR_JACKET)
 

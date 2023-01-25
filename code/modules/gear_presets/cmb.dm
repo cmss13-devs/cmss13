@@ -59,7 +59,7 @@
 	access = get_all_accesses() + get_all_centcom_access()
 
 
-/datum/equipment_preset/dust_raider/load_name(mob/living/carbon/human/H)
+/datum/equipment_preset/CMB/load_name(mob/living/carbon/human/H)
 	H.gender = pick(70;MALE,30;FEMALE)
 	var/datum/preferences/A = new()
 	A.randomize_appearance(H)
@@ -258,7 +258,7 @@
 	languages = ALL_SYNTH_LANGUAGES
 
 /datum/equipment_preset/CMB/synth/load_skills(mob/living/carbon/human/H)
-		H.set_skills(/datum/skills/synthetic)
+		H.set_skills(/datum/skills/synthetic/CMB)
 		H.allow_gun_usage = FALSE
 
 /datum/equipment_preset/CMB/synth/load_name(mob/living/carbon/human/H, var/randomise)

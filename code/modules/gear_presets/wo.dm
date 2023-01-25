@@ -317,7 +317,7 @@
 	access = list(ACCESS_MARINE_CARGO, ACCESS_MARINE_RO, ACCESS_MARINE_BRIDGE)
 	assignment = JOB_WO_CHIEF_REQUISITION
 	rank = JOB_WO_CHIEF_REQUISITION
-	paygrade = "ME8"
+	paygrade = "MO1"
 	role_comm_title = "QM"
 	skills = /datum/skills/RO
 	idtype = /obj/item/card/id/silver
@@ -494,7 +494,7 @@
 	access = list(ACCESS_MARINE_CE, ACCESS_MARINE_ENGINEERING, ACCESS_MARINE_BRIDGE, ACCESS_CIVILIAN_ENGINEERING, ACCESS_MARINE_LOGISTICS)
 	assignment = JOB_WO_CHIEF_ENGINEER
 	rank = JOB_WO_CHIEF_ENGINEER
-	paygrade = "ME5"
+	paygrade = "ME6"
 	role_comm_title = "BCM"
 	skills = /datum/skills/CE
 	idtype = /obj/item/card/id/silver

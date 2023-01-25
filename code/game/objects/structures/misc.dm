@@ -4,7 +4,7 @@
 	icon_state = "showcase_1"
 	desc = "A stand with the empty body of a cyborg bolted to it."
 	density = TRUE
-	anchored = 1
+	anchored = TRUE
 	health = 250
 
 /obj/structure/showcase/initialize_pass_flags(var/datum/pass_flags_container/PF)
@@ -48,7 +48,7 @@
 
 /obj/structure/target
 	name = "shooting target"
-	anchored = 0
+	anchored = FALSE
 	desc = "A shooting target."
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "target_a"
@@ -70,7 +70,7 @@
 	icon = 'icons/obj/structures/structures.dmi'
 	icon_state = "monorail"
 	density = FALSE
-	anchored = 1
+	anchored = TRUE
 	layer = ATMOS_PIPE_LAYER + 0.01
 
 
@@ -166,7 +166,7 @@
 	name = "ore box"
 	desc = "A heavy box used for storing ore."
 	density = TRUE
-	anchored = 0
+	anchored = FALSE
 
 /obj/structure/ore_box/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
@@ -175,7 +175,7 @@
 
 /obj/structure/computer3frame
 	density = TRUE
-	anchored = 0
+	anchored = FALSE
 	name = "computer frame"
 	icon = 'icons/obj/structures/machinery/stock_parts.dmi'
 	icon_state = "0"

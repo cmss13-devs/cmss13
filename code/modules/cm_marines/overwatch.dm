@@ -955,7 +955,7 @@
 	name = "Supply Drop Pad"
 	desc = "Place a crate on here to allow bridge Overwatch officers to drop them on people's heads."
 	icon = 'icons/effects/warning_stripes.dmi'
-	anchored = 1
+	anchored = TRUE
 	density = FALSE
 	unslashable = TRUE
 	unacidable = TRUE

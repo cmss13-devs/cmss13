@@ -118,7 +118,7 @@
 /datum/action/xeno_action/verb/verb_egg_sacr_shield()
 	set category = "Alien"
 	set name = "Adrenal Shielding (100)"
-	set hidden = 1
+	set hidden = TRUE
 	var/action_name = "Adrenal Shielding (100)"
 	handle_xeno_macro(src, action_name)
 
@@ -220,7 +220,7 @@
 /datum/action/xeno_action/verb/verb_egg_sacr_scream()
 	set category = "Alien"
 	set name = "Frenzied Scream (300)"
-	set hidden = 1
+	set hidden = TRUE
 	var/action_name = "Frenzied Scream (300)"
 	handle_xeno_macro(src, action_name)
 
@@ -335,7 +335,7 @@
 /datum/action/xeno_action/verb/verb_egg_sacr_pheromones()
 	set category = "Alien"
 	set name = "Adrenal Pheromones (300)"
-	set hidden = 1
+	set hidden = TRUE
 	var/action_name = "Adrenal Pheromones (300)"
 	handle_xeno_macro(src, action_name)
 
@@ -428,7 +428,7 @@
 /datum/action/xeno_action/verb/radius_remember()
 	set category = "Alien"
 	set name = "Remember Pain (300)"
-	set hidden = 1
+	set hidden = TRUE
 	var/action_name = "Remember Pain (300)"
 	handle_xeno_macro(src, action_name)
 
@@ -494,7 +494,7 @@
 /datum/action/xeno_action/verb/use_pain_verb()
 	set category = "Alien"
 	set name = "Use Pain"
-	set hidden = 1
+	set hidden = TRUE
 	var/action_name = "Use Pain"
 	handle_xeno_macro(src, action_name)
 

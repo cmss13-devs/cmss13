@@ -4,7 +4,7 @@
 	icon = 'icons/turf/walls/windows.dmi'
 	icon_state = "window"
 	density = TRUE
-	anchored = 1
+	anchored = TRUE
 	layer = WINDOW_LAYER
 	flags_atom = ON_BORDER|FPRINT
 	health = 15
@@ -51,7 +51,7 @@
 
 /obj/structure/window/proc/set_constructed_window(start_dir)
 	state = 0
-	anchored = 0
+	anchored = FALSE
 
 	if(start_dir)
 		setDir(start_dir)
@@ -174,7 +174,7 @@
 	if(!not_damageable) //Impossible to destroy
 		health = max(0, health - tforce)
 		if(health <= 7 && !reinf && !static_frame)
-			anchored = 0
+			anchored = FALSE
 			update_nearby_icons()
 			step(src, get_dir(AM, src))
 	healthcheck(user = AM.launch_metadata.thrower)
@@ -286,7 +286,7 @@
 		if(!not_damageable) //Impossible to destroy
 			health -= W.force
 			if(health <= 7  && !reinf && !static_frame && !not_deconstructable)
-				anchored = 0
+				anchored = FALSE
 				update_nearby_icons()
 				step(src, get_dir(user, src))
 		healthcheck(1, 1, 1, user, W)

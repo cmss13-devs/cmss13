@@ -906,9 +906,9 @@
 		helmet = null
 	if(tagged)
 		var/obj/item/dogtag/new_info_tag = new(loc)
-		newInfoTag.fallen_names = list(dogtag_name)
-		newInfoTag.fallen_assgns = list(dogtag_assign)
-		newInfoTag.fallen_blood_types = list(dogtag_blood)
+		new_info_tag.fallen_names = list(dogtag_name)
+		new_info_tag.fallen_assgns = list(dogtag_assign)
+		new_info_tag.fallen_blood_types = list(dogtag_blood)
 		fallen_list_cross -= dogtag_name
 	return ..()
 

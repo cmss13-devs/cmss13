@@ -538,3 +538,10 @@
   - code_imp: cleaned up autolathe code, made stuff use defines, proc-ified some stuff,
       made bools use TRUEFALSE
   - code_imp: made a few common vars use TRUEFALSE
+2023-01-25:
+  Segrain:
+  - refactor: Drinks are brought to be more in line with reagent system overall. Let
+      me know if something breaks.
+  - bugfix: Exploit involving legacy healing drink going infinite is put to an end.
+  stanalbatross:
+  - ui: converted the kill panel to tgui

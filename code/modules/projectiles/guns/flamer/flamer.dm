@@ -566,7 +566,7 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 /obj/flamer_fire/Crossed(atom/movable/atom_movable)
 	atom_movable.handle_flamer_fire_crossed(src)
 
-/obj/flamer_fire/proc/type_b_debuff_xeno_armor(var/mob/living/carbon/Xenomorph/X)
+/obj/flamer_fire/proc/type_b_debuff_xeno_armor(var/mob/living/carbon/xenomorph/X)
 	var/sig_result = SEND_SIGNAL(X, COMSIG_LIVING_FLAMER_CROSSED, tied_reagent)
 	. = 1
 	if(sig_result & COMPONENT_XENO_FRENZY)
@@ -575,7 +575,7 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 		. = 0.6
 	X.armor_deflection_debuff = (X.armor_deflection + X.armor_deflection_buff) * 0.5 * . //At the moment this just directly sets the debuff var since it's the only interaction with it. In the future if the var is used more, usages of type_b_debuff_armor may need to be refactored (or just make them mutually exclusive and have the highest overwrite).
 
-/mob/living/carbon/Xenomorph/proc/reset_xeno_armor_debuff_after_time(var/mob/living/carbon/Xenomorph/X, var/wait_ticks) //Linked onto Xenos instead of the fire so it doesn't cancel on fire deletion.
+/mob/living/carbon/xenomorph/proc/reset_xeno_armor_debuff_after_time(var/mob/living/carbon/xenomorph/X, var/wait_ticks) //Linked onto Xenos instead of the fire so it doesn't cancel on fire deletion.
 	spawn(wait_ticks)
 	if(X.armor_deflection_debuff)
 		X.armor_deflection_debuff = 0
@@ -595,7 +595,7 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 		burn_damage = max(burn_damage - fire_intensity_resistance * 0.5, 0)
 
 	if(sig_result & COMPONENT_XENO_FRENZY)
-		var/mob/living/carbon/Xenomorph/X = M
+		var/mob/living/carbon/xenomorph/X = M
 		if(X.plasma_stored != X.plasma_max) //limit num of noise
 			to_chat(X, SPAN_DANGER("The heat of the fire roars in your veins! KILL! CHARGE! DESTROY!"))
 			X.emote("roar")
@@ -622,7 +622,7 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 	switch(fire_variant) //Fire variant special message appends.
 		if(FIRE_VARIANT_TYPE_B)
 			if(isXeno(M))
-				var/mob/living/carbon/Xenomorph/X = M
+				var/mob/living/carbon/xenomorph/X = M
 				X.armor_deflection?(variant_burn_msg=" You feel the flames weakening your exoskeleton!"):(variant_burn_msg=" You feel the flaming chemicals eating into your body!")
 	to_chat(M, SPAN_DANGER("You are burned![variant_burn_msg?"[variant_burn_msg]":""]"))
 	M.updatehealth()

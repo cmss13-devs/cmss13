@@ -104,7 +104,7 @@
 	unacidable = TRUE
 	network = list(CAMERA_NET_RESEARCH, CAMERA_NET_CONTAINMENT)
 
-/obj/structure/machinery/camera/autoname/almayer/containment/attack_alien(mob/living/carbon/Xenomorph/M)
+/obj/structure/machinery/camera/autoname/almayer/containment/attack_alien(mob/living/carbon/xenomorph/M)
 	return
 
 /obj/structure/machinery/camera/autoname/almayer/containment/hidden

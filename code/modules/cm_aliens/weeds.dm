@@ -114,7 +114,7 @@
 	health = WEED_HEALTH_STANDARD
 	alpha = 127
 
-/obj/effect/alien/weeds/node/weak/Initialize(mapload, obj/effect/alien/weeds/node/node, var/mob/living/carbon/Xenomorph/X, var/datum/hive_status/hive)
+/obj/effect/alien/weeds/node/weak/Initialize(mapload, obj/effect/alien/weeds/node/node, var/mob/living/carbon/xenomorph/X, var/datum/hive_status/hive)
 	. = ..()
 	name = initial(name)
 	weed_strength = WEED_LEVEL_WEAK
@@ -327,7 +327,7 @@
 		return
 	take_damage(severity * WEED_EXPLOSION_DAMAGEMULT)
 
-/obj/effect/alien/weeds/attack_alien(mob/living/carbon/Xenomorph/X)
+/obj/effect/alien/weeds/attack_alien(mob/living/carbon/xenomorph/X)
 	if(!indestructible && !HIVE_ALLIED_TO_HIVE(X.hivenumber, hivenumber))
 		X.animation_attack_on(src)
 		X.visible_message(SPAN_DANGER("\The [X] slashes [src]!"), \
@@ -466,7 +466,7 @@
 	overlay_node = TRUE
 	overlays += staticnode
 
-/obj/effect/alien/weeds/node/Initialize(mapload, obj/effect/alien/weeds/node/node, mob/living/carbon/Xenomorph/X, datum/hive_status/hive)
+/obj/effect/alien/weeds/node/Initialize(mapload, obj/effect/alien/weeds/node/node, mob/living/carbon/xenomorph/X, datum/hive_status/hive)
 	if (istype(hive))
 		linked_hive = hive
 	else if (istype(X) && X.hive)
@@ -565,7 +565,7 @@
 /obj/effect/alien/weeds/node/pylon/attackby(obj/item/W, mob/living/user)
 	return
 
-/obj/effect/alien/weeds/node/pylon/attack_alien(mob/living/carbon/Xenomorph/X)
+/obj/effect/alien/weeds/node/pylon/attack_alien(mob/living/carbon/xenomorph/X)
 	return
 
 /obj/effect/alien/weeds/node/pylon/flamer_fire_act(dam)

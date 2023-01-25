@@ -93,7 +93,7 @@
 		return . = ..()
 
 	if(isXeno(dropping))
-		var/mob/living/carbon/Xenomorph/xeno = dropping
+		var/mob/living/carbon/xenomorph/xeno = dropping
 		if(xeno.back)
 			var/obj/item/back_item = xeno.back
 			if(xeno.stat != DEAD) // If the Xeno is alive, fight back

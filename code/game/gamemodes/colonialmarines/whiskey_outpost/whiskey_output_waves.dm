@@ -30,7 +30,7 @@
 	var/list/available_xenos = list()
 	var/list/unique_xenos = list()
 
-	for(var/mob/living/carbon/Xenomorph/X as anything in GLOB.living_xeno_list)
+	for(var/mob/living/carbon/xenomorph/X as anything in GLOB.living_xeno_list)
 		var/area/A = get_area(X)
 		if(is_admin_level(X.z) && (!A || !(A.flags_area & AREA_ALLOW_XENO_JOIN)) || X.aghosted) continue //xenos on admin z level and aghosted ones don't count
 		if(istype(X) && !X.client)
@@ -58,7 +58,7 @@
 			return FALSE
 		var/spawn_loc = pick(xeno_spawns)
 		var/xeno_type = RoleAuthority.get_caste_by_text(userInput)
-		var/mob/living/carbon/Xenomorph/new_xeno = new xeno_type(spawn_loc)
+		var/mob/living/carbon/xenomorph/new_xeno = new xeno_type(spawn_loc)
 		if(new_xeno.hive.construction_allowed == NORMAL_XENO)
 			new_xeno.hive.construction_allowed = XENO_QUEEN
 		new_xeno.nocrit(xeno_wave)
@@ -72,7 +72,7 @@
 		if(!isXeno(userInput))
 			return FALSE
 
-		var/mob/living/carbon/Xenomorph/new_xeno = userInput
+		var/mob/living/carbon/xenomorph/new_xeno = userInput
 		if(!(new_xeno in GLOB.living_xeno_list) || new_xeno.stat == DEAD)
 			to_chat(xeno_candidate, SPAN_WARNING("You cannot join if the xenomorph is dead."))
 			return FALSE

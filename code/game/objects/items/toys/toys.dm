@@ -535,7 +535,7 @@
 		playsound(target, pick('sound/voice/alien_queen_xmas.ogg', 'sound/voice/alien_queen_xmas_2.ogg'), 25, TRUE)
 	user.festivizer_hits_total++
 
-/obj/item/toy/festivizer/attack_alien(mob/living/carbon/Xenomorph/M)
+/obj/item/toy/festivizer/attack_alien(mob/living/carbon/xenomorph/M)
 	attack_hand(M) //xenos can use them too.
 	return XENO_NONCOMBAT_ACTION
 

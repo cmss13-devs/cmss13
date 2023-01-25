@@ -134,7 +134,7 @@
 	if(human_stats && human_stats.death_list)
 		human_stats.death_list.Insert(1, .)
 
-/mob/living/carbon/Xenomorph/track_mob_death(var/cause, var/cause_mob)
+/mob/living/carbon/xenomorph/track_mob_death(var/cause, var/cause_mob)
 	var/datum/entity/statistic/death/new_death = ..(cause, cause_mob, caste_type)
 	if(!new_death)
 		return
@@ -161,7 +161,7 @@
 	for(var/mob/dead/observer/g in GLOB.observer_list)
 		to_chat(g, SPAN_DEADSAY(observer_message + " (<a href='?src=\ref[g];jumptocoord=1;X=[death_loc.x];Y=[death_loc.y];Z=[death_loc.z]'>JMP</a>)"))
 
-/mob/living/carbon/Xenomorph/handle_observer_message(var/datum/cause_data/cause_data, var/mob/cause_mob, var/turf/death_loc, var/area/death_area)
+/mob/living/carbon/xenomorph/handle_observer_message(var/datum/cause_data/cause_data, var/mob/cause_mob, var/turf/death_loc, var/area/death_area)
 	if(hardcore)
 		return
 	return ..()

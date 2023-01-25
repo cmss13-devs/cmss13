@@ -21,8 +21,8 @@
 	// If the computer is on the dropship or remotely accessing it
 	var/is_remote = FALSE
 
-	var/is_ground_terminal = FALSE
-	var/obj/docking_port/stationary/marine_dropship/linked_lz
+	// linked lz id (lz1, lz2 or null)
+	var/linked_lz
 
 /obj/structure/machinery/computer/shuttle/dropship/flight/remote_control
 	icon = 'icons/obj/structures/machinery/computer.dmi'
@@ -130,14 +130,14 @@
 
 /obj/structure/machinery/computer/shuttle/dropship/flight/attack_alien(mob/living/carbon/Xenomorph/xeno)
 	var/obj/docking_port/mobile/shuttle = SSshuttle.getShuttle(shuttleId)
-	if(shuttle.mode != SHUTTLE_IDLE || !xeno.caste || !xeno.caste.is_intelligent || is_remote)
-		to_chat(xeno, SPAN_NOTICE("Lights flash from the terminal but you can't comprehend their meaning."))
+	if(is_remote && linked_lz && isXenoQueen(xeno))
+		if(shuttle.mode == SHUTTLE_IDLE)
+			SSshuttle.moveShuttle(shuttleId, linked_lz, TRUE)
 		return
 
-	if(is_remote && is_ground_terminal && isXenoQueen(xeno))
-		if(linked_lz)
-			SSshuttle.moveShuttle(shuttleId, linked_lz.id, TRUE)
-			return
+	if(!xeno.caste || !xeno.caste.is_intelligent || is_remote)
+		to_chat(xeno, SPAN_NOTICE("Lights flash from the terminal but you can't comprehend their meaning."))
+		return
 
 	// door controls being overriden
 	if(!dropship_control_lost && !is_remote)
@@ -306,3 +306,16 @@
 			if(shuttle.in_flyby && shuttle.timer && shuttle.timeLeft(1) >= DROPSHIP_WARMUP_TIME)
 				shuttle.setTimer(DROPSHIP_WARMUP_TIME)
 
+/obj/structure/machinery/computer/shuttle/dropship/flight/lz1
+	icon = 'icons/obj/structures/machinery/computer.dmi'
+	icon_state = "shuttle"
+	linked_lz = DROPSHIP_LZ1
+	shuttleId = DROPSHIP_ALAMO
+	is_remote = TRUE
+
+/obj/structure/machinery/computer/shuttle/dropship/flight/lz2
+	icon = 'icons/obj/structures/machinery/computer.dmi'
+	icon_state = "shuttle"
+	linked_lz = DROPSHIP_LZ2
+	shuttleId = DROPSHIP_NORMANDY
+	is_remote = TRUE

@@ -158,10 +158,13 @@
 /obj/docking_port/stationary/marine_dropship/lz1
 	name = "LZ1 Landing Zone"
 	id = DROPSHIP_LZ1
+	auto_open = TRUE
 
 /obj/docking_port/stationary/marine_dropship/lz2
 	name = "LZ2 Landing Zone"
 	id = DROPSHIP_LZ2
+	auto_open = TRUE
+
 /obj/docking_port/stationary/marine_dropship/almayer_hangar_1
 	name = "Almayer Hangar bay 1"
 	id = ALMAYER_DROPSHIP_LZ1

@@ -114,7 +114,7 @@ SUBSYSTEM_DEF(events)
 
 	dat = normal
 
-	var/datum/browser/popup = new(usr, "force_event", "Force Random Event", 300, 750)
+	var/datum/browser/popup = new(usr, "force_event", "Force Random Event", nwidth = 300, nheight = 750)
 	popup.set_content(dat)
 	popup.open()
 

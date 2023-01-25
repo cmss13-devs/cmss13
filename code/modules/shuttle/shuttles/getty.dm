@@ -63,17 +63,35 @@
 	var/transit_to
 	var/damaged = FALSE
 
+/obj/structure/machinery/computer/camera_advanced/shuttle_docker/getty/attack_hand(mob/user)
+	. = ..()
+	if(.)
+		return
+
+	tgui_interact(user)
+
+/obj/structure/machinery/computer/camera_advanced/shuttle_docker/getty/tgui_interact(mob/user, datum/tgui/ui)
+	. = ..()
+
+	ui = SStgui.try_update_ui(user, src, ui)
+	if (!ui)
+		ui = new(user, src, "MidwayConsole", name)
+		ui.open()
+
 /obj/structure/machinery/computer/camera_advanced/shuttle_docker/getty/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 
+	var/mob/user = usr
+
 	switch(action)
 		if("from_ship")
-			from_ship(usr)
+			from_ship(user)
 
 /obj/structure/machinery/computer/camera_advanced/shuttle_docker/getty/shuttle_arrived()
 	if(current_state == STATE_IN_TRANSIT && transit_to == STATE_IN_ATMOSPHERE)
 		addtimer(CALLBACK(src, PROC_REF(move_to_atmosphere)), 1 SECONDS)
 		return
+
 
 /obj/structure/machinery/computer/camera_advanced/shuttle_docker/getty/proc/from_ship(mob/user)
 	shuttle_port = SSshuttle.getShuttle(shuttleId)
@@ -88,14 +106,21 @@
 
 	current_state = STATE_IN_TRANSIT
 	transit_to = STATE_IN_ATMOSPHERE
-	shuttle_port.assigned_transit.reserved_area.set_turf(/turf/open/space/transit)
 	SSshuttle.move_shuttle_to_transit(shuttleId, TRUE)
+	shuttle_port.assigned_transit.reserved_area.set_turf(/turf/open/space/transit)
 
 /obj/structure/machinery/computer/camera_advanced/shuttle_docker/getty/proc/move_to_atmosphere()
-	shuttle_port.assigned_transit.reserved_area.set_turf(/turf/open/space/transit/atmosphere)
+	current_state = STATE_IN_ATMOSPHERE
+	transit_to = null
+	SSshuttle.move_shuttle_to_transit(shuttleId, TRUE, /turf/open/space/transit/atmosphere)
 
 /obj/structure/machinery/computer/camera_advanced/shuttle_docker/getty/proc/to_ship()
+	shuttle_port.assigned_transit.reserved_area.set_turf(/turf/open/space/transit)
 	SSshuttle.moveShuttle(shuttleId, shuttleId, TRUE)
 
+/obj/structure/machinery/computer/camera_advanced/shuttle_docker/getty/proc/from_ground()
+	current_state = STATE_IN_ATMOSPHERE
+	SSshuttle.move_shuttle_to_transit(shuttleId, TRUE)
+	shuttle_port.assigned_transit.reserved_area.set_turf(/turf/open/space/transit/atmosphere)
 
 

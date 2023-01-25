@@ -4,6 +4,14 @@
 	dir = SOUTH
 	baseturfs = /turf/open/space/transit
 	var/auto_space_icon = TRUE
+	var/available_icons = 15
+	icon_state = "speedspace_ns"
+
+/turf/open/space/transit/atmosphere
+	name = "\proper cloud cover"
+	baseturfs = /turf/open/space/transit/atmosphere
+	available_icons = 8
+	icon_state = "cloudcover"
 
 /turf/open/space/transit/south
 	dir = SOUTH
@@ -28,29 +36,29 @@
 /turf/open/space/transit/update_icon()
 	. = ..()
 	if(auto_space_icon)
-		icon_state = "speedspace_ns_[get_transit_state(src)]"
+		icon_state = "[initial(icon_state)]_[get_transit_state()]"
 		transform = turn(matrix(), get_transit_angle(src))
 
-/proc/get_transit_state(turf/T)
-	var/p = 9
+/turf/open/space/transit/proc/get_transit_state()
+	var/p = round(available_icons / 2)
 	. = 1
-	switch(T.dir)
+	switch(dir)
 		if(NORTH)
-			. = ((-p*T.x+T.y) % 15) + 1
+			. = ((-p*x+y) % available_icons) + 1
 			if(. < 1)
 				. += 15
 		if(EAST)
-			. = ((T.x+p*T.y) % 15) + 1
+			. = ((x+p*y) % available_icons) + 1
 		if(WEST)
-			. = ((T.x-p*T.y) % 15) + 1
+			. = ((x-p*y) % available_icons) + 1
 			if(. < 1)
-				. += 15
+				. += available_icons
 		else
-			. = ((p*T.x+T.y) % 15) + 1
+			. = ((p*x+y) % available_icons) + 1
 
-/proc/get_transit_angle(turf/T)
+/turf/open/space/transit/proc/get_transit_angle()
 	. = 0
-	switch(T.dir)
+	switch(dir)
 		if(NORTH)
 			. = 180
 		if(EAST)

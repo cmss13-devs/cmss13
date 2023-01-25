@@ -160,7 +160,7 @@ SUBSYSTEM_DEF(shuttle)
 		if(!(M in transit_requesters))
 			transit_requesters += M
 
-/datum/controller/subsystem/shuttle/proc/generate_transit_dock(obj/docking_port/mobile/M)
+/datum/controller/subsystem/shuttle/proc/generate_transit_dock(obj/docking_port/mobile/M, transit_path = /turf/open/space/transit, use_directions = TRUE, travel_dirs = TRANSIT_DIR_DEFAULT_PATHS)
 	// First, determine the size of the needed zone
 	// Because of shuttle rotation, the "width" of the shuttle is not
 	// always x.
@@ -187,17 +187,16 @@ SUBSYSTEM_DEF(shuttle)
 	to_chat(world, "The attempted transit dock will be [transit_width] width, and \)
 		[transit_height] in height. The travel dir is [travel_dir]."
 */
-
-	var/transit_path = /turf/open/space/transit
-	switch(travel_dir)
-		if(NORTH)
-			transit_path = /turf/open/space/transit/north
-		if(SOUTH)
-			transit_path = /turf/open/space/transit/south
-		if(EAST)
-			transit_path = /turf/open/space/transit/east
-		if(WEST)
-			transit_path = /turf/open/space/transit/west
+	if(use_directions)
+		switch(travel_dir)
+			if(NORTH)
+				transit_path = travel_dirs["[NORTH]"]
+			if(SOUTH)
+				transit_path = travel_dirs["[SOUTH]"]
+			if(EAST)
+				transit_path = travel_dirs["[EAST]"]
+			if(WEST)
+				transit_path = travel_dirs["[WEST]"]
 
 	var/datum/turf_reservation/proposal = SSmapping.RequestBlockReservation(transit_width, transit_height, null, /datum/turf_reservation/transit, transit_path)
 
@@ -243,6 +242,8 @@ SUBSYSTEM_DEF(shuttle)
 	// Add 180, because ports point inwards, rather than outwards
 	new_transit_dock.setDir(angle2dir(dock_angle))
 
+	if(M.assigned_transit)
+		clear_when_possible += M.assigned_transit
 	M.assigned_transit = new_transit_dock
 	return new_transit_dock
 
@@ -638,12 +639,24 @@ SUBSYSTEM_DEF(shuttle)
 					message_admins("[key_name_admin(usr)] loaded [mdp] with the shuttle manipulator.")
 					log_admin("[key_name(usr)] loaded [mdp] with the shuttle manipulator.</span>")
 
-/datum/controller/subsystem/shuttle/proc/move_shuttle_to_transit(shuttle_id, timed)
+/**
+ * Generates a transit dock and sets that as the destination, where it will remain indefinitely.
+ *
+ * Arguments:
+ * shuttle_id: ID string of the shuttle that will be moved
+ * timed: Moves instantly to transit if FALSE.
+ * transit_reservation: Optional, if to use an alternate reservation.
+ */
+/datum/controller/subsystem/shuttle/proc/move_shuttle_to_transit(shuttle_id, timed, turf = /turf/open/space/transit)
 	var/obj/docking_port/mobile/shuttle = getShuttle(shuttle_id)
-	var/obj/docking_port/stationary/transit = generate_transit_dock(shuttle)
+	var/obj/docking_port/stationary/transit
+	if(turf)
+		transit = generate_transit_dock(shuttle, turf, FALSE)
+	else
+		transit = generate_transit_dock(shuttle)
 
 	if(!transit)
 		return
-	moveShuttleToDock(shuttle_id, transit, timed)
+	moveShuttleToDock(shuttle, transit, timed)
 
 #undef SHUTTLE_SPAWN_BUFFER

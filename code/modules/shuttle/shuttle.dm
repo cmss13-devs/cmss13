@@ -991,3 +991,12 @@
 		to_chat(user, "<span class='warning'>Shuttle already in transit.</span>")
 		return FALSE
 	return TRUE
+
+/obj/docking_port/mobile/proc/set_turf_background(turf_to_use)
+	for(var/area as anything in shuttle_areas)
+		for(var/turf/closed/shuttle/current_turf in area)
+			var/turf/dummy = new turf_to_use()
+			dummy.update_icon()
+			current_turf.underlays.Cut()
+			current_turf.underlays += dummy.appearance
+			qdel(dummy)

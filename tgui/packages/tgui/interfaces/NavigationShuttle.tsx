@@ -2,14 +2,14 @@ import { useBackend, useSharedState } from '../backend';
 import { Box, Button, Icon, Flex, Section, Stack, ProgressBar } from '../components';
 import { Window } from '../layouts';
 
-interface DockingPort {
+export interface DockingPort {
   id: string;
   name: string;
   available: 0 | 1;
   error: string | null;
 }
 
-interface NavigationProps {
+export interface NavigationProps {
   destinations: DockingPort[];
   doors_locked?: boolean;
   shuttle_mode: string;
@@ -22,7 +22,7 @@ interface NavigationProps {
   locked_down: 0 | 1;
 }
 
-const CancelLaunchButton = (_, context) => {
+export const CancelLaunchButton = (_, context) => {
   const [siteselection, setSiteSelection] = useSharedState<string | undefined>(
     context,
     'target_site',
@@ -38,7 +38,7 @@ const CancelLaunchButton = (_, context) => {
   );
 };
 
-const LaunchButton = (_, context) => {
+export const LaunchButton = (_, context) => {
   const { act } = useBackend<NavigationProps>(context);
   const [siteselection] = useSharedState<string | undefined>(
     context,
@@ -55,7 +55,7 @@ const LaunchButton = (_, context) => {
   );
 };
 
-const DestionationSelection = (_, context) => {
+export const DestionationSelection = (_, context) => {
   const { data, act } = useBackend<NavigationProps>(context);
   const [siteselection, setSiteSelection] = useSharedState<string | undefined>(
     context,
@@ -105,7 +105,7 @@ const DestionationSelection = (_, context) => {
   );
 };
 
-const ShuttleRecharge = (_, context) => {
+export const ShuttleRecharge = (_, context) => {
   const { data } = useBackend<NavigationProps>(context);
   return (
     <Section title="Refueling in progress">
@@ -129,7 +129,7 @@ const ShuttleRecharge = (_, context) => {
   );
 };
 
-const LaunchCountdown = (_, context) => {
+export const LaunchCountdown = (_, context) => {
   const { data } = useBackend<NavigationProps>(context);
   return (
     <Section title="Launch in progress">
@@ -154,7 +154,7 @@ const LaunchCountdown = (_, context) => {
   );
 };
 
-const InFlightCountdown = (_, context) => {
+export const InFlightCountdown = (_, context) => {
   const { data } = useBackend<NavigationProps>(context);
   return (
     <Section title={`In flight: ${data.target_destination}`}>
@@ -178,7 +178,7 @@ const InFlightCountdown = (_, context) => {
   );
 };
 
-const DoorControls = (_, context) => {
+export const DoorControls = (_, context) => {
   const { data, act } = useBackend<NavigationProps>(context);
   const in_flight = data.shuttle_mode === 'called';
   const disable_door_controls = in_flight;
@@ -228,7 +228,7 @@ const DoorControls = (_, context) => {
   );
 };
 
-const DisabledScreen = (props, context) => {
+export const DisabledScreen = (props, context) => {
   return (
     <Box className="DisabledScreen">
       <div>
@@ -241,7 +241,7 @@ const DisabledScreen = (props, context) => {
   );
 };
 
-const RenderScreen = (props, context) => {
+export const RenderScreen = (props, context) => {
   const { data } = useBackend<NavigationProps>(context);
   return (
     <>

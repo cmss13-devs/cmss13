@@ -100,3 +100,5 @@
 #define MOBILE_SHUTTLE_LIFEBOAT_PORT "lifeboat-port"
 #define MOBILE_SHUTTLE_LIFEBOAT_STARBOARD "lifeboat-starboard"
 #define MOBILE_SHUTTLE_VEHICLE_ELEVATOR "vehicle_elevator"
+
+#define TRANSIT_DIR_DEFAULT_PATHS list("[NORTH]" = /turf/open/space/transit/north, "[SOUTH]" = /turf/open/space/transit/south, "[EAST]" = /turf/open/space/transit/east, "[WEST]" = /turf/open/space/transit/west)

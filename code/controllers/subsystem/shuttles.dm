@@ -640,7 +640,7 @@ SUBSYSTEM_DEF(shuttle)
 
 /datum/controller/subsystem/shuttle/proc/move_shuttle_to_transit(shuttle_id, timed)
 	var/obj/docking_port/mobile/shuttle = getShuttle(shuttle_id)
-	var/obj/docking_port/statonary/transit = generate_transit_dock(shuttle)
+	var/obj/docking_port/stationary/transit = generate_transit_dock(shuttle)
 
 	if(!transit)
 		return

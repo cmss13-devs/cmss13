@@ -4,6 +4,7 @@
 #define STATE_ON_SHIP "on_ship"
 #define STATE_ON_GROUND "on_ground"
 #define STATE_IN_ATMOSPHERE "in_atmosphere"
+#define STATE_IN_TRANSIT "in_transit"
 
 /obj/docking_port/stationary/getty
 	name = "Gettysburg Hangar Pad"
@@ -59,9 +60,22 @@
 	COOLDOWN_DECLARE(launch_cooldown)
 
 	var/current_state = STATE_ON_SHIP
+	var/transit_to
 	var/damaged = FALSE
 
-/obj/structure/machinery/computer/camera_advanced/shuttle_docker/getty/proc/to_atmosphere()
+/obj/structure/machinery/computer/camera_advanced/shuttle_docker/getty/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+	. = ..()
+
+	switch(action)
+		if("from_ship")
+			from_ship(usr)
+
+/obj/structure/machinery/computer/camera_advanced/shuttle_docker/getty/shuttle_arrived()
+	if(current_state == STATE_IN_TRANSIT && transit_to == STATE_IN_ATMOSPHERE)
+		addtimer(CALLBACK(src, PROC_REF(move_to_atmosphere)), 1 SECONDS)
+		return
+
+/obj/structure/machinery/computer/camera_advanced/shuttle_docker/getty/proc/from_ship(mob/user)
 	shuttle_port = SSshuttle.getShuttle(shuttleId)
 	shuttle_port.shuttle_computer = src
 
@@ -69,16 +83,19 @@
 		to_chat(user, SPAN_WARNING("The shuttle is still undergoing pre-flight fueling and cannot depart yet. Please wait another [round((SSticker.mode.round_time_lobby + SHUTTLE_TIME_LOCK-world.time)/600)] minutes before trying again."))
 		return
 
-	if(!COOLDOWN_FINISHED)
+	if(!COOLDOWN_FINISHED(src, launch_cooldown))
 		to_chat(user, SPAN_WARNING("Engines are cooling down. Wait a moment."))
 
-	current_state = STATE_IN_ATMOSPHERE
+	current_state = STATE_IN_TRANSIT
+	transit_to = STATE_IN_ATMOSPHERE
+	shuttle_port.assigned_transit.reserved_area.set_turf(/turf/open/space/transit)
 	SSshuttle.move_shuttle_to_transit(shuttleId, TRUE)
 
+/obj/structure/machinery/computer/camera_advanced/shuttle_docker/getty/proc/move_to_atmosphere()
+	shuttle_port.assigned_transit.reserved_area.set_turf(/turf/open/space/transit/atmosphere)
 
 /obj/structure/machinery/computer/camera_advanced/shuttle_docker/getty/proc/to_ship()
 	SSshuttle.moveShuttle(shuttleId, shuttleId, TRUE)
 
-/obj/structure/machinery/computer/camera_advanced/shuttle_docker/getty/ui_state(mob/user)
 
 

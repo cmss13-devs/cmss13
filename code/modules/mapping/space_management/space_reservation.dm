@@ -74,3 +74,10 @@
 	INVOKE_ASYNC(src, PROC_REF(Release))
 	LAZYREMOVE(SSmapping.turf_reservations, src)
 	return ..()
+
+/datum/turf_reservation/proc/set_turf(turf/new_turf)
+	for(var/turf/changing_turf as anything in reserved_turfs)
+		if(istype(changing_turf, turf_type))
+			changing_turf.ChangeTurf(new_turf, new_turf)
+
+	turf_type = new_turf

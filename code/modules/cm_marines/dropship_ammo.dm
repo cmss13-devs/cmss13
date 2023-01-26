@@ -408,10 +408,13 @@
 	point_cost = 800
 	accuracy_range = 0 // pinpoint
 	max_inaccuracy = 0
+	/// Special structures it needs to break with drop pod
+	var/list/breakeable_structures = list(/obj/structure/barricade, /obj/structure/surface/table)
 
 /obj/structure/ship_ammo/sentry/detonate_on(turf/impact)
 	var/obj/structure/droppod/equipment/sentry/droppod = new(impact, /obj/structure/machinery/defenses/sentry/launchable, source_mob)
-	droppod.barricade_damage = 500
+	droppod.special_structures = breakeable_structures
+	droppod.special_structure_damage = 500
 	droppod.drop_time = 5 SECONDS
 	droppod.launch(impact)
 	qdel(src)

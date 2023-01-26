@@ -626,9 +626,12 @@
 	additional_rounds_stored = TRUE
 	immobile = TRUE
 	static = TRUE
+	/// Check if they have been upgraded or not
 	var/upgraded = FALSE
-	var/upgrade_cost = 10 // Cost to give sentry extra health
-	var/health_upgrade = 50 // Amount of bonus health they get
+	/// Cost to give sentry extra health
+	var/upgrade_cost = 10
+	/// Amount of bonus health they get from upgrade
+	var/health_upgrade = 50
 	var/obj/structure/machinery/camera/cas/linked_cam
 	var/static/sentry_count = 1
 	var/sentry_number
@@ -650,7 +653,7 @@
 	. = ..()
 	QDEL_NULL(linked_cam)
 
-/obj/structure/machinery/defenses/sentry/launchable/attackby(var/obj/item/stack/O as obj, mob/user as mob)
+/obj/structure/machinery/defenses/sentry/launchable/attackby(obj/item/stack/O, mob/user)
 	. = ..()
 
 	if(!istype(O, /obj/item/stack/sheet/metal))
@@ -664,6 +667,7 @@
 	if(O.amount >= upgrade_cost)
 		if(!do_after(user, 4 SECONDS * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION) , INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
 			to_chat(user, SPAN_WARNING("You were interrupted! Try to stay still while you reload the sentry..."))
+			return
 
 		src.health_max += health_upgrade
 		src.update_health(-health_upgrade)
@@ -672,16 +676,17 @@
 
 		to_chat(user, SPAN_WARNING("You added some metal plating to the sentry, increasing its durability!"))
 	else
-		to_chat(user, SPAN_WARNING("Need more metal to upgrade"))
+		to_chat(user, SPAN_WARNING("You need at least [upgrade_cost] sheets of metal to upgrade this."))
 
 /obj/structure/machinery/defenses/sentry/launchable/attack_hand_checks(var/mob/user)
 	// Reloads the sentry using inherent rounds
 	if(!turned_on && additional_rounds_stored && (ammo.current_rounds < ammo.max_rounds))
 		if(!do_after(user, 2 SECONDS * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
 			to_chat(user, SPAN_WARNING("You were interrupted! Try to stay still while you reload the sentry..."))
+			return
 
-		var/roundsUsed = ammo.inherent_reload(user)
-		to_chat(user, SPAN_WARNING("[src]'s internal magazine was reloaded with [roundsUsed] rounds, [ammo.max_inherent_rounds] rounds left in storage"))
+		var/rounds_used = ammo.inherent_reload(user)
+		to_chat(user, SPAN_WARNING("[src]'s internal magazine was reloaded with [rounds_used] rounds, [ammo.max_inherent_rounds] rounds left in storage"))
 		playsound(loc, 'sound/weapons/handling/m40sd_reload.ogg', 25, 1)
 		update_icon()
 		return FALSE

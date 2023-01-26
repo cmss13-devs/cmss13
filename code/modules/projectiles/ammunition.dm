@@ -130,14 +130,14 @@ They're all essentially identical when it comes to getting the job done.
 // Proc to reload the current_ammo using the items existing inherent ammo, used for Sentry Post
 /obj/item/ammo_magazine/proc/inherent_reload(mob/user)
 	if(current_rounds == max_rounds) //Does the mag actually need reloading?
-		to_chat(user, "[src] is already full.")
+		to_chat(user, SPAN_WARNING("[src] is already full."))
 		return 0
 
-	var/R = max_rounds - current_rounds
-	current_rounds += R
-	max_inherent_rounds -= R
+	var/rounds_to_reload = max_rounds - current_rounds
+	current_rounds += rounds_to_reload
+	max_inherent_rounds -= rounds_to_reload
 
-	return R // Returns the amount of ammo it reloaded
+	return rounds_to_reload // Returns the amount of ammo it reloaded
 
 //This will attempt to place the ammo in the user's hand if possible.
 /obj/item/ammo_magazine/proc/create_handful(mob/user, transfer_amount, var/obj_name = src)

@@ -653,10 +653,10 @@
 	. = ..()
 	QDEL_NULL(linked_cam)
 
-/obj/structure/machinery/defenses/sentry/launchable/attackby(obj/item/stack/O, mob/user)
+/obj/structure/machinery/defenses/sentry/launchable/attackby(obj/item/stack/sheets, mob/user)
 	. = ..()
 
-	if(!istype(O, /obj/item/stack/sheet/metal))
+	if(!istype(sheets, /obj/item/stack/sheet/metal))
 		to_chat(user, SPAN_WARNING("Use [upgrade_cost] metal sheets to give the sentry some plating."))
 		return
 
@@ -664,14 +664,14 @@
 		to_chat(user, SPAN_WARNING("[src] has already been upgraded."))
 		return
 
-	if(O.amount >= upgrade_cost)
+	if(sheets.amount >= upgrade_cost)
 		if(!do_after(user, 4 SECONDS * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION) , INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
 			to_chat(user, SPAN_WARNING("You were interrupted! Try to stay still while you reload the sentry..."))
 			return
 
 		src.health_max += health_upgrade
 		src.update_health(-health_upgrade)
-		O.use(upgrade_cost)
+		sheets.use(upgrade_cost)
 		upgraded = TRUE
 
 		to_chat(user, SPAN_WARNING("You added some metal plating to the sentry, increasing its durability!"))

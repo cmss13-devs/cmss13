@@ -1,4 +1,0 @@
-author: "realforest2001"
-delete-after: True
-changes:
-  - rscadd: "Local Out of Character will appear above your mob if global OOC is enabled."

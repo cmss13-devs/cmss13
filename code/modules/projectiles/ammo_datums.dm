@@ -102,38 +102,39 @@
 /datum/ammo/proc/on_near_target(turf/T, obj/item/projectile/P) //Special effects when passing near something. Range of things that triggers it is controlled by other ammo flags.
 	return 0 //return 0 means it flies even after being near something. Return 1 means it stops
 
-/datum/ammo/proc/knockback(mob/living/L, obj/item/projectile/P, var/max_range = 2)
-	if(!L || L == P.firer)
+/datum/ammo/proc/knockback(mob/living/living_mob, obj/item/projectile/fired_projectile, var/max_range = 2)
+	if(!living_mob || living_mob == fired_projectile.firer)
 		return
-	if(P.distance_travelled > max_range || L.lying)
+	if(fired_projectile.distance_travelled > max_range || living_mob.lying)
 		return //Two tiles away or more, basically.
 
-	if(L.mob_size >= MOB_SIZE_BIG)
+	if(living_mob.mob_size >= MOB_SIZE_BIG)
 		return //Big xenos are not affected.
 
-	shake_camera(L, 3, 4)
-	knockback_effects(L, P)
+	shake_camera(living_mob, 3, 4)
+	knockback_effects(living_mob, fired_projectile)
 
 	//Either knockback or slam them into an obstacle.
-	var/direction = Get_Compass_Dir(P.z ? P : P.firer, L) //More precise than get_dir.
+	var/direction = Get_Compass_Dir(fired_projectile.z ? fired_projectile : fired_projectile.firer, living_mob) //More precise than get_dir.
 	if(!direction) //Same tile.
 		return
-	if(!step(L, direction))
-		L.animation_attack_on(get_step(L, direction))
-		playsound(L.loc, "punch", 25, 1)
-		L.visible_message(SPAN_DANGER("[L] slams into an obstacle!"),
-			isXeno(L) ? SPAN_XENODANGER("You slam into an obstacle!") : SPAN_HIGHDANGER("You slam into an obstacle!"), null, 4, CHAT_TYPE_TAKING_HIT)
-		L.apply_damage(MELEE_FORCE_TIER_2)
+	if(!step(living_mob, direction))
+		living_mob.animation_attack_on(get_step(living_mob, direction))
+		playsound(living_mob.loc, "punch", 25, 1)
+		living_mob.visible_message(SPAN_DANGER("[living_mob] slams into an obstacle!"),
+			isXeno(living_mob) ? SPAN_XENODANGER("You slam into an obstacle!") : SPAN_HIGHDANGER("You slam into an obstacle!"), null, 4, CHAT_TYPE_TAKING_HIT)
+		living_mob.apply_damage(MELEE_FORCE_TIER_2)
 
-/datum/ammo/proc/knockback_effects(mob/living/L, obj/item/projectile/P)
-	if(isCarbonSizeXeno(L))
-		var/mob/living/carbon/xenomorph/target = L
+///The applied effects for knockback(), overwrite to change slow/stun amounts for different ammo datums
+/datum/ammo/proc/knockback_effects(mob/living/living_mob, obj/item/projectile/fired_projectile)
+	if(isCarbonSizeXeno(living_mob))
+		var/mob/living/carbon/xenomorph/target = living_mob
 		target.apply_effect(0.7, WEAKEN) // 0.9 seconds of stun, per agreement from Balance Team when switched from MC stuns to exact stuns
 		target.apply_effect(1, SUPERSLOW)
 		target.apply_effect(2, SLOW)
 		to_chat(target, SPAN_XENODANGER("You are shaken by the sudden impact!"))
 	else
-		L.apply_stamina_damage(P.ammo.damage, P.def_zone, ARMOR_BULLET)
+		living_mob.apply_stamina_damage(fired_projectile.ammo.damage, fired_projectile.def_zone, ARMOR_BULLET)
 
 /datum/ammo/proc/pushback(mob/M, obj/item/projectile/P, var/max_range = 2)
 	if(!M || M == P.firer || P.distance_travelled > max_range || M.lying)
@@ -1134,19 +1135,19 @@
 /datum/ammo/bullet/rifle/m4ra/impact/on_hit_mob(mob/M, obj/item/projectile/P)
 	knockback(M, P, 32) // Can knockback basically at max range
 
-/datum/ammo/bullet/rifle/m4ra/impact/knockback_effects(mob/living/L, obj/item/projectile/P)
-	if(isCarbonSizeXeno(L))
-		var/mob/living/carbon/xenomorph/target = L
+/datum/ammo/bullet/rifle/m4ra/impact/knockback_effects(mob/living/living_mob, obj/item/projectile/fired_projectile)
+	if(isCarbonSizeXeno(living_mob))
+		var/mob/living/carbon/xenomorph/target = living_mob
 		to_chat(target, SPAN_XENODANGER("You are shaken and slowed by the sudden impact!"))
 		target.apply_effect(0.5, WEAKEN)
 		target.apply_effect(2, SUPERSLOW)
 		target.apply_effect(5, SLOW)
 	else
-		if(!isYautja(L)) //Not predators.
-			L.apply_effect(1, SUPERSLOW)
-			L.apply_effect(2, SLOW)
-			to_chat(L, SPAN_HIGHDANGER("The impact knocks you off-balance!"))
-		L.apply_stamina_damage(P.ammo.damage, P.def_zone, ARMOR_BULLET)
+		if(!isYautja(living_mob)) //Not predators.
+			living_mob.apply_effect(1, SUPERSLOW)
+			living_mob.apply_effect(2, SLOW)
+			to_chat(living_mob, SPAN_HIGHDANGER("The impact knocks you off-balance!"))
+		living_mob.apply_stamina_damage(fired_projectile.ammo.damage, fired_projectile.def_zone, ARMOR_BULLET)
 
 /datum/ammo/bullet/rifle/mar40
 	name = "heavy rifle bullet"
@@ -1195,19 +1196,19 @@
 /datum/ammo/bullet/shotgun/slug/on_hit_mob(mob/M,obj/item/projectile/P)
 	knockback(M, P, 6)
 
-/datum/ammo/bullet/shotgun/slug/knockback_effects(mob/living/L, obj/item/projectile/P)
-	if(isCarbonSizeXeno(L))
-		var/mob/living/carbon/xenomorph/target = L
+/datum/ammo/bullet/shotgun/slug/knockback_effects(mob/living/living_mob, obj/item/projectile/fired_projectile)
+	if(isCarbonSizeXeno(living_mob))
+		var/mob/living/carbon/xenomorph/target = living_mob
 		to_chat(target, SPAN_XENODANGER("You are shaken and slowed by the sudden impact!"))
 		target.apply_effect(0.5, WEAKEN)
 		target.apply_effect(1, SUPERSLOW)
 		target.apply_effect(3, SLOW)
 	else
-		if(!isYautja(L)) //Not predators.
-			L.apply_effect(1, SUPERSLOW)
-			L.apply_effect(2, SLOW)
-			to_chat(L, SPAN_HIGHDANGER("The impact knocks you off-balance!"))
-		L.apply_stamina_damage(P.ammo.damage, P.def_zone, ARMOR_BULLET)
+		if(!isYautja(living_mob)) //Not predators.
+			living_mob.apply_effect(1, SUPERSLOW)
+			living_mob.apply_effect(2, SLOW)
+			to_chat(living_mob, SPAN_HIGHDANGER("The impact knocks you off-balance!"))
+		living_mob.apply_stamina_damage(fired_projectile.ammo.damage, fired_projectile.def_zone, ARMOR_BULLET)
 
 /datum/ammo/bullet/shotgun/beanbag
 	name = "beanbag slug"
@@ -1418,19 +1419,20 @@
 /datum/ammo/bullet/shotgun/heavy/slug/on_hit_mob(mob/M,obj/item/projectile/P)
 	knockback(M, P, 7)
 
-/datum/ammo/bullet/shotgun/heavy/slug/knockback_effects(mob/living/L, obj/item/projectile/P)
-	if(isCarbonSizeXeno(L))
-		var/mob/living/carbon/xenomorph/target = L
+/datum/ammo/bullet/shotgun/heavy/slug/knockback_effects(mob/living/living_mob, obj/item/projectile/fired_projectile)
+	if(isCarbonSizeXeno(living_mob))
+		var/mob/living/carbon/xenomorph/target = living_mob
 		to_chat(target, SPAN_XENODANGER("You are shaken and slowed by the sudden impact!"))
 		target.apply_effect(0.5, WEAKEN)
 		target.apply_effect(2, SUPERSLOW)
 		target.apply_effect(5, SLOW)
 	else
-		if(!isYautja(L)) //Not predators.
-			L.apply_effect(1, SUPERSLOW)
-			L.apply_effect(2, SLOW)
-			to_chat(L, SPAN_HIGHDANGER("The impact knocks you off-balance!"))
-		L.apply_stamina_damage(P.ammo.damage, P.def_zone, ARMOR_BULLET)
+		if(!isYautja(living_mob)) //Not predators.
+			living_mob.apply_effect(1, SUPERSLOW)
+			living_mob.apply_effect(2, SLOW)
+			to_chat(living_mob, SPAN_HIGHDANGER("The impact knocks you off-balance!"))
+		living_mob.apply_stamina_damage(fired_projectile.ammo.damage, fired_projectile.def_zone, ARMOR_BULLET)
+
 /datum/ammo/bullet/shotgun/heavy/beanbag
 	name = "heavy beanbag slug"
 	icon_state = "beanbag"
@@ -1519,19 +1521,19 @@
 
 	step(M, get_dir(P.firer, M))
 
-/datum/ammo/bullet/shotgun/twobore/knockback_effects(mob/living/L, obj/item/projectile/P)
-	if(isCarbonSizeXeno(L))
-		var/mob/living/carbon/xenomorph/target = L
+/datum/ammo/bullet/shotgun/twobore/knockback_effects(mob/living/living_mob, obj/item/projectile/fired_projectile)
+	if(isCarbonSizeXeno(living_mob))
+		var/mob/living/carbon/xenomorph/target = living_mob
 		to_chat(target, SPAN_XENODANGER("You are shaken and slowed by the sudden impact!"))
 		target.apply_effect(0.5, WEAKEN)
 		target.apply_effect(2, SUPERSLOW)
 		target.apply_effect(5, SLOW)
 	else
-		if(!isYautja(L)) //Not predators.
-			L.apply_effect(1, SUPERSLOW)
-			L.apply_effect(2, SLOW)
-			to_chat(L, SPAN_HIGHDANGER("The impact knocks you off-balance!"))
-		L.apply_stamina_damage(P.ammo.damage, P.def_zone, ARMOR_BULLET)
+		if(!isYautja(living_mob)) //Not predators.
+			living_mob.apply_effect(1, SUPERSLOW)
+			living_mob.apply_effect(2, SLOW)
+			to_chat(living_mob, SPAN_HIGHDANGER("The impact knocks you off-balance!"))
+		living_mob.apply_stamina_damage(fired_projectile.ammo.damage, fired_projectile.def_zone, ARMOR_BULLET)
 
 /datum/ammo/bullet/lever_action
 	name = "lever-action bullet"

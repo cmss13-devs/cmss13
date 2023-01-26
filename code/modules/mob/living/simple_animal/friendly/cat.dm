@@ -68,7 +68,7 @@
 
 	for(var/mob/living/snack in oview(src, 3))
 		if(is_type_in_list(snack, hunting_targets) && prob(15) && snack.stat != DEAD)
-			visible_message(pick("\the hisses and spits!","\the mrowls fiercely!","\the eyes [snack] hungrily."))
+			visible_message(pick("\the [src] hisses at [snack]!", "\the [src] mrowls fiercely!", "\the [src] eyes [snack] hungrily."))
 		break
 
 	if(!stat && !resting && !buckled)

@@ -48,7 +48,7 @@
 	icon_xeno = 'icons/mob/xenos/larva.dmi'
 	icon_xenonid = 'icons/mob/xenonids/larva.dmi'
 
-/mob/living/carbon/Xenomorph/Larva/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/mob/living/carbon/Xenomorph/Larva/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_pass = PASS_MOB_THRU|PASS_FLAGS_CRAWLER
@@ -149,7 +149,7 @@
 	A.attack_larva(src)
 	xeno_attack_delay(src) //Adds some lag to the 'attack'
 
-/proc/spawn_hivenumber_larva(var/atom/A, var/hivenumber)
+/proc/spawn_hivenumber_larva(atom/A, hivenumber)
 	if(!GLOB.hive_datum[hivenumber] || isnull(A))
 		return
 

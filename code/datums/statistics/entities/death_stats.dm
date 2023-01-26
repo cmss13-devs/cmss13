@@ -62,7 +62,7 @@
 		"z" = DB_FIELDTYPE_INT
 	)
 
-/mob/proc/track_mob_death(var/datum/cause_data/cause_data, var/turf/death_loc)
+/mob/proc/track_mob_death(datum/cause_data/cause_data, turf/death_loc)
 	if(!mind || statistic_exempt)
 		return
 
@@ -126,7 +126,7 @@
 	new_death.detach()
 	return new_death
 
-/mob/living/carbon/human/track_mob_death(var/cause, var/cause_mob)
+/mob/living/carbon/human/track_mob_death(cause, cause_mob)
 	. = ..(cause, cause_mob, job)
 	if(statistic_exempt || !mind)
 		return
@@ -134,7 +134,7 @@
 	if(human_stats && human_stats.death_list)
 		human_stats.death_list.Insert(1, .)
 
-/mob/living/carbon/Xenomorph/track_mob_death(var/cause, var/cause_mob)
+/mob/living/carbon/Xenomorph/track_mob_death(cause, cause_mob)
 	var/datum/entity/statistic/death/new_death = ..(cause, cause_mob, caste_type)
 	if(!new_death)
 		return
@@ -145,7 +145,7 @@
 	if(xeno_stats && xeno_stats.death_list)
 		xeno_stats.death_list.Insert(1, new_death)
 
-/mob/proc/handle_observer_message(var/datum/cause_data/cause_data, var/mob/cause_mob, var/turf/death_loc, var/area/death_area)
+/mob/proc/handle_observer_message(datum/cause_data/cause_data, mob/cause_mob, turf/death_loc, area/death_area)
 	var/observer_message = "<b>[real_name]</b> has died"
 	if(cause_data && cause_data.cause_name)
 		observer_message += " to <b>[cause_data.cause_name]</b>"
@@ -161,7 +161,7 @@
 	for(var/mob/dead/observer/g in GLOB.observer_list)
 		to_chat(g, SPAN_DEADSAY(observer_message + " (<a href='?src=\ref[g];jumptocoord=1;X=[death_loc.x];Y=[death_loc.y];Z=[death_loc.z]'>JMP</a>)"))
 
-/mob/living/carbon/Xenomorph/handle_observer_message(var/datum/cause_data/cause_data, var/mob/cause_mob, var/turf/death_loc, var/area/death_area)
+/mob/living/carbon/Xenomorph/handle_observer_message(datum/cause_data/cause_data, mob/cause_mob, turf/death_loc, area/death_area)
 	if(hardcore)
 		return
 	return ..()

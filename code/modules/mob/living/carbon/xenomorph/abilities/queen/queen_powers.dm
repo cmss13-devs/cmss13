@@ -413,7 +413,7 @@
 
 	message_staff("[key_name_admin(user_xeno)] has banished [key_name_admin(target_xeno)]. Reason: [reason]")
 
-/datum/action/xeno_action/onclick/banish/proc/remove_banish(var/datum/hive_status/hive, var/name)
+/datum/action/xeno_action/onclick/banish/proc/remove_banish(datum/hive_status/hive, name)
 	hive.banished_ckeys.Remove(name)
 
 
@@ -574,7 +574,7 @@
 	to_chat(X, SPAN_XENONOTICE("You plant weeds at [T]."))
 	apply_cooldown()
 
-/datum/action/xeno_action/activable/expand_weeds/proc/reset_turf_cooldown(var/turf/T)
+/datum/action/xeno_action/activable/expand_weeds/proc/reset_turf_cooldown(turf/T)
 	recently_built_turfs -= T
 
 /datum/action/xeno_action/activable/place_queen_beacon/use_ability(atom/A)

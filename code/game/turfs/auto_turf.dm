@@ -48,7 +48,7 @@
 
 	..()
 
-/turf/open/auto_turf/proc/changing_layer(var/new_layer)
+/turf/open/auto_turf/proc/changing_layer(new_layer)
 	if(isnull(new_layer) || new_layer == bleed_layer)
 		return
 
@@ -164,7 +164,7 @@
 /turf/open/auto_turf/snow/is_weedable()
 	return bleed_layer ? NOT_WEEDABLE : FULLY_WEEDABLE
 
-/turf/open/auto_turf/snow/attackby(var/obj/item/I, var/mob/user)
+/turf/open/auto_turf/snow/attackby(obj/item/I, mob/user)
 	//Light Stick
 	if(istype(I, /obj/item/lightstick))
 		var/obj/item/lightstick/L = I

@@ -51,7 +51,7 @@
 		INVOKE_ASYNC(src, PROC_REF(pry_open), X)
 		return XENO_ATTACK_ACTION
 
-/obj/structure/machinery/door/poddoor/proc/pry_open(var/mob/living/carbon/Xenomorph/X, var/time = 4 SECONDS)
+/obj/structure/machinery/door/poddoor/proc/pry_open(mob/living/carbon/Xenomorph/X, time = 4 SECONDS)
 	X.visible_message(SPAN_DANGER("[X] begins prying [src] open."),\
 	SPAN_XENONOTICE("You start prying [src] open."), max_distance = 3)
 

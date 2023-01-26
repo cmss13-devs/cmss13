@@ -123,7 +123,7 @@
 	if (observed_xeno && (observed_xeno == DEAD || QDELETED(observed_xeno)))
 		overwatch(null, TRUE)
 
-/mob/living/carbon/Xenomorph/proc/overwatch_handle_mob_move_or_look(mob/living/carbon/Xenomorph/mover, var/actually_moving, var/direction, var/specific_direction)
+/mob/living/carbon/Xenomorph/proc/overwatch_handle_mob_move_or_look(mob/living/carbon/Xenomorph/mover, actually_moving, direction, specific_direction)
 	SIGNAL_HANDLER
 
 	if(!actually_moving)
@@ -133,7 +133,7 @@
 	UnregisterSignal(mover, COMSIG_MOB_MOVE_OR_LOOK)
 	return COMPONENT_OVERRIDE_MOB_MOVE_OR_LOOK
 
-/mob/living/carbon/Xenomorph/Queen/overwatch_handle_mob_move_or_look(mob/living/carbon/Xenomorph/Queen/mover, var/actually_moving, var/direction, var/specific_direction)
+/mob/living/carbon/Xenomorph/Queen/overwatch_handle_mob_move_or_look(mob/living/carbon/Xenomorph/Queen/mover, actually_moving, direction, specific_direction)
 	if(!actually_moving)
 		return
 

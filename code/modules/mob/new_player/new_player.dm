@@ -30,7 +30,7 @@
 		new_player_panel_proc()
 
 
-/mob/new_player/proc/new_player_panel_proc(var/refresh = FALSE)
+/mob/new_player/proc/new_player_panel_proc(refresh = FALSE)
 	if(!client)
 		return
 
@@ -478,7 +478,7 @@
 /mob/new_player/is_ready()
 	return ready && ..()
 
-/mob/new_player/hear_say(var/message, var/verb = "says", var/datum/language/language = null, var/alt_name = "",var/italics = 0, var/mob/speaker = null)
+/mob/new_player/hear_say(message, verb = "says", datum/language/language = null, alt_name = "", italics = 0, mob/speaker = null)
 	return
 
 /mob/new_player/hear_radio(message, verb, datum/language/language, part_a, part_b, mob/speaker, hard_to_hear, vname, command, no_paygrade = FALSE)

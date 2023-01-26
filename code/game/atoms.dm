@@ -109,7 +109,7 @@ directive is properly returned.
 		return loc.return_gas()
 
 // Updates the atom's transform
-/atom/proc/apply_transform(var/matrix/M)
+/atom/proc/apply_transform(matrix/M)
 	if(!base_transform)
 		transform = M
 		return
@@ -149,7 +149,7 @@ directive is properly returned.
 /atom/proc/HasProximity(atom/movable/AM as mob|obj)
 	return
 
-/atom/proc/emp_act(var/severity)
+/atom/proc/emp_act(severity)
 	return
 
 /atom/proc/in_contents_of(container)//can take class or object instance as argument
@@ -271,7 +271,7 @@ directive is properly returned.
 
 
 
-/atom/proc/transfer_fingerprints_to(var/atom/A)
+/atom/proc/transfer_fingerprints_to(atom/A)
 
 	if(!istype(A.fingerprintshidden,/list))
 		A.fingerprintshidden = list()
@@ -285,10 +285,10 @@ directive is properly returned.
 
 
 
-/atom/proc/add_vomit_floor(mob/living/carbon/M, var/toxvomit = 0)
+/atom/proc/add_vomit_floor(mob/living/carbon/M, toxvomit = 0)
 	return
 
-/turf/add_vomit_floor(mob/living/carbon/M, var/toxvomit = 0)
+/turf/add_vomit_floor(mob/living/carbon/M, toxvomit = 0)
 	var/obj/effect/decal/cleanable/vomit/this = new /obj/effect/decal/cleanable/vomit(src)
 
 	// Make toxins vomit look different
@@ -297,7 +297,7 @@ directive is properly returned.
 
 
 //Generalized Fire Proc.
-/atom/proc/flamer_fire_act(var/dam = BURN_LEVEL_TIER_1, var/datum/cause_data/flame_cause_data)
+/atom/proc/flamer_fire_act(dam = BURN_LEVEL_TIER_1, datum/cause_data/flame_cause_data)
 	return
 
 /atom/proc/acid_spray_act()
@@ -394,7 +394,7 @@ Parameters are passed from New.
 				flags_pass_temp &= ~flag
 
 // This proc is for initializing pass flags (allows for inheriting pass flags and list-based pass flags)
-/atom/proc/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/atom/proc/initialize_pass_flags(datum/pass_flags_container/PF)
 	return
 
 /atom/proc/enable_pixel_scaling()
@@ -522,7 +522,7 @@ Parameters are passed from New.
 
 
 //Shamelessly stolen from TG
-/atom/proc/Shake(var/pixelshiftx = 15, var/pixelshifty = 15, var/duration = 250)
+/atom/proc/Shake(pixelshiftx = 15, pixelshifty = 15, duration = 250)
 	var/initialpixelx = pixel_x
 	var/initialpixely = pixel_y
 	var/shiftx = rand(-pixelshiftx,pixelshiftx)
@@ -551,13 +551,13 @@ Parameters are passed from New.
 
 // returns a modifier for how much the tail stab should be cooldowned by
 // returning a 0 makes it do nothing
-/atom/proc/handle_tail_stab(var/mob/living/carbon/Xenomorph/xeno)
+/atom/proc/handle_tail_stab(mob/living/carbon/Xenomorph/xeno)
 	return TAILSTAB_COOLDOWN_NONE
 
-/atom/proc/handle_flamer_fire(var/obj/flamer_fire/fire, var/damage, var/delta_time)
+/atom/proc/handle_flamer_fire(obj/flamer_fire/fire, damage, delta_time)
 	return
 
-/atom/proc/handle_flamer_fire_crossed(var/obj/flamer_fire/fire)
+/atom/proc/handle_flamer_fire_crossed(obj/flamer_fire/fire)
 	return
 
 /atom/proc/get_orbit_size()

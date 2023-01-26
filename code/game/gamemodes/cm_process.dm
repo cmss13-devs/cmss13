@@ -143,7 +143,7 @@ of predators), but can be added to include variant game modes (like humans vs. h
 
 // Open podlocks with the given ID if they aren't already opened.
 // DO NOT USE THIS WITH ID's CORRESPONDING TO SHUTTLES OR THEY WILL BREAK!
-/datum/game_mode/proc/open_podlocks(var/podlock_id)
+/datum/game_mode/proc/open_podlocks(podlock_id)
 	for(var/obj/structure/machinery/door/poddoor/M in machines)
 		if(M.id == podlock_id && M.density)
 			M.open()
@@ -157,7 +157,7 @@ var/lastHumanBioscan = 30 MINUTES//30 minutes in (we will add to that!)
 var/nextPredatorBioscan = 5 MINUTES//5 minutes in
 var/nextAdminBioscan = 30 MINUTES//30 minutes in
 
-/datum/game_mode/proc/select_lz(var/obj/structure/machinery/computer/shuttle_control/console)
+/datum/game_mode/proc/select_lz(obj/structure/machinery/computer/shuttle_control/console)
 	if(active_lz)
 		return
 	active_lz = console
@@ -167,7 +167,7 @@ var/nextAdminBioscan = 30 MINUTES//30 minutes in
 	marine_announcement(input, name)
 
 //Delta is the randomness interval, in +/-. Might not be the exact mathematical definition
-/datum/game_mode/proc/announce_bioscans(var/delta = 2)
+/datum/game_mode/proc/announce_bioscans(delta = 2)
 	var/numHostsPlanet = 0
 	var/numHostsShip = 0
 	var/numXenosPlanet = 0

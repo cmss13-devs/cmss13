@@ -11,7 +11,7 @@
  */
 
 //Returns a list in plain english as a string
-/proc/english_list(var/list/input, nothing_text = "nothing", and_text = " and ", comma_text = ", ", final_comma_text = "" )
+/proc/english_list(list/input, nothing_text = "nothing", and_text = " and ", comma_text = ", ", final_comma_text = "" )
 	var/total = input.len
 	if (!total)
 		return "[nothing_text]"
@@ -32,7 +32,7 @@
 		return "[output][and_text][input[index]]"
 
 //Returns list element or null. Should prevent "index out of bounds" error.
-/proc/listgetindex(var/list/list,index)
+/proc/listgetindex(list/list,index)
 	if(istype(list) && list.len)
 		if(isnum(index))
 			if(InRange(index,1,list.len))
@@ -42,7 +42,7 @@
 	return
 
 //Checks for specific types in a list
-/proc/is_type_in_list(var/atom/A, var/list/L)
+/proc/is_type_in_list(atom/A, list/L)
 	for(var/type in L)
 		if(istype(A, type))
 			return 1
@@ -60,7 +60,7 @@
  * If skiprep = 1, repeated elements are treated as one.
  * If either of arguments is not a list, returns null
  */
-/proc/difflist(var/list/first, var/list/second, var/skiprep=0)
+/proc/difflist(list/first, list/second, skiprep=0)
 	if(!islist(first) || !islist(second))
 		return
 	var/list/result = new
@@ -77,7 +77,7 @@
  * If skipref = 1, repeated elements are treated as one.
  * If either of arguments is not a list, returns null
  */
-/proc/uniquemergelist(var/list/first, var/list/second, var/skiprep=0)
+/proc/uniquemergelist(list/first, list/second, skiprep=0)
 	if(!islist(first) || !islist(second))
 		return
 	var/list/result = new
@@ -162,7 +162,7 @@
 			L_o -= i
 
 //Return a list with no duplicate entries
-/proc/uniquelist(var/list/L)
+/proc/uniquelist(list/L)
 	var/list/K = list()
 	for(var/item in L)
 		if(!(item in K))
@@ -170,14 +170,14 @@
 	return K
 
 //Mergesort: divides up the list into halves to begin the sort
-/proc/sortKey(var/list/client/L, var/order = 1)
+/proc/sortKey(list/client/L, order = 1)
 	if(isnull(L) || L.len < 2)
 		return L
 	var/middle = L.len / 2 + 1
 	return mergeKey(sortKey(L.Copy(0,middle)), sortKey(L.Copy(middle)), order)
 
 //Mergsort: does the actual sorting and returns the results back to sortAtom
-/proc/mergeKey(var/list/client/L, var/list/client/R, var/order = 1)
+/proc/mergeKey(list/client/L, list/client/R, order = 1)
 	var/Li=1
 	var/Ri=1
 	var/list/result = new()
@@ -194,7 +194,7 @@
 	return (result + R.Copy(Ri, 0))
 
 // Quicksort implementation
-/proc/sortAtom(var/list/atom/L, var/order = 1)
+/proc/sortAtom(list/atom/L, order = 1)
 	if(isnull(L) || L.len < 2)
 		return L
 	var/startIndex = 1
@@ -238,7 +238,7 @@
 
 
 //Mergesort: Specifically for record datums in a list.
-/proc/sortRecord(var/list/datum/data/record/L, var/field = "name", var/order = 1)
+/proc/sortRecord(list/datum/data/record/L, field = "name", order = 1)
 	if(isnull(L))
 		return list()
 	if(L.len < 2)
@@ -247,7 +247,7 @@
 	return mergeRecordLists(sortRecord(L.Copy(0, middle), field, order), sortRecord(L.Copy(middle), field, order), field, order)
 
 //Mergsort: does the actual sorting and returns the results back to sortRecord
-/proc/mergeRecordLists(var/list/datum/data/record/L, var/list/datum/data/record/R, var/field = "name", var/order = 1)
+/proc/mergeRecordLists(list/datum/data/record/L, list/datum/data/record/R, field = "name", order = 1)
 	var/Li=1
 	var/Ri=1
 	var/list/result = new()
@@ -281,7 +281,7 @@
 
 //Mergesort: any value in a list
 // /!\ doesnt seem to work for assoc lists. use sort_list instead
-/proc/sortList(var/list/L)
+/proc/sortList(list/L)
 	RETURN_TYPE(/list)
 	if(!istype(L))
 		return
@@ -291,13 +291,13 @@
 	return mergeLists(sortList(L.Copy(0,middle)), sortList(L.Copy(middle))) //second parameter null = to end of list
 
 //Mergsorge: uses sortList() but uses the var's name specifically. This should probably be using mergeAtom() instead
-/proc/sortNames(var/list/L)
+/proc/sortNames(list/L)
 	var/list/Q = new()
 	for(var/atom/x in L)
 		Q[x.name] = x
 	return sortList(Q)
 
-/proc/mergeLists(var/list/L, var/list/R)
+/proc/mergeLists(list/L, list/R)
 	var/Li=1
 	var/Ri=1
 	var/list/result = new()
@@ -321,13 +321,13 @@
 
 
 // List of lists, sorts by element[key] - for things like crew monitoring computer sorting records by name.
-/proc/sortByKey(var/list/L, var/key)
+/proc/sortByKey(list/L, key)
 	if(L.len < 2)
 		return L
 	var/middle = L.len / 2 + 1
 	return mergeKeyedLists(sortByKey(L.Copy(0, middle), key), sortByKey(L.Copy(middle), key), key)
 
-/proc/mergeKeyedLists(var/list/L, var/list/R, var/key)
+/proc/mergeKeyedLists(list/L, list/R, key)
 	var/Li=1
 	var/Ri=1
 	var/list/result = new()
@@ -346,13 +346,13 @@
 
 
 //Mergesort: any value in a list, preserves key=value structure
-/proc/sortAssoc(var/list/L)
+/proc/sortAssoc(list/L)
 	if(L.len < 2)
 		return L
 	var/middle = L.len / 2 + 1 // Copy is first,second-1
 	return mergeAssoc(sortAssoc(L.Copy(0,middle)), sortAssoc(L.Copy(middle))) //second parameter null = to end of list
 
-/proc/mergeAssoc(var/list/L, var/list/R)
+/proc/mergeAssoc(list/L, list/R)
 	var/Li=1
 	var/Ri=1
 	var/list/result = new()
@@ -367,13 +367,13 @@
 	return (result + R.Copy(Ri, 0))
 
 // Same as sortAssoc but rather than creating a whole new list keeps the original list ref and just returns that list modified
-/proc/sortAssocKeepList(var/list/L)
+/proc/sortAssocKeepList(list/L)
 	if(L.len < 2)
 		return L
 	var/middle = L.len / 2 + 1 // Copy is first,second-1
 	return mergeAssocKeepList(sortAssoc(L.Copy(0,middle)), sortAssoc(L.Copy(middle)), L) //second parameter null = to end of list
 
-/proc/mergeAssocKeepList(var/list/L, var/list/R, var/list/original)
+/proc/mergeAssocKeepList(list/L, list/R, list/original)
 	var/Li=1
 	var/Ri=1
 	var/list/result = new()
@@ -408,7 +408,7 @@
 
 	return r
 
-/proc/count_by_type(var/list/L, type)
+/proc/count_by_type(list/L, type)
 	var/i = 0
 	for(var/T in L)
 		if(istype(T, type))
@@ -574,7 +574,7 @@
 	return found
 
 // Mergesorts a list, using the sort callback to determine ordering
-/proc/custom_mergesort(var/list/L, var/datum/callback/sort)
+/proc/custom_mergesort(list/L, datum/callback/sort)
 	if(!L)
 		return L
 

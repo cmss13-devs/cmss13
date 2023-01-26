@@ -15,7 +15,7 @@
 	attack_hand(M) //This has a .2 second delay of its own.
 	return XENO_NO_DELAY_ACTION
 
-/obj/item/stack/revival_jelly/proc/can_revive(var/required_jelly, var/mob/living/carbon/Xenomorph/X, var/mob/living/user)
+/obj/item/stack/revival_jelly/proc/can_revive(required_jelly, mob/living/carbon/Xenomorph/X, mob/living/user)
 	if(user.action_busy)
 		to_chat(user, SPAN_WARNING("You're already performing an action!"))
 		return FALSE

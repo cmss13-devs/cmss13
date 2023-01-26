@@ -91,7 +91,7 @@
 	my_atom = null
 	return ..()
 
-/datum/reagents/proc/remove_any(var/amount=1)
+/datum/reagents/proc/remove_any(amount=1)
 	var/total_transfered = 0
 	var/current_list_element = 1
 
@@ -114,7 +114,7 @@
 	return total_transfered
 
 ///This proc is one that removes all reagents from the targeted datum other than the designated ignored reagent
-/datum/reagents/proc/remove_any_but(var/reagent_to_ignore, var/amount=1)
+/datum/reagents/proc/remove_any_but(reagent_to_ignore, amount=1)
 	var/total_transfered = 0
 	var/current_list_element = 1
 
@@ -173,13 +173,13 @@
 	return the_id
 
 /// Transfers to the reagents datum of an object
-/datum/reagents/proc/trans_to(atom/target, var/amount=1, var/multiplier=1, var/preserve_data=1, var/reaction = TRUE)
+/datum/reagents/proc/trans_to(atom/target, amount=1, multiplier=1, preserve_data=1, reaction = TRUE)
 	var/datum/reagents/R = target?.reagents
 	if(R && !locked && !R.locked && total_volume > 0)
 		return trans_to_datum(R, amount, multiplier, preserve_data, reaction)
 
 /// Transfers to a reagent datum
-/datum/reagents/proc/trans_to_datum(datum/reagents/target, var/amount=1, var/multiplier=1, var/preserve_data=1, var/reaction = TRUE)//if preserve_data=0, the reagents data will be lost. Usefull if you use data for some strange stuff and don't want it to be transferred.
+/datum/reagents/proc/trans_to_datum(datum/reagents/target, amount=1, multiplier=1, preserve_data=1, reaction = TRUE)//if preserve_data=0, the reagents data will be lost. Usefull if you use data for some strange stuff and don't want it to be transferred.
 	amount = min(min(amount, total_volume), target.maximum_volume-target.total_volume)
 	var/part = amount / total_volume
 	for(var/datum/reagent/current_reagent in reagent_list)
@@ -197,7 +197,7 @@
 	return amount
 
 /// Transfers to object as ingestion
-/datum/reagents/proc/trans_to_ingest(var/atom/movable/target, var/amount=1, var/multiplier=1, var/preserve_data=1) //For items ingested. A delay is added between ingestion and addition of the reagents
+/datum/reagents/proc/trans_to_ingest(atom/movable/target, amount=1, multiplier=1, preserve_data=1) //For items ingested. A delay is added between ingestion and addition of the reagents
 	if(!target?.reagents || total_volume <= 0)
 		return
 
@@ -216,11 +216,11 @@
 	addtimer(CALLBACK(V, TYPE_PROC_REF(/datum/reagents/vessel, inject_vessel), target, INGEST, TRUE, 0.5 SECONDS), 9.5 SECONDS)
 	return amount
 
-/datum/reagents/proc/set_source_mob(var/new_source_mob)
+/datum/reagents/proc/set_source_mob(new_source_mob)
 	for(var/datum/reagent/R in reagent_list)
 		R.last_source_mob = WEAKREF(new_source_mob)
 
-/datum/reagents/proc/copy_to(var/obj/target, var/amount=1, var/multiplier=1, var/preserve_data=1, var/safety = 0)
+/datum/reagents/proc/copy_to(obj/target, amount=1, multiplier=1, preserve_data=1, safety = 0)
 	if(!target)
 		return
 	if(!target.reagents || total_volume<=0)
@@ -242,7 +242,7 @@
 		handle_reactions()
 	return amount
 
-/datum/reagents/proc/trans_id_to(var/obj/target, var/reagent, var/amount=1, var/preserve_data=1)//Not sure why this proc didn't exist before. It does now! /N
+/datum/reagents/proc/trans_id_to(obj/target, reagent, amount=1, preserve_data=1)//Not sure why this proc didn't exist before. It does now! /N
 	if(!target)
 		return
 	if(!target.reagents || total_volume<=0 || !get_reagent_amount(reagent))
@@ -267,7 +267,7 @@
 	//handle_reactions() Don't need to handle reactions on the source since you're (presumably isolating and) transferring a specific reagent.
 	return amount
 
-/datum/reagents/proc/metabolize(var/mob/M,var/alien, var/delta_time)
+/datum/reagents/proc/metabolize(mob/M, alien, delta_time)
 	for(var/datum/reagent/R in reagent_list)
 		if(M && R)
 			R.on_mob_life(M, alien, delta_time)
@@ -372,13 +372,13 @@
 	update_total()
 	return FALSE
 
-/datum/reagents/proc/isolate_reagent(var/reagent)
+/datum/reagents/proc/isolate_reagent(reagent)
 	for(var/datum/reagent/R in reagent_list)
 		if(R.id != reagent)
 			del_reagent(R.id)
 			update_total()
 
-/datum/reagents/proc/del_reagent(var/reagent)
+/datum/reagents/proc/del_reagent(reagent)
 	for(var/datum/reagent/R in reagent_list)
 		if(R.id == reagent)
 			R.on_delete()
@@ -406,7 +406,7 @@
 		del_reagent(R.id)
 	return FALSE
 
-/datum/reagents/proc/reaction(var/atom/A, var/method=TOUCH, var/volume_modifier=0)
+/datum/reagents/proc/reaction(atom/A, method=TOUCH, volume_modifier=0)
 	if(method != TOUCH && method != INGEST)
 		return
 	for(var/datum/reagent/R in reagent_list)
@@ -417,7 +417,7 @@
 		else if(isobj(A))
 			R.reaction_obj(A, R.volume + volume_modifier)
 
-/datum/reagents/proc/add_reagent(var/reagent, var/amount, var/list/data, var/safety = 0)
+/datum/reagents/proc/add_reagent(reagent, amount, list/data, safety = 0)
 	if(!reagent || !isnum(amount))
 		return TRUE
 
@@ -498,7 +498,7 @@
 
 	return TRUE
 
-/datum/reagents/proc/remove_reagent(var/reagent, var/amount, var/safety = 0)//Added a safety check for the trans_id_to
+/datum/reagents/proc/remove_reagent(reagent, amount, safety = 0)//Added a safety check for the trans_id_to
 	if(!isnum(amount))
 		return TRUE
 
@@ -513,7 +513,7 @@
 
 	return TRUE
 
-/datum/reagents/proc/has_reagent(var/reagent, var/amount = -1)
+/datum/reagents/proc/has_reagent(reagent, amount = -1)
 	for(var/datum/reagent/R in reagent_list)
 		if(R.id == reagent)
 			if(!amount)
@@ -525,7 +525,7 @@
 					return FALSE
 	return FALSE
 
-/datum/reagents/proc/get_reagent_amount(var/reagent)
+/datum/reagents/proc/get_reagent_amount(reagent)
 	for(var/datum/reagent/R in reagent_list)
 		if(R.id == reagent)
 			return R.volume
@@ -539,7 +539,7 @@
 
 	return res
 
-/datum/reagents/proc/remove_all_type(var/reagent_type, var/amount, var/strict = 0, var/safety = 1) // Removes all reagent of X type. @strict set to 1 determines whether the childs of the type are included.
+/datum/reagents/proc/remove_all_type(reagent_type, amount, strict = 0, safety = 1) // Removes all reagent of X type. @strict set to 1 determines whether the childs of the type are included.
 	if(!isnum(amount))
 		return TRUE
 
@@ -562,17 +562,17 @@
 	return has_removed_reagent
 
 //two helper functions to preserve data across reactions (needed for xenoarch)
-/datum/reagents/proc/get_data(var/reagent_id)
+/datum/reagents/proc/get_data(reagent_id)
 	for(var/datum/reagent/D in reagent_list)
 		if(D.id == reagent_id)
 			return D.data_properties
 
-/datum/reagents/proc/set_data(var/reagent_id, var/new_data)
+/datum/reagents/proc/set_data(reagent_id, new_data)
 	for(var/datum/reagent/D in reagent_list)
 		if(D.id == reagent_id)
 			D.data_properties = new_data
 
-/datum/reagents/proc/copy_data(var/datum/reagent/current_reagent)
+/datum/reagents/proc/copy_data(datum/reagent/current_reagent)
 	if(!current_reagent || !current_reagent.data_properties)
 		return null
 	if(!istype(current_reagent.data_properties, /list))
@@ -582,7 +582,7 @@
 
 	return trans_data
 
-/datum/reagents/proc/replace_with(var/list/replacing, var/result, var/amount)
+/datum/reagents/proc/replace_with(list/replacing, result, amount)
 	for(var/id in replacing)
 		if(get_reagent_amount(id) < replacing[id])
 			return FALSE
@@ -654,7 +654,7 @@
 	trigger_volatiles = FALSE
 	return exploded
 
-/datum/reagents/proc/explode(var/turf/sourceturf, var/ex_power, var/ex_falloff, var/ex_falloff_shape, var/dir, var/angle)
+/datum/reagents/proc/explode(turf/sourceturf, ex_power, ex_falloff, ex_falloff_shape, dir, angle)
 	if(!sourceturf)
 		return
 	if(sourceturf.chemexploded)
@@ -702,7 +702,7 @@
 
 	return exploded
 
-/datum/reagents/proc/combust(var/turf/sourceturf, var/radius, var/intensity, var/duration, var/supplemented, var/firecolor, var/smokerad, var/fire_penetrating)
+/datum/reagents/proc/combust(turf/sourceturf, radius, intensity, duration, supplemented, firecolor, smokerad, fire_penetrating)
 	if(!sourceturf)
 		return
 	if(sourceturf.chemexploded)
@@ -763,6 +763,6 @@
 
 // Convenience proc to create a reagents holder for an atom
 // Max vol is maximum volume of holder
-/atom/proc/create_reagents(var/max_vol)
+/atom/proc/create_reagents(max_vol)
 	reagents = new/datum/reagents(max_vol)
 	reagents.my_atom = src

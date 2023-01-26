@@ -1801,7 +1801,7 @@
 	log_game("[key_name_admin(approver)] has sent a randomized distress beacon, requested by [key_name_admin(ref_person)]")
 	message_staff("[key_name_admin(approver)] has sent a randomized distress beacon, requested by [key_name_admin(ref_person)]")
 
-/datum/admins/proc/generate_job_ban_list(var/mob/M, var/datum/entity/player/P, var/list/roles, var/department, var/color = "ccccff")
+/datum/admins/proc/generate_job_ban_list(mob/M, datum/entity/player/P, list/roles, department, color = "ccccff")
 	var/counter = 0
 
 	var/dat = ""
@@ -1827,7 +1827,7 @@
 	dat += "</tr></table>"
 	return dat
 
-/datum/admins/proc/get_job_titles_from_list(var/list/roles)
+/datum/admins/proc/get_job_titles_from_list(list/roles)
 	var/list/temp = list()
 	for(var/jobPos in roles)
 		if(!jobPos)

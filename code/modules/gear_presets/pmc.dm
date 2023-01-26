@@ -15,7 +15,7 @@
 	access = get_all_accesses() + get_all_centcom_access()
 
 
-/datum/equipment_preset/pmc/load_name(mob/living/carbon/human/H, var/randomise)
+/datum/equipment_preset/pmc/load_name(mob/living/carbon/human/H, randomise)
 	H.gender = pick(MALE,FEMALE)
 	var/random_name
 	var/first_name
@@ -671,7 +671,7 @@
 		headset_type = /obj/item/device/radio/headset/distress/PMC/command
 
 
-/datum/equipment_preset/pmc/synth/load_name(mob/living/carbon/human/H, var/randomise)
+/datum/equipment_preset/pmc/synth/load_name(mob/living/carbon/human/H, randomise)
 	H.gender = pick(50;MALE,50;FEMALE)
 	var/datum/preferences/A = new()
 	A.randomize_appearance(H)

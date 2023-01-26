@@ -202,7 +202,7 @@
 	if(xeno.fortify)
 		button.icon_state = "template_active"
 
-/datum/action/xeno_action/activable/fortify/proc/fortify_switch(var/mob/living/carbon/Xenomorph/X, var/fortify_state)
+/datum/action/xeno_action/activable/fortify/proc/fortify_switch(mob/living/carbon/Xenomorph/X, fortify_state)
 	if(X.fortify == fortify_state)
 		return
 
@@ -245,7 +245,7 @@
 		X.update_icons()
 		X.fortify = FALSE
 
-/datum/action/xeno_action/activable/fortify/proc/check_directional_armor(var/mob/living/carbon/Xenomorph/defendy, list/damagedata)
+/datum/action/xeno_action/activable/fortify/proc/check_directional_armor(mob/living/carbon/Xenomorph/defendy, list/damagedata)
 	SIGNAL_HANDLER
 	var/projectile_direction = damagedata["direction"]
 	if(defendy.dir & REVERSE_DIR(projectile_direction))

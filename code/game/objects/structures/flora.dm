@@ -204,7 +204,7 @@ ICE GRASS
 		new /obj/effect/decal/cleanable/dirt(loc) //Produces more ash at the center
 	qdel(src)
 
-/obj/structure/flora/ex_act(var/power)
+/obj/structure/flora/ex_act(power)
 	if(power >= EXPLOSION_THRESHOLD_VLOW)
 		deconstruct(FALSE)
 
@@ -553,7 +553,7 @@ ICE GRASS
 		else
 			qdel(src)
 
-/obj/structure/flora/jungle/thickbush/flamer_fire_act(var/dam = BURN_LEVEL_TIER_1)
+/obj/structure/flora/jungle/thickbush/flamer_fire_act(dam = BURN_LEVEL_TIER_1)
 	health -= dam
 	healthcheck(src)
 

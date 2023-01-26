@@ -110,7 +110,7 @@
 	w_class = SIZE_MASSIVE // We cheat a little, primed nades become massive so they cant be stored anywhere
 	update_icon()
 
-/obj/item/explosive/grenade/prime(var/force = FALSE)
+/obj/item/explosive/grenade/prime(force = FALSE)
 	..()
 	if(!QDELETED(src))
 		w_class = initial(w_class)
@@ -121,7 +121,7 @@
 		dangerous = FALSE
 	. = ..()
 
-/obj/item/explosive/grenade/launch_towards(var/datum/launch_metadata/LM)
+/obj/item/explosive/grenade/launch_towards(datum/launch_metadata/LM)
 	if(active && ismob(LM.thrower))
 		var/mob/M = LM.thrower
 		M.count_niche_stat(STATISTICS_NICHE_GRENADES)

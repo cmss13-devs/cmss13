@@ -26,7 +26,7 @@
 
 #define isXenoBuilder(A) (isXenoDrone(A) || isXenoHivelord(A) || isXenoCarrier(A) || isXenoBurrower(A) || isXenoQueen(A))
 
-/mob/living/carbon/Xenomorph/proc/can_not_harm(var/mob/living/carbon/C)
+/mob/living/carbon/Xenomorph/proc/can_not_harm(mob/living/carbon/C)
 	if(!istype(C))
 		return FALSE
 
@@ -39,23 +39,23 @@
 	return hive.is_ally(C)
 
 // need this to set the data for walls/eggs/huggers when they are initialized
-/proc/set_hive_data(var/atom/A, hivenumber)
+/proc/set_hive_data(atom/A, hivenumber)
 	var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
 	if (hive.color)
 		A.color = hive.color
 	A.name = "[lowertext(hive.prefix)][A.name]"
 
-/proc/get_xeno_stun_duration(var/mob/A, duration)
+/proc/get_xeno_stun_duration(mob/A, duration)
 	if(isCarbonSizeXeno(A))
 		return duration * XVX_STUN_LENGTHMULT
 	return duration
 
-/proc/get_xeno_damage_slash(var/mob/A, damage)
+/proc/get_xeno_damage_slash(mob/A, damage)
 	if(isCarbonSizeXeno(A))
 		return damage * XVX_SLASH_DAMAGEMULT
 	return damage
 
-/proc/get_xeno_damage_acid(var/mob/target_mob, damage)
+/proc/get_xeno_damage_acid(mob/target_mob, damage)
 	if(isXeno(target_mob))
 		return damage * XVX_ACID_DAMAGEMULT
 	return damage

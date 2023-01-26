@@ -1,4 +1,4 @@
-/mob/living/carbon/human/gib(var/cause = "gibbing")
+/mob/living/carbon/human/gib(cause = "gibbing")
 	var/is_a_synth = isSynth(src)
 	for(var/obj/limb/E in limbs)
 		if(istype(E, /obj/limb/chest))
@@ -37,7 +37,7 @@
 /mob/living/carbon/human/dust_animation()
 	new /obj/effect/overlay/temp/dust_animation(loc, src, "dust-h")
 
-/mob/living/carbon/human/death(var/cause, var/gibbed)
+/mob/living/carbon/human/death(cause, gibbed)
 	if(stat == DEAD)
 		species?.handle_dead_death(src, gibbed)
 		return

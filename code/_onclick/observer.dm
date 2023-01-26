@@ -10,7 +10,7 @@
 	else
 		to_chat(src, SPAN_NOTICE(" You will no longer examine things you click on."))
 
-/mob/dead/observer/click(var/atom/A, var/list/mods)
+/mob/dead/observer/click(atom/A, list/mods)
 	if(..())
 		return 1
 

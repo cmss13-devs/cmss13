@@ -244,7 +244,7 @@
 	..()
 	do_toggle_fuel(user)
 
-/obj/item/storage/large_holster/fuelpack/proc/do_toggle_fuel(var/mob/user)
+/obj/item/storage/large_holster/fuelpack/proc/do_toggle_fuel(mob/user)
 	if(!ishuman(user) || user.is_mob_incapacitated())
 		return FALSE
 
@@ -285,7 +285,7 @@
 	do_toggle_fuel(usr)
 
 
-/obj/item/storage/large_holster/fuelpack/attackby(var/obj/item/A as obj, mob/user as mob)
+/obj/item/storage/large_holster/fuelpack/attackby(obj/item/A as obj, mob/user as mob)
 	if(istype(A, /obj/item/ammo_magazine/flamer_tank/large/))
 		switch_fuel(A, user)
 		return
@@ -301,7 +301,7 @@
 
 	. = ..()
 
-/obj/item/storage/large_holster/fuelpack/proc/switch_fuel(var/obj/item/ammo_magazine/flamer_tank/large/new_fuel, var/mob/user)
+/obj/item/storage/large_holster/fuelpack/proc/switch_fuel(obj/item/ammo_magazine/flamer_tank/large/new_fuel, mob/user)
 	// Switch out the currently stored fuel and drop it
 	if(istype(new_fuel, /obj/item/ammo_magazine/flamer_tank/large/X/))
 		fuelX.forceMove(get_turf(user))
@@ -337,7 +337,7 @@
 /datum/action/item_action/specialist/toggle_fuel
 	ability_primacy = SPEC_PRIMARY_ACTION_1
 
-/datum/action/item_action/specialist/toggle_fuel/New(var/mob/living/user, var/obj/item/holder)
+/datum/action/item_action/specialist/toggle_fuel/New(mob/living/user, obj/item/holder)
 	..()
 	name = "Toggle Fuel Type"
 	button.name = name

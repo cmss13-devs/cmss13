@@ -52,7 +52,7 @@
 /obj/structure/machinery/door_control/attackby(obj/item/W, mob/user as mob)
 	return src.attack_hand(user)
 
-/obj/structure/machinery/door_control/proc/handle_dropship(var/ship_id)
+/obj/structure/machinery/door_control/proc/handle_dropship(ship_id)
 	var/shuttle_tag
 	switch(ship_id)
 		if("sh_dropship1")
@@ -160,7 +160,7 @@
 		return
 	use_button(user)
 
-/obj/structure/machinery/door_control/proc/use_button(mob/living/user, var/force = FALSE)
+/obj/structure/machinery/door_control/proc/use_button(mob/living/user, force = FALSE)
 	if(inoperable())
 		to_chat(user, SPAN_WARNING("[src] doesn't seem to be working."))
 		return
@@ -244,7 +244,7 @@
 	gender = PLURAL
 	var/busy = FALSE
 
-/obj/structure/machinery/door_control/railings/use_button(mob/living/user, var/force = FALSE)
+/obj/structure/machinery/door_control/railings/use_button(mob/living/user, force = FALSE)
 	if(inoperable())
 		to_chat(user, SPAN_WARNING("[src] doesn't seem to be working."))
 		return
@@ -301,7 +301,7 @@
 	icon = 'icons/obj/structures/machinery/computer.dmi'
 	icon_state = "elevator_screen"
 
-/obj/structure/machinery/door_control/airlock/use_button(mob/living/user, var/force = FALSE)
+/obj/structure/machinery/door_control/airlock/use_button(mob/living/user, force = FALSE)
 	if(inoperable())
 		to_chat(user, SPAN_WARNING("\The [src] doesn't seem to be working."))
 		return

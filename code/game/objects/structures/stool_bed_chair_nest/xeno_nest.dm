@@ -249,7 +249,7 @@
 	G.can_reenter_corpse = TRUE
 	return
 
-/obj/structure/bed/nest/ex_act(var/power)
+/obj/structure/bed/nest/ex_act(power)
 	if(power >= EXPLOSION_THRESHOLD_VLOW)
 		deconstruct(FALSE)
 

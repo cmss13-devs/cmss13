@@ -126,7 +126,7 @@ Additional game mode variables.
 
 //===================================================\\
 
-/datum/game_mode/proc/initialize_predator(mob/living/carbon/human/new_predator, var/ignore_pred_num = FALSE)
+/datum/game_mode/proc/initialize_predator(mob/living/carbon/human/new_predator, ignore_pred_num = FALSE)
 	predators[new_predator.ckey] = list("Name" = new_predator.real_name, "Status" = "Alive")
 	if(!ignore_pred_num)
 		pred_current_num++
@@ -248,7 +248,7 @@ Additional game mode variables.
 
 //If we are selecting xenomorphs, we NEED them to play the round. This is the expected behavior.
 //If this is an optional behavior, just override this proc or make an override here.
-/datum/game_mode/proc/initialize_starting_xenomorph_list(var/list/hives = list(XENO_HIVE_NORMAL), var/force_xenos = FALSE)
+/datum/game_mode/proc/initialize_starting_xenomorph_list(list/hives = list(XENO_HIVE_NORMAL), force_xenos = FALSE)
 	var/list/datum/mind/possible_xenomorphs = get_players_for_role(JOB_XENOMORPH)
 	var/list/datum/mind/possible_queens = get_players_for_role(JOB_XENOMORPH_QUEEN)
 	if(possible_xenomorphs.len < xeno_required_num) //We don't have enough aliens, we don't consider people rolling for only Queen.
@@ -321,7 +321,7 @@ Additional game mode variables.
 	return 1
 
 // Helper proc to set some constants
-/proc/setup_new_xeno(var/datum/mind/new_xeno)
+/proc/setup_new_xeno(datum/mind/new_xeno)
 	new_xeno.roundstart_picked = TRUE
 	new_xeno.setup_xeno_stats()
 
@@ -511,7 +511,7 @@ Additional game mode variables.
 
 	return TRUE
 
-/datum/game_mode/proc/transfer_xeno(var/xeno_candidate, mob/living/new_xeno)
+/datum/game_mode/proc/transfer_xeno(xeno_candidate, mob/living/new_xeno)
 	if(!xeno_candidate || !isXeno(new_xeno) || QDELETED(new_xeno))
 		return FALSE
 	var/datum/mind/xeno_candidate_mind
@@ -555,7 +555,7 @@ Additional game mode variables.
 	return TRUE
 
 /// Pick and setup a queen spawn from landmarks, then spawns the player there alongside any required setup
-/datum/game_mode/proc/pick_queen_spawn(datum/mind/ghost_mind, var/hivenumber = XENO_HIVE_NORMAL)
+/datum/game_mode/proc/pick_queen_spawn(datum/mind/ghost_mind, hivenumber = XENO_HIVE_NORMAL)
 	RETURN_TYPE(/turf)
 
 	var/mob/living/original = ghost_mind.current
@@ -598,7 +598,7 @@ Additional game mode variables.
 	transform_queen(ghost_mind, QS, hivenumber)
 	return QS
 
-/datum/game_mode/proc/transform_queen(datum/mind/ghost_mind, var/turf/xeno_turf, var/hivenumber = XENO_HIVE_NORMAL)
+/datum/game_mode/proc/transform_queen(datum/mind/ghost_mind, turf/xeno_turf, hivenumber = XENO_HIVE_NORMAL)
 	var/mob/living/original = ghost_mind.current
 	var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
 	if(hive.living_xeno_queen || !original || !original.client)
@@ -631,7 +631,7 @@ Additional game mode variables.
 // Used by XvX and Infection
 //Start the Survivor players. This must go post-setup so we already have a body.
 //No need to transfer their mind as they begin as a human.
-/datum/game_mode/proc/transform_survivor(var/datum/mind/ghost, var/is_synth = FALSE, var/is_CO = FALSE, var/turf/xeno_turf)
+/datum/game_mode/proc/transform_survivor(datum/mind/ghost, is_synth = FALSE, is_CO = FALSE, turf/xeno_turf)
 	var/picked_spawn = null
 	if(istype(ghost.current, /mob/living) && ghost.current.first_xeno)
 		picked_spawn = xeno_turf
@@ -645,7 +645,7 @@ Additional game mode variables.
 	else
 		return survivor_non_event_transform(ghost.current, picked_spawn, is_synth, is_CO)
 
-/datum/game_mode/proc/survivor_old_equipment(var/mob/living/carbon/human/equipping_human, var/is_synth = FALSE, var/is_CO = FALSE)
+/datum/game_mode/proc/survivor_old_equipment(mob/living/carbon/human/equipping_human, is_synth = FALSE, is_CO = FALSE)
 	var/list/survivor_types = SSmapping.configs[GROUND_MAP].survivor_types
 
 	if(is_synth)
@@ -663,7 +663,7 @@ Additional game mode variables.
 	arm_equipment(equipping_human, randjob, FALSE, not_a_xenomorph)
 
 
-/datum/game_mode/proc/survivor_event_transform(var/mob/living/carbon/human/H, var/obj/effect/landmark/survivor_spawner/spawner, var/is_synth = FALSE, var/is_CO = FALSE)
+/datum/game_mode/proc/survivor_event_transform(mob/living/carbon/human/H, obj/effect/landmark/survivor_spawner/spawner, is_synth = FALSE, is_CO = FALSE)
 	H.forceMove(get_turf(spawner))
 	var/not_a_xenomorph = TRUE
 	if(H.first_xeno)

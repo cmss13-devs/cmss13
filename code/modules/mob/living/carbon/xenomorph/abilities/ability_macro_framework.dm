@@ -1,5 +1,5 @@
 // Backend stuff for macros
-/proc/handle_xeno_macro(mob/living/carbon/Xenomorph/xeno, var/action_name)
+/proc/handle_xeno_macro(mob/living/carbon/Xenomorph/xeno, action_name)
 	for(var/datum/action/xeno_action/action in xeno.actions)
 		if(action.name == action_name)
 			handle_xeno_macro_datum(xeno, action)
@@ -24,11 +24,11 @@
 			log_admin("Xeno action [action.ability_name] is misconfigured. Tell the devs. Code: XENO_ACTION_MACRO_1")
 
 
-/proc/handle_xeno_macro_click(var/mob/living/carbon/Xenomorph/xeno, var/datum/action/xeno_action/action)
+/proc/handle_xeno_macro_click(mob/living/carbon/Xenomorph/xeno, datum/action/xeno_action/action)
 	action.button.clicked(xeno)
 	return
 
-/proc/handle_xeno_macro_activate(var/mob/living/carbon/Xenomorph/xeno, var/datum/action/xeno_action/action)
+/proc/handle_xeno_macro_activate(mob/living/carbon/Xenomorph/xeno, datum/action/xeno_action/action)
 
 	var/datum/action/xeno_action/activable/activable_ability = action
 
@@ -40,7 +40,7 @@
 
 // Queue an action for the next click. This will always work but should only be used for actions that actually NEED an atom to work
 // Other ones should just use the activate proc
-/proc/handle_xeno_macro_actionqueue(var/mob/living/carbon/Xenomorph/xeno, var/datum/action/xeno_action/activable/action)
+/proc/handle_xeno_macro_actionqueue(mob/living/carbon/Xenomorph/xeno, datum/action/xeno_action/activable/action)
 	if (!istype(action))
 		return
 

@@ -34,7 +34,7 @@
 /datum/construction_template/proc/get_structure_image()
 	return image(build_icon, build_icon_state)
 
-/datum/construction_template/proc/add_crystal(var/mob/living/carbon/Xenomorph/xeno)
+/datum/construction_template/proc/add_crystal(mob/living/carbon/Xenomorph/xeno)
 	if(!istype(xeno))
 		return
 	if(!xeno.plasma_max)
@@ -58,7 +58,7 @@
 
 // Xeno ressource collection
 /*
-/datum/construction_template/proc/add_crystal(var/mob/living/carbon/Xenomorph/M)
+/datum/construction_template/proc/add_crystal(mob/living/carbon/Xenomorph/M)
 	if(!istype(M))
 		return
 	if(!M.crystal_stored)
@@ -80,7 +80,7 @@
 	to_chat(M, SPAN_WARNING("\The [name] requires [crystals_required - crystals_stored] more [MATERIAL_CRYSTAL]."))
 	check_completion() */
 
-/datum/construction_template/proc/add_material(var/mob/user, var/obj/item/I)
+/datum/construction_template/proc/add_material(mob/user, obj/item/I)
 	if(isStack(I))
 		var/obj/item/stack/S = I
 		if(!(S.stack_id in materials_required))

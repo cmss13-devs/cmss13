@@ -128,7 +128,7 @@
 	addtimer(CALLBACK(src, PROC_REF(story_announce), 0), 3 MINUTES)
 	return ..()
 
-/datum/game_mode/whiskey_outpost/proc/story_announce(var/time)
+/datum/game_mode/whiskey_outpost/proc/story_announce(time)
 	switch(time)
 		if(0)
 			marine_announcement("This is Captain Hans Naiche, Commander of the 3rd Bataillion, 'Dust Raiders' forces on LV-624. As you already know, several of our patrols have gone missing and likely wiped out by hostile local creatures as we've attempted to set our base up.", "Captain Naiche, 3rd Battalion Command, LV-624 Garrison")
@@ -196,7 +196,7 @@
 	xeno_wave = min(xeno_wave + 1, WO_MAX_WAVE)
 
 
-/datum/game_mode/whiskey_outpost/proc/announce_xeno_wave(var/datum/whiskey_outpost_wave/wave_data)
+/datum/game_mode/whiskey_outpost/proc/announce_xeno_wave(datum/whiskey_outpost_wave/wave_data)
 	if(!istype(wave_data))
 		return
 	if(wave_data.command_announcement.len > 0)
@@ -308,7 +308,7 @@
 /datum/game_mode/proc/auto_declare_completion_whiskey_outpost()
 	return
 
-/datum/game_mode/whiskey_outpost/proc/place_whiskey_outpost_drop(var/OT = "sup") //Art revamping spawns 13JAN17
+/datum/game_mode/whiskey_outpost/proc/place_whiskey_outpost_drop(OT = "sup") //Art revamping spawns 13JAN17
 	var/turf/T = pick(supply_spawns)
 	var/randpick
 	var/list/randomitems = list()
@@ -615,7 +615,7 @@
 	qdel(src)
 	return
 
-/obj/item/device/whiskey_supply_beacon/proc/drop_supplies(var/turf/T,var/SD)
+/obj/item/device/whiskey_supply_beacon/proc/drop_supplies(turf/T, SD)
 	if(!istype(T)) return
 	var/list/spawnitems = list()
 	var/obj/structure/closet/crate/crate
@@ -727,5 +727,5 @@
 			new /obj/item/paper/crumpled(T)
 		qdel(src)
 
-/datum/game_mode/whiskey_outpost/announce_bioscans(var/delta = 2)
+/datum/game_mode/whiskey_outpost/announce_bioscans(delta = 2)
 	return // No bioscans needed in WO

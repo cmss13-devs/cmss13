@@ -80,7 +80,7 @@ var/const/HOLOPAD_MODE = 0
 	. = ..()
 	flags_atom |= USES_HEARING
 
-/obj/structure/machinery/hologram/holopad/attack_hand(var/mob/living/carbon/human/user) //Carn: Hologram requests.
+/obj/structure/machinery/hologram/holopad/attack_hand(mob/living/carbon/human/user) //Carn: Hologram requests.
 	if(!istype(user))
 		return
 	if(alert(user,"Would you like to request an AI's presence?",,"Yes","No") == "Yes")

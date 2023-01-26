@@ -11,7 +11,7 @@ var/global/list/faction_to_tacmap_color = list(
 
 #define TACMAP_REFRESH_FREQUENCY 1 MINUTES
 
-/proc/generate_tacmap(var/map_type = TACMAP_BASE_OCCLUDED)
+/proc/generate_tacmap(map_type = TACMAP_BASE_OCCLUDED)
 	var/icon/minimap = icon('icons/minimap.dmi', SSmapping.configs[GROUND_MAP].map_name)
 	var/min_x = 1000
 	var/max_x = 0
@@ -68,7 +68,7 @@ var/global/list/faction_to_tacmap_color = list(
 	base_mapview_types[map_type] = minimap
 	return minimap
 
-/proc/draw_tacmap_units(var/icon/tacmap, var/tacmap_type = TACMAP_DEFAULT, var/additional_parameter = null)
+/proc/draw_tacmap_units(icon/tacmap, tacmap_type = TACMAP_DEFAULT, additional_parameter = null)
 	switch(tacmap_type)
 		if(TACMAP_DEFAULT)
 			draw_marines(tacmap)
@@ -85,7 +85,7 @@ var/global/list/faction_to_tacmap_color = list(
 			draw_faction_units(tacmap, additional_parameter, (additional_parameter in faction_to_tacmap_color) ? faction_to_tacmap_color[additional_parameter] : "#2facc2d3")
 			draw_tcomms_towers(tacmap)
 
-/proc/draw_marines(var/icon/tacmap)
+/proc/draw_marines(icon/tacmap)
 	var/list/colors = squad_colors.Copy()
 	colors += rgb(51, 204, 204)
 	for(var/mob/living/carbon/human/H as anything in GLOB.alive_human_list)
@@ -101,7 +101,7 @@ var/global/list/faction_to_tacmap_color = list(
 		if(color)
 			tacmap.DrawBox(color, H.loc.x-1, H.loc.y-1, H.loc.x+1, H.loc.y+1)
 
-/proc/draw_faction_units(var/icon/tacmap, var/faction, var/color)
+/proc/draw_faction_units(icon/tacmap, faction, color)
 	for(var/mob/living/carbon/human/H as anything in GLOB.alive_human_list)
 		if(H.faction != faction)
 			continue
@@ -109,7 +109,7 @@ var/global/list/faction_to_tacmap_color = list(
 			continue
 		tacmap.DrawBox(color, H.loc.x-1, H.loc.y-1, H.loc.x+1, H.loc.y+1)
 
-/proc/draw_vehicles(var/icon/tacmap)
+/proc/draw_vehicles(icon/tacmap)
 	for(var/obj/vehicle/multitile/V as anything in GLOB.all_multi_vehicles)
 		if(V.visible_in_tacmap && is_ground_level(V.z)) //don't need colony/hostile vehicle to show
 			tacmap.DrawBox(rgb(0,153,77),V.x-1,V.y-1,V.x+1,V.y+1)
@@ -118,7 +118,7 @@ var/global/list/faction_to_tacmap_color = list(
 			tacmap.DrawBox(rgb(128,255,128),V.x,V.y-1)
 			tacmap.DrawBox(rgb(128,255,128),V.x,V.y+1)
 
-/proc/draw_tcomms_towers(var/icon/tacmap)
+/proc/draw_tcomms_towers(icon/tacmap)
 	for(var/obj/structure/machinery/telecomms/relay/preset/tower/V as anything in GLOB.all_static_telecomms_towers)
 		if(is_ground_level(V.z))
 			tacmap.DrawBox(rgb(255,123,0),V.x-1,V.y-1,V.x+1,V.y+1)
@@ -127,7 +127,7 @@ var/global/list/faction_to_tacmap_color = list(
 			tacmap.DrawBox(rgb(255,180,0),V.x,V.y+1)
 			tacmap.DrawBox(rgb(255,180,0),V.x,V.y-1)
 
-/proc/draw_xenos(var/icon/tacmap, var/human_pov = TRUE, var/use_vehicle = TRUE, var/hivenumber = null)
+/proc/draw_xenos(icon/tacmap, human_pov = TRUE, use_vehicle = TRUE, hivenumber = null)
 	if(!human_pov || SSticker.toweractive)
 		for(var/mob/living/carbon/Xenomorph/X as anything in GLOB.living_xeno_list)
 			if(hivenumber && X.hivenumber != hivenumber)
@@ -171,7 +171,7 @@ var/global/list/faction_to_tacmap_color = list(
 					if(xeno_color)
 						tacmap.DrawBox(xeno_color, XT.x-1, XT.y-1, XT.x+1, XT.y+1)
 
-/proc/overlay_tacmap(var/map_string = TACMAP_DEFAULT, var/map_type = TACMAP_BASE_OCCLUDED, var/additional_parameter = null)
+/proc/overlay_tacmap(map_string = TACMAP_DEFAULT, map_type = TACMAP_BASE_OCCLUDED, additional_parameter = null)
 	var/tacmap_string = map_string
 	if(additional_parameter)
 		tacmap_string += "-[additional_parameter]"
@@ -187,7 +187,7 @@ var/global/list/faction_to_tacmap_color = list(
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(prepare_tacmap_for_update), tacmap_string), TACMAP_REFRESH_FREQUENCY)
 	return tacmap
 
-/proc/prepare_tacmap_for_update(var/tacmap_string = TACMAP_DEFAULT)
+/proc/prepare_tacmap_for_update(tacmap_string = TACMAP_DEFAULT)
 	populated_mapview_type_updated[tacmap_string] = FALSE
 
 /mob/living/carbon/human/proc/has_helmet_camera()

@@ -6,7 +6,7 @@
 	var/ticks_between_plasmas = 1
 	var/plasma_each_process = 0
 
-/datum/effects/plasma_over_time/New(var/atom/A, var/plasma_amount = 0, var/plasma_time = 5, var/time_between_plasmas = 1)
+/datum/effects/plasma_over_time/New(atom/A, plasma_amount = 0, plasma_time = 5, time_between_plasmas = 1)
 	..(A, null, null)
 
 	duration = plasma_time
@@ -14,7 +14,7 @@
 	ticks_between_plasmas = time_between_plasmas
 	plasma_each_process = (plasma_amount / plasma_time) * time_between_plasmas
 
-/datum/effects/plasma_over_time/validate_atom(var/atom/A)
+/datum/effects/plasma_over_time/validate_atom(atom/A)
 	if(!isXeno(A))
 		return FALSE
 	. = ..()

@@ -287,7 +287,7 @@
 
 	return P
 
-/obj/item/device/camera/proc/printpicture(mob/user, var/datum/picture/P)
+/obj/item/device/camera/proc/printpicture(mob/user, datum/picture/P)
 	var/obj/item/photo/Photo = new/obj/item/photo()
 	Photo.forceMove(user.loc)
 	if(!user.get_inactive_hand())
@@ -304,7 +304,7 @@
 	pictures_left = 30
 
 
-/obj/item/photo/proc/construct(var/datum/picture/P)
+/obj/item/photo/proc/construct(datum/picture/P)
 	icon = P.fields["icon"]
 	tiny = P.fields["tiny"]
 	img = P.fields["img"]

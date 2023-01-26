@@ -191,7 +191,7 @@ SUBSYSTEM_DEF(vote)
 	return .
 
 
-/datum/controller/subsystem/vote/proc/handle_client_joining(var/dcs, var/client/C)
+/datum/controller/subsystem/vote/proc/handle_client_joining(dcs, client/C)
 	SIGNAL_HANDLER
 
 	var/datum/action/innate/vote/V = give_action(C.mob, /datum/action/innate/vote)

@@ -80,7 +80,7 @@
 		act.update_button_icon()
 
 
-/mob/living/carbon/Xenomorph/proc/tunnel(var/turf/T)
+/mob/living/carbon/Xenomorph/proc/tunnel(turf/T)
 	if(!check_state())
 		return
 
@@ -135,14 +135,14 @@
 	process_tunnel(T)
 
 
-/mob/living/carbon/Xenomorph/proc/process_tunnel(var/turf/T)
+/mob/living/carbon/Xenomorph/proc/process_tunnel(turf/T)
 	if(world.time > tunnel_timer)
 		tunnel = FALSE
 		do_tunnel(T)
 	if(tunnel && T)
 		addtimer(CALLBACK(src, PROC_REF(process_tunnel), T), 1 SECONDS)
 
-/mob/living/carbon/Xenomorph/proc/do_tunnel(var/turf/T)
+/mob/living/carbon/Xenomorph/proc/do_tunnel(turf/T)
 	to_chat(src, SPAN_NOTICE("You tunnel to your destination."))
 	anchored = FALSE
 	unfreeze()
@@ -157,7 +157,7 @@
 		var/datum/action/act = X
 		act.update_button_icon()
 
-/mob/living/carbon/Xenomorph/proc/rename_tunnel(var/obj/structure/tunnel/T in oview(1))
+/mob/living/carbon/Xenomorph/proc/rename_tunnel(obj/structure/tunnel/T in oview(1))
 	set name = "Rename Tunnel"
 	set desc = "Rename the tunnel."
 	set category = null

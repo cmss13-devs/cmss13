@@ -758,7 +758,7 @@
 	return
 
 /datum/admins/var/create_humans_html = null
-/datum/admins/proc/create_humans(var/mob/user)
+/datum/admins/proc/create_humans(mob/user)
 	if(!GLOB.gear_name_presets_list)
 		return
 
@@ -777,7 +777,7 @@
 		admin_holder.create_humans(usr)
 
 /datum/admins/var/create_xenos_html = null
-/datum/admins/proc/create_xenos(var/mob/user)
+/datum/admins/proc/create_xenos(mob/user)
 	if(!create_xenos_html)
 		var/hive_types = jointext(ALL_XENO_HIVES, ";")
 		var/xeno_types = jointext(ALL_XENO_CASTES, ";")

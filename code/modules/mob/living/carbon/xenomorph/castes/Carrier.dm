@@ -66,7 +66,7 @@
 		/datum/action/xeno_action/activable/retrieve_egg, //4th macro
 		/datum/action/xeno_action/onclick/set_hugger_reserve,
 		)
-	
+
 	inherent_verbs = list(
 		/mob/living/carbon/Xenomorph/proc/rename_tunnel,
 		/mob/living/carbon/Xenomorph/proc/set_hugger_reserve_for_morpher,
@@ -126,7 +126,7 @@
 	. = ..()
 	hugger_overlays_icon = mutable_appearance('icons/mob/xenos/overlay_effects64x64.dmi',"empty")
 
-/mob/living/carbon/Xenomorph/Carrier/death(var/cause, var/gibbed)
+/mob/living/carbon/Xenomorph/Carrier/death(cause, gibbed)
 	. = ..(cause, gibbed)
 	if(.)
 		var/chance = 75

@@ -208,7 +208,7 @@ var/waiting_for_drop_votes = 0
 
 	return ..()
 
-/datum/game_mode/huntergames/proc/spawn_contestant(var/mob/M)
+/datum/game_mode/huntergames/proc/spawn_contestant(mob/M)
 
 	var/mob/living/carbon/human/H
 	var/turf/picked

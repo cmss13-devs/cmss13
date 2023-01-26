@@ -141,7 +141,7 @@
 		movespeed_buff_applied = FALSE
 		UnregisterSignal(owner, COMSIG_MOB_MOVE_OR_LOOK)
 
-/datum/action/xeno_action/onclick/dump_acid/proc/handle_mob_move_or_look(mob/living/carbon/Xenomorph/mover, var/actually_moving, var/direction, var/specific_direction)
+/datum/action/xeno_action/onclick/dump_acid/proc/handle_mob_move_or_look(mob/living/carbon/Xenomorph/mover, actually_moving, direction, specific_direction)
 	SIGNAL_HANDLER
 
 	if(!actually_moving)

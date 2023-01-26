@@ -103,7 +103,7 @@
 
 
 // Spin for a set amount of time at a set speed using directional states
-/atom/movable/proc/spin(var/duration, var/turn_delay = 1, var/clockwise = 0, var/cardinal_only = 1)
+/atom/movable/proc/spin(duration, turn_delay = 1, clockwise = 0, cardinal_only = 1)
 	set waitfor = 0
 
 	if (turn_delay < 1)
@@ -122,7 +122,7 @@
 		setDir(turn(dir, spin_degree))
 		duration -= turn_delay
 
-/atom/movable/proc/spin_circle(var/num_circles = 1, var/turn_delay = 1, var/clockwise = 0, var/cardinal_only = 1)
+/atom/movable/proc/spin_circle(num_circles = 1, turn_delay = 1, clockwise = 0, cardinal_only = 1)
 	set waitfor = 0
 
 	if (num_circles < 1 || turn_delay < 1)

@@ -16,7 +16,7 @@
 
 	var/datum/hive_status/assoc_hive = null
 
-/datum/hive_status_ui/New(var/datum/hive_status/hive)
+/datum/hive_status_ui/New(datum/hive_status/hive)
 	assoc_hive = hive
 	update_all_data()
 	START_PROCESSING(SShive_status, src)
@@ -62,7 +62,7 @@
 
 // Mildly related to the above, but only for when xenos are removed from the hive
 // If a xeno dies, we don't have to regenerate all xeno info and sort it again, just remove them from the data list
-/datum/hive_status_ui/proc/xeno_removed(var/mob/living/carbon/Xenomorph/X)
+/datum/hive_status_ui/proc/xeno_removed(mob/living/carbon/Xenomorph/X)
 	if(!xeno_keys)
 		return
 
@@ -146,7 +146,7 @@
 	.["hive_color"] = assoc_hive.ui_color
 	.["hive_name"] = assoc_hive.name
 
-/datum/hive_status_ui/proc/open_hive_status(var/mob/user)
+/datum/hive_status_ui/proc/open_hive_status(mob/user)
 	if(!user)
 		return
 

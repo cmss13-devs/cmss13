@@ -11,7 +11,7 @@ GLOBAL_LIST_INIT(keybindings_by_name, init_keybindings())
 	//init_emote_keybinds()
 
 /// Adds an instanced keybinding to the global tracker
-/proc/add_keybinding(datum/keybinding/instance, var/list/to_add_to)
+/proc/add_keybinding(datum/keybinding/instance, list/to_add_to)
 	to_add_to[instance.name] = instance
 
 	// Classic

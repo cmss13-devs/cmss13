@@ -58,7 +58,7 @@ GLOBAL_LIST_EMPTY_TYPED(telecomms_list, /obj/structure/machinery/telecomms)
 	else
 		icon_state = "[initial(icon_state)]_off"
 
-/obj/structure/machinery/telecomms/power_change(var/area/master_area = null)
+/obj/structure/machinery/telecomms/power_change(area/master_area = null)
 	. = ..()
 	update_state()
 

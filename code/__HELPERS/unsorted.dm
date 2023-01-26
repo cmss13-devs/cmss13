@@ -62,11 +62,11 @@
 // GLOBAL PROCS //
 
 //Returns the middle-most value
-/proc/dd_range(var/low, var/high, var/num)
+/proc/dd_range(low, high, num)
 	return max(low,min(high,num))
 
 //Returns whether or not A is the middle most value
-/proc/InRange(var/A, var/lower, var/upper)
+/proc/InRange(A, lower, upper)
 	if(A < lower) return 0
 	if(A > upper) return 0
 	return 1
@@ -99,7 +99,7 @@
 		var/atom/movable/big_subject = subject
 		. += (big_subject.bound_height  - world.icon_size) / 2
 
-/proc/Get_Angle(atom/start,atom/end, var/tile_bound = FALSE)//For beams.
+/proc/Get_Angle(atom/start,atom/end, tile_bound = FALSE)//For beams.
 	if(!start || !end) return 0
 	if(!start.z || !end.z) return 0 //Atoms are not on turfs.
 	var/dx
@@ -157,7 +157,7 @@
 //
 // This is a copy-and-paste of the Enter() proc for turfs with tweaks related to the applications
 // of LinkBlocked
-/proc/LinkBlocked(var/atom/movable/mover, var/turf/start_turf, var/turf/target_turf, var/list/atom/forget)
+/proc/LinkBlocked(atom/movable/mover, turf/start_turf, turf/target_turf, list/atom/forget)
 	if (!mover)
 		return null
 
@@ -273,7 +273,7 @@
 
 //This will update a mob's name, real_name, mind.name, data_core records, pda and id
 //Calling this proc without an oldname will only update the mob and skip updating the pda, id and records ~Carn
-/mob/proc/fully_replace_character_name(var/oldname,var/newname)
+/mob/proc/fully_replace_character_name(oldname, newname)
 	if(!newname) return 0
 	change_real_name(src, newname)
 
@@ -305,7 +305,7 @@
 
 //Generalised helper proc for letting mobs rename themselves. Used to be clname() and ainame()
 //Last modified by Carn
-/mob/proc/rename_self(var/role, var/allow_numbers=0)
+/mob/proc/rename_self(role, allow_numbers=0)
 	var/oldname = real_name
 	var/time_passed = world.time
 
@@ -361,7 +361,7 @@
 
 	return selected
 
-/proc/select_active_ai(var/mob/user)
+/proc/select_active_ai(mob/user)
 	var/list/ais = active_ais()
 	if(ais.len)
 		if(user) . = tgui_input_list(usr,"AI signals detected:", "AI selection", ais)
@@ -690,7 +690,7 @@
 		synthlist.Add(M)
 	return synthlist
 
-/proc/key_name(var/whom, var/include_link = null, var/include_name = 1, var/highlight_special_characters = 1)
+/proc/key_name(whom, include_link = null, include_name = 1, highlight_special_characters = 1)
 	var/mob/M
 	var/client/C
 	var/key
@@ -736,13 +736,13 @@
 
 	return .
 
-/proc/key_name_admin(var/whom, var/include_name = 1)
+/proc/key_name_admin(whom, include_name = 1)
 	return key_name(whom, 1, include_name)
 
 
 // returns the turf located at the map edge in the specified direction relative to A
 // used for mass driver
-/proc/get_edge_target_turf(var/atom/A, var/direction)
+/proc/get_edge_target_turf(atom/A, direction)
 
 	var/turf/target = locate(A.x, A.y, A.z)
 	if(!A || !target)
@@ -784,7 +784,7 @@
 // result is bounded to map size
 // note range is non-pythagorean
 // used for disposal system
-/proc/get_ranged_target_turf(var/atom/A, var/direction, var/range)
+/proc/get_ranged_target_turf(atom/A, direction, range)
 
 	var/x = A.x
 	var/y = A.y
@@ -801,7 +801,7 @@
 
 // returns turf relative to A for a given clockwise angle at set range
 // result is bounded to map size
-/proc/get_angle_target_turf(var/atom/A, var/angle, var/range)
+/proc/get_angle_target_turf(atom/A, angle, range)
 	if(!istype(A))
 		return null
 	var/x = A.x
@@ -842,7 +842,7 @@
 
 // returns turf relative to A offset in dx and dy tiles
 // bound to map limits
-/proc/get_offset_target_turf(var/atom/A, var/dx, var/dy)
+/proc/get_offset_target_turf(atom/A, dx, dy)
 	var/x = min(world.maxx, max(1, A.x + dx))
 	var/y = min(world.maxy, max(1, A.y + dy))
 	return locate(x,y,A.z)
@@ -884,7 +884,7 @@
 	return toReturn
 
 //Step-towards method of determining whether one atom can see another. Similar to viewers()
-/proc/can_see(var/atom/source, var/atom/target, var/length=5) // I couldnt be arsed to do actual raycasting :I This is horribly inaccurate.
+/proc/can_see(atom/source, atom/target, length=5) // I couldnt be arsed to do actual raycasting :I This is horribly inaccurate.
 	var/turf/current = get_turf(source)
 	var/turf/target_turf = get_turf(target)
 	var/steps = 0
@@ -905,7 +905,7 @@
 
 	return TRUE
 
-/proc/is_blocked_turf(var/turf/T)
+/proc/is_blocked_turf(turf/T)
 	if(T.density)
 		return TRUE
 	for(var/atom/A in T)
@@ -1220,7 +1220,7 @@ var/global/image/action_purple_power_up
 
 //Takes: Anything that could possibly have variables and a varname to check.
 //Returns: 1 if found, 0 if not.
-/proc/hasvar(var/datum/A, var/varname)
+/proc/hasvar(datum/A, varname)
 	if(A.vars.Find(lowertext(varname))) return 1
 	else return 0
 
@@ -1264,7 +1264,7 @@ var/global/image/action_purple_power_up
 	var/y_pos = null
 	var/z_pos = null
 
-/datum/coords/New(var/turf/location)
+/datum/coords/New(turf/location)
 	. = ..()
 	if(location)
 		x_pos = location.x
@@ -1277,7 +1277,7 @@ var/global/image/action_purple_power_up
 
 	return locate(x_pos, y_pos, z_pos)
 
-/area/proc/move_contents_to(var/area/A, var/turftoleave=null, var/direction = null)
+/area/proc/move_contents_to(area/A, turftoleave=null, direction = null)
 	//Takes: Area. Optional: turf type to leave behind.
 	//Returns: Nothing.
 	//Notes: Attempts to move the contents of one area to another area.
@@ -1419,7 +1419,7 @@ var/global/image/action_purple_power_up
 
 
 //Returns the 2 dirs perpendicular to the arg
-/proc/get_perpen_dir(var/dir)
+/proc/get_perpen_dir(dir)
 	if(dir & (dir-1))
 		return 0 //diagonals
 	if(dir & (EAST|WEST))
@@ -1443,7 +1443,7 @@ var/global/image/action_purple_power_up
 	else if (zone == "r_foot") return "right foot"
 	else return zone
 
-/proc/get_true_location(var/atom/loc)
+/proc/get_true_location(atom/loc)
 	var/atom/subLoc = loc
 	while(subLoc.z == 0)
 		if (istype(subLoc.loc, /atom))
@@ -1631,7 +1631,7 @@ var/list/WALLITEMS = list(
 
 #undef DELTA_CALC
 
-/proc/get_random_turf_in_range(var/atom/origin, var/outer_range, var/inner_range)
+/proc/get_random_turf_in_range(atom/origin, outer_range, inner_range)
 	origin = get_turf(origin)
 	if(!origin)
 		return
@@ -1642,7 +1642,7 @@ var/list/WALLITEMS = list(
 	if(turfs.len)
 		return pick(turfs)
 
-/proc/input_marked_datum(var/list/marked_datums)
+/proc/input_marked_datum(list/marked_datums)
 	if(!marked_datums.len)
 		return null
 
@@ -1667,7 +1667,7 @@ var/list/WALLITEMS = list(
 // * The dropship crash hasn't happened yet
 // * An admin hasn't disabled explosive antigrief
 // Certain areas may be exempt from this check. Look up explosive_antigrief_exempt_areas
-/proc/explosive_antigrief_check(var/obj/item/explosive/explosive, var/mob/user)
+/proc/explosive_antigrief_check(obj/item/explosive/explosive, mob/user)
 	var/turf/Turf = get_turf(explosive)
 	if(!(Turf.loc.type in GLOB.explosive_antigrief_exempt_areas))
 		var/crash_occured = (SSticker?.mode?.is_in_endgame)
@@ -1683,7 +1683,7 @@ var/list/WALLITEMS = list(
 	return FALSE
 
 // Returns only the perimeter of the block given by the min and max turfs
-/proc/blockhollow(var/turf/min, var/turf/max)
+/proc/blockhollow(turf/min, turf/max)
 	var/list/perimeter_turfs = list()
 
 	// Upper/lower perimeters
@@ -1698,11 +1698,11 @@ var/list/WALLITEMS = list(
 
 	return perimeter_turfs
 
-/proc/flick_overlay(var/atom/target, overlay, time)
+/proc/flick_overlay(atom/target, overlay, time)
 	target.overlays += overlay
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(remove_timed_overlay), target, overlay), time)
 
-/proc/remove_timed_overlay(var/atom/target, overlay)
+/proc/remove_timed_overlay(atom/target, overlay)
 	target.overlays -= overlay
 
 /*
@@ -1722,7 +1722,7 @@ var/list/WALLITEMS = list(
 
 	Basically, this is what happens: https://i.imgur.com/AuY7HHd.png
 */
-/proc/get_random_zero_sum_variances(var/amount, var/max_variance)
+/proc/get_random_zero_sum_variances(amount, max_variance)
 	// Displace each "point" to max variance
 	var/list/variances[amount]
 	for(var/i in 1 to variances.len)
@@ -1761,7 +1761,7 @@ var/list/WALLITEMS = list(
 
 	return variances
 
-/proc/check_bitflag(var/flag, var/bit)
+/proc/check_bitflag(flag, bit)
 	if(flag & bit)
 		return TRUE
 	return FALSE
@@ -1782,7 +1782,7 @@ var/list/WALLITEMS = list(
 			return TRUE
 
 //used to check if a mob can examine an object
-/atom/proc/can_examine(var/mob/user)
+/atom/proc/can_examine(mob/user)
 	if(!user.client)
 		return FALSE
 	if(isRemoteControlling(user))
@@ -1938,7 +1938,7 @@ GLOBAL_LIST_INIT(duplicate_forbidden_vars,list(
 		M.regenerate_icons()
 	return O
 
-/proc/convert_to_json_text(var/json_file_string)
+/proc/convert_to_json_text(json_file_string)
 	var/json_file = file(json_file_string)
 	json_file = file2text(json_file)
 	json_file = json_decode(json_file)

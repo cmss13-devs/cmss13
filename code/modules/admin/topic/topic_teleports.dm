@@ -1,4 +1,4 @@
-/datum/admins/proc/topic_teleports(var/href)
+/datum/admins/proc/topic_teleports(href)
 	switch(href)
 		if("jump_to_area")
 			var/area/choice = tgui_input_list(owner, "Pick an area to jump to:", "Jump", return_sorted_areas())
@@ -172,7 +172,7 @@
 				M.on_mob_jump()
 				M.forceMove(get_turf(owner.mob))
 			message_staff(WRAP_STAFF_LOG(owner.mob, "mass-teleported [GLOB.dead_mob_list.len] corpses to themselves in [get_area(owner.mob)] ([owner.mob.x],[owner.mob.y],[owner.mob.z])."), owner.mob.x, owner.mob.y, owner.mob.z)
-		
+
 		if("teleport_items_by_type")
 			var/item = input(owner,"What item?", "Item Fetcher","") as text|null
 			if(!item)

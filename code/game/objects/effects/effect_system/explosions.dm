@@ -46,7 +46,7 @@
 		if(light > 0)
 			return TRUE
 
-/datum/effect_system/reagents_explosion/proc/holder_damage(var/atom/holder)
+/datum/effect_system/reagents_explosion/proc/holder_damage(atom/holder)
 	if(holder)
 		var/dmglevel = 4
 

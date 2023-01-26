@@ -62,7 +62,7 @@
 	icon_xenonid = 'icons/mob/xenonids/runner.dmi'
 
 
-/mob/living/carbon/Xenomorph/Runner/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/mob/living/carbon/Xenomorph/Runner/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_pass = PASS_FLAGS_CRAWLER

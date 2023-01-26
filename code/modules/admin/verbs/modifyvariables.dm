@@ -58,7 +58,7 @@
 	return var_value
 
 
-/client/proc/mod_list_add(var/list/L)
+/client/proc/mod_list_add(list/L)
 
 	var/class = "text"
 
@@ -128,7 +128,7 @@
 
 	message_staff("[key_name_admin(src)] added a new element to a list with a key of '[var_value]' and an associated value of [isnum(var_value)? "null" : L[var_value]]", 1)
 
-/client/proc/mod_list(var/list/L)
+/client/proc/mod_list(list/L)
 	if(!check_rights(R_VAREDIT)) return
 
 	if(!istype(L,/list)) to_chat(src, "Not a List.")
@@ -296,7 +296,7 @@
 	message_staff("[key_name_admin(src)] modified a list's '[variable]': [L.Find(variable)] => [L[L.Find(variable)]]", 1)
 
 
-/client/proc/modify_variables(var/atom/O, var/param_var_name = null, var/autodetect_class = 0)
+/client/proc/modify_variables(atom/O, param_var_name = null, autodetect_class = 0)
 	if(!check_rights(R_VAREDIT)) return
 
 	var/list/locked = list("vars", "key", "ckey", "client", "icon")

@@ -367,7 +367,7 @@
 	..()
 	return
 
-/datum/action/xeno_action/activable/prae_abduct/proc/remove_tail_overlay(var/mob/living/carbon/human/overlayed_human, var/image/tail_image)
+/datum/action/xeno_action/activable/prae_abduct/proc/remove_tail_overlay(mob/living/carbon/human/overlayed_human, image/tail_image)
 	overlayed_human.overlays -= tail_image
 
 /datum/action/xeno_action/activable/oppressor_punch/use_ability(atom/target_atom)

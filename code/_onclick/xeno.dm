@@ -54,9 +54,9 @@
 										firepatted = TRUE
 										fire.firelevel -= 2*fire_level_to_extinguish
 										fire.update_flame()
-									else 
+									else
 										qdel(fire)
-								else 
+								else
 									qdel(fire)
 				xeno_miss_delay(src)
 				animation_attack_on(target)
@@ -69,7 +69,7 @@
 					SPAN_DANGER("You swipe at \the [target]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	return TRUE
 
-/mob/living/carbon/Xenomorph/RangedAttack(var/atom/A)
+/mob/living/carbon/Xenomorph/RangedAttack(atom/A)
 	. = ..()
 	if (.)
 		return
@@ -89,7 +89,7 @@ so that it doesn't double up on the delays) so that it applies the delay immedia
 /atom/proc/attack_alien(mob/user as mob)
 	return
 
-/mob/living/carbon/Xenomorph/click(var/atom/A, var/list/mods)
+/mob/living/carbon/Xenomorph/click(atom/A, list/mods)
 	if (queued_action)
 		handle_queued_action(A)
 		return TRUE

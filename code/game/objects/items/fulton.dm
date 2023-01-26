@@ -23,7 +23,7 @@ var/global/list/deployed_fultons = list()
 	var/turf/original_location = null
 	var/attachable_atoms = list(/obj/structure/closet/crate)
 
-/obj/item/stack/fulton/New(loc, amount, var/atom_to_attach)
+/obj/item/stack/fulton/New(loc, amount, atom_to_attach)
 	..()
 	if(amount)
 		src.amount = amount
@@ -155,7 +155,7 @@ var/global/list/deployed_fultons = list()
 
 	addtimer(CALLBACK(src, PROC_REF(return_fulton), original_location), 150 SECONDS)
 
-/obj/item/stack/fulton/proc/return_fulton(var/turf/return_turf)
+/obj/item/stack/fulton/proc/return_fulton(turf/return_turf)
 
 	// Fulton is not in space, it must have been collected.
 	if(!istype(get_area(attached_atom), /area/space/highalt))

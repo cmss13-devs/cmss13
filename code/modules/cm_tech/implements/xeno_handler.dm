@@ -18,7 +18,7 @@
 	if(istype(drop_spawn))
 		new /obj/effect/alien/weeds/node(drop_spawn, null, null, GLOB.hive_datum[XENO_HIVE_TAMED]) //drop some weeds for xeno plasma regen.
 
-/datum/emergency_call/xeno_handler/create_member(datum/mind/M, var/turf/override_spawn_loc)
+/datum/emergency_call/xeno_handler/create_member(datum/mind/M, turf/override_spawn_loc)
 	var/turf/spawn_loc = override_spawn_loc ? override_spawn_loc : get_spawn_point()
 
 	if(!istype(spawn_loc))

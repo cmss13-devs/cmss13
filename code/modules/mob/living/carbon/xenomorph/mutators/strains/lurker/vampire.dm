@@ -22,7 +22,7 @@
 	if (. == FALSE)
 		return
 
-	var/mob/living/carbon/Xenomorph/Lurker/lurker = mutator_set.xeno
+	var/mob/living/carbon/xenomorph/lurker/lurker = mutator_set.xeno
 
 	lurker.plasmapool_modifier = 0
 	lurker.health_modifier -= XENO_HEALTH_MOD_MED

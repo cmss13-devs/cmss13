@@ -127,7 +127,7 @@
 
 /datum/ammo/proc/knockback_effects(mob/living/L, obj/item/projectile/P)
 	if(isCarbonSizeXeno(L))
-		var/mob/living/carbon/Xenomorph/target = L
+		var/mob/living/carbon/xenomorph/target = L
 		target.apply_effect(0.7, WEAKEN) // 0.9 seconds of stun, per agreement from Balance Team when switched from MC stuns to exact stuns
 		target.apply_effect(1, SUPERSLOW)
 		target.apply_effect(2, SLOW)
@@ -155,7 +155,7 @@
 			M.visible_message(SPAN_DANGER("[M] is hit by backlash from \a [P.name]!"),isXeno(M) ? SPAN_XENODANGER("[msg]"):SPAN_HIGHDANGER("[msg]"))
 		var/damage = P.damage/damage_div
 
-		var/mob/living/carbon/Xenomorph/XNO = null
+		var/mob/living/carbon/xenomorph/XNO = null
 
 		if(isXeno(M))
 			XNO = M
@@ -833,7 +833,7 @@
 		return
 
 	if(isCarbonSizeXeno(L))
-		var/mob/living/carbon/Xenomorph/X = L
+		var/mob/living/carbon/xenomorph/X = L
 		if(X.tier != 1) // 0 is queen!
 			return
 	else if(HAS_TRAIT(L, TRAIT_SUPER_STRONG))
@@ -863,7 +863,7 @@
 	var/super_slowdown_duration = 3
 	//If there's an obstacle on the far side, superslow and do extra damage.
 	if(isCarbonSizeXeno(L)) //Unless they're a strong xeno, in which case the slowdown is drastically reduced
-		var/mob/living/carbon/Xenomorph/X = L
+		var/mob/living/carbon/xenomorph/X = L
 		if(X.tier != 1) // 0 is queen!
 			super_slowdown_duration = 0.5
 	else if(HAS_TRAIT(L, TRAIT_SUPER_STRONG))
@@ -1649,7 +1649,7 @@
 		var/mob/living/L = M
 		var/blind_duration = 5
 		if(isXeno(M))
-			var/mob/living/carbon/Xenomorph/target = M
+			var/mob/living/carbon/xenomorph/target = M
 			if(target.mob_size >= MOB_SIZE_BIG)
 				blind_duration = 2
 		L.AdjustEyeBlur(blind_duration)
@@ -1672,7 +1672,7 @@
 		var/slow_duration = 7
 		var/mob/living/L = M
 		if(isXeno(M))
-			var/mob/living/carbon/Xenomorph/target = M
+			var/mob/living/carbon/xenomorph/target = M
 			if(target.mob_size >= MOB_SIZE_BIG)
 				slow_duration = 4
 		M.adjust_effect(slow_duration, SUPERSLOW)
@@ -1772,7 +1772,7 @@
 		var/mob/living/L = M
 		var/size_damage_mod = 0.8
 		if(isXeno(M))
-			var/mob/living/carbon/Xenomorph/target = M
+			var/mob/living/carbon/xenomorph/target = M
 			if(target.mob_size >= MOB_SIZE_XENO)
 				size_damage_mod += 0.6
 			if(target.mob_size >= MOB_SIZE_BIG)
@@ -1800,7 +1800,7 @@
 		var/mob/living/L = M
 		var/size_damage_mod = 0.5
 		if(isXeno(M))
-			var/mob/living/carbon/Xenomorph/target = M
+			var/mob/living/carbon/xenomorph/target = M
 			if(target.mob_size >= MOB_SIZE_XENO)
 				size_damage_mod += 0.5
 			if(target.mob_size >= MOB_SIZE_BIG)
@@ -2921,7 +2921,7 @@
 	generated_projectile.overlays += hook_overlay
 
 /datum/ammo/xeno/oppressor_tail/on_hit_mob(mob/target, obj/item/projectile/fired_proj)
-	var/mob/living/carbon/Xenomorph/xeno_firer = fired_proj.firer
+	var/mob/living/carbon/xenomorph/xeno_firer = fired_proj.firer
 	if(xeno_firer.can_not_harm(target))
 		return
 

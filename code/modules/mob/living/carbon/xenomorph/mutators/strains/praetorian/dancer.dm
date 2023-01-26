@@ -25,7 +25,7 @@
 	if (. == 0)
 		return
 
-	var/mob/living/carbon/Xenomorph/Praetorian/praetorian = mutator_set.xeno
+	var/mob/living/carbon/xenomorph/praetorian/praetorian = mutator_set.xeno
 	praetorian.armor_modifier -= XENO_ARMOR_MOD_VERYSMALL
 	praetorian.speed_modifier += XENO_SPEED_FASTMOD_TIER_5
 	praetorian.plasma_types = list(PLASMA_CATECHOLAMINE)

@@ -241,7 +241,7 @@
 	if(!ishuman(M))
 		if(isXeno(M))
 			if(get_dist(M, T) <= 4)
-				var/mob/living/carbon/Xenomorph/X = M
+				var/mob/living/carbon/xenomorph/X = M
 				X.Daze(2)
 				X.SetEarDeafness(max(X.ear_deaf, 3))
 		else //simple mobs?

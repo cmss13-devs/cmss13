@@ -230,7 +230,7 @@
 /datum/game_mode/whiskey_outpost/count_xenos()//Counts braindead too
 	var/xeno_count = 0
 	for(var/i in GLOB.living_xeno_list)
-		var/mob/living/carbon/Xenomorph/X = i
+		var/mob/living/carbon/xenomorph/X = i
 		if(is_ground_level(X.z) && !istype(X.loc,/turf/open/space)) // If they're connected/unghosted and alive and not debrained
 			xeno_count += 1 //Add them to the amount of people who're alive.
 
@@ -463,7 +463,7 @@
 	if(user.lying || user.stat)
 		return
 	if(ismaintdrone(usr) || \
-		istype(usr, /mob/living/carbon/Xenomorph))
+		istype(usr, /mob/living/carbon/xenomorph))
 		to_chat(usr, SPAN_DANGER("You don't have the dexterity to do this!"))
 		return
 	if(working)
@@ -496,8 +496,8 @@
 					removed++
 					break
 			for(var/mob/M in T)
-				if(istype(M,/mob/living/carbon/Xenomorph))
-					var/mob/living/carbon/Xenomorph/X = M
+				if(istype(M,/mob/living/carbon/xenomorph))
+					var/mob/living/carbon/xenomorph/X = M
 					if(!X.stat == DEAD)
 						continue
 					X.forceMove(get_turf(locate(84,237,2))) //z.2

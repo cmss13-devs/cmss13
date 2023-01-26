@@ -137,7 +137,7 @@
 					return
 				var/datum/hive_status/Hive = GLOB.hive_datum[hives[faction]]
 				var/list/targets = Hive.totalXenos
-				for(var/mob/living/carbon/Xenomorph/X in targets)
+				for(var/mob/living/carbon/xenomorph/X in targets)
 					var/area/AR = get_area(X)
 					if(X.stat == DEAD || AR.statistic_exempt)
 						targets.Remove(X)
@@ -172,7 +172,7 @@
 				M.on_mob_jump()
 				M.forceMove(get_turf(owner.mob))
 			message_staff(WRAP_STAFF_LOG(owner.mob, "mass-teleported [GLOB.dead_mob_list.len] corpses to themselves in [get_area(owner.mob)] ([owner.mob.x],[owner.mob.y],[owner.mob.z])."), owner.mob.x, owner.mob.y, owner.mob.z)
-		
+
 		if("teleport_items_by_type")
 			var/item = input(owner,"What item?", "Item Fetcher","") as text|null
 			if(!item)

@@ -23,7 +23,7 @@
 
 	to_chat(A, SPAN_XENONOTICE("You feel empowered"))
 
-	var/mob/living/carbon/Xenomorph/X = A
+	var/mob/living/carbon/xenomorph/X = A
 	X.melee_damage_lower += bonus_damage
 	X.melee_damage_upper += bonus_damage
 
@@ -48,7 +48,7 @@
 
 	if(affected_atom)
 		to_chat(affected_atom, SPAN_XENONOTICE("You no longer feel empowered"))
-		var/mob/living/carbon/Xenomorph/X = affected_atom
+		var/mob/living/carbon/xenomorph/X = affected_atom
 		X.melee_damage_lower -= bonus_damage
 		X.melee_damage_upper -= bonus_damage
 

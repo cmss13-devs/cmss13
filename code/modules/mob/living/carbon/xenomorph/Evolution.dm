@@ -4,7 +4,7 @@
 //All castes need an evolves_to() list in their defines
 //Such as evolves_to = list(XENO_CASTE_WARRIOR, XENO_CASTE_SENTINEL, XENO_CASTE_RUNNER, "Badass") etc
 
-/mob/living/carbon/Xenomorph/verb/Evolve()
+/mob/living/carbon/xenomorph/verb/Evolve()
 	set name = "Evolve"
 	set desc = "Evolve into a higher form."
 	set category = "Alien"
@@ -46,7 +46,7 @@
 			return
 
 	// Used for restricting benos to evolve to drone/queen when they're the only potential queen
-	for(var/mob/living/carbon/Xenomorph/M in GLOB.living_xeno_list)
+	for(var/mob/living/carbon/xenomorph/M in GLOB.living_xeno_list)
 		if(hivenumber != M.hivenumber)
 			continue
 
@@ -61,7 +61,7 @@
 					if(M.client && M.ckey)
 						potential_queens++
 
-	var/mob/living/carbon/Xenomorph/M = null
+	var/mob/living/carbon/xenomorph/M = null
 
 	M = RoleAuthority.get_caste_by_text(castepick)
 
@@ -102,7 +102,7 @@
 		return
 
 	//From there, the new xeno exists, hopefully
-	var/mob/living/carbon/Xenomorph/new_xeno = new M(get_turf(src), src)
+	var/mob/living/carbon/xenomorph/new_xeno = new M(get_turf(src), src)
 
 	if(!istype(new_xeno))
 		//Something went horribly wrong!
@@ -161,7 +161,7 @@
 		round_statistics.track_new_participant(new_xeno.faction, -1) //so an evolved xeno doesn't count as two.
 	SSround_recording.recorder.track_player(new_xeno)
 
-/mob/living/carbon/Xenomorph/proc/evolve_checks()
+/mob/living/carbon/xenomorph/proc/evolve_checks()
 	if(!check_state(TRUE))
 		return FALSE
 
@@ -211,7 +211,7 @@
 	return TRUE
 
 // The queen de-evo, but on yourself. Only usable once
-/mob/living/carbon/Xenomorph/verb/Deevolve()
+/mob/living/carbon/xenomorph/verb/Deevolve()
 	set name = "De-Evolve"
 	set desc = "De-evolve into a lesser form."
 	set category = "Alien"
@@ -274,25 +274,25 @@
 	var/level_to_switch_to = get_vision_level()
 	switch(newcaste)
 		if("Larva")
-			xeno_type = /mob/living/carbon/Xenomorph/Larva
+			xeno_type = /mob/living/carbon/xenomorph/larva
 		if(XENO_CASTE_RUNNER)
-			xeno_type = /mob/living/carbon/Xenomorph/Runner
+			xeno_type = /mob/living/carbon/xenomorph/runner
 		if(XENO_CASTE_DRONE)
-			xeno_type = /mob/living/carbon/Xenomorph/Drone
+			xeno_type = /mob/living/carbon/xenomorph/drone
 		if(XENO_CASTE_SENTINEL)
-			xeno_type = /mob/living/carbon/Xenomorph/Sentinel
+			xeno_type = /mob/living/carbon/xenomorph/sentinel
 		if(XENO_CASTE_SPITTER)
-			xeno_type = /mob/living/carbon/Xenomorph/Spitter
+			xeno_type = /mob/living/carbon/xenomorph/spitter
 		if(XENO_CASTE_LURKER)
-			xeno_type = /mob/living/carbon/Xenomorph/Lurker
+			xeno_type = /mob/living/carbon/xenomorph/lurker
 		if(XENO_CASTE_WARRIOR)
-			xeno_type = /mob/living/carbon/Xenomorph/Warrior
+			xeno_type = /mob/living/carbon/xenomorph/warrior
 		if(XENO_CASTE_DEFENDER)
-			xeno_type = /mob/living/carbon/Xenomorph/Defender
+			xeno_type = /mob/living/carbon/xenomorph/defender
 		if(XENO_CASTE_BURROWER)
-			xeno_type = /mob/living/carbon/Xenomorph/Burrower
+			xeno_type = /mob/living/carbon/xenomorph/burrower
 
-	var/mob/living/carbon/Xenomorph/new_xeno = new xeno_type(get_turf(src), src)
+	var/mob/living/carbon/xenomorph/new_xeno = new xeno_type(get_turf(src), src)
 
 	new_xeno.built_structures = built_structures.Copy()
 
@@ -329,7 +329,7 @@
 
 	qdel(src)
 
-/mob/living/carbon/Xenomorph/proc/can_evolve(castepick, potential_queens)
+/mob/living/carbon/xenomorph/proc/can_evolve(castepick, potential_queens)
 	var/selected_caste = GLOB.xeno_datum_list[castepick]?.type
 	var/free_slots = LAZYACCESS(hive.free_slots, selected_caste)
 	if(free_slots)
@@ -349,7 +349,7 @@
 			if(3) used_tier_3_slots--
 
 	var/totalXenos = pooled_factor
-	for(var/mob/living/carbon/Xenomorph/xeno as anything in hive.totalXenos)
+	for(var/mob/living/carbon/xenomorph/xeno as anything in hive.totalXenos)
 		if(xeno.counts_for_slots)
 			totalXenos++
 

@@ -1,5 +1,5 @@
 /datum/action/xeno_action/onclick/predalien_roar/use_ability(atom/target)
-	var/mob/living/carbon/Xenomorph/xeno = owner
+	var/mob/living/carbon/xenomorph/xeno = owner
 
 	if (!action_cooldown_check())
 		return
@@ -42,7 +42,7 @@
 	return
 
 /datum/action/xeno_action/onclick/smash/use_ability(atom/target)
-	var/mob/living/carbon/Xenomorph/xeno = owner
+	var/mob/living/carbon/xenomorph/xeno = owner
 
 	if (!action_cooldown_check())
 		return
@@ -97,7 +97,7 @@
 	return
 
 /datum/action/xeno_action/activable/devastate/use_ability(atom/target)
-	var/mob/living/carbon/Xenomorph/xeno = owner
+	var/mob/living/carbon/xenomorph/xeno = owner
 
 	if (!action_cooldown_check())
 		return

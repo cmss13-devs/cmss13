@@ -343,7 +343,7 @@
 		return
 
 	if(isXeno(H))
-		var/mob/living/carbon/Xenomorph/X = H
+		var/mob/living/carbon/xenomorph/X = H
 		X.set_hive_and_update(hives[newhive])
 	else
 		var/was_leader = FALSE

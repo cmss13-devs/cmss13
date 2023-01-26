@@ -27,7 +27,7 @@
 	if(. == 0)
 		return
 
-	var/mob/living/carbon/Xenomorph/Boiler/boiler = mutator_set.xeno
+	var/mob/living/carbon/xenomorph/boiler/boiler = mutator_set.xeno
 	if(boiler.is_zoomed)
 		boiler.zoom_out()
 
@@ -64,7 +64,7 @@
 		temp_movespeed_usable = FALSE
 
 		if (isXeno(bound_xeno))
-			var/mob/living/carbon/Xenomorph/xeno = bound_xeno
+			var/mob/living/carbon/xenomorph/xeno = bound_xeno
 			xeno.speed_modifier -= temp_movespeed_amount
 			xeno.recalculate_speed()
 			addtimer(CALLBACK(src, PROC_REF(remove_speed_buff)), temp_movespeed_duration)
@@ -108,7 +108,7 @@
 
 /datum/behavior_delegate/boiler_trapper/proc/remove_speed_buff()
 	if (isXeno(bound_xeno))
-		var/mob/living/carbon/Xenomorph/xeno = bound_xeno
+		var/mob/living/carbon/xenomorph/xeno = bound_xeno
 		xeno.speed_modifier += temp_movespeed_amount
 		xeno.recalculate_speed()
 		temp_movespeed_messaged = FALSE

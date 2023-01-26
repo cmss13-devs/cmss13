@@ -69,7 +69,7 @@
 	for(var/obj/structure/closet/closet in get_turf(src))
 		if(closet != src && !closet.wall_mounted)
 			return 0
-	for(var/mob/living/carbon/Xenomorph/Xeno in get_turf(src))
+	for(var/mob/living/carbon/xenomorph/xeno in get_turf(src))
 		return 0
 	return 1
 
@@ -265,7 +265,7 @@
 			M.show_message(SPAN_WARNING("[src] has been [welded?"welded shut":"unwelded"] by [user.name]."), SHOW_MESSAGE_VISIBLE, "You hear welding.", SHOW_MESSAGE_AUDIBLE)
 	else
 		if(isXeno(user))
-			var/mob/living/carbon/Xenomorph/opener = user
+			var/mob/living/carbon/xenomorph/opener = user
 			src.attack_alien(opener)
 			return
 		src.attack_hand(user)

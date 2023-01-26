@@ -157,7 +157,7 @@
 	if (isrobot(usr))
 		return
 
-	if (istype(usr, /mob/living/carbon/Xenomorph))
+	if (istype(usr, /mob/living/carbon/xenomorph))
 		return
 
 	if (localopened)

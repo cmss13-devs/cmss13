@@ -44,14 +44,14 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 
 /obj/structure/machinery/computer/shuttle_control/is_valid_user(mob/user)
 	if(isXeno(user))
-		var/mob/living/carbon/Xenomorph/xeno_user = user
+		var/mob/living/carbon/xenomorph/xeno_user = user
 		if(xeno_user.caste?.is_intelligent)
 			return TRUE // Allow access by Queen and Predalien
 	return ..()
 
 /obj/structure/machinery/computer/shuttle_control/allowed(mob/M)
 	if(isXeno(M))
-		var/mob/living/carbon/Xenomorph/xeno_user = M
+		var/mob/living/carbon/xenomorph/xeno_user = M
 		if(xeno_user.caste?.is_intelligent)
 			return TRUE // Allow access by Queen and Predalien
 	return ..()
@@ -257,7 +257,7 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 
 			//Alert code is the Queen is the one calling it, the shuttle is on the ground and the shuttle still allows alerts
 			if(isXenoQueen(M) && shuttle.location == 1 && shuttle.alerts_allowed && onboard && !shuttle.iselevator)
-				var/mob/living/carbon/Xenomorph/Queen/Q = M
+				var/mob/living/carbon/xenomorph/queen/Q = M
 
 				// Check for onboard xenos, so the Queen doesn't leave most of her hive behind.
 				var/count = Q.count_hivemember_same_area()

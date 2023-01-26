@@ -119,8 +119,8 @@
 /obj/structure/barricade/Collided(atom/movable/AM)
 	..()
 
-	if(istype(AM, /mob/living/carbon/Xenomorph/Crusher))
-		var/mob/living/carbon/Xenomorph/Crusher/C = AM
+	if(istype(AM, /mob/living/carbon/xenomorph/crusher))
+		var/mob/living/carbon/xenomorph/crusher/C = AM
 
 		if (!C.throwing)
 			return

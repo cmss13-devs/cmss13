@@ -1,7 +1,7 @@
 /datum/hud/alien
 	var/datum/custom_hud/alien/ui_alien_datum
 
-/datum/hud/alien/New(mob/living/carbon/Xenomorph/owner)
+/datum/hud/alien/New(mob/living/carbon/xenomorph/owner)
 	..()
 	ui_alien_datum = GLOB.custom_huds_list[HUD_ALIEN]
 
@@ -61,7 +61,7 @@
 /datum/hud/alien/persistent_inventory_update()
 	if(!mymob || !ui_alien_datum)
 		return
-	var/mob/living/carbon/Xenomorph/H = mymob
+	var/mob/living/carbon/xenomorph/H = mymob
 	if(hud_version != HUD_STYLE_NOHUD)
 		if(H.r_hand)
 			H.client.screen += H.r_hand
@@ -76,12 +76,12 @@
 			H.l_hand.screen_loc = null
 
 
-/mob/living/carbon/Xenomorph/create_hud()
+/mob/living/carbon/xenomorph/create_hud()
 	if(!hud_used)
 		hud_used = new /datum/hud/alien(src)
 
 
-/datum/hud/larva/New(mob/living/carbon/Xenomorph/Larva/owner)
+/datum/hud/larva/New(mob/living/carbon/xenomorph/larva/owner)
 	..()
 	var/datum/custom_hud/alien/ui_alien_datum = GLOB.custom_huds_list[HUD_ALIEN]
 
@@ -99,6 +99,6 @@
 	infodisplay += locate_leader
 
 
-/mob/living/carbon/Xenomorph/Larva/create_hud()
+/mob/living/carbon/xenomorph/larva/create_hud()
 	if(!hud_used)
 		hud_used = new /datum/hud/larva(src)

@@ -27,7 +27,7 @@
 
 	heal_resting = 1.4
 
-/mob/living/carbon/Xenomorph/Warrior
+/mob/living/carbon/xenomorph/warrior
 	caste_type = XENO_CASTE_WARRIOR
 	name = XENO_CASTE_WARRIOR
 	desc = "A beefy, alien with an armored carapace."
@@ -56,10 +56,10 @@
 	icon_xenonid = 'icons/mob/xenonids/warrior.dmi'
 
 	var/lunging = FALSE // whether or not the warrior is currently lunging (holding) a target
-/mob/living/carbon/Xenomorph/Warrior/throw_item(atom/target)
+/mob/living/carbon/xenomorph/warrior/throw_item(atom/target)
 	toggle_throw_mode(THROW_MODE_OFF)
 
-/mob/living/carbon/Xenomorph/Warrior/stop_pulling()
+/mob/living/carbon/xenomorph/warrior/stop_pulling()
 	if(isliving(pulling) && lunging)
 		lunging = FALSE // To avoid extreme cases of stopping a lunge then quickly pulling and stopping to pull someone else
 		var/mob/living/lunged = pulling
@@ -67,7 +67,7 @@
 		lunged.set_effect(0, WEAKEN)
 	return ..()
 
-/mob/living/carbon/Xenomorph/Warrior/start_pulling(atom/movable/AM, lunge)
+/mob/living/carbon/xenomorph/warrior/start_pulling(atom/movable/AM, lunge)
 	if (!check_state() || agility)
 		return FALSE
 
@@ -84,7 +84,7 @@
 
 	if(.) //successful pull
 		if(isXeno(L))
-			var/mob/living/carbon/Xenomorph/X = L
+			var/mob/living/carbon/xenomorph/X = L
 			if(X.tier >= 2) // Tier 2 castes or higher immune to warrior grab stuns
 				return .
 
@@ -97,10 +97,10 @@
 			lunging = TRUE
 			addtimer(CALLBACK(src, PROC_REF(stop_lunging)), get_xeno_stun_duration(L, 2) SECONDS + 1 SECONDS)
 
-/mob/living/carbon/Xenomorph/Warrior/proc/stop_lunging(var/world_time)
+/mob/living/carbon/xenomorph/warrior/proc/stop_lunging(var/world_time)
 	lunging = FALSE
 
-/mob/living/carbon/Xenomorph/Warrior/hitby(atom/movable/AM)
+/mob/living/carbon/xenomorph/warrior/hitby(atom/movable/AM)
 	if(ishuman(AM))
 		return
 	..()

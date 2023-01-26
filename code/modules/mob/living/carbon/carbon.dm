@@ -68,7 +68,7 @@
 				last_damage_data = create_cause_data("chestbursting", user)
 				gib(last_damage_data)
 	else if(!chestburst && (status_flags & XENO_HOST) && isXenoLarva(user))
-		var/mob/living/carbon/Xenomorph/Larva/L = user
+		var/mob/living/carbon/xenomorph/larva/L = user
 		L.chest_burst(src)
 
 /mob/living/carbon/ex_act(var/severity, var/direction, var/datum/cause_data/cause_data)

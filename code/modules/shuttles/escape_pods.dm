@@ -183,8 +183,8 @@ This can probably be done a lot more elegantly either way, but it'll suffice for
 			M = i
 			if(M.stat != DEAD && msg)
 				to_chat(M, msg)
-		else if(istype(i, /mob/living/carbon/Xenomorph))
-			var/mob/living/carbon/Xenomorph/X = i
+		else if(istype(i, /mob/living/carbon/xenomorph))
+			var/mob/living/carbon/xenomorph/X = i
 			if(X.mob_size >= MOB_SIZE_BIG)
 				return FALSE //Huge xenomorphs will automatically fail the launch.
 			n++
@@ -390,7 +390,7 @@ As such, a new tracker datum must be constructed to follow proper child inherita
 		user.stop_pulling()
 		move_mob_inside(user)
 
-/obj/structure/machinery/cryopod/evacuation/attack_alien(mob/living/carbon/Xenomorph/user)
+/obj/structure/machinery/cryopod/evacuation/attack_alien(mob/living/carbon/xenomorph/user)
 	if(being_forced)
 		to_chat(user, SPAN_XENOWARNING("It's being forced open already!"))
 		return XENO_NO_DELAY_ACTION

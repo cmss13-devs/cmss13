@@ -150,7 +150,7 @@
 			return
 		apply_spray(AM)
 	else if (isXeno(AM))
-		var/mob/living/carbon/Xenomorph/X = AM
+		var/mob/living/carbon/xenomorph/X = AM
 		if (X.hivenumber != hivenumber)
 			apply_spray(AM)
 	else if(isVehicleMultitile(AM))
@@ -170,7 +170,7 @@
 			H.apply_armoured_damage(damage_amount * 0.4, ARMOR_BIO, BURN, "r_foot")
 
 		else if (isXeno(H))
-			var/mob/living/carbon/Xenomorph/X = H
+			var/mob/living/carbon/xenomorph/X = H
 			if (X.mob_size < MOB_SIZE_BIG && should_stun)
 				X.KnockDown(stun_duration)
 			X.emote("hiss")
@@ -409,7 +409,7 @@
 	var/smoke_duration = 9
 	var/smoke_type = /obj/effect/particle_effect/smoke/xeno_burn
 
-	var/mob/living/carbon/Xenomorph/source_xeno = null
+	var/mob/living/carbon/xenomorph/source_xeno = null
 
 /obj/effect/xenomorph/boiler_bombard/New(loc, source_xeno = null)
 	// Hopefully we don't get insantiated in these places anyway..
@@ -437,7 +437,7 @@
 			if(!source_xeno)
 				continue
 
-			var/mob/living/carbon/Xenomorph/X = H
+			var/mob/living/carbon/xenomorph/X = H
 			if (source_xeno.can_not_harm(X))
 				continue
 
@@ -492,11 +492,11 @@
 
 	var/damage = 20
 	var/message = null
-	var/mob/living/carbon/Xenomorph/linked_xeno = null
+	var/mob/living/carbon/xenomorph/linked_xeno = null
 	var/hivenumber = XENO_HIVE_NORMAL
 	var/empowered = FALSE
 
-/obj/effect/xenomorph/acid_damage_delay/New(loc, damage = 20, delay = 10, empowered = FALSE, message = null, mob/living/carbon/Xenomorph/linked_xeno = null)
+/obj/effect/xenomorph/acid_damage_delay/New(loc, damage = 20, delay = 10, empowered = FALSE, message = null, mob/living/carbon/xenomorph/linked_xeno = null)
 	..(loc)
 
 	addtimer(CALLBACK(src, PROC_REF(die)), delay)

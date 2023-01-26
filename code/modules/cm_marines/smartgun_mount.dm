@@ -992,9 +992,9 @@
 /*M2C HEAVY MACHINEGUN AND ITS COMPONENTS */
 // AMMO
 /obj/item/ammo_magazine/m2c
-	name = "M2C Ammunition Box (10x28mm tungsten rounds)"
-	desc = "A box of 125, 10x28mm tungsten rounds for the M2 Heavy Machinegun System. Click the heavy machinegun while there's no ammo box loaded to reload the M2C."
-	caliber = "10x28mm"
+	name = "M2C Ammunition Box (12.7x99mm tungsten rounds)"
+	desc = "A box of 125, .50 BMG (12.7x99mm) rounds for the M2 Heavy Machinegun System. Click the heavy machinegun while there's no ammo box loaded to reload the M2C."
+	caliber = "12.7x99mm"
 	w_class = SIZE_LARGE
 	icon = 'icons/obj/items/weapons/guns/ammo.dmi'
 	icon_state = "m56de"
@@ -1006,7 +1006,7 @@
 //STORAGE BOX FOR THE MACHINEGUN
 /obj/item/storage/box/m56d/m2c
 	name = "\improper M2C Assembly-Supply Crate"
-	desc = "A large case labelled 'M2C, 10x28mm caliber heavy machinegun', seems to be fairly heavy to hold. contains a deadly M2C Heavy Machinegun System and its ammunition."
+	desc = "A large case labelled 'M2C, .50 Caliber BMG heavy machinegun', seems to be fairly heavy to hold. contains the uncommon but deadly M2C Heavy Machinegun System and its ammunition."
 	icon = 'icons/turf/whiskeyoutpost.dmi'
 	icon_state = "M56D_case"
 	w_class = SIZE_HUGE
@@ -1161,7 +1161,7 @@
 // MACHINEGUN, AUTOMATIC
 /obj/structure/machinery/m56d_hmg/auto
 	name = "\improper M2C Heavy Machinegun"
-	desc = "A deployable, heavy machine gun. The M2C 'Chimp' HB is a modified M2 HB reconfigured to fire 10x28 Caseless Tungsten rounds for USCM use. It is capable of recoilless fire and fast-rotating. However it has a debilitating overheating issue due to the poor quality of metals used in the parts, forcing it to be used in decisive, crushing engagements as a squad support weapon. <B> Click its sprite while behind it without holding anything to man it. Click-drag on NON-GRAB intent to disassemble the gun, GRAB INTENT to remove ammo magazines."
+	desc = "A deployable, heavy machine gun. The M2C(HB) 'Ma Deuce' is a modernized M2(HB), firing .50 Caliber BMG cased rounds which has served in the USCM and it's ancestors for 250 years and counting. It is capable of recoilless fire and fast-rotating. However it has a debilitating overheating issue due to the poor quality of metals used in the parts, forcing it to be used in decisive, crushing engagements as a squad support weapon. <B> Click its sprite while behind it without holding anything to man it. Click-drag on NON-GRAB intent to disassemble the gun, GRAB INTENT to remove ammo magazines."
 	icon = 'icons/turf/whiskeyoutpost.dmi'
 	icon_state = "M56DE"
 	icon_full = "M56DE"

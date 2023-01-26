@@ -1,10 +1,10 @@
 #define SHUTTLE_GETTY "gettysburg"
 #define SHUTTLE_GETTY_CUSTOM "gettysburg_custom"
 
-#define STATE_ON_SHIP "on_ship"
-#define STATE_ON_GROUND "on_ground"
-#define STATE_IN_ATMOSPHERE "in_atmosphere"
-#define STATE_IN_TRANSIT "in_transit"
+#define STATE_ON_SHIP "on ship"
+#define STATE_ON_GROUND "on ground"
+#define STATE_IN_ATMOSPHERE "in atmosphere"
+#define STATE_IN_TRANSIT "in transit"
 
 /obj/docking_port/stationary/getty
 	name = "Gettysburg Hangar Pad"
@@ -61,8 +61,22 @@
 	COOLDOWN_DECLARE(launch_cooldown)
 
 	var/current_state = STATE_ON_SHIP
-	var/transit_to
+	var/transit_to = FALSE
 	var/damaged = FALSE
+
+	/// used for landing to a defined destination
+	var/datum/action/innate/shuttledocker_land/land_action = new
+
+/obj/structure/machinery/computer/camera_advanced/shuttle_docker/getty/give_actions(mob/living/user)
+	if(!(current_state == STATE_IN_ATMOSPHERE))
+		return
+
+	. = ..()
+
+	if(land_action)
+		land_action.target = user
+		land_action.give_to(user)
+		actions += land_action
 
 /obj/structure/machinery/computer/camera_advanced/shuttle_docker/getty/attack_hand(mob/user)
 	. = ..()
@@ -79,18 +93,27 @@
 		ui = new(user, src, "MidwayConsole", name)
 		ui.open()
 
+/obj/structure/machinery/computer/camera_advanced/shuttle_docker/getty/ui_data(mob/user)
+	var/list/data = list()
+
+	data["current_state"] = current_state
+	data["current_mode"] = shuttle_port ? shuttle_port.mode : SHUTTLE_IDLE
+
+	return data
+
 /obj/structure/machinery/computer/camera_advanced/shuttle_docker/getty/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 
 	var/mob/user = usr
 
 	switch(action)
-		if("from_ship")
-			takeoff(user)
+		if("take_off")
+			take_off(user)
 		if("to_ship")
 			to_ship(user)
 		if("view_ground")
 			view_ground(user)
+	. = TRUE
 
 /obj/structure/machinery/computer/camera_advanced/shuttle_docker/getty/shuttle_arrived()
 	if(current_state == STATE_IN_TRANSIT)
@@ -102,18 +125,21 @@
 			return
 
 /obj/structure/machinery/computer/camera_advanced/shuttle_docker/getty/proc/take_off(mob/user)
-	if(current_state == SHUTTLE_ON_SHIP && !transit_to)
+	shuttle_port = SSshuttle.getShuttle(shuttleId)
+	shuttle_port.shuttle_computer = src
+
+	if(shuttle_port.mode != SHUTTLE_IDLE)
+		return
+
+	if(current_state == STATE_ON_SHIP && !transit_to)
 		from_ship(user)
 
-	if(current_state == SHUTTLE_ON_GROUND && !transit_to)
+	if(current_state == STATE_ON_GROUND && !transit_to)
 		from_ground(user)
 
 /obj/structure/machinery/computer/camera_advanced/shuttle_docker/getty/proc/from_ship(mob/user)
-	if(current_state != SHUTTLE_ON_SHIP || transit_to)
+	if(current_state != STATE_ON_SHIP || transit_to)
 		return
-
-	shuttle_port = SSshuttle.getShuttle(shuttleId)
-	shuttle_port.shuttle_computer = src
 
 	if(!(shuttle_port.shuttle_flags & GAMEMODE_IMMUNE) && world.time < SSticker.mode.round_time_lobby + SHUTTLE_TIME_LOCK)
 		to_chat(user, SPAN_WARNING("The shuttle is still undergoing pre-flight fueling and cannot depart yet. Please wait another [round((SSticker.mode.round_time_lobby + SHUTTLE_TIME_LOCK-world.time)/600)] minutes before trying again."))
@@ -122,12 +148,14 @@
 	if(!COOLDOWN_FINISHED(src, launch_cooldown))
 		to_chat(user, SPAN_WARNING("Engines are cooling down. Wait a moment."))
 
+	balloon_alert_to_viewers("take off initiated")
 	current_state = STATE_IN_TRANSIT
 	transit_to = STATE_IN_ATMOSPHERE
 	SSshuttle.move_shuttle_to_transit(shuttleId, TRUE)
 	shuttle_port.assigned_transit.reserved_area.set_turf(/turf/open/space/transit)
 
 /obj/structure/machinery/computer/camera_advanced/shuttle_docker/getty/proc/move_to_atmosphere()
+	balloon_alert_to_viewers("entering low flight")
 	current_state = STATE_IN_ATMOSPHERE
 	transit_to = null
 	SSshuttle.move_shuttle_to_transit(shuttleId, TRUE, /turf/open/space/transit/atmosphere)
@@ -138,17 +166,41 @@
 	SSshuttle.moveShuttle(shuttleId, SHUTTLE_GETTY, TRUE)
 
 /obj/structure/machinery/computer/camera_advanced/shuttle_docker/getty/proc/to_ship()
+	balloon_alert_to_viewers("moving to ship")
 	current_state = STATE_IN_TRANSIT
 	transit_to = STATE_ON_SHIP
 	SSshuttle.move_shuttle_to_transit(shuttleId, TRUE)
 
 /obj/structure/machinery/computer/camera_advanced/shuttle_docker/getty/proc/from_ground()
+	balloon_alert_to_viewers("take off initiated")
+	current_state = STATE_IN_TRANSIT
 	transit_to = STATE_IN_ATMOSPHERE
 	SSshuttle.move_shuttle_to_transit(shuttleId, TRUE, /turf/open/space/transit/atmosphere)
 
 
 /obj/structure/machinery/computer/camera_advanced/shuttle_docker/getty/proc/view_ground(mob/user)
-	if(!(current_state == STATE_IN_ATMOSPHERE && transit_to == null))
+	if(!(current_state == STATE_IN_ATMOSPHERE && transit_to == null && shuttle_port.mode == SHUTTLE_IDLE))
 		return
 
 	open_prompt(user)
+
+/datum/action/innate/shuttledocker_land
+	name = "Land"
+	action_icon_state = "land"
+
+/datum/action/innate/shuttledocker_land/action_activate()
+	var/mob/C = target
+	var/mob/camera/eye/remote/remote_eye = C.remote_control
+	var/obj/structure/machinery/computer/camera_advanced/shuttle_docker/getty/origin = remote_eye.origin
+	if(origin.shuttle_port.mode != SHUTTLE_IDLE)
+		to_chat(owner, SPAN_WARNING("The shuttle is not ready to land yet!"))
+		return
+	if(!origin.placeLandingSpot(target))
+		to_chat(owner, SPAN_WARNING("You cannot land here."))
+		return
+	origin.shuttle_port.callTime = 0 SECONDS
+	origin.transit_to = STATE_ON_GROUND
+	origin.open_prompt = FALSE
+	origin.shuttle_port.set_mode(SHUTTLE_CALL)
+	origin.last_valid_ground_port = origin.my_port
+	SSshuttle.moveShuttleToDock(origin.shuttleId, origin.my_port, TRUE)

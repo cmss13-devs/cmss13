@@ -161,7 +161,7 @@
 	return target_mobs.len
 
 /datum/action/xeno_action/activable/cleave/use_ability(atom/target_atom)
-	var/mob/living/carbon/Xenomorph/vanguard_user = owner
+	var/mob/living/carbon/xenomorph/vanguard_user = owner
 	if (!action_cooldown_check())
 		return
 
@@ -226,7 +226,7 @@
 ///////// OPPRESSOR POWERS
 
 /datum/action/xeno_action/activable/tail_stab/tail_seize/use_ability(atom/targetted_atom)
-	var/mob/living/carbon/Xenomorph/stabbing_xeno = owner
+	var/mob/living/carbon/xenomorph/stabbing_xeno = owner
 
 	if(!action_cooldown_check())
 		return FALSE
@@ -396,7 +396,7 @@
 	overlayed_human.overlays -= tail_image
 
 /datum/action/xeno_action/activable/oppressor_punch/use_ability(atom/target_atom)
-	var/mob/living/carbon/Xenomorph/oppressor_user = owner
+	var/mob/living/carbon/xenomorph/oppressor_user = owner
 
 	if (!action_cooldown_check())
 		return
@@ -554,7 +554,7 @@
 ///////// DANCER POWERS
 
 /datum/action/xeno_action/activable/prae_impale/use_ability(atom/target_atom)
-	var/mob/living/carbon/Xenomorph/dancer_user = owner
+	var/mob/living/carbon/xenomorph/dancer_user = owner
 
 	if (!action_cooldown_check())
 		return
@@ -624,7 +624,7 @@
 	return
 
 /datum/action/xeno_action/onclick/prae_dodge/use_ability(atom/target)
-	var/mob/living/carbon/Xenomorph/xeno = owner
+	var/mob/living/carbon/xenomorph/xeno = owner
 
 	if (!action_cooldown_check())
 		return
@@ -728,7 +728,7 @@
 	var/xeno_smashed = FALSE
 
 	if(isXeno(target_carbon))
-		var/mob/living/carbon/Xenomorph/Xeno = target_carbon
+		var/mob/living/carbon/xenomorph/Xeno = target_carbon
 		if(Xeno.mob_size >= MOB_SIZE_BIG)
 			xeno_smashed = TRUE
 			shake_camera(Xeno, 10, 1)

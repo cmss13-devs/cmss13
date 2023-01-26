@@ -29,7 +29,7 @@
 
 	tgui_interact(user)
 
-/obj/structure/machinery/computer/teleporter_console/attack_alien(var/mob/living/carbon/Xenomorph/X)
+/obj/structure/machinery/computer/teleporter_console/attack_alien(var/mob/living/carbon/xenomorph/X)
 	if(!isXenoQueen(X))
 		return FALSE
 	attack_hand(X)

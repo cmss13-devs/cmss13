@@ -22,7 +22,7 @@
 	if (. == 0)
 		return
 
-	var/mob/living/carbon/Xenomorph/Runner/runner = mutator_set.xeno
+	var/mob/living/carbon/xenomorph/runner/runner = mutator_set.xeno
 	runner.mutation_icon_state = RUNNER_ACIDER
 	runner.mutation_type = RUNNER_ACIDER
 	runner.speed_modifier += XENO_SPEED_SLOWMOD_TIER_5

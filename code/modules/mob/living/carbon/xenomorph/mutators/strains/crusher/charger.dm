@@ -40,7 +40,7 @@
 	if (!.)
 		return
 
-	var/mob/living/carbon/Xenomorph/Crusher/crusher = mutator_set.xeno
+	var/mob/living/carbon/xenomorph/crusher/crusher = mutator_set.xeno
 	crusher.mutation_type = CRUSHER_CHARGER
 	crusher.small_explosives_stun = FALSE
 	crusher.health_modifier += XENO_HEALTH_MOD_LARGE
@@ -70,7 +70,7 @@
 	SIGNAL_HANDLER
 	return COMPONENT_CANCEL_SET_FACE_DIR
 
-/datum/behavior_delegate/crusher_charger/proc/apply_directional_armor(mob/living/carbon/Xenomorph/xeno, list/damagedata)
+/datum/behavior_delegate/crusher_charger/proc/apply_directional_armor(mob/living/carbon/xenomorph/xeno, list/damagedata)
 	SIGNAL_HANDLER
 	var/projectile_direction = damagedata["direction"]
 	if(xeno.dir & REVERSE_DIR(projectile_direction))
@@ -90,12 +90,12 @@
 
 // Fallback proc for shit that doesn't have a collision def
 
-/atom/proc/handle_charge_collision(mob/living/carbon/Xenomorph/xeno, datum/action/xeno_action/onclick/charger_charge/charger_ability)
+/atom/proc/handle_charge_collision(mob/living/carbon/xenomorph/xeno, datum/action/xeno_action/onclick/charger_charge/charger_ability)
 	charger_ability.stop_momentum()
 
 // Windows
 
-/obj/structure/window/handle_charge_collision(mob/living/carbon/Xenomorph/xeno, datum/action/xeno_action/onclick/charger_charge/charger_ability)
+/obj/structure/window/handle_charge_collision(mob/living/carbon/xenomorph/xeno, datum/action/xeno_action/onclick/charger_charge/charger_ability)
 	if(unacidable)
 		charger_ability.stop_momentum()
 		return
@@ -115,7 +115,7 @@
 
 // Grills
 
-/obj/structure/grille/handle_charge_collision(mob/living/carbon/Xenomorph/xeno, datum/action/xeno_action/onclick/charger_charge/charger_ability)
+/obj/structure/grille/handle_charge_collision(mob/living/carbon/xenomorph/xeno, datum/action/xeno_action/onclick/charger_charge/charger_ability)
 	if(unacidable)
 		charger_ability.stop_momentum()
 		return
@@ -135,7 +135,7 @@
 
 // Airlock Doors
 
-/obj/structure/machinery/door/airlock/handle_charge_collision(mob/living/carbon/Xenomorph/xeno, datum/action/xeno_action/onclick/charger_charge/charger_ability)
+/obj/structure/machinery/door/airlock/handle_charge_collision(mob/living/carbon/xenomorph/xeno, datum/action/xeno_action/onclick/charger_charge/charger_ability)
 	if(!charger_ability.momentum)
 		charger_ability.stop_momentum()
 		return
@@ -150,7 +150,7 @@
 
 // Vending machines
 
-/obj/structure/machinery/vending/handle_charge_collision(mob/living/carbon/Xenomorph/xeno, datum/action/xeno_action/onclick/charger_charge/charger_ability)
+/obj/structure/machinery/vending/handle_charge_collision(mob/living/carbon/xenomorph/xeno, datum/action/xeno_action/onclick/charger_charge/charger_ability)
 	if(charger_ability.momentum >= 3)
 		if(unacidable)
 			charger_ability.stop_momentum()
@@ -171,7 +171,7 @@
 
 // Barine Vending machines
 
-/obj/structure/machinery/cm_vending/handle_charge_collision(mob/living/carbon/Xenomorph/xeno, datum/action/xeno_action/onclick/charger_charge/charger_ability)
+/obj/structure/machinery/cm_vending/handle_charge_collision(mob/living/carbon/xenomorph/xeno, datum/action/xeno_action/onclick/charger_charge/charger_ability)
 	if(charger_ability.momentum >= CCA_MOMENTUM_LOSS_THIRD)
 		xeno.visible_message(
 			SPAN_DANGER("[xeno] smashes straight into \the [src]!"),
@@ -186,7 +186,7 @@
 
 // Legacy doors
 
-/obj/structure/mineral_door/handle_charge_collision(mob/living/carbon/Xenomorph/xeno, datum/action/xeno_action/onclick/charger_charge/charger_ability)
+/obj/structure/mineral_door/handle_charge_collision(mob/living/carbon/xenomorph/xeno, datum/action/xeno_action/onclick/charger_charge/charger_ability)
 	if(!charger_ability.momentum)
 		charger_ability.stop_momentum()
 		return
@@ -198,13 +198,13 @@
 
 // Tables & shelves, etc
 
-/obj/structure/surface/handle_charge_collision(mob/living/carbon/Xenomorph/xeno, datum/action/xeno_action/onclick/charger_charge/charger_ability)
+/obj/structure/surface/handle_charge_collision(mob/living/carbon/xenomorph/xeno, datum/action/xeno_action/onclick/charger_charge/charger_ability)
 	Crossed(xeno)
 	return XENO_CHARGE_TRY_MOVE
 
 // Cades
 
-/obj/structure/barricade/handle_charge_collision(mob/living/carbon/Xenomorph/xeno, datum/action/xeno_action/onclick/charger_charge/charger_ability)
+/obj/structure/barricade/handle_charge_collision(mob/living/carbon/xenomorph/xeno, datum/action/xeno_action/onclick/charger_charge/charger_ability)
 	if(charger_ability.momentum)
 		visible_message(
 			SPAN_DANGER("[xeno] rams into \the [src] and skids to a halt!"),
@@ -217,7 +217,7 @@
 
 // wFrames
 
-/obj/structure/window_frame/handle_charge_collision(mob/living/carbon/Xenomorph/xeno, datum/action/xeno_action/onclick/charger_charge/charger_ability)
+/obj/structure/window_frame/handle_charge_collision(mob/living/carbon/xenomorph/xeno, datum/action/xeno_action/onclick/charger_charge/charger_ability)
 	if(charger_ability.momentum)
 		playsound(src, 'sound/effects/metalhit.ogg', 25, TRUE)
 		take_damage(CHARGER_DESTROY*2)
@@ -229,7 +229,7 @@
 
 // Doors
 
-/obj/structure/machinery/door/poddoor/handle_charge_collision(mob/living/carbon/Xenomorph/xeno, datum/action/xeno_action/onclick/charger_charge/charger_ability)
+/obj/structure/machinery/door/poddoor/handle_charge_collision(mob/living/carbon/xenomorph/xeno, datum/action/xeno_action/onclick/charger_charge/charger_ability)
 	if(charger_ability.momentum < CCA_MOMENTUM_LOSS_HALF)
 		charger_ability.stop_momentum()
 		return
@@ -244,7 +244,7 @@
 
 // Closets
 
-/obj/structure/closet/handle_charge_collision(mob/living/carbon/Xenomorph/xeno, datum/action/xeno_action/onclick/charger_charge/charger_ability)
+/obj/structure/closet/handle_charge_collision(mob/living/carbon/xenomorph/xeno, datum/action/xeno_action/onclick/charger_charge/charger_ability)
 	if(!charger_ability.momentum)
 		charger_ability.stop_momentum()
 		return
@@ -257,7 +257,7 @@
 	charger_ability.stop_momentum()
 
 // Fences
-/obj/structure/fence/handle_charge_collision(mob/living/carbon/Xenomorph/xeno, datum/action/xeno_action/onclick/charger_charge/charger_ability)
+/obj/structure/fence/handle_charge_collision(mob/living/carbon/xenomorph/xeno, datum/action/xeno_action/onclick/charger_charge/charger_ability)
 	if(!charger_ability.momentum)
 		charger_ability.stop_momentum()
 		return
@@ -272,7 +272,7 @@
 
 // Crates
 
-/obj/structure/largecrate/handle_charge_collision(mob/living/carbon/Xenomorph/xeno, datum/action/xeno_action/onclick/charger_charge/charger_ability)
+/obj/structure/largecrate/handle_charge_collision(mob/living/carbon/xenomorph/xeno, datum/action/xeno_action/onclick/charger_charge/charger_ability)
 	if(!charger_ability.momentum)
 		charger_ability.stop_momentum()
 		return
@@ -289,7 +289,7 @@
 
 // Cargo containers
 
-/obj/structure/cargo_container/handle_charge_collision(mob/living/carbon/Xenomorph/xeno, datum/action/xeno_action/onclick/charger_charge/charger_ability)
+/obj/structure/cargo_container/handle_charge_collision(mob/living/carbon/xenomorph/xeno, datum/action/xeno_action/onclick/charger_charge/charger_ability)
 	if(!charger_ability.momentum)
 		charger_ability.stop_momentum()
 		return
@@ -300,7 +300,7 @@
 
 // Girders
 
-/obj/structure/girder/handle_charge_collision(mob/living/carbon/Xenomorph/xeno, datum/action/xeno_action/onclick/charger_charge/charger_ability)
+/obj/structure/girder/handle_charge_collision(mob/living/carbon/xenomorph/xeno, datum/action/xeno_action/onclick/charger_charge/charger_ability)
 	if(!charger_ability.momentum)
 		charger_ability.stop_momentum()
 		return
@@ -315,7 +315,7 @@
 
 // General Machinery
 
-/obj/structure/machinery/disposal/handle_charge_collision(mob/living/carbon/Xenomorph/xeno, datum/action/xeno_action/onclick/charger_charge/charger_ability)
+/obj/structure/machinery/disposal/handle_charge_collision(mob/living/carbon/xenomorph/xeno, datum/action/xeno_action/onclick/charger_charge/charger_ability)
 	if(charger_ability.momentum < CCA_MOMENTUM_LOSS_QUARTER)
 		charger_ability.stop_momentum()
 		return
@@ -330,14 +330,14 @@
 
 // Disposals
 
-/obj/structure/disposalconstruct/handle_charge_collision(mob/living/carbon/Xenomorph/xeno, datum/action/xeno_action/onclick/charger_charge/charger_ability)
+/obj/structure/disposalconstruct/handle_charge_collision(mob/living/carbon/xenomorph/xeno, datum/action/xeno_action/onclick/charger_charge/charger_ability)
 	step_away(src, xeno, 2)
 	charger_ability.lose_momentum(CCA_MOMENTUM_LOSS_MIN)
 	return XENO_CHARGE_TRY_MOVE
 
 // Humans
 
-/mob/living/carbon/human/handle_charge_collision(mob/living/carbon/Xenomorph/xeno, datum/action/xeno_action/onclick/charger_charge/charger_ability)
+/mob/living/carbon/human/handle_charge_collision(mob/living/carbon/xenomorph/xeno, datum/action/xeno_action/onclick/charger_charge/charger_ability)
 	playsound(loc, "punch", 25, TRUE)
 	attack_log += text("\[[time_stamp()]\] <font color='orange'>was xeno charged by [xeno] ([xeno.ckey])</font>")
 	xeno.attack_log += text("\[[time_stamp()]\] <font color='red'>xeno charged [src] ([src.ckey])</font>")
@@ -410,7 +410,7 @@
 
 // Other mobs
 
-/mob/living/carbon/handle_charge_collision(mob/living/carbon/Xenomorph/xeno, datum/action/xeno_action/onclick/charger_charge/charger_ability)
+/mob/living/carbon/handle_charge_collision(mob/living/carbon/xenomorph/xeno, datum/action/xeno_action/onclick/charger_charge/charger_ability)
 	playsound(loc, "punch", 25, TRUE)
 	attack_log += text("\[[time_stamp()]\] <font color='orange'>was xeno charged by [xeno] ([xeno.ckey])</font>")
 	xeno.attack_log += text("\[[time_stamp()]\] <font color='red'>xeno charged [src] ([src.ckey])</font>")
@@ -442,7 +442,7 @@
 
 // Walls
 
-/turf/handle_charge_collision(mob/living/carbon/Xenomorph/xeno, datum/action/xeno_action/onclick/charger_charge/charger_ability)
+/turf/handle_charge_collision(mob/living/carbon/xenomorph/xeno, datum/action/xeno_action/onclick/charger_charge/charger_ability)
 	if(charger_ability.momentum)
 		if(istype(src, /turf/closed/wall/resin))
 			ex_act(charger_ability.momentum * 5, null, create_cause_data(initial(xeno.caste_type), xeno)) // Half damage for xeno walls?
@@ -453,7 +453,7 @@
 
 // Powerloaders
 
-/obj/vehicle/powerloader/handle_charge_collision(mob/living/carbon/Xenomorph/xeno, datum/action/xeno_action/onclick/charger_charge/charger_ability)
+/obj/vehicle/powerloader/handle_charge_collision(mob/living/carbon/xenomorph/xeno, datum/action/xeno_action/onclick/charger_charge/charger_ability)
 	if(!charger_ability.momentum)
 		charger_ability.stop_momentum()
 		return
@@ -466,7 +466,7 @@
 
 // Sentry
 
-/obj/structure/machinery/defenses/sentry/handle_charge_collision(mob/living/carbon/Xenomorph/xeno, datum/action/xeno_action/onclick/charger_charge/charger_ability)
+/obj/structure/machinery/defenses/sentry/handle_charge_collision(mob/living/carbon/xenomorph/xeno, datum/action/xeno_action/onclick/charger_charge/charger_ability)
 	if(!charger_ability.momentum)
 		charger_ability.stop_momentum()
 		return
@@ -490,7 +490,7 @@
 
 // Marine MGs
 
-/obj/structure/machinery/m56d_hmg/handle_charge_collision(mob/living/carbon/Xenomorph/xeno, datum/action/xeno_action/onclick/charger_charge/charger_ability)
+/obj/structure/machinery/m56d_hmg/handle_charge_collision(mob/living/carbon/xenomorph/xeno, datum/action/xeno_action/onclick/charger_charge/charger_ability)
 	if(charger_ability.momentum > CCA_MOMENTUM_LOSS_MIN)
 		CrusherImpact()
 		var/datum/effect_system/spark_spread/sparks = new
@@ -525,7 +525,7 @@
 
 // Prison Windows
 
-/obj/structure/window/framed/prison/reinforced/hull/handle_charge_collision(mob/living/carbon/Xenomorph/xeno, datum/action/xeno_action/onclick/charger_charge/charger_ability)
+/obj/structure/window/framed/prison/reinforced/hull/handle_charge_collision(mob/living/carbon/xenomorph/xeno, datum/action/xeno_action/onclick/charger_charge/charger_ability)
 	if(!charger_ability.momentum)
 		charger_ability.stop_momentum()
 		return
@@ -537,7 +537,7 @@
 
 // Rollerbeds
 
-/obj/structure/bed/roller/handle_charge_collision(mob/living/carbon/Xenomorph/xeno, datum/action/xeno_action/onclick/charger_charge/charger_ability)
+/obj/structure/bed/roller/handle_charge_collision(mob/living/carbon/xenomorph/xeno, datum/action/xeno_action/onclick/charger_charge/charger_ability)
 	if(!charger_ability.momentum)
 		charger_ability.stop_momentum()
 		return
@@ -547,7 +547,7 @@
 
 // Filing Cabinets
 
-/obj/structure/filingcabinet/handle_charge_collision(mob/living/carbon/Xenomorph/xeno, datum/action/xeno_action/onclick/charger_charge/charger_ability)
+/obj/structure/filingcabinet/handle_charge_collision(mob/living/carbon/xenomorph/xeno, datum/action/xeno_action/onclick/charger_charge/charger_ability)
 	if(!charger_ability.momentum)
 		charger_ability.stop_momentum()
 		return
@@ -567,7 +567,7 @@
 // Todo: Give this and other shitty fucking indestructible legacy items proper destruction mechanics. This includes being vunerable to bullets,explosions, etc and not just the charger.
 // For now this is fine since priority is charger, and I'm not willing to spend all day looking for bumfuck legacy item #382321 thats used a total of three times in the entireity of CM and adding health and everything to it.
 
-/obj/structure/dispenser/handle_charge_collision(mob/living/carbon/Xenomorph/xeno, datum/action/xeno_action/onclick/charger_charge/charger_ability)
+/obj/structure/dispenser/handle_charge_collision(mob/living/carbon/xenomorph/xeno, datum/action/xeno_action/onclick/charger_charge/charger_ability)
 	if(!charger_ability.momentum)
 		charger_ability.stop_momentum()
 		return
@@ -585,7 +585,7 @@
 
 // ye olde weldertanke
 
-/obj/structure/reagent_dispensers/fueltank/handle_charge_collision(mob/living/carbon/Xenomorph/xeno, datum/action/xeno_action/onclick/charger_charge/charger_ability)
+/obj/structure/reagent_dispensers/fueltank/handle_charge_collision(mob/living/carbon/xenomorph/xeno, datum/action/xeno_action/onclick/charger_charge/charger_ability)
 	if(!charger_ability.momentum)
 		charger_ability.stop_momentum()
 		return

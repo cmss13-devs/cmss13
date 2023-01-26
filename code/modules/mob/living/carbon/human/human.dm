@@ -1009,7 +1009,7 @@
 	//Remove any larva.
 	var/obj/item/alien_embryo/A = locate() in src
 	if(A)
-		var/mob/living/carbon/Xenomorph/Larva/L = locate() in src //if the larva was fully grown, ready to burst.
+		var/mob/living/carbon/xenomorph/larva/L = locate() in src //if the larva was fully grown, ready to burst.
 		if(L)
 			qdel(L)
 		qdel(A)
@@ -1176,14 +1176,14 @@
 		//additional things to change when we're no longer that species
 		oldspecies.post_species_loss(src)
 		if(oldspecies.weed_slowdown_mult != 1)
-			UnregisterSignal(src, COMSIG_MOB_WEEDS_CROSSED)
+			UnregisterSignal(src, COMSIG_MOB_WEED_SLOWDOWN)
 
 	mob_flags = species.mob_flags
 	for(var/T in species.mob_inherent_traits)
 		ADD_TRAIT(src, T, TRAIT_SOURCE_SPECIES)
 
 	if(species.weed_slowdown_mult != 1)
-		RegisterSignal(src, COMSIG_MOB_WEEDS_CROSSED, PROC_REF(handle_weed_slowdown))
+		RegisterSignal(src, COMSIG_MOB_WEED_SLOWDOWN, PROC_REF(handle_weed_slowdown))
 
 	species.create_organs(src)
 

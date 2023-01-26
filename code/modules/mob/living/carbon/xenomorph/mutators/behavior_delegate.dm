@@ -37,7 +37,7 @@
 	var/name = "Set This"
 
 	/// The Xeno we handle mutator state for
-	var/mob/living/carbon/Xenomorph/bound_xeno
+	var/mob/living/carbon/xenomorph/bound_xeno
 
 /datum/behavior_delegate/Destroy(force, ...)
 	remove_from_xeno()

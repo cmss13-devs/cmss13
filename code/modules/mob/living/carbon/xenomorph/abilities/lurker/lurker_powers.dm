@@ -3,7 +3,7 @@
 	. = ..()
 
 /datum/action/xeno_action/onclick/lurker_invisibility/use_ability(atom/targeted_atom)
-	var/mob/living/carbon/Xenomorph/xeno = owner
+	var/mob/living/carbon/xenomorph/xeno = owner
 
 	if (!istype(xeno))
 		return
@@ -61,7 +61,7 @@
 	..()
 
 /datum/action/xeno_action/onclick/lurker_assassinate/use_ability(atom/targeted_atom)
-	var/mob/living/carbon/Xenomorph/xeno = owner
+	var/mob/living/carbon/xenomorph/xeno = owner
 
 	if (!istype(xeno))
 		return
@@ -82,7 +82,7 @@
 	return buff_duration
 
 /datum/action/xeno_action/onclick/lurker_assassinate/proc/unbuff_slash()
-	var/mob/living/carbon/Xenomorph/xeno = owner
+	var/mob/living/carbon/xenomorph/xeno = owner
 	if (!istype(xeno))
 		return
 	var/datum/behavior_delegate/lurker_base/behavior = xeno.behavior_delegate
@@ -99,7 +99,7 @@
 
 /datum/action/xeno_action/activable/pounce/rush/additional_effects(mob/living/living_target) //pounce effects
 	var/mob/living/carbon/target = living_target
-	var/mob/living/carbon/Xenomorph/xeno = owner
+	var/mob/living/carbon/xenomorph/xeno = owner
 	target.apply_effect(5, DAZE)
 	target.sway_jitter(times = 2)
 	xeno.flick_attack_overlay(target, "slash")   //fake slash to prevent disarm abuse
@@ -110,7 +110,7 @@
 	apply_cooldown_override(40)
 
 /datum/action/xeno_action/activable/flurry/use_ability(atom/targeted_atom) //flurry ability
-	var/mob/living/carbon/Xenomorph/xeno = owner
+	var/mob/living/carbon/xenomorph/xeno = owner
 	if (!istype(xeno))
 		return
 	if (!xeno.check_state())
@@ -173,7 +173,7 @@
 	return
 
 /datum/action/xeno_action/activable/tail_jab/use_ability(atom/targeted_atom)
-	var/mob/living/carbon/Xenomorph/xeno = owner
+	var/mob/living/carbon/xenomorph/xeno = owner
 	var/mob/living/carbon/target = targeted_atom
 	var/distance = get_dist(xeno, target)
 

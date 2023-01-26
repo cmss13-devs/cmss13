@@ -24,7 +24,7 @@
 	if (. == 0)
 		return
 
-	var/mob/living/carbon/Xenomorph/Drone/drone = mutator_set.xeno
+	var/mob/living/carbon/xenomorph/drone/drone = mutator_set.xeno
 	drone.mutation_type = DRONE_GARDENER
 	drone.available_fruits = list(/obj/effect/alien/resin/fruit/greater, /obj/effect/alien/resin/fruit/unstable, /obj/effect/alien/resin/fruit/spore, /obj/effect/alien/resin/fruit/speed, /obj/effect/alien/resin/fruit/plasma)
 	drone.selected_fruit = /obj/effect/alien/resin/fruit/greater
@@ -58,12 +58,12 @@
 /datum/action/xeno_action/verb/plant_resin_fruit()
 	set category = "Alien"
 	set name = "Plant Resin Fruit"
-	set hidden = 1
+	set hidden = TRUE
 	var/action_name = "Plant Resin Fruit"
 	handle_xeno_macro(src, action_name)
 
 /datum/action/xeno_action/onclick/plant_resin_fruit/use_ability(atom/target_atom)
-	var/mob/living/carbon/Xenomorph/xeno = owner
+	var/mob/living/carbon/xenomorph/xeno = owner
 	if(!istype(xeno))
 		return
 
@@ -133,7 +133,7 @@
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_5
 
-/datum/action/xeno_action/onclick/change_fruit/give_to(mob/living/carbon/Xenomorph/xeno)
+/datum/action/xeno_action/onclick/change_fruit/give_to(mob/living/carbon/xenomorph/xeno)
 	. = ..()
 
 	button.overlays.Cut()
@@ -141,7 +141,7 @@
 	button.overlays += image('icons/mob/xenos/fruits.dmi', button, initial(xeno.selected_fruit.mature_icon_state))
 
 /datum/action/xeno_action/onclick/change_fruit/use_ability(atom/target_atom)
-	var/mob/living/carbon/Xenomorph/xeno = owner
+	var/mob/living/carbon/xenomorph/xeno = owner
 	if(!xeno.check_state())
 		return
 
@@ -152,7 +152,7 @@
 	return list(get_asset_datum(/datum/asset/spritesheet/choose_fruit))
 
 /datum/action/xeno_action/onclick/change_fruit/ui_static_data(mob/user)
-	var/mob/living/carbon/Xenomorph/xeno = user
+	var/mob/living/carbon/xenomorph/xeno = user
 	if(!istype(xeno))
 		return
 
@@ -171,7 +171,7 @@
 	.["fruits"] = fruits
 
 /datum/action/xeno_action/onclick/change_fruit/ui_data(mob/user)
-	var/mob/living/carbon/Xenomorph/xeno = user
+	var/mob/living/carbon/xenomorph/xeno = user
 	if(!istype(xeno))
 		return
 
@@ -198,7 +198,7 @@
 	if(.)
 		return
 
-	var/mob/living/carbon/Xenomorph/xeno = usr
+	var/mob/living/carbon/xenomorph/xeno = usr
 	if(!istype(xeno))
 		return
 
@@ -237,7 +237,7 @@
 	var/max_range = 7
 
 /datum/action/xeno_action/activable/resin_surge/use_ability(atom/target_atom, mods)
-	var/mob/living/carbon/Xenomorph/xeno = owner
+	var/mob/living/carbon/xenomorph/xeno = owner
 	if (!istype(xeno))
 		return
 
@@ -335,7 +335,7 @@
 /datum/action/xeno_action/verb/verb_resin_surge()
 	set category = "Alien"
 	set name = "Resin Surge"
-	set hidden = 1
+	set hidden = TRUE
 	var/action_name = "Resin Surge"
 	handle_xeno_macro(src, action_name)
 
@@ -358,7 +358,7 @@
 /datum/action/xeno_action/verb/verb_plant_gardening_weeds()
 	set category = "Alien"
 	set name = "Plant Hardy Weeds"
-	set hidden = 1
+	set hidden = TRUE
 	var/action_name = "Plant Hardy Weeds (125)"
 	handle_xeno_macro(src, action_name)
 

@@ -42,7 +42,7 @@
 		return ..()
 	if(HAS_TRAIT(target_mob, TRAIT_XENONID))
 		return ..() // We don't have backpack sprites for xenoids (yet?)
-	var/mob/living/carbon/Xenomorph/xeno = target_mob
+	var/mob/living/carbon/xenomorph/xeno = target_mob
 	if(target_mob.stat != DEAD) // If the Xeno is alive, fight back
 		var/mob/living/carbon/carbon_user = user
 		if(!carbon_user || !carbon_user.ally_of_hivenumber(xeno.hivenumber))
@@ -396,7 +396,7 @@
 	item_state = "marinepack"
 	has_gamemode_skin = TRUE //replace this with the atom_flag NO_SNOW_TYPE at some point, just rename it to like, NO_MAP_VARIANT_SKIN
 	xeno_icon_state = "marinepack"
-	xeno_types = list(/mob/living/carbon/Xenomorph/Runner, /mob/living/carbon/Xenomorph/Praetorian, /mob/living/carbon/Xenomorph/Drone, /mob/living/carbon/Xenomorph/Warrior, /mob/living/carbon/Xenomorph/Defender, /mob/living/carbon/Xenomorph/Sentinel, /mob/living/carbon/Xenomorph/Spitter)
+	xeno_types = list(/mob/living/carbon/xenomorph/runner, /mob/living/carbon/xenomorph/praetorian, /mob/living/carbon/xenomorph/drone, /mob/living/carbon/xenomorph/warrior, /mob/living/carbon/xenomorph/defender, /mob/living/carbon/xenomorph/sentinel, /mob/living/carbon/xenomorph/spitter)
 
 /obj/item/storage/backpack/marine/medic
 	name = "\improper USCM corpsman backpack"
@@ -404,7 +404,7 @@
 	icon_state = "marinepack_medic"
 	item_state = "marinepack_medic"
 	xeno_icon_state = "medicpack"
-	xeno_types = list(/mob/living/carbon/Xenomorph/Runner, /mob/living/carbon/Xenomorph/Praetorian, /mob/living/carbon/Xenomorph/Drone, /mob/living/carbon/Xenomorph/Warrior, /mob/living/carbon/Xenomorph/Defender, /mob/living/carbon/Xenomorph/Sentinel, /mob/living/carbon/Xenomorph/Spitter)
+	xeno_types = list(/mob/living/carbon/xenomorph/runner, /mob/living/carbon/xenomorph/praetorian, /mob/living/carbon/xenomorph/drone, /mob/living/carbon/xenomorph/warrior, /mob/living/carbon/xenomorph/defender, /mob/living/carbon/xenomorph/sentinel, /mob/living/carbon/xenomorph/spitter)
 
 /obj/item/storage/backpack/marine/tech
 	name = "\improper USCM technician backpack"
@@ -412,7 +412,7 @@
 	icon_state = "marinepack_techi"
 	item_state = "marinepack_techi"
 	xeno_icon_state = "marinepack"
-	xeno_types = list(/mob/living/carbon/Xenomorph/Runner, /mob/living/carbon/Xenomorph/Praetorian, /mob/living/carbon/Xenomorph/Drone, /mob/living/carbon/Xenomorph/Warrior, /mob/living/carbon/Xenomorph/Defender, /mob/living/carbon/Xenomorph/Sentinel, /mob/living/carbon/Xenomorph/Spitter)
+	xeno_types = list(/mob/living/carbon/xenomorph/runner, /mob/living/carbon/xenomorph/praetorian, /mob/living/carbon/xenomorph/drone, /mob/living/carbon/xenomorph/warrior, /mob/living/carbon/xenomorph/defender, /mob/living/carbon/xenomorph/sentinel, /mob/living/carbon/xenomorph/spitter)
 
 /obj/item/storage/backpack/marine/satchel/intel
 	name = "\improper USCM lightweight expedition pack"
@@ -462,6 +462,9 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	uniform_restricted = list(/obj/item/clothing/under/marine/rto)
 	var/obj/structure/transmitter/internal/internal_transmitter
 
+	var/phone_category = PHONE_RTO
+	var/network_receive = FACTION_MARINE
+	var/list/networks_transmit = list(FACTION_MARINE)
 	var/base_icon
 
 /datum/action/item_action/rto_pack/use_phone/New(var/mob/living/user, var/obj/item/holder)
@@ -487,8 +490,10 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	. = ..()
 	internal_transmitter = new(src)
 	internal_transmitter.relay_obj = src
-	internal_transmitter.phone_category = "RTO"
+	internal_transmitter.phone_category = phone_category
 	internal_transmitter.enabled = FALSE
+	internal_transmitter.network_receive = network_receive
+	internal_transmitter.networks_transmit = networks_transmit
 	RegisterSignal(internal_transmitter, COMSIG_TRANSMITTER_UPDATE_ICON, PROC_REF(check_for_ringing))
 	GLOB.radio_packs += src
 
@@ -564,15 +569,22 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	else
 		. = ..()
 
+/obj/item/storage/backpack/marine/satchel/rto/upp_net
+	network_receive = FACTION_UPP
+	networks_transmit = list(FACTION_UPP)
+
 /obj/item/storage/backpack/marine/satchel/rto/small
 	name = "\improper USCM Small Radio Telephone Pack"
 	max_storage_space = 10
 
 	uniform_restricted = null
+	phone_category = PHONE_MARINE
 
-/obj/item/storage/backpack/marine/satchel/rto/small/Initialize()
-	. = ..()
-	internal_transmitter.phone_category = "Marine"
+
+/obj/item/storage/backpack/marine/satchel/rto/small/upp_net
+	network_receive = FACTION_UPP
+	networks_transmit = list(FACTION_UPP)
+	phone_category = PHONE_UPP_SOLDIER
 
 /obj/item/storage/backpack/marine/satchel/rto/io
 	uniform_restricted = list(/obj/item/clothing/under/marine/officer/intel)

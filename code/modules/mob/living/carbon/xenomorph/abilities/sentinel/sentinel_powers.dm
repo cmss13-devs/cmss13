@@ -1,5 +1,5 @@
 /datum/action/xeno_action/activable/slowing_spit/use_ability(atom/target)
-	var/mob/living/carbon/Xenomorph/xeno = owner
+	var/mob/living/carbon/xenomorph/xeno = owner
 	if(!xeno.check_state())
 		return
 
@@ -31,7 +31,7 @@
 	..()
 
 /datum/action/xeno_action/activable/scattered_spit/use_ability(atom/target)
-	var/mob/living/carbon/Xenomorph/xeno = owner
+	var/mob/living/carbon/xenomorph/xeno = owner
 	if(!xeno.check_state())
 		return
 
@@ -66,7 +66,7 @@
 	..()
 
 /datum/action/xeno_action/onclick/paralyzing_slash/use_ability(atom/target)
-	var/mob/living/carbon/Xenomorph/xeno = owner
+	var/mob/living/carbon/xenomorph/xeno = owner
 
 	if (!istype(xeno))
 		return

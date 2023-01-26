@@ -2,7 +2,7 @@
 ////////// BASE RAV POWERS
 
 /datum/action/xeno_action/onclick/empower/use_ability(atom/target)
-	var/mob/living/carbon/Xenomorph/xeno = owner
+	var/mob/living/carbon/xenomorph/xeno = owner
 	if(!xeno.check_state())
 		return
 
@@ -89,7 +89,7 @@
 	owner.remove_filter("empower_rage")
 
 /datum/action/xeno_action/onclick/empower/proc/get_inital_shield()
-	var/mob/living/carbon/Xenomorph/xeno = owner
+	var/mob/living/carbon/xenomorph/xeno = owner
 
 	if(!activated_once)
 		return
@@ -101,7 +101,7 @@
 	if(!activated_once)
 		return
 
-	var/mob/living/carbon/Xenomorph/xeno = owner
+	var/mob/living/carbon/xenomorph/xeno = owner
 	actual_empower(xeno)
 
 /datum/action/xeno_action/onclick/empower/action_cooldown_check()
@@ -315,7 +315,7 @@
 		return FALSE
 
 /datum/action/xeno_action/activable/eviscerate/use_ability(atom/A)
-	var/mob/living/carbon/Xenomorph/xeno = owner
+	var/mob/living/carbon/xenomorph/xeno = owner
 
 	if(!action_cooldown_check() || xeno.action_busy)
 		return
@@ -396,7 +396,7 @@
 ////////// HEDGEHOG POWERS
 
 /datum/action/xeno_action/onclick/spike_shield/use_ability(atom/target)
-	var/mob/living/carbon/Xenomorph/xeno = owner
+	var/mob/living/carbon/xenomorph/xeno = owner
 
 	if (!action_cooldown_check())
 		return
@@ -432,7 +432,7 @@
 		return FALSE
 
 /datum/action/xeno_action/onclick/spike_shield/proc/remove_shield()
-	var/mob/living/carbon/Xenomorph/xeno = owner
+	var/mob/living/carbon/xenomorph/xeno = owner
 
 	if (!shield_active)
 		return

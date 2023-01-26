@@ -24,7 +24,7 @@
 	deevolves_to = list(XENO_CASTE_WARRIOR)
 	caste_desc = "A huge tanky xenomorph."
 
-/mob/living/carbon/Xenomorph/Crusher
+/mob/living/carbon/xenomorph/crusher
 	caste_type = XENO_CASTE_CRUSHER
 	name = XENO_CASTE_CRUSHER
 	desc = "A huge alien with an enormous armored head crest."
@@ -65,7 +65,7 @@
 	icon_xenonid = 'icons/mob/xenonids/crusher.dmi'
 
 // Refactored to handle all of crusher's interactions with object during charge.
-/mob/living/carbon/Xenomorph/proc/handle_collision(atom/target)
+/mob/living/carbon/xenomorph/proc/handle_collision(atom/target)
 	if(!target)
 		return FALSE
 

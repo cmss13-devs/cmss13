@@ -6,7 +6,7 @@
 	icon_state = "spacecash1"
 	opacity = FALSE
 	density = FALSE
-	anchored = 0.0
+	anchored = FALSE
 	force = 1.0
 	throwforce = 1.0
 	throw_speed = SPEED_FAST

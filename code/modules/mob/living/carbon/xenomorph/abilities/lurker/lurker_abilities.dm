@@ -75,7 +75,7 @@
 /datum/action/xeno_action/activable/pounce/rush
 	name = "Rush"
 	action_icon_state = "pounce"
-	ability_name = "Rush"
+	ability_name = "rush"
 	macro_path = /datum/action/xeno_action/verb/verb_rush
 	ability_primacy = XENO_PRIMARY_ACTION_1
 	action_type = XENO_ACTION_CLICK

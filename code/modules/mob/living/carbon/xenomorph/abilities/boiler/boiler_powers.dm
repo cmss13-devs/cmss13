@@ -134,13 +134,13 @@
 
 /datum/action/xeno_action/onclick/dump_acid/proc/remove_speed_buff()
 	if (movespeed_buff_applied && isXeno(owner))
-		var/mob/living/carbon/Xenomorph/xeno = owner
+		var/mob/living/carbon/xenomorph/xeno = owner
 		xeno.speed_modifier += speed_buff_amount
 		xeno.recalculate_speed()
 		movespeed_buff_applied = FALSE
 		UnregisterSignal(owner, COMSIG_MOB_MOVE_OR_LOOK)
 
-/datum/action/xeno_action/onclick/dump_acid/proc/handle_mob_move_or_look(mob/living/carbon/Xenomorph/mover, var/actually_moving, var/direction, var/specific_direction)
+/datum/action/xeno_action/onclick/dump_acid/proc/handle_mob_move_or_look(mob/living/carbon/xenomorph/mover, var/actually_moving, var/direction, var/specific_direction)
 	SIGNAL_HANDLER
 
 	if(!actually_moving)

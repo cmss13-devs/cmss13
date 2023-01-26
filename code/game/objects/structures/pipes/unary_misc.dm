@@ -51,7 +51,7 @@
 	icon = 'icons/obj/structures/machinery/cryogenics.dmi'
 	icon_state = "heater_0"
 	density = TRUE
-	anchored = 1.0
+	anchored = TRUE
 	var/opened = 0 //for deconstruction
 
 /obj/structure/pipes/unary/heater/create_valid_directions()

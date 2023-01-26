@@ -3,6 +3,11 @@
 	desc = "It's a fancy storage unit."
 
 	var/datum/interior/interior = null
+	var/entrance_speed = 1 SECONDS
+	var/passengers_slots = 2
+	var/revivable_dead_slots = 0
+	var/list/role_reserved_slots = list()
+	var/xenos_slots = 2
 
 /obj/structure/closet/fancy/Initialize()
 	. = ..()

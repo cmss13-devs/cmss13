@@ -27,7 +27,7 @@
 
 	heal_resting = 1.4
 
-/mob/living/carbon/Xenomorph/Warrior
+/mob/living/carbon/xenomorph/warrior
 	caste_type = XENO_CASTE_WARRIOR
 	name = XENO_CASTE_WARRIOR
 	desc = "A beefy, alien with an armored carapace."

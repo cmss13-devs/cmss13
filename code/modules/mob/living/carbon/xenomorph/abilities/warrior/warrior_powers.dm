@@ -204,7 +204,7 @@
 	var/obj/limb/target_limb = carbone.get_limb(check_zone(xeno_owner.zone_selected))
 
 	if (ishuman(carbone) && (!target_limb || (target_limb.status & LIMB_DESTROYED)))
-		return
+		target_limb = carbone.get_limb("chest")
 
 
 	if (!check_and_use_plasma_owner())

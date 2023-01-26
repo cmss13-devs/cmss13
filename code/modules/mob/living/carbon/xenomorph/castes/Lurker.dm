@@ -23,7 +23,7 @@
 
 	heal_resting = 1.5
 
-/mob/living/carbon/Xenomorph/Lurker
+/mob/living/carbon/xenomorph/lurker
 	caste_type = XENO_CASTE_LURKER
 	name = XENO_CASTE_LURKER
 	desc = "A beefy, fast alien with sharp claws."
@@ -43,7 +43,7 @@
 		/datum/action/xeno_action/onclick/lurker_assassinate,
 		)
 	inherent_verbs = list(
-		/mob/living/carbon/Xenomorph/proc/vent_crawl,
+		/mob/living/carbon/xenomorph/proc/vent_crawl,
 		)
 	mutation_type = LURKER_NORMAL
 	claw_type = CLAW_TYPE_SHARP

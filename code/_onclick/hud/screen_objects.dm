@@ -676,7 +676,7 @@
 	update_icon(X)
 	return 1
 
-/atom/movable/screen/xenonightvision/update_icon(var/mob/living/carbon/xenomorph/owner)
+/atom/movable/screen/xenonightvision/update_icon(mob/living/carbon/xenomorph/owner)
 	. = ..()
 	var/vision_define
 	switch(owner.lighting_alpha)

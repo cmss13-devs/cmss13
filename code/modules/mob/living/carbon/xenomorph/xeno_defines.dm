@@ -306,7 +306,7 @@
 		internal_faction = name
 
 // Adds a xeno to this hive
-/datum/hive_status/proc/add_xeno(var/mob/living/carbon/xenomorph/X)
+/datum/hive_status/proc/add_xeno(mob/living/carbon/xenomorph/X)
 	if(!X || !istype(X))
 		return
 
@@ -343,7 +343,7 @@
 	// So don't even bother trying updating UI here without large refactors
 
 // Removes the xeno from the hive
-/datum/hive_status/proc/remove_xeno(var/mob/living/carbon/xenomorph/xeno, var/hard = FALSE, light_mode = FALSE)
+/datum/hive_status/proc/remove_xeno(mob/living/carbon/xenomorph/xeno, hard = FALSE, light_mode = FALSE)
 	if(!xeno || !istype(xeno))
 		return
 
@@ -379,7 +379,7 @@
 		hive_ui.update_xeno_counts()
 		hive_ui.xeno_removed(xeno)
 
-/datum/hive_status/proc/set_living_xeno_queen(var/mob/living/carbon/xenomorph/queen/queen)
+/datum/hive_status/proc/set_living_xeno_queen(mob/living/carbon/xenomorph/queen/queen)
 	if(!queen)
 		mutators.reset_mutators()
 		SStracking.delete_leader("hive_[hivenumber]")
@@ -418,7 +418,7 @@
 
 	hive_ui.update_all_data()
 
-/datum/hive_status/proc/add_hive_leader(var/mob/living/carbon/xenomorph/xeno)
+/datum/hive_status/proc/add_hive_leader(mob/living/carbon/xenomorph/xeno)
 	if(!xeno)
 		return FALSE //How did this even happen?
 	if(!open_xeno_leader_positions.len)
@@ -437,7 +437,7 @@
 	hive_ui.update_xeno_keys()
 	return TRUE
 
-/datum/hive_status/proc/remove_hive_leader(var/mob/living/carbon/xenomorph/xeno, light_mode = FALSE)
+/datum/hive_status/proc/remove_hive_leader(mob/living/carbon/xenomorph/xeno, light_mode = FALSE)
 	if(!istype(xeno) || !IS_XENO_LEADER(xeno))
 		return FALSE
 
@@ -467,7 +467,7 @@
 
 	return TRUE
 
-/datum/hive_status/proc/replace_hive_leader(var/mob/living/carbon/xenomorph/original, var/mob/living/carbon/xenomorph/replacement)
+/datum/hive_status/proc/replace_hive_leader(mob/living/carbon/xenomorph/original, mob/living/carbon/xenomorph/replacement)
 	if(!replacement || replacement.hive_pos != NORMAL_XENO)
 		return remove_hive_leader(original)
 
@@ -897,7 +897,7 @@
 
 	return allies[faction]
 
-/datum/hive_status/proc/can_delay_round_end(var/mob/living/carbon/xenomorph/xeno)
+/datum/hive_status/proc/can_delay_round_end(mob/living/carbon/xenomorph/xeno)
 	if(HAS_TRAIT(src, TRAIT_NO_HIVE_DELAY))
 		return FALSE
 	return TRUE
@@ -958,7 +958,7 @@
 	. = ..()
 	X.remove_language(LANGUAGE_ENGLISH)
 
-/datum/hive_status/corrupted/can_delay_round_end(var/mob/living/carbon/xenomorph/xeno)
+/datum/hive_status/corrupted/can_delay_round_end(mob/living/carbon/xenomorph/xeno)
 	if(!faction_is_ally(FACTION_MARINE, TRUE))
 		return TRUE
 	return FALSE
@@ -1027,7 +1027,7 @@
 
 	need_round_end_check = TRUE
 
-/datum/hive_status/forsaken/can_delay_round_end(var/mob/living/carbon/xenomorph/xeno)
+/datum/hive_status/forsaken/can_delay_round_end(mob/living/carbon/xenomorph/xeno)
 	return FALSE
 
 /datum/hive_status/yautja
@@ -1042,7 +1042,7 @@
 
 	need_round_end_check = TRUE
 
-/datum/hive_status/yautja/can_delay_round_end(var/mob/living/carbon/xenomorph/xeno)
+/datum/hive_status/yautja/can_delay_round_end(mob/living/carbon/xenomorph/xeno)
 	return FALSE
 
 /datum/hive_status/mutated

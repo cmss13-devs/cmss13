@@ -315,7 +315,7 @@
 		return
 	X.emit_pheromones(emit_cost = plasma_cost)
 
-/mob/living/carbon/xenomorph/proc/emit_pheromones(var/pheromone, var/emit_cost = 30)
+/mob/living/carbon/xenomorph/proc/emit_pheromones(pheromone, emit_cost = 30)
 	if(!check_state(TRUE))
 		return
 	if(!(locate(/datum/action/xeno_action/onclick/emit_pheromones) in actions))
@@ -686,7 +686,7 @@
 
 // XSS Spacecheck
 
-/datum/action/xeno_action/activable/place_construction/proc/spacecheck(var/mob/living/carbon/xenomorph/X, var/turf/T, datum/construction_template/xenomorph/tem)
+/datum/action/xeno_action/activable/place_construction/proc/spacecheck(mob/living/carbon/xenomorph/X, turf/T, datum/construction_template/xenomorph/tem)
 	if(tem.block_range)
 		for(var/turf/TA in range(T, tem.block_range))
 			if(!X.check_alien_construction(TA, FALSE, TRUE))
@@ -834,7 +834,7 @@
 
 	return TRUE
 
-/mob/living/carbon/xenomorph/proc/can_bombard_turf(var/atom/target, var/range = 5, var/atom/bombard_source) // I couldnt be arsed to do actual raycasting :I This is horribly inaccurate.
+/mob/living/carbon/xenomorph/proc/can_bombard_turf(atom/target, range = 5, atom/bombard_source) // I couldnt be arsed to do actual raycasting :I This is horribly inaccurate.
 	if(!bombard_source || !isturf(bombard_source.loc))
 		to_chat(src, SPAN_XENODANGER("That target is obstructed!"))
 		return FALSE
@@ -937,7 +937,7 @@
 	..()
 	return result
 
-/datum/action/xeno_action/activable/tail_stab/proc/ability_act(var/mob/living/carbon/xenomorph/stabbing_xeno, var/mob/living/carbon/target, var/obj/limb/limb)
+/datum/action/xeno_action/activable/tail_stab/proc/ability_act(mob/living/carbon/xenomorph/stabbing_xeno, mob/living/carbon/target, obj/limb/limb)
 
 	target.last_damage_data = create_cause_data(initial(stabbing_xeno.caste_type), stabbing_xeno)
 
@@ -986,7 +986,7 @@
 	target.handle_blood_splatter(get_dir(owner.loc, target.loc))
 	return target
 
-/datum/action/xeno_action/activable/tail_stab/proc/reset_direction(var/mob/living/carbon/xenomorph/stabbing_xeno, var/last_dir, var/new_dir)
+/datum/action/xeno_action/activable/tail_stab/proc/reset_direction(mob/living/carbon/xenomorph/stabbing_xeno, last_dir, new_dir)
 	// If the xenomorph is still holding the same direction as the tail stab animation's changed it to, reset it back to the old direction so the xenomorph isn't stuck facing backwards.
 	if(new_dir == stabbing_xeno.dir)
 		stabbing_xeno.setDir(last_dir)

@@ -110,7 +110,7 @@
 		var/obj/effect/egg_trigger/ET = trigger
 		ET.moveToNullspace()
 
-/obj/effect/alien/egg/proc/Burst(var/kill = TRUE, var/instant_trigger = FALSE, var/mob/living/carbon/xenomorph/X = null, var/is_hugger_player_controlled = FALSE) //drops and kills the facehugger if any is remaining
+/obj/effect/alien/egg/proc/Burst(kill = TRUE, instant_trigger = FALSE, mob/living/carbon/xenomorph/X = null, is_hugger_player_controlled = FALSE) //drops and kills the facehugger if any is remaining
 	if(kill && status != EGG_DESTROYED)
 		hide_egg_triggers()
 		status = EGG_DESTROYED
@@ -125,7 +125,7 @@
 		playsound(src.loc, "sound/effects/alien_egg_move.ogg", 25)
 		addtimer(CALLBACK(src, PROC_REF(release_hugger), instant_trigger, X, is_hugger_player_controlled), 1 SECONDS)
 
-/obj/effect/alien/egg/proc/release_hugger(var/instant_trigger, var/mob/living/carbon/xenomorph/X, var/is_hugger_player_controlled = FALSE)
+/obj/effect/alien/egg/proc/release_hugger(instant_trigger, mob/living/carbon/xenomorph/X, is_hugger_player_controlled = FALSE)
 	if(!loc || status == EGG_DESTROYED)
 		return
 

@@ -210,7 +210,7 @@
 
 	return FALSE
 
-/obj/structure/foamed_metal/attack_alien(var/mob/living/carbon/xenomorph/X, var/dam_bonus)
+/obj/structure/foamed_metal/attack_alien(mob/living/carbon/xenomorph/X, dam_bonus)
 	var/damage = (rand(X.melee_damage_lower, X.melee_damage_upper) + dam_bonus)
 
 	//Frenzy bonus

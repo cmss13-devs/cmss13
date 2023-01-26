@@ -114,7 +114,7 @@
 	health = WEED_HEALTH_STANDARD
 	alpha = 127
 
-/obj/effect/alien/weeds/node/weak/Initialize(mapload, obj/effect/alien/weeds/node/node, var/mob/living/carbon/xenomorph/X, var/datum/hive_status/hive)
+/obj/effect/alien/weeds/node/weak/Initialize(mapload, obj/effect/alien/weeds/node/node, mob/living/carbon/xenomorph/X, datum/hive_status/hive)
 	. = ..()
 	name = initial(name)
 	weed_strength = WEED_LEVEL_WEAK

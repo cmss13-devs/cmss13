@@ -2,7 +2,7 @@
 	var/name = "Mark Menu"
 	var/data_initialized = FALSE //for the UI interaction
 
-/datum/mark_menu_ui/proc/open_mark_menu(var/mob/user)
+/datum/mark_menu_ui/proc/open_mark_menu(mob/user)
 	var/mob/living/carbon/xenomorph/X = user
 	if(!X.client)
 		return

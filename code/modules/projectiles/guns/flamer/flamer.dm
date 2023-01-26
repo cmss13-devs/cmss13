@@ -566,7 +566,7 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 /obj/flamer_fire/Crossed(atom/movable/atom_movable)
 	atom_movable.handle_flamer_fire_crossed(src)
 
-/obj/flamer_fire/proc/type_b_debuff_xeno_armor(var/mob/living/carbon/xenomorph/X)
+/obj/flamer_fire/proc/type_b_debuff_xeno_armor(mob/living/carbon/xenomorph/X)
 	var/sig_result = SEND_SIGNAL(X, COMSIG_LIVING_FLAMER_CROSSED, tied_reagent)
 	. = 1
 	if(sig_result & COMPONENT_XENO_FRENZY)
@@ -575,7 +575,7 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 		. = 0.6
 	X.armor_deflection_debuff = (X.armor_deflection + X.armor_deflection_buff) * 0.5 * . //At the moment this just directly sets the debuff var since it's the only interaction with it. In the future if the var is used more, usages of type_b_debuff_armor may need to be refactored (or just make them mutually exclusive and have the highest overwrite).
 
-/mob/living/carbon/xenomorph/proc/reset_xeno_armor_debuff_after_time(var/mob/living/carbon/xenomorph/X, var/wait_ticks) //Linked onto Xenos instead of the fire so it doesn't cancel on fire deletion.
+/mob/living/carbon/xenomorph/proc/reset_xeno_armor_debuff_after_time(mob/living/carbon/xenomorph/X, wait_ticks) //Linked onto Xenos instead of the fire so it doesn't cancel on fire deletion.
 	spawn(wait_ticks)
 	if(X.armor_deflection_debuff)
 		X.armor_deflection_debuff = 0

@@ -228,7 +228,7 @@
 			action.button.icon_state = "template"
 			break;
 
-/mob/living/carbon/xenomorph/proc/do_acid_spray_cone(var/turf/T, spray_type = /obj/effect/xenomorph/spray, range = 3)
+/mob/living/carbon/xenomorph/proc/do_acid_spray_cone(turf/T, spray_type = /obj/effect/xenomorph/spray, range = 3)
 	set waitfor = FALSE
 
 	var/facing = get_cardinal_dir(src, T)

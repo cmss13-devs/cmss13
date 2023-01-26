@@ -288,7 +288,7 @@
 		victim.update_burst()
 
 // Squeeze thru dense objects as a larva, as airlocks
-/mob/living/carbon/xenomorph/larva/proc/scuttle(var/obj/structure/S)
+/mob/living/carbon/xenomorph/larva/proc/scuttle(obj/structure/S)
 	var/move_dir = get_dir(src, loc)
 	for(var/atom/movable/AM in get_turf(S))
 		if(AM != S && AM.density && AM.BlockedPassDirs(src, move_dir))

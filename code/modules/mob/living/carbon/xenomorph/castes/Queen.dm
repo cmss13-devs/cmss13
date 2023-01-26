@@ -119,7 +119,7 @@
 	return ..()
 
 
-/mob/hologram/queen/proc/start_watching(var/mob/living/carbon/xenomorph/X, var/mob/living/carbon/xenomorph/target)
+/mob/hologram/queen/proc/start_watching(mob/living/carbon/xenomorph/X, mob/living/carbon/xenomorph/target)
 	SIGNAL_HANDLER
 	forceMove(target)
 	is_watching = target
@@ -128,11 +128,11 @@
 	return
 
 // able to stop watching here before the loc is set to null
-/mob/hologram/queen/proc/target_watching_qdeleted(var/mob/living/carbon/xenomorph/target)
+/mob/hologram/queen/proc/target_watching_qdeleted(mob/living/carbon/xenomorph/target)
 	SIGNAL_HANDLER
 	stop_watching(linked_mob, target)
 
-/mob/hologram/queen/proc/stop_watching(var/mob/living/carbon/xenomorph/X, var/mob/living/carbon/xenomorph/target)
+/mob/hologram/queen/proc/stop_watching(mob/living/carbon/xenomorph/X, mob/living/carbon/xenomorph/target)
 	SIGNAL_HANDLER
 	if(target)
 		if(loc == target)
@@ -171,7 +171,7 @@
 
 	return COMPONENT_TURF_DENY_MOVEMENT
 
-/mob/hologram/queen/proc/handle_overwatch(var/mob/living/carbon/xenomorph/queen/Q, var/atom/A, var/mods)
+/mob/hologram/queen/proc/handle_overwatch(mob/living/carbon/xenomorph/queen/Q, atom/A, mods)
 	SIGNAL_HANDLER
 
 	var/turf/T = get_turf(A)
@@ -401,7 +401,7 @@
 
 	AddComponent(/datum/component/footstep, 2 , 35, 11, 4, "alien_footstep_large")
 
-/mob/living/carbon/xenomorph/queen/handle_name(var/datum/hive_status/in_hive)
+/mob/living/carbon/xenomorph/queen/handle_name(datum/hive_status/in_hive)
 	var/name_prefix = in_hive.prefix
 	if(queen_aged)
 		age_xeno()
@@ -686,7 +686,7 @@
 		to_chat(src, SPAN_XENONOTICE("You have forbidden anyone to unnest hosts, except for the drone caste."))
 		xeno_message("The Queen has forbidden anyone to unnest hosts, except for the drone caste.", hivenumber = src.hivenumber)
 
-/mob/living/carbon/xenomorph/queen/handle_screech_act(var/mob/self, var/mob/living/carbon/xenomorph/queen/queen)
+/mob/living/carbon/xenomorph/queen/handle_screech_act(mob/self, mob/living/carbon/xenomorph/queen/queen)
 	return COMPONENT_SCREECH_ACT_CANCEL
 
 /mob/living/carbon/xenomorph/queen/proc/screech_ready()
@@ -761,7 +761,7 @@
 		stop_pulling()
 		return TRUE
 
-/mob/living/carbon/xenomorph/queen/death(var/cause, var/gibbed)
+/mob/living/carbon/xenomorph/queen/death(cause, gibbed)
 	if(hive.living_xeno_queen == src)
 		hive.xeno_queen_timer = world.time + XENO_QUEEN_DEATH_DELAY
 		hive.banished_ckeys   = list() // Reset the banished ckey list
@@ -907,12 +907,12 @@
 	if(ovipositor)
 		return "Queen_ovipositor_[severity]" // I don't actually have it, but maybe one day.
 
-/mob/living/carbon/xenomorph/queen/proc/in_egg_plant_range(var/turf/T)
+/mob/living/carbon/xenomorph/queen/proc/in_egg_plant_range(turf/T)
 	if(!ovipositor)
 		return FALSE // can't range plant while not in ovi... but who the fuck cares, we can't plant anyways
 	return get_dist(src, T) <= egg_planting_range
 
-/mob/living/carbon/xenomorph/queen/gib(var/cause = "gibbing")
+/mob/living/carbon/xenomorph/queen/gib(cause = "gibbing")
 	death(cause, 1)
 
 /datum/behavior_delegate/queen

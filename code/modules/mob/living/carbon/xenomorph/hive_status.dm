@@ -62,7 +62,7 @@
 
 // Mildly related to the above, but only for when xenos are removed from the hive
 // If a xeno dies, we don't have to regenerate all xeno info and sort it again, just remove them from the data list
-/datum/hive_status_ui/proc/xeno_removed(var/mob/living/carbon/xenomorph/X)
+/datum/hive_status_ui/proc/xeno_removed(mob/living/carbon/xenomorph/X)
 	if(!xeno_keys)
 		return
 

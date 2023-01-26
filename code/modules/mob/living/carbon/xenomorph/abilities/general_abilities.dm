@@ -300,7 +300,7 @@
 		xeno.zoom_in()
 		button.icon_state = "template_active"
 
-/datum/action/xeno_action/onclick/toggle_long_range/proc/handle_mob_move_or_look(mob/living/carbon/xenomorph/mover, var/actually_moving, var/direction, var/specific_direction)
+/datum/action/xeno_action/onclick/toggle_long_range/proc/handle_mob_move_or_look(mob/living/carbon/xenomorph/mover, actually_moving, direction, specific_direction)
 	SIGNAL_HANDLER
 
 	if(!actually_moving)

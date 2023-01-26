@@ -26,7 +26,7 @@
 
 #define isXenoBuilder(A) (isXenoDrone(A) || isXenoHivelord(A) || isXenoCarrier(A) || isXenoBurrower(A) || isXenoQueen(A))
 
-/mob/living/carbon/xenomorph/proc/can_not_harm(var/mob/living/carbon/C)
+/mob/living/carbon/xenomorph/proc/can_not_harm(mob/living/carbon/C)
 	if(!istype(C))
 		return FALSE
 

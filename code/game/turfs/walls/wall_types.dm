@@ -737,7 +737,7 @@
 	opacity = FALSE
 	alpha = 180
 
-/turf/closed/wall/resin/membrane/can_bombard(var/mob/living/carbon/xenomorph/X)
+/turf/closed/wall/resin/membrane/can_bombard(mob/living/carbon/xenomorph/X)
 	if(!istype(X))
 		return FALSE
 
@@ -904,7 +904,7 @@
 	if(isXeno(L))
 		return COMPONENT_IGNORE_ANCHORED
 
-/obj/structure/alien/movable_wall/proc/allow_xeno_drag(_, var/mob/living/carbon/xenomorph/X)
+/obj/structure/alien/movable_wall/proc/allow_xeno_drag(_, mob/living/carbon/xenomorph/X)
 	return COMPONENT_ALLOW_PULL
 
 /obj/structure/alien/movable_wall/update_icon()

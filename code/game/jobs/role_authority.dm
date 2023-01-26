@@ -745,7 +745,7 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 			return
 		given_squad.put_marine_in_squad(H) //Found one, finish up
 
-/datum/authority/branch/role/proc/get_caste_by_text(var/name)
+/datum/authority/branch/role/proc/get_caste_by_text(name)
 	var/mob/living/carbon/xenomorph/M
 	switch(name) //ADD NEW CASTES HERE!
 		if(XENO_CASTE_LARVA)

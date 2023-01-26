@@ -623,7 +623,7 @@
 
 //-------------------------XENOS------------------------
 
-/mob/living/carbon/xenomorph/handle_vehicle_bump(var/obj/vehicle/multitile/V)
+/mob/living/carbon/xenomorph/handle_vehicle_bump(obj/vehicle/multitile/V)
 
 	//whether xeno is knocked down
 	var/is_knocked_down = FALSE
@@ -739,14 +739,14 @@
 	return FALSE
 
 //BURROWER
-/mob/living/carbon/xenomorph/burrower/handle_vehicle_bump(var/obj/vehicle/multitile/V)
+/mob/living/carbon/xenomorph/burrower/handle_vehicle_bump(obj/vehicle/multitile/V)
 	if(burrow)
 		return TRUE
 	else
 		return . = ..()
 
 //DEFENDER
-/mob/living/carbon/xenomorph/defender/handle_vehicle_bump(var/obj/vehicle/multitile/V)
+/mob/living/carbon/xenomorph/defender/handle_vehicle_bump(obj/vehicle/multitile/V)
 	if(fortify)
 		if(V.vehicle_flags & VEHICLE_CLASS_WEAK) //defenders being able to completely block armored vehicles by crawling into a boulder is ridiculous
 			visible_message(SPAN_DANGER("[src] digs it's claws into the ground, anchoring itself in place and halting [V] in it's tracks!"),

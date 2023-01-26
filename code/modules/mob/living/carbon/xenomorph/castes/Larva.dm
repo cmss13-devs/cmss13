@@ -48,7 +48,7 @@
 	icon_xeno = 'icons/mob/xenos/larva.dmi'
 	icon_xenonid = 'icons/mob/xenonids/larva.dmi'
 
-/mob/living/carbon/xenomorph/larva/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/mob/living/carbon/xenomorph/larva/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_pass = PASS_MOB_THRU|PASS_FLAGS_CRAWLER

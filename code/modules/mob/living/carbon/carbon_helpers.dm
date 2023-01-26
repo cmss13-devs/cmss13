@@ -54,7 +54,7 @@
 		new_size = highest_view
 	return new_size
 
-/mob/living/carbon/proc/handle_queen_screech(var/mob/living/carbon/xenomorph/queen/queen, var/list/mobs_in_view)
+/mob/living/carbon/proc/handle_queen_screech(mob/living/carbon/xenomorph/queen/queen, list/mobs_in_view)
 	if(!(src in mobs_in_view))
 		return
 	scream_stun_timeout = 20 SECONDS

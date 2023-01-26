@@ -359,7 +359,7 @@
 
 // Helper proc to get an action on a target Xeno by type.
 // Used to interact with abilities from the outside
-/proc/get_xeno_action_by_type(mob/living/carbon/xenomorph/X, var/typepath)
+/proc/get_xeno_action_by_type(mob/living/carbon/xenomorph/X, typepath)
 	if (!istype(X))
 		CRASH("xeno_action.dm: get_xeno_action_by_type invoked with non-xeno first argument.")
 

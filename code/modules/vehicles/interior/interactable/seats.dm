@@ -122,7 +122,7 @@
 /obj/structure/bed/chair/comfy/vehicle/attackby(obj/item/W, mob/living/user)
 	return
 
-/obj/structure/bed/chair/comfy/vehicle/attack_alien(var/mob/living/carbon/xenomorph/X, var/dam_bonus)
+/obj/structure/bed/chair/comfy/vehicle/attack_alien(mob/living/carbon/xenomorph/X, dam_bonus)
 
 	if(X.is_mob_incapacitated() || !Adjacent(X))
 		return

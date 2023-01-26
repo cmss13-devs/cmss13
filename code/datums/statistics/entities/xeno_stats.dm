@@ -36,7 +36,7 @@
 //Stat Procs - death
 //******************
 
-/mob/living/carbon/Xenomorph/track_death_calculations()
+/mob/living/carbon/xenomorph/track_death_calculations()
 	if(statistic_exempt || statistic_tracked || !mind || !mind.player_entity)
 		return
 	var/datum/entity/player_stats/xeno/xeno_stats = mind.setup_xeno_stats()
@@ -121,7 +121,7 @@
 		var/datum/entity/player_stats/caste/R = round_statistics.setup_caste_stats(caste)
 		R.track_personal_abilities_used(ability, amount)
 
-/mob/living/carbon/Xenomorph/proc/track_ability_usage(ability, caste, amount = 1)
+/mob/living/carbon/xenomorph/proc/track_ability_usage(var/ability, var/caste, var/amount = 1)
 	if(statistic_exempt || !client || !mind)
 		return
 	var/datum/entity/player_stats/xeno/xeno_stats = mind.setup_xeno_stats()
@@ -135,7 +135,7 @@
 		var/datum/entity/player_stats/caste/R = round_statistics.setup_caste_stats(caste)
 		R.steps_walked += amount
 
-/mob/living/carbon/Xenomorph/track_steps_walked(amount = 1)
+/mob/living/carbon/xenomorph/track_steps_walked(var/amount = 1)
 	if(statistic_exempt || !client || !mind)
 		return
 	var/datum/entity/player_stats/xeno/xeno_stats = mind.setup_xeno_stats()
@@ -152,7 +152,7 @@
 		var/datum/entity/player_stats/caste/R = round_statistics.setup_caste_stats(caste)
 		R.total_hits += amount
 
-/mob/living/carbon/Xenomorph/proc/track_slashes(caste, amount = 1)
+/mob/living/carbon/xenomorph/proc/track_slashes(var/caste, var/amount = 1)
 	if(statistic_exempt || !client || !mind)
 		return
 	var/datum/entity/player_stats/xeno/xeno_stats = mind.setup_xeno_stats()

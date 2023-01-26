@@ -259,8 +259,8 @@
 
 		candidates = list()
 
-/datum/emergency_call/proc/add_candidate(mob/M)
-	if(!M.client || (M.mind && (M.mind in candidates)) || istype(M, /mob/living/carbon/Xenomorph))
+/datum/emergency_call/proc/add_candidate(var/mob/M)
+	if(!M.client || (M.mind && (M.mind in candidates)) || istype(M, /mob/living/carbon/xenomorph))
 		return FALSE //Not connected or already there or something went wrong.
 	if(M.mind)
 		candidates += M.mind

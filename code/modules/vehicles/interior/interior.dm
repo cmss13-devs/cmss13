@@ -175,7 +175,7 @@
 				passengers_taken_slots++
 
 		else if(isXeno(M))
-			var/mob/living/carbon/Xenomorph/X = M
+			var/mob/living/carbon/xenomorph/X = M
 			if(X.stat == DEAD)
 				continue
 			xenos_taken_slots++

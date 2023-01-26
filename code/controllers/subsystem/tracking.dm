@@ -49,7 +49,7 @@ SUBSYSTEM_DEF(tracking)
 				else
 					human_mob.locate_squad_leader()
 			else if(isXeno(current_mob))
-				var/mob/living/carbon/Xenomorph/xeno_mob = current_mob
+				var/mob/living/carbon/xenomorph/xeno_mob = current_mob
 				xeno_mob.queen_locator()
 				if(xeno_mob.tracked_marker)
 					xeno_mob.mark_locator()

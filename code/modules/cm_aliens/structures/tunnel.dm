@@ -50,7 +50,7 @@
 	if(hive)
 		hive.tunnels -= src
 
-	for(var/mob/living/carbon/Xenomorph/X in contents)
+	for(var/mob/living/carbon/xenomorph/X in contents)
 		X.forceMove(loc)
 		to_chat(X, SPAN_DANGER("[src] suddenly collapses, forcing you out!"))
 	. = ..()
@@ -102,7 +102,7 @@
 	if(isXeno(usr) && (usr.loc == src))
 		exit_tunnel(usr)
 
-/obj/structure/tunnel/proc/pick_tunnel(mob/living/carbon/Xenomorph/X)
+/obj/structure/tunnel/proc/pick_tunnel(mob/living/carbon/xenomorph/X)
 	. = FALSE //For peace of mind when it comes to dealing with unintended proc failures
 	if(!istype(X) || X.stat || X.lying || !isfriendly(X) || !hive)
 		return FALSE
@@ -149,7 +149,7 @@
 		to_chat(X, SPAN_XENONOTICE("You have reached your destination."))
 		return TRUE
 
-/obj/structure/tunnel/proc/exit_tunnel(mob/living/carbon/Xenomorph/X)
+/obj/structure/tunnel/proc/exit_tunnel(mob/living/carbon/xenomorph/X)
 	. = FALSE //For peace of mind when it comes to dealing with unintended proc failures
 	if(X in contents)
 		X.forceMove(loc)
@@ -161,17 +161,17 @@
 /obj/structure/tunnel/clicked(mob/user, list/mods)
 	if(!isXeno(user) || !isfriendly(user))
 		return ..()
-	var/mob/living/carbon/Xenomorph/X = user
+	var/mob/living/carbon/xenomorph/X = user
 	if(mods["ctrl"] && pick_tunnel(X))//Returning to original tunnel
 		return TRUE
 	else if(mods["alt"] && exit_tunnel(X))//Exiting the tunnel
 		return TRUE
 	. = ..()
 
-/obj/structure/tunnel/attack_larva(mob/living/carbon/Xenomorph/M)
+/obj/structure/tunnel/attack_larva(mob/living/carbon/xenomorph/M)
 	. = attack_alien(M)
 
-/obj/structure/tunnel/attack_alien(mob/living/carbon/Xenomorph/M)
+/obj/structure/tunnel/attack_alien(mob/living/carbon/xenomorph/M)
 	if(!istype(M) || M.stat || M.lying)
 		return XENO_NO_DELAY_ACTION
 

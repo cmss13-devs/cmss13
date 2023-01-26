@@ -44,7 +44,7 @@
 	. = ..()
 	if (!.)
 		return .
-	var/mob/living/carbon/Xenomorph/Carrier/carrier = mutator_set.xeno
+	var/mob/living/carbon/xenomorph/carrier/carrier = mutator_set.xeno
 	if(!istype(carrier))
 		return FALSE
 	carrier.mutation_type = CARRIER_SHAMAN
@@ -70,7 +70,7 @@
 /datum/action/xeno_action/activable/sacrifice_egg/action_cooldown_check()
 	if(!owner) //fires when action is assigned
 		return FALSE
-	var/mob/living/carbon/Xenomorph/Carrier/xeno = owner
+	var/mob/living/carbon/xenomorph/carrier/xeno = owner
 	var/datum/behavior_delegate/carrier_shaman/xeno_behavior = xeno.behavior_delegate
 	if(!istype(xeno_behavior))
 		return FALSE
@@ -83,7 +83,7 @@
 	return 4
 
 /datum/action/xeno_action/activable/sacrifice_egg/use_ability()
-	var/mob/living/carbon/Xenomorph/Carrier/xeno = owner
+	var/mob/living/carbon/xenomorph/carrier/xeno = owner
 	if(!istype(xeno))
 		return FALSE
 	if(xeno.eggs_cur <= 0)
@@ -123,12 +123,12 @@
 	handle_xeno_macro(src, action_name)
 
 /datum/action/xeno_action/activable/sacrifice_egg/radius_shield/use_ability()
-	var/mob/living/carbon/Xenomorph/Carrier/xeno = owner
+	var/mob/living/carbon/xenomorph/carrier/xeno = owner
 	if(!..())
 		return
 	xeno.egg_sacr_shield(src)
 
-/mob/living/carbon/Xenomorph/Carrier/proc/egg_sacr_shield(datum/action/xeno_action/activable/sacrifice_egg/radius_shield/action_def)
+/mob/living/carbon/xenomorph/carrier/proc/egg_sacr_shield(var/datum/action/xeno_action/activable/sacrifice_egg/radius_shield/action_def)
 	if(!check_state())
 		return
 
@@ -156,7 +156,7 @@
 
 	var/list/xenomorphs_in_range = list()
 	var/effect_power = 0
-	for(var/mob/living/carbon/Xenomorph/xeno in range(action_def.get_gather_range(), src) - src)
+	for(var/mob/living/carbon/xenomorph/xeno in range(action_def.get_gather_range(), src) - src)
 		if(xeno.stat == DEAD)
 			continue
 		if(!xeno.shaman_interactive) // Shamans are disconnected from the effect
@@ -184,7 +184,7 @@
 	var/shield_percent = min(((effect_power - 1) * action_def.shield_strength_gain) + action_def.shield_strength_base, action_def.shield_strength_max)
 	var/armor_percent =  min(((effect_power - 1) * action_def.armor_strength_gain) + action_def.armor_strength_base, action_def.armor_strength_max)
 
-	for(var/mob/living/carbon/Xenomorph/xeno as anything in xenomorphs_in_range)
+	for(var/mob/living/carbon/xenomorph/xeno as anything in xenomorphs_in_range)
 		// give overshield
 		var/to_shield = min(xeno.maxHealth * shield_percent / 100, action_def.shield_strength_max)
 		xeno.add_xeno_shield(to_shield, XENO_SHIELD_SOURCE_SHAMAN)
@@ -225,14 +225,14 @@
 	handle_xeno_macro(src, action_name)
 
 /datum/action/xeno_action/activable/sacrifice_egg/radius_scream/use_ability()
-	var/mob/living/carbon/Xenomorph/Carrier/xeno = owner
+	var/mob/living/carbon/xenomorph/carrier/xeno = owner
 	if(!..())
 		return
 	xeno.egg_sacr_scream(src)
 
 /mob/living/var/scream_stun_timeout
 
-/mob/living/carbon/Xenomorph/Carrier/proc/egg_sacr_scream(datum/action/xeno_action/activable/sacrifice_egg/radius_scream/action_def)
+/mob/living/carbon/xenomorph/carrier/proc/egg_sacr_scream(var/datum/action/xeno_action/activable/sacrifice_egg/radius_scream/action_def)
 	if(!check_state())
 		return
 
@@ -256,7 +256,7 @@
 	var/image/effect_overlay = get_busy_icon(ACTION_RED_POWER_UP)
 
 	var/effect_power = 0
-	for(var/mob/living/carbon/Xenomorph/xeno in range(action_def.get_gather_range(), src) - src)
+	for(var/mob/living/carbon/xenomorph/xeno in range(action_def.get_gather_range(), src) - src)
 		if(xeno.stat == DEAD)
 			continue
 		if(!xeno.shaman_interactive) // Shamans are disconnected from the effect
@@ -293,7 +293,7 @@
 			to_chat(src, SPAN_XENOWARNING("A wave of madness passes over you, but you were already shocked by the same feeling recently."))
 			continue
 
-		var/mob/living/carbon/Xenomorph/xeno = M
+		var/mob/living/carbon/xenomorph/xeno = M
 		var/mob/living/carbon/human/H = M
 
 		if(istype(xeno))
@@ -340,12 +340,12 @@
 	handle_xeno_macro(src, action_name)
 
 /datum/action/xeno_action/activable/sacrifice_egg/radius_pheromones/use_ability()
-	var/mob/living/carbon/Xenomorph/Carrier/xeno = owner
+	var/mob/living/carbon/xenomorph/carrier/xeno = owner
 	if(!..())
 		return
 	xeno.egg_sacr_pheromones(src)
 
-/mob/living/carbon/Xenomorph/Carrier/proc/egg_sacr_pheromones(datum/action/xeno_action/activable/sacrifice_egg/radius_pheromones/action_def)
+/mob/living/carbon/xenomorph/carrier/proc/egg_sacr_pheromones(var/datum/action/xeno_action/activable/sacrifice_egg/radius_pheromones/action_def)
 	if(!check_state())
 		return
 
@@ -372,7 +372,7 @@
 
 	visible_message(SPAN_XENONOTICE("\The [src] squashes the egg into a pulp."), SPAN_XENONOTICE("You squash the egg into a mess of acid, blood, and gore! You absorb the adrenal pheremones and redirect them outwards!"), null, 8)
 
-	for(var/mob/living/carbon/Xenomorph/xeno in range(action_def.get_gather_range(), src) - src)
+	for(var/mob/living/carbon/xenomorph/xeno in range(action_def.get_gather_range(), src) - src)
 		if(xeno.stat == DEAD)
 			continue
 		if(!xeno.shaman_interactive) // Shamans are disconnected from the effect
@@ -404,11 +404,11 @@
 	playsound(loc, "alien_drool", 25)
 	visible_message(SPAN_XENOWARNING("\The [src] begins to emit madness-inducing pheromones."), SPAN_XENOWARNING("You begin to emit an array of pheromones."), null, 5)
 
-	addtimer(CALLBACK(src, TYPE_PROC_REF(/mob/living/carbon/Xenomorph/Carrier, egg_sacr_pheromones_disable)), 30 SECONDS)
+	addtimer(CALLBACK(src, TYPE_PROC_REF(/mob/living/carbon/xenomorph/carrier, egg_sacr_pheromones_disable)), 30 SECONDS)
 	return TRUE
 
 
-/mob/living/carbon/Xenomorph/Carrier/proc/egg_sacr_pheromones_disable()
+/mob/living/carbon/xenomorph/carrier/proc/egg_sacr_pheromones_disable()
 	current_aura = null
 	aura_strength = 0
 	visible_message(SPAN_XENOWARNING("\The [src] stops emitting madness-inducing pheromones."), SPAN_XENOWARNING("Your reserve of adrenal pheremones runs out."), null, 5)
@@ -433,12 +433,12 @@
 	handle_xeno_macro(src, action_name)
 
 /datum/action/xeno_action/activable/sacrifice_egg/radius_remember/use_ability()
-	var/mob/living/carbon/Xenomorph/Carrier/xeno = owner
+	var/mob/living/carbon/xenomorph/carrier/xeno = owner
 	if(!..())
 		return
 	xeno.egg_sacr_remember_pain(src)
 
-/mob/living/carbon/Xenomorph/Carrier/proc/egg_sacr_remember_pain(datum/action/xeno_action/activable/sacrifice_egg/radius_remember/action_def)
+/mob/living/carbon/xenomorph/carrier/proc/egg_sacr_remember_pain(var/datum/action/xeno_action/activable/sacrifice_egg/radius_remember/action_def)
 	if(!check_state())
 		return
 
@@ -464,7 +464,7 @@
 
 	visible_message(SPAN_XENONOTICE("\The [src] squashes the egg into a pulp."), SPAN_XENONOTICE("You squash the egg into a mess of acid, blood, and gore! You absorb the adrenal pheremones and store them inside you."), null, 8)
 
-	for(var/mob/living/carbon/Xenomorph/xeno in range(7, src) - src)
+	for(var/mob/living/carbon/xenomorph/xeno in range(7, src) - src)
 		if(xeno.stat == DEAD)
 			continue
 		if(!xeno.shaman_interactive) // Shamans are disconnected from the effect
@@ -499,7 +499,7 @@
 	handle_xeno_macro(src, action_name)
 
 /datum/action/xeno_action/onclick/use_pain/use_ability()
-	var/mob/living/carbon/Xenomorph/Carrier/xeno = owner
+	var/mob/living/carbon/xenomorph/carrier/xeno = owner
 	if(!..())
 		return
 	xeno.use_pain_toggle()
@@ -508,7 +508,7 @@
 		return FALSE
 	button.icon_state = xeno_behavior.enable_pain_usage ? "template_active" : "template"
 
-/mob/living/carbon/Xenomorph/Carrier/proc/use_pain_toggle()
+/mob/living/carbon/xenomorph/carrier/proc/use_pain_toggle()
 	var/datum/behavior_delegate/carrier_shaman/xeno_behavior = behavior_delegate
 	if(!istype(xeno_behavior))
 		return FALSE

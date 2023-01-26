@@ -183,7 +183,7 @@
 			if(alert(src,"Are you sure you want to attempt joining as a xenomorph?","Confirmation","Yes","No") == "Yes" )
 				if(SSticker.mode.check_xeno_late_join(src))
 					var/mob/new_xeno = SSticker.mode.attempt_to_join_as_xeno(src, 0)
-					if(new_xeno && !istype(new_xeno, /mob/living/carbon/Xenomorph/Larva))
+					if(new_xeno && !istype(new_xeno, /mob/living/carbon/xenomorph/larva))
 						SSticker.mode.transfer_xeno(src, new_xeno)
 						close_spawn_windows()
 
@@ -429,7 +429,7 @@
 		queens += list(list("designation" = main_hive.living_xeno_queen.full_designation, "caste_type" = main_hive.living_xeno_queen.name))
 	data["queens"] = queens
 	var/list/leaders = list()
-	for(var/mob/living/carbon/Xenomorph/xeno_leader in main_hive.xeno_leader_list)
+	for(var/mob/living/carbon/xenomorph/xeno_leader in main_hive.xeno_leader_list)
 		leaders += list(list("designation" = xeno_leader.full_designation, "caste_type" = xeno_leader.caste_type))
 	data["leaders"] = leaders
 	return data

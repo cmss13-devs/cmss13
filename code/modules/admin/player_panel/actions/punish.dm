@@ -73,8 +73,8 @@
 	name = "Reset Xeno Name"
 
 
-/datum/player_action/reset_xeno_name/act(client/user, mob/target, list/params)
-	var/mob/living/carbon/Xenomorph/X = target
+/datum/player_action/reset_xeno_name/act(var/client/user, var/mob/target, var/list/params)
+	var/mob/living/carbon/xenomorph/X = target
 	if(!isXeno(X))
 		to_chat(user, SPAN_WARNING("[target.name] is not a xeno!"))
 		return
@@ -150,7 +150,7 @@
 
 	targetClient.prefs.save_preferences()
 
-	var/mob/living/carbon/Xenomorph/X = target
+	var/mob/living/carbon/xenomorph/X = target
 	X.generate_name()
 
 /datum/player_action/reset_human_name

@@ -72,7 +72,7 @@
 	healthcheck()
 	return TRUE
 
-/obj/structure/reagent_dispensers/attack_alien(mob/living/carbon/Xenomorph/user)
+/obj/structure/reagent_dispensers/attack_alien(mob/living/carbon/xenomorph/user)
 	if(unslashable)
 		return XENO_NO_DELAY_ACTION
 	user.animation_attack_on(src)

@@ -153,7 +153,7 @@
 		if(original && !original.first_xeno)
 			qdel(original)
 	else
-		var/mob/living/carbon/Xenomorph/Larva/L = new(xeno_turf, null, hivenumber)
+		var/mob/living/carbon/xenomorph/larva/L = new(xeno_turf, null, hivenumber)
 		ghost_mind.transfer_to(L)
 
 /datum/game_mode/xenovs/pick_queen_spawn(datum/mind/ghost_mind, hivenumber = XENO_HIVE_NORMAL)
@@ -208,7 +208,7 @@
 
 	for(var/mob/M in GLOB.player_list)
 		if(M.z && (M.z in z_levels) && M.stat != DEAD && !istype(M.loc, /turf/open/space)) //If they have a z var, they are on a turf.
-			var/mob/living/carbon/Xenomorph/X = M
+			var/mob/living/carbon/xenomorph/X = M
 			var/datum/hive_status/hive = GLOB.hive_datum[X.hivenumber]
 			if(!hive)
 				continue

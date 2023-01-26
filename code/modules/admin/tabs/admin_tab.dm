@@ -491,7 +491,7 @@
 	if(alert("This will rejuvenate ALL xenos within your view range. Are you sure?",,"Yes","Cancel") == "Cancel")
 		return
 
-	for(var/mob/living/carbon/Xenomorph/X in view())
+	for(var/mob/living/carbon/xenomorph/X in view())
 		X.rejuvenate(FALSE)
 
 	message_staff(WRAP_STAFF_LOG(usr, "ahealed all xenos in [get_area(usr)] ([usr.x],[usr.y],[usr.z])"), usr.x, usr.y, usr.z)

@@ -160,7 +160,7 @@
 /obj/item/weapon/melee/yautja/chain/attack(mob/target, mob/living/user)
 	. = ..()
 	if((human_adapted || isYautja(user)) && isXeno(target))
-		var/mob/living/carbon/Xenomorph/xenomorph = target
+		var/mob/living/carbon/xenomorph/xenomorph = target
 		xenomorph.interference = 30
 
 /obj/item/weapon/melee/yautja/sword
@@ -184,7 +184,7 @@
 /obj/item/weapon/melee/yautja/sword/attack(mob/target, mob/living/user)
 	. = ..()
 	if((human_adapted || isYautja(user)) && isXeno(target))
-		var/mob/living/carbon/Xenomorph/xenomorph = target
+		var/mob/living/carbon/xenomorph/xenomorph = target
 		xenomorph.interference = 30
 
 /obj/item/weapon/melee/yautja/scythe
@@ -208,7 +208,7 @@
 /obj/item/weapon/melee/yautja/scythe/attack(mob/living/target as mob, mob/living/carbon/human/user as mob)
 	..()
 	if((human_adapted || isYautja(user)) && isXeno(target))
-		var/mob/living/carbon/Xenomorph/xenomorph = target
+		var/mob/living/carbon/xenomorph/xenomorph = target
 		xenomorph.interference = 15
 
 
@@ -347,7 +347,7 @@
 	if(!.)
 		return
 	if((human_adapted || isSpeciesYautja(user)) && isXeno(target))
-		var/mob/living/carbon/Xenomorph/xenomorph = target
+		var/mob/living/carbon/xenomorph/xenomorph = target
 		xenomorph.interference = 30
 
 	if(target == user || target.stat == DEAD)
@@ -587,7 +587,7 @@
 	if(!.)
 		return
 	if((human_adapted || isYautja(user)) && isXeno(target))
-		var/mob/living/carbon/Xenomorph/xenomorph = target
+		var/mob/living/carbon/xenomorph/xenomorph = target
 		xenomorph.interference = 30
 
 /obj/item/weapon/melee/twohanded/yautja/glaive/damaged

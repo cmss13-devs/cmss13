@@ -39,7 +39,7 @@
 	if(isXeno(user) && status == EGG_GROWN)
 		. += "Ctrl + Click egg to retrieve child into your empty hand if you can carry it."
 
-/obj/effect/alien/egg/attack_alien(mob/living/carbon/Xenomorph/M)
+/obj/effect/alien/egg/attack_alien(mob/living/carbon/xenomorph/M)
 	if(M.hivenumber != hivenumber)
 		M.animation_attack_on(src)
 		M.visible_message(SPAN_XENOWARNING("[M] crushes \the [src]"),
@@ -72,7 +72,7 @@
 /obj/effect/alien/egg/clicked(mob/user, list/mods)
 	if(isobserver(user) || get_dist(src, user) > 1)
 		return
-	var/mob/living/carbon/Xenomorph/X = user
+	var/mob/living/carbon/xenomorph/X = user
 	if(istype(X) && status == EGG_GROWN && mods["ctrl"] && X.caste.can_hold_facehuggers)
 		Burst(FALSE, FALSE, X)
 		return TRUE
@@ -110,7 +110,7 @@
 		var/obj/effect/egg_trigger/ET = trigger
 		ET.moveToNullspace()
 
-/obj/effect/alien/egg/proc/Burst(kill = TRUE, instant_trigger = FALSE, mob/living/carbon/Xenomorph/X = null, is_hugger_player_controlled = FALSE) //drops and kills the facehugger if any is remaining
+/obj/effect/alien/egg/proc/Burst(var/kill = TRUE, var/instant_trigger = FALSE, var/mob/living/carbon/xenomorph/X = null, var/is_hugger_player_controlled = FALSE) //drops and kills the facehugger if any is remaining
 	if(kill && status != EGG_DESTROYED)
 		hide_egg_triggers()
 		status = EGG_DESTROYED
@@ -125,7 +125,7 @@
 		playsound(src.loc, "sound/effects/alien_egg_move.ogg", 25)
 		addtimer(CALLBACK(src, PROC_REF(release_hugger), instant_trigger, X, is_hugger_player_controlled), 1 SECONDS)
 
-/obj/effect/alien/egg/proc/release_hugger(instant_trigger, mob/living/carbon/Xenomorph/X, is_hugger_player_controlled = FALSE)
+/obj/effect/alien/egg/proc/release_hugger(var/instant_trigger, var/mob/living/carbon/xenomorph/X, var/is_hugger_player_controlled = FALSE)
 	if(!loc || status == EGG_DESTROYED)
 		return
 

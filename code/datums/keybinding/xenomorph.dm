@@ -16,7 +16,7 @@
 	. = ..()
 	if(.)
 		return
-	var/mob/living/carbon/Xenomorph/X = user.mob
+	var/mob/living/carbon/xenomorph/X = user.mob
 	X.xeno_primary_action_one()
 	return TRUE
 
@@ -31,7 +31,7 @@
 	. = ..()
 	if(.)
 		return
-	var/mob/living/carbon/Xenomorph/X = user.mob
+	var/mob/living/carbon/xenomorph/X = user.mob
 	X.xeno_primary_action_two()
 	return TRUE
 
@@ -46,7 +46,7 @@
 	. = ..()
 	if(.)
 		return
-	var/mob/living/carbon/Xenomorph/X = user.mob
+	var/mob/living/carbon/xenomorph/X = user.mob
 	X.xeno_primary_action_three()
 	return TRUE
 
@@ -61,7 +61,7 @@
 	. = ..()
 	if(.)
 		return
-	var/mob/living/carbon/Xenomorph/X = user.mob
+	var/mob/living/carbon/xenomorph/X = user.mob
 	X.xeno_primary_action_four()
 	return TRUE
 
@@ -76,7 +76,7 @@
 	. = ..()
 	if(.)
 		return
-	var/mob/living/carbon/Xenomorph/X = user.mob
+	var/mob/living/carbon/xenomorph/X = user.mob
 	X.xeno_primary_action_five()
 	return TRUE
 
@@ -93,7 +93,7 @@
 	. = ..()
 	if(.)
 		return
-	var/mob/living/carbon/Xenomorph/X = user.mob
+	var/mob/living/carbon/xenomorph/X = user.mob
 	X.emit_pheromones(pheromone)
 	return TRUE
 
@@ -129,7 +129,7 @@
 	. = ..()
 	if(.)
 		return
-	var/mob/living/carbon/Xenomorph/xeno = user.mob
+	var/mob/living/carbon/xenomorph/xeno = user.mob
 	xeno.m_corrosive_acid()
 	return TRUE
 
@@ -144,7 +144,7 @@
 	. = ..()
 	if(.)
 		return
-	var/mob/living/carbon/Xenomorph/xeno = user.mob
+	var/mob/living/carbon/xenomorph/xeno = user.mob
 	xeno.tech_secrete_resin()
 	return TRUE
 
@@ -159,7 +159,7 @@
 	. = ..()
 	if(.)
 		return
-	var/mob/living/carbon/Xenomorph/xeno = user.mob
+	var/mob/living/carbon/xenomorph/xeno = user.mob
 	xeno.xeno_screech_action()
 	return TRUE
 
@@ -174,6 +174,6 @@
 	. = ..()
 	if(.)
 		return
-	var/mob/living/carbon/Xenomorph/xeno = user.mob
+	var/mob/living/carbon/xenomorph/xeno = user.mob
 	xeno.xeno_tail_stab_action()
 	return TRUE

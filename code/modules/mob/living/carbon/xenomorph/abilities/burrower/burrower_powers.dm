@@ -1,6 +1,6 @@
 
 //Burrower Abilities
-/mob/living/carbon/Xenomorph/proc/burrow()
+/mob/living/carbon/xenomorph/proc/burrow()
 	if(!check_state())
 		return
 
@@ -44,7 +44,7 @@
 	burrow_timer = world.time + 90 // How long we can be burrowed
 	process_burrow()
 
-/mob/living/carbon/Xenomorph/proc/process_burrow()
+/mob/living/carbon/xenomorph/proc/process_burrow()
 	if(!burrow)
 		return
 	if(world.time > burrow_timer && !tunnel)
@@ -54,7 +54,7 @@
 	if(burrow)
 		addtimer(CALLBACK(src, PROC_REF(process_burrow)), 1 SECONDS)
 
-/mob/living/carbon/Xenomorph/proc/burrow_off()
+/mob/living/carbon/xenomorph/proc/burrow_off()
 	if(caste_type && GLOB.xeno_datum_list[caste_type])
 		caste = GLOB.xeno_datum_list[caste_type]
 	to_chat(src, SPAN_NOTICE("You resurface."))
@@ -72,7 +72,7 @@
 	update_canmove()
 	update_icons()
 
-/mob/living/carbon/Xenomorph/proc/do_burrow_cooldown()
+/mob/living/carbon/xenomorph/proc/do_burrow_cooldown()
 	used_burrow = FALSE
 	to_chat(src, SPAN_NOTICE("You can now surface."))
 	for(var/X in actions)
@@ -80,7 +80,7 @@
 		act.update_button_icon()
 
 
-/mob/living/carbon/Xenomorph/proc/tunnel(turf/T)
+/mob/living/carbon/xenomorph/proc/tunnel(var/turf/T)
 	if(!check_state())
 		return
 
@@ -135,14 +135,14 @@
 	process_tunnel(T)
 
 
-/mob/living/carbon/Xenomorph/proc/process_tunnel(turf/T)
+/mob/living/carbon/xenomorph/proc/process_tunnel(var/turf/T)
 	if(world.time > tunnel_timer)
 		tunnel = FALSE
 		do_tunnel(T)
 	if(tunnel && T)
 		addtimer(CALLBACK(src, PROC_REF(process_tunnel), T), 1 SECONDS)
 
-/mob/living/carbon/Xenomorph/proc/do_tunnel(turf/T)
+/mob/living/carbon/xenomorph/proc/do_tunnel(var/turf/T)
 	to_chat(src, SPAN_NOTICE("You tunnel to your destination."))
 	anchored = FALSE
 	unfreeze()
@@ -150,14 +150,14 @@
 	UnregisterSignal(src, COMSIG_LIVING_FLAMER_FLAMED)
 	burrow_off()
 
-/mob/living/carbon/Xenomorph/proc/do_tunnel_cooldown()
+/mob/living/carbon/xenomorph/proc/do_tunnel_cooldown()
 	used_tunnel = FALSE
 	to_chat(src, SPAN_NOTICE("You can now tunnel while burrowed."))
 	for(var/X in actions)
 		var/datum/action/act = X
 		act.update_button_icon()
 
-/mob/living/carbon/Xenomorph/proc/rename_tunnel(obj/structure/tunnel/T in oview(1))
+/mob/living/carbon/xenomorph/proc/rename_tunnel(var/obj/structure/tunnel/T in oview(1))
 	set name = "Rename Tunnel"
 	set desc = "Rename the tunnel."
 	set category = null
@@ -174,10 +174,10 @@
 	return
 
 /datum/action/xeno_action/onclick/tremor/action_cooldown_check()
-	var/mob/living/carbon/Xenomorph/xeno = owner
+	var/mob/living/carbon/xenomorph/xeno = owner
 	return !xeno.used_tremor
 
-/mob/living/carbon/Xenomorph/proc/tremor() //More support focused version of crusher earthquakes.
+/mob/living/carbon/xenomorph/proc/tremor() //More support focused version of crusher earthquakes.
 	if(burrow || is_ventcrawling)
 		to_chat(src, SPAN_XENOWARNING("You must be above ground to do this."))
 		return

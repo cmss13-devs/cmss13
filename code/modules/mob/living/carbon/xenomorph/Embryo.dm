@@ -54,13 +54,13 @@
 		if(ishuman(affected_mob))
 			var/mob/living/carbon/human/H = affected_mob
 			if(world.time > H.timeofdeath + H.revive_grace_period) //Can't be defibbed.
-				var/mob/living/carbon/Xenomorph/Larva/L = locate() in affected_mob
+				var/mob/living/carbon/xenomorph/larva/L = locate() in affected_mob
 				if(L)
 					L.chest_burst(affected_mob)
 				qdel(src)
 				return FALSE
 		else
-			var/mob/living/carbon/Xenomorph/Larva/L = locate() in affected_mob
+			var/mob/living/carbon/xenomorph/larva/L = locate() in affected_mob
 			if(L)
 				L.chest_burst(affected_mob)
 			STOP_PROCESSING(SSobj, src)
@@ -129,7 +129,7 @@
 		if(6)
 			larva_autoburst_countdown--
 			if(!larva_autoburst_countdown)
-				var/mob/living/carbon/Xenomorph/Larva/L = locate() in affected_mob
+				var/mob/living/carbon/xenomorph/larva/L = locate() in affected_mob
 				if(L)
 					L.chest_burst(affected_mob)
 
@@ -158,10 +158,10 @@
 			picked = pick(candidates)
 
 	// Spawn the larva
-	var/mob/living/carbon/Xenomorph/Larva/new_xeno
+	var/mob/living/carbon/xenomorph/larva/new_xeno
 
 	if(isYautja(affected_mob) || (flags_embryo & FLAG_EMBRYO_PREDATOR))
-		new_xeno = new /mob/living/carbon/Xenomorph/Larva/predalien(affected_mob)
+		new_xeno = new /mob/living/carbon/xenomorph/larva/predalien(affected_mob)
 		yautja_announcement(SPAN_YAUTJABOLDBIG("WARNING!\n\nAn abomination has been detected at [get_area_name(new_xeno)]. It is a stain upon our purity and is unfit for life. Exterminate it immediately"))
 	else
 		new_xeno = new(affected_mob)
@@ -191,7 +191,7 @@
 
 	stage = 6
 
-/mob/living/carbon/Xenomorph/Larva/proc/cause_unbearable_pain(mob/living/carbon/victim)
+/mob/living/carbon/xenomorph/larva/proc/cause_unbearable_pain(mob/living/carbon/victim)
 	if(loc != victim)
 		return
 	victim.emote("scream")
@@ -201,7 +201,7 @@
 	to_chat(victim, message)
 	addtimer(CALLBACK(src, PROC_REF(cause_unbearable_pain), victim), rand(1, 3) SECONDS, TIMER_UNIQUE)
 
-/mob/living/carbon/Xenomorph/Larva/proc/chest_burst(mob/living/carbon/victim)
+/mob/living/carbon/xenomorph/larva/proc/chest_burst(mob/living/carbon/victim)
 	set waitfor = 0
 	if(victim.chestburst || loc != victim)
 		return
@@ -236,7 +236,7 @@
 
 	victim.spawn_gibs()
 
-	for(var/mob/living/carbon/Xenomorph/Larva/L in victim)
+	for(var/mob/living/carbon/xenomorph/larva/L in victim)
 		var/datum/hive_status/hive = GLOB.hive_datum[L.hivenumber]
 		L.forceMove(get_turf(victim)) //moved to the turf directly so we don't get stuck inside a cryopod or another mob container.
 		playsound(L, pick('sound/voice/alien_chestburst.ogg','sound/voice/alien_chestburst2.ogg'), 25)
@@ -288,7 +288,7 @@
 		victim.update_burst()
 
 // Squeeze thru dense objects as a larva, as airlocks
-/mob/living/carbon/Xenomorph/Larva/proc/scuttle(obj/structure/S)
+/mob/living/carbon/xenomorph/larva/proc/scuttle(var/obj/structure/S)
 	var/move_dir = get_dir(src, loc)
 	for(var/atom/movable/AM in get_turf(S))
 		if(AM != S && AM.density && AM.BlockedPassDirs(src, move_dir))

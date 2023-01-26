@@ -1,9 +1,9 @@
 //There has to be a better way to define this shit. ~ Z
 //can't equip anything
-/mob/living/carbon/Xenomorph/attack_ui(slot_id)
+/mob/living/carbon/xenomorph/attack_ui(slot_id)
 	return
 
-/mob/living/carbon/Xenomorph/attack_animal(mob/living/M as mob)
+/mob/living/carbon/xenomorph/attack_animal(mob/living/M as mob)
 
 	if(isanimal(M))
 		var/mob/living/simple_animal/S = M
@@ -20,7 +20,7 @@
 			attack_log += text("\[[time_stamp()]\] <font color='orange'>was attacked by [key_name(S)]</font>")
 			updatehealth()
 
-/mob/living/carbon/Xenomorph/attack_hand(mob/living/carbon/human/M)
+/mob/living/carbon/xenomorph/attack_hand(mob/living/carbon/human/M)
 	if(..())
 		return TRUE
 
@@ -89,7 +89,7 @@
 
 //Hot hot Aliens on Aliens action.
 //Actually just used for eating people.
-/mob/living/carbon/Xenomorph/attack_alien(mob/living/carbon/Xenomorph/M)
+/mob/living/carbon/xenomorph/attack_alien(mob/living/carbon/xenomorph/M)
 	if (M.fortify || M.burrow)
 		return XENO_NO_DELAY_ACTION
 
@@ -190,7 +190,7 @@
 				SPAN_WARNING("You shove \the [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	return XENO_ATTACK_ACTION
 
-/mob/living/carbon/Xenomorph/proc/attempt_headbutt(mob/living/carbon/Xenomorph/target)
+/mob/living/carbon/xenomorph/proc/attempt_headbutt(var/mob/living/carbon/xenomorph/target)
 	//Responding to a raised head
 	if(target.flags_emote & EMOTING_HEADBUTT && do_after(src, 5, INTERRUPT_MOVED, EMOTE_ICON_HEADBUTT))
 		if(!(target.flags_emote & EMOTING_HEADBUTT)) //Additional check for if the target moved or was already headbutted.
@@ -218,7 +218,7 @@
 		to_chat(src, SPAN_NOTICE("You were left hanging!"))
 	flags_emote &= ~EMOTING_HEADBUTT
 
-/mob/living/carbon/Xenomorph/proc/attempt_tailswipe(mob/living/carbon/Xenomorph/target)
+/mob/living/carbon/xenomorph/proc/attempt_tailswipe(var/mob/living/carbon/xenomorph/target)
 	//Responding to a raised tail
 	if(target.flags_emote & EMOTING_TAIL_SWIPE && do_after(src, 5, INTERRUPT_MOVED, EMOTE_ICON_TAILSWIPE))
 		if(!(target.flags_emote & EMOTING_TAIL_SWIPE)) //Additional check for if the target moved or was already tail swiped.

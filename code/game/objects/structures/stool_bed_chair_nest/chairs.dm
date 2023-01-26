@@ -68,7 +68,7 @@
 			flags_can_pass_all_temp |= PASS_OVER
 			projectile_coverage = PROJECTILE_COVERAGE_MEDIUM
 
-/obj/structure/bed/chair/attack_alien(mob/living/carbon/Xenomorph/M)
+/obj/structure/bed/chair/attack_alien(mob/living/carbon/xenomorph/M)
 	. = ..()
 	if(stacked_size)
 		stack_collapse()

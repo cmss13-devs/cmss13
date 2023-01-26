@@ -216,10 +216,10 @@
 
 /proc/zap_beam(atom/source, zap_range, damage, list/blacklistmobs)
 	var/list/zap_data = list()
-	for(var/mob/living/carbon/Xenomorph/beno in oview(zap_range, source))
+	for(var/mob/living/carbon/xenomorph/beno in oview(zap_range, source))
 		zap_data += beno
 	for(var/xeno in zap_data)
-		var/mob/living/carbon/Xenomorph/living = xeno
+		var/mob/living/carbon/xenomorph/living = xeno
 		if(!living)
 			return
 		if(living.stat == DEAD)

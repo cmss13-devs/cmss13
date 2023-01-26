@@ -96,7 +96,7 @@
 	var/round_id = SSperf_logging.round.id
 	if (isXeno(recipient))
 		// Xeno jellies
-		var/mob/living/carbon/Xenomorph/xeno = recipient
+		var/mob/living/carbon/xenomorph/xeno = recipient
 		var/caste = xeno.caste_type
 		var/datum/entity/player_stats/xeno/xeno_stats = setup_xeno_stats()
 		xeno_stats.count_niche_stat(STATISTICS_NICHE_MEDALS, -1, caste)

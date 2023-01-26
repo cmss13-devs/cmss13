@@ -208,7 +208,7 @@
 		var/caste_type = RoleAuthority.get_caste_by_text(xeno_caste)
 
 		var/list/xenos = list()
-		var/mob/living/carbon/Xenomorph/X
+		var/mob/living/carbon/xenomorph/X
 		for(var/i = 0 to xenos_to_spawn - 1)
 			var/turf/to_spawn_at = pick(turfs)
 			X = new caste_type(to_spawn_at, null, xeno_hive)

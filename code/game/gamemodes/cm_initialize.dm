@@ -335,7 +335,7 @@ Additional game mode variables.
 	var/list/available_xenos = list()
 	var/list/available_xenos_non_ssd = list()
 
-	for(var/mob/living/carbon/Xenomorph/X in GLOB.living_xeno_list)
+	for(var/mob/living/carbon/xenomorph/X in GLOB.living_xeno_list)
 		var/area/A = get_area(X)
 		if(is_admin_level(X.z) && (!A || !(A.flags_area & AREA_ALLOW_XENO_JOIN)) || X.aghosted)
 			continue //xenos on admin z level and aghosted ones don't count
@@ -362,7 +362,7 @@ Additional game mode variables.
 		to_chat(xeno_candidate, SPAN_WARNING("There aren't any available xenomorphs or pooled larvae. You can try getting spawned as a chestburster larva by toggling your Xenomorph candidacy in Preferences -> Toggle SpecialRole Candidacy."))
 		return FALSE
 
-	var/mob/living/carbon/Xenomorph/new_xeno
+	var/mob/living/carbon/xenomorph/new_xeno
 	if(!instant_join)
 		var/userInput = tgui_input_list(usr, "Available Xenomorphs", "Join as Xeno", available_xenos, theme="hive_status")
 
@@ -472,7 +472,7 @@ Additional game mode variables.
 	//We have our Hive picked, time to figure out what we can join via
 	var/list/available_facehugger_sources = list()
 
-	for(var/mob/living/carbon/Xenomorph/Carrier/carrier in hive.totalXenos)
+	for(var/mob/living/carbon/xenomorph/carrier/carrier in hive.totalXenos)
 		if(carrier.huggers_cur > carrier.huggers_reserved)
 			var/area_name = get_area_name(carrier)
 			var/descriptive_name = "[carrier.name] in [area_name]"
@@ -503,7 +503,7 @@ Additional game mode variables.
 
 	//Call the appropriate procs to spawn with
 	if(isXenoCarrier(facehugger_choice))
-		var/mob/living/carbon/Xenomorph/Carrier/carrier = facehugger_choice
+		var/mob/living/carbon/xenomorph/carrier/carrier = facehugger_choice
 		carrier.join_as_facehugger_from_this(xeno_candidate)
 	else
 		var/obj/effect/alien/resin/special/eggmorph/morpher = facehugger_choice
@@ -548,7 +548,7 @@ Additional game mode variables.
 
 	msg_admin_niche("[new_xeno.key] has joined as [new_xeno].")
 	if(isXeno(new_xeno)) //Dear lord
-		var/mob/living/carbon/Xenomorph/X = new_xeno
+		var/mob/living/carbon/xenomorph/X = new_xeno
 		X.generate_name()
 		if(X.is_ventcrawling)
 			X.update_pipe_icons(X.loc) //If we are in a vent, fetch a fresh vent map
@@ -604,7 +604,7 @@ Additional game mode variables.
 	if(hive.living_xeno_queen || !original || !original.client)
 		return
 
-	var/mob/living/carbon/Xenomorph/new_queen = new /mob/living/carbon/Xenomorph/Queen(xeno_turf, null, hivenumber)
+	var/mob/living/carbon/xenomorph/new_queen = new /mob/living/carbon/xenomorph/queen(xeno_turf, null, hivenumber)
 	ghost_mind.transfer_to(new_queen) //The mind is fine, since we already labeled them as a xeno. Away they go.
 	ghost_mind.name = ghost_mind.current.name
 

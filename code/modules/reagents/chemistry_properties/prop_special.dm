@@ -58,7 +58,7 @@
 		var/mob/living/carbon/human/H = M
 		H.heal_limb_damage(potency * volume * POTENCY_MULTIPLIER_LOW)
 	if(isXeno(M)) //more effective on xenos to account for higher HP
-		var/mob/living/carbon/Xenomorph/X = M
+		var/mob/living/carbon/xenomorph/X = M
 		X.gain_health(potency * volume)
 
 /datum/chem_property/special/organhealing

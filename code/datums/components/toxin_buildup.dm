@@ -62,6 +62,6 @@
 	SIGNAL_HANDLER
 	L += "Toxin Buildup: [toxic_buildup]/[max_buildup]"
 
-/datum/component/toxic_buildup/proc/apply_toxic_buildup(mob/living/carbon/Xenomorph/X, list/damagedata)
+/datum/component/toxic_buildup/proc/apply_toxic_buildup(var/mob/living/carbon/xenomorph/X, var/list/damagedata)
 	SIGNAL_HANDLER
 	damagedata["armor"] = max(damagedata["armor"] - toxic_buildup, 0)

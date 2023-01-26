@@ -1,5 +1,5 @@
 /datum/action/xeno_action/onclick/toggle_crest/use_ability(atom/target)
-	var/mob/living/carbon/Xenomorph/xeno = owner
+	var/mob/living/carbon/xenomorph/xeno = owner
 	if (!istype(xeno))
 		return
 
@@ -36,7 +36,7 @@
 
 // Defender Headbutt
 /datum/action/xeno_action/activable/headbutt/use_ability(atom/target_atom)
-	var/mob/living/carbon/Xenomorph/fendy = owner
+	var/mob/living/carbon/xenomorph/fendy = owner
 	if (!istype(fendy))
 		return
 
@@ -105,7 +105,7 @@
 
 // Defender Tail Sweep
 /datum/action/xeno_action/onclick/tail_sweep/use_ability(atom/A)
-	var/mob/living/carbon/Xenomorph/X = owner
+	var/mob/living/carbon/xenomorph/X = owner
 	if (!istype(X))
 		return
 
@@ -155,7 +155,7 @@
 
 // Defender Fortify
 /datum/action/xeno_action/activable/fortify/use_ability(atom/target)
-	var/mob/living/carbon/Xenomorph/xeno = owner
+	var/mob/living/carbon/xenomorph/xeno = owner
 	if (!istype(xeno))
 		return
 
@@ -192,17 +192,17 @@
 
 /datum/action/xeno_action/activable/fortify/action_activate()
 	..()
-	var/mob/living/carbon/Xenomorph/xeno = owner
+	var/mob/living/carbon/xenomorph/xeno = owner
 	if(xeno.fortify && xeno.selected_ability != src)
 		button.icon_state = "template_active"
 
 /datum/action/xeno_action/activable/fortify/action_deselect()
 	..()
-	var/mob/living/carbon/Xenomorph/xeno = owner
+	var/mob/living/carbon/xenomorph/xeno = owner
 	if(xeno.fortify)
 		button.icon_state = "template_active"
 
-/datum/action/xeno_action/activable/fortify/proc/fortify_switch(mob/living/carbon/Xenomorph/X, fortify_state)
+/datum/action/xeno_action/activable/fortify/proc/fortify_switch(var/mob/living/carbon/xenomorph/X, var/fortify_state)
 	if(X.fortify == fortify_state)
 		return
 
@@ -245,7 +245,7 @@
 		X.update_icons()
 		X.fortify = FALSE
 
-/datum/action/xeno_action/activable/fortify/proc/check_directional_armor(mob/living/carbon/Xenomorph/defendy, list/damagedata)
+/datum/action/xeno_action/activable/fortify/proc/check_directional_armor(var/mob/living/carbon/xenomorph/defendy, list/damagedata)
 	SIGNAL_HANDLER
 	var/projectile_direction = damagedata["direction"]
 	if(defendy.dir & REVERSE_DIR(projectile_direction))

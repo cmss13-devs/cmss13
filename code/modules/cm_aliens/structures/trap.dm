@@ -21,7 +21,7 @@
 	var/datum/cause_data/cause_data
 	plane = FLOOR_PLANE
 
-/obj/effect/alien/resin/trap/Initialize(mapload, mob/living/carbon/Xenomorph/X)
+/obj/effect/alien/resin/trap/Initialize(mapload, mob/living/carbon/xenomorph/X)
 	. = ..()
 	if(X)
 		created_by = X.ckey
@@ -76,7 +76,7 @@
 	..()
 
 /obj/effect/alien/resin/trap/bullet_act(obj/item/projectile/P)
-	var/mob/living/carbon/Xenomorph/X = P.firer
+	var/mob/living/carbon/xenomorph/X = P.firer
 	if(istype(X) && HIVE_ALLIED_TO_HIVE(X.hivenumber, hivenumber))
 		return
 
@@ -102,7 +102,7 @@
 					return
 				trigger_trap()
 			if(isXeno(AM))
-				var/mob/living/carbon/Xenomorph/X = AM
+				var/mob/living/carbon/xenomorph/X = AM
 				if(X.hivenumber != hivenumber)
 					trigger_trap()
 			if(isVehicleMultitile(AM) && trap_type != RESIN_TRAP_GAS)
@@ -133,7 +133,7 @@
 	var/area/A = get_area(src)
 	facehugger_die()
 	clear_tripwires()
-	for(var/mob/living/carbon/Xenomorph/X in GLOB.living_xeno_list)
+	for(var/mob/living/carbon/xenomorph/X in GLOB.living_xeno_list)
 		if(X.hivenumber == hivenumber)
 			to_chat(X, SPAN_XENOMINORWARNING("You sense one of your Hive's facehugger traps at [A.name] has been burnt!"))
 
@@ -185,7 +185,7 @@
 			clear_tripwires()
 	if(!A)
 		return
-	for(var/mob/living/carbon/Xenomorph/X in GLOB.living_xeno_list)
+	for(var/mob/living/carbon/xenomorph/X in GLOB.living_xeno_list)
 		if(X.hivenumber == hivenumber)
 			if(destroyed)
 				to_chat(X, SPAN_XENOMINORWARNING("You sense one of your Hive's [trap_type_name] traps at [A.name] has been destroyed!"))
@@ -196,7 +196,7 @@
 	QDEL_NULL_LIST(tripwires)
 	tripwires = list()
 
-/obj/effect/alien/resin/trap/attack_alien(mob/living/carbon/Xenomorph/X)
+/obj/effect/alien/resin/trap/attack_alien(mob/living/carbon/xenomorph/X)
 	if(X.hivenumber != hivenumber)
 		return ..()
 
@@ -230,7 +230,7 @@
 		return XENO_NO_DELAY_ACTION
 
 	if(isXenoBoiler(X))
-		var/mob/living/carbon/Xenomorph/Boiler/B = X
+		var/mob/living/carbon/xenomorph/boiler/B = X
 
 		if(!B.check_plasma(200))
 			to_chat(B, SPAN_XENOWARNING("You must produce more plasma before doing this."))
@@ -313,7 +313,7 @@
 	if(FH.stat == DEAD)
 		to_chat(user, SPAN_XENOWARNING("You can't put a dead facehugger in [src]."))
 	else
-		var/mob/living/carbon/Xenomorph/X = user
+		var/mob/living/carbon/xenomorph/X = user
 		if (!istype(X))
 			return
 

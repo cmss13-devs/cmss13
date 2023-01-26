@@ -189,7 +189,7 @@
 	var/breakouttime = 2 MINUTES
 
 /obj/item/restraints/attack(mob/living/carbon/C as mob, mob/user as mob)
-	if(!istype(C, /mob/living/carbon/Xenomorph))
+	if(!istype(C, /mob/living/carbon/xenomorph))
 		to_chat(user, SPAN_DANGER("The cuffs do not fit!"))
 		return
 	if(!C.handcuffed)

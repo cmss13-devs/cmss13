@@ -62,7 +62,7 @@
 /datum/chem_property/positive/neogenetic/reaction_mob(mob/M, method=TOUCH, volume, potency)
 	if(!isXeno(M))
 		return
-	var/mob/living/carbon/Xenomorph/X = M
+	var/mob/living/carbon/xenomorph/X = M
 	if(potency > 2) //heals at levels 5+
 		X.gain_health(potency * volume * POTENCY_MULTIPLIER_LOW)
 
@@ -796,7 +796,7 @@
 /datum/chem_property/positive/disrupting/reaction_mob(mob/M, method=TOUCH, volume, potency)
 	if(!isXeno(M))
 		return
-	var/mob/living/carbon/Xenomorph/X = M
+	var/mob/living/carbon/xenomorph/X = M
 	X.interference += (volume * potency)
 
 /datum/chem_property/positive/neutralizing
@@ -821,7 +821,7 @@
 	var/mob/living/L = M
 	L.ExtinguishMob() //Extinguishes mobs on contact
 	if(isXeno(L))
-		var/mob/living/carbon/Xenomorph/X = M
+		var/mob/living/carbon/xenomorph/X = M
 		X.plasma_stored = max(X.plasma_stored - POTENCY_MULTIPLIER_VHIGH * POTENCY_MULTIPLIER_VHIGH * potency, 0)
 
 /datum/chem_property/positive/neutralizing/reaction_turf(turf/T, volume, potency)
@@ -870,7 +870,7 @@
 /datum/chem_property/positive/cardiostabilizing/reaction_mob(mob/M, method=TOUCH, volume, potency)
 	if(!isXeno(M))
 		return
-	var/mob/living/carbon/Xenomorph/X = M
+	var/mob/living/carbon/xenomorph/X = M
 	if(X.health < 0) //heals out of crit with enough potency/volume, otherwise reduces crit
 		X.gain_health(min(potency * volume * 0.5, -X.health + 1))
 

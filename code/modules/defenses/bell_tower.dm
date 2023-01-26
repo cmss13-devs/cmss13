@@ -261,7 +261,7 @@
 	if(!targets)
 		return
 
-	for(var/mob/living/carbon/Xenomorph/X in targets)
+	for(var/mob/living/carbon/xenomorph/X in targets)
 		to_chat(X, SPAN_XENOWARNING("Augh! You are slowed by the incessant ringing!"))
 		X.set_effect(slowdown_amount, SUPERSLOW)
 		playsound(X, 'sound/misc/bell.ogg', 25, 0, 13)

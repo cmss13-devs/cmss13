@@ -36,7 +36,7 @@
 	hugger_delay = 20
 	egg_cooldown = 250
 
-/mob/living/carbon/Xenomorph/Carrier
+/mob/living/carbon/xenomorph/carrier
 	caste_type = XENO_CASTE_CARRIER
 	name = XENO_CASTE_CARRIER
 	desc = "A strange-looking alien creature. It carries a number of scuttling jointed crablike creatures."
@@ -68,8 +68,8 @@
 		)
 
 	inherent_verbs = list(
-		/mob/living/carbon/Xenomorph/proc/rename_tunnel,
-		/mob/living/carbon/Xenomorph/proc/set_hugger_reserve_for_morpher,
+		/mob/living/carbon/xenomorph/proc/rename_tunnel,
+		/mob/living/carbon/xenomorph/proc/set_hugger_reserve_for_morpher,
 		)
 	mutation_type = CARRIER_NORMAL
 
@@ -78,12 +78,12 @@
 	var/list/hugger_image_index = list()
 	var/mutable_appearance/hugger_overlays_icon
 
-/mob/living/carbon/Xenomorph/Carrier/update_icons()
+/mob/living/carbon/xenomorph/carrier/update_icons()
 	. = ..()
 
 	update_hugger_overlays()
 
-/mob/living/carbon/Xenomorph/Carrier/proc/update_hugger_overlays()
+/mob/living/carbon/xenomorph/carrier/proc/update_hugger_overlays()
 	if(!hugger_overlays_icon)
 		return
 
@@ -109,7 +109,7 @@
 
 	overlays += hugger_overlays_icon
 
-/mob/living/carbon/Xenomorph/Carrier/proc/update_icon_maths(number)
+/mob/living/carbon/xenomorph/carrier/proc/update_icon_maths(number)
 	var/funny_list = list(1,2,3,4)
 	if(length(hugger_image_index) != number)
 		if(length(hugger_image_index) > number)
@@ -122,11 +122,11 @@
 						funny_list -= i
 				hugger_image_index += funny_list[rand(1,length(funny_list))]
 
-/mob/living/carbon/Xenomorph/Carrier/Initialize(mapload, mob/living/carbon/Xenomorph/oldXeno, h_number)
+/mob/living/carbon/xenomorph/carrier/Initialize(mapload, mob/living/carbon/xenomorph/oldxeno, h_number)
 	. = ..()
 	hugger_overlays_icon = mutable_appearance('icons/mob/xenos/overlay_effects64x64.dmi',"empty")
 
-/mob/living/carbon/Xenomorph/Carrier/death(cause, gibbed)
+/mob/living/carbon/xenomorph/carrier/death(var/cause, var/gibbed)
 	. = ..(cause, gibbed)
 	if(.)
 		var/chance = 75
@@ -145,13 +145,13 @@
 				new /obj/item/xeno_egg(loc, hivenumber)
 				eggs_cur--
 
-/mob/living/carbon/Xenomorph/Carrier/get_status_tab_items()
+/mob/living/carbon/xenomorph/carrier/get_status_tab_items()
 	. = ..()
 	if(huggers_max > 0)
 		. += "Stored Huggers: [huggers_cur] / [huggers_max]"
 	. += "Stored Eggs: [eggs_cur] / [eggs_max]"
 
-/mob/living/carbon/Xenomorph/Carrier/proc/store_hugger(obj/item/clothing/mask/facehugger/F)
+/mob/living/carbon/xenomorph/carrier/proc/store_hugger(obj/item/clothing/mask/facehugger/F)
 	if(F.hivenumber != hivenumber)
 		to_chat(src, SPAN_WARNING("This hugger is tainted!"))
 		return
@@ -167,7 +167,7 @@
 	else
 		to_chat(src, SPAN_WARNING("You can't carry more facehuggers on you."))
 
-/mob/living/carbon/Xenomorph/Carrier/proc/store_huggers_from_egg_morpher(obj/effect/alien/resin/special/eggmorph/morpher)
+/mob/living/carbon/xenomorph/carrier/proc/store_huggers_from_egg_morpher(obj/effect/alien/resin/special/eggmorph/morpher)
 	if(morpher.linked_hive && (morpher.linked_hive.hivenumber != hivenumber))
 		to_chat(src, SPAN_WARNING("That egg morpher is tainted!"))
 		return
@@ -189,7 +189,7 @@
 		to_chat(src, SPAN_WARNING("You can't carry more facehuggers on you."))
 
 
-/mob/living/carbon/Xenomorph/Carrier/proc/throw_hugger(atom/T)
+/mob/living/carbon/xenomorph/carrier/proc/throw_hugger(atom/T)
 	if(!T)
 		return
 
@@ -260,7 +260,7 @@
 				var/datum/action/A = X
 				A.update_button_icon()
 
-/mob/living/carbon/Xenomorph/Carrier/proc/store_egg(obj/item/xeno_egg/E)
+/mob/living/carbon/xenomorph/carrier/proc/store_egg(obj/item/xeno_egg/E)
 	if(E.hivenumber != hivenumber)
 		to_chat(src, SPAN_WARNING("That egg is tainted!"))
 		return
@@ -274,7 +274,7 @@
 	else
 		to_chat(src, SPAN_WARNING("You can't carry more eggs on you."))
 
-/mob/living/carbon/Xenomorph/Carrier/proc/retrieve_egg(atom/T)
+/mob/living/carbon/xenomorph/carrier/proc/retrieve_egg(atom/T)
 	if(!T) return
 
 	if(!check_state())
@@ -309,11 +309,11 @@
 		to_chat(src, SPAN_WARNING("You need an empty hand to grab one of your stored eggs!"))
 		return
 
-/mob/living/carbon/Xenomorph/Carrier/attack_ghost(mob/dead/observer/user)
+/mob/living/carbon/xenomorph/carrier/attack_ghost(mob/dead/observer/user)
 	. = ..() //Do a view printout as needed just in case the observer doesn't want to join as a Hugger but wants info
 	join_as_facehugger_from_this(user)
 
-/mob/living/carbon/Xenomorph/Carrier/proc/join_as_facehugger_from_this(mob/dead/observer/user)
+/mob/living/carbon/xenomorph/carrier/proc/join_as_facehugger_from_this(mob/dead/observer/user)
 	if(!huggers_max) //Eggsac, Shaman don't have huggers, do nothing!
 		return
 	if(stat == DEAD)

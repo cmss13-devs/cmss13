@@ -253,7 +253,7 @@
 
 	if(!queen_locked)
 		for(var/turf/T in turfs_src)
-			var/mob/living/carbon/Xenomorph/X = locate(/mob/living/carbon/Xenomorph) in T
+			var/mob/living/carbon/xenomorph/X = locate(/mob/living/carbon/xenomorph) in T
 			if(X && X.stat != DEAD)
 				var/name = "Unidentified Lifesigns"
 				var/input = "Unidentified lifesigns detected onboard. Recommendation: lockdown of exterior access ports, including ducting and ventilation."

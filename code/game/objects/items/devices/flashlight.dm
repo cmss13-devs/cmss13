@@ -135,7 +135,7 @@
 	else
 		return ..()
 
-/obj/item/device/flashlight/attack_alien(mob/living/carbon/Xenomorph/M)
+/obj/item/device/flashlight/attack_alien(mob/living/carbon/xenomorph/M)
 	. = ..()
 
 	if(on && can_be_broken)
@@ -247,7 +247,7 @@
 	set category = "Object"
 	set src in oview(1)
 
-	if(istype(usr, /mob/living/carbon/Xenomorph)) //Sneaky xenos turning off the lights
+	if(istype(usr, /mob/living/carbon/xenomorph)) //Sneaky xenos turning off the lights
 		attack_alien(usr)
 		return
 

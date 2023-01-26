@@ -26,7 +26,7 @@
 
 /datum/mutator_set/proc/list_and_purchase_mutators()
 	var/list/mutators_for_purchase = available_mutators()
-	var/mob/living/carbon/Xenomorph/Xeno = usr
+	var/mob/living/carbon/xenomorph/Xeno = usr
 	if(mutators_for_purchase.len == 0)
 		to_chat(usr, "There are no available strains.")
 	var/pick = tgui_input_list(usr, "Which strain would you like to purchase?", "Purchase strain", mutators_for_purchase, theme="hive_status")
@@ -129,39 +129,39 @@
 	larva_gestation_multiplier = 1.0
 	bonus_larva_spawn_chance = 0
 
-	for(var/mob/living/carbon/Xenomorph/X in GLOB.living_xeno_list)
+	for(var/mob/living/carbon/xenomorph/X in GLOB.living_xeno_list)
 		if(X.hivenumber == hive.hivenumber)
 			X.recalculate_everything()
 			to_chat(X, SPAN_XENOANNOUNCE("Queen's influence wanes. You feel weak!"))
 			playsound(X.loc, "alien_help", 25)
 			X.xeno_jitter(15)
 
-/datum/mutator_set/hive_mutators/recalculate_everything(description)
-	for(var/mob/living/carbon/Xenomorph/X in GLOB.living_xeno_list)
+/datum/mutator_set/hive_mutators/recalculate_everything(var/description)
+	for(var/mob/living/carbon/xenomorph/X in GLOB.living_xeno_list)
 		if(X.hivenumber == hive.hivenumber)
 			X.recalculate_everything()
 			to_chat(X, SPAN_XENOANNOUNCE("Queen has granted the Hive a boon! [description]"))
 			X.xeno_jitter(15)
-/datum/mutator_set/hive_mutators/recalculate_stats(description)
-	for(var/mob/living/carbon/Xenomorph/X in GLOB.living_xeno_list)
+/datum/mutator_set/hive_mutators/recalculate_stats(var/description)
+	for(var/mob/living/carbon/xenomorph/X in GLOB.living_xeno_list)
 		if(X.hivenumber == hive.hivenumber)
 			X.recalculate_stats()
 			to_chat(X, SPAN_XENOANNOUNCE("Queen has granted the Hive a boon! [description]"))
 			X.xeno_jitter(15)
-/datum/mutator_set/hive_mutators/recalculate_actions(description)
-	for(var/mob/living/carbon/Xenomorph/X in GLOB.living_xeno_list)
+/datum/mutator_set/hive_mutators/recalculate_actions(var/description)
+	for(var/mob/living/carbon/xenomorph/X in GLOB.living_xeno_list)
 		if(X.hivenumber == hive.hivenumber)
 			X.recalculate_actions()
 			to_chat(X, SPAN_XENOANNOUNCE("Queen has granted the Hive a boon! [description]"))
 			X.xeno_jitter(15)
-/datum/mutator_set/hive_mutators/recalculate_pheromones(description)
-	for(var/mob/living/carbon/Xenomorph/X in GLOB.living_xeno_list)
+/datum/mutator_set/hive_mutators/recalculate_pheromones(var/description)
+	for(var/mob/living/carbon/xenomorph/X in GLOB.living_xeno_list)
 		if(X.hivenumber == hive.hivenumber)
 			X.recalculate_pheromones()
 			to_chat(X, SPAN_XENOANNOUNCE("Queen has granted the Hive a boon! [description]"))
 			X.xeno_jitter(15)
-/datum/mutator_set/hive_mutators/proc/recalculate_maturation(description)
-	for(var/mob/living/carbon/Xenomorph/X in GLOB.living_xeno_list)
+/datum/mutator_set/hive_mutators/proc/recalculate_maturation(var/description)
+	for(var/mob/living/carbon/xenomorph/X in GLOB.living_xeno_list)
 		if(X.hivenumber == hive.hivenumber)
 			X.recalculate_maturation()
 			to_chat(X, SPAN_XENOANNOUNCE("Queen has granted the Hive a boon! [description]"))
@@ -169,15 +169,15 @@
 /datum/mutator_set/hive_mutators/proc/recalculate_hive(description)
 	hive.recalculate_hive()
 	give_feedback(description)
-/datum/mutator_set/hive_mutators/give_feedback(description)
-	for(var/mob/living/carbon/Xenomorph/X in GLOB.living_xeno_list)
+/datum/mutator_set/hive_mutators/give_feedback(var/description)
+	for(var/mob/living/carbon/xenomorph/X in GLOB.living_xeno_list)
 		if(X.hivenumber == hive.hivenumber)
 			to_chat(X, SPAN_XENOANNOUNCE("Queen has granted the Hive a boon! [description]"))
 			X.xeno_jitter(15)
 
 //Mutators applying to an individual xeno
 /datum/mutator_set/individual_mutators
-	var/mob/living/carbon/Xenomorph/xeno
+	var/mob/living/carbon/xenomorph/xeno
 	var/pull_multiplier = 1.0
 	var/egg_laying_multiplier = 1.0
 	var/need_weeds = TRUE
@@ -215,7 +215,7 @@
 	xeno.xeno_jitter(15)
 
 
-/mob/living/carbon/Xenomorph/Queen/verb/purchase_hive_mutators()
+/mob/living/carbon/xenomorph/queen/verb/purchase_hive_mutators()
 	set name = "Purchase Hive Mutators"
 	set desc = "Purchase Mutators affecting the entire Hive."
 	set category = "Alien"
@@ -226,7 +226,7 @@
 		return //For some reason we don't have mutators
 	src.hive.mutators.list_and_purchase_mutators()
 
-/mob/living/carbon/Xenomorph/verb/purchase_strains()
+/mob/living/carbon/xenomorph/verb/purchase_strains()
 	set name = "Purchase Strains"
 	set desc = "Purchase Strains for yourself."
 	set category = "Alien"
@@ -237,7 +237,7 @@
 		return //For some reason we don't have mutators
 	src.mutators.list_and_purchase_mutators()
 
-/mob/living/carbon/Xenomorph/proc/strain_checks()
+/mob/living/carbon/xenomorph/proc/strain_checks()
 	if(!check_state(TRUE))
 		return FALSE
 

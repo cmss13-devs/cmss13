@@ -46,7 +46,7 @@
 	if(isnewplayer(src))
 		check_event_info()
 	else if(isXeno(src))
-		var/mob/living/carbon/Xenomorph/X = src
+		var/mob/living/carbon/xenomorph/X = src
 		check_event_info(X.hive.name)
 	else if(!isobserver(src) && faction)
 		check_event_info(faction)

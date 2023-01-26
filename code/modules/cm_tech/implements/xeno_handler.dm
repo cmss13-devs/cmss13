@@ -37,9 +37,9 @@
 
 
 	else
-		var/picked = pick(/mob/living/carbon/Xenomorph/Drone, /mob/living/carbon/Xenomorph/Spitter, /mob/living/carbon/Xenomorph/Lurker)
+		var/picked = pick(/mob/living/carbon/xenomorph/drone, /mob/living/carbon/xenomorph/spitter, /mob/living/carbon/xenomorph/lurker)
 		new_mob = new picked(spawn_loc, null, XENO_HIVE_TAMED)
-		var/mob/living/carbon/Xenomorph/X = new_mob
+		var/mob/living/carbon/xenomorph/X = new_mob
 		X.iff_tag = new /obj/item/iff_tag/pmc_handler(X)
 	if(M)
 		M.transfer_to(new_mob, TRUE)

@@ -74,7 +74,7 @@
 		// A self sustaining cycle until one hive kills more of the other hive to tip the balance
 
 		// Makes attacking hives very profitable if they can successfully wipe them out without suffering any significant losses
-		var/mob/living/carbon/Xenomorph/X = M
+		var/mob/living/carbon/xenomorph/X = M
 		if(X.hivenumber != linked_hive.hivenumber)
 			if(isXenoQueen(X))
 				larva_amount = 5
@@ -108,7 +108,7 @@
 	if(!linked_hive)
 		return
 
-	for(var/mob/living/carbon/Xenomorph/Larva/L in range(2, src))
+	for(var/mob/living/carbon/xenomorph/larva/L in range(2, src))
 		if(!L.ckey && L.poolable && !QDELETED(L))
 			visible_message(SPAN_XENODANGER("[L] quickly dives into the pool."))
 			linked_hive.stored_larva++
@@ -156,7 +156,7 @@
 
 /obj/effect/alien/resin/special/pool/proc/spawn_pooled_larva(mob/xeno_candidate)
 	if(can_spawn_larva() && xeno_candidate)
-		var/mob/living/carbon/Xenomorph/Larva/new_xeno = spawn_hivenumber_larva(loc, linked_hive.hivenumber)
+		var/mob/living/carbon/xenomorph/larva/new_xeno = spawn_hivenumber_larva(loc, linked_hive.hivenumber)
 		if(isnull(new_xeno))
 			return FALSE
 

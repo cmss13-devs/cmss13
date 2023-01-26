@@ -56,7 +56,7 @@
 	else
 		return FALSE
 
-/obj/structure/mortar/attack_alien(mob/living/carbon/Xenomorph/M)
+/obj/structure/mortar/attack_alien(mob/living/carbon/xenomorph/M)
 	if(isXenoLarva(M))
 		return XENO_NO_DELAY_ACTION
 

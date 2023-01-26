@@ -222,7 +222,7 @@
 			disarm()
 
 
-/obj/item/explosive/mine/attack_alien(mob/living/carbon/Xenomorph/M)
+/obj/item/explosive/mine/attack_alien(mob/living/carbon/xenomorph/M)
 	if(triggered) //Mine is already set to go off
 		return XENO_NO_DELAY_ACTION
 

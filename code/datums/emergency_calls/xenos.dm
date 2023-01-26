@@ -26,12 +26,12 @@
 
 	var/mob/current_mob = M.current
 
-	var/mob/living/carbon/Xenomorph/new_xeno
+	var/mob/living/carbon/xenomorph/new_xeno
 	if(!leader)
-		new_xeno = new /mob/living/carbon/Xenomorph/Ravager(spawn_loc)
+		new_xeno = new /mob/living/carbon/xenomorph/ravager(spawn_loc)
 		leader = new_xeno
 	else
-		var/picked = pick(/mob/living/carbon/Xenomorph/Drone, /mob/living/carbon/Xenomorph/Spitter, /mob/living/carbon/Xenomorph/Lurker)
+		var/picked = pick(/mob/living/carbon/xenomorph/drone, /mob/living/carbon/xenomorph/spitter, /mob/living/carbon/xenomorph/lurker)
 		new_xeno = new picked(spawn_loc)
 
 	M.transfer_to(new_xeno, TRUE)

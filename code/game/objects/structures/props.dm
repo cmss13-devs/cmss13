@@ -992,7 +992,7 @@
 		helmet = null
 		overlays.Cut()
 
-/obj/structure/prop/wooden_cross/attack_alien(mob/living/carbon/Xenomorph/M)
+/obj/structure/prop/wooden_cross/attack_alien(mob/living/carbon/xenomorph/M)
 	M.animation_attack_on(src)
 	update_health(rand(M.melee_damage_lower, M.melee_damage_upper))
 	playsound(src, 'sound/effects/woodhit.ogg', 25, 1)

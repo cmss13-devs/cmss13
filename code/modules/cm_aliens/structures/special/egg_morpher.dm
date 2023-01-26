@@ -181,7 +181,7 @@
 	var/obj/item/clothing/mask/facehugger/child = new(loc, linked_hive.hivenumber)
 	child.leap_at_nearest_target()
 
-/obj/effect/alien/resin/special/eggmorph/attack_alien(mob/living/carbon/Xenomorph/M)
+/obj/effect/alien/resin/special/eggmorph/attack_alien(mob/living/carbon/xenomorph/M)
 	if(!istype(M))
 		return attack_hand(M)
 	if(!linked_hive || (M.hivenumber != linked_hive.hivenumber))
@@ -210,7 +210,7 @@
 	linked_hive.spawn_as_hugger(user, src)
 	stored_huggers--
 
-/mob/living/carbon/Xenomorph/proc/set_hugger_reserve_for_morpher(obj/effect/alien/resin/special/eggmorph/morpher in oview(1))
+/mob/living/carbon/xenomorph/proc/set_hugger_reserve_for_morpher(var/obj/effect/alien/resin/special/eggmorph/morpher in oview(1))
 	set name = "Set Hugger Reserve"
 	set desc = "Set Hugger Reserve"
 	set category = null

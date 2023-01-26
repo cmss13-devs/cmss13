@@ -196,7 +196,7 @@
 				// Check if we're looking at a mob that's lying down
 				if(istype(A, /mob/living))
 					var/mob/living/L = A
-					if(!istype(L, /mob/living/carbon/Xenomorph)) //xenos don't use icon rotatin for lying.
+					if(!istype(L, /mob/living/carbon/xenomorph)) //xenos don't use icon rotatin for lying.
 						if(L.lying)
 							// If they are, apply that effect to their picture.
 							IM.BecomeLying()

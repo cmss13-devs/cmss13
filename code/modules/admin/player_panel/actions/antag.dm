@@ -32,7 +32,7 @@
 	if(!isXeno(target))
 		return
 
-	var/mob/living/carbon/Xenomorph/X = target
+	var/mob/living/carbon/xenomorph/X = target
 
 	X.set_hive_and_update(params["hivenumber"])
 	message_staff("[key_name_admin(user)] changed hivenumber of [target] to [params["hivenumber"]].")

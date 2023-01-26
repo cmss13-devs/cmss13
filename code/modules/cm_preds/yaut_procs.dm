@@ -62,7 +62,7 @@
 
 	var/mob/living/carbon/T = tgui_input_list(src, "What do you wish to butcher?", "Butcher", choices)
 
-	var/mob/living/carbon/Xenomorph/xeno_victim
+	var/mob/living/carbon/xenomorph/xeno_victim
 	var/mob/living/carbon/human/victim
 
 	if(!T || !src || !T.stat)

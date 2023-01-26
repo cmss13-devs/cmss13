@@ -97,7 +97,7 @@
 		dropoff_point = null
 
 
-/obj/structure/droppod/container/attack_alien(mob/living/carbon/Xenomorph/M)
+/obj/structure/droppod/container/attack_alien(mob/living/carbon/xenomorph/M)
 	if(!(droppod_flags & DROPPOD_DROPPED) || !can_be_opened || (droppod_flags & DROPPOD_OPEN))
 		return
 

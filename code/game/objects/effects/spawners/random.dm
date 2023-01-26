@@ -191,7 +191,9 @@
 				/obj/item/toy/sword,\
 				/obj/item/reagent_container/food/snacks/grown/ambrosiadeus,\
 				/obj/item/reagent_container/food/snacks/grown/ambrosiavulgaris,\
-				/obj/item/clothing/accessory/horrible)
+				/obj/item/clothing/accessory/horrible,\
+				/obj/item/clothing/shoes/slippers,\
+				/obj/item/clothing/shoes/slippers_worn)
 
 /obj/effect/spawner/random/pills
 	name = "Pill Bottle Loot Spawner" // 60% chance for strong loot

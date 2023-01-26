@@ -39,6 +39,7 @@ of predators), but can be added to include variant game modes (like humans vs. h
 /datum/game_mode/proc/declare_completion_announce_fallen_soldiers()
 	set waitfor = 0
 	sleep(2 SECONDS)
+	fallen_list += fallen_list_cross
 	if(fallen_list.len)
 		var/dat = "<br>"
 		dat += SPAN_ROUNDBODY("In Flanders fields...<br>")

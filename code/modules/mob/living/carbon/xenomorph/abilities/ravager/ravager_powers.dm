@@ -28,7 +28,7 @@
 		return actual_empower()
 
 /datum/action/xeno_action/onclick/empower/proc/actual_empower()
-	var/mob/living/carbon/Xenomorph/xeno = owner
+	var/mob/living/carbon/xenomorph/xeno = owner
 	activated_once = FALSE
 	button.icon_state = "template"
 	xeno.visible_message(SPAN_XENOWARNING("[xeno] gets empowered by the surrounding enemies!"), SPAN_XENOWARNING("You feel a rush of power from the surrounding enemies!"))
@@ -115,7 +115,7 @@
 // Supplemental behavior for our charge
 /datum/action/xeno_action/activable/pounce/charge/additional_effects(mob/living/victim)
 	var/mob/living/carbon/human/human_victim = victim
-	var/mob/living/carbon/Xenomorph/xeno_owner = owner
+	var/mob/living/carbon/xenomorph/xeno_owner = owner
 	var/datum/action/xeno_action/onclick/empower/empower_action = get_xeno_action_by_type(xeno_owner, /datum/action/xeno_action/onclick/empower)
 	if(!empower_action || empower_action.current_targets < empower_action.super_empower_threshold)
 		return
@@ -138,7 +138,7 @@
 
 
 /datum/action/xeno_action/activable/scissor_cut/use_ability(atom/target_atom)
-	var/mob/living/carbon/Xenomorph/xeno_owner = owner
+	var/mob/living/carbon/xenomorph/xeno_owner = owner
 
 	if (!action_cooldown_check())
 		return
@@ -219,7 +219,7 @@
 ///////////// BERSERKER POWERS
 
 /datum/action/xeno_action/onclick/apprehend/use_ability(atom/A)
-	var/mob/living/carbon/Xenomorph/xeno_owner = owner
+	var/mob/living/carbon/xenomorph/xeno_owner = owner
 
 	if (!istype(xeno_owner))
 		return
@@ -243,14 +243,14 @@
 	return ..()
 
 /datum/action/xeno_action/onclick/apprehend/proc/apprehend_off()
-	var/mob/living/carbon/Xenomorph/xeno_owner = owner
+	var/mob/living/carbon/xenomorph/xeno_owner = owner
 	if (istype(xeno_owner))
 		xeno_owner.speed_modifier += speed_buff
 		xeno_owner.recalculate_speed()
 		to_chat(xeno_owner, SPAN_XENOHIGHDANGER("You feel your speed wane!"))
 
 /datum/action/xeno_action/activable/clothesline/use_ability(atom/target)
-	var/mob/living/carbon/Xenomorph/xeno_owner = owner
+	var/mob/living/carbon/xenomorph/xeno_owner = owner
 
 	if (!action_cooldown_check())
 		return
@@ -451,7 +451,7 @@
 	return
 
 /datum/action/xeno_action/activable/rav_spikes/use_ability(atom/A)
-	var/mob/living/carbon/Xenomorph/xeno_owner = owner
+	var/mob/living/carbon/xenomorph/xeno_owner = owner
 
 	if (!action_cooldown_check())
 		return
@@ -485,7 +485,7 @@
 		return FALSE
 
 /datum/action/xeno_action/onclick/spike_shed/use_ability(atom/A)
-	var/mob/living/carbon/Xenomorph/xeno_owner = owner
+	var/mob/living/carbon/xenomorph/xeno_owner = owner
 
 	if (!action_cooldown_check())
 		return

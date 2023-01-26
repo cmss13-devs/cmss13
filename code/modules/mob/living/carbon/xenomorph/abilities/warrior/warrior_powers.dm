@@ -1,5 +1,5 @@
 /datum/action/xeno_action/activable/lunge/use_ability(atom/target)
-	var/mob/living/carbon/Xenomorph/xeno_owner = owner
+	var/mob/living/carbon/xenomorph/xeno_owner = owner
 
 	if (!action_cooldown_check())
 		if(twitch_message_cooldown < world.time )
@@ -46,7 +46,7 @@
  * The owner managed to be adjacent to the victim, doesn't necessarily mean anything else will happen
  */
 /datum/action/xeno_action/activable/lunge/proc/lunge_hit(atom/movable/victim)
-	var/mob/living/carbon/Xenomorph/xeno_owner = owner
+	var/mob/living/carbon/xenomorph/xeno_owner = owner
 	xeno_owner.start_pulling(victim)
 	if (!xeno_owner.check_state() || xeno_owner.agility)
 		return FALSE
@@ -65,7 +65,7 @@
 		return
 
 	if(isXeno(victim))
-		var/mob/living/carbon/Xenomorph/xeno_victim = victim
+		var/mob/living/carbon/xenomorph/xeno_victim = victim
 		if(xeno_victim.tier >= 2) // Tier 2 castes or higher immune to warrior grab stuns
 			return
 
@@ -95,7 +95,7 @@
 	UnregisterSignal(owner, COMSIG_MOB_STOPPED_PULLING)
 
 /datum/action/xeno_action/onclick/toggle_agility/use_ability(atom/A)
-	var/mob/living/carbon/Xenomorph/xeno_owner = owner
+	var/mob/living/carbon/xenomorph/xeno_owner = owner
 
 	if (!action_cooldown_check())
 		return
@@ -115,7 +115,7 @@
 
 
 /datum/action/xeno_action/activable/fling/use_ability(atom/target_atom)
-	var/mob/living/carbon/Xenomorph/xeno_owner = owner
+	var/mob/living/carbon/xenomorph/xeno_owner = owner
 
 	if (!action_cooldown_check())
 		return
@@ -177,7 +177,7 @@
 	return
 
 /datum/action/xeno_action/activable/warrior_punch/use_ability(atom/target_atom)
-	var/mob/living/carbon/Xenomorph/xeno_owner = owner
+	var/mob/living/carbon/xenomorph/xeno_owner = owner
 
 	if (!action_cooldown_check())
 		return
@@ -221,7 +221,7 @@
 	..()
 
 /datum/action/xeno_action/activable/warrior_punch/proc/do_base_warrior_punch(mob/living/carbon/carbone, obj/limb/target_limb)
-	var/mob/living/carbon/Xenomorph/xeno_owner = owner
+	var/mob/living/carbon/xenomorph/xeno_owner = owner
 	var/damage = rand(base_damage, base_damage + damage_variance)
 
 	if(ishuman(carbone))

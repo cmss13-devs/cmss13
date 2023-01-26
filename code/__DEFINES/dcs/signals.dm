@@ -468,7 +468,7 @@
 #define COMSIG_XENO_ACTION_PRE_USE "xeno_action_pre_use"
 /// From /datum/action/xeno_action/proc/use_ability_wrapper(): (mob/owner)
 #define COMSIG_XENO_ACTION_POST_USE "xeno_action_post_use"
-/// From /mob/living/carbon/Xenomorph/proc/check_blood_splash()
+/// From /mob/living/carbon/xenomorph/proc/check_blood_splash()
 #define COMSIG_XENO_DEAL_ACID_DAMAGE "xeno_deal_acid_damage"
 /// From /mob/living/carbon/xenomorph/proc/recalculate_speed()
 #define COMSIG_XENO_RECALCULATE_SPEED "xeno_recalculate_speed"

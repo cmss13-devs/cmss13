@@ -10,7 +10,7 @@
 	if (!.)
 		return
 
-	var/mob/living/carbon/Xenomorph/owner = mutator_set.xeno
+	var/mob/living/carbon/xenomorph/owner = mutator_set.xeno
 	//Apply all the custom properties
 	mutator_update_actions(owner)
 	mutator_set.recalculate_actions(description, flavor_description)

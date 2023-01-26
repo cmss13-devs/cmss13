@@ -74,12 +74,12 @@
 	ability_primacy = XENO_PRIMARY_ACTION_4
 
 /datum/action/xeno_action/onclick/toggle_cleave/can_use_action()
-	var/mob/living/carbon/Xenomorph/xeno_owner = owner
+	var/mob/living/carbon/xenomorph/xeno_owner = owner
 	if(xeno_owner && !xeno_owner.buckled && !xeno_owner.is_mob_incapacitated())
 		return TRUE
 
 /datum/action/xeno_action/onclick/toggle_cleave/use_ability(atom/A)
-	var/mob/living/carbon/Xenomorph/xeno_owner = owner
+	var/mob/living/carbon/xenomorph/xeno_owner = owner
 
 	if (!istype(xeno_owner))
 		return
@@ -304,13 +304,13 @@
 	ability_primacy = XENO_PRIMARY_ACTION_5
 
 /datum/action/xeno_action/onclick/prae_switch_heal_type/can_use_action()
-	var/mob/living/carbon/Xenomorph/xeno_owner = owner
+	var/mob/living/carbon/xenomorph/xeno_owner = owner
 	if(xeno_owner && !xeno_owner.buckled && !xeno_owner.is_mob_incapacitated())
 		return TRUE
 
 /datum/action/xeno_action/onclick/prae_switch_heal_type/use_ability(atom/A)
 
-	var/mob/living/carbon/Xenomorph/xeno_owner = owner
+	var/mob/living/carbon/xenomorph/xeno_owner = owner
 	var/action_icon_result
 
 	if(!xeno_owner.check_state(TRUE))

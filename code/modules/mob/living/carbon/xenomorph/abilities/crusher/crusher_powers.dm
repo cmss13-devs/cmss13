@@ -1,6 +1,6 @@
 
 /datum/action/xeno_action/activable/pounce/crusher_charge/additional_effects_always()
-	var/mob/living/carbon/Xenomorph/xeno_owner = owner
+	var/mob/living/carbon/xenomorph/xeno_owner = owner
 	if (!istype(xeno_owner))
 		return
 
@@ -19,7 +19,7 @@
 	if (carbon_target.stat == DEAD)
 		return
 
-	var/mob/living/carbon/Xenomorph/xeno_owner = owner
+	var/mob/living/carbon/xenomorph/xeno_owner = owner
 	if (!istype(xeno_owner))
 		return
 
@@ -60,7 +60,7 @@
 	is_charging = FALSE
 	xeno_owner.update_icons()
 
-/datum/action/xeno_action/activable/pounce/crusher_charge/proc/check_directional_armor(mob/living/carbon/Xenomorph/xeno_owner, list/damagedata)
+/datum/action/xeno_action/activable/pounce/crusher_charge/proc/check_directional_armor(mob/living/carbon/xenomorph/xeno_owner, list/damagedata)
 	SIGNAL_HANDLER
 	var/projectile_direction = damagedata["direction"]
 	if(xeno_owner.dir & REVERSE_DIR(projectile_direction))
@@ -69,7 +69,7 @@
 
 
 // This ties the pounce/throwing backend into the old collision backend
-/mob/living/carbon/Xenomorph/Crusher/pounced_obj(var/obj/victim)
+/mob/living/carbon/xenomorph/crusher/pounced_obj(var/obj/victim)
 	var/datum/action/xeno_action/activable/pounce/crusher_charge/CCA = get_xeno_action_by_type(src, /datum/action/xeno_action/activable/pounce/crusher_charge)
 	if (istype(CCA) && !CCA.action_cooldown_check() && !(victim.type in CCA.not_reducing_objects))
 		CCA.reduce_cooldown(50)
@@ -79,12 +79,12 @@
 	if (!handle_collision(victim)) // Check old backend
 		obj_launch_collision(victim)
 
-/mob/living/carbon/Xenomorph/Crusher/pounced_turf(var/turf/victim)
+/mob/living/carbon/xenomorph/crusher/pounced_turf(var/turf/victim)
 	victim.ex_act(EXPLOSION_THRESHOLD_VLOW, , create_cause_data(caste_type, src))
 	..(victim)
 
 /datum/action/xeno_action/onclick/crusher_stomp/use_ability(atom/A)
-	var/mob/living/carbon/Xenomorph/xeno_owner = owner
+	var/mob/living/carbon/xenomorph/xeno_owner = owner
 	if (!istype(xeno_owner))
 		return
 

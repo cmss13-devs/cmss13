@@ -55,10 +55,10 @@
 	icon_xeno = 'icons/mob/xenos/warrior.dmi'
 	icon_xenonid = 'icons/mob/xenonids/warrior.dmi'
 
-/mob/living/carbon/Xenomorph/Warrior/throw_item(atom/target)
+/mob/living/carbon/xenomorph/warrior/throw_item(atom/target)
 	toggle_throw_mode(THROW_MODE_OFF)
 
-/mob/living/carbon/Xenomorph/Warrior/hitby(atom/movable/AM)
+/mob/living/carbon/xenomorph/warrior/hitby(atom/movable/AM)
 	if(ishuman(AM))
 		return
 	..()

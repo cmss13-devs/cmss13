@@ -370,7 +370,7 @@
 
 // Fellow xenos
 
-/mob/living/carbon/Xenomorph/handle_charge_collision(mob/living/carbon/Xenomorph/xeno, datum/action/xeno_action/onclick/charger_charge/charger_ability)
+/mob/living/carbon/xenomorph/handle_charge_collision(mob/living/carbon/xenomorph/xeno, datum/action/xeno_action/onclick/charger_charge/charger_ability)
 	if(!charger_ability.momentum)
 		charger_ability.stop_momentum()
 		return

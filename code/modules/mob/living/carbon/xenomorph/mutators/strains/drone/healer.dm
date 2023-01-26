@@ -120,7 +120,7 @@
 	update_icons()
 	addtimer(CALLBACK(src, PROC_REF(un_salve)), 10 SECONDS, TIMER_OVERRIDE|TIMER_UNIQUE)
 
-/mob/living/carbon/Xenomorph/proc/un_salve()
+/mob/living/carbon/xenomorph/proc/un_salve()
 	salve_applied_recently = FALSE
 	update_icons()
 

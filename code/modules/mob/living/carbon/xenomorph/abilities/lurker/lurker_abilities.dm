@@ -14,7 +14,7 @@
 	can_be_shield_blocked = TRUE
 
 /datum/action/xeno_action/activable/pounce/lurker/additional_effects_always()
-	var/mob/living/carbon/Xenomorph/xeno_owner = owner
+	var/mob/living/carbon/xenomorph/xeno_owner = owner
 	if (!istype(xeno_owner))
 		return
 
@@ -28,7 +28,7 @@
 			return
 
 /datum/action/xeno_action/activable/pounce/lurker/additional_effects(mob/living/L)
-	var/mob/living/carbon/Xenomorph/xeno_owner = owner
+	var/mob/living/carbon/xenomorph/xeno_owner = owner
 	if (!istype(xeno_owner))
 		return
 	var/datum/action/xeno_action/onclick/lurker_invisibility/invisibility_action = get_xeno_action_by_type(xeno_owner, /datum/action/xeno_action/onclick/lurker_invisibility)

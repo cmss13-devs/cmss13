@@ -343,7 +343,7 @@
 	var/atom/movable/vis_obj/xeno_wounds/wound_icon_carrier
 	var/atom/movable/vis_obj/xeno_pack/backpack_icon_carrier
 
-/mob/living/carbon/Xenomorph/Initialize(mapload, mob/living/carbon/Xenomorph/oldXeno, h_number, datum/caste_datum/pre_made_caste)
+/mob/living/carbon/xenomorph/Initialize(mapload, mob/living/carbon/xenomorph/oldXeno, h_number, datum/caste_datum/pre_made_caste)
 	var/area/A = get_area(src)
 	if(A && A.statistic_exempt)
 		statistic_exempt = TRUE
@@ -737,7 +737,7 @@
 
 
 
-/mob/living/carbon/Xenomorph/start_pulling(atom/movable/AM, no_msg)
+/mob/living/carbon/xenomorph/start_pulling(atom/movable/AM, no_msg)
 	if(SEND_SIGNAL(AM, COMSIG_MOVABLE_XENO_START_PULLING, src) & COMPONENT_ALLOW_PULL)
 		return do_pull(AM, no_msg)
 

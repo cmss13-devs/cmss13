@@ -2,86 +2,86 @@ GLOBAL_LIST_INIT(gt_evolutions, list(
 	"Alien Tier 0" = list(
 	list(
 	name = "Larva",
-	key = /mob/living/carbon/Xenomorph/Larva
+	key = /mob/living/carbon/xenomorph/larva
 	),
 	),
 	"Alien Tier 1" = list(
 	list(
 	name = XENO_CASTE_RUNNER,
-	key = /mob/living/carbon/Xenomorph/Runner
+	key = /mob/living/carbon/xenomorph/runner
 	),
 	list(
 	name = XENO_CASTE_DRONE,
-	key = /mob/living/carbon/Xenomorph/Drone
+	key = /mob/living/carbon/xenomorph/drone
 	),
 	list(
 	name = XENO_CASTE_SENTINEL,
-	key = /mob/living/carbon/Xenomorph/Sentinel
+	key = /mob/living/carbon/xenomorph/sentinel
 	),
 	list(
 	name = XENO_CASTE_DEFENDER,
-	key = /mob/living/carbon/Xenomorph/Defender
+	key = /mob/living/carbon/xenomorph/defender
 	)
 	),
 
 	"Alien Tier 2" = list(
 	list(
 	name = XENO_CASTE_LURKER,
-	key = /mob/living/carbon/Xenomorph/Lurker
+	key = /mob/living/carbon/xenomorph/lurker
 	),
 	list(
 	name = XENO_CASTE_WARRIOR,
-	key = /mob/living/carbon/Xenomorph/Warrior
+	key = /mob/living/carbon/xenomorph/warrior
 	),
 	list(
 	name = XENO_CASTE_SPITTER,
-	key = /mob/living/carbon/Xenomorph/Spitter
+	key = /mob/living/carbon/xenomorph/spitter
 	),
 	list(
 	name = XENO_CASTE_BURROWER,
-	key = /mob/living/carbon/Xenomorph/Burrower
+	key = /mob/living/carbon/xenomorph/burrower
 	),
 	list(
 	name = XENO_CASTE_HIVELORD,
-	key = /mob/living/carbon/Xenomorph/Hivelord
+	key = /mob/living/carbon/xenomorph/hivelord
 	),
 	list(
 	name = XENO_CASTE_CARRIER,
-	key = /mob/living/carbon/Xenomorph/Carrier
+	key = /mob/living/carbon/xenomorph/carrier
 	)
 	),
 
 	"Alien Tier 3" = list(
 	list(
 	name = XENO_CASTE_RAVAGER,
-	key = /mob/living/carbon/Xenomorph/Ravager
+	key = /mob/living/carbon/xenomorph/ravager
 	),
 	list(
 	name = XENO_CASTE_PRAETORIAN,
-	key = /mob/living/carbon/Xenomorph/Praetorian
+	key = /mob/living/carbon/xenomorph/praetorian
 	),
 	list(
 	name = XENO_CASTE_BOILER,
-	key = /mob/living/carbon/Xenomorph/Boiler
+	key = /mob/living/carbon/xenomorph/boiler
 	),
 	list(
 	name = XENO_CASTE_CRUSHER,
-	key = /mob/living/carbon/Xenomorph/Crusher
+	key = /mob/living/carbon/xenomorph/crusher
 	)
 	),
 
 	"Alien Tier 4" = list(
 	list(
 	name = XENO_CASTE_QUEEN+" (Young)",
-	key = /mob/living/carbon/Xenomorph/Queen
+	key = /mob/living/carbon/xenomorph/queen
 	),
 	list(
 	name = XENO_CASTE_QUEEN+" (Mature)",
-	key = /mob/living/carbon/Xenomorph/Queen/combat_ready
+	key = /mob/living/carbon/xenomorph/queen/combat_ready
 	),
 	list(
 	name = XENO_CASTE_PREDALIEN,
-	key = /mob/living/carbon/Xenomorph/Predalien
+	key = /mob/living/carbon/xenomorph/predalien
 	)
 	)
 ))
@@ -97,7 +97,7 @@ GLOBAL_LIST_INIT(gt_evolutions, list(
 	var/list/caste_stats = list()
 	/// The baseline of the custom xeno, helps the user get a rough ideas of what the stats of a xeno are, they're not going to build it from the ground up
 	var/selected_template
-	var/mob/living/carbon/Xenomorph/stat_stick
+	var/mob/living/carbon/xenomorph/stat_stick
 	///The passives picked
 	var/list/xeno_delegates = list()
 	///The abilities picked
@@ -177,7 +177,7 @@ GLOBAL_LIST_INIT(gt_evolutions, list(
 	. = ..()
 
 /datum/gene_tailor/proc/load_template()
-	selected_template = tgui_input_list(usr, "Select a template from which the custom xenomorph will be based of.", "Load a template", subtypesof(/mob/living/carbon/Xenomorph))
+	selected_template = tgui_input_list(usr, "Select a template from which the custom xenomorph will be based of.", "Load a template", subtypesof(/mob/living/carbon/xenomorph))
 	if(!selected_template)
 		return
 	QDEL_NULL(stat_stick)
@@ -240,14 +240,14 @@ GLOBAL_LIST_INIT(gt_evolutions, list(
 		if(stored_caste_types[var_name] != "other")
 			custom_caste.vars[var_name] = caste_stats[var_name]
 
-	var/mob/living/carbon/Xenomorph/custom_xeno = new selected_template(usr.loc, null, xeno_stats["hivenumber"], custom_caste)
+	var/mob/living/carbon/xenomorph/custom_xeno = new selected_template(usr.loc, null, xeno_stats["hivenumber"], custom_caste)
 
 	for(var/var_name in xeno_stats)
 		if(stored_xeno_types[var_name] != "other" && !(var_name in stored_caste_types))
 			custom_xeno.vars[var_name] = xeno_stats[var_name]
 
-	for(var/datum/action in custom_xeno.base_actions)
-		qdel(remove_action(custom_xeno, action.type))
+	for(var/action_type in custom_xeno.base_actions)
+		qdel(remove_action(custom_xeno, action_type))
 
 	custom_xeno.name = xeno_name
 	custom_xeno.create_hud()
@@ -256,7 +256,7 @@ GLOBAL_LIST_INIT(gt_evolutions, list(
 	custom_xeno.recalculate_everything()
 	custom_xeno.icon = stat_stick.icon
 
-	var/datum/behavior_delegate/Custom/custom_delegate = new(xeno_delegates, custom_xeno)
+	var/datum/behavior_delegate/custom/custom_delegate = new(xeno_delegates, custom_xeno)
 	custom_xeno.behavior_delegate = custom_delegate
 	//TODO.. refactor how xeno icon_states are handled
 	//custom_xeno.stored_visuals["icon_source_caste"] = stat_stick.caste.caste_type

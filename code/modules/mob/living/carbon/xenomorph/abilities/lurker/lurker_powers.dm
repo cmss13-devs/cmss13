@@ -36,7 +36,7 @@
 	return
 
 /datum/action/xeno_action/onclick/lurker_invisibility/proc/invisibility_off()
-	var/mob/living/carbon/Xenomorph/xeno = owner
+	var/mob/living/carbon/xenomorph/xeno = owner
 	if(!owner || !xeno.stealth)
 		return
 

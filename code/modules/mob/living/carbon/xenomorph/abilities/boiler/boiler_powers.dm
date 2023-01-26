@@ -1,5 +1,5 @@
 /datum/action/xeno_action/activable/acid_lance/use_ability(atom/target)
-	var/mob/living/carbon/Xenomorph/xeno_owner = owner
+	var/mob/living/carbon/xenomorph/xeno_owner = owner
 
 	if (!istype(xeno_owner) || !xeno_owner.check_state())
 		return
@@ -57,7 +57,7 @@
 		remove_stack_effects("You feel your speed return to normal!")
 
 /datum/action/xeno_action/activable/acid_lance/proc/stack()
-	var/mob/living/carbon/Xenomorph/xeno_owner = owner
+	var/mob/living/carbon/xenomorph/xeno_owner = owner
 	if (!istype(xeno_owner))
 		return
 
@@ -76,7 +76,7 @@
 		return
 
 /datum/action/xeno_action/activable/acid_lance/proc/remove_stack_effects(message = null)
-	var/mob/living/carbon/Xenomorph/xeno_owner = owner
+	var/mob/living/carbon/xenomorph/xeno_owner = owner
 
 	if (!istype(xeno_owner))
 		return
@@ -108,7 +108,7 @@
 	if (!action_cooldown_check())
 		return
 
-	var/mob/living/carbon/Xenomorph/xeno_owner = owner
+	var/mob/living/carbon/xenomorph/xeno_owner = owner
 
 	if (!xeno_owner.check_state())
 		return
@@ -157,7 +157,7 @@
 /////////////////////////////// Trapper boiler powers
 
 /datum/action/xeno_action/activable/boiler_trap/use_ability(atom/target)
-	var/mob/living/carbon/Xenomorph/xeno_owner = owner
+	var/mob/living/carbon/xenomorph/xeno_owner = owner
 
 	if (!istype(xeno_owner))
 		return
@@ -223,7 +223,7 @@
 
 
 /datum/action/xeno_action/activable/acid_mine/use_ability(atom/target)
-	var/mob/living/carbon/Xenomorph/xeno_owner = owner
+	var/mob/living/carbon/xenomorph/xeno_owner = owner
 
 	if (!istype(xeno_owner))
 		return
@@ -264,7 +264,7 @@
 	return
 
 /datum/action/xeno_action/activable/acid_shotgun/use_ability(atom/target)
-	var/mob/living/carbon/Xenomorph/xeno_owner = owner
+	var/mob/living/carbon/xenomorph/xeno_owner = owner
 	if (!istype(xeno_owner))
 		return
 

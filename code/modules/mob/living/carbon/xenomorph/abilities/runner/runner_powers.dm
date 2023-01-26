@@ -1,5 +1,5 @@
 /datum/action/xeno_action/activable/runner_skillshot/use_ability(atom/target)
-	var/mob/living/carbon/Xenomorph/xeno_owner = owner
+	var/mob/living/carbon/xenomorph/xeno_owner = owner
 	if (!istype(xeno_owner))
 		return
 
@@ -29,7 +29,7 @@
 
 
 /datum/action/xeno_action/activable/acider_acid/use_ability(atom/target)
-	var/mob/living/carbon/Xenomorph/xeno_owner = owner
+	var/mob/living/carbon/xenomorph/xeno_owner = owner
 	if(!istype(target, /obj/item) && !istype(target, /obj/structure/) && !istype(target, /obj/vehicle/multitile))
 		to_chat(xeno_owner, SPAN_XENOHIGHDANGER("Can only melt barricades and items!"))
 		return
@@ -45,7 +45,7 @@
 
 
 /datum/action/xeno_action/activable/acider_for_the_hive/use_ability(atom/target)
-	var/mob/living/carbon/Xenomorph/xeno_owner = owner
+	var/mob/living/carbon/xenomorph/xeno_owner = owner
 
 	if(!istype(xeno_owner))
 		return
@@ -88,7 +88,7 @@
 	return "triggered"
 
 /datum/action/xeno_action/activable/acider_for_the_hive/proc/do_caboom()
-	var/mob/living/carbon/Xenomorph/xeno_owner = owner
+	var/mob/living/carbon/xenomorph/xeno_owner = owner
 	if(!xeno_owner)
 		return
 	var/acid_range = acid_stored / caboom_acid_ratio
@@ -127,7 +127,7 @@
 	xeno_owner.gib()
 
 /datum/action/xeno_action/activable/acider_for_the_hive/proc/cancel_ability()
-	var/mob/living/carbon/Xenomorph/xeno_owner = owner
+	var/mob/living/carbon/xenomorph/xeno_owner = owner
 	if(!istype(xeno_owner))
 		return
 

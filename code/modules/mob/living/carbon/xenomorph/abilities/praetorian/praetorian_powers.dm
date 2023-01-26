@@ -1,5 +1,5 @@
 /datum/action/xeno_action/activable/prae_acid_ball/use_ability(atom/A)
-	var/mob/living/carbon/Xenomorph/xeno_owner = owner
+	var/mob/living/carbon/xenomorph/xeno_owner = owner
 	if (!xeno_owner.check_state() || xeno_owner.action_busy)
 		return
 
@@ -34,7 +34,7 @@
 ///////// VANGUARD POWERS
 
 /datum/action/xeno_action/activable/pierce/use_ability(atom/target)
-	var/mob/living/carbon/Xenomorph/xeno_owner = owner
+	var/mob/living/carbon/xenomorph/xeno_owner = owner
 	if (!action_cooldown_check())
 		return
 
@@ -127,7 +127,7 @@
 		damage_nearby_targets()
 
 /datum/action/xeno_action/activable/pounce/prae_dash/proc/damage_nearby_targets()
-	var/mob/living/carbon/Xenomorph/xeno_owner = owner
+	var/mob/living/carbon/xenomorph/xeno_owner = owner
 
 	if (QDELETED(xeno_owner) || !xeno_owner.check_state())
 		return
@@ -258,7 +258,7 @@
 	return
 
 /datum/action/xeno_action/activable/prae_abduct/use_ability(atom/A)
-	var/mob/living/carbon/Xenomorph/xeno_owner = owner
+	var/mob/living/carbon/xenomorph/xeno_owner = owner
 
 	if(!A || A.layer >= FLY_LAYER || !isturf(xeno_owner.loc))
 		return
@@ -463,7 +463,7 @@
 	return
 
 /datum/action/xeno_action/activable/tail_lash/use_ability(atom/target)
-	var/mob/living/carbon/Xenomorph/xeno_owner = owner
+	var/mob/living/carbon/xenomorph/xeno_owner = owner
 
 	if (!istype(xeno_owner) || !xeno_owner.check_state() || !action_cooldown_check())
 		return
@@ -648,7 +648,7 @@
 	return TRUE
 
 /datum/action/xeno_action/onclick/prae_dodge/proc/remove_effects()
-	var/mob/living/carbon/Xenomorph/xeno = owner
+	var/mob/living/carbon/xenomorph/xeno = owner
 	if (!istype(xeno))
 		return
 
@@ -661,7 +661,7 @@
 		to_chat(xeno, SPAN_XENOHIGHDANGER("You can no longer dodge through mobs!"))
 
 /datum/action/xeno_action/activable/prae_tail_trip/use_ability(atom/target_atom)
-	var/mob/living/carbon/Xenomorph/xeno_owner = owner
+	var/mob/living/carbon/xenomorph/xeno_owner = owner
 
 	if (!action_cooldown_check())
 		return
@@ -753,7 +753,7 @@
 ///////// WARDEN POWERS
 
 /datum/action/xeno_action/activable/warden_heal/use_ability(atom/target)
-	var/mob/living/carbon/Xenomorph/xeno_owner = owner
+	var/mob/living/carbon/xenomorph/xeno_owner = owner
 	if (!istype(xeno_owner))
 		return
 
@@ -775,7 +775,7 @@
 		to_chat(xeno_owner, SPAN_XENODANGER("That Sister is too far away!"))
 		return
 
-	var/mob/living/carbon/Xenomorph/xeno_target = target
+	var/mob/living/carbon/xenomorph/xeno_target = target
 
 	if(xeno_target.stat == DEAD)
 		to_chat(xeno_owner, SPAN_WARNING("[xeno_target] is already dead!"))
@@ -837,7 +837,7 @@
 	return
 
 /datum/action/xeno_action/activable/prae_retrieve/use_ability(atom/target)
-	var/mob/living/carbon/Xenomorph/xeno_owner = owner
+	var/mob/living/carbon/xenomorph/xeno_owner = owner
 	if(!istype(xeno_owner))
 		return
 
@@ -861,7 +861,7 @@
 		to_chat(xeno_owner, SPAN_XENODANGER("That sister is too far away!"))
 		return
 
-	var/mob/living/carbon/Xenomorph/xeno_target = target
+	var/mob/living/carbon/xenomorph/xeno_target = target
 
 	if(!(xeno_target.resting || xeno_target.stat == UNCONSCIOUS))
 		if(xeno_target.mob_size > MOB_SIZE_BIG)

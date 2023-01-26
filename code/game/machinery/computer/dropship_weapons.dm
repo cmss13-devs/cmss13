@@ -589,8 +589,9 @@
 
 	ui_interact(usr)
 
-/obj/structure/machinery/computer/dropship_weapons/proc/remove_from_view()
+/obj/structure/machinery/computer/dropship_weapons/proc/remove_from_view(var/mob/living/carbon/human/usr)
 	UnregisterSignal(usr, COMSIG_MOB_RESET_VIEW)
+	UnregisterSignal(usr, COMSIG_MOB_RESISTED)
 	if(selected_cas_signal && selected_cas_signal.linked_cam)
 		selected_cas_signal.linked_cam.remove_from_view(usr)
 	firemission_envelope.remove_upgrades(usr)

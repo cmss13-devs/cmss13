@@ -17,16 +17,23 @@ export const MidwayConsole = (_props, context) => {
 
   return (
     <Window width={220} height={340} title={'Gettysburg Navigation'}>
-      <Stack>
-        <Stack.Item>
-          <Button content={'Take Off'} onClick={() => act('from_ship')} />
-        </Stack.Item>
-        <Stack.Item>
-          <Button
-            content={'Return to Ship'}
-            onClick={() => act('return_to_ship')}
-          />
-        </Stack.Item>
+      <Stack direction={'column'}>
+        <Stack>
+          <Stack.Item>
+            <Button content={'Take Off'} onClick={() => act('from_ship')} />
+          </Stack.Item>
+          <Stack.Item>
+            <Button content={'Return to Ship'} onClick={() => act('to_ship')} />
+          </Stack.Item>
+        </Stack>
+        <Stack>
+          <Stack.Item>
+            <Button
+              content={'View Ground'}
+              onClick={() => act('view_ground')}
+            />
+          </Stack.Item>
+        </Stack>
       </Stack>
     </Window>
   );

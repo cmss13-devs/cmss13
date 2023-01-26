@@ -35,7 +35,7 @@
 	},
 /area/shuttle/getty)
 "eP" = (
-/turf/closed/shuttle/getty{
+/turf/closed/shuttle/getty/transparent{
 	icon_state = "47"
 	},
 /area/shuttle/getty)
@@ -199,7 +199,7 @@
 	},
 /area/shuttle/getty)
 "Hd" = (
-/turf/closed/shuttle/getty{
+/turf/closed/shuttle/getty/transparent{
 	icon_state = "6"
 	},
 /area/shuttle/getty)
@@ -214,7 +214,7 @@
 	},
 /area/shuttle/getty)
 "II" = (
-/turf/closed/shuttle/getty{
+/turf/closed/shuttle/getty/transparent{
 	icon_state = "5"
 	},
 /area/shuttle/getty)
@@ -241,7 +241,7 @@
 /area/shuttle/getty)
 "Lz" = (
 /obj/docking_port/mobile/getty,
-/turf/closed/shuttle/getty,
+/turf/closed/shuttle/getty/transparent,
 /area/shuttle/getty)
 "MA" = (
 /turf/closed/shuttle/getty{
@@ -275,7 +275,7 @@
 	},
 /area/shuttle/getty)
 "UA" = (
-/turf/closed/shuttle/getty{
+/turf/closed/shuttle/getty/transparent{
 	icon_state = "2"
 	},
 /area/shuttle/getty)
@@ -294,7 +294,7 @@
 	},
 /area/shuttle/getty)
 "ZR" = (
-/turf/closed/shuttle/getty{
+/turf/closed/shuttle/getty/transparent{
 	icon_state = "44"
 	},
 /area/shuttle/getty)

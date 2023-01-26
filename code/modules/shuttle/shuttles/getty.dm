@@ -24,11 +24,12 @@
 	area_type = /area/shuttle/getty
 	width = 10
 	height = 11
-	callTime = 30 SECONDS
+	callTime = 15 SECONDS
 	rechargeTime = 30 SECONDS
 	dwidth = 0
 	dheight = 0
 	port_direction = SOUTH
+	shuttle_flags = GAMEMODE_IMMUNE
 
 /obj/structure/machinery/computer/shuttle/getty
 	name = "\"Gettysburg\" transit computer"
@@ -85,15 +86,32 @@
 
 	switch(action)
 		if("from_ship")
-			from_ship(user)
+			takeoff(user)
+		if("to_ship")
+			to_ship(user)
+		if("view_ground")
+			view_ground(user)
 
 /obj/structure/machinery/computer/camera_advanced/shuttle_docker/getty/shuttle_arrived()
-	if(current_state == STATE_IN_TRANSIT && transit_to == STATE_IN_ATMOSPHERE)
-		addtimer(CALLBACK(src, PROC_REF(move_to_atmosphere)), 1 SECONDS)
-		return
+	if(current_state == STATE_IN_TRANSIT)
+		if(transit_to == STATE_IN_ATMOSPHERE)
+			addtimer(CALLBACK(src, PROC_REF(move_to_atmosphere)), 1 SECONDS)
+			return
+		if(transit_to == STATE_ON_SHIP)
+			addtimer(CALLBACK(src, PROC_REF(move_to_ship)), 1 SECONDS)
+			return
 
+/obj/structure/machinery/computer/camera_advanced/shuttle_docker/getty/proc/take_off(mob/user)
+	if(current_state == SHUTTLE_ON_SHIP && !transit_to)
+		from_ship(user)
+
+	if(current_state == SHUTTLE_ON_GROUND && !transit_to)
+		from_ground(user)
 
 /obj/structure/machinery/computer/camera_advanced/shuttle_docker/getty/proc/from_ship(mob/user)
+	if(current_state != SHUTTLE_ON_SHIP || transit_to)
+		return
+
 	shuttle_port = SSshuttle.getShuttle(shuttleId)
 	shuttle_port.shuttle_computer = src
 
@@ -114,13 +132,23 @@
 	transit_to = null
 	SSshuttle.move_shuttle_to_transit(shuttleId, TRUE, /turf/open/space/transit/atmosphere)
 
+/obj/structure/machinery/computer/camera_advanced/shuttle_docker/getty/proc/move_to_ship()
+	current_state = STATE_ON_SHIP
+	transit_to = null
+	SSshuttle.moveShuttle(shuttleId, SHUTTLE_GETTY, TRUE)
+
 /obj/structure/machinery/computer/camera_advanced/shuttle_docker/getty/proc/to_ship()
-	shuttle_port.assigned_transit.reserved_area.set_turf(/turf/open/space/transit)
-	SSshuttle.moveShuttle(shuttleId, shuttleId, TRUE)
+	current_state = STATE_IN_TRANSIT
+	transit_to = STATE_ON_SHIP
+	SSshuttle.move_shuttle_to_transit(shuttleId, TRUE)
 
 /obj/structure/machinery/computer/camera_advanced/shuttle_docker/getty/proc/from_ground()
-	current_state = STATE_IN_ATMOSPHERE
-	SSshuttle.move_shuttle_to_transit(shuttleId, TRUE)
-	shuttle_port.assigned_transit.reserved_area.set_turf(/turf/open/space/transit/atmosphere)
+	transit_to = STATE_IN_ATMOSPHERE
+	SSshuttle.move_shuttle_to_transit(shuttleId, TRUE, /turf/open/space/transit/atmosphere)
 
 
+/obj/structure/machinery/computer/camera_advanced/shuttle_docker/getty/proc/view_ground(mob/user)
+	if(!(current_state == STATE_IN_ATMOSPHERE && transit_to == null))
+		return
+
+	open_prompt(user)

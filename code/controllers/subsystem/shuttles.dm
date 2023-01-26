@@ -242,8 +242,6 @@ SUBSYSTEM_DEF(shuttle)
 	// Add 180, because ports point inwards, rather than outwards
 	new_transit_dock.setDir(angle2dir(dock_angle))
 
-	if(M.assigned_transit)
-		clear_when_possible += M.assigned_transit
 	M.assigned_transit = new_transit_dock
 	return new_transit_dock
 

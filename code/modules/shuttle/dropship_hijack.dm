@@ -1,0 +1,223 @@
+
+/datum/dropship_hijack
+	var/obj/docking_port/mobile/shuttle
+	var/obj/docking_port/stationary/crash_site
+	var/target_zone
+	var/hijacked_bypass_aa = FALSE
+	var/final_announcement = FALSE
+
+/datum/dropship_hijack/almayer/proc/crash_landing()
+	//break APCs
+	for(var/obj/structure/machinery/power/apc/A in machines)
+		if(A.z != crash_site.z) continue
+		if(prob(A.crash_break_probability))
+			A.overload_lighting()
+			A.set_broken()
+
+	var/centre_x = crash_site.x + (crash_site.width / 2)
+	//determine outside of ship location
+	var/y_travel = 1
+	if(crash_site.y < ALMAYER_DECK_BOUNDARY)
+		y_travel = -1
+	var/obj/outer_target = new()
+	outer_target.x = centre_x
+	outer_target.y = ALMAYER_DECK_BOUNDARY + y_travel
+	outer_target.z = crash_site.z
+	// find the outer point of the ship, the first turf that is not space
+	while(outer_target.y > 1 && istype(get_turf(outer_target), /turf/open/space))
+		outer_target.y += y_travel
+
+	// draw a line of explosions to the landing site
+	while(outer_target.y < crash_site.y)
+		outer_target.y += (y_travel * 5)
+		var/turf/sploded = locate(outer_target.x + rand(-3, 3), outer_target.y, crash_site.z)
+
+		cell_explosion(sploded, 250, 20, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data("dropship crash")) //Clears out walls
+
+		INVOKE_ASYNC(GLOBAL_PROC, PROC_REF(flame_radius), create_cause_data("dropship crash"), 6, sploded, 10, 5, FLAMESHAPE_DEFAULT, null)
+		sleep(3)
+
+	qdel(outer_target)
+	// landing site explosion code
+	var/explonum = rand(10,15)
+	for(var/j=0; j<explonum; j++)
+		var/turf/sploded = locate(crash_site.x + rand(-5, 15), crash_site.y + rand(-5, 25), crash_site.z)
+		cell_explosion(sploded, 250, 10, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data("dropship crash")) //Clears out walls
+		sleep(3)
+
+	// Break the ultra-reinforced windows.
+	// Break the briefing windows.
+	for(var/i in GLOB.hijack_bustable_windows)
+		var/obj/structure/window/H = i
+		H.deconstruct(FALSE)
+
+	for(var/k in GLOB.hijack_bustable_ladders)
+		var/obj/structure/ladder/fragile_almayer/L = k
+		L.deconstruct()
+
+	// Delete the briefing door(s).
+	for(var/D in GLOB.hijack_deletable_windows)
+		qdel(D)
+
+	// Sleep while the explosions do their job
+	var/explosion_alive = TRUE
+	while(explosion_alive)
+		explosion_alive = FALSE
+		for(var/datum/automata_cell/explosion/E in cellauto_cells)
+			if(E.explosion_cause_data && E.explosion_cause_data.cause_name == "dropship crash")
+				explosion_alive = TRUE
+				break
+		sleep(1)
+
+	for(var/mob/living/carbon/affected_mob in (GLOB.alive_human_list + GLOB.living_xeno_list)) //knock down mobs
+		if(affected_mob.z != crash_site.z)
+			continue
+		if(affected_mob.buckled)
+			to_chat(affected_mob, SPAN_WARNING("You are jolted against [affected_mob.buckled]!"))
+			// shake_camera(affected_mob, 3, 1)
+		else
+			to_chat(affected_mob, SPAN_WARNING("The floor jolts under your feet!"))
+			// shake_camera(affected_mob, 10, 1)
+			affected_mob.apply_effect(3, WEAKEN)
+
+	// TODO this should be handled elsewhere
+	// sleep(100)
+	if(SSticker.mode)
+		SSticker.mode.is_in_endgame = TRUE
+		SSticker.mode.force_end_at = (world.time + 25 MINUTES)
+
+/datum/dropship_hijack/almayer/proc/fire()
+	if(!shuttle || !crash_site)
+		return FALSE
+	SSshuttle.moveShuttle(shuttle.id, crash_site.id, DROPSHIP_CRASH_TRANSIT_DURATION)
+	if(round_statistics)
+		round_statistics.track_hijack()
+	return TRUE
+
+/datum/dropship_hijack/almayer/proc/target_crash_site(ship_section)
+	var/area/target_area = get_crashsite_area(ship_section)
+	// spawn crash location
+	var/list/turfs = list()
+	for(var/turf/T in get_area_turfs(target_area))
+		turfs += T
+
+	if(!turfs || !turfs.len)
+		to_chat(src, "<span style='color: red;'>No area available.</span>")
+		return
+	var/turf/target = pick(turfs)
+
+	var/obj/docking_port/stationary/marine_dropship/crash_site/target_site = new()
+	crash_site = target_site
+	crash_site.x = target.x
+	crash_site.y = target.y
+	crash_site.z = target.z
+
+	target_site.name = "[shuttle] crash site"
+	target_site.id = "crash_site_[shuttle.id]"
+
+/datum/dropship_hijack/almayer/proc/check()
+	check_AA()
+	check_final_approach()
+
+/datum/dropship_hijack/almayer/proc/check_AA()
+	// we are in flight during a hijack without bypassing AA
+	if(shuttle.mode != SHUTTLE_CALL || hijacked_bypass_aa)
+		return
+
+	// if our duration isn't far enough away
+	if(shuttle.timeLeft(1) > (shuttle.callTime / 2))
+		return
+
+	// if the AA site matches target site
+	if(target_zone == almayer_aa_cannon.protecting_section)
+		var/list/remaining_crash_sites = almayer_ship_sections.Copy()
+		remaining_crash_sites -= target_zone
+		var/new_target_zone = pick(remaining_crash_sites)
+		var/area/target_area = get_crashsite_area(new_target_zone)
+		// spawn crash location
+		var/list/turfs = list()
+		for(var/turf/T in get_area_turfs(target_area))
+			turfs += T
+		var/turf/target = pick(turfs)
+		crash_site.Move(target)
+		marine_announcement("A hostile aircraft on course for the [target_zone] has been successfully deterred.", "IX-50 MGAD System")
+		target_zone = new_target_zone
+		// TODO mobs not alerted
+		for(var/area/internal_area in shuttle.shuttle_areas)
+			for(var/turf/internal_turf in internal_area)
+				for(var/mob/M in internal_turf)
+					to_chat(M, SPAN_DANGER("The ship jostles violently as explosions rock the ship!"))
+					to_chat(M, SPAN_DANGER("You feel the ship turning sharply as it adjusts its course!"))
+					shake_camera(M, 60, 2)
+			playsound_area(internal_area, 'sound/effects/antiair_explosions.ogg')
+
+	hijacked_bypass_aa = TRUE
+
+/datum/dropship_hijack/almayer/proc/check_final_approach()
+	// if our duration isn't far enough away
+	if(shuttle.timeLeft(1) > 10 SECONDS)
+		return
+	if(final_announcement)
+		return
+	marine_announcement("DROPSHIP ON COLLISION COURSE. CRASH IMMINENT." , "EMERGENCY", 'sound/AI/dropship_emergency.ogg')
+
+	announce_dchat("The dropship is about to impact [get_area_name(crash_site)]", crash_site)
+	final_announcement = TRUE
+
+	playsound_area(get_area(crash_site), 'sound/effects/engine_landing.ogg', 100)
+	playsound_area(get_area(crash_site), channel = SOUND_CHANNEL_AMBIENCE, status = SOUND_UPDATE)
+
+	addtimer(CALLBACK(src, PROC_REF(disable_latejoin)), 3 MINUTES) // latejoin cryorines have 3 minutes to get the hell out
+
+/datum/dropship_hijack/almayer/proc/disable_latejoin()
+	enter_allowed = FALSE
+
+/datum/dropship_hijack/almayer/proc/get_crashsite_area(ship_section)
+	var/list/areas = list()
+	switch(ship_section)
+		if("Upper deck Foreship")
+			areas += typesof(/area/almayer/shipboard/brig)
+			areas += list(/area/almayer/command/cichallway)
+			areas += list(/area/almayer/command/cic)
+		if("Upper deck Midship")
+			areas += list(
+				/area/almayer/medical/morgue,
+				/area/almayer/medical/upper_medical,
+				/area/almayer/medical/containment,
+				/area/almayer/medical/containment/cell,
+				/area/almayer/medical/medical_science,
+				/area/almayer/medical/testlab,
+				/area/almayer/medical/hydroponics,
+			)
+		if("Upper deck Aftship")
+			areas += list(
+				/area/almayer/engineering/upper_engineering,
+				/area/almayer/command/computerlab,
+			)
+		if("Lower deck Foreship")
+			areas += list(
+				/area/almayer/hallways/hangar,
+				/area/almayer/hallways/vehiclehangar
+			)
+		if("Lower deck Midship")
+			areas += list(
+				/area/almayer/medical/chemistry,
+				/area/almayer/medical/lower_medical_lobby,
+				/area/almayer/medical/lockerroom,
+				/area/almayer/medical/lower_medical_medbay,
+				/area/almayer/medical/operating_room_one,
+				/area/almayer/medical/operating_room_two,
+				/area/almayer/medical/operating_room_three,
+				/area/almayer/medical/operating_room_four,
+				/area/almayer/living/briefing,
+				/area/almayer/squads/req,
+
+			)
+		if("Lower deck Aftship")
+			areas += list(
+				/area/almayer/living/cryo_cells,
+				/area/almayer/engineering/engineering_workshop,
+			)
+		else
+			CRASH("Crash site [ship_section] unknown.")
+	return pick(areas)

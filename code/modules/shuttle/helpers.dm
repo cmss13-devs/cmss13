@@ -71,6 +71,10 @@
 	var/list/doors = list()
 	var/is_locked = FALSE
 
+/datum/door_controller/single/Destroy(force, ...)
+	. = ..()
+	doors = null
+
 /datum/door_controller/single/proc/control_doors(var/action, var/force = FALSE)
 	for(var/D in doors)
 		var/obj/structure/machinery/door/door = D

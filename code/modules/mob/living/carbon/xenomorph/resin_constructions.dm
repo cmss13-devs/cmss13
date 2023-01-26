@@ -227,7 +227,7 @@ GLOBAL_VAR_INIT(resin_lz_allowed, FALSE)
 	cost = XENO_RESIN_DOOR_THICK_COST
 
 	build_path = /obj/structure/mineral_door/resin/thick
-	build_animation_effect = /obj/effect/resin_construct/door
+	build_animation_effect = /obj/effect/resin_construct/thickdoor
 
 
 // Resin Nests

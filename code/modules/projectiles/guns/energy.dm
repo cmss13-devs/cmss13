@@ -225,7 +225,7 @@
 			return FALSE
 
 /obj/item/weapon/gun/energy/taser/unique_action(mob/user)
-	change_mode(usr)
+	change_mode(user)
 
 /obj/item/weapon/gun/energy/taser/get_examine_text(mob/user)
 	. = ..()
@@ -243,11 +243,11 @@
 	switch(mode)
 		if(TASER_MODE_P)
 			mode = TASER_MODE_F
-			to_chat(user, SPAN_NOTICE("\The [src] is now set to Free mode."))
+			to_chat(user, SPAN_NOTICE("[src] is now set to Free mode."))
 			ammo = GLOB.ammo_list[/datum/ammo/energy/taser]
 		if(TASER_MODE_F)
 			mode = TASER_MODE_P
-			to_chat(user, SPAN_NOTICE("\The [src] is now set to Precision mode."))
+			to_chat(user, SPAN_NOTICE("[src] is now set to Precision mode."))
 			ammo = GLOB.ammo_list[/datum/ammo/energy/taser/precise]
 	var/datum/action/item_action/taser/change_mode/action = locate(/datum/action/item_action/taser/change_mode) in actions
 	action.update_icon()
@@ -259,8 +259,8 @@
 	var/obj/item/weapon/gun/energy/taser/taser = holder_item
 	if(!ishuman(owner))
 		return
-	var/mob/living/carbon/human/H = owner
-	if(H.is_mob_incapacitated() || taser.get_active_firearm(H, FALSE) != holder_item)
+	var/mob/living/carbon/human/humie = owner
+	if(humie.is_mob_incapacitated() || taser.get_active_firearm(humie, FALSE) != holder_item)
 		return
 
 /datum/action/item_action/taser/change_mode/New(Target, obj/item/holder)

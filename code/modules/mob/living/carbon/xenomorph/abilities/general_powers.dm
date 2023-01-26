@@ -867,10 +867,15 @@
 /datum/action/xeno_action/activable/tail_stab/use_ability(atom/targetted_atom)
 	var/mob/living/carbon/xenomorph/stabbing_xeno = owner
 
-	if(!action_cooldown_check())
+	if(!stabbing_xeno.check_state())
 		return FALSE
 
-	if(!stabbing_xeno.check_state())
+	var/pre_result = pre_ability_act(stabbing_xeno, targetted_atom)
+
+	if(pre_result)
+		return FALSE
+
+	if(!action_cooldown_check())
 		return FALSE
 
 	if (world.time <= stabbing_xeno.next_move)
@@ -936,6 +941,9 @@
 	xeno_attack_delay(stabbing_xeno)
 	..()
 	return result
+
+/datum/action/xeno_action/activable/tail_stab/proc/pre_ability_act(var/mob/living/carbon/xenomorph/stabbing_xeno, var/atom/targetted_atom)
+	return
 
 /datum/action/xeno_action/activable/tail_stab/proc/ability_act(var/mob/living/carbon/xenomorph/stabbing_xeno, var/mob/living/carbon/target, var/obj/limb/limb)
 

@@ -992,7 +992,7 @@
 /*M2C HEAVY MACHINEGUN AND ITS COMPONENTS */
 // AMMO
 /obj/item/ammo_magazine/m2c
-	name = "M2C Ammunition Box (12.7x99mm tungsten rounds)"
+	name = "M2C Ammunition Box (.50 BMG Cased)"
 	desc = "A box of 125, .50 BMG (12.7x99mm) rounds for the M2 Heavy Machinegun System. Click the heavy machinegun while there's no ammo box loaded to reload the M2C."
 	caliber = "12.7x99mm"
 	w_class = SIZE_LARGE

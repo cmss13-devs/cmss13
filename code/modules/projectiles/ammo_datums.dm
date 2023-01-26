@@ -1136,7 +1136,7 @@
 
 /datum/ammo/bullet/rifle/m4ra/impact/knockback_effects(mob/living/L, obj/item/projectile/P)
 	if(isCarbonSizeXeno(L))
-		var/mob/living/carbon/Xenomorph/target = L
+		var/mob/living/carbon/xenomorph/target = L
 		to_chat(target, SPAN_XENODANGER("You are shaken and slowed by the sudden impact!"))
 		target.apply_effect(0.5, WEAKEN)
 		target.apply_effect(2, SUPERSLOW)
@@ -1197,7 +1197,7 @@
 
 /datum/ammo/bullet/shotgun/slug/knockback_effects(mob/living/L, obj/item/projectile/P)
 	if(isCarbonSizeXeno(L))
-		var/mob/living/carbon/Xenomorph/target = L
+		var/mob/living/carbon/xenomorph/target = L
 		to_chat(target, SPAN_XENODANGER("You are shaken and slowed by the sudden impact!"))
 		target.apply_effect(0.5, WEAKEN)
 		target.apply_effect(1, SUPERSLOW)
@@ -1420,7 +1420,7 @@
 
 /datum/ammo/bullet/shotgun/heavy/slug/knockback_effects(mob/living/L, obj/item/projectile/P)
 	if(isCarbonSizeXeno(L))
-		var/mob/living/carbon/Xenomorph/target = L
+		var/mob/living/carbon/xenomorph/target = L
 		to_chat(target, SPAN_XENODANGER("You are shaken and slowed by the sudden impact!"))
 		target.apply_effect(0.5, WEAKEN)
 		target.apply_effect(2, SUPERSLOW)
@@ -1521,7 +1521,7 @@
 
 /datum/ammo/bullet/shotgun/twobore/knockback_effects(mob/living/L, obj/item/projectile/P)
 	if(isCarbonSizeXeno(L))
-		var/mob/living/carbon/Xenomorph/target = L
+		var/mob/living/carbon/xenomorph/target = L
 		to_chat(target, SPAN_XENODANGER("You are shaken and slowed by the sudden impact!"))
 		target.apply_effect(0.5, WEAKEN)
 		target.apply_effect(2, SUPERSLOW)

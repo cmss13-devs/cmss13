@@ -27,7 +27,7 @@
 	if(duration % ticks_between_plasmas)
 		return
 
-	var/mob/living/carbon/Xenomorph/affected_mob = affected_atom
+	var/mob/living/carbon/xenomorph/affected_mob = affected_atom
 	affected_mob.gain_plasma(plasma_each_process)
 
 	return TRUE

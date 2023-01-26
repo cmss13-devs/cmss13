@@ -205,30 +205,30 @@
 		var/hivenumber = XENO_HIVE_NORMAL
 
 		if(isXeno(M))
-			var/mob/living/carbon/Xenomorph/X = M
+			var/mob/living/carbon/xenomorph/X = M
 			hivenumber = X.hivenumber
 
 		switch(href_list["simplemake"])
 			if("observer") transformed = M.change_mob_type( /mob/dead/observer , null, null, delmob )
 
-			if("larva") transformed = M.change_mob_type( /mob/living/carbon/Xenomorph/Larva , null, null, delmob )
-			if("facehugger") transformed = M.change_mob_type( /mob/living/carbon/Xenomorph/Facehugger , null, null, delmob )
-			if("defender") transformed = M.change_mob_type( /mob/living/carbon/Xenomorph/Defender, null, null, delmob )
-			if("warrior") transformed = M.change_mob_type( /mob/living/carbon/Xenomorph/Warrior, null, null, delmob )
-			if("runner") transformed = M.change_mob_type( /mob/living/carbon/Xenomorph/Runner , null, null, delmob )
-			if("drone") transformed = M.change_mob_type( /mob/living/carbon/Xenomorph/Drone , null, null, delmob )
-			if("sentinel") transformed = M.change_mob_type( /mob/living/carbon/Xenomorph/Sentinel , null, null, delmob )
-			if("lurker") transformed = M.change_mob_type( /mob/living/carbon/Xenomorph/Lurker , null, null, delmob )
-			if("carrier") transformed = M.change_mob_type( /mob/living/carbon/Xenomorph/Carrier , null, null, delmob )
-			if("hivelord") transformed = M.change_mob_type( /mob/living/carbon/Xenomorph/Hivelord , null, null, delmob )
-			if("praetorian") transformed = M.change_mob_type( /mob/living/carbon/Xenomorph/Praetorian , null, null, delmob )
-			if("ravager") transformed = M.change_mob_type( /mob/living/carbon/Xenomorph/Ravager , null, null, delmob )
-			if("spitter") transformed = M.change_mob_type( /mob/living/carbon/Xenomorph/Spitter , null, null, delmob )
-			if("boiler") transformed = M.change_mob_type( /mob/living/carbon/Xenomorph/Boiler , null, null, delmob )
-			if("burrower") transformed = M.change_mob_type( /mob/living/carbon/Xenomorph/Burrower , null, null, delmob )
-			if("crusher") transformed = M.change_mob_type( /mob/living/carbon/Xenomorph/Crusher , null, null, delmob )
-			if("queen") transformed = M.change_mob_type( /mob/living/carbon/Xenomorph/Queen , null, null, delmob )
-			if("predalien") transformed = M.change_mob_type( /mob/living/carbon/Xenomorph/Predalien , null, null, delmob )
+			if("larva") transformed = M.change_mob_type( /mob/living/carbon/xenomorph/larva , null, null, delmob )
+			if("facehugger") transformed = M.change_mob_type( /mob/living/carbon/xenomorph/facehugger , null, null, delmob )
+			if("defender") transformed = M.change_mob_type( /mob/living/carbon/xenomorph/defender, null, null, delmob )
+			if("warrior") transformed = M.change_mob_type( /mob/living/carbon/xenomorph/warrior, null, null, delmob )
+			if("runner") transformed = M.change_mob_type( /mob/living/carbon/xenomorph/runner , null, null, delmob )
+			if("drone") transformed = M.change_mob_type( /mob/living/carbon/xenomorph/drone , null, null, delmob )
+			if("sentinel") transformed = M.change_mob_type( /mob/living/carbon/xenomorph/sentinel , null, null, delmob )
+			if("lurker") transformed = M.change_mob_type( /mob/living/carbon/xenomorph/lurker , null, null, delmob )
+			if("carrier") transformed = M.change_mob_type( /mob/living/carbon/xenomorph/carrier , null, null, delmob )
+			if("hivelord") transformed = M.change_mob_type( /mob/living/carbon/xenomorph/hivelord , null, null, delmob )
+			if("praetorian") transformed = M.change_mob_type( /mob/living/carbon/xenomorph/praetorian , null, null, delmob )
+			if("ravager") transformed = M.change_mob_type( /mob/living/carbon/xenomorph/ravager , null, null, delmob )
+			if("spitter") transformed = M.change_mob_type( /mob/living/carbon/xenomorph/spitter , null, null, delmob )
+			if("boiler") transformed = M.change_mob_type( /mob/living/carbon/xenomorph/boiler , null, null, delmob )
+			if("burrower") transformed = M.change_mob_type( /mob/living/carbon/xenomorph/burrower , null, null, delmob )
+			if("crusher") transformed = M.change_mob_type( /mob/living/carbon/xenomorph/crusher , null, null, delmob )
+			if("queen") transformed = M.change_mob_type( /mob/living/carbon/xenomorph/queen , null, null, delmob )
+			if("predalien") transformed = M.change_mob_type( /mob/living/carbon/xenomorph/predalien , null, null, delmob )
 
 			if("human") transformed = M.change_mob_type( /mob/living/carbon/human , null, null, delmob, href_list["species"])
 			if("monkey") transformed = M.change_mob_type( /mob/living/carbon/human/monkey , null, null, delmob )
@@ -246,7 +246,7 @@
 			if("polyparrot") transformed = M.change_mob_type( /mob/living/simple_animal/parrot/Poly , null, null, delmob )
 
 		if(isXeno(transformed) && hivenumber)
-			var/mob/living/carbon/Xenomorph/X = transformed
+			var/mob/living/carbon/xenomorph/X = transformed
 			X.set_hive_and_update(hivenumber)
 
 	/////////////////////////////////////new ban stuff
@@ -577,7 +577,7 @@
 		if(!check_rights(R_MOD,0) && !check_rights(R_BAN))
 			return
 
-		var/mob/living/carbon/Xenomorph/X = locate(href_list["xenoresetname"])
+		var/mob/living/carbon/xenomorph/X = locate(href_list["xenoresetname"])
 		if(!isXeno(X))
 			to_chat(usr, SPAN_WARNING("Not a xeno"))
 			return
@@ -605,7 +605,7 @@
 		if(!check_rights(R_MOD,0) && !check_rights(R_BAN))
 			return
 
-		var/mob/living/carbon/Xenomorph/X = locate(href_list["xenobanname"])
+		var/mob/living/carbon/xenomorph/X = locate(href_list["xenobanname"])
 		var/mob/M = locate(href_list["xenobanname"])
 
 		if(ismob(M) && X.client && X.client.xeno_name_ban)
@@ -1763,6 +1763,32 @@
 		log_game("[key_name_admin(usr)] has canceled the self-destruct.")
 		message_staff("[key_name_admin(usr)] has canceled the self-destruct.")
 		destroy_cancel = 1
+		return
+
+	if(href_list["force_event"])
+		if(!check_rights(R_EVENT))
+			return
+		var/datum/round_event_control/E = locate(href_list["force_event"]) in SSevents.control
+		if(!E)
+			return
+		E.admin_setup(usr)
+		var/datum/round_event/event = E.run_event()
+		if(event.cancel_event)
+			return
+		if(event.announce_when>0)
+			event.processing = FALSE
+			var/prompt = alert(usr, "Would you like to alert the general population?", "Alert", "Yes", "No", "Cancel")
+			switch(prompt)
+				if("Yes")
+					event.announce_chance = 100
+				if("Cancel")
+					event.kill()
+					return
+				if("No")
+					event.announce_chance = 0
+			event.processing = TRUE
+		message_admins("[key_name_admin(usr)] has triggered an event. ([E.name])")
+		log_admin("[key_name(usr)] has triggered an event. ([E.name])")
 		return
 
 	return

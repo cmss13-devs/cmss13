@@ -367,7 +367,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 
 //------------INTERACTION PROCS---------------
 
-/obj/structure/machinery/cm_vending/attack_alien(mob/living/carbon/Xenomorph/M)
+/obj/structure/machinery/cm_vending/attack_alien(mob/living/carbon/xenomorph/M)
 	if(stat & TIPPED_OVER || indestructible)
 		to_chat(M, SPAN_WARNING("There's no reason to bother with that old piece of trash."))
 		return XENO_NO_DELAY_ACTION
@@ -394,7 +394,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 	var/shove_time = 80
 	if(M.mob_size >= MOB_SIZE_BIG)
 		shove_time = 30
-	if(istype(M,/mob/living/carbon/Xenomorph/Crusher))
+	if(istype(M,/mob/living/carbon/xenomorph/crusher))
 		shove_time = 15
 
 	xeno_attack_delay(M) //Adds delay here and returns nothing because otherwise it'd cause lag *after* finishing the shove.

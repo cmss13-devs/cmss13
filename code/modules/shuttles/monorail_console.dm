@@ -158,12 +158,14 @@
 
 			//Alert code is the Queen is the one calling it, the shuttle is on the ground and the shuttle still allows alerts
 			if(isXenoQueen(usr) && shuttle.location == 1 && shuttle.alerts_allowed)
-				var/i = alert("Confirm hijack and launch?", "WARNING", "Yes", "No")
+				var/i = tgui_alert(usr, "Confirm hijack and launch?", "WARNING", list("Yes", "No"))
+				if(i != "Yes")
+					return
 
 				if(shuttle.moving_status != SHUTTLE_IDLE || shuttle.locked || shuttle.location != 1 || !shuttle.alerts_allowed || !shuttle.queen_locked || shuttle.recharging)
 					return
 
-				if(istype(shuttle, /datum/shuttle/ferry/marine) && is_ground_level(z) && i == "Yes")
+				if(istype(shuttle, /datum/shuttle/ferry/marine) && is_ground_level(z))
 
 					var/datum/shuttle/ferry/marine/shuttle1 = shuttle
 					shuttle1.transit_gun_mission = 0
@@ -171,13 +173,13 @@
 					//round_statistics.count_hijack_mobs_for_statistics()
 					marine_announcement("Unauthorized monorail departure detected", "CORSAT Monorail Authority Alert", 'sound/misc/notice2.ogg')
 					to_chat(usr, SPAN_DANGER("A loud alarm erupts from [src]! The fleshy hosts must know that you can access it!"))
-					var/mob/living/carbon/Xenomorph/Queen/Q = usr // typechecked above
+					var/mob/living/carbon/xenomorph/queen/Q = usr // typechecked above
 					xeno_message(SPAN_XENOANNOUNCE("The Queen has commanded the metal crawler to depart! Rejoice!"), 3 ,Q.hivenumber)
 
 					playsound(src, 'sound/misc/queen_alarm.ogg')
 					shuttle1.launch(src)
 
-				else if(i == "No")
+				else if(i != "Yes")
 					return
 				else
 					shuttle.launch(src)

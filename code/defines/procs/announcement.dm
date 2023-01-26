@@ -13,7 +13,7 @@
 	var/list/targets = GLOB.living_xeno_list + GLOB.dead_mob_list
 	if(hivenumber == "everything")
 		for(var/mob/M in targets)
-			var/mob/living/carbon/Xenomorph/X = M
+			var/mob/living/carbon/xenomorph/X = M
 			if(!isobserver(X) && !istype(X)) //filter out any potential non-xenomorphs/observers mobs
 				targets.Remove(X)
 

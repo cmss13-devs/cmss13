@@ -96,7 +96,7 @@ nanoui is used to open and update nano browser uis
 	add_common_assets()
 	var/datum/asset/assets_images = get_asset_datum(/datum/asset/simple/nanoui_images)
 	assets_images.send(user)
-	var/datum/asset/assets = get_asset_datum(/datum/asset/nanoui)
+	var/datum/asset/assets = get_asset_datum(/datum/asset/directory/nanoui)
 	assets.send(user, ntemplate_filename)
 	assets.send(user, "layout_default.tmpl", TRUE)
 

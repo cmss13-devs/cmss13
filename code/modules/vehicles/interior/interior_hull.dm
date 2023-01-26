@@ -10,7 +10,7 @@
 	icon = 'icons/obj/vehicles/interiors/tank.dmi'
 	density = TRUE
 	opacity = TRUE
-	anchored = 1
+	anchored = TRUE
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	layer = INTERIOR_WALL_NORTH_LAYER
 	flags_atom = NOINTERACT
@@ -32,7 +32,7 @@
 	icon = 'icons/obj/vehicles/interiors/tank.dmi'
 	density = FALSE
 	opacity = FALSE
-	anchored = 1
+	anchored = TRUE
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	layer = ABOVE_FLY_LAYER
 	flags_atom = NOINTERACT

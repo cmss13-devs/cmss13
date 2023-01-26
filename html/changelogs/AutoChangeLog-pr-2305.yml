@@ -1,5 +1,0 @@
-author: "stanalbatross"
-delete-after: True
-changes:
-  - qol: "control-clicking a xeno as a ghost will now always make you orbit them"
-  - qol: "reduced message spam when control-clicking xenos as a ghost"

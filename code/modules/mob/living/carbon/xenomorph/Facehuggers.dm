@@ -97,7 +97,7 @@
 	return ..()
 
 //Deal with picking up facehuggers. "attack_alien" is the universal 'xenos click something while unarmed' proc.
-/obj/item/clothing/mask/facehugger/attack_alien(mob/living/carbon/Xenomorph/user)
+/obj/item/clothing/mask/facehugger/attack_alien(mob/living/carbon/xenomorph/user)
 	if(user.hivenumber != hivenumber)
 		user.animation_attack_on(src)
 		user.visible_message(SPAN_XENOWARNING("[user] crushes \the [src]"), SPAN_XENOWARNING("You crush \the [src]"))
@@ -137,7 +137,7 @@
 	..()
 
 	if(isXenoCarrier(user))
-		var/mob/living/carbon/Xenomorph/Carrier/C = user
+		var/mob/living/carbon/xenomorph/carrier/C = user
 		C.store_hugger(src)
 
 /obj/item/clothing/mask/facehugger/get_examine_text(mob/user)
@@ -249,7 +249,7 @@
 		H.visible_message(SPAN_DANGER("[src] leaps at [H]'s face!"))
 
 	if(isXeno(loc)) //Being carried? Drop it
-		var/mob/living/carbon/Xenomorph/X = loc
+		var/mob/living/carbon/xenomorph/X = loc
 		X.drop_inv_item_on_ground(src)
 
 	if(isturf(H.loc))
@@ -334,7 +334,7 @@
 		return
 
 	if(isXeno(loc))
-		var/mob/living/carbon/Xenomorph/X = loc
+		var/mob/living/carbon/xenomorph/X = loc
 		if(X.caste.hugger_nurturing) // caste can prevent hugger death
 			return
 

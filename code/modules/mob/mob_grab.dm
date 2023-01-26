@@ -60,7 +60,7 @@
 
 	if(!ishuman(user)) //only humans can reinforce a grab.
 		if (isXeno(user))
-			var/mob/living/carbon/Xenomorph/X = user
+			var/mob/living/carbon/xenomorph/X = user
 			X.pull_power(grabbed_thing)
 		return
 
@@ -95,7 +95,7 @@
 	if(M == grabbed_thing)
 		attack_self(user)
 	else if(M == user && user.pulling && isXeno(user))
-		var/mob/living/carbon/Xenomorph/X = user
+		var/mob/living/carbon/xenomorph/X = user
 		var/mob/living/carbon/pulled = X.pulling
 		if(!istype(pulled))
 			return

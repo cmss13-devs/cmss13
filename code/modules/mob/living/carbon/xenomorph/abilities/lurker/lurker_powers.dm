@@ -1,5 +1,5 @@
 /datum/action/xeno_action/onclick/lurker_invisibility/use_ability(atom/targeted_atom)
-	var/mob/living/carbon/Xenomorph/xeno = owner
+	var/mob/living/carbon/xenomorph/xeno = owner
 
 	if (!istype(xeno))
 		return
@@ -36,7 +36,7 @@
 		deltimer(invis_timer_id)
 		invis_timer_id = TIMER_ID_NULL
 
-	var/mob/living/carbon/Xenomorph/xeno = owner
+	var/mob/living/carbon/xenomorph/xeno = owner
 	if (istype(xeno))
 		animate(xeno, alpha = initial(xeno.alpha), time = 0.1 SECONDS, easing = QUAD_EASING)
 		to_chat(xeno, SPAN_XENOHIGHDANGER("You feel your invisibility end!"))
@@ -56,7 +56,7 @@
 	..()
 
 /datum/action/xeno_action/onclick/lurker_assassinate/use_ability(atom/targeted_atom)
-	var/mob/living/carbon/Xenomorph/xeno = owner
+	var/mob/living/carbon/xenomorph/xeno = owner
 
 	if (!istype(xeno))
 		return
@@ -84,7 +84,7 @@
 	return
 
 /datum/action/xeno_action/onclick/lurker_assassinate/proc/unbuff_slash()
-	var/mob/living/carbon/Xenomorph/xeno = owner
+	var/mob/living/carbon/xenomorph/xeno = owner
 	if (!istype(xeno))
 		return
 	var/datum/behavior_delegate/lurker_base/behavior = xeno.behavior_delegate
@@ -101,7 +101,7 @@
 
 /datum/action/xeno_action/activable/pounce/rush/additional_effects(mob/living/living_target) //pounce effects
 	var/mob/living/carbon/target = living_target
-	var/mob/living/carbon/Xenomorph/xeno = owner
+	var/mob/living/carbon/xenomorph/xeno = owner
 	target.sway_jitter(times = 2)
 	xeno.animation_attack_on(target)
 	xeno.flick_attack_overlay(target, "slash")   //fake slash to prevent disarm abuse
@@ -112,7 +112,7 @@
 	apply_cooldown(0.65)
 
 /datum/action/xeno_action/activable/flurry/use_ability(atom/targeted_atom) //flurry ability
-	var/mob/living/carbon/Xenomorph/xeno = owner
+	var/mob/living/carbon/xenomorph/xeno = owner
 
 	if (!istype(xeno))
 		return
@@ -179,7 +179,7 @@
 	return
 
 /datum/action/xeno_action/activable/tail_jab/use_ability(atom/target_atom)
-	var/mob/living/carbon/Xenomorph/xeno = owner
+	var/mob/living/carbon/xenomorph/xeno = owner
 
 	if (!action_cooldown_check())
 		return

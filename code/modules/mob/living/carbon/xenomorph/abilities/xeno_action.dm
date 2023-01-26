@@ -62,7 +62,7 @@
 /datum/action/xeno_action/proc/track_xeno_ability_stats()
 	if(!owner)
 		return
-	var/mob/living/carbon/Xenomorph/X = owner
+	var/mob/living/carbon/xenomorph/X = owner
 	if (ability_name && round_statistics)
 		round_statistics.track_ability_usage(ability_name)
 		X.track_ability_usage(ability_name, X.caste_type)
@@ -70,7 +70,7 @@
 /datum/action/xeno_action/can_use_action()
 	if(!owner)
 		return FALSE
-	var/mob/living/carbon/Xenomorph/X = owner
+	var/mob/living/carbon/xenomorph/X = owner
 	if(X && !X.is_mob_incapacitated() && !X.dazed && !X.lying && !X.buckled && X.plasma_stored >= plasma_cost)
 		return TRUE
 
@@ -111,7 +111,7 @@
 	if(plasma_to_use)
 		plasma_to_check = plasma_to_use
 
-	var/mob/living/carbon/Xenomorph/X = owner
+	var/mob/living/carbon/xenomorph/X = owner
 	return X.check_plasma(plasma_to_check)
 
 // Uses plasma on the owner.
@@ -123,7 +123,7 @@
 	if(plasma_to_use)
 		plasma_to_check = plasma_to_use
 
-	var/mob/living/carbon/Xenomorph/X = owner
+	var/mob/living/carbon/xenomorph/X = owner
 	X.use_plasma(plasma_to_check)
 
 /// A wrapper for use_ability that sends a signal
@@ -151,7 +151,7 @@
 		return
 	if(hidden)
 		return // There's no where we want a hidden action to be selectable right?
-	var/mob/living/carbon/Xenomorph/xeno = owner
+	var/mob/living/carbon/xenomorph/xeno = owner
 	if(xeno.selected_ability == src)
 		if(xeno.deselect_timer > world.time)
 			return // We clicked the same ability in a very short time
@@ -181,7 +181,7 @@
 	button.icon_state = "template"
 
 
-/datum/action/xeno_action/activable/remove_from(mob/living/carbon/Xenomorph/xeno)
+/datum/action/xeno_action/activable/remove_from(mob/living/carbon/xenomorph/xeno)
 	..()
 	if(xeno.selected_ability == src)
 		xeno.selected_ability = null
@@ -207,7 +207,7 @@
 /datum/action/xeno_action/proc/apply_cooldown(var/cooldown_modifier = 1)
 	if(!owner)
 		return
-	var/mob/living/carbon/Xenomorph/X = owner
+	var/mob/living/carbon/xenomorph/X = owner
 	// Uh oh! STINKY! already on cooldown
 	if (cooldown_timer_id != TIMER_ID_NULL)
 	/*
@@ -246,7 +246,7 @@
 	if(cooldown_timer_id != TIMER_ID_NULL)
 		deltimer(cooldown_timer_id)
 
-	var/mob/living/carbon/Xenomorph/X = owner
+	var/mob/living/carbon/xenomorph/X = owner
 	// Note: no check to see if we're already on CD. we just flat override whatever's there
 	cooldown_duration = cooldown_duration * (1 - Clamp(X.cooldown_reduction_percentage, 0, 0.5))
 	cooldown_timer_id = addtimer(CALLBACK(src, PROC_REF(on_cooldown_end)), cooldown_duration, TIMER_OVERRIDE|TIMER_UNIQUE|TIMER_STOPPABLE)
@@ -359,7 +359,7 @@
 
 // Helper proc to get an action on a target Xeno by type.
 // Used to interact with abilities from the outside
-/proc/get_xeno_action_by_type(mob/living/carbon/Xenomorph/X, var/typepath)
+/proc/get_xeno_action_by_type(mob/living/carbon/xenomorph/X, var/typepath)
 	if (!istype(X))
 		CRASH("xeno_action.dm: get_xeno_action_by_type invoked with non-xeno first argument.")
 
@@ -409,7 +409,7 @@
 	var/action_end_message = ""
 
 /datum/action/xeno_action/active_toggle/can_use_action()
-	var/mob/living/carbon/Xenomorph/xeno = owner
+	var/mob/living/carbon/xenomorph/xeno = owner
 	if(xeno && !xeno.is_mob_incapacitated() && (action_active || xeno.plasma_stored >= plasma_cost))
 		return TRUE
 	return FALSE

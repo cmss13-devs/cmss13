@@ -11,7 +11,7 @@ RCD
 	icon_state = "rcd"
 	opacity = FALSE
 	density = FALSE
-	anchored = 0.0
+	anchored = FALSE
 	flags_atom = FPRINT|CONDUCT
 	force = 10.0
 	throwforce = 10.0
@@ -199,6 +199,6 @@ RCD
 	item_state = "rcdammo"
 	opacity = FALSE
 	density = FALSE
-	anchored = 0.0
+	anchored = FALSE
 
 	matter = list("metal" = 30000,"glass" = 15000)

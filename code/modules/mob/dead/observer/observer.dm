@@ -11,7 +11,7 @@
 	density = FALSE
 	canmove = TRUE
 	blinded = FALSE
-	anchored = 1 //  don't get pushed around
+	anchored = TRUE //  don't get pushed around
 	invisibility = INVISIBILITY_OBSERVER
 	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
 	plane = GHOST_PLANE
@@ -565,11 +565,11 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 				to_chat(A, "<span style='color: red;'>This mob is not located in the game world.</span>")
 
 /mob/dead/observer/memory()
-	set hidden = 1
+	set hidden = TRUE
 	to_chat(src, "<span style='color: red;'>You are dead! You have no mind to store memory!</span>")
 
 /mob/dead/observer/add_memory()
-	set hidden = 1
+	set hidden = TRUE
 	to_chat(src, "<span style='color: red;'>You are dead! You have no mind to store memory!</span>")
 
 /mob/dead/observer/verb/analyze_air()
@@ -820,7 +820,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		return
 
 	var/list/hellhound_mob_list = list() // the list we'll be choosing from
-	for(var/mob/living/carbon/Xenomorph/Hellhound/Hellhound as anything in GLOB.hellhound_list)
+	for(var/mob/living/carbon/xenomorph/hellhound/Hellhound as anything in GLOB.hellhound_list)
 		if(Hellhound.client)
 			continue
 		hellhound_mob_list[Hellhound.name] = Hellhound
@@ -829,7 +829,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	if(!choice)
 		return
 
-	var/mob/living/carbon/Xenomorph/Hellhound/Hellhound = hellhound_mob_list[choice]
+	var/mob/living/carbon/xenomorph/hellhound/Hellhound = hellhound_mob_list[choice]
 	if(!Hellhound || !(Hellhound in GLOB.hellhound_list))
 		return
 

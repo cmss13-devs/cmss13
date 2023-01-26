@@ -25,7 +25,7 @@
 	icon = 'icons/obj/vehicles/vehicles.dmi'
 	icon_state = "cargo_trailer"
 	luminosity = 0
-	anchored = 0
+	anchored = FALSE
 	locked = 0
 	can_buckle = FALSE
 
@@ -211,6 +211,6 @@
 	src.active_engines = active_engines
 
 	if(!lead && !tow)
-		anchored = 0
+		anchored = FALSE
 	else
-		anchored = 1
+		anchored = TRUE

@@ -109,7 +109,7 @@
 		return
 	. = ..()
 
-/turf/closed/wall/almayer/research/containment/wall/attack_alien(mob/living/carbon/Xenomorph/user)
+/turf/closed/wall/almayer/research/containment/wall/attack_alien(mob/living/carbon/xenomorph/user)
 	return
 
 /turf/closed/wall/almayer/research/containment/wall/corner
@@ -331,7 +331,7 @@
 	damage_cap = HEALTH_WALL_REINFORCED//Strong, but only available to Hunters, can can still be blown up or melted by boilers.
 	baseturfs = /turf/open/floor/sandstone/runed
 
-/turf/closed/wall/mineral/sandstone/runed/attack_alien(mob/living/carbon/Xenomorph/user)
+/turf/closed/wall/mineral/sandstone/runed/attack_alien(mob/living/carbon/xenomorph/user)
 	visible_message("[user] scrapes uselessly against [src] with their claws.")
 	return
 
@@ -737,7 +737,7 @@
 	opacity = FALSE
 	alpha = 180
 
-/turf/closed/wall/resin/membrane/can_bombard(var/mob/living/carbon/Xenomorph/X)
+/turf/closed/wall/resin/membrane/can_bombard(var/mob/living/carbon/xenomorph/X)
 	if(!istype(X))
 		return FALSE
 
@@ -904,7 +904,7 @@
 	if(isXeno(L))
 		return COMPONENT_IGNORE_ANCHORED
 
-/obj/structure/alien/movable_wall/proc/allow_xeno_drag(_, var/mob/living/carbon/Xenomorph/X)
+/obj/structure/alien/movable_wall/proc/allow_xeno_drag(_, var/mob/living/carbon/xenomorph/X)
 	return COMPONENT_ALLOW_PULL
 
 /obj/structure/alien/movable_wall/update_icon()
@@ -945,7 +945,7 @@
 	else
 		update_icon()
 
-/obj/structure/alien/movable_wall/attack_alien(mob/living/carbon/Xenomorph/M)
+/obj/structure/alien/movable_wall/attack_alien(mob/living/carbon/xenomorph/M)
 	if(isXenoLarva(M))
 		return FALSE
 
@@ -1026,7 +1026,7 @@
 	var/target_dir = get_dir(mover, T)
 
 	if(isXeno(mover))
-		var/mob/living/carbon/Xenomorph/X = mover
+		var/mob/living/carbon/xenomorph/X = mover
 		if(X.hivenumber != hivenumber || X.throwing)
 			return
 
@@ -1155,7 +1155,7 @@
 	take_damage(tforce)
 
 
-/turf/closed/wall/resin/attack_alien(mob/living/carbon/Xenomorph/M)
+/turf/closed/wall/resin/attack_alien(mob/living/carbon/xenomorph/M)
 	if(SEND_SIGNAL(src, COMSIG_WALL_RESIN_XENO_ATTACK, M) & COMPONENT_CANCEL_XENO_ATTACK)
 		return XENO_NO_DELAY_ACTION
 

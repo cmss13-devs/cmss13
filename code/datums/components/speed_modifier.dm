@@ -71,7 +71,7 @@
 	else
 		L += "Speed Boost: [speed_modifier]/[max_buildup]"
 
-/datum/component/speed_modifier/proc/apply_speed_modifier(var/mob/living/carbon/Xenomorph/X, var/list/speeds)
+/datum/component/speed_modifier/proc/apply_speed_modifier(var/mob/living/carbon/xenomorph/X, var/list/speeds)
 	SIGNAL_HANDLER
 	if(!increase_speed)
 		speeds["speed"] += speed_modifier * 0.075

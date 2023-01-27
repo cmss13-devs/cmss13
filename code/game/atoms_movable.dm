@@ -1,7 +1,7 @@
 /atom/movable
 	layer = OBJ_LAYER
 	var/last_move_dir = null
-	var/anchored = 0
+	var/anchored = FALSE
 	var/drag_delay = 3 //delay (in deciseconds) added to mob's move_delay when pulling it.
 	var/l_move_time = 1
 	var/throwing = 0
@@ -40,7 +40,7 @@
 //Overlays
 /atom/movable/overlay
 	var/atom/master = null
-	anchored = 1
+	anchored = TRUE
 
 /atom/movable/overlay/New()
 	..()
@@ -174,7 +174,7 @@
 /atom/movable/clone/attack_hand(mob/user)
 	return src.mstr.attack_hand(user)
 
-/atom/movable/clone/attack_alien(mob/living/carbon/Xenomorph/M, dam_bonus)
+/atom/movable/clone/attack_alien(mob/living/carbon/xenomorph/M, dam_bonus)
 	return src.mstr.attack_alien(M, dam_bonus)
 
 /atom/movable/clone/attack_animal(mob/living/M as mob)

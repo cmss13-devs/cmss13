@@ -67,7 +67,7 @@
 
 	. = ..()
 
-/obj/effect/alien/resin/special/attack_alien(mob/living/carbon/Xenomorph/M)
+/obj/effect/alien/resin/special/attack_alien(mob/living/carbon/xenomorph/M)
 	// if the xeno can break structures, the structure is designed as breakable by anyone in the hive, or they're a xeno from a different hive, then pass
 	if(M.can_destroy_special() || all_breakable == TRUE || M.hivenumber != linked_hive.hivenumber)
 		return ..()

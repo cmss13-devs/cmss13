@@ -17,7 +17,8 @@
 	attack_verb = list("bashed", "bludgeoned", "thrashed", "whacked")
 	var/dirt_overlay = "shovel_overlay"
 	var/folded = FALSE
-	var/dirt_type = NO_DIRT // 0 for no dirt, 1 for brown dirt, 2 for snow, 3 for big red.
+	/// 0 for no dirt, 1 for brown dirt, 2 for snow, 3 for big red.
+	var/dirt_type = NO_DIRT
 	var/shovelspeed = 30
 	var/dirt_amt = 0
 	var/dirt_amt_per_dig = 6

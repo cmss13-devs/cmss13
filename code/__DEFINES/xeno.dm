@@ -8,7 +8,7 @@
 #define TUNNEL_ENTER_BIG_XENO_DELAY 120
 #define TUNNEL_ENTER_LARVA_DELAY 10
 
-// Defines for action types and click delays used by xenomorph/UnarmedAttack() and attack_alien().
+// Defines for action types and click delays used by xenomorph/unarmedattack() and attack_alien().
 
 /// Full attack delay.
 #define XENO_ATTACK_ACTION 1

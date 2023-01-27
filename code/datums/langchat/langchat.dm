@@ -2,14 +2,14 @@
 /atom/var/langchat_color = "#FFFFFF"
 /atom/var/langchat_styles = ""
 
-/mob/living/carbon/Xenomorph/langchat_color = "#b491c8"
-/mob/living/carbon/Xenomorph/Carrier/langchat_height = 64
-/mob/living/carbon/Xenomorph/Ravager/langchat_height = 64
-/mob/living/carbon/Xenomorph/Queen/langchat_height = 64
-/mob/living/carbon/Xenomorph/Praetorian/langchat_height = 64
-/mob/living/carbon/Xenomorph/Hivelord/langchat_height = 64
-/mob/living/carbon/Xenomorph/Defender/langchat_height = 48
-/mob/living/carbon/Xenomorph/Warrior/langchat_height = 48
+/mob/living/carbon/xenomorph/langchat_color = "#b491c8"
+/mob/living/carbon/xenomorph/carrier/langchat_height = 64
+/mob/living/carbon/xenomorph/ravager/langchat_height = 64
+/mob/living/carbon/xenomorph/queen/langchat_height = 64
+/mob/living/carbon/xenomorph/praetorian/langchat_height = 64
+/mob/living/carbon/xenomorph/hivelord/langchat_height = 64
+/mob/living/carbon/xenomorph/defender/langchat_height = 48
+/mob/living/carbon/xenomorph/warrior/langchat_height = 48
 
 #define LANGCHAT_LONGEST_TEXT 64
 #define LANGCHAT_WIDTH 96

@@ -12,7 +12,7 @@
 	name = "foam"
 	icon_state = "foam"
 	opacity = FALSE
-	anchored = 1
+	anchored = TRUE
 	density = FALSE
 	layer = BELOW_MOB_LAYER
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
@@ -166,7 +166,7 @@
 	icon_state = "metalfoam"
 	density = TRUE
 	opacity = TRUE // changed in New()
-	anchored = 1
+	anchored = TRUE
 	name = "foamed metal"
 	desc = "A lightweight foamed metal wall."
 	health = 45
@@ -210,7 +210,7 @@
 
 	return FALSE
 
-/obj/structure/foamed_metal/attack_alien(var/mob/living/carbon/Xenomorph/X, var/dam_bonus)
+/obj/structure/foamed_metal/attack_alien(var/mob/living/carbon/xenomorph/X, var/dam_bonus)
 	var/damage = (rand(X.melee_damage_lower, X.melee_damage_upper) + dam_bonus)
 
 	//Frenzy bonus

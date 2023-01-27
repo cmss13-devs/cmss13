@@ -149,7 +149,7 @@
 	flags_equip_slot = SLOT_BACK
 	flags_item = ITEM_PREDATOR
 	unacidable = TRUE
-	var/clan_rank_required = CLAN_RANK_LEADER_INT
+	var/clan_rank_required = CLAN_RANK_ELDER_INT
 	var/councillor_override = FALSE
 
 /obj/item/clothing/yautja_cape/Initialize(mapload, var/new_color = "#654321")
@@ -172,7 +172,7 @@
 /obj/item/clothing/yautja_cape/ceremonial
 	name = PRED_YAUTJA_CEREMONIAL_CAPE
 	icon_state = "ceremonialcape"
-	councillor_override = TRUE
+	clan_rank_required = CLAN_RANK_ELDER_INT
 
 /obj/item/clothing/yautja_cape/third
 	name = PRED_YAUTJA_THIRD_CAPE
@@ -182,7 +182,7 @@
 /obj/item/clothing/yautja_cape/half
 	name = PRED_YAUTJA_HALF_CAPE
 	icon_state = "halfcape"
-	clan_rank_required = CLAN_RANK_ELITE_INT
+	clan_rank_required = CLAN_RANK_BLOODED_INT
 
 /obj/item/clothing/yautja_cape/quarter
 	name = PRED_YAUTJA_QUARTER_CAPE
@@ -192,8 +192,7 @@
 /obj/item/clothing/yautja_cape/poncho
 	name = PRED_YAUTJA_PONCHO
 	icon_state = "councilor_poncho"
-	clan_rank_required = CLAN_RANK_ADMIN_INT
-	councillor_override = TRUE
+	clan_rank_required = CLAN_RANK_BLOODED_INT
 
 /obj/item/clothing/shoes/yautja
 	name = "ancient alien greaves"
@@ -324,7 +323,7 @@
 		to_chat(M, SPAN_WARNING("You try to talk into the headset, but just get a horrible shrieking in your ears!"))
 		return
 
-	for(var/mob/living/carbon/Xenomorph/Hellhound/hellhound as anything in GLOB.hellhound_list)
+	for(var/mob/living/carbon/xenomorph/hellhound/hellhound as anything in GLOB.hellhound_list)
 		if(!hellhound.stat)
 			to_chat(hellhound, "\[Radio\]: [M.real_name] [verb], '<B>[message]</b>'.")
 	..()
@@ -599,7 +598,7 @@
 
 /obj/item/explosive/grenade/spawnergrenade/hellhound
 	name = "hellhound caller"
-	spawner_type = /mob/living/carbon/Xenomorph/Hellhound
+	spawner_type = /mob/living/carbon/xenomorph/hellhound
 	deliveryamt = 1
 	desc = "A strange piece of alien technology. It seems to call forth a hellhound."
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
@@ -746,13 +745,13 @@
 	if(ishuman(C))
 		C.emote("pain")
 	if(isXeno(C))
-		var/mob/living/carbon/Xenomorph/X = C
+		var/mob/living/carbon/xenomorph/X = C
 		C.emote("needhelp")
 		X.interference = 100 // Some base interference to give pred time to get some damage in, if it cannot land a single hit during this time pred is cheeks
 		RegisterSignal(X, COMSIG_XENO_PRE_HEAL, PROC_REF(block_heal))
 	message_all_yautja("A hunting trap has caught something in [get_area_name(loc)]!")
 
-/obj/item/hunting_trap/proc/block_heal(mob/living/carbon/Xenomorph/xeno)
+/obj/item/hunting_trap/proc/block_heal(mob/living/carbon/xenomorph/xeno)
 	SIGNAL_HANDLER
 	return COMPONENT_CANCEL_XENO_HEAL
 
@@ -793,7 +792,7 @@
 		log_attack("[key_name(user)] has disarmed \a [src] at [get_location_in_text(user)].")
 	if (trapped_mob)
 		if (isXeno(trapped_mob))
-			var/mob/living/carbon/Xenomorph/X = trapped_mob
+			var/mob/living/carbon/xenomorph/X = trapped_mob
 			UnregisterSignal(X, COMSIG_XENO_PRE_HEAL)
 		trapped_mob = null
 	cleanup_tether()

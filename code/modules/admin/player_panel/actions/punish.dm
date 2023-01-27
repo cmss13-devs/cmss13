@@ -74,7 +74,7 @@
 
 
 /datum/player_action/reset_xeno_name/act(var/client/user, var/mob/target, var/list/params)
-	var/mob/living/carbon/Xenomorph/X = target
+	var/mob/living/carbon/xenomorph/X = target
 	if(!isXeno(X))
 		to_chat(user, SPAN_WARNING("[target.name] is not a xeno!"))
 		return
@@ -150,7 +150,7 @@
 
 	targetClient.prefs.save_preferences()
 
-	var/mob/living/carbon/Xenomorph/X = target
+	var/mob/living/carbon/xenomorph/X = target
 	X.generate_name()
 
 /datum/player_action/reset_human_name
@@ -204,6 +204,7 @@
 		return
 
 	target_mob.change_real_name(target_mob, new_name)
+	GLOB.data_core.manifest_modify(new_name, WEAKREF(target_mob))
 	if(ishuman(target_mob))
 		var/mob/living/carbon/human/target_human = target_mob
 		if(target_human.wear_id && target_human.wear_id.registered_ref == WEAKREF(target_human))

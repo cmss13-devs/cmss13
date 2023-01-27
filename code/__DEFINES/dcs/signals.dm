@@ -20,10 +20,10 @@
 #define COMSIG_GLOB_DS_FIRST_LANDED "!ds_first_landed"
 ///from /mob/living/carbon/human/death
 #define COMSIG_GLOB_MARINE_DEATH "!marine_death"
-///from /mob/living/carbon/Xenomorph/death
+///from /mob/living/carbon/xenomorph/death
 #define COMSIG_GLOB_XENO_DEATH "!xeno_death"
 
-///from /mob/living/carbon/Xenomorph/Initialize
+///from /mob/living/carbon/xenomorph/initialize
 #define COMSIG_GLOB_XENO_SPAWN "!xeno_spawn"
 
 #define COMSIG_GLOB_REMOVE_VOTE_BUTTON "!remove_vote_button"
@@ -37,6 +37,11 @@
 
 ///from /proc/set_security_level
 #define COMSIG_GLOB_SECURITY_LEVEL_CHANGED "!security_level_changed"
+
+/// Called by (/datum/round_event_control/RunEvent).
+#define COMSIG_GLOB_RANDOM_EVENT "!random_event"
+	/// Do not allow this random event to continue.
+	#define CANCEL_RANDOM_EVENT (1<<0)
 
 //////////////////////////////////////////////////////////////////
 
@@ -153,7 +158,7 @@
 	#define COMPONENT_CANCEL_SET_FACE_DIR (1<<0)
 
 /// From /obj/effect/alien/weeds/Crossed(atom/movable/AM)
-#define COMSIG_MOB_WEEDS_CROSSED "mob_weeds_crossed"
+#define COMSIG_MOB_WEED_SLOWDOWN "mob_weeds_slowdown"
 
 #define COMSIG_MOB_TAKE_DAMAGE "mob_take_damage"
 #define COMSIG_XENO_TAKE_DAMAGE "xeno_take_damage"
@@ -251,7 +256,7 @@
 
 #define COMSIG_HUMAN_BONEBREAK_PROBABILITY "human_bonebreak_probability"
 
-/// from /mob/living/carbon/Xenomorph/attack_alien()
+/// from /mob/living/carbon/xenomorph/attack_alien()
 #define COMSIG_XENO_ALIEN_ATTACK "xeno_alien_attack"
 
 #define COMSIG_XENO_OVERWATCH_XENO "xeno_overwatch_xeno"
@@ -264,38 +269,38 @@
 /// From ../xeno_action/activable/xeno_spit/use_ability
 #define COMSIG_XENO_POST_SPIT "xeno_spit"
 
-/// From /mob/living/carbon/Xenomorph/revive()
+/// From /mob/living/carbon/xenomorph/revive()
 #define COMSIG_XENO_REVIVED "xeno_revived"
 
 // From /obj/structure/safe/Topic()
 #define COMSIG_SAFE_OPENED "safe_opened"
 
-/// from /mob/living/carbon/Xenomorph/bullet_act(): (list/damagedata)
+/// from /mob/living/carbon/xenomorph/bullet_act(): (list/damagedata)
 #define COMSIG_XENO_PRE_CALCULATE_ARMOURED_DAMAGE_PROJECTILE "xeno_pre_calculate_armoured_damage_projectile"
 
-// from /mob/living/carbon/Xenomorph/proc/gain_health()
+// from /mob/living/carbon/xenomorph/proc/gain_health()
 #define COMSIG_XENO_ON_HEAL "xeno_on_heal"
 #define COMSIG_XENO_ON_HEAL_WOUNDS "xeno_on_heal_wounds"
 
-/// from /mob/living/carbon/Xenomorph/apply_armoured_damage(): (list/damagedata)
+/// from /mob/living/carbon/xenomorph/apply_armoured_damage(): (list/damagedata)
 #define COMSIG_XENO_PRE_APPLY_ARMOURED_DAMAGE "xeno_pre_apply_armoured_damage"
 
-/// From /mob/living/carbon/Xenomorph/bullet_act
+/// From /mob/living/carbon/xenomorph/bullet_act
 #define COMSIG_XENO_BULLET_ACT "xeno_bullet_act"
 	//#define COMPONENT_CANCEL_BULLET_ACT (1<<0) already defined
 
-/// from /mob/living/carbon/Xenomorph/get_status_tab_items(): (list/statdata)
+/// from /mob/living/carbon/xenomorph/get_status_tab_items(): (list/statdata)
 #define COMSIG_XENO_APPEND_TO_STAT "xeno_append_to_stat"
 
-/// from /mob/living/carbon/Xenomorph/movement_delay()
+/// from /mob/living/carbon/xenomorph/movement_delay()
 #define COMSIG_XENO_MOVEMENT_DELAY "xeno_movement_delay"
 
-/// From /mob/living/carbon/Xenomorph/Queen/proc/mount_ovipositor
+/// From /mob/living/carbon/xenomorph/queen/proc/mount_ovipositor
 #define COMSIG_QUEEN_MOUNT_OVIPOSITOR "queen_mount_ovipositor"
-/// From /mob/living/carbon/Xenomorph/Queen/proc/dismount_ovipositor(): (instant_dismount)
+/// From /mob/living/carbon/xenomorph/queen/proc/dismount_ovipositor(): (instant_dismount)
 #define COMSIG_QUEEN_DISMOUNT_OVIPOSITOR "queen_dismount_ovipositor"
 
-/// From /turf/closed/wall/resin/attack_alien(): (mob/living/carbon/Xenomorph/X)
+/// From /turf/closed/wall/resin/attack_alien(): (mob/living/carbon/xenomorph/X)
 #define COMSIG_WALL_RESIN_XENO_ATTACK "wall_resin_attack_alien"
 
 #define COMSIG_HUMAN_XENO_ATTACK "human_attack_alien"
@@ -388,7 +393,7 @@
 #define COMSIG_ATTEMPT_MOB_PULL "attempt_mob_pull"
 	#define COMPONENT_CANCEL_MOB_PULL (1<<0)
 
-///from /mob/living/carbon/Xenomorph/start_pulling(): (mob/living/carbon/Xenomorph/X)
+///from /mob/living/carbon/xenomorph/start_pulling(): (mob/living/carbon/xenomorph/X)
 #define COMSIG_MOVABLE_XENO_START_PULLING "movable_xeno_start_pulling"
 	#define COMPONENT_ALLOW_PULL (1<<0)
 
@@ -469,9 +474,9 @@
 
 /// From /datum/action/xeno_action/proc/use_ability_wrapper(): (mob/owner)
 #define COMSIG_XENO_ACTION_USED "xeno_action_used"
-/// From /mob/living/carbon/Xenomorph/proc/check_blood_splash()
+/// From /mob/living/carbon/xenomorph/proc/check_blood_splash()
 #define COMSIG_XENO_DEAL_ACID_DAMAGE "xeno_deal_acid_damage"
-/// From /mob/living/carbon/Xenomorph/proc/recalculate_speed()
+/// From /mob/living/carbon/xenomorph/proc/recalculate_speed()
 #define COMSIG_XENO_RECALCULATE_SPEED "xeno_recalculate_speed"
 
 // shuttle
@@ -535,3 +540,9 @@
 
 // Used for smothering fires upon weather event start/stop
 #define COMSIG_GLOB_WEATHER_CHANGE "!weather_event_changed"
+
+// sentry laptop
+#define COMSIG_SENTRY_ENGAGED_ALERT "signal_sentry_engaged"
+#define COMSIG_SENTRY_LOW_AMMO_ALERT "signal_sentry_low_ammo"
+#define COMSIG_SENTRY_EMPTY_AMMO_ALERT "signal_sentry_empty_ammo"
+#define COMSIG_SENTRY_DESTROYED_ALERT "signal_sentry_destroyed"

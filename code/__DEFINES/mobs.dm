@@ -394,13 +394,13 @@ var/list/default_onmob_icons = list(
 		)
 
 var/list/default_xeno_onmob_icons = list(
-		/mob/living/carbon/Xenomorph/Runner = 'icons/mob/xenos/onmob/runner.dmi',
-		/mob/living/carbon/Xenomorph/Praetorian = 'icons/mob/xenos/onmob/praetorian.dmi',
-		/mob/living/carbon/Xenomorph/Drone = 'icons/mob/xenos/onmob/drone.dmi',
-		/mob/living/carbon/Xenomorph/Warrior = 'icons/mob/xenos/onmob/warrior.dmi',
-		/mob/living/carbon/Xenomorph/Defender = 'icons/mob/xenos/onmob/defender.dmi',
-		/mob/living/carbon/Xenomorph/Sentinel = 'icons/mob/xenos/onmob/sentinel.dmi',
-		/mob/living/carbon/Xenomorph/Spitter = 'icons/mob/xenos/onmob/spitter.dmi'
+		/mob/living/carbon/xenomorph/runner = 'icons/mob/xenos/onmob/runner.dmi',
+		/mob/living/carbon/xenomorph/praetorian = 'icons/mob/xenos/onmob/praetorian.dmi',
+		/mob/living/carbon/xenomorph/drone = 'icons/mob/xenos/onmob/drone.dmi',
+		/mob/living/carbon/xenomorph/warrior = 'icons/mob/xenos/onmob/warrior.dmi',
+		/mob/living/carbon/xenomorph/defender = 'icons/mob/xenos/onmob/defender.dmi',
+		/mob/living/carbon/xenomorph/sentinel = 'icons/mob/xenos/onmob/sentinel.dmi',
+		/mob/living/carbon/xenomorph/spitter = 'icons/mob/xenos/onmob/spitter.dmi'
 		)
 
 // species names

@@ -31,6 +31,9 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 	var/timeout_timer_id
 	var/timeout_duration = 30 SECONDS
 
+	var/network_receive = FACTION_MARINE
+	var/list/networks_transmit = list(FACTION_MARINE)
+
 /obj/structure/transmitter/hidden
 	callable = FALSE
 
@@ -72,22 +75,24 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 	|| !T.enabled\
 )
 
-/proc/get_transmitters()
+/obj/structure/transmitter/proc/get_transmitters()
 	var/list/phone_list = list()
 
-	for(var/t in GLOB.transmitters)
-		var/obj/structure/transmitter/T = t
-		if(TRANSMITTER_UNAVAILABLE(T) || !T.callable) // Phone not available
+	for(var/possible_phone in GLOB.transmitters)
+		var/obj/structure/transmitter/target_phone = possible_phone
+		if(TRANSMITTER_UNAVAILABLE(target_phone) || !target_phone.callable) // Phone not available
+			continue
+		if(!(target_phone.network_receive in networks_transmit))
 			continue
 
-		var/id = T.phone_id
+		var/id = target_phone.phone_id
 		var/num_id = 1
 		while(id in phone_list)
-			id = "[T.phone_id] [num_id]"
+			id = "[target_phone.phone_id] [num_id]"
 			num_id++
 
-		T.phone_id = id
-		phone_list[id] = T
+		target_phone.phone_id = id
+		phone_list[id] = target_phone
 
 	return phone_list
 
@@ -532,6 +537,15 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 	UnregisterSignal(attached_to, COMSIG_MOVABLE_MOVED)
 	reset_tether()
 
+
+/obj/structure/transmitter/colony_net
+	network_receive = FACTION_COLONIST
+	networks_transmit = list(FACTION_COLONIST)
+
+/obj/structure/transmitter/colony_net/rotary
+	name = "rotary telephone"
+	icon_state = "rotary_phone"
+	desc = "The finger plate is a little stiff."
 
 //rotary desk phones (need a touch tone handset at some point)
 /obj/structure/transmitter/rotary

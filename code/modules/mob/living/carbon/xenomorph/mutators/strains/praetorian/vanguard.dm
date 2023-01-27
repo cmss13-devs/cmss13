@@ -26,7 +26,7 @@
 	if (. == 0)
 		return
 
-	var/mob/living/carbon/Xenomorph/Praetorian/praetorian = mutator_set.xeno
+	var/mob/living/carbon/xenomorph/praetorian/praetorian = mutator_set.xeno
 	praetorian.speed_modifier += XENO_SPEED_FASTMOD_TIER_3
 	praetorian.health_modifier -= XENO_HEALTH_MOD_MED
 	praetorian.claw_type = CLAW_TYPE_SHARP
@@ -80,7 +80,7 @@
 	return
 
 /datum/behavior_delegate/praetorian_vanguard/proc/regen_shield()
-	var/mob/living/carbon/Xenomorph/praetorian = bound_xeno
+	var/mob/living/carbon/xenomorph/praetorian = bound_xeno
 	var/datum/xeno_shield/vanguard/found_shield = null
 	last_shield_regen_time = world.time
 	for (var/datum/xeno_shield/vanguard/vanguard_shield in praetorian.xeno_shields)

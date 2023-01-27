@@ -28,7 +28,7 @@
 	if (. == 0)
 		return
 
-	var/mob/living/carbon/Xenomorph/Praetorian/praetorian = mutator_set.xeno
+	var/mob/living/carbon/xenomorph/praetorian/praetorian = mutator_set.xeno
 
 	praetorian.damage_modifier -= XENO_DAMAGE_MOD_SMALL
 	praetorian.explosivearmor_modifier += XENO_EXPOSIVEARMOR_MOD_SMALL

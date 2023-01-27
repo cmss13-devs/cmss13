@@ -5,7 +5,7 @@
 	name = "janicart"
 	icon = 'icons/obj/vehicles/vehicles.dmi'
 	icon_state = "pussywagon"
-	anchored = 0
+	anchored = FALSE
 	density = TRUE
 	flags_atom = OPENCONTAINER
 	buildstacktype = null //can't be disassembled and doesn't drop anything when destroyed

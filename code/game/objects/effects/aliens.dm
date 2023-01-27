@@ -16,7 +16,7 @@
 	icon_state = "splatter"
 	density = FALSE
 	opacity = FALSE
-	anchored = 1
+	anchored = TRUE
 
 /obj/effect/xenomorph/splatter/New() //Self-deletes after creation & animation
 	..()
@@ -29,7 +29,7 @@
 	icon_state = "acidblob"
 	density = FALSE
 	opacity = FALSE
-	anchored = 1
+	anchored = TRUE
 
 /obj/effect/xenomorph/splatterblob/New() //Self-deletes after creation & animation
 	..()
@@ -42,7 +42,7 @@
 	icon_state = "acid2"
 	density = FALSE
 	opacity = FALSE
-	anchored = 1
+	anchored = TRUE
 	layer = ABOVE_OBJ_LAYER
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	var/datum/cause_data/cause_data
@@ -150,7 +150,7 @@
 			return
 		apply_spray(AM)
 	else if (isXeno(AM))
-		var/mob/living/carbon/Xenomorph/X = AM
+		var/mob/living/carbon/xenomorph/X = AM
 		if (X.hivenumber != hivenumber)
 			apply_spray(AM)
 	else if(isVehicleMultitile(AM))
@@ -170,7 +170,7 @@
 			H.apply_armoured_damage(damage_amount * 0.4, ARMOR_BIO, BURN, "r_foot")
 
 		else if (isXeno(H))
-			var/mob/living/carbon/Xenomorph/X = H
+			var/mob/living/carbon/xenomorph/X = H
 			if (X.mob_size < MOB_SIZE_BIG && should_stun)
 				X.KnockDown(stun_duration)
 			X.emote("hiss")
@@ -285,7 +285,7 @@
 	icon_state = "acid_normal"
 	density = FALSE
 	opacity = FALSE
-	anchored = 1
+	anchored = TRUE
 	unacidable = TRUE
 	var/atom/acid_t
 	var/ticks = 0
@@ -409,7 +409,7 @@
 	var/smoke_duration = 9
 	var/smoke_type = /obj/effect/particle_effect/smoke/xeno_burn
 
-	var/mob/living/carbon/Xenomorph/source_xeno = null
+	var/mob/living/carbon/xenomorph/source_xeno = null
 
 /obj/effect/xenomorph/boiler_bombard/New(loc, source_xeno = null)
 	// Hopefully we don't get insantiated in these places anyway..
@@ -437,7 +437,7 @@
 			if(!source_xeno)
 				continue
 
-			var/mob/living/carbon/Xenomorph/X = H
+			var/mob/living/carbon/xenomorph/X = H
 			if (source_xeno.can_not_harm(X))
 				continue
 
@@ -498,11 +498,11 @@
 
 	var/damage = 20
 	var/message = null
-	var/mob/living/carbon/Xenomorph/linked_xeno = null
+	var/mob/living/carbon/xenomorph/linked_xeno = null
 	var/hivenumber = XENO_HIVE_NORMAL
 	var/empowered = FALSE
 
-/obj/effect/xenomorph/acid_damage_delay/New(loc, damage = 20, delay = 10, empowered = FALSE, message = null, mob/living/carbon/Xenomorph/linked_xeno = null)
+/obj/effect/xenomorph/acid_damage_delay/New(loc, damage = 20, delay = 10, empowered = FALSE, message = null, mob/living/carbon/xenomorph/linked_xeno = null)
 	..(loc)
 
 	addtimer(CALLBACK(src, PROC_REF(die)), delay)

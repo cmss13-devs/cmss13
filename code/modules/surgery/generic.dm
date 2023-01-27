@@ -601,7 +601,7 @@ If fiddling with, uncomment /mob/living/attackby surgery code also. It's pointle
 	steps = list(/datum/surgery_step/test_incision)
 	pain_reduction_required = NONE //Xenos cannot process painkillers.
 	requires_bodypart = FALSE //Xenos have no limbs.
-	target_mobtypes = list(/mob/living/carbon/Xenomorph, /mob/living/simple_animal/cat/Jones)
+	target_mobtypes = list(/mob/living/carbon/xenomorph, /mob/living/simple_animal/cat/Jones)
 	lying_required = FALSE
 
 /datum/surgery_step/test_incision
@@ -705,7 +705,7 @@ If fiddling with, uncomment /mob/living/attackby surgery code also. It's pointle
 	self_operable = TRUE
 	pain_reduction_required = NONE //Xenos cannot process painkillers.
 	requires_bodypart = FALSE //Xenos have no limbs.
-	target_mobtypes = list(/mob/living/carbon/Xenomorph, /mob/living/simple_animal/cat/Jones)
+	target_mobtypes = list(/mob/living/carbon/xenomorph, /mob/living/simple_animal/cat/Jones)
 	lying_required = FALSE
 
 //------------------------------------

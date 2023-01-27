@@ -10,7 +10,7 @@
 	icon_state = "bullet"
 	density = FALSE
 	unacidable = TRUE
-	anchored = 1 //You will not have me, space wind!
+	anchored = TRUE //You will not have me, space wind!
 	flags_atom = NOINTERACT //No real need for this, but whatever. Maybe this flag will do something useful in the future.
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	invisibility = 100 // We want this thing to be invisible when it drops on a turf because it will be on the user's turf. We then want to make it visible as it travels.
@@ -413,7 +413,7 @@
 
 		// If we are a xeno shooting something
 		if (istype(ammo, /datum/ammo/xeno) && isXeno(firer) && ammo.apply_delegate)
-			var/mob/living/carbon/Xenomorph/X = firer
+			var/mob/living/carbon/xenomorph/X = firer
 			if (X.behavior_delegate)
 				var/datum/behavior_delegate/MD = X.behavior_delegate
 				MD.ranged_attack_additional_effects_target(O)
@@ -484,15 +484,15 @@
 
 				// If we are a xeno shooting something
 				if (istype(ammo, /datum/ammo/xeno) && isXeno(firer) && L.stat != DEAD && ammo.apply_delegate)
-					var/mob/living/carbon/Xenomorph/X = firer
+					var/mob/living/carbon/xenomorph/X = firer
 					if (X.behavior_delegate)
 						var/datum/behavior_delegate/MD = X.behavior_delegate
 						MD.ranged_attack_additional_effects_target(L)
 						MD.ranged_attack_additional_effects_self(L)
 
 				// If the thing we're hitting is a Xeno
-				if (istype(L, /mob/living/carbon/Xenomorph))
-					var/mob/living/carbon/Xenomorph/X = L
+				if (istype(L, /mob/living/carbon/xenomorph))
+					var/mob/living/carbon/xenomorph/X = L
 					if (X.behavior_delegate)
 						X.behavior_delegate.on_hitby_projectile(ammo)
 
@@ -782,7 +782,7 @@
 				else
 					return FALSE
 
-/mob/living/carbon/Xenomorph/get_projectile_hit_chance(obj/item/projectile/P)
+/mob/living/carbon/xenomorph/get_projectile_hit_chance(obj/item/projectile/P)
 	. = ..()
 	if(.)
 		var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags
@@ -791,7 +791,7 @@
 			return FALSE
 
 		if(ammo_flags & AMMO_SKIPS_ALIENS)
-			var/mob/living/carbon/Xenomorph/X = P.firer
+			var/mob/living/carbon/xenomorph/X = P.firer
 			if(!istype(X))
 				return FALSE
 			if(X.hivenumber == hivenumber)
@@ -853,7 +853,7 @@
 		return
 
 	if(isXeno(P.firer))
-		var/mob/living/carbon/Xenomorph/X = P.firer
+		var/mob/living/carbon/xenomorph/X = P.firer
 		if(X.can_not_harm(src))
 			bullet_ping(P)
 			return -1
@@ -961,7 +961,7 @@
 	SEND_SIGNAL(P, COMSIG_POST_BULLET_ACT_HUMAN, src, damage, damage_result)
 
 //Deal with xeno bullets.
-/mob/living/carbon/Xenomorph/bullet_act(obj/item/projectile/P)
+/mob/living/carbon/xenomorph/bullet_act(obj/item/projectile/P)
 	if(!P || !istype(P))
 		return
 
@@ -975,7 +975,7 @@
 		return
 
 	if(isXeno(P.firer))
-		var/mob/living/carbon/Xenomorph/X = P.firer
+		var/mob/living/carbon/xenomorph/X = P.firer
 		if(X.can_not_harm(src))
 			bullet_ping(P)
 			return -1

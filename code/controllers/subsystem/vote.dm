@@ -231,7 +231,7 @@ SUBSYSTEM_DEF(vote)
 
 		carryover[i] += vote.total_votes
 
-/datum/controller/subsystem/vote/proc/initiate_vote(vote_type, initiator_key, datum/callback/on_end)
+/datum/controller/subsystem/vote/proc/initiate_vote(vote_type, initiator_key, datum/callback/on_end, send_clients_vote = FALSE)
 	var/vote_sound = 'sound/ambience/alarm4.ogg'
 	var/vote_sound_vol = 5
 	if(!mode)
@@ -355,6 +355,8 @@ SUBSYSTEM_DEF(vote)
 			if(question)
 				V.set_name("Vote: [question]")
 			C.player_details.player_actions += V
+			if(send_clients_vote)
+				C.mob.vote()
 
 		RegisterSignal(SSdcs, COMSIG_GLOB_CLIENT_LOGIN, PROC_REF(handle_client_joining))
 		SStgui.update_uis(src)

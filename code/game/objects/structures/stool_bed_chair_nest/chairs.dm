@@ -68,7 +68,7 @@
 			flags_can_pass_all_temp |= PASS_OVER
 			projectile_coverage = PROJECTILE_COVERAGE_MEDIUM
 
-/obj/structure/bed/chair/attack_alien(mob/living/carbon/Xenomorph/M)
+/obj/structure/bed/chair/attack_alien(mob/living/carbon/xenomorph/M)
 	. = ..()
 	if(stacked_size)
 		stack_collapse()
@@ -284,7 +284,7 @@
 	desc = "A simple chair permanently attached to the floor. Covered with a squeaky and way too hard faux-leather, unevenly painted in Delta squad blue. This chair is most likely to be the first to fight and first to die."
 
 /obj/structure/bed/chair/office
-	anchored = 0
+	anchored = FALSE
 	drag_delay = 1 //Pulling something on wheels is easy
 	picked_up_item = null
 
@@ -314,18 +314,18 @@
 
 /obj/structure/bed/chair/office/light
 	icon_state = "officechair_white"
-	anchored = 0
+	anchored = FALSE
 
 /obj/structure/bed/chair/office/dark
 	icon_state = "officechair_dark"
-	anchored = 0
+	anchored = FALSE
 
 /obj/structure/bed/chair/dropship
 	picked_up_item = null
 
 /obj/structure/bed/chair/dropship/pilot
 	icon_state = "pilot_chair"
-	anchored = 1
+	anchored = TRUE
 	name = "pilot's chair"
 	desc = "A specially designed chair for pilots to sit in."
 

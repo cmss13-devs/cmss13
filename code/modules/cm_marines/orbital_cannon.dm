@@ -10,7 +10,7 @@ var/list/ob_type_fuel_requirements
 	icon = 'icons/effects/128x128.dmi'
 	icon_state = "OBC_unloaded"
 	density = TRUE
-	anchored = 1
+	anchored = TRUE
 	layer = LADDER_LAYER
 	bound_width = 128
 	bound_height = 64
@@ -227,7 +227,7 @@ var/list/ob_type_fuel_requirements
 	icon = 'icons/obj/structures/props/almayer_props64.dmi'
 	icon_state = "cannon_tray"
 	density = TRUE
-	anchored = 1
+	anchored = TRUE
 	throwpass = TRUE
 	climbable = TRUE
 	layer = LADDER_LAYER + 0.01
@@ -314,7 +314,7 @@ var/list/ob_type_fuel_requirements
 /obj/structure/ob_ammo
 	name = "theoretical ob ammo"
 	density = TRUE
-	anchored = 1
+	anchored = TRUE
 	throwpass = TRUE
 	climbable = TRUE
 	unacidable = TRUE // issue: being used for defences, solution: abomb

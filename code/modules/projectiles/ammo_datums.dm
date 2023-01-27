@@ -1232,7 +1232,6 @@
 	if(!M || M == P.firer) return
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
-		M.emote("scream")
 		shake_camera(H, 2, 1)
 
 /datum/ammo/bullet/shotgun/rubberbuck
@@ -1255,10 +1254,6 @@
 	handful_state = "rubberbuck_shell"
 	multiple_handful_name = TRUE
 
-/datum/ammo/bullet/shotgun/rubberbuck/on_hit_mob(mob/M)
-	if(ishuman(M))
-		M.emote("scream")
-
 /datum/ammo/bullet/shotgun/rubberbuck_spread
 	name = "additional rubber buckshot"
 	icon_state = "rubber_pellets"
@@ -1272,10 +1267,6 @@
 	stamina_damage = 45
 	shell_speed = AMMO_SPEED_TIER_2
 	scatter = SCATTER_AMOUNT_TIER_1
-
-/datum/ammo/bullet/shotgun/rubberbuck_spread/on_hit_mob(mob/M)
-	if(ishuman(M))
-		M.emote("scream")
 
 /datum/ammo/bullet/shotgun/incendiary
 	name = "incendiary slug"

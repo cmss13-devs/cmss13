@@ -27,7 +27,7 @@
 /obj/structure/machinery/medical_pod/attack_hand(mob/living/user)
 	eject()
 
-/obj/structure/machinery/medical_pod/attack_alien(mob/living/carbon/Xenomorph/M)
+/obj/structure/machinery/medical_pod/attack_alien(mob/living/carbon/xenomorph/M)
 	eject()
 
 /obj/structure/machinery/medical_pod/update_icon()

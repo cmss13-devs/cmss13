@@ -87,6 +87,8 @@ var/VehicleGearConsole
 
 //Spawnpoints.
 var/list/fallen_list = list()
+/// This is for dogtags placed on crosses- they will show up at the end-round memorial.
+var/list/fallen_list_cross = list()
 var/list/cardinal = list(NORTH, SOUTH, EAST, WEST)
 var/list/diagonals = list(NORTHEAST, NORTHWEST, SOUTHEAST, SOUTHWEST)
 var/list/alldirs = list(NORTH, SOUTH, EAST, WEST, NORTHEAST, NORTHWEST, SOUTHEAST, SOUTHWEST)

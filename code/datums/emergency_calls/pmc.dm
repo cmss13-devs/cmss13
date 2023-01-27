@@ -9,8 +9,8 @@
 	item_spawn = /obj/effect/landmark/ert_spawns/distress_pmc/item
 
 	max_smartgunners = 1
-	max_medics = 1
-	max_heavies = 2
+	max_medics = 2
+	max_heavies = 1
 	var/max_synths = 1
 	var/synths = 0
 

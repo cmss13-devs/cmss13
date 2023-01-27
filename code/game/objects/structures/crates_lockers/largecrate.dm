@@ -4,7 +4,7 @@
 	icon = 'icons/obj/structures/crates.dmi'
 	icon_state = "densecrate"
 	density = TRUE
-	anchored = 0
+	anchored = FALSE
 	var/parts_type = /obj/item/stack/sheet/wood
 	var/unpacking_sound = 'sound/effects/woodhit.ogg'
 
@@ -40,7 +40,7 @@
 	else
 		return attack_hand(user)
 
-/obj/structure/largecrate/attack_alien(mob/living/carbon/Xenomorph/M)
+/obj/structure/largecrate/attack_alien(mob/living/carbon/xenomorph/M)
 	M.animation_attack_on(src)
 	unpack()
 	M.visible_message(SPAN_DANGER("[M] smashes [src] apart!"), \

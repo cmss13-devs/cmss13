@@ -8,7 +8,7 @@
 	icon = 'icons/mob/xenos/weeds.dmi'
 	icon_state = "constructionnode"
 	density = FALSE
-	anchored = 1
+	anchored = TRUE
 	health = 200
 	block_range = 1
 
@@ -45,7 +45,7 @@
 		var/message = "A [template.name] construction is designated here. It requires [template.crystals_required - template.crystals_stored] more [MATERIAL_CRYSTAL]."
 		. += message
 
-/obj/effect/alien/resin/construction/attack_alien(mob/living/carbon/Xenomorph/M)
+/obj/effect/alien/resin/construction/attack_alien(mob/living/carbon/xenomorph/M)
 	if(!linked_hive || (linked_hive && (M.hivenumber != linked_hive.hivenumber)) || (M.a_intent == INTENT_HARM && M.can_destroy_special()))
 		return ..()
 	if(!template)

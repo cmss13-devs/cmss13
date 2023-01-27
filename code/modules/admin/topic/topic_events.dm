@@ -37,6 +37,11 @@
 			else
 				communications_blackout(1)
 			message_staff("[key_name_admin(usr)] triggered a communications blackout.")
+		if("destructible_terrain")
+			if(tgui_alert(usr, "Are you sure you want to toggle all ground-level terrain destructible?", "Confirmation", list("Yes", "No"), 20 SECONDS) != "Yes")
+				return
+			toggle_destructible_terrain()
+			message_staff("[key_name_admin(usr)] toggled destructible terrain.")
 		if("blackout")
 			if(alert(usr, "Are you sure you want to do this?", "Confirmation", "Yes", "No") != "Yes")
 				return
@@ -208,7 +213,7 @@
 		var/caste_type = RoleAuthority.get_caste_by_text(xeno_caste)
 
 		var/list/xenos = list()
-		var/mob/living/carbon/Xenomorph/X
+		var/mob/living/carbon/xenomorph/X
 		for(var/i = 0 to xenos_to_spawn - 1)
 			var/turf/to_spawn_at = pick(turfs)
 			X = new caste_type(to_spawn_at, null, xeno_hive)

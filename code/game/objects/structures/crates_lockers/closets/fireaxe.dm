@@ -6,7 +6,7 @@
 	icon_state = "fireaxe1000"
 	icon_closed = "fireaxe1000"
 	icon_opened = "fireaxe1100"
-	anchored = 1
+	anchored = TRUE
 	density = FALSE
 	var/localopened = 0 //Setting this to keep it from behaviouring like a normal closet and obstructing movement in the map. -Agouri
 	opened = 1
@@ -157,7 +157,7 @@
 	if (isrobot(usr))
 		return
 
-	if (istype(usr, /mob/living/carbon/Xenomorph))
+	if (istype(usr, /mob/living/carbon/xenomorph))
 		return
 
 	if (localopened)

@@ -106,7 +106,8 @@ SUBSYSTEM_DEF(ticker)
 						/datum/controller/subsystem/vote/proc/initiate_vote,
 						"gamemode",
 						"SERVER",
-						CALLBACK(src, PROC_REF(handle_map_reboot))
+						CALLBACK(src, PROC_REF(handle_map_reboot)),
+						TRUE
 					), 3 SECONDS)
 				else
 					handle_map_reboot()
@@ -158,7 +159,8 @@ SUBSYSTEM_DEF(ticker)
 		/datum/controller/subsystem/vote/proc/initiate_vote,
 		"groundmap",
 		"SERVER",
-		CALLBACK(src, PROC_REF(Reboot))
+		CALLBACK(src, PROC_REF(Reboot)),
+		TRUE
 	), 3 SECONDS)
 
 /datum/controller/subsystem/ticker/proc/setup()

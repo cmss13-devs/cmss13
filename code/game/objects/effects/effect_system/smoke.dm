@@ -260,7 +260,7 @@
 	time_to_live = 12
 	color = "#86B028" //Mostly green?
 	anchored = TRUE
-	spread_speed = 7
+	spread_speed = 8
 	smokeranking = SMOKE_RANK_BOILER
 
 	var/hivenumber = XENO_HIVE_NORMAL
@@ -336,9 +336,11 @@
 /obj/effect/particle_effect/smoke/xeno_weak
 	time_to_live = 12
 	color = "#ffbf58" //Mustard orange?
-	spread_speed = 7
+	spread_speed = 10
 	amount = 1 //Amount depends on Boiler upgrade!
 	smokeranking = SMOKE_RANK_BOILER
+	neuro_dose = 5 // How much neuro is dosed per tick
+	var/msg = "Your skin tingles as the gas consumes you!" // Message given per tick. Changes depending on which species is hit.
 
 //No effect when merely entering the smoke turf, for balance reasons
 /obj/effect/particle_effect/smoke/xeno_weak/Crossed(mob/living/carbon/Moob as mob)
@@ -348,7 +350,9 @@
 	..()
 	if(isXeno(Moob))
 		return
-	if(isYautja(Moob) && prob(75))
+	if(isYautja(Moob))
+		neuro_dose = neuro_dose*2 // Yautja get half effects
+		msg = "You resist the tingling smoke's effects!"
 		return
 	if(Moob.stat == DEAD)
 		return
@@ -363,21 +367,24 @@
 	Moob.apply_effect(max(Moob.eye_blurry, effect_amt), EYE_BLUR)
 	Moob.apply_damage(5, OXY) //  Base "I can't breath oxyloss" Slightly more longer lasting then stamina damage
 // new shit
-	var/datum/effects/neurotoxin/neuro_effect = locate() in Moob.effects_list
-	if(!neuro_effect)
-		neuro_effect = new /datum/effects/neurotoxin(Moob)
-		neuro_effect.strength = effect_amt
-	neuro_effect.duration += 5
-
-	if(Moob.coughedtime != 1 && !Moob.stat) //Coughing/gasping
-		Moob.coughedtime = 1
-		if(prob(50))
-			Moob.Slow(1)
-			Moob.emote("cough")
-		else
-			Moob.emote("gasp")
-		addtimer(VARSET_CALLBACK(Moob, coughedtime, 0), 1.5 SECONDS)
-	to_chat(Moob, SPAN_DANGER("Your skin tingles as the gas consumes you!"))
+	if(!isSynth(Moob))
+		var/datum/effects/neurotoxin/neuro_effect = locate() in Moob.effects_list
+		if(!neuro_effect)
+			neuro_effect = new /datum/effects/neurotoxin(Moob)
+			neuro_effect.strength = effect_amt
+		neuro_effect.duration += neuro_dose
+		if(Moob.coughedtime != 1 && !Moob.stat) //Coughing/gasping
+			Moob.coughedtime = 1
+			if(prob(50))
+				Moob.Slow(1)
+				Moob.emote("cough")
+			else
+				Moob.emote("gasp")
+			addtimer(VARSET_CALLBACK(Moob, coughedtime, 0), 1.5 SECONDS)
+	else
+		msg = "You are consumed by the harmless gas, it is hard to navigate in!"
+		Moob.apply_effect(SLOW,1)
+	to_chat(Moob, SPAN_DANGER(msg))
 
 /obj/effect/particle_effect/smoke/xeno_weak_fire
 	time_to_live = 16

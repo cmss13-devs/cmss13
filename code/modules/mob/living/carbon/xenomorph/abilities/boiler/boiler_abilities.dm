@@ -54,6 +54,7 @@
 	action_icon_state = "bombard"
 	cooldown_message = "Your belly fills with another gas glob. You are are ready to bombard again."
 	sound_to_play = 'sound/effects/blobattack.ogg'
+	aim_turf = TRUE
 
 /datum/action/xeno_action/onclick/dump_acid
 	name = "Dump Acid"

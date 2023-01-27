@@ -9,7 +9,7 @@
 	var/bloodcough_prob = 0	// Chance of blood_cough per proc (damaging)
 	var/hallucinate = TRUE  // Whether or not we hallucinate. (small rng stun chance)
 	var/chat_cd = 0			// Tick-based chat cooldown
-	var/stam_dam = 8		// Stamina damage per tick
+	var/stam_dam = 7.5		// Stamina damage per tick
 
 /datum/effects/neurotoxin/New(var/atom/A)
 	..(A)
@@ -98,28 +98,41 @@
 
 	return TRUE
 
-
 /datum/effects/neurotoxin/proc/procces_hallucination(human)
 	var/mob/living/carbon/human/victim = human
 	var/probability = rand(0, 100)
+	var/hallu_area = get_area(victim)
 	switch(probability)
 		if(0 to 5)
+			if(hallu_area)
+				for(var/mob/dead/observer/observer as anything in GLOB.observer_list)
+					to_chat(observer, SPAN_DEADSAY("<b>[victim]</b> has experienced a rare neuro-induced 'Schizo Lurker Pounce' hallucination (5% chance) at \the <b>[hallu_area]</b>" + " (<a href='?src=\ref[observer];jumptocoord=1;X=[victim.loc.x];Y=[victim.loc.y];Z=[victim.loc.z]'>JMP</a>)"))
 			playsound_client(victim.client,pick('sound/voice/alien_pounce.ogg','sound/voice/alien_pounce.ogg'))
-			victim.KnockDown(1)
+			victim.KnockDown(3)
 			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), victim.client,"alien_claw_flesh"), 1 SECONDS)
-			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), victim.client,"bonebreak"), 2 SECONDS)
+			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), victim.client,"bonebreak"), 1 SECONDS)
+			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), victim.client,"alien_claw_flesh"), 1.5 SECONDS)
+			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), victim.client,"alien_claw_flesh"), 2 SECONDS)
+			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), victim.client,"bonebreak"), 2.5 SECONDS)
+			victim.apply_effect(AGONY,10)
 			victim.emote("pain")
 		if(6 to 10)
+			if(hallu_area)
+				for(var/mob/dead/observer/observer as anything in GLOB.observer_list)
+					to_chat(observer, SPAN_DEADSAY("<b>[victim]</b> has experienced a rare neuro-induced 'OB' hallucination (4% chance) at \the <b>[hallu_area]</b>" + " (<a href='?src=\ref[observer];jumptocoord=1;X=[victim.loc.x];Y=[victim.loc.y];Z=[victim.loc.z]'>JMP</a>)"))
 			playsound_client(victim.client,'sound/effects/ob_alert.ogg')
 			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), victim.client,'sound/weapons/gun_orbital_travel.ogg'), 2 SECONDS)
 		if(11 to 16)
 			playsound_client(victim.client,'sound/voice/alien_queen_screech.ogg')
 			victim.KnockDown(1)
 		if(17 to 24)
+			if(hallu_area)
+				for(var/mob/dead/observer/observer as anything in GLOB.observer_list)
+					to_chat(observer, SPAN_DEADSAY("<b>[victim]</b> has experienced a rare neuro-induced 'Fake CAS firemission' hallucination (7% chance) at \the <b>[hallu_area]</b>" + " (<a href='?src=\ref[observer];jumptocoord=1;X=[victim.loc.x];Y=[victim.loc.y];Z=[victim.loc.z]'>JMP</a>)"))
 			hallucination_fakecas(victim) //Not gonna spam a billion timers for this one so outsourcing to a proc with sleeps is a better async solution
 		if(25 to 42)
-			playsound_client(victim.client, 'sound/weapons/gun_mortar_travel.ogg', 50, 1)
 			to_chat(victim,SPAN_HIGHDANGER("A SHELL IS ABOUT TO IMPACT [pick(SPAN_UNDERLINE("TOWARDS THE [pick("WEST","EAST","SOUTH","NORTH")]"),SPAN_UNDERLINE("RIGHT ONTOP OF YOU!"))]!"))
+			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), victim.client,'sound/weapons/gun_mortar_travel.ogg'), 1 SECONDS)
 		if(43 to 69)
 			victim.emote(pick("twitch","drool","moan","giggle"))
 			victim.hallucination = 3
@@ -130,7 +143,7 @@
 /datum/effects/neurotoxin/proc/hallucination_fakecas(human) // lazy async solution
 	var/mob/living/carbon/human/victim = human
 	playsound_client(victim.client,'sound/weapons/dropship_sonic_boom.ogg')
-	sleep(30)
+	sleep(35)
 	to_chat(victim,SPAN_HIGHDANGER("A DROPSHIP FIRES [pick(SPAN_UNDERLINE("RIGHT ABOVE YOU"),SPAN_UNDERLINE("TO YOUR WEST"))]!")) // Got lazy :/
 	sleep(5)
 	playsound_client(victim.client,'sound/effects/rocketpod_fire.ogg')
@@ -160,20 +173,3 @@
 	sleep(5)
 	playsound_client(victim.client,"explosion")
 	victim.emote("pain")
-/*
-
-design:
-
-Power of the effect will be increased for every tick in neuro smoke
-Power will be multiplied by 25 to get duration (in deciseconds)
-exmaple: Spending 3 ticks in the smoke will apply and increase the effect to 3 power, having the effect last for a total of 7.5 seconds
-
-The higher the duration the worse the effects:
-
-example:
-
-duration of 2+ seconds: blindness
-duration of 3+ seconds: deaf
-etc
-
-*/

@@ -152,8 +152,8 @@
 			acid_plasma_cost = 100
 			acid_type = /obj/effect/xenomorph/acid
 		if(3)
-			name = "Corrosive Acid (200)"
-			acid_plasma_cost = 200
+			name = "Corrosive Acid (125)"
+			acid_plasma_cost = 100
 			acid_type = /obj/effect/xenomorph/acid/strong
 
 /datum/action/xeno_action/activable/corrosive_acid/weak
@@ -163,8 +163,8 @@
 	acid_type = /obj/effect/xenomorph/acid/weak
 
 /datum/action/xeno_action/activable/corrosive_acid/strong
-	name = "Corrosive Acid (200)"
-	acid_plasma_cost = 200
+	name = "Corrosive Acid (125)"
+	acid_plasma_cost = 125
 	level = 3
 	acid_type = /obj/effect/xenomorph/acid/strong
 
@@ -407,6 +407,7 @@
 	xeno_cooldown = 60 SECONDS
 	var/spitting = FALSE
 	var/sound_to_play = "acid_spit"
+	var/aim_turf = FALSE
 
 /datum/action/xeno_action/activable/xeno_spit/queen_macro //so it doesn't screw other macros up
 	ability_primacy = XENO_PRIMARY_ACTION_3

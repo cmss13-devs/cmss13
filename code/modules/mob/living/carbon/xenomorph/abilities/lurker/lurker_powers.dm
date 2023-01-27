@@ -318,6 +318,10 @@
 
 	var/mob/living/carbon/target_carbon = target_atom
 
+	if(target_carbon.hivenumber == xeno.hivenumber)
+		to_chat(xeno, SPAN_XENOHIGHDANGER("You cannot target a member of your hive!"))
+		return
+
 	if(!(target_carbon.knocked_out || target_carbon.stat == UNCONSCIOUS)) //called knocked out because for some reason .stat seems to have a delay .
 		to_chat(xeno, SPAN_XENOHIGHDANGER("You can only headbite an unconscious, adjacent target!"))
 		return

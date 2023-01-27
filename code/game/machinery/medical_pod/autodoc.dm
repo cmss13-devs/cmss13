@@ -589,7 +589,7 @@
 	icon_state = "sleeperconsole"
 	var/obj/structure/machinery/medical_pod/autodoc/connected = null
 	dir = SOUTH
-	anchored = 1 //About time someone fixed this.
+	anchored = TRUE //About time someone fixed this.
 	density = FALSE
 	unslashable = TRUE
 	use_power = USE_POWER_IDLE

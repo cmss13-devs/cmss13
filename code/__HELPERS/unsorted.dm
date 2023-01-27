@@ -622,7 +622,7 @@
 		moblist.Add(M)
 	for(var/mob/living/brain/M in sortmob)
 		moblist.Add(M)
-	for(var/mob/living/carbon/Xenomorph/M in sortmob)
+	for(var/mob/living/carbon/xenomorph/M in sortmob)
 		moblist.Add(M)
 	for(var/mob/dead/observer/M in sortmob)
 		moblist.Add(M)
@@ -637,7 +637,7 @@
 /proc/sortxenos()
 	var/list/xenolist = list()
 	var/list/sortmob = sortAtom(GLOB.xeno_mob_list)
-	for(var/mob/living/carbon/Xenomorph/M in sortmob)
+	for(var/mob/living/carbon/xenomorph/M in sortmob)
 		if(!M.client)
 			continue
 		xenolist.Add(M)
@@ -1344,7 +1344,7 @@ var/global/image/action_purple_power_up
 						var/obj/corner = new()
 						corner.forceMove(X)
 						corner.density = TRUE
-						corner.anchored = 1
+						corner.anchored = TRUE
 						corner.icon = X.icon
 						corner.icon_state = replacetext(X.icon_state, "_s", "_f")
 						corner.tag = "delete me"
@@ -1790,7 +1790,7 @@ var/list/WALLITEMS = list(
 	// If the user is not a xeno (with active ability) with the shift click pref on, we examine. God forgive me for snowflake
 	if(user.client?.prefs && !(user.client?.prefs?.toggle_prefs & TOGGLE_MIDDLE_MOUSE_CLICK))
 		if(isXeno(user))
-			var/mob/living/carbon/Xenomorph/X = user
+			var/mob/living/carbon/xenomorph/X = user
 			if(X.selected_ability)
 				return FALSE
 		else if(ishuman(user))

@@ -210,6 +210,11 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 				FACTION_MERCENARY,
 				FACTION_FREELANCER,
 			) return TRUE
+
+		for(var/faction in user.faction_group)
+			if(faction in FACTION_LIST_WY)
+				return TRUE
+
 		if(user.faction in FACTION_LIST_WY)
 			return TRUE
 
@@ -558,12 +563,12 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 //For the holster hotkey
 /mob/living/silicon/robot/verb/holster_verb(var/unholster_number_offset = 1 as num)
 	set name = "holster"
-	set hidden = 1
+	set hidden = TRUE
 	uneq_active()
 
 /mob/living/carbon/human/verb/holster_verb(var/unholster_number_offset = 1 as num)
 	set name = "holster"
-	set hidden = 1
+	set hidden = TRUE
 	if(usr.is_mob_incapacitated(TRUE) || usr.is_mob_restrained())
 		to_chat(src, SPAN_WARNING("You can't draw a weapon in your current state."))
 		return

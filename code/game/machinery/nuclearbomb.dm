@@ -8,7 +8,7 @@ var/bomb_set = FALSE
 	density = TRUE
 	unslashable = TRUE
 	unacidable = TRUE
-	anchored = 0
+	anchored = FALSE
 	var/timing = FALSE
 	var/deployable = FALSE
 	var/explosion_time = null
@@ -69,7 +69,7 @@ var/bomb_set = FALSE
 	else
 		stop_processing()
 
-/obj/structure/machinery/nuclearbomb/attack_alien(mob/living/carbon/Xenomorph/M)
+/obj/structure/machinery/nuclearbomb/attack_alien(mob/living/carbon/xenomorph/M)
 	INVOKE_ASYNC(src, TYPE_PROC_REF(/atom, attack_hand), M)
 	return XENO_ATTACK_ACTION
 

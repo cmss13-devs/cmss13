@@ -5221,6 +5221,11 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
+/obj/structure/transmitter/colony_net{
+	pixel_y = 24;
+	phone_category = "Lazarus Landing";
+	phone_id = "Research"
+	},
 /turf/open/floor{
 	dir = 5;
 	icon_state = "whitepurple"
@@ -9352,7 +9357,15 @@
 /area/lv624/lazarus/sleep_male)
 "aMd" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/item/device/flashlight/lamp,
+/obj/item/device/flashlight/lamp{
+	pixel_y = 14;
+	pixel_x = 6
+	},
+/obj/structure/transmitter/colony_net/rotary{
+	phone_category = "Lazarus Landing";
+	phone_color = "red";
+	phone_id = "Marshal Office"
+	},
 /turf/open/floor{
 	dir = 8;
 	icon_state = "redcorner"
@@ -10763,7 +10776,7 @@
 	},
 /obj/structure/machinery/door/airlock/almayer/command{
 	locked = 1;
-	name = "\improper Nexus Dome Marshal's Quarter";
+	name = "\improper Nexus Dome Marshal's Quarters";
 	req_access_txt = "100"
 	},
 /turf/open/floor{
@@ -11128,7 +11141,7 @@
 /area/lv624/lazarus/security)
 "aSU" = (
 /obj/structure/machinery/door/airlock/almayer/command{
-	name = "\improper Nexus Dome Command Quarter";
+	name = "\improper Nexus Dome Command Quarters";
 	req_access_txt = "100"
 	},
 /turf/open/floor/plating,
@@ -11413,7 +11426,7 @@
 /obj/structure/machinery/door/airlock/almayer/command{
 	dir = 1;
 	locked = 1;
-	name = "\improper Nexus Dome Director's Quarter";
+	name = "\improper Nexus Dome Director's Quarters";
 	req_access_txt = "100"
 	},
 /turf/open/floor{
@@ -12457,6 +12470,12 @@
 "aXt" = (
 /obj/structure/surface/rack,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/structure/transmitter/colony_net{
+	pixel_y = 24;
+	phone_category = "Lazarus Landing";
+	phone_color = "yellow";
+	phone_id = "Engineering"
+	},
 /turf/open/floor{
 	icon_state = "dark"
 	},
@@ -12784,7 +12803,11 @@
 "aYJ" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/item/trash/chips,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/structure/transmitter/colony_net/rotary{
+	phone_category = "Lazarus Landing";
+	phone_color = "blue";
+	phone_id = "Director's Office"
+	},
 /turf/open/floor{
 	icon_state = "wood"
 	},
@@ -16368,6 +16391,14 @@
 /obj/structure/flora/bush/ausbushes/var3/ywflowers,
 /turf/open/gm/river,
 /area/lv624/ground/river/central_river)
+"hXt" = (
+/obj/structure/transmitter/colony_net{
+	pixel_y = 32;
+	phone_category = "Lazarus Landing";
+	phone_id = "Lakeside Bar"
+	},
+/turf/open/floor/wood,
+/area/lv624/ground/caves/north_central_caves)
 "hZg" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 4
@@ -18654,6 +18685,14 @@
 	icon_state = "desert3"
 	},
 /area/lv624/ground/barrens/west_barrens)
+"nrP" = (
+/obj/structure/transmitter/colony_net{
+	pixel_y = 24;
+	phone_category = "Lazarus Landing";
+	phone_id = "Cargo"
+	},
+/turf/open/floor/vault,
+/area/lv624/lazarus/quartstorage)
 "nsk" = (
 /turf/open/gm/dirt,
 /area/lv624/ground/river/west_river)
@@ -19853,6 +19892,10 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
+/obj/structure/transmitter/colony_net/rotary{
+	phone_category = "Lazarus Landing";
+	phone_id = "Medbay"
+	},
 /turf/open/floor{
 	icon_state = "white"
 	},
@@ -20025,6 +20068,12 @@
 	name = "Outer Blast Door";
 	pixel_x = 25;
 	pixel_y = -5
+	},
+/obj/structure/transmitter/colony_net{
+	pixel_y = 24;
+	phone_category = "Lazarus Landing";
+	phone_color = "blue";
+	phone_id = "Corporate Office"
 	},
 /turf/open/floor{
 	dir = 5;
@@ -20890,6 +20939,18 @@
 	dir = 1
 	},
 /area/lv624/ground/colony/north_tcomms_road)
+"rVH" = (
+/obj/structure/transmitter/colony_net{
+	pixel_y = 24;
+	phone_category = "Lazarus Landing";
+	phone_color = "yellow";
+	phone_id = "Communications"
+	},
+/turf/open/floor{
+	dir = 9;
+	icon_state = "brown"
+	},
+/area/lv624/lazarus/comms)
 "rWW" = (
 /obj/structure/flora/bush/ausbushes/grassybush,
 /turf/open/gm/river,
@@ -21971,6 +22032,15 @@
 	icon_state = "squareswood"
 	},
 /area/lv624/ground/caves/sand_temple)
+"ulp" = (
+/obj/structure/transmitter/colony_net{
+	pixel_y = 24;
+	phone_category = "Lazarus Landing";
+	phone_color = "red";
+	phone_id = "Secure Storage"
+	},
+/turf/open/floor/greengrid,
+/area/lv624/lazarus/secure_storage)
 "umb" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_membrane,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_membrane,
@@ -32339,7 +32409,7 @@ aXh
 aTf
 aTf
 aTf
-aUQ
+ulp
 aUQ
 aWa
 aUQ
@@ -40548,7 +40618,7 @@ aQn
 aQn
 vEj
 aTg
-aQn
+rVH
 aQn
 aQn
 aON
@@ -41940,7 +42010,7 @@ aaa
 aac
 abm
 abk
-avm
+hXt
 abZ
 avm
 aEI
@@ -56703,7 +56773,7 @@ lyS
 lyS
 lyS
 asN
-ati
+nrP
 ati
 ati
 asN

@@ -73,7 +73,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 	desc = "A control terminal for the area electrical systems."
 	icon = 'icons/obj/structures/machinery/power.dmi'
 	icon_state = "apc_mapicon"
-	anchored = 1
+	anchored = TRUE
 	use_power = USE_POWER_NONE
 	req_one_access = list(ACCESS_CIVILIAN_ENGINEERING, ACCESS_MARINE_ENGINEERING)
 	unslashable = TRUE

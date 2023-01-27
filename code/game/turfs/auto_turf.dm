@@ -177,7 +177,7 @@
 			return
 
 		user.visible_message("\blue[user.name] planted \the [L] into [src].")
-		L.anchored = 1
+		L.anchored = TRUE
 		L.icon_state = "lightstick_[L.s_color][L.anchored]"
 		user.drop_held_item()
 		L.forceMove(src)
@@ -187,7 +187,7 @@
 		playsound(user, 'sound/weapons/Genhit.ogg', 25, 1)
 
 //Digging up snow
-/turf/open/auto_turf/snow/attack_alien(mob/living/carbon/Xenomorph/M)
+/turf/open/auto_turf/snow/attack_alien(mob/living/carbon/xenomorph/M)
 	if(M.a_intent == INTENT_HARM) //Missed slash.
 		return
 	if(M.a_intent == INTENT_HELP || !bleed_layer)
@@ -216,7 +216,7 @@
 			var/mob/living/carbon/C = AM
 			var/slow_amount = 0.35
 			var/can_stuck = 1
-			if(istype(C, /mob/living/carbon/Xenomorph)||isYautja(C))
+			if(istype(C, /mob/living/carbon/xenomorph)||isYautja(C))
 				slow_amount = 0.15
 				can_stuck = 0
 			var/new_slowdown = C.next_move_slowdown + (slow_amount * bleed_layer)

@@ -546,3 +546,9 @@ var/global/list/uniform_categories = list(
 #define RADIO_FILTER_TYPE_INTERCOM 1
 #define RADIO_FILTER_TYPE_INTERCOM_AND_BOUNCER 2
 #define RADIO_FILTER_TYPE_ANTAG_RADIOS 3
+//=================================================
+
+//=================================================
+#define PHONE_RTO "RTO"
+#define PHONE_MARINE "Marine"
+#define PHONE_UPP_SOLDIER "Soldier"

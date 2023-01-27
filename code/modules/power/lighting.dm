@@ -16,7 +16,7 @@
 	desc = "A light fixture under construction."
 	icon = 'icons/obj/items/lighting.dmi'
 	icon_state = "tube-construct-stage1"
-	anchored = 1
+	anchored = TRUE
 	layer = FLY_LAYER
 	var/stage = 1
 	var/fixture_type = "tube"
@@ -120,7 +120,7 @@
 	desc = "A small light fixture under construction."
 	icon = 'icons/obj/items/lighting.dmi'
 	icon_state = "bulb-construct-stage1"
-	anchored = 1
+	anchored = TRUE
 	stage = 1
 	fixture_type = "bulb"
 	sheets_refunded = 1
@@ -132,7 +132,7 @@
 	var/base_state = "tube" // base description and icon_state
 	icon_state = "tube1"
 	desc = "A bright fluorescent tube light. Looking at it for too long makes your eyes go watery."
-	anchored = 1
+	anchored = TRUE
 	layer = FLY_LAYER
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 2
@@ -158,7 +158,7 @@
 	unslashable = TRUE
 	unacidable = TRUE
 
-/obj/structure/machinery/light/containment/attack_alien(mob/living/carbon/Xenomorph/M)
+/obj/structure/machinery/light/containment/attack_alien(mob/living/carbon/xenomorph/M)
 	return
 
 
@@ -598,7 +598,7 @@
 		sleep(1)
 		qdel(src)
 
-/obj/structure/machinery/light/handle_tail_stab(var/mob/living/carbon/Xenomorph/stabbing_xeno)
+/obj/structure/machinery/light/handle_tail_stab(var/mob/living/carbon/xenomorph/stabbing_xeno)
 	if(is_broken())
 		to_chat(stabbing_xeno, SPAN_WARNING("\The [src] is already broken!"))
 		return
@@ -719,7 +719,7 @@
 	icon_state = "landingstripe"
 	desc = "A landing light, if it's flashing stay clear!"
 	var/id = "" // ID for landing zone
-	anchored = 1
+	anchored = TRUE
 	density = FALSE
 	layer = BELOW_TABLE_LAYER
 	use_power = USE_POWER_ACTIVE

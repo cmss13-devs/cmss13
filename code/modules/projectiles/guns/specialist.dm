@@ -804,6 +804,9 @@
 	var/pass_flags = NO_FLAGS
 	if(is_lobbing)
 		if(istype(F, /obj/item/explosive/grenade/slug/baton))
+			if(ishuman(user))
+				var/mob/living/carbon/human/human_user = user
+				human_user.remember_dropped_object(F)
 			pass_flags |= PASS_MOB_THRU_HUMAN|PASS_MOB_IS_OTHER|PASS_OVER
 		else
 			pass_flags |= PASS_MOB_THRU|PASS_HIGH_OVER

@@ -1,0 +1,4 @@
+author: "harryob"
+delete-after: True
+changes:
+  - bugfix: "the pickup hotkey doesn't runtime as bad now"

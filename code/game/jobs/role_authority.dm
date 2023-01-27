@@ -746,48 +746,48 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 		given_squad.put_marine_in_squad(H) //Found one, finish up
 
 /datum/authority/branch/role/proc/get_caste_by_text(var/name)
-	var/mob/living/carbon/Xenomorph/M
+	var/mob/living/carbon/xenomorph/M
 	switch(name) //ADD NEW CASTES HERE!
 		if(XENO_CASTE_LARVA)
-			M = /mob/living/carbon/Xenomorph/Larva
+			M = /mob/living/carbon/xenomorph/larva
 		if(XENO_CASTE_PREDALIEN_LARVA)
-			M = /mob/living/carbon/Xenomorph/Larva/predalien
+			M = /mob/living/carbon/xenomorph/larva/predalien
 		if(XENO_CASTE_FACEHUGGER)
-			M = /mob/living/carbon/Xenomorph/Facehugger
+			M = /mob/living/carbon/xenomorph/facehugger
 		if(XENO_CASTE_RUNNER)
-			M = /mob/living/carbon/Xenomorph/Runner
+			M = /mob/living/carbon/xenomorph/runner
 		if(XENO_CASTE_DRONE)
-			M = /mob/living/carbon/Xenomorph/Drone
+			M = /mob/living/carbon/xenomorph/drone
 		if(XENO_CASTE_CARRIER)
-			M = /mob/living/carbon/Xenomorph/Carrier
+			M = /mob/living/carbon/xenomorph/carrier
 		if(XENO_CASTE_HIVELORD)
-			M = /mob/living/carbon/Xenomorph/Hivelord
+			M = /mob/living/carbon/xenomorph/hivelord
 		if(XENO_CASTE_BURROWER)
-			M = /mob/living/carbon/Xenomorph/Burrower
+			M = /mob/living/carbon/xenomorph/burrower
 		if(XENO_CASTE_PRAETORIAN)
-			M = /mob/living/carbon/Xenomorph/Praetorian
+			M = /mob/living/carbon/xenomorph/praetorian
 		if(XENO_CASTE_RAVAGER)
-			M = /mob/living/carbon/Xenomorph/Ravager
+			M = /mob/living/carbon/xenomorph/ravager
 		if(XENO_CASTE_SENTINEL)
-			M = /mob/living/carbon/Xenomorph/Sentinel
+			M = /mob/living/carbon/xenomorph/sentinel
 		if(XENO_CASTE_SPITTER)
-			M = /mob/living/carbon/Xenomorph/Spitter
+			M = /mob/living/carbon/xenomorph/spitter
 		if(XENO_CASTE_LURKER)
-			M = /mob/living/carbon/Xenomorph/Lurker
+			M = /mob/living/carbon/xenomorph/lurker
 		if(XENO_CASTE_WARRIOR)
-			M = /mob/living/carbon/Xenomorph/Warrior
+			M = /mob/living/carbon/xenomorph/warrior
 		if(XENO_CASTE_DEFENDER)
-			M = /mob/living/carbon/Xenomorph/Defender
+			M = /mob/living/carbon/xenomorph/defender
 		if(XENO_CASTE_QUEEN)
-			M = /mob/living/carbon/Xenomorph/Queen
+			M = /mob/living/carbon/xenomorph/queen
 		if(XENO_CASTE_CRUSHER)
-			M = /mob/living/carbon/Xenomorph/Crusher
+			M = /mob/living/carbon/xenomorph/crusher
 		if(XENO_CASTE_BOILER)
-			M = /mob/living/carbon/Xenomorph/Boiler
+			M = /mob/living/carbon/xenomorph/boiler
 		if(XENO_CASTE_PREDALIEN)
-			M = /mob/living/carbon/Xenomorph/Predalien
+			M = /mob/living/carbon/xenomorph/predalien
 		if(XENO_CASTE_HELLHOUND)
-			M = /mob/living/carbon/Xenomorph/Hellhound
+			M = /mob/living/carbon/xenomorph/hellhound
 	return M
 
 

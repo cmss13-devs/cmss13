@@ -34,7 +34,7 @@
 /datum/construction_template/proc/get_structure_image()
 	return image(build_icon, build_icon_state)
 
-/datum/construction_template/proc/add_crystal(var/mob/living/carbon/Xenomorph/xeno)
+/datum/construction_template/proc/add_crystal(var/mob/living/carbon/xenomorph/xeno)
 	if(!istype(xeno))
 		return
 	if(!xeno.plasma_max)
@@ -58,7 +58,7 @@
 
 // Xeno ressource collection
 /*
-/datum/construction_template/proc/add_crystal(var/mob/living/carbon/Xenomorph/M)
+/datum/construction_template/proc/add_crystal(var/mob/living/carbon/xenomorph/M)
 	if(!istype(M))
 		return
 	if(!M.crystal_stored)

@@ -1,4 +1,0 @@
-author: "harryob"
-delete-after: True
-changes:
-  - bugfix: "fixes paygrade runtime for the combat reporter and corporate supervisor survivor"

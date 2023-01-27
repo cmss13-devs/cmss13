@@ -62,6 +62,8 @@
 
 		if(dazed)
 			overlay_fullscreen("eye_blurry", /atom/movable/screen/fullscreen/impaired, 5)
+		else
+			clear_fullscreen("eye_blurry")
 		///Pain should override the SetEyeBlur(0) should the pain be painful enough to cause eyeblur in the first place.
 		else if((disabilities & NEARSIGHTED) && !HAS_TRAIT(src, TRAIT_NEARSIGHTED_EQUIPMENT) && pain.current_pain < 80)
 			EyeBlur(2)

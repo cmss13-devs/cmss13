@@ -211,7 +211,7 @@
 	var/fire_type = FIRE_VARIANT_TYPE_B //Armor Shredding Greenfire
 
 /obj/item/explosive/grenade/incendiary/prime()
-	INVOKE_ASYNC(GLOBAL_PROC, PROC_REF(flame_radius), cause_data, radius, get_turf(src), flame_level, burn_level, flameshape, null, fire_type)
+	INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(flame_radius), cause_data, radius, get_turf(src), flame_level, burn_level, flameshape, null, fire_type)
 	playsound(src.loc, 'sound/weapons/gun_flamethrower2.ogg', 35, 1, 4)
 	qdel(src)
 
@@ -290,10 +290,10 @@
 		if(shrapnel_count)
 			create_shrapnel(loc, shrapnel_count, last_move_dir , 30 ,shrapnel_type, cause_data, FALSE, 0)
 		if(target)
-			INVOKE_ASYNC(GLOBAL_PROC, PROC_REF(flame_radius), cause_data, radius, get_turf(src), flame_level, burn_level, flameshape, target)
+			INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(flame_radius), cause_data, radius, get_turf(src), flame_level, burn_level, flameshape, target)
 		else
 			//Not stellar, but if we can't find a direction, fall back to HIDP behaviour.
-			INVOKE_ASYNC(GLOBAL_PROC, PROC_REF(flame_radius), cause_data, radius, get_turf(src), flame_level, burn_level, FLAMESHAPE_DEFAULT, target)
+			INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(flame_radius), cause_data, radius, get_turf(src), flame_level, burn_level, FLAMESHAPE_DEFAULT, target)
 		playsound(src.loc, 'sound/weapons/gun_flamethrower2.ogg', 35, 1, 4)
 		qdel(src)
 

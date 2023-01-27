@@ -18,4 +18,4 @@
 	M.transfer_to(H, TRUE)
 
 	arm_equipment(H, /datum/equipment_preset/fun/hefa/melee, FALSE, TRUE)
-	addtimer(CALLBACK(GLOBAL_PROC, PROC_REF(to_chat), H, SPAN_BOLD("Objectives: [objectives]")), 1 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), H, SPAN_BOLD("Objectives: [objectives]")), 1 SECONDS)

@@ -178,7 +178,7 @@
 			var/mob/living/carbon/human/Hu = target_carbon
 			Hu.update_xeno_hostile_hud()
 
-		addtimer(CALLBACK(GLOBAL_PROC, PROC_REF(unroot_human), target_carbon), get_xeno_stun_duration(target_carbon, root_duration))
+		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(unroot_human), target_carbon), get_xeno_stun_duration(target_carbon, root_duration))
 		to_chat(target_carbon, SPAN_XENOHIGHDANGER("[vanguard_user] has pinned you to the ground! You cannot move!"))
 		vanguard_user.flick_attack_overlay(target_carbon, "punch")
 
@@ -343,7 +343,7 @@
 			if (ishuman(H))
 				var/mob/living/carbon/human/Hu = H
 				Hu.update_xeno_hostile_hud()
-			addtimer(CALLBACK(GLOBAL_PROC, PROC_REF(unroot_human), H), get_xeno_stun_duration(H, 25))
+			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(unroot_human), H), get_xeno_stun_duration(H, 25))
 			to_chat(H, SPAN_XENOHIGHDANGER("[X] has pinned you to the ground! You cannot move!"))
 
 			H.set_effect(2, DAZE)
@@ -417,7 +417,7 @@
 			var/mob/living/carbon/human/Hu = target_carbon
 			Hu.update_xeno_hostile_hud()
 
-		addtimer(CALLBACK(GLOBAL_PROC, PROC_REF(unroot_human), target_carbon), get_xeno_stun_duration(target_carbon, 12))
+		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(unroot_human), target_carbon), get_xeno_stun_duration(target_carbon, 12))
 		to_chat(target_carbon, SPAN_XENOHIGHDANGER("[oppressor_user] has pinned you to the ground! You cannot move!"))
 
 		var/datum/action/xeno_action/activable/prae_abduct/abduct_action = get_xeno_action_by_type(oppressor_user, /datum/action/xeno_action/activable/prae_abduct)

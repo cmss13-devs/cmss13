@@ -890,6 +890,7 @@
 	desc = "A lightweight, single-shot low-angle grenade launcher used by the Colonial Marines for area denial and big explosions."
 	icon_state = "m81"
 	item_state = "m81" //needs a wield sprite.
+	is_lobbing = TRUE
 
 	matter = list("metal" = 7000)
 

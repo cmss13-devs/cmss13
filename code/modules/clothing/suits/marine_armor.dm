@@ -365,6 +365,28 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	specialty = "warden service jacket over M3 pattern warden MP"
 	item_state_slots = list(WEAR_JACKET = "warden_jacket")
 
+/obj/item/clothing/suit/storage/marine/MP/riot
+	name = "\improper M5 riot control armor"
+	desc = "A heavily modified suit of M2 MP Armor used to suppress riots from buckethead marines. Slows you down a lot. Has pouches for riot control teargas and ammo."
+	icon_state = "riot"
+	slowdown = SLOWDOWN_ARMOR_LOWHEAVY
+	armor_melee = CLOTHING_ARMOR_HIGH
+	armor_bullet = CLOTHING_ARMOR_HIGH
+	armor_bomb = CLOTHING_ARMOR_LOW
+	armor_bio = CLOTHING_ARMOR_NONE
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
+	storage_slots = 6
+	uniform_restricted = list(/obj/item/clothing/under/marine/mp,
+					/obj/item/clothing/under/marine/warden,
+					/obj/item/clothing/under/marine/officer/warrant,
+					/obj/item/clothing/under/marine/ua_riot)
+	specialty = "M5 riot control MP"
+	item_state_slots = list(WEAR_JACKET = "riot")
+	allowed = list(/obj/item/weapon/gun,
+					/obj/item/explosive/grenade/custom/teargas,
+					/obj/item/ammo_magazine/shotgun/rubberbuck,
+					/obj/item/ammo_magazine/shotgun/beanbag/riot)
+
 /obj/item/clothing/suit/storage/marine/MP/WO
 	icon_state = "warrant_officer"
 	name = "\improper M3 pattern chief MP armor"

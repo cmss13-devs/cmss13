@@ -84,21 +84,21 @@
 	name = "riot control equipment closet"
 // req_access = list(ACCESS_MARINE_BRIG)
 	storage_capacity = 55 //lots of stuff to fit in
-	req_level = SEC_LEVEL_RED
+	req_level = SEC_LEVEL_BLUE
 
 /obj/structure/closet/secure_closet/guncabinet/riot_control/Initialize()
 	. = ..()
-	new /obj/item/weapon/gun/shotgun/combat/riot(src, TRUE)
-	new /obj/item/weapon/gun/shotgun/combat/riot(src, TRUE)
-	new /obj/item/weapon/gun/shotgun/combat/riot(src, TRUE)
+	new /obj/item/weapon/gun/shotgun/combat/riot(src)
+	new /obj/item/weapon/gun/shotgun/combat/riot(src)
+	new /obj/item/weapon/gun/shotgun/combat/riot(src)
 	new /obj/item/weapon/shield/riot(src)
 	new /obj/item/weapon/shield/riot(src)
 	new /obj/item/weapon/shield/riot(src)
+	new /obj/item/ammo_magazine/shotgun/rubberbuck(src)
+	new /obj/item/ammo_magazine/shotgun/rubberbuck(src)
 	new /obj/item/ammo_magazine/shotgun/beanbag/riot(src)
 	new /obj/item/ammo_magazine/shotgun/beanbag/riot(src)
-	new /obj/item/ammo_magazine/shotgun/beanbag/riot(src)
-	new /obj/item/ammo_magazine/shotgun/beanbag/riot(src)
-	new /obj/item/weapon/gun/launcher/grenade/m81/riot(src, TRUE)
+	new /obj/item/weapon/gun/launcher/grenade/m81/riot(src)
 	new /obj/item/storage/box/nade_box/tear_gas(src)
 	new /obj/item/clothing/mask/gas(src)
 	new /obj/item/clothing/mask/gas(src)
@@ -106,9 +106,9 @@
 	new /obj/item/clothing/head/helmet/riot(src)
 	new /obj/item/clothing/head/helmet/riot(src)
 	new /obj/item/clothing/head/helmet/riot(src)
-	new /obj/item/clothing/suit/armor/riot/marine(src)
-	new /obj/item/clothing/suit/armor/riot/marine(src)
-	new /obj/item/clothing/suit/armor/riot/marine(src)
+	new /obj/item/clothing/suit/storage/marine/MP/riot(src)
+	new /obj/item/clothing/suit/storage/marine/MP/riot(src)
+	new /obj/item/clothing/suit/storage/marine/MP/riot(src)
 	new /obj/item/storage/box/flashbangs(src)
 
 

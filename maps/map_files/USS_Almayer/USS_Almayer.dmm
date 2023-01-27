@@ -1211,7 +1211,7 @@
 /area/almayer/lifeboat_pumps/north1)
 "adf" = (
 /obj/structure/closet,
-/obj/item/clothing/suit/armor/riot/marine,
+/obj/item/clothing/suit/storage/marine/MP/riot,
 /obj/item/clothing/head/helmet/riot,
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -18093,7 +18093,7 @@
 /area/almayer/medical/lower_medical_lobby)
 "beZ" = (
 /obj/structure/platform_decoration{
-	dir = 8;
+	dir = 8
 	},
 /turf/open/floor/almayer,
 /area/almayer/living/chapel)
@@ -34288,8 +34288,17 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/tankerbunks)
 "cop" = (
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/living/tankerbunks)
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/door_control{
+	id = "cmp_armory";
+	name = "Armory Lockdown";
+	req_access_txt = "3"
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/shipboard/brig/main_office)
 "cos" = (
 /obj/structure/machinery/light/small,
 /obj/effect/decal/warning_stripes{
@@ -48238,6 +48247,14 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/l_m_s)
+"iiQ" = (
+/obj/structure/machinery/vending/riot,
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "plating";
+	tag = "icon-blue (NORTHEAST)"
+	},
+/area/almayer/shipboard/brig/armory)
 "iiZ" = (
 /obj/structure/machinery/cm_vending/sorted/marine_food,
 /turf/open/floor/almayer{
@@ -96827,7 +96844,7 @@ ahE
 hUg
 wcn
 vBm
-gqW
+cop
 buX
 mLJ
 eRL
@@ -98656,7 +98673,7 @@ aou
 lrq
 mAr
 uqo
-fsT
+iiQ
 tfO
 fsz
 lrq
@@ -100789,7 +100806,7 @@ uNL
 lgY
 uNL
 mGL
-cop
+kYo
 bSv
 onY
 wdf

@@ -279,7 +279,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	icon_state = "mp220"
 	item_state = "mp220"
 	desc = "The Weyland-Yutani MK221 Shotgun, a semi-automatic shotgun with a quick fire rate. Equipped with a steel blue finish to signify use in riot control. It has been modified to only fire 20G beanbags."
-	current_mag = /obj/item/ammo_magazine/internal/shotgun/combat/riot
+	current_mag = /obj/item/ammo_magazine/internal/shotgun/combat/riot/beanbag
 	gauge = "20g"
 
 /obj/item/weapon/gun/shotgun/combat/guard

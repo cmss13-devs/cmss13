@@ -57,7 +57,7 @@
 	for(var/mob/living/carbon/M in hear(7, T))
 		bang(T, M)
 
-	playsound(src.loc, 'sound/effects/bang.ogg', 50, 1)
+	playsound(src.loc, 'sound/effects/flashbang.ogg', 100, 1)
 
 	new/obj/effect/particle_effect/smoke/flashbang(T)
 	qdel(src)

@@ -3,7 +3,7 @@
 /datum/emergency_call/riot
 	name = "USCM Riot Control"
 	mob_max = 10
-	mob_min = 5
+	mob_min = 4
 	objectives = "Ensure order is restored and Marine Law is maintained."
 	probability = 0
 
@@ -57,11 +57,11 @@
 	new /obj/item/storage/box/nade_box/tear_gas(drop_spawn)
 
 	drop_spawn = get_spawn_point(TRUE)
-	new /obj/item/ammo_magazine/shotgun/buckshot(drop_spawn)
-	new /obj/item/ammo_magazine/shotgun/buckshot(drop_spawn)
+	new /obj/item/ammo_magazine/shotgun/rubberbuck(drop_spawn)
+	new /obj/item/ammo_magazine/shotgun/rubberbuck(drop_spawn)
 	drop_spawn = get_spawn_point(TRUE)
-	new /obj/item/ammo_magazine/shotgun/buckshot(drop_spawn)
-	new /obj/item/ammo_magazine/shotgun/buckshot(drop_spawn)
+	new /obj/item/ammo_magazine/shotgun/rubberbuck(drop_spawn)
+	new /obj/item/ammo_magazine/shotgun/rubberbuck(drop_spawn)
 
 	drop_spawn = get_spawn_point(TRUE)
 	new /obj/item/weapon/gun/launcher/grenade/m81/riot(drop_spawn)

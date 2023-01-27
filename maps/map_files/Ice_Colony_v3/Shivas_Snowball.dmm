@@ -8967,7 +8967,7 @@
 /obj/item/ammo_magazine/rifle/m41aMK1,
 /obj/item/ammo_magazine/rifle/m41aMK1,
 /obj/item/storage/belt/marine,
-/obj/item/clothing/suit/armor/riot/marine,
+/obj/item/clothing/suit/storage/marine/MP/riot,
 /turf/open/floor/shiva{
 	dir = 8;
 	icon_state = "redfull"

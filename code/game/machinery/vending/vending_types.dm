@@ -218,6 +218,23 @@
 					/obj/item/device/radio/headset = 6)
 	contraband = list(/obj/item/clothing/glasses/sunglasses = 2,/obj/item/storage/donut_box = 2)
 
+/obj/structure/machinery/vending/riot
+	name = "RiotTech"
+	desc = "A riot control equipment vendor."
+	icon_state = "sec"
+	icon_deny = "sec-deny"
+	req_access = list(ACCESS_MARINE_BRIG)
+	products = list(/obj/item/handcuffs/zip = 30, // Enough zipties to arrest an entire squad
+					/obj/item/explosive/grenade/flashbang = 12,
+					/obj/item/storage/box/flashbangs = 4,
+					/obj/item/explosive/grenade/custom/teargas = 12,
+					/obj/item/storage/box/nade_box/tear_gas = 2,
+					/obj/item/clothing/mask/gas = 10,
+					/obj/item/weapon/shield/riot = 5,
+					/obj/item/ammo_magazine/shotgun/rubberbuck = 10,
+					/obj/item/ammo_magazine/shotgun/beanbag/riot = 10)
+	contraband = list(/obj/item/explosive/grenade/HE/m15/rubber = 3) // Contraband - You REALLY should not be in possession of this as an MP
+
 /obj/structure/machinery/vending/sea
 	name = "SeaTech"
 	desc = "An equipment vendor designed to save lives"

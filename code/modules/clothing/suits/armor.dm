@@ -206,24 +206,6 @@
 	)
 	valid_accessory_slots = list(ACCESSORY_SLOT_MEDAL)
 
-/obj/item/clothing/suit/armor/riot/marine
-	name = "\improper M5 riot control armor"
-	desc = "A heavily modified suit of M2 MP Armor used to suppress riots from buckethead marines. Slows you down a lot."
-	icon_state = "riot"
-	item_state = "swat_suit"
-	slowdown = SLOWDOWN_ARMOR_LOWHEAVY
-	armor_melee = CLOTHING_ARMOR_HIGH
-	armor_bullet = CLOTHING_ARMOR_HIGH
-	armor_laser = CLOTHING_ARMOR_LOW
-	armor_energy = CLOTHING_ARMOR_LOW
-	armor_bomb = CLOTHING_ARMOR_LOW
-	armor_bio = CLOTHING_ARMOR_NONE
-	armor_rad = CLOTHING_ARMOR_NONE
-	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
-	time_to_unequip = 20
-	time_to_equip = 20
-
-
 /obj/item/clothing/suit/armor/swat
 	name = "swat suit"
 	desc = "A heavily armored suit that protects against moderate damage. Used in special operations."

@@ -588,9 +588,13 @@
 	icon_state = "large_shotshells"
 	storage_slots = 7
 
-/obj/item/storage/pouch/shotgun/large/riot/fill_preset_inventory()
+/obj/item/storage/pouch/shotgun/large/riotslug/fill_preset_inventory()
 	for(var/i = 1 to storage_slots)
 		new /obj/item/ammo_magazine/handful/shotgun/beanbag/riot(src)
+
+/obj/item/storage/pouch/shotgun/large/riotbuck/fill_preset_inventory()
+	for(var/i = 1 to storage_slots)
+		new /obj/item/ammo_magazine/handful/shotgun/rubberbuck(src)
 
 /obj/item/storage/pouch/shotgun/large/slug/fill_preset_inventory()
 	for(var/i = 1 to storage_slots)

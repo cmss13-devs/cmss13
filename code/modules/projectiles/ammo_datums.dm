@@ -1222,18 +1222,60 @@
 
 	max_range = 12
 	shrapnel_chance = 0
-	damage = 0
-	stamina_damage = 45
+	damage = 15
+	stamina_damage = 105
 	accuracy = HIT_ACCURACY_TIER_3
 	shell_speed = AMMO_SPEED_TIER_3
 	handful_state = "beanbag_slug"
 
-/datum/ammo/bullet/shotgun/beanbag/on_hit_mob(mob/M, obj/item/projectile/P)
+/datum/ammo/bullet/shotgun/beanbag/on_hit_mob(mob/M,obj/item/projectile/P)
 	if(!M || M == P.firer) return
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
+		M.emote("scream")
 		shake_camera(H, 2, 1)
 
+/datum/ammo/bullet/shotgun/rubberbuck
+	name = "rubber buckshot shell"
+	icon_state = "rubber_pellets"
+	handful_state = "rubberbuck_shell"
+	multiple_handful_name = TRUE
+	bonus_projectiles_type = /datum/ammo/bullet/shotgun/rubberbuck_spread
+	flags_ammo_behavior = AMMO_BALLISTIC|AMMO_IGNORE_RESIST
+	sound_override = 'sound/weapons/gun_shotgun_riot.ogg'
+
+	accuracy_var_low = PROJECTILE_VARIANCE_TIER_5
+	accuracy_var_high = PROJECTILE_VARIANCE_TIER_5
+	accurate_range = 6
+	max_range = 9
+	damage = 5
+	stamina_damage = 45
+	bonus_projectiles_amount = EXTRA_PROJECTILES_TIER_3
+	shell_speed = AMMO_SPEED_TIER_2
+	handful_state = "rubberbuck_shell"
+	multiple_handful_name = TRUE
+
+/datum/ammo/bullet/shotgun/rubberbuck/on_hit_mob(mob/M)
+	if(ishuman(M))
+		M.emote("scream")
+
+/datum/ammo/bullet/shotgun/rubberbuck_spread
+	name = "additional rubber buckshot"
+	icon_state = "rubber_pellets"
+	flags_ammo_behavior = AMMO_BALLISTIC|AMMO_IGNORE_RESIST
+
+	accuracy_var_low = PROJECTILE_VARIANCE_TIER_6
+	accuracy_var_high = PROJECTILE_VARIANCE_TIER_6
+	accurate_range = 4
+	max_range = 6
+	damage = 5
+	stamina_damage = 45
+	shell_speed = AMMO_SPEED_TIER_2
+	scatter = SCATTER_AMOUNT_TIER_1
+
+/datum/ammo/bullet/shotgun/rubberbuck_spread/on_hit_mob(mob/M)
+	if(ishuman(M))
+		M.emote("scream")
 
 /datum/ammo/bullet/shotgun/incendiary
 	name = "incendiary slug"

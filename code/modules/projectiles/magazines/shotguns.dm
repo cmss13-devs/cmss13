@@ -69,6 +69,15 @@ var/list/shotgun_boxes_12g = list(
 	default_ammo = /datum/ammo/bullet/shotgun/beanbag
 	handful_state = "beanbag_slug"
 
+/obj/item/ammo_magazine/shotgun/rubberbuck
+	name = "box of rubber buckshot shells"
+	desc = "A box filled with rubber buckshot shotgun shells used for non-lethal crowd control. 12 Gauge."
+	icon_state = "rubber"
+	item_state = "rubber"
+	default_ammo = /datum/ammo/bullet/shotgun/rubberbuck
+	handful_state = "rubberbuck_shell"
+	caliber = "20g"
+
 /obj/item/ammo_magazine/shotgun/beanbag/riot
 	name = "box of RC beanbag slugs"
 	desc = "A box filled with beanbag shotgun shells used for non-lethal crowd control. Riot Control use only."
@@ -105,9 +114,13 @@ also doesn't really matter. You can only reload them with handfuls.
 	caliber = "2 bore"
 	default_ammo = /datum/ammo/bullet/shotgun/twobore
 
-/obj/item/ammo_magazine/internal/shotgun/combat/riot
+/obj/item/ammo_magazine/internal/shotgun/combat/riot/beanbag
 	caliber = "20g"
 	default_ammo = /datum/ammo/bullet/shotgun/beanbag
+
+/obj/item/ammo_magazine/internal/shotgun/combat/riot/rubberbuck
+	caliber = "20g"
+	default_ammo = /datum/ammo/bullet/shotgun/rubberbuck
 
 /obj/item/ammo_magazine/internal/shotgun/merc
 	max_rounds = 5
@@ -210,6 +223,12 @@ var/list/shotgun_handfuls_12g = list(
 /obj/item/ammo_magazine/handful/shotgun/beanbag/riot
 	name = "handful of beanbag slugs (20g)"
 	caliber = "20g"
+
+/obj/item/ammo_magazine/handful/shotgun/rubberbuck
+	name = "handful of rubber buckshot shells (20g)"
+	default_ammo = /datum/ammo/bullet/shotgun/rubberbuck
+	caliber = "20g"
+	handful_state = "rubberbuck_shell"
 
 //updates on init
 /obj/item/ammo_magazine/handful/shotgun/custom_color/update_icon()

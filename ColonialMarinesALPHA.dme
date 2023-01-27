@@ -1915,7 +1915,6 @@
 #include "code\modules\objectives\safe_cracking.dm"
 #include "code\modules\organs\limb_objects.dm"
 #include "code\modules\organs\limbs.dm"
-#include "code\modules\organs\organ_alien.dm"
 #include "code\modules\organs\organ_internal.dm"
 #include "code\modules\organs\organ_objects.dm"
 #include "code\modules\organs\pain.dm"

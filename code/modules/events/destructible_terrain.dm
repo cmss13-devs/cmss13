@@ -7,7 +7,5 @@
 			continue
 		//If the initial wall was indestructible, we toggle indestructability
 		if(initial(turf_for_editing.hull))
-			if(istype(turf_for_editing, /turf/closed/shuttle))
-				//But we don't edit the map boundary!
-				continue
+			//Note: wall boundaries are safe since they are /turf/closed/shuttle, so not a subset of /turf/closed/wall!
 			turf_for_editing.hull = !turf_for_editing.hull

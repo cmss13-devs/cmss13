@@ -51,7 +51,7 @@
 	config_entry_value = TRUE
 
 /datum/config_entry/number/revive_grace_period
-	config_entry_value = 3000
+	config_entry_value = 1800
 	min_val = 0
 
 /datum/config_entry/flag/bones_can_break

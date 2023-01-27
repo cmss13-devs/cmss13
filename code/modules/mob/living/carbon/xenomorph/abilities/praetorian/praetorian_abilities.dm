@@ -301,11 +301,11 @@
 	var/heal_cost = 100
 	var/heal_amount = 150
 
-	//Aren't these shield values obsolete since Warden had her shield ability removed?
-	var/shield_cost = 100
-	var/shield_amount = 125
-	var/shield_duration = 1 MINUTES
-	var/shield_decay = 25
+	//These are obsolete, but I am keeping them around just in case.
+	//var/shield_cost = 100
+	//var/shield_amount = 125
+	//var/shield_duration = 1 MINUTES
+	//var/shield_decay = 25
 
 	var/debuff_cost = 100
 

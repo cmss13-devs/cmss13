@@ -313,7 +313,7 @@
 	. = ..() //Do a view printout as needed just in case the observer doesn't want to join as a Hugger but wants info
 	join_as_facehugger_from_this(user)
 
-/mob/living/carbon/Xenomorph/Carrier/proc/join_as_facehugger_from_this(mob/dead/observer/user)
+/mob/living/carbon/xenomorph/carrier/proc/join_as_facehugger_from_this(mob/dead/observer/user)
 	if(!huggers_max) //Eggsac doesn't have huggers, do nothing!
 		return
 	if(stat == DEAD)

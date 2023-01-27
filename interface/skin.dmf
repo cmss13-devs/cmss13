@@ -130,7 +130,7 @@ menu "menu"
 		command = ""
 		saved-params = "is-checked"
 	elem
-		name = "&Admin help\tF1"
+		name = "&Admin Help\tF1"
 		command = "adminhelp"
 		category = "&Help"
 		saved-params = "is-checked"
@@ -154,13 +154,14 @@ menu "menu"
 		category = "Volume"
 		saved-params = "is-checked"
 
+
 window "mainwindow"
 	elem "mainwindow"
 		type = MAIN
-		pos = 0,0
+		pos = 281,0
 		size = 640x440
-		anchor1 = none
-		anchor2 = none
+		anchor1 = -1,-1
+		anchor2 = -1,-1
 		is-default = true
 		saved-params = "pos;size;is-minimized;is-maximized"
 		title = "CM-SS13 - USS Almayer"
@@ -225,7 +226,7 @@ window "infowindow"
 	elem "infowindow"
 		type = MAIN
 		pos = 281,0
-		size = 640x400
+		size = 640x480
 		anchor1 = -1,-1
 		anchor2 = -1,-1
 		saved-params = "pos;size;is-minimized;is-maximized"
@@ -234,7 +235,7 @@ window "infowindow"
 	elem "info"
 		type = CHILD
 		pos = 0,30
-		size = 640x370
+		size = 640x445
 		anchor1 = 0,0
 		anchor2 = 100,100
 		saved-params = "splitter"
@@ -417,16 +418,16 @@ window "preferencewindow"
 window "statwindow"
 	elem "statwindow"
 		type = MAIN
-		pos = 372,0
-		size = 640x400
-		anchor1 = none
-		anchor2 = none
+		pos = 281,0
+		size = 640x480
+		anchor1 = -1,-1
+		anchor2 = -1,-1
 		saved-params = "pos;size;is-minimized;is-maximized"
 		is-pane = true
 	elem "statbrowser"
 		type = BROWSER
 		pos = 0,0
-		size = 640x400
+		size = 640x480
 		anchor1 = 0,0
 		anchor2 = 100,100
 		is-visible = false

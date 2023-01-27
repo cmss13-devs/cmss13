@@ -274,8 +274,8 @@
 
 	for(var/mob/living/mob in view(usr.client))
 		to_chat(mob, SPAN_ANNOUNCEMENT_HEADER_BLUE(message))
-	log_admin("[key_name(src)] sent a Direct Narrate in View with custom message \"[message]\".")
-	message_staff("[key_name(src)] sent a Direct Narrate in View with custom message \"[message]\".")
+	log_admin("[key_name(usr)] sent a Direct Narrate in View with custom message \"[message]\".")
+	message_staff("[key_name(usr)] sent a Direct Narrate in View with custom message \"[message]\".")
 
 #define SUBTLE_MESSAGE_IN_HEAD "Voice in Head"
 #define SUBTLE_MESSAGE_WEYLAND "Weyland-Yutani"

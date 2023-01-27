@@ -19,7 +19,7 @@
 	)
 
 /obj/item/device/motiondetector/intel/get_help_text()
-	.= "Green indicators on your HUD will show the location of intelligence objects detected by the scanner. Has two modes: slow long-range [SPAN_HELPFUL("(14 tiles)")] and fast short-range [SPAN_HELPFUL("(7 tiles)")]."
+	. = "Green indicators on your HUD will show the location of intelligence objects detected by the scanner. Has two modes: slow long-range [SPAN_HELPFUL("(14 tiles)")] and fast short-range [SPAN_HELPFUL("(7 tiles)")]."
 
 /obj/item/device/motiondetector/intel/update_icon()
 	if (active)

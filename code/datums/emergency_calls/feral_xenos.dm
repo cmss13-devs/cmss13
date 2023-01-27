@@ -30,25 +30,25 @@
 	var/mob/current_mob = M.current
 	var/hive_leader = FALSE
 
-	var/mob/living/carbon/Xenomorph/new_xeno
+	var/mob/living/carbon/xenomorph/new_xeno
 	if(!leader)
-		var/picked = pick(/mob/living/carbon/Xenomorph/Ravager, /mob/living/carbon/Xenomorph/Praetorian, /mob/living/carbon/Xenomorph/Crusher)
+		var/picked = pick(/mob/living/carbon/xenomorph/ravager, /mob/living/carbon/xenomorph/praetorian, /mob/living/carbon/xenomorph/crusher)
 		new_xeno = new picked(spawn_loc)
 		leader = new_xeno
 		hive_leader = TRUE
 
 	else if(medics < max_medics)
 		medics++
-		var/picked = pick(/mob/living/carbon/Xenomorph/Drone, /mob/living/carbon/Xenomorph/Hivelord, /mob/living/carbon/Xenomorph/Burrower)
+		var/picked = pick(/mob/living/carbon/xenomorph/drone, /mob/living/carbon/xenomorph/hivelord, /mob/living/carbon/xenomorph/burrower)
 		new_xeno = new picked(spawn_loc)
 
 	else if(engineers < max_engineers)
 		engineers++
-		var/picked = pick(/mob/living/carbon/Xenomorph/Warrior, /mob/living/carbon/Xenomorph/Lurker, /mob/living/carbon/Xenomorph/Spitter)
+		var/picked = pick(/mob/living/carbon/xenomorph/warrior, /mob/living/carbon/xenomorph/lurker, /mob/living/carbon/xenomorph/spitter)
 		new_xeno = new picked(spawn_loc)
 
 	else
-		var/picked = pick(/mob/living/carbon/Xenomorph/Drone, /mob/living/carbon/Xenomorph/Runner, /mob/living/carbon/Xenomorph/Defender)
+		var/picked = pick(/mob/living/carbon/xenomorph/drone, /mob/living/carbon/xenomorph/runner, /mob/living/carbon/xenomorph/defender)
 		new_xeno = new picked(spawn_loc)
 
 	M.transfer_to(new_xeno, TRUE)

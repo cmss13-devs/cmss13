@@ -659,7 +659,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 				if(istype(da, /obj/structure/airlock_assembly/multi_tile))
 					da.setDir(dir)
 
-				da.anchored = 1
+				da.anchored = TRUE
 				if(mineral)
 					da.glass = mineral
 				//else if(glass)
@@ -849,7 +849,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 					qdel(x)
 				break
 
-/obj/structure/machinery/door/airlock/handle_tail_stab(var/mob/living/carbon/Xenomorph/xeno)
+/obj/structure/machinery/door/airlock/handle_tail_stab(var/mob/living/carbon/xenomorph/xeno)
 	if(isElectrified() && arePowerSystemsOn())
 		var/datum/effect_system/spark_spread/sparks = new /datum/effect_system/spark_spread
 		sparks.set_up(5, 1, src)

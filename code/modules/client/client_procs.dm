@@ -108,6 +108,11 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	if(href_list["reload_statbrowser"])
 		stat_panel.reinitialize()
 
+	// TGUIless adminhelp
+	if(href_list["tguiless_adminhelp"])
+		no_tgui_adminhelp(input(src, "Enter your ahelp", "Ahelp") as null|message)
+		return
+
 	//byond bug ID:2256651
 	if (asset_cache_job && (asset_cache_job in completed_asset_jobs))
 		to_chat(src, "<span class='danger'>An error has been detected in how your client is receiving resources. Attempting to correct.... (If you keep seeing these messages you might want to close byond and reconnect)</span>")
@@ -384,7 +389,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 
 	if(mob && !isobserver(mob) && !isnewplayer(mob))
 		if(isXeno(mob))
-			var/mob/living/carbon/Xenomorph/X = mob
+			var/mob/living/carbon/xenomorph/X = mob
 			if(X.hive && GLOB.custom_event_info_list[X.hive])
 				CEI = GLOB.custom_event_info_list[X.hive]
 				CEI.show_player_event_info(src)

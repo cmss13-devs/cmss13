@@ -67,29 +67,29 @@
 	Oh yeah you'd rather not delete all the xenoes on the ground. Only that one room the xenoes were
 	spawned in.
 
-	"DELETE /mob/living/carbon/Xenomorph WHERE loc.loc == marked"
+	"DELETE /mob/living/carbon/xenomorph WHERE loc.loc == marked"
 
 	Here I used VV to mark the area they were in (marked is the first marked datum in your marked datum list),
 	and since loc.loc = area, voila. Only the xenoes in a specific area are gone.
 
 	Or you know if you want to catch xenoes that crawled into lockers too (how even?)
 
-	"DELETE /mob/living/carbon/Xenomorph WHERE global.get_area(src) == marked"
+	"DELETE /mob/living/carbon/xenomorph WHERE global.get_area(src) == marked"
 
 	What else can you do?
 
 	Well suppose you'd rather gib those xenoes instead of simply flat deleting them...
 
-	"CALL gib() ON /mob/living/carbon/Xenomorph WHERE global.get_area(src) == marked"
+	"CALL gib() ON /mob/living/carbon/xenomorph WHERE global.get_area(src) == marked"
 
 	Or you can have some fun..
 
-	"CALL forceMove(marked) ON /mob/living/carbon/Xenomorph"
+	"CALL forceMove(marked) ON /mob/living/carbon/xenomorph"
 
 	You can also run multiple queries sequentially:
 
-	"CALL forceMove(marked) ON /mob/living/carbon/Xenomorph; CALL gib() ON
-	/mob/living/carbon/Xenomorph"
+	"CALL forceMove(marked) ON /mob/living/carbon/xenomorph; CALL gib() ON
+	/mob/living/carbon/xenomorph"
 
 	And finally, you can directly modify variables on objects.
 

@@ -71,7 +71,7 @@ Humans will take continuous damage instead.
 	SIGNAL_HANDLER
 	L += "Healing Reduction: [healing_reduction]/[max_buildup]"
 
-/datum/component/healing_reduction/proc/apply_healing_reduction(var/mob/living/carbon/Xenomorph/X, var/list/healing)
+/datum/component/healing_reduction/proc/apply_healing_reduction(var/mob/living/carbon/xenomorph/X, var/list/healing)
 	SIGNAL_HANDLER
 	healing["healing"] -= healing_reduction
 

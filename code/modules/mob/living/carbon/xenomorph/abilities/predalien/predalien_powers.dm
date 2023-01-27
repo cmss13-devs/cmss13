@@ -1,5 +1,5 @@
 /datum/action/xeno_action/onclick/predalien_roar/use_ability(atom/target)
-	var/mob/living/carbon/Xenomorph/xeno = owner
+	var/mob/living/carbon/xenomorph/xeno = owner
 
 	if (!action_cooldown_check())
 		return
@@ -42,7 +42,7 @@
 	return
 
 /datum/action/xeno_action/onclick/smash/use_ability(atom/target)
-	var/mob/living/carbon/Xenomorph/xeno = owner
+	var/mob/living/carbon/xenomorph/xeno = owner
 
 	if (!action_cooldown_check())
 		return
@@ -97,7 +97,7 @@
 	return
 
 /datum/action/xeno_action/activable/devastate/use_ability(atom/target)
-	var/mob/living/carbon/Xenomorph/xeno = owner
+	var/mob/living/carbon/xenomorph/xeno = owner
 
 	if (!action_cooldown_check())
 		return
@@ -136,7 +136,7 @@
 	apply_cooldown()
 
 	xeno.frozen = 1
-	xeno.anchored = 1
+	xeno.anchored = TRUE
 	xeno.update_canmove()
 
 	if (do_after(xeno, activation_delay, INTERRUPT_ALL | BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
@@ -152,7 +152,7 @@
 		xeno.flick_attack_overlay(carbon, "tail")
 
 	xeno.frozen = 0
-	xeno.anchored = 0
+	xeno.anchored = FALSE
 	xeno.update_canmove()
 
 	unroot_human(carbon)

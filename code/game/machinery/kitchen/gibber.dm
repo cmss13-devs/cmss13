@@ -99,7 +99,7 @@
 		to_chat(user, SPAN_WARNING("This item is not suitable for the gibber!"))
 		return
 	var/mob/living/M = G.grabbed_thing
-	if(user.grab_level < GRAB_AGGRESSIVE && !istype(G.grabbed_thing, /mob/living/carbon/Xenomorph))
+	if(user.grab_level < GRAB_AGGRESSIVE && !istype(G.grabbed_thing, /mob/living/carbon/xenomorph))
 		to_chat(user, SPAN_WARNING("You need a better grip to do that!"))
 		return
 
@@ -154,8 +154,8 @@
 	var/totalslabs = 2
 
 	var/obj/item/reagent_container/food/snacks/meat/meat_template = /obj/item/reagent_container/food/snacks/meat/monkey
-	if(istype(occupant, /mob/living/carbon/Xenomorph))
-		var/mob/living/carbon/Xenomorph/X = occupant
+	if(istype(occupant, /mob/living/carbon/xenomorph))
+		var/mob/living/carbon/xenomorph/X = occupant
 		meat_template = /obj/item/reagent_container/food/snacks/meat/xenomeat
 		totalslabs = 1
 		if(X.caste_type == XENO_CASTE_QUEEN)//have to do queen and predalien first because they are T0 and T1

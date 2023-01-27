@@ -8,7 +8,7 @@
 	name = "smoke"
 	icon_state = "smoke"
 	opacity = TRUE
-	anchored = 1
+	anchored = TRUE
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	layer = ABOVE_MOB_LAYER + 0.1 //above mobs and barricades
 	var/amount = 2
@@ -258,7 +258,7 @@
 /obj/effect/particle_effect/smoke/xeno_burn
 	time_to_live = 12
 	color = "#86B028" //Mostly green?
-	anchored = 1
+	anchored = TRUE
 	spread_speed = 7
 	smokeranking = SMOKE_RANK_BOILER
 
@@ -266,7 +266,7 @@
 	var/gas_damage = 20
 
 /obj/effect/particle_effect/smoke/xeno_burn/Initialize(mapload, amount, datum/cause_data/cause_data)
-	var/mob/living/carbon/Xenomorph/xeno = cause_data?.resolve_mob()
+	var/mob/living/carbon/xenomorph/xeno = cause_data?.resolve_mob()
 	if (istype(xeno) && xeno.hivenumber)
 		hivenumber = xeno.hivenumber
 

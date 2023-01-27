@@ -15,7 +15,7 @@
 	if (. == 0)
 		return
 
-	var/mob/living/carbon/Xenomorph/Defender/defender = mutator_set.xeno
+	var/mob/living/carbon/xenomorph/defender/defender = mutator_set.xeno
 	defender.mutation_type = DEFENDER_STEELCREST
 	defender.mutation_icon_state = DEFENDER_STEELCREST
 	defender.damage_modifier -= XENO_DAMAGE_MOD_VERYSMALL

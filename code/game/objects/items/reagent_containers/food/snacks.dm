@@ -345,7 +345,7 @@
 
 /obj/item/reagent_container/food/snacks/cookie
 	name = "cookie"
-	desc = "COOKIE!!!"
+	desc = "A delicious and crumbly chocolate chip cookie. Don't feed to parrots."
 	icon_state = "COOKIE!!!"
 	filling_color = "#DBC94F"
 
@@ -893,7 +893,7 @@
 
 /obj/item/reagent_container/food/snacks/muffin
 	name = "Muffin"
-	desc = "A delicious and spongy little cake"
+	desc = "A little muffin. Spongy, moist, and delicious."
 	icon_state = "muffin"
 	filling_color = "#E0CF9B"
 
@@ -1124,7 +1124,7 @@
 
 /obj/item/reagent_container/food/snacks/popcorn
 	name = "Popcorn"
-	desc = "Now let's find some cinema."
+	desc = "Buttery movie theater-style popcorn. Now to find a movie to watch while eating it."
 	icon_state = "popcorn"
 	trash = /obj/item/trash/popcorn
 	var/unpopped = 0
@@ -1275,8 +1275,8 @@
 	bitesize = 2
 
 /obj/item/reagent_container/food/snacks/meatsteak
-	name = "Meat steak"
-	desc = "A piece of hot spicy meat."
+	name = "steak"
+	desc = "A fine cut of grilled meat, spiced with salt and pepper. Where the meat came from is, well, probably best left unanswered."
 	icon_state = "meatstake"
 	trash = /obj/item/trash/plate
 	filling_color = "#7A3D11"

@@ -15,7 +15,7 @@
 	icon = 'icons/obj/structures/tables.dmi'
 	icon_state = "table"
 	density = TRUE
-	anchored = 1.0
+	anchored = TRUE
 	layer = TABLE_LAYER
 	throwpass = 1 //You can throw objects over this, despite it's density.")
 	climbable = 1
@@ -74,8 +74,8 @@
 
 /obj/structure/surface/table/Crossed(atom/movable/O)
 	..()
-	if(istype(O,/mob/living/carbon/Xenomorph/Ravager) || istype(O,/mob/living/carbon/Xenomorph/Crusher))
-		var/mob/living/carbon/Xenomorph/M = O
+	if(istype(O,/mob/living/carbon/xenomorph/ravager) || istype(O,/mob/living/carbon/xenomorph/crusher))
+		var/mob/living/carbon/xenomorph/M = O
 		if(!M.stat) //No dead xenos jumpin on the bed~
 			visible_message(SPAN_DANGER("[O] plows straight through [src]!"))
 			deconstruct()
@@ -605,7 +605,7 @@
 	icon_state = "rack"
 	density = TRUE
 	layer = TABLE_LAYER
-	anchored = 1.0
+	anchored = TRUE
 	throwpass = 1 //You can throw objects over this, despite it's density.
 	breakable = 1
 	climbable = 1
@@ -645,8 +645,8 @@
 
 /obj/structure/surface/rack/Crossed(atom/movable/O)
 	..()
-	if(istype(O,/mob/living/carbon/Xenomorph/Ravager) || istype(O,/mob/living/carbon/Xenomorph/Crusher))
-		var/mob/living/carbon/Xenomorph/M = O
+	if(istype(O,/mob/living/carbon/xenomorph/ravager) || istype(O,/mob/living/carbon/xenomorph/crusher))
+		var/mob/living/carbon/xenomorph/M = O
 		if(!M.stat) //No dead xenos jumpin on the bed~
 			visible_message(SPAN_DANGER("[O] plows straight through [src]!"))
 			deconstruct()

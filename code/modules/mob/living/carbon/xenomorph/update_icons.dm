@@ -240,7 +240,7 @@
 	apply_overlay(X_SUIT_LAYER)
 	addtimer(CALLBACK(src, PROC_REF(remove_overlay), X_SUIT_LAYER), duration)
 
-/mob/living/carbon/Xenomorph/proc/create_bulwark_image(var/alpha_mult, var/type = "full", var/enhanced)
+/mob/living/carbon/xenomorph/proc/create_bulwark_image(var/alpha_mult, var/type = "full", var/enhanced)
 	remove_overlay(X_HEAD_LAYER)
 
 	var/image/shield_image = new("icon" = 'icons/mob/xenos/overlay_effects64x64.dmi', "icon_state" = "knight_shield_[type]")
@@ -254,7 +254,7 @@
 /mob/living/carbon/xenomorph/proc/remove_suit_layer()
 	remove_overlay(X_SUIT_LAYER)
 
-/mob/living/carbon/Xenomorph/proc/remove_head_layer()
+/mob/living/carbon/xenomorph/proc/remove_head_layer()
 	remove_overlay(X_HEAD_LAYER)
 
 /mob/living/carbon/xenomorph/update_fire()

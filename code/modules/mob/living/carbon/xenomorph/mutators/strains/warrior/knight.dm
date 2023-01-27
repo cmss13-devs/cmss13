@@ -24,7 +24,7 @@
 	if (!.)
 		return
 
-	var/mob/living/carbon/Xenomorph/Warrior/Knight = mutator_set.xeno
+	var/mob/living/carbon/xenomorph/Warrior/Knight = mutator_set.xeno
 	Knight.health_modifier += XENO_HEALTH_MOD_MED
 	Knight.armor_modifier += XENO_ARMOR_MOD_SMALL
 	Knight.explosivearmor_modifier += XENO_EXPLOSIVE_ARMOR_TIER_4
@@ -96,7 +96,7 @@
 
 	bound_xeno.overlays += enhancement_tendrils_icon
 
-/datum/behavior_delegate/warrior_knight/proc/weed_enhance_check(var/mob/living/carbon/Xenomorph/Warrior/Knight, var/turf/entered_turf)
+/datum/behavior_delegate/warrior_knight/proc/weed_enhance_check(var/mob/living/carbon/xenomorph/Warrior/Knight, var/turf/entered_turf)
 	SIGNAL_HANDLER
 	var/datum/behavior_delegate/warrior_knight/knight_delegate = Knight.behavior_delegate
 	//If the entered turf has weeds *and* they're of the same hive, try to buff if not already buffed.

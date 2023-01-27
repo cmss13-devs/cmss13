@@ -196,7 +196,7 @@
 	shake_camera(carbone, 2, 1)
 	step_away(carbone, woyer, 2)
 
-/datum/action/xeno_action/activable/tail_stab/tail_trip/ability_act(var/mob/living/carbon/Xenomorph/stabbing_xeno, var/mob/living/carbon/target)
+/datum/action/xeno_action/activable/tail_stab/tail_trip/ability_act(var/mob/living/carbon/xenomorph/stabbing_xeno, var/mob/living/carbon/target)
 
 	stabbing_xeno.visible_message(SPAN_XENOWARNING("\The [stabbing_xeno] trips [target] with its tail!"), SPAN_XENOWARNING("You swipe your tail into [target]'s legs, tripping it!"))
 	stabbing_xeno.spin_circle()
@@ -213,7 +213,7 @@
 	return target
 
 /datum/action/xeno_action/activable/pike/use_ability(atom/target_atom)
-	var/mob/living/carbon/Xenomorph/zenomorf = owner
+	var/mob/living/carbon/xenomorph/zenomorf = owner
 
 	if (!action_cooldown_check())
 		return
@@ -316,7 +316,7 @@
 #define ALPHA_SHIELD_SHATTERED 0.50
 
 /datum/action/xeno_action/onclick/bulwark/use_ability(atom/target_atom)
-	var/mob/living/carbon/Xenomorph/Warrior/Knight = owner
+	var/mob/living/carbon/xenomorph/Warrior/Knight = owner
 
 	if (!action_cooldown_check())
 		return
@@ -356,7 +356,7 @@
 
 /datum/action/xeno_action/onclick/bulwark/proc/reduce_bullet_damage(var/mob/xeno_byproduct_param, var/list/projectiledata)
 	SIGNAL_HANDLER
-	var/mob/living/carbon/Xenomorph/zenomorf = owner
+	var/mob/living/carbon/xenomorph/zenomorf = owner
 
 	if(zenomorf.mutation_type != WARRIOR_KNIGHT) //why do we need these checks again? it's not like it wouldnt be a bug that needs looking into if they didnt exist. if anything this removes helpful runtimes
 		return
@@ -374,7 +374,7 @@
 
 /datum/action/xeno_action/onclick/bulwark/proc/reduce_stuns(var/mob/xeno_byproduct_param, var/effect_amount, var/effect_type, var/effect_flags)
 	SIGNAL_HANDLER
-	var/mob/living/carbon/Xenomorph/xeno = owner
+	var/mob/living/carbon/xenomorph/xeno = owner
 
 	if(xeno.mutation_type != WARRIOR_KNIGHT)
 		return
@@ -419,7 +419,7 @@
 	return COMPONENT_CANCEL_ATTACK
 
 /datum/action/xeno_action/onclick/bulwark/proc/shatter_shield()
-	var/mob/living/carbon/Xenomorph/Warrior/Knight = owner
+	var/mob/living/carbon/xenomorph/Warrior/Knight = owner
 	var/datum/behavior_delegate/warrior_knight/knight_delegate = Knight.behavior_delegate
 	if(!(knight_delegate.clarity_stacks > 0))
 		return FALSE
@@ -437,7 +437,7 @@
 	return TRUE
 
 /datum/action/xeno_action/onclick/bulwark/proc/remove_shield()
-	var/mob/living/carbon/Xenomorph/xeno = owner
+	var/mob/living/carbon/xenomorph/xeno = owner
 
 	if(xeno.mutation_type != WARRIOR_KNIGHT)
 		return
@@ -463,7 +463,7 @@
 	..()
 
 /datum/action/xeno_action/activable/pounce/leap/pre_pounce_additional_effects(mob/living/L)
-	var/mob/living/carbon/Xenomorph/zenomorf = owner
+	var/mob/living/carbon/xenomorph/zenomorf = owner
 
 	if(zenomorf.mutation_type != WARRIOR_KNIGHT)
 		return
@@ -485,7 +485,7 @@
 			knockdown = TRUE
 
 /datum/action/xeno_action/activable/pounce/leap/post_pounce_additional_effects(mob/living/L)
-	var/mob/living/carbon/Xenomorph/zenomorf = owner
+	var/mob/living/carbon/xenomorph/zenomorf = owner
 
 	if(zenomorf.mutation_type != WARRIOR_KNIGHT)
 		return

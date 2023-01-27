@@ -13076,7 +13076,7 @@
 	icon_state = "open_science";
 	opened = 1
 	},
-/obj/item/organ/xenos/acidgland,
+/obj/item/organ/lungs,
 /obj/structure/machinery/light/double/blue{
 	dir = 1;
 	pixel_y = 21
@@ -17701,7 +17701,7 @@
 	icon_state = "open_science";
 	opened = 1
 	},
-/obj/item/organ/xenos/plasmavessel,
+/obj/item/organ/eyes,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/prison,
 /area/fiorina/station/medbay)

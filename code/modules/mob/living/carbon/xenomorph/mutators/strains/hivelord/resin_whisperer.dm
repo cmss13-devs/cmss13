@@ -22,7 +22,7 @@
 	if(!.)
 		return
 
-	var/mob/living/carbon/Xenomorph/Hivelord/hivelord = mutator_set.xeno
+	var/mob/living/carbon/xenomorph/hivelord/hivelord = mutator_set.xeno
 	hivelord.plasmapool_modifier = 0.8 // -20% plasma pool
 	hivelord.extra_build_dist = 12 // 1 + 12 = 13 tile build range
 	hivelord.can_stack_builds = TRUE
@@ -83,7 +83,7 @@
 		else
 			build_speed_mod = initial(build_speed_mod)
 
-	var/mob/living/carbon/Xenomorph/hivelord = owner
+	var/mob/living/carbon/xenomorph/hivelord = owner
 	if(!..())
 		return
 

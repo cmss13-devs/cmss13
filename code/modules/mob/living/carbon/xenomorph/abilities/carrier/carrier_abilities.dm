@@ -8,7 +8,7 @@
 
 /datum/action/xeno_action/activable/throw_hugger/action_cooldown_check()
 	if(owner)
-		var/mob/living/carbon/Xenomorph/Carrier/X = owner
+		var/mob/living/carbon/xenomorph/carrier/X = owner
 		return !X.threw_a_hugger
 	return TRUE //When we first add the ability we still do this check, but owner is null, so a workaround
 

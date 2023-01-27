@@ -1,0 +1,4 @@
+author: "harryob"
+delete-after: True
+changes:
+  - bugfix: "fixes the bad logging when an admin used direct narrate in view"

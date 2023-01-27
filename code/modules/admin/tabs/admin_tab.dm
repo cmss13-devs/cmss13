@@ -274,8 +274,8 @@
 
 	for(var/mob/living/mob in view(usr.client))
 		to_chat(mob, SPAN_ANNOUNCEMENT_HEADER_BLUE(message))
-	log_admin("[key_name(src)] sent a Direct Narrate in View with custom message \"[message]\".")
-	message_staff("[key_name(src)] sent a Direct Narrate in View with custom message \"[message]\".")
+	log_admin("[key_name(usr)] sent a Direct Narrate in View with custom message \"[message]\".")
+	message_staff("[key_name(usr)] sent a Direct Narrate in View with custom message \"[message]\".")
 
 #define SUBTLE_MESSAGE_IN_HEAD "Voice in Head"
 #define SUBTLE_MESSAGE_WEYLAND "Weyland-Yutani"
@@ -491,7 +491,7 @@
 	if(alert("This will rejuvenate ALL xenos within your view range. Are you sure?",,"Yes","Cancel") == "Cancel")
 		return
 
-	for(var/mob/living/carbon/Xenomorph/X in view())
+	for(var/mob/living/carbon/xenomorph/X in view())
 		X.rejuvenate(FALSE)
 
 	message_staff(WRAP_STAFF_LOG(usr, "ahealed all xenos in [get_area(usr)] ([usr.x],[usr.y],[usr.z])"), usr.x, usr.y, usr.z)

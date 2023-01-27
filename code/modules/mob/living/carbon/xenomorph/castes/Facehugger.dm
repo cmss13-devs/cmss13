@@ -12,7 +12,7 @@
 	evolution_allowed = FALSE
 	can_be_revived = FALSE
 
-/mob/living/carbon/Xenomorph/Facehugger
+/mob/living/carbon/xenomorph/facehugger
 	name = XENO_CASTE_FACEHUGGER
 	caste_type = XENO_CASTE_FACEHUGGER
 	speak_emote = list("hisses")
@@ -46,25 +46,25 @@
 		/datum/action/xeno_action/activable/pounce/facehugger
 	)
 	inherent_verbs = list(
-		/mob/living/carbon/Xenomorph/proc/vent_crawl
+		/mob/living/carbon/xenomorph/proc/vent_crawl
 	)
 	mutation_type = "Normal"
 
 	icon_xeno = 'icons/mob/xenos/facehugger.dmi'
 	icon_xenonid = 'icons/mob/xenonids/facehugger.dmi'
 
-/mob/living/carbon/Xenomorph/Facehugger/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/mob/living/carbon/xenomorph/facehugger/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_pass = PASS_MOB_THRU|PASS_FLAGS_CRAWLER
 		PF.flags_can_pass_all = PASS_ALL^PASS_OVER_THROW_ITEM
 
-/mob/living/carbon/Xenomorph/Facehugger/Life(delta_time)
+/mob/living/carbon/xenomorph/facehugger/Life(delta_time)
 	if(stat != DEAD && !lying)
 		adjustBruteLoss(1)
 	return ..()
 
-/mob/living/carbon/Xenomorph/Facehugger/update_icons(is_pouncing)
+/mob/living/carbon/xenomorph/facehugger/update_icons(is_pouncing)
 	if(!caste)
 		return
 
@@ -83,13 +83,13 @@
 	update_fire() //the fire overlay depends on the xeno's stance, so we must update it.
 	update_wounds()
 
-/mob/living/carbon/Xenomorph/Facehugger/start_pulling(atom/movable/AM)
+/mob/living/carbon/xenomorph/facehugger/start_pulling(atom/movable/AM)
 	return
 
-/mob/living/carbon/Xenomorph/Facehugger/pull_response(mob/puller)
+/mob/living/carbon/xenomorph/facehugger/pull_response(mob/puller)
 	return TRUE
 
-/mob/living/carbon/Xenomorph/Facehugger/UnarmedAttack(atom/A, proximity, click_parameters, tile_attack)
+/mob/living/carbon/xenomorph/facehugger/UnarmedAttack(atom/A, proximity, click_parameters, tile_attack)
 	a_intent = INTENT_HELP //Forces help intent for all interactions.
 	if(!caste)
 		return FALSE
@@ -135,7 +135,7 @@
 	A.attack_larva(src)
 	xeno_attack_delay(src) //Adds some lag to the 'attack'
 
-/mob/living/carbon/Xenomorph/Facehugger/proc/handle_hug(var/mob/living/carbon/human/human)
+/mob/living/carbon/xenomorph/facehugger/proc/handle_hug(var/mob/living/carbon/human/human)
 	var/obj/item/clothing/mask/facehugger/hugger = new /obj/item/clothing/mask/facehugger(loc, hivenumber)
 	var/did_hug = hugger.attach(human, TRUE, 0.5)
 	if(client)
@@ -156,7 +156,7 @@
 		xeno_message(SPAN_XENOMINORWARNING("You sense that [src] has facehugged a host!"), 1, src.hivenumber)
 	return did_hug
 
-/mob/living/carbon/Xenomorph/Facehugger/age_xeno()
+/mob/living/carbon/xenomorph/facehugger/age_xeno()
 	if(stat == DEAD || !caste || QDELETED(src) || !client)
 		return
 
@@ -194,18 +194,18 @@
 	//One last shake for the sake of it
 	xeno_jitter(25)
 
-/mob/living/carbon/Xenomorph/Facehugger/handle_screech_act(var/mob/self, var/mob/living/carbon/Xenomorph/Queen/queen)
+/mob/living/carbon/xenomorph/facehugger/handle_screech_act(var/mob/self, var/mob/living/carbon/xenomorph/queen/queen)
 	return null
 
-/mob/living/carbon/Xenomorph/Facehugger/handle_queen_screech(var/mob/living/carbon/Xenomorph/Queen/queen)
+/mob/living/carbon/xenomorph/facehugger/handle_queen_screech(var/mob/living/carbon/xenomorph/queen/queen)
 	to_chat(src, SPAN_DANGER("The mighty roar of the queen makes you tremble and fall over!"))
 	adjust_effect(6, STUN)
 	apply_effect(6, WEAKEN)
 
-/mob/living/carbon/Xenomorph/Facehugger/add_xeno_shield(added_amount, shield_source, type = /datum/xeno_shield, duration = -1, decay_amount_per_second = 1, add_shield_on = FALSE, max_shield = 200)
+/mob/living/carbon/xenomorph/facehugger/add_xeno_shield(added_amount, shield_source, type = /datum/xeno_shield, duration = -1, decay_amount_per_second = 1, add_shield_on = FALSE, max_shield = 200)
 	return
 
-/mob/living/carbon/Xenomorph/Facehugger/proc/scuttle(var/obj/structure/current_structure)
+/mob/living/carbon/xenomorph/facehugger/proc/scuttle(var/obj/structure/current_structure)
 	var/move_dir = get_dir(src, loc)
 	for(var/atom/movable/atom in get_turf(current_structure))
 		if(atom != current_structure && atom.density && atom.BlockedPassDirs(src, move_dir))

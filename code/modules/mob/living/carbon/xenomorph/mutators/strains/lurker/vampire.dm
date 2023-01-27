@@ -2,6 +2,7 @@
 /datum/xeno_mutator/Vampire
 	name = "STRAIN: Lurker - Vampire"
 	description = "You lose the ability to cloak in exchange for faster speed and armor, along with extra abilities that will allow you to bleed your opponents and execute them, granting you great healing."
+	flavor_description = "Your thirst for blood surpasses even the likes of myself, child. Slaughter them all!"
 	cost = MUTATOR_COST_EXPENSIVE
 	individual_only = TRUE
 	caste_whitelist = list(XENO_CASTE_LURKER)

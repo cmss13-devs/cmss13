@@ -2,7 +2,7 @@
 /datum/xeno_mutator/trapper
 	name = "STRAIN: Boiler - Trapper"
 	description = "You trade your ability to bombard, lance, and dump your acid for longer range vision, traps that immobilize your opponents, and unblockable acid mines."
-	flavor_description = "I love the smell of burnin' tallhost flesh in the Mornin'."
+	flavor_description = "Hsss, I love the smell of burnin' tallhost flesh in the mornin'."
 	cost = MUTATOR_COST_EXPENSIVE
 	individual_only = TRUE
 	caste_whitelist = list(XENO_CASTE_BOILER) //Only boiler.

@@ -1,6 +1,7 @@
 /datum/xeno_mutator/steel_crest
 	name = "STRAIN: Defender - Steel Crest"
 	description = "You trade a small amount of your already weak damage and your tail sweep for slightly increased headbutt knockback and damage, and the ability to slowly move and headbutt while fortified."
+	flavor_description = "Use your head, child. Lay your life down to protect your sisters, if you must!"
 	cost = MUTATOR_COST_EXPENSIVE
 	individual_only = TRUE
 	caste_whitelist = list(XENO_CASTE_DEFENDER)

@@ -1,6 +1,7 @@
 /datum/xeno_mutator/shaman
 	name = "STRAIN: Carrier - Shaman"
 	description = "In exchange for your ability to store facehuggers and eggs, place traps, and passively emit pheromones, you can cheat the adrenaline mechanism of nearby xenos by violently killing little ones while they are still in a small egg form."
+	flavor_description = "The sacrifice of young ones is a sacrifice we will make to destroy the talls with empowered sisters!"
 	cost = MUTATOR_COST_EXPENSIVE
 	individual_only = TRUE
 	caste_whitelist = list(XENO_CASTE_CARRIER)

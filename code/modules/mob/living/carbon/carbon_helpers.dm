@@ -23,7 +23,7 @@
 /mob/living/carbon/human/yautja/warcry_macro()
 	emote("roar", player_caused = TRUE)
 
-/mob/living/carbon/Xenomorph/warcry_macro()
+/mob/living/carbon/xenomorph/warcry_macro()
 	emote("roar", player_caused = TRUE)
 
 /mob/living/carbon/verb/medic_macro()
@@ -38,7 +38,7 @@
 /mob/living/carbon/human/yautja/medic_macro()
 	emote("click", player_caused = TRUE)
 
-/mob/living/carbon/Xenomorph/medic_macro()
+/mob/living/carbon/xenomorph/medic_macro()
 	emote("needhelp", player_caused = TRUE)
 
 /mob/living/carbon/check_view_change(var/new_size, var/atom/source)
@@ -54,7 +54,7 @@
 		new_size = highest_view
 	return new_size
 
-/mob/living/carbon/proc/handle_queen_screech(var/mob/living/carbon/Xenomorph/Queen/queen, var/list/mobs_in_view)
+/mob/living/carbon/proc/handle_queen_screech(var/mob/living/carbon/xenomorph/queen/queen, var/list/mobs_in_view)
 	if(!(src in mobs_in_view))
 		return
 	scream_stun_timeout = 20 SECONDS

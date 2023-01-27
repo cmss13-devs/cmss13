@@ -15,12 +15,12 @@
 	var/hivenumber = XENO_HIVE_NORMAL
 	var/root_duration = 17.5
 
-	var/mob/living/carbon/Xenomorph/bound_xeno // Boiler linked to this trap
+	var/mob/living/carbon/xenomorph/bound_xeno // Boiler linked to this trap
 
 /obj/effect/alien/resin/boilertrap/empowered
 	root_duration = 30.0
 
-/obj/effect/alien/resin/boilertrap/Initialize(mapload, mob/living/carbon/Xenomorph/X)
+/obj/effect/alien/resin/boilertrap/Initialize(mapload, mob/living/carbon/xenomorph/X)
 	if(mapload || !istype(X))
 		return INITIALIZE_HINT_QDEL
 	bound_xeno = X
@@ -58,13 +58,13 @@
 	to_chat(M, SPAN_XENOHIGHDANGER("You are caught by a trap made of foul resin!"))
 	qdel(src)
 
-/obj/effect/alien/resin/boilertrap/attack_alien(mob/living/carbon/Xenomorph/X)
+/obj/effect/alien/resin/boilertrap/attack_alien(mob/living/carbon/xenomorph/X)
 	to_chat(X, SPAN_XENOWARNING("Best not to meddle with that trap."))
 	return XENO_NO_DELAY_ACTION
 
 /obj/effect/alien/resin/boilertrap/Crossed(atom/A)
 	if (isXeno(A))
-		var/mob/living/carbon/Xenomorph/X = A
+		var/mob/living/carbon/xenomorph/X = A
 		if (X.hivenumber != hivenumber)
 			trigger_trap(A)
 	else if(ishuman(A))

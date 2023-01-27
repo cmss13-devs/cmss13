@@ -156,7 +156,7 @@
 
 /obj/structure/machinery/door_control/attack_hand(mob/living/user)
 	add_fingerprint(user)
-	if(istype(user,/mob/living/carbon/Xenomorph))
+	if(istype(user,/mob/living/carbon/xenomorph))
 		return
 	use_button(user)
 

@@ -69,7 +69,7 @@
 	playsound(T, 'sound/effects/splat.ogg', 15, 1)
 	qdel(src)
 
-/obj/item/xeno_egg/proc/plant_egg(mob/living/carbon/Xenomorph/user, turf/T, proximity = TRUE)
+/obj/item/xeno_egg/proc/plant_egg(mob/living/carbon/xenomorph/user, turf/T, proximity = TRUE)
 	if(!proximity)
 		return // no message because usual behavior is not to show any
 	if(!user.hive)
@@ -123,9 +123,9 @@
 	if(!isXeno(user))
 		return
 
-	var/mob/living/carbon/Xenomorph/X = user
+	var/mob/living/carbon/xenomorph/X = user
 	if(isXenoCarrier(X))
-		var/mob/living/carbon/Xenomorph/Carrier/C = X
+		var/mob/living/carbon/xenomorph/carrier/C = X
 		C.store_egg(src)
 	else
 		var/turf/T = get_turf(user)
@@ -134,7 +134,7 @@
 
 
 //Deal with picking up facehuggers. "attack_alien" is the universal 'xenos click something while unarmed' proc.
-/obj/item/xeno_egg/attack_alien(mob/living/carbon/Xenomorph/user)
+/obj/item/xeno_egg/attack_alien(mob/living/carbon/xenomorph/user)
 	if(user.caste.can_hold_eggs == CAN_HOLD_ONE_HAND)
 		attack_hand(user)
 		return XENO_NO_DELAY_ACTION

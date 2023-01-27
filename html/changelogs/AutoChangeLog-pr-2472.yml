@@ -1,0 +1,5 @@
+author: "Morrow"
+delete-after: True
+changes:
+  - balance: "Lowered the shotgun slug's superslow effect (from 2 to 1) and slow effect (from 5 to 3)."
+  - code_imp: "Moved around ammo knockback code to make specific ammo knockback effect changes easier."

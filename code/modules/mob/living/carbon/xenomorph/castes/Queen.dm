@@ -368,7 +368,7 @@
 /mob/living/carbon/xenomorph/queen/Bravo
 	hivenumber = XENO_HIVE_BRAVO
 
-/mob/living/carbon/xenomorph/queen/Gamma
+/mob/living/carbon/xenomorph/queen/Charlie
 	hivenumber = XENO_HIVE_CHARLIE
 
 /mob/living/carbon/xenomorph/queen/Delta

@@ -25,8 +25,8 @@
 		/mob/living/simple_animal/parrot,
 		/mob/living/simple_animal/chick,
 		/mob/living/simple_animal/lizard,
-		/mob/living/carbon/Xenomorph/Facehugger,
-		/mob/living/carbon/Xenomorph/Larva
+		/mob/living/carbon/xenomorph/facehugger,
+		/mob/living/carbon/xenomorph/larva
 	)
 	var/play_counter = 0
 	min_oxy = 16 //Require atleast 16kPA oxygen

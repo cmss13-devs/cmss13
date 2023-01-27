@@ -305,9 +305,8 @@
 			to_chat(user, SPAN_WARNING("You slice at the table, but only claw it up a little."))
 		return
 
-	if (istype(W, /obj/item/device/sentry_computer))
-		var/obj/item/device/sentry_computer/computer = W
-		computer.setup(src)
+	if (W.has_special_table_placement)
+		W.set_to_table(src)
 		return
 
 	if(istype(W, /obj/item/explosive/grenade))

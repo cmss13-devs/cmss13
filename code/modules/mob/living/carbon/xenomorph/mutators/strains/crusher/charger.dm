@@ -379,7 +379,7 @@
 		if(anchored) //Ovipositor queen can't be pushed
 			charger_ability.stop_momentum()
 			return
-		if(isXenoQueen(src) || IS_XENO_LEADER(src) ||  isXenoBoiler(src)) // boilers because they have long c/d and warmups, get griefed hard if stunned
+		if(isqueen(src) || IS_XENO_LEADER(src) ||  isboiler(src)) // boilers because they have long c/d and warmups, get griefed hard if stunned
 			charger_ability.stop_momentum() // antigrief
 			return
 		if(HAS_TRAIT(src, TRAIT_CHARGING))

@@ -244,7 +244,7 @@
 
 /obj/item/clothing/glasses/night/experimental_mesons/mob_can_equip(mob/user, slot)
 	if(slot == WEAR_EYES)
-		if(!isSynth(user))
+		if(!issynth(user))
 			to_chat(user, "The experimental meson goggles start probing at your eyes, searching for an attachment point, and you immediately take them off.")
 			return FALSE
 	return ..()

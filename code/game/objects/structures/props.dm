@@ -22,7 +22,7 @@
 
 /obj/structure/prop/dam/drill/attackby(obj/item/W, mob/user)
 	. = ..()
-	if(isXeno(user))
+	if(isxeno(user))
 		return
 	else if (ishuman(user) && istype(W, /obj/item/tool/wrench))
 		on = !on
@@ -491,7 +491,7 @@
 
 /obj/structure/prop/turbine/attackby(obj/item/W, mob/user)
 	. = ..()
-	if(isXeno(user))
+	if(isxeno(user))
 		return
 	else if (ishuman(user) && istype(W, /obj/item/tool/crowbar))
 		on = !on

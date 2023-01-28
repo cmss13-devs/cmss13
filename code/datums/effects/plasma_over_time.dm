@@ -15,7 +15,7 @@
 	plasma_each_process = (plasma_amount / plasma_time) * time_between_plasmas
 
 /datum/effects/plasma_over_time/validate_atom(atom/A)
-	if(!isXeno(A))
+	if(!isxeno(A))
 		return FALSE
 	. = ..()
 

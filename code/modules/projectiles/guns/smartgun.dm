@@ -304,7 +304,7 @@
 	return TRUE
 
 /obj/item/weapon/gun/smartgun/unique_action(mob/user)
-	if(isobserver(usr) || isXeno(usr))
+	if(isobserver(usr) || isxeno(usr))
 		return
 	if(!powerpack)
 		link_powerpack(usr)

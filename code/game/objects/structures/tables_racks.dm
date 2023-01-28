@@ -261,7 +261,7 @@
 /obj/structure/surface/table/attackby(obj/item/W, mob/user, click_data)
 	if(!W) return
 	if(istype(W, /obj/item/grab) && get_dist(src, user) <= 1)
-		if(isXeno(user)) return
+		if(isxeno(user)) return
 		var/obj/item/grab/G = W
 		if(istype(G.grabbed_thing, /mob/living))
 			var/mob/living/M = G.grabbed_thing

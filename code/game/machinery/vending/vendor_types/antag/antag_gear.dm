@@ -98,7 +98,7 @@
 		/obj/item/reagent_container/spray/pepper,
 		/obj/item/reagent_container/ld50_syringe/choral,
 		/obj/item/storage/bible,
-		/obj/item/clothing/mask/gas/PMC,
+		/obj/item/clothing/mask/gas/pmc,
 		/obj/item/clothing/accessory/storage/holster,
 		/obj/item/clothing/accessory/storage/webbing,
 		/obj/item/storage/pill_bottle/happy,

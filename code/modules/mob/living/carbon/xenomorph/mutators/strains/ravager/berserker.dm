@@ -141,7 +141,7 @@
 	return
 
 /datum/behavior_delegate/ravager_berserker/melee_attack_modify_damage(original_damage, mob/living/carbon/A)
-	if (!isXenoOrHuman(A))
+	if (!isxeno_human(A))
 		return original_damage
 
 	if (next_slash_buffed)

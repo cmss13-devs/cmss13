@@ -289,7 +289,7 @@
 	if (!X.check_state())
 		return
 
-	if (!isXenoOrHuman(A) || X.can_not_harm(A))
+	if (!isxeno_human(A) || X.can_not_harm(A))
 		to_chat(X, SPAN_XENOWARNING("You must target a hostile!"))
 		return
 
@@ -395,7 +395,7 @@
 		xeno.spin_circle()
 
 		for (var/mob/living/carbon/human in orange(xeno, range))
-			if(!isXenoOrHuman(human) || xeno.can_not_harm(human))
+			if(!isxeno_human(human) || xeno.can_not_harm(human))
 				continue
 
 			if (human.stat == DEAD)

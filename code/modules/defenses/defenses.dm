@@ -341,7 +341,7 @@
 	if(!attack_hand_checks(user))
 		return
 
-	if(isYautja(user))
+	if(isyautja(user))
 		to_chat(user, SPAN_WARNING("You punch [src] but nothing happens."))
 		return
 

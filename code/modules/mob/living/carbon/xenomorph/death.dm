@@ -27,7 +27,7 @@
 		update_icons()
 
 	if(!is_admin_level(z)) //so xeno players don't get death messages from admin tests
-		if(isXenoQueen(src))
+		if(isqueen(src))
 			var/mob/living/carbon/xenomorph/queen/XQ = src
 			playsound(loc, 'sound/voice/alien_queen_died.ogg', 75, 0)
 			if(XQ.observed_xeno)

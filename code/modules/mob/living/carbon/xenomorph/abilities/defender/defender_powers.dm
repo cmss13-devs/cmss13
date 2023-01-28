@@ -40,7 +40,7 @@
 	if (!istype(fendy))
 		return
 
-	if(!isXenoOrHuman(target_atom) || fendy.can_not_harm(target_atom))
+	if(!isxeno_human(target_atom) || fendy.can_not_harm(target_atom))
 		return
 
 	if(!fendy.check_state())
@@ -134,7 +134,7 @@
 
 	var/sweep_range = 1
 	for(var/mob/living/carbon/H in orange(sweep_range, get_turf(X)))
-		if (!isXenoOrHuman(H) || X.can_not_harm(H)) continue
+		if (!isxeno_human(H) || X.can_not_harm(H)) continue
 		if(H.stat == DEAD) continue
 		if(HAS_TRAIT(H, TRAIT_NESTED)) continue
 		step_away(H, X, sweep_range, 2)

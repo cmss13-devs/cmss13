@@ -358,7 +358,7 @@
 		SPAN_XENOWARNING("You begin to emit '[pheromone]' pheromones."), null, 5)
 		playsound(loc, "alien_drool", 25)
 
-	if(isXenoQueen(src) && hive && hive.xeno_leader_list.len && anchored)
+	if(isqueen(src) && hive && hive.xeno_leader_list.len && anchored)
 		for(var/mob/living/carbon/xenomorph/L in hive.xeno_leader_list)
 			L.handle_xeno_leader_pheromones()
 
@@ -392,7 +392,7 @@
 		X.layer = MOB_LAYER
 		X.update_wounds()
 
-	if(isXenoRavager(X))
+	if(isravager(X))
 		X.emote("roar")
 
 	if (!tracks_target)
@@ -635,7 +635,7 @@
 	if(!spacecheck(X,T,structure_template)) //doublechecking
 		return FALSE
 
-	if((choice == XENO_STRUCTURE_CORE) && isXenoQueen(X) && X.hive.has_structure(XENO_STRUCTURE_CORE))
+	if((choice == XENO_STRUCTURE_CORE) && isqueen(X) && X.hive.has_structure(XENO_STRUCTURE_CORE))
 		if(X.hive.hive_location.hardcore || world.time > XENOMORPH_PRE_SETUP_CUTOFF)
 			to_chat(X, SPAN_WARNING("You can't rebuild this structure!"))
 			return
@@ -912,7 +912,7 @@
 		xeno_attack_delay(stabbing_xeno)
 		return ..()
 
-	if(!isXenoOrHuman(targetted_atom))
+	if(!isxeno_human(targetted_atom))
 		stabbing_xeno.visible_message(SPAN_XENOWARNING("\The [stabbing_xeno] swipes their tail through the air!"), SPAN_XENOWARNING("You swipe your tail through the air!"))
 		apply_cooldown(cooldown_modifier = 0.1)
 		xeno_attack_delay(stabbing_xeno)

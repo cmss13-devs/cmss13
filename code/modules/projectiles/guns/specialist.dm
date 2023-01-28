@@ -440,7 +440,7 @@
 	. = ..()
 	if(.)
 		var/mob/living/carbon/human/PMC_sniper = user
-		if(PMC_sniper.lying == 0 && !istype(PMC_sniper.wear_suit,/obj/item/clothing/suit/storage/marine/smartgunner/veteran/PMC) && !istype(PMC_sniper.wear_suit,/obj/item/clothing/suit/storage/marine/veteran))
+		if(PMC_sniper.lying == 0 && !istype(PMC_sniper.wear_suit,/obj/item/clothing/suit/storage/marine/smartgunner/veteran/pmc) && !istype(PMC_sniper.wear_suit,/obj/item/clothing/suit/storage/marine/veteran))
 			PMC_sniper.visible_message(SPAN_WARNING("[PMC_sniper] is blown backwards from the recoil of the [src.name]!"),SPAN_HIGHDANGER("You are knocked prone by the blowback!"))
 			step(PMC_sniper,turn(PMC_sniper.dir,180))
 			PMC_sniper.apply_effect(5, WEAKEN)
@@ -615,7 +615,7 @@
 	unload_sound = 'sound/weapons/gun_revolver_unload.ogg'
 
 	has_cylinder = TRUE //This weapon won't work otherwise.
-	preload = /obj/item/explosive/grenade/HE
+	preload = /obj/item/explosive/grenade/high_explosive
 	internal_slots = 1 //This weapon must use slots.
 	internal_max_w_class = SIZE_MEDIUM //MEDIUM = M15.
 
@@ -704,7 +704,7 @@
 	return cylinder.attackby(I, user)
 
 /obj/item/weapon/gun/launcher/grenade/unique_action(mob/user)
-	if(isobserver(usr) || isXeno(usr))
+	if(isobserver(usr) || isxeno(usr))
 		return
 	if(locate(/datum/action/item_action/toggle_firing_level) in actions)
 		toggle_firing_level(usr)

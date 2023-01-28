@@ -419,7 +419,7 @@
 
 	var/enter_time = 0
 	// door locks break when hull is destroyed. Xenos enter slower, but their speed is not affected by anything and they ignore locks
-	if(isXeno(M))
+	if(isxeno(M))
 		enter_time = 3 SECONDS
 	else
 		if(door_locked && health > 0) //check if lock on and actually works
@@ -436,11 +436,11 @@
 	// Only xenos can force their way in without doors, and only when the frame is completely broken
 	if(!entrance_used && health > 0)
 		return
-	else if(!entrance_used && !isXeno(M))
+	else if(!entrance_used && !isxeno(M))
 		return
 
 	var/enter_msg = "You start climbing into \the [src]..."
-	if(health <= 0 && isXeno(M))
+	if(health <= 0 && isxeno(M))
 		enter_msg = "You start prying away loose plates, squeezing into \the [src]..."
 
 	// Check if drag anything

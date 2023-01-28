@@ -56,14 +56,14 @@
 	add_xenos_to_minimap()
 
 /obj/structure/machinery/sensortower/proc/remove_xenos_from_minimap()
-	for(var/mob/living/carbon/Xenomorph/current_xeno as anything in GLOB.living_xeno_list)
+	for(var/mob/living/carbon/xenomorph/current_xeno as anything in GLOB.living_xeno_list)
 		if(WEAKREF(current_xeno) in minimap_added)
 			SSminimaps.remove_marker(current_xeno)
 			current_xeno.add_minimap_marker()
 			minimap_added -= WEAKREF(current_xeno)
 
 /obj/structure/machinery/sensortower/proc/add_xenos_to_minimap()
-	for(var/mob/living/carbon/Xenomorph/current_xeno as anything in GLOB.living_xeno_list)
+	for(var/mob/living/carbon/xenomorph/current_xeno as anything in GLOB.living_xeno_list)
 		if(WEAKREF(current_xeno) in minimap_added)
 			return
 

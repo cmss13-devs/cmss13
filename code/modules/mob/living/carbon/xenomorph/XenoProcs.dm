@@ -697,7 +697,7 @@
 		tracked_marker.xenos_tracking -= src
 	tracked_marker = null
 
-/mob/living/carbon/Xenomorph/proc/update_minimap_icon()
+/mob/living/carbon/xenomorph/proc/update_minimap_icon()
 	if(istype(caste, /datum/caste_datum/queen))
 		return
 

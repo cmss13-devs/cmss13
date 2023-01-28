@@ -49,7 +49,7 @@
 	if(health == 0 || !visible_in_tacmap || !is_ground_level(apc_turf.z))
 		return
 
-	for(var/mob/living/carbon/Xenomorph/current_xeno as anything in GLOB.living_xeno_list)
+	for(var/mob/living/carbon/xenomorph/current_xeno as anything in GLOB.living_xeno_list)
 		var/turf/xeno_turf = get_turf(current_xeno)
 		if(!is_ground_level(xeno_turf.z))
 			continue

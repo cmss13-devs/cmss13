@@ -501,7 +501,7 @@
 	if(queen.can_not_harm(src))
 		return COMPONENT_SCREECH_ACT_CANCEL
 
-/mob/living/carbon/Xenomorph/proc/add_minimap_marker(flags = MINIMAP_FLAG_XENO)
+/mob/living/carbon/xenomorph/proc/add_minimap_marker(flags = MINIMAP_FLAG_XENO)
 	if(IS_XENO_LEADER(src))
 		SSminimaps.add_marker(src, z, hud_flags = flags, given_image = caste.get_minimap_icon(), overlay_iconstates = list(caste.minimap_leadered_overlay))
 		return

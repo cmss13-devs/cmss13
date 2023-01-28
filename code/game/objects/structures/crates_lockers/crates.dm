@@ -402,7 +402,7 @@
 /obj/structure/closet/crate/weapon/training/grenade
 	name = "rubber pellet M15 grenades crate"
 	desc = "A crate with multiple nonlethal M15 grenades. Intended for use in combat exercises and riot control."
-	ammo_type = /obj/item/explosive/grenade/HE/m15/rubber
+	ammo_type = /obj/item/explosive/grenade/high_explosive/m15/rubber
 	ammo_count = 6
 
 

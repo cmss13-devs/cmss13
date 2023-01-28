@@ -216,7 +216,7 @@
 	jtac_key_type = /obj/item/device/encryptionkey/upp/engi
 
 /obj/structure/closet/crate/secure/mortar_ammo/mortar_kit/hvh/pmc
-	jtac_key_type = /obj/item/device/encryptionkey/PMC/engi
+	jtac_key_type = /obj/item/device/encryptionkey/pmc/engi
 
 /obj/structure/closet/crate/secure/mortar_ammo/mortar_kit/hvh/clf
 	jtac_key_type = /obj/item/device/encryptionkey/clf/engi

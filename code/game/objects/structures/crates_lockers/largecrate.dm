@@ -348,9 +348,9 @@
 	var/i = pick(1,5)
 	switch(i)
 		if(1) //pmc
-			new /obj/item/clothing/under/marine/veteran/PMC(src)
-			new /obj/item/clothing/head/helmet/marine/veteran/PMC(src)
-			new /obj/item/clothing/suit/storage/marine/veteran/PMC(src)
+			new /obj/item/clothing/under/marine/veteran/pmc(src)
+			new /obj/item/clothing/head/helmet/marine/veteran/pmc(src)
+			new /obj/item/clothing/suit/storage/marine/veteran/pmc(src)
 			new /obj/item/clothing/gloves/marine/veteran(src)
 			new /obj/item/clothing/mask/rebreather/scarf(src)
 		if(2) //dutch's

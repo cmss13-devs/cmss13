@@ -397,9 +397,9 @@
 				choosemax = rand(1,5)
 				randomitems = list(/obj/item/storage/box/explosive_mines,
 								/obj/item/storage/box/explosive_mines,
-								/obj/item/explosive/grenade/HE/m15,
-								/obj/item/explosive/grenade/HE/m15,
-								/obj/item/explosive/grenade/HE,
+								/obj/item/explosive/grenade/high_explosive/m15,
+								/obj/item/explosive/grenade/high_explosive/m15,
+								/obj/item/explosive/grenade/high_explosive,
 								/obj/item/storage/box/nade_box
 								)
 			if(36 to 40) // Junk

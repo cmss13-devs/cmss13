@@ -158,7 +158,7 @@
 	//waist
 	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/smartgunner/full(H), WEAR_WAIST)
 	//limbs
-	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/PMC(H), WEAR_HANDS)
+	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/pmc(H), WEAR_HANDS)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
 	//pockets
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/bayonet(H), WEAR_R_STORE)

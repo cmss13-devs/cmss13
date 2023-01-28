@@ -622,11 +622,11 @@
 
 /obj/item/storage/pouch/explosive/full/fill_preset_inventory()
 	for(var/i = 1 to storage_slots)
-		new /obj/item/explosive/grenade/HE(src)
+		new /obj/item/explosive/grenade/high_explosive(src)
 
 /obj/item/storage/pouch/explosive/upp/fill_preset_inventory()
 	for(var/i = 1 to storage_slots)
-		new /obj/item/explosive/grenade/HE/upp(src)
+		new /obj/item/explosive/grenade/high_explosive/upp(src)
 
 /obj/item/storage/pouch/explosive/C4/fill_preset_inventory()
 	for(var/i = 1 to storage_slots)

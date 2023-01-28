@@ -26,7 +26,7 @@
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
 	unequip_sounds = list('sound/items/air_release.ogg')
 
-	min_cold_protection_temperature = SPACE_HELMET_min_cold_protection_temperature
+	min_cold_protection_temperature = SPACE_HELMET_MIN_COLD_PROT
 	flags_armor_protection = BODY_FLAG_HEAD|BODY_FLAG_FACE|BODY_FLAG_EYES
 	flags_cold_protection = BODY_FLAG_HEAD
 	flags_inventory = COVEREYES|COVERMOUTH|NOPRESSUREDMAGE|ALLOWINTERNALS|ALLOWREBREATH|BLOCKGASEFFECT|BLOCKSHARPOBJ

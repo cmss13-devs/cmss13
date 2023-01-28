@@ -4,9 +4,9 @@
 	desc = "A pair of black shoes."
 
 	flags_cold_protection = BODY_FLAG_FEET
-	min_cold_protection_temperature = SHOE_min_cold_protection_temperature
+	min_cold_protection_temperature = SHOE_MIN_COLD_PROT
 	flags_heat_protection = BODY_FLAG_FEET
-	max_heat_protection_temperature = SHOE_max_heat_protection_temperature
+	max_heat_protection_temperature = SHOE_MAX_HEAT_PROT
 
 /obj/item/clothing/shoes/brown
 	name = "brown shoes"

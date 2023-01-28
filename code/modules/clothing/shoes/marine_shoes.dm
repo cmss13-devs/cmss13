@@ -15,8 +15,8 @@
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUMLOW
 	flags_cold_protection = BODY_FLAG_FEET
 	flags_heat_protection = BODY_FLAG_FEET
-	min_cold_protection_temperature = SHOE_min_cold_protection_temperature
-	max_heat_protection_temperature = SHOE_max_heat_protection_temperature
+	min_cold_protection_temperature = SHOE_MIN_COLD_PROT
+	max_heat_protection_temperature = SHOE_MAX_HEAT_PROT
 	siemens_coefficient = 0.7
 	var/armor_stage = 0
 	items_allowed = list(/obj/item/attachable/bayonet, /obj/item/weapon/melee/throwing_knife, /obj/item/weapon/gun/pistol/holdout, /obj/item/weapon/gun/pistol/m43pistol, /obj/item/tool/screwdriver)
@@ -95,8 +95,8 @@
 	armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_rad = CLOTHING_ARMOR_NONE
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUMLOW
-	min_cold_protection_temperature = SHOE_min_cold_protection_temperature
-	max_heat_protection_temperature = SHOE_max_heat_protection_temperature
+	min_cold_protection_temperature = SHOE_MIN_COLD_PROT
+	max_heat_protection_temperature = SHOE_MAX_HEAT_PROT
 	flags_cold_protection = BODY_FLAG_FEET
 	flags_heat_protection = BODY_FLAG_FEET
 	flags_inventory = FPRINT|NOSLIPPING
@@ -163,8 +163,8 @@
 	armor_bio = CLOTHING_ARMOR_MEDIUMLOW
 	armor_rad = CLOTHING_ARMOR_NONE
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUMLOW
-	min_cold_protection_temperature = SHOE_min_cold_protection_temperature
-	max_heat_protection_temperature = SHOE_max_heat_protection_temperature
+	min_cold_protection_temperature = SHOE_MIN_COLD_PROT
+	max_heat_protection_temperature = SHOE_MAX_HEAT_PROT
 	flags_cold_protection = BODY_FLAG_FEET
 	flags_heat_protection = BODY_FLAG_FEET
 	flags_inventory = FPRINT|NOSLIPPING

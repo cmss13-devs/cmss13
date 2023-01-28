@@ -17,8 +17,8 @@
 	flags_inv_hide = HIDEEARS|HIDEEYES
 	flags_cold_protection = BODY_FLAG_HEAD
 	flags_heat_protection = BODY_FLAG_HEAD
-	min_cold_protection_temperature = HELMET_min_cold_protection_temperature
-	max_heat_protection_temperature = HELMET_max_heat_protection_temperature
+	min_cold_protection_temperature = HELMET_MIN_COLD_PROT
+	max_heat_protection_temperature = HELMET_MAX_HEAT_PROT
 	siemens_coefficient = 0.7
 	w_class = SIZE_MEDIUM
 	pickup_sound = "armorequip"
@@ -137,7 +137,7 @@
 	flags_inventory = COVEREYES|BLOCKSHARPOBJ
 	flags_inv_hide = HIDEEARS|HIDEEYES
 	flags_cold_protection = BODY_FLAG_HEAD
-	min_cold_protection_temperature = SPACE_HELMET_min_cold_protection_temperature
+	min_cold_protection_temperature = SPACE_HELMET_MIN_COLD_PROT
 	siemens_coefficient = 0.5
 	anti_hug = 1
 
@@ -157,7 +157,7 @@
 	armor_rad = CLOTHING_ARMOR_MEDIUM
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
 	flags_cold_protection = BODY_FLAG_HEAD
-	min_cold_protection_temperature = SPACE_HELMET_min_cold_protection_temperature
+	min_cold_protection_temperature = SPACE_HELMET_MIN_COLD_PROT
 	siemens_coefficient = 1
 
 /obj/item/clothing/head/helmet/gladiator
@@ -371,7 +371,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	//speciality does NOTHING if you have NO_NAME_OVERRIDE
 
 /obj/item/clothing/head/helmet/marine/New(loc,
-	new_protection[] = list(MAP_ICE_COLONY = ICE_PLANET_min_cold_protection_temperature))
+	new_protection[] = list(MAP_ICE_COLONY = ICE_PLANET_MIN_COLD_PROT))
 	if(!(flags_atom & NO_NAME_OVERRIDE))
 		name = "[specialty]"
 		if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
@@ -574,7 +574,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
 	armor_bomb = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUMLOW
-	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
+	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
 	flags_inventory = BLOCKSHARPOBJ
 	flags_inv_hide = HIDEEARS|HIDETOPHAIR
 	specialty = "M50 tanker"
@@ -657,7 +657,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	name = "\improper M3-S light helmet"
 	icon_state = "scout_helmet"
 	desc = "A custom helmet designed for USCM Scouts."
-	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
+	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
 	specialty = "M3-S light"
 	flags_item = MOB_LOCK_ON_EQUIP|NO_CRYO_STORE
 
@@ -665,8 +665,8 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	name = "\improper M35 pyrotechnician helmet"
 	icon_state = "pyro_helmet"
 	desc = "A helmet designed for USCM Pyrotechnicians."
-	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
-	max_heat_protection_temperature = FIRESUIT_max_heat_protection_temperature
+	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
+	max_heat_protection_temperature = FIRESUIT_MAX_HEAT_PROT
 	specialty = "M35 pyrotechnician"
 	flags_item = MOB_LOCK_ON_EQUIP|NO_CRYO_STORE
 
@@ -674,7 +674,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	name = "\improper M3-T bombardier helmet"
 	icon_state = "sadar_helmet"
 	desc = "A custom-built helmet for explosive weaponry users. Comes with inbuilt ear blast protection, firing a rocket launcher without this is not recommended."
-	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
+	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
 	armor_bomb = CLOTHING_ARMOR_HIGH
 	specialty = "M3-T bombardier"
 	flags_inventory = BLOCKSHARPOBJ
@@ -688,7 +688,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
 	armor_bomb = CLOTHING_ARMOR_MEDIUMLOW
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUMLOW
-	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
+	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
 	flags_inventory = BLOCKSHARPOBJ
 	flags_inv_hide = HIDEEARS|HIDETOPHAIR
 	specialty = "M30 tactical"
@@ -774,7 +774,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	armor_bomb = CLOTHING_ARMOR_MEDIUM
 	armor_bio = CLOTHING_ARMOR_LOW
 	armor_internaldamage = CLOTHING_ARMOR_LOW
-	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
+	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
 	flags_inventory = BLOCKSHARPOBJ
 	flags_inv_hide = NO_FLAGS
 	flags_marine_helmet = NO_FLAGS
@@ -899,7 +899,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	armor_bio = CLOTHING_ARMOR_MEDIUMLOW
 	armor_rad = CLOTHING_ARMOR_MEDIUMLOW
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUMLOW
-	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
+	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
 	flags_marine_helmet = HELMET_GARB_OVERLAY|HELMET_DAMAGE_OVERLAY
 
 // UPP Are very powerful against bullets (marines) but middling against melee (xenos)
@@ -913,7 +913,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	armor_bio = CLOTHING_ARMOR_MEDIUMLOW
 	armor_rad = CLOTHING_ARMOR_MEDIUMLOW
 	armor_internaldamage = CLOTHING_ARMOR_HIGH
-	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
+	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
 
 /obj/item/clothing/head/helmet/marine/veteran/UPP/engi
 	name = "\improper UM4-V helmet"
@@ -954,7 +954,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	armor_rad = CLOTHING_ARMOR_LOW
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
 	flags_cold_protection = BODY_FLAG_HEAD
-	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
+	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
 	flags_inventory = BLOCKSHARPOBJ
 	flags_inv_hide = HIDEEARS
 
@@ -1064,7 +1064,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	icon_state = "skullcapm"
 
 /obj/item/clothing/head/helmet/skullcap/jungle/New(loc, type,
-	new_protection[] = list(MAP_ICE_COLONY = ICE_PLANET_min_cold_protection_temperature))
+	new_protection[] = list(MAP_ICE_COLONY = ICE_PLANET_MIN_COLD_PROT))
 	select_gamemode_skin(type,, new_protection)
 	..()
 	switch(icon_state)

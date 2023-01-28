@@ -7,7 +7,7 @@
 	flags_inv_hide = HIDEEARS|HIDEFACE|HIDELOWHAIR
 	flags_cold_protection = BODY_FLAG_HEAD
 	flags_equip_slot = SLOT_FACE|SLOT_WAIST
-	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
+	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
 	w_class = SIZE_SMALL
 	item_state = "gas_alt"
 	gas_transfer_coefficient = 0.01

@@ -16,7 +16,8 @@
 		/obj/structure/window/framed,
 		/obj/structure/window_frame,
 		/obj/structure/girder,
-		/obj/structure/machinery/door)
+		/obj/structure/machinery/door,
+		)
 
 	var/damage = 0
 	var/damage_cap = HEALTH_WALL //Wall will break down to girders if damage reaches this point

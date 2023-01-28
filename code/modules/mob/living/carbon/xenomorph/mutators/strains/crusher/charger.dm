@@ -30,7 +30,7 @@
 		/datum/action/xeno_action/onclick/charger_charge,
 		/datum/action/xeno_action/activable/tumble,
 		/datum/action/xeno_action/onclick/crusher_stomp/charger,
-		/datum/action/xeno_action/activable/fling/charger
+		/datum/action/xeno_action/activable/fling/charger,
 	)
 	keystone = TRUE
 	behavior_delegate_type = /datum/behavior_delegate/crusher_charger

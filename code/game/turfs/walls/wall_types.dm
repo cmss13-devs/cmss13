@@ -25,7 +25,7 @@
 		/obj/structure/machinery/door,
 		/obj/structure/machinery/cm_vending/sorted/attachments/blend,
 		/obj/structure/machinery/cm_vending/sorted/cargo_ammo/blend,
-		/obj/structure/machinery/cm_vending/sorted/cargo_guns/blend
+		/obj/structure/machinery/cm_vending/sorted/cargo_guns/blend,
 		)
 
 /turf/closed/wall/almayer/update_icon()

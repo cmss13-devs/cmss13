@@ -277,7 +277,8 @@
 	var/vehicle_resistant = FALSE
 	tiles_with = list(
 		/obj/structure/window/framed/almayer,
-		/obj/structure/machinery/door/airlock)
+		/obj/structure/machinery/door/airlock,
+		)
 
 /obj/structure/machinery/door/poddoor/almayer/open
 	density = FALSE

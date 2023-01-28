@@ -85,8 +85,8 @@
 		/obj/item/cell,
 		/obj/item/cell,
 		/obj/item/stack/cable_coil,
-		/obj/item/stack/cable_coil
-					)
+		/obj/item/stack/cable_coil,
+		)
 	cost = 40
 	containertype = /obj/structure/closet/crate/supply
 	buyable = 0
@@ -107,7 +107,7 @@
 		/obj/item/spec_kit/asrs,
 		/obj/item/spec_kit/asrs,
 		/obj/item/spec_kit/asrs,
-		/obj/item/spec_kit/asrs
+		/obj/item/spec_kit/asrs,
 	)
 	cost = 0
 	containertype = /obj/structure/closet/crate/supply

@@ -12,7 +12,7 @@
 	pain_reduction_required = PAIN_REDUCTION_HEAVY
 	steps = list(
 		/datum/surgery_step/mend_bones,
-		/datum/surgery_step/set_bones
+		/datum/surgery_step/set_bones,
 	)
 	var/affected_bone //Used for messaging.
 
@@ -124,7 +124,7 @@
 	desc = "set the bones"
 	tools = list(
 		/obj/item/tool/surgery/bonesetter = SURGERY_TOOL_MULT_IDEAL,
-		/obj/item/tool/wrench = SURGERY_TOOL_MULT_SUBSTITUTE
+		/obj/item/tool/wrench = SURGERY_TOOL_MULT_SUBSTITUTE,
 		)
 	time = 4 SECONDS
 

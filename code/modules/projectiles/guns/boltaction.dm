@@ -23,10 +23,10 @@
 	var/recent_cycle //world.time to see when they last bolted it.
 	current_mag = /obj/item/ammo_magazine/rifle/boltaction
 	attachable_allowed = list(
-						/obj/item/attachable/bayonet,
-						/obj/item/attachable/bayonet/upp,
-						/obj/item/attachable/stock/hunting,
-						)
+		/obj/item/attachable/bayonet,
+		/obj/item/attachable/bayonet/upp,
+		/obj/item/attachable/stock/hunting,
+		)
 	starting_attachment_types = list(/obj/item/attachable/stock/hunting)
 
 /obj/item/weapon/gun/boltaction/set_gun_attachment_offsets()

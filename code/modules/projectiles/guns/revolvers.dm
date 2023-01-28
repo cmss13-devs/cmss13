@@ -296,19 +296,20 @@
 	force = 8
 	flags_gun_features = GUN_INTERNAL_MAG|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_AMMO_COUNTER
 	attachable_allowed = list(
-						/obj/item/attachable/bayonet,
-						/obj/item/attachable/bayonet/upp,
-						/obj/item/attachable/reddot,
-						/obj/item/attachable/reflex,
-						/obj/item/attachable/flashlight,
-						/obj/item/attachable/heavy_barrel,
-						/obj/item/attachable/extended_barrel,
-						/obj/item/attachable/compensator,
-						/obj/item/attachable/stock/revolver,
-						/obj/item/attachable/scope,
-						/obj/item/attachable/lasersight,
-						/obj/item/attachable/scope/mini,
-						/obj/item/attachable/scope/mini_iff)
+		/obj/item/attachable/bayonet,
+		/obj/item/attachable/bayonet/upp,
+		/obj/item/attachable/reddot,
+		/obj/item/attachable/reflex,
+		/obj/item/attachable/flashlight,
+		/obj/item/attachable/heavy_barrel,
+		/obj/item/attachable/extended_barrel,
+		/obj/item/attachable/compensator,
+		/obj/item/attachable/stock/revolver,
+		/obj/item/attachable/scope,
+		/obj/item/attachable/lasersight,
+		/obj/item/attachable/scope/mini,
+		/obj/item/attachable/scope/mini_iff,
+		)
 	var/folded = FALSE // Used for the stock attachment, to check if we can shoot or not
 
 /obj/item/weapon/gun/revolver/m44/set_gun_attachment_offsets()
@@ -357,11 +358,12 @@
 	chamber_close_sound = 'sound/weapons/handling/pkd_close_chamber.ogg'
 	hand_reload_sound = 'sound/weapons/gun_revolver_load3.ogg'
 	accepted_ammo = list(
-		/obj/item/ammo_magazine/internal/revolver/m44/pkd)
+		/obj/item/ammo_magazine/internal/revolver/m44/pkd,
+		)
 
 	attachable_allowed = list(
-						/obj/item/attachable/flashlight,
-						/obj/item/attachable/lasersight
+		/obj/item/attachable/flashlight,
+		/obj/item/attachable/lasersight,
 	)
 
 /obj/item/weapon/gun/revolver/m44/custom/pkd_special/set_gun_attachment_offsets()
@@ -380,13 +382,13 @@
 	item_state = "m4a3c" //placeholder
 
 	attachable_allowed = list(
-						/obj/item/attachable/flashlight,
-						/obj/item/attachable/lasersight,
-						/obj/item/attachable/reddot,
-						/obj/item/attachable/reflex,
-						/obj/item/attachable/scope,
-						/obj/item/attachable/scope/mini,
-						/obj/item/attachable/scope/mini_iff
+		/obj/item/attachable/flashlight,
+		/obj/item/attachable/lasersight,
+		/obj/item/attachable/reddot,
+		/obj/item/attachable/reflex,
+		/obj/item/attachable/scope,
+		/obj/item/attachable/scope/mini,
+		/obj/item/attachable/scope/mini_iff,
 	)
 
 /obj/item/weapon/gun/revolver/m44/custom/pkd_special/k2049/set_gun_attachment_offsets()
@@ -399,8 +401,8 @@
 	item_state = "88m4" //placeholder
 
 	attachable_allowed = list(
-						/obj/item/attachable/flashlight,
-						/obj/item/attachable/lasersight
+		/obj/item/attachable/flashlight,
+		/obj/item/attachable/lasersight,
 	)
 
 /obj/item/weapon/gun/revolver/m44/custom/pkd_special/l_series/set_gun_attachment_offsets()
@@ -422,8 +424,9 @@
 	icon_state = "webley"
 	item_state = "m44r"
 	attachable_allowed = list(
-						/obj/item/attachable/bayonet,
-						/obj/item/attachable/bayonet/upp)
+		/obj/item/attachable/bayonet,
+		/obj/item/attachable/bayonet/upp,
+		)
 
 /obj/item/weapon/gun/revolver/m44/custom/webley/set_gun_config_values()
 	..()
@@ -444,21 +447,18 @@
 	current_mag = /obj/item/ammo_magazine/internal/revolver/upp
 	force = 8
 	attachable_allowed = list(
-						//Rail
-						/obj/item/attachable/reddot,
-						/obj/item/attachable/reflex,
-						/obj/item/attachable/flashlight,
-						/obj/item/attachable/scope,
-						/obj/item/attachable/scope/mini,
-						//Muzzle
-						/obj/item/attachable/bayonet,
-						/obj/item/attachable/bayonet/upp,
-						/obj/item/attachable/heavy_barrel,
-						/obj/item/attachable/extended_barrel,
-						/obj/item/attachable/compensator,
-						//Underbarrel
-						/obj/item/attachable/lasersight
-						)
+		/obj/item/attachable/reddot, // Rail
+		/obj/item/attachable/reflex,
+		/obj/item/attachable/flashlight,
+		/obj/item/attachable/scope,
+		/obj/item/attachable/scope/mini,
+		/obj/item/attachable/bayonet, // Muzzle
+		/obj/item/attachable/bayonet/upp,
+		/obj/item/attachable/heavy_barrel,
+		/obj/item/attachable/extended_barrel,
+		/obj/item/attachable/compensator,
+		/obj/item/attachable/lasersight, // Underbarrel
+		)
 
 /obj/item/weapon/gun/revolver/nagant/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 28, "muzzle_y" = 21,"rail_x" = 14, "rail_y" = 23, "under_x" = 24, "under_y" = 19, "stock_x" = 24, "stock_y" = 19)
@@ -477,8 +477,8 @@
 	random_spawn_chance = 100
 	random_under_chance = 100
 	random_spawn_under = list(
-							/obj/item/attachable/lasersight,
-							)
+		/obj/item/attachable/lasersight,
+		)
 
 //-------------------------------------------------------
 //357 REVOLVER //Based on the generic S&W 357.
@@ -542,14 +542,15 @@
 	current_mag = /obj/item/ammo_magazine/internal/revolver/mateba
 	force = 15
 	attachable_allowed = list(
-						/obj/item/attachable/reddot,
-						/obj/item/attachable/reflex,
-						/obj/item/attachable/flashlight,
-						/obj/item/attachable/heavy_barrel,
-						/obj/item/attachable/compensator,
-						/obj/item/attachable/mateba,
-						/obj/item/attachable/mateba/long,
-						/obj/item/attachable/mateba/short)
+		/obj/item/attachable/reddot,
+		/obj/item/attachable/reflex,
+		/obj/item/attachable/flashlight,
+		/obj/item/attachable/heavy_barrel,
+		/obj/item/attachable/compensator,
+		/obj/item/attachable/mateba,
+		/obj/item/attachable/mateba/long,
+		/obj/item/attachable/mateba/short,
+		)
 	starting_attachment_types = list(/obj/item/attachable/mateba)
 	unacidable = TRUE
 	var/is_locked = TRUE
@@ -609,14 +610,15 @@
 	item_state = "amateba"
 	current_mag = /obj/item/ammo_magazine/internal/revolver/mateba/impact
 	attachable_allowed = list(
-					/obj/item/attachable/reddot,
-					/obj/item/attachable/reflex,
-					/obj/item/attachable/flashlight,
-					/obj/item/attachable/heavy_barrel,
-					/obj/item/attachable/compensator,
-					/obj/item/attachable/mateba/dark,
-					/obj/item/attachable/mateba/long/dark,
-					/obj/item/attachable/mateba/short/dark)
+		/obj/item/attachable/reddot,
+		/obj/item/attachable/reflex,
+		/obj/item/attachable/flashlight,
+		/obj/item/attachable/heavy_barrel,
+		/obj/item/attachable/compensator,
+		/obj/item/attachable/mateba/dark,
+		/obj/item/attachable/mateba/long/dark,
+		/obj/item/attachable/mateba/short/dark,
+		)
 	starting_attachment_types = null
 
 /obj/item/weapon/gun/revolver/mateba/general/handle_starting_attachment()
@@ -667,19 +669,16 @@
 	current_mag = /obj/item/ammo_magazine/internal/revolver/cmb/hollowpoint
 	force = 12
 	attachable_allowed = list(
-						//Muzzle
-						/obj/item/attachable/suppressor,
-						/obj/item/attachable/extended_barrel,
-						/obj/item/attachable/heavy_barrel,
-						/obj/item/attachable/compensator,
-						//Rail
-						/obj/item/attachable/reddot,
-						/obj/item/attachable/reflex,
-						/obj/item/attachable/flashlight,
-						/obj/item/attachable/scope/mini,
-						//Under
-						/obj/item/attachable/gyro,
-						/obj/item/attachable/lasersight,
+		/obj/item/attachable/suppressor, // Muzzle
+		/obj/item/attachable/extended_barrel,
+		/obj/item/attachable/heavy_barrel,
+		/obj/item/attachable/compensator,
+		/obj/item/attachable/reddot, // Rail
+		/obj/item/attachable/reflex,
+		/obj/item/attachable/flashlight,
+		/obj/item/attachable/scope/mini,
+		/obj/item/attachable/gyro, // Under
+		/obj/item/attachable/lasersight,
 	)
 
 /obj/item/weapon/gun/revolver/cmb/click_empty(mob/user)

@@ -31,6 +31,7 @@ jobs:
         run: |
           pip3 install setuptools
           bash tools/ci/install_node.sh
+          cargo install ripgrep --features pcre2
           bash tools/ci/install_spaceman_dmm.sh dreamchecker
           tools/bootstrap/python -c ''
       - name: Run Linters

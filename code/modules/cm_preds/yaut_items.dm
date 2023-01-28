@@ -46,11 +46,13 @@
 	min_cold_protection_temperature = ARMOR_min_cold_protection_temperature
 	max_heat_protection_temperature = ARMOR_max_heat_protection_temperature
 	siemens_coefficient = 0.1
-	allowed = list(/obj/item/weapon/melee/harpoon,
-			/obj/item/weapon/gun/launcher/spike,
-			/obj/item/weapon/gun/energy/yautja,
-			/obj/item/weapon/melee/yautja,
-			/obj/item/weapon/melee/twohanded/yautja)
+	allowed = list(
+		/obj/item/weapon/melee/harpoon,
+		/obj/item/weapon/gun/launcher/spike,
+		/obj/item/weapon/gun/energy/yautja,
+		/obj/item/weapon/melee/yautja,
+		/obj/item/weapon/melee/twohanded/yautja,
+		)
 	unacidable = TRUE
 	item_state_slots = list(WEAR_JACKET = "halfarmor1")
 	valid_accessory_slots = list(ACCESSORY_SLOT_ARMOR_A, ACCESSORY_SLOT_ARMOR_L, ACCESSORY_SLOT_ARMOR_S, ACCESSORY_SLOT_ARMOR_M)
@@ -124,12 +126,14 @@
 	slowdown = 1
 	var/speed_timer = 0
 	item_state_slots = list(WEAR_JACKET = "fullarmor")
-	allowed = list(/obj/item/weapon/melee/harpoon,
-			/obj/item/weapon/gun/launcher/spike,
-			/obj/item/weapon/gun/energy/yautja,
-			/obj/item/weapon/melee/yautja,
-			/obj/item/storage/backpack/yautja,
-			/obj/item/weapon/melee/twohanded/yautja)
+	allowed = list(
+		/obj/item/weapon/melee/harpoon,
+		/obj/item/weapon/gun/launcher/spike,
+		/obj/item/weapon/gun/energy/yautja,
+		/obj/item/weapon/melee/yautja,
+		/obj/item/storage/backpack/yautja,
+		/obj/item/weapon/melee/twohanded/yautja,
+		)
 	fire_intensity_resistance = 20
 
 /obj/item/clothing/suit/armor/yautja/hunter/full/Initialize(mapload, armor_number, armor_material = "ebony")
@@ -215,7 +219,7 @@
 	max_heat_protection_temperature = SHOE_max_heat_protection_temperature
 	items_allowed = list(
 		/obj/item/weapon/melee/yautja/knife,
-		/obj/item/weapon/gun/energy/yautja/plasmapistol
+		/obj/item/weapon/gun/energy/yautja/plasmapistol,
 		)
 
 
@@ -835,11 +839,13 @@
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
 	slowdown = SLOWDOWN_ARMOR_VERY_HEAVY
 	siemens_coefficient = 0.1
-	allowed = list(/obj/item/weapon/melee/harpoon,
-			/obj/item/weapon/gun/launcher/spike,
-			/obj/item/weapon/gun/energy/yautja,
-			/obj/item/weapon/melee/yautja,
-			/obj/item/weapon/melee/twohanded/yautja)
+	allowed = list(
+		/obj/item/weapon/melee/harpoon,
+		/obj/item/weapon/gun/launcher/spike,
+		/obj/item/weapon/gun/energy/yautja,
+		/obj/item/weapon/melee/yautja,
+		/obj/item/weapon/melee/twohanded/yautja,
+		)
 	unacidable = TRUE
 	item_state_slots = list(WEAR_JACKET = "fullarmor")
 
@@ -884,13 +890,13 @@
 	flags_item = ITEM_PREDATOR
 	storage_slots = 12
 	can_hold = list(
-					/obj/item/tool/surgery/stabilizer_gel,
-					/obj/item/tool/surgery/healing_gun,
-					/obj/item/tool/surgery/wound_clamp,
-					/obj/item/reagent_container/hypospray/autoinjector/yautja,
-					/obj/item/device/healthanalyzer/alien,
-					/obj/item/tool/surgery/healing_gel
-					)
+		/obj/item/tool/surgery/stabilizer_gel,
+		/obj/item/tool/surgery/healing_gun,
+		/obj/item/tool/surgery/wound_clamp,
+		/obj/item/reagent_container/hypospray/autoinjector/yautja,
+		/obj/item/device/healthanalyzer/alien,
+		/obj/item/tool/surgery/healing_gel,
+		)
 
 /obj/item/storage/medicomp/full/fill_preset_inventory()
 	new /obj/item/tool/surgery/stabilizer_gel(src)

@@ -65,7 +65,7 @@
 		/obj/item/storage/belt/gun/m44,
 		/obj/item/storage/belt/gun/smartpistol,
 		/obj/item/device/motiondetector,
-		/obj/item/device/walkman
+		/obj/item/device/walkman,
 	)
 
 	armor_bio = CLOTHING_ARMOR_LOW

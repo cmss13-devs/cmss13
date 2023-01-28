@@ -44,7 +44,7 @@
 	acid_blood_dodge_chance = 35
 
 	inherent_verbs = list(
-		/mob/living/carbon/human/synthetic/proc/toggle_HUD
+		/mob/living/carbon/human/synthetic/proc/toggle_HUD,
 	)
 
 /datum/species/synthetic/handle_post_spawn(mob/living/carbon/human/H)
@@ -90,7 +90,7 @@
 	stun_reduction = 3.5
 
 	inherent_verbs = list(
-		/mob/living/carbon/human/proc/toggle_inherent_nightvison
+		/mob/living/carbon/human/proc/toggle_inherent_nightvison,
 	)
 
 /datum/species/synthetic/colonial/colonial_gen_two

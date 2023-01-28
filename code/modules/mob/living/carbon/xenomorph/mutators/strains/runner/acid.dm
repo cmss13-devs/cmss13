@@ -14,7 +14,7 @@
 	)
 	mutator_actions_to_add = list(
 		/datum/action/xeno_action/activable/acider_acid,
-		/datum/action/xeno_action/activable/acider_for_the_hive
+		/datum/action/xeno_action/activable/acider_for_the_hive,
 	)
 
 /datum/xeno_mutator/acider/apply_mutator(datum/mutator_set/individual_mutators/mutator_set)

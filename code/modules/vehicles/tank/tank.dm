@@ -50,17 +50,17 @@
 		/obj/item/hardpoint/armor/paladin,
 		/obj/item/hardpoint/armor/snowplow,
 		/obj/item/hardpoint/locomotion/treads,
-		/obj/item/hardpoint/locomotion/treads/robust
+		/obj/item/hardpoint/locomotion/treads/robust,
 	)
 
 	seats = list(
 		VEHICLE_DRIVER = null,
-		VEHICLE_GUNNER = null
+		VEHICLE_GUNNER = null,
 	)
 
 	active_hp = list(
 		VEHICLE_DRIVER = null,
-		VEHICLE_GUNNER = null
+		VEHICLE_GUNNER = null,
 	)
 
 	dmg_multipliers = list(

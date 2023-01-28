@@ -469,7 +469,7 @@
 	foldable = /obj/item/stack/sheet/cardboard //BubbleWrap
 	can_hold = list(
 		/obj/item/light_bulb/tube,
-		/obj/item/light_bulb/bulb
+		/obj/item/light_bulb/bulb,
 	)
 	max_storage_space = 42 //holds 21 items of w_class 2
 	storage_flags = STORAGE_FLAGS_BOX|STORAGE_CLICK_GATHER

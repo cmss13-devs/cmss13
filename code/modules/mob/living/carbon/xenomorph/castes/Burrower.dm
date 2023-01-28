@@ -49,6 +49,7 @@
 	base_pixel_x = 0
 	base_pixel_y = -20
 	tier = 2
+
 	base_actions = list(
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/onclick/regurgitate,
@@ -62,11 +63,13 @@
 		/datum/action/xeno_action/activable/burrow, //third macro
 		/datum/action/xeno_action/onclick/tremor, //fourth macro
 		)
+
 	inherent_verbs = list(
 		/mob/living/carbon/xenomorph/proc/vent_crawl,
 		/mob/living/carbon/xenomorph/proc/rename_tunnel,
 		/mob/living/carbon/xenomorph/proc/set_hugger_reserve_for_morpher,
-		)
+	)
+
 	mutation_type = BURROWER_NORMAL
 
 	icon_xeno = 'icons/mob/xenos/burrower.dmi'

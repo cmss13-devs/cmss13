@@ -420,7 +420,8 @@
 	add_abilities()
 	recalculate_actions()
 
-	INVOKE_NEXT_TICK(src, PROC_REF(add_minimap_marker))
+	if(z)
+		INVOKE_NEXT_TICK(src, PROC_REF(add_minimap_marker))
 
 	sight |= SEE_MOBS
 	see_invisible = SEE_INVISIBLE_LIVING

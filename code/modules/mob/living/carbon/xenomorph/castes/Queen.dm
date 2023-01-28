@@ -352,29 +352,29 @@
 /mob/living/carbon/xenomorph/queen/can_destroy_special()
 	return TRUE
 
-/mob/living/carbon/xenomorph/queen/Corrupted
+/mob/living/carbon/xenomorph/queen/corrupted
 	hivenumber = XENO_HIVE_CORRUPTED
 
-/mob/living/carbon/xenomorph/queen/Forsaken
+/mob/living/carbon/xenomorph/queen/forsaken
 	hivenumber = XENO_HIVE_FORSAKEN
 
-/mob/living/carbon/xenomorph/queen/Forsaken/combat_ready
+/mob/living/carbon/xenomorph/queen/forsaken/combat_ready
 	hivenumber = XENO_HIVE_FORSAKEN
 	queen_aged = TRUE
 
-/mob/living/carbon/xenomorph/queen/Alpha
+/mob/living/carbon/xenomorph/queen/alpha
 	hivenumber = XENO_HIVE_ALPHA
 
-/mob/living/carbon/xenomorph/queen/Beta
+/mob/living/carbon/xenomorph/queen/bravo
 	hivenumber = XENO_HIVE_BRAVO
 
-/mob/living/carbon/xenomorph/queen/Gamma
+/mob/living/carbon/xenomorph/queen/charlie
 	hivenumber = XENO_HIVE_CHARLIE
 
-/mob/living/carbon/xenomorph/queen/Delta
+/mob/living/carbon/xenomorph/queen/delta
 	hivenumber = XENO_HIVE_DELTA
 
-/mob/living/carbon/xenomorph/queen/Mutated
+/mob/living/carbon/xenomorph/queen/mutated
 	hivenumber = XENO_HIVE_MUTATED
 
 /mob/living/carbon/xenomorph/queen/combat_ready

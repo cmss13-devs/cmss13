@@ -54,22 +54,22 @@
 		PF.flags_pass = PASS_MOB_THRU|PASS_FLAGS_CRAWLER
 		PF.flags_can_pass_all = PASS_ALL^PASS_OVER_THROW_ITEM
 
-/mob/living/carbon/xenomorph/larva/Corrupted
+/mob/living/carbon/xenomorph/larva/corrupted
 	hivenumber = XENO_HIVE_CORRUPTED
 
-/mob/living/carbon/xenomorph/larva/Alpha
+/mob/living/carbon/xenomorph/larva/alpha
 	hivenumber = XENO_HIVE_ALPHA
 
-/mob/living/carbon/xenomorph/larva/Bravo
+/mob/living/carbon/xenomorph/larva/cravo
 	hivenumber = XENO_HIVE_BRAVO
 
-/mob/living/carbon/xenomorph/larva/Gamma
+/mob/living/carbon/xenomorph/larva/charlie
 	hivenumber = XENO_HIVE_CHARLIE
 
-/mob/living/carbon/xenomorph/larva/Delta
+/mob/living/carbon/xenomorph/larva/delta
 	hivenumber = XENO_HIVE_DELTA
 
-/mob/living/carbon/xenomorph/larva/Mutated
+/mob/living/carbon/xenomorph/larva/mutated
 	hivenumber = XENO_HIVE_MUTATED
 
 /mob/living/carbon/xenomorph/larva/predalien

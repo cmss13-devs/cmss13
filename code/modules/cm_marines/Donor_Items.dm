@@ -441,7 +441,7 @@
 	flags_inventory = BLOCKSHARPOBJ
 	flags_inv_hide = HIDEEARS
 	flags_atom = NO_NAME_OVERRIDE
-	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
+	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
 	flags_marine_helmet = NO_FLAGS
 
 /obj/item/clothing/head/helmet/marine/fluff/verb/toggle_squad_markings()
@@ -871,7 +871,7 @@
 	flags_atom = NO_NAME_OVERRIDE
 	icon_state = "state"
 	item_state = null
-	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
+	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
 	//DON'T GRAB STUFF BETWEEN THIS LINE
 	//AND THIS LINE
 //END UNIFORM TEMPLATE

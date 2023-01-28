@@ -11,7 +11,7 @@
 	if(QDELETED(src))
 		return
 	QDEL_IN(src, ttl)
-	var/mob/living/carbon/Xenomorph/xeno = A
+	var/mob/living/carbon/xenomorph/xeno = A
 	xeno.speed_modifier -= set_speed_modifier
 	xeno.recalculate_speed()
 	if(set_modifier_source)
@@ -37,7 +37,7 @@
 
 /datum/effects/xeno_speed/Destroy()
 	if(added_effect)
-		var/mob/living/carbon/Xenomorph/xeno = affected_atom
+		var/mob/living/carbon/xenomorph/xeno = affected_atom
 		xeno.speed_modifier += effect_speed_modifier
 		xeno.recalculate_speed()
 		if(effect_modifier_source)

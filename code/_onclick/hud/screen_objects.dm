@@ -513,7 +513,7 @@
 		if(MOVE_INTENT_RUN)
 			icon_state = "running"
 
-/mob/living/carbon/Xenomorph/toggle_mov_intent()
+/mob/living/carbon/xenomorph/toggle_mov_intent()
 	. = ..()
 	if(.)
 		update_icons()
@@ -605,7 +605,7 @@
 	icon = 'icons/mob/hud/alien_standard.dmi'
 	icon_state = "marker"
 
-/atom/movable/screen/mark_locator/clicked(mob/living/carbon/Xenomorph/user, mods)
+/atom/movable/screen/mark_locator/clicked(mob/living/carbon/xenomorph/user, mods)
 	if(!istype(user))
 		return FALSE
 	if(mods["shift"] && user.tracked_marker)
@@ -635,7 +635,7 @@
 	icon_state = "trackoff"
 	var/track_state = TRACKER_QUEEN
 
-/atom/movable/screen/queen_locator/clicked(mob/living/carbon/Xenomorph/user, mods)
+/atom/movable/screen/queen_locator/clicked(mob/living/carbon/xenomorph/user, mods)
 	if(!istype(user))
 		return FALSE
 	if(mods["shift"])
@@ -653,7 +653,7 @@
 			options["Hive Core"] = TRACKER_HIVE
 		var/xeno_leader_index = 1
 		for(var/xeno in user.hive.xeno_leader_list)
-			var/mob/living/carbon/Xenomorph/xeno_lead = user.hive.xeno_leader_list[xeno_leader_index]
+			var/mob/living/carbon/xenomorph/xeno_lead = user.hive.xeno_leader_list[xeno_leader_index]
 			if(xeno_lead)
 				options["Xeno Leader [xeno_lead]"] = "[xeno_leader_index]"
 			xeno_leader_index++
@@ -676,12 +676,12 @@
 /atom/movable/screen/xenonightvision/clicked(var/mob/user)
 	if (..())
 		return 1
-	var/mob/living/carbon/Xenomorph/X = user
+	var/mob/living/carbon/xenomorph/X = user
 	X.toggle_nightvision()
 	update_icon(X)
 	return 1
 
-/atom/movable/screen/xenonightvision/update_icon(var/mob/living/carbon/Xenomorph/owner)
+/atom/movable/screen/xenonightvision/update_icon(var/mob/living/carbon/xenomorph/owner)
 	. = ..()
 	var/vision_define
 	switch(owner.lighting_alpha)

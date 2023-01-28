@@ -1711,7 +1711,7 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 	I.transform = rotate
 	I.flick_overlay(user, 3)
 
-/obj/item/weapon/gun/attack_alien(mob/living/carbon/Xenomorph/xeno)
+/obj/item/weapon/gun/attack_alien(mob/living/carbon/xenomorph/xeno)
 	..()
 	var/slashed_light = FALSE
 	for(var/slot in attachments)

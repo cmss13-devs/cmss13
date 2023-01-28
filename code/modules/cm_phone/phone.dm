@@ -542,6 +542,11 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 	network_receive = FACTION_COLONIST
 	networks_transmit = list(FACTION_COLONIST)
 
+/obj/structure/transmitter/colony_net/rotary
+	name = "rotary telephone"
+	icon_state = "rotary_phone"
+	desc = "The finger plate is a little stiff."
+
 //rotary desk phones (need a touch tone handset at some point)
 /obj/structure/transmitter/rotary
 	name = "rotary telephone"

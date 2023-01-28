@@ -26,7 +26,7 @@
 
 	minimap_icon = "runner"
 
-/mob/living/carbon/Xenomorph/Runner
+/mob/living/carbon/xenomorph/runner
 	caste_type = XENO_CASTE_RUNNER
 	name = XENO_CASTE_RUNNER
 	desc = "A small red alien that looks like it could run fairly quickly..."
@@ -56,7 +56,7 @@
 		/datum/action/xeno_action/onclick/toggle_long_range/runner,
 	)
 	inherent_verbs = list(
-		/mob/living/carbon/Xenomorph/proc/vent_crawl,
+		/mob/living/carbon/xenomorph/proc/vent_crawl,
 	)
 	mutation_type = RUNNER_NORMAL
 
@@ -64,7 +64,7 @@
 	icon_xenonid = 'icons/mob/xenonids/runner.dmi'
 
 
-/mob/living/carbon/Xenomorph/Runner/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/mob/living/carbon/xenomorph/runner/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_pass = PASS_FLAGS_CRAWLER

@@ -40,7 +40,7 @@
 	else
 		return attack_hand(user)
 
-/obj/structure/largecrate/attack_alien(mob/living/carbon/Xenomorph/M)
+/obj/structure/largecrate/attack_alien(mob/living/carbon/xenomorph/M)
 	M.animation_attack_on(src)
 	unpack()
 	M.visible_message(SPAN_DANGER("[M] smashes [src] apart!"), \

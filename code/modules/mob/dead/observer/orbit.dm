@@ -112,7 +112,7 @@
 			serialized["health"] = FLOOR((player.health / player.maxHealth * 100), 1)
 
 			if(isXeno(player))
-				var/mob/living/carbon/Xenomorph/xeno = player
+				var/mob/living/carbon/xenomorph/xeno = player
 				if(xeno.caste)
 					var/datum/caste_datum/caste = xeno.caste
 					serialized["caste"] = caste.caste_type

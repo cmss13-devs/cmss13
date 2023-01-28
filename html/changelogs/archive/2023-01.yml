@@ -523,3 +523,89 @@
   nauticall:
   - rscadd: Resprited the pipe dispenser, CAS laser battery, the crematorium, various
       foodstuffs and ingredients, the portable dialysis machine, and the mounted flash.
+2023-01-24:
+  JackieEstegado:
+  - bugfix: Laptops can no longer be picked up from afar, plus runtime fix.
+  Morrow:
+  - code_imp: Removed unused variable
+  NewyearnewmeUwu:
+  - rscadd: adds a telephone to the Almayer's hangar.
+  stanalbatross:
+  - balance: reduced acid blood splash damage to 12 from 25
+  - code_imp: cleaned up a bit of code to avoid an unneeded proc call in the code
+      that handled acid blood splashes
+  - ui: autolathes now use tgui
+  - code_imp: cleaned up autolathe code, made stuff use defines, proc-ified some stuff,
+      made bools use TRUEFALSE
+  - code_imp: made a few common vars use TRUEFALSE
+2023-01-25:
+  Segrain:
+  - refactor: Drinks are brought to be more in line with reagent system overall. Let
+      me know if something breaks.
+  - bugfix: Exploit involving legacy healing drink going infinite is put to an end.
+  stanalbatross:
+  - ui: converted the kill panel to tgui
+2023-01-26:
+  Molto:
+  - bugfix: fixed the m43 causing a honk once put in a holster
+  - imageadd: added the M43 belt-sprite
+  Morrow:
+  - bugfix: Fixed CO office bathroom semiotic offset
+  NewyearnewmeUwu:
+  - rscadd: Crosses can now have dogtags placed on them.
+  carlarctg:
+  - rscadd: Adds bunny slippers to toy spawns
+  harryob:
+  - bugfix: fixes paygrade runtime for the combat reporter and corporate supervisor
+      survivor
+  realforest2001:
+  - rscadd: Local Out of Character will appear above your mob if global OOC is enabled.
+  - bugfix: Fixes runtimes related to Narnia.
+  - rscadd: Added phones to Lazarus Landing. Also added phones to the CLF ship insert,
+      on an independant network.
+  - rscadd: Added phones to Solaris Ridge, split between the Colony, Lambda Labs and
+      Eta Labs as categories. All share the same network however.
+2023-01-27:
+  Carlarc, Puckaboo:
+  - code_imp: Added a variable to xeno_throw_human to disable the screenshake.
+  - balance: Headbite execution has been moved to its own ability on the fourth slot.
+      Ability sprites by Puckaboo!
+  - balance: Headbite is .25 seconds faster and heals 150 health instead of 100.
+  - balance: Removed Daze from Rush.
+  - balance: Flurry aims selected limb.
+  - balance: Tail jab has been changed from a sprite click ability into a telegraph
+      ability like Scissor Cut or Pike.
+  - balance: Directly clicking a target with Tail jab buffs the jab to deal +15 damage
+      and throw instead of step away. (Same distance)
+  - balance: Added XvX checks to all abilities.
+  - balance: Reduced Vampire speed bonus.
+  - balance: Resprited Vampire to be slightly more different from default Lurker,
+      more similar to Ravager, and have a less intense palette.
+  Kitsunemitsu, nauticall:
+  - rscadd: Added WO HUD icons for several WO roles. See PR for more details.
+  Morrow:
+  - balance: Lowered the shotgun slug's superslow effect (from 2 to 1) and slow effect
+      (from 5 to 3).
+  - code_imp: Moved around ammo knockback code to make specific ammo knockback effect
+      changes easier.
+  Sleepynecrons:
+  - imageadd: added icons for thick resin doors and their construction animations
+  carlarctg:
+  - ui: Gamemode and map voting at the end of a round is now displayed to everyone.
+2023-01-28:
+  HarryOB & TophatPenguin:
+  - bugfix: IO detector will now not have duplicated description text from the motion
+      detector.
+  - code_imp: motion detector description code was refactored and changed to a proc.
+  Molto:
+  - spellcheck: Fixed perscription medication
+  NewyearnewmeUwu:
+  - rscadd: made the M37 scabbard slightly larger so you can fit an M37 with attachments
+      on it.
+  ThePiachu:
+  - admin: Admins can now easily run the destructible terrain event using the Event
+      Panel.
+  harryob:
+  - bugfix: fixes the bad logging when an admin used direct narrate in view
+  - bugfix: fixes the ahelp fallback chat button
+  - bugfix: the pickup hotkey doesn't runtime as bad now

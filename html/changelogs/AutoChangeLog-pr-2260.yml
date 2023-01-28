@@ -1,5 +1,0 @@
-author: "stanalbatross"
-delete-after: True
-changes:
-  - balance: "reduced acid blood splash damage to 12 from 25"
-  - code_imp: "cleaned up a bit of code to avoid an unneeded proc call in the code that handled acid blood splashes"

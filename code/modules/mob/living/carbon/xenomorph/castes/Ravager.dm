@@ -30,7 +30,7 @@
 
 	minimap_icon = "ravager"
 
-/mob/living/carbon/Xenomorph/Ravager
+/mob/living/carbon/xenomorph/ravager
 	caste_type = XENO_CASTE_RAVAGER
 	name = XENO_CASTE_RAVAGER
 	desc = "A huge, nasty red alien with enormous scythed claws."

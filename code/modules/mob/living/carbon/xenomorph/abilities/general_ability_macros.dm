@@ -68,7 +68,7 @@
 	set hidden = TRUE
 	var/action_name = "Corrosive Acid (100)"
 
-	var/mob/living/carbon/Xenomorph/X = src // different levels of have different names
+	var/mob/living/carbon/xenomorph/X = src // different levels of have different names
 	switch(X.acid_level)
 		if(1)
 			action_name = "Corrosive Acid (75)"

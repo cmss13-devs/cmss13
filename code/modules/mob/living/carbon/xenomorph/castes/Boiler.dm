@@ -30,7 +30,7 @@
 
 	minimap_icon = "boiler"
 
-/mob/living/carbon/Xenomorph/Boiler
+/mob/living/carbon/xenomorph/boiler
 	caste_type = XENO_CASTE_BOILER
 	name = XENO_CASTE_BOILER
 	desc = "A huge, grotesque xenomorph covered in glowing, oozing acid slime."
@@ -66,7 +66,7 @@
 		/datum/action/xeno_action/onclick/toggle_long_range/boiler, //4th macro
 	)
 
-/mob/living/carbon/Xenomorph/Boiler/Initialize(mapload, mob/living/carbon/Xenomorph/oldXeno, h_number)
+/mob/living/carbon/xenomorph/boiler/Initialize(mapload, mob/living/carbon/xenomorph/oldxeno, h_number)
 	. = ..()
 	smoke = new /datum/effect_system/smoke_spread/xeno_acid
 	smoke.attach(src)
@@ -76,7 +76,7 @@
 
 	update_icon_source()
 
-/mob/living/carbon/Xenomorph/Boiler/Destroy()
+/mob/living/carbon/xenomorph/boiler/Destroy()
 	if(smoke)
 		qdel(smoke)
 		smoke = null

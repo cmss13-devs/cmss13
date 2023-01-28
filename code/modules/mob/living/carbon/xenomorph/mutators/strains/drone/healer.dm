@@ -23,7 +23,7 @@
 	if (. == 0)
 		return
 
-	var/mob/living/carbon/Xenomorph/Drone/drone = mutator_set.xeno
+	var/mob/living/carbon/xenomorph/drone/drone = mutator_set.xeno
 	drone.mutation_type = DRONE_HEALER
 	drone.phero_modifier += XENO_PHERO_MOD_LARGE
 	drone.plasma_types += PLASMA_PHEROMONE
@@ -57,7 +57,7 @@
 	ability_primacy = XENO_PRIMARY_ACTION_3
 
 /datum/action/xeno_action/activable/apply_salve/use_ability(atom/target_atom)
-	var/mob/living/carbon/Xenomorph/xeno = owner
+	var/mob/living/carbon/xenomorph/xeno = owner
 	xeno.xeno_apply_salve(target_atom, health_transfer_amount, max_range, self_health_drain_mod)
 	..()
 
@@ -68,7 +68,7 @@
 	var/action_name = "Apply Resin Salve"
 	handle_xeno_macro(src, action_name)
 
-/mob/living/carbon/Xenomorph/proc/xeno_apply_salve(mob/living/carbon/Xenomorph/target_xeno, amount = 100, max_range = 1, damage_taken_mod = 1.2)
+/mob/living/carbon/xenomorph/proc/xeno_apply_salve(mob/living/carbon/xenomorph/target_xeno, amount = 100, max_range = 1, damage_taken_mod = 1.2)
 
 	if(!istype(target_xeno))
 		return

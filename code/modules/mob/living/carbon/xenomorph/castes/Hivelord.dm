@@ -40,7 +40,7 @@
 
 	resin_build_order = GLOB.resin_build_order_hivelord
 
-/mob/living/carbon/Xenomorph/Hivelord
+/mob/living/carbon/xenomorph/hivelord
 	caste_type = XENO_CASTE_HIVELORD
 	name = XENO_CASTE_HIVELORD
 	desc = "A builder of really big hives."
@@ -69,8 +69,8 @@
 		)
 
 	inherent_verbs = list(
-		/mob/living/carbon/Xenomorph/proc/rename_tunnel,
-		/mob/living/carbon/Xenomorph/proc/set_hugger_reserve_for_morpher,
+		/mob/living/carbon/xenomorph/proc/rename_tunnel,
+		/mob/living/carbon/xenomorph/proc/set_hugger_reserve_for_morpher,
 		)
 	mutation_type = HIVELORD_NORMAL
 

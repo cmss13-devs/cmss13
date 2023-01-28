@@ -29,7 +29,7 @@
 
 	minimap_icon = "predalien"
 
-/mob/living/carbon/Xenomorph/Predalien
+/mob/living/carbon/xenomorph/predalien
 	caste_type = XENO_CASTE_PREDALIEN
 	name = "Abomination" //snowflake name
 	desc = "A strange looking creature with fleshy strands on its head. It appears like a mixture of armor and flesh, smooth, but well carapaced."
@@ -65,7 +65,7 @@
 	var/butcher_time = 6 SECONDS
 
 
-/mob/living/carbon/Xenomorph/Predalien/Initialize(mapload, mob/living/carbon/Xenomorph/oldXeno, h_number)
+/mob/living/carbon/xenomorph/predalien/Initialize(mapload, mob/living/carbon/xenomorph/oldxeno, h_number)
 	. = ..()
 	addtimer(CALLBACK(src, PROC_REF(announce_spawn)), 3 SECONDS)
 	hunter_data.dishonored = TRUE
@@ -73,7 +73,7 @@
 	hunter_data.dishonored_set = src
 	hud_set_hunter()
 
-/mob/living/carbon/Xenomorph/Predalien/proc/announce_spawn()
+/mob/living/carbon/xenomorph/predalien/proc/announce_spawn()
 	if(!loc)
 		return FALSE
 
@@ -116,7 +116,7 @@ Your health meter will not regenerate normally, so kill and die for the hive!</s
 	if(bound_xeno.can_not_harm(victim))
 		return FALSE
 
-	var/mob/living/carbon/Xenomorph/Predalien/xeno = bound_xeno
+	var/mob/living/carbon/xenomorph/predalien/xeno = bound_xeno
 
 	if(!istype(xeno))
 		return FALSE
@@ -141,7 +141,7 @@ Your health meter will not regenerate normally, so kill and die for the hive!</s
 				h_meat.name = "[human_victim.name] meat"
 
 		else if (isXeno(victim))
-			var/mob/living/carbon/Xenomorph/xeno_victim = victim
+			var/mob/living/carbon/xenomorph/xeno_victim = victim
 
 			new /obj/effect/decal/remains/xeno(xeno_victim.loc)
 			var/obj/item/stack/sheet/animalhide/xeno/xenohide = new /obj/item/stack/sheet/animalhide/xeno(xeno_victim.loc)

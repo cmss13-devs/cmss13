@@ -54,7 +54,7 @@
 	empty(get_turf(H), H)
 
 //regular storage's empty() proc doesn't work due to checks, so imitate it
-/obj/structure/vehicle_locker/proc/empty(var/turf/T, var/mob/living/carbon/human/H)
+/obj/structure/vehicle_locker/proc/empty(turf/T, mob/living/carbon/human/H)
 	if(!container)
 		to_chat(H, SPAN_WARNING("No internal storage found."))
 		return
@@ -72,7 +72,7 @@
 
 	container.empty(H, get_turf(H))
 
-/obj/structure/vehicle_locker/clicked(var/mob/living/carbon/human/user, var/list/mods)
+/obj/structure/vehicle_locker/clicked(mob/living/carbon/human/user, list/mods)
 	..()
 	if(!CAN_PICKUP(user, src))
 		return ..()
@@ -89,10 +89,10 @@
 		return TRUE
 
 //due to how /internal coded, this doesn't work, so we used workaround above
-/obj/structure/vehicle_locker/attack_hand(var/mob/user)
+/obj/structure/vehicle_locker/attack_hand(mob/user)
 	return
 
-/obj/structure/vehicle_locker/MouseDrop(var/obj/over_object)
+/obj/structure/vehicle_locker/MouseDrop(obj/over_object)
 	var/mob/living/carbon/human/user = usr
 	if(!istype(user))
 		return
@@ -104,7 +104,7 @@
 	if (container.handle_mousedrop(user, over_object))
 		..(over_object)
 
-/obj/structure/vehicle_locker/attackby(var/obj/item/W, var/mob/living/carbon/human/user)
+/obj/structure/vehicle_locker/attackby(obj/item/W, mob/living/carbon/human/user)
 	if(!Adjacent(user))
 		return
 	if(user.is_mob_incapacitated())
@@ -116,11 +116,11 @@
 		return
 	return container.attackby(W, user)
 
-/obj/structure/vehicle_locker/emp_act(var/severity)
+/obj/structure/vehicle_locker/emp_act(severity)
 	container.emp_act(severity)
 	..()
 
-/obj/structure/vehicle_locker/hear_talk(var/mob/M, var/msg)
+/obj/structure/vehicle_locker/hear_talk(mob/M, msg)
 	container.hear_talk(M, msg)
 	..()
 
@@ -190,7 +190,7 @@
 	. = ..()
 	. += has_tray ? SPAN_HELPFUL("Right-click to remove the surgical tray from the locker.") : SPAN_WARNING("The surgical tray has been removed.")
 
-/obj/structure/vehicle_locker/med/attackby(var/obj/item/W, var/mob/living/carbon/human/user)
+/obj/structure/vehicle_locker/med/attackby(obj/item/W, mob/living/carbon/human/user)
 	if(!Adjacent(user))
 		return
 	if(user.is_mob_incapacitated())
@@ -208,7 +208,7 @@
 		return
 	return container.attackby(W, user)
 
-/obj/structure/vehicle_locker/med/clicked(var/mob/living/carbon/human/user, var/list/mods)
+/obj/structure/vehicle_locker/med/clicked(mob/living/carbon/human/user, list/mods)
 	if(!CAN_PICKUP(user, src))
 		return ..()
 
@@ -227,7 +227,7 @@
 		container.open(user)
 		return TRUE
 
-/obj/structure/vehicle_locker/med/MouseDrop(var/obj/over_object)
+/obj/structure/vehicle_locker/med/MouseDrop(obj/over_object)
 	var/mob/living/carbon/human/user = usr
 	if(!istype(user))
 		return
@@ -262,7 +262,7 @@
 
 	remove_tray(H)
 
-/obj/structure/vehicle_locker/med/proc/remove_tray(var/mob/living/carbon/human/H)
+/obj/structure/vehicle_locker/med/proc/remove_tray(mob/living/carbon/human/H)
 	if(!has_tray)
 		to_chat(H, SPAN_WARNING("The surgical tray was already removed!"))
 		return
@@ -284,7 +284,7 @@
 	container.storage_close(H)
 	H.visible_message(SPAN_NOTICE("[H] removes the surgical tray from \the [src]."), SPAN_NOTICE("You remove the surgical tray from \the [src]."))
 
-/obj/structure/vehicle_locker/med/proc/add_tray(var/mob/living/carbon/human/H, var/obj/item/storage/surgical_tray/tray)
+/obj/structure/vehicle_locker/med/proc/add_tray(mob/living/carbon/human/H, obj/item/storage/surgical_tray/tray)
 	if(has_tray)
 		to_chat(H, SPAN_WARNING("\The [src] already has a surgical tray installed!"))
 		return

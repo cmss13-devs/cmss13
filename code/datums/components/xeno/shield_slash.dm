@@ -5,7 +5,7 @@
 	var/shield_per_slash = 20
 	var/stored_shield = 0
 
-/datum/component/shield_slash/Initialize(var/max_shield = 160, var/shield_per_slash = 20, var/stat_name = "Shield")
+/datum/component/shield_slash/Initialize(max_shield = 160, shield_per_slash = 20, stat_name = "Shield")
 	if(!isXeno(parent))
 		return COMPONENT_INCOMPATIBLE
 
@@ -27,11 +27,11 @@
 	if(!isXeno(parent))
 		return COMPONENT_INCOMPATIBLE
 
-/datum/component/shield_slash/proc/handle_stat_display(var/mob/living/carbon/xenomorph/X, var/list/statdata)
+/datum/component/shield_slash/proc/handle_stat_display(mob/living/carbon/xenomorph/X, list/statdata)
 	SIGNAL_HANDLER
 	statdata += "Stored [stat_name]: [stored_shield]/[max_shield]"
 
-/datum/component/shield_slash/proc/handle_shield_buildup(var/mob/living/carbon/xenomorph/X)
+/datum/component/shield_slash/proc/handle_shield_buildup(mob/living/carbon/xenomorph/X)
 	SIGNAL_HANDLER
 	stored_shield += shield_per_slash
 	if(stored_shield < max_shield)

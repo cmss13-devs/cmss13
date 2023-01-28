@@ -28,7 +28,7 @@
 		return
 	return ..()
 
-/obj/item/iff_tag/proc/handle_reprogramming(var/mob/living/carbon/human/programmer, var/mob/living/carbon/xenomorph/xeno)
+/obj/item/iff_tag/proc/handle_reprogramming(mob/living/carbon/human/programmer, mob/living/carbon/xenomorph/xeno)
 	var/list/id_faction_groups = programmer.get_id_faction_group()
 	var/option = tgui_alert(programmer, "The xeno tag's current IFF groups reads as: [english_list(faction_groups, "None")]\nYour ID's IFF group reads as: [english_list(id_faction_groups, "None")]", "Xenomorph IFF Tag", list("Overwrite", "Add", "Remove"))
 	if(!option)

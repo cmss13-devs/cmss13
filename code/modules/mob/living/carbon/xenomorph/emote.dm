@@ -1,4 +1,4 @@
-/mob/living/carbon/xenomorph/emote(var/act, var/m_type = 1, var/message = null, player_caused)
+/mob/living/carbon/xenomorph/emote(act, m_type = 1, message = null, player_caused)
 	if(findtext(act, "-", 1, null))
 		var/t1 = findtext(act, "-", 1, null)
 		act = copytext(act, 1, t1)
@@ -94,7 +94,7 @@
 			for(var/mob/O in hearers(src, null))
 				O.show_message(message, m_type)
 
-/mob/living/carbon/xenomorph/proc/emote_audio_helper(var/message, var/sound_to_play, var/volume = 15, var/player_caused)
+/mob/living/carbon/xenomorph/proc/emote_audio_helper(message, sound_to_play, volume = 15, player_caused)
 	if(recent_audio_emote && player_caused)
 		to_chat(src, "You just did an audible emote. Wait a while.")
 		return
@@ -109,7 +109,7 @@
 		O.show_message(message, SHOW_MESSAGE_AUDIBLE)
 
 
-/mob/living/carbon/xenomorph/larva/emote(var/act, var/m_type = 1, var/message = null, player_caused)
+/mob/living/carbon/xenomorph/larva/emote(act, m_type = 1, message = null, player_caused)
 	if(findtext(act, "-", 1, null))
 		var/t1 = findtext(act, "-", 1, null)
 		act = copytext(act, 1, t1)
@@ -120,7 +120,7 @@
 	playsound(loc, "alien_roar_larva", 15)
 	return
 
-/mob/living/carbon/xenomorph/facehugger/emote(var/act, var/m_type = 1, var/message = null, player_caused)
+/mob/living/carbon/xenomorph/facehugger/emote(act, m_type = 1, message = null, player_caused)
 	if(findtext(act, "-", 1, null))
 		var/t1 = findtext(act, "-", 1, null)
 		act = copytext(act, 1, t1)

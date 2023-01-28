@@ -24,7 +24,7 @@ BSQL_PROTECT_DATUM(/datum/entity/clan)
 	"honor" = DB_FIELDTYPE_BIGINT,
 	"color" = DB_FIELDTYPE_STRING_SMALL)
 
-/datum/entity_meta/clan/on_insert(var/datum/entity/clan/player_clan)
+/datum/entity_meta/clan/on_insert(datum/entity/clan/player_clan)
 	player_clan.color = "#FFFFFF"
 
 	player_clan.save()
@@ -39,7 +39,7 @@ BSQL_PROTECT_DATUM(/datum/entity/clan)
 	"honor" = DB_FIELDTYPE_BIGINT)
 	key_field = "player_id"
 
-/datum/entity_meta/clan_player/on_insert(var/datum/entity/clan_player/player)
+/datum/entity_meta/clan_player/on_insert(datum/entity/clan_player/player)
 	player.honor = 0
 	player.clan_rank = clan_ranks_ordered[CLAN_RANK_UNBLOODED]
 	player.permissions = clan_ranks[CLAN_RANK_UNBLOODED].permissions

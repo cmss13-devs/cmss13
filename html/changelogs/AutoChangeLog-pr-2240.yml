@@ -1,0 +1,5 @@
+author: "ThePiachu"
+delete-after: True
+changes:
+  - admin: "Admins can now spawn a xeno cultist ERT for their events."
+  - rscadd: "Added a more serious version of a xeno cultist synthetic."

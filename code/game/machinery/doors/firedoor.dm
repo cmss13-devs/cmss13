@@ -248,7 +248,7 @@
 	latetoggle()
 	return ..()
 
-/obj/structure/machinery/door/firedoor/open(var/forced = FALSE)
+/obj/structure/machinery/door/firedoor/open(forced = FALSE)
 	if(!forced)
 		if(inoperable())
 			return //needs power to open unless it was forced

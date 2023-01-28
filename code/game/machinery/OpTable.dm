@@ -40,7 +40,7 @@
 	QDEL_NULL(anes_tank)
 	. = ..()
 
-/obj/structure/machinery/optable/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/obj/structure/machinery/optable/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_can_pass_all = PASS_OVER|PASS_AROUND

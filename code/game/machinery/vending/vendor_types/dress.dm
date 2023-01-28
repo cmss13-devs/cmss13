@@ -29,7 +29,7 @@
 					list(name, 0, uniform_path, NO_FLAGS, VENDOR_ITEM_REGULAR)
 				)
 
-/obj/structure/machinery/cm_vending/clothing/dress/proc/get_products_preset(var/list/presets)
+/obj/structure/machinery/cm_vending/clothing/dress/proc/get_products_preset(list/presets)
 	. = list()
 	for(var/preset in presets)
 		var/datum/equipment_preset/pre = new preset()
@@ -209,7 +209,7 @@
 
 	return chosen
 
-/obj/structure/machinery/cm_vending/clothing/super_snowflake/proc/add_items(var/obj/item/item_type)
+/obj/structure/machinery/cm_vending/clothing/super_snowflake/proc/add_items(obj/item/item_type)
 	for(var/obj/item/I as anything in typesof(item_type))
 		items += list(list(initial(I.name), 0, I, null, VENDOR_ITEM_REGULAR))
 

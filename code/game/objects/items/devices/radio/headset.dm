@@ -247,7 +247,7 @@
 			SStracking.stop_misc_tracking(user)
 	..()
 
-/obj/item/device/radio/headset/proc/add_hud_tracker(var/mob/living/carbon/human/user)
+/obj/item/device/radio/headset/proc/add_hud_tracker(mob/living/carbon/human/user)
 	SIGNAL_HANDLER
 
 	if(headset_hud_on && user.mind && (user.assigned_squad || misc_tracking) && user.hud_used?.locate_leader)

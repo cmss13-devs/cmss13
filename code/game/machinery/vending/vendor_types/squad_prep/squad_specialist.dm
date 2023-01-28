@@ -68,7 +68,7 @@ GLOBAL_LIST_INIT(cm_vending_gear_spec, list(
 	vendor_role = list(JOB_SQUAD_SPECIALIST)
 	req_access = list(ACCESS_MARINE_SPECPREP)
 
-/obj/structure/machinery/cm_vending/gear/spec/get_listed_products(var/mob/user)
+/obj/structure/machinery/cm_vending/gear/spec/get_listed_products(mob/user)
 	return GLOB.cm_vending_gear_spec
 
 
@@ -125,7 +125,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_specialist, list(
 	req_access = list(ACCESS_MARINE_SPECPREP)
 	vendor_role = list(JOB_SQUAD_SPECIALIST)
 
-/obj/structure/machinery/cm_vending/clothing/specialist/get_listed_products(var/mob/user)
+/obj/structure/machinery/cm_vending/clothing/specialist/get_listed_products(mob/user)
 	return GLOB.cm_vending_clothing_specialist
 
 /obj/structure/machinery/cm_vending/clothing/specialist/alpha

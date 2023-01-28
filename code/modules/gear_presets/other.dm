@@ -40,7 +40,7 @@
 	. = ..()
 	access = get_all_accesses()
 
-/datum/equipment_preset/other/freelancer/load_name(mob/living/carbon/human/H, var/randomise)
+/datum/equipment_preset/other/freelancer/load_name(mob/living/carbon/human/H, randomise)
 	H.gender = pick(60;MALE,40;FEMALE)
 	var/datum/preferences/A = new()
 	A.randomize_appearance(H)
@@ -249,7 +249,7 @@
 	. = ..()
 	access = get_all_accesses()
 
-/datum/equipment_preset/other/elite_merc/load_name(mob/living/carbon/human/H, var/randomise)
+/datum/equipment_preset/other/elite_merc/load_name(mob/living/carbon/human/H, randomise)
 	H.gender = pick(70;MALE,30;FEMALE)
 	var/datum/preferences/A = new()
 	A.randomize_appearance(H)
@@ -564,7 +564,7 @@
 	. = ..()
 	access = get_freelancer_access()
 
-/datum/equipment_preset/other/pizza/load_name(mob/living/carbon/human/H, var/randomise)
+/datum/equipment_preset/other/pizza/load_name(mob/living/carbon/human/H, randomise)
 	H.gender = pick(MALE,FEMALE)
 	var/datum/preferences/A = new()
 	A.randomize_appearance(H)
@@ -609,7 +609,7 @@
 	. = ..()
 	access = get_freelancer_access()
 
-/datum/equipment_preset/other/souto/load_name(mob/living/carbon/human/H, var/randomise)
+/datum/equipment_preset/other/souto/load_name(mob/living/carbon/human/H, randomise)
 	H.gender = MALE
 	H.change_real_name(H, "Souto Man")
 	H.age = 40
@@ -643,7 +643,7 @@
 	faction = FACTION_ZOMBIE
 
 //Overloading the function to be able to spawn gear first
-/datum/equipment_preset/other/zombie/load_preset(mob/living/carbon/human/H, var/randomise = FALSE)
+/datum/equipment_preset/other/zombie/load_preset(mob/living/carbon/human/H, randomise = FALSE)
 	if(randomise)
 		load_name(H)
 	load_skills(H) //skills are set before equipment because of skill restrictions on certain clothes.
@@ -656,7 +656,7 @@
 	H.assigned_equipment_preset = src
 	H.regenerate_icons()
 
-/datum/equipment_preset/other/zombie/load_name(mob/living/carbon/human/H, var/randomise)
+/datum/equipment_preset/other/zombie/load_name(mob/living/carbon/human/H, randomise)
 	H.gender = pick(MALE, FEMALE)
 	var/datum/preferences/A = new
 	A.randomize_appearance(H)
@@ -696,7 +696,7 @@
 	rank = FACTION_GLADIATOR
 	faction = FACTION_GLADIATOR
 
-/datum/equipment_preset/other/gladiator/load_name(mob/living/carbon/human/H, var/randomise)
+/datum/equipment_preset/other/gladiator/load_name(mob/living/carbon/human/H, randomise)
 	H.gender = pick(MALE, FEMALE)
 	var/datum/preferences/A = new
 	A.randomize_appearance(H)
@@ -809,7 +809,7 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran(H), WEAR_HANDS)
 
 //*****************************************************************************************************/
-/datum/equipment_preset/other/xeno_cultist/load_status(mob/living/carbon/human/H, var/hivenumber = XENO_HIVE_NORMAL)
+/datum/equipment_preset/other/xeno_cultist/load_status(mob/living/carbon/human/H, hivenumber = XENO_HIVE_NORMAL)
 	if(SSticker.mode && H.mind)
 		SSticker.mode.xenomorphs += H.mind
 
@@ -872,7 +872,7 @@
 	idtype = /obj/item/card/id/dogtag
 	uses_special_name = TRUE
 
-/datum/equipment_preset/other/professor_dummy/load_name(mob/living/carbon/human/H, var/randomise)
+/datum/equipment_preset/other/professor_dummy/load_name(mob/living/carbon/human/H, randomise)
 	H.gender = pick(MALE, FEMALE)
 	H.real_name = "Professor DUMMY the Medical Mannequin"
 	H.name = H.real_name

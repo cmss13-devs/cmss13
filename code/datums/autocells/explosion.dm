@@ -275,7 +275,7 @@ as having entered the turf.
 
 	var/datum/automata_cell/explosion/E = new /datum/automata_cell/explosion(epicenter)
 	if(power > EXPLOSION_MAX_POWER)
-		log_debug("[explosion_cause_data.cause_name] exploded with force of [power]. Overriding to capacity of 5000.")
+		log_debug("[explosion_cause_data.cause_name] exploded with force of [power]. Overriding to capacity of [EXPLOSION_MAX_POWER].")
 		power = EXPLOSION_MAX_POWER
 
 	// something went wrong :(

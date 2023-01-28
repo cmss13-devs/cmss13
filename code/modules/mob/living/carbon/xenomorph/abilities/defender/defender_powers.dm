@@ -105,48 +105,48 @@
 
 // Defender Tail Sweep
 /datum/action/xeno_action/onclick/tail_sweep/use_ability(atom/A)
-	var/mob/living/carbon/Xenomorph/X = owner
-	if (!istype(X))
+	var/mob/living/carbon/Xenomorph/fender = owner
+	if (!istype(fender))
 		return
 
-	if(!X.check_state())
+	if(!fender.check_state())
 		return
 
 	if (!action_cooldown_check())
 		return
 
-	if(X.fortify)
+	if(fender.fortify)
 		to_chat(src, SPAN_XENOWARNING("You cannot use tail swipe while fortified."))
 		return
 
-	if(X.crest_defense)
+	if(fender.crest_defense)
 		to_chat(src, SPAN_XENOWARNING("You cannot use tail swipe with your crest lowered."))
 		return
 
-	X.visible_message(SPAN_XENOWARNING("[X] sweeps its tail in a wide circle!"), \
+	fender.visible_message(SPAN_XENOWARNING("[X] sweeps its tail in a wide circle!"), \
 	SPAN_XENOWARNING("You sweep your tail in a wide circle!"))
 
 	if(!check_and_use_plasma_owner())
 		return
 
-	X.spin_circle()
-	X.emote("tail")
+	fender.spin_circle()
+	fender.emote("tail")
 
 	var/sweep_range = 1
-	for(var/mob/living/carbon/H in orange(sweep_range, get_turf(X)))
-		if (!isXenoOrHuman(H) || X.can_not_harm(H)) continue
+	for(var/mob/living/carbon/H in orange(sweep_range, get_turf(fender)))
+		if (!isXenoOrHuman(H) || fender.can_not_harm(H)) continue
 		if(H.stat == DEAD) continue
 		if(HAS_TRAIT(H, TRAIT_NESTED)) continue
-		step_away(H, X, sweep_range, 2)
-		X.flick_attack_overlay(H, "punch")
-		H.last_damage_data = create_cause_data(X.caste_type, X)
+		step_away(H, fender, sweep_range, 2)
+		fender.flick_attack_overlay(H, "punch")
+		H.last_damage_data = create_cause_data(fender.caste_type, fender)
 		H.apply_armoured_damage(get_xeno_damage_slash(H, 15), ARMOR_MELEE, BRUTE)
 		shake_camera(H, 2, 1)
 
 		if(H.mob_size < MOB_SIZE_BIG)
 			H.apply_effect(get_xeno_stun_duration(H, 1), WEAKEN)
 
-		to_chat(H, SPAN_XENOWARNING("You are struck by [src]'s tail sweep!"))
+		to_chat(H, SPAN_XENOWARNING("You are struck by [fender]'s tail sweep!"))
 		playsound(H,'sound/weapons/alien_claw_block.ogg', 50, 1)
 
 	apply_cooldown()

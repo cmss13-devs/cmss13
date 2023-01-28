@@ -80,7 +80,7 @@
 // Removing marines connected to anesthetic
 /obj/structure/machinery/optable/attack_alien(mob/living/carbon/xenomorph/alien, mob/living/user)
 	if(buckled_mob)
-		to_chat(alien, SPAN_XENONOTICE("You rip the tubes off of the host, releasing it!"))
+		to_chat(alien, SPAN_XENONOTICE("You rip the tubes away from the host, releasing it!"))
 		playsound(alien.loc, "alien_claw_flesh", 25, 1)
 		unbuckle(user)
 		return
@@ -143,7 +143,7 @@
 		H.drop_inv_item_on_ground(M)
 		qdel(M)
 		if(!(ishuman(user))) //Checks for whether a xeno is unbuckling from the operating table
-			H.visible_message(SPAN_WARNING("The anesthesia mask is ripped off of [H]'s face!"))
+			H.visible_message(SPAN_WARNING("The anesthesia mask is ripped away from [H]'s face!"))
 		else
 			H.visible_message(SPAN_NOTICE("[user] turns off the anesthetic and removes the mask from [H]."))
 		stop_processing()

@@ -406,7 +406,7 @@
 
 	generate_name()
 
-	if(isXenoQueen(src))
+	if(isqueen(src))
 		SStracking.set_leader("hive_[hivenumber]", src)
 	SStracking.start_tracking("hive_[hivenumber]", src)
 
@@ -624,7 +624,7 @@
 	if(HAS_TRAIT(src, TRAIT_SIMPLE_DESC))
 		return list(desc)
 
-	if(isXeno(user) && caste && caste.caste_desc)
+	if(isxeno(user) && caste && caste.caste_desc)
 		. += caste.caste_desc
 
 	if(l_hand)
@@ -651,12 +651,12 @@
 			if(1 to 24)
 				. += "It is heavily injured and limping badly."
 
-	if(isXeno(user))
+	if(isxeno(user))
 		var/mob/living/carbon/xenomorph/xeno = user
 		if(hivenumber != xeno.hivenumber)
 			. += "It appears to belong to [hive?.name ? "the [hive.name]" : "a different hive"]."
 
-	if(isXeno(user) || isobserver(user))
+	if(isxeno(user) || isobserver(user))
 		if(mutation_type != "Normal")
 			. += "It has specialized into a [mutation_type]."
 
@@ -733,7 +733,7 @@
 	if(!isliving(AM))
 		return FALSE
 	var/mob/living/L = AM
-	if(isSynth(L) && L.health < 0) // no pulling critted or dead synths
+	if(issynth(L) && L.health < 0) // no pulling critted or dead synths
 		return FALSE
 	if(L.buckled)
 		return FALSE //to stop xeno from pulling marines on roller beds.
@@ -922,12 +922,12 @@
 	recalculate_acid()
 	recalculate_weeds()
 	pull_multiplier = mutators.pull_multiplier
-	if(isXenoRunner(src))
+	if(isrunner(src))
 		//Xeno runners need a small nerf to dragging speed mutator
 		pull_multiplier = 1.0 - (1.0 - mutators.pull_multiplier) * 0.85
 		if(is_zoomed)
 			zoom_out()
-	if(isXenoCarrier(src))
+	if(iscarrier(src))
 		huggers_max = caste.huggers_max
 		eggs_max = caste.eggs_max
 	need_weeds = mutators.need_weeds

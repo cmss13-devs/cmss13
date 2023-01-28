@@ -466,7 +466,7 @@
 		return
 
 	for(var/mob/living/carbon/human/M in view())
-		if(!isHumanStrict(M) && !isHumanSynthStrict(M))
+		if(!ishuman_strict(M) && !ishumansynth_strict(M))
 			continue
 
 		if(M.stat != DEAD)

@@ -80,7 +80,7 @@
 	healthcheck()
 
 /obj/structure/tunnel/attackby(obj/item/W as obj, mob/user as mob)
-	if(!isXeno(user))
+	if(!isxeno(user))
 		return ..()
 	return attack_alien(user)
 
@@ -89,7 +89,7 @@
 	set category = "Object"
 	set src in view(1)
 
-	if(isXeno(usr) && isfriendly(usr) && (usr.loc == src))
+	if(isxeno(usr) && isfriendly(usr) && (usr.loc == src))
 		pick_tunnel(usr)
 	else
 		to_chat(usr, "You stare into the dark abyss" + "[contents.len ? ", making out what appears to be two little lights... almost like something is watching." : "."]")
@@ -99,7 +99,7 @@
 	set category = "Object"
 	set src in view(0)
 
-	if(isXeno(usr) && (usr.loc == src))
+	if(isxeno(usr) && (usr.loc == src))
 		exit_tunnel(usr)
 
 /obj/structure/tunnel/proc/pick_tunnel(mob/living/carbon/xenomorph/X)
@@ -130,7 +130,7 @@
 
 		if(X.mob_size >= MOB_SIZE_BIG) //Big xenos take WAY longer
 			tunnel_time = TUNNEL_MOVEMENT_BIG_XENO_DELAY
-		else if(isXenoLarva(X)) //Larva can zip through near-instantly, they are wormlike after all
+		else if(islarva(X)) //Larva can zip through near-instantly, they are wormlike after all
 			tunnel_time = TUNNEL_MOVEMENT_LARVA_DELAY
 
 		if(!do_after(X, tunnel_time, INTERRUPT_NO_NEEDHAND, 0))
@@ -159,7 +159,7 @@
 
 //Used for controling tunnel exiting and returning
 /obj/structure/tunnel/clicked(mob/user, list/mods)
-	if(!isXeno(user) || !isfriendly(user))
+	if(!isxeno(user) || !isfriendly(user))
 		return ..()
 	var/mob/living/carbon/xenomorph/X = user
 	if(mods["ctrl"] && pick_tunnel(X))//Returning to original tunnel
@@ -209,7 +209,7 @@
 
 	if(M.mob_size >= MOB_SIZE_BIG) //Big xenos take WAY longer
 		tunnel_time = TUNNEL_ENTER_BIG_XENO_DELAY
-	else if(isXenoLarva(M)) //Larva can zip through near-instantly, they are wormlike after all
+	else if(islarva(M)) //Larva can zip through near-instantly, they are wormlike after all
 		tunnel_time = TUNNEL_ENTER_LARVA_DELAY
 
 	if(M.mob_size >= MOB_SIZE_BIG)

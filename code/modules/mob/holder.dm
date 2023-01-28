@@ -40,7 +40,7 @@
 /mob/living/proc/get_scooped(mob/living/carbon/grabber)
 	if(!holder_type)
 		return
-	if(isXeno(grabber))
+	if(isxeno(grabber))
 		to_chat(grabber, SPAN_WARNING("You leave [src] alone. It cannot be made a host, so there is no use for it."))
 		return
 	if(locate(/obj/item/explosive/plastic) in contents)

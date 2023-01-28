@@ -205,7 +205,7 @@
 	. = ..()
 
 /obj/structure/barricade/plasteel/attack_hand(mob/user as mob)
-	if(isXeno(user))
+	if(isxeno(user))
 		return
 
 	if(closed)

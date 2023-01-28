@@ -101,7 +101,7 @@
 			return
 		return ..(W,user)
 	else
-		if(isXeno(user))
+		if(isxeno(user))
 			var/mob/living/carbon/xenomorph/opener = user
 			src.attack_alien(opener)
 			return
@@ -112,7 +112,7 @@
 	if(src.locked)
 		src.togglelock(user)
 	else
-		if(opened && isXeno(user))
+		if(opened && isxeno(user))
 			return // stop xeno closing them
 		src.toggle(user)
 

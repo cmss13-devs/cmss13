@@ -1,5 +1,0 @@
-author: "HarryOB & TophatPenguin"
-delete-after: True
-changes:
-  - bugfix: "IO detector will now not have duplicated description text from the motion detector."
-  - code_imp: "motion detector description code was refactored and changed to a proc."

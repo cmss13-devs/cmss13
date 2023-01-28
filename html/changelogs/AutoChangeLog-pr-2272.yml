@@ -1,4 +1,0 @@
-author: "ThePiachu"
-delete-after: True
-changes:
-  - admin: "Admins can now easily run the destructible terrain event using the Event Panel."

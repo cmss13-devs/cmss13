@@ -592,3 +592,20 @@
   - imageadd: added icons for thick resin doors and their construction animations
   carlarctg:
   - ui: Gamemode and map voting at the end of a round is now displayed to everyone.
+2023-01-28:
+  HarryOB & TophatPenguin:
+  - bugfix: IO detector will now not have duplicated description text from the motion
+      detector.
+  - code_imp: motion detector description code was refactored and changed to a proc.
+  Molto:
+  - spellcheck: Fixed perscription medication
+  NewyearnewmeUwu:
+  - rscadd: made the M37 scabbard slightly larger so you can fit an M37 with attachments
+      on it.
+  ThePiachu:
+  - admin: Admins can now easily run the destructible terrain event using the Event
+      Panel.
+  harryob:
+  - bugfix: fixes the bad logging when an admin used direct narrate in view
+  - bugfix: fixes the ahelp fallback chat button
+  - bugfix: the pickup hotkey doesn't runtime as bad now

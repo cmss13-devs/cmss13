@@ -210,10 +210,10 @@
 	openspeed = 5
 	req_access = null // Colony side airlocks should not have any sort of access.
 	req_one_access = null
-tiles_with = list(
-	/obj/structure/window/framed/strata,
-	/obj/structure/machinery/door/airlock,
-	)
+	tiles_with = list(
+		/obj/structure/window/framed/strata,
+		/obj/structure/machinery/door/airlock,
+		)
 
 /obj/structure/machinery/door/airlock/strata/autoname
 	autoname = TRUE

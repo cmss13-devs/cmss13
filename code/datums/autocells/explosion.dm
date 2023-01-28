@@ -274,9 +274,9 @@ as having entered the turf.
 		playsound(epicenter, "explosion", 90, 1, max(round(power,1),7))
 
 	var/datum/automata_cell/explosion/E = new /datum/automata_cell/explosion(epicenter)
-	if(power > 5000)
+	if(power > EXPLOSION_MAX_POWER)
 		log_debug("[explosion_cause_data.cause_name] exploded with force of [power]. Overriding to capacity of 5000.")
-		power = 5000
+		power = EXPLOSION_MAX_POWER
 
 	// something went wrong :(
 	if(QDELETED(E))

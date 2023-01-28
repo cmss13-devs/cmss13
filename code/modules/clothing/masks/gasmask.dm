@@ -31,7 +31,7 @@
 	icon_state = "kutjevo_respirator"
 	item_state = "kutjevo_respirator"
 
-/obj/item/clothing/mask/gas/PMC
+/obj/item/clothing/mask/gas/pmc
 	name = "\improper M8 pattern armored balaclava"
 	desc = "An armored balaclava designed to conceal both the identity of the operator and act as an air-filter."
 	item_state = "helmet"
@@ -50,16 +50,16 @@
 	flags_inv_hide = HIDEEARS|HIDEFACE|HIDEALLHAIR
 	flags_equip_slot = SLOT_FACE
 
-/obj/item/clothing/mask/gas/PMC/marsoc
+/obj/item/clothing/mask/gas/pmc/marsoc
 	name = "\improper SOF armored balaclava"
 	desc = "Designed for maximum protection -- and badassery. Provides protection against facial attacks, filters toxins, and conceals the wearer's identity."
 	icon_state = "balaclava"
 
-/obj/item/clothing/mask/gas/PMC/upp
+/obj/item/clothing/mask/gas/pmc/upp
 	name = "\improper UPP armored commando balaclava"
 	icon_state = "upp_mask"
 
-/obj/item/clothing/mask/gas/PMC/leader
+/obj/item/clothing/mask/gas/pmc/leader
 	name = "\improper M8 pattern armored balaclava"
 	desc = "An armored balaclava designed to conceal both the identity of the operator and act as an air-filter. This particular suit looks like it belongs to a high-ranking officer."
 	icon_state = "officer_mask"

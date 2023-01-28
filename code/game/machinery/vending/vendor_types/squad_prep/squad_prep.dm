@@ -85,8 +85,8 @@
 		list("Underslung Grenade Launcher", round(scale * 25), /obj/item/attachable/attached_gun/grenade, VENDOR_ITEM_REGULAR), //They already get these as on-spawns, might as well formalize some spares.
 
 		list("UTILITIES", -1, null, null),
-		list("M07 Training Grenade", round(scale * 15), /obj/item/explosive/grenade/HE/training, VENDOR_ITEM_REGULAR),
-		list("M15 Rubber Pellet Grenade", round(scale * 10), /obj/item/explosive/grenade/HE/m15/rubber, VENDOR_ITEM_REGULAR),
+		list("M07 Training Grenade", round(scale * 15), /obj/item/explosive/grenade/high_explosive/training, VENDOR_ITEM_REGULAR),
+		list("M15 Rubber Pellet Grenade", round(scale * 10), /obj/item/explosive/grenade/high_explosive/m15/rubber, VENDOR_ITEM_REGULAR),
 		list("M5 Bayonet", round(scale * 25), /obj/item/attachable/bayonet, VENDOR_ITEM_REGULAR),
 		list("M94 Marking Flare Pack", round(scale * 10), /obj/item/storage/box/m94, VENDOR_ITEM_RECOMMENDED)
 	)

@@ -466,7 +466,7 @@
 		/obj/item/clothing/suit/storage/marine/veteran/PMC,
 		/obj/item/clothing/suit/storage/marine/smartgunner/veteran/PMC,
 		/obj/item/clothing/suit/armor/vest/security,
-		)
+	)
 
 /obj/item/clothing/under/marine/veteran/PMC/leader
 	name = "\improper PMC command fatigues"

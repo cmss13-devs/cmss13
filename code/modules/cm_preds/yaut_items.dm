@@ -52,7 +52,7 @@
 		/obj/item/weapon/gun/energy/yautja,
 		/obj/item/weapon/melee/yautja,
 		/obj/item/weapon/melee/twohanded/yautja,
-		)
+	)
 	unacidable = TRUE
 	item_state_slots = list(WEAR_JACKET = "halfarmor1")
 	valid_accessory_slots = list(ACCESSORY_SLOT_ARMOR_A, ACCESSORY_SLOT_ARMOR_L, ACCESSORY_SLOT_ARMOR_S, ACCESSORY_SLOT_ARMOR_M)
@@ -133,7 +133,7 @@
 		/obj/item/weapon/melee/yautja,
 		/obj/item/storage/backpack/yautja,
 		/obj/item/weapon/melee/twohanded/yautja,
-		)
+	)
 	fire_intensity_resistance = 20
 
 /obj/item/clothing/suit/armor/yautja/hunter/full/Initialize(mapload, armor_number, armor_material = "ebony")
@@ -220,7 +220,7 @@
 	items_allowed = list(
 		/obj/item/weapon/melee/yautja/knife,
 		/obj/item/weapon/gun/energy/yautja/plasmapistol,
-		)
+	)
 
 
 	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
@@ -845,7 +845,7 @@
 		/obj/item/weapon/gun/energy/yautja,
 		/obj/item/weapon/melee/yautja,
 		/obj/item/weapon/melee/twohanded/yautja,
-		)
+	)
 	unacidable = TRUE
 	item_state_slots = list(WEAR_JACKET = "fullarmor")
 
@@ -896,7 +896,7 @@
 		/obj/item/reagent_container/hypospray/autoinjector/yautja,
 		/obj/item/device/healthanalyzer/alien,
 		/obj/item/tool/surgery/healing_gel,
-		)
+	)
 
 /obj/item/storage/medicomp/full/fill_preset_inventory()
 	new /obj/item/tool/surgery/stabilizer_gel(src)

@@ -16,7 +16,7 @@
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/flashlight,
 		/obj/item/attachable/magnetic_harness,
-		)
+	)
 
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK
 	gun_category = GUN_CATEGORY_SMG
@@ -63,7 +63,7 @@
 		/obj/item/attachable/magnetic_harness,
 		/obj/item/attachable/gyro,
 		/obj/item/attachable/stock/smg/collapsible/brace,
-		)
+	)
 
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
 	starting_attachment_types = list(/obj/item/attachable/stock/smg/collapsible)
@@ -107,10 +107,10 @@
 		/obj/item/attachable/flashlight,
 		/obj/item/attachable/flashlight/grip,
 		/obj/item/attachable/magnetic_harness,
-		)
+	)
 	random_spawn_under = list(
 		/obj/item/attachable/lasersight,
-		)
+	)
 
 /obj/item/weapon/gun/smg/m39/elite/set_gun_config_values()
 	..()
@@ -470,15 +470,15 @@
 		/obj/item/attachable/lasersight,
 		/obj/item/attachable/extended_barrel,
 		/obj/item/attachable/heavy_barrel,
-		)
+	)
 	random_spawn_chance = 65
 	random_spawn_under = list(
 		/obj/item/attachable/lasersight,
-		)
+	)
 	random_spawn_muzzle = list(
 		/obj/item/attachable/compensator,
 		/obj/item/attachable/extended_barrel,
-		)
+	)
 
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK
 
@@ -518,10 +518,10 @@
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/flashlight,
 		/obj/item/attachable/magnetic_harness,
-		)
+	)
 	random_spawn_under = list(
 		/obj/item/attachable/lasersight,
-		)
+	)
 
 /obj/item/weapon/gun/smg/fp9000/pmc/set_gun_config_values()
 	..()

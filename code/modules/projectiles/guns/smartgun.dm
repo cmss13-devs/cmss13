@@ -26,7 +26,7 @@
 		/datum/action/item_action/smartgun/toggle_lethal_mode,
 		/datum/action/item_action/smartgun/toggle_motion_detector,
 		/datum/action/item_action/smartgun/toggle_recoil_compensation,
-		)
+	)
 	var/datum/ammo/ammo_primary = /datum/ammo/bullet/smartgun //Toggled ammo type
 	var/datum/ammo/ammo_secondary = /datum/ammo/bullet/smartgun/armor_piercing //Toggled ammo type
 	var/iff_enabled = TRUE //Begin with the safety on.
@@ -50,7 +50,7 @@
 	attachable_allowed = list(
 		/obj/item/attachable/smartbarrel,
 		/obj/item/attachable/flashlight,
-		)
+	)
 
 	flags_gun_features = GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY|GUN_HAS_FULL_AUTO|GUN_FULL_AUTO_ON|GUN_FULL_AUTO_ONLY
 	gun_category = GUN_CATEGORY_HEAVY

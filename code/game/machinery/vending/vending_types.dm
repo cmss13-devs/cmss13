@@ -29,7 +29,7 @@
 		/obj/item/reagent_container/food/drinks/coffee/marine = 25,
 		/obj/item/reagent_container/food/drinks/tea = 25,
 		/obj/item/reagent_container/food/drinks/h_chocolate = 25,
-		)
+	)
 	contraband = list(/obj/item/reagent_container/food/drinks/ice = 10)
 	prices = list(
 		/obj/item/reagent_container/food/drinks/coffee/marine = 1.5,
@@ -59,7 +59,7 @@
 		/obj/item/reagent_container/food/snacks/wrapped/booniebars = 6,
 		/obj/item/reagent_container/food/snacks/wrapped/chunk = 6,
 		/obj/item/reagent_container/food/snacks/wrapped/barcardine = 6,
-		)
+	)
 
 	prices = list(
 		/obj/item/reagent_container/food/snacks/packaged_burger = 5,
@@ -71,7 +71,7 @@
 		/obj/item/reagent_container/food/snacks/wrapped/booniebars = 4,
 		/obj/item/reagent_container/food/snacks/wrapped/chunk = 4,
 		/obj/item/reagent_container/food/snacks/wrapped/barcardine = 4,
-		)
+	)
 
 /obj/structure/machinery/vending/snack/packaged
 	product_slogans = ""
@@ -80,7 +80,7 @@
 		/obj/item/reagent_container/food/snacks/packaged_burger = 40,
 		/obj/item/reagent_container/food/snacks/packaged_burrito = 40,
 		/obj/item/reagent_container/food/snacks/packaged_hdogs = 40,
-		)
+	)
 
 /obj/structure/machinery/vending/cola
 	name = "Souto Softdrinks"
@@ -108,7 +108,7 @@
 		/obj/item/reagent_container/food/drinks/cans/souto/diet/vanilla = 10,
 		/obj/item/reagent_container/food/drinks/cans/souto/diet/pineapple = 10,
 		/obj/item/reagent_container/food/drinks/cans/cola = 10,
-		)
+	)
 
 	prices = list(
 		/obj/item/reagent_container/food/drinks/cans/souto/classic = 8,
@@ -130,7 +130,7 @@
 		/obj/item/reagent_container/food/drinks/cans/souto/pineapple = 9,
 		/obj/item/reagent_container/food/drinks/cans/souto/diet/pineapple = 12,
 		/obj/item/reagent_container/food/drinks/cans/cola = 20,
-		)
+	)
 	idle_power_usage = 211 //refrigerator - believe it or not, this is actually the average power consumption of a refrigerated vending machine according to NRCan.
 
 /obj/structure/machinery/vending/cola/research
@@ -145,7 +145,7 @@
 		/obj/item/reagent_container/food/drinks/cans/souto/cranberry = 10,
 		/obj/item/reagent_container/food/drinks/cans/souto/vanilla = 10,
 		/obj/item/reagent_container/food/drinks/cans/souto/pineapple = 10,
-		)
+	)
 
 	prices = list()
 
@@ -162,7 +162,7 @@
 		/obj/item/storage/box/matches = 15,
 		/obj/item/tool/lighter/random = 25,
 		/obj/item/tool/lighter/zippo = 10,
-		)
+	)
 
 	premium = list(/obj/item/storage/fancy/cigar = 25)
 	prices = list(
@@ -171,7 +171,7 @@
 		/obj/item/storage/box/matches = 1,
 		/obj/item/tool/lighter/random = 10,
 		/obj/item/tool/lighter/zippo = 25,
-		)
+	)
 
 /obj/structure/machinery/vending/cigarette/free
 	product_slogans = ""
@@ -182,7 +182,7 @@
 		/obj/item/storage/box/matches = 15,
 		/obj/item/tool/lighter/random = 25,
 		/obj/item/tool/lighter/zippo = 10,
-		)
+	)
 	premium = list()
 	prices = list()
 
@@ -200,7 +200,7 @@
 		/obj/item/storage/box/matches = 10,
 		/obj/item/tool/lighter/random = 20,
 		/obj/item/tool/lighter/zippo = 5,
-		)
+	)
 
 	prices = list(
 		/obj/item/storage/fancy/cigarettes/kpack = 40,
@@ -213,7 +213,7 @@
 		/obj/item/storage/box/matches = 1,
 		/obj/item/tool/lighter/random = 10,
 		/obj/item/tool/lighter/zippo = 25,
-		)
+	)
 
 /obj/structure/machinery/vending/security
 	name = "SecTech"
@@ -243,7 +243,7 @@
 		/obj/item/clothing/glasses/sunglasses/sechud = 3,
 		/obj/item/device/radio/headset = 6,
 		/obj/item/tape/regulation = 5,
-		)
+	)
 	contraband = list(/obj/item/clothing/glasses/sunglasses = 2,/obj/item/storage/donut_box = 2)
 
 /obj/structure/machinery/vending/sea
@@ -266,7 +266,7 @@
 		/obj/item/storage/firstaid/fire = 2,
 		/obj/item/storage/firstaid/rad = 1,
 		/obj/item/device/radio/headset = 6,
-		)
+	)
 	contraband = list(/obj/item/storage/fancy/cigar = 2,/obj/item/tool/lighter/zippo = 2)
 
 /obj/structure/machinery/vending/hydronutrients
@@ -403,7 +403,7 @@
 		/obj/item/toy/deck = 5,
 		/obj/item/toy/deck/uno = 5,
 		/obj/item/device/camera = 5,
-		)
+	)
 
 	contraband = list(/obj/item/toy/sword = 2)
 
@@ -423,4 +423,4 @@
 		/obj/item/toy/deck = 20,
 		/obj/item/toy/deck/uno = 15,
 		/obj/item/device/camera = 30,
-		)
+	)

@@ -12,7 +12,7 @@
 		/obj/item/stack/sandbags_empty/full,
 		/obj/item/tool/shovel/etool,
 		/obj/item/tool/shovel/etool,
-		)
+	)
 	cost = 30
 	containertype = /obj/structure/closet/crate/supply
 	containername = "sandbags construction kit"
@@ -53,7 +53,7 @@
 /datum/supply_packs/folding_barricades
 	contains = list(
 		/obj/item/stack/folding_barricade/three,
-		)
+	)
 	name = "Folding Barricades (x3)"
 	cost = 20
 	containertype = /obj/structure/closet/crate/supply
@@ -79,7 +79,7 @@
 		/obj/item/cell,
 		/obj/item/cell/high,
 		/obj/item/cell/high,
-		)
+	)
 	cost = 20
 	containertype = /obj/structure/closet/crate/construction
 	containername = "electrical maintenance crate"
@@ -97,7 +97,7 @@
 		/obj/item/clothing/head/welding,
 		/obj/item/clothing/head/welding,
 		/obj/item/clothing/head/hardhat,
-		)
+	)
 	cost = 20
 	containertype = /obj/structure/closet/crate/construction
 	containername = "mechanical maintenance crate"
@@ -109,7 +109,7 @@
 		/obj/item/storage/briefcase/inflatable,
 		/obj/item/storage/briefcase/inflatable,
 		/obj/item/storage/briefcase/inflatable,
-		)
+	)
 	cost = 20
 	containertype = /obj/structure/closet/crate/construction
 	containername = "inflatable barriers crate"
@@ -121,7 +121,7 @@
 		/obj/item/storage/box/lights/mixed,
 		/obj/item/storage/box/lights/mixed,
 		/obj/item/storage/box/lights/mixed,
-		)
+	)
 	cost = 20
 	containertype = /obj/structure/closet/crate/supply
 	containername = "replacement lights crate"
@@ -134,7 +134,7 @@
 		/obj/item/stock_parts/capacitor,
 		/obj/item/stock_parts/matter_bin,
 		/obj/item/circuitboard/machine/pacman,
-		)
+	)
 	cost = 30
 	containername = "\improper P.A.C.M.A.N. portable generator construction kit"
 	containertype = /obj/structure/closet/crate/secure
@@ -151,4 +151,4 @@
 		/obj/item/stock_parts/capacitor,
 		/obj/item/stock_parts/matter_bin,
 		/obj/item/circuitboard/machine/pacman/super,
-		)
+	)

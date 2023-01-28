@@ -125,7 +125,7 @@
 	tools = list(
 		/obj/item/tool/surgery/bonesetter = SURGERY_TOOL_MULT_IDEAL,
 		/obj/item/tool/wrench = SURGERY_TOOL_MULT_SUBSTITUTE,
-		)
+	)
 	time = 4 SECONDS
 
 /datum/surgery_step/set_bones/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/bone_repair/surgery)

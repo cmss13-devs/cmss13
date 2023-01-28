@@ -182,7 +182,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	current_mag = /obj/item/ammo_magazine/internal/shotgun/merc
 	attachable_allowed = list(
 		/obj/item/attachable/compensator,
-		)
+	)
 
 	flags_gun_features = GUN_CAN_POINTBLANK|GUN_INTERNAL_MAG
 
@@ -238,7 +238,7 @@ can cause issues with ammo types getting mixed up during the burst.
 		/obj/item/attachable/compensator,
 		/obj/item/attachable/magnetic_harness,
 		/obj/item/attachable/stock/tactical,
-		)
+	)
 
 /obj/item/weapon/gun/shotgun/combat/Initialize(mapload, spawn_empty)
 	. = ..()
@@ -389,15 +389,15 @@ can cause issues with ammo types getting mixed up during the burst.
 	random_spawn_rail = list(
 		/obj/item/attachable/magnetic_harness,
 		/obj/item/attachable/flashlight,
-		)
+	)
 	random_muzzle_chance = 100
 	random_spawn_muzzle = list(
 		/obj/item/attachable/bayonet/upp,
-		)
+	)
 	random_under_chance = 40
 	random_spawn_under = list(
 		/obj/item/attachable/verticalgrip,
-		)
+	)
 
 /obj/item/weapon/gun/shotgun/type23/breacher/slug
 	current_mag = /obj/item/ammo_magazine/internal/shotgun/type23/slug
@@ -410,17 +410,17 @@ can cause issues with ammo types getting mixed up during the burst.
 	random_rail_chance = 100
 	random_spawn_rail = list(
 		/obj/item/attachable/magnetic_harness,
-		)
+	)
 	random_muzzle_chance = 80
 	random_spawn_muzzle = list(
 		/obj/item/attachable/bayonet/upp,
 		/obj/item/attachable/heavy_barrel,
-		)
+	)
 	random_under_chance = 100
 	random_spawn_under = list(
 		/obj/item/attachable/flashlight/grip,
 		/obj/item/attachable/verticalgrip,
-		)
+	)
 
 /obj/item/weapon/gun/shotgun/type23/dragon
 	current_mag = /obj/item/ammo_magazine/internal/shotgun/type23/dragonsbreath
@@ -428,16 +428,16 @@ can cause issues with ammo types getting mixed up during the burst.
 	random_rail_chance = 100
 	random_spawn_rail = list(
 		/obj/item/attachable/magnetic_harness,
-		)
+	)
 	random_muzzle_chance = 70
 	random_spawn_muzzle = list(
 		/obj/item/attachable/bayonet/upp,
 		/obj/item/attachable/heavy_barrel,
-		)
+	)
 	random_under_chance = 100
 	random_spawn_under = list(
 		/obj/item/attachable/attached_gun/extinguisher,
-		)
+	)
 
 //-------------------------------------------------------
 //DOUBLE SHOTTY
@@ -462,7 +462,7 @@ can cause issues with ammo types getting mixed up during the burst.
 		/obj/item/attachable/flashlight,
 		/obj/item/attachable/magnetic_harness,
 		/obj/item/attachable/stock/double,
-		)
+	)
 
 	flags_gun_features = GUN_CAN_POINTBLANK|GUN_INTERNAL_MAG
 	burst_delay = 0 //So doubleshotty can doubleshot
@@ -630,7 +630,7 @@ can cause issues with ammo types getting mixed up during the burst.
 		/obj/item/attachable/gyro,
 		/obj/item/attachable/lasersight,
 		/obj/item/attachable/stock/mou53,
-		)
+	)
 	map_specific_decoration = TRUE
 
 /obj/item/weapon/gun/shotgun/double/mou53/set_gun_attachment_offsets()
@@ -943,7 +943,7 @@ can cause issues with ammo types getting mixed up during the burst.
 		/obj/item/attachable/attached_gun/extinguisher,
 		/obj/item/attachable/attached_gun/flamer,
 		/obj/item/attachable/stock/shotgun,
-		)
+	)
 	map_specific_decoration = TRUE
 
 /obj/item/weapon/gun/shotgun/pump/Initialize(mapload, spawn_empty)
@@ -1090,7 +1090,7 @@ can cause issues with ammo types getting mixed up during the burst.
 		/obj/item/attachable/magnetic_harness,
 		/obj/item/attachable/attached_gun/extinguisher,
 		/obj/item/attachable/attached_gun/flamer,
-		)
+	)
 	starting_attachment_types = list(/obj/item/attachable/stock/hg3712)
 	map_specific_decoration = FALSE
 

@@ -806,7 +806,7 @@
 		ACCESS_CIVILIAN_ENGINEERING,
 		ACCESS_WY_CORPORATE,
 		ACCESS_CIVILIAN_LOGISTICS,
-		)
+	)
 
 /datum/equipment_preset/corpse/pmc/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/PMC/hvh, WEAR_L_EAR)

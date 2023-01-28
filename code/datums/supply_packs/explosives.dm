@@ -12,7 +12,7 @@
 		/obj/item/explosive/grenade/HE/m15,
 		/obj/item/explosive/grenade/HE/PMC,
 		/obj/item/explosive/grenade/HE/PMC,
-		)
+	)
 	cost = 40
 	containertype = /obj/structure/closet/crate/explosives
 	containername = "\improper explosives crate (WARNING)"
@@ -23,7 +23,7 @@
 	contains = list(
 		/obj/item/storage/box/explosive_mines,
 		/obj/item/storage/box/explosive_mines,
-		)
+	)
 	cost = 30
 	containertype = /obj/structure/closet/crate/explosives
 	containername = "\improper explosive mine boxes crate (WARNING)"
@@ -34,7 +34,7 @@
 	contains = list(
 		/obj/item/storage/box/packet/m15,
 		/obj/item/storage/box/packet/m15,
-		)
+	)
 	cost = 40
 	containertype = /obj/structure/closet/crate/explosives
 	containername = "\improper explosive M15 grenades crate (WARNING)"
@@ -46,7 +46,7 @@
 		/obj/item/explosive/plastic,
 		/obj/item/explosive/plastic,
 		/obj/item/explosive/plastic,
-		)
+	)
 	cost = 30
 	containertype = /obj/structure/closet/crate/explosives
 	containername = "\improper plastic explosives crate (WARNING)"
@@ -70,7 +70,7 @@
 	contains = list(
 		/obj/item/storage/box/packet/incendiary,
 		/obj/item/storage/box/packet/incendiary,
-		)
+	)
 	cost = 40
 	containertype = /obj/structure/closet/crate/explosives
 	containername = "\improper explosive M40 HIDP incendiary grenades crate (WARNING)"
@@ -81,7 +81,7 @@
 	contains = list(
 		/obj/item/storage/box/packet/high_explosive,
 		/obj/item/storage/box/packet/high_explosive,
-		)
+	)
 	cost = 30
 	containertype = /obj/structure/closet/crate/explosives
 	containername = "\improper explosive M40 HEDP grenades crate (WARNING)"
@@ -91,7 +91,7 @@
 	name = "M40 HEDP blast grenade box crate (x25)"
 	contains = list(
 		/obj/item/storage/box/nade_box,
-		)
+	)
 	cost = 100
 	containertype = /obj/structure/closet/crate/explosives
 	containername = "\improper explosive HEDP grenade crate (WARNING)"
@@ -102,7 +102,7 @@
 	contains = list(
 		/obj/item/storage/box/packet/phosphorus,
 		/obj/item/storage/box/packet/phosphorus,
-		)
+	)
 	cost = 30
 	containertype = /obj/structure/closet/crate/explosives
 	containername = "\improper M40 HPDP grenade crate (WARNING)"
@@ -112,7 +112,7 @@
 	name = "M40 HPDP white phosphorus grenade box crate (x25)"
 	contains = list(
 		/obj/item/storage/box/nade_box/phophorus,
-		)
+	)
 	cost = 100
 	containertype = /obj/structure/closet/crate/explosives
 	containername = "\improper HPDP grenade crate (WARNING)"
@@ -123,7 +123,7 @@
 	contains = list(
 		/obj/item/storage/box/packet/hefa,
 		/obj/item/storage/box/packet/hefa,
-		)
+	)
 	cost = 30
 	containertype = /obj/structure/closet/crate/explosives
 	containername = "\improper explosive M40 HEFA grenades crate (WARNING)"
@@ -134,7 +134,7 @@
 	name = "M40 HEFA fragmentation grenade box crate (x25)"
 	contains = list(
 		/obj/item/storage/box/nade_box/frag,
-		)
+	)
 	cost = 100
 	containertype = /obj/structure/closet/crate/explosives
 	containername = "\improper explosive HEFA grenade crate (WARNING)"
@@ -145,7 +145,7 @@
 	contains = list(
 		/obj/item/storage/box/packet/airburst_he,
 		/obj/item/storage/box/packet/airburst_he,
-		)
+	)
 	cost = 40
 	containertype = /obj/structure/closet/crate/explosives
 	containername = "\improper explosive M74 AGM-F grenades crate (WARNING)"
@@ -155,7 +155,7 @@
 	name = "M74 Airburst Grenade Munition fragmentation grenade box crate (x25)"
 	contains = list(
 		/obj/item/storage/box/nade_box/airburst,
-		)
+	)
 	cost = 100
 	containertype = /obj/structure/closet/crate/explosives
 	containername = "\improper  explosive M74 AGM-F grenades crate (WARNING)"
@@ -166,7 +166,7 @@
 	contains = list(
 		/obj/item/storage/box/packet/airburst_incen,
 		/obj/item/storage/box/packet/airburst_incen,
-		)
+	)
 	cost = 40
 	containertype = /obj/structure/closet/crate/explosives
 	containername = "\improper explosive M74 AGM-I grenades crate (WARNING)"
@@ -177,7 +177,7 @@
 	contains = list(
 		/obj/item/storage/box/packet/airburst_smoke,
 		/obj/item/storage/box/packet/airburst_smoke,
-		)
+	)
 	cost = 30
 	containertype = /obj/structure/closet/crate/explosives
 	containername = "\improper explosive M74 AGM-S grenades crate"

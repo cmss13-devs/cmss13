@@ -94,4 +94,4 @@
 		/obj/item/weapon/melee/twohanded/spear,
 		/obj/item/weapon/melee/twohanded/spear,
 		/obj/item/weapon/melee/twohanded/fireaxe,
-		)
+	)

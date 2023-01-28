@@ -1028,10 +1028,13 @@ var/datum/controller/supply/supply_controller = new()
 	. = ..()
 
 	vehicles = list(
-		new/datum/vehicle_order/apc(),
-		new/datum/vehicle_order/apc/med(),
-		new/datum/vehicle_order/apc/cmd()
+		/datum/vehicle_order/apc,
+		/datum/vehicle_order/apc/med,
+		/datum/vehicle_order/apc/cmd,
 	)
+
+	for(var/order as anything in vehicles)
+		new order
 
 	if(!VehicleElevatorConsole)
 		VehicleElevatorConsole = src

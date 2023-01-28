@@ -559,7 +559,7 @@
 		/obj/structure/window/framed/almayer,
 		/obj/structure/machinery/door/airlock,
 		/turf/closed/wall,
-		)
+	)
 
 /obj/structure/surface/table/reinforced/almayer_blend/north
 	icon_state = "reqNtable"

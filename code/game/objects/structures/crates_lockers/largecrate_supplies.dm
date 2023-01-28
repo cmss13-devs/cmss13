@@ -31,7 +31,7 @@
 		/obj/structure/closet/crate/secure/mortar_ammo/mortar_kit = 1,
 		/obj/structure/largecrate/supply/explosives/mines = 2,
 		/obj/structure/largecrate/supply/explosives/grenades = 2,
-		)
+	)
 
 /obj/effect/landmark/supplyspawner/ammo
 	name = "ammunition supplies"
@@ -41,7 +41,7 @@
 		/obj/structure/largecrate/supply/ammo/shotgun = 4,
 		/obj/structure/largecrate/supply/ammo/m39 = 4,
 		/obj/structure/largecrate/supply/ammo/pistol = 4,
-		)
+	)
 
 /obj/effect/landmark/supplyspawner/engineering
 	name = "engineering supplies"
@@ -54,7 +54,7 @@
 		/obj/structure/largecrate/supply/supplies/flares = 3,
 		/obj/structure/largecrate/supply/powerloader = 1,
 		/obj/structure/largecrate/machine/recycler = 2,
-		)
+	)
 
 /obj/effect/landmark/supplyspawner/turrets
 	name = "defensive gun emplacement supplies"
@@ -62,7 +62,7 @@
 		/obj/structure/largecrate/supply/weapons/m56d = 2,
 		/obj/structure/largecrate/supply/ammo/sentry = 1,
 		/obj/structure/largecrate/supply/ammo/m56d = 1,
-		)
+	)
 
 /obj/effect/landmark/supplyspawner/food
 	name = "food crate supplies"
@@ -80,7 +80,7 @@
 		/obj/structure/largecrate/machine/sleeper = 2,
 		/obj/structure/largecrate/supply/medicine/optable = 1,
 		/obj/structure/largecrate/supply/supplies/tables_racks = 1,
-		)
+	)
 /*NEW SUPPLY CRATES*/
 //Lotsocrates for lotsosupplies for events, meaning less setup time.
 //Wooden crates and not metal ones so we don't have a ton of metal crates laying around
@@ -302,7 +302,7 @@
 		/obj/item/storage/firstaid/toxin = 2,
 		/obj/item/storage/firstaid/o2 = 2,
 		/obj/item/storage/firstaid/rad = 2,
-		)
+	)
 
 /obj/structure/largecrate/supply/medicine/blood
 	name = "blood supply crate (x12)"

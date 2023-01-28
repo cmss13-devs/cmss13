@@ -132,7 +132,7 @@
 		XENO_CASTE_RUNNER,
 		XENO_CASTE_RUNNER,
 		XENO_CASTE_RUNNER,
-		)
+	)
 	scaling_factor = 0.4
 	wave_delay = 1 MINUTES //Early, quick waves
 
@@ -144,7 +144,7 @@
 		XENO_CASTE_LURKER,
 		XENO_CASTE_SPITTER,
 		XENO_CASTE_DEFENDER,
-		)
+	)
 	scaling_factor = 0.6
 	wave_delay = 1 MINUTES //Early, quick waves
 
@@ -159,7 +159,7 @@
 		XENO_CASTE_SPITTER,
 		XENO_CASTE_DEFENDER,
 		XENO_CASTE_DRONE,
-		)
+	)
 	scaling_factor = 0.7
 
 /datum/whiskey_outpost_wave/wave5 //Reset the spawns so we don't drown in xenos again.
@@ -173,7 +173,7 @@
 		XENO_CASTE_SPITTER,
 		XENO_CASTE_DEFENDER,
 		XENO_CASTE_DRONE,
-		)
+	)
 	scaling_factor = 0.8
 
 /datum/whiskey_outpost_wave/wave6 //Tier II more common
@@ -190,7 +190,7 @@
 		XENO_CASTE_DEFENDER,
 		XENO_CASTE_DRONE,
 		XENO_CASTE_WARRIOR,
-		)
+	)
 	scaling_factor = 0.9
 
 /datum/whiskey_outpost_wave/wave7

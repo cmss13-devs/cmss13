@@ -227,7 +227,7 @@
 		/obj/item/weapon/melee/baseballbat/metal,
 		/obj/item/device/motiondetector,
 		/obj/item/device/walkman,
-		)
+	)
 
 /obj/item/clothing/suit/storage/snow_suit/survivor/Initialize()
 	. = ..()
@@ -295,5 +295,5 @@
 		/obj/item/weapon/melee/baseballbat/metal,
 		/obj/item/device/motiondetector,
 		/obj/item/device/walkman,
-		)
+	)
 

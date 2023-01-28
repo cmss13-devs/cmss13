@@ -309,7 +309,7 @@
 		/obj/item/attachable/lasersight,
 		/obj/item/attachable/scope/mini,
 		/obj/item/attachable/scope/mini_iff,
-		)
+	)
 	var/folded = FALSE // Used for the stock attachment, to check if we can shoot or not
 
 /obj/item/weapon/gun/revolver/m44/set_gun_attachment_offsets()
@@ -359,7 +359,7 @@
 	hand_reload_sound = 'sound/weapons/gun_revolver_load3.ogg'
 	accepted_ammo = list(
 		/obj/item/ammo_magazine/internal/revolver/m44/pkd,
-		)
+	)
 
 	attachable_allowed = list(
 		/obj/item/attachable/flashlight,
@@ -426,7 +426,7 @@
 	attachable_allowed = list(
 		/obj/item/attachable/bayonet,
 		/obj/item/attachable/bayonet/upp,
-		)
+	)
 
 /obj/item/weapon/gun/revolver/m44/custom/webley/set_gun_config_values()
 	..()
@@ -478,7 +478,7 @@
 	random_under_chance = 100
 	random_spawn_under = list(
 		/obj/item/attachable/lasersight,
-		)
+	)
 
 //-------------------------------------------------------
 //357 REVOLVER //Based on the generic S&W 357.
@@ -550,7 +550,7 @@
 		/obj/item/attachable/mateba,
 		/obj/item/attachable/mateba/long,
 		/obj/item/attachable/mateba/short,
-		)
+	)
 	starting_attachment_types = list(/obj/item/attachable/mateba)
 	unacidable = TRUE
 	var/is_locked = TRUE
@@ -618,7 +618,7 @@
 		/obj/item/attachable/mateba/dark,
 		/obj/item/attachable/mateba/long/dark,
 		/obj/item/attachable/mateba/short/dark,
-		)
+	)
 	starting_attachment_types = null
 
 /obj/item/weapon/gun/revolver/mateba/general/handle_starting_attachment()

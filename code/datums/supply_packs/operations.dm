@@ -86,7 +86,7 @@
 		/obj/item/cell,
 		/obj/item/stack/cable_coil,
 		/obj/item/stack/cable_coil,
-		)
+	)
 	cost = 40
 	containertype = /obj/structure/closet/crate/supply
 	buyable = 0

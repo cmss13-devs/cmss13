@@ -20,7 +20,7 @@
 		/obj/item/device/assembly/timer,
 		/obj/item/device/assembly/timer,
 		/obj/item/device/assembly/timer,
-		)
+	)
 	cost = 20
 	containertype = /obj/structure/closet/crate/secure/phoron
 	containername = "assembly crate"
@@ -47,7 +47,7 @@
 		/obj/item/reagent_container/glass/beaker/large/sodiumchloride,
 		/obj/item/reagent_container/glass/beaker/large/potassiumchloride,
 		/obj/item/reagent_container/glass/beaker/large/potassiumchloride,
-		)
+	)
 	cost = 10
 	containertype = /obj/structure/closet/crate/secure/phoron
 	containername = "pyrotechnics crate"
@@ -59,7 +59,7 @@
 	contains = list(
 		/obj/item/stack/sheet/mineral/phoron/medium_stack,
 		/obj/item/stack/sheet/mineral/phoron/medium_stack,
-		)
+	)
 	cost = 30
 	containertype = /obj/structure/closet/crate/secure/phoron
 	containername = "phoron crate"
@@ -71,7 +71,7 @@
 	contains = list(
 		/obj/item/stack/sheet/mineral/plastic/small_stack,
 		/obj/item/stack/sheet/mineral/plastic/small_stack,
-		)
+	)
 	cost = 20
 	containertype = /obj/structure/closet/crate/secure/phoron
 	containername = "plastic crate"
@@ -84,7 +84,7 @@
 		/obj/item/stack/sheet/mineral/gold/small_stack,
 		/obj/item/stack/sheet/mineral/silver/small_stack,
 		/obj/item/stack/sheet/mineral/uranium/small_stack,
-		)
+	)
 	cost = 20
 	containertype = /obj/structure/closet/crate/secure/phoron
 	containername = "precious metals crate"
@@ -104,7 +104,7 @@
 		/obj/item/reagent_container/glass/canister/oxygen,
 		/obj/item/reagent_container/glass/canister/pacid,
 		/obj/item/reagent_container/glass/canister/pacid,
-		)
+	)
 	cost = 20
 	containertype = /obj/structure/closet/crate/secure/phoron
 	containername = "explosives production crate"

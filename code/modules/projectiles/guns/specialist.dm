@@ -460,7 +460,7 @@
 		/obj/item/attachable/gyro,
 		/obj/item/attachable/bipod,
 		/obj/item/attachable/scope/variable_zoom/slavic,
-		)
+	)
 
 	has_aimed_shot = FALSE
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_WIELDED_FIRING_ONLY
@@ -524,7 +524,7 @@
 		/obj/item/attachable/scope/mini,
 		/obj/item/attachable/reddot,
 		/obj/item/attachable/reflex,
-		)
+	)
 
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_SPECIALIST|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
 	starting_attachment_types = list(/obj/item/attachable/stock/rifle/marksman)
@@ -982,7 +982,7 @@
 	aim_slowdown = SLOWDOWN_ADS_SPECIALIST
 	attachable_allowed = list(
 		/obj/item/attachable/magnetic_harness,
-		)
+	)
 
 	flags_gun_features = GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY|GUN_INTERNAL_MAG
 	var/datum/effect_system/smoke_spread/smoke

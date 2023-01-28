@@ -38,6 +38,6 @@ var/global/list/markup_tags = list("/" = list("<i>", "</i>"),
 		"*" = markup_bold,
 		"~" = markup_strike,
 		"_" = markup_underline,
-		)
+	)
 
 	return 1

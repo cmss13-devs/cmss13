@@ -672,7 +672,7 @@
 		ACCESS_CIVILIAN_PUBLIC,
 		ACCESS_CIVILIAN_ENGINEERING,
 		ACCESS_CIVILIAN_LOGISTICS,
-		)
+	)
 
 	survivor_variant = ENGINEERING_SURVIVOR
 
@@ -858,7 +858,7 @@
 		ACCESS_CIVILIAN_PUBLIC,
 		ACCESS_CIVILIAN_ENGINEERING,
 		ACCESS_CIVILIAN_LOGISTICS,
-		)
+	)
 
 /datum/equipment_preset/survivor/trucker/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/overalls(H), WEAR_BODY)
@@ -1039,7 +1039,7 @@
 		ACCESS_CIVILIAN_ENGINEERING,
 		ACCESS_WY_CORPORATE,
 		ACCESS_CIVILIAN_LOGISTICS,
-		)
+	)
 
 	survivor_variant = CORPORATE_SURVIVOR
 
@@ -1077,7 +1077,7 @@
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	access = list(
 		ACCESS_CIVILIAN_PUBLIC,
-		)
+	)
 
 /datum/equipment_preset/survivor/roughneck/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/color/white(H), WEAR_BODY)
@@ -1104,7 +1104,7 @@
 		ACCESS_CIVILIAN_ENGINEERING,
 		ACCESS_WY_CORPORATE,
 		ACCESS_CIVILIAN_LOGISTICS,
-		)
+	)
 	survivor_variant = CORPORATE_SURVIVOR
 
 /datum/equipment_preset/survivor/interstellar_human_rights_observer/load_gear(mob/living/carbon/human/H)
@@ -1190,7 +1190,7 @@
 		ACCESS_CIVILIAN_ENGINEERING,
 		ACCESS_WY_CORPORATE,
 		ACCESS_CIVILIAN_LOGISTICS,
-		)
+	)
 	survivor_variant = SECURITY_SURVIVOR
 
 /datum/equipment_preset/survivor/pmc/load_gear(mob/living/carbon/human/H)
@@ -1259,7 +1259,7 @@
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	access = list(
 		ACCESS_CIVILIAN_PUBLIC,
-		)
+	)
 
 /datum/equipment_preset/survivor/pmc/miner/one/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/mercenary/miner, WEAR_BODY)
@@ -1275,7 +1275,7 @@
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	access = list(
 		ACCESS_CIVILIAN_PUBLIC,
-		)
+	)
 
 /datum/equipment_preset/survivor/pmc/freelancer/load_gear(mob/living/carbon/human/H)
 

@@ -21,7 +21,7 @@
 		/obj/item/attachable/bayonet,
 		/obj/item/attachable/flashlight,
 		/obj/item/attachable/attached_gun/grenade,
-		)
+	)
 
 
 /obj/effect/landmark/wo_supplies/attachments/common
@@ -35,7 +35,7 @@
 		/obj/item/attachable/extended_barrel,
 		/obj/item/attachable/compensator,
 		/obj/item/attachable/magnetic_harness,
-		)
+	)
 
 /obj/effect/landmark/wo_supplies/attachments/scarce
 	amount = list(1,5)
@@ -50,7 +50,7 @@
 		/obj/item/attachable/verticalgrip,
 		/obj/item/attachable/angledgrip,
 		/obj/item/attachable/scope/mini,
-		)
+	)
 
 /obj/effect/landmark/wo_supplies/attachments/rare
 	amount = list(0,2)
@@ -58,7 +58,7 @@
 		/obj/item/attachable/heavy_barrel,
 		/obj/item/attachable/scope,
 		/obj/item/attachable/gyro,
-		)
+	)
 
 
 

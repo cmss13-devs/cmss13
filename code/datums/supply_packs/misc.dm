@@ -11,7 +11,7 @@
 		/obj/item/tank/air,
 		/obj/item/tank/air,
 		/obj/item/tank/air,
-		)
+	)
 	cost = 20
 	containertype = /obj/structure/closet/crate/internals
 	containername = "internals crate"
@@ -34,7 +34,7 @@
 		/obj/item/clothing/mask/gas,
 		/obj/item/clothing/mask/gas,
 		/obj/item/clothing/mask/gas,
-		)
+	)
 	cost = 20
 	containertype = /obj/structure/closet/crate/internals
 	containername = "emergency crate"
@@ -53,7 +53,7 @@
 		/obj/item/storage/box,
 		/obj/item/storage/box,
 		/obj/item/storage/box,
-		)
+	)
 	cost = 10
 	containertype = /obj/structure/closet/crate/supply
 	containername = "empty box crate"
@@ -77,7 +77,7 @@
 		/obj/item/explosive/grenade/custom/cleaner,
 		/obj/item/reagent_container/glass/bucket/mopbucket,
 		/obj/item/paper/janitor,
-		)
+	)
 	cost = 10
 	containertype = /obj/structure/closet/crate/supply
 	containername = "\improper Janitorial supplies crate"
@@ -91,7 +91,7 @@
 		/obj/item/poster,
 		/obj/item/poster,
 		/obj/item/poster,
-		)
+	)
 	cost = 10
 	containertype = /obj/structure/closet/crate/supply
 	containername = "\improper posters crate"
@@ -105,7 +105,7 @@
 		/obj/item/storage/fancy/crayons,
 		/obj/item/storage/fancy/crayons,
 		/obj/item/storage/fancy/crayons,
-		)
+	)
 	cost = 20
 	containertype = /obj/structure/closet/crate/supply
 	containername = "\improper crayons crate"
@@ -119,7 +119,7 @@
 		/obj/item/a_gift,
 		/obj/item/a_gift,
 		/obj/item/a_gift,
-		)
+	)
 	cost = 20
 	containertype = /obj/structure/closet/crate/supply
 	containername = "\improper crate of presents"
@@ -134,7 +134,7 @@
 		/obj/item/wrapping_paper,
 		/obj/item/tool/wirecutters,
 		/obj/item/tool/wirecutters,
-		)
+	)
 	cost = 20
 	containertype = /obj/structure/closet/crate/supply
 	containername = "\improper wrapping supplies crate"

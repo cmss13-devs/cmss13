@@ -11,7 +11,7 @@
 		/obj/item/ammo_magazine/hardpoint/ltb_cannon,
 		/obj/item/ammo_magazine/hardpoint/ltb_cannon,
 		/obj/item/ammo_magazine/hardpoint/ltb_cannon,
-		)
+	)
 	cost = 30
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "LTB cannon ammo crate"
@@ -23,7 +23,7 @@
 		/obj/item/ammo_magazine/hardpoint/ltaaap_minigun,
 		/obj/item/ammo_magazine/hardpoint/ltaaap_minigun,
 		/obj/item/ammo_magazine/hardpoint/ltaaap_minigun,
-		)
+	)
 	cost = 30
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "LTAA minigun ammo crate"
@@ -37,7 +37,7 @@
 		/obj/item/ammo_magazine/hardpoint/ace_autocannon,
 		/obj/item/ammo_magazine/hardpoint/ace_autocannon,
 		/obj/item/ammo_magazine/hardpoint/ace_autocannon,
-		)
+	)
 	cost = 30
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "AC3-E autocannon ammo crate"
@@ -49,7 +49,7 @@
 		/obj/item/ammo_magazine/hardpoint/primary_flamer,
 		/obj/item/ammo_magazine/hardpoint/primary_flamer,
 		/obj/item/ammo_magazine/hardpoint/primary_flamer,
-		)
+	)
 	cost = 30
 	containertype = /obj/structure/closet/crate/ammo/alt/flame
 	containername = "Primary Flamer fuel tanks crate"
@@ -63,7 +63,7 @@
 		/obj/item/ammo_magazine/hardpoint/boyars_dualcannon,
 		/obj/item/ammo_magazine/hardpoint/boyars_dualcannon,
 		/obj/item/ammo_magazine/hardpoint/boyars_dualcannon,
-		)
+	)
 	cost = 30
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "PARS-159 Boyars Dualcannon ammo crate"
@@ -77,7 +77,7 @@
 		/obj/item/ammo_magazine/hardpoint/tank_glauncher,
 		/obj/item/ammo_magazine/hardpoint/tank_glauncher,
 		/obj/item/ammo_magazine/hardpoint/tank_glauncher,
-		)
+	)
 	cost = 20
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "M92T Grenade Launcher ammo crate"
@@ -89,7 +89,7 @@
 		/obj/item/ammo_magazine/hardpoint/turret_smoke,
 		/obj/item/ammo_magazine/hardpoint/turret_smoke,
 		/obj/item/ammo_magazine/hardpoint/turret_smoke,
-		)
+	)
 	cost = 20
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "M34A2-A Multipurpose Turret smoke screen ammo crate"
@@ -108,7 +108,7 @@
 	contains = list(
 		/obj/item/ammo_magazine/hardpoint/m56_cupola,
 		/obj/item/ammo_magazine/hardpoint/m56_cupola,
-		)
+	)
 	cost = 20
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "M56 Cupola ammo crate"
@@ -119,7 +119,7 @@
 	contains = list(
 		/obj/item/ammo_magazine/hardpoint/secondary_flamer,
 		/obj/item/ammo_magazine/hardpoint/secondary_flamer,
-		)
+	)
 	cost = 20
 	containertype = /obj/structure/closet/crate/ammo/alt/flame
 	containername = "LZR-N Flamer Unit fuel tanks crate"
@@ -130,7 +130,7 @@
 	contains = list(
 		/obj/item/ammo_magazine/hardpoint/m56_cupola/frontal_cannon,
 		/obj/item/ammo_magazine/hardpoint/m56_cupola/frontal_cannon,
-		)
+	)
 	cost = 20
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "Bleihagel RE-RE700 Frontal Cannon ammo crate"
@@ -143,7 +143,7 @@
 		/obj/item/ammo_magazine/hardpoint/flare_launcher,
 		/obj/item/ammo_magazine/hardpoint/flare_launcher,
 		/obj/item/ammo_magazine/hardpoint/flare_launcher,
-		)
+	)
 	cost = 20
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "M-87F Flare Launcher ammo crate"

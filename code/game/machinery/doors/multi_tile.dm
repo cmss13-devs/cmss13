@@ -92,7 +92,7 @@
 	tiles_with = list(
 		/obj/structure/window/framed/almayer,
 		/obj/structure/machinery/door/airlock,
-		)
+	)
 	var/multi_filler = list()
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/Initialize()

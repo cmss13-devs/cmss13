@@ -227,7 +227,7 @@
 		"grapejuice",
 		"lemonjuice",
 		"banana",
-		)
+	)
 	var/hackedcheck = 0
 
 /obj/structure/machinery/chem_dispenser/soda/attackby(obj/item/B as obj, mob/user as mob)

@@ -327,7 +327,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 		/obj/item/weapon/melee/claymore/mercsword/ceremonial,
 		/obj/item/device/motiondetector,
 		/obj/item/device/walkman,
-		)
+	)
 	uniform_restricted = list(/obj/item/clothing/under/marine/mp)
 	specialty = "M2 pattern MP"
 	item_state_slots = list(WEAR_JACKET = "mp")
@@ -457,7 +457,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 		/obj/item/storage/backpack/general_belt,
 		/obj/item/device/motiondetector,
 		/obj/item/device/walkman,
-		)
+	)
 
 /obj/item/clothing/suit/storage/marine/smartgunner/Initialize()
 	. = ..()
@@ -1021,7 +1021,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 		/obj/item/attachable/bayonet,
 		/obj/item/device/motiondetector,
 		/obj/item/device/walkman,
-		)
+	)
 	uniform_restricted = list(/obj/item/clothing/under/marine/veteran/PMC)
 	item_state_slots = list(WEAR_JACKET = "pmc_armor")
 
@@ -1399,7 +1399,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 		/obj/item/weapon/melee/baseballbat/metal,
 		/obj/item/device/motiondetector,
 		/obj/item/device/walkman,
-		)
+	)
 	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_FEET|BODY_FLAG_ARMS|BODY_FLAG_HANDS
 	min_cold_protection_temperature = SPACE_SUIT_min_cold_protection_temperature
 	valid_accessory_slots = list(ACCESSORY_SLOT_MEDAL)
@@ -1525,7 +1525,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 		/obj/item/attachable/bayonet,
 		/obj/item/device/motiondetector,
 		/obj/item/device/walkman,
-		)
+	)
 	uniform_restricted = list(/obj/item/clothing/under/marine/veteran/mercenary)
 	item_state_slots = list(WEAR_JACKET = "mercenary_heavy_armor")
 
@@ -1560,7 +1560,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 		/obj/item/attachable/bayonet,
 		/obj/item/device/motiondetector,
 		/obj/item/device/walkman,
-		)
+	)
 	uniform_restricted = list(/obj/item/clothing/under/marine/veteran/mercenary)
 	item_state_slots = list(WEAR_JACKET = "mercenary_miner_armor")
 
@@ -1662,7 +1662,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 		/obj/item/weapon/melee/claymore/mercsword/ceremonial,
 		/obj/item/device/motiondetector,
 		/obj/item/device/walkman,
-		)
+	)
 	uniform_restricted = list(/obj/item/clothing/under/uaac/tis)
 
 //================//UNITED AMERICAS RIOT CONTROL\\=====================\\

@@ -75,11 +75,11 @@
 	attachable_allowed = list(
 		/obj/item/attachable/m60barrel,
 		/obj/item/attachable/bipod/m60,
-		)
+	)
 	starting_attachment_types = list(
 		/obj/item/attachable/m60barrel,
 		/obj/item/attachable/bipod/m60,
-		)
+	)
 
 
 /obj/item/weapon/gun/m60/Initialize(mapload, spawn_empty)

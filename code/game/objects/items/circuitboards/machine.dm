@@ -18,7 +18,7 @@ to destroy them and players will be able to make replacements.
 		/obj/item/stock_parts/scanning_module = 1,
 		/obj/item/stock_parts/manipulator = 1,
 		/obj/item/stock_parts/micro_laser = 1,
-		)
+	)
 
 /obj/item/circuitboard/machine/autolathe
 	name = "Circuit board (Autolathe)"
@@ -29,7 +29,7 @@ to destroy them and players will be able to make replacements.
 		/obj/item/stock_parts/matter_bin = 2,
 		/obj/item/stock_parts/manipulator = 1,
 		/obj/item/stock_parts/console_screen = 1,
-		)
+	)
 
 /obj/item/circuitboard/machine/autolathe/armylathe
 	name = "Circuit board (Armylathe)"
@@ -40,7 +40,7 @@ to destroy them and players will be able to make replacements.
 		/obj/item/stock_parts/matter_bin = 4,
 		/obj/item/stock_parts/manipulator = 1,
 		/obj/item/stock_parts/console_screen = 1,
-		)
+	)
 
 /obj/item/circuitboard/machine/protolathe
 	name = "Circuit board (Protolathe)"
@@ -51,7 +51,7 @@ to destroy them and players will be able to make replacements.
 		/obj/item/stock_parts/matter_bin = 2,
 		/obj/item/stock_parts/manipulator = 2,
 		/obj/item/reagent_container/glass/beaker = 2,
-		)
+	)
 
 
 /obj/item/circuitboard/machine/circuit_imprinter
@@ -63,7 +63,7 @@ to destroy them and players will be able to make replacements.
 		/obj/item/stock_parts/matter_bin = 1,
 		/obj/item/stock_parts/manipulator = 1,
 		/obj/item/reagent_container/glass/beaker = 2,
-		)
+	)
 
 /obj/item/circuitboard/machine/pacman
 	name = "Circuit Board (PACMAN-type Generator)"
@@ -75,7 +75,7 @@ to destroy them and players will be able to make replacements.
 		/obj/item/stock_parts/micro_laser = 1,
 		/obj/item/stack/cable_coil = 2,
 		/obj/item/stock_parts/capacitor = 1,
-		)
+	)
 
 /obj/item/circuitboard/machine/pacman/super
 	name = "Circuit Board (SUPERPACMAN-type Generator)"
@@ -95,7 +95,7 @@ to destroy them and players will be able to make replacements.
 	req_components = list(
 		/obj/item/stack/cable_coil = 2,
 		/obj/item/stock_parts/scanning_module = 1,
-		)
+	)
 
 /obj/item/circuitboard/machine/mechfab
 	name = "Circuit board (Exosuit Fabricator)"
@@ -107,7 +107,7 @@ to destroy them and players will be able to make replacements.
 		/obj/item/stock_parts/manipulator = 1,
 		/obj/item/stock_parts/micro_laser = 1,
 		/obj/item/stock_parts/console_screen = 1,
-		)
+	)
 
 /obj/item/circuitboard/machine/clonepod
 	name = "Circuit board (Clone Pod)"
@@ -118,7 +118,7 @@ to destroy them and players will be able to make replacements.
 		/obj/item/stock_parts/scanning_module = 2,
 		/obj/item/stock_parts/manipulator = 2,
 		/obj/item/stock_parts/console_screen = 1,
-		)
+	)
 
 /obj/item/circuitboard/machine/clonescanner
 	name = "Circuit board (Cloning Scanner)"
@@ -130,7 +130,7 @@ to destroy them and players will be able to make replacements.
 		/obj/item/stock_parts/micro_laser = 1,
 		/obj/item/stock_parts/console_screen = 1,
 		/obj/item/stack/cable_coil = 2,
-		)
+	)
 
 /obj/item/circuitboard/machine/unary_atmos
 
@@ -162,7 +162,7 @@ to destroy them and players will be able to make replacements.
 		/obj/item/stack/cable_coil = 5,
 		/obj/item/stock_parts/matter_bin = 1,
 		/obj/item/stock_parts/capacitor = 2,
-		)
+	)
 
 /obj/item/circuitboard/machine/unary_atmos/cooler
 	name = "Circuit Board (Gas Cooling System)"
@@ -174,7 +174,7 @@ to destroy them and players will be able to make replacements.
 		/obj/item/stock_parts/matter_bin = 1,
 		/obj/item/stock_parts/capacitor = 2,
 		/obj/item/stock_parts/manipulator = 1,
-		)
+	)
 
 // Telecomms circuit boards:
 
@@ -188,7 +188,7 @@ to destroy them and players will be able to make replacements.
 		/obj/item/stock_parts/subspace/filter = 1,
 		/obj/item/stock_parts/manipulator = 2,
 		/obj/item/stock_parts/micro_laser = 1,
-		)
+	)
 
 /obj/item/circuitboard/machine/telecomms/hub
 	name = "Circuit Board (Hub Mainframe)"
@@ -199,7 +199,7 @@ to destroy them and players will be able to make replacements.
 		/obj/item/stock_parts/manipulator = 2,
 		/obj/item/stack/cable_coil = 2,
 		/obj/item/stock_parts/subspace/filter = 2,
-		)
+	)
 
 /obj/item/circuitboard/machine/telecomms/relay
 	name = "Circuit Board (Relay Mainframe)"
@@ -210,7 +210,7 @@ to destroy them and players will be able to make replacements.
 		/obj/item/stock_parts/manipulator = 2,
 		/obj/item/stack/cable_coil = 2,
 		/obj/item/stock_parts/subspace/filter = 2,
-		)
+	)
 
 /obj/item/circuitboard/machine/telecomms/relay/tower
 	name = "\improper TC-4T Telecommunications Circuit Board"
@@ -222,7 +222,7 @@ to destroy them and players will be able to make replacements.
 		/obj/item/cell = 2,
 		/obj/item/stock_parts/manipulator = 2,
 		/obj/item/stock_parts/subspace/filter = 2,
-		)
+	)
 
 /obj/item/circuitboard/machine/telecomms/bus
 	name = "Circuit Board (Bus Mainframe)"
@@ -233,7 +233,7 @@ to destroy them and players will be able to make replacements.
 		/obj/item/stock_parts/manipulator = 2,
 		/obj/item/stack/cable_coil = 1,
 		/obj/item/stock_parts/subspace/filter = 1,
-		)
+	)
 
 /obj/item/circuitboard/machine/telecomms/processor
 	name = "Circuit Board (Processor Unit)"
@@ -247,7 +247,7 @@ to destroy them and players will be able to make replacements.
 		/obj/item/stock_parts/subspace/analyzer = 1,
 		/obj/item/stack/cable_coil = 2,
 		/obj/item/stock_parts/subspace/amplifier = 1,
-		)
+	)
 
 /obj/item/circuitboard/machine/telecomms/server
 	name = "Circuit Board (Telecommunication Server)"
@@ -258,7 +258,7 @@ to destroy them and players will be able to make replacements.
 		/obj/item/stock_parts/manipulator = 2,
 		/obj/item/stack/cable_coil = 1,
 		/obj/item/stock_parts/subspace/filter = 1,
-		)
+	)
 
 /obj/item/circuitboard/machine/telecomms/broadcaster
 	name = "Circuit Board (Subspace Broadcaster)"
@@ -271,7 +271,7 @@ to destroy them and players will be able to make replacements.
 		/obj/item/stock_parts/subspace/filter = 1,
 		/obj/item/stock_parts/subspace/crystal = 1,
 		/obj/item/stock_parts/micro_laser/high = 2,
-		)
+	)
 
 
 

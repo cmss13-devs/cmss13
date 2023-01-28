@@ -228,6 +228,10 @@ if [ "$pcre2_support" -eq 1 ]; then
 		echo -e "${RED}ERROR: The ) in a long list should be on a new line.${NC}"
 		st=1
 	fi;
+	if $grep -nM '^(\t)[\w_]+ = list\(\n(\1\t[^\s)]+( ?= ?[\w\d]+)?,\n)+\1\t\)' code/**/*.dm; then
+		echo -e "${RED}ERROR: The ) in a long list should match identation of the opening list line.${NC}"
+		st=1
+	fi;
 else
 	echo -e "${RED}pcre2 not supported, skipping checks requiring pcre2"
 	echo -e "if you want to run these checks install ripgrep with pcre2 support.${NC}"

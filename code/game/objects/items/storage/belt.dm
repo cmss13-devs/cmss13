@@ -85,7 +85,7 @@
 	bypass_w_limit = list(
 		/obj/item/tool/shovel/etool,
 		/obj/item/device/lightreplacer,
-		)
+	)
 
 
 /obj/item/storage/belt/utility/full/fill_preset_inventory()
@@ -1139,7 +1139,7 @@
 		/obj/item/ammo_magazine/handful,
 		/obj/item/weapon/gun/revolver,
 		/obj/item/ammo_magazine/revolver,
-		)
+	)
 	flap = FALSE
 	holster_slots = list(
 		"1" = list(

@@ -12,6 +12,7 @@
 		/area/almayer/command/securestorage,
 		/area/almayer/command/computerlab,
 		/area/almayer/medical/medical_science,
+	)
 
 /datum/cm_objective/retrieve_item/New(T)
 	..()

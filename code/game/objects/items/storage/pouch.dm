@@ -104,11 +104,11 @@
 	can_hold = list(
 		/obj/item/ammo_magazine/flamer_tank,
 		/obj/item/tool/extinguisher,
-		)
+	)
 	bypass_w_limit = list(
 		/obj/item/ammo_magazine/flamer_tank,
 		/obj/item/tool/extinguisher,
-		)
+	)
 
 /obj/item/storage/pouch/general/large/m39ap/fill_preset_inventory()
 	for(var/i = 1 to storage_slots)
@@ -331,7 +331,7 @@
 		/obj/item/weapon/gun/pistol,
 		/obj/item/device/binoculars,
 		/obj/item/device/cotablet,
-		)
+	)
 
 	var/obj/item/device/binoculars/binos
 	var/obj/item/device/cotablet/tablet

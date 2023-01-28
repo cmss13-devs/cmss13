@@ -132,13 +132,13 @@
 		/obj/item/attachable/attached_gun/flamer,
 		/obj/item/attachable/attached_gun/grenade,
 		/obj/item/attachable/scope/mini/nsg23,
-		)
+	)
 
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER|GUN_BURST_ON|GUN_BURST_ONLY|GUN_WY_RESTRICTED
 	starting_attachment_types = list(
 		/obj/item/attachable/scope/mini/nsg23,
 		/obj/item/attachable/attached_gun/flamer,
-		)
+	)
 
 /obj/item/weapon/gun/rifle/nsg23/Initialize(mapload, spawn_empty)
 	. = ..()
@@ -200,10 +200,10 @@
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/flashlight,
 		/obj/item/attachable/magnetic_harness,
-		)
+	)
 	random_spawn_under = list(
 		/obj/item/attachable/lasersight,
-		)
+	)
 
 
 /obj/item/weapon/gun/rifle/m41a/elite/set_gun_config_values()
@@ -332,7 +332,7 @@
 		/obj/item/attachable/attached_gun/grenade/mk1,
 		/obj/item/attachable/stock/rifle/collapsible,
 		/obj/item/attachable/attached_gun/shotgun,
-		)
+	)
 
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
 	starting_attachment_types = list(/obj/item/attachable/attached_gun/grenade/mk1, /obj/item/attachable/stock/rifle/collapsible)
@@ -406,24 +406,24 @@
 		/obj/item/attachable/attached_gun/flamer,
 		/obj/item/attachable/attached_gun/extinguisher,
 		/obj/item/attachable/attached_gun/shotgun,
-		)
+	)
 	// CO rifle is guaranteed kitted out
 	random_spawn_chance = 100
 	random_spawn_rail = list(
 		/obj/item/attachable/reddot,
 		/obj/item/attachable/reflex/,
 		/obj/item/attachable/scope/mini,
-		)
+	)
 	random_spawn_under = list(
 		/obj/item/attachable/angledgrip,
 		/obj/item/attachable/verticalgrip,
 		/obj/item/attachable/attached_gun/shotgun,
-		)
+	)
 	random_spawn_muzzle = list(
 		/obj/item/attachable/suppressor,
 		/obj/item/attachable/bayonet,
 		/obj/item/attachable/extended_barrel,
-		)
+	)
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
 	indestructible = TRUE
 	auto_retrieval_slot = WEAR_J_STORE
@@ -629,14 +629,14 @@
 		/obj/item/attachable/attached_gun/extinguisher,
 		/obj/item/attachable/attached_gun/shotgun,
 		/obj/item/attachable/scope/slavic,
-		)
+	)
 	random_spawn_chance = 38
 	random_spawn_rail = list(
 		/obj/item/attachable/reddot,
 		/obj/item/attachable/reflex/,
 		/obj/item/attachable/scope/slavic,
 		/obj/item/attachable/magnetic_harness,
-		)
+	)
 	random_spawn_under = list(
 		/obj/item/attachable/gyro,
 		/obj/item/attachable/bipod,
@@ -644,13 +644,13 @@
 		/obj/item/attachable/attached_gun/extinguisher,
 		/obj/item/attachable/attached_gun/shotgun,
 		/obj/item/attachable/burstfire_assembly,
-		)
+	)
 	random_spawn_muzzle = list(
 		/obj/item/attachable/suppressor,
 		/obj/item/attachable/bayonet/upp,
 		/obj/item/attachable/extended_barrel,
 		/obj/item/attachable/compensator,
-		)
+	)
 
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK
 
@@ -710,14 +710,14 @@
 		/obj/item/attachable/attached_gun/shotgun,
 		/obj/item/attachable/scope,
 		/obj/item/attachable/scope/mini,
-		)
+	)
 	random_spawn_chance = 35
 	random_spawn_rail = list(
 		/obj/item/attachable/reddot,
 		/obj/item/attachable/reflex/,
 		/obj/item/attachable/scope/mini,
 		/obj/item/attachable/magnetic_harness,
-		)
+	)
 	random_spawn_under = list(
 		/obj/item/attachable/angledgrip,
 		/obj/item/attachable/verticalgrip,
@@ -725,12 +725,12 @@
 		/obj/item/attachable/attached_gun/extinguisher,
 		/obj/item/attachable/attached_gun/shotgun,
 		/obj/item/attachable/lasersight,
-		)
+	)
 	random_spawn_muzzle = list(
 		/obj/item/attachable/suppressor,
 		/obj/item/attachable/bayonet/upp,
 		/obj/item/attachable/extended_barrel,
-		)
+	)
 
 /obj/item/weapon/gun/rifle/mar40/carbine/set_gun_config_values()
 	..()
@@ -764,14 +764,14 @@
 		/obj/item/attachable/bipod,
 		/obj/item/attachable/magnetic_harness,
 		/obj/item/attachable/scope/slavic,
-		)
+	)
 	random_spawn_chance = 38
 	random_spawn_rail = list(
 		/obj/item/attachable/reddot,
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/scope/slavic,
 		/obj/item/attachable/magnetic_harness,
-		)
+	)
 
 	flags_gun_features = GUN_CAN_POINTBLANK|GUN_WIELDED_FIRING_ONLY
 
@@ -832,13 +832,13 @@
 		/obj/item/attachable/attached_gun/shotgun,
 		/obj/item/attachable/lasersight,
 		/obj/item/attachable/stock/m16,
-		)
+	)
 	random_spawn_chance = 42
 	random_spawn_rail = list(
 		/obj/item/attachable/reddot,
 		/obj/item/attachable/reflex/,
 		/obj/item/attachable/scope/mini,
-		)
+	)
 	random_spawn_under = list(
 		/obj/item/attachable/angledgrip,
 		/obj/item/attachable/verticalgrip,
@@ -848,13 +848,13 @@
 		/obj/item/attachable/attached_gun/extinguisher,
 		/obj/item/attachable/attached_gun/shotgun,
 		/obj/item/attachable/lasersight,
-		)
+	)
 	random_spawn_muzzle = list(
 		/obj/item/attachable/suppressor,
 		/obj/item/attachable/bayonet,
 		/obj/item/attachable/compensator,
 		/obj/item/attachable/extended_barrel,
-		)
+	)
 
 	flags_gun_features = GUN_CAN_POINTBLANK|GUN_ANTIQUE
 
@@ -913,24 +913,24 @@
 		/obj/item/attachable/extended_barrel,
 		/obj/item/attachable/compensator,
 		/obj/item/attachable/stock/ar10,
-		)
+	)
 	random_spawn_chance = 10
 	random_spawn_rail = list(
 		/obj/item/attachable/reddot,
 		/obj/item/attachable/reflex/,
 		/obj/item/attachable/scope/mini,
-		)
+	)
 	random_spawn_under = list(
 		/obj/item/attachable/angledgrip,
 		/obj/item/attachable/verticalgrip,
 		/obj/item/attachable/bipod,
-		)
+	)
 	random_spawn_muzzle = list(
 		/obj/item/attachable/suppressor,
 		/obj/item/attachable/bayonet,
 		/obj/item/attachable/compensator,
 		/obj/item/attachable/extended_barrel,
-		)
+	)
 
 	flags_gun_features = GUN_CAN_POINTBLANK|GUN_ANTIQUE
 
@@ -988,7 +988,7 @@
 		/obj/item/attachable/attached_gun/flamer,
 		/obj/item/attachable/attached_gun/extinguisher,
 		/obj/item/attachable/attached_gun/shotgun,
-		)
+	)
 
 	flags_gun_features = GUN_CAN_POINTBLANK|GUN_ANTIQUE
 
@@ -1024,7 +1024,7 @@
 		/obj/item/attachable/compensator,
 		/obj/item/attachable/burstfire_assembly,
 		/obj/item/attachable/magnetic_harness,
-		)
+	)
 
 	flags_gun_features = GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER|GUN_WIELDED_FIRING_ONLY
 	gun_category = GUN_CATEGORY_HEAVY
@@ -1114,17 +1114,17 @@
 	random_spawn_rail = list(
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/flashlight,
-		)
+	)
 	random_muzzle_chance = 100
 	random_spawn_muzzle = list(
 		/obj/item/attachable/bayonet/upp,
-		)
+	)
 	random_under_chance = 40
 	random_spawn_under = list(
 		/obj/item/attachable/lasersight,
 		/obj/item/attachable/verticalgrip,
 		/obj/item/attachable/angledgrip,
-		)
+	)
 
 /obj/item/weapon/gun/rifle/type71/dual
 	random_spawn_chance = 100
@@ -1132,17 +1132,17 @@
 	random_spawn_rail = list(
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/flashlight,
-		)
+	)
 	random_muzzle_chance = 100
 	random_spawn_muzzle = list(
 		/obj/item/attachable/bayonet/upp,
-		)
+	)
 	random_under_chance = 40
 	random_spawn_under = list(
 		/obj/item/attachable/lasersight,
 		/obj/item/attachable/verticalgrip,
 		/obj/item/attachable/angledgrip,
-		)
+	)
 
 /obj/item/weapon/gun/rifle/type71/sapper
 	current_mag = /obj/item/ammo_magazine/rifle/type71/ap
@@ -1152,17 +1152,17 @@
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/flashlight,
 		/obj/item/attachable/magnetic_harness,
-		)
+	)
 	random_muzzle_chance = 80
 	random_spawn_muzzle = list(
 		/obj/item/attachable/suppressor,
 		/obj/item/attachable/bayonet/upp,
-		)
+	)
 	random_under_chance = 90
 	random_spawn_under = list(
 		/obj/item/attachable/lasersight,
 		/obj/item/attachable/attached_gun/extinguisher,
-		)
+	)
 
 /obj/item/weapon/gun/rifle/type71/flamer
 	name = "\improper Type 71-F pulse rifle"
@@ -1172,7 +1172,7 @@
 		/obj/item/attachable/reddot,
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/extended_barrel,
-		)
+	)
 
 /obj/item/weapon/gun/rifle/type71/flamer/handle_starting_attachment()
 	..()
@@ -1189,11 +1189,11 @@
 		/obj/item/attachable/flashlight,
 		/obj/item/attachable/magnetic_harness,
 		/obj/item/attachable/scope/mini,
-		)
+	)
 	random_muzzle_chance = 100
 	random_spawn_muzzle = list(
 		/obj/item/attachable/bayonet/upp,
-		)
+	)
 
 /obj/item/weapon/gun/rifle/type71/carbine
 	name = "\improper Type 71 pulse carbine"
@@ -1222,17 +1222,17 @@
 	random_spawn_rail = list(
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/flashlight,
-		)
+	)
 	random_muzzle_chance = 100
 	random_spawn_muzzle = list(
 		/obj/item/attachable/bayonet/upp,
-		)
+	)
 	random_under_chance = 40
 	random_spawn_under = list(
 		/obj/item/attachable/lasersight,
 		/obj/item/attachable/verticalgrip,
 		/obj/item/attachable/angledgrip,
-		)
+	)
 
 /obj/item/weapon/gun/rifle/type71/carbine/commando
 	name = "\improper Type 71 'Commando' pulse carbine"
@@ -1245,7 +1245,7 @@
 		/obj/item/attachable/lasersight,
 		/obj/item/attachable/verticalgrip,
 		/obj/item/attachable/angledgrip,
-		)
+	)
 	random_spawn_chance = 0
 	random_spawn_rail = list()
 	random_spawn_muzzle = list()
@@ -1310,7 +1310,7 @@
 		/obj/item/attachable/scope/mini,
 		/obj/item/attachable/scope/mini_iff,
 		/obj/item/attachable/flashlight/grip,
-		)
+	)
 
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
 	wield_delay = WIELD_DELAY_VERY_FAST
@@ -1365,7 +1365,7 @@
 		/obj/item/attachable/scope/mini_iff,
 		/obj/item/attachable/scope/mini/hunting,
 		/obj/item/attachable/stock/hunting,
-		)
+	)
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
 	wield_delay = WIELD_DELAY_VERY_FAST
 	aim_slowdown = SLOWDOWN_ADS_QUICK

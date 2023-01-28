@@ -35,7 +35,7 @@
 		/obj/item/storage/box/guncase/flamer,
 		/obj/item/storage/backpack/marine/engineerpack/flamethrower/kit,
 		/obj/item/storage/backpack/marine/engineerpack/flamethrower/kit,
-		)
+	)
 	cost = 40
 	containertype = /obj/structure/closet/crate/ammo/alt/flame
 	containername = "M240 Incinerator crate"
@@ -46,7 +46,7 @@
 	contains = list(
 		/obj/item/storage/box/guncase/m79,
 		/obj/item/storage/box/guncase/m79,
-		)
+	)
 	cost = 40
 	containertype = /obj/structure/closet/crate/weapon
 	containername = "M79 grenade launcher crate"
@@ -91,7 +91,7 @@
 		/obj/item/weapon/gun/rifle/m41aMK1,
 		/obj/item/ammo_magazine/rifle/m41aMK1,
 		/obj/item/ammo_magazine/rifle/m41aMK1,
-		)
+	)
 	name = "M41A MK1 Rifle Crate (x2 MK1, x2 magazines)"
 	cost = 40
 	containertype = /obj/structure/closet/crate/weapon
@@ -102,7 +102,7 @@
 	contains = list(
 		/obj/item/storage/box/guncase/lmg,
 		/obj/item/storage/box/guncase/lmg,
-		)
+	)
 	name = "M41AE2 HPR crate (HPR x2, HPR ammo box x2)"
 	cost = 40
 	containertype = /obj/structure/closet/crate/weapon
@@ -113,7 +113,7 @@
 	contains = list(
 		/obj/item/storage/box/guncase/xm88,
 		/obj/item/storage/box/guncase/xm88,
-		)
+	)
 	name = "XM88 Heavy Rifle crate (XM88 x2)"
 	cost = 40
 	containertype = /obj/structure/closet/crate/weapon

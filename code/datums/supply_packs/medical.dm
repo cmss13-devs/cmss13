@@ -17,7 +17,7 @@
 		/obj/item/storage/pill_bottle/quickclot,
 		/obj/item/storage/pill_bottle/peridaxon,
 		/obj/item/storage/box/pillbottles,
-		)
+	)
 	cost = 20
 	containertype = /obj/structure/closet/crate/medical
 	containername = "medical crate"
@@ -36,7 +36,7 @@
 		/obj/item/storage/firstaid/o2,
 		/obj/item/storage/firstaid/adv,
 		/obj/item/storage/firstaid/adv,
-		)
+	)
 	cost = 20
 	containertype = /obj/structure/closet/crate/medical
 	containername = "medical crate"
@@ -49,7 +49,7 @@
 		/obj/item/storage/box/bodybags,
 		/obj/item/storage/box/bodybags,
 		/obj/item/storage/box/bodybags,
-		)
+	)
 	cost = 20
 	containertype = /obj/structure/closet/crate/medical
 	containername = "body bag crate"
@@ -61,7 +61,7 @@
 		/obj/item/bodybag/cryobag,
 		/obj/item/bodybag/cryobag,
 		/obj/item/bodybag/cryobag,
-		)
+	)
 	cost = 40
 	containertype = /obj/structure/closet/crate/medical
 	containername = "stasis bag crate"
@@ -76,7 +76,7 @@
 		/obj/item/clothing/under/rank/medical/green,
 		/obj/item/storage/box/masks,
 		/obj/item/storage/box/gloves,
-		)
+	)
 	cost = 30
 	containertype = /obj/structure/closet/crate/secure/surgery
 	containername = "surgery crate"
@@ -90,7 +90,7 @@
 		/obj/item/storage/box/czsp/medic_upgraded_kits,
 		/obj/item/storage/box/czsp/medic_upgraded_kits,
 		/obj/item/storage/box/czsp/medic_upgraded_kits,
-		)
+	)
 	cost = 0
 	buyable = FALSE
 	containertype = /obj/structure/closet/crate/medical

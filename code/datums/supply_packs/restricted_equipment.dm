@@ -5,7 +5,7 @@
 	contains = list(
 		/obj/item/clothing/head/helmet/marine/leader,
 		/obj/item/clothing/suit/storage/marine/leader,
-		)
+	)
 	cost = 20
 	containertype = /obj/structure/closet/crate
 	containername = "B12 pattern marine armor crate"
@@ -16,7 +16,7 @@
 	contains = list(
 		/obj/item/clothing/head/helmet/marine/rto,
 		/obj/item/clothing/suit/storage/marine/rto,
-		)
+	)
 	cost = 20
 	containertype = /obj/structure/closet/crate
 	containername = "M4 pattern marine armor crate"

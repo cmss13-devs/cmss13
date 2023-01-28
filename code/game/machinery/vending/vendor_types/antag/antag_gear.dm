@@ -105,4 +105,4 @@
 		/obj/item/storage/pill_bottle/happy,
 		/obj/item/storage/pill_bottle/happy,
 		/obj/item/explosive/grenade/smokebomb,
-		)
+	)

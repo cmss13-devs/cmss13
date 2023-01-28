@@ -25,7 +25,7 @@
 		/obj/item/reagent_container/food/snacks/grown/potato,
 		/obj/item/reagent_container/food/snacks/grown/potato,
 		/obj/item/reagent_container/food/snacks/grown/potato,
-		)
+	)
 	cost = 10
 	containertype = /obj/structure/closet/crate/freezer
 	containername = "\improper Potato crate"
@@ -54,7 +54,7 @@
 		/obj/item/reagent_container/food/snacks/grown/tomato,
 		/obj/item/reagent_container/food/snacks/grown/tomato,
 		/obj/item/reagent_container/food/snacks/grown/tomato,
-		)
+	)
 	cost = 10
 	containertype = /obj/structure/closet/crate/freezer
 	containername = "\improper Tomato crate"
@@ -83,7 +83,7 @@
 		/obj/item/reagent_container/food/snacks/grown/wheat,
 		/obj/item/reagent_container/food/snacks/grown/wheat,
 		/obj/item/reagent_container/food/snacks/grown/wheat,
-		)
+	)
 	cost = 10
 	containertype = /obj/structure/closet/crate/freezer
 	containername = "\improper Wheat crate"
@@ -99,7 +99,7 @@
 		/obj/item/reagent_container/food/snacks/meat,
 		/obj/item/reagent_container/food/snacks/meat,
 		/obj/item/reagent_container/food/snacks/meat,
-		)
+	)
 	cost = 10
 	containertype = /obj/structure/closet/crate/freezer
 	containername = "\improper meat crate"
@@ -113,7 +113,7 @@
 		/obj/item/reagent_container/food/snacks/carpmeat,
 		/obj/item/reagent_container/food/snacks/carpmeat,
 		/obj/item/reagent_container/food/snacks/carpmeat,
-		)
+	)
 	cost = 10
 	containertype = /obj/structure/closet/crate/freezer
 	containername = "\improper carp filet crate"
@@ -132,7 +132,7 @@
 		/obj/item/reagent_container/food/condiment/hotsauce/franks,
 		/obj/item/reagent_container/food/condiment/hotsauce/sriracha,
 		/obj/item/reagent_container/food/condiment/hotsauce/tabasco,
-		)
+	)
 	cost = 10
 	containertype = /obj/structure/closet/crate/freezer
 	containername = "\improper crate of condiment"
@@ -148,7 +148,7 @@
 		/obj/item/storage/donut_box,
 		/obj/item/storage/donut_box,
 		/obj/item/storage/donut_box,
-		)
+	)
 	cost = 10
 	containertype = /obj/structure/closet/crate/supply
 	containername = "\improper boxe of donut (x5)"
@@ -159,7 +159,7 @@
 	contains = list(
 		/obj/item/ammo_box/magazine/misc/mre,
 		/obj/item/ammo_box/magazine/misc/mre,
-		)
+	)
 	cost = 10
 	containertype = /obj/structure/closet/crate/supply
 	containername = "\improper USCM MRE crate(x2)"
@@ -200,7 +200,7 @@
 		/obj/item/reagent_container/food/drinks/bottle/wine,
 		/obj/item/reagent_container/food/drinks/bottle/wine,
 		/obj/item/reagent_container/food/drinks/bottle/wine,
-		)
+	)
 	cost = 10
 	containertype = /obj/structure/closet/crate/freezer
 	containername = "\improper Special ingredients crate"
@@ -223,7 +223,7 @@
 		/obj/item/seeds/bloodtomatoseed,
 		/obj/item/storage/pill_bottle/happy,
 		/obj/item/reagent_container/food/drinks/bottle/pwine,
-		)
+	)
 
 	name = "contraband crate"
 	cost = 30

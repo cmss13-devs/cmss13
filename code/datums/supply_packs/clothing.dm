@@ -7,7 +7,7 @@
 		/obj/item/storage/pouch/magazine/pistol/large,
 		/obj/item/storage/pouch/general,
 		/obj/item/storage/pouch/general,
-		)
+	)
 	cost = 20
 	containertype = /obj/structure/closet/crate
 	containername = "Large Pouch"
@@ -21,7 +21,7 @@
 		/obj/item/storage/pouch/syringe,
 		/obj/item/storage/pouch/medkit,
 		/obj/item/storage/pouch/autoinjector,
-		)
+	)
 	cost = 20
 	containertype = /obj/structure/closet/crate
 	containername = "medical pouches crate"
@@ -100,7 +100,7 @@
 	contains = list(
 		/obj/item/storage/belt/gun/m44/gunslinger,
 		/obj/item/storage/belt/gun/m44/gunslinger,
-		)
+	)
 	name = "Red Ranger Cowboy Gunbelt Crate (x2)"
 	cost = 20
 	contraband = 1
@@ -115,7 +115,7 @@
 		/obj/item/clothing/under/marine/officer/bridge,
 		/obj/item/clothing/under/marine/officer/exec,
 		/obj/item/clothing/under/marine/officer/ce,
-		)
+	)
 	name = "officer outfit crate"
 	cost = 30
 	containertype = /obj/structure/closet/crate

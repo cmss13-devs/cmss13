@@ -267,7 +267,7 @@
 		/obj/structure/machinery/centrifuge,
 		/obj/structure/machinery/autodispenser,
 		/obj/structure/machinery/constructable_frame,
-		)
+	)
 
 /obj/item/reagent_container/glass/minitank/on_reagent_change()
 	update_icon()

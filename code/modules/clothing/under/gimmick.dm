@@ -90,7 +90,7 @@
 		/obj/item/attachable/bayonet,
 		/obj/item/storage/backpack/general_belt,
 		/obj/item/storage/large_holster/machete,
-		)
+	)
 
 //ROBOCOP
 /obj/item/clothing/under/gimmick/robocop

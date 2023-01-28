@@ -20,7 +20,7 @@
 	contains = list(
 		/obj/item/ammo_box/magazine/misc/flares,
 		/obj/item/ammo_box/magazine/misc/flares,
-		)
+	)
 	cost = 40
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "flare pack crate"
@@ -45,7 +45,7 @@
 		/obj/item/storage/box/m94/signal,
 		/obj/item/storage/box/m94/signal,
 		/obj/item/storage/box/m94/signal,
-		)
+	)
 	cost = 60
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "signal flare pack crate"
@@ -58,7 +58,7 @@
 		/obj/item/stack/fulton,
 		/obj/item/stack/fulton,
 		/obj/item/stack/fulton,
-		)
+	)
 	cost = 20
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "fulton recovery device crate"
@@ -70,7 +70,7 @@
 		/obj/item/prop/helmetgarb/helmet_nvg,
 		/obj/item/prop/helmetgarb/helmet_nvg,
 		/obj/item/prop/helmetgarb/helmet_nvg,
-		)
+	)
 	cost = 60
 	containertype = /obj/structure/closet/crate/supply
 	containername = "M2 Night Vission Goggles Crate"

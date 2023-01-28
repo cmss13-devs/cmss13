@@ -77,7 +77,7 @@
 		/obj/item/storage/large_holster/machete,
 		/obj/item/storage/belt/gun/m4a3,
 		/obj/item/storage/belt/gun/m44,
-		)
+	)
 	uniform_restricted = list(/obj/item/clothing/under/marine/officer/pilot)
 	sprite_sheets = list(SPECIES_MONKEY = 'icons/mob/humans/species/monkeys/onmob/suit_monkey_1.dmi')
 	item_icons = list(

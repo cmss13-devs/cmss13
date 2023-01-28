@@ -49,7 +49,7 @@
 		/obj/item/clothing/shoes/laceup,
 		/obj/item/clothing/shoes/leather,
 		/obj/item/clothing/shoes/swat,
-		)
+	)
 
 /obj/effect/essentials_set/random/clf_armor
 	spawned_gear_list = list(
@@ -59,7 +59,7 @@
 		/obj/item/clothing/suit/storage/militia,
 		/obj/item/clothing/suit/storage/militia/partial,
 		/obj/item/clothing/suit/storage/militia/vest,
-		)
+	)
 
 /obj/effect/essentials_set/random/clf_gloves
 	spawned_gear_list = list(
@@ -67,7 +67,7 @@
 		/obj/item/clothing/gloves/botanic_leather,
 		/obj/item/clothing/gloves/combat,
 		/obj/item/clothing/gloves/swat,
-		)
+	)
 
 /obj/effect/essentials_set/random/clf_head
 	spawned_gear_list = list(
@@ -81,7 +81,7 @@
 		/obj/item/clothing/head/headband/rambo,
 		/obj/item/clothing/head/headband/rebel,
 		/obj/item/clothing/head/helmet/swat,
-		)
+	)
 
 /obj/effect/essentials_set/random/clf_belt
 	spawned_gear_list = list(
@@ -98,4 +98,4 @@
 		/obj/item/storage/belt/knifepouch,
 		/obj/item/storage/large_holster/katana/full,
 		/obj/item/storage/large_holster/machete/full,
-		)
+	)

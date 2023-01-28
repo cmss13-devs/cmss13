@@ -171,7 +171,7 @@
 		/obj/item/ammo_magazine/shotgun/flechette,
 		/obj/item/ammo_magazine/smg/m39,
 		/obj/item/ammo_magazine/smg/m39/extended,
-		)
+	)
 
 /obj/structure/largecrate/random/mini/med
 	desc = "A small metal crate. Here, Freeman take this medkit!" //https://www.youtube.com/watch?v=OMXan7GS8-Q
@@ -193,7 +193,7 @@
 		/obj/item/tool/extinguisher/mini,
 		/obj/item/tool/shovel/etool,
 		/obj/item/tool/screwdriver,
-		)
+	)
 
 /obj/structure/largecrate/random/case
 	name = "storage case"
@@ -402,7 +402,7 @@
 		/obj/item/ammo_magazine/handful/shotgun/heavy/buckshot,
 		/obj/item/ammo_magazine/rifle/type71,
 		/obj/item/ammo_magazine/smg/fp9000,
-		)
+	)
 
 /obj/structure/largecrate/hunter_games_construction
 	name = "construction crate"

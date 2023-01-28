@@ -125,7 +125,7 @@
 		/obj/item/weapon/gun/smg/mp27,
 		/obj/item/weapon/gun/smg/mac15,
 		/obj/item/weapon/gun/pistol/skorpion,
-		)
+	)
 	///Guns have a hud offset that throws the vis_contents alignment off.
 	var/gun_offset = 0
 	///Whether the gun had pixel scaling set before being holstered.

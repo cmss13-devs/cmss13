@@ -79,11 +79,11 @@ Non-USCM items, from CLF, UPP, colonies, etc. Mostly combat-related.
 	. = ..()
 	switch(rand(1,7))
 		if(1) //pmc
-			new /obj/item/clothing/under/marine/veteran/PMC(src)
-			new /obj/item/clothing/head/helmet/marine/veteran/PMC(src)
-			new /obj/item/clothing/suit/storage/marine/veteran/PMC(src)
-			new /obj/item/clothing/gloves/marine/veteran/PMC(src)
-			new /obj/item/clothing/mask/gas/PMC(src)
+			new /obj/item/clothing/under/marine/veteran/pmc(src)
+			new /obj/item/clothing/head/helmet/marine/veteran/pmc(src)
+			new /obj/item/clothing/suit/storage/marine/veteran/pmc(src)
+			new /obj/item/clothing/gloves/marine/veteran/pmc(src)
+			new /obj/item/clothing/mask/gas/pmc(src)
 			new /obj/item/storage/backpack/lightpack(src)
 		if(2) //dutch's
 			new /obj/item/clothing/head/helmet/marine/veteran/dutch(src)

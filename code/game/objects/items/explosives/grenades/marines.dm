@@ -96,7 +96,7 @@
 	shrapnel_count = 48
 	falloff_mode = EXPLOSION_FALLOFF_SHAPE_LINEAR
 
-/obj/item/explosive/grenade/HE/frag/toy
+/obj/item/explosive/grenade/high_explosive/frag/toy
 	name = "toy HEFA grenade"
 	desc = "High-Explosive Fragmenting-Antipersonnel. A small, but deceptively strong fragmentation grenade that has been phasing out the M15 fragmentation grenades alongside the M40 HEDP. Capable of being loaded in the M92 Launcher, or thrown by hand. Wait, the labeling on the side indicates this is a toy, what the hell?"
 	explosion_power = 0

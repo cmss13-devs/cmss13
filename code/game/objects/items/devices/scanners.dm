@@ -422,7 +422,7 @@ FORENSIC SCANNER
 
 /obj/item/device/black_market_scanner/update_icon(scan_value = 0, scanning = FALSE)
 	. = ..()
-	overlays.Cut()rng
+	overlays.Cut()
 	overlays += image('icons/obj/items/devices.dmi', "+mendoza_scanner_value_flash")
 	if(scanning)
 		overlays += image('icons/obj/items/devices.dmi', "+mendoza_scanner_clamp_on")

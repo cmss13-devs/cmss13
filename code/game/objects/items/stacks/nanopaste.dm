@@ -29,7 +29,7 @@
 
 	if (istype(M,/mob/living/carbon/human)) //Repairing robolimbs
 		var/mob/living/carbon/human/H = M
-		if(isSpeciesSynth(H) && M == user && !H.allow_gun_usage)
+		if(isspeciessynth(H) && M == user && !H.allow_gun_usage)
 			to_chat(H, SPAN_WARNING("Your programming forbids you from self-repairing with \the [src]."))
 			return
 		var/obj/limb/S = H.get_limb(user.zone_selected)

@@ -83,7 +83,7 @@
 	unacidable = TRUE
 
 /obj/structure/machinery/door/poddoor/shutters/almayer/containment/attack_alien(mob/living/carbon/xenomorph/M)
-	if(isXenoQueen(M) && density && !operating)
+	if(isqueen(M) && density && !operating)
 		INVOKE_ASYNC(src, PROC_REF(pry_open), M)
 		return XENO_ATTACK_ACTION
 	else

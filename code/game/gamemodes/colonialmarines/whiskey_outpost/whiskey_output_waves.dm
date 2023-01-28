@@ -34,7 +34,7 @@
 		var/area/A = get_area(X)
 		if(is_admin_level(X.z) && (!A || !(A.flags_area & AREA_ALLOW_XENO_JOIN)) || X.aghosted) continue //xenos on admin z level and aghosted ones don't count
 		if(istype(X) && !X.client)
-			if((X.away_timer >= XENO_LEAVE_TIMER) || (isXenoLarva(X) && X.away_timer >= XENO_LEAVE_TIMER_LARVA))
+			if((X.away_timer >= XENO_LEAVE_TIMER) || (islarva(X) && X.away_timer >= XENO_LEAVE_TIMER_LARVA))
 				available_xenos += X
 
 	for(var/name in xeno_pool)
@@ -69,7 +69,7 @@
 		if(transfer_xeno(xeno_candidate, new_xeno))
 			return TRUE
 	else
-		if(!isXeno(userInput))
+		if(!isxeno(userInput))
 			return FALSE
 
 		var/mob/living/carbon/xenomorph/new_xeno = userInput
@@ -82,9 +82,9 @@
 			return FALSE
 
 		if(!xeno_bypass_timer)
-			if((!isXenoLarva(new_xeno) && new_xeno.away_timer < XENO_LEAVE_TIMER) || (isXenoLarva(new_xeno) && new_xeno.away_timer < XENO_LEAVE_TIMER_LARVA))
+			if((!islarva(new_xeno) && new_xeno.away_timer < XENO_LEAVE_TIMER) || (islarva(new_xeno) && new_xeno.away_timer < XENO_LEAVE_TIMER_LARVA))
 				var/to_wait = XENO_LEAVE_TIMER - new_xeno.away_timer
-				if(isXenoLarva(new_xeno))
+				if(islarva(new_xeno))
 					to_wait = XENO_LEAVE_TIMER_LARVA - new_xeno.away_timer
 				to_chat(xeno_candidate, SPAN_WARNING("That player hasn't been away long enough. Please wait [to_wait] second\s longer."))
 				return FALSE

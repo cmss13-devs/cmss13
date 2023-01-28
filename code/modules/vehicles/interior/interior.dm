@@ -174,7 +174,7 @@
 			if(!role_slot_taken)
 				passengers_taken_slots++
 
-		else if(isXeno(M))
+		else if(isxeno(M))
 			var/mob/living/carbon/xenomorph/X = M
 			if(X.stat == DEAD)
 				continue
@@ -244,7 +244,7 @@
 					to_chat(M, SPAN_WARNING("There's no more space inside!"))
 				return FALSE
 
-	else if(isXeno(M))
+	else if(isxeno(M))
 		if(M.stat != DEAD)
 			if(xenos_taken_slots < xenos_slots)
 				xenos_taken_slots++

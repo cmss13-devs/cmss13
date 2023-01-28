@@ -162,7 +162,7 @@
 	..()
 
 /obj/item/clothing/yautja_cape/pickup(mob/living/user)
-	if(isYautja(user))
+	if(isyautja(user))
 		remove_from_missing_pred_gear(src)
 	..()
 
@@ -323,7 +323,7 @@
 	black_market_value = 100
 
 /obj/item/device/radio/headset/yautja/talk_into(mob/living/M as mob, message, channel, verb = "commands", datum/language/speaking)
-	if(!isYautja(M)) //Nope.
+	if(!isyautja(M)) //Nope.
 		to_chat(M, SPAN_WARNING("You try to talk into the headset, but just get a horrible shrieking in your ears!"))
 		return
 
@@ -392,7 +392,7 @@
 	var/mob/living/carbon/human/H = user
 	var/ship_to_tele = list("Public" = -1, "Human Ship" = "Human")
 
-	if(!isYautja(H) || is_admin_level(H.z))
+	if(!isyautja(H) || is_admin_level(H.z))
 		to_chat(user, SPAN_WARNING("You fiddle with it, but nothing happens!"))
 		return
 
@@ -597,7 +597,7 @@
 
 /obj/item/scalp/get_examine_text(mob/user)
 	. = ..()
-	if(isYautja(user) || isobserver(user))
+	if(isyautja(user) || isobserver(user))
 		. += true_desc
 	else
 		. += SPAN_WARNING("Scalp-collecting is supposed to be a <i>joke</i>. Has someone been going around doing this shit for real? What next, a necklace of severed ears? Jesus Christ.")
@@ -723,7 +723,7 @@
 	if(HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
 		disarm(user)
 	//Humans and synths don't know how to handle those traps!
-	if(isHumanSynthStrict(user) && armed)
+	if(ishumansynth_strict(user) && armed)
 		to_chat(user, SPAN_WARNING("You foolishly reach out for \the [src]..."))
 		trapMob(user)
 		return
@@ -751,7 +751,7 @@
 
 	if(ishuman(C))
 		C.emote("pain")
-	if(isXeno(C))
+	if(isxeno(C))
 		var/mob/living/carbon/xenomorph/X = C
 		C.emote("needhelp")
 		X.interference = 100 // Some base interference to give pred time to get some damage in, if it cannot land a single hit during this time pred is cheeks
@@ -768,7 +768,7 @@
 		if(!M.buckled)
 			if(iscarbon(AM) && isturf(src.loc))
 				var/mob/living/carbon/H = AM
-				if(isYautja(H))
+				if(isyautja(H))
 					to_chat(H, SPAN_NOTICE("You carefully avoid stepping on the trap."))
 					return
 				trapMob(H)
@@ -798,7 +798,7 @@
 		user.attack_log += text("\[[time_stamp()]\] <font color='orange'>[key_name(user)] has disarmed \the [src] at [get_location_in_text(user)].</font>")
 		log_attack("[key_name(user)] has disarmed \a [src] at [get_location_in_text(user)].")
 	if (trapped_mob)
-		if (isXeno(trapped_mob))
+		if (isxeno(trapped_mob))
 			var/mob/living/carbon/xenomorph/X = trapped_mob
 			UnregisterSignal(X, COMSIG_XENO_PRE_HEAL)
 		trapped_mob = null

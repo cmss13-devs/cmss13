@@ -80,7 +80,7 @@
 		L.hitby(src)
 
 /atom/movable/proc/obj_launch_collision(obj/O)
-	if (!O.anchored && !rebounding && !isXeno(src))
+	if (!O.anchored && !rebounding && !isxeno(src))
 		O.Move(get_step(O, dir))
 	else if (!rebounding && rebounds)
 		var/oldloc = loc

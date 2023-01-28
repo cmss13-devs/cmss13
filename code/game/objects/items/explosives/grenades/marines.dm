@@ -469,7 +469,7 @@
 	random_tile = get_random_turf_in_range(src,ram_distance,ram_distance) //getting random tile for bounce
 	src.throw_atom(random_tile,ram_distance,SPEED_FAST,src,TRUE,NORMAL_LAUNCH,NO_FLAGS) //time for a little trolling
 
-	if(isYautja(M)|| isSynth(M))
+	if(isyautja(M)|| issynth(M))
 		M.apply_effect(slowdown_time * 0.5, SLOW)
 		M.apply_effect(dazed_time * 0.5, DAZE)
 

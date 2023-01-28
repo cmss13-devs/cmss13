@@ -38,7 +38,7 @@
 		return ..()
 	if(!xeno_types || !(target_mob.type in xeno_types))
 		return ..()
-	if(!isXeno(target_mob))
+	if(!isxeno(target_mob))
 		return ..()
 	if(HAS_TRAIT(target_mob, TRAIT_XENONID))
 		return ..() // We don't have backpack sprites for xenoids (yet?)
@@ -683,7 +683,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	actions_types = list(/datum/action/item_action/specialist/toggle_cloak)
 
 /obj/item/storage/backpack/marine/satchel/scout_cloak/dropped(mob/user)
-	if(ishuman(user) && !isSynth(user))
+	if(ishuman(user) && !issynth(user))
 		deactivate_camouflage(user, FALSE)
 
 	. = ..()

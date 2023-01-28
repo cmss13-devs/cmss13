@@ -450,7 +450,7 @@
 	var/list/creatures = list()
 	var/list/namecounts = list()
 	for(var/mob/M in mobs)
-		if(!isYautja(M)) continue
+		if(!isyautja(M)) continue
 		var/name = M.name
 		if (name in names)
 			namecounts[name]++
@@ -474,7 +474,7 @@
 	var/list/creatures = list()
 	var/list/namecounts = list()
 	for(var/mob/M in mobs)
-		if(isYautja(M)) continue
+		if(isyautja(M)) continue
 		if(iszombie(M)) continue
 		var/name = M.name
 		if (name in names)
@@ -499,7 +499,7 @@
 	var/list/creatures = list()
 	var/list/namecounts = list()
 	for(var/mob/M in mobs)
-		if(isYautja(M)) continue
+		if(isyautja(M)) continue
 		if(iszombie(M)) continue
 		var/name = M.name
 		if (name in names)
@@ -524,7 +524,7 @@
 	var/list/creatures = list()
 	var/list/namecounts = list()
 	for(var/mob/M in mobs)
-		if(isYautja(M)) continue
+		if(isyautja(M)) continue
 		if(iszombie(M)) continue
 		var/name = M.name
 		if (name in names)
@@ -549,7 +549,7 @@
 	var/list/creatures = list()
 	var/list/namecounts = list()
 	for(var/mob/M in mobs)
-		if(isYautja(M)) continue
+		if(isyautja(M)) continue
 		if(iszombie(M)) continue
 		var/name = M.name
 		if (name in names)
@@ -685,7 +685,7 @@
 	var/list/synthlist = list()
 	var/list/sortmob = sortAtom(GLOB.human_mob_list)
 	for(var/mob/living/carbon/human/M in sortmob)
-		if(!M.client || !isSynth(M))
+		if(!M.client || !issynth(M))
 			continue
 		synthlist.Add(M)
 	return synthlist
@@ -1789,7 +1789,7 @@ var/list/WALLITEMS = list(
 		return TRUE
 	// If the user is not a xeno (with active ability) with the shift click pref on, we examine. God forgive me for snowflake
 	if(user.client?.prefs && !(user.client?.prefs?.toggle_prefs & TOGGLE_MIDDLE_MOUSE_CLICK))
-		if(isXeno(user))
+		if(isxeno(user))
 			var/mob/living/carbon/xenomorph/X = user
 			if(X.selected_ability)
 				return FALSE

@@ -6,7 +6,7 @@
 	var/list/faction_groups = list()
 
 /obj/item/iff_tag/attack(mob/living/carbon/xenomorph/xeno, mob/living/carbon/human/injector)
-	if(isXeno(xeno))
+	if(isxeno(xeno))
 		if(xeno.stat == DEAD)
 			to_chat(injector, SPAN_WARNING("\The [xeno] is dead..."))
 			return

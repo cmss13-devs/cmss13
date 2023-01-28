@@ -72,7 +72,7 @@ var/datum/controller/supply/supply_controller = new()
 	var/mob/living/carbon/C = AM
 	if (!istype(C))
 		return
-	if (isHumanStrict(C))
+	if (ishuman_strict(C))
 		return
 	if(collide_message_busy > world.time)
 		return

@@ -67,7 +67,7 @@
 		/obj/item/stack/medical/splint
 		)
 
-/obj/structure/machinery/cm_vending/sorted/medical/vehicle/populate_product_list(var/scale)
+/obj/structure/machinery/cm_vending/sorted/medical/vehicle/populate_product_list(scale)
 	listed_products = list(
 		list("FIELD SUPPLIES", -1, null, null),
 		list("Advanced Burn Kit", round(scale * 4), /obj/item/stack/medical/advanced/ointment, VENDOR_ITEM_REGULAR),
@@ -140,7 +140,7 @@
 	if(ishuman(user))
 		. += SPAN_INFO("[SPAN_HELPFUL("CTRL + Click")] \the [src] to start re-stocking it with supplies near vendor.")
 
-/obj/structure/machinery/cm_vending/sorted/vehicle_supply/clicked(var/mob/user, var/list/mods)
+/obj/structure/machinery/cm_vending/sorted/vehicle_supply/clicked(mob/user, list/mods)
 	if(mods["ctrl"])
 		if(!CAN_PICKUP(user, src))
 			return ..()
@@ -180,7 +180,7 @@
 	return
 
 //combined from req guns and ammo vendors
-/obj/structure/machinery/cm_vending/sorted/vehicle_supply/populate_product_list(var/scale)
+/obj/structure/machinery/cm_vending/sorted/vehicle_supply/populate_product_list(scale)
 	listed_products = list(
 		list("PRIMARY FIREARMS", -1, null, null),
 		list("M37A2 Pump Shotgun", round(scale * 3), /obj/item/weapon/gun/shotgun/pump, VENDOR_ITEM_REGULAR),

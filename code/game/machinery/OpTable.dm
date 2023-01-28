@@ -10,7 +10,7 @@
 	icon_state = "table2-idle"
 	density = TRUE
 	layer = TABLE_LAYER
-	anchored = 1
+	anchored = TRUE
 	unslashable = TRUE
 	unacidable = TRUE
 	climbable = TRUE
@@ -40,7 +40,7 @@
 	QDEL_NULL(anes_tank)
 	. = ..()
 
-/obj/structure/machinery/optable/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/obj/structure/machinery/optable/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_can_pass_all = PASS_OVER|PASS_AROUND

@@ -118,7 +118,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	return 1
 
 
-/obj/item/weapon/gun/shotgun/reload(mob/user, var/obj/item/ammo_magazine/magazine)
+/obj/item/weapon/gun/shotgun/reload(mob/user, obj/item/ammo_magazine/magazine)
 	if(flags_gun_features & GUN_BURST_FIRING)
 		return
 
@@ -329,7 +329,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	if(current_mag && current_mag.current_rounds > 0)
 		load_into_chamber()
 
-/obj/item/weapon/gun/shotgun/combat/marsoc/retrieve_to_slot(var/mob/living/carbon/human/user, var/retrieval_slot)
+/obj/item/weapon/gun/shotgun/combat/marsoc/retrieve_to_slot(mob/living/carbon/human/user, retrieval_slot)
 	if(retrieval_slot == WEAR_J_STORE) //If we are using a magharness...
 		if(..(user, WEAR_WAIST)) //...first try to put it onto the waist.
 			return TRUE
@@ -725,7 +725,7 @@ can cause issues with ammo types getting mixed up during the burst.
 /datum/action/item_action/specialist/twobore_brace
 	ability_primacy = SPEC_PRIMARY_ACTION_1
 
-/datum/action/item_action/specialist/twobore_brace/New(var/mob/living/user, var/obj/item/holder)
+/datum/action/item_action/specialist/twobore_brace/New(mob/living/user, obj/item/holder)
 	..()
 	name = "Brace for Recoil"
 	action_icon_state = "twobore_brace"
@@ -1112,7 +1112,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	QDEL_NULL(secondary_tube)
 	. = ..()
 
-/obj/item/weapon/gun/shotgun/pump/dual_tube/proc/swap_tube(var/mob/user)
+/obj/item/weapon/gun/shotgun/pump/dual_tube/proc/swap_tube(mob/user)
 	if(!ishuman(user) || user.is_mob_incapacitated())
 		return FALSE
 	var/obj/item/weapon/gun/shotgun/pump/dual_tube/shotgun = user.get_active_hand()

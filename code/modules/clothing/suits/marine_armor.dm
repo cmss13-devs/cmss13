@@ -720,7 +720,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 
 	H.add_filter("firewalk_on", 1, list("type" = "outline", "color" = "#03fcc6", "size" = 1))
 
-/obj/item/clothing/suit/storage/marine/M35/proc/end_fire_shield(var/mob/living/carbon/human/user)
+/obj/item/clothing/suit/storage/marine/M35/proc/end_fire_shield(mob/living/carbon/human/user)
 	if(!istype(user))
 		return
 	to_chat(user, SPAN_NOTICE("FIREWALK protocol has finished."))
@@ -734,7 +734,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 
 	addtimer(CALLBACK(src, PROC_REF(enable_fire_shield), user), FIRE_SHIELD_CD)
 
-/obj/item/clothing/suit/storage/marine/M35/proc/enable_fire_shield(var/mob/living/carbon/human/user)
+/obj/item/clothing/suit/storage/marine/M35/proc/enable_fire_shield(mob/living/carbon/human/user)
 	if(!istype(user))
 		return
 	to_chat(user, SPAN_NOTICE("FIREWALK protocol can be activated again."))
@@ -763,7 +763,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	if(fire_shield_on)
 		. |= COMPONENT_NO_BURN
 
-/obj/item/clothing/suit/storage/marine/M35/dropped(var/mob/user)
+/obj/item/clothing/suit/storage/marine/M35/dropped(mob/user)
 	if (!istype(user))
 		return
 	UnregisterSignal(user, list(
@@ -778,7 +778,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 /datum/action/item_action/specialist/fire_shield
 	ability_primacy = SPEC_PRIMARY_ACTION_2
 
-/datum/action/item_action/specialist/fire_shield/New(var/mob/living/user, var/obj/item/holder)
+/datum/action/item_action/specialist/fire_shield/New(mob/living/user, obj/item/holder)
 	..()
 	name = "Activate Fire Shield"
 	button.name = name
@@ -937,13 +937,13 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	if(camo_active)
 		user.density = FALSE
 
-/obj/item/clothing/suit/storage/marine/ghillie/proc/fade_out_finish(var/mob/living/carbon/human/H)
+/obj/item/clothing/suit/storage/marine/ghillie/proc/fade_out_finish(mob/living/carbon/human/H)
 	if(camo_active && H.wear_suit == src)
 		to_chat(H, SPAN_BOLDNOTICE("The smoke clears and your position is once again hidden completely!"))
 		animate(H, alpha = full_camo_alpha)
 		current_camo = full_camo_alpha
 
-/obj/item/clothing/suit/storage/marine/ghillie/proc/handle_mob_move_or_look(mob/living/mover, var/actually_moving, var/direction, var/specific_direction)
+/obj/item/clothing/suit/storage/marine/ghillie/proc/handle_mob_move_or_look(mob/living/mover, actually_moving, direction, specific_direction)
 	SIGNAL_HANDLER
 
 	if(camo_active && actually_moving)
@@ -952,7 +952,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 /datum/action/item_action/specialist/prepare_position
 	ability_primacy = SPEC_PRIMARY_ACTION_1
 
-/datum/action/item_action/specialist/prepare_position/New(var/mob/living/user, var/obj/item/holder)
+/datum/action/item_action/specialist/prepare_position/New(mob/living/user, obj/item/holder)
 	..()
 	name = "Prepare Position"
 	button.name = name

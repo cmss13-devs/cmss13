@@ -83,7 +83,7 @@
 	icon_state = icon_name
 	return
 
-/obj/item/device/m56d_gun/attackby(var/obj/item/O as obj, mob/user as mob)
+/obj/item/device/m56d_gun/attackby(obj/item/O as obj, mob/user as mob)
 	if(!ishuman(user))
 		return
 
@@ -231,7 +231,7 @@
 	desc = "A foldable tripod mount for the M56D, provides stability to the M56D."
 	icon = 'icons/turf/whiskeyoutpost.dmi'
 	icon_state = "M56D_mount"
-	anchored = 0
+	anchored = FALSE
 	density = TRUE
 	layer = ABOVE_MOB_LAYER
 	projectile_coverage = PROJECTILE_COVERAGE_LOW
@@ -239,13 +239,13 @@
 	var/gun_rounds = 0 //Did the gun come with any ammo?
 	health = 50
 
-/obj/structure/machinery/m56d_post/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/obj/structure/machinery/m56d_post/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_can_pass_all = PASS_HIGH_OVER_ONLY|PASS_AROUND|PASS_OVER_THROW_ITEM
 
 //Making so rockets don't hit M56D
-/obj/structure/machinery/m56d_post/calculate_cover_hit_boolean(obj/item/projectile/P, var/distance = 0, var/cade_direction_correct = FALSE)
+/obj/structure/machinery/m56d_post/calculate_cover_hit_boolean(obj/item/projectile/P, distance = 0, cade_direction_correct = FALSE)
 	var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags
 	if(ammo_flags & AMMO_ROCKET)
 		return 0
@@ -275,7 +275,7 @@
 	else
 		. += "The M56D isn't screwed into the mount. Use a <b>screwdriver</b> to finish the job."
 
-/obj/structure/machinery/m56d_post/attack_alien(mob/living/carbon/Xenomorph/M)
+/obj/structure/machinery/m56d_post/attack_alien(mob/living/carbon/xenomorph/M)
 	if(isXenoLarva(M))
 		return //Larvae can't do shit
 
@@ -414,7 +414,7 @@
 	desc = "A deployable, heavy machine gun. While it is capable of taking the same rounds as the M56, it fires specialized tungsten rounds for increased armor penetration.<br>Drag its sprite onto yourself to man it. Ctrl-click it to toggle burst fire."
 	icon = 'icons/turf/whiskeyoutpost.dmi'
 	icon_state = "M56D"
-	anchored = 1
+	anchored = TRUE
 	unslashable = TRUE
 	unacidable = TRUE //stop the xeno me(l)ta.
 	density = TRUE
@@ -458,13 +458,13 @@
 	var/user_old_x = 0
 	var/user_old_y = 0
 
-/obj/structure/machinery/m56d_hmg/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/obj/structure/machinery/m56d_hmg/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_can_pass_all = PASS_AROUND|PASS_OVER_THROW_ITEM|PASS_OVER_THROW_MOB
 
 //Making so rockets don't hit M56D
-/obj/structure/machinery/m56d_hmg/calculate_cover_hit_boolean(obj/item/projectile/P, var/distance = 0, var/cade_direction_correct = FALSE)
+/obj/structure/machinery/m56d_hmg/calculate_cover_hit_boolean(obj/item/projectile/P, distance = 0, cade_direction_correct = FALSE)
 	var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags
 	if(ammo_flags & AMMO_ROCKET)
 		return 0
@@ -510,7 +510,7 @@
 		icon_state = "[icon_full]"
 	return
 
-/obj/structure/machinery/m56d_hmg/attackby(var/obj/item/O as obj, mob/user as mob) //This will be how we take it apart.
+/obj/structure/machinery/m56d_hmg/attackby(obj/item/O as obj, mob/user as mob) //This will be how we take it apart.
 	if(!ishuman(user))
 		return ..()
 
@@ -631,13 +631,13 @@
 		if(50 to 75) damage_state = M56D_DMG_SLIGHT
 		if(75 to INFINITY) damage_state = M56D_DMG_NONE
 
-/obj/structure/machinery/m56d_hmg/bullet_act(var/obj/item/projectile/P) //Nope.
+/obj/structure/machinery/m56d_hmg/bullet_act(obj/item/projectile/P) //Nope.
 	bullet_ping(P)
 	visible_message(SPAN_WARNING("[src] is hit by the [P.name]!"))
 	update_health(round(P.damage / 10)) //Universal low damage to what amounts to a post with a gun.
 	return 1
 
-/obj/structure/machinery/m56d_hmg/attack_alien(mob/living/carbon/Xenomorph/M) // Those Ayy lmaos.
+/obj/structure/machinery/m56d_hmg/attack_alien(mob/living/carbon/xenomorph/M) // Those Ayy lmaos.
 	if(isXenoLarva(M))
 		return //Larvae can't do shit
 
@@ -660,7 +660,7 @@
 	in_chamber.generate_bullet(ammo)
 	return 1
 
-/obj/structure/machinery/m56d_hmg/proc/process_shot(var/mob/user)
+/obj/structure/machinery/m56d_hmg/proc/process_shot(mob/user)
 	set waitfor = FALSE
 
 	if(isnull(target))
@@ -688,7 +688,7 @@
 
 	target = null
 
-/obj/structure/machinery/m56d_hmg/proc/fire_shot(shots_fired = 1, var/mob/user) //Bang Bang
+/obj/structure/machinery/m56d_hmg/proc/fire_shot(shots_fired = 1, mob/user) //Bang Bang
 	if(!ammo) return //No ammo.
 	if(last_fired) return //still shooting.
 
@@ -743,7 +743,7 @@
 	update_icon() //final safeguard.
 
 // New proc for MGs and stuff replaced handle_manual_fire(). Same arguements though, so alls good.
-/obj/structure/machinery/m56d_hmg/handle_click(mob/living/carbon/human/user, atom/A, var/list/mods)
+/obj/structure/machinery/m56d_hmg/handle_click(mob/living/carbon/human/user, atom/A, list/mods)
 	if(!operator)
 		return HANDLE_CLICK_UNHANDLED
 	if(operator != user)
@@ -796,10 +796,10 @@
 /obj/structure/machinery/m56d_hmg/proc/handle_outside_cone(mob/living/carbon/human/user)
 	return FALSE
 
-/obj/structure/machinery/m56d_hmg/proc/handle_modded_clicks(mob/living/carbon/human/user, var/list/mods)
+/obj/structure/machinery/m56d_hmg/proc/handle_modded_clicks(mob/living/carbon/human/user, list/mods)
 	return HANDLE_CLICK_PASS_THRU
 
-/obj/structure/machinery/m56d_hmg/proc/muzzle_flash(var/angle) // Might as well keep this too.
+/obj/structure/machinery/m56d_hmg/proc/muzzle_flash(angle) // Might as well keep this too.
 	if(isnull(angle))
 		return
 
@@ -905,7 +905,7 @@
 	))
 
 
-/obj/structure/machinery/m56d_hmg/proc/update_pixels(var/mob/user, var/mounting = TRUE)
+/obj/structure/machinery/m56d_hmg/proc/update_pixels(mob/user, mounting = TRUE)
 	if(mounting)
 		var/diff_x = 0
 		var/diff_y = 0
@@ -945,7 +945,7 @@
 	if(user.lying || get_dist(user,src) > 0 || user.is_mob_incapacitated() || !user.client)
 		user.unset_interaction()
 
-/obj/structure/machinery/m56d_hmg/clicked(var/mob/user, var/list/mods) //Making it possible to toggle burst fire. Perhaps have altclick be the safety on the gun?
+/obj/structure/machinery/m56d_hmg/clicked(mob/user, list/mods) //Making it possible to toggle burst fire. Perhaps have altclick be the safety on the gun?
 	if (mods["ctrl"])
 		if(operator != user)
 			return ..()//only the operatore can toggle fire mode
@@ -1052,7 +1052,7 @@
 
 	icon_state = icon_name
 
-/obj/item/device/m2c_gun/proc/check_can_setup(mob/user, var/turf/rotate_check, var/turf/open/OT, var/list/ACR)
+/obj/item/device/m2c_gun/proc/check_can_setup(mob/user, turf/rotate_check, turf/open/OT, list/ACR)
 	if(!ishuman(user))
 		return FALSE
 	if(broken_gun)
@@ -1126,7 +1126,7 @@
 	M.update_icon()
 	qdel(src)
 
-/obj/item/device/m2c_gun/attackby(var/obj/item/O as obj, mob/user as mob)
+/obj/item/device/m2c_gun/attackby(obj/item/O as obj, mob/user as mob)
 	if(!ishuman(user))
 		return
 
@@ -1243,7 +1243,7 @@
 // ANTI-CADE EFFECT, CREDIT TO WALTERMELDRON
 /obj/structure/blocker/anti_cade
 	health = INFINITY
-	anchored = 1
+	anchored = TRUE
 	density = FALSE
 	unacidable = TRUE
 	indestructible = TRUE
@@ -1307,7 +1307,7 @@
 	update_damage_state()
 	update_icon()
 
-/obj/structure/machinery/m56d_hmg/auto/attackby(var/obj/item/O as obj, mob/user as mob)
+/obj/structure/machinery/m56d_hmg/auto/attackby(obj/item/O as obj, mob/user as mob)
 	if(!ishuman(user))
 		return
 	// RELOADING
@@ -1354,7 +1354,7 @@
 		return
 	return
 
-/obj/structure/machinery/m56d_hmg/auto/handle_modded_clicks(mob/living/carbon/human/user, var/list/mods)
+/obj/structure/machinery/m56d_hmg/auto/handle_modded_clicks(mob/living/carbon/human/user, list/mods)
 	if(mods["middle"])
 		handle_rotating_gun(user)
 
@@ -1410,7 +1410,7 @@
 
 	handle_rotating_gun(user)
 
-/obj/structure/machinery/m56d_hmg/auto/proc/auto_fire_repeat(var/mob/living/carbon/human/user, var/atom/A)
+/obj/structure/machinery/m56d_hmg/auto/proc/auto_fire_repeat(mob/living/carbon/human/user, atom/A)
 	if(!target)
 		return
 	if(operator != user)
@@ -1459,7 +1459,7 @@
 
 // ACTIVE COOLING
 
-/obj/structure/machinery/m56d_hmg/auto/proc/force_cooldown(var/mob/user)
+/obj/structure/machinery/m56d_hmg/auto/proc/force_cooldown(mob/user)
 	user = operator
 
 	overheat_value = round((rand(M2C_LOW_COOLDOWN_ROLL,M2C_HIGH_COOLDOWN_ROLL) * overheat_threshold))
@@ -1474,7 +1474,7 @@
 
 // TOGGLE MODE
 
-/obj/structure/machinery/m56d_hmg/auto/clicked(var/mob/user, var/list/mods, var/atom/A)
+/obj/structure/machinery/m56d_hmg/auto/clicked(mob/user, list/mods, atom/A)
 	if (mods["ctrl"])
 		if(operator != user)
 			return ..()
@@ -1485,7 +1485,7 @@
 
 	return ..()
 
-/obj/structure/machinery/m56d_hmg/auto/fire_shot(shots_fired = 1, var/mob/user)
+/obj/structure/machinery/m56d_hmg/auto/fire_shot(shots_fired = 1, mob/user)
 	if(fire_stopper) return
 
 	return ..()
@@ -1580,7 +1580,7 @@
 
 // GET ANIMATED
 
-/obj/structure/machinery/m56d_hmg/auto/update_pixels(mob/user, var/mounting = TRUE)
+/obj/structure/machinery/m56d_hmg/auto/update_pixels(mob/user, mounting = TRUE)
 	if(mounting)
 		var/diff_x = 0
 		var/diff_y = 0

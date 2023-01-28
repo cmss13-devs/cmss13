@@ -41,13 +41,13 @@
 	return (charge == maxcharge)
 
 // use power from a cell
-/obj/item/cell/proc/use(var/amount)
+/obj/item/cell/proc/use(amount)
 	if(charge < amount) return 0
 	charge = (charge - amount)
 	return 1
 
 // recharge the cell
-/obj/item/cell/proc/give(var/amount)
+/obj/item/cell/proc/give(amount)
 	if(maxcharge < amount) return 0
 	var/amount_used = min(maxcharge-charge,amount)
 	if(crit_fail) return 0

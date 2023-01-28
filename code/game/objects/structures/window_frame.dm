@@ -25,7 +25,7 @@
 		/obj/structure/girder,
 		/obj/structure/window_frame)
 
-/obj/structure/window_frame/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/obj/structure/window_frame/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_can_pass_all = PASS_OVER|PASS_TYPE_CRAWLER
@@ -68,7 +68,7 @@
 		qdel(WF)
 	. = ..()
 
-/obj/structure/window_frame/ex_act(var/power)
+/obj/structure/window_frame/ex_act(power)
 	switch(power)
 		if(0 to EXPLOSION_THRESHOLD_LOW)
 			if (prob(25))
@@ -134,7 +134,7 @@
 	else
 		. = ..()
 
-/obj/structure/window_frame/attack_alien(mob/living/carbon/Xenomorph/user)
+/obj/structure/window_frame/attack_alien(mob/living/carbon/xenomorph/user)
 	if(!reinforced && user.claw_type >= CLAW_TYPE_SHARP)
 		user.animation_attack_on(src)
 		playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
@@ -153,7 +153,7 @@
 	take_damage(P.damage)
 	return TRUE
 
-/obj/structure/window_frame/proc/take_damage(var/damage)
+/obj/structure/window_frame/proc/take_damage(damage)
 	health = max(0, (health - damage))
 	health = min(health, max_health)
 

@@ -102,7 +102,7 @@
 		return ..(W,user)
 	else
 		if(isXeno(user))
-			var/mob/living/carbon/Xenomorph/opener = user
+			var/mob/living/carbon/xenomorph/opener = user
 			src.attack_alien(opener)
 			return
 		togglelock(user)

@@ -15,17 +15,17 @@
 
 	var/turf_type = /turf/open/floor/plating/plating_catwalk
 
-/obj/item/stack/catwalk/Initialize(mapload, amount, var/new_turf_type)
+/obj/item/stack/catwalk/Initialize(mapload, amount, new_turf_type)
 	. = ..()
 	if(new_turf_type)
 		set_turf_type(new_turf_type)
 
-/obj/item/stack/catwalk/proc/set_turf_type(var/new_turf_type)
+/obj/item/stack/catwalk/proc/set_turf_type(new_turf_type)
 	var/turf/open/floor/floor_type = new_turf_type
 	name = "[initial(floor_type.name)] tile"
 	singular_name = name
 	turf_type = new_turf_type
 	stack_id = name
 
-/obj/item/stack/catwalk/proc/build(var/turf/build_turf)
+/obj/item/stack/catwalk/proc/build(turf/build_turf)
 	build_turf.ChangeTurf(turf_type)

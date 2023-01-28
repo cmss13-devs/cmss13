@@ -10,7 +10,7 @@
 	desc = "It looks way too dangerous to traverse. Best wait until it has cleared up."
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "smoke"
-	anchored = 1
+	anchored = TRUE
 	density = TRUE
 	//opacity = TRUE
 	unslashable = TRUE
@@ -65,7 +65,7 @@ var/global/east_riverstart = 0
 */
 
 /obj/effect/blocker/toxic_water
-	anchored = 1
+	anchored = TRUE
 	density = FALSE
 	opacity = FALSE
 	unacidable = TRUE
@@ -125,7 +125,7 @@ var/global/east_riverstart = 0
 
 
 
-/obj/effect/blocker/toxic_water/Crossed(var/atom/A)
+/obj/effect/blocker/toxic_water/Crossed(atom/A)
 	if(toxic == 0)
 		return
 
@@ -215,7 +215,7 @@ var/global/east_riverstart = 0
 	playsound(M, 'sound/bullets/acid_impact1.ogg', 10, 1)
 
 
-/obj/effect/blocker/toxic_water/proc/disperse_spread(var/from_dir = 0)
+/obj/effect/blocker/toxic_water/proc/disperse_spread(from_dir = 0)
 	if(dispersing || !toxic)
 		return
 
@@ -280,7 +280,7 @@ var/global/east_riverstart = 0
 	desc = "Activates the filtration mechanism."
 	var/id = null
 	var/active = 0
-	anchored = 1.0
+	anchored = TRUE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 2
 	active_power_usage = 4

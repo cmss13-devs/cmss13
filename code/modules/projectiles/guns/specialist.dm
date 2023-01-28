@@ -41,7 +41,7 @@
 	ability_primacy = SPEC_PRIMARY_ACTION_2
 	var/minimum_aim_distance = 2
 
-/datum/action/item_action/specialist/aimed_shot/New(var/mob/living/user, var/obj/item/holder)
+/datum/action/item_action/specialist/aimed_shot/New(mob/living/user, obj/item/holder)
 	..()
 	name = "Aimed Shot"
 	button.name = name
@@ -160,7 +160,7 @@
 	aimed_proj.AddComponent(/datum/component/homing_projectile, target, human)
 	sniper_rifle.Fire(target, human)
 
-/datum/action/item_action/specialist/aimed_shot/proc/check_can_use(var/mob/M, var/cover_lose_focus)
+/datum/action/item_action/specialist/aimed_shot/proc/check_can_use(mob/M, cover_lose_focus)
 	var/mob/living/carbon/human/H = owner
 	var/obj/item/weapon/gun/rifle/sniper/sniper_rifle = holder_item
 
@@ -194,7 +194,7 @@
 
 	return TRUE
 
-/datum/action/item_action/specialist/aimed_shot/proc/check_shot_is_blocked(var/mob/firer, var/mob/target, obj/item/projectile/P)
+/datum/action/item_action/specialist/aimed_shot/proc/check_shot_is_blocked(mob/firer, mob/target, obj/item/projectile/P)
 	var/list/turf/path = getline2(firer, target, include_from_atom = FALSE)
 	if(!path.len || get_dist(firer, target) > P.ammo.max_range)
 		return TRUE
@@ -219,7 +219,7 @@
 // Snipers may enable or disable their laser tracker at will.
 /datum/action/item_action/specialist/toggle_laser
 
-/datum/action/item_action/specialist/toggle_laser/New(var/mob/living/user, var/obj/item/holder)
+/datum/action/item_action/specialist/toggle_laser/New(mob/living/user, obj/item/holder)
 	..()
 	name = "Toggle Tracker Laser"
 	button.name = name
@@ -257,7 +257,7 @@
 		return FALSE
 	sniper_rifle.toggle_laser(owner, src)
 
-/obj/item/weapon/gun/rifle/sniper/proc/toggle_laser(mob/user, var/datum/action/toggling_action)
+/obj/item/weapon/gun/rifle/sniper/proc/toggle_laser(mob/user, datum/action/toggling_action)
 	enable_aimed_shot_laser = !enable_aimed_shot_laser
 	to_chat(user, SPAN_NOTICE("You flip a switch on \the [src] and [enable_aimed_shot_laser ? "enable" : "disable"] its targeting laser."))
 	playsound(user, 'sound/machines/click.ogg', 15, TRUE)

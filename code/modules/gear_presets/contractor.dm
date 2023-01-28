@@ -10,7 +10,7 @@
 	. = ..()
 	access = get_all_accesses() + get_all_centcom_access()
 
-/datum/equipment_preset/contractor/load_name(mob/living/carbon/human/H, var/randomise)
+/datum/equipment_preset/contractor/load_name(mob/living/carbon/human/H, randomise)
 	H.gender = pick(80;MALE,20;FEMALE)
 	var/datum/preferences/A = new()
 	A.randomize_appearance(H)
@@ -395,7 +395,7 @@
 		H.set_skills(/datum/skills/synthetic)
 		H.allow_gun_usage = FALSE
 
-/datum/equipment_preset/contractor/duty/synth/load_name(mob/living/carbon/human/H, var/randomise)
+/datum/equipment_preset/contractor/duty/synth/load_name(mob/living/carbon/human/H, randomise)
 	H.gender = pick(50;MALE,50;FEMALE)
 	var/datum/preferences/A = new()
 	A.randomize_appearance(H)
@@ -784,7 +784,7 @@
 		H.set_skills(/datum/skills/synthetic)
 		H.allow_gun_usage = FALSE
 
-/datum/equipment_preset/contractor/covert/synth/load_name(mob/living/carbon/human/H, var/randomise)
+/datum/equipment_preset/contractor/covert/synth/load_name(mob/living/carbon/human/H, randomise)
 	H.gender = pick(50;MALE,50;FEMALE)
 	var/datum/preferences/A = new()
 	A.randomize_appearance(H)

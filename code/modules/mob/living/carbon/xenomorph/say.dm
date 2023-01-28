@@ -1,4 +1,4 @@
-/mob/living/carbon/Xenomorph/say(var/message)
+/mob/living/carbon/xenomorph/say(message)
 	var/verb = "says"
 	var/forced = 0
 	var/message_range = world_view_size
@@ -79,7 +79,7 @@
 	else
 		hivemind_talk(message)
 
-/mob/living/carbon/Xenomorph/say_understands(var/mob/other,var/datum/language/speaking = null)
+/mob/living/carbon/xenomorph/say_understands(mob/other, datum/language/speaking = null)
 
 	if(isXeno(other))
 		return 1
@@ -87,14 +87,14 @@
 
 
 //General proc for hivemind. Lame, but effective.
-/mob/living/carbon/Xenomorph/proc/hivemind_talk(var/message)
+/mob/living/carbon/xenomorph/proc/hivemind_talk(message)
 	if(interference)
 		to_chat(src, SPAN_WARNING("A headhunter temporarily cut off your psychic connection!"))
 		return
 
 	hivemind_broadcast(message, hive)
 
-/mob/living/carbon/proc/hivemind_broadcast(var/message, var/datum/hive_status/hive)
+/mob/living/carbon/proc/hivemind_broadcast(message, datum/hive_status/hive)
 	if(!message || stat || !hive)
 		return
 
@@ -119,7 +119,7 @@
 				hear_hivemind = Hu.hivenumber
 
 		if(!QDELETED(S) && (isXeno(S) || S.stat == DEAD || hear_hivemind) && !istype(S,/mob/new_player))
-			var/mob/living/carbon/Xenomorph/X = src
+			var/mob/living/carbon/xenomorph/X = src
 			if(istype(S,/mob/dead/observer))
 				if(S.client.prefs && S.client.prefs.toggles_chat & CHAT_GHOSTHIVEMIND)
 					track = "(<a href='byond://?src=\ref[S];track=\ref[src]'>F</a>)"

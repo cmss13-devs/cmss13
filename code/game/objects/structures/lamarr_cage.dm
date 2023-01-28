@@ -4,7 +4,7 @@
 	icon_state = "labcage1"
 	desc = "A glass lab container for storing interesting creatures."
 	density = TRUE
-	anchored = 1
+	anchored = TRUE
 	unacidable = FALSE
 	health = 30
 	var/occupied = 1
@@ -26,7 +26,7 @@
 			deconstruct(FALSE)
 
 
-/obj/structure/lamarr/bullet_act(var/obj/item/projectile/Proj)
+/obj/structure/lamarr/bullet_act(obj/item/projectile/Proj)
 	health -= Proj.damage
 	..()
 	src.healthcheck()

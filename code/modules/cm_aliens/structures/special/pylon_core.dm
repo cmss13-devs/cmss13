@@ -39,14 +39,14 @@
 		qdel(W)
 	. = ..()
 
-/obj/effect/alien/resin/special/pylon/attack_alien(mob/living/carbon/Xenomorph/M)
+/obj/effect/alien/resin/special/pylon/attack_alien(mob/living/carbon/xenomorph/M)
 	if(isXenoBuilder(M) && M.a_intent == INTENT_HELP && M.hivenumber == linked_hive.hivenumber)
 		do_repair(M) //This handles the delay itself.
 		return XENO_NO_DELAY_ACTION
 	else
 		return ..()
 
-/obj/effect/alien/resin/special/pylon/proc/do_repair(mob/living/carbon/Xenomorph/xeno)
+/obj/effect/alien/resin/special/pylon/proc/do_repair(mob/living/carbon/xenomorph/xeno)
 	if(!istype(xeno))
 		return
 	if(!xeno.plasma_max)
@@ -111,7 +111,7 @@
 	protection_level = TURF_PROTECTION_OB
 
 
-/obj/effect/alien/resin/special/pylon/core/Initialize(mapload, var/datum/hive_status/hive_ref)
+/obj/effect/alien/resin/special/pylon/core/Initialize(mapload, datum/hive_status/hive_ref)
 	. = ..()
 
 	// Pick the closest xeno resource activator
@@ -126,7 +126,7 @@
 	last_healed = world.time + heal_interval
 
 
-/obj/effect/alien/resin/special/pylon/core/attack_alien(mob/living/carbon/Xenomorph/M)
+/obj/effect/alien/resin/special/pylon/core/attack_alien(mob/living/carbon/xenomorph/M)
 	if(M.a_intent != INTENT_HELP && M.can_destroy_special() && M.hivenumber == linked_hive.hivenumber)
 		if(!hardcore && last_attempt + 6 SECONDS > world.time)
 			to_chat(M,SPAN_WARNING("You have attempted to destroy \the [src] too recently! Wait a bit!")) // no spammy
@@ -181,7 +181,7 @@
 				qdel(linked_hive.spawn_pool)
 	. = ..()
 
-/obj/effect/alien/resin/special/pylon/core/proc/startDestroying(mob/living/carbon/Xenomorph/M)
+/obj/effect/alien/resin/special/pylon/core/proc/startDestroying(mob/living/carbon/xenomorph/M)
 	xeno_message(SPAN_XENOANNOUNCE("[M] is destroying \the [src]!"), 3, linked_hive.hivenumber)
 	visible_message(SPAN_DANGER("[M] starts destroying \the [src]!"))
 	last_attempt = world.time //spamcheck
@@ -194,7 +194,7 @@
 
 
 
-/obj/effect/alien/resin/special/pylon/core/proc/cooldownFinish(var/datum/hive_status/linked_hive)
+/obj/effect/alien/resin/special/pylon/core/proc/cooldownFinish(datum/hive_status/linked_hive)
 	sleep(HIVECORE_COOLDOWN)
 	if(linked_hive.hivecore_cooldown) // check if its true so we don't double set it.
 		linked_hive.hivecore_cooldown = FALSE

@@ -19,7 +19,7 @@
 		start_processing()
 	power_change()
 
-/obj/structure/machinery/computer/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/obj/structure/machinery/computer/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_can_pass_all = PASS_HIGH_OVER_ONLY|PASS_AROUND|PASS_OVER_THROW_ITEM
@@ -55,7 +55,7 @@
 		else
 	return
 
-/obj/structure/machinery/computer/bullet_act(var/obj/item/projectile/Proj)
+/obj/structure/machinery/computer/bullet_act(obj/item/projectile/Proj)
 	if(exproof)
 		visible_message("[Proj] ricochets off [src]!")
 		return 0
@@ -104,7 +104,7 @@
 			var/obj/structure/computerframe/A = new /obj/structure/computerframe( src.loc )
 			var/obj/item/circuitboard/computer/M = new circuit( A )
 			A.circuit = M
-			A.anchored = 1
+			A.anchored = TRUE
 			for (var/obj/C in src)
 				C.forceMove(loc)
 			if (src.stat & BROKEN)

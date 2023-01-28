@@ -67,7 +67,7 @@
 // Added a new proc called 'bang' that takes a location and a person to be banged.
 // Called during the loop that bangs people in lockers/containers and when banging
 // people in normal view.  Could theoretically be called during other explosions.
-/obj/item/explosive/grenade/flashbang/proc/bang(var/turf/T , var/mob/living/carbon/M)
+/obj/item/explosive/grenade/flashbang/proc/bang(turf/T , mob/living/carbon/M)
 
 	if(isXeno(M))
 		return
@@ -232,7 +232,7 @@
 	. = ..()
 	activate()
 
-/obj/item/explosive/grenade/flashbang/noskill/bang(var/turf/T , var/mob/living/M)
+/obj/item/explosive/grenade/flashbang/noskill/bang(turf/T , mob/living/M)
 	if(M.stat == DEAD)
 		return
 
@@ -242,7 +242,7 @@
 	if(!ishuman(M))
 		if(isXeno(M))
 			if(get_dist(M, T) <= 4)
-				var/mob/living/carbon/Xenomorph/X = M
+				var/mob/living/carbon/xenomorph/X = M
 				X.Daze(2)
 				X.SetEarDeafness(max(X.ear_deaf, 3))
 		else //simple mobs?

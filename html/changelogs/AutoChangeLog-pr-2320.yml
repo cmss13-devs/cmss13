@@ -1,4 +1,0 @@
-author: "LynxSolstice"
-delete-after: True
-changes:
-  - rscdel: "Removed ability to access vehicles during normal gameplay. Removed the Vehicle Crewman role."

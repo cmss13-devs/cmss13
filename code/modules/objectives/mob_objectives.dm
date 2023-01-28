@@ -94,7 +94,7 @@
 		value = OBJECTIVE_ABSOLUTE_VALUE
 
 	else if(isXeno(target))
-		var/mob/living/carbon/Xenomorph/X = target
+		var/mob/living/carbon/xenomorph/X = target
 		switch(X.tier)
 			if(1)
 				if(isXenoPredalien(X))
@@ -152,7 +152,7 @@
 	objective_flags = OBJECTIVE_DO_NOT_TREE
 
 
-/datum/cm_objective/move_mob/New(var/mob/living/survivor)
+/datum/cm_objective/move_mob/New(mob/living/survivor)
 	if(istype(survivor, /mob/living))
 		target = survivor
 		RegisterSignal(survivor, COMSIG_MOB_DEATH, PROC_REF(handle_death))

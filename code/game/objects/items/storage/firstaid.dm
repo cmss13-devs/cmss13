@@ -332,7 +332,7 @@
 		return
 
 
-/obj/item/storage/pill_bottle/attackby(var/obj/item/storage/pill_bottle/W, mob/user)
+/obj/item/storage/pill_bottle/attackby(obj/item/storage/pill_bottle/W, mob/user)
 	if(istype(W))
 		if((skilllock || W.skilllock) && !skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
 			error_idlock(user)
@@ -355,7 +355,7 @@
 			error_idlock(usr)
 			return
 
-/obj/item/storage/pill_bottle/clicked(var/mob/user, var/list/mods)
+/obj/item/storage/pill_bottle/clicked(mob/user, list/mods)
 	if(..())
 		return TRUE
 	if(!istype(loc, /obj/item/storage/belt/medical))
@@ -381,7 +381,7 @@
 		to_chat(user, SPAN_NOTICE("You take [I] out of the [name]."))
 		return TRUE
 
-/obj/item/storage/pill_bottle/empty(var/mob/user, var/turf/T)
+/obj/item/storage/pill_bottle/empty(mob/user, turf/T)
 	if(skilllock && !skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
 		error_idlock(user)
 		return

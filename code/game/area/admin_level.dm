@@ -101,7 +101,7 @@
 /area/adminlevel/bunker01/caves/xeno/Entered(A, atom/OldLoc)
 	. = ..()
 	if(isXeno(A))
-		var/mob/living/carbon/Xenomorph/X = A
+		var/mob/living/carbon/xenomorph/X = A
 
 		X.away_timer = XENO_LEAVE_TIMER
 		X.set_hive_and_update(hivenumber)

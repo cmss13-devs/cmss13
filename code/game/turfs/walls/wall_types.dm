@@ -38,7 +38,7 @@
 		if(r1 >= 9)
 			overlays += image(icon, icon_state = "almayer_deco_wall[r2]")
 
-/turf/closed/wall/almayer/take_damage(dam, var/mob/M)
+/turf/closed/wall/almayer/take_damage(dam, mob/M)
 	var/damage_check = max(0, damage + dam)
 	if(damage_check >= damage_cap && M && is_mainship_level(z))
 		SSclues.create_print(get_turf(M), M, "The fingerprint contains specks of metal and dirt.")
@@ -62,7 +62,7 @@
 /turf/closed/wall/almayer/no_door_tile
 	tiles_with = list(/turf/closed/wall,/obj/structure/window/framed,/obj/structure/window_frame,/obj/structure/girder)
 
-/turf/closed/wall/almayer/outer/take_damage(dam, var/mob/M)
+/turf/closed/wall/almayer/outer/take_damage(dam, mob/M)
 	return
 
 /turf/closed/wall/almayer/white
@@ -109,7 +109,7 @@
 		return
 	. = ..()
 
-/turf/closed/wall/almayer/research/containment/wall/attack_alien(mob/living/carbon/Xenomorph/user)
+/turf/closed/wall/almayer/research/containment/wall/attack_alien(mob/living/carbon/xenomorph/user)
 	return
 
 /turf/closed/wall/almayer/research/containment/wall/corner
@@ -331,7 +331,7 @@
 	damage_cap = HEALTH_WALL_REINFORCED//Strong, but only available to Hunters, can can still be blown up or melted by boilers.
 	baseturfs = /turf/open/floor/sandstone/runed
 
-/turf/closed/wall/mineral/sandstone/runed/attack_alien(mob/living/carbon/Xenomorph/user)
+/turf/closed/wall/mineral/sandstone/runed/attack_alien(mob/living/carbon/xenomorph/user)
 	visible_message("[user] scrapes uselessly against [src] with their claws.")
 	return
 
@@ -704,14 +704,14 @@
 	name = "resin pillar segment"
 	hull = TRUE
 
-/turf/closed/wall/resin/proc/set_resin_builder(var/mob/M)
+/turf/closed/wall/resin/proc/set_resin_builder(mob/M)
 	if(istype(M) && should_track_build)
 		construction_data = create_cause_data(initial(name), M)
 
 /turf/closed/wall/resin/make_girder()
 	return
 
-/turf/closed/wall/resin/flamer_fire_act(var/dam = BURN_LEVEL_TIER_1)
+/turf/closed/wall/resin/flamer_fire_act(dam = BURN_LEVEL_TIER_1)
 	take_damage(dam)
 
 //this one is only for map use
@@ -737,7 +737,7 @@
 	opacity = FALSE
 	alpha = 180
 
-/turf/closed/wall/resin/membrane/can_bombard(var/mob/living/carbon/Xenomorph/X)
+/turf/closed/wall/resin/membrane/can_bombard(mob/living/carbon/xenomorph/X)
 	if(!istype(X))
 		return FALSE
 
@@ -745,7 +745,7 @@
 
 	return hive.is_ally(X)
 
-/turf/closed/wall/resin/membrane/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/turf/closed/wall/resin/membrane/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_can_pass_all = PASS_GLASS
@@ -757,14 +757,14 @@
 	var/next_push = 0
 	var/is_moving = FALSE
 
-/datum/movable_wall_group/New(var/list/datum/movable_wall_group/merge)
+/datum/movable_wall_group/New(list/datum/movable_wall_group/merge)
 	. = ..()
 	for(var/i in merge)
 		var/datum/movable_wall_group/MWG = i
 		for(var/wall in MWG.walls)
 			add_structure(wall)
 
-/datum/movable_wall_group/proc/add_structure(var/obj/structure/alien/movable_wall/MW)
+/datum/movable_wall_group/proc/add_structure(obj/structure/alien/movable_wall/MW)
 	if(MW.group)
 		MW.group.remove_structure(MW, TRUE)
 	LAZYOR(walls, MW)
@@ -776,7 +776,7 @@
 	QDEL_NULL_LIST(walls)
 	return ..()
 
-/datum/movable_wall_group/proc/remove_structure(var/obj/structure/alien/movable_wall/MW, var/merge)
+/datum/movable_wall_group/proc/remove_structure(obj/structure/alien/movable_wall/MW, merge)
 	LAZYREMOVE(walls, MW)
 	MW.group = null
 	if(!walls)
@@ -803,7 +803,7 @@
 			qdel(src)
 
 
-/datum/movable_wall_group/proc/try_move_in_direction(var/dir, var/list/forget)
+/datum/movable_wall_group/proc/try_move_in_direction(dir, list/forget)
 	var/turf/T
 	var/obj/structure/alien/movable_wall/MW
 	var/failed = FALSE
@@ -900,11 +900,11 @@
 /obj/structure/alien/movable_wall/ex_act(severity, direction)
 	take_damage(severity)
 
-/obj/structure/alien/movable_wall/proc/continue_allowing_drag(_, var/mob/living/L)
+/obj/structure/alien/movable_wall/proc/continue_allowing_drag(_, mob/living/L)
 	if(isXeno(L))
 		return COMPONENT_IGNORE_ANCHORED
 
-/obj/structure/alien/movable_wall/proc/allow_xeno_drag(_, var/mob/living/carbon/Xenomorph/X)
+/obj/structure/alien/movable_wall/proc/allow_xeno_drag(_, mob/living/carbon/xenomorph/X)
 	return COMPONENT_ALLOW_PULL
 
 /obj/structure/alien/movable_wall/update_icon()
@@ -938,14 +938,14 @@
 
 	wall_connections = dirs_to_corner_states(wall_dirs)
 
-/obj/structure/alien/movable_wall/proc/take_damage(var/damage)
+/obj/structure/alien/movable_wall/proc/take_damage(damage)
 	health -= damage
 	if(health <= 0)
 		deconstruct(FALSE)
 	else
 		update_icon()
 
-/obj/structure/alien/movable_wall/attack_alien(mob/living/carbon/Xenomorph/M)
+/obj/structure/alien/movable_wall/attack_alien(mob/living/carbon/xenomorph/M)
 	if(isXenoLarva(M))
 		return FALSE
 
@@ -1004,7 +1004,7 @@
 
 	return ..()
 
-/obj/structure/alien/movable_wall/proc/update_tied_turf(var/turf/T)
+/obj/structure/alien/movable_wall/proc/update_tied_turf(turf/T)
 	SIGNAL_HANDLER
 
 	if(!T)
@@ -1019,14 +1019,14 @@
 	. = ..()
 	update_tied_turf(loc)
 
-/obj/structure/alien/movable_wall/proc/check_for_move(var/turf/T, atom/movable/mover)
+/obj/structure/alien/movable_wall/proc/check_for_move(turf/T, atom/movable/mover)
 	if(group.next_push > world.time)
 		return
 
 	var/target_dir = get_dir(mover, T)
 
 	if(isXeno(mover))
-		var/mob/living/carbon/Xenomorph/X = mover
+		var/mob/living/carbon/xenomorph/X = mover
 		if(X.hivenumber != hivenumber || X.throwing)
 			return
 
@@ -1115,7 +1115,7 @@
 
 	return TRUE
 
-/turf/closed/wall/resin/reflective/proc/bullet_ignore_turf(obj/item/projectile/P, var/turf/T)
+/turf/closed/wall/resin/reflective/proc/bullet_ignore_turf(obj/item/projectile/P, turf/T)
 	SIGNAL_HANDLER
 	if(T == src)
 		return COMPONENT_BULLET_PASS_THROUGH
@@ -1155,7 +1155,7 @@
 	take_damage(tforce)
 
 
-/turf/closed/wall/resin/attack_alien(mob/living/carbon/Xenomorph/M)
+/turf/closed/wall/resin/attack_alien(mob/living/carbon/xenomorph/M)
 	if(SEND_SIGNAL(src, COMSIG_WALL_RESIN_XENO_ATTACK, M) & COMPONENT_CANCEL_XENO_ATTACK)
 		return XENO_NO_DELAY_ACTION
 

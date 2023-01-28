@@ -95,7 +95,7 @@
 		return
 
 	if(isXeno(user))
-		var/mob/living/carbon/Xenomorph/X = user
+		var/mob/living/carbon/xenomorph/X = user
 		if(!X.hive.unnesting_allowed && !isXenoBuilder(X) && HIVE_ALLIED_TO_HIVE(X.hivenumber, hivenumber))
 			to_chat(X, SPAN_XENOWARNING("You shouldn't interfere with the nest, leave that to the drones."))
 			return
@@ -249,7 +249,7 @@
 	G.can_reenter_corpse = TRUE
 	return
 
-/obj/structure/bed/nest/ex_act(var/power)
+/obj/structure/bed/nest/ex_act(power)
 	if(power >= EXPLOSION_THRESHOLD_VLOW)
 		deconstruct(FALSE)
 
@@ -273,7 +273,7 @@
 		QDEL_IN(src, rand(225, 400))
 
 
-/obj/structure/bed/nest/attack_alien(mob/living/carbon/Xenomorph/M)
+/obj/structure/bed/nest/attack_alien(mob/living/carbon/xenomorph/M)
 	if(isXenoLarva(M)) //Larvae can't do shit
 		return
 	if(M.a_intent == INTENT_HARM && !buckled_mob) //can't slash nest with an occupant.

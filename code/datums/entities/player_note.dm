@@ -29,7 +29,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player_note)
 			"note_category" =DB_FIELDTYPE_INT
 		)
 
-/datum/entity_meta/player_note/on_read(var/datum/entity/player_note/note)
+/datum/entity_meta/player_note/on_read(datum/entity/player_note/note)
 	if(note.player_id)
 		note.player = DB_ENTITY(/datum/entity/player, note.player_id)
 	note.is_confidential = text2num("[note.is_confidential]")

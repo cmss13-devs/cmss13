@@ -378,7 +378,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		go_out(user)
 	return ..()
 
-/obj/item/clothing/mask/cigarette/proc/go_out(mob/user, var/silent = FALSE)
+/obj/item/clothing/mask/cigarette/proc/go_out(mob/user, silent = FALSE)
 	var/mob/living/M
 	if(ismob(loc))
 		M = loc
@@ -762,7 +762,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		return ..()
 	return
 
-/obj/item/tool/lighter/proc/turn_off(mob/living/bearer, var/silent = 1)
+/obj/item/tool/lighter/proc/turn_off(mob/living/bearer, silent = 1)
 	if(heat_source)
 		heat_source = 0
 		icon_state = icon_off

@@ -1,5 +1,5 @@
 // Notify all preds with the bracer icon
-/proc/message_all_yautja(var/msg, var/soundeffect = TRUE)
+/proc/message_all_yautja(msg, soundeffect = TRUE)
 	for(var/mob/living/carbon/human/Y in GLOB.yautja_mob_list)
 		// Send message to the bracer; appear multiple times if we have more bracers
 		for(var/obj/item/clothing/gloves/yautja/hunter/G in Y.contents)
@@ -7,7 +7,7 @@
 			if(G.notification_sound)
 				playsound(Y.loc, 'sound/items/pred_bracer.ogg', 75, 1)
 
-/mob/living/carbon/human/proc/message_thrall(var/msg)
+/mob/living/carbon/human/proc/message_thrall(msg)
 	if(!hunter_data.thrall)
 		return
 
@@ -19,7 +19,7 @@
 			playsound(T.loc, 'sound/items/pred_bracer.ogg', 75, 1)
 
 //Update the power display thing. This is called in Life()
-/mob/living/carbon/human/proc/update_power_display(var/perc)
+/mob/living/carbon/human/proc/update_power_display(perc)
 	if(hud_used?.pred_power_icon)
 		switch(perc)
 			if(91 to INFINITY)
@@ -62,7 +62,7 @@
 
 	var/mob/living/carbon/T = tgui_input_list(src, "What do you wish to butcher?", "Butcher", choices)
 
-	var/mob/living/carbon/Xenomorph/xeno_victim
+	var/mob/living/carbon/xenomorph/xeno_victim
 	var/mob/living/carbon/human/victim
 
 	if(!T || !src || !T.stat)
@@ -72,7 +72,7 @@
 	if(!Adjacent(T))
 		to_chat(src, SPAN_WARNING("You have to be next to your target."))
 		return
-		
+
 	if(isXenoLarva(T) || isXenoFacehugger(T))
 		to_chat(src, SPAN_WARNING("This tiny worm is not even worth using your tools on."))
 		return

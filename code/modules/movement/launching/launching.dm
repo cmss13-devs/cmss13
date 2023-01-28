@@ -22,7 +22,7 @@
 	var/dist = 0
 
 
-/datum/launch_metadata/proc/get_collision_callbacks(var/atom/A)
+/datum/launch_metadata/proc/get_collision_callbacks(atom/A)
 	var/highest_matching = null
 	var/list/matching = list()
 
@@ -75,11 +75,11 @@
 	throwing = FALSE
 	rebounding = FALSE
 
-/atom/movable/proc/mob_launch_collision(var/mob/living/L)
+/atom/movable/proc/mob_launch_collision(mob/living/L)
 	if (!rebounding)
 		L.hitby(src)
 
-/atom/movable/proc/obj_launch_collision(var/obj/O)
+/atom/movable/proc/obj_launch_collision(obj/O)
 	if (!O.anchored && !rebounding && !isXeno(src))
 		O.Move(get_step(O, dir))
 	else if (!rebounding && rebounds)
@@ -90,7 +90,7 @@
 	if (!rebounding)
 		O.hitby(src)
 
-/atom/movable/proc/turf_launch_collision(var/turf/T)
+/atom/movable/proc/turf_launch_collision(turf/T)
 	if (!rebounding && rebounds)
 		var/oldloc = loc
 		var/launched_speed = cur_speed
@@ -99,7 +99,7 @@
 	if (!rebounding)
 		T.hitby(src)
 
-/atom/movable/proc/rebound(var/oldloc, var/launched_speed)
+/atom/movable/proc/rebound(oldloc, launched_speed)
 	if (loc == oldloc)
 		rebounding = TRUE
 		var/datum/launch_metadata/LM = new()
@@ -111,11 +111,11 @@
 
 		launch_towards(LM)
 
-/atom/movable/proc/try_to_throw(var/mob/living/user)
+/atom/movable/proc/try_to_throw(mob/living/user)
 	return TRUE
 
 // Proc for throwing items (should only really be used for throw)
-/atom/movable/proc/throw_atom(var/atom/target, var/range, var/speed = 0, var/atom/thrower, var/spin, var/launch_type = NORMAL_LAUNCH, var/pass_flags = NO_FLAGS)
+/atom/movable/proc/throw_atom(atom/target, range, speed = 0, atom/thrower, spin, launch_type = NORMAL_LAUNCH, pass_flags = NO_FLAGS)
 	var/temp_pass_flags = pass_flags
 	switch (launch_type)
 		if (NORMAL_LAUNCH)
@@ -137,7 +137,7 @@
 	launch_towards(LM)
 
 // Proc for throwing or propelling movable atoms towards a target
-/atom/movable/proc/launch_towards(var/datum/launch_metadata/LM)
+/atom/movable/proc/launch_towards(datum/launch_metadata/LM)
 	if (!istype(LM))
 		CRASH("invalid launch_metadata passed to launch_towards")
 	if (!LM.target || !src)

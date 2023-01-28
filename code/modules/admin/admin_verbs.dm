@@ -415,7 +415,7 @@ var/list/roundstart_mod_verbs = list(
 	message_staff("[key_name_admin(usr)] gave [key_name(T)] the disease [D].")
 
 
-/client/proc/object_talk(var/msg as text) // -- TLE
+/client/proc/object_talk(msg as text) // -- TLE
 	set category = "Admin.Events"
 	set name = "Object Say"
 	set desc = "Display a message to everyone who can hear the target"

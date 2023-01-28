@@ -155,7 +155,7 @@
 		valid_icon_states = icon_states(icon)
 	adapt_to_squad()
 
-/obj/item/clothing/head/headband/squad/proc/update_clothing_wrapper(var/mob/living/carbon/human/wearer)
+/obj/item/clothing/head/headband/squad/proc/update_clothing_wrapper(mob/living/carbon/human/wearer)
 	SIGNAL_HANDLER
 
 	var/is_worn_by_wearer = recursive_holder_check(src) == wearer

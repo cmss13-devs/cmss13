@@ -8,7 +8,7 @@
 	name = "smoke"
 	icon_state = "smoke"
 	opacity = TRUE
-	anchored = 1
+	anchored = TRUE
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	layer = ABOVE_MOB_LAYER + 0.1 //above mobs and barricades
 	var/amount = 2
@@ -37,7 +37,7 @@
 	active_smoke_effects -= src
 	cause_data = null
 
-/obj/effect/particle_effect/smoke/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/obj/effect/particle_effect/smoke/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_pass = PASS_FLAGS_SMOKE
@@ -108,7 +108,7 @@
 			return TRUE
 
 
-/obj/effect/particle_effect/smoke/proc/affect(var/mob/living/carbon/M)
+/obj/effect/particle_effect/smoke/proc/affect(mob/living/carbon/M)
 	if (istype(M))
 		return 0
 	return 1
@@ -126,7 +126,7 @@
 	for(var/mob/living/carbon/M in get_turf(src))
 		affect(M)
 
-/obj/effect/particle_effect/smoke/bad/affect(var/mob/living/carbon/M)
+/obj/effect/particle_effect/smoke/bad/affect(mob/living/carbon/M)
 	..()
 	if (M.internal != null && M.wear_mask && (M.wear_mask.flags_inventory & ALLOWINTERNALS))
 		return
@@ -178,7 +178,7 @@
 	for(var/mob/living/carbon/human/R in get_turf(src))
 		affect(R)
 
-/obj/effect/particle_effect/smoke/mustard/affect(var/mob/living/carbon/human/R)
+/obj/effect/particle_effect/smoke/mustard/affect(mob/living/carbon/human/R)
 	..()
 	R.burn_skin(0.75)
 	if(R.coughedtime != 1)
@@ -212,7 +212,7 @@
 	for(var/mob/living/carbon/M in get_turf(src))
 		affect(M)
 
-/obj/effect/particle_effect/smoke/phosphorus/affect(var/mob/living/carbon/M)
+/obj/effect/particle_effect/smoke/phosphorus/affect(mob/living/carbon/M)
 	..()
 	burn_damage = 40
 	if(ishuman(M))
@@ -258,7 +258,7 @@
 /obj/effect/particle_effect/smoke/xeno_burn
 	time_to_live = 12
 	color = "#86B028" //Mostly green?
-	anchored = 1
+	anchored = TRUE
 	spread_speed = 7
 	smokeranking = SMOKE_RANK_BOILER
 
@@ -266,7 +266,7 @@
 	var/gas_damage = 20
 
 /obj/effect/particle_effect/smoke/xeno_burn/Initialize(mapload, amount, datum/cause_data/cause_data)
-	var/mob/living/carbon/Xenomorph/xeno = cause_data?.resolve_mob()
+	var/mob/living/carbon/xenomorph/xeno = cause_data?.resolve_mob()
 	if (istype(xeno) && xeno.hivenumber)
 		hivenumber = xeno.hivenumber
 
@@ -290,7 +290,7 @@
 /obj/effect/particle_effect/smoke/xeno_burn/Crossed(mob/living/carbon/M as mob)
 	return
 
-/obj/effect/particle_effect/smoke/xeno_burn/affect(var/mob/living/carbon/M)
+/obj/effect/particle_effect/smoke/xeno_burn/affect(mob/living/carbon/M)
 	..()
 
 	if(M.ally_of_hivenumber(hivenumber))
@@ -341,7 +341,7 @@
 /obj/effect/particle_effect/smoke/xeno_weak/Crossed(mob/living/carbon/M as mob)
 	return
 
-/obj/effect/particle_effect/smoke/xeno_weak/affect(var/mob/living/carbon/M)
+/obj/effect/particle_effect/smoke/xeno_weak/affect(mob/living/carbon/M)
 	..()
 	if(isXeno(M))
 		return
@@ -391,14 +391,14 @@
 	smokeranking = SMOKE_RANK_BOILER
 
 //No effect when merely entering the smoke turf, for balance reasons
-/obj/effect/particle_effect/smoke/xeno_weak_fire/Crossed(var/mob/living/carbon/M as mob)
+/obj/effect/particle_effect/smoke/xeno_weak_fire/Crossed(mob/living/carbon/M as mob)
 	if(!istype(M))
 		return
 
 	M.ExtinguishMob()
 	. = ..()
 
-/obj/effect/particle_effect/smoke/xeno_weak_fire/affect(var/mob/living/carbon/M)
+/obj/effect/particle_effect/smoke/xeno_weak_fire/affect(mob/living/carbon/M)
 	..()
 	if(isXeno(M))
 		return

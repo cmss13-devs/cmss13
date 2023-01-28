@@ -8,12 +8,12 @@
 	icon_opened = "open_basic"
 	icon_closed = "closed_basic"
 	climbable = 1
-	anchored = 0
+	anchored = FALSE
 	throwpass = 1 //prevents moving crates by hurling things at them
 	store_mobs = FALSE
 	var/rigged = 0
 
-/obj/structure/closet/crate/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/obj/structure/closet/crate/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_can_pass_all = PASS_OVER|PASS_AROUND

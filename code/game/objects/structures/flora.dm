@@ -30,7 +30,7 @@ PLANT_CUT_MACHETE = 3 = Needs at least a machete to be cut down
 
 /obj/structure/flora
 	name = "plant"
-	anchored = 1
+	anchored = TRUE
 	density = TRUE
 	var/icon_tag = null
 	var/variations = 1
@@ -204,7 +204,7 @@ ICE GRASS
 		new /obj/effect/decal/cleanable/dirt(loc) //Produces more ash at the center
 	qdel(src)
 
-/obj/structure/flora/ex_act(var/power)
+/obj/structure/flora/ex_act(power)
 	if(power >= EXPLOSION_THRESHOLD_VLOW)
 		deconstruct(FALSE)
 
@@ -493,8 +493,8 @@ ICE GRASS
 		if(isliving(AM))
 			var/mob/living/L = AM
 			var/bush_sound_prob = 60
-			if(istype(L, /mob/living/carbon/Xenomorph))
-				var/mob/living/carbon/Xenomorph/X = L
+			if(istype(L, /mob/living/carbon/xenomorph))
+				var/mob/living/carbon/xenomorph/X = L
 				bush_sound_prob = X.tier * 20
 
 			if(prob(bush_sound_prob))
@@ -556,7 +556,7 @@ ICE GRASS
 		else
 			qdel(src)
 
-/obj/structure/flora/jungle/thickbush/flamer_fire_act(var/dam = BURN_LEVEL_TIER_1)
+/obj/structure/flora/jungle/thickbush/flamer_fire_act(dam = BURN_LEVEL_TIER_1)
 	health -= dam
 	healthcheck(src)
 

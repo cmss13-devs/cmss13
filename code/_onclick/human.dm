@@ -11,7 +11,7 @@
 #define HANDLE_CLICK_HANDLED 1
 
 
-/mob/living/carbon/human/click(var/atom/A, var/list/mods)
+/mob/living/carbon/human/click(atom/A, list/mods)
 	if(mods["shift"] && !mods["middle"])
 		if(selected_ability && client && client.prefs && !(client.prefs.toggle_prefs & TOGGLE_MIDDLE_MOUSE_CLICK))
 			selected_ability.use_ability(A)
@@ -34,7 +34,7 @@
 
 	return ..()
 
-/mob/living/carbon/human/RestrainedClickOn(var/atom/A) //chewing your handcuffs
+/mob/living/carbon/human/RestrainedClickOn(atom/A) //chewing your handcuffs
 	if (A != src) return ..()
 	var/mob/living/carbon/human/H = A
 
@@ -62,7 +62,7 @@
 
 	last_chew = world.time
 
-/mob/living/carbon/human/UnarmedAttack(var/atom/A, var/proximity, click_parameters)
+/mob/living/carbon/human/UnarmedAttack(atom/A, proximity, click_parameters)
 
 	if(lying) //No attacks while laying down
 		return 0
@@ -93,7 +93,7 @@
 		return . = ..()
 
 	if(isXeno(dropping))
-		var/mob/living/carbon/Xenomorph/xeno = dropping
+		var/mob/living/carbon/xenomorph/xeno = dropping
 		if(xeno.back)
 			var/obj/item/back_item = xeno.back
 			if(xeno.stat != DEAD) // If the Xeno is alive, fight back

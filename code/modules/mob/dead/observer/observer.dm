@@ -11,7 +11,7 @@
 	density = FALSE
 	canmove = TRUE
 	blinded = FALSE
-	anchored = 1 //  don't get pushed around
+	anchored = TRUE //  don't get pushed around
 	invisibility = INVISIBILITY_OBSERVER
 	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
 	plane = GHOST_PLANE
@@ -98,7 +98,7 @@
 	verbs -= /mob/verb/pickup_item
 	verbs -= /mob/verb/pull_item
 
-/mob/dead/observer/proc/set_lighting_alpha_from_pref(var/client/ghost_client)
+/mob/dead/observer/proc/set_lighting_alpha_from_pref(client/ghost_client)
 	var/vision_level = ghost_client?.prefs?.ghost_vision_pref
 	switch(vision_level)
 		if(GHOST_VISION_LEVEL_NO_NVG)
@@ -461,7 +461,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	usr.loc = pick(L)
 	following = null
 
-/mob/dead/observer/proc/scan_health(var/mob/living/target in oview())
+/mob/dead/observer/proc/scan_health(mob/living/target in oview())
 	set name = "Scan Health"
 
 	if(!istype(target))
@@ -473,7 +473,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		last_health_display.target_mob = target
 	last_health_display.look_at(src, DETAIL_LEVEL_FULL, bypass_checks = TRUE)
 
-/mob/dead/observer/verb/follow_local(var/mob/target)
+/mob/dead/observer/verb/follow_local(mob/target)
 	set category = "Ghost.Follow"
 	set name = "Follow Local Mob"
 	set desc = "Follow on-screen mob"
@@ -490,7 +490,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	orbit_menu.tgui_interact(src)
 
 // This is the ghost's follow verb with an argument
-/mob/dead/observer/proc/ManualFollow(var/atom/movable/target)
+/mob/dead/observer/proc/ManualFollow(atom/movable/target)
 	if(!istype(target))
 		return
 
@@ -526,7 +526,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	pixel_y = -2
 	animate(src, pixel_y = 0, time = 10, loop = -1)
 
-/mob/dead/observer/proc/JumpToCoord(var/tx, var/ty, var/tz)
+/mob/dead/observer/proc/JumpToCoord(tx, ty, tz)
 	if(!tx || !ty || !tz)
 		return
 	following = null
@@ -565,11 +565,11 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 				to_chat(A, "<span style='color: red;'>This mob is not located in the game world.</span>")
 
 /mob/dead/observer/memory()
-	set hidden = 1
+	set hidden = TRUE
 	to_chat(src, "<span style='color: red;'>You are dead! You have no mind to store memory!</span>")
 
 /mob/dead/observer/add_memory()
-	set hidden = 1
+	set hidden = TRUE
 	to_chat(src, "<span style='color: red;'>You are dead! You have no mind to store memory!</span>")
 
 /mob/dead/observer/verb/analyze_air()
@@ -820,7 +820,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		return
 
 	var/list/hellhound_mob_list = list() // the list we'll be choosing from
-	for(var/mob/living/carbon/Xenomorph/Hellhound/Hellhound as anything in GLOB.hellhound_list)
+	for(var/mob/living/carbon/xenomorph/hellhound/Hellhound as anything in GLOB.hellhound_list)
 		if(Hellhound.client)
 			continue
 		hellhound_mob_list[Hellhound.name] = Hellhound
@@ -829,7 +829,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	if(!choice)
 		return
 
-	var/mob/living/carbon/Xenomorph/Hellhound/Hellhound = hellhound_mob_list[choice]
+	var/mob/living/carbon/xenomorph/hellhound/Hellhound = hellhound_mob_list[choice]
 	if(!Hellhound || !(Hellhound in GLOB.hellhound_list))
 		return
 
@@ -952,7 +952,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 			. += "Evacuation: [eta_status]"
 
 
-/proc/message_ghosts(var/message)
+/proc/message_ghosts(message)
 	for(var/mob/dead/observer/O as anything in GLOB.observer_list)
 		to_chat(O, message)
 

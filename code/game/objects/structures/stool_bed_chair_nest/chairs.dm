@@ -15,7 +15,7 @@
 	. = ..()
 	handle_rotation()
 
-/obj/structure/bed/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/obj/structure/bed/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_can_pass_all = PASS_AROUND|PASS_UNDER
@@ -68,7 +68,7 @@
 			flags_can_pass_all_temp |= PASS_OVER
 			projectile_coverage = PROJECTILE_COVERAGE_MEDIUM
 
-/obj/structure/bed/chair/attack_alien(mob/living/carbon/Xenomorph/M)
+/obj/structure/bed/chair/attack_alien(mob/living/carbon/xenomorph/M)
 	. = ..()
 	if(stacked_size)
 		stack_collapse()
@@ -284,7 +284,7 @@
 	desc = "A simple chair permanently attached to the floor. Covered with a squeaky and way too hard faux-leather, unevenly painted in Delta squad blue. This chair is most likely to be the first to fight and first to die."
 
 /obj/structure/bed/chair/office
-	anchored = 0
+	anchored = FALSE
 	drag_delay = 1 //Pulling something on wheels is easy
 	picked_up_item = null
 
@@ -314,18 +314,18 @@
 
 /obj/structure/bed/chair/office/light
 	icon_state = "officechair_white"
-	anchored = 0
+	anchored = FALSE
 
 /obj/structure/bed/chair/office/dark
 	icon_state = "officechair_dark"
-	anchored = 0
+	anchored = FALSE
 
 /obj/structure/bed/chair/dropship
 	picked_up_item = null
 
 /obj/structure/bed/chair/dropship/pilot
 	icon_state = "pilot_chair"
-	anchored = 1
+	anchored = TRUE
 	name = "pilot's chair"
 	desc = "A specially designed chair for pilots to sit in."
 
@@ -388,7 +388,7 @@
 		return
 	..()
 
-/obj/structure/bed/chair/dropship/passenger/proc/fold_down(var/break_it = 0)
+/obj/structure/bed/chair/dropship/passenger/proc/fold_down(break_it = 0)
 	if(chair_state == DROPSHIP_CHAIR_UNFOLDED)
 		is_animating = 1
 		flick("hotseat_new_folding", src)
@@ -400,7 +400,7 @@
 			chair_state = DROPSHIP_CHAIR_FOLDED
 		addtimer(VARSET_CALLBACK(src, icon_state, "hotseat_new_folded"), 5) // animation length
 
-/obj/structure/bed/chair/dropship/passenger/shuttle_chair/fold_down(var/break_it = 1)
+/obj/structure/bed/chair/dropship/passenger/shuttle_chair/fold_down(break_it = 1)
 	if(chair_state == DROPSHIP_CHAIR_UNFOLDED)
 		unbuckle()
 		chair_state = DROPSHIP_CHAIR_BROKEN
@@ -563,6 +563,6 @@
 		O.dir = user.dir
 		qdel(src)
 
-/obj/item/weapon/melee/twohanded/folded_metal_chair/mob_launch_collision(var/mob/living/L)
+/obj/item/weapon/melee/twohanded/folded_metal_chair/mob_launch_collision(mob/living/L)
 	playsound(get_turf(src), 'sound/weapons/metal_chair_slam.ogg', 50, 1)
 	..()

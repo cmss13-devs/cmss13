@@ -35,7 +35,7 @@
 	name = "inflatable wall"
 	desc = "An inflated membrane. Do not puncture."
 	density = TRUE
-	anchored = 1
+	anchored = TRUE
 	opacity = FALSE
 
 	icon = 'icons/obj/items/inflatable.dmi'
@@ -44,7 +44,7 @@
 	health = 50.0
 	var/deflated = FALSE
 
-/obj/structure/inflatable/bullet_act(var/obj/item/projectile/Proj)
+/obj/structure/inflatable/bullet_act(obj/item/projectile/Proj)
 	health -= Proj.damage
 	..()
 	if(health <= 0 && !deflated)
@@ -94,7 +94,7 @@
 		..()
 	return
 
-/obj/structure/inflatable/proc/hit(var/damage, var/sound_effect = 1)
+/obj/structure/inflatable/proc/hit(damage, sound_effect = 1)
 	health = max(0, health - damage)
 	if(sound_effect)
 		playsound(loc, 'sound/effects/Glasshit_old.ogg', 25, 1)
@@ -102,7 +102,7 @@
 		deflate(1)
 
 
-/obj/structure/inflatable/proc/deflate(var/violent=0)
+/obj/structure/inflatable/proc/deflate(violent=0)
 	set waitfor = 0
 	if(deflated)
 		return
@@ -149,7 +149,7 @@
 	name = "popped inflatable wall"
 	desc = "It used to be an inflatable wall, now it's just a mess of plastic."
 	density = FALSE
-	anchored = 1
+	anchored = TRUE
 	deflated = TRUE
 
 	icon = 'icons/obj/items/inflatable.dmi'
@@ -167,7 +167,7 @@
 /obj/structure/inflatable/door //Based on mineral door code
 	name = "inflatable door"
 	density = TRUE
-	anchored = 1
+	anchored = TRUE
 	opacity = FALSE
 
 	icon = 'icons/obj/items/inflatable.dmi'
@@ -234,7 +234,7 @@
 	else
 		icon_state = "door_closed"
 
-/obj/structure/inflatable/door/deflate(var/violent=0)
+/obj/structure/inflatable/door/deflate(violent=0)
 	set waitfor = 0
 	playsound(loc, 'sound/machines/hiss.ogg', 25, 1)
 	if(violent)

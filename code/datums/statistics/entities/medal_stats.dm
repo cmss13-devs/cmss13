@@ -52,7 +52,7 @@
 		"id"
 	)
 
-/datum/entity/player_entity/proc/track_medal_earned(var/new_medal_type, var/mob/new_recipient, var/new_recipient_role, var/new_citation, var/mob/giver)
+/datum/entity/player_entity/proc/track_medal_earned(new_medal_type, mob/new_recipient, new_recipient_role, new_citation, mob/giver)
 	if(!new_medal_type || !new_recipient || new_recipient.statistic_exempt || !new_recipient_role || !new_citation || !giver)
 		return
 
@@ -85,7 +85,7 @@
 		human_stats.count_niche_stat(STATISTICS_NICHE_MEDALS, 1, new_recipient_role)
 		human_stats.medal_list.Insert(1, new_medal)
 
-/datum/entity/player_entity/proc/untrack_medal_earned(var/medal_type, var/mob/recipient, var/citation)
+/datum/entity/player_entity/proc/untrack_medal_earned(medal_type, mob/recipient, citation)
 	if(!medal_type || !recipient || recipient.statistic_exempt || !citation)
 		return FALSE
 
@@ -96,7 +96,7 @@
 	var/round_id = SSperf_logging.round.id
 	if (isXeno(recipient))
 		// Xeno jellies
-		var/mob/living/carbon/Xenomorph/xeno = recipient
+		var/mob/living/carbon/xenomorph/xeno = recipient
 		var/caste = xeno.caste_type
 		var/datum/entity/player_stats/xeno/xeno_stats = setup_xeno_stats()
 		xeno_stats.count_niche_stat(STATISTICS_NICHE_MEDALS, -1, caste)

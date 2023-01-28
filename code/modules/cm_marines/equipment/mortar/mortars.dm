@@ -45,7 +45,7 @@
 	QDEL_NULL(internal_camera)
 	return ..()
 
-/obj/structure/mortar/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/obj/structure/mortar/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_can_pass_all = PASS_OVER
@@ -56,7 +56,7 @@
 	else
 		return FALSE
 
-/obj/structure/mortar/attack_alien(mob/living/carbon/Xenomorph/M)
+/obj/structure/mortar/attack_alien(mob/living/carbon/xenomorph/M)
 	if(isXenoLarva(M))
 		return XENO_NO_DELAY_ACTION
 
@@ -303,7 +303,7 @@
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
 			qdel(src)
 
-/obj/structure/mortar/proc/handle_shell(var/turf/target, var/obj/item/mortar_shell/shell)
+/obj/structure/mortar/proc/handle_shell(turf/target, obj/item/mortar_shell/shell)
 	if(protected_by_pylon(TURF_PROTECTION_MORTAR, target))
 		firing = FALSE
 		return

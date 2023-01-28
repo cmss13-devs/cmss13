@@ -411,7 +411,7 @@ t. optimisticdude
 					to_chat(usr, "System Reset completed")
 					resetting = 0
 
-/obj/item/tool/surgery/WYautopsy/attack(mob/living/carbon/Xenomorph/T as mob, mob/living/user as mob)
+/obj/item/tool/surgery/WYautopsy/attack(mob/living/carbon/xenomorph/T as mob, mob/living/user as mob)
 /* set category = "Autopsy"
 	set name = "Perform Alien Autopsy"
 	set src in usr*/
@@ -426,7 +426,7 @@ t. optimisticdude
 	if(active)
 		to_chat(usr, "Your already performing an autopsy")
 		return
-	if(istype(T, /mob/living/carbon/Xenomorph/Larva))
+	if(istype(T, /mob/living/carbon/xenomorph/larva))
 		to_chat(usr, "It's too young... (This will be in a future update)")
 		return
 	active = 1

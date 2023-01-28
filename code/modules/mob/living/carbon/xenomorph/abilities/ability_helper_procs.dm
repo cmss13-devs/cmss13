@@ -1,6 +1,6 @@
 //Corrosive acid is consolidated -- it checks for specific castes for strength now, but works identically to each other.
 //The acid items are stored in XenoProcs.
-/mob/living/carbon/Xenomorph/proc/corrosive_acid(atom/O, acid_type, plasma_cost)
+/mob/living/carbon/xenomorph/proc/corrosive_acid(atom/O, acid_type, plasma_cost)
 	if(!O.Adjacent(src))
 		if(istype(O,/obj/item/explosive/plastic))
 			var/obj/item/explosive/plastic/E = O
@@ -172,7 +172,7 @@
 		T.update_xeno_hostile_hud()
 	to_chat(H, SPAN_XENOHIGHDANGER("You can move again!"))
 
-/proc/xeno_throw_human(mob/living/carbon/H, mob/living/carbon/Xenomorph/X, direction, distance)
+/proc/xeno_throw_human(mob/living/carbon/H, mob/living/carbon/xenomorph/X, direction, distance, shake_camera = TRUE)
 	if (!istype(H) || !istype(X) ||  !direction || !distance)
 		return
 
@@ -185,9 +185,11 @@
 		T = temp
 
 	H.throw_atom(T, distance, SPEED_VERY_FAST, X, TRUE)
+	if(!shake_camera)
+		return
 	shake_camera(H, 10, 1)
 
-/mob/living/carbon/Xenomorph/proc/zoom_in()
+/mob/living/carbon/xenomorph/proc/zoom_in()
 	if(stat || resting)
 		if(is_zoomed)
 			is_zoomed = 0
@@ -215,7 +217,7 @@
 			client.pixel_x = -viewoffset
 			client.pixel_y = 0
 
-/mob/living/carbon/Xenomorph/proc/zoom_out()
+/mob/living/carbon/xenomorph/proc/zoom_out()
 	if(!client)
 		return
 	client.change_view(world_view_size)
@@ -228,7 +230,7 @@
 			action.button.icon_state = "template"
 			break;
 
-/mob/living/carbon/Xenomorph/proc/do_acid_spray_cone(var/turf/T, spray_type = /obj/effect/xenomorph/spray, range = 3)
+/mob/living/carbon/xenomorph/proc/do_acid_spray_cone(turf/T, spray_type = /obj/effect/xenomorph/spray, range = 3)
 	set waitfor = FALSE
 
 	var/facing = get_cardinal_dir(src, T)
@@ -249,7 +251,7 @@
 		sleep(2)
 
 // Normal refers to the mathematical normal
-/mob/living/carbon/Xenomorph/proc/do_acid_spray_cone_normal(turf/T, distance, facing, obj/effect/xenomorph/spray/source_spray, spray_type = /obj/effect/xenomorph/spray)
+/mob/living/carbon/xenomorph/proc/do_acid_spray_cone_normal(turf/T, distance, facing, obj/effect/xenomorph/spray/source_spray, spray_type = /obj/effect/xenomorph/spray)
 	if(!distance)
 		return
 
@@ -293,7 +295,7 @@
 				right_S = new spray_type(inverse_normal_turf, create_cause_data(initial(caste_type), src), hivenumber)
 
 
-/mob/living/carbon/Xenomorph/proc/do_acid_spray_line(list/turflist, spray_path = /obj/effect/xenomorph/spray, distance_max = 5)
+/mob/living/carbon/xenomorph/proc/do_acid_spray_line(list/turflist, spray_path = /obj/effect/xenomorph/spray, distance_max = 5)
 	if(isnull(turflist))
 		return
 	var/turf/prev_turf = loc
@@ -323,10 +325,10 @@
 		sleep(2)
 
 
-/mob/living/carbon/Xenomorph/proc/xeno_transfer_plasma(atom/A, amount = 50, transfer_delay = 20, max_range = 2)
-	if(!istype(A, /mob/living/carbon/Xenomorph))
+/mob/living/carbon/xenomorph/proc/xeno_transfer_plasma(atom/A, amount = 50, transfer_delay = 20, max_range = 2)
+	if(!istype(A, /mob/living/carbon/xenomorph))
 		return
-	var/mob/living/carbon/Xenomorph/target = A
+	var/mob/living/carbon/xenomorph/target = A
 
 	if(!check_can_transfer_plasma(target, max_range))
 		return
@@ -347,7 +349,7 @@
 	to_chat(src, SPAN_XENOWARNING("You have transferred [amount] plasma to [target]. You now have [plasma_stored]."))
 	playsound(src, "alien_drool", 25)
 
-/mob/living/carbon/Xenomorph/proc/check_can_transfer_plasma(mob/living/carbon/Xenomorph/target, max_range)
+/mob/living/carbon/xenomorph/proc/check_can_transfer_plasma(mob/living/carbon/xenomorph/target, max_range)
 	if(!check_state())
 		return FALSE
 

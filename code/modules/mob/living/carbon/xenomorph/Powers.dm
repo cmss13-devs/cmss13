@@ -1,4 +1,4 @@
-/mob/living/carbon/Xenomorph/proc/build_resin(var/atom/A, var/thick = FALSE, var/message = TRUE, var/use_plasma = TRUE, var/add_build_mod = 1)
+/mob/living/carbon/xenomorph/proc/build_resin(atom/A, thick = FALSE, message = TRUE, use_plasma = TRUE, add_build_mod = 1)
 	if(!selected_resin)
 		return SECRETE_RESIN_FAIL
 
@@ -149,13 +149,13 @@
 
 	return SECRETE_RESIN_SUCCESS
 
-/mob/living/carbon/Xenomorph/proc/remove_built_structure(var/atom/A)
+/mob/living/carbon/xenomorph/proc/remove_built_structure(atom/A)
 	SIGNAL_HANDLER
 	LAZYREMOVE(built_structures[A.type], A)
 	if(!built_structures[A.type])
 		built_structures -= A.type
 
-/mob/living/carbon/Xenomorph/proc/place_construction(var/turf/current_turf, var/datum/construction_template/xenomorph/structure_template)
+/mob/living/carbon/xenomorph/proc/place_construction(turf/current_turf, datum/construction_template/xenomorph/structure_template)
 	if(!structure_template || !check_state() || action_busy)
 		return
 
@@ -171,7 +171,7 @@
 	if(hive.living_xeno_queen)
 		xeno_message("Hive: A new <b>[structure_template]<b> construction has been designated at [sanitize_area(current_area_name)]!", 3, hivenumber)
 
-/mob/living/carbon/Xenomorph/proc/make_marker(turf/target_turf)
+/mob/living/carbon/xenomorph/proc/make_marker(turf/target_turf)
 	if(!target_turf)
 		return FALSE
 	var/found_weeds = FALSE
@@ -204,7 +204,7 @@
 	if(hive.living_xeno_queen)
 		var/current_area_name = get_area_name(target_turf)
 
-		for(var/mob/living/carbon/Xenomorph/X in hive.totalXenos)
+		for(var/mob/living/carbon/xenomorph/X in hive.totalXenos)
 			to_chat(X, SPAN_XENOANNOUNCE("[src.name] has declared: [NM.mark_meaning.desc] in [sanitize_area(current_area_name)]! (<a href='?src=\ref[X];overwatch=1;target=\ref[NM]'>Watch</a>) (<a href='?src=\ref[X];track=1;target=\ref[NM]'>Track</a>)"))
 			//this is killing the tgui chat and I dont know why
 	return TRUE

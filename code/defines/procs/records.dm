@@ -17,7 +17,7 @@
 	GLOB.data_core.general += G
 	return G
 
-/proc/CreateSecurityRecord(var/name as text, var/id as text)
+/proc/CreateSecurityRecord(name as text, id as text)
 	var/datum/data/record/R = new /datum/data/record()
 	R.fields["name"] = name
 	R.fields["id"] = id
@@ -26,7 +26,7 @@
 	GLOB.data_core.security += R
 	return R
 
-/proc/create_medical_record(var/mob/living/carbon/human/H)
+/proc/create_medical_record(mob/living/carbon/human/H)
 	var/datum/data/record/M = new /datum/data/record()
 	M.fields["id"] = null
 	M.fields["name"] = H.real_name

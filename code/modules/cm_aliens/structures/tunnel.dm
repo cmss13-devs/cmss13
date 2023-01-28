@@ -10,7 +10,7 @@
 
 	density = FALSE
 	opacity = FALSE
-	anchored = 1
+	anchored = TRUE
 	unslashable = TRUE
 	unacidable = TRUE
 	layer = RESIN_STRUCTURE_LAYER
@@ -24,7 +24,7 @@
 	health = 140
 	var/id = null //For mapping
 
-/obj/structure/tunnel/Initialize(mapload, var/h_number)
+/obj/structure/tunnel/Initialize(mapload, h_number)
 	. = ..()
 	var/turf/L = get_turf(src)
 	tunnel_desc = L.loc.name + " ([loc.x], [loc.y]) [pick(greek_letters)]"//Default tunnel desc is the <area name> (x, y) <Greek letter>
@@ -50,12 +50,12 @@
 	if(hive)
 		hive.tunnels -= src
 
-	for(var/mob/living/carbon/Xenomorph/X in contents)
+	for(var/mob/living/carbon/xenomorph/X in contents)
 		X.forceMove(loc)
 		to_chat(X, SPAN_DANGER("[src] suddenly collapses, forcing you out!"))
 	. = ..()
 
-/obj/structure/tunnel/proc/isfriendly(var/mob/target)
+/obj/structure/tunnel/proc/isfriendly(mob/target)
 	var/mob/living/carbon/C = target
 	if(istype(C) && C.ally_of_hivenumber(hivenumber))
 		return TRUE
@@ -72,7 +72,7 @@
 		visible_message(SPAN_DANGER("[src] suddenly collapses!"))
 		qdel(src)
 
-/obj/structure/tunnel/bullet_act(var/obj/item/projectile/Proj)
+/obj/structure/tunnel/bullet_act(obj/item/projectile/Proj)
 	return FALSE
 
 /obj/structure/tunnel/ex_act(severity)
@@ -102,7 +102,7 @@
 	if(isXeno(usr) && (usr.loc == src))
 		exit_tunnel(usr)
 
-/obj/structure/tunnel/proc/pick_tunnel(mob/living/carbon/Xenomorph/X)
+/obj/structure/tunnel/proc/pick_tunnel(mob/living/carbon/xenomorph/X)
 	. = FALSE //For peace of mind when it comes to dealing with unintended proc failures
 	if(!istype(X) || X.stat || X.lying || !isfriendly(X) || !hive)
 		return FALSE
@@ -149,7 +149,7 @@
 		to_chat(X, SPAN_XENONOTICE("You have reached your destination."))
 		return TRUE
 
-/obj/structure/tunnel/proc/exit_tunnel(mob/living/carbon/Xenomorph/X)
+/obj/structure/tunnel/proc/exit_tunnel(mob/living/carbon/xenomorph/X)
 	. = FALSE //For peace of mind when it comes to dealing with unintended proc failures
 	if(X in contents)
 		X.forceMove(loc)
@@ -158,20 +158,20 @@
 		return TRUE
 
 //Used for controling tunnel exiting and returning
-/obj/structure/tunnel/clicked(var/mob/user, var/list/mods)
+/obj/structure/tunnel/clicked(mob/user, list/mods)
 	if(!isXeno(user) || !isfriendly(user))
 		return ..()
-	var/mob/living/carbon/Xenomorph/X = user
+	var/mob/living/carbon/xenomorph/X = user
 	if(mods["ctrl"] && pick_tunnel(X))//Returning to original tunnel
 		return TRUE
 	else if(mods["alt"] && exit_tunnel(X))//Exiting the tunnel
 		return TRUE
 	. = ..()
 
-/obj/structure/tunnel/attack_larva(mob/living/carbon/Xenomorph/M)
+/obj/structure/tunnel/attack_larva(mob/living/carbon/xenomorph/M)
 	. = attack_alien(M)
 
-/obj/structure/tunnel/attack_alien(mob/living/carbon/Xenomorph/M)
+/obj/structure/tunnel/attack_alien(mob/living/carbon/xenomorph/M)
 	if(!istype(M) || M.stat || M.lying)
 		return XENO_NO_DELAY_ACTION
 

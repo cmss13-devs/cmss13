@@ -10,7 +10,7 @@
 	else
 		to_chat(src, SPAN_NOTICE(" You will no longer examine things you click on."))
 
-/mob/dead/observer/click(var/atom/A, var/list/mods)
+/mob/dead/observer/click(atom/A, list/mods)
 	if(..())
 		return 1
 
@@ -28,7 +28,7 @@
 
 		if(ismob(A) || isVehicle(A))
 			if(isXeno(A) && SSticker.mode.check_xeno_late_join(src)) //if it's a xeno and all checks are alright, we are gonna try to take their body
-				var/mob/living/carbon/Xenomorph/X = A
+				var/mob/living/carbon/xenomorph/X = A
 				if(X.stat == DEAD || is_admin_level(X.z) || X.aghosted)
 					to_chat(src, SPAN_WARNING("You cannot join as [X]."))
 					ManualFollow(X)
@@ -126,8 +126,8 @@
 */
 
 /* This allows Observers to click on disconnected Larva and become them, but not all Larva are clickable due to hiding
-/mob/living/carbon/Xenomorph/Larva/attack_ghost(mob/user as mob)
-	if(!istype(src, /mob/living/carbon/Xenomorph/Larva))
+/mob/living/carbon/xenomorph/larva/attack_ghost(mob/user as mob)
+	if(!istype(src, /mob/living/carbon/xenomorph/larva))
 		return
 
 	// if(src.key || src.mind || !src.client.is_afk())

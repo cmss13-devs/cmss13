@@ -6,7 +6,7 @@
 	icon_state = "spacecash1"
 	opacity = FALSE
 	density = FALSE
-	anchored = 0.0
+	anchored = FALSE
 	force = 1.0
 	throwforce = 1.0
 	throw_speed = SPEED_FAST
@@ -168,7 +168,7 @@
 	// If you're going to slap down huge sums of cash in easily reachable spots for RP or flavor reasons, make them counterfeit, so they don't break the black market - they will be rejected.
 	counterfeit = TRUE
 
-/proc/spawn_money(var/sum, spawnloc, mob/living/carbon/human/human_user as mob)
+/proc/spawn_money(sum, spawnloc, mob/living/carbon/human/human_user as mob)
 	if(sum in list(1000,500,200,100,50,20,10,1))
 		var/cash_type = text2path("/obj/item/spacecash/c[sum]")
 		var/obj/cash = new cash_type (usr.loc)

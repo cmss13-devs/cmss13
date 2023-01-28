@@ -104,7 +104,7 @@ GLOBAL_LIST_INIT(cm_vending_gear_medic, list(
 	vendor_role = list(JOB_SQUAD_MEDIC)
 	req_access = list(ACCESS_MARINE_MEDPREP)
 
-/obj/structure/machinery/cm_vending/gear/medic/get_listed_products(var/mob/user)
+/obj/structure/machinery/cm_vending/gear/medic/get_listed_products(mob/user)
 	return GLOB.cm_vending_gear_medic
 
 //------------CLOTHING VENDOR---------------
@@ -181,7 +181,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_medic, list(
 	req_access = list(ACCESS_MARINE_MEDPREP)
 	vendor_role = list(JOB_SQUAD_MEDIC)
 
-/obj/structure/machinery/cm_vending/clothing/medic/get_listed_products(var/mob/user)
+/obj/structure/machinery/cm_vending/clothing/medic/get_listed_products(mob/user)
 	return GLOB.cm_vending_clothing_medic
 
 /obj/structure/machinery/cm_vending/clothing/medic/alpha

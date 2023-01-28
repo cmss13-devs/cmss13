@@ -15,7 +15,7 @@
 
 	var/survivor_variant = CIVILIAN_SURVIVOR
 
-/datum/equipment_preset/survivor/load_name(mob/living/carbon/human/H, var/randomise)
+/datum/equipment_preset/survivor/load_name(mob/living/carbon/human/H, randomise)
 	H.gender = pick(MALE, FEMALE)
 	var/datum/preferences/A = new
 	A.randomize_appearance(H)
@@ -1213,7 +1213,7 @@
 /datum/equipment_preset/survivor/wy/manager
 	name = "Survivor - Corporate Supervisor"
 	flags = EQUIPMENT_PRESET_EXTRA
-	paygrade = "WY-5G"
+	paygrade = "WYC7"
 	skills = /datum/skills/civilian/manager_survivor
 	assignment = "Colony Supervisor"
 	role_comm_title = "Supervisor"

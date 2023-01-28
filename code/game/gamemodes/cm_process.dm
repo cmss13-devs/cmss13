@@ -39,6 +39,7 @@ of predators), but can be added to include variant game modes (like humans vs. h
 /datum/game_mode/proc/declare_completion_announce_fallen_soldiers()
 	set waitfor = 0
 	sleep(2 SECONDS)
+	fallen_list += fallen_list_cross
 	if(fallen_list.len)
 		var/dat = "<br>"
 		dat += SPAN_ROUNDBODY("In Flanders fields...<br>")
@@ -125,7 +126,7 @@ of predators), but can be added to include variant game modes (like humans vs. h
 
 //Spawns a larva in an appropriate location
 /datum/game_mode/proc/spawn_latejoin_larva()
-	var/mob/living/carbon/Xenomorph/Larva/new_xeno = new /mob/living/carbon/Xenomorph/Larva(get_turf(pick(GLOB.xeno_spawns)))
+	var/mob/living/carbon/xenomorph/larva/new_xeno = new /mob/living/carbon/xenomorph/larva(get_turf(pick(GLOB.xeno_spawns)))
 	new_xeno.visible_message(SPAN_XENODANGER("A larva suddenly burrows out of the ground!"),
 	SPAN_XENODANGER("You burrow out of the ground and awaken from your slumber. For the Hive!"))
 	new_xeno << sound('sound/effects/xeno_newlarva.ogg')
@@ -143,7 +144,7 @@ of predators), but can be added to include variant game modes (like humans vs. h
 
 // Open podlocks with the given ID if they aren't already opened.
 // DO NOT USE THIS WITH ID's CORRESPONDING TO SHUTTLES OR THEY WILL BREAK!
-/datum/game_mode/proc/open_podlocks(var/podlock_id)
+/datum/game_mode/proc/open_podlocks(podlock_id)
 	for(var/obj/structure/machinery/door/poddoor/M in machines)
 		if(M.id == podlock_id && M.density)
 			M.open()
@@ -157,7 +158,7 @@ var/lastHumanBioscan = 30 MINUTES//30 minutes in (we will add to that!)
 var/nextPredatorBioscan = 5 MINUTES//5 minutes in
 var/nextAdminBioscan = 30 MINUTES//30 minutes in
 
-/datum/game_mode/proc/select_lz(var/obj/structure/machinery/computer/shuttle_control/console)
+/datum/game_mode/proc/select_lz(obj/structure/machinery/computer/shuttle_control/console)
 	if(active_lz)
 		return
 	active_lz = console
@@ -167,7 +168,7 @@ var/nextAdminBioscan = 30 MINUTES//30 minutes in
 	marine_announcement(input, name)
 
 //Delta is the randomness interval, in +/-. Might not be the exact mathematical definition
-/datum/game_mode/proc/announce_bioscans(var/delta = 2)
+/datum/game_mode/proc/announce_bioscans(delta = 2)
 	var/numHostsPlanet = 0
 	var/numHostsShip = 0
 	var/numXenosPlanet = 0
@@ -324,7 +325,7 @@ Only checks living mobs with a client attached.
 			else
 				var/area/A = get_area(M)
 				if(isXeno(M))
-					var/mob/living/carbon/Xenomorph/xeno = M
+					var/mob/living/carbon/xenomorph/xeno = M
 					if(!xeno.counts_for_roundend)
 						continue
 					var/datum/hive_status/xeno_hive = GLOB.hive_datum[xeno.hivenumber]

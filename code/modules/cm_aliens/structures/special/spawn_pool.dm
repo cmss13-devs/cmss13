@@ -24,7 +24,7 @@
 	if(linked_hive.stored_larva)
 		overlays += mutable_appearance(icon,"[icon_state]_bubbling", layer = ABOVE_MOB_LAYER + 0.1, plane = GAME_PLANE)
 
-/obj/effect/alien/resin/special/pool/New(loc, var/hive_ref)
+/obj/effect/alien/resin/special/pool/New(loc, hive_ref)
 	last_larva_time = world.time
 	..(loc, hive_ref)
 	if(isnull(linked_hive))
@@ -74,7 +74,7 @@
 		// A self sustaining cycle until one hive kills more of the other hive to tip the balance
 
 		// Makes attacking hives very profitable if they can successfully wipe them out without suffering any significant losses
-		var/mob/living/carbon/Xenomorph/X = M
+		var/mob/living/carbon/xenomorph/X = M
 		if(X.hivenumber != linked_hive.hivenumber)
 			if(isXenoQueen(X))
 				larva_amount = 5
@@ -108,7 +108,7 @@
 	if(!linked_hive)
 		return
 
-	for(var/mob/living/carbon/Xenomorph/Larva/L in range(2, src))
+	for(var/mob/living/carbon/xenomorph/larva/L in range(2, src))
 		if(!L.ckey && L.poolable && !QDELETED(L))
 			visible_message(SPAN_XENODANGER("[L] quickly dives into the pool."))
 			linked_hive.stored_larva++
@@ -128,7 +128,7 @@
 		if(surge_cooldown > 30 SECONDS) //mostly for sanity purposes
 			surge_cooldown = surge_cooldown - surge_incremental_reduction //ramps up over time
 
-/obj/effect/alien/resin/special/pool/proc/melt_body(var/iterations = 3)
+/obj/effect/alien/resin/special/pool/proc/melt_body(iterations = 3)
 	if(!melting_body)
 		return
 
@@ -154,9 +154,9 @@
 
 	return linked_hive.stored_larva
 
-/obj/effect/alien/resin/special/pool/proc/spawn_pooled_larva(var/mob/xeno_candidate)
+/obj/effect/alien/resin/special/pool/proc/spawn_pooled_larva(mob/xeno_candidate)
 	if(can_spawn_larva() && xeno_candidate)
-		var/mob/living/carbon/Xenomorph/Larva/new_xeno = spawn_hivenumber_larva(loc, linked_hive.hivenumber)
+		var/mob/living/carbon/xenomorph/larva/new_xeno = spawn_hivenumber_larva(loc, linked_hive.hivenumber)
 		if(isnull(new_xeno))
 			return FALSE
 
@@ -208,7 +208,7 @@
 		H.KnockDown(5)
 	do_human_damage(H)
 
-/obj/effect/alien/resin/special/pool/proc/do_human_damage(var/mob/living/carbon/human/H)
+/obj/effect/alien/resin/special/pool/proc/do_human_damage(mob/living/carbon/human/H)
 	if(H.loc != loc)
 		return
 

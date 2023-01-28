@@ -225,7 +225,7 @@
 	..()
 
 // Called just before an attack_hand(), in mob/UnarmedAttack()
-/obj/item/clothing/gloves/proc/Touch(var/atom/A, var/proximity)
+/obj/item/clothing/gloves/proc/Touch(atom/A, proximity)
 	return 0 // return 1 to cancel attack_hand()
 
 
@@ -344,7 +344,7 @@
 		stored_item = null
 	. = ..()
 
-/obj/item/clothing/shoes/attack_hand(var/mob/living/M)
+/obj/item/clothing/shoes/attack_hand(mob/living/M)
 	if(stored_item && src.loc == M && !M.is_mob_incapacitated()) //Only allow someone to take out the stored_item if it's being worn or held. So you can pick them up off the floor
 		if(M.put_in_active_hand(stored_item))
 			to_chat(M, SPAN_NOTICE("You slide [stored_item] out of [src]."))
@@ -355,7 +355,7 @@
 		return
 	..()
 
-/obj/item/clothing/shoes/attackby(var/obj/item/I, var/mob/living/M)
+/obj/item/clothing/shoes/attackby(obj/item/I, mob/living/M)
 	if(items_allowed && items_allowed.len)
 		for (var/i in items_allowed)
 			if(istype(I, i))
@@ -389,7 +389,7 @@
 		return S.hold
 	return null
 
-/obj/item/clothing/clicked(var/mob/user, var/list/mods)
+/obj/item/clothing/clicked(mob/user, list/mods)
 	var/obj/item/storage/internal/pockets = get_pockets()
 	if(pockets && !mods["shift"] && mods["middle"] && CAN_PICKUP(user, src))
 		pockets.open(user)

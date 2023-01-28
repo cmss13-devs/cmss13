@@ -2,11 +2,11 @@
 //They can't, however, activate any of the special functions.
 //Thrall subtypes are located in /code/modules/cm_preds/thrall_items.dm
 
-/proc/add_to_missing_pred_gear(var/obj/item/W)
+/proc/add_to_missing_pred_gear(obj/item/W)
 	if(!is_admin_level(W.z))
 		GLOB.loose_yautja_gear |= W
 
-/proc/remove_from_missing_pred_gear(var/obj/item/W)
+/proc/remove_from_missing_pred_gear(obj/item/W)
 	GLOB.loose_yautja_gear -= W
 
 //=================//\\=================\\
@@ -153,7 +153,7 @@
 	var/clan_rank_required = CLAN_RANK_ELDER_INT
 	var/councillor_override = FALSE
 
-/obj/item/clothing/yautja_cape/Initialize(mapload, var/new_color = "#654321")
+/obj/item/clothing/yautja_cape/Initialize(mapload, new_color = "#654321")
 	. = ..()
 	color = new_color
 
@@ -322,12 +322,12 @@
 	ignore_z = TRUE
 	black_market_value = 100
 
-/obj/item/device/radio/headset/yautja/talk_into(mob/living/M as mob, message, channel, var/verb = "commands", var/datum/language/speaking)
+/obj/item/device/radio/headset/yautja/talk_into(mob/living/M as mob, message, channel, verb = "commands", datum/language/speaking)
 	if(!isYautja(M)) //Nope.
 		to_chat(M, SPAN_WARNING("You try to talk into the headset, but just get a horrible shrieking in your ears!"))
 		return
 
-	for(var/mob/living/carbon/Xenomorph/Hellhound/hellhound as anything in GLOB.hellhound_list)
+	for(var/mob/living/carbon/xenomorph/hellhound/hellhound as anything in GLOB.hellhound_list)
 		if(!hellhound.stat)
 			to_chat(hellhound, "\[Radio\]: [M.real_name] [verb], '<B>[message]</b>'.")
 	..()
@@ -604,7 +604,7 @@
 
 /obj/item/explosive/grenade/spawnergrenade/hellhound
 	name = "hellhound caller"
-	spawner_type = /mob/living/carbon/Xenomorph/Hellhound
+	spawner_type = /mob/living/carbon/xenomorph/hellhound
 	deliveryamt = 1
 	desc = "A strange piece of alien technology. It seems to call forth a hellhound."
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
@@ -692,7 +692,7 @@
 	trapped_mob = null
 	. = ..()
 
-/obj/item/hunting_trap/dropped(var/mob/living/carbon/human/mob) //Changes to "camouflaged" icons based on where it was dropped.
+/obj/item/hunting_trap/dropped(mob/living/carbon/human/mob) //Changes to "camouflaged" icons based on where it was dropped.
 	if(armed && isturf(mob.loc))
 		var/turf/T = mob.loc
 		if(istype(T,/turf/open/gm/dirt))
@@ -729,7 +729,7 @@
 		return
 	. = ..()
 
-/obj/item/hunting_trap/proc/trapMob(var/mob/living/carbon/C)
+/obj/item/hunting_trap/proc/trapMob(mob/living/carbon/C)
 	if(!armed)
 		return
 
@@ -752,13 +752,13 @@
 	if(ishuman(C))
 		C.emote("pain")
 	if(isXeno(C))
-		var/mob/living/carbon/Xenomorph/X = C
+		var/mob/living/carbon/xenomorph/X = C
 		C.emote("needhelp")
 		X.interference = 100 // Some base interference to give pred time to get some damage in, if it cannot land a single hit during this time pred is cheeks
 		RegisterSignal(X, COMSIG_XENO_PRE_HEAL, PROC_REF(block_heal))
 	message_all_yautja("A hunting trap has caught something in [get_area_name(loc)]!")
 
-/obj/item/hunting_trap/proc/block_heal(mob/living/carbon/Xenomorph/xeno)
+/obj/item/hunting_trap/proc/block_heal(mob/living/carbon/xenomorph/xeno)
 	SIGNAL_HANDLER
 	return COMPONENT_CANCEL_XENO_HEAL
 
@@ -788,7 +788,7 @@
 		qdel(tether_effect)
 		tether_effect = null
 
-/obj/item/hunting_trap/proc/disarm(var/mob/user)
+/obj/item/hunting_trap/proc/disarm(mob/user)
 	SIGNAL_HANDLER
 	armed = FALSE
 	anchored = FALSE
@@ -799,7 +799,7 @@
 		log_attack("[key_name(user)] has disarmed \a [src] at [get_location_in_text(user)].")
 	if (trapped_mob)
 		if (isXeno(trapped_mob))
-			var/mob/living/carbon/Xenomorph/X = trapped_mob
+			var/mob/living/carbon/xenomorph/X = trapped_mob
 			UnregisterSignal(X, COMSIG_XENO_PRE_HEAL)
 		trapped_mob = null
 	cleanup_tether()

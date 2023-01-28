@@ -16,7 +16,7 @@
 	var/channel = "almayer" // Which channel are we on? Needs to be set for these to properly work.
 	//1 = select event
 	//2 = authenticate
-	anchored = 1.0
+	anchored = TRUE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 2
 	active_power_usage = 6
@@ -121,7 +121,7 @@
 		message_staff("[key_name(event_triggered_by)] triggered and [key_name(event_confirmed_by)] confirmed event [event]", 1)
 	reset()
 
-/obj/structure/machinery/keycard_auth/proc/receive_request(var/obj/structure/machinery/keycard_auth/source)
+/obj/structure/machinery/keycard_auth/proc/receive_request(obj/structure/machinery/keycard_auth/source)
 	if(inoperable())
 		return
 	event_source = source
@@ -247,7 +247,7 @@ var/global/maint_all_access = 1
 		show_browser(user, dat, name, "keycard_auth", "size=500x300")
 	return
 
-/obj/structure/machinery/keycard_auth/lockdown/proc/timed_countdown(var/timeleft = 0)
+/obj/structure/machinery/keycard_auth/lockdown/proc/timed_countdown(timeleft = 0)
 	if(!timeleft)
 		for(var/obj/structure/machinery/door/poddoor/M in machines)
 			if(M.id == podlock_id && M.density)

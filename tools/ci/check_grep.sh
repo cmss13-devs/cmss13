@@ -23,6 +23,11 @@ if grep -P 'Merge conflict marker' maps/**/*.dmm; then
 	echo -e "${RED}ERROR: Merge conflict markers detected in map, please resolve all merge failures!${NC}"
 	st=1
 fi;
+if grep -El '(new|newlist|icon|matrix|sound)\(.+\)' maps/**/*.dmm;	then
+	echo
+	echo -e "${RED}ERROR: Using unsupported procs in variables in a map file! Please remove all instances of this.${NC}"
+	st=1
+fi;
 #if grep -P '^\ttag = \"icon' maps/**/*.dmm;	then
 #	echo
 #	echo -e "${RED}ERROR: tag vars from icon state generation detected in maps, please remove them.${NC}"

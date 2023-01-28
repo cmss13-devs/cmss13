@@ -200,7 +200,7 @@
 
 		modify_global_variables(href_list["varnamechange"], FALSE)
 
-/client/proc/modify_global_variables(var/param_var_name = null, var/autodetect_class = 0)
+/client/proc/modify_global_variables(param_var_name = null, autodetect_class = 0)
 	if(!check_rights(R_VAREDIT))
 		return
 

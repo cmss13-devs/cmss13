@@ -560,7 +560,7 @@ world
 	flat_icon.AddAlphaMask(alpha_mask)//Finally, let's mix in a distortion effect.
 	return flat_icon
 
-/proc/adjust_brightness(var/color, var/value)
+/proc/adjust_brightness(color, value)
 	if (!color) return "#FFFFFF"
 	if (!value) return color
 
@@ -570,7 +570,7 @@ world
 	RGB[3] = Clamp(RGB[3]+value,0,255)
 	return rgb(RGB[1],RGB[2],RGB[3])
 
-/proc/sort_atoms_by_layer(var/list/atoms)
+/proc/sort_atoms_by_layer(list/atoms)
 	// Comb sort icons based on levels
 	var/list/result = atoms.Copy()
 	var/gap = result.len
@@ -590,11 +590,11 @@ world
 	return result
 
 
-/image/proc/flick_overlay(var/atom/A, var/duration) //originally code related to goonPS. This isn't the original code, but has the same effect
+/image/proc/flick_overlay(atom/A, duration) //originally code related to goonPS. This isn't the original code, but has the same effect
 	A.overlays.Add(src)
 	addtimer(CALLBACK(src, PROC_REF(flick_remove_overlay), A), duration)
 
-/image/proc/flick_remove_overlay(var/atom/A)
+/image/proc/flick_remove_overlay(atom/A)
 	if(A)
 		A.overlays.Remove(src)
 

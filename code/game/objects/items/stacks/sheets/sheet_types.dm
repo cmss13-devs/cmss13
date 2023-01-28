@@ -115,7 +115,7 @@ var/global/list/datum/stack_recipe/plasteel_recipes = list ( \
 	sheettype = "plasteel"
 	stack_id = "plasteel"
 
-/obj/item/stack/sheet/plasteel/New(var/loc, var/amount=null)
+/obj/item/stack/sheet/plasteel/New(loc, amount=null)
 	recipes = plasteel_recipes
 	return ..()
 
@@ -178,7 +178,7 @@ var/global/list/datum/stack_recipe/wood_recipes = list ( \
 	singular_name = "wood plank"
 	icon_state = "sheet-wood"
 
-/obj/item/stack/sheet/wood/New(var/loc, var/amount=null)
+/obj/item/stack/sheet/wood/New(loc, amount=null)
 	recipes = wood_recipes
 	return ..()
 
@@ -295,7 +295,7 @@ var/global/list/datum/stack_recipe/cardboard_recipes = list ( \
 	sheettype = "cardboard"
 	stack_id = "cardboard"
 
-/obj/item/stack/sheet/cardboard/New(var/loc, var/amount=null)
+/obj/item/stack/sheet/cardboard/New(loc, amount=null)
 	recipes = cardboard_recipes
 	return ..()
 

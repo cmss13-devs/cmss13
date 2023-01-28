@@ -99,7 +99,7 @@
 			lunging = TRUE
 			addtimer(CALLBACK(src, PROC_REF(stop_lunging)), get_xeno_stun_duration(L, 2) SECONDS + 1 SECONDS)
 
-/mob/living/carbon/xenomorph/warrior/proc/stop_lunging(var/world_time)
+/mob/living/carbon/xenomorph/warrior/proc/stop_lunging(world_time)
 	lunging = FALSE
 
 /mob/living/carbon/xenomorph/warrior/hitby(atom/movable/AM)

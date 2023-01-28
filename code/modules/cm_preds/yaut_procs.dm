@@ -1,5 +1,5 @@
 // Notify all preds with the bracer icon
-/proc/message_all_yautja(var/msg, var/soundeffect = TRUE)
+/proc/message_all_yautja(msg, soundeffect = TRUE)
 	for(var/mob/living/carbon/human/Y in GLOB.yautja_mob_list)
 		// Send message to the bracer; appear multiple times if we have more bracers
 		for(var/obj/item/clothing/gloves/yautja/hunter/G in Y.contents)
@@ -7,7 +7,7 @@
 			if(G.notification_sound)
 				playsound(Y.loc, 'sound/items/pred_bracer.ogg', 75, 1)
 
-/mob/living/carbon/human/proc/message_thrall(var/msg)
+/mob/living/carbon/human/proc/message_thrall(msg)
 	if(!hunter_data.thrall)
 		return
 
@@ -19,7 +19,7 @@
 			playsound(T.loc, 'sound/items/pred_bracer.ogg', 75, 1)
 
 //Update the power display thing. This is called in Life()
-/mob/living/carbon/human/proc/update_power_display(var/perc)
+/mob/living/carbon/human/proc/update_power_display(perc)
 	if(hud_used?.pred_power_icon)
 		switch(perc)
 			if(91 to INFINITY)

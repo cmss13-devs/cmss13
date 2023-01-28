@@ -12,20 +12,20 @@
 	spawn_positions = -1
 	total_positions = -1
 
-/datum/job/antag/xenos/proc/calculate_extra_spawn_positions(var/count)
+/datum/job/antag/xenos/proc/calculate_extra_spawn_positions(count)
 	return max((round(count * XENO_TO_TOTAL_SPAWN_RATIO)), 0)
 
-/datum/job/antag/xenos/set_spawn_positions(var/count)
+/datum/job/antag/xenos/set_spawn_positions(count)
 	spawn_positions = max((round(count * XENO_TO_TOTAL_SPAWN_RATIO)), 1)
 	total_positions = spawn_positions
 
-/datum/job/antag/xenos/spawn_in_player(var/mob/new_player/NP)
+/datum/job/antag/xenos/spawn_in_player(mob/new_player/NP)
 	. = ..()
 	var/mob/living/carbon/human/H = .
 
 	transform_to_xeno(H, XENO_HIVE_NORMAL)
 
-/datum/job/antag/xenos/proc/transform_to_xeno(var/mob/living/carbon/human/H, var/hive_index)
+/datum/job/antag/xenos/proc/transform_to_xeno(mob/living/carbon/human/H, hive_index)
 	var/datum/mind/new_xeno = H.mind
 	new_xeno.setup_xeno_stats()
 	var/datum/hive_status/hive = GLOB.hive_datum[hive_index]

@@ -144,7 +144,7 @@
 	..()
 
 //Returns true if the user's id matches the lock's
-/obj/item/storage/backpack/proc/compare_id(var/mob/living/carbon/human/H)
+/obj/item/storage/backpack/proc/compare_id(mob/living/carbon/human/H)
 	var/obj/item/card/id/card = H.wear_id
 	if(!card || locking_id.registered_name != card.registered_name)
 		return FALSE
@@ -233,7 +233,7 @@
 	. = ..()
 	refill_santa_bag()
 
-/obj/item/storage/backpack/santabag/proc/refill_santa_bag(var/mob/living/user)
+/obj/item/storage/backpack/santabag/proc/refill_santa_bag(mob/living/user)
 	var/current_items = length(contents)
 	var/total_to_refill = storage_slots - current_items
 	for(var/total_storage_slots in 1 to total_to_refill)
@@ -247,7 +247,7 @@
 	if(HAS_TRAIT(user, TRAIT_SANTA)) //Only the Santa himself knows how to use this bag properly.
 		return TRUE
 
-/datum/action/item_action/specialist/santabag/New(var/mob/living/user, var/obj/item/holder)
+/datum/action/item_action/specialist/santabag/New(mob/living/user, obj/item/holder)
 	..()
 	name = "Refill Gift Bag"
 	action_icon_state = holder?.icon_state
@@ -467,7 +467,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	var/list/networks_transmit = list(FACTION_MARINE)
 	var/base_icon
 
-/datum/action/item_action/rto_pack/use_phone/New(var/mob/living/user, var/obj/item/holder)
+/datum/action/item_action/rto_pack/use_phone/New(mob/living/user, obj/item/holder)
 	..()
 	name = "Use Phone"
 	button.name = name
@@ -747,7 +747,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	sparks.start()
 	deactivate_camouflage(wearer, TRUE, TRUE)
 
-/obj/item/storage/backpack/marine/satchel/scout_cloak/proc/deactivate_camouflage(var/mob/living/carbon/human/H, var/anim = TRUE, var/forced)
+/obj/item/storage/backpack/marine/satchel/scout_cloak/proc/deactivate_camouflage(mob/living/carbon/human/H, anim = TRUE, forced)
 	if(!istype(H))
 		return FALSE
 
@@ -784,7 +784,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 
 	return COMPONENT_GRENADE_PRIME_CANCEL
 
-/obj/item/storage/backpack/marine/satchel/scout_cloak/proc/allow_shooting(var/mob/living/carbon/human/H)
+/obj/item/storage/backpack/marine/satchel/scout_cloak/proc/allow_shooting(mob/living/carbon/human/H)
 	if(camo_active && !allow_gun_usage)
 		return
 	H.allow_gun_usage = TRUE
@@ -792,7 +792,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 /datum/action/item_action/specialist/toggle_cloak
 	ability_primacy = SPEC_PRIMARY_ACTION_1
 
-/datum/action/item_action/specialist/toggle_cloak/New(var/mob/living/user, var/obj/item/holder)
+/datum/action/item_action/specialist/toggle_cloak/New(mob/living/user, obj/item/holder)
 	..()
 	name = "Toggle Cloak"
 	button.name = name

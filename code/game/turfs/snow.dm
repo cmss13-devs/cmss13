@@ -10,7 +10,7 @@
 	is_groundmap_turf = TRUE
 
 	//PLACING/REMOVING/BUILDING
-/turf/open/snow/attackby(var/obj/item/I, var/mob/user)
+/turf/open/snow/attackby(obj/item/I, mob/user)
 
 	//Light Stick
 	if(istype(I, /obj/item/lightstick))
@@ -60,7 +60,7 @@
 
 
 //Update icon
-/turf/open/snow/update_icon(var/update_full, var/skip_sides)
+/turf/open/snow/update_icon(update_full, skip_sides)
 	icon_state = "snow_[bleed_layer]"
 	setDir(pick(NORTH,SOUTH,EAST,WEST,NORTHEAST,NORTHWEST,SOUTHEAST,SOUTHWEST))
 	switch(bleed_layer)

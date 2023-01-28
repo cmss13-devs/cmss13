@@ -40,7 +40,7 @@
 					exterior_lighting.alpha = 0
 					animate(exterior_lighting, 1.5 SECONDS, alpha = min(GLOB.minimum_exterior_lighting_alpha, mob.lighting_alpha))
 
-/datum/weather_event/proc/process_mob_effect(var/mob/living/carbon/affected_mob, var/delta_time = 1)
+/datum/weather_event/proc/process_mob_effect(mob/living/carbon/affected_mob, delta_time = 1)
 	if(effect_message && prob(WEATHER_MESSAGE_PROB))
 		to_chat(affected_mob, SPAN_WARNING(effect_message))
 	if(damage_per_tick)

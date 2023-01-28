@@ -16,7 +16,7 @@
 		/datum/surgery_step/remove_larva
 	)
 
-/datum/surgery/chestburster_removal/can_start(mob/user, mob/living/carbon/patient, var/obj/limb/L, obj/item/tool)
+/datum/surgery/chestburster_removal/can_start(mob/user, mob/living/carbon/patient, obj/limb/L, obj/item/tool)
 	if(!locate(/obj/structure/machinery/optable) in get_turf(patient))
 		return FALSE
 

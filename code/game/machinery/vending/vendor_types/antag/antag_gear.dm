@@ -12,7 +12,7 @@
 	. = ..()
 	vend_flags |= VEND_FACTION_THEMES
 
-/obj/structure/machinery/cm_vending/gear/antag/get_listed_products(var/mob/user)
+/obj/structure/machinery/cm_vending/gear/antag/get_listed_products(mob/user)
 	. = list()
 	if(!user)
 		var/list/all_equipment = list()

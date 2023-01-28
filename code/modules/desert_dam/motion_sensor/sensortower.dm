@@ -129,7 +129,7 @@
 	START_PROCESSING(SSslowobj, src)
 	return TRUE
 
-/obj/structure/machinery/sensortower/attackby(var/obj/item/O as obj, var/mob/user as mob)
+/obj/structure/machinery/sensortower/attackby(obj/item/O as obj, mob/user as mob)
 	if(iswelder(O))
 		if(!HAS_TRAIT(O, TRAIT_TOOL_BLOWTORCH))
 			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))

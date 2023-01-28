@@ -315,7 +315,7 @@ var/global/list/gene_tag_masks = list()   // Gene obfuscation for delicious tria
 	return pick(mutants)
 
 //Mutates the plant overall (randomly).
-/datum/seed/proc/mutate(var/degree,var/turf/source_turf)
+/datum/seed/proc/mutate(degree, turf/source_turf)
 
 	if(!degree || immutable > 0) return
 
@@ -391,7 +391,7 @@ var/global/list/gene_tag_masks = list()   // Gene obfuscation for delicious tria
 	return
 
 //Mutates a specific trait/set of traits.
-/datum/seed/proc/apply_gene(var/datum/plantgene/gene)
+/datum/seed/proc/apply_gene(datum/plantgene/gene)
 
 	if(!gene || !gene.values || immutable > 0) return
 
@@ -495,7 +495,7 @@ var/global/list/gene_tag_masks = list()   // Gene obfuscation for delicious tria
 			flower_colour = gene.values[7]
 
 //Returns a list of the desired trait values.
-/datum/seed/proc/get_gene(var/genetype)
+/datum/seed/proc/get_gene(genetype)
 
 	if(!genetype) return 0
 
@@ -565,7 +565,7 @@ var/global/list/gene_tag_masks = list()   // Gene obfuscation for delicious tria
 	return (P ? P : 0)
 
 //Place the plant products at the feet of the user.
-/datum/seed/proc/harvest(var/mob/user,var/yield_mod,var/harvest_sample)
+/datum/seed/proc/harvest(mob/user, yield_mod, harvest_sample)
 
 	if(!user)
 		return
@@ -626,7 +626,7 @@ var/global/list/gene_tag_masks = list()   // Gene obfuscation for delicious tria
 // When the seed in this machine mutates/is modified, the tray seed value
 // is set to a new datum copied from the original. This datum won't actually
 // be put into the global datum list until the product is harvested, though.
-/datum/seed/proc/diverge(var/modified)
+/datum/seed/proc/diverge(modified)
 
 	if(immutable > 0) return
 

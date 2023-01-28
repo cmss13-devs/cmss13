@@ -449,7 +449,7 @@
 #define COMSIG_ACTION_UNHIDDEN "action_unhidden"
 
 
-/// From /obj/structure/proc/do_climb(var/mob/living/user, mods)
+/// From /obj/structure/proc/do_climb(mob/living/user, mods)
 #define COMSIG_LIVING_CLIMB_STRUCTURE "climb_over_structure"
 /// From /mob/living/Collide(): (atom/A)
 #define COMSIG_LIVING_PRE_COLLIDE "living_pre_collide"

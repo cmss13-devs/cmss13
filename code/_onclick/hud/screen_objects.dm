@@ -36,7 +36,7 @@
 	icon_state = "x"
 
 
-/atom/movable/screen/close/clicked(var/mob/user)
+/atom/movable/screen/close/clicked(mob/user)
 	if(master)
 		if(isstorage(master))
 			var/obj/item/storage/master_storage = master
@@ -53,7 +53,7 @@
 /atom/movable/screen/action_button/attack_ghost(mob/dead/observer/user)
 	return
 
-/atom/movable/screen/action_button/clicked(var/mob/user)
+/atom/movable/screen/action_button/clicked(mob/user)
 	if(!user || !source_action)
 		return TRUE
 
@@ -75,7 +75,7 @@
 	var/coord_row_offset = 26
 	return "WEST[coord_col]:[coord_col_offset],NORTH[coord_row]:[coord_row_offset]"
 
-/atom/movable/screen/action_button/proc/set_maptext(var/new_maptext, var/new_maptext_x, var/new_maptext_y)
+/atom/movable/screen/action_button/proc/set_maptext(new_maptext, new_maptext_x, new_maptext_y)
 	overlays -= maptext_overlay
 	maptext_overlay = image(null, null, null, layer + 0.1)
 	maptext_overlay.maptext = new_maptext
@@ -91,7 +91,7 @@
 	icon_state = "hide"
 	var/hidden = 0
 
-/atom/movable/screen/action_button/hide_toggle/clicked(var/mob/user, mods)
+/atom/movable/screen/action_button/hide_toggle/clicked(mob/user, mods)
 	user.hud_used.action_buttons_hidden = !user.hud_used.action_buttons_hidden
 	hidden = user.hud_used.action_buttons_hidden
 	if(hidden)
@@ -155,7 +155,7 @@
 		return
 	screen_loc = null
 
-/atom/movable/screen/gun/move/clicked(var/mob/user)
+/atom/movable/screen/gun/move/clicked(mob/user)
 	if (..())
 		return 1
 
@@ -186,7 +186,7 @@
 			return
 	screen_loc = null
 
-/atom/movable/screen/gun/run/clicked(var/mob/user)
+/atom/movable/screen/gun/run/clicked(mob/user)
 	if (..())
 		return 1
 
@@ -216,7 +216,7 @@
 		return
 	screen_loc = null
 
-/atom/movable/screen/gun/item/clicked(var/mob/user)
+/atom/movable/screen/gun/item/clicked(mob/user)
 	if (..())
 		return 1
 
@@ -240,7 +240,7 @@
 	else
 		icon_state = "gun0"
 
-/atom/movable/screen/gun/mode/clicked(var/mob/user)
+/atom/movable/screen/gun/mode/clicked(mob/user)
 	if (..())
 		return 1
 	user.ToggleGunMode()
@@ -257,7 +257,7 @@
 	overlays += image('icons/mob/hud/zone_sel.dmi', "[selecting]")
 	user.zone_selected = selecting
 
-/atom/movable/screen/zone_sel/clicked(var/mob/user, var/list/mods)
+/atom/movable/screen/zone_sel/clicked(mob/user, list/mods)
 	if (..())
 		return 1
 
@@ -323,7 +323,7 @@
 /atom/movable/screen/zone_sel/robot
 	icon = 'icons/mob/hud/screen1_robot.dmi'
 
-/atom/movable/screen/clicked(var/mob/user)
+/atom/movable/screen/clicked(mob/user)
 	if(!user) return 1
 
 	switch(name)
@@ -405,7 +405,7 @@
 	return 0
 
 
-/atom/movable/screen/inventory/clicked(var/mob/user)
+/atom/movable/screen/inventory/clicked(mob/user)
 	if (..())
 		return 1
 	if(user.is_mob_incapacitated(TRUE))
@@ -439,7 +439,7 @@
 	icon = 'icons/mob/hud/human_midnight.dmi'
 	icon_state = "act_throw_off"
 
-/atom/movable/screen/throw_catch/clicked(var/mob/user, var/list/mods)
+/atom/movable/screen/throw_catch/clicked(mob/user, list/mods)
 	var/mob/living/carbon/carbon = user
 
 	if (!istype(carbon))
@@ -460,7 +460,7 @@
 	icon_state = "act_drop"
 	layer = HUD_LAYER
 
-/atom/movable/screen/drop/clicked(var/mob/user)
+/atom/movable/screen/drop/clicked(mob/user)
 	user.drop_item_v()
 	return 1
 
@@ -471,7 +471,7 @@
 	icon_state = "act_resist"
 	layer = HUD_LAYER
 
-/atom/movable/screen/resist/clicked(var/mob/user)
+/atom/movable/screen/resist/clicked(mob/user)
 	if(isliving(user))
 		var/mob/living/living = user
 		living.resist()
@@ -488,7 +488,7 @@
 		return TRUE
 	user.toggle_mov_intent()
 
-/mob/living/proc/set_movement_intent(var/new_intent)
+/mob/living/proc/set_movement_intent(new_intent)
 	m_intent = new_intent
 	if(hud_used?.move_intent)
 		hud_used.move_intent.set_movement_intent_icon(m_intent)
@@ -506,7 +506,7 @@
 			set_movement_intent(MOVE_INTENT_RUN)
 	return TRUE
 
-/atom/movable/screen/mov_intent/proc/set_movement_intent_icon(var/new_intent)
+/atom/movable/screen/mov_intent/proc/set_movement_intent_icon(new_intent)
 	switch(new_intent)
 		if(MOVE_INTENT_WALK)
 			icon_state = "walking"
@@ -523,11 +523,11 @@
 	name = "intent"
 	icon_state = "intent_help"
 
-/atom/movable/screen/act_intent/clicked(var/mob/user)
+/atom/movable/screen/act_intent/clicked(mob/user)
 	user.a_intent_change()
 	return 1
 
-/atom/movable/screen/act_intent/corner/clicked(var/mob/user, var/list/mods)
+/atom/movable/screen/act_intent/corner/clicked(mob/user, list/mods)
 	var/_x = text2num(mods["icon-x"])
 	var/_y = text2num(mods["icon-y"])
 
@@ -557,7 +557,7 @@
 	icon = 'icons/mob/hud/human_midnight.dmi'
 	icon_state = "pull0"
 
-/atom/movable/screen/pull/clicked(var/mob/user)
+/atom/movable/screen/pull/clicked(mob/user)
 	if (..())
 		return 1
 	user.stop_pulling()
@@ -673,7 +673,7 @@
 	name = "toggle night vision"
 	icon_state = "nightvision_full"
 
-/atom/movable/screen/xenonightvision/clicked(var/mob/user)
+/atom/movable/screen/xenonightvision/clicked(mob/user)
 	if (..())
 		return 1
 	var/mob/living/carbon/xenomorph/X = user
@@ -681,7 +681,7 @@
 	update_icon(X)
 	return 1
 
-/atom/movable/screen/xenonightvision/update_icon(var/mob/living/carbon/xenomorph/owner)
+/atom/movable/screen/xenonightvision/update_icon(mob/living/carbon/xenomorph/owner)
 	. = ..()
 	var/vision_define
 	switch(owner.lighting_alpha)
@@ -708,7 +708,7 @@
 	name = "toggle"
 	icon_state = "other"
 
-/atom/movable/screen/toggle_inv/clicked(var/mob/user)
+/atom/movable/screen/toggle_inv/clicked(mob/user)
 	if (..())
 		return 1
 
@@ -735,7 +735,7 @@
 	var/atom/assigned_atom
 	var/rotate_amount = 90
 
-/atom/movable/screen/rotate/Initialize(mapload, var/set_assigned_atom)
+/atom/movable/screen/rotate/Initialize(mapload, set_assigned_atom)
 	. = ..()
 	assigned_atom = set_assigned_atom
 

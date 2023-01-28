@@ -496,7 +496,7 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 		add_fingerprint(usr)
 
 
-/obj/structure/machinery/cryopod/proc/go_in_cryopod(mob/M, var/silent = FALSE)
+/obj/structure/machinery/cryopod/proc/go_in_cryopod(mob/M, silent = FALSE)
 	if(occupant)
 		return
 	M.forceMove(src)

@@ -329,7 +329,7 @@
 	to_chat(targets, html = message, type = MESSAGE_TYPE_RADIO)
 
 /// Displays a message to squad members directly on the game map
-/datum/squad/proc/send_maptext(var/text = "", var/title_text = "", var/only_leader = 0)
+/datum/squad/proc/send_maptext(text = "", title_text = "", only_leader = 0)
 	var/message_colour = squad_colors_chat[color]
 	if(only_leader)
 		if(squad_leader)
@@ -342,7 +342,7 @@
 				M.play_screen_text("<span class='langchat' style=font-size:16pt;text-align:center valign='top'><u>[title_text]</u></span><br>" + text, /atom/movable/screen/text/screen_text/command_order, message_colour)
 
 /// Displays a message to the squad members in chat
-/datum/squad/proc/send_message(var/text = "", var/plus_name = 0, var/only_leader = 0)
+/datum/squad/proc/send_message(text = "", plus_name = 0, only_leader = 0)
 	var/nametext = ""
 	if(plus_name)
 		nametext = "[usr.name] transmits: "
@@ -368,7 +368,7 @@
 //Straight-up insert a marine into a squad.
 //This sets their ID, increments the total count, and so on. Everything else is done in job_controller.dm.
 //So it does not check if the squad is too full already, or randomize it, etc.
-/datum/squad/proc/put_marine_in_squad(var/mob/living/carbon/human/M, var/obj/item/card/id/ID)
+/datum/squad/proc/put_marine_in_squad(mob/living/carbon/human/M, obj/item/card/id/ID)
 
 	if(!istype(M))
 		return FALSE //Logic
@@ -475,7 +475,7 @@
 	return TRUE
 
 //proc used by the overwatch console to transfer marine to another squad
-/datum/squad/proc/remove_marine_from_squad(mob/living/carbon/human/M, var/obj/item/card/id/ID)
+/datum/squad/proc/remove_marine_from_squad(mob/living/carbon/human/M, obj/item/card/id/ID)
 	if(M.assigned_squad != src)
 		return //not assigned to the correct squad
 	var/obj/item/card/id/C = ID
@@ -574,7 +574,7 @@
 
 //Not a safe proc. Returns null if squads or jobs aren't set up.
 //Mostly used in the marine squad console in marine_consoles.dm.
-/proc/get_squad_by_name(var/text)
+/proc/get_squad_by_name(text)
 	if(!RoleAuthority || RoleAuthority.squads.len == 0)
 		return null
 	var/datum/squad/S
@@ -583,13 +583,13 @@
 			return S
 	return null
 
-/datum/squad/proc/engage_squad(var/toggle_lock = FALSE)
+/datum/squad/proc/engage_squad(toggle_lock = FALSE)
 	active = TRUE//Shows up in Overwatch
 	usable = TRUE//Shows up in most backend checks
 	if(toggle_lock)//Allows adding new marines
 		locked = FALSE
 
-/datum/squad/proc/lock_squad(var/toggle_lock = FALSE)
+/datum/squad/proc/lock_squad(toggle_lock = FALSE)
 	active = FALSE
 	usable = FALSE
 	if(toggle_lock)

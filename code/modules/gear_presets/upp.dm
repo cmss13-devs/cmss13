@@ -9,7 +9,7 @@
 	. = ..()
 	access = get_antagonist_access()
 
-/datum/equipment_preset/upp/load_name(mob/living/carbon/human/H, var/randomise)
+/datum/equipment_preset/upp/load_name(mob/living/carbon/human/H, randomise)
 	H.gender = pick(60;MALE,40;FEMALE)
 	var/datum/preferences/A = new()
 	A.randomize_appearance(H)
@@ -1793,7 +1793,7 @@
 	paygrade = "SYN"
 	idtype = /obj/item/card/id/gold
 
-/datum/equipment_preset/upp/synth/load_name(mob/living/carbon/human/H, var/randomise)
+/datum/equipment_preset/upp/synth/load_name(mob/living/carbon/human/H, randomise)
 	H.gender = pick(50;MALE,50;FEMALE)
 	var/datum/preferences/A = new()
 	A.randomize_appearance(H)

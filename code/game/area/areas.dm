@@ -124,7 +124,7 @@
 		return SSweather.weather_event_instance.ambience
 	return ambience_exterior
 
-/area/proc/poweralert(var/state, var/obj/source as obj)
+/area/proc/poweralert(state, obj/source as obj)
 	if (state != poweralm)
 		poweralm = state
 		if(istype(source)) //Only report power alarms on the z-level where the source is located.
@@ -305,7 +305,7 @@
 
 	if(icon_state != I) icon_state = I //If the icon state changed, change it. Otherwise do nothing.
 
-/area/proc/powered(var/chan) // return true if the area has power to given channel
+/area/proc/powered(chan) // return true if the area has power to given channel
 	if(!master.requires_power)
 		return 1
 	if(master.always_unpowered)
@@ -320,7 +320,7 @@
 
 	return 0
 
-/area/proc/update_power_channels(var/equip, var/light, var/environ)
+/area/proc/update_power_channels(equip, light, environ)
 	if(!master)
 		CRASH("CALLED update_power_channels on non-master channel!")
 	var/changed = FALSE
@@ -345,7 +345,7 @@
 		if(flags_alarm_state)
 			RA.updateicon()
 
-/area/proc/usage(var/chan, var/reset_oneoff = FALSE)
+/area/proc/usage(chan, reset_oneoff = FALSE)
 	var/used = 0
 	switch(chan)
 		if(POWER_CHANNEL_LIGHT)
@@ -365,7 +365,7 @@
 
 	return used
 
-/area/proc/use_power(var/amount, var/chan)
+/area/proc/use_power(amount, chan)
 	switch(chan)
 		if(POWER_CHANNEL_EQUIP)
 			master.used_equip += amount
@@ -395,18 +395,18 @@
 		var/mob/exiting_mob = A
 		exiting_mob?.client?.soundOutput?.update_ambience(target_area = null, ambience_override = null, force_update = TRUE)
 
-/area/proc/add_machine(var/obj/structure/machinery/M)
+/area/proc/add_machine(obj/structure/machinery/M)
 	SHOULD_NOT_SLEEP(TRUE)
 	if(istype(M))
 		use_power(M.calculate_current_power_usage(), M.power_channel)
 		M.power_change()
 
-/area/proc/remove_machine(var/obj/structure/machinery/M)
+/area/proc/remove_machine(obj/structure/machinery/M)
 	SHOULD_NOT_SLEEP(TRUE)
 	if(istype(M))
 		use_power(-M.calculate_current_power_usage(), M.power_channel)
 
-/area/proc/gravitychange(var/gravitystate = 0, var/area/A)
+/area/proc/gravitychange(gravitystate = 0, area/A)
 
 	A.has_gravity = gravitystate
 

@@ -1,5 +1,5 @@
 
-// reference: /client/proc/modify_variables(var/atom/O, var/param_var_name = null, var/autodetect_class = 0)
+// reference: /client/proc/modify_variables(atom/O, param_var_name = null, autodetect_class = 0)
 
 /datum/proc/is_datum_protected()
 	return FALSE
@@ -290,7 +290,7 @@ body
 		return FALSE
 	return TRUE
 
-/client/proc/debug_variable(name, value, level, var/datum/DA = null)
+/client/proc/debug_variable(name, value, level, datum/DA = null)
 	var/html = ""
 	var/change = 0
 	//to make the value bold if changed

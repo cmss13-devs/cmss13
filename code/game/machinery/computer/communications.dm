@@ -306,10 +306,10 @@
 
 	updateUsrDialog()
 
-/obj/structure/machinery/computer/communications/attack_remote(var/mob/user as mob)
+/obj/structure/machinery/computer/communications/attack_remote(mob/user as mob)
 	return attack_hand(user)
 
-/obj/structure/machinery/computer/communications/attack_hand(var/mob/user as mob)
+/obj/structure/machinery/computer/communications/attack_hand(mob/user as mob)
 	if(..()) return FALSE
 
 	//Should be refactored later, if there's another ship that can appear during a mode with a comm console.
@@ -428,7 +428,7 @@
 /obj/structure/machinery/computer/communications/simple
 	circuit = null
 
-/obj/structure/machinery/computer/communications/simple/attack_hand(var/mob/user as mob)
+/obj/structure/machinery/computer/communications/simple/attack_hand(mob/user as mob)
 	user.set_interaction(src)
 	var/dat = "<body>"
 

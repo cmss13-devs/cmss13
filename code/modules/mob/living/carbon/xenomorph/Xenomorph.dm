@@ -497,7 +497,7 @@
 	RegisterSignal(src, COMSIG_MOB_SCREECH_ACT, PROC_REF(handle_screech_act))
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_XENO_SPAWN, src)
 
-/mob/living/carbon/xenomorph/proc/handle_screech_act(var/mob/self, var/mob/living/carbon/xenomorph/queen/queen)
+/mob/living/carbon/xenomorph/proc/handle_screech_act(mob/self, mob/living/carbon/xenomorph/queen/queen)
 	SIGNAL_HANDLER
 	if(queen.can_not_harm(src))
 		return COMPONENT_SCREECH_ACT_CANCEL
@@ -508,7 +508,7 @@
 		return
 	SSminimaps.add_marker(src, z, hud_flags = flags, given_image = caste.get_minimap_icon())
 
-/mob/living/carbon/xenomorph/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/mob/living/carbon/xenomorph/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_pass = PASS_MOB_IS_XENO
@@ -567,7 +567,7 @@
 
 	handle_name(in_hive)
 
-/mob/living/carbon/xenomorph/proc/handle_name(var/datum/hive_status/in_hive)
+/mob/living/carbon/xenomorph/proc/handle_name(datum/hive_status/in_hive)
 	var/name_prefix = in_hive.prefix
 	var/name_client_prefix = ""
 	var/name_client_postfix = ""
@@ -591,7 +591,7 @@
 	// Since we updated our name we should update the info in the UI
 	in_hive.hive_ui.update_xeno_info()
 
-/mob/living/carbon/xenomorph/proc/set_lighting_alpha_from_prefs(var/client/xeno_client)
+/mob/living/carbon/xenomorph/proc/set_lighting_alpha_from_prefs(client/xeno_client)
 	var/vision_level = xeno_client?.prefs?.xeno_vision_level_pref
 	switch(vision_level)
 		if(XENO_VISION_LEVEL_NO_NVG)
@@ -605,7 +605,7 @@
 		var/atom/movable/screen/xenonightvision/screenobj = (locate() in hud_used.infodisplay)
 		screenobj.update_icon(src)
 
-/mob/living/carbon/xenomorph/proc/set_lighting_alpha(var/level)
+/mob/living/carbon/xenomorph/proc/set_lighting_alpha(level)
 	switch(level)
 		if(XENO_VISION_LEVEL_NO_NVG)
 			lighting_alpha = LIGHTING_PLANE_ALPHA_VISIBLE
@@ -803,11 +803,11 @@
 /mob/living/carbon/xenomorph/get_pull_miltiplier()
 	return pull_multiplier
 
-/mob/living/carbon/xenomorph/proc/set_faction(var/new_faction = FACTION_XENOMORPH)
+/mob/living/carbon/xenomorph/proc/set_faction(new_faction = FACTION_XENOMORPH)
 	faction = new_faction
 
 //Call this function to set the hive and do other cleanup
-/mob/living/carbon/xenomorph/proc/set_hive_and_update(var/new_hivenumber = XENO_HIVE_NORMAL)
+/mob/living/carbon/xenomorph/proc/set_hive_and_update(new_hivenumber = XENO_HIVE_NORMAL)
 	var/datum/hive_status/new_hive = GLOB.hive_datum[new_hivenumber]
 	if(!new_hive)
 		return
@@ -1052,7 +1052,7 @@
 	SIGNAL_HANDLER
 	return COMPONENT_CANCEL_XENO_HEAL
 
-/mob/living/carbon/xenomorph/proc/set_resin_build_order(var/list/build_order)
+/mob/living/carbon/xenomorph/proc/set_resin_build_order(list/build_order)
 	resin_build_order = build_order
 	if(length(resin_build_order))
 		selected_resin = resin_build_order[1]
@@ -1070,5 +1070,5 @@
 		return
 	return ..()
 
-/mob/living/carbon/xenomorph/handle_blood_splatter(var/splatter_dir, duration)
+/mob/living/carbon/xenomorph/handle_blood_splatter(splatter_dir, duration)
 	new /obj/effect/temp_visual/dir_setting/bloodsplatter/xenosplatter(loc, splatter_dir, duration)

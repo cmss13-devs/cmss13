@@ -219,7 +219,7 @@
 	//As a joke, clown has all access so they can clown everywhere...
 	access = get_all_accesses()
 
-/datum/equipment_preset/corpse/clown/load_name(mob/living/carbon/human/H, var/randomise)
+/datum/equipment_preset/corpse/clown/load_name(mob/living/carbon/human/H, randomise)
 	. = ..() //To load gender, randomise appearance, etc.
 	H.change_real_name(H, pick(clown_names)) //Picking a proper clown name!
 
@@ -475,7 +475,7 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/waiter(H), WEAR_BODY)
 	. = ..()
 
-/datum/equipment_preset/corpse/bridgeofficer/johnson/load_name(mob/living/carbon/human/H, var/randomise)
+/datum/equipment_preset/corpse/bridgeofficer/johnson/load_name(mob/living/carbon/human/H, randomise)
 	H.change_real_name(H, "Johnson Telovin")
 
 //*****************************************************************************************************/

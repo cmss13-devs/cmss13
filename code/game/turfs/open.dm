@@ -95,7 +95,7 @@
 				edge_overlay.SwapColor(rgb(255, 0, 255, 255), rgb(0, 0, 0, 0))
 				overlays += edge_overlay
 
-/turf/open/proc/scorch(var/heat_level)
+/turf/open/proc/scorch(heat_level)
 	// All scorched icons should be in the dmi that their unscorched bases are
 	// "name_scorched#" where # is the scorchedness level 0 - 1 - 2 - 3
 	// 0 being no scorch, and 3 the most scorched
@@ -283,7 +283,7 @@
 	icon = 'icons/turf/ground_map.dmi'
 	icon_state = "desert"
 
-/turf/open/gm/attackby(var/obj/item/I, var/mob/user)
+/turf/open/gm/attackby(obj/item/I, mob/user)
 
 	//Light Stick
 	if(istype(I, /obj/item/lightstick))
@@ -459,7 +459,7 @@
 			SEND_SIGNAL(H, COMSIG_HUMAN_CLEAR_BLOODY_FEET)
 
 
-/turf/open/gm/river/proc/cleanup(var/mob/living/carbon/human/M)
+/turf/open/gm/river/proc/cleanup(mob/living/carbon/human/M)
 	if(!M || !istype(M)) return
 
 	if(M.back)
@@ -650,7 +650,7 @@
 
 
 
-/turf/open/jungle/proc/Spread(var/probability, var/prob_loss = 50)
+/turf/open/jungle/proc/Spread(probability, prob_loss = 50)
 	if(probability <= 0)
 		return
 	for(var/turf/open/jungle/J in orange(1, src))
@@ -666,7 +666,7 @@
 		if(P && prob(probability))
 			P.Spread(probability - prob_loss)
 
-/turf/open/jungle/attackby(var/obj/item/I, var/mob/user)
+/turf/open/jungle/attackby(obj/item/I, mob/user)
 	//Light Stick
 	if(istype(I, /obj/item/lightstick))
 		var/obj/item/lightstick/L = I

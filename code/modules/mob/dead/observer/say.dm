@@ -1,4 +1,4 @@
-/mob/dead/observer/say(var/message)
+/mob/dead/observer/say(message)
 	message = strip_html(message)
 
 	if (!message)
@@ -17,7 +17,7 @@
 
 
 
-/mob/dead/observer/hear_say(var/message, var/verb = "says", var/datum/language/language = null, var/alt_name = "",var/italics = 0, var/mob/speaker = null, var/sound/speech_sound, var/sound_vol)
+/mob/dead/observer/hear_say(message, verb = "says", datum/language/language = null, alt_name = "", italics = 0, mob/speaker = null, sound/speech_sound, sound_vol)
 	if(!client)
 		return
 
@@ -66,7 +66,7 @@
 
 
 
-/mob/dead/observer/emote(var/act, var/type, var/message)
+/mob/dead/observer/emote(act, type, message)
 	message = strip_html(message)
 
 	if(!message)

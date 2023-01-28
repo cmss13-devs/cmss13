@@ -46,7 +46,7 @@
 			var/mob/living/carbon/C = AM
 			var/slow_amount = 0.75
 			var/can_stuck = 1
-			if(istype(C, /mob/living/carbon/xenomorph)||isYautja(C))
+			if(istype(C, /mob/living/carbon/xenomorph)||isyautja(C))
 				slow_amount = 0.25
 				can_stuck = 0
 			var/new_slowdown = C.next_move_slowdown + (slow_amount * bleed_layer)

@@ -143,7 +143,7 @@ var/global/east_riverstart = 0
 		if(!istype(M.loc, /turf))
 			return
 
-		if(isXeno(M))
+		if(isxeno(M))
 			if(M.pulling)
 				to_chat(M, SPAN_WARNING("The current forces you to release [M.pulling]!"))
 				M.stop_pulling()
@@ -190,11 +190,11 @@ var/global/east_riverstart = 0
 	if(M.stat == DEAD)
 		return
 	M.last_damage_data = create_cause_data("toxic water")
-	if(isXenoLarva(M))
+	if(islarva(M))
 		M.apply_damage(2,BURN)
-	else if(isXeno(M) && !isXenoLarva(M))
+	else if(isxeno(M) && !islarva(M))
 		M.apply_damage(34,BURN)
-	else if(isYautja(M))
+	else if(isyautja(M))
 		M.apply_damage(0.5,BURN)
 	else
 		var/dam_amount = 3
@@ -211,7 +211,7 @@ var/global/east_riverstart = 0
 			M.apply_damage(dam_amount,BURN,"r_foot")
 			M.apply_damage(dam_amount,BURN,"groin")
 		M.apply_effect(20,IRRADIATE,0)
-		if( !isSynth(M) ) to_chat(M, SPAN_DANGER("The water burns!"))
+		if( !issynth(M) ) to_chat(M, SPAN_DANGER("The water burns!"))
 	playsound(M, 'sound/bullets/acid_impact1.ogg', 10, 1)
 
 

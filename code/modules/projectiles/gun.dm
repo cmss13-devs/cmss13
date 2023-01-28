@@ -1475,7 +1475,7 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 		if(ishuman(user))
 			var/mob/living/carbon/human/H = user
 			if(!H.allow_gun_usage)
-				if(isSynth(user))
+				if(issynth(user))
 					to_chat(user, SPAN_WARNING("Your programming does not allow you to use firearms."))
 				else
 					to_chat(user, SPAN_WARNING("You are unable to use firearms."))

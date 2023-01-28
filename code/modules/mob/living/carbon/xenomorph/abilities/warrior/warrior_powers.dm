@@ -68,7 +68,7 @@
 	if (!action_cooldown_check())
 		return
 
-	if (!isXenoOrHuman(target_atom) || woyer.can_not_harm(target_atom))
+	if (!isxeno_human(target_atom) || woyer.can_not_harm(target_atom))
 		return
 
 	if (!woyer.check_state() || woyer.agility)
@@ -130,7 +130,7 @@
 	if (!action_cooldown_check())
 		return
 
-	if (!isXenoOrHuman(target_atom) || woyer.can_not_harm(target_atom))
+	if (!isxeno_human(target_atom) || woyer.can_not_harm(target_atom))
 		return
 
 	if (!woyer.check_state() || woyer.agility)
@@ -179,9 +179,9 @@
 			to_chat(carbone, SPAN_DANGER("The splint on your [target_limb.display_name] comes apart!"))
 			carbone.pain.apply_pain(PAIN_BONE_BREAK_SPLINTED)
 
-		if(isHumanStrict(carbone))
+		if(ishuman_strict(carbone))
 			carbone.apply_effect(3, SLOW)
-		if(isYautja(carbone))
+		if(isyautja(carbone))
 			damage = rand(base_punch_damage_pred, base_punch_damage_pred + damage_variance)
 		else if(target_limb.status & (LIMB_ROBOT|LIMB_SYNTHSKIN))
 			damage = rand(base_punch_damage_synth, base_punch_damage_synth + damage_variance)

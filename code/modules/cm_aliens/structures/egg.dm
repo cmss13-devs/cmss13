@@ -36,7 +36,7 @@
 
 /obj/effect/alien/egg/get_examine_text(mob/user)
 	. = ..()
-	if(isXeno(user) && status == EGG_GROWN)
+	if(isxeno(user) && status == EGG_GROWN)
 		. += "Ctrl + Click egg to retrieve child into your empty hand if you can carry it."
 
 /obj/effect/alien/egg/attack_alien(mob/living/carbon/xenomorph/M)
@@ -62,7 +62,7 @@
 			to_chat(M, SPAN_XENOWARNING("The child is not developed yet."))
 			return XENO_NO_DELAY_ACTION
 		if(EGG_GROWN)
-			if(isXenoLarva(M))
+			if(islarva(M))
 				to_chat(M, SPAN_XENOWARNING("You nudge the egg, but nothing happens."))
 				return
 			to_chat(M, SPAN_XENONOTICE("You retrieve the child."))
@@ -232,7 +232,7 @@
 
 /obj/effect/alien/egg/HasProximity(atom/movable/AM)
 	if(status == EGG_GROWN)
-		if(!can_hug(AM, hivenumber) || isYautja(AM) || isSynth(AM)) //Predators are too stealthy to trigger eggs to burst. Maybe the huggers are afraid of them.
+		if(!can_hug(AM, hivenumber) || isyautja(AM) || issynth(AM)) //Predators are too stealthy to trigger eggs to burst. Maybe the huggers are afraid of them.
 			return
 		Burst(FALSE, TRUE, null)
 

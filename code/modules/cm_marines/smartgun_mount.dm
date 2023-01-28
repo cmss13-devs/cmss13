@@ -276,7 +276,7 @@
 		. += "The M56D isn't screwed into the mount. Use a <b>screwdriver</b> to finish the job."
 
 /obj/structure/machinery/m56d_post/attack_alien(mob/living/carbon/xenomorph/M)
-	if(isXenoLarva(M))
+	if(islarva(M))
 		return //Larvae can't do shit
 
 	M.visible_message(SPAN_DANGER("[M] has slashed [src]!"),
@@ -638,7 +638,7 @@
 	return 1
 
 /obj/structure/machinery/m56d_hmg/attack_alien(mob/living/carbon/xenomorph/M) // Those Ayy lmaos.
-	if(isXenoLarva(M))
+	if(islarva(M))
 		return //Larvae can't do shit
 
 	M.visible_message(SPAN_DANGER("[M] has slashed [src]!"),

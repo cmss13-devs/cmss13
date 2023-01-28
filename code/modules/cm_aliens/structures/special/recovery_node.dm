@@ -11,7 +11,7 @@
 
 /obj/effect/alien/resin/special/recovery/get_examine_text(mob/user)
 	. = ..()
-	if((isXeno(user) || isobserver(user)) && linked_hive)
+	if((isxeno(user) || isobserver(user)) && linked_hive)
 		. += "Recovers the health of adjacent Xenomorphs."
 
 /obj/effect/alien/resin/special/recovery/process()

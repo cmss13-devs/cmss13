@@ -541,7 +541,7 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 		animation_flash_color(ignited_morb, tied_reagent.burncolor) //pain hit flicker
 
 		var/msg = "Augh! You are roasted by the flames!"
-		if (isXeno(ignited_morb))
+		if (isxeno(ignited_morb))
 			to_chat(ignited_morb, SPAN_XENODANGER(msg))
 		else
 			to_chat(ignited_morb, SPAN_HIGHDANGER(msg))
@@ -621,7 +621,7 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 	var/variant_burn_msg = null
 	switch(fire_variant) //Fire variant special message appends.
 		if(FIRE_VARIANT_TYPE_B)
-			if(isXeno(M))
+			if(isxeno(M))
 				var/mob/living/carbon/xenomorph/X = M
 				X.armor_deflection?(variant_burn_msg=" You feel the flames weakening your exoskeleton!"):(variant_burn_msg=" You feel the flaming chemicals eating into your body!")
 	to_chat(M, SPAN_DANGER("You are burned![variant_burn_msg?"[variant_burn_msg]":""]"))

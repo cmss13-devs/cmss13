@@ -244,7 +244,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 /obj/item/clothing/suit/storage/marine/mob_can_equip(mob/living/carbon/human/M, slot, disable_warning = 0)
 	. = ..()
 	if (.)
-		if(isSynth(M) && M.allow_gun_usage == FALSE && !(flags_marine_armor & SYNTH_ALLOWED))
+		if(issynth(M) && M.allow_gun_usage == FALSE && !(flags_marine_armor & SYNTH_ALLOWED))
 			M.visible_message(SPAN_DANGER("Your programming prevents you from wearing this!"))
 			return 0
 
@@ -850,7 +850,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	actions_types = list(/datum/action/item_action/toggle, /datum/action/item_action/specialist/prepare_position)
 
 /obj/item/clothing/suit/storage/marine/ghillie/dropped(mob/user)
-	if(ishuman(user) && !isSynth(user))
+	if(ishuman(user) && !issynth(user))
 		deactivate_camouflage(user, FALSE)
 
 	. = ..()

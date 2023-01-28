@@ -40,7 +40,7 @@
 	icon_state = "spent_flech"
 
 /obj/item/prop/helmetgarb/prescription_bottle
-	name = "perscription medication"
+	name = "prescription medication"
 	desc = "Anti-anxiety meds? Amphetamines? The cure for Sudden Sleep Disorder? The label can't be read, leaving the now absent contents forever a mystery. The cap is screwed on tighter than any ID lock."
 	icon_state = "prescription_bottle"
 

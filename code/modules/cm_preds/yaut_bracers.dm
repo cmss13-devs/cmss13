@@ -43,7 +43,7 @@
 	if(slot == WEAR_HANDS)
 		flags_item |= NODROP
 		START_PROCESSING(SSobj, src)
-		if(isYautja(user))
+		if(isyautja(user))
 			to_chat(user, SPAN_WARNING("The bracer clamps securely around your forearm and beeps in a comfortable, familiar way."))
 		else
 			to_chat(user, SPAN_WARNING("The bracer clamps painfully around your forearm and beeps angrily. It won't come off!"))
@@ -64,7 +64,7 @@
 
 /obj/item/clothing/gloves/yautja/pickup(mob/living/user)
 	..()
-	if(!isYautja(user))
+	if(!isyautja(user))
 		to_chat(user, SPAN_WARNING("The bracer feels cold against your skin, heavy with an unfamiliar, almost alien weight."))
 
 /obj/item/clothing/gloves/yautja/process()
@@ -139,10 +139,10 @@
 
 	var/workingProbability = 20
 	var/randomProbability = 10
-	if(isSynth(user)) // Synths are smart, they can figure this out pretty well
+	if(issynth(user)) // Synths are smart, they can figure this out pretty well
 		workingProbability = 40
 		randomProbability = 4
-	else if(isResearcher(user)) // Researchers are sort of smart, they can sort of figure this out
+	else if(isresearcher(user)) // Researchers are sort of smart, they can sort of figure this out
 		workingProbability = 25
 		randomProbability = 7
 
@@ -281,7 +281,7 @@
 		if(charge <= 0)
 			decloak(loc)
 		//Non-Yautja have a chance to get stunned with each power drain
-		if(!isYautja(human))
+		if(!isyautja(human))
 			if(prob(15))
 				decloak(human)
 				shock_user(human)
@@ -329,7 +329,7 @@
 /obj/item/clothing/gloves/yautja/hunter/proc/delimb_user(mob/living/carbon/human/user)
 	if(!istype(user))
 		return
-	if(isYautja(user))
+	if(isyautja(user))
 		return
 
 	var/obj/limb/O = user.get_limb(check_zone("r_arm"))
@@ -685,7 +685,7 @@
 	var/obj/item/grab/G = M.get_active_hand()
 	if(istype(G))
 		var/mob/living/carbon/human/victim = G.grabbed_thing
-		if(isYautja(victim) && victim.stat == DEAD)
+		if(isyautja(victim) && victim.stat == DEAD)
 			var/obj/item/clothing/gloves/yautja/hunter/bracer = victim.gloves
 			if(istype(bracer))
 				if(forced || alert("Are you sure you want to send this [victim.species] into the great hunting grounds?","Explosive Bracers", "Yes", "No") == "Yes")

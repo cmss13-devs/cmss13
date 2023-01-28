@@ -703,7 +703,7 @@
 	return cylinder.attackby(I, user)
 
 /obj/item/weapon/gun/launcher/grenade/unique_action(mob/user)
-	if(isobserver(usr) || isXeno(usr))
+	if(isobserver(usr) || isxeno(usr))
 		return
 	if(locate(/datum/action/item_action/toggle_firing_level) in actions)
 		toggle_firing_level(usr)

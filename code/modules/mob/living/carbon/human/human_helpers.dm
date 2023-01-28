@@ -163,7 +163,7 @@
 	else
 		b_icon = B.icon_name
 
-	if(isSpeciesYautja(src))
+	if(isspeciesyautja(src))
 		e_icon = src.ethnicity
 		b_icon = src.body_type
 

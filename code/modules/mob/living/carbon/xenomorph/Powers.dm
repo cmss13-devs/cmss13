@@ -197,7 +197,7 @@
 	if(!found_weeds)
 		to_chat(src, SPAN_XENOMINORWARNING("You made the resin mark on ground with no weeds, it will break soon without any."))
 
-	if(isXenoQueen(src))
+	if(isqueen(src))
 		NM.color = "#7a21c4"
 	else
 		NM.color = "#db6af1"

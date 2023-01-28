@@ -246,7 +246,7 @@
 		H.examine(user, TRUE)
 	if(clamped)
 		. += "There is a vehicle clamp attached."
-	if(isXeno(user) && interior)
+	if(isxeno(user) && interior)
 		var/passengers_amount = interior.passengers_taken_slots
 		for(var/datum/role_reserved_slots/RRS in interior.role_reserved_slots)
 			passengers_amount += RRS.taken

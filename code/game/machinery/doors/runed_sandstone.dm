@@ -24,7 +24,7 @@
 /obj/structure/machinery/door/airlock/sandstone/runed/attackby(obj/item/W as obj, mob/user as mob)
 // ..()
 	user.set_interaction(src)
-	if (!istype(W, /obj/item/weapon/wristblades || !isYautja(user)))
+	if (!istype(W, /obj/item/weapon/wristblades || !isyautja(user)))
 		return
 
 	if(istype(W, /obj/item/weapon/wristblades))

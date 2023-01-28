@@ -40,7 +40,7 @@
 		WD.overlays.Cut()
 
 /obj/effect/alien/resin/trap/get_examine_text(mob/user)
-	if(!isXeno(user))
+	if(!isxeno(user))
 		return ..()
 	. = ..()
 	switch(trap_type)
@@ -85,7 +85,7 @@
 /obj/effect/alien/resin/trap/HasProximity(atom/movable/AM)
 	switch(trap_type)
 		if(RESIN_TRAP_HUGGER)
-			if(can_hug(AM, hivenumber) && !isYautja(AM) && !isSynth(AM))
+			if(can_hug(AM, hivenumber) && !isyautja(AM) && !issynth(AM))
 				var/mob/living/L = AM
 				L.visible_message(SPAN_WARNING("[L] trips on [src]!"),\
 								SPAN_DANGER("You trip on [src]!"))
@@ -94,14 +94,14 @@
 		if(RESIN_TRAP_GAS, RESIN_TRAP_ACID1, RESIN_TRAP_ACID2, RESIN_TRAP_ACID3)
 			if(ishuman(AM))
 				var/mob/living/carbon/human/H = AM
-				if(isSynth(H) || isYautja(H))
+				if(issynth(H) || isyautja(H))
 					return
 				if(H.stat == DEAD || H.lying)
 					return
 				if(H.ally_of_hivenumber(hivenumber))
 					return
 				trigger_trap()
-			if(isXeno(AM))
+			if(isxeno(AM))
 				var/mob/living/carbon/xenomorph/X = AM
 				if(X.hivenumber != hivenumber)
 					trigger_trap()
@@ -229,7 +229,7 @@
 		to_chat(X, SPAN_XENONOTICE("It already has good acid in."))
 		return XENO_NO_DELAY_ACTION
 
-	if(isXenoBoiler(X))
+	if(isboiler(X))
 		var/mob/living/carbon/xenomorph/boiler/B = X
 
 		if(!B.check_plasma(200))
@@ -284,7 +284,7 @@
 		setup_tripwires()
 		playsound(loc, 'sound/effects/refill.ogg', 25, 1)
 
-		if(isXenoBurrower(X))
+		if(isburrower(X))
 			set_state(RESIN_TRAP_ACID3)
 		else
 			set_state(RESIN_TRAP_ACID1 + X.acid_level - 1)
@@ -304,7 +304,7 @@
 		tripwires += HT
 
 /obj/effect/alien/resin/trap/attackby(obj/item/W, mob/user)
-	if(!(istype(W, /obj/item/clothing/mask/facehugger) && isXeno(user)))
+	if(!(istype(W, /obj/item/clothing/mask/facehugger) && isxeno(user)))
 		return ..()
 	if(trap_type != RESIN_TRAP_EMPTY)
 		to_chat(user, SPAN_XENOWARNING("You can't put a hugger in this hole!"))
@@ -365,5 +365,5 @@
 		qdel(src)
 		return
 
-	if(ishuman(A) || isXeno(A) || isVehicleMultitile(A))
+	if(ishuman(A) || isxeno(A) || isVehicleMultitile(A))
 		linked_trap.HasProximity(A)

@@ -67,7 +67,7 @@
 			if(prob(max(4*(100*getBruteLoss()/maxHealth - 75),0))) //4% at 24% health, 80% at 5% health
 				last_damage_data = create_cause_data("chestbursting", user)
 				gib(last_damage_data)
-	else if(!chestburst && (status_flags & XENO_HOST) && isXenoLarva(user))
+	else if(!chestburst && (status_flags & XENO_HOST) && islarva(user))
 		var/mob/living/carbon/xenomorph/larva/L = user
 		L.chest_burst(src)
 
@@ -195,7 +195,7 @@
 			SPAN_DANGER("<B>You feel a powerful shock course through your body!</B>"), \
 			SPAN_DANGER("You hear a heavy electrical crack.") \
 		)
-		if(isXeno(src) && mob_size >= MOB_SIZE_BIG)
+		if(isxeno(src) && mob_size >= MOB_SIZE_BIG)
 			apply_effect(1, STUN)//Sadly, something has to stop them from bumping them 10 times in a second
 			apply_effect(1, WEAKEN)
 		else
@@ -499,7 +499,7 @@
 
 /mob/living/carbon/get_examine_text(mob/user)
 	. = ..()
-	if(isYautja(user))
+	if(isyautja(user))
 		. += SPAN_BLUE("[src] is worth [max(life_kills_total, default_honor_value)] honor.")
 		if(src.hunter_data.hunted)
 			. += SPAN_ORANGE("[src] is being hunted by [src.hunter_data.hunter.real_name].")

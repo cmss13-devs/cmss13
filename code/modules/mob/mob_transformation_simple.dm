@@ -45,7 +45,7 @@
 	if(istext(new_name))
 		M.change_real_name(M, new_name)
 	else
-		if(!isXeno(M)) //Xenos have their own naming convention, leave them alone!
+		if(!isxeno(M)) //Xenos have their own naming convention, leave them alone!
 			M.change_real_name(M, name)
 
 	if(delete_old_mob)

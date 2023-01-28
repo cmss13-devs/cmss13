@@ -994,7 +994,7 @@
 	return //Useless, it's a one slot.
 
 /obj/item/storage/pouch/pressurized_reagent_canister/proc/display_contents(mob/user) // Used on examine for properly skilled people to see contents.
-	if(isXeno(user))
+	if(isxeno(user))
 		return
 	if(!inner)
 		return "This [src] has no container inside!"

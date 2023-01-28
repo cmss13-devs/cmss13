@@ -19,7 +19,7 @@
 	if(!skillcheckexplicit(user, SKILL_ANTAG, SKILL_ANTAG_AGENT))
 		return . = ..()
 
-	if(!isHumanStrict(M) || !(user.a_intent & INTENT_DISARM) || M == user)
+	if(!ishuman_strict(M) || !(user.a_intent & INTENT_DISARM) || M == user)
 		return . = ..()
 
 	if(M.stat != CONSCIOUS)

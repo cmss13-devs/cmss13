@@ -147,7 +147,7 @@
 	else
 		if(!M.unacidable)
 			M.take_limb_damage(min(6, volume))
-	if(isXeno(M))
+	if(isxeno(M))
 		var/mob/living/carbon/xenomorph/X = M
 		if(potency > POTENCY_MAX_TIER_1) //Needs level 7+ to have any effect
 			X.AddComponent(/datum/component/toxic_buildup, potency * volume * 0.25)

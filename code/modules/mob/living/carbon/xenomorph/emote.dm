@@ -27,7 +27,7 @@
 			return INVOKE_ASYNC(src, TYPE_PROC_REF(/mob, custom_emote), m_type, message, player_caused)
 
 		if("growl")
-			if(isXenoPredalien(src))
+			if(ispredalien(src))
 				emote_audio_helper("<B>The [name]</B> growls.", 'sound/voice/predalien_growl.ogg', 25, player_caused)
 				return
 
@@ -35,7 +35,7 @@
 			return
 
 		if("hiss")
-			if(isXenoPredalien(src))
+			if(ispredalien(src))
 				emote_audio_helper("<B>The [name]</B> hisses.", 'sound/voice/predalien_hiss.ogg', 25, player_caused)
 				return
 
@@ -47,7 +47,7 @@
 			return
 
 		if("roar")
-			if(isXenoPredalien(src))
+			if(ispredalien(src))
 				emote_audio_helper("<B>The [name]</B> roars!", 'sound/voice/predalien_roar.ogg', 40, player_caused)
 				return
 

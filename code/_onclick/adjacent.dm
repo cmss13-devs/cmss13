@@ -100,7 +100,7 @@ Quick adjacency (to turf):
 		if(recurse > 0)
 			return loc.Adjacent(neighbor, recurse - 1)
 		return FALSE
-	else if(isXeno(loc)) //Xenos don't count as storage depth.
+	else if(isxeno(loc)) //Xenos don't count as storage depth.
 		return loc.Adjacent(neighbor, recurse)
 	return ..()
 

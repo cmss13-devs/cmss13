@@ -44,7 +44,7 @@
 
 		//Some combat intent click-drags shouldn't be overridden.
 		var/mob/target_mob = A
-		if(ismob(target_mob) && target_mob.faction == mob.faction && !mods["ctrl"] && !(isCarbonSizeXeno(mob) && !mob.get_active_hand())) //Don't attack your allies or yourself, unless you're a xeno with an open hand.
+		if(ismob(target_mob) && target_mob.faction == mob.faction && !mods["ctrl"] && !(iscarbonsizexeno(mob) && !mob.get_active_hand())) //Don't attack your allies or yourself, unless you're a xeno with an open hand.
 			return
 
 		if(!isturf(T)) //If clickdragging something in your own inventory, it's probably a deliberate attempt to open something, tactical-reload, etc. Don't click it.

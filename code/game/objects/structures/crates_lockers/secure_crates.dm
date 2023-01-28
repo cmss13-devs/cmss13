@@ -69,7 +69,7 @@
 		src.toggle(user)
 
 /obj/structure/closet/crate/secure/attackby(obj/item/W as obj, mob/user as mob)
-	if(isXeno(user))
+	if(isxeno(user))
 		var/mob/living/carbon/xenomorph/opener = user
 		src.attack_alien(opener)
 		return

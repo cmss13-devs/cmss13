@@ -127,7 +127,7 @@ GLOBAL_LIST_INIT(iron_recipes, list ( \
 /obj/item/stack/sheet/mineral/sandstone/runed/attack_self(mob/user)
 	..()
 
-	if(isYautja(user))
+	if(isyautja(user))
 		list_recipes(user)
 
 /obj/item/stack/sheet/mineral/diamond

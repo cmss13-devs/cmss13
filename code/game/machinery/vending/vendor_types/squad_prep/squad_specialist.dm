@@ -152,22 +152,22 @@ GLOBAL_LIST_INIT(cm_vending_clothing_specialist, list(
 
 /obj/effect/essentials_set/hedp_6_pack
 	spawned_gear_list = list(
-		/obj/item/explosive/grenade/HE,
-		/obj/item/explosive/grenade/HE,
-		/obj/item/explosive/grenade/HE,
-		/obj/item/explosive/grenade/HE,
-		/obj/item/explosive/grenade/HE,
-		/obj/item/explosive/grenade/HE,
+		/obj/item/explosive/grenade/high_explosive,
+		/obj/item/explosive/grenade/high_explosive,
+		/obj/item/explosive/grenade/high_explosive,
+		/obj/item/explosive/grenade/high_explosive,
+		/obj/item/explosive/grenade/high_explosive,
+		/obj/item/explosive/grenade/high_explosive,
 	)
 
 /obj/effect/essentials_set/hefa_6_pack
 	spawned_gear_list = list(
-		/obj/item/explosive/grenade/HE/frag,
-		/obj/item/explosive/grenade/HE/frag,
-		/obj/item/explosive/grenade/HE/frag,
-		/obj/item/explosive/grenade/HE/frag,
-		/obj/item/explosive/grenade/HE/frag,
-		/obj/item/explosive/grenade/HE/frag,
+		/obj/item/explosive/grenade/high_explosive/frag,
+		/obj/item/explosive/grenade/high_explosive/frag,
+		/obj/item/explosive/grenade/high_explosive/frag,
+		/obj/item/explosive/grenade/high_explosive/frag,
+		/obj/item/explosive/grenade/high_explosive/frag,
+		/obj/item/explosive/grenade/high_explosive/frag,
 	)
 
 /obj/effect/essentials_set/hidp_6_pack
@@ -192,12 +192,12 @@ GLOBAL_LIST_INIT(cm_vending_clothing_specialist, list(
 
 /obj/effect/essentials_set/agmf_6_pack
 	spawned_gear_list = list(
-		/obj/item/explosive/grenade/HE/airburst,
-		/obj/item/explosive/grenade/HE/airburst,
-		/obj/item/explosive/grenade/HE/airburst,
-		/obj/item/explosive/grenade/HE/airburst,
-		/obj/item/explosive/grenade/HE/airburst,
-		/obj/item/explosive/grenade/HE/airburst,
+		/obj/item/explosive/grenade/high_explosive/airburst,
+		/obj/item/explosive/grenade/high_explosive/airburst,
+		/obj/item/explosive/grenade/high_explosive/airburst,
+		/obj/item/explosive/grenade/high_explosive/airburst,
+		/obj/item/explosive/grenade/high_explosive/airburst,
+		/obj/item/explosive/grenade/high_explosive/airburst,
 	)
 
 /obj/effect/essentials_set/agmi_6_pack

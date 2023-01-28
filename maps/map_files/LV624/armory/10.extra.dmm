@@ -238,10 +238,10 @@
 /obj/structure/surface/rack,
 /obj/item/explosive/plastic,
 /obj/item/explosive/plastic,
-/obj/item/explosive/grenade/HE/PMC,
-/obj/item/explosive/grenade/HE/PMC,
-/obj/item/explosive/grenade/HE/PMC,
-/obj/item/explosive/grenade/HE/PMC,
+/obj/item/explosive/grenade/high_explosive/pmc,
+/obj/item/explosive/grenade/high_explosive/pmc,
+/obj/item/explosive/grenade/high_explosive/pmc,
+/obj/item/explosive/grenade/high_explosive/pmc,
 /obj/structure/machinery/door_control{
 	id = "garage_blast";
 	name = "Garage Shutters";

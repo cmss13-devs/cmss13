@@ -675,7 +675,7 @@ Primarily made up of things that would be best utilized, well, shipside. Recreat
 		/obj/item/pamphlet/language/chinese,
 		/obj/item/pamphlet/language/german,
 		/obj/item/pamphlet/language/spanish
-		)
+	)
 	dollar_cost = 30
 	containertype = /obj/structure/largecrate/black_market
 

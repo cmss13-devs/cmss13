@@ -781,7 +781,7 @@
 /obj/vehicle/multitile/Collided(var/atom/A)
 	. = ..()
 
-	if(isXenoCrusher(A))
+	if(iscrusher(A))
 		var/mob/living/carbon/xenomorph/crusher/C = A
 		if(!C.throwing)
 			return

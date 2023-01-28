@@ -304,7 +304,7 @@
 	SEND_SIGNAL(src, COMSIG_HUMAN_REVIVED)
 	track_revive(job)
 	GLOB.alive_mob_list += src
-	if(!isSynth(src) && !isYautja(src))
+	if(!issynth(src) && !isyautja(src))
 		GLOB.alive_human_list += src
 	GLOB.dead_mob_list -= src
 	timeofdeath = 0

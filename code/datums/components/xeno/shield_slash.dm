@@ -6,7 +6,7 @@
 	var/stored_shield = 0
 
 /datum/component/shield_slash/Initialize(var/max_shield = 160, var/shield_per_slash = 20, var/stat_name = "Shield")
-	if(!isXeno(parent))
+	if(!isxeno(parent))
 		return COMPONENT_INCOMPATIBLE
 
 	src.max_shield = max_shield
@@ -24,7 +24,7 @@
 	))
 
 /datum/component/shield_slash/PostTransfer()
-	if(!isXeno(parent))
+	if(!isxeno(parent))
 		return COMPONENT_INCOMPATIBLE
 
 /datum/component/shield_slash/proc/handle_stat_display(var/mob/living/carbon/xenomorph/X, var/list/statdata)

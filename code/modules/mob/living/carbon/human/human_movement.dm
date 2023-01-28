@@ -58,7 +58,7 @@
 
 	reducible_tally += reagent_move_delay_modifier //Muscle-stimulating property
 
-	if(bodytemperature < species.cold_level_1 && !isYautja(src))
+	if(bodytemperature < species.cold_level_1 && !isyautja(src))
 		reducible_tally += 2 //Major slowdown if you're freezing
 
 	if(temporary_slowdown)

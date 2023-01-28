@@ -12,7 +12,7 @@
 		to_chat(H, SPAN_XENODANGER("You are slowed as the impact of [X] shakes the ground!"))
 
 /datum/action/xeno_action/activable/pounce/crusher_charge/additional_effects(mob/living/L)
-	if (!isXenoOrHuman(L))
+	if (!isxeno_human(L))
 		return
 
 	var/mob/living/carbon/H = L

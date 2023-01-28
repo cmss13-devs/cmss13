@@ -44,6 +44,6 @@
 	if(effect_message && prob(WEATHER_MESSAGE_PROB))
 		to_chat(affected_mob, SPAN_WARNING(effect_message))
 	if(damage_per_tick)
-		var/calculated_damage = (isXeno(affected_mob) ? damage_per_tick * 3 : damage_per_tick) * delta_time
+		var/calculated_damage = (isxeno(affected_mob) ? damage_per_tick * 3 : damage_per_tick) * delta_time
 		affected_mob.apply_damage(calculated_damage, damage_type)
 		affected_mob.last_damage_data = create_cause_data("Exposure")

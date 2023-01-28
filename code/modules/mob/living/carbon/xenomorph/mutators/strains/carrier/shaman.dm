@@ -304,7 +304,7 @@
 			continue
 
 		if(istype(H))
-			if(isYautja(H))
+			if(isyautja(H))
 				continue
 			H.apply_effect(action_def.stun_timer, WEAKEN)
 			H.emote("scream")

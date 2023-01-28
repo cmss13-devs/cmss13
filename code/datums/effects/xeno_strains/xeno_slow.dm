@@ -23,7 +23,7 @@
 
 
 /datum/effects/xeno_slow/validate_atom(var/atom/A)
-	if (!ishuman(A) && !isXeno(A))
+	if (!ishuman(A) && !isxeno(A))
 		return FALSE
 
 	var/mob/M = A

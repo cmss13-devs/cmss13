@@ -23,7 +23,7 @@
 /obj/item/explosive/grenade/spawnergrenade/smartdisc/launch_towards(var/datum/launch_metadata/LM)
 	..()
 	var/mob/user = usr
-	if(!active && isYautja(user) && (icon_state == initial(icon_state)))
+	if(!active && isyautja(user) && (icon_state == initial(icon_state)))
 		boomerang(user)
 
 /obj/item/explosive/grenade/spawnergrenade/smartdisc/proc/boomerang(mob/user)
@@ -46,7 +46,7 @@
 			var/mob/living/L = A
 			if(L.faction == user.faction)
 				continue
-			else if(isYautja(L))
+			else if(isyautja(L))
 				continue
 			else if (L.stat == DEAD)
 				continue
@@ -65,7 +65,7 @@
 	if(active)
 		return
 
-	if(!isYautja(user))
+	if(!isyautja(user))
 		if(prob(75))
 			to_chat(user, SPAN_WARNING("You fiddle with the disc, but nothing happens. Try again maybe?"))
 			return
@@ -102,7 +102,7 @@
 	return
 
 /obj/item/explosive/grenade/spawnergrenade/smartdisc/launch_impact(atom/hit_atom)
-	if(isYautja(hit_atom))
+	if(isyautja(hit_atom))
 		var/mob/living/carbon/human/H = hit_atom
 		if(H.put_in_hands(src))
 			hit_atom.visible_message("[hit_atom] expertly catches [src] out of the air.","You catch [src] easily.")
@@ -201,7 +201,7 @@
 				continue
 			else if(L in friends)
 				continue
-			else if(isYautja(L))
+			else if(isyautja(L))
 				continue
 			else if (L.stat == DEAD)
 				continue
@@ -239,7 +239,7 @@
 	for(var/mob/living/carbon/C in range(6))
 		if(C.target_locked)
 			var/image/I = C.target_locked
-			if(I.icon_state == "locked-y" && !isYautja(C) && C.stat != DEAD)
+			if(I.icon_state == "locked-y" && !isyautja(C) && C.stat != DEAD)
 				stance = HOSTILE_STANCE_ATTACK
 				target_mob = C
 				break

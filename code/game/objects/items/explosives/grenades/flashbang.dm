@@ -68,7 +68,7 @@
 // people in normal view.  Could theoretically be called during other explosions.
 /obj/item/explosive/grenade/flashbang/proc/bang(var/turf/T , var/mob/living/carbon/M)
 
-	if(isXeno(M))
+	if(isxeno(M))
 		return
 
 	to_chat(M, SPAN_WARNING("<B>BANG</B>"))
@@ -239,7 +239,7 @@
 
 	//some effects for non-humans
 	if(!ishuman(M))
-		if(isXeno(M))
+		if(isxeno(M))
 			if(get_dist(M, T) <= 4)
 				var/mob/living/carbon/xenomorph/X = M
 				X.Daze(2)

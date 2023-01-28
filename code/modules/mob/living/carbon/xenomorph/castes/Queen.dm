@@ -199,7 +199,7 @@
 	if(!mods["ctrl"])
 		return
 
-	if(isXeno(A))
+	if(isxeno(A))
 		var/mob/living/carbon/xenomorph/X = A
 		if(X.ally_of_hivenumber(hivenumber))
 			Q.overwatch(A)
@@ -707,7 +707,7 @@
 	if(!check_state())
 		return FALSE
 
-	if(isSynth(victim))
+	if(issynth(victim))
 		var/obj/limb/head/synthhead = victim.get_limb("head")
 		if(synthhead.status & LIMB_DESTROYED)
 			return FALSE
@@ -722,7 +722,7 @@
 				to_chat(src, SPAN_XENOWARNING("The child may still hatch! Not yet!"))
 				return FALSE
 
-	if(isXeno(victim))
+	if(isxeno(victim))
 		var/mob/living/carbon/xenomorph/xeno = victim
 		if(hivenumber == xeno.hivenumber)
 			to_chat(src, SPAN_WARNING("You can't bring yourself to harm a fellow sister to this magnitude."))

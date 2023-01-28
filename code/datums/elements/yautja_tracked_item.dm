@@ -35,9 +35,9 @@
 		add_to_missing_pred_gear(dropped_item)
 
 /proc/is_honorable_carrier(var/mob/living/carbon/human/carrier)
-	if(isYautja(carrier))
+	if(isyautja(carrier))
 		return TRUE
-	if(isHumanSynthStrict(carrier) && (carrier.hunter_data.honored || carrier.hunter_data.thralled) && !(carrier.hunter_data.dishonored || carrier.stat == DEAD))
+	if(ishumansynth_strict(carrier) && (carrier.hunter_data.honored || carrier.hunter_data.thralled) && !(carrier.hunter_data.dishonored || carrier.stat == DEAD))
 		return TRUE
 	if(istype(carrier, /mob/hologram/falcon))
 		return TRUE

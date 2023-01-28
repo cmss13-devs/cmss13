@@ -75,7 +75,7 @@
 
 /datum/player_action/reset_xeno_name/act(var/client/user, var/mob/target, var/list/params)
 	var/mob/living/carbon/xenomorph/X = target
-	if(!isXeno(X))
+	if(!isxeno(X))
 		to_chat(user, SPAN_WARNING("[target.name] is not a xeno!"))
 		return
 
@@ -124,7 +124,7 @@
 		to_chat(target, SPAN_DANGER("Warning: You can use xeno names again."))
 		return
 
-	if(!isXeno(target))
+	if(!isxeno(target))
 		to_chat(user, SPAN_DANGER("Target is not a xenomorph. Aborting."))
 		return
 
@@ -164,7 +164,7 @@
 		to_chat(user, SPAN_WARNING("[target.name] is not a mob!"))
 		return
 
-	if(isXeno(target_mob))
+	if(isxeno(target_mob))
 		to_chat(user, SPAN_WARNING("[target.name] is a xeno!"))
 		return
 

@@ -81,7 +81,7 @@
 
 /mob/living/carbon/xenomorph/say_understands(var/mob/other,var/datum/language/speaking = null)
 
-	if(isXeno(other))
+	if(isxeno(other))
 		return 1
 	return ..()
 
@@ -118,12 +118,12 @@
 			if(Hu.hivenumber)
 				hear_hivemind = Hu.hivenumber
 
-		if(!QDELETED(S) && (isXeno(S) || S.stat == DEAD || hear_hivemind) && !istype(S,/mob/new_player))
+		if(!QDELETED(S) && (isxeno(S) || S.stat == DEAD || hear_hivemind) && !istype(S,/mob/new_player))
 			var/mob/living/carbon/xenomorph/X = src
 			if(istype(S,/mob/dead/observer))
 				if(S.client.prefs && S.client.prefs.toggles_chat & CHAT_GHOSTHIVEMIND)
 					track = "(<a href='byond://?src=\ref[S];track=\ref[src]'>F</a>)"
-					if(isXenoQueen(src))
+					if(isqueen(src))
 						var/mob/hologram/queen/queen_eye = client?.eye
 						if(istype(queen_eye))
 							track += " (<a href='byond://?src=\ref[S];track=\ref[queen_eye]'>E</a>)"
@@ -137,10 +137,10 @@
 					S.show_message(ghostrend, SHOW_MESSAGE_AUDIBLE)
 
 			else if(hive.hivenumber == xeno_hivenumber(S) || hive.hivenumber == hear_hivemind)
-				if(isXeno(src) && isXeno(S))
+				if(isxeno(src) && isxeno(S))
 					overwatch_insert = " (<a href='byond://?src=\ref[S];[overwatch_target]=\ref[src];[overwatch_src]=\ref[S]'>watch</a>)"
 
-				if(isXenoQueen(src) || hive.leading_cult_sl == src)
+				if(isqueen(src) || hive.leading_cult_sl == src)
 					rendered = SPAN_XENOQUEEN("Hivemind, [src.name][overwatch_insert] hisses, <span class='normal'>'[message]'</span>")
 				else if(istype(X) && IS_XENO_LEADER(X))
 					rendered = SPAN_XENOLEADER("Hivemind, Leader [src.name][overwatch_insert] hisses, <span class='normal'>'[message]'</span>")

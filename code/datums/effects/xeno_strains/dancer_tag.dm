@@ -15,7 +15,7 @@
 
 
 /datum/effects/dancer_tag/validate_atom(mob/living/carbon/H)
-	if (!isXenoOrHuman(H) || H.stat == DEAD)
+	if (!isxeno_human(H) || H.stat == DEAD)
 		return FALSE
 	return ..()
 

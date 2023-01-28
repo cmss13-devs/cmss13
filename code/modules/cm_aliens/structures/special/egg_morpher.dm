@@ -42,12 +42,12 @@
 
 /obj/effect/alien/resin/special/eggmorph/get_examine_text(mob/user)
 	. = ..()
-	if(isXeno(user) || isobserver(user))
+	if(isxeno(user) || isobserver(user))
 		. += "It has [stored_huggers] facehuggers within, with [huggers_to_grow] more to grow (reserved: [huggers_reserved])."
 
 /obj/effect/alien/resin/special/eggmorph/attackby(obj/item/I, mob/user)
 	if(istype(I, /obj/item/grab))
-		if(!isXeno(user)) return
+		if(!isxeno(user)) return
 		var/obj/item/grab/G = I
 		if(iscarbon(G.grabbed_thing))
 			var/mob/living/carbon/M = G.grabbed_thing
@@ -59,7 +59,7 @@
 				if(H.is_revivable())
 					to_chat(user, SPAN_XENOWARNING("This one is not suitable yet!"))
 					return
-			if(isXeno(M))
+			if(isxeno(M))
 				return
 			if(M == captured_mob)
 				to_chat(user, SPAN_XENOWARNING("[src] is already digesting [M]!"))
@@ -167,7 +167,7 @@
 	HasProximity(target)
 
 /obj/effect/alien/resin/special/eggmorph/HasProximity(atom/movable/AM as mob|obj)
-	if(!stored_huggers || isSynth(AM))
+	if(!stored_huggers || issynth(AM))
 		return
 
 	if (!linked_hive)

@@ -303,7 +303,7 @@
 		occupant.apply_effect(6, STUTTER)
 		occupant.apply_damage(10, BRUTE, def_zone)
 		playsound(src.loc, 'sound/weapons/punch1.ogg', 25, 1)
-		if(ishuman(A) && !isYautja(A))
+		if(ishuman(A) && !isyautja(A))
 			var/mob/living/victim = A
 			def_zone = rand_zone()
 			victim.apply_effect(6, STUN)

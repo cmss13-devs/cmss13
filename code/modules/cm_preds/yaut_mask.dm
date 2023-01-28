@@ -58,7 +58,7 @@
 	LAZYSET(item_state_slots, WEAR_FACE, "pred_mask[mask_number]_[armor_material]")
 
 /obj/item/clothing/mask/gas/yautja/pickup(mob/living/user)
-	if(isYautja(user))
+	if(isyautja(user))
 		remove_from_missing_pred_gear(src)
 	..()
 
@@ -195,7 +195,7 @@
 	..()
 /obj/item/clothing/mask/gas/yautja/hunter/togglesight()
 	set category = "Yautja.Utility"
-	if(!isYautja(usr))
+	if(!isyautja(usr))
 		to_chat(usr, SPAN_WARNING("You have no idea how to work this thing!"))
 		return
 	..()

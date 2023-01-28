@@ -103,7 +103,7 @@
 	return (activated_once || ..())
 
 /datum/action/xeno_action/onclick/dump_acid/use_ability(atom/A)
-	if (!isXeno(owner))
+	if (!isxeno(owner))
 		return
 
 	if (!action_cooldown_check())
@@ -134,7 +134,7 @@
 	return
 
 /datum/action/xeno_action/onclick/dump_acid/proc/remove_speed_buff()
-	if (movespeed_buff_applied && isXeno(owner))
+	if (movespeed_buff_applied && isxeno(owner))
 		var/mob/living/carbon/xenomorph/xeno = owner
 		xeno.speed_modifier += speed_buff_amount
 		xeno.recalculate_speed()

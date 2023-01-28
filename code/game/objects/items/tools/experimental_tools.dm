@@ -50,7 +50,7 @@
 
 /obj/item/clothing/suit/auto_cpr/mob_can_equip(mob/living/carbon/human/H, slot, disable_warning = 0, force = 0)
 	. = ..()
-	if(!isHumanStrict(H))
+	if(!ishuman_strict(H))
 		return FALSE
 
 /obj/item/clothing/suit/auto_cpr/attack(mob/living/carbon/human/M, mob/living/user)
@@ -266,7 +266,7 @@
 	STOP_PROCESSING(SSobj, src)
 
 /obj/item/tool/portadialysis/attack(mob/living/carbon/human/target, mob/living/carbon/human/user)
-	if(!isHumanStrict(target))
+	if(!ishuman_strict(target))
 		return ..()
 
 	if(!skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))

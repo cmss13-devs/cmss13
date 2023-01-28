@@ -525,7 +525,7 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 
 /obj/item/storage/equipped(mob/user, slot, silent)
 	if ((storage_flags & STORAGE_ALLOW_EMPTY))
-		if(!isXeno(user))
+		if(!isxeno(user))
 			verbs |= /obj/item/storage/verb/empty_verb
 			verbs |= /obj/item/storage/verb/toggle_click_empty
 		else
@@ -645,7 +645,7 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 		playsound(loc, use_sound, 25, TRUE, 3)
 
 	if(!length(contents))
-		if(prob(25) && isXeno(user))
+		if(prob(25) && isxeno(user))
 			user.drop_inv_item_to_loc(src, tile)
 			user.visible_message(SPAN_NOTICE("[user] shakes \the [src] off."),
 				SPAN_NOTICE("You shake \the [src] off."))

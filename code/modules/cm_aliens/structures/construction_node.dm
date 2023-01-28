@@ -41,7 +41,7 @@
 
 /obj/effect/alien/resin/construction/get_examine_text(mob/user)
 	. = ..()
-	if((isXeno(user) || isobserver(user)) && linked_hive)
+	if((isxeno(user) || isobserver(user)) && linked_hive)
 		var/message = "A [template.name] construction is designated here. It requires [template.crystals_required - template.crystals_stored] more [MATERIAL_CRYSTAL]."
 		. += message
 

@@ -37,7 +37,7 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 				fduration = 30
 			if(!do_after(user, fduration, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY) || !user.Adjacent(target_mob))
 				return
-		if(!istype(target_mob, /mob/living/carbon) || isXeno(target_mob))
+		if(!istype(target_mob, /mob/living/carbon) || isxeno(target_mob))
 			to_chat(user, SPAN_WARNING("The scanner can't make sense of this creature."))
 			return
 
@@ -116,9 +116,9 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 		if(human_target_mob.is_dead())
 			if(!human_target_mob.is_revivable())
 				permadead = TRUE
-			else if(!human_target_mob.check_tod() && !isSynth(human_target_mob))
+			else if(!human_target_mob.check_tod() && !issynth(human_target_mob))
 				permadead = TRUE
-			if(isSynth(target_mob))
+			if(issynth(target_mob))
 				permadead = FALSE
 
 		data["permadead"] = permadead
@@ -287,13 +287,13 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 							"icon" = "band-aid",
 							"colour" = "orange" //BRI'ISH????
 							))
-					if(((human_target_mob.health + 50) < HEALTH_THRESHOLD_DEAD) && !isSynth(human_target_mob))
+					if(((human_target_mob.health + 50) < HEALTH_THRESHOLD_DEAD) && !issynth(human_target_mob))
 						advice += list(list(
 							"advice" = "Administer a single dose of epinephrine.",
 							"icon" = "syringe",
 							"colour" = "olive"
 							))
-			if(!isSynth(human_target_mob))
+			if(!issynth(human_target_mob))
 				if(human_target_mob.blood_volume <= 500 && !chemicals_lists["nutriment"])
 					advice += list(list(
 						"advice" = "Administer food or recommend that the patient eat.",
@@ -459,7 +459,7 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 				fduration = 30
 			if(!do_after(user, fduration, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY) || !user.Adjacent(src))
 				return
-		if(isXeno(src))
+		if(isxeno(src))
 			to_chat(user, SPAN_WARNING("[src] can't make sense of this creature."))
 			return
 		// Doesn't work on non-humans

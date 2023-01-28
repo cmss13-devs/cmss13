@@ -155,7 +155,7 @@
 				update_all_data()
 				. = TRUE
 				return
-			else if(isXenoQueen(X))
+			else if(isqueen(X))
 				var/mob/living/carbon/xenomorph/mark_to_destroy_owner
 				to_chat(X, SPAN_XENONOTICE("You psychically command the [mark_to_destroy.mark_meaning.name] resin mark to be destroyed."))
 				for(var/mob/living/carbon/xenomorph/XX in X.hive.totalXenos)
@@ -172,7 +172,7 @@
 			var/obj/effect/alien/resin/marker/mark_to_force = locate(params["type"])
 			if(!mark_to_force)
 				return
-			if(!isXenoQueen(X))
+			if(!isqueen(X))
 				to_chat(X, SPAN_XENONOTICE("You lack the permissions to do this."))
 				return
 			var/FunkTownOhyea = "Force all to track"

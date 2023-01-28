@@ -92,7 +92,7 @@
 	if(user != src)
 		return . = ..()
 
-	if(isXeno(dropping))
+	if(isxeno(dropping))
 		var/mob/living/carbon/xenomorph/xeno = dropping
 		if(xeno.back)
 			var/obj/item/back_item = xeno.back

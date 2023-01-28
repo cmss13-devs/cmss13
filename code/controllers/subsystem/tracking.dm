@@ -48,7 +48,7 @@ SUBSYSTEM_DEF(tracking)
 					human_mob.locate_squad_leader(earpiece.locate_setting)
 				else
 					human_mob.locate_squad_leader()
-			else if(isXeno(current_mob))
+			else if(isxeno(current_mob))
 				var/mob/living/carbon/xenomorph/xeno_mob = current_mob
 				xeno_mob.queen_locator()
 				if(xeno_mob.tracked_marker)

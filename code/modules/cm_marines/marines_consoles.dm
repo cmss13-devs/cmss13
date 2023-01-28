@@ -619,12 +619,12 @@
 				if(!operable())
 					to_chat(usr, SPAN_NOTICE("You place [G.grabbed_thing]'s hand on scanner but \the [src] remains silent."))
 					return
-				var/isXenos = isXeno(G.grabbed_thing)
-				H.visible_message(SPAN_NOTICE("You hear a beep as [G.grabbed_thing]'s [isXenos ? "limb" : "hand"] is scanned to \the [name]."))
-				visible_message("<span class='bold'>[src]</span> states, \"SCAN ENTRY: [isXenos ? "Unknown lifeform detected! Forbidden operation!" : "Scanned, please stay close until operation's end."]\"")
+				var/isxenos = isxeno(G.grabbed_thing)
+				H.visible_message(SPAN_NOTICE("You hear a beep as [G.grabbed_thing]'s [isxenos ? "limb" : "hand"] is scanned to \the [name]."))
+				visible_message("<span class='bold'>[src]</span> states, \"SCAN ENTRY: [isxenos ? "Unknown lifeform detected! Forbidden operation!" : "Scanned, please stay close until operation's end."]\"")
 				playsound(H.loc, 'sound/machines/screen_output1.ogg', 25, 1)
 				// No Xeno Squads, please!
-				if(!isXenos)
+				if(!isxenos)
 					person_to_modify = G.grabbed_thing
 	else
 		..()
@@ -648,12 +648,12 @@
 	if(allowed(user))
 		tgui_interact(user)
 	else
-		var/isXenos = isXeno(user)
-		user.visible_message(SPAN_NOTICE("You hear a beep as [user]'s [isXenos ? "limb" : "hand"] is scanned to \the [name]."))
-		visible_message("<span class='bold'>[src]</span> states, \"SCAN ENTRY: [isXenos ? "Unknown lifeform detected! Forbidden operation!" : "Scanned, please stay close until operation's end."]\"")
+		var/isxenos = isxeno(user)
+		user.visible_message(SPAN_NOTICE("You hear a beep as [user]'s [isxenos ? "limb" : "hand"] is scanned to \the [name]."))
+		visible_message("<span class='bold'>[src]</span> states, \"SCAN ENTRY: [isxenos ? "Unknown lifeform detected! Forbidden operation!" : "Scanned, please stay close until operation's end."]\"")
 		playsound(user.loc, 'sound/machines/screen_output1.ogg', 25, 1)
 		// No Xeno Squads, please!
-		if(!isXenos)
+		if(!isxenos)
 			person_to_modify = user
 
 /// How often the sensor data is updated
@@ -784,7 +784,7 @@ GLOBAL_LIST_EMPTY_TYPED(crewmonitor, /datum/crewmonitor)
 	var/list/results = list()
 	for(var/mob/living/carbon/human/H in GLOB.human_mob_list)
 		// Predators
-		if(isYautja(H))
+		if(isyautja(H))
 			continue
 		// Check for a uniform
 		var/obj/item/clothing/under/C = H.w_uniform

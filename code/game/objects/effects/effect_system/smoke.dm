@@ -229,7 +229,7 @@
 
 		M.last_damage_data = cause_data
 
-	if(isYautja(M) || isXeno(M))
+	if(isyautja(M) || isxeno(M))
 		burn_damage *= xeno_yautja_reduction
 
 	M.burn_skin(burn_damage)
@@ -296,7 +296,7 @@
 	if(M.ally_of_hivenumber(hivenumber))
 		return
 
-	if(isYautja(M) && prob(75))
+	if(isyautja(M) && prob(75))
 		return
 	if(M.stat == DEAD)
 		return
@@ -307,7 +307,7 @@
 
 	M.apply_damage(3, OXY) //Basic oxyloss from "can't breathe"
 
-	if(isXeno(M))
+	if(isxeno(M))
 		M.apply_damage(gas_damage * XVX_ACID_DAMAGEMULT, BURN) //Inhalation damage
 	else
 		M.apply_damage(gas_damage, BURN) //Inhalation damage
@@ -343,9 +343,9 @@
 
 /obj/effect/particle_effect/smoke/xeno_weak/affect(var/mob/living/carbon/M)
 	..()
-	if(isXeno(M))
+	if(isxeno(M))
 		return
-	if(isYautja(M) && prob(75))
+	if(isyautja(M) && prob(75))
 		return
 	if(M.stat == DEAD)
 		return
@@ -400,9 +400,9 @@
 
 /obj/effect/particle_effect/smoke/xeno_weak_fire/affect(var/mob/living/carbon/M)
 	..()
-	if(isXeno(M))
+	if(isxeno(M))
 		return
-	if(isYautja(M) && prob(75))
+	if(isyautja(M) && prob(75))
 		return
 	if(M.stat == DEAD)
 		return

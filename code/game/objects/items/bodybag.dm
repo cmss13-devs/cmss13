@@ -131,7 +131,7 @@
 			dead_mobs += M
 			continue
 		var/mob/living/carbon/human/H = M
-		if(H.check_tod() || isSynth(H) || H.is_revivable() && H.get_ghost()) // revivable
+		if(H.check_tod() || issynth(H) || H.is_revivable() && H.get_ghost()) // revivable
 			continue
 		dead_mobs += M
 	var/mob/living/mob_to_store

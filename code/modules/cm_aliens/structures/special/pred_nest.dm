@@ -15,7 +15,7 @@
 
 /obj/effect/alien/resin/special/nest/get_examine_text(mob/user)
 	. = ..()
-	if((isXeno(user) || isobserver(user)) && linked_hive)
+	if((isxeno(user) || isobserver(user)) && linked_hive)
 		. += "Used to secure formidable hosts."
 
 /obj/effect/alien/resin/special/nest/Initialize(mapload, datum/hive_status/hive_ref)

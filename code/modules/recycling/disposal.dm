@@ -65,7 +65,7 @@
 	if(stat & BROKEN || !I || !user)
 		return
 
-	if(isXeno(user)) //No, fuck off. Concerns trashing Marines and facehuggers
+	if(isxeno(user)) //No, fuck off. Concerns trashing Marines and facehuggers
 		return
 
 	add_fingerprint(user)

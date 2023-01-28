@@ -100,12 +100,12 @@
 	. = ..()
 
 /turf/closed/wall/almayer/research/containment/wall/take_damage(dam, mob/M)
-	if(isXeno(M))
+	if(isxeno(M))
 		return
 	. = ..()
 
 /turf/closed/wall/almayer/research/containment/wall/attackby(obj/item/W, mob/user)
-	if(isXeno(user))
+	if(isxeno(user))
 		return
 	. = ..()
 
@@ -901,7 +901,7 @@
 	take_damage(severity)
 
 /obj/structure/alien/movable_wall/proc/continue_allowing_drag(_, var/mob/living/L)
-	if(isXeno(L))
+	if(isxeno(L))
 		return COMPONENT_IGNORE_ANCHORED
 
 /obj/structure/alien/movable_wall/proc/allow_xeno_drag(_, var/mob/living/carbon/xenomorph/X)
@@ -946,7 +946,7 @@
 		update_icon()
 
 /obj/structure/alien/movable_wall/attack_alien(mob/living/carbon/xenomorph/M)
-	if(isXenoLarva(M))
+	if(islarva(M))
 		return FALSE
 
 	if(M.a_intent == INTENT_HELP)
@@ -1025,7 +1025,7 @@
 
 	var/target_dir = get_dir(mover, T)
 
-	if(isXeno(mover))
+	if(isxeno(mover))
 		var/mob/living/carbon/xenomorph/X = mover
 		if(X.hivenumber != hivenumber || X.throwing)
 			return
@@ -1141,7 +1141,7 @@
 
 /turf/closed/wall/resin/hitby(atom/movable/AM)
 	..()
-	if(isXeno(AM))
+	if(isxeno(AM))
 		return
 	visible_message(SPAN_DANGER("\The [src] was hit by \the [AM]."), \
 	SPAN_DANGER("You hit \the [src]."))
@@ -1159,7 +1159,7 @@
 	if(SEND_SIGNAL(src, COMSIG_WALL_RESIN_XENO_ATTACK, M) & COMPONENT_CANCEL_XENO_ATTACK)
 		return XENO_NO_DELAY_ACTION
 
-	if(isXenoLarva(M)) //Larvae can't do shit
+	if(islarva(M)) //Larvae can't do shit
 		return
 	if(M.a_intent == INTENT_HELP)
 		return XENO_NO_DELAY_ACTION

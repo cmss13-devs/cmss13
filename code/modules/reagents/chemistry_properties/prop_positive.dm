@@ -60,7 +60,7 @@
 	M.apply_damages(0, POTENCY_MULTIPLIER_VHIGH * potency, POTENCY_MULTIPLIER_MEDIUM * potency)
 
 /datum/chem_property/positive/neogenetic/reaction_mob(var/mob/M, var/method=TOUCH, var/volume, var/potency)
-	if(!isXeno(M))
+	if(!isxeno(M))
 		return
 	var/mob/living/carbon/xenomorph/X = M
 	if(potency > 2) //heals at levels 5+
@@ -108,7 +108,7 @@
 		return
 	var/mob/living/carbon/C = M
 	C.blood_volume = min(C.blood_volume+potency,BLOOD_VOLUME_MAXIMUM+100)
-	if(potency > POTENCY_MAX_TIER_1 && C.blood_volume > BLOOD_VOLUME_MAXIMUM && !isYautja(M)) //Too many red blood cells thickens the blood and leads to clotting, doesn't impact Yautja
+	if(potency > POTENCY_MAX_TIER_1 && C.blood_volume > BLOOD_VOLUME_MAXIMUM && !isyautja(M)) //Too many red blood cells thickens the blood and leads to clotting, doesn't impact Yautja
 		M.take_limb_damage(potency)
 		M.apply_damage(POTENCY_MULTIPLIER_MEDIUM*potency, OXY)
 		M.reagent_move_delay_modifier += potency
@@ -148,7 +148,7 @@
 	M.apply_damages(potency, potency, POTENCY_MULTIPLIER_HIGH*potency)
 
 /datum/chem_property/positive/nervestimulating/reaction_mob(var/mob/M, var/method=TOUCH, var/volume, var/potency)
-	if(isXenoOrHuman(M) && potency > POTENCY_MAX_TIER_1) //can stim on touch at level 7+
+	if(isxeno_human(M) && potency > POTENCY_MAX_TIER_1) //can stim on touch at level 7+
 		M.set_effect(0, WEAKEN)
 		M.set_effect(0, STUN)
 		M.set_effect(0, DAZE)
@@ -176,7 +176,7 @@
 	M.take_limb_damage(0.5 * potency * delta_time)
 
 /datum/chem_property/positive/musclestimulating/reaction_mob(var/mob/M, var/method = TOUCH, var/volume, var/potency = 1)
-	if(!isXenoOrHuman(M))
+	if(!isxeno_human(M))
 		return
 	M.AddComponent(/datum/component/speed_modifier, volume, TRUE, AMOUNT_PER_TIME(1, potency SECONDS), potency*volume) //Long-lasting speed for beans, stamina for humans
 
@@ -433,7 +433,7 @@
 	return TRUE
 
 /datum/chem_property/positive/neurocryogenic/reaction_mob(var/mob/M, var/method = TOUCH, var/volume, var/potency = 1)
-	if(!isXenoOrHuman(M))
+	if(!isxeno_human(M))
 		return
 	M.AddComponent(/datum/component/speed_modifier, potency * volume * 0.5) //Brainfreeze
 
@@ -794,7 +794,7 @@
 	M.apply_effect(potency, PARALYZE)
 
 /datum/chem_property/positive/disrupting/reaction_mob(var/mob/M, var/method=TOUCH, var/volume, var/potency)
-	if(!isXeno(M))
+	if(!isxeno(M))
 		return
 	var/mob/living/carbon/xenomorph/X = M
 	X.interference += (volume * potency)
@@ -820,7 +820,7 @@
 		return
 	var/mob/living/L = M
 	L.ExtinguishMob() //Extinguishes mobs on contact
-	if(isXeno(L))
+	if(isxeno(L))
 		var/mob/living/carbon/xenomorph/X = M
 		X.plasma_stored = max(X.plasma_stored - POTENCY_MULTIPLIER_VHIGH * POTENCY_MULTIPLIER_VHIGH * potency, 0)
 
@@ -868,7 +868,7 @@
 		M.emote(pick("twitch","blink_r","shiver"))
 
 /datum/chem_property/positive/cardiostabilizing/reaction_mob(var/mob/M, var/method=TOUCH, var/volume, var/potency)
-	if(!isXeno(M))
+	if(!isxeno(M))
 		return
 	var/mob/living/carbon/xenomorph/X = M
 	if(X.health < 0) //heals out of crit with enough potency/volume, otherwise reduces crit

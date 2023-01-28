@@ -56,7 +56,7 @@
 	var/player_squad = "none"
 	var/player_name = M.name
 
-	if(isXeno(M))
+	if(isxeno(M))
 		// Xeno role = their caste
 		var/mob/living/carbon/xenomorph/X = M
 		player_role = X.caste_type

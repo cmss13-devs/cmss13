@@ -132,7 +132,7 @@
 	if(!istype(M)) return
 
 	if(check_if_can_use_flash(user))
-		if(isXeno(M))
+		if(isxeno(M))
 			to_chat(user, SPAN_WARNING("You can't find any eyes!"))
 			return
 

@@ -29,7 +29,7 @@
 	if(!params["hivenumber"])
 		return
 
-	if(!isXeno(target))
+	if(!isxeno(target))
 		return
 
 	var/mob/living/carbon/xenomorph/X = target

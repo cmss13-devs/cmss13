@@ -37,7 +37,7 @@
 			if(isobserver(M)) //observers see everything
 				continue
 			var/mob/living/carbon/human/H = M
-			if(!istype(H) || H.stat != CONSCIOUS || isYautja(H)) //base human checks
+			if(!istype(H) || H.stat != CONSCIOUS || isyautja(H)) //base human checks
 				targets.Remove(H)
 				continue
 			if(is_mainship_level(H.z)) // People on ship see everything
@@ -50,7 +50,7 @@
 			if(isobserver(M)) //observers see everything
 				continue
 			var/mob/living/carbon/human/H = M
-			if(!istype(H) || H.stat != CONSCIOUS || isYautja(H))
+			if(!istype(H) || H.stat != CONSCIOUS || isyautja(H))
 				targets.Remove(H)
 
 	else
@@ -58,7 +58,7 @@
 			if(isobserver(M)) //observers see everything
 				continue
 			var/mob/living/carbon/human/H = M
-			if(!istype(H) || H.stat != CONSCIOUS || isYautja(H))
+			if(!istype(H) || H.stat != CONSCIOUS || isyautja(H))
 				targets.Remove(H)
 				continue
 			if(H.faction != faction_to_display)
@@ -76,7 +76,7 @@
 		if(isobserver(M)) //observers see everything
 			continue
 		var/mob/living/carbon/human/H = M
-		if(!isYautja(H) || H.stat != CONSCIOUS)
+		if(!isyautja(H) || H.stat != CONSCIOUS)
 			targets.Remove(H)
 
 	announcement_helper(message, title, targets, sound_to_play)
@@ -114,7 +114,7 @@
 	for(var/mob/T in targets)
 		if(isobserver(T))
 			continue
-		if(!ishuman(T) || isYautja(T) || !is_mainship_level(T.z))
+		if(!ishuman(T) || isyautja(T) || !is_mainship_level(T.z))
 			targets.Remove(T)
 
 	if(!isnull(signature))
@@ -127,7 +127,7 @@
 	for(var/mob/T in targets)
 		if(isobserver(T))
 			continue
-		if(!ishuman(T) || isYautja(T) || !is_mainship_level(T.z))
+		if(!ishuman(T) || isyautja(T) || !is_mainship_level(T.z))
 			targets.Remove(T)
 
 	announcement_helper(message, title, targets, sound_to_play)

@@ -159,7 +159,7 @@
 
 /obj/item/weapon/melee/yautja/chain/attack(mob/target, mob/living/user)
 	. = ..()
-	if((human_adapted || isYautja(user)) && isXeno(target))
+	if((human_adapted || isyautja(user)) && isxeno(target))
 		var/mob/living/carbon/xenomorph/xenomorph = target
 		xenomorph.interference = 30
 
@@ -183,7 +183,7 @@
 
 /obj/item/weapon/melee/yautja/sword/attack(mob/target, mob/living/user)
 	. = ..()
-	if((human_adapted || isYautja(user)) && isXeno(target))
+	if((human_adapted || isyautja(user)) && isxeno(target))
 		var/mob/living/carbon/xenomorph/xenomorph = target
 		xenomorph.interference = 30
 
@@ -207,7 +207,7 @@
 
 /obj/item/weapon/melee/yautja/scythe/attack(mob/living/target as mob, mob/living/carbon/human/user as mob)
 	..()
-	if((human_adapted || isYautja(user)) && isXeno(target))
+	if((human_adapted || isyautja(user)) && isxeno(target))
 		var/mob/living/carbon/xenomorph/xenomorph = target
 		xenomorph.interference = 15
 
@@ -346,7 +346,7 @@
 	. = ..()
 	if(!.)
 		return
-	if((human_adapted || isSpeciesYautja(user)) && isXeno(target))
+	if((human_adapted || isspeciesyautja(user)) && isxeno(target))
 		var/mob/living/carbon/xenomorph/xenomorph = target
 		xenomorph.interference = 30
 
@@ -372,7 +372,7 @@
 	else ..()
 
 /obj/item/weapon/melee/yautja/combistick/launch_impact(atom/hit_atom)
-	if(isYautja(hit_atom))
+	if(isyautja(hit_atom))
 		var/mob/living/carbon/human/human = hit_atom
 		if(human.put_in_hands(src))
 			hit_atom.visible_message(SPAN_NOTICE(" [hit_atom] expertly catches [src] out of the air. "), \
@@ -413,11 +413,11 @@
 		to_chat(user, SPAN_WARNING("You're not strong enough to rip an entire humanoid apart. Also, that's kind of fucked up.")) //look at this dumbass
 		return
 
-	if(isSameSpecies(user, victim))
+	if(issamespecies(user, victim))
 		to_chat(user, SPAN_HIGHDANGER("ARE YOU OUT OF YOUR MIND!?"))
 		return
 
-	if(isSpeciesSynth(victim))
+	if(isspeciessynth(victim))
 		to_chat(user, SPAN_WARNING("You can't flay metal...")) //look at this dumbass
 		return
 
@@ -586,7 +586,7 @@
 	. = ..()
 	if(!.)
 		return
-	if((human_adapted || isYautja(user)) && isXeno(target))
+	if((human_adapted || isyautja(user)) && isxeno(target))
 		var/mob/living/carbon/xenomorph/xenomorph = target
 		xenomorph.interference = 30
 
@@ -664,7 +664,7 @@
 	))
 
 /obj/item/weapon/gun/launcher/spike/get_examine_text(mob/user)
-	if(isYautja(user))
+	if(isyautja(user))
 		. = ..()
 		. += SPAN_NOTICE("It currently has <b>[spikes]/[max_spikes]</b> spikes.")
 	else
@@ -760,7 +760,7 @@
 
 
 /obj/item/weapon/gun/energy/yautja/plasmarifle/get_examine_text(mob/user)
-	if(isYautja(user))
+	if(isyautja(user))
 		. = ..()
 		. += SPAN_NOTICE("It currently has <b>[charge_time]/100</b> charge.")
 	else
@@ -854,7 +854,7 @@
 
 
 /obj/item/weapon/gun/energy/yautja/plasmapistol/get_examine_text(mob/user)
-	if(isYautja(user))
+	if(isyautja(user))
 		. = ..()
 		. += SPAN_NOTICE("It currently has <b>[charge_time]/40</b> charge.")
 	else

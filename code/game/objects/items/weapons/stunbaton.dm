@@ -177,7 +177,7 @@
 
 	//stun effects
 
-	if(!isYautja(L) && !isXeno(L)) //Xenos and Predators are IMMUNE to all baton stuns.
+	if(!isyautja(L) && !isxeno(L)) //Xenos and Predators are IMMUNE to all baton stuns.
 		L.emote("pain")
 		L.apply_stamina_damage(stun, target_zone, ARMOR_ENERGY)
 

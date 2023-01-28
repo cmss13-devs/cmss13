@@ -57,7 +57,7 @@
 		return FALSE
 
 /obj/structure/mortar/attack_alien(mob/living/carbon/xenomorph/M)
-	if(isXenoLarva(M))
+	if(islarva(M))
 		return XENO_NO_DELAY_ACTION
 
 	if(fixed)
@@ -86,7 +86,7 @@
 	return XENO_ATTACK_ACTION
 
 /obj/structure/mortar/attack_hand(mob/user)
-	if(isYautja(user))
+	if(isyautja(user))
 		to_chat(user, SPAN_WARNING("You kick [src] but nothing happens."))
 		return
 	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))

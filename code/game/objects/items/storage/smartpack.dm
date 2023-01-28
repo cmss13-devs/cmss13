@@ -44,7 +44,7 @@
 	set category = "Object"
 	set src in usr
 
-	if(!isSynth(usr))
+	if(!issynth(usr))
 		to_chat(usr, SPAN_WARNING("You have no idea how to do that!"))
 		return
 
@@ -93,7 +93,7 @@
 	for(var/datum/action/A in actions)
 		A.update_button_icon()
 
-	if(isSynth(user))
+	if(issynth(user))
 		var/mob/living/M = user
 		for(var/datum/action/A in M.actions)
 			A.update_button_icon()
@@ -124,7 +124,7 @@
 	return ret
 
 /obj/item/storage/backpack/marine/smartpack/pickup(var/mob/living/M)
-	if(isSynth(M))
+	if(issynth(M))
 		for(var/action_type in subtypesof(/datum/action/human_action/smartpack))
 			if(locate(action_type) in M.actions)
 				continue

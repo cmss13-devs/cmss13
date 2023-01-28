@@ -76,7 +76,7 @@
 	var/boxing_verb = pick(attack_verb)
 	if (A in range(1, M))
 		if(isliving(A) && M.a_intent == INTENT_HARM)
-			if(isYautja(A) || isXeno(A))
+			if(isyautja(A) || isxeno(A))
 				return 0
 			if (ishuman(A))
 				var/mob/living/carbon/human/L = A

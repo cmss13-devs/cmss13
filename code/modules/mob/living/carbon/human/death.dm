@@ -1,5 +1,5 @@
 /mob/living/carbon/human/gib(var/cause = "gibbing")
-	var/is_a_synth = isSynth(src)
+	var/is_a_synth = issynth(src)
 	for(var/obj/limb/E in limbs)
 		if(istype(E, /obj/limb/chest))
 			continue
@@ -47,7 +47,7 @@
 		disable_lights()
 		disable_special_items()
 		disable_headsets() //Disable radios for dead people to reduce load
-	if(pulledby && isXeno(pulledby)) // Xenos lose grab on dead humans
+	if(pulledby && isxeno(pulledby)) // Xenos lose grab on dead humans
 		pulledby.stop_pulling()
 	//Handle species-specific deaths.
 	if(species)

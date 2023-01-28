@@ -33,11 +33,11 @@
 
 /obj/effect/alien/resin/special/pool/get_examine_text(mob/user)
 	. = ..()
-	if(isXeno(user) || isobserver(user))
+	if(isxeno(user) || isobserver(user))
 		. += "It has [linked_hive.stored_larva] more larvae to grow."
 
 /obj/effect/alien/resin/special/pool/attackby(obj/item/I, mob/user)
-	if(!istype(I, /obj/item/grab) || !isXeno(user))
+	if(!istype(I, /obj/item/grab) || !isxeno(user))
 		return ..(I, user)
 
 	var/larva_amount = 0 // The amount of larva they get
@@ -63,7 +63,7 @@
 			return
 		user.stop_pulling() // disrupt any grabs
 		larva_amount++
-	if(isXeno(M))
+	if(isxeno(M))
 		if(!linked_hive || M.stat != DEAD)
 			return
 
@@ -76,7 +76,7 @@
 		// Makes attacking hives very profitable if they can successfully wipe them out without suffering any significant losses
 		var/mob/living/carbon/xenomorph/X = M
 		if(X.hivenumber != linked_hive.hivenumber)
-			if(isXenoQueen(X))
+			if(isqueen(X))
 				larva_amount = 5
 			else
 				larva_amount += max(X.tier, 1) // Now you always gain larva.

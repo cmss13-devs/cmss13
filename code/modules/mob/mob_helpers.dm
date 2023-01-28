@@ -1,5 +1,5 @@
 #define isdeaf(A) (ismob(A) && ((A?:sdisabilities & DISABILITY_DEAF) || A?:ear_deaf))
-#define xeno_hivenumber(A) (isXeno(A) ? A?:hivenumber : FALSE)
+#define xeno_hivenumber(A) (isxeno(A) ? A?:hivenumber : FALSE)
 
 /mob/proc/can_use_hands()
 	return
@@ -442,7 +442,7 @@ It's fairly easy to fix if dealing with single letters but not so much with comp
 	return TRUE
 
 /mob/proc/can_see_reagents()
-	return stat == DEAD || isSynth(src) ||HAS_TRAIT(src, TRAIT_REAGENT_SCANNER) //Dead guys and synths can always see reagents
+	return stat == DEAD || issynth(src) ||HAS_TRAIT(src, TRAIT_REAGENT_SCANNER) //Dead guys and synths can always see reagents
 
 /**
  * Examine a mob

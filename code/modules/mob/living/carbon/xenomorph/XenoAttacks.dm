@@ -59,7 +59,7 @@
 			if(M == src || anchored)
 				return 0
 
-			if(stat != DEAD && isHumanStrict(M))
+			if(stat != DEAD && ishuman_strict(M))
 				return 0
 
 			M.start_pulling(src)
@@ -93,7 +93,7 @@
 	if (M.fortify || M.burrow)
 		return XENO_NO_DELAY_ACTION
 
-	if(isXenoLarva(M)) //Larvas can't eat people
+	if(islarva(M)) //Larvas can't eat people
 		M.visible_message(SPAN_DANGER("[M] nudges its head against \the [src]."), \
 		SPAN_DANGER("You nudge your head against \the [src]."), null, null, CHAT_TYPE_XENO_FLUFF)
 		return
@@ -176,8 +176,8 @@
 		if(INTENT_DISARM)
 			M.animation_attack_on(src)
 			M.flick_attack_overlay(src, "disarm")
-			var/is_shover_queen = isXenoQueen(M)
-			var/can_resist_shove = M.hivenumber != src.hivenumber || ((isXenoQueen(src) || IS_XENO_LEADER(src)) && !is_shover_queen)
+			var/is_shover_queen = isqueen(M)
+			var/can_resist_shove = M.hivenumber != src.hivenumber || ((isqueen(src) || IS_XENO_LEADER(src)) && !is_shover_queen)
 			var/can_mega_shove = is_shover_queen || IS_XENO_LEADER(M)
 			if(can_mega_shove && !can_resist_shove)
 				playsound(loc, 'sound/weapons/alien_knockdown.ogg', 25, 1)

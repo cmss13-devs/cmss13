@@ -22,7 +22,7 @@
 	added_effect = TRUE
 
 /datum/effects/xeno_speed/validate_atom(var/atom/A)
-	if(!isXeno(A))
+	if(!isxeno(A))
 		return FALSE
 	return ..()
 

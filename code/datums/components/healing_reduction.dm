@@ -14,7 +14,7 @@ Humans will take continuous damage instead.
 	var/max_buildup = 50 //up to 50 damage off of healing max by default
 
 /datum/component/healing_reduction/Initialize(var/healing_reduction, var/healing_reduction_dissipation = AMOUNT_PER_TIME(1, 2.5 SECONDS), var/max_buildup = 50)
-	if(!isXenoOrHuman(parent))
+	if(!isxeno_human(parent))
 		return COMPONENT_INCOMPATIBLE
 	. = ..()
 	src.healing_reduction = healing_reduction

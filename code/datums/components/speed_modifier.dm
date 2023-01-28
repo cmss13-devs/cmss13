@@ -11,7 +11,7 @@
 	var/increase_speed = FALSE
 
 /datum/component/speed_modifier/Initialize(var/speed_modifier, var/increase_speed = FALSE, var/speed_modifier_dissipation = AMOUNT_PER_TIME(1, 2.5 SECONDS), var/max_buildup = 10)
-	if(!isXenoOrHuman(parent))
+	if(!isxeno_human(parent))
 		return COMPONENT_INCOMPATIBLE
 	. = ..()
 	src.speed_modifier = speed_modifier

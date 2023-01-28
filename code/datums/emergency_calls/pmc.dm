@@ -60,7 +60,7 @@
 
 
 /datum/emergency_call/pmc/print_backstory(mob/living/carbon/human/M)
-	if(isHumanStrict(M))
+	if(ishuman_strict(M))
 		to_chat(M, SPAN_BOLD("You were born [pick(75;"in Europe", 15;"in Asia", 10;"on Mars")] to a [pick(75;"well-off", 15;"well-established", 10;"average")] family."))
 		to_chat(M, SPAN_BOLD("Joining the ranks of Weyland-Yutani has proven to be very profitable for you."))
 		to_chat(M, SPAN_BOLD("While you are officially an employee, much of your work is off the books. You work as a skilled mercenary."))

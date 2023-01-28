@@ -112,9 +112,9 @@
 			TR.earn_kill()
 		var/mob/cause_mob = cause_data.resolve_mob()
 		if(cause_mob)
-			if(isYautja(cause_mob) && cause_mob.client && cause_mob != src)
+			if(isyautja(cause_mob) && cause_mob.client && cause_mob != src)
 				INVOKE_ASYNC(cause_mob.client, TYPE_PROC_REF(/client, add_honor), max(life_kills_total, default_honor_value))
 
-			if(isXeno(cause_mob))
+			if(isxeno(cause_mob))
 				var/mob/living/carbon/xenomorph/X = cause_mob
 				X.behavior_delegate.on_kill_mob(src)

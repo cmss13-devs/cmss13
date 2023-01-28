@@ -296,7 +296,7 @@
 	unacidable = TRUE
 
 /obj/structure/machinery/computer/disk_reader/attack_hand(mob/living/user)
-	if(isXeno(user))
+	if(isxeno(user))
 		return
 	if(disk)
 		to_chat(user, SPAN_NOTICE("[disk] is currently being uploaded to ARES."))

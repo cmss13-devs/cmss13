@@ -254,7 +254,7 @@ Contains most of the procs that are called when a mob is attacked by something
 	if (I.damtype == BRUTE && !I.is_robot_module() && !(I.flags_item & (NODROP|DELONDROP)))
 		damage = I.force
 		if(damage > 40) damage = 40  //Some sanity, mostly for yautja weapons. CONSTANT STICKY ICKY
-		if (weapon_sharp && prob(3) && !isYautja(user)) // make yautja less likely to get their weapon stuck
+		if (weapon_sharp && prob(3) && !isyautja(user)) // make yautja less likely to get their weapon stuck
 			affecting.embed(I)
 
 	return TRUE
@@ -268,7 +268,7 @@ Contains most of the procs that are called when a mob is attacked by something
 	var/datum/launch_metadata/LM = O.launch_metadata
 
 	//empty active hand and we're in throw mode
-	var/can_catch = (!(O.flags_atom & ITEM_UNCATCHABLE) || isYautja(src))
+	var/can_catch = (!(O.flags_atom & ITEM_UNCATCHABLE) || isyautja(src))
 	if (throw_mode && can_catch && !get_active_hand() && cur_speed <= SPEED_VERY_FAST && \
 		!is_mob_incapacitated() && isturf(O.loc) && put_in_active_hand(O)
 	)
@@ -349,7 +349,7 @@ Contains most of the procs that are called when a mob is attacked by something
 
 			//Sharp objects will always embed if they do enough damage.
 			//Thrown sharp objects have some momentum already and have a small chance to embed even if the damage is below the threshold
-			if (!isYautja(src) && ((sharp && prob(damage/(10*I.w_class)*100)) || (damage > embed_threshold && prob(embed_chance))))
+			if (!isyautja(src) && ((sharp && prob(damage/(10*I.w_class)*100)) || (damage > embed_threshold && prob(embed_chance))))
 				affecting.embed(I)
 
 /mob/living/carbon/human/proc/get_id_faction_group()

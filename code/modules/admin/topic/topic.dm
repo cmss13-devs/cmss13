@@ -204,7 +204,7 @@
 		var/mob/transformed
 		var/hivenumber = XENO_HIVE_NORMAL
 
-		if(isXeno(M))
+		if(isxeno(M))
 			var/mob/living/carbon/xenomorph/X = M
 			hivenumber = X.hivenumber
 
@@ -245,7 +245,7 @@
 			if("parrot") transformed = M.change_mob_type( /mob/living/simple_animal/parrot , null, null, delmob )
 			if("polyparrot") transformed = M.change_mob_type( /mob/living/simple_animal/parrot/Poly , null, null, delmob )
 
-		if(isXeno(transformed) && hivenumber)
+		if(isxeno(transformed) && hivenumber)
 			var/mob/living/carbon/xenomorph/X = transformed
 			X.set_hive_and_update(hivenumber)
 
@@ -578,7 +578,7 @@
 			return
 
 		var/mob/living/carbon/xenomorph/X = locate(href_list["xenoresetname"])
-		if(!isXeno(X))
+		if(!isxeno(X))
 			to_chat(usr, SPAN_WARNING("Not a xeno"))
 			return
 
@@ -622,7 +622,7 @@
 			return
 
 
-		if(!isXeno(X))
+		if(!isxeno(X))
 			to_chat(usr, SPAN_WARNING("Not a xeno"))
 			return
 

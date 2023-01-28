@@ -138,7 +138,7 @@ Additional game mode variables.
 	var/mob/new_player/new_pred
 	for(var/mob/player in GLOB.player_list)
 		if(!player.client) continue //No client. DCed.
-		if(isYautja(player)) continue //Already a predator. Might be dead, who knows.
+		if(isyautja(player)) continue //Already a predator. Might be dead, who knows.
 		if(readied) //Ready check for new players.
 			new_pred = player
 			if(!istype(new_pred)) continue //Have to be a new player here.
@@ -339,7 +339,7 @@ Additional game mode variables.
 		var/area/A = get_area(X)
 		if(is_admin_level(X.z) && (!A || !(A.flags_area & AREA_ALLOW_XENO_JOIN)) || X.aghosted)
 			continue //xenos on admin z level and aghosted ones don't count
-		if(istype(X) && ((!isXenoLarva(X) && (XENO_LEAVE_TIMER - X.away_timer < XENO_AVAILABLE_TIMER)) || (isXenoLarva(X) && (XENO_LEAVE_TIMER_LARVA - X.away_timer < XENO_AVAILABLE_TIMER))))
+		if(istype(X) && ((!islarva(X) && (XENO_LEAVE_TIMER - X.away_timer < XENO_AVAILABLE_TIMER)) || (islarva(X) && (XENO_LEAVE_TIMER_LARVA - X.away_timer < XENO_AVAILABLE_TIMER))))
 			if(!X.client)
 				available_xenos += X
 			else
@@ -398,7 +398,7 @@ Additional game mode variables.
 				to_chat(xeno_candidate, SPAN_WARNING("Seems like something went wrong. Try again?"))
 				return FALSE
 
-		if(!isXeno(userInput) || !xeno_candidate)
+		if(!isxeno(userInput) || !xeno_candidate)
 			return FALSE
 		new_xeno = userInput
 
@@ -419,15 +419,15 @@ Additional game mode variables.
 				to_chat(xeno_candidate, message)
 				to_chat(xeno_candidate, SPAN_WARNING("You must wait 5 minutes before rejoining the game!"))
 				return FALSE
-			if((!isXenoLarva(new_xeno) && new_xeno.away_timer < XENO_LEAVE_TIMER) || (isXenoLarva(new_xeno) && new_xeno.away_timer < XENO_LEAVE_TIMER_LARVA))
+			if((!islarva(new_xeno) && new_xeno.away_timer < XENO_LEAVE_TIMER) || (islarva(new_xeno) && new_xeno.away_timer < XENO_LEAVE_TIMER_LARVA))
 				var/to_wait = XENO_LEAVE_TIMER - new_xeno.away_timer
-				if(isXenoLarva(new_xeno))
+				if(islarva(new_xeno))
 					to_wait = XENO_LEAVE_TIMER_LARVA - new_xeno.away_timer
 				to_chat(xeno_candidate, SPAN_WARNING("That player hasn't been away long enough. Please wait [to_wait] second\s longer."))
 				return FALSE
 
 		if(alert(xeno_candidate, "Everything checks out. Are you sure you want to transfer yourself into [new_xeno]?", "Confirm Transfer", "Yes", "No") == "Yes")
-			if(((!isXenoLarva(new_xeno) && new_xeno.away_timer < XENO_LEAVE_TIMER) || (isXenoLarva(new_xeno) && new_xeno.away_timer < XENO_LEAVE_TIMER_LARVA)) || !(new_xeno in GLOB.living_xeno_list) || new_xeno.stat == DEAD || !xeno_candidate) // Do it again, just in case
+			if(((!islarva(new_xeno) && new_xeno.away_timer < XENO_LEAVE_TIMER) || (islarva(new_xeno) && new_xeno.away_timer < XENO_LEAVE_TIMER_LARVA)) || !(new_xeno in GLOB.living_xeno_list) || new_xeno.stat == DEAD || !xeno_candidate) // Do it again, just in case
 				to_chat(xeno_candidate, SPAN_WARNING("That xenomorph can no longer be controlled. Please try another."))
 				return FALSE
 		else return FALSE
@@ -502,7 +502,7 @@ Additional game mode variables.
 		return FALSE
 
 	//Call the appropriate procs to spawn with
-	if(isXenoCarrier(facehugger_choice))
+	if(iscarrier(facehugger_choice))
 		var/mob/living/carbon/xenomorph/carrier/carrier = facehugger_choice
 		carrier.join_as_facehugger_from_this(xeno_candidate)
 	else
@@ -512,7 +512,7 @@ Additional game mode variables.
 	return TRUE
 
 /datum/game_mode/proc/transfer_xeno(xeno_candidate, mob/living/new_xeno)
-	if(!xeno_candidate || !isXeno(new_xeno) || QDELETED(new_xeno))
+	if(!xeno_candidate || !isxeno(new_xeno) || QDELETED(new_xeno))
 		return FALSE
 	var/datum/mind/xeno_candidate_mind
 	if(ismind(xeno_candidate))
@@ -547,7 +547,7 @@ Additional game mode variables.
 		new_xeno.client.change_view(world_view_size)
 
 	msg_admin_niche("[new_xeno.key] has joined as [new_xeno].")
-	if(isXeno(new_xeno)) //Dear lord
+	if(isxeno(new_xeno)) //Dear lord
 		var/mob/living/carbon/xenomorph/X = new_xeno
 		X.generate_name()
 		if(X.is_ventcrawling)

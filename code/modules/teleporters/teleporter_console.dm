@@ -30,7 +30,7 @@
 	tgui_interact(user)
 
 /obj/structure/machinery/computer/teleporter_console/attack_alien(mob/living/carbon/xenomorph/X)
-	if(!isXenoQueen(X))
+	if(!isqueen(X))
 		return FALSE
 	attack_hand(X)
 	return XENO_ATTACK_ACTION

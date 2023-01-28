@@ -91,7 +91,7 @@
 
 /turf/closed/wall/MouseDrop_T(mob/M, mob/user)
 	if(acided_hole)
-		if(M == user && isXeno(user))
+		if(M == user && isxeno(user))
 			acided_hole.use_wall_hole(user)
 			return
 	..()

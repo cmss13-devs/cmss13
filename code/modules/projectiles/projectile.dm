@@ -412,7 +412,7 @@
 		var/ammo_flags = ammo.flags_ammo_behavior | projectile_override_flags
 
 		// If we are a xeno shooting something
-		if (istype(ammo, /datum/ammo/xeno) && isXeno(firer) && ammo.apply_delegate)
+		if (istype(ammo, /datum/ammo/xeno) && isxeno(firer) && ammo.apply_delegate)
 			var/mob/living/carbon/xenomorph/X = firer
 			if (X.behavior_delegate)
 				var/datum/behavior_delegate/MD = X.behavior_delegate
@@ -482,7 +482,7 @@
 				ammo.on_hit_mob(L,src, firer)
 
 				// If we are a xeno shooting something
-				if (istype(ammo, /datum/ammo/xeno) && isXeno(firer) && L.stat != DEAD && ammo.apply_delegate)
+				if (istype(ammo, /datum/ammo/xeno) && isxeno(firer) && L.stat != DEAD && ammo.apply_delegate)
 					var/mob/living/carbon/xenomorph/X = firer
 					if (X.behavior_delegate)
 						var/datum/behavior_delegate/MD = X.behavior_delegate
@@ -851,7 +851,7 @@
 	if(!P)
 		return
 
-	if(isXeno(P.firer))
+	if(isxeno(P.firer))
 		var/mob/living/carbon/xenomorph/X = P.firer
 		if(X.can_not_harm(src))
 			bullet_ping(P)
@@ -917,7 +917,7 @@
 
 	if(P.ammo.debilitate && stat != DEAD && ( damage || ( ammo_flags & AMMO_IGNORE_RESIST) ) )  //They can't be dead and damage must be inflicted (or it's a xeno toxin).
 		//Predators and synths are immune to these effects to cut down on the stun spam. This should later be moved to their apply_effects proc, but right now they're just humans.
-		if(!isSpeciesYautja(src) && !isSpeciesSynth(src))
+		if(!isspeciesyautja(src) && !isspeciessynth(src))
 			apply_effects(arglist(P.ammo.debilitate))
 
 	bullet_message(P) //We still want this, regardless of whether or not the bullet did damage. For griefers and such.
@@ -973,7 +973,7 @@
 		to_chat(src, SPAN_AVOIDHARM("You shrug off the glob of flame."))
 		return
 
-	if(isXeno(P.firer))
+	if(isxeno(P.firer))
 		var/mob/living/carbon/xenomorph/X = P.firer
 		if(X.can_not_harm(src))
 			bullet_ping(P)

@@ -310,7 +310,7 @@
 		if(shot_mob)
 			if(ishuman(shot_mob))
 				round_statistics.total_projectiles_hit_human += amount
-			else if(isXeno(shot_mob))
+			else if(isxeno(shot_mob))
 				round_statistics.total_projectiles_hit_xeno += amount
 
 /datum/entity/player_stats/human/proc/count_weapon_friendly_fire(weapon, amount = 1)

@@ -388,7 +388,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	CEI.show_player_event_info(src)
 
 	if(mob && !isobserver(mob) && !isnewplayer(mob))
-		if(isXeno(mob))
+		if(isxeno(mob))
 			var/mob/living/carbon/xenomorph/X = mob
 			if(X.hive && GLOB.custom_event_info_list[X.hive])
 				CEI = GLOB.custom_event_info_list[X.hive]

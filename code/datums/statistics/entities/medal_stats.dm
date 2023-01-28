@@ -76,7 +76,7 @@
 	new_medal.save()
 	new_medal.detach()
 
-	if (isXeno(new_recipient))
+	if (isxeno(new_recipient))
 		var/datum/entity/player_stats/xeno/xeno_stats = setup_xeno_stats()
 		xeno_stats.count_niche_stat(STATISTICS_NICHE_MEDALS, 1, new_recipient_role)
 		xeno_stats.medal_list.Insert(1, new_medal)
@@ -94,7 +94,7 @@
 
 	// Remove the stats for the job/caste, individual, and the stat's list of medals
 	var/round_id = SSperf_logging.round.id
-	if (isXeno(recipient))
+	if (isxeno(recipient))
 		// Xeno jellies
 		var/mob/living/carbon/xenomorph/xeno = recipient
 		var/caste = xeno.caste_type

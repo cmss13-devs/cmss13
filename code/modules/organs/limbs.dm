@@ -353,7 +353,7 @@
 	var/no_perma_damage = owner.status_flags & NO_PERMANENT_DAMAGE
 	if(previous_brute > 0 && !is_ff && body_part != BODY_FLAG_CHEST && body_part != BODY_FLAG_GROIN && !no_limb_loss && !no_perma_damage)
 		var/obj/item/clothing/head/helmet/H = owner.head
-		if(!(body_part == BODY_FLAG_HEAD && istype(H) && !isSynth(owner))\
+		if(!(body_part == BODY_FLAG_HEAD && istype(H) && !issynth(owner))\
 			&& CONFIG_GET(flag/limbs_can_break)\
 			&& brute_dam >= max_damage * CONFIG_GET(number/organ_health_multiplier)\
 		)
@@ -709,7 +709,7 @@ This function completely restores a damaged organ to perfect condition.
 	else
 		b_icon = B.icon_name
 
-	if(isSpeciesYautja(owner))
+	if(isspeciesyautja(owner))
 		e_icon = owner.ethnicity
 		b_icon = owner.body_type
 

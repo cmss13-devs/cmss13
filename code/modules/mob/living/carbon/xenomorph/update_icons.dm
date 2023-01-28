@@ -30,13 +30,13 @@
 /mob/living/carbon/xenomorph/proc/update_icon_source()
 	if(HAS_TRAIT(src, TRAIT_XENONID))
 		icon = icon_xenonid
-		if(isXenoQueen(src))
+		if(isqueen(src))
 			var/mob/living/carbon/xenomorph/queen/Q = src
 			Q.queen_standing_icon = icon_xenonid
 			Q.queen_ovipositor_icon = 'icons/mob/xenonids/ovipositor.dmi'
 	else
 		icon = icon_xeno
-		if(isXenoQueen(src))
+		if(isqueen(src))
 			var/mob/living/carbon/xenomorph/queen/Q = src
 			Q.queen_standing_icon = icon_xeno
 			Q.queen_ovipositor_icon = 'icons/mob/xenos/ovipositor.dmi'

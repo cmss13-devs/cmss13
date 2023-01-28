@@ -51,7 +51,7 @@
 	if(.)
 		return
 
-	if(!isXenoQueen(usr) && !allowed(usr))
+	if(!isqueen(usr) && !allowed(usr))
 		to_chat(usr, "<span class='danger'>Access denied.</span>")
 		return TRUE
 

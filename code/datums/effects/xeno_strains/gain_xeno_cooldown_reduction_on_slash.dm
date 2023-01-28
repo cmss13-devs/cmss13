@@ -20,7 +20,7 @@
 	QDEL_IN(src, duration)
 
 /datum/effects/gain_xeno_cooldown_reduction_on_slash/validate_atom(atom/A)
-	if(isXeno(A))
+	if(isxeno(A))
 		return TRUE
 	return FALSE
 

@@ -34,7 +34,7 @@
 	else
 		b_icon = B.icon_name
 
-	if(isSpeciesYautja(H))
+	if(isspeciesyautja(H))
 		e_icon = H.ethnicity
 		b_icon = H.body_type
 

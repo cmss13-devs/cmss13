@@ -342,7 +342,7 @@
 		to_chat(usr, "This mob no longer exists")
 		return
 
-	if(isXeno(H))
+	if(isxeno(H))
 		var/mob/living/carbon/xenomorph/X = H
 		X.set_hive_and_update(hives[newhive])
 	else

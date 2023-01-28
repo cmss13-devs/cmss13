@@ -111,7 +111,7 @@
 	return TRUE
 
 /obj/item/device/defibrillator/proc/check_revive(mob/living/carbon/human/H, mob/living/carbon/human/user)
-	if(!ishuman(H) || isYautja(H))
+	if(!ishuman(H) || isyautja(H))
 		to_chat(user, SPAN_WARNING("You can't defibrilate [H]. You don't even know where to put the paddles!"))
 		return
 	if(!ready)
@@ -132,7 +132,7 @@
 		user.visible_message(SPAN_WARNING("[icon2html(src, viewers(src))] \The [src] buzzes: Paddles registering >100,000 ohms, Possible cause: Suit or Armor interfering."))
 		return
 
-	if((!H.check_tod() && !isSynth(H))) //synthetic species have no expiration date
+	if((!H.check_tod() && !issynth(H))) //synthetic species have no expiration date
 		user.visible_message(SPAN_WARNING("[icon2html(src, viewers(src))] \The [src] buzzes: Patient is braindead."))
 		return
 

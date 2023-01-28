@@ -87,7 +87,7 @@
 		to_chat(usr, SPAN_WARNING("ERROR: 'SHORT-RANGE' MODE NOT LOCATED."))
 
 /obj/item/device/motiondetector/proc/toggle_mode(mob/user)
-	if(isobserver(user) || isXeno(user) || !Adjacent(user))
+	if(isobserver(user) || isxeno(user) || !Adjacent(user))
 		return
 
 	detector_mode = !detector_mode
@@ -101,7 +101,7 @@
 	playsound(usr,'sound/machines/click.ogg', 15, TRUE)
 
 /obj/item/device/motiondetector/clicked(mob/user, list/mods)
-	if (isobserver(user) || isXeno(user)) return
+	if (isobserver(user) || isxeno(user)) return
 
 	if (mods["alt"])
 		if(!CAN_PICKUP(user, src))

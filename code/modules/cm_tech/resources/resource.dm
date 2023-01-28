@@ -147,7 +147,7 @@
 	SPAN_NOTICE("You set up [src]."), max_distance = 3)
 
 /obj/structure/resource_node/attack_alien(mob/living/carbon/xenomorph/M)
-	if(!isXenoBuilder(M))
+	if(!isxeno_builder(M))
 		to_chat(M, SPAN_XENOWARNING("You can't build onto [src]."))
 		return XENO_NO_DELAY_ACTION
 

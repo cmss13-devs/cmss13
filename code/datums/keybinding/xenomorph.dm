@@ -3,7 +3,7 @@
 	weight = WEIGHT_XENO
 
 /datum/keybinding/xenomorph/can_use(client/user)
-	return isXeno(user.mob)
+	return isxeno(user.mob)
 
 /datum/keybinding/xenomorph/primary_attack_one
 	hotkey_keys = list("C")

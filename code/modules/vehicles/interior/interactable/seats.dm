@@ -101,7 +101,7 @@
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
 		if(!H.allow_gun_usage)
-			if(isSynth(user))
+			if(issynth(user))
 				to_chat(user, SPAN_WARNING("Your programming does not allow you to use heavy weaponry."))
 			else
 				to_chat(user, SPAN_WARNING("You are unable to use heavy weaponry."))
@@ -231,7 +231,7 @@
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
 		if(!H.allow_gun_usage)
-			if(isSynth(user))
+			if(issynth(user))
 				to_chat(user, SPAN_WARNING("Your programming does not allow you to use firearms."))
 			else
 				to_chat(user, SPAN_WARNING("You are unable to use firearms."))

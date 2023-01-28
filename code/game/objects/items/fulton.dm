@@ -87,14 +87,14 @@ var/global/list/deployed_fultons = list()
 	if(isliving(target_atom))
 		if(ishuman(target_atom))
 			var/mob/living/carbon/human/H = target_atom
-			if(isYautja(H) && H.stat == DEAD)
+			if(isyautja(H) && H.stat == DEAD)
 				can_attach = TRUE
 			else if((H.stat != DEAD || H.mind && H.check_tod() && H.is_revivable()))
 				to_chat(user, SPAN_WARNING("You can't attach [src] to [target_atom], they still have a chance!"))
 				return
 			else
 				can_attach = TRUE
-		else if(isXeno(target_atom))
+		else if(isxeno(target_atom))
 			var/mob/living/carbon/xenomorph/X = target_atom
 			if(X.stat != DEAD)
 				to_chat(user, SPAN_WARNING("You can't attach [src] to [target_atom], kill it first!"))
@@ -132,7 +132,7 @@ var/global/list/deployed_fultons = list()
 	if(!attached_atom)
 		return
 	var/image/I = image(icon, icon_state)
-	if(isXeno(attached_atom))
+	if(isxeno(attached_atom))
 		var/mob/living/carbon/xenomorph/X = attached_atom
 		I.pixel_x = (X.pixel_x * -1)
 	attached_atom.overlays += I

@@ -161,7 +161,7 @@
 	playsound(loc, "sound/bullets/acid_impact1.ogg", 25)
 
 /proc/unroot_human(mob/living/carbon/H)
-	if (!isXenoOrHuman(H))
+	if (!isxeno_human(H))
 		return
 
 	H.frozen = 0

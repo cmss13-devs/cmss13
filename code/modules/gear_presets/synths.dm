@@ -388,7 +388,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/synth/survivor/cultist_synth
-	name = "Fun - Xeno Cultist Synthetic"
+	name = "Cultist - Xeno Cultist Synthetic"
 	faction = FACTION_XENOMORPH
 
 /datum/equipment_preset/synth/survivor/cultist_synth/load_gear(mob/living/carbon/human/H)

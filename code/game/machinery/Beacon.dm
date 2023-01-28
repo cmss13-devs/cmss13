@@ -24,7 +24,7 @@
 	QDEL_NULL(Beacon)
 	return ..()
 
-/obj/structure/machinery/bluespace_beacon/hide(var/intact)
+/obj/structure/machinery/bluespace_beacon/hide(intact)
 	// update the invisibility and icon
 	invisibility = intact ? 101 : 0
 	updateicon()

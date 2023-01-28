@@ -17,7 +17,7 @@
 	var/hivenumber = XENO_HIVE_NORMAL
 	var/flags_embryo = NO_FLAGS
 
-/obj/effect/alien/egg/Initialize(mapload, var/hive)
+/obj/effect/alien/egg/Initialize(mapload, hive)
 	. = ..()
 	create_egg_triggers()
 	if (hive)
@@ -69,7 +69,7 @@
 			Burst(FALSE)
 	return XENO_NONCOMBAT_ACTION
 
-/obj/effect/alien/egg/clicked(var/mob/user, var/list/mods)
+/obj/effect/alien/egg/clicked(mob/user, list/mods)
 	if(isobserver(user) || get_dist(src, user) > 1)
 		return
 	var/mob/living/carbon/xenomorph/X = user
@@ -110,7 +110,7 @@
 		var/obj/effect/egg_trigger/ET = trigger
 		ET.moveToNullspace()
 
-/obj/effect/alien/egg/proc/Burst(var/kill = TRUE, var/instant_trigger = FALSE, var/mob/living/carbon/xenomorph/X = null, var/is_hugger_player_controlled = FALSE) //drops and kills the facehugger if any is remaining
+/obj/effect/alien/egg/proc/Burst(kill = TRUE, instant_trigger = FALSE, mob/living/carbon/xenomorph/X = null, is_hugger_player_controlled = FALSE) //drops and kills the facehugger if any is remaining
 	if(kill && status != EGG_DESTROYED)
 		hide_egg_triggers()
 		status = EGG_DESTROYED
@@ -125,7 +125,7 @@
 		playsound(src.loc, "sound/effects/alien_egg_move.ogg", 25)
 		addtimer(CALLBACK(src, PROC_REF(release_hugger), instant_trigger, X, is_hugger_player_controlled), 1 SECONDS)
 
-/obj/effect/alien/egg/proc/release_hugger(var/instant_trigger, var/mob/living/carbon/xenomorph/X, var/is_hugger_player_controlled = FALSE)
+/obj/effect/alien/egg/proc/release_hugger(instant_trigger, mob/living/carbon/xenomorph/X, is_hugger_player_controlled = FALSE)
 	if(!loc || status == EGG_DESTROYED)
 		return
 
@@ -147,7 +147,7 @@
 	else
 		child.go_idle()
 
-/obj/effect/alien/egg/bullet_act(var/obj/item/projectile/P)
+/obj/effect/alien/egg/bullet_act(obj/item/projectile/P)
 	..()
 	var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags
 	if(ammo_flags & (AMMO_XENO))

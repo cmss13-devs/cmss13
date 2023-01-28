@@ -214,7 +214,7 @@
 		if(O.warhead)
 			make_and_prime_explosive(O.warhead)
 
-/obj/structure/machinery/computer/demo_sim/proc/make_and_prime_explosive(var/obj/item/explosive/O)
+/obj/structure/machinery/computer/demo_sim/proc/make_and_prime_explosive(obj/item/explosive/O)
 	var/obj/item/explosive/E = new O.type(simulation.loc)
 	E.make_copy_of(O)
 	E.prime(TRUE)

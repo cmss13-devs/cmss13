@@ -8,7 +8,7 @@
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	unacidable = TRUE // So effect are not targeted by alien acid.
 
-/obj/effect/particle_effect/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/obj/effect/particle_effect/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_pass = PASS_OVER|PASS_AROUND|PASS_UNDER|PASS_THROUGH|PASS_MOB_THRU
@@ -57,7 +57,7 @@
 	var/life = 15.0
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
-/obj/effect/particle_effect/water/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/obj/effect/particle_effect/water/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_pass = PASS_THROUGH|PASS_OVER|PASS_MOB_THRU|PASS_UNDER

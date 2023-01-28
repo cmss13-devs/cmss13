@@ -12,7 +12,7 @@
 		/datum/weather_event/clash_rain
 	)
 
-/datum/weather_ss_map_holder/faction_clash/should_affect_area(var/area/A)
+/datum/weather_ss_map_holder/faction_clash/should_affect_area(area/A)
 	return !CEILING_IS_PROTECTED(A.ceiling, CEILING_GLASS)
 
 /datum/weather_ss_map_holder/faction_clash/should_start_event()

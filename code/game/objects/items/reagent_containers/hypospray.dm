@@ -34,7 +34,7 @@
 	attack(user, user)
 
 //Transfer amount switch//
-/obj/item/reagent_container/hypospray/clicked(var/mob/user, var/list/mods)
+/obj/item/reagent_container/hypospray/clicked(mob/user, list/mods)
 	if(!isnull(possible_transfer_amounts) && mods["alt"]) //Autoinjectors aren't supposed to have toggleable transfer amounts.
 		if(!CAN_PICKUP(user, src))
 			return ..()
@@ -54,7 +54,7 @@
 	update_icon()
 
 //Loads the vial, transfers reagents to hypo, but does not move the vial anywhere itself.
-/obj/item/reagent_container/hypospray/proc/hypoload(var/obj/item/reagent_container/glass/beaker/vial/V)
+/obj/item/reagent_container/hypospray/proc/hypoload(obj/item/reagent_container/glass/beaker/vial/V)
 	flags_atom |= OPENCONTAINER
 	playsound(loc, 'sound/weapons/handling/safety_toggle.ogg', 25, 1, 6)
 	if(V.reagents.total_volume)
@@ -63,7 +63,7 @@
 	update_icon()
 
 //Unloads vial, if any, to a hand or the floor, waits, loads in a defined new one. Early-aborts if user has no medical skills.
-/obj/item/reagent_container/hypospray/proc/hypotacreload(var/obj/item/reagent_container/glass/beaker/vial/V, var/mob/living/carbon/human/H)
+/obj/item/reagent_container/hypospray/proc/hypotacreload(obj/item/reagent_container/glass/beaker/vial/V, mob/living/carbon/human/H)
 	if(H.action_busy)
 		return
 	if(!skillcheck(H, SKILL_MEDICAL, SKILL_MEDICAL_TRAINED))

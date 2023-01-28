@@ -50,7 +50,7 @@
 		return FALSE
 	return TRUE
 
-/obj/item/device/flash/proc/do_flash(mob/living/M, mob/user, var/aoe = FALSE) //actually does the stun and logs it
+/obj/item/device/flash/proc/do_flash(mob/living/M, mob/user, aoe = FALSE) //actually does the stun and logs it
 	//spamming the flash before it's fully charged increases the chance of it  breaking
 	//It will never break on the first use.
 	if(flashes_stored)

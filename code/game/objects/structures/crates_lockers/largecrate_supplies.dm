@@ -331,7 +331,7 @@
 	if(unmovable)
 		. += SPAN_DANGER("!!WARNING!! CONTENTS OF CRATE UNABLE TO BE MOVED ONCE UNPACKAGED!")
 
-/obj/structure/largecrate/machine/unpack(var/forced)
+/obj/structure/largecrate/machine/unpack(forced)
 	if(parts_type)
 		new parts_type(loc, 2)
 	playsound(src, unpacking_sound, 35)

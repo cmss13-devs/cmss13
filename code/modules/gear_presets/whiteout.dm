@@ -21,7 +21,7 @@
 	H.h_style = "Bald"
 	H.f_style = "Shaved"
 
-/datum/equipment_preset/pmc/w_y_whiteout/load_name(mob/living/carbon/human/H, var/randomise)
+/datum/equipment_preset/pmc/w_y_whiteout/load_name(mob/living/carbon/human/H, randomise)
 	H.gender = pick(MALE)
 	//var/datum/preferences/A = new()
 	//A.randomize_appearance(mob)

@@ -60,7 +60,7 @@
 	ui_interact(user)
 
 // Duplicated and much-stripped down topic/UI code for the monorail control consoles.
-/obj/structure/machinery/computer/shuttle_control/monorail/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 0)
+/obj/structure/machinery/computer/shuttle_control/monorail/ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = 0)
 
 	var/data[0]
 	var/datum/shuttle/ferry/shuttle = shuttle_controller.shuttles[shuttle_tag]

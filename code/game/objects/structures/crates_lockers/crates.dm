@@ -13,7 +13,7 @@
 	store_mobs = FALSE
 	var/rigged = 0
 
-/obj/structure/closet/crate/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/obj/structure/closet/crate/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_can_pass_all = PASS_OVER|PASS_AROUND

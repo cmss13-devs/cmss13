@@ -11,7 +11,7 @@
 	. = ..()
 	access = get_all_accesses() + get_all_centcom_access()
 
-/datum/equipment_preset/goon/load_name(mob/living/carbon/human/H, var/randomise)
+/datum/equipment_preset/goon/load_name(mob/living/carbon/human/H, randomise)
 	H.gender = pick(MALE, FEMALE)
 
 	var/datum/preferences/A = new()

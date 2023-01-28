@@ -1,4 +1,4 @@
-/mob/living/carbon/xenomorph/say(var/message)
+/mob/living/carbon/xenomorph/say(message)
 	var/verb = "says"
 	var/forced = 0
 	var/message_range = world_view_size
@@ -79,7 +79,7 @@
 	else
 		hivemind_talk(message)
 
-/mob/living/carbon/xenomorph/say_understands(var/mob/other,var/datum/language/speaking = null)
+/mob/living/carbon/xenomorph/say_understands(mob/other, datum/language/speaking = null)
 
 	if(isXeno(other))
 		return 1
@@ -87,14 +87,14 @@
 
 
 //General proc for hivemind. Lame, but effective.
-/mob/living/carbon/xenomorph/proc/hivemind_talk(var/message)
+/mob/living/carbon/xenomorph/proc/hivemind_talk(message)
 	if(interference)
 		to_chat(src, SPAN_WARNING("A headhunter temporarily cut off your psychic connection!"))
 		return
 
 	hivemind_broadcast(message, hive)
 
-/mob/living/carbon/proc/hivemind_broadcast(var/message, var/datum/hive_status/hive)
+/mob/living/carbon/proc/hivemind_broadcast(message, datum/hive_status/hive)
 	if(!message || stat || !hive)
 		return
 

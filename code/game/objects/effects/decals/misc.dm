@@ -14,7 +14,7 @@
 	icon_state = "chempuff"
 	var/mob/source_user
 
-/obj/effect/decal/chempuff/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/obj/effect/decal/chempuff/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_pass = PASS_OVER|PASS_AROUND|PASS_UNDER|PASS_THROUGH
@@ -69,7 +69,7 @@
 	opacity = FALSE
 	unacidable = FALSE
 
-/obj/effect/decal/mecha_wreckage/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/obj/effect/decal/mecha_wreckage/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_pass = PASS_HIGH_OVER_ONLY|PASS_AROUND
@@ -79,7 +79,7 @@
 		deconstruct(FALSE)
 	return
 
-/obj/effect/decal/mecha_wreckage/bullet_act(var/obj/item/projectile/Proj)
+/obj/effect/decal/mecha_wreckage/bullet_act(obj/item/projectile/Proj)
 	return 1
 
 /obj/effect/decal/mecha_wreckage/attack_alien(mob/living/carbon/xenomorph/M)

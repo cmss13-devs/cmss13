@@ -138,7 +138,7 @@ to destroy them and players will be able to make replacements.
 	. = ..()
 	. += "The jumper is connecting the [dir2text(machine_dir)] pins."
 
-/obj/item/circuitboard/machine/unary_atmos/construct(var/obj/structure/pipes/unary/U)
+/obj/item/circuitboard/machine/unary_atmos/construct(obj/structure/pipes/unary/U)
 	//TODO: Move this stuff into the relevant constructor when pipe/construction.dm is cleaned up.
 	U.setDir(src.machine_dir)
 	U.valid_directions = list(init_dirs)

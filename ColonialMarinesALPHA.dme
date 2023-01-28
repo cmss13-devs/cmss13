@@ -435,6 +435,7 @@
 #include "code\datums\emergency_calls\upp.dm"
 #include "code\datums\emergency_calls\upp_commando.dm"
 #include "code\datums\emergency_calls\whiskey_outpost.dm"
+#include "code\datums\emergency_calls\xeno_cultists.dm"
 #include "code\datums\emergency_calls\xenos.dm"
 #include "code\datums\emergency_calls\zombie.dm"
 #include "code\datums\entities\chemical_information.dm"

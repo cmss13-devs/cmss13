@@ -60,7 +60,7 @@
 /mob/living/carbon/xenomorph/larva/alpha
 	hivenumber = XENO_HIVE_ALPHA
 
-/mob/living/carbon/xenomorph/larva/cravo
+/mob/living/carbon/xenomorph/larva/bravo
 	hivenumber = XENO_HIVE_BRAVO
 
 /mob/living/carbon/xenomorph/larva/charlie

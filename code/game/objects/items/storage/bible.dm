@@ -43,9 +43,9 @@
 
 /obj/item/storage/bible/hefa/Initialize()
 	. = ..()
-	new /obj/item/explosive/grenade/HE/frag(src)
-	new /obj/item/explosive/grenade/HE/frag(src)
-	new /obj/item/explosive/grenade/HE/frag(src)
+	new /obj/item/explosive/grenade/high_explosive/frag(src)
+	new /obj/item/explosive/grenade/high_explosive/frag(src)
+	new /obj/item/explosive/grenade/high_explosive/frag(src)
 
 /obj/item/storage/bible/afterattack(atom/A, mob/user as mob, proximity)
 	if(!proximity)

@@ -167,7 +167,7 @@
 	H.equip_to_slot_or_del(new /obj/item/storage/box/handcuffs(H.back), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/device/chameleon(H.back), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(H), WEAR_R_STORE)
-	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/upp(H.back), WEAR_IN_R_STORE)
+	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/high_explosive/upp(H.back), WEAR_IN_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/explosive/plastic(H.back), WEAR_IN_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/explosive/plastic(H.back), WEAR_IN_R_STORE)
 

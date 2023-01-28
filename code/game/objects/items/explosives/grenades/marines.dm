@@ -8,7 +8,7 @@
 #define GRENADE_FIRE_RESISTANCE_MIN 10
 #define GRENADE_FIRE_RESISTANCE_MAX 40
 
-/obj/item/explosive/grenade/HE
+/obj/item/explosive/grenade/high_explosive
 	name = "\improper M40 HEDP grenade"
 	desc = "High-Explosive Dual-Purpose. A small, but deceptively strong blast grenade that has been phasing out the M15 HE grenades alongside the M40 HEFA. Capable of being loaded in the M92 Launcher, or thrown by hand."
 	icon_state = "grenade"
@@ -23,12 +23,12 @@
 	var/fire_resistance = 30 //to prevent highly controlled massive explosions
 	falloff_mode = EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL
 
-/obj/item/explosive/grenade/HE/New()
+/obj/item/explosive/grenade/high_explosive/New()
 	..()
 
 	fire_resistance = rand(GRENADE_FIRE_RESISTANCE_MIN, GRENADE_FIRE_RESISTANCE_MAX)
 
-/obj/item/explosive/grenade/HE/prime()
+/obj/item/explosive/grenade/high_explosive/prime()
 	set waitfor = 0
 	if(shrapnel_count)
 		create_shrapnel(loc, shrapnel_count, , ,shrapnel_type, cause_data)
@@ -37,20 +37,20 @@
 	qdel(src)
 
 
-/obj/item/explosive/grenade/HE/proc/apply_explosion_overlay()
+/obj/item/explosive/grenade/high_explosive/proc/apply_explosion_overlay()
 	var/obj/effect/overlay/O = new /obj/effect/overlay(loc)
 	O.name = "grenade"
 	O.icon = 'icons/effects/explosion.dmi'
 	flick("grenade", O)
 	QDEL_IN(O, 7)
 
-/obj/item/explosive/grenade/HE/flamer_fire_act(damage, flame_cause_data)
+/obj/item/explosive/grenade/high_explosive/flamer_fire_act(damage, flame_cause_data)
 	fire_resistance--
 	if(fire_resistance<=0)
 		cause_data = flame_cause_data
 		prime()
 
-/obj/item/explosive/grenade/HE/super
+/obj/item/explosive/grenade/high_explosive/super
 	name = "\improper M40/2 HEDP grenade"
 	desc = "High-Explosive Dual-Purpose. A small, but deceptively strong blast grenade that has been phasing out the M15 HE grenades alongside the M40 HEFA. This version is stronger."
 	icon_state = "m40_2"
@@ -58,7 +58,7 @@
 	explosion_power = 150
 	explosion_falloff = 40
 
-/obj/item/explosive/grenade/HE/PMC
+/obj/item/explosive/grenade/high_explosive/pmc
 	name = "\improper M12 blast grenade"
 	desc = "A high-explosive grenade produced for private security firms. It explodes around 3 seconds after the pin has been pulled."
 	icon_state = "grenade_pmc"
@@ -67,7 +67,7 @@
 	explosion_power = 200
 	falloff_mode = EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL_HALF
 
-/obj/item/explosive/grenade/HE/stick
+/obj/item/explosive/grenade/high_explosive/stick
 	name = "\improper Webley Mk15 stick grenade"
 	desc = "A blast grenade produced in the colonies, most commonly using old designs and schematics. It explodes 3 seconds after the pin has been pulled."
 	icon_state = "grenade_stick"
@@ -87,7 +87,7 @@
 				Fragmentation Grenades
 //================================================
 */
-/obj/item/explosive/grenade/HE/frag
+/obj/item/explosive/grenade/high_explosive/frag
 	name = "\improper M40 HEFA grenade"
 	desc = "High-Explosive Fragmenting-Antipersonnel. A small, but deceptively strong fragmentation grenade that has been phasing out the M15 fragmentation grenades alongside the M40 HEDP. Capable of being loaded in the M92 Launcher, or thrown by hand."
 	icon_state = "grenade_hefa"
@@ -104,7 +104,7 @@
 	antigrief_protection = FALSE
 
 
-/obj/item/explosive/grenade/HE/m15
+/obj/item/explosive/grenade/high_explosive/m15
 	name = "\improper M15 fragmentation grenade"
 	desc = "An outdated USCM Fragmentation Grenade. With decades of service in the USCM, the old M15 Fragmentation Grenade is slowly being replaced by the slightly safer M40-series grenades. It is set to detonate in 4 seconds."
 	icon_state = "grenade_ex"
@@ -118,7 +118,7 @@
 
 
 
-/obj/item/explosive/grenade/HE/upp
+/obj/item/explosive/grenade/high_explosive/upp
 	name = "\improper Type 6 shrapnel grenade"
 	desc = "A fragmentation grenade found within the ranks of the UPP. Designed to explode into shrapnel and rupture the bodies of opponents. It explodes 3 seconds after the pin has been pulled."
 	icon_state = "grenade_upp"
@@ -136,7 +136,7 @@
 //================================================
 */
 // M74 are the launcher-only variant. Flag with hand_throwable = FALSE.
-/obj/item/explosive/grenade/HE/airburst
+/obj/item/explosive/grenade/high_explosive/airburst
 	name = "\improper M74 AGM-F 40mm Grenade"
 	desc = "M74 - Airburst Grenade Munition - Fragmentation. This grenade must be launched with a grenade launcher, and detonates once it reaches its destination. It disperses jagged shrapnel in a cone in front of itself, tearing through sinews and armor alike. Dispersion pattern is optimized against large target. Suffers from overpenetration on a direct hit."
 	icon_state = "grenade_m74_airburst_f"
@@ -151,10 +151,10 @@
 	var/direct_hit_shrapnel = 5
 	var/dispersion_angle = 40
 
-/obj/item/explosive/grenade/HE/airburst/prime()
+/obj/item/explosive/grenade/high_explosive/airburst/prime()
 // We don't prime, we use launch_impact.
 
-/obj/item/explosive/grenade/HE/airburst/launch_impact(atom/hit_atom)
+/obj/item/explosive/grenade/high_explosive/airburst/launch_impact(atom/hit_atom)
 	..()
 	var/detonate = TRUE
 	if(isobj(hit_atom) && !rebounding)
@@ -175,7 +175,7 @@
 			cell_explosion(loc, explosion_power, explosion_falloff, falloff_mode, last_move_dir, cause_data)
 		qdel(src)
 
-/obj/item/explosive/grenade/HE/airburst/hornet_shell
+/obj/item/explosive/grenade/high_explosive/airburst/hornet_shell
 	name = "\improper M74 AGM-H 40mm Hornet Shell"
 	desc = "Functions identically to the standard AGM-F 40mm grenade, except instead of exploding into shrapnel, the hornet shell shoots off holo-targeting .22lr rounds. The equivalent to buckshot at-range."
 	icon_state = "grenade_hornet"
@@ -185,7 +185,7 @@
 	direct_hit_shrapnel = 5
 	dispersion_angle = 15//tight cone
 
-/obj/item/explosive/grenade/HE/airburst/starshell
+/obj/item/explosive/grenade/high_explosive/airburst/starshell
 	name = "\improper M74 AGM-S Star Shell"
 	desc = "Functions identically to the standard AGM-F 40mm grenade, except instead of exploding into shrapnel, the star shells bursts into burning phosphor that illuminates the area."
 	icon_state = "grenade_starshell"
@@ -507,7 +507,7 @@
 //================================================
 */
 
-/obj/item/explosive/grenade/HE/training
+/obj/item/explosive/grenade/high_explosive/training
 	name = "M07 training grenade"
 	desc = "A harmless reusable version of the M40 HEDP, used for training. Capable of being loaded in the M92 Launcher, or thrown by hand."
 	icon_state = "training_grenade"
@@ -516,7 +516,7 @@
 	harmful = FALSE
 	antigrief_protection = FALSE
 
-/obj/item/explosive/grenade/HE/training/prime()
+/obj/item/explosive/grenade/high_explosive/training/prime()
 	spawn(0)
 		playsound(loc, 'sound/items/detector.ogg', 80, 0, 7)
 		active = 0 //so we can reuse it
@@ -526,11 +526,11 @@
 		throw_range = initial(throw_range)
 		w_class = initial(w_class)
 
-/obj/item/explosive/grenade/HE/training/flamer_fire_act()
+/obj/item/explosive/grenade/high_explosive/training/flamer_fire_act()
 	return
 
 
-/obj/item/explosive/grenade/HE/m15/rubber
+/obj/item/explosive/grenade/high_explosive/m15/rubber
 	name = "\improper M15 rubber pellet grenade"
 	desc = "A relatively harmless version of the M15 grenade designed for riot control and combat exercises."
 	icon_state = "rubber_grenade"
@@ -552,7 +552,7 @@
 /obj/item/explosive/grenade/baton/flamer_fire_act()
 	return
 
-/obj/item/explosive/grenade/HE/holy_hand_grenade
+/obj/item/explosive/grenade/high_explosive/holy_hand_grenade
 	name = "\improper Holy Hand Grenade of Antioch"
 	desc = "And Saint Attila raised the hand grenade up on high, saying, \"O LORD, bless this Thy hand grenade that with it Thou mayest blow Thine enemies to tiny bits, in Thy mercy.\" And the LORD did grin and the people did feast upon the lambs and sloths and carp and anchovies... And the LORD spake, saying, \"First shalt thou take out the Holy Pin, then shalt thou count to three, no more, no less. Three shall be the number thou shalt count, and the number of the counting shall be three. Four shalt thou not count, neither count thou two, excepting that thou then proceed to three. Five is right out. Once the number three, being the third number, be reached, then lobbest thou thy Holy Hand Grenade of Antioch towards thy foe, who, being naughty in My sight, shall snuff it.\""
 	icon_state = "grenade_antioch"

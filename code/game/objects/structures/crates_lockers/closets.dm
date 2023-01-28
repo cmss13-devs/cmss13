@@ -96,7 +96,7 @@
 
 	dump_contents()
 
-	UnregisterSignal(src, COMSIG_OBJ_FLASHBANGED)
+	UnregisterSignal(src, COMSIG_CLOSET_FLASHBANGED)
 	opened = 1
 	update_icon()
 	playsound(src.loc, open_sound, 15, 1)
@@ -114,7 +114,7 @@
 		stored_units = store_items(stored_units)
 	if(store_mobs)
 		stored_units = store_mobs(stored_units)
-		RegisterSignal(src, COMSIG_OBJ_FLASHBANGED, PROC_REF(flashbang))
+		RegisterSignal(src, COMSIG_CLOSET_FLASHBANGED, PROC_REF(flashbang))
 
 	opened = 0
 	update_icon()

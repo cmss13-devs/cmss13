@@ -3329,7 +3329,7 @@
 	name = "grenade shell"
 	ping = null
 	damage_type = BRUTE
-	var/nade_type = /obj/item/explosive/grenade/HE
+	var/nade_type = /obj/item/explosive/grenade/high_explosive
 	icon_state = "grenade"
 	flags_ammo_behavior = AMMO_IGNORE_COVER|AMMO_SKIPS_ALIENS
 

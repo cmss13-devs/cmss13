@@ -53,7 +53,7 @@
 
 	var/turf/T = get_turf(src)
 	for(var/obj/structure/closet/L in hear(7, T))
-		SEND_SIGNAL(L, COMSIG_OBJ_FLASHBANGED, src)
+		SEND_SIGNAL(L, COMSIG_CLOSET_FLASHBANGED, src)
 
 	for(var/mob/living/carbon/M in hear(7, T))
 		bang(T, M)

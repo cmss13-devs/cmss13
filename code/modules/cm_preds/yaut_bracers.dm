@@ -15,8 +15,8 @@
 	flags_cold_protection = BODY_FLAG_HANDS
 	flags_heat_protection = BODY_FLAG_HANDS
 	flags_armor_protection = BODY_FLAG_HANDS
-	min_cold_protection_temperature = GLOVES_min_cold_protection_temperature
-	max_heat_protection_temperature = GLOVES_max_heat_protection_temperature
+	min_cold_protection_temperature = GLOVES_MIN_COLD_PROT
+	max_heat_protection_temperature = GLOVES_MAX_HEAT_PROT
 	unacidable = TRUE
 
 	armor_melee = CLOTHING_ARMOR_MEDIUM

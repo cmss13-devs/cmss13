@@ -43,8 +43,8 @@
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
 	flags_item = ITEM_PREDATOR
 	slowdown = SLOWDOWN_ARMOR_NONE
-	min_cold_protection_temperature = ARMOR_min_cold_protection_temperature
-	max_heat_protection_temperature = ARMOR_max_heat_protection_temperature
+	min_cold_protection_temperature = HELMET_MIN_COLD_PROT
+	max_heat_protection_temperature = HELMET_MAX_HEAT_PROT
 	siemens_coefficient = 0.1
 	allowed = list(/obj/item/weapon/melee/harpoon,
 			/obj/item/weapon/gun/launcher/spike,
@@ -212,8 +212,8 @@
 	flags_item = ITEM_PREDATOR
 
 	siemens_coefficient = 0.2
-	min_cold_protection_temperature = SHOE_min_cold_protection_temperature
-	max_heat_protection_temperature = SHOE_max_heat_protection_temperature
+	min_cold_protection_temperature = SHOE_MIN_COLD_PROT
+	max_heat_protection_temperature = SHOE_MAX_HEAT_PROT
 	items_allowed = list(
 		/obj/item/weapon/melee/yautja/knife,
 		/obj/item/weapon/gun/energy/yautja/plasmapistol
@@ -276,7 +276,7 @@
 	has_sensor = UNIFORM_HAS_SENSORS
 	sensor_faction = FACTION_YAUTJA
 	siemens_coefficient = 0.9
-	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
+	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
 
 	armor_melee = CLOTHING_ARMOR_MEDIUM
 	armor_bullet = CLOTHING_ARMOR_MEDIUM

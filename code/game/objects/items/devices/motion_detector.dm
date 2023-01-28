@@ -38,9 +38,12 @@
 	var/long_range_locked = FALSE //only long-range MD
 	var/ping_overlay
 
+/obj/item/device/motiondetector/proc/get_help_text()
+	. = "Blue bubble-like indicators on your HUD will show pings locations or direction to them. The device screen will show the amount of unidentified movements detected (up to 9). Has two modes: slow long-range [SPAN_HELPFUL("([MOTION_DETECTOR_RANGE_LONG] tiles)")] and fast short-range [SPAN_HELPFUL("([MOTION_DETECTOR_RANGE_SHORT] tiles)")]. Use [SPAN_HELPFUL("Alt + Click")] on the device to switch between modes. Using the device on the adjacent multitile vehicle will start the process of recalibrating and scanning vehicle interior for unidentified movements inside."
+
 /obj/item/device/motiondetector/get_examine_text(mob/user)
 	. = ..()
-	. += SPAN_INFO("Blue bubble-like indicators on your HUD will show pings locations or direction to them. The device screen will show the amount of unidentified movements detected (up to 9). Has two modes: slow long-range [SPAN_HELPFUL("([MOTION_DETECTOR_RANGE_LONG] tiles)")] and fast short-range [SPAN_HELPFUL("([MOTION_DETECTOR_RANGE_SHORT] tiles)")]. Use [SPAN_HELPFUL("Alt + Click")] on the device to switch between modes. Using the device on the adjacent multitile vehicle will start the process of recalibrating and scanning vehicle interior for unidentified movements inside.")
+	. += SPAN_INFO(get_help_text())
 
 /obj/item/device/motiondetector/Initialize()
 	. = ..()
@@ -118,7 +121,7 @@
 		toggle_active(user, active)
 
 // var/active is used to forcefully toggle it to a specific state
-/obj/item/device/motiondetector/proc/toggle_active(mob/user, var/old_active, var/forced = FALSE)
+/obj/item/device/motiondetector/proc/toggle_active(mob/user, old_active, forced = FALSE)
 	active = !old_active
 	if(!active)
 		turn_off(user, forced)
@@ -126,7 +129,7 @@
 		turn_on(user, forced)
 	update_icon()
 
-/obj/item/device/motiondetector/proc/turn_on(mob/user, var/forced = FALSE)
+/obj/item/device/motiondetector/proc/turn_on(mob/user, forced = FALSE)
 	if(forced)
 		visible_message(SPAN_NOTICE("\The [src] turns on."), SPAN_NOTICE("You hear a beep."), 3)
 	else if(user)
@@ -134,7 +137,7 @@
 	playsound(loc, 'sound/items/detector_turn_on.ogg', 30, FALSE, 5, 2)
 	START_PROCESSING(SSobj, src)
 
-/obj/item/device/motiondetector/proc/turn_off(mob/user, var/forced = FALSE)
+/obj/item/device/motiondetector/proc/turn_off(mob/user, forced = FALSE)
 	if(forced)
 		visible_message(SPAN_NOTICE("\The [src] shorts out."), SPAN_NOTICE("You hear a click."), 3)
 	else if(user)
@@ -187,7 +190,7 @@
 	if(ishuman(A.loc))
 		return A.loc
 
-/obj/item/device/motiondetector/proc/apply_debuff(var/mob/M)
+/obj/item/device/motiondetector/proc/apply_debuff(mob/M)
 	return
 
 /obj/item/device/motiondetector/proc/scan()
@@ -241,7 +244,7 @@
 
 	return ping_count
 
-/obj/item/device/motiondetector/proc/show_blip(var/mob/user, var/atom/target, var/blip_icon)
+/obj/item/device/motiondetector/proc/show_blip(mob/user, atom/target, blip_icon)
 	set waitfor = 0
 	if(user && user.client)
 
@@ -277,7 +280,7 @@
 		user.client.screen += DB
 		addtimer(CALLBACK(src, PROC_REF(clear_pings), user, DB), 1 SECONDS)
 
-/obj/item/device/motiondetector/proc/clear_pings(mob/user, var/obj/effect/detector_blip/DB)
+/obj/item/device/motiondetector/proc/clear_pings(mob/user, obj/effect/detector_blip/DB)
 	if(user.client)
 		user.client.screen -= DB
 

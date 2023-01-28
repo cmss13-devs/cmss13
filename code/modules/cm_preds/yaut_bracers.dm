@@ -15,8 +15,8 @@
 	flags_cold_protection = BODY_FLAG_HANDS
 	flags_heat_protection = BODY_FLAG_HANDS
 	flags_armor_protection = BODY_FLAG_HANDS
-	min_cold_protection_temperature = GLOVES_min_cold_protection_temperature
-	max_heat_protection_temperature = GLOVES_max_heat_protection_temperature
+	min_cold_protection_temperature = GLOVES_MIN_COLD_PROT
+	max_heat_protection_temperature = GLOVES_MAX_HEAT_PROT
 	unacidable = TRUE
 
 	armor_melee = CLOTHING_ARMOR_MEDIUM
@@ -86,7 +86,7 @@
 *It can take a negative value in amount to restore energy.
 *Also instantly updates the yautja power HUD display.
 */
-/obj/item/clothing/gloves/yautja/proc/drain_power(var/mob/living/carbon/human/human, var/amount)
+/obj/item/clothing/gloves/yautja/proc/drain_power(mob/living/carbon/human/human, amount)
 	if(!human)
 		return FALSE
 	if(charge < amount)
@@ -108,7 +108,7 @@
 
 	return TRUE
 
-/obj/item/clothing/gloves/yautja/proc/shock_user(var/mob/living/carbon/human/M)
+/obj/item/clothing/gloves/yautja/proc/shock_user(mob/living/carbon/human/M)
 	if(!HAS_TRAIT(M, TRAIT_YAUTJA_TECH) && !M.hunter_data.thralled)
 		//Spark
 		playsound(M, 'sound/effects/sparks2.ogg', 60, 1)
@@ -127,7 +127,7 @@
 
 //We use this to determine whether we should activate the given verb, or a random verb
 //0 - do nothing, 1 - random function, 2 - this function
-/obj/item/clothing/gloves/yautja/hunter/proc/check_random_function(var/mob/living/carbon/human/user, var/forced = FALSE, var/always_delimb = FALSE)
+/obj/item/clothing/gloves/yautja/hunter/proc/check_random_function(mob/living/carbon/human/user, forced = FALSE, always_delimb = FALSE)
 	if(!istype(user))
 		return TRUE
 
@@ -218,7 +218,7 @@
 	var/obj/item/weapon/wristblades/left_wristblades
 	var/obj/item/weapon/wristblades/right_wristblades
 
-/obj/item/clothing/gloves/yautja/hunter/Initialize(mapload, var/new_translator_type, var/new_caster_material)
+/obj/item/clothing/gloves/yautja/hunter/Initialize(mapload, new_translator_type, new_caster_material)
 	. = ..()
 	embedded_id = new(src)
 	if(new_translator_type)
@@ -302,7 +302,7 @@
 	. = ..()
 
 //We use this to activate random verbs for non-Yautja
-/obj/item/clothing/gloves/yautja/hunter/proc/activate_random_verb(var/mob/caller)
+/obj/item/clothing/gloves/yautja/hunter/proc/activate_random_verb(mob/caller)
 	var/option = rand(1, 11)
 	//we have options from 1 to 8, but we're giving the user a higher probability of being punished if they already rolled this bad
 	switch(option)
@@ -326,7 +326,7 @@
 			. = delimb_user(caller)
 
 //This is used to punish people that fiddle with technology they don't understand
-/obj/item/clothing/gloves/yautja/hunter/proc/delimb_user(var/mob/living/carbon/human/user)
+/obj/item/clothing/gloves/yautja/hunter/proc/delimb_user(mob/living/carbon/human/user)
 	if(!istype(user))
 		return
 	if(isYautja(user))
@@ -353,7 +353,7 @@
 	set src in usr
 	. = wristblades_internal(usr, FALSE)
 
-/obj/item/clothing/gloves/yautja/hunter/proc/wristblades_internal(var/mob/living/carbon/human/caller, var/forced = FALSE)
+/obj/item/clothing/gloves/yautja/hunter/proc/wristblades_internal(mob/living/carbon/human/caller, forced = FALSE)
 	if(!caller.loc || !caller.canmove || caller.stat || !ishuman(caller))
 		return
 
@@ -405,7 +405,7 @@
 	set src in usr
 	. = track_gear_internal(usr, FALSE)
 
-/obj/item/clothing/gloves/yautja/hunter/proc/track_gear_internal(var/mob/caller, var/forced = FALSE)
+/obj/item/clothing/gloves/yautja/hunter/proc/track_gear_internal(mob/caller, forced = FALSE)
 	. = check_random_function(caller, forced)
 	if(.)
 		return
@@ -485,7 +485,7 @@
 	set src in usr
 	. = cloaker_internal(usr, FALSE)
 
-/obj/item/clothing/gloves/yautja/hunter/proc/cloaker_internal(var/mob/caller, var/forced = FALSE)
+/obj/item/clothing/gloves/yautja/hunter/proc/cloaker_internal(mob/caller, forced = FALSE)
 	. = check_random_function(caller, forced)
 	if(.)
 		return
@@ -548,7 +548,7 @@
 
 	decloak(wearer, TRUE)
 
-/obj/item/clothing/gloves/yautja/hunter/decloak(var/mob/user, forced)
+/obj/item/clothing/gloves/yautja/hunter/decloak(mob/user, forced)
 	if(!user)
 		return
 
@@ -580,7 +580,7 @@
 	set src in usr
 	. = caster_internal(usr, FALSE)
 
-/obj/item/clothing/gloves/yautja/hunter/proc/caster_internal(var/mob/living/carbon/human/caller, var/forced = FALSE)
+/obj/item/clothing/gloves/yautja/hunter/proc/caster_internal(mob/living/carbon/human/caller, forced = FALSE)
 	if(!caller.loc || !caller.canmove || caller.stat || !ishuman(caller))
 		return
 
@@ -610,7 +610,7 @@
 	return TRUE
 
 
-/obj/item/clothing/gloves/yautja/hunter/proc/explode(var/mob/living/carbon/victim)
+/obj/item/clothing/gloves/yautja/hunter/proc/explode(mob/living/carbon/victim)
 	set waitfor = 0
 
 	if (exploding)
@@ -662,7 +662,7 @@
 	set src in usr
 	. = activate_suicide_internal(usr, FALSE)
 
-/obj/item/clothing/gloves/yautja/hunter/proc/activate_suicide_internal(var/mob/caller, var/forced = FALSE)
+/obj/item/clothing/gloves/yautja/hunter/proc/activate_suicide_internal(mob/caller, forced = FALSE)
 	. = check_random_function(caller, forced, TRUE)
 	if(.)
 		return
@@ -753,7 +753,7 @@
 	. = injectors_internal(usr, FALSE)
 
 
-/obj/item/clothing/gloves/yautja/hunter/proc/injectors_internal(var/mob/caller, var/forced = FALSE)
+/obj/item/clothing/gloves/yautja/hunter/proc/injectors_internal(mob/caller, forced = FALSE)
 	if(caller.is_mob_incapacitated())
 		return FALSE
 
@@ -794,7 +794,7 @@
 	. = healing_capsule_internal(usr, FALSE)
 
 
-/obj/item/clothing/gloves/yautja/hunter/proc/healing_capsule_internal(var/mob/caller, var/forced = FALSE)
+/obj/item/clothing/gloves/yautja/hunter/proc/healing_capsule_internal(mob/caller, forced = FALSE)
 	if(caller.is_mob_incapacitated())
 		return FALSE
 
@@ -835,7 +835,7 @@
 	. = call_disk_internal(usr, FALSE)
 
 
-/obj/item/clothing/gloves/yautja/hunter/proc/call_disk_internal(var/mob/caller, var/forced = FALSE)
+/obj/item/clothing/gloves/yautja/hunter/proc/call_disk_internal(mob/caller, forced = FALSE)
 	if(caller.is_mob_incapacitated())
 		return FALSE
 
@@ -871,7 +871,7 @@
 	set src in usr
 	. = remove_tracked_item_internal(usr, FALSE)
 
-/obj/item/clothing/gloves/yautja/hunter/proc/remove_tracked_item_internal(var/mob/caller, var/forced = FALSE)
+/obj/item/clothing/gloves/yautja/hunter/proc/remove_tracked_item_internal(mob/caller, forced = FALSE)
 	if(caller.is_mob_incapacitated())
 		return FALSE
 
@@ -898,7 +898,7 @@
 	set src in usr
 	. = add_tracked_item_internal(usr, FALSE)
 
-/obj/item/clothing/gloves/yautja/hunter/proc/add_tracked_item_internal(var/mob/caller, var/forced = FALSE)
+/obj/item/clothing/gloves/yautja/hunter/proc/add_tracked_item_internal(mob/caller, forced = FALSE)
 	if(caller.is_mob_incapacitated())
 		return FALSE
 
@@ -924,7 +924,7 @@
 	set src in usr
 	. = call_combi_internal(usr, FALSE)
 
-/obj/item/clothing/gloves/yautja/hunter/proc/call_combi_internal(var/mob/caller, var/forced = FALSE)
+/obj/item/clothing/gloves/yautja/hunter/proc/call_combi_internal(mob/caller, forced = FALSE)
 	if(caller.is_mob_incapacitated())
 		return FALSE
 
@@ -951,7 +951,7 @@
 	set src in usr
 	. = translate_internal(usr, FALSE)
 
-/obj/item/clothing/gloves/yautja/hunter/proc/translate_internal(var/mob/caller, var/forced = FALSE)
+/obj/item/clothing/gloves/yautja/hunter/proc/translate_internal(mob/caller, forced = FALSE)
 	if(!caller || caller.stat)
 		return
 

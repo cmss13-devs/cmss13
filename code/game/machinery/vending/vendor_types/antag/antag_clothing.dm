@@ -13,7 +13,7 @@
 	. = ..()
 	vend_flags |= VEND_FACTION_THEMES
 
-/obj/structure/machinery/cm_vending/clothing/antag/get_listed_products(var/mob/user)
+/obj/structure/machinery/cm_vending/clothing/antag/get_listed_products(mob/user)
 	if(!user)
 		var/list/all_equipment = list()
 		var/list/presets = typesof(/datum/equipment_preset)

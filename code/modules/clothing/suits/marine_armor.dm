@@ -81,8 +81,8 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS
 	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS
 	flags_heat_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS
-	min_cold_protection_temperature = ARMOR_min_cold_protection_temperature
-	max_heat_protection_temperature = ARMOR_max_heat_protection_temperature
+	min_cold_protection_temperature = HELMET_MIN_COLD_PROT
+	max_heat_protection_temperature = HELMET_MAX_HEAT_PROT
 	blood_overlay_type = "armor"
 	armor_melee = CLOTHING_ARMOR_MEDIUM
 	armor_bullet = CLOTHING_ARMOR_MEDIUM
@@ -682,7 +682,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
 	fire_intensity_resistance = BURN_LEVEL_TIER_1
-	max_heat_protection_temperature = FIRESUIT_max_heat_protection_temperature
+	max_heat_protection_temperature = FIRESUIT_MAX_HEAT_PROT
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS|BODY_FLAG_FEET
 	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS|BODY_FLAG_FEET
 	flags_heat_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS|BODY_FLAG_FEET
@@ -739,7 +739,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 
 	H.add_filter("firewalk_on", 1, list("type" = "outline", "color" = "#03fcc6", "size" = 1))
 
-/obj/item/clothing/suit/storage/marine/M35/proc/end_fire_shield(var/mob/living/carbon/human/user)
+/obj/item/clothing/suit/storage/marine/M35/proc/end_fire_shield(mob/living/carbon/human/user)
 	if(!istype(user))
 		return
 	to_chat(user, SPAN_NOTICE("FIREWALK protocol has finished."))
@@ -753,7 +753,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 
 	addtimer(CALLBACK(src, PROC_REF(enable_fire_shield), user), FIRE_SHIELD_CD)
 
-/obj/item/clothing/suit/storage/marine/M35/proc/enable_fire_shield(var/mob/living/carbon/human/user)
+/obj/item/clothing/suit/storage/marine/M35/proc/enable_fire_shield(mob/living/carbon/human/user)
 	if(!istype(user))
 		return
 	to_chat(user, SPAN_NOTICE("FIREWALK protocol can be activated again."))
@@ -782,7 +782,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	if(fire_shield_on)
 		. |= COMPONENT_NO_BURN
 
-/obj/item/clothing/suit/storage/marine/M35/dropped(var/mob/user)
+/obj/item/clothing/suit/storage/marine/M35/dropped(mob/user)
 	if (!istype(user))
 		return
 	UnregisterSignal(user, list(
@@ -797,7 +797,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 /datum/action/item_action/specialist/fire_shield
 	ability_primacy = SPEC_PRIMARY_ACTION_2
 
-/datum/action/item_action/specialist/fire_shield/New(var/mob/living/user, var/obj/item/holder)
+/datum/action/item_action/specialist/fire_shield/New(mob/living/user, obj/item/holder)
 	..()
 	name = "Activate Fire Shield"
 	button.name = name
@@ -956,13 +956,13 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	if(camo_active)
 		user.density = FALSE
 
-/obj/item/clothing/suit/storage/marine/ghillie/proc/fade_out_finish(var/mob/living/carbon/human/H)
+/obj/item/clothing/suit/storage/marine/ghillie/proc/fade_out_finish(mob/living/carbon/human/H)
 	if(camo_active && H.wear_suit == src)
 		to_chat(H, SPAN_BOLDNOTICE("The smoke clears and your position is once again hidden completely!"))
 		animate(H, alpha = full_camo_alpha)
 		current_camo = full_camo_alpha
 
-/obj/item/clothing/suit/storage/marine/ghillie/proc/handle_mob_move_or_look(mob/living/mover, var/actually_moving, var/direction, var/specific_direction)
+/obj/item/clothing/suit/storage/marine/ghillie/proc/handle_mob_move_or_look(mob/living/mover, actually_moving, direction, specific_direction)
 	SIGNAL_HANDLER
 
 	if(camo_active && actually_moving)
@@ -971,7 +971,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 /datum/action/item_action/specialist/prepare_position
 	ability_primacy = SPEC_PRIMARY_ACTION_1
 
-/datum/action/item_action/specialist/prepare_position/New(var/mob/living/user, var/obj/item/holder)
+/datum/action/item_action/specialist/prepare_position/New(mob/living/user, obj/item/holder)
 	..()
 	name = "Prepare Position"
 	button.name = name
@@ -1005,14 +1005,14 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	flags_atom = MOB_LOCK_ON_EQUIP|NO_CRYO_STORE|NO_SNOW_TYPE
 	storage_slots = 4
 
-//=============================//PMCS\\==================================\\
+//=============================//pmcS\\==================================\\
 //=======================================================================\\
 
 /obj/item/clothing/suit/storage/marine/veteran
 	flags_marine_armor = ARMOR_LAMP_OVERLAY
 	flags_atom = NO_SNOW_TYPE|NO_NAME_OVERRIDE //Let's make these keep their name and icon.
 
-/obj/item/clothing/suit/storage/marine/veteran/PMC
+/obj/item/clothing/suit/storage/marine/veteran/pmc
 	name = "\improper M4 pattern PMC armor"
 	desc = "A modification of the standard Armat Systems M3 armor. Designed for high-profile security operators and corporate mercenaries in mind."
 	icon_state = "pmc_armor"
@@ -1037,10 +1037,10 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 		/obj/item/attachable/bayonet,
 		/obj/item/device/motiondetector,
 		/obj/item/device/walkman)
-	uniform_restricted = list(/obj/item/clothing/under/marine/veteran/PMC)
+	uniform_restricted = list(/obj/item/clothing/under/marine/veteran/pmc)
 	item_state_slots = list(WEAR_JACKET = "pmc_armor")
 
-/obj/item/clothing/suit/storage/marine/veteran/PMC/light
+/obj/item/clothing/suit/storage/marine/veteran/pmc/light
 	name = "\improper M4 pattern light PMC armor"
 	desc = "A modification of the standard Armat Systems M3 armor. Designed for high-profile security operators and corporate mercenaries in mind. Has some armour plating removed for extra mobility."
 	icon_state = "pmc_sniper"
@@ -1053,7 +1053,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	slowdown = SLOWDOWN_ARMOR_VERY_LIGHT
 	item_state_slots = list(WEAR_JACKET = "pmc_sniper")
 
-/obj/item/clothing/suit/storage/marine/veteran/PMC/light/corporate
+/obj/item/clothing/suit/storage/marine/veteran/pmc/light/corporate
 	name = "\improper M1 pattern corporate security armor"
 	desc = "A basic vest with a Weyland-Yutani badge on the right breast. This is commonly worn by low-level guards protecting Weyland-Yutani facilities."
 	icon = 'icons/mob/humans/onmob/contained/wy_goons.dmi'
@@ -1068,19 +1068,19 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 
 	slowdown = SLOWDOWN_ARMOR_NONE // only protects chest, but enables rapid movement
 
-/obj/item/clothing/suit/storage/marine/veteran/PMC/light/corporate/lead
+/obj/item/clothing/suit/storage/marine/veteran/pmc/light/corporate/lead
 	desc = "A basic vest with a Weyland-Yutani badge on the right breast. This variant is worn by low-level guards that have elevated in rank due to 'good conduct in the field', also known as corporate bootlicking."
 	icon_state = "lead_armor"
 	item_state = "lead_armor"
 
-/obj/item/clothing/suit/storage/marine/veteran/PMC/leader
+/obj/item/clothing/suit/storage/marine/veteran/pmc/leader
 	name = "\improper M4 pattern PMC leader armor"
 	desc = "A modification of the standard Armat Systems M3 armor. Designed for high-profile security operators and corporate mercenaries in mind. This particular suit looks like it belongs to a high-ranking officer."
 	icon_state = "officer_armor"
-	uniform_restricted = list(/obj/item/clothing/under/marine/veteran/PMC/leader)
+	uniform_restricted = list(/obj/item/clothing/under/marine/veteran/pmc/leader)
 	item_state_slots = list(WEAR_JACKET = "officer_armor")
 
-/obj/item/clothing/suit/storage/marine/veteran/PMC/sniper
+/obj/item/clothing/suit/storage/marine/veteran/pmc/sniper
 	name = "\improper M4 pattern PMC sniper armor"
 	icon_state = "pmc_sniper"
 	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
@@ -1092,7 +1092,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	flags_inv_hide = HIDELOWHAIR
 	item_state_slots = list(WEAR_JACKET = "pmc_sniper")
 
-/obj/item/clothing/suit/storage/marine/veteran/PMC/light/synth
+/obj/item/clothing/suit/storage/marine/veteran/pmc/light/synth
 	name = "\improper M4 synthetic PMC armor"
 	desc = "A modification of the standard Armat Systems M3 armor. This variant was designed for PMC Support Units in the field, offering protection and storage while not restricting movement."
 	time_to_unequip = 0.5 SECONDS
@@ -1107,12 +1107,12 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	armor_internaldamage = CLOTHING_ARMOR_NONE
 	storage_slots = 3
 
-/obj/item/clothing/suit/storage/marine/veteran/PMC/light/synth/Initialize()
+/obj/item/clothing/suit/storage/marine/veteran/pmc/light/synth/Initialize()
 	flags_atom |= NO_NAME_OVERRIDE
 	flags_marine_armor |= SYNTH_ALLOWED
 	return ..()
 
-/obj/item/clothing/suit/storage/marine/smartgunner/veteran/PMC
+/obj/item/clothing/suit/storage/marine/smartgunner/veteran/pmc
 	name = "\improper PMC gunner armor"
 	desc = "A modification of the standard Armat Systems M3 armor. Hooked up with harnesses and straps allowing the user to carry an M56 Smartgun."
 	icon_state = "heavy_armor"
@@ -1125,7 +1125,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	armor_rad = CLOTHING_ARMOR_MEDIUM
 	item_state_slots = list(WEAR_JACKET = "heavy_armor")
 
-/obj/item/clothing/suit/storage/marine/smartgunner/veteran/PMC/terminator
+/obj/item/clothing/suit/storage/marine/smartgunner/veteran/pmc/terminator
 	name = "\improper M5Xg exoskeleton gunner armor"
 	desc = "A complex system of overlapping plates intended to render the wearer all but impervious to small arms fire. A passive exoskeleton supports the weight of the armor, allowing a human to carry its massive bulk. This variant is designed to support a M56 Smartgun."
 	icon_state = "commando_armor"
@@ -1139,11 +1139,11 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	armor_rad = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS|BODY_FLAG_FEET
-	uniform_restricted = list(/obj/item/clothing/under/marine/veteran/PMC/commando)
+	uniform_restricted = list(/obj/item/clothing/under/marine/veteran/pmc/commando)
 	item_state_slots = list(WEAR_JACKET = "commando_armor")
 	unacidable = TRUE
 
-/obj/item/clothing/suit/storage/marine/veteran/PMC/commando
+/obj/item/clothing/suit/storage/marine/veteran/pmc/commando
 	name = "\improper M5X exoskeleton armor"
 	desc = "A complex system of overlapping plates intended to render the wearer all but impervious to small arms fire. A passive exoskeleton supports the weight of the armor, allowing a human to carry its massive bulk."
 	icon_state = "commando_armor"
@@ -1157,7 +1157,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
 	flags_inventory = BLOCK_KNOCKDOWN
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS|BODY_FLAG_FEET
-	uniform_restricted = list(/obj/item/clothing/under/marine/veteran/PMC/commando)
+	uniform_restricted = list(/obj/item/clothing/under/marine/veteran/pmc/commando)
 	item_state_slots = list(WEAR_JACKET = "commando_armor")
 	unacidable = TRUE
 
@@ -1229,8 +1229,8 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS
 	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS
 	flags_heat_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS
-	min_cold_protection_temperature = ARMOR_min_cold_protection_temperature
-	max_heat_protection_temperature = ARMOR_max_heat_protection_temperature
+	min_cold_protection_temperature = HELMET_MIN_COLD_PROT
+	max_heat_protection_temperature = HELMET_MAX_HEAT_PROT
 	blood_overlay_type = "armor"
 	armor_melee = CLOTHING_ARMOR_MEDIUM
 	armor_bullet = CLOTHING_ARMOR_MEDIUM
@@ -1413,7 +1413,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 		/obj/item/device/motiondetector,
 		/obj/item/device/walkman)
 	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_FEET|BODY_FLAG_ARMS|BODY_FLAG_HANDS
-	min_cold_protection_temperature = SPACE_SUIT_min_cold_protection_temperature
+	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROT
 	valid_accessory_slots = list(ACCESSORY_SLOT_MEDAL)
 
 /obj/item/clothing/suit/storage/militia/Initialize()

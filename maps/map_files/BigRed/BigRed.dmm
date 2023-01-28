@@ -22849,7 +22849,7 @@
 /area/bigredv2/outside/space_port_lz2)
 "bgZ" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/explosive/grenade/HE/frag{
+/obj/item/explosive/grenade/high_explosive/frag{
 	desc = "High-Explosive Fragmenting-Antipersonnel. A small, but deceptively strong fragmentation grenade that has been phasing out the M15 fragmentation grenades alongside the M40 HEDP. Capable of being loaded in the M92 Launcher, or thrown by hand. This one seems to have weird insciptions all over it. You can barely make out 'PrAIs3 thE H3f@ G0d'"
 	},
 /turf/open/floor/plating{
@@ -33306,7 +33306,7 @@
 	},
 /area/bigredv2/caves/mining)
 "jkO" = (
-/obj/item/explosive/grenade/HE/frag,
+/obj/item/explosive/grenade/high_explosive/frag,
 /turf/open/mars_cave,
 /area/bigredv2/caves/mining)
 "jkT" = (
@@ -34310,8 +34310,8 @@
 "kSm" = (
 /obj/item/storage/belt/grenade,
 /obj/structure/closet/crate,
-/obj/item/explosive/grenade/HE/frag,
-/obj/item/explosive/grenade/HE/frag,
+/obj/item/explosive/grenade/high_explosive/frag,
+/obj/item/explosive/grenade/high_explosive/frag,
 /obj/structure/machinery/light{
 	dir = 4
 	},
@@ -41363,7 +41363,7 @@
 /area/bigredv2/caves/mining)
 "xMT" = (
 /obj/structure/closet,
-/obj/item/explosive/grenade/HE/frag,
+/obj/item/explosive/grenade/high_explosive/frag,
 /obj/item/ore{
 	pixel_x = -4;
 	pixel_y = 7

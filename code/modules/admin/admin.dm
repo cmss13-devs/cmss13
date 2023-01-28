@@ -1,12 +1,12 @@
 ////////////////////////////////
-/proc/message_admins(var/msg) // +ADMIN and above
+/proc/message_admins(msg) // +ADMIN and above
 	msg = "<span class=\"admin\"><span class=\"prefix\">ADMIN LOG:</span> <span class=\"message\">[msg]</span></span>"
 	log_admin(msg)
 	for(var/client/C as anything in GLOB.admins)
 		if(C && C.admin_holder && (R_ADMIN & C.admin_holder.rights))
 			to_chat(C, msg)
 
-/proc/message_staff(var/msg, var/jmp_x=0, var/jmp_y=0, var/jmp_z=0) // +MOD and above, not mentors
+/proc/message_staff(msg, jmp_x=0, jmp_y=0, jmp_z=0) // +MOD and above, not mentors
 	log_admin(msg)
 
 	msg = "<span class=\"prefix\">STAFF LOG:</span> <span class=\"message\">[msg]"
@@ -18,7 +18,7 @@
 		if(C && C.admin_holder && (R_MOD & C.admin_holder.rights))
 			to_chat(C, SPAN_ADMIN(msg))
 
-/proc/msg_admin_attack(var/text, jump_x, jump_y, jump_z) //Toggleable Attack Messages; server logs don't include the JMP part
+/proc/msg_admin_attack(text, jump_x, jump_y, jump_z) //Toggleable Attack Messages; server logs don't include the JMP part
 	if(GLOB.perf_flags & PERF_TOGGLE_ATTACKLOGS)
 		return
 	log_attack(text)
@@ -29,7 +29,7 @@
 				var/msg = rendered
 				to_chat(C, msg)
 
-/proc/msg_admin_niche(var/msg) //Toggleable Niche Messages
+/proc/msg_admin_niche(msg) //Toggleable Niche Messages
 	log_admin(msg)
 	msg = SPAN_ADMIN("<span class=\"prefix\">ADMIN NICHE LOG:</span> [msg]")
 	for(var/client/C as anything in GLOB.admins)
@@ -37,7 +37,7 @@
 			if(C.prefs.toggles_chat & CHAT_NICHELOGS)
 				to_chat(C, msg)
 
-/proc/msg_sea(var/msg, var/nosound = FALSE) //Only used for newplayer ticker message, hence no logging
+/proc/msg_sea(msg, nosound = FALSE) //Only used for newplayer ticker message, hence no logging
 	msg = FONT_SIZE_LARGE("<span class=\"admin\"><span class=\"prefix\">MENTOR ALERT:</span> <span class=\"message\">[msg]</span></span>")
 	for(var/client/C in GLOB.admins)
 		if((CLIENT_HAS_RIGHTS(C, R_MENTOR)) && C.admin_holder.rights && isSEA(C?.mob))
@@ -46,7 +46,7 @@
 				sound_to(C, 'sound/effects/mhelp.ogg')
 
 
-/proc/msg_admin_ff(var/text, var/alive = TRUE)
+/proc/msg_admin_ff(text, alive = TRUE)
 	var/rendered
 	if(alive)
 		rendered = SPAN_COMBAT("<span class=\"prefix\">ATTACK:</span> <font color=#00FF00><b>[text]</b></font>") //I used <font> because I never learned html correctly, fix this if you want
@@ -68,14 +68,14 @@
 /datum/player_info/var/timestamp // Because this is bloody annoying
 
 
-/datum/admins/proc/player_has_info(var/key as text)
+/datum/admins/proc/player_has_info(key as text)
 	var/savefile/info = new("data/player_saves/[copytext(key, 1, 2)]/[key]/info.sav")
 	var/list/infos
 	info >> infos
 	if(!infos || !infos.len) return 0
 	else return 1
 
-/datum/admins/proc/player_notes_all(var/key as text)
+/datum/admins/proc/player_notes_all(key as text)
 	set category = null
 	set name = "Player Record"
 	if (!istype(src,/datum/admins))
@@ -176,7 +176,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////ADMIN HELPER PROCS
 
-/datum/admins/proc/spawn_atom(var/object as text)
+/datum/admins/proc/spawn_atom(object as text)
 	set category = "Debug"
 	set desc = "(atom path) Spawn an atom"
 	set name = "Spawn"

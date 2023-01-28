@@ -626,11 +626,11 @@
 
 /obj/item/storage/pouch/explosive/full/fill_preset_inventory()
 	for(var/i = 1 to storage_slots)
-		new /obj/item/explosive/grenade/HE(src)
+		new /obj/item/explosive/grenade/high_explosive(src)
 
 /obj/item/storage/pouch/explosive/upp/fill_preset_inventory()
 	for(var/i = 1 to storage_slots)
-		new /obj/item/explosive/grenade/HE/upp(src)
+		new /obj/item/explosive/grenade/high_explosive/upp(src)
 
 /obj/item/storage/pouch/explosive/C4/fill_preset_inventory()
 	for(var/i = 1 to storage_slots)
@@ -815,7 +815,7 @@
 	desc = "It's specifically made to hold a medkit."
 	can_hold = list(/obj/item/storage/firstaid)
 
-/obj/item/storage/pouch/medkit/handle_mmb_open(var/mob/user)
+/obj/item/storage/pouch/medkit/handle_mmb_open(mob/user)
 	var/obj/item/storage/firstaid/FA = locate() in contents
 	if(FA)
 		FA.open(user)
@@ -850,7 +850,7 @@
 		new /obj/item/reagent_container/hypospray/autoinjector/empty/medic(src)
 	update_icon()
 
-/obj/item/storage/pouch/pressurized_reagent_canister/proc/fill_with(var/ragent)
+/obj/item/storage/pouch/pressurized_reagent_canister/proc/fill_with(ragent)
 	inner.reagents.add_reagent(ragent, inner.volume)
 	if(contents.len > 0)
 		var/obj/item/reagent_container/hypospray/autoinjector/empty/A = contents[1]
@@ -911,7 +911,7 @@
 		to_chat(user, SPAN_WARNING("[W] is not compatible with this system!"))
 	return ..()
 
-/obj/item/storage/pouch/pressurized_reagent_canister/proc/fill_autoinjector(var/obj/item/reagent_container/hypospray/autoinjector/autoinjector)
+/obj/item/storage/pouch/pressurized_reagent_canister/proc/fill_autoinjector(obj/item/reagent_container/hypospray/autoinjector/autoinjector)
 	var/max_uses = autoinjector.volume / autoinjector.amount_per_transfer_from_this
 	max_uses = round(max_uses) == max_uses ? max_uses : round(max_uses) + 1
 	if(inner && inner.reagents.total_volume > 0 && (autoinjector.uses_left < max_uses))
@@ -1277,7 +1277,7 @@
 	slung.RemoveElement(/datum/element/drop_retrieval/pouch_sling, src)
 	slung = null
 
-/obj/item/storage/pouch/sling/proc/sling_return(var/mob/living/carbon/human/user)
+/obj/item/storage/pouch/sling/proc/sling_return(mob/living/carbon/human/user)
 	if(!slung || !slung.loc)
 		return FALSE
 	if(slung.loc == user)
@@ -1291,7 +1291,7 @@
 			to_chat(user, SPAN_NOTICE("[slung] snaps back into [src]."))
 		return TRUE
 
-/obj/item/storage/pouch/sling/proc/attempt_retrieval(var/mob/living/carbon/human/user)
+/obj/item/storage/pouch/sling/proc/attempt_retrieval(mob/living/carbon/human/user)
 	if(sling_return(user))
 		return
 	unsling()

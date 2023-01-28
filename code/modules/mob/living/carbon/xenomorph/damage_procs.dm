@@ -32,7 +32,7 @@
 		return
 	return ..()
 
-/mob/living/carbon/xenomorph/ex_act(var/severity, var/direction, var/datum/cause_data/cause_data, pierce=0)
+/mob/living/carbon/xenomorph/ex_act(severity, direction, datum/cause_data/cause_data, pierce=0)
 
 	if(lying)
 		severity *= EXPLOSION_PRONE_MULTIPLIER
@@ -94,7 +94,7 @@
 			else
 				Slow(powerfactor_value/3)
 
-/mob/living/carbon/xenomorph/apply_armoured_damage(var/damage = 0, var/armour_type = ARMOR_MELEE, var/damage_type = BRUTE, var/def_zone = null, var/penetration = 0, var/armour_break_pr_pen = 0, var/armour_break_flat = 0, var/effectiveness_mult = 1)
+/mob/living/carbon/xenomorph/apply_armoured_damage(damage = 0, armour_type = ARMOR_MELEE, damage_type = BRUTE, def_zone = null, penetration = 0, armour_break_pr_pen = 0, armour_break_flat = 0, effectiveness_mult = 1)
 	if(damage <= 0)
 		return ..(damage, armour_type, damage_type, def_zone)
 
@@ -279,7 +279,7 @@
 				playsound(victim, "acid_sizzle", 25, TRUE)
 				animation_flash_color(victim, "#FF0000") //pain hit flicker
 
-/mob/living/carbon/xenomorph/get_target_lock(var/access_to_check)
+/mob/living/carbon/xenomorph/get_target_lock(access_to_check)
 	if(isnull(access_to_check))
 		return
 
@@ -292,7 +292,7 @@
 	var/list/overlap = iff_tag.faction_groups & access_to_check
 	return length(overlap)
 
-/mob/living/carbon/xenomorph/handle_flamer_fire(obj/flamer_fire/fire, var/damage, var/delta_time)
+/mob/living/carbon/xenomorph/handle_flamer_fire(obj/flamer_fire/fire, damage, delta_time)
 	. = ..()
 	switch(fire.fire_variant)
 		if(FIRE_VARIANT_TYPE_B)

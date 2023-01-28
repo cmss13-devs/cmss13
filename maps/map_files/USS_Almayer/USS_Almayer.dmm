@@ -18093,7 +18093,12 @@
 /area/almayer/medical/lower_medical_lobby)
 "beZ" = (
 /obj/structure/platform_decoration{
+<<<<<<< HEAD
 	dir = 8
+=======
+	dir = 8;
+	
+>>>>>>> b6d0ea749036184e24cb4a95be4da3b9cf2fd569
 	},
 /turf/open/floor/almayer,
 /area/almayer/living/chapel)
@@ -26002,9 +26007,9 @@
 /area/almayer/hallways/port_hallway)
 "bJe" = (
 /obj/structure/surface/table/reinforced/black,
-/obj/item/explosive/grenade/HE/training,
-/obj/item/explosive/grenade/HE/training,
-/obj/item/explosive/grenade/HE/training,
+/obj/item/explosive/grenade/high_explosive/training,
+/obj/item/explosive/grenade/high_explosive/training,
+/obj/item/explosive/grenade/high_explosive/training,
 /obj/structure/machinery/door_control{
 	id = "Firing_Range_2";
 	name = "range shutters";
@@ -45753,9 +45758,9 @@
 /area/almayer/hallways/vehiclehangar)
 "hcw" = (
 /obj/structure/surface/table/reinforced/black,
-/obj/item/explosive/grenade/HE/training,
-/obj/item/explosive/grenade/HE/training,
-/obj/item/explosive/grenade/HE/training,
+/obj/item/explosive/grenade/high_explosive/training,
+/obj/item/explosive/grenade/high_explosive/training,
+/obj/item/explosive/grenade/high_explosive/training,
 /obj/structure/machinery/door_control{
 	id = "Firing_Range_1";
 	name = "range shutters";
@@ -54531,9 +54536,6 @@
 	tag = "icon-test_floor4"
 	},
 /area/almayer/hull/lower_hull/l_f_s)
-"kYo" = (
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/living/tankerbunks)
 "kYK" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -100810,8 +100812,8 @@ kYo
 bSv
 onY
 wdf
-kYo
-kYo
+cop
+cop
 bSv
 bzy
 bKh

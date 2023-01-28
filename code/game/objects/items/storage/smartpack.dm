@@ -123,7 +123,7 @@
 
 	return ret
 
-/obj/item/storage/backpack/marine/smartpack/pickup(var/mob/living/M)
+/obj/item/storage/backpack/marine/smartpack/pickup(mob/living/M)
 	if(isSynth(M))
 		for(var/action_type in subtypesof(/datum/action/human_action/smartpack))
 			if(locate(action_type) in M.actions)
@@ -138,7 +138,7 @@
 		SetLuminosity(0)
 	..()
 
-/obj/item/storage/backpack/marine/smartpack/dropped(var/mob/living/M)
+/obj/item/storage/backpack/marine/smartpack/dropped(mob/living/M)
 	for(var/datum/action/human_action/smartpack/S in M.actions)
 		S.remove_from(M)
 
@@ -224,7 +224,7 @@
 
 	addtimer(CALLBACK(src, PROC_REF(protective_form_cooldown), user), protective_form_cooldown)
 
-/obj/item/storage/backpack/marine/smartpack/proc/protective_form_cooldown(var/mob/living/carbon/human/user)
+/obj/item/storage/backpack/marine/smartpack/proc/protective_form_cooldown(mob/living/carbon/human/user)
 	activated_form = FALSE
 	flags_item &= ~NODROP
 	flags_inventory &= ~CANTSTRIP

@@ -122,7 +122,7 @@
 	warding_new = 0
 	recovery_new = 0
 
-/mob/living/carbon/xenomorph/proc/affected_by_pheromones(var/aura, var/strength)
+/mob/living/carbon/xenomorph/proc/affected_by_pheromones(aura, strength)
 	switch(aura)
 		if("all")
 			if(strength > frenzy_new)

@@ -13,7 +13,7 @@
 	action_icon_state = "order"
 	var/order_type = "help"
 
-/datum/action/human_action/issue_order/give_to(var/mob/living/L)
+/datum/action/human_action/issue_order/give_to(mob/living/L)
 	..()
 	if(!ishuman(L))
 		return
@@ -65,7 +65,7 @@
 		var/obj/item/storage/backpack/marine/smartpack/S = H.back
 		form_call(S, H)
 
-/datum/action/human_action/smartpack/give_to(var/mob/living/L)
+/datum/action/human_action/smartpack/give_to(mob/living/L)
 	..()
 	if(!ishuman(L))
 		return
@@ -76,13 +76,13 @@
 	else
 		return
 
-/datum/action/human_action/smartpack/proc/form_call(var/obj/item/storage/backpack/marine/smartpack/S, var/mob/living/carbon/human/H)
+/datum/action/human_action/smartpack/proc/form_call(obj/item/storage/backpack/marine/smartpack/S, mob/living/carbon/human/H)
 	return
 
-/datum/action/human_action/smartpack/proc/set_cooldown(var/obj/item/storage/backpack/marine/smartpack/S)
+/datum/action/human_action/smartpack/proc/set_cooldown(obj/item/storage/backpack/marine/smartpack/S)
 	return
 
-/datum/action/human_action/smartpack/proc/cooldown_check(var/obj/item/storage/backpack/marine/smartpack/S)
+/datum/action/human_action/smartpack/proc/cooldown_check(obj/item/storage/backpack/marine/smartpack/S)
 	return S.activated_form
 
 
@@ -90,30 +90,30 @@
 	name = "Protective Form"
 	action_icon_state = "smartpack_protect"
 
-/datum/action/human_action/smartpack/protective_form/set_cooldown(var/obj/item/storage/backpack/marine/smartpack/S)
+/datum/action/human_action/smartpack/protective_form/set_cooldown(obj/item/storage/backpack/marine/smartpack/S)
 	return S.protective_form_cooldown
 
-/datum/action/human_action/smartpack/protective_form/form_call(var/obj/item/storage/backpack/marine/smartpack/S, var/mob/living/carbon/human/H)
+/datum/action/human_action/smartpack/protective_form/form_call(obj/item/storage/backpack/marine/smartpack/S, mob/living/carbon/human/H)
 	S.protective_form(H)
 
 /datum/action/human_action/smartpack/immobile_form
 	name = "Immobile Form"
 	action_icon_state = "smartpack_immobile"
 
-/datum/action/human_action/smartpack/immobile_form/form_call(var/obj/item/storage/backpack/marine/smartpack/S, var/mob/living/carbon/human/H)
+/datum/action/human_action/smartpack/immobile_form/form_call(obj/item/storage/backpack/marine/smartpack/S, mob/living/carbon/human/H)
 	S.immobile_form(H)
 
 /datum/action/human_action/smartpack/repair_form
 	name = "Repair Form"
 	action_icon_state = "smartpack_repair"
 
-/datum/action/human_action/smartpack/repair_form/set_cooldown(var/obj/item/storage/backpack/marine/smartpack/S)
+/datum/action/human_action/smartpack/repair_form/set_cooldown(obj/item/storage/backpack/marine/smartpack/S)
 	return S.repair_form_cooldown
 
-/datum/action/human_action/smartpack/repair_form/form_call(var/obj/item/storage/backpack/marine/smartpack/S, var/mob/living/carbon/human/H)
+/datum/action/human_action/smartpack/repair_form/form_call(obj/item/storage/backpack/marine/smartpack/S, mob/living/carbon/human/H)
 	S.repair_form(H)
 
-/datum/action/human_action/smartpack/repair_form/cooldown_check(var/obj/item/storage/backpack/marine/smartpack/S)
+/datum/action/human_action/smartpack/repair_form/cooldown_check(obj/item/storage/backpack/marine/smartpack/S)
 	return S.repairing
 
 /*
@@ -151,7 +151,7 @@ CULT
 	if(H.selected_ability == src)
 		H.selected_ability = null
 
-/datum/action/human_action/activable/proc/use_ability(var/mob/M)
+/datum/action/human_action/activable/proc/use_ability(mob/M)
 	return
 
 /datum/action/human_action/activable/update_button_icon()
@@ -165,7 +165,7 @@ CULT
 /datum/action/human_action/activable/action_cooldown_check()
 	return ability_used_time <= world.time
 
-/datum/action/human_action/activable/proc/enter_cooldown(var/amount = cooldown)
+/datum/action/human_action/activable/proc/enter_cooldown(amount = cooldown)
 	ability_used_time = world.time + amount
 
 	update_button_icon()
@@ -178,7 +178,7 @@ CULT
 
 	var/obj/structure/droppod/tech/assigned_droppod
 
-/datum/action/human_action/activable/droppod/proc/can_deploy_droppod(var/turf/T)
+/datum/action/human_action/activable/droppod/proc/can_deploy_droppod(turf/T)
 	var/mob/living/carbon/human/H = owner
 	if(assigned_droppod)
 		return
@@ -254,7 +254,7 @@ CULT
 	RegisterSignal(assigned_droppod, COMSIG_PARENT_QDELETING, PROC_REF(handle_droppod_deleted))
 */
 
-/datum/action/human_action/activable/droppod/proc/handle_droppod_deleted(var/obj/structure/droppod/tech/T)
+/datum/action/human_action/activable/droppod/proc/handle_droppod_deleted(obj/structure/droppod/tech/T)
 	SIGNAL_HANDLER
 	if(T != assigned_droppod)
 		return
@@ -356,7 +356,7 @@ CULT
 /datum/action/human_action/activable/cult_leader
 	name = "Activable Leader Ability"
 
-/datum/action/human_action/activable/cult_leader/proc/can_target(var/mob/living/carbon/human/H)
+/datum/action/human_action/activable/cult_leader/proc/can_target(mob/living/carbon/human/H)
 	if(!ishuman(owner))
 		return
 	var/mob/living/carbon/human/Hu = owner
@@ -388,7 +388,7 @@ CULT
 	name = "Convert"
 	action_icon_state = "cultist_channel_convert"
 
-/datum/action/human_action/activable/cult_leader/convert/use_ability(var/mob/M)
+/datum/action/human_action/activable/cult_leader/convert/use_ability(mob/M)
 	var/datum/hive_status/hive = get_hive()
 
 	if(!istype(hive))
@@ -434,7 +434,7 @@ CULT
 
 	cooldown = 1 MINUTES
 
-/datum/action/human_action/activable/cult_leader/stun/use_ability(var/mob/M)
+/datum/action/human_action/activable/cult_leader/stun/use_ability(mob/M)
 	if(!action_cooldown_check())
 		return
 
@@ -488,7 +488,7 @@ CULT
 
 	var/list/converted = list()
 
-/datum/action/human_action/activable/mutineer/mutineer_convert/use_ability(var/mob/M)
+/datum/action/human_action/activable/mutineer/mutineer_convert/use_ability(mob/M)
 	if(!can_use_action())
 		return
 

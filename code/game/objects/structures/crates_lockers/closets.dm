@@ -43,7 +43,7 @@
 	GLOB.closet_list -= src
 	return ..()
 
-/obj/structure/closet/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/obj/structure/closet/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_can_pass_all = PASS_HIGH_OVER_ONLY|PASS_AROUND
@@ -96,7 +96,7 @@
 
 	dump_contents()
 
-	UnregisterSignal(src, COMSIG_OBJ_FLASHBANGED)
+	UnregisterSignal(src, COMSIG_CLOSET_FLASHBANGED)
 	opened = 1
 	update_icon()
 	playsound(src.loc, open_sound, 15, 1)
@@ -114,7 +114,7 @@
 		stored_units = store_items(stored_units)
 	if(store_mobs)
 		stored_units = store_mobs(stored_units)
-		RegisterSignal(src, COMSIG_OBJ_FLASHBANGED, PROC_REF(flashbang))
+		RegisterSignal(src, COMSIG_CLOSET_FLASHBANGED, PROC_REF(flashbang))
 
 	opened = 0
 	update_icon()
@@ -123,7 +123,7 @@
 	density = TRUE
 	return 1
 
-/obj/structure/closet/proc/store_items(var/stored_units)
+/obj/structure/closet/proc/store_items(stored_units)
 	for(var/obj/item/I in src.loc)
 		if(istype(I, /obj/item/explosive/plastic)) //planted c4 may not go in closets
 			var/obj/item/explosive/plastic/P = I
@@ -137,7 +137,7 @@
 			stored_units += item_size
 	return stored_units
 
-/obj/structure/closet/proc/store_mobs(var/stored_units)
+/obj/structure/closet/proc/store_mobs(stored_units)
 	for(var/mob/M in src.loc)
 		if(stored_units + mob_size > storage_capacity)
 			break
@@ -180,13 +180,13 @@
 			contents_explosion(severity - EXPLOSION_THRESHOLD_LOW)
 			deconstruct(FALSE)
 
-/obj/structure/closet/proc/flashbang(var/datum/source, var/obj/item/explosive/grenade/flashbang/FB)
+/obj/structure/closet/proc/flashbang(datum/source, obj/item/explosive/grenade/flashbang/FB)
 	SIGNAL_HANDLER
 	for(var/mob/living/C in contents)
 		FB.bang(get_turf(FB), C)
 	open()
 
-/obj/structure/closet/bullet_act(var/obj/item/projectile/Proj)
+/obj/structure/closet/bullet_act(obj/item/projectile/Proj)
 	take_damage(Proj.damage*0.3)
 	if(prob(30))
 		playsound(loc, 'sound/effects/metalhit.ogg', 25, 1)

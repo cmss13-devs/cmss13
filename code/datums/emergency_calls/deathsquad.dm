@@ -18,7 +18,7 @@
 
 
 // DEATH SQUAD--------------------------------------------------------------------------------
-/datum/emergency_call/death/create_member(datum/mind/M, var/turf/override_spawn_loc)
+/datum/emergency_call/death/create_member(datum/mind/M, turf/override_spawn_loc)
 	var/turf/spawn_loc = override_spawn_loc ? override_spawn_loc : get_spawn_point()
 
 	if(!istype(spawn_loc))
@@ -59,7 +59,7 @@
 	shuttle_id = "Distress_PMC"
 	name_of_spawn = /obj/effect/landmark/ert_spawns/distress_pmc
 
-/datum/emergency_call/marsoc/create_member(datum/mind/M, var/turf/override_spawn_loc)
+/datum/emergency_call/marsoc/create_member(datum/mind/M, turf/override_spawn_loc)
 
 	var/turf/spawn_loc = override_spawn_loc ? override_spawn_loc : get_spawn_point()
 

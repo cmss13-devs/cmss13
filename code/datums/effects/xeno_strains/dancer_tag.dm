@@ -4,7 +4,7 @@
 	flags = DEL_ON_DEATH | INF_DURATION
 
 
-/datum/effects/dancer_tag/New(var/atom/A, var/mob/from = null, var/last_dmg_source = null, var/zone = "chest", ttl = 35)
+/datum/effects/dancer_tag/New(atom/A, mob/from = null, last_dmg_source = null, zone = "chest", ttl = 35)
 	. = ..(A, from, last_dmg_source, zone)
 
 	addtimer(CALLBACK(GLOBAL_PROC, PROC_REF(qdel), src), ttl)

@@ -204,7 +204,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 
 	return TRUE
 
-/datum/entity/player/proc/add_job_ban(ban_text, var/list/ranks, duration = null)
+/datum/entity/player/proc/add_job_ban(ban_text, list/ranks, duration = null)
 	var/client/admin = usr.client
 	// do all checks here, especially for sensitive stuff like this
 	if(!admin || !admin.player_data)
@@ -327,7 +327,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 			note.load_refs()
 	refs_loaded = TRUE
 
-/datum/entity_meta/player/on_read(var/datum/entity/player/player)
+/datum/entity_meta/player/on_read(datum/entity/player/player)
 	player.job_bans = list()
 	player.notes = list()
 	player.notes_loaded = FALSE
@@ -346,7 +346,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 
 	player.auto_unban()
 
-/datum/entity_meta/player/on_insert(var/datum/entity/player/player)
+/datum/entity_meta/player/on_insert(datum/entity/player/player)
 	player.job_bans = list()
 	player.notes = list()
 	player.notes_loaded = FALSE
@@ -383,12 +383,12 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 
 
 
-/datum/entity/player/proc/on_read_notes(var/list/datum/entity/player_note/_notes)
+/datum/entity/player/proc/on_read_notes(list/datum/entity/player_note/_notes)
 	notes_loaded = TRUE
 	if(notes)
 		notes = _notes
 
-/datum/entity/player/proc/on_read_job_bans(var/list/datum/entity/player_job_ban/_job_bans)
+/datum/entity/player/proc/on_read_job_bans(list/datum/entity/player_job_ban/_job_bans)
 	jobbans_loaded = TRUE
 	if(_job_bans)
 		for(var/datum/entity/player_job_ban/JB in _job_bans)
@@ -397,7 +397,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 
 	auto_unjobban()
 
-/datum/entity/player/proc/on_read_timestat(var/list/datum/entity/player_time/_stat)
+/datum/entity/player/proc/on_read_timestat(list/datum/entity/player_time/_stat)
 	playtime_loaded = TRUE
 	if(_stat) // Viewable playtime statistics are only loaded when the player connects, as they do not need constant updates since playtime is a statistic that is recorded over a long period of time
 		LAZYSET(playtime_data, "category", 0)
@@ -409,7 +409,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 		for(var/datum/entity/player_time/S in _stat)
 			LAZYSET(playtimes, S.role_id, S)
 
-/datum/entity/player/proc/on_read_stats(var/list/datum/entity/player_stat/_stat)
+/datum/entity/player/proc/on_read_stats(list/datum/entity/player_stat/_stat)
 	if(_stat)
 		for(var/datum/entity/player_stat/S as anything in _stat)
 			LAZYSET(stats, S.stat_id, S)
@@ -430,7 +430,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 	WAIT_DB_READY
 	load_player_data_info(get_player_from_key(ckey))
 
-/client/proc/load_player_data_info(var/datum/entity/player/player)
+/client/proc/load_player_data_info(datum/entity/player/player)
 	if(ckey != player.ckey)
 		error("ALARM: MISMATCH. Loaded player data for client [ckey], player data ckey is [player.ckey], id: [player.id]")
 	player_data = player
@@ -442,7 +442,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 	record_login_triplet(player.ckey, address, computer_id)
 	player_data.sync()
 
-/datum/entity/player/proc/check_ban(var/computer_id, var/address)
+/datum/entity/player/proc/check_ban(computer_id, address)
 	. = list()
 
 	var/list/linked_bans = check_for_sticky_ban(address, computer_id)
@@ -633,7 +633,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 	migrated_jobbans = TRUE
 	save()
 
-/datum/entity/player/proc/adjust_stat(var/stat_id, var/stat_category, var/num, var/set_to_num = FALSE)
+/datum/entity/player/proc/adjust_stat(stat_id, stat_category, num, set_to_num = FALSE)
 	var/datum/entity/player_stat/stat = LAZYACCESS(stats, stat_id)
 	if(!stat)
 		stat = DB_ENTITY(/datum/entity/player_stat)

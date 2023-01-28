@@ -15,7 +15,7 @@
 	. = ..()
 	last_use = world.time
 
-/obj/structure/machinery/line_nexter/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/obj/structure/machinery/line_nexter/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_can_pass_all = PASS_OVER|PASS_THROUGH|PASS_UNDER

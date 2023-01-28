@@ -2,7 +2,7 @@
 Contains most of the procs that are called when a mob is attacked by something
 */
 
-/mob/living/carbon/human/stun_effect_act(var/stun_amount, var/agony_amount, var/def_zone)
+/mob/living/carbon/human/stun_effect_act(stun_amount, agony_amount, def_zone)
 	var/obj/limb/affected = get_limb(check_zone(def_zone))
 	var/siemens_coeff = get_siemens_coefficient_organ(affected)
 	stun_amount *= siemens_coeff
@@ -30,7 +30,7 @@ Contains most of the procs that are called when a mob is attacked by something
 
 	..(stun_amount, agony_amount, def_zone)
 
-/mob/living/carbon/human/getarmor(var/def_zone, var/type)
+/mob/living/carbon/human/getarmor(def_zone, type)
 	var/armorval = 0
 	var/total = 0
 
@@ -50,7 +50,7 @@ Contains most of the procs that are called when a mob is attacked by something
 	return (armorval/max(total, 1))
 
 //this proc returns the Siemens coefficient of electrical resistivity for a particular external organ.
-/mob/living/carbon/human/proc/get_siemens_coefficient_organ(var/obj/limb/def_zone)
+/mob/living/carbon/human/proc/get_siemens_coefficient_organ(obj/limb/def_zone)
 	if (!def_zone)
 		return 1.0
 
@@ -64,7 +64,7 @@ Contains most of the procs that are called when a mob is attacked by something
 	return siemens_coefficient
 
 //this proc returns the armour value for a particular external organ.
-/mob/living/carbon/human/proc/getarmor_organ(var/obj/limb/def_zone, var/type)
+/mob/living/carbon/human/proc/getarmor_organ(obj/limb/def_zone, type)
 	if(!type)
 		return FALSE
 	var/protection = 0
@@ -88,7 +88,7 @@ Contains most of the procs that are called when a mob is attacked by something
 				return TRUE
 	return FALSE
 
-/mob/living/carbon/human/proc/check_shields(var/damage = 0, var/attack_text = "the attack", var/combistick=0)
+/mob/living/carbon/human/proc/check_shields(damage = 0, attack_text = "the attack", combistick=0)
 	if(l_hand && istype(l_hand, /obj/item/weapon))//Current base is the prob(50-d/3)
 		if(combistick && istype(l_hand,/obj/item/weapon/melee/yautja/combistick) && prob(66))
 			var/obj/item/weapon/melee/yautja/combistick/C = l_hand
@@ -166,7 +166,7 @@ Contains most of the procs that are called when a mob is attacked by something
 
 
 //Returns 1 if the attack hit, 0 if it missed.
-/mob/living/carbon/human/proc/attacked_by(var/obj/item/I, var/mob/living/user)
+/mob/living/carbon/human/proc/attacked_by(obj/item/I, mob/living/user)
 	if(!I || !user)
 		return FALSE
 
@@ -361,7 +361,7 @@ Contains most of the procs that are called when a mob is attacked by something
 
 	return C.faction_group
 
-/mob/living/proc/get_target_lock(var/access_to_check)
+/mob/living/proc/get_target_lock(access_to_check)
 	if(isnull(access_to_check))
 		return
 
@@ -383,7 +383,7 @@ Contains most of the procs that are called when a mob is attacked by something
 	if(.)
 		update_xeno_hostile_hud()
 
-/mob/living/carbon/human/get_target_lock(var/access_to_check)
+/mob/living/carbon/human/get_target_lock(access_to_check)
 	if(isnull(access_to_check))
 		return
 

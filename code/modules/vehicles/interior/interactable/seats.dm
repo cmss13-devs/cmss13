@@ -29,11 +29,11 @@
 	if(buckled_mob)
 		buckled_mob.setDir(dir)
 
-/obj/structure/bed/chair/comfy/vehicle/afterbuckle(var/mob/M)
+/obj/structure/bed/chair/comfy/vehicle/afterbuckle(mob/M)
 	..()
 	handle_afterbuckle(M)
 
-/obj/structure/bed/chair/comfy/vehicle/proc/handle_afterbuckle(var/mob/M)
+/obj/structure/bed/chair/comfy/vehicle/proc/handle_afterbuckle(mob/M)
 
 	if(!vehicle)
 		return
@@ -72,7 +72,7 @@
 	desc = "Comfortable seat for a driver."
 	seat = VEHICLE_DRIVER
 
-/obj/structure/bed/chair/comfy/vehicle/driver/do_buckle(var/mob/target, var/mob/user)
+/obj/structure/bed/chair/comfy/vehicle/driver/do_buckle(mob/target, mob/user)
 	required_skill = vehicle.required_skill
 	if(!skillcheck(target, SKILL_VEHICLE, required_skill))
 		if(target == user)
@@ -91,7 +91,7 @@
 	seat = VEHICLE_GUNNER
 	required_skill = SKILL_VEHICLE_CREWMAN
 
-/obj/structure/bed/chair/comfy/vehicle/gunner/do_buckle(var/mob/target, var/mob/user)
+/obj/structure/bed/chair/comfy/vehicle/gunner/do_buckle(mob/target, mob/user)
 	// Gunning always requires crewman-level skill
 	if(!skillcheck(target, SKILL_VEHICLE, required_skill))
 		if(target == user)
@@ -122,7 +122,7 @@
 /obj/structure/bed/chair/comfy/vehicle/attackby(obj/item/W, mob/living/user)
 	return
 
-/obj/structure/bed/chair/comfy/vehicle/attack_alien(var/mob/living/carbon/xenomorph/X, var/dam_bonus)
+/obj/structure/bed/chair/comfy/vehicle/attack_alien(mob/living/carbon/xenomorph/X, dam_bonus)
 
 	if(X.is_mob_incapacitated() || !Adjacent(X))
 		return
@@ -144,7 +144,7 @@
 
 	return ..()
 
-/obj/structure/bed/chair/comfy/vehicle/driver/armor/do_buckle(var/mob/target, var/mob/user)
+/obj/structure/bed/chair/comfy/vehicle/driver/armor/do_buckle(mob/target, mob/user)
 	. = ..()
 	update_icon()
 
@@ -166,11 +166,11 @@
 
 	return ..()
 
-/obj/structure/bed/chair/comfy/vehicle/gunner/armor/do_buckle(var/mob/target, var/mob/user)
+/obj/structure/bed/chair/comfy/vehicle/gunner/armor/do_buckle(mob/target, mob/user)
 	. = ..()
 	update_icon()
 
-/obj/structure/bed/chair/comfy/vehicle/gunner/armor/handle_afterbuckle(var/mob/M)
+/obj/structure/bed/chair/comfy/vehicle/gunner/armor/handle_afterbuckle(mob/M)
 
 	if(!vehicle)
 		return
@@ -227,7 +227,7 @@
 	return ..()
 
 
-/obj/structure/bed/chair/comfy/vehicle/support_gunner/do_buckle(var/mob/target, var/mob/user)
+/obj/structure/bed/chair/comfy/vehicle/support_gunner/do_buckle(mob/target, mob/user)
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
 		if(!H.allow_gun_usage)
@@ -248,7 +248,7 @@
 	if(buckled_mob)
 		overlays += over_image
 
-/obj/structure/bed/chair/comfy/vehicle/support_gunner/handle_afterbuckle(var/mob/M)
+/obj/structure/bed/chair/comfy/vehicle/support_gunner/handle_afterbuckle(mob/M)
 
 	if(!vehicle)
 		return

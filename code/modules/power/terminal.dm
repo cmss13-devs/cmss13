@@ -29,7 +29,7 @@
 	. = ..()
 
 
-/obj/structure/machinery/power/terminal/hide(var/i)
+/obj/structure/machinery/power/terminal/hide(i)
 	if(i)
 		invisibility = 101
 		icon_state = "term-f"

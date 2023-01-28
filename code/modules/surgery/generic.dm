@@ -120,7 +120,7 @@
 	self_operable = TRUE
 	pain_reduction_required = PAIN_REDUCTION_MEDIUM
 
-/datum/surgery/clamp_bleeders/can_start(mob/user, mob/living/carbon/patient, var/obj/limb/L, obj/item/tool)
+/datum/surgery/clamp_bleeders/can_start(mob/user, mob/living/carbon/patient, obj/limb/L, obj/item/tool)
 	for(var/datum/effects/bleeding/external/B in L.bleeding_effects_list)
 		return TRUE
 	return FALSE

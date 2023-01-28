@@ -28,7 +28,7 @@
 // src.jetpack.name = "Placeholder Upgrade Item"
 
 
-/obj/item/circuitboard/robot_module/proc/respawn_consumable(var/mob/living/silicon/robot/R)
+/obj/item/circuitboard/robot_module/proc/respawn_consumable(mob/living/silicon/robot/R)
 
 	if(!stacktypes || !stacktypes.len) return
 
@@ -52,7 +52,7 @@
 		if(O)
 			modules += O
 
-/obj/item/circuitboard/robot_module/proc/add_languages(var/mob/living/silicon/robot/R)
+/obj/item/circuitboard/robot_module/proc/add_languages(mob/living/silicon/robot/R)
 	//full set of languages
 	R.add_language(LANGUAGE_RUSSIAN, 1)
 	R.add_language(LANGUAGE_JAPANESE, 1)
@@ -106,7 +106,7 @@
 	src.emag.reagents.add_reagent("pacid", 250)
 	src.emag.name = "Polyacid spray"
 
-/obj/item/circuitboard/robot_module/surgeon/respawn_consumable(var/mob/living/silicon/robot/R)
+/obj/item/circuitboard/robot_module/surgeon/respawn_consumable(mob/living/silicon/robot/R)
 	if(src.emag)
 		var/obj/item/reagent_container/spray/PS = src.emag
 		PS.reagents.add_reagent("pacid", 2)
@@ -146,7 +146,7 @@
 	src.emag.reagents.add_reagent("pacid", 250)
 	src.emag.name = "Polyacid spray"
 
-/obj/item/circuitboard/robot_module/medic/respawn_consumable(var/mob/living/silicon/robot/R)
+/obj/item/circuitboard/robot_module/medic/respawn_consumable(mob/living/silicon/robot/R)
 	var/obj/item/reagent_container/syringe/S = locate() in src.modules
 	if(S.mode == 2)
 		S.reagents.clear_reagents()
@@ -200,7 +200,7 @@
 		W.amount = stacktypes[T]
 		src.modules += W
 
-/obj/item/circuitboard/robot_module/engineering/respawn_consumable(var/mob/living/silicon/robot/R)
+/obj/item/circuitboard/robot_module/engineering/respawn_consumable(mob/living/silicon/robot/R)
 	var/obj/item/device/lightreplacer/L = locate() in src.modules
 	L.uses = L.max_uses
 
@@ -220,7 +220,7 @@
 // src.modules += new /obj/item/weapon/gun/energy/taser/cyborg(src)
 // src.emag = new /obj/item/weapon/gun/energy/laser/cyborg(src)
 
-/obj/item/circuitboard/robot_module/security/respawn_consumable(var/mob/living/silicon/robot/R)
+/obj/item/circuitboard/robot_module/security/respawn_consumable(mob/living/silicon/robot/R)
 	var/obj/item/device/flash/F = locate() in src.modules
 	if(F.broken)
 		F.broken = 0
@@ -253,7 +253,7 @@
 	src.emag.reagents.add_reagent("cleaner", 250)
 	src.emag.name = "space cleaner"
 
-/obj/item/circuitboard/robot_module/janitor/respawn_consumable(var/mob/living/silicon/robot/R)
+/obj/item/circuitboard/robot_module/janitor/respawn_consumable(mob/living/silicon/robot/R)
 	var/obj/item/device/lightreplacer/LR = locate() in src.modules
 	LR.Charge(R)
 	if(src.emag)
@@ -289,11 +289,11 @@
 	emag.reagents.add_reagent("beer2", 50)
 	src.emag.name = "Mickey Finn's Special Brew"
 
-/obj/item/circuitboard/robot_module/butler/add_languages(var/mob/living/silicon/robot/R)
+/obj/item/circuitboard/robot_module/butler/add_languages(mob/living/silicon/robot/R)
 	//full set of languages
 	R.add_language(LANGUAGE_JAPANESE, 1)
 
-/obj/item/circuitboard/robot_module/butler/respawn_consumable(var/mob/living/silicon/robot/R)
+/obj/item/circuitboard/robot_module/butler/respawn_consumable(mob/living/silicon/robot/R)
 	var/obj/item/reagent_container/food/condiment/enzyme/E = locate() in src.modules
 	E.reagents.add_reagent("enzyme", 2)
 	if(src.emag)
@@ -345,10 +345,10 @@
 		W.amount = stacktypes[T]
 		src.modules += W
 
-/obj/item/circuitboard/robot_module/drone/add_languages(var/mob/living/silicon/robot/R)
+/obj/item/circuitboard/robot_module/drone/add_languages(mob/living/silicon/robot/R)
 	return //not much ROM to spare in that tiny microprocessor!
 
-/obj/item/circuitboard/robot_module/drone/respawn_consumable(var/mob/living/silicon/robot/R)
+/obj/item/circuitboard/robot_module/drone/respawn_consumable(mob/living/silicon/robot/R)
 	var/obj/item/reagent_container/spray/cleaner/C = locate() in src.modules
 	C.reagents.add_reagent("cleaner", 3)
 

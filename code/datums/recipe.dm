@@ -12,7 +12,7 @@
 	default /datum/recipe/ procs does not rely on this parameter.
  *
  *  Functions you need:
- *  /datum/recipe/proc/make(var/obj/container as obj)
+ *  /datum/recipe/proc/make(obj/container as obj)
  * Creates result inside container,
  * deletes prerequisite reagents,
  * transfers reagents from prerequisite objects,
@@ -25,10 +25,10 @@
  *
  *
  *  Functions you do not need to call directly but could:
- *  /datum/recipe/proc/check_reagents(var/datum/reagents/avail_reagents)
+ *  /datum/recipe/proc/check_reagents(datum/reagents/avail_reagents)
  * //1=precisely,  0=insufficiently, -1=superfluous
  *
- *  /datum/recipe/proc/check_items(var/obj/container as obj)
+ *  /datum/recipe/proc/check_items(obj/container as obj)
  * //1=precisely, 0=insufficiently, -1=superfluous
  *
  * */
@@ -40,7 +40,7 @@
 	var/time = 100 // 1/10 part of second
 
 
-/datum/recipe/proc/check_reagents(var/datum/reagents/avail_reagents) //1=precisely, 0=insufficiently, -1=superfluous
+/datum/recipe/proc/check_reagents(datum/reagents/avail_reagents) //1=precisely, 0=insufficiently, -1=superfluous
 	. = 1
 	for (var/r_r in reagents)
 		var/aval_r_amnt = avail_reagents.get_reagent_amount(r_r)
@@ -53,7 +53,7 @@
 		return -1
 	return .
 
-/datum/recipe/proc/check_items(var/obj/container as obj) //1=precisely, 0=insufficiently, -1=superfluous
+/datum/recipe/proc/check_items(obj/container as obj) //1=precisely, 0=insufficiently, -1=superfluous
 	if (!items)
 		if (locate(/obj/) in container)
 			return -1
@@ -75,7 +75,7 @@
 	return .
 
 //general version
-/datum/recipe/proc/make(var/obj/container as obj)
+/datum/recipe/proc/make(obj/container as obj)
 	var/obj/result_obj = new result(container)
 	for (var/obj/O in (container.contents-result_obj))
 		O.reagents.trans_to(result_obj, O.reagents.total_volume)
@@ -84,7 +84,7 @@
 	return result_obj
 
 // food-related
-/datum/recipe/proc/make_food(var/obj/container as obj)
+/datum/recipe/proc/make_food(obj/container as obj)
 	var/obj/result_obj = new result(container)
 	var/name_finalized
 	for (var/obj/item/reagent_container/food/snacks/O in (container.contents-result_obj))
@@ -100,7 +100,7 @@
 	container.reagents.clear_reagents()
 	return result_obj
 
-/proc/select_recipe(var/list/datum/recipe/available_recipes, var/obj/obj as obj, var/exact = 1 as num)
+/proc/select_recipe(list/datum/recipe/available_recipes, obj/obj as obj, exact = 1 as num)
 	if (!exact)
 		exact = -1
 	var/list/datum/recipe/possible_recipes = new
@@ -676,14 +676,14 @@
 	)
 	result = /obj/item/reagent_container/food/snacks/donkpocket //SPECIAL
 
-/datum/recipe/donkpocket/proc/warm_up(var/obj/item/reagent_container/food/snacks/donkpocket/being_cooked)
+/datum/recipe/donkpocket/proc/warm_up(obj/item/reagent_container/food/snacks/donkpocket/being_cooked)
 	being_cooked.warm = 1
 	being_cooked.reagents.add_reagent("tricordrazine", 5)
 	being_cooked.bitesize = 6
 	being_cooked.name = "Warm " + being_cooked.name
 	being_cooked.cooltime()
 
-/datum/recipe/donkpocket/make_food(var/obj/container as obj)
+/datum/recipe/donkpocket/make_food(obj/container as obj)
 	var/obj/item/reagent_container/food/snacks/donkpocket/being_cooked = ..(container)
 	warm_up(being_cooked)
 	return being_cooked
@@ -695,7 +695,7 @@
 	)
 	result = /obj/item/reagent_container/food/snacks/donkpocket //SPECIAL
 
-/datum/recipe/donkpocket/warm/make_food(var/obj/container as obj)
+/datum/recipe/donkpocket/warm/make_food(obj/container as obj)
 	var/obj/item/reagent_container/food/snacks/donkpocket/being_cooked = locate() in container
 	if(being_cooked && !being_cooked.warm)
 		warm_up(being_cooked)
@@ -845,7 +845,7 @@
 	)
 	result = /obj/item/reagent_container/food/snacks/amanitajelly
 
-/datum/recipe/amanitajelly/make_food(var/obj/container as obj)
+/datum/recipe/amanitajelly/make_food(obj/container as obj)
 	var/obj/item/reagent_container/food/snacks/amanitajelly/being_cooked = ..(container)
 	being_cooked.reagents.del_reagent("amatoxin")
 	return being_cooked
@@ -1053,7 +1053,7 @@
 	)
 	result = /obj/item/reagent_container/food/snacks/validsalad
 
-/datum/recipe/validsalad/make_food(var/obj/container as obj)
+/datum/recipe/validsalad/make_food(obj/container as obj)
 	var/obj/item/reagent_container/food/snacks/validsalad/being_cooked = ..(container)
 	being_cooked.reagents.del_reagent("toxin")
 	return being_cooked

@@ -48,7 +48,7 @@
 				break
 	return T
 
-/mob/living/simple_animal/hostile/proc/evaluate_target(var/mob/living/target)
+/mob/living/simple_animal/hostile/proc/evaluate_target(mob/living/target)
 	if(target.faction == src.faction && !attack_same)
 		return FALSE
 	else if(target in friends)
@@ -57,7 +57,7 @@
 		if(!target.stat)
 			return target
 
-/mob/living/simple_animal/hostile/proc/Found(var/atom/A)
+/mob/living/simple_animal/hostile/proc/Found(atom/A)
 	return
 
 /mob/living/simple_animal/hostile/proc/MoveToTarget()
@@ -105,7 +105,7 @@
 	walk(src, 0)
 
 
-/mob/living/simple_animal/hostile/proc/ListTargets(var/dist = 7)
+/mob/living/simple_animal/hostile/proc/ListTargets(dist = 7)
 	var/list/L = hearers(src, dist)
 	return L
 

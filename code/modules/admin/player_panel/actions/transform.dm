@@ -167,7 +167,7 @@ GLOBAL_LIST_INIT(pp_transformables, list(
 	name = "Transform"
 	permissions_required = R_SPAWN
 
-/datum/player_action/transform/act(var/client/user, var/mob/target, var/list/params)
+/datum/player_action/transform/act(client/user, mob/target, list/params)
 	var/type = text2path(params["key"])
 
 	if(!ispath(type))

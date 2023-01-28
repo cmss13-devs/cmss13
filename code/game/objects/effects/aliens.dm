@@ -58,7 +58,7 @@
 /obj/effect/xenomorph/spray/no_stun
 	stun_duration = 0
 
-/obj/effect/xenomorph/spray/Initialize(mapload, new_cause_data, var/hive) //Self-deletes
+/obj/effect/xenomorph/spray/Initialize(mapload, new_cause_data, hive) //Self-deletes
 	. = ..()
 
 	// Stats tracking
@@ -133,7 +133,7 @@
 	cause_data = null
 	return ..()
 
-/obj/effect/xenomorph/spray/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/obj/effect/xenomorph/spray/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_pass = PASS_FLAGS_ACID_SPRAY

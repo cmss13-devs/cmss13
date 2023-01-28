@@ -37,6 +37,11 @@
 			else
 				communications_blackout(1)
 			message_staff("[key_name_admin(usr)] triggered a communications blackout.")
+		if("destructible_terrain")
+			if(tgui_alert(usr, "Are you sure you want to toggle all ground-level terrain destructible?", "Confirmation", list("Yes", "No"), 20 SECONDS) != "Yes")
+				return
+			toggle_destructible_terrain()
+			message_staff("[key_name_admin(usr)] toggled destructible terrain.")
 		if("blackout")
 			if(alert(usr, "Are you sure you want to do this?", "Confirmation", "Yes", "No") != "Yes")
 				return

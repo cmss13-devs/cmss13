@@ -173,6 +173,9 @@
 /mob/living/carbon/human/proc/pickup_recent_item_on_turf(turf/check_turf)
 	for(var/datum/weakref/weak_ref as anything in remembered_dropped_objects)
 		var/obj/previously_held_object = weak_ref.resolve()
+		if(!previously_held_object)
+			remembered_dropped_objects -= weak_ref
+			break
 		if(previously_held_object.in_contents_of(check_turf))
 			put_in_hands(previously_held_object, drop_on_fail = FALSE)
 			return TRUE

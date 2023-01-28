@@ -387,6 +387,34 @@
 
 //*****************************************************************************************************/
 
+/datum/equipment_preset/synth/survivor/cultist_synth
+	name = "Cultist - Xeno Cultist Synthetic"
+	faction = FACTION_XENOMORPH
+
+/datum/equipment_preset/synth/survivor/cultist_synth/load_gear(mob/living/carbon/human/H)
+	var/backItem = /obj/item/storage/backpack/marine/satchel/medic
+	if (H.client && H.client.prefs && (H.client.prefs.backbag == 1))
+		backItem = /obj/item/storage/backpack/marine/medic
+
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/chaplain/cultist(H), WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/latex(H), WEAR_HANDS)
+	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/device/defibrillator, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/storage/belt/medical/full/with_suture_and_graft(H), WEAR_WAIST)
+	H.equip_to_slot_or_del(new /obj/item/device/healthanalyzer(H), WEAR_IN_BELT)
+	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health(H), WEAR_EYES)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full(H), WEAR_R_STORE)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full(H), WEAR_L_STORE)
+	H.equip_to_slot_or_del(new /obj/item/weapon/melee/baton(H.back), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/dutch(H), WEAR_L_EAR)
+
+	var/obj/item/clothing/head/cultist_hood/hood = new /obj/item/clothing/head/cultist_hood(H)
+	hood.flags_item |= NODROP|DELONDROP
+	H.equip_to_slot_or_del(hood, WEAR_HEAD)
+
+//*****************************************************************************************************/
+
 /datum/equipment_preset/synth/survivor/midwife
 	name = "Fun - Xeno Cultist Midwife (Synthetic)"
 	faction = FACTION_XENOMORPH

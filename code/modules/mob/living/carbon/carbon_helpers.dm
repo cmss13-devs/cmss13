@@ -57,7 +57,6 @@
 /mob/living/carbon/proc/handle_queen_screech(mob/living/carbon/xenomorph/queen/queen, list/mobs_in_view)
 	if(!(src in mobs_in_view))
 		return
-	scream_stun_timeout = 20 SECONDS
 	var/dist = get_dist(queen, src)
 	if(dist <= 4)
 		to_chat(src, SPAN_DANGER("An ear-splitting guttural roar shakes the ground beneath your feet!"))

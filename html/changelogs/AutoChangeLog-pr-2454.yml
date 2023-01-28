@@ -1,0 +1,5 @@
+author: "MaximusRex"
+delete-after: True
+changes:
+  - balance: "Removed shaman strain from carrier."
+  - spellcheck: "Changed a minor entry in the Carrier.DM to reflect the above changes."

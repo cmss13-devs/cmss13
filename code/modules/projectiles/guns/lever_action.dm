@@ -65,12 +65,12 @@ their unique feature is that a direct hit will buff your damage and firerate
 /obj/item/weapon/gun/lever_action/wield(mob/M)
 	. = ..()
 	if(. && (flags_gun_lever_action & USES_STREAKS))
-		RegisterSignal(M, COMSIG_DIRECT_BULLET_HIT, PROC_REF(direct_hit_buff))
+		RegisterSignal(M, COMSIG_BULLET_DIRECT_HIT, PROC_REF(direct_hit_buff))
 
 /obj/item/weapon/gun/lever_action/unwield(mob/M)
 	. = ..()
 	if(. && (flags_gun_lever_action & USES_STREAKS))
-		UnregisterSignal(M, COMSIG_DIRECT_BULLET_HIT)
+		UnregisterSignal(M, COMSIG_BULLET_DIRECT_HIT)
 
 /obj/item/weapon/gun/lever_action/dropped(mob/user)
 	. = ..()

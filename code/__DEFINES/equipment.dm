@@ -431,9 +431,9 @@ GLOBAL_LIST_INIT(slot_to_contained_sprite_shorthand, list(
 /// For normal helmets
 #define HELMET_MAX_HEAT_PROT 600
 /// For armor
-#define HELMET_MIN_COLD_PROT 200
+#define ARMOR_MIN_COLD_PROT 200
 /// For armor
-#define HELMET_MAX_HEAT_PROT 600
+#define ARMOR_MAX_HEAT_PROT 600
 /// For some gloves (black and)
 #define GLOVES_MIN_COLD_PROT 175
 /// For some gloves

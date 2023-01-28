@@ -115,6 +115,12 @@ do
 	done < <(jq -r '[.map_file] | flatten | .[]' $json)
 done
 
+if grep -P '(new|newlist|icon|matrix|sound)\(.+\)' maps/**/*.dmm;	then
+	echo
+	echo -e "${RED}ERROR: Using unsupported procs in variables in a map file! Please remove all instances of this.${NC}"
+	st=1
+fi;
+
 # Check for non-515 compatable .proc/ syntax
 if grep -P --exclude='_byond_version_compat.dm' '\.proc/' code/**/*.dm; then
 	echo

@@ -145,7 +145,7 @@
 		if(ishuman(user)) //Checks for whether a xeno is unbuckling from the operating table
 			H.visible_message(SPAN_NOTICE("[user] turns off the anesthetic and removes the mask from [H]."))
 		else
-			H.visible_message(SPAN_WARNING("The anesthesia mask is ripped off of [H]'s face!"))
+			H.visible_message(SPAN_WARNING("The anesthesia mask is ripped away from [H]'s face!"))
 		stop_processing()
 		patient_exam = 0
 		..()

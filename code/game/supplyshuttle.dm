@@ -137,7 +137,7 @@ var/datum/controller/supply/supply_controller = new()
 			return
 	..()
 
-/obj/structure/machinery/computer/supplycomp/proc/toggle_contraband(var/contraband_enabled = FALSE)
+/obj/structure/machinery/computer/supplycomp/proc/toggle_contraband(contraband_enabled = FALSE)
 	can_order_contraband = contraband_enabled
 	for(var/obj/structure/machinery/computer/supplycomp/computer as anything in supply_controller.bound_supply_computer_list)
 		if(computer.can_order_contraband)
@@ -545,7 +545,7 @@ var/datum/controller/supply/supply_controller = new()
 		// Delete everything else.
 		else qdel(movable_atom)
 
-/proc/maul_human(var/mob/living/carbon/human/mauled_human)
+/proc/maul_human(mob/living/carbon/human/mauled_human)
 
 	for(var/atom/computer as anything in supply_controller.bound_supply_computer_list)
 		computer.balloon_alert_to_viewers("you hear horrifying noises coming from the elevator!")
@@ -1158,7 +1158,7 @@ var/datum/controller/supply/supply_controller = new()
 			temp += "If you see any, er.. 'elite' equipment, be sure to throw it down here. I know a few people that'd offer quite the amount of money for a USCM commander's gun, or pet. Even the armor is worth a fortune. Don't kill yourself doin' it, though.<BR>"
 			temp += "Hell, any kind of wildlife too, actually! Anythin' that isn't a replicant animal is worth a truly ridiculous sum back on Terra, I'll give ya quite the amount of points for 'em. As long as it isn't plannin' on killing me.<BR>"
 
-/proc/get_black_market_value(var/atom/movable/movable_atom)
+/proc/get_black_market_value(atom/movable/movable_atom)
 	var/return_value
 	if(istype(movable_atom, /obj/item/stack))
 		var/obj/item/stack/black_stack = movable_atom
@@ -1229,11 +1229,11 @@ var/datum/controller/supply/supply_controller = new()
 	var/atom/sound_tile = pick(GLOB.asrs_empty_space_tiles_list)
 	return sound_tile
 
-/datum/controller/supply/proc/play_sound_handler(var/sound_to_play, var/timer)
+/datum/controller/supply/proc/play_sound_handler(sound_to_play, timer)
 	/// For code readability.
 	addtimer(CALLBACK(GLOBAL_PROC, /proc/playsound, get_rand_sound_tile(), sound_to_play, 25, FALSE), timer)
 
-/obj/structure/machinery/computer/supplycomp/proc/is_buyable(var/datum/supply_packs/supply_pack)
+/obj/structure/machinery/computer/supplycomp/proc/is_buyable(datum/supply_packs/supply_pack)
 
 	if(supply_pack.group != last_viewed_group)
 		return

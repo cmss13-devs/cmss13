@@ -29,7 +29,7 @@
 	return ..()
 
 /obj/effect/alien/resin/special/cluster/attack_alien(mob/living/carbon/xenomorph/M)
-	if(isxenoBuilder(M) && M.a_intent == INTENT_HELP && M.hivenumber == linked_hive.hivenumber)
+	if(isxeno_builder(M) && M.a_intent == INTENT_HELP && M.hivenumber == linked_hive.hivenumber)
 		do_repair(M) //This handles the delay itself.
 		return XENO_NO_DELAY_ACTION
 	else

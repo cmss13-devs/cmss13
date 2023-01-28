@@ -155,7 +155,7 @@
 			consume_effect(X)
 		else
 			to_chat(X, SPAN_XENOWARNING("[name] isn't ripe yet. You need to wait a little longer."))
-	if(X.a_intent == INTENT_HARM && isxenoBuilder(X) || (!X.can_not_harm(bound_xeno) && X.hivenumber != hivenumber))
+	if(X.a_intent == INTENT_HARM && isxeno_builder(X) || (!X.can_not_harm(bound_xeno) && X.hivenumber != hivenumber))
 		X.animation_attack_on(src)
 		X.visible_message(SPAN_XENODANGER("[X] removes [name]!"),
 		SPAN_XENODANGER("You remove [name]!"))

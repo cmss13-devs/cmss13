@@ -17,7 +17,7 @@
 		if(IS_XENO_LEADER(src))
 			if(hive.destruction_allowed == NORMAL_XENO || hive.destruction_allowed == XENO_LEADER)
 				return TRUE
-		if(hive.destruction_allowed == NORMAL_XENO && isxenoBuilder(src))
+		if(hive.destruction_allowed == NORMAL_XENO && isxeno_builder(src))
 			return TRUE
 		if(isqueen(src))
 			return TRUE

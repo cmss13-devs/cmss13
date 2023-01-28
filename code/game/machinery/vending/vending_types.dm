@@ -215,7 +215,8 @@
 					/obj/item/storage/belt/security/MP = 6,
 					/obj/item/clothing/head/beret/marine/mp = 6,
 					/obj/item/clothing/glasses/sunglasses/sechud = 3,
-					/obj/item/device/radio/headset = 6)
+					/obj/item/device/radio/headset = 6,
+					/obj/item/tape/regulation = 5)
 	contraband = list(/obj/item/clothing/glasses/sunglasses = 2,/obj/item/storage/donut_box = 2)
 
 /obj/structure/machinery/vending/sea

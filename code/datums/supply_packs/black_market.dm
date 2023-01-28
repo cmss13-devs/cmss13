@@ -41,12 +41,16 @@ black market prices are NOT based on real or in-universe costs. they are based o
 
 	return ..()
 
+#define RECURSION_LIMIT 3
+
 /obj/structure/largecrate/black_market/proc/recursive_points_wipe(atom/movable/content_atom, recursion)
-	if(!points_wipe || recursion > 3) // sanity
+	if(!points_wipe || recursion > RECURSION_LIMIT) // sanity
 		return
 	for(var/atom/movable/nested_atom in content_atom.contents)
 		nested_atom.black_market_value = 0
 		recursive_points_wipe(nested_atom, recursion++)
+
+#undef RECURSION_LIMIT
 
 /* --- SEIZED ITEMS --- */
 
@@ -73,8 +77,7 @@ Non-USCM items, from CLF, UPP, colonies, etc. Mostly combat-related.
 
 /obj/structure/largecrate/black_market/confiscated_equipment/Initialize()
 	. = ..()
-	var/rng = rand(1,7)
-	switch(rng)
+	switch(rand(1,7))
 		if(1) //pmc
 			new /obj/item/clothing/under/marine/veteran/PMC(src)
 			new /obj/item/clothing/head/helmet/marine/veteran/PMC(src)
@@ -125,8 +128,7 @@ Non-USCM items, from CLF, UPP, colonies, etc. Mostly combat-related.
 	spawn_guns() //the crate gives 2 guns
 
 /obj/structure/largecrate/black_market/confiscated_weaponry/proc/spawn_guns()
-	var/rng = rand(1,7)
-	switch(rng)
+	switch(rand(1,7))
 		if(1) //pmc
 			if(prob(50))
 				new /obj/item/weapon/gun/rifle/nsg23/no_lock(src)
@@ -150,8 +152,7 @@ Non-USCM items, from CLF, UPP, colonies, etc. Mostly combat-related.
 			new /obj/item/weapon/gun/pistol/holdout(src)
 			new /obj/item/ammo_magazine/pistol/holdout(src)
 		if(4) //clf
-			var/rngrng = rand(1, 4)
-			switch(rngrng)
+			switch(rand(1, 4))
 				if(1)
 					new /obj/item/weapon/melee/twohanded/lungemine/damaged(src)
 				if(2)

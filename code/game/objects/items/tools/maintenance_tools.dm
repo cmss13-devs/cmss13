@@ -509,12 +509,12 @@
 	. = ..()
 	if(HAS_TRAIT_FROM(src, TRAIT_TOOL_CROWBAR, TRAIT_SOURCE_INHERENT))
 		playsound(src, 'sound/weapons/handling/gun_underbarrel_activate.ogg', 25, TRUE)
-		to_chat(user, SPAN_NOTICE("You change your grip on \the [src]. You will now use it as a wrench."))
+		to_chat(user, SPAN_NOTICE("You change your grip on [src]. You will now use it as a wrench."))
 		REMOVE_TRAIT(src, TRAIT_TOOL_CROWBAR, TRAIT_SOURCE_INHERENT)
 		ADD_TRAIT(src, TRAIT_TOOL_WRENCH, TRAIT_SOURCE_INHERENT)
 	else
 		playsound(src, 'sound/weapons/handling/gun_underbarrel_deactivate.ogg', 25, TRUE)
-		to_chat(user, SPAN_NOTICE("You change your grip on \the [src]. You will now use it as a crowbar."))
+		to_chat(user, SPAN_NOTICE("You change your grip on [src]. You will now use it as a crowbar."))
 		REMOVE_TRAIT(src, TRAIT_TOOL_WRENCH, TRAIT_SOURCE_INHERENT)
 		ADD_TRAIT(src, TRAIT_TOOL_CROWBAR, TRAIT_SOURCE_INHERENT)
 

@@ -422,7 +422,7 @@ FORENSIC SCANNER
 
 /obj/item/device/black_market_scanner/update_icon(scan_value = 0, scanning = FALSE)
 	. = ..()
-	overlays.Cut()
+	overlays.Cut()rng
 	overlays += image('icons/obj/items/devices.dmi', "+mendoza_scanner_value_flash")
 	if(scanning)
 		overlays += image('icons/obj/items/devices.dmi', "+mendoza_scanner_clamp_on")
@@ -450,7 +450,7 @@ FORENSIC SCANNER
 	if(isnull(market_value))
 		return ..()
 	market_value = POSITIVE(market_value)
-	user.visible_message(SPAN_WARNING("[user] presses a button on \the [src] and holds it over \the [hit_atom]..."), SPAN_WARNING("You scan \the [hit_atom]..."))
+	user.visible_message(SPAN_WARNING("[user] presses a button on [src] and holds it over [hit_atom]..."), SPAN_WARNING("You scan [hit_atom]..."))
 	update_icon(market_value, TRUE)
 	playsound(user, 'sound/machines/twobeep.ogg', 15, TRUE)
-	to_chat(user, SPAN_NOTICE("You scan \the [hit_atom] and notice a reading on \the [src]'s pad, it says:<b> ITEM HAS [market_value] VALUE <b>"))
+	to_chat(user, SPAN_NOTICE("You scan [hit_atom] and notice a reading on [src]'s pad, it says:<b> ITEM HAS [market_value] VALUE <b>"))

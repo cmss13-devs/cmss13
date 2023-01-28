@@ -77,6 +77,13 @@
 		to_chat(user, SPAN_NOTICE("You remove \the [anes_tank] from \the [src]."))
 		anes_tank = null
 
+// Removing marines connected to anesthetic
+/obj/structure/machinery/optable/attack_alien(mob/living/carbon/xenomorph/alien, mob/living/user)
+	if(buckled_mob)
+		to_chat(alien, SPAN_XENONOTICE("You rip the tubes off of the host, releasing it!"))
+		playsound(alien.loc, "alien_claw_flesh", 25, 1)
+		unbuckle(user)
+		return
 
 /obj/structure/machinery/optable/buckle_mob(mob/living/carbon/human/H, mob/living/user)
 	if(!istype(H) || !ishuman(user) || H == user || H.buckled || user.action_busy || user.is_mob_incapacitated() || buckled_mob)
@@ -135,7 +142,10 @@
 		var/obj/item/M = H.wear_mask
 		H.drop_inv_item_on_ground(M)
 		qdel(M)
-		H.visible_message(SPAN_NOTICE("[user] turns off the anesthetic and removes the mask from [H]."))
+		if(ishuman(user)) //Checks for whether a xeno is unbuckling from the operating table
+			H.visible_message(SPAN_NOTICE("[user] turns off the anesthetic and removes the mask from [H]."))
+		else
+			H.visible_message(SPAN_WARNING("The anesthesia mask is ripped off of [H]'s face!"))
 		stop_processing()
 		patient_exam = 0
 		..()

@@ -37,7 +37,7 @@
 /obj/structure/resource_node/area_controller
 	is_area_controller = TRUE
 
-/obj/structure/resource_node/Initialize(mapload, var/play_ambient_noise = TRUE)
+/obj/structure/resource_node/Initialize(mapload, play_ambient_noise = TRUE)
 	. = ..()
 	bound_width = width * world.icon_size
 	bound_height = height * world.icon_size
@@ -75,7 +75,7 @@
 	STOP_PROCESSING(SSobj, src)
 	update_icon()
 
-/obj/structure/resource_node/proc/take_damage(var/damage)
+/obj/structure/resource_node/proc/take_damage(damage)
 	health = Clamp(health - damage, 0, max_health)
 	healthcheck()
 

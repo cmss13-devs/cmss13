@@ -413,7 +413,7 @@
 	else
 		..()
 
-/obj/structure/machinery/computer/card/attack_remote(var/mob/user as mob)
+/obj/structure/machinery/computer/card/attack_remote(mob/user as mob)
 	return attack_hand(user)
 
 /obj/structure/machinery/computer/card/bullet_act()
@@ -453,7 +453,7 @@
 		to_chat(usr, "There is nothing to remove from the console.")
 	return
 
-/obj/structure/machinery/computer/card/attack_hand(var/mob/user as mob)
+/obj/structure/machinery/computer/card/attack_hand(mob/user as mob)
 	if(..())
 		return
 	if(inoperable())
@@ -630,13 +630,13 @@
 		..()
 
 
-/obj/structure/machinery/computer/squad_changer/attack_remote(var/mob/user as mob)
+/obj/structure/machinery/computer/squad_changer/attack_remote(mob/user as mob)
 	return attack_hand(user)
 
 /obj/structure/machinery/computer/squad_changer/bullet_act()
 	return 0
 
-/obj/structure/machinery/computer/squad_changer/attack_hand(var/mob/user as mob)
+/obj/structure/machinery/computer/squad_changer/attack_hand(mob/user as mob)
 	if(..())
 		return
 	if(user)
@@ -737,7 +737,7 @@ GLOBAL_LIST_EMPTY_TYPED(crewmonitor, /datum/crewmonitor)
 	var/list/jobs
 	var/faction = FACTION_MARINE
 
-/datum/crewmonitor/New(var/set_faction = FACTION_MARINE)
+/datum/crewmonitor/New(set_faction = FACTION_MARINE)
 	..()
 	faction = set_faction
 	setup_for_faction(faction)
@@ -868,7 +868,7 @@ GLOBAL_LIST_EMPTY_TYPED(crewmonitor, /datum/crewmonitor)
 				// We do not care is there camera or no - we just know his location
 				AI.ai_actual_track(H)
 
-/datum/crewmonitor/proc/setup_for_faction(var/set_faction = FACTION_MARINE)
+/datum/crewmonitor/proc/setup_for_faction(set_faction = FACTION_MARINE)
 	switch(set_faction)
 		if(FACTION_MARINE)
 			jobs = list(

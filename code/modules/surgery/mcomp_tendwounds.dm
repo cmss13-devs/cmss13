@@ -14,7 +14,7 @@
 	lying_required = FALSE
 	self_operable = TRUE
 
-/datum/surgery/mcomp_wounds/can_start(mob/living/carbon/human/user, mob/living/carbon/human/patient, var/obj/limb/L, obj/item/tool)
+/datum/surgery/mcomp_wounds/can_start(mob/living/carbon/human/user, mob/living/carbon/human/patient, obj/limb/L, obj/item/tool)
 	if((istype(user) && HAS_TRAIT(user, TRAIT_YAUTJA_TECH)) && (patient.getBruteLoss() || patient.getFireLoss()))
 		return TRUE
 	return FALSE

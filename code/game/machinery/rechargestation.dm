@@ -27,7 +27,7 @@
 		go_out()
 	return ..()
 
-/obj/structure/machinery/recharge_station/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/obj/structure/machinery/recharge_station/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_can_pass_all = PASS_HIGH_OVER_ONLY|PASS_AROUND|PASS_OVER_THROW_ITEM
@@ -203,7 +203,7 @@
 /obj/structure/machinery/recharge_station/do_buckle(mob/target, mob/user)
 	return move_mob_inside(target)
 
-/obj/structure/machinery/recharge_station/verb/move_mob_inside(var/mob/living/M)
+/obj/structure/machinery/recharge_station/verb/move_mob_inside(mob/living/M)
 	if (!isrobot(M) && !issynth(M))
 		return FALSE
 	if (occupant)
@@ -247,7 +247,7 @@
 	move_mob_inside(usr)
 	return
 
-/obj/structure/machinery/recharge_station/attackby(var/obj/item/W, var/mob/living/user)
+/obj/structure/machinery/recharge_station/attackby(obj/item/W, mob/living/user)
 	if(istype(W, /obj/item/grab))
 		if(isxeno(user)) return
 		var/obj/item/grab/G = W

@@ -3,7 +3,7 @@
 #define WO_STATIC_WAVE 2
 
 //SPAWN XENOS
-/datum/game_mode/whiskey_outpost/proc/spawn_whiskey_outpost_xenos(var/datum/whiskey_outpost_wave/wave_data)
+/datum/game_mode/whiskey_outpost/proc/spawn_whiskey_outpost_xenos(datum/whiskey_outpost_wave/wave_data)
 	if(!istype(wave_data))
 		return
 

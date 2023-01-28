@@ -1,4 +1,4 @@
-/mob/living/carbon/human/emote(var/act,var/m_type=1,var/message = null, player_caused)
+/mob/living/carbon/human/emote(act, m_type=1, message = null, player_caused)
 	var/param = null
 	var/comm_paygrade = get_paygrade()
 	var/input = null

@@ -18,7 +18,7 @@
 	)
 	keystone = TRUE
 
-/datum/xeno_mutator/Vampire/apply_mutator(var/datum/mutator_set/individual_mutators/mutator_set)
+/datum/xeno_mutator/Vampire/apply_mutator(datum/mutator_set/individual_mutators/mutator_set)
 	. = ..()
 	if (. == FALSE)
 		return

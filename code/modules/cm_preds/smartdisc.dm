@@ -20,7 +20,7 @@
 	force = 15
 	throwforce = 25
 
-/obj/item/explosive/grenade/spawnergrenade/smartdisc/launch_towards(var/datum/launch_metadata/LM)
+/obj/item/explosive/grenade/spawnergrenade/smartdisc/launch_towards(datum/launch_metadata/LM)
 	..()
 	var/mob/user = usr
 	if(!active && isyautja(user) && (icon_state == initial(icon_state)))
@@ -55,7 +55,7 @@
 				break
 	return T
 
-/obj/item/explosive/grenade/spawnergrenade/smartdisc/proc/listtargets(var/dist = 3)
+/obj/item/explosive/grenade/spawnergrenade/smartdisc/proc/listtargets(dist = 3)
 	var/list/L = hearers(src, dist)
 	return L
 
@@ -157,13 +157,13 @@
 	melee_damage_lower = 15
 	melee_damage_upper = 25
 	..()
-/mob/living/simple_animal/hostile/smartdisc/Process_Spacemove(var/check_drift = 0)
+/mob/living/simple_animal/hostile/smartdisc/Process_Spacemove(check_drift = 0)
 	return 1
 
 /mob/living/simple_animal/hostile/smartdisc/Collided(atom/movable/AM)
 	return
 
-/mob/living/simple_animal/hostile/smartdisc/bullet_act(var/obj/item/projectile/Proj)
+/mob/living/simple_animal/hostile/smartdisc/bullet_act(obj/item/projectile/Proj)
 	if(prob(60 - Proj.damage))
 		return 0
 
@@ -180,7 +180,7 @@
 	spawn(1)
 		if(src) qdel(src)
 
-/mob/living/simple_animal/hostile/smartdisc/gib(var/cause = "gibbing")
+/mob/living/simple_animal/hostile/smartdisc/gib(cause = "gibbing")
 	visible_message("\The [src] explodes!")
 	..(cause, icon_gib,1)
 	spawn(1)
@@ -212,7 +212,7 @@
 					break
 	return T
 
-/mob/living/simple_animal/hostile/smartdisc/ListTargets(var/dist = 7)
+/mob/living/simple_animal/hostile/smartdisc/ListTargets(dist = 7)
 	var/list/L = hearers(src, dist)
 	return L
 

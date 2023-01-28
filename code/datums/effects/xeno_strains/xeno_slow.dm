@@ -12,7 +12,7 @@
 	duration = null
 	flags = DEL_ON_DEATH | INF_DURATION
 
-/datum/effects/xeno_slow/New(var/atom/A, var/mob/from = null, var/last_dmg_source = null, var/zone = "chest", ttl = 3.5 SECONDS)
+/datum/effects/xeno_slow/New(atom/A, mob/from = null, last_dmg_source = null, zone = "chest", ttl = 3.5 SECONDS)
 	. = ..(A, from, last_dmg_source, zone)
 
 	addtimer(CALLBACK(GLOBAL_PROC, PROC_REF(qdel), src), ttl)
@@ -22,7 +22,7 @@
 		H.update_xeno_hostile_hud()
 
 
-/datum/effects/xeno_slow/validate_atom(var/atom/A)
+/datum/effects/xeno_slow/validate_atom(atom/A)
 	if (!ishuman(A) && !isxeno(A))
 		return FALSE
 

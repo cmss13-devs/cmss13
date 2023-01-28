@@ -87,7 +87,7 @@
 			qdel(src)
 			return
 
-/obj/item/clothing/mask/facehugger/attack_hand(var/mob/user)
+/obj/item/clothing/mask/facehugger/attack_hand(mob/user)
 	if(stat != DEAD)
 		if(!sterile && can_hug(user, hivenumber))
 			attach(user)
@@ -187,7 +187,7 @@
 		return TRUE
 	return FALSE
 
-/obj/item/clothing/mask/facehugger/launch_towards(var/datum/launch_metadata/LM)
+/obj/item/clothing/mask/facehugger/launch_towards(datum/launch_metadata/LM)
 	..()
 	if(stat == CONSCIOUS)
 		icon_state = "[initial(icon_state)]_thrown"
@@ -238,7 +238,7 @@
 	throw_atom(target, 3, SPEED_FAST)
 	return TRUE
 
-/obj/item/clothing/mask/facehugger/proc/attach(mob/living/M, var/silent = FALSE, var/knockout_mod = 1)
+/obj/item/clothing/mask/facehugger/proc/attach(mob/living/M, silent = FALSE, knockout_mod = 1)
 	if(attached || !can_hug(M, hivenumber))
 		return FALSE
 
@@ -395,8 +395,8 @@
 	visible_message("[icon2html(src, viewers(src))] <span class='danger'>\The [src] decays into a mass of acid and chitin.</span>")
 	qdel(src)
 
-/proc/can_hug(mob/living/carbon/M, var/hivenumber)
-	if(!istype(M) || isxeno(M) || issynth(M) || iszombie(M) || isHellhound(M) || M.stat == DEAD || (M.huggable == FALSE))
+/proc/can_hug(mob/living/carbon/M, hivenumber)
+	if(!istype(M) || isxeno(M) || issynth(M) || iszombie(M) || isHellhound(M) || M.stat == DEAD || !M.huggable)
 		return FALSE
 
 	if(M.ally_of_hivenumber(hivenumber))

@@ -16,7 +16,7 @@
 	objectives = "Ensure the survival of the [MAIN_SHIP_NAME], eliminate any hostiles, and assist the crew in any way possible."
 
 
-/datum/emergency_call/contractors/create_member(datum/mind/M, var/turf/override_spawn_loc)
+/datum/emergency_call/contractors/create_member(datum/mind/M, turf/override_spawn_loc)
 	var/turf/spawn_loc = override_spawn_loc ? override_spawn_loc : get_spawn_point()
 
 	if(!istype(spawn_loc))
@@ -105,7 +105,7 @@
 	objectives += "Sabotage Weyland-Yutani efforts."
 	checked_objective = TRUE
 
-/datum/emergency_call/contractors/covert/create_member(datum/mind/M, var/turf/override_spawn_loc)
+/datum/emergency_call/contractors/covert/create_member(datum/mind/M, turf/override_spawn_loc)
 	var/turf/spawn_loc = override_spawn_loc ? override_spawn_loc : get_spawn_point()
 
 	if(!istype(spawn_loc))

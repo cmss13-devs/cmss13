@@ -89,7 +89,7 @@
 	else
 		. = ..(M)
 
-/obj/structure/machinery/door/poddoor/shutters/almayer/containment/pry_open(var/mob/living/carbon/xenomorph/X, var/time = 4 SECONDS)
+/obj/structure/machinery/door/poddoor/shutters/almayer/containment/pry_open(mob/living/carbon/xenomorph/X, time = 4 SECONDS)
 	. = ..()
 	if(. && !(stat & BROKEN))
 		stat |= BROKEN

@@ -299,7 +299,7 @@ var/bomb_set = FALSE
 	update_icon()
 
 //unified all announcements to one proc
-/obj/structure/machinery/nuclearbomb/proc/announce_to_players(var/timer_warning)
+/obj/structure/machinery/nuclearbomb/proc/announce_to_players(timer_warning)
 	if(timer_warning) //we check for timer warnings first
 		//humans part
 		var/list/humans_other = GLOB.human_mob_list + GLOB.dead_mob_list

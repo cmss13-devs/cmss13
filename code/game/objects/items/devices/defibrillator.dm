@@ -90,7 +90,7 @@
 	update_icon()
 	add_fingerprint(user)
 
-/mob/living/carbon/human/proc/get_ghost(var/check_client = TRUE, var/check_can_reenter = TRUE)
+/mob/living/carbon/human/proc/get_ghost(check_client = TRUE, check_can_reenter = TRUE)
 	if(client)
 		return null
 
@@ -110,7 +110,7 @@
 		return FALSE
 	return TRUE
 
-/obj/item/device/defibrillator/proc/check_revive(var/mob/living/carbon/human/H, mob/living/carbon/human/user)
+/obj/item/device/defibrillator/proc/check_revive(mob/living/carbon/human/H, mob/living/carbon/human/user)
 	if(!ishuman(H) || isyautja(H))
 		to_chat(user, SPAN_WARNING("You can't defibrilate [H]. You don't even know where to put the paddles!"))
 		return

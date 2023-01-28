@@ -62,7 +62,7 @@
 /obj/item/weapon/gun/rifle/techweb_railgun/able_to_fire()
 	return charged
 
-/obj/item/weapon/gun/rifle/techweb_railgun/proc/start_charging(var/user)
+/obj/item/weapon/gun/rifle/techweb_railgun/proc/start_charging(user)
 	if (charged)
 		to_chat(user, SPAN_WARNING("Your railgun is already charged."))
 		return
@@ -82,7 +82,7 @@
 		abort_charge()
 	. = ..()
 
-/obj/item/weapon/gun/rifle/techweb_railgun/proc/abort_charge(var/user)
+/obj/item/weapon/gun/rifle/techweb_railgun/proc/abort_charge(user)
 	if (!charged)
 		return
 	charged = FALSE

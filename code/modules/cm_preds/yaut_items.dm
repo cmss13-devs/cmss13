@@ -2,11 +2,11 @@
 //They can't, however, activate any of the special functions.
 //Thrall subtypes are located in /code/modules/cm_preds/thrall_items.dm
 
-/proc/add_to_missing_pred_gear(var/obj/item/W)
+/proc/add_to_missing_pred_gear(obj/item/W)
 	if(!is_admin_level(W.z))
 		GLOB.loose_yautja_gear |= W
 
-/proc/remove_from_missing_pred_gear(var/obj/item/W)
+/proc/remove_from_missing_pred_gear(obj/item/W)
 	GLOB.loose_yautja_gear -= W
 
 //=================//\\=================\\
@@ -152,7 +152,7 @@
 	var/clan_rank_required = CLAN_RANK_ELDER_INT
 	var/councillor_override = FALSE
 
-/obj/item/clothing/yautja_cape/Initialize(mapload, var/new_color = "#654321")
+/obj/item/clothing/yautja_cape/Initialize(mapload, new_color = "#654321")
 	. = ..()
 	color = new_color
 
@@ -318,7 +318,7 @@
 	unacidable = TRUE
 	ignore_z = TRUE
 
-/obj/item/device/radio/headset/yautja/talk_into(mob/living/M as mob, message, channel, var/verb = "commands", var/datum/language/speaking)
+/obj/item/device/radio/headset/yautja/talk_into(mob/living/M as mob, message, channel, verb = "commands", datum/language/speaking)
 	if(!isyautja(M)) //Nope.
 		to_chat(M, SPAN_WARNING("You try to talk into the headset, but just get a horrible shrieking in your ears!"))
 		return
@@ -685,7 +685,7 @@
 	trapped_mob = null
 	. = ..()
 
-/obj/item/hunting_trap/dropped(var/mob/living/carbon/human/mob) //Changes to "camouflaged" icons based on where it was dropped.
+/obj/item/hunting_trap/dropped(mob/living/carbon/human/mob) //Changes to "camouflaged" icons based on where it was dropped.
 	if(armed && isturf(mob.loc))
 		var/turf/T = mob.loc
 		if(istype(T,/turf/open/gm/dirt))
@@ -722,7 +722,7 @@
 		return
 	. = ..()
 
-/obj/item/hunting_trap/proc/trapMob(var/mob/living/carbon/C)
+/obj/item/hunting_trap/proc/trapMob(mob/living/carbon/C)
 	if(!armed)
 		return
 
@@ -781,7 +781,7 @@
 		qdel(tether_effect)
 		tether_effect = null
 
-/obj/item/hunting_trap/proc/disarm(var/mob/user)
+/obj/item/hunting_trap/proc/disarm(mob/user)
 	SIGNAL_HANDLER
 	armed = FALSE
 	anchored = FALSE

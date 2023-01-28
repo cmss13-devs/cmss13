@@ -3,7 +3,7 @@
 	action_tag = "make_mutineer"
 	name = "Make Mutineer"
 
-/datum/player_action/make_mutineer/act(var/client/user, var/mob/target, var/list/params)
+/datum/player_action/make_mutineer/act(client/user, mob/target, list/params)
 	if(!ishuman(target))
 		to_chat(user, SPAN_WARNING("This can only be done to instances of type /mob/living/carbon/human"))
 		return
@@ -25,7 +25,7 @@
 	name = "Change Hivenumber"
 	permissions_required = R_SPAWN
 
-/datum/player_action/change_hivenumber/act(var/client/user, var/mob/target, var/list/params)
+/datum/player_action/change_hivenumber/act(client/user, mob/target, list/params)
 	if(!params["hivenumber"])
 		return
 
@@ -43,7 +43,7 @@
 	name = "Make Cultist"
 	permissions_required = R_ADMIN
 
-/datum/player_action/make_cultist/act(var/client/user, var/mob/target, var/list/params)
+/datum/player_action/make_cultist/act(client/user, mob/target, list/params)
 	if(!params["hivenumber"])
 		return
 

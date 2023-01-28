@@ -425,7 +425,7 @@
 	return
 
 
-/obj/structure/machinery/bot/medbot/proc/speak(var/message)
+/obj/structure/machinery/bot/medbot/proc/speak(message)
 	if((!src.on) || (!message))
 		return
 	visible_message("[src] beeps, \"[message]\"")
@@ -471,7 +471,7 @@
  * Medbot Assembly -- Can be made out of all three medkits.
  */
 
-/obj/item/storage/firstaid/attackby(var/obj/item/robot_parts/S, mob/user as mob)
+/obj/item/storage/firstaid/attackby(obj/item/robot_parts/S, mob/user as mob)
 
 	if ((!istype(S, /obj/item/robot_parts/arm/l_arm)) && (!istype(S, /obj/item/robot_parts/arm/r_arm)))
 		..()

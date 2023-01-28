@@ -275,7 +275,7 @@
 		to_chat(user, SPAN_WARNING("You need to extend the combi-stick before you can wield it."))
 
 
-/obj/item/weapon/melee/yautja/combistick/wield(var/mob/user)
+/obj/item/weapon/melee/yautja/combistick/wield(mob/user)
 	. = ..()
 	if(!.)
 		return
@@ -473,14 +473,14 @@
 					victim.status_flags |= PERMANENTLY_DEAD
 					victim.add_flay_overlay(stage = 3)
 
-/mob/living/carbon/human/proc/add_flay_overlay(var/stage = 1)
+/mob/living/carbon/human/proc/add_flay_overlay(stage = 1)
 	remove_overlay(FLAY_LAYER)
 	var/image/flay_icon = new /image('icons/mob/humans/dam_human.dmi', "human_[stage]")
 	flay_icon.layer = -FLAY_LAYER
 	overlays_standing[FLAY_LAYER] = flay_icon
 	apply_overlay(FLAY_LAYER)
 
-/obj/item/weapon/melee/yautja/knife/proc/create_leftovers(mob/living/victim, var/has_meat, var/skin_amount)
+/obj/item/weapon/melee/yautja/knife/proc/create_leftovers(mob/living/victim, has_meat, skin_amount)
 	if(has_meat)
 		var/obj/item/reagent_container/food/snacks/meat/meat = new /obj/item/reagent_container/food/snacks/meat(victim.loc)
 		meat.name = "raw [victim.name] steak"
@@ -923,7 +923,7 @@
 	var/mode = "stun"//fire mode (stun/lethal)
 	var/strength = "low power stun bolts"//what it's shooting
 
-/obj/item/weapon/gun/energy/yautja/plasma_caster/Initialize(mapload, spawn_empty, var/caster_material = "ebony")
+/obj/item/weapon/gun/energy/yautja/plasma_caster/Initialize(mapload, spawn_empty, caster_material = "ebony")
 	icon_state += "_[caster_material]"
 	item_state += "_[caster_material]"
 	item_state_slots[WEAR_BACK] += "_[caster_material]"

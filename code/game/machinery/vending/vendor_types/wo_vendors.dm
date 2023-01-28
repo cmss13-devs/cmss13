@@ -6,7 +6,7 @@
 	req_access = list()
 	req_one_access = list()
 
-/obj/structure/machinery/cm_vending/sorted/uniform_supply/squad_prep/wo/populate_product_list(var/scale)
+/obj/structure/machinery/cm_vending/sorted/uniform_supply/squad_prep/wo/populate_product_list(scale)
 	listed_products = list(
 		list("UNIFORM", -1, null, null),
 		list("Lightweight IMP Backpack", 10, /obj/item/storage/backpack/marine, VENDOR_ITEM_REGULAR),
@@ -68,7 +68,7 @@
 	req_one_access = list()
 	vend_flags = VEND_CLUTTER_PROTECTION | VEND_LIMITED_INVENTORY | VEND_TO_HAND | VEND_LOAD_AMMO_BOXES
 
-/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep/wo/populate_product_list(var/scale)
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep/wo/populate_product_list(scale)
 	listed_products = list(
 		list("PRIMARY FIREARMS", -1, null, null),
 		list("L42A Battle Rifle", round(scale * 10), /obj/item/weapon/gun/rifle/l42a, VENDOR_ITEM_REGULAR),
@@ -114,7 +114,7 @@
 	req_access = list(ACCESS_MARINE_CARGO)
 	req_one_access = list()
 
-/obj/structure/machinery/cm_vending/sorted/cargo_ammo/wo/populate_product_list(var/scale)
+/obj/structure/machinery/cm_vending/sorted/cargo_ammo/wo/populate_product_list(scale)
 	listed_products = list(
 		list("REGULAR AMMUNITION", -1, null, null),
 		list("Box Of Buckshot Shells", round(scale * 5), /obj/item/ammo_magazine/shotgun/buckshot, VENDOR_ITEM_REGULAR),
@@ -194,7 +194,7 @@
 /obj/structure/machinery/cm_vending/sorted/cargo_guns/wo
 	req_access = list(ACCESS_MARINE_CARGO)
 
-/obj/structure/machinery/cm_vending/sorted/cargo_guns/wo/populate_product_list(var/scale)
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/wo/populate_product_list(scale)
 	listed_products = list(
 		list("PRIMARY FIREARMS", -1, null, null),
 		list("L42A Battle Rifle", round(scale * 20), /obj/item/weapon/gun/rifle/l42a, VENDOR_ITEM_REGULAR),

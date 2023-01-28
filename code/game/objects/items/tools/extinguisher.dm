@@ -164,7 +164,7 @@
 		step(user, user.inertia_dir)
 	return
 
-/obj/item/tool/extinguisher/proc/release_liquid(var/turf/target, var/mob/user)
+/obj/item/tool/extinguisher/proc/release_liquid(turf/target, mob/user)
 	var/turf/T = get_turf(user)
 	var/obj/effect/particle_effect/water/W = new /obj/effect/particle_effect/water(T)
 	W.create_reagents(5)

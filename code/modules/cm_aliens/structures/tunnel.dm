@@ -24,7 +24,7 @@
 	health = 140
 	var/id = null //For mapping
 
-/obj/structure/tunnel/Initialize(mapload, var/h_number)
+/obj/structure/tunnel/Initialize(mapload, h_number)
 	. = ..()
 	var/turf/L = get_turf(src)
 	tunnel_desc = L.loc.name + " ([loc.x], [loc.y]) [pick(greek_letters)]"//Default tunnel desc is the <area name> (x, y) <Greek letter>
@@ -55,7 +55,7 @@
 		to_chat(X, SPAN_DANGER("[src] suddenly collapses, forcing you out!"))
 	. = ..()
 
-/obj/structure/tunnel/proc/isfriendly(var/mob/target)
+/obj/structure/tunnel/proc/isfriendly(mob/target)
 	var/mob/living/carbon/C = target
 	if(istype(C) && C.ally_of_hivenumber(hivenumber))
 		return TRUE
@@ -72,7 +72,7 @@
 		visible_message(SPAN_DANGER("[src] suddenly collapses!"))
 		qdel(src)
 
-/obj/structure/tunnel/bullet_act(var/obj/item/projectile/Proj)
+/obj/structure/tunnel/bullet_act(obj/item/projectile/Proj)
 	return FALSE
 
 /obj/structure/tunnel/ex_act(severity)
@@ -158,7 +158,7 @@
 		return TRUE
 
 //Used for controling tunnel exiting and returning
-/obj/structure/tunnel/clicked(var/mob/user, var/list/mods)
+/obj/structure/tunnel/clicked(mob/user, list/mods)
 	if(!isxeno(user) || !isfriendly(user))
 		return ..()
 	var/mob/living/carbon/xenomorph/X = user

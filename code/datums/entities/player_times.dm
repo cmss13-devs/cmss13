@@ -18,7 +18,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player_time)
 		"total_minutes" = DB_FIELDTYPE_BIGINT
 	)
 
-/datum/entity_meta/player_time/on_insert(var/datum/entity/player_time/player)
+/datum/entity_meta/player_time/on_insert(datum/entity/player_time/player)
 	player.total_minutes = 0
 
 /datum/entity_link/player_to_time

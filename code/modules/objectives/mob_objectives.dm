@@ -152,7 +152,7 @@
 	objective_flags = OBJECTIVE_DO_NOT_TREE
 
 
-/datum/cm_objective/move_mob/New(var/mob/living/survivor)
+/datum/cm_objective/move_mob/New(mob/living/survivor)
 	if(istype(survivor, /mob/living))
 		target = survivor
 		RegisterSignal(survivor, COMSIG_MOB_DEATH, PROC_REF(handle_death))

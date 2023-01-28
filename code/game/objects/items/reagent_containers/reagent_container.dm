@@ -104,7 +104,7 @@
 
 /datum/action/item_action/reagent_container/set_transfer_amount
 
-/datum/action/item_action/reagent_container/set_transfer_amount/New(var/mob/living/user, var/obj/item/holder)
+/datum/action/item_action/reagent_container/set_transfer_amount/New(mob/living/user, obj/item/holder)
 	..()
 	name = "Set Transfer Amount"
 	button.name = name

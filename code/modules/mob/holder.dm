@@ -30,14 +30,14 @@
 	for(var/mob/M in src.contents)
 		M.attackby(W,user)
 
-/obj/item/holder/proc/show_message(var/message, var/m_type)
+/obj/item/holder/proc/show_message(message, m_type)
 	for(var/mob/living/M in contents)
 		M.show_message(message,m_type)
 
 //Mob procs and vars for scooping up
 /mob/living/var/holder_type
 
-/mob/living/proc/get_scooped(var/mob/living/carbon/grabber)
+/mob/living/proc/get_scooped(mob/living/carbon/grabber)
 	if(!holder_type)
 		return
 	if(isxeno(grabber))

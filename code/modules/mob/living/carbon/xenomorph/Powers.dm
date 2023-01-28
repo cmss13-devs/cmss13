@@ -1,4 +1,4 @@
-/mob/living/carbon/xenomorph/proc/build_resin(var/atom/A, var/thick = FALSE, var/message = TRUE, var/use_plasma = TRUE, var/add_build_mod = 1)
+/mob/living/carbon/xenomorph/proc/build_resin(atom/A, thick = FALSE, message = TRUE, use_plasma = TRUE, add_build_mod = 1)
 	if(!selected_resin)
 		return SECRETE_RESIN_FAIL
 
@@ -149,13 +149,13 @@
 
 	return SECRETE_RESIN_SUCCESS
 
-/mob/living/carbon/xenomorph/proc/remove_built_structure(var/atom/A)
+/mob/living/carbon/xenomorph/proc/remove_built_structure(atom/A)
 	SIGNAL_HANDLER
 	LAZYREMOVE(built_structures[A.type], A)
 	if(!built_structures[A.type])
 		built_structures -= A.type
 
-/mob/living/carbon/xenomorph/proc/place_construction(var/turf/current_turf, var/datum/construction_template/xenomorph/structure_template)
+/mob/living/carbon/xenomorph/proc/place_construction(turf/current_turf, datum/construction_template/xenomorph/structure_template)
 	if(!structure_template || !check_state() || action_busy)
 		return
 

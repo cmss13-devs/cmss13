@@ -108,7 +108,7 @@
 			if(isVehicleMultitile(AM) && trap_type != RESIN_TRAP_GAS)
 				trigger_trap()
 
-/obj/effect/alien/resin/trap/proc/set_state(var/state = RESIN_TRAP_EMPTY)
+/obj/effect/alien/resin/trap/proc/set_state(state = RESIN_TRAP_EMPTY)
 	switch(state)
 		if(RESIN_TRAP_EMPTY)
 			trap_type = RESIN_TRAP_EMPTY
@@ -137,7 +137,7 @@
 		if(X.hivenumber == hivenumber)
 			to_chat(X, SPAN_XENOMINORWARNING("You sense one of your Hive's facehugger traps at [A.name] has been burnt!"))
 
-/obj/effect/alien/resin/trap/proc/get_spray_type(var/level)
+/obj/effect/alien/resin/trap/proc/get_spray_type(level)
 	switch(level)
 		if(RESIN_TRAP_ACID1)
 			return /obj/effect/xenomorph/spray/weak
@@ -148,7 +148,7 @@
 		if(RESIN_TRAP_ACID3)
 			return /obj/effect/xenomorph/spray/strong
 
-/obj/effect/alien/resin/trap/proc/trigger_trap(var/destroyed = FALSE)
+/obj/effect/alien/resin/trap/proc/trigger_trap(destroyed = FALSE)
 	set waitfor = 0
 	var/area/A = get_area(src)
 	var/trap_type_name = ""

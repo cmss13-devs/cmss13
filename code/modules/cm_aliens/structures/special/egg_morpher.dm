@@ -19,7 +19,7 @@
 	appearance_flags = KEEP_TOGETHER
 	layer = LYING_BETWEEN_MOB_LAYER
 
-/obj/effect/alien/resin/special/eggmorph/Initialize(mapload, var/hive_ref)
+/obj/effect/alien/resin/special/eggmorph/Initialize(mapload, hive_ref)
 	. = ..()
 	range_bounds = RECT(x, y, EGGMORPG_RANGE, EGGMORPG_RANGE)
 
@@ -210,7 +210,7 @@
 	linked_hive.spawn_as_hugger(user, src)
 	stored_huggers--
 
-/mob/living/carbon/xenomorph/proc/set_hugger_reserve_for_morpher(var/obj/effect/alien/resin/special/eggmorph/morpher in oview(1))
+/mob/living/carbon/xenomorph/proc/set_hugger_reserve_for_morpher(obj/effect/alien/resin/special/eggmorph/morpher in oview(1))
 	set name = "Set Hugger Reserve"
 	set desc = "Set Hugger Reserve"
 	set category = null

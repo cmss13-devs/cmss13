@@ -54,7 +54,7 @@
 	addtimer(CALLBACK(src, PROC_REF(open)), open_time)
 	indestructible = FALSE
 
-/obj/structure/droppod/container/warn_turf(var/turf/T)
+/obj/structure/droppod/container/warn_turf(turf/T)
 	if(!stealth)
 		return ..()
 
@@ -128,7 +128,7 @@
 		collect_objects(loc.contents)
 	density = TRUE
 
-/obj/structure/droppod/container/proc/collect_objects(var/list/L)
+/obj/structure/droppod/container/proc/collect_objects(list/L)
 	for(var/atom/movable/A in L)
 		if(A == src)
 			continue

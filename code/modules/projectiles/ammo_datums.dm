@@ -59,7 +59,7 @@
 /datum/ammo/New()
 	set_bullet_traits()
 
-/datum/ammo/proc/on_bullet_generation(var/obj/item/projectile/generated_projectile, mob/bullet_generator) //NOT used on New(), applied to the projectiles.
+/datum/ammo/proc/on_bullet_generation(obj/item/projectile/generated_projectile, mob/bullet_generator) //NOT used on New(), applied to the projectiles.
 	return
 
 /// Populate traits_to_give in this proc
@@ -73,7 +73,7 @@
 	SHOULD_NOT_SLEEP(TRUE)
 	return
 
-/datum/ammo/proc/on_embed(var/mob/embedded_mob, var/obj/limb/target_organ)
+/datum/ammo/proc/on_embed(mob/embedded_mob, obj/limb/target_organ)
 	return
 
 /datum/ammo/proc/do_at_max_range(obj/item/projectile/P)
@@ -102,7 +102,7 @@
 /datum/ammo/proc/on_near_target(turf/T, obj/item/projectile/P) //Special effects when passing near something. Range of things that triggers it is controlled by other ammo flags.
 	return 0 //return 0 means it flies even after being near something. Return 1 means it stops
 
-/datum/ammo/proc/knockback(mob/living/living_mob, obj/item/projectile/fired_projectile, var/max_range = 2)
+/datum/ammo/proc/knockback(mob/living/living_mob, obj/item/projectile/fired_projectile, max_range = 2)
 	if(!living_mob || living_mob == fired_projectile.firer)
 		return
 	if(fired_projectile.distance_travelled > max_range || living_mob.lying)
@@ -136,7 +136,7 @@
 	else
 		living_mob.apply_stamina_damage(fired_projectile.ammo.damage, fired_projectile.def_zone, ARMOR_BULLET)
 
-/datum/ammo/proc/pushback(mob/M, obj/item/projectile/P, var/max_range = 2)
+/datum/ammo/proc/pushback(mob/M, obj/item/projectile/P, max_range = 2)
 	if(!M || M == P.firer || P.distance_travelled > max_range || M.lying)
 		return
 
@@ -2776,7 +2776,7 @@
 /datum/ammo/xeno/prae_skillshot/do_at_max_range(obj/item/projectile/P)
 	acid_stacks_aoe(get_turf(P))
 
-/datum/ammo/xeno/prae_skillshot/proc/acid_stacks_aoe(var/turf/T)
+/datum/ammo/xeno/prae_skillshot/proc/acid_stacks_aoe(turf/T)
 
 	if (!istype(T))
 		return
@@ -2917,7 +2917,7 @@
 	max_range = 4
 	accuracy = HIT_ACCURACY_TIER_MAX
 
-/datum/ammo/xeno/oppressor_tail/on_bullet_generation(var/obj/item/projectile/generated_projectile, var/mob/bullet_generator)
+/datum/ammo/xeno/oppressor_tail/on_bullet_generation(obj/item/projectile/generated_projectile, mob/bullet_generator)
 	//The projectile has no icon, so the overlay shows up in FRONT of the projectile, and the beam connects to it in the middle.
 	var/image/hook_overlay = new(icon = 'icons/effects/beam.dmi', icon_state = "oppressor_tail_hook", layer = BELOW_MOB_LAYER)
 	generated_projectile.overlays += hook_overlay
@@ -2939,7 +2939,7 @@
 	qdel(tail_beam)
 	addtimer(CALLBACK(src, TYPE_PROC_REF(/datum/ammo/xeno/oppressor_tail, remove_tail_overlay), target, tail_image), 0.5 SECONDS) //needed so it can actually be seen as it gets deleted too quickly otherwise.
 
-/datum/ammo/xeno/oppressor_tail/proc/remove_tail_overlay(var/mob/overlayed_mob, var/image/tail_image)
+/datum/ammo/xeno/oppressor_tail/proc/remove_tail_overlay(mob/overlayed_mob, image/tail_image)
 	overlayed_mob.overlays -= tail_image
 
 /*
@@ -3228,10 +3228,10 @@
 	else
 		drop_flare(T, P, P.firer)
 
-/datum/ammo/flare/do_at_max_range(obj/item/projectile/P, var/mob/firer)
+/datum/ammo/flare/do_at_max_range(obj/item/projectile/P, mob/firer)
 	drop_flare(get_turf(P), P, P.firer)
 
-/datum/ammo/flare/proc/drop_flare(var/turf/T, obj/item/projectile/fired_projectile, var/mob/firer)
+/datum/ammo/flare/proc/drop_flare(turf/T, obj/item/projectile/fired_projectile, mob/firer)
 	var/obj/item/device/flashlight/flare/G = new flare_type(T)
 	var/matrix/rotation = matrix()
 	rotation.Turn(fired_projectile.angle - 90)
@@ -3278,7 +3278,7 @@
 	accurate_range = 12
 	shell_speed = AMMO_SPEED_TIER_1
 
-/datum/ammo/souto/on_embed(var/mob/embedded_mob, var/obj/limb/target_organ)
+/datum/ammo/souto/on_embed(mob/embedded_mob, obj/limb/target_organ)
 	if(ishuman(embedded_mob) && !isyautja(embedded_mob))
 		if(istype(target_organ))
 			target_organ.embed(new can_type)
@@ -3316,7 +3316,7 @@
 /datum/ammo/souto/on_shield_block(mob/M, obj/item/projectile/P)
 	drop_can(P.loc, P) //We make a can at the location.
 
-/datum/ammo/souto/proc/drop_can(var/loc, obj/item/projectile/P)
+/datum/ammo/souto/proc/drop_can(loc, obj/item/projectile/P)
 	if(P.contents.len)
 		for(var/obj/item/I in P.contents)
 			I.forceMove(loc)
@@ -3349,7 +3349,7 @@
 /datum/ammo/grenade_container/do_at_max_range(obj/item/projectile/P)
 	drop_nade(P)
 
-/datum/ammo/grenade_container/proc/drop_nade(var/obj/item/projectile/P)
+/datum/ammo/grenade_container/proc/drop_nade(obj/item/projectile/P)
 	var/turf/T = get_turf(P)
 	var/obj/item/explosive/grenade/G = new nade_type(T)
 	G.visible_message(SPAN_WARNING("\A [G] lands on [T]!"))
@@ -3388,7 +3388,7 @@
 /datum/ammo/hugger_container/do_at_max_range(obj/item/projectile/P)
 	spawn_hugger(get_turf(P))
 
-/datum/ammo/hugger_container/proc/spawn_hugger(var/turf/T)
+/datum/ammo/hugger_container/proc/spawn_hugger(turf/T)
 	var/obj/item/clothing/mask/facehugger/child = new(T)
 	child.hivenumber = hugger_hive
 	INVOKE_ASYNC(child, TYPE_PROC_REF(/obj/item/clothing/mask/facehugger, leap_at_nearest_target))

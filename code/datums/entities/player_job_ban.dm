@@ -24,7 +24,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player_job_ban)
 			"role"=DB_FIELDTYPE_STRING_MEDIUM
 		)
 
-/datum/entity_meta/player_job_ban/on_read(var/datum/entity/player_job_ban/ban)
+/datum/entity_meta/player_job_ban/on_read(datum/entity/player_job_ban/ban)
 	if(ban.player_id)
 		ban.player = DB_ENTITY(/datum/entity/player, ban.player_id)
 	ban.expiration = text2num("[ban.expiration]")

@@ -88,7 +88,7 @@
 
 	deploy_mine(user)
 
-/obj/item/explosive/mine/proc/deploy_mine(var/mob/user)
+/obj/item/explosive/mine/proc/deploy_mine(mob/user)
 	if(!hard_iff_lock && user)
 		iff_signal = user.faction
 

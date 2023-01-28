@@ -7,7 +7,7 @@
 	var/reduction_amount_per_slash = 0
 	var/current_reduction = 0
 
-/datum/effects/gain_xeno_cooldown_reduction_on_slash/New(var/atom/A, var/mob/from = null, var/max_reduction_amount = 0, var/reduction_per_slash = 0, var/duration = 0, var/effect_source = null)
+/datum/effects/gain_xeno_cooldown_reduction_on_slash/New(atom/A, mob/from = null, max_reduction_amount = 0, reduction_per_slash = 0, duration = 0, effect_source = null)
 	. = ..(A, from, null, null)
 
 	src.effect_source = effect_source
@@ -19,7 +19,7 @@
 	), PROC_REF(increase_cooldown_reduction))
 	QDEL_IN(src, duration)
 
-/datum/effects/gain_xeno_cooldown_reduction_on_slash/validate_atom(var/atom/A)
+/datum/effects/gain_xeno_cooldown_reduction_on_slash/validate_atom(atom/A)
 	if(isxeno(A))
 		return TRUE
 	return FALSE

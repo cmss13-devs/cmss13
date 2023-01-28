@@ -12,7 +12,7 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 	var/mob/living/target_mob
 	var/detail_level = DETAIL_LEVEL_FULL
 
-/datum/health_scan/New(var/mob/target)
+/datum/health_scan/New(mob/target)
 	. = ..()
 	target_mob = target
 
@@ -22,7 +22,7 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 	return ..()
 
 /// This is the proc for interacting with, or looking at, a mob's health display. Also contains skillchecks and the like. You may NOT call tgui interact directly, and you MUST set the detail level.
-/datum/health_scan/proc/look_at(mob/user, var/detail = DETAIL_LEVEL_FULL, var/bypass_checks = FALSE, var/ignore_delay = TRUE, var/alien = FALSE, datum/tgui/ui = null)
+/datum/health_scan/proc/look_at(mob/user, detail = DETAIL_LEVEL_FULL, bypass_checks = FALSE, ignore_delay = TRUE, alien = FALSE, datum/tgui/ui = null)
 	if(!bypass_checks)
 		if(HAS_TRAIT(target_mob, TRAIT_FOREIGN_BIO) && !alien)
 			to_chat(user, SPAN_WARNING("ERROR: Unknown biology detected."))
@@ -60,7 +60,7 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 		ui.open()
 		ui.set_autoupdate(FALSE)
 
-/datum/health_scan/ui_data(mob/user, var/data_detail_level = null)
+/datum/health_scan/ui_data(mob/user, data_detail_level = null)
 	var/list/data = list(
 		"patient" = target_mob.name,
 		"dead" = target_mob.stat == DEAD,
@@ -435,7 +435,7 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 	return data
 
 /// legacy proc for to_chat messages on health analysers
-/mob/living/proc/health_scan(mob/living/carbon/human/user, var/ignore_delay = FALSE, var/show_limb_damage = TRUE, var/show_browser = TRUE, var/alien = FALSE, var/do_checks = TRUE) // ahem. FUCK WHOEVER CODED THIS SHIT AS NUMBERS AND NOT DEFINES.
+/mob/living/proc/health_scan(mob/living/carbon/human/user, ignore_delay = FALSE, show_limb_damage = TRUE, show_browser = TRUE, alien = FALSE, do_checks = TRUE) // ahem. FUCK WHOEVER CODED THIS SHIT AS NUMBERS AND NOT DEFINES.
 	if(do_checks)
 		if((user.getBrainLoss() >= 60) && prob(50))
 			to_chat(user, SPAN_WARNING("You try to analyze the floor's vitals!"))

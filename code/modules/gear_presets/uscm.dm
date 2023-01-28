@@ -805,7 +805,7 @@
 /datum/equipment_preset/uscm/marsoc/covert
 	name = "Marine Raiders (Covert)"
 	uses_special_name = TRUE
-/datum/equipment_preset/uscm/marsoc/covert/load_name(mob/living/carbon/human/H, var/randomise)
+/datum/equipment_preset/uscm/marsoc/covert/load_name(mob/living/carbon/human/H, randomise)
 	H.gender = MALE
 	H.change_real_name(H, "[pick(nato_phonetic_alphabet)]")
 	H.age = rand(20,30)
@@ -831,7 +831,7 @@
 /datum/equipment_preset/uscm/marsoc/sl/covert
 	name = "Marine Raider Team Leader (Covert)"
 	uses_special_name = TRUE
-/datum/equipment_preset/uscm/marsoc/sl/covert/load_name(mob/living/carbon/human/H, var/randomise)
+/datum/equipment_preset/uscm/marsoc/sl/covert/load_name(mob/living/carbon/human/H, randomise)
 	H.gender = MALE
 	H.change_real_name(H, "[pick(nato_phonetic_alphabet)]")
 	H.age = rand(20,30)

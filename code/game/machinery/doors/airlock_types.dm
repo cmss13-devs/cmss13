@@ -213,7 +213,7 @@
 	tiles_with = list(
 		/obj/structure/window/framed/strata,
 		/obj/structure/machinery/door/airlock,
-		)
+	)
 
 /obj/structure/machinery/door/airlock/strata/autoname
 	autoname = TRUE

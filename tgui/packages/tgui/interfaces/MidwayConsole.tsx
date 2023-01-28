@@ -2,7 +2,6 @@ import { capitalizeAll } from 'common/string';
 import { useBackend } from '../backend';
 import { Button, LabeledList, Section, Stack } from '../components';
 import { Window } from '../layouts';
-import { createLogger } from '../logging';
 
 interface MidwayProps {
   current_state: string;
@@ -12,12 +11,11 @@ interface MidwayProps {
 export const MidwayConsole = (_props, context) => {
   const { act, data } = useBackend<MidwayProps>(context);
   const { current_state, current_mode } = data;
-  const logger = createLogger('guh');
 
   return (
     <Window
-      width={220}
-      height={340}
+      width={250}
+      height={290}
       title={'Gettysburg Navigation'}
       theme={'crtyellow'}>
       <Window.Content>
@@ -58,10 +56,10 @@ export const MidwayConsole = (_props, context) => {
           <Stack vertical>
             <Stack.Item>
               <Stack>
-                <Stack.Item>
+                <Stack.Item grow>
                   <Button
-                    content={'Initiate Landing'}
-                    onClick={() => act('land_on_ground')}
+                    content={'View Ground'}
+                    onClick={() => act('view_ground')}
                     fluid
                     disabled={
                       current_state !== 'in atmosphere' ||
@@ -69,7 +67,7 @@ export const MidwayConsole = (_props, context) => {
                     }
                   />
                 </Stack.Item>
-                <Stack.Item grow>
+                <Stack.Item>
                   <Button
                     content={'Take Off'}
                     onClick={() => act('take_off')}
@@ -80,16 +78,6 @@ export const MidwayConsole = (_props, context) => {
                   />
                 </Stack.Item>
               </Stack>
-            </Stack.Item>
-            <Stack.Item>
-              <Button
-                content={'View Ground'}
-                onClick={() => act('view_ground')}
-                fluid
-                disabled={
-                  current_state !== 'in atmosphere' || current_mode !== 'idle'
-                }
-              />
             </Stack.Item>
           </Stack>
         </Section>

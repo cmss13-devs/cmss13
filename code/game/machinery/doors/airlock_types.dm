@@ -722,8 +722,8 @@
 	icon = 'icons/obj/structures/doors/dropship2_side.dmi' //Tiles with is here FOR SAFETY PURPOSES
 	id = "sh_dropship2"
 
-/obj/structure/machinery/door/airlock/dropship_hatch/getty
-	icon = 'icons/obj/structures/doors/getty-side.dmi'
+/obj/structure/machinery/door/airlock/dropship_hatch/midway
+	icon = 'icons/obj/structures/doors/midway-side.dmi'
 
 /obj/structure/machinery/door/airlock/dropship_hatch/monorail
 	icon = 'icons/obj/structures/doors/pod_doors.dmi' //TEMPLATE NEED TO REPLACE LATER

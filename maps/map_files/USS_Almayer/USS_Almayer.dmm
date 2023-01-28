@@ -26180,7 +26180,7 @@
 /area/almayer/shipboard/navigation)
 "bKu" = (
 /obj/structure/prop/almayer/hangar_stencil{
-	icon_state = "getty"
+	icon_state = "midway"
 	},
 /turf/open/floor/plating,
 /area/almayer/hallways/hangar)
@@ -35355,7 +35355,7 @@
 /area/almayer/hull/upper_hull/u_a_s)
 "cWL" = (
 /obj/structure/prop/almayer/hangar_stencil{
-	icon_state = "getty"
+	icon_state = "midway"
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
@@ -41400,7 +41400,7 @@
 	},
 /area/almayer/living/cryo_cells)
 "fti" = (
-/obj/docking_port/stationary/getty,
+/obj/docking_port/stationary/midway,
 /turf/open/floor/plating,
 /area/almayer/hallways/hangar)
 "ftl" = (
@@ -47575,7 +47575,7 @@
 /area/almayer/hull/upper_hull/u_f_s)
 "ifT" = (
 /obj/structure/prop/almayer/hangar_stencil{
-	icon_state = "getty"
+	icon_state = "midway"
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";

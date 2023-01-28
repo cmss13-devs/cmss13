@@ -169,6 +169,7 @@
 	user.remote_control = eyeobj
 	user.reset_perspective(eyeobj)
 	eyeobj.setLoc(eyeobj.loc)
+	user.update_sight()
 
 /obj/structure/machinery/computer/camera_advanced/proc/track(mob/living/target)
 	if(!istype(target))
@@ -287,7 +288,7 @@
 
 /datum/action/innate/camera_off
 	name = "End Camera View"
-	action_icon_state = "camera_off"
+	action_icon_state = "end_camera_view"
 
 
 /datum/action/innate/camera_off/action_activate()

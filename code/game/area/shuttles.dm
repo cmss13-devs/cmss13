@@ -50,6 +50,6 @@
 	icon_state = "lifeboat"
 	flags_atom = AREA_NOTUNNEL
 
-/area/shuttle/getty
+/area/shuttle/midway
 	icon = 'icons/turf/area_almayer.dmi'
 	icon_state = "lifeboat"

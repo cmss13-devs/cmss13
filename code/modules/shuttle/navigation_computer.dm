@@ -150,6 +150,7 @@
 		to_remove += SSshuttle.hidden_shuttle_turf_images
 	user.client.images -= to_remove
 	user.client.view = world_view_size
+	user.update_sight()
 
 /// Handles the creation of the custom landing spot
 /obj/structure/machinery/computer/camera_advanced/shuttle_docker/proc/placeLandingSpot()
@@ -395,7 +396,7 @@
 
 /datum/action/innate/shuttledocker_place
 	name = "Place"
-	action_icon_state = "mech_zoom_off"
+	action_icon_state = "zoom_off"
 
 /datum/action/innate/shuttledocker_place/action_activate()
 	if(QDELETED(target) || !isliving(target))
@@ -407,7 +408,7 @@
 
 /datum/action/innate/camera_jump/shuttle_docker
 	name = "Jump to Location"
-	action_icon_state = "camera_jump"
+	action_icon_state = "jump_to_flare"
 
 /datum/action/innate/camera_jump/shuttle_docker/action_activate()
 	if(QDELETED(target) || !isliving(target))

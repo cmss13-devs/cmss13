@@ -4,21 +4,21 @@
 	icon_state = "rasputin8";
 	tag = "icon-rasputin7"
 	},
-/area/shuttle/getty)
+/area/shuttle/midway)
 "aY" = (
-/turf/closed/shuttle/getty/engine/upper_lower/outer/right,
-/area/shuttle/getty)
+/turf/closed/shuttle/midway/engine/upper_lower/outer/right,
+/area/shuttle/midway)
 "de" = (
 /obj/structure/dropship_parts/midway/right/engine_upper,
 /turf/template_noop,
-/area/shuttle/getty)
+/area/shuttle/midway)
 "ec" = (
-/turf/closed/shuttle/getty/body/wing/left,
-/area/shuttle/getty)
+/turf/closed/shuttle/midway/body/wing/left,
+/area/shuttle/midway)
 "eE" = (
-/obj/structure/machinery/computer/shuttle/getty,
+/obj/structure/machinery/computer/shuttle/midway,
 /turf/open/floor/plating,
-/area/shuttle/getty)
+/area/shuttle/midway)
 "eK" = (
 /obj/structure/bed/chair/dropship/pilot{
 	dir = 1;
@@ -28,173 +28,173 @@
 	icon_state = "rasputin15";
 	tag = "icon-rasputin15"
 	},
-/area/shuttle/getty)
+/area/shuttle/midway)
 "eP" = (
 /obj/structure/dropship_parts/midway/right/cap,
 /turf/template_noop,
-/area/shuttle/getty)
+/area/shuttle/midway)
 "fq" = (
 /obj/structure/dropship_parts/midway/right/body_lower,
 /turf/template_noop,
-/area/shuttle/getty)
+/area/shuttle/midway)
 "gd" = (
 /obj/structure/dropship_parts/midway/right/body_upper,
 /turf/open/space/basic,
-/area/shuttle/getty)
+/area/shuttle/midway)
 "hj" = (
-/turf/closed/shuttle/getty/cockpit/side/left,
-/area/shuttle/getty)
+/turf/closed/shuttle/midway/cockpit/side/left,
+/area/shuttle/midway)
 "hA" = (
-/turf/closed/shuttle/getty/engine/upper_middle/outer/right,
-/area/shuttle/getty)
+/turf/closed/shuttle/midway/engine/upper_middle/outer/right,
+/area/shuttle/midway)
 "jD" = (
-/turf/closed/shuttle/getty/engine/upper/inner/right,
-/area/shuttle/getty)
+/turf/closed/shuttle/midway/engine/upper/inner/right,
+/area/shuttle/midway)
 "kk" = (
 /obj/structure/dropship_parts/midway/left/body_upper,
 /turf/open/space/basic,
-/area/shuttle/getty)
+/area/shuttle/midway)
 "kU" = (
-/turf/closed/shuttle/getty/cockpit/front/right,
-/area/shuttle/getty)
+/turf/closed/shuttle/midway/cockpit/front/right,
+/area/shuttle/midway)
 "lQ" = (
-/turf/closed/shuttle/getty/body/upper/left,
-/area/shuttle/getty)
+/turf/closed/shuttle/midway/body/upper/left,
+/area/shuttle/midway)
 "mB" = (
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15";
 	tag = "icon-rasputin15"
 	},
-/area/shuttle/getty)
+/area/shuttle/midway)
 "nb" = (
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin7";
 	tag = "icon-rasputin7"
 	},
-/area/shuttle/getty)
+/area/shuttle/midway)
 "nK" = (
 /turf/template_noop,
 /area/template_noop)
 "oR" = (
-/turf/closed/shuttle/getty/engine/upper_middle/inner/left,
-/area/shuttle/getty)
+/turf/closed/shuttle/midway/engine/upper_middle/inner/left,
+/area/shuttle/midway)
 "pN" = (
-/turf/closed/shuttle/getty/body/join_to_wing,
-/area/shuttle/getty)
+/turf/closed/shuttle/midway/body/join_to_wing,
+/area/shuttle/midway)
 "qw" = (
-/turf/closed/shuttle/getty/body/upper/right,
-/area/shuttle/getty)
+/turf/closed/shuttle/midway/body/upper/right,
+/area/shuttle/midway)
 "qQ" = (
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin6";
 	tag = "icon-rasputin6"
 	},
-/area/shuttle/getty)
+/area/shuttle/midway)
 "rN" = (
 /obj/structure/dropship_parts/midway/left/cockpit_upper,
 /turf/template_noop,
-/area/shuttle/getty)
+/area/shuttle/midway)
 "sH" = (
 /obj/structure/dropship_parts/midway/left/body_lower,
 /turf/template_noop,
-/area/shuttle/getty)
+/area/shuttle/midway)
 "tc" = (
-/turf/closed/shuttle/getty/engine/upper_middle/inner/right,
-/area/shuttle/getty)
+/turf/closed/shuttle/midway/engine/upper_middle/inner/right,
+/area/shuttle/midway)
 "tx" = (
-/turf/closed/shuttle/getty/engine/upper/inner/left,
-/area/shuttle/getty)
+/turf/closed/shuttle/midway/engine/upper/inner/left,
+/area/shuttle/midway)
 "vy" = (
-/obj/structure/machinery/door/airlock/dropship_hatch/getty,
+/obj/structure/machinery/door/airlock/dropship_hatch/midway,
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15";
 	tag = "icon-rasputin15"
 	},
-/area/shuttle/getty)
+/area/shuttle/midway)
 "wr" = (
 /obj/structure/dropship_parts/midway/left/lower_wing,
 /turf/template_noop,
-/area/shuttle/getty)
+/area/shuttle/midway)
 "xN" = (
-/turf/closed/shuttle/getty/engine/upper_middle/outer/left,
-/area/shuttle/getty)
+/turf/closed/shuttle/midway/engine/upper_middle/outer/left,
+/area/shuttle/midway)
 "xZ" = (
 /obj/structure/dropship_parts/midway/right/cockpit_upper,
 /turf/template_noop,
-/area/shuttle/getty)
+/area/shuttle/midway)
 "zK" = (
 /obj/structure/dropship_parts/midway/right/lower_wing,
 /turf/template_noop,
-/area/shuttle/getty)
+/area/shuttle/midway)
 "Af" = (
-/turf/closed/shuttle/getty/body/bottom_wing/left,
-/area/shuttle/getty)
+/turf/closed/shuttle/midway/body/bottom_wing/left,
+/area/shuttle/midway)
 "BA" = (
-/turf/closed/shuttle/getty/engine/upper_lower/outer/left,
-/area/shuttle/getty)
+/turf/closed/shuttle/midway/engine/upper_lower/outer/left,
+/area/shuttle/midway)
 "DW" = (
-/obj/structure/machinery/door/airlock/dropship_hatch/getty{
+/obj/structure/machinery/door/airlock/dropship_hatch/midway{
 	dir = 8
 	},
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15";
 	tag = "icon-rasputin15"
 	},
-/area/shuttle/getty)
+/area/shuttle/midway)
 "FX" = (
-/turf/closed/shuttle/getty/body/bottom_wing/right,
-/area/shuttle/getty)
+/turf/closed/shuttle/midway/body/bottom_wing/right,
+/area/shuttle/midway)
 "GU" = (
-/obj/structure/machinery/computer/camera_advanced/shuttle_docker/getty,
+/obj/structure/machinery/computer/camera_advanced/shuttle_docker/midway,
 /turf/open/floor/plating,
-/area/shuttle/getty)
+/area/shuttle/midway)
 "Ha" = (
-/turf/closed/shuttle/getty/engine/upper_lower/inner/right,
-/area/shuttle/getty)
+/turf/closed/shuttle/midway/engine/upper_lower/inner/right,
+/area/shuttle/midway)
 "Hd" = (
 /obj/structure/dropship_parts/midway/right/wing_outer,
 /turf/template_noop,
-/area/shuttle/getty)
+/area/shuttle/midway)
 "IF" = (
 /obj/structure/dropship_parts/midway/left/upper_wing,
 /turf/template_noop,
-/area/shuttle/getty)
+/area/shuttle/midway)
 "IH" = (
 /obj/structure/dropship_parts/midway/right/engine_lower,
 /turf/template_noop,
-/area/shuttle/getty)
+/area/shuttle/midway)
 "II" = (
 /obj/structure/dropship_parts/midway/right/wing_inner,
 /turf/template_noop,
-/area/shuttle/getty)
+/area/shuttle/midway)
 "JD" = (
 /obj/structure/dropship_parts/midway/right/upper_wing,
 /turf/template_noop,
-/area/shuttle/getty)
+/area/shuttle/midway)
 "JX" = (
-/turf/closed/shuttle/getty/cockpit/side/right,
-/area/shuttle/getty)
+/turf/closed/shuttle/midway/cockpit/side/right,
+/area/shuttle/midway)
 "Kq" = (
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin3";
 	tag = "icon-rasputin3"
 	},
-/area/shuttle/getty)
+/area/shuttle/midway)
 "Ly" = (
 /obj/structure/dropship_parts/midway/left/engine_lower,
 /turf/template_noop,
-/area/shuttle/getty)
+/area/shuttle/midway)
 "Lz" = (
 /obj/structure/dropship_parts/midway/left/wing_outer,
-/obj/docking_port/mobile/getty,
+/obj/docking_port/mobile/midway,
 /turf/template_noop,
-/area/shuttle/getty)
+/area/shuttle/midway)
 "MA" = (
-/turf/closed/shuttle/getty/engine/upper_lower/inner/left,
-/area/shuttle/getty)
+/turf/closed/shuttle/midway/engine/upper_lower/inner/left,
+/area/shuttle/midway)
 "Nt" = (
-/turf/closed/shuttle/getty/body/wing/right,
-/area/shuttle/getty)
+/turf/closed/shuttle/midway/body/wing/right,
+/area/shuttle/midway)
 "NQ" = (
 /obj/structure/bed/chair/dropship/passenger/shuttle_chair{
 	dir = 4
@@ -203,21 +203,21 @@
 	icon_state = "rasputin15";
 	tag = "icon-rasputin15"
 	},
-/area/shuttle/getty)
+/area/shuttle/midway)
 "Oc" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/getty,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/midway,
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin4";
 	tag = "icon-rasputin7"
 	},
-/area/shuttle/getty)
+/area/shuttle/midway)
 "Si" = (
-/turf/closed/shuttle/getty/cockpit/front/left,
-/area/shuttle/getty)
+/turf/closed/shuttle/midway/cockpit/front/left,
+/area/shuttle/midway)
 "UA" = (
 /obj/structure/dropship_parts/midway/left/wing_inner,
 /turf/template_noop,
-/area/shuttle/getty)
+/area/shuttle/midway)
 "UU" = (
 /obj/structure/bed/chair/dropship/passenger/shuttle_chair{
 	dir = 8
@@ -226,15 +226,15 @@
 	icon_state = "rasputin15";
 	tag = "icon-rasputin15"
 	},
-/area/shuttle/getty)
+/area/shuttle/midway)
 "WQ" = (
 /obj/structure/dropship_parts/midway/left/engine_upper,
 /turf/template_noop,
-/area/shuttle/getty)
+/area/shuttle/midway)
 "ZR" = (
 /obj/structure/dropship_parts/midway/left/cap,
 /turf/template_noop,
-/area/shuttle/getty)
+/area/shuttle/midway)
 
 (1,1,1) = {"
 nK

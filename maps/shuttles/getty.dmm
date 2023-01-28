@@ -6,19 +6,14 @@
 	},
 /area/shuttle/getty)
 "aY" = (
-/turf/closed/shuttle/getty/transparent{
-	icon_state = "rightlupperengine"
-	},
+/turf/closed/shuttle/getty/engine/upper_lower/outer/right,
 /area/shuttle/getty)
 "de" = (
-/turf/closed/shuttle/getty/transparent{
-	icon_state = "rightupperengine"
-	},
+/obj/structure/dropship_parts/midway/right/engine_upper,
+/turf/template_noop,
 /area/shuttle/getty)
 "ec" = (
-/turf/closed/shuttle/getty{
-	icon_state = "24"
-	},
+/turf/closed/shuttle/getty/body/wing/left,
 /area/shuttle/getty)
 "eE" = (
 /obj/structure/machinery/computer/shuttle/getty,
@@ -35,52 +30,35 @@
 	},
 /area/shuttle/getty)
 "eP" = (
-/turf/closed/shuttle/getty/transparent{
-	icon_state = "47"
-	},
-/area/shuttle/getty)
-"fq" = (
-/turf/closed/shuttle/getty{
-	icon_state = "rightlowerwalltoengine"
-	},
-/area/shuttle/getty)
-"gd" = (
-/turf/closed/shuttle/getty{
-	icon_state = "92"
-	},
-/area/shuttle/getty)
-"hj" = (
-/turf/closed/shuttle/getty/transparent{
-	icon_state = "48"
-	},
-/area/shuttle/getty)
-"hA" = (
-/turf/closed/shuttle/getty/transparent{
-	icon_state = "rightmupperengine"
-	},
-/area/shuttle/getty)
-"ib" = (
+/obj/structure/dropship_parts/midway/right/cap,
 /turf/template_noop,
 /area/shuttle/getty)
+"fq" = (
+/obj/structure/dropship_parts/midway/right/body_lower,
+/turf/template_noop,
+/area/shuttle/getty)
+"gd" = (
+/obj/structure/dropship_parts/midway/right/body_upper,
+/turf/open/space/basic,
+/area/shuttle/getty)
+"hj" = (
+/turf/closed/shuttle/getty/cockpit/side/left,
+/area/shuttle/getty)
+"hA" = (
+/turf/closed/shuttle/getty/engine/upper_middle/outer/right,
+/area/shuttle/getty)
 "jD" = (
-/turf/closed/shuttle/getty{
-	icon_state = "righttopwalltoengine"
-	},
+/turf/closed/shuttle/getty/engine/upper/inner/right,
 /area/shuttle/getty)
 "kk" = (
-/turf/closed/shuttle/getty{
-	icon_state = "91"
-	},
+/obj/structure/dropship_parts/midway/left/body_upper,
+/turf/open/space/basic,
 /area/shuttle/getty)
 "kU" = (
-/turf/closed/shuttle/getty/transparent{
-	icon_state = "55"
-	},
+/turf/closed/shuttle/getty/cockpit/front/right,
 /area/shuttle/getty)
 "lQ" = (
-/turf/closed/shuttle/getty{
-	icon_state = "93"
-	},
+/turf/closed/shuttle/getty/body/upper/left,
 /area/shuttle/getty)
 "mB" = (
 /turf/open/shuttle/dropship{
@@ -98,19 +76,13 @@
 /turf/template_noop,
 /area/template_noop)
 "oR" = (
-/turf/closed/shuttle/getty{
-	icon_state = "leftmupperwalltoengine"
-	},
+/turf/closed/shuttle/getty/engine/upper_middle/inner/left,
 /area/shuttle/getty)
 "pN" = (
-/turf/closed/shuttle/getty{
-	icon_state = "10"
-	},
+/turf/closed/shuttle/getty/body/join_to_wing,
 /area/shuttle/getty)
 "qw" = (
-/turf/closed/shuttle/getty{
-	icon_state = "94"
-	},
+/turf/closed/shuttle/getty/body/upper/right,
 /area/shuttle/getty)
 "qQ" = (
 /turf/open/shuttle/dropship{
@@ -119,24 +91,18 @@
 	},
 /area/shuttle/getty)
 "rN" = (
-/turf/closed/shuttle/getty{
-	icon_state = "52"
-	},
+/obj/structure/dropship_parts/midway/left/cockpit_upper,
+/turf/template_noop,
 /area/shuttle/getty)
 "sH" = (
-/turf/closed/shuttle/getty{
-	icon_state = "leftlowerwalltoengine"
-	},
+/obj/structure/dropship_parts/midway/left/body_lower,
+/turf/template_noop,
 /area/shuttle/getty)
 "tc" = (
-/turf/closed/shuttle/getty{
-	icon_state = "rightmupperwalltoengine"
-	},
+/turf/closed/shuttle/getty/engine/upper_middle/inner/right,
 /area/shuttle/getty)
 "tx" = (
-/turf/closed/shuttle/getty{
-	icon_state = "lefttopwalltoengine"
-	},
+/turf/closed/shuttle/getty/engine/upper/inner/left,
 /area/shuttle/getty)
 "vy" = (
 /obj/structure/machinery/door/airlock/dropship_hatch/getty,
@@ -146,34 +112,25 @@
 	},
 /area/shuttle/getty)
 "wr" = (
-/turf/closed/shuttle/getty/transparent{
-	icon_state = "23"
-	},
+/obj/structure/dropship_parts/midway/left/lower_wing,
+/turf/template_noop,
 /area/shuttle/getty)
 "xN" = (
-/turf/closed/shuttle/getty/transparent{
-	icon_state = "leftmupperengine"
-	},
+/turf/closed/shuttle/getty/engine/upper_middle/outer/left,
 /area/shuttle/getty)
 "xZ" = (
-/turf/closed/shuttle/getty{
-	icon_state = "56"
-	},
+/obj/structure/dropship_parts/midway/right/cockpit_upper,
+/turf/template_noop,
 /area/shuttle/getty)
 "zK" = (
-/turf/closed/shuttle/getty/transparent{
-	icon_state = "26"
-	},
+/obj/structure/dropship_parts/midway/right/lower_wing,
+/turf/template_noop,
 /area/shuttle/getty)
 "Af" = (
-/turf/closed/shuttle/getty{
-	icon_state = "3"
-	},
+/turf/closed/shuttle/getty/body/bottom_wing/left,
 /area/shuttle/getty)
 "BA" = (
-/turf/closed/shuttle/getty/transparent{
-	icon_state = "leftlupperengine"
-	},
+/turf/closed/shuttle/getty/engine/upper_lower/outer/left,
 /area/shuttle/getty)
 "DW" = (
 /obj/structure/machinery/door/airlock/dropship_hatch/getty{
@@ -185,48 +142,37 @@
 	},
 /area/shuttle/getty)
 "FX" = (
-/turf/closed/shuttle/getty{
-	icon_state = "4"
-	},
+/turf/closed/shuttle/getty/body/bottom_wing/right,
 /area/shuttle/getty)
 "GU" = (
 /obj/structure/machinery/computer/camera_advanced/shuttle_docker/getty,
 /turf/open/floor/plating,
 /area/shuttle/getty)
 "Ha" = (
-/turf/closed/shuttle/getty{
-	icon_state = "rightlupperwalltoengine"
-	},
+/turf/closed/shuttle/getty/engine/upper_lower/inner/right,
 /area/shuttle/getty)
 "Hd" = (
-/turf/closed/shuttle/getty/transparent{
-	icon_state = "6"
-	},
+/obj/structure/dropship_parts/midway/right/wing_outer,
+/turf/template_noop,
 /area/shuttle/getty)
 "IF" = (
-/turf/closed/shuttle/getty/transparent{
-	icon_state = "32"
-	},
+/obj/structure/dropship_parts/midway/left/upper_wing,
+/turf/template_noop,
 /area/shuttle/getty)
 "IH" = (
-/turf/closed/shuttle/getty/transparent{
-	icon_state = "rightlowerengine"
-	},
+/obj/structure/dropship_parts/midway/right/engine_lower,
+/turf/template_noop,
 /area/shuttle/getty)
 "II" = (
-/turf/closed/shuttle/getty/transparent{
-	icon_state = "5"
-	},
+/obj/structure/dropship_parts/midway/right/wing_inner,
+/turf/template_noop,
 /area/shuttle/getty)
 "JD" = (
-/turf/closed/shuttle/getty/transparent{
-	icon_state = "35"
-	},
+/obj/structure/dropship_parts/midway/right/upper_wing,
+/turf/template_noop,
 /area/shuttle/getty)
 "JX" = (
-/turf/closed/shuttle/getty/transparent{
-	icon_state = "51"
-	},
+/turf/closed/shuttle/getty/cockpit/side/right,
 /area/shuttle/getty)
 "Kq" = (
 /turf/open/shuttle/dropship{
@@ -235,23 +181,19 @@
 	},
 /area/shuttle/getty)
 "Ly" = (
-/turf/closed/shuttle/getty/transparent{
-	icon_state = "leftlowerengine"
-	},
+/obj/structure/dropship_parts/midway/left/engine_lower,
+/turf/template_noop,
 /area/shuttle/getty)
 "Lz" = (
+/obj/structure/dropship_parts/midway/left/wing_outer,
 /obj/docking_port/mobile/getty,
-/turf/closed/shuttle/getty/transparent,
+/turf/template_noop,
 /area/shuttle/getty)
 "MA" = (
-/turf/closed/shuttle/getty{
-	icon_state = "leftlupperwalltoengine"
-	},
+/turf/closed/shuttle/getty/engine/upper_lower/inner/left,
 /area/shuttle/getty)
 "Nt" = (
-/turf/closed/shuttle/getty{
-	icon_state = "25"
-	},
+/turf/closed/shuttle/getty/body/wing/right,
 /area/shuttle/getty)
 "NQ" = (
 /obj/structure/bed/chair/dropship/passenger/shuttle_chair{
@@ -270,14 +212,11 @@
 	},
 /area/shuttle/getty)
 "Si" = (
-/turf/closed/shuttle/getty/transparent{
-	icon_state = "53"
-	},
+/turf/closed/shuttle/getty/cockpit/front/left,
 /area/shuttle/getty)
 "UA" = (
-/turf/closed/shuttle/getty/transparent{
-	icon_state = "2"
-	},
+/obj/structure/dropship_parts/midway/left/wing_inner,
+/turf/template_noop,
 /area/shuttle/getty)
 "UU" = (
 /obj/structure/bed/chair/dropship/passenger/shuttle_chair{
@@ -289,14 +228,12 @@
 	},
 /area/shuttle/getty)
 "WQ" = (
-/turf/closed/shuttle/getty/transparent{
-	icon_state = "leftupperengine"
-	},
+/obj/structure/dropship_parts/midway/left/engine_upper,
+/turf/template_noop,
 /area/shuttle/getty)
 "ZR" = (
-/turf/closed/shuttle/getty/transparent{
-	icon_state = "44"
-	},
+/obj/structure/dropship_parts/midway/left/cap,
+/turf/template_noop,
 /area/shuttle/getty)
 
 (1,1,1) = {"
@@ -304,7 +241,7 @@ nK
 nK
 IF
 wr
-ib
+nK
 WQ
 xN
 BA
@@ -388,7 +325,7 @@ nK
 nK
 JD
 zK
-ib
+nK
 de
 hA
 aY

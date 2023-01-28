@@ -6,6 +6,93 @@
 #define STATE_IN_ATMOSPHERE "in atmosphere"
 #define STATE_IN_TRANSIT "in transit"
 
+/obj/structure/dropship_parts/beforeShuttleMove(turf/newT, rotation, move_mode, obj/docking_port/mobile/moving_dock)
+	. = ..()
+	if(. & MOVE_AREA)
+		. |= MOVE_CONTENTS
+		. &= ~MOVE_TURF
+
+/obj/structure/dropship_parts
+	density = TRUE
+	anchored = TRUE
+	unslashable = TRUE
+	unacidable = TRUE
+
+/obj/structure/dropship_parts/ex_act(severity, direction)
+	return
+
+/obj/structure/dropship_parts/midway
+	name = "\improper Midway"
+	icon = 'icons/turf/getty.dmi'
+	opacity = FALSE
+
+/obj/structure/dropship_parts/midway/left/cockpit_upper
+	icon_state = "cockpit_upperleft"
+	opacity = TRUE
+
+/obj/structure/dropship_parts/midway/right/cockpit_upper
+	icon_state = "cockpit_upperright"
+	opacity = TRUE
+
+/obj/structure/dropship_parts/midway/left/body_upper
+	icon_state = "wingwall_lefttop"
+	opacity = TRUE
+
+/obj/structure/dropship_parts/midway/right/body_upper
+	icon_state = "wingwall_righttop"
+	opacity = TRUE
+
+/obj/structure/dropship_parts/midway/left/cap
+	icon_state = "cap_left"
+
+/obj/structure/dropship_parts/midway/right/cap
+	icon_state = "cap_right"
+
+/obj/structure/dropship_parts/midway/left/upper_wing
+	icon_state = "wing_lefttop"
+
+/obj/structure/dropship_parts/midway/right/upper_wing
+	icon_state = "wing_righttop"
+
+/obj/structure/dropship_parts/midway/left/lower_wing
+	icon_state = "wing_leftbottom"
+
+/obj/structure/dropship_parts/midway/right/lower_wing
+	icon_state = "wing_rightbottom"
+
+/obj/structure/dropship_parts/midway/left/engine_upper
+	icon_state = "leftupperengine"
+
+/obj/structure/dropship_parts/midway/right/engine_upper
+	icon_state = "rightupperengine"
+
+/obj/structure/dropship_parts/midway/left/engine_lower
+	icon_state = "leftlowerengine"
+
+/obj/structure/dropship_parts/midway/right/engine_lower
+	icon_state = "rightlowerengine"
+
+/obj/structure/dropship_parts/midway/left/body_lower
+	icon_state = "leftlowerwalltoengine"
+	opacity = TRUE
+
+/obj/structure/dropship_parts/midway/right/body_lower
+	icon_state = "rightlowerwalltoengine"
+	opacity = TRUE
+
+/obj/structure/dropship_parts/midway/left/wing_outer
+	icon_state = "bottomwing_leftouter"
+
+/obj/structure/dropship_parts/midway/left/wing_inner
+	icon_state = "bottomwing_leftinner"
+
+
+/obj/structure/dropship_parts/midway/right/wing_outer
+	icon_state = "bottomwing_rightouter"
+
+/obj/structure/dropship_parts/midway/right/wing_inner
+	icon_state = "bottomwing_rightinner"
+
 /obj/docking_port/stationary/getty
 	name = "Gettysburg Hangar Pad"
 	id = SHUTTLE_GETTY
@@ -22,8 +109,8 @@
 	id = "dropship_getty"
 	ignitionTime = DROPSHIP_WARMUP_TIME
 	area_type = /area/shuttle/getty
-	width = 10
-	height = 11
+	width = 8
+	height = 10
 	callTime = 15 SECONDS
 	rechargeTime = 30 SECONDS
 	dwidth = 0
@@ -121,7 +208,7 @@
 			addtimer(CALLBACK(src, PROC_REF(move_to_atmosphere)), 1 SECONDS)
 			return
 		if(transit_to == STATE_ON_SHIP)
-			addtimer(CALLBACK(src, PROC_REF(move_to_ship)), 1 SECONDS)
+			move_to_ship()
 			return
 
 /obj/structure/machinery/computer/camera_advanced/shuttle_docker/getty/proc/take_off(mob/user)
@@ -152,30 +239,29 @@
 	current_state = STATE_IN_TRANSIT
 	transit_to = STATE_IN_ATMOSPHERE
 	SSshuttle.move_shuttle_to_transit(shuttleId, TRUE)
-	shuttle_port.assigned_transit.reserved_area.set_turf(/turf/open/space/transit)
 
 /obj/structure/machinery/computer/camera_advanced/shuttle_docker/getty/proc/move_to_atmosphere()
 	balloon_alert_to_viewers("entering low flight")
 	current_state = STATE_IN_ATMOSPHERE
 	transit_to = null
-	SSshuttle.move_shuttle_to_transit(shuttleId, TRUE, /turf/open/space/transit/atmosphere)
+	shuttle_port.assigned_transit.reserved_area.set_turf(/turf/open/space/transit/atmosphere)
 
 /obj/structure/machinery/computer/camera_advanced/shuttle_docker/getty/proc/move_to_ship()
+	shuttle_port.assigned_transit.reserved_area.set_turf(/turf/open/space/transit)
 	current_state = STATE_ON_SHIP
 	transit_to = null
-	SSshuttle.moveShuttle(shuttleId, SHUTTLE_GETTY, TRUE)
 
 /obj/structure/machinery/computer/camera_advanced/shuttle_docker/getty/proc/to_ship()
 	balloon_alert_to_viewers("moving to ship")
 	current_state = STATE_IN_TRANSIT
 	transit_to = STATE_ON_SHIP
-	SSshuttle.move_shuttle_to_transit(shuttleId, TRUE)
+	SSshuttle.moveShuttle(shuttleId, SHUTTLE_GETTY, TRUE)
 
 /obj/structure/machinery/computer/camera_advanced/shuttle_docker/getty/proc/from_ground()
 	balloon_alert_to_viewers("take off initiated")
 	current_state = STATE_IN_TRANSIT
 	transit_to = STATE_IN_ATMOSPHERE
-	SSshuttle.move_shuttle_to_transit(shuttleId, TRUE, /turf/open/space/transit/atmosphere)
+	SSshuttle.move_shuttle_to_transit(shuttleId, TRUE)
 
 
 /obj/structure/machinery/computer/camera_advanced/shuttle_docker/getty/proc/view_ground(mob/user)

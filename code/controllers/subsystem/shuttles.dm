@@ -160,7 +160,7 @@ SUBSYSTEM_DEF(shuttle)
 		if(!(M in transit_requesters))
 			transit_requesters += M
 
-/datum/controller/subsystem/shuttle/proc/generate_transit_dock(obj/docking_port/mobile/M, transit_path = /turf/open/space/transit, use_directions = TRUE, travel_dirs = TRANSIT_DIR_DEFAULT_PATHS)
+/datum/controller/subsystem/shuttle/proc/generate_transit_dock(obj/docking_port/mobile/M)
 	// First, determine the size of the needed zone
 	// Because of shuttle rotation, the "width" of the shuttle is not
 	// always x.
@@ -187,16 +187,16 @@ SUBSYSTEM_DEF(shuttle)
 	to_chat(world, "The attempted transit dock will be [transit_width] width, and \)
 		[transit_height] in height. The travel dir is [travel_dir]."
 */
-	if(use_directions)
-		switch(travel_dir)
-			if(NORTH)
-				transit_path = travel_dirs["[NORTH]"]
-			if(SOUTH)
-				transit_path = travel_dirs["[SOUTH]"]
-			if(EAST)
-				transit_path = travel_dirs["[EAST]"]
-			if(WEST)
-				transit_path = travel_dirs["[WEST]"]
+	var/transit_path = /turf/open/space/transit
+	switch(travel_dir)
+		if(NORTH)
+			transit_path = /turf/open/space/transit/north
+		if(SOUTH)
+			transit_path = /turf/open/space/transit/south
+		if(EAST)
+			transit_path = /turf/open/space/transit/east
+		if(WEST)
+			transit_path = /turf/open/space/transit/west
 
 	var/datum/turf_reservation/proposal = SSmapping.RequestBlockReservation(transit_width, transit_height, null, /datum/turf_reservation/transit, transit_path)
 
@@ -415,16 +415,6 @@ SUBSYSTEM_DEF(shuttle)
 
 	if(existing_shuttle)
 		existing_shuttle.jumpToNullSpace()
-
-	// update underlays
-	for(var/area/A as anything in preview_shuttle.shuttle_areas)
-		for(var/turf/T as anything in A)
-			if(istype(T, /turf/closed/shuttle))
-				var/dx = T.x - preview_shuttle.x
-				var/dy = T.y - preview_shuttle.y
-				var/turf/target_lz = locate(D.x + dx, D.y + dy, D.z)
-				T.underlays.Cut()
-				T.underlays += mutable_appearance(target_lz.icon, target_lz.icon_state, TURF_LAYER, FLOOR_PLANE)
 
 	var/list/force_memory = preview_shuttle.movement_force
 	preview_shuttle.movement_force = list("KNOCKDOWN" = 0, "THROW" = 0)
@@ -645,13 +635,9 @@ SUBSYSTEM_DEF(shuttle)
  * timed: Moves instantly to transit if FALSE.
  * transit_reservation: Optional, if to use an alternate reservation.
  */
-/datum/controller/subsystem/shuttle/proc/move_shuttle_to_transit(shuttle_id, timed, turf = /turf/open/space/transit)
+/datum/controller/subsystem/shuttle/proc/move_shuttle_to_transit(shuttle_id, timed)
 	var/obj/docking_port/mobile/shuttle = getShuttle(shuttle_id)
-	var/obj/docking_port/stationary/transit
-	if(turf)
-		transit = generate_transit_dock(shuttle, turf, FALSE)
-	else
-		transit = generate_transit_dock(shuttle)
+	var/obj/docking_port/stationary/transit = generate_transit_dock(shuttle)
 
 	if(!transit)
 		return

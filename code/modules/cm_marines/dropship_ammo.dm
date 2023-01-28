@@ -81,7 +81,7 @@
 /obj/structure/ship_ammo/proc/can_fire_at(turf/impact, mob/user)
 	return TRUE
 
-/obj/structure/ship_ammo/proc/transfer_ammo(var/obj/structure/ship_ammo/target, var/mob/user)
+/obj/structure/ship_ammo/proc/transfer_ammo(obj/structure/ship_ammo/target, mob/user)
 	if(type != target.type)
 		to_chat(user, SPAN_NOTICE("\The [src] and \the [target] use incompatible types of ammunition!"))
 		return

@@ -123,14 +123,14 @@
 		overlays += "[defense_type] uac_[sentry_type]"
 
 
-/obj/structure/machinery/defenses/sentry/attack_hand_checks(var/mob/user)
+/obj/structure/machinery/defenses/sentry/attack_hand_checks(mob/user)
 	if(immobile)
 		to_chat(user, SPAN_WARNING("[src]'s panel is completely locked, you can't do anything."))
 		return FALSE
 
 	return TRUE
 
-/obj/structure/machinery/defenses/sentry/update_choice(mob/user, var/category, var/selection)
+/obj/structure/machinery/defenses/sentry/update_choice(mob/user, category, selection)
 	. = ..()
 	if(.)
 		return
@@ -185,7 +185,7 @@
 	stop_processing()
 	unset_range()
 
-/obj/structure/machinery/defenses/sentry/attackby(var/obj/item/O, var/mob/user)
+/obj/structure/machinery/defenses/sentry/attackby(obj/item/O, mob/user)
 	if(QDELETED(O) || QDELETED(user))
 		return
 
@@ -253,13 +253,13 @@
 	if(!QDELETED(src))
 		qdel(src)
 
-/obj/structure/machinery/defenses/sentry/damaged_action(var/damage)
+/obj/structure/machinery/defenses/sentry/damaged_action(damage)
 	if(prob(10))
 		spark_system.start()
 	..()
 
 
-/obj/structure/machinery/defenses/sentry/proc/fire(var/atom/A)
+/obj/structure/machinery/defenses/sentry/proc/fire(atom/A)
 	if(!(world.time-last_fired >= fire_delay) || !turned_on || !ammo || QDELETED(target))
 		return
 
@@ -299,7 +299,7 @@
 /obj/structure/machinery/defenses/sentry/proc/reset_low_ammo_timer()
 	low_ammo_timer = null
 
-/obj/structure/machinery/defenses/sentry/proc/actual_fire(var/atom/target)
+/obj/structure/machinery/defenses/sentry/proc/actual_fire(atom/target)
 	var/obj/item/projectile/new_projectile = new(src, create_cause_data(initial(name), owner_mob, src))
 	new_projectile.generate_bullet(new ammo.default_ammo)
 	new_projectile.damage *= damage_mult
@@ -322,7 +322,7 @@
 	SEND_SIGNAL(src, COMSIG_SENTRY_EMPTY_AMMO_ALERT, src)
 
 //Mostly taken from gun code.
-/obj/structure/machinery/defenses/sentry/proc/muzzle_flash(var/angle)
+/obj/structure/machinery/defenses/sentry/proc/muzzle_flash(angle)
 	if(isnull(angle))
 		return
 
@@ -339,7 +339,7 @@
 	flash.transform = rotate
 	flash.flick_overlay(src, 3)
 
-/obj/structure/machinery/defenses/sentry/proc/get_target(var/atom/movable/new_target)
+/obj/structure/machinery/defenses/sentry/proc/get_target(atom/movable/new_target)
 	if(!islist(targets))
 		return
 	if(!targets.Find(new_target))
@@ -479,7 +479,7 @@
 	. = ..()
 	. += SPAN_NOTICE("It seems this one's bolts have been securely welded into the floor, and the access panel locked. You can't interact with it.")
 
-/obj/structure/machinery/defenses/sentry/premade/attackby(var/obj/item/O, var/mob/user)
+/obj/structure/machinery/defenses/sentry/premade/attackby(obj/item/O, mob/user)
 	return
 
 /obj/structure/machinery/defenses/sentry/premade/power_on()
@@ -559,7 +559,7 @@
 	)
 
 
-/obj/structure/machinery/defenses/sentry/dmr/handle_rof(var/level)
+/obj/structure/machinery/defenses/sentry/dmr/handle_rof(level)
 	return
 
 /obj/structure/machinery/defenses/sentry/dmr/set_range()

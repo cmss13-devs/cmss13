@@ -48,7 +48,7 @@
 		list("M94 Marking Flare pack", 10, /obj/item/storage/box/m94, VENDOR_ITEM_REGULAR)
 	)
 
-/obj/structure/machinery/cm_vending/sorted/cargo_guns/pilot_officer/populate_product_list(var/scale)
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/pilot_officer/populate_product_list(scale)
 	return
 
 //------------CLOTHING VENDOR---------------

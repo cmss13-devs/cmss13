@@ -86,7 +86,7 @@ var/list/admin_ranks = list() //list of all ranks with associated rights
 	testing(msg)
 	#endif
 
-/proc/process_rank_file(var/line, var/mentor = FALSE)
+/proc/process_rank_file(line, mentor = FALSE)
 	var/list/MentorRanks = file2list("config/mentor_ranks.txt")
 	if(!length(line)) return
 	if(copytext(line,1,2) == "#") return

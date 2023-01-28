@@ -1,5 +1,5 @@
 // All mobs should have custom emote, really..
-/mob/proc/custom_emote(var/m_type = SHOW_MESSAGE_VISIBLE, var/message = null, player_caused, var/nolog = 0)
+/mob/proc/custom_emote(m_type = SHOW_MESSAGE_VISIBLE, message = null, player_caused, nolog = 0)
 	var/comm_paygrade = ""
 	if(stat || (!use_me && player_caused))
 		if(player_caused)
@@ -82,7 +82,7 @@
 						hearers.Remove(O)
 			langchat_speech(input, hearers, GLOB.all_languages, skip_language_check = TRUE, additional_styles = list("emote", "langchat_small"))
 
-/mob/proc/emote_dead(var/message)
+/mob/proc/emote_dead(message)
 	if(client.prefs.muted & MUTE_DEADCHAT)
 		to_chat(src, SPAN_DANGER("You cannot send deadchat emotes (muted)."))
 		return

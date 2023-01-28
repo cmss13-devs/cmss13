@@ -53,7 +53,7 @@
 	icon_xeno = 'icons/mob/xenos/facehugger.dmi'
 	icon_xenonid = 'icons/mob/xenonids/facehugger.dmi'
 
-/mob/living/carbon/xenomorph/facehugger/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/mob/living/carbon/xenomorph/facehugger/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_pass = PASS_MOB_THRU|PASS_FLAGS_CRAWLER
@@ -135,7 +135,7 @@
 	A.attack_larva(src)
 	xeno_attack_delay(src) //Adds some lag to the 'attack'
 
-/mob/living/carbon/xenomorph/facehugger/proc/handle_hug(var/mob/living/carbon/human/human)
+/mob/living/carbon/xenomorph/facehugger/proc/handle_hug(mob/living/carbon/human/human)
 	var/obj/item/clothing/mask/facehugger/hugger = new /obj/item/clothing/mask/facehugger(loc, hivenumber)
 	var/did_hug = hugger.attach(human, TRUE, 0.5)
 	if(client)
@@ -194,10 +194,10 @@
 	//One last shake for the sake of it
 	xeno_jitter(25)
 
-/mob/living/carbon/xenomorph/facehugger/handle_screech_act(var/mob/self, var/mob/living/carbon/xenomorph/queen/queen)
+/mob/living/carbon/xenomorph/facehugger/handle_screech_act(mob/self, mob/living/carbon/xenomorph/queen/queen)
 	return null
 
-/mob/living/carbon/xenomorph/facehugger/handle_queen_screech(var/mob/living/carbon/xenomorph/queen/queen)
+/mob/living/carbon/xenomorph/facehugger/handle_queen_screech(mob/living/carbon/xenomorph/queen/queen)
 	to_chat(src, SPAN_DANGER("The mighty roar of the queen makes you tremble and fall over!"))
 	adjust_effect(6, STUN)
 	apply_effect(6, WEAKEN)
@@ -205,7 +205,7 @@
 /mob/living/carbon/xenomorph/facehugger/add_xeno_shield(added_amount, shield_source, type = /datum/xeno_shield, duration = -1, decay_amount_per_second = 1, add_shield_on = FALSE, max_shield = 200)
 	return
 
-/mob/living/carbon/xenomorph/facehugger/proc/scuttle(var/obj/structure/current_structure)
+/mob/living/carbon/xenomorph/facehugger/proc/scuttle(obj/structure/current_structure)
 	var/move_dir = get_dir(src, loc)
 	for(var/atom/movable/atom in get_turf(current_structure))
 		if(atom != current_structure && atom.density && atom.BlockedPassDirs(src, move_dir))

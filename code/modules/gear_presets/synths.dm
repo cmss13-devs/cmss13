@@ -15,7 +15,7 @@
 		return
 	H.set_species(SYNTH_GEN_THREE)
 
-/datum/equipment_preset/synth/load_name(mob/living/carbon/human/H, var/randomise)
+/datum/equipment_preset/synth/load_name(mob/living/carbon/human/H, randomise)
 	var/final_name = "David"
 	if(H.client && H.client.prefs)
 		final_name = H.client.prefs.synthetic_name
@@ -382,7 +382,7 @@
 	H.g_facial = 255
 	H.b_facial = 255
 
-/datum/equipment_preset/synth/working_joe/load_name(mob/living/carbon/human/H, var/randomise)
+/datum/equipment_preset/synth/working_joe/load_name(mob/living/carbon/human/H, randomise)
 	H.change_real_name(H, "Working Joe #[rand(100)][rand(100)]")
 
 //*****************************************************************************************************/
@@ -440,7 +440,7 @@
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/dutch(H), WEAR_L_EAR)
 
 
-/datum/equipment_preset/synth/survivor/midwife/load_name(mob/living/carbon/human/H, var/randomise)
+/datum/equipment_preset/synth/survivor/midwife/load_name(mob/living/carbon/human/H, randomise)
 	var/final_name = "Midwife Joe"
 	if(H.client && H.client.prefs)
 		final_name = H.client.prefs.synthetic_name
@@ -466,7 +466,7 @@
 	. = ..()
 	access = get_all_accesses()
 
-/datum/equipment_preset/synth/infiltrator/load_name(mob/living/carbon/human/H, var/randomise)
+/datum/equipment_preset/synth/infiltrator/load_name(mob/living/carbon/human/H, randomise)
 	H.gender = pick(MALE,FEMALE)
 	var/random_name
 	var/first_name

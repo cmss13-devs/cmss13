@@ -22,7 +22,7 @@
 	possible_locs = list("groin")
 	invasiveness = list(SURGERY_DEPTH_SHALLOW)
 
-/datum/surgery/implant/can_start(mob/user, mob/living/carbon/patient, var/obj/limb/L, obj/item/tool)
+/datum/surgery/implant/can_start(mob/user, mob/living/carbon/patient, obj/limb/L, obj/item/tool)
 	return !L.hidden
 
 //------------------------------------
@@ -39,7 +39,7 @@
 	possible_locs = list("groin")
 	invasiveness = list(SURGERY_DEPTH_SHALLOW)
 
-/datum/surgery/implant/removal/can_start(mob/user, mob/living/carbon/patient, var/obj/limb/L, obj/item/tool)
+/datum/surgery/implant/removal/can_start(mob/user, mob/living/carbon/patient, obj/limb/L, obj/item/tool)
 	return L.hidden
 
 //------------------------------------
@@ -257,7 +257,7 @@
 	pain_reduction_required = PAIN_REDUCTION_LIGHT //This is Yank Object without the damage or IB risk.
 	required_surgery_skill = SKILL_SURGERY_NOVICE
 
-/datum/surgery/embedded/can_start(mob/user, mob/living/carbon/patient, var/obj/limb/L, obj/item/tool)
+/datum/surgery/embedded/can_start(mob/user, mob/living/carbon/patient, obj/limb/L, obj/item/tool)
 	return length(L.implants)
 
 //------------------------------------

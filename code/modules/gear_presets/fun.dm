@@ -82,7 +82,7 @@
 	..()
 	rank = assignment
 
-/datum/equipment_preset/fun/dutch/load_name(mob/living/carbon/human/H, var/randomise)
+/datum/equipment_preset/fun/dutch/load_name(mob/living/carbon/human/H, randomise)
 	H.gender = pick(60;MALE,40;FEMALE)
 	var/datum/preferences/A = new()
 	A.randomize_appearance(H)
@@ -240,7 +240,7 @@
 	skills = /datum/skills/dutch
 	idtype = /obj/item/card/id/gold
 
-/datum/equipment_preset/fun/dutch/arnie/load_name(mob/living/carbon/human/H, var/randomise)
+/datum/equipment_preset/fun/dutch/arnie/load_name(mob/living/carbon/human/H, randomise)
 	H.gender = MALE
 	H.change_real_name(H, "Arnold 'Dutch' Schäfer")
 	H.f_style = "5 O'clock Shadow"
@@ -297,7 +297,7 @@
 	..()
 	H.skills.set_skill(SKILL_SPEC_WEAPONS, SKILL_SPEC_GRENADIER)
 
-/datum/equipment_preset/fun/hefa/load_name(mob/living/carbon/human/H, var/randomise)
+/datum/equipment_preset/fun/hefa/load_name(mob/living/carbon/human/H, randomise)
 	H.gender = MALE
 	var/list/names = list(
 		"Lancelot", "Gawain", "Geraint", "Percival", "Bors", "Lamorak", "Kay", "Gareth", "Bedivere", "Gaheris", "Galahad", "Tristan", "Palamedes",
@@ -454,7 +454,7 @@
 	. = ..()
 	access = get_all_accesses() + get_all_centcom_access()
 
-/datum/equipment_preset/fun/santa/load_name(mob/living/carbon/human/H, var/randomise)
+/datum/equipment_preset/fun/santa/load_name(mob/living/carbon/human/H, randomise)
 	H.gender = MALE
 	H.change_real_name(H, "Santa")
 
@@ -494,7 +494,7 @@
 	rank = "UPP Armsmaster"
 	role_comm_title = null
 
-/datum/equipment_preset/upp/ivan/load_name(mob/living/carbon/human/H, var/randomise)
+/datum/equipment_preset/upp/ivan/load_name(mob/living/carbon/human/H, randomise)
 	H.gender = MALE
 	H.change_real_name(H, "Ivan")
 	H.f_style = "Shaved"
@@ -550,7 +550,7 @@
 	. = ..()
 	access = get_all_accesses()
 
-/datum/equipment_preset/fun/van_bandolier/load_name(mob/living/carbon/human/H, var/randomise)
+/datum/equipment_preset/fun/van_bandolier/load_name(mob/living/carbon/human/H, randomise)
 	H.gender = MALE
 	H.change_real_name(H, "Van Bandolier")
 	H.age = 55
@@ -626,13 +626,13 @@
 /datum/equipment_preset/fun/monkey/load_race(mob/living/carbon/human/H, client/mob_client)
 	H.set_species(SPECIES_MONKEY)
 
-/datum/equipment_preset/fun/monkey/load_name(mob/living/carbon/human/H, var/randomise, var/client/mob_client)
+/datum/equipment_preset/fun/monkey/load_name(mob/living/carbon/human/H, randomise, client/mob_client)
 	H.gender = pick(60;MALE,40;FEMALE)
 	var/random_name = get_random_name(H)
 	H.change_real_name(H, random_name)
 	H.age = rand(1, 40)
 
-/datum/equipment_preset/fun/monkey/proc/get_random_name(var/mob/living/carbon/human/H)
+/datum/equipment_preset/fun/monkey/proc/get_random_name(mob/living/carbon/human/H)
 	return pick(monkey_names)
 
 /datum/equipment_preset/fun/monkey/marine

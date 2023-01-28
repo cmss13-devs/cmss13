@@ -1,4 +1,4 @@
-/mob/living/carbon/human/proc/parse_say_modes(var/message)
+/mob/living/carbon/human/proc/parse_say_modes(message)
 	. = list("message_and_language", "modes" = list())
 	if(length(message) >= 1 && message[1] == ";")
 		.["message_and_language"] = copytext(message, 2)
@@ -40,7 +40,7 @@
 	.["modes"] += MESSAGE_MODE_LOCAL
 	return
 
-/mob/living/carbon/human/proc/parse_say(var/message)
+/mob/living/carbon/human/proc/parse_say(message)
 	. = list("message", "language", "modes")
 	var/list/ml_and_modes = parse_say_modes(message)
 	.["modes"] = ml_and_modes["modes"]
@@ -53,7 +53,7 @@
 	else
 		.["message"] = message_and_language
 
-/mob/living/carbon/human/say(var/message)
+/mob/living/carbon/human/say(message)
 
 	var/verb = "says"
 	var/alt_name = ""
@@ -176,7 +176,7 @@
 	for(var/obj/item/device/radio/R in used_radios)
 		R.talk_into(src, message, message_mode, verb, speaking)
 
-/mob/living/carbon/human/proc/forcesay(var/forcesay_type = SUDDEN)
+/mob/living/carbon/human/proc/forcesay(forcesay_type = SUDDEN)
 	if (!client || stat != CONSCIOUS)
 		return
 
@@ -200,7 +200,7 @@
 	say(say_text)
 	winset(client, "input", "text=[null]")
 
-/mob/living/carbon/human/say_understands(var/mob/other,var/datum/language/speaking = null)
+/mob/living/carbon/human/say_understands(mob/other, datum/language/speaking = null)
 
 	if(species.can_understand(other))
 		return 1
@@ -223,7 +223,7 @@
 /mob/living/carbon/human/GetVoice()
 	return real_name
 
-/mob/living/carbon/human/proc/SetSpecialVoice(var/new_voice)
+/mob/living/carbon/human/proc/SetSpecialVoice(new_voice)
 	if(new_voice)
 		special_voice = new_voice
 	return
@@ -245,7 +245,7 @@ There is no language handling build into it however there is at the /mob level s
 for it but just ignore it.
 */
 
-/mob/living/carbon/human/say_quote(var/message, var/datum/language/speaking = null)
+/mob/living/carbon/human/say_quote(message, datum/language/speaking = null)
 	var/verb = "says"
 	var/ending = copytext(message, length(message))
 
@@ -259,7 +259,7 @@ for it but just ignore it.
 
 	return verb
 
-/mob/living/carbon/human/proc/handle_speech_problems(var/message)
+/mob/living/carbon/human/proc/handle_speech_problems(message)
 	var/list/returns[3]
 	var/verb = "says"
 	var/handled = 0

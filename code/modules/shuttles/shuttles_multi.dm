@@ -22,7 +22,7 @@
 	..()
 	if(origin) last_departed = origin
 
-/datum/shuttle/multi_shuttle/move(var/area/origin, var/area/destination)
+/datum/shuttle/multi_shuttle/move(area/origin, area/destination)
 	..()
 	last_move = world.time
 	if (destination == src.origin)

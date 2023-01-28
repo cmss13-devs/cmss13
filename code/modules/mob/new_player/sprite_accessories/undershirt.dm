@@ -1,7 +1,7 @@
 GLOBAL_LIST_INIT_TYPED(undershirt_m, /datum/sprite_accessory/undershirt, setup_undershirt(MALE))
 GLOBAL_LIST_INIT_TYPED(undershirt_f, /datum/sprite_accessory/undershirt, setup_undershirt(FEMALE))
 
-/proc/setup_undershirt(var/restricted_gender)
+/proc/setup_undershirt(restricted_gender)
 	var/list/undershirt_list = list()
 	for(var/undershirt_type in subtypesof(/datum/sprite_accessory/undershirt))
 		var/datum/sprite_accessory/undershirt/undershirt_datum = new undershirt_type
@@ -29,7 +29,7 @@ GLOBAL_LIST_INIT_TYPED(undershirt_f, /datum/sprite_accessory/undershirt, setup_u
 	icon = 'icons/mob/humans/undershirt.dmi'
 	var/camo_conforming = FALSE
 
-/datum/sprite_accessory/undershirt/proc/get_image(var/mob_gender)
+/datum/sprite_accessory/undershirt/proc/get_image(mob_gender)
 	var/selected_icon_state = icon_state
 	if(camo_conforming)
 		switch(SSmapping.configs[GROUND_MAP].map_name) // maploader TODO: json
@@ -45,7 +45,7 @@ GLOBAL_LIST_INIT_TYPED(undershirt_f, /datum/sprite_accessory/undershirt, setup_u
 		selected_icon_state += mob_gender == MALE ? "_m" : "_f"
 	return image(icon, selected_icon_state)
 
-/datum/sprite_accessory/undershirt/proc/generate_non_conforming(var/camo_key)
+/datum/sprite_accessory/undershirt/proc/generate_non_conforming(camo_key)
 	camo_conforming = FALSE
 	icon_state = "[camo_key]_[icon_state]"
 	switch(camo_key)

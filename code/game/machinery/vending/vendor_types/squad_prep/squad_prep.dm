@@ -12,7 +12,7 @@
 /obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep/ui_state(mob/user)
 	return GLOB.not_incapacitated_and_adjacent_strict_state
 
-/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep/populate_product_list(var/scale)
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep/populate_product_list(scale)
 	listed_products = list(
 		list("PRIMARY FIREARMS", -1, null, null),
 		list("L42A Battle Rifle", round(scale * 10), /obj/item/weapon/gun/rifle/l42a, VENDOR_ITEM_REGULAR),
@@ -57,7 +57,7 @@
 	name = "\improper ColMarTech Automated Training Weapons Rack"
 	desc = "An automated weapon rack hooked up to a big storage of standard-issue weapons and non-lethal ammunition."
 
-/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep/training/populate_product_list(var/scale)
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep/training/populate_product_list(scale)
 	listed_products = list(
 		list("PRIMARY FIREARMS", -1, null, null),
 		list("L42A Battle Rifle", round(scale * 10), /obj/item/weapon/gun/rifle/l42a, VENDOR_ITEM_REGULAR),
@@ -208,7 +208,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_marine, list(
 
 	vendor_role = list(JOB_SQUAD_MARINE)
 
-/obj/structure/machinery/cm_vending/clothing/marine/get_listed_products(var/mob/user)
+/obj/structure/machinery/cm_vending/clothing/marine/get_listed_products(mob/user)
 	return GLOB.cm_vending_clothing_marine
 
 /obj/structure/machinery/cm_vending/clothing/marine/alpha
@@ -244,7 +244,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_marine, list(
 /obj/structure/machinery/cm_vending/sorted/uniform_supply/squad_prep/ui_state(mob/user)
 	return GLOB.not_incapacitated_and_adjacent_strict_state
 
-/obj/structure/machinery/cm_vending/sorted/uniform_supply/squad_prep/populate_product_list(var/scale)
+/obj/structure/machinery/cm_vending/sorted/uniform_supply/squad_prep/populate_product_list(scale)
 	listed_products = list(
 		list("UNIFORM & STORAGE", -1, null, null),
 		list("Lightweight IMP Backpack", 10, /obj/item/storage/backpack/marine, VENDOR_ITEM_REGULAR),
@@ -293,7 +293,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_marine, list(
 	req_access = list(ACCESS_MARINE_PREP)
 	req_one_access = list(ACCESS_MARINE_ALPHA, ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_CARGO)
 
-/obj/structure/machinery/cm_vending/sorted/uniform_supply/squad_prep/alpha/populate_product_list(var/scale)
+/obj/structure/machinery/cm_vending/sorted/uniform_supply/squad_prep/alpha/populate_product_list(scale)
 	listed_products = list(
 		list("UNIFORM", -1, null, null),
 		list("Lightweight IMP Backpack", 10, /obj/item/storage/backpack/marine, VENDOR_ITEM_REGULAR),
@@ -331,7 +331,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_marine, list(
 	req_access = list(ACCESS_MARINE_PREP)
 	req_one_access = list(ACCESS_MARINE_BRAVO, ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_CARGO)
 
-/obj/structure/machinery/cm_vending/sorted/uniform_supply/squad_prep/bravo/populate_product_list(var/scale)
+/obj/structure/machinery/cm_vending/sorted/uniform_supply/squad_prep/bravo/populate_product_list(scale)
 	listed_products = list(
 		list("UNIFORM", -1, null, null),
 		list("Lightweight IMP Backpack", 10, /obj/item/storage/backpack/marine, VENDOR_ITEM_REGULAR),
@@ -369,7 +369,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_marine, list(
 	req_access = list(ACCESS_MARINE_PREP)
 	req_one_access = list(ACCESS_MARINE_CHARLIE, ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_CARGO)
 
-/obj/structure/machinery/cm_vending/sorted/uniform_supply/squad_prep/charlie/populate_product_list(var/scale)
+/obj/structure/machinery/cm_vending/sorted/uniform_supply/squad_prep/charlie/populate_product_list(scale)
 	listed_products = list(
 		list("UNIFORM", -1, null, null),
 		list("Lightweight IMP Backpack", 10, /obj/item/storage/backpack/marine, VENDOR_ITEM_REGULAR),
@@ -407,7 +407,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_marine, list(
 	req_access = list(ACCESS_MARINE_PREP)
 	req_one_access = list(ACCESS_MARINE_DELTA, ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_CARGO)
 
-/obj/structure/machinery/cm_vending/sorted/uniform_supply/squad_prep/delta/populate_product_list(var/scale)
+/obj/structure/machinery/cm_vending/sorted/uniform_supply/squad_prep/delta/populate_product_list(scale)
 	listed_products = list(
 		list("UNIFORM", -1, null, null),
 		list("Lightweight IMP Backpack", 10, /obj/item/storage/backpack/marine, VENDOR_ITEM_REGULAR),

@@ -97,7 +97,7 @@
 		return
 	. = ..()
 
-/obj/structure/closet/bodybag/tarp/store_mobs(var/stored_units)//same as stasis bag proc
+/obj/structure/closet/bodybag/tarp/store_mobs(stored_units)//same as stasis bag proc
 	var/list/mobs_can_store = list()
 	for(var/mob/living/carbon/human/H in loc)
 		if(H.buckled)

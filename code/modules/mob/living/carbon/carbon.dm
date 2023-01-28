@@ -71,7 +71,7 @@
 		var/mob/living/carbon/xenomorph/larva/L = user
 		L.chest_burst(src)
 
-/mob/living/carbon/ex_act(var/severity, var/direction, var/datum/cause_data/cause_data)
+/mob/living/carbon/ex_act(severity, direction, datum/cause_data/cause_data)
 
 	if(lying)
 		severity *= EXPLOSION_PRONE_MULTIPLIER
@@ -93,7 +93,7 @@
 		apply_effect(knock_value, PARALYZE)
 		explosion_throw(severity, direction)
 
-/mob/living/carbon/gib(var/cause = "gibbing")
+/mob/living/carbon/gib(cause = "gibbing")
 	if(legcuffed)
 		drop_inv_item_on_ground(legcuffed)
 
@@ -179,7 +179,7 @@
 	M.next_move += 7 //Adds some lag to the 'attack'. Adds up to 11 in combination with click_adjacent.
 	return
 
-/mob/living/carbon/electrocute_act(var/shock_damage, var/obj/source, var/siemens_coeff = 1.0, var/def_zone = null)
+/mob/living/carbon/electrocute_act(shock_damage, obj/source, siemens_coeff = 1.0, def_zone = null)
 	if(status_flags & GODMODE) //godmode
 		return FALSE
 	shock_damage *= siemens_coeff
@@ -239,7 +239,7 @@
 			hud_used.r_hand_hud_object.icon_state = "hand_active"
 	return
 
-/mob/living/carbon/proc/activate_hand(var/selhand) //0 or "r" or "right" for right hand; 1 or "l" or "left" for left hand.
+/mob/living/carbon/proc/activate_hand(selhand) //0 or "r" or "right" for right hand; 1 or "l" or "left" for left hand.
 
 	if(istext(selhand))
 		selhand = lowertext(selhand)
@@ -407,7 +407,7 @@
 	show_browser(user, dat, name, "mob[name]")
 
 //generates realistic-ish pulse output based on preset levels
-/mob/living/carbon/proc/get_pulse(var/method) //method 0 is for hands, 1 is for machines, more accurate
+/mob/living/carbon/proc/get_pulse(method) //method 0 is for hands, 1 is for machines, more accurate
 	var/temp = 0 //see setup.dm:694
 	switch(src.pulse)
 		if(PULSE_NONE)

@@ -84,7 +84,7 @@
 
 	do_climb(target)
 
-/obj/structure/proc/can_climb(var/mob/living/user)
+/obj/structure/proc/can_climb(mob/living/user)
 	if(!climbable || !can_touch(user))
 		return FALSE
 
@@ -108,7 +108,7 @@
 
 	return TRUE
 
-/obj/structure/proc/do_climb(var/mob/living/user, mods)
+/obj/structure/proc/do_climb(mob/living/user, mods)
 	if(!can_climb(user))
 		return
 

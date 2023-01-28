@@ -35,16 +35,16 @@
 		add_pmcs = FALSE
 	UnregisterSignal(SSdcs, COMSIG_GLOB_MODE_PRESETUP)
 
-/obj/structure/machinery/computer/groundside_operations/attack_remote(var/mob/user as mob)
+/obj/structure/machinery/computer/groundside_operations/attack_remote(mob/user as mob)
 	return attack_hand(user)
 
-/obj/structure/machinery/computer/groundside_operations/attack_hand(var/mob/user as mob)
+/obj/structure/machinery/computer/groundside_operations/attack_hand(mob/user as mob)
 	if(..() || !allowed(user) || inoperable())
 		return
 
 	ui_interact(user)
 
-/obj/structure/machinery/computer/groundside_operations/ui_interact(var/mob/user as mob)
+/obj/structure/machinery/computer/groundside_operations/ui_interact(mob/user as mob)
 	user.set_interaction(src)
 
 	var/dat = "<head><title>Groundside Operations Console</title></head><body>"
@@ -185,7 +185,7 @@
 	dat += "<A href='?src=\ref[src];operation=refresh'>Refresh</a><br>"
 	return dat
 
-/obj/structure/machinery/computer/groundside_operations/proc/update_mapview(var/close = 0)
+/obj/structure/machinery/computer/groundside_operations/proc/update_mapview(close = 0)
 	if (close || !current_mapviewer || !Adjacent(current_mapviewer))
 		close_browser(current_mapviewer, "marineminimap")
 		current_mapviewer = null
@@ -308,7 +308,7 @@
 
 	updateUsrDialog()
 
-/obj/structure/machinery/computer/groundside_operations/proc/reactivate_announcement(var/mob/user)
+/obj/structure/machinery/computer/groundside_operations/proc/reactivate_announcement(mob/user)
 	is_announcement_active = TRUE
 	updateUsrDialog()
 

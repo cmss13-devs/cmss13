@@ -15,7 +15,7 @@ GLOBAL_LIST_INIT(ui_data_keybindings, generate_keybind_ui_data())
 	var/client/owner
 	var/datum/preferences/prefs
 
-/datum/tgui_macro/New(var/client/C, var/datum/preferences/P)
+/datum/tgui_macro/New(client/C, datum/preferences/P)
 	. = ..()
 	owner = C
 	if(C)

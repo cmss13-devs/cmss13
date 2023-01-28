@@ -118,7 +118,7 @@
 		if(!(M.loc in locs))
 			remove_under_van(M)
 
-/obj/vehicle/multitile/van/proc/add_under_van(var/mob/living/L)
+/obj/vehicle/multitile/van/proc/add_under_van(mob/living/L)
 	if(L in mobs_under)
 		return
 
@@ -130,7 +130,7 @@
 	if(L.client)
 		add_client(L)
 
-/obj/vehicle/multitile/van/proc/remove_under_van(var/mob/living/L)
+/obj/vehicle/multitile/van/proc/remove_under_van(mob/living/L)
 	SIGNAL_HANDLER
 	mobs_under -= L
 
@@ -144,17 +144,17 @@
 		COMSIG_MOVABLE_MOVED,
 	))
 
-/obj/vehicle/multitile/van/proc/check_under_van(var/mob/M, var/turf/oldloc, var/direction)
+/obj/vehicle/multitile/van/proc/check_under_van(mob/M, turf/oldloc, direction)
 	SIGNAL_HANDLER
 	if(!(M.loc in locs))
 		remove_under_van(M)
 
-/obj/vehicle/multitile/van/proc/add_client(var/mob/living/L)
+/obj/vehicle/multitile/van/proc/add_client(mob/living/L)
 	SIGNAL_HANDLER
 	L.client.images += under_image
 	L.client.images -= normal_image
 
-/obj/vehicle/multitile/van/proc/add_default_image(var/subsystem, var/mob/M)
+/obj/vehicle/multitile/van/proc/add_default_image(subsystem, mob/M)
 	SIGNAL_HANDLER
 	M.client.images += normal_image
 
@@ -224,7 +224,7 @@
 			return TRUE
 	return FALSE
 
-/obj/vehicle/multitile/van/Collide(var/atom/A)
+/obj/vehicle/multitile/van/Collide(atom/A)
 	if(!seats[VEHICLE_DRIVER])
 		return FALSE
 
@@ -275,7 +275,7 @@
 	load_damage(VAN)
 	VAN.update_icon()
 
-/obj/effect/vehicle_spawner/van/decrepit/load_hardpoints(var/obj/vehicle/multitile/van/V)
+/obj/effect/vehicle_spawner/van/decrepit/load_hardpoints(obj/vehicle/multitile/van/V)
 	V.add_hardpoint(new /obj/item/hardpoint/locomotion/van_wheels)
 
 //PRESET: wheels installed
@@ -287,5 +287,5 @@
 	handle_direction(VAN)
 	VAN.update_icon()
 
-/obj/effect/vehicle_spawner/van/fixed/load_hardpoints(var/obj/vehicle/multitile/van/V)
+/obj/effect/vehicle_spawner/van/fixed/load_hardpoints(obj/vehicle/multitile/van/V)
 	V.add_hardpoint(new /obj/item/hardpoint/locomotion/van_wheels)

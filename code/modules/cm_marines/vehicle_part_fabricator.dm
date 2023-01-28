@@ -20,10 +20,10 @@
 /obj/structure/machinery/part_fabricator/proc/get_point_store()
 	return 0
 
-/obj/structure/machinery/part_fabricator/proc/add_to_point_store(var/number = 1)
+/obj/structure/machinery/part_fabricator/proc/add_to_point_store(number = 1)
 	return
 
-/obj/structure/machinery/part_fabricator/proc/spend_point_store(var/number = 1)
+/obj/structure/machinery/part_fabricator/proc/spend_point_store(number = 1)
 	return
 
 /obj/structure/machinery/part_fabricator/dropship/ui_data(mob/user)
@@ -122,10 +122,10 @@
 /obj/structure/machinery/part_fabricator/dropship/get_point_store()
 	return supply_controller.dropship_points
 
-/obj/structure/machinery/part_fabricator/dropship/add_to_point_store(var/number = 1)
+/obj/structure/machinery/part_fabricator/dropship/add_to_point_store(number = 1)
 	supply_controller.dropship_points += number
 
-/obj/structure/machinery/part_fabricator/dropship/spend_point_store(var/number = 1)
+/obj/structure/machinery/part_fabricator/dropship/spend_point_store(number = 1)
 	supply_controller.dropship_points -= number
 
 /obj/structure/machinery/part_fabricator/dropship/ui_static_data(mob/user)
@@ -229,10 +229,10 @@
 /obj/structure/machinery/part_fabricator/tank/get_point_store()
 	return supply_controller.tank_points
 
-/obj/structure/machinery/part_fabricator/tank/add_to_point_store(var/number = 1)
+/obj/structure/machinery/part_fabricator/tank/add_to_point_store(number = 1)
 	supply_controller.tank_points += number
 
-/obj/structure/machinery/part_fabricator/tank/spend_point_store(var/number = 1)
+/obj/structure/machinery/part_fabricator/tank/spend_point_store(number = 1)
 	supply_controller.tank_points -= number
 
 /obj/structure/machinery/part_fabricator/tank/ui_static_data(mob/user)

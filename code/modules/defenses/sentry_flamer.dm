@@ -28,7 +28,7 @@
 			accuracy_mult = 0.1
 			fire_delay = 0.5
 
-/obj/structure/machinery/defenses/sentry/flamer/actual_fire(var/atom/A)
+/obj/structure/machinery/defenses/sentry/flamer/actual_fire(atom/A)
 	var/obj/item/projectile/P = new(create_cause_data(initial(name), owner_mob))
 	P.generate_bullet(new ammo.default_ammo)
 	GIVE_BULLET_TRAIT(P, /datum/element/bullet_trait_iff, faction_group)

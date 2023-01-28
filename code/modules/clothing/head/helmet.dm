@@ -477,7 +477,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 		var/mob/M = loc
 		M.update_inv_head()
 
-/obj/item/clothing/head/helmet/marine/equipped(var/mob/living/carbon/human/mob, slot)
+/obj/item/clothing/head/helmet/marine/equipped(mob/living/carbon/human/mob, slot)
 	if(camera)
 		camera.c_tag = mob.name
 	..()
@@ -489,7 +489,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 			if(F.activated)
 				F.activate_attachment(src, user, TRUE)
 
-/obj/item/clothing/head/helmet/marine/dropped(var/mob/living/carbon/human/mob)
+/obj/item/clothing/head/helmet/marine/dropped(mob/living/carbon/human/mob)
 	if(camera)
 		camera.c_tag = "Unknown"
 	if(pockets)

@@ -17,7 +17,7 @@
 	/// Last world.time that the afflicted was hit by a cluster round.
 	var/last_stack
 
-/datum/component/cluster_stack/Initialize(var/cluster_stacks, var/damage_counter, var/time)
+/datum/component/cluster_stack/Initialize(cluster_stacks, damage_counter, time)
 	. = ..()
 	src.cluster_stacks = cluster_stacks
 	src.damage_counter = damage_counter
@@ -25,7 +25,7 @@
 		time = world.time
 	src.last_stack = time
 
-/datum/component/cluster_stack/InheritComponent(datum/component/cluster_stack/C, i_am_original, var/cluster_stacks, var/damage, var/time)
+/datum/component/cluster_stack/InheritComponent(datum/component/cluster_stack/C, i_am_original, cluster_stacks, damage, time)
 	. = ..()
 	if(!C)
 		src.cluster_stacks += cluster_stacks
@@ -71,11 +71,11 @@
 	var/atom/A = parent
 	A.remove_filter("cluster_stacks")
 
-/datum/component/cluster_stack/proc/stat_append(var/mob/M, var/list/L)
+/datum/component/cluster_stack/proc/stat_append(mob/M, list/L)
 	SIGNAL_HANDLER
 	L += "Cluster Stack: [cluster_stacks]/[MAX_CLUSTER_STACKS]"
 
-/datum/component/cluster_stack/proc/apply_cluster_stacks(var/mob/living/L, damage_result, ammo_flags, obj/item/projectile/P)
+/datum/component/cluster_stack/proc/apply_cluster_stacks(mob/living/L, damage_result, ammo_flags, obj/item/projectile/P)
 	SIGNAL_HANDLER
 	if(cluster_stacks >= MAX_CLUSTER_STACKS)
 		var/old_dmg_cont = damage_counter

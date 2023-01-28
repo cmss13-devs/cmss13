@@ -102,7 +102,8 @@
 /datum/action/xeno_action/activable/acid_lance/action_cooldown_check()
 	return (activated_once || ..())
 
-/datum/action/xeno_action/onclick/dump_acid/use_ability(atom/A)
+
+/datum/action/xeno_action/onclick/acid_shroud/use_ability(atom/A)
 	if (!isXeno(owner))
 		return
 
@@ -114,12 +115,6 @@
 	if (!X.check_state())
 		return
 
-	RegisterSignal(X, COMSIG_MOB_MOVE_OR_LOOK, PROC_REF(handle_mob_move_or_look))
-	addtimer(CALLBACK(src, PROC_REF(remove_speed_buff)), buffs_duration)
-	X.speed_modifier -= speed_buff_amount
-	movespeed_buff_applied = TRUE
-	X.recalculate_speed()
-
 	to_chat(X, SPAN_XENOHIGHDANGER("You dump your acid, disabling your offensive abilities to escape!"))
 
 	for (var/action_type in action_types_to_cd)
@@ -128,6 +123,43 @@
 			continue
 
 		XA.apply_cooldown_override(cooldown_duration)
+
+	apply_cooldown()
+	..()
+	return
+
+/datum/action/xeno_action/onclick/acid_shroud/use_ability(atom/Atom)
+	var/datum/effect_system/smoke_spread/xeno_acid/Smok
+	var/mob/living/carbon/Xenomorph/Xeno = owner
+	if (!isXeno(owner))
+		return
+
+	if (!action_cooldown_check())
+		return
+
+
+	if (!Xeno.check_state())
+		return
+	playsound(Xeno,"acid_strike", 50, 1)
+	if (!do_after(Xeno, Xeno.ammo.spit_windup/6, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE, numticks = 2))
+		to_chat(Xeno, SPAN_XENODANGER("You decide to cancel your gas shroud."))
+		return
+	playsound(Xeno,"acid_sizzle", 50, 1)
+	if(Xeno.ammo == GLOB.ammo_list[/datum/ammo/xeno/boiler_gas/acid])
+		Smok = new /datum/effect_system/smoke_spread/xeno_acid
+	else if(Xeno.ammo == GLOB.ammo_list[/datum/ammo/xeno/boiler_gas])
+		Smok = new /datum/effect_system/smoke_spread/xeno_weaken
+	else
+		CRASH("Globber has unknown ammo [Xeno.ammo]! Oh no!")
+	Smok.set_up(1, 0, get_turf(Xeno), null, 6)
+	Smok.start()
+	to_chat(Xeno, SPAN_XENOHIGHDANGER("You dump your acid through your pores, creating a shroud of gas!"))
+	for (var/action_type in action_types_to_cd)
+		var/datum/action/xeno_action/XenoAction = get_xeno_action_by_type(Xeno, action_type)
+		if (!istype(XenoAction))
+			continue
+
+		XenoAction.apply_cooldown_override(cooldown_duration)
 
 	apply_cooldown()
 	..()

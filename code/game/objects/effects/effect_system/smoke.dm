@@ -260,7 +260,7 @@
 	time_to_live = 12
 	color = "#86B028" //Mostly green?
 	anchored = TRUE
-	spread_speed = 8
+	spread_speed = 7
 	smokeranking = SMOKE_RANK_BOILER
 
 	var/hivenumber = XENO_HIVE_NORMAL
@@ -339,7 +339,7 @@
 	spread_speed = 10
 	amount = 1 //Amount depends on Boiler upgrade!
 	smokeranking = SMOKE_RANK_BOILER
-	neuro_dose = 5 // How much neuro is dosed per tick
+	var/neuro_dose = 5 // How much neuro is dosed per tick
 	var/msg = "Your skin tingles as the gas consumes you!" // Message given per tick. Changes depending on which species is hit.
 
 //No effect when merely entering the smoke turf, for balance reasons

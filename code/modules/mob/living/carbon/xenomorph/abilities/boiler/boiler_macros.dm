@@ -26,6 +26,13 @@
 	var/action_name = "Dump Acid"
 	handle_xeno_macro(src, action_name)
 
+/datum/action/xeno_action/verb/verb_acid_shroud()
+	set category = "Alien"
+	set name = "acid shroud"
+	set hidden = TRUE
+	var/action_name = "Acid Shroud"
+	handle_xeno_macro(src, action_name)
+
 /datum/action/xeno_action/verb/verb_acid_mine()
 	set category = "Alien"
 	set name = "Acid Mine"

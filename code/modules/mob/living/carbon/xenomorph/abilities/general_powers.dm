@@ -710,6 +710,7 @@
 
 /datum/action/xeno_action/activable/xeno_spit/use_ability(atom/Atom)
 	var/mob/living/carbon/Xenomorph/Xeno = owner
+	var/spit_location
 	if(!Xeno.check_state())
 		return
 
@@ -726,7 +727,7 @@
 		return
 
 	if(aim_turf)
-		var/spit_location = get_turf(Atom)
+		spit_location = get_turf(Atom)
 
 	var/turf/current_turf = get_turf(Xeno)
 

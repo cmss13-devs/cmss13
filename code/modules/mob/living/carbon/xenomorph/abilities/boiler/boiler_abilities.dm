@@ -56,6 +56,23 @@
 	sound_to_play = 'sound/effects/blobattack.ogg'
 	aim_turf = TRUE
 
+/datum/action/xeno_action/onclick/acid_shroud  // acid dump alternative
+	name = "Acid Shroud"
+	ability_name = "Acid Shroud"
+	action_icon_state = "acid_shroud"
+	action_type = XENO_ACTION_ACTIVATE
+	ability_primacy = XENO_PRIMARY_ACTION_4
+	plasma_cost = 10
+	macro_path = /datum/action/xeno_action/verb/verb_acid_shroud
+	var/action_types_to_cd = list(
+		/datum/action/xeno_action/activable/xeno_spit/bombard,
+		/datum/action/xeno_action/onclick/acid_shroud,
+		/datum/action/xeno_action/onclick/toggle_long_range/boiler,
+		/datum/action/xeno_action/activable/spray_acid/boiler)
+
+	xeno_cooldown = 340
+	var/cooldown_duration = 300
+
 /datum/action/xeno_action/onclick/dump_acid
 	name = "Dump Acid"
 	ability_name = "dump acid"
@@ -67,7 +84,7 @@
 	xeno_cooldown = 340
 
 	var/buffs_duration = 60
-	var/cooldown_duration = 350
+	var/cooldown_duration = 300
 
 	var/speed_buff_amount = 0.5
 	var/movespeed_buff_applied = FALSE

@@ -2801,13 +2801,13 @@
 /datum/ammo/xeno/boiler_gas/on_hit_mob(mob/Moob, obj/item/projectile/Poop)
 	if(iscarbon(Moob))
 		var/mob/living/carbon/Carbon = Moob
-		if(C.status_flags & XENO_HOST && HAS_TRAIT(Carbon, TRAIT_NESTED) || Carbon.stat == DEAD)
+		if(Carbon.status_flags & XENO_HOST && HAS_TRAIT(Carbon, TRAIT_NESTED) || Carbon.stat == DEAD)
 			return
 	var/datum/effects/neurotoxin/neuro_effect = locate() in Moob.effects_list
 	if(!neuro_effect)
 		neuro_effect = new /datum/effects/neurotoxin(Moob)
 	neuro_effect.duration += 5
-	Moon.apply_effect(3, DAZE)
+	Moob.apply_effect(3, DAZE)
 	to_chat(Moob,SPAN_HIGHDANGER("Neurotoxic liquid spreads all over you and immediately soaks into your pores and orifices! Oh fuck!")) // Fucked up but have a chance to escape rather than being game-ended
 	drop_nade(get_turf(Poop), Poop,TRUE)
 
@@ -2816,7 +2816,7 @@
 
 /datum/ammo/xeno/boiler_gas/on_hit_turf(turf/Turf, obj/item/projectile/Poop)
 	if(Turf.density && isturf(Poop.loc))
-		drop_nade(Poop.loc, P) //we don't want the gas globs to land on dense turfs, they block smoke expansion.
+		drop_nade(Poop.loc, Poop) //we don't want the gas globs to land on dense turfs, they block smoke expansion.
 	else
 		drop_nade(Turf, Poop)
 
@@ -2851,11 +2851,11 @@
 /datum/ammo/xeno/boiler_gas/acid/on_hit_mob(mob/Moob, obj/item/projectile/Poop)
 	if(iscarbon(Moob))
 		var/mob/living/carbon/Carbon = Moob
-		if(C.status_flags & XENO_HOST && HAS_TRAIT(Carbon, TRAIT_NESTED) || Carbon.stat == DEAD)
+		if(Carbon.status_flags & XENO_HOST && HAS_TRAIT(Carbon, TRAIT_NESTED) || Carbon.stat == DEAD)
 			return
 	to_chat(Moob,SPAN_HIGHDANGER("Acid covers your body! Oh fuck!"))
 	playsound(Moob,"acid_strike",75,1)
-	Moob.emote("pain")
+	INVOKE_ASYNC(Moob, TYPE_PROC_REF(/mob, emote), "pain") // why do I need this bullshit
 	new /datum/effects/acid(Moob, Poop.firer)
 	drop_nade(get_turf(Poop), Poop,TRUE)
 

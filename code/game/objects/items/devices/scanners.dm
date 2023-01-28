@@ -414,13 +414,13 @@ FORENSIC SCANNER
 	throwforce = 5
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 20
-	matter = list("metal" = 60,"glass" = 30)
+	matter = list("metal" = 60, "glass" = 30)
 
 /obj/item/device/black_market_scanner/Initialize()
 	. = ..()
 	update_icon()
 
-/obj/item/device/black_market_scanner/update_icon(var/scan_value = 0, var/scanning = FALSE)
+/obj/item/device/black_market_scanner/update_icon(scan_value = 0, scanning = FALSE)
 	. = ..()
 	overlays.Cut()
 	overlays += image('icons/obj/items/devices.dmi', "+mendoza_scanner_value_flash")
@@ -443,15 +443,14 @@ FORENSIC SCANNER
 	else
 		overlays += image('icons/obj/items/devices.dmi', "+mendoza_scanner_clamp_off")
 
-/obj/item/device/black_market_scanner/afterattack(var/atom/hit_atom, mob/user, proximity)
+/obj/item/device/black_market_scanner/afterattack(atom/hit_atom, mob/user, proximity)
 	if(!proximity)
 		return
 	var/market_value = get_black_market_value(hit_atom)
 	if(isnull(market_value))
 		return ..()
 	market_value = POSITIVE(market_value)
-	user.visible_message(SPAN_WARNING("[user] presses a button on the [src] and holds it over \the [hit_atom]..."), SPAN_WARNING("You scan \the [hit_atom]..."))
+	user.visible_message(SPAN_WARNING("[user] presses a button on \the [src] and holds it over \the [hit_atom]..."), SPAN_WARNING("You scan \the [hit_atom]..."))
 	update_icon(market_value, TRUE)
 	playsound(user, 'sound/machines/twobeep.ogg', 15, TRUE)
 	to_chat(user, SPAN_NOTICE("You scan \the [hit_atom] and notice a reading on \the [src]'s pad, it says:<b> ITEM HAS [market_value] VALUE <b>"))
-	return

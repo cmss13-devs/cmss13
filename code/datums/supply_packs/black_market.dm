@@ -39,9 +39,9 @@ black market prices are NOT based on real or in-universe costs. they are based o
 		content_atom.black_market_value = 0 //no free points
 		recursive_points_wipe(content_atom, 1)
 
-	..()
+	return ..()
 
-/obj/structure/largecrate/black_market/proc/recursive_points_wipe(atom/movable/content_atom, var/recursion)
+/obj/structure/largecrate/black_market/proc/recursive_points_wipe(atom/movable/content_atom, recursion)
 	if(!points_wipe || recursion > 3) // sanity
 		return
 	for(var/atom/movable/nested_atom in content_atom.contents)
@@ -1070,15 +1070,14 @@ Things that don't fit anywhere else. If they're meant for shipside use, they pro
 /obj/structure/largecrate/black_market/secured_wildlife
 	name = "secured wildlife container"
 	icon_state = "lisacrate"
-	var/mob/living/contained_mob
 
 /obj/structure/largecrate/black_market/secured_wildlife/unpack()
 	//We need to pick a 'secured wildlife' mob that actually makes sense.
 	var/unfit_simplemobs = list(/mob/living/simple_animal/drone)
 	var/fit_hostiles = list(/mob/living/simple_animal/hostile/giant_spider, /mob/living/simple_animal/hostile/bear, /mob/living/simple_animal/hostile/retaliate/malf_drone, /mob/living/simple_animal/hostile/retaliate/goat)
 	var/monkey_mobs = list(/mob/living/carbon/human/monkey, /mob/living/carbon/human/farwa, /mob/living/carbon/human/stok, /mob/living/carbon/human/yiren, /mob/living/carbon/human/neaera)
-	contained_mob = pick( ( subtypesof(/mob/living/simple_animal) - typesof(/mob/living/simple_animal/hostile) ) + fit_hostiles + monkey_mobs - unfit_simplemobs)
-	new contained_mob(loc)
+	var/mob/contained_mob_type = pick( ( subtypesof(/mob/living/simple_animal) - typesof(/mob/living/simple_animal/hostile) ) + fit_hostiles + monkey_mobs - unfit_simplemobs)
+	new contained_mob_type(loc)
 	. = ..()
 
 /datum/supply_packs/contraband/miscellaneous/potted_plant
@@ -1252,7 +1251,7 @@ Things that don't fit anywhere else. If they're meant for shipside use, they pro
 		// Actual dead spider!!
 			var/mob/living/spider = new /mob/living/simple_animal/hostile/giant_spider(loc)
 			spider.death()
-			loot_message = SPAN_DANGER("It's a giant spider!! Oh, guess there were no air holes.")
+			loot_message = SPAN_DANGER("It's a giant spider!! Oh, looks like the crate had no air holes.")
 		if(71 to 75)
 		// Many small spiders. Yes, there's a 20% chance of something spider-related coming out of this box.
 			for(var/i in 1 to 10)
@@ -1260,7 +1259,7 @@ Things that don't fit anywhere else. If they're meant for shipside use, they pro
 			loot_message = SPAN_DANGER("SPIDERS!! AAAAAAAH!!")
 		if(76 to 80)
 		// CLF corpse!! Why is this here? Don't ask.
-			var/mob/living/carbon/human/corpse = new /mob/living/carbon/human(loc)
+			var/mob/living/carbon/human/corpse = new (loc)
 			corpse.create_hud() //Need to generate hud before we can equip anything apparently...
 
 			var/corpse_type = pick(/datum/equipment_preset/corpse/clf/burst, /datum/equipment_preset/corpse/clf)
@@ -1305,4 +1304,4 @@ Things that don't fit anywhere else. If they're meant for shipside use, they pro
 			loot_message = SPAN_HIGHDANGER("It was SUPER booby trapped! RUN!")
 
 	visible_message(loot_message, max_distance = 4)
-	..()
+	return ..()

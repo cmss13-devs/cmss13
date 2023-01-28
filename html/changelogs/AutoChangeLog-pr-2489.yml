@@ -1,0 +1,4 @@
+author: "TopHatPenguin"
+delete-after: True
+changes:
+  - spellcheck: "Changes beta queen to bravo queen and gamma to charlie | Decapitlises typepaths in larva.dm and queen.dm"

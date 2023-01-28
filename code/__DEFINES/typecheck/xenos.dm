@@ -42,8 +42,8 @@
 /proc/set_hive_data(atom/focused_atom, hivenumber)
 	var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
 	if (hive.color)
-		A.color = hive.color
-	A.name = "[lowertext(hive.prefix)][A.name]"
+		focused_atom.color = hive.color
+	focused_atom.name = "[lowertext(hive.prefix)][focused_atom.name]"
 
 /proc/get_xeno_stun_duration(mob/stun_mob, duration)
 	if(iscarbonsizexeno(stun_mob))

@@ -173,7 +173,7 @@
 					//round_statistics.count_hijack_mobs_for_statistics()
 					marine_announcement("Unauthorized monorail departure detected", "CORSAT Monorail Authority Alert", 'sound/misc/notice2.ogg')
 					to_chat(usr, SPAN_DANGER("A loud alarm erupts from [src]! The fleshy hosts must know that you can access it!"))
-					var/mob/living/carbon/Xenomorph/Queen/Q = usr // typechecked above
+					var/mob/living/carbon/xenomorph/queen/Q = usr // typechecked above
 					xeno_message(SPAN_XENOANNOUNCE("The Queen has commanded the metal crawler to depart! Rejoice!"), 3 ,Q.hivenumber)
 
 					playsound(src, 'sound/misc/queen_alarm.ogg')

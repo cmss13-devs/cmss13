@@ -158,7 +158,7 @@
 	unslashable = TRUE
 	unacidable = TRUE
 
-/obj/structure/machinery/light/containment/attack_alien(mob/living/carbon/Xenomorph/M)
+/obj/structure/machinery/light/containment/attack_alien(mob/living/carbon/xenomorph/M)
 	return
 
 
@@ -598,7 +598,7 @@
 		sleep(1)
 		qdel(src)
 
-/obj/structure/machinery/light/handle_tail_stab(var/mob/living/carbon/Xenomorph/stabbing_xeno)
+/obj/structure/machinery/light/handle_tail_stab(var/mob/living/carbon/xenomorph/stabbing_xeno)
 	if(is_broken())
 		to_chat(stabbing_xeno, SPAN_WARNING("\The [src] is already broken!"))
 		return

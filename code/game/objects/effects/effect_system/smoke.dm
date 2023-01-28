@@ -267,7 +267,7 @@
 	var/gas_damage = 20
 
 /obj/effect/particle_effect/smoke/xeno_burn/Initialize(mapload, amount, datum/cause_data/cause_data)
-	var/mob/living/carbon/Xenomorph/xeno = cause_data?.resolve_mob()
+	var/mob/living/carbon/xenomorph/xeno = cause_data?.resolve_mob()
 	if (istype(xeno) && xeno.hivenumber)
 		hivenumber = xeno.hivenumber
 

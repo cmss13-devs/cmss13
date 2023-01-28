@@ -13,10 +13,10 @@
 
 /obj/item/lightstick/Crossed(var/mob/living/O)
 	if(anchored && prob(trample_chance) && can_trample)
-		if(!istype(O,/mob/living/carbon/Xenomorph/Larva))
+		if(!istype(O,/mob/living/carbon/xenomorph/larva))
 			visible_message(SPAN_DANGER("[O] tramples the [src]!"))
 			playsound(src, 'sound/weapons/Genhit.ogg', 25, 1)
-			if(istype(O,/mob/living/carbon/Xenomorph))
+			if(istype(O,/mob/living/carbon/xenomorph))
 				if(prob(40))
 					deconstruct(FALSE)
 				else

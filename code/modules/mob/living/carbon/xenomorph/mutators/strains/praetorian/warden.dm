@@ -26,7 +26,7 @@
 	if (. == 0)
 		return
 
-	var/mob/living/carbon/Xenomorph/Praetorian/praetorian = mutator_set.xeno
+	var/mob/living/carbon/xenomorph/praetorian/praetorian = mutator_set.xeno
 
 	// Make a 'halftank'
 	praetorian.speed_modifier += XENO_SPEED_SLOWMOD_TIER_5
@@ -59,7 +59,7 @@
 /datum/behavior_delegate/praetorian_warden/on_life()
 	internal_hitpoints = min(internal_hitpoints_max, internal_hitpoints + internal_hp_per_life)
 
-	var/mob/living/carbon/Xenomorph/Praetorian/praetorian = bound_xeno
+	var/mob/living/carbon/xenomorph/praetorian/praetorian = bound_xeno
 	var/image/holder = praetorian.hud_list[PLASMA_HUD]
 	holder.overlays.Cut()
 

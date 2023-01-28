@@ -71,7 +71,7 @@
 
 	var/obj/effect/alien/weeds/W = locate(/obj/effect/alien/weeds) in vent_found.loc
 	if(W)
-		var/mob/living/carbon/Xenomorph/X = src
+		var/mob/living/carbon/xenomorph/X = src
 		if(!istype(X) || X.hivenumber != W.linked_hive.hivenumber)
 			to_chat(src, SPAN_WARNING("The weeds are blocking the entrance of this vent"))
 			return

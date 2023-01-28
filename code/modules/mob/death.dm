@@ -116,5 +116,5 @@
 				INVOKE_ASYNC(cause_mob.client, TYPE_PROC_REF(/client, add_honor), max(life_kills_total, default_honor_value))
 
 			if(isXeno(cause_mob))
-				var/mob/living/carbon/Xenomorph/X = cause_mob
+				var/mob/living/carbon/xenomorph/X = cause_mob
 				X.behavior_delegate.on_kill_mob(src)

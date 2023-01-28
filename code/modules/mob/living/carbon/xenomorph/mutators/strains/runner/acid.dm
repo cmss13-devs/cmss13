@@ -22,7 +22,7 @@
 	if (. == 0)
 		return
 
-	var/mob/living/carbon/Xenomorph/Runner/runner = mutator_set.xeno
+	var/mob/living/carbon/xenomorph/runner/runner = mutator_set.xeno
 	runner.mutation_icon_state = RUNNER_ACIDER
 	runner.mutation_type = RUNNER_ACIDER
 	runner.speed_modifier += XENO_SPEED_SLOWMOD_TIER_5
@@ -152,7 +152,7 @@
 		addtimer(CALLBACK(bound_xeno.hive, TYPE_PROC_REF(/datum/hive_status, free_respawn), bound_xeno.client), 5 SECONDS)
 	bound_xeno.gib()
 
-/mob/living/carbon/Xenomorph/Runner/ventcrawl_carry()
+/mob/living/carbon/xenomorph/runner/ventcrawl_carry()
 	var/datum/behavior_delegate/runner_acider/behavior_delegates = behavior_delegate
 	if(istype(behavior_delegates) && behavior_delegates.caboom_trigger)
 		to_chat(src, SPAN_XENOWARNING("You cannot ventcrawl when you are about to explode!"))

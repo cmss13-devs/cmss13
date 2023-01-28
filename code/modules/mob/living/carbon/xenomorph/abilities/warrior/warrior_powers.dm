@@ -1,5 +1,5 @@
 /datum/action/xeno_action/activable/lunge/use_ability(atom/A)
-	var/mob/living/carbon/Xenomorph/X = owner
+	var/mob/living/carbon/xenomorph/X = owner
 
 	if (!action_cooldown_check())
 		if(twitch_message_cooldown < world.time )
@@ -43,7 +43,7 @@
 	return TRUE
 
 /datum/action/xeno_action/onclick/toggle_agility/use_ability(atom/A)
-	var/mob/living/carbon/Xenomorph/X = owner
+	var/mob/living/carbon/xenomorph/X = owner
 
 	if (!action_cooldown_check())
 		return
@@ -63,7 +63,7 @@
 
 
 /datum/action/xeno_action/activable/fling/use_ability(atom/target_atom)
-	var/mob/living/carbon/Xenomorph/woyer = owner
+	var/mob/living/carbon/xenomorph/woyer = owner
 
 	if (!action_cooldown_check())
 		return
@@ -125,7 +125,7 @@
 	return
 
 /datum/action/xeno_action/activable/warrior_punch/use_ability(atom/target_atom)
-	var/mob/living/carbon/Xenomorph/woyer = owner
+	var/mob/living/carbon/xenomorph/woyer = owner
 
 	if (!action_cooldown_check())
 		return
@@ -169,7 +169,7 @@
 	..()
 
 /datum/action/xeno_action/activable/warrior_punch/proc/do_base_warrior_punch(mob/living/carbon/carbone, obj/limb/target_limb)
-	var/mob/living/carbon/Xenomorph/woyer = owner
+	var/mob/living/carbon/xenomorph/woyer = owner
 	var/damage = rand(base_damage, base_damage + damage_variance)
 
 	if(ishuman(carbone))

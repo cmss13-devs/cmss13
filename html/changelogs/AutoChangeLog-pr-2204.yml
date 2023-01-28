@@ -1,6 +1,0 @@
-author: "stanalbatross"
-delete-after: True
-changes:
-  - ui: "autolathes now use tgui"
-  - code_imp: "cleaned up autolathe code, made stuff use defines, proc-ified some stuff, made bools use TRUEFALSE"
-  - code_imp: "made a few common vars use TRUEFALSE"

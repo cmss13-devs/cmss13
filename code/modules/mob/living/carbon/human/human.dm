@@ -1009,7 +1009,7 @@
 	//Remove any larva.
 	var/obj/item/alien_embryo/A = locate() in src
 	if(A)
-		var/mob/living/carbon/Xenomorph/Larva/L = locate() in src //if the larva was fully grown, ready to burst.
+		var/mob/living/carbon/xenomorph/larva/L = locate() in src //if the larva was fully grown, ready to burst.
 		if(L)
 			qdel(L)
 		qdel(A)

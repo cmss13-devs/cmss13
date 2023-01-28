@@ -129,7 +129,7 @@ var/global/list/faction_to_tacmap_color = list(
 
 /proc/draw_xenos(var/icon/tacmap, var/human_pov = TRUE, var/use_vehicle = TRUE, var/hivenumber = null)
 	if(!human_pov || SSticker.toweractive)
-		for(var/mob/living/carbon/Xenomorph/X as anything in GLOB.living_xeno_list)
+		for(var/mob/living/carbon/xenomorph/X as anything in GLOB.living_xeno_list)
 			if(hivenumber && X.hivenumber != hivenumber)
 				continue
 			if(!is_ground_level(X.loc.z))
@@ -148,7 +148,7 @@ var/global/list/faction_to_tacmap_color = list(
 				tacmap.DrawBox(xeno_color, X.loc.x-1, X.loc.y-1, X.loc.x+1, X.loc.y+1)
 	else if(use_vehicle && length(GLOB.command_apc_list))
 		//take xenomorph from the pool
-		for(var/mob/living/carbon/Xenomorph/X as anything in GLOB.living_xeno_list)
+		for(var/mob/living/carbon/xenomorph/X as anything in GLOB.living_xeno_list)
 			if(hivenumber && X.hivenumber != hivenumber)
 				continue
 			//filter out those not on the ground

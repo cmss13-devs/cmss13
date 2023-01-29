@@ -482,6 +482,17 @@
 	tgui_say?.load()
 	prefs.save_preferences()
 
+/client/verb/toggle_auto_viewport_fit()
+	set name = "Toggle Auto Viewport Fit"
+	set category = "Preferences.UI"
+
+	prefs.auto_fit_viewport = !prefs.auto_fit_viewport
+	if(prefs.auto_fit_viewport)
+		to_chat(src, SPAN_NOTICE("Now auto fitting viewport."))
+	else
+		to_chat(src, SPAN_NOTICE("No longer auto fitting viewport."))
+	prefs.save_preferences()
+
 //------------ GHOST PREFERENCES ---------------------------------
 
 /client/proc/show_ghost_preferences() // Shows ghost-related preferences.

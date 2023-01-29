@@ -2502,7 +2502,7 @@
 /datum/ammo/xeno/toxin/New()
 	..()
 
-	neuro_callback = CALLBACK(GLOBAL_PROC, PROC_REF(apply_neuro))
+	neuro_callback = CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(apply_neuro))
 
 /proc/apply_neuro(mob/M, power, insta_neuro)
 	if(skillcheck(M, SKILL_ENDURANCE, SKILL_ENDURANCE_MAX) && !insta_neuro)
@@ -2592,7 +2592,7 @@
 /datum/ammo/xeno/toxin/shotgun/New()
 	..()
 
-	neuro_callback = CALLBACK(GLOBAL_PROC, PROC_REF(apply_scatter_neuro))
+	neuro_callback = CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(apply_scatter_neuro))
 
 /datum/ammo/xeno/toxin/shotgun/additional
 	name = "additional neurotoxic droplets"

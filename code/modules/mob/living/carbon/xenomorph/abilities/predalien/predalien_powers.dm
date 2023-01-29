@@ -1,5 +1,5 @@
 /datum/action/xeno_action/onclick/predalien_roar/use_ability(atom/target)
-	var/mob/living/carbon/Xenomorph/xeno = owner
+	var/mob/living/carbon/xenomorph/xeno = owner
 
 	if (!action_cooldown_check())
 		return
@@ -20,12 +20,12 @@
 			human.disable_special_items()
 
 			var/obj/item/clothing/gloves/yautja/hunter/YG = locate(/obj/item/clothing/gloves/yautja/hunter) in human
-			if(isYautja(human) && YG)
+			if(isyautja(human) && YG)
 				if(YG.cloaked)
 					YG.decloak(human)
 
 				YG.cloak_timer = xeno_cooldown * 0.1
-		else if(isXeno(carbon) && xeno.can_not_harm(carbon))
+		else if(isxeno(carbon) && xeno.can_not_harm(carbon))
 			var/datum/behavior_delegate/predalien_base/behavior = xeno.behavior_delegate
 			if(!istype(behavior))
 				continue
@@ -42,7 +42,7 @@
 	return
 
 /datum/action/xeno_action/onclick/smash/use_ability(atom/target)
-	var/mob/living/carbon/Xenomorph/xeno = owner
+	var/mob/living/carbon/xenomorph/xeno = owner
 
 	if (!action_cooldown_check())
 		return
@@ -97,7 +97,7 @@
 	return
 
 /datum/action/xeno_action/activable/devastate/use_ability(atom/target)
-	var/mob/living/carbon/Xenomorph/xeno = owner
+	var/mob/living/carbon/xenomorph/xeno = owner
 
 	if (!action_cooldown_check())
 		return
@@ -105,7 +105,7 @@
 	if (!xeno.check_state())
 		return
 
-	if (!isXenoOrHuman(target) || xeno.can_not_harm(target))
+	if (!isxeno_human(target) || xeno.can_not_harm(target))
 		to_chat(xeno, SPAN_XENOWARNING("You must target a hostile!"))
 		return
 

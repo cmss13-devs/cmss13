@@ -256,7 +256,7 @@
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_FEET|BODY_FLAG_ARMS|BODY_FLAG_HANDS
 	flags_inv_hide = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT|HIDETAIL
 
-/obj/item/clothing/suit/straight_jacket/equipped(var/mob/user, var/slot)
+/obj/item/clothing/suit/straight_jacket/equipped(mob/user, slot)
 	if(slot == WEAR_JACKET && ishuman(user))
 		var/mob/living/carbon/human/H = user
 		H.drop_inv_item_on_ground(H.handcuffed)

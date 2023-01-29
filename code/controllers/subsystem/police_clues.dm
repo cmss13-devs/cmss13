@@ -28,7 +28,7 @@ SUBSYSTEM_DEF(clues)
 		if(MC_TICK_CHECK)
 			return
 
-/datum/controller/subsystem/clues/proc/create_print(var/turf/location, var/mob/living/carbon/human/criminal_mob, var/incident = "")
+/datum/controller/subsystem/clues/proc/create_print(turf/location, mob/living/carbon/human/criminal_mob, incident = "")
 	if(!location || !istype(criminal_mob) || SSticker.mode.is_in_endgame)
 		return
 

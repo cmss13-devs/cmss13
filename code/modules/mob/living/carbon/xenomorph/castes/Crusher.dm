@@ -24,7 +24,7 @@
 	deevolves_to = list(XENO_CASTE_WARRIOR)
 	caste_desc = "A huge tanky xenomorph."
 
-/mob/living/carbon/Xenomorph/Crusher
+/mob/living/carbon/xenomorph/crusher
 	caste_type = XENO_CASTE_CRUSHER
 	name = XENO_CASTE_CRUSHER
 	desc = "A huge alien with an enormous armored head crest."
@@ -65,7 +65,7 @@
 	icon_xenonid = 'icons/mob/xenonids/crusher.dmi'
 
 // Refactored to handle all of crusher's interactions with object during charge.
-/mob/living/carbon/Xenomorph/proc/handle_collision(atom/target)
+/mob/living/carbon/xenomorph/proc/handle_collision(atom/target)
 	if(!target)
 		return FALSE
 
@@ -211,7 +211,7 @@
 
 /datum/behavior_delegate/crusher_base/melee_attack_additional_effects_target(mob/living/carbon/A)
 
-	if (!isXenoOrHuman(A))
+	if (!isxeno_human(A))
 		return
 
 	new /datum/effects/xeno_slow(A, bound_xeno, , , 20)
@@ -224,7 +224,7 @@
 		if (H.stat == DEAD)
 			continue
 
-		if(!isXenoOrHuman(H) || bound_xeno.can_not_harm(H))
+		if(!isxeno_human(H) || bound_xeno.can_not_harm(H))
 			continue
 
 		cdr_amount += 5

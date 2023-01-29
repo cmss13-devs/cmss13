@@ -7,7 +7,7 @@
 	update_weedwalking()
 
 /datum/action/xeno_action/active_toggle/toggle_speed/proc/update_weedwalking()
-	var/mob/living/carbon/Xenomorph/Hivelord/xeno = owner
+	var/mob/living/carbon/xenomorph/hivelord/xeno = owner
 	if(!xeno.check_state())
 		return
 

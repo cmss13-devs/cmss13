@@ -128,7 +128,7 @@
 	addtimer(CALLBACK(src, PROC_REF(story_announce), 0), 3 MINUTES)
 	return ..()
 
-/datum/game_mode/whiskey_outpost/proc/story_announce(var/time)
+/datum/game_mode/whiskey_outpost/proc/story_announce(time)
 	switch(time)
 		if(0)
 			marine_announcement("This is Captain Hans Naiche, Commander of the 3rd Bataillion, 'Dust Raiders' forces on LV-624. As you already know, several of our patrols have gone missing and likely wiped out by hostile local creatures as we've attempted to set our base up.", "Captain Naiche, 3rd Battalion Command, LV-624 Garrison")
@@ -196,7 +196,7 @@
 	xeno_wave = min(xeno_wave + 1, WO_MAX_WAVE)
 
 
-/datum/game_mode/whiskey_outpost/proc/announce_xeno_wave(var/datum/whiskey_outpost_wave/wave_data)
+/datum/game_mode/whiskey_outpost/proc/announce_xeno_wave(datum/whiskey_outpost_wave/wave_data)
 	if(!istype(wave_data))
 		return
 	if(wave_data.command_announcement.len > 0)
@@ -230,7 +230,7 @@
 /datum/game_mode/whiskey_outpost/count_xenos()//Counts braindead too
 	var/xeno_count = 0
 	for(var/i in GLOB.living_xeno_list)
-		var/mob/living/carbon/Xenomorph/X = i
+		var/mob/living/carbon/xenomorph/X = i
 		if(is_ground_level(X.z) && !istype(X.loc,/turf/open/space)) // If they're connected/unghosted and alive and not debrained
 			xeno_count += 1 //Add them to the amount of people who're alive.
 
@@ -308,7 +308,7 @@
 /datum/game_mode/proc/auto_declare_completion_whiskey_outpost()
 	return
 
-/datum/game_mode/whiskey_outpost/proc/place_whiskey_outpost_drop(var/OT = "sup") //Art revamping spawns 13JAN17
+/datum/game_mode/whiskey_outpost/proc/place_whiskey_outpost_drop(OT = "sup") //Art revamping spawns 13JAN17
 	var/turf/T = pick(supply_spawns)
 	var/randpick
 	var/list/randomitems = list()
@@ -397,9 +397,9 @@
 				choosemax = rand(1,5)
 				randomitems = list(/obj/item/storage/box/explosive_mines,
 								/obj/item/storage/box/explosive_mines,
-								/obj/item/explosive/grenade/HE/m15,
-								/obj/item/explosive/grenade/HE/m15,
-								/obj/item/explosive/grenade/HE,
+								/obj/item/explosive/grenade/high_explosive/m15,
+								/obj/item/explosive/grenade/high_explosive/m15,
+								/obj/item/explosive/grenade/high_explosive,
 								/obj/item/storage/box/nade_box
 								)
 			if(36 to 40) // Junk
@@ -463,7 +463,7 @@
 	if(user.lying || user.stat)
 		return
 	if(ismaintdrone(usr) || \
-		istype(usr, /mob/living/carbon/Xenomorph))
+		istype(usr, /mob/living/carbon/xenomorph))
 		to_chat(usr, SPAN_DANGER("You don't have the dexterity to do this!"))
 		return
 	if(working)
@@ -496,8 +496,8 @@
 					removed++
 					break
 			for(var/mob/M in T)
-				if(istype(M,/mob/living/carbon/Xenomorph))
-					var/mob/living/carbon/Xenomorph/X = M
+				if(istype(M,/mob/living/carbon/xenomorph))
+					var/mob/living/carbon/xenomorph/X = M
 					if(!X.stat == DEAD)
 						continue
 					X.forceMove(get_turf(locate(84,237,2))) //z.2
@@ -615,7 +615,7 @@
 	qdel(src)
 	return
 
-/obj/item/device/whiskey_supply_beacon/proc/drop_supplies(var/turf/T,var/SD)
+/obj/item/device/whiskey_supply_beacon/proc/drop_supplies(turf/T, SD)
 	if(!istype(T)) return
 	var/list/spawnitems = list()
 	var/obj/structure/closet/crate/crate
@@ -727,5 +727,5 @@
 			new /obj/item/paper/crumpled(T)
 		qdel(src)
 
-/datum/game_mode/whiskey_outpost/announce_bioscans(var/delta = 2)
+/datum/game_mode/whiskey_outpost/announce_bioscans(delta = 2)
 	return // No bioscans needed in WO

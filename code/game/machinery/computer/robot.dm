@@ -17,10 +17,10 @@
 	var/screen = 0 // 0 - Main Menu, 1 - Cyborg Status, 2 - Kill 'em All! -- In text
 
 
-/obj/structure/machinery/computer/robotics/attack_remote(var/mob/user as mob)
+/obj/structure/machinery/computer/robotics/attack_remote(mob/user as mob)
 	return src.attack_hand(user)
 
-/obj/structure/machinery/computer/robotics/attack_hand(var/mob/user as mob)
+/obj/structure/machinery/computer/robotics/attack_hand(mob/user as mob)
 	if(..())
 		return
 	if (src.z > 6)

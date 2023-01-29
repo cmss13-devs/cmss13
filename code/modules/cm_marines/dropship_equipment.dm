@@ -1212,7 +1212,7 @@
 	icon_state = "rappel_hatch_closed"
 	qdel(warning_zone)
 
-/obj/structure/dropship_equipment/rappel_system/proc/can_use(var/mob/living/carbon/human/user)
+/obj/structure/dropship_equipment/rappel_system/proc/can_use(mob/living/carbon/human/user)
 	if(linked_shuttle.mode != SHUTTLE_CALL)
 		to_chat(user, SPAN_WARNING("\The [src] can only be used while in flight."))
 		return FALSE

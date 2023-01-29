@@ -56,7 +56,7 @@
 /obj/structure/machinery/computer/shuttle/dropship/flight/enable()
 	disabled = FALSE
 
-/obj/structure/machinery/computer/shuttle/dropship/flight/proc/update_equipment(var/optimised=FALSE)
+/obj/structure/machinery/computer/shuttle/dropship/flight/proc/update_equipment(optimised=FALSE)
 	var/obj/docking_port/mobile/marine_dropship/dropship = SSshuttle.getShuttle(shuttleId)
 
 	// initial flight time

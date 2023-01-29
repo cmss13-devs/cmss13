@@ -11,7 +11,7 @@
 		qdel(i)
 	door_controllers = null
 
-/datum/door_controller/aggregate/proc/add_door(var/door, var/direction)
+/datum/door_controller/aggregate/proc/add_door(door, direction)
 	if(!door_controllers[direction])
 		var/datum/door_controller/single/new_controller = new()
 		new_controller.is_locked = FALSE
@@ -20,7 +20,7 @@
 	var/datum/door_controller/single/controller = door_controllers[direction]
 	controller.doors += list(door)
 
-/datum/door_controller/aggregate/proc/is_door_locked(var/direction)
+/datum/door_controller/aggregate/proc/is_door_locked(direction)
 	if(direction == "all")
 		for(var/i in door_controllers)
 			var/datum/door_controller/single/control = door_controllers[i]
@@ -34,7 +34,7 @@
 		WARNING("Direction [direction] does not exist.")
 	return FALSE
 
-/datum/door_controller/aggregate/proc/control_doors(var/action, var/direction, var/force)
+/datum/door_controller/aggregate/proc/control_doors(action, direction, force)
 	if(direction == "all")
 		if(allow_multicast)
 			for(var/door_group in door_controllers)
@@ -103,7 +103,7 @@
 				INVOKE_ASYNC(src, PROC_REF(force_lock_open_door), door)
 				is_locked = FALSE
 
-/datum/door_controller/single/proc/lockdown_door_launch(var/obj/structure/machinery/door/airlock/air)
+/datum/door_controller/single/proc/lockdown_door_launch(obj/structure/machinery/door/airlock/air)
 	for(var/mob/blocking_mob in air.loc) // Bump all mobs outta the way for outside airlocks of shuttles
 		if(isliving(blocking_mob))
 			to_chat(blocking_mob, SPAN_HIGHDANGER("You get thrown back as the [label] doors slam shut!"))
@@ -114,14 +114,14 @@
 					break
 	lockdown_door(air)
 
-/datum/door_controller/proc/lockdown_door(var/obj/structure/machinery/door/airlock/air)
+/datum/door_controller/proc/lockdown_door(obj/structure/machinery/door/airlock/air)
 	air.safe = 0
 	air.unlock()
 	air.close()
 	air.lock()
 	air.safe = 1
 
-/datum/door_controller/proc/force_lock_open_door(var/obj/structure/machinery/door/airlock/air)
+/datum/door_controller/proc/force_lock_open_door(obj/structure/machinery/door/airlock/air)
 	air.safe = 0
 	air.unlock()
 	air.open()

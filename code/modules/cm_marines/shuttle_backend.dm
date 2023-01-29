@@ -15,7 +15,7 @@ An object that just hold x, y, and z positions coordinates
 
 
 
-/proc/get_shuttle_turfs(var/turf/ref, var/shuttle) :
+/proc/get_shuttle_turfs(turf/ref, shuttle) :
 --------------------------------
 ref: the reference turf, gotten from its respective landmark
 shuttle: The name of the shuttle in question. Synonymous with the name of the ref landmark.
@@ -94,7 +94,7 @@ var/global/list/s_info = null
 	return 1
 
 
-/proc/get_shuttle_turfs(var/turf/ref, var/list/L)
+/proc/get_shuttle_turfs(turf/ref, list/L)
 
 	var/list/source = list()
 

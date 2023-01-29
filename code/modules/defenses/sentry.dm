@@ -22,6 +22,8 @@
 	var/sentry_type = "sentry" //Used for the icon
 	display_additional_stats = TRUE
 
+	/// Check if they have been upgraded or not, used for sentry post
+	var/upgraded = FALSE
 	var/omni_directional = FALSE
 	var/additional_rounds_stored = FALSE
 	var/sentry_range = SENTRY_RANGE
@@ -164,11 +166,15 @@
 /obj/structure/machinery/defenses/sentry/get_examine_text(mob/user)
 	. = ..()
 	if(ammo)
-		. += SPAN_NOTICE("[src] has [ammo.current_rounds]/[ammo.max_rounds] round\s loaded.")
+		. += SPAN_NOTICE("\the [src] has [ammo.current_rounds]/[ammo.max_rounds] round\s loaded.")
 		if(additional_rounds_stored)
-			. += SPAN_NOTICE("[src] has [ammo.max_inherent_rounds] round\s left in storage.")
+			. += SPAN_NOTICE("\the [src] has [ammo.max_inherent_rounds] round\s left in storage.")
+		if(upgraded)
+			. += SPAN_NOTICE("\the [src] has been reinforced with metal sheets.")
 	else
-		. += SPAN_NOTICE("[src] is empty and needs to be refilled with ammo.")
+		. += SPAN_NOTICE("\the [src] is empty and needs to be refilled with ammo.")
+		if(additional_rounds_stored)
+			. += SPAN_HELPFUL("Click \the [src] while it's turned off to reload.")
 
 /obj/structure/machinery/defenses/sentry/power_on_action()
 	target = null
@@ -626,10 +632,8 @@
 	additional_rounds_stored = TRUE
 	immobile = TRUE
 	static = TRUE
-	/// Check if they have been upgraded or not
-	var/upgraded = FALSE
 	/// Cost to give sentry extra health
-	var/upgrade_cost = 10
+	var/upgrade_cost = 5
 	/// Amount of bonus health they get from upgrade
 	var/health_upgrade = 50
 	var/obj/structure/machinery/camera/cas/linked_cam
@@ -662,12 +666,12 @@
 		return
 
 	if(upgraded)
-		to_chat(user, SPAN_WARNING("[src] has already been upgraded."))
+		to_chat(user, SPAN_WARNING("\the [src] has already been upgraded."))
 		return
 
 	if(sheets.amount >= upgrade_cost)
 		if(!do_after(user, 4 SECONDS * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION) , INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
-			to_chat(user, SPAN_WARNING("You were interrupted! Try to stay still while you reload the sentry..."))
+			to_chat(user, SPAN_WARNING("You were interrupted! Try to stay still while you bolster the sentry with metal sheets..."))
 			return
 
 		src.health_max += health_upgrade
@@ -691,17 +695,18 @@
 		playsound(loc, 'sound/weapons/handling/m40sd_reload.ogg', 25, 1)
 		update_icon()
 		return FALSE
+	else
 
-	return TRUE // We want to be able to turn it on / off while keeping it immobile
+		return TRUE // We want to be able to turn it on / off while keeping it immobile
 
 /obj/structure/machinery/defenses/sentry/launchable/handle_empty()
 	// Checks if its completely dry or just needs reload, deconstruct if completely empty
 	if(ammo.max_inherent_rounds > 0)
-		visible_message("[icon2html(src, viewers(src))] <span class='warning'>The [name] beeps steadily and its ammo light blinks red. It still has rounds, requires manual reload!</span>")
+		visible_message(SPAN_WARNING("\the [name] beeps steadily and its ammo light blinks red. It still has rounds, requires manual reload!"))
 		playsound(loc, 'sound/weapons/smg_empty_alarm.ogg', 25, 1)
 		update_icon()
 	else
-		visible_message("[icon2html(src, viewers(src))] <span class='warning'>The [name] beeps steadily and its ammo light blinks red. It rapidly deconstructs itself!</span>")
+		visible_message(SPAN_WARNING("\the [name] beeps steadily and its ammo light blinks red. It rapidly deconstructs itself!"))
 		playsound(loc, 'sound/weapons/smg_empty_alarm.ogg', 25, 1)
 		deconstruct()
 

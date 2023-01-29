@@ -145,6 +145,12 @@
 		to_chat(xeno, SPAN_WARNING("No shuttle detected, try again in [round((SSticker.mode.round_time_lobby + (SHUTTLE_TIME_LOCK * 2)-world.time)/600)] minutes."))
 		return
 
+	var/marine_count_planet = SSticker.mode.count_marines(SSmapping.levels_by_trait(ZTRAIT_GROUND))
+	if(!skip_time_lock && (marine_count_planet > 10))
+		playsound(loc, 'sound/machines/terminal_error.ogg', KEYBOARD_SOUND_VOLUME, 1)
+		to_chat(xeno, SPAN_WARNING("There are too many marines near the hive."))
+		return
+
 	var/obj/docking_port/mobile/shuttle = SSshuttle.getShuttle(shuttleId)
 	if(is_remote && linked_lz)
 		if(shuttle.mode == SHUTTLE_IDLE)

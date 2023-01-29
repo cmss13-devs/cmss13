@@ -105,13 +105,12 @@
 
 			var/mob/A = locate(href_list["view_combat_logs"])
 
-			var/list/logs = list("<html><head><meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><title>Player Ticket</title></head>")
+			var/list/logs = list("<html><head><meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><title>Combat Logs</title></head>")
 			for(var/entry in A.attack_log)
 				logs += "[entry]<br>"
 
-			var/datum/browser/combat_logs = new(usr, "combat_logs_\ref[src]", null, GLOB.stylesheets["Modern"], 600, 400)
-			combat_logs.set_content(logs.Join())
-			combat_logs.open()
+			show_browser(usr, logs.Join(), "Combat Logs", "logs_\ref[src]", "size=600x480")
+
 
 	//Finally, refresh if something modified the list.
 	if(href_list["datumrefresh"])

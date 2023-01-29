@@ -283,7 +283,7 @@
 /mob/vv_get_header()
 	. = ..()
 	var/refid = REF(src)
-	. += "<a href='?_src_=vars;[HrefToken()];view_combat_logs=[refid]>Combat Logs</a>"
+	. += "<font size='1'><br><a href='?_src_=vars;[HrefToken()];view_combat_logs=[refid]'>View Combat Logs</a><br></font>"
 
 /mob/vv_do_topic(list/href_list)
 	. = ..()

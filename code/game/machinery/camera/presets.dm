@@ -61,7 +61,7 @@
 	icon_state = "vehicle_camera"
 	network = list(CAMERA_NET_VEHICLE)
 
-/obj/structure/machinery/camera/vehicle/toggle_cam_status(var/on = FALSE)
+/obj/structure/machinery/camera/vehicle/toggle_cam_status(on = FALSE)
 	if(on)
 		status = TRUE
 	else

@@ -41,7 +41,7 @@
 	INVOKE_ASYNC(src, PROC_REF(magnetic_process))
 
 	// update the invisibility and icon
-/obj/structure/machinery/magnetic_module/hide(var/intact)
+/obj/structure/machinery/magnetic_module/hide(intact)
 	invisibility = intact ? 101 : 0
 	updateicon()
 
@@ -69,7 +69,7 @@
 
 
 
-/obj/structure/machinery/magnetic_module/proc/Cmd(var/command, var/modifier)
+/obj/structure/machinery/magnetic_module/proc/Cmd(command, modifier)
 
 	if(command)
 		switch(command)

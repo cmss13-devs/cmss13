@@ -83,7 +83,7 @@
 	. = ..(L, lunge, should_neckgrab)
 
 	if(.) //successful pull
-		if(isXeno(L))
+		if(isxeno(L))
 			var/mob/living/carbon/xenomorph/X = L
 			if(X.tier >= 2) // Tier 2 castes or higher immune to warrior grab stuns
 				return .
@@ -97,7 +97,7 @@
 			lunging = TRUE
 			addtimer(CALLBACK(src, PROC_REF(stop_lunging)), get_xeno_stun_duration(L, 2) SECONDS + 1 SECONDS)
 
-/mob/living/carbon/xenomorph/warrior/proc/stop_lunging(var/world_time)
+/mob/living/carbon/xenomorph/warrior/proc/stop_lunging(world_time)
 	lunging = FALSE
 
 /mob/living/carbon/xenomorph/warrior/hitby(atom/movable/AM)

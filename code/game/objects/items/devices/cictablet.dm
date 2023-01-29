@@ -168,7 +168,7 @@
 			COOLDOWN_START(src, distress_cooldown, COOLDOWN_COMM_REQUEST)
 			return TRUE
 
-/obj/item/device/cotablet/proc/update_mapview(var/close = 0)
+/obj/item/device/cotablet/proc/update_mapview(close = 0)
 	if (close || !current_mapviewer || !Adjacent(current_mapviewer))
 		close_browser(current_mapviewer, "marineminimap")
 		current_mapviewer = null

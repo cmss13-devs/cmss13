@@ -8,7 +8,7 @@
 	probability = 0
 
 
-/datum/emergency_call/provost_enforcer/create_member(datum/mind/M, var/turf/override_spawn_loc)
+/datum/emergency_call/provost_enforcer/create_member(datum/mind/M, turf/override_spawn_loc)
 	var/turf/T = override_spawn_loc ? override_spawn_loc : get_spawn_point()
 
 	if(!istype(T))

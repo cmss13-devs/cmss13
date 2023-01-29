@@ -57,7 +57,7 @@
 
 	start_on_spawn = FALSE
 
-/obj/effect/overlay/temp/point/Initialize(mapload, var/mob/M, atom/actual_pointed_atom)
+/obj/effect/overlay/temp/point/Initialize(mapload, mob/M, atom/actual_pointed_atom)
 	. = ..()
 	var/turf/T1 = loc
 	var/turf/T2 = M.loc
@@ -96,7 +96,7 @@
 	var/list/client/clients
 	var/image/self_icon
 
-/obj/effect/overlay/temp/point/big/queen/proc/show_to_client(var/client/C)
+/obj/effect/overlay/temp/point/big/queen/proc/show_to_client(client/C)
 	if(!C)
 		return
 

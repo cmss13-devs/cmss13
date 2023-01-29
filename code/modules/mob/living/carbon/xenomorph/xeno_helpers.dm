@@ -4,7 +4,7 @@
 /mob/living/carbon/xenomorph/ventcrawl_carry()
 	if(stomach_contents.len)
 		for(var/mob/living/carbon/human/H in stomach_contents)
-			if(!isSpeciesMonkey(H))
+			if(!isspeciesmonkey(H))
 				to_chat(src, SPAN_XENOWARNING("You cannot ventcrawl with [H] inside you!"))
 				return FALSE
 	return TRUE
@@ -17,9 +17,9 @@
 		if(IS_XENO_LEADER(src))
 			if(hive.destruction_allowed == NORMAL_XENO || hive.destruction_allowed == XENO_LEADER)
 				return TRUE
-		if(hive.destruction_allowed == NORMAL_XENO && isXenoBuilder(src))
+		if(hive.destruction_allowed == NORMAL_XENO && isxeno_builder(src))
 			return TRUE
-		if(isXenoQueen(src))
+		if(isqueen(src))
 			return TRUE
 
 	return FALSE
@@ -57,5 +57,5 @@
 /mob/living/carbon/xenomorph/check_fire_intensity_resistance()
 	return caste.fire_intensity_resistance
 
-/mob/living/carbon/xenomorph/alter_ghost(var/mob/dead/observer/ghost)
+/mob/living/carbon/xenomorph/alter_ghost(mob/dead/observer/ghost)
 	ghost.icon_state = "[mutation_type] [caste.caste_type] Running"

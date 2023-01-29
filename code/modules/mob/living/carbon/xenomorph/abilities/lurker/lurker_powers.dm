@@ -160,7 +160,7 @@
 			if (target.stat == DEAD)
 				continue
 
-			if (!isXenoOrHuman(target) || xeno.can_not_harm(target))
+			if (!isxeno_human(target) || xeno.can_not_harm(target))
 				continue
 
 			xeno.visible_message(SPAN_DANGER("[xeno] slashes [target]!"), \
@@ -305,7 +305,7 @@
 	..()
 	return
 
-/datum/action/xeno_action/activable/tail_jab/proc/reset_direction(var/mob/living/carbon/xenomorph/xeno, var/last_dir, var/new_dir)
+/datum/action/xeno_action/activable/tail_jab/proc/reset_direction(mob/living/carbon/xenomorph/xeno, last_dir, new_dir)
 	// If the xenomorph is still holding the same direction as the tail stab animation's changed it to, reset it back to the old direction so the xenomorph isn't stuck facing backwards.
 	if(new_dir == xeno.dir)
 		xeno.setDir(last_dir)

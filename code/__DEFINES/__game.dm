@@ -497,7 +497,7 @@ block( \
 #define ALMAYER_FORE_BOUNDARY 121
 #define ALMAYER_AFT_BOUNDARY 197
 
-/proc/get_accurate_dist(var/turf/A, var/turf/B)
+/proc/get_accurate_dist(turf/A, turf/B)
 	var/dist
 	if(!A || !B)
 		dist = 0

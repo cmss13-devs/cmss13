@@ -10,7 +10,7 @@
 
 	if(mob && !isobserver(mob) && !isnewplayer(mob))
 
-		if(isXeno(mob))
+		if(isxeno(mob))
 			var/mob/living/carbon/xenomorph/X = mob
 			if(!X.hive || !GLOB.custom_event_info_list[X.hive.name])
 				to_chat(src, SPAN_WARNING("\n\n[X] has none or incorrect hive set or hive message datum was not found, tell a dev!\n\n"))

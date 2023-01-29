@@ -13,7 +13,7 @@
 	/// If it's been enhanced by a spit combo.
 	var/acid_enhanced = FALSE
 
-/datum/effects/acid/New(var/atom/A, var/mob/from = null, var/last_dmg_source = null, var/zone = "chest")
+/datum/effects/acid/New(atom/A, mob/from = null, last_dmg_source = null, zone = "chest")
 	..(A, from, last_dmg_source, zone)
 	if(ishuman(A))
 		var/mob/living/carbon/human/H = A
@@ -32,7 +32,7 @@
 
 	RegisterSignal(SSdcs, COMSIG_GLOB_WEATHER_CHANGE, PROC_REF(handle_weather))
 
-/datum/effects/acid/validate_atom(var/atom/A)
+/datum/effects/acid/validate_atom(atom/A)
 	if(istype(A, /obj/structure/barricade))
 		return TRUE
 

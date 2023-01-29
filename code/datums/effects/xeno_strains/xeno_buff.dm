@@ -15,10 +15,10 @@
 	var/bonus_damage = 0
 	var/bonus_speed = 0
 
-/datum/effects/xeno_buff/New(var/atom/A, var/mob/from = null, var/last_dmg_source = null, var/zone = "chest", var/ttl = 35, var/bonus_damage = 0, var/bonus_speed = 0)
+/datum/effects/xeno_buff/New(atom/A, mob/from = null, last_dmg_source = null, zone = "chest", ttl = 35, bonus_damage = 0, bonus_speed = 0)
 	. = ..(A, from, last_dmg_source, zone)
 
-	if(!isXeno(A))
+	if(!isxeno(A))
 		qdel(src)
 
 	to_chat(A, SPAN_XENONOTICE("You feel empowered"))
@@ -34,8 +34,8 @@
 
 	addtimer(CALLBACK(GLOBAL_PROC, PROC_REF(qdel), src), ttl)
 
-/datum/effects/xeno_buff/validate_atom(var/atom/A)
-	if (!isXeno(A))
+/datum/effects/xeno_buff/validate_atom(atom/A)
+	if (!isxeno(A))
 		return FALSE
 
 	var/mob/M = A

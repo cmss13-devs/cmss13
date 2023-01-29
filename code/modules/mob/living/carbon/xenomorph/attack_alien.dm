@@ -108,7 +108,7 @@
 						M.visible_message(SPAN_DANGER("The [M] smashes off [src]'s [wear_mask.name]!"), \
 						SPAN_DANGER("You smash off [src]'s [wear_mask.name]!"), null, 5)
 						drop_inv_item_on_ground(wear_mask)
-						if(isYautja(src))
+						if(isyautja(src))
 							emote("roar")
 						else
 							emote("scream")
@@ -177,7 +177,7 @@
 
 		if(INTENT_DISARM)
 
-			if(M.legcuffed && isYautja(src))
+			if(M.legcuffed && isyautja(src))
 				to_chat(M, SPAN_XENODANGER("You don't have the dexterity to tackle the headhunter with that thing on your leg!"))
 				return XENO_NO_DELAY_ACTION
 
@@ -192,7 +192,7 @@
 			var/tackle_mult = 1
 			var/tackle_min_offset = 0
 			var/tackle_max_offset = 0
-			if (isYautja(src))
+			if (isyautja(src))
 				tackle_mult = 0.2
 				tackle_min_offset += 2
 				tackle_max_offset += 2
@@ -231,7 +231,7 @@
 				M.start_pulling(src)
 
 		if(INTENT_HARM)
-			if(isXeno(src) && xeno_hivenumber(src) == M.hivenumber)
+			if(isxeno(src) && xeno_hivenumber(src) == M.hivenumber)
 				var/mob/living/carbon/xenomorph/X = src
 				if(!X.banished)
 					M.visible_message(SPAN_WARNING("[M] nibbles [src]."), \
@@ -647,7 +647,7 @@
 		TryToSwitchState(M)
 		return XENO_NONCOMBAT_ACTION
 	else
-		if(isXenoLarva(M))
+		if(islarva(M))
 			return
 		else
 			M.visible_message(SPAN_XENONOTICE("[M] claws [src]!"), \
@@ -953,7 +953,7 @@
 		return XENO_ATTACK_ACTION
 
 /obj/structure/girder/attack_alien(mob/living/carbon/xenomorph/M)
-	if((M.caste && M.caste.tier < 2 && !isXenoQueen(M)) || unacidable)
+	if((M.caste && M.caste.tier < 2 && !isqueen(M)) || unacidable)
 		to_chat(M, SPAN_WARNING("Your claws aren't sharp enough to damage [src]."))
 		return XENO_NO_DELAY_ACTION
 	M.animation_attack_on(src)

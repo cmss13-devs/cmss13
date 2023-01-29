@@ -112,7 +112,7 @@
 
 
 // Spin for a set amount of time at a set speed using directional states
-/atom/movable/proc/spin(var/duration, var/turn_delay = 1, var/clockwise = 0, var/cardinal_only = 1)
+/atom/movable/proc/spin(duration, turn_delay = 1, clockwise = 0, cardinal_only = 1)
 	set waitfor = 0
 
 	if (turn_delay < 1)
@@ -131,7 +131,7 @@
 		setDir(turn(dir, spin_degree))
 		duration -= turn_delay
 
-/atom/movable/proc/spin_circle(var/num_circles = 1, var/turn_delay = 1, var/clockwise = 0, var/cardinal_only = 1)
+/atom/movable/proc/spin_circle(num_circles = 1, turn_delay = 1, clockwise = 0, cardinal_only = 1)
 	set waitfor = 0
 
 	if (num_circles < 1 || turn_delay < 1)
@@ -183,7 +183,7 @@
 /atom/movable/clone/attack_hand(mob/user)
 	return src.mstr.attack_hand(user)
 
-/atom/movable/clone/attack_alien(mob/living/carbon/Xenomorph/M, dam_bonus)
+/atom/movable/clone/attack_alien(mob/living/carbon/xenomorph/M, dam_bonus)
 	return src.mstr.attack_alien(M, dam_bonus)
 
 /atom/movable/clone/attack_animal(mob/living/M as mob)

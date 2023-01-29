@@ -1641,8 +1641,8 @@
 /area/corsat/sigma/biodome/gunrange)
 "Dd" = (
 /obj/structure/surface/table/almayer,
-/obj/item/explosive/grenade/HE,
-/obj/item/explosive/grenade/HE,
+/obj/item/explosive/grenade/high_explosive,
+/obj/item/explosive/grenade/high_explosive,
 /turf/open/floor{
 	icon_state = "asteroidplating";
 	tag = "icon-asteroidplating"
@@ -1656,8 +1656,8 @@
 /area/template_noop)
 "Dg" = (
 /obj/structure/surface/table/almayer,
-/obj/item/explosive/grenade/HE/training,
-/obj/item/explosive/grenade/HE/training,
+/obj/item/explosive/grenade/high_explosive/training,
+/obj/item/explosive/grenade/high_explosive/training,
 /turf/open/floor{
 	icon_state = "asteroidplating";
 	tag = "icon-asteroidplating"
@@ -1795,7 +1795,7 @@
 /area/corsat/sigma/biodome/gunrange)
 "Fu" = (
 /obj/structure/surface/table/almayer,
-/obj/item/explosive/grenade/HE/training,
+/obj/item/explosive/grenade/high_explosive/training,
 /turf/open/floor{
 	icon_state = "asteroidplating";
 	tag = "icon-asteroidplating"
@@ -1860,8 +1860,8 @@
 /area/corsat/sigma/biodome/gunrange)
 "Gf" = (
 /obj/structure/surface/table/almayer,
-/obj/item/explosive/grenade/HE/frag,
-/obj/item/explosive/grenade/HE/frag,
+/obj/item/explosive/grenade/high_explosive/frag,
+/obj/item/explosive/grenade/high_explosive/frag,
 /turf/open/floor{
 	icon_state = "asteroidplating";
 	tag = "icon-asteroidplating"

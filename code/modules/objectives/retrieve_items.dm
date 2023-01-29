@@ -14,7 +14,7 @@
 		/area/almayer/medical/medical_science
 	)
 
-/datum/cm_objective/retrieve_item/New(var/T)
+/datum/cm_objective/retrieve_item/New(T)
 	..()
 	if(T)
 		target_item = T

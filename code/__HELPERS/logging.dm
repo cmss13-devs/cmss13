@@ -74,7 +74,7 @@
 	GLOB.STUI.admin.Add("\[[time_stamp()]]GAME: [text]")
 	GLOB.STUI.processing |= STUI_LOG_ADMIN
 
-/proc/log_interact(var/mob/living/carbon/origin, var/mob/living/carbon/target, var/msg)
+/proc/log_interact(mob/living/carbon/origin, mob/living/carbon/target, msg)
 	if (CONFIG_GET(flag/log_interact))
 		diary << html_decode("\[[time_stamp()]]INTERACT: [msg][log_end]")
 	origin.attack_log += "\[[time_stamp()]\]<font color='green'> [msg] </font>"
@@ -90,7 +90,7 @@
 	GLOB.STUI.admin.Add("\[[time_stamp()]]OVERWATCH: [text]")
 	GLOB.STUI.processing |= STUI_LOG_ADMIN
 
-/proc/log_idmod(var/obj/item/card/id/target_id, var/msg)
+/proc/log_idmod(obj/item/card/id/target_id, msg)
 	if (CONFIG_GET(flag/log_idmod))
 		diary << html_decode("\[[time_stamp()]]ID MOD: [msg][log_end]")
 	target_id.modification_log += "\[[time_stamp()]]: [msg]"

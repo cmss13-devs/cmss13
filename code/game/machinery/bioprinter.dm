@@ -144,7 +144,7 @@
 			return TRUE
 
 
-/obj/structure/machinery/bioprinter/proc/print_limb(var/limb_path)
+/obj/structure/machinery/bioprinter/proc/print_limb(limb_path)
 	if(inoperable())
 		return
 	new limb_path(get_turf(src))

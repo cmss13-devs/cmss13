@@ -65,7 +65,7 @@
 	fa_target = hovered
 	fa_params = params2list(params)
 
-/obj/item/weapon/gun/proc/repeat_fire(var/mob/user)
+/obj/item/weapon/gun/proc/repeat_fire(mob/user)
 	if(!fa_target)
 		return
 
@@ -98,7 +98,7 @@
 	addtimer(CALLBACK(src, PROC_REF(repeat_fire), user), fa_delay)
 
 // Make sure we're not trying to start full auto when the gun isn't even held by anyone
-/obj/item/weapon/gun/dropped(var/mob/user)
+/obj/item/weapon/gun/dropped(mob/user)
 	..()
 
 	if(!user.client)
@@ -111,7 +111,7 @@
 	))
 
 // Also make sure it's registered when held in any hand and full-auto is on
-/obj/item/weapon/gun/equipped(var/mob/user, var/slot)
+/obj/item/weapon/gun/equipped(mob/user, slot)
 	..()
 
 	if(!user.client)

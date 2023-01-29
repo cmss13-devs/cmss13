@@ -108,14 +108,14 @@ var/global/list/job_command_roles = JOB_COMMAND_ROLES_LIST
 
 // Used to add a timelock to a job. Will be passed onto derivatives
 #define AddTimelock(Path, timelockList) \
-##Path/setup_requirements(var/list/L){\
+##Path/setup_requirements(list/L){\
 	L += timelockList;\
 	. = ..(L);\
 }
 
 // Used to add a timelock to a job. Will be passed onto derivates. Will not include the parent's timelocks.
 #define OverrideTimelock(Path, timelockList) \
-##Path/setup_requirements(var/list/L){\
+##Path/setup_requirements(list/L){\
 	L = timelockList;\
 	. = ..(L);\
 }

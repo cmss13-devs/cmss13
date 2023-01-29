@@ -16,11 +16,11 @@
 	processing = TRUE
 
 
-/obj/structure/machinery/computer/prisoner/attack_remote(var/mob/user as mob)
+/obj/structure/machinery/computer/prisoner/attack_remote(mob/user as mob)
 	return src.attack_hand(user)
 
 
-/obj/structure/machinery/computer/prisoner/attack_hand(var/mob/user as mob)
+/obj/structure/machinery/computer/prisoner/attack_hand(mob/user as mob)
 	if(..())
 		return
 	user.set_interaction(src)

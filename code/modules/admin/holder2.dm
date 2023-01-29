@@ -73,7 +73,7 @@ generally it would be used like so:
 NOTE: it checks usr! not src! So if you're checking somebody's rank in a proc which they did not call
 you will have to do something like if(client.admin_holder.rights & R_ADMIN) yourself.
 */
-/proc/check_client_rights(var/client/C, rights_required, show_msg = TRUE)
+/proc/check_client_rights(client/C, rights_required, show_msg = TRUE)
 	if(!C)
 		return FALSE
 

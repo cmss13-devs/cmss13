@@ -113,7 +113,7 @@
 	anchored = TRUE
 	flags_atom = ON_BORDER
 
-/obj/structure/holowindow/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/obj/structure/holowindow/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_can_pass_all = PASS_GLASS

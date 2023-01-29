@@ -29,7 +29,7 @@
 
 	SetLuminosity(3)
 	apply_fire_overlay()
-	addtimer(CALLBACK(GLOBAL_PROC, PROC_REF(qdel), src), 5 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(qdel), src), 5 SECONDS)
 
 /obj/item/ammo_box/proc/get_severity()
 	return
@@ -214,7 +214,7 @@
 			return
 	handle_side_effects(host_box)
 	//need to make sure we delete the structure box if it exists, it will handle the deletion of ammo box inside
-	addtimer(CALLBACK(GLOBAL_PROC, PROC_REF(qdel), (host_box ? host_box : src)), 5 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(qdel), (host_box ? host_box : src)), 5 SECONDS)
 	return
 
 /obj/item/ammo_box/magazine/handle_side_effects(obj/structure/magazine_box/host_box, will_explode = FALSE)
@@ -400,7 +400,7 @@
 			addtimer(CALLBACK(src, PROC_REF(explode), severity, flame_cause_data), max(5 - severity, 2)) //the more ammo inside, the faster and harder it cooks off
 			return
 	handle_side_effects()
-	addtimer(CALLBACK(GLOBAL_PROC, PROC_REF(qdel), (src)), 5 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(qdel), (src)), 5 SECONDS)
 
 /obj/item/ammo_box/rounds/handle_side_effects(will_explode = FALSE)
 	if(will_explode)

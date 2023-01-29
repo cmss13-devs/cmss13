@@ -30,7 +30,7 @@
 
 	print_backstory(mob)
 
-	addtimer(CALLBACK(GLOBAL_PROC, PROC_REF(to_chat), mob, SPAN_BOLD("Objectives:</b> [objectives]")), 1 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), mob, SPAN_BOLD("Objectives:</b> [objectives]")), 1 SECONDS)
 
 /datum/emergency_call/goon/print_backstory(mob/living/carbon/human/M)
 	to_chat(M, SPAN_BOLD("You were born [pick(75;"in Europe", 15;"in Asia", 10;"on Mars")] to a poor family."))

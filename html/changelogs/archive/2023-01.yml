@@ -609,3 +609,21 @@
   - bugfix: fixes the bad logging when an admin used direct narrate in view
   - bugfix: fixes the ahelp fallback chat button
   - bugfix: the pickup hotkey doesn't runtime as bad now
+2023-01-29:
+  HarryOB & TopHatPenguin:
+  - rscadd: Expands upon the execution feature allowing users to execute players who
+      are restrained.
+  - code_imp: Changes M to attacked_mob for QOL readability of code.
+  MaximusRex:
+  - balance: Removed shaman strain from carrier.
+  - spellcheck: Changed a minor entry in the Carrier.DM to reflect the above changes.
+  ThePiachu:
+  - admin: Admins can now spawn a xeno cultist ERT for their events.
+  - rscadd: Added a more serious version of a xeno cultist synthetic.
+  TopHatPenguin:
+  - spellcheck: Changes beta queen to bravo queen and gamma to charlie | Decapitlises
+      typepaths in larva.dm and queen.dm
+  Waseemq1235:
+  - rscadd: SecTech vendors can now vend regulation tape.
+  harryob:
+  - spellcheck: removed some instances of var/ in proc arguments

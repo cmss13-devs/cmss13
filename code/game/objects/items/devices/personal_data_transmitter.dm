@@ -87,12 +87,12 @@
 	..()
 
 	if(!battery)
-		to_chat(user, SPAN_WARNING("\The [src] doesn't do anything! It must have run out of battery already.. what a piece of junk. You realize the battery cover is open."))
+		to_chat(user, SPAN_WARNING("\The [src] doesn't do anything! It must have run out of battery already... what a piece of junk. You realize the battery cover is open."))
 		playsound(src, 'sound/machines/switch.ogg', 15, TRUE)
 		return
 
 	if(!battery.use(PDT_BATTERY_SCREEN_DRAW))
-		to_chat(user, SPAN_WARNING("\The [src] doesn't do anything! It must have run out of battery already.. what a piece of junk."))
+		to_chat(user, SPAN_WARNING("\The [src] doesn't do anything! It must have run out of battery already... what a piece of junk."))
 		playsound(src, 'sound/machines/switch.ogg', 15, TRUE)
 		return
 	update_icon()

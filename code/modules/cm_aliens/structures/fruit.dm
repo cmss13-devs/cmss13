@@ -324,7 +324,7 @@
 
 /obj/item/reagent_container/food/snacks/resin_fruit
 	name = XENO_FRUIT_LESSER
-	desc = "A strange fruit that you could eat.. if you REALLY wanted to. Its roots seem to twitch every so often."
+	desc = "A strange fruit that you could eat... if you REALLY wanted to. Its roots seem to twitch every so often."
 	icon = 'icons/mob/xenos/fruits.dmi'
 	icon_state = "fruit_lesser_item"
 	w_class = SIZE_MEDIUM
@@ -447,7 +447,7 @@
 
 /obj/item/reagent_container/food/snacks/resin_fruit/greater
 	name = XENO_FRUIT_GREATER
-	desc = "A strange large fruit that you could eat.. if you REALLY wanted to. Its roots seem to twitch every so often."
+	desc = "A strange large fruit that you could eat... if you REALLY wanted to. Its roots seem to twitch every so often."
 	icon_state = "fruit_greater_item"
 	bitesize = 4
 	fruit_type = /obj/effect/alien/resin/fruit/greater
@@ -457,7 +457,7 @@
 
 /obj/item/reagent_container/food/snacks/resin_fruit/unstable
 	name = XENO_FRUIT_UNSTABLE
-	desc = "A strange volatile fruit that you could eat.. if you REALLY wanted to. Its roots seem to twitch every so often."
+	desc = "A strange volatile fruit that you could eat... if you REALLY wanted to. Its roots seem to twitch every so often."
 	icon_state = "fruit_unstable_item"
 	bitesize = 4
 	fruit_type = /obj/effect/alien/resin/fruit/unstable
@@ -468,7 +468,7 @@
 
 /obj/item/reagent_container/food/snacks/resin_fruit/spore
 	name = XENO_FRUIT_SPORE
-	desc = "A strange spore-filled fruit that you could eat.. if you REALLY wanted to. Its roots seem to twitch every so often."
+	desc = "A strange spore-filled fruit that you could eat... if you REALLY wanted to. Its roots seem to twitch every so often."
 	icon_state = "fruit_spore_item"
 	fruit_type = /obj/effect/alien/resin/fruit/spore
 
@@ -478,7 +478,7 @@
 
 /obj/item/reagent_container/food/snacks/resin_fruit/speed
 	name = XENO_FRUIT_SPEED
-	desc = "A strange plasma-filled fruit that you could eat.. if you REALLY wanted to. Its roots seem to twitch every so often."
+	desc = "A strange plasma-filled fruit that you could eat... if you REALLY wanted to. Its roots seem to twitch every so often."
 	icon_state = "fruit_speed_item"
 	fruit_type = /obj/effect/alien/resin/fruit/speed
 

@@ -44,7 +44,7 @@
 	if(brainmob?.client)//if thar be a brain inside... the brain.
 		. += "You can feel the small spark of life still left in this one."
 	else
-		. += "This one seems particularly lifeless. Perhaps it will regain some of its luster later.."
+		. += "This one seems particularly lifeless. Perhaps it will regain some of its luster later."
 
 /obj/item/organ/brain/removed(mob/living/target, mob/living/user)
 

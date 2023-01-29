@@ -107,6 +107,9 @@
 	var/list/resin_build_order
 	var/minimum_xeno_playtime = 0
 
+// cannot evolve to this caste until the round has been going on for this amount of time
+	// IMPORTANT: this is ROUND_TIME, not world.time
+	var/minimum_evolve_time = 1 MINUTES
 
 /datum/caste_datum/can_vv_modify()
 	return FALSE

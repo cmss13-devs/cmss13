@@ -27,6 +27,8 @@
 
 	heal_resting = 1.4
 
+	minimum_evolve_time = 8 MINUTES
+
 /mob/living/carbon/xenomorph/warrior
 	caste_type = XENO_CASTE_WARRIOR
 	name = XENO_CASTE_WARRIOR

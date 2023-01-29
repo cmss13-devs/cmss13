@@ -23,6 +23,8 @@
 
 	heal_resting = 1.5
 
+	minimum_evolve_time = 10 MINUTES
+
 /mob/living/carbon/xenomorph/lurker
 	caste_type = XENO_CASTE_LURKER
 	name = XENO_CASTE_LURKER

@@ -28,6 +28,8 @@
 
 	behavior_delegate_type = /datum/behavior_delegate/ravager_base
 
+	minimum_evolve_time = 15 MINUTES
+
 /mob/living/carbon/xenomorph/ravager
 	caste_type = XENO_CASTE_RAVAGER
 	name = XENO_CASTE_RAVAGER

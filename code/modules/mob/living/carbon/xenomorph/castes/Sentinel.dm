@@ -26,6 +26,8 @@
 
 	behavior_delegate_type = /datum/behavior_delegate/sentinel_base
 
+	minimum_evolve_time = 5 MINUTES
+
 /mob/living/carbon/xenomorph/sentinel
 	caste_type = XENO_CASTE_SENTINEL
 	name = XENO_CASTE_SENTINEL

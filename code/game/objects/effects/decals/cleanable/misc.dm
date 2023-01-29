@@ -59,7 +59,7 @@
 	QDEL_IN(WEAKREF(src), 2 MINUTES)
 
 /obj/effect/decal/cleanable/greenglow/Destroy()
-	SetLuminosity(0)
+	set_light(0)
 	return ..()
 
 /obj/effect/decal/cleanable/cobweb

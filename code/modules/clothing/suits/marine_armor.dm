@@ -171,8 +171,8 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 
 /obj/item/clothing/suit/storage/marine/pickup(mob/user)
 	if(flags_marine_armor & ARMOR_LAMP_ON)
-		user.SetLuminosity(brightness_on, FALSE, src)
-		SetLuminosity(0)
+		user.set_light(brightness_on, FALSE, src)
+		set_light(0)
 	..()
 
 /obj/item/clothing/suit/storage/marine/dropped(mob/user)
@@ -187,17 +187,17 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 /obj/item/clothing/suit/storage/marine/proc/turn_off_light(mob/wearer)
 	if(is_light_on())
 		if(wearer)
-			wearer.SetLuminosity(0, FALSE, src)
-		SetLuminosity(brightness_on)
+			wearer.set_light(0, FALSE, src)
+		set_light(brightness_on)
 		toggle_armor_light() //turn the light off
 		return 1
 	return 0
 
 /obj/item/clothing/suit/storage/marine/Destroy()
 	if(ismob(src.loc))
-		src.loc.SetLuminosity(0, FALSE, src)
+		src.loc.set_light(0, FALSE, src)
 	else
-		SetLuminosity(0)
+		set_light(0)
 	return ..()
 
 /obj/item/clothing/suit/storage/marine/attack_self(mob/user)
@@ -225,12 +225,12 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 /obj/item/clothing/suit/storage/marine/proc/toggle_armor_light(mob/user)
 	flashlight_cooldown = world.time + 20 //2 seconds cooldown every time the light is toggled
 	if(is_light_on()) //Turn it off.
-		if(user) user.SetLuminosity(0, FALSE, src)
-		else SetLuminosity(0)
+		if(user) user.set_light(0, FALSE, src)
+		else set_light(0)
 		playsound(src,'sound/handling/click_2.ogg', 50, 1)
 	else //Turn it on.
-		if(user) user.SetLuminosity(brightness_on, FALSE, src)
-		else SetLuminosity(brightness_on)
+		if(user) user.set_light(brightness_on, FALSE, src)
+		else set_light(brightness_on)
 
 	flags_marine_armor ^= ARMOR_LAMP_ON
 

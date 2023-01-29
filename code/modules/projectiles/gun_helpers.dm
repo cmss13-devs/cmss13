@@ -171,8 +171,8 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 		var/obj/item/attachable/attachment = attachments[slot]
 		if (!attachment || !attachment.light_mod)
 			continue
-		bearer.SetLuminosity(0, FALSE, src)
-		SetLuminosity(attachment.light_mod)
+		bearer.set_light(0, FALSE, src)
+		set_light(attachment.light_mod)
 		return TRUE
 	return FALSE
 
@@ -184,8 +184,8 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 			var/obj/item/attachable/attachment = attachments[slot]
 			if (!attachment || !attachment.light_mod)
 				continue
-			user.SetLuminosity(attachment.light_mod, FALSE, src)
-			SetLuminosity(0)
+			user.set_light(attachment.light_mod, FALSE, src)
+			set_light(0)
 			break
 
 	unwield(user)

@@ -68,7 +68,7 @@
 	QDEL_NULL(spark_system)
 	QDEL_NULL(ammo)
 	stop_processing()
-	SetLuminosity(0)
+	set_light(0)
 	. = ..()
 
 /obj/structure/machinery/defenses/sentry/process()
@@ -169,7 +169,7 @@
 
 /obj/structure/machinery/defenses/sentry/power_on_action()
 	target = null
-	SetLuminosity(7)
+	set_light(7)
 
 	visible_message("[icon2html(src, viewers(src))] [SPAN_NOTICE("The [name] hums to life and emits several beeps.")]")
 	visible_message("[icon2html(src, viewers(src))] [SPAN_NOTICE("The [name] buzzes in a monotone voice: 'Default systems initiated'")]")
@@ -177,7 +177,7 @@
 	set_range()
 
 /obj/structure/machinery/defenses/sentry/power_off_action()
-	SetLuminosity(0)
+	set_light(0)
 	visible_message("[icon2html(src, viewers(src))] [SPAN_NOTICE("The [name] powers down and goes silent.")]")
 	stop_processing()
 	unset_range()
@@ -323,8 +323,8 @@
 	if(isnull(angle))
 		return
 
-	SetLuminosity(SENTRY_MUZZLELUM)
-	addtimer(CALLBACK(src, TYPE_PROC_REF(/atom, SetLuminosity), -SENTRY_MUZZLELUM), 10)
+	set_light(SENTRY_MUZZLELUM)
+	addtimer(CALLBACK(src, TYPE_PROC_REF(/atom, set_light), -SENTRY_MUZZLELUM), 10)
 
 	var/image_layer = layer + 0.1
 	var/offset = 13

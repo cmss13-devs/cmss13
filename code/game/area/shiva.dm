@@ -7,20 +7,17 @@
 	icon_state = "shiva"
 	can_build_special = TRUE //T-Comms structure
 	temperature = ICE_COLONY_TEMPERATURE
-	lighting_use_dynamic = TRUE
 
 /area/shuttle/drop1/shiva
 	name = "Shiva's Snowball - Dropship Alamo Landing Zone"
 	icon_state = "shuttle"
 	icon = 'icons/turf/area_shiva.dmi'
-	lighting_use_dynamic = TRUE
 	is_resin_allowed = FALSE
 
 /area/shuttle/drop2/shiva
 	name = "Shiva's Snowball - Dropship Normandy Landing Zone"
 	icon_state = "shuttle2"
 	icon = 'icons/turf/area_shiva.dmi'
-	lighting_use_dynamic = TRUE
 	is_resin_allowed = FALSE
 
 /area/shiva/exterior/lz1_console

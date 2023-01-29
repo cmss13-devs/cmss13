@@ -184,7 +184,7 @@
 
 	to_chat(X, SPAN_XENOWARNING("Your stomach starts turning and twisting, getting ready to compress the built up acid."))
 	X.color = "#22FF22"
-	X.SetLuminosity(3)
+	X.set_light(3)
 
 	BD.caboom_trigger = TRUE
 	BD.caboom_left = BD.caboom_timer
@@ -204,6 +204,6 @@
 
 	BD.caboom_trigger = FALSE
 	X.color = null
-	X.SetLuminosity(0)
+	X.set_light(0)
 	BD.modify_acid(-BD.max_acid / 4)
 	to_chat(X, SPAN_XENOWARNING("You remove all your explosive acid before it combusted."))

@@ -102,14 +102,14 @@
 	CHECK_TICK
 	do_animate("opening")
 	icon_state = "door0"
-	src.SetOpacity(FALSE)
+	src.set_opacity(FALSE)
 	sleep(openspeed)
 	src.layer = open_layer
 	src.density = FALSE
 	update_icon()
-	SetOpacity(0)
+	set_opacity(0)
 	if (filler)
-		filler.SetOpacity(opacity)
+		filler.set_opacity(opacity)
 
 	if(operating)
 		operating = FALSE
@@ -130,7 +130,7 @@
 	operating = TRUE
 	CHECK_TICK
 	src.density = TRUE
-	src.SetOpacity(TRUE)
+	src.set_opacity(TRUE)
 	src.layer = closed_layer
 	do_animate("closing")
 	sleep(openspeed)

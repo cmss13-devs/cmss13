@@ -104,7 +104,7 @@
 	if(!acids_area)
 		return
 
-	if(SSweather.is_weather_event && locate(acids_area.master) in SSweather.weather_areas)
+	if(SSweather.is_weather_event && locate(acids_area) in SSweather.weather_areas)
 		//smothering_strength is 1-10, we use this to take a proportional amount off the stats
 		duration = duration - (duration * (SSweather.weather_event_instance.fire_smothering_strength * 0.1))
 		damage_in_total_human = damage_in_total_human - (damage_in_total_human * (SSweather.weather_event_instance.fire_smothering_strength * 0.1))

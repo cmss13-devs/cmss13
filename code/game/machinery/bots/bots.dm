@@ -20,12 +20,12 @@
 	if(stat)
 		return 0
 	on = 1
-	SetLuminosity(initial(luminosity))
+	set_light(initial(luminosity))
 	return 1
 
 /obj/structure/machinery/bot/proc/turn_off()
 	on = 0
-	SetLuminosity(0)
+	set_light(0)
 
 /obj/structure/machinery/bot/proc/explode()
 	qdel(src)
@@ -35,7 +35,7 @@
 		explode()
 
 /obj/structure/machinery/bot/Destroy()
-	SetLuminosity(0)
+	set_light(0)
 	. = ..()
 
 /obj/structure/machinery/bot/get_examine_text(mob/user)

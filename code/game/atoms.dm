@@ -59,6 +59,34 @@
 	///Default pixel y shifting for the atom's icon.
 	var/base_pixel_y = 0
 
+	//light stuff
+
+	///Light systems, only one of the three should be active at the same time.
+	var/light_system = STATIC_LIGHT
+	///Range of the light in tiles. Zero means no light.
+	var/light_range = 0
+	///Intensity of the light. The stronger, the less shadows you will see on the lit area.
+	var/light_power = 1
+	///Hexadecimal RGB string representing the colour of the light. White by default.
+	var/light_color = COLOR_WHITE
+	///Boolean variable for toggleable lights. Has no effect without the proper light_system, light_range and light_power values.
+	var/light_on = FALSE
+	///Our light source. Don't fuck with this directly unless you have a good reason!
+	var/tmp/datum/dynamic_light_source/light
+	///Any light sources that are "inside" of us, for example, if src here was a mob that's carrying a flashlight, that flashlight's light source would be part of this list.
+	var/tmp/list/hybrid_light_sources
+
+	//Values should avoid being close to -16, 16, -48, 48 etc.
+	//Best keep them within 10 units of a multiple of 32, as when the light is closer to a wall, the probability
+	//that a shadow extends to opposite corners of the light mask square is increased, resulting in more shadow
+	//overlays.
+	///x offset for dynamic lights on this atom
+	var/light_pixel_x
+	///y offset for dynamic lights on this atom
+	var/light_pixel_y
+	///typepath for the lighting maskfor dynamic light sources
+	var/light_mask_type = null
+
 /atom/New(loc, ...)
 	var/do_initialize = SSatoms.initialized
 	if(do_initialize != INITIALIZATION_INSSATOMS)

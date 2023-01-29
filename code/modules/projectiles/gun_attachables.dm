@@ -665,15 +665,15 @@ Defined in conflicts.dm of the #defines folder.
 			attach_icon += "-on"
 			activated = TRUE
 		attached_item.update_icon()
-		light_source.SetLuminosity(helm_mounted_light_mod * activated, FALSE, G)
-		attached_item.SetLuminosity(helm_mounted_light_mod * activated, FALSE, G)
+		light_source.set_light(helm_mounted_light_mod * activated, FALSE, G)
+		attached_item.set_light(helm_mounted_light_mod * activated, FALSE, G)
 		activation.update_button_icon()
 		return
 	if(turn_off && !(G.flags_gun_features & GUN_FLASHLIGHT_ON))
 		return FALSE
 	var/flashlight_on = (G.flags_gun_features & GUN_FLASHLIGHT_ON) ? 0 : 1
 	var/atom/movable/light_source =  ismob(G.loc) ? G.loc : G
-	light_source.SetLuminosity(light_mod * flashlight_on, FALSE, G)
+	light_source.set_light(light_mod * flashlight_on, FALSE, G)
 	G.flags_gun_features ^= GUN_FLASHLIGHT_ON
 
 	if(G.flags_gun_features & GUN_FLASHLIGHT_ON)

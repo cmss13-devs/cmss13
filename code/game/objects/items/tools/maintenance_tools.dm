@@ -195,9 +195,9 @@
 /obj/item/tool/weldingtool/Destroy()
 	if(welding)
 		if(ismob(loc))
-			loc.SetLuminosity(0, FALSE, src)
+			loc.set_light(0, FALSE, src)
 		else
-			SetLuminosity(0)
+			set_light(0)
 		STOP_PROCESSING(SSobj, src)
 	. = ..()
 
@@ -330,9 +330,9 @@
 			welding = 1
 			if(M)
 				to_chat(M, SPAN_NOTICE("You switch [src] on."))
-				M.SetLuminosity(2, FALSE, src)
+				M.set_light(2, FALSE, src)
 			else
-				SetLuminosity(2)
+				set_light(2)
 			weld_tick += 8 //turning the tool on does not consume fuel directly, but it advances the process that regularly consumes fuel.
 			force = 15
 			damtype = "fire"
@@ -357,13 +357,13 @@
 				to_chat(M, SPAN_NOTICE("You switch [src] off."))
 			else
 				to_chat(M, SPAN_WARNING("[src] shuts off!"))
-			M.SetLuminosity(0, FALSE, src)
+			M.set_light(0, FALSE, src)
 			if(M.r_hand == src)
 				M.update_inv_r_hand()
 			if(M.l_hand == src)
 				M.update_inv_l_hand()
 		else
-			SetLuminosity(0)
+			set_light(0)
 		STOP_PROCESSING(SSobj, src)
 
 //Decides whether or not to damage a player's eyes based on what they're wearing as protection
@@ -409,14 +409,14 @@
 /obj/item/tool/weldingtool/pickup(mob/user)
 	. = ..()
 	if(welding)
-		SetLuminosity(0)
-		user.SetLuminosity(2, FALSE, src)
+		set_light(0)
+		user.set_light(2, FALSE, src)
 
 
 /obj/item/tool/weldingtool/dropped(mob/user)
 	if(welding && loc != user)
-		user.SetLuminosity(0, FALSE, src)
-		SetLuminosity(2)
+		user.set_light(0, FALSE, src)
+		set_light(2)
 	return ..()
 
 

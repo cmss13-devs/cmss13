@@ -245,7 +245,7 @@
 	if(A)
 		on = 0
 // A.update_lights()
-	SetLuminosity(0)
+	set_light(0)
 	. = ..()
 
 /obj/structure/machinery/light/proc/is_broken()
@@ -269,7 +269,6 @@
 
 // update the icon_state and luminosity of the light depending on its state
 /obj/structure/machinery/light/proc/update(trigger = 1)
-	SSlighting.lights_current.Add(light)
 	update_icon()
 	if(on)
 		if(luminosity != brightness)
@@ -285,13 +284,13 @@
 					status = LIGHT_BURNED
 					icon_state = "[base_state]-burned"
 					on = 0
-					SetLuminosity(0)
+					set_light(0)
 			else
 				update_use_power(USE_POWER_ACTIVE)
-				SetLuminosity(brightness)
+				set_light(brightness)
 	else
 		update_use_power(USE_POWER_NONE)
-		SetLuminosity(0)
+		set_light(0)
 
 	if(on != on_gs)
 		on_gs = on
@@ -414,8 +413,8 @@
 /obj/structure/machinery/light/proc/has_power()
 	var/area/A = src.loc.loc
 	if(!src.needs_power)
-		return A.master.lightswitch
-	return A.master.lightswitch && A.master.power_light
+		return A.lightswitch
+	return A.lightswitch && A.power_light
 
 /obj/structure/machinery/light/proc/flicker(amount = rand(10, 20))
 	if(flickering) return
@@ -565,8 +564,7 @@
 /obj/structure/machinery/light/power_change()
 	spawn(10)
 		if(loc)
-			var/area/A = src.loc.loc
-			A = A.master
+			var/area/A = get_area(src)
 			if(!src.needs_power)
 				seton(A.lightswitch)
 				return
@@ -739,7 +737,7 @@
 
 /obj/structure/machinery/landinglight/proc/turn_off()
 	icon_state = initial(icon_state)
-	SetLuminosity(0)
+	set_light(0)
 
 /obj/structure/machinery/landinglight/ds1
 	id = "USS Almayer Dropship 1" // ID for landing zone
@@ -749,42 +747,42 @@
 
 /obj/structure/machinery/landinglight/proc/turn_on()
 	icon_state = initial(icon_state) + "0"
-	SetLuminosity(2)
+	set_light(2)
 
 /obj/structure/machinery/landinglight/ds1/delayone/turn_on()
 	icon_state = initial(icon_state) + "1"
-	SetLuminosity(2)
+	set_light(2)
 
 /obj/structure/machinery/landinglight/ds1/delaytwo/turn_on()
 	icon_state = initial(icon_state) + "2"
-	SetLuminosity(2)
+	set_light(2)
 
 /obj/structure/machinery/landinglight/ds1/delaythree/turn_on()
 	icon_state = initial(icon_state) + "3"
-	SetLuminosity(2)
+	set_light(2)
 
 /obj/structure/machinery/landinglight/ds2/delayone/turn_on()
 	icon_state = initial(icon_state) + "1"
-	SetLuminosity(2)
+	set_light(2)
 
 /obj/structure/machinery/landinglight/ds2/delaytwo/turn_on()
 	icon_state = initial(icon_state) + "2"
-	SetLuminosity(2)
+	set_light(2)
 
 /obj/structure/machinery/landinglight/ds2/delaythree/turn_on()
 	icon_state = initial(icon_state) + "3"
-	SetLuminosity(2)
+	set_light(2)
 
 /obj/structure/machinery/landinglight/ds1/spoke
 	icon_state = "lz_spoke_light"
 
 /obj/structure/machinery/landinglight/ds1/spoke/turn_on()
 	icon_state = initial(icon_state) + "1"
-	SetLuminosity(3)
+	set_light(3)
 
 /obj/structure/machinery/landinglight/ds2/spoke
 	icon_state = "lz_spoke_light"
 
 /obj/structure/machinery/landinglight/ds2/spoke/turn_on()
 	icon_state = initial(icon_state) + "1"
-	SetLuminosity(3)
+	set_light(3)

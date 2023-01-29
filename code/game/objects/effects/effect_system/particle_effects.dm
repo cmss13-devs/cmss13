@@ -27,7 +27,7 @@
 	addtimer(CALLBACK(src, PROC_REF(handle_extinguish)), life)
 
 	setDir(pick(cardinal))
-	SetLuminosity(3)
+	set_light(3)
 
 	for(var/mob/living/L in loc)//Mobs
 		L.fire_act()
@@ -40,7 +40,7 @@
 
 /obj/effect/particle_effect/fire/proc/handle_extinguish()
 	if(istype(loc, /turf))
-		SetLuminosity(0)
+		set_light(0)
 	qdel(src)
 
 /obj/effect/particle_effect/fire/Crossed(mob/living/L)

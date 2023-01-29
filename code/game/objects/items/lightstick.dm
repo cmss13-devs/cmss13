@@ -22,13 +22,13 @@
 				else
 					anchored = FALSE
 					icon_state = "lightstick_[s_color][anchored]"
-					SetLuminosity(0)
+					set_light(0)
 					pixel_x = 0
 					pixel_y = 0
 			else
 				anchored = FALSE
 				icon_state = "lightstick_[s_color][anchored]"
-				SetLuminosity(0)
+				set_light(0)
 				pixel_x = 0
 				pixel_y = 0
 
@@ -45,14 +45,14 @@
 	anchored = FALSE
 	user.visible_message("[user.name] removes \the [src] from the ground.","You remove the [src] from the ground.")
 	icon_state = "lightstick_[s_color][anchored]"
-	SetLuminosity(0)
+	set_light(0)
 	pixel_x = 0
 	pixel_y = 0
 	playsound(user, 'sound/weapons/Genhit.ogg', 25, 1)
 
 	//Remove lightsource
 /obj/item/lightstick/Destroy()
-	SetLuminosity(0)
+	set_light(0)
 	return ..()
 
 //Red

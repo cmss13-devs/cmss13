@@ -21,7 +21,7 @@
 		closed_layer = ABOVE_MOB_LAYER
 	layer = closed_layer
 
-	SetOpacity(initial(opacity))
+	set_opacity(initial(opacity))
 
 /obj/structure/machinery/door/poddoor/railing/update_icon()
 	if(density)

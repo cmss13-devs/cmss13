@@ -33,24 +33,24 @@
 /obj/item/device/flashlight/Destroy()
 	if(on)
 		if(ismob(src.loc))
-			src.loc.SetLuminosity(0, FALSE, src)
+			src.loc.set_light(0, FALSE, src)
 		else
-			SetLuminosity(0)
+			set_light(0)
 	. = ..()
 
 /obj/item/device/flashlight/proc/update_brightness(mob/user = null)
 	if(on)
 		update_icon()
 		if(loc && loc == user)
-			user.SetLuminosity(brightness_on, FALSE, src)
+			user.set_light(brightness_on, FALSE, src)
 		else if(isturf(loc))
-			SetLuminosity(brightness_on)
+			set_light(brightness_on)
 	else
 		icon_state = initial(icon_state)
 		if(loc && loc == user)
-			user.SetLuminosity(0, FALSE, src)
+			user.set_light(0, FALSE, src)
 		else if(isturf(loc))
-			SetLuminosity(0)
+			set_light(0)
 
 /obj/item/device/flashlight/attack_self(mob/user)
 	..()
@@ -146,15 +146,15 @@
 
 /obj/item/device/flashlight/pickup(mob/user)
 	if(on)
-		user.SetLuminosity(brightness_on, FALSE, src)
-		SetLuminosity(0)
+		user.set_light(brightness_on, FALSE, src)
+		set_light(0)
 	..()
 
 
 /obj/item/device/flashlight/dropped(mob/user)
 	if(on && src.loc != user)
-		user.SetLuminosity(0, FALSE, src)
-		SetLuminosity(brightness_on)
+		user.set_light(0, FALSE, src)
+		set_light(brightness_on)
 	..()
 
 /obj/item/device/flashlight/on
@@ -451,7 +451,7 @@
 	brightness_on = round(amount * 0.04)
 	if(!brightness_on)
 		return INITIALIZE_HINT_QDEL
-	SetLuminosity(brightness_on)
+	set_light(brightness_on)
 	fuel = amount * 5 SECONDS
 
 /obj/item/device/flashlight/slime
@@ -472,7 +472,7 @@
 
 /obj/item/device/flashlight/slime/Initialize()
 	. = ..()
-	SetLuminosity(brightness_on)
+	set_light(brightness_on)
 	update_brightness()
 	icon_state = initial(icon_state)
 

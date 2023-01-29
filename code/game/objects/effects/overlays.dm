@@ -149,7 +149,7 @@
 		source_binoc.laser_cooldown = world.time + source_binoc.cooldown_duration
 		source_binoc.coord = null
 		source_binoc = null
-	SetLuminosity(0)
+	set_light(0)
 	. = ..()
 
 /obj/effect/overlay/temp/laser_target
@@ -191,7 +191,7 @@
 		source_binoc.laser = null
 		source_binoc = null
 
-	SetLuminosity(0)
+	set_light(0)
 	. = ..()
 
 /obj/effect/overlay/temp/laser_target/ex_act(severity) //immune to explosions
@@ -214,7 +214,7 @@
 	icon_state = "laser_target3"
 
 /obj/effect/overlay/temp/blinking_laser/Destroy()
-	SetLuminosity(0)
+	set_light(0)
 	. = ..()
 
 /obj/effect/overlay/temp/emp_sparks

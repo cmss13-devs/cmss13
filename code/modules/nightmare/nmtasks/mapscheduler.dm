@@ -19,6 +19,7 @@
 	tainted_bounds[tainted_bounds.len] = bounds
 
 /datum/nmtask/scheduler/mapload/proc/patch_lighting()
+/*
 	var/list/tainted = list()
 
 	for(var/list/bounds as anything in tainted_bounds)
@@ -33,3 +34,4 @@
 		T.cached_lumcount = -1 // Invalidate lumcount to force update here
 		T.lighting_changed = TRUE
 		SSlighting.changed_turfs += T
+*/

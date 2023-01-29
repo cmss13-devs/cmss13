@@ -13,7 +13,7 @@
 //---------------------GENERAL PROCS
 
 /obj/structure/magazine_box/Destroy()
-	SetLuminosity(0)
+	set_light(0)
 	if(item_box)
 		qdel(item_box)
 		item_box = null

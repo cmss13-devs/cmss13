@@ -134,8 +134,8 @@
 		to_chat(M, SPAN_DANGER("[name] beeps, \"Unathorized user!\""))
 
 	if(light_state && loc != M)
-		M.SetLuminosity(BACKPACK_LIGHT_LEVEL, FALSE, src)
-		SetLuminosity(0)
+		M.set_light(BACKPACK_LIGHT_LEVEL, FALSE, src)
+		set_light(0)
 	..()
 
 /obj/item/storage/backpack/marine/smartpack/dropped(mob/living/M)
@@ -154,9 +154,9 @@
 
 /obj/item/storage/backpack/marine/smartpack/Destroy()
 	if(ismob(loc))
-		loc.SetLuminosity(0, FALSE, src)
+		loc.set_light(0, FALSE, src)
 	else
-		SetLuminosity(0)
+		set_light(0)
 	. = ..()
 
 /obj/item/storage/backpack/marine/smartpack/attack_self(mob/user)
@@ -176,15 +176,15 @@
 	flashlight_cooldown = world.time + 20 //2 seconds cooldown every time the light is toggled
 	if(light_state) //Turn it off.
 		if(user)
-			user.SetLuminosity(0, FALSE, src)
+			user.set_light(0, FALSE, src)
 		else
-			SetLuminosity(0)
+			set_light(0)
 		playsound(src, 'sound/handling/click_2.ogg', 50, TRUE)
 	else //Turn it on.
 		if(user)
-			user.SetLuminosity(BACKPACK_LIGHT_LEVEL, FALSE, src)
+			user.set_light(BACKPACK_LIGHT_LEVEL, FALSE, src)
 		else
-			SetLuminosity(BACKPACK_LIGHT_LEVEL)
+			set_light(BACKPACK_LIGHT_LEVEL)
 
 	light_state = !light_state
 

@@ -788,7 +788,7 @@
 		ammo = GLOB.ammo_list[/datum/ammo/energy/yautja/rifle/bolt]
 		charge_time -= 10
 	var/obj/item/projectile/projectile = create_bullet(ammo, initial(name))
-	projectile.SetLuminosity(1)
+	projectile.set_light(1)
 	in_chamber = projectile
 	return in_chamber
 
@@ -873,7 +873,7 @@
 	if(charge_time < 1)
 		return
 	var/obj/item/projectile/projectile = create_bullet(ammo, initial(name))
-	projectile.SetLuminosity(1)
+	projectile.set_light(1)
 	in_chamber = projectile
 	charge_time--
 	return in_chamber

@@ -64,6 +64,5 @@ INITIALIZE_IMMEDIATE(/atom/movable/plane_master_controller)
 		GAME_PLANE,
 		FLOOR_PLANE,
 		LIGHTING_PLANE,
-		EXTERIOR_LIGHTING_PLANE
 	)
 

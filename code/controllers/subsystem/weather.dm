@@ -47,7 +47,7 @@ SUBSYSTEM_DEF(weather)
 /datum/controller/subsystem/weather/proc/setup_weather_areas()
 	weather_areas = list()
 	for(var/area/A in all_areas)
-		if(A == A.master && A.weather_enabled && map_holder.should_affect_area(A))
+		if(A.weather_enabled && map_holder.should_affect_area(A))
 			weather_areas += A
 
 	curr_master_turf_overlay = new /obj/effect/weather_vfx_holder

@@ -14,7 +14,7 @@
 //---------------------GENERAL PROCS
 
 /obj/item/ammo_box/Destroy()
-	SetLuminosity(0)
+	set_light(0)
 	. = ..()
 
 /obj/item/ammo_box/proc/unfold_box(turf/T)
@@ -27,7 +27,7 @@
 		return
 	burning = TRUE
 
-	SetLuminosity(3)
+	set_light(3)
 	apply_fire_overlay()
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(qdel), src), 5 SECONDS)
 
@@ -224,11 +224,11 @@
 
 	if(host_box)
 		host_box.apply_fire_overlay(will_explode)
-		host_box.SetLuminosity(3)
+		host_box.set_light(3)
 		host_box.visible_message(SPAN_WARNING(shown_message))
 	else
 		apply_fire_overlay(will_explode)
-		SetLuminosity(3)
+		set_light(3)
 		visible_message(SPAN_WARNING(shown_message))
 
 /obj/item/ammo_box/magazine/apply_fire_overlay(will_explode = FALSE)
@@ -409,7 +409,7 @@
 		visible_message(SPAN_WARNING("\The [src] catches on fire!"))
 
 	apply_fire_overlay(will_explode)
-	SetLuminosity(3)
+	set_light(3)
 
 /obj/item/ammo_box/rounds/apply_fire_overlay(will_explode = FALSE)
 	//original fire overlay is made for standard mag boxes, so they don't need additional offsetting

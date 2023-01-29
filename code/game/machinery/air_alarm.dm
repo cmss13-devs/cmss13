@@ -136,8 +136,6 @@
 
 /obj/structure/machinery/alarm/proc/first_run()
 	alarm_area = get_area(src)
-	if (alarm_area.master)
-		alarm_area = alarm_area.master
 	area_uid = alarm_area.uid
 	if (name == "alarm")
 		name = "[alarm_area.name] Air Alarm"

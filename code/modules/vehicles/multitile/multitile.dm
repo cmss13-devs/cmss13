@@ -357,7 +357,7 @@
 
 	//vehicle is dead, no more lights
 	if(health <= 0 && luminosity)
-		SetLuminosity(0)
+		set_light(0)
 	update_icon()
 
 /*

@@ -20,7 +20,7 @@
 	cell = new /obj/item/cell(src)
 
 /obj/structure/machinery/floodlight/Destroy()
-	SetLuminosity(0)
+	set_light(0)
 	return ..()
 
 /obj/structure/machinery/floodlight/proc/updateicon()
@@ -33,7 +33,7 @@
 		else
 			on = 0
 			updateicon()
-			SetLuminosity(0)
+			set_light(0)
 			src.visible_message(SPAN_WARNING("[src] shuts down due to lack of power!"))
 			return
 */
@@ -57,7 +57,7 @@
 	if(on)
 		on = 0
 		to_chat(user, SPAN_NOTICE(" You turn off the light."))
-		SetLuminosity(0)
+		set_light(0)
 		unslashable = TRUE
 		unacidable = TRUE
 	else
@@ -67,7 +67,7 @@
 			return
 		on = 1
 		to_chat(user, SPAN_NOTICE(" You turn on the light."))
-		SetLuminosity(brightness_on)
+		set_light(brightness_on)
 		unacidable = FALSE
 
 	updateicon()

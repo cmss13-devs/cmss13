@@ -9,7 +9,6 @@
 	icon_state = "varadero"
 	can_build_special = TRUE //T-Comms structure
 	temperature = TROPICAL_TEMP
-	lighting_use_dynamic = TRUE
 
 //shuttle stuff
 
@@ -17,7 +16,6 @@
 	name = "New Varadero - Dropship Alamo Landing Zone"
 	icon_state = "shuttle"
 	icon = 'icons/turf/area_varadero.dmi'
-	lighting_use_dynamic = TRUE
 	is_resin_allowed = FALSE
 
 
@@ -25,7 +23,6 @@
 	name = "New Varadero - Dropship Normandy Landing Zone"
 	icon_state = "shuttle2"
 	icon = 'icons/turf/area_varadero.dmi'
-	lighting_use_dynamic = TRUE
 	is_resin_allowed = FALSE
 
 //Parent areas
@@ -228,7 +225,6 @@
 	power_equip = FALSE
 	power_environ = FALSE
 	luminosity = 0
-	lighting_use_dynamic = 1
 
 /area/varadero/interior/caves/north_research
 	name = "New Varadero - North Research Caves"
@@ -245,7 +241,6 @@
 	power_equip = FALSE
 	power_environ = FALSE
 	luminosity = 0
-	lighting_use_dynamic = 1
 
 
 /area/varadero/interior_protected/caves/central

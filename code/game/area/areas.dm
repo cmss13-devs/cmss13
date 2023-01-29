@@ -23,8 +23,6 @@
 	var/unique = TRUE
 
 	var/has_gravity = 1
-	var/area/master // master area used for power calcluations
-								// (original area before splitting due to sd_DAL)
 	var/list/related // the other areas of the same type as this
 // var/list/lights // list of all lights on this area
 	var/list/all_doors = list() //Added by Strumpetplaya - Alarm Change - Contains a list of doors adjacent to this area
@@ -84,10 +82,10 @@
 	if(unique)
 		GLOB.areas_by_type[type] = src
 	..()
-	master = src //moved outside the spawn(1) to avoid runtimes in lighting.dm when it references loc.loc.master ~Carn
 
 	related = list(src)
-	initialize_power_and_lighting()
+	initialize_power()
+	update_base_lighting()
 
 /area/Initialize(mapload, ...)
 	icon_state = "" //Used to reset the icon overlay, I assume.
@@ -98,24 +96,20 @@
 	all_areas += src
 	reg_in_areas_in_z()
 
-/area/proc/initialize_power_and_lighting(override_power)
+/area/proc/initialize_power(override_power)
 	if(requires_power)
 		luminosity = 0
 		if(override_power) //Reset everything if you want to override.
 			power_light = TRUE
 			power_equip = TRUE
 			power_environ = TRUE
-			if(lighting_use_dynamic)
-				SetDynamicLighting()
 	else
 		power_light = FALSE //rastaf0
 		power_equip = FALSE //rastaf0
 		power_environ = FALSE //rastaf0
 		luminosity = 1
-		lighting_use_dynamic = 0
 
 	power_change() // all machines set to current power level, also updates lighting icon
-	InitializeLighting()
 
 /// Returns the correct ambience sound track for a client in this area
 /area/proc/get_sound_ambience(client/target)
@@ -195,32 +189,32 @@
 	return 0
 
 /area/proc/air_doors_close()
-	if(!src.master.air_doors_activated)
-		src.master.air_doors_activated = 1
-		for(var/obj/structure/machinery/door/firedoor/E in src.master.all_doors)
-			if(!E:blocked)
-				if(E.operating)
-					E:nextstate = OPEN
-				else if(!E.density)
-					INVOKE_ASYNC(E, TYPE_PROC_REF(/obj/structure/machinery/door, close))
+	for(var/obj/structure/machinery/door/firedoor/E in all_doors)
+		if(E.blocked)
+			continue
+
+		if(E.operating)
+			E.nextstate = OPEN
+		else if(!E.density)
+			E.close()
+
 
 /area/proc/air_doors_open()
-	if(src.master.air_doors_activated)
-		src.master.air_doors_activated = 0
-		for(var/obj/structure/machinery/door/firedoor/E in src.master.all_doors)
-			if(!E:blocked)
-				if(E.operating)
-					E:nextstate = OPEN
-				else if(E.density)
-					INVOKE_ASYNC(E, TYPE_PROC_REF(/obj/structure/machinery/door, open))
+	for(var/obj/structure/machinery/door/firedoor/E in all_doors)
+		if(E.blocked)
+			continue
 
+		if(E.operating)
+			E.nextstate = OPEN
+		else if(E.density)
+			E.open()
 
 /area/proc/firealert()
 	if(name == "Space") //no fire alarms in space
 		return
 	if(!(flags_alarm_state & ALARM_WARNING_FIRE))
 		flags_alarm_state |= ALARM_WARNING_FIRE
-		master.flags_alarm_state |= ALARM_WARNING_FIRE //used for firedoor checks
+		flags_alarm_state |= ALARM_WARNING_FIRE //used for firedoor checks
 		updateicon()
 		mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 		for(var/obj/structure/machinery/door/firedoor/D in all_doors)
@@ -242,7 +236,7 @@
 /area/proc/firereset()
 	if(flags_alarm_state & ALARM_WARNING_FIRE)
 		flags_alarm_state &= ~ALARM_WARNING_FIRE
-		master.flags_alarm_state &= ~ALARM_WARNING_FIRE //used for firedoor checks
+		flags_alarm_state &= ~ALARM_WARNING_FIRE //used for firedoor checks
 		mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 		updateicon()
 		for(var/obj/structure/machinery/door/firedoor/D in all_doors)
@@ -271,16 +265,16 @@
 /*
 /area/proc/toggle_evacuation() //toggles lights and creates an overlay.
 	flags_alarm_state ^= ALARM_WARNING_EVAC
-	master.flags_alarm_state ^= ALARM_WARNING_EVAC
+	flags_alarm_state ^= ALARM_WARNING_EVAC
 	//if(flags_alarm_state & ALARM_WARNING_EVAC)
-	// master.lightswitch = FALSE
+	// lightswitch = FALSE
 		//lightswitch = FALSE //Lights going off.
 // else
-	// master.lightswitch = TRUE
+	// lightswitch = TRUE
 		//lightswitch = TRUE //Coming on.
-	master.updateicon()
+	updateicon()
 
-	//master.power_change()
+	//power_change()
 
 
 /area/proc/toggle_shut_down()
@@ -305,32 +299,30 @@
 	if(icon_state != I) icon_state = I //If the icon state changed, change it. Otherwise do nothing.
 
 /area/proc/powered(chan) // return true if the area has power to given channel
-	if(!master.requires_power)
+	if(!requires_power)
 		return 1
-	if(master.always_unpowered)
+	if(always_unpowered)
 		return 0
 	switch(chan)
 		if(POWER_CHANNEL_EQUIP)
-			return master.power_equip
+			return power_equip
 		if(POWER_CHANNEL_LIGHT)
-			return master.power_light
+			return power_light
 		if(POWER_CHANNEL_ENVIRON)
-			return master.power_environ
+			return power_environ
 
 	return 0
 
 /area/proc/update_power_channels(equip, light, environ)
-	if(!master)
-		CRASH("CALLED update_power_channels on non-master channel!")
 	var/changed = FALSE
-	if(master.power_equip != equip)
-		master.power_equip = equip
+	if(power_equip != equip)
+		power_equip = equip
 		changed = TRUE
-	if(master.power_light != light)
-		master.power_light = light
+	if(power_light != light)
+		power_light = light
 		changed = TRUE
-	if(master.power_environ != environ)
-		master.power_environ = environ
+	if(power_environ != environ)
+		power_environ = environ
 		changed = TRUE
 	if(changed) //Something got changed power-wise, time for an update!
 		power_change()
@@ -348,32 +340,32 @@
 	var/used = 0
 	switch(chan)
 		if(POWER_CHANNEL_LIGHT)
-			used += master.used_light
+			used += used_light
 		if(POWER_CHANNEL_EQUIP)
-			used += master.used_equip
+			used += used_equip
 		if(POWER_CHANNEL_ENVIRON)
-			used += master.used_environ
+			used += used_environ
 		if(POWER_CHANNEL_ONEOFF)
-			used += master.used_oneoff
+			used += used_oneoff
 			if(reset_oneoff)
-				master.used_oneoff = 0
+				used_oneoff = 0
 		if(POWER_CHANNEL_TOTAL)
-			used += master.used_light + master.used_equip + master.used_environ + master.used_oneoff
+			used += used_light + used_equip + used_environ + used_oneoff
 			if(reset_oneoff)
-				master.used_oneoff = 0
+				used_oneoff = 0
 
 	return used
 
 /area/proc/use_power(amount, chan)
 	switch(chan)
 		if(POWER_CHANNEL_EQUIP)
-			master.used_equip += amount
+			used_equip += amount
 		if(POWER_CHANNEL_LIGHT)
-			master.used_light += amount
+			used_light += amount
 		if(POWER_CHANNEL_ENVIRON)
-			master.used_environ += amount
+			used_environ += amount
 		if(POWER_CHANNEL_ONEOFF)
-			master.used_oneoff += amount
+			used_oneoff += amount
 
 /area/Entered(A,atom/OldLoc)
 	if(ismob(A))
@@ -381,7 +373,7 @@
 			return
 		var/mob/M = A
 		var/area/old_area = get_area(OldLoc)
-		if(old_area.master == master)
+		if(old_area == src)
 			return
 		M?.client?.soundOutput?.update_ambience(src, null, TRUE)
 	else if(istype(A, /obj/structure/machinery))

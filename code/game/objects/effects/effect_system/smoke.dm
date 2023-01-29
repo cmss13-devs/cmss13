@@ -33,7 +33,7 @@
 /obj/effect/particle_effect/smoke/Destroy()
 	. = ..()
 	if(opacity)
-		SetOpacity(0)
+		set_opacity(0)
 	active_smoke_effects -= src
 	cause_data = null
 
@@ -50,7 +50,7 @@
 	else if(time_to_live == 1)
 		alpha = 180
 		amount = 0
-		SetOpacity(0)
+		set_opacity(0)
 
 	apply_smoke_effect(get_turf(src))
 

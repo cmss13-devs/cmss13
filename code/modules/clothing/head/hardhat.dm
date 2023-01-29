@@ -28,8 +28,8 @@
 	icon_state = "hardhat[on]_[hardhat_color]"
 	item_state = "hardhat[on]_[hardhat_color]"
 
-	if(on) user.SetLuminosity(brightness_on, FALSE, src)
-	else user.SetLuminosity(0, FALSE, src)
+	if(on) user.set_light(brightness_on, FALSE, src)
+	else user.set_light(0, FALSE, src)
 
 	if(ismob(loc))
 		var/mob/M = loc
@@ -41,21 +41,21 @@
 
 /obj/item/clothing/head/hardhat/pickup(mob/user)
 	if(on)
-		user.SetLuminosity(brightness_on, FALSE, src)
-		SetLuminosity(0)
+		user.set_light(brightness_on, FALSE, src)
+		set_light(0)
 	..()
 
 /obj/item/clothing/head/hardhat/dropped(mob/user)
 	if(on)
-		user.SetLuminosity(0, FALSE, src)
-		SetLuminosity(brightness_on)
+		user.set_light(0, FALSE, src)
+		set_light(brightness_on)
 	..()
 
 /obj/item/clothing/head/hardhat/Destroy()
 	if(ismob(src.loc))
-		src.loc.SetLuminosity(0, FALSE, src)
+		src.loc.set_light(0, FALSE, src)
 	else
-		SetLuminosity(0)
+		set_light(0)
 	return ..()
 
 

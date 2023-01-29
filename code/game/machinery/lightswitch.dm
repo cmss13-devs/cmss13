@@ -43,7 +43,7 @@
 /obj/structure/machinery/light_switch/attack_hand(mob/user)
 	on = !on
 
-	for(var/area/A in area.master.related)
+	for(var/area/A in area.related)
 		A.lightswitch = on
 		A.updateicon()
 
@@ -51,7 +51,7 @@
 			L.on = on
 			L.updateicon()
 
-	area.master.power_change()
+	area.power_change()
 
 /obj/structure/machinery/light_switch/power_change()
 

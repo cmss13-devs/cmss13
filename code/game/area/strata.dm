@@ -17,12 +17,12 @@ EXTERIOR is FUCKING FREEZING, and refers to areas out in the open and or exposed
 /area/shuttle/drop1/strata //Not in Sulaco.DM because holy shit we need to sort things.
 	name = "Dropship Alamo Landing Zone"
 	icon_state = "shuttle"
-	lighting_use_dynamic = 0 //No bad
+	base_lighting_alpha = 255
 
 /area/shuttle/drop2/strata
 	name = "Dropship Normandy Landing Zone"
 	icon_state = "shuttle2"
-	lighting_use_dynamic = 0
+	base_lighting_alpha = 255
 
 /*A WHOLE BUNCH OF PARENT ENTITIES
 fake_zlevel = 1 or 2. 1 is 'above' 2 is 'below', however ladders are flipped and think that 1 is below, and 2 is above.

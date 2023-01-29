@@ -33,10 +33,10 @@
 /obj/structure/prop/dam/drill/proc/update()
 	icon_state = "thumper[on ? "-on" : ""]"
 	if(on)
-		SetLuminosity(3)
+		set_light(3)
 		playsound(src, 'sound/machines/turbine_on.ogg')
 	else
-		SetLuminosity(0)
+		set_light(0)
 		playsound(src, 'sound/machines/turbine_off.ogg')
 	return
 
@@ -114,9 +114,9 @@
 	underlays += "shadow[lit ? "-lit" : ""]"
 	icon_state = "torii[lit ? "-lit" : ""]"
 	if(lit)
-		SetLuminosity(6)
+		set_light(6)
 	else
-		SetLuminosity(0)
+		set_light(0)
 	return
 
 /obj/structure/prop/dam/torii/attack_hand(mob/user as mob)
@@ -502,10 +502,10 @@
 /obj/structure/prop/turbine/proc/Update()
 	icon_state = "biomass_turbine[on ? "-on" : ""]"
 	if (on)
-		SetLuminosity(3)
+		set_light(3)
 		playsound(src, 'sound/machines/turbine_on.ogg')
 	else
-		SetLuminosity(0)
+		set_light(0)
 		playsound(src, 'sound/machines/turbine_off.ogg')
 	return
 
@@ -638,7 +638,7 @@
 
 /obj/structure/prop/brazier/Initialize()
 	. = ..()
-	SetLuminosity(6)
+	set_light(6)
 
 /obj/structure/prop/brazier/torch
 	name = "torch"

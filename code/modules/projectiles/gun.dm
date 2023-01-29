@@ -452,9 +452,9 @@
 			for(var/slot in attachments)
 				var/obj/item/attachable/R = attachments[slot]
 				if(!R) continue
-				loc.SetLuminosity(0, FALSE, src)
+				loc.set_light(0, FALSE, src)
 		else
-			SetLuminosity(0)
+			set_light(0)
 	attachments = null
 	attachable_overlays = null
 	GLOB.gun_list -= src
@@ -1698,8 +1698,8 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 		return
 
 	if(user.luminosity <= muzzle_flash_lum)
-		user.SetLuminosity(muzzle_flash_lum, FALSE, src)
-		addtimer(CALLBACK(user, TYPE_PROC_REF(/atom, SetLuminosity), 0, FALSE, src), 10)
+		user.set_light(muzzle_flash_lum, FALSE, src)
+		addtimer(CALLBACK(user, TYPE_PROC_REF(/atom, set_light), 0, FALSE, src), 10)
 
 	var/image_layer = (user && user.dir == SOUTH) ? MOB_LAYER+0.1 : MOB_LAYER-0.1
 	var/offset = 5

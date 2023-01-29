@@ -554,7 +554,7 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 	RegisterSignal(SSdcs, COMSIG_GLOB_WEATHER_CHANGE, PROC_REF(update_in_weather_status))
 
 /obj/flamer_fire/Destroy()
-	SetLuminosity(0)
+	set_light(0)
 	STOP_PROCESSING(SSobj, src)
 	. = ..()
 
@@ -643,7 +643,7 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 		flame_level++ //the initial flame burst is 1 level higher for a small time
 
 	icon_state = "[flame_icon]_[flame_level]"
-	SetLuminosity(flame_level * 2)
+	set_light(flame_level * 2)
 
 /obj/flamer_fire/proc/un_burst_flame()
 	initial_burst = FALSE
@@ -678,7 +678,7 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 	var/area/A = get_area(src)
 	if(!A)
 		return
-	if(SSweather.is_weather_event && locate(A.master) in SSweather.weather_areas)
+	if(SSweather.is_weather_event && locate(A) in SSweather.weather_areas)
 		weather_smothering_strength = SSweather.weather_event_instance.fire_smothering_strength
 	else
 		weather_smothering_strength = 0

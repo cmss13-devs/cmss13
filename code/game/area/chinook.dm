@@ -9,7 +9,6 @@
 	requires_power = TRUE
 	statistic_exempt = TRUE
 	flags_area = AREA_NOTUNNEL
-	lighting_use_dynamic = TRUE
 	sound_environment = SOUND_ENVIRONMENT_ROOM
 	unlimited_power = TRUE
 	ceiling = CEILING_METAL

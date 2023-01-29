@@ -51,21 +51,21 @@
 	// return 1
 
 	var/area/A = src.loc.loc // make sure it's in an area
-	if(!A || !isarea(A) || !A.master)
+	if(!A || !isarea(A))
 		return 0 // if not, then not powered
 	if(chan == -1)
 		chan = power_channel
-	return A.master.powered(chan) // return power status of the area
+	return A.powered(chan) // return power status of the area
 
 // increment the power usage stats for an area
 
 /obj/structure/machinery/proc/use_power(amount, chan = POWER_CHANNEL_ONEOFF, autocalled = 0) // defaults to one-off power charge, not constant power change
 	var/area/A = get_area(src) // make sure it's in an area
-	if(!A || !isarea(A) || !A.master)
+	if(!A || !isarea(A))
 		return
-	A.master.use_power(amount, chan)
+	A.use_power(amount, chan)
 	if(!autocalled)
-		log_power_update_request(A.master, src)
+		log_power_update_request(A, src)
 	return 1
 
 //The master_area optional argument can be used to save on a lot of processing if the master area is already known. This is mainly intended for when this proc is called by the master controller.

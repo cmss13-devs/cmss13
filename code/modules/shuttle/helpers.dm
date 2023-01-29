@@ -75,7 +75,7 @@
 	. = ..()
 	doors = null
 
-/datum/door_controller/single/proc/control_doors(var/action, var/force = FALSE)
+/datum/door_controller/single/proc/control_doors(action, force = FALSE)
 	for(var/D in doors)
 		var/obj/structure/machinery/door/door = D
 		var/is_external = door.borders_space()

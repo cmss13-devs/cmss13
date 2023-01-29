@@ -268,7 +268,6 @@
 	VV_DROPDOWN_OPTION(VV_HK_SETMATRIX, "Set Base Matrix")
 	VV_DROPDOWN_OPTION("", "-----MOB-----")
 	VV_DROPDOWN_OPTION(VV_HK_GIVE_DISEASE, "Give Disease")
-	VV_DROPDOWN_OPTION(VV_HK_GODMODE, "Toggle God")
 	VV_DROPDOWN_OPTION(VV_HK_BUILDMODE, "Give Build Mode")
 	VV_DROPDOWN_OPTION(VV_HK_GIB, "Gib")
 	VV_DROPDOWN_OPTION(VV_HK_DROP_ALL, "Drop All")
@@ -280,6 +279,11 @@
 	VV_DROPDOWN_OPTION(VV_HK_ADD_LANGUAGE, "Add Language")
 	VV_DROPDOWN_OPTION(VV_HK_REMOVE_LANGUAGE, "Remove Language")
 	VV_DROPDOWN_OPTION(VV_HK_REGEN_ICONS, "Regenerate Icons")
+
+/mob/vv_get_header()
+	. = ..()
+	var/refid = REF(src)
+	. += "<a href='?_src_=vars;[HrefToken()];view_combat_logs=[refid]>Combat Logs</a>"
 
 /mob/vv_do_topic(list/href_list)
 	. = ..()

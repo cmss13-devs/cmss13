@@ -188,47 +188,12 @@
 	. = ..()
 	VV_DROPDOWN_OPTION("", "-----HUMAN-----")
 	VV_DROPDOWN_OPTION(VV_HK_SET_SPECIES, "Set Species")
-	VV_DROPDOWN_OPTION(VV_HK_MAKE_MONKEY, "Make Monkey")
-	VV_DROPDOWN_OPTION(VV_HK_MAKE_ALIEN, "Make Alien")
-	VV_DROPDOWN_OPTION(VV_HK_MAKE_ROBOT, "Make Robot")
 	VV_DROPDOWN_OPTION(VV_HK_ADD_ORGAN, "Add Organ")
 	VV_DROPDOWN_OPTION(VV_HK_REMOVE_ORGAN, "Remove Organ")
-	VV_DROPDOWN_OPTION(VV_HK_ADD_LIMB, "Add Limb")
-	VV_DROPDOWN_OPTION(VV_HK_REMOVE_LIMB, "Remove Limb")
 	. += "<option value='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminspawncookie=\ref[src]'>Give Cookie</option>"
 
 /mob/living/carbon/human/vv_do_topic(list/href_list)
 	. = ..()
-
-	if(href_list[VV_HK_MAKE_MONKEY])
-		if(!check_rights(R_SPAWN))
-			return
-
-		if(alert("Confirm mob type change?",,"Transform","Cancel") != "Transform")
-			return
-
-		monkeyize()
-
-
-	if(href_list[VV_HK_MAKE_ROBOT])
-		if(!check_rights(R_SPAWN))
-			return
-
-		if(alert("Confirm mob type change?",,"Transform","Cancel") != "Transform")
-			return
-
-		Robotize()
-
-
-	if(href_list[VV_HK_MAKE_ALIEN])
-		if(!check_rights(R_SPAWN))
-			return
-
-		if(alert("Confirm mob type change?",,"Transform","Cancel") != "Transform")
-			return
-
-		usr.client.cmd_admin_alienize(src)
-
 
 	if(href_list[VV_HK_SET_SPECIES])
 		if(!check_rights(R_SPAWN))
@@ -304,38 +269,4 @@
 
 		to_chat(usr, "Removed [rem_organ] from [src].")
 		qdel(rem_organ)
-
-	if(href_list[VV_HK_ADD_LIMB])
-		if(!check_rights(R_SPAWN))
-			return
-
-		var/new_limb = tgui_input_list(usr, "Please choose an organ to add.","Organ", typesof(/obj/limb)-/obj/limb)
-
-		var/obj/limb/EO = locate(new_limb) in limbs
-		if(!EO)
-			return
-		if(!(EO.status & LIMB_DESTROYED))
-			to_chat(usr, "Mob already has that organ.")
-			return
-
-		EO.status = NO_FLAGS
-		EO.perma_injury = 0
-		EO.reset_limb_surgeries()
-		update_body(0)
-		updatehealth()
-		UpdateDamageIcon()
-
-	if(href_list[VV_HK_REMOVE_LIMB])
-		if(!check_rights(R_SPAWN))
-			return
-
-		var/rem_limb = tgui_input_list(usr, "Please choose a limb to remove.","Organ", limbs)
-
-		var/obj/limb/EO = locate(rem_limb) in limbs
-		if(!EO)
-			return
-		if(EO.status & LIMB_DESTROYED)
-			to_chat(usr, "Mob doesn't have that limb.")
-			return
-		EO.droplimb()
 

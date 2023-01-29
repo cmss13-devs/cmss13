@@ -109,7 +109,6 @@
 // /mob
 #define VV_HK_GIB "gib"
 #define VV_HK_GIVE_DISEASE "give_disease"
-#define VV_HK_GODMODE "godmode"
 #define VV_HK_DROP_ALL "dropall"
 #define VV_HK_REGEN_ICONS "regen_icons"
 #define VV_HK_PLAYER_PANEL "player_panel"
@@ -120,24 +119,14 @@
 #define VV_HK_SELECT_EQUIPMENT "select_equipment"
 #define VV_HK_ADD_LANGUAGE "add_language"
 #define VV_HK_REMOVE_LANGUAGE "remove_language"
-#define VV_HK_ADD_ORGAN "add_organ"
-#define VV_HK_REMOVE_ORGAN "remove_organ"
-#define VV_HK_ADD_LIMB "add_limb"
-#define VV_HK_REMOVE_LIMB "remove_limb"
 #define VV_HK_EDIT_SKILL "edit_skill"
-
-// /mob/living/carbon
-#define VV_HK_MODIFY_BODYPART "mod_bodypart"
-#define VV_HK_MODIFY_ORGANS "organs_modify"
 
 #define VV_HK_CHANGEHIVENUMBER "changehivenumber"
 
 // /mob/living/carbon/human
 #define VV_HK_SET_SPECIES "setspecies"
-
-#define VV_HK_MAKE_MONKEY "make_monkey"
-#define VV_HK_MAKE_ALIEN "make_alien"
-#define VV_HK_MAKE_ROBOT "make_robot"
+#define VV_HK_ADD_ORGAN "add_organ"
+#define VV_HK_REMOVE_ORGAN "remove_organ"
 
 #define VV_HK_WEAKREF_RESOLVE "weakref_resolve"
 

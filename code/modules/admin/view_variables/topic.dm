@@ -99,6 +99,20 @@
 				admin_ticket_log(L, "<font color='blue'>[log_msg]</font>")
 				vv_update_display(L, Text, "[newamt]")
 
+		else if(href_list["view_combat_logs"])
+			if(!check_rights(R_MOD))
+				return
+
+			var/mob/A = locate(href_list["view_combat_logs"])
+
+			var/list/logs = list("<html><head><meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><title>Player Ticket</title></head>")
+			for(var/entry in A.attack_log)
+				logs += "[entry]<br>"
+
+			var/datum/browser/combat_logs = new(usr, "combat_logs_\ref[src]", null, GLOB.stylesheets["Modern"], 600, 400)
+			combat_logs.set_content(logs.Join())
+			combat_logs.open()
+
 	//Finally, refresh if something modified the list.
 	if(href_list["datumrefresh"])
 		var/datum/DAT = locate(href_list["datumrefresh"])

@@ -1717,7 +1717,7 @@
 	if((P.projectile_flags & PROJECTILE_BULLSEYE) && M == P.original)
 		var/mob/living/L = M
 		var/size_damage_mod = 0.8
-		if(isXeno(M))
+		if(isxeno(M))
 			var/mob/living/carbon/xenomorph/target = M
 			if(target.mob_size >= MOB_SIZE_XENO)
 				size_damage_mod += 0.6
@@ -1745,7 +1745,7 @@
 	if((P.projectile_flags & PROJECTILE_BULLSEYE) && M == P.original)
 		var/mob/living/L = M
 		var/size_damage_mod = 0.5
-		if(isXeno(M))
+		if(isxeno(M))
 			var/mob/living/carbon/xenomorph/target = M
 			if(target.mob_size >= MOB_SIZE_XENO)
 				size_damage_mod += 0.5

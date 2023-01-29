@@ -18,7 +18,7 @@
 /mob/living/proc/check_fire_intensity_resistance()
 	return 0
 
-/mob/living/proc/fling_mob(var/atom/cause_atom, direction, distance)
+/mob/living/proc/fling_mob(atom/cause_atom, direction, distance)
 	if(!distance)
 		return
 

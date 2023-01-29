@@ -12,10 +12,10 @@
 /datum/skill/proc/get_skill_level()
 	return skill_level
 
-/datum/skill/proc/set_skill(var/new_level, var/mob/owner)
+/datum/skill/proc/set_skill(new_level, mob/owner)
 	skill_level = new_level
 
-/datum/skill/proc/is_skilled(var/req_level, var/is_explicit = FALSE)
+/datum/skill/proc/is_skilled(req_level, is_explicit = FALSE)
 	if(is_explicit)
 		return (skill_level == req_level)
 	return (skill_level >= req_level)
@@ -65,7 +65,7 @@
 	skill_level = SKILL_LEAD_NOVICE
 	max_skill_level = SKILL_LEAD_MAX
 
-/datum/skill/leadership/set_skill(var/new_level, var/mob/living/owner)
+/datum/skill/leadership/set_skill(new_level, mob/living/owner)
 	..()
 	if(!owner)
 		return
@@ -89,7 +89,7 @@
 	skill_level = SKILL_SURGERY_DEFAULT
 	max_skill_level = SKILL_SURGERY_MAX
 
-/datum/skill/surgery/set_skill(var/new_level, var/mob/living/owner)
+/datum/skill/surgery/set_skill(new_level, mob/living/owner)
 	..()
 	if(!owner)
 		return
@@ -180,7 +180,7 @@
 	// Same as above, but for children of parents that just add a lil something else
 	var/list/additional_skills = list()
 
-/datum/skills/New(var/mob/skillset_owner)
+/datum/skills/New(mob/skillset_owner)
 	owner = skillset_owner
 
 	// Setup every single skill
@@ -202,17 +202,17 @@
 	return ..()
 
 // Checks if the given skill is contained in this skillset at all
-/datum/skills/proc/has_skill(var/skill)
+/datum/skills/proc/has_skill(skill)
 	return isnull(skills[skill])
 
 // Returns the skill DATUM for the given skill
-/datum/skills/proc/get_skill(var/skill)
+/datum/skills/proc/get_skill(skill)
 	if(!skills)
 		return null
 	return skills[skill]
 
 // Returns the skill level for the given skill
-/datum/skills/proc/get_skill_level(var/skill)
+/datum/skills/proc/get_skill_level(skill)
 	var/datum/skill/S = get_skill(skill)
 	if(!S)
 		return -1
@@ -221,33 +221,33 @@
 	return S.get_skill_level()
 
 // Sets the skill LEVEL for a given skill
-/datum/skills/proc/set_skill(var/skill, var/new_level)
+/datum/skills/proc/set_skill(skill, new_level)
 	var/datum/skill/S = skills[skill]
 	if(!S)
 		return
 	return S.set_skill(new_level, owner)
 
-/datum/skills/proc/increment_skill(var/skill, var/increment, var/cap)
+/datum/skills/proc/increment_skill(skill, increment, cap)
 	var/datum/skill/S = skills[skill]
 	if(!S || skillcheck(owner, skill, cap))
 		return
 	return S.set_skill(min(cap,S.skill_level+increment), owner)
 
-/datum/skills/proc/decrement_skill(var/skill, var/increment)
+/datum/skills/proc/decrement_skill(skill, increment)
 	var/datum/skill/S = skills[skill]
 	if(!S)
 		return
 	return S.set_skill(max(0,S.skill_level-increment), owner)
 
 // Checks if the skillset is AT LEAST skilled enough to pass a skillcheck for the given skill level
-/datum/skills/proc/is_skilled(var/skill, var/req_level, var/is_explicit = FALSE)
+/datum/skills/proc/is_skilled(skill, req_level, is_explicit = FALSE)
 	var/datum/skill/S = get_skill(skill)
 	if(QDELETED(S))
 		return FALSE
 	return S.is_skilled(req_level, is_explicit)
 
 // Adjusts the full skillset to a new type of skillset. Pass the datum type path for the desired skillset
-/datum/skills/proc/set_skillset(var/skillset_type)
+/datum/skills/proc/set_skillset(skillset_type)
 	var/datum/skills/skillset = new skillset_type()
 	var/list/skill_levels = initial(skillset.skills)
 
@@ -632,7 +632,7 @@ COMMAND STAFF
 		SKILL_ENDURANCE = SKILL_ENDURANCE_TRAINED
 	)
 
-/datum/skills/SEA/New(var/mob/skillset_owner)
+/datum/skills/SEA/New(mob/skillset_owner)
 	..()
 	give_action(skillset_owner, /datum/action/looc_toggle)
 

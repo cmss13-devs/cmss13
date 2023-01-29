@@ -22,6 +22,7 @@
 	acid_level = 2
 	weed_level = WEED_LEVEL_STANDARD
 	build_time_mult = BUILD_TIME_MULT_HIVELORD
+	behavior_delegate_type = /datum/behavior_delegate/hivelord_base
 	max_build_dist = 1
 
 	tackle_min = 2
@@ -39,7 +40,7 @@
 
 	resin_build_order = GLOB.resin_build_order_hivelord
 
-/mob/living/carbon/Xenomorph/Hivelord
+/mob/living/carbon/xenomorph/hivelord
 	caste_type = XENO_CASTE_HIVELORD
 	name = XENO_CASTE_HIVELORD
 	desc = "A builder of really big hives."
@@ -68,10 +69,47 @@
 		)
 
 	inherent_verbs = list(
-		/mob/living/carbon/Xenomorph/proc/rename_tunnel,
-		/mob/living/carbon/Xenomorph/proc/set_hugger_reserve_for_morpher,
+		/mob/living/carbon/xenomorph/proc/rename_tunnel,
+		/mob/living/carbon/xenomorph/proc/set_hugger_reserve_for_morpher,
 		)
 	mutation_type = HIVELORD_NORMAL
 
 	icon_xeno = 'icons/mob/xenos/hivelord.dmi'
 	icon_xenonid = 'icons/mob/xenonids/hivelord.dmi'
+
+/datum/behavior_delegate/hivelord_base
+	name = "Base Hivelord Behavior Delegate"
+
+	var/resin_walker = FALSE
+
+	var/weed_speed_increase = XENO_SPEED_FASTMOD_TIER_10 * 3 // i love defines
+
+/datum/behavior_delegate/hivelord_base/proc/toggle_resin_walker()
+	if(!resin_walker)
+		RegisterSignal(bound_xeno, COMSIG_XENO_MOVEMENT_DELAY, PROC_REF(handle_resin_walker))
+		resin_walker = TRUE
+		return TRUE
+	else
+		UnregisterSignal(bound_xeno, COMSIG_XENO_MOVEMENT_DELAY)
+		resin_walker = FALSE
+		return FALSE
+
+/datum/behavior_delegate/hivelord_base/proc/handle_resin_walker(mob/user, list/speed_data)
+	SIGNAL_HANDLER
+
+	var/obj/effect/alien/weeds/turf_weeds = locate() in bound_xeno.loc
+	if(!turf_weeds)
+		return
+
+	if(turf_weeds.linked_hive.hivenumber == bound_xeno.hivenumber)
+		speed_data["speed"] += weed_speed_increase
+
+/datum/behavior_delegate/hivelord_base/on_life()
+	if(!resin_walker)
+		return
+	bound_xeno.plasma_stored -= 30
+	if(bound_xeno.plasma_stored > 0)
+		return
+	toggle_resin_walker()
+	to_chat(bound_xeno, SPAN_WARNING("You feel dizzy as the world slows down."))
+	bound_xeno.recalculate_move_delay = TRUE

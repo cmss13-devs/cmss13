@@ -79,7 +79,7 @@
 /obj/item/weapon/shield/riot/IsShield()
 	return 1
 
-/obj/item/weapon/shield/riot/attack_self(var/mob/user)
+/obj/item/weapon/shield/riot/attack_self(mob/user)
 	..()
 	toggle_shield(user)
 

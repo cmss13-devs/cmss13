@@ -149,7 +149,7 @@
 
 /obj/item/clothing/accessory/pdt_bracelet/get_examine_text(mob/user)
 	. = ..()
-	if(!isXeno(user) && (get_dist(user, src) < 2 || isobserver(user)) && copied_serial_number)
+	if(!isxeno(user) && (get_dist(user, src) < 2 || isobserver(user)) && copied_serial_number)
 		. += SPAN_INFO("The serial number is [copied_serial_number].")
 
 /obj/item/clothing/accessory/pdt_bracelet/Initialize()

@@ -41,7 +41,7 @@
 	ability_primacy = SPEC_PRIMARY_ACTION_2
 	var/minimum_aim_distance = 2
 
-/datum/action/item_action/specialist/aimed_shot/New(var/mob/living/user, var/obj/item/holder)
+/datum/action/item_action/specialist/aimed_shot/New(mob/living/user, obj/item/holder)
 	..()
 	name = "Aimed Shot"
 	button.name = name
@@ -160,7 +160,7 @@
 	aimed_proj.AddComponent(/datum/component/homing_projectile, target, human)
 	sniper_rifle.Fire(target, human)
 
-/datum/action/item_action/specialist/aimed_shot/proc/check_can_use(var/mob/M, var/cover_lose_focus)
+/datum/action/item_action/specialist/aimed_shot/proc/check_can_use(mob/M, cover_lose_focus)
 	var/mob/living/carbon/human/H = owner
 	var/obj/item/weapon/gun/rifle/sniper/sniper_rifle = holder_item
 
@@ -194,7 +194,7 @@
 
 	return TRUE
 
-/datum/action/item_action/specialist/aimed_shot/proc/check_shot_is_blocked(var/mob/firer, var/mob/target, obj/item/projectile/P)
+/datum/action/item_action/specialist/aimed_shot/proc/check_shot_is_blocked(mob/firer, mob/target, obj/item/projectile/P)
 	var/list/turf/path = getline2(firer, target, include_from_atom = FALSE)
 	if(!path.len || get_dist(firer, target) > P.ammo.max_range)
 		return TRUE
@@ -218,9 +218,8 @@
 
 // Snipers may enable or disable their laser tracker at will.
 /datum/action/item_action/specialist/toggle_laser
-	ability_primacy = SPEC_PRIMARY_ACTION_2
 
-/datum/action/item_action/specialist/toggle_laser/New(var/mob/living/user, var/obj/item/holder)
+/datum/action/item_action/specialist/toggle_laser/New(mob/living/user, obj/item/holder)
 	..()
 	name = "Toggle Tracker Laser"
 	button.name = name
@@ -256,11 +255,22 @@
 	if(owner.get_held_item() != sniper_rifle)
 		to_chat(owner, SPAN_WARNING("How do you expect to do this without the sniper rifle in your hand?"))
 		return FALSE
+	sniper_rifle.toggle_laser(owner, src)
 
-	sniper_rifle.enable_aimed_shot_laser = !sniper_rifle.enable_aimed_shot_laser
-	owner.visible_message(SPAN_NOTICE("[owner] flips a switch on \the [sniper_rifle] and [sniper_rifle.enable_aimed_shot_laser ? "enables" : "disables"] its targeting laser."))
-	playsound(owner, 'sound/machines/click.ogg', 15, TRUE)
-	update_button_icon()
+/obj/item/weapon/gun/rifle/sniper/proc/toggle_laser(mob/user, datum/action/toggling_action)
+	enable_aimed_shot_laser = !enable_aimed_shot_laser
+	to_chat(user, SPAN_NOTICE("You flip a switch on \the [src] and [enable_aimed_shot_laser ? "enable" : "disable"] its targeting laser."))
+	playsound(user, 'sound/machines/click.ogg', 15, TRUE)
+	if(!toggling_action)
+		toggling_action = locate(/datum/action/item_action/specialist/toggle_laser) in actions
+	if(toggling_action)
+		toggling_action.update_button_icon()
+
+/obj/item/weapon/gun/rifle/sniper/toggle_burst(mob/user)
+	if(has_aimed_shot)
+		toggle_laser(user)
+	else
+		..()
 
 //Pow! Headshot.
 /obj/item/weapon/gun/rifle/sniper/M42A
@@ -430,7 +440,7 @@
 	. = ..()
 	if(.)
 		var/mob/living/carbon/human/PMC_sniper = user
-		if(PMC_sniper.lying == 0 && !istype(PMC_sniper.wear_suit,/obj/item/clothing/suit/storage/marine/smartgunner/veteran/PMC) && !istype(PMC_sniper.wear_suit,/obj/item/clothing/suit/storage/marine/veteran))
+		if(PMC_sniper.lying == 0 && !istype(PMC_sniper.wear_suit,/obj/item/clothing/suit/storage/marine/smartgunner/veteran/pmc) && !istype(PMC_sniper.wear_suit,/obj/item/clothing/suit/storage/marine/veteran))
 			PMC_sniper.visible_message(SPAN_WARNING("[PMC_sniper] is blown backwards from the recoil of the [src.name]!"),SPAN_HIGHDANGER("You are knocked prone by the blowback!"))
 			step(PMC_sniper,turn(PMC_sniper.dir,180))
 			PMC_sniper.apply_effect(5, WEAKEN)
@@ -604,7 +614,7 @@
 	unload_sound = 'sound/weapons/gun_revolver_unload.ogg'
 
 	has_cylinder = TRUE //This weapon won't work otherwise.
-	preload = /obj/item/explosive/grenade/HE
+	preload = /obj/item/explosive/grenade/high_explosive
 	internal_slots = 1 //This weapon must use slots.
 	internal_max_w_class = SIZE_MEDIUM //MEDIUM = M15.
 
@@ -693,7 +703,7 @@
 	return cylinder.attackby(I, user)
 
 /obj/item/weapon/gun/launcher/grenade/unique_action(mob/user)
-	if(isobserver(usr) || isXeno(usr))
+	if(isobserver(usr) || isxeno(usr))
 		return
 	if(locate(/datum/action/item_action/toggle_firing_level) in actions)
 		toggle_firing_level(usr)
@@ -775,6 +785,9 @@
 	var/pass_flags = NO_FLAGS
 	if(is_lobbing)
 		if(istype(F, /obj/item/explosive/grenade/slug/baton))
+			if(ishuman(user))
+				var/mob/living/carbon/human/human_user = user
+				human_user.remember_dropped_object(F)
 			pass_flags |= PASS_MOB_THRU_HUMAN|PASS_MOB_IS_OTHER|PASS_OVER
 		else
 			pass_flags |= PASS_MOB_THRU|PASS_HIGH_OVER
@@ -940,7 +953,7 @@
 	update_attachable(S.slot)
 
 /obj/item/weapon/gun/launcher/grenade/m81/m79/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 18,"rail_x" = 14, "rail_y" = 22, "under_x" = 19, "under_y" = 14, "stock_x" = 14, "stock_y" = 14)
+	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 18,"rail_x" = 9, "rail_y" = 22, "under_x" = 19, "under_y" = 14, "stock_x" = 14, "stock_y" = 14)
 
 /obj/item/weapon/gun/launcher/grenade/m81/m79/set_bullet_traits()
 	LAZYADD(traits_to_give, list(

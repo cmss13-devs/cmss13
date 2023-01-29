@@ -3,7 +3,8 @@
 // Surgery Tools
 /obj/item/tool/surgery
 	icon = 'icons/obj/items/surgery_tools.dmi'
-	attack_speed = 4 // reduced
+	/// reduced
+	attack_speed = 4
 
 /*
  * Retractor
@@ -248,8 +249,10 @@
 	name = "Synth-Graft"
 	desc = "An applicator for synthetic skin field grafts. The stuff reeks, itches like the dickens, hurts going on, and the colour is \
 		a perfectly averaged multiethnic tone that doesn't blend with <i>anyone's</i> complexion. But at least you don't have to stay in sickbay."
-	icon_state = "line" //Placeholder.
-	color = "yellow" //Placeholder, to distinguish from surgical line.
+	/// Placeholder.
+	icon_state = "line"
+	/// Placeholder, to distinguish from surgical line.
+	color = "yellow"
 	force = 0
 	throwforce = 1.0
 	w_class = SIZE_SMALL
@@ -400,13 +403,13 @@ t. optimisticdude
 					to_chat(usr, "System Reset completed")
 					resetting = 0
 
-/obj/item/tool/surgery/WYautopsy/attack(mob/living/carbon/Xenomorph/T as mob, mob/living/user as mob)
+/obj/item/tool/surgery/WYautopsy/attack(mob/living/carbon/xenomorph/T as mob, mob/living/user as mob)
 /* set category = "Autopsy"
 	set name = "Perform Alien Autopsy"
 	set src in usr*/
 	if(resetting)
 		to_chat(usr, "Tool is currently returning to factory default.  If you have been waiting, try running the reset again.")
-	if(!isXeno(T))
+	if(!isxeno(T))
 		to_chat(usr, "What are you, some sort of fucking MONSTER?")
 		return
 	if(T.health > 0)
@@ -415,7 +418,7 @@ t. optimisticdude
 	if(active)
 		to_chat(usr, "Your already performing an autopsy")
 		return
-	if(istype(T, /mob/living/carbon/Xenomorph/Larva))
+	if(istype(T, /mob/living/carbon/xenomorph/larva))
 		to_chat(usr, "It's too young... (This will be in a future update)")
 		return
 	active = 1

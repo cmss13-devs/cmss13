@@ -121,11 +121,11 @@
 /area/lv624/ground/barrens/north_east_barrens)
 "y" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/item/explosive/grenade/HE/stick,
-/obj/item/explosive/grenade/HE/stick{
+/obj/item/explosive/grenade/high_explosive/stick,
+/obj/item/explosive/grenade/high_explosive/stick{
 	pixel_x = 6
 	},
-/obj/item/explosive/grenade/HE/stick{
+/obj/item/explosive/grenade/high_explosive/stick{
 	pixel_x = -6
 	},
 /turf/open/floor{

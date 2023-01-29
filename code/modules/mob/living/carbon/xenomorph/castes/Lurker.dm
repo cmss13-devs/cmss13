@@ -45,7 +45,7 @@
 		/datum/action/xeno_action/onclick/lurker_assassinate,
 		)
 	inherent_verbs = list(
-		/mob/living/carbon/Xenomorph/proc/vent_crawl,
+		/mob/living/carbon/xenomorph/proc/vent_crawl,
 		)
 	mutation_type = LURKER_NORMAL
 	claw_type = CLAW_TYPE_SHARP
@@ -71,7 +71,7 @@
 	var/can_go_invisible = TRUE
 
 /datum/behavior_delegate/lurker_base/melee_attack_modify_damage(original_damage, mob/living/carbon/target_carbon)
-	if (!isXenoOrHuman(target_carbon))
+	if (!isxeno_human(target_carbon))
 		return original_damage
 
 	if (next_slash_buffed)
@@ -87,7 +87,7 @@
 	return original_damage
 
 /datum/behavior_delegate/lurker_base/melee_attack_additional_effects_target(mob/living/carbon/target_carbon)
-	if (!isXenoOrHuman(target_carbon))
+	if (!isxeno_human(target_carbon))
 		return
 
 	if (target_carbon.knocked_down)

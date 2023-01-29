@@ -48,7 +48,7 @@ They're all essentially identical when it comes to getting the job done.
 	GLOB.ammo_magazine_list -= src
 	return ..()
 
-/obj/item/ammo_magazine/update_icon(var/round_diff = 0)
+/obj/item/ammo_magazine/update_icon(round_diff = 0)
 	if(current_rounds <= 0)
 		icon_state = base_mag_icon + "_e"
 		item_state = base_mag_item + "_e"
@@ -89,7 +89,7 @@ They're all essentially identical when it comes to getting the job done.
 	return ..() //Do normal stuff.
 
 //We should only attack it with handfuls. Empty hand to take out, handful to put back in. Same as normal handful.
-/obj/item/ammo_magazine/attackby(obj/item/I, mob/living/user, var/bypass_hold_check = 0)
+/obj/item/ammo_magazine/attackby(obj/item/I, mob/living/user, bypass_hold_check = 0)
 	if(istype(I, /obj/item/ammo_magazine))
 		var/obj/item/ammo_magazine/MG = I
 		if(MG.flags_magazine & AMMUNITION_HANDFUL) //got a handful of bullets
@@ -127,7 +127,7 @@ They're all essentially identical when it comes to getting the job done.
 	return S // We return the number transferred if it was successful.
 
 //This will attempt to place the ammo in the user's hand if possible.
-/obj/item/ammo_magazine/proc/create_handful(mob/user, transfer_amount, var/obj_name = src)
+/obj/item/ammo_magazine/proc/create_handful(mob/user, transfer_amount, obj_name = src)
 	var/amount_to_transfer
 	if (current_rounds > 0)
 		var/obj/item/ammo_magazine/handful/new_handful = new /obj/item/ammo_magazine/handful
@@ -152,20 +152,20 @@ They're all essentially identical when it comes to getting the job done.
 	gun_type = source.gun_type
 
 //~Art interjecting here for explosion when using flamer procs.
-/obj/item/ammo_magazine/flamer_fire_act(var/damage, var/datum/cause_data/flame_cause_data)
+/obj/item/ammo_magazine/flamer_fire_act(damage, datum/cause_data/flame_cause_data)
 	if(current_rounds < 1)
 		return
 	else
 		var/severity = round(current_rounds / 50)
 		//the more ammo inside, the faster and harder it cooks off
 		if(severity > 0)
-			addtimer(CALLBACK(GLOBAL_PROC, PROC_REF(explosion), loc, -1, ((severity > 4) ? 0 : -1), Clamp(severity, 0, 1), Clamp(severity, 0, 2), 1, 0, 0, flame_cause_data), max(5 - severity, 2))
+			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(explosion), loc, -1, ((severity > 4) ? 0 : -1), Clamp(severity, 0, 1), Clamp(severity, 0, 2), 1, 0, 0, flame_cause_data), max(5 - severity, 2))
 
 	if(!QDELETED(src))
 		qdel(src)
 
 //our fueltanks are extremely fire-retardant and won't explode
-/obj/item/ammo_magazine/flamer_tank/flamer_fire_act(var/damage, var/datum/cause_data/flame_cause_data)
+/obj/item/ammo_magazine/flamer_tank/flamer_fire_act(damage, datum/cause_data/flame_cause_data)
 	return
 
 //Magazines that actually cannot be removed from the firearm. Functionally the same as the regular thing, but they do have three extra vars.

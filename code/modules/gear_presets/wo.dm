@@ -18,7 +18,7 @@
 	assignment = JOB_WO_CO
 	rank = JOB_WO_CO
 	paygrade = "MO2"
-	role_comm_title = "CO"
+	role_comm_title = "CDR"
 	skills = /datum/skills/commander
 	idtype = /obj/item/card/id/gold
 
@@ -97,7 +97,7 @@
 	assignment = JOB_WO_XO
 	rank = JOB_WO_XO
 	paygrade = "MO1"
-	role_comm_title = "XO"
+	role_comm_title = "LCDR"
 	skills = /datum/skills/XO
 	idtype = /obj/item/card/id/silver
 
@@ -158,7 +158,7 @@
 	//waist
 	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/smartgunner/full(H), WEAR_WAIST)
 	//limbs
-	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/PMC(H), WEAR_HANDS)
+	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/pmc(H), WEAR_HANDS)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
 	//pockets
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/bayonet(H), WEAR_R_STORE)
@@ -561,7 +561,7 @@
 		ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_ENGINEERING, ACCESS_CIVILIAN_LOGISTICS)
 	assignment = JOB_WO_CORPORATE_LIAISON
 	rank = JOB_WO_CORPORATE_LIAISON
-	paygrade = "WY-XB-X"
+	paygrade = "WYC2"
 	role_comm_title = "PRESS"
 	skills = /datum/skills/civilian
 	idtype = /obj/item/card/id/silver/cl

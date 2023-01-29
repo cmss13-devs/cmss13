@@ -26,7 +26,8 @@
 
 	attack_verb = list("attacked", "stabbed", "poked")
 	sharp = 0
-	var/loaded   //Descriptive string for currently loaded food object.
+	/// Descriptive string for currently loaded food object.
+	var/loaded
 
 /obj/item/tool/kitchen/utensil/Initialize()
 	. = ..()
@@ -175,7 +176,7 @@
 
 	drowsy_threshold = CLOTHING_ARMOR_MEDIUM - M.getarmor(affecting, ARMOR_MELEE)
 
-	if(affecting == "head" && istype(M, /mob/living/carbon/) && !isXeno(M))
+	if(affecting == "head" && istype(M, /mob/living/carbon/) && !isxeno(M))
 		for(var/mob/O in viewers(user, null))
 			if(M != user)
 				O.show_message(text(SPAN_DANGER("<B>[M] has been hit over the head with a [name] by [user]!</B>")), SHOW_MESSAGE_VISIBLE)
@@ -209,7 +210,8 @@
 	w_class = SIZE_MEDIUM
 	flags_atom = FPRINT|CONDUCT
 	matter = list("metal" = 3000)
-	var/cooldown = 0 //shield bash cooldown. based on world.time
+	/// shield bash cooldown. based on world.time
+	var/cooldown = 0
 
 /obj/item/tool/kitchen/tray/attack(mob/living/carbon/M, mob/living/carbon/user)
 	to_chat(user, SPAN_WARNING("You accidentally slam yourself with the [src]!"))

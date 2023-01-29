@@ -30,7 +30,7 @@
 		. += reagent_info
 
 /obj/item/reagent_container/proc/show_reagent_info(mob/user)
-	if(isXeno(user) || reagent_desc_override)
+	if(isxeno(user) || reagent_desc_override)
 		return
 	var/list/reagent_desc
 	if(reagents && (transparent || user.can_see_reagents()))
@@ -81,7 +81,7 @@
 // this proc is general-purpose and primarily for medical items that you shouldn't need scigoggles to scan - ie pills, syringes, etc.
 */
 /obj/item/reagent_container/proc/display_contents(mob/user)
-	if(isXeno(user))
+	if(isxeno(user))
 		return
 	if(skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_TRAINED))
 		return "[src] contains: [get_reagent_list_text()]."//this the pill
@@ -104,7 +104,7 @@
 
 /datum/action/item_action/reagent_container/set_transfer_amount
 
-/datum/action/item_action/reagent_container/set_transfer_amount/New(var/mob/living/user, var/obj/item/holder)
+/datum/action/item_action/reagent_container/set_transfer_amount/New(mob/living/user, obj/item/holder)
 	..()
 	name = "Set Transfer Amount"
 	button.name = name

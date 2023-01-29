@@ -51,6 +51,7 @@
 "aj" = (
 /obj/structure/surface/table,
 /obj/effect/landmark/crap_item,
+/obj/item/weapon/melee/yautja/combistick,
 /turf/open/floor{
 	dir = 5;
 	icon_state = "whitepurple"
@@ -184,6 +185,11 @@
 	dir = 8
 	},
 /obj/effect/landmark/crap_item,
+/obj/structure/transmitter/colony_net{
+	pixel_y = 24;
+	phone_category = "Lazarus Landing";
+	phone_id = "Research"
+	},
 /turf/open/floor{
 	dir = 5;
 	icon_state = "whitepurple"
@@ -395,7 +401,6 @@
 "bb" = (
 /obj/structure/surface/table,
 /obj/item/weapon/melee/yautja/scythe,
-/obj/item/weapon/melee/yautja/combistick,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
 	dir = 5;

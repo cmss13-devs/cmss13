@@ -4,7 +4,7 @@
 #define TORFILE "data/ToR_ban.bdb"
 #define TOR_UPDATE_INTERVAL 216000 //~6 hours
 
-/proc/ToRban_isbanned(var/ip_address)
+/proc/ToRban_isbanned(ip_address)
 	var/savefile/F = new(TORFILE)
 	if(F)
 		if( ip_address in F.dir )

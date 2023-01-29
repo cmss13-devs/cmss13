@@ -142,7 +142,7 @@
 		to_chat_spaced(world, type = MESSAGE_TYPE_SYSTEM, html = SPAN_ANNOUNCEMENT_HEADER_ADMIN(" <b>[usr.client.admin_holder.fakekey ? "Administrator" : usr.key] Announces:</b>\n \t [message]"))
 		log_admin("Announce: [key_name(usr)] : [message]")
 
-/datum/admins/proc/player_notes_show(var/key as text)
+/datum/admins/proc/player_notes_show(key as text)
 	set name = "Player Notes Show"
 	set category = "Admin"
 	if (!istype(src,/datum/admins))
@@ -188,7 +188,7 @@
 /datum/admins/proc/sleepall()
 	set name = "Sleep All"
 	set category = "Admin.InView"
-	set hidden = 1
+	set hidden = TRUE
 
 	if(!check_rights(0))
 		return
@@ -205,7 +205,7 @@
 /datum/admins/proc/wakeall()
 	set name = "Wake All"
 	set category = "Admin.InView"
-	set hidden = 1
+	set hidden = TRUE
 
 	if(!check_rights(0))
 		return
@@ -221,7 +221,7 @@
 /client/proc/cmd_admin_say(msg as text)
 	set name = "Asay" //Gave this shit a shorter name so you only have to time out "asay" rather than "admin say" to use it --NeoFite
 	set category = "Admin"
-	set hidden = 1
+	set hidden = TRUE
 
 	if(!check_rights(R_ADMIN))
 		return
@@ -274,8 +274,8 @@
 
 	for(var/mob/living/mob in view(usr.client))
 		to_chat(mob, SPAN_ANNOUNCEMENT_HEADER_BLUE(message))
-	log_admin("[key_name(src)] sent a Direct Narrate in View with custom message \"[message]\".")
-	message_staff("[key_name(src)] sent a Direct Narrate in View with custom message \"[message]\".")
+	log_admin("[key_name(usr)] sent a Direct Narrate in View with custom message \"[message]\".")
+	message_staff("[key_name(usr)] sent a Direct Narrate in View with custom message \"[message]\".")
 
 #define SUBTLE_MESSAGE_IN_HEAD "Voice in Head"
 #define SUBTLE_MESSAGE_WEYLAND "Weyland-Yutani"
@@ -330,7 +330,7 @@
 /client/proc/cmd_mod_say(msg as text)
 	set name = "Msay"
 	set category = "Admin"
-	set hidden = 1
+	set hidden = TRUE
 
 	if(!check_rights(R_ADMIN|R_MOD))
 		return
@@ -421,7 +421,7 @@
 /client/proc/rejuvenate_all_in_view()
 	set name = "Rejuvenate All"
 	set category = "Admin.InView"
-	set hidden = 1
+	set hidden = TRUE
 
 	if(!admin_holder || !(admin_holder.rights & R_MOD))
 		to_chat(src, "Only administrators may use this command.")
@@ -439,7 +439,7 @@
 /client/proc/rejuvenate_all_humans_in_view()
 	set name = "Rejuvenate All Humans"
 	set category = "Admin.InView"
-	set hidden = 1
+	set hidden = TRUE
 
 	if(!admin_holder || !(admin_holder.rights & R_MOD))
 		to_chat(src, "Only administrators may use this command.")
@@ -456,7 +456,7 @@
 /client/proc/rejuvenate_all_revivable_humans_in_view()
 	set name = "Rejuvenate Revivable Human"
 	set category = "Admin.InView"
-	set hidden = 1
+	set hidden = TRUE
 
 	if(!admin_holder || !(admin_holder.rights & R_MOD))
 		to_chat(src, "Only administrators may use this command.")
@@ -466,7 +466,7 @@
 		return
 
 	for(var/mob/living/carbon/human/M in view())
-		if(!isHumanStrict(M) && !isHumanSynthStrict(M))
+		if(!ishuman_strict(M) && !ishumansynth_strict(M))
 			continue
 
 		if(M.stat != DEAD)
@@ -482,7 +482,7 @@
 /client/proc/rejuvenate_all_xenos_in_view()
 	set name = "Rejuvenate Xenos"
 	set category = "Admin.InView"
-	set hidden = 1
+	set hidden = TRUE
 
 	if(!admin_holder || !(admin_holder.rights & R_MOD))
 		to_chat(src, "Only administrators may use this command.")
@@ -491,7 +491,7 @@
 	if(alert("This will rejuvenate ALL xenos within your view range. Are you sure?",,"Yes","Cancel") == "Cancel")
 		return
 
-	for(var/mob/living/carbon/Xenomorph/X in view())
+	for(var/mob/living/carbon/xenomorph/X in view())
 		X.rejuvenate(FALSE)
 
 	message_staff(WRAP_STAFF_LOG(usr, "ahealed all xenos in [get_area(usr)] ([usr.x],[usr.y],[usr.z])"), usr.x, usr.y, usr.z)
@@ -596,7 +596,7 @@
 	set_lz_resin_allowed(!GLOB.resin_lz_allowed)
 	message_staff("[src] has [GLOB.resin_lz_allowed ? "allowed xenos to weed" : "disallowed from weeding"] near the LZ.")
 
-/proc/set_lz_resin_allowed(var/allowed = TRUE)
+/proc/set_lz_resin_allowed(allowed = TRUE)
 	if(allowed)
 		for(var/area/A in all_areas)
 			A.is_resin_allowed = TRUE

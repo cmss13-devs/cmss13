@@ -51,7 +51,7 @@
 		/datum/action/xeno_action/activable/spray_acid/spitter,
 	)
 	inherent_verbs = list(
-		/mob/living/carbon/Xenomorph/proc/vent_crawl,
+		/mob/living/carbon/xenomorph/proc/vent_crawl,
 	)
 	mutation_type = SPITTER_NORMAL
 

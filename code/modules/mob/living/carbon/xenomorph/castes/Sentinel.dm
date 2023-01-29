@@ -49,7 +49,7 @@
 		/datum/action/xeno_action/onclick/paralyzing_slash, //third macro
 	)
 	inherent_verbs = list(
-		/mob/living/carbon/Xenomorph/proc/vent_crawl,
+		/mob/living/carbon/xenomorph/proc/vent_crawl,
 	)
 	mutation_type = SENTINEL_NORMAL
 
@@ -68,7 +68,7 @@
 	if (!next_slash_buffed)
 		return original_damage
 
-	if (!isXenoOrHuman(carbon_target))
+	if (!isxeno_human(carbon_target))
 		return original_damage
 
 	if(skillcheck(carbon_target, SKILL_ENDURANCE, SKILL_ENDURANCE_MAX ))

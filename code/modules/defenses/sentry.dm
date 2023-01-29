@@ -679,7 +679,7 @@
 	else
 		to_chat(user, SPAN_WARNING("You need at least [upgrade_cost] sheets of metal to upgrade this."))
 
-/obj/structure/machinery/defenses/sentry/launchable/attack_hand_checks(var/mob/user)
+/obj/structure/machinery/defenses/sentry/launchable/attack_hand_checks(mob/user)
 	// Reloads the sentry using inherent rounds
 	if(!turned_on && additional_rounds_stored && (ammo.current_rounds < ammo.max_rounds))
 		if(!do_after(user, 2 SECONDS * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL, BUSY_ICON_FRIENDLY))

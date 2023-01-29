@@ -56,7 +56,7 @@ GLOBAL_LIST_INIT(cm_vending_gear_commanding_officer, list(
 	icon_state = "guns"
 	use_snowflake_points = TRUE
 
-/obj/structure/machinery/cm_vending/gear/commanding_officer/get_listed_products(var/mob/user)
+/obj/structure/machinery/cm_vending/gear/commanding_officer/get_listed_products(mob/user)
 	return GLOB.cm_vending_gear_commanding_officer
 
 //------------CLOTHING VENDOR---------------
@@ -108,7 +108,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_commanding_officer, list(
 	req_access = list(ACCESS_MARINE_COMMANDER)
 	vendor_role = list(JOB_CO, JOB_WO_CO)
 
-/obj/structure/machinery/cm_vending/clothing/commanding_officer/get_listed_products(var/mob/user)
+/obj/structure/machinery/cm_vending/clothing/commanding_officer/get_listed_products(mob/user)
 	return GLOB.cm_vending_clothing_commanding_officer
 
 // This gets around the COs' weapon not spawning without incendiary mag.

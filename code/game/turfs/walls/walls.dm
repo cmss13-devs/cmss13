@@ -91,12 +91,12 @@
 
 /turf/closed/wall/MouseDrop_T(mob/M, mob/user)
 	if(acided_hole)
-		if(M == user && isXeno(user))
+		if(M == user && isxeno(user))
 			acided_hole.use_wall_hole(user)
 			return
 	..()
 
-/turf/closed/wall/attack_alien(mob/living/carbon/Xenomorph/user)
+/turf/closed/wall/attack_alien(mob/living/carbon/xenomorph/user)
 	if(acided_hole && user.mob_size >= MOB_SIZE_BIG)
 		acided_hole.expand_hole(user) //This proc applies the attack delay itself.
 		return XENO_NO_DELAY_ACTION
@@ -168,7 +168,7 @@
 			. += SPAN_INFO("The anchor bolts have been removed. A crowbar will pry apart the connecting rods.")
 
 //Damage
-/turf/closed/wall/proc/take_damage(dam, var/mob/M)
+/turf/closed/wall/proc/take_damage(dam, mob/M)
 	if(hull) //Hull is literally invincible
 		return
 	if(!dam)
@@ -259,7 +259,7 @@
 	O.desc = "Looks hot."
 	O.icon = 'icons/effects/fire.dmi'
 	O.icon_state = "red_3"
-	O.anchored = 1
+	O.anchored = TRUE
 	O.density = TRUE
 	O.layer = FLY_LAYER
 

@@ -251,7 +251,7 @@
 	to_chat(user, text)
 	boot_status++
 
-/obj/structure/machinery/acid_core/proc/voice(var/voiceline, var/report_vitals = FALSE)
+/obj/structure/machinery/acid_core/proc/voice(voiceline, report_vitals = FALSE)
 	if(!user)
 		return
 	var/text = SPAN_HELPFUL("A.C.I.D. states: ")
@@ -317,7 +317,7 @@
 		return TRUE
 	return FALSE
 
-/obj/structure/machinery/acid_core/proc/check_battery(var/obj/item/cell/battery)
+/obj/structure/machinery/acid_core/proc/check_battery(obj/item/cell/battery)
 	battery.charge = max(battery.charge - 10, 0)
 	var/charge = battery.charge / battery.maxcharge * 100
 	if(charge + 20 < battery_level || charge > battery_level)
@@ -458,7 +458,7 @@
 	last_condition_scan = condition_scan
 	last_vitals_scan = vitals_scan
 
-/obj/structure/machinery/acid_core/proc/compare_scans(var/damage_scan = 0, var/condition_scan = 0)
+/obj/structure/machinery/acid_core/proc/compare_scans(damage_scan = 0, condition_scan = 0)
 	if(inject_logic == ACID_LOGIC_OR) //OR logic
 		if(~last_damage_scan & damage_scan || ~last_condition_scan & condition_scan) //If there's a new bit flagged, vitals has worsened
 			inject()

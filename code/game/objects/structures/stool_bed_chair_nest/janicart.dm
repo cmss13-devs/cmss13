@@ -5,7 +5,7 @@
 	name = "janicart"
 	icon = 'icons/obj/vehicles/vehicles.dmi'
 	icon_state = "pussywagon"
-	anchored = 0
+	anchored = FALSE
 	density = TRUE
 	flags_atom = OPENCONTAINER
 	buildstacktype = null //can't be disassembled and doesn't drop anything when destroyed
@@ -103,7 +103,7 @@
 				buckled_mob.pixel_y = 7
 
 
-/obj/structure/bed/chair/janicart/bullet_act(var/obj/item/projectile/Proj)
+/obj/structure/bed/chair/janicart/bullet_act(obj/item/projectile/Proj)
 	if(buckled_mob)
 		if(prob(85))
 			return buckled_mob.bullet_act(Proj)

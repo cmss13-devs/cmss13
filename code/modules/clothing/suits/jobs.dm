@@ -49,7 +49,7 @@
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS|BODY_FLAG_LEGS|BODY_FLAG_GROIN
 
 	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS|BODY_FLAG_LEGS|BODY_FLAG_GROIN
-	min_cold_protection_temperature = SPACE_SUIT_min_cold_protection_temperature
+	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROT
 
 	allowed = list(
 		/obj/item/weapon/gun/,

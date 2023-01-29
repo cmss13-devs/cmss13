@@ -88,7 +88,7 @@
 
 	deploy_mine(user)
 
-/obj/item/explosive/mine/proc/deploy_mine(var/mob/user)
+/obj/item/explosive/mine/proc/deploy_mine(mob/user)
 	if(!hard_iff_lock && user)
 		iff_signal = user.faction
 
@@ -222,7 +222,7 @@
 			disarm()
 
 
-/obj/item/explosive/mine/attack_alien(mob/living/carbon/Xenomorph/M)
+/obj/item/explosive/mine/attack_alien(mob/living/carbon/xenomorph/M)
 	if(triggered) //Mine is already set to go off
 		return XENO_NO_DELAY_ACTION
 

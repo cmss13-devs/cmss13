@@ -2,11 +2,11 @@
 //They can't, however, activate any of the special functions.
 //Thrall subtypes are located in /code/modules/cm_preds/thrall_items.dm
 
-/proc/add_to_missing_pred_gear(var/obj/item/W)
+/proc/add_to_missing_pred_gear(obj/item/W)
 	if(!is_admin_level(W.z))
 		GLOB.loose_yautja_gear |= W
 
-/proc/remove_from_missing_pred_gear(var/obj/item/W)
+/proc/remove_from_missing_pred_gear(obj/item/W)
 	GLOB.loose_yautja_gear -= W
 
 //=================//\\=================\\
@@ -43,8 +43,8 @@
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
 	flags_item = ITEM_PREDATOR
 	slowdown = SLOWDOWN_ARMOR_NONE
-	min_cold_protection_temperature = ARMOR_min_cold_protection_temperature
-	max_heat_protection_temperature = ARMOR_max_heat_protection_temperature
+	min_cold_protection_temperature = HELMET_MIN_COLD_PROT
+	max_heat_protection_temperature = HELMET_MAX_HEAT_PROT
 	siemens_coefficient = 0.1
 	allowed = list(/obj/item/weapon/melee/harpoon,
 			/obj/item/weapon/gun/launcher/spike,
@@ -152,7 +152,7 @@
 	var/clan_rank_required = CLAN_RANK_ELDER_INT
 	var/councillor_override = FALSE
 
-/obj/item/clothing/yautja_cape/Initialize(mapload, var/new_color = "#654321")
+/obj/item/clothing/yautja_cape/Initialize(mapload, new_color = "#654321")
 	. = ..()
 	color = new_color
 
@@ -161,7 +161,7 @@
 	..()
 
 /obj/item/clothing/yautja_cape/pickup(mob/living/user)
-	if(isYautja(user))
+	if(isyautja(user))
 		remove_from_missing_pred_gear(src)
 	..()
 
@@ -211,8 +211,8 @@
 	flags_item = ITEM_PREDATOR
 
 	siemens_coefficient = 0.2
-	min_cold_protection_temperature = SHOE_min_cold_protection_temperature
-	max_heat_protection_temperature = SHOE_max_heat_protection_temperature
+	min_cold_protection_temperature = SHOE_MIN_COLD_PROT
+	max_heat_protection_temperature = SHOE_MAX_HEAT_PROT
 	items_allowed = list(
 		/obj/item/weapon/melee/yautja/knife,
 		/obj/item/weapon/gun/energy/yautja/plasmapistol
@@ -274,7 +274,7 @@
 	has_sensor = UNIFORM_HAS_SENSORS
 	sensor_faction = FACTION_YAUTJA
 	siemens_coefficient = 0.9
-	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
+	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
 
 	armor_melee = CLOTHING_ARMOR_MEDIUM
 	armor_bullet = CLOTHING_ARMOR_MEDIUM
@@ -318,12 +318,12 @@
 	unacidable = TRUE
 	ignore_z = TRUE
 
-/obj/item/device/radio/headset/yautja/talk_into(mob/living/M as mob, message, channel, var/verb = "commands", var/datum/language/speaking)
-	if(!isYautja(M)) //Nope.
+/obj/item/device/radio/headset/yautja/talk_into(mob/living/M as mob, message, channel, verb = "commands", datum/language/speaking)
+	if(!isyautja(M)) //Nope.
 		to_chat(M, SPAN_WARNING("You try to talk into the headset, but just get a horrible shrieking in your ears!"))
 		return
 
-	for(var/mob/living/carbon/Xenomorph/Hellhound/hellhound as anything in GLOB.hellhound_list)
+	for(var/mob/living/carbon/xenomorph/hellhound/hellhound as anything in GLOB.hellhound_list)
 		if(!hellhound.stat)
 			to_chat(hellhound, "\[Radio\]: [M.real_name] [verb], '<B>[message]</b>'.")
 	..()
@@ -386,7 +386,7 @@
 	var/mob/living/carbon/human/H = user
 	var/ship_to_tele = list("Public" = -1, "Human Ship" = "Human")
 
-	if(!isYautja(H) || is_admin_level(H.z))
+	if(!isyautja(H) || is_admin_level(H.z))
 		to_chat(user, SPAN_WARNING("You fiddle with it, but nothing happens!"))
 		return
 
@@ -591,14 +591,14 @@
 
 /obj/item/scalp/get_examine_text(mob/user)
 	. = ..()
-	if(isYautja(user) || isobserver(user))
+	if(isyautja(user) || isobserver(user))
 		. += true_desc
 	else
 		. += SPAN_WARNING("Scalp-collecting is supposed to be a <i>joke</i>. Has someone been going around doing this shit for real? What next, a necklace of severed ears? Jesus Christ.")
 
 /obj/item/explosive/grenade/spawnergrenade/hellhound
 	name = "hellhound caller"
-	spawner_type = /mob/living/carbon/Xenomorph/Hellhound
+	spawner_type = /mob/living/carbon/xenomorph/hellhound
 	deliveryamt = 1
 	desc = "A strange piece of alien technology. It seems to call forth a hellhound."
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
@@ -685,7 +685,7 @@
 	trapped_mob = null
 	. = ..()
 
-/obj/item/hunting_trap/dropped(var/mob/living/carbon/human/mob) //Changes to "camouflaged" icons based on where it was dropped.
+/obj/item/hunting_trap/dropped(mob/living/carbon/human/mob) //Changes to "camouflaged" icons based on where it was dropped.
 	if(armed && isturf(mob.loc))
 		var/turf/T = mob.loc
 		if(istype(T,/turf/open/gm/dirt))
@@ -716,13 +716,13 @@
 	if(HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
 		disarm(user)
 	//Humans and synths don't know how to handle those traps!
-	if(isHumanSynthStrict(user) && armed)
+	if(ishumansynth_strict(user) && armed)
 		to_chat(user, SPAN_WARNING("You foolishly reach out for \the [src]..."))
 		trapMob(user)
 		return
 	. = ..()
 
-/obj/item/hunting_trap/proc/trapMob(var/mob/living/carbon/C)
+/obj/item/hunting_trap/proc/trapMob(mob/living/carbon/C)
 	if(!armed)
 		return
 
@@ -744,14 +744,14 @@
 
 	if(ishuman(C))
 		C.emote("pain")
-	if(isXeno(C))
-		var/mob/living/carbon/Xenomorph/X = C
+	if(isxeno(C))
+		var/mob/living/carbon/xenomorph/X = C
 		C.emote("needhelp")
 		X.interference = 100 // Some base interference to give pred time to get some damage in, if it cannot land a single hit during this time pred is cheeks
 		RegisterSignal(X, COMSIG_XENO_PRE_HEAL, PROC_REF(block_heal))
 	message_all_yautja("A hunting trap has caught something in [get_area_name(loc)]!")
 
-/obj/item/hunting_trap/proc/block_heal(mob/living/carbon/Xenomorph/xeno)
+/obj/item/hunting_trap/proc/block_heal(mob/living/carbon/xenomorph/xeno)
 	SIGNAL_HANDLER
 	return COMPONENT_CANCEL_XENO_HEAL
 
@@ -761,7 +761,7 @@
 		if(!M.buckled)
 			if(iscarbon(AM) && isturf(src.loc))
 				var/mob/living/carbon/H = AM
-				if(isYautja(H))
+				if(isyautja(H))
 					to_chat(H, SPAN_NOTICE("You carefully avoid stepping on the trap."))
 					return
 				trapMob(H)
@@ -781,7 +781,7 @@
 		qdel(tether_effect)
 		tether_effect = null
 
-/obj/item/hunting_trap/proc/disarm(var/mob/user)
+/obj/item/hunting_trap/proc/disarm(mob/user)
 	SIGNAL_HANDLER
 	armed = FALSE
 	anchored = FALSE
@@ -791,8 +791,8 @@
 		user.attack_log += text("\[[time_stamp()]\] <font color='orange'>[key_name(user)] has disarmed \the [src] at [get_location_in_text(user)].</font>")
 		log_attack("[key_name(user)] has disarmed \a [src] at [get_location_in_text(user)].")
 	if (trapped_mob)
-		if (isXeno(trapped_mob))
-			var/mob/living/carbon/Xenomorph/X = trapped_mob
+		if (isxeno(trapped_mob))
+			var/mob/living/carbon/xenomorph/X = trapped_mob
 			UnregisterSignal(X, COMSIG_XENO_PRE_HEAL)
 		trapped_mob = null
 	cleanup_tether()

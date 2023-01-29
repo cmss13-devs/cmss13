@@ -10,7 +10,7 @@
 	ability_primacy = XENO_PRIMARY_ACTION_3
 
 /datum/action/xeno_action/activable/burrow/use_ability(atom/A)
-	var/mob/living/carbon/Xenomorph/X = owner
+	var/mob/living/carbon/xenomorph/X = owner
 	if(X.burrow)
 		X.tunnel(get_turf(A))
 	else
@@ -25,6 +25,6 @@
 	ability_primacy = XENO_PRIMARY_ACTION_4
 
 /datum/action/xeno_action/onclick/tremor/use_ability()
-	var/mob/living/carbon/Xenomorph/X = owner
+	var/mob/living/carbon/xenomorph/X = owner
 	X.tremor()
 	..()

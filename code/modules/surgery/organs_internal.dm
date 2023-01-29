@@ -13,7 +13,7 @@ and organ transplant code which may come in handy in future but haven't been edi
 	pain_reduction_required = PAIN_REDUCTION_HEAVY
 	steps = list(/datum/surgery_step/repair_organs)
 
-/datum/surgery/organ_repair/can_start(mob/user, mob/living/carbon/patient, var/obj/limb/L, obj/item/tool)
+/datum/surgery/organ_repair/can_start(mob/user, mob/living/carbon/patient, obj/limb/L, obj/item/tool)
 	for(var/datum/internal_organ/IO as anything in L.internal_organs)
 		if(IO.damage > 0 && IO.robotic != ORGAN_ROBOT)
 			return TRUE

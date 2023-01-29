@@ -80,6 +80,15 @@
 	tag = "icon-mars_cave_2"
 	},
 /area/bigredv2/outside/filtration_cave_cas)
+"kd" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/transmitter/colony_net/rotary{
+	phone_category = "Solaris Ridge";
+	phone_id = "Filtration Checkpoint";
+	phone_color = "red"
+	},
+/turf/open/floor/greengrid,
+/area/bigred/ground/security)
 "kG" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
@@ -520,7 +529,7 @@ Vg
 zE
 OM
 SF
-Mq
+kd
 AY
 KO
 uk

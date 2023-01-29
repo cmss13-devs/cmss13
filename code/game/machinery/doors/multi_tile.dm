@@ -139,7 +139,7 @@
 	. = ..()
 	relativewall_neighbours()
 
-/obj/structure/machinery/door/airlock/multi_tile/almayer/take_damage(var/dam, var/mob/M)
+/obj/structure/machinery/door/airlock/multi_tile/almayer/take_damage(dam, mob/M)
 	var/damage_check = max(0, damage + dam)
 	if(damage_check >= damage_cap && M && is_mainship_level(z))
 		SSclues.create_print(get_turf(M), M, "The fingerprint contains bits of wire and metal specks.")

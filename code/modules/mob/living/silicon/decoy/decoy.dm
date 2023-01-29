@@ -13,7 +13,7 @@
 	name = "AI"
 	icon = 'icons/obj/structures/machinery/ai.dmi'
 	icon_state = "hydra"
-	anchored = 1
+	anchored = TRUE
 	canmove = 0
 	density = TRUE //Do not want to see past it.
 	bound_height = 64 //putting this in so we can't walk through our machine.
@@ -37,7 +37,7 @@
 	if(stat == DEAD)
 		return FALSE
 	icon_state = "hydra-off"
-	addtimer(CALLBACK(GLOBAL_PROC, PROC_REF(explosion), loc, -1, 0, 8, 12), 2 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(explosion), loc, -1, 0, 8, 12), 2 SECONDS)
 	return ..()
 
 /mob/living/silicon/decoy/say(message) //General communication across the ship.

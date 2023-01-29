@@ -1,5 +1,0 @@
-author: "carlarctg"
-delete-after: True
-changes:
-  - balance: "Adds an outline filter to synthetic protective and immobile forms. Blue = Immobile, Green = Protective"
-  - balance: "The smartpack's visual-only exoskeleton has been set to default - but is now only visible when in repair, protective, or immobile forms. T"

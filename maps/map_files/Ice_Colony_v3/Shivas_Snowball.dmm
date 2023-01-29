@@ -11892,7 +11892,7 @@
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/caves/medseceng_caves)
 "gtx" = (
-/obj/item/explosive/grenade/HE/m15,
+/obj/item/explosive/grenade/high_explosive/m15,
 /turf/open/auto_turf/snow/layer0,
 /area/shiva/interior/warehouse)
 "gty" = (
@@ -14765,7 +14765,7 @@
 /area/shiva/exterior/lz1_valley)
 "jqT" = (
 /obj/structure/closet/firecloset,
-/obj/item/explosive/grenade/HE/PMC,
+/obj/item/explosive/grenade/high_explosive/pmc,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/shiva{
 	icon_state = "redfull"

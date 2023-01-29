@@ -50,7 +50,7 @@
 	desc = "A square piece of metal standing on four metal legs. It can not move."
 	icon_state = "table"
 	density = TRUE
-	anchored = 1.0
+	anchored = TRUE
 	throwpass = 1 //You can throw objects over this, despite it's density.
 
 /obj/structure/surface/table/holotable/attack_animal(mob/living/user as mob) //Removed code for larva since it doesn't work. Previous code is now a larva ability. /N
@@ -93,7 +93,7 @@
 	desc = "Apply butt."
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "stool"
-	anchored = 1.0
+	anchored = TRUE
 	flags_atom = FPRINT
 
 
@@ -110,10 +110,10 @@
 	desc = "A window."
 	density = TRUE
 	layer = WINDOW_LAYER
-	anchored = 1.0
+	anchored = TRUE
 	flags_atom = ON_BORDER
 
-/obj/structure/holowindow/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/obj/structure/holowindow/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_can_pass_all = PASS_GLASS
@@ -132,7 +132,7 @@
 	desc = "Boom, Shakalaka!"
 	icon = 'icons/obj/structures/props/misc.dmi'
 	icon_state = "hoop"
-	anchored = 1
+	anchored = TRUE
 	density = TRUE
 	throwpass = 1
 	var/side = ""
@@ -191,7 +191,7 @@
 	var/area/currentarea = null
 	var/eventstarted = 0
 
-	anchored = 1.0
+	anchored = TRUE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 2
 	active_power_usage = 6

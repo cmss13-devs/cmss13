@@ -382,7 +382,7 @@
 /obj/structure/pipes/vents/pump{
 	dir = 4
 	},
-/obj/item/clothing/head/helmet/marine/veteran/PMC/leader,
+/obj/item/clothing/head/helmet/marine/veteran/pmc/leader,
 /turf/open/floor{
 	tag = "icon-carpet15-15 (WEST)";
 	icon_state = "carpet15-15";

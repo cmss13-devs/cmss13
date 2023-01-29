@@ -51,10 +51,10 @@
 			return
 	return
 
-/obj/structure/machinery/computer/pod/attack_remote(var/mob/user as mob)
+/obj/structure/machinery/computer/pod/attack_remote(mob/user as mob)
 	return attack_hand(user)
 
-/obj/structure/machinery/computer/pod/attack_hand(var/mob/user as mob)
+/obj/structure/machinery/computer/pod/attack_hand(mob/user as mob)
 	if(..())
 		return
 
@@ -148,7 +148,7 @@
 	title = "External Airlock Controls"
 	req_access = list(ACCESS_ILLEGAL_PIRATE)
 
-/obj/structure/machinery/computer/pod/old/syndicate/attack_hand(var/mob/user as mob)
+/obj/structure/machinery/computer/pod/old/syndicate/attack_hand(mob/user as mob)
 	if(!allowed(user))
 		to_chat(user, SPAN_DANGER("Access Denied"))
 		return

@@ -2648,7 +2648,7 @@
 	},
 /area/lv522/indoors/c_block/cargo)
 "bDR" = (
-/obj/item/explosive/grenade/HE,
+/obj/item/explosive/grenade/high_explosive,
 /turf/open/floor/prison,
 /area/lv522/indoors/a_block/kitchen)
 "bDS" = (
@@ -17133,9 +17133,9 @@
 	name = "Display synthetic"
 	},
 /obj/structure/window/reinforced,
-/obj/item/clothing/under/marine/veteran/PMC,
-/obj/item/clothing/mask/gas/PMC,
-/obj/item/clothing/head/helmet/marine/veteran/PMC/leader{
+/obj/item/clothing/under/marine/veteran/pmc,
+/obj/item/clothing/mask/gas/pmc,
+/obj/item/clothing/head/helmet/marine/veteran/pmc/leader{
 	layer = 3.1;
 	pixel_y = 10
 	},
@@ -46773,7 +46773,7 @@
 	spawnkey = 0
 	},
 /obj/item/storage/fancy/cigar,
-/obj/item/clothing/head/helmet/marine/veteran/PMC,
+/obj/item/clothing/head/helmet/marine/veteran/pmc,
 /obj/item/m_gift,
 /obj/item/coin/diamond,
 /turf/open/floor/strata{
@@ -54960,7 +54960,7 @@
 	},
 /area/lv522/indoors/lone_buildings/spaceport)
 "wHz" = (
-/obj/item/clothing/shoes/veteran/PMC{
+/obj/item/clothing/shoes/veteran/pmc{
 	name = "steel toe boots"
 	},
 /obj/structure/machinery/light,

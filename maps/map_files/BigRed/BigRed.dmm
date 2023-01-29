@@ -1554,6 +1554,13 @@
 /obj/structure/machinery/computer/telecomms/monitor{
 	req_one_access_txt = "19;200"
 	},
+/obj/structure/transmitter/colony_net{
+	dir = 4;
+	pixel_x = -18;
+	phone_category = "Solaris Ridge";
+	phone_color = "yellow";
+	phone_id = "Communications"
+	},
 /turf/open/floor{
 	icon_state = "dark"
 	},
@@ -3332,6 +3339,11 @@
 "aiG" = (
 /obj/structure/surface/table,
 /obj/item/handcuffs,
+/obj/structure/transmitter/colony_net/rotary{
+	phone_category = "Solaris Ridge";
+	phone_color = "red";
+	phone_id = "Marshal Office"
+	},
 /turf/open/floor{
 	icon_state = "dark"
 	},
@@ -8703,7 +8715,11 @@
 "awB" = (
 /obj/structure/surface/table/holotable/wood,
 /obj/item/reagent_container/food/drinks/coffee,
-/obj/item/phone,
+/obj/structure/transmitter/colony_net/rotary{
+	phone_category = "Lambda Labs";
+	phone_id = "Administration";
+	phone_color = "blue"
+	},
 /turf/open/floor/carpet,
 /area/bigredv2/caves/lambda/breakroom)
 "awC" = (
@@ -8954,7 +8970,8 @@
 /obj/structure/window/reinforced/toughened{
 	dir = 1;
 	icon_state = "fwindow";
-	tag = "icon-fwindow (NORTH)"
+	tag = "icon-fwindow (NORTH)";
+	pixel_y = 12
 	},
 /obj/structure/window/reinforced/toughened{
 	dir = 8;
@@ -10705,6 +10722,12 @@
 /obj/item/device/healthanalyzer,
 /obj/structure/pipes/vents/pump,
 /obj/item/reagent_container/spray/cleaner,
+/obj/structure/transmitter/colony_net{
+	pixel_y = 24;
+	phone_category = "Solaris Ridge";
+	phone_color = "green";
+	phone_id = "Clinic"
+	},
 /turf/open/floor{
 	icon_state = "white"
 	},
@@ -12060,6 +12083,12 @@
 "aFl" = (
 /obj/structure/surface/table,
 /obj/effect/spawner/random/technology_scanner,
+/obj/structure/transmitter/colony_net{
+	dir = 4;
+	pixel_x = -18;
+	phone_category = "Eta Labs";
+	phone_id = "Observation"
+	},
 /turf/open/floor{
 	dir = 10;
 	icon_state = "purple";
@@ -13145,7 +13174,8 @@
 /obj/structure/window/reinforced/toughened{
 	dir = 1;
 	icon_state = "fwindow";
-	tag = "icon-fwindow (NORTH)"
+	tag = "icon-fwindow (NORTH)";
+	pixel_y = 12
 	},
 /turf/open/floor{
 	dir = 9;
@@ -13179,7 +13209,8 @@
 /obj/structure/window/reinforced/toughened{
 	dir = 1;
 	icon_state = "fwindow";
-	tag = "icon-fwindow (NORTH)"
+	tag = "icon-fwindow (NORTH)";
+	pixel_y = 12
 	},
 /obj/structure/machinery/disease2/diseaseanalyser,
 /turf/open/floor{
@@ -13613,7 +13644,8 @@
 /obj/structure/window/reinforced/toughened{
 	dir = 1;
 	icon_state = "fwindow";
-	tag = "icon-fwindow (NORTH)"
+	tag = "icon-fwindow (NORTH)";
+	pixel_y = 12
 	},
 /obj/structure/machinery/door/window{
 	dir = 8
@@ -13659,7 +13691,8 @@
 /obj/structure/window/reinforced/toughened{
 	dir = 1;
 	icon_state = "fwindow";
-	tag = "icon-fwindow (NORTH)"
+	tag = "icon-fwindow (NORTH)";
+	pixel_y = 12
 	},
 /obj/structure/machinery/door/window{
 	layer = 4
@@ -15536,6 +15569,11 @@
 	dir = 4;
 	health = 80
 	},
+/obj/structure/transmitter/colony_net/rotary{
+	phone_category = "Solaris Ridge";
+	phone_color = "blue";
+	phone_id = "Administration"
+	},
 /turf/open/floor{
 	dir = 4;
 	icon_state = "warnwhite"
@@ -16031,6 +16069,11 @@
 /area/bigredv2/caves/eta/storage)
 "aOQ" = (
 /obj/structure/surface/table,
+/obj/structure/transmitter/colony_net/rotary{
+	phone_category = "Eta Labs";
+	phone_id = "Director";
+	phone_color = "Blue"
+	},
 /turf/open/floor{
 	dir = 6;
 	icon_state = "darkblue2";
@@ -16162,6 +16205,10 @@
 /area/bigredv2/outside/hydroponics)
 "aPf" = (
 /obj/structure/surface/table,
+/obj/structure/transmitter/colony_net/rotary{
+	phone_category = "Eta Labs";
+	phone_id = "Workshop"
+	},
 /turf/open/floor{
 	dir = 1;
 	icon_state = "darkred2";
@@ -18992,6 +19039,12 @@
 "aVW" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 4
+	},
+/obj/structure/transmitter/colony_net{
+	pixel_y = 24;
+	phone_category = "Solaris Ridge";
+	phone_color = "blue";
+	phone_id = "Operations"
 	},
 /turf/open/floor{
 	dir = 1;
@@ -22706,7 +22759,7 @@
 /area/bigredv2/outside/space_port_lz2)
 "bgZ" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/explosive/grenade/HE/frag{
+/obj/item/explosive/grenade/high_explosive/frag{
 	desc = "High-Explosive Fragmenting-Antipersonnel. A small, but deceptively strong fragmentation grenade that has been phasing out the M15 fragmentation grenades alongside the M40 HEDP. Capable of being loaded in the M92 Launcher, or thrown by hand. This one seems to have weird insciptions all over it. You can barely make out 'PrAIs3 thE H3f@ G0d'"
 	},
 /turf/open/floor/plating{
@@ -24414,13 +24467,18 @@
 /obj/structure/window/reinforced/toughened{
 	dir = 1;
 	icon_state = "fwindow";
-	tag = "icon-fwindow (NORTH)"
+	tag = "icon-fwindow (NORTH)";
+	pixel_y = 12
 	},
 /obj/structure/window/reinforced/toughened{
 	dir = 4;
 	tag = "icon-rwindow (EAST)"
 	},
 /obj/structure/surface/table/reinforced,
+/obj/structure/transmitter/colony_net/rotary{
+	phone_category = "Lambda Labs";
+	phone_id = "Virology"
+	},
 /turf/open/floor{
 	dir = 5;
 	icon_state = "darkgreen2";
@@ -24733,6 +24791,12 @@
 /area/bigredv2/outside/filtration_plant)
 "boY" = (
 /obj/structure/machinery/cm_vending/sorted/tech/tool_storage,
+/obj/structure/transmitter/colony_net{
+	pixel_y = 24;
+	phone_category = "Solaris Ridge";
+	phone_color = "yellow";
+	phone_id = "Filtration"
+	},
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
 "boZ" = (
@@ -25272,6 +25336,12 @@
 /obj/structure/surface/table,
 /obj/effect/spawner/random/technology_scanner,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/structure/transmitter/colony_net{
+	pixel_y = 24;
+	phone_category = "Solaris Ridge";
+	phone_color = "yellow";
+	phone_id = "Engineering"
+	},
 /turf/open/floor,
 /area/bigredv2/outside/telecomm/engi)
 "bro" = (
@@ -26039,6 +26109,11 @@
 "bwr" = (
 /obj/structure/machinery/light,
 /obj/structure/surface/table,
+/obj/structure/transmitter/colony_net/rotary{
+	phone_category = "Solaris Ridge";
+	phone_id = "Virology Lab";
+	phone_color = "green"
+	},
 /turf/open/floor{
 	icon_state = "white"
 	},
@@ -26128,6 +26203,11 @@
 "bwQ" = (
 /obj/structure/surface/table,
 /obj/item/tool/screwdriver,
+/obj/structure/transmitter/colony_net/rotary{
+	phone_category = "Eta Labs";
+	phone_id = "Robotics";
+	phone_color = "yellow"
+	},
 /turf/open/floor{
 	icon_state = "dark";
 	tag = "icon-dark"
@@ -29953,6 +30033,18 @@
 	tag = "icon-mars_cave_2"
 	},
 /area/bigredv2/caves_sw)
+"daB" = (
+/obj/structure/surface/table/reinforced,
+/obj/structure/transmitter/colony_net/rotary{
+	phone_category = "Lambda Labs";
+	phone_id = "Xenobiology"
+	},
+/turf/open/floor{
+	dir = 4;
+	icon_state = "whitepurple";
+	tag = "icon-whitepurple (EAST)"
+	},
+/area/bigredv2/caves/lambda/xenobiology)
 "dbi" = (
 /turf/closed/wall/solaris/reinforced/hull,
 /area/bigredv2/outside/telecomm/lz2_cave)
@@ -31275,6 +31367,19 @@
 	icon_state = "wood"
 	},
 /area/bigredv2/caves/eta/living)
+"fyO" = (
+/obj/structure/transmitter/colony_net{
+	pixel_y = 24;
+	phone_category = "Solaris Ridge";
+	phone_color = "green";
+	phone_id = "Clinic Labs"
+	},
+/turf/open/floor{
+	dir = 1;
+	icon_state = "whitepurplecorner";
+	tag = "icon-whitepurplecorner (NORTH)"
+	},
+/area/bigredv2/outside/medical)
 "fBc" = (
 /obj/structure/pipes/standard/tank/phoron,
 /turf/open/floor/plating,
@@ -31379,6 +31484,20 @@
 	tag = "icon-mars_dirt_4"
 	},
 /area/bigredv2/caves/mining)
+"fMZ" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/structure/transmitter/colony_net{
+	pixel_y = 24;
+	phone_category = "Lambda Labs";
+	phone_id = "Surgery"
+	},
+/turf/open/floor{
+	icon_state = "dark";
+	tag = "icon-dark"
+	},
+/area/bigredv2/caves/lambda/xenobiology)
 "fOc" = (
 /turf/open/mars_cave{
 	icon_state = "mars_cave_3"
@@ -32111,6 +32230,21 @@
 	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/bigredv2/outside/filtration_plant)
+"htp" = (
+/obj/structure/transmitter/colony_net{
+	dir = 4;
+	pixel_x = -18;
+	phone_category = "Lambda Labs";
+	phone_id = "Secure Storage";
+	phone_color = "red";
+	callable = 0
+	},
+/turf/open/floor{
+	dir = 1;
+	icon_state = "elevatorshaft";
+	tag = "icon-elevatorshaft (NORTH)"
+	},
+/area/bigredv2/caves/lambda/breakroom)
 "hvQ" = (
 /obj/structure/machinery/light/small{
 	dir = 8
@@ -33039,7 +33173,7 @@
 	},
 /area/bigredv2/caves/mining)
 "jkO" = (
-/obj/item/explosive/grenade/HE/frag,
+/obj/item/explosive/grenade/high_explosive/frag,
 /turf/open/mars_cave,
 /area/bigredv2/caves/mining)
 "jkT" = (
@@ -33876,6 +34010,18 @@
 	tag = "icon-darkredcorners2"
 	},
 /area/bigredv2/caves/eta/xenobiology)
+"kyz" = (
+/obj/structure/transmitter/colony_net{
+	dir = 4;
+	pixel_x = -18;
+	phone_category = "Eta Labs";
+	phone_id = "Observation"
+	},
+/turf/open/floor{
+	icon_state = "dark";
+	tag = "icon-dark"
+	},
+/area/bigredv2/caves/eta/xenobiology)
 "kBn" = (
 /turf/closed/wall/solaris,
 /area/bigredv2/caves)
@@ -34031,8 +34177,8 @@
 "kSm" = (
 /obj/item/storage/belt/grenade,
 /obj/structure/closet/crate,
-/obj/item/explosive/grenade/HE/frag,
-/obj/item/explosive/grenade/HE/frag,
+/obj/item/explosive/grenade/high_explosive/frag,
+/obj/item/explosive/grenade/high_explosive/frag,
 /obj/structure/machinery/light{
 	dir = 4
 	},
@@ -35590,6 +35736,18 @@
 	tag = "icon-platingdmg3 (WEST)"
 	},
 /area/bigredv2/caves/mining)
+"ofJ" = (
+/obj/structure/surface/table,
+/obj/structure/transmitter/colony_net/rotary{
+	phone_category = "Eta Labs";
+	phone_id = "Security";
+	phone_color = "red"
+	},
+/turf/open/floor{
+	icon_state = "dark";
+	tag = "icon-dark"
+	},
+/area/bigredv2/caves/eta/storage)
 "ofX" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -39821,6 +39979,16 @@
 	tag = "icon-mars_cave_17"
 	},
 /area/bigredv2/caves_research)
+"vBT" = (
+/obj/structure/surface/table/reinforced,
+/obj/structure/transmitter/colony_net/rotary{
+	phone_category = "Solaris Ridge";
+	phone_id = "Clinic Reception"
+	},
+/turf/open/floor{
+	icon_state = "white"
+	},
+/area/bigredv2/outside/medical)
 "vCd" = (
 /obj/structure/surface/rack,
 /obj/item/weapon/melee/twohanded/lungemine{
@@ -40218,6 +40386,18 @@
 /obj/effect/landmark/lv624/xeno_tunnel,
 /turf/open/mars,
 /area/bigredv2/outside/w)
+"wry" = (
+/obj/structure/surface/table,
+/obj/structure/transmitter/colony_net/rotary{
+	phone_category = "Solaris Ridge";
+	phone_color = "blue";
+	phone_id = "Space Port"
+	},
+/turf/open/floor{
+	icon_state = "dark";
+	tag = "icon-dark"
+	},
+/area/bigredv2/outside/space_port)
 "wrz" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/mars_cave{
@@ -41044,7 +41224,7 @@
 /area/bigredv2/caves/mining)
 "xMT" = (
 /obj/structure/closet,
-/obj/item/explosive/grenade/HE/frag,
+/obj/item/explosive/grenade/high_explosive/frag,
 /obj/item/ore{
 	pixel_x = -4;
 	pixel_y = 7
@@ -50963,7 +51143,7 @@ aaP
 abe
 abn
 aby
-aaC
+wry
 abE
 aaw
 aca
@@ -54034,7 +54214,7 @@ aeI
 aeI
 ajy
 alu
-aqr
+fyO
 aqr
 aqr
 asz
@@ -59046,7 +59226,7 @@ aCK
 aDO
 aEH
 aFI
-bgJ
+vBT
 amj
 amj
 alu
@@ -62413,7 +62593,7 @@ xaW
 wPk
 qTC
 xaW
-xaW
+kyz
 xaW
 xaW
 xaW
@@ -63918,7 +64098,7 @@ aBy
 bzp
 bzC
 aBQ
-aOP
+ofJ
 aOP
 aOP
 aBE
@@ -77473,7 +77653,7 @@ adZ
 aqX
 arE
 asn
-arF
+htp
 amk
 ajm
 aqc
@@ -78538,7 +78718,7 @@ aao
 aao
 aao
 adZ
-afx
+fMZ
 agc
 agc
 agc
@@ -81152,7 +81332,7 @@ adZ
 adZ
 aeQ
 ald
-afy
+daB
 amO
 afy
 amO

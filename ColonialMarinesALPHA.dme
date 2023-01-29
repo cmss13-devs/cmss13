@@ -1082,6 +1082,7 @@
 #include "code\game\objects\items\tools\misc_tools.dm"
 #include "code\game\objects\items\tools\shovel_tools.dm"
 #include "code\game\objects\items\tools\surgery_tools.dm"
+#include "code\game\objects\items\toys\board_games.dm"
 #include "code\game\objects\items\toys\cards.dm"
 #include "code\game\objects\items\toys\crayons.dm"
 #include "code\game\objects\items\toys\toy_weapons.dm"

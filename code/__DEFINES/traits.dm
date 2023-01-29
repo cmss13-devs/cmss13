@@ -236,7 +236,7 @@ GLOBAL_LIST_INIT(traits_by_type, list(
 		"TRAIT_SANTA" = TRAIT_SANTA,
 		"TRAIT_BIMEX" = TRAIT_BIMEX,
 	),
-	/mob/living/carbon/Xenomorph = list(
+	/mob/living/carbon/xenomorph = list(
 		"TRAIT_ABILITY_NO_PLASMA_TRANSFER" = TRAIT_ABILITY_NO_PLASMA_TRANSFER,
 		"TRAIT_ABILITY_OVIPOSITOR" = TRAIT_ABILITY_OVIPOSITOR,
 	),

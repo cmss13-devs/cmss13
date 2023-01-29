@@ -160,7 +160,7 @@
 			if (target.stat == DEAD)
 				continue
 
-			if (!isXenoOrHuman(target) || xeno.can_not_harm(target))
+			if (!isxeno_human(target) || xeno.can_not_harm(target))
 				continue
 
 			xeno.visible_message(SPAN_DANGER("[xeno] slashes [target]!"), \

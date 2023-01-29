@@ -111,7 +111,7 @@
 			var/mob/living/player = M
 			serialized["health"] = FLOOR((player.health / player.maxHealth * 100), 1)
 
-			if(isXeno(player))
+			if(isxeno(player))
 				var/mob/living/carbon/xenomorph/xeno = player
 				if(xeno.caste)
 					var/datum/caste_datum/caste = xeno.caste
@@ -140,9 +140,9 @@
 
 				if(SSticker.mode.is_in_endgame == TRUE && !is_mainship_level(M.z) && !(human.faction in FACTION_LIST_ERT))
 					escaped += list(serialized)
-				else if(isSynth(human) && !isInfiltratorSynthetic(human))
+				else if(issynth(human) && !isinfiltratorsynthetic(human))
 					synthetics += list(serialized)
-				else if(isYautja(human))
+				else if(isyautja(human))
 					predators += list(serialized)
 				else if(human.faction in FACTION_LIST_ERT)
 					ert_members += list(serialized)

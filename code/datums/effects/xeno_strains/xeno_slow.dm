@@ -15,7 +15,7 @@
 /datum/effects/xeno_slow/New(atom/A, mob/from = null, last_dmg_source = null, zone = "chest", ttl = 3.5 SECONDS)
 	. = ..(A, from, last_dmg_source, zone)
 
-	addtimer(CALLBACK(GLOBAL_PROC, PROC_REF(qdel), src), ttl)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(qdel), src), ttl)
 
 	if (ishuman(A))
 		var/mob/living/carbon/human/H = A
@@ -23,7 +23,7 @@
 
 
 /datum/effects/xeno_slow/validate_atom(atom/A)
-	if (!ishuman(A) && !isXeno(A))
+	if (!ishuman(A) && !isxeno(A))
 		return FALSE
 
 	var/mob/M = A

@@ -339,7 +339,7 @@
 		return
 
 	// Can only have one queen.
-	if(isXenoQueen(X))
+	if(isqueen(X))
 		if(!living_xeno_queen && !is_admin_level(X.z)) // Don't consider xenos in admin level
 			set_living_xeno_queen(X)
 
@@ -827,7 +827,7 @@
 			qdel(S)
 	for(var/mob/living/carbon/xenomorph/xeno as anything in totalXenos)
 		if(get_area(xeno) != hijacked_dropship && xeno.loc && is_ground_level(xeno.loc.z))
-			if(xeno.hunter_data.hunted && !isXenoQueen(xeno))
+			if(xeno.hunter_data.hunted && !isqueen(xeno))
 				to_chat(xeno, SPAN_XENOANNOUNCE("The Queen has left without you, seperating you from her hive! You must defend yourself from the headhunter before you can enter hibernation..."))
 				xeno.set_hive_and_update(XENO_HIVE_FORSAKEN)
 			else
@@ -867,7 +867,7 @@
 	else if(living_xeno_queen)
 		spawning_area = living_xeno_queen
 	else for(var/mob/living/carbon/xenomorpheus as anything in totalXenos)
-		if(isXenoLarva(xenomorpheus) || isXenoBuilder(xenomorpheus)) //next to xenos that should be in a safe spot
+		if(islarva(xenomorpheus) || isxeno_builder(xenomorpheus)) //next to xenos that should be in a safe spot
 			spawning_area = xenomorpheus
 	if(!spawning_area)
 		spawning_area = pick(totalXenos) // FUCK IT JUST GO ANYWHERE
@@ -903,7 +903,7 @@
 	return indexed_hive.is_ally(src)
 
 /datum/hive_status/proc/is_ally(mob/living/living_mob)
-	if(isXeno(living_mob))
+	if(isxeno(living_mob))
 		var/mob/living/carbon/xenomorph/zenomorf = living_mob
 		if(zenomorf.hivenumber == hivenumber)
 			return !zenomorf.banished
@@ -948,7 +948,7 @@
 
 	var/current_hugger_count = 0
 	for(var/mob/mob as anything in totalXenos)
-		if(isXenoFacehugger(mob))
+		if(isfacehugger(mob))
 			current_hugger_count++
 	if(playable_hugger_limit <= current_hugger_count)
 		to_chat(user, SPAN_WARNING("\The [GLOB.hive_datum[hivenumber]] cannot support more facehuggers! Limit: <b>[current_hugger_count]/[playable_hugger_limit]</b>"))

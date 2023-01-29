@@ -622,11 +622,11 @@
 
 /obj/item/storage/pouch/explosive/full/fill_preset_inventory()
 	for(var/i = 1 to storage_slots)
-		new /obj/item/explosive/grenade/HE(src)
+		new /obj/item/explosive/grenade/high_explosive(src)
 
 /obj/item/storage/pouch/explosive/upp/fill_preset_inventory()
 	for(var/i = 1 to storage_slots)
-		new /obj/item/explosive/grenade/HE/upp(src)
+		new /obj/item/explosive/grenade/high_explosive/upp(src)
 
 /obj/item/storage/pouch/explosive/C4/fill_preset_inventory()
 	for(var/i = 1 to storage_slots)
@@ -990,7 +990,7 @@
 	return //Useless, it's a one slot.
 
 /obj/item/storage/pouch/pressurized_reagent_canister/proc/display_contents(mob/user) // Used on examine for properly skilled people to see contents.
-	if(isXeno(user))
+	if(isxeno(user))
 		return
 	if(!inner)
 		return "This [src] has no container inside!"

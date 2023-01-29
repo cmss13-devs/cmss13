@@ -80,7 +80,7 @@
 	healthcheck()
 
 /obj/effect/alien/resin/attack_alien(mob/living/carbon/xenomorph/M)
-	if(isXenoLarva(M)) //Larvae can't do shit
+	if(islarva(M)) //Larvae can't do shit
 		return
 
 	if(M.a_intent == INTENT_HELP)
@@ -254,7 +254,7 @@
 
 /obj/effect/alien/resin/marker/Initialize(mapload, mob/builder)
 	. = ..()
-	if(!isXeno(builder))
+	if(!isxeno(builder))
 		return
 
 	var/mob/living/carbon/xenomorph/X = builder
@@ -306,7 +306,7 @@
 	for(var/mob/living/carbon/xenomorph/X in builder_hive.totalXenos)
 		if(X.nicknumber == createdby)
 			xeno_createdby = X
-	if(isXeno(user) || isobserver(user))
+	if(isxeno(user) || isobserver(user))
 		. += "[mark_meaning.desc], ordered by [xeno_createdby.name]"
 
 /obj/effect/alien/resin/marker/attack_alien(mob/living/carbon/xenomorph/M)
@@ -369,7 +369,7 @@
 		return attack_hand(user)
 
 /obj/structure/mineral_door/resin/TryToSwitchState(atom/user)
-	if(isXenoLarva(user))
+	if(islarva(user))
 		var/mob/living/carbon/xenomorph/larva/L = user
 		if (L.hivenumber == hivenumber)
 			L.scuttle(src)
@@ -515,7 +515,7 @@
 
 	var/check_dead = FALSE
 	if(C.ally_of_hivenumber(hivenumber))
-		if(!C.on_fire || !isXeno(C))
+		if(!C.on_fire || !isxeno(C))
 			return FALSE
 	else if(C.lying || C.is_mob_incapacitated(TRUE))
 		return FALSE
@@ -807,7 +807,7 @@
 	src.hivenumber = hivenumber
 
 /obj/item/explosive/grenade/alien/try_to_throw(mob/living/user)
-	if(isXeno(user))
+	if(isxeno(user))
 		to_chat(user, SPAN_NOTICE("You prepare to throw [src]."))
 		if(!do_after(user, xeno_throw_time, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
 			return FALSE
@@ -815,7 +815,7 @@
 		return TRUE
 
 /obj/item/explosive/grenade/alien/can_use_grenade(mob/user)
-	if(!isXeno(user))
+	if(!isxeno(user))
 		to_chat(user, SPAN_WARNING("You don't know how to activate this!"))
 		return FALSE
 

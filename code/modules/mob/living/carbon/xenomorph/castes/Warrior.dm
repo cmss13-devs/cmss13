@@ -85,7 +85,7 @@
 	. = ..(L, lunge, should_neckgrab)
 
 	if(.) //successful pull
-		if(isXeno(L))
+		if(isxeno(L))
 			var/mob/living/carbon/xenomorph/X = L
 			if(X.tier >= 2) // Tier 2 castes or higher immune to warrior grab stuns
 				return .

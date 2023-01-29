@@ -119,7 +119,7 @@
 			M.disassemble(src)
 			deconstruct()
 	else
-		if(isXeno(user))
+		if(isxeno(user))
 			src.attack_alien(user)
 			return
 		src.attack_hand(user)

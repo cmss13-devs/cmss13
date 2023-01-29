@@ -199,7 +199,7 @@
 					M_job = M.job
 				else if(ismonkey(M))
 					M_job = "Monkey"
-				else if(isXeno(M))
+				else if(isxeno(M))
 					M_job = "Alien"
 				else
 					M_job = "Carbon-based"
@@ -300,7 +300,7 @@
 			dat += "<td>Ghost</td>"
 		else if(ismonkey(M))
 			dat += "<td>Monkey</td>"
-		else if(isXeno(M))
+		else if(isxeno(M))
 			dat += "<td>Alien</td>"
 		else
 			dat += "<td>Unknown</td>"
@@ -562,7 +562,7 @@ GLOBAL_LIST_INIT(pp_status_flags, list(
 	.["mob_type"] = targetMob.type
 
 	.["is_human"] = ishuman(targetMob)
-	.["is_xeno"] = isXeno(targetMob)
+	.["is_xeno"] = isxeno(targetMob)
 
 	.["glob_status_flags"] = GLOB.pp_status_flags
 	.["glob_limbs"] = GLOB.pp_limbs

@@ -96,7 +96,7 @@
 
 	dump_contents()
 
-	UnregisterSignal(src, COMSIG_OBJ_FLASHBANGED)
+	UnregisterSignal(src, COMSIG_CLOSET_FLASHBANGED)
 	opened = 1
 	update_icon()
 	playsound(src.loc, open_sound, 15, 1)
@@ -114,7 +114,7 @@
 		stored_units = store_items(stored_units)
 	if(store_mobs)
 		stored_units = store_mobs(stored_units)
-		RegisterSignal(src, COMSIG_OBJ_FLASHBANGED, PROC_REF(flashbang))
+		RegisterSignal(src, COMSIG_CLOSET_FLASHBANGED, PROC_REF(flashbang))
 
 	opened = 0
 	update_icon()
@@ -203,7 +203,7 @@
 /obj/structure/closet/attackby(obj/item/W, mob/living/user)
 	if(src.opened)
 		if(istype(W, /obj/item/grab))
-			if(isXeno(user)) return
+			if(isxeno(user)) return
 			var/obj/item/grab/G = W
 			if(G.grabbed_thing)
 				src.MouseDrop_T(G.grabbed_thing, user)   //act like they were dragged onto the closet
@@ -264,7 +264,7 @@
 		for(var/mob/M as anything in viewers(src))
 			M.show_message(SPAN_WARNING("[src] has been [welded?"welded shut":"unwelded"] by [user.name]."), SHOW_MESSAGE_VISIBLE, "You hear welding.", SHOW_MESSAGE_AUDIBLE)
 	else
-		if(isXeno(user))
+		if(isxeno(user))
 			var/mob/living/carbon/xenomorph/opener = user
 			src.attack_alien(opener)
 			return
@@ -321,7 +321,7 @@
 			addtimer(VARSET_CALLBACK(src, lastbang, FALSE), 3 SECONDS)
 
 /obj/structure/closet/attack_hand(mob/living/user)
-	if(opened && isXeno(user))
+	if(opened && isxeno(user))
 		return // stop xeno closing things
 	add_fingerprint(user)
 	toggle(user)

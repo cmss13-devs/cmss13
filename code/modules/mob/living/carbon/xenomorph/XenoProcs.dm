@@ -285,7 +285,7 @@
 				playsound(H, "bonk", 75, FALSE) //bonk
 				return
 
-			if(isYautja(H))
+			if(isyautja(H))
 				if(H.check_shields(0, "the pounce", 1))
 					visible_message(SPAN_DANGER("[H] blocks the pounce of [src] with the combistick!"), SPAN_XENODANGER("[H] blocks your pouncing form with the combistick!"), null, 5)
 					apply_effect(3, WEAKEN)
@@ -298,7 +298,7 @@
 					apply_effect(3, WEAKEN)
 					throwing = FALSE
 					return
-			if(isColonySynthetic(H) && prob(60))
+			if(iscolonysynthetic(H) && prob(60))
 				visible_message(SPAN_DANGER("[H] withstands being pounced and slams down [src]!"),
 					SPAN_XENODANGER("[H] throws you down after withstanding the pounce!"), null, 5)
 				apply_effect(1.5, WEAKEN)
@@ -529,7 +529,7 @@
 
 // Called when pulling something and attacking yourself with the pull
 /mob/living/carbon/xenomorph/proc/pull_power(mob/M)
-	if(isXenoWarrior(src) && !ripping_limb && M.stat != DEAD)
+	if(iswarrior(src) && !ripping_limb && M.stat != DEAD)
 		if(M.status_flags & XENO_HOST)
 			to_chat(src, SPAN_XENOWARNING("This would harm the embryo!"))
 			return

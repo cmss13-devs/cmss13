@@ -20,12 +20,12 @@
 			human.disable_special_items()
 
 			var/obj/item/clothing/gloves/yautja/hunter/YG = locate(/obj/item/clothing/gloves/yautja/hunter) in human
-			if(isYautja(human) && YG)
+			if(isyautja(human) && YG)
 				if(YG.cloaked)
 					YG.decloak(human)
 
 				YG.cloak_timer = xeno_cooldown * 0.1
-		else if(isXeno(carbon) && xeno.can_not_harm(carbon))
+		else if(isxeno(carbon) && xeno.can_not_harm(carbon))
 			var/datum/behavior_delegate/predalien_base/behavior = xeno.behavior_delegate
 			if(!istype(behavior))
 				continue
@@ -84,7 +84,7 @@
 				var/mob/living/carbon/human/human = carbon
 				human.update_xeno_hostile_hud()
 
-			addtimer(CALLBACK(GLOBAL_PROC, PROC_REF(unroot_human), carbon), get_xeno_stun_duration(carbon, freeze_duration))
+			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(unroot_human), carbon), get_xeno_stun_duration(carbon, freeze_duration))
 
 
 	for(var/mob/M in view(xeno))
@@ -105,7 +105,7 @@
 	if (!xeno.check_state())
 		return
 
-	if (!isXenoOrHuman(target) || xeno.can_not_harm(target))
+	if (!isxeno_human(target) || xeno.can_not_harm(target))
 		to_chat(xeno, SPAN_XENOWARNING("You must target a hostile!"))
 		return
 

@@ -205,7 +205,7 @@
 	//Deal with dissolving/damaging stuff in stomach.
 	if(stomach_contents.len)
 		for(var/atom/movable/M in stomach_contents)
-			if(isHumanStrict(M))
+			if(ishuman_strict(M))
 				if(world.time == (devour_timer - 30))
 					to_chat(usr, SPAN_WARNING("You're about to regurgitate [M]..."))
 					playsound(loc, 'sound/voice/alien_drool1.ogg', 50, 1)
@@ -319,7 +319,7 @@ Make sure their actual health updates immediately.*/
 
 	var/is_runner_hiding
 
-	if(isXenoRunner(src) && layer != initial(layer))
+	if(isrunner(src) && layer != initial(layer))
 		is_runner_hiding = 1
 
 	if(caste)

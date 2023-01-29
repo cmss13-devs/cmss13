@@ -285,7 +285,7 @@
 
 /datum/pain/proc/oxyloss_drag(mob/living/source, mob/puller)
 	SIGNAL_HANDLER
-	if(isXeno(puller) && source.stat == UNCONSCIOUS)
+	if(isxeno(puller) && source.stat == UNCONSCIOUS)
 		if(source.get_species())
 			var/mob/living/carbon/human/H = source
 			if(H.species.flags & HAS_HARDCRIT)

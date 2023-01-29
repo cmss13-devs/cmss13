@@ -814,7 +814,7 @@
 	initial_keys = list(/obj/item/device/encryptionkey/colony)
 	ignore_z = TRUE
 
-/obj/item/device/radio/headset/distress/PMC
+/obj/item/device/radio/headset/distress/pmc
 	name = "PMC headset"
 	desc = "A special headset used by corporate personnel. Channels are as follows: :g - public, :v - marine command, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :n - engineering, :m - medbay, :u - requisitions, :j - JTAC, :t - intel, :y - Corporate."
 	frequency = PMC_FREQ
@@ -829,44 +829,44 @@
 		"Corporate Liaison" = TRACKER_CL
 	)
 
-/obj/item/device/radio/headset/distress/PMC/hvh
+/obj/item/device/radio/headset/distress/pmc/hvh
 	desc = "A special headset used by corporate personnel. Channels are as follows: :o - colony."
 	initial_keys = list(/obj/item/device/encryptionkey/colony)
 	misc_tracking = FALSE
 
-/obj/item/device/radio/headset/distress/PMC/cct
+/obj/item/device/radio/headset/distress/pmc/cct
 	name = "PMC-CCT headset"
 	desc = "A special headset used by corporate personnel. Channels are as follows: :o - colony, #e - engineering, #o - JTAC, #p - general"
-	initial_keys = list(/obj/item/device/encryptionkey/colony, /obj/item/device/encryptionkey/PMC/engi, /obj/item/device/encryptionkey/mcom/cl)
+	initial_keys = list(/obj/item/device/encryptionkey/colony, /obj/item/device/encryptionkey/pmc/engi, /obj/item/device/encryptionkey/mcom/cl)
 
-/obj/item/device/radio/headset/distress/PMC/cct/hvh
-	initial_keys = list(/obj/item/device/encryptionkey/colony, /obj/item/device/encryptionkey/PMC/engi)
+/obj/item/device/radio/headset/distress/pmc/cct/hvh
+	initial_keys = list(/obj/item/device/encryptionkey/colony, /obj/item/device/encryptionkey/pmc/engi)
 
-/obj/item/device/radio/headset/distress/PMC/medic
+/obj/item/device/radio/headset/distress/pmc/medic
 	name = "PMC-MED headset"
 	desc = "A special headset used by corporate personnel. Channels are as follows: :o - colony, #f - medical, #p - general"
-	initial_keys = list(/obj/item/device/encryptionkey/colony, /obj/item/device/encryptionkey/PMC/medic, /obj/item/device/encryptionkey/mcom/cl)
+	initial_keys = list(/obj/item/device/encryptionkey/colony, /obj/item/device/encryptionkey/pmc/medic, /obj/item/device/encryptionkey/mcom/cl)
 
-/obj/item/device/radio/headset/distress/PMC/medic/hvh
-	initial_keys = list(/obj/item/device/encryptionkey/colony, /obj/item/device/encryptionkey/PMC/medic)
+/obj/item/device/radio/headset/distress/pmc/medic/hvh
+	initial_keys = list(/obj/item/device/encryptionkey/colony, /obj/item/device/encryptionkey/pmc/medic)
 
-/obj/item/device/radio/headset/distress/PMC/command
+/obj/item/device/radio/headset/distress/pmc/command
 	name = "PMC-CMD headset"
 	desc = "A special headset used by corporate personnel. Channels are as follows: :o - colony, #z - command, #f - medical, #e - engineering, #o - JTAC, #p - general"
-	initial_keys = list(/obj/item/device/encryptionkey/colony, /obj/item/device/encryptionkey/PMC/command, /obj/item/device/encryptionkey/mcom/cl)
+	initial_keys = list(/obj/item/device/encryptionkey/colony, /obj/item/device/encryptionkey/pmc/command, /obj/item/device/encryptionkey/mcom/cl)
 
-/obj/item/device/radio/headset/distress/PMC/command/hvh
-	initial_keys = list(/obj/item/device/encryptionkey/colony, /obj/item/device/encryptionkey/PMC/command)
+/obj/item/device/radio/headset/distress/pmc/command/hvh
+	initial_keys = list(/obj/item/device/encryptionkey/colony, /obj/item/device/encryptionkey/pmc/command)
 
-/obj/item/device/radio/headset/distress/PMC/command/director
+/obj/item/device/radio/headset/distress/pmc/command/director
 	name = "WY director headset"
 	desc = "A special headset used by corporate directors. Channels are as follows: :o - colony, #z - command, #f - medical, #e - engineering, #o - JTAC, #p - general"
 	maximum_keys = 4
-	initial_keys = list(/obj/item/device/encryptionkey/colony, /obj/item/device/encryptionkey/PMC/command, /obj/item/device/encryptionkey/commando, /obj/item/device/encryptionkey/mcom/cl)
+	initial_keys = list(/obj/item/device/encryptionkey/colony, /obj/item/device/encryptionkey/pmc/command, /obj/item/device/encryptionkey/commando, /obj/item/device/encryptionkey/mcom/cl)
 
-/obj/item/device/radio/headset/distress/PMC/command/director/hvh
+/obj/item/device/radio/headset/distress/pmc/command/director/hvh
 	maximum_keys = 3
-	initial_keys = list(/obj/item/device/encryptionkey/colony, /obj/item/device/encryptionkey/PMC/command, /obj/item/device/encryptionkey/commando)
+	initial_keys = list(/obj/item/device/encryptionkey/colony, /obj/item/device/encryptionkey/pmc/command, /obj/item/device/encryptionkey/commando)
 
 
 

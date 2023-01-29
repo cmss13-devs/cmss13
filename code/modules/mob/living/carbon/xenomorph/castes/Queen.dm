@@ -201,7 +201,7 @@
 	if(!mods["ctrl"])
 		return
 
-	if(isXeno(A))
+	if(isxeno(A))
 		var/mob/living/carbon/xenomorph/X = A
 		if(X.ally_of_hivenumber(hivenumber))
 			Q.overwatch(A)
@@ -354,29 +354,29 @@
 /mob/living/carbon/xenomorph/queen/can_destroy_special()
 	return TRUE
 
-/mob/living/carbon/xenomorph/queen/Corrupted
+/mob/living/carbon/xenomorph/queen/corrupted
 	hivenumber = XENO_HIVE_CORRUPTED
 
-/mob/living/carbon/xenomorph/queen/Forsaken
+/mob/living/carbon/xenomorph/queen/forsaken
 	hivenumber = XENO_HIVE_FORSAKEN
 
-/mob/living/carbon/xenomorph/queen/Forsaken/combat_ready
+/mob/living/carbon/xenomorph/queen/forsaken/combat_ready
 	hivenumber = XENO_HIVE_FORSAKEN
 	queen_aged = TRUE
 
-/mob/living/carbon/xenomorph/queen/Alpha
+/mob/living/carbon/xenomorph/queen/alpha
 	hivenumber = XENO_HIVE_ALPHA
 
-/mob/living/carbon/xenomorph/queen/Beta
+/mob/living/carbon/xenomorph/queen/bravo
 	hivenumber = XENO_HIVE_BRAVO
 
-/mob/living/carbon/xenomorph/queen/Gamma
+/mob/living/carbon/xenomorph/queen/charlie
 	hivenumber = XENO_HIVE_CHARLIE
 
-/mob/living/carbon/xenomorph/queen/Delta
+/mob/living/carbon/xenomorph/queen/delta
 	hivenumber = XENO_HIVE_DELTA
 
-/mob/living/carbon/xenomorph/queen/Mutated
+/mob/living/carbon/xenomorph/queen/mutated
 	hivenumber = XENO_HIVE_MUTATED
 
 /mob/living/carbon/xenomorph/queen/combat_ready
@@ -709,7 +709,7 @@
 	if(!check_state())
 		return FALSE
 
-	if(isSynth(victim))
+	if(issynth(victim))
 		var/obj/limb/head/synthhead = victim.get_limb("head")
 		if(synthhead.status & LIMB_DESTROYED)
 			return FALSE
@@ -724,7 +724,7 @@
 				to_chat(src, SPAN_XENOWARNING("The child may still hatch! Not yet!"))
 				return FALSE
 
-	if(isXeno(victim))
+	if(isxeno(victim))
 		var/mob/living/carbon/xenomorph/xeno = victim
 		if(hivenumber == xeno.hivenumber)
 			to_chat(src, SPAN_WARNING("You can't bring yourself to harm a fellow sister to this magnitude."))

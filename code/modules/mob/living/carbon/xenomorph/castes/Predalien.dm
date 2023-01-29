@@ -104,10 +104,10 @@ Your health meter will not regenerate normally, so kill and die for the hive!</s
 	kills = min(kills + 1, max_kills)
 
 /datum/behavior_delegate/predalien_base/melee_attack_modify_damage(original_damage, mob/living/carbon/A)
-	if(!isCarbonSizeHuman(A))
+	if(!iscarbonsizehuman(A))
 		return
 	var/mob/living/carbon/human/H = A
-	if(isSpeciesYautja(H))
+	if(isspeciesyautja(H))
 		original_damage *= 1.5
 
 	return original_damage + kills * 2.5
@@ -121,7 +121,7 @@ Your health meter will not regenerate normally, so kill and die for the hive!</s
 	if(!istype(xeno))
 		return FALSE
 
-	if(victim.stat == DEAD && isXenoOrHuman(victim))
+	if(victim.stat == DEAD && isxeno_human(victim))
 		if(xeno.action_busy)
 			to_chat(xeno, SPAN_XENONOTICE("You are already performing an action!"))
 			return TRUE
@@ -140,7 +140,7 @@ Your health meter will not regenerate normally, so kill and die for the hive!</s
 				var/obj/item/reagent_container/food/snacks/meat/h_meat = new(human_victim.loc)
 				h_meat.name = "[human_victim.name] meat"
 
-		else if (isXeno(victim))
+		else if (isxeno(victim))
 			var/mob/living/carbon/xenomorph/xeno_victim = victim
 
 			new /obj/effect/decal/remains/xeno(xeno_victim.loc)

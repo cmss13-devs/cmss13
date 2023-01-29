@@ -27,7 +27,7 @@
 
 /datum/equipment_preset/synth/load_skills(mob/living/carbon/human/H)
 	. = ..()
-	if(isColonySynthetic(H) && !isWorkingJoe(H))
+	if(iscolonysynthetic(H) && !isworkingjoe(H))
 		H.set_skills(/datum/skills/colonial_synthetic)
 
 	H.allow_gun_usage = FALSE

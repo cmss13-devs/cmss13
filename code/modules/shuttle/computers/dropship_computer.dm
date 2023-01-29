@@ -142,7 +142,7 @@
 
 	if(!skip_time_lock && world.time < SSticker.mode.round_time_lobby + (SHUTTLE_TIME_LOCK * 2))
 		playsound(loc, 'sound/machines/terminal_error.ogg', KEYBOARD_SOUND_VOLUME, 1)
-		to_chat(user, SPAN_WARNING("No shuttle detected, try again in [round((SSticker.mode.round_time_lobby + (SHUTTLE_TIME_LOCK * 2)-world.time)/600)] minutes."))
+		to_chat(xeno, SPAN_WARNING("No shuttle detected, try again in [round((SSticker.mode.round_time_lobby + (SHUTTLE_TIME_LOCK * 2)-world.time)/600)] minutes."))
 		return
 
 	var/obj/docking_port/mobile/shuttle = SSshuttle.getShuttle(shuttleId)
@@ -206,9 +206,15 @@
 		almayer_orbital_cannon.is_disabled = TRUE
 		addtimer(CALLBACK(almayer_orbital_cannon, .obj/structure/orbital_cannon/proc/enable), 10 MINUTES, TIMER_UNIQUE)
 
-	// when launched announce
+	marine_announcement("Unscheduled dropship departure detected from operational area. Hijack likely. Shutting down autopilot.", "Dropship Alert", 'sound/AI/hijack.ogg')
 
+	var/mob/living/carbon/xenomorph/xeno = user
+	xeno_message(SPAN_XENOANNOUNCE("The Queen has commanded the metal bird to depart for the metal hive in the sky! Rejoice!"), 3, xeno.hivenumber)
+	xeno_message(SPAN_XENOANNOUNCE("The hive swells with power! You will now steadily gain pooled larva over time."), 2, xeno.hivenumber)
 
+	// Notify the yautja too so they stop the hunt
+	message_all_yautja("The serpent Queen has commanded the landing shuttle to depart.")
+	playsound(src, 'sound/misc/queen_alarm.ogg')
 /obj/structure/machinery/computer/shuttle/dropship/flight/proc/remove_door_lock()
 	var/obj/docking_port/mobile/marine_dropship/shuttle = SSshuttle.getShuttle(shuttleId)
 	if(shuttle.is_hijacked)

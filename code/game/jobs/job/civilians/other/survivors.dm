@@ -1,4 +1,4 @@
-#define SURVIVOR_TO_TOTAL_SPAWN_RATIO 1/11
+#define SURVIVOR_TO_TOTAL_SPAWN_RATIO 1/9
 
 /datum/job/civilian/survivor
 	title = JOB_SURVIVOR

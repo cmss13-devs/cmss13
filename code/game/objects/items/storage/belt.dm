@@ -412,6 +412,9 @@
 
 // Outer Rim Weapon Belts
 
+/obj/item/storage/belt/marine/ar10/fill_preset_inventory() // AR-10
+	for(var/i = 1 to storage_slots)
+		new /obj/item/ammo_magazine/rifle/ar10 (src)
 /obj/item/storage/belt/marine/m16/fill_preset_inventory() // M16
 	for(var/i = 1 to storage_slots)
 		new /obj/item/ammo_magazine/rifle/m16 (src)
@@ -435,7 +438,9 @@
 /obj/item/storage/belt/marine/mp5/fill_preset_inventory() // MP5
 	for(var/i = 1 to storage_slots)
 		new /obj/item/ammo_magazine/smg/mp5 (src)
-
+/obj/item/storage/belt/marine/uzi/fill_preset_inventory() // uzi
+	for(var/i = 1 to storage_slots)
+		new /obj/item/ammo_magazine/smg/uzi (src)
 /obj/item/storage/belt/marine/hunting/fill_preset_inventory() // Hunting Rifle
 	for(var/i = 1 to storage_slots)
 		new /obj/item/ammo_magazine/rifle/hunting(src)

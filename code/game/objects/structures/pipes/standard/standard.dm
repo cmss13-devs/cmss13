@@ -10,16 +10,16 @@
 	if(istype(T))
 		hide(T.intact_tile)
 
-/obj/structure/pipes/standard/hide(var/invis)
+/obj/structure/pipes/standard/hide(invis)
 	if(level == 1 && istype(loc, /turf))
 		invisibility = invis ? 101 : 0
 
-/obj/structure/pipes/standard/proc/change_color(var/new_color)
+/obj/structure/pipes/standard/proc/change_color(new_color)
 	if(!pipe_color_check(new_color))
 		return
 
 	pipe_color = new_color
 	update_icon()
 
-/obj/structure/pipes/standard/color_cache_name(var/obj/structure/pipes/node)
+/obj/structure/pipes/standard/color_cache_name(obj/structure/pipes/node)
 	return pipe_color

@@ -7009,12 +7009,12 @@
 /area/adminlevel/chinook/event)
 "wl" = (
 /obj/structure/surface/rack,
-/obj/item/explosive/grenade/HE/training,
-/obj/item/explosive/grenade/HE/training,
-/obj/item/explosive/grenade/HE/training,
-/obj/item/explosive/grenade/HE/training,
-/obj/item/explosive/grenade/HE/training,
-/obj/item/explosive/grenade/HE/training,
+/obj/item/explosive/grenade/high_explosive/training,
+/obj/item/explosive/grenade/high_explosive/training,
+/obj/item/explosive/grenade/high_explosive/training,
+/obj/item/explosive/grenade/high_explosive/training,
+/obj/item/explosive/grenade/high_explosive/training,
+/obj/item/explosive/grenade/high_explosive/training,
 /turf/open/floor/almayer{
 	icon_state = "redfull";
 	tag = "icon-redfull"
@@ -8996,9 +8996,9 @@
 /area/adminlevel/chinook/cryo)
 "DV" = (
 /obj/structure/surface/rack,
-/obj/item/explosive/grenade/HE/training,
-/obj/item/explosive/grenade/HE/training,
-/obj/item/explosive/grenade/HE/training,
+/obj/item/explosive/grenade/high_explosive/training,
+/obj/item/explosive/grenade/high_explosive/training,
+/obj/item/explosive/grenade/high_explosive/training,
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";

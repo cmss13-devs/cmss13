@@ -8,7 +8,7 @@
 	icon = 'icons/landmarks.dmi'
 	icon_state = "map_blocker"
 
-/obj/structure/blocker/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/obj/structure/blocker/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_can_pass_all = NONE

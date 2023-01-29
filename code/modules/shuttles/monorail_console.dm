@@ -19,7 +19,7 @@
 	if (stat & NOPOWER)
 		return 1
 
-	if((!allowed(user) || ismaintdrone(user)) && !isXeno(user))
+	if((!allowed(user) || ismaintdrone(user)) && !isxeno(user))
 		to_chat(user, SPAN_WARNING("Access denied."))
 		return 1
 
@@ -27,7 +27,7 @@
 
 	var/datum/shuttle/ferry/shuttle = shuttle_controller.shuttles[shuttle_tag]
 
-	if(!isXeno(user) && (onboard || is_ground_level(z)))
+	if(!isxeno(user) && (onboard || is_ground_level(z)))
 		if(shuttle.queen_locked)
 			if(onboard && skillcheck(user, SKILL_PILOT, SKILL_PILOT_TRAINED))
 				user.visible_message(SPAN_NOTICE("[user] starts to type on the [src]."),
@@ -60,7 +60,7 @@
 	ui_interact(user)
 
 // Duplicated and much-stripped down topic/UI code for the monorail control consoles.
-/obj/structure/machinery/computer/shuttle_control/monorail/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 0)
+/obj/structure/machinery/computer/shuttle_control/monorail/ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = 0)
 
 	var/data[0]
 	var/datum/shuttle/ferry/shuttle = shuttle_controller.shuttles[shuttle_tag]
@@ -141,7 +141,7 @@
 		if(shuttle.recharging) //Prevent the shuttle from moving again until it finishes recharging. This could be made to look better by using the shuttle computer's visual UI.
 			to_chat(usr, SPAN_WARNING("The monorail is loading and unloading. Please hold."))
 
-		if(shuttle.queen_locked && !isXenoQueen(usr))
+		if(shuttle.queen_locked && !isqueen(usr))
 			to_chat(usr, SPAN_WARNING("The monorail isn't responding to prompts, it looks like remote control was disabled."))
 			return
 
@@ -157,7 +157,7 @@
 				return
 
 			//Alert code is the Queen is the one calling it, the shuttle is on the ground and the shuttle still allows alerts
-			if(isXenoQueen(usr) && shuttle.location == 1 && shuttle.alerts_allowed)
+			if(isqueen(usr) && shuttle.location == 1 && shuttle.alerts_allowed)
 				var/i = tgui_alert(usr, "Confirm hijack and launch?", "WARNING", list("Yes", "No"))
 				if(i != "Yes")
 					return

@@ -31,7 +31,7 @@
 
 	var/obj/effect/warning/droppod/warning_zone
 
-/obj/structure/droppod/proc/launch(var/turf/T)
+/obj/structure/droppod/proc/launch(turf/T)
 	if(!forceMove(T))
 		return
 
@@ -115,13 +115,13 @@
 	droppod_flags &= ~DROPPOD_OPEN
 	update_icon()
 
-/obj/structure/droppod/proc/warn_turf(var/turf/T)
+/obj/structure/droppod/proc/warn_turf(turf/T)
 	if(warning_zone)
 		qdel(warning_zone)
 
 	warning_zone = new(T)
 
-/obj/structure/droppod/proc/drop_on_target(var/turf/T)
+/obj/structure/droppod/proc/drop_on_target(turf/T)
 	droppod_flags |= DROPPOD_DROPPING
 
 	invisibility = 0
@@ -132,7 +132,7 @@
 
 	addtimer(CALLBACK(src, PROC_REF(land), T), dropping_time)
 
-/obj/structure/droppod/proc/land(var/turf/T)
+/obj/structure/droppod/proc/land(turf/T)
 	playsound(T, land_sound, 100, FALSE, sound_range = 15)
 
 	if(warning_zone)

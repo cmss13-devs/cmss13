@@ -8,7 +8,7 @@
 /mob/living/proc/can_inject()
 	return 1
 
-/mob/living/proc/start_audio_emote_cooldown(var/cooldown_time = 20 SECONDS)
+/mob/living/proc/start_audio_emote_cooldown(cooldown_time = 20 SECONDS)
 	recent_audio_emote = TRUE
 	addtimer(CALLBACK(src, PROC_REF(clear_audio_emote_cooldown)), cooldown_time)
 

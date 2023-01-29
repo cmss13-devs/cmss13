@@ -2,7 +2,7 @@
 	name = "Colonial Liberation Front"
 	faction_tag = FACTION_CLF
 
-/datum/faction/clf/modify_hud_holder(var/image/holder, var/mob/living/carbon/human/human)
+/datum/faction/clf/modify_hud_holder(image/holder, mob/living/carbon/human/human)
 	var/hud_icon_state
 	var/obj/item/card/id/ID = human.get_idcard()
 	var/_role

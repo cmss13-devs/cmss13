@@ -4,7 +4,7 @@
 
 	customise_paper()
 
-/client/proc/customise_paper(var/obj/item/paper/sheet)
+/client/proc/customise_paper(obj/item/paper/sheet)
 	var/new_sheet = FALSE
 	if(!sheet)
 		new_sheet = TRUE

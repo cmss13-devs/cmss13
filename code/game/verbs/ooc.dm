@@ -98,7 +98,7 @@
 			to_chat(src, SPAN_DANGER("LOOC is globally muted"))
 			return
 		if(!dlooc_allowed && (mob.stat != CONSCIOUS || isobserver(mob)))
-			to_chat(usr, SPAN_DANGER("LOOC for dead or incapacitated mobs has been turned off."))
+			to_chat(usr, SPAN_DANGER("Sorry, you cannot utilize LOOC while dead or incapacitated."))
 			return
 		if(prefs.muted & MUTE_OOC)
 			to_chat(src, SPAN_DANGER("You cannot use LOOC (muted)."))

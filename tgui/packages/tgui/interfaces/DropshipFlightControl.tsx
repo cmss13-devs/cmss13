@@ -1,6 +1,6 @@
 import { useBackend, useSharedState } from '../backend';
 import { Window } from '../layouts';
-import { Box, Button, Flex, Icon, Section, Stack } from '../components';
+import { Box, Button, Flex, Icon, ProgressBar, Section, Stack } from '../components';
 import { LaunchButton, CancelLaunchButton, DisabledScreen, InFlightCountdown, LaunchCountdown, NavigationProps, ShuttleRecharge } from './NavigationShuttle';
 
 interface DoorStatus {
@@ -19,7 +19,8 @@ interface DropshipNavigationProps extends NavigationProps {
 
 const DropshipDoorControl = (_, context) => {
   const { data, act } = useBackend<DropshipNavigationProps>(context);
-  const in_flight = data.shuttle_mode === 'called';
+  const in_flight =
+    data.shuttle_mode === 'called' || data.shuttle_mode === 'pre-arrival';
   const disable_door_controls = in_flight;
   const disable_normal_control = data.locked_down === 1;
   return (
@@ -77,6 +78,7 @@ const DropshipDoorControl = (_, context) => {
                   )}
                   {x.value === 1 && (
                     <Button
+                      disabled={disable_door_controls}
                       onClick={() =>
                         act('door-control', {
                           interaction: 'unlock',
@@ -181,6 +183,30 @@ const FlybyControl = (props, context) => {
   );
 };
 
+export const TouchdownCooldown = (_, context) => {
+  const { data } = useBackend<NavigationProps>(context);
+  return (
+    <Section title={`Final Approach: ${data.target_destination}`}>
+      <div className="InFlightCountdown">
+        <Stack vertical>
+          <Stack.Item>
+            <span>
+              Time until landing: <u>T-{data.flight_time}s</u>.
+            </span>
+          </Stack.Item>
+          <Stack.Item>
+            <ProgressBar
+              maxValue={data.max_pre_arrival_duration}
+              value={data.flight_time}>
+              T-{data.flight_time}s
+            </ProgressBar>
+          </Stack.Item>
+        </Stack>
+      </div>
+    </Section>
+  );
+};
+
 const AutomatedControl = (props, context) => {
   return <Section>f</Section>;
 };
@@ -193,12 +219,13 @@ const RenderScreen = (props, context) => {
         (data.shuttle_mode === 'idle' || data.shuttle_mode === 'called') && (
           <FlybyControl />
         )}
-      {data.can_set_automated && <AutomatedControl />}
+      {data.can_set_automated === 1 && <AutomatedControl />}
       {data.shuttle_mode === 'idle' &&
         data.flight_configuration !== 'flyby' && (
           <DropshipDestinationSelection />
         )}
       {data.shuttle_mode === 'igniting' && <LaunchCountdown />}
+      {data.shuttle_mode === 'pre-arrival' && <TouchdownCooldown />}
       {data.shuttle_mode === 'recharging' && <ShuttleRecharge />}
       {data.shuttle_mode === 'called' && <InFlightCountdown />}
       {data.door_status.length > 0 && <DropshipDoorControl />}

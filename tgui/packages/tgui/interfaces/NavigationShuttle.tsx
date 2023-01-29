@@ -18,6 +18,7 @@ export interface NavigationProps {
   max_flight_duration: number;
   max_refuel_duration: number;
   max_engine_start_duration: number;
+  max_pre_arrival_duration: number;
   is_disabled: 0 | 1;
   locked_down: 0 | 1;
 }
@@ -162,7 +163,7 @@ export const InFlightCountdown = (_, context) => {
         <Stack vertical>
           <Stack.Item>
             <span>
-              Time until landing: <u>T-{data.flight_time}s</u>.
+              Time until destination: <u>T-{data.flight_time}s</u>.
             </span>
           </Stack.Item>
           <Stack.Item>

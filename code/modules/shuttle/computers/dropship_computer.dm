@@ -116,6 +116,7 @@
 	var/obj/docking_port/mobile/shuttle = SSshuttle.getShuttle(shuttleId)
 	// we convert the time to seconds for rendering to ui
 	.["max_flight_duration"] = shuttle.callTime / 10
+	.["max_pre_arrival_duration"] = shuttle.prearrivalTime / 10
 	.["max_refuel_duration"] = shuttle.rechargeTime / 10
 	.["max_engine_start_duration"] = shuttle.ignitionTime / 10
 	.["door_data"] = list("port", "starboard", "aft")
@@ -134,9 +135,9 @@
 	if(!shuttle.is_hijacked)
 		tgui_interact(user)
 
-/obj/structure/machinery/computer/shuttle/dropship/flight/attack_alien(mob/living/carbon/Xenomorph/xeno)
+/obj/structure/machinery/computer/shuttle/dropship/flight/attack_alien(mob/living/carbon/xenomorph/xeno)
 	var/obj/docking_port/mobile/shuttle = SSshuttle.getShuttle(shuttleId)
-	if(is_remote && linked_lz && isXenoQueen(xeno))
+	if(is_remote && linked_lz && xeno.hive_pos == XENO_QUEEN)
 		if(shuttle.mode == SHUTTLE_IDLE)
 			SSshuttle.moveShuttle(shuttleId, linked_lz, TRUE)
 		return
@@ -160,7 +161,7 @@
 			set_lz_resin_allowed(TRUE)
 		return
 
-	if(isXenoQueen(xeno) && dropship_control_lost && !is_remote)
+	if(xeno.hive_pos == XENO_QUEEN && dropship_control_lost && !is_remote)
 		//keyboard
 		for(var/i = 0; i < 5; i++)
 			playsound(loc, get_sfx("keyboard"), KEYBOARD_SOUND_VOLUME, 1)

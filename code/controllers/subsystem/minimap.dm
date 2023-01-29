@@ -49,6 +49,8 @@ SUBSYSTEM_DEF(minimaps)
 				var/turf/location = locate(xval,yval,level)
 				if(istype(location, /turf/open/space))
 					continue
+				if(location.z != level)
+					continue
 				if(location.density)
 					icon_gen.DrawBox(location.minimap_color, xval, yval)
 					continue

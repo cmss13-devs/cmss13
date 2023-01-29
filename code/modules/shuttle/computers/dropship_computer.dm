@@ -298,8 +298,10 @@
 				to_chat(user, SPAN_WARNING("Door controls have been overridden. Please call technical support."))
 		if("set-ferry")
 			is_set_flyby = FALSE
+			msg_admin_niche("[key_name_admin(usr)] set the dropship [src.shuttleId] into transport")
 		if("set-flyby")
 			is_set_flyby = TRUE
+			msg_admin_niche("[key_name_admin(usr)] set the dropship [src.shuttleId] into flyby")
 		if("set-automate")
 			return
 			/* TODO

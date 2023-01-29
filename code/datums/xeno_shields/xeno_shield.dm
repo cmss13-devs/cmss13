@@ -42,7 +42,7 @@
 	return
 
 // Anything special to do on removal
-/datum/xeno_shield/proc/on_removal(var/broken = FALSE) // if broken by enemy action, plays noise
+/datum/xeno_shield/proc/on_removal(broken = FALSE) // if broken by enemy action, plays noise
 	if(broken)
 		playsound(linked_xeno, "shield_shatter", 50, 1)
 	return

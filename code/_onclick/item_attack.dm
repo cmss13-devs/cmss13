@@ -121,5 +121,5 @@
 		return hit
 	return TRUE
 
-/proc/deconjugate(var/text = "")
+/proc/deconjugate(text = "")
 	return replacetext(text, "ed", "")

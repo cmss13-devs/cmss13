@@ -96,7 +96,7 @@
 
 	bound_xeno.overlays += enhancement_tendrils_icon
 
-/datum/behavior_delegate/warrior_knight/proc/weed_enhance_check(var/mob/living/carbon/xenomorph/warrior/Knight, var/turf/entered_turf)
+/datum/behavior_delegate/warrior_knight/proc/weed_enhance_check(mob/living/carbon/xenomorph/warrior/Knight, turf/entered_turf)
 	SIGNAL_HANDLER
 	var/datum/behavior_delegate/warrior_knight/knight_delegate = Knight.behavior_delegate
 	//If the entered turf has weeds *and* they're of the same hive, try to buff if not already buffed.

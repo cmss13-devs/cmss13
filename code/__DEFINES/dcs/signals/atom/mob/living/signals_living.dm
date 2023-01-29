@@ -33,3 +33,7 @@
 /// From /mob/living/Collide(): (atom/A)
 #define COMSIG_LIVING_PRE_COLLIDE "living_pre_collide"
 	#define COMPONENT_LIVING_COLLIDE_HANDLED (1<<0)
+
+/// From /datum/ammo/proc/knockback()
+#define COMSIG_LIVING_AMMO_KNOCKBACK "living_ammo_knockback"
+	#define COMPONENT_CANCEL_KNOCKBACK (1<<0)

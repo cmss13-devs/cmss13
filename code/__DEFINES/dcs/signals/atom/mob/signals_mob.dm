@@ -95,3 +95,11 @@
 
 #define COMSIG_MOB_MOVE_OR_LOOK "mob_move_or_look"
 	#define COMPONENT_OVERRIDE_MOB_MOVE_OR_LOOK (1<<0)
+
+/// from /proc/shake_camera()
+#define COMSIG_MOB_SHAKE_CAMERA "mob_shake_camera"
+	#define COMPONENT_CANCEL_SHAKE (1<<0)
+
+// From /proc/pushback()
+#define COMSIG_MOB_PUSHBACK "mob_pushback"
+	#define COMPONENT_CANCEL_PUSHBACK (1<<0)

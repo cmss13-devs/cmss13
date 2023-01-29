@@ -196,7 +196,7 @@
 	shake_camera(carbone, 2, 1)
 	step_away(carbone, woyer, 2)
 
-/datum/action/xeno_action/activable/tail_stab/tail_trip/ability_act(var/mob/living/carbon/xenomorph/stabbing_xeno, var/mob/living/carbon/target)
+/datum/action/xeno_action/activable/tail_stab/tail_trip/ability_act(mob/living/carbon/xenomorph/stabbing_xeno, mob/living/carbon/target)
 
 	stabbing_xeno.visible_message(SPAN_XENOWARNING("\The [stabbing_xeno] trips [target] with its tail!"), SPAN_XENOWARNING("You swipe your tail into [target]'s legs, tripping it!"))
 	stabbing_xeno.spin_circle()
@@ -354,7 +354,7 @@
 	..()
 	return
 
-/datum/action/xeno_action/onclick/bulwark/proc/reduce_bullet_damage(var/mob/xeno_byproduct_param, var/list/projectiledata)
+/datum/action/xeno_action/onclick/bulwark/proc/reduce_bullet_damage(mob/xeno_byproduct_param, list/projectiledata)
 	SIGNAL_HANDLER
 	var/mob/living/carbon/xenomorph/zenomorf = owner
 
@@ -372,7 +372,7 @@
 	else
 		projectiledata["damage_result"] *= normal_damage_reduction * reduction_mult
 
-/datum/action/xeno_action/onclick/bulwark/proc/reduce_stuns(var/mob/xeno_byproduct_param, var/effect_amount, var/effect_type, var/effect_flags)
+/datum/action/xeno_action/onclick/bulwark/proc/reduce_stuns(mob/xeno_byproduct_param, effect_amount, effect_type, effect_flags)
 	SIGNAL_HANDLER
 	var/mob/living/carbon/xenomorph/xeno = owner
 
@@ -400,7 +400,7 @@
 	SIGNAL_HANDLER
 	return COMPONENT_CANCEL_PUSHBACK
 
-/datum/action/xeno_action/onclick/bulwark/proc/resist_melee(var/mob/Knight, var/mob/living/attacker, var/obj/item/hitting_item)
+/datum/action/xeno_action/onclick/bulwark/proc/resist_melee(mob/Knight, mob/living/attacker, obj/item/hitting_item)
 	SIGNAL_HANDLER
 	attacker.animation_attack_on(Knight)
 	attacker.flick_attack_overlay(Knight, "punch") //"shield"
@@ -505,7 +505,7 @@
 			zenomorf.visible_message(SPAN_XENODANGER("The [zenomorf] leaps directly onto [L], throwing them back!"), SPAN_XENODANGER("You leap directly onto [L], throwing them back!"))
 			L.apply_armoured_damage(get_xeno_damage_slash(L, zenomorf.melee_damage_lower), ARMOR_MELEE, BRUTE, penetration = leap_bonus_ap)
 			xeno_throw_human(L, zenomorf, zenomorf.dir, 1)
-		if(isXeno(L))
+		if(isxeno(L))
 			L.emote("roar")
 		else
 			L.emote("scream")

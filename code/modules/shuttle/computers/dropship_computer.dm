@@ -136,8 +136,17 @@
 		tgui_interact(user)
 
 /obj/structure/machinery/computer/shuttle/dropship/flight/attack_alien(mob/living/carbon/xenomorph/xeno)
+	if(!xeno.hive_pos == XENO_QUEEN)
+		playsound(loc, 'sound/machines/terminal_error.ogg', KEYBOARD_SOUND_VOLUME, 1)
+		return
+
+	if(!skip_time_lock && world.time < SSticker.mode.round_time_lobby + (SHUTTLE_TIME_LOCK * 2))
+		playsound(loc, 'sound/machines/terminal_error.ogg', KEYBOARD_SOUND_VOLUME, 1)
+		to_chat(user, SPAN_WARNING("No shuttle detected, try again in [round((SSticker.mode.round_time_lobby + (SHUTTLE_TIME_LOCK * 2)-world.time)/600)] minutes."))
+		return
+
 	var/obj/docking_port/mobile/shuttle = SSshuttle.getShuttle(shuttleId)
-	if(is_remote && linked_lz && xeno.hive_pos == XENO_QUEEN)
+	if(is_remote && linked_lz)
 		if(shuttle.mode == SHUTTLE_IDLE)
 			SSshuttle.moveShuttle(shuttleId, linked_lz, TRUE)
 		return
@@ -161,7 +170,7 @@
 			set_lz_resin_allowed(TRUE)
 		return
 
-	if(xeno.hive_pos == XENO_QUEEN && dropship_control_lost && !is_remote)
+	if(dropship_control_lost && !is_remote)
 		//keyboard
 		for(var/i = 0; i < 5; i++)
 			playsound(loc, get_sfx("keyboard"), KEYBOARD_SOUND_VOLUME, 1)

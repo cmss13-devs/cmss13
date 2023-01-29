@@ -152,3 +152,23 @@
 		/obj/item/stock_parts/matter_bin,
 		/obj/item/circuitboard/machine/pacman/super,
 	)
+
+/datum/supply_packs/flashlights
+	name = "Flashlights (x8)"
+	contains = list(
+		/obj/item/ammo_box/magazine/misc/flashlight,
+	)
+	cost = 10
+	containertype = /obj/structure/closet/crate/supply
+	containername = "flashlights crate"
+	group = "Engineering"
+
+/datum/supply_packs/batteries
+	name = "High-Capacity Power Cells (x8)"
+	contains = list(
+		/obj/item/ammo_box/magazine/misc/power_cell,
+	)
+	cost = 10
+	containertype = /obj/structure/closet/crate/supply
+	containername = "battery crate"
+	group = "Engineering"

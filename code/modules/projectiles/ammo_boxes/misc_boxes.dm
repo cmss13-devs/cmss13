@@ -28,7 +28,7 @@
 		host_box = loc
 	handle_side_effects(host_box)
 	//need to make sure we delete the structure box if it exists, it will handle the deletion of ammo box inside
-	addtimer(CALLBACK(GLOBAL_PROC, PROC_REF(qdel), (host_box ? host_box : src)), 7 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(qdel), (host_box ? host_box : src)), 7 SECONDS)
 	return
 
 /obj/item/ammo_box/magazine/misc/handle_side_effects(obj/structure/magazine_box/host_box)
@@ -97,7 +97,7 @@
 		host_box = loc
 	var/flare_amount = get_severity()
 	//need to make sure we delete the structure box if it exists, it will handle the deletion of ammo box inside
-	addtimer(CALLBACK(GLOBAL_PROC, PROC_REF(qdel), (host_box ? host_box : src)), 7 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(qdel), (host_box ? host_box : src)), 7 SECONDS)
 	if(flare_amount > 0)
 		handle_side_effects(host_box, TRUE)
 

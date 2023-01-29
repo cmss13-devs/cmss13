@@ -1347,6 +1347,7 @@
 	skills = /datum/skills/civilian/survivor/clf
 	faction = FACTION_CLF
 	faction_group = list(FACTION_CLF) //they were not a part of the colony and as such do not have survivor or marine IFF
+	survivor_variant = HOSTILE_SURVIVOR
 
 /datum/equipment_preset/survivor/clf/load_gear(mob/living/carbon/human/H)
 
@@ -1363,5 +1364,6 @@
 	H.equip_to_slot_or_del(new /obj/item/tool/crowbar(H), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/ert(H), WEAR_R_STORE)
 	add_pmc_survivor_weapon(H)
+	add_survivor_weapon_pistol(H)
 
 	..()

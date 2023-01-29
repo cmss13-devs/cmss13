@@ -101,7 +101,6 @@
 
 /obj/docking_port/stationary/escape_pod
 	name = "Escape Pod Dock"
-	dir = NORTH
 
 /obj/docking_port/stationary/escape_pod/west
 	id = ESCAPE_SHUTTLE_WEST_PREFIX

@@ -532,15 +532,15 @@
 
 
 	for (var/obj/structure/machinery/door_display/research_cell/d in machines)
-		if(is_mainship_level(d.z) || is_loworbit_level(d.z))
+		if(is_mainship_level(d.z) || is_reserved_level(d.z))
 			d.ion_act() //Breaking xenos out of containment
 
 	//Stolen from events.dm. WARNING: This code is old as hell
 	for (var/obj/structure/machinery/power/apc/APC in machines)
-		if(is_mainship_level(APC.z) || is_loworbit_level(APC.z))
+		if(is_mainship_level(APC.z) || is_reserved_level(APC.z))
 			APC.ion_act()
 	for (var/obj/structure/machinery/power/smes/SMES in machines)
-		if(is_mainship_level(SMES.z) || is_loworbit_level(SMES.z))
+		if(is_mainship_level(SMES.z) || is_reserved_level(SMES.z))
 			SMES.ion_act()
 
 	//END: Heavy lifting backend

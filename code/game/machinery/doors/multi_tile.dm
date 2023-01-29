@@ -213,7 +213,7 @@
 
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/unlock()
-	if(is_loworbit_level(z))
+	if(is_reserved_level(z))
 		return // in orbit
 	..()
 

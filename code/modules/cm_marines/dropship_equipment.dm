@@ -176,7 +176,7 @@
 			to_chat(user, SPAN_WARNING("[src] is busy."))
 			return //prevents spamming deployment/undeployment
 		if(deployed_turret.loc == src) //not deployed
-			if(is_loworbit_level(z) && ship_base.base_category == DROPSHIP_WEAPON)
+			if(is_reserved_level(z) && ship_base.base_category == DROPSHIP_WEAPON)
 				to_chat(user, SPAN_WARNING("[src] can't deploy mid-flight."))
 			else
 				to_chat(user, SPAN_NOTICE("You deploy [src]."))
@@ -295,7 +295,7 @@
 				to_chat(user, SPAN_WARNING("[src] is not ready."))
 				return //prevents spamming deployment/undeployment
 			if(deployed_mg.loc == src) //not deployed
-				if(is_loworbit_level(z) && ship_base.base_category == DROPSHIP_WEAPON)
+				if(is_reserved_level(z) && ship_base.base_category == DROPSHIP_WEAPON)
 					to_chat(user, SPAN_WARNING("[src] can't be deployed mid-flight."))
 				else
 					to_chat(user, SPAN_NOTICE("You pull out [deployed_mg]."))

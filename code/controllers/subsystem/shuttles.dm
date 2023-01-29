@@ -220,12 +220,12 @@ SUBSYSTEM_DEF(shuttle)
 	var/x1 = coords[3]
 	var/y1 = coords[4]
 	// Then we want the point closest to -infinity,-infinity
-	var/x2 = min(x0, x1)
-	var/y2 = min(y0, y1)
+	var/xmin = min(x0, x1)
+	var/ymin = min(y0, y1)
 
 	// Then invert the numbers
-	var/transit_x = bottomleft.x + SHUTTLE_TRANSIT_BORDER + abs(x2)
-	var/transit_y = bottomleft.y + SHUTTLE_TRANSIT_BORDER + abs(y2)
+	var/transit_x = bottomleft.x + SHUTTLE_TRANSIT_BORDER + abs(xmin)
+	var/transit_y = bottomleft.y + SHUTTLE_TRANSIT_BORDER + abs(ymin)
 
 	var/turf/midpoint = locate(transit_x, transit_y, bottomleft.z)
 	if(!midpoint)
@@ -417,9 +417,12 @@ SUBSYSTEM_DEF(shuttle)
 	if(existing_shuttle)
 		existing_shuttle.jumpToNullSpace()
 
-	// update underlays
 	for(var/area/A as anything in preview_shuttle.shuttle_areas)
 		for(var/turf/T as anything in A)
+			// turfs inside the shuttle are not available for shuttles
+			T.flags_atom &= ~UNUSED_RESERVATION_TURF
+
+			// update underlays
 			if(istype(T, /turf/closed/shuttle))
 				var/dx = T.x - preview_shuttle.x
 				var/dy = T.y - preview_shuttle.y

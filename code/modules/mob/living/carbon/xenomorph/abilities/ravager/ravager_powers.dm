@@ -26,7 +26,7 @@
 	else
 		actual_empower(xeno)
 
-/datum/action/xeno_action/onclick/empower/proc/actual_empower(var/mob/living/carbon/xenomorph/xeno)
+/datum/action/xeno_action/onclick/empower/proc/actual_empower(mob/living/carbon/xenomorph/xeno)
 	var/datum/behavior_delegate/ravager_base/behavior = xeno.behavior_delegate
 
 	activated_once = FALSE
@@ -62,7 +62,7 @@
 	if(empower_targets >= behavior.super_empower_threshold) //you go in deep you reap the rewards
 		super_empower(xeno, empower_targets, behavior)
 
-/datum/action/xeno_action/onclick/empower/proc/super_empower(var/mob/living/carbon/xenomorph/xeno, var/empower_targets, var/datum/behavior_delegate/ravager_base/behavior)
+/datum/action/xeno_action/onclick/empower/proc/super_empower(mob/living/carbon/xenomorph/xeno, empower_targets, datum/behavior_delegate/ravager_base/behavior)
 	xeno.visible_message(SPAN_DANGER("[xeno] glows an eerie red as it empowers further with the strength of [empower_targets] hostiles!"), SPAN_XENOHIGHDANGER("You begin to glow an eerie red, empowered by the [empower_targets] enemies!"))
 	xeno.emote("roar")
 
@@ -76,7 +76,7 @@
 
 	addtimer(CALLBACK(src, PROC_REF(weaken_superbuff), xeno, behavior), 3.5 SECONDS)
 
-/datum/action/xeno_action/onclick/empower/proc/weaken_superbuff(var/mob/living/carbon/xenomorph/xeno, var/datum/behavior_delegate/ravager_base/behavior)
+/datum/action/xeno_action/onclick/empower/proc/weaken_superbuff(mob/living/carbon/xenomorph/xeno, datum/behavior_delegate/ravager_base/behavior)
 
 	xeno.remove_filter("empower_rage")
 	var/color = "#FF0000"
@@ -86,7 +86,7 @@
 
 	addtimer(CALLBACK(src, PROC_REF(remove_superbuff), xeno, behavior), 1.5 SECONDS)
 
-/datum/action/xeno_action/onclick/empower/proc/remove_superbuff(var/mob/living/carbon/xenomorph/xeno, var/datum/behavior_delegate/ravager_base/behavior)
+/datum/action/xeno_action/onclick/empower/proc/remove_superbuff(mob/living/carbon/xenomorph/xeno, datum/behavior_delegate/ravager_base/behavior)
 	behavior.empower_targets = 0
 
 	xeno.visible_message(SPAN_DANGER("[xeno]'s glow slowly dims."), SPAN_XENOHIGHDANGER("Your glow fades away, the power leaving your body!"))
@@ -289,7 +289,7 @@
 	if (!X.check_state())
 		return
 
-	if (!isXenoOrHuman(A) || X.can_not_harm(A))
+	if (!isxeno_human(A) || X.can_not_harm(A))
 		to_chat(X, SPAN_XENOWARNING("You must target a hostile!"))
 		return
 
@@ -395,7 +395,7 @@
 		xeno.spin_circle()
 
 		for (var/mob/living/carbon/human in orange(xeno, range))
-			if(!isXenoOrHuman(human) || xeno.can_not_harm(human))
+			if(!isxeno_human(human) || xeno.can_not_harm(human))
 				continue
 
 			if (human.stat == DEAD)

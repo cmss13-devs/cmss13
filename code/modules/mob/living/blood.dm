@@ -156,13 +156,13 @@
 	return 1
 
 
-/mob/living/carbon/human/take_blood(obj/O, var/amount)
+/mob/living/carbon/human/take_blood(obj/O, amount)
 	if(species && species.flags & NO_BLOOD)
 		return
 
 	. = ..()
 
-/mob/living/carbon/xenomorph/take_blood(obj/O, var/amount)
+/mob/living/carbon/xenomorph/take_blood(obj/O, amount)
 	if(!O.reagents || amount <= 0 || blood_volume <= 0)
 		return
 

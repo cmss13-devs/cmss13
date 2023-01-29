@@ -48,7 +48,7 @@
 			. += pill_info
 
 /obj/item/reagent_container/pill/display_contents(mob/user)
-	if(isXeno(user))
+	if(isxeno(user))
 		return
 	if(!identificable)
 		return

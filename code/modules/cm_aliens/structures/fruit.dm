@@ -125,7 +125,7 @@
 		add_filter("fruity_glow", 1, list("type" = "outline", "color" = glow_color, "size" = 1))
 	update_icon()
 
-/obj/effect/alien/resin/fruit/proc/consume_effect(mob/living/carbon/xenomorph/recipient, var/do_consume = TRUE)
+/obj/effect/alien/resin/fruit/proc/consume_effect(mob/living/carbon/xenomorph/recipient, do_consume = TRUE)
 	if(mature) // Someone might've eaten it before us!
 		recipient.gain_health(75)
 		to_chat(recipient, SPAN_XENONOTICE("You recover a bit from your injuries."))
@@ -155,7 +155,7 @@
 			consume_effect(X)
 		else
 			to_chat(X, SPAN_XENOWARNING("[name] isn't ripe yet. You need to wait a little longer."))
-	if(X.a_intent == INTENT_HARM && isXenoBuilder(X) || (!X.can_not_harm(bound_xeno) && X.hivenumber != hivenumber))
+	if(X.a_intent == INTENT_HARM && isxeno_builder(X) || (!X.can_not_harm(bound_xeno) && X.hivenumber != hivenumber))
 		X.animation_attack_on(src)
 		X.visible_message(SPAN_XENODANGER("[X] removes [name]!"),
 		SPAN_XENODANGER("You remove [name]!"))
@@ -188,7 +188,7 @@
 	fruit_type = /obj/item/reagent_container/food/snacks/resin_fruit/greater
 
 
-/obj/effect/alien/resin/fruit/greater/consume_effect(mob/living/carbon/xenomorph/recipient, var/do_consume = TRUE)
+/obj/effect/alien/resin/fruit/greater/consume_effect(mob/living/carbon/xenomorph/recipient, do_consume = TRUE)
 	if(!mature)
 		return
 	if(recipient && !QDELETED(recipient))
@@ -218,7 +218,7 @@
 	glow_color = "#17997280"
 	gardener_sac_color = "#179973"
 
-/obj/effect/alien/resin/fruit/unstable/consume_effect(mob/living/carbon/xenomorph/recipient, var/do_consume = TRUE)
+/obj/effect/alien/resin/fruit/unstable/consume_effect(mob/living/carbon/xenomorph/recipient, do_consume = TRUE)
 	if(mature && recipient && !QDELETED(recipient))
 		recipient.add_xeno_shield(Clamp(overshield_amount, 0, recipient.maxHealth * 0.3), XENO_SHIELD_SOURCE_GARDENER, duration = shield_duration, decay_amount_per_second = shield_decay)
 		to_chat(recipient, SPAN_XENONOTICE("You feel your defense being bolstered, and begin to regenerate rapidly."))
@@ -244,7 +244,7 @@
 	glow_color = "#99461780"
 	gardener_sac_color = "#994617"
 
-/obj/effect/alien/resin/fruit/spore/consume_effect(mob/living/carbon/xenomorph/recipient, var/do_consume = TRUE)
+/obj/effect/alien/resin/fruit/spore/consume_effect(mob/living/carbon/xenomorph/recipient, do_consume = TRUE)
 	if(mature && recipient && !QDELETED(recipient))
 		mature = FALSE
 		for (var/datum/effects/gain_xeno_cooldown_reduction_on_slash/E in recipient.effects_list)
@@ -291,7 +291,7 @@
 		return XENO_NO_DELAY_ACTION
 	return ..()
 
-/obj/effect/alien/resin/fruit/speed/consume_effect(mob/living/carbon/xenomorph/recipient, var/do_consume = TRUE)
+/obj/effect/alien/resin/fruit/speed/consume_effect(mob/living/carbon/xenomorph/recipient, do_consume = TRUE)
 	if(mature && recipient && !QDELETED(recipient))
 		to_chat(recipient, SPAN_XENONOTICE("The [name] invigorates you to move faster!"))
 		new /datum/effects/xeno_speed(recipient, ttl = speed_duration, set_speed_modifier = speed_buff_amount, set_modifier_source = XENO_FRUIT_SPEED, set_end_message = SPAN_XENONOTICE("You feel the effects of the [name] wane..."))
@@ -312,7 +312,7 @@
 	var/plasma_time = 15
 	var/time_between_plasmas = 3
 
-/obj/effect/alien/resin/fruit/plasma/consume_effect(mob/living/carbon/xenomorph/recipient, var/do_consume = TRUE)
+/obj/effect/alien/resin/fruit/plasma/consume_effect(mob/living/carbon/xenomorph/recipient, do_consume = TRUE)
 	if(mature && recipient && recipient.plasma_max > 0 && !QDELETED(recipient))
 		to_chat(recipient, SPAN_XENONOTICE("The [name] boosts your plasma regeneration!"))
 		// with the current values (240, 15, 3), this will give the recipient 48 plasma every 3 seconds, for a total of 240 in 15 seconds
@@ -408,7 +408,7 @@
 	X.pickup_fruit(src)
 
 // Handles xenos picking up fruit
-/mob/living/carbon/xenomorph/proc/pickup_fruit(var/obj/effect/alien/resin/fruit/F)
+/mob/living/carbon/xenomorph/proc/pickup_fruit(obj/effect/alien/resin/fruit/F)
 
 	if(F.bound_xeno && !can_not_harm(F.bound_xeno))
 		to_chat(src, SPAN_XENODANGER("You crush [F]."))

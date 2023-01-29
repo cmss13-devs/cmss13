@@ -176,7 +176,7 @@
 
 	drowsy_threshold = CLOTHING_ARMOR_MEDIUM - M.getarmor(affecting, ARMOR_MELEE)
 
-	if(affecting == "head" && istype(M, /mob/living/carbon/) && !isXeno(M))
+	if(affecting == "head" && istype(M, /mob/living/carbon/) && !isxeno(M))
 		for(var/mob/O in viewers(user, null))
 			if(M != user)
 				O.show_message(text(SPAN_DANGER("<B>[M] has been hit over the head with a [name] by [user]!</B>")), SHOW_MESSAGE_VISIBLE)

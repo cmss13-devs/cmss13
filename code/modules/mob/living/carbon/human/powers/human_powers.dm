@@ -220,7 +220,7 @@
 	set name = "Toggle HUDs"
 	set desc = "Toggles various HUDs."
 
-	if(!isSynth(usr) || usr.is_mob_incapacitated())
+	if(!issynth(usr) || usr.is_mob_incapacitated())
 		return
 
 	var/hud_choice = tgui_input_list(usr, "Choose a HUD to toggle", "Toggle HUD", list("Medical HUD", "Security HUD"))

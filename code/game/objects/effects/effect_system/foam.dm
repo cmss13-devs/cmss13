@@ -22,7 +22,7 @@
 	var/metal = FOAM_NOT_METAL
 
 
-/obj/effect/particle_effect/foam/Initialize(mapload, var/ismetal=0)
+/obj/effect/particle_effect/foam/Initialize(mapload, ismetal=0)
 	. = ..()
 	icon_state = "[ismetal ? "m":""]foam"
 	metal = ismetal
@@ -91,7 +91,7 @@
 		QDEL_IN(src, 5)
 
 
-/obj/effect/particle_effect/foam/Crossed(var/atom/movable/AM)
+/obj/effect/particle_effect/foam/Crossed(atom/movable/AM)
 	if(metal)
 		return
 	if (iscarbon(AM))
@@ -110,7 +110,7 @@
 	var/list/carried_reagents // the IDs of reagents present when the foam was mixed
 	var/metal = FOAM_NOT_METAL
 
-/datum/effect_system/foam_spread/set_up(amt=5, loca, var/datum/reagents/carry = null, var/metal_foam = FOAM_NOT_METAL)
+/datum/effect_system/foam_spread/set_up(amt=5, loca, datum/reagents/carry = null, metal_foam = FOAM_NOT_METAL)
 	amount = round(sqrt(amt / 3), 1)
 	if(istype(loca, /turf))
 		location = loca
@@ -177,7 +177,7 @@
 	name = "foamed iron"
 	desc = "A slightly stronger lightweight foamed iron wall."
 
-/obj/structure/foamed_metal/proc/take_damage(var/damage)
+/obj/structure/foamed_metal/proc/take_damage(damage)
 	health -= damage
 	playsound(src,'sound/weapons/Genhit.ogg', 25, 1)
 	if(health <= 0)
@@ -199,7 +199,7 @@
 /obj/structure/foamed_metal/fire_act()
 	take_damage(FOAMED_METAL_FIRE_ACT_DMG)
 
-/obj/structure/foamed_metal/attackby(var/obj/item/I, var/mob/user)
+/obj/structure/foamed_metal/attackby(obj/item/I, mob/user)
 	if(I.force)
 		to_chat(user, SPAN_NOTICE("You [I.sharp ? "hack" : "smash" ] off a chunk of the foamed metal with \the [I]."))
 		if(I.sharp)
@@ -210,7 +210,7 @@
 
 	return FALSE
 
-/obj/structure/foamed_metal/attack_alien(var/mob/living/carbon/xenomorph/X, var/dam_bonus)
+/obj/structure/foamed_metal/attack_alien(mob/living/carbon/xenomorph/X, dam_bonus)
 	var/damage = (rand(X.melee_damage_lower, X.melee_damage_upper) + dam_bonus)
 
 	//Frenzy bonus

@@ -42,6 +42,6 @@
 		/mob/living/proc/hide,
 	))
 
-/mob/living/simple_animal/alien_slug/start_pulling(var/atom/movable/AM)//Prevents it from pulling things
+/mob/living/simple_animal/alien_slug/start_pulling(atom/movable/AM)//Prevents it from pulling things
 	to_chat(src, SPAN_WARNING("You are too small to pull anything."))
 	return

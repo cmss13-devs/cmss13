@@ -9,7 +9,7 @@
 		/datum/weather_event/sand
 	)
 
-/datum/weather_ss_map_holder/big_red/should_affect_area(var/area/A)
+/datum/weather_ss_map_holder/big_red/should_affect_area(area/A)
 	return !CEILING_IS_PROTECTED(A.ceiling, CEILING_GLASS)
 
 /datum/weather_ss_map_holder/big_red/should_start_event()

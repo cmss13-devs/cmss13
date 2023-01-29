@@ -12,7 +12,7 @@
 	var/synths = 0
 
 /datum/emergency_call/clf/print_backstory(mob/living/carbon/human/H)
-	if(isHumanStrict(H))
+	if(ishuman_strict(H))
 		var/message = "[pick(5;"on the UA prison station", 10;"in the LV-624 jungle", 25;"on the farms of LV-771", 25;"in the slums of LV-221", 20;"the red wastes of LV-361", 15;"the icy tundra of LV-571")] to a [pick(50;"poor", 15;"well-off", 35;"average")] family."
 		var/message_grew = "[pick(20;"the Dust Raiders killed someone close to you in 2181", 20;"you harbor a strong hatred of the United Americas", 10;"you are a wanted criminal in the United Americas", 5;"have UPP sympathies and want to see the UA driven out of the secor", 10;"you believe the USCM occupation will hurt your quality of life", 5;"are a violent person and want to kill someone for the sake of killing", 20;"want the Neroid Sector to be free from outsiders", 10;"your militia was absorbed into the CLF")]"
 		to_chat(H, SPAN_BOLD("As a native of the Neroid Sector, you joined the CLF because [message_grew]."))
@@ -32,7 +32,7 @@
 	to_chat(H, SPAN_BOLD("The arrival of the USCM Battalion, the Falling Falcons, and their flagship, the [MAIN_SHIP_NAME], have reaffirmed that the United Americas considers the Neroid Sector part of their holdings."))
 	to_chat(H, SPAN_BOLD("It is up to you and your fellow colonists to make them realize their trespasses. This sector is no longer theirs."))
 
-/datum/emergency_call/clf/create_member(datum/mind/M, var/turf/override_spawn_loc)
+/datum/emergency_call/clf/create_member(datum/mind/M, turf/override_spawn_loc)
 	var/turf/spawn_loc = override_spawn_loc ? override_spawn_loc : get_spawn_point()
 
 	if(!istype(spawn_loc))

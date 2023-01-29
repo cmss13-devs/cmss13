@@ -2,7 +2,7 @@
  * Special Structures
  */
 
-/proc/get_xeno_structure_desc(var/name)
+/proc/get_xeno_structure_desc(name)
 	var/message
 	switch(name)
 		if(XENO_STRUCTURE_CORE)
@@ -40,7 +40,7 @@
 
 	plane = FLOOR_PLANE
 
-/obj/effect/alien/resin/special/Initialize(mapload, var/hive_ref)
+/obj/effect/alien/resin/special/Initialize(mapload, hive_ref)
 	. = ..()
 	maxhealth = health
 

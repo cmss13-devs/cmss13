@@ -34,7 +34,7 @@
 // Standard procs
 //-------------------------------------------
 
-/obj/vehicle/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/obj/vehicle/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_can_pass_all = PASS_HIGH_OVER_ONLY|PASS_OVER_THROW_ITEM
@@ -90,7 +90,7 @@
 	else
 		..()
 
-/obj/vehicle/attack_animal(var/mob/living/simple_animal/M as mob)
+/obj/vehicle/attack_animal(mob/living/simple_animal/M as mob)
 	if(M.melee_damage_upper == 0) return
 	health -= M.melee_damage_upper
 	src.visible_message(SPAN_DANGER("<B>[M] has [M.attacktext] [src]!</B>"))
@@ -99,7 +99,7 @@
 		new /obj/effect/decal/cleanable/blood/oil(src.loc)
 	healthcheck()
 
-/obj/vehicle/bullet_act(var/obj/item/projectile/P)
+/obj/vehicle/bullet_act(obj/item/projectile/P)
 	var/damage = P.damage
 	health -= damage
 	..()
@@ -129,7 +129,7 @@
 //-------------------------------------------
 // Vehicle procs
 //-------------------------------------------
-/obj/vehicle/proc/set_seated_mob(var/seat, var/mob/living/M)
+/obj/vehicle/proc/set_seated_mob(seat, mob/living/M)
 	seats[seat] = M
 
 	// Checked here because we want to be able to null the mob in a seat
@@ -197,7 +197,7 @@
 		turn_on()
 		return
 
-/obj/vehicle/proc/insert_cell(var/obj/item/cell/C, var/mob/living/carbon/human/H)
+/obj/vehicle/proc/insert_cell(obj/item/cell/C, mob/living/carbon/human/H)
 	if(cell)
 		return
 	if(!istype(C))
@@ -208,7 +208,7 @@
 	powercheck()
 	to_chat(usr, SPAN_NOTICE("You install [C] in [src]."))
 
-/obj/vehicle/proc/remove_cell(var/mob/living/carbon/human/H)
+/obj/vehicle/proc/remove_cell(mob/living/carbon/human/H)
 	if(!cell)
 		return
 
@@ -218,7 +218,7 @@
 	cell = null
 	powercheck()
 
-/obj/vehicle/proc/RunOver(var/mob/living/carbon/human/H)
+/obj/vehicle/proc/RunOver(mob/living/carbon/human/H)
 	return //write specifics for different vehicles
 
 
@@ -232,7 +232,7 @@
 		M.pixel_y = initial(buckled_mob.pixel_y)
 		M.old_y = initial(buckled_mob.pixel_y)
 
-/obj/vehicle/afterbuckle(var/mob/M)
+/obj/vehicle/afterbuckle(mob/M)
 	. = ..()
 	if(seats[VEHICLE_DRIVER] == null)
 		seats[VEHICLE_DRIVER] = M

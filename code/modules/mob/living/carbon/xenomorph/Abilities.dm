@@ -140,7 +140,7 @@
 
 	for(var/mob/mob in view())
 		if(mob && mob.client)
-			if(isXeno(mob))
+			if(isxeno(mob))
 				shake_camera(mob, 10, 1)
 			else
 				shake_camera(mob, 30, 1) //50 deciseconds, SORRY 5 seconds was way too long. 3 seconds now

@@ -215,7 +215,8 @@
 					/obj/item/storage/belt/security/MP = 6,
 					/obj/item/clothing/head/beret/marine/mp = 6,
 					/obj/item/clothing/glasses/sunglasses/sechud = 3,
-					/obj/item/device/radio/headset = 6)
+					/obj/item/device/radio/headset = 6,
+					/obj/item/tape/regulation = 5)
 	contraband = list(/obj/item/clothing/glasses/sunglasses = 2,/obj/item/storage/donut_box = 2)
 
 /obj/structure/machinery/vending/sea
@@ -302,7 +303,7 @@
 
 	build_shared_inventory(shared,0,1)
 
-/obj/structure/machinery/vending/shared_vending/proc/build_shared_inventory(var/list/productlist,hidden=0,req_coin=0)
+/obj/structure/machinery/vending/shared_vending/proc/build_shared_inventory(list/productlist,hidden=0,req_coin=0)
 
 	if(delay_product_spawn)
 		sleep(15) //Make ABSOLUTELY SURE the seed datum is properly populated.

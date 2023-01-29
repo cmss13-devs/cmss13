@@ -86,7 +86,7 @@
 	mob_language_menu = new(src)
 
 
-/mob/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/mob/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_pass = PASS_MOB_IS_OTHER
@@ -325,7 +325,7 @@
 
 //puts the item "W" into an appropriate slot in a human's inventory
 //returns 0 if it cannot, 1 if successful
-/mob/proc/equip_to_appropriate_slot(obj/item/W, ignore_delay = 1, var/list/slot_equipment_priority = DEFAULT_SLOT_PRIORITY)
+/mob/proc/equip_to_appropriate_slot(obj/item/W, ignore_delay = 1, list/slot_equipment_priority = DEFAULT_SLOT_PRIORITY)
 	if(!istype(W)) return 0
 
 	for(var/slot in slot_equipment_priority)
@@ -568,7 +568,7 @@ currently only humans get dizzy
 value of dizziness ranges from 0 to 1000
 below 100 is not dizzy
 */
-/mob/proc/make_dizzy(var/amount)
+/mob/proc/make_dizzy(amount)
 	if(!istype(src, /mob/living/carbon/human)) // for the moment, only humans get dizzy
 		return
 
@@ -600,14 +600,14 @@ note dizziness decrements automatically in the mob's Life() proc.
 
 // jitteriness - copy+paste of dizziness
 
-/mob/proc/make_jittery(var/amount)
+/mob/proc/make_jittery(amount)
 	return
 
 /mob/proc/remove_jittery()
 	jitteriness = 0
 	return
 
-/mob/living/carbon/human/make_jittery(var/amount)
+/mob/living/carbon/human/make_jittery(amount)
 	if(stat == DEAD) return //dead humans can't jitter
 	jitteriness = min(1000, jitteriness + amount) // store what will be new value
 													// clamped to max 1000
@@ -637,7 +637,7 @@ note dizziness decrements automatically in the mob's Life() proc.
 
 
 //handles up-down floaty effect in space
-/mob/proc/make_floating(var/n)
+/mob/proc/make_floating(n)
 
 	floatiness = n
 
@@ -725,7 +725,7 @@ note dizziness decrements automatically in the mob's Life() proc.
 
 	return canmove
 
-/mob/proc/face_dir(var/ndir, var/specific_dir)
+/mob/proc/face_dir(ndir, specific_dir)
 	if(!canface()) return 0
 	if(dir != ndir)
 		flags_atom &= ~DIRLOCK
@@ -741,7 +741,7 @@ note dizziness decrements automatically in the mob's Life() proc.
 
 	return TRUE
 
-/mob/proc/set_face_dir(var/newdir)
+/mob/proc/set_face_dir(newdir)
 	if(SEND_SIGNAL(src, COMSIG_MOB_SET_FACE_DIR, newdir) & COMPONENT_CANCEL_SET_FACE_DIR)
 		face_dir(newdir)
 		return
@@ -779,7 +779,7 @@ note dizziness decrements automatically in the mob's Life() proc.
 	overlay_fullscreen("pain", /atom/movable/screen/fullscreen/pain, 1)
 	clear_fullscreen("pain")
 
-/mob/proc/get_visible_implants(var/class = 0)
+/mob/proc/get_visible_implants(class = 0)
 	var/list/visible_implants = list()
 	for(var/obj/item/O in embedded)
 		if(O.w_class > class)
@@ -907,13 +907,13 @@ note dizziness decrements automatically in the mob's Life() proc.
 	return superslowed
 
 
-/mob/living/proc/handle_knocked_down(var/bypass_client_check = FALSE)
+/mob/living/proc/handle_knocked_down(bypass_client_check = FALSE)
 	if(knocked_down && (bypass_client_check || client))
 		knocked_down = max(knocked_down-1,0) //before you get mad Rockdtben: I done this so update_canmove isn't called multiple times
 		knocked_down_callback_check()
 	return knocked_down
 
-/mob/living/proc/handle_knocked_out(var/bypass_client_check = FALSE)
+/mob/living/proc/handle_knocked_out(bypass_client_check = FALSE)
 	if(knocked_out && (bypass_client_check || client))
 		knocked_out = max(knocked_out-1,0) //before you get mad Rockdtben: I done this so update_canmove isn't called multiple times
 		knocked_out_callback_check()
@@ -942,7 +942,7 @@ note dizziness decrements automatically in the mob's Life() proc.
 /mob/proc/slip(slip_source_name, stun_level, weaken_level, run_only, override_noslip, slide_steps)
 	return FALSE
 
-/mob/proc/TurfAdjacent(var/turf/T)
+/mob/proc/TurfAdjacent(turf/T)
 	return T.AdjacentQuick(src)
 
 /mob/on_stored_atom_del(atom/movable/AM)

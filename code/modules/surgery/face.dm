@@ -16,7 +16,7 @@
 		/datum/surgery_step/cauterize/close_facial_incision
 	)
 
-/datum/surgery/face_fix/can_start(mob/user, mob/living/carbon/patient, var/obj/limb/L, obj/item/tool)
+/datum/surgery/face_fix/can_start(mob/user, mob/living/carbon/patient, obj/limb/L, obj/item/tool)
 	var/obj/limb/head/H = L
 	return H && H.disfigured
 

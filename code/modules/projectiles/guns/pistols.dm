@@ -458,7 +458,7 @@
 		return
 	..()
 
-/obj/item/weapon/gun/pistol/highpower/cock_gun(mob/user, var/manual = FALSE)
+/obj/item/weapon/gun/pistol/highpower/cock_gun(mob/user, manual = FALSE)
 	if(manual)
 		..()
 	else return

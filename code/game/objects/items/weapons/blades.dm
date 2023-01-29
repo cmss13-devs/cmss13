@@ -56,7 +56,7 @@
 	QDEL_IN(O, 7)
 	return
 
-/obj/item/weapon/melee/claymore/hefa/attack_self(var/mob/user)
+/obj/item/weapon/melee/claymore/hefa/attack_self(mob/user)
 	..()
 
 	primed = !primed
@@ -65,7 +65,7 @@
 		msg = "You de-activate \the [src]!"
 	to_chat(user, SPAN_NOTICE(msg))
 
-/obj/item/weapon/melee/claymore/hefa/attack(var/mob/target, var/mob/user)
+/obj/item/weapon/melee/claymore/hefa/attack(mob/target, mob/user)
 	. = ..()
 	if(!primed)
 		return
@@ -149,7 +149,7 @@
 	return FALSE
 
 // If no user, it means that the embedded_human is removing it themselves
-/obj/item/proc/dig_out_shrapnel(var/mob/living/carbon/human/embedded_human, var/mob/living/carbon/human/user = null)
+/obj/item/proc/dig_out_shrapnel(mob/living/carbon/human/embedded_human, mob/living/carbon/human/user = null)
 	if(!user)
 		user = embedded_human
 

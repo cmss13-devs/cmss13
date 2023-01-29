@@ -79,7 +79,7 @@
 
 	add_internal_hitpoints(internal_hitpoints_per_attack)
 
-/datum/behavior_delegate/praetorian_warden/ranged_attack_additional_effects_target(var/atom/target_atom)
+/datum/behavior_delegate/praetorian_warden/ranged_attack_additional_effects_target(atom/target_atom)
 	if(ismob(target_atom))
 		add_internal_hitpoints(internal_hitpoints_per_attack)
 

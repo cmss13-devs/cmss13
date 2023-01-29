@@ -58,7 +58,7 @@
 /obj/effect/xenomorph/spray/no_stun
 	stun_duration = 0
 
-/obj/effect/xenomorph/spray/Initialize(mapload, new_cause_data, var/hive) //Self-deletes
+/obj/effect/xenomorph/spray/Initialize(mapload, new_cause_data, hive) //Self-deletes
 	. = ..()
 
 	// Stats tracking
@@ -133,7 +133,7 @@
 	cause_data = null
 	return ..()
 
-/obj/effect/xenomorph/spray/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/obj/effect/xenomorph/spray/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_pass = PASS_FLAGS_ACID_SPRAY
@@ -149,7 +149,7 @@
 		if(H.ally_of_hivenumber(hivenumber))
 			return
 		apply_spray(AM)
-	else if (isXeno(AM))
+	else if (isxeno(AM))
 		var/mob/living/carbon/xenomorph/X = AM
 		if (X.hivenumber != hivenumber)
 			apply_spray(AM)
@@ -169,7 +169,7 @@
 			H.apply_armoured_damage(damage_amount * 0.4, ARMOR_BIO, BURN, "l_foot")
 			H.apply_armoured_damage(damage_amount * 0.4, ARMOR_BIO, BURN, "r_foot")
 
-		else if (isXeno(H))
+		else if (isxeno(H))
 			var/mob/living/carbon/xenomorph/X = H
 			if (X.mob_size < MOB_SIZE_BIG && should_stun)
 				X.KnockDown(stun_duration)
@@ -227,7 +227,7 @@
 		hooman.apply_armoured_damage(damage * 0.25, ARMOR_BIO, BURN, "r_leg", 20)
 		hooman.UpdateDamageIcon()
 		hooman.updatehealth()
-	else if (isXeno(carbone))
+	else if (isxeno(carbone))
 		..(carbone, FALSE)
 
 /obj/effect/xenomorph/spray/strong
@@ -275,7 +275,7 @@
 		else
 			H.apply_armoured_damage(damage_amount*0.33, ARMOR_BIO, BURN) //This is ticking damage!
 			to_chat(H, SPAN_DANGER("You are scalded by the burning acid!"))
-	else if (isXeno(M))
+	else if (isxeno(M))
 		..(M)
 
 //Medium-strength acid
@@ -413,7 +413,7 @@
 
 /obj/effect/xenomorph/boiler_bombard/New(loc, source_xeno = null)
 	// Hopefully we don't get insantiated in these places anyway..
-	if (isXeno(source_xeno))
+	if (isxeno(source_xeno))
 		src.source_xeno = source_xeno
 
 	if (isturf(loc))
@@ -433,7 +433,7 @@
 		qdel(src)
 		return
 	for (var/mob/living/carbon/H in loc)
-		if (isXeno(H))
+		if (isxeno(H))
 			if(!source_xeno)
 				continue
 
@@ -529,7 +529,7 @@
 
 		animation_flash_color(H)
 
-		if(isXeno(H))
+		if(isxeno(H))
 			H.apply_armoured_damage(damage * XVX_ACID_DAMAGEMULT * xeno_empower_modifier, ARMOR_BIO, BURN)
 		else
 			if(empowered)

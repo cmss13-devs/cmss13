@@ -15,7 +15,7 @@
 //Matrix NVG - guidance camera gets NVG filter depending on the potency of the property
 //Matrix wide - gives a wider view which depends on the potency of the proeprty
 
-/obj/item/frame/matrix_frame/attackby(var/obj/item/W, mob/user as mob)
+/obj/item/frame/matrix_frame/attackby(obj/item/W, mob/user as mob)
 	switch(state)
 		if(ASSEMBLY_EMPTY)
 			if(istype(W, /obj/item/reagent_container/glass/beaker/vial) && W.reagents.total_volume == 30 && W.reagents.reagent_list.len == 1)

@@ -115,7 +115,7 @@
 	xeno_cooldown = 10 SECONDS
 	var/max_markers = 3
 
-/datum/action/xeno_action/activable/info_marker/update_button_icon(var/datum/xeno_mark_define/x)
+/datum/action/xeno_action/activable/info_marker/update_button_icon(datum/xeno_mark_define/x)
 	. = ..()
 	if(!x)
 		return
@@ -259,7 +259,7 @@
 	return
 
 /// Any effects to apply to the xenomorph after the windup finishes (or is interrupted)
-/datum/action/xeno_action/activable/pounce/proc/post_windup_effects(var/interrupted)
+/datum/action/xeno_action/activable/pounce/proc/post_windup_effects(interrupted)
 	SHOULD_CALL_PARENT(TRUE)
 	if(!owner)
 		return
@@ -303,7 +303,7 @@
 		xeno.zoom_in()
 		button.icon_state = "template_active"
 
-/datum/action/xeno_action/onclick/toggle_long_range/proc/handle_mob_move_or_look(mob/living/carbon/xenomorph/mover, var/actually_moving, var/direction, var/specific_direction)
+/datum/action/xeno_action/onclick/toggle_long_range/proc/handle_mob_move_or_look(mob/living/carbon/xenomorph/mover, actually_moving, direction, specific_direction)
 	SIGNAL_HANDLER
 
 	if(!actually_moving)

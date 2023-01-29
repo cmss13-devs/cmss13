@@ -87,7 +87,7 @@ var/list/ai_verbs_default = list(
 /mob/living/silicon/ai/proc/remove_ai_verbs()
 	remove_verb(src, ai_verbs_default)
 
-/mob/living/silicon/ai/New(loc, var/obj/item/device/mmi/B, var/safety = 0)
+/mob/living/silicon/ai/New(loc, obj/item/device/mmi/B, safety = 0)
 	var/list/possibleNames = ai_names
 
 	var/pickedName = null
@@ -177,7 +177,7 @@ var/list/ai_verbs_default = list(
 	var/mob/living/silicon/ai/powered_ai = null
 	invisibility = 100
 
-/obj/structure/machinery/ai_powersupply/New(var/mob/living/silicon/ai/ai)
+/obj/structure/machinery/ai_powersupply/New(mob/living/silicon/ai/ai)
 	powered_ai = ai
 	if(isnull(powered_ai))
 		qdel(src)
@@ -359,7 +359,7 @@ var/list/ai_verbs_default = list(
 		else A.SetLuminosity(0)
 
 
-/mob/living/silicon/ai/proc/switchCamera(var/obj/structure/machinery/camera/C)
+/mob/living/silicon/ai/proc/switchCamera(obj/structure/machinery/camera/C)
 	if (!C || stat == DEAD) //C.can_use())
 		return 0
 
@@ -372,7 +372,7 @@ var/list/ai_verbs_default = list(
 
 	return 1
 
-/mob/living/silicon/ai/triggerAlarm(var/class, area/A, list/cameralist, var/source)
+/mob/living/silicon/ai/triggerAlarm(class, area/A, list/cameralist, source)
 	if (stat == 2)
 		return 1
 
@@ -386,7 +386,7 @@ var/list/ai_verbs_default = list(
 
 	if (viewalerts) ai_alerts()
 
-/mob/living/silicon/ai/cancelAlarm(var/class, area/A as area, var/source)
+/mob/living/silicon/ai/cancelAlarm(class, area/A as area, source)
 	var/has_alarm = ..()
 
 	if (!has_alarm)
@@ -605,7 +605,7 @@ var/list/ai_verbs_default = list(
 	set desc = "Augment visual feed with internal sensor overlays"
 	toggle_sensor_mode()
 
-/mob/living/silicon/ai/proc/check_unable(var/flags = 0)
+/mob/living/silicon/ai/proc/check_unable(flags = 0)
 	if(stat == DEAD)
 		to_chat(usr, SPAN_DANGER("You are dead!"))
 		return 1

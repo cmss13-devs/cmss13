@@ -40,7 +40,7 @@
 	if (!istype(fendy))
 		return
 
-	if(!isXenoOrHuman(target_atom) || fendy.can_not_harm(target_atom))
+	if(!isxeno_human(target_atom) || fendy.can_not_harm(target_atom))
 		return
 
 	if(!fendy.check_state())
@@ -134,7 +134,7 @@
 
 	var/sweep_range = 1
 	for(var/mob/living/carbon/H in orange(sweep_range, get_turf(X)))
-		if (!isXenoOrHuman(H) || X.can_not_harm(H)) continue
+		if (!isxeno_human(H) || X.can_not_harm(H)) continue
 		if(H.stat == DEAD) continue
 		if(HAS_TRAIT(H, TRAIT_NESTED)) continue
 		step_away(H, X, sweep_range, 2)
@@ -202,7 +202,7 @@
 	if(xeno.fortify)
 		button.icon_state = "template_active"
 
-/datum/action/xeno_action/activable/fortify/proc/fortify_switch(var/mob/living/carbon/xenomorph/X, var/fortify_state)
+/datum/action/xeno_action/activable/fortify/proc/fortify_switch(mob/living/carbon/xenomorph/X, fortify_state)
 	if(X.fortify == fortify_state)
 		return
 
@@ -245,7 +245,7 @@
 		X.update_icons()
 		X.fortify = FALSE
 
-/datum/action/xeno_action/activable/fortify/proc/check_directional_armor(var/mob/living/carbon/xenomorph/defendy, list/damagedata)
+/datum/action/xeno_action/activable/fortify/proc/check_directional_armor(mob/living/carbon/xenomorph/defendy, list/damagedata)
 	SIGNAL_HANDLER
 	var/projectile_direction = damagedata["direction"]
 	if(defendy.dir & REVERSE_DIR(projectile_direction))

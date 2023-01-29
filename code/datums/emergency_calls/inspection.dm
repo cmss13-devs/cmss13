@@ -10,7 +10,7 @@
 	objectives = "Investigate any issues with ML enforcement on the [MAIN_SHIP_NAME]."
 
 
-/datum/emergency_call/inspection_provost/create_member(datum/mind/M, var/turf/override_spawn_loc)
+/datum/emergency_call/inspection_provost/create_member(datum/mind/M, turf/override_spawn_loc)
 	var/turf/T = override_spawn_loc ? override_spawn_loc : get_spawn_point()
 
 	if(!istype(T))
@@ -54,7 +54,7 @@
 	objectives = "Inspect and evaluate the [MAIN_SHIP_NAME] and its crew."
 
 
-/datum/emergency_call/inspection_hc/create_member(datum/mind/M, var/turf/override_spawn_loc)
+/datum/emergency_call/inspection_hc/create_member(datum/mind/M, turf/override_spawn_loc)
 	var/turf/T = override_spawn_loc ? override_spawn_loc : get_spawn_point()
 
 	if(!istype(T))
@@ -89,7 +89,7 @@
 	..()
 	objectives = "Await detailed directives from your Handler. Remember that you may, but do not have to, investigate any ML or SOP related issues during your time on the [MAIN_SHIP_NAME]."
 
-/datum/emergency_call/inspection_tis/create_member(datum/mind/M, var/turf/override_spawn_loc)
+/datum/emergency_call/inspection_tis/create_member(datum/mind/M, turf/override_spawn_loc)
 	var/turf/T = override_spawn_loc ? override_spawn_loc : get_spawn_point()
 
 	if(!istype(T))
@@ -133,7 +133,7 @@
 	..()
 	objectives = "Make sure the crew of the [MAIN_SHIP_NAME] is aware of your presence. Investigate the Corporate Liaison and any other Company assets and make sure they remain loyal to the Company. Make a detailed report back to Dispatch."
 
-/datum/emergency_call/inspection_wy/create_member(datum/mind/M, var/turf/override_spawn_loc)
+/datum/emergency_call/inspection_wy/create_member(datum/mind/M, turf/override_spawn_loc)
 	var/turf/T = override_spawn_loc ? override_spawn_loc : get_spawn_point()
 
 	if(!istype(T))

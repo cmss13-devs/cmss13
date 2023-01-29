@@ -2,7 +2,7 @@
 	name = "station intercom"
 	desc = "Talk through this. To speak directly into an intercom next to you, use :i."
 	icon_state = "intercom"
-	anchored = 1
+	anchored = TRUE
 	w_class = SIZE_LARGE
 	canhear_range = 2
 	flags_atom = FPRINT|CONDUCT|NOBLOODY
@@ -73,3 +73,11 @@
 			icon_state = "intercom-p"
 		else
 			icon_state = "intercom"
+
+/obj/item/device/radio/intercom/alamo
+	name = "dropship alamo intercom"
+	frequency = DS1_FREQ
+
+/obj/item/device/radio/intercom/normandy
+	name = "dropship normandy intercom"
+	frequency = DS2_FREQ

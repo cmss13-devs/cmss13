@@ -1,302 +1,3 @@
-GLOBAL_VAR(AdminProcCaller)
-GLOBAL_PROTECT(AdminProcCaller)
-GLOBAL_VAR_INIT(AdminProcCallCount, FALSE)
-GLOBAL_PROTECT(AdminProcCallCount)
-GLOBAL_VAR(LastAdminCalledTargetRef)
-GLOBAL_PROTECT(LastAdminCalledTargetRef)
-GLOBAL_VAR(LastAdminCalledTarget)
-GLOBAL_PROTECT(LastAdminCalledTarget)
-GLOBAL_VAR(LastAdminCalledProc)
-GLOBAL_PROTECT(LastAdminCalledProc)
-GLOBAL_LIST_EMPTY(AdminProcCallSpamPrevention)
-GLOBAL_PROTECT(AdminProcCallSpamPrevention)
-
-/client/proc/proccall_atom(datum/A as null|area|mob|obj|turf)
-	set category = null
-	set name = "Atom ProcCall"
-	set waitfor = FALSE
-
-	if(!check_rights(R_DEBUG))
-		return
-
-	/// Holds a reference to the client incase something happens to them
-	var/client/starting_client = usr.client
-
-	var/procname = input("Proc name, eg: attack_hand", "Proc:", null) as text|null
-	if(!procname)
-		return
-
-	if(!hascall(A, procname))
-		to_chat(starting_client, "<font color='red'>Error: callproc_datum(): type [A.type] has no proc named [procname].</font>")
-		return
-
-	var/list/lst = starting_client.admin_holder.get_callproc_args()
-	if(!lst)
-		return
-
-	if(!A || !IsValidSrc(A))
-		to_chat(starting_client, "<span class='warning'>Error: callproc_datum(): owner of proc no longer exists.</span>")
-		return
-
-	log_admin("[key_name(usr)] called [A]'s [procname]() with [length(lst) ? "the arguments [list2params(lst)]" : "no arguments"].")
-	message_admins("[key_name_admin(usr)] called [A]'s [procname]() with [length(lst) ? "the arguments [list2params(lst)]" : "no arguments"].")
-
-	var/returnval = WrapAdminProcCall(A, procname, lst) // Pass the lst as an argument list to the proc
-	. = starting_client.admin_holder.get_callproc_returnval(returnval, procname)
-	if(.)
-		to_chat(usr, .)
-
-
-/client/proc/proccall_advanced()
-	set category = "Debug"
-	set name = "Advanced ProcCall"
-	set waitfor = FALSE
-
-	if(!check_rights(R_DEBUG))
-		return
-
-	var/datum/target = null
-	var/targetselected = 0
-	var/returnval = null
-
-	switch(alert("Proc owned by something?",, "Yes", "No"))
-		if("Yes")
-			targetselected = TRUE
-			var/list/value = usr.client.vv_get_value(default_class = VV_ATOM_REFERENCE, classes = list(VV_ATOM_REFERENCE, VV_DATUM_REFERENCE, VV_MOB_REFERENCE, VV_CLIENT))
-			if(!value["class"] || !value["value"])
-				return
-			target = value["value"]
-		if("No")
-			target = null
-			targetselected = FALSE
-
-	var/procname = input("Proc path, eg: /proc/attack_hand(mob/living/user)")
-	if(!procname)
-		return
-
-	//strip away everything but the proc name
-	var/list/proclist = splittext(procname, "/")
-	if(!length(proclist))
-		return
-
-	procname = proclist[length(proclist)]
-
-	var/proctype = "proc"
-	if("verb" in proclist)
-		proctype = "verb"
-
-
-	var/procpath
-	if(targetselected && !hascall(target, procname))
-		to_chat(usr, "<font color='red'>Error: callproc(): type [target.type] has no [proctype] named [procname].</font>")
-		return
-	else if(!targetselected)
-		procpath = text2path("/[proctype]/[procname]")
-		if(!procpath)
-			to_chat(usr, "<font color='red'>Error: callproc(): proc [procname] does not exist. (Did you forget the /proc/ part?)</font>")
-			return
-
-	var/list/lst = usr.client.admin_holder.get_callproc_args()
-	if(!lst)
-		return
-
-	if(targetselected)
-		if(!target)
-			to_chat(usr, "<font color='red'>Error: callproc(): owner of proc no longer exists.</font>")
-			return
-		log_admin("[key_name(usr)] called [target]'s [procname]() with [length(lst) ? "the arguments [list2params(lst)]" : "no arguments"].")
-		message_admins("[key_name_admin(usr)] called [target]'s [procname]() with [length(lst) ? "the arguments [list2params(lst)]" : "no arguments"].")
-		returnval = WrapAdminProcCall(target, procname, lst) // Pass the lst as an argument list to the proc
-	else
-		//this currently has no hascall protection. wasn't able to get it working.
-		log_admin("[key_name(usr)] called [procname]() with [length(lst) ? "the arguments [list2params(lst)]" : "no arguments"].")
-		message_admins("[key_name_admin(usr)] called [procname]() with [length(lst) ? "the arguments [list2params(lst)]" : "no arguments"].")
-		returnval = WrapAdminProcCall(GLOBAL_PROC, procpath, lst) // Pass the lst as an argument list to the proc
-
-	. = usr.client.admin_holder.get_callproc_returnval(returnval, procname)
-	if(.)
-		to_chat(usr, .)
-
-/datum/admins/proc/get_callproc_returnval(returnval, procname)
-	. = ""
-	if(islist(returnval))
-		var/list/returnedlist = returnval
-		. = "<span class='notice'>"
-		if(length(returnedlist))
-			var/assoc_check = returnedlist[1]
-			if(istext(assoc_check) && (returnedlist[assoc_check] != null))
-				. += "[procname] returned an associative list:"
-				for(var/key in returnedlist)
-					. += "\n[key] = [returnedlist[key]]"
-
-			else
-				. += "[procname] returned a list:"
-				for(var/elem in returnedlist)
-					. += "\n[elem]"
-		else
-			. = "[procname] returned an empty list"
-		. += "</font>"
-
-	else
-		. = "<span class='notice'>[procname] returned: [!isnull(returnval) ? returnval : "null"]</font>"
-
-
-/datum/admins/proc/get_callproc_args()
-	var/argnum = tgui_input_number(usr, "Number of arguments", "Number:", 0)
-	if(isnull(argnum))
-		return
-
-	. = list()
-	var/list/named_args = list()
-	while(argnum--)
-		var/named_arg = input("Leave blank for positional argument. Positional arguments will be considered as if they were added first.", "Named argument") as text|null
-		var/value = usr.client.vv_get_value(restricted_classes = list(VV_RESTORE_DEFAULT))
-		if (!value["class"])
-			return
-		if(named_arg)
-			named_args[named_arg] = value["value"]
-		else
-			. += value["value"]
-	if(LAZYLEN(named_args))
-		. += named_args
-
-
-/client/proc/callproc(var/datum/target_datum=null)
-	set waitfor = 0
-
-	if(!check_rights(R_DEBUG) || (CONFIG_GET(flag/debugparanoid) && !check_rights(R_ADMIN)))
-		return
-
-	var/datum/target = target_datum
-	var/targetselected = 1
-	var/lst[] // List reference
-	lst = new/list() // Make the list
-	var/returnval = null
-	var/class = null
-
-	if(isnull(target))
-		targetselected = 0
-		if(alert("Proc owned by something?",,"Yes","No") == "Yes")
-			targetselected = 1
-			var/list/options = list("Obj","Mob","Area or Turf","Client", "World")
-			if(admin_holder && admin_holder.marked_datums.len)
-				options += "Marked datum"
-
-			class = tgui_input_list(usr, "Proc owned by...","Owner", options)
-			switch(class)
-				if("Obj")
-					target = input("Enter target:","Target",usr) as obj in world
-				if("Mob")
-					target = input("Enter target:","Target",usr) as mob in GLOB.mob_list
-				if("Area or Turf")
-					target = input("Enter target:","Target",usr.loc) as area|turf in world
-				if("Client")
-					var/list/keys = list()
-					for(var/client/C)
-						keys += C
-					target = tgui_input_list(usr, "Please, select a player!", "Selection", keys)
-				if("Marked datum")
-					var/datum/D = input_marked_datum(admin_holder.marked_datums)
-					target = D
-				if("World")
-					target = world
-				else
-					return
-
-	if (targetselected)
-		if(QDELETED(target))
-			return
-		if(istype(target) && target.is_datum_protected())
-			to_chat(usr, SPAN_WARNING("This datum is protected. Access Denied"))
-			return
-
-	var/procname = input("Proc path, eg: /proc/fake_blood","Path:", null) as text|null
-	if(!procname)
-		return
-
-	var/argnum = tgui_input_number(usr, "Number of arguments","Number:",0)
-	if(!argnum && (argnum!=0))
-		return
-
-	lst.len = argnum // Expand to right length
-	//TODO: make a list to store whether each argument was initialised as null.
-	//Reason: So we can abort the proccall if say, one of our arguments was a mob which no longer exists
-	//this will protect us from a fair few errors ~Carn
-
-	var/i
-	for(i=1, i<argnum+1, i++) // Lists indexed from 1 forwards in byond
-
-		// Make a list with each index containing one variable, to be given to the proc
-		class = tgui_input_list(usr, "What kind of variable?","Variable Type", list("text","num","type","reference","mob reference","icon","file","client","mob's area","marked datum","CANCEL"))
-		switch(class)
-			if("CANCEL")
-				return
-
-			if("text")
-				lst[i] = input("Enter new text:","Text",null) as text
-
-			if("num")
-				lst[i] = tgui_input_real_number(usr, "Enter new number:","Num",0)
-
-			if("type")
-				lst[i] = tgui_input_list(usr, "Enter type:","Type", typesof(/obj,/mob,/area,/turf))
-
-			if("reference")
-				lst[i] = input("Select reference:","Reference",src) as mob|obj|turf|area in world
-
-			if("mob reference")
-				lst[i] = input("Select reference:","Reference",usr) as mob in GLOB.mob_list
-
-			if("file")
-				lst[i] = input("Pick file:","File") as file
-
-			if("icon")
-				lst[i] = input("Pick icon:","Icon") as icon
-
-			if("client")
-				var/list/keys = list()
-				for(var/mob/M in GLOB.player_list)
-					keys += M.client
-				lst[i] = tgui_input_list(usr, "Please, select a player!", "Selection", keys)
-
-			if("mob's area")
-				var/mob/temp = input("Select mob", "Selection", usr) as mob in GLOB.mob_list
-				lst[i] = temp.loc
-
-			if("marked datum")
-				var/datum/D = input_marked_datum(admin_holder.marked_datums)
-				lst[i] = D
-
-	if(targetselected)
-		if(!target)
-			to_chat(usr, "<font color='red'>Error: callproc(): owner of proc no longer exists.</font>")
-			return
-
-		var/actual_name = procname
-		//Remove the "/proc/" in front of the actual name
-		if(findtext(procname, "/proc/"))
-			actual_name = replacetext(procname, "/proc/", "")
-		else if(findtext(procname, "/proc"))
-			actual_name = replacetext(procname, "/proc", "")
-		else if(findtext(procname, "proc/"))
-			actual_name = replacetext(procname, "proc/", "")
-		//Remove Parenthesis if any
-		actual_name = replacetext(actual_name, "()", "")
-
-		if(!hascall(target,actual_name))
-			to_chat(usr, "<font color='red'>Error: callproc(): target has no such call [procname].</font>")
-			return
-		log_admin("[key_name(src)] called [target]'s [procname]() with [lst.len ? "the arguments [list2params(lst)]":"no arguments"].")
-		returnval = call(target,actual_name)(arglist(lst)) // Pass the lst as an argument list to the proc
-	else
-		//this currently has no hascall protection. wasn't able to get it working.
-		log_admin("[key_name(src)] called [procname]() with [lst.len ? "the arguments [list2params(lst)]":"no arguments"].")
-		returnval = call(procname)(arglist(lst)) // Pass the lst as an argument list to the proc
-
-	to_chat(usr, SPAN_BLUE("[procname] returned: [returnval ? returnval : "null"]"))
-
-
-
 /client/proc/Cell()
 	set category = "Debug"
 	set name = "Cell"
@@ -317,7 +18,7 @@ GLOBAL_PROTECT(AdminProcCallSpamPrevention)
 	usr.show_message(t, SHOW_MESSAGE_VISIBLE)
 
 
-/client/proc/cmd_admin_robotize(var/mob/M in GLOB.mob_list)
+/client/proc/cmd_admin_robotize(mob/M in GLOB.mob_list)
 	set category = null
 	set name = "Make Robot"
 
@@ -332,7 +33,7 @@ GLOBAL_PROTECT(AdminProcCallSpamPrevention)
 	else
 		alert("Invalid mob")
 
-/client/proc/cmd_admin_animalize(var/mob/M in GLOB.mob_list)
+/client/proc/cmd_admin_animalize(mob/M in GLOB.mob_list)
 	set category = null
 	set name = "Make Simple Animal"
 
@@ -352,7 +53,7 @@ GLOBAL_PROTECT(AdminProcCallSpamPrevention)
 	spawn(10)
 		M.Animalize()
 
-/client/proc/cmd_admin_alienize(var/mob/M in GLOB.mob_list)
+/client/proc/cmd_admin_alienize(mob/M in GLOB.mob_list)
 	set category = null
 	set name = "Make Alien"
 
@@ -399,7 +100,7 @@ GLOBAL_PROTECT(AdminProcCallSpamPrevention)
 	set name = "Delete Instance"
 
 	// to prevent REALLY stupid deletions
-	var/blocked = list(/obj, /obj/item, /obj/effect, /obj/structure/machinery, /mob, /mob/living, /mob/living/carbon, /mob/living/carbon/Xenomorph, /mob/living/carbon/human, /mob/dead, /mob/dead/observer, /mob/living/silicon, /mob/living/silicon/robot, /mob/living/silicon/ai)
+	var/blocked = list(/obj, /obj/item, /obj/effect, /obj/structure/machinery, /mob, /mob/living, /mob/living/carbon, /mob/living/carbon/xenomorph, /mob/living/carbon/human, /mob/dead, /mob/dead/observer, /mob/living/silicon, /mob/living/silicon/robot, /mob/living/silicon/ai)
 	var/chosen_deletion = input(usr, "Type the path of the object you want to delete", "Delete:") as null|text
 	if(chosen_deletion)
 		chosen_deletion = text2path(chosen_deletion)
@@ -433,7 +134,7 @@ GLOBAL_PROTECT(AdminProcCallSpamPrevention)
 	message_staff("[key_name_admin(src)] has remade the powernets. makepowernets() called.", 0)
 
 
-/client/proc/cmd_admin_grantfullaccess(var/mob/M in GLOB.mob_list)
+/client/proc/cmd_admin_grantfullaccess(mob/M in GLOB.mob_list)
 	set category = null
 	set name = "Grant Full Access"
 
@@ -464,7 +165,7 @@ GLOBAL_PROTECT(AdminProcCallSpamPrevention)
 
 	message_staff("[key_name_admin(usr)] has granted [M.key] full access.")
 
-/client/proc/cmd_admin_grantallskills(var/mob/M in GLOB.mob_list)
+/client/proc/cmd_admin_grantallskills(mob/M in GLOB.mob_list)
 	set category = null
 	set name = "Give Null Skills"
 
@@ -528,7 +229,7 @@ GLOBAL_PROTECT(AdminProcCallSpamPrevention)
 		account_user.mind.store_memory(remembered_info)
 		account_user.mind.initial_account = generated_account
 
-/client/proc/cmd_assume_direct_control(var/mob/M in GLOB.mob_list)
+/client/proc/cmd_assume_direct_control(mob/M in GLOB.mob_list)
 	set name = "Control Mob"
 	set desc = "Assume control of the mob"
 	set category = null

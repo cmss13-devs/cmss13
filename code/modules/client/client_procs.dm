@@ -108,6 +108,11 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	if(href_list["reload_statbrowser"])
 		stat_panel.reinitialize()
 
+	// TGUIless adminhelp
+	if(href_list["tguiless_adminhelp"])
+		no_tgui_adminhelp(input(src, "Enter your ahelp", "Ahelp") as null|message)
+		return
+
 	//byond bug ID:2256651
 	if (asset_cache_job && (asset_cache_job in completed_asset_jobs))
 		to_chat(src, "<span class='danger'>An error has been detected in how your client is receiving resources. Attempting to correct.... (If you keep seeing these messages you might want to close byond and reconnect)</span>")
@@ -231,7 +236,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 
 	return ..() //redirect to hsrc.Topic()
 
-/client/proc/handle_spam_prevention(var/message, var/mute_type)
+/client/proc/handle_spam_prevention(message, mute_type)
 	if(CONFIG_GET(flag/automute_on) && !admin_holder && src.last_message == message)
 		src.last_message_count++
 		if(src.last_message_count >= SPAM_TRIGGER_AUTOMUTE)
@@ -285,6 +290,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 
 	// Instantiate tgui panel
 	tgui_panel = new(src, "browseroutput")
+	tgui_say = new(src, "tgui_say")
 
 	// Change the way they should download resources.
 	var/static/next_external_rsc = 0
@@ -300,6 +306,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		if(isnull(address) || (address in localhost_addresses))
 			var/datum/admins/admin = new("!localhost!", R_EVERYTHING, ckey)
 			admin.associate(src)
+			RoleAuthority.roles_whitelist[ckey] = WHITELIST_EVERYTHING
 
 	//Admin Authorisation
 	admin_holder = admin_datums[ckey]
@@ -375,13 +382,14 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	addtimer(CALLBACK(src, PROC_REF(check_panel_loaded)), 30 SECONDS)
 
 	tgui_panel.initialize()
+	tgui_say.initialize()
 
 	var/datum/custom_event_info/CEI = GLOB.custom_event_info_list["Global"]
 	CEI.show_player_event_info(src)
 
 	if(mob && !isobserver(mob) && !isnewplayer(mob))
-		if(isXeno(mob))
-			var/mob/living/carbon/Xenomorph/X = mob
+		if(isxeno(mob))
+			var/mob/living/carbon/xenomorph/X = mob
 			if(X.hive && GLOB.custom_event_info_list[X.hive])
 				CEI = GLOB.custom_event_info_list[X.hive]
 				CEI.show_player_event_info(src)
@@ -501,7 +509,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		//Precache the client with all other assets slowly, so as to not block other browse() calls
 		addtimer(CALLBACK(SSassets.transport, TYPE_PROC_REF(/datum/asset_transport, send_assets_slow), src, SSassets.transport.preload), 5 SECONDS)
 
-/proc/setup_player_entity(var/ckey)
+/proc/setup_player_entity(ckey)
 	if(!ckey)
 		return
 	if(player_entities["[ckey]"])
@@ -520,7 +528,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	log_debug("STATISTICS: Statistics saving complete.")
 	message_staff("STATISTICS: Statistics saving complete.")
 
-/client/proc/clear_chat_spam_mute(var/warn_level = 1, var/message = FALSE, var/increase_warn = FALSE)
+/client/proc/clear_chat_spam_mute(warn_level = 1, message = FALSE, increase_warn = FALSE)
 	if(talked > warn_level)
 		return
 	talked = 0
@@ -534,7 +542,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	add_verb(src, /client/proc/show_combat_chat_preferences)
 	add_verb(src, /client/proc/show_ghost_preferences)
 
-/client/proc/runtime_macro_insert(var/macro_button, var/parent, var/command)
+/client/proc/runtime_macro_insert(macro_button, parent, command)
 	if (!macro_button || !parent || !command)
 		return
 
@@ -548,7 +556,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 
 	winset(src, "[parent].[macro_button]", "parent=[parent];name=[macro_button];command=[command]")
 
-/client/proc/runtime_macro_remove(var/macro_button, var/parent)
+/client/proc/runtime_macro_remove(macro_button, parent)
 	if (!macro_button || !parent)
 		return
 
@@ -560,7 +568,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 
 	winset(src, "[parent].[macro_button]", "parent=")
 
-/client/verb/read_key_down(var/key as text|null)
+/client/verb/read_key_down(key as text|null)
 	set name = ".Read Key Down"
 	set hidden = TRUE
 
@@ -569,7 +577,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 
 	SEND_SIGNAL(src, COMSIG_CLIENT_KEY_DOWN, key)
 
-/client/verb/read_key_up(var/key as text|null)
+/client/verb/read_key_up(key as text|null)
 	set name = ".Read Key Up"
 	set hidden = TRUE
 
@@ -652,14 +660,36 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 					movement_keys[key] = WEST
 				if("South")
 					movement_keys[key] = SOUTH
-				if("Say")
-					winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=\"say\\n.typing\"")
-				if("OOC")
-					winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=ooc")
-				if("LOOC")
-					winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=looc")
-				if("Me")
-					winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=\"me\\n.typing\"")
+				if(SAY_CHANNEL)
+					if(prefs.tgui_say)
+						var/say = tgui_say_create_open_command(SAY_CHANNEL)
+						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=[say]")
+					else
+						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=\"say\\n.typing\"")
+				if(COMMS_CHANNEL)
+					if(prefs.tgui_say)
+						var/radio = tgui_say_create_open_command(COMMS_CHANNEL)
+						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=[radio]")
+					else
+						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=\"say\\n.typing\"")
+				if(ME_CHANNEL)
+					if(prefs.tgui_say)
+						var/me = tgui_say_create_open_command(ME_CHANNEL)
+						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=[me]")
+					else
+						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=\"me\\n.typing\"")
+				if(OOC_CHANNEL)
+					if(prefs.tgui_say)
+						var/ooc = tgui_say_create_open_command(OOC_CHANNEL)
+						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=[ooc]")
+					else
+						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=ooc")
+				if(LOOC_CHANNEL)
+					if(prefs.tgui_say)
+						var/looc = tgui_say_create_open_command(LOOC_CHANNEL)
+						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=[looc]")
+					else
+						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=looc")
 				if("Whisper")
 					winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=whisper")
 
@@ -684,7 +714,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	var/mob/dead/observer/observer = mob
 	observer.ManualFollow(target)
 
-/client/proc/check_timelock(var/list/roles, var/hours)
+/client/proc/check_timelock(list/roles, hours)
 	var/timelock_name = "[islist(roles) ? jointext(roles, "") : roles][hours]"
 	if(!GLOB.timelocks[timelock_name])
 		GLOB.timelocks[timelock_name] = TIMELOCK_JOB(roles, hours)

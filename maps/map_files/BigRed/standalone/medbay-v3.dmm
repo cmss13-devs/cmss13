@@ -1775,6 +1775,10 @@
 /area/bigredv2/outside/medical)
 "eD" = (
 /obj/structure/surface/table/reinforced,
+/obj/structure/transmitter/colony_net/rotary{
+	phone_category = "Solaris Ridge";
+	phone_id = "Clinic Reception"
+	},
 /turf/open/floor{
 	icon_state = "white"
 	},
@@ -1807,7 +1811,7 @@
 "eH" = (
 /obj/structure/machinery/optable,
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/corpsespawner,
+/obj/effect/landmark/corpsespawner/wygoon,
 /obj/item/reagent_container/food/snacks/margheritaslice,
 /turf/open/floor{
 	icon_state = "white"
@@ -2130,6 +2134,18 @@
 	dir = 8
 	},
 /area/bigredv2/outside/medical)
+"Xh" = (
+/obj/structure/transmitter/colony_net{
+	pixel_y = 24;
+	phone_category = "Solaris Ridge";
+	phone_color = "green";
+	phone_id = "Clinic Labs"
+	},
+/turf/open/floor{
+	icon_state = "damaged2";
+	dir = 8
+	},
+/area/bigredv2/outside/medical)
 
 (1,1,1) = {"
 aa
@@ -2189,7 +2205,7 @@ eT
 "}
 (3,1,1) = {"
 aa
-ak
+Xh
 aM
 aU
 ai

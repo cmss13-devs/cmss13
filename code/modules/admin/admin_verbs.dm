@@ -120,6 +120,8 @@ var/list/admin_verbs_minor_event = list(
 	/client/proc/toggle_combat_cas,
 	/client/proc/toggle_lz_protection, //Mortar hitting LZ
 	/client/proc/cmd_admin_medals_panel, // Marine and Xeno medals editor panel
+	/client/proc/force_event,
+	/client/proc/toggle_events,
 	/client/proc/toggle_shipside_sd
 )
 var/list/admin_verbs_major_event = list(
@@ -178,9 +180,6 @@ var/list/admin_verbs_debug = list(
 	/client/proc/togglenichelogs,
 	/client/proc/cmd_admin_change_hivenumber,
 	/client/proc/spawn_wave,
-	/client/proc/run_all_tests,
-	/client/proc/run_test_set,
-	/client/proc/run_individual_test,
 	/client/proc/toggle_log_hrefs,
 	/client/proc/matrix_editor,
 	/client/proc/generate_sound_queues,
@@ -189,12 +188,13 @@ var/list/admin_verbs_debug = list(
 	/client/proc/construct_env_dmm,
 	/client/proc/enter_tree,
 	/client/proc/set_tree_points,
-	/client/proc/purge_data_tab
+	/client/proc/purge_data_tab,
 )
 
 var/list/admin_verbs_debug_advanced = list(
-	/client/proc/proccall_advanced,
-	/client/proc/proccall_atom,
+	/client/proc/callproc_datum,
+	/client/proc/callproc,
+	/client/proc/SDQL2_query,
 )
 
 var/list/clan_verbs = list(
@@ -244,7 +244,7 @@ var/list/admin_mob_event_verbs_hideable = list(
 var/list/admin_verbs_hideable = list(
 	/client/proc/release,
 	/client/proc/possess,
-	/client/proc/proccall_atom,
+	/client/proc/callproc_datum,
 	/client/proc/jump_to_object,
 	/client/proc/jumptomob,
 	/client/proc/hide_admin_verbs,
@@ -417,7 +417,7 @@ var/list/roundstart_mod_verbs = list(
 	message_staff("[key_name_admin(usr)] gave [key_name(T)] the disease [D].")
 
 
-/client/proc/object_talk(var/msg as text) // -- TLE
+/client/proc/object_talk(msg as text) // -- TLE
 	set category = "Admin.Events"
 	set name = "Object Say"
 	set desc = "Display a message to everyone who can hear the target"

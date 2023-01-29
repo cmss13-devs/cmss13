@@ -196,7 +196,7 @@
 				// Check if we're looking at a mob that's lying down
 				if(istype(A, /mob/living))
 					var/mob/living/L = A
-					if(!istype(L, /mob/living/carbon/Xenomorph)) //xenos don't use icon rotatin for lying.
+					if(!istype(L, /mob/living/carbon/xenomorph)) //xenos don't use icon rotatin for lying.
 						if(L.lying)
 							// If they are, apply that effect to their picture.
 							IM.BecomeLying()
@@ -287,7 +287,7 @@
 
 	return P
 
-/obj/item/device/camera/proc/printpicture(mob/user, var/datum/picture/P)
+/obj/item/device/camera/proc/printpicture(mob/user, datum/picture/P)
 	var/obj/item/photo/Photo = new/obj/item/photo()
 	Photo.forceMove(user.loc)
 	if(!user.get_inactive_hand())
@@ -304,7 +304,7 @@
 	pictures_left = 30
 
 
-/obj/item/photo/proc/construct(var/datum/picture/P)
+/obj/item/photo/proc/construct(datum/picture/P)
 	icon = P.fields["icon"]
 	tiny = P.fields["tiny"]
 	img = P.fields["img"]

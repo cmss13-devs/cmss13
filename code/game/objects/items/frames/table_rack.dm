@@ -174,6 +174,7 @@
 
 /obj/item/frame/rack
 	name = "rack parts"
+	gender = PLURAL
 	desc = "A kit for a storage rack with multiple metal shelves. Relatively cheap, useful for mass storage. Some assembly required."
 	icon = 'icons/obj/items/items.dmi'
 	icon_state = "rack_parts"

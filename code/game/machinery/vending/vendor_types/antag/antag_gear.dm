@@ -12,7 +12,7 @@
 	. = ..()
 	vend_flags |= VEND_FACTION_THEMES
 
-/obj/structure/machinery/cm_vending/gear/antag/get_listed_products(var/mob/user)
+/obj/structure/machinery/cm_vending/gear/antag/get_listed_products(mob/user)
 	. = list()
 	if(!user)
 		var/list/all_equipment = list()
@@ -98,7 +98,7 @@
 					/obj/item/reagent_container/spray/pepper,
 					/obj/item/reagent_container/ld50_syringe/choral,
 					/obj/item/storage/bible,
-					/obj/item/clothing/mask/gas/PMC,
+					/obj/item/clothing/mask/gas/pmc,
 					/obj/item/clothing/accessory/storage/holster,
 					/obj/item/clothing/accessory/storage/webbing,
 					/obj/item/storage/pill_bottle/happy,

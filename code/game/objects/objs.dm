@@ -1,16 +1,18 @@
 /obj
-	//Used to store information about the contents of the object.
+	/// Used to store information about the contents of the object.
 	var/list/matter
-	//determines whether or not the object can be destroyed by an explosion
+	/// determines whether or not the object can be destroyed by an explosion
 	var/indestructible = FALSE
 	var/health = null
-	var/reliability = 100 //Used by SOME devices to determine how reliable they are.
+	/// Used by SOME devices to determine how reliable they are.
+	var/reliability = 100
 	var/crit_fail = 0
-	unacidable = FALSE //universal "unacidabliness" var, here so you can use it in any obj.
+	/// universal "unacidabliness" var, here so you can use it in any obj.
+	unacidable = FALSE
 	animate_movement = 2
 	var/throwforce = 1
-	var/in_use = FALSE // If we have a user using us, this will be set on. We will check if the user has stopped using us, and thus stop updating and LAGGING EVERYTHING!
-
+	/// If we have a user using us, this will be set on. We will check if the user has stopped using us, and thus stop updating and LAGGING EVERYTHING!
+	var/in_use = FALSE
 	var/mob/living/buckled_mob
 	var/buckle_lying = FALSE //Is the mob buckled in a lying position
 	var/can_buckle = FALSE
@@ -18,16 +20,19 @@
 	cares about surface conditions. The lowest multiplier of objects on the tile is used.**/
 	var/surgery_duration_multiplier = SURGERY_SURFACE_MULT_AWFUL
 
-	var/projectile_coverage = 0 //an object's "projectile_coverage" var indicates the maximum probability of blocking a projectile, assuming density and throwpass. Used by barricades, tables and window frames
-	var/garbage = FALSE //set to true if the item is garbage and should be deleted after awhile
+	/// an object's "projectile_coverage" var indicates the maximum probability of blocking a projectile, assuming density and throwpass. Used by barricades, tables and window frames
+	var/projectile_coverage = 0
+	/// set to true if the item is garbage and should be deleted after awhile
+	var/garbage = FALSE
+
 	var/list/req_access = null
 	var/list/req_one_access = null
 	var/req_access_txt = null
 	var/req_one_access_txt = null
 
 	var/flags_obj = NO_FLAGS
-
-	var/renamedByPlayer = FALSE //set when a player uses a pen on a renamable object
+	/// set when a player uses a pen on a renamable object
+	var/renamedByPlayer = FALSE
 
 /obj/Initialize(mapload, ...)
 	. = ..()
@@ -60,7 +65,7 @@
 	else
 		. = "[icon2html(src, user)] \a [src]"
 
-/obj/item/proc/get_examine_location(var/mob/living/carbon/human/wearer, var/mob/examiner, var/slot, var/t_He = "They", var/t_his = "their", var/t_him = "them", var/t_has = "have", var/t_is = "are")
+/obj/item/proc/get_examine_location(mob/living/carbon/human/wearer, mob/examiner, slot, t_He = "They", t_his = "their", t_him = "them", t_has = "have", t_is = "are")
 	switch(slot)
 		if(WEAR_HEAD)
 			return "on [t_his] head"
@@ -139,7 +144,7 @@
 	if(istype(M) && M.client && M.interactee == src)
 		attack_self(M)
 
-/obj/proc/update_health(var/damage = 0)
+/obj/proc/update_health(damage = 0)
 	if(damage)
 		health -= damage
 	if(health <= 0)
@@ -152,7 +157,7 @@
 	return
 
 
-/obj/proc/hear_talk(mob/living/M as mob, msg, var/verb="says", var/datum/language/speaking, var/italics = 0)
+/obj/proc/hear_talk(mob/living/M as mob, msg, verb="says", datum/language/speaking, italics = 0)
 	return
 
 /obj/attack_hand(mob/user)
@@ -217,7 +222,7 @@
 	if (!ismob(M) || (get_dist(src, user) > 1) || user.is_mob_restrained() || user.lying || user.stat || buckled_mob || M.buckled || !isturf(user.loc))
 		return
 
-	if (isXeno(user))
+	if (isxeno(user))
 		to_chat(user, SPAN_WARNING("You don't have the dexterity to do that, try a nest."))
 		return
 	if (iszombie(user))
@@ -346,7 +351,7 @@
 		return user_human.species.get_offset_overlay_image(spritesheet, mob_icon, mob_state, color, slot)
 	return overlay_image(mob_icon, mob_state, color, RESET_COLOR)
 
-/obj/item/proc/use_spritesheet(var/bodytype, var/slot, var/icon_state)
+/obj/item/proc/use_spritesheet(bodytype, slot, icon_state)
 	if(!LAZYISIN(sprite_sheets, bodytype))
 		return FALSE
 	if(slot == WEAR_R_HAND || slot == WEAR_L_HAND)
@@ -358,7 +363,7 @@
 	return (slot != WEAR_JACKET && slot != WEAR_HEAD)
 
 // Adding a text string at the end of the object
-/obj/proc/add_label(var/obj/O, user)
+/obj/proc/add_label(obj/O, user)
 	var/label = copytext(reject_bad_text(input(user,"Label text?", "Set label", "")), 1, MAX_NAME_LEN)
 
 	// Checks for valid labelling/name length
@@ -374,7 +379,7 @@
 /obj/proc/extinguish()
 	return
 
-/obj/handle_flamer_fire(obj/flamer_fire/fire, var/damage, var/delta_time)
+/obj/handle_flamer_fire(obj/flamer_fire/fire, damage, delta_time)
 	. = ..()
 	flamer_fire_act(damage, fire.weapon_cause_data)
 
@@ -388,5 +393,5 @@
 
 	return 1 SECONDS
 
-/obj/proc/set_origin_name_prefix(var/name_prefix)
+/obj/proc/set_origin_name_prefix(name_prefix)
 	return

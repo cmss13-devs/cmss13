@@ -67,7 +67,7 @@
 	if(!desc)
 		desc = "It's a small [body_color] rodent, often seen hiding in maintenance areas and making a nuisance of itself."
 
-/mob/living/simple_animal/mouse/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/mob/living/simple_animal/mouse/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_pass = PASS_FLAGS_CRAWLER
@@ -81,7 +81,7 @@
 	if(client)
 		client.time_died_as_mouse = world.time
 
-/mob/living/simple_animal/mouse/start_pulling(var/atom/movable/AM)//Prevents mouse from pulling things
+/mob/living/simple_animal/mouse/start_pulling(atom/movable/AM)//Prevents mouse from pulling things
 	to_chat(src, SPAN_WARNING("You are too small to pull anything."))
 	return
 
@@ -115,7 +115,7 @@
 	else
 		return ..()
 
-/mob/living/simple_animal/mouse/get_scooped(var/mob/living/carbon/grabber)
+/mob/living/simple_animal/mouse/get_scooped(mob/living/carbon/grabber)
 	if (stat >= DEAD)
 		return
 	..()
@@ -128,14 +128,17 @@
 	body_color = "white"
 	icon_state = "mouse_white"
 	desc = "It's a small laboratory mouse."
+	holder_type = /obj/item/holder/mouse/white
 
 /mob/living/simple_animal/mouse/gray
 	body_color = "gray"
 	icon_state = "mouse_gray"
+	holder_type = /obj/item/holder/mouse/gray
 
 /mob/living/simple_animal/mouse/brown
 	body_color = "brown"
 	icon_state = "mouse_brown"
+	holder_type = /obj/item/holder/mouse/brown
 
 /mob/living/simple_animal/mouse/white/Doc
 	name = "Doc"
@@ -144,7 +147,7 @@
 	response_help  = "pets"
 	response_disarm = "gently pushes aside"
 	response_harm   = "stamps on"
-	holder_type = /obj/item/holder/mouse/Doc
+	holder_type = /obj/item/holder/mouse/white/Doc
 
 //TOM IS ALIVE! SQUEEEEEEEE~K :)
 /mob/living/simple_animal/mouse/brown/Tom
@@ -153,3 +156,4 @@
 	response_help  = "pets"
 	response_disarm = "gently pushes aside"
 	response_harm   = "splats"
+	holder_type = /obj/item/holder/mouse/brown/Tom

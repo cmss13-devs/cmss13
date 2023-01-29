@@ -23,7 +23,7 @@
 	if (. == 0)
 		return
 
-	var/mob/living/carbon/Xenomorph/Ravager/ravager = mutator_set.xeno
+	var/mob/living/carbon/xenomorph/ravager/ravager = mutator_set.xeno
 	ravager.mutation_type = RAVAGER_BERSERKER
 	ravager.plasma_max = 0
 	ravager.health_modifier -= XENO_HEALTH_MOD_MED
@@ -141,7 +141,7 @@
 	return
 
 /datum/behavior_delegate/ravager_berserker/melee_attack_modify_damage(original_damage, mob/living/carbon/A)
-	if (!isXenoOrHuman(A))
+	if (!isxeno_human(A))
 		return original_damage
 
 	if (next_slash_buffed)

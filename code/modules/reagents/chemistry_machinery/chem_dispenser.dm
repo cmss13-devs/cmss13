@@ -1,7 +1,7 @@
 /obj/structure/machinery/chem_dispenser
 	name = "chem dispenser"
 	density = TRUE
-	anchored = 1
+	anchored = TRUE
 	icon = 'icons/obj/structures/machinery/science_machines.dmi'
 	icon_state = "dispenser"
 	use_power = USE_POWER_NONE
@@ -73,6 +73,8 @@
 
 /obj/structure/machinery/chem_dispenser/clicked(mob/user, list/mods)
 	if(mods["alt"])
+		if(!CAN_PICKUP(user, src))
+			return ..()
 		replace_beaker(user)
 	return ..()
 
@@ -206,7 +208,7 @@
 	"watermelonjuice","tomatojuice","carrotjuice","berryjuice","grapejuice","lemonjuice","banana")
 	var/hackedcheck = 0
 
-/obj/structure/machinery/chem_dispenser/soda/attackby(var/obj/item/B as obj, var/mob/user as mob)
+/obj/structure/machinery/chem_dispenser/soda/attackby(obj/item/B as obj, mob/user as mob)
 	..()
 	if(HAS_TRAIT(B, TRAIT_TOOL_MULTITOOL))
 		if(hackedcheck == 0)
@@ -248,7 +250,7 @@
 	dispensable_reagents = list("water","ice","sodawater","sugar","tonic","beer","kahlua","whiskey","sake","wine","vodka","gin","rum","vermouth","cognac","ale","mead","thirteenloko","tequila")
 	var/hackedcheck = 0
 
-/obj/structure/machinery/chem_dispenser/beer/attackby(var/obj/item/B as obj, var/mob/user as mob)
+/obj/structure/machinery/chem_dispenser/beer/attackby(obj/item/B as obj, mob/user as mob)
 	..()
 
 	if(HAS_TRAIT(B, TRAIT_TOOL_MULTITOOL))

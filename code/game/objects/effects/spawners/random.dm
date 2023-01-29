@@ -31,6 +31,8 @@
 // creates the random item
 /obj/effect/spawner/random/proc/spawn_item()
 	var/build_path = item_to_spawn()
+	if(isnull(build_path))
+		return
 	return (new build_path(src.loc))
 
 
@@ -142,7 +144,7 @@
 	desc = "This is a random kit."
 	icon_state = "random_kit"
 
-/obj/effect/spawner/random/toy/item_to_spawn()
+/obj/effect/spawner/random/supply_kit/item_to_spawn()
 	return pick(prob(3);/obj/item/storage/box/kit/pursuit,\
 				prob(3);/obj/item/storage/box/kit/mini_intel,\
 				prob(3);/obj/item/storage/box/kit/mini_jtac,\
@@ -189,7 +191,9 @@
 				/obj/item/toy/sword,\
 				/obj/item/reagent_container/food/snacks/grown/ambrosiadeus,\
 				/obj/item/reagent_container/food/snacks/grown/ambrosiavulgaris,\
-				/obj/item/clothing/accessory/horrible)
+				/obj/item/clothing/accessory/horrible,\
+				/obj/item/clothing/shoes/slippers,\
+				/obj/item/clothing/shoes/slippers_worn)
 
 /obj/effect/spawner/random/pills
 	name = "Pill Bottle Loot Spawner" // 60% chance for strong loot
@@ -303,7 +307,7 @@
 		ammopath = guns[gunpath]
 	spawn_weapon_on_floor(gunpath, ammopath, rand(mags_min, mags_max))
 
-/obj/effect/spawner/random/gun/proc/spawn_weapon_on_floor(var/gunpath, var/ammopath, var/ammo_amount = 1)
+/obj/effect/spawner/random/gun/proc/spawn_weapon_on_floor(gunpath, ammopath, ammo_amount = 1)
 
 	var/atom/spawnloc = src
 	spawnloc = get_turf(spawnloc)

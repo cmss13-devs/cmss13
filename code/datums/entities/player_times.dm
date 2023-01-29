@@ -18,7 +18,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player_time)
 		"total_minutes" = DB_FIELDTYPE_BIGINT
 	)
 
-/datum/entity_meta/player_time/on_insert(var/datum/entity/player_time/player)
+/datum/entity_meta/player_time/on_insert(datum/entity/player_time/player)
 	player.total_minutes = 0
 
 /datum/entity_link/player_to_time
@@ -47,19 +47,15 @@ BSQL_PROTECT_DATUM(/datum/entity/player_time)
 /datum/view_record/playtime/proc/get_nanoui_data(no_icons = FALSE)
 
 	var/icon_display
-	if(!no_icons)
-		switch(total_minutes MINUTES_TO_DECISECOND)
-			if(JOB_PLAYTIME_TIER_1 to JOB_PLAYTIME_TIER_2)
-				icon_display = "Tier1"
-			if(JOB_PLAYTIME_TIER_2 to JOB_PLAYTIME_TIER_3)
-				icon_display = "Tier2"
-			if(JOB_PLAYTIME_TIER_3 to JOB_PLAYTIME_TIER_4)
-				icon_display = "Tier3"
-			if(JOB_PLAYTIME_TIER_4 to INFINITY)
-				icon_display = "Tier4"
-
-	if(icon_display)
-		icon_display = SSassets.transport.get_asset_url("uiPlaytime[icon_display].png")
+	switch(total_minutes MINUTES_TO_DECISECOND)
+		if(JOB_PLAYTIME_TIER_1 to JOB_PLAYTIME_TIER_2)
+			icon_display = "tier1_big"
+		if(JOB_PLAYTIME_TIER_2 to JOB_PLAYTIME_TIER_3)
+			icon_display = "tier2_big"
+		if(JOB_PLAYTIME_TIER_3 to JOB_PLAYTIME_TIER_4)
+			icon_display = "tier3_big"
+		if(JOB_PLAYTIME_TIER_4 to INFINITY)
+			icon_display = "tier4_big"
 
 	var/playtime_percentage = min((total_minutes MINUTES_TO_DECISECOND) / JOB_PLAYTIME_TIER_4, 1)
 	return list(
@@ -70,30 +66,22 @@ BSQL_PROTECT_DATUM(/datum/entity/player_time)
 		"icondisplay" = icon_display
 	)
 
-/datum/entity/player/proc/ui_interact(mob/user, ui_key = "playtime", var/datum/nanoui/ui = null, force_open = FALSE)
-	if(!user.client || !playtime_loaded || LAZYACCESS(playtime_data, "loading"))
-		return
+/datum/entity/player/tgui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if (!ui)
+		ui = new(user, src, "Playtime", "Playtimes")
+		ui.open()
 
+/datum/entity/player/ui_assets(mob/user)
+	return list(get_asset_datum(/datum/asset/spritesheet/playtime_rank))
+
+/datum/entity/player/ui_data(mob/user)
 	if(!LAZYACCESS(playtime_data, "loaded"))
 		load_timestat_data()
+	return playtime_data
 
-	ui = nanomanager.try_update_ui(user, src, ui_key, ui, playtime_data, force_open)
-
-	if(!ui)
-		ui = new(user, src, ui_key, "playtime.tmpl", "Playtimes", 450, 700, null, -1)
-		ui.set_initial_data(playtime_data)
-		ui.open()
-		ui.set_auto_update(FALSE)
-
-/datum/entity/player/Topic(href, href_list)
-	var/mob/user = usr
-	user.set_interaction(src)
-
-	if(href_list["switchCategory"])
-		LAZYSET(playtime_data, "category", href_list["switchCategory"])
-
-
-	nanomanager.update_uis(src)
+/datum/entity/player/ui_state(mob/user)
+	return GLOB.always_state
 
 /datum/entity/player/proc/load_timestat_data()
 	if(!playtime_loaded || !RoleAuthority || LAZYACCESS(playtime_data, "loading")) // Need roleauthority to be up to see which job is xeno-related
@@ -130,16 +118,16 @@ BSQL_PROTECT_DATUM(/datum/entity/player_time)
 		LAZYADD(marine_playtimes, list(marine_playtime))
 
 	for(var/datum/view_record/playtime/PT in PTs)
-		var/isXeno = (PT.role_id in RoleAuthority.castes_by_name)
+		var/isxeno = (PT.role_id in RoleAuthority.castes_by_name)
 		var/isOther = (PT.role_id == JOB_OBSERVER) // more maybe eventually
 
 		if(PT.role_id == JOB_XENOMORPH)
 			continue // Snowflake check, will need to be removed in the future
 
-		if(!(PT.role_id in RoleAuthority.roles_by_name) && !isXeno && !isOther)
+		if(!(PT.role_id in RoleAuthority.roles_by_name) && !isxeno && !isOther)
 			continue
 
-		if(isXeno)
+		if(isxeno)
 			LAZYADD(xeno_playtimes, list(PT.get_nanoui_data()))
 		else if(isOther)
 			LAZYADD(other_playtimes, list(PT.get_nanoui_data(TRUE)))

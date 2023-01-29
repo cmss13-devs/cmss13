@@ -1,5 +1,6 @@
 /obj/item/clothing/glasses
 	name = "glasses"
+	gender = PLURAL
 	icon = 'icons/obj/items/clothing/glasses.dmi'
 	w_class = SIZE_SMALL
 	var/vision_flags = 0
@@ -47,7 +48,7 @@
 		icon_state = deactive_state
 	..()
 
-/obj/item/clothing/glasses/proc/can_use_active_effect(var/mob/living/carbon/human/user)
+/obj/item/clothing/glasses/proc/can_use_active_effect(mob/living/carbon/human/user)
 	if(req_skill && req_skill_level && !(!req_skill_explicit && skillcheck(user, req_skill, req_skill_level)) && !(req_skill_explicit && skillcheckexplicit(user, req_skill, req_skill_level)))
 		return FALSE
 	else
@@ -151,6 +152,7 @@
 
 /obj/item/clothing/glasses/eyepatch
 	name = "eyepatch"
+	gender = NEUTER
 	desc = "Once worn by swashbucklers of old, now more commonly associated with a figure of legend. They say he was big AND a boss. Impressive no? Don't let the MPs see you wearing this non-regulation attire."
 	icon_state = "eyepatch"
 	item_state = "eyepatch"
@@ -159,6 +161,7 @@
 
 /obj/item/clothing/glasses/monocle
 	name = "monocle"
+	gender = NEUTER
 	desc = "Such a dapper eyepiece!"
 	icon_state = "monocle"
 	item_state = "headset" // lol
@@ -166,7 +169,7 @@
 	flags_equip_slot = SLOT_EYES|SLOT_FACE
 
 /obj/item/clothing/glasses/material
-	name = "Optical Material Scanner"
+	name = "Optical Material Scanners"
 	desc = "With these you can see objects... just like you can with your un-aided eyes. Say why were these ever made again?"
 	icon_state = "material"
 	item_state = "glasses"
@@ -222,6 +225,7 @@
 
 /obj/item/clothing/glasses/m42_goggles
 	name = "\improper M42 scout sight"
+	gender = NEUTER
 	desc = "A headset and goggles system for the M42 Scout Rifle. Allows highlighted imaging of surroundings. Click it to toggle."
 	icon = 'icons/obj/items/clothing/glasses.dmi'
 	icon_state = "m56_goggles"
@@ -232,6 +236,7 @@
 
 /obj/item/clothing/glasses/disco_fever
 	name = "malfunctioning AR visor"
+	gender = NEUTER
 	desc = "Someone tried to watch a black-market Arcturian blue movie on this augmented-reality headset and now it's useless. Unlike you, Disco will never die.\nThere's some kind of epilepsy warning sticker on the side."
 	icon_state = "discovision"
 	flags_equip_slot = SLOT_EYES|SLOT_FACE
@@ -430,11 +435,11 @@
 	qdel(activation)
 	attached_item = null
 
-/obj/item/clothing/glasses/mgoggles/ui_action_click(var/mob/owner, var/obj/item/holder)
+/obj/item/clothing/glasses/mgoggles/ui_action_click(mob/owner, obj/item/holder)
 	toggle_goggles(owner)
 	activation.update_button_icon()
 
-/obj/item/clothing/glasses/mgoggles/proc/wear_check(var/obj/item/I, var/mob/living/carbon/human/user, slot)
+/obj/item/clothing/glasses/mgoggles/proc/wear_check(obj/item/I, mob/living/carbon/human/user, slot)
 	SIGNAL_HANDLER
 
 	if(slot == WEAR_HEAD && prescription == TRUE && activated)
@@ -544,6 +549,7 @@
 
 /obj/item/clothing/glasses/sunglasses/blindfold
 	name = "blindfold"
+	gender = NEUTER
 	desc = "Covers the eyes, preventing sight."
 	icon_state = "blindfold"
 	item_state = "blindfold"
@@ -586,6 +592,7 @@
 
 /obj/item/clothing/glasses/sunglasses/sechud/eyepiece
 	name = "Security HUD Sight"
+	gender = NEUTER
 	desc = "A standard eyepiece, but modified to display security information to the user visually. This makes it commonplace among military police, though other models exist."
 	icon_state = "securityhud"
 	item_state = "securityhud"
@@ -594,5 +601,6 @@
 
 /obj/item/clothing/glasses/sunglasses/sechud/tactical
 	name = "tactical SWAT HUD"
+	gender = NEUTER
 	desc = "Flash-resistant goggles with inbuilt combat and security information."
 	icon_state = "swatgoggles"

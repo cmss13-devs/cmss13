@@ -2650,7 +2650,7 @@
 	},
 /area/lv522/indoors/c_block/cargo)
 "bDR" = (
-/obj/item/explosive/grenade/HE,
+/obj/item/explosive/grenade/high_explosive,
 /turf/open/floor/prison,
 /area/lv522/indoors/a_block/kitchen)
 "bDS" = (
@@ -3677,6 +3677,7 @@
 /area/lv522/outdoors/colony_streets/east_central_street)
 "cfd" = (
 /obj/structure/surface/table/almayer,
+/obj/structure/machinery/recharger,
 /obj/effect/spawner/random/powercell,
 /turf/open/floor/prison,
 /area/lv522/indoors/lone_buildings/engineering)
@@ -16472,6 +16473,7 @@
 "hMd" = (
 /obj/structure/machinery/light,
 /obj/structure/surface/table/almayer,
+/obj/structure/machinery/recharger,
 /obj/item/clothing/glasses/kutjevo,
 /turf/open/floor/prison{
 	dir = 4;
@@ -17137,9 +17139,9 @@
 	name = "Display synthetic"
 	},
 /obj/structure/window/reinforced,
-/obj/item/clothing/under/marine/veteran/PMC,
-/obj/item/clothing/mask/gas/PMC,
-/obj/item/clothing/head/helmet/marine/veteran/PMC/leader{
+/obj/item/clothing/under/marine/veteran/pmc,
+/obj/item/clothing/mask/gas/pmc,
+/obj/item/clothing/head/helmet/marine/veteran/pmc/leader{
 	layer = 3.1;
 	pixel_y = 10
 	},
@@ -25293,6 +25295,13 @@
 	icon_state = "cement2"
 	},
 /area/lv522/outdoors/p_w_rockies)
+"lfU" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/recharger,
+/turf/open/floor/plating{
+	icon_state = "platebot"
+	},
+/area/lv522/indoors/c_block/cargo)
 "lgf" = (
 /obj/structure/pipes/vents/pump,
 /turf/open/floor/corsat{
@@ -37313,8 +37322,9 @@
 /area/lv522/indoors/a_block/admin)
 "pXk" = (
 /obj/structure/surface/table/almayer,
-/obj/effect/spawner/random/powercell,
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random/powercell,
+/obj/structure/machinery/cell_charger,
 /turf/open/floor/prison{
 	dir = 4;
 	icon_state = "darkyellowfull2";
@@ -37767,6 +37777,7 @@
 	pixel_y = 4
 	},
 /obj/structure/machinery/light,
+/obj/structure/machinery/recharger,
 /turf/open/floor/prison{
 	dir = 4;
 	icon_state = "darkyellowfull2";
@@ -38236,6 +38247,12 @@
 	},
 /turf/open/floor/prison,
 /area/lv522/indoors/a_block/dorm_north)
+"qsr" = (
+/obj/structure/surface/table/almayer,
+/obj/item/reagent_container/glass/beaker/vial,
+/obj/structure/machinery/cell_charger,
+/turf/open/floor/plating,
+/area/lv522/indoors/c_block/cargo)
 "qst" = (
 /obj/structure/girder/displaced,
 /turf/open/floor/plating,
@@ -46764,7 +46781,7 @@
 	spawnkey = 0
 	},
 /obj/item/storage/fancy/cigar,
-/obj/item/clothing/head/helmet/marine/veteran/PMC,
+/obj/item/clothing/head/helmet/marine/veteran/pmc,
 /obj/item/m_gift,
 /obj/item/coin/diamond,
 /turf/open/floor/strata{
@@ -54951,7 +54968,7 @@
 	},
 /area/lv522/indoors/lone_buildings/spaceport)
 "wHz" = (
-/obj/item/clothing/shoes/veteran/PMC{
+/obj/item/clothing/shoes/veteran/pmc{
 	name = "steel toe boots"
 	},
 /obj/structure/machinery/light,
@@ -78996,7 +79013,7 @@ tUg
 vVS
 afI
 oCi
-wFT
+lfU
 qvN
 eHF
 hOB
@@ -79212,7 +79229,7 @@ izz
 fwT
 ild
 jwM
-mgB
+qsr
 jmG
 vVS
 ild

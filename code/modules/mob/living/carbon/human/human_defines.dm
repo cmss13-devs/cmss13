@@ -159,9 +159,15 @@
 
 	var/datum/action/human_action/activable/selected_ability
 
+	/// misc human flags
+	var/flags_human_misc = 0
+
+	///list of weakrefs of recently dropped objects
+	var/list/remembered_dropped_objects = list()
+
 /client/var/cached_human_playtime
 
-/client/proc/get_total_human_playtime(var/skip_cache = FALSE)
+/client/proc/get_total_human_playtime(skip_cache = FALSE)
 	if(cached_human_playtime && !skip_cache)
 		return cached_human_playtime
 

@@ -1,5 +1,6 @@
 /obj/item/device/binoculars
 	name = "binoculars"
+	gender = PLURAL
 	desc = "A military-issued pair of binoculars."
 	icon = 'icons/obj/items/binoculars.dmi'
 	icon_state = "binoculars"
@@ -27,11 +28,11 @@
 
 	zoom(user, 11, 12)
 
-/obj/item/device/binoculars/on_set_interaction(var/mob/user)
+/obj/item/device/binoculars/on_set_interaction(mob/user)
 	flags_atom |= RELAY_CLICK
 
 
-/obj/item/device/binoculars/on_unset_interaction(var/mob/user)
+/obj/item/device/binoculars/on_unset_interaction(mob/user)
 	flags_atom &= ~RELAY_CLICK
 
 /obj/item/device/binoculars/civ
@@ -44,6 +45,7 @@
 //RANGEFINDER with ability to acquire coordinates
 /obj/item/device/binoculars/range
 	name = "rangefinder"
+	gender = NEUTER
 	desc = "A pair of binoculars with a rangefinding function. Ctrl + Click turf to acquire it's coordinates. Ctrl + Click rangefinder to stop lasing."
 	icon_state = "rangefinder"
 	var/laser_cooldown = 0
@@ -77,20 +79,20 @@
 	rangefinder_popup = !rangefinder_popup
 	to_chat(usr, "The rangefinder [rangefinder_popup ? "now" : "no longer"] shows coordinates on the display.")
 
-/obj/item/device/binoculars/range/on_unset_interaction(var/mob/user)
+/obj/item/device/binoculars/range/on_unset_interaction(mob/user)
 	..()
 	if(user && coord && !zoom)
 		QDEL_NULL(coord)
 
 /obj/item/device/binoculars/range/clicked(mob/user, list/mods)
-	if(!ishuman(usr))
-		return
 	if(mods["ctrl"])
+		if(!CAN_PICKUP(user, src))
+			return ..()
 		stop_targeting(user)
-		return 1
+		return TRUE
 	return ..()
 
-/obj/item/device/binoculars/range/handle_click(var/mob/living/carbon/human/user, var/atom/A, var/list/mods)
+/obj/item/device/binoculars/range/handle_click(mob/living/carbon/human/user, atom/A, list/mods)
 	if(!istype(user))
 		return
 	if(mods["ctrl"])
@@ -213,9 +215,9 @@
 	. += SPAN_NOTICE("[src] is currently set to [mode ? "range finder" : "CAS marking"] mode.")
 
 /obj/item/device/binoculars/range/designator/clicked(mob/user, list/mods)
-	if(!ishuman(usr))
-		return
-	if(mods["alt"] && loc == user)
+	if(mods["alt"])
+		if(!CAN_PICKUP(user, src))
+			return ..()
 		toggle_bino_mode(user)
 		return TRUE
 	return ..()
@@ -244,7 +246,7 @@
 	update_icon()
 	playsound(usr, 'sound/machines/click.ogg', 15, 1)
 
-/obj/item/device/binoculars/range/designator/on_unset_interaction(var/mob/user)
+/obj/item/device/binoculars/range/designator/on_unset_interaction(mob/user)
 	..()
 
 	if(user && (laser || coord) && !zoom)
@@ -362,7 +364,7 @@
 	ability_primacy = SPEC_PRIMARY_ACTION_1
 	var/minimum_laze_distance = 2
 
-/datum/action/item_action/specialist/spotter_target/New(var/mob/living/user, var/obj/item/holder)
+/datum/action/item_action/specialist/spotter_target/New(mob/living/user, obj/item/holder)
 	..()
 	name = "Spot Target"
 	button.name = name
@@ -456,7 +458,7 @@
 	qdel(laser_beam)
 	REMOVE_TRAIT(target, TRAIT_SPOTTER_LAZED, TRAIT_SOURCE_EQUIPMENT(designator.tracking_id))
 
-/datum/action/item_action/specialist/spotter_target/proc/check_can_use(var/mob/target, var/cover_lose_focus)
+/datum/action/item_action/specialist/spotter_target/proc/check_can_use(mob/target, cover_lose_focus)
 	var/mob/living/carbon/human/human = owner
 	var/obj/item/device/binoculars/range/designator/spotter/designator = holder_item
 
@@ -476,6 +478,7 @@
 //ADVANCED LASER DESIGNATER, was used for WO.
 /obj/item/device/binoculars/designator
 	name = "advanced laser designator" // Make sure they know this will kill people in the desc below.
+	gender = NEUTER
 	desc = "An advanced laser designator, used to mark targets for airstrikes and mortar fire. This one comes with two modes, one for IR laser which calls in a napalm airstrike upon the position, the other being a UV laser which calculates the distance for a mortar strike. On the side there is a label that reads:<span class='notice'> !!WARNING: Deaths from use of this tool will have the user held accountable!!</span>"
 	icon_state = "designator_e"
 
@@ -549,7 +552,7 @@
 			return
 	return
 
-/obj/item/device/binoculars/designator/proc/lasering(var/mob/living/carbon/human/user, var/atom/A, var/params)
+/obj/item/device/binoculars/designator/proc/lasering(mob/living/carbon/human/user, atom/A, params)
 	if(istype(A,/atom/movable/screen))
 		return FALSE
 	if(user.stat)
@@ -663,6 +666,6 @@
 	icon = 'icons/obj/items/binoculars.dmi'
 	icon_state = "las_r"
 	opacity = TRUE
-	anchored = 1
+	anchored = TRUE
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	unacidable = TRUE

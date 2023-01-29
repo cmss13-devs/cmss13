@@ -64,7 +64,8 @@
 	var/faction = FACTION_NEUTRAL
 	var/list/faction_group
 
-	var/registered_name = "Unknown" // The name registered_name on the card
+	/// The name registered_name on the card
+	var/registered_name = "Unknown"
 	var/registered_ref = null
 	var/registered_gid = 0
 	flags_equip_slot = SLOT_ID
@@ -72,15 +73,21 @@
 	var/blood_type = "\[UNSET\]"
 
 	//alt titles are handled a bit weirdly in order to unobtrusively integrate into existing ID system
-	var/assignment = null //can be alt title or the actual job
-	var/rank = null //actual job
-	var/paygrade = "ME1"  // Marine's paygrade
-	var/claimedgear = 1 // For medics and engineers to 'claim' a locker
+
+	/// can be alt title or the actual job
+	var/assignment = null
+	/// actual job
+	var/rank = null
+	/// Marine's paygrade
+	var/paygrade = "ME1"
+	/// For medics and engineers to 'claim' a locker
+	var/claimedgear = 1
 
 	var/list/uniform_sets = null
 	var/list/vended_items
 
-	var/pinned_on_uniform = TRUE //whether the id's onmob overlay only appear when wearing a uniform
+	/// whether the id's onmob overlay only appear when wearing a uniform
+	var/pinned_on_uniform = TRUE
 
 	var/modification_log = list()
 
@@ -94,7 +101,7 @@
 	user.visible_message("[user] shows you: [icon2html(src, viewers(user))] [name]: assignment: [assignment]")
 	src.add_fingerprint(user)
 
-/obj/item/card/id/proc/set_user_data(var/mob/living/carbon/human/H)
+/obj/item/card/id/proc/set_user_data(mob/living/carbon/human/H)
 	if(!istype(H))
 		return
 
@@ -103,7 +110,7 @@
 	registered_gid = H.gid
 	blood_type = H.blood_type
 
-/obj/item/card/id/proc/set_assignment(var/new_assignment)
+/obj/item/card/id/proc/set_assignment(new_assignment)
 	assignment = new_assignment
 	name = "[registered_name]'s ID Card ([assignment])"
 
@@ -244,7 +251,7 @@
 	assignment = "Agent"
 	name = "[registered_name]'s ID Card ([assignment])"
 
-/obj/item/card/id/syndicate/afterattack(var/obj/item/O as obj, mob/user as mob, proximity)
+/obj/item/card/id/syndicate/afterattack(obj/item/O as obj, mob/user as mob, proximity)
 	if(!proximity) return
 	if(istype(O, /obj/item/card/id))
 		var/obj/item/card/id/I = O

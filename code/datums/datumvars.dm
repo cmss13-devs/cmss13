@@ -1,5 +1,5 @@
 
-// reference: /client/proc/modify_variables(var/atom/O, var/param_var_name = null, var/autodetect_class = 0)
+// reference: /client/proc/modify_variables(atom/O, param_var_name = null, autodetect_class = 0)
 
 /datum/proc/is_datum_protected()
 	return FALSE
@@ -12,6 +12,17 @@
 
 /client/can_vv_modify()
 	return FALSE
+
+/datum/proc/can_vv_mark()
+	return TRUE
+
+/// Called whenever a var is edited to edit the var, returning FALSE will reject the edit.
+/datum/proc/vv_edit_var(var_name, var_value)
+	if(var_name == NAMEOF(src, vars))
+		return FALSE
+	vars[var_name] = var_value
+	datum_flags |= DF_VAR_EDITED
+	return TRUE
 
 /client/proc/debug_variables(datum/D in world)
 	set category = "Debug"
@@ -279,7 +290,7 @@ body
 		return FALSE
 	return TRUE
 
-/client/proc/debug_variable(name, value, level, var/datum/DA = null)
+/client/proc/debug_variable(name, value, level, datum/DA = null)
 	var/html = ""
 	var/change = 0
 	//to make the value bold if changed
@@ -596,6 +607,10 @@ body
 			to_chat(usr, SPAN_WARNING("This datum is protected. Access Denied"))
 			return
 
+		if(!D.can_vv_mark())
+			to_chat(usr, SPAN_WARNING("This datum cannot be marked."))
+			return
+
 		if(D in admin_holder.marked_datums)
 			admin_holder.marked_datums -= D
 		else
@@ -607,7 +622,7 @@ body
 			return
 
 		var/datum/D = locate(href_list["adv_proccall"])
-		callproc(D)
+		callproc_datum(D)
 
 
 	else if(href_list["rotatedatum"])
@@ -729,7 +744,7 @@ body
 			to_chat(usr, "Failed! Something went wrong.")
 
 	else if(href_list["edit_skill"])
-		if(!check_rights(R_SPAWN))
+		if(!check_rights(R_VAREDIT))
 			return
 
 		var/mob/living/carbon/human/H = locate(href_list["edit_skill"])
@@ -740,25 +755,7 @@ body
 		if(!H.skills)
 			H.skills = new /datum/skills/pfc(H)
 
-		var/selected_skill = tgui_input_list(usr, "Please choose a skill to edit.","Skills", GLOB.all_skills)
-		if(!selected_skill)
-			return
-
-		if(!H)
-			to_chat(usr, "Mob doesn't exist anymore")
-			return
-
-		var/new_skill_level = tgui_input_number(usr, "Select a new level for the [selected_skill] skill ","New Skill Level")
-
-		if(isnull(new_skill_level))
-			return
-
-		if(!H)
-			to_chat(usr, "Mob doesn't exist anymore")
-			return
-
-		H.skills.set_skill(selected_skill, new_skill_level)
-		to_chat(usr, "[H]'s [selected_skill] skill is now set to [new_skill_level].")
+		H.skills.tgui_interact(usr)
 
 	else if(href_list["addlanguage"])
 		if(!check_rights(R_SPAWN))

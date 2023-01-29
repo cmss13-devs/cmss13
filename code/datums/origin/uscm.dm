@@ -27,15 +27,15 @@
 	name = ORIGIN_USCM_AW
 	desc = "You were a product of an experimental military programme that sought to breed the perfect supersoldier. In some aspects, they've succeeded."
 
-/datum/origin/uscm/aw/generate_human_name(var/gender = MALE)
+/datum/origin/uscm/aw/generate_human_name(gender = MALE)
 	return pick(gender == MALE ? first_names_male : first_names_female) + " A.W. " + pick(weapon_surnames)
 
-/datum/origin/uscm/aw/validate_name(var/name_to_check)
+/datum/origin/uscm/aw/validate_name(name_to_check)
 	if(!findtext(name_to_check, "A.W. "))
 		return "Sorry, as a Artificial-Womb soldier, your character's 'middle-name' must be 'A.W.'."
 	return null
 
-/datum/origin/uscm/aw/correct_name(var/name_to_check, var/gender = MALE)
+/datum/origin/uscm/aw/correct_name(name_to_check, gender = MALE)
 	if(!findtext(name_to_check, "A.W. "))
 		name_to_check = generate_human_name(gender)
 	return name_to_check

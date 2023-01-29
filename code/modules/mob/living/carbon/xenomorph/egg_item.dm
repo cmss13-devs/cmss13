@@ -26,7 +26,7 @@
 
 /obj/item/xeno_egg/get_examine_text(mob/user)
 	. = ..()
-	if(isXeno(user))
+	if(isxeno(user))
 		. += "A queen egg, it needs to be planted on weeds to start growing."
 		if(hivenumber != XENO_HIVE_NORMAL)
 			var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
@@ -35,7 +35,7 @@
 /obj/item/xeno_egg/afterattack(atom/target, mob/user, proximity)
 	if(istype(target, /obj/effect/alien/resin/special/eggmorph))
 		return //We tried storing the hugger from the egg, no need to try to plant it (we know the turf is occupied!)
-	if(isXeno(user))
+	if(isxeno(user))
 		var/turf/T = get_turf(target)
 		plant_egg(user, T, proximity)
 	if(proximity && ishuman(user))
@@ -94,9 +94,9 @@
 	user.visible_message(SPAN_XENONOTICE("[user] starts planting [src]."), SPAN_XENONOTICE("You start planting [src]."), null, 5)
 
 	var/plant_time = 35
-	if(isXenoDrone(user))
+	if(isdrone(user))
 		plant_time = 25
-	if(isXenoCarrier(user))
+	if(iscarrier(user))
 		plant_time = 10
 	if(!do_after(user, plant_time, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 		return
@@ -120,11 +120,11 @@
 /obj/item/xeno_egg/attack_self(mob/user)
 	..()
 
-	if(!isXeno(user))
+	if(!isxeno(user))
 		return
 
 	var/mob/living/carbon/xenomorph/X = user
-	if(isXenoCarrier(X))
+	if(iscarrier(X))
 		var/mob/living/carbon/xenomorph/carrier/C = X
 		C.store_egg(src)
 	else

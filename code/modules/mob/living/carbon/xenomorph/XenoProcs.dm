@@ -2,7 +2,7 @@
 //LAST EDIT: APOPHIS 22MAY16
 
 //Send a message to all xenos. Mostly used in the deathgasp display
-/proc/xeno_message(var/message = null, var/size = 3, var/hivenumber = XENO_HIVE_NORMAL)
+/proc/xeno_message(message = null, size = 3, hivenumber = XENO_HIVE_NORMAL)
 	if(!message)
 		return
 
@@ -22,7 +22,7 @@
 				to_chat(M, SPAN_XENODANGER("<span class=\"[fontsize_style]\"> [message]</span>"))
 
 //Sends a maptext alert to our currently selected squad. Does not make sound.
-/proc/xeno_maptext(var/text = "", var/title_text = "", var/hivenumber = XENO_HIVE_NORMAL)
+/proc/xeno_maptext(text = "", title_text = "", hivenumber = XENO_HIVE_NORMAL)
 	if(text == "" || !hivenumber)
 		return //Logic
 
@@ -32,7 +32,7 @@
 			if(M && istype(M) && !M.stat && M.client && M.ally_of_hivenumber(hivenumber)) //Only living and connected xenos
 				M.play_screen_text("<span class='langchat' style=font-size:16pt;text-align:center valign='top'><u>[title_text]</u></span><br>" + text, /atom/movable/screen/text/screen_text/command_order, "#b491c8")
 
-/proc/xeno_message_all(var/message = null, var/size = 3)
+/proc/xeno_message_all(message = null, size = 3)
 	xeno_message(message, size)
 
 //Adds stuff to your "Status" pane -- Specific castes can have their own, like carrier hugger count
@@ -144,7 +144,7 @@
 	. += ""
 
 //A simple handler for checking your state. Used in pretty much all the procs.
-/mob/living/carbon/xenomorph/proc/check_state(var/permissive = 0)
+/mob/living/carbon/xenomorph/proc/check_state(permissive = 0)
 	if(!permissive)
 		if(is_mob_incapacitated() || lying || buckled || evolving || !isturf(loc))
 			to_chat(src, SPAN_WARNING("You cannot do this in your current state."))
@@ -261,7 +261,7 @@
 /mob/living/carbon/xenomorph/show_inv(mob/user)
 	return
 
-/mob/living/carbon/xenomorph/proc/pounced_mob(var/mob/living/L)
+/mob/living/carbon/xenomorph/proc/pounced_mob(mob/living/L)
 	// This should only be called back by a mob that has pounce, so no need to check
 	var/datum/action/xeno_action/activable/pounce/pounceAction = get_xeno_action_by_type(src, /datum/action/xeno_action/activable/pounce)
 
@@ -285,7 +285,7 @@
 				playsound(H, "bonk", 75, FALSE) //bonk
 				return
 
-			if(isYautja(H))
+			if(isyautja(H))
 				if(H.check_shields(0, "the pounce", 1))
 					visible_message(SPAN_DANGER("[H] blocks the pounce of [src] with the combistick!"), SPAN_XENODANGER("[H] blocks your pouncing form with the combistick!"), null, 5)
 					apply_effect(3, WEAKEN)
@@ -298,7 +298,7 @@
 					apply_effect(3, WEAKEN)
 					throwing = FALSE
 					return
-			if(isColonySynthetic(H) && prob(60))
+			if(iscolonysynthetic(H) && prob(60))
 				visible_message(SPAN_DANGER("[H] withstands being pounced and slams down [src]!"),
 					SPAN_XENODANGER("[H] throws you down after withstanding the pounce!"), null, 5)
 				apply_effect(1.5, WEAKEN)
@@ -326,10 +326,10 @@
 
 	throwing = FALSE //Reset throwing since something was hit.
 
-/mob/living/carbon/xenomorph/proc/pounced_mob_wrapper(var/mob/living/L)
+/mob/living/carbon/xenomorph/proc/pounced_mob_wrapper(mob/living/L)
 	pounced_mob(L)
 
-/mob/living/carbon/xenomorph/proc/pounced_obj(var/obj/O)
+/mob/living/carbon/xenomorph/proc/pounced_obj(obj/O)
 	var/datum/action/xeno_action/activable/pounce/pounceAction = get_xeno_action_by_type(src, /datum/action/xeno_action/activable/pounce)
 
 	// Unconscious or dead, or not throwing but used pounce
@@ -348,10 +348,10 @@
 		if(!istype(O, /obj/structure/surface/table) && !istype(O, /obj/structure/surface/rack))
 			O.hitby(src) //This resets throwing.
 
-/mob/living/carbon/xenomorph/proc/pounced_obj_wrapper(var/obj/O)
+/mob/living/carbon/xenomorph/proc/pounced_obj_wrapper(obj/O)
 	pounced_obj(O)
 
-/mob/living/carbon/xenomorph/proc/pounced_turf(var/turf/T)
+/mob/living/carbon/xenomorph/proc/pounced_turf(turf/T)
 	if(!T.density)
 		for(var/mob/M in T)
 			pounced_mob(M)
@@ -359,7 +359,7 @@
 	else
 		turf_launch_collision(T)
 
-/mob/living/carbon/xenomorph/proc/pounced_turf_wrapper(var/turf/T)
+/mob/living/carbon/xenomorph/proc/pounced_turf_wrapper(turf/T)
 	pounced_turf(T)
 
 //Bleuugh
@@ -401,7 +401,7 @@
 	else
 		to_chat(src, SPAN_WARNING("There's nothing in your belly that needs regurgitating."))
 
-/mob/living/carbon/xenomorph/proc/check_alien_construction(var/turf/current_turf, var/check_blockers = TRUE, var/silent = FALSE, var/check_doors = TRUE)
+/mob/living/carbon/xenomorph/proc/check_alien_construction(turf/current_turf, check_blockers = TRUE, silent = FALSE, check_doors = TRUE)
 	var/has_obstacle
 	for(var/obj/O in current_turf)
 		if(check_blockers && istype(O, /obj/effect/build_blocker))
@@ -473,7 +473,7 @@
 
 
 //Welp
-/mob/living/carbon/xenomorph/proc/xeno_jitter(var/jitter_time = 25)
+/mob/living/carbon/xenomorph/proc/xeno_jitter(jitter_time = 25)
 	set waitfor = 0
 
 	pixel_x = old_x + rand(-3, 3)
@@ -502,7 +502,7 @@
 		to_chat(src, SPAN_XENOWARNING("Your pheromones have changed. The Queen has new plans for the Hive."))
 	hud_set_pheromone()
 
-/mob/living/carbon/xenomorph/proc/nocrit(var/wowave)
+/mob/living/carbon/xenomorph/proc/nocrit(wowave)
 	if(SSticker?.mode?.hardcore)
 		nocrit = TRUE
 		if(wowave < 15)
@@ -528,8 +528,8 @@
 		client.mouse_pointer_icon = initial(client.mouse_pointer_icon) // Reset our mouse pointer when we no longer have an action queued.
 
 // Called when pulling something and attacking yourself with the pull
-/mob/living/carbon/xenomorph/proc/pull_power(var/mob/M)
-	if(isXenoWarrior(src) && !ripping_limb && M.stat != DEAD)
+/mob/living/carbon/xenomorph/proc/pull_power(mob/M)
+	if(iswarrior(src) && !ripping_limb && M.stat != DEAD)
 		if(M.status_flags & XENO_HOST)
 			to_chat(src, SPAN_XENOWARNING("This would harm the embryo!"))
 			return
@@ -540,7 +540,7 @@
 
 
 // Warrior Rip Limb - called by pull_power()
-/mob/living/carbon/xenomorph/proc/rip_limb(var/mob/M)
+/mob/living/carbon/xenomorph/proc/rip_limb(mob/M)
 	if(!istype(M, /mob/living/carbon/human))
 		return FALSE
 
@@ -614,7 +614,7 @@
 	if(pipe)
 		handle_ventcrawl(pipe)
 
-/mob/living/carbon/xenomorph/proc/attempt_tackle(var/mob/M, var/tackle_mult = 1, var/tackle_min_offset = 0, var/tackle_max_offset = 0, var/tackle_bonus = 0)
+/mob/living/carbon/xenomorph/proc/attempt_tackle(mob/M, tackle_mult = 1, tackle_min_offset = 0, tackle_max_offset = 0, tackle_bonus = 0)
 	var/datum/tackle_counter/TC = LAZYACCESS(tackle_counter, M)
 	if(!TC)
 		TC = new(tackle_min + tackle_min_offset, tackle_max + tackle_max_offset, tackle_chance*tackle_mult)
@@ -640,7 +640,7 @@
 
 	reset_tackle(M)
 
-/mob/living/carbon/xenomorph/proc/reset_tackle(var/mob/M)
+/mob/living/carbon/xenomorph/proc/reset_tackle(mob/M)
 	var/datum/tackle_counter/TC = LAZYACCESS(tackle_counter, M)
 	if (TC)
 		qdel(TC)
@@ -663,7 +663,7 @@
 /mob/living/carbon/xenomorph/get_role_name()
 	return caste_type
 
-/proc/get_pheromone_aura_strength(var/aura)
+/proc/get_pheromone_aura_strength(aura)
 	switch(aura)
 		if(-INFINITY to 0.9)
 			return "Very Weak"
@@ -685,7 +685,7 @@
 	to_chat(src, SPAN_XENONOTICE("You start tracking the [target.mark_meaning.name] resin mark."))
 	to_chat(src, SPAN_INFO("shift click the compass to watch the mark, alt click to stop tracking"))
 
-/mob/living/carbon/xenomorph/proc/stop_tracking_resin_mark(destroyed, var/silent = FALSE) //tracked_marker shouldnt be nulled outside this PROC!! >:C
+/mob/living/carbon/xenomorph/proc/stop_tracking_resin_mark(destroyed, silent = FALSE) //tracked_marker shouldnt be nulled outside this PROC!! >:C
 	var/atom/movable/screen/mark_locator/ML = hud_used.locate_marker
 	ML.overlays.Cut()
 	if(!silent)

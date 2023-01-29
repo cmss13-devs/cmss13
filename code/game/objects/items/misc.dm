@@ -97,7 +97,7 @@
 	w_class = SIZE_SMALL
 	var/obj/item/stored_item = null
 
-/obj/item/evidencebag/MouseDrop(var/obj/item/I as obj)
+/obj/item/evidencebag/MouseDrop(obj/item/I as obj)
 	if (!ishuman(usr))
 		return
 

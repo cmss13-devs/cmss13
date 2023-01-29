@@ -168,7 +168,7 @@ var/list/datum/mob_hud/huds = list(
 
 /datum/mob_hud/faction/add_to_single_hud(mob/user, mob/target)
 	var/faction = target.faction
-	if(faction == faction_to_check || isobserver(user) || isYautja(user))
+	if(faction == faction_to_check || isobserver(user) || isyautja(user))
 		..()
 
 /datum/mob_hud/faction/upp

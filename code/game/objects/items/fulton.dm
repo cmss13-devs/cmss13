@@ -23,7 +23,7 @@ var/global/list/deployed_fultons = list()
 	var/turf/original_location = null
 	var/attachable_atoms = list(/obj/structure/closet/crate)
 
-/obj/item/stack/fulton/New(loc, amount, var/atom_to_attach)
+/obj/item/stack/fulton/New(loc, amount, atom_to_attach)
 	..()
 	if(amount)
 		src.amount = amount
@@ -87,14 +87,14 @@ var/global/list/deployed_fultons = list()
 	if(isliving(target_atom))
 		if(ishuman(target_atom))
 			var/mob/living/carbon/human/H = target_atom
-			if(isYautja(H) && H.stat == DEAD)
+			if(isyautja(H) && H.stat == DEAD)
 				can_attach = TRUE
 			else if((H.stat != DEAD || H.mind && H.check_tod() && H.is_revivable()))
 				to_chat(user, SPAN_WARNING("You can't attach [src] to [target_atom], they still have a chance!"))
 				return
 			else
 				can_attach = TRUE
-		else if(isXeno(target_atom))
+		else if(isxeno(target_atom))
 			var/mob/living/carbon/xenomorph/X = target_atom
 			if(X.stat != DEAD)
 				to_chat(user, SPAN_WARNING("You can't attach [src] to [target_atom], kill it first!"))
@@ -132,7 +132,7 @@ var/global/list/deployed_fultons = list()
 	if(!attached_atom)
 		return
 	var/image/I = image(icon, icon_state)
-	if(isXeno(attached_atom))
+	if(isxeno(attached_atom))
 		var/mob/living/carbon/xenomorph/X = attached_atom
 		I.pixel_x = (X.pixel_x * -1)
 	attached_atom.overlays += I
@@ -155,7 +155,7 @@ var/global/list/deployed_fultons = list()
 
 	addtimer(CALLBACK(src, PROC_REF(return_fulton), original_location), 150 SECONDS)
 
-/obj/item/stack/fulton/proc/return_fulton(var/turf/return_turf)
+/obj/item/stack/fulton/proc/return_fulton(turf/return_turf)
 
 	// Fulton is not in space, it must have been collected.
 	if(!istype(get_area(attached_atom), /area/space/highalt))

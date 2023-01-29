@@ -67,7 +67,7 @@
 			S.can_type.forceMove(in_chamber)
 			S.can_type.sharp = 1
 
-/obj/item/weapon/gun/souto/proc/link_soutopack(var/mob/user)
+/obj/item/weapon/gun/souto/proc/link_soutopack(mob/user)
 	if(user.back)
 		if(istype(user.back, /obj/item/storage/backpack/souto))
 			soutopack = user.back
@@ -77,7 +77,7 @@
 /obj/item/weapon/gun/souto/proc/unlink_soutopack()
 	soutopack = null
 
-/obj/item/weapon/gun/souto/retrieval_check(var/mob/living/carbon/human/user, var/retrieval_slot)
+/obj/item/weapon/gun/souto/retrieval_check(mob/living/carbon/human/user, retrieval_slot)
 	if(retrieval_slot == WEAR_IN_BACK)
 		if(istype(user.back, /obj/item/storage/backpack/souto))
 			return TRUE

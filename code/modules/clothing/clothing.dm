@@ -52,6 +52,8 @@
 /obj/item/clothing/proc/get_armor(armortype)
 	var/armor_total = 0
 	var/armor_count = 0
+	if(!isnum(armortype))
+		return 0
 	if(armortype & ARMOR_MELEE)
 		armor_total += armor_melee
 		armor_count++

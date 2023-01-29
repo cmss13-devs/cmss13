@@ -70,7 +70,7 @@ Contains most of the procs that are called when a mob is attacked by something
 	var/protection = 0
 	var/list/protective_gear = list(head, wear_mask, wear_suit, w_uniform, gloves, shoes, glasses)
 	for(var/gear in protective_gear)
-		if(gear && istype(gear ,/obj/item/clothing))
+		if(gear && istype(gear, /obj/item/clothing))
 			var/obj/item/clothing/C = gear
 			if(C.flags_armor_protection & def_zone.body_part)
 				protection += C.get_armor(type)

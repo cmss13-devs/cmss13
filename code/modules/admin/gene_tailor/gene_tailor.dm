@@ -176,6 +176,12 @@ GLOBAL_LIST_INIT(gt_evolutions, list(
 			if("number") xeno_inputs[var_name] = text2num(xeno_inputs[var_name])
 			if("path") xeno_inputs[var_name] = text2path(xeno_inputs[var_name])
 
+/**
+ * Creates a new caste at runtime, it is stored in custom_evolutions.
+ * Arguments :
+ * * custom_caste_stats : The attributes of the caste_datum of the custom xenomorph
+ * * custom_xeno_stats : The attributes of the carbon xenomorph itself, only the attributes unique to ...carbon/xenomorph can be changed this way
+ */
 /datum/gene_tailor/proc/apply_genome(list/custom_caste_stats, list/custom_xeno_stats)
 	if(xeno_name in GLOB.custom_evolutions)
 		tgui_alert(usr, "The caste [xeno_name] already exists.", "Invalid name", list("OK"), timeout = 3 SECONDS)
@@ -203,8 +209,8 @@ GLOBAL_LIST_INIT(gt_evolutions, list(
  * Spawns a custom xenomorph with the properties specified in the arguments.
  *
  * Arguments :
- * * caste_stats : The attributes of the caste_datum of the custom xenomorph
- * * xeno_stats : The attributes of the carbon xenomorph itself, only the attributes unique to ...carbon/xenomorph can be changed this way
+ * * custom_caste_stats : The attributes of the caste_datum of the custom xenomorph
+ * * custom_xeno_stats : The attributes of the carbon xenomorph itself, only the attributes unique to ...carbon/xenomorph can be changed this way
  * * old_xeno : If set, the old xenomoprh will be turned into the custom xenomoprh, otherwise the xenomorph will spawn under the user
  */
 /datum/gene_tailor/proc/spawn_custom_xeno(list/custom_caste_stats, list/custom_xeno_stats, mob/living/carbon/xenomorph/old_xeno = null)
@@ -238,7 +244,6 @@ GLOBAL_LIST_INIT(gt_evolutions, list(
 	for(var/action_type in custom_xeno.base_actions)
 		qdel(remove_action(custom_xeno, action_type))
 
-	//custom_xeno.name = xeno_name
 	custom_xeno.generate_name()
 	custom_xeno.create_hud()
 	custom_xeno.base_actions = xeno_abilities

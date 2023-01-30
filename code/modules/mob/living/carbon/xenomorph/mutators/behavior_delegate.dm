@@ -24,7 +24,7 @@
 //    \/
 //  behavior_delegate
 //    attack procs  <- called by attacking code
-//    ability procs <- called by action code, use them for inter-ability interactions after checking for the ability
+//    ability procs <- called by action code, use them for ability-passive interactions
 //    other stuff   <- called in xeno Life, etc
 //    constant variables <- used as balancing values for strains, etc
 //    state variables <- used to store all strain-unique state associated with THIS xeno.

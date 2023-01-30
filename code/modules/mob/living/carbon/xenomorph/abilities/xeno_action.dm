@@ -243,6 +243,7 @@
 // Useful for things like abilities with 2 xeno_cooldown
 // Otherwise identical to apply_cooldown, but likewise should not be overridden
 /datum/action/xeno_action/proc/apply_cooldown_override(cooldown_duration)
+	SHOULD_NOT_OVERRIDE(TRUE)
 	if(!owner)
 		return
 
@@ -259,7 +260,7 @@
 // Checks whether the action is on cooldown. Should not be overridden.
 // Returns TRUE if the action can be used and FALSE otherwise.
 /datum/action/xeno_action/proc/action_cooldown_check()
-	//SHOULD_NOT_OVERRIDE(TRUE)
+	SHOULD_NOT_OVERRIDE(TRUE)
 	return (cooldown_timer_id == TIMER_ID_NULL) && (!charge_time || charge_ready)
 
 // What occurs when a cooldown ends NATURALLY. Ties into ability_cooldown_over, which tells the source Xeno

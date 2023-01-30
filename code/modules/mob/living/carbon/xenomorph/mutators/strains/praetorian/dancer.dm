@@ -1,8 +1,8 @@
 /datum/xeno_mutator/praetorian_dancer
 	// My name is Cuban Pete, I'm the King of the Rumba Beat
 	name = "STRAIN: Praetorian - Dancer"
-	description = "You are now a paragon of agility. You lose the ability to spit and spray acid and you lose some armor in exchange for unparalleled agility that lets you dodge through tallhosts (cancelled on slash) and two powerful tail abilities each enhanced by a tag placed on your opponents via slashing."
-	flavor_description = "You are the Queen's scalpel. Don't think you are; know you are. Let's dance!"
+	description = "You lose all of your acid-based abilities and some armor in exchange for unparalleled agility that lets you dodge through tallhosts. You also gain two powerful tail abilities each enhanced by a tag placed on your opponents via slashing."
+	flavor_description = "Show the talls what 'there is beauty in death' truly means, then dance upon their graves!"
 	cost = MUTATOR_COST_EXPENSIVE
 	individual_only = TRUE
 	caste_whitelist = list(XENO_CASTE_PRAETORIAN) // Only bae

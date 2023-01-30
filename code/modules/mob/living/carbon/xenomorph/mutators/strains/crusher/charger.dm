@@ -17,7 +17,7 @@
 /datum/xeno_mutator/charger
 	name = "STRAIN: Crusher - Charger"
 	description = "In exchange for your shield, losing your slowdown resist from autospitters, and losing your ability to sense frenzy pheromones, your charge can now be manually controlled and is now momentum based; the further you go, the more damage and speed you will gain until you achieve max momentum when you roar. Also, your armor is now directional, being the toughest on the front, weaker on the sides and weakest at the back. In return you gain more health, an ability to tumble to avoid enemies, and an ability to forcefully move enemies via ramming."
-	flavor_description = "We're just getting started. Nothing stops this train."
+	flavor_description = "We  just getting started. Nothing stops this train. Nothing."
 	cost = MUTATOR_COST_EXPENSIVE
 	individual_only = TRUE
 	caste_whitelist = list(XENO_CASTE_CRUSHER)

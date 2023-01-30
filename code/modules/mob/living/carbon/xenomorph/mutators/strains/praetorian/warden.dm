@@ -1,8 +1,8 @@
 /datum/xeno_mutator/praetorian_warden
 	// i mean so basically im braum
 	name = "STRAIN: Praetorian - Warden"
-	description = "You trade your acid ball, acid spray, and your dash for an internal hitpoint pool. The pool is filled by your spits and slashes, and can be spent to assist your allies and yourself."
-	flavor_description = "Only in Death does your sisters' service to the Queen end. Keep them fighting using your own blood and claws."
+	description = "You trade your acid ball, acid spray, and your dash for an internal hitpoint pool that fills with every slash against your enemies, which can be spent to assist your allies and yourself by healing them or curing their ailments. You also gain the ability to emit pheromones and an ability that pulls an ally close to you when they are in danger."
+	flavor_description = "Only in death does your sisters' service to the Queen end. Keep them fighting using your own blood and claws."
 	cost = MUTATOR_COST_EXPENSIVE
 	individual_only = TRUE
 	caste_whitelist = list(XENO_CASTE_PRAETORIAN) // Only bae

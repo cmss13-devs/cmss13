@@ -1,7 +1,7 @@
 /datum/xeno_mutator/gardener
 	name = "STRAIN: Drone - Gardener"
 	description = "You trade your choice of resin secretions, your corrosive acid, and the ability to transfer plasma for the ability to plant hardier weeds, temporarily reinforce structures with your plasma, and to plant potent resin fruits for your sisters by secreting your vital fluids at the cost of a bit of your health for each fruit you shape."
-	flavor_description = "Just as our hive must flourish and grow, so should our weed gardens and the fruits of your labor."
+	flavor_description = "Just as The Hive must grow, so should our weed gardens and the fruits of your labor you plant within them!"
 	cost = MUTATOR_COST_EXPENSIVE
 	individual_only = TRUE
 	caste_whitelist = list(XENO_CASTE_DRONE) //Only drone.

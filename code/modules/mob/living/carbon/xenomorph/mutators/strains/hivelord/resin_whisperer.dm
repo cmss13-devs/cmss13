@@ -1,7 +1,7 @@
 /datum/xeno_mutator/resinwhisperer
 	name = "STRAIN: Hivelord - Resin Whisperer"
-	description = "You lose your corrosive acid, lose the ability to make thick resin, and sacrifice a fifth of your plasma reserves to enhance your vision and gain a stronger connection to the resin. You can now remotely place resin structures!"
-	flavor_description = "Protect your sisters on the front lines by building behind the front lines."
+	description = "You lose your corrosive acid, the ability to make thick resin, and sacrifice a fifth of your plasma reserves to enhance your vision and gain a stronger connection to the resin. You can now remotely place resin structures!"
+	flavor_description = "My child, the resin compels you to protect your sisters on the front lines by building behind them."
 	cost = MUTATOR_COST_EXPENSIVE
 	individual_only = TRUE
 	caste_whitelist = list(XENO_CASTE_HIVELORD)

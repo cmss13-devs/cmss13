@@ -1,7 +1,7 @@
 
 /datum/xeno_mutator/trapper
 	name = "STRAIN: Boiler - Trapper"
-	description = "You trade your ability to bombard, lance, and dump your acid for longer range vision, traps that immobilize your opponents, and unblockable acid mines."
+	description = "You trade your ability to bombard, lance, and dump your acid for the ability to create acid explosions and restrain talls within them. With your longer-range vision, set up traps that immobilize your opponents, place acid mines that deal extra damage to barricades, and hit talls with your ability that does more damage on trap-restrained targets and empowers the next mine you place with stacks of insight every time you hit your target."
 	flavor_description = "Hsss, I love the smell of burnin' tallhost flesh in the mornin'."
 	cost = MUTATOR_COST_EXPENSIVE
 	individual_only = TRUE

@@ -4,14 +4,14 @@
 	name = "surplus explosives crate (claymore mine x5, M40 HIDP x2, M40 HEDP x2, M15 Frag x2, M12 Blast x2)"
 	contains = list(
 					/obj/item/storage/box/explosive_mines,
-					/obj/item/explosive/grenade/HE,
-					/obj/item/explosive/grenade/HE,
+					/obj/item/explosive/grenade/high_explosive,
+					/obj/item/explosive/grenade/high_explosive,
 					/obj/item/explosive/grenade/incendiary,
 					/obj/item/explosive/grenade/incendiary,
-					/obj/item/explosive/grenade/HE/m15,
-					/obj/item/explosive/grenade/HE/m15,
-					/obj/item/explosive/grenade/HE/PMC,
-					/obj/item/explosive/grenade/HE/PMC
+					/obj/item/explosive/grenade/high_explosive/m15,
+					/obj/item/explosive/grenade/high_explosive/m15,
+					/obj/item/explosive/grenade/high_explosive/pmc,
+					/obj/item/explosive/grenade/high_explosive/pmc
 					)
 	cost = 40
 	containertype = /obj/structure/closet/crate/explosives

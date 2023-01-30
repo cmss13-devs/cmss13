@@ -83,7 +83,7 @@
 	banished_holder.pixel_x = -12
 	banished_holder.pixel_y = -6
 
-/mob/living/carbon/xenomorph/hellhound/emote(var/act,var/m_type=1,var/message = null, player_caused)
+/mob/living/carbon/xenomorph/hellhound/emote(act, m_type=1, message = null, player_caused)
 	if(findtext(act, "-", 1, null))
 		var/t1 = findtext(act, "-", 1, null)
 		act = copytext(act, 1, t1)
@@ -172,7 +172,7 @@
 				O.show_message(message, m_type)
 
 
-/mob/living/carbon/xenomorph/hellhound/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/mob/living/carbon/xenomorph/hellhound/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_pass = PASS_FLAGS_CRAWLER
@@ -188,7 +188,7 @@
 	to_chat(src, "<span style='color: red;'>Hellhounds are fiercely protective of their masters and will never leave their side if under attack.</span>")
 	to_chat(src, "<span style='color: red;'>Note that ANY Predator can give you orders. If they conflict, follow the latest one. If they dislike your performance they can ask for another ghost and everyone will mock you. So do a good job!</span>")
 
-/mob/living/carbon/xenomorph/hellhound/death(var/cause, var/gibbed)
+/mob/living/carbon/xenomorph/hellhound/death(cause, gibbed)
 	. = ..(cause, gibbed, "lets out a horrible roar as it collapses and stops moving...")
 	if(!.)
 		return
@@ -207,5 +207,5 @@
 	SSmob.living_misc_mobs -= src
 	return ..()
 
-/mob/living/carbon/xenomorph/hellhound/handle_blood_splatter(var/splatter_dir)
+/mob/living/carbon/xenomorph/hellhound/handle_blood_splatter(splatter_dir)
 	new /obj/effect/temp_visual/dir_setting/bloodsplatter/hellhound(loc, splatter_dir)

@@ -91,7 +91,7 @@ GLOBAL_LIST_EMPTY(command_apc_list)
 	RRS.total = 1
 	role_reserved_slots += RRS
 
-/obj/vehicle/multitile/apc/add_seated_verbs(var/mob/living/M, var/seat)
+/obj/vehicle/multitile/apc/add_seated_verbs(mob/living/M, seat)
 	if(!M.client)
 		return
 	add_verb(M.client, list(
@@ -117,7 +117,7 @@ GLOBAL_LIST_EMPTY(command_apc_list)
 			/obj/vehicle/multitile/proc/reload_firing_port_weapon
 		))
 
-/obj/vehicle/multitile/apc/remove_seated_verbs(var/mob/living/M, var/seat)
+/obj/vehicle/multitile/apc/remove_seated_verbs(mob/living/M, seat)
 	if(!M.client)
 		return
 	remove_verb(M.client, list(
@@ -143,7 +143,7 @@ GLOBAL_LIST_EMPTY(command_apc_list)
 			/obj/vehicle/multitile/proc/reload_firing_port_weapon
 		))
 
-/obj/vehicle/multitile/apc/initialize_cameras(var/change_tag = FALSE)
+/obj/vehicle/multitile/apc/initialize_cameras(change_tag = FALSE)
 	if(!camera)
 		camera = new /obj/structure/machinery/camera/vehicle(src)
 	if(change_tag)
@@ -166,7 +166,7 @@ GLOBAL_LIST_EMPTY(command_apc_list)
 	pixel_y = -48
 
 //Installation of transport APC Firing Ports Weapons
-/obj/effect/vehicle_spawner/apc/proc/load_fpw(var/obj/vehicle/multitile/apc/V)
+/obj/effect/vehicle_spawner/apc/proc/load_fpw(obj/vehicle/multitile/apc/V)
 	var/obj/item/hardpoint/special/firing_port_weapon/FPW = new
 	FPW.allowed_seat = VEHICLE_SUPPORT_GUNNER_ONE
 	V.add_hardpoint(FPW)
@@ -209,7 +209,7 @@ GLOBAL_LIST_EMPTY(command_apc_list)
 	APC.update_icon()
 
 //PRESET: FPWs, wheels installed
-/obj/effect/vehicle_spawner/apc/plain/load_hardpoints(var/obj/vehicle/multitile/apc/V)
+/obj/effect/vehicle_spawner/apc/plain/load_hardpoints(obj/vehicle/multitile/apc/V)
 	V.add_hardpoint(new /obj/item/hardpoint/locomotion/apc_wheels)
 
 //PRESET: default hardpoints, destroyed (this one spawns on VASRS elevatorfor VCs)
@@ -223,14 +223,14 @@ GLOBAL_LIST_EMPTY(command_apc_list)
 	load_damage(APC)
 	APC.update_icon()
 
-/obj/effect/vehicle_spawner/apc/decrepit/load_hardpoints(var/obj/vehicle/multitile/apc/V)
+/obj/effect/vehicle_spawner/apc/decrepit/load_hardpoints(obj/vehicle/multitile/apc/V)
 	V.add_hardpoint(new /obj/item/hardpoint/primary/dualcannon)
 	V.add_hardpoint(new /obj/item/hardpoint/secondary/frontalcannon)
 	V.add_hardpoint(new /obj/item/hardpoint/support/flare_launcher)
 	V.add_hardpoint(new /obj/item/hardpoint/locomotion/apc_wheels)
 
 //PRESET: FPWs, default hardpoints
-/obj/effect/vehicle_spawner/apc/fixed/load_hardpoints(var/obj/vehicle/multitile/apc/V)
+/obj/effect/vehicle_spawner/apc/fixed/load_hardpoints(obj/vehicle/multitile/apc/V)
 	V.add_hardpoint(new /obj/item/hardpoint/primary/dualcannon)
 	V.add_hardpoint(new /obj/item/hardpoint/secondary/frontalcannon)
 	V.add_hardpoint(new /obj/item/hardpoint/support/flare_launcher)
@@ -250,7 +250,7 @@ GLOBAL_LIST_EMPTY(command_apc_list)
 	handle_direction(APC)
 	APC.update_icon()
 
-/obj/effect/vehicle_spawner/apc/unarmed/load_hardpoints(var/obj/vehicle/multitile/apc/V)
+/obj/effect/vehicle_spawner/apc/unarmed/load_hardpoints(obj/vehicle/multitile/apc/V)
 	return
 
 //PRESET: default hardpoints, destroyed
@@ -263,18 +263,18 @@ GLOBAL_LIST_EMPTY(command_apc_list)
 	load_damage(APC)
 	APC.update_icon()
 
-/obj/effect/vehicle_spawner/apc/unarmed/decrepit/load_hardpoints(var/obj/vehicle/multitile/apc/V)
+/obj/effect/vehicle_spawner/apc/unarmed/decrepit/load_hardpoints(obj/vehicle/multitile/apc/V)
 	V.add_hardpoint(new /obj/item/hardpoint/primary/dualcannon)
 	V.add_hardpoint(new /obj/item/hardpoint/secondary/frontalcannon)
 	V.add_hardpoint(new /obj/item/hardpoint/support/flare_launcher)
 	V.add_hardpoint(new /obj/item/hardpoint/locomotion/apc_wheels)
 
 //PRESET: no FPWs, wheels installed
-/obj/effect/vehicle_spawner/apc/unarmed/plain/load_hardpoints(var/obj/vehicle/multitile/apc/unarmed/V)
+/obj/effect/vehicle_spawner/apc/unarmed/plain/load_hardpoints(obj/vehicle/multitile/apc/unarmed/V)
 	V.add_hardpoint(new /obj/item/hardpoint/locomotion/apc_wheels)
 
 //PRESET: default hardpoints
-/obj/effect/vehicle_spawner/apc/unarmed/fixed/load_hardpoints(var/obj/vehicle/multitile/apc/unarmed/V)
+/obj/effect/vehicle_spawner/apc/unarmed/fixed/load_hardpoints(obj/vehicle/multitile/apc/unarmed/V)
 	V.add_hardpoint(new /obj/item/hardpoint/primary/dualcannon)
 	V.add_hardpoint(new /obj/item/hardpoint/secondary/frontalcannon)
 	V.add_hardpoint(new /obj/item/hardpoint/support/flare_launcher)

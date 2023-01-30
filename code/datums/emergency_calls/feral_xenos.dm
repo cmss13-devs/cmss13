@@ -12,7 +12,7 @@
 
 /datum/emergency_call/feral_xenos/New()
 	..()
-	arrival_message = "[MAIN_SHIP_NAME], this is USS Vriess respond-- #&...*#&^#.. signal.. oh god, they're in the vent---... Priority Warning: Signal lost."
+	arrival_message = "[MAIN_SHIP_NAME], this is USS Vriess respond-- #&...*#&^#.. signal... oh god, they're in the vent---... Priority Warning: Signal lost."
 	objectives = "Destroy everything!"
 
 /datum/emergency_call/feral_xenos/spawn_items()
@@ -21,7 +21,7 @@
 		//drop some weeds for xeno plasma regen.
 		new /obj/effect/alien/weeds/node/feral(drop_spawn)
 
-/datum/emergency_call/feral_xenos/create_member(datum/mind/M, var/turf/override_spawn_loc)
+/datum/emergency_call/feral_xenos/create_member(datum/mind/M, turf/override_spawn_loc)
 	var/turf/spawn_loc = override_spawn_loc ? override_spawn_loc : get_spawn_point()
 
 	if(!istype(spawn_loc))

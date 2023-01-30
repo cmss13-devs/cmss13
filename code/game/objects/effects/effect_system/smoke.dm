@@ -37,7 +37,7 @@
 	active_smoke_effects -= src
 	cause_data = null
 
-/obj/effect/particle_effect/smoke/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/obj/effect/particle_effect/smoke/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_pass = PASS_FLAGS_SMOKE
@@ -109,7 +109,7 @@
 				return TRUE
 
 
-/obj/effect/particle_effect/smoke/proc/affect(var/mob/living/carbon/M)
+/obj/effect/particle_effect/smoke/proc/affect(mob/living/carbon/M)
 	if (istype(M))
 		return 0
 	return 1
@@ -127,7 +127,7 @@
 	for(var/mob/living/carbon/M in get_turf(src))
 		affect(M)
 
-/obj/effect/particle_effect/smoke/bad/affect(var/mob/living/carbon/M)
+/obj/effect/particle_effect/smoke/bad/affect(mob/living/carbon/M)
 	..()
 	if (M.internal != null && M.wear_mask && (M.wear_mask.flags_inventory & ALLOWINTERNALS))
 		return
@@ -179,7 +179,7 @@
 	for(var/mob/living/carbon/human/R in get_turf(src))
 		affect(R)
 
-/obj/effect/particle_effect/smoke/mustard/affect(var/mob/living/carbon/human/R)
+/obj/effect/particle_effect/smoke/mustard/affect(mob/living/carbon/human/R)
 	..()
 	R.burn_skin(0.75)
 	if(R.coughedtime != 1)
@@ -213,7 +213,7 @@
 	for(var/mob/living/carbon/M in get_turf(src))
 		affect(M)
 
-/obj/effect/particle_effect/smoke/phosphorus/affect(var/mob/living/carbon/M)
+/obj/effect/particle_effect/smoke/phosphorus/affect(mob/living/carbon/M)
 	..()
 	burn_damage = 40
 	if(ishuman(M))
@@ -230,7 +230,7 @@
 
 		M.last_damage_data = cause_data
 
-	if(isYautja(M) || isXeno(M))
+	if(isyautja(M) || isxeno(M))
 		burn_damage *= xeno_yautja_reduction
 
 	M.burn_skin(burn_damage)
@@ -293,13 +293,13 @@
 /obj/effect/particle_effect/smoke/xeno_burn/Crossed(mob/living/carbon/M as mob)
 	return
 
-/obj/effect/particle_effect/smoke/xeno_burn/affect(var/mob/living/carbon/M)
+/obj/effect/particle_effect/smoke/xeno_burn/affect(mob/living/carbon/M)
 	..()
 
 	if(M.ally_of_hivenumber(hivenumber))
 		return
 
-	if(isYautja(M) && prob(75))
+	if(isyautja(M) && prob(75))
 		return
 	if(M.stat == DEAD)
 		return
@@ -310,7 +310,7 @@
 
 	M.apply_damage(3, OXY) //Basic oxyloss from "can't breathe"
 
-	if(isXeno(M))
+	if(isxeno(M))
 		M.apply_damage(gas_damage * XVX_ACID_DAMAGEMULT, BURN) //Inhalation damage
 	else
 		M.apply_damage(gas_damage, BURN) //Inhalation damage

@@ -220,5 +220,5 @@ FLOOR SAFES
 	hide(T.intact_tile)
 
 
-/obj/structure/safe/floor/hide(var/intact)
+/obj/structure/safe/floor/hide(intact)
 	invisibility = intact ? 101 : 0

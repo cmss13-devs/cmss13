@@ -12,7 +12,7 @@
 /datum/emergency_call/xeno_cult/print_backstory(mob/living/carbon/human/H)
 	to_chat(H, SPAN_BOLD("The xenos are graced the Neroid Sector with their presence! It's time to spread their glory across the stars!"))
 
-/datum/emergency_call/xeno_cult/create_member(datum/mind/M, var/turf/override_spawn_loc)
+/datum/emergency_call/xeno_cult/create_member(datum/mind/M, turf/override_spawn_loc)
 	var/turf/spawn_loc = override_spawn_loc ? override_spawn_loc : get_spawn_point()
 
 	if(!istype(spawn_loc))

@@ -19,7 +19,7 @@
 	center_of_mass = "x=15;y=15"
 
 	//Placeholder for effect that trigger on eating that aren't tied to reagents.
-/obj/item/reagent_container/food/snacks/proc/On_Consume(var/mob/M)
+/obj/item/reagent_container/food/snacks/proc/On_Consume(mob/M)
 	SEND_SIGNAL(src, COMSIG_SNACK_EATEN, M)
 	if(!usr) return
 
@@ -63,7 +63,7 @@
 		if(fullness > 540 && world.time < C.overeat_cooldown)
 			to_chat(user, SPAN_WARNING("[user == M ? "You" : "They"] don't feel like eating more right now."))
 			return
-		if(isSynth(C))
+		if(issynth(C))
 			fullness = 200 //Synths never get full
 
 		if(fullness > 540)
@@ -136,7 +136,7 @@
 	else
 		. += SPAN_NOTICE("\The [src] was bitten multiple times!")
 
-/obj/item/reagent_container/food/snacks/set_origin_name_prefix(var/name_prefix)
+/obj/item/reagent_container/food/snacks/set_origin_name_prefix(name_prefix)
 	made_from_player = name_prefix
 
 /obj/item/reagent_container/food/snacks/attackby(obj/item/W as obj, mob/user as mob)
@@ -210,7 +210,7 @@
 	qdel(src)
 	return
 
-/obj/item/reagent_container/food/snacks/attack_animal(var/mob/M)
+/obj/item/reagent_container/food/snacks/attack_animal(mob/M)
 	if(isanimal(M))
 		if(iscorgi(M))
 			if(bitecount == 0 || prob(50))
@@ -797,7 +797,7 @@
 
 /obj/item/reagent_container/food/snacks/tofuburger
 	name = "Tofu Burger"
-	desc = "What.. is that meat?"
+	desc = "What... is that meat?"
 	icon_state = "tofuburger"
 	filling_color = "#FFFEE0"
 
@@ -1528,7 +1528,7 @@
 		to_chat(user, "You unwrap the cube.")
 		package = 0
 
-/obj/item/reagent_container/food/snacks/monkeycube/On_Consume(var/mob/M)
+/obj/item/reagent_container/food/snacks/monkeycube/On_Consume(mob/M)
 	to_chat(M, SPAN_WARNING("Something inside of you suddently expands!"))
 
 	if (istype(M, /mob/living/carbon/human))

@@ -34,7 +34,7 @@
 	return ..()
 
 /obj/effect/alien/resin/boilertrap/get_examine_text(mob/user)
-	if(!isXeno(user))
+	if(!isxeno(user))
 		return ..()
 	. = ..()
 	. += SPAN_XENOWARNING("A trap designed for a catching tallhosts and holding them still.")
@@ -63,7 +63,7 @@
 	return XENO_NO_DELAY_ACTION
 
 /obj/effect/alien/resin/boilertrap/Crossed(atom/A)
-	if (isXeno(A))
+	if (isxeno(A))
 		var/mob/living/carbon/xenomorph/X = A
 		if (X.hivenumber != hivenumber)
 			trigger_trap(A)

@@ -25,7 +25,7 @@
 	if(.)
 		user.next_move = world.time + 1 SECONDS
 
-/obj/item/tool/mop/update_icon(var/cut_if_empty)
+/obj/item/tool/mop/update_icon(cut_if_empty)
 	if(cut_if_empty)
 		if(!reagents.total_volume)
 			overlays.Cut()

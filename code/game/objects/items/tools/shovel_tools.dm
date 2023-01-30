@@ -149,7 +149,7 @@
 	else
 		dump_shovel(target, user)
 
-/obj/item/tool/shovel/proc/dump_shovel(var/atom/target, var/mob/user)
+/obj/item/tool/shovel/proc/dump_shovel(atom/target, mob/user)
 	var/turf/T = target
 	to_chat(user, SPAN_NOTICE("you dump the [dirt_type_to_name(dirt_type)]!"))
 	playsound(user.loc, "rustle", 30, 1, 6)
@@ -162,7 +162,7 @@
 	dirt_amt = 0
 	update_icon()
 
-/obj/item/tool/shovel/proc/dirt_type_to_name(var/dirt_type)
+/obj/item/tool/shovel/proc/dirt_type_to_name(dirt_type)
 	switch(dirt_type)
 		if(DIRT_TYPE_GROUND)
 			return "dirt"

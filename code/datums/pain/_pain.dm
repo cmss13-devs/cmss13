@@ -67,7 +67,7 @@
 
 	var/feels_pain = TRUE
 
-/datum/pain/New(var/mob/owner)
+/datum/pain/New(mob/owner)
 	. = ..()
 
 	if(istype(owner))
@@ -88,7 +88,7 @@
 	else
 		return percentage
 
-/datum/pain/proc/apply_pain(var/amount = 0, var/type = BRUTE)
+/datum/pain/proc/apply_pain(amount = 0, type = BRUTE)
 	var/actual_amount = amount
 
 	switch(type)
@@ -110,7 +110,7 @@
 
 	update_pain_level()
 
-/datum/pain/proc/apply_pain_reduction(var/amount = 0)
+/datum/pain/proc/apply_pain_reduction(amount = 0)
 	if(last_reduction_update > world.time || amount <= reduction_pain) // Needed so pain meds cant spam us, neccesary evil.
 		return
 
@@ -152,7 +152,7 @@
 		decrease_pain_level()
 
 
-/datum/pain/proc/check_active_pain(var/level = 0)
+/datum/pain/proc/check_active_pain(level = 0)
 	if(level == last_level) //Check if the new level is same as old one
 		return FALSE
 
@@ -285,7 +285,7 @@
 
 /datum/pain/proc/oxyloss_drag(mob/living/source, mob/puller)
 	SIGNAL_HANDLER
-	if(isXeno(puller) && source.stat == UNCONSCIOUS)
+	if(isxeno(puller) && source.stat == UNCONSCIOUS)
 		if(source.get_species())
 			var/mob/living/carbon/human/H = source
 			if(H.species.flags & HAS_HARDCRIT)

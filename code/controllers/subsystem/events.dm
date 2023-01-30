@@ -97,7 +97,7 @@ SUBSYSTEM_DEF(events)
 //aka Badmin Central
 /client/proc/force_event()
 	set name = "Trigger Event"
-	set category = "Fun"
+	set category = "Admin.Events"
 
 	if(!admin_holder ||!check_rights(R_EVENT))
 		return
@@ -114,13 +114,13 @@ SUBSYSTEM_DEF(events)
 
 	dat = normal
 
-	var/datum/browser/popup = new(usr, "force_event", "Force Random Event", 300, 750)
+	var/datum/browser/popup = new(usr, "force_event", "Force Random Event", nwidth = 300, nheight = 750)
 	popup.set_content(dat)
 	popup.open()
 
 /client/proc/toggle_events()
 	set name = "Toggle Events Subsystem"
-	set category = "Fun"
+	set category = "Admin.Events"
 
 	if(!admin_holder ||!check_rights(R_EVENT))
 		return

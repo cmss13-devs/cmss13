@@ -63,7 +63,7 @@
 		if(loc == null || M == null) continue
 		if(loc.z != M.z) continue
 		if(M == loc) continue //device user isn't detected
-		if((isXeno(M) || isYautja(M)) && M.stat == DEAD )
+		if((isxeno(M) || isyautja(M)) && M.stat == DEAD )
 			detected = TRUE
 		else if(ishuman(M) && M.stat == DEAD && M.contents.len)
 			for(var/obj/I in M.contents_twice())

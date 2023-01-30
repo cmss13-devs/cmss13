@@ -221,7 +221,7 @@
 				if(buildstate != 0 || is_on || !fusion_cell)
 					return FALSE
 				user.visible_message(SPAN_NOTICE("[user] pries [src]'s fuel receptacle open and removes the cell."),
-				SPAN_NOTICE("You pry [src]'s fuel receptacle open and remove the cell.."))
+				SPAN_NOTICE("You pry [src]'s fuel receptacle open and remove the cell."))
 				fusion_cell.update_icon()
 				user.put_in_hands(fusion_cell)
 				fusion_cell = null

@@ -68,7 +68,7 @@ of predators), but can be added to include variant game modes (like humans vs. h
 			M = X.current
 			if(!M || !M.loc)
 				M = X.original
-			if(M && M.loc && isXenoQueen(M) && M.stat != DEAD) // Dead queens handled separately
+			if(M && M.loc && isqueen(M) && M.stat != DEAD) // Dead queens handled separately
 				dat += "<br>[X.key] was [M] [SPAN_BOLDNOTICE("(SURVIVED)")]"
 
 		to_world("[dat]")
@@ -144,7 +144,7 @@ of predators), but can be added to include variant game modes (like humans vs. h
 
 // Open podlocks with the given ID if they aren't already opened.
 // DO NOT USE THIS WITH ID's CORRESPONDING TO SHUTTLES OR THEY WILL BREAK!
-/datum/game_mode/proc/open_podlocks(var/podlock_id)
+/datum/game_mode/proc/open_podlocks(podlock_id)
 	for(var/obj/structure/machinery/door/poddoor/M in machines)
 		if(M.id == podlock_id && M.density)
 			M.open()
@@ -158,7 +158,7 @@ var/lastHumanBioscan = 30 MINUTES//30 minutes in (we will add to that!)
 var/nextPredatorBioscan = 5 MINUTES//5 minutes in
 var/nextAdminBioscan = 30 MINUTES//30 minutes in
 
-/datum/game_mode/proc/select_lz(var/obj/structure/machinery/computer/shuttle_control/console)
+/datum/game_mode/proc/select_lz(obj/structure/machinery/computer/shuttle_control/console)
 	if(active_lz)
 		return
 	active_lz = console
@@ -168,7 +168,7 @@ var/nextAdminBioscan = 30 MINUTES//30 minutes in
 	marine_announcement(input, name)
 
 //Delta is the randomness interval, in +/-. Might not be the exact mathematical definition
-/datum/game_mode/proc/announce_bioscans(var/delta = 2)
+/datum/game_mode/proc/announce_bioscans(delta = 2)
 	var/numHostsPlanet = 0
 	var/numHostsShip = 0
 	var/numXenosPlanet = 0
@@ -218,7 +218,7 @@ var/nextAdminBioscan = 30 MINUTES//30 minutes in
 		if(H.mob_flags & NOBIOSCAN)
 			continue
 		var/atom/where = H
-		if(isSpeciesHuman(H))
+		if(isspecieshuman(H))
 			if (where.z == 0 && H.loc)
 				where = H.loc
 			if(where.z in SSmapping.levels_by_any_trait(list(ZTRAIT_GROUND, ZTRAIT_LOWORBIT)))
@@ -255,7 +255,7 @@ var/nextAdminBioscan = 30 MINUTES//30 minutes in
 		var/marine_ship_location = "[RandomHostsShipLocation?", including one in [RandomHostsShipLocation].":"."]"
 		for(var/mob/M in GLOB.player_list)
 			//Announce the numbers to Yautja, they have good scanners
-			if (isYautja(M))
+			if (isyautja(M))
 				to_chat(M, "<h2 class='alert'>Bioscan complete</h2>")
 				to_chat(M, SPAN_ALERT("[numXenosPlanet] serpents present in the hunting ground[xeno_colony_location], with [larva] larva.\n[numXenosShip] serpents present on the human ship[xeno_ship_location]\n[numHostsPlanet] humans present in the hunting ground[marine_colony_location]\n[numHostsShip] humans present on the human ship[marine_ship_location]"))
 
@@ -318,13 +318,13 @@ Only checks living mobs with a client attached.
 
 	for(var/mob/M in GLOB.player_list)
 		if(M.z && (M.z in z_levels) && M.stat != DEAD && !istype(M.loc, /turf/open/space)) //If they have a z var, they are on a turf.
-			if(ishuman(M) && !isYautja(M) && !(M.status_flags & XENO_HOST) && !iszombie(M))
+			if(ishuman(M) && !isyautja(M) && !(M.status_flags & XENO_HOST) && !iszombie(M))
 				var/mob/living/carbon/human/H = M
 				if(((H.species && H.species.name == "Human") || (H.is_important)) && !H.hivenumber) //only real humans count, or those we have set to also be included
 					num_humans++
 			else
 				var/area/A = get_area(M)
-				if(isXeno(M))
+				if(isxeno(M))
 					var/mob/living/carbon/xenomorph/xeno = M
 					if(!xeno.counts_for_roundend)
 						continue

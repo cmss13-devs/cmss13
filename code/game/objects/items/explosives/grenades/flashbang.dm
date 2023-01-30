@@ -52,7 +52,7 @@
 
 	var/turf/T = get_turf(src)
 	for(var/obj/structure/closet/L in hear(7, T))
-		SEND_SIGNAL(L, COMSIG_OBJ_FLASHBANGED, src)
+		SEND_SIGNAL(L, COMSIG_CLOSET_FLASHBANGED, src)
 
 	for(var/mob/living/carbon/M in hear(7, T))
 		bang(T, M)
@@ -66,9 +66,9 @@
 // Added a new proc called 'bang' that takes a location and a person to be banged.
 // Called during the loop that bangs people in lockers/containers and when banging
 // people in normal view.  Could theoretically be called during other explosions.
-/obj/item/explosive/grenade/flashbang/proc/bang(var/turf/T , var/mob/living/carbon/M)
+/obj/item/explosive/grenade/flashbang/proc/bang(turf/T , mob/living/carbon/M)
 
-	if(isXeno(M))
+	if(isxeno(M))
 		return
 
 	to_chat(M, SPAN_WARNING("<B>BANG</B>"))
@@ -231,7 +231,7 @@
 	. = ..()
 	activate()
 
-/obj/item/explosive/grenade/flashbang/noskill/bang(var/turf/T , var/mob/living/M)
+/obj/item/explosive/grenade/flashbang/noskill/bang(turf/T , mob/living/M)
 	if(M.stat == DEAD)
 		return
 
@@ -239,7 +239,7 @@
 
 	//some effects for non-humans
 	if(!ishuman(M))
-		if(isXeno(M))
+		if(isxeno(M))
 			if(get_dist(M, T) <= 4)
 				var/mob/living/carbon/xenomorph/X = M
 				X.Daze(2)

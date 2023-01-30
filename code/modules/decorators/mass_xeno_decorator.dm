@@ -8,7 +8,7 @@
 /datum/decorator/manual/mass_xeno_decorator/get_decor_types()
 	return typesof(/mob/living/carbon/xenomorph) + typesof(/obj/item/clothing/mask/facehugger)
 
-/datum/decorator/manual/mass_xeno_decorator/decorate(var/atom/object)
+/datum/decorator/manual/mass_xeno_decorator/decorate(atom/object)
 	var/obj/item/clothing/mask/facehugger/hugger = object
 	var/mob/living/carbon/xenomorph/xeno = object
 	var/mob/living/carbon/xenomorph/larva/larva = object

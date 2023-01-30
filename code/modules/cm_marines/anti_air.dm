@@ -38,7 +38,7 @@ var/obj/structure/anti_air_cannon/almayer_aa_cannon
 
 	req_one_access = list(ACCESS_MARINE_ENGINEERING, ACCESS_MARINE_BRIDGE)
 
-/obj/structure/machinery/computer/aa_console/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/obj/structure/machinery/computer/aa_console/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_can_pass_all = PASS_ALL

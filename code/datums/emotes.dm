@@ -90,9 +90,12 @@
 		user.say(say_message)
 
 	var/tmp_sound = get_sound(user)
-	if(TIMER_COOLDOWN_CHECK(user, type) || TIMER_COOLDOWN_CHECK(user, COOLDOWN_MOB_AUDIO))
-		to_chat(user, SPAN_NOTICE("You just did an audible emote. Wait awhile."))
+	if(TIMER_COOLDOWN_CHECK(user, type))
+		to_chat(user, SPAN_NOTICE("You just did an emote. Wait awhile."))
+		return
 	else if(tmp_sound && should_play_sound(user, intentional))
+		if(TIMER_COOLDOWN_CHECK(user, COOLDOWN_MOB_AUDIO))
+			return
 		TIMER_COOLDOWN_START(user, type, audio_cooldown)
 		TIMER_COOLDOWN_START(user, COOLDOWN_MOB_AUDIO, 20 SECONDS)
 		playsound(user, tmp_sound, volume, vary)
@@ -141,8 +144,17 @@
 
 	SEND_SIGNAL(user, COMSIG_MOB_EMOTED(key))
 
+
+/**
+ * Handles above-head chat automatically running on an emote.
+ *
+ * Arguments:
+ * * user - Person trying to send the emote
+ * * group - The list of people that will see this emote being
+ */
 /datum/emote/proc/run_langchat(mob/user, list/group)
 	user.langchat_speech(message, group, GLOB.all_languages, skip_language_check = TRUE, additional_styles = list("emote", "langchat_small"))
+
 /**
  * For handling emote cooldown, return true to allow the emote to happen.
  *

@@ -382,8 +382,8 @@
 	density = FALSE
 	anchored = FALSE
 	w_class = SIZE_SMALL
-	force = 0.0
-	throwforce = 0.0
+	force = 0
+	throwforce = 0
 	throw_speed = SPEED_SLOW
 	throw_range = 20
 

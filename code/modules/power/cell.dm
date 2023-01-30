@@ -9,8 +9,8 @@
 	icon_state = "cell"
 	item_state = "cell"
 
-	force = 5.0
-	throwforce = 5.0
+	force = 5
+	throwforce = 5
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 5
 	w_class = SIZE_SMALL

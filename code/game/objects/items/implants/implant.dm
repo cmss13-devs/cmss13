@@ -54,7 +54,7 @@
 /obj/item/implant/tracking
 	name = "tracking implant"
 	desc = "Track with this."
-	var/id = 1.0
+	var/id = 1
 
 /obj/item/implant/tracking/Initialize(mapload, ...)
 	. = ..()

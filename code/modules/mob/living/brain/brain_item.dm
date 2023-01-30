@@ -4,9 +4,9 @@
 	desc = "A piece of juicy meat found in a person's head."
 	icon_state = "brain2"
 	flags_atom = NO_FLAGS
-	force = 1.0
+	force = 1
 	w_class = SIZE_SMALL
-	throwforce = 1.0
+	throwforce = 1
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 5
 

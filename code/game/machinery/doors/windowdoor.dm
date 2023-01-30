@@ -6,7 +6,7 @@
 	layer = WINDOW_LAYER
 	var/base_state = "left"
 	health = 150.0 //If you change this, consiter changing ../door/window/brigdoor/ health at the bottom of this .dm file
-	visible = 0.0
+	visible = 0
 	use_power = USE_POWER_NONE
 	flags_atom = ON_BORDER
 	opacity = FALSE

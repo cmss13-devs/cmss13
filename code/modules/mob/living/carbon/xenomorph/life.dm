@@ -48,7 +48,7 @@
 			if(!got_evolution_message)
 				evolve_message()
 				got_evolution_message = TRUE
-			if(ovipositor_check)
+			if(ROUND_TIME < XENO_ROUNDSTART_PROGRESS_TIME_2)
 				evolution_stored += progress_amount
 		else
 			evolution_stored += progress_amount

@@ -65,7 +65,7 @@
 	var/next_slash_buffed = FALSE
 
 /datum/behavior_delegate/lurker_base/melee_attack_modify_damage(original_damage, mob/living/carbon/target_carbon)
-	if (!isXenoOrHuman(target_carbon))
+	if (!isxeno_human(target_carbon))
 		return original_damage
 
 	if (next_slash_buffed)

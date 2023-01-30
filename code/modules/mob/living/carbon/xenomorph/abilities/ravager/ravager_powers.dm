@@ -258,8 +258,8 @@
 	if (!xeno_owner.check_state())
 		return
 
-	if (!isXenoOrHuman(target) || xeno_owner.can_not_harm(target))
-		to_chat(xeno_owner, SPAN_XENOWARNING("You must target a hostile!"))
+	if (!isxeno_human(A) || X.can_not_harm(A))
+		to_chat(X, SPAN_XENOWARNING("You must target a hostile!"))
 		return
 
 	if (!xeno_owner.Adjacent(target))
@@ -349,7 +349,7 @@
 		xeno.spin_circle()
 
 		for (var/mob/living/carbon/human in orange(xeno, range))
-			if(!isXenoOrHuman(human) || xeno.can_not_harm(human))
+			if(!isxeno_human(human) || xeno.can_not_harm(human))
 				continue
 
 			if (human.stat == DEAD)

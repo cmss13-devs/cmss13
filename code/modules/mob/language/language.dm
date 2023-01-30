@@ -21,7 +21,7 @@
 	var/space_chance = 55 // Likelihood of getting a space in the random scramble string
 	var/list/scramble_cache = list()
 
-/datum/language/proc/broadcast(var/mob/living/speaker,var/message,var/speaker_mask)
+/datum/language/proc/broadcast(mob/living/speaker, message, speaker_mask)
 
 	log_say("[key_name(speaker)] : ([name]) [message]")
 
@@ -39,10 +39,10 @@
 			var/msg = "<i><span class='game say'>[name], <span class='name'>[speaker_mask]</span> <span class='message'>[speech_verb], \"<span class='[colour]'>[message]</span><span class='message'>\"</span></span></span></i>"
 			to_chat(player, "[msg]")
 
-/datum/language/proc/check_special_condition(var/mob/other)
+/datum/language/proc/check_special_condition(mob/other)
 	return 1
 
-/datum/language/proc/get_spoken_verb(var/msg_end)
+/datum/language/proc/get_spoken_verb(msg_end)
 	switch(msg_end)
 		if("!")
 			return exclaim_verb

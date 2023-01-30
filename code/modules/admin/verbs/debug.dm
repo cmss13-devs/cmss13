@@ -18,7 +18,7 @@
 	usr.show_message(t, SHOW_MESSAGE_VISIBLE)
 
 
-/client/proc/cmd_admin_robotize(var/mob/M in GLOB.mob_list)
+/client/proc/cmd_admin_robotize(mob/M in GLOB.mob_list)
 	set category = null
 	set name = "Make Robot"
 
@@ -33,7 +33,7 @@
 	else
 		alert("Invalid mob")
 
-/client/proc/cmd_admin_animalize(var/mob/M in GLOB.mob_list)
+/client/proc/cmd_admin_animalize(mob/M in GLOB.mob_list)
 	set category = null
 	set name = "Make Simple Animal"
 
@@ -53,7 +53,7 @@
 	spawn(10)
 		M.Animalize()
 
-/client/proc/cmd_admin_alienize(var/mob/M in GLOB.mob_list)
+/client/proc/cmd_admin_alienize(mob/M in GLOB.mob_list)
 	set category = null
 	set name = "Make Alien"
 
@@ -134,7 +134,7 @@
 	message_staff("[key_name_admin(src)] has remade the powernets. makepowernets() called.", 0)
 
 
-/client/proc/cmd_admin_grantfullaccess(var/mob/M in GLOB.mob_list)
+/client/proc/cmd_admin_grantfullaccess(mob/M in GLOB.mob_list)
 	set category = null
 	set name = "Grant Full Access"
 
@@ -165,7 +165,7 @@
 
 	message_staff("[key_name_admin(usr)] has granted [M.key] full access.")
 
-/client/proc/cmd_admin_grantallskills(var/mob/M in GLOB.mob_list)
+/client/proc/cmd_admin_grantallskills(mob/M in GLOB.mob_list)
 	set category = null
 	set name = "Give Null Skills"
 
@@ -229,7 +229,7 @@
 		account_user.mind.store_memory(remembered_info)
 		account_user.mind.initial_account = generated_account
 
-/client/proc/cmd_assume_direct_control(var/mob/M in GLOB.mob_list)
+/client/proc/cmd_assume_direct_control(mob/M in GLOB.mob_list)
 	set name = "Control Mob"
 	set desc = "Assume control of the mob"
 	set category = null

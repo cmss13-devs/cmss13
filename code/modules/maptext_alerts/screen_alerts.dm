@@ -10,7 +10,7 @@
 * These are ported from TGMC and are hopefully more flexible than text blurbs
 */
 
-/mob/proc/play_screen_text(text, alert_type = /atom/movable/screen/text/screen_text, var/override_color = "#FFFFFF")
+/mob/proc/play_screen_text(text, alert_type = /atom/movable/screen/text/screen_text, override_color = "#FFFFFF")
 	if(!client)
 		return
 	var/atom/movable/screen/text/screen_text/text_box = new alert_type()

@@ -516,7 +516,7 @@
 
 /obj/item/toy/festivizer/get_examine_text(mob/user)
 	. = ..()
-	. += SPAN_BOLDNOTICE("You see another label on \the [src] that says: <i> INCLUDES SUPPORT FOR FOREIGN BIOFORMS! </i> You're not sure you like the sound of that..")
+	. += SPAN_BOLDNOTICE("You see another label on \the [src] that says: <i> INCLUDES SUPPORT FOR FOREIGN BIOFORMS! </i> You're not sure you like the sound of that.")
 
 /obj/item/toy/festivizer/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
 	. = ..()

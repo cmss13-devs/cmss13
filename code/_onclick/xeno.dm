@@ -69,7 +69,7 @@
 					SPAN_DANGER("You swipe at \the [target]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	return TRUE
 
-/mob/living/carbon/xenomorph/RangedAttack(var/atom/A)
+/mob/living/carbon/xenomorph/RangedAttack(atom/A)
 	. = ..()
 	if (.)
 		return
@@ -89,7 +89,7 @@ so that it doesn't double up on the delays) so that it applies the delay immedia
 /atom/proc/attack_alien(mob/user as mob)
 	return
 
-/mob/living/carbon/xenomorph/click(var/atom/A, var/list/mods)
+/mob/living/carbon/xenomorph/click(atom/A, list/mods)
 	if (queued_action)
 		handle_queued_action(A)
 		return TRUE

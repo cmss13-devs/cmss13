@@ -48,28 +48,28 @@
 	icon_xeno = 'icons/mob/xenos/larva.dmi'
 	icon_xenonid = 'icons/mob/xenonids/larva.dmi'
 
-/mob/living/carbon/xenomorph/larva/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/mob/living/carbon/xenomorph/larva/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_pass = PASS_MOB_THRU|PASS_FLAGS_CRAWLER
 		PF.flags_can_pass_all = PASS_ALL^PASS_OVER_THROW_ITEM
 
-/mob/living/carbon/xenomorph/larva/Corrupted
+/mob/living/carbon/xenomorph/larva/corrupted
 	hivenumber = XENO_HIVE_CORRUPTED
 
-/mob/living/carbon/xenomorph/larva/Alpha
+/mob/living/carbon/xenomorph/larva/alpha
 	hivenumber = XENO_HIVE_ALPHA
 
-/mob/living/carbon/xenomorph/larva/Bravo
+/mob/living/carbon/xenomorph/larva/bravo
 	hivenumber = XENO_HIVE_BRAVO
 
-/mob/living/carbon/xenomorph/larva/Gamma
+/mob/living/carbon/xenomorph/larva/charlie
 	hivenumber = XENO_HIVE_CHARLIE
 
-/mob/living/carbon/xenomorph/larva/Delta
+/mob/living/carbon/xenomorph/larva/delta
 	hivenumber = XENO_HIVE_DELTA
 
-/mob/living/carbon/xenomorph/larva/Mutated
+/mob/living/carbon/xenomorph/larva/mutated
 	hivenumber = XENO_HIVE_MUTATED
 
 /mob/living/carbon/xenomorph/larva/predalien
@@ -149,7 +149,7 @@
 	A.attack_larva(src)
 	xeno_attack_delay(src) //Adds some lag to the 'attack'
 
-/proc/spawn_hivenumber_larva(var/atom/A, var/hivenumber)
+/proc/spawn_hivenumber_larva(atom/A, hivenumber)
 	if(!GLOB.hive_datum[hivenumber] || isnull(A))
 		return
 

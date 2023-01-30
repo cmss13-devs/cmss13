@@ -11,8 +11,8 @@
 		new /datum/effects/xeno_slow(carbon_target, xeno_owner, ttl = 3.5 SECONDS)
 		to_chat(carbon_target, SPAN_XENODANGER("You are slowed as the impact of [xeno_owner] shakes the ground!"))
 
-/datum/action/xeno_action/activable/pounce/crusher_charge/additional_effects(mob/living/target)
-	if (!isXenoOrHuman(target))
+/datum/action/xeno_action/activable/pounce/crusher_charge/additional_effects(mob/living/L)
+	if (!isxeno_human(L))
 		return
 
 	var/mob/living/carbon/carbon_target = target
@@ -43,7 +43,7 @@
 	is_charging = TRUE
 	xeno_owner.update_icons()
 
-/datum/action/xeno_action/activable/pounce/crusher_charge/post_windup_effects(var/interrupted)
+/datum/action/xeno_action/activable/pounce/crusher_charge/post_windup_effects(interrupted)
 	..()
 	UnregisterSignal(owner, COMSIG_XENO_PRE_CALCULATE_ARMOURED_DAMAGE_PROJECTILE)
 	var/mob/living/carbon/xenomorph/xeno_owner = owner

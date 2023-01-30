@@ -25,15 +25,15 @@
 		flagIndex+=1
 	return Borgwires
 
-/mob/living/silicon/robot/proc/isWireColorCut(var/wireColor)
+/mob/living/silicon/robot/proc/isWireColorCut(wireColor)
 	var/wireFlag = BorgWireColorToFlag[wireColor]
 	return ((src.borgwires & wireFlag) == 0)
 
-/mob/living/silicon/robot/proc/isWireCut(var/wireIndex)
+/mob/living/silicon/robot/proc/isWireCut(wireIndex)
 	var/wireFlag = BorgIndexToFlag[wireIndex]
 	return ((src.borgwires & wireFlag) == 0)
 
-/mob/living/silicon/robot/proc/cut(var/wireColor)
+/mob/living/silicon/robot/proc/cut(wireColor)
 	var/wireFlag = BorgWireColorToFlag[wireColor]
 	var/wireIndex = BorgWireColorToIndex[wireColor]
 	borgwires &= ~wireFlag
@@ -51,7 +51,7 @@
 
 	src.interact(usr)
 
-/mob/living/silicon/robot/proc/mend(var/wireColor)
+/mob/living/silicon/robot/proc/mend(wireColor)
 	var/wireFlag = BorgWireColorToFlag[wireColor]
 	var/wireIndex = BorgWireColorToIndex[wireColor]
 	borgwires |= wireFlag
@@ -66,7 +66,7 @@
 	src.interact(usr)
 
 
-/mob/living/silicon/robot/proc/pulse(var/wireColor)
+/mob/living/silicon/robot/proc/pulse(wireColor)
 	var/wireIndex = BorgWireColorToIndex[wireColor]
 	switch(wireIndex)
 		if(BORG_WIRE_LAWCHECK) //Forces a law update if the borg is set to receive them. Since an update would happen when the borg checks its laws anyway, not much use, but eh

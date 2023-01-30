@@ -4828,7 +4828,7 @@
 /area/strata/ag/interior/restricted/devroom)
 "anO" = (
 /obj/structure/bedsheetbin,
-/obj/item/clothing/gloves/marine/veteran/PMC,
+/obj/item/clothing/gloves/marine/veteran/pmc,
 /turf/open/floor/strata{
 	icon_state = "blue1"
 	},
@@ -9060,7 +9060,7 @@
 	tag = "icon-xgib4"
 	},
 /obj/effect/decal/cleanable/blood/gibs/body,
-/obj/item/explosive/grenade/HE/upp,
+/obj/item/explosive/grenade/high_explosive/upp,
 /obj/item/stack/rods,
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
@@ -21308,7 +21308,7 @@
 	},
 /area/strata/ag/interior/outpost/med)
 "boO" = (
-/obj/item/explosive/grenade/HE/upp,
+/obj/item/explosive/grenade/high_explosive/upp,
 /obj/effect/decal/cleanable/blood/gibs/body,
 /obj/effect/decal/cleanable/blood{
 	icon_state = "xgib2";
@@ -39970,7 +39970,7 @@
 	icon_state = "xgib6";
 	tag = "icon-xgib6"
 	},
-/obj/item/explosive/grenade/HE/upp,
+/obj/item/explosive/grenade/high_explosive/upp,
 /obj/effect/decal/cleanable/blood/gibs/limb,
 /turf/open/floor/strata{
 	dir = 10;
@@ -40487,7 +40487,7 @@
 	},
 /area/strata/ag/interior/tcomms)
 "tdB" = (
-/obj/item/explosive/grenade/HE/upp,
+/obj/item/explosive/grenade/high_explosive/upp,
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/blood{
 	icon_state = "xgib6";

@@ -705,6 +705,7 @@
 		<A href='?src=\ref[src];[HrefToken()];events=blackout'>Break all lights</A><BR>
 		<A href='?src=\ref[src];[HrefToken()];events=whiteout'>Repair all lights</A><BR>
 		<A href='?src=\ref[src];[HrefToken()];events=comms_blackout'>Trigger a Communication Blackout</A><BR>
+		<A href='?src=\ref[src];[HrefToken()];events=destructible_terrain'>Toggle destructible terrain</A><BR>
 		<BR>
 		<B>Misc</B><BR>
 		<A href='?src=\ref[src];[HrefToken()];events=medal'>Award a medal</A><BR>
@@ -758,7 +759,7 @@
 	return
 
 /datum/admins/var/create_humans_html = null
-/datum/admins/proc/create_humans(var/mob/user)
+/datum/admins/proc/create_humans(mob/user)
 	if(!GLOB.gear_name_presets_list)
 		return
 
@@ -777,7 +778,7 @@
 		admin_holder.create_humans(usr)
 
 /datum/admins/var/create_xenos_html = null
-/datum/admins/proc/create_xenos(var/mob/user)
+/datum/admins/proc/create_xenos(mob/user)
 	if(!create_xenos_html)
 		var/hive_types = jointext(ALL_XENO_HIVES, ";")
 		var/xeno_types = jointext(ALL_XENO_CASTES, ";")

@@ -26,7 +26,7 @@
 	unacidable = TRUE//Just to be sure.
 	var/def_zone
 
-/obj/effect/beam/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/obj/effect/beam/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_pass = PASS_OVER|PASS_THROUGH
@@ -72,7 +72,7 @@
 	icon_state = "exhaust"
 	anchored = TRUE
 
-/obj/effect/engine_exhaust/New(var/turf/nloc, var/ndir, var/temp)
+/obj/effect/engine_exhaust/New(turf/nloc, ndir, temp)
 	setDir(ndir)
 	..(nloc)
 

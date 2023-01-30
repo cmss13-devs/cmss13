@@ -14,7 +14,7 @@
 	lying_required = FALSE
 	self_operable = TRUE
 
-/datum/surgery/mcomp_wounds/can_start(mob/living/carbon/human/user, mob/living/carbon/human/patient, var/obj/limb/L, obj/item/tool)
+/datum/surgery/mcomp_wounds/can_start(mob/living/carbon/human/user, mob/living/carbon/human/patient, obj/limb/L, obj/item/tool)
 	if((istype(user) && HAS_TRAIT(user, TRAIT_YAUTJA_TECH)) && (patient.getBruteLoss() || patient.getFireLoss()))
 		return TRUE
 	return FALSE
@@ -47,7 +47,7 @@
 /datum/surgery_step/mstabilize_wounds/success(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	target.heal_overall_damage(40,40)
 
-	if(isSpeciesYautja(target))
+	if(isspeciesyautja(target))
 		target.emote("click2")
 	else
 		target.emote("pain")
@@ -98,7 +98,7 @@
 /datum/surgery_step/mtend_wounds/success(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	target.heal_overall_damage(65,65)
 
-	if(isSpeciesYautja(target))
+	if(isspeciesyautja(target))
 		target.emote("click")
 	else
 		target.emote("pain")
@@ -156,7 +156,7 @@
 			SPAN_HELPFUL("[user] finished closing your treated wounds with \the [tool]."),
 			SPAN_NOTICE("[user] finished closing [target]'s treated wounds with \the [tool]."))
 
-	if(isYautja(target))
+	if(isyautja(target))
 		target.emote("loudroar")
 	else
 		target.emote("pain")

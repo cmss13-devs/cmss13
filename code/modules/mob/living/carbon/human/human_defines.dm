@@ -167,7 +167,7 @@
 
 /client/var/cached_human_playtime
 
-/client/proc/get_total_human_playtime(var/skip_cache = FALSE)
+/client/proc/get_total_human_playtime(skip_cache = FALSE)
 	if(cached_human_playtime && !skip_cache)
 		return cached_human_playtime
 

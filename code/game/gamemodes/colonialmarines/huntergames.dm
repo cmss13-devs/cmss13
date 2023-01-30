@@ -3,7 +3,7 @@
 								100; list(/obj/item/weapon/melee/twohanded/yautja/glaive, /obj/item/clothing/mask/gas/yautja/hunter, /obj/item/clothing/suit/armor/yautja/hunter,/obj/item/clothing/shoes/yautja/hunter), \
 								50; list(/obj/item/weapon/melee/yautja/combistick, /obj/item/clothing/mask/gas/yautja/hunter, /obj/item/clothing/suit/armor/yautja/hunter/full,/obj/item/clothing/shoes/yautja/hunter), \
 								150; list(/obj/item/stack/medical/advanced/ointment, /obj/item/stack/medical/advanced/bruise_pack, /obj/item/storage/belt/medical/lifesaver/full), \
-								50; list(/obj/item/clothing/under/marine/veteran/PMC/commando, /obj/item/clothing/suit/storage/marine/veteran/PMC/commando, /obj/item/clothing/gloves/marine/veteran/PMC/commando, /obj/item/clothing/shoes/veteran/PMC/commando, /obj/item/clothing/head/helmet/marine/veteran/PMC/commando), \
+								50; list(/obj/item/clothing/under/marine/veteran/pmc/commando, /obj/item/clothing/suit/storage/marine/veteran/pmc/commando, /obj/item/clothing/gloves/marine/veteran/pmc/commando, /obj/item/clothing/shoes/veteran/pmc/commando, /obj/item/clothing/head/helmet/marine/veteran/pmc/commando), \
 								125; list(/obj/item/weapon/melee/yautja/chain, /obj/item/weapon/melee/yautja/knife, /obj/item/weapon/melee/yautja/scythe, /obj/item/hunting_trap, /obj/item/hunting_trap), \
 								75; list(/obj/item/weapon/gun/revolver/mateba/general, /obj/item/ammo_magazine/revolver/mateba, /obj/item/ammo_magazine/revolver/mateba, /obj/item/clothing/mask/balaclava/tactical), \
 								50; list(/obj/item/weapon/shield/energy, /obj/item/weapon/melee/energy/axe, /obj/item/clothing/under/chainshirt/hunter, /obj/item/clothing/head/helmet/gladiator, /obj/item/clothing/suit/armor/gladiator) \
@@ -24,13 +24,13 @@
 								25; /obj/item/explosive/grenade/flashbang, \
 								25; /obj/item/hunting_trap, \
 								50; /obj/item/explosive/plastic, \
-								100; /obj/item/explosive/grenade/HE, \
-								100; /obj/item/explosive/grenade/HE/frag, \
+								100; /obj/item/explosive/grenade/high_explosive, \
+								100; /obj/item/explosive/grenade/high_explosive/frag, \
 								100; /obj/item/explosive/grenade/incendiary, \
 \
 								170; /obj/item/clothing/suit/armor/vest/security, \
 								165; /obj/item/clothing/head/helmet/riot, \
-								160; /obj/item/clothing/gloves/marine/veteran/PMC, \
+								160; /obj/item/clothing/gloves/marine/veteran/pmc, \
 \
 								50; /obj/item/storage/firstaid/regular, \
 								50; /obj/item/storage/firstaid/fire, \
@@ -197,7 +197,7 @@ var/waiting_for_drop_votes = 0
 
 	spawn(10)
 		to_world("<B>The current game mode is - HUNTER GAMES!</B>")
-		to_world("You have been dropped off on a Weyland-Yutani colony overrun with alien Predators who have turned it into a game preserve..")
+		to_world("You have been dropped off on a Weyland-Yutani colony overrun with alien Predators who have turned it into a game preserve.")
 		to_world("And you are both the hunter and the hunted!")
 		to_world("Be the <B>last survivor</b> and <B>win glory</B>! Fight in any way you can! Team up or be a loner, it's up to you.")
 		to_world("Be warned though - if someone hasn't died in 3 minutes, the watching Predators get irritated!")
@@ -208,7 +208,7 @@ var/waiting_for_drop_votes = 0
 
 	return ..()
 
-/datum/game_mode/huntergames/proc/spawn_contestant(var/mob/M)
+/datum/game_mode/huntergames/proc/spawn_contestant(mob/M)
 
 	var/mob/living/carbon/human/H
 	var/turf/picked
@@ -219,7 +219,7 @@ var/waiting_for_drop_votes = 0
 		if(GLOB.hunter_secondaries.len)
 			picked = get_turf(pick_n_take(GLOB.hunter_secondaries))
 		else
-			message_admins("There were no spawn points available for a contestant..")
+			message_admins("There were no spawn points available for a contestant.")
 
 	if(QDELETED(picked)) //???
 		message_admins("Warning, null picked spawn in spawn_contestant")
@@ -262,10 +262,10 @@ var/waiting_for_drop_votes = 0
 		if(3) //CL
 			H.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit(H), WEAR_BODY)
 			H.equip_to_slot_or_del(new /obj/item/clothing/shoes/laceup(H), WEAR_FEET)
-		if(4) //PMC!
-			H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/PMC(H), WEAR_BODY)
+		if(4) //pmc!
+			H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/pmc(H), WEAR_BODY)
 			H.equip_to_slot_or_del(new /obj/item/clothing/shoes/laceup(H), WEAR_FEET)
-			H.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/PMC(H), WEAR_FACE)
+			H.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/pmc(H), WEAR_FACE)
 		if(5) //Merc!
 			H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/dutch(H), WEAR_BODY)
 			if(prob(50))
@@ -399,7 +399,7 @@ var/waiting_for_drop_votes = 0
 	var/mob/living/carbon/winner = null
 
 	for(var/mob/living/carbon/human/Q in GLOB.alive_mob_list)
-		if(istype(Q) && Q.stat == 0 && !isYautja(Q) && !istype(get_area(Q.loc),/area/centcom) && !istype(get_area(Q.loc),/area/tdome))
+		if(istype(Q) && Q.stat == 0 && !isyautja(Q) && !istype(get_area(Q.loc),/area/centcom) && !istype(get_area(Q.loc),/area/tdome))
 			winner = Q
 			break
 

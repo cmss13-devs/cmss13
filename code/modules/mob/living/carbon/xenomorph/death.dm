@@ -1,6 +1,6 @@
 #define DELETE_TIME 1800
 
-/mob/living/carbon/xenomorph/death(var/cause, var/gibbed)
+/mob/living/carbon/xenomorph/death(cause, gibbed)
 	var/msg = "lets out a waning guttural screech, green blood bubbling from its maw."
 	. = ..(cause, gibbed, msg)
 	if(!.)
@@ -27,7 +27,7 @@
 		update_icons()
 
 	if(!is_admin_level(z)) //so xeno players don't get death messages from admin tests
-		if(isXenoQueen(src))
+		if(isqueen(src))
 			var/mob/living/carbon/xenomorph/queen/XQ = src
 			playsound(loc, 'sound/voice/alien_queen_died.ogg', 75, 0)
 			if(XQ.observed_xeno)
@@ -119,7 +119,7 @@
 
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_XENO_DEATH, src, gibbed)
 
-/mob/living/carbon/xenomorph/gib(var/cause = "gibbing")
+/mob/living/carbon/xenomorph/gib(cause = "gibbing")
 	var/obj/effect/decal/remains/xeno/remains = new(get_turf(src))
 	remains.icon = icon
 	remains.pixel_x = pixel_x //For 2x2.

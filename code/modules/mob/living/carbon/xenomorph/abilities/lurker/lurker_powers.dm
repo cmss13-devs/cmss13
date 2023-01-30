@@ -100,17 +100,18 @@
 /datum/action/xeno_action/activable/pounce/rush/additional_effects(mob/living/living_target) //pounce effects
 	var/mob/living/carbon/target = living_target
 	var/mob/living/carbon/xenomorph/xeno = owner
-	target.apply_effect(5, DAZE)
 	target.sway_jitter(times = 2)
+	xeno.animation_attack_on(target)
 	xeno.flick_attack_overlay(target, "slash")   //fake slash to prevent disarm abuse
 	target.last_damage_data = create_cause_data(xeno.caste_type, xeno)
-	target.apply_armoured_damage(30, ARMOR_MELEE, BRUTE)
+	target.apply_armoured_damage(get_xeno_damage_slash(target, xeno.caste.melee_damage_upper), ARMOR_MELEE, BRUTE, "chest")
 	playsound(get_turf(target), 'sound/weapons/alien_claw_flesh3.ogg', 30, TRUE)
 	shake_camera(target, 2, 1)
-	apply_cooldown_override(40)
+	apply_cooldown(0.65)
 
 /datum/action/xeno_action/activable/flurry/use_ability(atom/targeted_atom) //flurry ability
 	var/mob/living/carbon/xenomorph/xeno = owner
+
 	if (!istype(xeno))
 		return
 	if (!xeno.check_state())
@@ -118,7 +119,7 @@
 	if (!action_cooldown_check())
 		return
 
-	xeno.visible_message(SPAN_DANGER("[xeno] slashes frantically the area in front of it!"), \
+	xeno.visible_message(SPAN_DANGER("[xeno] drags its claws in a wide area in front of it!"), \
 	SPAN_XENOWARNING("You unleash a barrage of slashes!"))
 	playsound(xeno, 'sound/effects/alien_tail_swipe2.ogg', 30)
 	apply_cooldown()
@@ -134,6 +135,7 @@
 	var/turf/infront = get_step(root, facing)
 	var/turf/infront_left = get_step(root, turn(facing, 45))
 	var/turf/infront_right = get_step(root, turn(facing, -45))
+
 	temp_turfs += infront
 	if (!(!infront || infront.density))
 		temp_turfs += infront_left
@@ -156,98 +158,198 @@
 			if (target.stat == DEAD)
 				continue
 
-			if (!isXenoOrHuman(target) || xeno.can_not_harm(target))
+			if (!isxeno_human(target) || xeno.can_not_harm(target))
 				continue
 
-			xeno.visible_message(SPAN_DANGER("[xeno] scratches [target] all around its body!"), \
+			xeno.visible_message(SPAN_DANGER("[xeno] slashes [target]!"), \
 			SPAN_XENOWARNING("You slash [target] multiple times!"))
 			xeno.flick_attack_overlay(target, "slash")
 			target.last_damage_data = create_cause_data(xeno.caste_type, xeno)
 			log_attack("[key_name(xeno)] attacked [key_name(target)] with Flurry")
-			target.apply_armoured_damage(30, ARMOR_MELEE, BRUTE)
+			target.apply_armoured_damage(get_xeno_damage_slash(target, xeno.caste.melee_damage_upper), ARMOR_MELEE, BRUTE, xeno.zone_selected)
 			playsound(get_turf(target), 'sound/weapons/alien_claw_flesh4.ogg', 30, TRUE)
 			xeno.flick_heal_overlay(1 SECONDS, "#00B800")
 			xeno.gain_health(30)
+			xeno.animation_attack_on(target)
+
 	xeno.emote("roar")
 	..()
 	return
 
-/datum/action/xeno_action/activable/tail_jab/use_ability(atom/targeted_atom)
+/datum/action/xeno_action/activable/tail_jab/use_ability(atom/target_atom)
 	var/mob/living/carbon/xenomorph/xeno = owner
-	var/mob/living/carbon/target = targeted_atom
-	var/distance = get_dist(xeno, target)
 
-	if(!action_cooldown_check())
+	if (!action_cooldown_check())
 		return
 
-	if(!xeno.check_state())
+	if (!xeno.check_state())
 		return
 
-	if(distance > 2)
+	if(xeno.mutation_type != LURKER_VAMPIRE)
 		return
 
-	var/list/turf/path = getline2(xeno, target, include_from_atom = FALSE)
-	for(var/turf/path_turf as anything in path)
-		if(path_turf.density)
-			to_chat(xeno, SPAN_WARNING("There's something blocking you from striking!"))
-			return
-		var/atom/barrier = path_turf.handle_barriers(A = xeno , pass_flags = (PASS_MOB_THRU_XENO|PASS_OVER_THROW_MOB|PASS_TYPE_CRAWLER))
-		if(barrier != path_turf)
-			to_chat(xeno, SPAN_WARNING("There's something blocking you from striking!"))
-			return
-		for(var/obj/structure/current_structure in path_turf)
-			if(istype(current_structure, /obj/structure/window/framed))
-				var/obj/structure/window/framed/target_window = current_structure
-				if(target_window.unslashable)
-					return
-				playsound(get_turf(target_window),'sound/effects/glassbreak3.ogg', 30, TRUE)
-				target_window.shatter_window(TRUE)
-				xeno.visible_message(SPAN_XENOWARNING("\The [xeno] strikes the window with their tail!"), SPAN_XENOWARNING("You strike the window with your tail!"))
-				apply_cooldown(cooldown_modifier = 0.5)
-				return
+	xeno.emote("tail")
 
-	if(!isXenoOrHuman(target) || xeno.can_not_harm(target))
-		xeno.visible_message(SPAN_XENOWARNING("\The [xeno] swipes their tail through the air!"), SPAN_XENOWARNING("You swipe your tail through the air!"))
-		apply_cooldown(cooldown_modifier = 0.2)
-		playsound(xeno, 'sound/effects/alien_tail_swipe1.ogg', 50, TRUE)
+// Get line of turfs
+	var/list/turf/target_turfs = list()
+
+	var/facing = Get_Compass_Dir(xeno, target_atom)
+	var/turf/var_turf = xeno.loc
+	var/turf/temp = xeno.loc
+	var/list/telegraph_atom_list = list()
+
+	var/detached = FALSE
+
+	for (var/x in 1 to 2)
+		temp = get_step(var_turf, facing)
+		if(facing in diagonals) // check if it goes through corners
+			var/reverse_face = reverse_dir[facing]
+			var/turf/back_left = get_step(temp, turn(reverse_face, 45))
+			var/turf/back_right = get_step(temp, turn(reverse_face, -45))
+			if((!back_left || back_left.density) && (!back_right || back_right.density))
+				break
+		if(!temp || temp.density || temp.opacity)
+			break
+
+		var/blocked = FALSE
+		for(var/obj/structure/S in temp)
+			if(S.opacity || (istype(S, /obj/structure/barricade) && S.density))
+				blocked = TRUE
+				break
+		if(blocked)
+			break
+
+		var_turf = temp
+
+		if (var_turf in target_turfs)
+			break
+
+		if(get_turf(target_atom) == var_turf) // If the turf we're on is the same as the target atom, we 'detach' from the target atom so the ability continues without stopping suddenly.
+			detached = TRUE
+		if(!detached)
+			facing = Get_Compass_Dir(var_turf, target_atom)
+		target_turfs += var_turf
+		telegraph_atom_list += new /obj/effect/xenomorph/xeno_telegraph/red(var_turf, 0.25 SECONDS)
+
+	if(length(target_turfs))
+		xeno.animation_attack_on(target_turfs[target_turfs.len], pixel_offset = 16)
+
+	var/mob/living/carbon/hit_target
+	for (var/turf/target_turf as anything in target_turfs)
+		if(hit_target)
+			break
+
+		for (var/mob/living/carbon/carbone in target_turf)
+			if (carbone.stat == DEAD || xeno.can_not_harm(carbone))
+				continue
+			hit_target = carbone
+			break
+
+	if(!hit_target)
+		apply_cooldown()
 		return
 
-	if(target.stat == DEAD)
-		return
+	// Variables to buff if it's a direct aimed hit.
+	var/heal_amount = 30
+	var/slam_damage = get_xeno_damage_slash(hit_target, xeno.caste.melee_damage_upper)
 
-	if(target.knocked_out || target.stat == UNCONSCIOUS) //called knocked out because for some reason .stat seems to have a delay .
-		if(!xeno.Adjacent(target))
-			to_chat(xeno, SPAN_XENONOTICE("You cannot execute [target] from that far away."))
-			return
-		if(xeno.action_busy)
-			return
-		xeno.visible_message(SPAN_DANGER("[xeno] grabs [target]’s head aggressively."), \
-		SPAN_XENOWARNING("You grab [target]’s head aggressively."), max_distance = 5)
-		if(!do_after(xeno, 10, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
-			return
-		if(target.stat == DEAD)
-			return
-		to_chat(xeno, SPAN_XENOHIGHDANGER("You pierce [target]’s head with your inner jaw."))
-		xeno.visible_message(SPAN_DANGER("[xeno] pierces [target]’s head with its inner jaw."))
-		playsound(target,'sound/weapons/alien_bite2.ogg', 50, 1)
-		xeno.flick_attack_overlay(target, "tail")
-		target.apply_armoured_damage(80, ARMOR_MELEE, BRUTE, "head", 5)
-		target.death() //just in case
-		xeno.gain_health(150)
-		xeno.xeno_jitter(1 SECONDS)
-		xeno.flick_heal_overlay(3 SECONDS, "#00B800")
-		target.last_damage_data = create_cause_data(xeno.caste_type, xeno)
-		log_attack("[key_name(xeno)] executed [key_name(target)] with a headbite")
-		xeno.emote("roar")
-		return // no cooldown in executions
+	// FX
+	var/stab_direction
+	var/stab_overlay
 
+	if(hit_target == target_atom) //bonus if they aim!
+		to_chat(xeno, SPAN_XENOHIGHDANGER("You directly slam [hit_target] with your tail, throwing it back after impaling it on your tail!"))
+		playsound(hit_target,'sound/weapons/alien_tail_attack.ogg', 50, TRUE)
 
-	to_chat(xeno, SPAN_XENOHIGHDANGER("You stab [target] with your tail, pushing it backwards."))
-	xeno.flick_attack_overlay(target, "tail")
-	playsound(target,'sound/weapons/alien_claw_block.ogg', 50, 1)
-	target.apply_armoured_damage(30 , ARMOR_MELEE, BRUTE, "chest")
-	target.KnockDown(0.5, 0.5)
-	target.last_damage_data = create_cause_data(xeno.caste_type, xeno)
-	log_attack("[key_name(xeno)] attacked [key_name(target)] with Tail Jab")
-	step_away(target, xeno, 2, 2)
+		heal_amount *= 1.5
+		slam_damage *= 1.5
+
+		stab_direction = turn(get_dir(xeno, hit_target), 180)
+		stab_overlay = "tail"
+
+		if(hit_target.mob_size < MOB_SIZE_BIG)
+			xeno_throw_human(hit_target, xeno, get_dir(xeno, hit_target), 1) // only a 'real' throw if it's a direct hit. Same distance
+
+	else
+		to_chat(xeno, SPAN_XENOHIGHDANGER("You slam [hit_target] with your tail and push it backwards!"))
+		playsound(hit_target,'sound/weapons/alien_claw_block.ogg', 50, TRUE)
+
+		stab_direction = turn(xeno.dir, pick(90, -90))
+		stab_overlay = "slam"
+
+		if(hit_target.mob_size < MOB_SIZE_BIG)
+			step_away(hit_target, xeno)
+
+	/// To reset the direction if they haven't moved since then in below callback.
+	var/last_dir = xeno.dir
+
+	xeno.setDir(stab_direction)
+	xeno.flick_attack_overlay(hit_target, stab_overlay)
+
+	var/new_dir = xeno.dir
+	addtimer(CALLBACK(src, PROC_REF(reset_direction), xeno, last_dir, new_dir), 0.5 SECONDS)
+
+	hit_target.apply_armoured_damage(slam_damage, ARMOR_MELEE, BRUTE, "chest")
+
+	if(hit_target.mob_size < MOB_SIZE_BIG)
+		hit_target.apply_effect(0.5, WEAKEN)
+	else
+		hit_target.apply_effect(0.5, SLOW)
+
+	hit_target.last_damage_data = create_cause_data(xeno.caste_type, xeno)
+	log_attack("[key_name(xeno)] attacked [key_name(hit_target)] with Tail Jab")
+
 	apply_cooldown()
+	..()
+	return
+
+/datum/action/xeno_action/activable/tail_jab/proc/reset_direction(mob/living/carbon/xenomorph/xeno, last_dir, new_dir)
+	// If the xenomorph is still holding the same direction as the tail stab animation's changed it to, reset it back to the old direction so the xenomorph isn't stuck facing backwards.
+	if(new_dir == xeno.dir)
+		xeno.setDir(last_dir)
+
+/datum/action/xeno_action/activable/headbite/use_ability(atom/target_atom)
+	var/mob/living/carbon/xenomorph/xeno = owner
+
+	if(!iscarbon(target_atom))
+		return
+
+	var/mob/living/carbon/target_carbon = target_atom
+
+	if(xeno.can_not_harm(target_carbon))
+		return
+
+	if(!(target_carbon.knocked_out || target_carbon.stat == UNCONSCIOUS)) //called knocked out because for some reason .stat seems to have a delay .
+		to_chat(xeno, SPAN_XENOHIGHDANGER("You can only headbite an unconscious, adjacent target!"))
+		return
+
+	if(!xeno.Adjacent(target_carbon))
+		to_chat(xeno, SPAN_XENOHIGHDANGER("You can only headbite an unconscious, adjacent target!"))
+		return
+
+	if(xeno.action_busy)
+		return
+
+	xeno.visible_message(SPAN_DANGER("[xeno] grabs [target_carbon]’s head aggressively."), \
+	SPAN_XENOWARNING("You grab [target_carbon]’s head aggressively."))
+
+	if(!do_after(xeno, 0.8 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, numticks = 2)) // would be 0.75 but that doesn't really work with numticks
+		return
+
+	if(target_carbon.stat == DEAD)
+		to_chat(xeno, SPAN_XENODANGER("They died before you could finish headbiting them! Be more careful next time!"))
+		return
+
+	to_chat(xeno, SPAN_XENOHIGHDANGER("You pierce [target_carbon]’s head with your inner jaw!"))
+	playsound(target_carbon,'sound/weapons/alien_bite2.ogg', 50, TRUE)
+	xeno.visible_message(SPAN_DANGER("[xeno] pierces [target_carbon]’s head with its inner jaw!"))
+	xeno.flick_attack_overlay(target_carbon, "headbite")
+	xeno.animation_attack_on(target_carbon, pixel_offset = 16)
+	target_carbon.apply_armoured_damage(200, ARMOR_MELEE, BRUTE, "head", 5) //DIE
+	target_carbon.death(create_cause_data("executed by headbite", xeno), FALSE)
+	xeno.gain_health(150)
+	xeno.xeno_jitter(1 SECONDS)
+	xeno.flick_heal_overlay(3 SECONDS, "#00B800")
+	xeno.emote("roar")
+	log_attack("[key_name(xeno)] was executed by [key_name(target_carbon)] with a headbite!")
+	return TRUE

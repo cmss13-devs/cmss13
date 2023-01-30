@@ -15,7 +15,7 @@
 	var/datum/construction_template/xenomorph/template //What we're building
 	var/datum/hive_status/linked_hive //Who gets what we build
 
-/obj/effect/alien/resin/construction/Initialize(mapload, var/hive_ref)
+/obj/effect/alien/resin/construction/Initialize(mapload, hive_ref)
 	. = ..()
 	linked_hive = hive_ref
 	if (linked_hive.color)
@@ -41,7 +41,7 @@
 
 /obj/effect/alien/resin/construction/get_examine_text(mob/user)
 	. = ..()
-	if((isXeno(user) || isobserver(user)) && linked_hive)
+	if((isxeno(user) || isobserver(user)) && linked_hive)
 		var/message = "A [template.name] construction is designated here. It requires [template.crystals_required - template.crystals_stored] more [MATERIAL_CRYSTAL]."
 		. += message
 
@@ -54,7 +54,7 @@
 		template.add_crystal(M) //This proc handles attack delay itself.
 	return XENO_NO_DELAY_ACTION
 
-/obj/effect/alien/resin/construction/proc/set_template(var/datum/construction_template/xenomorph/new_template)
+/obj/effect/alien/resin/construction/proc/set_template(datum/construction_template/xenomorph/new_template)
 	if(!istype(new_template) || !linked_hive)
 		return
 	template = new_template

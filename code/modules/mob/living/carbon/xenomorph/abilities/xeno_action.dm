@@ -94,7 +94,7 @@
 
 // Helper proc that checks and uses plasma if possible, returning TRUE
 // if the use was successful
-/datum/action/xeno_action/proc/check_and_use_plasma_owner(var/plasma_to_use)
+/datum/action/xeno_action/proc/check_and_use_plasma_owner(plasma_to_use)
 	if (!check_plasma_owner(plasma_to_use))
 		return FALSE
 
@@ -103,7 +103,7 @@
 
 // Checks the host Xeno's plasma. Returns TRUE if the amount of plasma
 // is sufficient to use the ability and FALSE otherwise.
-/datum/action/xeno_action/proc/check_plasma_owner(var/plasma_to_use)
+/datum/action/xeno_action/proc/check_plasma_owner(plasma_to_use)
 	if(!owner)
 		return
 
@@ -115,7 +115,7 @@
 	return X.check_plasma(plasma_to_check)
 
 // Uses plasma on the owner.
-/datum/action/xeno_action/proc/use_plasma_owner(var/plasma_to_use)
+/datum/action/xeno_action/proc/use_plasma_owner(plasma_to_use)
 	if(!owner)
 		return
 
@@ -363,7 +363,7 @@
 
 // Helper proc to get an action on a target Xeno by type.
 // Used to interact with abilities from the outside
-/proc/get_xeno_action_by_type(mob/living/carbon/xenomorph/X, var/typepath)
+/proc/get_xeno_action_by_type(mob/living/carbon/xenomorph/X, typepath)
 	if (!istype(X))
 		CRASH("xeno_action.dm: get_xeno_action_by_type invoked with non-xeno first argument.")
 
@@ -374,7 +374,7 @@
 
 // Helper proc to check if there is anything blocking the way from mob M to the atom A
 // Max distance can be supplied to check some of the way instead of the whole way.
-/proc/check_clear_path_to_target(var/mob/M, var/atom/A, var/smash_windows = TRUE, var/max_distance = 1000)
+/proc/check_clear_path_to_target(mob/M, atom/A, smash_windows = TRUE, max_distance = 1000)
 	if(A.z != M.z)
 		return FALSE
 

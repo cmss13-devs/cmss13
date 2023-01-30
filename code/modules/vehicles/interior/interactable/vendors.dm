@@ -67,7 +67,7 @@
 		/obj/item/stack/medical/splint
 		)
 
-/obj/structure/machinery/cm_vending/sorted/medical/vehicle/populate_product_list(var/scale)
+/obj/structure/machinery/cm_vending/sorted/medical/vehicle/populate_product_list(scale)
 	listed_products = list(
 		list("FIELD SUPPLIES", -1, null, null),
 		list("Advanced Burn Kit", round(scale * 4), /obj/item/stack/medical/advanced/ointment, VENDOR_ITEM_REGULAR),
@@ -140,7 +140,7 @@
 	if(ishuman(user))
 		. += SPAN_INFO("[SPAN_HELPFUL("CTRL + Click")] \the [src] to start re-stocking it with supplies near vendor.")
 
-/obj/structure/machinery/cm_vending/sorted/vehicle_supply/clicked(var/mob/user, var/list/mods)
+/obj/structure/machinery/cm_vending/sorted/vehicle_supply/clicked(mob/user, list/mods)
 	if(mods["ctrl"])
 		if(!CAN_PICKUP(user, src))
 			return ..()
@@ -180,7 +180,7 @@
 	return
 
 //combined from req guns and ammo vendors
-/obj/structure/machinery/cm_vending/sorted/vehicle_supply/populate_product_list(var/scale)
+/obj/structure/machinery/cm_vending/sorted/vehicle_supply/populate_product_list(scale)
 	listed_products = list(
 		list("PRIMARY FIREARMS", -1, null, null),
 		list("M37A2 Pump Shotgun", round(scale * 3), /obj/item/weapon/gun/shotgun/pump, VENDOR_ITEM_REGULAR),
@@ -194,17 +194,17 @@
 		list("M4A3 Service Pistol", round(scale * 2.5), /obj/item/weapon/gun/pistol/m4a3, VENDOR_ITEM_REGULAR),
 
 		list("EXPLOSIVES", -1, null, null),
-		list("M15 Fragmentation Grenade", 0, /obj/item/explosive/grenade/HE/m15, VENDOR_ITEM_REGULAR),
+		list("M15 Fragmentation Grenade", 0, /obj/item/explosive/grenade/high_explosive/m15, VENDOR_ITEM_REGULAR),
 		list("M20 Claymore Anti-Personnel Mine", 0, /obj/item/explosive/mine, VENDOR_ITEM_REGULAR),
-		list("M40 HEDP Grenade", 0, /obj/item/explosive/grenade/HE, VENDOR_ITEM_REGULAR),
+		list("M40 HEDP Grenade", 0, /obj/item/explosive/grenade/high_explosive, VENDOR_ITEM_REGULAR),
 		list("M40 HIDP Incendiary Grenade", 0, /obj/item/explosive/grenade/incendiary, VENDOR_ITEM_REGULAR),
 		list("M40 HPDP White Phosphorus Smoke Grenade", 0, /obj/item/explosive/grenade/phosphorus, VENDOR_ITEM_REGULAR),
 		list("M40 HSDP Smoke Grenade", round(scale * 1), /obj/item/explosive/grenade/smokebomb, VENDOR_ITEM_REGULAR),
-		list("M74 AGM-Frag Airburst Grenade", 0, /obj/item/explosive/grenade/HE/airburst, VENDOR_ITEM_REGULAR),
+		list("M74 AGM-Frag Airburst Grenade", 0, /obj/item/explosive/grenade/high_explosive/airburst, VENDOR_ITEM_REGULAR),
 		list("M74 AGM-Incendiary Airburst Grenade", 0, /obj/item/explosive/grenade/incendiary/airburst, VENDOR_ITEM_REGULAR),
 		list("M74 AGM-Smoke Airburst Grenade", 0, /obj/item/explosive/grenade/smokebomb/airburst, VENDOR_ITEM_REGULAR),
-		list("M74 AGM-Star Shell", 2, /obj/item/explosive/grenade/HE/airburst/starshell, VENDOR_ITEM_REGULAR),
-		list("M74 AGM-Hornet Shell", 0, /obj/item/explosive/grenade/HE/airburst/hornet_shell, VENDOR_ITEM_REGULAR),
+		list("M74 AGM-Star Shell", 2, /obj/item/explosive/grenade/high_explosive/airburst/starshell, VENDOR_ITEM_REGULAR),
+		list("M74 AGM-Hornet Shell", 0, /obj/item/explosive/grenade/high_explosive/airburst/hornet_shell, VENDOR_ITEM_REGULAR),
 		list("M40 HIRR Baton Slug", round(scale * 2), /obj/item/explosive/grenade/slug/baton, VENDOR_ITEM_REGULAR),
 		list("M40 MFHS Metal Foam Grenade", 0, /obj/item/explosive/grenade/metal_foam, VENDOR_ITEM_REGULAR),
 		list("Breaching Charge", 0, /obj/item/explosive/plastic/breaching_charge, VENDOR_ITEM_REGULAR),

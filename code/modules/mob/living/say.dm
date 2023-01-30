@@ -69,7 +69,7 @@ var/list/department_radio_keys = list(
 
 	addtimer(CALLBACK(src, PROC_REF(remove_speech_bubble), speech_bubble), 3 SECONDS)
 
-/mob/living/proc/remove_speech_bubble(var/mutable_appearance/speech_bubble, var/list_of_mobs)
+/mob/living/proc/remove_speech_bubble(mutable_appearance/speech_bubble, list_of_mobs)
 	overlays -= speech_bubble
 
 /mob/living/say(message, datum/language/speaking = null, verb="says", alt_name="", italics=0, message_range = world_view_size, sound/speech_sound, sound_vol, nolog = 0, message_mode = null, bubble_type = bubble_icon)
@@ -156,7 +156,7 @@ var/list/department_radio_keys = list(
 
 	return 1
 
-/mob/living/proc/say_signlang(var/message, var/verb="gestures", var/datum/language/language)
+/mob/living/proc/say_signlang(message, verb="gestures", datum/language/language)
 	for (var/mob/O in viewers(src, null))
 		O.hear_signlang(message, verb, language, src)
 

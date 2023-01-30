@@ -162,7 +162,7 @@
 	return TRUE
 
 /proc/unroot_human(mob/living/carbon/H)
-	if (!isXenoOrHuman(H))
+	if (!isxeno_human(H))
 		return
 
 	H.frozen = 0
@@ -173,7 +173,7 @@
 		T.update_xeno_hostile_hud()
 	to_chat(H, SPAN_XENOHIGHDANGER("You can move again!"))
 
-/proc/xeno_throw_human(mob/living/carbon/H, mob/living/carbon/xenomorph/X, direction, distance)
+/proc/xeno_throw_human(mob/living/carbon/H, mob/living/carbon/xenomorph/X, direction, distance, shake_camera = TRUE)
 	if (!istype(H) || !istype(X) ||  !direction || !distance)
 		return
 
@@ -186,6 +186,8 @@
 		T = temp
 
 	H.throw_atom(T, distance, SPEED_VERY_FAST, X, TRUE)
+	if(!shake_camera)
+		return
 	shake_camera(H, 10, 1)
 
 /mob/living/carbon/xenomorph/proc/zoom_in()
@@ -229,7 +231,7 @@
 			action.button.icon_state = "template"
 			break;
 
-/mob/living/carbon/xenomorph/proc/do_acid_spray_cone(var/turf/T, spray_type = /obj/effect/xenomorph/spray, range = 3)
+/mob/living/carbon/xenomorph/proc/do_acid_spray_cone(turf/T, spray_type = /obj/effect/xenomorph/spray, range = 3)
 	set waitfor = FALSE
 
 	var/facing = get_cardinal_dir(src, T)

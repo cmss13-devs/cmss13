@@ -56,7 +56,7 @@
 	for(var/datum/effects/acid/AA in target_mob.effects_list)
 		qdel(AA)
 		break
-	if(isXenoOrHuman(target_mob))
+	if(isxeno_human(target_mob))
 		if(target_mob.lying)
 			modify_acid(acid_slash_regen_lying)
 		else

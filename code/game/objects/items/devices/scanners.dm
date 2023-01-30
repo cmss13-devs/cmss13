@@ -377,7 +377,7 @@ FORENSIC SCANNER
 		to_chat(user, SPAN_NOTICE("No active chemical agents found in [O]."))
 	return
 
-/obj/item/device/demo_scanner/proc/scan(var/obj/O)
+/obj/item/device/demo_scanner/proc/scan(obj/O)
 	if(QDELETED(O.reagents))
 		return
 	if(O.reagents.reagent_list.len > 0)

@@ -11,7 +11,7 @@
 		return 1
 	return
 
-/mob/living/carbon/check_view_change(var/new_size, var/atom/source)
+/mob/living/carbon/check_view_change(new_size, atom/source)
 	LAZYREMOVE(view_change_sources, source)
 	var/highest_view = 0
 	for(var/view_source as anything in view_change_sources)
@@ -24,10 +24,9 @@
 		new_size = highest_view
 	return new_size
 
-/mob/living/carbon/proc/handle_queen_screech(var/mob/living/carbon/Xenomorph/Queen/queen, var/list/mobs_in_view)
+/mob/living/carbon/proc/handle_queen_screech(mob/living/carbon/xenomorph/queen/queen, list/mobs_in_view)
 	if(!(src in mobs_in_view))
 		return
-	scream_stun_timeout = 20 SECONDS
 	var/dist = get_dist(queen, src)
 	if(dist <= 4)
 		to_chat(src, SPAN_DANGER("An ear-splitting guttural roar shakes the ground beneath your feet!"))

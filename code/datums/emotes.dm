@@ -121,8 +121,28 @@
 			if(is_blind(viewer) && isdeaf(viewer))
 				to_chat(viewer, msg)
 
+	if(emote_type & EMOTE_VISIBLE)
+		var/list/viewers = get_mobs_in_view(7, user)
+		for(var/mob/current_mob in viewers)
+			if(current_mob.client?.prefs.toggles_langchat)
+				if(!(current_mob.client?.prefs.toggles_langchat & LANGCHAT_SEE_EMOTES))
+					viewers -= current_mob
+		run_langchat(user, viewers)
+	else if(emote_type & EMOTE_AUDIBLE)
+		var/list/heard = get_mobs_in_view(7, user)
+		for(var/mob/current_mob in heard)
+			if(current_mob.ear_deaf)
+				heard -= current_mob
+				continue
+			if(current_mob.client?.prefs.toggles_langchat)
+				if(!(current_mob.client?.prefs.toggles_langchat & LANGCHAT_SEE_EMOTES))
+					heard -= current_mob
+		run_langchat(user, heard)
+
 	SEND_SIGNAL(user, COMSIG_MOB_EMOTED(key))
 
+/datum/emote/proc/run_langchat(mob/user, list/group)
+	user.langchat_speech(message, group, GLOB.all_languages, skip_language_check = TRUE, additional_styles = list("emote", "langchat_small"))
 /**
  * For handling emote cooldown, return true to allow the emote to happen.
  *

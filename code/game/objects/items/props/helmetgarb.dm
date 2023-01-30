@@ -40,7 +40,7 @@
 	icon_state = "spent_flech"
 
 /obj/item/prop/helmetgarb/prescription_bottle
-	name = "perscription medication"
+	name = "prescription medication"
 	desc = "Anti-anxiety meds? Amphetamines? The cure for Sudden Sleep Disorder? The label can't be read, leaving the now absent contents forever a mystery. The cap is screwed on tighter than any ID lock."
 	icon_state = "prescription_bottle"
 
@@ -135,7 +135,7 @@
 		set_attached_mob(attached_item.loc)
 
 
-/obj/item/prop/helmetgarb/helmet_nvg/attackby(var/obj/item/A as obj, mob/user as mob)
+/obj/item/prop/helmetgarb/helmet_nvg/attackby(obj/item/A as obj, mob/user as mob)
 	if(istype(A,/obj/item/cell))
 		recharge(A, user)
 
@@ -145,7 +145,7 @@
 	else
 		..()
 
-/obj/item/prop/helmetgarb/helmet_nvg/proc/recharge(var/obj/item/cell/C, mob/user as mob)
+/obj/item/prop/helmetgarb/helmet_nvg/proc/recharge(obj/item/cell/C, mob/user as mob)
 	if(user.action_busy)
 		return
 	if(src != user.get_inactive_hand())
@@ -249,7 +249,7 @@
 	return ..()
 
 
-/obj/item/prop/helmetgarb/helmet_nvg/proc/set_attached_mob(var/mob/User)
+/obj/item/prop/helmetgarb/helmet_nvg/proc/set_attached_mob(mob/User)
 	attached_mob = User
 	activation = new /datum/action/item_action/toggle(src, attached_item)
 	activation.give_to(attached_mob)
@@ -287,7 +287,7 @@
 	remove_nvg()
 	attached_mob = null
 
-/obj/item/prop/helmetgarb/helmet_nvg/proc/toggle_check(var/obj/item/I, var/mob/living/carbon/human/user, slot)
+/obj/item/prop/helmetgarb/helmet_nvg/proc/toggle_check(obj/item/I, mob/living/carbon/human/user, slot)
 	SIGNAL_HANDLER
 
 	if(attached_mob != user && slot == WEAR_HEAD)
@@ -299,7 +299,7 @@
 		remove_nvg()
 
 
-/obj/item/prop/helmetgarb/helmet_nvg/proc/enable_nvg(var/mob/living/carbon/human/user)
+/obj/item/prop/helmetgarb/helmet_nvg/proc/enable_nvg(mob/living/carbon/human/user)
 	if(nightvision)
 		remove_nvg()
 
@@ -319,7 +319,7 @@
 	START_PROCESSING(SSobj, src)
 
 
-/obj/item/prop/helmetgarb/helmet_nvg/proc/update_sight(var/mob/M)
+/obj/item/prop/helmetgarb/helmet_nvg/proc/update_sight(mob/M)
 	SIGNAL_HANDLER
 
 	if(lighting_alpha < 255)
@@ -372,7 +372,7 @@
 		return
 
 
-/obj/item/prop/helmetgarb/helmet_nvg/ui_action_click(var/mob/owner, var/obj/item/holder)
+/obj/item/prop/helmetgarb/helmet_nvg/ui_action_click(mob/owner, obj/item/holder)
 	toggle_nods(owner)
 
 
@@ -387,7 +387,7 @@
 			break
 
 
-/obj/item/prop/helmetgarb/helmet_nvg/proc/toggle_nods(var/mob/living/carbon/human/user)
+/obj/item/prop/helmetgarb/helmet_nvg/proc/toggle_nods(mob/living/carbon/human/user)
 	if(user.is_mob_incapacitated())
 		return
 
@@ -427,13 +427,13 @@
 		remove_nvg()
 		UnregisterSignal(user, COMSIG_MOB_CHANGE_VIEW)
 
-/obj/item/prop/helmetgarb/helmet_nvg/proc/change_view(var/mob/M, var/new_size)
+/obj/item/prop/helmetgarb/helmet_nvg/proc/change_view(mob/M, new_size)
 	SIGNAL_HANDLER
 
 	if(new_size > 7) // cannot use binos with NVG
 		toggle_nods(M)
 
-/obj/item/prop/helmetgarb/helmet_nvg/proc/break_nvg(mob/living/carbon/human/user, list/slashdata, var/mob/living/carbon/Xenomorph/Xeno) //xenos can break NVG if aim head
+/obj/item/prop/helmetgarb/helmet_nvg/proc/break_nvg(mob/living/carbon/human/user, list/slashdata, mob/living/carbon/xenomorph/Xeno) //xenos can break NVG if aim head
 	SIGNAL_HANDLER
 
 	if(check_zone(Xeno.zone_selected) == "head" && user == attached_mob)

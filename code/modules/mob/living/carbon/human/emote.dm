@@ -154,11 +154,14 @@
 
 /datum/emote/living/carbon/human/medic/run_emote(mob/living/user, params, type_override, intentional)
 	. = ..()
-	user.show_speech_bubble("hmedic")
-	if(isHumanStrict(user))
-		var/list/heard = get_mobs_in_view(7, user)
-		var/medic_message = pick("Medic!", "Doc!", "Help!")
-		user.langchat_speech(medic_message, heard, GLOB.all_languages, skip_language_check = TRUE, animation_style = LANGCHAT_FAST_POP, additional_styles = list("langchat_bolded"))
+	user.show_speech_bubble("medic")
+
+/datum/emote/living/carbon/human/medic/run_langchat(mob/user, group)
+	if(!ishuman_strict(user))
+		return
+
+	var/medic_message = pick("Medic!", "Doc!", "Help!")
+	user.langchat_speech(medic_message, group, GLOB.all_languages, skip_language_check = TRUE, animation_style = LANGCHAT_FAST_POP, additional_styles = list("langchat_bolded"))
 
 /datum/emote/living/carbon/human/moan
 	key = "moan"
@@ -182,24 +185,26 @@
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
 /datum/emote/living/carbon/human/pain/get_sound(mob/living/user)
-	if(isHumanStrict(user))
+	if(ishuman_strict(user))
 		if(user.gender == MALE)
 			return get_sfx("male_pain")
 		else
 			return get_sfx("female_pain")
 
-	if(isYautja(user))
+	if(isyautja(user))
 		return get_sfx("pred_pain")
 
 /datum/emote/living/carbon/human/pain/run_emote(mob/living/user, params, type_override, intentional)
 	. = ..()
 
-	user.show_speech_bubble("hpain")
-	if(isHumanStrict(user))
-		var/list/heard = get_mobs_in_view(7, src)
-		var/pain_message = pick("OW!!", "AGH!!", "ARGH!!", "OUCH!!", "ACK!!", "OUF!")
-		user.langchat_speech(pain_message, heard, GLOB.all_languages, skip_language_check = TRUE, animation_style = LANGCHAT_FAST_POP, additional_styles = list("langchat_yell"))
+	user.show_speech_bubble("pain")
 
+/datum/emote/living/carbon/human/pain/run_langchat(mob/user, group)
+	if(!ishuman_strict(user))
+		return
+
+	var/pain_message = pick("OW!!", "AGH!!", "ARGH!!", "OUCH!!", "ACK!!", "OUF!")
+	user.langchat_speech(pain_message, group, GLOB.all_languages, skip_language_check = TRUE, animation_style = LANGCHAT_FAST_POP, additional_styles = list("langchat_yell"))
 /datum/emote/living/carbon/human/salute
 	key = "salute"
 	key_third_person = "salutes"
@@ -218,17 +223,24 @@
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
 /datum/emote/living/carbon/human/scream/get_sound(mob/living/user)
-	if(isHumanStrict(user))
+	if(ishuman_strict(user))
 		if(user.gender == MALE)
 			return get_sfx("male_scream")
 		else
 			return get_sfx("female_scream")
-	if(isYautja(user))
+	if(isyautja(user))
 		return get_sfx("pred_pain")
 
-/datum/emote/living/carbon/human/whimper/run_emote(mob/living/user, params, type_override, intentional)
+/datum/emote/living/carbon/human/scream/run_emote(mob/living/user, params, type_override, intentional)
 	. = ..()
-	user.show_speech_bubble("hscream")
+	user.show_speech_bubble("scream")
+
+/datum/emote/living/carbon/human/scream/run_langchat(mob/user, group)
+	if(!ishuman_strict(user))
+		return
+
+	var/scream_message = pick("FUCK!!!", "AGH!!!", "ARGH!!!", "AAAA!!!", "HGH!!!", "NGHHH!!!", "NNHH!!!", "SHIT!!!")
+	user.langchat_speech(scream_message, group, GLOB.all_languages, skip_language_check = TRUE, animation_style = LANGCHAT_PANIC_POP, additional_styles = list("langchat_yell"))
 
 /datum/emote/living/carbon/human/shakehead
 	key = "shakehead"
@@ -309,10 +321,10 @@
 /datum/emote/living/carbon/human/warcry/run_emote(mob/living/user, params, type_override, intentional)
 	. = ..()
 
-	user.show_speech_bubble("hwarcry")
+	user.show_speech_bubble("warcry")
 
 /datum/emote/living/carbon/human/warcry/get_sound(mob/living/user)
-	if(isHumanSynthStrict(user))
+	if(ishumansynth_strict(user))
 		if(user.gender == MALE)
 			return get_sfx("male_warcry")
 		else

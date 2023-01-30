@@ -33,17 +33,17 @@
 	)
 	..()
 
-/datum/species/monkey/handle_post_spawn(var/mob/living/carbon/human/H)
+/datum/species/monkey/handle_post_spawn(mob/living/carbon/human/H)
 	H.set_languages(list(LANGUAGE_MONKEY))
 	if(!H.real_name || !H.name)
 		var/random_name = "[lowertext(name)] ([rand(1, 999)])"
 		H.change_real_name(H, random_name)
 	return ..()
 
-/datum/species/monkey/get_bodytype(var/mob/living/carbon/human/H)
+/datum/species/monkey/get_bodytype(mob/living/carbon/human/H)
 	return SPECIES_MONKEY
 
-/datum/species/monkey/handle_npc(var/mob/living/carbon/human/H)
+/datum/species/monkey/handle_npc(mob/living/carbon/human/H)
 	if(H.stat != CONSCIOUS)
 		return
 	if(prob(33) && isturf(H.loc) && !H.pulledby && !H.lying && !H.is_mob_restrained()) //won't move if being pulled

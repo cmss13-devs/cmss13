@@ -102,7 +102,7 @@ GLOBAL_LIST_INIT(cm_vending_gear_leader, list(
 	vendor_role = list(JOB_SQUAD_LEADER)
 	req_access = list(ACCESS_MARINE_LEADER)
 
-/obj/structure/machinery/cm_vending/gear/leader/get_listed_products(var/mob/user)
+/obj/structure/machinery/cm_vending/gear/leader/get_listed_products(mob/user)
 	return GLOB.cm_vending_gear_leader
 
 //------------CLOTHING VENDOR---------------
@@ -167,7 +167,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_leader, list(
 	req_access = list(ACCESS_MARINE_LEADER)
 	vendor_role = list(JOB_SQUAD_LEADER)
 
-/obj/structure/machinery/cm_vending/clothing/leader/get_listed_products(var/mob/user)
+/obj/structure/machinery/cm_vending/clothing/leader/get_listed_products(mob/user)
 	return GLOB.cm_vending_clothing_leader
 
 /obj/structure/machinery/cm_vending/clothing/leader/alpha

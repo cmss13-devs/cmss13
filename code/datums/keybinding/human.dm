@@ -158,6 +158,22 @@
 	H.spec_activation_two()
 	return TRUE
 
+/datum/keybinding/human/pick_up
+	hotkey_keys = list("F")
+	classic_keys = list()
+	name = "pick_up"
+	full_name = "Pick Up Dropped Items"
+	keybind_signal = COMSIG_KG_HUMAN_PICK_UP
+
+/datum/keybinding/human/pick_up/down(client/user)
+	. = ..()
+	if(.)
+		return
+
+	var/mob/living/carbon/human/human_user = user.mob
+	human_user.pickup_recent()
+	return TRUE
+
 #undef QUICK_EQUIP_PRIMARY
 #undef QUICK_EQUIP_SECONDARY
 #undef QUICK_EQUIP_TERTIARY

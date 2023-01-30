@@ -103,7 +103,7 @@
 	role_comm_title = "TWE Rep."
 	skills = /datum/skills/civilian/survivor
 
-/datum/equipment_preset/twe/representative/load_name(mob/living/carbon/human/H, var/randomise)
+/datum/equipment_preset/twe/representative/load_name(mob/living/carbon/human/H, randomise)
 	H.gender = MALE
 	var/datum/preferences/A = new()
 	A.randomize_appearance(H)

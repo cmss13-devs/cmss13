@@ -7,7 +7,7 @@
 /datum/emote/living/carbon/xeno/get_sound(mob/living/user)
 	. = ..()
 
-	if(isXenoPredalien(user))
+	if(ispredalien(user))
 		. = predalien_sound
 
 /datum/emote/living/carbon/xeno/growl

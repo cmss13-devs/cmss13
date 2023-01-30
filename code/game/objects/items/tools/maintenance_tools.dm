@@ -176,9 +176,13 @@
 	inherent_traits = list(TRAIT_TOOL_BLOWTORCH)
 
 	//blowtorch specific stuff
-	var/welding = 0 //Whether or not the blowtorch is off(0), on(1) or currently welding(2)
-	var/max_fuel = 20 //The max amount of fuel the welder can hold
-	var/weld_tick = 0 //Used to slowly deplete the fuel when the tool is left on.
+
+	/// Whether or not the blowtorch is off(0), on(1) or currently welding(2)
+	var/welding = 0
+	/// The max amount of fuel the welder can hold
+	var/max_fuel = 20
+	/// Used to slowly deplete the fuel when the tool is left on.
+	var/weld_tick = 0
 	var/has_welding_screen = FALSE
 
 /obj/item/tool/weldingtool/Initialize()
@@ -217,7 +221,7 @@
 
 /obj/item/tool/weldingtool/attack(mob/M, mob/user)
 
-	if(hasorgans(M))
+	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		var/obj/limb/S = H.get_limb(user.zone_selected)
 
@@ -289,7 +293,7 @@
 
 
 //Removes fuel from the blowtorch. If a mob is passed, it will perform an eyecheck on the mob. This should probably be renamed to use()
-/obj/item/tool/weldingtool/proc/remove_fuel(var/amount = 1, var/mob/M)
+/obj/item/tool/weldingtool/proc/remove_fuel(amount = 1, mob/M)
 	if(!welding || !check_fuel())
 		return 0
 	if(get_fuel() >= amount)
@@ -316,7 +320,7 @@
 
 
 //Toggles the welder off and on
-/obj/item/tool/weldingtool/proc/toggle(var/message = 0)
+/obj/item/tool/weldingtool/proc/toggle(message = 0)
 	var/mob/M
 	if(ismob(loc))
 		M = loc
@@ -497,9 +501,12 @@ Welding backpack
 	icon = 'icons/obj/items/items.dmi'
 	icon_state = "welderpack"
 	w_class = SIZE_LARGE
-	health = 75 // More robust liner I guess
-	var/original_health = 1 //placeholder value to be replaced in init
-	var/max_fuel = 600 //Because the marine backpack can carry 260, and still allows you to take items, there should be a reason to still use this one.
+	/// More robust liner I guess
+	health = 75
+	/// placeholder value to be replaced in init
+	var/original_health = 1
+	/// Because the marine backpack can carry 260, and still allows you to take items, there should be a reason to still use this one.
+	var/max_fuel = 600
 
 /obj/item/tool/weldpack/Initialize()
 	. = ..()
@@ -553,7 +560,7 @@ Welding backpack
 	else
 		. += "No punctures are seen on \the [src] upon closer inspection."
 
-/obj/item/tool/weldpack/bullet_act(var/obj/item/projectile/P)
+/obj/item/tool/weldpack/bullet_act(obj/item/projectile/P)
 	var/damage = P.damage
 	health -= damage
 	..()
@@ -575,7 +582,8 @@ Welding backpack
 	name = "ES-11 fuel canister"
 	desc = "A robust little pressurized canister that is small enough to fit in most bags and made for use with welding fuel. Upon closer inspection there is faded text on the red tape wrapped around the tank 'WARNING: Contents under pressure! Do not puncture!' "
 	icon_state = "welderpackmini"
-	max_fuel = 120 //Just barely enough to be better than the satchel
+	/// Just barely enough to be better than the satchel
+	max_fuel = 120
 	flags_equip_slot = SLOT_WAIST
 	w_class = SIZE_MEDIUM
 	health = 50

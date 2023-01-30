@@ -1,10 +1,10 @@
 // Backend stuff for macros
-/proc/handle_xeno_macro(mob/living/carbon/Xenomorph/xeno, var/action_name)
+/proc/handle_xeno_macro(mob/living/carbon/xenomorph/xeno, action_name)
 	for(var/datum/action/xeno_action/action in xeno.actions)
 		if(action.name == action_name)
 			handle_xeno_macro_datum(xeno, action)
 
-/proc/handle_xeno_macro_datum(mob/living/carbon/Xenomorph/xeno, datum/action/xeno_action/action)
+/proc/handle_xeno_macro_datum(mob/living/carbon/xenomorph/xeno, datum/action/xeno_action/action)
 	if (!istype(action))
 		return
 
@@ -24,11 +24,11 @@
 			log_admin("Xeno action [action.ability_name] is misconfigured. Tell the devs. Code: XENO_ACTION_MACRO_1")
 
 
-/proc/handle_xeno_macro_click(var/mob/living/carbon/Xenomorph/xeno, var/datum/action/xeno_action/action)
+/proc/handle_xeno_macro_click(mob/living/carbon/xenomorph/xeno, datum/action/xeno_action/action)
 	action.button.clicked(xeno)
 	return
 
-/proc/handle_xeno_macro_activate(var/mob/living/carbon/Xenomorph/xeno, var/datum/action/xeno_action/action)
+/proc/handle_xeno_macro_activate(mob/living/carbon/xenomorph/xeno, datum/action/xeno_action/action)
 
 	var/datum/action/xeno_action/activable/activable_ability = action
 
@@ -40,7 +40,7 @@
 
 // Queue an action for the next click. This will always work but should only be used for actions that actually NEED an atom to work
 // Other ones should just use the activate proc
-/proc/handle_xeno_macro_actionqueue(var/mob/living/carbon/Xenomorph/xeno, var/datum/action/xeno_action/activable/action)
+/proc/handle_xeno_macro_actionqueue(mob/living/carbon/xenomorph/xeno, datum/action/xeno_action/activable/action)
 	if (!istype(action))
 		return
 
@@ -51,11 +51,11 @@
 		xeno.client.mouse_pointer_icon = file("icons/mob/hud/mecha_mouse.dmi")
 
 
-/mob/living/carbon/Xenomorph/verb/xeno_primary_action_one()
+/mob/living/carbon/xenomorph/verb/xeno_primary_action_one()
 	set category = "Alien"
 	set name = "Xeno Primary Action One"
-	set hidden = 1
-	var/mob/living/carbon/Xenomorph/xeno = src
+	set hidden = TRUE
+	var/mob/living/carbon/xenomorph/xeno = src
 	if (!istype(xeno))
 		return
 	for (var/datum/action/xeno_action/xeno_action in xeno.actions)
@@ -67,11 +67,11 @@
 			handle_xeno_macro_datum(src, xeno_action)
 			break
 
-/mob/living/carbon/Xenomorph/verb/xeno_primary_action_two()
+/mob/living/carbon/xenomorph/verb/xeno_primary_action_two()
 	set category = "Alien"
 	set name = "Xeno Primary Action Two"
-	set hidden = 1
-	var/mob/living/carbon/Xenomorph/xeno = src
+	set hidden = TRUE
+	var/mob/living/carbon/xenomorph/xeno = src
 	if (!istype(xeno))
 		return
 	for (var/datum/action/xeno_action/xeno_action in xeno.actions)
@@ -83,11 +83,11 @@
 			handle_xeno_macro_datum(src, xeno_action)
 			break
 
-/mob/living/carbon/Xenomorph/verb/xeno_primary_action_three()
+/mob/living/carbon/xenomorph/verb/xeno_primary_action_three()
 	set category = "Alien"
 	set name = "Xeno Primary Action Three"
-	set hidden = 1
-	var/mob/living/carbon/Xenomorph/xeno = src
+	set hidden = TRUE
+	var/mob/living/carbon/xenomorph/xeno = src
 	if (!istype(xeno))
 		return
 	for (var/datum/action/xeno_action/xeno_action in xeno.actions)
@@ -99,11 +99,11 @@
 			handle_xeno_macro_datum(src, xeno_action)
 			break
 
-/mob/living/carbon/Xenomorph/verb/xeno_primary_action_four()
+/mob/living/carbon/xenomorph/verb/xeno_primary_action_four()
 	set category = "Alien"
 	set name = "Xeno Primary Action Four"
-	set hidden = 1
-	var/mob/living/carbon/Xenomorph/xeno = src
+	set hidden = TRUE
+	var/mob/living/carbon/xenomorph/xeno = src
 	if (!istype(xeno))
 		return
 	for (var/datum/action/xeno_action/xeno_action in xeno.actions)
@@ -115,11 +115,11 @@
 			handle_xeno_macro_datum(src, xeno_action)
 			break
 
-/mob/living/carbon/Xenomorph/verb/xeno_primary_action_five()
+/mob/living/carbon/xenomorph/verb/xeno_primary_action_five()
 	set category = "Alien"
 	set name = "Xeno Primary Action Five"
-	set hidden = 1
-	var/mob/living/carbon/Xenomorph/xeno = src
+	set hidden = TRUE
+	var/mob/living/carbon/xenomorph/xeno = src
 	if (!istype(xeno))
 		return
 	for (var/datum/action/xeno_action/xeno_action in xeno.actions)
@@ -131,11 +131,11 @@
 			handle_xeno_macro_datum(src, xeno_action)
 			break
 
-/mob/living/carbon/Xenomorph/verb/m_corrosive_acid()
+/mob/living/carbon/xenomorph/verb/m_corrosive_acid()
 	set category = "Alien"
 	set name = "Corrosive Acid"
 	set hidden = TRUE
-	var/mob/living/carbon/Xenomorph/xeno = src
+	var/mob/living/carbon/xenomorph/xeno = src
 	if(xeno.mob_size < MOB_SIZE_XENO_SMALL)
 		return
 	for(var/datum/action/xeno_action/xeno_action in xeno.actions)
@@ -147,11 +147,11 @@
 			handle_xeno_macro_datum(src, xeno_action)
 			break
 
-/mob/living/carbon/Xenomorph/verb/tech_secrete_resin()
+/mob/living/carbon/xenomorph/verb/tech_secrete_resin()
 	set category = "Alien"
 	set name = "Secrete Resin (Tech)"
 	set hidden = TRUE
-	var/mob/living/carbon/Xenomorph/xeno = src
+	var/mob/living/carbon/xenomorph/xeno = src
 	if (!istype(xeno))
 		return
 	for (var/datum/action/xeno_action/xeno_action in xeno.actions)
@@ -163,11 +163,11 @@
 			handle_xeno_macro_datum(src, xeno_action)
 			break
 
-/mob/living/carbon/Xenomorph/verb/xeno_screech_action()
+/mob/living/carbon/xenomorph/verb/xeno_screech_action()
 	set category = "Alien"
 	set name = "Screech"
 	set hidden = TRUE
-	var/mob/living/carbon/Xenomorph/xeno = src
+	var/mob/living/carbon/xenomorph/xeno = src
 	if (!istype(xeno))
 		return
 	for(var/datum/action/xeno_action/xeno_action in xeno.actions)
@@ -179,8 +179,8 @@
 			handle_xeno_macro_datum(src, xeno_action)
 			break
 
-/mob/living/carbon/Xenomorph/proc/xeno_tail_stab_action()
-	var/mob/living/carbon/Xenomorph/xeno = src
+/mob/living/carbon/xenomorph/proc/xeno_tail_stab_action()
+	var/mob/living/carbon/xenomorph/xeno = src
 	if (!istype(xeno))
 		return
 	for(var/datum/action/xeno_action/xeno_action in xeno.actions)

@@ -14,7 +14,7 @@ GLOBAL_LIST_EMPTY(ui_data_keybindings)
 	var/client/owner
 	var/datum/preferences/prefs
 
-/datum/tgui_macro/New(var/client/C, var/datum/preferences/P)
+/datum/tgui_macro/New(client/C, datum/preferences/P)
 	. = ..()
 	owner = C
 	if(C)

@@ -358,12 +358,6 @@ var/global/list/gear_datums = list()
 	slot = WEAR_IN_BACK
 	cost = 2
 
-/datum/gear/skullfacepaint
-	display_name = "Skull Facepaint"
-	path = /obj/item/facepaint/skull
-	slot = WEAR_IN_BACK
-	cost = 4 //there needs to be some reason to NOT use this badass facepaint or every marine will have it
-
 /datum/gear/fullbodyfacepaint
 	display_name = "Fullbody Paint"
 	path = /obj/item/facepaint/sniper
@@ -498,18 +492,6 @@ var/global/list/gear_datums = list()
 	display_name = "Gas Mask"
 	path = /obj/item/clothing/mask/gas
 	cost = 2
-	slot = WEAR_FACE
-
-/datum/gear/skull_balaclava_blue
-	display_name = "Blue Skull Balaclava"
-	path = /obj/item/clothing/mask/rebreather/skull
-	cost = 4 //same as skull facepaint
-	slot = WEAR_FACE
-
-/datum/gear/skull_balaclava_black
-	display_name = "Black Skull Balaclava"
-	path = /obj/item/clothing/mask/rebreather/skull/black
-	cost = 4
 	slot = WEAR_FACE
 
 /datum/gear/gunoil

@@ -65534,6 +65534,10 @@
 	tag = "icon-containment_corner_variant_1 (EAST)"
 	},
 /area/almayer/medical/containment/cell/cl)
+"pRB" = (
+/obj/item/clothing/mask/rebreather/skull/black,
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/hull/lower_hull/l_m_p)
 "pRL" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -71492,6 +71496,7 @@
 /area/almayer/shipboard/navigation)
 "sti" = (
 /obj/structure/closet/crate/trashcart,
+/obj/item/clothing/mask/rebreather/skull/black,
 /turf/open/floor/plating,
 /area/almayer/hull/lower_hull/l_f_p)
 "str" = (
@@ -75831,6 +75836,14 @@
 	tag = "icon-test_floor4"
 	},
 /area/almayer/shipboard/brig/evidence_storage)
+"uli" = (
+/obj/structure/surface/rack,
+/obj/item/facepaint/skull,
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/hull/upper_hull/u_m_s)
 "uly" = (
 /obj/structure/bed/stool,
 /turf/open/floor/almayer{
@@ -118487,7 +118500,7 @@ uaZ
 aar
 arI
 aaQ
-aao
+uli
 aar
 aap
 aar
@@ -122505,7 +122518,7 @@ kMU
 fBx
 fiq
 hRg
-oDf
+pRB
 xMh
 fiq
 rNW

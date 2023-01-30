@@ -79,7 +79,7 @@
 
 	for(var/turf/target_turf in target_turfs)
 		for(var/mob/living/carbon/H in target_turf)
-			if (!isxeno_human(H) || X.can_not_harm(H))
+			if (!isxeno_human(H) || xeno_owner.can_not_harm(H))
 				continue
 
 			if(!(H in target_mobs))
@@ -92,7 +92,7 @@
 
 	// Loop through our turfs, finding any humans there and dealing damage to them
 	for (var/mob/living/carbon/H in target_mobs)
-		if (!isxeno_human(H) || X.can_not_harm(H))
+		if (!isxeno_human(H) || xeno_owner.can_not_harm(H))
 			continue
 
 		if (H.stat == DEAD)
@@ -137,7 +137,7 @@
 	var/list/target_mobs = list()
 	var/list/L = orange(1, xeno_owner)
 	for (var/mob/living/carbon/H in L)
-		if (!isxeno_human(H) || X.can_not_harm(H))
+		if (!isxeno_human(H) || xeno_owner.can_not_harm(H))
 			continue
 
 		if (!(H in target_mobs))
@@ -150,7 +150,7 @@
 		if (H.stat)
 			continue
 
-		if (!isxeno_human(H) || X.can_not_harm(H))
+		if (!isxeno_human(H) || xeno_owner.can_not_harm(H))
 			continue
 
 
@@ -342,7 +342,7 @@
 	var/list/targets = list()
 	for (var/turf/target_turf in turflist)
 		for (var/mob/living/carbon/H in target_turf)
-			if(!isxeno_human(H) || X.can_not_harm(H) || H.is_dead() || H.is_mob_incapacitated(TRUE))
+			if(!isxeno_human(H) || xeno_owner.can_not_harm(H) || H.is_dead() || H.is_mob_incapacitated(TRUE))
 				continue
 
 			targets += H
@@ -536,7 +536,7 @@
 			if (H.stat == DEAD)
 				continue
 
-			if(!isxeno_human(H) || X.can_not_harm(H))
+			if(!isxeno_human(H) || xeno_owner.can_not_harm(H))
 				continue
 
 			if(H.mob_size >= MOB_SIZE_BIG)
@@ -669,8 +669,8 @@
 	if (!istype(xeno_owner) || !xeno_owner.check_state())
 		return
 
-	if (!isxeno_human(target_atom) || dancer_user.can_not_harm(target_atom))
-		to_chat(dancer_user, SPAN_XENODANGER("You must target a hostile!"))
+	if (!isxeno_human(target_atom) || xeno_owner.can_not_harm(target_atom))
+		to_chat(xeno_owner, SPAN_XENODANGER("You must target a hostile!"))
 		apply_cooldown_override(click_miss_cooldown)
 		return
 
@@ -763,7 +763,7 @@
 	if(!target || target.layer >= FLY_LAYER || !isturf(xeno_owner.loc) || !xeno_owner.check_state(TRUE))
 		return
 
-	if (!isXeno(target) || !xeno_owner.can_not_harm(target))
+	if (!isxeno(target) || !xeno_owner.can_not_harm(target))
 		to_chat(xeno_owner, SPAN_XENODANGER("You must target one of your sisters!"))
 		return
 
@@ -771,8 +771,8 @@
 		to_chat(xeno_owner, SPAN_XENODANGER("You cannot heal yourself!"))
 		return
 
-	if (!isxeno(A) || !X.can_not_harm(A))
-		to_chat(X, SPAN_XENODANGER("You must target one of your sisters!"))
+	if (!xeno_owner.can_not_harm(target))
+		to_chat(xeno_owner, SPAN_XENODANGER("You must target one of your sisters!"))
 		return
 
 	var/mob/living/carbon/xenomorph/xeno_target = target
@@ -845,12 +845,12 @@
 		to_chat(xeno_owner, SPAN_XENOHIGHDANGER("You cannot retrieve sisters through overwatch!"))
 		return
 
-	if(!isXeno(target) || !xeno_owner.can_not_harm(target))
+	if(!isxeno(target) || !xeno_owner.can_not_harm(target))
 		to_chat(xeno_owner, SPAN_XENODANGER("You must target one of your sisters!"))
 		return
 
-	if(!isxeno(A) || !X.can_not_harm(A))
-		to_chat(X, SPAN_XENODANGER("You must target one of your sisters!"))
+	if(!isxeno(target) || !xeno_owner.can_not_harm(target))
+		to_chat(xeno_owner, SPAN_XENODANGER("You must target one of your sisters!"))
 		return
 
 	if(xeno_owner.anchored)

@@ -105,7 +105,7 @@
 	var/x = xeno_owner.x
 	var/y = xeno_owner.y
 	for(var/mob/living/target_living in view(xeno_owner, burn_range))
-		if (!isXenoOrHuman(target_living) || xeno_owner.can_not_harm(target_living))
+		if (!isxeno_human(target_living) || xeno_owner.can_not_harm(target_living))
 			continue
 		var/dist = 0
 		// such cheap, much fast
@@ -116,7 +116,7 @@
 		else
 			dist = (0.427*dx) + (0.934*dy)
 		var/damage = round((burn_range - dist) * max_burn_damage / burn_range)
-		if(isXeno(target_living))
+		if(isxeno(target_living))
 			damage *= XVX_ACID_DAMAGEMULT
 
 		target_living.apply_damage(damage, BURN)

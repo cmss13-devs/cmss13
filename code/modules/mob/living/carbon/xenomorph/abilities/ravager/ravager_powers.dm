@@ -258,8 +258,8 @@
 	if (!xeno_owner.check_state())
 		return
 
-	if (!isxeno_human(A) || X.can_not_harm(A))
-		to_chat(X, SPAN_XENOWARNING("You must target a hostile!"))
+	if (!isxeno_human(target) || xeno_owner.can_not_harm(target))
+		to_chat(target, SPAN_XENOWARNING("You must target a hostile!"))
 		return
 
 	if (!xeno_owner.Adjacent(target))

@@ -64,7 +64,7 @@
 	if(!xeno_owner.start_pulling(victim, should_neckgrab))
 		return
 
-	if(isXeno(victim))
+	if(isxeno(victim))
 		var/mob/living/carbon/xenomorph/xeno_victim = victim
 		if(xeno_victim.tier >= 2) // Tier 2 castes or higher immune to warrior grab stuns
 			return
@@ -120,7 +120,7 @@
 	if (!action_cooldown_check())
 		return
 
-	if (!isxeno_human(target_atom) || woyer.can_not_harm(target_atom))
+	if (!isxeno_human(target_atom) || xeno_owner.can_not_harm(target_atom))
 		return
 
 	if (!xeno_owner.check_state() || xeno_owner.agility)
@@ -182,7 +182,7 @@
 	if (!action_cooldown_check())
 		return
 
-	if (!isxeno_human(target_atom) || woyer.can_not_harm(target_atom))
+	if (!isxeno_human(target_atom) || xeno_owner.can_not_harm(target_atom))
 		return
 
 	if (!xeno_owner.check_state() || xeno_owner.agility)

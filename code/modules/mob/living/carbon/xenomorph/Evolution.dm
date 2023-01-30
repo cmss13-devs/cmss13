@@ -55,13 +55,13 @@ GLOBAL_LIST_EMPTY(custom_evolutions)
 
 		switch(xeno.tier)
 			if(0)
-				if(islarva(M) && !ispredalienlarva(M))
-					if(M.client && M.ckey)
+				if(islarva(xeno) && !ispredalienlarva(xeno))
+					if(xeno.client && xeno.ckey)
 						potential_queens++
 				continue
 			if(1)
-				if(isdrone(M))
-					if(M.client && M.ckey)
+				if(isdrone(xeno))
+					if(xeno.client && xeno.ckey)
 						potential_queens++
 
 	var/mob/living/carbon/xenomorph/xeno = null

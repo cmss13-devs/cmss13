@@ -41,6 +41,8 @@
 #define COMSIG_MOB_KNOCKED_DOWN "mob_knocked_down"
 /// For when a mob is dragged
 #define COMSIG_MOB_DRAGGED "mob_dragged"
+/// For when a mob stopped pulling
+#define COMSIG_MOB_STOPPED_PULLING "mob_stopped_pulling"
 /// From /obj/item/proc/unequipped()
 #define COMSIG_MOB_ITEM_UNEQUIPPED "mob_item_unequipped"
 

@@ -11,8 +11,8 @@
 		new /datum/effects/xeno_slow(carbon_target, xeno_owner, ttl = 3.5 SECONDS)
 		to_chat(carbon_target, SPAN_XENODANGER("You are slowed as the impact of [xeno_owner] shakes the ground!"))
 
-/datum/action/xeno_action/activable/pounce/crusher_charge/additional_effects(mob/living/L)
-	if (!isxeno_human(L))
+/datum/action/xeno_action/activable/pounce/crusher_charge/additional_effects(mob/living/target)
+	if (!isxeno_human(target))
 		return
 
 	var/mob/living/carbon/carbon_target = target
@@ -69,7 +69,7 @@
 
 
 // This ties the pounce/throwing backend into the old collision backend
-/mob/living/carbon/xenomorph/crusher/pounced_obj(var/obj/victim)
+/mob/living/carbon/xenomorph/crusher/pounced_obj(obj/victim)
 	var/datum/action/xeno_action/activable/pounce/crusher_charge/CCA = get_xeno_action_by_type(src, /datum/action/xeno_action/activable/pounce/crusher_charge)
 	if (istype(CCA) && !CCA.action_cooldown_check() && !(victim.type in CCA.not_reducing_objects))
 		CCA.reduce_cooldown(50)
@@ -79,7 +79,7 @@
 	if (!handle_collision(victim)) // Check old backend
 		obj_launch_collision(victim)
 
-/mob/living/carbon/xenomorph/crusher/pounced_turf(var/turf/victim)
+/mob/living/carbon/xenomorph/crusher/pounced_turf(turf/victim)
 	victim.ex_act(EXPLOSION_THRESHOLD_VLOW, , create_cause_data(caste_type, src))
 	..(victim)
 

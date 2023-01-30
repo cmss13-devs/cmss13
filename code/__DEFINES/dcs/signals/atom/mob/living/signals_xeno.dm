@@ -49,7 +49,9 @@
 	#define COMPONENT_THICK_BYPASS (1<<0)
 
 /// From /datum/action/xeno_action/proc/use_ability_wrapper(): (mob/owner)
-#define COMSIG_XENO_ACTION_USED "xeno_action_used"
+#define COMSIG_XENO_ACTION_PRE_USE "xeno_action_pre_use"
+/// From /datum/action/xeno_action/proc/use_ability_wrapper(): (mob/owner)
+#define COMSIG_XENO_ACTION_POST_USE "xeno_action_post_use"
 /// From /mob/living/carbon/xenomorph/proc/check_blood_splash()
 #define COMSIG_XENO_DEAL_ACID_DAMAGE "xeno_deal_acid_damage"
 /// From /mob/living/carbon/xenomorph/proc/recalculate_speed()

@@ -187,7 +187,7 @@
 
 /datum/behavior_delegate/crusher_base/melee_attack_additional_effects_target(mob/living/carbon/target)
 
-	if (!isxeno_human(A))
+	if (!isxeno_human(target))
 		return
 
 	new /datum/effects/xeno_slow(target, bound_xeno, ttl = 2 SECONDS)
@@ -200,7 +200,7 @@
 		if (collateral_carbon.stat == DEAD)
 			continue
 
-		if(!isxeno_human(H) || bound_xeno.can_not_harm(H))
+		if(!isxeno_human(collateral_carbon) || bound_xeno.can_not_harm(collateral_carbon))
 			continue
 
 		cdr_amount += 5

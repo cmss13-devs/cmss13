@@ -206,7 +206,7 @@
 // IF YOU WANT AGE SCALING SET IT
 // THIS PROC SHOULD NEVER BE OVERRIDDEN BY CHILDREN
 // AND SHOULD __ALWAYS__ BE CALLED IN USE_ABILITY
-/datum/action/xeno_action/proc/apply_cooldown(var/cooldown_modifier = 1)
+/datum/action/xeno_action/proc/apply_cooldown(cooldown_modifier = 1)
 	SHOULD_NOT_OVERRIDE(TRUE)
 	if(!owner)
 		return

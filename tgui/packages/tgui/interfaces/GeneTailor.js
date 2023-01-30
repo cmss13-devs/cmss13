@@ -14,9 +14,6 @@ import {
 } from '../components';
 import { UI_UPDATE } from '../constants';
 import { Window } from '../layouts';
-var custom_caste_stats;
-var custom_xeno_stats;
-var changed_values = [];
 const PAGES = [
   {
     title: 'Stats',
@@ -43,40 +40,36 @@ const PAGES = [
     icon: 'dna',
   }
 ];
-
+const PlaceHolderActions = (props, context) => {
+    return;
+}
 const StatActions = (props, context) => {
   const { act, data } = useBackend(context);
   let combat_stats = ["melee_damage_lower", "melee_damage_upper", "melee_vehicle_damage", "attack_delay", "tackle_min", "tackle_max", "tackle_chance", "tacklestrength_min", "tacklestrength_max", "spit_delay"];
   let health_stats = ["max_health", "plasma_gain", "plasma_max", "xeno_explosion_resistance", "armor_deflection", "evasion", "speed", "heal_resting", "innate_healing"];
-  let fluff_stats =  ["caste_desc", "tier", "display_name", "is_intelligent", "fire_immunity", "fire_intensity_resistance", "aura_strength", "build_time_mult", "can_hold_facehuggers", "can_hold_eggs", "can_be_queen_healed", "can_be_revived", "can_vent_crawl", "caste_luminosity", "hugger_nurturing", "huggers_max", "throwspeed", "hugger_delay", "eggs_max", "egg_cooldown"];
+  let fluff_stats =  ["caste_desc", "tier","is_intelligent", "fire_immunity", "fire_intensity_resistance", "aura_strength", "build_time_mult", "can_hold_facehuggers", "can_hold_eggs", "can_be_queen_healed", "can_be_revived", "can_vent_crawl", "caste_luminosity", "hugger_nurturing", "huggers_max", "throwspeed", "hugger_delay", "eggs_max", "egg_cooldown"];
   const [pageIndex, setPageIndex] = useLocalState(context, 'pageIndex', 0);
-  const { selected_template} = data;
+  const { selected_template, xeno_stats, caste_stats} = data;
   if(!selected_template) return;
-  //Should probably be a state so it actually updates
+  //Should probably be a state
   const setCustomCastStat = (key, value) => {
-      custom_caste_stats[key] = value;
-      if(!changed_values.includes(key)){
-        changed_values.push(key);
-      }
+    caste_stats[key] = value;
   };
   const setCustomXenoStat = (key, value) => {
-    custom_xeno_stats[key] = value;
-    if(!changed_values.includes(key)){
-      changed_values.push(key);
-    }
+    xeno_stats[key] = value;
 };
   return (
     <Section>
       <Collapsible title="Combat statistics">
         <LabeledList>
-          {Object.keys(custom_caste_stats).map((element, i) => {
+          {Object.keys(caste_stats).map((element, i) => {
             if(!combat_stats.includes(element)){
               return ;
             }
             return(
             <LabeledList.Item label={element}>
               <Input
-                value={custom_caste_stats[element]}
+                value={caste_stats[element]}
                 onInput={(key, val) => setCustomCastStat(element, val)}/>
             </LabeledList.Item>
             );
@@ -84,28 +77,28 @@ const StatActions = (props, context) => {
         </LabeledList>
       </Collapsible>
       <Collapsible title="Health and Mobility">
-        {Object.keys(custom_caste_stats).map((element, i) => {
+        {Object.keys(caste_stats).map((element, i) => {
             if(!health_stats.includes(element)){
               return ;
             }
             return(
             <LabeledList.Item label={element}>
               <Input
-                value={custom_caste_stats[element]}
+                value={caste_stats[element]}
                 onInput={(key, val) => setCustomCastStat(element, val)}/>
             </LabeledList.Item>
               );
         })}
       </Collapsible>
       <Collapsible title="Fluff and Miscellaneous">
-        {Object.keys(custom_caste_stats).map((element, i) => {
+        {Object.keys(caste_stats).map((element, i) => {
             if(!fluff_stats.includes(element)){
               return ;
             }
             return(
             <LabeledList.Item label={element}>
               <Input
-                value={custom_caste_stats[element]}
+                value={caste_stats[element]}
                 onInput={(key, val) => setCustomCastStat(element, val)}/>
             </LabeledList.Item>
               );
@@ -117,14 +110,14 @@ const StatActions = (props, context) => {
         </Tooltip>
         }>
         <LabeledList>
-          {Object.keys(custom_xeno_stats).map((element, i) => {
+          {Object.keys(xeno_stats).map((element, i) => {
             if(combat_stats.includes(element) || health_stats.includes(element) || fluff_stats.includes(element)){
               return;
             }
             return(
             <LabeledList.Item label={element}>
               <Input
-                value={custom_xeno_stats[element]}
+                value={xeno_stats[element]}
                 onInput={(key, val) => setCustomXenoStat(element, val)}/>
             </LabeledList.Item>
               );
@@ -192,7 +185,8 @@ const EvolutionActions = (props, context) => {
 const AbilityActions = (props, context) => {
   const { act, data } = useBackend(context);
   const {xeno_abilities, xeno_passives} = data;
-  const [Abilities, setAbilities] = useLocalState(context, 'Abilities', []);
+
+  const [abilities, addAbility] = useLocalState(context, 'Abilities', xeno_abilities);
   return (
     <Stack vertical>
       <Stack.Item>
@@ -228,7 +222,7 @@ const AbilityActions = (props, context) => {
           }>
         </Section>
         <LabeledList>
-          {Object.values(xeno_abilities).map((value) => {
+          {Object.values(abilities).map((value) => {
             return (
               <LabeledList.Item textAlign="left">
                 <b>
@@ -247,11 +241,6 @@ export const GeneTailor = (props, context) => {
   const types = ["caste", "strain"];
   const { act, data } = useBackend(context);
   const {xeno_stats, caste_stats, selected_template, hives} = data;
-  if(selected_template){
-    custom_caste_stats= Object.keys(caste_stats).sort().reduce((obj, key) => {obj[key] = caste_stats[key];return obj;},{});
-    custom_xeno_stats= Object.keys(xeno_stats).sort().reduce((obj, key) => {obj[key] = xeno_stats[key];return obj;},{});
-  }
-
   const [pageIndex, setPageIndex] = useLocalState(context, 'pageIndex', 1);
   const PageComponent = PAGES[pageIndex].component();
   return (
@@ -286,7 +275,7 @@ export const GeneTailor = (props, context) => {
                   width="200px"
                   options={selected_template ? hives : []}
                   onSelected={(value) =>
-                   custom_xeno_stats["hivenumber"] = value}
+                   xeno_stats["hivenumber"] = value}
                 />
               </LabeledList.Item>
               <LabeledList.Item label="Name">
@@ -307,23 +296,23 @@ export const GeneTailor = (props, context) => {
             <Tooltip content="Create a custom caste, allowing Xenomorphs to evolve according to the specifications in the evolution tab, note that this applies to every hive.">
             <Button color="purple" content="Apply Genome" width="100%" height="25px" align="center"
                       onClick={() => act('apply_genome', {
-                        caste_stats: custom_caste_stats,
-                        xeno_stats: custom_xeno_stats,
+                        caste_stats: caste_stats,
+                        xeno_stats: xeno_stats,
                       })}/>
             </Tooltip>
             <Tooltip content="Transform an existing Xenomorph">
             <Button color="yellow" content="Transform Mob" width="100%" height="25px" align="center"
                   onClick={() => act('transform_mob', {
-                    caste_stats: custom_caste_stats,
-                    xeno_stats: custom_xeno_stats,
+                    caste_stats: caste_stats,
+                    xeno_stats: xeno_stats,
                   })}/>
             </Tooltip>
             <Tooltip content="Spawn it under yourself">
             <Button color="green" content="Spawn Mob" width="100%" height="25px" align="center"
                   onClick={() =>
                     act('spawn_mob', {
-                      caste_stats: custom_caste_stats,
-                      xeno_stats: custom_xeno_stats,
+                      caste_stats: caste_stats,
+                      xeno_stats: xeno_stats,
                     })}
             />
             </Tooltip>

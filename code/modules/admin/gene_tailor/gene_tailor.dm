@@ -34,7 +34,7 @@ GLOBAL_LIST_INIT(gt_evolutions, list(
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		ui = new(user, src, "GeneTailor", "Gene Tailor")
-		ui.set_autoupdate(FALSE)
+		ui.set_autoupdate(TRUE)
 		ui.open()
 
 /datum/gene_tailor/ui_data(mob/user)
@@ -77,19 +77,16 @@ GLOBAL_LIST_INIT(gt_evolutions, list(
 			if(!ability_choice)
 				return
 			xeno_abilities += ability_choice
-			update_static_data(usr)
 		if("remove_ability")
 			var/ability_choice = tgui_input_list(usr, "Select an ability to remove.", "Remove an Ability", xeno_abilities)
 			if(!ability_choice)
 				return
 			xeno_abilities -= ability_choice
-			update_static_data(usr)
 		if("add_delegate")
 			var/delegate_choice = tgui_input_list(usr, "Select a passive to add.", "Add a Passive", subtypesof(/datum/behavior_delegate))
 			if(!delegate_choice)
 				return
 			xeno_delegates += delegate_choice
-			update_static_data(usr)
 		if("set_name")
 			xeno_name = sanitize(params["name"])
 		if("transform_mob")
@@ -105,13 +102,11 @@ GLOBAL_LIST_INIT(gt_evolutions, list(
 			if(!delegate_choice)
 				return
 			xeno_delegates -= delegate_choice
-			update_static_data(usr)
 		if("change_evolution")
 			if(params["type"] == "evolve" && !(params["key"] in evolves_into))
 				evolves_into += params["key"]
 			else if(params["type"] == "devolve" && !(params["key"] in devolves_into))
 				devolves_into += params["key"]
-			update_static_data(usr)
 		if("apply_genome")
 			var/choice = tgui_alert(usr, "Xenomorphs will be able to evolve into a [xeno_name] without your intervention.\n This is irreversible, are you sure it is playable ?", "WARNING", list("Yes", "No"), timeout = FALSE)
 			if(!choice || choice == "No")

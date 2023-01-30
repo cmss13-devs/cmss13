@@ -201,11 +201,14 @@
 	icon_state = "loot_pills"
 
 /obj/effect/spawner/random/pills/item_to_spawn()
-	return pick(prob(4);/obj/item/storage/pill_bottle/ultrazine/skillless,\
+	return pick(prob(4);/obj/item/storage/pill_bottle/inaprovaline/skillless,\
 				prob(4);/obj/item/storage/pill_bottle/mystery/skillless,\
-				prob(4);/obj/item/storage/pill_bottle/stimulant/skillless,\
 				prob(3);/obj/item/storage/pill_bottle/alkysine/skillless,\
 				prob(3);/obj/item/storage/pill_bottle/imidazoline/skillless,\
+				prob(3);/obj/item/storage/pill_bottle/tramadol/skillless,\
+				prob(3);/obj/item/storage/pill_bottle/bicaridine/skillless,\
+				prob(3);/obj/item/storage/pill_bottle/kelotane/skillless,\
+				prob(3);/obj/item/storage/pill_bottle/peridaxon/skillless,\
 				prob(2);/obj/item/storage/pill_bottle/packet/oxycodone)
 
 /obj/effect/spawner/random/pills/lowchance

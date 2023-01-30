@@ -627,3 +627,13 @@
   - rscadd: SecTech vendors can now vend regulation tape.
   harryob:
   - spellcheck: removed some instances of var/ in proc arguments
+2023-01-30:
+  Morrow:
+  - admin: LOOC is no longer usable by people who are incapacitated.
+  ThePiachu:
+  - rscadd: Added supply and ASRS crates of battery boxes and High Capacity Power
+      Cells.
+  carlarctg:
+  - bugfix: Fixes Vampire Lurkers being able to headbite friendlies.
+  harryob:
+  - bugfix: admins can now correctly mess with the random event verbs.

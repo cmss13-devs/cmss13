@@ -204,6 +204,7 @@
 	charge_icon = "+taser"
 	black_market_value = 20
 	actions_types = list(/datum/action/item_action/taser/change_mode)
+	/// Determines if the taser will hit any target, or if it checks for wanted status. Default is wanted only.
 	var/mode = TASER_MODE_P
 	var/skilllock = SKILL_POLICE_SKILLED
 
@@ -239,6 +240,7 @@
 	. = ..()
 	overlays += charge_icon + "_[mode]"
 
+/// Changes between targetting wanted persons or any persons. Originally used by unique_action, made own proc to allow for use in action button too.
 /obj/item/weapon/gun/energy/taser/proc/change_mode(mob/user)
 	switch(mode)
 		if(TASER_MODE_P)
@@ -276,6 +278,7 @@
 	var/obj/item/weapon/gun/energy/taser/taser = holder_item
 	taser.change_mode(usr)
 
+/// Updates the action button icon dependant on mode.
 /datum/action/item_action/taser/change_mode/proc/update_icon()
 	var/obj/item/weapon/gun/energy/taser/taser = holder_item
 	switch(taser.mode)

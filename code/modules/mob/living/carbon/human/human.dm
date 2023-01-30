@@ -1664,3 +1664,11 @@
 	. += "<option value='?_src_=vars;setspecies=\ref[src]'>Set Species</option>"
 	. += "<option value='?_src_=vars;selectequipment=\ref[src]'>Select Equipment</option>"
 	. += "<option value='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminspawncookie=\ref[src]'>Give Cookie</option>"
+
+/mob/living/carbon/human/throw_item(atom/target)
+	if(!throw_allowed)
+		var/obj/item/I = get_active_hand()
+		if(I.throwforce) // for hurty stuff only
+			to_chat(src, SPAN_DANGER("You are currently unable to throw harmful items."))
+			return
+	. = ..()

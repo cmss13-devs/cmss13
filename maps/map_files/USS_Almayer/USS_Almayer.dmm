@@ -35737,6 +35737,7 @@
 	pixel_x = 8;
 	pixel_y = 32
 	},
+/obj/effect/spawner/random/facepaint,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -51795,7 +51796,6 @@
 	req_access = null
 	},
 /obj/item/clothing/mask/rebreather/scarf/tacticalmask/red,
-/obj/item/clothing/mask/rebreather/skull/black,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -61710,6 +61710,9 @@
 	req_access = null
 	},
 /obj/item/clothing/mask/rebreather/scarf,
+/obj/structure/closet/secure_closet/personal/cabinet{
+	req_access = null
+	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -63736,7 +63739,6 @@
 	},
 /obj/item/clothing/suit/chef/classic,
 /obj/item/tool/kitchen/knife/butcher,
-/obj/item/facepaint/black,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -65534,10 +65536,6 @@
 	tag = "icon-containment_corner_variant_1 (EAST)"
 	},
 /area/almayer/medical/containment/cell/cl)
-"pRB" = (
-/obj/item/clothing/mask/rebreather/skull/black,
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/hull/lower_hull/l_m_p)
 "pRL" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -65713,6 +65711,7 @@
 	pixel_x = -5;
 	pixel_y = 14
 	},
+/obj/effect/spawner/random/balaclavas,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -75838,7 +75837,7 @@
 /area/almayer/shipboard/brig/evidence_storage)
 "uli" = (
 /obj/structure/surface/rack,
-/obj/item/facepaint/skull,
+/obj/effect/spawner/random/facepaint,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -122518,7 +122517,7 @@ kMU
 fBx
 fiq
 hRg
-pRB
+oDf
 xMh
 fiq
 rNW

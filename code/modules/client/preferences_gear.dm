@@ -362,7 +362,7 @@ var/global/list/gear_datums = list()
 	display_name = "Fullbody Paint"
 	path = /obj/item/facepaint/sniper
 	slot = WEAR_IN_BACK
-	cost = 4 //To match with the skull paint amount of point, gave this amount of point for the same reason of the skull facepaint
+	cost = 4 //To match with the skull paint amount of point, gave this amount of point for the same reason of the skull facepaint (too cool for everyone to be able to constantly use)
 
 /datum/gear/aceofspades
 	display_name = "Ace of Spades"

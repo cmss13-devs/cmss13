@@ -83,6 +83,8 @@
 		to_chat(alien, SPAN_XENONOTICE("You rip the tubes away from the host, releasing it!"))
 		playsound(alien, "alien_claw_flesh", 25, 1)
 		unbuckle(user)
+	else
+		. = ..()
 
 /obj/structure/machinery/optable/buckle_mob(mob/living/carbon/human/H, mob/living/user)
 	if(!istype(H) || !ishuman(user) || H == user || H.buckled || user.action_busy || user.is_mob_incapacitated() || buckled_mob)

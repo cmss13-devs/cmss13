@@ -535,7 +535,7 @@
 
 /obj/item/clothing/head/helmet/marine/fluff/biolock
 	name = "Medic Helmet"
-	desc = "Medical Helmet designed to protect the head of a medic.. DONOR ITEM"
+	desc = "Medical Helmet designed to protect the head of a medic. DONOR ITEM"
 	icon_state = "helmetm"
 
 /obj/item/clothing/head/helmet/marine/fluff/haveatya

@@ -52,7 +52,7 @@ Contains most of the procs that are called when a mob is attacked by something
 //this proc returns the Siemens coefficient of electrical resistivity for a particular external organ.
 /mob/living/carbon/human/proc/get_siemens_coefficient_organ(obj/limb/def_zone)
 	if (!def_zone)
-		return 1.0
+		return 1
 
 	var/siemens_coefficient = 1
 

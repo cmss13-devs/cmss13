@@ -33,10 +33,10 @@
 	// We are already overwatching something
 	if (X.observed_xeno)
 		if (isQueen)
-			var/mob/living/carbon/xenomorph/oldXeno = X.observed_xeno
+			var/mob/living/carbon/xenomorph/old_xeno = X.observed_xeno
 			X.overwatch(X.observed_xeno, TRUE)
-			if (oldXeno)
-				oldXeno.hud_set_queen_overwatch()
+			if (old_xeno)
+				old_xeno.hud_set_queen_overwatch()
 		else
 			X.overwatch(X.observed_xeno, TRUE)
 		return
@@ -53,10 +53,10 @@
 	else if (!isQueen) // Regular Xeno OW vs Queen
 		X.overwatch(selected_xeno)
 	else // We are a queen
-		var/mob/living/carbon/xenomorph/oldXeno = X.observed_xeno
+		var/mob/living/carbon/xenomorph/old_xeno = X.observed_xeno
 		X.overwatch(selected_xeno, FALSE)
-		if (oldXeno)
-			oldXeno.hud_set_queen_overwatch()
+		if (old_xeno)
+			old_xeno.hud_set_queen_overwatch()
 
 	if (selected_xeno && !QDELETED(selected_xeno))
 		selected_xeno.hud_set_queen_overwatch()
@@ -66,15 +66,15 @@
 // If you use it, be sure to manually specify the second var, even if its the default value.
 /mob/living/carbon/xenomorph/proc/overwatch(mob/living/carbon/xenomorph/targetXeno, stop_overwatch = FALSE)
 	if(stop_overwatch)
-		var/mob/living/carbon/xenomorph/oldXeno = observed_xeno
+		var/mob/living/carbon/xenomorph/old_xeno = observed_xeno
 		observed_xeno = null
 
-		SEND_SIGNAL(src, COMSIG_XENO_STOP_OVERWATCH, oldXeno)
+		SEND_SIGNAL(src, COMSIG_XENO_STOP_OVERWATCH, old_xeno)
 		UnregisterSignal(src, COMSIG_MOB_MOVE_OR_LOOK)
 
-		if(oldXeno)
-			to_chat(src, SPAN_XENOWARNING("You stop watching [oldXeno]."))
-			oldXeno.hud_set_queen_overwatch()
+		if(old_xeno)
+			to_chat(src, SPAN_XENOWARNING("You stop watching [old_xeno]."))
+			old_xeno.hud_set_queen_overwatch()
 	else
 		if(!hive)
 			return
@@ -102,11 +102,11 @@
 			zoom_out()
 
 		if(observed_xeno)
-			var/mob/living/carbon/xenomorph/oldXeno = observed_xeno
+			var/mob/living/carbon/xenomorph/old_xeno = observed_xeno
 			observed_xeno = null
 
-			SEND_SIGNAL(src, COMSIG_XENO_STOP_OVERWATCH_XENO, oldXeno)
-			oldXeno.hud_set_queen_overwatch()
+			SEND_SIGNAL(src, COMSIG_XENO_STOP_OVERWATCH_XENO, old_xeno)
+			old_xeno.hud_set_queen_overwatch()
 			UnregisterSignal(src, COMSIG_MOB_MOVE_OR_LOOK)
 
 		observed_xeno = targetXeno
@@ -178,10 +178,10 @@
 		if (!isQueen)
 			xenoSrc.overwatch(xenoTarget)
 		else
-			var/mob/living/carbon/xenomorph/oldXeno = xenoSrc.observed_xeno
+			var/mob/living/carbon/xenomorph/old_xeno = xenoSrc.observed_xeno
 			xenoSrc.overwatch(xenoTarget, FALSE)
-			if (oldXeno)
-				oldXeno.hud_set_queen_overwatch()
+			if (old_xeno)
+				old_xeno.hud_set_queen_overwatch()
 			if (xenoTarget && !QDELETED(xenoTarget))
 				xenoTarget.hud_set_queen_overwatch()
 	if(href_list["overwatch"])

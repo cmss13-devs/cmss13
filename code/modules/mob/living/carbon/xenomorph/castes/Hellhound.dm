@@ -63,8 +63,8 @@
 	icon_xeno = 'icons/mob/xenos/hellhound.dmi'
 	icon_xenonid = 'icons/mob/xenos/hellhound.dmi'
 
-/mob/living/carbon/xenomorph/hellhound/Initialize(mapload, mob/living/carbon/xenomorph/oldXeno, h_number)
-	. = ..(mapload, oldXeno, h_number || XENO_HIVE_YAUTJA)
+/mob/living/carbon/xenomorph/hellhound/Initialize(mapload, mob/living/carbon/xenomorph/old_xeno, h_number)
+	. = ..(mapload, old_xeno, h_number || XENO_HIVE_YAUTJA)
 
 	set_languages(list(LANGUAGE_HELLHOUND, LANGUAGE_YAUTJA))
 

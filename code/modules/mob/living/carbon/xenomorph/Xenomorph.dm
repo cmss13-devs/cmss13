@@ -116,9 +116,6 @@
 	var/crystal_max = 0
 
 	var/evasion = 0   // RNG "Armor"
-	/// Used for xenos built during runtime, their caste_datums are not singletons and should therefor be deleted
-	var/delete_caste_on_death = FALSE
-
 	// Armor
 	var/armor_deflection = 10 // Most important: "max armor"
 	var/armor_deflection_buff = 0 // temp buffs to armor
@@ -343,7 +340,7 @@
 	var/atom/movable/vis_obj/xeno_wounds/wound_icon_carrier
 	var/atom/movable/vis_obj/xeno_pack/backpack_icon_carrier
 
-/mob/living/carbon/xenomorph/Initialize(mapload, mob/living/carbon/xenomorph/oldXeno, h_number, datum/caste_datum/pre_made_caste)
+/mob/living/carbon/xenomorph/Initialize(mapload, mob/living/carbon/xenomorph/old_xeno, h_number, datum/caste_datum/pre_made_caste)
 	var/area/A = get_area(src)
 	if(A && A.statistic_exempt)
 		statistic_exempt = TRUE
@@ -351,22 +348,22 @@
 	wound_icon_carrier = new(null, src)
 	vis_contents += wound_icon_carrier
 
-	if(oldXeno)
-		set_movement_intent(oldXeno.m_intent)
-		hivenumber = oldXeno.hivenumber
-		nicknumber = oldXeno.nicknumber
-		life_kills_total = oldXeno.life_kills_total
-		life_damage_taken_total = oldXeno.life_damage_taken_total
-		if(oldXeno.iff_tag)
-			iff_tag = oldXeno.iff_tag
+	if(old_xeno)
+		set_movement_intent(old_xeno.m_intent)
+		hivenumber = old_xeno.hivenumber
+		nicknumber = old_xeno.nicknumber
+		life_kills_total = old_xeno.life_kills_total
+		life_damage_taken_total = old_xeno.life_damage_taken_total
+		if(old_xeno.iff_tag)
+			iff_tag = old_xeno.iff_tag
 			iff_tag.forceMove(src)
-			oldXeno.iff_tag = null
+			old_xeno.iff_tag = null
 	else if (h_number)
 		hivenumber = h_number
 
 	set_languages(list(LANGUAGE_XENOMORPH, LANGUAGE_HIVEMIND))
-	if(oldXeno)
-		for(var/datum/language/L in oldXeno.languages)
+	if(old_xeno)
+		for(var/datum/language/L in old_xeno.languages)
 			add_language(L.name)//Make sure to keep languages (mostly for event Queens that know English)
 
 	// Well, not yet, technically
@@ -382,7 +379,6 @@
 
 	if(pre_made_caste)
 		caste = pre_made_caste
-		delete_caste_on_death = TRUE
 
 	else if(caste_type && GLOB.xeno_datum_list[caste_type])
 		caste = GLOB.xeno_datum_list[caste_type]
@@ -461,23 +457,23 @@
 	toggle_xeno_mobhud() //This is a verb, but fuck it, it just werks
 	toggle_xeno_hostilehud()
 
-	if(oldXeno)
-		a_intent_change(oldXeno.a_intent)//Keep intent
+	if(old_xeno)
+		a_intent_change(old_xeno.a_intent)//Keep intent
 
-		if(oldXeno.layer == XENO_HIDING_LAYER)
+		if(old_xeno.layer == XENO_HIDING_LAYER)
 			//We are hiding, let's keep hiding if we can!
 			for(var/datum/action/xeno_action/onclick/xenohide/hide in actions)
 				if(istype(hide))
 					layer = XENO_HIDING_LAYER
 					hide.button.icon_state = "template_active"
 
-		for(var/obj/item/W in oldXeno.contents) //Drop stuff
-			oldXeno.drop_inv_item_on_ground(W)
+		for(var/obj/item/W in old_xeno.contents) //Drop stuff
+			old_xeno.drop_inv_item_on_ground(W)
 
-		oldXeno.empty_gut()
+		old_xeno.empty_gut()
 
-		if(IS_XENO_LEADER(oldXeno))
-			hive.replace_hive_leader(oldXeno, src)
+		if(IS_XENO_LEADER(old_xeno))
+			hive.replace_hive_leader(old_xeno, src)
 
 	// Only handle free slots if the xeno is not in tdome
 	if(!is_admin_level(z))
@@ -675,7 +671,7 @@
 	GLOB.living_xeno_list -= src
 	GLOB.xeno_mob_list -= src
 
-	if(delete_caste_on_death)
+	if(!(caste.display_name in GLOB.custom_evolutions))
 		QDEL_NULL(caste)
 
 	if(tracked_marker)

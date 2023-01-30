@@ -4,6 +4,9 @@
 //All castes need an evolves_to() list in their defines
 //Such as evolves_to = list(XENO_CASTE_WARRIOR, XENO_CASTE_SENTINEL, XENO_CASTE_RUNNER, "Badass") etc
 
+// Contains castes built during runtime, contains both the mob and the caste
+GLOBAL_LIST_EMPTY(custom_evolutions)
+
 /mob/living/carbon/xenomorph/verb/Evolve()
 	set name = "Evolve"
 	set desc = "Evolve into a higher form."
@@ -46,26 +49,28 @@
 			return
 
 	// Used for restricting benos to evolve to drone/queen when they're the only potential queen
-	for(var/mob/living/carbon/xenomorph/M in GLOB.living_xeno_list)
-		if(hivenumber != M.hivenumber)
+	for(var/mob/living/carbon/xenomorph/xeno in GLOB.living_xeno_list)
+		if(hivenumber != xeno.hivenumber)
 			continue
 
-		switch(M.tier)
+		switch(xeno.tier)
 			if(0)
-				if(isXenoLarvaStrict(M))
-					if(M.client && M.ckey)
+				if(isXenoLarvaStrict(xeno))
+					if(xeno.client && xeno.ckey)
 						potential_queens++
 				continue
 			if(1)
-				if(isXenoDrone(M))
-					if(M.client && M.ckey)
+				if(isXenoDrone(xeno))
+					if(xeno.client && xeno.ckey)
 						potential_queens++
 
-	var/mob/living/carbon/xenomorph/M = null
+	var/mob/living/carbon/xenomorph/xeno = null
+	if(castepick in GLOB.custom_evolutions)
+		xeno = GLOB.custom_evolutions[castepick]["mob_type"]
+	else
+		xeno = RoleAuthority.get_caste_by_text(castepick)
 
-	M = RoleAuthority.get_caste_by_text(castepick)
-
-	if(isnull(M))
+	if(isnull(xeno))
 		to_chat(usr, SPAN_WARNING("[castepick] is not a valid caste! If you're seeing this message, tell a coder!"))
 		return
 
@@ -101,8 +106,25 @@
 	else if(!can_evolve(castepick, potential_queens))
 		return
 
-	//From there, the new xeno exists, hopefully
-	var/mob/living/carbon/xenomorph/new_xeno = new M(get_turf(src), src)
+	var/mob/living/carbon/xenomorph/new_xeno
+	// Check if it is a custom xeno made by the gene tailor
+	if(castepick in GLOB.custom_evolutions)
+		new_xeno = new xeno(get_turf(src), src, hivenumber, GLOB.custom_evolutions[castepick]["caste_datum"])
+		var/list/stored_xeno_types = GLOB.custom_evolutions[castepick]["stored_xeno_types"]
+		for(var/var_name in GLOB.custom_evolutions[castepick]["xeno_stats"])
+			if(stored_xeno_types[var_name] != "other" && !(var_name in GLOB.custom_evolutions[castepick]["stored_xeno_types"]))
+				new_xeno.vars[var_name] = GLOB.custom_evolutions[castepick]["xeno_stats"][var_name]
+		for(var/action_type in new_xeno.base_actions)
+			qdel(remove_action(new_xeno, action_type))
+		new_xeno.create_hud()
+		new_xeno.base_actions = GLOB.custom_evolutions[castepick]["xeno_abilities"]
+		new_xeno.add_abilities()
+		new_xeno.recalculate_everything()
+		var/datum/behavior_delegate/custom/custom_delegate = new(GLOB.custom_evolutions[castepick]["xeno_delegates"], new_xeno)
+		new_xeno.behavior_delegate = custom_delegate
+	else
+		//From there, the new xeno exists, hopefully
+		new_xeno = new xeno(get_turf(src), src)
 
 	if(!istype(new_xeno))
 		//Something went horribly wrong!
@@ -270,27 +292,8 @@
 		to_chat(src, SPAN_WARNING("You are banished and cannot reach the hivemind."))
 		return FALSE
 
-	var/xeno_type
 	var/level_to_switch_to = get_vision_level()
-	switch(newcaste)
-		if("Larva")
-			xeno_type = /mob/living/carbon/xenomorph/larva
-		if(XENO_CASTE_RUNNER)
-			xeno_type = /mob/living/carbon/xenomorph/runner
-		if(XENO_CASTE_DRONE)
-			xeno_type = /mob/living/carbon/xenomorph/drone
-		if(XENO_CASTE_SENTINEL)
-			xeno_type = /mob/living/carbon/xenomorph/sentinel
-		if(XENO_CASTE_SPITTER)
-			xeno_type = /mob/living/carbon/xenomorph/spitter
-		if(XENO_CASTE_LURKER)
-			xeno_type = /mob/living/carbon/xenomorph/lurker
-		if(XENO_CASTE_WARRIOR)
-			xeno_type = /mob/living/carbon/xenomorph/warrior
-		if(XENO_CASTE_DEFENDER)
-			xeno_type = /mob/living/carbon/xenomorph/defender
-		if(XENO_CASTE_BURROWER)
-			xeno_type = /mob/living/carbon/xenomorph/burrower
+	var/xeno_type = RoleAuthority.get_caste_by_text(newcaste)
 
 	var/mob/living/carbon/xenomorph/new_xeno = new xeno_type(get_turf(src), src)
 

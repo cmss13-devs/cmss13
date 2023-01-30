@@ -50,6 +50,8 @@ const StatActions = (props, context) => {
   let health_stats = ["max_health", "plasma_gain", "plasma_max", "xeno_explosion_resistance", "armor_deflection", "evasion", "speed", "heal_resting", "innate_healing"];
   let fluff_stats =  ["caste_desc", "tier", "display_name", "is_intelligent", "fire_immunity", "fire_intensity_resistance", "aura_strength", "build_time_mult", "can_hold_facehuggers", "can_hold_eggs", "can_be_queen_healed", "can_be_revived", "can_vent_crawl", "caste_luminosity", "hugger_nurturing", "huggers_max", "throwspeed", "hugger_delay", "eggs_max", "egg_cooldown"];
   const [pageIndex, setPageIndex] = useLocalState(context, 'pageIndex', 0);
+  const { selected_template} = data;
+  if(!selected_template) return;
   //Should probably be a state so it actually updates
   const setCustomCastStat = (key, value) => {
       custom_caste_stats[key] = value;
@@ -81,7 +83,7 @@ const StatActions = (props, context) => {
         })}
         </LabeledList>
       </Collapsible>
-      <Collapsible title="Health and mobility">
+      <Collapsible title="Health and Mobility">
         {Object.keys(custom_caste_stats).map((element, i) => {
             if(!health_stats.includes(element)){
               return ;
@@ -110,7 +112,7 @@ const StatActions = (props, context) => {
         })}
       </Collapsible>
       <Collapsible title="Other" buttons={
-      <Tooltip content="Change those at your own risks">
+      <Tooltip content="Change those at your own risk">
         <Button icon="circle-question"/>
         </Tooltip>
         }>
@@ -135,47 +137,52 @@ const StatActions = (props, context) => {
 
 const EvolutionActions = (props, context) => {
   const { act, data } = useBackend(context);
-  const { glob_gt_evolutions } = data;
+  const { glob_gt_evolutions, selected_template, evolves_into, devolves_into} = data;
+  if(!selected_template) return;
   return (
     <Section>
-      <Section title="Evolves from" align="center">
+      <Section title="Evolves from" align="center" buttons={
+              <Tooltip content="Changes here are permanent, mind your clicks. There are no rules, it can devolve into multiple things from multiple tiers">
+              <Button icon="circle-question"/>
+              </Tooltip>
+      }>
         {Object.keys(glob_gt_evolutions).map((element, i) => (
             <Box level={2} title={element} key={i}>
               <Stack align="right" grow={1}>
-                {glob_gt_evolutions[element].map((option, optionIndex) => (
+                {Object.values(glob_gt_evolutions[element]).map((value) => (
                   <Button.Checkbox
-                    key={optionIndex}
                     width="100%"
                     height="100%"
-                    icon={option.icon}
-                    checked="PlaceHolder"
+                    checked={devolves_into.includes(value)}
                     color="purple"
-                    content={option.name}
-                    onClick={() => act('mob_transform', { key: option.key })}
+                    content={value}
+                    onClick={() => {act('change_evolution', { type : "devolve", key: value })}}
                   />
                 ))}
               </Stack>
             </Box>
         ))}
       </Section>
-      <Section title="Evolves into" align="center">
+      <Section title="Evolves into" align="center" buttons={
+              <Tooltip content="Changes here are permanent, mind your clicks. There are no rules, it can evolve into multiple things from multiple tiers">
+              <Button icon="circle-question"/>
+              </Tooltip>
+      }>
         {Object.keys(glob_gt_evolutions).map((element, i) => (
-          <Box level={2} title={element} key={i}>
-            <Stack align="right" grow={1}>
-              {glob_gt_evolutions[element].map((option, optionIndex) => (
-                <Button.Checkbox
-                  key={optionIndex}
-                  width="100%"
-                  height="100%"
-                  icon={option.icon}
-                  checked="PlaceHolder"
-                  color="purple"
-                  content={option.name}
-                  onClick={() => act('mob_transform', { key: option.key })}
-                />
-              ))}
-            </Stack>
-          </Box>
+            <Box level={2} title={element} key={i}>
+              <Stack align="right" grow={1}>
+                {Object.values(glob_gt_evolutions[element]).map((value) => (
+                  <Button.Checkbox
+                    width="100%"
+                    height="100%"
+                    checked={evolves_into.includes(value)}
+                    color="purple"
+                    content={value}
+                    onClick={() => {act('change_evolution', { type : "evolve", key: value })}}
+                  />
+                ))}
+              </Stack>
+            </Box>
         ))}
       </Section>
     </Section>
@@ -191,6 +198,9 @@ const AbilityActions = (props, context) => {
       <Stack.Item>
         <Section title="Passives" buttons={
           <Box>
+            <Tooltip content="Can be stacked, some examples of passives : Vanguard shield, Acider acid Slash, Hedgehog shards, Berserker rage...">
+            <Button icon="circle-question"/>
+            </Tooltip>
             <Button icon="plus" onClick={() => act("add_delegate")}/>
             <Button icon="minus" onClick={() => act("remove_delegate")}/>
           </Box>
@@ -200,7 +210,7 @@ const AbilityActions = (props, context) => {
           {Object.values(xeno_passives).map((value) => {
             return (
               <LabeledList.Item textAlign="left">
-                {value}
+                <b>{value}</b>
               </LabeledList.Item>
             );
           })}
@@ -209,6 +219,9 @@ const AbilityActions = (props, context) => {
       <Stack.Item>
         <Section title="Abilities" buttons={
           <Box>
+            <Tooltip content="Note that some abilities REQUIRE a passive to work to their full potential or at all, if an ability does not behave properly try adding the original owner's passive">
+            <Button icon="circle-question"/>
+            </Tooltip>
             <Button icon="plus" onClick={() => act("add_ability")}/>
             <Button icon="minus" onClick={() => act("remove_ability")}/>
           </Box>
@@ -229,10 +242,7 @@ const AbilityActions = (props, context) => {
     </Stack>
   );
 }
-const PlaceHolderActions = (props, context) => {
-  const { act, data } = useBackend(context);
-  return;
-}
+
 export const GeneTailor = (props, context) => {
   const types = ["caste", "strain"];
   const { act, data } = useBackend(context);
@@ -255,8 +265,12 @@ export const GeneTailor = (props, context) => {
               <LabeledList.Item label="Template">
                 <Button color={selected_template ? "good" : "bad"} content={selected_template ? selected_template : "Load a template"} align="center"
                   onClick={() => (act('load_template'))}/>
+                <Tooltip content="What your xenomorph will be based of, you can then change any property you wish, this is mandatory">
+                <Button icon="circle-question"/>
+                </Tooltip>
               </LabeledList.Item>
               <LabeledList.Item label="Type">
+                <Tooltip width="200px" content="W.I.P, has no effect for now">
                 <Dropdown
                     width="200px"
                     options={selected_template ? types : []}
@@ -265,6 +279,7 @@ export const GeneTailor = (props, context) => {
                         selected_type: value
                       })}
                   />
+                </Tooltip>
               </LabeledList.Item>
               <LabeledList.Item label="Hive">
                 <Dropdown
@@ -289,16 +304,29 @@ export const GeneTailor = (props, context) => {
         </Section>
         <Section width="788px" position = "fixed" bottom ="0px" >
           <Stack>
-            <Button color="purple" content="Apply Genome" width="100%" height="25px" align="center"/>
-            <Button color="yellow" content="Transform Mob" width="100%" height="25px" align="center"/>
+            <Tooltip content="Create a custom caste, allowing Xenomorphs to evolve according to the specifications in the evolution tab, note that this applies to every hive.">
+            <Button color="purple" content="Apply Genome" width="100%" height="25px" align="center"
+                      onClick={() => act('apply_genome', {
+                        caste_stats: custom_caste_stats,
+                        xeno_stats: custom_xeno_stats,
+                      })}/>
+            </Tooltip>
+            <Tooltip content="Transform an existing Xenomorph">
+            <Button color="yellow" content="Transform Mob" width="100%" height="25px" align="center"
+                  onClick={() => act('transform_mob', {
+                    caste_stats: custom_caste_stats,
+                    xeno_stats: custom_xeno_stats,
+                  })}/>
+            </Tooltip>
+            <Tooltip content="Spawn it under yourself">
             <Button color="green" content="Spawn Mob" width="100%" height="25px" align="center"
                   onClick={() =>
                     act('spawn_mob', {
                       caste_stats: custom_caste_stats,
                       xeno_stats: custom_xeno_stats,
-                      to_change_stats: changed_values,
                     })}
             />
+            </Tooltip>
           </Stack>
         </Section>
         <Section height="28px" mt="20px" bottom="10px" pl="3px" pt="4px" fitted>

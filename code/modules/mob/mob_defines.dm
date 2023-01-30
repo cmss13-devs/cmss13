@@ -71,8 +71,8 @@
 	var/knocked_down = 0
 	var/losebreath = 0.0//Carbon
 	var/dazed = 0
-	var/slowed = 0.0 // X_SLOW_AMOUNT
-	var/superslowed = 0.0 // X_SUPERSLOW_AMOUNT
+	var/slowed = 0 // X_SLOW_AMOUNT
+	var/superslowed = 0 // X_SUPERSLOW_AMOUNT
 	var/shakecamera = 0
 
 	// bool status effects \\

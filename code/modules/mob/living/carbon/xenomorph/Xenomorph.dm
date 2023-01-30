@@ -141,7 +141,7 @@
 	var/hive_pos = NORMAL_XENO // The position of the xeno in the hive (0 = normal xeno; 1 = queen; 2+ = hive leader)
 
 	// Variables that can be mutated
-	var/ability_speed_modifier = 0.0 //Things that add on top of our base speed, based on what powers we are using
+	var/ability_speed_modifier = 0 //Things that add on top of our base speed, based on what powers we are using
 
 	// Progression-related
 	var/age_prefix = ""
@@ -924,7 +924,7 @@
 	pull_multiplier = mutators.pull_multiplier
 	if(isrunner(src))
 		//Xeno runners need a small nerf to dragging speed mutator
-		pull_multiplier = 1.0 - (1.0 - mutators.pull_multiplier) * 0.85
+		pull_multiplier = 1 - (1 - mutators.pull_multiplier) * 0.85
 		if(is_zoomed)
 			zoom_out()
 	if(iscarrier(src))

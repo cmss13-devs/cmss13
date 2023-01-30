@@ -23,7 +23,7 @@
 	var/cur_tick = 0 //Tick updater
 
 	var/obj/item/fuelCell/fusion_cell = new //Starts with a fuel cell loaded in.  Maybe replace with the plasma tanks in the future and have it consume plasma?  Possibly remove this later if it's irrelevent...
-	var/fuel_rate = 0.00 //Rate at which fuel is used.  Based mostly on how long the generator has been running.
+	var/fuel_rate = 0 //Rate at which fuel is used.  Based mostly on how long the generator has been running.
 	power_machine = TRUE
 
 /obj/structure/machinery/power/fusion_engine/Initialize(mapload, ...)

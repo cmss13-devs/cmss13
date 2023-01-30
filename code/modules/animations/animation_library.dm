@@ -7,7 +7,7 @@ functions so that other people won't have to wonder what it actually does.
 /*
 This is something like a gun spin, where the user spins it in the hand.
 Instead of being uniform, it starts out a littler slower, goes fast in the middle, then slows down again.
-4 ticks * 5 = 2.0 seconds. Doesn't loop on default, and spins right.
+4 ticks * 5 = 2 seconds. Doesn't loop on default, and spins right.
 */
 /proc/animation_wrist_flick(atom/A, direction = 1, loop_num = 0) //-1 for a left spin.
 	animate(A, transform = matrix(120 * direction, MATRIX_ROTATE), time = 1, loop = loop_num, easing = SINE_EASING|EASE_IN)

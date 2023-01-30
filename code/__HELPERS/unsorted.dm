@@ -1108,6 +1108,8 @@ var/global/image/action_purple_power_up
 	for(var/i in 1 to numticks)
 		sleep(delayfraction)
 		time_remaining -= delayfraction
+		if(!istype(busy_user) || has_target && !istype(target)) // Checks if busy_user exists and is not dead and if the target exists and is not destroyed
+			. = FALSE
 		if(show_busy_icon)
 			if(has_busy_icon && user.alpha < 255)
 				busy_user.overlays += busy_icon
@@ -1116,8 +1118,6 @@ var/global/image/action_purple_power_up
 			else if(!has_busy_icon && user.alpha == 255)
 				busy_user.overlays += busy_icon
 				has_busy_icon = TRUE
-		if(!istype(busy_user) || has_target && !istype(target)) // Checks if busy_user exists and is not dead and if the target exists and is not destroyed
-			. = FALSE
 			break
 		if(user_flags & INTERRUPT_DIFF_LOC && busy_user.loc != user_orig_loc || \
 			has_target && (target_flags & INTERRUPT_DIFF_LOC && target.loc != target_orig_loc)

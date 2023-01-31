@@ -282,7 +282,7 @@
 				SPAN_DANGER("You throw [M] on [src]."))
 		return
 
-	if(HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
+	if(HAS_TRAIT(W, TRAIT_TOOL_WRENCH) && user.a_intent == INTENT_HARM)
 		user.visible_message(SPAN_NOTICE("[user] starts disassembling [src]."),
 		SPAN_NOTICE("You start disassembling [src]."))
 		playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
@@ -635,7 +635,7 @@
 		step(I, get_dir(I, src))
 
 /obj/structure/surface/rack/attackby(obj/item/W, mob/user, click_data)
-	if(HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
+	if(HAS_TRAIT(W, TRAIT_TOOL_WRENCH) && user.a_intent == INTENT_HARM)
 		deconstruct(TRUE)
 		playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
 		return

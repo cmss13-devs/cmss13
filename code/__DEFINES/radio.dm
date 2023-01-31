@@ -60,6 +60,13 @@
 #define RADIO_CHANNEL_PMC_CCT "PMC CCT"
 #define RADIO_CHANNEL_WY_WO "SpecOps"
 
+//Listening Devices
+#define RADIO_CHANNEL_BUG_A "Listening Device A"
+#define RADIO_CHANNEL_BUG_B "Listening Device B"
+#define RADIO_CHANNEL_BUG_C "Listening Device C"
+#define RADIO_CHANNEL_BUG_D "Listening Device D"
+#define RADIO_CHANNEL_BUG_E "Listening Device E"
+
 //1-Channel ERTs
 #define RADIO_CHANNEL_DUTCH_DOZEN "DD"
 #define RADIO_CHANNEL_VAI "VAI"

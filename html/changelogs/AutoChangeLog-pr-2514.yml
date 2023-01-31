@@ -1,4 +1,0 @@
-author: "realforest2001"
-delete-after: True
-changes:
-  - bugfix: "Fixes LV Phones being able to call Almayer due to duplicate ID."

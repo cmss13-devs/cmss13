@@ -637,3 +637,15 @@
   - bugfix: Fixes Vampire Lurkers being able to headbite friendlies.
   harryob:
   - bugfix: admins can now correctly mess with the random event verbs.
+2023-01-31:
+  Joe lampost:
+  - rscdel: Changed the rosary's description to something that fits the aliens setting.
+  Morrow:
+  - rscadd: Added three convict origins to character creation.
+  Waseemq1235:
+  - bugfix: Fixed unauthorized deployment not being an option on the JAS.
+  realforest2001:
+  - bugfix: Fixes LV Phones being able to call Almayer due to duplicate ID.
+  stanalbatross:
+  - spellcheck: fixed many instances of double full stop being used instead of single
+      or ellipses

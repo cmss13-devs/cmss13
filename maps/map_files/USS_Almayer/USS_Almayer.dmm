@@ -40599,13 +40599,15 @@
 /area/almayer/engineering/laundry)
 "geg" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/shuttle_control/dropship2{
-	dir = 4;
-	pixel_y = -12
-	},
 /obj/structure/machinery/computer/security/hangar{
 	dir = 4;
 	pixel_y = 12
+	},
+/obj/structure/machinery/computer/shuttle/dropship/flight/remote_control{
+	dir = 4;
+	shuttleId = "dropship_normandy";
+	name = "Normandy Remote Control Console";
+	pixel_y = -12
 	},
 /turf/open/floor/almayer{
 	icon_state = "redfull";
@@ -68107,13 +68109,15 @@
 /area/almayer/shipboard/brig/main_office)
 "siz" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/shuttle_control/dropship1{
-	dir = 8;
-	pixel_y = 12
-	},
 /obj/structure/machinery/computer/security/hangar{
 	dir = 8;
 	pixel_y = -12
+	},
+/obj/structure/machinery/computer/shuttle/dropship/flight/remote_control{
+	dir = 8;
+	shuttleId = "dropship_alamo";
+	name = "Alamo Remote Control Console";
+	pixel_y = 12
 	},
 /turf/open/floor/almayer{
 	icon_state = "redfull";

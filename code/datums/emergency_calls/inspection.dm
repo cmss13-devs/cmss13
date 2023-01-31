@@ -187,7 +187,7 @@
 	objectives = "Get your instructions from the CMB Office at Anchorpoint Station, and carry out your orders. Ensure that Colonial assets are safe and in your custody. Do not enforce or override Marine Law on a Marine Ship unless requested, as it's outside of your juristiction."
 
 
-/datum/emergency_call/inspection_CMB/create_member(datum/mind/M, var/turf/override_spawn_loc)
+/datum/emergency_call/inspection_CMB/create_member(datum/mind/M, turf/override_spawn_loc)
 	var/turf/spawn_loc = override_spawn_loc ? override_spawn_loc : get_spawn_point()
 
 	if(!istype(spawn_loc))

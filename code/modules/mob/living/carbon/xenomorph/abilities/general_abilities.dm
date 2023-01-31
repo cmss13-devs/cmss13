@@ -285,7 +285,7 @@
 		button.icon_state = "template_active"
 
 /datum/action/xeno_action/onclick/toggle_long_range/use_ability(atom/target)
-	var/mob/living/carbon/Xenomorph/xeno = owner
+	var/mob/living/carbon/xenomorph/xeno = owner
 	xeno.speed_modifier = initial(xeno.speed_modifier)// Reset the speed modifier should you be disrupted while zooming or whatnot
 
 	if(xeno.is_zoomed)
@@ -308,7 +308,7 @@
 		xeno.zoom_in()
 		button.icon_state = "template_active"
 
-/datum/action/xeno_action/onclick/toggle_long_range/proc/handle_mob_move_or_look(mob/living/carbon/xenomorph/mover, actually_moving, direction, specific_direction)
+/datum/action/xeno_action/onclick/toggle_long_range/proc/handle_mob_move_or_look(mob/living/carbon/xenomorph/xeno, actually_moving, direction, specific_direction)
 	SIGNAL_HANDLER
 	movement_buffer--
 	if(!actually_moving)

@@ -104,7 +104,7 @@
 
 
 /datum/action/xeno_action/onclick/acid_shroud/use_ability(atom/A)
-	if (!isXeno(owner))
+	if (!isxeno(owner))
 		return
 
 	if (!action_cooldown_check())
@@ -130,8 +130,8 @@
 
 /datum/action/xeno_action/onclick/acid_shroud/use_ability(atom/Atom)
 	var/datum/effect_system/smoke_spread/xeno_acid/Smok
-	var/mob/living/carbon/Xenomorph/Xeno = owner
-	if (!isXeno(owner))
+	var/mob/living/carbon/xenomorph/Xeno = owner
+	if (!isxeno(owner))
 		return
 
 	if (!action_cooldown_check())

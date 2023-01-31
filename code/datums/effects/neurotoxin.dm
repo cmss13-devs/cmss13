@@ -11,12 +11,12 @@
 	var/chat_cd = 0			// Tick-based chat cooldown
 	var/stam_dam = 7.5		// Stamina damage per tick
 
-/datum/effects/neurotoxin/New(var/atom/A)
+/datum/effects/neurotoxin/New(atom/A)
 	..(A)
 	cause_data = create_cause_data("neurotoxic gas")
 
-/datum/effects/neurotoxin/validate_atom(var/atom/A)
-	if(isXeno(A) || isobj(A))
+/datum/effects/neurotoxin/validate_atom(atom/A)
+	if(isxeno(A) || isobj(A))
 		return FALSE
 
 

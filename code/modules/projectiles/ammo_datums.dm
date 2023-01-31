@@ -2824,43 +2824,43 @@
 	smoke_system = null
 	. = ..()
 
-/datum/ammo/xeno/boiler_gas/on_hit_mob(mob/Moob, obj/item/projectile/Poop)
-	if(iscarbon(Moob))
-		var/mob/living/carbon/Carbon = Moob
+/datum/ammo/xeno/boiler_gas/on_hit_mob(mob/moob, obj/item/projectile/poop)
+	if(iscarbon(moob))
+		var/mob/living/carbon/Carbon = moob
 		if(Carbon.status_flags & XENO_HOST && HAS_TRAIT(Carbon, TRAIT_NESTED) || Carbon.stat == DEAD)
 			return
-	var/datum/effects/neurotoxin/neuro_effect = locate() in Moob.effects_list
+	var/datum/effects/neurotoxin/neuro_effect = locate() in moob.effects_list
 	if(!neuro_effect)
-		neuro_effect = new /datum/effects/neurotoxin(Moob)
+		neuro_effect = new /datum/effects/neurotoxin(moob)
 	neuro_effect.duration += 5
-	Moob.apply_effect(3, DAZE)
-	to_chat(Moob,SPAN_HIGHDANGER("Neurotoxic liquid spreads all over you and immediately soaks into your pores and orifices! Oh fuck!")) // Fucked up but have a chance to escape rather than being game-ended
-	drop_nade(get_turf(Poop), Poop,TRUE)
+	moob.apply_effect(3, DAZE)
+	to_chat(moob,SPAN_HIGHDANGER("Neurotoxic liquid spreads all over you and immediately soaks into your pores and orifices! Oh fuck!")) // Fucked up but have a chance to escape rather than being game-ended
+	drop_nade(get_turf(poop), poop,TRUE)
 
-/datum/ammo/xeno/boiler_gas/on_hit_obj(obj/OutbackSteakhouse, obj/item/projectile/Poop)
-	drop_nade(get_turf(Poop), Poop)
+/datum/ammo/xeno/boiler_gas/on_hit_obj(obj/outbacksteakhouse, obj/item/projectile/poop)
+	drop_nade(get_turf(poop), poop)
 
-/datum/ammo/xeno/boiler_gas/on_hit_turf(turf/Turf, obj/item/projectile/Poop)
-	if(Turf.density && isturf(Poop.loc))
-		drop_nade(Poop.loc, Poop) //we don't want the gas globs to land on dense turfs, they block smoke expansion.
+/datum/ammo/xeno/boiler_gas/on_hit_turf(turf/Turf, obj/item/projectile/poop)
+	if(Turf.density && isturf(poop.loc))
+		drop_nade(poop.loc, poop) //we don't want the gas globs to land on dense turfs, they block smoke expansion.
 	else
-		drop_nade(Turf, Poop)
+		drop_nade(Turf, poop)
 
-/datum/ammo/xeno/boiler_gas/do_at_max_range(obj/item/projectile/Poop)
-	drop_nade(get_turf(Poop), Poop)
+/datum/ammo/xeno/boiler_gas/do_at_max_range(obj/item/projectile/poop)
+	drop_nade(get_turf(poop), poop)
 
-/datum/ammo/xeno/boiler_gas/proc/set_xeno_smoke(obj/item/projectile/Poop)
+/datum/ammo/xeno/boiler_gas/proc/set_xeno_smoke(obj/item/projectile/poop)
 	smoke_system = new /datum/effect_system/smoke_spread/xeno_weaken()
 
-/datum/ammo/xeno/boiler_gas/proc/drop_nade(turf/T, obj/item/projectile/P)
+/datum/ammo/xeno/boiler_gas/proc/drop_nade(turf/turf, obj/item/projectile/poop)
 	var/amount = 4
 	var/lifetime_mult = 1.0
-	if(isboiler(P.firer))
-		smoke_system.cause_data = P.weapon_cause_data
-	smoke_system.set_up(amount, 0, T)
+	if(isboiler(poop.firer))
+		smoke_system.cause_data = poop.weapon_cause_data
+	smoke_system.set_up(amount, 0, turf)
 	smoke_system.lifetime = 12 * lifetime_mult
 	smoke_system.start()
-	Turf.visible_message(SPAN_DANGER("A glob of acid lands with a splat and explodes into noxious fumes!"))
+	turf.visible_message(SPAN_DANGER("A glob of acid lands with a splat and explodes into noxious fumes!"))
 
 
 /datum/ammo/xeno/boiler_gas/acid
@@ -2871,19 +2871,19 @@
 	max_range = 16
 
 
-/datum/ammo/xeno/boiler_gas/acid/set_xeno_smoke(obj/item/projectile/Poop)
+/datum/ammo/xeno/boiler_gas/acid/set_xeno_smoke(obj/item/projectile/poop)
 	smoke_system = new /datum/effect_system/smoke_spread/xeno_acid()
 
-/datum/ammo/xeno/boiler_gas/acid/on_hit_mob(mob/Moob, obj/item/projectile/Poop)
-	if(iscarbon(Moob))
-		var/mob/living/carbon/Carbon = Moob
+/datum/ammo/xeno/boiler_gas/acid/on_hit_mob(mob/moob, obj/item/projectile/poop)
+	if(iscarbon(moob))
+		var/mob/living/carbon/Carbon = moob
 		if(Carbon.status_flags & XENO_HOST && HAS_TRAIT(Carbon, TRAIT_NESTED) || Carbon.stat == DEAD)
 			return
-	to_chat(Moob,SPAN_HIGHDANGER("Acid covers your body! Oh fuck!"))
-	playsound(Moob,"acid_strike",75,1)
-	INVOKE_ASYNC(Moob, TYPE_PROC_REF(/mob, emote), "pain") // why do I need this bullshit
-	new /datum/effects/acid(Moob, Poop.firer)
-	drop_nade(get_turf(Poop), Poop,TRUE)
+	to_chat(moob,SPAN_HIGHDANGER("Acid covers your body! Oh fuck!"))
+	playsound(moob,"acid_strike",75,1)
+	INVOKE_ASYNC(moob, TYPE_PROC_REF(/mob, emote), "pain") // why do I need this bullshit
+	new /datum/effects/acid(moob, poop.firer)
+	drop_nade(get_turf(poop), poop,TRUE)
 
 /datum/ammo/xeno/bone_chips
 	name = "bone chips"

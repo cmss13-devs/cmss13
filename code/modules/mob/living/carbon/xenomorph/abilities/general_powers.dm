@@ -97,7 +97,7 @@
 
 // Shift spits
 /datum/action/xeno_action/onclick/shift_spits/use_ability(atom/A)
-	var/mob/living/carbon/Xenomorph/X = owner
+	var/mob/living/carbon/xenomorph/X = owner
 	if(!X.check_state())
 		return
 	for(var/i in 1 to X.caste.spit_types.len)
@@ -709,7 +709,7 @@
 	return TRUE
 
 /datum/action/xeno_action/activable/xeno_spit/use_ability(atom/Atom)
-	var/mob/living/carbon/Xenomorph/Xeno = owner
+	var/mob/living/carbon/xenomorph/Xeno = owner
 	var/spit_location
 	if(!Xeno.check_state())
 		return

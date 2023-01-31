@@ -44,7 +44,7 @@
 
 		list("PRIMARY AMMUNITION", 0, null, null, null),
 		list("ABR-40 Magazine (10x24mm)", 20, /obj/item/ammo_magazine/rifle/l42a/abr40, null, VENDOR_ITEM_REGULAR),
-		list("Basira-Armstrong Magazine(6.5mm)", 5, /obj/item/ammo_magazine/rifle/boltaction, null, VENDOR_ITEM_REGULAR),
+		list("Basira-Armstrong Magazine (6.5mm)", 5, /obj/item/ammo_magazine/rifle/boltaction, null, VENDOR_ITEM_REGULAR),
 		list("Box Of Buckshot Shells", 10, /obj/item/ammo_magazine/shotgun/buckshot, null, VENDOR_ITEM_REGULAR),
 		list("Box Of Flechette Shells", 10, /obj/item/ammo_magazine/shotgun/flechette, null, VENDOR_ITEM_REGULAR),
 		list("Box Of Shotgun Slugs", 10, /obj/item/ammo_magazine/shotgun, null, VENDOR_ITEM_REGULAR),
@@ -112,7 +112,7 @@
 
 		list("PRIMARY AMMUNITION", -1, null, null),
 		list("ABR-40 Magazine (10x24mm)", 20, /obj/item/ammo_magazine/rifle/l42a/abr40, null, VENDOR_ITEM_REGULAR),
-		list("Basira-Armstrong Magazine(6.5mm)", 5, /obj/item/ammo_magazine/rifle/boltaction, null, VENDOR_ITEM_REGULAR),
+		list("Basira-Armstrong Magazine (6.5mm)", 5, /obj/item/ammo_magazine/rifle/boltaction, null, VENDOR_ITEM_REGULAR),
 		list("Box Of Buckshot Shells", 15, /obj/item/ammo_magazine/shotgun/buckshot, VENDOR_ITEM_REGULAR),
 		list("Box Of Flechette Shells", 15, /obj/item/ammo_magazine/shotgun/flechette, VENDOR_ITEM_REGULAR),
 		list("Box Of Shotgun Slugs", 15, /obj/item/ammo_magazine/shotgun, VENDOR_ITEM_REGULAR),

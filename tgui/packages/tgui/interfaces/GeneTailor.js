@@ -1,6 +1,5 @@
-import { backendUpdate, useBackend, useLocalState } from '../backend';
-import { Input, Button, Stack, Section, Tabs, Box, Dropdown, Slider, Tooltip, LabeledList, Collapsible } from '../components';
-import { UI_UPDATE } from '../constants';
+import { useBackend, useLocalState } from '../backend';
+import { Input, Button, Stack, Section, Tabs, Box, Dropdown, Tooltip, LabeledList, Collapsible } from '../components';
 import { Window } from '../layouts';
 const PAGES = [
   {
@@ -80,7 +79,7 @@ const StatActions = (props, context) => {
   const [pageIndex, setPageIndex] = useLocalState(context, 'pageIndex', 0);
   const { selected_template, xeno_stats, caste_stats } = data;
   if (!selected_template) return;
-  //Should probably be a state
+  // Should probably be a state
   const setCustomCastStat = (key, value) => {
     caste_stats[key] = value;
   };
@@ -96,7 +95,7 @@ const StatActions = (props, context) => {
               return;
             }
             return (
-              <LabeledList.Item label={element}>
+              <LabeledList.Item key={i} label={element}>
                 <Input
                   value={caste_stats[element]}
                   onInput={(key, val) => setCustomCastStat(element, val)}
@@ -112,7 +111,7 @@ const StatActions = (props, context) => {
             return;
           }
           return (
-            <LabeledList.Item label={element}>
+            <LabeledList.Item key={i} label={element}>
               <Input
                 value={caste_stats[element]}
                 onInput={(key, val) => setCustomCastStat(element, val)}
@@ -127,7 +126,7 @@ const StatActions = (props, context) => {
             return;
           }
           return (
-            <LabeledList.Item label={element}>
+            <LabeledList.Item key={i} label={element}>
               <Input
                 value={caste_stats[element]}
                 onInput={(key, val) => setCustomCastStat(element, val)}
@@ -153,7 +152,7 @@ const StatActions = (props, context) => {
               return;
             }
             return (
-              <LabeledList.Item label={element}>
+              <LabeledList.Item key={i} label={element}>
                 <Input
                   value={xeno_stats[element]}
                   onInput={(key, val) => setCustomXenoStat(element, val)}
@@ -185,8 +184,9 @@ const EvolutionActions = (props, context) => {
         {Object.keys(glob_gt_evolutions).map((element, i) => (
           <Box level={2} title={element} key={i}>
             <Stack align="right" grow={1}>
-              {Object.values(glob_gt_evolutions[element]).map((value) => (
+              {Object.values(glob_gt_evolutions[element]).map((value, key) => (
                 <Button.Checkbox
+                  key={key}
                   width="100%"
                   height="100%"
                   checked={devolves_into.includes(value)}
@@ -212,8 +212,9 @@ const EvolutionActions = (props, context) => {
         {Object.keys(glob_gt_evolutions).map((element, i) => (
           <Box level={2} title={element} key={i}>
             <Stack align="right" grow={1}>
-              {Object.values(glob_gt_evolutions[element]).map((value) => (
+              {Object.values(glob_gt_evolutions[element]).map((value, key) => (
                 <Button.Checkbox
+                  key={key}
                   width="100%"
                   height="100%"
                   checked={evolves_into.includes(value)}
@@ -254,11 +255,12 @@ const AbilityActions = (props, context) => {
               <Button icon="plus" onClick={() => act('add_delegate')} />
               <Button icon="minus" onClick={() => act('remove_delegate')} />
             </Box>
-          }></Section>
+          }
+        />
         <LabeledList>
-          {Object.values(xeno_passives).map((value) => {
+          {Object.values(xeno_passives).map((value, key) => {
             return (
-              <LabeledList.Item textAlign="left">
+              <LabeledList.Item key={key} textAlign="left">
                 <b>{value}</b>
               </LabeledList.Item>
             );
@@ -276,11 +278,12 @@ const AbilityActions = (props, context) => {
               <Button icon="plus" onClick={() => act('add_ability')} />
               <Button icon="minus" onClick={() => act('remove_ability')} />
             </Box>
-          }></Section>
+          }
+        />
         <LabeledList>
-          {Object.values(abilities).map((value) => {
+          {Object.values(abilities).map((value, key) => {
             return (
-              <LabeledList.Item textAlign="left">
+              <LabeledList.Item key={key} textAlign="left">
                 <b>{value}</b>
               </LabeledList.Item>
             );
@@ -299,7 +302,7 @@ export const GeneTailor = (props, context) => {
   const PageComponent = PAGES[pageIndex].component();
   return (
     <Window
-      /*theme = "hive_status"*/
+      /* theme = "hive_status"*/
       width={800}
       height={600}>
       <Window.Content>
@@ -341,7 +344,7 @@ export const GeneTailor = (props, context) => {
             <LabeledList.Item label="Name">
               <Input
                 width="200px"
-                //placeholder={selected_template ? "" : "no template detected !"}
+                // placeholder={selected_template ? "" : "no template detected !"}
                 onInput={(e, value) =>
                   act('set_name', {
                     name: value,

@@ -82,6 +82,7 @@
 #define CHEM_EFFECT_RESIST_NEURO (1<<1)
 #define CHEM_EFFECT_HYPER_THROTTLE (1<<2) //universal understand but not speech
 #define CHEM_EFFECT_ORGAN_STASIS (1<<3) //peri stabiliser
+#define CHEM_EFFECT_ANTI_PARASITE (1<<4) //PROPERTY_ANTIPARASITIC
 
 
 //Blood plasma

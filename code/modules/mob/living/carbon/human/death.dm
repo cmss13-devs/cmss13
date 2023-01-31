@@ -47,6 +47,9 @@
 		disable_lights()
 		disable_special_items()
 		disable_headsets() //Disable radios for dead people to reduce load
+		var/mob/living/simple_animal/borer/Player2 = has_brain_worms()
+		if(Player2)
+			Player2.host_death(undefibbable)
 	if(pulledby && isxeno(pulledby)) // Xenos lose grab on dead humans
 		pulledby.stop_pulling()
 	//Handle species-specific deaths.

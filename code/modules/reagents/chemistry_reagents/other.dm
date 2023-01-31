@@ -1013,3 +1013,27 @@
 	chemclass = CHEM_CLASS_SPECIAL
 	properties = list(PROPERTY_TRANSFORMATIVE = 4, PROPERTY_NUTRITIOUS = 3, PROPERTY_HEMOGENIC = 1)
 	flags = REAGENT_SCANNABLE
+
+/datum/reagent/borer_enzyme
+	name = "Cortical Enzyme"
+	id = "benzyme"
+	description = "An enzyme secreted by a parasite that consumes certain chemicals from the bloodstream. Also seems to help fight addictions."
+	reagent_state = LIQUID
+	color = "#25c08c"
+	overdose = LOW_REAGENTS_OVERDOSE
+	overdose_critical = LOW_REAGENTS_OVERDOSE_CRITICAL
+	chemclass = CHEM_CLASS_SPECIAL
+	flags = REAGENT_SCANNABLE|REAGENT_NO_GENERATION
+	properties = list(PROPERTY_CROSSMETABOLIZING = 2, PROPERTY_ANTIADDICTIVE = 2)
+
+/datum/reagent/borer_cure
+	name = "Anti-Enzyme"
+	id = "bcure"
+	description = "An anti-parasite drug synthesised from parastic enzymes. Effectively fights toxins in the bloodstream."
+	reagent_state = LIQUID
+	color = "#25c08c"
+	overdose = LOW_REAGENTS_OVERDOSE
+	overdose_critical = LOW_REAGENTS_OVERDOSE_CRITICAL
+	chemclass = CHEM_CLASS_SPECIAL
+	flags = REAGENT_SCANNABLE|REAGENT_NO_GENERATION
+	properties = list(PROPERTY_CROSSMETABOLIZING = 2, PROPERTY_ANTITOXIN = 4)

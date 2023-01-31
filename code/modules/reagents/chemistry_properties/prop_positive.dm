@@ -461,9 +461,22 @@
 					H.vomit()
 				else
 					A.counter = 90
+	if(H.chem_effect_flags & CHEM_EFFECT_ANTI_PARASITE)
+		return
+
+	H.chem_effect_flags |= CHEM_EFFECT_ANTI_PARASITE
+	to_chat(H, SPAN_NOTICE("Your body feels warmer."))
 
 /datum/chem_property/positive/antiparasitic/process_overdose(mob/living/M, potency = 1)
 	M.apply_damage(potency, TOX)
+	var/mob/living/simple_animal/borer/player_2 = M.has_brain_worms()
+	if(player_2)
+		if(player_2.controlling)
+			player_2.detach()
+			to_chat(src, SPAN_HIGHDANGER("You relinquish the unknown chemical overwhelms you!"))
+
+		player_2.leave_host()
+		to_chat(src, SPAN_HIGHDANGER("The overwhelming flow of powerful chemicals forces you to flee your host!"))
 
 /datum/chem_property/positive/antiparasitic/process_critical(mob/living/M, potency = 1)
 	M.apply_damage(POTENCY_MULTIPLIER_VHIGH*potency, TOX)

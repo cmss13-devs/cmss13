@@ -79,6 +79,7 @@
 #define SPAN_AVOIDHARM(X) "<span class='avoidharm'>[X]</span>"
 
 #define SPAN_SCANNER(X) "<span class='scanner'>[X]</span>"
+#define SPAN_BORER(X) "<i><span class='alien'>[X]</span></i>"
 
 #define SPAN_ROSE(X) "<span class='rose'>[X]</span>"
 #define SPAN_LANGCHAT(X) "<span class='langchat'>[X]</span>"

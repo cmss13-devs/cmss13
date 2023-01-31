@@ -202,3 +202,47 @@
 	color = "tajaran"
 	key = "7"
 	flags = RESTRICTED|HIVEMIND
+
+/datum/language/corticalborer
+	name = LANGUAGE_BORER
+	desc = "Cortical borers possess a strange link between their tiny minds."
+	speech_verb = "sings"
+	ask_verb = "sings"
+	exclaim_verb = "sings"
+	colour = "alien"
+	key = "0"
+	flags = RESTRICTED|HIVEMIND
+
+/datum/language/corticalborer/broadcast(mob/living/speaker, message, speaker_mask, death)
+	var/mob/living/simple_animal/borer/B
+	if(!speaker_mask)
+		speaker_mask = speaker
+	if(iscarbon(speaker))
+		var/mob/living/carbon/M = speaker
+		B = M.has_brain_worms()
+	else if(istype(speaker,/mob/living/simple_animal/borer))
+		B = speaker
+
+	if(B)
+		speaker_mask = B.truename
+
+	var/message_start = "<i><span class='game say'>[name], <span class='name'>[speaker_mask]</span>"
+	var/message_body = "<span class='message'>[speech_verb], \"[message]\"</span></span></i>"
+	log_say("[key_name(speaker)] : ([name]) [message]")
+
+	for(var/mob/player in GLOB.player_list)
+		var/understood = FALSE
+		var/ghost = FALSE
+		if(istype(player,/mob/dead))
+			understood = TRUE
+			ghost = TRUE
+		else if((src in player.languages) && check_special_condition(player))
+			understood = TRUE
+		if(understood)
+			if(!speaker_mask)
+				speaker_mask = speaker.name
+			if(death)
+				var/area/A = get_area(speaker)
+				to_chat(player, "<span class='[colour]'>[message_start] has [SPAN_BOLD("perished")][A? " at [sanitize_area(A.name)]":""]!</i></span>")
+			else
+				to_chat(player, "<span class='[colour]'>[ghost? "(<a href='byond://?src=\ref[player];track=\ref[speaker]'>F</a>) ":""][message_start] [message_body]</span>")

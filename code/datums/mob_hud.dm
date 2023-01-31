@@ -446,6 +446,12 @@ var/list/datum/mob_hud/huds = list(
 
 			return
 
+		var/mob/living/simple_animal/borer/B = has_brain_worms()
+		if(B && B.controlling)
+			holder.icon_state = "hudbrainworm"
+			if(!holder2_set)
+				holder2.icon_state = "hudbrainworm"
+			return
 
 		for(var/datum/disease/D in viruses)
 			if(!D.hidden[SCANNER])

@@ -127,6 +127,24 @@
 		if(eta_status)
 			. += "Evacuation: [eta_status]"
 
+	var/mob/living/simple_animal/borer/B = borer
+	if(B && B.controlling)
+
+		var/CR = "Yes"
+		if(!B.can_reproduce)
+			CR = "Forbidden"
+		else if((B.enzymes < BORER_LARVAE_COST))
+			CR = "No"
+
+		. += ""
+		. += "Borer:"
+		. += "Name: [B.truename]"
+		. += "Can Reproduce: [CR]"
+		. += "Enzymes: [round(B.enzymes)]/[round(B.max_enzymes)]"
+		. += ""
+		. += "Host Brain Damage: [brainloss]/100"
+
+
 /mob/living/carbon/human/ex_act(severity, direction, datum/cause_data/cause_data)
 	if(lying)
 		severity *= EXPLOSION_PRONE_MULTIPLIER

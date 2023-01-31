@@ -135,11 +135,7 @@
 	if(!shuttle.is_hijacked)
 		tgui_interact(user)
 
-/obj/structure/machinery/computer/shuttle/dropship/flight/attack_alien(mob/living/carbon/xenomorph/xeno)
-	if(!xeno.hive_pos == XENO_QUEEN)
-		playsound(loc, 'sound/machines/terminal_error.ogg', KEYBOARD_SOUND_VOLUME, 1)
-		return
-
+/obj/structure/machinery/computer/shuttle/dropship/flight/proc/groundside_alien_action(mob/living/carbon/xenomorph/xeno)
 	if(!skip_time_lock && world.time < SSticker.mode.round_time_lobby + (SHUTTLE_TIME_LOCK * 2))
 		playsound(loc, 'sound/machines/terminal_error.ogg', KEYBOARD_SOUND_VOLUME, 1)
 		to_chat(xeno, SPAN_WARNING("No shuttle detected, try again in [round((SSticker.mode.round_time_lobby + (SHUTTLE_TIME_LOCK * 2)-world.time)/600)] minutes."))
@@ -152,17 +148,26 @@
 		return
 
 	var/obj/docking_port/mobile/shuttle = SSshuttle.getShuttle(shuttleId)
-	if(is_remote && linked_lz)
-		if(shuttle.mode == SHUTTLE_IDLE)
+	if(linked_lz)
+		playsound(loc, 'sound/machines/terminal_success.ogg', KEYBOARD_SOUND_VOLUME, 1)
+		if(shuttle.mode == SHUTTLE_IDLE && !is_ground_level(shuttle.z))
 			SSshuttle.moveShuttle(shuttleId, linked_lz, TRUE)
+		else
+			to_chat(xeno, "The screen reads T-[shuttle.timeLeft(10)].")
 		return
 
-	if(!xeno.caste || !xeno.caste.is_intelligent || is_remote)
+/obj/structure/machinery/computer/shuttle/dropship/flight/attack_alien(mob/living/carbon/xenomorph/xeno)
+	if(xeno.hive_pos != XENO_QUEEN)
 		to_chat(xeno, SPAN_NOTICE("Lights flash from the terminal but you can't comprehend their meaning."))
+		playsound(loc, 'sound/machines/terminal_error.ogg', KEYBOARD_SOUND_VOLUME, 1)
+		return
+
+	if(is_remote)
+		groundside_alien_action(xeno)
 		return
 
 	// door controls being overriden
-	if(!dropship_control_lost && !is_remote)
+	if(!dropship_control_lost)
 		to_chat(xeno, SPAN_XENONOTICE("You override the doors."))
 		xeno_message(SPAN_XENOANNOUNCE("The doors of the metal bird have been overridden! Rejoice!"), 3, xeno.hivenumber)
 
@@ -176,7 +181,7 @@
 			set_lz_resin_allowed(TRUE)
 		return
 
-	if(dropship_control_lost && !is_remote)
+	if(dropship_control_lost)
 		//keyboard
 		for(var/i = 0; i < 5; i++)
 			playsound(loc, get_sfx("keyboard"), KEYBOARD_SOUND_VOLUME, 1)
@@ -190,7 +195,6 @@
 			return
 		hijack(xeno)
 		return
-
 
 /obj/structure/machinery/computer/shuttle/dropship/flight/proc/hijack(mob/user)
 

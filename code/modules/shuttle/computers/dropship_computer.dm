@@ -276,7 +276,11 @@
 	var/mob/user = usr
 	switch(action)
 		if("move")
-			update_equipment(FALSE)
+			var/is_optimised = FALSE
+			// automatically apply optimisation if user is a pilot
+			if(skillcheck(user, SKILL_PILOT, SKILL_PILOT_EXPERT))
+				is_optimised = TRUE
+			update_equipment(is_optimised)
 			if(shuttle.mode != SHUTTLE_IDLE)
 				to_chat(user, SPAN_WARNING("You can't move to a new destination whilst in transit."))
 				return TRUE

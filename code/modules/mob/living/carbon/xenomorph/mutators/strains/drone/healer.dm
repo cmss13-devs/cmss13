@@ -1,7 +1,7 @@
 /datum/xeno_mutator/healer
 	name = "STRAIN: Drone - Healer"
 	description = "You trade your choice of resin secretions and ten slash damage for 100 more health, strong pheromones, lesser resin fruits, and the ability to heal your sisters' wounds by secreting a regenerative resin salve using your vital fluids. Be wary, this is a dangerous process; overexert yourself and you may die..."
-	flavor_description = "To the very last drop, your blood belongs to the hive; share it with your sisters to keep them fighting."
+	flavor_description = "To the very last drop, your blood belongs to The Hive; share it with your sisters to keep them fighting."
 	cost = MUTATOR_COST_EXPENSIVE
 	individual_only = TRUE
 	caste_whitelist = list(XENO_CASTE_DRONE) //Only drone.

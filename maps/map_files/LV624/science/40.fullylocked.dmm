@@ -442,11 +442,7 @@
 /obj/structure/transmitter/colony_net{
 	pixel_y = 24;
 	phone_category = "Lazarus Landing";
-<<<<<<< HEAD
-	phone_id = "Research"
-=======
 	phone_id = "Research Dome"
->>>>>>> master
 	},
 /turf/open/floor{
 	dir = 5;

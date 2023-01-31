@@ -342,13 +342,21 @@
 		to_chat(xeno, SPAN_XENODANGER("They died before you could finish headbiting them! Be more careful next time!"))
 		return
 
+	var/mob/living/carbon/human/target_human = target_carbon
+	var/obj/item/clothing/head/helmet/helmet = target_human.head
+	if(!istype(helmet) && ishuman(target_carbon)) // no helmet ? death
+		target_human.apply_damage(200, BRUTE, "head", no_limb_loss = TRUE, permanent_kill = TRUE) //DIE HUMAN
+		target_human.update_headshot_overlay(HEADSHOT_OVERLAY_HEAVY)
+		target_human.drop_inv_item_on_ground(target_human.head, null, TRUE)
+	else
+		target_carbon.apply_armoured_damage(200, ARMOR_MELEE, BRUTE, "head", 5) //DIE CARBON
+
 	to_chat(xeno, SPAN_XENOHIGHDANGER("You pierce [target_carbon]’s head with your inner jaw!"))
 	playsound(target_carbon,'sound/weapons/alien_bite2.ogg', 50, TRUE)
 	xeno.visible_message(SPAN_DANGER("[xeno] pierces [target_carbon]’s head with its inner jaw!"))
 	xeno.flick_attack_overlay(target_carbon, "headbite")
 	xeno.animation_attack_on(target_carbon, pixel_offset = 16)
-	target_carbon.apply_armoured_damage(200, ARMOR_MELEE, BRUTE, "head", 5) //DIE
-	target_carbon.death(create_cause_data("executed by headbite", xeno), FALSE)
+	target_carbon.death(create_cause_data("headbite", xeno), FALSE)
 	xeno.gain_health(150)
 	xeno.xeno_jitter(1 SECONDS)
 	xeno.flick_heal_overlay(3 SECONDS, "#00B800")

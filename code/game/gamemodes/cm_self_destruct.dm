@@ -76,12 +76,19 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 	dest_cooldown = SELF_DESTRUCT_ROD_STARTUP_TIME / dest_rods.len
 	dest_master.desc = "The main operating panel for a self-destruct system. It requires very little user input, but the final safety mechanism is manually unlocked.\nAfter the initial start-up sequence, [dest_rods.len] control rods must be armed, followed by manually flipping the detonation switch."
 
-/datum/authority/branch/evacuation/proc/get_affected_zlevels() //This proc returns the ship's z level list (or whatever specified), when an evac/self-destruct happens.
-	if(dest_status < NUKE_EXPLOSION_IN_PROGRESS && evac_status == EVACUATION_STATUS_COMPLETE) //Nuke is not in progress and evacuation finished, end the round on ship and low orbit (dropships in transit) only.
+/**
+ * This proc returns the ship's z level list (or whatever specified),
+ * when an evac/self-destruct happens.
+ */
+/datum/authority/branch/evacuation/proc/get_affected_zlevels()
+	//Nuke is not in progress and evacuation finished, end the round on ship and low orbit (dropships in transit) only.
+	if(dest_status < NUKE_EXPLOSION_IN_PROGRESS && evac_status == EVACUATION_STATUS_COMPLETE)
+		. = SSmapping.levels_by_any_trait(list(ZTRAIT_MARINE_MAIN_SHIP))
+		return
+
+	if(SSticker.mode && SSticker.mode.is_in_endgame)
 		. = SSmapping.levels_by_any_trait(list(ZTRAIT_MARINE_MAIN_SHIP, ZTRAIT_RESERVED))
-	else
-		if(SSticker.mode && SSticker.mode.is_in_endgame)
-			. = SSmapping.levels_by_any_trait(list(ZTRAIT_MARINE_MAIN_SHIP, ZTRAIT_RESERVED))
+		return
 
 //=========================================================================================
 //=========================================================================================

@@ -155,10 +155,15 @@
 
 /datum/dropship_hijack/almayer/proc/check_final_approach()
 	// if our duration isn't far enough away
+	if(shuttle.mode != SHUTTLE_CALL)
+		return
+
 	if(shuttle.timeLeft(1) > 10 SECONDS)
 		return
+
 	if(final_announcement)
 		return
+
 	marine_announcement("DROPSHIP ON COLLISION COURSE. CRASH IMMINENT." , "EMERGENCY", 'sound/AI/dropship_emergency.ogg')
 
 	announce_dchat("The dropship is about to impact [get_area_name(crash_site)]", crash_site)

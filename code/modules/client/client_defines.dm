@@ -27,7 +27,7 @@
 	var/area = null
 	var/time_died_as_mouse = null //when the client last died as a mouse
 
-	var/donator = 0
+	var/donator = FALSE
 	var/adminhelped = 0
 
 	var/datum/click_intercept = null

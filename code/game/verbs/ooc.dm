@@ -57,7 +57,7 @@
 		display_colour = CONFIG_GET(string/ooc_color_default)
 
 	msg = process_chat_markup(msg, list("*"))
-
+	var/ooc_prefix = handle_ooc_prefix()
 	for(var/client/C in GLOB.clients)
 		if(C.prefs.toggles_chat & CHAT_OOC)
 			var/display_name = src.key
@@ -68,13 +68,23 @@
 			if(CONFIG_GET(flag/ooc_country_flags))
 				if(prefs.toggle_prefs & TOGGLE_OOC_FLAG)
 					display_name = "[country2chaticon(src.country, GLOB.clients)][display_name]"
-			to_chat(C, "<font color='[display_colour]'><span class='ooc linkify'>[src.donator ? "\[D\] " : ""]<span class='prefix'>OOC: [display_name]</span>: <span class='message'>[msg]</span></span></font>")
+			to_chat(C, "<font color='[display_colour]'><span class='ooc linkify'>[ooc_prefix]<span class='prefix'>OOC: [display_name]</span>: <span class='message'>[msg]</span></span></font>")
+
 /client/proc/set_ooc_color_global(newColor as color)
 	set name = "OOC Text Color - Global"
 	set desc = "Set to yellow for eye burning goodness."
 	set category = "OOC.OOC"
 	GLOB.ooc_color_override = newColor
 
+/client/proc/handle_ooc_prefix()
+	var/prefix = ""
+	if(donator)
+		prefix += "\[D\]"
+	if(CLIENT_IS_STAFF(src))
+		prefix += "\[S\]"
+	else if(CLIENT_IS_MENTOR(src))
+		prefix += "\[M\]"
+	return prefix += " "
 
 /client/verb/looc(msg as text)
 	set name = "LOOC" //Gave this shit a shorter name so you only have to time out "ooc" rather than "ooc message" to use it --NeoFite

@@ -40,7 +40,7 @@
 /proc/msg_sea(msg, nosound = FALSE) //Only used for newplayer ticker message, hence no logging
 	msg = FONT_SIZE_LARGE("<span class=\"admin\"><span class=\"prefix\">MENTOR ALERT:</span> <span class=\"message\">[msg]</span></span>")
 	for(var/client/C in GLOB.admins)
-		if((CLIENT_HAS_RIGHTS(C, R_MENTOR)) && C.admin_holder.rights && isSEA(C?.mob))
+		if((CLIENT_IS_MENTOR(C)) && C.admin_holder.rights && isSEA(C?.mob))
 			to_chat(C, msg)
 			if(C.prefs?.toggles_sound & SOUND_ADMINHELP && !nosound)
 				sound_to(C, 'sound/effects/mhelp.ogg')

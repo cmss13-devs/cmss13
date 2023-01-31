@@ -62,7 +62,7 @@
 		else
 			M.bodytemperature = MINIMUM_TEMP
 		if(!issynth(M))
-			to_chat(M, SPAN_DANGER("You feel your body start to shake as the water chills you to the bone.."))
+			to_chat(M, SPAN_DANGER("You feel your body start to shake as the water chills you to the bone..."))
 
 #undef COLD_WATER_DAMAGE
 #undef COLD_WATER_TEMP_EFFECT

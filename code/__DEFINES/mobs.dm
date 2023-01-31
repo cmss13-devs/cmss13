@@ -18,7 +18,7 @@
 #define HEAT_DAMAGE_LEVEL_3 8 //Amount of damage applied when your body temperature passes the 1000K point
 
 #define COLD_DAMAGE_LEVEL_1 0.2 //Amount of damage applied when your body temperature just passes the 260.15k safety point
-#define COLD_DAMAGE_LEVEL_2 1.0 //Amount of damage applied when your body temperature passes the 200K point
+#define COLD_DAMAGE_LEVEL_2 1 //Amount of damage applied when your body temperature passes the 200K point
 #define COLD_DAMAGE_LEVEL_3 2 //Amount of damage applied when your body temperature passes the 120K point
 
 //Note that gas heat damage is only applied once every FOUR ticks.
@@ -142,8 +142,8 @@
 // slowdowns
 #define XENO_SLOWED_AMOUNT 0.7
 #define XENO_SUPERSLOWED_AMOUNT 1.5
-#define HUMAN_SLOWED_AMOUNT 2.0
-#define HUMAN_SUPERSLOWED_AMOUNT 4.0
+#define HUMAN_SLOWED_AMOUNT 2
+#define HUMAN_SUPERSLOWED_AMOUNT 4
 
 // Adds onto HUMAN_*****_AMOUNT
 #define YAUTJA_SLOWED_AMOUNT -1.25 // 0.75s slowdown

@@ -110,7 +110,7 @@
 	var/wave_number = 1
 	var/list/wave_castes = list()
 	var/wave_type = WO_SCALED_WAVE
-	var/scaling_factor = 1.0
+	var/scaling_factor = 1
 	var/number_of_xenos = 0 // not used for scaled waves
 	var/wave_delay = 200 SECONDS
 	var/list/sound_effect = list('sound/voice/alien_distantroar_3.ogg','sound/voice/xenos_roaring.ogg', 'sound/voice/4_xeno_roars.ogg')

@@ -70,7 +70,7 @@
 		"bullet" = 0.4,
 		"explosive" = 0.8,
 		"blunt" = 0.8,
-		"abstract" = 1.0
+		"abstract" = 1
 	)
 
 	explosive_resistance = 400

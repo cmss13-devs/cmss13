@@ -525,9 +525,9 @@
 	icon = 'icons/obj/items/items.dmi'
 	icon_state = "matebakey"
 	flags_atom = FPRINT|CONDUCT
-	force = 5.0
+	force = 5
 	w_class = SIZE_TINY
-	throwforce = 5.0
+	throwforce = 5
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 5
 	attack_verb = list("stabbed")

@@ -93,11 +93,11 @@
 	desc = "Cut, cut, and once more cut."
 	icon_state = "scalpel"
 	flags_atom = FPRINT|CONDUCT
-	force = 10.0
+	force = 10
 	sharp = IS_SHARP_ITEM_ACCURATE
 	edge = 1
 	w_class = SIZE_TINY
-	throwforce = 5.0
+	throwforce = 5
 	flags_item = CAN_DIG_SHRAPNEL
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 5
@@ -127,7 +127,7 @@
 	desc = "A scalpel augmented with a directed laser, for controlling bleeding as the incision is made. Also functions as a cautery. This one looks trustworthy, though it could be better."
 	icon_state = "scalpel_laser_2"
 	damtype = "fire"
-	force = 12.0
+	force = 12
 	bloodlessprob = 80
 
 /obj/item/tool/surgery/scalpel/laser/advanced
@@ -135,7 +135,7 @@
 	desc = "A scalpel augmented with a directed laser, for controlling bleeding as the incision is made. Also functions as a cautery. This one looks to be the pinnacle of precision energy cutlery!"
 	icon_state = "scalpel_laser_3"
 	damtype = "fire"
-	force = 15.0
+	force = 15
 	bloodlessprob = 100
 
 /*
@@ -169,7 +169,7 @@
 	flags_atom = FPRINT|CONDUCT
 	force = 0
 	w_class = SIZE_SMALL
-	throwforce = 9.0
+	throwforce = 9
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 5
 	matter = list("metal" = 20000,"glass" = 10000)
@@ -194,7 +194,7 @@
 	name = "bone gel"
 	icon_state = "bone-gel"
 	force = 0
-	throwforce = 1.0
+	throwforce = 1
 	w_class = SIZE_SMALL
 	matter = list("plastic" = 7500)
 
@@ -213,7 +213,7 @@
 	desc = "Used for fixing torn blood vessels. Could also be used to reconnect other tissues, in a pinch."
 
 	force = 0
-	throwforce = 1.0
+	throwforce = 1
 	matter = list("plastic" = 5000)
 
 	w_class = SIZE_SMALL
@@ -233,7 +233,7 @@
 	desc = "A roll of military-grade surgical line, able to seamlessly sew up any wound. Also works as a robust fishing line for maritime deployments."
 	icon_state = "line"
 	force = 0
-	throwforce = 1.0
+	throwforce = 1
 	w_class = SIZE_SMALL
 
 /obj/item/tool/surgery/surgical_line/Initialize(mapload, ...)
@@ -254,7 +254,7 @@
 	/// Placeholder, to distinguish from surgical line.
 	color = "yellow"
 	force = 0
-	throwforce = 1.0
+	throwforce = 1
 	w_class = SIZE_SMALL
 
 /obj/item/tool/surgery/synthgraft/Initialize(mapload, ...)
@@ -270,7 +270,7 @@
 	name = "bone setter"
 	icon_state = "bonesetter"
 	force = 0
-	throwforce = 9.0
+	throwforce = 9
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 5
 	w_class = SIZE_SMALL
@@ -291,7 +291,7 @@ t. optimisticdude
 	desc = "This sucks. Literally"
 	icon_state = "pump"
 	force = 0
-	throwforce = 9.0
+	throwforce = 9
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 5
 	w_class = SIZE_SMALL
@@ -316,7 +316,7 @@ t. optimisticdude
 	desc = "Used for stabilizing wounds for treatment."
 	icon_state = "stabilizer_gel"
 	force = 0
-	throwforce = 1.0
+	throwforce = 1
 	w_class = SIZE_SMALL
 	flags_item = ITEM_PREDATOR
 
@@ -325,7 +325,7 @@ t. optimisticdude
 	desc = "Used for mending stabilized wounds."
 	icon_state = "healing_gun"
 	force = 0
-	throwforce = 1.0
+	throwforce = 1
 	w_class = SIZE_SMALL
 	flags_item = ITEM_PREDATOR|ANIMATED_SURGICAL_TOOL
 	var/loaded  = TRUE
@@ -357,7 +357,7 @@ t. optimisticdude
 	desc = "Used for reloading the healing gun."
 	icon_state = "healing_gel"
 	force = 0
-	throwforce = 1.0
+	throwforce = 1
 	w_class = SIZE_SMALL
 	flags_item = ITEM_PREDATOR
 
@@ -366,7 +366,7 @@ t. optimisticdude
 	desc = "Used for clamping wounds after treatment."
 	icon_state = "wound_clamp"
 	force = 0
-	throwforce = 1.0
+	throwforce = 1
 	w_class = SIZE_SMALL
 	flags_item = ITEM_PREDATOR|ANIMATED_SURGICAL_TOOL
 

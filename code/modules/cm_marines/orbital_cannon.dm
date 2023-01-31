@@ -10,7 +10,7 @@ var/list/ob_type_fuel_requirements
 	icon = 'icons/effects/128x128.dmi'
 	icon_state = "OBC_unloaded"
 	density = TRUE
-	anchored = 1
+	anchored = TRUE
 	layer = LADDER_LAYER
 	bound_width = 128
 	bound_height = 64
@@ -227,7 +227,7 @@ var/list/ob_type_fuel_requirements
 	icon = 'icons/obj/structures/props/almayer_props64.dmi'
 	icon_state = "cannon_tray"
 	density = TRUE
-	anchored = 1
+	anchored = TRUE
 	throwpass = TRUE
 	climbable = TRUE
 	layer = LADDER_LAYER + 0.01
@@ -314,7 +314,7 @@ var/list/ob_type_fuel_requirements
 /obj/structure/ob_ammo
 	name = "theoretical ob ammo"
 	density = TRUE
-	anchored = 1
+	anchored = TRUE
 	throwpass = TRUE
 	climbable = TRUE
 	unacidable = TRUE // issue: being used for defences, solution: abomb
@@ -345,7 +345,7 @@ var/list/ob_type_fuel_requirements
 	name = "theoretical orbital ammo"
 	var/warhead_kind
 
-/obj/structure/ob_ammo/warhead/proc/warhead_impact(var/turf/target)
+/obj/structure/ob_ammo/warhead/proc/warhead_impact(turf/target)
 	// make damn sure everyone hears it
 	playsound(target, 'sound/weapons/gun_orbital_travel.ogg', 100, 1, 75)
 
@@ -486,9 +486,9 @@ var/list/ob_type_fuel_requirements
 			fire_in_a_hole(U)
 		sleep(delay_between_clusters)
 
-/obj/structure/ob_ammo/warhead/cluster/proc/fire_in_a_hole(var/turf/loc)
+/obj/structure/ob_ammo/warhead/cluster/proc/fire_in_a_hole(turf/loc)
 	new /obj/effect/overlay/temp/blinking_laser (loc)
-	addtimer(CALLBACK(GLOBAL_PROC, PROC_REF(cell_explosion), loc, explosion_power, explosion_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data(initial(name), source_mob)), 1 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(cell_explosion), loc, explosion_power, explosion_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data(initial(name), source_mob)), 1 SECONDS)
 
 /obj/structure/ob_ammo/ob_fuel
 	name = "solid fuel"
@@ -507,7 +507,7 @@ var/list/ob_type_fuel_requirements
 	dir = WEST
 	flags_atom = ON_BORDER|CONDUCT|FPRINT
 
-/obj/structure/machinery/computer/orbital_cannon_console/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/obj/structure/machinery/computer/orbital_cannon_console/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_can_pass_all = PASS_ALL

@@ -296,7 +296,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth_snowflake, list(
 			return
 	return ..()
 
-/obj/structure/machinery/cm_vending/own_points/experimental_tools/get_listed_products(var/mob/user)
+/obj/structure/machinery/cm_vending/own_points/experimental_tools/get_listed_products(mob/user)
 	return list(
 		list("Autocompressor", 15, /obj/item/clothing/suit/auto_cpr, null, VENDOR_ITEM_REGULAR),
 		list("Backpack Firefighting Watertank", 15, /obj/item/reagent_container/glass/watertank/atmos, null, VENDOR_ITEM_REGULAR),

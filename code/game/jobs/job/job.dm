@@ -40,7 +40,7 @@
 	minimum_playtimes = setup_requirements(list())
 	if(!disp_title) disp_title = title
 
-/datum/job/proc/get_whitelist_status(var/list/roles_whitelist, var/client/player)
+/datum/job/proc/get_whitelist_status(list/roles_whitelist, client/player)
 	if(!roles_whitelist)
 		return FALSE
 
@@ -51,13 +51,13 @@
 	var/time_required
 	var/roles
 
-/datum/timelock/New(var/name, var/time_required, var/list/roles)
+/datum/timelock/New(name, time_required, list/roles)
 	. = ..()
 	if(name) src.name = name
 	if(time_required) src.time_required = time_required
 	if(roles) src.roles = roles
 
-/datum/job/proc/setup_requirements(var/list/L)
+/datum/job/proc/setup_requirements(list/L)
 	var/list/to_return = list()
 	for(var/PT in L)
 		if(ispath(PT))
@@ -67,7 +67,7 @@
 
 	return to_return
 
-/datum/timelock/proc/can_play(var/client/C)
+/datum/timelock/proc/can_play(client/C)
 	if(islist(roles))
 		var/total = 0
 		for(var/role_required in roles)
@@ -77,7 +77,7 @@
 	else
 		return get_job_playtime(C, roles) >= time_required
 
-/datum/timelock/proc/get_role_requirement(var/client/C)
+/datum/timelock/proc/get_role_requirement(client/C)
 	if(islist(roles))
 		var/total = 0
 		for(var/role_required in roles)
@@ -87,7 +87,7 @@
 	else
 		return time_required - get_job_playtime(C, roles)
 
-/datum/job/proc/can_play_role(var/client/client)
+/datum/job/proc/can_play_role(client/client)
 	if(!CONFIG_GET(flag/use_timelocks))
 		return TRUE
 
@@ -104,7 +104,7 @@
 
 	return TRUE
 
-/datum/job/proc/get_role_requirements(var/client/C)
+/datum/job/proc/get_role_requirements(client/C)
 	var/list/return_requirements = list()
 	for(var/prereq in minimum_playtimes)
 		var/datum/timelock/T = prereq
@@ -142,10 +142,10 @@
 		return GLOB.gear_path_presets_list[gear_preset].role_comm_title
 	return ""
 
-/datum/job/proc/set_spawn_positions(var/count)
+/datum/job/proc/set_spawn_positions(count)
 	return spawn_positions
 
-/datum/job/proc/spawn_and_equip(var/mob/new_player/player)
+/datum/job/proc/spawn_and_equip(mob/new_player/player)
 	CRASH("A job without a set spawn_and_equip proc has handle_spawn_and_equip set to TRUE!")
 
 /datum/job/proc/generate_money_account(mob/living/carbon/human/account_user)
@@ -179,7 +179,7 @@
 		entry_message_end = "As the [title] you answer to [supervisors]. Special circumstances may change this!"
 	return "[entry_message_intro]<br>[entry_message_body]<br>[entry_message_end]"
 
-/datum/job/proc/announce_entry_message(mob/living/carbon/human/H, datum/money_account/M, var/whitelist_status) //The actual message that is displayed to the mob when they enter the game as a new player.
+/datum/job/proc/announce_entry_message(mob/living/carbon/human/H, datum/money_account/M, whitelist_status) //The actual message that is displayed to the mob when they enter the game as a new player.
 	set waitfor = 0
 	sleep(10)
 	if(H && H.loc && H.client)
@@ -196,7 +196,7 @@
 		"
 		to_chat_spaced(H, html = entrydisplay)
 
-/datum/job/proc/generate_entry_conditions(mob/living/M, var/whitelist_status)
+/datum/job/proc/generate_entry_conditions(mob/living/M, whitelist_status)
 	if (istype(M) && M.client)
 		M.client.soundOutput.update_ambience()
 
@@ -204,10 +204,10 @@
 
 //This lets you scale max jobs at runtime
 //All you have to do is rewrite the inheritance
-/datum/job/proc/get_total_positions(var/latejoin)
+/datum/job/proc/get_total_positions(latejoin)
 	return latejoin ? total_positions : spawn_positions
 
-/datum/job/proc/spawn_in_player(var/mob/new_player/NP)
+/datum/job/proc/spawn_in_player(mob/new_player/NP)
 	if(!istype(NP))
 		return
 
@@ -240,7 +240,7 @@
 
 	return new_character
 
-/datum/job/proc/equip_job(var/mob/living/M)
+/datum/job/proc/equip_job(mob/living/M)
 	if(!istype(M))
 		return
 

@@ -27,7 +27,7 @@ Verbs related to getting fucking jacked, bro
 		return
 
 
-/mob/living/carbon/human/proc/execute_pushups(var/on_knees = FALSE)
+/mob/living/carbon/human/proc/execute_pushups(on_knees = FALSE)
 	if(!can_do_pushup())
 		return
 	var/target_y = -5
@@ -98,11 +98,11 @@ Verbs related to getting fucking jacked, bro
 	return TRUE
 
 
-/mob/living/carbon/human/proc/calculate_stamina_loss_per_pushup(var/on_knees = FALSE)
+/mob/living/carbon/human/proc/calculate_stamina_loss_per_pushup(on_knees = FALSE)
 	//humans have 100 stamina
 	//default loss per pushup = 5 stamina
 	var/stamina_loss = 5
-	if(isSynth(src))
+	if(issynth(src))
 		return 0
 	switch(skills.get_skill_level(SKILL_ENDURANCE))
 		if(SKILL_ENDURANCE_NONE)
@@ -127,6 +127,6 @@ Verbs related to getting fucking jacked, bro
 		stamina_loss += 2
 	if(stamina_loss <= 0)
 		stamina_loss = 1
-	if(isYautja(src))
+	if(isyautja(src))
 		stamina_loss = stamina_loss/2
 	return stamina_loss

@@ -16,7 +16,7 @@
 	name = "resin"
 	desc = "Looks like some kind of slimy growth."
 	icon_state = "Resin1"
-	anchored = 1
+	anchored = TRUE
 	health = 200
 	unacidable = TRUE
 	var/should_track_build = FALSE
@@ -24,7 +24,7 @@
 	var/list/blocks = list()
 	var/block_range = 0
 
-/obj/effect/alien/resin/Initialize(mapload, var/mob/builder)
+/obj/effect/alien/resin/Initialize(mapload, mob/builder)
 	. = ..()
 	if(istype(builder) && should_track_build)
 		construction_data = create_cause_data(initial(name), builder)
@@ -50,7 +50,7 @@
 	health -= 50
 	healthcheck()
 
-/obj/effect/alien/resin/bullet_act(var/obj/item/projectile/Proj)
+/obj/effect/alien/resin/bullet_act(obj/item/projectile/Proj)
 	health -= Proj.damage
 	..()
 	healthcheck()
@@ -63,7 +63,7 @@
 
 /obj/effect/alien/resin/hitby(AM as mob|obj)
 	..()
-	if(istype(AM,/mob/living/carbon/Xenomorph))
+	if(istype(AM,/mob/living/carbon/xenomorph))
 		return
 	visible_message(SPAN_DANGER("\The [src] was hit by \the [AM]."), \
 	SPAN_DANGER("You hit \the [src]."))
@@ -79,8 +79,8 @@
 	health = max(0, health - tforce)
 	healthcheck()
 
-/obj/effect/alien/resin/attack_alien(mob/living/carbon/Xenomorph/M)
-	if(isXenoLarva(M)) //Larvae can't do shit
+/obj/effect/alien/resin/attack_alien(mob/living/carbon/xenomorph/M)
+	if(islarva(M)) //Larvae can't do shit
 		return
 
 	if(M.a_intent == INTENT_HELP)
@@ -122,7 +122,7 @@
 		healthcheck()
 	return ..()
 
-/obj/effect/alien/resin/proc/set_resin_builder(var/mob/M)
+/obj/effect/alien/resin/proc/set_resin_builder(mob/M)
 	if(istype(M) && should_track_build)
 		construction_data = create_cause_data(initial(name), M)
 
@@ -161,7 +161,7 @@
 	if(istype(H) && !H.lying && !H.ally_of_hivenumber(hivenumber))
 		H.next_move_slowdown = H.next_move_slowdown + slow_amt
 		return .
-	var/mob/living/carbon/Xenomorph/X = AM
+	var/mob/living/carbon/xenomorph/X = AM
 	if(istype(X) && !X.ally_of_hivenumber(hivenumber))
 		X.next_move_slowdown = X.next_move_slowdown + slow_amt
 		return .
@@ -254,10 +254,10 @@
 
 /obj/effect/alien/resin/marker/Initialize(mapload, mob/builder)
 	. = ..()
-	if(!isXeno(builder))
+	if(!isxeno(builder))
 		return
 
-	var/mob/living/carbon/Xenomorph/X = builder
+	var/mob/living/carbon/xenomorph/X = builder
 
 	X.built_structures |= src
 	createdby = X.nicknumber
@@ -270,7 +270,7 @@
 
 	X.hive.mark_ui.update_all_data()
 
-	for(var/mob/living/carbon/Xenomorph/XX in X.hive.totalXenos)
+	for(var/mob/living/carbon/xenomorph/XX in X.hive.totalXenos)
 		XX.hud_set_marks() //this should be a hud thing, but that code is too confusing so I am doing it here
 
 	addtimer(CALLBACK(src, PROC_REF(check_for_weeds)), 30 SECONDS, TIMER_UNIQUE)
@@ -280,14 +280,14 @@
 
 	builder_hive.resin_marks -= src
 
-	for(var/mob/living/carbon/Xenomorph/XX in builder_hive.totalXenos)
+	for(var/mob/living/carbon/xenomorph/XX in builder_hive.totalXenos)
 		XX.built_structures -= src
 		if(!XX.client)
 			continue
 		XX.client.images -= seenMeaning  //this should be a hud thing, but that code is too confusing so I am doing it here
 		XX.hive.mark_ui.update_all_data()
 
-	for(var/mob/living/carbon/Xenomorph/X in xenos_tracking) //no floating references :0)
+	for(var/mob/living/carbon/xenomorph/X in xenos_tracking) //no floating references :0)
 		X.stop_tracking_resin_mark(TRUE)
 	. = ..()
 
@@ -301,15 +301,15 @@
 
 /obj/effect/alien/resin/marker/get_examine_text(mob/user)
 	. = ..()
-	var/mob/living/carbon/Xenomorph/xeno_createdby
+	var/mob/living/carbon/xenomorph/xeno_createdby
 	var/datum/hive_status/builder_hive = GLOB.hive_datum[hivenumber]
-	for(var/mob/living/carbon/Xenomorph/X in builder_hive.totalXenos)
+	for(var/mob/living/carbon/xenomorph/X in builder_hive.totalXenos)
 		if(X.nicknumber == createdby)
 			xeno_createdby = X
-	if(isXeno(user) || isobserver(user))
+	if(isxeno(user) || isobserver(user))
 		. += "[mark_meaning.desc], ordered by [xeno_createdby.name]"
 
-/obj/effect/alien/resin/marker/attack_alien(mob/living/carbon/Xenomorph/M)
+/obj/effect/alien/resin/marker/attack_alien(mob/living/carbon/xenomorph/M)
 	if(M.hive_pos == 1 || M.nicknumber == createdby)
 		. = ..()
 	else
@@ -346,11 +346,11 @@
 
 	set_hive_data(src, hivenumber)
 
-/obj/structure/mineral_door/resin/flamer_fire_act(var/dam = BURN_LEVEL_TIER_1)
+/obj/structure/mineral_door/resin/flamer_fire_act(dam = BURN_LEVEL_TIER_1)
 	health -= dam
 	healthcheck()
 
-/obj/structure/mineral_door/resin/bullet_act(var/obj/item/projectile/Proj)
+/obj/structure/mineral_door/resin/bullet_act(obj/item/projectile/Proj)
 	health -= Proj.damage
 	..()
 	healthcheck()
@@ -369,8 +369,8 @@
 		return attack_hand(user)
 
 /obj/structure/mineral_door/resin/TryToSwitchState(atom/user)
-	if(isXenoLarva(user))
-		var/mob/living/carbon/Xenomorph/Larva/L = user
+	if(islarva(user))
+		var/mob/living/carbon/xenomorph/larva/L = user
 		if (L.hivenumber == hivenumber)
 			L.scuttle(src)
 		return
@@ -481,6 +481,7 @@
 	name = "thick resin door"
 	health = HEALTH_DOOR_XENO_THICK
 	hardness = 2.0
+	mineralType = "thick resin"
 
 /obj/effect/alien/resin/acid_pillar
 	name = "acid pillar"
@@ -508,13 +509,13 @@
 	START_PROCESSING(SSprocessing, src)
 
 
-/obj/effect/alien/resin/acid_pillar/proc/can_target(var/mob/living/carbon/C, var/position_to_get = 0)
+/obj/effect/alien/resin/acid_pillar/proc/can_target(mob/living/carbon/C, position_to_get = 0)
 	if(get_dist(src, C) > range)
 		return FALSE
 
 	var/check_dead = FALSE
 	if(C.ally_of_hivenumber(hivenumber))
-		if(!C.on_fire || !isXeno(C))
+		if(!C.on_fire || !isxeno(C))
 			return FALSE
 	else if(C.lying || C.is_mob_incapacitated(TRUE))
 		return FALSE
@@ -562,7 +563,7 @@
 		playsound(loc, 'sound/effects/splat.ogg', 50, TRUE)
 		flick("acid_pillar_attack", src)
 
-/obj/effect/alien/resin/acid_pillar/proc/acid_travel(var/datum/acid_spray_info/info)
+/obj/effect/alien/resin/acid_pillar/proc/acid_travel(datum/acid_spray_info/info)
 	if(QDELETED(src))
 		return FALSE
 
@@ -626,7 +627,7 @@
 	START_PROCESSING(SSshield_pillar, src)
 
 /obj/effect/alien/resin/shield_pillar/process()
-	for(var/mob/living/carbon/Xenomorph/X in urange(range, src))
+	for(var/mob/living/carbon/xenomorph/X in urange(range, src))
 		if((X.hivenumber != hivenumber) || X.stat == DEAD)
 			continue
 		X.add_xeno_shield(shield_to_give, XENO_SHIELD_SOURCE_SHIELD_PILLAR, decay_amount_per_second = 1, add_shield_on = TRUE, duration = 1 SECONDS)
@@ -680,7 +681,7 @@
 		setup_signals(T)
 		LAZYADD(walls, T)
 
-/obj/effect/alien/resin/resin_pillar/proc/setup_signals(var/turf/T)
+/obj/effect/alien/resin/resin_pillar/proc/setup_signals(turf/T)
 	RegisterSignal(T, COMSIG_TURF_BULLET_ACT, PROC_REF(handle_bullet))
 	RegisterSignal(T, COMSIG_ATOM_HITBY, PROC_REF(handle_hitby))
 	RegisterSignal(T, COMSIG_WALL_RESIN_XENO_ATTACK, PROC_REF(handle_attack_alien))
@@ -694,21 +695,21 @@
 	walls = null
 	return ..()
 
-/obj/effect/alien/resin/resin_pillar/proc/handle_attack_alien(var/turf/T, var/mob/M)
+/obj/effect/alien/resin/resin_pillar/proc/handle_attack_alien(turf/T, mob/M)
 	SIGNAL_HANDLER
 	attack_alien(M)
 	return COMPONENT_CANCEL_XENO_ATTACK
 
-/obj/effect/alien/resin/resin_pillar/proc/handle_attackby(var/turf/T, var/obj/item/I, var/mob/M)
+/obj/effect/alien/resin/resin_pillar/proc/handle_attackby(turf/T, obj/item/I, mob/M)
 	SIGNAL_HANDLER
 	attackby(I, M)
 	return COMPONENT_CANCEL_ATTACKBY
 
-/obj/effect/alien/resin/resin_pillar/proc/handle_hitby(var/turf/T, var/atom/movable/AM)
+/obj/effect/alien/resin/resin_pillar/proc/handle_hitby(turf/T, atom/movable/AM)
 	SIGNAL_HANDLER
 	hitby(AM)
 
-/obj/effect/alien/resin/resin_pillar/proc/handle_bullet(var/turf/T, var/obj/item/projectile/P)
+/obj/effect/alien/resin/resin_pillar/proc/handle_bullet(turf/T, obj/item/projectile/P)
 	SIGNAL_HANDLER
 	bullet_act(P)
 	return COMPONENT_BULLET_ACT_OVERRIDE
@@ -744,7 +745,7 @@
 		return
 	return ..()
 
-/obj/effect/alien/resin/resin_pillar/proc/collapse(var/decayed = FALSE)
+/obj/effect/alien/resin/resin_pillar/proc/collapse(decayed = FALSE)
 	//playsound granite collapsing
 	if(decayed)
 		visible_message(SPAN_DANGER("[src]'s failing structure suddenly collapses!"))
@@ -763,7 +764,7 @@
 	return ..()
 
 
-/obj/effect/alien/resin/resin_pillar/attack_alien(mob/living/carbon/Xenomorph/M)
+/obj/effect/alien/resin/resin_pillar/attack_alien(mob/living/carbon/xenomorph/M)
 	if(!brittle)
 		M.animation_attack_on(src)
 		M.visible_message(SPAN_XENONOTICE("\The [M] claws \the [src], but the slash bounces off!"), \
@@ -805,8 +806,8 @@
 	. = ..()
 	src.hivenumber = hivenumber
 
-/obj/item/explosive/grenade/alien/try_to_throw(var/mob/living/user)
-	if(isXeno(user))
+/obj/item/explosive/grenade/alien/try_to_throw(mob/living/user)
+	if(isxeno(user))
 		to_chat(user, SPAN_NOTICE("You prepare to throw [src]."))
 		if(!do_after(user, xeno_throw_time, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
 			return FALSE
@@ -814,7 +815,7 @@
 		return TRUE
 
 /obj/item/explosive/grenade/alien/can_use_grenade(mob/user)
-	if(!isXeno(user))
+	if(!isxeno(user))
 		to_chat(user, SPAN_WARNING("You don't know how to activate this!"))
 		return FALSE
 
@@ -832,7 +833,7 @@
 		overlays += I
 
 
-/obj/item/explosive/grenade/alien/attack_alien(mob/living/carbon/Xenomorph/M)
+/obj/item/explosive/grenade/alien/attack_alien(mob/living/carbon/xenomorph/M)
 	if(!active)
 		attack_hand(M)
 	else
@@ -891,7 +892,7 @@
 	else
 		. += direction
 
-/datum/automata_cell/acid/update_state(var/list/turf/neighbors)
+/datum/automata_cell/acid/update_state(list/turf/neighbors)
 	if(delay > 0)
 		delay--
 		return

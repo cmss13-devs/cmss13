@@ -56,7 +56,7 @@
 	RRS.total = 1
 	role_reserved_slots += RRS
 
-/obj/vehicle/multitile/apc/command/add_seated_verbs(var/mob/living/M, var/seat)
+/obj/vehicle/multitile/apc/command/add_seated_verbs(mob/living/M, seat)
 	if(!M.client)
 		return
 	add_verb(M.client, list(
@@ -76,7 +76,7 @@
 			/obj/vehicle/multitile/proc/toggle_shift_click,
 		))
 
-/obj/vehicle/multitile/apc/command/remove_seated_verbs(var/mob/living/M, var/seat)
+/obj/vehicle/multitile/apc/command/remove_seated_verbs(mob/living/M, seat)
 	if(!M.client)
 		return
 	remove_verb(M.client, list(
@@ -97,7 +97,7 @@
 			/obj/vehicle/multitile/proc/toggle_shift_click,
 		))
 
-/obj/vehicle/multitile/apc/command/initialize_cameras(var/change_tag = FALSE)
+/obj/vehicle/multitile/apc/command/initialize_cameras(change_tag = FALSE)
 	if(!camera)
 		camera = new /obj/structure/machinery/camera/vehicle(src)
 	if(change_tag)
@@ -111,7 +111,7 @@
 
 //With techwebs disabled, disabling these until later.
 /*
-/obj/vehicle/multitile/apc/command/attack_hand(var/mob/user)
+/obj/vehicle/multitile/apc/command/attack_hand(mob/user)
 	. = ..()
 
 	if(user.z != GLOB.interior_manager.interior_z) //if we didn't enter
@@ -120,7 +120,7 @@
 			access_techpod(user)
 
 //taken from gear_access_point.dm
-/obj/vehicle/multitile/apc/command/proc/access_techpod(var/mob/user)
+/obj/vehicle/multitile/apc/command/proc/access_techpod(mob/user)
 	if(!ishuman(user) || !get_access_permission(user))
 		to_chat(user, SPAN_WARNING("Access denied."))
 		return
@@ -196,7 +196,7 @@
 	APC.update_icon()
 
 //PRESET: only wheels installed
-/obj/effect/vehicle_spawner/apc_cmd/plain/load_hardpoints(var/obj/vehicle/multitile/apc/command/V)
+/obj/effect/vehicle_spawner/apc_cmd/plain/load_hardpoints(obj/vehicle/multitile/apc/command/V)
 	V.add_hardpoint(new /obj/item/hardpoint/locomotion/apc_wheels)
 
 //PRESET: default hardpoints, destroyed
@@ -209,14 +209,14 @@
 	load_damage(APC)
 	APC.update_icon()
 
-/obj/effect/vehicle_spawner/apc_cmd/decrepit/load_hardpoints(var/obj/vehicle/multitile/apc/command/V)
+/obj/effect/vehicle_spawner/apc_cmd/decrepit/load_hardpoints(obj/vehicle/multitile/apc/command/V)
 	V.add_hardpoint(new /obj/item/hardpoint/primary/dualcannon)
 	V.add_hardpoint(new /obj/item/hardpoint/secondary/frontalcannon)
 	V.add_hardpoint(new /obj/item/hardpoint/support/flare_launcher)
 	V.add_hardpoint(new /obj/item/hardpoint/locomotion/apc_wheels)
 
 //PRESET: default hardpoints
-/obj/effect/vehicle_spawner/apc_cmd/fixed/load_hardpoints(var/obj/vehicle/multitile/apc/command/V)
+/obj/effect/vehicle_spawner/apc_cmd/fixed/load_hardpoints(obj/vehicle/multitile/apc/command/V)
 	V.add_hardpoint(new /obj/item/hardpoint/primary/dualcannon)
 	V.add_hardpoint(new /obj/item/hardpoint/secondary/frontalcannon)
 	V.add_hardpoint(new /obj/item/hardpoint/support/flare_launcher)

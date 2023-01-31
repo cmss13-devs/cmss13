@@ -27,7 +27,7 @@
 			if("groin")
 				affected_bone = "pelvis"
 
-/datum/surgery/bone_repair/can_start(mob/user, mob/living/carbon/patient, var/obj/limb/L, obj/item/tool)
+/datum/surgery/bone_repair/can_start(mob/user, mob/living/carbon/patient, obj/limb/L, obj/item/tool)
 	return L.status & LIMB_BROKEN
 
 //------------------------------------

@@ -7,7 +7,7 @@
 
 	syllables = list("al", "an", "ar", "as", "at", "ea", "ed", "en", "er", "es", "ha", "he", "hi", "in", "is", "it", "le", "me", "nd", "ne", "ng", "nt", "on", "or", "ou", "re", "se", "st", "te", "th", "ti", "to", "ve", "wa", "all", "and", "are", "but", "ent", "era", "ere", "eve", "for", "had", "hat", "hen", "her", "hin", "his", "ing", "ion", "ith", "not", "ome", "oul", "our", "sho", "ted", "ter", "tha", "the", "thi", "tio", "uld", "ver", "was", "wit", "you")
 
-/datum/language/common/get_spoken_verb(var/msg_end)
+/datum/language/common/get_spoken_verb(msg_end)
 	switch(msg_end)
 		if("!")
 			return pick("exclaims","shouts","yells") //TODO: make the basic proc handle lists of verbs.
@@ -136,7 +136,7 @@
 	flags = RESTRICTED|HIVEMIND
 
 //Make queens BOLD text
-/datum/language/xenos/broadcast(var/mob/living/speaker,var/message,var/speaker_mask)
+/datum/language/xenos/broadcast(mob/living/speaker, message, speaker_mask)
 	if(iscarbon(speaker))
 		var/mob/living/carbon/C = speaker
 
@@ -155,7 +155,7 @@
 	key = "6"
 	flags = RESTRICTED|HIVEMIND
 
-/datum/language/apollo/broadcast(var/mob/living/speaker,var/message,var/speaker_mask)
+/datum/language/apollo/broadcast(mob/living/speaker, message, speaker_mask)
 	if(!speaker.hear_apollo())
 		return
 

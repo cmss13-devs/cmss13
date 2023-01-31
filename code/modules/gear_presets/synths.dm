@@ -374,10 +374,10 @@
 /datum/equipment_preset/synth/survivor/protection_synth
 	name = "Survivor - Synthetic - Corporate Protection Synth"
 	equipment_to_spawn = list(
-		WEAR_HEAD = /obj/item/clothing/head/helmet/marine/veteran/PMC,
-		WEAR_L_EAR = /obj/item/device/radio/headset/distress/PMC,
+		WEAR_HEAD = /obj/item/clothing/head/helmet/marine/veteran/pmc,
+		WEAR_L_EAR = /obj/item/device/radio/headset/distress/pmc,
 		WEAR_EYES = /obj/item/clothing/glasses/sunglasses/sechud,
-		WEAR_BODY = /obj/item/clothing/under/marine/veteran/PMC,
+		WEAR_BODY = /obj/item/clothing/under/marine/veteran/pmc,
 		WEAR_ACCESSORY = /obj/item/clothing/accessory/storage/droppouch,
 		WEAR_IN_ACCESSORY = /obj/item/explosive/grenade/flashbang,
 		WEAR_IN_ACCESSORY = /obj/item/handcuffs/zip,
@@ -386,8 +386,8 @@
 		WEAR_IN_BACK = /obj/item/device/binoculars,
 		WEAR_JACKET = /obj/item/clothing/suit/storage/hazardvest/black,
 		WEAR_IN_JACKET = /obj/item/weapon/melee/telebaton,
-		WEAR_HANDS = /obj/item/clothing/gloves/marine/veteran/PMC,
-		WEAR_FEET = /obj/item/clothing/shoes/veteran/PMC/knife,
+		WEAR_HANDS = /obj/item/clothing/gloves/marine/veteran/pmc,
+		WEAR_FEET = /obj/item/clothing/shoes/veteran/pmc/knife,
 		WEAR_L_HAND = /obj/item/storage/large_holster/machete/full
 	)
 

@@ -1,0 +1,9 @@
+author: "BKryth"
+delete-after: True
+changes:
+  - balance: "Increased cost of Sentry Post to 600 to 800"
+  - balance: "Increased the distance required on how far apart they must be from another turret from 2 to 4"
+  - balance: "Increased the light the omni sentry emits"
+  - rscadd: "Sentry Post now breaks barricades on where it lands"
+  - rscadd: "Sentry Post can be upgraded with 10 metal to give it extra maximum health"
+  - rscadd: "Sentry Post now requires a manual reload every 100 shots with a 500 rounds stored internally"

@@ -27,7 +27,7 @@
 		/obj/item/attachable/scope/mini,
 		/obj/item/attachable/scope/mini/hunting,
 		/obj/item/attachable/stock/hunting,
-		)
+	)
 	starting_attachment_types = list(/obj/item/attachable/stock/hunting, /obj/item/attachable/scope/mini/hunting)
 	aim_slowdown = SLOWDOWN_ADS_RIFLE
 	wield_delay = WIELD_DELAY_NORMAL

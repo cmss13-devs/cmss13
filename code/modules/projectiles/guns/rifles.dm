@@ -69,7 +69,7 @@
 		/obj/item/attachable/attached_gun/extinguisher,
 		/obj/item/attachable/scope,
 		/obj/item/attachable/scope/mini,
-						)
+		)
 
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
 	starting_attachment_types = list(/obj/item/attachable/attached_gun/grenade, /obj/item/attachable/stock/rifle/collapsible)
@@ -439,7 +439,7 @@
 	. = ..()
 	if(iff_enabled)
 		LAZYADD(traits_to_give, list(
-			BULLET_TRAIT_ENTRY_ID("iff", /datum/element/bullet_trait_iff)
+		BULLET_TRAIT_ENTRY_ID("iff", /datum/element/bullet_trait_iff)
 		))
 
 /obj/item/weapon/gun/rifle/m46c/handle_starting_attachment()
@@ -471,9 +471,9 @@
 	. = ..()
 	if(is_locked && linked_human && linked_human != user)
 		if(linked_human.is_revivable() || linked_human.stat != DEAD)
-			to_chat(user, SPAN_WARNING("[icon2html(src, usr)] Trigger locked by [src]. Unauthorized user."))
-			playsound(loc,'sound/weapons/gun_empty.ogg', 25, 1)
-			return FALSE
+		to_chat(user, SPAN_WARNING("[icon2html(src, usr)] Trigger locked by [src]. Unauthorized user."))
+		playsound(loc,'sound/weapons/gun_empty.ogg', 25, 1)
+		return FALSE
 
 		linked_human = null
 		is_locked = FALSE
@@ -582,9 +582,9 @@
 	. = ..()
 	if(linked_human)
 		if(is_locked)
-			. += SPAN_NOTICE("It is registered to [linked_human].")
+		. += SPAN_NOTICE("It is registered to [linked_human].")
 		else
-			. += SPAN_NOTICE("It is registered to [linked_human] but has its fire restrictions unlocked.")
+		. += SPAN_NOTICE("It is registered to [linked_human] but has its fire restrictions unlocked.")
 	else
 		. += SPAN_NOTICE("It's unregistered. Pick it up to register yourself as its owner.")
 	if(!iff_enabled)
@@ -1387,32 +1387,33 @@
 	item_state = "abr40_tac"
 	current_mag = /obj/item/ammo_magazine/rifle/l42a/ap
 	attachable_allowed = list(
-						//Barrel
-						/obj/item/attachable/suppressor,
-						/obj/item/attachable/bayonet,
-						/obj/item/attachable/bayonet/upp,
-						/obj/item/attachable/bayonet/c02,
-						//Rail
-						/obj/item/attachable/reddot,
-						/obj/item/attachable/reflex,
-						/obj/item/attachable/flashlight,
-						/obj/item/attachable/magnetic_harness,
-						/obj/item/attachable/scope,
-						/obj/item/attachable/scope/mini,
-						/obj/item/attachable/scope/mini/hunting,
-						//Under
-						/obj/item/attachable/flashlight/grip,
-						//Stock
-						/obj/item/attachable/stock/carbine,
-						/obj/item/attachable/stock/carbine/wood,
-						/obj/item/attachable/stock/carbine/wood/tactical,
-						)
+		//Barrel
+		/obj/item/attachable/suppressor,
+		/obj/item/attachable/bayonet,
+		/obj/item/attachable/bayonet/upp,
+		/obj/item/attachable/bayonet/c02,
+		//Rail
+		/obj/item/attachable/reddot,
+		/obj/item/attachable/reflex,
+		/obj/item/attachable/flashlight,
+		/obj/item/attachable/magnetic_harness,
+		/obj/item/attachable/scope,
+		/obj/item/attachable/scope/mini,
+		/obj/item/attachable/scope/mini/hunting,
+		//Under
+		/obj/item/attachable/flashlight/grip,
+		//Stock
+		/obj/item/attachable/stock/carbine,
+		/obj/item/attachable/stock/carbine/wood,
+		/obj/item/attachable/stock/carbine/wood/tactical,
+	)
 	starting_attachment_types = list(/obj/item/attachable/stock/carbine/wood/tactical, /obj/item/attachable/suppressor)
 	random_spawn_chance = 100
 	random_spawn_rail = list(
-				/obj/item/attachable/reflex,
-				/obj/item/attachable/magnetic_harness,
-				/obj/item/attachable/scope
-				)
+		/obj/item/attachable/reflex,
+		/obj/item/attachable/magnetic_harness,
+		/obj/item/attachable/scope,
+		/obj/item/attachable/scope/mini/hunting,
+	)
 	random_under_chance = 50
 	random_spawn_under = list(/obj/item/attachable/flashlight/grip)

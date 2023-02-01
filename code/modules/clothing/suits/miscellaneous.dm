@@ -467,7 +467,7 @@
 
 	allowed = list(
 		/obj/item/weapon/gun/pistol,
-		/obj/item/device/flashlight
+		/obj/item/device/flashlight,
 	)
 
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS|BODY_FLAG_LEGS|BODY_FLAG_GROIN
@@ -499,7 +499,7 @@
 
 	allowed = list(
 		/obj/item/weapon/gun/pistol,
-		/obj/item/device/flashlight
+		/obj/item/device/flashlight,
 	)
 
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS|BODY_FLAG_LEGS|BODY_FLAG_GROIN

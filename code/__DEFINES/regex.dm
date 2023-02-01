@@ -33,9 +33,11 @@ var/global/list/markup_tags = list("/" = list("<i>", "</i>"),
 	markup_underline = new("((\\W|^)\\_)(\[^\\_\]*)(\\_(\\W|$))", "g")
 
 	// List needs to be initialized here, due to DM mixing and matching pass-by-value and -reference as it chooses.
-	markup_regex = list("/" = markup_italics,
-						"*" = markup_bold,
-						"~" = markup_strike,
-						"_" = markup_underline)
+	markup_regex = list(
+		"/" = markup_italics,
+		"*" = markup_bold,
+		"~" = markup_strike,
+		"_" = markup_underline,
+	)
 
 	return 1

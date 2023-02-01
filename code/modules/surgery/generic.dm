@@ -13,7 +13,7 @@
 	steps = list(
 		/datum/surgery_step/incision,
 		/datum/surgery_step/clamp_bleeders_step,
-		/datum/surgery_step/retract_skin
+		/datum/surgery_step/retract_skin,
 	)
 	lying_required = FALSE
 	self_operable = TRUE
@@ -135,7 +135,7 @@
 		/obj/item/tool/surgery/hemostat = SURGERY_TOOL_MULT_IDEAL,
 		/obj/item/tool/wirecutters = SURGERY_TOOL_MULT_SUBSTITUTE,
 		/obj/item/stack/cable_coil = SURGERY_TOOL_MULT_BAD_SUBSTITUTE,
-		)
+	)
 	///Tools used to stem bleeders by specifically tying them up. List used for specific messaging as there's two of these.
 	var/ligation_tools = list(/obj/item/stack/cable_coil)
 	time = 2 SECONDS
@@ -346,7 +346,7 @@
 	steps = list(
 		/datum/surgery_step/saw_encased,
 		/datum/surgery_step/open_encased_step,
-		/datum/surgery_step/mend_encased
+		/datum/surgery_step/mend_encased,
 	)
 	pain_reduction_required = PAIN_REDUCTION_HEAVY
 
@@ -363,8 +363,8 @@
 		/obj/item/weapon/melee/twohanded/fireaxe = SURGERY_TOOL_MULT_SUBSTITUTE,
 		/obj/item/weapon/melee/claymore/mercsword/machete = SURGERY_TOOL_MULT_SUBSTITUTE,
 		/obj/item/tool/hatchet = SURGERY_TOOL_MULT_BAD_SUBSTITUTE,
-		/obj/item/tool/kitchen/knife/butcher = SURGERY_TOOL_MULT_BAD_SUBSTITUTE
-		)
+		/obj/item/tool/kitchen/knife/butcher = SURGERY_TOOL_MULT_BAD_SUBSTITUTE,
+	)
 	time = 4 SECONDS
 
 /datum/surgery_step/saw_encased/skip_step_criteria(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
@@ -478,7 +478,7 @@
 	steps = list(
 		/datum/surgery_step/close_encased_step,
 		/datum/surgery_step/open_encased_step,
-		/datum/surgery_step/mend_encased
+		/datum/surgery_step/mend_encased,
 	)
 	pain_reduction_required = PAIN_REDUCTION_HEAVY
 
@@ -659,8 +659,8 @@ If fiddling with, uncomment /mob/living/attackby surgery code also. It's pointle
 	tools = list(
 		/obj/item/stack/medical/advanced/bruise_pack = SURGERY_TOOL_MULT_IDEAL,
 		/obj/item/stack/medical/advanced/bruise_pack/predator = SURGERY_TOOL_MULT_SUBSTITUTE,
-		/obj/item/stack/medical/bruise_pack = SURGERY_TOOL_MULT_AWFUL
-		)
+		/obj/item/stack/medical/bruise_pack = SURGERY_TOOL_MULT_AWFUL,
+	)
 	time = 3 SECONDS
 
 /datum/surgery_step/mend_test_organ_step/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)

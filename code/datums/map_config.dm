@@ -68,7 +68,7 @@
 		/datum/equipment_preset/survivor/chaplain,
 		/datum/equipment_preset/survivor/miner,
 		/datum/equipment_preset/survivor/colonial_marshal,
-		/datum/equipment_preset/survivor/engineer
+		/datum/equipment_preset/survivor/engineer,
 	)
 
 	synth_survivor_types = list(
@@ -81,7 +81,7 @@
 		/datum/equipment_preset/synth/survivor/chef_synth,
 		/datum/equipment_preset/synth/survivor/bartender_synth,
 		/datum/equipment_preset/synth/survivor/detective_synth,
-		/datum/equipment_preset/synth/survivor/radiation_synth
+		/datum/equipment_preset/synth/survivor/radiation_synth,
 	)
 
 /proc/load_map_config(filename, default, delete_after, error_if_missing = TRUE)

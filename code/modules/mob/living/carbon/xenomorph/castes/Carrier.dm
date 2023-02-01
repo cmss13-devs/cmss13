@@ -70,7 +70,7 @@
 	inherent_verbs = list(
 		/mob/living/carbon/xenomorph/proc/rename_tunnel,
 		/mob/living/carbon/xenomorph/proc/set_hugger_reserve_for_morpher,
-		)
+	)
 	mutation_type = CARRIER_NORMAL
 
 	icon_xenonid = 'icons/mob/xenonids/carrier.dmi'

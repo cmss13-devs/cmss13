@@ -1,5 +1,5 @@
 /datum/xeno_mutator/praetorian_oppressor
-	// Dread it, run from it, destiny still arrives.. or should I say, I do
+	// Dread it, run from it, destiny still arrives... or should I say, I do
 	name = "STRAIN: Praetorian - Oppressor"
 	description = "You abandon your speed to gain a powerful hook ability. Your slashes deal increased damage to prone targets, and you gain a powerful punch that devastates weakened opponents and makes your other abilities recharge faster."
 	flavor_description = "Dread it. Run from it. The Hive still arrives. Or, more accurately, you do."
@@ -28,7 +28,7 @@
 	if (. == 0)
 		return
 
-	var/mob/living/carbon/Xenomorph/Praetorian/praetorian = mutator_set.xeno
+	var/mob/living/carbon/xenomorph/praetorian/praetorian = mutator_set.xeno
 
 	praetorian.damage_modifier -= XENO_DAMAGE_MOD_SMALL
 	praetorian.explosivearmor_modifier += XENO_EXPOSIVEARMOR_MOD_SMALL

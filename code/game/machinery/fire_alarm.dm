@@ -8,7 +8,7 @@ FIRE ALARM
 	icon_state = "fire0"
 	var/detecting = 1.0
 	var/working = 1.0
-	anchored = 1.0
+	anchored = TRUE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 2
 	active_power_usage = 6

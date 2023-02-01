@@ -30,7 +30,7 @@
 		new_player_panel_proc()
 
 
-/mob/new_player/proc/new_player_panel_proc(var/refresh = FALSE)
+/mob/new_player/proc/new_player_panel_proc(refresh = FALSE)
 	if(!client)
 		return
 
@@ -183,7 +183,7 @@
 			if(alert(src,"Are you sure you want to attempt joining as a xenomorph?","Confirmation","Yes","No") == "Yes" )
 				if(SSticker.mode.check_xeno_late_join(src))
 					var/mob/new_xeno = SSticker.mode.attempt_to_join_as_xeno(src, 0)
-					if(new_xeno && !istype(new_xeno, /mob/living/carbon/Xenomorph/Larva))
+					if(new_xeno && !istype(new_xeno, /mob/living/carbon/xenomorph/larva))
 						SSticker.mode.transfer_xeno(src, new_xeno)
 						close_spawn_windows()
 
@@ -287,7 +287,7 @@
 
 /mob/new_player/proc/LateChoices()
 	var/mills = world.time // 1/10 of a second, not real milliseconds but whatever
-	//var/secs = ((mills % 36000) % 600) / 10 //Not really needed, but I'll leave it here for refrence.. or something
+	//var/secs = ((mills % 36000) % 600) / 10 //Not really needed, but I'll leave it here for refrence... or something
 	var/mins = (mills % 36000) / 600
 	var/hours = mills / 36000
 
@@ -429,7 +429,7 @@
 		queens += list(list("designation" = main_hive.living_xeno_queen.full_designation, "caste_type" = main_hive.living_xeno_queen.name))
 	data["queens"] = queens
 	var/list/leaders = list()
-	for(var/mob/living/carbon/Xenomorph/xeno_leader in main_hive.xeno_leader_list)
+	for(var/mob/living/carbon/xenomorph/xeno_leader in main_hive.xeno_leader_list)
 		leaders += list(list("designation" = xeno_leader.full_designation, "caste_type" = xeno_leader.caste_type))
 	data["leaders"] = leaders
 	return data
@@ -478,7 +478,7 @@
 /mob/new_player/is_ready()
 	return ready && ..()
 
-/mob/new_player/hear_say(var/message, var/verb = "says", var/datum/language/language = null, var/alt_name = "",var/italics = 0, var/mob/speaker = null)
+/mob/new_player/hear_say(message, verb = "says", datum/language/language = null, alt_name = "", italics = 0, mob/speaker = null)
 	return
 
 /mob/new_player/hear_radio(message, verb, datum/language/language, part_a, part_b, mob/speaker, hard_to_hear, vname, command, no_paygrade = FALSE)

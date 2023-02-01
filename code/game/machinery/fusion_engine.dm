@@ -13,7 +13,7 @@
 	directwired = 0  //Requires a cable directly underneath
 	unslashable = TRUE
 	unacidable = TRUE   //NOPE.jpg
-	anchored = 1
+	anchored = TRUE
 	density = TRUE
 
 	var/power_gen_percent = 0 //50,000W at full capacity
@@ -221,7 +221,7 @@
 				if(buildstate != 0 || is_on || !fusion_cell)
 					return FALSE
 				user.visible_message(SPAN_NOTICE("[user] pries [src]'s fuel receptacle open and removes the cell."),
-				SPAN_NOTICE("You pry [src]'s fuel receptacle open and remove the cell.."))
+				SPAN_NOTICE("You pry [src]'s fuel receptacle open and remove the cell."))
 				fusion_cell.update_icon()
 				user.put_in_hands(fusion_cell)
 				fusion_cell = null

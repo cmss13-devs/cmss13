@@ -123,7 +123,7 @@ Implant Specifics:<BR>"}
 	return
 
 
-/obj/item/implant/dexplosive/activate(var/cause)
+/obj/item/implant/dexplosive/activate(cause)
 	if((!cause) || (!src.imp_in)) return 0
 	explosion(src, -1, 0, 2, 3, 0)//This might be a bit much, dono will have to see.
 	if(src.imp_in)
@@ -157,7 +157,7 @@ Implant Specifics:<BR>"}
 	hear(msg)
 	return
 
-/obj/item/implant/explosive/hear(var/msg)
+/obj/item/implant/explosive/hear(msg)
 	var/list/replacechars = list("'" = "","\"" = "",">" = "","<" = "","(" = "",")" = "")
 	msg = sanitize_simple(msg, replacechars)
 	if(findtext(msg,phrase))
@@ -295,7 +295,7 @@ the implant may become unstable and either pre-maturely inject the subject or si
 	return
 
 
-/obj/item/implant/chem/activate(var/cause)
+/obj/item/implant/chem/activate(cause)
 	if((!cause) || (!src.imp_in)) return 0
 	var/mob/living/carbon/R = src.imp_in
 	src.reagents.trans_to(R, cause)
@@ -345,7 +345,7 @@ the implant may become unstable and either pre-maturely inject the subject or si
 
 /obj/item/implant/loyalty/implanted(mob/M)
 	if(!ishuman(M)) return
-	if(isYautja(M)) return
+	if(isyautja(M)) return
 	var/mob/living/carbon/human/H = M
 	to_chat(H, SPAN_NOTICE("You are now tagged as a WY loyalist and will be monitored by their central headquarters. You retain your free will and mental faculties."))
 	return 1
@@ -414,7 +414,7 @@ the implant may become unstable and either pre-maturely inject the subject or si
 	else if(M.stat == 2)
 		activate("death")
 
-/obj/item/implant/death_alarm/activate(var/cause)
+/obj/item/implant/death_alarm/activate(cause)
 	var/mob/M = imp_in
 	var/area/t = get_area(M)
 	switch (cause)

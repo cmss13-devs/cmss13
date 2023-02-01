@@ -15,7 +15,7 @@
 		return
 	H.set_species(SYNTH_GEN_THREE)
 
-/datum/equipment_preset/synth/load_name(mob/living/carbon/human/H, var/randomise)
+/datum/equipment_preset/synth/load_name(mob/living/carbon/human/H, randomise)
 	var/final_name = "David"
 	if(H.client && H.client.prefs)
 		final_name = H.client.prefs.synthetic_name
@@ -25,7 +25,7 @@
 
 /datum/equipment_preset/synth/load_skills(mob/living/carbon/human/H)
 	. = ..()
-	if(isColonySynthetic(H) && !isWorkingJoe(H))
+	if(iscolonysynthetic(H) && !isworkingjoe(H))
 		H.set_skills(/datum/skills/colonial_synthetic)
 
 	H.allow_gun_usage = FALSE
@@ -374,10 +374,10 @@
 /datum/equipment_preset/synth/survivor/protection_synth
 	name = "Survivor - Synthetic - Corporate Protection Synth"
 	equipment_to_spawn = list(
-		WEAR_HEAD = /obj/item/clothing/head/helmet/marine/veteran/PMC,
-		WEAR_L_EAR = /obj/item/device/radio/headset/distress/PMC,
+		WEAR_HEAD = /obj/item/clothing/head/helmet/marine/veteran/pmc,
+		WEAR_L_EAR = /obj/item/device/radio/headset/distress/pmc,
 		WEAR_EYES = /obj/item/clothing/glasses/sunglasses/sechud,
-		WEAR_BODY = /obj/item/clothing/under/marine/veteran/PMC,
+		WEAR_BODY = /obj/item/clothing/under/marine/veteran/pmc,
 		WEAR_ACCESSORY = /obj/item/clothing/accessory/storage/droppouch,
 		WEAR_IN_ACCESSORY = /obj/item/explosive/grenade/flashbang,
 		WEAR_IN_ACCESSORY = /obj/item/handcuffs/zip,
@@ -386,8 +386,8 @@
 		WEAR_IN_BACK = /obj/item/device/binoculars,
 		WEAR_JACKET = /obj/item/clothing/suit/storage/hazardvest/black,
 		WEAR_IN_JACKET = /obj/item/weapon/melee/telebaton,
-		WEAR_HANDS = /obj/item/clothing/gloves/marine/veteran/PMC,
-		WEAR_FEET = /obj/item/clothing/shoes/veteran/PMC/knife,
+		WEAR_HANDS = /obj/item/clothing/gloves/marine/veteran/pmc,
+		WEAR_FEET = /obj/item/clothing/shoes/veteran/pmc/knife,
 		WEAR_L_HAND = /obj/item/storage/large_holster/machete/full
 	)
 
@@ -484,8 +484,36 @@
 	H.g_facial = 255
 	H.b_facial = 255
 
-/datum/equipment_preset/synth/working_joe/load_name(mob/living/carbon/human/H, var/randomise)
+/datum/equipment_preset/synth/working_joe/load_name(mob/living/carbon/human/H, randomise)
 	H.change_real_name(H, "Working Joe #[rand(100)][rand(100)]")
+
+//*****************************************************************************************************/
+
+/datum/equipment_preset/synth/survivor/cultist_synth
+	name = "Cultist - Xeno Cultist Synthetic"
+	faction = FACTION_XENOMORPH
+
+/datum/equipment_preset/synth/survivor/cultist_synth/load_gear(mob/living/carbon/human/H)
+	var/backItem = /obj/item/storage/backpack/marine/satchel/medic
+	if (H.client && H.client.prefs && (H.client.prefs.backbag == 1))
+		backItem = /obj/item/storage/backpack/marine/medic
+
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/chaplain/cultist(H), WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/latex(H), WEAR_HANDS)
+	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/device/defibrillator, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/storage/belt/medical/full/with_suture_and_graft(H), WEAR_WAIST)
+	H.equip_to_slot_or_del(new /obj/item/device/healthanalyzer(H), WEAR_IN_BELT)
+	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health(H), WEAR_EYES)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full(H), WEAR_R_STORE)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full(H), WEAR_L_STORE)
+	H.equip_to_slot_or_del(new /obj/item/weapon/melee/baton(H.back), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/dutch(H), WEAR_L_EAR)
+
+	var/obj/item/clothing/head/cultist_hood/hood = new /obj/item/clothing/head/cultist_hood(H)
+	hood.flags_item |= NODROP|DELONDROP
+	H.equip_to_slot_or_del(hood, WEAR_HEAD)
 
 //*****************************************************************************************************/
 
@@ -514,7 +542,7 @@
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/dutch(H), WEAR_L_EAR)
 
 
-/datum/equipment_preset/synth/survivor/midwife/load_name(mob/living/carbon/human/H, var/randomise)
+/datum/equipment_preset/synth/survivor/midwife/load_name(mob/living/carbon/human/H, randomise)
 	var/final_name = "Midwife Joe"
 	if(H.client && H.client.prefs)
 		final_name = H.client.prefs.synthetic_name
@@ -540,7 +568,7 @@
 	. = ..()
 	access = get_all_accesses()
 
-/datum/equipment_preset/synth/infiltrator/load_name(mob/living/carbon/human/H, var/randomise)
+/datum/equipment_preset/synth/infiltrator/load_name(mob/living/carbon/human/H, randomise)
 	H.gender = pick(MALE,FEMALE)
 	var/random_name
 	var/first_name

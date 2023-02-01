@@ -67,7 +67,7 @@
 	/// the active var that tracks the cooldown for opening and closing
 	var/open_cooldown = 0
 	density = FALSE
-	anchored = 0
+	anchored = FALSE
 	/// To layer above rollerbeds.
 	layer = ABOVE_OBJ_LAYER
 	/// slightly easier than to drag the body directly.
@@ -120,7 +120,7 @@
 	else if(istype(W, /obj/item/weapon/zombie_claws))
 		open()
 
-/obj/structure/closet/bodybag/store_mobs(var/stored_units) // overriding this
+/obj/structure/closet/bodybag/store_mobs(stored_units) // overriding this
 	var/list/dead_mobs = list()
 	for(var/mob/living/M in loc)
 		if(M.buckled)
@@ -131,7 +131,7 @@
 			dead_mobs += M
 			continue
 		var/mob/living/carbon/human/H = M
-		if(H.check_tod() || isSynth(H) || H.is_revivable() && H.get_ghost()) // revivable
+		if(H.check_tod() || issynth(H) || H.is_revivable() && H.get_ghost()) // revivable
 			continue
 		dead_mobs += M
 	var/mob/living/mob_to_store
@@ -260,7 +260,7 @@
 		new /obj/item/trash/used_stasis_bag(loc)
 		qdel(src)
 
-/obj/structure/closet/bodybag/cryobag/store_mobs(var/stored_units) // overriding this
+/obj/structure/closet/bodybag/cryobag/store_mobs(stored_units) // overriding this
 	var/list/mobs_can_store = list()
 	for(var/mob/living/carbon/human/H in loc)
 		if(H.buckled)
@@ -342,7 +342,7 @@
 							tgui_interact(usr, human = H)
 						break
 
-/obj/structure/closet/bodybag/cryobag/tgui_interact(mob/user, datum/tgui/ui, var/mob/living/carbon/human/human)
+/obj/structure/closet/bodybag/cryobag/tgui_interact(mob/user, datum/tgui/ui, mob/living/carbon/human/human)
 	. = ..()
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)

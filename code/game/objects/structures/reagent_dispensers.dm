@@ -4,7 +4,7 @@
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "watertank"
 	density = TRUE
-	anchored = 0
+	anchored = FALSE
 	health = 100 // Can be destroyed in 2-4 slashes.
 	flags_atom = CAN_BE_SYRINGED
 	wrenchable = TRUE
@@ -22,7 +22,7 @@
 	if(chemical)
 		reagents.add_reagent(chemical, reagent_amount)
 
-/obj/structure/reagent_dispensers/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/obj/structure/reagent_dispensers/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_can_pass_all = PASS_OVER|PASS_AROUND|PASS_UNDER
@@ -63,7 +63,7 @@
 	if(health <= 0)
 		deconstruct(FALSE)
 
-/obj/structure/reagent_dispensers/bullet_act(var/obj/item/projectile/Proj)
+/obj/structure/reagent_dispensers/bullet_act(obj/item/projectile/Proj)
 	health -= Proj.damage
 	if(Proj.firer)
 		msg_admin_niche("[key_name_admin(Proj.firer)] fired a projectile at [name] in [loc.loc.name] ([loc.x],[loc.y],[loc.z]) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[loc.x];Y=[loc.y];Z=[loc.z]'>JMP</a>).")
@@ -72,7 +72,7 @@
 	healthcheck()
 	return TRUE
 
-/obj/structure/reagent_dispensers/attack_alien(mob/living/carbon/Xenomorph/user)
+/obj/structure/reagent_dispensers/attack_alien(mob/living/carbon/xenomorph/user)
 	if(unslashable)
 		return XENO_NO_DELAY_ACTION
 	user.animation_attack_on(src)
@@ -290,7 +290,7 @@
 	return ..()
 
 
-/obj/structure/reagent_dispensers/fueltank/bullet_act(var/obj/item/projectile/Proj)
+/obj/structure/reagent_dispensers/fueltank/bullet_act(obj/item/projectile/Proj)
 	if(exploding) return 0
 	if(ismob(Proj.firer))
 		source_mob = WEAKREF(Proj.firer)
@@ -317,7 +317,7 @@
 	if(src)
 		return ..()
 
-/obj/structure/reagent_dispensers/fueltank/proc/explode(var/force)
+/obj/structure/reagent_dispensers/fueltank/proc/explode(force)
 	reagents.source_mob = source_mob
 	if(reagents.handle_volatiles() || force)
 		deconstruct(FALSE)
@@ -327,7 +327,7 @@
 	update_icon()
 
 
-/obj/structure/reagent_dispensers/fueltank/update_icon(var/cut_overlays = TRUE)
+/obj/structure/reagent_dispensers/fueltank/update_icon(cut_overlays = TRUE)
 	if(cut_overlays)
 		overlays.Cut()
 	. = ..()
@@ -427,7 +427,7 @@
 	desc = "Refill pepper spray canisters."
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "peppertank"
-	anchored = 1
+	anchored = TRUE
 	wrenchable =  FALSE
 	density = FALSE
 	amount_per_transfer_from_this = 45
@@ -440,7 +440,7 @@
 	icon = 'icons/obj/structures/machinery/vending.dmi'
 	icon_state = "water_cooler"
 	possible_transfer_amounts = null
-	anchored = 1
+	anchored = TRUE
 	chemical = "water"
 
 /obj/structure/reagent_dispensers/water_cooler/stacks
@@ -466,7 +466,7 @@
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "virusfoodtank"
 	amount_per_transfer_from_this = 10
-	anchored = 1
+	anchored = TRUE
 	wrenchable = FALSE
 	density = FALSE
 	chemical = "virusfood"

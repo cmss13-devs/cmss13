@@ -10,5 +10,5 @@
 			"total_votes"=DB_FIELDTYPE_BIGINT
 		)
 
-/datum/entity_meta/map_vote/on_read(var/datum/entity/map_vote/vote)
+/datum/entity_meta/map_vote/on_read(datum/entity/map_vote/vote)
 	vote.total_votes = text2num("[vote.total_votes]")

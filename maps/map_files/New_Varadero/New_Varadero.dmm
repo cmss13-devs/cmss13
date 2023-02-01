@@ -1739,7 +1739,7 @@
 /area/varadero/interior/oob)
 "bvS" = (
 /obj/structure/bedsheetbin,
-/obj/item/clothing/gloves/marine/veteran/PMC,
+/obj/item/clothing/gloves/marine/veteran/pmc,
 /turf/open/floor/shiva{
 	icon_state = "floor3"
 	},
@@ -4275,7 +4275,7 @@
 /area/varadero/interior/administration)
 "dKm" = (
 /obj/structure/closet/secure_closet/personal/patient,
-/obj/item/clothing/gloves/marine/veteran/PMC,
+/obj/item/clothing/gloves/marine/veteran/pmc,
 /turf/open/floor/shiva{
 	icon_state = "multi_tiles"
 	},

@@ -392,4 +392,4 @@
 	icon_state = "bottomwing_rightinner"
 
 /obj/structure/prop/almayer/hangar_stencil/midway
-	icon_state = "midway"
+	icon_state = "dropship3"

@@ -396,7 +396,7 @@
 		/obj/item/ammo_magazine/m60,
 		/obj/item/ammo_magazine/rifle/mar40,
 		/obj/item/ammo_magazine/smg/ppsh,
-		/obj/item/ammo_magazine/rifle/abr40,
+		/obj/item/ammo_magazine/rifle/l42a/abr40,
 		/obj/item/ammo_magazine/smg/mp5,
 		/obj/item/ammo_magazine/rifle/m16,
 		/obj/item/ammo_magazine/handful/shotgun/heavy/buckshot,

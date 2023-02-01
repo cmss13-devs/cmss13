@@ -752,9 +752,7 @@ USCM spare items, miscellaneous gear that's too niche and distant (or restricted
 
 /datum/supply_packs/contraband/surplus/surplus_l42_extended
 	name = "surplus magazine box (Ext L42A x 12)"
-	contains = list(
-		/obj/item/ammo_box/magazine/l42a/ext
-	)
+	contains = list(/obj/item/ammo_box/magazine/l42a/ext)
 	dollar_cost = 45
 	containertype = /obj/structure/largecrate/black_market
 
@@ -838,7 +836,7 @@ This is where the RO can reclaim their lost honor and purchase the M44 custom, t
 		/obj/item/prop/helmetgarb/lucky_feather/blue,
 		/obj/item/prop/helmetgarb/lucky_feather/purple,
 		/obj/item/prop/helmetgarb/lucky_feather/yellow,
-		)
+	)
 	dollar_cost = 10
 	containertype = /obj/structure/largecrate/black_market
 
@@ -864,7 +862,7 @@ This is where the RO can reclaim their lost honor and purchase the M44 custom, t
 		/obj/item/clothing/mask/rebreather/scarf/tacticalmask/red,
 		/obj/item/clothing/mask/rebreather/scarf/tacticalmask/green,
 		/obj/item/clothing/mask/rebreather/scarf/tacticalmask/tan,
-		)
+	)
 	dollar_cost = 10
 	containertype = /obj/structure/largecrate/black_market
 
@@ -874,7 +872,7 @@ This is where the RO can reclaim their lost honor and purchase the M44 custom, t
 	contains = list(
 		/obj/item/clothing/mask/rebreather/skull/black,
 		/obj/item/clothing/mask/rebreather/skull,
-		)
+	)
 	dollar_cost = 10
 	containertype = /obj/structure/largecrate/black_market
 
@@ -900,7 +898,7 @@ This is where the RO can reclaim their lost honor and purchase the M44 custom, t
 		/obj/item/clothing/glasses/mgoggles,
 		/obj/item/clothing/glasses/mgoggles/orange,
 		/obj/item/clothing/glasses/mgoggles/black,
-		)
+	)
 	dollar_cost = 10
 	containertype = /obj/structure/largecrate/black_market
 
@@ -918,7 +916,7 @@ This is where the RO can reclaim their lost honor and purchase the M44 custom, t
 	contains = list(
 		/obj/item/clothing/head/cmbandana,
 		/obj/item/clothing/head/cmbandana/tan,
-		)
+	)
 	dollar_cost = 10
 	containertype = /obj/structure/largecrate/black_market
 
@@ -938,7 +936,7 @@ This is where the RO can reclaim their lost honor and purchase the M44 custom, t
 		/obj/item/clothing/head/headband/gray,
 		/obj/item/clothing/head/headband/red,
 		/obj/item/clothing/head/headband/tan,
-		)
+	)
 	dollar_cost = 10
 	containertype = /obj/structure/largecrate/black_market
 
@@ -948,7 +946,7 @@ This is where the RO can reclaim their lost honor and purchase the M44 custom, t
 	contains = list(
 		/obj/item/clothing/head/cmcap/boonie/tan,
 		/obj/item/clothing/head/cmcap/boonie,
-		)
+	)
 	dollar_cost = 10
 	containertype = /obj/structure/largecrate/black_market
 
@@ -974,7 +972,7 @@ This is where the RO can reclaim their lost honor and purchase the M44 custom, t
 		/obj/item/toy/handcard/uno_reverse_blue,
 		/obj/item/toy/handcard/uno_reverse_purple,
 		/obj/item/toy/handcard/uno_reverse_yellow,
-		)
+	)
 	dollar_cost = 10
 	containertype = /obj/structure/largecrate/black_market
 
@@ -1048,17 +1046,13 @@ Things that don't fit anywhere else. If they're meant for shipside use, they pro
 /datum/supply_packs/contraband/miscellaneous/potted_plant
 	name = "potted plant crate"
 	dollar_cost = 50
-	contains = list(
-		/obj/structure/flora/pottedplant/random/unanchored
-	)
+	contains = list(/obj/structure/flora/pottedplant/random/unanchored)
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/miscellaneous/cargo_tug
 	name = "cargo tug crate"
 	dollar_cost = 50
-	contains = list(
-		/obj/vehicle/train/cargo/engine
-	)
+	contains = list(/obj/vehicle/train/cargo/engine)
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/miscellaneous/clf_supplies
@@ -1104,7 +1098,7 @@ Things that don't fit anywhere else. If they're meant for shipside use, they pro
 				/obj/item/clothing/suit/storage/marine/veteran/mercenary/support,
 				/obj/item/clothing/head/helmet/marine/veteran/mercenary/support/engineer
 				// You get three random pieces. If you want to complete the set you need to keep rolling the dice!
-				)
+			)
 			for(var/i in 1 to 3)
 				var/picked_type = pick(armor_to_pick)
 				new picked_type(loc)
@@ -1170,7 +1164,7 @@ Things that don't fit anywhere else. If they're meant for shipside use, they pro
 				/obj/item/explosive/grenade/smokebomb/airburst,
 				/obj/item/explosive/grenade/flashbang/noskill,
 				/obj/item/explosive/grenade/custom/antiweed
-				)
+			)
 			for(var/i in 1 to 4)
 				var/picked_type = pick(nades_to_pick)
 				var/obj/item/explosive/grenade/new_nade = new picked_type(loc)

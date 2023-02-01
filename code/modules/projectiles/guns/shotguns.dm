@@ -461,15 +461,12 @@ can cause issues with ammo types getting mixed up during the burst.
 	desc = "This slow semi-automatic shotgun chambers 8 gauge, and packs a mean punch. The -R version is designed for UPP colony security personnel and handling colony rioting, sporting an integrated vertical grip but lacking in attachment choices."
 	current_mag = /obj/item/ammo_magazine/internal/shotgun/type23/beanbag
 	attachable_allowed = list(
-		//Rail
-		/obj/item/attachable/reddot,
+		/obj/item/attachable/reddot, //Rail
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/flashlight,
 		/obj/item/attachable/magnetic_harness,
-		//Underbarrel (no muzzle attachments)
-		/obj/item/attachable/verticalgrip,
-		//Stock
-		/obj/item/attachable/stock/type23,
+		/obj/item/attachable/verticalgrip, //Underbarrel
+		/obj/item/attachable/stock/type23, //Stock
 	)
 	flags_gun_features = GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER|GUN_INTERNAL_MAG
 	flags_equip_slot = SLOT_BACK

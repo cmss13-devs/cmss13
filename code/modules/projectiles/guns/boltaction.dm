@@ -20,18 +20,11 @@
 	wield_delay = WIELD_DELAY_NORMAL
 	current_mag = /obj/item/ammo_magazine/rifle/boltaction
 	attachable_allowed = list(
-						/obj/item/attachable/bayonet,
-						/obj/item/attachable/bayonet/c02,
-						/obj/item/attachable/bayonet/upp,
-						/obj/item/attachable/scope,
-						/obj/item/attachable/scope/mini,
-						/obj/item/attachable/scope/mini/hunting,
-						/obj/item/attachable/stock/hunting,
-						)
-	starting_attachment_types = list(/obj/item/attachable/stock/hunting, /obj/item/attachable/scope/mini/hunting)
-	var/bolted = TRUE // FALSE IS OPEN, TRUE IS CLOSE
-	var/bolt_delay
-	var/recent_cycle //world.time to see when they last bolted it.
+		/obj/item/attachable/bayonet,
+		/obj/item/attachable/bayonet/upp,
+		/obj/item/attachable/stock/hunting,
+	)
+	starting_attachment_types = list(/obj/item/attachable/stock/hunting)
 
 /obj/item/weapon/gun/boltaction/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 17,"rail_x" = 5, "rail_y" = 18, "under_x" = 25, "under_y" = 14, "stock_x" = 18, "stock_y" = 10)

@@ -13,8 +13,8 @@ RCD
 	density = FALSE
 	anchored = FALSE
 	flags_atom = FPRINT|CONDUCT
-	force = 10.0
-	throwforce = 10.0
+	force = 10
+	throwforce = 10
 	throw_speed = SPEED_FAST
 	throw_range = 5
 	w_class = SIZE_MEDIUM

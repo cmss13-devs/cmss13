@@ -33,7 +33,7 @@ Defined in conflicts.dm of the #defines folder.
 	flags_atom =  FPRINT|CONDUCT
 	matter = list("metal" = 2000)
 	w_class = SIZE_SMALL
-	force = 1.0
+	force = 1
 	var/slot = null //"muzzle", "rail", "under", "stock", "special"
 
 	/*
@@ -1108,7 +1108,7 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/stock/shotgun
 	name = "\improper M37 wooden stock"
-	desc = "A non-standard heavy wooden stock for the M37 Shotgun. More cumbersome than the standard issue stakeout, but reduces recoil and improves accuracy. Allegedly makes a pretty good club in a fight too.."
+	desc = "A non-standard heavy wooden stock for the M37 Shotgun. More cumbersome than the standard issue stakeout, but reduces recoil and improves accuracy. Allegedly makes a pretty good club in a fight too."
 	slot = "stock"
 	icon_state = "stock"
 	wield_delay_mod = WIELD_DELAY_FAST
@@ -2574,7 +2574,7 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/eva_doodad
 	name = "RXF-M5 EVA beam projector"
-	desc = "A strange little doodad that projects an invisible beam that the EVA pistol's actual laser travels in, used as a focus that slightly weakens the laser's intensity. Or at least that's what the manual said.."
+	desc = "A strange little doodad that projects an invisible beam that the EVA pistol's actual laser travels in, used as a focus that slightly weakens the laser's intensity. Or at least that's what the manual said."
 	icon_state = "rxfm5_eva_doodad"
 	attach_icon = "rxfm5_eva_doodad_a"
 	slot = "under"

@@ -2853,7 +2853,7 @@
 
 /datum/ammo/xeno/boiler_gas/proc/drop_nade(turf/T, obj/item/projectile/P)
 	var/amount = 4
-	var/lifetime_mult = 1.0
+	var/lifetime_mult = 1
 	if(isboiler(P.firer))
 		smoke_system.cause_data = P.weapon_cause_data
 	smoke_system.set_up(amount, 0, T)

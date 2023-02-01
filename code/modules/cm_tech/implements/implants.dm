@@ -243,7 +243,7 @@
 	name = "subdermal armor implant"
 	desc = "This implant will grant you armor under the skin, reducing incoming damage and strengthening bones."
 	implant_type = /obj/item/device/internal_implant/subdermal_armor
-	implant_string = "your skin becoming significantly harder.. That's going to hurt in a decade."
+	implant_string = "your skin becoming significantly harder... That's going to hurt in a decade."
 
 /obj/item/device/internal_implant/subdermal_armor
 	var/burn_damage_mult = 0.9

@@ -457,32 +457,32 @@
 	fire_sound = 'sound/weapons/gun_kt42.ogg'
 	current_mag = /obj/item/ammo_magazine/sniper/svd
 	attachable_allowed = list(
-						//Muzzle
-						/obj/item/attachable/bayonet,
-						/obj/item/attachable/bayonet/upp_replica,
-						/obj/item/attachable/bayonet/upp,
-						/obj/item/attachable/extended_barrel,
-						/obj/item/attachable/heavy_barrel,
-						//Barrel
-						/obj/item/attachable/slavicbarrel,
-						//Rail
-						/obj/item/attachable/reddot,
-						/obj/item/attachable/reflex,
-						/obj/item/attachable/flashlight,
-						/obj/item/attachable/magnetic_harness,
-						/obj/item/attachable/scope,
-						/obj/item/attachable/scope/variable_zoom,
-						/obj/item/attachable/scope/variable_zoom/slavic,
-						/obj/item/attachable/scope/mini,
-						/obj/item/attachable/scope/slavic,
-						//Under
-						/obj/item/attachable/verticalgrip,
-						/obj/item/attachable/angledgrip,
-						/obj/item/attachable/lasersight,
-						/obj/item/attachable/bipod,
-						//Stock
-						/obj/item/attachable/stock/slavic
-						)
+		//Muzzle
+		/obj/item/attachable/bayonet,
+		/obj/item/attachable/bayonet/upp_replica,
+		/obj/item/attachable/bayonet/upp,
+		/obj/item/attachable/extended_barrel,
+		/obj/item/attachable/heavy_barrel,
+		//Barrel
+		/obj/item/attachable/slavicbarrel,
+		//Rail
+		/obj/item/attachable/reddot,
+		/obj/item/attachable/reflex,
+		/obj/item/attachable/flashlight,
+		/obj/item/attachable/magnetic_harness,
+		/obj/item/attachable/scope,
+		/obj/item/attachable/scope/variable_zoom,
+		/obj/item/attachable/scope/variable_zoom/slavic,
+		/obj/item/attachable/scope/mini,
+		/obj/item/attachable/scope/slavic,
+		//Under
+		/obj/item/attachable/verticalgrip,
+		/obj/item/attachable/angledgrip,
+		/obj/item/attachable/lasersight,
+		/obj/item/attachable/bipod,
+		//Stock
+		/obj/item/attachable/stock/slavic,
+	)
 	has_aimed_shot = FALSE
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_WIELDED_FIRING_ONLY
 	starting_attachment_types = list(/obj/item/attachable/scope/variable_zoom/slavic)
@@ -530,19 +530,19 @@
 	current_mag = /obj/item/ammo_magazine/rifle/m4ra
 	force = 16
 	attachable_allowed = list(
-						/obj/item/attachable/suppressor,
-						/obj/item/attachable/verticalgrip,
-						/obj/item/attachable/angledgrip,
-						/obj/item/attachable/flashlight/grip,
-						/obj/item/attachable/bipod,
-						/obj/item/attachable/compensator,
-						/obj/item/attachable/bayonet,
-						/obj/item/attachable/attached_gun/shotgun,
-						/obj/item/attachable/scope,
-						/obj/item/attachable/scope/mini,
-						/obj/item/attachable/reddot,
-						/obj/item/attachable/reflex
-						)
+		/obj/item/attachable/suppressor,
+		/obj/item/attachable/verticalgrip,
+		/obj/item/attachable/angledgrip,
+		/obj/item/attachable/flashlight/grip,
+		/obj/item/attachable/bipod,
+		/obj/item/attachable/compensator,
+		/obj/item/attachable/bayonet,
+		/obj/item/attachable/attached_gun/shotgun,
+		/obj/item/attachable/scope,
+		/obj/item/attachable/scope/mini,
+		/obj/item/attachable/reddot,
+		/obj/item/attachable/reflex,
+	)
 
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_SPECIALIST|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
 	starting_attachment_types = list(/obj/item/attachable/stock/rifle/marksman)
@@ -625,7 +625,7 @@
 	w_class = SIZE_LARGE
 	throw_speed = SPEED_SLOW
 	throw_range = 10
-	force = 5.0
+	force = 5
 
 	fire_sound = 'sound/weapons/armbomb.ogg'
 	cocked_sound = 'sound/weapons/gun_m92_cocked.ogg'
@@ -961,7 +961,7 @@
 		/obj/item/attachable/reddot,
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/stock/m79,
-		)
+	)
 
 /obj/item/weapon/gun/launcher/grenade/m81/m79/handle_starting_attachment()
 	..()
@@ -999,8 +999,8 @@
 	delay_style = WEAPON_DELAY_NO_FIRE
 	aim_slowdown = SLOWDOWN_ADS_SPECIALIST
 	attachable_allowed = list(
-						/obj/item/attachable/magnetic_harness
-						)
+		/obj/item/attachable/magnetic_harness,
+	)
 
 	flags_gun_features = GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY|GUN_INTERNAL_MAG
 	var/datum/effect_system/smoke_spread/smoke

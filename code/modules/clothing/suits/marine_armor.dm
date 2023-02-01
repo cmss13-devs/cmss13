@@ -1335,7 +1335,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 
 /obj/item/clothing/suit/storage/marine/faction/UPP/jacket/ivan
 	name = "\improper UH6 Camo Jacket"
-	desc = "An experimental heavily armored variant of the UL6 given to only the most elite units.. usually."
+	desc = "An experimental heavily armored variant of the UL6 given to only the most elite units... usually."
 	slowdown = SLOWDOWN_ARMOR_MEDIUM
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_ARMS|BODY_FLAG_HANDS|BODY_FLAG_FEET
 	armor_melee = CLOTHING_ARMOR_HIGH

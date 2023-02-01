@@ -63,7 +63,7 @@
 	P.show(usr)
 	to_chat(usr, P.desc)
 
-	// TG uses a special garbage collector.. qdel(P)
+	// TG uses a special garbage collector... qdel(P)
 	qdel(P) //so 10 thousand pictures items are not left in memory should an AI take them and then view them all.
 
 /obj/item/device/camera/siliconcam/proc/deletepicture()

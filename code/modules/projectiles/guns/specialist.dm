@@ -607,7 +607,7 @@
 	w_class = SIZE_LARGE
 	throw_speed = SPEED_SLOW
 	throw_range = 10
-	force = 5.0
+	force = 5
 
 	fire_sound = 'sound/weapons/armbomb.ogg'
 	cocked_sound = 'sound/weapons/gun_m92_cocked.ogg'

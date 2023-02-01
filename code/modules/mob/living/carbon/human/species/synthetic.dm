@@ -133,8 +133,8 @@
 
 	default_lighting_alpha = LIGHTING_PLANE_ALPHA_VISIBLE // we don't want combat synths to run around in the dark
 
-	knock_down_reduction = 5.0
-	stun_reduction = 5.0
+	knock_down_reduction = 5
+	stun_reduction = 5
 
 	inherent_verbs = null
 

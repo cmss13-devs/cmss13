@@ -69,7 +69,7 @@ GLOBAL_LIST_EMPTY(command_apc_list)
 		"bullet" = 0.6,
 		"explosive" = 0.7,
 		"blunt" = 0.7,
-		"abstract" = 1.0
+		"abstract" = 1
 	)
 
 	move_max_momentum = 2

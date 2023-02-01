@@ -527,7 +527,7 @@
 		charger_ability.stop_momentum()
 		return
 	if(charger_ability.momentum > CCA_MOMENTUM_LOSS_QUARTER)
-		Destroy()
+		qdel(src)
 		charger_ability.stop_momentum()
 	charger_ability.stop_momentum()
 	// snowflake check for prison windows because they are funny and crooshers can croosh to space in the brief moment where the shutters are closing
@@ -538,7 +538,7 @@
 	if(!charger_ability.momentum)
 		charger_ability.stop_momentum()
 		return
-	Destroy()
+	qdel(src)
 	playsound(src, "sound/effects/metal_crash.ogg", 25, TRUE)
 	return XENO_CHARGE_TRY_MOVE // bulldoze that shitty bed and keep going, should run over the buckled mob aswell unless crusher turns last second for some reason
 
@@ -553,7 +553,7 @@
 		SPAN_XENODANGER("You ram \the [src]!")
 	)
 	playsound(src, "sound/effects/metalhit.ogg", 25, TRUE)
-	Destroy()
+	qdel(src)
 	if(QDELETED(src))
 		charger_ability.lose_momentum(CCA_MOMENTUM_LOSS_MIN) //Lose one turfs worth of speed
 		return XENO_CHARGE_TRY_MOVE

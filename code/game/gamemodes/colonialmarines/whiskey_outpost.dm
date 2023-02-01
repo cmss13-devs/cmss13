@@ -145,7 +145,7 @@
 	if(SSitem_cleanup)
 		//Cleaning stuff more aggressively
 		SSitem_cleanup.start_processing_time = 0
-		SSitem_cleanup.percentage_of_garbage_to_delete = 1.0
+		SSitem_cleanup.percentage_of_garbage_to_delete = 1
 		SSitem_cleanup.wait = 1 MINUTES
 		SSitem_cleanup.next_fire = 1 MINUTES
 		spawn(0)

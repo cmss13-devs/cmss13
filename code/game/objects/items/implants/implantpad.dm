@@ -11,7 +11,7 @@
 	w_class = SIZE_SMALL
 	var/obj/item/implantcase/case = null
 	var/broadcasting = null
-	var/listening = 1.0
+	var/listening = 1
 
 /obj/item/implantpad/proc/update()
 	if (src.case)

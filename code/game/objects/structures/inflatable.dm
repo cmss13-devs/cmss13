@@ -41,7 +41,7 @@
 	icon = 'icons/obj/items/inflatable.dmi'
 	icon_state = "wall"
 
-	health = 50.0
+	health = 50
 	var/deflated = FALSE
 
 /obj/structure/inflatable/bullet_act(obj/item/projectile/Proj)

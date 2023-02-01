@@ -808,33 +808,25 @@ This is where the RO can reclaim their lost honor and purchase the M44 custom, t
 
 /datum/supply_packs/contraband/deep_storage/spacejam
 	name = "Tickets to Space Jam"
-	contains = list(
-		/obj/item/prop/helmetgarb/spacejam_tickets
-		)
+	contains = list(/obj/item/prop/helmetgarb/spacejam_tickets)
 	dollar_cost = 5
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/deep_storage/broken_nvgs
 	name = "Broken Night Vision Goggles"
-	contains = list(
-		/obj/item/prop/helmetgarb/helmet_nvg/cosmetic
-		)
+	contains = list(/obj/item/prop/helmetgarb/helmet_nvg/cosmetic)
 	dollar_cost = 10
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/deep_storage/xm42b_pipe
 	name = "10x99mm XM42B casing"
-	contains = list(
-		/obj/item/prop/helmetgarb/bullet_pipe
-		)
+	contains = list(/obj/item/prop/helmetgarb/bullet_pipe)
 	dollar_cost = 10
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/deep_storage/trimmed_wire
 	name = "Trimmed Barbed Wire"
-	contains = list(
-		/obj/item/prop/helmetgarb/trimmed_wire
-		)
+	contains = list(/obj/item/prop/helmetgarb/trimmed_wire)
 	dollar_cost = 10
 	containertype = /obj/structure/largecrate/black_market
 
@@ -852,17 +844,13 @@ This is where the RO can reclaim their lost honor and purchase the M44 custom, t
 
 /datum/supply_packs/contraband/deep_storage/rosary
 	name = "Rosary"
-	contains = list(
-		/obj/item/prop/helmetgarb/rosary
-		)
+	contains = list(/obj/item/prop/helmetgarb/rosary)
 	dollar_cost = 10
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/deep_storage/rabbitsfoot
 	name = "Rabbit's Foot"
-	contains = list(
-		/obj/item/prop/helmetgarb/rabbitsfoot
-		)
+	contains = list(/obj/item/prop/helmetgarb/rabbitsfoot)
 	dollar_cost = 10
 	containertype = /obj/structure/largecrate/black_market
 
@@ -893,9 +881,7 @@ This is where the RO can reclaim their lost honor and purchase the M44 custom, t
 
 /datum/supply_packs/contraband/deep_storage/skull_facepaint
 	name = "Skull Facepaint"
-	contains = list(
-		/obj/item/facepaint/skull
-		)
+	contains = list(/obj/item/facepaint/skull)
 	dollar_cost = 10
 	containertype = /obj/structure/largecrate/black_market
 
@@ -903,9 +889,7 @@ This is where the RO can reclaim their lost honor and purchase the M44 custom, t
 
 /datum/supply_packs/contraband/deep_storage/aviator_shades
 	name = "Aviator Shades"
-	contains = list(
-		/obj/item/clothing/glasses/sunglasses/aviator
-		)
+	contains = list(/obj/item/clothing/glasses/sunglasses/aviator)
 	dollar_cost = 10
 	containertype = /obj/structure/largecrate/black_market
 
@@ -922,9 +906,7 @@ This is where the RO can reclaim their lost honor and purchase the M44 custom, t
 
 /datum/supply_packs/contraband/deep_storage/bimex_shades
 	name = "BiMex Personal Shades"
-	contains = list(
-		/obj/item/clothing/glasses/sunglasses/big
-		)
+	contains = list(/obj/item/clothing/glasses/sunglasses/big)
 	dollar_cost = 15
 	containertype = /obj/structure/largecrate/black_market
 
@@ -943,9 +925,7 @@ This is where the RO can reclaim their lost honor and purchase the M44 custom, t
 /datum/supply_packs/contraband/deep_storage/uscm_earpiece
 	name = "USCM Earpiece"
 	randomised_num_contained = 1
-	contains = list(
-		/obj/item/clothing/head/headset
-		)
+	contains = list(/obj/item/clothing/head/headset)
 	dollar_cost = 10
 	containertype = /obj/structure/largecrate/black_market
 
@@ -976,17 +956,13 @@ This is where the RO can reclaim their lost honor and purchase the M44 custom, t
 
 /datum/supply_packs/contraband/deep_storage/pdtl_kit
 	name = "PDT/L Kit"
-	contains = list(
-		/obj/item/storage/box/pdt_kit
-		)
+	contains = list(/obj/item/storage/box/pdt_kit)
 	dollar_cost = 10
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/deep_storage/lucky_lime
 	name = "Frozen Lime"
-	contains = list(
-		/obj/item/reagent_container/food/snacks/grown/lime
-		)
+	contains = list(/obj/item/reagent_container/food/snacks/grown/lime)
 	dollar_cost = 5
 	containertype = /obj/structure/largecrate/black_market
 
@@ -1004,9 +980,7 @@ This is where the RO can reclaim their lost honor and purchase the M44 custom, t
 
 /datum/supply_packs/contraband/deep_storage/jungle_boots
 	name = "Jungle Pattern Combat Boots"
-	contains = list(
-		/obj/item/clothing/shoes/marine/jungle
-		)
+	contains = list(/obj/item/clothing/shoes/marine/jungle)
 	dollar_cost = 10
 	containertype = /obj/structure/largecrate/black_market
 
@@ -1014,41 +988,31 @@ This is where the RO can reclaim their lost honor and purchase the M44 custom, t
 
 /datum/supply_packs/contraband/deep_storage/type_replica
 	name = "Type 80 Bayonet Replica"
-	contains = list(
-		/obj/item/attachable/bayonet/upp_replica
-		)
+	contains = list(/obj/item/attachable/bayonet/upp_replica)
 	dollar_cost = 10
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/deep_storage/cartridge_bayonet
 	name = "M8 Cartridge Bayonet Kit"
-	contains = list(
-		/obj/item/storage/box/c02_knife
-		)
+	contains = list(/obj/item/storage/box/c02_knife)
 	dollar_cost = 10
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/deep_storage/m43_holdout
 	name = "M43 Holdout Pistol"
-	contains = list(
-		/obj/item/storage/box/m43
-		)
+	contains = list(/obj/item/storage/box/m43)
 	dollar_cost = 10
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/deep_storage/m4a3_c
 	name = "M4A3 Custom Pistol"
-	contains = list(
-		/obj/item/weapon/gun/pistol/m4a3/custom
-		)
+	contains = list(/obj/item/weapon/gun/pistol/m4a3/custom)
 	dollar_cost = 35
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/deep_storage/m44_c
 	name = "M44 Custom Revolver"
-	contains = list(
-		/obj/item/weapon/gun/revolver/m44/custom
-		)
+	contains = list(/obj/item/weapon/gun/revolver/m44/custom)
 	dollar_cost = 70
 	containertype = /obj/structure/largecrate/black_market
 

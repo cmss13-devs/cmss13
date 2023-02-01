@@ -5,7 +5,7 @@
 	if(user.sdisabilities & DISABILITY_BLIND || user.blinded || user.stat==UNCONSCIOUS)
 		return list(SPAN_NOTICE("Something is there but you can't see it."))
 
-	if(isXeno(user))
+	if(isxeno(user))
 		var/msg = "<span class='info'>This is "
 
 		if(icon)
@@ -492,7 +492,7 @@
 	. += msg
 
 
-	if(isYautja(user))
+	if(isyautja(user))
 		var/obj/item/clothing/gloves/yautja/hunter/bracers = gloves
 		if(istype(bracers) && bracers.name_active)
 			. += SPAN_BLUE("Their bracers identifies them as <b>[real_name]</b>.")
@@ -515,7 +515,7 @@
 /proc/hasHUD(mob/M, hudtype)
 	if(istype(M, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = M
-		if (isSynth(H))
+		if (issynth(H))
 			return 1
 		switch(hudtype)
 			if("security")

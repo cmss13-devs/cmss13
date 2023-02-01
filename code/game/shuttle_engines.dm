@@ -8,7 +8,7 @@
 	icon_state = "1"
 	density = TRUE
 	opacity = FALSE
-	anchored = 1
+	anchored = TRUE
 	unslashable = TRUE
 	unacidable = TRUE
 	layer = WINDOW_LAYER
@@ -22,7 +22,7 @@
 /obj/structure/shuttle/engine
 	name = "engine"
 	density = TRUE
-	anchored = 1.0
+	anchored = TRUE
 	unslashable = TRUE
 	unacidable = TRUE
 

@@ -1,0 +1,11 @@
+2023-02-01:
+  BeagleGaming1:
+  - spellcheck: Fixes a missing space in Death Nettle's description
+  - bugfix: Xenos can unbuckle marines from Operating Tables
+  Waseemq1235:
+  - bugfix: Removes Weyland from random generated names
+  realforest2001:
+  - bugfix: Maploader no longer nukes ghosts into a weird glitchy state where they
+      can't see anything
+  stanalbatross:
+  - code_imp: removed all useless overspecific .0s from the codebase

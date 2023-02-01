@@ -50,7 +50,7 @@
 	open_sound = 'sound/effects/vegetation_walk_1.ogg'
 	close_sound = 'sound/effects/vegetation_walk_2.ogg'
 	item_path = /obj/item/bodybag/tarp
-	anchored = 0
+	anchored = FALSE
 	var/uncloak_time = 3 //in SECONDS, this is how long it takes for the tarp to become fully visible again once it's opened from an invisible state
 	var/cloak_time = 15 //ditto for cloaking
 	var/closed_alpha = 60 //how much ALPHA the tarp has once it's fully cloaked.
@@ -76,7 +76,7 @@
 	close_sound = 'sound/effects/vegetation_walk_2.ogg'
 
 	item_path = /obj/item/bodybag/tarp/reactive
-	anchored = 0
+	anchored = FALSE
 
 /obj/structure/closet/bodybag/tarp/reactive/scout
 	name = "\improper V3 reactive thermal tarp (folded)"
@@ -97,7 +97,7 @@
 		return
 	. = ..()
 
-/obj/structure/closet/bodybag/tarp/store_mobs(var/stored_units)//same as stasis bag proc
+/obj/structure/closet/bodybag/tarp/store_mobs(stored_units)//same as stasis bag proc
 	var/list/mobs_can_store = list()
 	for(var/mob/living/carbon/human/H in loc)
 		if(H.buckled)
@@ -155,7 +155,7 @@
 /obj/structure/broken_apc
 	name = "\improper M577 armored personnel carrier"
 	desc = "A large, armored behemoth capable of ferrying marines around. \nThis one is sitting nonfunctional."
-	anchored = 1
+	anchored = TRUE
 	opacity = TRUE
 	density = TRUE
 	icon = 'icons/obj/apc.dmi'

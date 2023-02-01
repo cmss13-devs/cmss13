@@ -1,4 +1,0 @@
-author: "Morrow"
-delete-after: True
-changes:
-  - bugfix: "Xenos will be properly stunned while on the Almayer when hijack lands"

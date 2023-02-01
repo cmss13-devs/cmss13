@@ -8,7 +8,7 @@
 	icon = 'icons/obj/items/storage.dmi'
 	icon_state = "secure"
 	flags_atom = FPRINT|CONDUCT
-	force = 8.0
+	force = 8
 	hitsound = "swing_hit"
 	throw_speed = SPEED_FAST
 	throw_range = 4
@@ -70,7 +70,7 @@
 	ui_interact(user)
 
 
-/obj/item/device/portable_vendor/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 0)
+/obj/item/device/portable_vendor/ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = 0)
 
 	if(!ishuman(user)) return
 

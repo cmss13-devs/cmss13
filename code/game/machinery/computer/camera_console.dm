@@ -35,6 +35,7 @@
 
 	// Initialize map objects
 	cam_screen = new
+	cam_screen.icon = null
 	cam_screen.name = "screen"
 	cam_screen.assigned_map = map_name
 	cam_screen.del_on_map_removal = FALSE
@@ -48,7 +49,7 @@
 	qdel(cam_background)
 	return ..()
 
-/obj/structure/machinery/computer/security/attack_remote(var/mob/user as mob)
+/obj/structure/machinery/computer/security/attack_remote(mob/user as mob)
 	return attack_hand(user)
 
 /obj/structure/machinery/computer/security/attack_hand(mob/user)
@@ -215,6 +216,7 @@
 
 /obj/structure/machinery/computer/security/proc/show_camera_static()
 	cam_screen.vis_contents.Cut()
+	last_camera_turf = null
 	cam_background.icon_state = "scanline2"
 	cam_background.fill_rect(1, 1, DEFAULT_MAP_SIZE, DEFAULT_MAP_SIZE)
 

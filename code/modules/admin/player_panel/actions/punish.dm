@@ -3,7 +3,7 @@
 	name = "Ban"
 	permissions_required = R_BAN
 
-/datum/player_action/ban/act(var/client/user, var/mob/target, var/list/params)
+/datum/player_action/ban/act(client/user, mob/target, list/params)
 	user.cmd_admin_do_ban(target)
 	return TRUE
 
@@ -13,7 +13,7 @@
 	name = "Job-ban"
 	permissions_required = R_BAN
 
-/datum/player_action/jobban/act(var/client/user, var/mob/target, var/list/params)
+/datum/player_action/jobban/act(client/user, mob/target, list/params)
 	user.cmd_admin_job_ban(target)
 	return TRUE
 
@@ -22,7 +22,7 @@
 	name = "EORG Ban"
 	permissions_required = R_BAN
 
-/datum/player_action/eorgban/act(var/client/user, var/mob/target, var/list/params)
+/datum/player_action/eorgban/act(client/user, mob/target, list/params)
 	if(target.client && target.client.admin_holder) return //admins cannot be banned. Even if they could, the ban doesn't affect them anyway
 
 	if(!target.ckey)
@@ -50,7 +50,7 @@
 	name = "Mute"
 
 
-/datum/player_action/mute/act(var/client/user, var/mob/target, var/list/params)
+/datum/player_action/mute/act(client/user, mob/target, list/params)
 	if(!target.client)
 		return
 
@@ -63,7 +63,7 @@
 	name = "Show Notes"
 
 
-/datum/player_action/show_notes/act(var/client/user, var/mob/target, var/list/params)
+/datum/player_action/show_notes/act(client/user, mob/target, list/params)
 	user.admin_holder.player_notes_show(target.ckey)
 	return TRUE
 
@@ -73,9 +73,9 @@
 	name = "Reset Xeno Name"
 
 
-/datum/player_action/reset_xeno_name/act(var/client/user, var/mob/target, var/list/params)
-	var/mob/living/carbon/Xenomorph/X = target
-	if(!isXeno(X))
+/datum/player_action/reset_xeno_name/act(client/user, mob/target, list/params)
+	var/mob/living/carbon/xenomorph/X = target
+	if(!isxeno(X))
 		to_chat(user, SPAN_WARNING("[target.name] is not a xeno!"))
 		return
 
@@ -105,7 +105,7 @@
 
 
 
-/datum/player_action/xeno_name_ban/act(var/client/user, var/mob/target, var/list/params)
+/datum/player_action/xeno_name_ban/act(client/user, mob/target, list/params)
 	if(!target.client)
 		return
 
@@ -124,7 +124,7 @@
 		to_chat(target, SPAN_DANGER("Warning: You can use xeno names again."))
 		return
 
-	if(!isXeno(target))
+	if(!isxeno(target))
 		to_chat(user, SPAN_DANGER("Target is not a xenomorph. Aborting."))
 		return
 
@@ -150,7 +150,7 @@
 
 	targetClient.prefs.save_preferences()
 
-	var/mob/living/carbon/Xenomorph/X = target
+	var/mob/living/carbon/xenomorph/X = target
 	X.generate_name()
 
 /datum/player_action/reset_human_name
@@ -158,13 +158,13 @@
 	name = "Reset Human Name"
 
 
-/datum/player_action/reset_human_name/act(var/client/user, var/mob/target, var/list/params)
+/datum/player_action/reset_human_name/act(client/user, mob/target, list/params)
 	var/mob/target_mob = target
 	if(!ismob(target_mob))
 		to_chat(user, SPAN_WARNING("[target.name] is not a mob!"))
 		return
 
-	if(isXeno(target_mob))
+	if(isxeno(target_mob))
 		to_chat(user, SPAN_WARNING("[target.name] is a xeno!"))
 		return
 
@@ -204,6 +204,7 @@
 		return
 
 	target_mob.change_real_name(target_mob, new_name)
+	GLOB.data_core.manifest_modify(new_name, WEAKREF(target_mob))
 	if(ishuman(target_mob))
 		var/mob/living/carbon/human/target_human = target_mob
 		if(target_human.wear_id && target_human.wear_id.registered_ref == WEAKREF(target_human))
@@ -227,7 +228,7 @@
 	permissions_required = R_BAN
 
 
-/datum/player_action/ban_human_name/act(var/client/user, var/mob/target, var/list/params)
+/datum/player_action/ban_human_name/act(client/user, mob/target, list/params)
 	if(!target.client || !target.ckey)
 		to_chat(user, SPAN_NOTICE("Target is lacking either client or ckey. Aborting."))
 		return

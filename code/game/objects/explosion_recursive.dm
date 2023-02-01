@@ -26,7 +26,7 @@ For explosion resistance, an explosion should never go through a wall or window 
 explosion resistance exactly as much as their health
 */
 
-/proc/explosion_rec(var/turf/epicenter, var/power, var/falloff = 20, var/datum/cause_data/explosion_cause_data)
+/proc/explosion_rec(turf/epicenter, power, falloff = 20, datum/cause_data/explosion_cause_data)
 	var/obj/effect/explosion/Controller = new /obj/effect/explosion(epicenter)
 	Controller.initiate_explosion(epicenter, power, falloff, explosion_cause_data)
 
@@ -38,9 +38,11 @@ explosion resistance exactly as much as their health
 	var/active_spread_num = 0
 	var/power = 0
 	var/falloff = 20
-	var/reflected_power = 0 //used to amplify explosions in confined areas
+	/// used to amplify explosions in confined areas
+	var/reflected_power = 0
 	var/reflection_multiplier = 1.5
-	var/reflection_amplification_limit = 1 //1 = 100% increase
+	/// 1 = 100% increase
+	var/reflection_amplification_limit = 1
 	var/minimum_spread_power = 0
 	var/datum/cause_data/explosion_cause_data
 	//var/overlap_number = 0
@@ -51,7 +53,7 @@ explosion resistance exactly as much as their health
 
 
 //the start of the explosion
-/obj/effect/explosion/proc/initiate_explosion(turf/epicenter, power0, falloff0 = 20, var/datum/cause_data/new_explosion_cause_data)
+/obj/effect/explosion/proc/initiate_explosion(turf/epicenter, power0, falloff0 = 20, datum/cause_data/new_explosion_cause_data)
 	if(!istype(new_explosion_cause_data))
 		if(new_explosion_cause_data)
 			stack_trace("initiate_explosion called with string cause ([new_explosion_cause_data]) instead of datum")
@@ -94,7 +96,7 @@ explosion resistance exactly as much as their health
 
 
 //direction is the direction that the spread took to come to this tile. So it is pointing in the main blast direction - meaning where this tile should spread most of it's force.
-/turf/proc/explosion_spread(var/obj/effect/explosion/Controller, power, direction)
+/turf/proc/explosion_spread(obj/effect/explosion/Controller, power, direction)
 
 	if(Controller.explosion_turfs[src] && Controller.explosion_turfs[src] + 1 >= power)
 		return
@@ -315,7 +317,7 @@ explosion resistance exactly as much as their health
 				return 40
 	return 0
 
-/obj/item/proc/explosion_throw(severity, direction, var/scatter_multiplier = 1)
+/obj/item/proc/explosion_throw(severity, direction, scatter_multiplier = 1)
 	if(anchored)
 		return
 

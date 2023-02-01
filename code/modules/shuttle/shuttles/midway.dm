@@ -54,7 +54,7 @@
 	view_range = "26x26"
 	x_offset = 4
 	y_offset = 5
-	designate_time = 10 SECONDS
+	designate_time = 5 SECONDS
 	indestructible = TRUE
 	unacidable = TRUE
 	open_prompt = FALSE
@@ -125,12 +125,13 @@
 /obj/structure/machinery/computer/camera_advanced/shuttle_docker/midway/shuttle_arrived()
 	if(current_state == STATE_IN_TRANSIT)
 		if(transit_to == STATE_IN_ATMOSPHERE)
+			disable_landing_lights()
 			addtimer(CALLBACK(src, PROC_REF(move_to_atmosphere)), 10 SECONDS)
 			return
 		if(transit_to == STATE_ON_SHIP)
 			balloon_alert_to_viewers("exited atmosphere")
 			shuttle_port.assigned_transit.reserved_area.set_turf(/turf/open/space/transit)
-			addtimer(CALLBACK(src, PROC_REF(move_to_ship)), 3 SECONDS)
+			move_to_ship()
 			return
 		if(transit_to == STATE_ON_GROUND)
 			current_state = STATE_ON_GROUND
@@ -141,6 +142,8 @@
 		current_state = STATE_IN_ATMOSPHERE
 		transit_to = null
 		return
+	if(current_state == STATE_ON_SHIP)
+		disable_landing_lights()
 
 /obj/structure/machinery/computer/camera_advanced/shuttle_docker/midway/proc/take_off(mob/user)
 	shuttle_port = SSshuttle.getShuttle(shuttleId)
@@ -166,6 +169,7 @@
 	if(!COOLDOWN_FINISHED(src, launch_cooldown))
 		to_chat(user, SPAN_WARNING("Engines are cooling down. Wait a moment."))
 
+	enable_landing_lights()
 	balloon_alert_to_viewers("take off initiated")
 	current_state = STATE_IN_TRANSIT
 	transit_to = STATE_IN_ATMOSPHERE
@@ -178,7 +182,6 @@
 	shuttle_port.assigned_transit.reserved_area.set_turf(/turf/open/space/transit/atmosphere)
 
 /obj/structure/machinery/computer/camera_advanced/shuttle_docker/midway/proc/move_to_ship()
-	shuttle_port.assigned_transit.reserved_area.set_turf(/turf/open/space/transit)
 	current_state = STATE_ON_SHIP
 	transit_to = null
 
@@ -187,6 +190,7 @@
 	current_state = STATE_IN_TRANSIT
 	transit_to = STATE_ON_SHIP
 	SSshuttle.moveShuttle(shuttleId, SHUTTLE_MIDWAY, TRUE)
+	enable_landing_lights()
 
 /obj/structure/machinery/computer/camera_advanced/shuttle_docker/midway/proc/from_ground()
 	balloon_alert_to_viewers("take off initiated")
@@ -194,6 +198,14 @@
 	SSshuttle.move_shuttle_to_transit(shuttleId, TRUE)
 	shuttle_port.assigned_transit.reserved_area.set_turf(/turf/open/space/transit/atmosphere)
 
+
+/obj/structure/machinery/computer/camera_advanced/shuttle_docker/midway/proc/enable_landing_lights()
+	for(var/obj/structure/machinery/landinglight/light in GLOB.dropship3_lights)
+		light.turn_on()
+
+/obj/structure/machinery/computer/camera_advanced/shuttle_docker/midway/proc/disable_landing_lights()
+	for(var/obj/structure/machinery/landinglight/light in GLOB.dropship3_lights)
+		light.turn_off()
 
 /obj/structure/machinery/computer/camera_advanced/shuttle_docker/midway/proc/view_ground(mob/user)
 	if(!(current_state == STATE_IN_ATMOSPHERE && transit_to == null && shuttle_port.mode == SHUTTLE_IDLE))
@@ -218,7 +230,7 @@
 	if(!origin.placeLandingSpot(target))
 		to_chat(owner, SPAN_WARNING("You cannot land here."))
 		return
-	origin.shuttle_port.callTime = 0 SECONDS
+	origin.shuttle_port.callTime = 5 SECONDS
 	origin.current_state = STATE_IN_TRANSIT
 	origin.transit_to = STATE_ON_GROUND
 	origin.remove_eye_control(origin.current_user)
@@ -393,3 +405,28 @@
 
 /obj/structure/prop/almayer/hangar_stencil/midway
 	icon_state = "dropship3"
+
+GLOBAL_LIST_EMPTY(dropship3_lights)
+
+/obj/structure/machinery/landinglight/midway
+	id = "Midway"
+
+/obj/structure/machinery/landinglight/midway/Initialize(mapload, ...)
+	. = ..()
+	GLOB.dropship3_lights += src
+
+/obj/structure/machinery/landinglight/midway/Destroy()
+	GLOB.dropship3_lights -= src
+	return ..()
+
+/obj/structure/machinery/landinglight/midway/delayone/turn_on()
+	icon_state = initial(icon_state) + "1"
+	SetLuminosity(2)
+
+/obj/structure/machinery/landinglight/midway/delaytwo/turn_on()
+	icon_state = initial(icon_state) + "2"
+	SetLuminosity(2)
+
+/obj/structure/machinery/landinglight/midway/delaythree/turn_on()
+	icon_state = initial(icon_state) + "3"
+	SetLuminosity(2)

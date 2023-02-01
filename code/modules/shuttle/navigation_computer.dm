@@ -160,6 +160,7 @@
 	var/mob/camera/eye/remote/shuttle_docker/the_eye = eyeobj
 	var/landing_clear = checkLandingSpot()
 	if(designate_time && (landing_clear != SHUTTLE_DOCKER_BLOCKED))
+		current_user.play_screen_text("Targeting transit location, please wait [DisplayTimeText(designate_time)]...")
 		to_chat(current_user, SPAN_WARNING("Targeting transit location, please wait [DisplayTimeText(designate_time)]..."))
 		designating_target_loc = the_eye.loc
 		var/wait_completed = do_after(current_user, designate_time, TRUE, designating_target_loc, extra_checks = CALLBACK(src, /obj/structure/machinery/computer/camera_advanced/shuttle_docker/proc/canDesignateTarget))
@@ -167,6 +168,7 @@
 		if(!current_user)
 			return
 		if(!wait_completed)
+			current_user.play_screen_text("Operation aborted.")
 			to_chat(current_user, SPAN_WARNING("Operation aborted."))
 			return
 		landing_clear = checkLandingSpot()
@@ -174,8 +176,10 @@
 	if(landing_clear != SHUTTLE_DOCKER_LANDING_CLEAR)
 		switch(landing_clear)
 			if(SHUTTLE_DOCKER_BLOCKED)
+				current_user.play_screen_text("Invalid location.")
 				to_chat(current_user, SPAN_WARNING("Invalid transit location."))
 			if(SHUTTLE_DOCKER_BLOCKED_BY_HIDDEN_PORT)
+				current_user.play_screen_text("Unknown object detected.")
 				to_chat(current_user, SPAN_WARNING("Unknown object detected in landing zone. Please designate another location."))
 		return
 

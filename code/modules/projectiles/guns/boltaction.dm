@@ -21,10 +21,14 @@
 	current_mag = /obj/item/ammo_magazine/rifle/boltaction
 	attachable_allowed = list(
 		/obj/item/attachable/bayonet,
+		/obj/item/attachable/bayonet/c02,
 		/obj/item/attachable/bayonet/upp,
+		/obj/item/attachable/scope,
+		/obj/item/attachable/scope/mini,
+		/obj/item/attachable/scope/mini/hunting,
 		/obj/item/attachable/stock/hunting,
-	)
-	starting_attachment_types = list(/obj/item/attachable/stock/hunting)
+		)
+	starting_attachment_types = list(/obj/item/attachable/stock/hunting, /obj/item/attachable/scope/mini/hunting)
 	aim_slowdown = SLOWDOWN_ADS_RIFLE
 	wield_delay = WIELD_DELAY_NORMAL
 	var/bolted = TRUE // FALSE IS OPEN, TRUE IS CLOSE

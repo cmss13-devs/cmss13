@@ -17,7 +17,7 @@
 	cant_hold = list(
 		/obj/item/ammo_magazine,
 		/obj/item/explosive/grenade,
-		/obj/item/tool
+		/obj/item/tool,
 	) //to prevent powergaming.
 	storage_flags = STORAGE_FLAGS_BOX
 	var/icon_full //icon state to use when kit is full
@@ -172,7 +172,7 @@
 	icon_state = "bezerk"
 	cant_hold = list(
 		/obj/item/ammo_magazine,
-		/obj/item/explosive/grenade
+		/obj/item/explosive/grenade,
 	) // we need surgery tools buddy
 
 /obj/item/storage/firstaid/surgical/fill_preset_inventory()
@@ -204,7 +204,7 @@
 		/obj/item/reagent_container/glass/bottle,
 		/obj/item/paper,
 		/obj/item/reagent_container/syringe,
-		/obj/item/reagent_container/hypospray/autoinjector
+		/obj/item/reagent_container/hypospray/autoinjector,
 	)
 
 /obj/item/storage/syringe_case/regular
@@ -249,7 +249,7 @@
 	can_hold = list(
 		/obj/item/reagent_container/pill,
 		/obj/item/toy/dice,
-		/obj/item/paper
+		/obj/item/paper,
 	)
 	storage_flags = STORAGE_FLAGS_BOX|STORAGE_CLICK_GATHER|STORAGE_QUICK_GATHER
 	storage_slots = null

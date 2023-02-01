@@ -51,8 +51,8 @@
 /datum/supply_packs/ammo_mag_box
 	name = "Magazine box (M41A, 10x regular mags)"
 	contains = list(
-					/obj/item/ammo_box/magazine
-					)
+		/obj/item/ammo_box/magazine,
+	)
 	cost = 20
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "\improper M41A magazines crate"
@@ -61,8 +61,8 @@
 /datum/supply_packs/ammo_mag_box_ap
 	name = "Magazine box (M41A, 10x AP mags)"
 	contains = list(
-					/obj/item/ammo_box/magazine/ap
-					)
+		/obj/item/ammo_box/magazine/ap,
+	)
 	cost = 40
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "\improper M41A AP magazines crate"
@@ -71,8 +71,8 @@
 /datum/supply_packs/ammo_mag_box_ext
 	name = "Magazine box (M41A, 8x extended mags)"
 	contains = list(
-					/obj/item/ammo_box/magazine/ext
-					)
+		/obj/item/ammo_box/magazine/ext,
+	)
 	cost = 30
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "\improper M41A extended magazines crate"
@@ -83,8 +83,8 @@
 /datum/supply_packs/ammo_smg_mag_box
 	name = "Magazine box (M39, 12x regular mags)"
 	contains = list(
-					/obj/item/ammo_box/magazine/m39
-					)
+		/obj/item/ammo_box/magazine/m39,
+	)
 	cost = 20
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "\improper M39 HV magazines crate"
@@ -93,8 +93,8 @@
 /datum/supply_packs/ammo_smg_mag_box_ap
 	name = "Magazine box (M39, 12x AP mags)"
 	contains = list(
-					/obj/item/ammo_box/magazine/m39/ap
-					)
+		/obj/item/ammo_box/magazine/m39/ap,
+	)
 	cost = 40
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "\improper M39 AP magazines crate"
@@ -103,8 +103,8 @@
 /datum/supply_packs/ammo_smg_mag_box_ext
 	name = "Magazine box (M39, 10x extended mags)"
 	contains = list(
-					/obj/item/ammo_box/magazine/m39/ext
-					)
+		/obj/item/ammo_box/magazine/m39/ext,
+	)
 	cost = 30
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "\improper M39 extended magazines crate"
@@ -115,8 +115,8 @@
 /datum/supply_packs/ammo_l42_mag_box
 	name = "Magazine box (L42A, 16x mags)"
 	contains = list(
-					/obj/item/ammo_box/magazine/l42a
-					)
+		/obj/item/ammo_box/magazine/l42a,
+	)
 	cost = 20
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "\improper L42A magazines crate"
@@ -125,8 +125,8 @@
 /datum/supply_packs/ammo_l42_mag_box_ap
 	name = "Magazine box (L42A, 16x AP mags)"
 	contains = list(
-					/obj/item/ammo_box/magazine/l42a/ap
-					)
+		/obj/item/ammo_box/magazine/l42a/ap,
+	)
 	cost = 40
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "\improper L42A AP magazines crate"
@@ -137,8 +137,8 @@
 /datum/supply_packs/ammo_m44_mag_box
 	name = "Speed loaders box (M44, 16x)"
 	contains = list(
-					/obj/item/ammo_box/magazine/m44
-					)
+		/obj/item/ammo_box/magazine/m44,
+	)
 	cost = 20
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "\improper M44 speed loaders crate"
@@ -147,8 +147,8 @@
 /datum/supply_packs/ammo_m44_mag_box_ap
 	name = "Speed loaders box (Marksman M44, 16x)"
 	contains = list(
-					/obj/item/ammo_box/magazine/m44/marksman
-					)
+		/obj/item/ammo_box/magazine/m44/marksman,
+	)
 	cost = 30
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "\improper M44 Marksman speed loaders crate"
@@ -157,8 +157,8 @@
 /datum/supply_packs/ammo_m44_mag_box_heavy
 	name = "Speed loaders box (Heavy M44, 16x)"
 	contains = list(
-					/obj/item/ammo_box/magazine/m44/heavy
-					)
+		/obj/item/ammo_box/magazine/m44/heavy,
+	)
 	cost = 40
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "\improper M44 Heavy speed loaders crate"
@@ -169,8 +169,8 @@
 /datum/supply_packs/ammo_m4a3_mag_box
 	name = "Magazine box (M4A3, 16x regular mags)"
 	contains = list(
-					/obj/item/ammo_box/magazine/m4a3
-					)
+		/obj/item/ammo_box/magazine/m4a3,
+	)
 	cost = 20
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "\improper M4A3 magazines crate"
@@ -179,8 +179,8 @@
 /datum/supply_packs/ammo_m4a3_mag_box_ap
 	name = "Magazine box (M4A3, 16x AP mags)"
 	contains = list(
-					/obj/item/ammo_box/magazine/m4a3/ap
-					)
+		/obj/item/ammo_box/magazine/m4a3/ap,
+	)
 	cost = 30
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "\improper M4A3 AP magazines crate"
@@ -189,8 +189,8 @@
 /datum/supply_packs/ammo_m4a3_mag_box_hp
 	name = "Magazine box (M4A3, 16x HP mags)"
 	contains = list(
-					/obj/item/ammo_box/magazine/m4a3/hp
-					)
+		/obj/item/ammo_box/magazine/m4a3/hp,
+	)
 	cost = 30
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "\improper M4A3 HP magazines crate"
@@ -201,8 +201,8 @@
 /datum/supply_packs/ammo_shell_box
 	name = "Shell box (100x slug shells)"
 	contains = list(
-					/obj/item/ammo_box/magazine/shotgun
-					)
+		/obj/item/ammo_box/magazine/shotgun,
+	)
 	cost = 30
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "\improper shotgun slugs crate"
@@ -211,8 +211,8 @@
 /datum/supply_packs/ammo_shell_box_buck
 	name = "Shell box (100x buckshot shells)"
 	contains = list(
-					/obj/item/ammo_box/magazine/shotgun/buckshot
-					)
+		/obj/item/ammo_box/magazine/shotgun/buckshot,
+	)
 	cost = 30
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "\improper shotgun buckshot crate"
@@ -221,8 +221,8 @@
 /datum/supply_packs/ammo_shell_box_flechette
 	name = "Shell box (100x flechette shells)"
 	contains = list(
-					/obj/item/ammo_box/magazine/shotgun/flechette
-					)
+		/obj/item/ammo_box/magazine/shotgun/flechette,
+	)
 	cost = 30
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "\improper shotgun flechette crate"
@@ -233,8 +233,8 @@
 /datum/supply_packs/ammo_mod88_mag_box_ap
 	name = "Magazine box (88 Mod 4 AP, 16x mags)"
 	contains = list(
-					/obj/item/ammo_box/magazine/mod88
-					)
+		/obj/item/ammo_box/magazine/mod88,
+	)
 	cost = 20
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "\improper 88 Mod 4 AP magazines crate"
@@ -245,8 +245,8 @@
 /datum/supply_packs/ammo_vp78_mag_box
 	name = "Magazine box (VP78, 16x mags)"
 	contains = list(
-					/obj/item/ammo_box/magazine/vp78
-					)
+		/obj/item/ammo_box/magazine/vp78,
+	)
 	cost = 40
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "\improper VP78 magazines crate"
@@ -255,8 +255,8 @@
 /datum/supply_packs/ammo_su6_mag_box
 	name = "Magazine box (SU-6, 16x mags)"
 	contains = list(
-					/obj/item/ammo_box/magazine/su6
-					)
+		/obj/item/ammo_box/magazine/su6,
+	)
 	cost = 40
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "\improper SU-6 magazines crate"
@@ -264,9 +264,9 @@
 
 /datum/supply_packs/ammo_hpr
 	contains = list(
-					/obj/item/ammo_magazine/rifle/lmg,
-					/obj/item/ammo_magazine/rifle/lmg
-					)
+		/obj/item/ammo_magazine/rifle/lmg,
+		/obj/item/ammo_magazine/rifle/lmg,
+	)
 	name = "M41AE2 HPR Magazines crate (HPR ammo box x2)"
 	cost = 20
 	containertype = /obj/structure/closet/crate
@@ -275,9 +275,9 @@
 
 /datum/supply_packs/ammo_hpr_holo
 	contains = list(
-					/obj/item/ammo_magazine/rifle/lmg/holo_target,
-					/obj/item/ammo_magazine/rifle/lmg/holo_target
-					)
+		/obj/item/ammo_magazine/rifle/lmg/holo_target,
+		/obj/item/ammo_magazine/rifle/lmg/holo_target,
+	)
 	name = "M41AE2 HPR Holo-Target Magazines crate (HPR HT ammo box x2)"
 	cost = 30
 	containertype = /obj/structure/closet/crate
@@ -289,9 +289,9 @@
 /datum/supply_packs/ammo_smartgun_powerpack
 	name = "M56 smartgun powerpack crate (x2)"
 	contains = list(
-					/obj/item/smartgun_powerpack,
-					/obj/item/smartgun_powerpack
-					)
+		/obj/item/smartgun_powerpack,
+		/obj/item/smartgun_powerpack,
+	)
 	cost = 40
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "\improper smartgun powerpacks crate"
@@ -300,9 +300,9 @@
 /datum/supply_packs/ammo_smartgun
 	name = "M56 smartgun drum crate (x2)"
 	contains = list(
-					/obj/item/ammo_magazine/smartgun,
-					/obj/item/ammo_magazine/smartgun
-					)
+		/obj/item/ammo_magazine/smartgun,
+		/obj/item/ammo_magazine/smartgun,
+	)
 	cost = 30
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "\improper smartgun drums crate"
@@ -313,9 +313,9 @@
 /datum/supply_packs/ammo_sentry
 	name = "UA 571-C sentry ammunition (x2)"
 	contains = list(
-					/obj/item/ammo_magazine/sentry,
-					/obj/item/ammo_magazine/sentry
-					)
+		/obj/item/ammo_magazine/sentry,
+		/obj/item/ammo_magazine/sentry,
+	)
 	cost = 40
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "\improper sentry ammo crate"
@@ -324,9 +324,9 @@
 /datum/supply_packs/ammo_sentry_flamer
 	name = "UA 42-F sentry flamer ammunition (x2)"
 	contains = list(
-					/obj/item/ammo_magazine/sentry_flamer,
-					/obj/item/ammo_magazine/sentry_flamer
-					)
+		/obj/item/ammo_magazine/sentry_flamer,
+		/obj/item/ammo_magazine/sentry_flamer,
+	)
 	cost = 40
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "\improper sentry flamer ammo crate"
@@ -335,9 +335,9 @@
 /datum/supply_packs/ammo_sentry_shotgun
 	name = "UA 12-G sentry shotgun ammunition (x2)"
 	contains = list(
-					/obj/item/ammo_magazine/sentry/shotgun,
-					/obj/item/ammo_magazine/sentry/shotgun
-					)
+		/obj/item/ammo_magazine/sentry/shotgun,
+		/obj/item/ammo_magazine/sentry/shotgun,
+	)
 	cost = 40
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "\improper sentry shotgun ammo crate"
@@ -348,11 +348,11 @@
 /datum/supply_packs/ammo_napalm
 	name = "M240 UT-Napthal Fuel (x4)"
 	contains = list(
-					/obj/item/ammo_magazine/flamer_tank,
-					/obj/item/ammo_magazine/flamer_tank,
-					/obj/item/ammo_magazine/flamer_tank,
-					/obj/item/ammo_magazine/flamer_tank
-					)
+		/obj/item/ammo_magazine/flamer_tank,
+		/obj/item/ammo_magazine/flamer_tank,
+		/obj/item/ammo_magazine/flamer_tank,
+		/obj/item/ammo_magazine/flamer_tank,
+	)
 	cost = 40
 	containertype = /obj/structure/closet/crate/ammo/alt/flame
 	containername = "\improper napthal fuel crate"
@@ -361,11 +361,11 @@
 /datum/supply_packs/ammo_napalm_gel
 	name = "M240 Napalm B-Gel (x4)"
 	contains = list(
-					/obj/item/ammo_magazine/flamer_tank/gellied,
-					/obj/item/ammo_magazine/flamer_tank/gellied,
-					/obj/item/ammo_magazine/flamer_tank/gellied,
-					/obj/item/ammo_magazine/flamer_tank/gellied
-					)
+		/obj/item/ammo_magazine/flamer_tank/gellied,
+		/obj/item/ammo_magazine/flamer_tank/gellied,
+		/obj/item/ammo_magazine/flamer_tank/gellied,
+		/obj/item/ammo_magazine/flamer_tank/gellied,
+	)
 	cost = 40
 	containertype = /obj/structure/closet/crate/ammo/alt/flame
 	containername = "\improper napalm gel crate"
@@ -373,10 +373,12 @@
 
 /datum/supply_packs/ammo_flamer_mixed
 	name = "M240 Fuel Crate (x2 normal, x2 b-gel)"
-	contains = list(/obj/item/ammo_magazine/flamer_tank,
-					/obj/item/ammo_magazine/flamer_tank,
-					/obj/item/ammo_magazine/flamer_tank/gellied,
-					/obj/item/ammo_magazine/flamer_tank/gellied)
+	contains = list(
+		/obj/item/ammo_magazine/flamer_tank,
+		/obj/item/ammo_magazine/flamer_tank,
+		/obj/item/ammo_magazine/flamer_tank/gellied,
+		/obj/item/ammo_magazine/flamer_tank/gellied,
+	)
 	cost = 40
 	containertype = /obj/structure/closet/crate/ammo/alt/flame
 	group = "Ammo"
@@ -386,40 +388,40 @@
 	name = "Surplus ammo crate (various USCM magazines x10)"
 	randomised_num_contained = 10
 	contains = list(
-					/obj/item/ammo_magazine/rifle,
-					/obj/item/ammo_magazine/rifle,
-					/obj/item/ammo_magazine/rifle,
-					/obj/item/ammo_magazine/rifle/extended,
-					/obj/item/ammo_magazine/rifle/ap,
-					/obj/item/ammo_magazine/rifle/incendiary,
-					/obj/item/ammo_magazine/rifle/l42a/incendiary,
-					/obj/item/ammo_magazine/rifle/m41aMK1,
-					/obj/item/ammo_magazine/rifle/m41aMK1/ap,
-					/obj/item/ammo_magazine/rifle/m4ra,
-					/obj/item/ammo_magazine/rifle/lmg,
-					/obj/item/ammo_magazine/pistol,
-					/obj/item/ammo_magazine/pistol,
-					/obj/item/ammo_magazine/pistol,
-					/obj/item/ammo_magazine/pistol/incendiary,
-					/obj/item/ammo_magazine/smg/m39,
-					/obj/item/ammo_magazine/smg/m39,
-					/obj/item/ammo_magazine/smg/m39,
-					/obj/item/ammo_magazine/smg/m39/extended,
-					/obj/item/ammo_magazine/smg/m39/ap,
-					/obj/item/ammo_magazine/smg/m39/ap,
-					/obj/item/ammo_magazine/revolver,
-					/obj/item/ammo_magazine/revolver,
-					/obj/item/ammo_magazine/revolver,
-					/obj/item/ammo_magazine/revolver/marksman,
-					/obj/item/ammo_magazine/revolver/heavy,
-					/obj/item/ammo_magazine/shotgun,
-					/obj/item/ammo_magazine/shotgun,
-					/obj/item/ammo_magazine/shotgun/buckshot,
-					/obj/item/ammo_magazine/shotgun/buckshot,
-					/obj/item/ammo_magazine/shotgun/incendiary,
-					/obj/item/ammo_magazine/rifle/l42a/ap,
-					/obj/item/ammo_magazine/rifle/l42a
-					)
+		/obj/item/ammo_magazine/rifle,
+		/obj/item/ammo_magazine/rifle,
+		/obj/item/ammo_magazine/rifle,
+		/obj/item/ammo_magazine/rifle/extended,
+		/obj/item/ammo_magazine/rifle/ap,
+		/obj/item/ammo_magazine/rifle/incendiary,
+		/obj/item/ammo_magazine/rifle/l42a/incendiary,
+		/obj/item/ammo_magazine/rifle/m41aMK1,
+		/obj/item/ammo_magazine/rifle/m41aMK1/ap,
+		/obj/item/ammo_magazine/rifle/m4ra,
+		/obj/item/ammo_magazine/rifle/lmg,
+		/obj/item/ammo_magazine/pistol,
+		/obj/item/ammo_magazine/pistol,
+		/obj/item/ammo_magazine/pistol,
+		/obj/item/ammo_magazine/pistol/incendiary,
+		/obj/item/ammo_magazine/smg/m39,
+		/obj/item/ammo_magazine/smg/m39,
+		/obj/item/ammo_magazine/smg/m39,
+		/obj/item/ammo_magazine/smg/m39/extended,
+		/obj/item/ammo_magazine/smg/m39/ap,
+		/obj/item/ammo_magazine/smg/m39/ap,
+		/obj/item/ammo_magazine/revolver,
+		/obj/item/ammo_magazine/revolver,
+		/obj/item/ammo_magazine/revolver,
+		/obj/item/ammo_magazine/revolver/marksman,
+		/obj/item/ammo_magazine/revolver/heavy,
+		/obj/item/ammo_magazine/shotgun,
+		/obj/item/ammo_magazine/shotgun,
+		/obj/item/ammo_magazine/shotgun/buckshot,
+		/obj/item/ammo_magazine/shotgun/buckshot,
+		/obj/item/ammo_magazine/shotgun/incendiary,
+		/obj/item/ammo_magazine/rifle/l42a/ap,
+		/obj/item/ammo_magazine/rifle/l42a,
+	)
 	cost = 60
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "\improper surplus ammo crate"

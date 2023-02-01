@@ -22,6 +22,7 @@ They're all essentially identical when it comes to getting the job done.
 	var/caliber = null // This is used for matching handfuls to each other or whatever the mag is. Examples are" "12g" ".44" ".357" etc.
 	var/current_rounds = -1 //Set this to something else for it not to start with different initial counts.
 	var/max_rounds = 7 //How many rounds can it hold?
+	var/max_inherent_rounds = 0 //How many extra rounds the magazine has thats not in use? Used for Sentry Post, specifically for inherent reloading
 	var/gun_type = null //Path of the gun that it fits. Mags will fit any of the parent guns as well, so make sure you want this.
 	var/reload_delay = 1 //Set a timer for reloading mags. Higher is slower.
 	var/flags_magazine = AMMUNITION_REFILLABLE //flags specifically for magazines.
@@ -126,6 +127,18 @@ They're all essentially identical when it comes to getting the job done.
 	update_icon(S)
 	return S // We return the number transferred if it was successful.
 
+/// Proc to reload the current_ammo using the items existing inherent ammo, used for Sentry Post
+/obj/item/ammo_magazine/proc/inherent_reload(mob/user)
+	if(current_rounds == max_rounds) //Does the mag actually need reloading?
+		to_chat(user, SPAN_WARNING("[src] is already full."))
+		return 0
+
+	var/rounds_to_reload = max_rounds - current_rounds
+	current_rounds += rounds_to_reload
+	max_inherent_rounds -= rounds_to_reload
+
+	return rounds_to_reload // Returns the amount of ammo it reloaded
+
 //This will attempt to place the ammo in the user's hand if possible.
 /obj/item/ammo_magazine/proc/create_handful(mob/user, transfer_amount, obj_name = src)
 	var/amount_to_transfer
@@ -159,7 +172,7 @@ They're all essentially identical when it comes to getting the job done.
 		var/severity = round(current_rounds / 50)
 		//the more ammo inside, the faster and harder it cooks off
 		if(severity > 0)
-			addtimer(CALLBACK(GLOBAL_PROC, PROC_REF(explosion), loc, -1, ((severity > 4) ? 0 : -1), Clamp(severity, 0, 1), Clamp(severity, 0, 2), 1, 0, 0, flame_cause_data), max(5 - severity, 2))
+			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(explosion), loc, -1, ((severity > 4) ? 0 : -1), Clamp(severity, 0, 1), Clamp(severity, 0, 2), 1, 0, 0, flame_cause_data), max(5 - severity, 2))
 
 	if(!QDELETED(src))
 		qdel(src)

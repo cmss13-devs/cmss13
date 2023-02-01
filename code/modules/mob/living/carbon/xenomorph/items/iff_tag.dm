@@ -63,7 +63,7 @@
 	storage_slots = 8
 	can_hold = list(
 		/obj/item/iff_tag,
-		/obj/item/device/multitool
+		/obj/item/device/multitool,
 	)
 	black_market_value = 25
 

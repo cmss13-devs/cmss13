@@ -181,7 +181,8 @@ can cause issues with ammo types getting mixed up during the burst.
 	fire_sound = 'sound/weapons/gun_shotgun_automatic.ogg'
 	current_mag = /obj/item/ammo_magazine/internal/shotgun/merc
 	attachable_allowed = list(
-						/obj/item/attachable/compensator)
+		/obj/item/attachable/compensator,
+	)
 
 	flags_gun_features = GUN_CAN_POINTBLANK|GUN_INTERNAL_MAG
 
@@ -244,16 +245,17 @@ can cause issues with ammo types getting mixed up during the burst.
 	firesound_volume = 20
 	current_mag = /obj/item/ammo_magazine/internal/shotgun
 	attachable_allowed = list(
-						/obj/item/attachable/bayonet,
-						/obj/item/attachable/bayonet/upp,
-						/obj/item/attachable/bayonet/c02,
-						/obj/item/attachable/reddot,
-						/obj/item/attachable/reflex,
-						/obj/item/attachable/flashlight,
-						/obj/item/attachable/extended_barrel,
-						/obj/item/attachable/compensator,
-						/obj/item/attachable/magnetic_harness,
-						/obj/item/attachable/stock/tactical)
+		/obj/item/attachable/bayonet,
+		/obj/item/attachable/bayonet/upp,
+		/obj/item/attachable/bayonet/c02,
+		/obj/item/attachable/reddot,
+		/obj/item/attachable/reflex,
+		/obj/item/attachable/flashlight,
+		/obj/item/attachable/extended_barrel,
+		/obj/item/attachable/compensator,
+		/obj/item/attachable/magnetic_harness,
+		/obj/item/attachable/stock/tactical,
+	)
 
 /obj/item/weapon/gun/shotgun/combat/Initialize(mapload, spawn_empty)
 	. = ..()
@@ -364,24 +366,20 @@ can cause issues with ammo types getting mixed up during the burst.
 	fire_sound = 'sound/weapons/gun_type23.ogg' //not perfect, too small
 	current_mag = /obj/item/ammo_magazine/internal/shotgun/type23
 	attachable_allowed = list(
-						//Rail
-						/obj/item/attachable/reddot,
-						/obj/item/attachable/reflex,
-						/obj/item/attachable/flashlight,
-						/obj/item/attachable/magnetic_harness,
-						//Muzzle
-						/obj/item/attachable/bayonet,
-						/obj/item/attachable/heavy_barrel,
-						/obj/item/attachable/bayonet/upp,
-						//Underbarrel
-						/obj/item/attachable/verticalgrip,
-						/obj/item/attachable/flashlight/grip,
-						/obj/item/attachable/attached_gun/flamer,
-						/obj/item/attachable/attached_gun/extinguisher,
-						/obj/item/attachable/burstfire_assembly, //what could possibly go wrong?
-						//Stock
-						/obj/item/attachable/stock/type23
-						)
+		/obj/item/attachable/reddot, // Rail
+		/obj/item/attachable/reflex,
+		/obj/item/attachable/flashlight,
+		/obj/item/attachable/magnetic_harness,
+		/obj/item/attachable/bayonet, // Muzzle
+		/obj/item/attachable/heavy_barrel,
+		/obj/item/attachable/bayonet/upp,
+		/obj/item/attachable/verticalgrip, // Underbarrel
+		/obj/item/attachable/flashlight/grip,
+		/obj/item/attachable/attached_gun/flamer,
+		/obj/item/attachable/attached_gun/extinguisher,
+		/obj/item/attachable/burstfire_assembly,
+		/obj/item/attachable/stock/type23 // Stock
+		)
 	flags_gun_features = GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER|GUN_INTERNAL_MAG
 	flags_equip_slot = SLOT_BACK
 	map_specific_decoration = FALSE
@@ -406,17 +404,17 @@ can cause issues with ammo types getting mixed up during the burst.
 	random_spawn_chance = 100
 	random_rail_chance = 100
 	random_spawn_rail = list(
-							/obj/item/attachable/magnetic_harness,
-							/obj/item/attachable/flashlight
-							)
+		/obj/item/attachable/magnetic_harness,
+		/obj/item/attachable/flashlight,
+	)
 	random_muzzle_chance = 100
 	random_spawn_muzzle = list(
-							/obj/item/attachable/bayonet/upp,
-							)
+		/obj/item/attachable/bayonet/upp,
+	)
 	random_under_chance = 40
 	random_spawn_under = list(
-							/obj/item/attachable/verticalgrip,
-							)
+		/obj/item/attachable/verticalgrip,
+	)
 
 /obj/item/weapon/gun/shotgun/type23/breacher/slug
 	current_mag = /obj/item/ammo_magazine/internal/shotgun/type23/slug
@@ -428,35 +426,35 @@ can cause issues with ammo types getting mixed up during the burst.
 	random_spawn_chance = 100
 	random_rail_chance = 100
 	random_spawn_rail = list(
-							/obj/item/attachable/magnetic_harness,
-							)
+		/obj/item/attachable/magnetic_harness,
+	)
 	random_muzzle_chance = 80
 	random_spawn_muzzle = list(
-							/obj/item/attachable/bayonet/upp,
-							/obj/item/attachable/heavy_barrel
-							)
+		/obj/item/attachable/bayonet/upp,
+		/obj/item/attachable/heavy_barrel,
+	)
 	random_under_chance = 100
 	random_spawn_under = list(
-							/obj/item/attachable/flashlight/grip,
-							/obj/item/attachable/verticalgrip,
-							)
+		/obj/item/attachable/flashlight/grip,
+		/obj/item/attachable/verticalgrip,
+	)
 
 /obj/item/weapon/gun/shotgun/type23/dragon
 	current_mag = /obj/item/ammo_magazine/internal/shotgun/type23/dragonsbreath
 	random_spawn_chance = 100
 	random_rail_chance = 100
 	random_spawn_rail = list(
-							/obj/item/attachable/magnetic_harness,
-							)
+		/obj/item/attachable/magnetic_harness,
+	)
 	random_muzzle_chance = 70
 	random_spawn_muzzle = list(
-							/obj/item/attachable/bayonet/upp,
-							/obj/item/attachable/heavy_barrel
-							)
+		/obj/item/attachable/bayonet/upp,
+		/obj/item/attachable/heavy_barrel,
+	)
 	random_under_chance = 100
 	random_spawn_under = list(
-							/obj/item/attachable/attached_gun/extinguisher,
-							)
+		/obj/item/attachable/attached_gun/extinguisher,
+	)
 
 /obj/item/weapon/gun/shotgun/type23/riot_control
 	name = "\improper Type 23-R riot control shotgun"
@@ -502,14 +500,15 @@ can cause issues with ammo types getting mixed up during the burst.
 	seal_sound = 'sound/weapons/handling/gun_mou_close.ogg'//replace w/ uniques
 	cocked_sound = null //We don't want this.
 	attachable_allowed = list(
-						/obj/item/attachable/bayonet,
-						/obj/item/attachable/bayonet/upp,
-						/obj/item/attachable/reddot,
-						/obj/item/attachable/reflex,
-						/obj/item/attachable/gyro,
-						/obj/item/attachable/flashlight,
-						/obj/item/attachable/magnetic_harness,
-						/obj/item/attachable/stock/double)
+		/obj/item/attachable/bayonet,
+		/obj/item/attachable/bayonet/upp,
+		/obj/item/attachable/reddot,
+		/obj/item/attachable/reflex,
+		/obj/item/attachable/gyro,
+		/obj/item/attachable/flashlight,
+		/obj/item/attachable/magnetic_harness,
+		/obj/item/attachable/stock/double,
+	)
 
 	flags_gun_features = GUN_CAN_POINTBLANK|GUN_INTERNAL_MAG
 	burst_delay = 0 //So doubleshotty can doubleshot
@@ -680,20 +679,21 @@ can cause issues with ammo types getting mixed up during the burst.
 	additional_fire_group_delay = 1.5 SECONDS
 	current_mag = /obj/item/ammo_magazine/internal/shotgun/double/mou53 //Take care, she comes loaded!
 	attachable_allowed = list(
-						/obj/item/attachable/bayonet,
-						/obj/item/attachable/bayonet/upp,
-						/obj/item/attachable/bayonet/c02,
-						/obj/item/attachable/reddot,
-						/obj/item/attachable/reflex,
-						/obj/item/attachable/magnetic_harness,
-						/obj/item/attachable/scope/mini,
-						/obj/item/attachable/flashlight,
-						/obj/item/attachable/verticalgrip,
-						/obj/item/attachable/angledgrip,
-						/obj/item/attachable/flashlight/grip,
-						/obj/item/attachable/gyro,
-						/obj/item/attachable/lasersight,
-						/obj/item/attachable/stock/mou53)
+		/obj/item/attachable/bayonet,
+		/obj/item/attachable/bayonet/upp,
+		/obj/item/attachable/bayonet/c02,
+		/obj/item/attachable/reddot,
+		/obj/item/attachable/reflex,
+		/obj/item/attachable/magnetic_harness,
+		/obj/item/attachable/scope/mini,
+		/obj/item/attachable/flashlight,
+		/obj/item/attachable/verticalgrip,
+		/obj/item/attachable/angledgrip,
+		/obj/item/attachable/flashlight/grip,
+		/obj/item/attachable/gyro,
+		/obj/item/attachable/lasersight,
+		/obj/item/attachable/stock/mou53,
+	)
 	map_specific_decoration = TRUE
 
 /obj/item/weapon/gun/shotgun/double/mou53/set_gun_attachment_offsets()
@@ -988,24 +988,25 @@ can cause issues with ammo types getting mixed up during the burst.
 	var/pumped = FALSE //Used to see if the shotgun has already been pumped.
 	var/message //To not spam the above.
 	attachable_allowed = list(
-						/obj/item/attachable/bayonet,
-						/obj/item/attachable/bayonet/upp,
-						/obj/item/attachable/bayonet/c02,
-						/obj/item/attachable/reddot,
-						/obj/item/attachable/reflex,
-						/obj/item/attachable/verticalgrip,
-						/obj/item/attachable/angledgrip,
-						/obj/item/attachable/flashlight/grip,
-						/obj/item/attachable/gyro,
-						/obj/item/attachable/flashlight,
-						/obj/item/attachable/flashlight/grip,
-						/obj/item/attachable/extended_barrel,
-						/obj/item/attachable/heavy_barrel,
-						/obj/item/attachable/compensator,
-						/obj/item/attachable/magnetic_harness,
-						/obj/item/attachable/attached_gun/extinguisher,
-						/obj/item/attachable/attached_gun/flamer,
-						/obj/item/attachable/stock/shotgun)
+		/obj/item/attachable/bayonet,
+		/obj/item/attachable/bayonet/upp,
+		/obj/item/attachable/bayonet/c02,
+		/obj/item/attachable/reddot,
+		/obj/item/attachable/reflex,
+		/obj/item/attachable/verticalgrip,
+		/obj/item/attachable/angledgrip,
+		/obj/item/attachable/flashlight/grip,
+		/obj/item/attachable/gyro,
+		/obj/item/attachable/flashlight,
+		/obj/item/attachable/flashlight/grip,
+		/obj/item/attachable/extended_barrel,
+		/obj/item/attachable/heavy_barrel,
+		/obj/item/attachable/compensator,
+		/obj/item/attachable/magnetic_harness,
+		/obj/item/attachable/attached_gun/extinguisher,
+		/obj/item/attachable/attached_gun/flamer,
+		/obj/item/attachable/stock/shotgun,
+	)
 	map_specific_decoration = TRUE
 
 /obj/item/weapon/gun/shotgun/pump/Initialize(mapload, spawn_empty)
@@ -1144,14 +1145,15 @@ can cause issues with ammo types getting mixed up during the burst.
 	fire_sound = 'sound/weapons/gun_shotgun_small.ogg'
 	current_mag = /obj/item/ammo_magazine/internal/shotgun/cmb
 	attachable_allowed = list(
-						/obj/item/attachable/reddot,
-						/obj/item/attachable/reflex,
-						/obj/item/attachable/gyro,
-						/obj/item/attachable/flashlight,
-						/obj/item/attachable/compensator,
-						/obj/item/attachable/magnetic_harness,
-						/obj/item/attachable/attached_gun/extinguisher,
-						/obj/item/attachable/attached_gun/flamer)
+		/obj/item/attachable/reddot,
+		/obj/item/attachable/reflex,
+		/obj/item/attachable/gyro,
+		/obj/item/attachable/flashlight,
+		/obj/item/attachable/compensator,
+		/obj/item/attachable/magnetic_harness,
+		/obj/item/attachable/attached_gun/extinguisher,
+		/obj/item/attachable/attached_gun/flamer,
+	)
 	starting_attachment_types = list(/obj/item/attachable/stock/hg3712)
 	map_specific_decoration = FALSE
 

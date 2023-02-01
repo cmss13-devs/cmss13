@@ -2502,7 +2502,7 @@
 /datum/ammo/xeno/toxin/New()
 	..()
 
-	neuro_callback = CALLBACK(GLOBAL_PROC, PROC_REF(apply_neuro))
+	neuro_callback = CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(apply_neuro))
 
 /proc/apply_neuro(mob/M, power, insta_neuro)
 	if(skillcheck(M, SKILL_ENDURANCE, SKILL_ENDURANCE_MAX) && !insta_neuro)
@@ -2592,7 +2592,7 @@
 /datum/ammo/xeno/toxin/shotgun/New()
 	..()
 
-	neuro_callback = CALLBACK(GLOBAL_PROC, PROC_REF(apply_scatter_neuro))
+	neuro_callback = CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(apply_scatter_neuro))
 
 /datum/ammo/xeno/toxin/shotgun/additional
 	name = "additional neurotoxic droplets"
@@ -2840,7 +2840,7 @@
 
 /datum/ammo/xeno/boiler_gas/proc/drop_nade(turf/T, obj/item/projectile/P)
 	var/amount = 4
-	var/lifetime_mult = 1.0
+	var/lifetime_mult = 1
 	if(isboiler(P.firer))
 		smoke_system.cause_data = P.weapon_cause_data
 	smoke_system.set_up(amount, 0, T)

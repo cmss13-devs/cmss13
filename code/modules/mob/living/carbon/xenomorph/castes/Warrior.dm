@@ -38,7 +38,7 @@
 	pixel_x = -16
 	old_x = -16
 	tier = 2
-	pull_speed = 2.0 // about what it was before, slightly faster
+	pull_speed = 2 // about what it was before, slightly faster
 
 	base_actions = list(
 		/datum/action/xeno_action/onclick/xeno_resting,

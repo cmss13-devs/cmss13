@@ -574,7 +574,7 @@
 	current_mag = /obj/item/ammo_magazine/rifle/rubber;
 	name = "battered M41A pulse rifle MK2";
 	pixel_x = 4;
-	desc = "A Weyland-Yutani creation, this M41A MK2 comes equipped in corporate white. Uses 10x24mm caseless ammunition. It seems to be pretty battered and broken up.."
+	desc = "A Weyland-Yutani creation, this M41A MK2 comes equipped in corporate white. Uses 10x24mm caseless ammunition. It seems to be pretty battered and broken up."
 	},
 /turf/open/floor{
 	tag = "icon-carpet15-15 (WEST)";

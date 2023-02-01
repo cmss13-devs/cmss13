@@ -76,8 +76,8 @@
 	name = "surgeon robot module"
 	stacktypes = list(
 		/obj/item/stack/medical/advanced/bruise_pack = 5,
-		/obj/item/stack/nanopaste = 5
-		)
+		/obj/item/stack/nanopaste = 5,
+	)
 
 /obj/item/circuitboard/robot_module/surgeon/Initialize()
 	. = ..()
@@ -117,8 +117,8 @@
 	stacktypes = list(
 		/obj/item/stack/medical/ointment = 15,
 		/obj/item/stack/medical/advanced/bruise_pack = 15,
-		/obj/item/stack/medical/splint = 15
-		)
+		/obj/item/stack/medical/splint = 15,
+	)
 
 /obj/item/circuitboard/robot_module/medic/Initialize()
 	. = ..()
@@ -172,8 +172,8 @@
 		/obj/item/stack/sheet/glass/reinforced = 50,
 		/obj/item/stack/cable_coil = 50,
 		/obj/item/stack/rods = 50,
-		/obj/item/stack/tile/plasteel = 20
-		)
+		/obj/item/stack/tile/plasteel = 20,
+	)
 
 /obj/item/circuitboard/robot_module/engineering/Initialize()
 	. = ..()
@@ -321,8 +321,8 @@
 		/obj/item/stack/tile/plasteel = 15,
 		/obj/item/stack/sheet/metal = 20,
 		/obj/item/stack/sheet/glass = 20,
-		/obj/item/stack/cable_coil = 30
-		)
+		/obj/item/stack/cable_coil = 30,
+	)
 
 /obj/item/circuitboard/robot_module/drone/Initialize()
 	. = ..()

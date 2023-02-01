@@ -67,7 +67,7 @@ GLOBAL_LIST_INIT(iron_recipes, list ( \
 ))
 
 /obj/item/stack/sheet/mineral
-	force = 5.0
+	force = 5
 	throwforce = 5
 	w_class = SIZE_MEDIUM
 	throw_speed = SPEED_VERY_FAST

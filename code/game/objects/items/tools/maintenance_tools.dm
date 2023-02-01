@@ -23,8 +23,8 @@
 	drop_sound = 'sound/handling/wrench_drop.ogg'
 	flags_atom = FPRINT|CONDUCT
 	flags_equip_slot = SLOT_WAIST
-	force = 5.0
-	throwforce = 7.0
+	force = 5
+	throwforce = 7
 	w_class = SIZE_SMALL
 	matter = list("metal" = 150)
 	attack_verb = list("bashed", "battered", "bludgeoned", "whacked")
@@ -43,9 +43,9 @@
 	drop_sound = 'sound/handling/screwdriver_drop.ogg'
 	flags_atom = FPRINT|CONDUCT
 	flags_equip_slot = SLOT_WAIST | SLOT_EAR | SLOT_FACE
-	force = 5.0
+	force = 5
 	w_class = SIZE_TINY
-	throwforce = 5.0
+	throwforce = 5
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 5
 	matter = list("metal" = 75)
@@ -124,7 +124,7 @@
 	drop_sound = 'sound/handling/wirecutter_drop.ogg'
 	flags_atom = FPRINT|CONDUCT
 	flags_equip_slot = SLOT_WAIST
-	force = 6.0
+	force = 6
 	throw_speed = SPEED_FAST
 	throw_range = 9
 	w_class = SIZE_SMALL
@@ -164,8 +164,8 @@
 	flags_equip_slot = SLOT_WAIST
 
 	//Amount of OUCH when it's thrown
-	force = 3.0
-	throwforce = 5.0
+	force = 3
+	throwforce = 5
 	throw_speed = SPEED_FAST
 	throw_range = 5
 	w_class = SIZE_SMALL
@@ -468,8 +468,8 @@
 	drop_sound = 'sound/handling/crowbar_drop.ogg'
 	flags_atom = FPRINT|CONDUCT
 	flags_equip_slot = SLOT_WAIST
-	force = 5.0
-	throwforce = 7.0
+	force = 5
+	throwforce = 7
 	item_state = "crowbar"
 	w_class = SIZE_SMALL
 	matter = list("metal" = 50)

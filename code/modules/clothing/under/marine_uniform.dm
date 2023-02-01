@@ -348,7 +348,7 @@
 	suit_restricted = list(
 		/obj/item/clothing/suit/storage/marine/MP,
 		/obj/item/clothing/suit/armor/riot/marine,
-		/obj/item/clothing/suit/storage/jacket/marine/provost
+		/obj/item/clothing/suit/storage/jacket/marine/provost,
 	)
 
 	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
@@ -464,9 +464,11 @@
 	worn_state = "pmc_jumpsuit"
 	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
 	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
-	suit_restricted = list(/obj/item/clothing/suit/storage/marine/veteran/pmc,
-							/obj/item/clothing/suit/storage/marine/smartgunner/veteran/pmc,
-							/obj/item/clothing/suit/armor/vest/security)//For survivors.
+	suit_restricted = list(
+		/obj/item/clothing/suit/storage/marine/veteran/pmc,
+		/obj/item/clothing/suit/storage/marine/smartgunner/veteran/pmc,
+		/obj/item/clothing/suit/armor/vest/security,
+	)
 
 /obj/item/clothing/under/marine/veteran/pmc/leader
 	name = "\improper PMC command fatigues"

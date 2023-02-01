@@ -18,11 +18,11 @@
 	var/volume = 25
 	var/design = 1 // What kind of walkman design style to use
 	item_icons = list(
-			WEAR_L_EAR = 'icons/mob/humans/onmob/ears.dmi',
-			WEAR_R_EAR = 'icons/mob/humans/onmob/ears.dmi',
-			WEAR_WAIST = 'icons/mob/humans/onmob/ears.dmi',
-			WEAR_IN_J_STORE = 'icons/mob/humans/onmob/ears.dmi'
-			)
+		WEAR_L_EAR = 'icons/mob/humans/onmob/ears.dmi',
+		WEAR_R_EAR = 'icons/mob/humans/onmob/ears.dmi',
+		WEAR_WAIST = 'icons/mob/humans/onmob/ears.dmi',
+		WEAR_IN_J_STORE = 'icons/mob/humans/onmob/ears.dmi'
+		)
 	black_market_value = 15
 
 /obj/item/device/walkman/Initialize()

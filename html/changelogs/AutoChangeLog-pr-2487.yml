@@ -1,5 +1,0 @@
-author: "HarryOB & TopHatPenguin"
-delete-after: True
-changes:
-  - rscadd: "Expands upon the execution feature allowing users to execute players who are restrained."
-  - code_imp: "Changes M to attacked_mob for QOL readability of code."

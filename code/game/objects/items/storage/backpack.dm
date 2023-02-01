@@ -973,7 +973,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	worn_accessible = TRUE
 	max_w_class = SIZE_MASSIVE
 	can_hold = list(
-		/obj/item/weapon
+		/obj/item/weapon,
 	)
 
 /obj/item/storage/backpack/ivan/Initialize()

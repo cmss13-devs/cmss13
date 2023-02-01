@@ -84,7 +84,7 @@
 				var/mob/living/carbon/human/human = carbon
 				human.update_xeno_hostile_hud()
 
-			addtimer(CALLBACK(GLOBAL_PROC, PROC_REF(unroot_human), carbon), get_xeno_stun_duration(carbon, freeze_duration))
+			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(unroot_human), carbon), get_xeno_stun_duration(carbon, freeze_duration))
 
 
 	for(var/mob/M in view(xeno))

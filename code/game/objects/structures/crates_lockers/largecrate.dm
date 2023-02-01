@@ -161,35 +161,39 @@
 	desc = "A small metal crate. Here, Freeman ammo!"
 	name = "small ammocase"
 	icon_state = "mini_ammo"
-	stuff = list(/obj/item/ammo_magazine/pistol,
-				/obj/item/ammo_magazine/revolver,
-				/obj/item/ammo_magazine/rifle,
-				/obj/item/ammo_magazine/rifle/extended,
-				/obj/item/ammo_magazine/shotgun,
-				/obj/item/ammo_magazine/shotgun/buckshot,
-				/obj/item/ammo_magazine/shotgun/flechette,
-				/obj/item/ammo_magazine/smg/m39,
-				/obj/item/ammo_magazine/smg/m39/extended,)
+	stuff = list(
+		/obj/item/ammo_magazine/pistol,
+		/obj/item/ammo_magazine/revolver,
+		/obj/item/ammo_magazine/rifle,
+		/obj/item/ammo_magazine/rifle/extended,
+		/obj/item/ammo_magazine/shotgun,
+		/obj/item/ammo_magazine/shotgun/buckshot,
+		/obj/item/ammo_magazine/shotgun/flechette,
+		/obj/item/ammo_magazine/smg/m39,
+		/obj/item/ammo_magazine/smg/m39/extended,
+	)
 
 /obj/structure/largecrate/random/mini/med
 	desc = "A small metal crate. Here, Freeman take this medkit!" //https://www.youtube.com/watch?v=OMXan7GS8-Q
 	icon_state = "mini_medcase"
 	name = "small medcase"
 	num_things = 1 //funny lootbox tho.
-	stuff = list(/obj/item/stack/medical/bruise_pack,
-				/obj/item/storage/pill_bottle/packet/tricordrazine,
-				/obj/item/tool/crowbar/red,
-				/obj/item/device/flashlight,
-				/obj/item/reagent_container/hypospray/autoinjector/skillless,
-				/obj/item/storage/pill_bottle/packet/tramadol,
-				/obj/item/stack/medical/ointment,
-				/obj/item/stack/medical/splint,
-				/obj/item/device/healthanalyzer,
-				/obj/item/stack/medical/advanced/ointment,
-				/obj/item/stack/medical/advanced/bruise_pack,
-				/obj/item/tool/extinguisher/mini,
-				/obj/item/tool/shovel/etool,
-				/obj/item/tool/screwdriver)
+	stuff = list(
+		/obj/item/stack/medical/bruise_pack,
+		/obj/item/storage/pill_bottle/packet/tricordrazine,
+		/obj/item/tool/crowbar/red,
+		/obj/item/device/flashlight,
+		/obj/item/reagent_container/hypospray/autoinjector/skillless,
+		/obj/item/storage/pill_bottle/packet/tramadol,
+		/obj/item/stack/medical/ointment,
+		/obj/item/stack/medical/splint,
+		/obj/item/device/healthanalyzer,
+		/obj/item/stack/medical/advanced/ointment,
+		/obj/item/stack/medical/advanced/bruise_pack,
+		/obj/item/tool/extinguisher/mini,
+		/obj/item/tool/shovel/etool,
+		/obj/item/tool/screwdriver,
+	)
 
 /obj/structure/largecrate/random/case
 	name = "storage case"

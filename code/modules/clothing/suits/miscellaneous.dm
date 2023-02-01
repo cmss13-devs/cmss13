@@ -25,7 +25,7 @@
 		/obj/item/tool/crowbar,
 		/obj/item/tool/pen,
 	)
-	siemens_coefficient = 3.0
+	siemens_coefficient = 3
 
 /obj/item/clothing/suit/redtag
 	name = "red laser tag armour"
@@ -44,7 +44,7 @@
 		/obj/item/tool/crowbar,
 		/obj/item/tool/pen,
 	)
-	siemens_coefficient = 3.0
+	siemens_coefficient = 3
 
 /*
  * Costume
@@ -211,7 +211,7 @@
 	item_state = "chickensuit"
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_FEET
 	flags_inv_hide = HIDESHOES|HIDEJUMPSUIT
-	siemens_coefficient = 2.0
+	siemens_coefficient = 2
 
 
 /obj/item/clothing/suit/monkeysuit
@@ -221,7 +221,7 @@
 	item_state = "monkeysuit"
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_FEET|BODY_FLAG_HANDS
 	flags_inv_hide = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT
-	siemens_coefficient = 2.0
+	siemens_coefficient = 2
 
 
 /obj/item/clothing/suit/holidaypriest
@@ -256,7 +256,7 @@
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_FEET|BODY_FLAG_ARMS|BODY_FLAG_HANDS
 	flags_inv_hide = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT|HIDETAIL
 
-/obj/item/clothing/suit/straight_jacket/equipped(var/mob/user, var/slot)
+/obj/item/clothing/suit/straight_jacket/equipped(mob/user, slot)
 	if(slot == WEAR_JACKET && ishuman(user))
 		var/mob/living/carbon/human/H = user
 		H.drop_inv_item_on_ground(H.handcuffed)
@@ -371,7 +371,7 @@
 	item_state = "xenos_helm"
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_FEET|BODY_FLAG_ARMS|BODY_FLAG_HANDS
 	flags_inv_hide = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT
-	siemens_coefficient = 2.0
+	siemens_coefficient = 2
 //swimsuit
 /obj/item/clothing/under/swimsuit
 	siemens_coefficient = 1

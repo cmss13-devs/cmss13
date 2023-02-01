@@ -21,7 +21,7 @@
 	H.h_style = "Bald"
 	H.f_style = "Shaved"
 
-/datum/equipment_preset/pmc/w_y_whiteout/load_name(mob/living/carbon/human/H, var/randomise)
+/datum/equipment_preset/pmc/w_y_whiteout/load_name(mob/living/carbon/human/H, randomise)
 	H.gender = pick(MALE)
 	//var/datum/preferences/A = new()
 	//A.randomize_appearance(mob)
@@ -42,19 +42,19 @@
 	H.equip_to_slot_or_del(new /obj/item/tool/crowbar, WEAR_IN_BACK)
 	//face
 	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/m42_goggles, WEAR_EYES)
-	H.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/PMC/leader, WEAR_FACE)
+	H.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/pmc/leader, WEAR_FACE)
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/commando, WEAR_L_EAR)
 	//head
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/PMC/commando, WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/pmc/commando, WEAR_HEAD)
 	//uniform
-	var/obj/item/clothing/under/marine/veteran/PMC/commando/M = new()
+	var/obj/item/clothing/under/marine/veteran/pmc/commando/M = new()
 	var/obj/item/clothing/accessory/storage/webbing/W = new()
 	M.attach_accessory(H, W)
 	H.equip_to_slot_or_del(M, WEAR_BODY)
 	for(var/i in 1 to W.hold.storage_slots)
-		H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/PMC, WEAR_IN_ACCESSORY)
+		H.equip_to_slot_or_del(new /obj/item/explosive/grenade/high_explosive/pmc, WEAR_IN_ACCESSORY)
 	//jacket
-	var/obj/item/clothing/suit/storage/marine/veteran/PMC/commando/armor = new()
+	var/obj/item/clothing/suit/storage/marine/veteran/pmc/commando/armor = new()
 	H.equip_to_slot_or_del(armor, WEAR_JACKET)
 	for(var/i in 1 to armor.storage_slots)
 		H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/heap, WEAR_IN_JACKET)
@@ -62,8 +62,8 @@
 	//waist
 	H.equip_to_slot_or_del(new /obj/item/weapon/gun/flamer/deathsquad, WEAR_WAIST)
 	//limbs
-	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/PMC/commando, WEAR_HANDS)
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/veteran/PMC/commando/knife, WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/pmc/commando, WEAR_HANDS)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/veteran/pmc/commando/knife, WEAR_FEET)
 	//pockets
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large/rifle_heap, WEAR_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large/rifle_heap, WEAR_L_STORE)
@@ -94,19 +94,19 @@
 	H.equip_to_slot_or_del(new /obj/item/roller, WEAR_IN_BACK)
 	//face
 	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/m42_goggles, WEAR_EYES)
-	H.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/PMC/leader, WEAR_FACE)
+	H.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/pmc/leader, WEAR_FACE)
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/commando, WEAR_L_EAR)
 	//head
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/PMC/commando, WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/pmc/commando, WEAR_HEAD)
 	//uniform
-	var/obj/item/clothing/under/marine/veteran/PMC/commando/M = new()
+	var/obj/item/clothing/under/marine/veteran/pmc/commando/M = new()
 	var/obj/item/clothing/accessory/storage/webbing/W = new()
 	M.attach_accessory(H, W)
 	H.equip_to_slot_or_del(M, WEAR_BODY)
 	for(var/i in 1 to W.hold.storage_slots)
 		H.equip_to_slot_or_del(new /obj/item/stack/nanopaste, WEAR_IN_ACCESSORY)
 	//jacket
-	var/obj/item/clothing/suit/storage/marine/veteran/PMC/commando/armor = new()
+	var/obj/item/clothing/suit/storage/marine/veteran/pmc/commando/armor = new()
 	H.equip_to_slot_or_del(armor, WEAR_JACKET)
 	for(var/i in 1 to armor.storage_slots)
 		H.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/m39/heap, WEAR_IN_JACKET)
@@ -114,8 +114,8 @@
 	//waist
 	H.equip_to_slot_or_del(new /obj/item/weapon/gun/flamer/deathsquad, WEAR_WAIST)
 	//limbs
-	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/PMC/commando, WEAR_HANDS)
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/veteran/PMC/commando/knife, WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/pmc/commando, WEAR_HANDS)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/veteran/pmc/commando/knife, WEAR_FEET)
 	//pockets
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large/smg_heap, WEAR_L_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large/smg_heap, WEAR_R_STORE)
@@ -135,19 +135,19 @@
 	H.equip_to_slot_or_del(new /obj/item/smartgun_powerpack/snow, WEAR_BACK)
 	//face
 	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/m42_goggles, WEAR_EYES)
-	H.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/PMC/leader, WEAR_FACE)
+	H.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/pmc/leader, WEAR_FACE)
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/commando, WEAR_L_EAR)
 	//head
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/PMC/commando, WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/pmc/commando, WEAR_HEAD)
 	//uniform
-	var/obj/item/clothing/under/marine/veteran/PMC/commando/M = new()
+	var/obj/item/clothing/under/marine/veteran/pmc/commando/M = new()
 	var/obj/item/clothing/accessory/storage/webbing/W = new()
 	M.attach_accessory(H, W)
 	H.equip_to_slot_or_del(M, WEAR_BODY)
 	for(var/i in 1 to W.hold.storage_slots)
-		H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/PMC, WEAR_IN_ACCESSORY)
+		H.equip_to_slot_or_del(new /obj/item/explosive/grenade/high_explosive/pmc, WEAR_IN_ACCESSORY)
 	//jacket
-	var/obj/item/clothing/suit/storage/marine/smartgunner/veteran/PMC/terminator/armor = new()
+	var/obj/item/clothing/suit/storage/marine/smartgunner/veteran/pmc/terminator/armor = new()
 	H.equip_to_slot_or_del(armor, WEAR_JACKET)
 	for(var/i in 1 to armor.storage_slots)
 		H.equip_to_slot_or_del(new /obj/item/stack/nanopaste, WEAR_IN_JACKET)
@@ -155,8 +155,8 @@
 	//waist
 	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/smartgunner/pmc/full, WEAR_WAIST)
 	//limbs
-	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/PMC/commando, WEAR_HANDS)
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/veteran/PMC/commando/knife, WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/pmc/commando, WEAR_HANDS)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/veteran/pmc/commando/knife, WEAR_FEET)
 	//pockets
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large/pmc_sg, WEAR_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large/pmc_sg, WEAR_L_STORE)
@@ -180,19 +180,19 @@
 	H.equip_to_slot_or_del(new /obj/item/tool/crowbar, WEAR_IN_BACK)
 	//face
 	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/m42_goggles, WEAR_EYES)
-	H.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/PMC/leader, WEAR_FACE)
+	H.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/pmc/leader, WEAR_FACE)
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/commando, WEAR_L_EAR)
 	//head
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/PMC/commando, WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/pmc/commando, WEAR_HEAD)
 	//uniform
-	var/obj/item/clothing/under/marine/veteran/PMC/commando/M = new()
+	var/obj/item/clothing/under/marine/veteran/pmc/commando/M = new()
 	var/obj/item/clothing/accessory/storage/webbing/W = new()
 	M.attach_accessory(H, W)
 	H.equip_to_slot_or_del(M, WEAR_BODY)
 	for(var/i in 1 to W.hold.storage_slots)
-		H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/PMC, WEAR_IN_ACCESSORY)
+		H.equip_to_slot_or_del(new /obj/item/explosive/grenade/high_explosive/pmc, WEAR_IN_ACCESSORY)
 	//jacket
-	var/obj/item/clothing/suit/storage/marine/veteran/PMC/commando/armor = new()
+	var/obj/item/clothing/suit/storage/marine/veteran/pmc/commando/armor = new()
 	H.equip_to_slot_or_del(armor, WEAR_JACKET)
 	for(var/i in 1 to armor.storage_slots)
 		H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/heap, WEAR_IN_JACKET)
@@ -200,8 +200,8 @@
 	//waist
 	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/mateba/full, WEAR_WAIST)
 	//limbs
-	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/PMC/commando, WEAR_HANDS)
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/veteran/PMC/commando/knife, WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/pmc/commando, WEAR_HANDS)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/veteran/pmc/commando/knife, WEAR_FEET)
 	//pockets
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large/rifle_heap, WEAR_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large/rifle_heap, WEAR_L_STORE)

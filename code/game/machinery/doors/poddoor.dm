@@ -4,7 +4,7 @@
 	desc = "That looks like it doesn't open easily."
 	icon = 'icons/obj/structures/doors/rapid_pdoor.dmi'
 	icon_state = "pdoor"
-	id = 1.0
+	id = 1
 	dir = NORTH
 	unslashable = TRUE
 	health = 0
@@ -46,12 +46,12 @@
 			density = FALSE
 			operating = 0
 
-/obj/structure/machinery/door/poddoor/attack_alien(mob/living/carbon/Xenomorph/X)
+/obj/structure/machinery/door/poddoor/attack_alien(mob/living/carbon/xenomorph/X)
 	if((stat & NOPOWER) && density && !operating && !unacidable)
 		INVOKE_ASYNC(src, PROC_REF(pry_open), X)
 		return XENO_ATTACK_ACTION
 
-/obj/structure/machinery/door/poddoor/proc/pry_open(var/mob/living/carbon/Xenomorph/X, var/time = 4 SECONDS)
+/obj/structure/machinery/door/poddoor/proc/pry_open(mob/living/carbon/xenomorph/X, time = 4 SECONDS)
 	X.visible_message(SPAN_DANGER("[X] begins prying [src] open."),\
 	SPAN_XENONOTICE("You start prying [src] open."), max_distance = 3)
 

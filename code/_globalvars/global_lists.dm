@@ -128,7 +128,7 @@ GLOBAL_LIST_INIT(language_keys, setup_language_keys()) //table of say codes for 
 
 // Origins
 GLOBAL_REFERENCE_LIST_INDEXED(origins, /datum/origin, name)
-GLOBAL_LIST_INIT(player_origins, list(ORIGIN_USCM, ORIGIN_USCM_LUNA, ORIGIN_USCM_OTHER, ORIGIN_USCM_COLONY, ORIGIN_USCM_FOREIGN, ORIGIN_USCM_AW))
+GLOBAL_LIST_INIT(player_origins, USCM_ORIGINS)
 
 //Xeno mutators
 GLOBAL_REFERENCE_LIST_INDEXED_SORTED(xeno_mutator_list, /datum/xeno_mutator, name)
@@ -223,19 +223,19 @@ GLOBAL_LIST_INIT(edgeinfo_corner2, list(
 
 GLOBAL_LIST_INIT(ignored_atoms, typecacheof(list(/mob/dead, /obj/effect/landmark, /obj/docking_port, /obj/effect/particle_effect/sparks)))
 
-/proc/cached_params_decode(var/params_data, var/decode_proc)
+/proc/cached_params_decode(params_data, decode_proc)
 	. = paramslist_cache[params_data]
 	if(!.)
 		. = call(decode_proc)(params_data)
 		paramslist_cache[params_data] = .
 
-/proc/key_number_decode(var/key_number_data)
+/proc/key_number_decode(key_number_data)
 	var/list/L = params2list(key_number_data)
 	for(var/key in L)
 		L[key] = text2num(L[key])
 	return L
 
-/proc/number_list_decode(var/number_list_data)
+/proc/number_list_decode(number_list_data)
 	var/list/L = params2list(number_list_data)
 	for(var/i in 1 to L.len)
 		L[i] = text2num(L[i])

@@ -4099,8 +4099,7 @@
 /obj/item/paper,
 /obj/item/device/whistle,
 /obj/structure/sign/safety/bathunisex{
-	pixel_y = 25;
-	pixel_x = 8
+	pixel_x = -17
 	},
 /turf/open/floor/wood/ship,
 /area/almayer/living/commandbunks)
@@ -25792,9 +25791,9 @@
 /area/almayer/hallways/port_hallway)
 "bJe" = (
 /obj/structure/surface/table/reinforced/black,
-/obj/item/explosive/grenade/HE/training,
-/obj/item/explosive/grenade/HE/training,
-/obj/item/explosive/grenade/HE/training,
+/obj/item/explosive/grenade/high_explosive/training,
+/obj/item/explosive/grenade/high_explosive/training,
+/obj/item/explosive/grenade/high_explosive/training,
 /obj/structure/machinery/door_control{
 	id = "Firing_Range_2";
 	name = "range shutters";
@@ -31347,7 +31346,7 @@
 	pixel_y = 3
 	},
 /obj/item/prop/helmetgarb/flair_io{
-	pixel_x = -7;
+	pixel_x = -10;
 	pixel_y = 6
 	},
 /obj/item/prop/helmetgarb/spacejam_tickets{
@@ -31356,7 +31355,13 @@
 	icon_state = "poster15";
 	name = "Boots!: Issue No.160";
 	pixel_x = -5;
-	pixel_y = -5
+	pixel_y = -7
+	},
+/obj/structure/transmitter/rotary{
+	phone_category = "Almayer";
+	phone_id = "Flight Deck";
+	name = "Flight Deck Telephone";
+	pixel_y = 8
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -45222,9 +45227,9 @@
 /area/almayer/engineering/port_atmos)
 "hcw" = (
 /obj/structure/surface/table/reinforced/black,
-/obj/item/explosive/grenade/HE/training,
-/obj/item/explosive/grenade/HE/training,
-/obj/item/explosive/grenade/HE/training,
+/obj/item/explosive/grenade/high_explosive/training,
+/obj/item/explosive/grenade/high_explosive/training,
+/obj/item/explosive/grenade/high_explosive/training,
 /obj/structure/machinery/door_control{
 	id = "Firing_Range_1";
 	name = "range shutters";
@@ -100628,7 +100633,7 @@ aTc
 aTc
 aTc
 aYt
-baI
+btO
 baI
 baI
 baI

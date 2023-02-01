@@ -1,4 +1,0 @@
-author: "Git-Nivrak"
-delete-after: True
-changes:
-  - qol: "Warrior's punch now aims for the chest instead of not doing anything when the limb targeted is missing."

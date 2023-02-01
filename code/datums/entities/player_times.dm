@@ -18,7 +18,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player_time)
 		"total_minutes" = DB_FIELDTYPE_BIGINT
 	)
 
-/datum/entity_meta/player_time/on_insert(var/datum/entity/player_time/player)
+/datum/entity_meta/player_time/on_insert(datum/entity/player_time/player)
 	player.total_minutes = 0
 
 /datum/entity_link/player_to_time
@@ -118,16 +118,16 @@ BSQL_PROTECT_DATUM(/datum/entity/player_time)
 		LAZYADD(marine_playtimes, list(marine_playtime))
 
 	for(var/datum/view_record/playtime/PT in PTs)
-		var/isXeno = (PT.role_id in RoleAuthority.castes_by_name)
+		var/isxeno = (PT.role_id in RoleAuthority.castes_by_name)
 		var/isOther = (PT.role_id == JOB_OBSERVER) // more maybe eventually
 
 		if(PT.role_id == JOB_XENOMORPH)
 			continue // Snowflake check, will need to be removed in the future
 
-		if(!(PT.role_id in RoleAuthority.roles_by_name) && !isXeno && !isOther)
+		if(!(PT.role_id in RoleAuthority.roles_by_name) && !isxeno && !isOther)
 			continue
 
-		if(isXeno)
+		if(isxeno)
 			LAZYADD(xeno_playtimes, list(PT.get_nanoui_data()))
 		else if(isOther)
 			LAZYADD(other_playtimes, list(PT.get_nanoui_data(TRUE)))

@@ -11,8 +11,8 @@
 	var/list/network = list(CAMERA_NET_MILITARY)
 	var/c_tag = null
 	var/c_tag_order = 999
-	var/status = 1.0
-	anchored = 1.0
+	var/status = 1
+	anchored = TRUE
 	var/panel_open = FALSE // 0 = Closed / 1 = Open
 	var/invuln = null
 	var/bugged = 0
@@ -99,7 +99,7 @@
 		..(severity)
 	return
 
-/obj/structure/machinery/camera/proc/setViewRange(var/num = 7)
+/obj/structure/machinery/camera/proc/setViewRange(num = 7)
 	src.view_range = num
 	GLOB.cameranet.updateVisibility(src, 0)
 
@@ -244,13 +244,13 @@
 
 //Return a working camera that can see a given mob
 //or null if none
-/proc/seen_by_camera(var/mob/M)
+/proc/seen_by_camera(mob/M)
 	for(var/obj/structure/machinery/camera/C in oview(4, M))
 		if(C.can_use()) // check if camera disabled
 			return C
 	return null
 
-/proc/near_range_camera(var/mob/M)
+/proc/near_range_camera(mob/M)
 
 	for(var/obj/structure/machinery/camera/C in range(4, M))
 		if(C.can_use()) // check if camera disabled
@@ -258,7 +258,7 @@
 
 	return null
 
-/obj/structure/machinery/camera/proc/weld(var/obj/item/tool/weldingtool/WT, var/mob/user)
+/obj/structure/machinery/camera/proc/weld(obj/item/tool/weldingtool/WT, mob/user)
 
 	if(user.action_busy)
 		return 0
@@ -310,7 +310,7 @@
 	// users looking directly at this, not via console
 	var/list/mob/viewing_users = list()
 
-/obj/structure/machinery/camera/cas/Initialize(mapload, var/c_tag_name)
+/obj/structure/machinery/camera/cas/Initialize(mapload, c_tag_name)
 	c_tag = c_tag_name
 	return ..()
 
@@ -319,12 +319,12 @@
 		M.reset_view()
 	return ..()
 
-/obj/structure/machinery/camera/cas/proc/view_directly(var/mob/living/carbon/human/user)
+/obj/structure/machinery/camera/cas/proc/view_directly(mob/living/carbon/human/user)
 	viewing_users += user
 	user.client?.eye = get_turf(src)
 	user.client?.perspective = EYE_PERSPECTIVE
 
-/obj/structure/machinery/camera/cas/proc/remove_from_view(var/mob/living/carbon/human/user)
+/obj/structure/machinery/camera/cas/proc/remove_from_view(mob/living/carbon/human/user)
 	viewing_users -= user
 
 /obj/structure/machinery/camera/cas/isXRay()

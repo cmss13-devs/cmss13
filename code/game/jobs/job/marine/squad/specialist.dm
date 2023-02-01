@@ -8,10 +8,10 @@
 	gear_preset = /datum/equipment_preset/uscm/spec
 	entry_message_body = "<a href='"+URL_WIKI_SPEC_GUIDE+"'>You are the very rare and valuable weapon expert</a>, trained to use special equipment. You can serve a variety of roles, so choose carefully."
 
-/datum/job/marine/specialist/set_spawn_positions(var/count)
+/datum/job/marine/specialist/set_spawn_positions(count)
 	spawn_positions = spec_slot_formula(count)
 
-/datum/job/marine/specialist/get_total_positions(var/latejoin = 0)
+/datum/job/marine/specialist/get_total_positions(latejoin = 0)
 	var/positions = spawn_positions
 	if(latejoin)
 		positions = spec_slot_formula(get_total_marines())

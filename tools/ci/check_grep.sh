@@ -86,11 +86,11 @@ while read f; do
 	fi;
 done < <(find . -type f -name '*.dm')
 echo "Checking for common mistakes"
-#if grep -P '^/[\w/]\S+\(.*(var/|, ?var/.*).*\)' code/**/*.dm; then
-#	echo
-#	echo -e "${RED}ERROR: changed files contains proc argument starting with 'var'.${NC}"
-#	st=1
-#fi;
+if grep -P '^/[\w/]\S+\(.*(var/|, ?var/.*).*\)' code/**/*.dm; then
+	echo
+	echo -e "${RED}ERROR: changed files contains proc argument starting with 'var'.${NC}"
+	st=1
+fi;
 #if ls maps/*.json | grep -P "[A-Z]"; then
 #	echo
 #	echo -e "${RED}ERROR: Uppercase in a map json detected, these must be all lowercase.${NC}"

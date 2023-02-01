@@ -40,9 +40,9 @@
 	user.set_interaction(src)
 	ui_interact(user)
 
-/obj/structure/machinery/computer/dropship_weapons/attackby(var/obj/item/W, mob/user as mob)
-	if(istype(W, /obj/item/frame/matrix))
-		var/obj/item/frame/matrix/MATRIX = W
+/obj/structure/machinery/computer/dropship_weapons/attackby(obj/item/W, mob/user as mob)
+	if(istype(W, /obj/item/frame/matrix_frame))
+		var/obj/item/frame/matrix_frame/MATRIX = W
 		if(MATRIX.state == ASSEMBLY_LOCKED)
 			user.drop_held_item(W, src)
 			W.forceMove(src)
@@ -54,7 +54,7 @@
 		else
 			to_chat(user, SPAN_WARNING("matrix is not complete!"))
 
-/obj/structure/machinery/computer/dropship_weapons/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 0)
+/obj/structure/machinery/computer/dropship_weapons/ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = 0)
 	var/data[0]
 	var/datum/shuttle/ferry/marine/FM = shuttle_controller.shuttles[shuttle_tag]
 	if (!istype(FM))

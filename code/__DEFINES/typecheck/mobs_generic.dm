@@ -21,5 +21,5 @@
 #define isorgan(A) (istype(A, /obj/limb))
 #define isnewplayer(A) (istype(A, /mob/new_player))
 #define ismaintdrone(A) (istype(A,/mob/living/silicon/robot/drone))
-#define isHellhound(A) (istype(A, /mob/living/carbon/Xenomorph/Hellhound))
+#define isHellhound(A) (istype(A, /mob/living/carbon/xenomorph/hellhound))
 #define isaghost(A) (copytext(A.key, 1, 2) == "@")

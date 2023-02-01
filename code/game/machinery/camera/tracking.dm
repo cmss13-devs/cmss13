@@ -31,7 +31,7 @@
 	return T
 
 
-/mob/living/silicon/ai/proc/ai_camera_list(var/camera in get_camera_list())
+/mob/living/silicon/ai/proc/ai_camera_list(camera in get_camera_list())
 	set category = "AI Commands"
 	set name = "Show Camera List"
 
@@ -154,7 +154,7 @@
 	src.track = TB
 	return targets
 
-/mob/living/silicon/ai/proc/ai_camera_track(var/target_name in trackable_mobs())
+/mob/living/silicon/ai/proc/ai_camera_track(target_name in trackable_mobs())
 	set category = "AI Commands"
 	set name = "Track With Camera"
 	set desc = "Select who you would like to track."
@@ -169,7 +169,7 @@
 	src.track = null
 	ai_actual_track(target)
 
-/mob/living/silicon/ai/proc/ai_cancel_tracking(var/forced = 0)
+/mob/living/silicon/ai/proc/ai_cancel_tracking(forced = 0)
 	if(!cameraFollow)
 		return
 
@@ -208,7 +208,7 @@
 				return
 			sleep(10)
 
-/proc/near_camera(var/mob/living/M)
+/proc/near_camera(mob/living/M)
 	if (!isturf(M.loc))
 		return 0
 	if(isrobot(M))
@@ -219,7 +219,7 @@
 		return 0
 	return 1
 
-/obj/structure/machinery/camera/attack_remote(var/mob/living/silicon/ai/user as mob)
+/obj/structure/machinery/camera/attack_remote(mob/living/silicon/ai/user as mob)
 	if (!istype(user))
 		return
 	if (!src.can_use())
@@ -227,7 +227,7 @@
 	user.eyeobj.setLoc(get_turf(src))
 
 
-/mob/living/silicon/ai/attack_remote(var/mob/user as mob)
+/mob/living/silicon/ai/attack_remote(mob/user as mob)
 	ai_camera_list()
 
 /proc/camera_sort(list/L) // TODO: replace this bubblesort with a mergesort - spookydonut

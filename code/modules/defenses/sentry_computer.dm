@@ -124,9 +124,10 @@
 	STOP_PROCESSING(SSobj, src)
 	playsound(src,  'sound/machines/terminal_off.ogg', 25, FALSE)
 
-/obj/item/device/sentry_computer/MouseDrop(atom/dropping, mob/user)
-	teardown()
-	user.put_in_any_hand_if_possible(src, disable_warning = TRUE)
+/obj/item/device/sentry_computer/MouseDrop(over_object)
+	if(over_object == usr && Adjacent(usr))
+		teardown()
+		usr.put_in_any_hand_if_possible(src, disable_warning = TRUE)
 
 /obj/item/device/sentry_computer/emp_act(severity)
 	return TRUE

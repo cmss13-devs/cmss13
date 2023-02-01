@@ -52,7 +52,7 @@
 	GLOB.alive_human_list -= H
 	return ..()
 
-/datum/species/synthetic/apply_signals(var/mob/living/carbon/human/H)
+/datum/species/synthetic/apply_signals(mob/living/carbon/human/H)
 	RegisterSignal(H, COMSIG_HUMAN_IMPREGNATE, PROC_REF(cancel_impregnate), TRUE)
 
 /datum/species/synthetic/proc/cancel_impregnate(datum/source)
@@ -133,8 +133,8 @@
 
 	default_lighting_alpha = LIGHTING_PLANE_ALPHA_VISIBLE // we don't want combat synths to run around in the dark
 
-	knock_down_reduction = 5.0
-	stun_reduction = 5.0
+	knock_down_reduction = 5
+	stun_reduction = 5
 
 	inherent_verbs = null
 

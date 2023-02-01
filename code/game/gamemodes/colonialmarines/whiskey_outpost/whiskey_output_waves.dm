@@ -3,7 +3,7 @@
 #define WO_STATIC_WAVE 2
 
 //SPAWN XENOS
-/datum/game_mode/whiskey_outpost/proc/spawn_whiskey_outpost_xenos(var/datum/whiskey_outpost_wave/wave_data)
+/datum/game_mode/whiskey_outpost/proc/spawn_whiskey_outpost_xenos(datum/whiskey_outpost_wave/wave_data)
 	if(!istype(wave_data))
 		return
 
@@ -30,11 +30,11 @@
 	var/list/available_xenos = list()
 	var/list/unique_xenos = list()
 
-	for(var/mob/living/carbon/Xenomorph/X as anything in GLOB.living_xeno_list)
+	for(var/mob/living/carbon/xenomorph/X as anything in GLOB.living_xeno_list)
 		var/area/A = get_area(X)
 		if(is_admin_level(X.z) && (!A || !(A.flags_area & AREA_ALLOW_XENO_JOIN)) || X.aghosted) continue //xenos on admin z level and aghosted ones don't count
 		if(istype(X) && !X.client)
-			if((X.away_timer >= XENO_LEAVE_TIMER) || (isXenoLarva(X) && X.away_timer >= XENO_LEAVE_TIMER_LARVA))
+			if((X.away_timer >= XENO_LEAVE_TIMER) || (islarva(X) && X.away_timer >= XENO_LEAVE_TIMER_LARVA))
 				available_xenos += X
 
 	for(var/name in xeno_pool)
@@ -58,7 +58,7 @@
 			return FALSE
 		var/spawn_loc = pick(xeno_spawns)
 		var/xeno_type = RoleAuthority.get_caste_by_text(userInput)
-		var/mob/living/carbon/Xenomorph/new_xeno = new xeno_type(spawn_loc)
+		var/mob/living/carbon/xenomorph/new_xeno = new xeno_type(spawn_loc)
 		if(new_xeno.hive.construction_allowed == NORMAL_XENO)
 			new_xeno.hive.construction_allowed = XENO_QUEEN
 		new_xeno.nocrit(xeno_wave)
@@ -69,10 +69,10 @@
 		if(transfer_xeno(xeno_candidate, new_xeno))
 			return TRUE
 	else
-		if(!isXeno(userInput))
+		if(!isxeno(userInput))
 			return FALSE
 
-		var/mob/living/carbon/Xenomorph/new_xeno = userInput
+		var/mob/living/carbon/xenomorph/new_xeno = userInput
 		if(!(new_xeno in GLOB.living_xeno_list) || new_xeno.stat == DEAD)
 			to_chat(xeno_candidate, SPAN_WARNING("You cannot join if the xenomorph is dead."))
 			return FALSE
@@ -82,9 +82,9 @@
 			return FALSE
 
 		if(!xeno_bypass_timer)
-			if((!isXenoLarva(new_xeno) && new_xeno.away_timer < XENO_LEAVE_TIMER) || (isXenoLarva(new_xeno) && new_xeno.away_timer < XENO_LEAVE_TIMER_LARVA))
+			if((!islarva(new_xeno) && new_xeno.away_timer < XENO_LEAVE_TIMER) || (islarva(new_xeno) && new_xeno.away_timer < XENO_LEAVE_TIMER_LARVA))
 				var/to_wait = XENO_LEAVE_TIMER - new_xeno.away_timer
-				if(isXenoLarva(new_xeno))
+				if(islarva(new_xeno))
 					to_wait = XENO_LEAVE_TIMER_LARVA - new_xeno.away_timer
 				to_chat(xeno_candidate, SPAN_WARNING("That player hasn't been away long enough. Please wait [to_wait] second\s longer."))
 				return FALSE
@@ -110,7 +110,7 @@
 	var/wave_number = 1
 	var/list/wave_castes = list()
 	var/wave_type = WO_SCALED_WAVE
-	var/scaling_factor = 1.0
+	var/scaling_factor = 1
 	var/number_of_xenos = 0 // not used for scaled waves
 	var/wave_delay = 200 SECONDS
 	var/list/sound_effect = list('sound/voice/alien_distantroar_3.ogg','sound/voice/xenos_roaring.ogg', 'sound/voice/4_xeno_roars.ogg')
@@ -120,7 +120,7 @@
 	wave_number = 1
 	wave_castes = list(XENO_CASTE_RUNNER)
 	sound_effect = list('sound/effects/siren.ogg')
-	command_announcement = list("We're tracking the creatures that wiped out our patrols heading towards your outpost, Multiple small life-signs detected enroute to the outpost.. Stand-by while we attempt to establish a signal with the USS Alistoun to alert them of these creatures.", "Captain Naiche, 3rd Battalion Command, LV-624 Garrison")
+	command_announcement = list("We're tracking the creatures that wiped out our patrols heading towards your outpost, Multiple small life-signs detected enroute to the outpost. Stand-by while we attempt to establish a signal with the USS Alistoun to alert them of these creatures.", "Captain Naiche, 3rd Battalion Command, LV-624 Garrison")
 	scaling_factor = 0.3
 	wave_delay = 1 MINUTES //Early, quick waves
 

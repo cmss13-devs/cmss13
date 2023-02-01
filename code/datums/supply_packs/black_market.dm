@@ -531,7 +531,7 @@ Primarily made up of things that would be best utilized, well, shipside. Recreat
 
 /datum/supply_packs/contraband/shipside/confiscated_alcohol
 	name = "confiscated alcohol crate"
-	randomised_num_contained = 3
+	randomised_num_contained = 5
 	contains = list(
 		/obj/item/reagent_container/food/drinks/bottle/gin,
 		/obj/item/reagent_container/food/drinks/bottle/whiskey,
@@ -567,7 +567,7 @@ Primarily made up of things that would be best utilized, well, shipside. Recreat
 
 /datum/supply_packs/contraband/shipside/confiscated_medicine
 	name = "confiscated medicinal supplies crate"
-	randomised_num_contained = 3
+	randomised_num_contained = 5
 	contains = list(
 		/obj/item/stack/medical/advanced/bruise_pack/predator,
 		/obj/item/stack/medical/advanced/ointment/predator,
@@ -584,7 +584,7 @@ Primarily made up of things that would be best utilized, well, shipside. Recreat
 
 /datum/supply_packs/contraband/shipside/confiscated_cuisine
 	name = "confiscated cuisine supplies crate"
-	randomised_num_contained = 5
+	randomised_num_contained = 7
 	contains = list(
 		/obj/item/reagent_container/food/drinks/bottle/absinthe,
 		/obj/item/reagent_container/food/drinks/bottle/pwine,
@@ -626,7 +626,7 @@ Primarily made up of things that would be best utilized, well, shipside. Recreat
 
 /datum/supply_packs/contraband/shipside/confiscated_nicotine
 	name = "confiscated nicotine items crate"
-	randomised_num_contained = 1
+	randomised_num_contained = 2
 	contains = list(
 		/obj/item/storage/fancy/cigarettes/blackpack,
 		/obj/item/storage/fancy/cigarettes/wypacket,
@@ -641,7 +641,7 @@ Primarily made up of things that would be best utilized, well, shipside. Recreat
 
 /datum/supply_packs/contraband/shipside/confiscated_miscellaneous
 	name = "confiscated miscellaneous items crate"
-	randomised_num_contained = 4
+	randomised_num_contained = 6
 	contains = list(
 		/obj/item/toy/bikehorn,
 		/obj/item/storage/box/packet/hefa/toy,
@@ -765,7 +765,7 @@ USCM spare items, miscellaneous gear that's too niche and distant (or restricted
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/surplus/nsg23_marine
-	name = "surplus NSG 23 assault rifle case"
+	name = "surplus NSG-23 assault rifle case"
 	dollar_cost = 45
 	contains = list(/obj/item/storage/box/guncase/nsg23_marine)
 	containertype = /obj/structure/largecrate/black_market

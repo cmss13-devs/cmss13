@@ -29,6 +29,7 @@
 
 /obj/item/reagent_container/food/drinks/flask/weylandyutani/poison/Initialize()
 	. = ..()
+	reagents.remove_any(60)
 	reagents.add_reagent("soutoclassic", 30)
 	reagents.add_reagent("neurotoxin", 30)
 
@@ -38,6 +39,7 @@
 
 /obj/item/reagent_container/food/drinks/bottle/holywater/bong/Initialize()
 	. = ..()
+	reagents.remove_any(100)
 	reagents.add_reagent("hippiesdelight", 100)
 
 /obj/item/weapon/melee/baton/damaged

@@ -1460,6 +1460,7 @@
 #include "code\modules\cm_preds\thrall_items.dm"
 #include "code\modules\cm_preds\thrall_procs.dm"
 #include "code\modules\cm_preds\yaut_bracers.dm"
+#include "code\modules\cm_preds\yaut_crafting.dm"
 #include "code\modules\cm_preds\yaut_hudprocs.dm"
 #include "code\modules\cm_preds\yaut_items.dm"
 #include "code\modules\cm_preds\yaut_machines.dm"

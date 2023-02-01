@@ -403,22 +403,47 @@
 	if(target.stat != DEAD)
 		return ..()
 
-	if(!ishuman(target))
-		to_chat(user, SPAN_WARNING("You can only use this dagger to flay humanoids!"))
+	if(!iscarbon(target))
+		to_chat(user, SPAN_WARNING("This creature is not worthy!"))
 		return
-
-	var/mob/living/carbon/human/victim = target
 
 	if(!HAS_TRAIT(user, TRAIT_SUPER_STRONG))
 		to_chat(user, SPAN_WARNING("You're not strong enough to rip an entire humanoid apart. Also, that's kind of fucked up.")) //look at this dumbass
 		return
 
-	if(issamespecies(user, victim))
-		to_chat(user, SPAN_HIGHDANGER("ARE YOU OUT OF YOUR MIND!?"))
+	if(isxeno(target))
+		var/mob/living/carbon/xenomorph/xeno = target
+		if(do_after(user, 1 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, xeno))
+			to_chat(user, SPAN_WARNING("You start cutting [xeno] appart."))
+			playsound(loc, 'sound/weapons/pierce.ogg', 25)
+			if(do_after(user, 4 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, xeno))
+				to_chat(user, SPAN_WARNING("You pierce [xeno] exoeskeleton with precise cuts"))
+				create_leftovers(xeno, has_meat = FALSE, skin_amount = TRUE)
+				playsound(loc, 'sound/weapons/slashmiss.ogg', 25)
+				if(do_after(user, 4 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, xeno))
+					to_chat(user, SPAN_WARNING("You harvest [xeno] insides"))
+					create_leftovers(xeno, has_meat = TRUE, skin_amount = FALSE,)
+					create_leftovers(xeno, has_meat = TRUE, skin_amount = FALSE,)
+					playsound(loc, 'sound/weapons/slash.ogg', 25)
+					if(do_after(user, 4 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, xeno))
+						to_chat(user, SPAN_WARNING("You extract [xeno] meat leaving behind a pile of goo"))
+						var/obj/item/xeno_tail/tail = new /obj/item/xeno_tail(get_turf(xeno)) // the tail remains
+						tail.name = "[xeno.name] tail"
+						playsound(loc, 'sound/bullets/bullet_impact3.ogg', 25)
+						xeno.gib() //we dont need you anymore
+						return
+
+
+	var/mob/living/carbon/human/victim = target
+	if(!ishuman(victim)) //just in case
 		return
 
-	if(isspeciessynth(victim))
+	if(issynth(victim))
 		to_chat(user, SPAN_WARNING("You can't flay metal...")) //look at this dumbass
+		return
+
+	if(issamespecies(user, victim))
+		to_chat(user, SPAN_HIGHDANGER("ARE YOU OUT OF YOUR MIND!?"))
 		return
 
 	if(!do_after(user, 1 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, victim))
@@ -480,17 +505,29 @@
 	overlays_standing[FLAY_LAYER] = flay_icon
 	apply_overlay(FLAY_LAYER)
 
-/obj/item/weapon/melee/yautja/knife/proc/create_leftovers(mob/living/victim, has_meat, skin_amount)
+/obj/item/weapon/melee/yautja/knife/proc/create_leftovers(mob/living/carbon/victim, has_meat, skin_amount, special)
 	if(has_meat)
-		var/obj/item/reagent_container/food/snacks/meat/meat = new /obj/item/reagent_container/food/snacks/meat(victim.loc)
-		meat.name = "raw [victim.name] steak"
+		if(ishuman(victim))
+			var/obj/item/reagent_container/food/snacks/meat/meat = new /obj/item/reagent_container/food/snacks/meat(victim.loc)
+			meat.name = "raw [victim.name] steak"
+		if(isxeno(victim))
+			var/obj/item/reagent_container/food/snacks/meat/xenomeat/meat = new /obj/item/reagent_container/food/snacks/meat/xenomeat(victim.loc)
+			meat.name = "raw [victim.name] steak"
 
 	if(skin_amount)
-		var/obj/item/stack/sheet/animalhide/human/hide = new /obj/item/stack/sheet/animalhide/human(victim.loc)
-		hide.name = "[victim.name]-hide"
-		hide.singular_name = "[victim.name]-hide"
-		hide.stack_id = "[victim.name]-hide"
-		hide.amount = skin_amount
+		if(ishuman(victim))
+			var/obj/item/stack/sheet/animalhide/human/hide = new /obj/item/stack/sheet/animalhide/human(victim.loc)
+			hide.name = "[victim.name]-hide"
+			hide.singular_name = "[victim.name]-hide"
+			hide.stack_id = "[victim.name]-hide"
+			hide.amount = skin_amount
+
+		if(isxeno(victim))
+			var/obj/item/stack/sheet/animalhide/xeno/hide = new /obj/item/stack/sheet/animalhide/xeno(victim.loc)
+			hide.name = "[victim.name]-hide"
+			hide.singular_name = "[victim.name]-hide"
+			hide.stack_id = "[victim.name]-hide"
+			hide.amount = skin_amount
 
 
 

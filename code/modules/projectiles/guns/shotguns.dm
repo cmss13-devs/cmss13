@@ -466,8 +466,7 @@ can cause issues with ammo types getting mixed up during the burst.
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/flashlight,
 		/obj/item/attachable/magnetic_harness,
-		//Muzzle (nothing)
-		//Underbarrel
+		//Underbarrel (no muzzle attachments)
 		/obj/item/attachable/verticalgrip,
 		//Stock
 		/obj/item/attachable/stock/type23,

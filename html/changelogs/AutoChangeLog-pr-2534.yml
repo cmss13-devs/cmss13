@@ -1,4 +1,0 @@
-author: "Waseemq1235"
-delete-after: True
-changes:
-  - bugfix: "Removes Weyland from random generated names"

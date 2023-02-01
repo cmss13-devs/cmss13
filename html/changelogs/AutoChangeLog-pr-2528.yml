@@ -1,4 +1,0 @@
-author: "stanalbatross"
-delete-after: True
-changes:
-  - code_imp: "removed all useless overspecific .0s from the codebase"

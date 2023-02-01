@@ -56,7 +56,7 @@
 
 /obj/item/prop/helmetgarb/rosary
 	name = "rosary"
-	desc = "The Emperor Protects! I mean, Jesus Saves!"
+	desc = "Jesus Saves Lives!"
 	icon_state = "rosary"
 
 /obj/item/prop/helmetgarb/lucky_feather

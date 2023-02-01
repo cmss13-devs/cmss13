@@ -13,28 +13,28 @@
 	xeno_bypass_timer = 1
 	flags_round_type = MODE_NEW_SPAWN
 	role_mappings = list(
-					/datum/job/command/commander/whiskey = JOB_CO,
-					/datum/job/command/executive/whiskey = JOB_XO,
-					/datum/job/civilian/synthetic/whiskey = JOB_SYNTH,
-					/datum/job/command/warrant/whiskey = JOB_CHIEF_POLICE,
-					/datum/job/command/bridge/whiskey = JOB_SO,
-					/datum/job/command/tank_crew/whiskey = JOB_CREWMAN,
-					/datum/job/command/police/whiskey = JOB_POLICE,
-					/datum/job/command/pilot/whiskey = JOB_PILOT,
-					/datum/job/logistics/requisition/whiskey = JOB_CHIEF_REQUISITION,
-					/datum/job/civilian/professor/whiskey = JOB_CMO,
-					/datum/job/civilian/doctor/whiskey = JOB_DOCTOR,
-					/datum/job/civilian/researcher/whiskey = JOB_RESEARCHER,
-					/datum/job/logistics/engineering/whiskey = JOB_CHIEF_ENGINEER,
-					/datum/job/logistics/tech/maint/whiskey = JOB_MAINT_TECH,
-					/datum/job/logistics/cargo/whiskey = JOB_CARGO_TECH,
-					/datum/job/civilian/liaison/whiskey = JOB_CORPORATE_LIAISON,
-					/datum/job/marine/leader/whiskey = JOB_SQUAD_LEADER,
-					/datum/job/marine/specialist/whiskey = JOB_SQUAD_SPECIALIST,
-					/datum/job/marine/smartgunner/whiskey = JOB_SQUAD_SMARTGUN,
-					/datum/job/marine/medic/whiskey = JOB_SQUAD_MEDIC,
-					/datum/job/marine/engineer/whiskey = JOB_SQUAD_ENGI,
-					/datum/job/marine/standard/whiskey = JOB_SQUAD_MARINE
+		/datum/job/command/commander/whiskey = JOB_CO,
+		/datum/job/command/executive/whiskey = JOB_XO,
+		/datum/job/civilian/synthetic/whiskey = JOB_SYNTH,
+		/datum/job/command/warrant/whiskey = JOB_CHIEF_POLICE,
+		/datum/job/command/bridge/whiskey = JOB_SO,
+		/datum/job/command/tank_crew/whiskey = JOB_CREWMAN,
+		/datum/job/command/police/whiskey = JOB_POLICE,
+		/datum/job/command/pilot/whiskey = JOB_PILOT,
+		/datum/job/logistics/requisition/whiskey = JOB_CHIEF_REQUISITION,
+		/datum/job/civilian/professor/whiskey = JOB_CMO,
+		/datum/job/civilian/doctor/whiskey = JOB_DOCTOR,
+		/datum/job/civilian/researcher/whiskey = JOB_RESEARCHER,
+		/datum/job/logistics/engineering/whiskey = JOB_CHIEF_ENGINEER,
+		/datum/job/logistics/tech/maint/whiskey = JOB_MAINT_TECH,
+		/datum/job/logistics/cargo/whiskey = JOB_CARGO_TECH,
+		/datum/job/civilian/liaison/whiskey = JOB_CORPORATE_LIAISON,
+		/datum/job/marine/leader/whiskey = JOB_SQUAD_LEADER,
+		/datum/job/marine/specialist/whiskey = JOB_SQUAD_SPECIALIST,
+		/datum/job/marine/smartgunner/whiskey = JOB_SQUAD_SMARTGUN,
+		/datum/job/marine/medic/whiskey = JOB_SQUAD_MEDIC,
+		/datum/job/marine/engineer/whiskey = JOB_SQUAD_ENGI,
+		/datum/job/marine/standard/whiskey = JOB_SQUAD_MARINE,
 	)
 
 
@@ -145,7 +145,7 @@
 	if(SSitem_cleanup)
 		//Cleaning stuff more aggressively
 		SSitem_cleanup.start_processing_time = 0
-		SSitem_cleanup.percentage_of_garbage_to_delete = 1.0
+		SSitem_cleanup.percentage_of_garbage_to_delete = 1
 		SSitem_cleanup.wait = 1 MINUTES
 		SSitem_cleanup.next_fire = 1 MINUTES
 		spawn(0)

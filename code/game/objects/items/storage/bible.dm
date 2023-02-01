@@ -16,7 +16,7 @@
 		/obj/item/stack/cable_coil,
 		/obj/item/device/t_scanner,
 		/obj/item/device/analyzer,
-		/obj/item/tool/shovel/etool
+		/obj/item/tool/shovel/etool,
 	)
 	storage_slots = null
 	max_storage_space = 8

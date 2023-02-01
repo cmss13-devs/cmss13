@@ -3,9 +3,9 @@
 	name = "mop"
 	icon = 'icons/obj/janitor.dmi'
 	icon_state = "mop"
-	force = 3.0
+	force = 3
 	attack_speed = 4
-	throwforce = 10.0
+	throwforce = 10
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 10
 	w_class = SIZE_MEDIUM

@@ -8,7 +8,7 @@
 	icon = 'icons/obj/items/storage.dmi'
 	icon_state = "secure"
 	flags_atom = FPRINT|CONDUCT
-	force = 8.0
+	force = 8
 	hitsound = "swing_hit"
 	throw_speed = SPEED_FAST
 	throw_range = 4

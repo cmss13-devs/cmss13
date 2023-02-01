@@ -130,7 +130,7 @@
 			s.set_up(10,1,src)
 			s.start()
 			to_chat(h_user, "Massive electrical arc sparks between you and [src]. Last thing you can think about is \"Oh shit...\"")
-			// Remember, we have few gigajoules of electricity here.. Turn them into crispy toast.
+			// Remember, we have few gigajoules of electricity here... Turn them into crispy toast.
 			h_user.apply_damage(rand(150,195), BURN)
 			h_user.apply_effect(25, PARALYZE)
 			spawn(0)

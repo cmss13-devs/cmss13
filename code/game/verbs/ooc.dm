@@ -80,6 +80,7 @@
 	var/prefix = ""
 	if(donator)
 		prefix += "\[D\]"
+		prefix += "[icon2html('icons/ooc.dmi', GLOB.clients, "Donator")]"
 	if(CLIENT_IS_STAFF(src))
 		prefix += "\[S\]"
 	else if(CLIENT_IS_MENTOR(src))

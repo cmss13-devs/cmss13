@@ -79,6 +79,7 @@
 #define COMSIG_KB_LIVING_LOOKUP_DOWN "keybinding_living_lookup_down"
 #define COMSIG_KB_LIVING_LOOKDOWN_DOWN "keybinding_living_lookdown_down"
 #define COMSIG_KB_LIVING_REST_DOWN "keybinding_living_rest_down"
+#define COMSIG_KB_LIVING_CANCEL_CAMERA_VIEW "keybinding_movement_cancel_camera_view"
 
 //Mob
 #define COMSIG_KB_MOB_FACENORTH_DOWN "keybinding_mob_facenorth_down"
@@ -142,6 +143,9 @@
 #define COMSIG_KB_XENO_SCREECH "keybinding_xeno_screech"
 #define COMSIG_KB_TAIL_STAB "keybinding_tail_stab"
 
+#define COMSIG_KB_XENO_HIVE_STATUS "keybinding_hive_status"
+#define COMSIG_KB_XENO_HIDE "keybinding_hide"
+#define COMSIG_KB_XENO_EVOLVE "keybinding_evolve"
 // Yautja
 
 #define COMSIG_KB_YAUTJA_BUTCHER "keybinding_yautja_butcher"
@@ -177,3 +181,5 @@
 //misc yautja
 
 #define COMSIG_KB_YAUTJA_TELE_LOC "keybinding_yautja_tele_loc"
+
+#define COMSIG_KB_OBSERVER_JOIN_XENO "keybinding_observer_join_as_xeno"

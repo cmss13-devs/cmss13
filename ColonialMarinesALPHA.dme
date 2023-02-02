@@ -1628,6 +1628,7 @@
 #include "code\modules\mob\transform_procs.dm"
 #include "code\modules\mob\update_icons.dm"
 #include "code\modules\mob\dead\death.dm"
+#include "code\modules\mob\dead\observer\actions.dm"
 #include "code\modules\mob\dead\observer\logout.dm"
 #include "code\modules\mob\dead\observer\observer.dm"
 #include "code\modules\mob\dead\observer\orbit.dm"

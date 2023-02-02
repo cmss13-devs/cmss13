@@ -50,6 +50,9 @@
 	var/datum/action/source_action
 	var/image/maptext_overlay
 
+/atom/movable/screen/action_button/attack_ghost(mob/dead/observer/user)
+	clicked(user)
+
 /atom/movable/screen/action_button/clicked(mob/user)
 	if(!user || !source_action)
 		return TRUE

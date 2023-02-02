@@ -15,6 +15,8 @@
 	/// a mob from using said action
 	var/hidden = FALSE
 	var/unique = TRUE
+	/// A signal on the mob that will cause the action to activate
+	var/listen_signal
 
 /datum/action/New(Target, override_icon_state)
 	target = Target
@@ -41,6 +43,12 @@
 	return
 
 /datum/action/proc/action_activate()
+	return
+
+/datum/action/proc/keybind_activation()
+	SIGNAL_HANDLER
+	if(can_use_action())
+		INVOKE_ASYNC(src, PROC_REF(action_activate))
 	return
 
 /datum/action/proc/can_use_action()
@@ -88,6 +96,7 @@
 		remove_from(owner)
 	SEND_SIGNAL(src, COMSIG_ACTION_GIVEN, L)
 	L.handle_add_action(src)
+	RegisterSignal(L, listen_signal, PROC_REF(keybind_activation))
 	owner = L
 
 /mob/proc/handle_add_action(datum/action/action)

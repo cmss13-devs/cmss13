@@ -13,9 +13,19 @@
 		new /atom/movable/screen/escape_menu/home_button(
 			null,
 			src,
-			"Settings",
+			"Edit Character",
 			/* offset = */ 1,
 			CALLBACK(src, PROC_REF(home_open_settings)),
+		)
+	)
+
+	page_holder.give_screen_object(
+		new /atom/movable/screen/escape_menu/home_button(
+			null,
+			src,
+			"Edit Hotkeys",
+			/* offset = */ 2,
+			CALLBACK(src, PROC_REF(home_open_hotkeys)),
 		)
 	)
 
@@ -24,25 +34,68 @@
 			null,
 			src,
 			"Admin Help",
-			/* offset = */ 2,
+			/* offset = */ 3,
+		)
+	)
+
+	if(!check_client_rights(client, R_MOD, FALSE))
+		return
+
+	// admin menu buttons
+
+	page_holder.give_screen_object(
+		new /atom/movable/screen/escape_menu/home_button(
+			null,
+			src,
+			"AGhost",
+			/* offset = */ 5,
+			CALLBACK(src, PROC_REF(home_aghost)),
 		)
 	)
 
 	page_holder.give_screen_object(
-		new /atom/movable/screen/escape_menu/home_button/leave_body(
+		new /atom/movable/screen/escape_menu/home_button(
 			null,
 			src,
-			"Leave Body",
-			/* offset = */ 3,
-			CALLBACK(src, PROC_REF(open_leave_body)),
+			"STUI",
+			/* offset = */ 6,
+			CALLBACK(src, PROC_REF(home_open_stui)),
 		)
 	)
+
+	page_holder.give_screen_object(
+		new /atom/movable/screen/escape_menu/home_button(
+			null,
+			src,
+			"Open Player Panel",
+			/* offset = */ 7,
+			CALLBACK(src, PROC_REF(home_open_player_panel)),
+		)
+	)
+
 
 /datum/escape_menu/proc/home_resume()
 	qdel(src)
 
 /datum/escape_menu/proc/home_open_settings()
-	client?.prefs.tgui_interact(client?.mob)
+	client?.prefs.ShowChoices(client?.mob)
+	qdel(src)
+
+/datum/escape_menu/proc/home_open_hotkeys()
+	client?.prefs.macros.tgui_interact(client?.mob)
+	qdel(src)
+
+/datum/escape_menu/proc/home_aghost()
+	client?.admin_ghost()
+	qdel(src)
+
+/datum/escape_menu/proc/home_open_stui()
+	GLOB.STUI.tgui_interact(client?.mob)
+	qdel(src)
+
+
+/datum/escape_menu/proc/home_open_player_panel()
+	client?.admin_holder.player_panel_new()
 	qdel(src)
 
 /atom/movable/screen/escape_menu/home_button
@@ -72,7 +125,7 @@
 
 	vis_contents += home_button_text
 
-	screen_loc = "NORTH:-[100 + (32 * offset)],WEST:110"
+	screen_loc = "NORTH:-[100 + (24 * offset)],WEST:110"
 	transform = transform.Scale(6, 1)
 
 /atom/movable/screen/escape_menu/home_button/Destroy()
@@ -81,7 +134,7 @@
 
 	return ..()
 
-/atom/movable/screen/escape_menu/home_button/Click(location, control, params)
+/atom/movable/screen/escape_menu/home_button/clicked(location, control, params)
 	if (!enabled())
 		return
 
@@ -101,7 +154,7 @@
 
 // Needs to be separated so it doesn't scale
 /atom/movable/screen/escape_menu/home_button_text
-	maptext_width = 200
+	maptext_width = 250
 	maptext_height = 50
 	pixel_x = -80
 
@@ -126,7 +179,7 @@
 /atom/movable/screen/escape_menu/home_button_text/proc/update_text()
 	var/atom/movable/screen/escape_menu/home_button/escape_menu_loc = loc
 
-	maptext = MAPTEXT_VCR_OSD_MONO("<span style='font-size: 24px; color: [istype(escape_menu_loc) ? escape_menu_loc.text_color() : "white"]'>[button_text]</span>")
+	maptext = MAPTEXT_VCR_OSD_MONO("<span style='font-size: 16px; color: [istype(escape_menu_loc) ? escape_menu_loc.text_color() : "white"]'>[button_text]</span>")
 
 	if (hovered)
 		maptext = "<u>[maptext]</u>"
@@ -158,7 +211,7 @@
 		if (!current_ticket?.player_replied)
 			begin_processing()
 
-/atom/movable/screen/escape_menu/home_button/admin_help/Click(location, control, params)
+/atom/movable/screen/escape_menu/home_button/admin_help/clicked(location, control, params)
 	if (!enabled())
 		return
 
@@ -260,27 +313,3 @@
 	. = ..()
 
 	closeToolTip(usr)
-
-/atom/movable/screen/escape_menu/home_button/leave_body
-
-/atom/movable/screen/escape_menu/home_button/leave_body/Initialize(
-	mapload,
-	datum/escape_menu/escape_menu,
-	button_text,
-	offset,
-	on_click_callback,
-)
-	. = ..()
-
-	RegisterSignal(escape_menu.client, COMSIG_CLIENT_MOB_LOGIN, PROC_REF(on_client_mob_login))
-
-/atom/movable/screen/escape_menu/home_button/leave_body/enabled()
-	if (!..())
-		return FALSE
-
-	return isliving(escape_menu.client?.mob)
-
-/atom/movable/screen/escape_menu/home_button/leave_body/proc/on_client_mob_login()
-	SIGNAL_HANDLER
-
-	home_button_text.update_text()

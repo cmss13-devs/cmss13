@@ -89,7 +89,7 @@
 
 	return ..()
 
-/atom/movable/screen/escape_menu/leave_body_button/Click(location, control, params)
+/atom/movable/screen/escape_menu/leave_body_button/clicked(location, control, params)
 	on_click_callback?.InvokeAsync()
 
 /atom/movable/screen/escape_menu/leave_body_button/MouseEntered(location, control, params)

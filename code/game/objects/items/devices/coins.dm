@@ -5,8 +5,8 @@
 	name = "Coin"
 	icon_state = "coin"
 	flags_atom = FPRINT|CONDUCT
-	force = 0.0
-	throwforce = 0.0
+	force = 0
+	throwforce = 0
 	w_class = SIZE_TINY
 	var/string_attached
 	var/sides = 2

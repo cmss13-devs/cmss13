@@ -1,0 +1,4 @@
+author: "realforest2001"
+delete-after: True
+changes:
+  - code_imp: "Explosions are now hard-capped by code."

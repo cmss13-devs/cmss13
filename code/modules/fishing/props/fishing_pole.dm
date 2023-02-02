@@ -90,7 +90,7 @@
 		user.visible_message(SPAN_NOTICE("[user] fails to fish up anything."), SPAN_NOTICE("You don't seem to catch much of anything..."))
 		remove_filter("fish_ready")
 
-/obj/structure/prop/fishing/pole_interactive/proc/spawn_loot(var/mob/M)
+/obj/structure/prop/fishing/pole_interactive/proc/spawn_loot(mob/M)
 	var/turf/T = get_step(get_step(src, dir), dir)//at least 2 tiles away, also add a temp_visual water splash when those are merged into the codebase
 	var/area/A = get_area(T)
 

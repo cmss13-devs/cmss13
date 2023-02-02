@@ -113,6 +113,8 @@
 		/obj/item/toy/prize/seraph,
 		/obj/item/toy/spinningtoy,
 		/obj/item/clothing/accessory/horrible,
+		/obj/item/clothing/shoes/slippers,
+		/obj/item/clothing/shoes/slippers_worn,
 		/obj/item/attachable/suppressor,
 		/obj/item/attachable/bayonet,
 		/obj/item/attachable/reddot,

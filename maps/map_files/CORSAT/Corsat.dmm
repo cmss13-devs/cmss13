@@ -21926,8 +21926,8 @@
 /area/corsat/emergency_access)
 "bgy" = (
 /obj/structure/surface/table/almayer,
-/obj/item/explosive/grenade/HE,
-/obj/item/explosive/grenade/HE,
+/obj/item/explosive/grenade/high_explosive,
+/obj/item/explosive/grenade/high_explosive,
 /turf/open/floor{
 	icon_state = "asteroidplating";
 	tag = "icon-asteroidplating"
@@ -23584,17 +23584,6 @@
 /obj/structure/window/framed/corsat/cell/security,
 /turf/open/floor/plating,
 /area/corsat/gamma/security/cells)
-"bkQ" = (
-/obj/item/organ/xenos/resinspinner,
-/obj/structure/closet/crate/science{
-	density = 0;
-	icon_state = "open_science";
-	opened = 1
-	},
-/turf/open/floor/corsat{
-	icon_state = "plate"
-	},
-/area/corsat/omega/complex)
 "bkR" = (
 /obj/structure/surface/table/almayer,
 /obj/item/form_printer,
@@ -23625,18 +23614,18 @@
 	icon_state = "open_science";
 	opened = 1
 	},
-/obj/item/organ/xenos/resinspinner,
+/obj/item/organ/lungs,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
 /area/corsat/omega/complex)
 "bkU" = (
-/obj/item/organ/xenos/acidgland,
 /obj/structure/closet/crate/science{
 	density = 0;
 	icon_state = "open_science";
 	opened = 1
 	},
+/obj/item/organ/heart,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -23732,7 +23721,7 @@
 /area/corsat/sigma/biodome/gunrange)
 "blh" = (
 /obj/structure/surface/table/almayer,
-/obj/item/explosive/grenade/HE/training,
+/obj/item/explosive/grenade/high_explosive/training,
 /turf/open/floor{
 	icon_state = "asteroidplating";
 	tag = "icon-asteroidplating"
@@ -27972,12 +27961,12 @@
 	},
 /area/corsat/omega/complex)
 "byH" = (
-/obj/item/organ/xenos/plasmavessel,
 /obj/structure/closet/crate/science{
 	density = 0;
 	icon_state = "open_science";
 	opened = 1
 	},
+/obj/item/organ/liver,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -28089,7 +28078,7 @@
 	icon_state = "open_science";
 	opened = 1
 	},
-/obj/item/organ/xenos/plasmavessel,
+/obj/item/organ/eyes,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -34559,10 +34548,10 @@
 	},
 /area/corsat/sigma/biodome/testgrounds)
 "bTB" = (
-/obj/item/explosive/grenade/HE/frag,
-/obj/item/explosive/grenade/HE/frag,
-/obj/item/explosive/grenade/HE/frag,
-/obj/item/explosive/grenade/HE/PMC,
+/obj/item/explosive/grenade/high_explosive/frag,
+/obj/item/explosive/grenade/high_explosive/frag,
+/obj/item/explosive/grenade/high_explosive/frag,
+/obj/item/explosive/grenade/high_explosive/pmc,
 /obj/structure/closet/secure_closet/guncabinet{
 	name = "explosives cabinet";
 	req_access_txt = "100"
@@ -39566,8 +39555,8 @@
 /area/corsat/sigma/hangar)
 "ejL" = (
 /obj/structure/surface/table/almayer,
-/obj/item/explosive/grenade/HE/frag,
-/obj/item/explosive/grenade/HE/frag,
+/obj/item/explosive/grenade/high_explosive/frag,
+/obj/item/explosive/grenade/high_explosive/frag,
 /turf/open/floor{
 	icon_state = "asteroidplating";
 	tag = "icon-asteroidplating"
@@ -43317,12 +43306,12 @@
 	},
 /area/corsat/omega/cargo)
 "gUw" = (
-/obj/item/organ/xenos/eggsac,
 /obj/structure/closet/crate/science{
 	density = 0;
 	icon_state = "open_science";
 	opened = 1
 	},
+/obj/item/organ/kidneys,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -58930,8 +58919,8 @@
 /area/corsat/sigma/dorms)
 "sos" = (
 /obj/structure/surface/table/almayer,
-/obj/item/explosive/grenade/HE/training,
-/obj/item/explosive/grenade/HE/training,
+/obj/item/explosive/grenade/high_explosive/training,
+/obj/item/explosive/grenade/high_explosive/training,
 /turf/open/floor{
 	icon_state = "asteroidplating";
 	tag = "icon-asteroidplating"
@@ -65804,6 +65793,17 @@
 	icon_state = "plate"
 	},
 /area/corsat/gamma/residential/researcher)
+"xuF" = (
+/obj/structure/closet/crate/science{
+	density = 0;
+	icon_state = "open_science";
+	opened = 1
+	},
+/obj/item/organ/brain,
+/turf/open/floor/corsat{
+	icon_state = "plate"
+	},
+/area/corsat/omega/complex)
 "xuI" = (
 /turf/open/floor/corsat{
 	dir = 1;
@@ -77816,7 +77816,7 @@ azk
 oje
 aWy
 aoE
-bkQ
+byH
 bib
 bib
 bib
@@ -78306,7 +78306,7 @@ agQ
 bhQ
 anG
 aoE
-bkU
+xuF
 bkU
 buQ
 byX

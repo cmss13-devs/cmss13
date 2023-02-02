@@ -264,7 +264,7 @@
 //Triggered when F12 is pressed (Unless someone changed something in the DMF)
 /mob/verb/button_pressed_F12()
 	set name = "F12"
-	set hidden = 1
+	set hidden = TRUE
 
 	if(hud_used && client)
 		hud_used.show_hud()
@@ -273,7 +273,7 @@
 		to_chat(usr, SPAN_WARNING("This mob type does not use a HUD."))
 
 
-/datum/hud/proc/draw_act_intent(var/datum/custom_hud/ui_datum, var/ui_alpha)
+/datum/hud/proc/draw_act_intent(datum/custom_hud/ui_datum, ui_alpha)
 	var/atom/movable/screen/using = new /atom/movable/screen/act_intent/corner()
 	using.icon = ui_datum.ui_style_icon
 	if(ui_alpha)
@@ -283,7 +283,7 @@
 	static_inventory += using
 	action_intent = using
 
-/datum/hud/proc/draw_mov_intent(var/datum/custom_hud/ui_datum, var/ui_alpha, var/ui_color)
+/datum/hud/proc/draw_mov_intent(datum/custom_hud/ui_datum, ui_alpha, ui_color)
 	var/atom/movable/screen/using = new /atom/movable/screen/mov_intent()
 	using.icon = ui_datum.ui_style_icon
 	using.screen_loc = ui_datum.ui_movi
@@ -295,7 +295,7 @@
 	static_inventory += using
 	move_intent = using
 
-/datum/hud/proc/draw_drop(var/datum/custom_hud/ui_datum, var/ui_alpha, var/ui_color)
+/datum/hud/proc/draw_drop(datum/custom_hud/ui_datum, ui_alpha, ui_color)
 	var/atom/movable/screen/using = new /atom/movable/screen/drop()
 	using.icon = ui_datum.ui_style_icon
 	using.screen_loc = ui_datum.ui_drop_throw
@@ -305,7 +305,7 @@
 		using.color = ui_color
 	static_inventory += using
 
-/datum/hud/proc/draw_throw(var/datum/custom_hud/ui_datum, var/ui_alpha, var/ui_color)
+/datum/hud/proc/draw_throw(datum/custom_hud/ui_datum, ui_alpha, ui_color)
 	throw_icon = new /atom/movable/screen/throw_catch()
 	throw_icon.icon = ui_datum.ui_style_icon
 	throw_icon.screen_loc = ui_datum.ui_drop_throw
@@ -315,14 +315,14 @@
 		throw_icon.color = ui_color
 	hotkeybuttons += throw_icon
 
-/datum/hud/proc/draw_pull(var/datum/custom_hud/ui_datum)
+/datum/hud/proc/draw_pull(datum/custom_hud/ui_datum)
 	pull_icon = new /atom/movable/screen/pull()
 	pull_icon.icon = ui_datum.ui_style_icon
 	pull_icon.screen_loc = ui_datum.ui_pull
 	pull_icon.update_icon(mymob)
 	hotkeybuttons += pull_icon
 
-/datum/hud/proc/draw_resist(var/datum/custom_hud/ui_datum, var/ui_alpha, var/ui_color)
+/datum/hud/proc/draw_resist(datum/custom_hud/ui_datum, ui_alpha, ui_color)
 	var/atom/movable/screen/using = new /atom/movable/screen/resist()
 	using.icon = ui_datum.ui_style_icon
 	using.screen_loc = ui_datum.ui_resist
@@ -332,7 +332,7 @@
 		using.color = ui_color
 	hotkeybuttons += using
 
-/datum/hud/proc/draw_left_hand(var/datum/custom_hud/ui_datum, var/ui_alpha, var/ui_color)
+/datum/hud/proc/draw_left_hand(datum/custom_hud/ui_datum, ui_alpha, ui_color)
 	var/atom/movable/screen/inventory/inv_box = new /atom/movable/screen/inventory()
 	inv_box.name = WEAR_L_HAND
 	inv_box.icon = ui_datum.ui_style_icon
@@ -350,7 +350,7 @@
 	l_hand_hud_object = inv_box
 	static_inventory += inv_box
 
-/datum/hud/proc/draw_right_hand(var/datum/custom_hud/ui_datum, var/ui_alpha, var/ui_color)
+/datum/hud/proc/draw_right_hand(datum/custom_hud/ui_datum, ui_alpha, ui_color)
 	var/atom/movable/screen/inventory/inv_box = new /atom/movable/screen/inventory()
 	inv_box.name = WEAR_R_HAND
 	inv_box.icon = ui_datum.ui_style_icon
@@ -368,7 +368,7 @@
 	r_hand_hud_object = inv_box
 	static_inventory += inv_box
 
-/datum/hud/proc/draw_swaphand(var/handswap_part, var/handswap_part_loc, var/datum/custom_hud/ui_datum, var/ui_alpha, var/ui_color)
+/datum/hud/proc/draw_swaphand(handswap_part, handswap_part_loc, datum/custom_hud/ui_datum, ui_alpha, ui_color)
 	var/atom/movable/screen/using = new /atom/movable/screen/inventory()
 	using.name = "hand"
 	using.icon = ui_datum.ui_style_icon
@@ -381,13 +381,13 @@
 	using.layer = HUD_LAYER
 	static_inventory += using
 
-/datum/hud/proc/draw_healths(var/datum/custom_hud/ui_datum, var/ui_alpha)
+/datum/hud/proc/draw_healths(datum/custom_hud/ui_datum, ui_alpha)
 	healths = new /atom/movable/screen/healths()
 	healths.icon = ui_datum.ui_style_icon
 	healths.screen_loc = ui_datum.UI_HEALTH_LOC
 	infodisplay += healths
 
-/datum/hud/proc/draw_zone_sel(var/datum/custom_hud/ui_datum, var/ui_alpha, var/ui_color)
+/datum/hud/proc/draw_zone_sel(datum/custom_hud/ui_datum, ui_alpha, ui_color)
 	zone_sel = new /atom/movable/screen/zone_sel()
 	zone_sel.icon = ui_datum.ui_style_icon
 	zone_sel.screen_loc = ui_datum.ui_zonesel

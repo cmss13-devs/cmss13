@@ -42,8 +42,9 @@
 	if(HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
 		if(user.action_busy)
 			return TRUE
-		toggle_anchored(W, user)
-		return TRUE
+		if(wrenchable)
+			toggle_anchored(W, user)
+			return TRUE
 	after_attack_by(W, user)
 
 /obj/structure/proc/after_attack_by(obj/item/W, mob/user)

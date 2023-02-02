@@ -33,7 +33,7 @@
 	if (isRemoteControlling(user)) //Added by Strumpetplaya - AI shouldn't be able to
 		return //activate emergency lockers.  This fixes that.  (Does this make sense, the AI can't call attack_hand, can it? --Mloc)
 	if(!amount)
-		to_chat(usr, SPAN_NOTICE("It's empty.."))
+		to_chat(usr, SPAN_NOTICE("It's empty..."))
 		return
 	if(amount)
 		to_chat(usr, SPAN_NOTICE("You take out some items from \the [src]."))

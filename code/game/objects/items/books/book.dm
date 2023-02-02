@@ -27,7 +27,7 @@
 	/// What's in the book?
 	var/obj/item/store
 
-/obj/item/book/attack_self(var/mob/user as mob)
+/obj/item/book/attack_self(mob/user as mob)
 	..()
 	if(carved)
 		if(store)

@@ -44,7 +44,7 @@
 	. = ..()
 	update_icon()
 
-/obj/structure/window/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/obj/structure/window/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_can_pass_all = PASS_HIGH_OVER_ONLY|PASS_GLASS
@@ -115,7 +115,7 @@
 		if(make_hit_sound)
 			playsound(loc, 'sound/effects/Glasshit.ogg', 25, 1)
 
-/obj/structure/window/bullet_act(var/obj/item/projectile/Proj)
+/obj/structure/window/bullet_act(obj/item/projectile/Proj)
 	//Tasers and the like should not damage windows.
 	var/ammo_flags = Proj.ammo.flags_ammo_behavior | Proj.projectile_override_flags
 	if(Proj.ammo.damage_type == HALLOSS || Proj.damage <= 0 || ammo_flags == AMMO_ENERGY)
@@ -219,7 +219,7 @@
 
 /obj/structure/window/after_attack_by(obj/item/W, mob/living/user)
 	if(istype(W, /obj/item/grab) && get_dist(src, user) < 2)
-		if(isXeno(user)) return
+		if(isxeno(user)) return
 		var/obj/item/grab/G = W
 		if(istype(G.grabbed_thing, /mob/living))
 			var/mob/living/M = G.grabbed_thing
@@ -501,7 +501,7 @@
 		qdel(WW)
 	. = ..()
 
-/obj/structure/window/framed/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/obj/structure/window/framed/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_can_pass_all = PASS_GLASS
@@ -832,7 +832,7 @@
 	spawn_shutters()
 	.=..()
 
-/obj/structure/window/framed/prison/reinforced/hull/proc/spawn_shutters(var/from_dir = 0)
+/obj/structure/window/framed/prison/reinforced/hull/proc/spawn_shutters(from_dir = 0)
 	if(triggered)
 		return
 	else
@@ -916,7 +916,7 @@
 	spawn_shutters()
 	.=..()
 
-/obj/structure/window/framed/corsat/hull/proc/spawn_shutters(var/from_dir = 0)
+/obj/structure/window/framed/corsat/hull/proc/spawn_shutters(from_dir = 0)
 	if(triggered)
 		return
 

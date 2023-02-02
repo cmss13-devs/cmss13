@@ -510,10 +510,10 @@ What a mess.*/
 
 	return dat
 
-/obj/structure/machinery/computer/secure_data/proc/is_not_allowed(var/mob/user)
+/obj/structure/machinery/computer/secure_data/proc/is_not_allowed(mob/user)
 	return user.stat || user.is_mob_restrained() || (!in_range(src, user) && (!ishighersilicon(user)))
 
-/obj/structure/machinery/computer/secure_data/proc/get_photo(var/mob/user)
+/obj/structure/machinery/computer/secure_data/proc/get_photo(mob/user)
 	if(istype(user.get_active_hand(), /obj/item/photo))
 		var/obj/item/photo/photo = user.get_active_hand()
 		return photo.img

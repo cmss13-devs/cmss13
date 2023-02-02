@@ -106,7 +106,7 @@ log transactions
 	else
 		..()
 
-/obj/structure/machinery/atm/proc/drop_money(var/turf)
+/obj/structure/machinery/atm/proc/drop_money(turf)
 		playsound(turf, "sound/machines/ping.ogg", 15)
 		new /obj/item/spacecash/c100(turf)
 
@@ -205,7 +205,7 @@ log transactions
 	else
 		close_browser(user,"atm")
 
-/obj/structure/machinery/atm/Topic(var/href, var/href_list)
+/obj/structure/machinery/atm/Topic(href, href_list)
 	. = ..()
 	if(.)
 		return
@@ -494,7 +494,7 @@ log transactions
 		to_chat(usr, "There is nothing to remove from \the [src].")
 	return
 
-/obj/structure/machinery/atm/proc/spawn_ewallet(var/sum, loc, mob/living/carbon/human/human_user as mob)
+/obj/structure/machinery/atm/proc/spawn_ewallet(sum, loc, mob/living/carbon/human/human_user as mob)
 	var/obj/item/spacecash/ewallet/E = new /obj/item/spacecash/ewallet(loc)
 	if(ishuman(human_user) && !human_user.get_active_hand())
 		human_user.put_in_hands(E)

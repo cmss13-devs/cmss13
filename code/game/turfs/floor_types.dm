@@ -222,12 +222,12 @@
 /turf/open/floor/almayer/empty/attackby() //This should fix everything else. No cables, etc
 	return
 
-/turf/open/floor/almayer/empty/Entered(var/atom/movable/AM)
+/turf/open/floor/almayer/empty/Entered(atom/movable/AM)
 	..()
 	if(!isobserver(AM))
 		addtimer(CALLBACK(src, PROC_REF(enter_depths), AM), 0.2 SECONDS)
 
-/turf/open/floor/almayer/empty/proc/enter_depths(var/atom/movable/AM)
+/turf/open/floor/almayer/empty/proc/enter_depths(atom/movable/AM)
 	if(AM.throwing == 0 && istype(get_turf(AM), /turf/open/floor/almayer/empty))
 		AM.visible_message(SPAN_WARNING("[AM] falls into the depths!"), SPAN_WARNING("You fall into the depths!"))
 		for(var/i in GLOB.disposal_retrieval_list)

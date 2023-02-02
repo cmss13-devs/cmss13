@@ -53,7 +53,7 @@ var/datum/controller/supply/supply_controller = new()
 	layer = MOB_LAYER
 	var/collide_message_busy // Timer to stop collision spam
 
-/obj/structure/plasticflaps/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/obj/structure/plasticflaps/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_can_pass_all = PASS_UNDER|PASS_THROUGH
@@ -68,7 +68,7 @@ var/datum/controller/supply/supply_controller = new()
 	var/mob/living/carbon/C = AM
 	if (!istype(C))
 		return
-	if (isHumanStrict(C))
+	if (ishuman_strict(C))
 		return
 	if(collide_message_busy > world.time)
 		return
@@ -575,13 +575,13 @@ var/datum/controller/supply/supply_controller = new()
 
 	name = "[name] - [ordername]"
 
-/obj/structure/machinery/computer/ordercomp/attack_remote(var/mob/user as mob)
+/obj/structure/machinery/computer/ordercomp/attack_remote(mob/user as mob)
 	return attack_hand(user)
 
-/obj/structure/machinery/computer/supplycomp/attack_remote(var/mob/user as mob)
+/obj/structure/machinery/computer/supplycomp/attack_remote(mob/user as mob)
 	return attack_hand(user)
 
-/obj/structure/machinery/computer/ordercomp/attack_hand(var/mob/user as mob)
+/obj/structure/machinery/computer/ordercomp/attack_hand(mob/user as mob)
 	if(..())
 		return
 	user.set_interaction(src)
@@ -704,7 +704,7 @@ var/datum/controller/supply/supply_controller = new()
 	updateUsrDialog()
 	return
 
-/obj/structure/machinery/computer/supplycomp/attack_hand(var/mob/user as mob)
+/obj/structure/machinery/computer/supplycomp/attack_hand(mob/user as mob)
 	if(!is_mainship_level(z)) return
 	if(!allowed(user))
 		to_chat(user, SPAN_DANGER("Access Denied."))
@@ -967,7 +967,7 @@ var/datum/controller/supply/supply_controller = new()
 	updateUsrDialog()
 	return
 
-/obj/structure/machinery/computer/supplycomp/proc/post_signal(var/command)
+/obj/structure/machinery/computer/supplycomp/proc/post_signal(command)
 
 	var/datum/radio_frequency/frequency = SSradio.return_frequency(1435)
 
@@ -1002,7 +1002,7 @@ var/datum/controller/supply/supply_controller = new()
 /datum/vehicle_order/proc/has_vehicle_lock()
 	return FALSE
 
-/datum/vehicle_order/proc/on_created(var/obj/vehicle/V)
+/datum/vehicle_order/proc/on_created(obj/vehicle/V)
 	return
 
 /datum/vehicle_order/tank
@@ -1028,15 +1028,18 @@ var/datum/controller/supply/supply_controller = new()
 	. = ..()
 
 	vehicles = list(
-		new/datum/vehicle_order/apc(),
-		new/datum/vehicle_order/apc/med(),
-		new/datum/vehicle_order/apc/cmd()
+		/datum/vehicle_order/apc,
+		/datum/vehicle_order/apc/med,
+		/datum/vehicle_order/apc/cmd,
 	)
+
+	for(var/order as anything in vehicles)
+		new order
 
 	if(!VehicleElevatorConsole)
 		VehicleElevatorConsole = src
 
-/obj/structure/machinery/computer/supplycomp/vehicle/attack_hand(var/mob/living/carbon/human/H as mob)
+/obj/structure/machinery/computer/supplycomp/vehicle/attack_hand(mob/living/carbon/human/H as mob)
 	if(inoperable())
 		return
 

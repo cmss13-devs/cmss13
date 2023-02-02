@@ -16,7 +16,7 @@
 
 	if(charging && !(inoperable()) )
 
-		var/newlevel = round(charging.percent() * 4.0 / 99)
+		var/newlevel = round(charging.percent() * 4 / 99)
 
 		if(chargelevel != newlevel)
 

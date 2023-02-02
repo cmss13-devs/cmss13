@@ -26,7 +26,7 @@
 	return pressure_adjustment_coefficient
 
 //Calculate how much of the enviroment pressure-difference affects the human.
-/mob/living/carbon/human/calculate_affecting_pressure(var/pressure)
+/mob/living/carbon/human/calculate_affecting_pressure(pressure)
 	var/pressure_difference
 
 	//First get the absolute pressure difference.
@@ -109,7 +109,7 @@
 
 /mob/living/carbon/human/proc/get_flags_heat_protection(temperature) //Temperature is the temperature you're being exposed to.
 	var/thermal_protection_flags = get_flags_heat_protection_flags(temperature)
-	var/thermal_protection = 0.0
+	var/thermal_protection = 0
 	if(thermal_protection_flags)
 		if(thermal_protection_flags & BODY_FLAG_HEAD)
 			thermal_protection += THERMAL_PROTECTION_HEAD
@@ -139,7 +139,7 @@
 
 
 //See proc/get_flags_heat_protection_flags(temperature) for the description of this proc.
-/mob/living/carbon/human/proc/get_flags_cold_protection_flags(temperature, var/deficit = 0)
+/mob/living/carbon/human/proc/get_flags_cold_protection_flags(temperature, deficit = 0)
 
 	var/thermal_protection_flags = 0
 
@@ -174,7 +174,7 @@
 /mob/living/carbon/human/proc/get_flags_cold_protection(temperature)
 	temperature = max(temperature, 2.7) //There is an occasional bug where the temperature is miscalculated in ares with a small amount of gas on them, so this is necessary to ensure that that bug does not affect this calculation. Space's temperature is 2.7K and most suits that are intended to protect against any cold, protect down to 2.0K.
 	var/thermal_protection_flags = get_flags_cold_protection_flags(temperature)
-	var/thermal_protection = 0.0
+	var/thermal_protection = 0
 
 	if(thermal_protection_flags)
 		if(thermal_protection_flags & BODY_FLAG_HEAD)
@@ -203,7 +203,7 @@
 	return min(1, thermal_protection)
 
 
-/mob/living/carbon/human/proc/process_glasses(var/obj/item/clothing/glasses/G)
+/mob/living/carbon/human/proc/process_glasses(obj/item/clothing/glasses/G)
 	if(!G || !G.active)
 		return
 	see_in_dark += G.darkness_view
@@ -304,7 +304,7 @@
 	SEND_SIGNAL(src, COMSIG_HUMAN_REVIVED)
 	track_revive(job)
 	GLOB.alive_mob_list += src
-	if(!isSynth(src) && !isYautja(src))
+	if(!issynth(src) && !isyautja(src))
 		GLOB.alive_human_list += src
 	GLOB.dead_mob_list -= src
 	timeofdeath = 0

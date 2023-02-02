@@ -23,7 +23,7 @@
 	maptext_x = 4
 	maptext_y = 3
 
-/obj/item/stack/Initialize(mapload, var/amount = null)
+/obj/item/stack/Initialize(mapload, amount = null)
 	. = ..()
 	if(amount)
 		src.amount = amount
@@ -241,7 +241,7 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 	if(src && usr.interactee == src) //do not reopen closed window
 		INVOKE_ASYNC(src, PROC_REF(interact), usr)
 
-/obj/item/stack/proc/check_one_per_turf(var/datum/stack_recipe/R, var/mob/user)
+/obj/item/stack/proc/check_one_per_turf(datum/stack_recipe/R, mob/user)
 	switch(R.one_per_turf)
 
 		if(ONE_TYPE_PER_TURF)
@@ -271,7 +271,7 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 		qdel(src)
 	return TRUE
 
-/obj/item/stack/proc/add(var/extra)
+/obj/item/stack/proc/add(extra)
 	if(amount + extra > max_amount)
 		return FALSE
 	amount += extra

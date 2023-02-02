@@ -204,11 +204,33 @@
 	accept_glass = 1
 	wrenchable = TRUE
 	network = "Misc"
-	dispensable_reagents = list("water","ice","coffee","cream","tea","cola","spacemountainwind","dr_gibb","space_up","tonic","sodawater","lemon_lime","sugar","orangejuice","limejuice",
-	"watermelonjuice","tomatojuice","carrotjuice","berryjuice","grapejuice","lemonjuice","banana")
+	dispensable_reagents = list(
+		"water",
+		"ice",
+		"coffee",
+		"cream",
+		"tea",
+		"cola",
+		"spacemountainwind",
+		"dr_gibb",
+		"space_up",
+		"tonic",
+		"sodawater",
+		"lemon_lime",
+		"sugar",
+		"orangejuice",
+		"limejuice",
+		"watermelonjuice",
+		"tomatojuice",
+		"carrotjuice",
+		"berryjuice",
+		"grapejuice",
+		"lemonjuice",
+		"banana",
+	)
 	var/hackedcheck = 0
 
-/obj/structure/machinery/chem_dispenser/soda/after_attack_by(var/obj/item/B as obj, var/mob/user as mob)
+/obj/structure/machinery/chem_dispenser/soda/attackby(obj/item/B as obj, mob/user as mob)
 	..()
 	if(HAS_TRAIT(B, TRAIT_TOOL_MULTITOOL))
 		if(hackedcheck == 0)
@@ -250,7 +272,7 @@
 	dispensable_reagents = list("water","ice","sodawater","sugar","tonic","beer","kahlua","whiskey","sake","wine","vodka","gin","rum","vermouth","cognac","ale","mead","thirteenloko","tequila")
 	var/hackedcheck = 0
 
-/obj/structure/machinery/chem_dispenser/beer/after_attack_by(var/obj/item/B as obj, var/mob/user as mob)
+/obj/structure/machinery/chem_dispenser/beer/attackby(obj/item/B as obj, mob/user as mob)
 	..()
 
 	if(HAS_TRAIT(B, TRAIT_TOOL_MULTITOOL))

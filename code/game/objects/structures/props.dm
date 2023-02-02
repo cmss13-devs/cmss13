@@ -22,7 +22,7 @@
 
 /obj/structure/prop/dam/drill/after_attack_by(obj/item/W, mob/user)
 	. = ..()
-	if(isXeno(user))
+	if(isxeno(user))
 		return
 	else if (ishuman(user) && istype(W, /obj/item/tool/wrench))
 		on = !on
@@ -491,7 +491,7 @@
 
 /obj/structure/prop/turbine/after_attack_by(obj/item/W, mob/user)
 	. = ..()
-	if(isXeno(user))
+	if(isxeno(user))
 		return
 	else if (ishuman(user) && istype(W, /obj/item/tool/crowbar))
 		on = !on
@@ -892,14 +892,45 @@
 	health = 30
 	var/inscription
 	var/obj/item/helmet
+	///This is for cross dogtags.
+	var/tagged = FALSE
+	///This is for cross engraving/writing.
+	var/engraved = FALSE
+	var/dogtag_name
+	var/dogtag_blood
+	var/dogtag_assign
 
 /obj/structure/prop/wooden_cross/Destroy()
 	if(helmet)
 		helmet.forceMove(loc)
 		helmet = null
+	if(tagged)
+		var/obj/item/dogtag/new_info_tag = new(loc)
+		new_info_tag.fallen_names = list(dogtag_name)
+		new_info_tag.fallen_assgns = list(dogtag_assign)
+		new_info_tag.fallen_blood_types = list(dogtag_blood)
+		fallen_list_cross -= dogtag_name
 	return ..()
 
-/obj/structure/prop/wooden_cross/after_attack_by(obj/item/W, mob/living/user)
+/obj/structure/prop/wooden_cross/attackby(obj/item/W, mob/living/user)
+	if(istype(W, /obj/item/dogtag))
+		var/obj/item/dogtag/dog = W
+		if(!tagged)
+			tagged = TRUE
+			user.visible_message(SPAN_NOTICE("[user] drapes the [W] around the [src]."))
+			dogtag_name = popleft(dog.fallen_names)
+			dogtag_assign = popleft(dog.fallen_assgns)
+			dogtag_blood = popleft(dog.fallen_blood_types)
+			fallen_list_cross += dogtag_name
+			update_icon()
+			if(!length(dog.fallen_names))
+				qdel(dog)
+			else
+				return
+		else
+			to_chat(user, SPAN_WARNING("There's already a dog tag on the [src]!"))
+			balloon_alert(user, "already a tag here!")
+
 	if(istype(W, /obj/item/clothing/head))
 		if(helmet)
 			to_chat(user, SPAN_WARNING("[helmet] is already resting atop [src]!"))
@@ -946,10 +977,12 @@
 				inscription += "\n[message]"
 			else
 				inscription = message
+				engraved = TRUE
 
 /obj/structure/prop/wooden_cross/get_examine_text(mob/user)
 	. = ..()
-	. += "There's something carved into it. It reads: \"[inscription]\""
+	. += (tagged ? "There's a dog tag draped around the cross. The dog tag reads, \"[dogtag_name] - [dogtag_assign] - [dogtag_blood]\"." : "There's no dog tag draped around the cross.")
+	. += (engraved ? "There's something carved into it. It reads: \"[inscription]\"" : "There's nothing carved into it.")
 
 /obj/structure/prop/wooden_cross/attack_hand(mob/user)
 	if(helmet)
@@ -959,7 +992,7 @@
 		helmet = null
 		overlays.Cut()
 
-/obj/structure/prop/wooden_cross/attack_alien(mob/living/carbon/Xenomorph/M)
+/obj/structure/prop/wooden_cross/attack_alien(mob/living/carbon/xenomorph/M)
 	M.animation_attack_on(src)
 	update_health(rand(M.melee_damage_lower, M.melee_damage_upper))
 	playsound(src, 'sound/effects/woodhit.ogg', 25, 1)
@@ -970,3 +1003,7 @@
 		M.visible_message(SPAN_DANGER("[M] slashes [src]!"), \
 		SPAN_DANGER("You slash [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	return XENO_ATTACK_ACTION
+
+/obj/structure/prop/wooden_cross/update_icon()
+	if(tagged)
+		overlays += mutable_appearance('icons/obj/structures/props/crosses.dmi', "cross_overlay")

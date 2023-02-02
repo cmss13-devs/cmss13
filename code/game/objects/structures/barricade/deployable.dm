@@ -104,7 +104,7 @@
 		user.put_in_active_hand(FB)
 	qdel(src)
 
-/obj/structure/barricade/deployable/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/obj/structure/barricade/deployable/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if(PF)
 		PF.flags_can_pass_front &= ~PASS_OVER_THROW_MOB

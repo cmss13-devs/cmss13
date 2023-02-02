@@ -73,7 +73,7 @@ var/list/robot_verbs_default = list(
 	var/scrambledcodes = 0 // Used to determine if a borg shows up on the robotics console.  Setting to one hides them.
 	var/braintype = "Cyborg"
 
-/mob/living/silicon/robot/New(loc,var/syndie = 0,var/unfinished = 0)
+/mob/living/silicon/robot/New(loc, syndie = 0, unfinished = 0)
 	spark_system = new /datum/effect_system/spark_spread()
 	spark_system.set_up(5, 0, src)
 	spark_system.attach(src)
@@ -236,7 +236,7 @@ var/list/robot_verbs_default = list(
 	choose_icon(6,module_sprites)
 	radio.config(module.channels)
 
-/mob/living/silicon/robot/proc/updatename(var/prefix as text)
+/mob/living/silicon/robot/proc/updatename(prefix as text)
 	if(prefix)
 		modtype = prefix
 	if(mmi)
@@ -396,7 +396,7 @@ var/list/robot_verbs_default = list(
 /mob/living/silicon/robot/is_mob_restrained()
 	return 0
 
-/mob/living/silicon/robot/bullet_act(var/obj/item/projectile/Proj)
+/mob/living/silicon/robot/bullet_act(obj/item/projectile/Proj)
 	..(Proj)
 	if(prob(75) && Proj.damage > 0) spark_system.start()
 	return 2
@@ -409,7 +409,7 @@ var/list/robot_verbs_default = list(
 		return
 
 
-/mob/living/silicon/robot/triggerAlarm(var/class, area/A, list/cameralist, var/source)
+/mob/living/silicon/robot/triggerAlarm(class, area/A, list/cameralist, source)
 	if (stat == 2)
 		return 1
 
@@ -418,7 +418,7 @@ var/list/robot_verbs_default = list(
 	queueAlarm(text("--- [class] alarm detected in [A.name]!"), class)
 
 
-/mob/living/silicon/robot/cancelAlarm(var/class, area/A as area, obj/origin)
+/mob/living/silicon/robot/cancelAlarm(class, area/A as area, obj/origin)
 	var/has_alarm = ..()
 
 	if (!has_alarm)
@@ -894,7 +894,7 @@ var/list/robot_verbs_default = list(
 
 	return
 
-/mob/living/silicon/robot/proc/choose_icon(var/triesleft, var/list/module_sprites)
+/mob/living/silicon/robot/proc/choose_icon(triesleft, list/module_sprites)
 
 	if(triesleft<1 || !module_sprites.len)
 		return
@@ -937,7 +937,7 @@ var/list/robot_verbs_default = list(
 
 // Uses power from cyborg's cell. Returns 1 on success or 0 on failure.
 // Properly converts using CELLRATE now! Amount is in Joules.
-/mob/living/silicon/robot/proc/cell_use_power(var/amount = 0)
+/mob/living/silicon/robot/proc/cell_use_power(amount = 0)
 	// No cell inserted
 	if(!cell)
 		return 0

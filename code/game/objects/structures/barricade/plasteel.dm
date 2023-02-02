@@ -205,7 +205,7 @@
 	. = ..()
 
 /obj/structure/barricade/plasteel/attack_hand(mob/user as mob)
-	if(isXeno(user))
+	if(isxeno(user))
 		return
 
 	if(closed)
@@ -232,7 +232,7 @@
 			if(istype(src, /obj/structure/barricade/plasteel))
 				recentlyflipped = FALSE
 
-/obj/structure/barricade/plasteel/proc/open(var/obj/structure/barricade/plasteel/origin)
+/obj/structure/barricade/plasteel/proc/open(obj/structure/barricade/plasteel/origin)
 	if(!closed)
 		return
 	playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
@@ -245,7 +245,7 @@
 					cade.open(src)
 	update_icon()
 
-/obj/structure/barricade/plasteel/proc/close(var/obj/structure/barricade/plasteel/origin)
+/obj/structure/barricade/plasteel/proc/close(obj/structure/barricade/plasteel/origin)
 	if(closed)
 		return
 	playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
@@ -266,7 +266,7 @@
 	update_icon()
 	. = ..()
 
-/obj/structure/barricade/plasteel/wired/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/obj/structure/barricade/plasteel/wired/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	flags_can_pass_front_temp &= ~PASS_OVER_THROW_MOB
 	flags_can_pass_behind_temp &= ~PASS_OVER_THROW_MOB

@@ -25,7 +25,7 @@
 	// To store what type of wall it used to be
 	var/original
 
-/obj/structure/girder/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/obj/structure/girder/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_can_pass_all = PASS_THROUGH|PASS_HIGH_OVER_ONLY
@@ -118,7 +118,7 @@
 			return
 	..()
 
-/obj/structure/girder/proc/change_state(var/obj/item/W, var/mob/user)
+/obj/structure/girder/proc/change_state(obj/item/W, mob/user)
 	switch(state)
 		if(STATE_STANDARD)
 			if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER))
@@ -185,7 +185,7 @@
 				return TRUE
 	return FALSE
 
-/obj/structure/girder/proc/do_dismantle(var/obj/item/W, var/mob/user)
+/obj/structure/girder/proc/do_dismantle(obj/item/W, mob/user)
 	if(!(state == STATE_DISMANTLING))
 		return FALSE
 
@@ -226,7 +226,7 @@
 		new /obj/item/stack/sheet/metal(loc, 2)
 	return ..()
 
-/obj/structure/girder/proc/do_wall(var/obj/item/W, var/mob/user)
+/obj/structure/girder/proc/do_wall(obj/item/W, mob/user)
 	if(!(state == STATE_WALL))
 		return FALSE
 
@@ -267,7 +267,7 @@
 		return TRUE
 	return FALSE
 
-/obj/structure/girder/proc/do_reinforced_wall(var/obj/item/W, var/mob/user)
+/obj/structure/girder/proc/do_reinforced_wall(obj/item/W, mob/user)
 	if(!(state == STATE_REINFORCED_WALL))
 		return FALSE
 
@@ -316,7 +316,7 @@
 
 	return FALSE
 
-/obj/structure/girder/bullet_act(var/obj/item/projectile/P)
+/obj/structure/girder/bullet_act(obj/item/projectile/P)
 	//Tasers and the like should not damage girders.
 	if(P.ammo.damage_type == HALLOSS || P.ammo.damage_type == TOX || P.ammo.damage_type == CLONE || P.damage == 0)
 		return FALSE

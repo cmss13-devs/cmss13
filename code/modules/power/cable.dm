@@ -78,7 +78,7 @@
 	GLOB.cable_list -= src
 	return ..()
 
-/obj/structure/cable/hide(var/i)
+/obj/structure/cable/hide(i)
 
 	if(level == 1 && istype(loc, /turf))
 		invisibility = i ? 101 : 0
@@ -138,7 +138,7 @@
 
 // shock the user with probability prb
 
-/obj/structure/cable/proc/shock(mob/user, prb, var/siemens_coeff = 1.0)
+/obj/structure/cable/proc/shock(mob/user, prb, siemens_coeff = 1.0)
 	if(!prob(prb))
 		return 0
 	if (electrocute_mob(user, powernet, src, siemens_coeff))
@@ -177,7 +177,7 @@
 		new/obj/item/stack/cable_coil(src.loc, src.d1 ? 2 : 1, color)
 	return ..()
 
-/obj/structure/cable/proc/cableColor(var/colorC)
+/obj/structure/cable/proc/cableColor(colorC)
 	if(colorC)
 		color = colorC
 	else

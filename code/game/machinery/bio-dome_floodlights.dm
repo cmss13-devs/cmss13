@@ -141,7 +141,7 @@
 			to_chat(user, SPAN_WARNING("It's already damaged."))
 			return 0
 		else
-			if(isXenoLarva(user))
+			if(islarva(user))
 				return //Larvae can't do shit
 			if(user.get_active_hand())
 				to_chat(user, SPAN_WARNING("You need your claws empty for this!"))

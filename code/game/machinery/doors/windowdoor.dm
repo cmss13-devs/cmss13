@@ -5,8 +5,8 @@
 	icon_state = "left"
 	layer = WINDOW_LAYER
 	var/base_state = "left"
-	health = 150.0 //If you change this, consiter changing ../door/window/brigdoor/ health at the bottom of this .dm file
-	visible = 0.0
+	health = 150 //If you change this, consiter changing ../door/window/brigdoor/ health at the bottom of this .dm file
+	visible = 0
 	use_power = USE_POWER_NONE
 	flags_atom = ON_BORDER
 	opacity = FALSE
@@ -25,7 +25,7 @@
 	playsound(src, "windowshatter", 50, 1)
 	. = ..()
 
-/obj/structure/machinery/door/window/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/obj/structure/machinery/door/window/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_can_pass_all = PASS_GLASS
@@ -91,7 +91,7 @@
 	src.operating = 0
 	return 1
 
-/obj/structure/machinery/door/window/proc/take_damage(var/damage)
+/obj/structure/machinery/door/window/proc/take_damage(damage)
 	src.health = max(0, src.health - damage)
 	if (src.health <= 0)
 		new /obj/item/shard(src.loc)
@@ -119,7 +119,7 @@
 		qdel(src)
 		return
 
-/obj/structure/machinery/door/window/bullet_act(var/obj/item/projectile/Proj)
+/obj/structure/machinery/door/window/bullet_act(obj/item/projectile/Proj)
 	bullet_ping(Proj)
 	if(Proj.ammo.damage)
 		take_damage(round(Proj.ammo.damage / 2))
@@ -216,7 +216,7 @@
 	name = "Secure glass door"
 	desc = "A thick chunk of tempered glass on metal track. Probably more robust than you."
 	req_access = list(ACCESS_MARINE_BRIG)
-	health = 300.0 //Stronger doors for prison (regular window door health is 150)
+	health = 300 //Stronger doors for prison (regular window door health is 150)
 
 
 /obj/structure/machinery/door/window/northleft

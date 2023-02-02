@@ -68,9 +68,9 @@
 	else
 		src.toggle(user)
 
-/obj/structure/closet/crate/secure/after_attack_by(obj/item/W as obj, mob/user as mob)
-	if(isXeno(user))
-		var/mob/living/carbon/Xenomorph/opener = user
+/obj/structure/closet/crate/secure/attackby(obj/item/W as obj, mob/user as mob)
+	if(isxeno(user))
+		var/mob/living/carbon/xenomorph/opener = user
 		src.attack_alien(opener)
 		return
 	if(is_type_in_list(W, list(/obj/item/packageWrap, /obj/item/stack/cable_coil, /obj/item/device/radio/electropack, /obj/item/tool/wirecutters, /obj/item/tool/weldingtool)))

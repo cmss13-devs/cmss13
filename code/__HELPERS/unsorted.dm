@@ -62,11 +62,11 @@
 // GLOBAL PROCS //
 
 //Returns the middle-most value
-/proc/dd_range(var/low, var/high, var/num)
+/proc/dd_range(low, high, num)
 	return max(low,min(high,num))
 
 //Returns whether or not A is the middle most value
-/proc/InRange(var/A, var/lower, var/upper)
+/proc/InRange(A, lower, upper)
 	if(A < lower) return 0
 	if(A > upper) return 0
 	return 1
@@ -99,7 +99,7 @@
 		var/atom/movable/big_subject = subject
 		. += (big_subject.bound_height  - world.icon_size) / 2
 
-/proc/Get_Angle(atom/start,atom/end, var/tile_bound = FALSE)//For beams.
+/proc/Get_Angle(atom/start,atom/end, tile_bound = FALSE)//For beams.
 	if(!start || !end) return 0
 	if(!start.z || !end.z) return 0 //Atoms are not on turfs.
 	var/dx
@@ -157,7 +157,7 @@
 //
 // This is a copy-and-paste of the Enter() proc for turfs with tweaks related to the applications
 // of LinkBlocked
-/proc/LinkBlocked(var/atom/movable/mover, var/turf/start_turf, var/turf/target_turf, var/list/atom/forget)
+/proc/LinkBlocked(atom/movable/mover, turf/start_turf, turf/target_turf, list/atom/forget)
 	if (!mover)
 		return null
 
@@ -273,7 +273,7 @@
 
 //This will update a mob's name, real_name, mind.name, data_core records, pda and id
 //Calling this proc without an oldname will only update the mob and skip updating the pda, id and records ~Carn
-/mob/proc/fully_replace_character_name(var/oldname,var/newname)
+/mob/proc/fully_replace_character_name(oldname, newname)
 	if(!newname) return 0
 	change_real_name(src, newname)
 
@@ -305,7 +305,7 @@
 
 //Generalised helper proc for letting mobs rename themselves. Used to be clname() and ainame()
 //Last modified by Carn
-/mob/proc/rename_self(var/role, var/allow_numbers=0)
+/mob/proc/rename_self(role, allow_numbers=0)
 	var/oldname = real_name
 	var/time_passed = world.time
 
@@ -361,7 +361,7 @@
 
 	return selected
 
-/proc/select_active_ai(var/mob/user)
+/proc/select_active_ai(mob/user)
 	var/list/ais = active_ais()
 	if(ais.len)
 		if(user) . = tgui_input_list(usr,"AI signals detected:", "AI selection", ais)
@@ -450,7 +450,7 @@
 	var/list/creatures = list()
 	var/list/namecounts = list()
 	for(var/mob/M in mobs)
-		if(!isYautja(M)) continue
+		if(!isyautja(M)) continue
 		var/name = M.name
 		if (name in names)
 			namecounts[name]++
@@ -474,7 +474,7 @@
 	var/list/creatures = list()
 	var/list/namecounts = list()
 	for(var/mob/M in mobs)
-		if(isYautja(M)) continue
+		if(isyautja(M)) continue
 		if(iszombie(M)) continue
 		var/name = M.name
 		if (name in names)
@@ -499,7 +499,7 @@
 	var/list/creatures = list()
 	var/list/namecounts = list()
 	for(var/mob/M in mobs)
-		if(isYautja(M)) continue
+		if(isyautja(M)) continue
 		if(iszombie(M)) continue
 		var/name = M.name
 		if (name in names)
@@ -524,7 +524,7 @@
 	var/list/creatures = list()
 	var/list/namecounts = list()
 	for(var/mob/M in mobs)
-		if(isYautja(M)) continue
+		if(isyautja(M)) continue
 		if(iszombie(M)) continue
 		var/name = M.name
 		if (name in names)
@@ -549,7 +549,7 @@
 	var/list/creatures = list()
 	var/list/namecounts = list()
 	for(var/mob/M in mobs)
-		if(isYautja(M)) continue
+		if(isyautja(M)) continue
 		if(iszombie(M)) continue
 		var/name = M.name
 		if (name in names)
@@ -622,7 +622,7 @@
 		moblist.Add(M)
 	for(var/mob/living/brain/M in sortmob)
 		moblist.Add(M)
-	for(var/mob/living/carbon/Xenomorph/M in sortmob)
+	for(var/mob/living/carbon/xenomorph/M in sortmob)
 		moblist.Add(M)
 	for(var/mob/dead/observer/M in sortmob)
 		moblist.Add(M)
@@ -637,7 +637,7 @@
 /proc/sortxenos()
 	var/list/xenolist = list()
 	var/list/sortmob = sortAtom(GLOB.xeno_mob_list)
-	for(var/mob/living/carbon/Xenomorph/M in sortmob)
+	for(var/mob/living/carbon/xenomorph/M in sortmob)
 		if(!M.client)
 			continue
 		xenolist.Add(M)
@@ -685,12 +685,12 @@
 	var/list/synthlist = list()
 	var/list/sortmob = sortAtom(GLOB.human_mob_list)
 	for(var/mob/living/carbon/human/M in sortmob)
-		if(!M.client || !isSynth(M))
+		if(!M.client || !issynth(M))
 			continue
 		synthlist.Add(M)
 	return synthlist
 
-/proc/key_name(var/whom, var/include_link = null, var/include_name = 1, var/highlight_special_characters = 1)
+/proc/key_name(whom, include_link = null, include_name = 1, highlight_special_characters = 1)
 	var/mob/M
 	var/client/C
 	var/key
@@ -736,13 +736,13 @@
 
 	return .
 
-/proc/key_name_admin(var/whom, var/include_name = 1)
+/proc/key_name_admin(whom, include_name = 1)
 	return key_name(whom, 1, include_name)
 
 
 // returns the turf located at the map edge in the specified direction relative to A
 // used for mass driver
-/proc/get_edge_target_turf(var/atom/A, var/direction)
+/proc/get_edge_target_turf(atom/A, direction)
 
 	var/turf/target = locate(A.x, A.y, A.z)
 	if(!A || !target)
@@ -784,7 +784,7 @@
 // result is bounded to map size
 // note range is non-pythagorean
 // used for disposal system
-/proc/get_ranged_target_turf(var/atom/A, var/direction, var/range)
+/proc/get_ranged_target_turf(atom/A, direction, range)
 
 	var/x = A.x
 	var/y = A.y
@@ -801,7 +801,7 @@
 
 // returns turf relative to A for a given clockwise angle at set range
 // result is bounded to map size
-/proc/get_angle_target_turf(var/atom/A, var/angle, var/range)
+/proc/get_angle_target_turf(atom/A, angle, range)
 	if(!istype(A))
 		return null
 	var/x = A.x
@@ -842,7 +842,7 @@
 
 // returns turf relative to A offset in dx and dy tiles
 // bound to map limits
-/proc/get_offset_target_turf(var/atom/A, var/dx, var/dy)
+/proc/get_offset_target_turf(atom/A, dx, dy)
 	var/x = min(world.maxx, max(1, A.x + dx))
 	var/y = min(world.maxy, max(1, A.y + dy))
 	return locate(x,y,A.z)
@@ -884,7 +884,7 @@
 	return toReturn
 
 //Step-towards method of determining whether one atom can see another. Similar to viewers()
-/proc/can_see(var/atom/source, var/atom/target, var/length=5) // I couldnt be arsed to do actual raycasting :I This is horribly inaccurate.
+/proc/can_see(atom/source, atom/target, length=5) // I couldnt be arsed to do actual raycasting :I This is horribly inaccurate.
 	var/turf/current = get_turf(source)
 	var/turf/target_turf = get_turf(target)
 	var/steps = 0
@@ -905,7 +905,7 @@
 
 	return TRUE
 
-/proc/is_blocked_turf(var/turf/T)
+/proc/is_blocked_turf(turf/T)
 	if(T.density)
 		return TRUE
 	for(var/atom/A in T)
@@ -1043,8 +1043,8 @@ var/global/image/action_purple_power_up
 		has_target = TRUE
 
 	// Only living mobs can perform timed actions.
-	var/mob/living/L = user
-	if(!istype(L))
+	var/mob/living/busy_user = user
+	if(!istype(busy_user))
 		return FALSE
 
 	// This var will only be used for checks that require target to be living.
@@ -1057,41 +1057,37 @@ var/global/image/action_purple_power_up
 	if(show_busy_icon)
 		busy_icon = get_busy_icon(show_busy_icon)
 		if(busy_icon)
-			busy_icon.appearance_flags = RESET_ALPHA|KEEP_APART
-			busy_icon.alpha = 255
-			L.overlays += busy_icon
+			busy_user.overlays += busy_icon
 
 	var/image/target_icon
 	if(show_target_icon) //putting a busy overlay on top of the target
 		target_icon = get_busy_icon(show_target_icon)
 		if(target_icon)
-			target_icon.appearance_flags = RESET_ALPHA|KEEP_APART
-			target_icon.alpha = 255
 			target.overlays += target_icon
 
 	if(user_flags & BEHAVIOR_IMMOBILE)
-		L.status_flags |= IMMOBILE_ACTION
+		busy_user.status_flags |= IMMOBILE_ACTION
 
-	L.action_busy++ // target is not tethered by action, the action is tethered by target though
-	L.resisting = FALSE
-	L.clicked_something = list()
+	busy_user.action_busy++ // target is not tethered by action, the action is tethered by target though
+	busy_user.resisting = FALSE
+	busy_user.clicked_something = list()
 	if(has_target && target_is_mob)
 		T.resisting = FALSE
 		T.clicked_something = list()
 
-	var/cur_user_zone_sel = L.zone_selected
+	var/cur_user_zone_sel = busy_user.zone_selected
 	var/cur_target_zone_sel
 	var/delayfraction = Ceiling(delay/numticks)
-	var/user_orig_loc = L.loc
-	var/user_orig_turf = get_turf(L)
+	var/user_orig_loc = busy_user.loc
+	var/user_orig_turf = get_turf(busy_user)
 	var/target_orig_loc
 	var/target_orig_turf
 	if(has_target)
 		target_orig_loc = target.loc
 		target_orig_turf = get_turf(target)
-	var/obj/user_holding = L.get_active_hand()
+	var/obj/user_holding = busy_user.get_active_hand()
 	var/obj/target_holding
-	var/cur_user_lying = L.lying
+	var/cur_user_lying = busy_user.lying
 	var/cur_target_lying
 	var/expected_total_time = delayfraction*numticks
 	var/time_remaining = expected_total_time
@@ -1105,46 +1101,46 @@ var/global/image/action_purple_power_up
 	for(var/i in 1 to numticks)
 		sleep(delayfraction)
 		time_remaining -= delayfraction
-		if(!istype(L) || has_target && !istype(target)) // Checks if L exists and is not dead and if the target exists and is not destroyed
+		if(!istype(busy_user) || has_target && !istype(target)) // Checks if busy_user exists and is not dead and if the target exists and is not destroyed
 			. = FALSE
 			break
-		if(user_flags & INTERRUPT_DIFF_LOC && L.loc != user_orig_loc || \
+		if(user_flags & INTERRUPT_DIFF_LOC && busy_user.loc != user_orig_loc || \
 			has_target && (target_flags & INTERRUPT_DIFF_LOC && target.loc != target_orig_loc)
 		)
 			. = FALSE
 			break
-		if(user_flags & INTERRUPT_DIFF_TURF && get_turf(L) != user_orig_turf || \
+		if(user_flags & INTERRUPT_DIFF_TURF && get_turf(busy_user) != user_orig_turf || \
 			has_target && (target_flags & INTERRUPT_DIFF_TURF && get_turf(target) != target_orig_turf)
 		)
 			. = FALSE
 			break
-		if(user_flags & INTERRUPT_UNCONSCIOUS && L.stat || \
+		if(user_flags & INTERRUPT_UNCONSCIOUS && busy_user.stat || \
 			target_is_mob && (target_flags & INTERRUPT_UNCONSCIOUS && T.stat)
 		)
 			. = FALSE
 			break
-		if(user_flags & INTERRUPT_KNOCKED_DOWN && L.knocked_down || \
+		if(user_flags & INTERRUPT_KNOCKED_DOWN && busy_user.knocked_down || \
 			target_is_mob && (target_flags & INTERRUPT_KNOCKED_DOWN && T.knocked_down)
 		)
 			. = FALSE
 			break
-		if(user_flags & INTERRUPT_STUNNED && L.stunned || \
+		if(user_flags & INTERRUPT_STUNNED && busy_user.stunned || \
 			target_is_mob && (target_flags & INTERRUPT_STUNNED && T.stunned)
 		)
 			. = FALSE
 			break
-		if(user_flags & INTERRUPT_DAZED && L.dazed)
+		if(user_flags & INTERRUPT_DAZED && busy_user.dazed)
 			. = FALSE
 			break
-		if(user_flags & INTERRUPT_EMOTE && !L.flags_emote)
+		if(user_flags & INTERRUPT_EMOTE && !busy_user.flags_emote)
 			. = FALSE
 			break
 		if(user_flags & INTERRUPT_NEEDHAND)
 			if(user_holding)
-				if(!user_holding.loc || L.get_active_hand() != user_holding) //no longer holding the required item
+				if(!user_holding.loc || busy_user.get_active_hand() != user_holding) //no longer holding the required item
 					. = FALSE
 					break
-			else if(L.get_active_hand()) //something in active hand when we need it to stay empty
+			else if(busy_user.get_active_hand()) //something in active hand when we need it to stay empty
 				. = FALSE
 				break
 		if(target_is_mob && target_flags & INTERRUPT_NEEDHAND)
@@ -1155,72 +1151,72 @@ var/global/image/action_purple_power_up
 			else if(T.get_active_hand())
 				. = FALSE
 				break
-		if(user_flags & INTERRUPT_RESIST && L.resisting || \
+		if(user_flags & INTERRUPT_RESIST && busy_user.resisting || \
 			target_is_mob && (target_flags & INTERRUPT_RESIST && T.resisting)
 		)
 			. = FALSE
 			break
-		if(user_flags & INTERRUPT_DIFF_SELECT_ZONE && cur_user_zone_sel != L.zone_selected || \
+		if(user_flags & INTERRUPT_DIFF_SELECT_ZONE && cur_user_zone_sel != busy_user.zone_selected || \
 			target_is_mob && (target_flags & INTERRUPT_DIFF_SELECT_ZONE && cur_target_zone_sel != T.zone_selected)
 		)
 			. = FALSE
 			break
-		if((user_flags|target_flags) & INTERRUPT_OUT_OF_RANGE && target && get_dist(L, target) > max_dist)
+		if((user_flags|target_flags) & INTERRUPT_OUT_OF_RANGE && target && get_dist(busy_user, target) > max_dist)
 			. = FALSE
 			break
-		if(user_flags & INTERRUPT_LCLICK && L.clicked_something["left"] || \
+		if(user_flags & INTERRUPT_LCLICK && busy_user.clicked_something["left"] || \
 			target_is_mob && (target_flags & INTERRUPT_LCLICK && T.clicked_something["left"])
 		)
 			. = FALSE
 			break
-		if(user_flags & INTERRUPT_RCLICK && L.clicked_something["right"] || \
+		if(user_flags & INTERRUPT_RCLICK && busy_user.clicked_something["right"] || \
 			target_is_mob && (target_flags & INTERRUPT_RCLICK && T.clicked_something["right"])
 		)
 			. = FALSE
 			break
-		if(user_flags & INTERRUPT_SHIFTCLICK && L.clicked_something["left"] && L.clicked_something["shift"] || \
+		if(user_flags & INTERRUPT_SHIFTCLICK && busy_user.clicked_something["left"] && busy_user.clicked_something["shift"] || \
 			target_is_mob && (target_flags & INTERRUPT_SHIFTCLICK && T.clicked_something["left"] && T.clicked_something["shift"])
 		)
 			. = FALSE
 			break
-		if(user_flags & INTERRUPT_ALTCLICK && L.clicked_something["left"] && L.clicked_something["alt"] || \
+		if(user_flags & INTERRUPT_ALTCLICK && busy_user.clicked_something["left"] && busy_user.clicked_something["alt"] || \
 			target_is_mob && (target_flags & INTERRUPT_ALTCLICK && T.clicked_something["left"] && T.clicked_something["alt"])
 		)
 			. = FALSE
 			break
-		if(user_flags & INTERRUPT_CTRLCLICK && L.clicked_something["left"] && L.clicked_something["ctrl"] || \
+		if(user_flags & INTERRUPT_CTRLCLICK && busy_user.clicked_something["left"] && busy_user.clicked_something["ctrl"] || \
 			target_is_mob && (target_flags & INTERRUPT_CTRLCLICK && T.clicked_something["left"] && T.clicked_something["ctrl"])
 		)
 			. = FALSE
 			break
-		if(user_flags & INTERRUPT_MIDDLECLICK && L.clicked_something["middle"] || \
+		if(user_flags & INTERRUPT_MIDDLECLICK && busy_user.clicked_something["middle"] || \
 			target_is_mob && (target_flags & INTERRUPT_MIDDLECLICK && T.clicked_something["middle"])
 		)
 			. = FALSE
 			break
-		if(user_flags & INTERRUPT_CHANGED_LYING && L.lying != cur_user_lying || \
+		if(user_flags & INTERRUPT_CHANGED_LYING && busy_user.lying != cur_user_lying || \
 			target_is_mob && (target_flags & INTERRUPT_CHANGED_LYING && T.lying != cur_target_lying)
 		)
 			. = FALSE
 			break
 
-	if(L && busy_icon)
-		L.overlays -= busy_icon
+	if(busy_user && busy_icon)
+		busy_user.overlays -= busy_icon
 	if(target && target_icon)
 		target.overlays -= target_icon
 
-	L.action_busy--
-	L.resisting = FALSE
+	busy_user.action_busy--
+	busy_user.resisting = FALSE
 	if(target_is_mob)
 		T.resisting = FALSE
-	L.status_flags &= ~IMMOBILE_ACTION
+	busy_user.status_flags &= ~IMMOBILE_ACTION
 
 	if (show_remaining_time)
 		return (. ? 0 : time_remaining/expected_total_time) // If action was not interrupted, return 0 for no time left, otherwise return ratio of time remaining
 
 //Takes: Anything that could possibly have variables and a varname to check.
 //Returns: 1 if found, 0 if not.
-/proc/hasvar(var/datum/A, var/varname)
+/proc/hasvar(datum/A, varname)
 	if(A.vars.Find(lowertext(varname))) return 1
 	else return 0
 
@@ -1264,7 +1260,7 @@ var/global/image/action_purple_power_up
 	var/y_pos = null
 	var/z_pos = null
 
-/datum/coords/New(var/turf/location)
+/datum/coords/New(turf/location)
 	. = ..()
 	if(location)
 		x_pos = location.x
@@ -1277,7 +1273,7 @@ var/global/image/action_purple_power_up
 
 	return locate(x_pos, y_pos, z_pos)
 
-/area/proc/move_contents_to(var/area/A, var/turftoleave=null, var/direction = null)
+/area/proc/move_contents_to(area/A, turftoleave=null, direction = null)
 	//Takes: Area. Optional: turf type to leave behind.
 	//Returns: Nothing.
 	//Notes: Attempts to move the contents of one area to another area.
@@ -1419,7 +1415,7 @@ var/global/image/action_purple_power_up
 
 
 //Returns the 2 dirs perpendicular to the arg
-/proc/get_perpen_dir(var/dir)
+/proc/get_perpen_dir(dir)
 	if(dir & (dir-1))
 		return 0 //diagonals
 	if(dir & (EAST|WEST))
@@ -1443,7 +1439,7 @@ var/global/image/action_purple_power_up
 	else if (zone == "r_foot") return "right foot"
 	else return zone
 
-/proc/get_true_location(var/atom/loc)
+/proc/get_true_location(atom/loc)
 	var/atom/subLoc = loc
 	while(subLoc.z == 0)
 		if (istype(subLoc.loc, /atom))
@@ -1631,7 +1627,7 @@ var/list/WALLITEMS = list(
 
 #undef DELTA_CALC
 
-/proc/get_random_turf_in_range(var/atom/origin, var/outer_range, var/inner_range)
+/proc/get_random_turf_in_range(atom/origin, outer_range, inner_range)
 	origin = get_turf(origin)
 	if(!origin)
 		return
@@ -1642,7 +1638,7 @@ var/list/WALLITEMS = list(
 	if(turfs.len)
 		return pick(turfs)
 
-/proc/input_marked_datum(var/list/marked_datums)
+/proc/input_marked_datum(list/marked_datums)
 	if(!marked_datums.len)
 		return null
 
@@ -1667,7 +1663,7 @@ var/list/WALLITEMS = list(
 // * The dropship crash hasn't happened yet
 // * An admin hasn't disabled explosive antigrief
 // Certain areas may be exempt from this check. Look up explosive_antigrief_exempt_areas
-/proc/explosive_antigrief_check(var/obj/item/explosive/explosive, var/mob/user)
+/proc/explosive_antigrief_check(obj/item/explosive/explosive, mob/user)
 	var/turf/Turf = get_turf(explosive)
 	if(!(Turf.loc.type in GLOB.explosive_antigrief_exempt_areas))
 		var/crash_occured = (SSticker?.mode?.is_in_endgame)
@@ -1683,7 +1679,7 @@ var/list/WALLITEMS = list(
 	return FALSE
 
 // Returns only the perimeter of the block given by the min and max turfs
-/proc/blockhollow(var/turf/min, var/turf/max)
+/proc/blockhollow(turf/min, turf/max)
 	var/list/perimeter_turfs = list()
 
 	// Upper/lower perimeters
@@ -1698,11 +1694,11 @@ var/list/WALLITEMS = list(
 
 	return perimeter_turfs
 
-/proc/flick_overlay(var/atom/target, overlay, time)
+/proc/flick_overlay(atom/target, overlay, time)
 	target.overlays += overlay
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(remove_timed_overlay), target, overlay), time)
 
-/proc/remove_timed_overlay(var/atom/target, overlay)
+/proc/remove_timed_overlay(atom/target, overlay)
 	target.overlays -= overlay
 
 /*
@@ -1722,7 +1718,7 @@ var/list/WALLITEMS = list(
 
 	Basically, this is what happens: https://i.imgur.com/AuY7HHd.png
 */
-/proc/get_random_zero_sum_variances(var/amount, var/max_variance)
+/proc/get_random_zero_sum_variances(amount, max_variance)
 	// Displace each "point" to max variance
 	var/list/variances[amount]
 	for(var/i in 1 to variances.len)
@@ -1761,7 +1757,7 @@ var/list/WALLITEMS = list(
 
 	return variances
 
-/proc/check_bitflag(var/flag, var/bit)
+/proc/check_bitflag(flag, bit)
 	if(flag & bit)
 		return TRUE
 	return FALSE
@@ -1782,15 +1778,15 @@ var/list/WALLITEMS = list(
 			return TRUE
 
 //used to check if a mob can examine an object
-/atom/proc/can_examine(var/mob/user)
+/atom/proc/can_examine(mob/user)
 	if(!user.client)
 		return FALSE
 	if(isRemoteControlling(user))
 		return TRUE
 	// If the user is not a xeno (with active ability) with the shift click pref on, we examine. God forgive me for snowflake
 	if(user.client?.prefs && !(user.client?.prefs?.toggle_prefs & TOGGLE_MIDDLE_MOUSE_CLICK))
-		if(isXeno(user))
-			var/mob/living/carbon/Xenomorph/X = user
+		if(isxeno(user))
+			var/mob/living/carbon/xenomorph/X = user
 			if(X.selected_ability)
 				return FALSE
 		else if(ishuman(user))
@@ -1938,7 +1934,7 @@ GLOBAL_LIST_INIT(duplicate_forbidden_vars,list(
 		M.regenerate_icons()
 	return O
 
-/proc/convert_to_json_text(var/json_file_string)
+/proc/convert_to_json_text(json_file_string)
 	var/json_file = file(json_file_string)
 	json_file = file2text(json_file)
 	json_file = json_decode(json_file)

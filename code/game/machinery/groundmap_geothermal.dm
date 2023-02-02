@@ -133,7 +133,7 @@
 	start_processing()
 	return 1
 
-/obj/structure/machinery/power/geothermal/after_attack_by(var/obj/item/O as obj, var/mob/user as mob)
+/obj/structure/machinery/power/geothermal/attackby(obj/item/O as obj, mob/user as mob)
 	if(iswelder(O))
 		if(!HAS_TRAIT(O, TRAIT_TOOL_BLOWTORCH))
 			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))

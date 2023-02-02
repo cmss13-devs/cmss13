@@ -44,7 +44,7 @@ var/list/alldepartments = list()
 	allfaxes -= src
 	. = ..()
 
-/obj/structure/machinery/faxmachine/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/obj/structure/machinery/faxmachine/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_can_pass_all = PASS_HIGH_OVER_ONLY|PASS_AROUND|PASS_OVER_THROW_ITEM
@@ -239,7 +239,7 @@ var/list/alldepartments = list()
 	. += "<option value='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];USCMFaxReply=\ref[usr];originfax=\ref[src]'>Send USCM fax message</option>"
 	. += "<option value='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];CLFaxReply=\ref[usr];originfax=\ref[src]'>Send CL fax message</option>"
 
-/proc/highcom_fax(var/originfax, var/sent, var/sentname, var/mob/Sender)
+/proc/highcom_fax(originfax, sent, sentname, mob/Sender)
 	var/faxcontents = "[sent]"
 	GLOB.fax_contents += faxcontents
 
@@ -256,7 +256,7 @@ var/list/alldepartments = list()
 	GLOB.USCMFaxes.Add("<a href='?FaxView=\ref[faxcontents]'>\[view message at [world.timeofday]\]</a> <a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];USCMFaxReply=\ref[Sender];originfax=\ref[originfax]'>REPLY</a>")
 	announce_fax(msg_admin, msg_ghost)
 
-/proc/provost_fax(var/originfax, var/sent, var/sentname, var/mob/Sender)
+/proc/provost_fax(originfax, sent, sentname, mob/Sender)
 	var/faxcontents = "[sent]"
 	GLOB.fax_contents += faxcontents
 
@@ -274,7 +274,7 @@ var/list/alldepartments = list()
 	announce_fax(msg_admin, msg_ghost)
 
 
-/proc/company_fax(var/originfax, var/sent, var/sentname, var/mob/Sender)
+/proc/company_fax(originfax, sent, sentname, mob/Sender)
 	var/faxcontents = "[sent]"
 	GLOB.fax_contents += faxcontents
 	var/msg_admin = SPAN_NOTICE("<b><font color='#1F66A0'>WEYLAND-YUTANI FAX: </font>[key_name(Sender, 1)] ")
@@ -288,7 +288,7 @@ var/list/alldepartments = list()
 	GLOB.WYFaxes.Add("<a href='?FaxView=\ref[faxcontents]'>\[view message at [world.timeofday]\]</a> <a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];CLFaxReply=\ref[Sender];originfax=\ref[originfax]'>REPLY</a>")
 	announce_fax(msg_admin, msg_ghost)
 
-/proc/announce_fax(var/msg_admin, var/msg_ghost)
+/proc/announce_fax(msg_admin, msg_ghost)
 	log_admin(msg_admin) //Always irked me the replies do show up but the faxes themselves don't
 	for(var/client/C in GLOB.admins)
 		if((R_ADMIN|R_MOD) & C.admin_holder.rights)
@@ -309,12 +309,12 @@ var/list/alldepartments = list()
 			to_chat(C, msg_ghost)
 			C << 'sound/effects/sos-morse-code.ogg'
 
-/proc/general_fax(var/originfax, var/sent, var/sentname, var/mob/Sender)
+/proc/general_fax(originfax, sent, sentname, mob/Sender)
 	var/faxcontents = "[sent]"
 	GLOB.fax_contents += faxcontents
 	GLOB.GeneralFaxes.Add("<a href='?FaxView=\ref[faxcontents]'>\[view message at [world.timeofday]\]</a> <a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];CLFaxReply=\ref[Sender];originfax=\ref[originfax]'>REPLY</a>")
 
-/proc/SendFax(var/sent, var/sentname, var/mob/Sender, var/target_department, var/network, var/obj/structure/machinery/faxmachine/origin)
+/proc/SendFax(sent, sentname, mob/Sender, target_department, network, obj/structure/machinery/faxmachine/origin)
 	for(var/obj/structure/machinery/faxmachine/F in allfaxes)
 		if(F != origin && F.department == target_department)
 			if(! (F.inoperable() ) )

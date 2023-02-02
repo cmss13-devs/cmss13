@@ -7,8 +7,8 @@
 	opacity = FALSE
 	density = FALSE
 	anchored = FALSE
-	force = 1.0
-	throwforce = 1.0
+	force = 1
+	throwforce = 1
 	throw_speed = SPEED_FAST
 	throw_range = 2
 	w_class = SIZE_TINY
@@ -142,7 +142,7 @@
 	desc = "Ten US Government minted hundred-dollar bills. Every single damn one of them has Ben Fucking Franklin on them. The court of Bens sit impatiently, as if each one thought they alone belonged to you. This coven of angry Bens have all since learned about your relations with the other Bens, and they want answers."
 	worth = 1000
 
-/proc/spawn_money(var/sum, spawnloc, mob/living/carbon/human/human_user as mob)
+/proc/spawn_money(sum, spawnloc, mob/living/carbon/human/human_user as mob)
 	if(sum in list(1000,500,200,100,50,20,10,1))
 		var/cash_type = text2path("/obj/item/spacecash/c[sum]")
 		var/obj/cash = new cash_type (usr.loc)

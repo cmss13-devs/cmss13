@@ -27,11 +27,11 @@
 		HUMAN_MODE = /mob/living/carbon/human,
 		UPP_MODE = /mob/living/carbon/human,
 		CLF_MODE = /mob/living/carbon/human,
-		RUNNER_MODE = /mob/living/carbon/Xenomorph/Runner,
-		SPITTER_MODE = /mob/living/carbon/Xenomorph/Spitter,
-		DEFENDER_MODE = /mob/living/carbon/Xenomorph/Defender,
-		RAVAGER_MODE = /mob/living/carbon/Xenomorph/Ravager,
-		CRUSHER_MODE = /mob/living/carbon/Xenomorph/Crusher,
+		RUNNER_MODE = /mob/living/carbon/xenomorph/runner,
+		SPITTER_MODE = /mob/living/carbon/xenomorph/spitter,
+		DEFENDER_MODE = /mob/living/carbon/xenomorph/defender,
+		RAVAGER_MODE = /mob/living/carbon/xenomorph/ravager,
+		CRUSHER_MODE = /mob/living/carbon/xenomorph/crusher,
 	)
 
 /obj/effect/landmark/sim_target
@@ -192,7 +192,7 @@
 			dummy.name = "simulated human"
 			QDEL_IN(dummy, detonation_cooldown_time - 10 SECONDS)
 		else
-			var/mob/living/carbon/Xenomorph/xeno_dummy = new spawn_path(get_turf(spawn_loc))
+			var/mob/living/carbon/xenomorph/xeno_dummy = new spawn_path(get_turf(spawn_loc))
 			xeno_dummy.hardcore = TRUE
 			QDEL_IN(xeno_dummy, detonation_cooldown_time - 10 SECONDS)
 
@@ -214,7 +214,7 @@
 		if(O.warhead)
 			make_and_prime_explosive(O.warhead)
 
-/obj/structure/machinery/computer/demo_sim/proc/make_and_prime_explosive(var/obj/item/explosive/O)
+/obj/structure/machinery/computer/demo_sim/proc/make_and_prime_explosive(obj/item/explosive/O)
 	var/obj/item/explosive/E = new O.type(simulation.loc)
 	E.make_copy_of(O)
 	E.prime(TRUE)

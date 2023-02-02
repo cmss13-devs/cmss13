@@ -140,7 +140,7 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 /obj/structure/cryofeed
 
 	name = "hypersleep chamber feed"
-	desc = "A bewildering tangle of machinery and pipes linking the hypersleep chambers to the hypersleep bay.."
+	desc = "A bewildering tangle of machinery and pipes linking the hypersleep chambers to the hypersleep bay."
 	icon = 'icons/obj/structures/machinery/cryogenics.dmi'
 	icon_state = "cryo_rear"
 	anchored = TRUE
@@ -247,7 +247,7 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 
 	item_loop:
 		for(var/obj/item/W in items)
-			if(((W.flags_inventory & CANTSTRIP) || (W.flags_item & NODROP) || (W.flags_item & NO_CRYO_STORE)) && !isYautja(occupant)) //We don't keep donor items, undroppable/unremovable items, and specifically filtered items
+			if(((W.flags_inventory & CANTSTRIP) || (W.flags_item & NODROP) || (W.flags_item & NO_CRYO_STORE)) && !isyautja(occupant)) //We don't keep donor items, undroppable/unremovable items, and specifically filtered items
 				if(istype(W, /obj/item/clothing/suit/storage))
 					var/obj/item/clothing/suit/storage/SS = W
 					for(var/obj/item/I in SS.pockets) //But we keep stuff inside them
@@ -367,7 +367,7 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 	//Make an announcement and log the person entering storage.
 	GLOB.frozen_crew += "[occupant.real_name] ([occupant.job])"
 
-	if(!isYautja(occupant))
+	if(!isyautja(occupant))
 		ai_silent_announcement("[occupant.real_name], [occupant.job], has entered long-term hypersleep storage. Belongings moved to hypersleep inventory.")
 	visible_message(SPAN_NOTICE("[src] hums and hisses as it moves [occupant.real_name] into hypersleep storage."))
 
@@ -379,7 +379,7 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 /obj/structure/machinery/cryopod/after_attack_by(obj/item/W, mob/living/user)
 
 	if(istype(W, /obj/item/grab))
-		if(isXeno(user)) return
+		if(isxeno(user)) return
 		var/obj/item/grab/G = W
 		if(occupant)
 			to_chat(user, SPAN_WARNING("[src] is occupied."))
@@ -395,7 +395,7 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 			to_chat(user, SPAN_WARNING("[src] immediately rejects [M]. \He passed away!"))
 			return
 
-		if(isXeno(M))
+		if(isxeno(M))
 			to_chat(user, SPAN_WARNING("There is no way [src] will accept [M]!"))
 			return
 
@@ -474,7 +474,7 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 		to_chat(usr, SPAN_WARNING("[src] is occupied."))
 		return
 
-	if(isXeno(usr))
+	if(isxeno(usr))
 		to_chat(usr, SPAN_WARNING("There is no way [src] will accept you!"))
 		return
 
@@ -494,7 +494,7 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 		add_fingerprint(usr)
 
 
-/obj/structure/machinery/cryopod/proc/go_in_cryopod(mob/M, var/silent = FALSE)
+/obj/structure/machinery/cryopod/proc/go_in_cryopod(mob/M, silent = FALSE)
 	if(occupant)
 		return
 	M.forceMove(src)

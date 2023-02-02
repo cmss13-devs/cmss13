@@ -100,7 +100,7 @@
 	..()
 	read_paper(user)
 
-/obj/item/paper/attack_remote(var/mob/living/silicon/ai/user as mob)
+/obj/item/paper/attack_remote(mob/living/silicon/ai/user as mob)
 	var/dist
 	if(istype(user) && user.camera) //is AI
 		dist = get_dist(src, user.camera)
@@ -141,7 +141,7 @@
 	. += "<option value>-----PAPER-----</option>"
 	. += "<option value='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];customise_paper=\ref[src]'>Customise content</option>"
 
-/obj/item/paper/proc/addtofield(var/id, var/text, var/links = 0)
+/obj/item/paper/proc/addtofield(id, text, links = 0)
 	var/locid = 0
 	var/laststart = 1
 	var/textindex = 1
@@ -199,7 +199,7 @@
 	update_icon()
 
 
-/obj/item/paper/proc/parsepencode(var/t, var/obj/item/tool/pen/P, mob/user as mob, var/iscrayon = 0)
+/obj/item/paper/proc/parsepencode(t, obj/item/tool/pen/P, mob/user as mob, iscrayon = 0)
 	t = replacetext(t, "\[center\]", "<center>")
 	t = replacetext(t, "\[/center\]", "</center>")
 	t = replacetext(t, "\[br\]", "<BR>")
@@ -502,7 +502,7 @@
 /obj/item/paper/photograph
 	name = "photo"
 	icon_state = "photo"
-	var/photo_id = 0.0
+	var/photo_id = 0
 	item_state = "paper"
 
 /obj/item/paper/sop
@@ -757,7 +757,7 @@
 	var/datum/reagent/data
 	var/completed = FALSE
 
-/obj/item/paper/research_report/proc/generate(var/datum/reagent/S, var/info_only = FALSE)
+/obj/item/paper/research_report/proc/generate(datum/reagent/S, info_only = FALSE)
 	if(!S)
 		return
 	info += "<B>ID:</B> <I>[S.name]</I><BR><BR>\n"
@@ -847,7 +847,7 @@
 /obj/item/paper/fingerprint
 	name = "fingerprint report"
 
-/obj/item/paper/fingerprint/Initialize(mapload, var/list/prints)
+/obj/item/paper/fingerprint/Initialize(mapload, list/prints)
 	. = ..()
 	var/template = {"\[center\]\[logo\]\[/center\]"}
 

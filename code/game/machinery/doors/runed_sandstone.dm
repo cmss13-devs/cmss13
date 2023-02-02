@@ -16,7 +16,7 @@
 	damage_cap = HEALTH_WALL_REINFORCED//Strong, but only available to Hunters so no abuse from marines.
 	color = "#b29082"
 
-/obj/structure/machinery/door/airlock/sandstone/runed/proc/can_use(mob/user as mob, var/loud = 0)
+/obj/structure/machinery/door/airlock/sandstone/runed/proc/can_use(mob/user as mob, loud = 0)
 	if(!in_range(src, user))
 		to_chat(usr, "You cannot operate the door from this far away")
 		return FALSE
@@ -24,7 +24,7 @@
 /obj/structure/machinery/door/airlock/sandstone/runed/after_attack_by(obj/item/W as obj, mob/user as mob)
 // ..()
 	user.set_interaction(src)
-	if (!istype(W, /obj/item/weapon/wristblades || !isYautja(user)))
+	if (!istype(W, /obj/item/weapon/wristblades || !isyautja(user)))
 		return
 
 	if(istype(W, /obj/item/weapon/wristblades))
@@ -89,7 +89,7 @@
 	return FALSE
 
 
-/obj/structure/machinery/door/airlock/sandstone/runed/open(var/forced=1)
+/obj/structure/machinery/door/airlock/sandstone/runed/open(forced=1)
 	if(operating || welded || locked || !loc || !density)
 		return FALSE
 	if(!forced && !arePowerSystemsOn())
@@ -115,7 +115,7 @@
 		operating = FALSE
 	return
 
-/obj/structure/machinery/door/airlock/sandstone/runed/close(var/forced=1)
+/obj/structure/machinery/door/airlock/sandstone/runed/close(forced=1)
 	if(operating || welded || locked || !loc || density)
 		return
 	if(safe)
@@ -152,7 +152,7 @@
 			killthis.ex_act(EXPLOSION_THRESHOLD_LOW)
 	return
 
-/obj/structure/machinery/door/airlock/sandstone/runed/lock(var/forced=0)
+/obj/structure/machinery/door/airlock/sandstone/runed/lock(forced=0)
 	if(operating || locked) return
 
 	playsound(loc, 'sound/effects/stonedoor_openclose.ogg', 25)
@@ -163,7 +163,7 @@
 		visible_message(SPAN_NOTICE("\The [src] makes a loud grating sound as heavy stone bolts seal it open."))
 	update_icon()
 
-/obj/structure/machinery/door/airlock/sandstone/runed/unlock(var/forced=0)
+/obj/structure/machinery/door/airlock/sandstone/runed/unlock(forced=0)
 	if(operating || !locked) return
 	locked = FALSE
 	playsound(loc, 'sound/effects/stonedoor_openclose.ogg', 25)
@@ -172,7 +172,7 @@
 	return TRUE
 
 //Damage procs needed to be redefined because unacidable apparently makes doors immortal.
-/obj/structure/machinery/door/airlock/sandstone/runed/take_damage(var/dam, var/mob/M)
+/obj/structure/machinery/door/airlock/sandstone/runed/take_damage(dam, mob/M)
 	if(!dam)
 		return FALSE
 

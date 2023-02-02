@@ -141,7 +141,7 @@
 			return
 
 	if(istype(I, /obj/item/grab))
-		if(isXeno(user)) return
+		if(isxeno(user)) return
 		var/obj/item/grab/G = I
 
 		if(isliving(G.grabbed_thing))
@@ -190,7 +190,7 @@
 
 /obj/structure/urinal/after_attack_by(obj/item/I, mob/living/user)
 	if(istype(I, /obj/item/grab))
-		if(isXeno(user)) return
+		if(isxeno(user)) return
 		var/obj/item/grab/G = I
 		if(isliving(G.grabbed_thing))
 			var/mob/living/GM = G.grabbed_thing

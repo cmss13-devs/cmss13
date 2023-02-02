@@ -27,7 +27,7 @@
 		go_out()
 	return ..()
 
-/obj/structure/machinery/recharge_station/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/obj/structure/machinery/recharge_station/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_can_pass_all = PASS_HIGH_OVER_ONLY|PASS_AROUND|PASS_OVER_THROW_ITEM
@@ -157,7 +157,7 @@
 				doing_stuff = TRUE
 			else
 				update_use_power(USE_POWER_IDLE)
-		if (isrobot(occupant) || isSynth(occupant))
+		if (isrobot(occupant) || issynth(occupant))
 			if(occupant.getBruteLoss() > 0 || occupant.getFireLoss() > 0 || occupant.getBrainLoss() > 0)
 				occupant.heal_overall_damage(10, 10, TRUE)
 				occupant.apply_damage(-10, BRAIN)
@@ -203,8 +203,8 @@
 /obj/structure/machinery/recharge_station/do_buckle(mob/target, mob/user)
 	return move_mob_inside(target)
 
-/obj/structure/machinery/recharge_station/verb/move_mob_inside(var/mob/living/M)
-	if (!isrobot(M) && !isSynth(M))
+/obj/structure/machinery/recharge_station/verb/move_mob_inside(mob/living/M)
+	if (!isrobot(M) && !issynth(M))
 		return FALSE
 	if (occupant)
 		return FALSE
@@ -232,7 +232,7 @@
 	if (usr.stat == 2)
 		//Whoever had it so that a borg with a dead cell can't enter this thing should be shot. --NEO
 		return
-	if (!isrobot(usr) && !isSynth(usr))
+	if (!isrobot(usr) && !issynth(usr))
 		to_chat(usr, SPAN_NOTICE(" <B>Only non-organics may enter the recharge and repair station!</B>"))
 		return
 	if (src.occupant)
@@ -247,13 +247,13 @@
 	move_mob_inside(usr)
 	return
 
-/obj/structure/machinery/recharge_station/after_attack_by(var/obj/item/W, var/mob/living/user)
+/obj/structure/machinery/recharge_station/attackby(obj/item/W, mob/living/user)
 	if(istype(W, /obj/item/grab))
-		if(isXeno(user)) return
+		if(isxeno(user)) return
 		var/obj/item/grab/G = W
 		if(!ismob(G.grabbed_thing))
 			return
-		if(!isSynth(G.grabbed_thing) && !isrobot(G.grabbed_thing))
+		if(!issynth(G.grabbed_thing) && !isrobot(G.grabbed_thing))
 			return
 
 		if(occupant)

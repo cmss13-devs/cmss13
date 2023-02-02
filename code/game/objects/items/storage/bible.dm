@@ -16,7 +16,7 @@
 		/obj/item/stack/cable_coil,
 		/obj/item/device/t_scanner,
 		/obj/item/device/analyzer,
-		/obj/item/tool/shovel/etool
+		/obj/item/tool/shovel/etool,
 	)
 	storage_slots = null
 	max_storage_space = 8
@@ -42,9 +42,9 @@
 
 /obj/item/storage/bible/hefa/Initialize()
 	. = ..()
-	new /obj/item/explosive/grenade/HE/frag(src)
-	new /obj/item/explosive/grenade/HE/frag(src)
-	new /obj/item/explosive/grenade/HE/frag(src)
+	new /obj/item/explosive/grenade/high_explosive/frag(src)
+	new /obj/item/explosive/grenade/high_explosive/frag(src)
+	new /obj/item/explosive/grenade/high_explosive/frag(src)
 
 /obj/item/storage/bible/afterattack(atom/A, mob/user as mob, proximity)
 	if(!proximity)

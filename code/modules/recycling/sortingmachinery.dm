@@ -215,10 +215,10 @@
 	icon = 'icons/obj/items/items.dmi'
 	icon_state = "deliveryPaper"
 	w_class = SIZE_MEDIUM
-	var/amount = 25.0
+	var/amount = 25
 
 
-/obj/item/packageWrap/afterattack(var/obj/target as obj, mob/user as mob, proximity)
+/obj/item/packageWrap/afterattack(obj/target as obj, mob/user as mob, proximity)
 	if(!proximity) return
 	if(!istype(target)) //this really shouldn't be necessary (but it is). -Pete
 		return
@@ -366,7 +366,7 @@
 /obj/structure/machinery/disposal/deliveryChute/update()
 	return
 
-/obj/structure/machinery/disposal/deliveryChute/Collided(var/atom/movable/AM) //Go straight into the chute
+/obj/structure/machinery/disposal/deliveryChute/Collided(atom/movable/AM) //Go straight into the chute
 	if(istype(AM, /obj/item/projectile) || istype(AM, /obj/effect)) return
 	switch(dir)
 		if(NORTH)
@@ -404,7 +404,7 @@
 	update()
 	return
 
-/obj/structure/machinery/disposal/deliveryChute/after_attack_by(var/obj/item/I, var/mob/user)
+/obj/structure/machinery/disposal/deliveryChute/attackby(obj/item/I, mob/user)
 	if(!I || !user)
 		return
 

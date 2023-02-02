@@ -50,7 +50,7 @@
 
 	// called when turf state changes
 	// hide the object if turf is intact
-/obj/structure/machinery/navbeacon/hide(var/intact)
+/obj/structure/machinery/navbeacon/hide(intact)
 	invisibility = intact ? 101 : 0
 	updateicon()
 
@@ -95,7 +95,7 @@
 	frequency.post_signal(src, signal, filter = RADIO_NAVBEACONS)
 
 
-/obj/structure/machinery/navbeacon/after_attack_by(var/obj/item/I, var/mob/user)
+/obj/structure/machinery/navbeacon/attackby(obj/item/I, mob/user)
 	var/turf/T = loc
 	if(T.intact_tile)
 		return // prevent intraction when T-scanner revealed
@@ -119,13 +119,13 @@
 			to_chat(user, "You must open the cover first!")
 	return
 
-/obj/structure/machinery/navbeacon/attack_remote(var/mob/user)
+/obj/structure/machinery/navbeacon/attack_remote(mob/user)
 	interact(user, 1)
 
-/obj/structure/machinery/navbeacon/attack_hand(var/mob/user)
+/obj/structure/machinery/navbeacon/attack_hand(mob/user)
 	interact(user, 0)
 
-/obj/structure/machinery/navbeacon/interact(var/mob/user, var/ai = 0)
+/obj/structure/machinery/navbeacon/interact(mob/user, ai = 0)
 	var/turf/T = loc
 	if(T.intact_tile)
 		return // prevent intraction when T-scanner revealed

@@ -1,4 +1,4 @@
-/mob/living/silicon/robot/emote(var/act,var/m_type=1,var/message = null, player_caused)
+/mob/living/silicon/robot/emote(act, m_type=1, message = null, player_caused)
 	var/param = null
 	if(findtext(act, "-", 1, null))
 		var/t1 = findtext(act, "-", 1, null)

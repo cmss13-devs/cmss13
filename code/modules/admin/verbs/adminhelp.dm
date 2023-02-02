@@ -197,6 +197,10 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	var/webhook_sent = WEBHOOK_NONE
 	/// List of player interactions
 	var/list/player_interactions
+	/// List of admin ckeys that are involved, like through responding
+	var/list/admins_involved = list()
+	/// Has the player replied to this ticket yet?
+	var/player_replied = FALSE
 
 /**
  * Call this on its own to create a ticket, don't manually assign current_ticket
@@ -340,8 +344,10 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	return ..()
 
 /datum/admin_help/proc/AddInteraction(formatted_message, player_message)
-	if(heard_by_no_admins && usr && usr.ckey != initiator_ckey)
-		heard_by_no_admins = FALSE
+	if (!isnull(usr) && usr.ckey != initiator_ckey)
+		admins_involved |= usr.ckey
+		if(heard_by_no_admins)
+			heard_by_no_admins = FALSE
 	ticket_interactions += "[time_stamp()]: [formatted_message]"
 	if (!isnull(player_message))
 		player_interactions += "[time_stamp()]: [player_message]"

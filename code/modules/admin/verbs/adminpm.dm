@@ -197,6 +197,7 @@
 				type = MESSAGE_TYPE_ADMINPM,
 				html = SPAN_NOTICE("Admin PM to-<b>[key_name(recipient, src, 1)]</b>: <span class='linkify'>[msg]</span>"),
 				confidential = TRUE)
+			SEND_SIGNAL(src, COMSIG_ADMIN_HELP_RECEIVED, msg)
 			//omg this is dumb, just fill in both their tickets
 			var/interaction_message = "<font color='purple'>PM from-<b>[key_name(src, recipient, TRUE)]</b> to-<b>[key_name(recipient, src, TRUE)]</b>: [msg]</font>"
 			var/player_interaction_message = "<font color='purple'>PM from-<b>[key_name(src, recipient, FALSE)]</b> to-<b>[key_name(recipient, src, FALSE)]</b>: [msg]</font>"
@@ -205,6 +206,8 @@
 				admin_ticket_log(recipient, interaction_message, log_in_blackbox = FALSE, player_message = player_interaction_message)
 			log_ahelp(current_ticket.id, "Reply", msg, recipient.ckey, src.ckey)
 		else //recipient is an admin but sender is not
+			current_ticket.player_replied = TRUE
+			SEND_SIGNAL(current_ticket, COMSIG_ADMIN_HELP_REPLIED)
 			var/replymsg = "Reply PM from-<b>[key_name(src, recipient, TRUE)]</b>: <span class='linkify'>[msg]</span>"
 			var/player_replymsg = "Reply PM from-<b>[key_name(src, recipient, FALSE)]</b>: <span class='linkify'>[msg]</span>"
 			admin_ticket_log(src, "<font color='red'>[replymsg]</font>", log_in_blackbox = FALSE, player_message = player_replymsg)
@@ -229,6 +232,7 @@
 				already_logged = TRUE
 				log_ahelp(recipient.current_ticket.id, "Ticket Opened", msg, recipient.ckey, src.ckey)
 
+			SEND_SIGNAL(src, COMSIG_ADMIN_HELP_RECEIVED, msg)
 			to_chat(recipient,
 				type = MESSAGE_TYPE_ADMINPM,
 				html = "\n<font color='red' size='4'><b>-- Administrator private message --</b></font>",

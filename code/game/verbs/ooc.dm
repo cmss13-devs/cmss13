@@ -79,13 +79,12 @@
 /client/proc/handle_ooc_prefix()
 	var/prefix = ""
 	if(donator)
-		prefix += "\[D\]"
-		prefix += "[icon2html('icons/ooc.dmi', GLOB.clients, "Donator")]"
+		prefix += "[icon2html('icons/ooc.dmi', GLOB.clients, "Donator")] "
 	if(CLIENT_IS_STAFF(src))
-		prefix += "\[S\]"
+		prefix += "[icon2html('icons/ooc.dmi', GLOB.clients, "TrialAdmin")] "
 	else if(CLIENT_IS_MENTOR(src))
-		prefix += "\[M\]"
-	return prefix += " "
+		prefix += "[icon2html('icons/ooc.dmi', GLOB.clients, "Mentor")] "
+	return prefix
 
 /client/verb/looc(msg as text)
 	set name = "LOOC" //Gave this shit a shorter name so you only have to time out "ooc" rather than "ooc message" to use it --NeoFite

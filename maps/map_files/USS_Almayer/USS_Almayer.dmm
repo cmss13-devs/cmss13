@@ -5664,7 +5664,7 @@
 /obj/structure/machinery/door_control{
 	id = "northcheckpoint";
 	name = "North Checkpoint Shutters";
-	req_one_access_txt = "2;3;12;19"
+	req_one_access_txt = "3;12;19"
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -17955,7 +17955,7 @@
 /obj/structure/machinery/door_control{
 	id = "north_central_checkpoint";
 	name = "North Checkpoint Shutters";
-	req_one_access_txt = "2;3;12;19"
+	req_one_access_txt = "3;12;19"
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -18561,10 +18561,7 @@
 /obj/structure/machinery/door/airlock/almayer/medical{
 	dir = 1;
 	id_tag = "or01";
-	name = "Operating Theatre 1";
-	req_access = null;
-	req_one_access = null;
-	req_one_access_txt = "2;8;19"
+	name = "Operating Theatre 1"
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 2;
@@ -18596,10 +18593,7 @@
 /obj/structure/machinery/door/airlock/almayer/medical{
 	dir = 1;
 	id_tag = "or02";
-	name = "Operating Theatre 2";
-	req_access = null;
-	req_one_access = null;
-	req_one_access_txt = "2;8;19"
+	name = "Operating Theatre 2"
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 2;
@@ -19462,8 +19456,8 @@
 	dir = 2;
 	name = "\improper Medical Storage";
 	req_access = null;
-	req_access_txt = "20";
-	req_one_access = null
+	req_one_access = null;
+	req_one_access_txt = "19;20"
 	},
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer{
@@ -19839,10 +19833,7 @@
 /obj/structure/machinery/door/airlock/almayer/medical{
 	dir = 1;
 	id_tag = "or03";
-	name = "Operating Theatre 3";
-	req_access = null;
-	req_one_access = null;
-	req_one_access_txt = "2;8;19"
+	name = "Operating Theatre 3"
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 2;
@@ -20806,7 +20797,7 @@
 /obj/structure/machinery/door_control{
 	id = "south_central_checkpoint";
 	name = "South Checkpoint Shutters";
-	req_one_access_txt = "2;3;12;19"
+	req_one_access_txt = "3;12;19"
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -24008,9 +23999,7 @@
 	dir = 2;
 	id_tag = "tc01";
 	name = "\improper Treatment Center";
-	req_access = null;
-	req_one_access = null;
-	req_one_access_txt = "2;8;19"
+	req_access = null
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	layer = 1.9
@@ -24025,7 +24014,7 @@
 /obj/structure/machinery/door_control{
 	id = "southcheckpoint";
 	name = "South Checkpoint Shutters";
-	req_one_access_txt = "2;3;12;19"
+	req_one_access_txt = "3;12;19"
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -38310,12 +38299,6 @@
 "dWk" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/door_control{
-	id = "cmp_armory";
-	name = "Armory Lockdown";
-	pixel_y = 24;
-	req_access_txt = "4"
-	},
-/obj/structure/machinery/door_control{
 	id = "CMP Office Shutters";
 	name = "CMP Office Shutters";
 	pixel_y = 32;
@@ -38324,7 +38307,7 @@
 /obj/structure/machinery/door_control{
 	id = "Brig Lockdown Shutters";
 	name = "Brig Lockdown Shutters";
-	pixel_y = 40;
+	pixel_y = 24;
 	req_access_txt = "3"
 	},
 /obj/structure/machinery/faxmachine/uscm/brig/chief,
@@ -39573,6 +39556,11 @@
 	dir = 1;
 	tag = "icon-intact-supply (NORTH)"
 	},
+/obj/structure/machinery/door/airlock/multi_tile/almayer/secdoor/glass/reinforced{
+	name = "\improper Brig";
+	req_one_access_txt = "1;3";
+	req_access = null
+	},
 /turf/open/floor/almayer{
 	icon_state = "silvercorner";
 	tag = "icon-silvercorner"
@@ -40714,9 +40702,7 @@
 	dir = 2;
 	id_tag = "tc04";
 	name = "\improper Treatment Center";
-	req_access = null;
-	req_one_access = null;
-	req_one_access_txt = "2;8;19"
+	req_access = null
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /turf/open/floor/almayer{
@@ -56802,6 +56788,13 @@
 	dir = 10;
 	tag = "icon-intact-supply (SOUTHWEST)"
 	},
+/obj/structure/machinery/door_control{
+	id = "cmp_armory";
+	name = "Armory Lockdown";
+	req_access_txt = "4";
+	pixel_y = -6;
+	pixel_x = 24
+	},
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "redcorner";
@@ -63409,9 +63402,7 @@
 	dir = 2;
 	id_tag = "tc02";
 	name = "\improper Treatment Center";
-	req_access = null;
-	req_one_access = null;
-	req_one_access_txt = "2;8;19"
+	req_access = null
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	layer = 1.9
@@ -70509,7 +70500,8 @@
 	indestructible = 1;
 	name = "Shutters";
 	pixel_y = 25;
-	use_power = 0
+	use_power = 0;
+	req_one_access_txt = "201"
 	},
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15";
@@ -78316,8 +78308,8 @@
 "uWP" = (
 /obj/structure/machinery/door/airlock/almayer/medical/glass{
 	name = "\improper Medical Storage";
-	req_access_txt = "20";
-	req_one_access = null
+	req_one_access = null;
+	req_one_access_txt = "19;20"
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4";
@@ -78366,9 +78358,7 @@
 /obj/structure/machinery/door/airlock/almayer/medical{
 	id_tag = "or03";
 	name = "Lobby";
-	req_access = null;
-	req_one_access = null;
-	req_one_access_txt = "2;8;19"
+	req_access = null
 	},
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile";
@@ -81698,9 +81688,7 @@
 	dir = 2;
 	id_tag = "tc03";
 	name = "\improper Treatment Center";
-	req_access = null;
-	req_one_access = null;
-	req_one_access_txt = "2;8;19"
+	req_access = null
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /turf/open/floor/almayer{
@@ -82271,6 +82259,18 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/medical/lower_medical_medbay)
+"wAo" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/secdoor/glass/reinforced{
+	name = "\improper Brig";
+	req_one_access_txt = "1;3";
+	req_access = null
+	},
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "silver";
+	tag = "icon-silver (WEST)"
+	},
+/area/almayer/command/cichallway)
 "wAR" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
@@ -104541,7 +104541,7 @@ qnh
 ewS
 oBA
 aom
-aom
+wAo
 aVb
 aom
 bzR

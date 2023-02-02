@@ -5,6 +5,7 @@
 	idtype = /obj/item/card/id/silver
 	access = list(
 		ACCESS_MARINE_CMO,
+		ACCESS_MARINE_DATABASE,
 		ACCESS_MARINE_MEDBAY,
 		ACCESS_MARINE_RESEARCH,
 		ACCESS_MARINE_SENIOR,

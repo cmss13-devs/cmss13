@@ -1,0 +1,4 @@
+author: "stanalbatross"
+delete-after: True
+changes:
+  - bugfix: "fixed synths being able to attack via throwing when in smartpack protection mode"

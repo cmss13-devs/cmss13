@@ -348,9 +348,24 @@
 	else
 		mob_icon = default_onmob_icons[slot]
 
+	var/image/overlay_img
+
 	if(user_human)
-		return user_human.species.get_offset_overlay_image(spritesheet, mob_icon, mob_state, color, slot)
-	return overlay_image(mob_icon, mob_state, color, RESET_COLOR)
+		overlay_img = user_human.species.get_offset_overlay_image(spritesheet, mob_icon, mob_state, color, slot)
+	else
+		overlay_img = overlay_image(mob_icon, mob_state, color, RESET_COLOR)
+
+	var/inhands = slot == (WEAR_L_HAND || WEAR_R_HAND)
+
+	var/offset_x = worn_x_dimension
+	var/offset_y = worn_y_dimension
+	if(inhands)
+		offset_x = inhand_x_dimension
+		offset_y = inhand_y_dimension
+
+	center_image(overlay_img, offset_x, offset_y)
+
+	return overlay_img
 
 /obj/item/proc/use_spritesheet(bodytype, slot, icon_state)
 	if(!LAZYISIN(sprite_sheets, bodytype))

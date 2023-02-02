@@ -36,7 +36,7 @@ var/obj/structure/anti_air_cannon/almayer_aa_cannon
 	dir = WEST
 	flags_atom = ON_BORDER|CONDUCT|FPRINT
 
-	req_one_access = list(ACCESS_MARINE_ENGINEERING, ACCESS_MARINE_BRIDGE)
+	req_one_access = list(ACCESS_MARINE_ENGINEERING, ACCESS_MARINE_COMMAND)
 
 /obj/structure/machinery/computer/aa_console/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()

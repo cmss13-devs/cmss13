@@ -12,7 +12,7 @@
 	name = "Identification Computer"
 	desc = "Terminal for programming USCM employee ID card access."
 	icon_state = "id"
-	req_access = list(ACCESS_MARINE_LOGISTICS)
+	req_access = list(ACCESS_MARINE_DATABASE)
 	circuit = /obj/item/circuitboard/computer/card
 	var/obj/item/card/id/user_id_card
 	var/obj/item/card/id/target_id_card
@@ -480,7 +480,7 @@
 	name = "Squad Distribution Computer"
 	desc = "You can use this to change someone's squad."
 	icon_state = "guest"
-	req_access = list(ACCESS_MARINE_LOGISTICS)
+	req_access = list(ACCESS_MARINE_DATABASE)
 	var/obj/item/card/id/ID_to_modify = null
 	var/mob/living/carbon/human/person_to_modify = null
 	var/faction = FACTION_MARINE

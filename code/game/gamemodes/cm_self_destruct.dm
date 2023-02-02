@@ -369,7 +369,7 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 /obj/structure/machinery/self_destruct/console
 	name = "self-destruct control panel"
 	icon_state = "console"
-	req_one_access = list(ACCESS_MARINE_CE, ACCESS_MARINE_CMO, ACCESS_MARINE_CAPTAIN, ACCESS_MARINE_COMMANDER)
+	req_one_access = list(ACCESS_MARINE_CE, ACCESS_MARINE_CMO, ACCESS_MARINE_CAPTAIN, ACCESS_MARINE_SENIOR)
 
 /obj/structure/machinery/self_destruct/console/Destroy()
 	. = ..()

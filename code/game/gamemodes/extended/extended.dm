@@ -1,5 +1,5 @@
 /datum/game_mode/extended
-	name = "extended"
+	name = "Extended"
 	config_tag = "extended"
 	required_players = 0
 	latejoin_larva_drop = 0
@@ -10,6 +10,9 @@
 
 /datum/game_mode/announce()
 	to_world("<B>The current game mode is - Extended!</B>")
+
+/datum/game_mode/get_roles_list()
+	return ROLES_USCM
 
 /datum/game_mode/extended/pre_setup()
 	roles_to_roll = RoleAuthority.roles_for_mode - (RoleAuthority.roles_for_mode & (ROLES_XENO|ROLES_WHITELISTED|ROLES_SPECIAL))

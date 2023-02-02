@@ -213,3 +213,10 @@
 	name = "hide"
 	full_name = "Hide"
 	keybind_signal = COMSIG_KB_XENO_HIDE
+
+/datum/keybinding/xenomorph/evolve
+	hotkey_keys = list()
+	classic_keys = list()
+	name = "evolve"
+	full_name = "Evolve"
+	keybind_signal = COMSIG_KB_XENO_EVOLVE

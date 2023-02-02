@@ -21,6 +21,7 @@
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 20
 	force = 0
+	black_market_value = 5
 
 
 /*
@@ -129,6 +130,7 @@
 	icon_state = "crayonred"
 	w_class = SIZE_TINY
 	attack_verb = list("attacked", "coloured")
+	black_market_value = 5
 	var/colour = "#FF0000" //RGB
 	var/shadeColour = "#220000" //RGB
 	var/uses = 30 //0 for unlimited uses
@@ -373,6 +375,7 @@
 	item_state = "inflatable"
 	icon = 'icons/obj/items/clothing/belts.dmi'
 	flags_equip_slot = SLOT_WAIST
+	black_market_value = 20
 
 
 /obj/item/toy/beach_ball
@@ -439,6 +442,7 @@
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 15
 	attack_verb = list("HONKED")
+	black_market_value = 25
 	var/spam_flag = 0
 	var/sound_effect = 'sound/items/bikehorn.ogg'
 
@@ -458,6 +462,7 @@
 	desc = "A Farwa plush doll. It's soft and comforting!"
 	w_class = SIZE_TINY
 	icon_state = "farwaplush"
+	black_market_value = 25
 	var/last_hug_time
 
 /obj/item/toy/farwadoll/attack_self(mob/user)

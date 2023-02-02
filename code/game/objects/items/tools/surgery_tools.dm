@@ -121,6 +121,7 @@
 	flags_item = ANIMATED_SURGICAL_TOOL
 	///The likelihood an incision made with this will be bloodless.
 	var/bloodlessprob = 60
+	black_market_value = 25
 
 /obj/item/tool/surgery/scalpel/laser/improved
 	name = "laser scalpel"
@@ -129,6 +130,7 @@
 	damtype = "fire"
 	force = 12
 	bloodlessprob = 80
+	black_market_value = 35
 
 /obj/item/tool/surgery/scalpel/laser/advanced
 	name = "advanced laser scalpel"
@@ -148,6 +150,7 @@
 	icon_state = "pict_system"
 	w_class = SIZE_SMALL
 	force = 7.5
+	black_market_value = 25
 
 /obj/item/tool/surgery/scalpel/manager
 	name = "incision management system"
@@ -155,6 +158,7 @@
 	icon_state = "scalpel_manager"
 	force = 7.5
 	flags_item = ANIMATED_SURGICAL_TOOL
+	black_market_value = 25
 
 /*
  * Circular Saw
@@ -319,6 +323,7 @@ t. optimisticdude
 	throwforce = 1
 	w_class = SIZE_SMALL
 	flags_item = ITEM_PREDATOR
+	black_market_value = 50
 
 /obj/item/tool/surgery/healing_gun
 	name = "healing gun"
@@ -329,6 +334,7 @@ t. optimisticdude
 	w_class = SIZE_SMALL
 	flags_item = ITEM_PREDATOR|ANIMATED_SURGICAL_TOOL
 	var/loaded  = TRUE
+	black_market_value = 50
 
 /obj/item/tool/surgery/healing_gun/update_icon()
 	if(loaded)
@@ -360,6 +366,7 @@ t. optimisticdude
 	throwforce = 1
 	w_class = SIZE_SMALL
 	flags_item = ITEM_PREDATOR
+	black_market_value = 15
 
 /obj/item/tool/surgery/wound_clamp
 	name = "wound clamp"
@@ -369,6 +376,7 @@ t. optimisticdude
 	throwforce = 1
 	w_class = SIZE_SMALL
 	flags_item = ITEM_PREDATOR|ANIMATED_SURGICAL_TOOL
+	black_market_value = 15
 
 
 //XENO AUTOPSY TOOL

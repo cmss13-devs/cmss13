@@ -426,14 +426,3 @@
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "\improper surplus ammo crate"
 	group = "Ammo"
-
-//------------------------Contraband----------------
-
-/datum/supply_packs/merc/ammo
-	name = "Black market ammo crate"
-	contains = list()
-	cost = 20
-	contraband = 1
-	containertype = /obj/structure/largecrate/merc/ammo
-	containername = "\improper black market ammo crate"
-	group = "Ammo"

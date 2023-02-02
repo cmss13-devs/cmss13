@@ -34,6 +34,7 @@
 	/// set when a player uses a pen on a renamable object
 	var/renamedByPlayer = FALSE
 
+
 /obj/Initialize(mapload, ...)
 	. = ..()
 	if(garbage)

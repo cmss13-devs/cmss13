@@ -15,7 +15,7 @@
 	steps = list(
 		/datum/surgery_step/create_cavity,
 		/datum/surgery_step/place_item,
-		/datum/surgery_step/cauterize/close_cavity
+		/datum/surgery_step/cauterize/close_cavity,
 	)
 
 /datum/surgery/implant/groin
@@ -32,7 +32,7 @@
 	steps = list(
 		/datum/surgery_step/create_cavity,
 		/datum/surgery_step/remove_implant,
-		/datum/surgery_step/cauterize/close_cavity
+		/datum/surgery_step/cauterize/close_cavity,
 	)
 
 /datum/surgery/implant/removal/groin
@@ -50,8 +50,8 @@
 	tools = list(
 		/obj/item/tool/surgery/surgicaldrill = SURGERY_TOOL_MULT_IDEAL,
 		/obj/item/tool/pen = SURGERY_TOOL_MULT_SUBSTITUTE,
-		/obj/item/stack/rods = SURGERY_TOOL_MULT_AWFUL
-		)
+		/obj/item/stack/rods = SURGERY_TOOL_MULT_AWFUL,
+	)
 	time = 6 SECONDS
 
 /datum/surgery_step/create_cavity/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)

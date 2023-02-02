@@ -5224,7 +5224,7 @@
 /obj/structure/transmitter/colony_net{
 	pixel_y = 24;
 	phone_category = "Lazarus Landing";
-	phone_id = "Research"
+	phone_id = "Research Dome"
 	},
 /turf/open/floor{
 	dir = 5;
@@ -20327,7 +20327,7 @@
 /area/lv624/ground/caves/sand_temple)
 "qAf" = (
 /obj/structure/flora/bush/ausbushes/var3/sunnybush{
-	desc = "The oranges aren't done yet.. this sucks.";
+	desc = "The oranges aren't done yet... this sucks.";
 	name = "orange tree";
 	pixel_x = -7;
 	pixel_y = 10
@@ -22819,7 +22819,7 @@
 /area/lv624/ground/barrens/south_eastern_barrens)
 "whQ" = (
 /obj/structure/flora/bush/ausbushes/var3/sunnybush{
-	desc = "The oranges aren't done yet.. this sucks.";
+	desc = "The oranges aren't done yet... this sucks.";
 	name = "orange tree"
 	},
 /turf/open/gm/grass,

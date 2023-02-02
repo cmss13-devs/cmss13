@@ -17878,7 +17878,7 @@
 "mEJ" = (
 /obj/structure/prop/souto_land/pole{
 	dir = 1;
-	layer = 4.0
+	layer = 4
 	},
 /obj/structure/prop/souto_land/streamer{
 	dir = 9

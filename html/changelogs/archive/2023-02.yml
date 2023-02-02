@@ -1,0 +1,28 @@
+2023-02-01:
+  BeagleGaming1:
+  - spellcheck: Fixes a missing space in Death Nettle's description
+  - bugfix: Xenos can unbuckle marines from Operating Tables
+  Waseemq1235:
+  - bugfix: Removes Weyland from random generated names
+  realforest2001:
+  - bugfix: Maploader no longer nukes ghosts into a weird glitchy state where they
+      can't see anything
+  stanalbatross:
+  - code_imp: removed all useless overspecific .0s from the codebase
+2023-02-02:
+  BKryth:
+  - balance: Increased cost of Sentry Post to 600 to 800
+  - balance: Increased the distance required on how far apart they must be from another
+      turret from 2 to 4
+  - balance: Increased the light the omni sentry emits
+  - rscadd: Sentry Post now breaks barricades on where it lands
+  - rscadd: Sentry Post can be upgraded with 10 metal to give it extra maximum health
+  - rscadd: Sentry Post now requires a manual reload every 100 shots with a 500 rounds
+      stored internally
+  LynxSolstice, Geeves:
+  - balance: interaction circles that appear of above your head while cloaked are
+      now harder to see (does not include circles above interacted with objects (ie.
+      nests, C4s, breaching charges, xenos eating people, whatever predators have).
+      That is to say, interaction circles inherit the alpha of cloaked users.
+  Segrain:
+  - bugfix: Timed actions are once again actually correctly timed.

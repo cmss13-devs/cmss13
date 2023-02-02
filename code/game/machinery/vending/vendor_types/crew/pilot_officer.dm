@@ -56,7 +56,7 @@
 /obj/effect/essentials_set/po_alternate
 	spawned_gear_list = list(
 		/obj/item/clothing/under/marine/officer/pilot/flight,
-		/obj/item/clothing/suit/storage/jacket/marine/pilot
+		/obj/item/clothing/suit/storage/jacket/marine/pilot,
 	)
 
 GLOBAL_LIST_INIT(cm_vending_clothing_pilot_officer, list(

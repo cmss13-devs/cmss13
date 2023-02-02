@@ -797,7 +797,7 @@
 
 /obj/item/reagent_container/food/snacks/tofuburger
 	name = "Tofu Burger"
-	desc = "What.. is that meat?"
+	desc = "What... is that meat?"
 	icon_state = "tofuburger"
 	filling_color = "#FFFEE0"
 

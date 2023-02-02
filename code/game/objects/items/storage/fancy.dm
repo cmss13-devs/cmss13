@@ -131,7 +131,7 @@
 		/obj/item/clothing/mask/cigarette,
 		/obj/item/clothing/mask/cigarette/ucigarette,
 		/obj/item/clothing/mask/cigarette/bcigarette,
-		/obj/item/tool/lighter
+		/obj/item/tool/lighter,
 	)
 	icon_type = "cigarette"
 	var/default_cig_type=/obj/item/clothing/mask/cigarette

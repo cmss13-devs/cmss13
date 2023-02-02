@@ -12,7 +12,7 @@
 	/// When set to true, every single sprite can be found in the one icon .dmi, rather than being spread into onmobs, inhands, and objects
 	var/contained_sprite = FALSE
 
-	var/r_speed = 1.0
+	var/r_speed = 1
 	var/force = 0
 	var/damtype = BRUTE
 	var/embeddable = TRUE //FALSE if unembeddable

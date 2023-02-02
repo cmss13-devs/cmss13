@@ -382,8 +382,8 @@
 	density = FALSE
 	anchored = FALSE
 	w_class = SIZE_SMALL
-	force = 0.0
-	throwforce = 0.0
+	force = 0
+	throwforce = 0
 	throw_speed = SPEED_SLOW
 	throw_range = 20
 
@@ -516,7 +516,7 @@
 
 /obj/item/toy/festivizer/get_examine_text(mob/user)
 	. = ..()
-	. += SPAN_BOLDNOTICE("You see another label on \the [src] that says: <i> INCLUDES SUPPORT FOR FOREIGN BIOFORMS! </i> You're not sure you like the sound of that..")
+	. += SPAN_BOLDNOTICE("You see another label on \the [src] that says: <i> INCLUDES SUPPORT FOR FOREIGN BIOFORMS! </i> You're not sure you like the sound of that.")
 
 /obj/item/toy/festivizer/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
 	. = ..()

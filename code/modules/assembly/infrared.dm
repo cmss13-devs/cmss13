@@ -180,7 +180,7 @@
 	var/obj/effect/beam/i_beam/next = null
 	var/obj/item/device/assembly/infra/master = null
 	var/limit = null
-	var/visible = 0.0
+	var/visible = 0
 	var/left = null
 	anchored = TRUE
 	flags_atom = NOINTERACT

@@ -80,10 +80,11 @@
 	var/prefix = ""
 	if(donator)
 		prefix += "[icon2html('icons/ooc.dmi', GLOB.clients, "Donator")] "
-	if(CLIENT_IS_STAFF(src))
-		prefix += "[icon2html('icons/ooc.dmi', GLOB.clients, "TrialAdmin")] "
-	else if(CLIENT_IS_MENTOR(src))
-		prefix += "[icon2html('icons/ooc.dmi', GLOB.clients, "Mentor")] "
+	if(admin_holder)
+		var/list/rank_icons = icon_states('icons/ooc.dmi')
+		var/rankname = admin_holder.rank
+		if(rankname in rank_icons)
+			prefix += "[icon2html('icons/ooc.dmi', GLOB.clients, admin_holder.rank)] "
 	return prefix
 
 /client/verb/looc(msg as text)

@@ -191,10 +191,8 @@
 		return
 
 	var/mob/living/carbon/xenomorph/current_xeno = user?.mob
-	if(!current_xeno)
-		return
 
-	if(!current_xeno.hive)
+	if(!current_xeno?.hive)
 		return
 
 	if((!current_xeno.hive.living_xeno_queen || SSmapping.configs[GROUND_MAP].map_name == MAP_WHISKEY_OUTPOST) && !current_xeno.hive.allow_no_queen_actions) //No Hive status on WO

@@ -9,7 +9,6 @@
 
 	if(SSticker.current_state < GAME_STATE_PLAYING || !SSticker.mode)
 		owner.balloon_alert(owner, "game must start!")
-		to_chat(owner, SPAN_WARNING("The game hasn't started yet!"))
 		return
 
 	if(SSticker.mode.check_xeno_late_join(owner))
@@ -20,9 +19,7 @@
 	weight = WEIGHT_DEAD
 
 /datum/keybinding/observer/can_use(client/user)
-	if(!isobserver(user?.mob))
-		return FALSE
-	return TRUE
+	return isobserver(user?.mob)
 
 /datum/keybinding/observer/join_as_xeno
 	hotkey_keys = list()

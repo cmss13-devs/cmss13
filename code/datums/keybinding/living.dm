@@ -87,7 +87,7 @@
 
 	used_mob.reset_view(null)
 	used_mob.unset_interaction()
-	if(istype(used_mob, /mob/living))
+	if(isliving(used_mob))
 		var/mob/living/living_mob = used_mob
 		if(living_mob.cameraFollow)
 			living_mob.cameraFollow = null

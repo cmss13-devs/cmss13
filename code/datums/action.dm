@@ -45,11 +45,11 @@
 /datum/action/proc/action_activate()
 	return
 
+/// handler for when a keybind signal is received by the action, calls the action_activate proc asynchronous
 /datum/action/proc/keybind_activation()
 	SIGNAL_HANDLER
 	if(can_use_action())
 		INVOKE_ASYNC(src, PROC_REF(action_activate))
-	return
 
 /datum/action/proc/can_use_action()
 	if(hidden)

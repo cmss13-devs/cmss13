@@ -121,6 +121,8 @@ GLOBAL_LIST_EMPTY(escape_menus)
 	clear_with_screen = FALSE
 	icon_state = "blank"
 
+	appearance_flags = RESET_COLOR|RESET_TRANSFORM|NO_CLIENT_COLOR|PIXEL_SCALE
+
 // The escape menu can be opened before SSatoms
 INITIALIZE_IMMEDIATE(/atom/movable/screen/escape_menu)
 

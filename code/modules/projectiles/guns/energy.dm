@@ -265,7 +265,7 @@
 	if(humie.is_mob_incapacitated() || taser.get_active_firearm(humie, FALSE) != holder_item)
 		return
 
-/datum/action/item_action/taser/change_mode/New(Target, obj/item/holder)
+/datum/action/item_action/taser/change_mode/New(target, obj/item/holder)
 	. = ..()
 	name = "Change Target Mode"
 	action_icon_state = "id_lock_locked"// As the taser mode is based on the wanted database, it can share this icon as it makes sense.

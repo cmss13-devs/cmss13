@@ -464,8 +464,10 @@
 	..()
 	for(var/h in src.hud_possible)
 		src.clone.hud_list[h].icon_state = src.hud_list[h].icon_state
-
-/mob/living/attack_hand(mob/user) // not recommended to be used - does not apply next move cooldown by default (how do i dmdoc procs?)
+/**
+ * not recommended to be used - does not apply next move cooldown by default, after_attack_hand() does
+ */
+/mob/living/attack_hand(mob/user) //
 	. = ..()
 	after_attack_hand(user)
 

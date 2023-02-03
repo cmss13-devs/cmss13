@@ -553,6 +553,7 @@
 	)
 	starting_attachment_types = list(/obj/item/attachable/mateba)
 	unacidable = TRUE
+	black_market_value = 100
 	var/is_locked = TRUE
 
 /obj/item/weapon/gun/revolver/mateba/attackby(obj/item/I, mob/user)

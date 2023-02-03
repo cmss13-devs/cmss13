@@ -215,19 +215,3 @@
 	containertype = /obj/structure/closet/crate/freezer
 	containername = "\improper Pizza crate"
 	group = "Food"
-
-//kind of is own sub category with the happy pill in it
-/datum/supply_packs/contraband
-	randomised_num_contained = 5
-	contains = list(
-		/obj/item/seeds/bloodtomatoseed,
-		/obj/item/storage/pill_bottle/happy,
-		/obj/item/reagent_container/food/drinks/bottle/pwine,
-	)
-
-	name = "contraband crate"
-	cost = 30
-	containertype = /obj/structure/closet/crate/supply
-	containername = "unlabeled crate"
-	contraband = 1
-	group = "Food"

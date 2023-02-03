@@ -180,6 +180,7 @@
 	icon_state = "weldtank"
 	amount_per_transfer_from_this = 10
 	chemical = "fuel"
+	black_market_value = 25
 	var/modded = 0
 	var/obj/item/device/assembly_holder/rig = null
 	var/exploding = 0

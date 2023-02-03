@@ -408,36 +408,42 @@
 		return
 
 	if(!HAS_TRAIT(user, TRAIT_SUPER_STRONG))
-		to_chat(user, SPAN_WARNING("You're not strong enough to rip an entire humanoid apart. Also, that's kind of fucked up.")) //look at this dumbass
+		to_chat(user, SPAN_WARNING("You're not strong enough to rip this creature apart with this tools.")) //look at this dumbass
 		return
 
 	if(isxeno(target))
-		var/mob/living/carbon/xenomorph/xeno = target
-		if(do_after(user, 1 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, xeno))
-			to_chat(user, SPAN_WARNING("You start cutting [xeno] appart."))
-			playsound(loc, 'sound/weapons/pierce.ogg', 25)
-			if(do_after(user, 4 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, xeno))
-				to_chat(user, SPAN_WARNING("You pierce [xeno] exoeskeleton with precise cuts"))
-				create_leftovers(xeno, has_meat = FALSE, skin_amount = TRUE)
-				playsound(loc, 'sound/weapons/slashmiss.ogg', 25)
-				if(do_after(user, 4 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, xeno))
-					to_chat(user, SPAN_WARNING("You harvest [xeno] insides"))
-					create_leftovers(xeno, has_meat = TRUE, skin_amount = FALSE,)
-					create_leftovers(xeno, has_meat = TRUE, skin_amount = FALSE,)
-					playsound(loc, 'sound/weapons/slash.ogg', 25)
-					if(do_after(user, 4 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, xeno))
-						to_chat(user, SPAN_WARNING("You extract [xeno] meat leaving behind a pile of goo"))
-						var/obj/item/xeno_tail/tail = new /obj/item/xeno_tail(get_turf(xeno)) // the tail remains
-						tail.name = "[xeno.name] tail"
-						playsound(loc, 'sound/bullets/bullet_impact3.ogg', 25)
-						xeno.gib() //we dont need you anymore
-						return
-
-
-	var/mob/living/carbon/human/victim = target
-	if(!ishuman(victim)) //just in case
+		flay_xeno(target, user)
 		return
 
+	if(ishuman(target))
+		flay_human(target, user)
+		return
+
+	else return
+
+/obj/item/weapon/melee/yautja/knife/proc/flay_xeno(mob/living/carbon/xenomorph/target, mob/living/carbon/human/user)
+	var/mob/living/carbon/xenomorph/xeno = target
+	if(do_after(user, 1 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, xeno))
+		to_chat(user, SPAN_WARNING("You start cutting [xeno] apart."))
+		playsound(loc, 'sound/weapons/pierce.ogg', 25)
+		if(do_after(user, 4 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, xeno))
+			to_chat(user, SPAN_WARNING("You pierce [xeno]´s exoeskeleton with precise cuts."))
+			xeno_leftovers(xeno, has_meat = FALSE, skin_amount = TRUE, organs = FALSE)
+			playsound(loc, 'sound/weapons/slashmiss.ogg', 25)
+			if(do_after(user, 4 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, xeno))
+				to_chat(user, SPAN_WARNING("You harvest [xeno]´s insides."))
+				xeno_leftovers(xeno, has_meat = TRUE, skin_amount = FALSE, organs = FALSE)
+				xeno_leftovers(xeno, has_meat = TRUE, skin_amount = FALSE, organs = FALSE)
+				playsound(loc, 'sound/weapons/slash.ogg', 25)
+				if(do_after(user, 4 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, xeno))
+					to_chat(user, SPAN_WARNING("You extract meat from [xeno]'s corpse, leaving behind little but a pile of goo."))
+					xeno_leftovers(xeno, has_meat = FALSE, skin_amount = FALSE, organs = TRUE)
+					playsound(loc, 'sound/bullets/bullet_impact3.ogg', 25)
+					xeno.gib() //we dont need you anymore
+					return
+
+/obj/item/weapon/melee/yautja/knife/proc/flay_human(mob/living/carbon/human/target, mob/living/carbon/human/user)
+	var/mob/living/carbon/human/victim = target
 	if(issynth(victim))
 		to_chat(user, SPAN_WARNING("You can't flay metal...")) //look at this dumbass
 		return
@@ -454,7 +460,7 @@
 	if(do_after(user, 4 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, victim))
 		to_chat(user, SPAN_WARNING("You prepare the skin, cutting the flesh off in vital places."))
 		playsound(loc, 'sound/weapons/slash.ogg', 25)
-		create_leftovers(victim, has_meat = TRUE, skin_amount = 0)
+		human_leftovers(victim, has_meat = TRUE, skin_amount = 0)
 		for(var/limb in victim.limbs)
 			victim.apply_damage(15, BRUTE, limb, sharp = FALSE)
 		victim.add_flay_overlay(stage = 1)
@@ -462,7 +468,7 @@
 		if(do_after(user, 4 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE, victim))
 			var/obj/limb/head/v_head = victim.get_limb("head")
 			if(v_head) //they might be beheaded
-				create_leftovers(victim, has_meat = FALSE, skin_amount = 1)
+				human_leftovers(victim, has_meat = FALSE, skin_amount = 1)
 				victim.apply_damage(10, BRUTE, v_head, sharp = FALSE)
 				v_head.disfigured = TRUE
 				if(victim.h_style == "Bald") //you can't scalp someone with no hair.
@@ -478,7 +484,7 @@
 			if(do_after(user, 4 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE, victim))
 				to_chat(user, SPAN_WARNING("You jab \the [src] into the flesh cuts, using them to tear off most of the skin, the remainder skin hanging off the flesh."))
 				playsound(loc, 'sound/weapons/bladeslice.ogg', 25)
-				create_leftovers(victim, has_meat = FALSE, skin_amount = 3)
+				human_leftovers(victim, has_meat = FALSE, skin_amount = 3)
 				for(var/limb in victim.limbs)
 					victim.apply_damage(18, BRUTE, limb, sharp = FALSE)
 				victim.remove_overlay(UNDERWEAR_LAYER)
@@ -489,7 +495,7 @@
 				if(do_after(user, 4 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE, victim))
 					to_chat(user, SPAN_WARNING("You completely flay [victim], sloppily ripping most remaining flesh and skin off the body. Use rope to hang them from the ceiling."))
 					playsound(loc, 'sound/weapons/wristblades_hit.ogg', 25)
-					create_leftovers(victim, has_meat = TRUE, skin_amount = 2)
+					human_leftovers(victim, has_meat = TRUE, skin_amount = 2)
 					for(var/limb in victim.limbs)
 						victim.apply_damage(22, BRUTE, limb, sharp = FALSE)
 					for(var/obj/item/item in victim)
@@ -505,31 +511,33 @@
 	overlays_standing[FLAY_LAYER] = flay_icon
 	apply_overlay(FLAY_LAYER)
 
-/obj/item/weapon/melee/yautja/knife/proc/create_leftovers(mob/living/carbon/victim, has_meat, skin_amount, special)
+/obj/item/weapon/melee/yautja/knife/proc/human_leftovers(mob/living/carbon/human/victim, has_meat, skin_amount)
 	if(has_meat)
-		if(ishuman(victim))
-			var/obj/item/reagent_container/food/snacks/meat/meat = new /obj/item/reagent_container/food/snacks/meat(victim.loc)
-			meat.name = "raw [victim.name] steak"
-		if(isxeno(victim))
-			var/obj/item/reagent_container/food/snacks/meat/xenomeat/meat = new /obj/item/reagent_container/food/snacks/meat/xenomeat(victim.loc)
-			meat.name = "raw [victim.name] steak"
+		var/obj/item/reagent_container/food/snacks/meat/meat = new (get_turf(victim))
+		meat.name = "raw [victim.name] steak"
 
 	if(skin_amount)
-		if(ishuman(victim))
-			var/obj/item/stack/sheet/animalhide/human/hide = new /obj/item/stack/sheet/animalhide/human(victim.loc)
-			hide.name = "[victim.name]-hide"
-			hide.singular_name = "[victim.name]-hide"
-			hide.stack_id = "[victim.name]-hide"
-			hide.amount = skin_amount
+		var/obj/item/stack/sheet/animalhide/human/hide = new (get_turf(victim))
+		hide.name = "[victim.name]-hide"
+		hide.singular_name = "[victim.name]-hide"
+		hide.stack_id = "[victim.name]-hide"
+		hide.amount = skin_amount
 
-		if(isxeno(victim))
-			var/obj/item/stack/sheet/animalhide/xeno/hide = new /obj/item/stack/sheet/animalhide/xeno(victim.loc)
-			hide.name = "[victim.name]-hide"
-			hide.singular_name = "[victim.name]-hide"
-			hide.stack_id = "[victim.name]-hide"
-			hide.amount = skin_amount
+/obj/item/weapon/melee/yautja/knife/proc/xeno_leftovers(mob/living/carbon/xenomorph/victim, has_meat, skin_amount, organs)
+	if(has_meat)
+		var/obj/item/reagent_container/food/snacks/meat/xenomeat/meat = new (get_turf(victim))
+		meat.name = "raw [victim] steak"
 
+	if(skin_amount)
+		var/obj/item/stack/sheet/animalhide/xeno/hide = new (get_turf(victim))
+		hide.name = "[victim]-hide"
+		hide.singular_name = "[victim]-hide"
+		hide.stack_id = "[victim]-hide"
+		hide.amount = skin_amount
 
+	if(organs) //add organs or RNG stuff here!!
+		var/obj/item/xeno_tail/tail = new (get_turf(victim))
+		tail.name = "[victim]´s tail"
 
 /*#########################################
 ########### Two Handed Weapons ############

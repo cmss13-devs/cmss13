@@ -471,9 +471,9 @@
 	. = ..()
 	if(is_locked && linked_human && linked_human != user)
 		if(linked_human.is_revivable() || linked_human.stat != DEAD)
-		to_chat(user, SPAN_WARNING("[icon2html(src, usr)] Trigger locked by [src]. Unauthorized user."))
-		playsound(loc,'sound/weapons/gun_empty.ogg', 25, 1)
-		return FALSE
+			to_chat(user, SPAN_WARNING("[icon2html(src, usr)] Trigger locked by [src]. Unauthorized user."))
+			playsound(loc,'sound/weapons/gun_empty.ogg', 25, 1)
+			return FALSE
 
 		linked_human = null
 		is_locked = FALSE
@@ -582,9 +582,9 @@
 	. = ..()
 	if(linked_human)
 		if(is_locked)
-		. += SPAN_NOTICE("It is registered to [linked_human].")
+			. += SPAN_NOTICE("It is registered to [linked_human].")
 		else
-		. += SPAN_NOTICE("It is registered to [linked_human] but has its fire restrictions unlocked.")
+			. += SPAN_NOTICE("It is registered to [linked_human] but has its fire restrictions unlocked.")
 	else
 		. += SPAN_NOTICE("It's unregistered. Pick it up to register yourself as its owner.")
 	if(!iff_enabled)

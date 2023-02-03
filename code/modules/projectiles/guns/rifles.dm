@@ -69,8 +69,7 @@
 		/obj/item/attachable/attached_gun/extinguisher,
 		/obj/item/attachable/scope,
 		/obj/item/attachable/scope/mini,
-		)
-
+	)
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
 	starting_attachment_types = list(/obj/item/attachable/attached_gun/grenade, /obj/item/attachable/stock/rifle/collapsible)
 	map_specific_decoration = TRUE
@@ -1350,11 +1349,11 @@
 	item_state = "abr40"
 	current_mag = /obj/item/ammo_magazine/rifle/l42a/abr40
 	attachable_allowed = list(
-		//Barrel
+		//Barrel,
 		/obj/item/attachable/bayonet,
 		/obj/item/attachable/bayonet/upp,
 		/obj/item/attachable/bayonet/c02,
-		//Rail
+		//Rail,
 		/obj/item/attachable/reddot,
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/flashlight,
@@ -1362,7 +1361,7 @@
 		/obj/item/attachable/scope,
 		/obj/item/attachable/scope/mini,
 		/obj/item/attachable/scope/mini/hunting,
-		//Stock
+		//Stock,
 		/obj/item/attachable/stock/carbine,
 		/obj/item/attachable/stock/carbine/wood,
 		/obj/item/attachable/stock/carbine/wood/tactical,
@@ -1387,12 +1386,12 @@
 	item_state = "abr40_tac"
 	current_mag = /obj/item/ammo_magazine/rifle/l42a/ap
 	attachable_allowed = list(
-		//Barrel
+		//Barrel,
 		/obj/item/attachable/suppressor,
 		/obj/item/attachable/bayonet,
 		/obj/item/attachable/bayonet/upp,
 		/obj/item/attachable/bayonet/c02,
-		//Rail
+		//Rail,
 		/obj/item/attachable/reddot,
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/flashlight,
@@ -1400,9 +1399,9 @@
 		/obj/item/attachable/scope,
 		/obj/item/attachable/scope/mini,
 		/obj/item/attachable/scope/mini/hunting,
-		//Under
+		//Under,
 		/obj/item/attachable/flashlight/grip,
-		//Stock
+		//Stock,
 		/obj/item/attachable/stock/carbine,
 		/obj/item/attachable/stock/carbine/wood,
 		/obj/item/attachable/stock/carbine/wood/tactical,

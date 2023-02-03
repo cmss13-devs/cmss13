@@ -457,15 +457,15 @@
 	fire_sound = 'sound/weapons/gun_kt42.ogg'
 	current_mag = /obj/item/ammo_magazine/sniper/svd
 	attachable_allowed = list(
-		//Muzzle
+		//Muzzle,
 		/obj/item/attachable/bayonet,
 		/obj/item/attachable/bayonet/upp_replica,
 		/obj/item/attachable/bayonet/upp,
 		/obj/item/attachable/extended_barrel,
 		/obj/item/attachable/heavy_barrel,
-		//Barrel
+		//Barrel,
 		/obj/item/attachable/slavicbarrel,
-		//Rail
+		//Rail,
 		/obj/item/attachable/reddot,
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/flashlight,
@@ -475,12 +475,12 @@
 		/obj/item/attachable/scope/variable_zoom/slavic,
 		/obj/item/attachable/scope/mini,
 		/obj/item/attachable/scope/slavic,
-		//Under
+		//Under,
 		/obj/item/attachable/verticalgrip,
 		/obj/item/attachable/angledgrip,
 		/obj/item/attachable/lasersight,
 		/obj/item/attachable/bipod,
-		//Stock
+		//Stock,
 		/obj/item/attachable/stock/slavic,
 	)
 	has_aimed_shot = FALSE

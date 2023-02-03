@@ -42803,7 +42803,7 @@
 /area/almayer/medical/lower_medical_medbay)
 "fIX" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/almayer{
-	req_one_access = "2;21";
+	req_one_access = "19;21";
 	name = "\improper Requisitions Auxiliary Storage Room"
 	},
 /turf/open/floor/almayer{
@@ -58065,7 +58065,7 @@
 /obj/structure/machinery/door/airlock/almayer/maint{
 	req_access = null;
 	req_one_access = null;
-	req_one_access_txt = "2;21"
+	req_one_access_txt = "19;21"
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /turf/open/floor/almayer{

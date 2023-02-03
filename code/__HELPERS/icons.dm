@@ -698,3 +698,24 @@ world
 /// (Generated names do not include file extention.)
 /proc/generate_asset_name(file)
 	return "asset.[md5(fcopy_rsc(file))]"
+
+//For creating consistent icons for human looking simple animals
+/proc/get_flat_human_icon(icon_id, datum/equipment_preset/preset, datum/preferences/prefs, dummy_key, showDirs = GLOB.cardinals, outfit_override)
+	var/static/list/humanoid_icon_cache = list()
+	if(!icon_id || !humanoid_icon_cache[icon_id])
+		var/mob/living/carbon/human/dummy/body = generate_or_wait_for_human_dummy(dummy_key)
+		if(prefs)
+			prefs.copy_all_to(body)
+		arm_equipment(body, preset)
+
+		var/icon/out_icon = icon('icons/effects/effects.dmi', "nothing")
+		for(var/D in showDirs)
+			body.setDir(D)
+			var/icon/partial = getFlatIcon(body)
+			out_icon.Insert(partial, dir = D)
+
+		humanoid_icon_cache[icon_id] = out_icon
+		dummy_key ? unset_busy_human_dummy(dummy_key) : qdel(body)
+		return out_icon
+	else
+		return humanoid_icon_cache[icon_id]

@@ -140,6 +140,7 @@
 	name = "Random Balaclava"
 	desc = "This is a randomly chosen balaclava."
 	icon_state = "loot_goggles"
+	spawn_nothing_percentage = 50
 
 /obj/effect/spawner/random/balaclavas/item_to_spawn()
 	return pick(prob(100);/obj/item/clothing/mask/balaclava,\
@@ -155,6 +156,7 @@
 	name = "Random Facepaint"
 	desc = "This is a randomly chosen facepaint."
 	icon_state = "loot_goggles"
+	spawn_nothing_percentage = 50
 
 /obj/effect/spawner/random/facepaint/item_to_spawn()
 	return pick(prob(100);/obj/item/facepaint/black,\

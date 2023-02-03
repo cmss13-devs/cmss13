@@ -9,11 +9,11 @@
 	req_access = list(ACCESS_MARINE_RESEARCH)
 	circuit = /obj/item/circuitboard/computer/robotics
 
-	var/id = 0.0
+	var/id = 0
 	var/temp = null
 	var/status = 0
 	var/timeleft = 60
-	var/stop = 0.0
+	var/stop = 0
 	var/screen = 0 // 0 - Main Menu, 1 - Cyborg Status, 2 - Kill 'em All! -- In text
 
 

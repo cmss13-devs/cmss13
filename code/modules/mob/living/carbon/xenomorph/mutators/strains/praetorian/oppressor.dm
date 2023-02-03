@@ -1,5 +1,5 @@
 /datum/xeno_mutator/praetorian_oppressor
-	// Dread it, run from it, destiny still arrives.. or should I say, I do
+	// Dread it, run from it, destiny still arrives... or should I say, I do
 	name = "STRAIN: Praetorian - Oppressor"
 	description = "You abandon your speed to gain a powerful hook ability. Your slashes deal increased damage to prone targets, and you gain a powerful punch that devastates weakened opponents and makes your other abilities recharge faster."
 	flavor_description = "Dread it. Run from it. The Hive still arrives. Or, more accurately, you do."
@@ -18,7 +18,7 @@
 		/datum/action/xeno_action/activable/tail_stab/tail_seize,
 		/datum/action/xeno_action/activable/prae_abduct,
 		/datum/action/xeno_action/activable/oppressor_punch,
-		/datum/action/xeno_action/activable/tail_lash
+		/datum/action/xeno_action/activable/tail_lash,
 	)
 	behavior_delegate_type = /datum/behavior_delegate/oppressor_praetorian
 	keystone = TRUE

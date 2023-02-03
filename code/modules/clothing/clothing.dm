@@ -123,6 +123,7 @@
 	item_state = "earmuffs"
 	flags_equip_slot = SLOT_EAR
 	clothing_traits = list(TRAIT_EAR_PROTECTION)
+	black_market_value = 20
 
 /obj/item/clothing/ears/earmuffs/New()
 	. = ..()

@@ -16,41 +16,49 @@
 
 /obj/effect/landmark/wo_supplies/attachments/standard
 	amount = list(10,15)
-	stuff = list(/obj/item/attachable/suppressor,
-				/obj/item/attachable/bayonet,
-				/obj/item/attachable/flashlight,
-				/obj/item/attachable/attached_gun/grenade)
+	stuff = list(
+		/obj/item/attachable/suppressor,
+		/obj/item/attachable/bayonet,
+		/obj/item/attachable/flashlight,
+		/obj/item/attachable/attached_gun/grenade,
+	)
 
 
 /obj/effect/landmark/wo_supplies/attachments/common
 	amount = list(3,7)
-	stuff = list(/obj/item/attachable/reddot,
-				/obj/item/attachable/bipod,
-				/obj/item/attachable/burstfire_assembly,
-				/obj/item/attachable/reddot,
-				/obj/item/attachable/lasersight,
-				/obj/item/attachable/extended_barrel,
-				/obj/item/attachable/compensator,
-				/obj/item/attachable/magnetic_harness)
+	stuff = list(
+		/obj/item/attachable/reddot,
+		/obj/item/attachable/bipod,
+		/obj/item/attachable/burstfire_assembly,
+		/obj/item/attachable/reddot,
+		/obj/item/attachable/lasersight,
+		/obj/item/attachable/extended_barrel,
+		/obj/item/attachable/compensator,
+		/obj/item/attachable/magnetic_harness,
+	)
 
 /obj/effect/landmark/wo_supplies/attachments/scarce
 	amount = list(1,5)
-	stuff = list(/obj/item/attachable/attached_gun/shotgun,
-				/obj/item/attachable/attached_gun/flamer,
-				/obj/item/attachable/stock/revolver,
-				/obj/item/attachable/stock/smg,
-				/obj/item/attachable/stock/shotgun,
-				/obj/item/attachable/stock/rifle,
-				/obj/item/attachable/gyro,
-				/obj/item/attachable/verticalgrip,
-				/obj/item/attachable/angledgrip,
-				/obj/item/attachable/scope/mini)
+	stuff = list(
+		/obj/item/attachable/attached_gun/shotgun,
+		/obj/item/attachable/attached_gun/flamer,
+		/obj/item/attachable/stock/revolver,
+		/obj/item/attachable/stock/smg,
+		/obj/item/attachable/stock/shotgun,
+		/obj/item/attachable/stock/rifle,
+		/obj/item/attachable/gyro,
+		/obj/item/attachable/verticalgrip,
+		/obj/item/attachable/angledgrip,
+		/obj/item/attachable/scope/mini,
+	)
 
 /obj/effect/landmark/wo_supplies/attachments/rare
 	amount = list(0,2)
-	stuff = list(/obj/item/attachable/heavy_barrel,
-				/obj/item/attachable/scope,
-				/obj/item/attachable/gyro)
+	stuff = list(
+		/obj/item/attachable/heavy_barrel,
+		/obj/item/attachable/scope,
+		/obj/item/attachable/gyro,
+	)
 
 
 

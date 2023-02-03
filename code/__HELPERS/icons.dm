@@ -699,6 +699,42 @@ world
 /proc/generate_asset_name(file)
 	return "asset.[md5(fcopy_rsc(file))]"
 
+/**
+ * Center's an image.
+ * Requires:
+ * The Image
+ * The x dimension of the icon file used in the image
+ * The y dimension of the icon file used in the image
+ * eg: center_image(image_to_center, 32,32)
+ * eg2: center_image(image_to_center, 96,96)
+**/
+/proc/center_image(image/image_to_center, x_dimension = 32, y_dimension = 32)
+	if(!image_to_center)
+		return
+
+	if(!x_dimension || !y_dimension)
+		return
+
+	if((x_dimension == world.icon_size) && (y_dimension == world.icon_size))
+		return image_to_center
+
+	//Offset the image so that it's bottom left corner is shifted this many pixels
+	//This makes it infinitely easier to draw larger inhands/images larger than world.iconsize
+	//but still use them in game
+	var/x_offset = -((x_dimension / world.icon_size) - 1) * (world.icon_size * 0.5)
+	var/y_offset = -((y_dimension / world.icon_size) - 1) * (world.icon_size * 0.5)
+
+	//Correct values under world.icon_size
+	if(x_dimension < world.icon_size)
+		x_offset *= -1
+	if(y_dimension < world.icon_size)
+		y_offset *= -1
+
+	image_to_center.pixel_x = x_offset
+	image_to_center.pixel_y = y_offset
+
+	return image_to_center
+
 //For creating consistent icons for human looking simple animals
 /proc/get_flat_human_icon(icon_id, datum/equipment_preset/preset, datum/preferences/prefs, dummy_key, showDirs = GLOB.cardinals, outfit_override)
 	var/static/list/humanoid_icon_cache = list()

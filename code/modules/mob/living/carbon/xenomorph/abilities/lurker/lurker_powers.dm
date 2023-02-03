@@ -318,6 +318,9 @@
 
 	var/mob/living/carbon/target_carbon = target_atom
 
+	if(xeno.can_not_harm(target_carbon))
+		return
+
 	if(!(target_carbon.knocked_out || target_carbon.stat == UNCONSCIOUS)) //called knocked out because for some reason .stat seems to have a delay .
 		to_chat(xeno, SPAN_XENOHIGHDANGER("You can only headbite an unconscious, adjacent target!"))
 		return
@@ -345,7 +348,7 @@
 	xeno.flick_attack_overlay(target_carbon, "headbite")
 	xeno.animation_attack_on(target_carbon, pixel_offset = 16)
 	target_carbon.apply_armoured_damage(200, ARMOR_MELEE, BRUTE, "head", 5) //DIE
-	target_carbon.death(create_cause_data("executed by headbite", xeno), FALSE)
+	target_carbon.death(create_cause_data("headbite execution", xeno), FALSE)
 	xeno.gain_health(150)
 	xeno.xeno_jitter(1 SECONDS)
 	xeno.flick_heal_overlay(3 SECONDS, "#00B800")

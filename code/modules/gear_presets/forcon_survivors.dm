@@ -10,7 +10,7 @@
 	access = list(
 		ACCESS_CIVILIAN_PUBLIC,
 		ACCESS_CIVILIAN_ENGINEERING,
-		ACCESS_CIVILIAN_LOGISTICS
+		ACCESS_CIVILIAN_LOGISTICS,
 	)
 
 /datum/equipment_preset/survivor/forecon/load_gear(mob/living/carbon/human/H)
@@ -82,7 +82,7 @@
 		if(3)
 			H.equip_to_slot_or_del(new /obj/item/storage/fancy/cigarettes/lucky_strikes(H), WEAR_IN_ACCESSORY)
 
-/datum/equipment_preset/survivor/forecon/proc/spawn_random_headgear(var/mob/living/carbon/human/H)
+/datum/equipment_preset/survivor/forecon/proc/spawn_random_headgear(mob/living/carbon/human/H)
 	var/i = rand(1,10)
 	switch(i)
 		if (1 , 2)

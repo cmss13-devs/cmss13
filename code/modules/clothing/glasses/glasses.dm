@@ -48,7 +48,7 @@
 		icon_state = deactive_state
 	..()
 
-/obj/item/clothing/glasses/proc/can_use_active_effect(var/mob/living/carbon/human/user)
+/obj/item/clothing/glasses/proc/can_use_active_effect(mob/living/carbon/human/user)
 	if(req_skill && req_skill_level && !(!req_skill_explicit && skillcheck(user, req_skill, req_skill_level)) && !(req_skill_explicit && skillcheckexplicit(user, req_skill, req_skill_level)))
 		return FALSE
 	else
@@ -240,6 +240,7 @@
 	desc = "Someone tried to watch a black-market Arcturian blue movie on this augmented-reality headset and now it's useless. Unlike you, Disco will never die.\nThere's some kind of epilepsy warning sticker on the side."
 	icon_state = "discovision"
 	flags_equip_slot = SLOT_EYES|SLOT_FACE
+	black_market_value = 25
 
 	//These three vars are so that the flashing of the obj and onmob match what the wearer is seeing. They're actually vis_contents rather than overlays,
 	//strictly speaking, since overlays can't be animate()-ed.
@@ -435,11 +436,11 @@
 	qdel(activation)
 	attached_item = null
 
-/obj/item/clothing/glasses/mgoggles/ui_action_click(var/mob/owner, var/obj/item/holder)
+/obj/item/clothing/glasses/mgoggles/ui_action_click(mob/owner, obj/item/holder)
 	toggle_goggles(owner)
 	activation.update_button_icon()
 
-/obj/item/clothing/glasses/mgoggles/proc/wear_check(var/obj/item/I, var/mob/living/carbon/human/user, slot)
+/obj/item/clothing/glasses/mgoggles/proc/wear_check(obj/item/I, mob/living/carbon/human/user, slot)
 	SIGNAL_HANDLER
 
 	if(slot == WEAR_HEAD && prescription == TRUE && activated)

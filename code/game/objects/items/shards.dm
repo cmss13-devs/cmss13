@@ -75,10 +75,10 @@
 // on_embed is called from projectile.dm, bullet_act(obj/item/projectile/P).
 // on_embedded_movement is called from human.dm, handle_embedded_objects().
 
-/obj/item/large_shrapnel/proc/on_embedded_movement(var/mob/living/embedded_mob)
+/obj/item/large_shrapnel/proc/on_embedded_movement(mob/living/embedded_mob)
 	return
 
-/obj/item/large_shrapnel/proc/on_embed(var/mob/embedded_mob, var/obj/limb/target_organ)
+/obj/item/large_shrapnel/proc/on_embed(mob/embedded_mob, obj/limb/target_organ)
 	return
 
 /obj/item/large_shrapnel/at_rocket_dud
@@ -113,7 +113,7 @@
 		manual_detonate(get_turf(src), user)
 	cause = null
 
-/obj/item/large_shrapnel/at_rocket_dud/try_to_throw(var/mob/living/user)
+/obj/item/large_shrapnel/at_rocket_dud/try_to_throw(mob/living/user)
 	to_chat(user, SPAN_NOTICE("You heft \the [src] up, preparing to throw it."))
 	user.visible_message(SPAN_DANGER("[user] strains to lift up \the [src]. It looks like they're trying to throw it!"))
 	throw_range = 5
@@ -128,7 +128,7 @@
 	thrown = 1
 	return TRUE
 
-/obj/item/large_shrapnel/at_rocket_dud/launch_impact(var/atom/hit_atom)
+/obj/item/large_shrapnel/at_rocket_dud/launch_impact(atom/hit_atom)
 	. = ..()
 	var/datum/launch_metadata/LM = src.launch_metadata
 	var/user = LM.thrower
@@ -141,7 +141,7 @@
 	cause = null
 	thrown = 0
 
-/obj/item/large_shrapnel/at_rocket_dud/afterattack(var/atom/target, var/mob/user, var/proximity_flag, var/click_parameters)
+/obj/item/large_shrapnel/at_rocket_dud/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
 	if(!detonating && (user.a_intent == INTENT_HARM) && proximity_flag && (istype(target, /obj/vehicle) || istype(target, /obj/structure) || istype(target, /turf)))
 		cause = "manually triggered"
 		vehicle_impact(target, user)
@@ -149,7 +149,7 @@
 		return
 	cause = null
 
-/obj/item/large_shrapnel/at_rocket_dud/attack(var/mob/living/M, var/mob/living/user)
+/obj/item/large_shrapnel/at_rocket_dud/attack(mob/living/M, mob/living/user)
 	. = ..()
 	if(!detonating && (user.a_intent == INTENT_HARM) && istype(M, /mob/living/carbon))
 		cause = "manually triggered"
@@ -157,7 +157,7 @@
 		return
 	cause = null
 
-/obj/item/large_shrapnel/at_rocket_dud/proc/vehicle_impact(var/atom/T, var/mob/U)
+/obj/item/large_shrapnel/at_rocket_dud/proc/vehicle_impact(atom/T, mob/U)
 	if(istype(T, /obj/vehicle/multitile))
 		var/obj/vehicle/multitile/M = T
 		M.next_move = world.time + vehicle_slowdown_time
@@ -168,7 +168,7 @@
 		return TRUE
 	return FALSE
 
-/obj/item/large_shrapnel/at_rocket_dud/proc/manual_detonate(var/atom/target, var/mob/living/user, var/melee = 1, var/direction = null)
+/obj/item/large_shrapnel/at_rocket_dud/proc/manual_detonate(atom/target, mob/living/user, melee = 1, direction = null)
 	detonating = 1
 	if(user && (cause == "manually triggered"))
 		user.visible_message(SPAN_DANGER("[user] [melee?"slams \the [src] into":"throws \the [src] at"] [target]!"))
@@ -177,7 +177,7 @@
 	cell_explosion(get_turf(target), 200, 150, EXPLOSION_FALLOFF_SHAPE_LINEAR, direction, create_cause_data("[cause] UXO detonation", user))
 	qdel(src)
 
-/obj/item/large_shrapnel/at_rocket_dud/on_embed(var/mob/embedded_mob, var/obj/limb/target_organ)
+/obj/item/large_shrapnel/at_rocket_dud/on_embed(mob/embedded_mob, obj/limb/target_organ)
 	if(!ishuman(embedded_mob))
 		return
 	var/mob/living/carbon/human/H = embedded_mob
@@ -186,7 +186,7 @@
 	if(istype(target_organ))
 		target_organ.embed(src)
 
-/obj/item/large_shrapnel/at_rocket_dud/on_embedded_movement(var/mob/living/embedded_mob)
+/obj/item/large_shrapnel/at_rocket_dud/on_embedded_movement(mob/living/embedded_mob)
 	if(!ishuman(embedded_mob))
 		return
 	var/mob/living/carbon/human/H = embedded_mob
@@ -209,7 +209,7 @@
 	source_sheet_type = null
 	var/damage_on_move = 0.5
 
-/obj/item/shard/shrapnel/proc/on_embed(var/mob/embedded_mob, var/obj/limb/target_organ)
+/obj/item/shard/shrapnel/proc/on_embed(mob/embedded_mob, obj/limb/target_organ)
 	if(!ishuman(embedded_mob))
 		return
 	var/mob/living/carbon/human/H = embedded_mob
@@ -218,7 +218,7 @@
 	if(istype(target_organ))
 		target_organ.embed(src)
 
-/obj/item/shard/shrapnel/proc/on_embedded_movement(var/mob/living/embedded_mob)
+/obj/item/shard/shrapnel/proc/on_embedded_movement(mob/living/embedded_mob)
 	if(!ishuman(embedded_mob))
 		return
 	var/mob/living/carbon/human/H = embedded_mob

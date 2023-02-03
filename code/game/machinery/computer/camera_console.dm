@@ -49,7 +49,7 @@
 	qdel(cam_background)
 	return ..()
 
-/obj/structure/machinery/computer/security/attack_remote(var/mob/user as mob)
+/obj/structure/machinery/computer/security/attack_remote(mob/user as mob)
 	return attack_hand(user)
 
 /obj/structure/machinery/computer/security/attack_hand(mob/user)

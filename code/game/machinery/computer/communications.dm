@@ -58,7 +58,7 @@
 	if(..() && state != STATE_STATUSDISPLAY)
 		updateDialog()
 
-/obj/structure/machinery/computer/communications/proc/update_mapview(var/close = 0)
+/obj/structure/machinery/computer/communications/proc/update_mapview(close = 0)
 	if (close || !current_mapviewer || !Adjacent(current_mapviewer))
 		close_browser(current_mapviewer, "marineminimap")
 		current_mapviewer = null
@@ -322,10 +322,10 @@
 
 	updateUsrDialog()
 
-/obj/structure/machinery/computer/communications/attack_remote(var/mob/user as mob)
+/obj/structure/machinery/computer/communications/attack_remote(mob/user as mob)
 	return attack_hand(user)
 
-/obj/structure/machinery/computer/communications/attack_hand(var/mob/user as mob)
+/obj/structure/machinery/computer/communications/attack_hand(mob/user as mob)
 	if(..()) return FALSE
 
 	var/do_continue = FALSE
@@ -447,7 +447,7 @@
 /obj/structure/machinery/computer/communications/simple
 	circuit = null
 
-/obj/structure/machinery/computer/communications/simple/attack_hand(var/mob/user as mob)
+/obj/structure/machinery/computer/communications/simple/attack_hand(mob/user as mob)
 	user.set_interaction(src)
 	var/dat = "<body>"
 

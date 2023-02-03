@@ -73,6 +73,7 @@
 	potency = 30
 	filling_color = "#CC6464"
 	plantname = "poppies"
+	black_market_value = 25
 
 /obj/item/reagent_container/food/snacks/grown/harebell
 	name = "harebell"
@@ -236,7 +237,7 @@
 
 /obj/item/reagent_container/food/snacks/grown/deathberries
 	name = "bunch of death-berries"
-	desc = "Taste so good, you could die!"
+	desc = "Taste so good, you will die!"
 	icon_state = "deathberrypile"
 	gender = PLURAL
 	potency = 50
@@ -292,6 +293,7 @@
 	potency = 15
 	filling_color = "#F5CB42"
 	plantname = "goldapple"
+	black_market_value = 30
 
 /obj/item/reagent_container/food/snacks/grown/watermelon
 	name = "watermelon"
@@ -550,6 +552,7 @@
 	filling_color = "#DAFF91"
 	potency = 30
 	plantname = "glowshroom"
+	black_market_value = 20
 
 /obj/item/reagent_container/food/snacks/grown/mushroom/glowshroom/attack_self(mob/user)
 	..()

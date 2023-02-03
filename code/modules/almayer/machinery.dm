@@ -81,7 +81,7 @@
 	desc = "A small computer hooked up into the ship's systems."
 
 	density = FALSE
-	anchored = 1
+	anchored = TRUE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 20
 
@@ -140,7 +140,7 @@
 	desc = "A table that displays a map of the current target location"
 	unacidable = TRUE
 	density = TRUE
-	anchored = 1
+	anchored = TRUE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 20
 	var/list/current_viewers = list()
@@ -224,7 +224,7 @@
 	name = "GENERIC USS ALMAYER PROP"
 	desc = "THIS SHOULDN'T BE VISIBLE, AHELP 'ART-P02' IF SEEN IN ROUND WITH LOCATION"
 	density = TRUE
-	anchored = 1
+	anchored = TRUE
 
 /obj/structure/prop/almayer/minigun_crate
 	name = "30mm ammo crate"
@@ -403,7 +403,7 @@
 	icon_state = "recycler"
 
 	density = TRUE
-	anchored = 1
+	anchored = TRUE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 20
 

@@ -7,7 +7,7 @@
 
 
 /// meant for use with qdelling/newing things to transfer labels between them
-/atom/proc/transfer_label_component(var/atom/target)
+/atom/proc/transfer_label_component(atom/target)
 	var/datum/component/label/src_label_component = GetComponent(/datum/component/label)
 	if(src_label_component)
 		var/target_label_text = src_label_component.label_name
@@ -105,7 +105,7 @@
 
 */
 
-/obj/item/tool/hand_labeler/proc/remove_label(var/atom/A, var/mob/user)
+/obj/item/tool/hand_labeler/proc/remove_label(atom/A, mob/user)
 	var/datum/component/label/label = A.GetComponent(/datum/component/label)
 	if(label)
 		user.visible_message(SPAN_NOTICE("[user] removes label from [A]."), \

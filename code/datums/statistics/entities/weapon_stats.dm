@@ -11,7 +11,7 @@
 	var/total_friendly_fire = null
 	var/display_stat = TRUE
 
-/datum/entity/weapon_stats/proc/count_human_kill(var/job_name)
+/datum/entity/weapon_stats/proc/count_human_kill(job_name)
 	if(!job_name)
 		return
 	if(!humans_killed["[job_name]"])
@@ -21,7 +21,7 @@
 	var/datum/entity/statistic/S = humans_killed["[job_name]"]
 	S.value++
 
-/datum/entity/weapon_stats/proc/count_xeno_kill(var/caste)
+/datum/entity/weapon_stats/proc/count_xeno_kill(caste)
 	if(!caste)
 		return
 	if(!xenos_killed["[caste]"])
@@ -31,7 +31,7 @@
 	var/datum/entity/statistic/S = xenos_killed["[caste]"]
 	S.value++
 
-/datum/entity/weapon_stats/proc/count_niche_stat(var/niche_name, var/amount = 1)
+/datum/entity/weapon_stats/proc/count_niche_stat(niche_name, amount = 1)
 	if(!niche_name)
 		return
 	if(!niche_stats["[niche_name]"])

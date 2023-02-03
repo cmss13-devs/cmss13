@@ -10,6 +10,7 @@
 	max_amount = 10
 	w_class = SIZE_SMALL
 	stack_id = "nanopaste"
+	black_market_value = 25
 
 /obj/item/stack/nanopaste/attack(mob/living/M as mob, mob/user as mob)
 	if (!istype(M) || !istype(user))
@@ -28,7 +29,7 @@
 
 	if (istype(M,/mob/living/carbon/human)) //Repairing robolimbs
 		var/mob/living/carbon/human/H = M
-		if(isSpeciesSynth(H) && M == user && !H.allow_gun_usage)
+		if(isspeciessynth(H) && M == user && !H.allow_gun_usage)
 			to_chat(H, SPAN_WARNING("Your programming forbids you from self-repairing with \the [src]."))
 			return
 		var/obj/limb/S = H.get_limb(user.zone_selected)

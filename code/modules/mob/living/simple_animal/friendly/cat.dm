@@ -26,9 +26,11 @@
 	sight = SEE_MOBS
 	see_in_dark = 8
 	see_invisible = 15
+	black_market_value = 50
+	dead_black_market_value = 0
 	var/miaow_counter = 0
 
-/mob/living/simple_animal/cat/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/mob/living/simple_animal/cat/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_pass = PASS_FLAGS_CRAWLER
@@ -99,7 +101,7 @@
 	else
 		return ..()
 
-/mob/living/simple_animal/cat/get_scooped(var/mob/living/carbon/grabber)
+/mob/living/simple_animal/cat/get_scooped(mob/living/carbon/grabber)
 	if (stat >= DEAD)
 		return
 	..()

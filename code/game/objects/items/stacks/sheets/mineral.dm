@@ -67,11 +67,12 @@ GLOBAL_LIST_INIT(iron_recipes, list ( \
 ))
 
 /obj/item/stack/sheet/mineral
-	force = 5.0
+	force = 5
 	throwforce = 5
 	w_class = SIZE_MEDIUM
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 3
+	black_market_value = 5
 
 /obj/item/stack/sheet/mineral/Initialize()
 	. = ..()
@@ -116,6 +117,7 @@ GLOBAL_LIST_INIT(iron_recipes, list ( \
 	desc = "Sandstone is a combination of sand and stone. A common building material for primitive civilisations, can still make a good enough wall."
 	singular_name = "runed sandstone brick"
 	icon_state = "sheet-runedsandstone"
+	black_market_value = 15
 
 /obj/item/stack/sheet/mineral/sandstone/runed/large_stack
 	amount = STACK_50
@@ -127,7 +129,7 @@ GLOBAL_LIST_INIT(iron_recipes, list ( \
 /obj/item/stack/sheet/mineral/sandstone/runed/attack_self(mob/user)
 	..()
 
-	if(isYautja(user))
+	if(isyautja(user))
 		list_recipes(user)
 
 /obj/item/stack/sheet/mineral/diamond
@@ -139,6 +141,7 @@ GLOBAL_LIST_INIT(iron_recipes, list ( \
 	perunit = 3750
 	sheettype = "diamond"
 	stack_id = "diamond"
+	black_market_value = 30
 
 
 /obj/item/stack/sheet/mineral/diamond/Initialize()
@@ -154,6 +157,7 @@ GLOBAL_LIST_INIT(iron_recipes, list ( \
 	perunit = 2000
 	sheettype = "uranium"
 	stack_id = "uranium"
+	black_market_value = 30
 
 /obj/item/stack/sheet/mineral/uranium/Initialize()
 	. = ..()
@@ -171,6 +175,7 @@ GLOBAL_LIST_INIT(iron_recipes, list ( \
 	perunit = 2000
 	sheettype = "phoron"
 	stack_id = "phoron"
+	black_market_value = 10
 
 /obj/item/stack/sheet/mineral/phoron/small_stack
 	amount = STACK_10
@@ -187,6 +192,7 @@ GLOBAL_LIST_INIT(iron_recipes, list ( \
 
 	perunit = 2000
 	stack_id = "plastic"
+	black_market_value = 0
 
 /obj/item/stack/sheet/mineral/plastic/Initialize()
 	. = ..()
@@ -211,6 +217,7 @@ GLOBAL_LIST_INIT(iron_recipes, list ( \
 	perunit = 2000
 	sheettype = "gold"
 	stack_id = "gold"
+	black_market_value = 30
 
 /obj/item/stack/sheet/mineral/gold/Initialize()
 	. = ..()
@@ -228,6 +235,7 @@ GLOBAL_LIST_INIT(iron_recipes, list ( \
 	perunit = 2000
 	sheettype = "silver"
 	stack_id = "silver"
+	black_market_value = 25
 
 /obj/item/stack/sheet/mineral/silver/Initialize()
 	. = ..()
@@ -245,7 +253,7 @@ GLOBAL_LIST_INIT(iron_recipes, list ( \
 	perunit = 1000
 	stack_id = "uranium"
 
-//Valuable resource, cargo can sell it.
+//Valuable resource, cargo can now actually sell it.
 /obj/item/stack/sheet/mineral/platinum
 	name = "platinum"
 	desc = "Platinum is a transition metal. Relatively rare and pretty, it is used for its cosmetic value and chemical properties as a catalytic agent. It is also used in electrodes."
@@ -255,6 +263,7 @@ GLOBAL_LIST_INIT(iron_recipes, list ( \
 	sheettype = "platinum"
 	perunit = 2000
 	stack_id = "platinum"
+	black_market_value = 35
 
 //Extremely valuable to Research.
 /obj/item/stack/sheet/mineral/mhydrogen
@@ -278,6 +287,7 @@ GLOBAL_LIST_INIT(iron_recipes, list ( \
 	color = "#777777"
 	perunit = 2000
 	stack_id = "tritium"
+	black_market_value = 35
 
 /obj/item/stack/sheet/mineral/osmium
 	name = "osmium"
@@ -289,3 +299,4 @@ GLOBAL_LIST_INIT(iron_recipes, list ( \
 	color = "#9999FF"
 	perunit = 2000
 	stack_id = "osmium"
+	black_market_value = 35

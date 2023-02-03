@@ -62,22 +62,22 @@ their unique feature is that a direct hit will buff your damage and firerate
 /obj/item/weapon/gun/lever_action/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 19, "rail_x" = 11, "rail_y" = 21, "under_x" = 24, "under_y" = 16, "stock_x" = 15, "stock_y" = 11)
 
-/obj/item/weapon/gun/lever_action/wield(var/mob/M)
+/obj/item/weapon/gun/lever_action/wield(mob/M)
 	. = ..()
 	if(. && (flags_gun_lever_action & USES_STREAKS))
-		RegisterSignal(M, COMSIG_DIRECT_BULLET_HIT, PROC_REF(direct_hit_buff))
+		RegisterSignal(M, COMSIG_BULLET_DIRECT_HIT, PROC_REF(direct_hit_buff))
 
-/obj/item/weapon/gun/lever_action/unwield(var/mob/M)
+/obj/item/weapon/gun/lever_action/unwield(mob/M)
 	. = ..()
 	if(. && (flags_gun_lever_action & USES_STREAKS))
-		UnregisterSignal(M, COMSIG_DIRECT_BULLET_HIT)
+		UnregisterSignal(M, COMSIG_BULLET_DIRECT_HIT)
 
 /obj/item/weapon/gun/lever_action/dropped(mob/user)
 	. = ..()
 	reset_hit_buff()
 	addtimer(VARSET_CALLBACK(src, cur_onehand_chance, reset_onehand_chance), 4 SECONDS, TIMER_OVERRIDE|TIMER_UNIQUE)
 
-/obj/item/weapon/gun/lever_action/proc/direct_hit_buff(mob/user, mob/target, var/one_hand_lever = FALSE)
+/obj/item/weapon/gun/lever_action/proc/direct_hit_buff(mob/user, mob/target, one_hand_lever = FALSE)
 	SIGNAL_HANDLER
 	var/mob/living/carbon/human/human_user = user
 	if(one_hand_lever && !(flags_gun_lever_action & DANGEROUS_TO_ONEHAND_LEVER))
@@ -115,7 +115,7 @@ their unique feature is that a direct hit will buff your damage and firerate
 	apply_hit_buff(user, target, one_hand_lever) //this is a separate proc so it's configgable
 	addtimer(CALLBACK(src, PROC_REF(reset_hit_buff), one_hand_lever), hit_buff_reset_cooldown, TIMER_OVERRIDE|TIMER_UNIQUE)
 
-/obj/item/weapon/gun/lever_action/proc/apply_hit_buff(mob/user, mob/target, var/one_hand_lever = FALSE)
+/obj/item/weapon/gun/lever_action/proc/apply_hit_buff(mob/user, mob/target, one_hand_lever = FALSE)
 	lever_sound = lever_super_sound
 	lever_message = "<b><i>You quickly work the [lever_name]!<i><b>"
 	last_fired = world.time - buff_fire_reduc //to shoot the next round faster
@@ -129,7 +129,7 @@ their unique feature is that a direct hit will buff your damage and firerate
 			fire_delay += AM.delay_mod
 	wield_delay = 0 //for one-handed levering
 
-/obj/item/weapon/gun/lever_action/proc/reset_hit_buff(var/one_hand_lever) //why does this need a user arg when it doesn't use user at all?
+/obj/item/weapon/gun/lever_action/proc/reset_hit_buff(one_hand_lever) //why does this need a user arg when it doesn't use user at all?
 	if(!(flags_gun_lever_action & USES_STREAKS))
 		return
 	SIGNAL_HANDLER
@@ -203,7 +203,7 @@ their unique feature is that a direct hit will buff your damage and firerate
 	new_handful.generate_handful(selection, default_caliber, 9, 1, /obj/item/weapon/gun/lever_action)
 	return new_handful
 
-/obj/item/weapon/gun/lever_action/reload(mob/user, var/obj/item/ammo_magazine/magazine)
+/obj/item/weapon/gun/lever_action/reload(mob/user, obj/item/ammo_magazine/magazine)
 
 	if(!magazine || !istype(magazine,/obj/item/ammo_magazine/handful)) //Can only reload with handfuls.
 		to_chat(user, SPAN_WARNING("You can't use that to reload!"))
@@ -320,26 +320,22 @@ their unique feature is that a direct hit will buff your damage and firerate
 	item_state = "r4t"
 	flags_equip_slot = SLOT_BACK
 	attachable_allowed = list(
-						//Barrel
-						/obj/item/attachable/bayonet/upp,
-						/obj/item/attachable/bayonet,
-						/obj/item/attachable/extended_barrel,
-						/obj/item/attachable/heavy_barrel,
-						/obj/item/attachable/suppressor,
-						/obj/item/attachable/compensator,
-						//Rail
-						/obj/item/attachable/reddot,
-						/obj/item/attachable/reflex,
-						/obj/item/attachable/flashlight,
-						/obj/item/attachable/magnetic_harness,
-						/obj/item/attachable/scope/mini,
-						//Under
-						/obj/item/attachable/gyro,
-						/obj/item/attachable/lasersight,
-						/obj/item/attachable/magnetic_harness/lever_sling,
-						//Stock
-						/obj/item/attachable/stock/r4t
-						)
+		/obj/item/attachable/bayonet/upp, // Barrel
+		/obj/item/attachable/bayonet,
+		/obj/item/attachable/extended_barrel,
+		/obj/item/attachable/heavy_barrel,
+		/obj/item/attachable/suppressor,
+		/obj/item/attachable/compensator,
+		/obj/item/attachable/reddot, // Rail
+		/obj/item/attachable/reflex,
+		/obj/item/attachable/flashlight,
+		/obj/item/attachable/magnetic_harness,
+		/obj/item/attachable/scope/mini,
+		/obj/item/attachable/gyro, // Under
+		/obj/item/attachable/lasersight,
+		/obj/item/attachable/magnetic_harness/lever_sling,
+		/obj/item/attachable/stock/r4t, // Stock
+		)
 	map_specific_decoration = TRUE
 	flags_gun_features = GUN_CAN_POINTBLANK|GUN_INTERNAL_MAG|GUN_AMMO_COUNTER
 	flags_gun_lever_action = MOVES_WHEN_LEVERING|DANGEROUS_TO_ONEHAND_LEVER
@@ -379,25 +375,21 @@ their unique feature is that a direct hit will buff your damage and firerate
 	var/floating_penetration = FLOATING_PENETRATION_TIER_0 //holder var
 	var/floating_penetration_upper_limit = FLOATING_PENETRATION_TIER_4
 	attachable_allowed = list(
-						//Barrel
-						/obj/item/attachable/bayonet/upp,
-						/obj/item/attachable/bayonet,
-						/obj/item/attachable/extended_barrel,
-						/obj/item/attachable/heavy_barrel,
-						/obj/item/attachable/suppressor,
-						/obj/item/attachable/compensator,
-						//Rail
-						/obj/item/attachable/reddot,
-						/obj/item/attachable/reflex,
-						/obj/item/attachable/flashlight,
-						/obj/item/attachable/magnetic_harness,
-						/obj/item/attachable/scope/mini/xm88,
-						//Under
-						/obj/item/attachable/gyro,
-						/obj/item/attachable/lasersight,
-						//Stock
-						/obj/item/attachable/stock/xm88
-						)
+		/obj/item/attachable/bayonet/upp, // Barrel
+		/obj/item/attachable/bayonet,
+		/obj/item/attachable/extended_barrel,
+		/obj/item/attachable/heavy_barrel,
+		/obj/item/attachable/suppressor,
+		/obj/item/attachable/compensator,
+		/obj/item/attachable/reddot, // Rail
+		/obj/item/attachable/reflex,
+		/obj/item/attachable/flashlight,
+		/obj/item/attachable/magnetic_harness,
+		/obj/item/attachable/scope/mini/xm88,
+		/obj/item/attachable/gyro, // Under
+		/obj/item/attachable/lasersight,
+		/obj/item/attachable/stock/xm88, // Stock
+		)
 
 /obj/item/weapon/gun/lever_action/xm88/set_gun_config_values()
 	..()
@@ -506,7 +498,7 @@ their unique feature is that a direct hit will buff your damage and firerate
 		levered = FALSE
 	return empty_chamber(user)
 
-/obj/item/weapon/gun/lever_action/xm88/reset_hit_buff(var/one_hand_lever) //why does this need a user arg when it doesn't use user at all?
+/obj/item/weapon/gun/lever_action/xm88/reset_hit_buff(one_hand_lever) //why does this need a user arg when it doesn't use user at all?
 	if(!(flags_gun_lever_action & USES_STREAKS))
 		return
 	SIGNAL_HANDLER

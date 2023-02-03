@@ -55,6 +55,11 @@
 	req_access = null
 	shuttle_tag = "Maintenance"
 
+/area/wayfinder/command/docking_coordination
+	name = "\improper Combat Information Center"
+	icon_state = "cic"
+	fake_zlevel = 3 // lowerdeck
+
 /area/wayfinder/command/cic
 	name = "\improper Combat Information Center"
 	icon_state = "cic"
@@ -296,6 +301,16 @@
 	fake_zlevel = 2 // lowerdeck
 	soundscape_playlist = SCAPE_PL_HANGAR
 	soundscape_interval = 35
+
+
+/area/wayfinder/living/guestdorms
+	name = "\improper Guest Dormitories"
+	icon_state = "livingspace"
+	fake_zlevel = 3
+/area/wayfinder/living/meseum
+	name = "\improper Meseum"
+	icon_state = "livingspace"
+	fake_zlevel = 3
 
 /area/wayfinder/living/tankerbunks
 	name = "\improper Vehicle Crew Bunks"

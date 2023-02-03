@@ -341,6 +341,7 @@
 	density = FALSE //dunno who would walk on it, but you know.
 	unslashable = TRUE
 	unacidable = TRUE
+	plane = FLOOR_PLANE
 
 /obj/structure/prop/almayer/hangar_stencil
 	name = "floor"

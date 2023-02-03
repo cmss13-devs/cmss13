@@ -65,6 +65,53 @@
 /turf/closed/wall/almayer/outer/take_damage(dam, var/mob/M)
 	return
 
+/turf/closed/wall/almayer/outer/viewport
+	opacity = FALSE
+	icon_state = "viewport"
+
+/turf/closed/wall/almayer/outer/viewport/LateInitialize()
+	. = ..()
+
+	var/obj/structure/interior_viewport/simple/my_viewport = new/obj/structure/interior_viewport/simple(src)
+
+	var/list/turf_neighbors = list(get_step(src, NORTH).density, get_step(src, SOUTH).density, get_step(src, EAST).density, get_step(src, WEST).density)
+	var/number_of_neighbors
+	for(var/i=1,i<=length(turf_neighbors),i++)
+		if(turf_neighbors[i] == TRUE)
+			number_of_neighbors++
+	if(number_of_neighbors < 3)
+		if(turf_neighbors[1])
+			if(number_of_neighbors == 2)
+				if(turf_neighbors[2])
+					my_viewport.dir = EAST
+					return
+			else
+				my_viewport.dir = EAST
+				return
+		else if(turf_neighbors[2])
+			if(number_of_neighbors == 2)
+				if(turf_neighbors[1])
+					my_viewport.dir = EAST
+					return
+			else
+				my_viewport.dir = EAST
+				return
+		else if(turf_neighbors[3])
+			if(number_of_neighbors == 2)
+				if(turf_neighbors[4])
+					my_viewport.dir = SOUTH
+					return
+			else
+				my_viewport.dir = SOUTH
+				return
+		else if(turf_neighbors[4])
+			if(number_of_neighbors == 2)
+				if(turf_neighbors[3])
+					my_viewport.dir = SOUTH
+					return
+			else
+				my_viewport.dir = SOUTH
+				return
 /turf/closed/wall/almayer/white
 	walltype = WALL_WHITE
 	icon = 'icons/turf/walls/almayer_white.dmi'

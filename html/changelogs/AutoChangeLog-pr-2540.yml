@@ -1,4 +1,0 @@
-author: "stanalbatross"
-delete-after: True
-changes:
-  - bugfix: "ghosts can no longer take huggers from eggs prehijack shipside"

@@ -26,3 +26,35 @@
       That is to say, interaction circles inherit the alpha of cloaked users.
   Segrain:
   - bugfix: Timed actions are once again actually correctly timed.
+2023-02-03:
+  carlarctg:
+  - code_imp: 'Ports backend support for 64x64 onmob (and item) sprites from TGstation
+      PR #12465.'
+  - rscadd: VASTLY enhances the Black Market. Black market items are obtainable by
+      deconstructing a supply computer and pulsing the circuit board. If you're knowledgeable
+      in engineering enough.
+  - rscadd: Added a whole new category for black market items and thoroughly enhanced
+      the possible contraband items to order. Guns, drugs, and worse are plentiful
+      in stock...
+  - rscadd: Various valuable, rare, or otherwise interesting items now have a 'black
+      market value' that allows them to be sent down the ASRS elevator in exchange
+      for black market points to order various things with. Anything that's 'rare'
+      is probably worth something. Added a scanner to the black market to let them
+      detect said points.
+  - rscadd: Added DIALOGUE to the black market.
+  - bugfix: FIxed some construction wirecutter steps needing a screwdriver for some
+      reason.
+  - spellcheck: slightly changed human remains' description
+  - rscadd: Added the maintenance jack, can be found in the black market for now.
+  - code_imp: Improved supply shuttle code somewhat.
+  realforest2001:
+  - code_imp: Explosions are now hard-capped by code.
+  stanalbatross:
+  - ui: added a dropdown list and search functionality to the keybind tgui to make
+      it significantly easier to use
+  - bugfix: fixed synths being able to attack via throwing when in smartpack protection
+      mode
+  - bugfix: ghosts can no longer take huggers from eggs prehijack shipside
+  zeroisthebiggay:
+  - spellcheck: '''executed by headbite'' to ''headbite execution'' when listing someone
+      dying to a headbite in deadchat'

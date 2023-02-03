@@ -1,4 +1,0 @@
-author: "carlarctg"
-delete-after: True
-changes:
-  - code_imp: "Ports backend support for 64x64 onmob (and item) sprites from TGstation PR #12465."

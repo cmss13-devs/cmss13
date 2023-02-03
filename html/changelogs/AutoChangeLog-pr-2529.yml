@@ -1,4 +1,0 @@
-author: "stanalbatross"
-delete-after: True
-changes:
-  - ui: "added a dropdown list and search functionality to the keybind tgui to make it significantly easier to use"

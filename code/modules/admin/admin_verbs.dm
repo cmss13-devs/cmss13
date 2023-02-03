@@ -62,7 +62,8 @@ var/list/admin_verbs_default = list(
 	/client/proc/clear_mutineers,
 	/datum/admins/proc/directnarrateall,
 	/datum/admins/proc/subtlemessageall,
-	/datum/admins/proc/alertall
+	/datum/admins/proc/alertall,
+	/datum/admins/proc/imaginary_friend,
 	)
 
 var/list/admin_verbs_admin = list(
@@ -122,8 +123,7 @@ var/list/admin_verbs_minor_event = list(
 	/client/proc/cmd_admin_medals_panel, // Marine and Xeno medals editor panel
 	/client/proc/force_event,
 	/client/proc/toggle_events,
-	/client/proc/toggle_shipside_sd,
-	/datum/admins/proc/imaginary_friend,
+	/client/proc/toggle_shipside_sd
 )
 var/list/admin_verbs_major_event = list(
 	/client/proc/enable_event_mob_verbs,

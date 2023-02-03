@@ -158,16 +158,19 @@
 	if(!message)
 		return
 
-	var/rendered = "<span class='game say'><span class='name'>[name]</span> <span class='message'>[say_quote(message)]</span></span>"
-	var/dead_rendered = "<span class='game say'><span class='name'>[name] (invisible friend of [owner]) <span class='message'>[say_quote(message)]</span></span>"
+	var/rendered = "<span class='game say'><span class='name'>[name]</span> <span class='message'>[say_quote(message)] \"[message]\"</span></span>"
+	var/dead_rendered = "<span class='game say'><span class='name'>[name] (invisible friend of [owner])</span> <span class='message'>[say_quote(message)] \"[message]\"</span></span>"
 
 	to_chat(owner, "[rendered]")
 	to_chat(src, "[rendered]")
 	if(!hidden)
+		var/list/send_to = list()
 		if(!owner.client?.prefs.lang_chat_disabled)
-			langchat_speech(message, owner, GLOB.all_languages)
+			send_to += owner
 		if(!client?.prefs.lang_chat_disabled)
-			langchat_speech(message, src, GLOB.all_languages)
+			send_to += src
+		if(length(send_to))
+			langchat_speech(message, send_to, GLOB.all_languages, skip_language_check = TRUE)
 
 	//speech bubble
 	var/mutable_appearance/MA = mutable_appearance('icons/mob/effects/talk.dmi', src, "default[say_test(message)]", FLY_LAYER)

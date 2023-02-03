@@ -578,7 +578,7 @@
 	return
 
 /datum/admins/proc/imaginary_friend()
-	set category = "Fun"
+	set category = "OOC.Mentor"
 	set name = "Imaginary Friend"
 
 	if(!check_rights(R_MOD|R_MENTOR))
@@ -601,17 +601,20 @@
 	var/mob/living/L
 	switch(input("Select by:", "Imaginary Friend") as anything in list("Key", "Mob"))
 		if("Key")
-			var/client/C = input("Please, select a key.", "Imaginary Friend") as anything in sortKey(GLOB.clients)
+			var/client/C = tgui_input_list(usr, "Select a key", "Imaginary Friend", GLOB.clients)
 			if(!C)
 				return
 			L = C.mob
 		if("Mob")
-			var/mob/M = input("Please, select a mob.", "Imaginary Friend") as anything in sortNames(GLOB.living_mob_list)
+			var/mob/M = tgui_input_list(usr, "Select a mob", "Imaginary Friend", GLOB.living_mob_list)
 			if(!M)
 				return
 			L = M
 
 	if(!isobserver(usr))
+		return
+
+	if(!istype(L))
 		return
 
 	var/mob/camera/imaginary_friend/IF = new(get_turf(L), L)

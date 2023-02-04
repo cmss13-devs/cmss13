@@ -84,6 +84,8 @@
 	var/obj/item/device/squad_beacon/bomb/bbeacon = null
 	var/obj/structure/supply_drop/drop_pad = null
 
+	var/minimap_color = MINIMAP_SQUAD_UNKNOWN
+
 
 /datum/squad/marine
 	name = "Root"
@@ -97,24 +99,28 @@
 	color = 1
 	access = list(ACCESS_MARINE_ALPHA)
 	radio_freq = ALPHA_FREQ
+	minimap_color = MINIMAP_SQUAD_ALPHA
 
 /datum/squad/marine/bravo
 	name = SQUAD_MARINE_2
 	color = 2
 	access = list(ACCESS_MARINE_BRAVO)
 	radio_freq = BRAVO_FREQ
+	minimap_color = MINIMAP_SQUAD_BRAVO
 
 /datum/squad/marine/charlie
 	name = SQUAD_MARINE_3
 	color = 3
 	access = list(ACCESS_MARINE_CHARLIE)
 	radio_freq = CHARLIE_FREQ
+	minimap_color = MINIMAP_SQUAD_CHARLIE
 
 /datum/squad/marine/delta
 	name = SQUAD_MARINE_4
 	color = 4
 	access = list(ACCESS_MARINE_DELTA)
 	radio_freq = DELTA_FREQ
+	minimap_color = MINIMAP_SQUAD_DELTA
 
 /datum/squad/marine/echo
 	name = SQUAD_MARINE_5
@@ -122,6 +128,7 @@
 	access = list(ACCESS_MARINE_ALPHA, ACCESS_MARINE_BRAVO, ACCESS_MARINE_CHARLIE, ACCESS_MARINE_DELTA)
 	radio_freq = ECHO_FREQ
 	omni_squad_vendor = TRUE
+	minimap_color = MINIMAP_SQUAD_ECHO
 
 	active = FALSE
 	roundstart = FALSE
@@ -131,6 +138,7 @@
 	name = SQUAD_MARINE_CRYO
 	color = 6
 	access = list(ACCESS_MARINE_ALPHA, ACCESS_MARINE_BRAVO, ACCESS_MARINE_CHARLIE, ACCESS_MARINE_DELTA)
+	minimap_color = MINIMAP_SQUAD_FOXTROT
 
 	omni_squad_vendor = TRUE
 	radio_freq = CRYO_FREQ
@@ -145,6 +153,7 @@
 	radio_freq = SOF_FREQ
 	squad_type = "Team"
 	lead_icon = "soctl"
+	minimap_color = MINIMAP_SQUAD_SOF
 
 	active = FALSE
 	roundstart = FALSE

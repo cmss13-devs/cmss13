@@ -83,6 +83,8 @@ var/list/reboot_sfx = file2list("config/reboot_sfx.txt")
 
 	if(!EvacuationAuthority) EvacuationAuthority = new
 
+	initiate_minimap_icons()
+
 	change_tick_lag(CONFIG_GET(number/ticklag))
 	GLOB.timezoneOffset = text2num(time2text(0,"hh")) * 36000
 

@@ -1129,3 +1129,9 @@ note dizziness decrements automatically in the mob's Life() proc.
 			client.eye = loc
 
 	return TRUE
+
+/mob/proc/set_stat(new_stat)
+	if(new_stat == stat)
+		return
+	. = stat //old stat
+	stat = new_stat

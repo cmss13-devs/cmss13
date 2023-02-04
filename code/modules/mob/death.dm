@@ -9,6 +9,7 @@
 
 	// You're not coming back from being gibbed. Stop tracking here
 	SSround_recording.recorder.stop_tracking(src)
+	SSminimaps.remove_marker(src)
 
 	qdel(src)
 
@@ -54,7 +55,7 @@
 		stack_trace("death called with string cause ([cause_data]) instead of datum")
 		cause_data = create_cause_data(cause_data)
 
-	stat = DEAD
+	set_stat(DEAD)
 
 	update_canmove()
 

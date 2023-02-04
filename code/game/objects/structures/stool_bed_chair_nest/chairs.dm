@@ -528,8 +528,8 @@
 	icon_state = "folding_chair"
 	item_state = "folding_chair"
 	attack_verb = list("bashed", "battered", "chaired")
-	force = 1.0
-	throwforce = 3.0
+	force = 1
+	throwforce = 3
 	sharp = null
 	edge = 0
 	w_class = SIZE_LARGE

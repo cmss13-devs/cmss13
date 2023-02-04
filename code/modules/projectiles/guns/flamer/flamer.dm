@@ -251,7 +251,7 @@
 	attachable_allowed = list(
 		/obj/item/attachable/flashlight,
 		/obj/item/attachable/magnetic_harness,
-		/obj/item/attachable/attached_gun/extinguisher
+		/obj/item/attachable/attached_gun/extinguisher,
 	)
 	starting_attachment_types = list(/obj/item/attachable/attached_gun/extinguisher/pyro)
 	flags_gun_features = GUN_UNUSUAL_DESIGN|GUN_WIELDED_FIRING_ONLY

@@ -49,7 +49,7 @@
 		"citation",
 		"giver_name",
 		"giver_player_id",
-		"id"
+		"id",
 	)
 
 /datum/entity/player_entity/proc/track_medal_earned(new_medal_type, mob/new_recipient, new_recipient_role, new_citation, mob/giver)

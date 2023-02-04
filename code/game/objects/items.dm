@@ -12,7 +12,7 @@
 	/// When set to true, every single sprite can be found in the one icon .dmi, rather than being spread into onmobs, inhands, and objects
 	var/contained_sprite = FALSE
 
-	var/r_speed = 1.0
+	var/r_speed = 1
 	var/force = 0
 	var/damtype = BRUTE
 	var/embeddable = TRUE //FALSE if unembeddable
@@ -138,6 +138,14 @@
 	appearance_flags = KEEP_TOGETHER
 	/// lets us know if the item is an objective or not
 	var/is_objective = FALSE
+
+	/// Allows for bigger than 32x32 sprites.
+	var/worn_x_dimension = 32
+	var/worn_y_dimension = 32
+
+	/// Allows for bigger than 32x32 sprites, these govern inhand sprites. (Like a longer sword that's normal-sized on your back)
+	var/inhand_x_dimension = 32
+	var/inhand_y_dimension = 32
 
 	var/list/inherent_traits
 

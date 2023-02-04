@@ -373,7 +373,7 @@ It's fairly easy to fix if dealing with single letters but not so much with comp
 #define DURATION_MULTIPLIER_TIER_4 0.10
 /mob/proc/get_skill_duration_multiplier(skill)
 	//Gets a multiplier for various tasks, based on the skill
-	. = 1.0
+	. = 1
 	if(!skills)
 		return
 	switch(skill)

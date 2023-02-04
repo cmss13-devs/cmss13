@@ -1665,6 +1665,7 @@
 	. += "<option value='?_src_=vars;selectequipment=\ref[src]'>Select Equipment</option>"
 	. += "<option value='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminspawncookie=\ref[src]'>Give Cookie</option>"
 
+
 /mob/living/carbon/human/verb/pose()
 	set name = "Set Pose"
 	set desc = "Sets a description which will be shown when someone examines you."
@@ -1710,3 +1711,11 @@
 	HTML +="<a href='?src=\ref[src];flavor_change=done'>\[Done\]</a>"
 	HTML += "<tt>"
 	show_browser(src, HTML, "Update Flavor Text", "flavor_changes", "size=430x300")
+
+/mob/living/carbon/human/throw_item(atom/target)
+	if(!throw_allowed)
+		var/obj/item/I = get_active_hand()
+		if(I.throwforce) // for hurty stuff only
+			to_chat(src, SPAN_DANGER("You are currently unable to throw harmful items."))
+			return
+	. = ..()

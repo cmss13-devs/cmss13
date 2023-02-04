@@ -259,7 +259,7 @@
 	crystal_max = XENO_CRYSTAL_MEDIUM
 	crystal_stored = XENO_CRYSTAL_MEDIUM
 	small_explosives_stun = FALSE
-	pull_speed = 3.0 //screech/neurodragging is cancer, at the very absolute least get some runner to do it for teamwork
+	pull_speed = 3 //screech/neurodragging is cancer, at the very absolute least get some runner to do it for teamwork
 
 	icon_xeno = 'icons/mob/xenos/queen.dmi'
 	icon_xenonid = 'icons/mob/xenonids/queen.dmi'

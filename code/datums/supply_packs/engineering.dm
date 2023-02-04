@@ -9,9 +9,10 @@
 /datum/supply_packs/sandbagskit
 	name = "sandbags construction kit (sandbags x50, etool x2)"
 	contains = list(
-					/obj/item/stack/sandbags_empty/full,
-					/obj/item/tool/shovel/etool,
-					/obj/item/tool/shovel/etool)
+		/obj/item/stack/sandbags_empty/full,
+		/obj/item/tool/shovel/etool,
+		/obj/item/tool/shovel/etool,
+	)
 	cost = 30
 	containertype = /obj/structure/closet/crate/supply
 	containername = "sandbags construction kit"
@@ -51,8 +52,8 @@
 
 /datum/supply_packs/folding_barricades
 	contains = list(
-					/obj/item/stack/folding_barricade/three
-					)
+		/obj/item/stack/folding_barricade/three,
+	)
 	name = "Folding Barricades (x3)"
 	cost = 20
 	containertype = /obj/structure/closet/crate/supply
@@ -70,15 +71,15 @@
 /datum/supply_packs/electrical
 	name = "electrical maintenance crate (toolbox x2, insulated x2, cell x2, hi-cap cell x2)"
 	contains = list(
-					/obj/item/storage/toolbox/electrical,
-					/obj/item/storage/toolbox/electrical,
-					/obj/item/clothing/gloves/yellow,
-					/obj/item/clothing/gloves/yellow,
-					/obj/item/cell,
-					/obj/item/cell,
-					/obj/item/cell/high,
-					/obj/item/cell/high
-					)
+		/obj/item/storage/toolbox/electrical,
+		/obj/item/storage/toolbox/electrical,
+		/obj/item/clothing/gloves/yellow,
+		/obj/item/clothing/gloves/yellow,
+		/obj/item/cell,
+		/obj/item/cell,
+		/obj/item/cell/high,
+		/obj/item/cell/high,
+	)
 	cost = 20
 	containertype = /obj/structure/closet/crate/construction
 	containername = "electrical maintenance crate"
@@ -87,16 +88,16 @@
 /datum/supply_packs/mechanical
 	name = "mechanical maintenance crate (utility belt x3, hazard vest x3, welding helmet x2, hard hat x1)"
 	contains = list(
-					/obj/item/storage/belt/utility/full,
-					/obj/item/storage/belt/utility/full,
-					/obj/item/storage/belt/utility/full,
-					/obj/item/clothing/suit/storage/hazardvest,
-					/obj/item/clothing/suit/storage/hazardvest,
-					/obj/item/clothing/suit/storage/hazardvest,
-					/obj/item/clothing/head/welding,
-					/obj/item/clothing/head/welding,
-					/obj/item/clothing/head/hardhat
-					)
+		/obj/item/storage/belt/utility/full,
+		/obj/item/storage/belt/utility/full,
+		/obj/item/storage/belt/utility/full,
+		/obj/item/clothing/suit/storage/hazardvest,
+		/obj/item/clothing/suit/storage/hazardvest,
+		/obj/item/clothing/suit/storage/hazardvest,
+		/obj/item/clothing/head/welding,
+		/obj/item/clothing/head/welding,
+		/obj/item/clothing/head/hardhat,
+	)
 	cost = 20
 	containertype = /obj/structure/closet/crate/construction
 	containername = "mechanical maintenance crate"
@@ -105,10 +106,10 @@
 /datum/supply_packs/inflatable
 	name = "inflatable barriers (x9 doors, x12 walls)"
 	contains = list(
-					/obj/item/storage/briefcase/inflatable,
-					/obj/item/storage/briefcase/inflatable,
-					/obj/item/storage/briefcase/inflatable
-					)
+		/obj/item/storage/briefcase/inflatable,
+		/obj/item/storage/briefcase/inflatable,
+		/obj/item/storage/briefcase/inflatable,
+	)
 	cost = 20
 	containertype = /obj/structure/closet/crate/construction
 	containername = "inflatable barriers crate"
@@ -117,10 +118,10 @@
 /datum/supply_packs/lightbulbs
 	name = "replacement lights (x42 tube, x21 bulb)"
 	contains = list(
-					/obj/item/storage/box/lights/mixed,
-					/obj/item/storage/box/lights/mixed,
-					/obj/item/storage/box/lights/mixed
-					)
+		/obj/item/storage/box/lights/mixed,
+		/obj/item/storage/box/lights/mixed,
+		/obj/item/storage/box/lights/mixed,
+	)
 	cost = 20
 	containertype = /obj/structure/closet/crate/supply
 	containername = "replacement lights crate"
@@ -129,11 +130,11 @@
 /datum/supply_packs/pacman_parts
 	name = "P.A.C.M.A.N. portable generator parts"
 	contains = list(
-				/obj/item/stock_parts/micro_laser,
-				/obj/item/stock_parts/capacitor,
-				/obj/item/stock_parts/matter_bin,
-				/obj/item/circuitboard/machine/pacman
-				)
+		/obj/item/stock_parts/micro_laser,
+		/obj/item/stock_parts/capacitor,
+		/obj/item/stock_parts/matter_bin,
+		/obj/item/circuitboard/machine/pacman,
+	)
 	cost = 30
 	containername = "\improper P.A.C.M.A.N. portable generator construction kit"
 	containertype = /obj/structure/closet/crate/secure
@@ -146,17 +147,17 @@
 	containertype = /obj/structure/closet/crate/secure
 	group = "Engineering"
 	contains = list(
-					/obj/item/stock_parts/micro_laser,
-					/obj/item/stock_parts/capacitor,
-					/obj/item/stock_parts/matter_bin,
-					/obj/item/circuitboard/machine/pacman/super
-					)
+		/obj/item/stock_parts/micro_laser,
+		/obj/item/stock_parts/capacitor,
+		/obj/item/stock_parts/matter_bin,
+		/obj/item/circuitboard/machine/pacman/super,
+	)
 
 /datum/supply_packs/flashlights
 	name = "Flashlights (x8)"
 	contains = list(
-					/obj/item/ammo_box/magazine/misc/flashlight
-					)
+		/obj/item/ammo_box/magazine/misc/flashlight,
+	)
 	cost = 10
 	containertype = /obj/structure/closet/crate/supply
 	containername = "flashlights crate"
@@ -165,8 +166,8 @@
 /datum/supply_packs/batteries
 	name = "High-Capacity Power Cells (x8)"
 	contains = list(
-					/obj/item/ammo_box/magazine/misc/power_cell
-					)
+		/obj/item/ammo_box/magazine/misc/power_cell,
+	)
 	cost = 10
 	containertype = /obj/structure/closet/crate/supply
 	containername = "battery crate"

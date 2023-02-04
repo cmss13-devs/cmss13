@@ -212,7 +212,8 @@
 	req_one_access = null
 	tiles_with = list(
 		/obj/structure/window/framed/strata,
-		/obj/structure/machinery/door/airlock)
+		/obj/structure/machinery/door/airlock,
+	)
 
 /obj/structure/machinery/door/airlock/strata/autoname
 	autoname = TRUE
@@ -248,7 +249,8 @@
 	req_one_access = null
 	tiles_with = list(
 		/obj/structure/window/framed/prison,
-		/obj/structure/machinery/door/airlock)
+		/obj/structure/machinery/door/airlock,
+	)
 
 /obj/structure/machinery/door/airlock/prison_hatch/autoname
 	autoname = TRUE
@@ -261,7 +263,8 @@
 	openspeed = 4 //shorter open animation.
 	tiles_with = list(
 		/obj/structure/window/framed/almayer,
-		/obj/structure/machinery/door/airlock)
+		/obj/structure/machinery/door/airlock,
+	)
 
 /obj/structure/machinery/door/airlock/almayer/Initialize()
 	. = ..()

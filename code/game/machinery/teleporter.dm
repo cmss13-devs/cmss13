@@ -388,8 +388,8 @@
 	name = "laser"
 	desc = "IT BURNS!!!"
 	icon = 'icons/obj/items/weapons/projectiles.dmi'
-	var/damage = 0.0
-	var/range = 10.0
+	var/damage = 0
+	var/range = 10
 
 
 /obj/effect/laser/Collide(atom/A)

@@ -434,6 +434,7 @@
 	desc = "It tastes like the color blue. Technology really is amazing. Canned in Havana."
 	icon_state = "souto_blueraspberry"
 	item_state = "souto_blueraspberry"
+	black_market_value = 10 //mendoza likes blue souto
 
 /obj/item/reagent_container/food/drinks/cans/souto/blue/Initialize()
 	. = ..()

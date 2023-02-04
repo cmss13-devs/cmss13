@@ -55,7 +55,7 @@ var/station_name = "[MAIN_SHIP_NAME]"
 var/game_version = "Colonial Marines"
 var/game_year = 2182
 
-var/going = 1.0
+var/going = 1
 var/master_mode = "Distress Signal"
 
 /// If this is anything but "secret", the secret rotation will forceably choose this mode.

@@ -36,7 +36,7 @@
 
 	resin_build_order = GLOB.resin_build_order_drone
 
-/mob/living/carbon/Xenomorph/Drone
+/mob/living/carbon/xenomorph/drone
 	caste_type = XENO_CASTE_DRONE
 	name = XENO_CASTE_DRONE
 	desc = "An Alien Drone"
@@ -61,10 +61,10 @@
 		/datum/action/xeno_action/activable/transfer_plasma, //fourth macro
 		)
 	inherent_verbs = list(
-		/mob/living/carbon/Xenomorph/proc/vent_crawl,
-		/mob/living/carbon/Xenomorph/proc/rename_tunnel,
-		/mob/living/carbon/Xenomorph/proc/set_hugger_reserve_for_morpher,
-		)
+		/mob/living/carbon/xenomorph/proc/vent_crawl,
+		/mob/living/carbon/xenomorph/proc/rename_tunnel,
+		/mob/living/carbon/xenomorph/proc/set_hugger_reserve_for_morpher,
+	)
 	mutation_type = DRONE_NORMAL
 
 	icon_xeno = 'icons/mob/xenos/drone.dmi'

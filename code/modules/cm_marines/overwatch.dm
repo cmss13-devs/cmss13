@@ -34,13 +34,13 @@
 	SSmapview.map_machines -= src
 	return ..()
 
-/obj/structure/machinery/computer/overwatch/attackby(var/obj/I as obj, var/mob/user as mob)  //Can't break or disassemble.
+/obj/structure/machinery/computer/overwatch/attackby(obj/I as obj, mob/user as mob)  //Can't break or disassemble.
 	return
 
-/obj/structure/machinery/computer/overwatch/bullet_act(var/obj/item/projectile/Proj) //Can't shoot it
+/obj/structure/machinery/computer/overwatch/bullet_act(obj/item/projectile/Proj) //Can't shoot it
 	return FALSE
 
-/obj/structure/machinery/computer/overwatch/attack_remote(var/mob/user as mob)
+/obj/structure/machinery/computer/overwatch/attack_remote(mob/user as mob)
 	if(!ismaintdrone(user))
 		return attack_hand(user)
 
@@ -375,7 +375,7 @@
 	dat += "<A href='?src=\ref[src];operation=back'>Back</a></body>"
 	return dat
 
-/obj/structure/machinery/computer/overwatch/proc/update_mapview(var/close = 0)
+/obj/structure/machinery/computer/overwatch/proc/update_mapview(close = 0)
 	if(close || !current_squad || !current_mapviewer || !Adjacent(current_mapviewer))
 		close_browser(current_mapviewer, "marineminimap")
 		current_mapviewer = null
@@ -639,7 +639,7 @@
 
 
 // Alerts all groundside marines about the incoming OB
-/obj/structure/machinery/computer/overwatch/proc/alert_ob(var/turf/target)
+/obj/structure/machinery/computer/overwatch/proc/alert_ob(turf/target)
 	var/area/ob_area = get_area(target)
 	if(!ob_area)
 		return
@@ -955,7 +955,7 @@
 	name = "Supply Drop Pad"
 	desc = "Place a crate on here to allow bridge Overwatch officers to drop them on people's heads."
 	icon = 'icons/effects/warning_stripes.dmi'
-	anchored = 1
+	anchored = TRUE
 	density = FALSE
 	unslashable = TRUE
 	unacidable = TRUE

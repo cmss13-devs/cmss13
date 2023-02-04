@@ -4,13 +4,10 @@
 /obj/item/frame
 	appearance_flags = TILE_BOUND
 
-
-
-
 // APC FRAME
 
 /obj/item/frame/apc
-	name = "APC frame"
+	name = "\improper APC frame"
 	desc = "Used for repairing or building APCs"
 	icon = 'icons/obj/structures/machinery/apc_repair.dmi'
 	icon_state = "apc_frame"

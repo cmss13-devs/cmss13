@@ -242,7 +242,7 @@ var/const/MAX_SAVE_SLOTS = 10
 	real_name = random_name(gender)
 	gear = list()
 
-/datum/preferences/proc/client_reconnected(var/client/C)
+/datum/preferences/proc/client_reconnected(client/C)
 	owner = C
 	macros.owner = C
 
@@ -803,7 +803,7 @@ var/const/MAX_SAVE_SLOTS = 10
 		var/datum/job/J = RoleAuthority.roles_by_path[role]
 		job_preference_list[J.title] = NEVER_PRIORITY
 
-/datum/preferences/proc/get_job_priority(var/J)
+/datum/preferences/proc/get_job_priority(J)
 	if(!J)
 		return FALSE
 
@@ -812,7 +812,7 @@ var/const/MAX_SAVE_SLOTS = 10
 
 	return job_preference_list[J]
 
-/datum/preferences/proc/SetJobDepartment(var/datum/job/J, var/priority)
+/datum/preferences/proc/SetJobDepartment(datum/job/J, priority)
 	if(!J || priority < 0 || priority > 4)
 		return FALSE
 

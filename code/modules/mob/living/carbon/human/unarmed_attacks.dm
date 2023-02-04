@@ -8,7 +8,7 @@
 	var/sharp = FALSE
 	var/edge = FALSE
 
-/datum/unarmed_attack/proc/is_usable(var/mob/living/carbon/human/user)
+/datum/unarmed_attack/proc/is_usable(mob/living/carbon/human/user)
 	if(!user.melee_allowed)
 		to_chat(user, SPAN_DANGER("You are currently unable to attack."))
 		return FALSE
@@ -23,7 +23,7 @@
 	sharp = TRUE
 	edge = TRUE
 
-/datum/unarmed_attack/bite/is_usable(var/mob/living/carbon/human/user)
+/datum/unarmed_attack/bite/is_usable(mob/living/carbon/human/user)
 	if(!user.melee_allowed)
 		return FALSE
 

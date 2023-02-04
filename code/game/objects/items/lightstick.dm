@@ -11,22 +11,22 @@
 	var/trample_chance = 30
 	var/can_trample = TRUE
 
-/obj/item/lightstick/Crossed(var/mob/living/O)
+/obj/item/lightstick/Crossed(mob/living/O)
 	if(anchored && prob(trample_chance) && can_trample)
-		if(!istype(O,/mob/living/carbon/Xenomorph/Larva))
+		if(!istype(O,/mob/living/carbon/xenomorph/larva))
 			visible_message(SPAN_DANGER("[O] tramples the [src]!"))
 			playsound(src, 'sound/weapons/Genhit.ogg', 25, 1)
-			if(istype(O,/mob/living/carbon/Xenomorph))
+			if(istype(O,/mob/living/carbon/xenomorph))
 				if(prob(40))
 					deconstruct(FALSE)
 				else
-					anchored = 0
+					anchored = FALSE
 					icon_state = "lightstick_[s_color][anchored]"
 					SetLuminosity(0)
 					pixel_x = 0
 					pixel_y = 0
 			else
-				anchored = 0
+				anchored = FALSE
 				icon_state = "lightstick_[s_color][anchored]"
 				SetLuminosity(0)
 				pixel_x = 0
@@ -42,7 +42,7 @@
 	if(!do_after(user,20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 		return
 
-	anchored = 0
+	anchored = FALSE
 	user.visible_message("[user.name] removes \the [src] from the ground.","You remove the [src] from the ground.")
 	icon_state = "lightstick_[s_color][anchored]"
 	SetLuminosity(0)
@@ -58,7 +58,7 @@
 //Red
 /obj/item/lightstick/planted
 	icon_state = "lightstick_blue1"
-	anchored = 1
+	anchored = TRUE
 	luminosity = 2
 
 /obj/item/lightstick/red
@@ -68,7 +68,7 @@
 
 /obj/item/lightstick/red/planted
 	icon_state = "lightstick_red1"
-	anchored = 1
+	anchored = TRUE
 	luminosity = 2
 
 /obj/item/lightstick/red/spoke
@@ -79,7 +79,7 @@
 
 /obj/item/lightstick/red/spoke/planted
 	icon_state = "lightstick_spoke1"
-	anchored = 1
+	anchored = TRUE
 	luminosity = 2
 
 /obj/item/lightstick/red/variant
@@ -89,7 +89,7 @@
 
 /obj/item/lightstick/red/variant/planted
 	icon_state = "lightstick_red_variant1"
-	anchored = 1
+	anchored = TRUE
 	luminosity = 2
 
 /obj/item/lightstick/variant //blue
@@ -99,5 +99,5 @@
 
 /obj/item/lightstick/variant/planted
 	icon_state = "lightstick_blue_variant1"
-	anchored = 1
+	anchored = TRUE
 	luminosity = 2

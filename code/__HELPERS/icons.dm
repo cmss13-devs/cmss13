@@ -560,7 +560,7 @@ world
 	flat_icon.AddAlphaMask(alpha_mask)//Finally, let's mix in a distortion effect.
 	return flat_icon
 
-/proc/adjust_brightness(var/color, var/value)
+/proc/adjust_brightness(color, value)
 	if (!color) return "#FFFFFF"
 	if (!value) return color
 
@@ -570,7 +570,7 @@ world
 	RGB[3] = Clamp(RGB[3]+value,0,255)
 	return rgb(RGB[1],RGB[2],RGB[3])
 
-/proc/sort_atoms_by_layer(var/list/atoms)
+/proc/sort_atoms_by_layer(list/atoms)
 	// Comb sort icons based on levels
 	var/list/result = atoms.Copy()
 	var/gap = result.len
@@ -590,11 +590,11 @@ world
 	return result
 
 
-/image/proc/flick_overlay(var/atom/A, var/duration) //originally code related to goonPS. This isn't the original code, but has the same effect
+/image/proc/flick_overlay(atom/A, duration) //originally code related to goonPS. This isn't the original code, but has the same effect
 	A.overlays.Add(src)
 	addtimer(CALLBACK(src, PROC_REF(flick_remove_overlay), A), duration)
 
-/image/proc/flick_remove_overlay(var/atom/A)
+/image/proc/flick_remove_overlay(atom/A)
 	if(A)
 		A.overlays.Remove(src)
 
@@ -794,3 +794,39 @@ world
 		hash = md5asfile(rsc_ref)
 
 	return list(rsc_ref, hash, "asset.[hash]")
+
+/**
+ * Center's an image.
+ * Requires:
+ * The Image
+ * The x dimension of the icon file used in the image
+ * The y dimension of the icon file used in the image
+ * eg: center_image(image_to_center, 32,32)
+ * eg2: center_image(image_to_center, 96,96)
+**/
+/proc/center_image(image/image_to_center, x_dimension = 32, y_dimension = 32)
+	if(!image_to_center)
+		return
+
+	if(!x_dimension || !y_dimension)
+		return
+
+	if((x_dimension == world.icon_size) && (y_dimension == world.icon_size))
+		return image_to_center
+
+	//Offset the image so that it's bottom left corner is shifted this many pixels
+	//This makes it infinitely easier to draw larger inhands/images larger than world.iconsize
+	//but still use them in game
+	var/x_offset = -((x_dimension / world.icon_size) - 1) * (world.icon_size * 0.5)
+	var/y_offset = -((y_dimension / world.icon_size) - 1) * (world.icon_size * 0.5)
+
+	//Correct values under world.icon_size
+	if(x_dimension < world.icon_size)
+		x_offset *= -1
+	if(y_dimension < world.icon_size)
+		y_offset *= -1
+
+	image_to_center.pixel_x = x_offset
+	image_to_center.pixel_y = y_offset
+
+	return image_to_center

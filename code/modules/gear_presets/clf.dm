@@ -11,7 +11,7 @@
 	. = ..()
 	access = get_antagonist_access()
 
-/datum/equipment_preset/clf/load_name(mob/living/carbon/human/H, var/randomise)
+/datum/equipment_preset/clf/load_name(mob/living/carbon/human/H, randomise)
 	H.gender = pick(60;MALE, 40;FEMALE)
 	var/random_name
 	var/first_name
@@ -739,7 +739,7 @@
 	role_comm_title = "SYN"
 
 
-/datum/equipment_preset/clf/synth/load_name(mob/living/carbon/human/H, var/randomise)
+/datum/equipment_preset/clf/synth/load_name(mob/living/carbon/human/H, randomise)
 	H.gender = pick(50;MALE,50;FEMALE)
 	var/datum/preferences/A = new()
 	A.randomize_appearance(H)

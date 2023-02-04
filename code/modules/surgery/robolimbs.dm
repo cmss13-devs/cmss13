@@ -8,7 +8,7 @@
 	steps = list(
 		/datum/surgery_step/connect_prosthesis,
 		/datum/surgery_step/strenghten_prosthesis_connection,
-		/datum/surgery_step/calibrate_prosthesis
+		/datum/surgery_step/calibrate_prosthesis,
 	)
 	possible_locs = EXTREMITY_LIMBS
 	invasiveness = list(SURGERY_DEPTH_SURFACE)

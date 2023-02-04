@@ -15,7 +15,7 @@
 
 	var/survivor_variant = CIVILIAN_SURVIVOR
 
-/datum/equipment_preset/survivor/load_name(mob/living/carbon/human/H, var/randomise)
+/datum/equipment_preset/survivor/load_name(mob/living/carbon/human/H, randomise)
 	H.gender = pick(MALE, FEMALE)
 	var/datum/preferences/A = new
 	A.randomize_appearance(H)
@@ -220,7 +220,7 @@
 
 /datum/equipment_preset/survivor/doctor/florina/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/medical(H), WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/PMC(H), WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/pmc(H), WEAR_HEAD)
 
 	..()
 
@@ -292,7 +292,7 @@
 		ACCESS_CIVILIAN_BRIG,
 		ACCESS_CIVILIAN_MEDBAY,
 		ACCESS_WY_CORPORATE,
-		ACCESS_CIVILIAN_COMMAND
+		ACCESS_CIVILIAN_COMMAND,
 	)
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
 
@@ -412,7 +412,7 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/formal/servicedress(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/sec(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/vest/security(H), WEAR_JACKET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/PMC(H), WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/pmc(H), WEAR_HEAD)
 	if(H.disabilities & NEARSIGHTED)
 		H.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/sechud/prescription(H), WEAR_EYES)
 	else
@@ -459,7 +459,7 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/formal/servicedress(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/sec(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/vest/security(H), WEAR_JACKET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/PMC(H), WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/pmc(H), WEAR_HEAD)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/jungle(H), WEAR_FEET)
 
 	..()
@@ -671,8 +671,8 @@
 	access = list(
 		ACCESS_CIVILIAN_PUBLIC,
 		ACCESS_CIVILIAN_ENGINEERING,
-		ACCESS_CIVILIAN_LOGISTICS
-		)
+		ACCESS_CIVILIAN_LOGISTICS,
+	)
 
 	survivor_variant = ENGINEERING_SURVIVOR
 
@@ -857,8 +857,8 @@
 	access = list(
 		ACCESS_CIVILIAN_PUBLIC,
 		ACCESS_CIVILIAN_ENGINEERING,
-		ACCESS_CIVILIAN_LOGISTICS
-		)
+		ACCESS_CIVILIAN_LOGISTICS,
+	)
 
 /datum/equipment_preset/survivor/trucker/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/overalls(H), WEAR_BODY)
@@ -1038,8 +1038,8 @@
 		ACCESS_CIVILIAN_PUBLIC,
 		ACCESS_CIVILIAN_ENGINEERING,
 		ACCESS_WY_CORPORATE,
-		ACCESS_CIVILIAN_LOGISTICS
-		)
+		ACCESS_CIVILIAN_LOGISTICS,
+	)
 
 	survivor_variant = CORPORATE_SURVIVOR
 
@@ -1076,8 +1076,8 @@
 	skills = /datum/skills/civilian/survivor/pmc
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	access = list(
-		ACCESS_CIVILIAN_PUBLIC
-		)
+		ACCESS_CIVILIAN_PUBLIC,
+	)
 
 /datum/equipment_preset/survivor/roughneck/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/color/white(H), WEAR_BODY)
@@ -1103,8 +1103,8 @@
 		ACCESS_CIVILIAN_PUBLIC,
 		ACCESS_CIVILIAN_ENGINEERING,
 		ACCESS_WY_CORPORATE,
-		ACCESS_CIVILIAN_LOGISTICS
-		)
+		ACCESS_CIVILIAN_LOGISTICS,
+	)
 	survivor_variant = CORPORATE_SURVIVOR
 
 /datum/equipment_preset/survivor/interstellar_human_rights_observer/load_gear(mob/living/carbon/human/H)
@@ -1147,17 +1147,17 @@
 		ACCESS_CIVILIAN_PUBLIC,
 		ACCESS_CIVILIAN_ENGINEERING,
 		ACCESS_WY_CORPORATE,
-		ACCESS_CIVILIAN_LOGISTICS
+		ACCESS_CIVILIAN_LOGISTICS,
 	)
 
 	survivor_variant = SECURITY_SURVIVOR
 
 /datum/equipment_preset/survivor/goon/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/WY, WEAR_L_EAR)
-	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/PMC/corporate, WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/PMC/light/corporate, WEAR_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/pmc/corporate, WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/pmc/light/corporate, WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran, WEAR_HANDS)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/PMC/corporate, WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/pmc/corporate, WEAR_HEAD)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/corporate, WEAR_FEET)
 
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack, WEAR_BACK)
@@ -1189,18 +1189,18 @@
 		ACCESS_CIVILIAN_PUBLIC,
 		ACCESS_CIVILIAN_ENGINEERING,
 		ACCESS_WY_CORPORATE,
-		ACCESS_CIVILIAN_LOGISTICS
-		)
+		ACCESS_CIVILIAN_LOGISTICS,
+	)
 	survivor_variant = SECURITY_SURVIVOR
 
 /datum/equipment_preset/survivor/pmc/load_gear(mob/living/carbon/human/H)
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/PMC/hvh, WEAR_L_EAR)
-	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/PMC, WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/pmc/hvh, WEAR_L_EAR)
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/pmc, WEAR_BODY)
 	add_pmc_survivor_weapon(H)
-	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/PMC, WEAR_JACKET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/PMC, WEAR_HANDS)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/PMC, WEAR_HEAD)
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/veteran/PMC/knife, WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/pmc, WEAR_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/pmc, WEAR_HANDS)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/pmc, WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/veteran/pmc/knife, WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/mask/rebreather/scarf, WEAR_FACE)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel, WEAR_BACK)
 
@@ -1213,7 +1213,7 @@
 /datum/equipment_preset/survivor/wy/manager
 	name = "Survivor - Corporate Supervisor"
 	flags = EQUIPMENT_PRESET_EXTRA
-	paygrade = "WY-5G"
+	paygrade = "WYC7"
 	skills = /datum/skills/civilian/manager_survivor
 	assignment = "Colony Supervisor"
 	role_comm_title = "Supervisor"
@@ -1226,7 +1226,7 @@
 		ACCESS_MARINE_BRIDGE,
 		ACCESS_MARINE_DROPSHIP,
 		ACCESS_MARINE_RESEARCH,
-		ACCESS_MARINE_MEDBAY
+		ACCESS_MARINE_MEDBAY,
 	)
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
 
@@ -1258,8 +1258,8 @@
 	skills = /datum/skills/civilian/survivor/pmc
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	access = list(
-		ACCESS_CIVILIAN_PUBLIC
-		)
+		ACCESS_CIVILIAN_PUBLIC,
+	)
 
 /datum/equipment_preset/survivor/pmc/miner/one/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/mercenary/miner, WEAR_BODY)
@@ -1274,15 +1274,15 @@
 	skills = /datum/skills/civilian/survivor/pmc
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	access = list(
-		ACCESS_CIVILIAN_PUBLIC
-		)
+		ACCESS_CIVILIAN_PUBLIC,
+	)
 
 /datum/equipment_preset/survivor/pmc/freelancer/load_gear(mob/living/carbon/human/H)
 
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/freelancer, WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/faction/freelancer, WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp, WEAR_FEET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/PMC, WEAR_HANDS)
+	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/pmc, WEAR_HANDS)
 	spawn_merc_helmet(H)
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/dutch, WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack, WEAR_BACK)

@@ -53,6 +53,8 @@
 	attack_sound = null
 	friendly = "nuzzles" //If the mob does no damage with it's attack
 	can_crawl = FALSE
+	black_market_value = 25
+	dead_black_market_value = 0
 
 /mob/living/simple_animal/Initialize()
 	. = ..()
@@ -212,9 +214,10 @@
 	if(!.) return //was already dead
 	SSmob.living_misc_mobs -= src
 	icon_state = icon_dead
+	black_market_value = dead_black_market_value
 
 
-/mob/living/simple_animal/gib(var/cause = "gibbing")
+/mob/living/simple_animal/gib(cause = "gibbing")
 	SSmob.living_misc_mobs -= src
 	if(meat_amount && meat_type)
 		for(var/i = 0; i < meat_amount; i++)
@@ -229,7 +232,7 @@
 
 
 
-/mob/living/simple_animal/emote(var/act, var/type, var/message, player_caused)
+/mob/living/simple_animal/emote(act, type, message, player_caused)
 	if(act)
 		if(act == "scream") act = "whimper" //ugly hack to stop animals screaming when crushed :P
 		if(act == "me")
@@ -278,13 +281,13 @@
 
 	return
 
-/mob/living/simple_animal/can_be_pulled_by(var/mob/pulling_mob)
+/mob/living/simple_animal/can_be_pulled_by(mob/pulling_mob)
 	if(locate(/obj/item/explosive/plastic) in contents)
 		to_chat(pulling_mob, SPAN_WARNING("You leave \the [src] alone. It's got live explosives on it!"))
 		return FALSE
 	return ..()
 
-/mob/living/simple_animal/attackby(var/obj/item/O as obj, var/mob/user as mob)  //Marker -Agouri
+/mob/living/simple_animal/attackby(obj/item/O as obj, mob/user as mob)  //Marker -Agouri
 	if(istype(O, /obj/item/stack/medical))
 
 		if(stat != DEAD)
@@ -358,7 +361,7 @@
 	if (targeted_by && target_locked)
 		overlays += target_locked
 
-/mob/living/simple_animal/say(var/message)
+/mob/living/simple_animal/say(message)
 	if(stat)
 		return
 
@@ -387,7 +390,7 @@
 /mob/living/simple_animal/proc/stop_moving()
 	walk_to(src, 0) // stops us dead in our tracks
 
-/mob/living/simple_animal/can_inject(var/mob/user, var/error_msg)
+/mob/living/simple_animal/can_inject(mob/user, error_msg)
 	if(user && error_msg)
 		to_chat(user, SPAN_WARNING("You aren't sure how to inject this animal!"))
 	return FALSE

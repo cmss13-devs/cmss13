@@ -37,13 +37,15 @@
 			if(C.prefs.toggles_chat & CHAT_NICHELOGS)
 				to_chat(C, msg)
 
-/proc/msg_sea(var/msg, var/nosound = FALSE) //Only used for newplayer ticker message, hence no logging
+/proc/msg_sea(msg, nosound = FALSE) //Only used for newplayer ticker message, hence no logging
 	msg = FONT_SIZE_LARGE("<span class=\"admin\"><span class=\"prefix\">MENTOR ALERT:</span> <span class=\"message\">[msg]</span></span>")
-	for(var/client/C in GLOB.admins)
-		if((CLIENT_HAS_RIGHTS(C, R_MENTOR)) && C.admin_holder.rights && isSEA(C?.mob))
-			to_chat(C, msg)
-			if(C.prefs?.toggles_sound & SOUND_ADMINHELP && !nosound)
-				sound_to(C, 'sound/effects/mhelp.ogg')
+	for(var/mob/possible_sea as anything in GLOB.player_list)
+		if(!isSEA(possible_sea))
+			continue
+
+		to_chat(possible_sea, msg)
+		if(possible_sea?.client.prefs?.toggles_sound & SOUND_ADMINHELP && !nosound)
+			sound_to(C, 'sound/effects/mhelp.ogg')
 
 
 /proc/msg_admin_ff(var/text, var/alive = TRUE)

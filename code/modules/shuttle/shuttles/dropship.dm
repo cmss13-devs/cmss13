@@ -104,6 +104,7 @@
 	var/list/landing_lights = list()
 	var/auto_open = FALSE
 	var/landing_lights_on = FALSE
+	var/xeno_announce = FALSE
 
 /obj/docking_port/stationary/marine_dropship/Initialize(mapload)
 	. = ..()
@@ -145,6 +146,9 @@
 		dropship.control_doors("unlock", "all", force=TRUE)
 	if(is_ground_level(z) && !SSobjectives.first_drop_complete)
 		SSticker.mode.ds_first_landed(src)
+	if(xeno_announce)
+		xeno_announcement(SPAN_XENOANNOUNCE("The dropship has landed."), "everything")
+		xeno_announce = FALSE
 
 
 /obj/docking_port/stationary/marine_dropship/on_dock_ignition(obj/docking_port/mobile/departing_shuttle)

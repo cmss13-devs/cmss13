@@ -152,9 +152,22 @@
 		playsound(loc, 'sound/machines/terminal_success.ogg', KEYBOARD_SOUND_VOLUME, 1)
 		if(shuttle.mode == SHUTTLE_IDLE && !is_ground_level(shuttle.z))
 			SSshuttle.moveShuttle(shuttleId, linked_lz, TRUE)
-		else
-			to_chat(xeno, "The screen reads T-[shuttle.timeLeft(10)].")
-		return
+			to_chat(xeno, SPAN_NOTICE("You command the metal bird to come down. Clever girl."))
+			xeno_announcement(SPAN_XENOANNOUNCE("Your Queen has commanded the metal bird to the hive at [linked_lz]."), xeno.hivenumber, XENO_GENERAL_ANNOUNCE)
+			return
+		if(shuttle.destination.id != linked_lz)
+			to_chat(xeno, "The shuttle not ready. The screen reads T-[shuttle.timeLeft(10)]. Have patience.")
+			return
+		if(shuttle.mode == SHUTTLE_CALL)
+			to_chat(xeno, "The shuttle is in flight. The screen reads T-[shuttle.timeLeft(10)]. Have patience.")
+			return
+		if(shuttle.mode == SHUTTLE_PREARRIVAL)
+			to_chat(xeno, "The shuttle is landing. Be ready.")
+			return
+		if(shuttle.mode == SHUTTLE_IGNITING)
+			to_chat(xeno, "The shuttle is launching.")
+			return
+
 
 /obj/structure/machinery/computer/shuttle/dropship/flight/attack_alien(mob/living/carbon/xenomorph/xeno)
 	if(xeno.hive_pos != XENO_QUEEN)

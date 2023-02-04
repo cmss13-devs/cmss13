@@ -97,31 +97,6 @@
 /datum/behavior_delegate/proc/handle_death(mob/M)
 	return
 
-/// Return FALSE to cancel resting.
-/datum/behavior_delegate/proc/on_resting()
-	return TRUE
-
-/// Return FALSE to cancel attacking.
-/datum/behavior_delegate/proc/on_attack_mob()
-	return TRUE
-
-/// Return FALSE to cancel evolving.
-/datum/behavior_delegate/proc/on_evolve()
-	return TRUE
-
-/// Return FALSE to cancel strain, uh, ing.
-/datum/behavior_delegate/proc/on_strain()
-	return TRUE
-
 /// Handling the xeno icon state or overlays, return TRUE if icon state should not be changed
 /datum/behavior_delegate/proc/on_update_icons()
 	return
-
-/datum/behavior_delegate/proc/on_special_state()
-	return FALSE
-
-/datum/behavior_delegate/proc/on_wound_states()
-	return FALSE
-
-/datum/behavior_delegate/proc/on_special_backpack_states()
-	return ""

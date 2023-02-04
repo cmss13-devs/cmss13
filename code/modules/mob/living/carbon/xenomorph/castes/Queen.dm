@@ -900,13 +900,12 @@
 /mob/living/carbon/xenomorph/queen/handle_special_state()
 	if(ovipositor)
 		return TRUE
-	return .
+	return FALSE
 
 /mob/living/carbon/xenomorph/queen/handle_special_wound_states(severity)
 	. = ..()
 	if(ovipositor)
 		return "Queen_ovipositor_[severity]" // I don't actually have it, but maybe one day.
-	return .
 
 /mob/living/carbon/xenomorph/queen/proc/in_egg_plant_range(turf/T)
 	if(!ovipositor)

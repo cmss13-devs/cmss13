@@ -257,11 +257,8 @@
 		to_chat(src, SPAN_WARNING("You must be at full health to take a strain."))
 		return FALSE
 
-	if(agility || stealth)
+	if(agility || fortify || crest_defense || stealth)
 		to_chat(src, SPAN_WARNING("You cannot take a strain while in this stance."))
 		return FALSE
-
-	if(!behavior_delegate.on_strain())
-		return
 
 	return TRUE

@@ -1,0 +1,6 @@
+author: "carlarctg"
+delete-after: True
+changes:
+  - balance: "Made Flurry target a completely random limb."
+  - balance: "Headbite does 60 damage to the head instead of 200. (Still instakills)"
+  - code_imp: "Removed unused variable from tail jab."

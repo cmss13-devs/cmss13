@@ -18,7 +18,7 @@
 		/datum/action/xeno_action/activable/tail_stab/tail_seize,
 		/datum/action/xeno_action/activable/prae_abduct,
 		/datum/action/xeno_action/activable/oppressor_punch,
-		/datum/action/xeno_action/activable/tail_lash
+		/datum/action/xeno_action/activable/tail_lash,
 	)
 	behavior_delegate_type = /datum/behavior_delegate/oppressor_praetorian
 	keystone = TRUE

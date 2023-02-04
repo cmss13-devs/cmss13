@@ -1,0 +1,4 @@
+author: "stanalbatross"
+delete-after: True
+changes:
+  - bugfix: "fixed a potential runtime in clothing.dm and added a better debug message for it."

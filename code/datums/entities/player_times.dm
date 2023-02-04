@@ -15,7 +15,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player_time)
 	field_types = list(
 		"player_id" = DB_FIELDTYPE_BIGINT,
 		"role_id" = DB_FIELDTYPE_STRING_LARGE,
-		"total_minutes" = DB_FIELDTYPE_BIGINT
+		"total_minutes" = DB_FIELDTYPE_BIGINT,
 	)
 
 /datum/entity_meta/player_time/on_insert(datum/entity/player_time/player)
@@ -40,7 +40,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player_time)
 	fields = list(
 		"player_id",
 		"role_id",
-		"total_minutes"
+		"total_minutes",
 	)
 	order_by = list("total_minutes" = DB_ORDER_BY_DESC)
 

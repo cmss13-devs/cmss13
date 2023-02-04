@@ -26,7 +26,7 @@
 	dmg_max = FALSE
 	steps = list(
 		/datum/surgery_step/treat_hematoma,
-		/datum/surgery_step/remove_bone_chips
+		/datum/surgery_step/remove_bone_chips,
 	)
 
 //------------------------------------

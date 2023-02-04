@@ -19,8 +19,8 @@
 	dusted_anim = "dust-m"
 	inherent_verbs = list(
 		/mob/living/proc/ventcrawl,
-		/mob/living/proc/hide
-		)
+		/mob/living/proc/hide,
+	)
 
 /datum/species/monkey/New()
 	equip_adjust = list(

@@ -14,7 +14,7 @@
 		/datum/surgery_step/separate_cornea,
 		/datum/surgery_step/lift_eyes,
 		/datum/surgery_step/mend_eyes,
-		/datum/surgery_step/cauterize/eyes
+		/datum/surgery_step/cauterize/eyes,
 	)
 	var/datum/internal_organ/eyes/target_eyes
 

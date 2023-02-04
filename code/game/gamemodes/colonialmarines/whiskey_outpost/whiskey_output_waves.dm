@@ -110,7 +110,7 @@
 	var/wave_number = 1
 	var/list/wave_castes = list()
 	var/wave_type = WO_SCALED_WAVE
-	var/scaling_factor = 1.0
+	var/scaling_factor = 1
 	var/number_of_xenos = 0 // not used for scaled waves
 	var/wave_delay = 200 SECONDS
 	var/list/sound_effect = list('sound/voice/alien_distantroar_3.ogg','sound/voice/xenos_roaring.ogg', 'sound/voice/4_xeno_roars.ogg')
@@ -126,62 +126,71 @@
 
 /datum/whiskey_outpost_wave/wave2
 	wave_number = 2
-	wave_castes = list(XENO_CASTE_RUNNER,
-					XENO_CASTE_RUNNER,
-					XENO_CASTE_RUNNER,
-					XENO_CASTE_RUNNER,
-					XENO_CASTE_RUNNER
-					)
+	wave_castes = list(
+		XENO_CASTE_RUNNER,
+		XENO_CASTE_RUNNER,
+		XENO_CASTE_RUNNER,
+		XENO_CASTE_RUNNER,
+		XENO_CASTE_RUNNER,
+	)
 	scaling_factor = 0.4
 	wave_delay = 1 MINUTES //Early, quick waves
 
 /datum/whiskey_outpost_wave/wave3 //Tier II versions added, but rare
 	wave_number = 3
-	wave_castes = list(XENO_CASTE_RUNNER,
-					XENO_CASTE_RUNNER,
-					XENO_CASTE_LURKER,
-					XENO_CASTE_SPITTER,
-					XENO_CASTE_DEFENDER)
+	wave_castes = list(
+		XENO_CASTE_RUNNER,
+		XENO_CASTE_RUNNER,
+		XENO_CASTE_LURKER,
+		XENO_CASTE_SPITTER,
+		XENO_CASTE_DEFENDER,
+	)
 	scaling_factor = 0.6
 	wave_delay = 1 MINUTES //Early, quick waves
 
 /datum/whiskey_outpost_wave/wave4 //Tier II more common
 	wave_number = 4
-	wave_castes = list(XENO_CASTE_RUNNER,
-					XENO_CASTE_RUNNER,
-					XENO_CASTE_LURKER,
-					XENO_CASTE_LURKER,
-					XENO_CASTE_SPITTER,
-					XENO_CASTE_SPITTER,
-					XENO_CASTE_DEFENDER,
-					XENO_CASTE_DRONE)
+	wave_castes = list(
+		XENO_CASTE_RUNNER,
+		XENO_CASTE_RUNNER,
+		XENO_CASTE_LURKER,
+		XENO_CASTE_LURKER,
+		XENO_CASTE_SPITTER,
+		XENO_CASTE_SPITTER,
+		XENO_CASTE_DEFENDER,
+		XENO_CASTE_DRONE,
+	)
 	scaling_factor = 0.7
 
 /datum/whiskey_outpost_wave/wave5 //Reset the spawns so we don't drown in xenos again.
 	wave_number = 5
-	wave_castes = list(XENO_CASTE_RUNNER,
-					XENO_CASTE_RUNNER,
-					XENO_CASTE_LURKER,
-					XENO_CASTE_LURKER,
-					XENO_CASTE_SPITTER,
-					XENO_CASTE_SPITTER,
-					XENO_CASTE_DEFENDER,
-					XENO_CASTE_DRONE)
+	wave_castes = list(
+		XENO_CASTE_RUNNER,
+		XENO_CASTE_RUNNER,
+		XENO_CASTE_LURKER,
+		XENO_CASTE_LURKER,
+		XENO_CASTE_SPITTER,
+		XENO_CASTE_SPITTER,
+		XENO_CASTE_DEFENDER,
+		XENO_CASTE_DRONE,
+	)
 	scaling_factor = 0.8
 
 /datum/whiskey_outpost_wave/wave6 //Tier II more common
 	wave_number = 6
-	wave_castes = list(XENO_CASTE_RUNNER,
-					XENO_CASTE_RUNNER,
-					XENO_CASTE_LURKER,
-					XENO_CASTE_LURKER,
-					XENO_CASTE_LURKER,
-					XENO_CASTE_SPITTER,
-					XENO_CASTE_SPITTER,
-					XENO_CASTE_SPITTER,
-					XENO_CASTE_DEFENDER,
-					XENO_CASTE_DRONE,
-					XENO_CASTE_WARRIOR)
+	wave_castes = list(
+		XENO_CASTE_RUNNER,
+		XENO_CASTE_RUNNER,
+		XENO_CASTE_LURKER,
+		XENO_CASTE_LURKER,
+		XENO_CASTE_LURKER,
+		XENO_CASTE_SPITTER,
+		XENO_CASTE_SPITTER,
+		XENO_CASTE_SPITTER,
+		XENO_CASTE_DEFENDER,
+		XENO_CASTE_DRONE,
+		XENO_CASTE_WARRIOR,
+	)
 	scaling_factor = 0.9
 
 /datum/whiskey_outpost_wave/wave7
@@ -193,164 +202,178 @@
 
 /datum/whiskey_outpost_wave/wave8
 	wave_number = 8
-	wave_castes = list(XENO_CASTE_LURKER,
-					XENO_CASTE_LURKER,
-					XENO_CASTE_LURKER,
-					XENO_CASTE_SPITTER,
-					XENO_CASTE_SPITTER,
-					XENO_CASTE_SPITTER,
-					XENO_CASTE_DEFENDER,
-					XENO_CASTE_DRONE,
-					XENO_CASTE_WARRIOR)
+	wave_castes = list(
+		XENO_CASTE_LURKER,
+		XENO_CASTE_LURKER,
+		XENO_CASTE_LURKER,
+		XENO_CASTE_SPITTER,
+		XENO_CASTE_SPITTER,
+		XENO_CASTE_SPITTER,
+		XENO_CASTE_DEFENDER,
+		XENO_CASTE_DRONE,
+		XENO_CASTE_WARRIOR,
+	)
 	sound_effect = list()
 	command_announcement = list("Captain Naiche speaking, we've been unsuccessful in establishing offworld communication for the moment. We're prepping our M402 mortars to destroy the inbound xeno force on the main road. Standby for fire support.", "Captain Naiche, 3rd Battalion Command, LV-624 Garrison")
 
 /datum/whiskey_outpost_wave/wave9 //Ravager and Praetorian Added, Tier II more common, Tier I less common
 	wave_number = 9
-	wave_castes = list(XENO_CASTE_RUNNER,
-					XENO_CASTE_RUNNER,
-					XENO_CASTE_LURKER,
-					XENO_CASTE_LURKER,
-					XENO_CASTE_LURKER,
-					XENO_CASTE_LURKER,
-					XENO_CASTE_LURKER,
-					XENO_CASTE_SPITTER,
-					XENO_CASTE_SPITTER,
-					XENO_CASTE_SPITTER,
-					XENO_CASTE_SPITTER,
-					XENO_CASTE_DEFENDER,
-					XENO_CASTE_DEFENDER,
-					XENO_CASTE_DRONE,
-					XENO_CASTE_DRONE,
-					XENO_CASTE_WARRIOR)
+	wave_castes = list(
+		XENO_CASTE_RUNNER,
+		XENO_CASTE_RUNNER,
+		XENO_CASTE_LURKER,
+		XENO_CASTE_LURKER,
+		XENO_CASTE_LURKER,
+		XENO_CASTE_LURKER,
+		XENO_CASTE_LURKER,
+		XENO_CASTE_SPITTER,
+		XENO_CASTE_SPITTER,
+		XENO_CASTE_SPITTER,
+		XENO_CASTE_SPITTER,
+		XENO_CASTE_DEFENDER,
+		XENO_CASTE_DEFENDER,
+		XENO_CASTE_DRONE,
+		XENO_CASTE_DRONE,
+		XENO_CASTE_WARRIOR,
+	)
 	sound_effect = list('sound/voice/alien_queen_command.ogg')
 	command_announcement = list("Our garrison forces are reaching seventy percent casualties, we are losing our grip on LV-624. It appears that vanguard of the hostile force is still approaching, and most of the other Dust Raider platoons have been shattered. We're counting on you to keep holding.", "Captain Naiche, 3rd Battalion Command, LV-624 Garrison")
 
 /datum/whiskey_outpost_wave/wave10
 	wave_number = 10
-	wave_castes = list(XENO_CASTE_RUNNER,
-					XENO_CASTE_RUNNER,
-					XENO_CASTE_LURKER,
-					XENO_CASTE_LURKER,
-					XENO_CASTE_LURKER,
-					XENO_CASTE_LURKER,
-					XENO_CASTE_LURKER,
-					XENO_CASTE_SPITTER,
-					XENO_CASTE_SPITTER,
-					XENO_CASTE_SPITTER,
-					XENO_CASTE_SPITTER,
-					XENO_CASTE_DEFENDER,
-					XENO_CASTE_DEFENDER,
-					XENO_CASTE_DRONE,
-					XENO_CASTE_DRONE,
-					XENO_CASTE_WARRIOR)
+	wave_castes = list(
+		XENO_CASTE_RUNNER,
+		XENO_CASTE_RUNNER,
+		XENO_CASTE_LURKER,
+		XENO_CASTE_LURKER,
+		XENO_CASTE_LURKER,
+		XENO_CASTE_LURKER,
+		XENO_CASTE_LURKER,
+		XENO_CASTE_SPITTER,
+		XENO_CASTE_SPITTER,
+		XENO_CASTE_SPITTER,
+		XENO_CASTE_SPITTER,
+		XENO_CASTE_DEFENDER,
+		XENO_CASTE_DEFENDER,
+		XENO_CASTE_DRONE,
+		XENO_CASTE_DRONE,
+		XENO_CASTE_WARRIOR,
+	)
 
 /datum/whiskey_outpost_wave/wave11
 	wave_number = 11
-	wave_castes = list(XENO_CASTE_RUNNER,
-					XENO_CASTE_RUNNER,
-					XENO_CASTE_LURKER,
-					XENO_CASTE_LURKER,
-					XENO_CASTE_LURKER,
-					XENO_CASTE_LURKER,
-					XENO_CASTE_LURKER,
-					XENO_CASTE_SPITTER,
-					XENO_CASTE_SPITTER,
-					XENO_CASTE_SPITTER,
-					XENO_CASTE_SPITTER,
-					XENO_CASTE_DEFENDER,
-					XENO_CASTE_DEFENDER,
-					XENO_CASTE_DRONE,
-					XENO_CASTE_DRONE,
-					XENO_CASTE_WARRIOR,
-					XENO_CASTE_WARRIOR)
+	wave_castes = list(
+		XENO_CASTE_RUNNER,
+		XENO_CASTE_RUNNER,
+		XENO_CASTE_LURKER,
+		XENO_CASTE_LURKER,
+		XENO_CASTE_LURKER,
+		XENO_CASTE_LURKER,
+		XENO_CASTE_LURKER,
+		XENO_CASTE_SPITTER,
+		XENO_CASTE_SPITTER,
+		XENO_CASTE_SPITTER,
+		XENO_CASTE_SPITTER,
+		XENO_CASTE_DEFENDER,
+		XENO_CASTE_DEFENDER,
+		XENO_CASTE_DRONE,
+		XENO_CASTE_DRONE,
+		XENO_CASTE_WARRIOR,
+		XENO_CASTE_WARRIOR,
+	)
 
 /datum/whiskey_outpost_wave/wave12
 	wave_number = 12
-	wave_castes = list(XENO_CASTE_RUNNER,
-					XENO_CASTE_RUNNER,
-					XENO_CASTE_LURKER,
-					XENO_CASTE_LURKER,
-					XENO_CASTE_LURKER,
-					XENO_CASTE_LURKER,
-					XENO_CASTE_LURKER,
-					XENO_CASTE_SPITTER,
-					XENO_CASTE_SPITTER,
-					XENO_CASTE_SPITTER,
-					XENO_CASTE_SPITTER,
-					XENO_CASTE_DEFENDER,
-					XENO_CASTE_DEFENDER,
-					XENO_CASTE_DRONE,
-					XENO_CASTE_DRONE,
-					XENO_CASTE_WARRIOR,
-					XENO_CASTE_WARRIOR,
-					XENO_CASTE_RAVAGER,
-					XENO_CASTE_RAVAGER,
-					XENO_CASTE_PRAETORIAN,
-					XENO_CASTE_PRAETORIAN)
+	wave_castes = list(
+		XENO_CASTE_RUNNER,
+		XENO_CASTE_RUNNER,
+		XENO_CASTE_LURKER,
+		XENO_CASTE_LURKER,
+		XENO_CASTE_LURKER,
+		XENO_CASTE_LURKER,
+		XENO_CASTE_LURKER,
+		XENO_CASTE_SPITTER,
+		XENO_CASTE_SPITTER,
+		XENO_CASTE_SPITTER,
+		XENO_CASTE_SPITTER,
+		XENO_CASTE_DEFENDER,
+		XENO_CASTE_DEFENDER,
+		XENO_CASTE_DRONE,
+		XENO_CASTE_DRONE,
+		XENO_CASTE_WARRIOR,
+		XENO_CASTE_WARRIOR,
+		XENO_CASTE_RAVAGER,
+		XENO_CASTE_RAVAGER,
+		XENO_CASTE_PRAETORIAN,
+		XENO_CASTE_PRAETORIAN,
+	)
 	command_announcement = list("This is Captain Naiche, we are picking up large signatures inbound, we'll see what we can do to delay them.", "Captain Naiche, 3rd Battalion Command, LV-624")
 
 /datum/whiskey_outpost_wave/wave13
 	wave_number = 13
-	wave_castes = list(XENO_CASTE_RUNNER,
-					XENO_CASTE_RUNNER,
-					XENO_CASTE_RUNNER,
-					XENO_CASTE_LURKER,
-					XENO_CASTE_LURKER,
-					XENO_CASTE_LURKER,
-					XENO_CASTE_LURKER,
-					XENO_CASTE_LURKER,
-					XENO_CASTE_SPITTER,
-					XENO_CASTE_SPITTER,
-					XENO_CASTE_SPITTER,
-					XENO_CASTE_SPITTER,
-					XENO_CASTE_SPITTER,
-					XENO_CASTE_DEFENDER,
-					XENO_CASTE_DEFENDER,
-					XENO_CASTE_DRONE,
-					XENO_CASTE_WARRIOR,
-					XENO_CASTE_WARRIOR,
-					XENO_CASTE_RAVAGER,
-					XENO_CASTE_RAVAGER,
-					XENO_CASTE_PRAETORIAN,
-					XENO_CASTE_PRAETORIAN,
-					XENO_CASTE_CRUSHER,
-					XENO_CASTE_CRUSHER,
-					XENO_CASTE_HIVELORD)
+	wave_castes = list(
+		XENO_CASTE_RUNNER,
+		XENO_CASTE_RUNNER,
+		XENO_CASTE_RUNNER,
+		XENO_CASTE_LURKER,
+		XENO_CASTE_LURKER,
+		XENO_CASTE_LURKER,
+		XENO_CASTE_LURKER,
+		XENO_CASTE_LURKER,
+		XENO_CASTE_SPITTER,
+		XENO_CASTE_SPITTER,
+		XENO_CASTE_SPITTER,
+		XENO_CASTE_SPITTER,
+		XENO_CASTE_SPITTER,
+		XENO_CASTE_DEFENDER,
+		XENO_CASTE_DEFENDER,
+		XENO_CASTE_DRONE,
+		XENO_CASTE_WARRIOR,
+		XENO_CASTE_WARRIOR,
+		XENO_CASTE_RAVAGER,
+		XENO_CASTE_RAVAGER,
+		XENO_CASTE_PRAETORIAN,
+		XENO_CASTE_PRAETORIAN,
+		XENO_CASTE_CRUSHER,
+		XENO_CASTE_CRUSHER,
+		XENO_CASTE_HIVELORD,
+	)
 
 /datum/whiskey_outpost_wave/wave14
 	wave_number = 14
-	wave_castes = list(XENO_CASTE_RUNNER,
-					XENO_CASTE_RUNNER,
-					XENO_CASTE_RUNNER,
-					XENO_CASTE_RUNNER,
-					XENO_CASTE_LURKER,
-					XENO_CASTE_LURKER,
-					XENO_CASTE_LURKER,
-					XENO_CASTE_LURKER,
-					XENO_CASTE_LURKER,
-					XENO_CASTE_LURKER,
-					XENO_CASTE_SPITTER,
-					XENO_CASTE_SPITTER,
-					XENO_CASTE_SPITTER,
-					XENO_CASTE_SPITTER,
-					XENO_CASTE_SPITTER,
-					XENO_CASTE_SPITTER,
-					XENO_CASTE_DEFENDER,
-					XENO_CASTE_DEFENDER,
-					XENO_CASTE_DRONE,
-					XENO_CASTE_WARRIOR,
-					XENO_CASTE_WARRIOR,
-					XENO_CASTE_RAVAGER,
-					XENO_CASTE_RAVAGER,
-					XENO_CASTE_PRAETORIAN,
-					XENO_CASTE_PRAETORIAN,
-					XENO_CASTE_BOILER,
-					XENO_CASTE_BOILER,
-					XENO_CASTE_CRUSHER,
-					XENO_CASTE_CRUSHER,
-					XENO_CASTE_HIVELORD,
-					XENO_CASTE_BURROWER)
+	wave_castes = list(
+		XENO_CASTE_RUNNER,
+		XENO_CASTE_RUNNER,
+		XENO_CASTE_RUNNER,
+		XENO_CASTE_RUNNER,
+		XENO_CASTE_LURKER,
+		XENO_CASTE_LURKER,
+		XENO_CASTE_LURKER,
+		XENO_CASTE_LURKER,
+		XENO_CASTE_LURKER,
+		XENO_CASTE_LURKER,
+		XENO_CASTE_SPITTER,
+		XENO_CASTE_SPITTER,
+		XENO_CASTE_SPITTER,
+		XENO_CASTE_SPITTER,
+		XENO_CASTE_SPITTER,
+		XENO_CASTE_SPITTER,
+		XENO_CASTE_DEFENDER,
+		XENO_CASTE_DEFENDER,
+		XENO_CASTE_DRONE,
+		XENO_CASTE_WARRIOR,
+		XENO_CASTE_WARRIOR,
+		XENO_CASTE_RAVAGER,
+		XENO_CASTE_RAVAGER,
+		XENO_CASTE_PRAETORIAN,
+		XENO_CASTE_PRAETORIAN,
+		XENO_CASTE_BOILER,
+		XENO_CASTE_BOILER,
+		XENO_CASTE_CRUSHER,
+		XENO_CASTE_CRUSHER,
+		XENO_CASTE_HIVELORD,
+		XENO_CASTE_BURROWER,
+	)
 	wave_type = WO_STATIC_WAVE
 	number_of_xenos = 50
 	command_announcement = list("This is Captain Naiche, we've established our distress beacon for the USS Alistoun and the remaining Dust Raiders. Hold on for a bit longer while we trasmit our coordinates!", "Captain Naiche, 3rd Battalion Command, LV-624 Garrison")
@@ -361,52 +384,60 @@
 	number_of_xenos = 50
 
 /datum/whiskey_outpost_wave/random/wave1 //Runner madness
-	wave_castes = list(XENO_CASTE_RUNNER,
-					XENO_CASTE_RUNNER,
-					XENO_CASTE_RUNNER,
-					XENO_CASTE_RUNNER,
-					XENO_CASTE_RUNNER,
-					XENO_CASTE_RUNNER,
-					XENO_CASTE_RUNNER,
-					XENO_CASTE_RUNNER,
-					XENO_CASTE_RUNNER,
-					XENO_CASTE_RUNNER,
-					XENO_CASTE_RUNNER,
-					XENO_CASTE_RUNNER,
-					XENO_CASTE_RUNNER,
-					XENO_CASTE_RAVAGER)
+	wave_castes = list(
+		XENO_CASTE_RUNNER,
+		XENO_CASTE_RUNNER,
+		XENO_CASTE_RUNNER,
+		XENO_CASTE_RUNNER,
+		XENO_CASTE_RUNNER,
+		XENO_CASTE_RUNNER,
+		XENO_CASTE_RUNNER,
+		XENO_CASTE_RUNNER,
+		XENO_CASTE_RUNNER,
+		XENO_CASTE_RUNNER,
+		XENO_CASTE_RUNNER,
+		XENO_CASTE_RUNNER,
+		XENO_CASTE_RUNNER,
+		XENO_CASTE_RAVAGER,
+	)
 
 /datum/whiskey_outpost_wave/random/wave2 //Spitter madness
-	wave_castes = list(XENO_CASTE_SPITTER,
-						XENO_CASTE_SPITTER,
-						XENO_CASTE_SPITTER,
-						XENO_CASTE_SPITTER,
-						XENO_CASTE_SPITTER,
-						XENO_CASTE_SPITTER,
-						XENO_CASTE_SPITTER,
-						XENO_CASTE_SPITTER,
-						XENO_CASTE_SPITTER,
-						XENO_CASTE_PRAETORIAN)
+	wave_castes = list(
+		XENO_CASTE_SPITTER,
+		XENO_CASTE_SPITTER,
+		XENO_CASTE_SPITTER,
+		XENO_CASTE_SPITTER,
+		XENO_CASTE_SPITTER,
+		XENO_CASTE_SPITTER,
+		XENO_CASTE_SPITTER,
+		XENO_CASTE_SPITTER,
+		XENO_CASTE_SPITTER,
+		XENO_CASTE_PRAETORIAN,
+	)
 	number_of_xenos = 45
 
 /datum/whiskey_outpost_wave/random/wave3 //Defender madness
-	wave_castes = list(XENO_CASTE_DEFENDER,
-						XENO_CASTE_DEFENDER,
-						XENO_CASTE_DEFENDER,
-						XENO_CASTE_DEFENDER,
-						XENO_CASTE_DEFENDER,
-						XENO_CASTE_DEFENDER,
-						XENO_CASTE_DEFENDER,
-						XENO_CASTE_DEFENDER,
-						XENO_CASTE_CRUSHER)
+	wave_castes = list(
+		XENO_CASTE_DEFENDER,
+		XENO_CASTE_DEFENDER,
+		XENO_CASTE_DEFENDER,
+		XENO_CASTE_DEFENDER,
+		XENO_CASTE_DEFENDER,
+		XENO_CASTE_DEFENDER,
+		XENO_CASTE_DEFENDER,
+		XENO_CASTE_DEFENDER,
+		XENO_CASTE_CRUSHER,
+	)
 	number_of_xenos = 30
 
 /datum/whiskey_outpost_wave/random/wave4 //Burrower apocalypse
-	wave_castes = list(XENO_CASTE_BURROWER,
-						XENO_CASTE_BURROWER,
-						XENO_CASTE_BURROWER,
-						XENO_CASTE_BURROWER,
-						XENO_CASTE_BURROWER,
-						XENO_CASTE_BURROWER,
-						XENO_CASTE_BURROWER)
+	wave_castes = list(
+		XENO_CASTE_BURROWER,
+		XENO_CASTE_BURROWER,
+		XENO_CASTE_BURROWER,
+		XENO_CASTE_BURROWER,
+		XENO_CASTE_BURROWER,
+		XENO_CASTE_BURROWER,
+		XENO_CASTE_BURROWER,
+	)
 	number_of_xenos = 20

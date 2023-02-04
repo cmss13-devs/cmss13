@@ -10,6 +10,7 @@
 	max_amount = 10
 	w_class = SIZE_SMALL
 	stack_id = "nanopaste"
+	black_market_value = 25
 
 /obj/item/stack/nanopaste/attack(mob/living/M as mob, mob/user as mob)
 	if (!istype(M) || !istype(user))

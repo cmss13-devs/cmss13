@@ -167,7 +167,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_rto, list(
 		/obj/item/ammo_magazine/pistol/vp78,
 		/obj/item/ammo_magazine/pistol/vp78,
 		/obj/item/ammo_magazine/pistol/vp78,
-		/obj/item/storage/belt/gun/m4a3
+		/obj/item/storage/belt/gun/m4a3,
 	)
 
 /obj/effect/essentials_set/rto/mod
@@ -180,7 +180,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_rto, list(
 		/obj/item/ammo_magazine/pistol/mod88,
 		/obj/item/ammo_magazine/pistol/mod88,
 		/obj/item/ammo_magazine/pistol/mod88,
-		/obj/item/storage/belt/gun/m4a3
+		/obj/item/storage/belt/gun/m4a3,
 	)
 
 /obj/effect/essentials_set/rto/utilities

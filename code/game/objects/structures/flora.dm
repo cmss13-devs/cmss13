@@ -403,6 +403,9 @@ ICE GRASS
 	icon_tag = "pottedplant"
 	variations = "30"
 
+/obj/structure/flora/pottedplant/random/unanchored
+	anchored = FALSE
+
 /*
 
 	JUNGLE FOLIAGE

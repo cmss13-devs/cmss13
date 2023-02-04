@@ -78,7 +78,7 @@
 						state = 3
 						icon_state = "3"
 		if(3)
-			if(HAS_TRAIT(P, TRAIT_TOOL_SCREWDRIVER))
+			if(HAS_TRAIT(P, TRAIT_TOOL_WIRECUTTERS))
 				playsound(src.loc, 'sound/items/Wirecutter.ogg', 25, 1)
 				to_chat(user, SPAN_NOTICE(" You remove the cables."))
 				src.state = 2

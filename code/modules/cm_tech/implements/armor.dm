@@ -180,7 +180,7 @@
 	icon_state = "scrap"
 	health_states = list(
 		0,
-		100
+		100,
 	)
 
 	scrappable = FALSE

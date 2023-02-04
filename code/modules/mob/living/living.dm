@@ -294,7 +294,7 @@
 		if(grab_level == GRAB_CARRY)
 			return 0.1
 		else
-			return 1.0
+			return 1
 	else
 		return 0
 

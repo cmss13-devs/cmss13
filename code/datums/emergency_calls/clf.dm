@@ -22,7 +22,7 @@
 		to_chat(H, SPAN_BOLD("Originally, you were programmed with medical and engineering knowledge to assist with building and maintaining colonies."))
 		to_chat(H, SPAN_BOLD("However, the hackers managed to load combat protocols and install a new directive: Irrational hatred for everything USCM."))
 
-	to_chat(H, SPAN_BOLD("The Neroid Sector has largely enjoyed its independence.."))
+	to_chat(H, SPAN_BOLD("The Neroid Sector has largely enjoyed its independence."))
 	to_chat(H, SPAN_BOLD("Though technically part of the United American frontier, many colonists in the Neroid Sector have enjoyed their freedoms."))
 	to_chat(H, SPAN_BOLD("In 2172, however, the United Americas moved the USCM Battalion, the 'Dust Raiders', and the battalion flagship, the USS Alistoun, to the Neroid Sector."))
 	to_chat(H, SPAN_BOLD("The Dust Raiders responded with deadly force, scattering many of the colonists who attempted to fight their occupation."))

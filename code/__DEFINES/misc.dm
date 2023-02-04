@@ -32,6 +32,8 @@
 #define EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL  1
 #define EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL_HALF 2
 
+#define EXPLOSION_MAX_POWER 5000
+
 //area flags
 
 /// used to make mobs skip bioscans

@@ -249,9 +249,9 @@
 	var/xenocon_points = 0 //Xeno version of DEFCON
 
 	var/datum/mutator_set/hive_mutators/mutators = new
-	var/tier_slot_multiplier = 1.0
-	var/larva_gestation_multiplier = 1.0
-	var/bonus_larva_spawn_chance = 1.0
+	var/tier_slot_multiplier = 1
+	var/larva_gestation_multiplier = 1
+	var/bonus_larva_spawn_chance = 1
 	var/hijack_pooled_surge = FALSE //at hijack, start spawning lots of pooled
 
 	var/ignore_slots = FALSE

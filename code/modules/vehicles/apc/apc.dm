@@ -48,14 +48,14 @@ GLOBAL_LIST_EMPTY(command_apc_list)
 		VEHICLE_DRIVER = null,
 		VEHICLE_GUNNER = null,
 		VEHICLE_SUPPORT_GUNNER_ONE = null,
-		VEHICLE_SUPPORT_GUNNER_TWO = null
+		VEHICLE_SUPPORT_GUNNER_TWO = null,
 	)
 
 	active_hp = list(
 		VEHICLE_DRIVER = null,
 		VEHICLE_GUNNER = null,
 		VEHICLE_SUPPORT_GUNNER_ONE = null,
-		VEHICLE_SUPPORT_GUNNER_TWO = null
+		VEHICLE_SUPPORT_GUNNER_TWO = null,
 	)
 
 	vehicle_flags = VEHICLE_CLASS_LIGHT
@@ -69,7 +69,7 @@ GLOBAL_LIST_EMPTY(command_apc_list)
 		"bullet" = 0.6,
 		"explosive" = 0.7,
 		"blunt" = 0.7,
-		"abstract" = 1.0
+		"abstract" = 1
 	)
 
 	move_max_momentum = 2

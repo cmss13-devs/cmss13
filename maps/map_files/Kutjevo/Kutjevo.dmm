@@ -561,7 +561,7 @@
 /turf/open/floor/kutjevo/multi_tiles,
 /area/kutjevo/interior/complex/med/operating)
 "aIy" = (
-/obj/structure/largecrate/merc/ammo,
+/obj/structure/largecrate/black_market/confiscated_equipment,
 /turf/open/floor/kutjevo/tan,
 /area/kutjevo/exterior/Northwest_Colony)
 "aIF" = (

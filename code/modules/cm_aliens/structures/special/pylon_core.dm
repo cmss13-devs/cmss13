@@ -198,7 +198,7 @@
 		visible_message(SPAN_WARNING("[M] stops destroying \the [src]."))
 		last_attempt = world.time // update the spam check
 		return XENO_NO_DELAY_ACTION
-	Destroy()
+	qdel(src)
 
 
 

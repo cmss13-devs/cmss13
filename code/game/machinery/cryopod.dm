@@ -140,7 +140,7 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 /obj/structure/cryofeed
 
 	name = "hypersleep chamber feed"
-	desc = "A bewildering tangle of machinery and pipes linking the hypersleep chambers to the hypersleep bay.."
+	desc = "A bewildering tangle of machinery and pipes linking the hypersleep chambers to the hypersleep bay."
 	icon = 'icons/obj/structures/machinery/cryogenics.dmi'
 	icon_state = "cryo_rear"
 	anchored = TRUE

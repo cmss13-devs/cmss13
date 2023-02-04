@@ -40,10 +40,10 @@
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/watch_xeno,
 		/datum/action/xeno_action/onclick/xenohide,
-		)
+	)
 	inherent_verbs = list(
-		/mob/living/carbon/xenomorph/proc/vent_crawl
-		)
+		/mob/living/carbon/xenomorph/proc/vent_crawl,
+	)
 	mutation_type = "Normal"
 
 	var/poolable = TRUE //Can it be safely pooled if it has no player?

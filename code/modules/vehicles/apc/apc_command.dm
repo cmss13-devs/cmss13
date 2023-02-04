@@ -24,12 +24,12 @@
 
 	seats = list(
 		VEHICLE_DRIVER = null,
-		VEHICLE_GUNNER = null
+		VEHICLE_GUNNER = null,
 	)
 
 	active_hp = list(
 		VEHICLE_DRIVER = null,
-		VEHICLE_GUNNER = null
+		VEHICLE_GUNNER = null,
 	)
 
 /obj/vehicle/multitile/apc/command/Initialize()

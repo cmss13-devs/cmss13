@@ -6,10 +6,10 @@
 	icon_state = "computer_generic"
 	density = TRUE
 	circuit = /obj/item/circuitboard/computer/pod
-	var/id = 1.0
+	var/id = 1
 	var/obj/structure/machinery/mass_driver/connected = null
-	var/timing = 0.0
-	var/time = 30.0
+	var/timing = 0
+	var/time = 30
 	var/title = "Mass Driver Controls"
 	processing = TRUE
 

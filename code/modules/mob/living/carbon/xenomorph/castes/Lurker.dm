@@ -43,10 +43,10 @@
 		/datum/action/xeno_action/activable/pounce/lurker,
 		/datum/action/xeno_action/onclick/lurker_invisibility,
 		/datum/action/xeno_action/onclick/lurker_assassinate,
-		)
+	)
 	inherent_verbs = list(
 		/mob/living/carbon/xenomorph/proc/vent_crawl,
-		)
+	)
 	mutation_type = LURKER_NORMAL
 	claw_type = CLAW_TYPE_SHARP
 

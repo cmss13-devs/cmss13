@@ -4,7 +4,7 @@
 	desc = "That looks like it doesn't open easily."
 	icon = 'icons/obj/structures/doors/rapid_pdoor.dmi'
 	icon_state = "pdoor"
-	id = 1.0
+	id = 1
 	dir = NORTH
 	unslashable = TRUE
 	health = 0
@@ -277,7 +277,8 @@
 	var/vehicle_resistant = FALSE
 	tiles_with = list(
 		/obj/structure/window/framed/almayer,
-		/obj/structure/machinery/door/airlock)
+		/obj/structure/machinery/door/airlock,
+	)
 
 /obj/structure/machinery/door/poddoor/almayer/open
 	density = FALSE

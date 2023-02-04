@@ -104,7 +104,7 @@
 	key = "h"
 
 /datum/language/hellhound/scramble(input)
-	return pick("Grrr...", "Grah!", "Gurrr..")
+	return pick("Grrr...", "Grah!", "Gurrr...")
 
 /datum/language/primitive
 	name = LANGUAGE_MONKEY

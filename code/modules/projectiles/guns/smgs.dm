@@ -106,17 +106,17 @@
 		/obj/item/attachable/reddot,
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/flashlight,
-		/obj/item/attachable/magnetic_harness
+		/obj/item/attachable/magnetic_harness,
 	)
 	random_spawn_under = list(
 		/obj/item/attachable/angledgrip,
 		/obj/item/attachable/lasersight,
-		/obj/item/attachable/flashlight/grip
+		/obj/item/attachable/flashlight/grip,
 	)
 	random_spawn_muzzle = list(
 		/obj/item/attachable/suppressor,
 		/obj/item/attachable/bayonet,
-		/obj/item/attachable/extended_barrel
+		/obj/item/attachable/extended_barrel,
 	)
 
 

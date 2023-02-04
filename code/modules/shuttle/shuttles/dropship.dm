@@ -22,8 +22,6 @@
 	// CAS gear
 	var/list/obj/structure/dropship_equipment/equipments = list()
 
-	var/landing_lights_on = FALSE
-
 /obj/docking_port/mobile/marine_dropship/Initialize(mapload)
 	. = ..()
 	door_control = new()
@@ -89,11 +87,11 @@
 	if(mode == SHUTTLE_CRASHED)
 		return
 
-	if(mode == SHUTTLE_CALL && timeLeft(1) < 10 SECONDS && !landing_lights_on)
+	var/obj/docking_port/stationary/marine_dropship/dropzone = destination
+	if(mode == SHUTTLE_PREARRIVAL && !dropzone.landing_lights_on)
 		if(istype(destination, /obj/docking_port/stationary/marine_dropship))
-			var/obj/docking_port/stationary/marine_dropship/dropzone = destination
 			dropzone.turn_on_landing_lights()
-
+			playsound(dropzone.return_center_turf(), landing_sound, 60, 0)
 	if(!is_hijacked)
 		return
 
@@ -105,6 +103,7 @@
 	dwidth = 1
 	var/list/landing_lights = list()
 	var/auto_open = FALSE
+	var/landing_lights_on = FALSE
 
 /obj/docking_port/stationary/marine_dropship/Initialize(mapload)
 	. = ..()
@@ -126,10 +125,12 @@
 /obj/docking_port/stationary/marine_dropship/proc/turn_on_landing_lights()
 	for(var/obj/structure/machinery/landinglight/light in landing_lights)
 		light.turn_on()
+	landing_lights_on = TRUE
 
 /obj/docking_port/stationary/marine_dropship/proc/turn_off_landing_lights()
 	for(var/obj/structure/machinery/landinglight/light in landing_lights)
 		light.turn_off()
+	landing_lights_on = FALSE
 
 /obj/docking_port/stationary/marine_dropship/on_prearrival(obj/docking_port/mobile/arriving_shuttle)
 	. = ..()

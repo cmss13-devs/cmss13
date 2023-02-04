@@ -546,7 +546,6 @@
 
 /obj/docking_port/mobile/proc/on_prearrival()
 	if(destination)
-		playsound(destination.return_center_turf(), landing_sound, 60, 0)
 		destination.on_prearrival(src)
 	playsound(return_center_turf(), landing_sound, 60, 0)
 	return

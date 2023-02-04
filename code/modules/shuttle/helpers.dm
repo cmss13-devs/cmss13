@@ -116,14 +116,14 @@
 
 /datum/door_controller/proc/lockdown_door(obj/structure/machinery/door/airlock/air)
 	air.safe = 0
-	air.unlock()
-	air.close()
-	air.lock()
+	air.unlock(TRUE)
+	air.close(TRUE)
+	air.lock(TRUE)
 	air.safe = 1
 
 /datum/door_controller/proc/force_lock_open_door(obj/structure/machinery/door/airlock/air)
 	air.safe = 0
-	air.unlock()
-	air.open()
-	air.lock()
+	air.unlock(TRUE)
+	air.open(TRUE)
+	air.lock(TRUE)
 	air.safe = 1

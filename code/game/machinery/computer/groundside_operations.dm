@@ -57,7 +57,7 @@
 		dat += "<BR><hr>"
 
 	if(lz_selection && SSticker.mode && (isnull(SSticker.mode.active_lz) || isnull(SSticker.mode.active_lz.loc)))
-		dat += "<BR>Primary LZ <BR><A HREF='?src=\ref[src];operation=selectlz'>Select primary LZ</A>"
+		dat += "<BR>Either dropship can be used to go to either LZ. Announce which dropship will be available for transport and which LZ to use.<BR>"
 		dat += "<BR><hr>"
 
 	if(has_squad_overwatch)

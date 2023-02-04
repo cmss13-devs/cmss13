@@ -17,7 +17,7 @@
 	cant_hold = list(
 		/obj/item/ammo_magazine,
 		/obj/item/explosive/grenade,
-		/obj/item/tool
+		/obj/item/tool,
 	) //to prevent powergaming.
 	storage_flags = STORAGE_FLAGS_BOX
 	var/icon_full //icon state to use when kit is full
@@ -172,7 +172,7 @@
 	icon_state = "bezerk"
 	cant_hold = list(
 		/obj/item/ammo_magazine,
-		/obj/item/explosive/grenade
+		/obj/item/explosive/grenade,
 	) // we need surgery tools buddy
 
 /obj/item/storage/firstaid/surgical/fill_preset_inventory()
@@ -204,7 +204,7 @@
 		/obj/item/reagent_container/glass/bottle,
 		/obj/item/paper,
 		/obj/item/reagent_container/syringe,
-		/obj/item/reagent_container/hypospray/autoinjector
+		/obj/item/reagent_container/hypospray/autoinjector,
 	)
 
 /obj/item/storage/syringe_case/regular
@@ -249,7 +249,7 @@
 	can_hold = list(
 		/obj/item/reagent_container/pill,
 		/obj/item/toy/dice,
-		/obj/item/paper
+		/obj/item/paper,
 	)
 	storage_flags = STORAGE_FLAGS_BOX|STORAGE_CLICK_GATHER|STORAGE_QUICK_GATHER
 	storage_slots = null
@@ -308,7 +308,6 @@
 	else
 		. += SPAN_INFO("The [name] is empty.")
 
-
 /obj/item/storage/pill_bottle/attack_self(mob/living/user)
 	..()
 
@@ -333,7 +332,7 @@
 		return
 
 
-/obj/item/storage/pill_bottle/attackby(var/obj/item/storage/pill_bottle/W, mob/user)
+/obj/item/storage/pill_bottle/attackby(obj/item/storage/pill_bottle/W, mob/user)
 	if(istype(W))
 		if((skilllock || W.skilllock) && !skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
 			error_idlock(user)
@@ -356,7 +355,7 @@
 			error_idlock(usr)
 			return
 
-/obj/item/storage/pill_bottle/clicked(var/mob/user, var/list/mods)
+/obj/item/storage/pill_bottle/clicked(mob/user, list/mods)
 	if(..())
 		return TRUE
 	if(!istype(loc, /obj/item/storage/belt/medical))
@@ -382,7 +381,7 @@
 		to_chat(user, SPAN_NOTICE("You take [I] out of the [name]."))
 		return TRUE
 
-/obj/item/storage/pill_bottle/empty(var/mob/user, var/turf/T)
+/obj/item/storage/pill_bottle/empty(mob/user, turf/T)
 	if(skilllock && !skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
 		error_idlock(user)
 		return
@@ -545,6 +544,7 @@
 
 	req_access = list(ACCESS_WY_CORPORATE)
 	var/req_role = JOB_CORPORATE_LIAISON
+	black_market_value = 35
 
 
 /obj/item/storage/pill_bottle/ultrazine/proc/id_check(mob/user)
@@ -616,6 +616,15 @@
 
 /obj/item/storage/pill_bottle/stimulant/skillless
 	skilllock = SKILL_MEDICAL_DEFAULT
+
+//NOT FOR USCM USE!!!!
+/obj/item/storage/pill_bottle/paracetamol
+	name = "\improper Paracetamol pill bottle"
+	desc = "This is probably someone's prescription bottle."
+	icon_state = "pill_canister7"
+	pill_type_to_fill = /obj/item/reagent_container/pill/paracetamol
+	skilllock = SKILL_MEDICAL_DEFAULT
+	maptext_label = "Pc"
 
 //---------PILL PACKETS---------
 /obj/item/storage/pill_bottle/packet

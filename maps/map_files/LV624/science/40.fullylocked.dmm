@@ -438,6 +438,17 @@
 	icon_state = "freezerfloor"
 	},
 /area/lv624/lazarus/research)
+"oe" = (
+/obj/structure/transmitter/colony_net{
+	pixel_y = 24;
+	phone_category = "Lazarus Landing";
+	phone_id = "Research Dome"
+	},
+/turf/open/floor{
+	dir = 5;
+	icon_state = "whitepurple"
+	},
+/area/lv624/lazarus/research)
 "qs" = (
 /obj/structure/surface/table,
 /obj/item/storage/fancy/vials/random,
@@ -565,7 +576,7 @@ ap
 ay
 aG
 au
-ay
+oe
 ak
 ay
 au

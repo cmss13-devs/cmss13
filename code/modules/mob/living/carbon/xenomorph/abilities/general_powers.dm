@@ -4,7 +4,7 @@
 
 // Plant weeds
 /datum/action/xeno_action/onclick/plant_weeds/use_ability(atom/A)
-	var/mob/living/carbon/Xenomorph/X = owner
+	var/mob/living/carbon/xenomorph/X = owner
 	if(!action_cooldown_check())
 		return
 	if(!X.check_state())
@@ -71,9 +71,9 @@
 	..()
 	return
 
-/mob/living/carbon/Xenomorph/lay_down()
-
-	if(!behavior_delegate.on_resting())
+/mob/living/carbon/xenomorph/lay_down()
+	if(hardcore)
+		to_chat(src, SPAN_WARNING("No time to rest, must KILL!"))
 		return
 
 	if(hardcore)
@@ -88,13 +88,13 @@
 
 
 /datum/action/xeno_action/onclick/xeno_resting/use_ability(atom/target)
-	var/mob/living/carbon/Xenomorph/xeno = owner
+	var/mob/living/carbon/xenomorph/xeno = owner
 	xeno.lay_down()
 	button.icon_state = xeno.resting ? "template_active" : "template"
 
 // Shift spits
 /datum/action/xeno_action/onclick/shift_spits/use_ability(atom/A)
-	var/mob/living/carbon/Xenomorph/X = owner
+	var/mob/living/carbon/xenomorph/X = owner
 	if(!X.check_state(1))
 		return
 	for(var/i in 1 to X.caste.spit_types.len)
@@ -112,7 +112,7 @@
 
 
 /datum/action/xeno_action/onclick/regurgitate/use_ability(atom/A)
-	var/mob/living/carbon/Xenomorph/X = owner
+	var/mob/living/carbon/xenomorph/X = owner
 	if(!X.check_state())
 		return
 
@@ -129,7 +129,7 @@
 	return
 
 /datum/action/xeno_action/onclick/choose_resin/use_ability(atom/A)
-	var/mob/living/carbon/Xenomorph/X = owner
+	var/mob/living/carbon/xenomorph/X = owner
 	if(!X.check_state())
 		return
 
@@ -142,7 +142,7 @@
 	)
 
 /datum/action/xeno_action/onclick/choose_resin/ui_static_data(mob/user)
-	var/mob/living/carbon/Xenomorph/X = user
+	var/mob/living/carbon/xenomorph/X = user
 	if(!istype(X))
 		return
 
@@ -164,7 +164,7 @@
 	.["constructions"] = constructions
 
 /datum/action/xeno_action/onclick/choose_resin/ui_data(mob/user)
-	var/mob/living/carbon/Xenomorph/X = user
+	var/mob/living/carbon/xenomorph/X = user
 	if(!istype(X))
 		return
 
@@ -191,7 +191,7 @@
 	if(.)
 		return
 
-	var/mob/living/carbon/Xenomorph/X = usr
+	var/mob/living/carbon/xenomorph/X = usr
 	if(!istype(X))
 		return
 
@@ -207,7 +207,7 @@
 		if("refresh_ui")
 			. = TRUE
 
-/datum/action/xeno_action/onclick/choose_resin/update_button_icon(var/selected_type, var/to_chat = FALSE)
+/datum/action/xeno_action/onclick/choose_resin/update_button_icon(selected_type, to_chat = FALSE)
 	. = ..()
 	if(!selected_type)
 		return
@@ -221,7 +221,7 @@
 /datum/action/xeno_action/activable/secrete_resin/use_ability(atom/A)
 	if(!..())
 		return FALSE
-	var/mob/living/carbon/Xenomorph/X = owner
+	var/mob/living/carbon/xenomorph/X = owner
 	if(isstorage(A.loc) || X.contains(A) || istype(A, /atom/movable/screen)) return FALSE
 	if(A.z != X.z)
 		to_chat(owner, SPAN_XENOWARNING("This area is too far away to affect!"))
@@ -250,7 +250,7 @@
 	if(!action_cooldown_check())
 		return
 
-	var/mob/living/carbon/Xenomorph/X = owner
+	var/mob/living/carbon/xenomorph/X = owner
 	if(!X.check_state(TRUE))
 		return FALSE
 
@@ -299,7 +299,7 @@
 
 // Destructive Acid
 /datum/action/xeno_action/activable/corrosive_acid/use_ability(atom/A)
-	var/mob/living/carbon/Xenomorph/X = owner
+	var/mob/living/carbon/xenomorph/X = owner
 	X.corrosive_acid(A, acid_type, acid_plasma_cost)
 	for(var/obj/item/explosive/plastic/E in A.contents)
 		X.corrosive_acid(E,acid_type,acid_plasma_cost)
@@ -307,12 +307,12 @@
 
 
 /datum/action/xeno_action/onclick/emit_pheromones/use_ability(atom/A)
-	var/mob/living/carbon/Xenomorph/X = owner
+	var/mob/living/carbon/xenomorph/X = owner
 	if(!istype(X))
 		return
 	X.emit_pheromones(emit_cost = plasma_cost)
 
-/mob/living/carbon/Xenomorph/proc/emit_pheromones(var/pheromone, var/emit_cost = 30)
+/mob/living/carbon/xenomorph/proc/emit_pheromones(pheromone, emit_cost = 30)
 	if(!check_state(TRUE))
 		return
 	if(!(locate(/datum/action/xeno_action/onclick/emit_pheromones) in actions))
@@ -355,12 +355,12 @@
 		SPAN_XENOWARNING("You begin to emit '[pheromone]' pheromones."), null, 5)
 		playsound(loc, "alien_drool", 25)
 
-	if(isXenoQueen(src) && hive && hive.xeno_leader_list.len && anchored)
-		for(var/mob/living/carbon/Xenomorph/L in hive.xeno_leader_list)
+	if(isqueen(src) && hive && hive.xeno_leader_list.len && anchored)
+		for(var/mob/living/carbon/xenomorph/L in hive.xeno_leader_list)
 			L.handle_xeno_leader_pheromones()
 
 /datum/action/xeno_action/activable/pounce/use_ability(atom/A)
-	var/mob/living/carbon/Xenomorph/X = owner
+	var/mob/living/carbon/xenomorph/X = owner
 
 	if(!action_cooldown_check())
 		return
@@ -389,7 +389,7 @@
 		X.layer = MOB_LAYER
 		X.update_wounds()
 
-	if(isXenoRavager(X))
+	if(isravager(X))
 		X.emote("roar")
 
 	if (!tracks_target)
@@ -444,7 +444,7 @@
 
 // Massive, customizable spray_acid
 /datum/action/xeno_action/activable/spray_acid/use_ability(atom/A)
-	var/mob/living/carbon/Xenomorph/X = owner
+	var/mob/living/carbon/xenomorph/X = owner
 
 	if(!action_cooldown_check())
 		return
@@ -491,7 +491,7 @@
 	return
 
 /datum/action/xeno_action/onclick/xenohide/use_ability(atom/target)
-	var/mob/living/carbon/Xenomorph/xeno = owner
+	var/mob/living/carbon/xenomorph/xeno = owner
 	if(!xeno.check_state(1))
 		return
 	if(xeno.layer != XENO_HIDING_LAYER)
@@ -505,12 +505,12 @@
 	xeno.update_wounds()
 
 /datum/action/xeno_action/onclick/place_trap/use_ability(atom/A)
-	var/mob/living/carbon/Xenomorph/X = owner
+	var/mob/living/carbon/xenomorph/X = owner
 	if(!X.check_state())
 		return
 
-	if (istype(X, /mob/living/carbon/Xenomorph/Burrower))
-		var/mob/living/carbon/Xenomorph/Burrower/B = X
+	if (istype(X, /mob/living/carbon/xenomorph/burrower))
+		var/mob/living/carbon/xenomorph/burrower/B = X
 		if (B.burrow)
 			return
 
@@ -544,7 +544,7 @@
 	new /obj/effect/alien/resin/trap(T, X)
 	to_chat(X, SPAN_XENONOTICE("You place a resin hole on the weeds, it still needs a sister to fill it with acid."))
 
-/turf/proc/check_xeno_trap_placement(mob/living/carbon/Xenomorph/X)
+/turf/proc/check_xeno_trap_placement(mob/living/carbon/xenomorph/X)
 	if(is_weedable() < FULLY_WEEDABLE || !can_xeno_build(src))
 		to_chat(X, SPAN_XENOWARNING("You can't do that here."))
 		return FALSE
@@ -572,7 +572,7 @@
 	return alien_weeds
 
 /datum/action/xeno_action/activable/place_construction/use_ability(atom/A)
-	var/mob/living/carbon/Xenomorph/X = owner
+	var/mob/living/carbon/xenomorph/X = owner
 	if(!X.check_state())
 		return FALSE
 
@@ -632,7 +632,7 @@
 	if(!spacecheck(X,T,structure_template)) //doublechecking
 		return FALSE
 
-	if((choice == XENO_STRUCTURE_CORE) && isXenoQueen(X) && X.hive.has_structure(XENO_STRUCTURE_CORE))
+	if((choice == XENO_STRUCTURE_CORE) && isqueen(X) && X.hive.has_structure(XENO_STRUCTURE_CORE))
 		if(X.hive.hive_location.hardcore || world.time > XENOMORPH_PRE_SETUP_CUTOFF)
 			to_chat(X, SPAN_WARNING("You can't rebuild this structure!"))
 			return
@@ -683,7 +683,7 @@
 
 // XSS Spacecheck
 
-/datum/action/xeno_action/activable/place_construction/proc/spacecheck(var/mob/living/carbon/Xenomorph/X, var/turf/T, datum/construction_template/xenomorph/tem)
+/datum/action/xeno_action/activable/place_construction/proc/spacecheck(mob/living/carbon/xenomorph/X, turf/T, datum/construction_template/xenomorph/tem)
 	if(tem.block_range)
 		for(var/turf/TA in range(T, tem.block_range))
 			if(!X.check_alien_construction(TA, FALSE, TRUE))
@@ -706,7 +706,7 @@
 	return TRUE
 
 /datum/action/xeno_action/activable/xeno_spit/use_ability(atom/A)
-	var/mob/living/carbon/Xenomorph/X = owner
+	var/mob/living/carbon/xenomorph/X = owner
 	if(!X.check_state())
 		return
 
@@ -748,7 +748,7 @@
 	..()
 
 /datum/action/xeno_action/activable/bombard/use_ability(atom/A)
-	var/mob/living/carbon/Xenomorph/X = owner
+	var/mob/living/carbon/xenomorph/X = owner
 
 	if (!istype(X) || !X.check_state() || !action_cooldown_check() || X.action_busy)
 		return FALSE
@@ -809,7 +809,7 @@
 		recursive_spread(get_step(T, dirn), dist_left - 1, orig_depth)
 
 
-/datum/action/xeno_action/activable/bombard/proc/new_effect(turf/T, mob/living/carbon/Xenomorph/X)
+/datum/action/xeno_action/activable/bombard/proc/new_effect(turf/T, mob/living/carbon/xenomorph/X)
 	if(!istype(T))
 		return
 
@@ -821,7 +821,7 @@
 /datum/action/xeno_action/activable/bombard/proc/get_bombard_source()
 	return owner
 
-/turf/proc/can_bombard(var/mob/bombarder)
+/turf/proc/can_bombard(mob/bombarder)
 	if(!can_be_dissolved() && density) return FALSE
 	for(var/atom/A in src)
 		if(istype(A, /obj/structure/machinery)) continue // Machinery shouldn't block boiler gas (e.g. computers)
@@ -831,7 +831,7 @@
 
 	return TRUE
 
-/mob/living/carbon/Xenomorph/proc/can_bombard_turf(var/atom/target, var/range = 5, var/atom/bombard_source) // I couldnt be arsed to do actual raycasting :I This is horribly inaccurate.
+/mob/living/carbon/xenomorph/proc/can_bombard_turf(atom/target, range = 5, atom/bombard_source) // I couldnt be arsed to do actual raycasting :I This is horribly inaccurate.
 	if(!bombard_source || !isturf(bombard_source.loc))
 		to_chat(src, SPAN_XENODANGER("That target is obstructed!"))
 		return FALSE
@@ -862,12 +862,17 @@
 		current = get_step_towards(current, target_turf)
 
 /datum/action/xeno_action/activable/tail_stab/use_ability(atom/targetted_atom)
-	var/mob/living/carbon/Xenomorph/stabbing_xeno = owner
-
-	if(!action_cooldown_check())
-		return FALSE
+	var/mob/living/carbon/xenomorph/stabbing_xeno = owner
 
 	if(!stabbing_xeno.check_state())
+		return FALSE
+
+	var/pre_result = pre_ability_act(stabbing_xeno, targetted_atom)
+
+	if(pre_result)
+		return FALSE
+
+	if(!action_cooldown_check())
 		return FALSE
 
 	if (world.time <= stabbing_xeno.next_move)
@@ -904,7 +909,7 @@
 		xeno_attack_delay(stabbing_xeno)
 		return ..()
 
-	if(!isXenoOrHuman(targetted_atom))
+	if(!isxeno_human(targetted_atom))
 		stabbing_xeno.visible_message(SPAN_XENOWARNING("\The [stabbing_xeno] swipes their tail through the air!"), SPAN_XENOWARNING("You swipe your tail through the air!"))
 		apply_cooldown(cooldown_modifier = 0.1)
 		xeno_attack_delay(stabbing_xeno)
@@ -934,7 +939,10 @@
 	..()
 	return result
 
-/datum/action/xeno_action/activable/tail_stab/proc/ability_act(var/mob/living/carbon/Xenomorph/stabbing_xeno, var/mob/living/carbon/target, var/obj/limb/limb)
+/datum/action/xeno_action/activable/tail_stab/proc/pre_ability_act(mob/living/carbon/xenomorph/stabbing_xeno, atom/targetted_atom)
+	return
+
+/datum/action/xeno_action/activable/tail_stab/proc/ability_act(mob/living/carbon/xenomorph/stabbing_xeno, mob/living/carbon/target, obj/limb/limb)
 
 	target.last_damage_data = create_cause_data(initial(stabbing_xeno.caste_type), stabbing_xeno)
 
@@ -983,7 +991,7 @@
 	target.handle_blood_splatter(get_dir(owner.loc, target.loc))
 	return target
 
-/datum/action/xeno_action/activable/tail_stab/proc/reset_direction(var/mob/living/carbon/Xenomorph/stabbing_xeno, var/last_dir, var/new_dir)
+/datum/action/xeno_action/activable/tail_stab/proc/reset_direction(mob/living/carbon/xenomorph/stabbing_xeno, last_dir, new_dir)
 	// If the xenomorph is still holding the same direction as the tail stab animation's changed it to, reset it back to the old direction so the xenomorph isn't stuck facing backwards.
 	if(new_dir == stabbing_xeno.dir)
 		stabbing_xeno.setDir(last_dir)

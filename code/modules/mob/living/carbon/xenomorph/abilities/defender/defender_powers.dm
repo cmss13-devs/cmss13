@@ -1,6 +1,5 @@
 /datum/action/xeno_action/onclick/toggle_crest/use_ability(atom/target)
-	var/mob/living/carbon/Xenomorph/xeno = owner
-	var/datum/behavior_delegate/defender_base/defender_delegate = xeno.behavior_delegate
+	var/mob/living/carbon/xenomorph/xeno = owner
 	if (!istype(xeno))
 		return
 
@@ -37,12 +36,11 @@
 
 // Defender Headbutt
 /datum/action/xeno_action/activable/headbutt/use_ability(atom/target_atom)
-	var/mob/living/carbon/Xenomorph/fendy = owner
-	var/datum/behavior_delegate/defender_base/defender_delegate = fendy.behavior_delegate
+	var/mob/living/carbon/xenomorph/fendy = owner
 	if (!istype(fendy))
 		return
 
-	if(!isXenoOrHuman(target_atom) || fendy.can_not_harm(target_atom))
+	if(!isxeno_human(target_atom) || fendy.can_not_harm(target_atom))
 		return
 
 	if(!fendy.check_state())
@@ -115,9 +113,8 @@
 
 // Defender Tail Sweep
 /datum/action/xeno_action/onclick/tail_sweep/use_ability(atom/A)
-	var/mob/living/carbon/Xenomorph/fender = owner
-	var/datum/behavior_delegate/defender_base/defender_delegate = fender.behavior_delegate
-	if (!istype(fender))
+	var/mob/living/carbon/xenomorph/X = owner
+	if (!istype(X))
 		return
 
 	if(!fender.check_state())
@@ -144,8 +141,8 @@
 	fender.emote("tail")
 
 	var/sweep_range = 1
-	for(var/mob/living/carbon/H in orange(sweep_range, get_turf(fender)))
-		if (!isXenoOrHuman(H) || fender.can_not_harm(H)) continue
+	for(var/mob/living/carbon/H in orange(sweep_range, get_turf(X)))
+		if (!isxeno_human(H) || X.can_not_harm(H)) continue
 		if(H.stat == DEAD) continue
 		if(HAS_TRAIT(H, TRAIT_NESTED)) continue
 		step_away(H, fender, sweep_range, 2)
@@ -166,8 +163,7 @@
 
 // Defender Fortify
 /datum/action/xeno_action/activable/fortify/use_ability(atom/target)
-	var/mob/living/carbon/Xenomorph/xeno = owner
-	var/datum/behavior_delegate/defender_base/defender_delegate = xeno.behavior_delegate
+	var/mob/living/carbon/xenomorph/xeno = owner
 	if (!istype(xeno))
 		return
 
@@ -200,21 +196,18 @@
 
 /datum/action/xeno_action/activable/fortify/action_activate()
 	..()
-	var/mob/living/carbon/Xenomorph/xeno = owner
-	var/datum/behavior_delegate/defender_base/defender_delegate = xeno.behavior_delegate
-	if(defender_delegate.fortified && xeno.selected_ability != src)
+	var/mob/living/carbon/xenomorph/xeno = owner
+	if(xeno.fortify && xeno.selected_ability != src)
 		button.icon_state = "template_active"
 
 /datum/action/xeno_action/activable/fortify/action_deselect()
 	..()
-	var/mob/living/carbon/Xenomorph/xeno = owner
-	var/datum/behavior_delegate/defender_base/defender_delegate = xeno.behavior_delegate
-	if(defender_delegate.fortified)
+	var/mob/living/carbon/xenomorph/xeno = owner
+	if(xeno.fortify)
 		button.icon_state = "template_active"
 
-/datum/action/xeno_action/activable/fortify/proc/fortify_switch(var/mob/living/carbon/Xenomorph/fender, var/fortify_state)
-	var/datum/behavior_delegate/defender_base/defender_delegate = fender.behavior_delegate
-	if(defender_delegate.fortified == fortify_state)
+/datum/action/xeno_action/activable/fortify/proc/fortify_switch(mob/living/carbon/xenomorph/X, fortify_state)
+	if(X.fortify == fortify_state)
 		return
 
 	if(fortify_state)
@@ -256,7 +249,7 @@
 		fender.update_icons()
 		defender_delegate.fortified = FALSE
 
-/datum/action/xeno_action/activable/fortify/proc/check_directional_armor(var/mob/living/carbon/Xenomorph/defendy, list/damagedata)
+/datum/action/xeno_action/activable/fortify/proc/check_directional_armor(mob/living/carbon/xenomorph/defendy, list/damagedata)
 	SIGNAL_HANDLER
 	var/datum/behavior_delegate/defender_base/defender_delegate = defendy.behavior_delegate
 	var/projectile_direction = damagedata["direction"]

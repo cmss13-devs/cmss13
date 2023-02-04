@@ -29,7 +29,7 @@
 	if(!C.handcuffed)
 		place_handcuffs(C, user)
 
-/obj/item/handcuffs/obj/structure/MouseDrop(var/mob/living/carbon/human/H)
+/obj/item/handcuffs/obj/structure/MouseDrop(mob/living/carbon/human/H)
 	var/mob/living/carbon/human/user = usr
 	if (!istype(user))
 		return
@@ -51,7 +51,7 @@
 
 	return ret
 
-/obj/item/handcuffs/proc/place_handcuffs(var/mob/living/carbon/target, var/mob/user)
+/obj/item/handcuffs/proc/place_handcuffs(mob/living/carbon/target, mob/user)
 	playsound(src.loc, cuff_sound, 25, 1, 4)
 
 	if(user.action_busy)
@@ -132,7 +132,7 @@
 /obj/item/handcuffs/cable/white
 	color = "#FFFFFF"
 
-/obj/item/handcuffs/cable/attackby(var/obj/item/I, mob/user as mob)
+/obj/item/handcuffs/cable/attackby(obj/item/I, mob/user as mob)
 	..()
 	if(istype(I, /obj/item/stack/rods))
 		var/obj/item/stack/rods/R = I
@@ -189,7 +189,7 @@
 	var/breakouttime = 2 MINUTES
 
 /obj/item/restraints/attack(mob/living/carbon/C as mob, mob/user as mob)
-	if(!istype(C, /mob/living/carbon/Xenomorph))
+	if(!istype(C, /mob/living/carbon/xenomorph))
 		to_chat(user, SPAN_DANGER("The cuffs do not fit!"))
 		return
 	if(!C.handcuffed)

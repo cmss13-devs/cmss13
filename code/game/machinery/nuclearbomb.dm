@@ -69,7 +69,7 @@ var/bomb_set = FALSE
 	else
 		stop_processing()
 
-/obj/structure/machinery/nuclearbomb/attack_alien(mob/living/carbon/Xenomorph/M)
+/obj/structure/machinery/nuclearbomb/attack_alien(mob/living/carbon/xenomorph/M)
 	INVOKE_ASYNC(src, TYPE_PROC_REF(/atom, attack_hand), M)
 	return XENO_ATTACK_ACTION
 
@@ -86,15 +86,15 @@ var/bomb_set = FALSE
 	if(user.is_mob_incapacitated() || !user.canmove || get_dist(src, user) > 1 || isRemoteControlling(user))
 		return
 
-	if(isYautja(user))
+	if(isyautja(user))
 		to_chat(usr, SPAN_YAUTJABOLD("A human Purification Device. Primitive and bulky, but effective. You don't have time to try figure out their counterintuitive controls. Better leave the hunting grounds before it detonates."))
 
 	if(deployable)
-		if(!ishuman(user) && !isXenoQueen(user))
+		if(!ishuman(user) && !isqueen(user))
 			to_chat(usr, SPAN_DANGER("You don't have the dexterity to do this!"))
 			return
 
-		if(isXenoQueen(user))
+		if(isqueen(user))
 			if(timing && bomb_set)
 				user.visible_message(SPAN_DANGER("[user] begins to defuse \the [src]."), SPAN_DANGER("You begin to defuse \the [src]. This will take some time..."))
 				if(do_after(user, 5 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
@@ -299,7 +299,7 @@ var/bomb_set = FALSE
 	update_icon()
 
 //unified all announcements to one proc
-/obj/structure/machinery/nuclearbomb/proc/announce_to_players(var/timer_warning)
+/obj/structure/machinery/nuclearbomb/proc/announce_to_players(timer_warning)
 	if(timer_warning) //we check for timer warnings first
 		//humans part
 		var/list/humans_other = GLOB.human_mob_list + GLOB.dead_mob_list
@@ -307,7 +307,7 @@ var/bomb_set = FALSE
 		for(var/mob/M in humans_other)
 			var/mob/living/carbon/human/H = M
 			if(istype(H)) //if it's unconsious human or yautja, we remove them
-				if(H.stat != CONSCIOUS || isYautja(H))
+				if(H.stat != CONSCIOUS || isyautja(H))
 					humans_other.Remove(M)
 					continue
 			if(M.faction == FACTION_MARINE || M.faction == FACTION_SURVIVOR) //separating marines from other factions. Survs go here too
@@ -340,7 +340,7 @@ var/bomb_set = FALSE
 	for(var/mob/M in humans_other)
 		var/mob/living/carbon/human/H = M
 		if(istype(H)) //if it's unconsious human or yautja, we remove them
-			if(H.stat != CONSCIOUS || isYautja(H))
+			if(H.stat != CONSCIOUS || isyautja(H))
 				humans_other.Remove(M)
 				continue
 		if(M.faction == FACTION_MARINE || M.faction == FACTION_SURVIVOR) //separating marines from other factions. Survs go here too

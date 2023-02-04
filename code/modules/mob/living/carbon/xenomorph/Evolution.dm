@@ -4,7 +4,7 @@
 //All castes need an evolves_to() list in their defines
 //Such as evolves_to = list(XENO_CASTE_WARRIOR, XENO_CASTE_SENTINEL, XENO_CASTE_RUNNER, "Badass") etc
 
-/mob/living/carbon/Xenomorph/verb/Evolve()
+/mob/living/carbon/xenomorph/verb/Evolve()
 	set name = "Evolve"
 	set desc = "Evolve into a higher form."
 	set category = "Alien"
@@ -20,7 +20,7 @@
 	if(!evolve_checks())
 		return
 
-	if((!hive.living_xeno_queen) && castepick != XENO_CASTE_QUEEN && !isXenoLarva(src) && !hive.allow_no_queen_actions)
+	if((!hive.living_xeno_queen) && castepick != XENO_CASTE_QUEEN && !islarva(src) && !hive.allow_no_queen_actions)
 		to_chat(src, SPAN_WARNING("The Hive is shaken by the death of the last Queen. You can't find the strength to evolve."))
 		return
 
@@ -46,22 +46,22 @@
 			return
 
 	// Used for restricting benos to evolve to drone/queen when they're the only potential queen
-	for(var/mob/living/carbon/Xenomorph/M in GLOB.living_xeno_list)
+	for(var/mob/living/carbon/xenomorph/M in GLOB.living_xeno_list)
 		if(hivenumber != M.hivenumber)
 			continue
 
 		switch(M.tier)
 			if(0)
-				if(isXenoLarvaStrict(M))
+				if(islarva(M) && !ispredalienlarva(M))
 					if(M.client && M.ckey)
 						potential_queens++
 				continue
 			if(1)
-				if(isXenoDrone(M))
+				if(isdrone(M))
 					if(M.client && M.ckey)
 						potential_queens++
 
-	var/mob/living/carbon/Xenomorph/M = null
+	var/mob/living/carbon/xenomorph/M = null
 
 	M = RoleAuthority.get_caste_by_text(castepick)
 
@@ -102,7 +102,7 @@
 		return
 
 	//From there, the new xeno exists, hopefully
-	var/mob/living/carbon/Xenomorph/new_xeno = new M(get_turf(src), src)
+	var/mob/living/carbon/xenomorph/new_xeno = new M(get_turf(src), src)
 
 	if(!istype(new_xeno))
 		//Something went horribly wrong!
@@ -161,7 +161,7 @@
 		round_statistics.track_new_participant(new_xeno.faction, -1) //so an evolved xeno doesn't count as two.
 	SSround_recording.recorder.track_player(new_xeno)
 
-/mob/living/carbon/Xenomorph/proc/evolve_checks()
+/mob/living/carbon/xenomorph/proc/evolve_checks()
 	if(!check_state(TRUE))
 		return FALSE
 
@@ -210,7 +210,7 @@
 	return TRUE
 
 // The queen de-evo, but on yourself. Only usable once
-/mob/living/carbon/Xenomorph/verb/Deevolve()
+/mob/living/carbon/xenomorph/verb/Deevolve()
 	set name = "De-Evolve"
 	set desc = "De-evolve into a lesser form."
 	set category = "Alien"
@@ -273,25 +273,25 @@
 	var/level_to_switch_to = get_vision_level()
 	switch(newcaste)
 		if("Larva")
-			xeno_type = /mob/living/carbon/Xenomorph/Larva
+			xeno_type = /mob/living/carbon/xenomorph/larva
 		if(XENO_CASTE_RUNNER)
-			xeno_type = /mob/living/carbon/Xenomorph/Runner
+			xeno_type = /mob/living/carbon/xenomorph/runner
 		if(XENO_CASTE_DRONE)
-			xeno_type = /mob/living/carbon/Xenomorph/Drone
+			xeno_type = /mob/living/carbon/xenomorph/drone
 		if(XENO_CASTE_SENTINEL)
-			xeno_type = /mob/living/carbon/Xenomorph/Sentinel
+			xeno_type = /mob/living/carbon/xenomorph/sentinel
 		if(XENO_CASTE_SPITTER)
-			xeno_type = /mob/living/carbon/Xenomorph/Spitter
+			xeno_type = /mob/living/carbon/xenomorph/spitter
 		if(XENO_CASTE_LURKER)
-			xeno_type = /mob/living/carbon/Xenomorph/Lurker
+			xeno_type = /mob/living/carbon/xenomorph/lurker
 		if(XENO_CASTE_WARRIOR)
-			xeno_type = /mob/living/carbon/Xenomorph/Warrior
+			xeno_type = /mob/living/carbon/xenomorph/warrior
 		if(XENO_CASTE_DEFENDER)
-			xeno_type = /mob/living/carbon/Xenomorph/Defender
+			xeno_type = /mob/living/carbon/xenomorph/defender
 		if(XENO_CASTE_BURROWER)
-			xeno_type = /mob/living/carbon/Xenomorph/Burrower
+			xeno_type = /mob/living/carbon/xenomorph/burrower
 
-	var/mob/living/carbon/Xenomorph/new_xeno = new xeno_type(get_turf(src), src)
+	var/mob/living/carbon/xenomorph/new_xeno = new xeno_type(get_turf(src), src)
 
 	new_xeno.built_structures = built_structures.Copy()
 
@@ -328,7 +328,7 @@
 
 	qdel(src)
 
-/mob/living/carbon/Xenomorph/proc/can_evolve(castepick, potential_queens)
+/mob/living/carbon/xenomorph/proc/can_evolve(castepick, potential_queens)
 	var/selected_caste = GLOB.xeno_datum_list[castepick]?.type
 	var/free_slots = LAZYACCESS(hive.free_slots, selected_caste)
 	if(free_slots)
@@ -348,7 +348,7 @@
 			if(3) used_tier_3_slots--
 
 	var/totalXenos = pooled_factor
-	for(var/mob/living/carbon/Xenomorph/xeno as anything in hive.totalXenos)
+	for(var/mob/living/carbon/xenomorph/xeno as anything in hive.totalXenos)
 		if(xeno.counts_for_slots)
 			totalXenos++
 
@@ -358,7 +358,7 @@
 	else if(tier == 2 && ((used_tier_3_slots / totalXenos) * hive.tier_slot_multiplier) >= 0.20 && castepick != XENO_CASTE_QUEEN)
 		to_chat(src, SPAN_WARNING("The hive cannot support another Tier 3, wait for either more aliens to be born or someone to die."))
 		return FALSE
-	else if(hive.allow_queen_evolve && !hive.living_xeno_queen && potential_queens == 1 && isXenoLarva(src) && castepick != XENO_CASTE_DRONE)
+	else if(hive.allow_queen_evolve && !hive.living_xeno_queen && potential_queens == 1 && islarva(src) && castepick != XENO_CASTE_DRONE)
 		to_chat(src, SPAN_XENONOTICE("The hive currently has no sister able to become Queen! The survival of the hive requires you to be a Drone!"))
 		return FALSE
 

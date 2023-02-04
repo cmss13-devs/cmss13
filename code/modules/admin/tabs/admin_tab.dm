@@ -142,7 +142,7 @@
 		to_chat_spaced(world, type = MESSAGE_TYPE_SYSTEM, html = SPAN_ANNOUNCEMENT_HEADER_ADMIN(" <b>[usr.client.admin_holder.fakekey ? "Administrator" : usr.key] Announces:</b>\n \t [message]"))
 		log_admin("Announce: [key_name(usr)] : [message]")
 
-/datum/admins/proc/player_notes_show(var/key as text)
+/datum/admins/proc/player_notes_show(key as text)
 	set name = "Player Notes Show"
 	set category = "Admin"
 	if (!istype(src,/datum/admins))
@@ -274,8 +274,8 @@
 
 	for(var/mob/living/mob in view(usr.client))
 		to_chat(mob, SPAN_ANNOUNCEMENT_HEADER_BLUE(message))
-	log_admin("[key_name(src)] sent a Direct Narrate in View with custom message \"[message]\".")
-	message_staff("[key_name(src)] sent a Direct Narrate in View with custom message \"[message]\".")
+	log_admin("[key_name(usr)] sent a Direct Narrate in View with custom message \"[message]\".")
+	message_staff("[key_name(usr)] sent a Direct Narrate in View with custom message \"[message]\".")
 
 #define SUBTLE_MESSAGE_IN_HEAD "Voice in Head"
 #define SUBTLE_MESSAGE_WEYLAND "Weyland-Yutani"
@@ -466,7 +466,7 @@
 		return
 
 	for(var/mob/living/carbon/human/M in view())
-		if(!isHumanStrict(M) && !isHumanSynthStrict(M))
+		if(!ishuman_strict(M) && !ishumansynth_strict(M))
 			continue
 
 		if(M.stat != DEAD)
@@ -491,7 +491,7 @@
 	if(alert("This will rejuvenate ALL xenos within your view range. Are you sure?",,"Yes","Cancel") == "Cancel")
 		return
 
-	for(var/mob/living/carbon/Xenomorph/X in view())
+	for(var/mob/living/carbon/xenomorph/X in view())
 		X.rejuvenate(FALSE)
 
 	message_staff(WRAP_STAFF_LOG(usr, "ahealed all xenos in [get_area(usr)] ([usr.x],[usr.y],[usr.z])"), usr.x, usr.y, usr.z)
@@ -596,7 +596,7 @@
 	set_lz_resin_allowed(!GLOB.resin_lz_allowed)
 	message_staff("[src] has [GLOB.resin_lz_allowed ? "allowed xenos to weed" : "disallowed from weeding"] near the LZ.")
 
-/proc/set_lz_resin_allowed(var/allowed = TRUE)
+/proc/set_lz_resin_allowed(allowed = TRUE)
 	if(allowed)
 		for(var/area/A in all_areas)
 			A.is_resin_allowed = TRUE

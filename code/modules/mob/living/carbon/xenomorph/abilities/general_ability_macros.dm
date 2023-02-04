@@ -49,7 +49,7 @@
 	set name = "Secrete Resin"
 	set hidden = TRUE
 	var/action_name = "Secrete Resin (150)"
-	if(isXenoHivelord(src)) // >:( special snowflake caste
+	if(ishivelord(src)) // >:( special snowflake caste
 		action_name = "Secrete Resin (200)"
 	handle_xeno_macro(src, action_name)
 
@@ -68,7 +68,7 @@
 	set hidden = TRUE
 	var/action_name = "Corrosive Acid (100)"
 
-	var/mob/living/carbon/Xenomorph/X = src // different levels of have different names
+	var/mob/living/carbon/xenomorph/X = src // different levels of have different names
 	switch(X.acid_level)
 		if(1)
 			action_name = "Corrosive Acid (75)"
@@ -126,7 +126,7 @@
 	set name = "Toggle Long-Range Sight"
 	set hidden = TRUE
 	var/action_name = "Toggle Long-Range Sight"
-	if(isXenoRunner(src))
+	if(isrunner(src))
 		action_name = "Toggle Long-Range Sight (10)"
 	handle_xeno_macro(src, action_name)
 

@@ -33,6 +33,6 @@
 /datum/view_record
 	var/datum/entity_view_meta/meta
 
-/datum/entity_view_meta/proc/map(var/datum/view_record/ET, var/list/values)
+/datum/entity_view_meta/proc/map(datum/view_record/ET, list/values)
 	for(var/F in fields)
 		ET.vars[F] = values[F]

@@ -21,6 +21,7 @@
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 20
 	force = 0
+	black_market_value = 5
 
 
 /*
@@ -129,6 +130,7 @@
 	icon_state = "crayonred"
 	w_class = SIZE_TINY
 	attack_verb = list("attacked", "coloured")
+	black_market_value = 5
 	var/colour = "#FF0000" //RGB
 	var/shadeColour = "#220000" //RGB
 	var/uses = 30 //0 for unlimited uses
@@ -373,6 +375,7 @@
 	item_state = "inflatable"
 	icon = 'icons/obj/items/clothing/belts.dmi'
 	flags_equip_slot = SLOT_WAIST
+	black_market_value = 20
 
 
 /obj/item/toy/beach_ball
@@ -382,8 +385,8 @@
 	density = FALSE
 	anchored = FALSE
 	w_class = SIZE_SMALL
-	force = 0.0
-	throwforce = 0.0
+	force = 0
+	throwforce = 0
 	throw_speed = SPEED_SLOW
 	throw_range = 20
 
@@ -439,6 +442,7 @@
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 15
 	attack_verb = list("HONKED")
+	black_market_value = 25
 	var/spam_flag = 0
 	var/sound_effect = 'sound/items/bikehorn.ogg'
 
@@ -458,6 +462,7 @@
 	desc = "A Farwa plush doll. It's soft and comforting!"
 	w_class = SIZE_TINY
 	icon_state = "farwaplush"
+	black_market_value = 25
 	var/last_hug_time
 
 /obj/item/toy/farwadoll/attack_self(mob/user)
@@ -502,7 +507,9 @@
 							/obj/item/toy/prize/seraph = 1,
 							/obj/item/toy/prize/mauler = 1,
 							/obj/item/toy/prize/odysseus = 1,
-							/obj/item/toy/prize/phazon = 1
+							/obj/item/toy/prize/phazon = 1,
+							/obj/item/clothing/shoes/slippers = 1,
+							/obj/item/clothing/shoes/slippers_worn = 1
 							)
 
 /obj/item/toy/festivizer
@@ -514,7 +521,7 @@
 
 /obj/item/toy/festivizer/get_examine_text(mob/user)
 	. = ..()
-	. += SPAN_BOLDNOTICE("You see another label on \the [src] that says: <i> INCLUDES SUPPORT FOR FOREIGN BIOFORMS! </i> You're not sure you like the sound of that..")
+	. += SPAN_BOLDNOTICE("You see another label on \the [src] that says: <i> INCLUDES SUPPORT FOR FOREIGN BIOFORMS! </i> You're not sure you like the sound of that.")
 
 /obj/item/toy/festivizer/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
 	. = ..()
@@ -535,7 +542,7 @@
 		playsound(target, pick('sound/voice/alien_queen_xmas.ogg', 'sound/voice/alien_queen_xmas_2.ogg'), 25, TRUE)
 	user.festivizer_hits_total++
 
-/obj/item/toy/festivizer/attack_alien(mob/living/carbon/Xenomorph/M)
+/obj/item/toy/festivizer/attack_alien(mob/living/carbon/xenomorph/M)
 	attack_hand(M) //xenos can use them too.
 	return XENO_NONCOMBAT_ACTION
 

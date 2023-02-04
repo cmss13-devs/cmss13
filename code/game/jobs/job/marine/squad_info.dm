@@ -36,7 +36,7 @@
 				return fireteam
 	return FALSE
 
-/datum/squad/proc/get_marine_from_name(var/name)
+/datum/squad/proc/get_marine_from_name(name)
 	for(var/mob/living/carbon/human/marine in marines_list)
 		if(marine.name == name)
 			return marine

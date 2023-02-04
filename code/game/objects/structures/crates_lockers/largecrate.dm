@@ -8,7 +8,7 @@
 	var/parts_type = /obj/item/stack/sheet/wood
 	var/unpacking_sound = 'sound/effects/woodhit.ogg'
 
-/obj/structure/largecrate/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/obj/structure/largecrate/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_can_pass_all = PASS_OVER|PASS_AROUND
@@ -40,14 +40,14 @@
 	else
 		return attack_hand(user)
 
-/obj/structure/largecrate/attack_alien(mob/living/carbon/Xenomorph/M)
+/obj/structure/largecrate/attack_alien(mob/living/carbon/xenomorph/M)
 	M.animation_attack_on(src)
 	unpack()
 	M.visible_message(SPAN_DANGER("[M] smashes [src] apart!"), \
 					  SPAN_DANGER("You smash [src] apart!"), 5, CHAT_TYPE_XENO_COMBAT)
 	return XENO_ATTACK_ACTION
 
-/obj/structure/largecrate/ex_act(var/power)
+/obj/structure/largecrate/ex_act(power)
 	if(power >= EXPLOSION_THRESHOLD_VLOW)
 		unpack()
 
@@ -161,35 +161,39 @@
 	desc = "A small metal crate. Here, Freeman ammo!"
 	name = "small ammocase"
 	icon_state = "mini_ammo"
-	stuff = list(/obj/item/ammo_magazine/pistol,
-				/obj/item/ammo_magazine/revolver,
-				/obj/item/ammo_magazine/rifle,
-				/obj/item/ammo_magazine/rifle/extended,
-				/obj/item/ammo_magazine/shotgun,
-				/obj/item/ammo_magazine/shotgun/buckshot,
-				/obj/item/ammo_magazine/shotgun/flechette,
-				/obj/item/ammo_magazine/smg/m39,
-				/obj/item/ammo_magazine/smg/m39/extended,)
+	stuff = list(
+		/obj/item/ammo_magazine/pistol,
+		/obj/item/ammo_magazine/revolver,
+		/obj/item/ammo_magazine/rifle,
+		/obj/item/ammo_magazine/rifle/extended,
+		/obj/item/ammo_magazine/shotgun,
+		/obj/item/ammo_magazine/shotgun/buckshot,
+		/obj/item/ammo_magazine/shotgun/flechette,
+		/obj/item/ammo_magazine/smg/m39,
+		/obj/item/ammo_magazine/smg/m39/extended,
+	)
 
 /obj/structure/largecrate/random/mini/med
 	desc = "A small metal crate. Here, Freeman take this medkit!" //https://www.youtube.com/watch?v=OMXan7GS8-Q
 	icon_state = "mini_medcase"
 	name = "small medcase"
 	num_things = 1 //funny lootbox tho.
-	stuff = list(/obj/item/stack/medical/bruise_pack,
-				/obj/item/storage/pill_bottle/packet/tricordrazine,
-				/obj/item/tool/crowbar/red,
-				/obj/item/device/flashlight,
-				/obj/item/reagent_container/hypospray/autoinjector/skillless,
-				/obj/item/storage/pill_bottle/packet/tramadol,
-				/obj/item/stack/medical/ointment,
-				/obj/item/stack/medical/splint,
-				/obj/item/device/healthanalyzer,
-				/obj/item/stack/medical/advanced/ointment,
-				/obj/item/stack/medical/advanced/bruise_pack,
-				/obj/item/tool/extinguisher/mini,
-				/obj/item/tool/shovel/etool,
-				/obj/item/tool/screwdriver)
+	stuff = list(
+		/obj/item/stack/medical/bruise_pack,
+		/obj/item/storage/pill_bottle/packet/tricordrazine,
+		/obj/item/tool/crowbar/red,
+		/obj/item/device/flashlight,
+		/obj/item/reagent_container/hypospray/autoinjector/skillless,
+		/obj/item/storage/pill_bottle/packet/tramadol,
+		/obj/item/stack/medical/ointment,
+		/obj/item/stack/medical/splint,
+		/obj/item/device/healthanalyzer,
+		/obj/item/stack/medical/advanced/ointment,
+		/obj/item/stack/medical/advanced/bruise_pack,
+		/obj/item/tool/extinguisher/mini,
+		/obj/item/tool/shovel/etool,
+		/obj/item/tool/screwdriver,
+	)
 
 /obj/structure/largecrate/random/case
 	name = "storage case"
@@ -253,7 +257,7 @@
 	icon_state = "secure_crate_strapped"
 	var/strapped = 1
 
-/obj/structure/largecrate/random/secure/attackby(var/obj/item/W as obj, var/mob/user as mob)
+/obj/structure/largecrate/random/secure/attackby(obj/item/W as obj, mob/user as mob)
 	if (!strapped)
 		..()
 		return
@@ -340,65 +344,6 @@
 					/obj/item/weapon/gun/smg/fp9000 = /obj/item/ammo_magazine/smg/fp9000
 				)
 
-/obj/structure/largecrate/merc/clothing
-	name = "\improper Black market clothing crate"
-
-/obj/structure/largecrate/merc/clothing/Initialize()
-	. = ..()
-	var/i = pick(1,5)
-	switch(i)
-		if(1) //pmc
-			new /obj/item/clothing/under/marine/veteran/PMC(src)
-			new /obj/item/clothing/head/helmet/marine/veteran/PMC(src)
-			new /obj/item/clothing/suit/storage/marine/veteran/PMC(src)
-			new /obj/item/clothing/gloves/marine/veteran(src)
-			new /obj/item/clothing/mask/rebreather/scarf(src)
-		if(2) //dutch's
-			new /obj/item/clothing/head/helmet/marine/veteran/dutch(src)
-			new /obj/item/clothing/under/marine/veteran/dutch(src)
-			new /obj/item/clothing/suit/storage/marine/veteran/dutch(src)
-			new /obj/item/clothing/gloves/marine/veteran(src)
-		if(3) //pizza
-			new /obj/item/clothing/under/pizza(src)
-			new /obj/item/clothing/head/soft/red(src)
-		if(4) //clf
-			new /obj/item/clothing/under/colonist/clf(src)
-			new /obj/item/clothing/suit/storage/militia(src)
-			new /obj/item/clothing/head/militia(src)
-			new /obj/item/clothing/gloves/marine/veteran(src)
-		if(5) //freelancer
-			new /obj/item/clothing/under/marine/veteran/freelancer(src)
-			new /obj/item/clothing/suit/storage/marine/faction/freelancer(src)
-			new /obj/item/clothing/head/cmbandana(src)
-			new /obj/item/clothing/gloves/marine/veteran(src)
-
-/obj/structure/largecrate/merc/ammo
-	name = "\improper Black market ammo crate"
-
-/datum/supply_packs/merc/ammo
-	name = "Black market ammo crate"
-	randomised_num_contained = 6
-	contains = list(
-					/obj/item/ammo_magazine/pistol/holdout,
-					/obj/item/ammo_magazine/pistol/highpower,
-					/obj/item/ammo_magazine/pistol/m1911,
-					/obj/item/ammo_magazine/pistol/heavy,
-					/obj/item/ammo_magazine/revolver/small,
-					/obj/item/ammo_magazine/revolver/cmb,
-					/obj/item/ammo_magazine/handful/shotgun/buckshot,
-					/obj/item/ammo_magazine/smg/mp27,
-					/obj/item/ammo_magazine/pistol/skorpion,
-					/obj/item/ammo_magazine/smg/mac15,
-					/obj/item/ammo_magazine/m60,
-					/obj/item/ammo_magazine/rifle/mar40,
-					/obj/item/ammo_magazine/smg/ppsh,
-					/obj/item/ammo_magazine/rifle/hunting,
-					/obj/item/ammo_magazine/smg/mp5,
-					/obj/item/ammo_magazine/rifle/m16,
-					/obj/item/ammo_magazine/handful/shotgun/heavy/buckshot,
-					/obj/item/ammo_magazine/rifle/type71,
-					/obj/item/ammo_magazine/smg/fp9000,
-					)
 
 /obj/structure/largecrate/hunter_games_construction
 	name = "construction crate"

@@ -125,23 +125,23 @@
 					else
 						randomValue -= speak.len
 						if(emote_see && randomValue <= emote_see.len)
-							INVOKE_ASYNC(src, PROC_REF(emote), pick(emote_see),1)
+							INVOKE_ASYNC(src, PROC_REF(manual_emote), pick(emote_see),1)
 						else
-							INVOKE_ASYNC(src, PROC_REF(emote), pick(emote_hear),2)
+							INVOKE_ASYNC(src, PROC_REF(manual_emote), pick(emote_hear),2)
 				else
 					INVOKE_ASYNC(src, PROC_REF(say), pick(speak))
 			else
 				if(!(emote_hear && emote_hear.len) && (emote_see && emote_see.len))
-					INVOKE_ASYNC(src, PROC_REF(emote), pick(emote_see),1)
+					INVOKE_ASYNC(src, PROC_REF(manual_emote), pick(emote_see),1)
 				if((emote_hear && emote_hear.len) && !(emote_see && emote_see.len))
-					INVOKE_ASYNC(src, PROC_REF(emote), pick(emote_hear),2)
+					INVOKE_ASYNC(src, PROC_REF(manual_emote), pick(emote_hear),2)
 				if((emote_hear && emote_hear.len) && (emote_see && emote_see.len))
 					var/length = emote_hear.len + emote_see.len
 					var/pick = rand(1,length)
 					if(pick <= emote_see.len)
-						INVOKE_ASYNC(src, PROC_REF(emote), pick(emote_see),1)
+						INVOKE_ASYNC(src, PROC_REF(manual_emote), pick(emote_see),1)
 					else
-						INVOKE_ASYNC(src, PROC_REF(emote), pick(emote_hear),2)
+						INVOKE_ASYNC(src, PROC_REF(manual_emote), pick(emote_hear),2)
 
 
 	//Atmos

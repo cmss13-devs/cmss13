@@ -214,7 +214,7 @@ window "mapwindow"
 		pos = 0,464
 		size = 280x16
 		anchor1 = 0,100
-		is-visible = false
+		is-visible = true
 		text = ""
 		align = left
 		background-color = #222222

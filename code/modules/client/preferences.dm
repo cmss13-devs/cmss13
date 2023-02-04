@@ -1611,6 +1611,10 @@ var/const/MAX_SAVE_SLOTS = 10
 					hide_statusbar = !hide_statusbar
 					if(hide_statusbar)
 						winset(owner, "mapwindow.status_bar", "text=\"\"")
+						winset(owner, "mapwindow.status_bar", "is-visible=false")
+					else
+						winset(owner, "mapwindow.status_bar", "is-visible=true")
+
 
 				if("no_radials_preference")
 					no_radials_preference = !no_radials_preference

@@ -2,10 +2,10 @@
 ##type/MouseEntered(location, control, params){\
 	var/client/client = usr.client;\
 	if(client.prefs?.hide_statusbar){\
+		winset(client, "mapwindow.status_bar", "is-visible=false");\
 		return;\
 	}\
 	winset(client, "mapwindow.status_bar", "text=\"[name]\"");\
-	winset(client, "mapwindow.status_bar", "is-visible=true");\
 };\
 ##type/MouseExited(location, control, params){\
 	var/client/client = usr.client;\
@@ -13,7 +13,6 @@
 		return;\
 	}\
 	winset(client, "mapwindow.status_bar", "text=\"\"");\
-	winset(client, "mapwindow.status_bar", "is-visible=false");\
 }
 
 SHOW_ON_STATUSBAR(/mob)

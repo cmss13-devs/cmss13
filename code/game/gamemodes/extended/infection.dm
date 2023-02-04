@@ -8,6 +8,9 @@
 	votable = FALSE // infection borked
 	taskbar_icon = 'icons/taskbar/gml_infection.png'
 
+/datum/game_mode/infection/get_roles_list()
+	return ROLES_USCM
+
 /datum/game_mode/infection/announce()
 	to_world("<B>The current game mode is - ZOMBIES!</B>")
 	to_world("<B>Just have fun and role-play!</B>")

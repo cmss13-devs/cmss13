@@ -268,8 +268,11 @@
 	var/tunnel = FALSE
 	var/stealth = FALSE // for check on lurker invisibility
 	var/burrow = FALSE
+	var/fortify = FALSE
+	var/crest_defense = FALSE
 	var/agility = FALSE // 0 - upright, 1 - all fours
 	var/ripping_limb = FALSE
+	var/steelcrest = FALSE
 	// Related to zooming out (primarily queen and boiler)
 	var/devour_timer = 0 // The world.time at which we will regurgitate our currently-vored victim
 	var/extra_build_dist = 0 // For drones/hivelords. Extends the maximum build range they have

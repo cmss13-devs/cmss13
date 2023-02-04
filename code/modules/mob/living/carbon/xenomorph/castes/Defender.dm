@@ -73,72 +73,13 @@
 /datum/behavior_delegate/defender_base
 	name = "Base Defender Behavior Delegate"
 
-	/// If the Defender has taken the Steelcrest strain. Since the abilities used by both strains are the same, this is the easiest way to do this.
-	var/steelcrest_strain = FALSE
-	var/crest_lowered = FALSE
-	var/fortified = FALSE
-
-/datum/behavior_delegate/defender_base/on_resting()
-
-	if(fortified)
-		to_chat(bound_xeno, SPAN_WARNING("You cannot rest while fortified!"))
-		return FALSE
-
-	if(crest_lowered)
-		to_chat(bound_xeno, SPAN_WARNING("You cannot rest while your crest is down!"))
-		return FALSE
-
-	return TRUE
-
-/datum/behavior_delegate/defender_base/on_attack_mob()
-
-	if(fortified && !steelcrest_strain)
-		to_chat(bound_xeno, SPAN_WARNING("You cannot slash while fortified!"))
-		return FALSE
-
-	return TRUE
-
-/datum/behavior_delegate/defender_base/on_evolve()
-
-	if(fortified || crest_lowered)
-		to_chat(bound_xeno, SPAN_WARNING("You cannot evolve while in this stance."))
-		return FALSE
-
-	return TRUE
-
-/datum/behavior_delegate/defender_base/on_strain()
-
-	if(fortified || crest_lowered)
-		to_chat(bound_xeno, SPAN_WARNING("You cannot take a strain while in this stance."))
-		return FALSE
-
-	return TRUE
-
-
 /datum/behavior_delegate/defender_base/on_update_icons()
 	if(bound_xeno.stat == DEAD)
 		return
 
-	if(fortified && bound_xeno.health > 0)
+	if(bound_xeno.fortify && bound_xeno.health > 0)
 		bound_xeno.icon_state = "[bound_xeno.mutation_icon_state || bound_xeno.mutation_type] Defender Fortify"
 		return TRUE
-	if(crest_lowered && bound_xeno.health > 0)
+	if(bound_xeno.crest_defense && bound_xeno.health > 0)
 		bound_xeno.icon_state = "[bound_xeno.mutation_icon_state || bound_xeno.mutation_type] Defender Crest"
 		return TRUE
-
-/datum/behavior_delegate/defender_base/on_special_state()
-	if(fortified || crest_lowered)
-		return TRUE
-	return FALSE
-
-/datum/behavior_delegate/defender_base/on_wound_states(severity)
-	if(fortified)
-		return "Defender_fortify_[severity]"
-	if(crest_lowered)
-		return "Defender_crest_[severity]"
-
-/datum/behavior_delegate/defender_base/on_special_backpack_states()
-	if(fortified)
-		return " Fortify"
-	if(crest_lowered)
-		return " Crest"

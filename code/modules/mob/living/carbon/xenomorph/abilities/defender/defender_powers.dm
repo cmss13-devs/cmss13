@@ -3,7 +3,7 @@
 	if (!istype(xeno))
 		return
 
-	if(defender_delegate.fortified)
+	if(xeno.fortify)
 		to_chat(xeno, SPAN_XENOWARNING("You cannot use abilities while fortified."))
 		return
 
@@ -13,9 +13,10 @@
 	if(!action_cooldown_check())
 		return
 
-	if(defender_delegate.crest_lowered == FALSE)
+	xeno.crest_defense = !xeno.crest_defense
+
+	if(xeno.crest_defense)
 		to_chat(xeno, SPAN_XENOWARNING("You lower your crest."))
-		defender_delegate.crest_lowered = TRUE
 		xeno.ability_speed_modifier += speed_debuff
 		xeno.armor_deflection_buff += armor_buff
 		xeno.mob_size = MOB_SIZE_BIG //knockback immune
@@ -23,7 +24,6 @@
 		xeno.update_icons()
 	else
 		to_chat(xeno, SPAN_XENOWARNING("You raise your crest."))
-		defender_delegate.crest_lowered = FALSE
 		xeno.ability_speed_modifier -= speed_debuff
 		xeno.armor_deflection_buff -= armor_buff
 		xeno.mob_size = MOB_SIZE_XENO //no longer knockback immune
@@ -52,7 +52,7 @@
 	if(!check_and_use_plasma_owner())
 		return
 
-	if(defender_delegate.fortified && !defender_delegate.steelcrest_strain)
+	if(fendy.fortify && !fendy.steelcrest)
 		to_chat(fendy, SPAN_XENOWARNING("You cannot use headbutt while fortified."))
 		return
 
@@ -62,14 +62,12 @@
 
 	var/distance = get_dist(fendy, carbone)
 
-	var/max_distance = 3
-	if(defender_delegate.crest_lowered)
-		max_distance = 1
+	var/max_distance = 3 - (fendy.crest_defense * 2)
 
 	if(distance > max_distance)
 		return
 
-	if(defender_delegate.crest_lowered == FALSE)
+	if(!fendy.crest_defense)
 		apply_cooldown()
 		fendy.throw_atom(get_step_towards(carbone, fendy), 3, SPEED_SLOW, fendy)
 	if(!fendy.Adjacent(carbone))
@@ -80,18 +78,12 @@
 	fendy.visible_message(SPAN_XENOWARNING("[fendy] rams [carbone] with its armored crest!"), \
 	SPAN_XENOWARNING("You ram [carbone] with your armored crest!"))
 
-	var/strain_damage = defender_delegate.steelcrest_strain ? 7.5 : 0
-
-	var/crest_damage = defender_delegate.crest_lowered ? -10 : 0
-
 	if(carbone.stat != DEAD && (!(carbone.status_flags & XENO_HOST) || !HAS_TRAIT(carbone, TRAIT_NESTED)) )
-		var/h_damage = fendy.caste.melee_damage_upper + crest_damage + strain_damage
+		var/h_damage = 30 - (fendy.crest_defense * 10) + (fendy.steelcrest * 7.5) //30 if crest up, 20 if down, plus 7.5
 		carbone.apply_armoured_damage(get_xeno_damage_slash(carbone, h_damage), ARMOR_MELEE, BRUTE, "chest", 5)
 
 	var/facing = get_dir(fendy, carbone)
-	var/headbutt_distance = 1
-	if(defender_delegate.crest_lowered || defender_delegate.fortified)
-		headbutt_distance += 2
+	var/headbutt_distance = 1 + (fendy.crest_defense * 2) + (fendy.fortify * 2)
 	var/turf/thrown_turf = get_turf(fendy)
 	var/turf/temp = get_turf(fendy)
 
@@ -117,37 +109,37 @@
 	if (!istype(X))
 		return
 
-	if(!fender.check_state())
+	if(!X.check_state())
 		return
 
 	if (!action_cooldown_check())
 		return
 
-	if(defender_delegate.fortified)
+	if(X.fortify)
 		to_chat(src, SPAN_XENOWARNING("You cannot use tail swipe while fortified."))
 		return
 
-	if(defender_delegate.crest_lowered)
+	if(X.crest_defense)
 		to_chat(src, SPAN_XENOWARNING("You cannot use tail swipe with your crest lowered."))
 		return
 
-	fender.visible_message(SPAN_XENOWARNING("[fender] sweeps its tail in a wide circle!"), \
+	X.visible_message(SPAN_XENOWARNING("[X] sweeps its tail in a wide circle!"), \
 	SPAN_XENOWARNING("You sweep your tail in a wide circle!"))
 
 	if(!check_and_use_plasma_owner())
 		return
 
-	fender.spin_circle()
-	fender.emote("tail")
+	X.spin_circle()
+	X.emote("tail")
 
 	var/sweep_range = 1
 	for(var/mob/living/carbon/H in orange(sweep_range, get_turf(X)))
 		if (!isxeno_human(H) || X.can_not_harm(H)) continue
 		if(H.stat == DEAD) continue
 		if(HAS_TRAIT(H, TRAIT_NESTED)) continue
-		step_away(H, fender, sweep_range, 2)
-		fender.flick_attack_overlay(H, "punch")
-		H.last_damage_data = create_cause_data(fender.caste_type, fender)
+		step_away(H, X, sweep_range, 2)
+		X.flick_attack_overlay(H, "punch")
+		H.last_damage_data = create_cause_data(X.caste_type, X)
 		H.apply_armoured_damage(get_xeno_damage_slash(H, 15), ARMOR_MELEE, BRUTE)
 		shake_camera(H, 2, 1)
 
@@ -167,7 +159,11 @@
 	if (!istype(xeno))
 		return
 
-	if(defender_delegate.crest_lowered)
+	if(xeno.crest_defense && xeno.steelcrest)
+		to_chat(src, SPAN_XENOWARNING("You cannot fortify while your crest is already down!"))
+		return
+
+	if(xeno.crest_defense)
 		to_chat(src, SPAN_XENOWARNING("You cannot use fortify with your crest lowered."))
 		return
 
@@ -179,7 +175,7 @@
 
 	playsound(get_turf(xeno), 'sound/effects/stonedoor_openclose.ogg', 30, 1)
 
-	if(defender_delegate.fortified == FALSE)
+	if(!xeno.fortify)
 		RegisterSignal(owner, COMSIG_MOB_DEATH, PROC_REF(death_check))
 		fortify_switch(xeno, TRUE)
 		if(xeno.selected_ability != src)
@@ -211,50 +207,49 @@
 		return
 
 	if(fortify_state)
-		to_chat(fender, SPAN_XENOWARNING("You tuck yourself into a defensive stance."))
-		if(defender_delegate.steelcrest_strain)
-			fender.armor_deflection_buff += 10
-			fender.armor_explosive_buff += 60
-			fender.ability_speed_modifier += 3
-			fender.damage_modifier -= XENO_DAMAGE_MOD_SMALL
+		to_chat(X, SPAN_XENOWARNING("You tuck yourself into a defensive stance."))
+		if(X.steelcrest)
+			X.armor_deflection_buff += 10
+			X.armor_explosive_buff += 60
+			X.ability_speed_modifier += 3
+			X.damage_modifier -= XENO_DAMAGE_MOD_SMALL
 		else
-			fender.armor_deflection_buff += 30
-			fender.armor_explosive_buff += 60
-			fender.frozen = TRUE
-			fender.anchored = TRUE
-			fender.small_explosives_stun = FALSE
-			fender.update_canmove()
+			X.armor_deflection_buff += 30
+			X.armor_explosive_buff += 60
+			X.frozen = TRUE
+			X.anchored = TRUE
+			X.small_explosives_stun = FALSE
+			X.update_canmove()
 		RegisterSignal(owner, COMSIG_XENO_PRE_CALCULATE_ARMOURED_DAMAGE_PROJECTILE, PROC_REF(check_directional_armor))
-		fender.mob_size = MOB_SIZE_IMMOBILE //knockback immune
-		fender.mob_flags &= ~SQUEEZE_UNDER_VEHICLES
-		fender.update_icons()
-		defender_delegate.fortified = TRUE
+		X.mob_size = MOB_SIZE_IMMOBILE //knockback immune
+		X.mob_flags &= ~SQUEEZE_UNDER_VEHICLES
+		X.update_icons()
+		X.fortify = TRUE
 	else
-		to_chat(fender, SPAN_XENOWARNING("You resume your normal stance."))
-		fender.frozen = FALSE
-		fender.anchored = FALSE
-		if(defender_delegate.steelcrest_strain)
-			fender.armor_deflection_buff -= 10
-			fender.armor_explosive_buff -= 60
-			fender.ability_speed_modifier -= 3
-			fender.damage_modifier += XENO_DAMAGE_MOD_SMALL
+		to_chat(X, SPAN_XENOWARNING("You resume your normal stance."))
+		X.frozen = FALSE
+		X.anchored = FALSE
+		if(X.steelcrest)
+			X.armor_deflection_buff -= 10
+			X.armor_explosive_buff -= 60
+			X.ability_speed_modifier -= 3
+			X.damage_modifier += XENO_DAMAGE_MOD_SMALL
 		else
-			fender.armor_deflection_buff -= 30
-			fender.armor_explosive_buff -= 60
-			fender.small_explosives_stun = TRUE
+			X.armor_deflection_buff -= 30
+			X.armor_explosive_buff -= 60
+			X.small_explosives_stun = TRUE
 		UnregisterSignal(owner, COMSIG_XENO_PRE_CALCULATE_ARMOURED_DAMAGE_PROJECTILE)
-		fender.mob_size = MOB_SIZE_XENO //no longer knockback immune
-		fender.mob_flags |= SQUEEZE_UNDER_VEHICLES
-		fender.update_canmove()
-		fender.update_icons()
-		defender_delegate.fortified = FALSE
+		X.mob_size = MOB_SIZE_XENO //no longer knockback immune
+		X.mob_flags |= SQUEEZE_UNDER_VEHICLES
+		X.update_canmove()
+		X.update_icons()
+		X.fortify = FALSE
 
 /datum/action/xeno_action/activable/fortify/proc/check_directional_armor(mob/living/carbon/xenomorph/defendy, list/damagedata)
 	SIGNAL_HANDLER
-	var/datum/behavior_delegate/defender_base/defender_delegate = defendy.behavior_delegate
 	var/projectile_direction = damagedata["direction"]
 	if(defendy.dir & REVERSE_DIR(projectile_direction))
-		if(defender_delegate.steelcrest_strain)
+		if(defendy.mutation_type == DEFENDER_STEELCREST)
 			damagedata["armor"] += steelcrest_frontal_armor
 		else
 			damagedata["armor"] += frontal_armor

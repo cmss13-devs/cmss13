@@ -36,6 +36,7 @@
 		/obj/item/reagent_container/food/drinks/tea = 3,
 		/obj/item/reagent_container/food/drinks/h_chocolate = 15,
 		)
+	product_type = VENDOR_PRODUCT_TYPE_BEVERAGES
 
 /obj/structure/machinery/vending/coffee/simple
 	name = "Hot Coffee Machine"
@@ -72,6 +73,7 @@
 		/obj/item/reagent_container/food/snacks/wrapped/chunk = 4,
 		/obj/item/reagent_container/food/snacks/wrapped/barcardine = 4,
 	)
+	product_type = VENDOR_PRODUCT_TYPE_FOOD
 
 /obj/structure/machinery/vending/snack/packaged
 	product_slogans = ""
@@ -173,6 +175,7 @@
 		/obj/item/tool/lighter/random = 10,
 		/obj/item/tool/lighter/zippo = 25,
 	)
+	product_type = VENDOR_PRODUCT_TYPE_NICOTINE
 
 /obj/structure/machinery/vending/cigarette/free
 	product_slogans = ""
@@ -425,3 +428,4 @@
 		/obj/item/toy/deck/uno = 15,
 		/obj/item/device/camera = 30,
 	)
+	product_type = VENDOR_PRODUCT_TYPE_RECREATIONAL

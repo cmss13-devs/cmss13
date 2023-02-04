@@ -20,12 +20,16 @@
 /datum/round_event/economy_inflation/setup()
 	. = ..()
 	product_type = pick(ALL_VENDOR_PRODUCT_TYPES)
-	inflation_mult = rand(2, 5) + (rand(0, 9) * 0.1) // decimal. example result: 3.5
+	var/inflation_decimal = (rand(0, 9) * 0.1)
+	inflation_mult = rand(2, 5) + inflation_decimal // example result: 3.5
 	time_to_update = rand(3, 9)
 	startWhen = time_to_update MINUTES
 
 /datum/round_event/economy_inflation/announce()
-	marine_announcement("An encrypted signal from Weyland-Yutani has been recieved notifying us of sudden changes in the UA's economy during cryosleep, due to [get_random_story()], and have requested us to increase the prices of [product_type] products by [get_percentage()]%. This change will come into effect in [time_to_update] minutes.", add_PMCs = FALSE)
+	/* You may be thinking 'Why the fuck would W-Y directly send a broadcast to a in-operation vessel and reveal their location to any unseemlies nearby?'
+	The answer is they don't, it's a signal sent across entire sectors for every UA-affiliated vessel and colony to take note of when it passes by.
+	Colony vendors aren't updated because the colony's network has collapsed. */
+	marine_announcement("An encrypted broadband signal from Weyland-Yutani has been recieved notifying us of sudden changes in the UA's economy during cryosleep, due to [get_random_story()], and have requested us to increase the prices of [product_type] products by [get_percentage()]%. This change will come into effect in [time_to_update] minutes.", add_PMCs = FALSE)
 
 /datum/round_event/economy_inflation/start()
 	for(var/obj/structure/machinery/vending/vending_machine as anything in GLOB.total_vending_machines)
@@ -56,16 +60,17 @@
 		"a succession of hostile takeovers by the Company",
 		"widespread corporate bankruptcy",
 		"pirate takeover of an essential cargo fleet",
-		"a large sector of colonized space going dark for unknown reasons" //XX-121,
+		"a large sector of colonized space going dark for unknown reasons", //XX-121,
 		"withdrawal of government funding in relevant sectors",
-		"a vital Seegson industries space station going dark" // A:I,
+		"a vital Seegson industries space station going dark", // A:I,
 		"several mining colonies defecting to the UPP",
 		"a critical USCM defeat by CLF insurgents in the Tychon's Rift sector",
 		"newly imposed sanctions as a result of corporate investigations",
 		"*garbled static*",
-		"flaring tensions with the Arcturian planet",
-		"a temporary Sol-wide solar flare technological blackout"
+		"flaring tensions with Arcturus",
+		"a Sol-wide solar flare technological blackout"
 		"\[REDACTED\]"
+		"the release of a competitor's product",
 	)
 	return pick(backstories)
 

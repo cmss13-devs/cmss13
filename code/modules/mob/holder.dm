@@ -74,7 +74,7 @@
 	desc = "D'aaawwww"
 
 /obj/item/holder/cat/Jones
-	name = "Jones"
+	name = "\improper Jones"
 	desc = "A tough, old stray whose origin no one seems to know."
 
 /obj/item/holder/cat/blackcat

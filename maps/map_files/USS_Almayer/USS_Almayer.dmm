@@ -28527,7 +28527,11 @@
 	},
 /area/almayer/command/computerlab)
 "cbo" = (
-)
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/hull/lower_hull)
 "cbr" = (
 /turf/open/floor/almayer{
 	dir = 4;
@@ -82311,6 +82315,13 @@
 	tag = "icon-orange"
 	},
 /area/almayer/squads/alpha_bravo_shared)
+"xWo" = (
+/obj/structure/machinery/door/airlock/almayer/maint,
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/squads/req)
 "xWp" = (
 /turf/open/floor/almayer,
 /area/almayer/living/offices/flight)
@@ -127615,7 +127626,7 @@ bdl
 bdl
 bdl
 bdl
-cbo
+xWo
 bdl
 bdl
 bdl

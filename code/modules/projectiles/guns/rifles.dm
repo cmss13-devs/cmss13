@@ -182,8 +182,10 @@
 
 /obj/item/weapon/gun/rifle/nsg23/no_lock
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER|GUN_BURST_ON|GUN_BURST_ONLY
-	starting_attachment_types = list(/obj/item/attachable/scope/mini/nsg23,
-								/obj/item/attachable/attached_gun/flamer) //non-op flamer for normal spawns
+	starting_attachment_types = list(
+		/obj/item/attachable/scope/mini/nsg23,
+		/obj/item/attachable/attached_gun/flamer,//non-op flamer for normal spawns
+	)
 
 /obj/item/weapon/gun/rifle/nsg23/no_lock/stripped
 	starting_attachment_types = list() //starts with the stock anyways due to handle_starting_attachment()
@@ -257,16 +259,16 @@
 /obj/item/weapon/gun/rifle/m41a/corporate/detainer //for chem ert
 	current_mag = /obj/item/ammo_magazine/rifle/ap
 	random_spawn_rail = list(
-							/obj/item/attachable/reddot,
-							/obj/item/attachable/reflex,
-							/obj/item/attachable/flashlight,
-							/obj/item/attachable/magnetic_harness,
-							)
+		/obj/item/attachable/reddot,
+		/obj/item/attachable/reflex,
+		/obj/item/attachable/flashlight,
+		/obj/item/attachable/magnetic_harness,
+	)
 	random_spawn_muzzle = list(
-							/obj/item/attachable/suppressor,
-							/obj/item/attachable/bayonet,
-							/obj/item/attachable/extended_barrel,
-								)
+		/obj/item/attachable/suppressor,
+		/obj/item/attachable/bayonet,
+		/obj/item/attachable/extended_barrel,
+	)
 
 	starting_attachment_types = list(/obj/item/attachable/stock/rifle/collapsible, /obj/item/attachable/attached_gun/flamer/advanced)
 

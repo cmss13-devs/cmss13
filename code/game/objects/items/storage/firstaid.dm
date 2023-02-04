@@ -159,7 +159,8 @@
 	item_state = "firstaid-advanced"
 	cant_hold = list(
 		/obj/item/ammo_magazine,
-		/obj/item/explosive/grenade)
+		/obj/item/explosive/grenade
+	)
 
 /obj/item/storage/firstaid/synth/fill_preset_inventory()
 	new /obj/item/stack/nanopaste(src)

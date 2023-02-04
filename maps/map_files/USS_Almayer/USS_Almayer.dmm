@@ -28527,17 +28527,7 @@
 	},
 /area/almayer/command/computerlab)
 "cbo" = (
-/obj/structure/machinery/door/airlock/almayer/maint{
-	req_access = null;
-	req_one_access = null;
-	req_one_access_txt = "2;21"
-	},
-/obj/structure/machinery/door/firedoor/border_only/almayer,
-/turf/open/floor/almayer{
-	icon_state = "test_floor4";
-	tag = "icon-test_floor4"
-	},
-/area/almayer/hull/lower_hull)
+)
 "cbr" = (
 /turf/open/floor/almayer{
 	dir = 4;
@@ -127625,15 +127615,15 @@ bdl
 bdl
 bdl
 bdl
-muz
+cbo
 bdl
 bdl
 bdl
 bdl
-evS
+cbo
 gRn
-evS
-evS
+cbo
+cbo
 gRn
 bdl
 bdl

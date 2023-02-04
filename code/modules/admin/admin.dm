@@ -45,7 +45,7 @@
 
 		to_chat(possible_sea, msg)
 		if(possible_sea?.client.prefs?.toggles_sound & SOUND_ADMINHELP && !nosound)
-			sound_to(C, 'sound/effects/mhelp.ogg')
+			sound_to(possible_sea, 'sound/effects/mhelp.ogg')
 
 
 /proc/msg_admin_ff(var/text, var/alive = TRUE)

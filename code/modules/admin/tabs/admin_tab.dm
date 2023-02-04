@@ -618,6 +618,7 @@
 		return
 
 	var/mob/camera/imaginary_friend/IF = new(get_turf(L), L)
+	IF.aghosted_original_mob = usr.mind?.original
 	usr.mind.transfer_to(IF)
 
 	log_admin("[key_name(IF)] started being imaginary friend of [key_name(L)].")

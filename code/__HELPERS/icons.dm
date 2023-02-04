@@ -481,7 +481,7 @@ world
 			else // 'I' is an /image
 				var/image_has_icon = I.icon
 				if(image_has_icon)
-					GENERATE_FLAT_IMAGE_ICON(add, I, I.icon, I.icon_state, I.dir)
+					GENERATE_FLAT_IMAGE_ICON(add, I, I.icon, I.icon_state, base_icon_dir)
 			if(!add)
 				continue
 			// Find the new dimensions of the flat icon to fit the added overlay

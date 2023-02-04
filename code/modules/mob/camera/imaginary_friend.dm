@@ -12,7 +12,9 @@
 	move_on_shuttle = TRUE
 	move_delay = 0
 
-	var/icon/human_image
+	var/aghosted_original_mob
+
+	var/icon/friend_image
 	var/image/current_image
 	var/hidden = FALSE
 	var/mob/living/owner
@@ -27,36 +29,56 @@
 /mob/camera/imaginary_friend/Login()
 	. = ..()
 	setup_friend()
-	Show()
-
+	show()
 
 /mob/camera/imaginary_friend/Logout()
 	. = ..()
-	deactivate()
-
+	if(!QDELETED(src))
+		deactivate()
 
 /mob/camera/imaginary_friend/Initialize(mapload, mob/owner)
 	. = ..()
 
 	src.owner = owner
+	owner.play_screen_text("An imaginary friend has appeared to help you! <br> The imaginary friend is an out of character aid for mentors to assist you. If someone asks you about it in character you can explain it as remembering something from the past, etc, but you are not insane.")
+
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
 	join = new
 	join.give_to(src)
 	hide = new
 	hide.give_to(src)
 
-
+/// gives the friend the correct name, gender and sets up their appearance
 /mob/camera/imaginary_friend/proc/setup_friend()
 	name = client.prefs.real_name
 	real_name = name
 	gender = client.prefs.gender
-	var/outfit_choice = tgui_input_list(usr, "Choose your appearance:", "[src]", outfit_choices)
+	var/available_appearances = outfit_choices + "Drone"
+	var/outfit_choice = tgui_input_list(usr, "Choose your appearance:", "[src]", available_appearances)
 	if(!outfit_choice)
 		outfit_choice = outfit_choices[1]
-	human_image = get_flat_human_icon(null, outfit_choice, client.prefs)
+	if(outfit_choice == "Drone")
+		friend_image = get_xeno_appearance()
+		name = "Helpful Drone"
+		return
+	friend_image = get_flat_human_icon(null, outfit_choice, client.prefs)
 
+/// gets a directional icon for the xeno appearance
+/mob/camera/imaginary_friend/proc/get_xeno_appearance()
+	var/mob/living/carbon/xenomorph/drone/dummy = new
+	dummy.overlays.Cut()
+	dummy.vis_contents = null
+	var/icon/out_icon = icon('icons/effects/effects.dmi', "nothing")
+	for(var/direction in GLOB.cardinals)
+		dummy.setDir(direction)
+		var/icon/partial = getFlatIcon(dummy)
+		out_icon.Insert(partial, dir = direction)
+	qdel(dummy)
+	return out_icon
 
-/mob/camera/imaginary_friend/proc/Show()
+/// makes the friend update their icon and appear to themselves and, if not hidden, the owner
+/mob/camera/imaginary_friend/proc/show()
 	if(!client)
 		return
 
@@ -64,7 +86,7 @@
 
 	client.images.Remove(current_image)
 
-	current_image = image(human_image, src, layer = MOB_LAYER, dir = dir)
+	current_image = image(friend_image, src, layer = MOB_LAYER, dir = dir)
 	current_image.override = TRUE
 	current_image.name = name
 	if(hidden)
@@ -77,9 +99,9 @@
 
 
 /mob/camera/imaginary_friend/Destroy()
-	owner.client?.images.Remove(human_image)
+	owner.client?.images.Remove(friend_image)
 
-	client?.images.Remove(human_image)
+	client?.images.Remove(friend_image)
 
 	return ..()
 
@@ -101,15 +123,21 @@
 	set category = "Imaginary Friend"
 	set name = "Change Appearance"
 
-	var/outfit_choice = tgui_input_list(usr, "Choose your appearance:", "[src]", outfit_choices)
+	var/available_appearances = outfit_choices + "Drone"
+	var/outfit_choice = tgui_input_list(usr, "Choose your appearance:", "[src]", available_appearances)
 	if(!outfit_choice)
+		outfit_choice = outfit_choices[1]
+	if(outfit_choice == "Drone")
+		friend_image = get_xeno_appearance()
+		name = "Helpful Drone"
 		return
-	human_image = get_flat_human_icon(null, outfit_choice, client.prefs)
-	Show()
+	name = client.prefs.real_name
+	friend_image = get_flat_human_icon(null, outfit_choice, client.prefs)
+	show()
 
-/mob/camera/imaginary_friend/verb/toggle_human_mobhud()
+/mob/camera/imaginary_friend/verb/toggle_hud()
 	set category = "Imaginary Friend"
-	set name = "Toggle Human Status HUD"
+	set name = "Toggle HUD"
 
 	var/hud_choice = tgui_input_list(usr, "Choose a HUD to toggle", "Toggle HUD prefs", list("Medical HUD", "Security HUD", "Squad HUD", "Xeno Status HUD", "Faction UPP HUD", "Faction Wey-Yu HUD", "Faction RESS HUD", "Faction CLF HUD"))
 	var/datum/mob_hud/H
@@ -133,10 +161,10 @@
 
 	if(hud_choice in current_huds)
 		H.remove_hud_from(src)
-		current_huds += hud_choice
+		current_huds -= hud_choice
 	else
 		H.add_hud_to(src)
-		current_huds -= hud_choice
+		current_huds += hud_choice
 
 /mob/camera/imaginary_friend/say(message, bubble_type, list/spans = list(), sanitize = TRUE, datum/language/language, ignore_spam = FALSE, forced)
 	if(!message)
@@ -152,6 +180,7 @@
 
 	friend_talk(message)
 
+/// shows langchat and speech text to the owner and friend, and sends speech text to dchat
 /mob/camera/imaginary_friend/proc/friend_talk(message)
 	message = capitalize(trim(copytext_char(sanitize(message), 1, MAX_MESSAGE_LEN)))
 
@@ -184,7 +213,6 @@
 		var/link = "<a href='byond://?src=\ref[M];track=\ref[src]'>F</a>"
 		to_chat(M, "[link] [dead_rendered]")
 
-
 /mob/camera/imaginary_friend/Move(newloc, Dir = 0)
 	if(world.time < move_delay)
 		return FALSE
@@ -197,13 +225,12 @@
 	forceMove(newloc)
 	move_delay = world.time + 1
 
-
 /mob/camera/imaginary_friend/forceMove(atom/destination)
 	dir = get_dir(get_turf(src), destination)
 	loc = destination
-	Show()
+	show()
 
-
+/// returns the friend to the owner
 /mob/camera/imaginary_friend/proc/recall()
 	if(QDELETED(owner))
 		deactivate()
@@ -212,17 +239,22 @@
 		return FALSE
 	forceMove(owner)
 
-
+/// logs the imaginary friend's removal, ghosts them and cleans up the friend
 /mob/camera/imaginary_friend/proc/deactivate()
 	log_admin("[key_name(src)] stopped being imaginary friend of [key_name(owner)].")
 	message_staff("[key_name_admin(src)] stopped being imaginary friend of [key_name_admin(owner)].")
-	ghostize()
+	ghostize(TRUE, TRUE)
 	qdel(src)
 
+/mob/camera/imaginary_friend/ghostize(can_reenter_corpse = FALSE, aghosted = FALSE)
+	if(QDELING(src))
+		return
 
-/mob/camera/imaginary_friend/ghostize(can_reenter_corpse = TRUE, aghosted = FALSE)
-	icon = human_image
-	return ..()
+	icon = friend_image
+	mouse_opacity = MOUSE_OPACITY_ICON
+	var/mob/ghost = ..()
+	ghost.mind.original = aghosted_original_mob
+	return ghost
 
 /datum/action/innate/imaginary_join
 	name = "Join"
@@ -234,7 +266,7 @@
 
 
 /datum/action/innate/imaginary_hide
-	name = "Hide"
+	name = "hide"
 	action_icon_state = "hidemob"
 
 /datum/action/innate/imaginary_hide/action_activate()
@@ -242,13 +274,13 @@
 	var/mob/camera/imaginary_friend/friend = owner
 	if(friend.hidden)
 		friend.hidden = FALSE
-		friend.Show()
+		friend.show()
 		name = "Hide"
 		action_icon_state = "hidemob"
 		update_button_icon()
 	else
 		friend.hidden = TRUE
-		friend.Show()
+		friend.show()
 		name = "Show"
 		action_icon_state = "unhidemob"
 		update_button_icon()

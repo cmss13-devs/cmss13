@@ -41,7 +41,7 @@ SUBSYSTEM_DEF(minimaps)
 /datum/controller/subsystem/minimaps/Initialize(start_timeofday)
 	for(var/level=1 to length(SSmapping.z_list))
 		minimaps_by_z["[level]"] = new /datum/hud_displays
-		if(!is_mainship_level(level) && !is_ground_level(level) && !is_admin_level(level))
+		if(!is_ground_level(level))
 			continue
 		var/icon/icon_gen = new('icons/ui_icons/minimap.dmi') //480x480 blank icon template for drawing on the map
 		for(var/xval = 1 to world.maxx)

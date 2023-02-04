@@ -1464,7 +1464,7 @@
 	new /obj/item/ammo_magazine/smartgun(src)
 
 /obj/item/storage/belt/gun/smartgunner/pmc
-	name = "\improper M802 pattern 'Terminator' smartgunner sidearm rig"
+	name = "\improper M802 pattern 'Dirty' smartgunner sidearm rig"
 	desc = "A modification of the standard M802 load-bearing equipment, designed to carry smartgun ammunition and a sidearm."
 	can_hold = list(
 		/obj/item/device/flashlight/flare,

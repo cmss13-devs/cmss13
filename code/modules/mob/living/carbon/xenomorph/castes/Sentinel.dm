@@ -26,7 +26,7 @@
 
 	behavior_delegate_type = /datum/behavior_delegate/sentinel_base
 
-/mob/living/carbon/Xenomorph/Sentinel
+/mob/living/carbon/xenomorph/sentinel
 	caste_type = XENO_CASTE_SENTINEL
 	name = XENO_CASTE_SENTINEL
 	desc = "A slithery, spitting kind of alien."
@@ -47,7 +47,7 @@
 		/datum/action/xeno_action/onclick/paralyzing_slash, //third macro
 	)
 	inherent_verbs = list(
-		/mob/living/carbon/Xenomorph/proc/vent_crawl,
+		/mob/living/carbon/xenomorph/proc/vent_crawl,
 	)
 	mutation_type = SENTINEL_NORMAL
 
@@ -66,7 +66,7 @@
 	if (!next_slash_buffed)
 		return original_damage
 
-	if (!isXenoOrHuman(carbon_target))
+	if (!isxeno_human(carbon_target))
 		return original_damage
 
 	if(skillcheck(carbon_target, SKILL_ENDURANCE, SKILL_ENDURANCE_MAX ))
@@ -84,7 +84,7 @@
 		to_chat(carbon_target, SPAN_XENOHIGHDANGER("You feel like you're about to fall over, as [bound_xeno] slashes you with its neurotoxin coated claws!"))
 		carbon_target.sway_jitter(times = 3, steps = round(NEURO_TOUCH_DELAY/3))
 		carbon_target.apply_effect(4, DAZE)
-		addtimer(CALLBACK(src, .proc/paralyzing_slash, carbon_target), NEURO_TOUCH_DELAY)
+		addtimer(CALLBACK(src, PROC_REF(paralyzing_slash), carbon_target), NEURO_TOUCH_DELAY)
 		next_slash_buffed = FALSE
 	if(!next_slash_buffed)
 		var/datum/action/xeno_action/onclick/paralyzing_slash/ability = get_xeno_action_by_type(bound_xeno, /datum/action/xeno_action/onclick/paralyzing_slash)

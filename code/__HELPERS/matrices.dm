@@ -234,7 +234,7 @@ if you want variations of the same colour, color_matrix_recolor_red() is simpler
 /**Creates a matrix to re-paint a sprite, replacing shades of red with corresponding shades of a new colour. In the base sprite, Hue must always be pure red.
 Saturation and Lightness can be anything. Arg is a hex string for a colour. Proc is by Lummox JR, www.byond.com/forum/post/2209545
 color_matrix_recolor_rgb is more complex, but gives more precise control over the palette, at least if using 3 or fewer colours.**/
-proc/color_matrix_recolor_red(new_color)
+/proc/color_matrix_recolor_red(new_color)
 	var/image/I = new
 	var/list/M
 	// create the matrix via short form

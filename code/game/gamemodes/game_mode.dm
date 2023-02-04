@@ -13,7 +13,7 @@
 
 var/global/datum/entity/statistic/round/round_statistics
 var/global/list/datum/entity/player_entity/player_entities = list()
-var/global/cas_tracking_id_increment = 0	//this var used to assign unique tracking_ids to tacbinos and signal flares
+var/global/cas_tracking_id_increment = 0 //this var used to assign unique tracking_ids to tacbinos and signal flares
 /datum/game_mode
 	var/name = "invalid"
 	var/config_tag = null
@@ -78,11 +78,11 @@ var/global/cas_tracking_id_increment = 0	//this var used to assign unique tracki
 	return 1
 
 ///Triggered partway through the first drop, based on DROPSHIP_DROP_MSG_DELAY. Marines are underway but haven't yet landed.
-/datum/game_mode/proc/ds_first_drop(var/datum/shuttle/ferry/marine/m_shuttle)
+/datum/game_mode/proc/ds_first_drop(datum/shuttle/ferry/marine/m_shuttle)
 	return
 
 ///Triggered when the dropship first lands.
-/datum/game_mode/proc/ds_first_landed(var/datum/shuttle/ferry/marine/m_shuttle)
+/datum/game_mode/proc/ds_first_landed(datum/shuttle/ferry/marine/m_shuttle)
 	SHOULD_CALL_PARENT(TRUE)
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_DS_FIRST_LANDED)
 	return
@@ -99,7 +99,7 @@ var/global/cas_tracking_id_increment = 0	//this var used to assign unique tracki
 	for(var/obj/effect/landmark/structure_spawner/SS in GLOB.structure_spawners)
 		SS.post_setup()
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_MODE_POSTSETUP)
-	addtimer(CALLBACK(GLOBAL_PROC, /proc/display_roundstart_logout_report), ROUNDSTART_LOGOUT_REPORT_TIME)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(display_roundstart_logout_report)), ROUNDSTART_LOGOUT_REPORT_TIME)
 
 	for(var/mob/new_player/np in GLOB.new_player_list)
 		np.new_player_panel_proc()
@@ -120,7 +120,7 @@ var/global/cas_tracking_id_increment = 0	//this var used to assign unique tracki
 	if(EvacuationAuthority.dest_status == NUKE_EXPLOSION_FINISHED || EvacuationAuthority.dest_status == NUKE_EXPLOSION_GROUND_FINISHED )
 		return TRUE
 
-/datum/game_mode/proc/cleanup()	//This is called when the round has ended but not the game, if any cleanup would be necessary in that case.
+/datum/game_mode/proc/cleanup() //This is called when the round has ended but not the game, if any cleanup would be necessary in that case.
 	return
 
 /datum/game_mode/proc/announce_ending()
@@ -174,7 +174,7 @@ var/global/cas_tracking_id_increment = 0	//this var used to assign unique tracki
 			else
 				record_playtime(M.client.player_data, M.job, type)
 
-/datum/game_mode/proc/show_end_statistics(var/icon_state)
+/datum/game_mode/proc/show_end_statistics(icon_state)
 	round_statistics.update_panel_data()
 	for(var/mob/M in GLOB.player_list)
 		if(M.client)
@@ -183,7 +183,7 @@ var/global/cas_tracking_id_increment = 0	//this var used to assign unique tracki
 /datum/game_mode/proc/check_win() //universal trigger to be called at mob death, nuke explosion, etc. To be called from everywhere.
 	return 0
 
-/datum/game_mode/proc/get_players_for_role(var/role, override_jobbans = 0)
+/datum/game_mode/proc/get_players_for_role(role, override_jobbans = 0)
 	var/list/players = list()
 	var/list/candidates = list()
 
@@ -210,7 +210,7 @@ var/global/cas_tracking_id_increment = 0	//this var used to assign unique tracki
 			candidates += player.mind
 			players -= player
 
-	return candidates		//Returns:	The number of people who had the antagonist role set to yes
+	return candidates //Returns: The number of people who had the antagonist role set to yes
 
 
 ///////////////////////////////////
@@ -265,7 +265,7 @@ var/global/cas_tracking_id_increment = 0	//this var used to assign unique tracki
 //////////////////////////
 //Reports player logouts//
 //////////////////////////
-proc/display_roundstart_logout_report()
+/proc/display_roundstart_logout_report()
 	var/msg = FONT_SIZE_LARGE("<b>Roundstart logout report\n\n")
 	for(var/i in GLOB.living_mob_list)
 		var/mob/living/L = i
@@ -281,7 +281,7 @@ proc/display_roundstart_logout_report()
 
 
 		if(L.ckey && L.client)
-			if(L.client.inactivity >= (ROUNDSTART_LOGOUT_REPORT_TIME * 0.5))	//Connected, but inactive (alt+tabbed or something)
+			if(L.client.inactivity >= (ROUNDSTART_LOGOUT_REPORT_TIME * 0.5)) //Connected, but inactive (alt+tabbed or something)
 				msg += "<b>[key_name(L)]</b>, the [L.job] (<font color='#ffcc00'><b>Connected, Inactive</b></font>)\n"
 				continue //AFK client
 			if(L.stat)
@@ -311,7 +311,7 @@ proc/display_roundstart_logout_report()
 			to_chat_spaced(M, html = msg)
 
 //Announces objectives/generic antag text.
-/proc/show_generic_antag_text(var/datum/mind/player)
+/proc/show_generic_antag_text(datum/mind/player)
 	if(player.current)
 		player.current << \
 		"You are an antagonist! <font color=blue>Within the rules,</font> \

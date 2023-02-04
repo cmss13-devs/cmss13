@@ -1,9 +1,9 @@
 /* Tables and Racks
  * Contains:
- *		Tables
- *		Wooden tables
- *		Reinforced tables
- *		Racks
+ * Tables
+ * Wooden tables
+ * Reinforced tables
+ * Racks
  */
 
 /*
@@ -14,10 +14,10 @@
 	desc = "A square metal surface resting on four legs. Useful to put stuff on. Can be flipped in emergencies to act as cover."
 	icon = 'icons/obj/structures/tables.dmi'
 	icon_state = "table"
-	density = 1
-	anchored = 1.0
+	density = TRUE
+	anchored = TRUE
 	layer = TABLE_LAYER
-	throwpass = 1	//You can throw objects over this, despite it's density.")
+	throwpass = 1 //You can throw objects over this, despite it's density.")
 	climbable = 1
 	breakable = 1
 	var/parts = /obj/item/frame/table
@@ -48,7 +48,7 @@
 	update_adjacent()
 	update_icon()
 
-/obj/structure/surface/table/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/obj/structure/surface/table/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_can_pass_all = PASS_OVER|PASS_AROUND|PASS_TYPE_CRAWLER|PASS_CRUSHER_CHARGE
@@ -74,8 +74,8 @@
 
 /obj/structure/surface/table/Crossed(atom/movable/O)
 	..()
-	if(istype(O,/mob/living/carbon/Xenomorph/Ravager) || istype(O,/mob/living/carbon/Xenomorph/Crusher))
-		var/mob/living/carbon/Xenomorph/M = O
+	if(istype(O,/mob/living/carbon/xenomorph/ravager) || istype(O,/mob/living/carbon/xenomorph/crusher))
+		var/mob/living/carbon/xenomorph/M = O
 		if(!M.stat) //No dead xenos jumpin on the bed~
 			visible_message(SPAN_DANGER("[O] plows straight through [src]!"))
 			deconstruct()
@@ -129,11 +129,11 @@
 				if(direction < 5)
 					dir_sum += direction
 				else
-					if(direction == 5)	//This permits the use of all table directions. (Set up so clockwise around the central table is a higher value, from north)
+					if(direction == 5) //This permits the use of all table directions. (Set up so clockwise around the central table is a higher value, from north)
 						dir_sum += 16
 					if(direction == 6)
 						dir_sum += 32
-					if(direction == 8)	//Aherp and Aderp.  Jezes I am stupid.  -- SkyMarshal
+					if(direction == 8) //Aherp and Aderp.  Jezes I am stupid.  -- SkyMarshal
 						dir_sum += 8
 					if(direction == 10)
 						dir_sum += 64
@@ -158,7 +158,7 @@
 		dir_sum %= 16
 	if((dir_sum%16) in list(13, 14, 7, 11)) //Three-way intersection
 		table_type = 5 //full table as three-way intersections are not sprited, would require 64 sprites to handle all combinations.  TOO BAD -- SkyMarshal
-		switch(dir_sum%16)	//Begin computation of the special type tables.  --SkyMarshal
+		switch(dir_sum%16) //Begin computation of the special type tables.  --SkyMarshal
 			if(7)
 				if(dir_sum == 23)
 					table_type = 6
@@ -261,13 +261,13 @@
 /obj/structure/surface/table/attackby(obj/item/W, mob/user, click_data)
 	if(!W) return
 	if(istype(W, /obj/item/grab) && get_dist(src, user) <= 1)
-		if(isXeno(user)) return
+		if(isxeno(user)) return
 		var/obj/item/grab/G = W
 		if(istype(G.grabbed_thing, /mob/living))
 			var/mob/living/M = G.grabbed_thing
 			if(user.a_intent == INTENT_HARM)
 				if(user.grab_level > GRAB_AGGRESSIVE)
-					if (prob(15))	M.apply_effect(5, WEAKEN)
+					if (prob(15)) M.apply_effect(5, WEAKEN)
 					M.apply_damage(8, def_zone = "head")
 					user.visible_message(SPAN_DANGER("[user] slams [M]'s face against [src]!"),
 					SPAN_DANGER("You slam [M]'s face against [src]!"))
@@ -305,6 +305,11 @@
 			to_chat(user, SPAN_WARNING("You slice at the table, but only claw it up a little."))
 		return
 
+	if (istype(W, /obj/item/device/sentry_computer))
+		var/obj/item/device/sentry_computer/computer = W
+		computer.setup(src)
+		return
+
 	if(istype(W, /obj/item/explosive/grenade))
 		var/obj/item/explosive/grenade/detonating_grenade = W
 		if(detonating_grenade.active)
@@ -316,7 +321,7 @@
 		return
 	..()
 
-/obj/structure/surface/table/proc/straight_table_check(var/direction)
+/obj/structure/surface/table/proc/straight_table_check(direction)
 	var/obj/structure/surface/table/T
 	for(var/angle in list(-90, 90))
 		T = locate() in get_step(loc, turn(direction, angle))
@@ -357,7 +362,7 @@
 
 	flip_cooldown = world.time + 50
 
-/obj/structure/surface/table/proc/unflipping_check(var/direction)
+/obj/structure/surface/table/proc/unflipping_check(direction)
 	if(world.time < flip_cooldown)
 		return 0
 
@@ -397,7 +402,7 @@
 
 	flip_cooldown = world.time + 50
 
-/obj/structure/surface/table/proc/flip(var/direction)
+/obj/structure/surface/table/proc/flip(direction)
 	if(world.time < flip_cooldown)
 		return 0
 
@@ -479,7 +484,7 @@
 	parts = /obj/item/frame/table/wood/fancy
 	table_prefix = "fwood"
 
-/obj/structure/surface/table/woodentable/fancy/flip(var/direction)
+/obj/structure/surface/table/woodentable/fancy/flip(direction)
 	return 0 //That is mahogany!
 /*
  * Gambling tables
@@ -505,7 +510,7 @@
 	table_prefix = "reinf"
 	parts = /obj/item/frame/table/reinforced
 
-/obj/structure/surface/table/reinforced/flip(var/direction)
+/obj/structure/surface/table/reinforced/flip(direction)
 	return 0 //No, just no. It's a full desk, you can't flip that
 
 /obj/structure/surface/table/reinforced/attackby(obj/item/W as obj, mob/user as mob)
@@ -553,13 +558,14 @@
 	tiles_with = list(
 		/obj/structure/window/framed/almayer,
 		/obj/structure/machinery/door/airlock,
-		/turf/closed/wall)
+		/turf/closed/wall,
+	)
 
 /obj/structure/surface/table/reinforced/almayer_blend/north
 	icon_state = "reqNtable"
 	table_prefix = "reqN"
 
-/obj/structure/surface/table/reinforced/almayer_blend/flip(var/direction)
+/obj/structure/surface/table/reinforced/almayer_blend/flip(direction)
 	return 0
 
 /obj/structure/surface/table/reinforced/almayer_B
@@ -567,7 +573,7 @@
 	icon_state = "req_table" //this one actually auto-tiles, but has no flipped state!
 	table_prefix = "req_"
 
-/obj/structure/surface/table/reinforced/almayer_B/flip(var/direction)
+/obj/structure/surface/table/reinforced/almayer_B/flip(direction)
 	return 0
 
 /obj/structure/surface/table/reinforced/black
@@ -576,7 +582,7 @@
 	icon_state = "blacktable" //this one actually auto-tiles, but has no flipped state!
 	table_prefix = "black"
 
-/obj/structure/surface/table/reinforced/black/flip(var/direction)
+/obj/structure/surface/table/reinforced/black/flip(direction)
 	return FALSE
 
 /obj/structure/surface/table/almayer
@@ -598,17 +604,17 @@
 	desc = "A bunch of metal shelves stacked on top of eachother. Excellent for storage purposes, less so as cover."
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "rack"
-	density = 1
+	density = TRUE
 	layer = TABLE_LAYER
-	anchored = 1.0
-	throwpass = 1	//You can throw objects over this, despite it's density.
+	anchored = TRUE
+	throwpass = 1 //You can throw objects over this, despite it's density.
 	breakable = 1
 	climbable = 1
 	health = 100
 	var/parts = /obj/item/frame/rack
 	debris = list(/obj/item/frame/rack)
 
-/obj/structure/surface/rack/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/obj/structure/surface/rack/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_can_pass_all = PASS_OVER|PASS_AROUND|PASS_UNDER|PASS_THROUGH|PASS_CRUSHER_CHARGE
@@ -640,8 +646,8 @@
 
 /obj/structure/surface/rack/Crossed(atom/movable/O)
 	..()
-	if(istype(O,/mob/living/carbon/Xenomorph/Ravager) || istype(O,/mob/living/carbon/Xenomorph/Crusher))
-		var/mob/living/carbon/Xenomorph/M = O
+	if(istype(O,/mob/living/carbon/xenomorph/ravager) || istype(O,/mob/living/carbon/xenomorph/crusher))
+		var/mob/living/carbon/xenomorph/M = O
 		if(!M.stat) //No dead xenos jumpin on the bed~
 			visible_message(SPAN_DANGER("[O] plows straight through [src]!"))
 			deconstruct()
@@ -652,7 +658,7 @@
 			new parts(loc)
 	else
 		new /obj/item/stack/sheet/metal(loc)
-	density = 0
+	density = FALSE
 	return ..()
 
 /obj/structure/surface/rack/ex_act(severity, direction)

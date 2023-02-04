@@ -626,7 +626,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/station/transit_hub)
 "aqS" = (
-/obj/item/explosive/grenade/HE/frag,
+/obj/item/explosive/grenade/high_explosive/frag,
 /turf/open/floor/prison{
 	dir = 4;
 	icon_state = "darkyellowfull2";
@@ -1124,11 +1124,11 @@
 	},
 /area/fiorina/station/security)
 "aCV" = (
-/obj/item/explosive/grenade/HE/m15{
+/obj/item/explosive/grenade/high_explosive/m15{
 	pixel_x = -9;
 	pixel_y = -8
 	},
-/obj/item/explosive/grenade/HE/frag{
+/obj/item/explosive/grenade/high_explosive/frag{
 	pixel_x = 6;
 	pixel_y = 3
 	},
@@ -2281,7 +2281,7 @@
 	icon_state = "xgib4";
 	tag = "icon-xgib4"
 	},
-/obj/item/explosive/grenade/HE/m15,
+/obj/item/explosive/grenade/high_explosive/m15,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/transit_hub)
 "bhu" = (
@@ -2799,7 +2799,7 @@
 /area/fiorina/station/power_ring)
 "bAb" = (
 /obj/structure/surface/rack,
-/obj/item/explosive/grenade/HE/frag,
+/obj/item/explosive/grenade/high_explosive/frag,
 /turf/open/floor/prison{
 	icon_state = "floor_plate";
 	tag = "icon-floor_plate"
@@ -6073,7 +6073,7 @@
 	icon_state = "xgib4";
 	tag = "icon-xgib4"
 	},
-/obj/item/explosive/grenade/HE/m15,
+/obj/item/explosive/grenade/high_explosive/m15,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/chapel)
 "dyM" = (
@@ -6972,7 +6972,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/station/medbay)
 "ecF" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited{
 	pixel_y = 32
 	},
 /turf/open/floor/prison{
@@ -13076,7 +13076,7 @@
 	icon_state = "open_science";
 	opened = 1
 	},
-/obj/item/organ/xenos/acidgland,
+/obj/item/organ/lungs,
 /obj/structure/machinery/light/double/blue{
 	dir = 1;
 	pixel_y = 21
@@ -16225,7 +16225,7 @@
 /turf/open/floor/plating/prison,
 /area/shuttle/drop1/prison_v3)
 "jFN" = (
-/obj/item/explosive/grenade/HE/m15,
+/obj/item/explosive/grenade/high_explosive/m15,
 /obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/prison{
 	icon_state = "panelscorched"
@@ -16964,7 +16964,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/maintenance)
 "kbb" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med,
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited,
 /turf/closed/wall/r_wall/prison_unmeltable,
 /area/fiorina/tumor/aux_engi)
 "kbg" = (
@@ -17701,7 +17701,7 @@
 	icon_state = "open_science";
 	opened = 1
 	},
-/obj/item/organ/xenos/plasmavessel,
+/obj/item/organ/eyes,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/prison,
 /area/fiorina/station/medbay)
@@ -23125,7 +23125,7 @@
 	},
 /area/fiorina/tumor/civres)
 "nEy" = (
-/obj/item/explosive/grenade/HE/frag,
+/obj/item/explosive/grenade/high_explosive/frag,
 /obj/structure/machinery/light/double/blue{
 	dir = 1;
 	pixel_y = 21
@@ -23296,7 +23296,7 @@
 	},
 /area/fiorina/tumor/aux_engi)
 "nIy" = (
-/obj/item/explosive/grenade/HE/frag,
+/obj/item/explosive/grenade/high_explosive/frag,
 /turf/open/floor/prison{
 	icon_state = "redfull"
 	},
@@ -23475,7 +23475,7 @@
 	},
 /area/fiorina/tumor/ice_lab)
 "nQq" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med,
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited,
 /turf/closed/wall/prison,
 /area/fiorina/station/medbay)
 "nQN" = (
@@ -28065,7 +28065,7 @@
 	},
 /area/fiorina/lz/near_lzI)
 "qHG" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited{
 	pixel_y = 25
 	},
 /turf/open/floor/plating/plating_catwalk,
@@ -28859,7 +28859,7 @@
 	},
 /area/fiorina/station/security)
 "rfd" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med,
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited,
 /turf/closed/wall/prison,
 /area/fiorina/tumor/ice_lab)
 "rfo" = (
@@ -33454,7 +33454,7 @@
 	},
 /area/fiorina/station/lowsec)
 "tUS" = (
-/obj/item/explosive/grenade/HE/frag,
+/obj/item/explosive/grenade/high_explosive/frag,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/medbay)
 "tVt" = (
@@ -34356,7 +34356,7 @@
 /obj/effect/decal/cleanable/blood/splatter{
 	icon_state = "gibup1"
 	},
-/obj/item/explosive/grenade/HE/frag,
+/obj/item/explosive/grenade/high_explosive/frag,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/medbay)
 "uzd" = (
@@ -36711,7 +36711,7 @@
 /area/fiorina/station/civres_blue)
 "vVu" = (
 /obj/structure/surface/rack,
-/obj/item/ammo_box/magazine/smg/nailgun,
+/obj/item/ammo_box/magazine/nailgun,
 /turf/open/floor/prison{
 	icon_state = "darkbrownfull2";
 	tag = "icon-darkbrownfull2"
@@ -39007,7 +39007,7 @@
 	},
 /area/fiorina/station/research_cells)
 "xqD" = (
-/obj/item/explosive/grenade/HE/frag,
+/obj/item/explosive/grenade/high_explosive/frag,
 /turf/open/floor/prison,
 /area/fiorina/station/security)
 "xqG" = (

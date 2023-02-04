@@ -242,7 +242,7 @@
 	name = "white autoinjector"
 	desc = "You know what they say, don't jab yourself with suspicious syringes."
 	maptext_label = "??"
-	
+
 /obj/item/reagent_container/hypospray/autoinjector/yautja
 	name = "unusual crystal"
 	chemname = "thwei"
@@ -252,6 +252,7 @@
 	amount_per_transfer_from_this = REAGENTS_OVERDOSE
 	volume = REAGENTS_OVERDOSE
 	uses_left = 1
+	black_market_value = 25
 
 /obj/item/reagent_container/hypospray/autoinjector/yautja/attack(mob/M as mob, mob/user as mob)
 	if(HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
@@ -373,7 +374,7 @@
 	volume = 60
 	amount_per_transfer_from_this = 60
 
-/obj/item/reagent_container/hypospray/autoinjector/empty/medic/
+/obj/item/reagent_container/hypospray/autoinjector/empty/medic
 	name = "Medic Autoinjector (M-M)"
 	desc = "A custom-made professional injector, likely from research. Has a similar lock to pill bottles, and fits up to 6 injections."
 	skilllock = SKILL_MEDICAL_MEDIC

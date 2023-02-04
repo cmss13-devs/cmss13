@@ -115,7 +115,7 @@
 	..()
 
 
-/obj/item/smartgun_powerpack/attackby(var/obj/item/A as obj, mob/user as mob)
+/obj/item/smartgun_powerpack/attackby(obj/item/A as obj, mob/user as mob)
 	if(istype(A,/obj/item/cell))
 		var/obj/item/cell/C = A
 		visible_message("[user.name] swaps out the power cell in the [src.name].","You swap out the power cell in the [src] and drop the old one.")
@@ -133,7 +133,7 @@
 	if (pcell && get_dist(user, src) <= 1)
 		. += "A small gauge in the corner reads: Power: [pcell.charge] / [pcell.maxcharge]."
 
-/obj/item/smartgun_powerpack/proc/drain_powerpack(var/drain = 0, var/obj/item/cell/c)
+/obj/item/smartgun_powerpack/proc/drain_powerpack(drain = 0, obj/item/cell/c)
 	var/actual_drain = (rand(drain/2,drain)/25)
 	if(c && c.charge > 0)
 		if(c.charge > actual_drain)

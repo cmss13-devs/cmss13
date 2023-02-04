@@ -11,26 +11,26 @@
 
 	var/hanging = 0
 
-	verb/toggle()
-		set category = "Object"
-		set name = "Adjust mask"
-		set src in usr
+/obj/item/clothing/mask/breath/verb/toggle()
+	set category = "Object"
+	set name = "Adjust mask"
+	set src in usr
 
-		if(usr.canmove && !usr.stat && !usr.is_mob_restrained())
-			if(!src.hanging)
-				src.hanging = !src.hanging
-				gas_transfer_coefficient = 1 //gas is now escaping to the turf and vice versa
-				flags_inventory &= ~(COVERMOUTH|ALLOWINTERNALS)
-				icon_state = "breathdown"
-				to_chat(usr, "Your mask is now hanging on your neck.")
+	if(usr.canmove && !usr.stat && !usr.is_mob_restrained())
+		if(!src.hanging)
+			src.hanging = !src.hanging
+			gas_transfer_coefficient = 1 //gas is now escaping to the turf and vice versa
+			flags_inventory &= ~(COVERMOUTH|ALLOWINTERNALS)
+			icon_state = "breathdown"
+			to_chat(usr, "Your mask is now hanging on your neck.")
 
-			else
-				src.hanging = !src.hanging
-				gas_transfer_coefficient = 0.10
-				flags_inventory |= COVERMOUTH|ALLOWINTERNALS
-				icon_state = "breath"
-				to_chat(usr, "You pull the mask up to cover your face.")
-			update_clothing_icon()
+		else
+			src.hanging = !src.hanging
+			gas_transfer_coefficient = 0.10
+			flags_inventory |= COVERMOUTH|ALLOWINTERNALS
+			icon_state = "breath"
+			to_chat(usr, "You pull the mask up to cover your face.")
+		update_clothing_icon()
 
 /obj/item/clothing/mask/breath/medical
 	desc = "A close-fitting sterile mask that can be connected to an air supply."
@@ -61,7 +61,7 @@
 	flags_inventory = COVERMOUTH|ALLOWREBREATH|ALLOWCPR
 	flags_inv_hide = HIDEALLHAIR|HIDEEARS
 	flags_cold_protection = BODY_FLAG_HEAD
-	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
+	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
 
 /obj/item/clothing/mask/rebreather/skull/black
 	desc = "The face of your nightmares. Heed the call of duty as the ghost in the night with this metal 'clava. Additionally protects against the cold. Now in black!"
@@ -77,7 +77,7 @@
 	flags_inventory = COVERMOUTH|ALLOWREBREATH|ALLOWCPR
 	flags_inv_hide = HIDEALLHAIR|HIDEEARS
 	flags_cold_protection = BODY_FLAG_HEAD
-	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
+	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
 	var/pulled = FALSE
 	var/original_state = "coif"
 
@@ -130,7 +130,7 @@
 	flags_inventory = COVERMOUTH|ALLOWREBREATH|ALLOWCPR
 	flags_inv_hide = HIDEFACE|HIDELOWHAIR
 	flags_cold_protection = BODY_FLAG_HEAD
-	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
+	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
 
 /obj/item/clothing/mask/rebreather/scarf/tacticalmask/red
 	icon_state = "scarf_red"
@@ -175,7 +175,7 @@
 	adapt_to_squad()
 
 /obj/item/clothing/mask/rebreather/scarf/tacticalmask/squad/equipped(mob/user, slot, silent)
-	RegisterSignal(user, COMSIG_SET_SQUAD, .proc/update_clothing_icon, TRUE)
+	RegisterSignal(user, COMSIG_SET_SQUAD, PROC_REF(update_clothing_icon), TRUE)
 	adapt_to_squad()
 	return ..()
 
@@ -202,7 +202,7 @@
 	flags_inventory = COVERMOUTH|ALLOWREBREATH|ALLOWCPR
 	flags_inv_hide = HIDEFACE|HIDELOWHAIR
 	flags_cold_protection = BODY_FLAG_HEAD
-	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
+	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
 
 /obj/item/clothing/mask/rebreather/tornscarf/green
 	icon_state = "torn_scarf_green"
@@ -210,15 +210,15 @@
 
 /obj/item/clothing/mask/rebreather/tornscarf/snow
 	icon_state = "torn_scarf_snow"
-	item_state = "torn-scarf_snow"
+	item_state = "torn_scarf_snow"
 
 /obj/item/clothing/mask/rebreather/tornscarf/desert
 	icon_state = "torn_scarf_desert"
 	item_state = "torn_scarf_desert"
 
 /obj/item/clothing/mask/rebreather/tornscarf/urban
-	icon_state = "torn-scarf-urban"
-	item_state = "torn-scarf-urban"
+	icon_state = "torn_scarf_urban"
+	item_state = "torn_scarf_urban"
 
 /obj/item/clothing/mask/rebreather/tornscarf/black
 	icon_state = "torn_scarf_black"

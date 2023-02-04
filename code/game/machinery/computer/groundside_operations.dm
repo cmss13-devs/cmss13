@@ -27,7 +27,7 @@
 	if(SSticker.mode && MODE_HAS_FLAG(MODE_FACTION_CLASH))
 		add_pmcs = FALSE
 	else if(SSticker.current_state < GAME_STATE_PLAYING)
-		RegisterSignal(SSdcs, COMSIG_GLOB_MODE_PRESETUP, .proc/disable_pmc)
+		RegisterSignal(SSdcs, COMSIG_GLOB_MODE_PRESETUP, PROC_REF(disable_pmc))
 	return ..()
 
 /obj/structure/machinery/computer/groundside_operations/proc/disable_pmc()
@@ -35,16 +35,16 @@
 		add_pmcs = FALSE
 	UnregisterSignal(SSdcs, COMSIG_GLOB_MODE_PRESETUP)
 
-/obj/structure/machinery/computer/groundside_operations/attack_remote(var/mob/user as mob)
+/obj/structure/machinery/computer/groundside_operations/attack_remote(mob/user as mob)
 	return attack_hand(user)
 
-/obj/structure/machinery/computer/groundside_operations/attack_hand(var/mob/user as mob)
+/obj/structure/machinery/computer/groundside_operations/attack_hand(mob/user as mob)
 	if(..() || !allowed(user) || inoperable())
 		return
 
 	ui_interact(user)
 
-/obj/structure/machinery/computer/groundside_operations/ui_interact(var/mob/user as mob)
+/obj/structure/machinery/computer/groundside_operations/ui_interact(mob/user as mob)
 	user.set_interaction(src)
 
 	var/dat = "<head><title>Groundside Operations Console</title></head><body>"
@@ -131,7 +131,7 @@
 				if(H.job)
 					role = H.job
 				else if(istype(H.wear_id, /obj/item/card/id)) //decapitated marine is mindless,
-					var/obj/item/card/id/ID = H.wear_id		//we use their ID to get their role.
+					var/obj/item/card/id/ID = H.wear_id //we use their ID to get their role.
 					if(ID.rank)
 						role = ID.rank
 
@@ -185,7 +185,7 @@
 	dat += "<A href='?src=\ref[src];operation=refresh'>Refresh</a><br>"
 	return dat
 
-/obj/structure/machinery/computer/groundside_operations/proc/update_mapview(var/close = 0)
+/obj/structure/machinery/computer/groundside_operations/proc/update_mapview(close = 0)
 	if (close || !current_mapviewer || !Adjacent(current_mapviewer))
 		close_browser(current_mapviewer, "marineminimap")
 		current_mapviewer = null
@@ -237,7 +237,7 @@
 					signed = "[paygrade] [id.registered_name]"
 
 			marine_announcement(input, announcement_title, faction_to_display = announcement_faction, add_PMCs = add_pmcs, signature = signed)
-			addtimer(CALLBACK(src, .proc/reactivate_announcement, usr), COOLDOWN_COMM_MESSAGE)
+			addtimer(CALLBACK(src, PROC_REF(reactivate_announcement), usr), COOLDOWN_COMM_MESSAGE)
 			message_staff("[key_name(usr)] has made a command announcement.")
 			log_announcement("[key_name(usr)] has announced the following: [input]")
 
@@ -308,7 +308,7 @@
 
 	updateUsrDialog()
 
-/obj/structure/machinery/computer/groundside_operations/proc/reactivate_announcement(var/mob/user)
+/obj/structure/machinery/computer/groundside_operations/proc/reactivate_announcement(mob/user)
 	is_announcement_active = TRUE
 	updateUsrDialog()
 

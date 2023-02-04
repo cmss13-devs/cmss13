@@ -18,25 +18,25 @@
 	icon_state = "frame"
 	name = "status display"
 	desc = "A monitor depicting the ship's current status. It flickers every so often."
-	anchored = 1
-	density = 0
+	anchored = TRUE
+	density = FALSE
 	use_power = FALSE
 	idle_power_usage = 10
-	var/mode = 0	// 0 = Blank
+	var/mode = 0 // 0 = Blank
 					// 1 = Shuttle timer
 					// 2 = Arbitrary message(s)
 					// 3 = alert picture
 					// 4 = Supply shuttle timer
 
-	var/picture_state	// icon_state of alert picture
-	var/message1 = ""	// message line 1
-	var/message2 = ""	// message line 2
-	var/index1			// display index for scrolling messages or 0 if non-scrolling
+	var/picture_state // icon_state of alert picture
+	var/message1 = "" // message line 1
+	var/message2 = "" // message line 2
+	var/index1 // display index for scrolling messages or 0 if non-scrolling
 	var/index2
 
-	var/frequency = 1435		// radio frequency
+	var/frequency = 1435 // radio frequency
 
-	var/friendc = 0      // track if Friend Computer mode
+	var/friendc = 0   // track if Friend Computer mode
 	var/ignore_friendc = 0
 
 	maptext_height = 26
@@ -47,7 +47,7 @@
 	set_picture("default")
 
 	if(is_mainship_level(z))
-		RegisterSignal(SSdcs, COMSIG_GLOB_SECURITY_LEVEL_CHANGED, .proc/sec_changed)
+		RegisterSignal(SSdcs, COMSIG_GLOB_SECURITY_LEVEL_CHANGED, PROC_REF(sec_changed))
 
 /obj/structure/machinery/status_display/proc/sec_changed(datum/source, new_sec)
 	SIGNAL_HANDLER
@@ -73,10 +73,10 @@
 		return 1
 
 	switch(mode)
-		if(STATUS_DISPLAY_BLANK)	//blank
+		if(STATUS_DISPLAY_BLANK) //blank
 			remove_display()
 			return 1
-		if(STATUS_DISPLAY_TRANSFER_SHUTTLE_TIME)				//emergency shuttle timer
+		if(STATUS_DISPLAY_TRANSFER_SHUTTLE_TIME) //emergency shuttle timer
 			message1 = "EVAC"
 			message2 = EvacuationAuthority.get_status_panel_eta()
 			if(message2)
@@ -84,7 +84,7 @@
 				update_display(message1, message2)
 			else remove_display()
 			return 1
-		if(STATUS_DISPLAY_MESSAGE)	//custom messages
+		if(STATUS_DISPLAY_MESSAGE) //custom messages
 			var/line1
 			var/line2
 
@@ -167,14 +167,14 @@
 	icon = 'icons/obj/structures/machinery/status_display.dmi'
 	icon_state = "frame"
 	name = "AI display"
-	anchored = 1
-	density = 0
+	anchored = TRUE
+	density = FALSE
 
-	var/mode = 0	// 0 = Blank
+	var/mode = 0 // 0 = Blank
 					// 1 = AI emoticon
 					// 2 = Blue screen of death
 
-	var/picture_state	// icon_state of ai picture
+	var/picture_state // icon_state of ai picture
 
 	var/emotion = "Neutral"
 
@@ -190,7 +190,7 @@
 		overlays.Cut()
 		return
 
-	if(mode==1)	// AI emoticon
+	if(mode==1) // AI emoticon
 		switch(emotion)
 			if("Very Happy")
 				set_picture("ai_veryhappy")
@@ -226,12 +226,12 @@
 				set_picture("ai_friend")
 		return
 
-	if(mode==2)	// BSOD
+	if(mode==2) // BSOD
 		set_picture("ai_bsod")
 		return
 
 
-/obj/structure/machinery/ai_status_display/proc/set_picture(var/state)
+/obj/structure/machinery/ai_status_display/proc/set_picture(state)
 	picture_state = state
 	if(overlays.len)
 		overlays.Cut()

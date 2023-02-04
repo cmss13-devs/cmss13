@@ -74,12 +74,12 @@
 	ability_primacy = XENO_PRIMARY_ACTION_4
 
 /datum/action/xeno_action/onclick/toggle_cleave/can_use_action()
-	var/mob/living/carbon/Xenomorph/X = owner
+	var/mob/living/carbon/xenomorph/X = owner
 	if(X && !X.buckled && !X.is_mob_incapacitated())
 		return TRUE
 
 /datum/action/xeno_action/onclick/toggle_cleave/use_ability(atom/A)
-	var/mob/living/carbon/Xenomorph/X = owner
+	var/mob/living/carbon/xenomorph/X = owner
 
 	if (!istype(X))
 		return
@@ -278,8 +278,8 @@
 
 	// Configurable options
 
-	spray_type = ACID_SPRAY_LINE	// Enum for the shape of spray to do
-	spray_distance = 7 				// Distance to spray
+	spray_type = ACID_SPRAY_LINE // Enum for the shape of spray to do
+	spray_distance = 7 // Distance to spray
 
 	activation_delay = TRUE
 	activation_delay_length = 5
@@ -319,13 +319,13 @@
 	ability_primacy = XENO_PRIMARY_ACTION_5
 
 /datum/action/xeno_action/onclick/prae_switch_heal_type/can_use_action()
-	var/mob/living/carbon/Xenomorph/X = owner
+	var/mob/living/carbon/xenomorph/X = owner
 	if(X && !X.buckled && !X.is_mob_incapacitated())
 		return TRUE
 
 /datum/action/xeno_action/onclick/prae_switch_heal_type/use_ability(atom/A)
 
-	var/mob/living/carbon/Xenomorph/X = owner
+	var/mob/living/carbon/xenomorph/X = owner
 	var/action_icon_result
 
 	if(!X.check_state(1))

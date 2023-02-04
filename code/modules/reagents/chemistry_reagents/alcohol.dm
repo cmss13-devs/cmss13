@@ -35,7 +35,7 @@
 	M:nutrition += nutriment_factor
 	holder.remove_reagent(src.id, (alien ? FOOD_METABOLISM : ALCOHOL_METABOLISM)) // Catch-all for creatures without livers.
 
-	if(adj_drowsy)	M.drowsyness = max(0,M.drowsyness + adj_drowsy)
+	if(adj_drowsy) M.drowsyness = max(0,M.drowsyness + adj_drowsy)
 	if(adj_sleepy) M.sleeping = max(0,M.sleeping + adj_sleepy)
 
 	booze_data += boozepwr
@@ -53,7 +53,7 @@
 		if(!M.slurring) M.slurring = 1
 		M.slurring += slurr_adj
 
-/datum/reagent/ethanol/reaction_obj(var/obj/O, var/volume)
+/datum/reagent/ethanol/reaction_obj(obj/O, volume)
 	if(istype(O,/obj/item/paper))
 		var/obj/item/paper/paperaffected = O
 		paperaffected.clearpaper()

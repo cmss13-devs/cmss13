@@ -307,7 +307,7 @@
 	update_icon()
 
 /obj/item/reagent_container/spray/mister/atmos/afterattack(atom/target, mob/user)
-	if(!isSynth(user))
+	if(!issynth(user))
 		to_chat(user, SPAN_WARNING("You have no idea how use \the [src]!"))
 		return
 	if(nozzle_mode == EXTINGUISHER)

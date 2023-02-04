@@ -44,7 +44,7 @@ GLOBAL_LIST_INIT(cm_vending_gear_intelligence_officer, list(
 	req_access = list(ACCESS_MARINE_BRIDGE)
 	vendor_role = list(JOB_INTEL)
 
-/obj/structure/machinery/cm_vending/gear/intelligence_officer/get_listed_products(var/mob/user)
+/obj/structure/machinery/cm_vending/gear/intelligence_officer/get_listed_products(mob/user)
 	return GLOB.cm_vending_gear_intelligence_officer
 
 //------------CLOTHING VENDOR---------------
@@ -111,7 +111,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_intelligence_officer, list(
 	req_access = list(ACCESS_MARINE_BRIDGE)
 	vendor_role = list(JOB_INTEL)
 
-/obj/structure/machinery/cm_vending/clothing/intelligence_officer/get_listed_products(var/mob/user)
+/obj/structure/machinery/cm_vending/clothing/intelligence_officer/get_listed_products(mob/user)
 	return GLOB.cm_vending_clothing_intelligence_officer
 
 //------------GUNS VENDOR---------------
@@ -122,6 +122,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_intelligence_officer, list(
 	icon_state = "guns"
 	req_access = list(ACCESS_MARINE_BRIDGE)
 	vendor_role = list(JOB_INTEL)
+	vend_flags = VEND_CLUTTER_PROTECTION | VEND_LIMITED_INVENTORY | VEND_TO_HAND
 
 /obj/structure/machinery/cm_vending/sorted/cargo_guns/intelligence_officer/get_listed_products(mob/user)
 	return GLOB.cm_vending_guns_intelligence_officer
@@ -172,5 +173,5 @@ GLOBAL_LIST_INIT(cm_vending_guns_intelligence_officer, list(
 		/obj/item/tool/crowbar,
 		/obj/item/stack/fulton,
 		/obj/item/device/motiondetector/intel,
-		/obj/item/device/binoculars
+		/obj/item/device/binoculars,
 	)

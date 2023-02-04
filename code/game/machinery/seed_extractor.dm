@@ -3,10 +3,10 @@
 	desc = "Extracts and bags seeds from produce."
 	icon = 'icons/obj/structures/machinery/hydroponics.dmi'
 	icon_state = "sextractor"
-	density = 1
-	anchored = 1
+	density = TRUE
+	anchored = TRUE
 
-obj/structure/machinery/seed_extractor/attackby(var/obj/item/O as obj, var/mob/user as mob)
+/obj/structure/machinery/seed_extractor/attackby(obj/item/O as obj, mob/user as mob)
 
 	// Fruits and vegetables.
 	if(istype(O, /obj/item/reagent_container/food/snacks/grown) || istype(O, /obj/item/grown))

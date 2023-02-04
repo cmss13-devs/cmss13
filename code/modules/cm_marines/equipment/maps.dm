@@ -7,11 +7,11 @@
 	throw_range = 5
 	w_class = SIZE_TINY
 	// color = ... (Colors can be names - "red, green, grey, cyan" or a HEX color code "#FF0000")
-	var/dat        // Page content
+	var/dat // Page content
 	var/html_link = ""
 	var/window_size = "1280x720"
 
-/obj/item/map/attack_self(var/mob/user) //Open the map
+/obj/item/map/attack_self(mob/user) //Open the map
 	..()
 	user.visible_message(SPAN_NOTICE("[user] opens the [src.name]. "))
 	initialize_map()
@@ -43,7 +43,7 @@
 					function pageloaded(obj) {
 						document.getElementById("loading").style.display = "none";
 						obj.style.display = "inline";
-	    			}
+					}
 				</script>
 				<p id='loading'>You start unfolding the map...</p>
 					<img onload="pageloaded(this)" src="[wikiurl]/[html_link]?printable=yes&remove_links=1" id="main_frame" alt=""></img>

@@ -27,7 +27,7 @@
 /obj/structure/machinery/medical_pod/attack_hand(mob/living/user)
 	eject()
 
-/obj/structure/machinery/medical_pod/attack_alien(mob/living/carbon/Xenomorph/M)
+/obj/structure/machinery/medical_pod/attack_alien(mob/living/carbon/xenomorph/M)
 	eject()
 
 /obj/structure/machinery/medical_pod/update_icon()
@@ -77,7 +77,7 @@
 	if(!occupant)
 		to_chat(usr, SPAN_WARNING("There's nobody in \the [src] to eject!"))
 		return
-	if(isXeno(usr)) // let xenos eject people hiding inside.
+	if(isxeno(usr)) // let xenos eject people hiding inside.
 		visible_message("[usr] starts forcing open \the [src]!")
 		if(!do_after(usr, 1 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
 			to_chat(usr, SPAN_WARNING("You were interrupted!"))
@@ -112,7 +112,7 @@
 
 /// the putter is the guy putting the person in the pod
 /obj/structure/machinery/medical_pod/proc/go_in(mob/M, mob/putter)
-	if(isXeno(M))
+	if(isxeno(M))
 		return
 
 	/// who is doing the work of putting/going in the scanner
@@ -153,7 +153,7 @@
 	occupant.update_med_icon()
 
 	if(exit_stun)
-		occupant.stunned = max(occupant.stunned, exit_stun) //Action delay when going out
+		occupant.apply_effect(exit_stun, STUN) //Action delay when going out
 		occupant.update_canmove() //Force the delay to go in action immediately
 		occupant.visible_message(SPAN_WARNING("[occupant] pops out of \the [src]!"),
 		SPAN_WARNING("You get out of \the [src] and get your bearings!"))

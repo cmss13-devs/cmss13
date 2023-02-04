@@ -35,7 +35,7 @@ export const SquadMod = (props, context) => {
             )}
             {!!human && (
               <Stack.Item>
-                <NoticeBox>Selected for sqaud transfer: {human}</NoticeBox>
+                <NoticeBox>Selected for squad transfer: {human}</NoticeBox>
               </Stack.Item>
             )}
           </Stack>

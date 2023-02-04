@@ -1583,25 +1583,19 @@
 	dir = 9;
 	icon_state = "warnplate"
 	},
-/area/shuttle/drop2/ice_colony{
-	name = "\improper Almayer Dropship 2"
-	})
+/area/shuttle/drop2/ice_colony)
 "aeF" = (
 /turf/open/floor/plating{
 	dir = 1;
 	icon_state = "warnplate"
 	},
-/area/shuttle/drop2/ice_colony{
-	name = "\improper Almayer Dropship 2"
-	})
+/area/shuttle/drop2/ice_colony)
 "aeG" = (
 /turf/open/floor/plating{
 	dir = 5;
 	icon_state = "warnplate"
 	},
-/area/shuttle/drop2/ice_colony{
-	name = "\improper Almayer Dropship 2"
-	})
+/area/shuttle/drop2/ice_colony)
 "aeH" = (
 /turf/open/floor/corsat{
 	dir = 1;
@@ -1618,31 +1612,23 @@
 	dir = 8;
 	icon_state = "warnplate"
 	},
-/area/shuttle/drop2/ice_colony{
-	name = "\improper Almayer Dropship 2"
-	})
+/area/shuttle/drop2/ice_colony)
 "aeK" = (
 /turf/open/floor/plating,
-/area/shuttle/drop2/ice_colony{
-	name = "\improper Almayer Dropship 2"
-	})
+/area/shuttle/drop2/ice_colony)
 "aeL" = (
 /turf/open/floor/plating{
 	dir = 4;
 	icon_state = "warnplate"
 	},
-/area/shuttle/drop2/ice_colony{
-	name = "\improper Almayer Dropship 2"
-	})
+/area/shuttle/drop2/ice_colony)
 "aeM" = (
 /turf/closed/wall/r_wall/biodome,
 /area/corsat/sigma/hangar/office)
 "aeN" = (
 /obj/structure/machinery/camera/autoname/lz_camera,
 /turf/open/floor/plating/icefloor,
-/area/shuttle/drop2/ice_colony{
-	name = "\improper Almayer Dropship 2"
-	})
+/area/shuttle/drop2/ice_colony)
 "aeO" = (
 /obj/structure/surface/table/reinforced,
 /obj/item/device/flashlight/lamp,
@@ -1815,18 +1801,14 @@
 	dir = 8;
 	icon_state = "warnplate"
 	},
-/area/shuttle/drop2/ice_colony{
-	name = "\improper Almayer Dropship 2"
-	})
+/area/shuttle/drop2/ice_colony)
 "afo" = (
 /obj/structure/machinery/camera/autoname/lz_camera,
 /turf/open/floor/plating{
 	dir = 4;
 	icon_state = "warnplate"
 	},
-/area/shuttle/drop2/ice_colony{
-	name = "\improper Almayer Dropship 2"
-	})
+/area/shuttle/drop2/ice_colony)
 "afp" = (
 /obj/structure/machinery/landinglight/ds2/delaythree{
 	tag = "icon-landingstripe"
@@ -2015,32 +1997,24 @@
 	dir = 10;
 	icon_state = "warnplate"
 	},
-/area/shuttle/drop2/ice_colony{
-	name = "\improper Almayer Dropship 2"
-	})
+/area/shuttle/drop2/ice_colony)
 "afO" = (
 /turf/open/floor/plating{
 	icon_state = "warnplate"
 	},
-/area/shuttle/drop2/ice_colony{
-	name = "\improper Almayer Dropship 2"
-	})
+/area/shuttle/drop2/ice_colony)
 "afP" = (
 /turf/open/floor/plating/icefloor{
 	icon_state = "warnplate";
 	tag = "icon-warnplate"
 	},
-/area/shuttle/drop2/ice_colony{
-	name = "\improper Almayer Dropship 2"
-	})
+/area/shuttle/drop2/ice_colony)
 "afQ" = (
 /turf/open/floor/plating{
 	dir = 6;
 	icon_state = "warnplate"
 	},
-/area/shuttle/drop2/ice_colony{
-	name = "\improper Almayer Dropship 2"
-	})
+/area/shuttle/drop2/ice_colony)
 "afR" = (
 /turf/open/floor/corsat{
 	icon_state = "marked"
@@ -2420,7 +2394,10 @@
 	},
 /area/corsat/omega/checkpoint)
 "agS" = (
-/obj/structure/machinery/computer/teleporter_console/corsat,
+/obj/structure/machinery/computer/teleporter_console/corsat{
+	dir = 8
+	},
+/obj/structure/surface/table/reinforced,
 /turf/open/floor/corsat{
 	dir = 4;
 	icon_state = "purplewhite"
@@ -2841,9 +2818,7 @@
 /area/corsat/sigma/hangar/security)
 "ahW" = (
 /turf/open/floor/plating,
-/area/prison/hangar_storage/research{
-	name = "Corporate Shuttle"
-	})
+/area/prison/hangar_storage/research/shuttle)
 "ahX" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/ashtray/bronze,
@@ -2870,17 +2845,13 @@
 /turf/closed/shuttle/ert{
 	icon_state = "wy22"
 	},
-/area/prison/hangar_storage/research{
-	name = "Corporate Shuttle"
-	})
+/area/prison/hangar_storage/research/shuttle)
 "aib" = (
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15";
 	tag = "icon-rasputin15"
 	},
-/area/prison/hangar_storage/research{
-	name = "Corporate Shuttle"
-	})
+/area/prison/hangar_storage/research/shuttle)
 "aic" = (
 /obj/structure/surface/table/reinforced,
 /obj/structure/machinery/door_control{
@@ -2902,9 +2873,7 @@
 /turf/closed/shuttle/ert{
 	icon_state = "wy4"
 	},
-/area/prison/hangar_storage/research{
-	name = "Corporate Shuttle"
-	})
+/area/prison/hangar_storage/research/shuttle)
 "aif" = (
 /obj/effect/landmark/teleporter_loc/corsat_sigma_local{
 	index = "12"
@@ -2920,9 +2889,7 @@
 	icon_state = "rasputin15";
 	tag = "icon-rasputin15"
 	},
-/area/prison/hangar_storage/research{
-	name = "Corporate Shuttle"
-	})
+/area/prison/hangar_storage/research/shuttle)
 "aih" = (
 /obj/structure/machinery/light,
 /obj/structure/bed/chair/wood/normal{
@@ -2935,25 +2902,19 @@
 /turf/closed/shuttle/ert{
 	icon_state = "wy23"
 	},
-/area/prison/hangar_storage/research{
-	name = "Corporate Shuttle"
-	})
+/area/prison/hangar_storage/research/shuttle)
 "aij" = (
 /turf/open/shuttle/dropship{
 	icon_state = "floor8";
 	tag = "icon-rasputin7"
 	},
-/area/prison/hangar_storage/research{
-	name = "Corporate Shuttle"
-	})
+/area/prison/hangar_storage/research/shuttle)
 "aik" = (
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin7";
 	tag = "icon-rasputin7"
 	},
-/area/prison/hangar_storage/research{
-	name = "Corporate Shuttle"
-	})
+/area/prison/hangar_storage/research/shuttle)
 "ail" = (
 /turf/open/floor/corsat{
 	icon_state = "marked"
@@ -2966,17 +2927,13 @@
 	icon_state = "rasputin15";
 	tag = "icon-rasputin15"
 	},
-/area/prison/hangar_storage/research{
-	name = "Corporate Shuttle"
-	})
+/area/prison/hangar_storage/research/shuttle)
 "ain" = (
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin6";
 	tag = "icon-rasputin6"
 	},
-/area/prison/hangar_storage/research{
-	name = "Corporate Shuttle"
-	})
+/area/prison/hangar_storage/research/shuttle)
 "aio" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 10
@@ -2995,16 +2952,12 @@
 	icon_state = "rasputin15";
 	tag = "icon-rasputin15"
 	},
-/area/prison/hangar_storage/research{
-	name = "Corporate Shuttle"
-	})
+/area/prison/hangar_storage/research/shuttle)
 "aiq" = (
 /turf/closed/shuttle/ert{
 	icon_state = "wy5"
 	},
-/area/prison/hangar_storage/research{
-	name = "Corporate Shuttle"
-	})
+/area/prison/hangar_storage/research/shuttle)
 "air" = (
 /obj/effect/landmark/teleporter_loc/corsat_sigma_local{
 	index = "13"
@@ -3046,31 +2999,23 @@
 	icon_state = "rasputin15";
 	tag = "icon-rasputin15"
 	},
-/area/prison/hangar_storage/research{
-	name = "Corporate Shuttle"
-	})
+/area/prison/hangar_storage/research/shuttle)
 "aiv" = (
 /turf/closed/shuttle/ert{
 	icon_state = "wy_leftengine"
 	},
-/area/prison/hangar_storage/research{
-	name = "Corporate Shuttle"
-	})
+/area/prison/hangar_storage/research/shuttle)
 "aiw" = (
 /turf/closed/shuttle/ert{
 	icon_state = "wy8"
 	},
-/area/prison/hangar_storage/research{
-	name = "Corporate Shuttle"
-	})
+/area/prison/hangar_storage/research/shuttle)
 "aix" = (
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin8";
 	tag = "icon-rasputin7"
 	},
-/area/prison/hangar_storage/research{
-	name = "Corporate Shuttle"
-	})
+/area/prison/hangar_storage/research/shuttle)
 "aiy" = (
 /obj/effect/landmark/teleporter_loc/corsat_sigma_local{
 	index = "15"
@@ -3085,16 +3030,12 @@
 	icon_state = "leftengine_3";
 	opacity = 0
 	},
-/area/prison/hangar_storage/research{
-	name = "Corporate Shuttle"
-	})
+/area/prison/hangar_storage/research/shuttle)
 "aiA" = (
 /turf/closed/shuttle/ert{
 	icon_state = "wy9"
 	},
-/area/prison/hangar_storage/research{
-	name = "Corporate Shuttle"
-	})
+/area/prison/hangar_storage/research/shuttle)
 "aiB" = (
 /turf/closed/wall/r_wall/biodome,
 /area/corsat/omega/hangar/security)
@@ -3115,41 +3056,31 @@
 /turf/closed/shuttle/ert{
 	icon_state = "wy_rightengine"
 	},
-/area/prison/hangar_storage/research{
-	name = "Corporate Shuttle"
-	})
+/area/prison/hangar_storage/research/shuttle)
 "aiF" = (
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin3";
 	tag = "icon-rasputin3"
 	},
-/area/prison/hangar_storage/research{
-	name = "Corporate Shuttle"
-	})
+/area/prison/hangar_storage/research/shuttle)
 "aiG" = (
 /turf/closed/shuttle/ert{
 	icon_state = "rightengine_3";
 	opacity = 0
 	},
-/area/prison/hangar_storage/research{
-	name = "Corporate Shuttle"
-	})
+/area/prison/hangar_storage/research/shuttle)
 "aiH" = (
 /turf/closed/shuttle/ert{
 	icon_state = "leftengine_2";
 	opacity = 0
 	},
-/area/prison/hangar_storage/research{
-	name = "Corporate Shuttle"
-	})
+/area/prison/hangar_storage/research/shuttle)
 "aiI" = (
 /turf/closed/shuttle/ert{
 	icon_state = "rightengine_2";
 	opacity = 0
 	},
-/area/prison/hangar_storage/research{
-	name = "Corporate Shuttle"
-	})
+/area/prison/hangar_storage/research/shuttle)
 "aiJ" = (
 /obj/structure/window/framed/corsat/hull/security,
 /turf/open/floor/plating,
@@ -4100,7 +4031,10 @@
 /turf/open/floor/wood,
 /area/corsat/gamma/residential/lounge)
 "alz" = (
-/obj/structure/machinery/computer/teleporter_console/corsat,
+/obj/structure/machinery/computer/teleporter_console/corsat{
+	dir = 1
+	},
+/obj/structure/surface/table/reinforced,
 /turf/open/floor/corsat{
 	icon_state = "purplewhite"
 	},
@@ -5422,9 +5356,7 @@
 	icon_state = "leftengine_1";
 	opacity = 0
 	},
-/area/prison/hangar_storage/research{
-	name = "Corporate Shuttle"
-	})
+/area/prison/hangar_storage/research/shuttle)
 "apk" = (
 /turf/open/floor/plating,
 /area/corsat/omega/hangar)
@@ -5435,9 +5367,7 @@
 /turf/closed/shuttle/ert{
 	icon_state = "wy1"
 	},
-/area/prison/hangar_storage/research{
-	name = "Corporate Shuttle"
-	})
+/area/prison/hangar_storage/research/shuttle)
 "apn" = (
 /obj/structure/machinery/power/apc/high{
 	dir = 1;
@@ -10937,9 +10867,7 @@
 /turf/open/floor/plating{
 	icon_state = "warnplate"
 	},
-/area/prison/hangar_storage/research{
-	name = "Corporate Shuttle"
-	})
+/area/prison/hangar_storage/research/shuttle)
 "aEk" = (
 /turf/open/floor/corsat{
 	dir = 4;
@@ -15074,7 +15002,7 @@
 "aPd" = (
 /obj/structure/machinery/power/apc/hyper{
 	dir = 1;
-	pixel_y = 24
+	pixel_y = 25
 	},
 /turf/open/floor/corsat{
 	dir = 1;
@@ -15465,24 +15393,18 @@
 /turf/closed/shuttle/ert{
 	icon_state = "wy2"
 	},
-/area/prison/hangar_storage/research{
-	name = "Corporate Shuttle"
-	})
+/area/prison/hangar_storage/research/shuttle)
 "aQf" = (
 /turf/closed/shuttle/ert{
 	icon_state = "wy3"
 	},
-/area/prison/hangar_storage/research{
-	name = "Corporate Shuttle"
-	})
+/area/prison/hangar_storage/research/shuttle)
 "aQg" = (
 /turf/closed/shuttle/ert{
 	icon_state = "rightengine_1";
 	opacity = 0
 	},
-/area/prison/hangar_storage/research{
-	name = "Corporate Shuttle"
-	})
+/area/prison/hangar_storage/research/shuttle)
 "aQh" = (
 /obj/structure/machinery/power/apc/high{
 	dir = 1;
@@ -15529,9 +15451,7 @@
 	icon_state = "rasputin4";
 	tag = "icon-rasputin7"
 	},
-/area/prison/hangar_storage/research{
-	name = "Corporate Shuttle"
-	})
+/area/prison/hangar_storage/research/shuttle)
 "aQo" = (
 /obj/structure/window/framed/corsat/security,
 /turf/open/floor/plating,
@@ -22006,8 +21926,8 @@
 /area/corsat/emergency_access)
 "bgy" = (
 /obj/structure/surface/table/almayer,
-/obj/item/explosive/grenade/HE,
-/obj/item/explosive/grenade/HE,
+/obj/item/explosive/grenade/high_explosive,
+/obj/item/explosive/grenade/high_explosive,
 /turf/open/floor{
 	icon_state = "asteroidplating";
 	tag = "icon-asteroidplating"
@@ -23664,17 +23584,6 @@
 /obj/structure/window/framed/corsat/cell/security,
 /turf/open/floor/plating,
 /area/corsat/gamma/security/cells)
-"bkQ" = (
-/obj/item/organ/xenos/resinspinner,
-/obj/structure/closet/crate/science{
-	density = 0;
-	icon_state = "open_science";
-	opened = 1
-	},
-/turf/open/floor/corsat{
-	icon_state = "plate"
-	},
-/area/corsat/omega/complex)
 "bkR" = (
 /obj/structure/surface/table/almayer,
 /obj/item/form_printer,
@@ -23705,18 +23614,18 @@
 	icon_state = "open_science";
 	opened = 1
 	},
-/obj/item/organ/xenos/resinspinner,
+/obj/item/organ/lungs,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
 /area/corsat/omega/complex)
 "bkU" = (
-/obj/item/organ/xenos/acidgland,
 /obj/structure/closet/crate/science{
 	density = 0;
 	icon_state = "open_science";
 	opened = 1
 	},
+/obj/item/organ/heart,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -23812,7 +23721,7 @@
 /area/corsat/sigma/biodome/gunrange)
 "blh" = (
 /obj/structure/surface/table/almayer,
-/obj/item/explosive/grenade/HE/training,
+/obj/item/explosive/grenade/high_explosive/training,
 /turf/open/floor{
 	icon_state = "asteroidplating";
 	tag = "icon-asteroidplating"
@@ -28052,12 +27961,12 @@
 	},
 /area/corsat/omega/complex)
 "byH" = (
-/obj/item/organ/xenos/plasmavessel,
 /obj/structure/closet/crate/science{
 	density = 0;
 	icon_state = "open_science";
 	opened = 1
 	},
+/obj/item/organ/liver,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -28169,7 +28078,7 @@
 	icon_state = "open_science";
 	opened = 1
 	},
-/obj/item/organ/xenos/plasmavessel,
+/obj/item/organ/eyes,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -28904,7 +28813,7 @@
 	},
 /area/corsat/gamma/medbay)
 "bAI" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited{
 	name = "Emergency NanoMed";
 	pixel_x = 30;
 	req_access = null
@@ -34639,10 +34548,10 @@
 	},
 /area/corsat/sigma/biodome/testgrounds)
 "bTB" = (
-/obj/item/explosive/grenade/HE/frag,
-/obj/item/explosive/grenade/HE/frag,
-/obj/item/explosive/grenade/HE/frag,
-/obj/item/explosive/grenade/HE/PMC,
+/obj/item/explosive/grenade/high_explosive/frag,
+/obj/item/explosive/grenade/high_explosive/frag,
+/obj/item/explosive/grenade/high_explosive/frag,
+/obj/item/explosive/grenade/high_explosive/pmc,
 /obj/structure/closet/secure_closet/guncabinet{
 	name = "explosives cabinet";
 	req_access_txt = "100"
@@ -37199,9 +37108,7 @@
 	icon_state = "rasputin15";
 	tag = "icon-rasputin15"
 	},
-/area/prison/hangar_storage/research{
-	name = "Corporate Shuttle"
-	})
+/area/prison/hangar_storage/research/shuttle)
 "cqv" = (
 /obj/structure/computerframe,
 /turf/open/floor/corsat{
@@ -38063,6 +37970,9 @@
 /area/corsat/gamma/residential/east)
 "dex" = (
 /obj/structure/surface/table/reinforced,
+/obj/structure/machinery/camera/autoname{
+	network = list("sigma")
+	},
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "purplewhite"
@@ -38898,9 +38808,7 @@
 /turf/closed/shuttle/ert{
 	icon_state = "wy16"
 	},
-/area/prison/hangar_storage/research{
-	name = "Corporate Shuttle"
-	})
+/area/prison/hangar_storage/research/shuttle)
 "dKg" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -39242,9 +39150,7 @@
 	icon_state = "rasputin3";
 	tag = "icon-rasputin3"
 	},
-/area/prison/hangar_storage/research{
-	name = "Corporate Shuttle"
-	})
+/area/prison/hangar_storage/research/shuttle)
 "dXq" = (
 /obj/structure/surface/table/almayer,
 /obj/item/folder/black_random,
@@ -39649,8 +39555,8 @@
 /area/corsat/sigma/hangar)
 "ejL" = (
 /obj/structure/surface/table/almayer,
-/obj/item/explosive/grenade/HE/frag,
-/obj/item/explosive/grenade/HE/frag,
+/obj/item/explosive/grenade/high_explosive/frag,
+/obj/item/explosive/grenade/high_explosive/frag,
 /turf/open/floor{
 	icon_state = "asteroidplating";
 	tag = "icon-asteroidplating"
@@ -41854,9 +41760,7 @@
 	dir = 2
 	},
 /turf/open/floor/plating,
-/area/prison/hangar_storage/research{
-	name = "Corporate Shuttle"
-	})
+/area/prison/hangar_storage/research/shuttle)
 "fTw" = (
 /obj/structure/closet/firecloset,
 /turf/open/floor/corsat{
@@ -42335,9 +42239,7 @@
 "gjt" = (
 /obj/structure/machinery/door/airlock/almayer/generic,
 /turf/open/floor/plating,
-/area/prison/hangar_storage/research{
-	name = "Corporate Shuttle"
-	})
+/area/prison/hangar_storage/research/shuttle)
 "gjw" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_10";
@@ -43004,9 +42906,7 @@
 	icon_state = "rasputin15";
 	tag = "icon-rasputin15"
 	},
-/area/prison/hangar_storage/research{
-	name = "Corporate Shuttle"
-	})
+/area/prison/hangar_storage/research/shuttle)
 "gGT" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 10
@@ -43342,9 +43242,7 @@
 	icon_state = "rasputin15";
 	tag = "icon-rasputin15"
 	},
-/area/prison/hangar_storage/research{
-	name = "Corporate Shuttle"
-	})
+/area/prison/hangar_storage/research/shuttle)
 "gSu" = (
 /turf/open/floor/corsat{
 	dir = 8;
@@ -43408,12 +43306,12 @@
 	},
 /area/corsat/omega/cargo)
 "gUw" = (
-/obj/item/organ/xenos/eggsac,
 /obj/structure/closet/crate/science{
 	density = 0;
 	icon_state = "open_science";
 	opened = 1
 	},
+/obj/item/organ/kidneys,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -45456,9 +45354,7 @@
 	icon_state = "rasputin15";
 	tag = "icon-rasputin15"
 	},
-/area/prison/hangar_storage/research{
-	name = "Corporate Shuttle"
-	})
+/area/prison/hangar_storage/research/shuttle)
 "ilr" = (
 /obj/structure/closet/emcloset,
 /turf/open/floor/corsat{
@@ -45578,9 +45474,6 @@
 	},
 /area/corsat/sigma/southeast/generator)
 "iqE" = (
-/obj/structure/machinery/camera/autoname{
-	network = list("sigma")
-	},
 /obj/structure/surface/table/reinforced,
 /obj/structure/machinery/computer/security{
 	network = list("gamma")
@@ -46634,9 +46527,7 @@
 	icon_state = "floor8";
 	tag = "icon-rasputin7"
 	},
-/area/prison/hangar_storage/research{
-	name = "Corporate Shuttle"
-	})
+/area/prison/hangar_storage/research/shuttle)
 "jja" = (
 /turf/open/floor/corsat{
 	dir = 8;
@@ -46650,9 +46541,7 @@
 	icon_state = "rasputin15";
 	tag = "icon-rasputin15"
 	},
-/area/prison/hangar_storage/research{
-	name = "Corporate Shuttle"
-	})
+/area/prison/hangar_storage/research/shuttle)
 "jjz" = (
 /obj/structure/pipes/vents/pump{
 	dir = 1
@@ -46989,9 +46878,7 @@
 	icon_state = "rasputin15";
 	tag = "icon-rasputin15"
 	},
-/area/prison/hangar_storage/research{
-	name = "Corporate Shuttle"
-	})
+/area/prison/hangar_storage/research/shuttle)
 "jyK" = (
 /obj/effect/decal/cleanable/blood/splatter,
 /turf/open/shuttle{
@@ -48940,7 +48827,7 @@
 "kZy" = (
 /obj/structure/machinery/power/apc/hyper{
 	dir = 1;
-	pixel_y = 24
+	pixel_y = 25
 	},
 /turf/open/floor/corsat{
 	dir = 9;
@@ -50919,9 +50806,7 @@
 	icon_state = "rasputin12";
 	tag = "icon-rasputin5"
 	},
-/area/prison/hangar_storage/research{
-	name = "Corporate Shuttle"
-	})
+/area/prison/hangar_storage/research/shuttle)
 "msp" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -51748,9 +51633,7 @@
 	icon_state = "rasputin15";
 	tag = "icon-rasputin15"
 	},
-/area/prison/hangar_storage/research{
-	name = "Corporate Shuttle"
-	})
+/area/prison/hangar_storage/research/shuttle)
 "mWj" = (
 /obj/structure/flora/pottedplant,
 /turf/open/floor/corsat{
@@ -51832,9 +51715,7 @@
 /turf/closed/shuttle/ert{
 	icon_state = "wy18"
 	},
-/area/prison/hangar_storage/research{
-	name = "Corporate Shuttle"
-	})
+/area/prison/hangar_storage/research/shuttle)
 "nbn" = (
 /obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
@@ -51937,9 +51818,7 @@
 /turf/closed/shuttle/ert{
 	icon_state = "wy19"
 	},
-/area/prison/hangar_storage/research{
-	name = "Corporate Shuttle"
-	})
+/area/prison/hangar_storage/research/shuttle)
 "nfz" = (
 /turf/closed/wall/resin/membrane,
 /area/corsat/gamma/biodome)
@@ -52323,9 +52202,7 @@
 /turf/closed/shuttle/ert{
 	icon_state = "wy13"
 	},
-/area/prison/hangar_storage/research{
-	name = "Corporate Shuttle"
-	})
+/area/prison/hangar_storage/research/shuttle)
 "ntp" = (
 /obj/structure/machinery/light,
 /turf/open/floor/corsat{
@@ -56057,9 +55934,7 @@
 	icon_state = "rasputin3";
 	tag = "icon-rasputin3"
 	},
-/area/prison/hangar_storage/research{
-	name = "Corporate Shuttle"
-	})
+/area/prison/hangar_storage/research/shuttle)
 "qjL" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 5
@@ -56380,9 +56255,7 @@
 	icon_state = "rasputin13";
 	tag = "icon-rasputin5"
 	},
-/area/prison/hangar_storage/research{
-	name = "Corporate Shuttle"
-	})
+/area/prison/hangar_storage/research/shuttle)
 "qvB" = (
 /obj/structure/surface/table,
 /obj/structure/machinery/computer3/laptop/secure_data,
@@ -57550,9 +57423,7 @@
 	icon_state = "rasputin3";
 	tag = "icon-rasputin3"
 	},
-/area/prison/hangar_storage/research{
-	name = "Corporate Shuttle"
-	})
+/area/prison/hangar_storage/research/shuttle)
 "rpB" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -59048,8 +58919,8 @@
 /area/corsat/sigma/dorms)
 "sos" = (
 /obj/structure/surface/table/almayer,
-/obj/item/explosive/grenade/HE/training,
-/obj/item/explosive/grenade/HE/training,
+/obj/item/explosive/grenade/high_explosive/training,
+/obj/item/explosive/grenade/high_explosive/training,
 /turf/open/floor{
 	icon_state = "asteroidplating";
 	tag = "icon-asteroidplating"
@@ -59236,7 +59107,7 @@
 	},
 /area/corsat/gamma/residential/west)
 "sxB" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited{
 	name = "Emergency NanoMed";
 	pixel_y = 30;
 	req_access = null
@@ -59544,9 +59415,7 @@
 /turf/closed/shuttle/ert{
 	icon_state = "wy17"
 	},
-/area/prison/hangar_storage/research{
-	name = "Corporate Shuttle"
-	})
+/area/prison/hangar_storage/research/shuttle)
 "sJk" = (
 /turf/open/floor/plating{
 	dir = 8;
@@ -60694,9 +60563,7 @@
 /turf/closed/shuttle/ert{
 	icon_state = "wy15"
 	},
-/area/prison/hangar_storage/research{
-	name = "Corporate Shuttle"
-	})
+/area/prison/hangar_storage/research/shuttle)
 "tCH" = (
 /turf/open/floor/corsat{
 	dir = 8;
@@ -61348,9 +61215,7 @@
 	icon_state = "rasputin10";
 	tag = "icon-rasputin5"
 	},
-/area/prison/hangar_storage/research{
-	name = "Corporate Shuttle"
-	})
+/area/prison/hangar_storage/research/shuttle)
 "tZp" = (
 /obj/structure/pipes/vents/pump{
 	dir = 8
@@ -61519,9 +61384,7 @@
 /turf/closed/shuttle/ert{
 	icon_state = "wy12"
 	},
-/area/prison/hangar_storage/research{
-	name = "Corporate Shuttle"
-	})
+/area/prison/hangar_storage/research/shuttle)
 "ugC" = (
 /obj/structure/closet/crate/science,
 /turf/open/floor/corsat{
@@ -62208,9 +62071,7 @@
 /turf/closed/shuttle/ert{
 	icon_state = "wy14"
 	},
-/area/prison/hangar_storage/research{
-	name = "Corporate Shuttle"
-	})
+/area/prison/hangar_storage/research/shuttle)
 "uHr" = (
 /turf/closed/wall/r_wall/biodome,
 /area/corsat/sigma/south/engineering)
@@ -64543,9 +64404,7 @@
 	icon_state = "rasputin15";
 	tag = "icon-rasputin15"
 	},
-/area/prison/hangar_storage/research{
-	name = "Corporate Shuttle"
-	})
+/area/prison/hangar_storage/research/shuttle)
 "wrC" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
 /obj/structure/pipes/vents/pump{
@@ -65934,6 +65793,17 @@
 	icon_state = "plate"
 	},
 /area/corsat/gamma/residential/researcher)
+"xuF" = (
+/obj/structure/closet/crate/science{
+	density = 0;
+	icon_state = "open_science";
+	opened = 1
+	},
+/obj/item/organ/brain,
+/turf/open/floor/corsat{
+	icon_state = "plate"
+	},
+/area/corsat/omega/complex)
 "xuI" = (
 /turf/open/floor/corsat{
 	dir = 1;
@@ -77946,7 +77816,7 @@ azk
 oje
 aWy
 aoE
-bkQ
+byH
 bib
 bib
 bib
@@ -78436,7 +78306,7 @@ agQ
 bhQ
 anG
 aoE
-bkU
+xuF
 bkU
 buQ
 byX

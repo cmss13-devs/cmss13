@@ -1,10 +1,10 @@
-proc/random_ethnicity()
+/proc/random_ethnicity()
 	return pick(GLOB.ethnicities_list)
 
-proc/random_body_type()
+/proc/random_body_type()
 	return pick(GLOB.body_types_list)
 
-proc/random_hair_style(gender, species = "Human")
+/proc/random_hair_style(gender, species = "Human")
 	var/h_style = "Crewcut"
 
 	var/list/valid_hairstyles = list()
@@ -26,7 +26,7 @@ proc/random_hair_style(gender, species = "Human")
 	return h_style
 
 
-proc/random_facial_hair_style(gender, species = "Human")
+/proc/random_facial_hair_style(gender, species = "Human")
 	var/f_style = "Shaved"
 
 	var/list/valid_facialhairstyles = list()
@@ -47,11 +47,11 @@ proc/random_facial_hair_style(gender, species = "Human")
 
 		return f_style
 
-proc/random_name(gender, species = "Human")
-	if(gender==FEMALE)	return capitalize(pick(first_names_female)) + " " + capitalize(pick(last_names))
-	else				return capitalize(pick(first_names_male)) + " " + capitalize(pick(last_names))
+/proc/random_name(gender, species = "Human")
+	if(gender==FEMALE) return capitalize(pick(first_names_female)) + " " + capitalize(pick(last_names))
+	else return capitalize(pick(first_names_male)) + " " + capitalize(pick(last_names))
 
-proc/has_species(var/mob/M, var/species)
+/proc/has_species(mob/M, species)
 	if(!M || !istype(M,/mob/living/carbon/human))
 		return FALSE
 	var/mob/living/carbon/human/H = M
@@ -65,7 +65,7 @@ proc/has_species(var/mob/M, var/species)
 
 // We change real name, so we change the voice too if we are humans
 // It also ensures our mind's name gets changed
-/mob/proc/change_real_name(var/mob/M, var/new_name)
+/mob/proc/change_real_name(mob/M, new_name)
 	if(!new_name)
 		return FALSE
 
@@ -80,7 +80,7 @@ proc/has_species(var/mob/M, var/species)
 
 	return TRUE
 
-/mob/proc/change_mind_name(var/new_mind_name)
+/mob/proc/change_mind_name(new_mind_name)
 	if(!mind)
 		return FALSE
 	if(!new_mind_name)
@@ -88,7 +88,7 @@ proc/has_species(var/mob/M, var/species)
 	mind.name = new_mind_name
 	return TRUE
 
-/mob/proc/change_mob_voice(var/new_voice_name)
+/mob/proc/change_mob_voice(new_voice_name)
 	if(!ishuman(src))
 		return FALSE
 	if(!new_voice_name)
@@ -131,7 +131,7 @@ Transition is animated but instant by default.**/
 		return
 
 	//Sort the matrix packages by priority.
-	client_color_matrices = sortTim(client_color_matrices, /proc/cmp_filter_data_priority, TRUE)
+	client_color_matrices = sortTim(client_color_matrices, GLOBAL_PROC_REF(cmp_filter_data_priority), TRUE)
 
 	var/list/final_matrix
 

@@ -13,7 +13,7 @@
 	max_engineers = 2
 	max_medics = 2
 
-/datum/emergency_call/wo/create_member(datum/mind/M, var/turf/override_spawn_loc)
+/datum/emergency_call/wo/create_member(datum/mind/M, turf/override_spawn_loc)
 	set waitfor = 0
 	if(SSmapping.configs[GROUND_MAP].map_name == MAP_WHISKEY_OUTPOST)
 		name_of_spawn = /obj/effect/landmark/ert_spawns/distress_wo
@@ -63,7 +63,7 @@
 	em_call.activate(FALSE)
 	return
 
-datum/emergency_call/wo/platoon
+/datum/emergency_call/wo/platoon
 	name = "Marine Reinforcements (Platoon)"
 	mob_min = 8
 	mob_max = 30
@@ -72,13 +72,13 @@ datum/emergency_call/wo/platoon
 	max_heavies = 4
 	max_smartgunners = 4
 
-datum/emergency_call/wo/platoon/cryo
+/datum/emergency_call/wo/platoon/cryo
 	name = "Marine Reinforcements (Platoon) (Cryo)"
 	probability = 0
 	name_of_spawn = /obj/effect/landmark/ert_spawns/distress_cryo
 	shuttle_id = ""
 
-datum/emergency_call/wo/cryo
+/datum/emergency_call/wo/cryo
 	name = "Marine Reinforcements (Squad) (Cryo)"
 	probability = 0
 	name_of_spawn = /obj/effect/landmark/ert_spawns/distress_cryo

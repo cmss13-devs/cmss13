@@ -30,8 +30,8 @@ PLANT_CUT_MACHETE = 3 = Needs at least a machete to be cut down
 
 /obj/structure/flora
 	name = "plant"
-	anchored = 1
-	density = 1
+	anchored = TRUE
+	density = TRUE
 	var/icon_tag = null
 	var/variations = 1
 	var/cut_level = PLANT_NO_CUT
@@ -90,14 +90,14 @@ PLANT_CUT_MACHETE = 3 = Needs at least a machete to be cut down
 	icon = 'icons/obj/structures/props/joshuatree.dmi'
 	icon_state = "joshua_1"
 	pixel_x = 0
-	density = 0
+	density = FALSE
 	unslashable = TRUE
 	unacidable = TRUE
 
 /obj/structure/flora/tree/jungle
 	icon = 'icons/obj/structures/props/ground_map64.dmi'
 	desc = "What an enormous tree!"
-	density = 0
+	density = FALSE
 
 /obj/structure/flora/tree/jungle/bigtreeTR
 	name = "huge tree"
@@ -116,13 +116,13 @@ PLANT_CUT_MACHETE = 3 = Needs at least a machete to be cut down
 	desc = "A thick mat of dense grass."
 	icon_state = "grasscarpet"
 	layer = BELOW_MOB_LAYER
-	density = 0
+	density = FALSE
 
 //grass
 /obj/structure/flora/grass
 	name = "grass"
 	icon = 'icons/obj/structures/props/ausflora.dmi'
-	density = 0
+	density = FALSE
 	fire_flag = FLORA_BURN_NO_SPREAD
 /*
 
@@ -185,8 +185,8 @@ ICE GRASS
 	burning = TRUE
 	var/spread_time = rand(75, 150)
 	if(!(fire_flag & FLORA_BURN_NO_SPREAD))
-		addtimer(CALLBACK(src, .proc/spread_fire), spread_time)
-	addtimer(CALLBACK(src, .proc/burn_up), spread_time + 5 SECONDS)
+		addtimer(CALLBACK(src, PROC_REF(spread_fire)), spread_time)
+	addtimer(CALLBACK(src, PROC_REF(burn_up)), spread_time + 5 SECONDS)
 
 /obj/structure/flora/proc/spread_fire()
 	for(var/D in cardinal) //Spread fire
@@ -204,7 +204,7 @@ ICE GRASS
 		new /obj/effect/decal/cleanable/dirt(loc) //Produces more ash at the center
 	qdel(src)
 
-/obj/structure/flora/ex_act(var/power)
+/obj/structure/flora/ex_act(power)
 	if(power >= EXPLOSION_THRESHOLD_VLOW)
 		deconstruct(FALSE)
 
@@ -259,7 +259,7 @@ ICE GRASS
 	name = "bush"
 	icon = 'icons/obj/structures/props/snowflora.dmi'
 	icon_state = "snowbush_1"
-	density = 0
+	density = FALSE
 	layer = ABOVE_XENO_LAYER
 	fire_flag = FLORA_BURN_NO_SPREAD
 
@@ -397,11 +397,14 @@ ICE GRASS
 	name = "potted plant"
 	icon = 'icons/obj/structures/props/plants.dmi'
 	icon_state = "pottedplant_26"
-	density = 0
+	density = FALSE
 
 /obj/structure/flora/pottedplant/random
 	icon_tag = "pottedplant"
 	variations = "30"
+
+/obj/structure/flora/pottedplant/random/unanchored
+	anchored = FALSE
 
 /*
 
@@ -412,7 +415,7 @@ ICE GRASS
 /obj/structure/flora/jungle
 	name = "jungle foliage"
 	icon = 'icons/turf/ground_map.dmi'
-	density = 0
+	density = FALSE
 	layer = ABOVE_XENO_LAYER
 	projectile_coverage = PROJECTILE_COVERAGE_NONE
 
@@ -434,8 +437,8 @@ ICE GRASS
 
 /obj/structure/flora/jungle/treeblocker
 	name = "huge tree"
-	icon_state = ""	//will this break it?? - Nope
-	density = 1
+	icon_state = "" //will this break it?? - Nope
+	density = TRUE
 
 /obj/structure/flora/jungle/vines
 	name = "vines"
@@ -449,7 +452,7 @@ ICE GRASS
 
 /obj/structure/flora/jungle/vines/heavy
 	desc = "A thick, coiled mass of twisted vines."
-	opacity = 1
+	opacity = TRUE
 	icon_state = "heavy_6"
 	icon_tag = "heavy"
 	variations = 6
@@ -472,7 +475,7 @@ ICE GRASS
 	..()
 	health = rand(50,75)
 	if(prob(75))
-		opacity = 1
+		opacity = TRUE
 	setDir(pick(NORTH,EAST,SOUTH,WEST))
 
 
@@ -490,8 +493,8 @@ ICE GRASS
 		if(isliving(AM))
 			var/mob/living/L = AM
 			var/bush_sound_prob = 60
-			if(istype(L, /mob/living/carbon/Xenomorph))
-				var/mob/living/carbon/Xenomorph/X = L
+			if(istype(L, /mob/living/carbon/xenomorph))
+				var/mob/living/carbon/xenomorph/X = L
 				bush_sound_prob = X.tier * 20
 
 			if(prob(bush_sound_prob))
@@ -541,7 +544,7 @@ ICE GRASS
 
 /obj/structure/flora/jungle/thickbush/proc/healthcheck()
 	if(health < 35 && opacity)
-		opacity = 0
+		opacity = FALSE
 	if(health < 0)
 		if(prob(10))
 			icon_state = "stump[rand(1,2)]"
@@ -553,7 +556,7 @@ ICE GRASS
 		else
 			qdel(src)
 
-/obj/structure/flora/jungle/thickbush/flamer_fire_act(var/dam = BURN_LEVEL_TIER_1)
+/obj/structure/flora/jungle/thickbush/flamer_fire_act(dam = BURN_LEVEL_TIER_1)
 	health -= dam
 	healthcheck(src)
 

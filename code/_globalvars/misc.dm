@@ -18,3 +18,5 @@ GLOBAL_VAR(ooc_color_override)
 GLOBAL_LIST_INIT(gamemode_roles, list())
 
 GLOBAL_VAR_INIT(minimum_exterior_lighting_alpha, 255)
+
+GLOBAL_DATUM_INIT(item_to_box_mapping, /datum/item_to_box_mapping, init_item_to_box_mapping())

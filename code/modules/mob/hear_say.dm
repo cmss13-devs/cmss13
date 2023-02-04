@@ -1,6 +1,8 @@
 // At minimum every mob has a hear_say proc.
+/mob/proc/hear_apollo()
+	return FALSE
 
-/mob/proc/hear_say(var/message, var/verb = "says", var/datum/language/language = null, var/alt_name = "",var/italics = 0, var/mob/speaker = null, var/sound/speech_sound, var/sound_vol)
+/mob/proc/hear_say(message, verb = "says", datum/language/language = null, alt_name = "", italics = 0, mob/speaker = null, sound/speech_sound, sound_vol)
 
 	if(!client && !(mind && mind.current != src))
 		return
@@ -55,12 +57,12 @@
 
 
 /mob/proc/hear_radio(
-	var/message, var/verb="says",
-	var/datum/language/language=null,
-	var/part_a, var/part_b,
-	var/mob/speaker = null,
-	var/hard_to_hear = 0, var/vname ="",
-	var/command = 0, var/no_paygrade = FALSE)
+	message, verb="says",
+	datum/language/language=null,
+	part_a, part_b,
+	mob/speaker = null,
+	hard_to_hear = 0, vname ="",
+	command = 0, no_paygrade = FALSE)
 
 	if(!client && !(mind && mind.current != src))
 		return
@@ -185,7 +187,7 @@
 		else
 			to_chat(src, "<span class=\"[fontsize_style]\">[part_a][comm_paygrade][speaker_name][part_b][verb], <span class=\"[style]\">\"[message]\"</span></span></span></span>", type = MESSAGE_TYPE_RADIO)
 
-/mob/proc/hear_signlang(var/message, var/verb = "gestures", var/datum/language/language, var/mob/speaker = null)
+/mob/proc/hear_signlang(message, verb = "gestures", datum/language/language, mob/speaker = null)
 	var/comm_paygrade = ""
 	if(!client)
 		return
@@ -205,7 +207,7 @@
 			M.show_message(message)
 	src.show_message(message)
 
-/mob/proc/hear_sleep(var/message)
+/mob/proc/hear_sleep(message)
 	var/heard = ""
 	if(prob(15))
 		var/list/punctuation = list(",", "!", ".", ";", "?")

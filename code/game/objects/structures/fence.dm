@@ -3,8 +3,8 @@
 	desc = "A large metal mesh strewn between two poles. Intended as a cheap way to separate areas, while allowing one to see through it."
 	icon = 'icons/obj/structures/props/fence.dmi'
 	icon_state = "fence0"
-	density = 1
-	anchored = 1
+	density = TRUE
+	anchored = TRUE
 	layer = WINDOW_LAYER
 	flags_atom = FPRINT
 	health = 50
@@ -13,7 +13,7 @@
 	var/junction = 0 //Because everything is terrible, I'm making this a fence-level var
 	var/basestate = "fence"
 
-/obj/structure/fence/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/obj/structure/fence/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_can_pass_all = PASS_THROUGH|PASS_HIGH_OVER_ONLY
@@ -33,7 +33,7 @@
 	if(make_hit_sound)
 		playsound(loc, 'sound/effects/grillehit.ogg', 25, 1)
 
-/obj/structure/fence/bullet_act(var/obj/item/projectile/Proj)
+/obj/structure/fence/bullet_act(obj/item/projectile/Proj)
 	//Tasers and the like should not damage windows.
 	var/ammo_flags = Proj.ammo.flags_ammo_behavior | Proj.projectile_override_flags
 	if(Proj.ammo.damage_type == HALLOSS || Proj.damage <= 0 || ammo_flags == AMMO_ENERGY)
@@ -104,7 +104,7 @@
 				R.use(amount_needed)
 				health = health_max
 				cut = 0
-				density = 1
+				density = TRUE
 				update_icon()
 				playsound(loc, 'sound/items/Wirecutter.ogg', 25, 1)
 				user.visible_message(SPAN_NOTICE("[user] repairs [src] with [R]."),
@@ -183,7 +183,7 @@
 /obj/structure/fence/proc/cut_grille()
 	health = 0
 	cut = 1
-	density = 0
+	density = FALSE
 	update_icon() //Make it appear cut through!
 
 /obj/structure/fence/Initialize(mapload, start_dir = null, constructed = 0)
@@ -196,7 +196,7 @@
 	update_nearby_icons()
 
 /obj/structure/fence/Destroy()
-	density = 0
+	density = FALSE
 	update_nearby_icons()
 	. = ..()
 

@@ -1,22 +1,22 @@
 /*
- *	Everything derived from the common cardboard box.
- *	Basically everything except the original is a kit (starts full).
+ * Everything derived from the common cardboard box.
+ * Basically everything except the original is a kit (starts full).
  *
- *	Contains:
- *		Empty box, starter boxes (survival/engineer),
- *		Latex glove and sterile mask boxes,
- *		Syringe, beaker, dna injector boxes,
- *		Blanks, flashbangs, and EMP grenade boxes,
- *		Tracking and chemical implant boxes,
- *		Prescription glasses and drinking glass boxes,
- *		Condiment bottle and silly cup boxes,
- *		Donkpocket and monkeycube boxes,
- *		ID and security PDA cart boxes,
- *		Handcuff, mousetrap, and pillbottle boxes,
- *		Snap-pops and matchboxes,
- *		Replacement light boxes.
+ * Contains:
+ * Empty box, starter boxes (survival/engineer),
+ * Latex glove and sterile mask boxes,
+ * Syringe, beaker, dna injector boxes,
+ * Blanks, flashbangs, and EMP grenade boxes,
+ * Tracking and chemical implant boxes,
+ * Prescription glasses and drinking glass boxes,
+ * Condiment bottle and silly cup boxes,
+ * Donkpocket and monkeycube boxes,
+ * ID and security PDA cart boxes,
+ * Handcuff, mousetrap, and pillbottle boxes,
+ * Snap-pops and matchboxes,
+ * Replacement light boxes.
  *
- *		For syndicate call-ins see uplink_kits.dm
+ * For syndicate call-ins see uplink_kits.dm
  *
  *  EDITED BY APOPHIS 09OCT2015 to prevent in-game abuse of boxes.
  */
@@ -148,7 +148,7 @@
 	if(SSticker.mode && MODE_HAS_FLAG(MODE_FACTION_CLASH))
 		handle_delete_clash_contents()
 	else if(SSticker.current_state < GAME_STATE_PLAYING)
-		RegisterSignal(SSdcs, COMSIG_GLOB_MODE_PRESETUP, .proc/handle_delete_clash_contents)
+		RegisterSignal(SSdcs, COMSIG_GLOB_MODE_PRESETUP, PROC_REF(handle_delete_clash_contents))
 
 /obj/item/storage/box/flashbangs/proc/handle_delete_clash_contents()
 	if(MODE_HAS_FLAG(MODE_FACTION_CLASH))
@@ -375,6 +375,25 @@
 	new /obj/item/handcuffs/zip(src)
 	new /obj/item/handcuffs/zip(src)
 
+/obj/item/storage/box/tapes
+	name = "box of regulation tapes"
+	desc = "A box full of magnetic tapes for tape recorders. Contains 10 hours and 40 minutes of recording space!"
+
+/obj/item/storage/box/tapes/fill_preset_inventory()
+	new /obj/item/tape/regulation(src)
+	new /obj/item/tape/regulation(src)
+	new /obj/item/tape/regulation(src)
+	new /obj/item/tape/regulation(src)
+	new /obj/item/tape/regulation(src)
+	new /obj/item/tape/regulation(src)
+	new /obj/item/tape/regulation(src)
+	new /obj/item/tape/regulation(src)
+	new /obj/item/tape/regulation(src)
+	new /obj/item/tape/regulation(src)
+	new /obj/item/tape/regulation(src)
+	new /obj/item/tape/regulation(src)
+	new /obj/item/tape/regulation(src)
+	new /obj/item/tape/regulation(src)
 
 /obj/item/storage/box/mousetraps
 	name = "box of Pest-B-Gon mousetraps"
@@ -451,9 +470,9 @@
 	foldable = /obj/item/stack/sheet/cardboard //BubbleWrap
 	can_hold = list(
 		/obj/item/light_bulb/tube,
-		/obj/item/light_bulb/bulb
+		/obj/item/light_bulb/bulb,
 	)
-	max_storage_space = 42	//holds 21 items of w_class 2
+	max_storage_space = 42 //holds 21 items of w_class 2
 	storage_flags = STORAGE_FLAGS_BOX|STORAGE_CLICK_GATHER
 
 /obj/item/storage/box/lights/bulbs/fill_preset_inventory()
@@ -565,9 +584,9 @@
 	w_class = SIZE_LARGE
 	storage_slots = 25
 	max_storage_space = 50
-	can_hold = list(/obj/item/explosive/grenade/HE)
+	can_hold = list(/obj/item/explosive/grenade/high_explosive)
 	var/base_icon
-	var/grenade_type = /obj/item/explosive/grenade/HE
+	var/grenade_type = /obj/item/explosive/grenade/high_explosive
 	has_gamemode_skin = TRUE
 
 /obj/item/storage/box/nade_box/post_skin_selection()
@@ -592,8 +611,8 @@
 	w_class = SIZE_LARGE
 	storage_slots = 25
 	max_storage_space = 50
-	can_hold = list(/obj/item/explosive/grenade/HE/frag)
-	grenade_type = /obj/item/explosive/grenade/HE/frag
+	can_hold = list(/obj/item/explosive/grenade/high_explosive/frag)
+	grenade_type = /obj/item/explosive/grenade/high_explosive/frag
 	has_gamemode_skin = FALSE
 
 /obj/item/storage/box/nade_box/phophorus
@@ -614,16 +633,16 @@
 	w_class = SIZE_LARGE
 	storage_slots = 25
 	max_storage_space = 50
-	can_hold = list(/obj/item/explosive/grenade/HE/airburst)
-	grenade_type = /obj/item/explosive/grenade/HE/airburst
+	can_hold = list(/obj/item/explosive/grenade/high_explosive/airburst)
+	grenade_type = /obj/item/explosive/grenade/high_explosive/airburst
 	has_gamemode_skin = FALSE
 
 /obj/item/storage/box/nade_box/training
 	name = "\improper M07 training grenade box"
 	desc = "A secure box holding 25 M07 training grenades. Harmless and reusable."
 	icon_state = "train_nade_placeholder"
-	grenade_type = /obj/item/explosive/grenade/HE/training
-	can_hold = list(/obj/item/explosive/grenade/HE/training)
+	grenade_type = /obj/item/explosive/grenade/high_explosive/training
+	can_hold = list(/obj/item/explosive/grenade/high_explosive/training)
 	has_gamemode_skin = FALSE
 
 /obj/item/storage/box/nade_box/tear_gas
@@ -639,7 +658,7 @@
 	if(SSticker.mode && MODE_HAS_FLAG(MODE_FACTION_CLASH))
 		handle_delete_clash_contents()
 	else if(SSticker.current_state < GAME_STATE_PLAYING)
-		RegisterSignal(SSdcs, COMSIG_GLOB_MODE_PRESETUP, .proc/handle_delete_clash_contents)
+		RegisterSignal(SSdcs, COMSIG_GLOB_MODE_PRESETUP, PROC_REF(handle_delete_clash_contents))
 
 /obj/item/storage/box/nade_box/tear_gas/proc/handle_delete_clash_contents()
 	if(MODE_HAS_FLAG(MODE_FACTION_CLASH))

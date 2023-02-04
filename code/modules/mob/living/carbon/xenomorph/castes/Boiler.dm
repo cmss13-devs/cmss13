@@ -4,7 +4,7 @@
 
 	melee_damage_lower = XENO_DAMAGE_TIER_1
 	melee_damage_upper = XENO_DAMAGE_TIER_2
-	melee_vehicle_damage = XENO_DAMAGE_TIER_6	//being a T3 AND an acid-focused xeno, gets higher damage for self defense
+	melee_vehicle_damage = XENO_DAMAGE_TIER_6 //being a T3 AND an acid-focused xeno, gets higher damage for self defense
 	max_health = XENO_HEALTH_TIER_8
 	plasma_gain = XENO_PLASMA_GAIN_TIER_7
 	plasma_max = XENO_PLASMA_TIER_4
@@ -28,7 +28,7 @@
 	tacklestrength_min = 3
 	tacklestrength_max = 4
 
-/mob/living/carbon/Xenomorph/Boiler
+/mob/living/carbon/xenomorph/boiler
 	caste_type = XENO_CASTE_BOILER
 	name = XENO_CASTE_BOILER
 	desc = "A huge, grotesque xenomorph covered in glowing, oozing acid slime."
@@ -64,7 +64,7 @@
 		/datum/action/xeno_action/onclick/toggle_long_range/boiler, //4th macro
 	)
 
-/mob/living/carbon/Xenomorph/Boiler/Initialize(mapload, mob/living/carbon/Xenomorph/oldXeno, h_number)
+/mob/living/carbon/xenomorph/boiler/Initialize(mapload, mob/living/carbon/xenomorph/oldxeno, h_number)
 	. = ..()
 	smoke = new /datum/effect_system/smoke_spread/xeno_acid
 	smoke.attach(src)
@@ -74,7 +74,7 @@
 
 	update_icon_source()
 
-/mob/living/carbon/Xenomorph/Boiler/Destroy()
+/mob/living/carbon/xenomorph/boiler/Destroy()
 	if(smoke)
 		qdel(smoke)
 		smoke = null

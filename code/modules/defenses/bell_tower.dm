@@ -17,6 +17,14 @@
 
 	can_be_near_defense = TRUE
 
+	choice_categories = list(
+		SENTRY_CATEGORY_IFF = list(FACTION_USCM, FACTION_WEYLAND, FACTION_HUMAN),
+	)
+
+	selected_categories = list(
+		SENTRY_CATEGORY_IFF = FACTION_USCM,
+	)
+
 
 /obj/structure/machinery/defenses/bell_tower/Initialize()
 	. = ..()
@@ -58,7 +66,7 @@
 /obj/structure/machinery/defenses/bell_tower/proc/clear_last_mob_activated()
 	last_mob_activated = null
 
-/obj/structure/machinery/defenses/bell_tower/proc/mob_crossed(var/mob/M)
+/obj/structure/machinery/defenses/bell_tower/proc/mob_crossed(mob/M)
 	playsound(loc, 'sound/misc/bell.ogg', 50, 0, 50)
 
 /obj/structure/machinery/defenses/bell_tower/Destroy()
@@ -73,13 +81,13 @@
 /obj/effect/bell_tripwire
 	name = "bell tripwire"
 	anchored = TRUE
-	mouse_opacity = 0
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	invisibility = 101
 	unacidable = TRUE
 	var/obj/structure/machinery/defenses/bell_tower/linked_bell
 	var/faction = FACTION_LIST_MARINE
 
-/obj/effect/bell_tripwire/New(var/turf/T, var/faction = null)
+/obj/effect/bell_tripwire/New(turf/T, faction = null)
 	..(T)
 	if(faction)
 		src.faction = faction
@@ -90,7 +98,7 @@
 		linked_bell = null
 	. = ..()
 
-/obj/effect/bell_tripwire/Crossed(var/atom/movable/A)
+/obj/effect/bell_tripwire/Crossed(atom/movable/A)
 	if(!linked_bell)
 		qdel(src)
 		return
@@ -119,7 +127,7 @@
 	linked_bell.last_mob_activated = M
 
 	// Clear last mob after 4 times the length of the cooldown timer, about 6 seconds
-	addtimer(CALLBACK(linked_bell, /obj/structure/machinery/defenses/bell_tower.proc/clear_last_mob_activated), 4 * BELL_TOWER_COOLDOWN, TIMER_UNIQUE|TIMER_OVERRIDE)
+	addtimer(CALLBACK(linked_bell, TYPE_PROC_REF(/obj/structure/machinery/defenses/bell_tower, clear_last_mob_activated)), 4 * BELL_TOWER_COOLDOWN, TIMER_UNIQUE|TIMER_OVERRIDE)
 
 	if(!linked_bell.flick_image)
 		linked_bell.flick_image = image(linked_bell.icon, icon_state = "[linked_bell.defense_type] bell_tower_alert")
@@ -204,7 +212,7 @@
 			cloak_alpha_current = cloak_alpha_max
 		cloak_alpha_current = Clamp(cloak_alpha_current + incremental_ring_camo_penalty, cloak_alpha_max, 255)
 		cloakebelltower.alpha = cloak_alpha_current
-		addtimer(CALLBACK(src, .proc/cloaker_fade_out_finish, cloakebelltower), camouflage_break, TIMER_OVERRIDE|TIMER_UNIQUE)
+		addtimer(CALLBACK(src, PROC_REF(cloaker_fade_out_finish), cloakebelltower), camouflage_break, TIMER_OVERRIDE|TIMER_UNIQUE)
 		animate(cloakebelltower, alpha = cloak_alpha_max, time = camouflage_break, easing = LINEAR_EASING, flags = ANIMATION_END_NOW)
 
 /obj/structure/machinery/defenses/bell_tower/cloaker/proc/cloaker_fade_out_finish()
@@ -253,7 +261,7 @@
 	if(!targets)
 		return
 
-	for(var/mob/living/carbon/Xenomorph/X in targets)
+	for(var/mob/living/carbon/xenomorph/X in targets)
 		to_chat(X, SPAN_XENOWARNING("Augh! You are slowed by the incessant ringing!"))
 		X.set_effect(slowdown_amount, SUPERSLOW)
 		playsound(X, 'sound/misc/bell.ogg', 25, 0, 13)

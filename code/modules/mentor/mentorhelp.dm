@@ -33,7 +33,7 @@
 	return ..()
 
 /*
- *    Helpers
+ * Helpers
  */
 
 // Helper to check that the author is still around
@@ -88,7 +88,7 @@
 /datum/mentorhelp/proc/broadcast_unhandled(msg, client/sender)
 	if(!mentor && open)
 		message_handlers(msg, sender)
-		addtimer(CALLBACK(src, .proc/broadcast_unhandled, msg, sender), 5 MINUTES)
+		addtimer(CALLBACK(src, PROC_REF(broadcast_unhandled), msg, sender), 5 MINUTES)
 
 /datum/mentorhelp/proc/message_handlers(msg, client/sender, client/recipient, with_sound = TRUE, staff_only = FALSE, include_keys = TRUE)
 	if(!sender || !check_author())
@@ -182,7 +182,7 @@
 	return (message_header + message_body)
 
 /*
- *    Marking
+ * Marking
  */
 
 // Marks the mentorhelp thread and notifies the author that the thread is being responded to
@@ -233,7 +233,7 @@
 	mentor = null
 
 /*
- *    Misc.
+ * Misc.
  */
 
 // Closes the thread and notifies the author/mentor that it has been closed
@@ -283,12 +283,12 @@
 				close(C)
 
 /*
- *    Autoresponse
- *    Putting this here cause it's long and ugly
+ * Autoresponse
+ * Putting this here cause it's long and ugly
  */
 
 // responder is the guy responding to the thread, i.e. the mentor triggering the autoresponse
-/datum/mentorhelp/proc/autoresponse(var/client/responder)
+/datum/mentorhelp/proc/autoresponse(client/responder)
 	if(!check_author())
 		return
 

@@ -1,4 +1,4 @@
-/mob/living/silicon/robot/emote(var/act,var/m_type=1,var/message = null, player_caused)
+/mob/living/silicon/robot/emote(act, m_type=1, message = null, player_caused)
 	var/param = null
 	if(findtext(act, "-", 1, null))
 		var/t1 = findtext(act, "-", 1, null)
@@ -266,7 +266,7 @@
 			to_chat(src, SPAN_NOTICE(" Unusable emote '[act]'. Say *help for a list."))
 
 	if((message && stat == CONSCIOUS))
-		if(m_type & 1)
+		if(m_type & SHOW_MESSAGE_VISIBLE)
 			for(var/mob/O in viewers(src, null))
 				O.show_message(message, m_type)
 		else

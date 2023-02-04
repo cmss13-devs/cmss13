@@ -1,4 +1,4 @@
-/mob/living/carbon/Xenomorph/emote(var/act, var/m_type = 1, var/message = null, player_caused)
+/mob/living/carbon/xenomorph/emote(act, m_type = 1, message = null, player_caused)
 	if(findtext(act, "-", 1, null))
 		var/t1 = findtext(act, "-", 1, null)
 		act = copytext(act, 1, t1)
@@ -21,13 +21,13 @@
 				return
 			if(!message)
 				return
-			return INVOKE_ASYNC(src, /mob.proc/custom_emote, m_type, message, player_caused)
+			return INVOKE_ASYNC(src, TYPE_PROC_REF(/mob, custom_emote), m_type, message, player_caused)
 
 		if("custom")
-			return INVOKE_ASYNC(src, /mob.proc/custom_emote, m_type, message, player_caused)
+			return INVOKE_ASYNC(src, TYPE_PROC_REF(/mob, custom_emote), m_type, message, player_caused)
 
 		if("growl")
-			if(isXenoPredalien(src))
+			if(ispredalien(src))
 				emote_audio_helper("<B>The [name]</B> growls.", 'sound/voice/predalien_growl.ogg', 25, player_caused)
 				return
 
@@ -35,7 +35,7 @@
 			return
 
 		if("hiss")
-			if(isXenoPredalien(src))
+			if(ispredalien(src))
 				emote_audio_helper("<B>The [name]</B> hisses.", 'sound/voice/predalien_hiss.ogg', 25, player_caused)
 				return
 
@@ -47,7 +47,7 @@
 			return
 
 		if("roar")
-			if(isXenoPredalien(src))
+			if(ispredalien(src))
 				emote_audio_helper("<B>The [name]</B> roars!", 'sound/voice/predalien_roar.ogg', 40, player_caused)
 				return
 
@@ -62,7 +62,7 @@
 		if("dance")
 
 			if(!is_mob_restrained())
-			//	message = "<B>The [name]</B> dances around!"
+			// message = "<B>The [name]</B> dances around!"
 				m_type = 1
 				spawn(0)
 					for(var/i in list(1,2,4,8,4,2,1,2,4,8,4,2,1,2,4,8,4,2,1,2,4,8,4,2,1,2,4,8,4,2,1,2,4,8,4,2,1,2,4,8,4,2,1,2))
@@ -87,14 +87,14 @@
 
 	if(message)
 		log_emote("[name]/[key] : [message]")
-		if(m_type & 1)
+		if(m_type & SHOW_MESSAGE_VISIBLE)
 			for(var/mob/O in viewers(src, null))
 				O.show_message(message, m_type)
 		else
 			for(var/mob/O in hearers(src, null))
 				O.show_message(message, m_type)
 
-/mob/living/carbon/Xenomorph/proc/emote_audio_helper(var/message, var/sound_to_play, var/volume = 15, var/player_caused)
+/mob/living/carbon/xenomorph/proc/emote_audio_helper(message, sound_to_play, volume = 15, player_caused)
 	if(recent_audio_emote && player_caused)
 		to_chat(src, "You just did an audible emote. Wait a while.")
 		return
@@ -106,10 +106,10 @@
 
 	log_emote("[name]/[key] : [message]")
 	for(var/mob/O in hearers(src, null))
-		O.show_message(message, 2)
+		O.show_message(message, SHOW_MESSAGE_AUDIBLE)
 
 
-/mob/living/carbon/Xenomorph/Larva/emote(var/act, var/m_type = 1, var/message = null, player_caused)
+/mob/living/carbon/xenomorph/larva/emote(act, m_type = 1, message = null, player_caused)
 	if(findtext(act, "-", 1, null))
 		var/t1 = findtext(act, "-", 1, null)
 		act = copytext(act, 1, t1)
@@ -120,7 +120,7 @@
 	playsound(loc, "alien_roar_larva", 15)
 	return
 
-/mob/living/carbon/Xenomorph/Facehugger/emote(var/act, var/m_type = 1, var/message = null, player_caused)
+/mob/living/carbon/xenomorph/facehugger/emote(act, m_type = 1, message = null, player_caused)
 	if(findtext(act, "-", 1, null))
 		var/t1 = findtext(act, "-", 1, null)
 		act = copytext(act, 1, t1)

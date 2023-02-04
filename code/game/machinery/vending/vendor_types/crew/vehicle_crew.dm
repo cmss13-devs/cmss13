@@ -12,7 +12,7 @@
 
 	unslashable = TRUE
 
-	vend_delay = 40
+	vend_delay = 4 SECONDS
 	vend_sound = 'sound/machines/medevac_extend.ogg'
 
 	var/selected_vehicle
@@ -25,16 +25,16 @@
 
 /obj/structure/machinery/cm_vending/gear/vehicle_crew/Initialize(mapload, ...)
 	. = ..()
-	RegisterSignal(SSdcs, COMSIG_GLOB_VEHICLE_ORDERED, .proc/populate_products)
+	RegisterSignal(SSdcs, COMSIG_GLOB_VEHICLE_ORDERED, PROC_REF(populate_products))
 	if(!VehicleGearConsole)
 		VehicleGearConsole = src
 
-/obj/structure/machinery/cm_vending/gear/vehicle_crew/get_appropriate_vend_turf(var/mob/living/carbon/human/H)
+/obj/structure/machinery/cm_vending/gear/vehicle_crew/get_appropriate_vend_turf(mob/living/carbon/human/H)
 	var/turf/T = loc
 	T = get_step(T, SOUTH)
 	return T
 
-/obj/structure/machinery/cm_vending/gear/vehicle_crew/tip_over()	//we don't do this here
+/obj/structure/machinery/cm_vending/gear/vehicle_crew/tip_over() //we don't do this here
 	return
 
 /obj/structure/machinery/cm_vending/gear/vehicle_crew/flip_back()
@@ -51,7 +51,7 @@
 	UnregisterSignal(SSdcs, COMSIG_GLOB_VEHICLE_ORDERED)
 
 	selected_vehicle = "APC"
-	available_categories &= ~(VEHICLE_ARMOR_AVAILABLE|VEHICLE_INTEGRAL_AVAILABLE)	//APC lacks these, so we need to remove these flags to be able to access spare parts section
+	available_categories &= ~(VEHICLE_ARMOR_AVAILABLE|VEHICLE_INTEGRAL_AVAILABLE) //APC lacks these, so we need to remove these flags to be able to access spare parts section
 
 /obj/structure/machinery/cm_vending/gear/vehicle_crew/get_listed_products(mob/user)
 	var/list/display_list = list()
@@ -72,7 +72,7 @@
 	else if(selected_vehicle == "APC")
 		if(available_categories)
 			display_list = GLOB.cm_vending_vehicle_crew_apc
-		else		//APC stuff costs more to prevent 4000 points spent on shitton of ammunition
+		else //APC stuff costs more to prevent 4000 points spent on shitton of ammunition
 			display_list = GLOB.cm_vending_vehicle_crew_apc_spare
 	return display_list
 
@@ -80,7 +80,7 @@
 	. = list()
 	. += ui_static_data(user)
 
-	if(supply_controller.tank_points)		//we steal points from supply_controller, meh-he-he. Solely to be able to modify amount of points in vendor if needed by just changing one var.
+	if(supply_controller.tank_points) //we steal points from supply_controller, meh-he-he. Solely to be able to modify amount of points in vendor if needed by just changing one var.
 		available_points_to_display = supply_controller.tank_points
 		supply_controller.tank_points = 0
 	.["current_m_points"] = available_points_to_display
@@ -88,7 +88,7 @@
 	var/list/ui_listed_products = get_listed_products(user)
 	var/list/stock_values = list()
 	for (var/i in 1 to length(ui_listed_products))
-		var/list/myprod = ui_listed_products[i]	//we take one list from listed_products
+		var/list/myprod = ui_listed_products[i] //we take one list from listed_products
 		var/prod_available = FALSE
 		var/p_cost = myprod[2]
 		var/avail_flag = myprod[4]
@@ -98,7 +98,7 @@
 
 	.["stock_listing"] = stock_values
 
-/obj/structure/machinery/cm_vending/gear/vehicle_crew/handle_points(var/mob/living/carbon/human/H, var/list/L)
+/obj/structure/machinery/cm_vending/gear/vehicle_crew/handle_points(mob/living/carbon/human/H, list/L)
 	. = TRUE
 	if(available_categories)
 		if(!(available_categories & L[4]))
@@ -113,7 +113,7 @@
 			return FALSE
 		budget_points -= L[2]
 
-/obj/structure/machinery/cm_vending/gear/vehicle_crew/get_appropriate_vend_turf(var/mob/living/carbon/human/H)
+/obj/structure/machinery/cm_vending/gear/vehicle_crew/get_appropriate_vend_turf(mob/living/carbon/human/H)
 	var/turf/T = get_turf(src)
 	T = get_step(T, SOUTH)
 	return T
@@ -247,6 +247,7 @@ GLOBAL_LIST_INIT(cm_vending_vehicle_crew_apc_spare, list(
 	icon_state = "guns"
 	req_access = list(ACCESS_MARINE_CREWMAN)
 	vendor_role = list(JOB_CREWMAN)
+	vend_flags = VEND_CLUTTER_PROTECTION | VEND_LIMITED_INVENTORY | VEND_TO_HAND
 
 	listed_products = list(
 		list("PRIMARY FIREARMS", -1, null, null),
@@ -290,7 +291,7 @@ GLOBAL_LIST_INIT(cm_vending_vehicle_crew_apc_spare, list(
 		list("Machete Scabbard (Full)", 2, /obj/item/storage/large_holster/machete/full, VENDOR_ITEM_REGULAR)
 	)
 
-/obj/structure/machinery/cm_vending/sorted/cargo_guns/vehicle_crew/populate_product_list(var/scale)
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/vehicle_crew/populate_product_list(scale)
 	return
 
 //------------CLOTHING RACK---------------
@@ -362,7 +363,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_vehicle_crew, list(
 		list("L42A AP Magazine (10x24mm)", 10, /obj/item/ammo_magazine/rifle/l42a/ap, null, VENDOR_ITEM_REGULAR),
 		list("M39 AP Magazine (10x20mm)", 10, /obj/item/ammo_magazine/smg/m39/ap , null, VENDOR_ITEM_REGULAR),
 		list("M39 Extended Magazine (10x20mm)", 10, /obj/item/ammo_magazine/smg/m39/extended , null, VENDOR_ITEM_REGULAR),
-		list("M40 HEDP Grenade", 10, /obj/item/explosive/grenade/HE, null, VENDOR_ITEM_REGULAR),
+		list("M40 HEDP Grenade", 10, /obj/item/explosive/grenade/high_explosive, null, VENDOR_ITEM_REGULAR),
 		list("M41A AP Magazine (10x24mm)", 10, /obj/item/ammo_magazine/rifle/ap , null, VENDOR_ITEM_REGULAR),
 		list("M41A Extended Magazine (10x24mm)", 10, /obj/item/ammo_magazine/rifle/extended , null, VENDOR_ITEM_REGULAR),
 		list("M44 Heavy Speed Loader (.44)", 10, /obj/item/ammo_magazine/revolver/heavy, null, VENDOR_ITEM_REGULAR),
@@ -399,14 +400,14 @@ GLOBAL_LIST_INIT(cm_vending_clothing_vehicle_crew, list(
 		/obj/item/ammo_magazine/hardpoint/ltb_cannon,
 		/obj/item/ammo_magazine/hardpoint/ltb_cannon,
 		/obj/item/ammo_magazine/hardpoint/ltb_cannon,
-		/obj/item/ammo_magazine/hardpoint/ltb_cannon
+		/obj/item/ammo_magazine/hardpoint/ltb_cannon,
 	)
 
 /obj/effect/essentials_set/tank/gatling
 	spawned_gear_list = list(
 		/obj/item/hardpoint/primary/minigun,
 		/obj/item/ammo_magazine/hardpoint/ltaaap_minigun,
-		/obj/item/ammo_magazine/hardpoint/ltaaap_minigun
+		/obj/item/ammo_magazine/hardpoint/ltaaap_minigun,
 	)
 
 /obj/effect/essentials_set/tank/dragonflamer
@@ -422,26 +423,26 @@ GLOBAL_LIST_INIT(cm_vending_clothing_vehicle_crew, list(
 		/obj/item/ammo_magazine/hardpoint/ace_autocannon,
 		/obj/item/ammo_magazine/hardpoint/ace_autocannon,
 		/obj/item/ammo_magazine/hardpoint/ace_autocannon,
-		/obj/item/ammo_magazine/hardpoint/ace_autocannon
+		/obj/item/ammo_magazine/hardpoint/ace_autocannon,
 	)
 
 /obj/effect/essentials_set/tank/tankflamer
 	spawned_gear_list = list(
 		/obj/item/hardpoint/secondary/small_flamer,
-		/obj/item/ammo_magazine/hardpoint/secondary_flamer
+		/obj/item/ammo_magazine/hardpoint/secondary_flamer,
 	)
 
 /obj/effect/essentials_set/tank/tow
 	spawned_gear_list = list(
 		/obj/item/hardpoint/secondary/towlauncher,
 		/obj/item/ammo_magazine/hardpoint/towlauncher,
-		/obj/item/ammo_magazine/hardpoint/towlauncher
+		/obj/item/ammo_magazine/hardpoint/towlauncher,
 	)
 
 /obj/effect/essentials_set/tank/m56cupola
 	spawned_gear_list = list(
 		/obj/item/hardpoint/secondary/m56cupola,
-		/obj/item/ammo_magazine/hardpoint/m56_cupola
+		/obj/item/ammo_magazine/hardpoint/m56_cupola,
 	)
 
 /obj/effect/essentials_set/tank/tankgl
@@ -450,14 +451,14 @@ GLOBAL_LIST_INIT(cm_vending_clothing_vehicle_crew, list(
 		/obj/item/ammo_magazine/hardpoint/tank_glauncher,
 		/obj/item/ammo_magazine/hardpoint/tank_glauncher,
 		/obj/item/ammo_magazine/hardpoint/tank_glauncher,
-		/obj/item/ammo_magazine/hardpoint/tank_glauncher
+		/obj/item/ammo_magazine/hardpoint/tank_glauncher,
 	)
 
 /obj/effect/essentials_set/tank/turret
 	spawned_gear_list = list(
 		/obj/item/hardpoint/holder/tank_turret,
 		/obj/item/ammo_magazine/hardpoint/turret_smoke,
-		/obj/item/ammo_magazine/hardpoint/turret_smoke
+		/obj/item/ammo_magazine/hardpoint/turret_smoke,
 	)
 
 /obj/effect/essentials_set/apc/dualcannon
@@ -466,13 +467,13 @@ GLOBAL_LIST_INIT(cm_vending_clothing_vehicle_crew, list(
 		/obj/item/ammo_magazine/hardpoint/boyars_dualcannon,
 		/obj/item/ammo_magazine/hardpoint/boyars_dualcannon,
 		/obj/item/ammo_magazine/hardpoint/boyars_dualcannon,
-		/obj/item/ammo_magazine/hardpoint/boyars_dualcannon
+		/obj/item/ammo_magazine/hardpoint/boyars_dualcannon,
 	)
 
 /obj/effect/essentials_set/apc/frontalcannon
 	spawned_gear_list = list(
 		/obj/item/hardpoint/secondary/frontalcannon,
-		/obj/item/ammo_magazine/hardpoint/m56_cupola/frontal_cannon
+		/obj/item/ammo_magazine/hardpoint/m56_cupola/frontal_cannon,
 	)
 
 /obj/effect/essentials_set/apc/flarelauncher
@@ -480,5 +481,5 @@ GLOBAL_LIST_INIT(cm_vending_clothing_vehicle_crew, list(
 		/obj/item/hardpoint/support/flare_launcher,
 		/obj/item/ammo_magazine/hardpoint/flare_launcher,
 		/obj/item/ammo_magazine/hardpoint/flare_launcher,
-		/obj/item/ammo_magazine/hardpoint/flare_launcher
+		/obj/item/ammo_magazine/hardpoint/flare_launcher,
 	)

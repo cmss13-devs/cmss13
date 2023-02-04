@@ -12,7 +12,7 @@
 	. = ..()
 	arrival_message = "Incoming Transmission: 'Heard your distress call, [MAIN_SHIP_NAME]. It had best be something which will look good on my wall, eh? Tally ho!'"
 
-/datum/emergency_call/van_bandolier/create_member(datum/mind/M, var/turf/override_spawn_loc)
+/datum/emergency_call/van_bandolier/create_member(datum/mind/M, turf/override_spawn_loc)
 	var/turf/spawn_loc = override_spawn_loc ? override_spawn_loc : get_spawn_point()
 
 	if(!istype(spawn_loc))
@@ -29,4 +29,4 @@
 	game wherever you can find it. You've heard grisly tales of murderous xenomorphs, triggerhappy soldiers, and bloodthirsty alien hunters (who sound like they have \
 	the right idea, not like those ghastly Arcturians at all!) but so far all you've potted has been penny-ante stuff. \n\n Whether you recruit the natives for \
 	porters, beaters, and guides, or hunt them for sport, is entirely up to you. They'll point you at something excellent if they know what's good for them.\n\n "))
-	addtimer(CALLBACK(GLOBAL_PROC, .proc/to_chat, H, SPAN_BOLD("Objectives: [objectives]")), 1 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), H, SPAN_BOLD("Objectives: [objectives]")), 1 SECONDS)

@@ -4,7 +4,7 @@
 	icon = 'icons/obj/structures/barricades.dmi'
 	climbable = TRUE
 	anchored = TRUE
-	density = 1
+	density = TRUE
 	throwpass = TRUE //You can throw objects over this, despite its density.
 	layer = BELOW_OBJ_LAYER
 	flags_atom = ON_BORDER
@@ -13,7 +13,7 @@
 	var/destroyed_stack_amount //to specify a non-zero amount of stack to drop when destroyed
 	health = 100 //Pretty tough. Changes sprites at 300 and 150
 	var/maxhealth = 100 //Basic code functions
-	 /// Used for calculating some stuff related to maxhealth as it constantly changes due to e.g. barbed wire. set to 100 to avoid possible divisions by zero
+	/// Used for calculating some stuff related to maxhealth as it constantly changes due to e.g. barbed wire. set to 100 to avoid possible divisions by zero
 	var/starting_maxhealth = 100
 	var/crusher_resistant = TRUE //Whether a crusher can ram through it.
 	var/force_level_absorption = 5 //How much force an item needs to even damage it at all.
@@ -37,10 +37,10 @@
 	. = ..()
 	if(user)
 		user.count_niche_stat(STATISTICS_NICHE_CADES)
-	addtimer(CALLBACK(src, .proc/update_icon), 0)
+	addtimer(CALLBACK(src, PROC_REF(update_icon)), 0)
 	starting_maxhealth = maxhealth
 
-/obj/structure/barricade/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/obj/structure/barricade/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_can_pass_all = NONE
@@ -119,8 +119,8 @@
 /obj/structure/barricade/Collided(atom/movable/AM)
 	..()
 
-	if(istype(AM, /mob/living/carbon/Xenomorph/Crusher))
-		var/mob/living/carbon/Xenomorph/Crusher/C = AM
+	if(istype(AM, /mob/living/carbon/xenomorph/crusher))
+		var/mob/living/carbon/xenomorph/crusher/C = AM
 
 		if (!C.throwing)
 			return
@@ -136,10 +136,10 @@
 			playsound(src, barricade_hitsound, 25, TRUE)
 
 /*
- *	Checks whether an atom can leave its current turf through the barricade.
- *	Returns the blocking direction.
- *		If the atom's movement is not blocked, returns 0.
- *		If the object is completely solid, returns ALL
+ * Checks whether an atom can leave its current turf through the barricade.
+ * Returns the blocking direction.
+ * If the atom's movement is not blocked, returns 0.
+ * If the object is completely solid, returns ALL
  */
 /obj/structure/barricade/BlockedExitDirs(atom/movable/mover, target_dir)
 	if(closed)
@@ -148,13 +148,13 @@
 	return ..()
 
 /*
- *	Checks whether an atom can pass through the barricade into its target turf.
- *	Returns the blocking direction.
- *		If the atom's movement is not blocked, returns 0.
- *		If the object is completely solid, returns ALL
+ * Checks whether an atom can pass through the barricade into its target turf.
+ * Returns the blocking direction.
+ * If the atom's movement is not blocked, returns 0.
+ * If the object is completely solid, returns ALL
  *
- *	Would be worth checking whether it is really necessary to have this CanPass
- *	proc be specific to barricades. Instead, have flags for blocking specific
+ * Would be worth checking whether it is really necessary to have this CanPass
+ * proc be specific to barricades. Instead, have flags for blocking specific
  *  mobs.
  */
 /obj/structure/barricade/BlockedPassDirs(atom/movable/mover, target_dir)
@@ -318,20 +318,20 @@
 	visible_message(SPAN_WARNING("[src] is hit by the acid spray!"))
 	new /datum/effects/acid(src, null, null)
 
-/obj/structure/barricade/flamer_fire_act(var/dam = BURN_LEVEL_TIER_1)
+/obj/structure/barricade/flamer_fire_act(dam = BURN_LEVEL_TIER_1)
 	take_damage(dam * burn_multiplier)
 
 /obj/structure/barricade/proc/hit_barricade(obj/item/I)
 	take_damage(I.force * 0.5 * brute_multiplier)
 
-/obj/structure/barricade/proc/take_damage(var/damage)
+/obj/structure/barricade/proc/take_damage(damage)
 	for(var/obj/structure/barricade/B in get_step(src,dir)) //discourage double-stacking barricades by removing health from opposing barricade
 		if(B.dir == reverse_direction(dir))
 			B.update_health(damage)
 
 	update_health(damage)
 
-/obj/structure/barricade/proc/take_acid_damage(var/damage)
+/obj/structure/barricade/proc/take_acid_damage(damage)
 	take_damage(damage * burn_multiplier)
 
 /obj/structure/barricade/update_health(damage, nomessage)
@@ -392,7 +392,7 @@
 
 	rotate(usr,-1)
 
-/obj/structure/barricade/proc/rotate(var/mob/user, var/rotation_dir = -1)//-1 for clockwise, 1 for counter clockwise
+/obj/structure/barricade/proc/rotate(mob/user, rotation_dir = -1)//-1 for clockwise, 1 for counter clockwise
 	if(world.time <= user.next_move || !ishuman(user) || !Adjacent(user) || user.is_mob_incapacitated())
 		return
 
@@ -400,7 +400,7 @@
 		to_chat(usr, SPAN_WARNING("It is fastened to the floor, you can't rotate it!"))
 		return
 
-	user.next_move = world.time + 3	//slight spam prevention? you don't want every metal cade to turn into a doorway
+	user.next_move = world.time + 3 //slight spam prevention? you don't want every metal cade to turn into a doorway
 	setDir(turn(dir, 90 * rotation_dir))
 	update_icon()
 

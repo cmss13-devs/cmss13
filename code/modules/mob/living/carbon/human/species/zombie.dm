@@ -35,7 +35,7 @@
 	var/rare_moan = 'sound/hallucinations/veryfar_noise.ogg'
 	var/rare_variance = TRUE
 
-/datum/species/zombie/handle_post_spawn(var/mob/living/carbon/human/zombie)
+/datum/species/zombie/handle_post_spawn(mob/living/carbon/human/zombie)
 	zombie.set_languages(list("Zombie"))
 
 	zombie.faction = FACTION_ZOMBIE
@@ -76,13 +76,13 @@
 	Hu.remove_hud_from(zombie)
 
 
-/datum/species/zombie/handle_unique_behavior(var/mob/living/carbon/human/zombie)
+/datum/species/zombie/handle_unique_behavior(mob/living/carbon/human/zombie)
 	if(prob(5))
 		playsound(zombie.loc, basic_moan, 15, basic_variance)
 	else if(prob(5))
 		playsound(zombie.loc, rare_moan, 15, rare_variance)
 
-/datum/species/zombie/handle_death(var/mob/living/carbon/human/zombie, gibbed)
+/datum/species/zombie/handle_death(mob/living/carbon/human/zombie, gibbed)
 	set waitfor = 0
 
 	if(gibbed)
@@ -95,18 +95,18 @@
 			if(zombie.client)
 				zombie.play_screen_text("<span class='langchat' style=font-size:16pt;text-align:center valign='top'><u>You are dead...</u></span><br>You will rise again in one minute.", /atom/movable/screen/text/screen_text/command_order, rgb(155, 0, 200))
 			to_chat(zombie, SPAN_XENOWARNING("You fall... but your body is slowly regenerating itself."))
-			to_revive[WEAKREF(zombie)] = addtimer(CALLBACK(src, .proc/revive_from_death, zombie), 1 MINUTES, TIMER_STOPPABLE|TIMER_OVERRIDE|TIMER_UNIQUE)
+			to_revive[WEAKREF(zombie)] = addtimer(CALLBACK(src, PROC_REF(revive_from_death), zombie), 1 MINUTES, TIMER_STOPPABLE|TIMER_OVERRIDE|TIMER_UNIQUE)
 			revive_times[WEAKREF(zombie)] = world.time + 1 MINUTES
 		else
 			if(zombie.client)
 				zombie.play_screen_text("<span class='langchat' style=font-size:16pt;text-align:center valign='top'><u>You are dead...</u></span><br>You lost your head. No reviving for you.", /atom/movable/screen/text/screen_text/command_order, rgb(155, 0, 200))
 			to_chat(zombie, SPAN_XENOWARNING("You fall... headless, you will no longer rise."))
 
-/datum/species/zombie/handle_dead_death(var/mob/living/carbon/human/zombie, gibbed)
+/datum/species/zombie/handle_dead_death(mob/living/carbon/human/zombie, gibbed)
 	if(gibbed)
 		remove_from_revive(zombie)
 
-/datum/species/zombie/proc/revive_from_death(var/mob/living/carbon/human/zombie)
+/datum/species/zombie/proc/revive_from_death(mob/living/carbon/human/zombie)
 	if(zombie && zombie.loc && zombie.stat == DEAD)
 		zombie.revive(TRUE)
 		zombie.stunned = 4
@@ -117,21 +117,21 @@
 
 		handle_alert_ghost(zombie)
 
-		addtimer(CALLBACK(zombie, /mob/.proc/remove_jittery), 3 SECONDS)
+		addtimer(CALLBACK(zombie, TYPE_PROC_REF(/mob, remove_jittery)), 3 SECONDS)
 
-/datum/species/zombie/proc/handle_alert_ghost(var/mob/living/carbon/human/zombie)
+/datum/species/zombie/proc/handle_alert_ghost(mob/living/carbon/human/zombie)
 	var/mob/dead/observer/ghost = zombie.get_ghost()
 	if(ghost?.client)
 		playsound_client(ghost.client, 'sound/effects/adminhelp_new.ogg')
 		to_chat(ghost, SPAN_BOLDNOTICE(FONT_SIZE_LARGE("Your body has risen! (Verbs -> Ghost -> Re-enter corpse, or <a href='?src=\ref[ghost];reentercorpse=1'>click here!</a>)")))
 
-/datum/species/zombie/proc/remove_from_revive(var/mob/living/carbon/human/zombie)
+/datum/species/zombie/proc/remove_from_revive(mob/living/carbon/human/zombie)
 	if(WEAKREF(zombie) in to_revive)
 		deltimer(to_revive[WEAKREF(zombie)])
 		to_revive -= WEAKREF(zombie)
 	revive_times -= WEAKREF(zombie)
 
-/datum/species/zombie/get_status_tab_items(var/mob/living/carbon/human/zombie)
+/datum/species/zombie/get_status_tab_items(mob/living/carbon/human/zombie)
 	var/list/static_tab_items = list()
 	if(zombie.stat == DEAD)
 		var/revive_time = revive_times[WEAKREF(zombie)]
@@ -141,7 +141,7 @@
 			static_tab_items += "Time Till Revive: [duration2text_sec(revive_time_left)]"
 	return static_tab_items
 
-/datum/species/zombie/handle_head_loss(var/mob/living/carbon/human/zombie)
+/datum/species/zombie/handle_head_loss(mob/living/carbon/human/zombie)
 	if(WEAKREF(zombie) in to_revive)
 		remove_from_revive(zombie)
 		var/client/receiving_client = zombie.client

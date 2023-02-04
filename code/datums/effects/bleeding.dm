@@ -1,25 +1,25 @@
 #define BICAOD_BLOOD_REDUCTION 0.67 //15 OD ticks to heal 1 blood loss
 #define CRYO_BLOOD_REDUCTION 0.67
 #define THWEI_BLOOD_REDUCTION 0.75
-#define BLOOD_ADD_PENALTY	1.5
+#define BLOOD_ADD_PENALTY 1.5
 
 /datum/effects/bleeding
 	effect_name = "bleeding"
 	duration = null
 	flags = NO_PROCESS_ON_DEATH | DEL_ON_UNDEFIBBABLE
-	var/blood_loss = 0			//How much blood to lose every tick
+	var/blood_loss = 0 //How much blood to lose every tick
 	var/obj/limb/limb = null
 	var/blood_duration_multiplier = 2.5
 	var/blood_loss_divider = 80
 
-/datum/effects/bleeding/New(var/atom/A, var/obj/limb/L = null, var/damage = 0)
+/datum/effects/bleeding/New(atom/A, obj/limb/L = null, damage = 0)
 	..()
 	duration = damage * blood_duration_multiplier
 	blood_loss = damage / blood_loss_divider
 	if(L && istype(L))
 		limb = L
 
-/datum/effects/bleeding/validate_atom(var/atom/A)
+/datum/effects/bleeding/validate_atom(atom/A)
 	if(isobj(A))
 		return FALSE
 	. = ..()
@@ -43,7 +43,7 @@
 
 	return TRUE
 
-/datum/effects/bleeding/proc/add_on(var/damage)
+/datum/effects/bleeding/proc/add_on(damage)
 	if(damage)
 		duration += damage * (blood_duration_multiplier / BLOOD_ADD_PENALTY)
 		blood_loss += damage / (blood_loss_divider * BLOOD_ADD_PENALTY) //Make the first hit count, adding on bleeding has a penalty
@@ -77,7 +77,7 @@
 
 	return TRUE
 
-			
+
 /datum/effects/bleeding/internal
 	effect_name = "internal bleeding"
 	flags = INF_DURATION | NO_PROCESS_ON_DEATH | DEL_ON_UNDEFIBBABLE

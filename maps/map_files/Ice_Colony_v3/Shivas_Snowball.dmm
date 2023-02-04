@@ -1633,7 +1633,7 @@
 	},
 /area/shiva/interior/colony/medseceng)
 "agM" = (
-/obj/item/ammo_box/magazine/smg/nailgun,
+/obj/item/ammo_box/magazine/nailgun,
 /turf/open/auto_turf/snow/layer1,
 /area/shiva/exterior/cp_colony_grounds)
 "agR" = (
@@ -8444,7 +8444,7 @@
 /turf/open/auto_turf/snow/layer0,
 /area/shiva/interior/caves/cp_camp)
 "cov" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited{
 	pixel_x = 5;
 	pixel_y = -4
 	},
@@ -10205,7 +10205,7 @@
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/junkyard)
 "etm" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited{
 	pixel_y = 28
 	},
 /turf/open/floor/shiva{
@@ -11935,7 +11935,7 @@
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/caves/medseceng_caves)
 "gtx" = (
-/obj/item/explosive/grenade/HE/m15,
+/obj/item/explosive/grenade/high_explosive/m15,
 /turf/open/auto_turf/snow/layer0,
 /area/shiva/interior/warehouse)
 "gty" = (
@@ -13670,8 +13670,8 @@
 	},
 /area/shiva/interior/colony/botany)
 "iji" = (
-/obj/effect/landmark/corpsespawner/pmc,
 /obj/effect/decal/cleanable/blood/gibs/core,
+/obj/effect/landmark/corpsespawner/wygoon,
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/colony/central)
 "ijq" = (
@@ -14824,7 +14824,7 @@
 /area/shiva/exterior/lz1_valley)
 "jqT" = (
 /obj/structure/closet/firecloset,
-/obj/item/explosive/grenade/HE/PMC,
+/obj/item/explosive/grenade/high_explosive/pmc,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/shiva{
 	icon_state = "redfull"
@@ -14889,7 +14889,7 @@
 /turf/open/floor/carpet,
 /area/shiva/interior/colony/central)
 "jwa" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited{
 	pixel_y = 28
 	},
 /obj/structure/largecrate/random/case/small,
@@ -15739,7 +15739,7 @@
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/interior/colony/medseceng)
 "ksu" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited{
 	pixel_x = -32
 	},
 /obj/structure/bed/chair,
@@ -17944,7 +17944,7 @@
 "mEJ" = (
 /obj/structure/prop/souto_land/pole{
 	dir = 1;
-	layer = 4.0
+	layer = 4
 	},
 /obj/structure/prop/souto_land/streamer{
 	dir = 9

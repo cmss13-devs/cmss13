@@ -5,8 +5,8 @@
 	icon_state = "igniter1"
 	plane = FLOOR_PLANE
 	var/id = null
-	var/on = 1.0
-	anchored = 1.0
+	var/on = 1
+	anchored = TRUE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 2
 	active_power_usage = 4
@@ -24,11 +24,11 @@
 	src.icon_state = text("igniter[]", src.on)
 	return
 
-/obj/structure/machinery/igniter/process()	//ugh why is this even in process()?
-//	if (src.on && !(stat & NOPOWER) )
-//		var/turf/location = src.loc
-//		if (isturf(location))
-//			location.hotspot_expose(1000,500,1)
+/obj/structure/machinery/igniter/process() //ugh why is this even in process()?
+// if (src.on && !(stat & NOPOWER) )
+// var/turf/location = src.loc
+// if (isturf(location))
+// location.hotspot_expose(1000,500,1)
 	return 1
 
 /obj/structure/machinery/igniter/Initialize(mapload, ...)
@@ -53,17 +53,17 @@
 	var/disable = 0
 	var/last_spark = 0
 	var/base_state = "migniter"
-	anchored = 1
+	anchored = TRUE
 
 /obj/structure/machinery/sparker/power_change()
 	..()
 	if ( !(stat & NOPOWER) && disable == 0 )
 
 		icon_state = "[base_state]"
-//		src.sd_SetLuminosity(2)
+// src.sd_SetLuminosity(2)
 	else
 		icon_state = "[base_state]-p"
-//		src.sd_SetLuminosity(0)
+// src.sd_SetLuminosity(0)
 
 /obj/structure/machinery/sparker/attackby(obj/item/W as obj, mob/user as mob)
 	if (HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER))
@@ -99,9 +99,9 @@
 	s.start()
 	src.last_spark = world.time
 	use_power(1000)
-//	var/turf/location = src.loc
-//	if (isturf(location))
-//		location.hotspot_expose(1000,500,1)
+// var/turf/location = src.loc
+// if (isturf(location))
+// location.hotspot_expose(1000,500,1)
 	return 1
 
 /obj/structure/machinery/sparker/emp_act(severity)
@@ -127,7 +127,7 @@
 
 	for(var/obj/structure/machinery/sparker/M in machines)
 		if (M.id == src.id)
-			INVOKE_ASYNC(M, /obj/structure/machinery/sparker.proc/ignite)
+			INVOKE_ASYNC(M, TYPE_PROC_REF(/obj/structure/machinery/sparker, ignite))
 
 	for(var/obj/structure/machinery/igniter/M in machines)
 		if(M.id == src.id)

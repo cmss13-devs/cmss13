@@ -100,7 +100,6 @@
 "aq" = (
 /obj/structure/closet/secure_closet/CMO,
 /obj/item/device/healthanalyzer,
-
 /turf/open/floor{
 	tag = "icon-whitegreenfull";
 	icon_state = "whitegreenfull"
@@ -251,7 +250,6 @@
 /obj/item/stack/sheet/metal{
 	amount = 1
 	},
-
 /turf/open/floor{
 	icon_state = "damaged2";
 	dir = 8
@@ -271,7 +269,7 @@
 /area/bigredv2/outside/medical)
 "aN" = (
 /obj/effect/decal/cleanable/blood,
-/obj/effect/landmark/corpsespawner/pmc,
+/obj/effect/landmark/corpsespawner/wygoon,
 /turf/open/floor/plating{
 	icon_state = "platingdmg3"
 	},
@@ -359,7 +357,6 @@
 	tag = "icon-tube1 (EAST)";
 	dir = 4
 	},
-
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
 	tag = "icon-whitegreenfull";
@@ -569,7 +566,7 @@
 /area/bigredv2/outside/medical)
 "bE" = (
 /obj/effect/decal/cleanable/blood,
-/obj/effect/landmark/corpsespawner/pmc,
+/obj/effect/landmark/corpsespawner/wygoon,
 /turf/open/floor{
 	icon_state = "platingdmg1"
 	},
@@ -592,7 +589,7 @@
 "bH" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood,
-/obj/effect/landmark/corpsespawner/pmc,
+/obj/effect/landmark/corpsespawner/wygoon,
 /turf/open/floor/plating{
 	icon_state = "platingdmg3"
 	},
@@ -1139,7 +1136,7 @@
 "cZ" = (
 /obj/effect/decal/cleanable/blood,
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/effect/landmark/corpsespawner/pmc,
+/obj/effect/landmark/corpsespawner/wygoon,
 /turf/open/floor{
 	icon_state = "damaged5";
 	dir = 8
@@ -1148,7 +1145,7 @@
 "db" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood,
-/obj/effect/landmark/corpsespawner/pmc,
+/obj/effect/landmark/corpsespawner/wygoon,
 /turf/open/floor{
 	icon_state = "platingdmg1"
 	},
@@ -1159,7 +1156,7 @@
 	},
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/corpsespawner/pmc,
+/obj/effect/landmark/corpsespawner/wygoon,
 /turf/open/floor{
 	icon_state = "platingdmg1"
 	},
@@ -1541,7 +1538,6 @@
 /area/bigredv2/outside/medical)
 "ec" = (
 /obj/structure/closet/secure_closet/medical1,
-
 /turf/open/floor{
 	icon_state = "platingdmg1"
 	},
@@ -1718,7 +1714,6 @@
 /area/bigredv2/outside/medical)
 "ew" = (
 /obj/structure/surface/table,
-
 /turf/open/floor{
 	tag = "icon-whitebluefull (NORTHEAST)";
 	icon_state = "whitebluefull";
@@ -1780,6 +1775,10 @@
 /area/bigredv2/outside/medical)
 "eD" = (
 /obj/structure/surface/table/reinforced,
+/obj/structure/transmitter/colony_net/rotary{
+	phone_category = "Solaris Ridge";
+	phone_id = "Clinic Reception"
+	},
 /turf/open/floor{
 	icon_state = "white"
 	},
@@ -1812,7 +1811,7 @@
 "eH" = (
 /obj/structure/machinery/optable,
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/corpsespawner,
+/obj/effect/landmark/corpsespawner/wygoon,
 /obj/item/reagent_container/food/snacks/margheritaslice,
 /turf/open/floor{
 	icon_state = "white"
@@ -2025,18 +2024,9 @@
 "fh" = (
 /obj/structure/surface/table/reinforced,
 /obj/item/trash/buritto,
-
 /turf/open/floor{
 	tag = "icon-whitegreenfull";
 	icon_state = "whitegreenfull"
-	},
-/area/bigredv2/outside/medical)
-"fi" = (
-
-/turf/open/floor{
-	tag = "icon-whitebluefull (NORTHEAST)";
-	icon_state = "whitebluefull";
-	dir = 5
 	},
 /area/bigredv2/outside/medical)
 "fj" = (
@@ -2144,6 +2134,18 @@
 	dir = 8
 	},
 /area/bigredv2/outside/medical)
+"Xh" = (
+/obj/structure/transmitter/colony_net{
+	pixel_y = 24;
+	phone_category = "Solaris Ridge";
+	phone_color = "green";
+	phone_id = "Clinic Labs"
+	},
+/turf/open/floor{
+	icon_state = "damaged2";
+	dir = 8
+	},
+/area/bigredv2/outside/medical)
 
 (1,1,1) = {"
 aa
@@ -2196,14 +2198,14 @@ ap
 dD
 dS
 ef
-fi
+es
 eE
 aa
 eT
 "}
 (3,1,1) = {"
 aa
-ak
+Xh
 aM
 aU
 ai

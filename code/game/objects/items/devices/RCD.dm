@@ -9,12 +9,12 @@ RCD
 	desc = "A device used to rapidly build walls/floor."
 	icon = 'icons/obj/items/devices.dmi'
 	icon_state = "rcd"
-	opacity = 0
-	density = 0
-	anchored = 0.0
+	opacity = FALSE
+	density = FALSE
+	anchored = FALSE
 	flags_atom = FPRINT|CONDUCT
-	force = 10.0
-	throwforce = 10.0
+	force = 10
+	throwforce = 10
 	throw_speed = SPEED_FAST
 	throw_range = 5
 	w_class = SIZE_MEDIUM
@@ -161,27 +161,27 @@ RCD
 						activate()
 						qdel(A)
 						return 1
-				return	0
+				return 0
 			return 0
 		else
 			to_chat(user, "ERROR: RCD in MODE: [mode] attempted use by [user]. Send this text #coderbus or an admin.")
 			return 0
 
-/obj/item/device/rcd/proc/useResource(var/amount, var/mob/user)
+/obj/item/device/rcd/proc/useResource(amount, mob/user)
 	if(stored_matter < amount)
 		return 0
 	stored_matter -= amount
 	desc = "A RCD. It currently holds [stored_matter]/30 matter-units."
 	return 1
 
-/obj/item/device/rcd/proc/checkResource(var/amount, var/mob/user)
+/obj/item/device/rcd/proc/checkResource(amount, mob/user)
 	return stored_matter >= amount
-/obj/item/device/rcd/borg/useResource(var/amount, var/mob/user)
+/obj/item/device/rcd/borg/useResource(amount, mob/user)
 	if(!isrobot(user))
 		return 0
 	return user:cell:use(amount * 30)
 
-/obj/item/device/rcd/borg/checkResource(var/amount, var/mob/user)
+/obj/item/device/rcd/borg/checkResource(amount, mob/user)
 	if(!isrobot(user))
 		return 0
 	return user:cell:charge >= (amount * 30)
@@ -197,8 +197,8 @@ RCD
 	icon = 'icons/obj/items/weapons/guns/ammo.dmi'
 	icon_state = "rcd"
 	item_state = "rcdammo"
-	opacity = 0
-	density = 0
-	anchored = 0.0
+	opacity = FALSE
+	density = FALSE
+	anchored = FALSE
 
 	matter = list("metal" = 30000,"glass" = 15000)

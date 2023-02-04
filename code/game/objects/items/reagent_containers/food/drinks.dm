@@ -154,6 +154,7 @@
 	possible_transfer_amounts = null
 	volume = 150
 	flags_atom = FPRINT|CONDUCT|OPENCONTAINER
+	black_market_value = 20
 
 /obj/item/reagent_container/food/drinks/golden_cup/tournament_26_06_2011
 	desc = "A golden cup. It will be presented to a winner of tournament 26 June and name of the winner will be graved on it."
@@ -161,8 +162,8 @@
 
 ///////////////////////////////////////////////Drinks
 //Notes by Darem: Drinks are simply containers that start preloaded. Unlike condiments, the contents can be ingested directly
-//	rather then having to add it to something else first. They should only contain liquids. They have a default container size of 50.
-//	Formatting is the same as food.
+// rather then having to add it to something else first. They should only contain liquids. They have a default container size of 50.
+// Formatting is the same as food.
 
 /obj/item/reagent_container/food/drinks/milk
 	name = "Space Milk"
@@ -309,8 +310,8 @@
 
 //////////////////////////drinkingglass and shaker//
 //Note by Darem: This code handles the mixing of drinks. New drinks go in three places: In Chemistry-Reagents.dm (for the drink
-//	itself), in Chemistry-Recipes.dm (for the reaction that changes the components into the drink), and here (for the drinking glass
-//	icon states.
+// itself), in Chemistry-Recipes.dm (for the reaction that changes the components into the drink), and here (for the drinking glass
+// icon states.
 
 /obj/item/reagent_container/food/drinks/shaker
 	name = "shaker"

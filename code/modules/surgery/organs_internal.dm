@@ -1,7 +1,7 @@
 /*Procedures in this file: chest + groin organ repair surgery, legacy prosthetic organ repair
 and organ transplant code which may come in handy in future but haven't been edited at all.*/
 //////////////////////////////////////////////////////////////////
-//						ORGAN SURGERIES							//
+// ORGAN SURGERIES //
 //////////////////////////////////////////////////////////////////
 
 /datum/surgery/organ_repair
@@ -13,7 +13,7 @@ and organ transplant code which may come in handy in future but haven't been edi
 	pain_reduction_required = PAIN_REDUCTION_HEAVY
 	steps = list(/datum/surgery_step/repair_organs)
 
-/datum/surgery/organ_repair/can_start(mob/user, mob/living/carbon/patient, var/obj/limb/L, obj/item/tool)
+/datum/surgery/organ_repair/can_start(mob/user, mob/living/carbon/patient, obj/limb/L, obj/item/tool)
 	for(var/datum/internal_organ/IO as anything in L.internal_organs)
 		if(IO.damage > 0 && IO.robotic != ORGAN_ROBOT)
 			return TRUE
@@ -32,12 +32,12 @@ and organ transplant code which may come in handy in future but haven't been edi
 	tools = list(
 		/obj/item/stack/medical/advanced/bruise_pack = SURGERY_TOOL_MULT_IDEAL,
 		/obj/item/stack/medical/advanced/bruise_pack/predator = SURGERY_TOOL_MULT_SUBSTITUTE,
-		/obj/item/stack/medical/bruise_pack = SURGERY_TOOL_MULT_AWFUL
-		)
+		/obj/item/stack/medical/bruise_pack = SURGERY_TOOL_MULT_AWFUL,
+	)
 	time = 3 SECONDS
-	repeat_step	= TRUE
+	repeat_step = TRUE
 
-datum/surgery_step/repair_organs/repeat_step_criteria(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+/datum/surgery_step/repair_organs/repeat_step_criteria(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	for(var/datum/internal_organ/IO as anything in surgery.affected_limb.internal_organs)
 		if(IO.damage > 0 && IO.robotic != ORGAN_ROBOT)
 			return TRUE
@@ -80,7 +80,7 @@ datum/surgery_step/repair_organs/repeat_step_criteria(mob/user, mob/living/carbo
 			user.affected_message(target,
 				SPAN_NOTICE("You finish treating [target]'s damaged [I.name]."),
 				SPAN_NOTICE("[user] finishes treating your damaged [I.name]."),
-				SPAN_NOTICE("[user] finishes treating [target]'s damaged [I.name]."))		
+				SPAN_NOTICE("[user] finishes treating [target]'s damaged [I.name]."))
 
 			user.count_niche_stat(STATISTICS_NICHE_SURGERY_ORGAN_REPAIR)
 			I.rejuvenate()
@@ -92,8 +92,8 @@ datum/surgery_step/repair_organs/repeat_step_criteria(mob/user, mob/living/carbo
 		SPAN_WARNING("Your hand slips, bruising [target]'s organs and contaminating \his [surgery.affected_limb.cavity]!"),
 		SPAN_WARNING("[user]'s hand slips, bruising your organs and contaminating your [surgery.affected_limb.cavity]!"),
 		SPAN_WARNING("[user]'s hand slips, bruising [target]'s organs and contaminating \his [surgery.affected_limb.cavity]!"))
-	
-	var/dam_amt = 2	
+
+	var/dam_amt = 2
 	switch(tool_type)
 		if(/obj/item/stack/medical/bruise_pack)
 			dam_amt = 5
@@ -111,14 +111,14 @@ datum/surgery_step/repair_organs/repeat_step_criteria(mob/user, mob/living/carbo
 
 /*
 //----------------------------------//
-//		UNUPDATED LEGACY CODE		//
+// UNUPDATED LEGACY CODE //
 //----------------------------------//
 
 /datum/surgery_step/internal/fix_organ_robotic //For artificial organs
 	allowed_tools = list(
-	/obj/item/stack/nanopaste = 100,   \
-	/obj/item/tool/surgery/bonegel = 30,     \
-	/obj/item/tool/screwdriver = 70, \
+		/obj/item/stack/nanopaste = 100,   \
+		/obj/item/tool/surgery/bonegel = 30,  \
+		/obj/item/tool/screwdriver = 70, \
 	)
 
 	min_duration = FIX_ORGAN_MIN_DURATION
@@ -170,9 +170,9 @@ datum/surgery_step/repair_organs/repeat_step_criteria(mob/user, mob/living/carbo
 
 /datum/surgery_step/internal/detach_organ
 	allowed_tools = list()
-	/obj/item/tool/surgery/scalpel = 100,		\
-	/obj/item/tool/kitchen/knife = 75,	\
-	/obj/item/shard = 50, 		\
+	/obj/item/tool/surgery/scalpel = 100, \
+	/obj/item/tool/kitchen/knife = 75, \
+	/obj/item/shard = 50, \
 	)
 
 	min_duration = SCALPEL_MIN_DURATION
@@ -238,8 +238,8 @@ datum/surgery_step/repair_organs/repeat_step_criteria(mob/user, mob/living/carbo
 
 /datum/surgery_step/internal/remove_organ
 	allowed_tools = list()
-	/obj/item/tool/surgery/hemostat = 100,           \
-	/obj/item/tool/wirecutters = 75,         \
+	/obj/item/tool/surgery/hemostat = 100,    \
+	/obj/item/tool/wirecutters = 75,  \
 	/obj/item/tool/kitchen/utensil/fork = 20
 	)
 
@@ -350,7 +350,7 @@ datum/surgery_step/repair_organs/repeat_step_criteria(mob/user, mob/living/carbo
 		return SPECIAL_SURGERY_INVALID
 
 	var/o_is = (O.gender == PLURAL) ? "are"   : "is"
-	var/o_a =  (O.gender == PLURAL) ? ""      : "a "
+	var/o_a =  (O.gender == PLURAL) ? ""   : "a "
 	var/o_do = (O.gender == PLURAL) ? "don't" : "doesn't"
 
 	if(target.species.has_organ[O.organ_tag])
@@ -397,11 +397,11 @@ datum/surgery_step/repair_organs/repeat_step_criteria(mob/user, mob/living/carbo
 		var/datum/reagent/blood/transplant_blood = locate(/datum/reagent/blood) in O.reagents.reagent_list
 		if(!transplant_blood)
 			O.organ_data.transplant_data = list()
-			O.organ_data.transplant_data["species"]    = target.species.name
+			O.organ_data.transplant_data["species"] = target.species.name
 			O.organ_data.transplant_data["blood_type"] = target.blood_type
 		else
 			O.organ_data.transplant_data = list()
-			O.organ_data.transplant_data["species"]    = transplant_blood.data_properties["species"]
+			O.organ_data.transplant_data["species"] = transplant_blood.data_properties["species"]
 			O.organ_data.transplant_data["blood_type"] = transplant_blood.data_properties["blood_type"]
 
 		O.organ_data.organ_holder = null
@@ -428,8 +428,8 @@ datum/surgery_step/repair_organs/repeat_step_criteria(mob/user, mob/living/carbo
 
 /datum/surgery_step/internal/attach_organ
 	allowed_tools = list(
-	/obj/item/tool/surgery/FixOVein = 100, \
-	/obj/item/stack/cable_coil = 75
+		/obj/item/tool/surgery/FixOVein = 100, \
+		/obj/item/stack/cable_coil = 75
 	)
 
 	min_duration = FIXVEIN_MIN_DURATION

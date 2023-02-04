@@ -1,5 +1,5 @@
 // All mobs should have custom emote, really..
-/mob/proc/custom_emote(var/m_type=1,var/message = null, player_caused, var/nolog = 0)
+/mob/proc/custom_emote(m_type = SHOW_MESSAGE_VISIBLE, message = null, player_caused, nolog = 0)
 	var/comm_paygrade = ""
 	if(stat || (!use_me && player_caused))
 		if(player_caused)
@@ -27,8 +27,8 @@
 		if(!nolog)
 			log_emote("[name]/[key] : [message]")
 
- //Hearing gasp and such every five seconds is not good emotes were not global for a reason.
- // Maybe some people are okay with that.
+//Hearing gasp and such every five seconds is not good emotes were not global for a reason.
+// Maybe some people are okay with that.
 		for(var/mob/M in GLOB.player_list)
 			if(!M.client)
 				continue //skip monkeys and leavers
@@ -41,7 +41,7 @@
 
 
 		// Type 1 (Visual) emotes are sent to anyone in view of the item
-		if(m_type & 1)
+		if(m_type & SHOW_MESSAGE_VISIBLE)
 			var/list/viewers = get_mobs_in_view(7, src)
 			for (var/mob/O in viewers(src, null))
 				if(O.status_flags & PASSEMOTES)
@@ -62,11 +62,11 @@
 
 		// Type 2 (Audible) emotes are sent to anyone in hear range
 		// of the *LOCATION* -- this is important for pAIs to be heard
-		else if(m_type & 2)
+		else if(m_type & SHOW_MESSAGE_AUDIBLE)
 			var/list/hearers = get_mobs_in_view(7, src)
 			hearers.Add(src)
 			for (var/mob/O in hearers(get_turf(src), null))
-				if(O.z != z)	//cases like interior vehicles, for example
+				if(O.z != z) //cases like interior vehicles, for example
 					continue
 				if(O.status_flags & PASSEMOTES)
 					for(var/obj/item/holder/H in O.contents)
@@ -82,7 +82,7 @@
 						hearers.Remove(O)
 			langchat_speech(input, hearers, GLOB.all_languages, skip_language_check = TRUE, additional_styles = list("emote", "langchat_small"))
 
-/mob/proc/emote_dead(var/message)
+/mob/proc/emote_dead(message)
 	if(client.prefs.muted & MUTE_DEADCHAT)
 		to_chat(src, SPAN_DANGER("You cannot send deadchat emotes (muted)."))
 		return
@@ -123,7 +123,7 @@
 					langchat_listeners += observer
 
 			if(M.stat == DEAD)
-				M.show_message(message, 2)
+				M.show_message(message, SHOW_MESSAGE_AUDIBLE)
 
 			else if(M.client.admin_holder && AHOLD_IS_MOD(M.client.admin_holder)) // Show the emote to admins/mods
 				to_chat(M, message)

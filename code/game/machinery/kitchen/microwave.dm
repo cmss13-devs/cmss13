@@ -49,7 +49,7 @@
 		// impure carbon. ~Z
 		acceptable_items |= /obj/item/holder
 
-/obj/structure/machinery/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/obj/structure/machinery/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_can_pass_all = PASS_HIGH_OVER_ONLY|PASS_AROUND|PASS_OVER_THROW_ITEM
@@ -58,7 +58,7 @@
 //*   Item Adding
 //********************/
 
-/obj/structure/machinery/microwave/attackby(var/obj/item/O as obj, var/mob/user as mob)
+/obj/structure/machinery/microwave/attackby(obj/item/O as obj, mob/user as mob)
 	if(broken > 0)
 		if(broken == 2 && HAS_TRAIT(O, TRAIT_TOOL_SCREWDRIVER)) // If it's broken and they're using a screwdriver
 			user.visible_message( \
@@ -126,7 +126,7 @@
 				SPAN_NOTICE("[user] has added one of [O] to \the [src]."), \
 				SPAN_NOTICE("You add one of [O] to \the [src]."))
 		else
-		//	user.before_take_item(O)	//This just causes problems so far as I can tell. -Pete
+		// user.before_take_item(O) //This just causes problems so far as I can tell. -Pete
 			if(user.drop_held_item())
 				O.forceMove(src)
 				user.visible_message( \
@@ -225,7 +225,7 @@
 //*   Microwave Menu Handling/Cooking
 //************************************/
 
-/obj/structure/machinery/microwave/proc/cook(var/time_multiplier = 1)
+/obj/structure/machinery/microwave/proc/cook(time_multiplier = 1)
 	if(inoperable())
 		return
 	start()
@@ -282,7 +282,7 @@
 			cooked.forceMove(src.loc)
 		return
 
-/obj/structure/machinery/microwave/proc/wzhzhzh(var/seconds as num)
+/obj/structure/machinery/microwave/proc/wzhzhzh(seconds as num)
 	for (var/i=1 to seconds)
 		if (inoperable())
 			return 0

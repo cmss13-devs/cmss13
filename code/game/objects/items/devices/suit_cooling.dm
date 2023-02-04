@@ -3,22 +3,22 @@
 	desc = "A portable heat sink and liquid cooled radiator that can be hooked up to a space suit's existing temperature controls to provide industrial levels of cooling."
 	w_class = SIZE_LARGE
 	icon_state = "suitcooler0"
-	flags_equip_slot = SLOT_BACK	//you can carry it on your back if you want, but it won't do anything unless attached to suit storage
+	flags_equip_slot = SLOT_BACK //you can carry it on your back if you want, but it won't do anything unless attached to suit storage
 
 	//copied from tank.dm
 	flags_atom = FPRINT|CONDUCT
-	force = 5.0
-	throwforce = 10.0
+	force = 5
+	throwforce = 10
 	throw_speed = SPEED_FAST
 	throw_range = 4
 
 
 
-	var/on = 0				//is it turned on?
-	var/cover_open = 0		//is the cover open?
+	var/on = 0 //is it turned on?
+	var/cover_open = 0 //is the cover open?
 	var/obj/item/cell/cell
-	var/max_cooling = 12				//in degrees per second - probably don't need to mess with heat capacity here
-	var/charge_consumption = 16.6		//charge per second at max_cooling
+	var/max_cooling = 12 //in degrees per second - probably don't need to mess with heat capacity here
+	var/charge_consumption = 16.6 //charge per second at max_cooling
 	var/thermostat = T20C
 
 	//TODO: make it heat up the surroundings when not in space
@@ -28,7 +28,7 @@
 
 	START_PROCESSING(SSobj, src)
 
-	cell = new/obj/item/cell(src)	//comes with the crappy default power cell - high-capacity ones shouldn't be hard to find
+	cell = new/obj/item/cell(src) //comes with the crappy default power cell - high-capacity ones shouldn't be hard to find
 
 /obj/item/device/suit_cooling_unit/Destroy()
 	STOP_PROCESSING(SSobj, src)
@@ -41,16 +41,16 @@
 	if (!ismob(loc))
 		return
 
-	if (!attached_to_suit(loc))		//make sure they have a suit and we are attached to it
+	if (!attached_to_suit(loc)) //make sure they have a suit and we are attached to it
 		return
 
 	var/mob/living/carbon/human/H = loc
 
-	var/efficiency = 1 - H.get_pressure_weakness()		//you need to have a good seal for effective cooling
-	var/env_temp = get_environment_temperature()		//wont save you from a fire
+	var/efficiency = 1 - H.get_pressure_weakness() //you need to have a good seal for effective cooling
+	var/env_temp = get_environment_temperature() //wont save you from a fire
 	var/temp_adj = min(H.bodytemperature - max(thermostat, env_temp), max_cooling)
 
-	if (temp_adj < 0.5)	//only cools, doesn't heat, also we don't need extreme precision
+	if (temp_adj < 0.5) //only cools, doesn't heat, also we don't need extreme precision
 		return
 
 	var/charge_usage = (temp_adj/max_cooling)*charge_consumption
@@ -94,7 +94,7 @@
 /obj/item/device/suit_cooling_unit/proc/turn_off()
 	if (ismob(src.loc))
 		var/mob/M = src.loc
-		M.show_message("\The [src] clicks and whines as it powers down.", 2)	//let them know in case it's run out of power.
+		M.show_message("\The [src] clicks and whines as it powers down.", SHOW_MESSAGE_AUDIBLE) //let them know in case it's run out of power.
 	on = 0
 	updateicon()
 

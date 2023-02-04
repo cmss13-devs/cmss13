@@ -421,10 +421,32 @@
 "bF" = (
 /turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/jungle/central_jungle)
+"gu" = (
+/obj/structure/machinery/door_control{
+	id = "secure_inner_blast";
+	name = "Inner Blast Door";
+	pixel_x = -25;
+	pixel_y = 5
+	},
+/turf/open/floor{
+	icon_state = "white"
+	},
+/area/lv624/lazarus/research)
 "ky" = (
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
 	icon_state = "freezerfloor"
+	},
+/area/lv624/lazarus/research)
+"oe" = (
+/obj/structure/transmitter/colony_net{
+	pixel_y = 24;
+	phone_category = "Lazarus Landing";
+	phone_id = "Research Dome"
+	},
+/turf/open/floor{
+	dir = 5;
+	icon_state = "whitepurple"
 	},
 /area/lv624/lazarus/research)
 "qs" = (
@@ -554,7 +576,7 @@ ap
 ay
 aG
 au
-ay
+oe
 ak
 ay
 au
@@ -590,7 +612,7 @@ ay
 au
 aQ
 Kl
-ak
+gu
 au
 bp
 ay

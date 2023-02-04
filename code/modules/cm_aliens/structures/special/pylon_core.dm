@@ -39,32 +39,34 @@
 		qdel(W)
 	. = ..()
 
-/obj/effect/alien/resin/special/pylon/attack_alien(mob/living/carbon/Xenomorph/M)
-	if(isXenoBuilder(M) && M.a_intent == INTENT_HELP && M.hivenumber == linked_hive.hivenumber)
+/obj/effect/alien/resin/special/pylon/attack_alien(mob/living/carbon/xenomorph/M)
+	if(isxeno_builder(M) && M.a_intent == INTENT_HELP && M.hivenumber == linked_hive.hivenumber)
 		do_repair(M) //This handles the delay itself.
 		return XENO_NO_DELAY_ACTION
 	else
 		return ..()
 
-/obj/effect/alien/resin/special/pylon/proc/do_repair(mob/living/carbon/Xenomorph/M)
-	if(!istype(M))
+/obj/effect/alien/resin/special/pylon/proc/do_repair(mob/living/carbon/xenomorph/xeno)
+	if(!istype(xeno))
+		return
+	if(!xeno.plasma_max)
 		return
 	var/can_repair = damaged || health < maxhealth
 	if(!can_repair)
-		to_chat(M, SPAN_XENONOTICE("\The [name] is in good condition, you don't need to repair it."))
+		to_chat(xeno, SPAN_XENONOTICE("\The [name] is in good condition, you don't need to repair it."))
 		return
 
-	to_chat(M, SPAN_XENONOTICE("You begin adding the plasma to \the [name] to repair it."))
-	xeno_attack_delay(M)
-	if(!do_after(M, PYLON_REPAIR_TIME, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src) || !can_repair)
+	to_chat(xeno, SPAN_XENONOTICE("You begin adding the plasma to \the [name] to repair it."))
+	xeno_attack_delay(xeno)
+	if(!do_after(xeno, PYLON_REPAIR_TIME, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src) || !can_repair)
 		return
 
-	var/amount_to_use = min(M.plasma_stored, (plasma_required_to_repair - plasma_stored))
+	var/amount_to_use = min(xeno.plasma_stored, (plasma_required_to_repair - plasma_stored))
 	plasma_stored += amount_to_use
-	M.plasma_stored -= amount_to_use
+	xeno.plasma_stored -= amount_to_use
 
 	if(plasma_stored < plasma_required_to_repair)
-		to_chat(M, SPAN_WARNING("\The [name] requires [plasma_required_to_repair - plasma_stored] more plasma to repair it."))
+		to_chat(xeno, SPAN_WARNING("\The [name] requires [plasma_required_to_repair - plasma_stored] more plasma to repair it."))
 		return
 
 	damaged = FALSE
@@ -79,9 +81,9 @@
 			continue
 		if(istype(W, /obj/effect/alien/weeds/weedwall))
 			continue
-		addtimer(CALLBACK(W, /obj/effect/alien/weeds.proc/weed_expand, N), PYLON_WEEDS_REGROWTH_TIME, TIMER_UNIQUE)
+		addtimer(CALLBACK(W, TYPE_PROC_REF(/obj/effect/alien/weeds, weed_expand), N), PYLON_WEEDS_REGROWTH_TIME, TIMER_UNIQUE)
 
-	to_chat(M, SPAN_XENONOTICE("You have successfully repaired \the [name]."))
+	to_chat(xeno, SPAN_XENONOTICE("You have successfully repaired \the [name]."))
 	playsound(loc, "alien_resin_build", 25)
 
 /obj/effect/alien/resin/special/pylon/proc/place_node()
@@ -109,7 +111,7 @@
 	protection_level = TURF_PROTECTION_OB
 
 
-/obj/effect/alien/resin/special/pylon/core/Initialize(mapload, var/datum/hive_status/hive_ref)
+/obj/effect/alien/resin/special/pylon/core/Initialize(mapload, datum/hive_status/hive_ref)
 	. = ..()
 
 	// Pick the closest xeno resource activator
@@ -124,7 +126,7 @@
 	last_healed = world.time + heal_interval
 
 
-/obj/effect/alien/resin/special/pylon/core/attack_alien(mob/living/carbon/Xenomorph/M)
+/obj/effect/alien/resin/special/pylon/core/attack_alien(mob/living/carbon/xenomorph/M)
 	if(M.a_intent != INTENT_HELP && M.can_destroy_special() && M.hivenumber == linked_hive.hivenumber)
 		if(!hardcore && last_attempt + 6 SECONDS > world.time)
 			to_chat(M,SPAN_WARNING("You have attempted to destroy \the [src] too recently! Wait a bit!")) // no spammy
@@ -134,14 +136,14 @@
 			if((alert(M, "Are you sure that you want to destroy the hive core? (There will be a 5 minute cooldown before you can build another one.)", , "Yes", "No") != "Yes"))
 				return XENO_NO_DELAY_ACTION
 
-			INVOKE_ASYNC(src, .proc/startDestroying,M)
+			INVOKE_ASYNC(src, PROC_REF(startDestroying),M)
 			return XENO_NO_DELAY_ACTION
 
 		else if(world.time < XENOMORPH_PRE_SETUP_CUTOFF)
 			if((alert(M, "Are you sure that you want to remove the hive core? No cooldown will be applied.", , "Yes", "No") != "Yes"))
 				return XENO_NO_DELAY_ACTION
 
-			INVOKE_ASYNC(src, .proc/startDestroying,M)
+			INVOKE_ASYNC(src, PROC_REF(startDestroying),M)
 			return XENO_NO_DELAY_ACTION
 
 	if(linked_hive)
@@ -166,7 +168,7 @@
 			. = ..()
 			return
 		linked_hive.hivecore_cooldown = TRUE
-		INVOKE_ASYNC(src, .proc/cooldownFinish,linked_hive) // start cooldown
+		INVOKE_ASYNC(src, PROC_REF(cooldownFinish),linked_hive) // start cooldown
 		if(hardcore)
 			xeno_message(SPAN_XENOANNOUNCE("You can no longer gain new sisters or another Queen. Additionally, you are unable to heal if your Queen is dead"), 2, linked_hive.hivenumber)
 			linked_hive.hardcore = TRUE
@@ -179,20 +181,20 @@
 				qdel(linked_hive.spawn_pool)
 	. = ..()
 
-/obj/effect/alien/resin/special/pylon/core/proc/startDestroying(mob/living/carbon/Xenomorph/M)
+/obj/effect/alien/resin/special/pylon/core/proc/startDestroying(mob/living/carbon/xenomorph/M)
 	xeno_message(SPAN_XENOANNOUNCE("[M] is destroying \the [src]!"), 3, linked_hive.hivenumber)
 	visible_message(SPAN_DANGER("[M] starts destroying \the [src]!"))
-	last_attempt = world.time 		//spamcheck
+	last_attempt = world.time //spamcheck
 	if(!do_after(M, 5 SECONDS , INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
 		to_chat(M,SPAN_WARNING("You stop destroying \the [src]."))
 		visible_message(SPAN_WARNING("[M] stops destroying \the [src]."))
 		last_attempt = world.time // update the spam check
 		return XENO_NO_DELAY_ACTION
-	Destroy()
+	qdel(src)
 
 
 
-/obj/effect/alien/resin/special/pylon/core/proc/cooldownFinish(var/datum/hive_status/linked_hive)
+/obj/effect/alien/resin/special/pylon/core/proc/cooldownFinish(datum/hive_status/linked_hive)
 	sleep(HIVECORE_COOLDOWN)
 	if(linked_hive.hivecore_cooldown) // check if its true so we don't double set it.
 		linked_hive.hivecore_cooldown = FALSE

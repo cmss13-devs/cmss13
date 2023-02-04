@@ -7,12 +7,12 @@
 	icon = 'icons/obj/structures/props/stationobjs.dmi'
 	icon_state = "morgue1"
 	dir = EAST
-	density = 1
+	density = TRUE
 	var/obj/structure/morgue_tray/connected = null
 	var/morgue_type = "morgue"
 	var/tray_path = /obj/structure/morgue_tray
 	var/morgue_open = 0
-	anchored = 1
+	anchored = TRUE
 	throwpass = 1
 
 /obj/structure/morgue/Initialize()
@@ -82,21 +82,31 @@
 	update_icon()
 
 
-/obj/structure/morgue/attackby(obj/item/P, mob/user)
-	if(istype(P, /obj/item/weapon/zombie_claws))
+/obj/structure/morgue/attackby(obj/item/W, mob/user)
+	if(istype(W, /obj/item/weapon/zombie_claws))
 		attack_hand()
 		return
-	else if(istype(P, /obj/item/tool/pen))
-		var/t = copytext(stripped_input(user, "What would you like the label to be?", name, null),1,MAX_MESSAGE_LEN)
-		if(user.get_active_hand() != P)
-			return
-		if((!in_range(src, user) && src.loc != user))
-			return
-		if(t)
-			name = "[initial(name)]- '[t]'"
+	else if(HAS_TRAIT(W, TRAIT_TOOL_PEN))
+		var/prior_label_text
+		var/datum/component/label/labelcomponent = src.GetComponent(/datum/component/label)
+		if(labelcomponent)
+			prior_label_text = labelcomponent.label_name
+		var/tmp_label = sanitize(input(user, "Enter a label for [name]","Label", prior_label_text))
+		if(tmp_label == "" || !tmp_label)
+			if(labelcomponent)
+				labelcomponent.remove_label()
+				user.visible_message(SPAN_NOTICE("[user] removes the label from \the [src]."), \
+				SPAN_NOTICE("You remove the label from \the [src]."))
+				return
+			else
+				return
+		if(length(tmp_label) > MAX_NAME_LEN)
+			to_chat(user, SPAN_WARNING("The label can be at most [MAX_NAME_LEN] characters long."))
 		else
-			name = initial(name)
-		add_fingerprint(user)
+			user.visible_message(SPAN_NOTICE("[user] labels [src] as \"[tmp_label]\"."), \
+			SPAN_NOTICE("You label [src] as \"[tmp_label]\"."))
+			AddComponent(/datum/component/label, tmp_label)
+			playsound(src, "paper_writing", 15, TRUE)
 	else
 		. = ..()
 
@@ -116,10 +126,10 @@
 	icon = 'icons/obj/structures/props/stationobjs.dmi'
 	icon_state = "morguet"
 	var/icon_tray = ""
-	density = 1
+	density = TRUE
 	layer = OBJ_LAYER
 	var/obj/structure/morgue/linked_morgue = null
-	anchored = 1
+	anchored = TRUE
 	throwpass = 1
 	var/bloody = FALSE
 
@@ -143,7 +153,7 @@
 	O.forceMove(loc)
 	if(user != O)
 		for(var/mob/B in viewers(user, 3))
-			B.show_message(SPAN_DANGER("[user] stuffs [O] into [src]!"), 1)
+			B.show_message(SPAN_DANGER("[user] stuffs [O] into [src]!"), SHOW_MESSAGE_VISIBLE)
 			if(B.stat==DEAD)
 				bloody = TRUE
 				update_icon()
@@ -166,7 +176,7 @@
 
 /obj/structure/morgue/crematorium
 	name = "crematorium"
-	desc = "A human incinerator. Works well on barbeque nights."
+	desc = "A human incinerator. Works well on barbecue nights."
 	icon_state = "crema1"
 	dir = SOUTH
 	tray_path = /obj/structure/morgue_tray/crematorium
@@ -264,11 +274,11 @@
  */
 
 /obj/structure/morgue/sarcophagus
-    name = "sarcophagus"
-    desc = "Used to store predators."
-    icon_state = "sarcophagus1"
-    morgue_type = "sarcophagus"
-    tray_path = /obj/structure/morgue_tray/sarcophagus
+	name = "sarcophagus"
+	desc = "Used to store predators."
+	icon_state = "sarcophagus1"
+	morgue_type = "sarcophagus"
+	tray_path = /obj/structure/morgue_tray/sarcophagus
 
 
 /*
@@ -276,6 +286,6 @@
  */
 
 /obj/structure/morgue_tray/sarcophagus
-    name = "sarcophagus tray"
-    desc = "Apply corpse before closing."
-    icon_state = "sarcomat"
+	name = "sarcophagus tray"
+	desc = "Apply corpse before closing."
+	icon_state = "sarcomat"

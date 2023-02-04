@@ -8,14 +8,14 @@
 	faction_group = FACTION_LIST_WY
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
 	var/human_versus_human = FALSE
-	var/headset_type = /obj/item/device/radio/headset/distress/PMC
+	var/headset_type = /obj/item/device/radio/headset/distress/pmc
 
 /datum/equipment_preset/pmc/New()
 	. = ..()
 	access = get_all_accesses() + get_all_centcom_access() + get_antagonist_access()
 
 
-/datum/equipment_preset/pmc/load_name(mob/living/carbon/human/H, var/randomise)
+/datum/equipment_preset/pmc/load_name(mob/living/carbon/human/H, randomise)
 	H.gender = pick(MALE,FEMALE)
 	var/random_name
 	var/first_name
@@ -68,15 +68,15 @@
 
 	var/choice = rand(1,5)
 	H.equip_to_slot_or_del(new headset_type, WEAR_L_EAR)
-	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/PMC, WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/pmc, WEAR_BODY)
 	if(prob(50))
-		H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/PMC, WEAR_JACKET)
+		H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/pmc, WEAR_JACKET)
 	else
-		H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/PMC/light, WEAR_JACKET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/PMC, WEAR_HANDS)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/PMC, WEAR_HEAD)
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/veteran/PMC/knife, WEAR_FEET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/PMC, WEAR_FACE)
+		H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/pmc/light, WEAR_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/pmc, WEAR_HANDS)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/pmc, WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/veteran/pmc/knife, WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/pmc, WEAR_FACE)
 
 	H.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/black_vest, WEAR_ACCESSORY)
 	H.equip_to_slot_or_del(new /obj/item/stack/medical/bruise_pack, WEAR_IN_ACCESSORY)
@@ -86,7 +86,7 @@
 	H.equip_to_slot_or_del(new /obj/item/device/healthanalyzer, WEAR_IN_ACCESSORY)
 
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack, WEAR_BACK)
-	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/PMC, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/high_explosive/pmc, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/explosive/plastic, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/weapon/melee/baton, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/tool/crowbar, WEAR_IN_BACK)
@@ -199,7 +199,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 /datum/equipment_preset/pmc/pmc_standard/hvh
 	name = "Weyland-Yutani PMC (Standard) | HvH"
 	human_versus_human = TRUE
-	headset_type = /obj/item/device/radio/headset/distress/PMC/hvh
+	headset_type = /obj/item/device/radio/headset/distress/pmc/hvh
 
 //*****************************************************************************************************/
 /datum/equipment_preset/pmc/pmc_detainer
@@ -214,15 +214,15 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 /datum/equipment_preset/pmc/pmc_detainer/load_gear(mob/living/carbon/human/H)
 
 	H.equip_to_slot_or_del(new headset_type, WEAR_L_EAR)
-	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/PMC, WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/pmc, WEAR_BODY)
 	if(prob(50))
-		H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/PMC, WEAR_JACKET)
+		H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/pmc, WEAR_JACKET)
 	else
-		H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/PMC/light, WEAR_JACKET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/PMC, WEAR_HANDS)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/PMC, WEAR_HEAD)
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/veteran/PMC/knife, WEAR_FEET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/PMC, WEAR_FACE)
+		H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/pmc/light, WEAR_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/pmc, WEAR_HANDS)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/pmc, WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/veteran/pmc/knife, WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/pmc, WEAR_FACE)
 	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/sechud/tactical, WEAR_EYES)
 
 	H.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/black_vest, WEAR_ACCESSORY)
@@ -333,7 +333,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 /datum/equipment_preset/pmc/pmc_detainer/hvh
 	name = "Weyland-Yutani PMC (Detainer) | HvH"
 	human_versus_human = TRUE
-	headset_type = /obj/item/device/radio/headset/distress/PMC/hvh
+	headset_type = /obj/item/device/radio/headset/distress/pmc/hvh
 
 //*****************************************************************************************************/
 /datum/equipment_preset/pmc/pmc_medic
@@ -344,30 +344,31 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 	rank = JOB_PMC_MEDIC
 	paygrade = "PMC-MS"
 	skills = /datum/skills/pmc/medic
+	headset_type = /obj/item/device/radio/headset/distress/pmc/medic
 
 /datum/equipment_preset/pmc/pmc_medic/load_gear(mob/living/carbon/human/H)
 
 	H.equip_to_slot_or_del(new headset_type, WEAR_L_EAR)
-	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/PMC, WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/PMC, WEAR_JACKET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/PMC, WEAR_HANDS)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/PMC, WEAR_HEAD)
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/veteran/PMC/knife, WEAR_FEET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/PMC, WEAR_FACE)
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/pmc, WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/pmc, WEAR_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/pmc, WEAR_HANDS)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/pmc, WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/veteran/pmc/knife, WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/pmc, WEAR_FACE)
 	if(H.disabilities & NEARSIGHTED)
 		H.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health/prescription(H), WEAR_EYES)
 	else
 		H.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health(H), WEAR_EYES)
 
 	H.equip_to_slot_or_del(new /obj/item/explosive/plastic, WEAR_IN_JACKET)
-	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/PMC, WEAR_IN_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/high_explosive/pmc, WEAR_IN_JACKET)
 
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack, WEAR_BACK)
 
 	H.equip_to_slot_or_del(new /obj/item/device/defibrillator, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/storage/firstaid/adv, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/storage/firstaid/adv, WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/PMC, WEAR_IN_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/high_explosive/pmc, WEAR_IN_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/explosive/plastic, WEAR_IN_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/weapon/melee/baton, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/tool/crowbar, WEAR_IN_BACK)
@@ -514,7 +515,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 /datum/equipment_preset/pmc/pmc_medic/hvh
 	name = "Weyland-Yutani PMC (Corporate Medic) | HvH"
 	human_versus_human = TRUE
-	headset_type = /obj/item/device/radio/headset/distress/PMC/hvh
+	headset_type = /obj/item/device/radio/headset/distress/pmc/medic/hvh
 
 //*****************************************************************************************************/
 /datum/equipment_preset/pmc/pmc_med_investigator
@@ -525,16 +526,17 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 	rank = JOB_PMC_INVESTIGATOR
 	paygrade = "PMC-MS" //Fixed from PMC2 to PMC-MS to display properly.
 	skills = /datum/skills/pmc/medic/chem
+	headset_type = /obj/item/device/radio/headset/distress/pmc/medic
 
 /datum/equipment_preset/pmc/pmc_med_investigator/load_gear(mob/living/carbon/human/H)
 
 	H.equip_to_slot_or_del(new headset_type, WEAR_L_EAR)
-	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/PMC, WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/PMC, WEAR_JACKET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/PMC, WEAR_HANDS)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/PMC, WEAR_HEAD)
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/veteran/PMC/knife, WEAR_FEET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/PMC, WEAR_FACE)
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/pmc, WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/pmc, WEAR_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/pmc, WEAR_HANDS)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/pmc, WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/veteran/pmc/knife, WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/pmc, WEAR_FACE)
 
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack, WEAR_BACK)
 
@@ -706,16 +708,17 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 	paygrade = "PMC-TL"
 	role_comm_title = "SL"
 	skills = /datum/skills/pmc/SL
+	headset_type = /obj/item/device/radio/headset/distress/pmc/command
 
 /datum/equipment_preset/pmc/pmc_leader/load_gear(mob/living/carbon/human/H)
 	//TODO: add backpacks and satchels
 	H.equip_to_slot_or_del(new headset_type, WEAR_L_EAR)
-	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/PMC/leader, WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/PMC/leader, WEAR_JACKET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/PMC, WEAR_HANDS)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/PMC/leader, WEAR_HEAD)
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/veteran/PMC/knife, WEAR_FEET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/PMC/leader, WEAR_FACE)
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/pmc/leader, WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/pmc/leader, WEAR_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/pmc, WEAR_HANDS)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/pmc/leader, WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/veteran/pmc/knife, WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/pmc/leader, WEAR_FACE)
 	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/sensor, WEAR_EYES)
 
 	H.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/black_vest, WEAR_ACCESSORY)
@@ -733,7 +736,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 
 	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/ap, WEAR_IN_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/ap, WEAR_IN_JACKET)
-	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/PMC, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/high_explosive/pmc, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/explosive/plastic, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/ap, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/ap, WEAR_IN_BACK)
@@ -849,7 +852,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 /datum/equipment_preset/pmc/pmc_leader/hvh
 	name = "Weyland-Yutani PMC (Leader) | HvH"
 	human_versus_human = TRUE
-	headset_type = /obj/item/device/radio/headset/distress/PMC/hvh/cct
+	headset_type = /obj/item/device/radio/headset/distress/pmc/command/hvh
 
 //*****************************************************************************************************/
 
@@ -862,16 +865,17 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 	paygrade = "PMC-TL"
 	role_comm_title = "SL"
 	skills = /datum/skills/pmc/SL/chem
+	headset_type = /obj/item/device/radio/headset/distress/pmc/command
 
 /datum/equipment_preset/pmc/pmc_lead_investigator/load_gear(mob/living/carbon/human/H)
 	//TODO: add backpacks and satchels
 	H.equip_to_slot_or_del(new headset_type, WEAR_L_EAR)
-	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/PMC/leader, WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/PMC/leader, WEAR_JACKET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/PMC, WEAR_HANDS)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/PMC/leader, WEAR_HEAD)
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/veteran/PMC/knife, WEAR_FEET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/PMC/leader, WEAR_FACE)
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/pmc/leader, WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/pmc/leader, WEAR_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/pmc, WEAR_HANDS)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/pmc/leader, WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/veteran/pmc/knife, WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/pmc/leader, WEAR_FACE)
 	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/sensor, WEAR_EYES)
 	H.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/black_vest, WEAR_ACCESSORY)
 	H.equip_to_slot_or_del(new /obj/item/stack/medical/bruise_pack, WEAR_IN_ACCESSORY)
@@ -1004,12 +1008,12 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 /datum/equipment_preset/pmc/pmc_gunner/load_gear(mob/living/carbon/human/H)
 	//TODO: add backpacks and satchels
 	H.equip_to_slot_or_del(new headset_type, WEAR_L_EAR)
-	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/PMC, WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/smartgunner/veteran/PMC, WEAR_JACKET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/PMC, WEAR_HANDS)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/PMC/gunner, WEAR_HEAD)
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/veteran/PMC/knife, WEAR_FEET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/PMC/leader, WEAR_FACE)
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/pmc, WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/smartgunner/veteran/pmc, WEAR_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/pmc, WEAR_HANDS)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/pmc/gunner, WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/veteran/pmc/knife, WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/pmc/leader, WEAR_FACE)
 	H.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/black_vest, WEAR_ACCESSORY)
 	H.equip_to_slot_or_del(new /obj/item/stack/medical/bruise_pack, WEAR_IN_ACCESSORY)
 	H.equip_to_slot_or_del(new /obj/item/stack/medical/bruise_pack, WEAR_IN_ACCESSORY)
@@ -1098,7 +1102,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 /datum/equipment_preset/pmc/pmc_gunner/hvh
 	name = "Weyland-Yutani PMC (Gunner) | HvH"
 	human_versus_human = TRUE
-	headset_type = /obj/item/device/radio/headset/distress/PMC/hvh
+	headset_type = /obj/item/device/radio/headset/distress/pmc/hvh
 
 //*****************************************************************************************************/
 
@@ -1111,16 +1115,17 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 	paygrade = "PMC-WS"
 	role_comm_title = "Spc"
 	skills = /datum/skills/pmc/specialist
+	headset_type = /obj/item/device/radio/headset/distress/pmc/cct
 
 /datum/equipment_preset/pmc/pmc_sniper/load_gear(mob/living/carbon/human/H)
 	//TODO: add backpacks and satchels
 	H.equip_to_slot_or_del(new headset_type, WEAR_L_EAR)
-	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/PMC, WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/PMC/sniper, WEAR_JACKET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/PMC, WEAR_HANDS)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/PMC/sniper, WEAR_HEAD)
-	H.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/PMC/leader, WEAR_FACE)
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/veteran/PMC/knife, WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/pmc, WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/pmc/sniper, WEAR_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/pmc, WEAR_HANDS)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/pmc/sniper, WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/pmc/leader, WEAR_FACE)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/veteran/pmc/knife, WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/night/m42_night_goggles/m42c, WEAR_EYES)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack, WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/storage/large_holster/m39/full/elite, WEAR_WAIST)
@@ -1225,7 +1230,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 /datum/equipment_preset/pmc/pmc_sniper/hvh
 	name = "Weyland-Yutani PMC (Sniper) | HvH"
 	human_versus_human = TRUE
-	headset_type = /obj/item/device/radio/headset/distress/PMC/hvh/cct
+	headset_type = /obj/item/device/radio/headset/distress/pmc/cct/hvh
 
 /datum/equipment_preset/pmc/pmc_sniper/hvh/load_gear(mob/living/carbon/human/H)
 	..()
@@ -1240,19 +1245,20 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 	rank = JOB_PMC_CREWMAN
 	paygrade = "PMC-VS"
 	skills = /datum/skills/pmc/tank_crew
+	headset_type = /obj/item/device/radio/headset/distress/pmc/cct
 
 /datum/equipment_preset/pmc/pmc_crewman/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new headset_type, WEAR_L_EAR)
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/veteran/PMC/knife, WEAR_FEET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/PMC, WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/PMC, WEAR_JACKET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/PMC, WEAR_HANDS)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/veteran/pmc/knife, WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/pmc, WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/pmc, WEAR_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/pmc, WEAR_HANDS)
 	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/welding/superior, WEAR_EYES)
-	H.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/PMC, WEAR_FACE)
+	H.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/pmc, WEAR_FACE)
 	H.equip_to_slot_or_del(new /obj/item/tool/weldpack, WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/explosive/plastic, WEAR_IN_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/explosive/plastic, WEAR_IN_JACKET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/PMC/leader, WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/pmc/leader, WEAR_HEAD)
 	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/vp78, WEAR_WAIST)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/tank, WEAR_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large/pmc_m39, WEAR_L_STORE)
@@ -1358,7 +1364,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 /datum/equipment_preset/pmc/pmc_crewman/hvh
 	name = "Weyland-Yutani PMC (Crewman) | HvH"
 	human_versus_human = TRUE
-	headset_type = /obj/item/device/radio/headset/distress/PMC/hvh/cct
+	headset_type = /obj/item/device/radio/headset/distress/pmc/cct/hvh
 
 /*****************************************************************************************************/
 
@@ -1374,16 +1380,17 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 	role_comm_title = "XH"
 	skills = /datum/skills/pmc/xeno_handler
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE, LANGUAGE_XENOMORPH)
+	headset_type = /obj/item/device/radio/headset/distress/pmc/command
 
 /datum/equipment_preset/pmc/xeno_handler/load_gear(mob/living/carbon/human/H)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/PMC, WEAR_HEAD)
-	H.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/PMC, WEAR_FACE)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/pmc, WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/pmc, WEAR_FACE)
 	H.equip_to_slot_or_del(new headset_type, WEAR_L_EAR)
-	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/PMC, WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/PMC, WEAR_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/pmc, WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/pmc, WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/weapon/gun/smg/m39/elite, WEAR_J_STORE)
 	H.equip_to_slot_or_del(new /obj/item/device/multitool, WEAR_IN_JACKET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/PMC, WEAR_HANDS)
+	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/pmc, WEAR_HANDS)
 
 	H.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/black_vest, WEAR_ACCESSORY)
 	H.equip_to_slot_or_del(new /obj/item/stack/medical/bruise_pack, WEAR_IN_ACCESSORY)
@@ -1393,7 +1400,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 	H.equip_to_slot_or_del(new /obj/item/device/healthanalyzer, WEAR_IN_ACCESSORY)
 
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack, WEAR_BACK)
-	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/PMC, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/high_explosive/pmc, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/explosive/plastic, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/weapon/melee/baton, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/tool/crowbar, WEAR_IN_BACK)
@@ -1406,7 +1413,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large/pmc_m39, WEAR_L_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full, WEAR_R_STORE)
 
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/veteran/PMC/knife, WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/veteran/pmc/knife, WEAR_FEET)
 
 /datum/equipment_preset/pmc/xeno_handler/get_antag_clothing_equipment()
 	return list(
@@ -1511,7 +1518,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 	name = "Weyland-Yutani PMC (Xeno Handler) | HvH"
 	faction_group = FACTION_LIST_WY
 	human_versus_human = TRUE
-	headset_type = /obj/item/device/radio/headset/distress/PMC/hvh/cct
+	headset_type = /obj/item/device/radio/headset/distress/pmc/command/hvh
 
 /*****************************************************************************************************/
 
@@ -1524,20 +1531,21 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 	paygrade = "PMC-DOC"
 	role_comm_title = "TRI"
 	skills = /datum/skills/pmc/doctor
+	headset_type = /obj/item/device/radio/headset/distress/pmc/medic
 
 /datum/equipment_preset/pmc/doctor/load_gear(mob/living/carbon/human/H)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/PMC/leader, WEAR_HEAD)
-	H.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/PMC, WEAR_FACE)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/pmc/leader, WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/pmc, WEAR_FACE)
 	H.equip_to_slot_or_del(new headset_type, WEAR_L_EAR)
-	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/PMC, WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/pmc, WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/surg_vest/equipped, WEAR_ACCESSORY)
 	H.equip_to_slot_or_del(new /obj/item/tool/surgery/surgical_line, WEAR_IN_ACCESSORY)
-	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/PMC/light, WEAR_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/pmc/light, WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/m39/ap, WEAR_IN_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/m39/ap, WEAR_IN_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/storage/belt/medical/lifesaver/full/dutch, WEAR_WAIST)
-	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/PMC, WEAR_HANDS)
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/veteran/PMC/knife, WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/pmc, WEAR_HANDS)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/veteran/pmc/knife, WEAR_FEET)
 
 	if(H.disabilities & NEARSIGHTED)
 		H.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health/prescription(H), WEAR_EYES)
@@ -1691,7 +1699,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 /datum/equipment_preset/pmc/doctor/hvh
 	name = "Weyland-Yutani PMC (Trauma Surgeon) | HvH"
 	human_versus_human = TRUE
-	headset_type = /obj/item/device/radio/headset/distress/PMC/hvh
+	headset_type = /obj/item/device/radio/headset/distress/pmc/medic/hvh
 
 /*****************************************************************************************************/
 
@@ -1704,17 +1712,18 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 	paygrade = "PMC-TECH"
 	role_comm_title = "TEC"
 	skills = /datum/skills/pmc/engineer
+	headset_type = /obj/item/device/radio/headset/distress/pmc/cct
 
 /datum/equipment_preset/pmc/technician/load_gear(mob/living/carbon/human/H)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/PMC, WEAR_HEAD)
-	H.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/PMC, WEAR_FACE)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/pmc, WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/pmc, WEAR_FACE)
 	H.equip_to_slot_or_del(new headset_type, WEAR_L_EAR)
-	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/PMC, WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/pmc, WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/black_vest/brown_vest, WEAR_ACCESSORY)
-	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/PMC/light, WEAR_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/pmc/light, WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/storage/belt/utility/full, WEAR_WAIST)
-	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/PMC, WEAR_HANDS)
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/veteran/PMC/knife, WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/pmc, WEAR_HANDS)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/veteran/pmc/knife, WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/welding/superior, WEAR_EYES)
 
 	H.equip_to_slot_or_del(new /obj/item/weapon/gun/smg/m39/elite, WEAR_J_STORE)
@@ -1722,8 +1731,8 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/m39/ap, WEAR_IN_JACKET)
 
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack, WEAR_BACK)
-	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/PMC, WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/PMC, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/high_explosive/pmc, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/high_explosive/pmc, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/explosive/plastic, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/explosive/plastic, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/device/binoculars/range, WEAR_IN_BACK)
@@ -1842,7 +1851,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 /datum/equipment_preset/pmc/technician/hvh
 	name = "Weyland-Yutani PMC (Corporate Technician) | HvH"
 	human_versus_human = TRUE
-	headset_type = /obj/item/device/radio/headset/distress/PMC/hvh/cct
+	headset_type = /obj/item/device/radio/headset/distress/pmc/cct/hvh
 
 /*****************************************************************************************************/
 
@@ -1850,13 +1859,14 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 	name = "Weyland-Yutani PMC (Site Director)"
 	flags = EQUIPMENT_PRESET_EXTRA
 
-	languages = list(LANGUAGE_ENGLISH, LANGUAGE_RUSSIAN, LANGUAGE_JAPANESE, LANGUAGE_GERMAN, LANGUAGE_SPANISH, LANGUAGE_CHINESE)
+	languages = ALL_HUMAN_LANGUAGES
 
 	assignment = JOB_PMC_DIRECTOR
 	rank = JOB_PMC_DIRECTOR
 	paygrade = "PMC-DIR"
 	role_comm_title = "DIR"
 	skills = /datum/skills/pmc/director
+	headset_type = /obj/item/device/radio/headset/distress/pmc/command/director
 
 /datum/equipment_preset/pmc/director/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/director, WEAR_HEAD)
@@ -1864,7 +1874,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/suit_jacket/director, WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/director, WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/mateba/pmc, WEAR_WAIST)
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/veteran/PMC/knife, WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/veteran/pmc/knife, WEAR_FEET)
 
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/lockable, WEAR_BACK)
 
@@ -1883,7 +1893,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 /datum/equipment_preset/pmc/director/hvh
 	name = "Weyland-Yutani PMC (Site Director) | HvH"
 	human_versus_human = TRUE
-	headset_type = /obj/item/device/radio/headset/distress/PMC/hvh/cct
+	headset_type = /obj/item/device/radio/headset/distress/pmc/command/director/hvh
 
 //*****************************************************************************************************/
 
@@ -1891,16 +1901,17 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 		name = "Weyland-Yutani PMC (Support Synthetic)"
 		flags = EQUIPMENT_PRESET_EXTRA
 
-		languages = list(LANGUAGE_ENGLISH, LANGUAGE_RUSSIAN, LANGUAGE_JAPANESE, LANGUAGE_YAUTJA, LANGUAGE_XENOMORPH, LANGUAGE_GERMAN, LANGUAGE_SPANISH, LANGUAGE_CHINESE)
+		languages = ALL_SYNTH_LANGUAGES
 
 		skills = /datum/skills/synthetic
 		idtype = /obj/item/card/id/data
 		assignment = JOB_PMC_SYNTH
 		rank = JOB_PMC_SYNTH
 		role_comm_title = "SYN"
+		headset_type = /obj/item/device/radio/headset/distress/pmc/command
 
 
-/datum/equipment_preset/pmc/synth/load_name(mob/living/carbon/human/H, var/randomise)
+/datum/equipment_preset/pmc/synth/load_name(mob/living/carbon/human/H, randomise)
 	H.gender = pick(50;MALE,50;FEMALE)
 	var/datum/preferences/A = new()
 	A.randomize_appearance(H)
@@ -1931,20 +1942,20 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 		H.allow_gun_usage = FALSE
 
 /datum/equipment_preset/pmc/synth/load_gear(mob/living/carbon/human/H)
-		H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/PMC, WEAR_BODY)
+		H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/pmc, WEAR_BODY)
 		H.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/surg_vest/equipped, WEAR_ACCESSORY)
-		H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/PMC/light/synth, WEAR_JACKET)
+		H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/pmc/light/synth, WEAR_JACKET)
 		H.equip_to_slot_or_del(new /obj/item/weapon/melee/telebaton, WEAR_IN_JACKET)
 		H.equip_to_slot_or_del(new /obj/item/tool/surgery/synthgraft, WEAR_IN_JACKET)
 		H.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/nailgun, WEAR_IN_JACKET)
 
-		H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/PMC, WEAR_HEAD)
+		H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/pmc, WEAR_HEAD)
 		H.equip_to_slot_or_del(new headset_type, WEAR_L_EAR)
 		H.equip_to_slot_or_del(new /obj/item/clothing/glasses/night/experimental_mesons, WEAR_EYES)
-		H.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/PMC, WEAR_FACE)
+		H.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/pmc, WEAR_FACE)
 
-		H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/PMC, WEAR_HANDS)
-		H.equip_to_slot_or_del(new /obj/item/clothing/shoes/veteran/PMC/knife, WEAR_FEET)
+		H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/pmc, WEAR_HANDS)
+		H.equip_to_slot_or_del(new /obj/item/clothing/shoes/veteran/pmc/knife, WEAR_FEET)
 
 		H.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/smartpack/white, WEAR_BACK)
 		H.equip_to_slot_or_del(new /obj/item/roller, WEAR_IN_BACK)
@@ -2098,4 +2109,4 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 /datum/equipment_preset/pmc/synth/hvh
 		name = "Weyland-Yutani PMC (Support Synthetic) | HvH"
 		human_versus_human = TRUE
-		headset_type = /obj/item/device/radio/headset/distress/PMC/hvh/cct
+		headset_type = /obj/item/device/radio/headset/distress/pmc/command/hvh

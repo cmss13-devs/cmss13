@@ -1,8 +1,8 @@
 /*
  * Contains:
- *		Fire protection
- *		Bomb protection
- *		Radiation protection
+ * Fire protection
+ * Bomb protection
+ * Radiation protection
  */
 
 /*
@@ -29,16 +29,16 @@
 		/obj/item/tool/crowbar,
 		/obj/item/tool/pen,
 	)
-	slowdown = 1.0
+	slowdown = 1
 	flags_inventory = NOPRESSUREDMAGE
 	flags_inv_hide = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT|HIDETAIL
 	flags_heat_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_FEET|BODY_FLAG_ARMS|BODY_FLAG_HANDS
-	max_heat_protection_temperature = FIRESUIT_max_heat_protection_temperature
+	max_heat_protection_temperature = FIRESUIT_MAX_HEAT_PROT
 	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_FEET|BODY_FLAG_ARMS|BODY_FLAG_HANDS
 
 /obj/item/clothing/suit/fire/equipped(mob/user, slot)
 	if(slot == WEAR_JACKET)
-		RegisterSignal(user, COMSIG_LIVING_FLAMER_CROSSED, .proc/flamer_fire_crossed_callback)
+		RegisterSignal(user, COMSIG_LIVING_FLAMER_CROSSED, PROC_REF(flamer_fire_crossed_callback))
 	..()
 
 /obj/item/clothing/suit/fire/dropped(mob/user)
@@ -97,7 +97,7 @@
 	armor_internaldamage = CLOTHING_ARMOR_LOW
 	flags_inv_hide = HIDEJUMPSUIT|HIDETAIL
 	flags_heat_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN
-	max_heat_protection_temperature = ARMOR_max_heat_protection_temperature
+	max_heat_protection_temperature = HELMET_MAX_HEAT_PROT
 	siemens_coefficient = 0
 
 

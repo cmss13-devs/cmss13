@@ -2,9 +2,9 @@
 
 /obj/effect/glowshroom
 	name = "glowshroom"
-	anchored = 1
-	opacity = 0
-	density = 0
+	anchored = TRUE
+	opacity = FALSE
+	density = FALSE
 	icon = 'icons/obj/items/lighting.dmi'
 	icon_state = "glowshroomf"
 	layer = ABOVE_TURF_LAYER

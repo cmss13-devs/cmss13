@@ -47,7 +47,7 @@
 	)
 	assignment = JOB_CORPORATE_LIAISON
 	rank = JOB_CORPORATE_LIAISON
-	paygrade = "WY-XB-X"
+	paygrade = "WYC2"
 	role_comm_title = "CL"
 	skills = /datum/skills/civilian
 
@@ -84,11 +84,11 @@
 		var/playtime = get_job_playtime(H.client, rank)
 		if(H.client.prefs.playtime_perks)
 			if(playtime > JOB_PLAYTIME_TIER_4)
-				return "WY-XE"
+				return "WYC5"
 			else if(playtime > JOB_PLAYTIME_TIER_3)
-				return "WY-XD"
+				return "WYC4"
 			else if(playtime > JOB_PLAYTIME_TIER_2)
-				return "WY-XC"
+				return "WYC3"
 			else
 				return paygrade
 	return paygrade
@@ -109,7 +109,7 @@
 		ACCESS_MARINE_LOGISTICS,
 		ACCESS_MARINE_MAINT,
 		ACCESS_MARINE_OT,
-		ACCESS_MARINE_SYNTH
+		ACCESS_MARINE_SYNTH,
 	)
 	assignment = JOB_CHIEF_ENGINEER
 	rank = JOB_CHIEF_ENGINEER
@@ -142,7 +142,7 @@
 	access = list(
 		ACCESS_MARINE_ENGINEERING,
 		ACCESS_CIVILIAN_ENGINEERING,
-		ACCESS_MARINE_MAINT
+		ACCESS_MARINE_MAINT,
 	)
 	assignment = JOB_MAINT_TECH
 	rank = JOB_MAINT_TECH
@@ -184,7 +184,7 @@
 		ACCESS_MARINE_ENGINEERING,
 		ACCESS_CIVILIAN_ENGINEERING,
 		ACCESS_MARINE_MAINT,
-		ACCESS_MARINE_OT
+		ACCESS_MARINE_OT,
 
 	)
 	assignment = JOB_ORDNANCE_TECH
@@ -227,7 +227,7 @@
 		ACCESS_MARINE_BRAVO,
 		ACCESS_MARINE_CHARLIE,
 		ACCESS_MARINE_DELTA,
-		ACCESS_MARINE_PREP
+		ACCESS_MARINE_PREP,
 	)
 	assignment = JOB_CHIEF_REQUISITION
 	rank = JOB_CHIEF_REQUISITION

@@ -16,7 +16,7 @@
 		/datum/action/xeno_action/activable/pierce,
 		/datum/action/xeno_action/activable/pounce/prae_dash,
 		/datum/action/xeno_action/activable/cleave,
-		/datum/action/xeno_action/onclick/toggle_cleave
+		/datum/action/xeno_action/onclick/toggle_cleave,
 	)
 	behavior_delegate_type = /datum/behavior_delegate/praetorian_vanguard
 	keystone = TRUE
@@ -26,7 +26,7 @@
 	if (. == 0)
 		return
 
-	var/mob/living/carbon/Xenomorph/Praetorian/praetorian = mutator_set.xeno
+	var/mob/living/carbon/xenomorph/praetorian/praetorian = mutator_set.xeno
 	praetorian.speed_modifier += XENO_SPEED_FASTMOD_TIER_3
 	praetorian.health_modifier -= XENO_HEALTH_MOD_MED
 	praetorian.claw_type = CLAW_TYPE_SHARP
@@ -43,8 +43,8 @@
 	name = "Praetorian Vanguard Behavior Delegate"
 
 	// Config
-	var/shield_recharge_time = 200     // 20 seconds to recharge 1-hit shield
-	var/pierce_spin_time = 10          // 1 second to use pierce
+	var/shield_recharge_time = 200  // 20 seconds to recharge 1-hit shield
+	var/pierce_spin_time = 10   // 1 second to use pierce
 	var/shield_decay_cleave_time = 15   // How long you have to buffed cleave after the shield fully decays
 
 	// State
@@ -70,7 +70,7 @@
 	if (istype(pAction))
 		pAction.should_spin_instead = TRUE
 
-	addtimer(CALLBACK(src, .proc/next_pierce_normal), pierce_spin_time)
+	addtimer(CALLBACK(src, PROC_REF(next_pierce_normal)), pierce_spin_time)
 	return
 
 /datum/behavior_delegate/praetorian_vanguard/proc/next_pierce_normal()
@@ -80,7 +80,7 @@
 	return
 
 /datum/behavior_delegate/praetorian_vanguard/proc/regen_shield()
-	var/mob/living/carbon/Xenomorph/praetorian = bound_xeno
+	var/mob/living/carbon/xenomorph/praetorian = bound_xeno
 	var/datum/xeno_shield/vanguard/found_shield = null
 	last_shield_regen_time = world.time
 	for (var/datum/xeno_shield/vanguard/vanguard_shield in praetorian.xeno_shields)

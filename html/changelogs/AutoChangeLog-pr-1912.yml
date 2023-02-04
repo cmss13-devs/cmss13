@@ -1,8 +1,0 @@
-author: "Mistfrag, Frans, Wei"
-delete-after: True
-changes:
-  - rscadd: "Added new scarves to the loadout menu."
-  - imageadd: "Added new scarves, coming in different camo and color options."
-  - imageadd: "New black face-wrap."
-  - code_imp: "Renamed tac-masks to face-wraps to distinguish between them and scarves."
-  - refactor: "Made datums use the right names for items in preferences.dm (no idea why they didn't.)"

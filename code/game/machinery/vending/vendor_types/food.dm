@@ -3,13 +3,12 @@
 	name = "\improper ColMarTech Food Vendor"
 	desc = "USCM Food Vendor, containing standard military Prepared Meals."
 	icon_state = "marine_food"
-	vend_delay = 3
 	hackable = TRUE
 	unacidable = FALSE
 	unslashable = FALSE
 	wrenchable = TRUE
 
-/obj/structure/machinery/cm_vending/sorted/marine_food/populate_product_list(var/scale)
+/obj/structure/machinery/cm_vending/sorted/marine_food/populate_product_list(scale)
 	listed_products = list(
 		list("PREPARED MEALS", -1, null, null),
 		list("USCM Prepared Meal (Chicken)", 15, /obj/item/reagent_container/food/snacks/mre_pack/meal5, VENDOR_ITEM_REGULAR),
@@ -33,7 +32,7 @@
 	desc = "A technological marvel, supposedly able to mix just the mixture you'd like to drink the moment you ask for one."
 	icon_state = "boozeomat"
 	vendor_theme = VENDOR_THEME_COMPANY
-	vend_delay = 15
+	vend_delay = 1.5 SECONDS
 	hackable = TRUE
 	unacidable = FALSE
 	unslashable = FALSE
@@ -92,7 +91,6 @@
 	name = "\improper Chess-O-Mat"
 	desc = "In 2143 Red Star Drinks, a UPP-CA (Colonial Administration) affiliated corporation ran a promotional sweepstakes for drinkers who had found special codes on the inside of the caps of a limited run of Red Star Vodka, shipping them a Chess-O-Mat with unlimited refills."
 	vendor_theme = VENDOR_THEME_COMPANY
-	vend_delay = 15
 	icon_state = "chessomat"
 	hackable = TRUE
 	unacidable = FALSE

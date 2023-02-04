@@ -1,15 +1,15 @@
 //admin verb groups - They can overlap if you so wish. Only one of each verb will exist in the verbs list regardless
 var/list/admin_verbs_default = list(
-	/datum/admins/proc/show_player_panel,	/*shows an interface for individual players, with various links (links require additional flags*/
-	/client/proc/toggleadminhelpsound,	/*toggles whether we hear a sound when adminhelps/PMs are used*/
-	/client/proc/becomelarva,			/*lets you forgo your larva protection as staff member. */
-	/client/proc/deadmin_self,			/*destroys our own admin datum so we can play as a regular player*/
-	/client/proc/open_STUI, 			// This proc can be used by all admins but depending on your rank you see diffrent stuff.
-	/client/proc/debug_variables,		/*allows us to -see- the variables of any instance in the game. +VAREDIT needed to modify*/
+	/datum/admins/proc/show_player_panel, /*shows an interface for individual players, with various links (links require additional flags*/
+	/client/proc/toggleadminhelpsound, /*toggles whether we hear a sound when adminhelps/PMs are used*/
+	/client/proc/becomelarva, /*lets you forgo your larva protection as staff member. */
+	/client/proc/deadmin_self, /*destroys our own admin datum so we can play as a regular player*/
+	/client/proc/open_STUI, // This proc can be used by all admins but depending on your rank you see diffrent stuff.
+	/client/proc/debug_variables, /*allows us to -see- the variables of any instance in the game. +VAREDIT needed to modify*/
 	/client/proc/debug_global_variables,
-	/client/proc/xooc,					// Xeno OOC
-	/client/proc/mooc,					// Marine OOC
-	/client/proc/yooc,					// Yautja OOC
+	/client/proc/xooc, // Xeno OOC
+	/client/proc/mooc, // Marine OOC
+	/client/proc/yooc, // Yautja OOC
 	/client/proc/view_faxes,
 	/client/proc/create_custom_paper,
 	/client/proc/cmd_admin_change_their_name,
@@ -19,24 +19,25 @@ var/list/admin_verbs_default = list(
 	/client/proc/cmd_admin_xeno_report,  //Allows creation of IC reports by the Queen Mother
 	/client/proc/cmd_admin_create_AI_report,  //Allows creation of IC reports by the ships AI utilizing Almayer General channel. Relies on ARES being intact and tcomms being powered.
 	/client/proc/cmd_admin_create_AI_shipwide_report,  //Allows creation of IC reports by the ships AI utilizing announcement code. Will be shown to every conscious human on Almayer z-level regardless of ARES and tcomms status.
+	/client/proc/cmd_admin_create_AI_apollo_report,  //Allows creation of IC reports to the Apollo subprocessor, transmitting to Working Joes and Maintenance Drones.
 	/client/proc/cmd_admin_create_centcom_report, //Messages from USCM command/other factions.
 	/client/proc/cmd_admin_create_predator_report, //Predator ship AI report
-	/client/proc/admin_ghost,			/*allows us to ghost/reenter body at will*/
+	/client/proc/admin_ghost, /*allows us to ghost/reenter body at will*/
 	/client/proc/invismin,
 	/client/proc/set_explosive_antigrief,
 	/client/proc/check_explosive_antigrief,
 	/client/proc/cmd_mod_say,
 	/client/proc/dsay,
-	/client/proc/chem_panel,			/*chem panel, allows viewing, editing and creation of reagent and chemical_reaction datums*/
-	/client/proc/player_panel_new,		/*shows an interface for all players, with links to various panels*/
-	/client/proc/cmd_admin_pm_context,	/*right-click adminPM interface*/
+	/client/proc/chem_panel, /*chem panel, allows viewing, editing and creation of reagent and chemical_reaction datums*/
+	/client/proc/player_panel_new, /*shows an interface for all players, with links to various panels*/
+	/client/proc/cmd_admin_pm_context, /*right-click adminPM interface*/
 	/client/proc/toggledebuglogs,
 	/client/proc/togglestatpanelsplit,
 	/client/proc/togglenichelogs,
 	/datum/admins/proc/player_notes_show,
-	/datum/admins/proc/toggleooc,		/*toggles ooc on/off for everyone*/
-	/datum/admins/proc/togglelooc,		/*toggles ooc on/off for everyone*/
-	/datum/admins/proc/toggledsay,		/*toggles dsay on/off for everyone*/
+	/datum/admins/proc/toggleooc, /*toggles ooc on/off for everyone*/
+	/datum/admins/proc/togglelooc, /*toggles ooc on/off for everyone*/
+	/datum/admins/proc/toggledsay, /*toggles dsay on/off for everyone*/
 	/client/proc/check_antagonists,
 	/client/proc/check_round_status,
 	/client/proc/toggleattacklogs,
@@ -44,7 +45,7 @@ var/list/admin_verbs_default = list(
 	/datum/admins/proc/show_player_panel,
 	/client/proc/hide_admin_verbs,
 	/client/proc/vehicle_panel,
-	/client/proc/in_view_panel,			/*allows application of aheal/sleep in an AOE*/
+	/client/proc/in_view_panel, /*allows application of aheal/sleep in an AOE*/
 	/client/proc/toggle_lz_resin,
 	/client/proc/rejuvenate_all_in_view,
 	/client/proc/rejuvenate_all_humans_in_view,
@@ -65,17 +66,17 @@ var/list/admin_verbs_default = list(
 	)
 
 var/list/admin_verbs_admin = list(
-	/datum/admins/proc/togglejoin,		/*toggles whether people can join the current game*/
-	/datum/admins/proc/announce,		/*priority announce something to all clients.*/
-	/datum/admins/proc/view_txt_log,	/*shows the server log (diary) for today*/
-	/client/proc/cmd_admin_delete,		/*delete an instance/object/mob/etc*/
-	/client/proc/giveruntimelog,		/*allows us to give access to runtime logs to somebody*/
-	/client/proc/getserverlog,			/*allows us to fetch server logs (diary) for other days*/
-	/client/proc/toggleprayers,			/*toggles prayers on/off*/
-	/client/proc/toggle_hear_radio,		/*toggles whether we hear the radio*/
+	/datum/admins/proc/togglejoin, /*toggles whether people can join the current game*/
+	/datum/admins/proc/announce, /*priority announce something to all clients.*/
+	/datum/admins/proc/view_txt_log, /*shows the server log (diary) for today*/
+	/client/proc/cmd_admin_delete, /*delete an instance/object/mob/etc*/
+	/client/proc/giveruntimelog, /*allows us to give access to runtime logs to somebody*/
+	/client/proc/getserverlog, /*allows us to fetch server logs (diary) for other days*/
+	/client/proc/toggleprayers, /*toggles prayers on/off*/
+	/client/proc/toggle_hear_radio, /*toggles whether we hear the radio*/
 	/client/proc/event_panel,
-	/client/proc/cmd_admin_say,			/*admin-only ooc chat*/
-	/client/proc/free_slot,				/*frees slot for chosen job*/
+	/client/proc/cmd_admin_say, /*admin-only ooc chat*/
+	/client/proc/free_slot, /*frees slot for chosen job*/
 	/client/proc/modify_slot,
 	/client/proc/cmd_admin_rejuvenate,
 	/client/proc/cmd_admin_remove_clamp,
@@ -105,7 +106,7 @@ var/list/admin_verbs_minor_event = list(
 	/client/proc/force_shuttle,
 	/datum/admins/proc/force_predator_round, //Force spawns a predator round.
 	/client/proc/adjust_predator_round,
-	/client/proc/cmd_admin_world_narrate,	/*sends text to all players with no padding*/
+	/client/proc/cmd_admin_world_narrate, /*sends text to all players with no padding*/
 	/client/proc/cmd_admin_object_narrate,
 	/client/proc/cmd_admin_create_centcom_report, //Messages from USCM command/other factions.
 	/client/proc/cmd_admin_create_predator_report, //Predator ship AI report
@@ -118,7 +119,10 @@ var/list/admin_verbs_minor_event = list(
 	/client/proc/toggle_blood_optimization,
 	/client/proc/toggle_combat_cas,
 	/client/proc/toggle_lz_protection, //Mortar hitting LZ
-	/client/proc/cmd_admin_medals_panel // Marine and Xeno medals editor panel
+	/client/proc/cmd_admin_medals_panel, // Marine and Xeno medals editor panel
+	/client/proc/force_event,
+	/client/proc/toggle_events,
+	/client/proc/toggle_shipside_sd
 )
 var/list/admin_verbs_major_event = list(
 	/client/proc/enable_event_mob_verbs,
@@ -154,13 +158,13 @@ var/list/admin_verbs_server = list(
 	/datum/admins/proc/change_ground_map,
 	/datum/admins/proc/change_ship_map,
 	/datum/admins/proc/vote_ground_map,
-	/client/proc/cmd_admin_delete,		/*delete an instance/object/mob/etc*/
+	/client/proc/cmd_admin_delete, /*delete an instance/object/mob/etc*/
 	/client/proc/cmd_debug_del_all,
 	/datum/admins/proc/togglejoin,
 	/datum/admins/proc/view_txt_log
 )
 var/list/admin_verbs_debug = list(
-    /client/proc/getruntimelog,                     /*allows us to access runtime logs to somebody*/
+	/client/proc/getruntimelog,  /*allows us to access runtime logs to somebody*/
 	/client/proc/debug_role_authority,
 	/client/proc/cmd_debug_make_powernets,
 	/client/proc/cmd_debug_list_processing_items,
@@ -169,15 +173,13 @@ var/list/admin_verbs_debug = list(
 	/client/proc/reload_admins,
 	/client/proc/reload_whitelist,
 	/client/proc/restart_controller,
+	/client/proc/debug_controller,
 	/client/proc/cmd_debug_toggle_should_check_for_win,
 	/client/proc/enable_debug_verbs,
 	/client/proc/toggledebuglogs,
 	/client/proc/togglenichelogs,
 	/client/proc/cmd_admin_change_hivenumber,
 	/client/proc/spawn_wave,
-	/client/proc/run_all_tests,
-	/client/proc/run_test_set,
-	/client/proc/run_individual_test,
 	/client/proc/toggle_log_hrefs,
 	/client/proc/matrix_editor,
 	/client/proc/generate_sound_queues,
@@ -186,12 +188,13 @@ var/list/admin_verbs_debug = list(
 	/client/proc/construct_env_dmm,
 	/client/proc/enter_tree,
 	/client/proc/set_tree_points,
-	/client/proc/purge_data_tab
+	/client/proc/purge_data_tab,
 )
 
 var/list/admin_verbs_debug_advanced = list(
-	/client/proc/proccall_advanced,
-	/client/proc/proccall_atom,
+	/client/proc/callproc_datum,
+	/client/proc/callproc,
+	/client/proc/SDQL2_query,
 )
 
 var/list/clan_verbs = list(
@@ -199,13 +202,13 @@ var/list/clan_verbs = list(
 )
 
 var/list/debug_verbs = list(
-    /client/proc/Cell,
-    /client/proc/cmd_assume_direct_control,
-    /client/proc/ticklag,
-    /client/proc/hide_debug_verbs,
-    /client/proc/view_power_update_stats_area,
-    /client/proc/view_power_update_stats_machines,
-    /client/proc/toggle_power_update_profiling,
+	/client/proc/Cell,
+	/client/proc/cmd_assume_direct_control,
+	/client/proc/ticklag,
+	/client/proc/hide_debug_verbs,
+	/client/proc/view_power_update_stats_area,
+	/client/proc/view_power_update_stats_machines,
+	/client/proc/toggle_power_update_profiling,
 	/client/proc/nanomapgen_DumpImage,
 )
 
@@ -232,15 +235,16 @@ var/list/admin_mob_event_verbs_hideable = list(
 	/client/proc/free_mob_for_ghosts,
 	/client/proc/possess,
 	/client/proc/release,
-    /client/proc/cmd_admin_grantfullaccess,
-    /client/proc/cmd_admin_grantallskills
+	/client/proc/cmd_admin_grantfullaccess,
+	/client/proc/cmd_admin_grantallskills,
+	/client/proc/admin_create_account
 )
 
 //verbs which can be hidden - needs work
 var/list/admin_verbs_hideable = list(
 	/client/proc/release,
 	/client/proc/possess,
-	/client/proc/proccall_atom,
+	/client/proc/callproc_datum,
 	/client/proc/jump_to_object,
 	/client/proc/jumptomob,
 	/client/proc/hide_admin_verbs,
@@ -259,7 +263,7 @@ var/list/admin_verbs_hideable = list(
 )
 
 var/list/admin_verbs_teleport = list(
-	/client/proc/teleport_panel,			/*teleport panel, for jumping to things/places and getting things/places */
+	/client/proc/teleport_panel, /*teleport panel, for jumping to things/places and getting things/places */
 	/client/proc/jumptocoord,
 	/client/proc/jumptooffsetcoord,
 	/client/proc/jumptomob,
@@ -313,8 +317,10 @@ var/list/roundstart_mod_verbs = list(
 		add_verb(src, clan_verbs)
 
 /client/proc/add_admin_whitelists()
-	if(CLIENT_IS_STAFF(src) || CLIENT_HAS_RIGHTS(src, R_MENTOR))
+	if(CLIENT_HAS_RIGHTS(src, R_MENTOR))
 		RoleAuthority.roles_whitelist[ckey] |= WHITELIST_MENTOR
+	if(CLIENT_IS_STAFF(src))
+		RoleAuthority.roles_whitelist[ckey] |= WHITELIST_JOE
 
 /client/proc/remove_admin_verbs()
 	remove_verb(src, list(
@@ -355,7 +361,7 @@ var/list/roundstart_mod_verbs = list(
 /client/proc/set_ooc_color_self()
 	set category = "OOC.OOC"
 	set name = "OOC Text Color - Self"
-	if(!admin_holder && !donator)	return
+	if(!admin_holder && !donator) return
 	var/new_ooccolor = input(src, "Please select your OOC colour.", "OOC colour") as color|null
 	if(new_ooccolor)
 		prefs.ooccolor = new_ooccolor
@@ -367,9 +373,9 @@ var/list/roundstart_mod_verbs = list(
 #define AUTOBANTIME 10
 
 /client/proc/warn(warned_ckey)
-	if(!check_rights(R_ADMIN))	return
+	if(!check_rights(R_ADMIN)) return
 
-	if(!warned_ckey || !istext(warned_ckey))	return
+	if(!warned_ckey || !istext(warned_ckey)) return
 	if(warned_ckey in admin_datums)
 		to_chat(usr, "<font color='red'>Error: warn(): You can't warn admins.</font>")
 		return
@@ -380,7 +386,7 @@ var/list/roundstart_mod_verbs = list(
 		to_chat(src, "<font color='red'>Error: warn(): No such ckey found.</font>")
 		return
 
-	if(++P.warning_count >= MAX_WARNS)					//uh ohhhh...you'reee iiiiin trouuuubble O:)
+	if(++P.warning_count >= MAX_WARNS) //uh ohhhh...you'reee iiiiin trouuuubble O:)
 		ban_unban_log_save("[ckey] warned [warned_ckey], resulting in a [AUTOBANTIME] minute autoban.")
 		if(P.owning_client)
 			message_staff("[key_name_admin(src)] has warned [ckey] resulting in a [AUTOBANTIME] minute ban.")
@@ -411,7 +417,7 @@ var/list/roundstart_mod_verbs = list(
 	message_staff("[key_name_admin(usr)] gave [key_name(T)] the disease [D].")
 
 
-/client/proc/object_talk(var/msg as text) // -- TLE
+/client/proc/object_talk(msg as text) // -- TLE
 	set category = "Admin.Events"
 	set name = "Object Say"
 	set desc = "Display a message to everyone who can hear the target"
@@ -419,13 +425,13 @@ var/list/roundstart_mod_verbs = list(
 		if(!msg)
 			return
 		for (var/mob/V in hearers(mob.control_object))
-			V.show_message("<b>[mob.control_object.name]</b> says: \"" + msg + "\"", 2)
+			V.show_message("<b>[mob.control_object.name]</b> says: \"" + msg + "\"", SHOW_MESSAGE_AUDIBLE)
 
 
 /client/proc/toggle_log_hrefs()
 	set name = "Toggle href Logging"
 	set category = "Server"
-	if(!admin_holder)	return
+	if(!admin_holder) return
 	if(config)
 		if(CONFIG_GET(flag/log_hrefs))
 			CONFIG_SET(flag/log_hrefs, FALSE)
@@ -439,7 +445,7 @@ var/list/roundstart_mod_verbs = list(
 	set name = "Edit Appearance"
 	set category = null
 
-	if(!check_rights(R_ADMIN))	return
+	if(!check_rights(R_ADMIN)) return
 
 	if(!istype(M, /mob/living/carbon/human))
 		to_chat(usr, SPAN_DANGER("You can only do this to humans!"))

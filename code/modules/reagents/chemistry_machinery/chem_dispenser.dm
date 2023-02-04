@@ -1,7 +1,7 @@
 /obj/structure/machinery/chem_dispenser
 	name = "chem dispenser"
-	density = 1
-	anchored = 1
+	density = TRUE
+	anchored = TRUE
 	icon = 'icons/obj/structures/machinery/science_machines.dmi'
 	icon_state = "dispenser"
 	use_power = USE_POWER_NONE
@@ -73,6 +73,8 @@
 
 /obj/structure/machinery/chem_dispenser/clicked(mob/user, list/mods)
 	if(mods["alt"])
+		if(!CAN_PICKUP(user, src))
+			return ..()
 		replace_beaker(user)
 	return ..()
 
@@ -105,7 +107,7 @@
 	var/beakerCurrentVolume = 0
 	if(beaker && beaker.reagents && beaker.reagents.reagent_list.len)
 		for(var/datum/reagent/R in beaker.reagents.reagent_list)
-			beakerContents += list(list("name" = R.name, "volume" = R.volume))	 // list in a list because Byond merges the first list...
+			beakerContents += list(list("name" = R.name, "volume" = R.volume))  // list in a list because Byond merges the first list...
 			beakerCurrentVolume += R.volume
 	.["beakerContents"] = beakerContents
 
@@ -202,11 +204,33 @@
 	accept_glass = 1
 	wrenchable = TRUE
 	network = "Misc"
-	dispensable_reagents = list("water","ice","coffee","cream","tea","cola","spacemountainwind","dr_gibb","space_up","tonic","sodawater","lemon_lime","sugar","orangejuice","limejuice",
-	"watermelonjuice","tomatojuice","carrotjuice","berryjuice","grapejuice","lemonjuice","banana")
+	dispensable_reagents = list(
+		"water",
+		"ice",
+		"coffee",
+		"cream",
+		"tea",
+		"cola",
+		"spacemountainwind",
+		"dr_gibb",
+		"space_up",
+		"tonic",
+		"sodawater",
+		"lemon_lime",
+		"sugar",
+		"orangejuice",
+		"limejuice",
+		"watermelonjuice",
+		"tomatojuice",
+		"carrotjuice",
+		"berryjuice",
+		"grapejuice",
+		"lemonjuice",
+		"banana",
+	)
 	var/hackedcheck = 0
 
-/obj/structure/machinery/chem_dispenser/soda/attackby(var/obj/item/B as obj, var/mob/user as mob)
+/obj/structure/machinery/chem_dispenser/soda/attackby(obj/item/B as obj, mob/user as mob)
 	..()
 	if(HAS_TRAIT(B, TRAIT_TOOL_MULTITOOL))
 		if(hackedcheck == 0)
@@ -248,7 +272,7 @@
 	dispensable_reagents = list("water","ice","sodawater","sugar","tonic","beer","kahlua","whiskey","sake","wine","vodka","gin","rum","vermouth","cognac","ale","mead","thirteenloko","tequila")
 	var/hackedcheck = 0
 
-/obj/structure/machinery/chem_dispenser/beer/attackby(var/obj/item/B as obj, var/mob/user as mob)
+/obj/structure/machinery/chem_dispenser/beer/attackby(obj/item/B as obj, mob/user as mob)
 	..()
 
 	if(HAS_TRAIT(B, TRAIT_TOOL_MULTITOOL))

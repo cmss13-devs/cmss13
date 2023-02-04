@@ -44,7 +44,7 @@
 	if(!has_charge_meter)
 		switch(cell.percent())
 			if(10 to 100)
-				overlays.Cut()
+				overlays -= charge_icon
 			else
 				overlays += charge_icon
 		return
@@ -91,7 +91,7 @@
 	update_icon()
 	return TRUE
 
-/obj/item/weapon/gun/energy/delete_bullet(var/obj/item/projectile/projectile_to_fire, refund = 0)
+/obj/item/weapon/gun/energy/delete_bullet(obj/item/projectile/projectile_to_fire, refund = 0)
 	qdel(projectile_to_fire)
 	if(refund) cell.charge += charge_cost
 	return TRUE
@@ -106,14 +106,56 @@
 		. += SPAN_NOTICE("It has no power cell inside.")
 
 /obj/item/weapon/gun/energy/rxfm5_eva
-	name = "RXF-M5 eva pistol"
-	desc = "A high power focusing blue laser pistol for use in space. Though it works just about anywhere really. Derived from the same technology as laser welders. Issued by the Weyland-Yutani Corporation, but also available on the civilian market."
+	name = "RXF-M5 EVA pistol"
+	desc = "A high power focusing laser pistol designed for Extra-Vehicular Activity, though it works just about anywhere really. Derived from the same technology as laser welders. Issued by the Weyland-Yutani Corporation, but also available on the civilian market."
 	icon_state = "rxfm5_eva"
+	item_state = "eva"
+	muzzle_flash = "muzzle_laser"
+	fire_sound = 'sound/weapons/Laser4.ogg'
 	w_class = SIZE_MEDIUM
+	gun_category = GUN_CATEGORY_HANDGUN
+	flags_equip_slot = SLOT_WAIST
+	flags_gun_features = GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER|GUN_ONE_HAND_WIELDED
 	ammo = /datum/ammo/energy/rxfm_eva
-
+	attachable_allowed = list(/obj/item/attachable/scope/variable_zoom/eva, /obj/item/attachable/eva_doodad)
+	starting_attachment_types = list(/obj/item/attachable/scope/variable_zoom/eva, /obj/item/attachable/eva_doodad)
 	has_charge_meter = FALSE
 	charge_icon = "+rxfm5_empty"
+
+/obj/item/weapon/gun/energy/rxfm5_eva/set_gun_attachment_offsets()
+	attachable_offset = list("muzzle_x" = 0, "muzzle_y" = 0,"rail_x" = 12, "rail_y" = 21, "under_x" = 16, "under_y" = 10, "stock_x" = 0, "stock_y" = 0)
+
+/obj/item/weapon/gun/energy/rxfm5_eva/set_gun_config_values()
+	..()
+	fire_delay = FIRE_DELAY_TIER_8
+	accuracy_mult = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_3
+	scatter = SCATTER_AMOUNT_TIER_7
+	damage_mult = BASE_BULLET_DAMAGE_MULT
+	recoil = RECOIL_AMOUNT_TIER_4
+	recoil_unwielded = RECOIL_AMOUNT_TIER_3
+
+// Funny procs to force the item_states to look right.
+
+/obj/item/weapon/gun/energy/rxfm5_eva/update_icon()
+	..()
+	item_state = "eva"
+	for(var/i in attachments)
+		if(istype(attachments[i], /obj/item/attachable/scope/variable_zoom/eva))
+			item_state += "_s"
+		if(istype(attachments[i], /obj/item/attachable/eva_doodad))
+			item_state += "_d"
+
+/obj/item/weapon/gun/energy/rxfm5_eva/attach_to_gun(mob/user, obj/item/attachable/attachment)
+	. = ..()
+	update_icon()
+	user.update_inv_r_hand()
+	user.update_inv_l_hand()
+
+/obj/item/weapon/gun/energy/rxfm5_eva/on_detach(mob/user, obj/item/attachable/attachment)
+	. = ..()
+	update_icon()
+	user.update_inv_r_hand()
+	user.update_inv_l_hand()
 
 /obj/item/weapon/gun/energy/laser_top
 	name = "'LAZ-TOP'"
@@ -158,6 +200,7 @@
 	charge_cost = 625 // approx 16 shots.
 	has_charge_meter = TRUE
 	charge_icon = "+taser"
+	black_market_value = 20
 	var/precision = TRUE
 	var/skilllock = SKILL_POLICE_SKILLED
 

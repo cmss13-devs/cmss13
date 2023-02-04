@@ -7740,7 +7740,7 @@
 	},
 /area/prison/medbay)
 "asS" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited{
 	pixel_x = 28
 	},
 /turf/open/floor/prison{
@@ -10493,7 +10493,7 @@
 	},
 /area/prison/security/checkpoint/maxsec)
 "aAu" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited{
 	pixel_y = -28
 	},
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -10545,7 +10545,7 @@
 /area/prison/research)
 "aAA" = (
 /obj/structure/surface/table/reinforced,
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited{
 	pixel_y = -28
 	},
 /turf/open/floor/prison{
@@ -11146,7 +11146,7 @@
 	},
 /area/prison/toilet/research)
 "aCb" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited{
 	pixel_y = 28
 	},
 /turf/open/floor{
@@ -17270,7 +17270,7 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited{
 	pixel_x = 28
 	},
 /turf/open/floor/prison{
@@ -17743,8 +17743,8 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/obj/item/explosive/grenade/HE/airburst,
-/obj/item/explosive/grenade/HE/frag,
+/obj/item/explosive/grenade/high_explosive/airburst,
+/obj/item/explosive/grenade/high_explosive/frag,
 /turf/open/floor/prison{
 	dir = 9;
 	icon_state = "greenfull"
@@ -34787,7 +34787,7 @@
 	},
 /area/prison/toilet/security)
 "bQo" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited{
 	pixel_y = -28
 	},
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -34812,7 +34812,7 @@
 	},
 /area/prison/toilet/security)
 "bQq" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited{
 	pixel_y = -28
 	},
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -41660,13 +41660,13 @@
 /area/prison/security/armory/riot)
 "cks" = (
 /obj/structure/surface/rack,
-/obj/item/explosive/grenade/HE/m15,
-/obj/item/explosive/grenade/HE/m15,
+/obj/item/explosive/grenade/high_explosive/m15,
+/obj/item/explosive/grenade/high_explosive/m15,
 /turf/open/floor/prison,
 /area/prison/security/armory/lethal)
 "ckt" = (
 /obj/structure/surface/rack,
-/obj/item/explosive/grenade/HE/m15,
+/obj/item/explosive/grenade/high_explosive/m15,
 /turf/open/floor/prison,
 /area/prison/security/armory/lethal)
 "cku" = (
@@ -46719,7 +46719,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/prison/hallway/central/east)
 "dcn" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med,
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited,
 /turf/closed/wall/prison,
 /area/prison/cellblock/lowsec/ne)
 "dcN" = (
@@ -48925,7 +48925,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/prison/hallway/central/west)
 "jpO" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med,
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited,
 /turf/closed/wall/prison,
 /area/prison/cellblock/lowsec/nw)
 "jqi" = (

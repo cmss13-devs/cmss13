@@ -165,6 +165,20 @@
 	icon_state = "platingdmg1"
 	},
 /area/lv624/lazarus/crashed_ship)
+"fA" = (
+/obj/structure/transmitter/colony_net{
+	pixel_y = 32;
+	phone_category = "CR-116";
+	phone_id = "Armoury";
+	network_receive = "CLF";
+	networks_transmit = list("CLF")
+	},
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "bluecorner";
+	tag = "icon-bluecorner (NORTH)"
+	},
+/area/lv624/lazarus/crashed_ship)
 "fX" = (
 /obj/item/stool,
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
@@ -319,6 +333,16 @@
 /turf/open/floor/almayer{
 	icon_state = "bluecorner";
 	tag = "icon-bluecorner"
+	},
+/area/lv624/lazarus/crashed_ship)
+"ju" = (
+/obj/structure/transmitter/colony_net{
+	pixel_y = 32;
+	phone_category = "Lazarus Landing";
+	phone_id = "Cargo"
+	},
+/turf/closed/shuttle/ert{
+	icon_state = "stan_inner_w_1"
 	},
 /area/lv624/lazarus/crashed_ship)
 "jx" = (
@@ -664,6 +688,13 @@
 "sI" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/effect/spawner/random/toolbox,
+/obj/structure/transmitter/colony_net/rotary{
+	phone_category = "CR-116";
+	phone_id = "Engineering";
+	phone_color = "yellow";
+	network_receive = "CLF";
+	networks_transmit = list("CLF")
+	},
 /turf/open/floor/almayer{
 	icon_state = "orangecorner";
 	tag = "icon-orangecorner"
@@ -833,7 +864,7 @@
 	icon_state = "casing_9_1"
 	},
 /obj/structure/machinery/defenses/sentry/premade/dumb{
-	dir = 4;
+	dir = 8;
 	faction_group = list("CLF")
 	},
 /turf/open/floor{
@@ -1694,6 +1725,14 @@
 /area/lv624/lazarus/crashed_ship)
 "Qj" = (
 /obj/structure/machinery/body_scanconsole,
+/obj/structure/transmitter/colony_net{
+	pixel_y = 32;
+	phone_category = "CR-116";
+	phone_id = "Medical Bay";
+	network_receive = "CLF";
+	networks_transmit = list("CLF");
+	phone_color = "green"
+	},
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "emerald";
@@ -2023,6 +2062,19 @@
 /turf/open/floor/plating{
 	dir = 1;
 	icon_state = "warnplate"
+	},
+/area/lv624/lazarus/crashed_ship)
+"XM" = (
+/obj/structure/transmitter/colony_net{
+	pixel_y = 32;
+	phone_category = "CR-116";
+	phone_id = "Cargo Bay";
+	network_receive = "CLF";
+	networks_transmit = list("CLF")
+	},
+/turf/open/floor{
+	dir = 8;
+	icon_state = "damaged3"
 	},
 /area/lv624/lazarus/crashed_ship)
 "XX" = (
@@ -2989,7 +3041,7 @@ ag
 gD
 QQ
 Xq
-Bc
+XM
 dN
 dN
 Bc
@@ -3031,7 +3083,7 @@ Ar
 Ar
 Ar
 Xq
-xI
+fA
 OL
 fe
 jr
@@ -3408,7 +3460,7 @@ GY
 IP
 Xq
 Nw
-Xq
+ju
 Dm
 VX
 iq

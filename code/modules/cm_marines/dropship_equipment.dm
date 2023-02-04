@@ -41,7 +41,7 @@
 				to_chat(user, SPAN_WARNING("You need to unload \the [ammo_equipped] from \the [src] first!"))
 				return TRUE
 			if(uses_ammo)
-				load_ammo(PC, user)	//it handles on it's own whether the ammo fits
+				load_ammo(PC, user) //it handles on it's own whether the ammo fits
 				return
 
 		else
@@ -51,7 +51,7 @@
 				grab_equipment(PC, user)
 		return TRUE
 
-/obj/structure/dropship_equipment/proc/load_ammo(var/obj/item/powerloader_clamp/PC, var/mob/living/user)
+/obj/structure/dropship_equipment/proc/load_ammo(obj/item/powerloader_clamp/PC, mob/living/user)
 	if(!ship_base || !uses_ammo || ammo_equipped || !istype(PC.loaded, /obj/structure/ship_ammo))
 		return
 	var/obj/structure/ship_ammo/SA = PC.loaded
@@ -73,7 +73,7 @@
 		ammo_equipped = SA
 		update_equipment()
 
-/obj/structure/dropship_equipment/proc/unload_ammo(var/obj/item/powerloader_clamp/PC, var/mob/living/user)
+/obj/structure/dropship_equipment/proc/unload_ammo(obj/item/powerloader_clamp/PC, mob/living/user)
 	playsound(src, 'sound/machines/hydraulics_2.ogg', 40, 1)
 	var/point_loc = ship_base ? ship_base.loc : null
 	if(!do_after(user, 30 * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
@@ -94,7 +94,7 @@
 	ammo_equipped = null
 	update_icon()
 
-/obj/structure/dropship_equipment/proc/grab_equipment(var/obj/item/powerloader_clamp/PC, var/mob/living/user)
+/obj/structure/dropship_equipment/proc/grab_equipment(obj/item/powerloader_clamp/PC, mob/living/user)
 	playsound(loc, 'sound/machines/hydraulics_2.ogg', 40, 1)
 	var/duration_time = 10
 	var/point_loc
@@ -145,7 +145,7 @@
 	equip_categories = list(DROPSHIP_WEAPON, DROPSHIP_CREW_WEAPON)
 	name = "sentry deployment system"
 	desc = "A box that deploys a sentry turret. Fits on both the external weapon and crew compartment attach points of dropships. You need a powerloader to lift it."
-	density = 0
+	density = FALSE
 	health = null
 	icon_state = "sentry_system"
 	is_interactable = TRUE
@@ -265,7 +265,7 @@
 /obj/structure/dropship_equipment/mg_holder
 	name = "machine gun deployment system"
 	desc = "A box that deploys a crew-served scoped M56D heavy machine gun. Fits on both the external weapon and crew compartment attach points of dropships. You need a powerloader to lift it."
-	density = 0
+	density = FALSE
 	equip_categories = list(DROPSHIP_WEAPON, DROPSHIP_CREW_WEAPON)
 	icon_state = "mg_system"
 	point_cost = 300
@@ -318,7 +318,7 @@
 			if(ship_base.base_category == DROPSHIP_WEAPON)
 				switch(dir)
 					if(NORTH)
-						if(	istype(get_step(src, WEST), /turf/open) )
+						if( istype(get_step(src, WEST), /turf/open) )
 							deployed_mg.pixel_x = 5
 						else if ( istype(get_step(src, EAST), /turf/open) )
 							deployed_mg.pixel_x = -5
@@ -600,7 +600,7 @@
 		ammo_equipped.ammo_count = max(ammo_equipped.ammo_count-ammo_equipped.ammo_used_per_firing, 0)
 	update_icon()
 
-/obj/structure/dropship_equipment/weapon/proc/open_fire(obj/selected_target, var/mob/user = usr)
+/obj/structure/dropship_equipment/weapon/proc/open_fire(obj/selected_target, mob/user = usr)
 	set waitfor = 0
 	var/turf/target_turf = get_turf(selected_target)
 	if(firing_sound)
@@ -640,7 +640,7 @@
 	SA.source_mob = user
 	SA.detonate_on(impact)
 
-/obj/structure/dropship_equipment/weapon/proc/open_fire_firemission(obj/selected_target, var/mob/user = usr)
+/obj/structure/dropship_equipment/weapon/proc/open_fire_firemission(obj/selected_target, mob/user = usr)
 	set waitfor = 0
 	var/turf/target_turf = get_turf(selected_target)
 	if(firing_sound)
@@ -1081,7 +1081,7 @@
 
 	activate_winch(user, F)
 
-/obj/structure/dropship_equipment/fulton_system/proc/activate_winch(mob/user, var/obj/item/stack/fulton/linked_fulton)
+/obj/structure/dropship_equipment/fulton_system/proc/activate_winch(mob/user, obj/item/stack/fulton/linked_fulton)
 	set waitfor = 0
 	busy_winch = TRUE
 	playsound(loc, 'sound/machines/medevac_extend.ogg', 40, 1)
@@ -1202,7 +1202,7 @@
 
 	new /obj/effect/rappel_rope(deploy_turf)
 	user.forceMove(deploy_turf)
-	INVOKE_ASYNC(user, /mob/living/carbon/human.proc/animation_rappel)
+	INVOKE_ASYNC(user, TYPE_PROC_REF(/mob/living/carbon/human, animation_rappel))
 	user.client?.perspective = MOB_PERSPECTIVE
 	user.client?.eye = user
 	deploy_turf.ceiling_debris_check(2)
@@ -1212,7 +1212,7 @@
 	icon_state = "rappel_hatch_closed"
 	qdel(warning_zone)
 
-/obj/structure/dropship_equipment/rappel_system/proc/can_use(var/mob/living/carbon/human/user)
+/obj/structure/dropship_equipment/rappel_system/proc/can_use(mob/living/carbon/human/user)
 	if(linked_shuttle.moving_status != SHUTTLE_INTRANSIT)
 		to_chat(user, SPAN_WARNING("\The [src] can only be used while in flight."))
 		return FALSE

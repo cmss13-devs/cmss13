@@ -15,7 +15,7 @@
 /obj/item/storage/belt/equipped(mob/user, slot)
 	switch(slot)
 		if(WEAR_WAIST, WEAR_J_STORE, WEAR_BACK)
-			mouse_opacity = 2 //so it's easier to click when properly equipped.
+			mouse_opacity = MOUSE_OPACITY_OPAQUE //so it's easier to click when properly equipped.
 	..()
 
 /obj/item/storage/belt/dropped(mob/user)
@@ -79,12 +79,12 @@
 		/obj/item/tool/shovel/etool,
 		/obj/item/tool/extinguisher/mini,
 		/obj/item/cell,
-		/obj/item/device/lightreplacer
+		/obj/item/device/lightreplacer,
 
 	)
 	bypass_w_limit = list(
-	/obj/item/tool/shovel/etool,
-	/obj/item/device/lightreplacer
+		/obj/item/tool/shovel/etool,
+		/obj/item/device/lightreplacer,
 	)
 
 
@@ -143,7 +143,7 @@
 		/obj/item/device/analyzer/plant_analyzer,
 		/obj/item/roller,
 		/obj/item/tool/surgery/synthgraft,
-		/obj/item/reagent_container/glass/minitank
+		/obj/item/reagent_container/glass/minitank,
 	)
 
 /obj/item/storage/belt/medical/full/fill_preset_inventory()
@@ -174,8 +174,8 @@
 
 /obj/item/storage/belt/medical/full/with_suture_and_graft/fill_preset_inventory()
 	. = ..()
-	new	/obj/item/tool/surgery/surgical_line(src)
-	new	/obj/item/tool/surgery/synthgraft(src)
+	new /obj/item/tool/surgery/surgical_line(src)
+	new /obj/item/tool/surgery/synthgraft(src)
 
 /obj/item/storage/belt/medical/get_examine_text()
 	. = ..()
@@ -201,7 +201,7 @@
 		/obj/item/stack/medical,
 		/obj/item/device/defibrillator/compact,
 		/obj/item/device/reagent_scanner,
-		/obj/item/device/analyzer/plant_analyzer
+		/obj/item/device/analyzer/plant_analyzer,
 	)
 	has_gamemode_skin = TRUE
 
@@ -304,7 +304,7 @@
 		/obj/item/device/flashlight,
 		/obj/item/device/radio/headset,
 		/obj/item/weapon,
-		/obj/item/device/clue_scanner
+		/obj/item/device/clue_scanner,
 	)
 
 
@@ -371,11 +371,11 @@
 		/obj/item/ammo_magazine/handful,
 		/obj/item/explosive/grenade,
 		/obj/item/explosive/mine,
-		/obj/item/reagent_container/food/snacks
+		/obj/item/reagent_container/food/snacks,
 	)
 	bypass_w_limit = list(
 		/obj/item/ammo_magazine/rifle,
-		/obj/item/ammo_magazine/smg
+		/obj/item/ammo_magazine/smg,
 	)
 	has_gamemode_skin = TRUE
 
@@ -456,7 +456,7 @@
 	icon_state = "sgbelt_ammo"
 	storage_slots = 6
 	bypass_w_limit = list(
-		/obj/item/ammo_magazine/smartgun
+		/obj/item/ammo_magazine/smartgun,
 	)
 	max_w_class = SIZE_MEDIUM
 	can_hold = list(
@@ -471,7 +471,7 @@
 		/obj/item/ammo_magazine/handful,
 		/obj/item/explosive/grenade,
 		/obj/item/explosive/mine,
-		/obj/item/reagent_container/food/snacks
+		/obj/item/reagent_container/food/snacks,
 	)
 
 /obj/item/storage/belt/marine/smartgunner/fill_preset_inventory()
@@ -534,7 +534,7 @@
 		/obj/item/explosive/mine,
 		/obj/item/ammo_magazine/m2c,
 		/obj/item/tool/wirecutters,
-		/obj/item/ammo_magazine/m56d
+		/obj/item/ammo_magazine/m56d,
 	)
 	has_gamemode_skin = FALSE
 
@@ -687,7 +687,7 @@
 	max_storage_space = 48
 	can_hold = list(
 		/obj/item/weapon/melee/throwing_knife,
-		/obj/item/attachable/bayonet
+		/obj/item/attachable/bayonet,
 	)
 	cant_hold = list()
 	flap = FALSE
@@ -734,11 +734,11 @@
 	new /obj/item/explosive/grenade/incendiary(src)
 	new /obj/item/explosive/grenade/incendiary(src)
 	new /obj/item/explosive/grenade/incendiary/airburst(src)
-	new /obj/item/explosive/grenade/HE(src)
-	new /obj/item/explosive/grenade/HE(src)
-	new /obj/item/explosive/grenade/HE(src)
-	new /obj/item/explosive/grenade/HE/airburst(src)
-	new /obj/item/explosive/grenade/HE/airburst(src)
+	new /obj/item/explosive/grenade/high_explosive(src)
+	new /obj/item/explosive/grenade/high_explosive(src)
+	new /obj/item/explosive/grenade/high_explosive(src)
+	new /obj/item/explosive/grenade/high_explosive/airburst(src)
+	new /obj/item/explosive/grenade/high_explosive/airburst(src)
 
 /obj/item/storage/belt/grenade/attackby(obj/item/W, mob/user)
 	if(istype(W, /obj/item/storage/box/nade_box) || istype(W, /obj/item/storage/backpack/marine/grenadepack))
@@ -759,18 +759,18 @@
 	new /obj/item/explosive/grenade/incendiary/airburst(src)
 	new /obj/item/explosive/grenade/incendiary/airburst(src)
 	new /obj/item/explosive/grenade/incendiary/airburst(src)
-	new /obj/item/explosive/grenade/HE(src)
-	new /obj/item/explosive/grenade/HE(src)
-	new /obj/item/explosive/grenade/HE(src)
-	new /obj/item/explosive/grenade/HE(src)
-	new /obj/item/explosive/grenade/HE(src)
-	new /obj/item/explosive/grenade/HE(src)
-	new /obj/item/explosive/grenade/HE/airburst(src)
-	new /obj/item/explosive/grenade/HE/airburst(src)
-	new /obj/item/explosive/grenade/HE/airburst(src)
-	new /obj/item/explosive/grenade/HE/airburst(src)
-	new /obj/item/explosive/grenade/HE/airburst(src)
-	new /obj/item/explosive/grenade/HE/airburst(src)
+	new /obj/item/explosive/grenade/high_explosive(src)
+	new /obj/item/explosive/grenade/high_explosive(src)
+	new /obj/item/explosive/grenade/high_explosive(src)
+	new /obj/item/explosive/grenade/high_explosive(src)
+	new /obj/item/explosive/grenade/high_explosive(src)
+	new /obj/item/explosive/grenade/high_explosive(src)
+	new /obj/item/explosive/grenade/high_explosive/airburst(src)
+	new /obj/item/explosive/grenade/high_explosive/airburst(src)
+	new /obj/item/explosive/grenade/high_explosive/airburst(src)
+	new /obj/item/explosive/grenade/high_explosive/airburst(src)
+	new /obj/item/explosive/grenade/high_explosive/airburst(src)
+	new /obj/item/explosive/grenade/high_explosive/airburst(src)
 
 
 
@@ -807,7 +807,7 @@
 	var/base_icon
 	can_hold = list(
 		/obj/item/weapon/gun/pistol,
-		/obj/item/ammo_magazine/pistol
+		/obj/item/ammo_magazine/pistol,
 	)
 
 /obj/item/storage/belt/gun/post_skin_selection()
@@ -939,6 +939,10 @@
 	if(user.action_busy)
 		return
 
+	if(ammo_dumping.flags_magazine & AMMUNITION_CANNOT_REMOVE_BULLETS)
+		to_chat(user, SPAN_WARNING("You can't remove ammo from \the [ammo_dumping]!"))
+		return
+
 	if(ammo_dumping.flags_magazine & AMMUNITION_HANDFUL_BOX)
 		var/handfuls = round(ammo_dumping.current_rounds / amount_to_dump, 1) //The number of handfuls, we round up because we still want the last one that isn't full
 		if(ammo_dumping.current_rounds != 0)
@@ -970,11 +974,11 @@
 		/obj/item/ammo_magazine/pistol,
 		/obj/item/ammo_magazine/pistol/heavy,
 		/obj/item/ammo_magazine/pistol/heavy/super,
-		/obj/item/ammo_magazine/pistol/heavy/super/highimpact
+		/obj/item/ammo_magazine/pistol/heavy/super/highimpact,
 	)
 	cant_hold = list(
 		/obj/item/weapon/gun/pistol/smart,
-		/obj/item/ammo_magazine/pistol/smart
+		/obj/item/ammo_magazine/pistol/smart,
 	)
 	has_gamemode_skin = TRUE
 
@@ -1052,6 +1056,21 @@
 	new /obj/item/ammo_magazine/pistol/heavy/super/highimpact/ap(src)
 	new /obj/item/ammo_magazine/pistol/heavy/super/highimpact/ap(src)
 
+/obj/item/storage/belt/gun/m4a3/highpower/fill_preset_inventory()
+	handle_item_insertion(new /obj/item/weapon/gun/pistol/highpower())
+	for(var/i = 1 to storage_slots - 1)
+		new /obj/item/ammo_magazine/pistol/highpower(src)
+
+/obj/item/storage/belt/gun/m4a3/highpower/black/fill_preset_inventory()
+	handle_item_insertion(new /obj/item/weapon/gun/pistol/highpower/black())
+	for(var/i = 1 to storage_slots - 1)
+		new /obj/item/ammo_magazine/pistol/highpower/black(src)
+
+/obj/item/storage/belt/gun/m4a3/highpower/tactical/fill_preset_inventory()
+	handle_item_insertion(new /obj/item/weapon/gun/pistol/highpower/tactical())
+	for(var/i = 1 to storage_slots - 1)
+		new /obj/item/ammo_magazine/pistol/highpower/black(src)
+
 /obj/item/storage/belt/gun/m44
 	name = "\improper M276 pattern M44 holster rig"
 	desc = "The M276 is the standard load-bearing equipment of the USCM. It consists of a modular belt with various clips. This version is for the M44 magnum revolver, along with six small pouches for speedloaders. It smells faintly of hay."
@@ -1059,7 +1078,7 @@
 	storage_slots = 7
 	can_hold = list(
 		/obj/item/weapon/gun/revolver/m44,
-		/obj/item/ammo_magazine/revolver
+		/obj/item/ammo_magazine/revolver,
 	)
 	has_gamemode_skin = TRUE
 	holster_slots = list(
@@ -1089,7 +1108,7 @@
 	storage_slots = 6
 	can_hold = list(
 		/obj/item/weapon/gun/revolver,
-		/obj/item/ammo_magazine/revolver
+		/obj/item/ammo_magazine/revolver,
 	)
 	has_gamemode_skin = FALSE
 	holster_slots = list(
@@ -1119,8 +1138,8 @@
 	can_hold = list(
 		/obj/item/ammo_magazine/handful,
 		/obj/item/weapon/gun/revolver,
-		/obj/item/ammo_magazine/revolver
-		)
+		/obj/item/ammo_magazine/revolver,
+	)
 	flap = FALSE
 	holster_slots = list(
 		"1" = list(
@@ -1135,7 +1154,7 @@
 		return ..()
 
 
-obj/item/storage/belt/gun/m44/lever_action/verb/detach_holster()
+/obj/item/storage/belt/gun/m44/lever_action/verb/detach_holster()
 	set category = "Object"
 	set name = "Detach revolver holster"
 	set src in usr
@@ -1162,7 +1181,7 @@ obj/item/storage/belt/gun/m44/lever_action/verb/detach_holster()
 	storage_slots = 1
 	max_storage_space = 1
 	can_hold = list(
-		/obj/item/weapon/gun/revolver
+		/obj/item/weapon/gun/revolver,
 	)
 
 /obj/item/storage/belt/gun/mateba
@@ -1175,7 +1194,7 @@ obj/item/storage/belt/gun/m44/lever_action/verb/detach_holster()
 	can_hold = list(
 		/obj/item/weapon/gun/revolver/mateba,
 		/obj/item/ammo_magazine/revolver/mateba/highimpact,
-		/obj/item/ammo_magazine/revolver/mateba
+		/obj/item/ammo_magazine/revolver/mateba,
 	)
 	holster_slots = list(
 		"1" = list(
@@ -1284,7 +1303,7 @@ obj/item/storage/belt/gun/m44/lever_action/verb/detach_holster()
 		/obj/item/ammo_magazine/pistol/c99/tranq,
 		/obj/item/weapon/gun/revolver/nagant,
 		/obj/item/ammo_magazine/revolver/upp,
-		/obj/item/ammo_magazine/revolver/upp/shrapnel
+		/obj/item/ammo_magazine/revolver/upp/shrapnel,
 	)
 	holster_slots = list("1" = list("icon_x" = -1))
 
@@ -1320,7 +1339,7 @@ obj/item/storage/belt/gun/m44/lever_action/verb/detach_holster()
 	can_hold = list(
 		/obj/item/weapon/gun/pistol,
 		/obj/item/weapon/gun/revolver,
-		/obj/item/ammo_magazine
+		/obj/item/ammo_magazine,
 	)
 
 /obj/item/storage/belt/gun/type47/ivan/Initialize()
@@ -1347,19 +1366,23 @@ obj/item/storage/belt/gun/m44/lever_action/verb/detach_holster()
 	name = "\improper M276 pattern SU-6 Smartpistol holster rig"
 	desc = "The M276 is the standard load-bearing equipment of the USCM. It consists of a modular belt with various clips. This version is for the SU-6 smartpistol."
 	icon_state = "smartpistol_holster"
-	storage_slots = 6
+	storage_slots = 7
 	holster_slots = list(
 		"1" = list(
 			"icon_x" = -5,
 			"icon_y" = -2))
 	can_hold = list(
 		/obj/item/weapon/gun/pistol/smart,
-		/obj/item/ammo_magazine/pistol/smart
+		/obj/item/ammo_magazine/pistol/smart,
 	)
 	has_gamemode_skin = TRUE
 
 /obj/item/storage/belt/gun/smartpistol/full/fill_preset_inventory()
 	handle_item_insertion(new /obj/item/weapon/gun/pistol/smart())
+	for(var/i = 1 to storage_slots - 1)
+		new /obj/item/ammo_magazine/pistol/smart(src)
+
+/obj/item/storage/belt/gun/smartpistol/full_nogun/fill_preset_inventory()
 	for(var/i = 1 to storage_slots - 1)
 		new /obj/item/ammo_magazine/pistol/smart(src)
 
@@ -1372,7 +1395,7 @@ obj/item/storage/belt/gun/m44/lever_action/verb/detach_holster()
 	item_state = "s_marinebelt"
 	can_hold = list(
 		/obj/item/weapon/gun/flare,
-		/obj/item/device/flashlight/flare
+		/obj/item/device/flashlight/flare,
 	)
 	holster_slots = list(
 		"1" = list(
@@ -1402,7 +1425,7 @@ obj/item/storage/belt/gun/m44/lever_action/verb/detach_holster()
 	storage_slots = 7
 	can_hold = list(
 		/obj/item/weapon/gun/revolver/m44/custom/webley,
-		/obj/item/ammo_magazine/revolver
+		/obj/item/ammo_magazine/revolver,
 	)
 	has_gamemode_skin = FALSE
 	holster_slots = list(
@@ -1430,7 +1453,7 @@ obj/item/storage/belt/gun/m44/lever_action/verb/detach_holster()
 		/obj/item/weapon/gun/revolver/m44,
 		/obj/item/ammo_magazine/revolver,
 		/obj/item/ammo_magazine/pistol,
-		/obj/item/ammo_magazine/smartgun
+		/obj/item/ammo_magazine/smartgun,
 	)
 	has_gamemode_skin = TRUE
 
@@ -1452,7 +1475,7 @@ obj/item/storage/belt/gun/m44/lever_action/verb/detach_holster()
 		/obj/item/ammo_magazine/revolver,
 		/obj/item/ammo_magazine/revolver/mateba,
 		/obj/item/ammo_magazine/pistol,
-		/obj/item/ammo_magazine/smartgun
+		/obj/item/ammo_magazine/smartgun,
 	)
 	has_gamemode_skin = TRUE
 
@@ -1498,7 +1521,7 @@ obj/item/storage/belt/gun/m44/lever_action/verb/detach_holster()
 		/obj/item/ammo_magazine/revolver,
 		/obj/item/ammo_magazine/revolver/mateba,
 		/obj/item/ammo_magazine/pistol,
-		/obj/item/ammo_magazine/smartgun
+		/obj/item/ammo_magazine/smartgun,
 	)
 	has_gamemode_skin = TRUE
 
@@ -1518,7 +1541,7 @@ obj/item/storage/belt/gun/m44/lever_action/verb/detach_holster()
 		/obj/item/weapon/gun/pistol,
 		/obj/item/weapon/gun/revolver/m44,
 		/obj/item/weapon/gun/flare,
-		/obj/item/mortar_shell
+		/obj/item/mortar_shell,
 	)
 	bypass_w_limit = list(/obj/item/mortar_shell)
 	has_gamemode_skin = TRUE
@@ -1547,7 +1570,7 @@ obj/item/storage/belt/gun/m44/lever_action/verb/detach_holster()
 		/obj/item/ammo_magazine/hardpoint/tank_glauncher,
 		/obj/item/ammo_magazine/hardpoint/turret_smoke,
 		/obj/item/ammo_magazine/hardpoint/boyars_dualcannon,
-		/obj/item/ammo_magazine/hardpoint/flare_launcher
+		/obj/item/ammo_magazine/hardpoint/flare_launcher,
 	)
 
 /obj/item/storage/belt/souto

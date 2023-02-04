@@ -25,7 +25,7 @@
 
 
 /datum/emergency_call/upp/print_backstory(mob/living/carbon/human/M)
-	if(isHumanStrict(M))
+	if(ishuman_strict(M))
 		to_chat(M, SPAN_BOLD("You grew up in relatively simple family in [pick(75;"Eurasia", 25;"a famished UPP colony")] with few belongings or luxuries."))
 		to_chat(M, SPAN_BOLD("The family you grew up with were [pick(50;"getting by", 25;"impoverished", 25;"starving")] and you were one of [pick(10;"two", 20;"three", 20;"four", 30;"five", 20;"six")] children."))
 		to_chat(M, SPAN_BOLD("You come from a long line of [pick(40;"crop-harvesters", 20;"soldiers", 20;"factory workers", 5;"scientists", 15;"engineers")], and quickly enlisted to improve your living conditions."))
@@ -46,7 +46,7 @@
 
 ///////////////////UPP///////////////////////////
 
-/datum/emergency_call/upp/create_member(datum/mind/M, var/turf/override_spawn_loc)
+/datum/emergency_call/upp/create_member(datum/mind/M, turf/override_spawn_loc)
 	var/turf/spawn_loc = override_spawn_loc ? override_spawn_loc : get_spawn_point()
 
 	if(!istype(spawn_loc))
@@ -91,7 +91,7 @@
 
 	print_backstory(H)
 
-	addtimer(CALLBACK(GLOBAL_PROC, .proc/to_chat, H, SPAN_BOLD("Objectives: [objectives]")), 1 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), H, SPAN_BOLD("Objectives: [objectives]")), 1 SECONDS)
 
 
 

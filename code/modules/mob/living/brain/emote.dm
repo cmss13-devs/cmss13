@@ -1,4 +1,4 @@
-/mob/living/brain/emote(var/act,var/m_type=1,var/message = null, player_caused)
+/mob/living/brain/emote(act, m_type=1, message = null, player_caused)
 	if(!(container && istype(container, /obj/item/device/mmi)))//No MMI, no emotes
 		return
 
@@ -75,9 +75,9 @@
 				M.show_message(message)
 
 
-		if(m_type & 1)
+		if(m_type & SHOW_MESSAGE_VISIBLE)
 			for (var/mob/O in viewers(src, null))
 				O.show_message(message, m_type)
-		else if(m_type & 2)
+		else if(m_type & SHOW_MESSAGE_AUDIBLE)
 			for (var/mob/O in hearers(src.loc, null))
 				O.show_message(message, m_type)

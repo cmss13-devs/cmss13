@@ -561,7 +561,7 @@
 /turf/open/floor/kutjevo/multi_tiles,
 /area/kutjevo/interior/complex/med/operating)
 "aIy" = (
-/obj/structure/largecrate/merc/ammo,
+/obj/structure/largecrate/black_market/confiscated_equipment,
 /turf/open/floor/kutjevo/tan,
 /area/kutjevo/exterior/Northwest_Colony)
 "aIF" = (
@@ -1009,7 +1009,7 @@
 "buo" = (
 /obj/structure/machinery/power/apc{
 	dir = 1;
-	pixel_y = 24
+	pixel_y = 25
 	},
 /turf/open/floor/kutjevo/colors/orange/inner_corner,
 /area/kutjevo/interior/foremans_office)
@@ -1076,7 +1076,7 @@
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/interior/complex/botany)
 "bzY" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited{
 	pixel_y = 28
 	},
 /obj/structure/machinery/light{
@@ -1658,7 +1658,7 @@
 /turf/open/floor/kutjevo/tan/multi_tiles,
 /area/kutjevo/interior/colony_South/power2)
 "cpj" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited{
 	pixel_x = -28
 	},
 /turf/open/floor/kutjevo/multi_tiles{
@@ -1925,7 +1925,7 @@
 "cFY" = (
 /obj/item/stool,
 /obj/item/frame/firstaid_arm_assembly,
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited{
 	pixel_y = 28
 	},
 /turf/open/floor/kutjevo/colors/green/tile,
@@ -4243,7 +4243,7 @@
 /obj/structure/barricade/wooden{
 	dir = 4
 	},
-/obj/effect/landmark/corpsespawner/pmc,
+/obj/effect/landmark/corpsespawner/wygoon,
 /turf/open/floor/kutjevo/multi_tiles{
 	dir = 4
 	},
@@ -4811,7 +4811,7 @@
 	},
 /area/kutjevo/interior/power/comms)
 "giZ" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited{
 	pixel_y = 28
 	},
 /obj/structure/stairs/perspective/kutjevo{
@@ -5114,7 +5114,7 @@
 /turf/open/floor/kutjevo/tan,
 /area/kutjevo/interior/complex/Northwest_Flight_Control)
 "gEc" = (
-/obj/effect/landmark/corpsespawner/pmc,
+/obj/effect/landmark/corpsespawner/wygoon,
 /turf/open/floor/kutjevo/colors/cyan/inner_corner{
 	dir = 8
 	},
@@ -5397,7 +5397,7 @@
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/runoff_river)
 "gXP" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited{
 	pixel_x = -28
 	},
 /turf/open/floor/kutjevo/colors/orange,
@@ -5442,7 +5442,7 @@
 /turf/open/floor/kutjevo/tan,
 /area/kutjevo/interior/complex/Northwest_Security_Checkpoint)
 "haK" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited{
 	pixel_x = -28
 	},
 /turf/open/floor/kutjevo/grey/plate,
@@ -5527,7 +5527,7 @@
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/colony_north)
 "hkq" = (
-/obj/effect/landmark/corpsespawner/pmc,
+/obj/effect/landmark/corpsespawner/wygoon,
 /turf/open/floor/kutjevo/tan,
 /area/kutjevo/interior/construction)
 "hkO" = (
@@ -6696,7 +6696,7 @@
 /area/kutjevo/exterior/complex_border/med_rec)
 "jav" = (
 /obj/structure/closet/secure_closet/engineering_welding,
-/obj/item/ammo_box/magazine/smg/nailgun,
+/obj/item/ammo_box/magazine/nailgun,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/kutjevo/tan/multi_tiles,
 /area/kutjevo/interior/complex/botany/east_tech)
@@ -7539,7 +7539,7 @@
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/oob)
 "kmm" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited{
 	pixel_x = -28
 	},
 /turf/open/floor/kutjevo/colors/purple/edge{
@@ -7653,7 +7653,7 @@
 /turf/open/floor/kutjevo/colors/red/tile,
 /area/kutjevo/exterior/Northwest_Colony)
 "kuL" = (
-/obj/effect/landmark/corpsespawner/pmc,
+/obj/effect/landmark/corpsespawner/wygoon,
 /turf/open/floor/kutjevo/colors/purple/edge{
 	dir = 1
 	},
@@ -7774,7 +7774,6 @@
 /turf/open/floor/kutjevo/tan,
 /area/kutjevo/interior/complex/botany/east_tech)
 "kBb" = (
-/obj/effect/landmark/corpsespawner/pmc,
 /obj/structure/machinery/door_control/brbutton{
 	health = null;
 	id = "kutjevo_medlock_west";
@@ -7784,6 +7783,7 @@
 	pixel_y = 22;
 	range = 15
 	},
+/obj/effect/landmark/corpsespawner/wygoon,
 /turf/open/floor/kutjevo/tan/grey_edge{
 	dir = 1
 	},
@@ -9229,7 +9229,7 @@
 /turf/open/floor/kutjevo/tan/multi_tiles,
 /area/kutjevo/interior/complex/botany/east_tech)
 "mCf" = (
-/obj/effect/landmark/corpsespawner/pmc,
+/obj/effect/landmark/corpsespawner/wygoon,
 /turf/open/floor/kutjevo/colors/cyan/tile,
 /area/kutjevo/interior/complex/med/operating)
 "mCo" = (
@@ -9671,7 +9671,7 @@
 /turf/open/floor/kutjevo/colors/cyan,
 /area/kutjevo/interior/complex/med/cells)
 "neV" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited{
 	pixel_y = 28
 	},
 /obj/structure/machinery/iv_drip,
@@ -11215,7 +11215,7 @@
 /area/kutjevo/exterior/complex_border/botany_medical_cave)
 "piI" = (
 /obj/structure/closet/secure_closet/engineering_welding,
-/obj/item/ammo_box/magazine/smg/nailgun,
+/obj/item/ammo_box/magazine/nailgun,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/kutjevo/tan/multi_tiles,
 /area/kutjevo/interior/complex/botany/east_tech)
@@ -11703,7 +11703,7 @@
 	},
 /area/kutjevo/interior/complex/Northwest_Flight_Control)
 "pLS" = (
-/obj/effect/landmark/corpsespawner/pmc,
+/obj/effect/landmark/corpsespawner/wygoon,
 /turf/open/floor/kutjevo/colors/red,
 /area/kutjevo/interior/complex/botany)
 "pMw" = (
@@ -13335,7 +13335,7 @@
 /turf/open/auto_turf/sand/layer2,
 /area/kutjevo/interior/colony_S_East)
 "scY" = (
-/obj/effect/landmark/corpsespawner/pmc,
+/obj/effect/landmark/corpsespawner/wygoon,
 /turf/open/floor/kutjevo/tan,
 /area/kutjevo/interior/complex/botany)
 "sdn" = (
@@ -14745,7 +14745,7 @@
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/colony_South/power2)
 "tZI" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited{
 	pixel_y = 28
 	},
 /turf/open/floor/kutjevo/colors,
@@ -15503,7 +15503,7 @@
 	},
 /area/kutjevo/interior/power)
 "uTo" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited{
 	pixel_y = -28
 	},
 /turf/open/floor/kutjevo/colors/orange,
@@ -15750,7 +15750,7 @@
 /area/kutjevo/exterior/runoff_bridge)
 "vkm" = (
 /obj/structure/machinery/power/apc{
-	pixel_x = 28
+	pixel_x = 25
 	},
 /obj/structure/machinery/light{
 	dir = 4
@@ -16874,7 +16874,7 @@
 /turf/open/floor/kutjevo/multi_tiles,
 /area/kutjevo/interior/power)
 "wNW" = (
-/obj/item/explosive/grenade/HE/PMC,
+/obj/item/explosive/grenade/high_explosive/pmc,
 /turf/open/floor/kutjevo/tan/multi_tiles,
 /area/kutjevo/interior/complex/botany)
 "wOI" = (
@@ -16982,7 +16982,7 @@
 	dir = 4
 	},
 /obj/structure/machinery/power/apc{
-	pixel_x = 28
+	pixel_x = 25
 	},
 /turf/open/floor/kutjevo/colors/cyan,
 /area/kutjevo/interior/complex/med/auto_doc)
@@ -17642,7 +17642,7 @@
 /obj/structure/bed/chair{
 	dir = 4
 	},
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited{
 	pixel_x = -28
 	},
 /turf/open/floor/kutjevo/colors/cyan,

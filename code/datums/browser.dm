@@ -19,7 +19,7 @@
 	var/static/datum/asset/simple/other/other_asset = get_asset_datum(/datum/asset/simple/other)
 
 
-/datum/browser/New(nuser, nwindow_id, ntitle = 0, nstylesheet = "common.css", nwidth = 0, nheight = 0, var/atom/nref = null)
+/datum/browser/New(nuser, nwindow_id, ntitle = 0, nstylesheet = "common.css", nwidth = 0, nheight = 0, atom/nref = null)
 	user = nuser
 	window_id = nwindow_id
 	if (ntitle)
@@ -108,8 +108,8 @@
 	[get_footer()]
 	"}
 
-/datum/browser/proc/open(var/use_onclose = TRUE)
-	if(isnull(window_id))	//null check because this can potentially nuke goonchat
+/datum/browser/proc/open(use_onclose = TRUE)
+	if(isnull(window_id)) //null check because this can potentially nuke goonchat
 		to_chat(user, "<span class='userdanger'>The [title] browser you tried to open failed a sanity check! Please report this on github!</span>")
 		return
 	var/window_size = ""
@@ -163,15 +163,15 @@
 // e.g. canisters, timers, etc.
 //
 // windowid should be the specified window name
-// e.g. code is	: user << browse(text, "window=fred")
-// then use 	: onclose(user, "fred")
+// e.g. code is : user << browse(text, "window=fred")
+// then use : onclose(user, "fred")
 //
 // Optionally, specify the "ref" parameter as the controlled atom (usually src)
 // to pass a "close=1" parameter or a custom list of parameters to the atom's
 // Topic() proc for special handling.
 // Otherwise, the user mob's machine var will be reset directly.
 //
-/proc/onclose(user, windowid, var/atom/ref, var/list/params)
+/proc/onclose(user, windowid, atom/ref, list/params)
 	var/client/C = user
 
 	if (ismob(user))
@@ -201,12 +201,12 @@
 // a custom list of parameters
 // otherwise, just reset the client mob's machine var.
 //
-/client/verb/windowclose(var/atomref as text|null, var/params as text|null)
-	set hidden = 1						// hide this verb from the user's panel
-	set name = ".windowclose"			// no autocomplete on cmd line
+/client/verb/windowclose(atomref as text|null, params as text|null)
+	set hidden = TRUE // hide this verb from the user's panel
+	set name = ".windowclose" // no autocomplete on cmd line
 
-	if(atomref && atomref != "null")				// if passed a real atomref
-		var/hsrc = locate(atomref)	// find the reffed atom
+	if(atomref && atomref != "null") // if passed a real atomref
+		var/hsrc = locate(atomref) // find the reffed atom
 		if(hsrc)
 			usr = src.mob
 			var/param_string = "close=1"
@@ -226,7 +226,7 @@
 		mob.unset_interaction()
 	return
 
-/proc/show_browser(var/target, var/browser_content, var/browser_name, var/id = null, var/window_options = null, closeref)
+/proc/show_browser(target, browser_content, browser_name, id = null, window_options = null, closeref)
 	var/client/C = target
 
 	if (ismob(target))

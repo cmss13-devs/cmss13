@@ -6,18 +6,18 @@
 	/// The distance loss per hit
 	var/distance_loss_per_hit = 3
 
-/datum/element/bullet_trait_penetrating/Attach(datum/target, var/distance_loss_per_hit = 3)
+/datum/element/bullet_trait_penetrating/Attach(datum/target, distance_loss_per_hit = 3)
 	. = ..()
 	if(!istype(target, /obj/item/projectile))
 		return ELEMENT_INCOMPATIBLE
 
 	src.distance_loss_per_hit = distance_loss_per_hit
 
-	RegisterSignal(target, COMSIG_BULLET_POST_HANDLE_TURF, .proc/handle_passthrough_turf, override = TRUE)
+	RegisterSignal(target, COMSIG_BULLET_POST_HANDLE_TURF, PROC_REF(handle_passthrough_turf), override = TRUE)
 	RegisterSignal(target, list(
 		COMSIG_BULLET_POST_HANDLE_MOB,
 		COMSIG_BULLET_POST_HANDLE_OBJ
-	), .proc/handle_passthrough_movables, override = TRUE)
+	), PROC_REF(handle_passthrough_movables), override = TRUE)
 
 /datum/element/bullet_trait_penetrating/Detach(datum/target)
 	UnregisterSignal(target, list(
@@ -27,13 +27,13 @@
 	))
 	return ..()
 
-/datum/element/bullet_trait_penetrating/proc/handle_passthrough_movables(var/obj/item/projectile/P, var/atom/movable/A, var/did_hit)
+/datum/element/bullet_trait_penetrating/proc/handle_passthrough_movables(obj/item/projectile/P, atom/movable/A, did_hit)
 	SIGNAL_HANDLER
 	if(did_hit)
 		P.distance_travelled += distance_loss_per_hit
 	return COMPONENT_BULLET_PASS_THROUGH
 
-/datum/element/bullet_trait_penetrating/proc/handle_passthrough_turf(var/obj/item/projectile/P, var/turf/closed/wall/T)
+/datum/element/bullet_trait_penetrating/proc/handle_passthrough_turf(obj/item/projectile/P, turf/closed/wall/T)
 	SIGNAL_HANDLER
 	P.distance_travelled += distance_loss_per_hit
 

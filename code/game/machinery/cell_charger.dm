@@ -3,10 +3,10 @@
 	desc = "A much more powerful version of the standard recharger that is specially designed for charging power cells."
 	icon = 'icons/obj/structures/machinery/power.dmi'
 	icon_state = "ccharger0"
-	anchored = 1
+	anchored = TRUE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 5
-	active_power_usage = 40000	//40 kW. (this the power drawn when charging)
+	active_power_usage = 40000 //40 kW. (this the power drawn when charging)
 	power_channel = POWER_CHANNEL_EQUIP
 	var/obj/item/cell/charging = null
 	var/chargelevel = -1
@@ -16,7 +16,7 @@
 
 	if(charging && !(inoperable()) )
 
-		var/newlevel = 	round(charging.percent() * 4.0 / 99)
+		var/newlevel = round(charging.percent() * 4 / 99)
 
 		if(chargelevel != newlevel)
 

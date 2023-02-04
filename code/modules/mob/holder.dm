@@ -30,17 +30,17 @@
 	for(var/mob/M in src.contents)
 		M.attackby(W,user)
 
-/obj/item/holder/proc/show_message(var/message, var/m_type)
+/obj/item/holder/proc/show_message(message, m_type)
 	for(var/mob/living/M in contents)
 		M.show_message(message,m_type)
 
 //Mob procs and vars for scooping up
 /mob/living/var/holder_type
 
-/mob/living/proc/get_scooped(var/mob/living/carbon/grabber)
+/mob/living/proc/get_scooped(mob/living/carbon/grabber)
 	if(!holder_type)
 		return
-	if(isXeno(grabber))
+	if(isxeno(grabber))
 		to_chat(grabber, SPAN_WARNING("You leave [src] alone. It cannot be made a host, so there is no use for it."))
 		return
 	if(locate(/obj/item/explosive/plastic) in contents)
@@ -97,6 +97,19 @@
 	w_class = SIZE_TINY;
 	flags_equip_slot = null
 
-/obj/item/holder/mouse/Doc
+/obj/item/holder/mouse/white
+	icon_state = "mouse_white"
+
+/obj/item/holder/mouse/gray
+	icon_state = "mouse_gray"
+
+/obj/item/holder/mouse/brown
+	icon_state = "mouse_brown"
+
+/obj/item/holder/mouse/white/Doc
 	name = "Doc"
 	desc = "Senior researcher of the Almayer. Likes: cheese, experiments, explosions."
+
+/obj/item/holder/mouse/brown/Tom
+	name = "Tom"
+	desc = "Jerry the cat is not amused."

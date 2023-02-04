@@ -1,6 +1,6 @@
 /mob/living/simple_animal/hostile
 	faction = "hostile"
-	var/stance = HOSTILE_STANCE_IDLE	//Used to determine behavior
+	var/stance = HOSTILE_STANCE_IDLE //Used to determine behavior
 	var/mob/living/target_mob
 	var/attack_same = 0
 	var/ranged = 0
@@ -12,6 +12,8 @@
 	var/list/friends = list()
 	var/break_stuff_probability = 10
 	stop_automated_movement_when_pulled = 0
+	black_market_value = KILL_MENDOZA
+	dead_black_market_value = 25
 	var/destroy_surroundings = 1
 
 /mob/living/simple_animal/hostile/Destroy()
@@ -48,7 +50,7 @@
 				break
 	return T
 
-/mob/living/simple_animal/hostile/proc/evaluate_target(var/mob/living/target)
+/mob/living/simple_animal/hostile/proc/evaluate_target(mob/living/target)
 	if(target.faction == src.faction && !attack_same)
 		return FALSE
 	else if(target in friends)
@@ -57,7 +59,7 @@
 		if(!target.stat)
 			return target
 
-/mob/living/simple_animal/hostile/proc/Found(var/atom/A)
+/mob/living/simple_animal/hostile/proc/Found(atom/A)
 	return
 
 /mob/living/simple_animal/hostile/proc/MoveToTarget()
@@ -77,7 +79,7 @@
 	if(!(target_mob in ListTargets(10)))
 		LostTarget()
 		return 0
-	if(get_dist(src, target_mob) <= 1)	//Attacking
+	if(get_dist(src, target_mob) <= 1) //Attacking
 		AttackingTarget()
 		return 1
 
@@ -105,7 +107,7 @@
 	walk(src, 0)
 
 
-/mob/living/simple_animal/hostile/proc/ListTargets(var/dist = 7)
+/mob/living/simple_animal/hostile/proc/ListTargets(dist = 7)
 	var/list/L = hearers(src, dist)
 	return L
 

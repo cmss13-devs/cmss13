@@ -8,13 +8,13 @@
 	controller = TREE_MARINE
 	number_of_clues_to_generate = 2
 
-/datum/cm_objective/crack_safe/New(var/obj/structure/safe/safe)
+/datum/cm_objective/crack_safe/New(obj/structure/safe/safe)
 	target = safe
 	initial_area = get_area(target)
 
 
-	RegisterSignal(safe, COMSIG_SAFE_OPENED, .proc/on_safe_open)
-	RegisterSignal(safe, COMSIG_PARENT_QDELETING, .proc/on_safe_open)
+	RegisterSignal(safe, COMSIG_SAFE_OPENED, PROC_REF(on_safe_open))
+	RegisterSignal(safe, COMSIG_PARENT_QDELETING, PROC_REF(on_safe_open))
 	safe.objective = src
 	. = ..()
 
@@ -48,7 +48,7 @@
 	SSobjectives.statistics["miscellaneous_total_points_earned"] += value
 	award_points()
 
-/datum/cm_objective/crack_safe/proc/on_safe_open(var/obj/structure/safe)
+/datum/cm_objective/crack_safe/proc/on_safe_open(obj/structure/safe)
 	SIGNAL_HANDLER
 
 	if (state != OBJECTIVE_COMPLETE)

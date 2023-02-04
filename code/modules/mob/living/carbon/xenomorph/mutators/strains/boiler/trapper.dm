@@ -16,7 +16,7 @@
 		/datum/action/xeno_action/activable/boiler_trap,
 		/datum/action/xeno_action/activable/acid_mine,
 		/datum/action/xeno_action/activable/acid_shotgun,
-		/datum/action/xeno_action/onclick/toggle_long_range/trapper
+		/datum/action/xeno_action/onclick/toggle_long_range/trapper,
 	)
 	keystone = TRUE
 
@@ -27,7 +27,7 @@
 	if(. == 0)
 		return
 
-	var/mob/living/carbon/Xenomorph/Boiler/boiler = mutator_set.xeno
+	var/mob/living/carbon/xenomorph/boiler/boiler = mutator_set.xeno
 	if(boiler.is_zoomed)
 		boiler.zoom_out()
 
@@ -63,11 +63,11 @@
 		temp_movespeed_time_used = world.time
 		temp_movespeed_usable = FALSE
 
-		if (isXeno(bound_xeno))
-			var/mob/living/carbon/Xenomorph/xeno = bound_xeno
+		if (isxeno(bound_xeno))
+			var/mob/living/carbon/xenomorph/xeno = bound_xeno
 			xeno.speed_modifier -= temp_movespeed_amount
 			xeno.recalculate_speed()
-			addtimer(CALLBACK(src, .proc/remove_speed_buff), temp_movespeed_duration)
+			addtimer(CALLBACK(src, PROC_REF(remove_speed_buff)), temp_movespeed_duration)
 
 /datum/behavior_delegate/boiler_trapper/ranged_attack_additional_effects_target(atom/target_atom)
 	if (!ishuman(target_atom))
@@ -107,8 +107,8 @@
 		return
 
 /datum/behavior_delegate/boiler_trapper/proc/remove_speed_buff()
-	if (isXeno(bound_xeno))
-		var/mob/living/carbon/Xenomorph/xeno = bound_xeno
+	if (isxeno(bound_xeno))
+		var/mob/living/carbon/xenomorph/xeno = bound_xeno
 		xeno.speed_modifier += temp_movespeed_amount
 		xeno.recalculate_speed()
 		temp_movespeed_messaged = FALSE

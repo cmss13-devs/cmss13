@@ -1,3 +1,4 @@
+import { toFixed } from 'common/math';
 import { useBackend } from '../backend';
 import { Button, Section, LabeledList, Slider } from '../components';
 import { Window } from '../layouts';
@@ -27,11 +28,13 @@ export const Signaller = (props, context) => {
                 minValue={min_freq}
                 value={data.current_freq}
                 onChange={(e, value) => act('set_freq', { value: value })}
+                format={(value) => toFixed(value / 10, 1)}
+                unit="kHz"
                 mt={1}
                 stepPixelSize={2}
               />
             </LabeledList.Item>
-            <LabeledList.Item label="Signal">
+            <LabeledList.Item label="Code">
               <Slider
                 inline
                 maxValue={max_signal}

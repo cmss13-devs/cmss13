@@ -71,6 +71,6 @@
 		selected_mail = null
 
 	add_fingerprint(usr)
-//	updateUsrDialog()
+// updateUsrDialog()
 	attack_hand(usr)
 

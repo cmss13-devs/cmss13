@@ -4,11 +4,11 @@
  * Note: Multitools are /obj/item/device
  *
  * Contains:
- * 		Wrench
- * 		Screwdriver
- * 		Wirecutters
- * 		Blowtorch
- * 		Crowbar
+ * Wrench
+ * Screwdriver
+ * Wirecutters
+ * Blowtorch
+ * Crowbar
  */
 
 /*
@@ -19,12 +19,12 @@
 	desc = "A wrench with many common uses. Can be usually found in your hand."
 	icon = 'icons/obj/items/items.dmi'
 	icon_state = "wrench"
-	pickupsound = 'sound/handling/wrench_pickup.ogg'
-	dropsound = 'sound/handling/wrench_drop.ogg'
+	pickup_sound = 'sound/handling/wrench_pickup.ogg'
+	drop_sound = 'sound/handling/wrench_drop.ogg'
 	flags_atom = FPRINT|CONDUCT
 	flags_equip_slot = SLOT_WAIST
-	force = 5.0
-	throwforce = 7.0
+	force = 5
+	throwforce = 7
 	w_class = SIZE_SMALL
 	matter = list("metal" = 150)
 	attack_verb = list("bashed", "battered", "bludgeoned", "whacked")
@@ -39,13 +39,13 @@
 	desc = "You can be totally screwy with this."
 	icon = 'icons/obj/items/items.dmi'
 	icon_state = "screwdriver"
-	pickupsound = 'sound/handling/multitool_pickup.ogg'
-	dropsound = 'sound/handling/screwdriver_drop.ogg'
+	pickup_sound = 'sound/handling/multitool_pickup.ogg'
+	drop_sound = 'sound/handling/screwdriver_drop.ogg'
 	flags_atom = FPRINT|CONDUCT
 	flags_equip_slot = SLOT_WAIST | SLOT_EAR | SLOT_FACE
-	force = 5.0
+	force = 5
 	w_class = SIZE_TINY
-	throwforce = 5.0
+	throwforce = 5
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 5
 	matter = list("metal" = 75)
@@ -98,7 +98,7 @@
 			if(!safety)
 				to_chat(user, SPAN_DANGER("You stab [H] in the eyes with the [src]!"))
 				visible_message(SPAN_DANGER("[user] stabs [H] in the eyes with the [src]!"))
-				E.damage += rand(8,20)
+				E.take_damage(rand(8,20))
 	return ..()
 /obj/item/tool/screwdriver/tactical
 	name = "tactical screwdriver"
@@ -115,15 +115,16 @@
  */
 /obj/item/tool/wirecutters
 	name = "wirecutters"
+	gender = PLURAL
 	desc = "This cuts wires."
 	icon = 'icons/obj/items/items.dmi'
 	icon_state = "cutters"
 	item_state = "cutters"
-	pickupsound = 'sound/handling/wirecutter_pickup.ogg'
-	dropsound = 'sound/handling/wirecutter_drop.ogg'
+	pickup_sound = 'sound/handling/wirecutter_pickup.ogg'
+	drop_sound = 'sound/handling/wirecutter_drop.ogg'
 	flags_atom = FPRINT|CONDUCT
 	flags_equip_slot = SLOT_WAIST
-	force = 6.0
+	force = 6
 	throw_speed = SPEED_FAST
 	throw_range = 9
 	w_class = SIZE_SMALL
@@ -157,14 +158,14 @@
 	name = "blowtorch"
 	icon = 'icons/obj/items/items.dmi'
 	icon_state = "welder"
-	pickupsound = 'sound/handling/weldingtool_pickup.ogg'
-	dropsound = 'sound/handling/weldingtool_drop.ogg'
+	pickup_sound = 'sound/handling/weldingtool_pickup.ogg'
+	drop_sound = 'sound/handling/weldingtool_drop.ogg'
 	flags_atom = FPRINT|CONDUCT
 	flags_equip_slot = SLOT_WAIST
 
 	//Amount of OUCH when it's thrown
-	force = 3.0
-	throwforce = 5.0
+	force = 3
+	throwforce = 5
 	throw_speed = SPEED_FAST
 	throw_range = 5
 	w_class = SIZE_SMALL
@@ -175,9 +176,13 @@
 	inherent_traits = list(TRAIT_TOOL_BLOWTORCH)
 
 	//blowtorch specific stuff
-	var/welding = 0 	//Whether or not the blowtorch is off(0), on(1) or currently welding(2)
-	var/max_fuel = 20 	//The max amount of fuel the welder can hold
-	var/weld_tick = 0	//Used to slowly deplete the fuel when the tool is left on.
+
+	/// Whether or not the blowtorch is off(0), on(1) or currently welding(2)
+	var/welding = 0
+	/// The max amount of fuel the welder can hold
+	var/max_fuel = 20
+	/// Used to slowly deplete the fuel when the tool is left on.
+	var/weld_tick = 0
 	var/has_welding_screen = FALSE
 
 /obj/item/tool/weldingtool/Initialize()
@@ -216,7 +221,7 @@
 
 /obj/item/tool/weldingtool/attack(mob/M, mob/user)
 
-	if(hasorgans(M))
+	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		var/obj/limb/S = H.get_limb(user.zone_selected)
 
@@ -288,7 +293,7 @@
 
 
 //Removes fuel from the blowtorch. If a mob is passed, it will perform an eyecheck on the mob. This should probably be renamed to use()
-/obj/item/tool/weldingtool/proc/remove_fuel(var/amount = 1, var/mob/M)
+/obj/item/tool/weldingtool/proc/remove_fuel(amount = 1, mob/M)
 	if(!welding || !check_fuel())
 		return 0
 	if(get_fuel() >= amount)
@@ -315,7 +320,7 @@
 
 
 //Toggles the welder off and on
-/obj/item/tool/weldingtool/proc/toggle(var/message = 0)
+/obj/item/tool/weldingtool/proc/toggle(message = 0)
 	var/mob/M
 	if(ismob(loc))
 		M = loc
@@ -377,33 +382,29 @@
 		switch(safety)
 			if(1)
 				to_chat(user, SPAN_DANGER("Your eyes sting a little."))
-				E.damage += rand(1, 2)
+				E.take_damage(rand(1, 2), TRUE)
 				if(E.damage > 12)
-					H.eye_blurry += rand(3,6)
+					H.AdjustEyeBlur(3,6)
 			if(0)
 				to_chat(user, SPAN_WARNING("Your eyes burn."))
-				E.damage += rand(2, 4)
+				E.take_damage(rand(2, 4), TRUE)
 				if(E.damage > 10)
-					E.damage += rand(4,10)
+					E.take_damage(rand(4, 10), TRUE)
 			if(-1)
 				to_chat(user, SPAN_WARNING("Your thermals intensify [src]'s glow. Your eyes itch and burn severely."))
-				H.eye_blurry += rand(12,20)
-				E.damage += rand(12, 16)
-		if(safety<2)
+				H.AdjustEyeBlur(12,20)
+				E.take_damage(rand(12, 16), TRUE)
 
+		if(safety < 2)
 			if (E.damage >= E.min_broken_damage)
 				to_chat(H, SPAN_WARNING("You go blind! Maybe welding without protection wasn't such a great idea..."))
-				return
-
+				return FALSE
 			if (E.damage >= E.min_bruised_damage)
 				to_chat(H, SPAN_WARNING("Your vision starts blurring and your eyes hurt terribly!"))
-				return
-
+				return FALSE
 			if(E.damage > 5)
 				to_chat(H, SPAN_WARNING("Your eyes are really starting to hurt. This can't be good for you!"))
-				return
-
-
+				return FALSE
 
 /obj/item/tool/weldingtool/pickup(mob/user)
 	. = ..()
@@ -463,12 +464,12 @@
 	desc = "Used to remove floors and to pry open doors."
 	icon = 'icons/obj/items/items.dmi'
 	icon_state = "crowbar"
-	pickupsound = 'sound/handling/crowbar_pickup.ogg'
-	dropsound = 'sound/handling/crowbar_drop.ogg'
+	pickup_sound = 'sound/handling/crowbar_pickup.ogg'
+	drop_sound = 'sound/handling/crowbar_drop.ogg'
 	flags_atom = FPRINT|CONDUCT
 	flags_equip_slot = SLOT_WAIST
-	force = 5.0
-	throwforce = 7.0
+	force = 5
+	throwforce = 7
 	item_state = "crowbar"
 	w_class = SIZE_SMALL
 	matter = list("metal" = 50)
@@ -489,8 +490,36 @@
 	force = MELEE_FORCE_NORMAL
 	throwforce = MELEE_FORCE_NORMAL
 
+/obj/item/tool/crowbar/maintenance_jack
+	name = "maintenance jack"
+	desc = "A combination crowbar, wrench, and generally large bludgeoning device that comes in handy in emergencies. Can be used to disengage door jacks. Pretty hefty, though. Use while in your hand to swap between wrench and crowbar usage."
+	icon_state = "maintenance_jack"
+	item_state = "red_crowbar"
+	hitsound = "swing_hit"
+	w_class = SIZE_MEDIUM
+	force = MELEE_FORCE_NORMAL
+	throwforce = MELEE_FORCE_TIER_4
+	inherent_traits = list(TRAIT_TOOL_CROWBAR)
+
+/obj/item/tool/crowbar/maintenance_jack/get_examine_text(mob/user)
+	. = ..()
+	. += SPAN_NOTICE("It is set to [HAS_TRAIT_FROM(src, TRAIT_TOOL_CROWBAR, TRAIT_SOURCE_INHERENT) ? "crowbar" : "wrench"] mode.")
+
+/obj/item/tool/crowbar/maintenance_jack/attack_self(mob/user)
+	. = ..()
+	if(HAS_TRAIT_FROM(src, TRAIT_TOOL_CROWBAR, TRAIT_SOURCE_INHERENT))
+		playsound(src, 'sound/weapons/handling/gun_underbarrel_activate.ogg', 25, TRUE)
+		to_chat(user, SPAN_NOTICE("You change your grip on [src]. You will now use it as a wrench."))
+		REMOVE_TRAIT(src, TRAIT_TOOL_CROWBAR, TRAIT_SOURCE_INHERENT)
+		ADD_TRAIT(src, TRAIT_TOOL_WRENCH, TRAIT_SOURCE_INHERENT)
+	else
+		playsound(src, 'sound/weapons/handling/gun_underbarrel_deactivate.ogg', 25, TRUE)
+		to_chat(user, SPAN_NOTICE("You change your grip on [src]. You will now use it as a crowbar."))
+		REMOVE_TRAIT(src, TRAIT_TOOL_WRENCH, TRAIT_SOURCE_INHERENT)
+		ADD_TRAIT(src, TRAIT_TOOL_CROWBAR, TRAIT_SOURCE_INHERENT)
+
 /*
- Welding backpack
+Welding backpack
 */
 
 /obj/item/tool/weldpack
@@ -500,9 +529,12 @@
 	icon = 'icons/obj/items/items.dmi'
 	icon_state = "welderpack"
 	w_class = SIZE_LARGE
-	health = 75		// More robust liner I guess
-	var/original_health = 1 //placeholder value to be replaced in init
-	var/max_fuel = 600 	//Because the marine backpack can carry 260, and still allows you to take items, there should be a reason to still use this one.
+	/// More robust liner I guess
+	health = 75
+	/// placeholder value to be replaced in init
+	var/original_health = 1
+	/// Because the marine backpack can carry 260, and still allows you to take items, there should be a reason to still use this one.
+	var/max_fuel = 600
 
 /obj/item/tool/weldpack/Initialize()
 	. = ..()
@@ -556,7 +588,7 @@
 	else
 		. += "No punctures are seen on \the [src] upon closer inspection."
 
-/obj/item/tool/weldpack/bullet_act(var/obj/item/projectile/P)
+/obj/item/tool/weldpack/bullet_act(obj/item/projectile/P)
 	var/damage = P.damage
 	health -= damage
 	..()
@@ -578,7 +610,8 @@
 	name = "ES-11 fuel canister"
 	desc = "A robust little pressurized canister that is small enough to fit in most bags and made for use with welding fuel. Upon closer inspection there is faded text on the red tape wrapped around the tank 'WARNING: Contents under pressure! Do not puncture!' "
 	icon_state = "welderpackmini"
-	max_fuel = 120 //Just barely enough to be better than the satchel
+	/// Just barely enough to be better than the satchel
+	max_fuel = 120
 	flags_equip_slot = SLOT_WAIST
 	w_class = SIZE_MEDIUM
 	health = 50

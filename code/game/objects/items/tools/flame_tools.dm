@@ -64,7 +64,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		if(!flavor_text)
 			flavor_text = SPAN_NOTICE("[usr] lights [src].")
 		for(var/mob/O in viewers(usr, null))
-			O.show_message(flavor_text, 1)
+			O.show_message(flavor_text, SHOW_MESSAGE_VISIBLE)
 		SetLuminosity(CANDLE_LUM)
 		update_icon()
 		START_PROCESSING(SSobj, src)
@@ -204,7 +204,8 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	flags_atom = CAN_BE_SYRINGED
 	attack_verb = list("burnt", "singed")
 	blood_overlay_type = ""
-	var/icon_on = "cigon"  //Note - these are in masks.dmi not in cigarette.dmi
+	/// Note - these are in masks.dmi not in cigarette.dmi
+	var/icon_on = "cigon"
 	var/icon_off = "cigoff"
 	var/type_butt = /obj/item/trash/cigbutt
 	var/lastHolder = null
@@ -289,12 +290,12 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 /obj/item/clothing/mask/cigarette/afterattack(atom/target, mob/living/user, proximity)
 	..()
 	if(!proximity) return
-	if(istype(target, /obj/item/reagent_container/glass))	//you can dip cigarettes into beakers
+	if(istype(target, /obj/item/reagent_container/glass)) //you can dip cigarettes into beakers
 		var/obj/item/reagent_container/glass/glass = target
 		var/transfered = glass.reagents.trans_to(src, chem_volume)
-		if(transfered)	//if reagents were transfered, show the message
+		if(transfered) //if reagents were transfered, show the message
 			to_chat(user, SPAN_NOTICE("You dip \the [src] into \the [glass]."))
-		else			//if not, either the beaker was empty, or the cigarette was full
+		else //if not, either the beaker was empty, or the cigarette was full
 			if(!glass.reagents.total_volume)
 				to_chat(user, SPAN_NOTICE("[glass] is empty."))
 			else
@@ -356,7 +357,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		go_out()
 		return
 
-	if(reagents && reagents.total_volume)	//	check if it has any reagents at all
+	if(reagents && reagents.total_volume) // check if it has any reagents at all
 		if(iscarbon(loc) && (src == loc:wear_mask)) // if it's in the human/monkey mouth, transfer reagents to the mob
 			if(istype(loc, /mob/living/carbon/human))
 				var/mob/living/carbon/human/H = loc
@@ -377,7 +378,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		go_out(user)
 	return ..()
 
-/obj/item/clothing/mask/cigarette/proc/go_out(mob/user, var/silent = FALSE)
+/obj/item/clothing/mask/cigarette/proc/go_out(mob/user, silent = FALSE)
 	var/mob/living/M
 	if(ismob(loc))
 		M = loc
@@ -392,7 +393,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		var/obj/item/butt = new type_butt(T)
 		transfer_fingerprints_to(butt)
 		//if(M)
-			//M.temp_drop_inv_item(src)	//un-equip it so the overlays can updat
+			//M.temp_drop_inv_item(src) //un-equip it so the overlays can updat
 		qdel(src)
 		. = butt
 	else
@@ -420,8 +421,8 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 
 /obj/item/clothing/mask/cigarette/pickup(mob/user)
 	. = ..()
-	RegisterSignal(user, COMSIG_LIVING_IGNITION, .proc/light)
-	RegisterSignal(user, COMSIG_HUMAN_EXTINGUISH, .proc/handle_extinguish)
+	RegisterSignal(user, COMSIG_LIVING_IGNITION, PROC_REF(light))
+	RegisterSignal(user, COMSIG_HUMAN_EXTINGUISH, PROC_REF(handle_extinguish))
 
 /obj/item/clothing/mask/cigarette/dropped(mob/user)
 	. = ..()
@@ -477,6 +478,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	item_state = "cigar_off"
 	smoketime = 50 MINUTES
 	chem_volume = 20
+	black_market_value = 15
 
 /obj/item/clothing/mask/cigarette/cigar/classic
 	name = "classic cigar"
@@ -485,6 +487,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	icon_on = "cigar2_on"
 	icon_off = "cigar2_off"
 	smoketime = 120 MINUTES
+	black_market_value = 30
 
 /obj/item/clothing/mask/cigarette/cigar/tarbacks
 	name = "\improper Tarback cigar"
@@ -581,7 +584,8 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	desc = "A pipe, for smoking. Probably made of meershaum or something."
 	icon_state = "pipeoff"
 	item_state = "pipeoff"
-	icon_on = "pipeon"  //Note - these are in masks.dmi
+	/// Note - these are in masks.dmi
+	icon_on = "pipeon"
 	icon_off = "pipeoff"
 	w_class = SIZE_SMALL
 	flags_equip_slot = SLOT_FACE
@@ -652,7 +656,8 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	desc = "A nicotine delivery system popularized by folksy backwoodsmen, kept popular in the modern age and beyond by space hipsters."
 	icon_state = "cobpipeoff"
 	item_state = "cobpipeoff"
-	icon_on = "cobpipeon"  //Note - these are in masks.dmi
+	/// Note - these are in masks.dmi
+	icon_on = "cobpipeon"
 	icon_off = "cobpipeoff"
 	smoketime = 800 SECONDS
 
@@ -709,6 +714,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	item_state = "goldzippo"
 	icon_on = "goldzippoon"
 	icon_off = "goldzippo"
+	black_market_value = 30
 
 /obj/item/tool/lighter/random
 
@@ -756,7 +762,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		return ..()
 	return
 
-/obj/item/tool/lighter/proc/turn_off(mob/living/bearer, var/silent = 1)
+/obj/item/tool/lighter/proc/turn_off(mob/living/bearer, silent = 1)
 	if(heat_source)
 		heat_source = 0
 		icon_state = icon_off

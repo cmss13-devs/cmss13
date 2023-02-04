@@ -7,7 +7,6 @@ GLOBAL_LIST_INIT(cm_vending_gear_engi, list(
 		list("HANDHELD DEFENSE (CHOOSE 1)", 0, null, null, null),
 		list("21S Tesla Coil", 0, /obj/item/defenses/handheld/tesla_coil, MARINE_CAN_BUY_ATTACHMENT, VENDOR_ITEM_MANDATORY),
 		list("JIMA Planted Flag", 0, /obj/item/defenses/handheld/planted_flag, MARINE_CAN_BUY_ATTACHMENT, VENDOR_ITEM_MANDATORY),
-		list("R-1NG Bell Tower", 0, /obj/item/defenses/handheld/bell_tower, MARINE_CAN_BUY_ATTACHMENT, VENDOR_ITEM_MANDATORY),
 		list("UA 42-F Sentry Flamer", 0, /obj/item/defenses/handheld/sentry/flamer, MARINE_CAN_BUY_ATTACHMENT, VENDOR_ITEM_MANDATORY),
 		list("UA 571-C Sentry Gun", 0, /obj/item/defenses/handheld/sentry, MARINE_CAN_BUY_ATTACHMENT, VENDOR_ITEM_MANDATORY),
 		list("Sentry Upgrade kit", 15, /obj/item/engi_upgrade_kit, null, VENDOR_ITEM_REGULAR),
@@ -87,7 +86,7 @@ GLOBAL_LIST_INIT(cm_vending_gear_engi, list(
 	vendor_role = list(JOB_SQUAD_ENGI)
 	req_access = list(ACCESS_MARINE_ENGPREP)
 
-/obj/structure/machinery/cm_vending/gear/engi/get_listed_products(var/mob/user)
+/obj/structure/machinery/cm_vending/gear/engi/get_listed_products(mob/user)
 	return GLOB.cm_vending_gear_engi
 
 //------------CLOTHING VENDOR---------------
@@ -158,7 +157,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_engi, list(
 	req_access = list(ACCESS_MARINE_ENGPREP)
 	vendor_role = list(JOB_SQUAD_ENGI)
 
-/obj/structure/machinery/cm_vending/clothing/engi/get_listed_products(var/mob/user)
+/obj/structure/machinery/cm_vending/clothing/engi/get_listed_products(mob/user)
 	return GLOB.cm_vending_clothing_engi
 
 /obj/structure/machinery/cm_vending/clothing/engi/alpha

@@ -3,15 +3,15 @@
 	name = "grille"
 	icon = 'icons/obj/structures/structures.dmi'
 	icon_state = "grille"
-	density = 1
-	anchored = 1
+	density = TRUE
+	anchored = TRUE
 	debris = list(/obj/item/stack/rods)
 	flags_atom = FPRINT|CONDUCT
 	layer = OBJ_LAYER
 	health = 10
 	var/destroyed = 0
 
-/obj/structure/grille/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/obj/structure/grille/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_can_pass_all = PASS_THROUGH|PASS_BUILDING_ONLY
@@ -47,7 +47,7 @@
 
 /obj/structure/grille/fence/healthcheck()
 	if(health <= 0)
-		density = 0
+		density = FALSE
 		destroyed = 1
 		handle_debris()
 		qdel(src)
@@ -70,13 +70,13 @@
 		if(H.species.can_shred(H))
 			damage_dealt = 5
 			user.visible_message(SPAN_WARNING("[user] mangles [src]."), \
-					 SPAN_WARNING("You mangle [src]."), \
-					 "You hear twisting metal.")
+						SPAN_WARNING("You mangle [src]."), \
+						"You hear twisting metal.")
 
 	if(!damage_dealt)
 		user.visible_message(SPAN_WARNING("[user] kicks [src]."), \
-						 SPAN_WARNING("You kick [src]."), \
-						 "You hear twisting metal.")
+						SPAN_WARNING("You kick [src]."), \
+						"You hear twisting metal.")
 
 	if(shock(user, 70))
 		return
@@ -87,13 +87,13 @@
 	healthcheck()
 
 
-/obj/structure/grille/attack_animal(var/mob/living/simple_animal/M as mob)
-	if(M.melee_damage_upper == 0)	return
+/obj/structure/grille/attack_animal(mob/living/simple_animal/M as mob)
+	if(M.melee_damage_upper == 0) return
 
 	playsound(loc, 'sound/effects/grillehit.ogg', 25, 1)
 	M.visible_message(SPAN_WARNING("[M] smashes against [src]."), \
-					  SPAN_WARNING("You smash against [src]."), \
-					  "You hear twisting metal.")
+					SPAN_WARNING("You smash against [src]."), \
+					"You hear twisting metal.")
 
 	health -= M.melee_damage_upper
 	healthcheck()
@@ -106,7 +106,7 @@
 
 	return ..()
 
-/obj/structure/grille/bullet_act(var/obj/item/projectile/Proj)
+/obj/structure/grille/bullet_act(obj/item/projectile/Proj)
 
 	//Tasers and the like should not damage grilles.
 	if(Proj.ammo.damage_type == HALLOSS)
@@ -127,7 +127,7 @@
 			playsound(loc, 'sound/items/Screwdriver.ogg', 25, 1)
 			anchored = !anchored
 			user.visible_message(SPAN_NOTICE("[user] [anchored ? "fastens" : "unfastens"] the grille."), \
-								 SPAN_NOTICE("You have [anchored ? "fastened the grille to" : "unfastened the grill from"] the floor."))
+								SPAN_NOTICE("You have [anchored ? "fastened the grille to" : "unfastened the grill from"] the floor."))
 			return
 
 //window placing begin
@@ -188,7 +188,7 @@
 	if(health <= 0)
 		if(!destroyed)
 			icon_state = "brokengrille"
-			density = 0
+			density = FALSE
 			destroyed = 1
 			handle_debris()
 
@@ -204,7 +204,7 @@
 
 /obj/structure/grille/proc/shock(mob/user as mob, prb)
 
-	if(!anchored || destroyed)		// anchored/destroyed grilles are never connected
+	if(!anchored || destroyed) // anchored/destroyed grilles are never connected
 		return 0
 	if(!prob(prb))
 		return 0

@@ -1,6 +1,6 @@
-#define BLOCK_NOTHING 				0
-#define BLOCK_SPECIAL_STRUCTURES	1
-#define BLOCK_ALL_STRUCTURES		2
+#define BLOCK_NOTHING 0
+#define BLOCK_SPECIAL_STRUCTURES 1
+#define BLOCK_ALL_STRUCTURES 2
 
 /obj/effect/alien/weeds
 	name = "weeds"
@@ -8,6 +8,7 @@
 	icon = 'icons/mob/xenos/weeds.dmi'
 	icon_state = "base"
 
+	gender = PLURAL
 	anchored = TRUE
 	density = FALSE
 	layer = WEED_LAYER
@@ -69,30 +70,31 @@
 		if(get_dist(node, src) >= node.node_range)
 			SEND_SIGNAL(parent, COMSIG_WEEDNODE_GROWTH_COMPLETE)
 		else if(!hibernate)
-			addtimer(CALLBACK(src, .proc/weed_expand), WEED_BASE_GROW_SPEED / max(weed_strength, 1))
+			addtimer(CALLBACK(src, PROC_REF(weed_expand)), WEED_BASE_GROW_SPEED / max(weed_strength, 1))
 
 	var/turf/T = get_turf(src)
-	T.weeds = src
-	weeded_turf = T
+	if(T)
+		T.weeds = src
+		weeded_turf = T
 
 	RegisterSignal(src, list(
 		COMSIG_ATOM_TURF_CHANGE,
 		COMSIG_MOVABLE_TURF_ENTERED
-	), .proc/set_turf_weeded)
+	), PROC_REF(set_turf_weeded))
 
-/obj/effect/alien/weeds/proc/set_turf_weeded(var/datum/source, var/turf/T)
+/obj/effect/alien/weeds/proc/set_turf_weeded(datum/source, turf/T)
 	SIGNAL_HANDLER
 	if(weeded_turf)
 		weeded_turf.weeds = null
 
 	T.weeds = src
 
-/obj/effect/alien/weeds/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/obj/effect/alien/weeds/initialize_pass_flags(datum/pass_flags_container/PF)
 	. = ..()
 	if (PF)
 		PF.flags_pass = PASS_FLAGS_WEEDS
 
-/obj/effect/alien/weeds/proc/on_weed_expand(var/obj/effect/alien/weeds/spread_from, var/list/new_weeds)
+/obj/effect/alien/weeds/proc/on_weed_expand(obj/effect/alien/weeds/spread_from, list/new_weeds)
 	if(!length(new_weeds) && parent)
 		SEND_SIGNAL(parent, COMSIG_WEEDNODE_CANNOT_EXPAND_FURTHER)
 
@@ -112,14 +114,14 @@
 	health = WEED_HEALTH_STANDARD
 	alpha = 127
 
-/obj/effect/alien/weeds/node/weak/Initialize(mapload, obj/effect/alien/weeds/node/node, var/mob/living/carbon/Xenomorph/X, var/datum/hive_status/hive)
+/obj/effect/alien/weeds/node/weak/Initialize(mapload, obj/effect/alien/weeds/node/node, mob/living/carbon/xenomorph/X, datum/hive_status/hive)
 	. = ..()
 	name = initial(name)
 	weed_strength = WEED_LEVEL_WEAK
 
 	update_icon()
 
-/obj/effect/alien/weeds/node/weak/on_weed_expand(var/obj/effect/alien/weeds/spread_from, var/list/new_weeds)
+/obj/effect/alien/weeds/node/weak/on_weed_expand(obj/effect/alien/weeds/spread_from, list/new_weeds)
 	..()
 	var/atom/to_copy = /obj/effect/alien/weeds/weak
 	for(var/i in new_weeds)
@@ -154,15 +156,24 @@
 			. += ceiling_info
 
 
-/obj/effect/alien/weeds/Crossed(atom/movable/AM)
-	if (ishuman(AM))
-		var/mob/living/carbon/human/H = AM
-		if (!isYautja(H) && !H.ally_of_hivenumber(linked_hive.hivenumber)) // predators are immune to weed slowdown effect
-			H.next_move_slowdown = H.next_move_slowdown + weed_strength
-	else if (isXeno(AM))
-		var/mob/living/carbon/Xenomorph/X = AM
-		if (!linked_hive.is_ally(X))
-			X.next_move_slowdown = X.next_move_slowdown + (weed_strength*WEED_XENO_SPEED_MULT)
+/obj/effect/alien/weeds/Crossed(atom/movable/atom_movable)
+	if(!isliving(atom_movable))
+		return
+
+	var/mob/living/crossing_mob = atom_movable
+
+	var/weed_slow = weed_strength
+
+	if(crossing_mob.ally_of_hivenumber(linked_hive.hivenumber))
+		if( (crossing_mob.hivenumber != linked_hive.hivenumber) && prob(7)) // small chance for allied mobs to get a message indicating this
+			to_chat(crossing_mob, SPAN_NOTICE("The weeds seem to reshape themselves around your feet as you walk on them."))
+		return
+
+	var/list/slowdata = list("movement_slowdown" = weed_slow)
+	SEND_SIGNAL(crossing_mob, COMSIG_MOB_WEED_SLOWDOWN, slowdata, src)
+	var/final_slowdown = slowdata["movement_slowdown"]
+
+	crossing_mob.next_move_slowdown += POSITIVE(final_slowdown)
 
 // Uh oh, we might be dying!
 // I know this is bad proc naming but it was too good to pass on and it's only used in this file anyways
@@ -227,7 +238,7 @@
 
 	return weeds
 
-/obj/effect/alien/weeds/proc/weed_expand_objects(var/turf/T, var/direction)
+/obj/effect/alien/weeds/proc/weed_expand_objects(turf/T, direction)
 	for(var/obj/structure/platform/P in src.loc)
 		if(P.dir == reverse_direction(direction))
 			return FALSE
@@ -316,7 +327,7 @@
 		return
 	take_damage(severity * WEED_EXPLOSION_DAMAGEMULT)
 
-/obj/effect/alien/weeds/attack_alien(mob/living/carbon/Xenomorph/X)
+/obj/effect/alien/weeds/attack_alien(mob/living/carbon/xenomorph/X)
 	if(!indestructible && !HIVE_ALLIED_TO_HIVE(X.hivenumber, hivenumber))
 		X.animation_attack_on(src)
 		X.visible_message(SPAN_DANGER("\The [X] slashes [src]!"), \
@@ -355,7 +366,7 @@
 	take_damage(damage)
 	return TRUE //don't call afterattack
 
-/obj/effect/alien/weeds/proc/take_damage(var/damage)
+/obj/effect/alien/weeds/proc/take_damage(damage)
 	if(indestructible)
 		return
 
@@ -427,19 +438,19 @@
 	// Which weeds are being kept alive by this node?
 	var/list/obj/effect/alien/weeds/children = list()
 
-/obj/effect/alien/weeds/node/proc/add_child(var/obj/effect/alien/weeds/weed)
+/obj/effect/alien/weeds/node/proc/add_child(obj/effect/alien/weeds/weed)
 	if(!weed || !istype(weed))
 		return
 	weed.parent = src
 	children += weed
 
-/obj/effect/alien/weeds/node/proc/remove_child(var/obj/effect/alien/weeds/weed)
+/obj/effect/alien/weeds/node/proc/remove_child(obj/effect/alien/weeds/weed)
 	if(!weed || !istype(weed) || !(weed in children))
 		return
 	weed.parent = null
 	children -= weed
 
-/obj/effect/alien/weeds/node/proc/replace_child(var/turf/T, var/weed_type)
+/obj/effect/alien/weeds/node/proc/replace_child(turf/T, weed_type)
 	if(!T || !istype(T) || QDELETED(src))
 		return
 	var/obj/effect/alien/weeds/replacement_child = new weed_type(T, src)
@@ -455,7 +466,7 @@
 	overlay_node = TRUE
 	overlays += staticnode
 
-/obj/effect/alien/weeds/node/Initialize(mapload, obj/effect/alien/weeds/node/node, mob/living/carbon/Xenomorph/X, datum/hive_status/hive)
+/obj/effect/alien/weeds/node/Initialize(mapload, obj/effect/alien/weeds/node/node, mob/living/carbon/xenomorph/X, datum/hive_status/hive)
 	if (istype(hive))
 		linked_hive = hive
 	else if (istype(X) && X.hive)
@@ -478,7 +489,7 @@
 
 	var/obj/effect/alien/resin/trap/TR = locate() in loc
 	if(TR)
-		RegisterSignal(TR, COMSIG_PARENT_PREQDELETED, .proc/trap_destroyed)
+		RegisterSignal(TR, COMSIG_PARENT_PREQDELETED, PROC_REF(trap_destroyed))
 		overlay_node = FALSE
 		overlays -= staticnode
 
@@ -498,7 +509,7 @@
 	RegisterSignal(src, list(
 		COMSIG_WEEDNODE_GROWTH_COMPLETE,
 		COMSIG_WEEDNODE_CANNOT_EXPAND_FURTHER,
-	), .proc/complete_growth)
+	), PROC_REF(complete_growth))
 
 	update_icon()
 
@@ -508,7 +519,7 @@
 	for(var/X in children)
 		var/obj/effect/alien/weeds/W = X
 		remove_child(W)
-		addtimer(CALLBACK(W, .proc/avoid_orphanage), WEED_BASE_DECAY_SPEED + rand(0, 1 SECONDS)) // Slight variation whilst decaying
+		addtimer(CALLBACK(W, PROC_REF(avoid_orphanage)), WEED_BASE_DECAY_SPEED + rand(0, 1 SECONDS)) // Slight variation whilst decaying
 
 	. = ..()
 
@@ -554,7 +565,7 @@
 /obj/effect/alien/weeds/node/pylon/attackby(obj/item/W, mob/living/user)
 	return
 
-/obj/effect/alien/weeds/node/pylon/attack_alien(mob/living/carbon/Xenomorph/X)
+/obj/effect/alien/weeds/node/pylon/attack_alien(mob/living/carbon/xenomorph/X)
 	return
 
 /obj/effect/alien/weeds/node/pylon/flamer_fire_act(dam)
@@ -568,11 +579,14 @@
 	parent_cluster.damaged = TRUE
 
 /obj/effect/resin_construct
-	mouse_opacity = 0
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	icon = 'icons/mob/xenos/effects.dmi'
 
 /obj/effect/resin_construct/door
 	icon_state = "DoorConstruct"
+
+/obj/effect/resin_construct/thickdoor
+	icon_state = "ThickDoorConstruct"
 
 /obj/effect/resin_construct/thick
 	icon_state = "ThickConstruct"

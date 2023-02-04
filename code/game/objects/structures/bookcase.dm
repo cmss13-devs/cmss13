@@ -3,9 +3,9 @@
 	name = "bookcase"
 	icon = 'icons/obj/structures/structures.dmi'
 	icon_state = "book-0"
-	anchored = 1
-	density = 1
-	opacity = 1
+	anchored = TRUE
+	density = TRUE
+	opacity = TRUE
 
 /obj/structure/bookcase/Initialize()
 	. = ..()
@@ -19,16 +19,17 @@
 		user.drop_held_item()
 		O.forceMove(src)
 		update_icon()
-	else if(istype(O, /obj/item/tool/pen))
+	else if(HAS_TRAIT(O, TRAIT_TOOL_PEN))
 		var/newname = stripped_input(usr, "What would you like to title this bookshelf?")
 		if(!newname)
 			return
 		else
 			name = ("bookcase ([strip_html(newname)])")
+			playsound(src, "paper_writing", 15, TRUE)
 	else
 		..()
 
-/obj/structure/bookcase/attack_hand(var/mob/user as mob)
+/obj/structure/bookcase/attack_hand(mob/user as mob)
 	if(contents.len)
 		var/obj/item/book/choice = input("Which book would you like to remove from the shelf?") as null|obj in contents
 		if(choice)

@@ -2,7 +2,7 @@
 	name = "electric chair"
 	desc = "Looks absolutely SHOCKING!"
 	icon_state = "echair1"
-	var/last_time = 1.0
+	var/last_time = 1
 
 /obj/structure/bed/chair/e_chair/New()
 	..()
@@ -12,7 +12,7 @@
 /obj/structure/bed/chair/e_chair/rotate()
 	..()
 	overlays.Cut()
-	overlays += image('icons/obj/objects.dmi', src, "echair_over", MOB_LAYER + 1, dir)	//there's probably a better way of handling this, but eh. -Pete
+	overlays += image('icons/obj/objects.dmi', src, "echair_over", MOB_LAYER + 1, dir) //there's probably a better way of handling this, but eh. -Pete
 	return
 
 /obj/structure/bed/chair/e_chair/proc/shock()

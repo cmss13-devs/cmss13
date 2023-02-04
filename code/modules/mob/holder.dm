@@ -83,7 +83,7 @@
 	icon_state = "cat"
 
 /obj/item/holder/cat/blackcat/Runtime
-	name = "Runtime"
+	name = "\improper Runtime"
 	desc = "Her fur has the look and feel of velvet, and her tail quivers occasionally."
 
 /obj/item/holder/kitten

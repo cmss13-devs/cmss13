@@ -116,7 +116,7 @@
 	if(ishuman(victim) && ishuman_strict(user) && !occupant)
 		var/turf/turf = get_turf(user)
 		var/area/area = get_area(user)
-		message_staff(FONT_SIZE_HUGE("ALERT: [user] ([user.key]) is trying to gib [victim] ([victim.key]) in [area.name] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[turf.x];Y=[turf.y];Z=[turf.z]'>JMP</a>)</font>"))
+		message_staff("ALERT: [user] ([user.key]) is trying to gib [victim] ([victim.key]) in [area.name] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[turf.x];Y=[turf.y];Z=[turf.z]'>JMP</a>)</font>")
 		log_attack("[key_name(user)] tried to gib [victim] ([victim.key]) in [area.name]")
 		to_chat(user, SPAN_DANGER("Are you insane?!"))
 		if(do_after(user, 30 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE && grabbed && grabbed.grabbed_thing && !occupant))

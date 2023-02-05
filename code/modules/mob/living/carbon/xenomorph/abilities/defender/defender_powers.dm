@@ -105,49 +105,49 @@
 
 // Defender Tail Sweep
 /datum/action/xeno_action/onclick/tail_sweep/use_ability(atom/A)
-	var/mob/living/carbon/xenomorph/X = owner
-	if (!istype(X))
+	var/mob/living/carbon/xenomorph/xeno = owner
+	if (!istype(xeno))
 		return
 
-	if(!X.check_state())
+	if(!xeno.check_state())
 		return
 
 	if (!action_cooldown_check())
 		return
 
-	if(X.fortify)
+	if(xeno.fortify)
 		to_chat(src, SPAN_XENOWARNING("You cannot use tail swipe while fortified."))
 		return
 
-	if(X.crest_defense)
+	if(xeno.crest_defense)
 		to_chat(src, SPAN_XENOWARNING("You cannot use tail swipe with your crest lowered."))
 		return
 
-	X.visible_message(SPAN_XENOWARNING("[X] sweeps its tail in a wide circle!"), \
+	xeno.visible_message(SPAN_XENOWARNING("[xeno] sweeps its tail in a wide circle!"), \
 	SPAN_XENOWARNING("You sweep your tail in a wide circle!"))
 
 	if(!check_and_use_plasma_owner())
 		return
 
-	X.spin_circle()
-	X.emote("tail")
+	xeno.spin_circle()
+	xeno.emote("tail")
 
 	var/sweep_range = 1
-	for(var/mob/living/carbon/H in orange(sweep_range, get_turf(X)))
-		if (!isxeno_human(H) || X.can_not_harm(H)) continue
-		if(H.stat == DEAD) continue
-		if(HAS_TRAIT(H, TRAIT_NESTED)) continue
-		step_away(H, X, sweep_range, 2)
-		X.flick_attack_overlay(H, "punch")
-		H.last_damage_data = create_cause_data(X.caste_type, X)
-		H.apply_armoured_damage(get_xeno_damage_slash(H, 15), ARMOR_MELEE, BRUTE)
-		shake_camera(H, 2, 1)
+	for(var/mob/living/carbon/human in orange(sweep_range, get_turf(xeno)))
+		if (!isxeno_human(human) || xeno.can_not_harm(human)) continue
+		if(human.stat == DEAD) continue
+		if(HAS_TRAIT(human, TRAIT_NESTED)) continue
+		step_away(human, xeno, sweep_range, 2)
+		xeno.flick_attack_overlay(human, "punch")
+		human.last_damage_data = create_cause_data(xeno.caste_type, xeno)
+		human.apply_armoured_damage(get_xeno_damage_slash(xeno, 15), ARMOR_MELEE, BRUTE)
+		shake_camera(human, 2, 1)
 
-		if(H.mob_size < MOB_SIZE_BIG)
-			H.apply_effect(get_xeno_stun_duration(H, 1), WEAKEN)
+		if(human.mob_size < MOB_SIZE_BIG)
+			human.apply_effect(get_xeno_stun_duration(human, 1), WEAKEN)
 
-		to_chat(H, SPAN_XENOWARNING("You are struck by [src]'s tail sweep!"))
-		playsound(H,'sound/weapons/alien_claw_block.ogg', 50, 1)
+		to_chat(human, SPAN_XENOWARNING("You are struck by [xeno]'s tail sweep!"))
+		playsound(human,'sound/weapons/alien_claw_block.ogg', 50, 1)
 
 	apply_cooldown()
 	..()

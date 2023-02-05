@@ -181,7 +181,7 @@
 			"}
 
 
-/obj/item/device/radio/proc/text_sec_channel(var/chan_name, var/chan_stat)
+/obj/item/device/radio/proc/text_sec_channel(chan_name, chan_stat)
 	var/list = !!(chan_stat&FREQ_LISTENING)!=0
 	var/channel_key = channel_to_prefix(chan_name)
 	return {"
@@ -206,7 +206,7 @@
 	// If we were to send to a channel we don't have, drop it.
 	return null
 
-/obj/item/device/radio/talk_into(mob/living/M as mob, message, channel, var/verb = "says", var/datum/language/speaking = null)
+/obj/item/device/radio/talk_into(mob/living/M as mob, message, channel, verb = "says", datum/language/speaking = null)
 	if(!on) return // the device has to be on
 	//  Fix for permacell radios, but kinda eh about actually fixing them.
 	if(!M || !message) return
@@ -305,7 +305,7 @@
 						src, message, displayname, jobname, real_name, M.voice_name,
 						filter_type, 0, target_zs, connection.frequency, verb, speaking, RADIO_VOLUME_QUIET)
 
-/obj/item/device/radio/proc/get_target_zs(var/frequency)
+/obj/item/device/radio/proc/get_target_zs(frequency)
 	var/turf/position = get_turf(src)
 	if(QDELETED(position))
 		return
@@ -330,7 +330,7 @@
 				return null
 	return target_zs
 
-/obj/item/device/radio/hear_talk(mob/M as mob, msg, var/verb = "says", var/datum/language/speaking = null)
+/obj/item/device/radio/hear_talk(mob/M as mob, msg, verb = "says", datum/language/speaking = null)
 	if (broadcasting)
 		if(get_dist(src, M) <= canhear_range)
 			talk_into(M, msg,null,verb,speaking)

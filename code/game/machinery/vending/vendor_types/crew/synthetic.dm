@@ -223,7 +223,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth_snowflake, list(
 	list("Surgical Cap, Blue", 12, /obj/item/clothing/head/surgery/purple, null, VENDOR_ITEM_REGULAR),
 	list("Surgical Cap, Green", 12, /obj/item/clothing/head/surgery/green, null, VENDOR_ITEM_REGULAR),
 	list("Ushanka", 12, /obj/item/clothing/head/ushanka, null, VENDOR_ITEM_REGULAR),
-	list("MP Cap", 12, /obj/item/clothing/head/helmet/beret/marine/mp/mpcap, null, VENDOR_ITEM_REGULAR),
+	list("MP Cap", 12, /obj/item/clothing/head/beret/marine/mp/mpcap, null, VENDOR_ITEM_REGULAR),
 	list("RO Cap", 12, /obj/item/clothing/head/cmcap/req, null, VENDOR_ITEM_REGULAR),
 	list("Officer Cap", 12, /obj/item/clothing/head/cmcap/ro, null, VENDOR_ITEM_REGULAR),
 
@@ -293,11 +293,11 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth_snowflake, list(
 			return
 	return ..()
 
-/obj/structure/machinery/cm_vending/own_points/experimental_tools/get_listed_products(var/mob/user)
+/obj/structure/machinery/cm_vending/own_points/experimental_tools/get_listed_products(mob/user)
 	return list(
 		list("Autocompressor", 15, /obj/item/clothing/suit/auto_cpr, null, VENDOR_ITEM_REGULAR),
 		list("Backpack Firefighting Watertank", 15, /obj/item/reagent_container/glass/watertank/atmos, null, VENDOR_ITEM_REGULAR),
-		list("Breaching Hammer", 15, /obj/item/weapon/melee/twohanded/breacher, null, VENDOR_ITEM_REGULAR),
+		list("Breaching Hammer", 15, /obj/item/weapon/melee/twohanded/breacher/synth, null, VENDOR_ITEM_REGULAR),
 		list("Compact Defibrillator", 15, /obj/item/device/defibrillator/compact, null, VENDOR_ITEM_REGULAR),
 		list("Compact Nailgun kit", 15, /obj/effect/essentials_set/cnailgun, null, VENDOR_ITEM_REGULAR),
 		list("Crew Monitor", 15, /obj/item/tool/crew_monitor, null, VENDOR_ITEM_REGULAR),

@@ -1,5 +1,0 @@
-author: "stanalbatross"
-delete-after: True
-changes:
-  - ui: "converted the vehicle status menu to tgui"
-  - bugfix: "fixed a potential runtime in quadtrees"

@@ -25,6 +25,22 @@ GLOBAL_LIST_EMPTY(freed_mob_list) // List of mobs freed for ghosts
 
 GLOBAL_LIST_INIT(available_taskbar_icons, setup_taskbar_icons())
 
+GLOBAL_LIST_EMPTY(minimap_icons)
+
+/proc/initiate_minimap_icons()
+	var/list/icons = list()
+	for(var/iconstate in icon_states('icons/UI_icons/map_blips.dmi'))
+		var/icon/image = icon('icons/UI_icons/map_blips.dmi', icon_state = iconstate)
+		icons[iconstate] += image
+
+	var/list/base64_icons = list()
+	for(var/iconstate in icons)
+		base64_icons[iconstate] = icon2base64(icons[iconstate])
+
+	GLOB.minimap_icons = base64_icons
+
+
+
 // Xeno stuff //
 // Resin constructions parameters
 GLOBAL_LIST_INIT_TYPED(resin_constructions_list, /datum/resin_construction, setup_resin_constructions())
@@ -126,7 +142,7 @@ GLOBAL_LIST_INIT(language_keys, setup_language_keys()) //table of say codes for 
 
 // Origins
 GLOBAL_REFERENCE_LIST_INDEXED(origins, /datum/origin, name)
-GLOBAL_LIST_INIT(player_origins, list(ORIGIN_USCM, ORIGIN_USCM_LUNA, ORIGIN_USCM_OTHER, ORIGIN_USCM_COLONY, ORIGIN_USCM_FOREIGN, ORIGIN_USCM_AW))
+GLOBAL_LIST_INIT(player_origins, USCM_ORIGINS)
 
 //Xeno mutators
 GLOBAL_REFERENCE_LIST_INDEXED_SORTED(xeno_mutator_list, /datum/xeno_mutator, name)
@@ -219,19 +235,19 @@ GLOBAL_LIST_INIT(edgeinfo_corner2, list(
 #define cached_key_number_decode(key_number_data) cached_params_decode(key_number_data, GLOBAL_PROC_REF(key_number_decode))
 #define cached_number_list_decode(number_list_data) cached_params_decode(number_list_data, GLOBAL_PROC_REF(number_list_decode))
 
-/proc/cached_params_decode(var/params_data, var/decode_proc)
+/proc/cached_params_decode(params_data, decode_proc)
 	. = paramslist_cache[params_data]
 	if(!.)
 		. = call(decode_proc)(params_data)
 		paramslist_cache[params_data] = .
 
-/proc/key_number_decode(var/key_number_data)
+/proc/key_number_decode(key_number_data)
 	var/list/L = params2list(key_number_data)
 	for(var/key in L)
 		L[key] = text2num(L[key])
 	return L
 
-/proc/number_list_decode(var/number_list_data)
+/proc/number_list_decode(number_list_data)
 	var/list/L = params2list(number_list_data)
 	for(var/i in 1 to L.len)
 		L[i] = text2num(L[i])

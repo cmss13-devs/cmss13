@@ -13,7 +13,7 @@
 	GLOB.marine_leaders[JOB_XO] = M
 	RegisterSignal(M, COMSIG_PARENT_QDELETING, PROC_REF(cleanup_leader_candidate))
 
-/datum/job/command/executive/proc/cleanup_leader_candidate(var/mob/M)
+/datum/job/command/executive/proc/cleanup_leader_candidate(mob/M)
 	SIGNAL_HANDLER
 	GLOB.marine_leaders -= JOB_XO
 

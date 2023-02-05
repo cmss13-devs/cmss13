@@ -23,7 +23,6 @@
 	unslashable = TRUE
 	unacidable = TRUE
 
-	var/mob/living/carbon/human/current_mapviewer
 	var/prints_intercept = 1
 	var/authenticated = 0
 	var/list/messagetitle = list()
@@ -43,47 +42,32 @@
 	var/status_display_freq = "1435"
 	var/stat_msg1
 	var/stat_msg2
+
+	var/datum/tacmap/tacmap
+	var/minimap_type = MINIMAP_FLAG_USCM
+
 	processing = TRUE
 
 /obj/structure/machinery/computer/communications/Initialize()
 	. = ..()
 	start_processing()
-	SSmapview.map_machines += src
+	tacmap = new(src, minimap_type)
 
 /obj/structure/machinery/computer/communications/Destroy()
-	SSmapview.map_machines -= src
+	QDEL_NULL(tacmap)
 	return ..()
 
 /obj/structure/machinery/computer/communications/process()
 	if(..() && state != STATE_STATUSDISPLAY)
 		updateDialog()
 
-/obj/structure/machinery/computer/communications/proc/update_mapview(var/close = 0)
-	if (close || !current_mapviewer || !Adjacent(current_mapviewer))
-		close_browser(current_mapviewer, "marineminimap")
-		current_mapviewer = null
-		return
-	if(!populated_mapview_type_updated[TACMAP_DEFAULT])
-		overlay_tacmap(TACMAP_DEFAULT)
-	current_mapviewer << browse_rsc(populated_mapview_types[TACMAP_DEFAULT], "marine_minimap.png")
-	show_browser(current_mapviewer, "<img src=marine_minimap.png>", "Marine Minimap", "marineminimap", "size=[(map_sizes[1]*2)+50]x[(map_sizes[2]*2)+50]", closeref = src)
-
 /obj/structure/machinery/computer/communications/Topic(href, href_list)
-	if (href_list["close"] && current_mapviewer)
-		close_browser(current_mapviewer, "marineminimap")
-		current_mapviewer = null
-		return
 	if(..()) return FALSE
 
 	usr.set_interaction(src)
 	switch(href_list["operation"])
 		if("mapview")
-			if(current_mapviewer)
-				update_mapview(1)
-				return
-			current_mapviewer = usr
-			update_mapview()
-			return
+			tacmap.tgui_interact(usr)
 
 		if("main") state = STATE_DEFAULT
 
@@ -322,10 +306,10 @@
 
 	updateUsrDialog()
 
-/obj/structure/machinery/computer/communications/attack_remote(var/mob/user as mob)
+/obj/structure/machinery/computer/communications/attack_remote(mob/user as mob)
 	return attack_hand(user)
 
-/obj/structure/machinery/computer/communications/attack_hand(var/mob/user as mob)
+/obj/structure/machinery/computer/communications/attack_hand(mob/user as mob)
 	if(..()) return FALSE
 
 	//Should be refactored later, if there's another ship that can appear during a mode with a comm console.
@@ -444,7 +428,7 @@
 /obj/structure/machinery/computer/communications/simple
 	circuit = null
 
-/obj/structure/machinery/computer/communications/simple/attack_hand(var/mob/user as mob)
+/obj/structure/machinery/computer/communications/simple/attack_hand(mob/user as mob)
 	user.set_interaction(src)
 	var/dat = "<body>"
 

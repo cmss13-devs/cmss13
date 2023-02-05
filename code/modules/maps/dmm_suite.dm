@@ -1,7 +1,7 @@
 var/global/dmm_suite/maploader = new
 
 /*
-	dmm_suite version 1.0
+	dmm_suite version 1
 		Released January 30th, 2011.
 	NOTE: Map saving functionality removed
 	defines the object /dmm_suite
@@ -42,4 +42,4 @@ var/global/dmm_suite/maploader = new
 // cropMap: When true, the map will be cropped to fit the existing world dimensions (Optional).
 // measureOnly: When true, no changes will be made to the world (Optional).
 // no_changeturf: When true, turf/AfterChange won't be called on loaded turfs
-/dmm_suite/proc/load_map(var/list/dmm_files, var/x_offset, var/y_offset, var/z_offset, var/cropMap, var/measureOnly, var/no_changeturf)
+/dmm_suite/proc/load_map(list/dmm_files, x_offset, y_offset, z_offset, cropMap, measureOnly, no_changeturf)

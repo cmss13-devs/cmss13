@@ -1,4 +1,0 @@
-author: "Kitsunemitsu"
-delete-after: True
-changes:
-  - bugfix: "fixed an error with SL timelocks."

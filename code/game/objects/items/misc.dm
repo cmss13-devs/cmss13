@@ -22,8 +22,8 @@
 	icon_state = "cane"
 	item_state = "stick"
 	flags_atom = FPRINT|CONDUCT
-	force = 5.0
-	throwforce = 7.0
+	force = 5
+	throwforce = 7
 	w_class = SIZE_SMALL
 	matter = list("metal" = 50)
 	attack_verb = list("bludgeoned", "whacked", "disciplined", "thrashed")
@@ -45,7 +45,7 @@
 	desc = "A wrapped item."
 	icon = 'icons/obj/items/items.dmi'
 	icon_state = "gift3"
-	var/size = 3.0
+	var/size = 3
 	var/obj/item/gift = null
 	item_state = "gift"
 	w_class = SIZE_LARGE
@@ -63,8 +63,8 @@
 	icon = 'icons/obj/items/weapons/weapons.dmi'
 	icon_state = "stick"
 	item_state = "stick"
-	force = 3.0
-	throwforce = 5.0
+	force = 3
+	throwforce = 5
 	throw_speed = SPEED_FAST
 	throw_range = 5
 	w_class = SIZE_SMALL
@@ -80,8 +80,8 @@
 	icon = 'icons/obj/items/storage.dmi'
 	name = "Money bag"
 	icon_state = "moneybag"
-	force = 10.0
-	throwforce = 2.0
+	force = 10
+	throwforce = 2
 	w_class = SIZE_LARGE
 
 
@@ -97,7 +97,7 @@
 	w_class = SIZE_SMALL
 	var/obj/item/stored_item = null
 
-/obj/item/evidencebag/MouseDrop(var/obj/item/I as obj)
+/obj/item/evidencebag/MouseDrop(obj/item/I as obj)
 	if (!ishuman(usr))
 		return
 
@@ -145,16 +145,20 @@
 	"You hear a rustle as someone puts something into a plastic bag.")
 
 	icon_state = "evidence"
-
-	var/xx = I.pixel_x //save the offset of the item
+	/// save the offset of the item
+	var/xx = I.pixel_x
 	var/yy = I.pixel_y
-	I.pixel_x = 0 //then remove it so it'll stay within the evidence bag
+	/// then remove it so it'll stay within the evidence bag
+	I.pixel_x = 0
 	I.pixel_y = 0
-	var/image/img = image("icon"=I, "layer"=FLOAT_LAYER) //take a snapshot. (necessary to stop the underlays appearing under our inventory-HUD slots) ~Carn
-	I.pixel_x = xx //and then return it
+	/// take a snapshot. (necessary to stop the underlays appearing under our inventory-HUD slots) ~Carn
+	var/image/img = image("icon"=I, "layer"=FLOAT_LAYER)
+	/// and then return it
+	I.pixel_x = xx
 	I.pixel_y = yy
 	overlays += img
-	overlays += "evidence" //should look nicer for transparent stuff. not really that important, but hey.
+	/// should look nicer for transparent stuff. not really that important, but hey.
+	overlays += "evidence"
 
 	desc = "An evidence bag containing [I]."
 	I.forceMove(src)

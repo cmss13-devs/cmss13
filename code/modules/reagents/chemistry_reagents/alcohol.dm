@@ -53,7 +53,7 @@
 		if(!M.slurring) M.slurring = 1
 		M.slurring += slurr_adj
 
-/datum/reagent/ethanol/reaction_obj(var/obj/O, var/volume)
+/datum/reagent/ethanol/reaction_obj(obj/O, volume)
 	if(istype(O,/obj/item/paper))
 		var/obj/item/paper/paperaffected = O
 		paperaffected.clearpaper()

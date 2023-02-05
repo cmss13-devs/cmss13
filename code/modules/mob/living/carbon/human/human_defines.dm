@@ -142,6 +142,7 @@
 	var/embedded_flag //To check if we've need to roll for damage on movement while an item is imbedded in us.
 	var/allow_gun_usage = TRUE
 	var/melee_allowed = TRUE
+	var/throw_allowed = TRUE
 	var/has_used_pamphlet = FALSE //Has this person used a pamphlet?
 
 	/// A list of all the shrapnel currently embedded in the human
@@ -162,9 +163,12 @@
 	/// misc human flags
 	var/flags_human_misc = 0
 
+	///list of weakrefs of recently dropped objects
+	var/list/remembered_dropped_objects = list()
+
 /client/var/cached_human_playtime
 
-/client/proc/get_total_human_playtime(var/skip_cache = FALSE)
+/client/proc/get_total_human_playtime(skip_cache = FALSE)
 	if(cached_human_playtime && !skip_cache)
 		return cached_human_playtime
 

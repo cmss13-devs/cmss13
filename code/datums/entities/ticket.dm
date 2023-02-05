@@ -14,15 +14,15 @@ BSQL_PROTECT_DATUM(/datum/entity/ticket)
 	entity_type = /datum/entity/ticket
 	table_name = "ticket"
 	field_types = list(
-			"ticket"=DB_FIELDTYPE_BIGINT,
-			"action"=DB_FIELDTYPE_STRING_LARGE,
-			"message"=DB_FIELDTYPE_STRING_MAX,
-			"recipient"=DB_FIELDTYPE_STRING_MAX,
-			"sender"=DB_FIELDTYPE_STRING_MAX,
-			"round_id"=DB_FIELDTYPE_BIGINT,
-			"time"=DB_FIELDTYPE_DATE,
-			"urgent"=DB_FIELDTYPE_INT,
-		)
+		"ticket"=DB_FIELDTYPE_BIGINT,
+		"action"=DB_FIELDTYPE_STRING_LARGE,
+		"message"=DB_FIELDTYPE_STRING_MAX,
+		"recipient"=DB_FIELDTYPE_STRING_MAX,
+		"sender"=DB_FIELDTYPE_STRING_MAX,
+		"round_id"=DB_FIELDTYPE_BIGINT,
+		"time"=DB_FIELDTYPE_DATE,
+		"urgent"=DB_FIELDTYPE_INT,
+	)
 
 /proc/log_ahelp(ticket, action, message, recipient, sender, urgent = FALSE)
 	var/datum/entity/ticket/ticket_ent = DB_ENTITY(/datum/entity/ticket)

@@ -99,7 +99,7 @@
 //Slowdown from various armors.
 
 /// How much shoes slow you down by default. Negative values speed you up
-#define SHOES_SLOWDOWN -1.0
+#define SHOES_SLOWDOWN -1
 
 #define SLOWDOWN_ARMOR_NONE 0
 #define SLOWDOWN_ARMOR_VERY_LIGHT 0.20
@@ -111,6 +111,7 @@
 
 #define SLOWDOWN_ADS_NONE 0
 #define SLOWDOWN_ADS_QUICK 0.35
+#define SLOWDOWN_ADS_QUICK_MINUS 0.15 //this is stupid
 #define SLOWDOWN_ADS_VERSATILE 0.50
 #define SLOWDOWN_ADS_SHOTGUN 0.75
 #define SLOWDOWN_ADS_RIFLE 1

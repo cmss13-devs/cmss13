@@ -64,7 +64,7 @@
 				break
 	. += SPAN_HELPFUL("Clicking on the [name] while being adjacent to support gunner seat will buckle you in and give you the control of the M56 FPW.")
 
-/obj/structure/prop/vehicle/firing_port_weapon/attack_hand(var/mob/living/carbon/human/H)
+/obj/structure/prop/vehicle/firing_port_weapon/attack_hand(mob/living/carbon/human/H)
 	if(!istype(H))
 		return
 	if(!SG_seat)

@@ -560,10 +560,6 @@ var/datum/controller/supply/supply_controller = new()
 	shake_camera(mauled_human, 20, 1)
 	mauled_human.apply_armoured_damage(60, ARMOR_MELEE, BRUTE, rand_zone())
 
-	if(prob(4))
-		var/obj/limb/dropped_limb = pick(mauled_human.limbs)
-		dropped_limb.droplimb(FALSE, FALSE, "machinery")
-
 //Buyin
 /datum/controller/supply/proc/buy()
 	var/area/area_shuttle = shuttle?.get_location_area()

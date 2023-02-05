@@ -138,6 +138,35 @@
 				prob(1);/obj/item/attachable/heavy_barrel,\
 				prob(1);/obj/item/attachable/scope/mini)
 
+/obj/effect/spawner/random/balaclavas
+	name = "Random Balaclava"
+	desc = "This is a randomly chosen balaclava."
+	icon_state = "loot_goggles"
+	spawn_nothing_percentage = 50
+
+/obj/effect/spawner/random/balaclavas/item_to_spawn()
+	return pick(prob(100);/obj/item/clothing/mask/balaclava,\
+				prob(50);/obj/item/clothing/mask/balaclava/tactical,\
+				prob(25);/obj/item/clothing/mask/rebreather/scarf/green,\
+				prob(25);/obj/item/clothing/mask/rebreather/scarf/gray,\
+				prob(25);/obj/item/clothing/mask/rebreather/scarf/tan,\
+				prob(10);/obj/item/clothing/mask/rebreather/skull,\
+				prob(10);/obj/item/clothing/mask/rebreather/skull/black)
+
+///If anyone wants to make custom sprites for this and the bala random spawner, be my guest.
+/obj/effect/spawner/random/facepaint
+	name = "Random Facepaint"
+	desc = "This is a randomly chosen facepaint."
+	icon_state = "loot_goggles"
+	spawn_nothing_percentage = 50
+
+/obj/effect/spawner/random/facepaint/item_to_spawn()
+	return pick(prob(100);/obj/item/facepaint/black,\
+				prob(50);/obj/item/facepaint/green,\
+				prob(25);/obj/item/facepaint/brown,\
+				prob(25);/obj/item/facepaint/sunscreen_stick,\
+				prob(10);/obj/item/facepaint/sniper,\
+				prob(10);/obj/item/facepaint/skull)
 
 /obj/effect/spawner/random/supply_kit
 	name = "Random Supply Kit"

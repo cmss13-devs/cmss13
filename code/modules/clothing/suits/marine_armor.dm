@@ -96,7 +96,8 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	storage_slots = 3
 	siemens_coefficient = 0.7
 	slowdown = SLOWDOWN_ARMOR_MEDIUM
-	allowed = list(/obj/item/weapon/gun/,
+	allowed = list(
+		/obj/item/weapon/gun/,
 		/obj/item/tank/emergency_oxygen,
 		/obj/item/device/flashlight,
 		/obj/item/storage/fancy/cigarettes,
@@ -308,7 +309,8 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	storage_slots = 2
 	slowdown = SLOWDOWN_ARMOR_LIGHT
 	flags_atom = NO_SNOW_TYPE
-	allowed = list(/obj/item/weapon/gun,
+	allowed = list(
+		/obj/item/weapon/gun,
 		/obj/item/tank/emergency_oxygen,
 		/obj/item/device/flashlight,
 		/obj/item/ammo_magazine/,
@@ -1001,7 +1003,8 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	storage_slots = 2
 	slowdown = SLOWDOWN_ARMOR_LIGHT
 	flags_atom = NO_SNOW_TYPE|NO_NAME_OVERRIDE
-	allowed = list(/obj/item/weapon/gun,
+	allowed = list(
+		/obj/item/weapon/gun,
 		/obj/item/tank/emergency_oxygen,
 		/obj/item/device/flashlight,
 		/obj/item/ammo_magazine/,
@@ -1181,7 +1184,8 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	storage_slots = 2
 	movement_compensation = SLOWDOWN_ARMOR_LIGHT
 	uniform_restricted = list(/obj/item/clothing/under/marine/veteran/van_bandolier)
-	allowed = list(/obj/item/weapon/gun,
+	allowed = list(
+		/obj/item/weapon/gun,
 		/obj/item/tank/emergency_oxygen,
 		/obj/item/device/flashlight,
 		/obj/item/storage/fancy/cigarettes,
@@ -1377,7 +1381,8 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
 	storage_slots = 2
 	uniform_restricted = list(/obj/item/clothing/under/colonist)
-	allowed = list(/obj/item/weapon/gun,
+	allowed = list(
+		/obj/item/weapon/gun,
 		/obj/item/tank/emergency_oxygen,
 		/obj/item/device/flashlight,
 		/obj/item/ammo_magazine,
@@ -1466,7 +1471,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 		/obj/item/storage/large_holster/machete,
 		/obj/item/device/motiondetector,
 		/obj/item/device/walkman
-		)
+	)
 	valid_accessory_slots = list(ACCESSORY_SLOT_ARMBAND, ACCESSORY_SLOT_DECOR)
 	restricted_accessory_slots = list(ACCESSORY_SLOT_ARMBAND)
 
@@ -1506,7 +1511,8 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	armor_internaldamage = CLOTHING_ARMOR_HIGHPLUS
 	storage_slots = 2
 	slowdown = SLOWDOWN_ARMOR_LIGHT
-	allowed = list(/obj/item/weapon/gun,
+	allowed = list(
+		/obj/item/weapon/gun,
 		/obj/item/tank/emergency_oxygen,
 		/obj/item/device/flashlight,
 		/obj/item/ammo_magazine/,
@@ -1539,7 +1545,8 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	desc = "A set of beige, light armor built for protection while mining. It is a specialized uniform of an unknown mercenary group working in the sector."
 	icon_state = "mercenary_miner_armor"
 	storage_slots = 3
-	allowed = list(/obj/item/weapon/gun,
+	allowed = list(
+		/obj/item/weapon/gun,
 		/obj/item/tank/emergency_oxygen,
 		/obj/item/device/flashlight,
 		/obj/item/ammo_magazine/,
@@ -1636,7 +1643,8 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	storage_slots = 2
 	slowdown = SLOWDOWN_ARMOR_LIGHT
 	flags_atom = NO_SNOW_TYPE|NO_NAME_OVERRIDE
-	allowed = list(/obj/item/weapon/gun,
+	allowed = list(
+		/obj/item/weapon/gun,
 		/obj/item/tank/emergency_oxygen,
 		/obj/item/device/flashlight,
 		/obj/item/ammo_magazine/,

@@ -109,7 +109,7 @@
 		var/obj/structure/machinery/door/airlock/multi_tile/multi_door = air
 		door_turfs = multi_door.get_filler_turfs()
 	for(var/turf/door_turf in door_turfs)
-		for(var/mob/blocking_mob in door_turf.loc) // Bump all mobs outta the way for outside airlocks of shuttles
+		for(var/mob/blocking_mob in door_turf) // Bump all mobs outta the way for outside airlocks of shuttles
 			if(isliving(blocking_mob))
 				to_chat(blocking_mob, SPAN_HIGHDANGER("You get thrown back as the [label] doors slam shut!"))
 				blocking_mob.apply_effect(4, WEAKEN)

@@ -499,7 +499,7 @@
 	update_button_icon(xeno)
 
 ///This is used to make sure that pouncing properly disables the hide icon. vv
-/datum/action/xeno_action/onclick/xenohide/update_button_icon(var/mob/living/carbon/xenomorph/owner)
+/datum/action/xeno_action/onclick/xenohide/update_button_icon(/mob/living/carbon/xenomorph/owner)
 	var/mob/living/carbon/xenomorph/xeno = owner
 	if(xeno.layer != XENO_HIDING_LAYER)
 		xeno.layer = XENO_HIDING_LAYER

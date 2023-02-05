@@ -12,7 +12,7 @@
 	announce_when = 1
 	startWhen = 10
 	endWhen = 15
-	var/base_points = 75 // the base amount of points to be multiplied by the system
+	var/base_points = 80 // the base amount of points to be multiplied by the system
 	var/spider_points //How many points does the event have to purchase spiders
 	var/size_factor  // How big do we want this to be
 	var/stealth_lvl

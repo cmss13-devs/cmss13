@@ -1265,6 +1265,7 @@ var/datum/controller/supply/supply_controller = new()
 /datum/controller/supply/proc/spider_infest_asrs()
 	var/buy_big = TRUE 		// These exist to evenly spread the points so it isn't all big ones or hunters
 	var/buy_hunter = TRUE
+	var/queen_spawned = FALSE 	// So we don't spam Matriarch minibosses
 	var/total_points = spider_infest_points + 25
 	var/list/turf/open/clear_turfs = list()
 	var/area/area_shuttle = shuttle?.get_location_area()
@@ -1283,7 +1284,9 @@ var/datum/controller/supply/supply_controller = new()
 	while(total_points > 0)
 		log_debug("ASRS infestation event spawn tick")
 		var/turf/chosen_turf = pick(clear_turfs)
-		if(total_points <= 225)
+		if(prob(5) && !queen_spawned && spider_infest_points >= 500) // Matriarch spawn chance
+			new /mob/living/simple_animal/hostile/giant_spider/nurse/queen(chosen_turf)
+		if(total_points <= 250)
 			buy_big = FALSE
 		if(total_points <= 75)
 			buy_hunter = FALSE

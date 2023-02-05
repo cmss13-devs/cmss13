@@ -34,6 +34,19 @@
 	move_to_delay = 6
 	speed = 3
 
+//hunters have the most poison and move the fastest, so they can find prey
+/mob/living/simple_animal/hostile/giant_spider/hunter
+	desc = "Furry and black, it makes you shudder to look at it. This one has sparkling purple eyes."
+	icon_state = "hunter"
+	icon_living = "hunter"
+	icon_dead = "hunter_dead"
+	maxHealth = 120
+	health = 120
+	melee_damage_lower = 10
+	melee_damage_upper = 20
+	poison_per_bite = 5
+	move_to_delay = 4
+
 //nursemaids - these create webs and eggs
 /mob/living/simple_animal/hostile/giant_spider/nurse
 	desc = "Furry and black, it makes you shudder to look at it. This one has brilliant green eyes."
@@ -48,19 +61,31 @@
 	var/atom/cocoon_target
 	poison_type = "stoxin"
 	var/fed = 0
+	var/isspiderqueen = FALSE
 
-//hunters have the most poison and move the fastest, so they can find prey
-/mob/living/simple_animal/hostile/giant_spider/hunter
-	desc = "Furry and black, it makes you shudder to look at it. This one has sparkling purple eyes."
-	icon_state = "hunter"
-	icon_living = "hunter"
-	icon_dead = "hunter_dead"
-	maxHealth = 120
-	health = 120
-	melee_damage_lower = 10
-	melee_damage_upper = 20
-	poison_per_bite = 5
-	move_to_delay = 4
+// Matriarch - Miniboss type spider that can spit and create even more eggs
+/mob/living/simple_animal/hostile/giant_spider/nurse/queen
+	name = "Matriarch spider"
+	desc = "A huge furry and black spider with green eyes!"
+	maxHealth = 300
+	health = 300
+	isspiderqueen = TRUE
+	fed = 1
+	var/spit = TRUE
+
+/mob/living/simple_animal/hostile/giant_spider/nurse/queen/AttackTarget()
+	..()
+	if(get_dist(src, target_mob) <= 5 && spit)
+		src.visible_message(SPAN_NOTICE("\the [src] spits at [target_mob]"))
+		var/obj/item/projectile/Pro = new(create_cause_data("Queen Spider Spit"))
+		var/spit_select = pick(/datum/ammo/xeno/acid,/datum/ammo/xeno/toxin/queen)
+		Pro.generate_bullet(new spit_select)
+		Pro.fire_at(target_mob,src,src, Pro.ammo.max_range, Pro.ammo.shell_speed, null)
+		Pro.permutated += src
+		spit = FALSE
+		playsound(src,pick('sound/voice/alien_spitacid.ogg','sound/voice/alien_spitacid2.ogg'), 25, 1)
+		addtimer(VARSET_CALLBACK(src,spit,TRUE),3 SECONDS)
+
 
 /mob/living/simple_animal/hostile/giant_spider/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
@@ -103,6 +128,12 @@
 /mob/living/simple_animal/hostile/giant_spider/nurse/Life(delta_time)
 	..()
 	if(!stat)
+		if(prob(5))
+			playsound(src,"hiss_talk",50,1)
+
+/mob/living/simple_animal/hostile/giant_spider/nurse/Life(delta_time)
+	..()
+	if(!stat)
 		if(stance == HOSTILE_STANCE_IDLE)
 			var/list/can_see = view(src, 10)
 			//30% chance to stop wandering and do something
@@ -140,6 +171,9 @@
 								E = locate() in get_turf(src)
 								if(!E)
 									new /obj/effect/spider/eggcluster(src.loc)
+									if(isspiderqueen)
+										new /obj/effect/spider/eggcluster(src.loc)
+										new /obj/effect/spider/eggcluster(src.loc)
 									fed--
 								busy = FALSE
 								stop_automated_movement = 0

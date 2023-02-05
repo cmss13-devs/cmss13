@@ -381,7 +381,7 @@
 		if(world.time > holder.data + ANTIDEPRESSANT_MESSAGE_DELAY)
 			holder.data = world.time
 			if(potency == 1)
-				to_chat(M, SPAN_NOTICE("Your mind feels stable.. a little stable."))
+				to_chat(M, SPAN_NOTICE("Your mind feels stable... a little stable."))
 				M.confused = max(M.confused-1,0)
 			else if(potency == 2)
 				to_chat(M, SPAN_NOTICE("Your mind feels focused and undivided."))

@@ -52,7 +52,6 @@
 	stamina = new /datum/stamina(src)
 
 /mob/living/carbon/human/Destroy()
-
 	remove_from_all_mob_huds()
 	assigned_equipment_preset = null
 	GLOB.human_mob_list -= src
@@ -1656,3 +1655,11 @@
 	if(species)
 		slot_equipment_priority = species.slot_equipment_priority
 	return ..(W,ignore_delay,slot_equipment_priority)
+
+/mob/living/carbon/human/throw_item(atom/target)
+	if(!throw_allowed)
+		var/obj/item/I = get_active_hand()
+		if(I.throwforce) // for hurty stuff only
+			to_chat(src, SPAN_DANGER("You are currently unable to throw harmful items."))
+			return
+	. = ..()

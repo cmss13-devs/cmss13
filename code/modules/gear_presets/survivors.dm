@@ -13,6 +13,9 @@
 
 	access = list(ACCESS_CIVILIAN_PUBLIC)
 
+	minimap_icon = "surv"
+	minimap_background = MINIMAP_ICON_BACKGROUND_CIVILIAN
+
 	var/survivor_variant = CIVILIAN_SURVIVOR
 
 /datum/equipment_preset/survivor/load_name(mob/living/carbon/human/H, randomise)
@@ -292,7 +295,7 @@
 		ACCESS_CIVILIAN_BRIG,
 		ACCESS_CIVILIAN_MEDBAY,
 		ACCESS_WY_CORPORATE,
-		ACCESS_CIVILIAN_COMMAND
+		ACCESS_CIVILIAN_COMMAND,
 	)
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
 
@@ -671,8 +674,8 @@
 	access = list(
 		ACCESS_CIVILIAN_PUBLIC,
 		ACCESS_CIVILIAN_ENGINEERING,
-		ACCESS_CIVILIAN_LOGISTICS
-		)
+		ACCESS_CIVILIAN_LOGISTICS,
+	)
 
 	survivor_variant = ENGINEERING_SURVIVOR
 
@@ -857,8 +860,8 @@
 	access = list(
 		ACCESS_CIVILIAN_PUBLIC,
 		ACCESS_CIVILIAN_ENGINEERING,
-		ACCESS_CIVILIAN_LOGISTICS
-		)
+		ACCESS_CIVILIAN_LOGISTICS,
+	)
 
 /datum/equipment_preset/survivor/trucker/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/overalls(H), WEAR_BODY)
@@ -1038,8 +1041,8 @@
 		ACCESS_CIVILIAN_PUBLIC,
 		ACCESS_CIVILIAN_ENGINEERING,
 		ACCESS_WY_CORPORATE,
-		ACCESS_CIVILIAN_LOGISTICS
-		)
+		ACCESS_CIVILIAN_LOGISTICS,
+	)
 
 	survivor_variant = CORPORATE_SURVIVOR
 
@@ -1076,8 +1079,8 @@
 	skills = /datum/skills/civilian/survivor/pmc
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	access = list(
-		ACCESS_CIVILIAN_PUBLIC
-		)
+		ACCESS_CIVILIAN_PUBLIC,
+	)
 
 /datum/equipment_preset/survivor/roughneck/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/color/white(H), WEAR_BODY)
@@ -1103,8 +1106,8 @@
 		ACCESS_CIVILIAN_PUBLIC,
 		ACCESS_CIVILIAN_ENGINEERING,
 		ACCESS_WY_CORPORATE,
-		ACCESS_CIVILIAN_LOGISTICS
-		)
+		ACCESS_CIVILIAN_LOGISTICS,
+	)
 	survivor_variant = CORPORATE_SURVIVOR
 
 /datum/equipment_preset/survivor/interstellar_human_rights_observer/load_gear(mob/living/carbon/human/H)
@@ -1147,7 +1150,7 @@
 		ACCESS_CIVILIAN_PUBLIC,
 		ACCESS_CIVILIAN_ENGINEERING,
 		ACCESS_WY_CORPORATE,
-		ACCESS_CIVILIAN_LOGISTICS
+		ACCESS_CIVILIAN_LOGISTICS,
 	)
 
 	survivor_variant = SECURITY_SURVIVOR
@@ -1189,8 +1192,8 @@
 		ACCESS_CIVILIAN_PUBLIC,
 		ACCESS_CIVILIAN_ENGINEERING,
 		ACCESS_WY_CORPORATE,
-		ACCESS_CIVILIAN_LOGISTICS
-		)
+		ACCESS_CIVILIAN_LOGISTICS,
+	)
 	survivor_variant = SECURITY_SURVIVOR
 
 /datum/equipment_preset/survivor/pmc/load_gear(mob/living/carbon/human/H)
@@ -1226,7 +1229,7 @@
 		ACCESS_MARINE_BRIDGE,
 		ACCESS_MARINE_DROPSHIP,
 		ACCESS_MARINE_RESEARCH,
-		ACCESS_MARINE_MEDBAY
+		ACCESS_MARINE_MEDBAY,
 	)
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
 
@@ -1258,8 +1261,8 @@
 	skills = /datum/skills/civilian/survivor/pmc
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	access = list(
-		ACCESS_CIVILIAN_PUBLIC
-		)
+		ACCESS_CIVILIAN_PUBLIC,
+	)
 
 /datum/equipment_preset/survivor/pmc/miner/one/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/mercenary/miner, WEAR_BODY)
@@ -1274,8 +1277,8 @@
 	skills = /datum/skills/civilian/survivor/pmc
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	access = list(
-		ACCESS_CIVILIAN_PUBLIC
-		)
+		ACCESS_CIVILIAN_PUBLIC,
+	)
 
 /datum/equipment_preset/survivor/pmc/freelancer/load_gear(mob/living/carbon/human/H)
 

@@ -101,7 +101,7 @@
 
 	Writing "#null" in front of the "=" will call the proc and discard the return value.
 
-	A quick recommendation: before you run something like a DELETE or another query.. Run it through SELECT
+	A quick recommendation: before you run something like a DELETE or another query... Run it through SELECT
 	first.
 	You'd rather not gib every player on accident.
 	Or crash the server.

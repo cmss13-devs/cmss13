@@ -61,7 +61,8 @@
 	armor_bio = CLOTHING_ARMOR_LOW
 	armor_rad = CLOTHING_ARMOR_LOW
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
-	allowed = list(/obj/item/weapon/gun/,
+	allowed = list(
+		/obj/item/weapon/gun/,
 		/obj/item/tank/emergency_oxygen,
 		/obj/item/device/flashlight,
 		/obj/item/ammo_magazine/,
@@ -75,7 +76,8 @@
 		/obj/item/storage/backpack/general_belt,
 		/obj/item/storage/large_holster/machete,
 		/obj/item/storage/belt/gun/m4a3,
-		/obj/item/storage/belt/gun/m44)
+		/obj/item/storage/belt/gun/m44,
+	)
 	uniform_restricted = list(/obj/item/clothing/under/marine/officer/pilot)
 	sprite_sheets = list(SPECIES_MONKEY = 'icons/mob/humans/species/monkeys/onmob/suit_monkey_1.dmi')
 	item_icons = list(
@@ -200,7 +202,8 @@
 	siemens_coefficient = 0.5
 	time_to_unequip = 20
 	time_to_equip = 20
-	allowed = list(/obj/item/weapon/melee/claymore/mercsword,
+	allowed = list(
+		/obj/item/weapon/melee/claymore/mercsword,
 		/obj/item/weapon/shield/riot,
 		/obj/item/device/flashlight,
 	)
@@ -282,7 +285,7 @@
 /obj/item/clothing/suit/armor/reactive
 	name = "Reactive Teleport Armor"
 	desc = "Someone separated our Research Director from their own head!"
-	var/active = 0.0
+	var/active = 0
 	icon_state = "reactiveoff"
 	item_state = "reactiveoff"
 	blood_overlay_type = "armor"

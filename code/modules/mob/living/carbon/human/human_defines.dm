@@ -142,6 +142,7 @@
 	var/embedded_flag //To check if we've need to roll for damage on movement while an item is imbedded in us.
 	var/allow_gun_usage = TRUE
 	var/melee_allowed = TRUE
+	var/throw_allowed = TRUE
 	var/has_used_pamphlet = FALSE //Has this person used a pamphlet?
 
 	/// A list of all the shrapnel currently embedded in the human

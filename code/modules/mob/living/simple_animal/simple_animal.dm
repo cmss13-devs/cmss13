@@ -53,6 +53,8 @@
 	attack_sound = null
 	friendly = "nuzzles" //If the mob does no damage with it's attack
 	can_crawl = FALSE
+	black_market_value = 25
+	dead_black_market_value = 0
 
 /mob/living/simple_animal/Initialize()
 	. = ..()
@@ -78,7 +80,7 @@
 			icon_state = icon_living
 			GLOB.dead_mob_list -= src
 			GLOB.alive_mob_list += src
-			stat = CONSCIOUS
+			set_stat(CONSCIOUS)
 			lying = 0
 			density = TRUE
 			reload_fullscreens()
@@ -212,6 +214,7 @@
 	if(!.) return //was already dead
 	SSmob.living_misc_mobs -= src
 	icon_state = icon_dead
+	black_market_value = dead_black_market_value
 
 
 /mob/living/simple_animal/gib(cause = "gibbing")

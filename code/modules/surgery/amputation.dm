@@ -15,7 +15,7 @@
 		/datum/surgery_step/abort_amputation,
 		/datum/surgery_step/saw_off_limb,
 		/datum/surgery_step/carve_amputation,
-		/datum/surgery_step/close_amputation
+		/datum/surgery_step/close_amputation,
 	)
 
 //Mend the stump left by a traumatic amputation. Can be performed by medics/nurses. Torn-off limbs should bleed heavily.
@@ -28,7 +28,7 @@
 	steps = list(
 		/datum/surgery_step/carve_amputation,
 		/datum/surgery_step/close_ruptured_veins,
-		/datum/surgery_step/close_amputation
+		/datum/surgery_step/close_amputation,
 	)
 	requires_bodypart = FALSE
 
@@ -41,7 +41,7 @@
 	required_surgery_skill = SKILL_SURGERY_TRAINED
 	steps = list(
 		/datum/surgery_step/sever_prosthetic_clamps,
-		/datum/surgery_step/remove_old_prosthetic
+		/datum/surgery_step/remove_old_prosthetic,
 	)
 	requires_bodypart_type = LIMB_ROBOT
 	pain_reduction_required = NONE

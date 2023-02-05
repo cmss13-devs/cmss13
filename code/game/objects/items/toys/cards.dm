@@ -279,19 +279,19 @@
 
 /obj/item/toy/handcard/uno_reverse_red
 	icon_state = "red_reverse"
-	desc = "Always handy to have one or three of these up your sleeve.."
+	desc = "Always handy to have one or three of these up your sleeve."
 
 /obj/item/toy/handcard/uno_reverse_blue
 	icon_state = "blue_reverse"
-	desc = "Always handy to have one or three of these up your sleeve.."
+	desc = "Always handy to have one or three of these up your sleeve."
 
 /obj/item/toy/handcard/uno_reverse_yellow
 	icon_state = "yellow_reverse"
-	desc = "Always handy to have one or three of these up your sleeve.."
+	desc = "Always handy to have one or three of these up your sleeve."
 
 /obj/item/toy/handcard/uno_reverse_purple
 	icon_state = "purple_reverse"
-	desc = "Always handy to have one or three of these up your sleeve.."
+	desc = "Always handy to have one or three of these up your sleeve."
 
 /obj/item/toy/handcard/verb/toggle_discard_state()
 	set name = "Toggle Pile State"

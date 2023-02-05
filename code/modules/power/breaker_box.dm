@@ -39,7 +39,7 @@
 		return
 
 	busy = TRUE
-	to_chat(user, SPAN_XENOWARNING(" Updating power settings.."))
+	to_chat(user, SPAN_XENOWARNING(" Updating power settings..."))
 	if(do_after(user, 50, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC)) //5s for AI as AIs can manipulate electronics much faster.
 		set_state(!on)
 		to_chat(user, SPAN_XENOWARNING(" Update Completed. New setting:[on ? "on": "off"]"))

@@ -440,7 +440,14 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	//DISCONNECT//
 	//////////////
 /client/Del()
+	if(!gc_destroyed)
+		SEND_SIGNAL(src, COMSIG_PARENT_QDELETING, TRUE)
+		Destroy()
+	return ..()
+
+/client/Destroy()
 	QDEL_NULL(soundOutput)
+	QDEL_NULL(obj_window)
 	if(prefs)
 		prefs.owner = null
 		QDEL_NULL(prefs.preview_dummy)
@@ -457,12 +464,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	if(CLIENT_IS_STAFF(src))
 		message_staff("Admin logout: [key_name(src)]")
 
-	. = ..()
-
-/client/Destroy()
-	QDEL_NULL(obj_window)
-	. = ..()
-
+	..()
 	return QDEL_HINT_HARDDEL_NOW
 
 

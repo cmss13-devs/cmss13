@@ -65,14 +65,14 @@
 	var/dizziness = 0//Carbon
 	var/jitteriness = 0//Carbon
 	var/floatiness = 0
-	var/knocked_out = 0.0
-	var/stunned = 0.0
-	var/frozen = 0.0
-	var/knocked_down = 0.0
+	var/knocked_out = 0
+	var/stunned = 0
+	var/frozen = 0
+	var/knocked_down = 0
 	var/losebreath = 0.0//Carbon
-	var/dazed = 0.0
-	var/slowed = 0.0 // X_SLOW_AMOUNT
-	var/superslowed = 0.0 // X_SUPERSLOW_AMOUNT
+	var/dazed = 0
+	var/slowed = 0 // X_SLOW_AMOUNT
+	var/superslowed = 0 // X_SUPERSLOW_AMOUNT
 	var/shakecamera = 0
 
 	// bool status effects \\
@@ -134,7 +134,7 @@
 	var/old_x = 0
 	var/old_y = 0
 
-	var/charges = 0.0
+	var/charges = 0
 	var/nutrition = NUTRITION_NORMAL//Carbon
 
 	var/overeatduration = 0 // How long this guy is overeating //Carbon

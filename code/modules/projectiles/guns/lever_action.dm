@@ -316,26 +316,22 @@ their unique feature is that a direct hit will buff your damage and firerate
 	item_state = "r4t"
 	flags_equip_slot = SLOT_BACK
 	attachable_allowed = list(
-						//Barrel
-						/obj/item/attachable/bayonet/upp,
-						/obj/item/attachable/bayonet,
-						/obj/item/attachable/extended_barrel,
-						/obj/item/attachable/heavy_barrel,
-						/obj/item/attachable/suppressor,
-						/obj/item/attachable/compensator,
-						//Rail
-						/obj/item/attachable/reddot,
-						/obj/item/attachable/reflex,
-						/obj/item/attachable/flashlight,
-						/obj/item/attachable/magnetic_harness,
-						/obj/item/attachable/scope/mini,
-						//Under
-						/obj/item/attachable/gyro,
-						/obj/item/attachable/lasersight,
-						/obj/item/attachable/magnetic_harness/lever_sling,
-						//Stock
-						/obj/item/attachable/stock/r4t
-						)
+		/obj/item/attachable/bayonet/upp, // Barrel
+		/obj/item/attachable/bayonet,
+		/obj/item/attachable/extended_barrel,
+		/obj/item/attachable/heavy_barrel,
+		/obj/item/attachable/suppressor,
+		/obj/item/attachable/compensator,
+		/obj/item/attachable/reddot, // Rail
+		/obj/item/attachable/reflex,
+		/obj/item/attachable/flashlight,
+		/obj/item/attachable/magnetic_harness,
+		/obj/item/attachable/scope/mini,
+		/obj/item/attachable/gyro, // Under
+		/obj/item/attachable/lasersight,
+		/obj/item/attachable/magnetic_harness/lever_sling,
+		/obj/item/attachable/stock/r4t, // Stock
+		)
 	map_specific_decoration = TRUE
 	flags_gun_features = GUN_CAN_POINTBLANK|GUN_INTERNAL_MAG|GUN_AMMO_COUNTER
 	flags_gun_lever_action = MOVES_WHEN_LEVERING|DANGEROUS_TO_ONEHAND_LEVER
@@ -375,25 +371,21 @@ their unique feature is that a direct hit will buff your damage and firerate
 	var/floating_penetration = FLOATING_PENETRATION_TIER_0 //holder var
 	var/floating_penetration_upper_limit = FLOATING_PENETRATION_TIER_4
 	attachable_allowed = list(
-						//Barrel
-						/obj/item/attachable/bayonet/upp,
-						/obj/item/attachable/bayonet,
-						/obj/item/attachable/extended_barrel,
-						/obj/item/attachable/heavy_barrel,
-						/obj/item/attachable/suppressor,
-						/obj/item/attachable/compensator,
-						//Rail
-						/obj/item/attachable/reddot,
-						/obj/item/attachable/reflex,
-						/obj/item/attachable/flashlight,
-						/obj/item/attachable/magnetic_harness,
-						/obj/item/attachable/scope/mini/xm88,
-						//Under
-						/obj/item/attachable/gyro,
-						/obj/item/attachable/lasersight,
-						//Stock
-						/obj/item/attachable/stock/xm88
-						)
+		/obj/item/attachable/bayonet/upp, // Barrel
+		/obj/item/attachable/bayonet,
+		/obj/item/attachable/extended_barrel,
+		/obj/item/attachable/heavy_barrel,
+		/obj/item/attachable/suppressor,
+		/obj/item/attachable/compensator,
+		/obj/item/attachable/reddot, // Rail
+		/obj/item/attachable/reflex,
+		/obj/item/attachable/flashlight,
+		/obj/item/attachable/magnetic_harness,
+		/obj/item/attachable/scope/mini/xm88,
+		/obj/item/attachable/gyro, // Under
+		/obj/item/attachable/lasersight,
+		/obj/item/attachable/stock/xm88, // Stock
+		)
 
 /obj/item/weapon/gun/lever_action/xm88/set_gun_config_values()
 	..()

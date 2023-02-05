@@ -580,7 +580,7 @@
 		/obj/item/stock_parts/matter_bin,
 		/obj/item/stock_parts/matter_bin,
 		/obj/item/stock_parts/manipulator,
-		/obj/item/stock_parts/console_screen
+		/obj/item/stock_parts/console_screen,
 	)
 
 /obj/structure/machinery/autolathe/armylathe/full

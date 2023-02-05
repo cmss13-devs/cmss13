@@ -25,6 +25,22 @@ GLOBAL_LIST_EMPTY(freed_mob_list) // List of mobs freed for ghosts
 
 GLOBAL_LIST_INIT(available_taskbar_icons, setup_taskbar_icons())
 
+GLOBAL_LIST_EMPTY(minimap_icons)
+
+/proc/initiate_minimap_icons()
+	var/list/icons = list()
+	for(var/iconstate in icon_states('icons/UI_icons/map_blips.dmi'))
+		var/icon/image = icon('icons/UI_icons/map_blips.dmi', icon_state = iconstate)
+		icons[iconstate] += image
+
+	var/list/base64_icons = list()
+	for(var/iconstate in icons)
+		base64_icons[iconstate] = icon2base64(icons[iconstate])
+
+	GLOB.minimap_icons = base64_icons
+
+
+
 // Xeno stuff //
 // Resin constructions parameters
 GLOBAL_LIST_INIT_TYPED(resin_constructions_list, /datum/resin_construction, setup_resin_constructions())
@@ -126,7 +142,7 @@ GLOBAL_LIST_INIT(language_keys, setup_language_keys()) //table of say codes for 
 
 // Origins
 GLOBAL_REFERENCE_LIST_INDEXED(origins, /datum/origin, name)
-GLOBAL_LIST_INIT(player_origins, list(ORIGIN_USCM, ORIGIN_USCM_LUNA, ORIGIN_USCM_OTHER, ORIGIN_USCM_COLONY, ORIGIN_USCM_FOREIGN, ORIGIN_USCM_AW))
+GLOBAL_LIST_INIT(player_origins, USCM_ORIGINS)
 
 //Xeno mutators
 GLOBAL_REFERENCE_LIST_INDEXED_SORTED(xeno_mutator_list, /datum/xeno_mutator, name)

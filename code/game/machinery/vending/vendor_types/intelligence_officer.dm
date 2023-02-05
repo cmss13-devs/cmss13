@@ -173,5 +173,5 @@ GLOBAL_LIST_INIT(cm_vending_guns_intelligence_officer, list(
 		/obj/item/tool/crowbar,
 		/obj/item/stack/fulton,
 		/obj/item/device/motiondetector/intel,
-		/obj/item/device/binoculars
+		/obj/item/device/binoculars,
 	)

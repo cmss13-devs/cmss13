@@ -254,6 +254,9 @@
 
 	var/datum/click_intercept
 
+	/// Used for tracking last uses of emotes for cooldown purposes
+	var/list/emotes_used
+
 	///the icon currently used for the typing indicator's bubble
 	var/mutable_appearance/active_typing_indicator
 	///the icon currently used for the thinking indicator's bubble

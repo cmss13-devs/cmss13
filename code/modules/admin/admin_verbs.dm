@@ -296,6 +296,7 @@ var/list/roundstart_mod_verbs = list(
 		add_verb(src, admin_verbs_major_event)
 	if(CLIENT_HAS_RIGHTS(src, R_MENTOR))
 		add_verb(src, /client/proc/cmd_mentor_say)
+		add_verb(src, /datum/admins/proc/imaginary_friend)
 	if(CLIENT_HAS_RIGHTS(src, R_BUILDMODE))
 		add_verb(src, /client/proc/togglebuildmodeself)
 	if(CLIENT_HAS_RIGHTS(src, R_SERVER))

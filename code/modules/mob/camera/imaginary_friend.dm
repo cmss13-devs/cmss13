@@ -140,30 +140,30 @@
 	set name = "Toggle HUD"
 
 	var/hud_choice = tgui_input_list(usr, "Choose a HUD to toggle", "Toggle HUD prefs", list("Medical HUD", "Security HUD", "Squad HUD", "Xeno Status HUD", "Faction UPP HUD", "Faction Wey-Yu HUD", "Faction RESS HUD", "Faction CLF HUD"))
-	var/datum/mob_hud/H
+	var/datum/mob_hud/hud
 	switch(hud_choice)
 		if("Medical HUD")
-			H = huds[MOB_HUD_MEDICAL_OBSERVER]
+			hud = huds[MOB_HUD_MEDICAL_OBSERVER]
 		if("Security HUD")
-			H = huds[MOB_HUD_SECURITY_ADVANCED]
+			hud = huds[MOB_HUD_SECURITY_ADVANCED]
 		if("Squad HUD")
-			H = huds[MOB_HUD_FACTION_OBSERVER]
+			hud = huds[MOB_HUD_FACTION_OBSERVER]
 		if("Xeno Status HUD")
-			H = huds[MOB_HUD_XENO_STATUS]
+			hud = huds[MOB_HUD_XENO_STATUS]
 		if("Faction UPP HUD")
-			H = huds[MOB_HUD_FACTION_UPP]
+			hud = huds[MOB_HUD_FACTION_UPP]
 		if("Faction Wey-Yu HUD")
-			H = huds[MOB_HUD_FACTION_WY]
+			hud = huds[MOB_HUD_FACTION_WY]
 		if("Faction TWE HUD")
-			H = huds[MOB_HUD_FACTION_TWE]
+			hud = huds[MOB_HUD_FACTION_TWE]
 		if("Faction CLF HUD")
-			H = huds[MOB_HUD_FACTION_CLF]
+			hud = huds[MOB_HUD_FACTION_CLF]
 
 	if(hud_choice in current_huds)
-		H.remove_hud_from(src)
+		hud.remove_hud_from(src)
 		current_huds -= hud_choice
 	else
-		H.add_hud_to(src)
+		hud.add_hud_to(src)
 		current_huds += hud_choice
 
 /mob/camera/imaginary_friend/say(message, bubble_type, list/spans = list(), sanitize = TRUE, datum/language/language, ignore_spam = FALSE, forced)
@@ -204,14 +204,13 @@
 	//speech bubble
 	var/mutable_appearance/MA = mutable_appearance('icons/mob/effects/talk.dmi', src, "default[say_test(message)]", FLY_LAYER)
 	MA.appearance_flags = APPEARANCE_UI_IGNORE_ALPHA
-	INVOKE_ASYNC(GLOBAL_PROC, /proc/flick_overlay, MA, owner.client ? list(client, owner.client) : list(client), 3 SECONDS)
+	INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(flick_overlay_to_clients), MA, owner.client ? list(client, owner.client) : list(client), 3 SECONDS)
 
-	for(var/i in GLOB.dead_mob_list)
-		var/mob/M = i
-		if(isnewplayer(M) || src == i)
+	for(var/mob/ghost as anything in GLOB.dead_mob_list)
+		if(isnewplayer(ghost) || src == ghost)
 			continue
-		var/link = "<a href='byond://?src=\ref[M];track=\ref[src]'>F</a>"
-		to_chat(M, "[link] [dead_rendered]")
+		var/link = "<a href='byond://?src=\ref[ghost];track=\ref[src]'>F</a>"
+		to_chat(ghost, "[link] [dead_rendered]")
 
 /mob/camera/imaginary_friend/Move(newloc, Dir = 0)
 	if(world.time < move_delay)
@@ -261,16 +260,13 @@
 	action_icon_state = "joinmob"
 
 /datum/action/innate/imaginary_join/action_activate()
-	var/mob/camera/imaginary_friend/I = owner
-	I.recall()
-
-
+	var/mob/camera/imaginary_friend/friend = owner
+	friend.recall()
 /datum/action/innate/imaginary_hide
-	name = "hide"
+	name = "Hide"
 	action_icon_state = "hidemob"
 
 /datum/action/innate/imaginary_hide/action_activate()
-
 	var/mob/camera/imaginary_friend/friend = owner
 	if(friend.hidden)
 		friend.hidden = FALSE

@@ -581,48 +581,45 @@
 	set category = "OOC.Mentor"
 	set name = "Imaginary Friend"
 
+	var/mob/user = usr
+
 	if(!check_rights(R_MOD|R_MENTOR))
 		return
 
-	if(istype(usr, /mob/camera/imaginary_friend))
-		var/mob/camera/imaginary_friend/IF = usr
-		IF.deactivate()
+	if(istype(user, /mob/camera/imaginary_friend))
+		var/mob/camera/imaginary_friend/friend = user
+		friend.deactivate()
 		return
 
-	/*
-	if(is_mentor(usr.client) && !isobserver(usr))
-		to_chat(usr, "<span class='warning'>Can only become an imaginary friend while observing.</span>")
+	if(!isobserver(user))
+		to_chat(user, SPAN_WARNING("Can only become an imaginary friend while observing or aghosted."))
 		return
-	*/
 
-	if(!isobserver(usr))
-		usr.client.admin_ghost()
-
-	var/mob/living/L
-	switch(input("Select by:", "Imaginary Friend") as anything in list("Key", "Mob"))
+	var/mob/living/befriended_mob
+	switch(tgui_input_list(user, "Select by:", "Imaginary Friend", list("Key", "Mob")))
 		if("Key")
-			var/client/C = tgui_input_list(usr, "Select a key", "Imaginary Friend", GLOB.clients)
-			if(!C)
+			var/client/selected_client = tgui_input_list(user, "Select a key", "Imaginary Friend", GLOB.clients)
+			if(!selected_client)
 				return
-			L = C.mob
+			befriended_mob = selected_client.mob
 		if("Mob")
-			var/mob/M = tgui_input_list(usr, "Select a mob", "Imaginary Friend", GLOB.living_mob_list)
-			if(!M)
+			var/mob/selected_mob = tgui_input_list(user, "Select a mob", "Imaginary Friend", GLOB.living_mob_list)
+			if(!selected_mob)
 				return
-			L = M
+			befriended_mob = selected_mob
 
-	if(!isobserver(usr))
+	if(!isobserver(user))
 		return
 
-	if(!istype(L))
+	if(!istype(befriended_mob))
 		return
 
-	var/mob/camera/imaginary_friend/IF = new(get_turf(L), L)
-	IF.aghosted_original_mob = usr.mind?.original
-	usr.mind.transfer_to(IF)
+	var/mob/camera/imaginary_friend/friend = new(get_turf(befriended_mob), befriended_mob)
+	friend.aghosted_original_mob = user.mind?.original
+	user.mind.transfer_to(friend)
 
-	log_admin("[key_name(IF)] started being imaginary friend of [key_name(L)].")
-	message_admins("[key_name_admin(IF)] started being imaginary friend of [key_name_admin(L)].")
+	log_admin("[key_name(friend)] started being imaginary friend of [key_name(befriended_mob)].")
+	message_admins("[key_name_admin(friend)] started being imaginary friend of [key_name_admin(befriended_mob)].")
 
 /client/proc/in_view_panel()
 	set name = "In View Panel"

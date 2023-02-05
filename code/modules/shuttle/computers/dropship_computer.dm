@@ -215,10 +215,14 @@
 /obj/structure/machinery/computer/shuttle/dropship/flight/proc/hijack(mob/user)
 
 	// select crash location
+	var/obj/docking_port/mobile/marine_dropship/dropship = SSshuttle.getShuttle(shuttleId)
+	if(dropship.is_hijacked)
+		return
 	var/result = tgui_input_list(user, "Where to 'land'?", "Dropship Hijack", almayer_ship_sections)
 	if(!result)
 		return
-	var/obj/docking_port/mobile/marine_dropship/dropship = SSshuttle.getShuttle(shuttleId)
+	if(dropship.is_hijacked)
+		return
 	var/datum/dropship_hijack/almayer/hijack = new()
 	dropship.hijack = hijack
 	hijack.shuttle = dropship

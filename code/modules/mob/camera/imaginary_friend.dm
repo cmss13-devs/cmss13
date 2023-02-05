@@ -188,7 +188,7 @@
 		return
 
 	var/rendered = "<span class='game say'><span class='name'>[name]</span> <span class='message'>[say_quote(message)] \"[message]\"</span></span>"
-	var/dead_rendered = "<span class='game say'><span class='name'>[name] (invisible friend of [owner])</span> <span class='message'>[say_quote(message)] \"[message]\"</span></span>"
+	var/dead_rendered = "<span class='game say'><span class='name'>[name] (imaginary friend of [owner])</span> <span class='message'>[say_quote(message)] \"[message]\"</span></span>"
 
 	to_chat(owner, "[rendered]")
 	to_chat(src, "[rendered]")
@@ -210,7 +210,7 @@
 		if(isnewplayer(ghost) || src == ghost)
 			continue
 		var/link = "<a href='byond://?src=\ref[ghost];track=\ref[src]'>F</a>"
-		to_chat(ghost, "[link] [dead_rendered]")
+		to_chat(ghost, "[dead_rendered] ([link])")
 
 /mob/camera/imaginary_friend/Move(newloc, Dir = 0)
 	if(world.time < move_delay)

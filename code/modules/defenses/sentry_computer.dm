@@ -104,7 +104,7 @@
  * Called to reset the state of the laptop to closed and inactive.
  */
 /obj/item/device/sentry_computer/teardown()
-	..()
+	. = ..()
 	open = FALSE
 	on = FALSE
 	icon_state = "sentrycomp_cl"

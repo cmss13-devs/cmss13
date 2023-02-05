@@ -9240,10 +9240,6 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/obj/structure/machinery/camera/autoname/almayer{
-	name = "ship-grade camera";
-	tag = ""
-	},
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "silver";
@@ -85039,6 +85035,11 @@
 /area/almayer/hull/lower_hull/l_m_s)
 "xQa" = (
 /obj/structure/bed/chair/office/dark{
+	dir = 4
+	},
+/obj/structure/machinery/camera/autoname/almayer{
+	name = "ship-grade camera";
+	tag = "";
 	dir = 4
 	},
 /turf/open/floor/almayer,

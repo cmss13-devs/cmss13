@@ -52,7 +52,6 @@
 	stamina = new /datum/stamina(src)
 
 /mob/living/carbon/human/Destroy()
-
 	remove_from_all_mob_huds()
 	assigned_equipment_preset = null
 	GLOB.human_mob_list -= src

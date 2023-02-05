@@ -1,0 +1,4 @@
+author: "BeagleGaming1"
+delete-after: True
+changes:
+  - bugfix: "Changed layer of LV-624's tree so you can see the medical hud if marines are hidden (dead) behind it"

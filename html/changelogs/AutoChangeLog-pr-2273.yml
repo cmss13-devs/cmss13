@@ -1,0 +1,6 @@
+author: "harryob"
+delete-after: True
+changes:
+  - refactor: "the tacmap is now better, everywhere it appears, for the queen and cic"
+  - ui: "the orbit menu now has icons (from the minimap)"
+  - rscadd: "ghosts now get a minimap"

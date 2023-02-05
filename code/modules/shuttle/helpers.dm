@@ -1,6 +1,6 @@
 /**
-	Datum containing methods to allow for the control over multiple door groups.
-*/
+ *	Datum containing methods to allow for the control over multiple door groups.
+ */
 /datum/door_controller/aggregate
 	var/list/door_controllers = list()
 	var/allow_multicast = TRUE
@@ -109,15 +109,19 @@
 		var/obj/structure/machinery/door/airlock/multi_tile/multi_door = air
 		door_turfs = multi_door.get_filler_turfs()
 	for(var/turf/door_turf in door_turfs)
-		for(var/mob/blocking_mob in door_turf) // Bump all mobs outta the way for outside airlocks of shuttles
-			if(isliving(blocking_mob))
-				to_chat(blocking_mob, SPAN_HIGHDANGER("You get thrown back as the [label] doors slam shut!"))
-				blocking_mob.apply_effect(4, WEAKEN)
-				for(var/turf/target_turf in orange(1, air)) // Forcemove to a non shuttle turf
-					if(!istype(target_turf, /turf/open/shuttle) && !istype(target_turf, /turf/closed/shuttle))
-						blocking_mob.forceMove(target_turf)
-						break
+		bump_at_turf(door_turf)
+
 	lockdown_door(air)
+
+/datum/door_controller/single/proc/bump_at_turf(turf/door_turf)
+	for(var/mob/blocking_mob in door_turf)
+		if(isliving(blocking_mob))
+			to_chat(blocking_mob, SPAN_HIGHDANGER("You get thrown back as the [label] doors slam shut!"))
+			blocking_mob.apply_effect(4, WEAKEN)
+			for(var/turf/target_turf in orange(1, door_turf)) // Forcemove to a non shuttle turf
+				if(!istype(target_turf, /turf/open/shuttle) && !istype(target_turf, /turf/closed/shuttle))
+					blocking_mob.forceMove(target_turf)
+					break
 
 /datum/door_controller/proc/lockdown_door(obj/structure/machinery/door/airlock/air)
 	air.safe = 0

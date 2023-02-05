@@ -6,6 +6,9 @@ GLOBAL_LIST_EMPTY(escape_menus)
 	set name = "Open Escape Menu"
 	set hidden = TRUE
 
+	if(istype(src.mob, /mob/new_player)) // it's very zoomed out in the lobby
+		return
+
 	var/current_escape_menu = GLOB.escape_menus[ckey]
 	if (!isnull(current_escape_menu))
 		qdel(current_escape_menu)

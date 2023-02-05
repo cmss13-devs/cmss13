@@ -768,8 +768,12 @@ GLOBAL_DATUM_INIT(admin_help_ui_handler, /datum/admin_help_ui_handler, new)
 /client/verb/mentorhelp()
 	set category = "Admin"
 	set name = "Mentorhelp"
+
+	execute_mentorhelp()
+
+/client/proc/execute_mentorhelp()
 	if(current_mhelp && current_mhelp.open)
-		if(alert("You already have a mentorhelp thread open, would you like to close it?", "Mentor Help", "Yes", "No") == "Yes")
+		if(tgui_alert(src, "You already have a mentorhelp thread open, would you like to close it?", "Mentor Help", list("Yes", "No")) == "Yes")
 			current_mhelp.close(src)
 		return
 	current_mhelp = new(src)

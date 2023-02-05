@@ -38,6 +38,16 @@
 		)
 	)
 
+	page_holder.give_screen_object(
+		new /atom/movable/screen/escape_menu/home_button(
+			null,
+			src,
+			"Mentor Help",
+			/* offset = */ 4,
+			CALLBACK(src, PROC_REF(home_mentor_help)),
+		)
+	)
+
 	if(!check_client_rights(client, R_MOD, FALSE))
 		return
 
@@ -48,7 +58,7 @@
 			null,
 			src,
 			"AGhost",
-			/* offset = */ 5,
+			/* offset = */ 6,
 			CALLBACK(src, PROC_REF(home_aghost)),
 		)
 	)
@@ -57,8 +67,8 @@
 		new /atom/movable/screen/escape_menu/home_button(
 			null,
 			src,
-			"STUI",
-			/* offset = */ 6,
+			"Open STUI",
+			/* offset = */ 7,
 			CALLBACK(src, PROC_REF(home_open_stui)),
 		)
 	)
@@ -68,11 +78,10 @@
 			null,
 			src,
 			"Open Player Panel",
-			/* offset = */ 7,
+			/* offset = */ 8,
 			CALLBACK(src, PROC_REF(home_open_player_panel)),
 		)
 	)
-
 
 /datum/escape_menu/proc/home_resume()
 	qdel(src)
@@ -93,9 +102,12 @@
 	GLOB.STUI.tgui_interact(client?.mob)
 	qdel(src)
 
-
 /datum/escape_menu/proc/home_open_player_panel()
 	client?.admin_holder.player_panel_new()
+	qdel(src)
+
+/datum/escape_menu/proc/home_mentor_help()
+	client?.execute_mentorhelp()
 	qdel(src)
 
 /atom/movable/screen/escape_menu/home_button

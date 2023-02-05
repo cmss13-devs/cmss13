@@ -46,6 +46,14 @@
 	/// Datum level flags
 	var/datum_flags = NONE
 
+	/*
+	* Lazy associative list of currently active cooldowns.
+	*
+	* cooldowns [ COOLDOWN_INDEX ] = add_timer()
+	* add_timer() returns the truthy value of -1 when not stoppable, and else a truthy numeric index
+	*/
+	var/list/cooldowns
+
 	/// A cached version of our \ref
 	/// The brunt of \ref costs are in creating entries in the string tree (a tree of immutable strings)
 	/// This avoids doing that more then once per datum by ensuring ref strings always have a reference to them after they're first pulled
@@ -130,3 +138,34 @@
 	//END: ECS SHIT
 
 	return QDEL_HINT_QUEUE
+
+/**
+ * Callback called by a timer to end an associative-list-indexed cooldown.
+ *
+ * Arguments:
+ * * source - datum storing the cooldown
+ * * index - string index storing the cooldown on the cooldowns associative list
+ *
+ * This sends a signal reporting the cooldown end.
+ */
+/proc/end_cooldown(datum/source, index)
+	if(QDELETED(source))
+		return
+	SEND_SIGNAL(source, COMSIG_CD_STOP(index))
+	TIMER_COOLDOWN_END(source, index)
+
+
+/**
+ * Proc used by stoppable timers to end a cooldown before the time has ran out.
+ *
+ * Arguments:
+ * * source - datum storing the cooldown
+ * * index - string index storing the cooldown on the cooldowns associative list
+ *
+ * This sends a signal reporting the cooldown end, passing the time left as an argument.
+ */
+/proc/reset_cooldown(datum/source, index)
+	if(QDELETED(source))
+		return
+	SEND_SIGNAL(source, COMSIG_CD_RESET(index), S_TIMER_COOLDOWN_TIMELEFT(source, index))
+	TIMER_COOLDOWN_END(source, index)

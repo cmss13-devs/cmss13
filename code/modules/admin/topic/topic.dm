@@ -857,7 +857,7 @@
 
 		var/speech = input("What will [key_name(M)] emote?.", "Force emote", "")// Don't need to sanitize, since it does that in say(), we also trust our admins.
 		if(!speech) return
-		M.custom_emote(1, speech, TRUE)
+		M.manual_emote(speech)
 		speech = sanitize(speech) // Nah, we don't trust them
 		message_staff("[key_name_admin(usr)] forced [key_name_admin(M)] to emote: [speech]")
 

@@ -96,6 +96,11 @@
 #define COMSIG_MOB_MOVE_OR_LOOK "mob_move_or_look"
 	#define COMPONENT_OVERRIDE_MOB_MOVE_OR_LOOK (1<<0)
 
+///from /mob/living/emote(): ()
+#define COMSIG_MOB_EMOTE "mob_emote"
+
+#define COMSIG_MOB_EMOTED(emote_key) "mob_emoted_[emote_key]"
+
 //from /mob/living/set_stat()
 #define COMSIG_MOB_STAT_SET_ALIVE "mob_stat_set_alive"
 //from /mob/living/set_stat()

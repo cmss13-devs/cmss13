@@ -1,10 +1,10 @@
 /datum/round_event_control/asrs_spiders
 	name = "ASRS infestation"
 	typepath = /datum/round_event/asrs_spiders
-	weight = 7 							// probably could use some defines in the future - EVENT_UNLIKELY, EVENT_COMMON, etc.
-	earliest_start = 10 MINUTES 			// don't want it happening roundstart
-	min_players = 75 						// Probably not good for deadpop rounds where there might not even be dedicated req staff
-	max_occurrences = 2 					// any more and it'd get tiresome
+	weight = 7
+	earliest_start = 10 MINUTES // don't want it happening roundstart
+	min_players = 75 // Probably not good for deadpop rounds where there might not even be dedicated req staff
+	max_occurrences = 2 // any more and it'd get tiresome
 	alert_observers = TRUE
 	gamemode_blacklist = list("Whiskey Outpost", "Hive Wars")
 
@@ -12,7 +12,8 @@
 	announce_when = 1
 	startWhen = 10
 	endWhen = 15
-	var/base_points = 80 // the base amount of points to be multiplied by the system
+	/// the base amount of points to be multiplied by the system
+	var/base_points = 80
 	var/spider_points //How many points does the event have to purchase spiders
 	var/size_factor  // How big do we want this to be
 	var/stealth_lvl

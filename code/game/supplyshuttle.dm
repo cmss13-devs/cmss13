@@ -386,7 +386,8 @@ var/datum/controller/supply/supply_controller = new()
 
 	var/base_random_crate_interval = 10 //Every how many processing intervals do we get a random crates.
 
-	var/spider_infest_points = 0 // how many points a spider infestation has
+	/// how many points a spider infestation has
+	var/spider_infest_points = 0
 
 	var/crate_iteration = 0
 	//control
@@ -567,7 +568,7 @@ var/datum/controller/supply/supply_controller = new()
 		dropped_limb.droplimb(FALSE, FALSE, "machinery")
 
 //Buyin
-/datum/controller/supply/proc/buy() //////////////////////////////////////////////////////////////
+/datum/controller/supply/proc/buy()
 	var/area/area_shuttle = shuttle?.get_location_area()
 	if(!area_shuttle || !shoppinglist.len)
 		return
@@ -1263,9 +1264,11 @@ var/datum/controller/supply/supply_controller = new()
 	spider_infest_points = round(base_factor * multiplier/10,25)
 
 /datum/controller/supply/proc/spider_infest_asrs()
-	var/buy_big = TRUE 		// These exist to evenly spread the points so it isn't all big ones or hunters
+	/// These exist to evenly spread the points so it isn't all big ones or hunters
+	var/buy_big = TRUE
 	var/buy_hunter = TRUE
-	var/queen_spawned = FALSE 	// So we don't spam Matriarch minibosses
+	/// So we don't spam Matriarch minibosses
+	var/queen_spawned = FALSE 	
 	var/total_points = spider_infest_points + 25
 	var/list/turf/open/clear_turfs = list()
 	var/area/area_shuttle = shuttle?.get_location_area()
@@ -1282,7 +1285,6 @@ var/datum/controller/supply/supply_controller = new()
 
 	*/
 	while(total_points > 0)
-		log_debug("ASRS infestation event spawn tick")
 		var/turf/chosen_turf = pick(clear_turfs)
 		if(prob(5) && !queen_spawned && spider_infest_points >= 500) // Matriarch spawn chance
 			new /mob/living/simple_animal/hostile/giant_spider/nurse/queen(chosen_turf)

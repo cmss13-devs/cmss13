@@ -120,7 +120,7 @@
 	desc = "You can use this to wrap items in."
 	icon = 'icons/obj/items/items.dmi'
 	icon_state = "wrap_paper"
-	var/amount = 20.0
+	var/amount = 20
 
 /obj/item/wrapping_paper/attackby(obj/item/W as obj, mob/user as mob)
 	..()

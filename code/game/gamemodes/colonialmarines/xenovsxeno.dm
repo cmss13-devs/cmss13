@@ -70,7 +70,7 @@
 	if(SSitem_cleanup)
 		//Cleaning stuff more aggressively
 		SSitem_cleanup.start_processing_time = 0
-		SSitem_cleanup.percentage_of_garbage_to_delete = 1.0
+		SSitem_cleanup.percentage_of_garbage_to_delete = 1
 		SSitem_cleanup.wait = 1 MINUTES
 		SSitem_cleanup.next_fire = 1 MINUTES
 		spawn(0)
@@ -130,7 +130,7 @@
 		var/mob/living/carbon/human/original = ghost_mind.current
 
 		original.first_xeno = TRUE
-		original.stat = 1
+		original.set_stat(UNCONSCIOUS)
 		transform_survivor(ghost_mind, xeno_turf = xeno_turf) //Create a new host
 		original.apply_damage(50, BRUTE)
 		original.spawned_corpse = TRUE

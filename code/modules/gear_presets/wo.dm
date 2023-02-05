@@ -22,6 +22,8 @@
 	skills = /datum/skills/commander
 	idtype = /obj/item/card/id/gold
 
+	minimap_icon = "co"
+
 	utility_under = list(/obj/item/clothing/under/marine,/obj/item/clothing/under/marine/officer/command)
 	utility_hat = list(/obj/item/clothing/head/cmcap,/obj/item/clothing/head/beret/cm/tan)
 	utility_extra = list(/obj/item/clothing/glasses/sunglasses,/obj/item/clothing/glasses/sunglasses/big,/obj/item/clothing/glasses/sunglasses/aviator,/obj/item/clothing/glasses/mbcg)
@@ -101,6 +103,8 @@
 	skills = /datum/skills/XO
 	idtype = /obj/item/card/id/silver
 
+	minimap_icon = "xo"
+
 	dress_extra = list(/obj/item/storage/large_holster/ceremonial_sword/full)
 
 /datum/equipment_preset/wo/xo/New()
@@ -143,6 +147,8 @@
 	skills = /datum/skills/honor_guard/lead
 	idtype = /obj/item/card/id/silver
 
+	minimap_icon = "cmp"
+
 /datum/equipment_preset/wo/cmp/load_gear(mob/living/carbon/human/H)
 
 	//uniform
@@ -178,6 +184,8 @@
 	role_comm_title = "VHG"
 	skills = /datum/skills/honor_guard/vet
 	idtype = /obj/item/card/id/silver
+
+	minimap_icon = "so"
 
 /datum/equipment_preset/wo/vhg/load_gear(mob/living/carbon/human/H)
 	var/backItem = /obj/item/storage/backpack/satchel/sec
@@ -219,6 +227,8 @@
 	skills = /datum/skills/honor_guard/spec
 	idtype = /obj/item/card/id/gold
 
+	minimap_icon = "spec"
+
 /datum/equipment_preset/wo/hgs/load_gear(mob/living/carbon/human/H)
 	var/backItem = /obj/item/storage/backpack/satchel/sec
 	if (H.client && H.client.prefs && (H.client.prefs.backbag == 1))
@@ -256,6 +266,8 @@
 	role_comm_title = "HG"
 	skills = /datum/skills/honor_guard
 
+	minimap_icon = "mp"
+
 /datum/equipment_preset/wo/hg/load_gear(mob/living/carbon/human/H)
 	var/backItem = /obj/item/storage/backpack/satchel/sec
 	if (H.client && H.client.prefs && (H.client.prefs.backbag == 1))
@@ -287,6 +299,8 @@
 	paygrade = "ME3"
 	role_comm_title = "MC"
 	skills = /datum/skills/mortar_crew
+
+	minimap_icon = "vc"
 
 /datum/equipment_preset/wo/mortar_crew/load_gear(mob/living/carbon/human/H)
 	var/backItem = /obj/item/storage/backpack/marine/satchel
@@ -321,6 +335,8 @@
 	role_comm_title = "QM"
 	skills = /datum/skills/RO
 	idtype = /obj/item/card/id/silver
+
+	minimap_icon = "ro"
 
 /datum/equipment_preset/wo/quartermaster/load_gear(mob/living/carbon/human/H)
 	var/backItem = /obj/item/storage/backpack/marine/satchel/tech
@@ -382,6 +398,8 @@
 	skills = /datum/skills/CMO
 	idtype = /obj/item/card/id/silver
 
+	minimap_icon = "cmo"
+
 /datum/equipment_preset/wo/head_surgeon/load_gear(mob/living/carbon/human/H)
 	var/backItem = /obj/item/storage/backpack/marine/satchel/medic
 	if (H.client && H.client.prefs && (H.client.prefs.backbag == 1))
@@ -423,6 +441,8 @@
 	skills = /datum/skills/doctor
 	idtype = /obj/item/card/id
 
+	minimap_icon = "doctor"
+
 /datum/equipment_preset/wo/doctor/load_gear(mob/living/carbon/human/H)
 	var/backItem = /obj/item/storage/backpack/marine/satchel/medic
 	if (H.client && H.client.prefs && (H.client.prefs.backbag == 1))
@@ -460,6 +480,8 @@
 	role_comm_title = "Chem"
 	skills = /datum/skills/researcher
 	idtype = /obj/item/card/id
+
+	minimap_icon = "researcher"
 
 /datum/equipment_preset/wo/chemist/load_gear(mob/living/carbon/human/H)
 	var/backItem = /obj/item/storage/backpack/marine/satchel/medic
@@ -499,6 +521,8 @@
 	skills = /datum/skills/CE
 	idtype = /obj/item/card/id/silver
 
+	minimap_icon = "ce"
+
 /datum/equipment_preset/wo/bcm/load_gear(mob/living/carbon/human/H)
 	var/backItem = /obj/item/storage/backpack/marine/satchel/tech
 	if (H.client && H.client.prefs && (H.client.prefs.backbag == 1))
@@ -530,6 +554,8 @@
 	role_comm_title = "BC"
 	skills = /datum/skills/OT
 	idtype = /obj/item/card/id
+
+	minimap_icon = "mt"
 
 /datum/equipment_preset/wo/bc/load_gear(mob/living/carbon/human/H)
 	var/backItem = /obj/item/storage/backpack/marine/satchel/tech
@@ -565,6 +591,9 @@
 	role_comm_title = "PRESS"
 	skills = /datum/skills/civilian
 	idtype = /obj/item/card/id/silver/cl
+
+	minimap_icon = "surv"
+	minimap_background = MINIMAP_ICON_BACKGROUND_CIVILIAN
 
 /datum/equipment_preset/wo/reporter/load_gear(mob/living/carbon/human/H)
 	var/backItem = /obj/item/storage/backpack/satchel

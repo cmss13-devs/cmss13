@@ -10,9 +10,9 @@
 	pickup_sound = 'sound/handling/multitool_pickup.ogg'
 	drop_sound = 'sound/handling/multitool_drop.ogg'
 	flags_atom = FPRINT|CONDUCT
-	force = 5.0
+	force = 5
 	w_class = SIZE_SMALL
-	throwforce = 5.0
+	throwforce = 5
 	throw_range = 15
 	throw_speed = SPEED_VERY_FAST
 
@@ -57,4 +57,4 @@
 		user.balloon_alert(user, "[get_dist(src, APC)] units [dir2text(get_dir(src, APC))]")
 	else
 		to_chat(user, SPAN_WARNING("ERROR: Could not locate local APC."))
-		user.balloon_alert(user, "Could not locate")
+		user.balloon_alert(user, "could not locate!")

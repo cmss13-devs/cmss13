@@ -509,7 +509,6 @@
 /obj/structure/closet/wardrobe/grey,
 /obj/effect/landmark/wo_supplies/storage/mines,
 /obj/effect/landmark/wo_supplies/storage/mines,
-/obj/item/storage/pill_bottle/ultrazine/skillless,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/strata{
 	dir = 10;

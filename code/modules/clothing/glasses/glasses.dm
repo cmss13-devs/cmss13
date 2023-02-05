@@ -240,6 +240,7 @@
 	desc = "Someone tried to watch a black-market Arcturian blue movie on this augmented-reality headset and now it's useless. Unlike you, Disco will never die.\nThere's some kind of epilepsy warning sticker on the side."
 	icon_state = "discovision"
 	flags_equip_slot = SLOT_EYES|SLOT_FACE
+	black_market_value = 25
 
 	//These three vars are so that the flashing of the obj and onmob match what the wearer is seeing. They're actually vis_contents rather than overlays,
 	//strictly speaking, since overlays can't be animate()-ed.

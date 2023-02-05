@@ -52,7 +52,8 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 	entity_type = /datum/entity/player
 	table_name = "players"
 	key_field = "ckey"
-	field_types = list("ckey" = DB_FIELDTYPE_STRING_MEDIUM,
+	field_types = list(
+		"ckey" = DB_FIELDTYPE_STRING_MEDIUM,
 		"last_known_ip" = DB_FIELDTYPE_STRING_SMALL,
 		"last_known_cid" = DB_FIELDTYPE_STRING_SMALL,
 		"last_login" = DB_FIELDTYPE_STRING_LARGE,
@@ -68,7 +69,8 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 		"migrated_notes" = DB_FIELDTYPE_INT,
 		"migrated_bans" = DB_FIELDTYPE_INT,
 		"migrated_jobbans" = DB_FIELDTYPE_INT,
-		"stickyban_whitelisted" = DB_FIELDTYPE_INT)
+		"stickyban_whitelisted" = DB_FIELDTYPE_INT,
+	)
 
 // NOTE: good example of database operations using NDatabase, so it is well commented
 // is_ban DOES NOT MEAN THAT NOTE IS _THE_ BAN, IT MEANS THAT NOTE WAS CREATED FOR A BAN

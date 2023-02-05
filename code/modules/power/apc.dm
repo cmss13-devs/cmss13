@@ -349,7 +349,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 	//Is starting with a power cell installed, create it and set its charge level
 	if(cell_type)
 		cell = new cell_type(src)
-		cell.charge = start_charge * cell.maxcharge / 100.0 //Convert percentage to actual value
+		cell.charge = start_charge * cell.maxcharge / 100 //Convert percentage to actual value
 
 	var/area/A = loc.loc
 

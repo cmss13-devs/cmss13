@@ -57375,7 +57375,6 @@
 /area/corsat/gamma/engineering)
 "roj" = (
 /obj/structure/safe,
-/obj/item/storage/pill_bottle/ultrazine/skillless,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "squareswood"

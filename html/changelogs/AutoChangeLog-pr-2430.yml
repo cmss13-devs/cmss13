@@ -1,0 +1,6 @@
+author: "harryob"
+delete-after: True
+changes:
+  - refactor: "refactor's admin VV"
+  - admin: "can now edit lists with any reliability, can now edit bitfields without maths"
+  - ui: "added the particle editor and colour matrix editor (from tiviplus and Y0SH1M4S73R respectively) for admins via VV"

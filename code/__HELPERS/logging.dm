@@ -200,7 +200,7 @@
 	// Insert message
 	if(message)
 		entry += "\n[message]"
-	diary << html_decode("\[[time_stamp()]]TGUI: [entry][log_end]")
+	tgui_diary << html_decode("\[[time_stamp()]]TGUI: [entry][log_end]")
 	GLOB.STUI.tgui.Add("\[[time_stamp()]]TGUI: [entry]")
 	GLOB.STUI.processing |= STUI_LOG_TGUI
 

@@ -39,6 +39,7 @@
 		var/title = "Insectoid Infestation Detected"
 		var/input = "Major insectoid infestation detected in the Automated Supply Retrieval System Elevator. Reccomendation: Terminate insectoid lifesigns."
 		shipwide_ai_announcement(input, title, 'sound/AI/unidentified_lifesigns.ogg')
+		input = "Military Police and Medical teams requested to move to Requisitions immediately"
 	if(size_factor > 32) // Unspecific announcement that something is wrong
 		input = "Unidentified lifesigns detected inside Automated Supply Retrieval System. Recommendation: lockdown of exterior access ports, including ducting and ventilation."
 	else // No announcement lul

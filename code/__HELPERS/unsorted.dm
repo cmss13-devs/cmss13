@@ -632,6 +632,8 @@
 		moblist.Add(M)
 	for(var/mob/living/simple_animal/M in sortmob)
 		moblist.Add(M)
+	for(var/mob/camera/imaginary_friend/friend in sortmob)
+		moblist += friend
 	return moblist
 
 /proc/sortxenos()

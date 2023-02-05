@@ -362,83 +362,82 @@
 		for(var/mob/living/carbon/xenomorph/L in hive.xeno_leader_list)
 			L.handle_xeno_leader_pheromones()
 
-/datum/action/xeno_action/activable/pounce/use_ability(atom/A)
-	var/mob/living/carbon/xenomorph/X = owner
+/datum/action/xeno_action/activable/pounce/use_ability(atom/target)
+	var/mob/living/carbon/xenomorph/xeno = owner
 
 	if(!action_cooldown_check())
 		return
 
-	if(!A)
+	if(!target)
 		return
 
-	if(A.layer >= FLY_LAYER)//anything above that shouldn't be pounceable (hud stuff)
+	if(target.layer >= FLY_LAYER)//anything above that shouldn't be pounceable (hud stuff)
 		return
 
-	if(!isturf(X.loc))
-		to_chat(X, SPAN_XENOWARNING("You can't [ability_name] from here!"))
+	if(!isturf(xeno.loc))
+		to_chat(xeno, SPAN_XENOWARNING("You can't [ability_name] from here!"))
 		return
 
-	if(!X.check_state())
+	if(!xeno.check_state())
 		return
 
-	if(X.legcuffed)
-		to_chat(X, SPAN_XENODANGER("You can't [ability_name] with that thing on your leg!"))
+	if(xeno.legcuffed)
+		to_chat(xeno, SPAN_XENODANGER("You can't [ability_name] with that thing on your leg!"))
 		return
 
 	if(!check_and_use_plasma_owner())
 		return
 
-	if(X.layer == XENO_HIDING_LAYER) //Xeno is currently hiding, unhide him
-		X.layer = MOB_LAYER
-		X.update_wounds()
+	if(xeno.layer == XENO_HIDING_LAYER) //Xeno is currently hiding, unhide him
+		xeno.pounce_unhide()
 
-	if(isravager(X))
-		X.emote("roar")
+	if(isravager(xeno))
+		xeno.emote("roar")
 
 	if (!tracks_target)
-		A = get_turf(A)
+		target = get_turf(target)
 
 	apply_cooldown()
 
 	if (windup)
-		X.set_face_dir(get_cardinal_dir(X, A))
+		xeno.set_face_dir(get_cardinal_dir(xeno, target))
 		if (!windup_interruptable)
-			X.frozen = TRUE
-			X.anchored = TRUE
-			X.update_canmove()
+			xeno.frozen = TRUE
+			xeno.anchored = TRUE
+			xeno.update_canmove()
 		pre_windup_effects()
 
-		if (!do_after(X, windup_duration, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
-			to_chat(X, SPAN_XENODANGER("You cancel your [ability_name]!"))
+		if (!do_after(xeno, windup_duration, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
+			to_chat(xeno, SPAN_XENODANGER("You cancel your [ability_name]!"))
 			if (!windup_interruptable)
-				X.frozen = FALSE
-				X.anchored = FALSE
-				X.update_canmove()
+				xeno.frozen = FALSE
+				xeno.anchored = FALSE
+				xeno.update_canmove()
 			post_windup_effects(interrupted = TRUE)
 			return
 
 		if (!windup_interruptable)
-			X.frozen = FALSE
-			X.anchored = FALSE
-			X.update_canmove()
+			xeno.frozen = FALSE
+			xeno.anchored = FALSE
+			xeno.update_canmove()
 		post_windup_effects()
 
-	X.visible_message(SPAN_XENOWARNING("\The [X] [ability_name][findtext(ability_name, "e", -1) || findtext(ability_name, "p", -1) ? "s" : "es"] at [A]!"), SPAN_XENOWARNING("You [ability_name] at [A]!"))
+	xeno.visible_message(SPAN_XENOWARNING("\The [xeno] [ability_name][findtext(ability_name, "e", -1) || findtext(ability_name, "p", -1) ? "s" : "es"] at [target]!"), SPAN_XENOWARNING("You [ability_name] at [target]!"))
 
-	X.pounce_distance = get_dist(X, A)
+	xeno.pounce_distance = get_dist(xeno, target)
 
-	var/datum/launch_metadata/LM = new()
-	LM.target = A
-	LM.range = distance
-	LM.speed = throw_speed
-	LM.thrower = X
-	LM.spin = FALSE
-	LM.pass_flags = pounce_pass_flags
-	LM.collision_callbacks = pounce_callbacks
+	var/datum/launch_metadata/trajectory = new()
+	trajectory.target = target
+	trajectory.range = distance
+	trajectory.speed = throw_speed
+	trajectory.thrower = xeno
+	trajectory.spin = FALSE
+	trajectory.pass_flags = pounce_pass_flags
+	trajectory.collision_callbacks = pounce_callbacks
 
-	X.launch_towards(LM)
+	xeno.launch_towards(trajectory)
 
-	X.update_icons()
+	xeno.update_icons()
 
 	additional_effects_always()
 	..()
@@ -497,6 +496,11 @@
 	var/mob/living/carbon/xenomorph/xeno = owner
 	if(!xeno.check_state(1))
 		return
+	update_button_icon(xeno)
+
+///This is used to make sure that pouncing properly disables the hide icon. vv
+/datum/action/xeno_action/onclick/xenohide/update_button_icon(var/mob/living/carbon/xenomorph/owner)
+	var/mob/living/carbon/xenomorph/xeno = owner
 	if(xeno.layer != XENO_HIDING_LAYER)
 		xeno.layer = XENO_HIDING_LAYER
 		to_chat(xeno, SPAN_NOTICE("You are now hiding."))
@@ -506,6 +510,10 @@
 		to_chat(xeno, SPAN_NOTICE("You have stopped hiding."))
 		button.icon_state = "template"
 	xeno.update_wounds()
+
+/mob/living/carbon/xenomorph/proc/pounce_unhide()
+	for(var/datum/action/a in actions)
+		a.update_button_icon(src)
 
 /datum/action/xeno_action/onclick/place_trap/use_ability(atom/A)
 	var/mob/living/carbon/xenomorph/X = owner

@@ -116,10 +116,17 @@
 
 	// Pick the closest xeno resource activator
 
+	update_minimap_icon()
+
 	if(hive_ref)
 		hive_ref.set_hive_location(src, linked_hive.hivenumber)
 
+/obj/effect/alien/resin/special/pylon/core/proc/update_minimap_icon()
+	SSminimaps.remove_marker(src)
+	SSminimaps.add_marker(src, z, MINIMAP_FLAG_XENO, "core[health < (initial(health) * 0.5) ? "_warn" : "_passive"]")
+
 /obj/effect/alien/resin/special/pylon/core/process()
+	update_minimap_icon()
 	if(health >= maxhealth || last_healed > world.time) return
 
 	health += min(heal_amount, maxhealth)
@@ -179,6 +186,7 @@
 
 			if(linked_hive.spawn_pool)
 				qdel(linked_hive.spawn_pool)
+	SSminimaps.remove_marker(src)
 	. = ..()
 
 /obj/effect/alien/resin/special/pylon/core/proc/startDestroying(mob/living/carbon/xenomorph/M)

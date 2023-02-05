@@ -50,6 +50,7 @@
 	desc = "This card contains coordinates to the fabled Clown Planet. Handle with care."
 	function = "teleporter"
 	data = "Clown Land"
+	black_market_value = 50
 
 /*
  * ID CARDS

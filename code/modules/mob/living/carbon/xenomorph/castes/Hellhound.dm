@@ -24,6 +24,8 @@
 	heal_knocked_out = 1.25
 	innate_healing = TRUE
 
+	minimap_icon = "hellhound"
+
 /mob/living/carbon/xenomorph/hellhound
 	caste_type = XENO_CASTE_HELLHOUND
 	name = XENO_CASTE_HELLHOUND
@@ -53,7 +55,7 @@
 		/datum/action/xeno_action/onclick/regurgitate,
 		/datum/action/xeno_action/onclick/xenohide,
 		/datum/action/xeno_action/activable/pounce/runner,
-		/datum/action/xeno_action/onclick/toggle_long_range/runner
+		/datum/action/xeno_action/onclick/toggle_long_range/runner,
 	)
 	inherent_verbs = list(
 		/mob/living/carbon/xenomorph/proc/vent_crawl,

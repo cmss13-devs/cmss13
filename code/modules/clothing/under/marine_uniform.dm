@@ -126,6 +126,7 @@
 	suit_restricted = null //so most officers can wear whatever suit they want
 	flags_jumpsuit = FALSE
 	specialty = "marine officer"
+	black_market_value = 25
 
 /obj/item/clothing/under/marine/officer/intel
 	name = "\improper marine intelligence officer sweatsuit"
@@ -301,6 +302,7 @@
 	specialty = "marine dress"
 	flags_atom = NO_SNOW_TYPE
 	flags_jumpsuit = FALSE
+	black_market_value = 15
 
 //=========================//DRESS BLUES\\================================\\
 //=======================================================================\\
@@ -346,7 +348,7 @@
 	suit_restricted = list(
 		/obj/item/clothing/suit/storage/marine/MP,
 		/obj/item/clothing/suit/armor/riot/marine,
-		/obj/item/clothing/suit/storage/jacket/marine/provost
+		/obj/item/clothing/suit/storage/jacket/marine/provost,
 	)
 
 	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
@@ -651,6 +653,7 @@
 	icon_state = "clown"
 	worn_state = "clown"
 	flags_atom = NO_SNOW_TYPE|NO_NAME_OVERRIDE //Let's make them keep their original name.
+	black_market_value = 25
 
 /obj/item/clothing/under/pizza
 	name = "pizza delivery uniform"

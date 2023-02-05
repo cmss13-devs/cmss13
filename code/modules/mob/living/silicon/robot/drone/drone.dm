@@ -126,7 +126,7 @@
 /mob/living/silicon/robot/drone/updatehealth()
 	if(status_flags & GODMODE)
 		health = health
-		stat = CONSCIOUS
+		set_stat(CONSCIOUS)
 		return
 	health = health - (getBruteLoss() + getFireLoss())
 	return

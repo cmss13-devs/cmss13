@@ -12,6 +12,8 @@
 	evolution_allowed = FALSE
 	can_be_revived = FALSE
 
+	minimap_icon = "facehugger"
+
 /mob/living/carbon/xenomorph/facehugger
 	name = XENO_CASTE_FACEHUGGER
 	caste_type = XENO_CASTE_FACEHUGGER
@@ -43,10 +45,10 @@
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/watch_xeno,
 		/datum/action/xeno_action/onclick/xenohide,
-		/datum/action/xeno_action/activable/pounce/facehugger
+		/datum/action/xeno_action/activable/pounce/facehugger,
 	)
 	inherent_verbs = list(
-		/mob/living/carbon/xenomorph/proc/vent_crawl
+		/mob/living/carbon/xenomorph/proc/vent_crawl,
 	)
 	mutation_type = "Normal"
 

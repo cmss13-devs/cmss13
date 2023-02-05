@@ -1,4 +1,3 @@
-
 /datum/round_event_control/economy_inflation
 	name = "Economy Inflation"
 	typepath = /datum/round_event/economy_inflation
@@ -13,8 +12,11 @@
 	announce_when = 1
 	startWhen = 10
 	endWhen = 15
+	/// The event will modify all vendors of this specific product type.
 	var/product_type = VENDOR_PRODUCT_TYPE_FOOD
+	/// The multiplier for increasing prices of the above.
 	var/inflation_mult
+	/// Used in the announcement and in setup to indicate when it will start.
 	var/time_to_update
 
 /datum/round_event/economy_inflation/setup()
@@ -42,6 +44,9 @@
 		for(var/datum/data/vending_product/product in display_records)
 			product.price *= inflation_mult
 
+/**
+ *  Returns a random backstory 'incident' as the cause for the sudden price hike.
+ */
 /datum/round_event/economy_inflation/proc/get_random_story()
 	var/list/backstories = list(,
 		"A tragic series of accidental factory explosions",
@@ -73,4 +78,4 @@
 	return pick(backstories)
 
 /datum/round_event/economy_inflation/proc/get_percentage()
-	return (inflation_mult -1) * 100 // example result: 3.5 -> 250%
+	return (inflation_mult - 1) * 100 // example result: 3.5 -> 250%

@@ -95,7 +95,7 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 
 /obj/structure/machinery/vending/Destroy()
 	LAZYREMOVE(GLOB.total_vending_machines, src)
-	. = ..()
+	return ..()
 
 /obj/structure/machinery/vending/update_icon()
 	overlays.Cut()

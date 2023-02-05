@@ -104,14 +104,19 @@
 				is_locked = FALSE
 
 /datum/door_controller/single/proc/lockdown_door_launch(obj/structure/machinery/door/airlock/air)
-	for(var/mob/blocking_mob in air.loc) // Bump all mobs outta the way for outside airlocks of shuttles
-		if(isliving(blocking_mob))
-			to_chat(blocking_mob, SPAN_HIGHDANGER("You get thrown back as the [label] doors slam shut!"))
-			blocking_mob.apply_effect(4, WEAKEN)
-			for(var/turf/target_turf in orange(1, air)) // Forcemove to a non shuttle turf
-				if(!istype(target_turf, /turf/open/shuttle) && !istype(target_turf, /turf/closed/shuttle))
-					blocking_mob.forceMove(target_turf)
-					break
+	var/list/door_turfs = get_turf(air)
+	if(istype(air, /obj/structure/machinery/door/airlock/multi_tile))
+		var/obj/structure/machinery/door/airlock/multi_tile/multi_door = air
+		door_turfs = multi_door.get_filler_turfs()
+	for(var/turf/door_turf in door_turfs)
+		for(var/mob/blocking_mob in door_turf.loc) // Bump all mobs outta the way for outside airlocks of shuttles
+			if(isliving(blocking_mob))
+				to_chat(blocking_mob, SPAN_HIGHDANGER("You get thrown back as the [label] doors slam shut!"))
+				blocking_mob.apply_effect(4, WEAKEN)
+				for(var/turf/target_turf in orange(1, air)) // Forcemove to a non shuttle turf
+					if(!istype(target_turf, /turf/open/shuttle) && !istype(target_turf, /turf/closed/shuttle))
+						blocking_mob.forceMove(target_turf)
+						break
 	lockdown_door(air)
 
 /datum/door_controller/proc/lockdown_door(obj/structure/machinery/door/airlock/air)

@@ -73,6 +73,10 @@
 /obj/docking_port/mobile/marine_dropship/proc/is_door_locked(direction)
 	return door_control.is_door_locked(direction)
 
+/obj/docking_port/mobile/marine_dropship/beforeShuttleMove(turf/newT, rotation, move_mode, obj/docking_port/mobile/moving_dock)
+	. = ..()
+	control_doors("force-lock-launch", "all", force=TRUE)
+
 /obj/docking_port/mobile/marine_dropship/alamo
 	name = "Alamo"
 	id = DROPSHIP_ALAMO
@@ -158,9 +162,6 @@
 /obj/docking_port/stationary/marine_dropship/on_departure(obj/docking_port/mobile/departing_shuttle)
 	. = ..()
 	turn_off_landing_lights()
-	if(istype(departing_shuttle, /obj/docking_port/mobile/marine_dropship))
-		var/obj/docking_port/mobile/marine_dropship/dropship = departing_shuttle
-		dropship.control_doors("force-lock-launch", "all", force=TRUE)
 
 /obj/docking_port/stationary/marine_dropship/lz1
 	name = "LZ1 Landing Zone"

@@ -76,12 +76,12 @@
 /mob/living/simple_animal/hostile/giant_spider/nurse/queen/AttackTarget()
 	..()
 	if(get_dist(src, target_mob) <= 5 && spit)
-		src.visible_message(SPAN_NOTICE("\the [src] spits at [target_mob]"))
-		var/obj/item/projectile/Pro = new(create_cause_data("Queen Spider Spit"))
-		var/spit_select = pick(/datum/ammo/xeno/acid,/datum/ammo/xeno/toxin/queen)
-		Pro.generate_bullet(new spit_select)
-		Pro.fire_at(target_mob,src,src, Pro.ammo.max_range, Pro.ammo.shell_speed, null)
-		Pro.permutated += src
+		src.visible_message(SPAN_NOTICE("[src] spits at [target_mob]"))
+		var/obj/item/projectile/spit_projectile = new(create_cause_data("Queen Spider Spit"))
+		var/spit_select = pick(/datum/ammo/xeno/acid, /datum/ammo/xeno/toxin/queen)
+		spit_projectile.generate_bullet(new spit_select)
+		spit_projectile.fire_at(target_mob,src,src, spit_projectile.ammo.max_range, spit_projectile.ammo.shell_speed, null)
+		spit_projectile.permutated += src
 		spit = FALSE
 		playsound(src,pick('sound/voice/alien_spitacid.ogg','sound/voice/alien_spitacid2.ogg'), 25, 1)
 		addtimer(VARSET_CALLBACK(src,spit,TRUE),3 SECONDS)

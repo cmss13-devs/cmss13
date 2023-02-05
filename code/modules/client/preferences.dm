@@ -648,7 +648,7 @@ var/const/MAX_SAVE_SLOTS = 10
 
 	var/list/active_role_names = GLOB.gamemode_roles[GLOB.master_mode]
 	if(!active_role_names)
-		active_role_names = ROLES_DISTRESS_SIGNAL
+		active_role_names = ROLES_REGULAR_ALL
 
 	var/datum/job/lastJob
 	for(var/role_name as anything in active_role_names)

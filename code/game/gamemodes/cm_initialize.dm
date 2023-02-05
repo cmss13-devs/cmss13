@@ -97,7 +97,7 @@ Additional game mode variables.
 
 
 /datum/game_mode/proc/get_roles_list()
-	return ROLES_DISTRESS_SIGNAL
+	return ROLES_REGULAR_ALL
 
 //===================================================\\
 

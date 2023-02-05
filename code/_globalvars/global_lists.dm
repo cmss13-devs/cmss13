@@ -232,6 +232,8 @@ GLOBAL_LIST_INIT(edgeinfo_corner2, list(
 #undef HALF_EDGE_RIGHT
 #undef HALF_EDGE_LEFT
 
+GLOBAL_LIST_INIT(color_vars, list("color"))
+
 #define cached_key_number_decode(key_number_data) cached_params_decode(key_number_data, GLOBAL_PROC_REF(key_number_decode))
 #define cached_number_list_decode(number_list_data) cached_params_decode(number_list_data, GLOBAL_PROC_REF(number_list_decode))
 

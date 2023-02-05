@@ -22,6 +22,8 @@
 #define COMSIG_GLOB_MARINE_DEATH "!marine_death"
 ///from /mob/living/carbon/xenomorph/death
 #define COMSIG_GLOB_XENO_DEATH "!xeno_death"
+/// called after a successful var edit somewhere in the world: (list/args)
+#define COMSIG_GLOB_VAR_EDIT "!var_edit"
 
 ///from /mob/living/carbon/xenomorph/initialize
 #define COMSIG_GLOB_XENO_SPAWN "!xeno_spawn"

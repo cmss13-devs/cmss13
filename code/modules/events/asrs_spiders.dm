@@ -35,15 +35,15 @@
 	supply_controller.init_infestation(base_points,size_factor) // Calling the supply controller to handle this
 
 /datum/round_event/asrs_spiders/announce()
+	var/input
 	if(size_factor > 66) // Specific announcement that there are indeed spiders in the ASRS as it's quite big.
 		var/title = "Insectoid Infestation Detected"
-		var/input = "Major insectoid infestation detected in the Automated Supply Retrieval System Elevator. Reccomendation: Terminate insectoid lifesigns."
+		input = "Major insectoid infestation detected in the Automated Supply Retrieval System Elevator. Reccomendation: Terminate insectoid lifesigns with extreme force."
 		shipwide_ai_announcement(input, title, 'sound/AI/unidentified_lifesigns.ogg')
-		input = "Military Police and Medical teams requested to move to Requisitions immediately"
 	if(size_factor > 32) // Unspecific announcement that something is wrong
 		input = "Unidentified lifesigns detected inside Automated Supply Retrieval System. Recommendation: lockdown of exterior access ports, including ducting and ventilation."
+		ai_announcement(input)
 	else // No announcement lul
 		return
 	set_security_level(SEC_LEVEL_RED)
-	ai_announcement(input)
 

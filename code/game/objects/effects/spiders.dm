@@ -25,7 +25,7 @@
 		visible_message(SPAN_DANGER("<B>\The [src] have been [pick(W.attack_verb)] with \the [W][(user ? "by [user]." : ".")]"))
 	else
 		visible_message(SPAN_DANGER("<B>\The [src] have been attacked with \the [W][(user ? "by [user]." : ".")]"))
-
+	playsound(loc,"punch",25,1)
 	var/damage = W.force / 4
 
 	if(iswelder(W))
@@ -97,7 +97,7 @@
 
 /obj/effect/spider/spiderling
 	name = "spiderling"
-	desc = "It never stays still for long."
+	desc = "It never stays still for long. They seem to be too small to shoot at accurately."
 	icon_state = "spiderling"
 	anchored = FALSE
 	layer = BELOW_TABLE_LAYER

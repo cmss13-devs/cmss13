@@ -1134,12 +1134,12 @@ var/datum/controller/supply/supply_controller = new()
 		temp += SPAN_WARNING("See you..<BR>")
 		return
 
-	if(spider_infest_points)
+	if(supply_controller.spider_infest_points)
 		temp += "Head's up, somethings crawlin' on the lift.<BR>"
 		temp += "... That reminds me, my pet spider gone missing a few weeks ago...<BR>"
-		if(spider_infest_points > 500)
+		if(supply_controller.spider_infest_points > 500)
 			temp += SPAN_WARNING("Holy shit! They got an entire hive on the lift! Barely managed to escape 'em, but you better watch out!<BR>")
-		if(spider_infest_points > 700)
+		if(supply_controller.spider_infest_points > 700)
 			temp += SPAN_WARNING("I never seen that many spiders before! Send that shit up and deal with it before they find me!<BR>")
 	var/rng = rand(1, 100) // Will only sometimes give messages
 	switch(rng)

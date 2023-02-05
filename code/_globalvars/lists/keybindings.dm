@@ -14,7 +14,7 @@
 	// Classic
 	if(LAZYLEN(instance.classic_keys))
 		for(var/bound_key in instance.classic_keys)
-			if (bound_key == "Unbound")
+			if(bound_key == "Unbound")
 				LAZYADD(GLOB.classic_keybinding_list_by_key[bound_key], list())
 			else
 				LAZYADD(GLOB.classic_keybinding_list_by_key[bound_key], list(instance.name))
@@ -22,7 +22,7 @@
 	// Hotkey
 	if(LAZYLEN(instance.hotkey_keys))
 		for(var/bound_key in instance.hotkey_keys)
-			if (bound_key == "Unbound")
+			if(bound_key == "Unbound")
 				LAZYADD(GLOB.hotkey_keybinding_list_by_key[bound_key], list())
 			else
 				LAZYADD(GLOB.hotkey_keybinding_list_by_key[bound_key], list(instance.name))

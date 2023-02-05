@@ -15,6 +15,8 @@
 
 /datum/emote/living/carbon/human/can_run_emote(mob/living/carbon/human/user, status_check, intentional)
 	. = ..()
+	if(!.)
+		return
 
 	if(!is_type_in_typecache(user.species, species_type_allowed_typecache))
 		. = FALSE
@@ -27,8 +29,7 @@
 	message = "blinks."
 
 /datum/emote/living/carbon/human/blink_rapid
-	key = "blink_r"
-	key_third_person = "blinks_r"
+	key = "rapidblink"
 	message = "blinks rapidly."
 
 /datum/emote/living/carbon/human/bow

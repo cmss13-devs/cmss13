@@ -114,9 +114,9 @@
 
 	///If someone's being LRP and doing funny chef shit, this lets admins know. This *shouldn't* flag preds, though.
 	if(ishuman(victim) && ishuman_strict(user) && !occupant)
-		var/turf/turf = get_turf(user)
+		var/turf/turf_ref = get_turf(user)
 		var/area/area = get_area(user)
-		message_staff("ALERT: [user] ([user.key]) is trying to gib [victim] ([victim.key]) in [area.name] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[turf.x];Y=[turf.y];Z=[turf.z]'>JMP</a>)</font>")
+		message_staff("ALERT: [user] ([user.key]) is trying to gib [victim] ([victim.key]) in [area.name] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[turf_ref.x];Y=[turf_ref.y];Z=[turf_ref.z]'>JMP</a>)</font>")
 		log_attack("[key_name(user)] tried to gib [victim] ([victim.key]) in [area.name]")
 		to_chat(user, SPAN_DANGER("Are you insane?!"))
 		if(do_after(user, 30 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE && grabbed && grabbed.grabbed_thing && !occupant))

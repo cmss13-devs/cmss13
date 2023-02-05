@@ -1,0 +1,5 @@
+author: "NewyearnewmeUwu"
+delete-after: True
+changes:
+  - rscdel: "Removed skull balaclavas and skull facepaint from the loadout options"
+  - maptweak: "adds a single skull facepaint and balaclava, each hidden in their own locations on the Almayer."

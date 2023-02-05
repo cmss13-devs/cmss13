@@ -34,6 +34,7 @@ var/list/admin_verbs_default = list(
 	/client/proc/toggledebuglogs,
 	/client/proc/togglestatpanelsplit,
 	/client/proc/togglenichelogs,
+	/datum/admins/proc/display_tags,
 	/datum/admins/proc/player_notes_show,
 	/datum/admins/proc/toggleooc, /*toggles ooc on/off for everyone*/
 	/datum/admins/proc/togglelooc, /*toggles ooc on/off for everyone*/

@@ -1,0 +1,5 @@
+author: "Morrow"
+delete-after: True
+changes:
+  - balance: "Removes ultrazine spawns on maps."
+  - balance: "Removes ultrazine and antag stims as explicit random loot items."

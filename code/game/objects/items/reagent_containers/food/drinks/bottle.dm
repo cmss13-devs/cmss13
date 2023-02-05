@@ -11,6 +11,7 @@
 	item_state = "broken_beer" //Generic held-item sprite until unique ones are made.
 	///This excludes all the juices and dairy in cartons that are also defined in this file.
 	var/isGlass = TRUE
+	black_market_value = 25
 
 /obj/item/reagent_container/food/drinks/bottle/bullet_act(obj/item/projectile/P)
 	. = ..()
@@ -164,6 +165,7 @@
 	name = "\improper Red Star Vodka promotional bottle"
 	desc = "A promotional chess themed bottle of Red Star Vodka."
 	icon_state = "chess"
+	black_market_value = 15
 
 /obj/item/reagent_container/food/drinks/bottle/vodka/chess/b_pawn
 	name = "\improper Black Pawn bottle"
@@ -212,6 +214,13 @@
 /obj/item/reagent_container/food/drinks/bottle/vodka/chess/w_queen
 	name = "\improper White Queen bottle"
 	icon_state = "w_queen"
+
+/obj/item/reagent_container/food/drinks/bottle/vodka/chess/random/Initialize()
+	. = ..()
+	var/newbottle = pick(subtypesof(/obj/item/reagent_container/food/drinks/bottle/vodka/chess))
+	new newbottle(loc)
+	qdel(src)
+
 
 /obj/item/reagent_container/food/drinks/bottle/tequila
 	name = "\improper Caccavo Guaranteed Quality tequila"

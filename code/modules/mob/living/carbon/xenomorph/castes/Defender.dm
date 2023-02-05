@@ -23,6 +23,8 @@
 	tackle_min = 2
 	tackle_max = 4
 
+	minimap_icon = "defender"
+
 /mob/living/carbon/xenomorph/defender
 	caste_type = XENO_CASTE_DEFENDER
 	name = XENO_CASTE_DEFENDER

@@ -46,6 +46,7 @@ var/list/paper_tag_whitelist = list("center","p","div","span","h1","h2","h3","h4
 ///////////////
 
 var/diary = null
+var/tgui_diary = null
 var/round_stats = null
 var/round_scheduler_stats = null
 var/mutator_logs = null
@@ -55,7 +56,7 @@ var/station_name = "[MAIN_SHIP_NAME]"
 var/game_version = "Colonial Marines"
 var/game_year = 2182
 
-var/going = 1.0
+var/going = 1
 var/master_mode = "Distress Signal"
 
 /// If this is anything but "secret", the secret rotation will forceably choose this mode.

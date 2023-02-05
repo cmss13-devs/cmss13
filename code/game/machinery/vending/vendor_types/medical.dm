@@ -198,7 +198,7 @@
 		/obj/item/reagent_container/glass/bottle/oxycodone,
 		/obj/item/reagent_container/glass/bottle/peridaxon,
 		/obj/item/reagent_container/glass/bottle/tramadol,
-		)
+	)
 	stack_refill = null
 
 /obj/structure/machinery/cm_vending/sorted/medical/chemistry/populate_product_list(scale)
@@ -248,7 +248,7 @@
 	stack_refill = list(
 		/obj/item/stack/medical/ointment,
 		/obj/item/stack/medical/bruise_pack,
-		/obj/item/stack/medical/splint
+		/obj/item/stack/medical/splint,
 	)
 
 /obj/structure/machinery/cm_vending/sorted/medical/marinemed/populate_product_list(scale)
@@ -334,12 +334,12 @@
 		/obj/item/reagent_container/hypospray/autoinjector/tricord/skillless,
 		/obj/item/reagent_container/hypospray/autoinjector/bicaridine/skillless,
 		/obj/item/reagent_container/hypospray/autoinjector/kelotane/skillless,
-		/obj/item/reagent_container/hypospray/autoinjector/tramadol/skillless
+		/obj/item/reagent_container/hypospray/autoinjector/tramadol/skillless,
 	)
 	stack_refill = list(
 		/obj/item/stack/medical/bruise_pack,
 		/obj/item/stack/medical/splint,
-		/obj/item/stack/medical/ointment
+		/obj/item/stack/medical/ointment,
 	)
 
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited
@@ -347,11 +347,11 @@
 
 	chem_refill = list(
 		/obj/item/reagent_container/hypospray/autoinjector/skillless,
-		/obj/item/reagent_container/hypospray/autoinjector/skillless/tramadol
+		/obj/item/reagent_container/hypospray/autoinjector/skillless/tramadol,
 	)
 	stack_refill = list(
 		/obj/item/stack/medical/bruise_pack,
-		/obj/item/stack/medical/ointment
+		/obj/item/stack/medical/ointment,
 	)
 
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med/lifeboat
@@ -377,7 +377,7 @@
 	stack_refill = list(
 		/obj/item/stack/medical/ointment,
 		/obj/item/stack/medical/bruise_pack,
-		/obj/item/stack/medical/splint
+		/obj/item/stack/medical/splint,
 	)
 
 	unacidable = TRUE

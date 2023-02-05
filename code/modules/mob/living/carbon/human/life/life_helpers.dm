@@ -109,7 +109,7 @@
 
 /mob/living/carbon/human/proc/get_flags_heat_protection(temperature) //Temperature is the temperature you're being exposed to.
 	var/thermal_protection_flags = get_flags_heat_protection_flags(temperature)
-	var/thermal_protection = 0.0
+	var/thermal_protection = 0
 	if(thermal_protection_flags)
 		if(thermal_protection_flags & BODY_FLAG_HEAD)
 			thermal_protection += THERMAL_PROTECTION_HEAD
@@ -174,7 +174,7 @@
 /mob/living/carbon/human/proc/get_flags_cold_protection(temperature)
 	temperature = max(temperature, 2.7) //There is an occasional bug where the temperature is miscalculated in ares with a small amount of gas on them, so this is necessary to ensure that that bug does not affect this calculation. Space's temperature is 2.7K and most suits that are intended to protect against any cold, protect down to 2.0K.
 	var/thermal_protection_flags = get_flags_cold_protection_flags(temperature)
-	var/thermal_protection = 0.0
+	var/thermal_protection = 0
 
 	if(thermal_protection_flags)
 		if(thermal_protection_flags & BODY_FLAG_HEAD)
@@ -314,7 +314,7 @@
 	last_damage_data = null
 	statistic_tracked = FALSE
 	tod = null
-	stat = UNCONSCIOUS
+	set_stat(UNCONSCIOUS)
 	emote("gasp")
 	regenerate_icons()
 	reload_fullscreens()

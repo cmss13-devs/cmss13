@@ -735,3 +735,9 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	if(admin_holder)
 		admin_holder.filteriffic = new /datum/filter_editor(in_atom)
 		admin_holder.filteriffic.tgui_interact(mob)
+
+///opens the particle editor UI for the in_atom object for this client
+/client/proc/open_particle_editor(atom/movable/in_atom)
+	if(admin_holder)
+		admin_holder.particle_test = new /datum/particle_editor(in_atom)
+		admin_holder.particle_test.tgui_interact(mob)

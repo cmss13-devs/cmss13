@@ -3,7 +3,7 @@
 	icon = 'icons/obj/structures/machinery/atmos.dmi'
 	icon_state = "yellow"
 	density = TRUE
-	health = 100.0
+	health = 100
 	flags_atom = FPRINT|CONDUCT
 
 

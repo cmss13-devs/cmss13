@@ -528,7 +528,7 @@
 	can_hold = list(
 		/obj/item/tool/surgery,
 		/obj/item/stack/medical/advanced/bruise_pack,
-		/obj/item/stack/nanopaste
+		/obj/item/stack/nanopaste,
 	)
 
 /obj/item/storage/internal/accessory/surg_vest/attackby(obj/item/W, mob/user)

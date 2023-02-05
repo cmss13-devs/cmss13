@@ -478,6 +478,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	item_state = "cigar_off"
 	smoketime = 50 MINUTES
 	chem_volume = 20
+	black_market_value = 15
 
 /obj/item/clothing/mask/cigarette/cigar/classic
 	name = "classic cigar"
@@ -486,6 +487,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	icon_on = "cigar2_on"
 	icon_off = "cigar2_off"
 	smoketime = 120 MINUTES
+	black_market_value = 30
 
 /obj/item/clothing/mask/cigarette/cigar/tarbacks
 	name = "\improper Tarback cigar"
@@ -712,6 +714,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	item_state = "goldzippo"
 	icon_on = "goldzippoon"
 	icon_off = "goldzippo"
+	black_market_value = 30
 
 /obj/item/tool/lighter/random
 

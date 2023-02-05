@@ -9,7 +9,6 @@
 	req_access = list(ACCESS_MARINE_BRIDGE)
 	unacidable = TRUE
 
-	var/mob/living/carbon/human/current_mapviewer = null
 	var/datum/squad/current_squad = null
 	var/state = 0
 	var/obj/structure/machinery/camera/cam = null
@@ -26,21 +25,23 @@
 	var/marine_filter_enabled = TRUE
 	var/faction = FACTION_MARINE
 
+	var/datum/tacmap/tacmap
+	var/minimap_type = MINIMAP_FLAG_USCM
+
 /obj/structure/machinery/computer/overwatch/Initialize()
 	. = ..()
-	SSmapview.map_machines += src
+	tacmap = new(src, minimap_type)
 
 /obj/structure/machinery/computer/overwatch/Destroy()
-	SSmapview.map_machines -= src
 	return ..()
 
-/obj/structure/machinery/computer/overwatch/attackby(var/obj/I as obj, var/mob/user as mob)  //Can't break or disassemble.
+/obj/structure/machinery/computer/overwatch/attackby(obj/I as obj, mob/user as mob)  //Can't break or disassemble.
 	return
 
-/obj/structure/machinery/computer/overwatch/bullet_act(var/obj/item/projectile/Proj) //Can't shoot it
+/obj/structure/machinery/computer/overwatch/bullet_act(obj/item/projectile/Proj) //Can't shoot it
 	return FALSE
 
-/obj/structure/machinery/computer/overwatch/attack_remote(var/mob/user as mob)
+/obj/structure/machinery/computer/overwatch/attack_remote(mob/user as mob)
 	if(!ismaintdrone(user))
 		return attack_hand(user)
 
@@ -375,23 +376,7 @@
 	dat += "<A href='?src=\ref[src];operation=back'>Back</a></body>"
 	return dat
 
-/obj/structure/machinery/computer/overwatch/proc/update_mapview(var/close = 0)
-	if(close || !current_squad || !current_mapviewer || !Adjacent(current_mapviewer))
-		close_browser(current_mapviewer, "marineminimap")
-		current_mapviewer = null
-		return
-	var/icon/O = overlay_tacmap(TACMAP_DEFAULT)
-	if(O)
-		current_mapviewer << browse_rsc(O, "marine_minimap.png")
-		show_browser(current_mapviewer, "<img src=marine_minimap.png>", "Marine Minimap", "marineminimap", "size=[(map_sizes[1]*2)+50]x[(map_sizes[2]*2)+50]", closeref = src)
-
 /obj/structure/machinery/computer/overwatch/Topic(href, href_list)
-	if(href_list["close"])
-		if(current_mapviewer)
-			close_browser(current_mapviewer, "marineminimap")
-		current_mapviewer = null
-		return
-
 	if(..())
 		return
 	if(!href_list["operation"])
@@ -403,12 +388,7 @@
 	switch(href_list["operation"])
 		// main interface
 		if("mapview")
-			if(current_mapviewer)
-				update_mapview(1)
-				return
-			current_mapviewer = usr
-			update_mapview()
-			return
+			tacmap.tgui_interact(usr)
 		if("back")
 			state = 0
 		if("monitor")
@@ -639,7 +619,7 @@
 
 
 // Alerts all groundside marines about the incoming OB
-/obj/structure/machinery/computer/overwatch/proc/alert_ob(var/turf/target)
+/obj/structure/machinery/computer/overwatch/proc/alert_ob(turf/target)
 	var/area/ob_area = get_area(target)
 	if(!ob_area)
 		return

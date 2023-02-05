@@ -2,7 +2,7 @@ var/CMinutes = null
 var/savefile/Banlist
 
 
-/proc/CheckBan(var/ckey, var/id, var/address)
+/proc/CheckBan(ckey, id, address)
 	if(!Banlist) // if Banlist cannot be located for some reason
 		LoadBans() // try to load the bans
 		if(!Banlist) // uh oh, can't find bans!
@@ -225,7 +225,7 @@ var/savefile/Banlist
 	for (var/A in Banlist.dir)
 		RemoveBan(A)
 
-/client/proc/cmd_admin_do_ban(var/mob/M)
+/client/proc/cmd_admin_do_ban(mob/M)
 	if(!check_rights(R_BAN|R_MOD))  return
 
 	if(!ismob(M)) return

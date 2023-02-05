@@ -38,7 +38,7 @@
 				continue
 			SSassets.transport.register_asset(filename, fcopy_rsc(path + filename))
 
-/datum/asset/directory/send(client, uncommon, var/send_only_temp = FALSE)
+/datum/asset/directory/send(client, uncommon, send_only_temp = FALSE)
 	if(!client)
 		log_debug("Warning! Tried to send nanoui data with a null client! (asset_list_items.dm line 76)")
 		return
@@ -108,7 +108,7 @@
 	keep_local_name = TRUE
 	assets = list()
 
-/datum/asset/simple/dynamic_icons/proc/update(var/filename)
+/datum/asset/simple/dynamic_icons/proc/update(filename)
 	var/list/filenames = list(filename)
 	if(islist(filename))
 		filenames = filename
@@ -120,7 +120,7 @@
 			if(ACI)
 				SSassets.transport.preload += list(key=ACI)
 
-/datum/asset/simple/dynamic_icons/proc/register_single(var/asset_name)
+/datum/asset/simple/dynamic_icons/proc/register_single(asset_name)
 	var/datum/asset_cache_item/ACI = SSassets.transport.register_asset(asset_name, assets[asset_name])
 	if (!ACI)
 		log_asset("ERROR: Invalid asset: [type]:[asset_name]:[ACI]")

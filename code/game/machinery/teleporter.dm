@@ -313,7 +313,7 @@
 	overlays.Cut()
 	overlays += image('icons/obj/structures/props/stationobjs.dmi', icon_state = "controller-wires")
 
-/obj/structure/machinery/teleport/station/attackby(var/obj/item/W)
+/obj/structure/machinery/teleport/station/attackby(obj/item/W)
 	src.attack_hand()
 
 /obj/structure/machinery/teleport/station/attack_remote()
@@ -388,8 +388,8 @@
 	name = "laser"
 	desc = "IT BURNS!!!"
 	icon = 'icons/obj/items/weapons/projectiles.dmi'
-	var/damage = 0.0
-	var/range = 10.0
+	var/damage = 0
+	var/range = 10
 
 
 /obj/effect/laser/Collide(atom/A)

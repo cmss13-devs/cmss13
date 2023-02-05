@@ -108,7 +108,7 @@
 
 
 
-/obj/structure/machinery/alarm/Initialize(mapload, var/direction, var/building = 0)
+/obj/structure/machinery/alarm/Initialize(mapload, direction, building = 0)
 	. = ..()
 
 	if(building)
@@ -202,7 +202,7 @@
 				return 1
 	return 0
 
-/obj/structure/machinery/alarm/proc/get_danger_level(var/current_value, var/list/danger_levels)
+/obj/structure/machinery/alarm/proc/get_danger_level(current_value, list/danger_levels)
 	if((current_value >= danger_levels[4] && danger_levels[4] > 0) || current_value <= danger_levels[1])
 		return 2
 	if((current_value >= danger_levels[3] && danger_levels[3] > 0) || current_value <= danger_levels[2])
@@ -256,7 +256,7 @@
 	else if(dev_type == "AVP")
 		alarm_area.air_vent_info[id_tag] = signal.data
 
-/obj/structure/machinery/alarm/proc/register_env_machine(var/m_id, var/device_type)
+/obj/structure/machinery/alarm/proc/register_env_machine(m_id, device_type)
 	var/new_name
 	if (device_type=="AVP")
 		new_name = "[alarm_area.name] Vent Pump #[alarm_area.air_vent_names.len+1]"
@@ -286,7 +286,7 @@
 	frequency = new_frequency
 	radio_connection = SSradio.add_object(src, frequency, RADIO_TO_AIRALARM)
 
-/obj/structure/machinery/alarm/proc/send_signal(var/target, var/list/command)//sends signal 'command' to 'target'. Returns 0 if no radio connection, 1 otherwise
+/obj/structure/machinery/alarm/proc/send_signal(target, list/command)//sends signal 'command' to 'target'. Returns 0 if no radio connection, 1 otherwise
 	if(!radio_connection)
 		return 0
 
@@ -341,7 +341,7 @@
 			for(var/device_id in alarm_area.air_vent_names)
 				send_signal(device_id, list("power"= 0) )
 
-/obj/structure/machinery/alarm/proc/apply_danger_level(var/new_danger_level)
+/obj/structure/machinery/alarm/proc/apply_danger_level(new_danger_level)
 	if (apply_danger_level && alarm_area.atmosalert(new_danger_level))
 		post_alert(new_danger_level)
 
@@ -374,11 +374,11 @@
 ///////////
 //HACKING//
 ///////////
-/obj/structure/machinery/alarm/proc/isWireColorCut(var/wireColor)
+/obj/structure/machinery/alarm/proc/isWireColorCut(wireColor)
 	var/wireFlag = AAlarmWireColorToFlag[wireColor]
 	return ((AAlarmwires & wireFlag) == 0)
 
-/obj/structure/machinery/alarm/proc/isWireCut(var/wireIndex)
+/obj/structure/machinery/alarm/proc/isWireCut(wireIndex)
 	var/wireFlag = AAlarmIndexToFlag[wireIndex]
 	return ((AAlarmwires & wireFlag) == 0)
 
@@ -390,7 +390,7 @@
 		i++
 	return 1
 
-/obj/structure/machinery/alarm/proc/cut(var/wireColor)
+/obj/structure/machinery/alarm/proc/cut(wireColor)
 	var/wireFlag = AAlarmWireColorToFlag[wireColor]
 	var/wireIndex = AAlarmWireColorToIndex[wireColor]
 	AAlarmwires &= ~wireFlag
@@ -422,7 +422,7 @@
 
 	return
 
-/obj/structure/machinery/alarm/proc/mend(var/wireColor)
+/obj/structure/machinery/alarm/proc/mend(wireColor)
 	var/wireFlag = AAlarmWireColorToFlag[wireColor]
 	var/wireIndex = AAlarmWireColorToIndex[wireColor] //not used in this function
 	AAlarmwires |= wireFlag
@@ -441,7 +441,7 @@
 	updateDialog()
 	return
 
-/obj/structure/machinery/alarm/proc/pulse(var/wireColor)
+/obj/structure/machinery/alarm/proc/pulse(wireColor)
 	//var/wireFlag = AAlarmWireColorToFlag[wireColor] //not used in this function
 	var/wireIndex = AAlarmWireColorToIndex[wireColor]
 	switch(wireIndex)
@@ -846,7 +846,7 @@ table tr:first-child th:first-child { border: none;}
 					if (isnull(newval) || ..() || (locked && !isRemoteControlling(usr)))
 						return
 					if (newval<0)
-						selected[threshold] = -1.0
+						selected[threshold] = -1
 					else if (env=="temperature" && newval>5000)
 						selected[threshold] = 5000
 					else if (env=="pressure" && newval>50*ONE_ATMOSPHERE)

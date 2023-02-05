@@ -85,7 +85,7 @@ steam.start() -- spawns the effect
 /obj/effect/particle_effect/sparks
 	name = "sparks"
 	icon_state = "sparks"
-	var/amount = 6.0
+	var/amount = 6
 	anchored = TRUE
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 

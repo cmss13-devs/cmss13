@@ -124,6 +124,7 @@
 	flags_atom = FPRINT|CONDUCT
 	flags_equip_slot = SLOT_WAIST
 	matter = list("metal" = 2000)
+	black_market_value = 20
 	var/pictures_max = 10
 	var/pictures_left = 10
 	var/on = 1
@@ -287,7 +288,7 @@
 
 	return P
 
-/obj/item/device/camera/proc/printpicture(mob/user, var/datum/picture/P)
+/obj/item/device/camera/proc/printpicture(mob/user, datum/picture/P)
 	var/obj/item/photo/Photo = new/obj/item/photo()
 	Photo.forceMove(user.loc)
 	if(!user.get_inactive_hand())
@@ -304,7 +305,7 @@
 	pictures_left = 30
 
 
-/obj/item/photo/proc/construct(var/datum/picture/P)
+/obj/item/photo/proc/construct(datum/picture/P)
 	icon = P.fields["icon"]
 	tiny = P.fields["tiny"]
 	img = P.fields["img"]

@@ -12,7 +12,7 @@
 	/// When set to true, every single sprite can be found in the one icon .dmi, rather than being spread into onmobs, inhands, and objects
 	var/contained_sprite = FALSE
 
-	var/r_speed = 1.0
+	var/r_speed = 1
 	var/force = 0
 	var/damtype = BRUTE
 	var/embeddable = TRUE //FALSE if unembeddable
@@ -139,6 +139,14 @@
 	/// lets us know if the item is an objective or not
 	var/is_objective = FALSE
 
+	/// Allows for bigger than 32x32 sprites.
+	var/worn_x_dimension = 32
+	var/worn_y_dimension = 32
+
+	/// Allows for bigger than 32x32 sprites, these govern inhand sprites. (Like a longer sword that's normal-sized on your back)
+	var/inhand_x_dimension = 32
+	var/inhand_y_dimension = 32
+
 	/// checks if the item is set up in the table or not
 	var/table_setup = FALSE
 	/// checks if the item will be specially placed on the table
@@ -197,7 +205,7 @@
 				visible_message(SPAN_DANGER(SPAN_UNDERLINE("\The [src] [msg]")))
 				deconstruct(FALSE)
 
-/obj/item/mob_launch_collision(var/mob/living/L)
+/obj/item/mob_launch_collision(mob/living/L)
 	forceMove(L.loc)
 	..()
 
@@ -432,7 +440,7 @@ cases. Override_icon_state should be a list.*/
 	UnregisterSignal(user, COMSIG_MOB_ITEM_UNEQUIPPED)
 	SEND_SIGNAL(user, COMSIG_MOB_ITEM_UNEQUIPPED, src, slot)
 
-/obj/item/proc/check_for_uniform_restriction(mob/user, obj/item/item, var/slot)
+/obj/item/proc/check_for_uniform_restriction(mob/user, obj/item/item, slot)
 	SIGNAL_HANDLER
 
 	if(item.flags_equip_slot & slotdefine2slotbit(slot))
@@ -828,7 +836,7 @@ cases. Override_icon_state should be a list.*/
 		user.client.pixel_x = 0
 		user.client.pixel_y = 0
 
-/obj/item/proc/zoom_handle_mob_move_or_look(mob/living/mover, var/actually_moving, var/direction, var/specific_direction)
+/obj/item/proc/zoom_handle_mob_move_or_look(mob/living/mover, actually_moving, direction, specific_direction)
 	SIGNAL_HANDLER
 
 	if(mover.dir != zoom_initial_mob_dir && mover.client) //Dropped when disconnected, whoops

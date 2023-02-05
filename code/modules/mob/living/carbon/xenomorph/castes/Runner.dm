@@ -24,6 +24,8 @@
 
 	heal_resting = 1.75
 
+	minimap_icon = "runner"
+
 /mob/living/carbon/xenomorph/runner
 	caste_type = XENO_CASTE_RUNNER
 	name = XENO_CASTE_RUNNER
@@ -62,7 +64,7 @@
 	icon_xenonid = 'icons/mob/xenonids/runner.dmi'
 
 
-/mob/living/carbon/xenomorph/runner/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/mob/living/carbon/xenomorph/runner/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_pass = PASS_FLAGS_CRAWLER

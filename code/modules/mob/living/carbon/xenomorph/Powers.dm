@@ -1,4 +1,4 @@
-/mob/living/carbon/xenomorph/proc/build_resin(var/atom/A, var/thick = FALSE, var/message = TRUE, var/use_plasma = TRUE, var/add_build_mod = 1)
+/mob/living/carbon/xenomorph/proc/build_resin(atom/A, thick = FALSE, message = TRUE, use_plasma = TRUE, add_build_mod = 1)
 	if(!selected_resin)
 		return SECRETE_RESIN_FAIL
 
@@ -149,13 +149,13 @@
 
 	return SECRETE_RESIN_SUCCESS
 
-/mob/living/carbon/xenomorph/proc/remove_built_structure(var/atom/A)
+/mob/living/carbon/xenomorph/proc/remove_built_structure(atom/A)
 	SIGNAL_HANDLER
 	LAZYREMOVE(built_structures[A.type], A)
 	if(!built_structures[A.type])
 		built_structures -= A.type
 
-/mob/living/carbon/xenomorph/proc/place_construction(var/turf/current_turf, var/datum/construction_template/xenomorph/structure_template)
+/mob/living/carbon/xenomorph/proc/place_construction(turf/current_turf, datum/construction_template/xenomorph/structure_template)
 	if(!structure_template || !check_state() || action_busy)
 		return
 
@@ -197,7 +197,7 @@
 	if(!found_weeds)
 		to_chat(src, SPAN_XENOMINORWARNING("You made the resin mark on ground with no weeds, it will break soon without any."))
 
-	if(isXenoQueen(src))
+	if(isqueen(src))
 		NM.color = "#7a21c4"
 	else
 		NM.color = "#db6af1"

@@ -31,6 +31,7 @@ var/list/reboot_sfx = file2list("config/reboot_sfx.txt")
 	var/year_string = time2text(world.realtime, "YYYY")
 	href_logfile = file("data/logs/[date_string] hrefs.htm")
 	diary = file("data/logs/[date_string].log")
+	tgui_diary = file("data/logs/[date_string]_tgui.log")
 	diary << "[log_end]\n[log_end]\nStarting up. [time2text(world.timeofday, "hh:mm.ss")][log_end]\n---------------------[log_end]"
 	round_stats = file("data/logs/[year_string]/round_stats.log")
 	round_stats << "[log_end]\nStarting up - [time2text(world.realtime,"YYYY-MM-DD (hh:mm:ss)")][log_end]\n---------------------[log_end]"
@@ -82,6 +83,8 @@ var/list/reboot_sfx = file2list("config/reboot_sfx.txt")
 		to_world(SPAN_DANGER("\b Job setup complete"))
 
 	if(!EvacuationAuthority) EvacuationAuthority = new
+
+	initiate_minimap_icons()
 
 	change_tick_lag(CONFIG_GET(number/ticklag))
 	GLOB.timezoneOffset = text2num(time2text(0,"hh")) * 36000
@@ -193,7 +196,7 @@ var/world_topic_spam_protect_time = world.timeofday
 			dat += "[ban_text][N.text]<br/>by [admin_name] ([N.admin_rank])[confidential_text] on [N.date]<br/><br/>"
 		return dat
 
-/world/Reboot(var/reason)
+/world/Reboot(reason)
 	Master.Shutdown()
 	send_reboot_sound()
 	var/server = CONFIG_GET(string/server)
@@ -245,7 +248,7 @@ var/world_topic_spam_protect_time = world.timeofday
 			master_mode = Lines[1]
 			log_misc("Saved mode is '[master_mode]'")
 
-/world/proc/save_mode(var/the_mode)
+/world/proc/save_mode(the_mode)
 	var/F = file("data/mode.txt")
 	fdel(F)
 	F << the_mode
@@ -301,7 +304,7 @@ var/datum/BSQL_Connection/connection
 
 #undef FAILED_DB_CONNECTION_CUTOFF
 
-/proc/give_image_to_client(var/obj/O, icon_text)
+/proc/give_image_to_client(obj/O, icon_text)
 	var/image/I = image(null, O)
 	I.maptext = icon_text
 	for(var/client/c in GLOB.clients)

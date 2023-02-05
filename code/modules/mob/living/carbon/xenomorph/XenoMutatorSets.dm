@@ -14,14 +14,14 @@
 	var/tackle_strength_bonus = 0
 
 //Functions to be overloaded to call for when something gets updated on the xenos
-/datum/mutator_set/proc/recalculate_everything(var/description)
-/datum/mutator_set/proc/recalculate_stats(var/description)
-/datum/mutator_set/proc/recalculate_actions(var/description)
-/datum/mutator_set/proc/recalculate_pheromones(var/description)
-/datum/mutator_set/proc/give_feedback(var/description)
+/datum/mutator_set/proc/recalculate_everything(description)
+/datum/mutator_set/proc/recalculate_stats(description)
+/datum/mutator_set/proc/recalculate_actions(description)
+/datum/mutator_set/proc/recalculate_pheromones(description)
+/datum/mutator_set/proc/give_feedback(description)
 
 
-/datum/mutator_set/proc/purchase_mutator(var/name)
+/datum/mutator_set/proc/purchase_mutator(name)
 	return FALSE
 
 /datum/mutator_set/proc/list_and_purchase_mutators()
@@ -42,7 +42,7 @@
 		to_chat(usr, "Mutation failed!")
 		return FALSE
 
-/datum/mutator_set/proc/can_purchase_mutator(var/mutator_name)
+/datum/mutator_set/proc/can_purchase_mutator(mutator_name)
 	var/datum/xeno_mutator/XM = GLOB.xeno_mutator_list[mutator_name]
 	if(user_level < XM.required_level)
 		return FALSE //xeno doesn't meet the level requirements
@@ -75,9 +75,9 @@
 /datum/mutator_set/hive_mutators
 	var/datum/hive_status/hive //Which hive do these mutators apply to. Need this to affect variables there
 	var/leader_count_boost = 0
-	var/maturation_multiplier = 1.0
-	var/tier_slot_multiplier = 1.0
-	var/larva_gestation_multiplier = 1.0
+	var/maturation_multiplier = 1
+	var/tier_slot_multiplier = 1
+	var/larva_gestation_multiplier = 1
 	var/bonus_larva_spawn_chance = 0
 
 /datum/mutator_set/hive_mutators/list_and_purchase_mutators()
@@ -96,7 +96,7 @@
 		var/m = purchased_mutators[purchased_mutators.len]
 		log_mutator("[hive.living_xeno_queen.name] purchased Hive Mutator '[m]'")
 
-/datum/mutator_set/hive_mutators/can_purchase_mutator(var/mutator_name)
+/datum/mutator_set/hive_mutators/can_purchase_mutator(mutator_name)
 	if (..() == FALSE)
 		return FALSE //Can't buy it regardless
 	var/datum/xeno_mutator/XM = GLOB.xeno_mutator_list[mutator_name]
@@ -124,9 +124,9 @@
 	tackle_strength_bonus = 0
 
 	leader_count_boost = 0
-	maturation_multiplier = 1.0
-	tier_slot_multiplier = 1.0
-	larva_gestation_multiplier = 1.0
+	maturation_multiplier = 1
+	tier_slot_multiplier = 1
+	larva_gestation_multiplier = 1
 	bonus_larva_spawn_chance = 0
 
 	for(var/mob/living/carbon/xenomorph/X in GLOB.living_xeno_list)
@@ -136,40 +136,40 @@
 			playsound(X.loc, "alien_help", 25)
 			X.xeno_jitter(15)
 
-/datum/mutator_set/hive_mutators/recalculate_everything(var/description)
+/datum/mutator_set/hive_mutators/recalculate_everything(description)
 	for(var/mob/living/carbon/xenomorph/X in GLOB.living_xeno_list)
 		if(X.hivenumber == hive.hivenumber)
 			X.recalculate_everything()
 			to_chat(X, SPAN_XENOANNOUNCE("Queen has granted the Hive a boon! [description]"))
 			X.xeno_jitter(15)
-/datum/mutator_set/hive_mutators/recalculate_stats(var/description)
+/datum/mutator_set/hive_mutators/recalculate_stats(description)
 	for(var/mob/living/carbon/xenomorph/X in GLOB.living_xeno_list)
 		if(X.hivenumber == hive.hivenumber)
 			X.recalculate_stats()
 			to_chat(X, SPAN_XENOANNOUNCE("Queen has granted the Hive a boon! [description]"))
 			X.xeno_jitter(15)
-/datum/mutator_set/hive_mutators/recalculate_actions(var/description)
+/datum/mutator_set/hive_mutators/recalculate_actions(description)
 	for(var/mob/living/carbon/xenomorph/X in GLOB.living_xeno_list)
 		if(X.hivenumber == hive.hivenumber)
 			X.recalculate_actions()
 			to_chat(X, SPAN_XENOANNOUNCE("Queen has granted the Hive a boon! [description]"))
 			X.xeno_jitter(15)
-/datum/mutator_set/hive_mutators/recalculate_pheromones(var/description)
+/datum/mutator_set/hive_mutators/recalculate_pheromones(description)
 	for(var/mob/living/carbon/xenomorph/X in GLOB.living_xeno_list)
 		if(X.hivenumber == hive.hivenumber)
 			X.recalculate_pheromones()
 			to_chat(X, SPAN_XENOANNOUNCE("Queen has granted the Hive a boon! [description]"))
 			X.xeno_jitter(15)
-/datum/mutator_set/hive_mutators/proc/recalculate_maturation(var/description)
+/datum/mutator_set/hive_mutators/proc/recalculate_maturation(description)
 	for(var/mob/living/carbon/xenomorph/X in GLOB.living_xeno_list)
 		if(X.hivenumber == hive.hivenumber)
 			X.recalculate_maturation()
 			to_chat(X, SPAN_XENOANNOUNCE("Queen has granted the Hive a boon! [description]"))
 			X.xeno_jitter(15)
-/datum/mutator_set/hive_mutators/proc/recalculate_hive(var/description)
+/datum/mutator_set/hive_mutators/proc/recalculate_hive(description)
 	hive.recalculate_hive()
 	give_feedback(description)
-/datum/mutator_set/hive_mutators/give_feedback(var/description)
+/datum/mutator_set/hive_mutators/give_feedback(description)
 	for(var/mob/living/carbon/xenomorph/X in GLOB.living_xeno_list)
 		if(X.hivenumber == hive.hivenumber)
 			to_chat(X, SPAN_XENOANNOUNCE("Queen has granted the Hive a boon! [description]"))
@@ -178,8 +178,8 @@
 //Mutators applying to an individual xeno
 /datum/mutator_set/individual_mutators
 	var/mob/living/carbon/xenomorph/xeno
-	var/pull_multiplier = 1.0
-	var/egg_laying_multiplier = 1.0
+	var/pull_multiplier = 1
+	var/egg_laying_multiplier = 1
 	var/need_weeds = TRUE
 	//Strains Below
 	remaining_points = 6
@@ -197,7 +197,7 @@
 		var/m = purchased_mutators[purchased_mutators.len]
 		log_mutator("[xeno.name] purchased Mutator '[m]'")
 
-/datum/mutator_set/individual_mutators/can_purchase_mutator(var/mutator_name)
+/datum/mutator_set/individual_mutators/can_purchase_mutator(mutator_name)
 	if (..() == FALSE)
 		return FALSE //Can't buy it regardless
 	var/datum/xeno_mutator/XM = GLOB.xeno_mutator_list[mutator_name]
@@ -207,7 +207,7 @@
 		return FALSE //We are not on the whitelist
 	return TRUE
 
-/datum/mutator_set/individual_mutators/recalculate_actions(var/description, var/flavor_description = null)
+/datum/mutator_set/individual_mutators/recalculate_actions(description, flavor_description = null)
 	xeno.recalculate_actions()
 	to_chat(xeno, SPAN_XENOANNOUNCE("[description]"))
 	if (flavor_description != null)

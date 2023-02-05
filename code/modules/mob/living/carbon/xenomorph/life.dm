@@ -122,7 +122,7 @@
 	warding_new = 0
 	recovery_new = 0
 
-/mob/living/carbon/xenomorph/proc/affected_by_pheromones(var/aura, var/strength)
+/mob/living/carbon/xenomorph/proc/affected_by_pheromones(aura, strength)
 	switch(aura)
 		if("all")
 			if(strength > frenzy_new)
@@ -172,7 +172,7 @@
 
 		if(knocked_out) //If they're down, make sure they are actually down.
 			blinded = TRUE
-			stat = UNCONSCIOUS
+			set_stat(UNCONSCIOUS)
 			if(regular_update && halloss > 0)
 				apply_damage(-3, HALLOSS)
 		else if(sleeping)
@@ -182,10 +182,10 @@
 				if((mind.active && client != null) || immune_to_ssd)
 					sleeping = max(sleeping - 1, 0)
 			blinded = TRUE
-			stat = UNCONSCIOUS
+			set_stat(UNCONSCIOUS)
 		else
 			blinded = FALSE
-			stat = CONSCIOUS
+			set_stat(CONSCIOUS)
 			if(regular_update && halloss > 0)
 				if(resting)
 					apply_damage(-3, HALLOSS)
@@ -205,7 +205,7 @@
 	//Deal with dissolving/damaging stuff in stomach.
 	if(stomach_contents.len)
 		for(var/atom/movable/M in stomach_contents)
-			if(isHumanStrict(M))
+			if(ishuman_strict(M))
 				if(world.time == (devour_timer - 30))
 					to_chat(usr, SPAN_WARNING("You're about to regurgitate [M]..."))
 					playsound(loc, 'sound/voice/alien_drool1.ogg', 50, 1)
@@ -319,7 +319,7 @@ Make sure their actual health updates immediately.*/
 
 	var/is_runner_hiding
 
-	if(isXenoRunner(src) && layer != initial(layer))
+	if(isrunner(src) && layer != initial(layer))
 		is_runner_hiding = 1
 
 	if(caste)
@@ -462,7 +462,7 @@ Make sure their actual health updates immediately.*/
 /mob/living/carbon/xenomorph/updatehealth()
 	if(status_flags & GODMODE)
 		health = maxHealth
-		stat = CONSCIOUS
+		set_stat(CONSCIOUS)
 	else if(xeno_shields.len != 0)
 		overlay_shields()
 		health = maxHealth - getFireLoss() - getBruteLoss()
@@ -496,7 +496,7 @@ Make sure their actual health updates immediately.*/
 		return
 
 	sound_environment_override = SOUND_ENVIRONMENT_NONE
-	stat = UNCONSCIOUS
+	set_stat(UNCONSCIOUS)
 	blinded = TRUE
 	see_in_dark = 5
 	if(layer != initial(layer)) //Unhide

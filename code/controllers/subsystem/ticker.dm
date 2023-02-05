@@ -385,7 +385,7 @@ SUBSYSTEM_DEF(ticker)
 
 		INVOKE_ASYNC(src, PROC_REF(spawn_and_equip_char), player)
 
-/datum/controller/subsystem/ticker/proc/spawn_and_equip_char(var/mob/new_player/player)
+/datum/controller/subsystem/ticker/proc/spawn_and_equip_char(mob/new_player/player)
 	var/datum/job/J = RoleAuthority.roles_for_mode[player.job]
 	if(J.handle_spawn_and_equip)
 		J.spawn_and_equip(player)
@@ -467,11 +467,11 @@ SUBSYSTEM_DEF(ticker)
 
 	log_debug("Switching to lazy Subsystem timings for performance")
 
-/datum/controller/subsystem/ticker/proc/set_clients_taskbar_icon(var/taskbar_icon)
+/datum/controller/subsystem/ticker/proc/set_clients_taskbar_icon(taskbar_icon)
 	for(var/client/C as anything in GLOB.clients)
 		winset(C, null, "mainwindow.icon=[taskbar_icon]")
 
-/datum/controller/subsystem/ticker/proc/handle_mode_icon(var/dcs, var/client/C)
+/datum/controller/subsystem/ticker/proc/handle_mode_icon(dcs, client/C)
 	SIGNAL_HANDLER
 
 	winset(C, null, "mainwindow.icon=[SSticker.mode.taskbar_icon]")

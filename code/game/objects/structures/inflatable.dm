@@ -41,10 +41,10 @@
 	icon = 'icons/obj/items/inflatable.dmi'
 	icon_state = "wall"
 
-	health = 50.0
+	health = 50
 	var/deflated = FALSE
 
-/obj/structure/inflatable/bullet_act(var/obj/item/projectile/Proj)
+/obj/structure/inflatable/bullet_act(obj/item/projectile/Proj)
 	health -= Proj.damage
 	..()
 	if(health <= 0 && !deflated)
@@ -94,7 +94,7 @@
 		..()
 	return
 
-/obj/structure/inflatable/proc/hit(var/damage, var/sound_effect = 1)
+/obj/structure/inflatable/proc/hit(damage, sound_effect = 1)
 	health = max(0, health - damage)
 	if(sound_effect)
 		playsound(loc, 'sound/effects/Glasshit_old.ogg', 25, 1)
@@ -102,7 +102,7 @@
 		deflate(1)
 
 
-/obj/structure/inflatable/proc/deflate(var/violent=0)
+/obj/structure/inflatable/proc/deflate(violent=0)
 	set waitfor = 0
 	if(deflated)
 		return
@@ -136,7 +136,7 @@
 
 	if(isobserver(usr)) //to stop ghosts from deflating
 		return
-	if(isXeno(usr))
+	if(isxeno(usr))
 		return
 
 	if(!deflated)
@@ -234,7 +234,7 @@
 	else
 		icon_state = "door_closed"
 
-/obj/structure/inflatable/door/deflate(var/violent=0)
+/obj/structure/inflatable/door/deflate(violent=0)
 	set waitfor = 0
 	playsound(loc, 'sound/machines/hiss.ogg', 25, 1)
 	if(violent)

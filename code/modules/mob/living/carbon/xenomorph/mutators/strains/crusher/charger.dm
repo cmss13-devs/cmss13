@@ -30,7 +30,7 @@
 		/datum/action/xeno_action/onclick/charger_charge,
 		/datum/action/xeno_action/activable/tumble,
 		/datum/action/xeno_action/onclick/crusher_stomp/charger,
-		/datum/action/xeno_action/activable/fling/charger
+		/datum/action/xeno_action/activable/fling/charger,
 	)
 	keystone = TRUE
 	behavior_delegate_type = /datum/behavior_delegate/crusher_charger
@@ -344,7 +344,7 @@
 	if(charger_ability.momentum == charger_ability.max_momentum)
 		momentum_mult = 8
 	take_overall_armored_damage(charger_ability.momentum * momentum_mult, ARMOR_MELEE, BRUTE, 60, 13) // Giving AP because this spreads damage out and then applies armor to them
-	apply_armoured_damage(charger_ability.momentum * momentum_mult/4,ARMOR_MELEE, BRUTE,"chest")
+	apply_armoured_damage(charger_ability.momentum * momentum_mult/4, ARMOR_MELEE, BRUTE,"chest")
 	xeno.visible_message(
 		SPAN_DANGER("[xeno] rams \the [src]!"),
 		SPAN_XENODANGER("You ram \the [src]!")
@@ -379,7 +379,7 @@
 		if(anchored) //Ovipositor queen can't be pushed
 			charger_ability.stop_momentum()
 			return
-		if(isXenoQueen(src) || IS_XENO_LEADER(src) ||  isXenoBoiler(src)) // boilers because they have long c/d and warmups, get griefed hard if stunned
+		if(isqueen(src) || IS_XENO_LEADER(src) ||  isboiler(src)) // boilers because they have long c/d and warmups, get griefed hard if stunned
 			charger_ability.stop_momentum() // antigrief
 			return
 		if(HAS_TRAIT(src, TRAIT_CHARGING))
@@ -527,7 +527,7 @@
 		charger_ability.stop_momentum()
 		return
 	if(charger_ability.momentum > CCA_MOMENTUM_LOSS_QUARTER)
-		Destroy()
+		qdel(src)
 		charger_ability.stop_momentum()
 	charger_ability.stop_momentum()
 	// snowflake check for prison windows because they are funny and crooshers can croosh to space in the brief moment where the shutters are closing
@@ -538,7 +538,7 @@
 	if(!charger_ability.momentum)
 		charger_ability.stop_momentum()
 		return
-	Destroy()
+	qdel(src)
 	playsound(src, "sound/effects/metal_crash.ogg", 25, TRUE)
 	return XENO_CHARGE_TRY_MOVE // bulldoze that shitty bed and keep going, should run over the buckled mob aswell unless crusher turns last second for some reason
 
@@ -553,7 +553,7 @@
 		SPAN_XENODANGER("You ram \the [src]!")
 	)
 	playsound(src, "sound/effects/metalhit.ogg", 25, TRUE)
-	Destroy()
+	qdel(src)
 	if(QDELETED(src))
 		charger_ability.lose_momentum(CCA_MOMENTUM_LOSS_MIN) //Lose one turfs worth of speed
 		return XENO_CHARGE_TRY_MOVE

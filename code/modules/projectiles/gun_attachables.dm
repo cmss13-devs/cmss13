@@ -33,7 +33,7 @@ Defined in conflicts.dm of the #defines folder.
 	flags_atom =  FPRINT|CONDUCT
 	matter = list("metal" = 2000)
 	w_class = SIZE_SMALL
-	force = 1.0
+	force = 1
 	var/slot = null //"muzzle", "rail", "under", "stock", "special"
 
 	/*
@@ -102,13 +102,13 @@ Defined in conflicts.dm of the #defines folder.
 	else
 		. = ..()
 
-/obj/item/attachable/proc/can_be_attached_to_gun(var/mob/user, var/obj/item/weapon/gun/G)
+/obj/item/attachable/proc/can_be_attached_to_gun(mob/user, obj/item/weapon/gun/G)
 	if(G.attachable_allowed && !(type in G.attachable_allowed) )
 		to_chat(user, SPAN_WARNING("[src] doesn't fit on [G]!"))
 		return FALSE
 	return TRUE
 
-/obj/item/attachable/proc/Attach(var/obj/item/weapon/gun/G)
+/obj/item/attachable/proc/Attach(obj/item/weapon/gun/G)
 	if(!istype(G)) return //Guns only
 
 	/*
@@ -166,7 +166,7 @@ Defined in conflicts.dm of the #defines folder.
 		// Apply bullet traits from attachment to gun's current projectile
 		G.in_chamber.apply_bullet_trait(L)
 
-/obj/item/attachable/proc/Detach(var/mob/user, var/obj/item/weapon/gun/detaching_gub)
+/obj/item/attachable/proc/Detach(mob/user, obj/item/weapon/gun/detaching_gub)
 	if(!istype(detaching_gub)) return //Guns only
 
 	detaching_gub.on_detach(user)
@@ -510,7 +510,7 @@ Defined in conflicts.dm of the #defines folder.
 	..()
 	G.attachable_offset["muzzle_x"] = 27
 
-/obj/item/attachable/mateba/Detach(var/mob/user, var/obj/item/weapon/gun/detaching_gub)
+/obj/item/attachable/mateba/Detach(mob/user, obj/item/weapon/gun/detaching_gub)
 	..()
 	detaching_gub.attachable_offset["muzzle_x"] = 20
 
@@ -643,7 +643,7 @@ Defined in conflicts.dm of the #defines folder.
 	attached_item.update_icon()
 	attached_item = null
 
-/obj/item/attachable/flashlight/ui_action_click(var/mob/owner, var/obj/item/holder)
+/obj/item/attachable/flashlight/ui_action_click(mob/owner, obj/item/holder)
 	if(!attached_item)
 		. = ..()
 	else
@@ -743,17 +743,17 @@ Defined in conflicts.dm of the #defines folder.
 	accuracy_mod = -HIT_ACCURACY_MULT_TIER_1
 	accuracy_unwielded_mod = -HIT_ACCURACY_MULT_TIER_1
 
-/obj/item/attachable/magnetic_harness/can_be_attached_to_gun(var/mob/user, var/obj/item/weapon/gun/G)
+/obj/item/attachable/magnetic_harness/can_be_attached_to_gun(mob/user, obj/item/weapon/gun/G)
 	if(SEND_SIGNAL(G, COMSIG_DROP_RETRIEVAL_CHECK) & COMPONENT_DROP_RETRIEVAL_PRESENT)
 		to_chat(user, SPAN_WARNING("[G] already has a retrieval system installed!"))
 		return FALSE
 	return ..()
 
-/obj/item/attachable/magnetic_harness/Attach(var/obj/item/weapon/gun/G)
+/obj/item/attachable/magnetic_harness/Attach(obj/item/weapon/gun/G)
 	. = ..()
 	G.AddElement(/datum/element/drop_retrieval/gun, retrieval_slot)
 
-/obj/item/attachable/magnetic_harness/Detach(var/mob/user, var/obj/item/weapon/gun/detaching_gub)
+/obj/item/attachable/magnetic_harness/Detach(mob/user, obj/item/weapon/gun/detaching_gub)
 	. = ..()
 	detaching_gub.RemoveElement(/datum/element/drop_retrieval/gun, retrieval_slot)
 
@@ -770,13 +770,13 @@ Defined in conflicts.dm of the #defines folder.
 	..()
 	select_gamemode_skin(type)
 
-/obj/item/attachable/magnetic_harness/lever_sling/Attach(var/obj/item/weapon/gun/G) //this is so the sling lines up correctly
+/obj/item/attachable/magnetic_harness/lever_sling/Attach(obj/item/weapon/gun/G) //this is so the sling lines up correctly
 	. = ..()
 	G.attachable_offset["under_x"] = 15
 	G.attachable_offset["under_y"] = 12
 
 
-/obj/item/attachable/magnetic_harness/lever_sling/Detach(var/mob/user, var/obj/item/weapon/gun/detaching_gub)
+/obj/item/attachable/magnetic_harness/lever_sling/Detach(mob/user, obj/item/weapon/gun/detaching_gub)
 	. = ..()
 	detaching_gub.attachable_offset["under_x"] = 24
 	detaching_gub.attachable_offset["under_y"] = 16
@@ -1108,7 +1108,7 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/stock/shotgun
 	name = "\improper M37 wooden stock"
-	desc = "A non-standard heavy wooden stock for the M37 Shotgun. More cumbersome than the standard issue stakeout, but reduces recoil and improves accuracy. Allegedly makes a pretty good club in a fight too.."
+	desc = "A non-standard heavy wooden stock for the M37 Shotgun. More cumbersome than the standard issue stakeout, but reduces recoil and improves accuracy. Allegedly makes a pretty good club in a fight too."
 	slot = "stock"
 	icon_state = "stock"
 	wield_delay_mod = WIELD_DELAY_FAST
@@ -1708,7 +1708,7 @@ Defined in conflicts.dm of the #defines folder.
 	G.update_overlays(src, "stock")
 
 // If it is activated/folded when we attach it, re-apply the things
-/obj/item/attachable/stock/revolver/Attach(var/obj/item/weapon/gun/G)
+/obj/item/attachable/stock/revolver/Attach(obj/item/weapon/gun/G)
 	..()
 	var/obj/item/weapon/gun/revolver/m44/R = G
 	if(!istype(R))
@@ -1721,7 +1721,7 @@ Defined in conflicts.dm of the #defines folder.
 		R.flags_equip_slot &= ~SLOT_WAIST //Can't wear it on the belt slot with stock on when we attach it first time.
 
 // When taking it off we want to undo everything not statwise
-/obj/item/attachable/stock/revolver/Detach(var/mob/user, var/obj/item/weapon/gun/detaching_gub)
+/obj/item/attachable/stock/revolver/Detach(mob/user, obj/item/weapon/gun/detaching_gub)
 	..()
 	var/obj/item/weapon/gun/revolver/m44/R = detaching_gub
 	if(!istype(R))
@@ -1866,7 +1866,7 @@ Defined in conflicts.dm of the #defines folder.
 		var/obj/item/weapon/gun/gun = loc
 		gun.update_attachable(slot)
 
-/obj/item/attachable/attached_gun/grenade/proc/pump(var/mob/user) //for want of a better proc name
+/obj/item/attachable/attached_gun/grenade/proc/pump(mob/user) //for want of a better proc name
 	if(breech_open) // if it was ALREADY open
 		breech_open = FALSE
 		cocked = TRUE // by closing the gun we have cocked it and readied it to fire
@@ -2197,7 +2197,7 @@ Defined in conflicts.dm of the #defines folder.
 		return
 	. += SPAN_WARNING("It's empty.")
 
-/obj/item/attachable/attached_gun/extinguisher/handle_attachment_description(var/slot)
+/obj/item/attachable/attached_gun/extinguisher/handle_attachment_description(slot)
 	return "It has a [icon2html(src)] [name] ([internal_extinguisher.reagents.total_volume]/[internal_extinguisher.max_water]) mounted underneath.<br>"
 
 /obj/item/attachable/attached_gun/extinguisher/New()
@@ -2252,7 +2252,7 @@ Defined in conflicts.dm of the #defines folder.
 		'sound/weapons/gun_flamethrower3.ogg'
 	)
 
-/obj/item/attachable/attached_gun/flamer_nozzle/handle_attachment_description(var/slot)
+/obj/item/attachable/attached_gun/flamer_nozzle/handle_attachment_description(slot)
 	return "It has a [icon2html(src)] [name] mounted beneath the barrel.<br>"
 
 /obj/item/attachable/attached_gun/flamer_nozzle/activate_attachment(obj/item/weapon/gun/G, mob/living/user, turn_off)
@@ -2412,7 +2412,7 @@ Defined in conflicts.dm of the #defines folder.
 
 	RegisterSignal(G, COMSIG_ITEM_DROPPED, PROC_REF(handle_drop))
 
-/obj/item/attachable/bipod/Detach(var/mob/user, var/obj/item/weapon/gun/detaching_gub)
+/obj/item/attachable/bipod/Detach(mob/user, obj/item/weapon/gun/detaching_gub)
 	UnregisterSignal(detaching_gub, COMSIG_ITEM_DROPPED)
 
 	if(bipod_deployed)
@@ -2503,7 +2503,7 @@ Defined in conflicts.dm of the #defines folder.
 
 	return 1
 
-/obj/item/attachable/bipod/proc/handle_mob_move_or_look(mob/living/mover, var/actually_moving, var/direction, var/specific_direction)
+/obj/item/attachable/bipod/proc/handle_mob_move_or_look(mob/living/mover, actually_moving, direction, specific_direction)
 	SIGNAL_HANDLER
 
 	if(!actually_moving && (specific_direction & initial_mob_dir)) // if you're facing north, but you're shooting north-east and end up facing east, you won't lose your bipod
@@ -2555,7 +2555,7 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/eva_doodad
 	name = "RXF-M5 EVA beam projector"
-	desc = "A strange little doodad that projects an invisible beam that the EVA pistol's actual laser travels in, used as a focus that slightly weakens the laser's intensity. Or at least that's what the manual said.."
+	desc = "A strange little doodad that projects an invisible beam that the EVA pistol's actual laser travels in, used as a focus that slightly weakens the laser's intensity. Or at least that's what the manual said."
 	icon_state = "rxfm5_eva_doodad"
 	attach_icon = "rxfm5_eva_doodad_a"
 	slot = "under"

@@ -18,7 +18,7 @@
 			return
 		add_underlay(T, dir)
 
-/obj/structure/pipes/valve/hide(var/invis)
+/obj/structure/pipes/valve/hide(invis)
 	update_underlays()
 
 /obj/structure/pipes/valve/open
@@ -61,7 +61,7 @@
 
 		add_underlay(T, dir)
 
-/obj/structure/pipes/tvalve/hide(var/invis)
+/obj/structure/pipes/tvalve/hide(invis)
 	update_underlays()
 
 /obj/structure/pipes/tvalve/create_valid_directions()
@@ -117,5 +117,5 @@
 			return
 		add_underlay(T, dir)
 
-/obj/structure/pipes/portables_connector/hide(var/invis)
+/obj/structure/pipes/portables_connector/hide(invis)
 	update_underlays()

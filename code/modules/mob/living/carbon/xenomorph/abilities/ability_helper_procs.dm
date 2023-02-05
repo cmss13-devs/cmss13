@@ -161,7 +161,7 @@
 	playsound(loc, "sound/bullets/acid_impact1.ogg", 25)
 
 /proc/unroot_human(mob/living/carbon/H)
-	if (!isXenoOrHuman(H))
+	if (!isxeno_human(H))
 		return
 
 	H.frozen = 0
@@ -230,7 +230,7 @@
 			action.button.icon_state = "template"
 			break;
 
-/mob/living/carbon/xenomorph/proc/do_acid_spray_cone(var/turf/T, spray_type = /obj/effect/xenomorph/spray, range = 3)
+/mob/living/carbon/xenomorph/proc/do_acid_spray_cone(turf/T, spray_type = /obj/effect/xenomorph/spray, range = 3)
 	set waitfor = FALSE
 
 	var/facing = get_cardinal_dir(src, T)

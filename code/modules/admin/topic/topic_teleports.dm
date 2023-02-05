@@ -1,4 +1,4 @@
-/datum/admins/proc/topic_teleports(var/href)
+/datum/admins/proc/topic_teleports(href)
 	switch(href)
 		if("jump_to_area")
 			var/area/choice = tgui_input_list(owner, "Pick an area to jump to:", "Jump", return_sorted_areas())

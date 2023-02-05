@@ -99,6 +99,7 @@
 		to_chat(user, SPAN_WARNING("This item is not suitable for the gibber!"))
 		return
 	var/mob/living/victim = grabbed.grabbed_thing
+
 	if(user.grab_level < GRAB_AGGRESSIVE && !istype(grabbed.grabbed_thing, /mob/living/carbon/xenomorph))
 		to_chat(user, SPAN_WARNING("You need a better grip to do that!"))
 		return
@@ -111,7 +112,7 @@
 	add_fingerprint(user)
 
 	///If someone's being LRP and doing funny chef shit, this lets admins know. This *shouldn't* flag preds, though.
-	if(ishuman(victim) && isHumanStrict(user) && !occupant)
+	if(ishuman(victim) && ishuman_strict(user) && !occupant)
 		var/turf/turf = get_turf(user)
 		var/area/area = get_area(user)
 		message_staff(FONT_SIZE_HUGE("ALERT: [user] ([user.key]) is trying to gib [victim] ([victim.key]) in [area.name] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[turf.x];Y=[turf.y];Z=[turf.z]'>JMP</a>)</font>"))

@@ -147,7 +147,7 @@
 	if(auto_open && istype(arriving_shuttle, /obj/docking_port/mobile/marine_dropship))
 		var/obj/docking_port/mobile/marine_dropship/dropship = arriving_shuttle
 		dropship.in_flyby = FALSE
-		dropship.control_doors("unlock", "all", force=TRUE)
+		dropship.control_doors("unlock", "all", force=FALSE)
 	if(is_ground_level(z) && !SSobjectives.first_drop_complete)
 		SSticker.mode.ds_first_landed(src)
 	if(xeno_announce)

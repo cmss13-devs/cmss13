@@ -71495,6 +71495,7 @@
 /area/almayer/shipboard/navigation)
 "sti" = (
 /obj/structure/closet/crate/trashcart,
+/obj/effect/spawner/random/balaclavas,
 /turf/open/floor/plating,
 /area/almayer/hull/lower_hull/l_f_p)
 "str" = (

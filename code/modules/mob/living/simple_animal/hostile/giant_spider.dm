@@ -40,8 +40,8 @@
 	icon_state = "nurse"
 	icon_living = "nurse"
 	icon_dead = "nurse_dead"
-	maxHealth = 40
-	health = 40
+	maxHealth = 75
+	health = 75
 	melee_damage_lower = 5
 	melee_damage_upper = 10
 	poison_per_bite = 10

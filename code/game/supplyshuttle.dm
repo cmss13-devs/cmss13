@@ -386,6 +386,8 @@ var/datum/controller/supply/supply_controller = new()
 
 	var/base_random_crate_interval = 10 //Every how many processing intervals do we get a random crates.
 
+	var/spider_infest_points = 0 // how many points a spider infestation has
+
 	var/crate_iteration = 0
 	//control
 	var/ordernum
@@ -514,7 +516,6 @@ var/datum/controller/supply/supply_controller = new()
 	var/area/area_shuttle = shuttle.get_location_area()
 	if(!area_shuttle)
 		return
-
 	// Sell crates.
 	for(var/obj/structure/closet/crate/C in area_shuttle)
 		points += points_per_crate
@@ -534,7 +535,6 @@ var/datum/controller/supply/supply_controller = new()
 				kill_mendoza()
 			black_market_sold_items[movable_atom.type] += 1
 			black_market_points += points_to_add
-
 		// Don't disintegrate humans! Maul their corpse instead. >:)
 		if(ishuman(movable_atom))
 			var/timer = 0.5 SECONDS
@@ -544,6 +544,8 @@ var/datum/controller/supply/supply_controller = new()
 
 		// Delete everything else.
 		else qdel(movable_atom)
+	if(spider_infest_points) // If there is somehow points to this, that mean there is a spider infestation triggered
+		spider_infest_asrs()
 
 /proc/maul_human(mob/living/carbon/human/mauled_human)
 
@@ -565,7 +567,7 @@ var/datum/controller/supply/supply_controller = new()
 		dropped_limb.droplimb(FALSE, FALSE, "machinery")
 
 //Buyin
-/datum/controller/supply/proc/buy()
+/datum/controller/supply/proc/buy() //////////////////////////////////////////////////////////////
 	var/area/area_shuttle = shuttle?.get_location_area()
 	if(!area_shuttle || !shoppinglist.len)
 		return
@@ -1132,6 +1134,13 @@ var/datum/controller/supply/supply_controller = new()
 		temp += SPAN_WARNING("See you..<BR>")
 		return
 
+	if(spider_infest_points)
+		temp += "Head's up, somethings crawlin' on the lift.<BR>"
+		temp += "... That reminds me, my pet spider gone missing a few weeks ago...<BR>"
+		if(spider_infest_points > 500)
+			temp += SPAN_WARNING("Holy shit! They got an entire hive on the lift! Barely managed to escape 'em, but you better watch out!<BR>")
+		if(spider_infest_points > 700)
+			temp += SPAN_WARNING("I never seen that many spiders before! Send that shit up and deal with it before they find me!<BR>")
 	var/rng = rand(1, 100) // Will only sometimes give messages
 	switch(rng)
 		if(1 to 5)
@@ -1248,6 +1257,56 @@ var/datum/controller/supply/supply_controller = new()
 		return
 
 	return TRUE
+
+
+/datum/controller/supply/proc/init_infestation(base_factor,multiplier)
+	spider_infest_points = round(base_factor * multiplier/10,25)
+
+/datum/controller/supply/proc/spider_infest_asrs()
+	var/buy_big = TRUE 		// These exist to evenly spread the points so it isn't all big ones or hunters
+	var/buy_hunter = TRUE
+	var/total_points = spider_infest_points + 25
+	var/list/turf/open/clear_turfs = list()
+	var/area/area_shuttle = shuttle?.get_location_area()
+
+	if(!area_shuttle)
+		return
+	for(var/turf/elevator_turfs in area_shuttle)
+		if(elevator_turfs.density || elevator_turfs.contents?.len)
+			continue
+		clear_turfs |= elevator_turfs
+
+	/*
+	"Purchase" big ones, then small ones so it evens out
+
+	*/
+	while(total_points > 0)
+		log_debug("ASRS infestation event spawn tick")
+		var/turf/chosen_turf = pick(clear_turfs)
+		if(total_points <= 225)
+			buy_big = FALSE
+		if(total_points <= 75)
+			buy_hunter = FALSE
+		if(total_points >= 75 && buy_big)
+			log_debug("ASRS infestation spawning big spider!")
+			new /mob/living/simple_animal/hostile/giant_spider(chosen_turf)
+			total_points -= 75
+		else if(total_points >= 50 && buy_hunter)
+			log_debug("ASRS infestation spawning hunter spider!")
+			new /mob/living/simple_animal/hostile/giant_spider/hunter(chosen_turf)
+			total_points -= 50
+		else if(total_points >= 25)
+			log_debug("ASRS infestation spawning Nurse spider!")
+			new /mob/living/simple_animal/hostile/giant_spider/nurse(chosen_turf)
+			new /obj/effect/spider/eggcluster(chosen_turf)
+			total_points -= 25
+		else
+			total_points = 0 //if we somehow aren't at zero already then end it
+		new /obj/effect/spider/spiderling(chosen_turf) // new spiderling for every tick, don't let em get lose!
+
+	spider_infest_points = FALSE // so we don't run it again
+
+
 
 /obj/structure/machinery/computer/supplycomp/proc/post_signal(command)
 

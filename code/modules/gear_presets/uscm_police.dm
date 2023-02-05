@@ -31,6 +31,8 @@
 	role_comm_title = "MP"
 	skills = /datum/skills/MP
 
+	minimap_icon = "mp"
+
 	utility_under = list(/obj/item/clothing/under/marine/mp)
 	utility_hat = list(/obj/item/clothing/head/beret/marine/mp)
 	utility_extra = list(/obj/item/clothing/head/cmcap, /obj/item/clothing/head/beret/cm, /obj/item/clothing/head/beret/cm/tan)
@@ -93,6 +95,8 @@
 	role_comm_title = "MW"
 	skills = /datum/skills/MW
 
+	minimap_icon = "warden"
+
 	utility_under = list(/obj/item/clothing/under/marine/warden)
 	utility_hat = list(/obj/item/clothing/head/beret/marine/mp/warden)
 	utility_extra = list(/obj/item/clothing/head/cmcap, /obj/item/clothing/head/beret/cm, /obj/item/clothing/head/beret/cm/tan)
@@ -150,6 +154,9 @@
 	paygrade = "MO2"
 	role_comm_title = "CMP"
 	skills = /datum/skills/CMP
+
+	minimap_icon = list("mp" = MINIMAP_ICON_COLOR_HEAD)
+	minimap_background = MINIMAP_ICON_BACKGROUND_CIC
 
 	utility_under = list(/obj/item/clothing/under/marine/officer/warrant)
 	utility_hat = list(/obj/item/clothing/head/beret/marine/mp/cmp)

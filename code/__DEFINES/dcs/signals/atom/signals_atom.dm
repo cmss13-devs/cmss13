@@ -25,3 +25,6 @@
 
 ///from /turf/ChangeTurf
 #define COMSIG_ATOM_TURF_CHANGE "movable_turf_change"
+
+///When the transform or an atom is varedited through vv topic.
+#define COMSIG_ATOM_VV_MODIFY_TRANSFORM "atom_vv_modify_transform"

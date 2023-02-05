@@ -103,3 +103,13 @@
 // From /proc/pushback()
 #define COMSIG_MOB_PUSHBACK "mob_pushback"
 	#define COMPONENT_CANCEL_PUSHBACK (1<<0)
+
+///from /mob/living/emote(): ()
+#define COMSIG_MOB_EMOTE "mob_emote"
+
+#define COMSIG_MOB_EMOTED(emote_key) "mob_emoted_[emote_key]"
+
+//from /mob/living/set_stat()
+#define COMSIG_MOB_STAT_SET_ALIVE "mob_stat_set_alive"
+//from /mob/living/set_stat()
+#define COMSIG_MOB_STAT_SET_DEAD "mob_stat_set_dead"

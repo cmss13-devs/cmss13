@@ -68,3 +68,14 @@
   stanalbatross:
   - bugfix: fixed a potential runtime in clothing.dm and added a better debug message
       for it.
+2023-02-05:
+  BeagleGaming1:
+  - bugfix: Changed layer of LV-624's tree so you can see the medical hud if marines
+      are hidden (dead) behind it
+  KiVts:
+  - bugfix: fixed bugs related to dropship matrices
+  harryob:
+  - refactor: the tacmap is now better, everywhere it appears, for the queen and cic
+  - ui: the orbit menu now has icons (from the minimap)
+  - rscadd: ghosts now get a minimap
+  - bugfix: extended now actually works, and doesn't spawn in inhuman abombinations

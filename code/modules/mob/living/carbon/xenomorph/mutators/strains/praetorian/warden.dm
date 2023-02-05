@@ -16,7 +16,7 @@
 		/datum/action/xeno_action/activable/warden_heal,
 		/datum/action/xeno_action/activable/prae_retrieve,
 		/datum/action/xeno_action/onclick/prae_switch_heal_type,
-		/datum/action/xeno_action/onclick/emit_pheromones
+		/datum/action/xeno_action/onclick/emit_pheromones,
 	)
 	behavior_delegate_type = /datum/behavior_delegate/praetorian_warden
 	keystone = TRUE

@@ -168,7 +168,7 @@
 			xeno.flick_attack_overlay(target, "slash")
 			target.last_damage_data = create_cause_data(xeno.caste_type, xeno)
 			log_attack("[key_name(xeno)] attacked [key_name(target)] with Flurry")
-			target.apply_armoured_damage(get_xeno_damage_slash(target, xeno.caste.melee_damage_upper), ARMOR_MELEE, BRUTE, xeno.zone_selected)
+			target.apply_armoured_damage(get_xeno_damage_slash(target, xeno.caste.melee_damage_upper), ARMOR_MELEE, BRUTE, rand_zone())
 			playsound(get_turf(target), 'sound/weapons/alien_claw_flesh4.ogg', 30, TRUE)
 			xeno.flick_heal_overlay(1 SECONDS, "#00B800")
 			xeno.gain_health(30)
@@ -251,8 +251,7 @@
 		apply_cooldown()
 		return
 
-	// Variables to buff if it's a direct aimed hit.
-	var/heal_amount = 30
+	// Variable to buff if it's a direct aimed hit.
 	var/slam_damage = get_xeno_damage_slash(hit_target, xeno.caste.melee_damage_upper)
 
 	// FX
@@ -263,7 +262,6 @@
 		to_chat(xeno, SPAN_XENOHIGHDANGER("You directly slam [hit_target] with your tail, throwing it back after impaling it on your tail!"))
 		playsound(hit_target,'sound/weapons/alien_tail_attack.ogg', 50, TRUE)
 
-		heal_amount *= 1.5
 		slam_damage *= 1.5
 
 		stab_direction = turn(get_dir(xeno, hit_target), 180)
@@ -318,6 +316,9 @@
 
 	var/mob/living/carbon/target_carbon = target_atom
 
+	if(xeno.can_not_harm(target_carbon))
+		return
+
 	if(!(target_carbon.knocked_out || target_carbon.stat == UNCONSCIOUS)) //called knocked out because for some reason .stat seems to have a delay .
 		to_chat(xeno, SPAN_XENOHIGHDANGER("You can only headbite an unconscious, adjacent target!"))
 		return
@@ -344,8 +345,8 @@
 	xeno.visible_message(SPAN_DANGER("[xeno] pierces [target_carbon]’s head with its inner jaw!"))
 	xeno.flick_attack_overlay(target_carbon, "headbite")
 	xeno.animation_attack_on(target_carbon, pixel_offset = 16)
-	target_carbon.apply_armoured_damage(200, ARMOR_MELEE, BRUTE, "head", 5) //DIE
-	target_carbon.death(create_cause_data("executed by headbite", xeno), FALSE)
+	target_carbon.apply_armoured_damage(60, ARMOR_MELEE, BRUTE, "head", 5) //DIE
+	target_carbon.death(create_cause_data("headbite execution", xeno), FALSE)
 	xeno.gain_health(150)
 	xeno.xeno_jitter(1 SECONDS)
 	xeno.flick_heal_overlay(3 SECONDS, "#00B800")

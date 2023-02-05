@@ -8,13 +8,13 @@
 		/datum/action/xeno_action/activable/secrete_resin,
 		/datum/action/xeno_action/onclick/choose_resin,
 		/datum/action/xeno_action/activable/corrosive_acid/weak,
-		/datum/action/xeno_action/activable/transfer_plasma
+		/datum/action/xeno_action/activable/transfer_plasma,
 	)
 	mutator_actions_to_add = list(
 		/datum/action/xeno_action/onclick/plant_weeds/gardener, // second macro
 		/datum/action/xeno_action/activable/resin_surge, // third macro
 		/datum/action/xeno_action/onclick/plant_resin_fruit/greater, // fourth macro
-		/datum/action/xeno_action/onclick/change_fruit
+		/datum/action/xeno_action/onclick/change_fruit,
 	)
 	keystone = TRUE
 	behavior_delegate_type = /datum/behavior_delegate/drone_gardener

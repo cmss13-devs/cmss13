@@ -543,6 +543,7 @@
 #include "code\datums\supply_packs\_supply_packs.dm"
 #include "code\datums\supply_packs\ammo.dm"
 #include "code\datums\supply_packs\attachments.dm"
+#include "code\datums\supply_packs\black_market.dm"
 #include "code\datums\supply_packs\clothing.dm"
 #include "code\datums\supply_packs\engineering.dm"
 #include "code\datums\supply_packs\explosives.dm"

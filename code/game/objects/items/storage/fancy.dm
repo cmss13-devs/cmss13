@@ -91,6 +91,7 @@
 	storage_slots = 6
 	icon_type = "crayon"
 	can_hold = list(/obj/item/toy/crayon)
+	black_market_value = 25
 
 /obj/item/storage/fancy/crayons/fill_preset_inventory()
 	new /obj/item/toy/crayon/red(src)
@@ -131,7 +132,7 @@
 		/obj/item/clothing/mask/cigarette,
 		/obj/item/clothing/mask/cigarette/ucigarette,
 		/obj/item/clothing/mask/cigarette/bcigarette,
-		/obj/item/tool/lighter
+		/obj/item/tool/lighter,
 	)
 	icon_type = "cigarette"
 	var/default_cig_type=/obj/item/clothing/mask/cigarette
@@ -233,6 +234,7 @@
 	storage_slots = 7
 	can_hold = list(/obj/item/clothing/mask/cigarette/cigar)
 	icon_type = "cigar"
+	black_market_value = 30
 	var/default_cigar_type = /obj/item/clothing/mask/cigarette/cigar
 
 /obj/item/storage/fancy/cigar/fill_preset_inventory()

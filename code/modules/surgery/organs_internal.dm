@@ -32,8 +32,8 @@ and organ transplant code which may come in handy in future but haven't been edi
 	tools = list(
 		/obj/item/stack/medical/advanced/bruise_pack = SURGERY_TOOL_MULT_IDEAL,
 		/obj/item/stack/medical/advanced/bruise_pack/predator = SURGERY_TOOL_MULT_SUBSTITUTE,
-		/obj/item/stack/medical/bruise_pack = SURGERY_TOOL_MULT_AWFUL
-		)
+		/obj/item/stack/medical/bruise_pack = SURGERY_TOOL_MULT_AWFUL,
+	)
 	time = 3 SECONDS
 	repeat_step = TRUE
 
@@ -116,9 +116,9 @@ and organ transplant code which may come in handy in future but haven't been edi
 
 /datum/surgery_step/internal/fix_organ_robotic //For artificial organs
 	allowed_tools = list(
-	/obj/item/stack/nanopaste = 100,   \
-	/obj/item/tool/surgery/bonegel = 30,  \
-	/obj/item/tool/screwdriver = 70, \
+		/obj/item/stack/nanopaste = 100,   \
+		/obj/item/tool/surgery/bonegel = 30,  \
+		/obj/item/tool/screwdriver = 70, \
 	)
 
 	min_duration = FIX_ORGAN_MIN_DURATION
@@ -428,8 +428,8 @@ and organ transplant code which may come in handy in future but haven't been edi
 
 /datum/surgery_step/internal/attach_organ
 	allowed_tools = list(
-	/obj/item/tool/surgery/FixOVein = 100, \
-	/obj/item/stack/cable_coil = 75
+		/obj/item/tool/surgery/FixOVein = 100, \
+		/obj/item/stack/cable_coil = 75
 	)
 
 	min_duration = FIXVEIN_MIN_DURATION

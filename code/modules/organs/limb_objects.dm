@@ -157,7 +157,7 @@
 									SPAN_WARNING("You cut [brainmob]'s head open with [W]!"))
 				to_chat(brainmob, SPAN_WARNING("[user] begins to cut open your head with [W]!"))
 
-				brain_op_stage = 3.0
+				brain_op_stage = 3
 			else
 				..()
 	else if(istype(W,/obj/item/tool/surgery/circular_saw))
@@ -182,7 +182,7 @@
 					brainmob.death(create_cause_data("brain extraction", user)) //brain mob doesn't survive outside a head
 				B.transfer_identity(brainmob)
 
-				brain_op_stage = 4.0
+				brain_op_stage = 4
 			else
 				..()
 	else

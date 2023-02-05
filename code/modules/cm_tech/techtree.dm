@@ -33,7 +33,7 @@
 	var/total_points = 0 // How many points we have earned total.
 	var/total_points_last_sitrep = 0 // The total points we had at the last announcement. Used to calculate how many points were earned since then.
 	var/points = INITIAL_STARTING_POINTS // Current points.
-	var/points_mult = 1.0 // Factor we earn points by. Increases based on current unlocked tech tier.
+	var/points_mult = 1 // Factor we earn points by. Increases based on current unlocked tech tier.
 
 	// UI Variables
 	var/ui_theme

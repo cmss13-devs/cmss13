@@ -59,6 +59,9 @@
 	///Default pixel y shifting for the atom's icon.
 	var/base_pixel_y = 0
 
+	///The color this atom will be if we choose to draw it on the minimap
+	var/minimap_color = MINIMAP_SOLID
+
 /atom/New(loc, ...)
 	var/do_initialize = SSatoms.initialized
 	if(do_initialize != INITIALIZATION_INSSATOMS)

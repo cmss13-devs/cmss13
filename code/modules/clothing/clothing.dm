@@ -44,14 +44,16 @@
 		return
 
 /obj/item/clothing/attack_hand(mob/user as mob)
-	if (drag_unequip && ishuman(usr) && src.loc == user) //make it harder to accidentally undress yourself
+	if(drag_unequip && ishuman(usr) && src.loc == user) //make it harder to accidentally undress yourself
 		return
-
 	..()
 
 /obj/item/clothing/proc/get_armor(armortype)
 	var/armor_total = 0
 	var/armor_count = 0
+	if(!isnum(armortype))
+		log_debug("Armortype parsed as non-number! ([armortype], mob: [src.loc]) @ clothing.dm line 56.")
+		return 0
 	if(armortype & ARMOR_MELEE)
 		armor_total += armor_melee
 		armor_count++

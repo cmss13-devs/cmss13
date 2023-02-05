@@ -123,7 +123,7 @@
 	H.regenerate_icons()
 
 	if(braindeath_on_decap)
-		brainmob.stat = DEAD
+		brainmob.set_stat(DEAD)
 		brainmob.death(cause)
 
 	GLOB.head_limb_list += src

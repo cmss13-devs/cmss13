@@ -4,6 +4,7 @@
 	icon = 'icons/obj/structures/machinery/shuttle-parts.dmi'
 	icon_state = "console"
 	req_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_DROPSHIP, ACCESS_WY_CORPORATE_DS)
+	unacidable = TRUE
 
 	// True if we are doing a flyby
 	var/is_set_flyby = FALSE

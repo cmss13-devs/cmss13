@@ -5,7 +5,7 @@
 #define MENU_YAUTJA "yautja"
 #define MENU_MENTOR "mentor"
 #define MENU_SETTINGS "settings"
-#define MENU_ERT "ert"
+#define MENU_SPECIAL "special"
 
 var/list/preferences_datums = list()
 
@@ -100,6 +100,8 @@ var/const/MAX_SAVE_SLOTS = 10
 	var/commander_sidearm = "Mateba"
 	//SEA specific preferences
 	var/sea_path = "Command"
+
+	var/preferred_survivor_variant = ANY_SURVIVOR
 
 	//WL Council preferences.
 	var/yautja_status = WHITELIST_NORMAL
@@ -240,7 +242,7 @@ var/const/MAX_SAVE_SLOTS = 10
 	real_name = random_name(gender)
 	gear = list()
 
-/datum/preferences/proc/client_reconnected(var/client/C)
+/datum/preferences/proc/client_reconnected(client/C)
 	owner = C
 	macros.owner = C
 
@@ -296,7 +298,7 @@ var/const/MAX_SAVE_SLOTS = 10
 	if(RoleAuthority.roles_whitelist[user.ckey] & WHITELIST_MENTOR)
 		dat += "<a[current_menu == MENU_MENTOR ? " class='linkOff'" : ""] href=\"byond://?src=\ref[user];preference=change_menu;menu=[MENU_MENTOR]\"><b>Mentor</b></a> - "
 	dat += "<a[current_menu == MENU_SETTINGS ? " class='linkOff'" : ""] href=\"byond://?src=\ref[user];preference=change_menu;menu=[MENU_SETTINGS]\"><b>Settings</b></a> - "
-	dat += "<a[current_menu == MENU_ERT ? " class='linkOff'" : ""] href=\"byond://?src=\ref[user];preference=change_menu;menu=[MENU_ERT]\"><b>ERT</b></a>"
+	dat += "<a[current_menu == MENU_SPECIAL ? " class='linkOff'" : ""] href=\"byond://?src=\ref[user];preference=change_menu;menu=[MENU_SPECIAL]\"><b>Special Roles</b></a>"
 	dat += "</center>"
 
 	dat += "<hr>"
@@ -602,7 +604,7 @@ var/const/MAX_SAVE_SLOTS = 10
 			dat += "<b>Toggle Vendors Vending to Hands: \
 					</b> <a href='?_src_=prefs;preference=toggle_prefs;flag=[TOGGLE_VEND_ITEM_TO_HAND]'><b>[toggle_prefs & TOGGLE_VEND_ITEM_TO_HAND ? "On" : "Off"]</b></a><br>"
 			dat += "<a href='?src=\ref[src];action=proccall;procpath=/client/proc/switch_item_animations'>Toggle Item Animations Detail Level</a><br>"
-		if(MENU_ERT) //wart
+		if(MENU_SPECIAL) //wart
 			dat += "<div id='column1'>"
 			dat += "<h2><b><u>ERT Settings:</u></b></h2>"
 			dat += "<b>Spawn as Leader:</b> <a href='?_src_=prefs;preference=toggles_ert;flag=[PLAY_LEADER]'><b>[toggles_ert & PLAY_LEADER ? "Yes" : "No"]</b></a><br>"
@@ -613,6 +615,11 @@ var/const/MAX_SAVE_SLOTS = 10
 			if(RoleAuthority.roles_whitelist[user.ckey] & WHITELIST_SYNTHETIC)
 				dat += "<b>Spawn as Synth:</b> <a href='?_src_=prefs;preference=toggles_ert;flag=[PLAY_SYNTH]'><b>[toggles_ert & PLAY_SYNTH ? "Yes" : "No"]</b></a><br>"
 			dat += "<b>Spawn as Miscellaneous:</b> <a href='?_src_=prefs;preference=toggles_ert;flag=[PLAY_MISC]'><b>[toggles_ert & PLAY_MISC ? "Yes" : "No"]</b></a><br>"
+			dat += "</div>"
+
+			dat += "<div id='column2'>"
+			dat += "<h2><b><u>Survivor Settings:</u></b></h2>"
+			dat += "<b>Preferred Survivor Variant:</b> <a href='?_src_=prefs;preference=preferred_survivor_variant;task=input'><b>[preferred_survivor_variant]</b></a>"
 			dat += "</div>"
 
 	dat += "</div></body>"
@@ -641,7 +648,7 @@ var/const/MAX_SAVE_SLOTS = 10
 
 	var/list/active_role_names = GLOB.gamemode_roles[GLOB.master_mode]
 	if(!active_role_names)
-		active_role_names = ROLES_REGULAR_ALL
+		active_role_names = ROLES_DISTRESS_SIGNAL
 
 	var/datum/job/lastJob
 	for(var/role_name as anything in active_role_names)
@@ -796,7 +803,7 @@ var/const/MAX_SAVE_SLOTS = 10
 		var/datum/job/J = RoleAuthority.roles_by_path[role]
 		job_preference_list[J.title] = NEVER_PRIORITY
 
-/datum/preferences/proc/get_job_priority(var/J)
+/datum/preferences/proc/get_job_priority(J)
 	if(!J)
 		return FALSE
 
@@ -805,7 +812,7 @@ var/const/MAX_SAVE_SLOTS = 10
 
 	return job_preference_list[J]
 
-/datum/preferences/proc/SetJobDepartment(var/datum/job/J, var/priority)
+/datum/preferences/proc/SetJobDepartment(datum/job/J, priority)
 	if(!J || priority < 0 || priority > 4)
 		return FALSE
 
@@ -1549,6 +1556,12 @@ var/const/MAX_SAVE_SLOTS = 10
 							religion = strip_html(raw_choice) // This only updates itself in the UI when another change is made, eg. save slot or changing other char settings.
 						return
 					religion = choice
+
+				if("preferred_survivor_variant")
+					var/new_preferred_survivor_variant = tgui_input_list(user, "Choose your preferred survivor variant:", "Preferred Survivor Variant", SURVIVOR_VARIANT_LIST)
+					if(!new_preferred_survivor_variant)
+						return
+					preferred_survivor_variant = new_preferred_survivor_variant
 		else
 			switch(href_list["preference"])
 				if("publicity")
@@ -2111,4 +2124,4 @@ var/const/MAX_SAVE_SLOTS = 10
 #undef MENU_YAUTJA
 #undef MENU_MENTOR
 #undef MENU_SETTINGS
-#undef MENU_ERT
+#undef MENU_SPECIAL

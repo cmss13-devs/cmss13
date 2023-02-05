@@ -32,7 +32,7 @@
 
 
 //This is used by both the whisper verb and human/say() to handle whispering
-/mob/living/carbon/human/proc/whisper_say(var/message, var/datum/language/speaking = null, var/alt_name="", var/verb="whispers")
+/mob/living/carbon/human/proc/whisper_say(message, datum/language/speaking = null, alt_name="", verb="whispers")
 	var/message_range = 1
 	var/eavesdropping_range = 2
 	var/watching_range = 5

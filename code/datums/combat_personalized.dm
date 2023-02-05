@@ -110,7 +110,7 @@
 	armor_integrity_damage_mult = 4
 	//Xeno has low randomness of armor
 	armor_random_range = 10
-	armor_ignore_integrity = 1
+	armor_ignore_integrity = TRUE
 
 /datum/combat_configuration/xeno/ranged
 
@@ -124,7 +124,7 @@
 /datum/combat_configuration/xeno/explosive
 	armor_steps = 10
 	armor_minimal_efficiency = 0
-	damage_initial_multiplier = 2.0
+	damage_initial_multiplier = 2
 	armor_integrity_damage_mult = 4
 
 /datum/combat_configuration/xeno/explosive/small

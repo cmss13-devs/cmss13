@@ -17,6 +17,14 @@
 
 	can_be_near_defense = TRUE
 
+	choice_categories = list(
+		SENTRY_CATEGORY_IFF = list(FACTION_USCM, FACTION_WEYLAND, FACTION_HUMAN),
+	)
+
+	selected_categories = list(
+		SENTRY_CATEGORY_IFF = FACTION_USCM,
+	)
+
 
 /obj/structure/machinery/defenses/bell_tower/Initialize()
 	. = ..()
@@ -58,7 +66,7 @@
 /obj/structure/machinery/defenses/bell_tower/proc/clear_last_mob_activated()
 	last_mob_activated = null
 
-/obj/structure/machinery/defenses/bell_tower/proc/mob_crossed(var/mob/M)
+/obj/structure/machinery/defenses/bell_tower/proc/mob_crossed(mob/M)
 	playsound(loc, 'sound/misc/bell.ogg', 50, 0, 50)
 
 /obj/structure/machinery/defenses/bell_tower/Destroy()
@@ -79,7 +87,7 @@
 	var/obj/structure/machinery/defenses/bell_tower/linked_bell
 	var/faction = FACTION_LIST_MARINE
 
-/obj/effect/bell_tripwire/New(var/turf/T, var/faction = null)
+/obj/effect/bell_tripwire/New(turf/T, faction = null)
 	..(T)
 	if(faction)
 		src.faction = faction
@@ -90,7 +98,7 @@
 		linked_bell = null
 	. = ..()
 
-/obj/effect/bell_tripwire/Crossed(var/atom/movable/A)
+/obj/effect/bell_tripwire/Crossed(atom/movable/A)
 	if(!linked_bell)
 		qdel(src)
 		return
@@ -253,7 +261,7 @@
 	if(!targets)
 		return
 
-	for(var/mob/living/carbon/Xenomorph/X in targets)
+	for(var/mob/living/carbon/xenomorph/X in targets)
 		to_chat(X, SPAN_XENOWARNING("Augh! You are slowed by the incessant ringing!"))
 		X.set_effect(slowdown_amount, SUPERSLOW)
 		playsound(X, 'sound/misc/bell.ogg', 25, 0, 13)

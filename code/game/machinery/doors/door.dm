@@ -4,11 +4,12 @@
 	desc = "It opens and closes."
 	icon = 'icons/obj/structures/doors/Doorint.dmi'
 	icon_state = "door1"
-	anchored = 1
+	anchored = TRUE
 	opacity = TRUE
 	density = TRUE
 	throwpass = 0
 	layer = DOOR_OPEN_LAYER
+	minimap_color = MINIMAP_DOOR
 	var/open_layer = DOOR_OPEN_LAYER
 	var/closed_layer = DOOR_CLOSED_LAYER
 	var/id = ""
@@ -52,7 +53,7 @@
 		filler = null
 	density = FALSE
 
-/obj/structure/machinery/door/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/obj/structure/machinery/door/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_can_pass_all = NONE
@@ -72,6 +73,12 @@
 
 //process()
 	//return
+
+/obj/structure/machinery/door/proc/borders_space()
+	for(var/turf/target in range(1, src))
+		if(istype(target, /turf/open/space))
+			return TRUE
+	return FALSE
 
 /obj/structure/machinery/door/Collided(atom/movable/AM)
 	if(panel_open || operating) return
@@ -206,7 +213,7 @@
 	return
 
 
-/obj/structure/machinery/door/proc/open(var/forced=0)
+/obj/structure/machinery/door/proc/open(forced=0)
 	if(!density) return 1
 	if(operating > 0 || !loc) return
 	if(!operating) operating = 1
@@ -253,7 +260,7 @@
 	return 1
 
 
-/obj/structure/machinery/door/proc/update_flags_heat_protection(var/turf/source)
+/obj/structure/machinery/door/proc/update_flags_heat_protection(turf/source)
 
 
 /obj/structure/machinery/door/proc/autoclose()

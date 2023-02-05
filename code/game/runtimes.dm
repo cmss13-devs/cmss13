@@ -12,7 +12,12 @@ GLOBAL_REAL(runtime_hashes, /list)
 GLOBAL_REAL(early_init_runtimes, /list)
 GLOBAL_REAL_VAR(early_init_runtimes_count)
 
-/world/Error(var/exception/E)
+GLOBAL_VAR_INIT(total_runtimes, GLOB.total_runtimes || 0)
+GLOBAL_VAR_INIT(total_runtimes_skipped, 0)
+
+/world/Error(exception/E)
+	GLOB.total_runtimes++
+
 	..()
 	if(!runtime_hashes)
 		runtime_hashes = list()

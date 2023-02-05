@@ -37,7 +37,6 @@ block( \
 #define MAP_CORSAT "CORSAT" // Highpop only
 #define MAP_KUTJEVO "Kutjevo Refinery"
 #define MAP_ICE_COLONY_V3 "Shivas Snowball" //Ice Rework, low pop enabled.
-#define MAP_HAUNTED_HOUSE_V2 "Haunted House V2"
 #define MAP_RUNTIME "USS Runtime"
 #define MAP_LV522_CHANCES_CLAIM "LV-522 Chance's Claim" // Highpop Only
 #define MAP_NEW_VARADERO "New Varadero"//ice colony underground but as its own map
@@ -498,7 +497,7 @@ block( \
 #define ALMAYER_FORE_BOUNDARY 121
 #define ALMAYER_AFT_BOUNDARY 197
 
-/proc/get_accurate_dist(var/turf/A, var/turf/B)
+/proc/get_accurate_dist(turf/A, turf/B)
 	var/dist
 	if(!A || !B)
 		dist = 0

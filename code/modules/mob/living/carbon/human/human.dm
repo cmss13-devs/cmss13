@@ -21,7 +21,7 @@
 	if(SSticker?.mode?.hardcore)
 		hardcore = TRUE //For WO disposing of corpses
 
-/mob/living/carbon/human/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/mob/living/carbon/human/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_pass = PASS_MOB_IS_HUMAN
@@ -52,7 +52,6 @@
 	stamina = new /datum/stamina(src)
 
 /mob/living/carbon/human/Destroy()
-
 	remove_from_all_mob_huds()
 	assigned_equipment_preset = null
 	GLOB.human_mob_list -= src
@@ -122,7 +121,7 @@
 		if(eta_status)
 			. += "Evacuation: [eta_status]"
 
-/mob/living/carbon/human/ex_act(var/severity, var/direction, var/datum/cause_data/cause_data)
+/mob/living/carbon/human/ex_act(severity, direction, datum/cause_data/cause_data)
 	if(lying)
 		severity *= EXPLOSION_PRONE_MULTIPLIER
 
@@ -304,7 +303,7 @@
 
 // called when something steps onto a human
 // this handles mulebots and vehicles
-/mob/living/carbon/human/Crossed(var/atom/movable/AM)
+/mob/living/carbon/human/Crossed(atom/movable/AM)
 	if(istype(AM, /obj/structure/machinery/bot/mulebot))
 		var/obj/structure/machinery/bot/mulebot/MB = AM
 		MB.RunOver(src)
@@ -316,7 +315,7 @@
 
 //gets assignment from ID or ID inside PDA or PDA itself
 //Useful when player do something with computers
-/mob/living/carbon/human/proc/get_assignment(var/if_no_id = "No id", var/if_no_job = "No job")
+/mob/living/carbon/human/proc/get_assignment(if_no_id = "No id", if_no_job = "No job")
 	var/obj/item/card/id/id = wear_id
 	if(istype(id))
 		. = id.assignment
@@ -328,7 +327,7 @@
 
 //gets name from ID or ID inside PDA or PDA itself
 //Useful when player do something with computers
-/mob/living/carbon/human/proc/get_authentification_name(var/if_no_id = "Unknown")
+/mob/living/carbon/human/proc/get_authentification_name(if_no_id = "Unknown")
 	var/obj/item/card/id/id = wear_id
 	if(istype(id))
 		. = id.registered_name
@@ -366,7 +365,7 @@
 
 //gets name from ID or PDA itself, ID inside PDA doesn't matter
 //Useful when player is being seen by other mobs
-/mob/living/carbon/human/proc/get_id_name(var/if_no_id = "Unknown")
+/mob/living/carbon/human/proc/get_id_name(if_no_id = "Unknown")
 	. = if_no_id
 	if(wear_id)
 		var/obj/item/card/id/I = wear_id.GetID()
@@ -381,7 +380,7 @@
 
 //Removed the horrible safety parameter. It was only being used by ninja code anyways.
 //Now checks siemens_coefficient of the affected area by default
-/mob/living/carbon/human/electrocute_act(var/shock_damage, var/obj/source, var/base_siemens_coeff = 1.0, var/def_zone = null)
+/mob/living/carbon/human/electrocute_act(shock_damage, obj/source, base_siemens_coeff = 1.0, def_zone = null)
 	if(status_flags & GODMODE) return FALSE //godmode
 
 	if(!def_zone)
@@ -926,7 +925,7 @@
 	return number
 
 
-/mob/living/carbon/human/abiotic(var/full_body = 0)
+/mob/living/carbon/human/abiotic(full_body = 0)
 	if(full_body && ((l_hand && !( l_hand.flags_item & ITEM_ABSTRACT)) || (r_hand && !( r_hand.flags_item & ITEM_ABSTRACT)) || (back || wear_mask || head || shoes || w_uniform || wear_suit || glasses || wear_l_ear || wear_r_ear || gloves)))
 		return TRUE
 
@@ -951,7 +950,7 @@
 	if(!lastpuke)
 		lastpuke = 1
 		to_chat(src, SPAN_WARNING("You feel nauseous..."))
-		addtimer(CALLBACK(GLOBAL_PROC, PROC_REF(to_chat), src, "You feel like you are about to throw up!"), 15 SECONDS)
+		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), src, "You feel like you are about to throw up!"), 15 SECONDS)
 		addtimer(CALLBACK(src, PROC_REF(do_vomit)), 25 SECONDS)
 
 /mob/living/carbon/human/proc/do_vomit()
@@ -1009,7 +1008,7 @@
 	//Remove any larva.
 	var/obj/item/alien_embryo/A = locate() in src
 	if(A)
-		var/mob/living/carbon/Xenomorph/Larva/L = locate() in src //if the larva was fully grown, ready to burst.
+		var/mob/living/carbon/xenomorph/larva/L = locate() in src //if the larva was fully grown, ready to burst.
 		if(L)
 			qdel(L)
 		qdel(A)
@@ -1029,7 +1028,7 @@
 		L.damage = L.min_bruised_damage
 
 
-/mob/living/carbon/human/get_visible_implants(var/class = 0)
+/mob/living/carbon/human/get_visible_implants(class = 0)
 	var/list/visible_objects = list()
 	for(var/obj/item/W in embedded_items)
 		if(!istype(W, /obj/item/shard/shrapnel))
@@ -1153,7 +1152,7 @@
 		for(var/datum/cm_objective/Objective in src.mind.objective_memory.disks)
 			src.mind.objective_memory.disks -= Objective
 
-/mob/living/carbon/human/proc/set_species(var/new_species, var/default_colour)
+/mob/living/carbon/human/proc/set_species(new_species, default_colour)
 	if(!new_species)
 		new_species = "Human"
 
@@ -1176,14 +1175,14 @@
 		//additional things to change when we're no longer that species
 		oldspecies.post_species_loss(src)
 		if(oldspecies.weed_slowdown_mult != 1)
-			UnregisterSignal(src, COMSIG_MOB_WEEDS_CROSSED)
+			UnregisterSignal(src, COMSIG_MOB_WEED_SLOWDOWN)
 
 	mob_flags = species.mob_flags
 	for(var/T in species.mob_inherent_traits)
 		ADD_TRAIT(src, T, TRAIT_SOURCE_SPECIES)
 
 	if(species.weed_slowdown_mult != 1)
-		RegisterSignal(src, COMSIG_MOB_WEEDS_CROSSED, PROC_REF(handle_weed_slowdown))
+		RegisterSignal(src, COMSIG_MOB_WEED_SLOWDOWN, PROC_REF(handle_weed_slowdown))
 
 	species.create_organs(src)
 
@@ -1283,7 +1282,7 @@
 
 
 //very similar to xeno's queen_locator() but this is for locating squad leader.
-/mob/living/carbon/human/proc/locate_squad_leader(var/tracker_setting = TRACKER_SL)
+/mob/living/carbon/human/proc/locate_squad_leader(tracker_setting = TRACKER_SL)
 	if(!hud_used)
 		return
 
@@ -1537,7 +1536,7 @@
 
 
 /mob/living/carbon/human/resist_fire()
-	if(isYautja(src))
+	if(isyautja(src))
 		adjust_fire_stacks(HUNTER_FIRE_RESIST_AMOUNT, min_stacks = 0)
 		apply_effect(1, WEAKEN) // actually 0.5
 		spin(5, 1)
@@ -1561,7 +1560,7 @@
 
 /mob/living/carbon/human/resist_acid()
 	var/sleep_amount = 1
-	if(isYautja(src))
+	if(isyautja(src))
 		apply_effect(1, WEAKEN)
 		spin(10, 2)
 		visible_message(SPAN_DANGER("[src] expertly rolls on the floor!"), \
@@ -1652,7 +1651,7 @@
 		to_chat(src, SPAN_NOTICE(" You successfully remove [restraint]."))
 		drop_inv_item_on_ground(restraint)
 
-/mob/living/carbon/human/equip_to_appropriate_slot(obj/item/W, ignore_delay = 1, var/list/slot_equipment_priority)
+/mob/living/carbon/human/equip_to_appropriate_slot(obj/item/W, ignore_delay = 1, list/slot_equipment_priority)
 	if(species)
 		slot_equipment_priority = species.slot_equipment_priority
 	return ..(W,ignore_delay,slot_equipment_priority)
@@ -1664,3 +1663,11 @@
 	. += "<option value='?_src_=vars;setspecies=\ref[src]'>Set Species</option>"
 	. += "<option value='?_src_=vars;selectequipment=\ref[src]'>Select Equipment</option>"
 	. += "<option value='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminspawncookie=\ref[src]'>Give Cookie</option>"
+
+/mob/living/carbon/human/throw_item(atom/target)
+	if(!throw_allowed)
+		var/obj/item/I = get_active_hand()
+		if(I.throwforce) // for hurty stuff only
+			to_chat(src, SPAN_DANGER("You are currently unable to throw harmful items."))
+			return
+	. = ..()

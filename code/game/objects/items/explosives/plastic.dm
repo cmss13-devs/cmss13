@@ -166,7 +166,7 @@
 	active = FALSE
 	update_icon()
 
-/obj/item/explosive/plastic/proc/can_place(var/mob/user, var/atom/target)
+/obj/item/explosive/plastic/proc/can_place(mob/user, atom/target)
 	if(istype(target, /obj/structure/ladder) || istype(target, /obj/item) || istype(target, /turf/open) || istype(target, /obj/structure/barricade) || istype(target, /obj/structure/closet/crate))
 		return FALSE
 
@@ -212,7 +212,7 @@
 
 	return TRUE
 
-/obj/item/explosive/plastic/breaching_charge/can_place(var/mob/user, var/atom/target)
+/obj/item/explosive/plastic/breaching_charge/can_place(mob/user, atom/target)
 	if(!is_type_in_list(target, breachable))//only items on the list are allowed
 		to_chat(user, SPAN_WARNING("You cannot plant \the [name] on \the [target]!"))
 		return FALSE
@@ -229,7 +229,7 @@
 
 	return TRUE
 
-/obj/item/explosive/plastic/proc/calculate_pixel_offset(var/mob/user, var/atom/target)
+/obj/item/explosive/plastic/proc/calculate_pixel_offset(mob/user, atom/target)
 	switch(get_dir(user, target))
 		if(NORTH)
 			pixel_y = 24
@@ -252,7 +252,7 @@
 			pixel_x = -24
 			pixel_y = 24
 
-/obj/item/explosive/plastic/prime(var/force = FALSE)
+/obj/item/explosive/plastic/prime(force = FALSE)
 	if(!force && (!plant_target || QDELETED(plant_target) || !active))
 		return
 	var/turf/target_turf
@@ -318,7 +318,7 @@
 	cell_explosion(target_turf, 60, 60, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL, dir, cause_data)
 	qdel(src)
 
-/obj/item/explosive/plastic/proc/delayed_prime(var/turf/target_turf)
+/obj/item/explosive/plastic/proc/delayed_prime(turf/target_turf)
 	prime(TRUE)
 
 /obj/item/explosive/plastic/custom

@@ -1,0 +1,4 @@
+author: "harryob"
+delete-after: True
+changes:
+  - bugfix: "extended now actually works, and doesn't spawn in inhuman abombinations"

@@ -11,7 +11,7 @@
 	var/preset = /datum/equipment_preset/colonist
 
 
-/datum/emergency_call/colonist/create_member(datum/mind/M, var/turf/override_spawn_loc) //Blank ERT with only basic items.
+/datum/emergency_call/colonist/create_member(datum/mind/M, turf/override_spawn_loc) //Blank ERT with only basic items.
 	set waitfor = 0
 	var/turf/T = override_spawn_loc ? override_spawn_loc : get_spawn_point()
 

@@ -134,12 +134,12 @@
 
 	var/sweep_range = 1
 	for(var/mob/living/carbon/human in orange(sweep_range, get_turf(xeno)))
-		if (!isxeno_human(human) || xeno.can_not_harm(human)) 
-				continue
-		if(human.stat == DEAD) 
-				continue
-		if(HAS_TRAIT(human, TRAIT_NESTED)) 
-				continue
+		if (!isxeno_human(human) || xeno.can_not_harm(human))
+			continue
+		if(human.stat == DEAD)
+			continue
+		if(HAS_TRAIT(human, TRAIT_NESTED))
+			continue
 		step_away(human, xeno, sweep_range, 2)
 		xeno.flick_attack_overlay(human, "punch")
 		human.last_damage_data = create_cause_data(xeno.caste_type, xeno)

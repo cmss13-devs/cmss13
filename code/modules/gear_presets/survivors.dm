@@ -930,7 +930,7 @@
 // ---- Colonial Marshal Survivor
 
 /datum/equipment_preset/survivor/colonial_marshal
-	name = "Survivor - Colonial Marshal"
+	name = "Survivor - Colonial Marshal Deputy"
 	assignment = "CMB Deputy"
 	skills = /datum/skills/civilian/survivor/marshal
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
@@ -991,7 +991,7 @@
 	..()
 
 /datum/equipment_preset/survivor/colonial_marshal/solaris
-	name = "Survivor - Solaris Colonial Marshal"
+	name = "Survivor - Solaris Colonial Marshal Deputy"
 	assignment = "Solaris CMB Deputy"
 
 /datum/equipment_preset/survivor/colonial_marshal/solaris/load_gear(mob/living/carbon/human/H)
@@ -1004,7 +1004,7 @@
 	..()
 
 /datum/equipment_preset/survivor/colonial_marshal/kutjevo
-	name = "Survivor - Kutjevo Colonial Marshal"
+	name = "Survivor - Kutjevo Colonial Marshal Deputy"
 	assignment = "Kutjevo CMB Deputy"
 
 /datum/equipment_preset/survivor/colonial_marshal/kutjevo/load_gear(mob/living/carbon/human/H)
@@ -1016,7 +1016,7 @@
 	..()
 
 /datum/equipment_preset/survivor/colonial_marshal/shiva
-	name = "Survivor - Shiva Colonial Marshal"
+	name = "Survivor - Shiva Colonial Marshal Deputy"
 	assignment = "Shiva Snowball CMB Deputy"
 
 /datum/equipment_preset/survivor/colonial_marshal/shiva/load_gear(mob/living/carbon/human/H)

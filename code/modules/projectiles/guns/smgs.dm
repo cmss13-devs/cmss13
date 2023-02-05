@@ -365,6 +365,8 @@
 	burst_scatter_mult = SCATTER_AMOUNT_TIER_8
 	damage_mult = BASE_BULLET_DAMAGE_MULT - BULLET_DAMAGE_MULT_TIER_2
 
+/obj/item/weapon/gun/smg/mac15/extended
+	current_mag = /obj/item/ammo_magazine/smg/mac15/extended
 
 //-------------------------------------------------------
 // DAS REAL UZI

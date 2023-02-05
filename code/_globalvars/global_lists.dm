@@ -25,6 +25,22 @@ GLOBAL_LIST_EMPTY(freed_mob_list) // List of mobs freed for ghosts
 
 GLOBAL_LIST_INIT(available_taskbar_icons, setup_taskbar_icons())
 
+GLOBAL_LIST_EMPTY(minimap_icons)
+
+/proc/initiate_minimap_icons()
+	var/list/icons = list()
+	for(var/iconstate in icon_states('icons/UI_icons/map_blips.dmi'))
+		var/icon/image = icon('icons/UI_icons/map_blips.dmi', icon_state = iconstate)
+		icons[iconstate] += image
+
+	var/list/base64_icons = list()
+	for(var/iconstate in icons)
+		base64_icons[iconstate] = icon2base64(icons[iconstate])
+
+	GLOB.minimap_icons = base64_icons
+
+
+
 // Xeno stuff //
 // Resin constructions parameters
 GLOBAL_LIST_INIT_TYPED(resin_constructions_list, /datum/resin_construction, setup_resin_constructions())

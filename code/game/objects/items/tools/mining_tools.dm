@@ -34,6 +34,7 @@
 	digspeed = 30
 
 	desc = "This makes no metallurgic sense."
+	black_market_value = 25
 
 /obj/item/tool/pickaxe/drill
 	/// Can dig sand as well!
@@ -62,6 +63,7 @@
 	digspeed = 20
 
 	desc = "This makes no metallurgic sense."
+	black_market_value = 30
 
 /obj/item/tool/pickaxe/plasmacutter
 	name = "plasma cutter"
@@ -83,6 +85,7 @@
 	digspeed = 10
 
 	desc = "A pickaxe with a diamond pick head, this is just like minecraft."
+	black_market_value = 5 //fuck you!
 
 /obj/item/tool/pickaxe/diamonddrill //When people ask about the badass leader of the mining tools, they are talking about ME!
 	name = "diamond mining drill"
@@ -93,6 +96,7 @@
 
 	desc = "Yours is the drill that will pierce the heavens!"
 	drill_verb = "drilling"
+	black_market_value = 35
 
 /obj/item/tool/pickaxe/borgdrill
 	name = "cyborg mining drill"

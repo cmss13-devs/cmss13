@@ -24,6 +24,8 @@
 	deevolves_to = list(XENO_CASTE_WARRIOR)
 	caste_desc = "A huge tanky xenomorph."
 
+	minimap_icon = "crusher"
+
 /mob/living/carbon/xenomorph/crusher
 	caste_type = XENO_CASTE_CRUSHER
 	name = XENO_CASTE_CRUSHER

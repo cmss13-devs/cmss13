@@ -36,6 +36,8 @@
 	hugger_delay = 20
 	egg_cooldown = 250
 
+	minimap_icon = "carrier"
+
 /mob/living/carbon/xenomorph/carrier
 	caste_type = XENO_CASTE_CARRIER
 	name = XENO_CASTE_CARRIER

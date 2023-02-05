@@ -51,7 +51,7 @@
 	var/image/maptext_overlay
 
 /atom/movable/screen/action_button/attack_ghost(mob/dead/observer/user)
-	clicked(user)
+	return
 
 /atom/movable/screen/action_button/clicked(mob/user)
 	if(!user || !source_action)
@@ -103,6 +103,8 @@
 	user.update_action_buttons()
 	return 1
 
+/atom/movable/screen/action_button/ghost/minimap/get_button_screen_loc(button_number)
+	return "SOUTH:6,CENTER+1:24"
 
 /atom/movable/screen/storage
 	name = "storage"

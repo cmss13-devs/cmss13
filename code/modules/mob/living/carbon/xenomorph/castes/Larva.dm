@@ -15,9 +15,13 @@
 	evolve_without_queen = TRUE
 	can_be_revived = FALSE
 
+	minimap_icon = "larva"
+
 /datum/caste_datum/larva/predalien
 	caste_type = XENO_CASTE_PREDALIEN_LARVA
 	evolves_to = list(XENO_CASTE_PREDALIEN)
+
+	minimap_icon = "predalien_larva"
 
 /mob/living/carbon/xenomorph/larva
 	name = XENO_CASTE_LARVA

@@ -31,7 +31,7 @@
 	var/datum/hive_status/hive = GLOB.hive_datum[hive_index]
 
 	H.first_xeno = TRUE
-	H.stat = UNCONSCIOUS
+	H.set_stat(UNCONSCIOUS)
 	H.forceMove(get_turf(pick(GLOB.xeno_spawns)))
 
 	var/list/survivor_types = list(

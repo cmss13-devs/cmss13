@@ -42,9 +42,8 @@
 		input = "Major insectoid infestation detected in the Automated Supply Retrieval System Elevator. Reccomendation: Terminate insectoid lifesigns with extreme force."
 		shipwide_ai_announcement(input, title, 'sound/AI/unidentified_lifesigns.ogg')
 	if(size_factor > 32) // Unspecific announcement that something is wrong
-		input = "Unidentified lifesigns detected inside Automated Supply Retrieval System. Recommendation: lockdown of exterior access ports, including ducting and ventilation."
+		input = "Unidentified lifesigns detected inside Automated Supply Retrieval System."
 		ai_announcement(input)
 	else // No announcement lul
 		return
-	set_security_level(SEC_LEVEL_RED)
 

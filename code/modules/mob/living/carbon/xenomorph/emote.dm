@@ -31,6 +31,8 @@
 /datum/emote/living/carbon/xeno/needshelp
 	key = "needshelp"
 	message = "needs help!"
+	sound = "alien_help"
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
 /datum/emote/living/carbon/xeno/roar
 	mob_type_blacklist_typecache = list()

@@ -665,6 +665,7 @@
 	name = "crew monitoring computer"
 	desc = "Used to monitor active health sensors built into the wearer's uniform.  You can see that the console highlights ship areas with BLUE and remote locations with RED."
 	icon_state = "crew"
+	circuit = /obj/item/circuitboard/computer/crew
 	density = TRUE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 250

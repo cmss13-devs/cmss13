@@ -82,6 +82,7 @@
 	desc = "The worst she might do is attempt to... couple with your head."//hope we don't get sued over a harmless reference, rite?
 	sterile = 1
 	gender = FEMALE
+	black_market_value = 50
 
 /obj/item/clothing/mask/facehugger/lamarr/die()
 	if(stat == DEAD)

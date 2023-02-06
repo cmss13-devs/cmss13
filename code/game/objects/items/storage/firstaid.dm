@@ -308,7 +308,6 @@
 	else
 		. += SPAN_INFO("The [name] is empty.")
 
-
 /obj/item/storage/pill_bottle/attack_self(mob/living/user)
 	..()
 
@@ -545,6 +544,7 @@
 
 	req_access = list(ACCESS_WY_CORPORATE)
 	var/req_role = JOB_CORPORATE_LIAISON
+	black_market_value = 35
 
 
 /obj/item/storage/pill_bottle/ultrazine/proc/id_check(mob/user)
@@ -616,6 +616,15 @@
 
 /obj/item/storage/pill_bottle/stimulant/skillless
 	skilllock = SKILL_MEDICAL_DEFAULT
+
+//NOT FOR USCM USE!!!!
+/obj/item/storage/pill_bottle/paracetamol
+	name = "\improper Paracetamol pill bottle"
+	desc = "This is probably someone's prescription bottle."
+	icon_state = "pill_canister7"
+	pill_type_to_fill = /obj/item/reagent_container/pill/paracetamol
+	skilllock = SKILL_MEDICAL_DEFAULT
+	maptext_label = "Pc"
 
 //---------PILL PACKETS---------
 /obj/item/storage/pill_bottle/packet

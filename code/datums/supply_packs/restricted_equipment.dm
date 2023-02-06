@@ -21,13 +21,3 @@
 	containertype = /obj/structure/closet/crate
 	containername = "M4 pattern marine armor crate"
 	group = "Restricted Equipment"
-
-/datum/supply_packs/clothing/merc
-	contains = list()
-	name = "black market clothing crate(x1)"
-	cost = 30
-	contraband = 1
-	containertype = /obj/structure/largecrate/merc/clothing
-	containername = "\improper black market clothing crate"
-	group = "Restricted Equipment"
-

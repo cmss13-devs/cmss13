@@ -485,7 +485,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/jungle/south_west_jungle)
 "acs" = (
-/obj/structure/machinery/door/airlock/almayer/medical/glass{
+/obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
 	dir = 1;
 	name = "\improper Nexus Dome Canteen";
 	req_access_txt = "100";
@@ -507,7 +507,7 @@
 	},
 /area/lv624/ground/caves/west_caves)
 "acv" = (
-/obj/structure/machinery/door/airlock/almayer/medical/glass{
+/obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
 	name = "\improper Nexus Dome Canteen";
 	req_access_txt = "100";
 	req_one_access = null
@@ -822,7 +822,7 @@
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/south_east_caves)
 "adI" = (
-/obj/structure/machinery/door/airlock/almayer/secure{
+/obj/structure/machinery/door/airlock/almayer/secure/colony{
 	icon_state = "door_locked";
 	locked = 1;
 	name = "Mining Storage";
@@ -1961,7 +1961,7 @@
 	},
 /area/lv624/ground/barrens/east_barrens)
 "aiL" = (
-/obj/structure/machinery/door/airlock/almayer/secure{
+/obj/structure/machinery/door/airlock/almayer/secure/colony{
 	name = "Water Filtration Plant";
 	req_access_txt = "100"
 	},
@@ -3304,7 +3304,7 @@
 	},
 /area/lv624/ground/jungle/south_west_jungle)
 "apZ" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony{
 	dir = 2;
 	name = "\improper Medical Bay"
 	},
@@ -3777,7 +3777,7 @@
 	},
 /area/lv624/lazarus/quartstorage/outdoors)
 "asM" = (
-/obj/structure/machinery/door/airlock/almayer/engineering{
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	name = "\improper LZ1 Access";
 	req_one_access = null
 	},
@@ -3794,7 +3794,7 @@
 	},
 /area/lv624/lazarus/quartstorage)
 "asP" = (
-/obj/structure/machinery/door/airlock/almayer/engineering{
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	density = 0;
 	dir = 1;
 	icon_state = "door_open";
@@ -3829,7 +3829,7 @@
 	layer = 3.3;
 	name = "\improper Science Wing Blast Door"
 	},
-/obj/structure/machinery/door/airlock/almayer/research{
+/obj/structure/machinery/door/airlock/almayer/research/colony{
 	dir = 1;
 	locked = 1;
 	name = "\improper Research Dome";
@@ -3929,7 +3929,7 @@
 /turf/closed/wall,
 /area/lv624/lazarus/fitness)
 "aty" = (
-/obj/structure/machinery/door/airlock/almayer/medical/glass{
+/obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
 	dir = 1;
 	name = "\improper Leisure Dome";
 	req_access_txt = "100";
@@ -4192,7 +4192,7 @@
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
 "auu" = (
-/obj/structure/machinery/door/airlock/almayer/research{
+/obj/structure/machinery/door/airlock/almayer/research/colony{
 	locked = 1;
 	name = "\improper Research Dome";
 	req_access_txt = "100"
@@ -4331,7 +4331,7 @@
 	},
 /area/lv624/ground/jungle/east_jungle)
 "auO" = (
-/obj/structure/machinery/door/airlock/almayer/medical/glass{
+/obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
 	name = "\improper River Snack Bar";
 	req_access_txt = "100";
 	req_one_access = null
@@ -4483,7 +4483,7 @@
 	},
 /area/lv624/ground/caves/south_east_caves)
 "avq" = (
-/obj/structure/machinery/door/airlock/almayer/research{
+/obj/structure/machinery/door/airlock/almayer/research/colony{
 	dir = 1;
 	locked = 1;
 	name = "\improper Research Dome";
@@ -4495,7 +4495,7 @@
 	},
 /area/lv624/lazarus/research)
 "avr" = (
-/obj/structure/machinery/door/airlock/almayer/research{
+/obj/structure/machinery/door/airlock/almayer/research/colony{
 	density = 0;
 	dir = 1;
 	icon_state = "door_open";
@@ -4651,7 +4651,7 @@
 /turf/open/gm/dirt,
 /area/lv624/lazarus/quartstorage/outdoors)
 "avS" = (
-/obj/structure/machinery/door/airlock/almayer/engineering{
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	name = "\improper Storage Dome";
 	req_access_txt = "100";
 	req_one_access = null
@@ -4715,7 +4715,7 @@
 	},
 /area/lv624/ground/jungle/west_jungle)
 "awh" = (
-/obj/structure/machinery/door/airlock/almayer/engineering{
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	density = 0;
 	dir = 1;
 	icon_state = "door_open";
@@ -4732,7 +4732,7 @@
 	layer = 3.3;
 	name = "\improper Science Wing Blast Door"
 	},
-/obj/structure/machinery/door/airlock/almayer/research{
+/obj/structure/machinery/door/airlock/almayer/research/colony{
 	locked = 1;
 	name = "\improper Research Dome";
 	req_access_txt = "100"
@@ -4762,7 +4762,7 @@
 	},
 /area/lv624/lazarus/research)
 "awm" = (
-/obj/structure/machinery/door/airlock/almayer/research{
+/obj/structure/machinery/door/airlock/almayer/research/colony{
 	density = 0;
 	icon_state = "door_open";
 	name = "\improper Research Dome";
@@ -4780,7 +4780,7 @@
 	},
 /area/lv624/lazarus/research)
 "awo" = (
-/obj/structure/machinery/door/airlock/almayer/research{
+/obj/structure/machinery/door/airlock/almayer/research/colony{
 	name = "\improper Research Dome";
 	req_access_txt = "100"
 	},
@@ -4814,7 +4814,7 @@
 	id = "";
 	name = "\improper Forced Blast Door"
 	},
-/obj/structure/machinery/door/airlock/almayer/research{
+/obj/structure/machinery/door/airlock/almayer/research/colony{
 	density = 0;
 	icon_state = "door_open";
 	name = "\improper Research Dome";
@@ -4953,7 +4953,7 @@
 	id = "";
 	name = "\improper Forced Blast Door"
 	},
-/obj/structure/machinery/door/airlock/almayer/research{
+/obj/structure/machinery/door/airlock/almayer/research/colony{
 	density = 0;
 	icon_state = "door_open";
 	name = "\improper Research Dome";
@@ -5011,7 +5011,7 @@
 	},
 /area/lv624/lazarus/fitness)
 "awU" = (
-/obj/structure/machinery/door/airlock/almayer/medical/glass{
+/obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
 	name = "\improper Leisure Dome";
 	req_access_txt = "100";
 	req_one_access = null
@@ -5164,7 +5164,7 @@
 	},
 /area/lv624/lazarus/robotics)
 "axB" = (
-/obj/structure/machinery/door/airlock/almayer/engineering{
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	name = "\improper Robotics Dome";
 	req_access_txt = "100";
 	req_one_access = null
@@ -5295,7 +5295,7 @@
 /turf/open/gm/grass,
 /area/lv624/lazarus/quartstorage/outdoors)
 "axZ" = (
-/obj/structure/machinery/door/airlock/almayer/engineering{
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	dir = 1;
 	name = "\improper Storage Dome";
 	req_access_txt = "100";
@@ -5377,7 +5377,7 @@
 	},
 /area/lv624/lazarus/research)
 "ayr" = (
-/obj/structure/machinery/door/airlock/almayer/research{
+/obj/structure/machinery/door/airlock/almayer/research/colony{
 	name = "\improper Research Dome";
 	req_access_txt = "100"
 	},
@@ -5455,7 +5455,7 @@
 /turf/open/floor/vault,
 /area/lv624/lazarus/quartstorage)
 "ayF" = (
-/obj/structure/machinery/door/airlock/almayer/engineering{
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	dir = 1;
 	name = "\improper Robotics Dome";
 	req_access_txt = "100";
@@ -5791,7 +5791,7 @@
 	},
 /area/lv624/lazarus/landing_zones/lz2)
 "azE" = (
-/obj/structure/machinery/door/airlock/almayer/engineering{
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	name = "\improper Robotics Dome";
 	req_access_txt = "100";
 	req_one_access = null
@@ -5825,7 +5825,7 @@
 	},
 /area/lv624/lazarus/robotics)
 "azK" = (
-/obj/structure/machinery/door/airlock/almayer/engineering{
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	density = 0;
 	icon_state = "door_open";
 	name = "\improper Robotics Dome";
@@ -6507,7 +6507,7 @@
 /obj/structure/barricade/wooden{
 	dir = 8
 	},
-/obj/structure/machinery/door/airlock/almayer/engineering{
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	density = 0;
 	icon_state = "door_open";
 	name = "\improper Robotics Dome";
@@ -7600,7 +7600,7 @@
 /turf/open/floor/grass,
 /area/lv624/lazarus/main_hall)
 "aFu" = (
-/obj/structure/machinery/door/airlock/almayer/engineering{
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	density = 0;
 	icon_state = "door_open";
 	name = "\improper Nexus Cargo Storage";
@@ -7709,7 +7709,7 @@
 	name = "MkIV Powerloader Wreckage"
 	},
 /obj/effect/decal/cleanable/blood/oil,
-/obj/structure/machinery/door/airlock/almayer/engineering{
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	density = 0;
 	dir = 1;
 	icon_state = "door_open";
@@ -8011,7 +8011,7 @@
 	},
 /area/lv624/lazarus/quart)
 "aGP" = (
-/obj/structure/machinery/door/airlock/almayer/engineering{
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	density = 0;
 	dir = 1;
 	icon_state = "door_open";
@@ -8524,7 +8524,7 @@
 /obj/structure/flora/jungle/vines{
 	icon_state = "light_2"
 	},
-/obj/structure/machinery/door/airlock/almayer/engineering{
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	dir = 2;
 	name = "\improper Atmospherics Condenser"
 	},
@@ -9787,7 +9787,7 @@
 	},
 /area/lv624/lazarus/security)
 "aNT" = (
-/obj/structure/machinery/door/airlock/almayer/security{
+/obj/structure/machinery/door/airlock/almayer/security/colony{
 	locked = 1;
 	name = "\improper Nexus Dome Marshal Office";
 	req_access = null;
@@ -10156,7 +10156,7 @@
 	},
 /area/lv624/lazarus/armory)
 "aPp" = (
-/obj/structure/machinery/door/airlock/almayer/secure{
+/obj/structure/machinery/door/airlock/almayer/secure/colony{
 	locked = 1;
 	name = "\improper Nexus Dome Armory";
 	req_one_access_txt = "19;106"
@@ -10308,7 +10308,7 @@
 /turf/open/floor/plating,
 /area/lv624/lazarus/comms)
 "aPO" = (
-/obj/structure/machinery/door/airlock/almayer/engineering{
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	dir = 1;
 	name = "\improper Communications Dome";
 	req_access_txt = "100";
@@ -10774,7 +10774,7 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/almayer/command{
+/obj/structure/machinery/door/airlock/almayer/command/colony{
 	locked = 1;
 	name = "\improper Nexus Dome Marshal's Quarters";
 	req_access_txt = "100"
@@ -11140,8 +11140,8 @@
 	},
 /area/lv624/lazarus/security)
 "aSU" = (
-/obj/structure/machinery/door/airlock/almayer/command{
-	name = "\improper Nexus Dome Command Quarters";
+/obj/structure/machinery/door/airlock/almayer/command/colony{
+	name = "\improper Nexus Dome Command Quarter";
 	req_access_txt = "100"
 	},
 /turf/open/floor/plating,
@@ -11423,7 +11423,7 @@
 	},
 /area/lv624/lazarus/hop)
 "aTY" = (
-/obj/structure/machinery/door/airlock/almayer/command{
+/obj/structure/machinery/door/airlock/almayer/command/colony{
 	dir = 1;
 	locked = 1;
 	name = "\improper Nexus Dome Director's Quarters";
@@ -11495,7 +11495,7 @@
 /turf/open/floor/greengrid,
 /area/lv624/lazarus/secure_storage)
 "aUk" = (
-/obj/structure/machinery/door/airlock/almayer/engineering{
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	name = "\improper Communications Dome";
 	req_access_txt = "100";
 	req_one_access = null
@@ -11766,7 +11766,7 @@
 	},
 /area/lv624/lazarus/engineering)
 "aVj" = (
-/obj/structure/machinery/door/airlock/almayer/engineering{
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	dir = 1;
 	locked = 1;
 	name = "\improper Engineering Dome SMES";
@@ -12053,7 +12053,7 @@
 	},
 /area/lv624/lazarus/comms)
 "aWf" = (
-/obj/structure/machinery/door/airlock/almayer/engineering{
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	name = "\improper Engineering Dome";
 	req_access_txt = "100";
 	req_one_access = null
@@ -12403,7 +12403,7 @@
 	},
 /area/lv624/lazarus/comms)
 "aXf" = (
-/obj/structure/machinery/door/airlock/almayer/engineering{
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	dir = 1;
 	locked = 1;
 	name = "\improper Engineering Dome Office";
@@ -12415,7 +12415,7 @@
 	},
 /area/lv624/lazarus/engineering)
 "aXg" = (
-/obj/structure/machinery/door/airlock/almayer/engineering{
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	dir = 1;
 	name = "\improper Engineering Dome";
 	req_access_txt = "100";
@@ -13672,7 +13672,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "bOy" = (
-/obj/structure/machinery/door/airlock/almayer/engineering{
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	dir = 1;
 	name = "\improper LZ2 Access";
 	req_one_access = null
@@ -15530,7 +15530,7 @@
 	},
 /area/lv624/ground/colony/north_tcomms_road)
 "fTE" = (
-/obj/structure/machinery/door/airlock/almayer/engineering{
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	dir = 1;
 	name = "\improper LZ1 Access";
 	req_one_access = null
@@ -15956,7 +15956,7 @@
 /turf/open/gm/grass,
 /area/lv624/ground/jungle/south_east_jungle)
 "gXu" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony,
 /turf/open/floor{
 	icon_state = "white"
 	},
@@ -16900,7 +16900,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/colony/north_tcomms_road)
 "jnG" = (
-/obj/structure/machinery/door/airlock/almayer/engineering{
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	dir = 1;
 	name = "\improper LZ1 Access";
 	req_one_access = null
@@ -17466,7 +17466,7 @@
 /turf/open/gm/grass,
 /area/lv624/ground/jungle/central_jungle)
 "kAj" = (
-/obj/structure/machinery/door/airlock/almayer/engineering{
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	name = "\improper Garage";
 	req_access_txt = "100";
 	req_one_access = null
@@ -18064,7 +18064,7 @@
 	},
 /area/lv624/ground/colony/north_tcomms_road)
 "lYI" = (
-/obj/structure/machinery/door/airlock/almayer/engineering{
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	dir = 1;
 	name = "\improper LZ2 Access";
 	req_one_access = null
@@ -18933,7 +18933,7 @@
 	},
 /area/lv624/ground/caves/sand_temple)
 "nIZ" = (
-/obj/structure/machinery/door/airlock/almayer/medical/glass{
+/obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
 	name = "\improper Nexus Dome Canteen";
 	req_access_txt = "100";
 	req_one_access = null
@@ -20199,7 +20199,7 @@
 	},
 /area/lv624/ground/caves/sand_temple)
 "qfr" = (
-/obj/structure/machinery/door/airlock/almayer/engineering{
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	name = "\improper LZ2 Access";
 	req_one_access = null
 	},
@@ -21238,7 +21238,7 @@
 /turf/open/gm/grass,
 /area/lv624/ground/jungle/south_east_jungle)
 "sFY" = (
-/obj/structure/machinery/door/airlock/almayer/engineering{
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	name = "\improper Workshop Storage";
 	req_access_txt = "100";
 	req_one_access = null
@@ -22367,7 +22367,7 @@
 /turf/open/gm/grass,
 /area/lv624/lazarus/landing_zones/lz2)
 "vdy" = (
-/obj/structure/machinery/door/airlock/almayer/engineering{
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	dir = 1;
 	name = "\improper Workshop Storage";
 	req_access_txt = "100";

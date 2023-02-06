@@ -233,7 +233,7 @@ var/list/alldepartments = list()
 
 	add_fingerprint(usr)
 
-/obj/structure/machinery/faxmachine/get_vv_options()
+/obj/structure/machinery/faxmachine/vv_get_dropdown()
 	. = ..()
 	. += "<option value>-----FAX-----</option>"
 	. += "<option value='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];USCMFaxReply=\ref[usr];originfax=\ref[src]'>Send USCM fax message</option>"

@@ -210,10 +210,27 @@ can cause issues with ammo types getting mixed up during the burst.
 	recoil = RECOIL_AMOUNT_TIER_4
 	recoil_unwielded = RECOIL_AMOUNT_TIER_2
 
-
 /obj/item/weapon/gun/shotgun/merc/get_examine_text(mob/user)
 	. = ..()
 	if(in_chamber) . += "It has a chambered round."
+
+/obj/item/weapon/gun/shotgun/merc/damaged
+	name = "damaged custom built shotgun"
+	desc = "A cobbled-together pile of scrap and alien wood. Point end towards things you want to die. Has a burst fire feature, as if it needed it. Well, it had one, this one's barrel has apparently exploded outwards like an overripe grape. Guess that's what happens when you DIY a shotgun."
+	icon_state = "cshotgun_bad"
+
+/obj/item/weapon/gun/shotgun/merc/damaged/set_gun_config_values()
+	..()
+	fire_delay = 1.5 SECONDS
+	burst_amount = BURST_AMOUNT_TIER_1
+	accuracy_mult = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_6
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_10
+	scatter = SCATTER_AMOUNT_TIER_5
+	burst_scatter_mult = SCATTER_AMOUNT_TIER_3
+	scatter_unwielded = SCATTER_AMOUNT_TIER_1
+	damage_mult = BASE_BULLET_DAMAGE_MULT - BULLET_DAMAGE_MULT_TIER_2
+	recoil = RECOIL_AMOUNT_TIER_3
+	recoil_unwielded = RECOIL_AMOUNT_TIER_1
 
 //-------------------------------------------------------
 //TACTICAL SHOTGUN
@@ -361,7 +378,7 @@ can cause issues with ammo types getting mixed up during the burst.
 		/obj/item/attachable/attached_gun/flamer,
 		/obj/item/attachable/attached_gun/extinguisher,
 		/obj/item/attachable/burstfire_assembly,
-		/obj/item/attachable/stock/type23 // Stock
+		/obj/item/attachable/stock/type23, // Stock
 		)
 	flags_gun_features = GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER|GUN_INTERNAL_MAG
 	flags_equip_slot = SLOT_BACK
@@ -438,6 +455,31 @@ can cause issues with ammo types getting mixed up during the burst.
 	random_spawn_under = list(
 		/obj/item/attachable/attached_gun/extinguisher,
 	)
+
+/obj/item/weapon/gun/shotgun/type23/riot_control
+	name = "\improper Type 23-R riot control shotgun"
+	desc = "This slow semi-automatic shotgun chambers 8 gauge, and packs a mean punch. The -R version is designed for UPP colony security personnel and handling colony rioting, sporting an integrated vertical grip but lacking in attachment choices."
+	current_mag = /obj/item/ammo_magazine/internal/shotgun/type23/beanbag
+	attachable_allowed = list(
+		/obj/item/attachable/reddot, //Rail
+		/obj/item/attachable/reflex,
+		/obj/item/attachable/flashlight,
+		/obj/item/attachable/magnetic_harness,
+		/obj/item/attachable/verticalgrip, //Underbarrel
+		/obj/item/attachable/stock/type23, //Stock
+	)
+	flags_gun_features = GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER|GUN_INTERNAL_MAG
+	flags_equip_slot = SLOT_BACK
+	map_specific_decoration = FALSE
+	gauge = "8g"
+	starting_attachment_types = list(/obj/item/attachable/stock/type23)
+
+/obj/item/weapon/gun/shotgun/type23/riot_control/handle_starting_attachment()
+	. = ..()
+	var/obj/item/attachable/verticalgrip/integrated_grip = new(src)
+	integrated_grip.flags_attach_features &= ~ATTACH_REMOVABLE
+	integrated_grip.Attach(src)
+	update_attachable(integrated_grip.slot)
 
 //-------------------------------------------------------
 //DOUBLE SHOTTY
@@ -576,6 +618,23 @@ can cause issues with ammo types getting mixed up during the burst.
 	S.flags_attach_features &= ~ATTACH_REMOVABLE
 	S.Attach(src)
 	update_attachable(S.slot)
+
+/obj/item/weapon/gun/shotgun/double/damaged
+	name = "semi-sawn-off Spearhead Rival 78"
+	desc = "A double barrel shotgun produced by Spearhead. Archaic, sturdy, affordable. For some reason it seems that someone tried to saw through the barrel and gave up halfway through. This probably isn't going to be the greatest gun for combat.."
+	icon_state = "dshotgun_bad"
+
+/obj/item/weapon/gun/shotgun/double/damaged/set_gun_config_values()
+	..()
+	burst_amount = BURST_AMOUNT_TIER_1
+	fire_delay = 0.9 SECONDS
+	accuracy_mult = BASE_ACCURACY_MULT
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_10
+	scatter = SCATTER_AMOUNT_TIER_7
+	scatter_unwielded = SCATTER_AMOUNT_TIER_1
+	damage_mult = BASE_BULLET_DAMAGE_MULT - BULLET_DAMAGE_MULT_TIER_7
+	recoil = RECOIL_AMOUNT_TIER_3
+	recoil_unwielded = RECOIL_AMOUNT_TIER_1
 
 /obj/item/weapon/gun/shotgun/double/sawn
 	name = "\improper sawn-off Spearhead Rival 78"

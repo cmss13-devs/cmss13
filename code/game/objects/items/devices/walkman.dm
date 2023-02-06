@@ -23,6 +23,7 @@
 		WEAR_WAIST = 'icons/mob/humans/onmob/ears.dmi',
 		WEAR_IN_J_STORE = 'icons/mob/humans/onmob/ears.dmi'
 		)
+	black_market_value = 15
 
 /obj/item/device/walkman/Initialize()
 	. = ..()
@@ -307,6 +308,7 @@
 	icon = 'icons/obj/items/walkman.dmi'
 	icon_state = "cassette_flip"
 	w_class = SIZE_SMALL
+	black_market_value = 15
 	var/side1_icon = "cassette"
 	var/flipped = FALSE //Tape side
 	var/list/songs = list()

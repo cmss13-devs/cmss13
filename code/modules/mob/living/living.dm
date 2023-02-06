@@ -1,7 +1,7 @@
 /mob/living/proc/updatehealth()
 	if(status_flags & GODMODE)
 		health = maxHealth
-		stat = CONSCIOUS
+		set_stat(CONSCIOUS)
 	else
 		health = maxHealth - getOxyLoss() - getToxLoss() - getFireLoss() - getBruteLoss() - getCloneLoss() - halloss
 
@@ -471,6 +471,21 @@
 	. = ..()
 	after_attack_hand(user)
 
+/mob/living/proc/after_attack_hand(mob/user)
+	SHOULD_CALL_PARENT(TRUE)
+	user.next_move += 0.4 SECONDS // transferred here from click_adjacent()
+	return
+
+/mob/living/set_stat(new_stat)
+	. = ..()
+	if(isnull(.))
+		return
+	switch(.)
+		if(DEAD)
+			SEND_SIGNAL(src, COMSIG_MOB_STAT_SET_ALIVE)
+	switch(stat)
+		if(DEAD)
+			SEND_SIGNAL(src, COMSIG_MOB_STAT_SET_DEAD)
 /mob/living/proc/after_attack_hand(mob/user)
 	SHOULD_CALL_PARENT(TRUE)
 	user.next_move += 0.4 SECONDS // transferred here from click_adjacent()

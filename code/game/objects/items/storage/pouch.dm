@@ -719,6 +719,10 @@
 	new /obj/item/reagent_container/hypospray/autoinjector/emergency(src)
 	new /obj/item/tool/extinguisher/mini(src)
 
+/obj/item/storage/pouch/medical/socmed/dutch/unmarked
+	name = "tactical medical pouch"
+	desc = "A heavy pouch containing everything one needs to get themselves back on their feet. Quite the selection. Somehow, the whole pouch manages to look classified, you feel like you're going to get court-marshalled for even looking at it."
+
 /obj/item/storage/pouch/first_responder
 	name = "first responder pouch"
 	desc = "A pouch designed for carrying supplies to assist medical personnel and quickly respond to injuries on the battlefield without immediately treating them. Can hold supplies such as roller beds, stasis bags, and health analysers."

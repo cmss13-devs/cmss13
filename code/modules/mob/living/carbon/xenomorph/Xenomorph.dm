@@ -425,6 +425,9 @@
 	add_abilities()
 	recalculate_actions()
 
+	if(z)
+		INVOKE_NEXT_TICK(src, PROC_REF(add_minimap_marker))
+
 	sight |= SEE_MOBS
 	see_invisible = SEE_INVISIBLE_LIVING
 	see_in_dark = 12
@@ -504,7 +507,11 @@
 	if(queen.can_not_harm(src))
 		return COMPONENT_SCREECH_ACT_CANCEL
 
-
+/mob/living/carbon/xenomorph/proc/add_minimap_marker(flags = MINIMAP_FLAG_XENO)
+	if(IS_XENO_LEADER(src))
+		SSminimaps.add_marker(src, z, hud_flags = flags, given_image = caste.get_minimap_icon(), overlay_iconstates = list(caste.minimap_leadered_overlay))
+		return
+	SSminimaps.add_marker(src, z, hud_flags = flags, given_image = caste.get_minimap_icon())
 
 /mob/living/carbon/xenomorph/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()

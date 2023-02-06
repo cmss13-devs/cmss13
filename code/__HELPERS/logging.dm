@@ -200,7 +200,7 @@
 	// Insert message
 	if(message)
 		entry += "\n[message]"
-	diary << html_decode("\[[time_stamp()]]TGUI: [entry][log_end]")
+	tgui_diary << html_decode("\[[time_stamp()]]TGUI: [entry][log_end]")
 	GLOB.STUI.tgui.Add("\[[time_stamp()]]TGUI: [entry]")
 	GLOB.STUI.processing |= STUI_LOG_TGUI
 
@@ -219,4 +219,17 @@ GLOBAL_PROTECT(config_error_log)
 /proc/log_test(text)
 	WRITE_LOG(GLOB.test_log, text)
 	SEND_TEXT(world.log, text)
+#endif
+
+#if defined(REFERENCE_DOING_IT_LIVE)
+#define log_reftracker(msg) log_harddel("## REF SEARCH [msg]")
+
+/proc/log_harddel(text)
+	WRITE_LOG(GLOB.harddel_log, text)
+
+#elif defined(REFERENCE_TRACKING) // Doing it locally
+#define log_reftracker(msg) log_world("## REF SEARCH [msg]")
+
+#else //Not tracking at all
+#define log_reftracker(msg)
 #endif

@@ -71,7 +71,7 @@
 				if(R.client) R.client.change_view(world_view_size)
 				break
 
-	R.stat = CONSCIOUS
+	R.set_stat(CONSCIOUS)
 	return 1
 
 

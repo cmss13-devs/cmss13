@@ -113,6 +113,11 @@
 	flags_atom &= ~INITIALIZED
 	..()
 
+/turf/vv_get_dropdown()
+	. = ..()
+	VV_DROPDOWN_OPTION(VV_HK_EXPLODE, "Trigger Explosion")
+	VV_DROPDOWN_OPTION(VV_HK_EMPULSE, "Trigger EM Pulse")
+
 /turf/ex_act(severity)
 	return 0
 

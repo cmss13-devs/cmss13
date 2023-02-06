@@ -1,6 +1,6 @@
 /datum/emote/living/carbon/xeno
-	mob_type_allowed_typecache = list(/mob/living/carbon/Xenomorph)
-	mob_type_blacklist_typecache = list(/mob/living/carbon/Xenomorph/Hellhound)
+	mob_type_allowed_typecache = list(/mob/living/carbon/xenomorph)
+	mob_type_blacklist_typecache = list(/mob/living/carbon/xenomorph/hellhound)
 	keybind_category = CATEGORY_XENO_EMOTE
 	var/predalien_sound
 
@@ -41,7 +41,7 @@
 	sound = "alien_tail_swipe"
 
 /datum/emote/living/carbon/xeno/hellhound
-	mob_type_allowed_typecache = list(/mob/living/carbon/Xenomorph/Hellhound)
+	mob_type_allowed_typecache = list(/mob/living/carbon/xenomorph/hellhound)
 	keybind = FALSE
 
 /datum/emote/living/carbon/xeno/hellhound/roar

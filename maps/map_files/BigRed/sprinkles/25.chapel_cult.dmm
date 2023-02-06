@@ -397,7 +397,6 @@
 	dir = 8;
 	tag = ""
 	},
-/obj/effect/landmark/survivor_spawner,
 /turf/open/floor{
 	dir = 4;
 	icon_state = "chapel"

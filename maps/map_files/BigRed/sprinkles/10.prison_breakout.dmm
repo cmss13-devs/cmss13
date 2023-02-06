@@ -909,7 +909,6 @@
 	},
 /area/bigredv2/outside/marshal_office)
 "cu" = (
-/obj/effect/landmark/survivor_spawner,
 /turf/open/floor{
 	dir = 4;
 	icon_state = "redcorner"
@@ -1183,7 +1182,6 @@
 /area/bigredv2/outside/marshal_office)
 "di" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/survivor_spawner,
 /turf/open/floor,
 /area/bigredv2/outside/marshal_office)
 "dj" = (

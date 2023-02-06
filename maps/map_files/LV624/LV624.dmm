@@ -3198,7 +3198,6 @@
 	},
 /area/lv624/ground/river/west_river)
 "aph" = (
-/obj/effect/landmark/survivor_spawner,
 /turf/open/gm/grass,
 /area/lv624/ground/jungle/west_jungle)
 "apl" = (
@@ -3486,9 +3485,6 @@
 	icon_state = "grassdirt_corner"
 	},
 /area/lv624/ground/jungle/west_jungle)
-"aro" = (
-/turf/open/gm/grass,
-/area/lv624/ground/jungle/west_jungle)
 "arp" = (
 /obj/structure/surface/rack,
 /obj/item/tool/crowbar,
@@ -3573,10 +3569,6 @@
 	icon_state = "grassdirt_corner2"
 	},
 /area/lv624/ground/jungle/west_jungle)
-"arG" = (
-/obj/effect/landmark/survivor_spawner,
-/turf/open/gm/dirt,
-/area/lv624/lazarus/quartstorage/outdoors)
 "arH" = (
 /obj/structure/girder/displaced,
 /turf/open/gm/dirt,
@@ -3963,12 +3955,6 @@
 	amount = 2
 	},
 /turf/open/floor/vault,
-/area/lv624/lazarus/quartstorage)
-"atF" = (
-/obj/effect/landmark/survivor_spawner,
-/turf/open/floor{
-	icon_state = "dark"
-	},
 /area/lv624/lazarus/quartstorage)
 "atG" = (
 /obj/structure/machinery/light/small{
@@ -4904,12 +4890,12 @@
 /turf/open/gm/grass,
 /area/lv624/ground/jungle/north_west_jungle)
 "awG" = (
-/obj/effect/landmark/survivor_spawner,
+/obj/effect/landmark/survivor_spawner/researcher,
 /turf/open/floor{
-	dir = 5;
-	icon_state = "whitepurple"
+	dir = 4;
+	icon_state = "whitepurplecorner"
 	},
-/area/lv624/lazarus/research)
+/area/lv624/lazarus/fitness)
 "awH" = (
 /obj/item/clothing/mask/facehugger{
 	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
@@ -4997,7 +4983,7 @@
 	},
 /area/lv624/lazarus/fitness)
 "awS" = (
-/obj/effect/landmark/survivor_spawner,
+/obj/effect/landmark/survivor_spawner/doctor,
 /turf/open/floor{
 	dir = 4;
 	icon_state = "whitepurplecorner"
@@ -5093,11 +5079,6 @@
 	icon_state = "vault"
 	},
 /area/lv624/lazarus/robotics)
-"axj" = (
-/turf/open/floor{
-	icon_state = "vault"
-	},
-/area/lv624/lazarus/robotics)
 "axk" = (
 /obj/structure/prop/mech/armor_booster,
 /obj/effect/decal/cleanable/cobweb,
@@ -5111,10 +5092,6 @@
 	icon_state = "wood-broken"
 	},
 /area/lv624/ground/caves/north_central_caves)
-"axp" = (
-/obj/effect/landmark/survivor_spawner,
-/turf/open/floor/wood,
-/area/lv624/ground/jungle/west_jungle)
 "axt" = (
 /turf/open/floor{
 	dir = 9;
@@ -5129,6 +5106,7 @@
 	},
 /area/lv624/lazarus/fitness)
 "axv" = (
+/obj/effect/landmark/survivor_spawner/any_colonist,
 /turf/open/floor{
 	dir = 5;
 	icon_state = "warnwhite"
@@ -6443,7 +6421,6 @@
 /obj/structure/bed/chair/comfy/lime{
 	dir = 1
 	},
-/obj/effect/landmark/survivor_spawner,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor{
 	dir = 9;
@@ -6773,9 +6750,12 @@
 /turf/open/floor/wood,
 /area/lv624/ground/caves/north_central_caves)
 "aCI" = (
-/obj/effect/landmark/survivor_spawner,
-/turf/open/gm/dirt,
-/area/lv624/lazarus/landing_zones/lz2)
+/obj/effect/landmark/survivor_spawner/corp,
+/turf/open/floor{
+	dir = 4;
+	icon_state = "whitepurplecorner"
+	},
+/area/lv624/lazarus/fitness)
 "aCK" = (
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/plating{
@@ -6940,7 +6920,6 @@
 /obj/structure/bed/chair/comfy/orange{
 	dir = 1
 	},
-/obj/effect/landmark/survivor_spawner,
 /turf/open/floor{
 	icon_state = "bluecorner"
 	},
@@ -7194,13 +7173,6 @@
 	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz1)
-"aEn" = (
-/obj/effect/landmark/survivor_spawner,
-/turf/open/floor{
-	dir = 8;
-	icon_state = "barber"
-	},
-/area/lv624/lazarus/fitness)
 "aEq" = (
 /obj/effect/landmark/crap_item,
 /turf/open/floor/plating,
@@ -7309,7 +7281,6 @@
 	icon_state = "coffin_open";
 	opened = 1
 	},
-/obj/effect/landmark/survivor_spawner,
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
@@ -7541,15 +7512,6 @@
 /obj/structure/toilet{
 	dir = 8
 	},
-/turf/open/floor{
-	icon_state = "freezerfloor"
-	},
-/area/lv624/lazarus/toilet)
-"aFk" = (
-/obj/structure/machinery/shower{
-	dir = 4
-	},
-/obj/effect/landmark/survivor_spawner,
 /turf/open/floor{
 	icon_state = "freezerfloor"
 	},
@@ -7871,11 +7833,12 @@
 	},
 /area/lv624/lazarus/toilet)
 "aGn" = (
-/obj/effect/landmark/survivor_spawner,
+/obj/effect/landmark/survivor_spawner/security,
 /turf/open/floor{
-	icon_state = "freezerfloor"
+	dir = 4;
+	icon_state = "whitepurplecorner"
 	},
-/area/lv624/lazarus/toilet)
+/area/lv624/lazarus/fitness)
 "aGo" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 1;
@@ -9200,14 +9163,7 @@
 /obj/effect/landmark/xeno_spawn,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/west_caves)
-"aLs" = (
-/obj/effect/landmark/survivor_spawner,
-/turf/open/floor/plating{
-	icon_state = "platebot"
-	},
-/area/lv624/lazarus/robotics)
 "aLt" = (
-/obj/effect/landmark/survivor_spawner,
 /turf/open/floor{
 	icon_state = "vault"
 	},
@@ -9265,9 +9221,6 @@
 	dir = 1;
 	icon_state = "grassbeach"
 	},
-/area/lv624/lazarus/yggdrasil)
-"aLN" = (
-/turf/open/gm/river,
 /area/lv624/lazarus/yggdrasil)
 "aLO" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
@@ -10032,13 +9985,6 @@
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/grass,
 /area/lv624/lazarus/main_hall)
-"aON" = (
-/obj/effect/landmark/survivor_spawner,
-/turf/open/floor{
-	dir = 9;
-	icon_state = "brown"
-	},
-/area/lv624/lazarus/comms)
 "aOO" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -10336,7 +10282,6 @@
 /turf/open/floor/plating,
 /area/lv624/lazarus/comms)
 "aPU" = (
-/obj/effect/landmark/survivor_spawner,
 /turf/open/gm/river,
 /area/lv624/lazarus/yggdrasil)
 "aPV" = (
@@ -11364,11 +11309,6 @@
 "aTK" = (
 /turf/open/gm/dirt,
 /area/lv624/lazarus/comms)
-"aTM" = (
-/turf/open/floor{
-	icon_state = "dark"
-	},
-/area/lv624/lazarus/engineering)
 "aTN" = (
 /turf/open/floor/plating{
 	icon_state = "warnplate"
@@ -11396,7 +11336,6 @@
 	},
 /area/lv624/lazarus/engineering)
 "aTS" = (
-/obj/effect/landmark/survivor_spawner,
 /turf/open/gm/dirt,
 /area/lv624/ground/colony/north_tcomms_road)
 "aTU" = (
@@ -13143,7 +13082,6 @@
 /turf/open/floor/greengrid,
 /area/lv624/lazarus/secure_storage)
 "aZM" = (
-/obj/effect/landmark/survivor_spawner,
 /turf/open/floor{
 	icon_state = "dark"
 	},
@@ -13523,8 +13461,12 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/river/central_river)
 "byY" = (
-/turf/open/gm/dirt,
-/area/lv624/ground/colony/north_tcomms_road)
+/obj/effect/landmark/survivor_spawner/any_colonist,
+/turf/open/floor{
+	dir = 4;
+	icon_state = "whitepurplecorner"
+	},
+/area/lv624/lazarus/fitness)
 "bzD" = (
 /obj/structure/largecrate/random,
 /obj/item/storage/fancy/crayons{
@@ -18585,9 +18527,12 @@
 /turf/closed/wall/r_wall,
 /area/lv624/lazarus/corporate_dome)
 "nfD" = (
-/obj/effect/landmark/survivor_spawner,
-/turf/open/gm/dirt,
-/area/lv624/ground/colony/south_nexus_road)
+/obj/effect/landmark/survivor_spawner/engineer,
+/turf/open/floor{
+	dir = 4;
+	icon_state = "whitepurplecorner"
+	},
+/area/lv624/lazarus/fitness)
 "nfK" = (
 /obj/structure/flora/jungle/vines/heavy,
 /turf/closed/wall/strata_ice/jungle,
@@ -19962,9 +19907,12 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/north_east_barrens)
 "pHx" = (
-/obj/effect/landmark/survivor_spawner,
-/turf/open/gm/dirt,
-/area/lv624/ground/colony/west_tcomms_road)
+/obj/effect/landmark/survivor_spawner/civilian,
+/turf/open/floor{
+	dir = 4;
+	icon_state = "whitepurplecorner"
+	},
+/area/lv624/lazarus/fitness)
 "pHA" = (
 /obj/structure/surface/table/reinforced/prison,
 /turf/open/floor{
@@ -24392,7 +24340,7 @@ atC
 npQ
 atC
 aAt
-aro
+aph
 aHE
 aIn
 asw
@@ -24402,16 +24350,16 @@ asw
 asw
 asw
 axX
-aro
-aro
-aro
+aph
+aph
+aph
 asZ
 asw
 asw
-aro
-aro
-aro
-aro
+aph
+aph
+aph
+aph
 asw
 asw
 asw
@@ -24619,9 +24567,9 @@ suv
 atZ
 vVD
 ayT
-aro
-aro
-aro
+aph
+aph
+aph
 asw
 asw
 asw
@@ -24630,17 +24578,17 @@ asw
 asw
 awb
 azg
-aro
+aph
 aIJ
 aIq
-aro
-aro
+aph
+aph
 atA
-aro
+aph
 awb
 azg
-aro
-aro
+aph
+aph
 asw
 asw
 aKc
@@ -24847,30 +24795,30 @@ asK
 pbd
 avf
 ayT
-aro
+aph
 aBk
-aro
+aph
 aIo
 asw
 asw
 asw
-aro
+aph
 awb
 awe
 awe
 azg
-aro
-aro
-aro
-aro
+aph
+aph
+aph
+aph
 aIq
-aro
+aph
 aIX
 vJs
 azg
-aro
+aph
 arP
-aro
+aph
 asc
 aLj
 aPm
@@ -25072,17 +25020,17 @@ auP
 aqS
 rvL
 asc
-aro
-aro
-aro
+aph
+aph
+aph
 asw
-aro
-aro
-aro
-aro
-aro
-aro
-aro
+aph
+aph
+aph
+aph
+aph
+aph
+aph
 ata
 ayA
 ayA
@@ -25096,10 +25044,10 @@ aIJ
 ata
 ayA
 awV
-aro
-aro
-aro
-aro
+aph
+aph
+aph
+aph
 aLo
 aKf
 aVK
@@ -25299,20 +25247,20 @@ aud
 auP
 aqS
 avf
-aro
+aph
 awb
 ayd
 azg
-aro
-aro
+aph
+aph
 aIm
-aro
-aro
+aph
+aph
 arP
 asc
-aro
-aro
-aro
+aph
+aph
+aph
 aCO
 atu
 atu
@@ -25326,9 +25274,9 @@ asw
 asc
 aBk
 asw
-aro
-aro
-aro
+aph
+aph
+aph
 aKb
 aKb
 aKf
@@ -25531,9 +25479,9 @@ asX
 awe
 awe
 ayl
-aro
-aro
-aro
+aph
+aph
+aph
 aIq
 aCO
 atu
@@ -25553,10 +25501,10 @@ atu
 atu
 atu
 asx
-aro
+aph
 asw
-aro
-aro
+aph
+aph
 aKb
 aKb
 aKb
@@ -25759,9 +25707,9 @@ asY
 awe
 awe
 awV
-aro
+aph
 asw
-aro
+aph
 aCO
 aEe
 aAl
@@ -25781,11 +25729,11 @@ aAl
 aAl
 aAl
 aqS
-aro
+aph
 asw
 aIm
-aro
-aro
+aph
+aph
 aKb
 aKb
 aKb
@@ -25986,9 +25934,9 @@ bbu
 asZ
 awz
 ayl
-aro
+aph
 atA
-aro
+aph
 asg
 axV
 aAl
@@ -26009,11 +25957,11 @@ axw
 aAl
 aAl
 aqS
-aro
-aro
-aro
-aro
-aro
+aph
+aph
+aph
+aph
+aph
 aKb
 aKb
 gds
@@ -26210,13 +26158,13 @@ aud
 fQL
 aBn
 asd
-aro
+aph
 asX
 awe
 ayA
 ayd
 azg
-aro
+aph
 aCO
 aEe
 aAl
@@ -26238,7 +26186,7 @@ aAl
 aAl
 aqS
 asc
-aro
+aph
 asc
 asc
 atZ
@@ -26444,7 +26392,7 @@ awV
 asw
 ata
 awV
-aro
+aph
 axV
 kQY
 knd
@@ -26467,7 +26415,7 @@ akZ
 aqS
 asw
 asw
-aro
+aph
 atA
 asc
 aKc
@@ -26668,9 +26616,9 @@ aYR
 akZ
 aqS
 arP
-aro
-aro
-aro
+aph
+aph
+aph
 asc
 aCO
 aEe
@@ -26693,10 +26641,10 @@ jga
 azs
 dmf
 aqS
-aro
+aph
 asw
-aro
-aro
+aph
+aph
 ayT
 aWJ
 aKf
@@ -26898,7 +26846,7 @@ ase
 atu
 atu
 asx
-aro
+aph
 bbC
 axV
 ayh
@@ -26922,8 +26870,8 @@ jga
 dmf
 aqS
 asg
-aro
-aro
+aph
+aph
 asw
 aAt
 aKb
@@ -27149,10 +27097,10 @@ jga
 aGV
 dmf
 aqS
-aro
-aro
-aro
-aro
+aph
+aph
+aph
+aph
 asw
 aKb
 aKf
@@ -27378,10 +27326,10 @@ jga
 aHO
 aIz
 asw
-aro
+aph
 aIq
-aro
-aro
+aph
+aph
 aKb
 aKf
 aPm
@@ -27607,9 +27555,9 @@ dmf
 aqS
 asw
 asw
-aro
-aro
-aro
+aph
+aph
+aph
 aKb
 aKc
 aKf
@@ -27835,9 +27783,9 @@ dmf
 aqS
 asw
 asw
-aro
+aph
 aMt
-aro
+aph
 aKb
 aXj
 aKb
@@ -28063,9 +28011,9 @@ aHR
 aqS
 asw
 axX
-aro
-aro
-aro
+aph
+aph
+aph
 aXh
 aKb
 aKb
@@ -28289,10 +28237,10 @@ sTB
 sTB
 erx
 aqS
-aro
-aro
+aph
+aph
 asc
-aro
+aph
 aIq
 aXh
 aXh
@@ -28517,9 +28465,9 @@ aqR
 asa
 asa
 arn
-aro
-aro
-aro
+aph
+aph
+aph
 aNf
 aVl
 aXh
@@ -28718,7 +28666,7 @@ aqS
 arP
 asc
 asg
-aro
+aph
 atA
 axV
 aiS
@@ -28744,12 +28692,12 @@ asa
 arn
 baN
 baN
-aro
-aro
-aro
+aph
+aph
+aph
 ayT
 ayT
-aro
+aph
 aKb
 aXh
 aKb
@@ -28960,20 +28908,20 @@ xKE
 asa
 asa
 arn
-aro
+aph
 asg
-aro
+aph
 ayT
 ayT
-aro
+aph
 axX
-aro
+aph
 ayT
 atZ
 atC
 ayT
 ayT
-aro
+aph
 suv
 atC
 atC
@@ -29176,7 +29124,7 @@ aue
 auf
 aXC
 aFm
-aro
+aph
 ayN
 asc
 ayT
@@ -29404,8 +29352,8 @@ auf
 auf
 aZp
 aFm
-aro
-aro
+aph
+aph
 ayT
 aAp
 aAp
@@ -29857,11 +29805,11 @@ aqi
 aqS
 aFm
 aZn
-axp
+auf
 auf
 aFm
 asw
-aro
+aph
 aAp
 aAp
 nmO
@@ -30310,7 +30258,7 @@ aud
 aud
 auP
 aqS
-aro
+aph
 aFm
 aFm
 aFQ
@@ -34894,7 +34842,7 @@ svh
 aXX
 aZP
 aDv
-aCI
+aDv
 aDv
 aRx
 twg
@@ -35112,7 +35060,7 @@ ayg
 avH
 aSz
 axi
-axj
+aLt
 avH
 aBp
 aBR
@@ -35150,7 +35098,7 @@ efp
 uSq
 qIO
 qIO
-pHx
+qIO
 ntL
 kxI
 kxI
@@ -35340,10 +35288,10 @@ axe
 ayF
 aLt
 axi
-axj
+aLt
 ayF
 axe
-aLs
+axe
 aCk
 ado
 aXX
@@ -36021,14 +35969,14 @@ awD
 axh
 axC
 ayk
-axj
-axj
+aLt
+aLt
 axi
-axj
-axj
-axj
+aLt
+aLt
+aLt
 ayG
-axj
+aLt
 aCK
 ado
 aDv
@@ -36474,16 +36422,16 @@ psh
 psh
 ado
 awE
-axj
-axj
-axj
+aLt
+aLt
+aLt
 ayG
 azb
 axi
-axj
-axj
+aLt
+aLt
 aBs
-axj
+aLt
 aCm
 aCL
 ado
@@ -37159,12 +37107,12 @@ psh
 tLQ
 ado
 axe
-aLs
+axe
 axe
 ayF
-axj
+aLt
 axi
-axj
+aLt
 ayF
 axe
 cgK
@@ -37856,7 +37804,7 @@ cPV
 cPV
 smx
 wXp
-byY
+aTS
 koh
 jKu
 gpC
@@ -38074,19 +38022,19 @@ psh
 psh
 kzv
 uiN
-byY
+aTS
 ylL
-byY
+aTS
 mun
 oGs
 oGs
 oGs
 hFO
 qUM
-byY
-byY
-byY
-byY
+aTS
+aTS
+aTS
+aTS
 wAI
 xEt
 bCH
@@ -38302,19 +38250,19 @@ psh
 mvr
 psh
 uiN
-byY
-byY
-byY
-byY
-byY
-byY
-byY
+aTS
+aTS
+aTS
+aTS
+aTS
+aTS
+aTS
 mun
 wXp
-byY
-byY
-byY
-byY
+aTS
+aTS
+aTS
+aTS
 fPH
 xEt
 bbU
@@ -38530,19 +38478,19 @@ psh
 psh
 psh
 uiN
-byY
-byY
-byY
-byY
-byY
-byY
-byY
-byY
-byY
-byY
-byY
-byY
-byY
+aTS
+aTS
+aTS
+aTS
+aTS
+aTS
+aTS
+aTS
+aTS
+aTS
+aTS
+aTS
+aTS
 jLR
 xEt
 wMk
@@ -38758,19 +38706,19 @@ psh
 psh
 psh
 uiN
-byY
-byY
-byY
-byY
-byY
-byY
-byY
-byY
-byY
-byY
-byY
-byY
-byY
+aTS
+aTS
+aTS
+aTS
+aTS
+aTS
+aTS
+aTS
+aTS
+aTS
+aTS
+aTS
+aTS
 rTK
 bCH
 bCH
@@ -38990,15 +38938,15 @@ naR
 naR
 naR
 kUr
-byY
-byY
-byY
-byY
-byY
-byY
-byY
-byY
-byY
+aTS
+aTS
+aTS
+aTS
+aTS
+aTS
+aTS
+aTS
+aTS
 rTK
 bbH
 bbZ
@@ -39218,15 +39166,15 @@ psh
 psh
 psh
 uiN
-byY
-byY
-byY
+aTS
+aTS
+aTS
 lIm
 jlh
-byY
-byY
-byY
-byY
+aTS
+aTS
+aTS
+aTS
 rTK
 cPV
 cPV
@@ -39446,14 +39394,14 @@ mvr
 psh
 nuW
 uiN
-byY
-byY
-byY
+aTS
+aTS
+aTS
 lIm
 lIm
-byY
-byY
-byY
+aTS
+aTS
+aTS
 mun
 oGs
 oGs
@@ -39473,7 +39421,7 @@ cPV
 bCH
 aPT
 aQn
-aON
+aQn
 aQn
 aQn
 aQn
@@ -39675,26 +39623,26 @@ jHd
 psh
 uiN
 aBx
-byY
-byY
-byY
-byY
-byY
-byY
-byY
-byY
-byY
-byY
-byY
-byY
-byY
-byY
-byY
-byY
-byY
-byY
-byY
-byY
+aTS
+aTS
+aTS
+aTS
+aTS
+aTS
+aTS
+aTS
+aTS
+aTS
+aTS
+aTS
+aTS
+aTS
+aTS
+aTS
+aTS
+aTS
+aTS
+aTS
 fTf
 cPV
 cPV
@@ -39902,27 +39850,27 @@ asT
 psh
 psh
 uiN
-byY
-byY
-byY
-byY
-byY
+aTS
+aTS
+aTS
+aTS
+aTS
 ylL
-byY
-byY
-byY
-byY
-byY
-byY
-byY
-byY
-byY
+aTS
+aTS
+aTS
+aTS
+aTS
+aTS
+aTS
+aTS
+aTS
 ylL
-byY
-byY
-byY
-byY
-byY
+aTS
+aTS
+aTS
+aTS
+aTS
 fTf
 nhi
 cPV
@@ -40130,27 +40078,27 @@ asU
 psh
 cGb
 uiN
-byY
-byY
-byY
-byY
-byY
-byY
-byY
-byY
-byY
-byY
-byY
-byY
-byY
-byY
-byY
-byY
-byY
-byY
-byY
+aTS
+aTS
+aTS
+aTS
+aTS
+aTS
+aTS
+aTS
+aTS
+aTS
+aTS
+aTS
+aTS
+aTS
+aTS
+aTS
+aTS
+aTS
+aTS
 ylL
-byY
+aTS
 mun
 oGs
 lud
@@ -40349,7 +40297,7 @@ aum
 avq
 aum
 awl
-awG
+aum
 avq
 axF
 ayq
@@ -40358,9 +40306,9 @@ asU
 psh
 psh
 uiN
-byY
-byY
-byY
+aTS
+aTS
+aTS
 oED
 naR
 naR
@@ -40376,12 +40324,12 @@ naR
 naR
 naR
 kUr
-byY
-byY
-byY
-byY
-byY
-byY
+aTS
+aTS
+aTS
+aTS
+aTS
+aTS
 aPN
 aQn
 aQn
@@ -40586,9 +40534,9 @@ asU
 nVG
 psh
 uiN
-byY
-byY
-byY
+aTS
+aTS
+aTS
 fTf
 aJr
 aJr
@@ -40604,12 +40552,12 @@ aJr
 aJr
 aJr
 uiN
-byY
 aTS
-byY
-byY
-byY
-byY
+aTS
+aTS
+aTS
+aTS
+aTS
 aPO
 aQn
 aQn
@@ -40621,7 +40569,7 @@ aTg
 rVH
 aQn
 aQn
-aON
+aQn
 aQn
 aQn
 aPO
@@ -40814,9 +40762,9 @@ asT
 asT
 aAo
 lYB
-byY
+aTS
 ylL
-byY
+aTS
 fTf
 aJr
 jGW
@@ -40832,12 +40780,12 @@ aJr
 aJr
 jGW
 uiN
-byY
-byY
-byY
-byY
-byY
-byY
+aTS
+aTS
+aTS
+aTS
+aTS
+aTS
 aPN
 aQn
 aQn
@@ -41040,11 +40988,11 @@ aum
 ayJ
 avB
 asU
-byY
-byY
+aTS
+aTS
 aAq
 ylL
-byY
+aTS
 fTf
 qDQ
 aJr
@@ -41062,9 +41010,9 @@ aJr
 jEc
 naR
 kUr
-byY
+aTS
 ylL
-byY
+aTS
 taK
 aPt
 aPt
@@ -41268,10 +41216,10 @@ atp
 ayK
 atp
 asV
-byY
-byY
-byY
-byY
+aTS
+aTS
+aTS
+aTS
 aCo
 fTf
 aJr
@@ -41290,9 +41238,9 @@ aJr
 aJr
 aJr
 uiN
-byY
-byY
-byY
+aTS
+aTS
+aTS
 fTf
 mCo
 aRi
@@ -41497,10 +41445,10 @@ aum
 azh
 asU
 aAq
-byY
-byY
-byY
-byY
+aTS
+aTS
+aTS
+aTS
 fTf
 aJr
 aJr
@@ -41518,9 +41466,9 @@ jGW
 aJr
 aKZ
 uiN
-byY
-byY
-byY
+aTS
+aTS
+aTS
 fTf
 mCo
 aSe
@@ -41746,9 +41694,9 @@ ujd
 aJr
 aJr
 uiN
-byY
-byY
-byY
+aTS
+aTS
+aTS
 fTf
 mCo
 dfD
@@ -42886,7 +42834,7 @@ aKi
 aKD
 aLd
 aLK
-aLN
+aPU
 aND
 aOt
 aLe
@@ -43115,9 +43063,9 @@ aKE
 aLe
 aLe
 aMV
-aLN
+aPU
 aOu
-aLN
+aPU
 aLe
 aQu
 aQo
@@ -43127,7 +43075,7 @@ aSL
 aVg
 tem
 aVd
-aTM
+aZM
 aTq
 aZG
 aSX
@@ -43355,12 +43303,12 @@ aTo
 ogR
 aUs
 nwR
-aTM
-aTM
-aTM
+aZM
+aZM
+aZM
 aXf
-aTM
-aTM
+aZM
+aZM
 aXW
 aVB
 kxI
@@ -43574,7 +43522,7 @@ aMT
 aMU
 aOv
 aPh
-aLN
+aPU
 aQs
 aQo
 aSi
@@ -43583,8 +43531,8 @@ qGR
 aWD
 aUq
 aTN
-aTM
-aTM
+aZM
+aZM
 aUo
 aSX
 aZJ
@@ -43812,7 +43760,7 @@ aWD
 aUq
 aTN
 udM
-aTM
+aZM
 aWE
 aSX
 aSX
@@ -44025,7 +43973,7 @@ aIO
 aKn
 aKF
 aLf
-aLN
+aPU
 aLM
 sic
 aOv
@@ -44039,8 +43987,8 @@ lHc
 gKg
 aVe
 jwW
-aTM
-aTM
+aZM
+aZM
 gqG
 aSX
 aZd
@@ -44258,7 +44206,7 @@ aMV
 aLM
 aNG
 aPi
-aLN
+aPU
 aQu
 aGk
 aQo
@@ -44267,14 +44215,14 @@ aSL
 aVf
 jMk
 aWg
-aTM
-aTM
+aZM
+aZM
 aWF
 aSX
 aXs
-aTM
 aZM
-aTM
+aZM
+aZM
 aXg
 kyN
 kxI
@@ -44485,7 +44433,7 @@ aLO
 aLe
 aNH
 aOw
-aLN
+aPU
 aLL
 aQo
 aNB
@@ -44496,13 +44444,13 @@ aSX
 aSX
 aSX
 aXs
-aTM
-aTM
+aZM
+aZM
 aXg
-aTM
+aZM
 aVC
-aTM
-aTM
+aZM
+aZM
 aWz
 kxI
 kxI
@@ -44681,7 +44629,7 @@ atX
 atX
 atX
 atX
-atX
+pHx
 axv
 axQ
 ayx
@@ -44724,11 +44672,11 @@ aTP
 aUt
 aSX
 aVF
-aTM
-aTM
+aZM
+aZM
 aXg
-aTM
-aTM
+aZM
+aZM
 aZf
 aSL
 aSL
@@ -44909,8 +44857,8 @@ atX
 atX
 atX
 atX
-atX
-atX
+aCI
+byY
 atX
 atX
 atX
@@ -44952,7 +44900,7 @@ aTR
 aUu
 aSX
 aVG
-aTM
+aZM
 aWG
 aSX
 aXt
@@ -45135,10 +45083,10 @@ atX
 auF
 auF
 avv
-aEn
+auF
 auF
 awS
-atX
+byY
 atX
 atX
 atX
@@ -45177,9 +45125,9 @@ oUy
 aSL
 aTu
 aZM
-aTM
+aZM
 aVj
-aTM
+aZM
 aWi
 aWH
 aSX
@@ -45365,8 +45313,8 @@ auE
 auE
 auE
 auF
-atX
-atX
+nfD
+byY
 atX
 ayy
 atX
@@ -45403,8 +45351,8 @@ dEg
 kvo
 mNO
 fFN
-aTM
-aTM
+aZM
+aZM
 aUx
 aSX
 aVH
@@ -45593,8 +45541,8 @@ auE
 avw
 auE
 auF
-atX
-atX
+awG
+byY
 atX
 atX
 atX
@@ -45821,8 +45769,8 @@ auZ
 auE
 auE
 auF
-atX
-atX
+aGn
+byY
 atX
 avM
 atX
@@ -46049,8 +45997,8 @@ auF
 auF
 auF
 auF
-atX
-atX
+byY
+byY
 atX
 atX
 atX
@@ -47207,7 +47155,7 @@ aDS
 aEA
 aGH
 aGH
-aGn
+aGH
 aGH
 aQF
 aDy
@@ -47889,7 +47837,7 @@ aAP
 aAU
 aDT
 aED
-aFk
+aFO
 aFO
 aGo
 aGJ
@@ -51340,7 +51288,7 @@ aWj
 azt
 yle
 yle
-nfD
+yle
 yle
 cqw
 jxG
@@ -53561,7 +53509,7 @@ cpY
 cpY
 aqG
 aqW
-arG
+aqW
 aqW
 aqW
 aqW
@@ -57895,7 +57843,7 @@ dLY
 dLY
 asN
 asN
-atF
+axa
 axa
 ati
 tfA

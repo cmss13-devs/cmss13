@@ -10,6 +10,9 @@
 	skills = /datum/skills/civilian
 	idtype = /obj/item/card/id/lanyard
 
+	minimap_icon = "surv"
+	minimap_background = MINIMAP_ICON_BACKGROUND_CIVILIAN
+
 /datum/equipment_preset/colonist/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset(H), WEAR_L_EAR)

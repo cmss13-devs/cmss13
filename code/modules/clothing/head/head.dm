@@ -411,6 +411,7 @@
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
 	)
+	black_market_value = 25
 
 /obj/item/clothing/head/beret/marine/mp/warden
 	name = "\improper USCM MP warden peaked cap"
@@ -421,6 +422,7 @@
 	name = "\improper USCM chief MP beret"
 	desc = "A beret with the USCM Military Police First Lieutenant insignia emblazoned on it. It shines with the glow of corrupt authority and a smudge of doughnut."
 	icon_state = "beretwo"
+	black_market_value = 30
 
 /obj/item/clothing/head/beret/marine/mp/mppeaked
 	name = "\improper USCM MP peaked cap"
@@ -455,6 +457,7 @@
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
 	)
+	black_market_value = 30
 
 /obj/item/clothing/head/beret/marine/commander/dress
 	name = "marine major white beret"
@@ -493,6 +496,7 @@
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
 	)
+	black_market_value = 30
 
 /obj/item/clothing/head/marine/peaked/captain/white
 	name = "captain's dress white peaked cap"

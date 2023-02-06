@@ -41,6 +41,7 @@
 	time_to_unequip = 20
 	anti_hug = 5
 	fire_intensity_resistance = 10
+	black_market_value = 100
 	var/list/mask_huds = list(MOB_HUD_XENO_STATUS, MOB_HUD_HUNTER, MOB_HUD_HUNTER_CLAN, MOB_HUD_MEDICAL_OBSERVER)
 	var/thrall = FALSE //Used to affect icon generation.
 

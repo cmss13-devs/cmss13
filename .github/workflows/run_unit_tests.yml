@@ -26,8 +26,10 @@ jobs:
       - name: Install rust-g
         run: |
           sudo dpkg --add-architecture i386
-          sudo apt update || true
-          sudo apt install -o APT::Immediate-Configure=false libssl1.1:i386
+          sudo gem install apt-spy2
+          sudo apt-spy2 fix --commit --launchpad --country=US
+          sudo apt-get update
+          sudo apt-get install -o APT::Immediate-Configure=false libssl1.1:i386
           bash tools/ci/install_rust_g.sh
       - name: Configure version
         run: |

@@ -4472,9 +4472,8 @@
 	},
 /area/almayer/command/lifeboat)
 "amt" = (
-/obj/structure/prop/invuln/lifeboat_hatch_placeholder{
-	icon_state = "closed";
-	layer = 2.1
+/obj/structure/machinery/lifeboat_bolt/target{
+	id = "almayer-lifeboat1"
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -18099,8 +18098,7 @@
 /area/almayer/medical/lower_medical_lobby)
 "beZ" = (
 /obj/structure/platform_decoration{
-	dir = 8;
-	
+	dir = 8
 	},
 /turf/open/floor/almayer,
 /area/almayer/living/chapel)
@@ -25773,6 +25771,14 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/port_hallway)
+"bIa" = (
+/obj/structure/prop/invuln/lifeboat_umbillical,
+/turf/open/floor/almayer_hull{
+	dir = 8;
+	icon_state = "outerhull_dir";
+	tag = "icon-outerhull_dir (WEST)"
+	},
+/area/almayer/command/lifeboat)
 "bIb" = (
 /obj/structure/disposalpipe/junction{
 	dir = 4;
@@ -34726,6 +34732,14 @@
 	tag = "icon-red (EAST)"
 	},
 /area/almayer/hallways/aft_hallway)
+"cwm" = (
+/obj/structure/prop/invuln/lifeboat_umbillical,
+/turf/open/floor/almayer_hull{
+	dir = 4;
+	icon_state = "outerhull_dir";
+	tag = "icon-outerhull_dir (EAST)"
+	},
+/area/almayer/command/lifeboat)
 "cwo" = (
 /obj/structure/largecrate/random/mini/chest{
 	pixel_x = 4
@@ -40368,20 +40382,6 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/hull/lower_hull/l_f_p)
-"eJQ" = (
-/obj/structure/prop/invuln{
-	desc = "An inflated membrane. This one is puncture proof. Wow!";
-	icon = 'icons/obj/items/inflatable.dmi';
-	icon_state = "wall";
-	name = "umbilical wall"
-	},
-/obj/structure/blocker/invisible_wall,
-/turf/open/floor/almayer_hull{
-	dir = 4;
-	icon_state = "outerhull_dir";
-	tag = "icon-outerhull_dir (EAST)"
-	},
-/area/almayer/command/lifeboat)
 "eJX" = (
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/engineering/ce_room)
@@ -52072,6 +52072,14 @@
 	tag = "icon-sterile_green_side (EAST)"
 	},
 /area/almayer/medical/upper_medical)
+"jOU" = (
+/obj/structure/prop/invuln/lifeboat_umbillical,
+/turf/open/floor/almayer_hull{
+	dir = 5;
+	icon_state = "outerhull_dir";
+	tag = "icon-outerhull_dir (NORTHEAST)"
+	},
+/area/almayer/command/lifeboat)
 "jPf" = (
 /obj/structure{
 	health = 150;
@@ -54063,6 +54071,15 @@
 "kIf" = (
 /turf/open/floor/wood/ship,
 /area/almayer/engineering/ce_room)
+"kIi" = (
+/obj/structure/machinery/lifeboat_bolt/id_panel{
+	id = "almayer-lifeboat2"
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/command/lifeboat)
 "kIm" = (
 /obj/structure/pipes/vents/pump{
 	dir = 4
@@ -61979,17 +61996,11 @@
 	},
 /area/almayer/hull/lower_hull/l_m_p)
 "oee" = (
-/obj/structure/prop/invuln{
-	desc = "An inflated membrane. This one is puncture proof. Wow!";
-	icon = 'icons/obj/items/inflatable.dmi';
-	icon_state = "wall";
-	name = "umbilical wall"
-	},
-/obj/structure/blocker/invisible_wall,
+/obj/structure/prop/invuln/lifeboat_umbillical,
 /turf/open/floor/almayer_hull{
-	dir = 8;
+	dir = 9;
 	icon_state = "outerhull_dir";
-	tag = "icon-outerhull_dir (WEST)"
+	tag = "icon-outerhull_dir (NORTHWEST)"
 	},
 /area/almayer/command/lifeboat)
 "oef" = (
@@ -64907,6 +64918,14 @@
 	tag = "icon-green"
 	},
 /area/almayer/hallways/aft_hallway)
+"pvv" = (
+/obj/structure/prop/invuln/lifeboat_umbillical,
+/turf/open/floor/almayer_hull{
+	dir = 6;
+	icon_state = "outerhull_dir";
+	tag = "icon-outerhull_dir (SOUTHEAST)"
+	},
+/area/almayer/command/lifeboat)
 "pvJ" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -66716,6 +66735,10 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/squads/delta)
+"qgZ" = (
+/obj/structure/prop/invuln/lifeboat_umbillical,
+/turf/closed/wall/almayer/outer,
+/area/almayer/command/lifeboat)
 "qhb" = (
 /obj/structure/machinery/light,
 /turf/open/floor/almayer{
@@ -71549,6 +71572,14 @@
 	tag = "icon-test_floor4"
 	},
 /area/almayer/command/lifeboat)
+"sjA" = (
+/obj/structure/prop/invuln/lifeboat_umbillical,
+/turf/open/floor/almayer_hull{
+	dir = 10;
+	icon_state = "outerhull_dir";
+	tag = "icon-outerhull_dir (SOUTHWEST)"
+	},
+/area/almayer/command/lifeboat)
 "skl" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 8
@@ -75317,9 +75348,8 @@
 	},
 /area/almayer/hull/upper_hull/u_a_s)
 "tOB" = (
-/obj/structure/prop/invuln/lifeboat_hatch_placeholder/terminal{
-	icon_state = "closed";
-	layer = 2.1
+/obj/structure/machinery/lifeboat_bolt/id_panel{
+	id = "almayer-lifeboat1"
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -76131,6 +76161,15 @@
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/wood/ship,
 /area/almayer/medical/medical_science)
+"uhX" = (
+/obj/structure/machinery/lifeboat_bolt/target{
+	id = "almayer-lifeboat2"
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/command/lifeboat)
 "uia" = (
 /obj/structure{
 	health = 150;
@@ -140145,7 +140184,7 @@ xVk
 xVk
 xVk
 xVk
-eJQ
+jOU
 aPw
 aHe
 dnJ
@@ -140159,7 +140198,7 @@ eky
 hfw
 aHe
 aPw
-eJQ
+pvv
 xVk
 xVk
 xVk
@@ -140957,10 +140996,10 @@ xVk
 xVk
 xVk
 xVk
-oee
+bIa
 aPw
 sYD
-amt
+uhX
 aMT
 uqI
 aHe
@@ -140971,7 +141010,7 @@ aMT
 amt
 bZR
 aPw
-oee
+bIa
 xVk
 xVk
 xVk
@@ -141160,10 +141199,10 @@ xVk
 xVk
 xVk
 xVk
-eJQ
+cwm
 aPw
 ebn
-tOB
+kIi
 aMT
 eky
 aHe
@@ -141174,7 +141213,7 @@ aMT
 tOB
 oOO
 aPw
-eJQ
+cwm
 xVk
 xVk
 xVk
@@ -141973,7 +142012,7 @@ xVk
 xVk
 xVk
 oee
-aPw
+qgZ
 aHe
 tqB
 eky
@@ -141986,7 +142025,7 @@ eky
 gwu
 aHe
 aPw
-oee
+sjA
 xVk
 xVk
 xVk

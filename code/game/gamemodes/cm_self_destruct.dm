@@ -128,7 +128,7 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 		evac_status = EVACUATION_STATUS_IN_PROGRESS //Cannot cancel at this point. All shuttles are off.
 		spawn() //One of the few times spawn() is appropriate. No need for a new proc.
 			ai_announcement("WARNING: Evacuation order confirmed. Launching escape pods.", 'sound/AI/evacuation_confirmed.ogg')
-			addtimer(CALLBACK(src, PROC_REF(launch_lifeboats)), 10 SECONDS) // giving some time to board lifeboats
+			lifeboat_unlock_manual_launch()
 			var/datum/shuttle/ferry/marine/evacuation_pod/P
 			var/L[] = new
 			var/i
@@ -186,6 +186,287 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 		var/obj/docking_port/mobile/lifeboat/lifeboat = lifeboat_dock.get_docked()
 		if(lifeboat && lifeboat.available)
 			lifeboat.send_to_infinite_transit()
+
+//unlocks Manual Launch
+/datum/authority/branch/evacuation/proc/lifeboat_unlock_manual_launch()
+	for(var/obj/structure/machinery/lifeboat_bolt/target/bolt in machines)
+		bolt.unlock()
+
+////BOLT CONTROLS/// for lifeboat manual launch
+#define LOCKED		0
+#define UNLOCKED	1
+#define LAUNCHING	2
+#define LAUNCHED	3
+
+#define AIMING	1
+#define AIMED	2
+#define FIRING	3
+
+#define PRIMED_TEMP		1
+#define PRIMED_PERMA	2
+
+/obj/structure/machinery/lifeboat_bolt
+	name = "Bolt Controller"
+	desc_lore = "The Detonation Escape Switch, simply shortened to DES is a dead switch system developed for usage in emergencies when out in deep space, intended for priming an escape shuttle if all else failed. Due to the nature of the switch requiring constant pressure in order to function and launch the escape shuttle, it has been affectionately nicknamed the 'Des-pair switch' by crews that had their ships fitted with one."
+	use_power = FALSE
+	density = FALSE
+	indestructible = TRUE
+	unslashable = TRUE
+	unacidable = TRUE
+	var/id
+
+/obj/structure/machinery/lifeboat_bolt/Initialize()
+	. = ..()
+	return INITIALIZE_HINT_LATELOAD
+
+//Explosive Bolt Fuse/Target - shoot here to release bolts
+//id should be the same as lifeboat dock ID for launch purpose
+/obj/structure/machinery/lifeboat_bolt/target
+	name = "DES-7 Manual Launch Fuse"
+	desc = "The DES-7 12mm Fuse needs to be primed and ignited in order to detonate and launch the linked escape shuttle. Originally designed to be ignited by the purpose-built DES-7-N ignition gun, but it was soon noted in the 'Space, Ships and Stars' handbook by George Lambert that any firearm could perform the necessary action in an emergency situation."
+	icon = 'icons/obj/structures/machinery/bolt_target.dmi'
+	icon_state = "closed"
+
+	var/obj/structure/machinery/lifeboat_bolt/id_panel/sister_panel
+	var/stage = LOCKED //Unlocked, Locked, Launching & Launched
+	var/aim_status	//Aiming, Aimed, Firing
+
+/obj/structure/machinery/lifeboat_bolt/target/get_examine_text()
+	. = ..()
+	if(sister_panel.primed)
+		. += SPAN_NOTICE("The control panel is <span class='bold'>primed</span>.\n<span class='bold'>Aim</span> then <span class='bold'>fire</span> to ignite the fuse and launch the lifeboat.")
+	else
+		. += SPAN_NOTICE("The control panel is <span class='bold'>deactivated</span>.\nPrime it using the other Control Panel.")
+
+/obj/structure/machinery/lifeboat_bolt/target/update_icon()
+	. = ..()
+	switch(stage)
+		if(LOCKED)
+			icon_state = "closed"
+		if(UNLOCKED)
+			if(sister_panel.primed)
+				icon_state = "red"
+			else
+				icon_state = "opened"
+		if(LAUNCHING)
+			icon_state = "flashing"
+		if(LAUNCHED)
+			icon_state = "released"
+
+
+/obj/structure/machinery/lifeboat_bolt/target/LateInitialize()
+	if(sister_panel) return
+
+	for(var/obj/structure/machinery/lifeboat_bolt/id_panel/M in machines)
+		if(M.id == id)
+			M.sister_target = src
+			sister_panel = M
+			break
+
+	if(!sister_panel) stat |= BROKEN
+
+//ANIMATION & SOUNDFX
+/obj/structure/machinery/lifeboat_bolt/target/proc/targeting_overlay()
+	overlays.Cut()
+	var/image/I = image('icons/effects/Targeted.dmi',"locking_movement")
+	I.pixel_x = 1
+	overlays += I
+	aim_status = AIMING
+	playsound(src,'sound/weapons/TargetOn.ogg', 35)
+
+/obj/structure/machinery/lifeboat_bolt/target/proc/targeted_overlay()
+	overlays.Cut()
+	var/image/I = image('icons/effects/Targeted.dmi',"locked_wide")
+	I.pixel_x = 1
+	overlays += I
+	aim_status = AIMED
+	playsound(src,'sound/weapons/TargetOn.ogg', 35)
+
+/obj/structure/machinery/lifeboat_bolt/target/proc/remove_target_overlay()
+	overlays.Cut()
+	aim_status = null
+	playsound(src,'sound/weapons/TargetOff.ogg', 35)
+
+/obj/structure/machinery/lifeboat_bolt/target/proc/unlock()
+	if(stage != LOCKED)
+		return
+	stage = UNLOCKED
+	flick("opening",src)
+	flick("opening_raising",sister_panel)
+	update_icon()
+	sister_panel.update_icon()
+
+//TIMED TO MATCH EXPLOSION, for best effect
+//Using Sleep is concerning, I can't remember why I didn't call Async on this
+/obj/structure/machinery/lifeboat_bolt/target/proc/detonate_animation()
+	stage = LAUNCHING
+	update_icon()
+	sister_panel.update_icon()
+	sleep(30)
+	flick("releasing",src)
+	stage = LAUNCHED
+	update_icon()
+	sleep(10)
+	sister_panel.update_icon()
+
+/obj/structure/machinery/lifeboat_bolt/target/proc/detonate()
+	if(stage >= LAUNCHING)
+		return
+
+	var/msg_log = "[key_name_admin(operator)] has launched the lifeboat [id]."
+	if(sister_panel.primed == PRIMED_TEMP) msg_log += "\n With Help from [sister_panel.operator]."
+	log_game(msg_log)
+	message_staff(msg_log)
+
+	operator.apply_effect(3,STUN)
+	shake_camera(operator, 15, 1, 2)
+
+	for(var/obj/docking_port/stationary/lifeboat_dock/lifeboat_dock in GLOB.lifeboat_almayer_docks)
+		if(lifeboat_dock.id != id) continue
+		var/obj/docking_port/mobile/lifeboat/lifeboat = lifeboat_dock.get_docked()
+		if(lifeboat && lifeboat.available)
+			lifeboat.send_to_infinite_transit()
+		break
+
+	INVOKE_ASYNC(src, PROC_REF(detonate_animation))
+
+//Proc is used to see if the gun actually fired something
+/obj/structure/machinery/lifeboat_bolt/target/bullet_act(obj/item/projectile/P)
+	if(aim_status == FIRING && P.ammo.damage && (P.ammo.damage_type == BRUTE || P.ammo.damage_type == BURN))
+		detonate()
+
+/obj/structure/machinery/lifeboat_bolt/target/proc/finish_firing()
+	aim_status = null
+
+/obj/structure/machinery/lifeboat_bolt/target/attackby(obj/item/weapon/gun/G, mob/user)
+	if(!istype(G) || !(sister_panel.primed) || stage >= LAUNCHING) return
+
+	if(aim_status == AIMED && sister_panel.operator != user && operator == user)//Fires gun when properly aimed
+		remove_target_overlay()
+		aim_status = FIRING
+		G.Fire(src,user)
+		addtimer(CALLBACK(src, PROC_REF(finish_firing)), 2)
+		return
+
+	if(user.action_busy || aim_status) return
+
+	targeting_overlay()
+	if(!do_after(user, 6 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC) || !(sister_panel.primed))
+		remove_target_overlay()
+		return
+
+	targeted_overlay()
+	operator = user
+
+	if(do_after(user, 1 MINUTES, (INTERRUPT_ALL|INTERRUPT_LCLICK), BUSY_ICON_GENERIC, numticks = 60))//switch to move signal event? or use interrupt leftmouse click?
+		to_chat(user, SPAN_WARNING("You lose your aim as your arm tires."))
+
+	remove_target_overlay()
+
+//////////////////////////////////////
+//ID-SCAN PANEL - Anti-Grief Device
+//Command ID is needed set and prime for the Fuse Iginition
+//Instead without ID access, A second person needs to constantly hold down the control panel to prime it.
+/obj/structure/machinery/lifeboat_bolt/id_panel
+	name = "DES-7 Manual Launch Control Panel"
+	desc = "The DES-7 control panel requires Command Access to set the fuel gauge and prime the Fuse. The fuel gauge can be manually set by having another person applying pressure."
+	icon = 'icons/obj/structures/machinery/bolt_terminal.dmi'
+	icon_state = "closed"
+	pixel_x = 1
+	req_one_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_DROPSHIP, ACCESS_WY_CORPORATE)
+	var/obj/structure/machinery/lifeboat_bolt/target/sister_target
+	var/primed = 0
+
+/obj/structure/machinery/lifeboat_bolt/id_panel/get_examine_text()
+	. = ..()
+	if(primed)
+		. += SPAN_NOTICE("The control panel is <span class='bold'>primed</span>.\n<span class='bold'>Shoot</span> the <span class='bold'>fuse</span> to manually launch the lifeboat.")
+	else
+		. += SPAN_NOTICE("The control panel is <span class='bold'>deactivated</span>.\nSwipe <span class='bold'>Command ID</span> or find any personnel to <span class='bold'>apply constant pressure</span> to Panel.")
+
+/obj/structure/machinery/lifeboat_bolt/id_panel/update_icon()
+	. = ..()
+	switch(sister_target.stage)
+		if(LOCKED)
+			icon_state = "closed"
+		if(UNLOCKED)
+			if(primed)
+				icon_state = "green"
+			else
+				icon_state = "red"
+		if(LAUNCHING)
+			icon_state = "flashing"
+		if(LAUNCHED)
+			icon_state = "green"
+
+/obj/structure/machinery/lifeboat_bolt/id_panel/LateInitialize()
+	if(sister_target) return
+
+	for(var/obj/structure/machinery/lifeboat_bolt/target/M in machines)
+		if(M.id == id)
+			M.sister_panel = src
+			sister_target = M
+			break
+
+	if(!sister_target) stat |= BROKEN
+
+/obj/structure/machinery/lifeboat_bolt/id_panel/proc/id_unlock(mob/user)
+	if(primed == PRIMED_PERMA)
+		flick("falling",sister_target)
+		visible_message(SPAN_NOTICE("[user] releases and deactivates the panel with their ID."))
+		primed = null
+	else
+		flick("raising",sister_target)
+		visible_message(SPAN_NOTICE("[user] sets and activates the panel with their ID."))
+		primed = PRIMED_PERMA
+
+	update_icon()
+	sister_target.update_icon()
+
+/obj/structure/machinery/lifeboat_bolt/id_panel/attack_hand(var/mob/user)
+	if((. = ..()) || sister_target.stage != UNLOCKED)
+		return
+
+	if(allowed(user))
+		id_unlock(user)
+		return
+
+	if(!primed)
+		primed = PRIMED_TEMP
+		operator = user
+		flick("raising",sister_target)
+		update_icon()
+		sister_target.update_icon()
+		visible_message(SPAN_NOTICE("[user] presses their hand onto the panel, activing it."))
+
+		do_after(user, 3 MINUTES, INTERRUPT_ALL, BUSY_ICON_GENERIC,numticks = 180)
+
+		primed = null
+		operator = null
+		flick("falling",sister_target)
+		update_icon()
+		sister_target.update_icon()
+		visible_message(SPAN_NOTICE("[user] releases their hand from the panel, deactivating it."))
+
+/obj/structure/machinery/lifeboat_bolt/id_panel/attackby(obj/item/W, mob/user)
+	if(check_access(W) && sister_target.stage == UNLOCKED)
+		id_unlock(user)
+		return
+	. = ..()
+
+
+#undef LOCKED
+#undef UNLOCKED
+#undef LAUNCHING
+#undef LAUNCHED
+
+#undef AIMING
+#undef AIMED
+#undef FIRING
+
+#undef PRIMED_TEMP
+#undef PRIMED_PERMA
+
 
 //=========================================================================================
 //=========================================================================================

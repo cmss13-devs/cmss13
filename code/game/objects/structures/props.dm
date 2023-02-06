@@ -628,6 +628,21 @@
 	name = "Lifeboat"
 	icon = 'icons/turf/lifeboat.dmi'
 
+/obj/structure/prop/invuln/lifeboat_umbillical
+	name = "umbilical wall"
+	desc = "An inflated membrane. This one is puncture proof. Wow!"
+	icon = 'icons/obj/items/inflatable.dmi'
+	icon_state = "wall"
+	density = TRUE
+
+	var/weaken = FALSE
+
+/obj/structure/prop/invuln/lifeboat_umbillical/ex_act()
+	if(weaken)
+		playsound(loc, 'sound/machines/hiss.ogg', 25, 1)
+		flick("wall_deflating", src)
+		icon_state = "wall_popped"
+		weaken = FALSE
 
 /obj/structure/prop/brazier
 	name = "brazier"

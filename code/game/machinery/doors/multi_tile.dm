@@ -316,7 +316,9 @@
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat/blastdoor/proc/bolt_explosion()
 	var/turf/turf = get_step(src, throw_dir|dir)
-	cell_explosion(turf, 150, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data("lifeboat explosive bolt"))
+	cell_explosion(turf, 150, 15, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data("lifeboat explosive bolt"))
+	for(var/obj/structure/prop/invuln/lifeboat_umbillical/inflatable in range(2, turf))
+		inflatable.weaken = TRUE
 
 // Elevator door
 /obj/structure/machinery/door/airlock/multi_tile/elevator

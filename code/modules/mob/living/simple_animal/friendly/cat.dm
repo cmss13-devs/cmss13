@@ -59,7 +59,7 @@
 				if(is_type_in_list(prey, hunting_targets) && play_counter < 5)
 					prey.splat(src)
 					play_counter++
-					visible_message(pick("\the [src] bites \the [prey]!","\the [src] toys with \the [prey].","\the [src] chomps on \the [prey]!"))
+					visible_message(pick("[src] bites [prey]!","[src] toys with [prey].","[src] chomps on [prey]!"))
 					movement_target = null
 					stop_automated_movement = 0
 					break
@@ -68,7 +68,7 @@
 
 	for(var/mob/living/snack in oview(src, 3))
 		if(is_type_in_list(snack, hunting_targets) && prob(15) && snack.stat != DEAD)
-			visible_message(pick("\the [src] hisses at [snack]!", "\the [src] mrowls fiercely!", "\the [src] eyes [snack] hungrily."))
+			visible_message(pick("[src] hisses at [snack]!", "[src] mrowls fiercely!", "[src] eyes [snack] hungrily."))
 		break
 
 	if(!stat && !resting && !buckled)

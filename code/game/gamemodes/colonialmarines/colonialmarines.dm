@@ -396,7 +396,7 @@
 						counted_humans["Auxiliary Marines"][player_client.mob.job]++
 				else
 					counted_humans["Non-Standard Humans"]++
-			else if(isXeno(player_client.mob))
+			else if(isxeno(player_client.mob))
 				var/mob/living/carbon/Xenomorph/xeno = player_client.mob
 				counted_xenos[xeno.hivenumber][xeno.caste_type]++
 

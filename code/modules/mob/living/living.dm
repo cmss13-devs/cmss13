@@ -464,10 +464,11 @@
 	..()
 	for(var/h in src.hud_possible)
 		src.clone.hud_list[h].icon_state = src.hud_list[h].icon_state
+
 /**
  * not recommended to be used - does not apply next move cooldown by default, after_attack_hand() does
  */
-/mob/living/attack_hand(mob/user) //
+/mob/living/attack_hand(mob/user)
 	. = ..()
 	after_attack_hand(user)
 
@@ -486,7 +487,3 @@
 	switch(stat)
 		if(DEAD)
 			SEND_SIGNAL(src, COMSIG_MOB_STAT_SET_DEAD)
-/mob/living/proc/after_attack_hand(mob/user)
-	SHOULD_CALL_PARENT(TRUE)
-	user.next_move += 0.4 SECONDS // transferred here from click_adjacent()
-	return

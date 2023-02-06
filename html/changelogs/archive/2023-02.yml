@@ -68,3 +68,39 @@
   stanalbatross:
   - bugfix: fixed a potential runtime in clothing.dm and added a better debug message
       for it.
+2023-02-05:
+  BeagleGaming1:
+  - bugfix: Changed layer of LV-624's tree so you can see the medical hud if marines
+      are hidden (dead) behind it
+  KiVts:
+  - bugfix: fixed bugs related to dropship matrices
+  harryob:
+  - refactor: the tacmap is now better, everywhere it appears, for the queen and cic
+  - ui: the orbit menu now has icons (from the minimap)
+  - rscadd: ghosts now get a minimap
+  - bugfix: extended now actually works, and doesn't spawn in inhuman abombinations
+2023-02-06:
+  BeagleGaming1:
+  - bugfix: Crew Monitoring computers can now be deconstructed the same way as any
+      computer
+  - bugfix: The ASRS can no longer steal your groin.
+  Morrow:
+  - balance: Removes ultrazine spawns on maps.
+  - balance: Removes ultrazine and antag stims as explicit random loot items.
+  NewyearnewmeUwu:
+  - rscdel: Removed skull balaclavas and skull facepaint from the loadout options
+  - maptweak: adds a single skull facepaint and balaclava, each hidden in their own
+      locations on the Almayer.
+  Zonespace27:
+  - admin: Attack logs are no longer displayed to chat by default
+  harryob:
+  - refactor: refactor's admin VV
+  - admin: can now edit lists with any reliability, can now edit bitfields without
+      maths
+  - ui: added the particle editor and colour matrix editor (from tiviplus and Y0SH1M4S73R
+      respectively) for admins via VV
+  - qol: you can now keybind every emote
+  - refactor: emotes are now datums
+  realforest2001:
+  - server: TGUI logs are now in a unique file to reduce clutter.
+  - server: Temporarily increases maximum bantime due to system issues.

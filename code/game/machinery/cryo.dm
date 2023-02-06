@@ -186,7 +186,7 @@
 		occupant.bodytemperature += 2*(temperature - occupant.bodytemperature)
 		occupant.bodytemperature = max(occupant.bodytemperature, temperature) // this is so ugly i'm sorry for doing it i'll fix it later i promise
 		occupant.recalculate_move_delay = TRUE
-		occupant.stat = 1
+		occupant.set_stat(UNCONSCIOUS)
 		if(occupant.bodytemperature < T0C)
 			occupant.Sleeping(10)
 			occupant.apply_effect(10, PARALYZE)

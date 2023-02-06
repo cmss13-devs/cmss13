@@ -1,3 +1,26 @@
+/datum/action/ghost
+	name = "Ghost"
+	action_icon_state = "ghost"
+
+/datum/action/ghost/action_activate()
+	if(!owner.client)
+		return
+
+	var/mob/living/activator = owner
+
+	activator.do_ghost()
+
+/datum/action/ghost/give_to(mob/L)
+	. = ..()
+
+	RegisterSignal(L, COMSIG_MOB_STAT_SET_ALIVE, PROC_REF(remove_ghost))
+
+/// signal handler to remove the ghost button when someone's not so dead
+/datum/action/ghost/proc/remove_ghost(mob/user)
+	SIGNAL_HANDLER
+
+	INVOKE_ASYNC(src, PROC_REF(remove_from), user)
+
 /datum/action/observer_action/join_xeno
 	name = "Join as Xeno"
 	action_icon_state = "join_xeno"

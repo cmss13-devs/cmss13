@@ -20,21 +20,6 @@
 	user.get_admin_say()
 	return TRUE
 
-/datum/keybinding/admin/mod_say
-	hotkey_keys = list()
-	classic_keys = list()
-	name = "mod_say"
-	full_name = "Mod say"
-	description = "Talk with other mods."
-	keybind_signal = COMSIG_KB_ADMIN_ASAY_DOWN
-
-/datum/keybinding/admin/mod_say/down(client/user)
-	. = ..()
-	if(.)
-		return
-	user.get_mod_say()
-	return TRUE
-
 /datum/keybinding/admin/mentor_say
 	hotkey_keys = list()
 	classic_keys = list()

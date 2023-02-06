@@ -41,3 +41,10 @@
 	name = COMMS_CHANNEL
 	full_name = "IC Comms (;)"
 	keybind_signal = COMSIG_KG_CLIENT_RADIO_DOWN
+
+/datum/keybinding/client/communication/mod_say
+	hotkey_keys = list()
+	classic_keys = list()
+	name = MOD_CHANNEL
+	full_name = "Mod Say"
+	keybind_signal = COMSIG_KB_ADMIN_ASAY_DOWN

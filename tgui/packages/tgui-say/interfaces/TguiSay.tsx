@@ -13,6 +13,7 @@ export class TguiSay extends Component<{}, State> {
     historyCounter: 0,
     innerRef: createRef(),
     lightMode: false,
+    admin: false,
     maxLength: 1024,
     radioPrefix: '',
     tempHistory: '',

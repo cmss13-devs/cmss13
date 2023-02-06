@@ -4,3 +4,4 @@
 #define ME_CHANNEL "Me"
 #define OOC_CHANNEL "OOC"
 #define LOOC_CHANNEL "LOOC"
+#define MOD_CHANNEL "MSAY"

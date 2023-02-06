@@ -66,6 +66,7 @@
 	window.send_message("props", list(
 		lightMode = client.prefs?.tgui_say_light_mode,
 		maxLength = max_length,
+		admin = client.admin_holder.check_for_rights(R_MOD),
 	))
 	stop_thinking()
 	return TRUE

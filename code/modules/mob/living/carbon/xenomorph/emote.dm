@@ -1,14 +1,18 @@
 /datum/emote/living/carbon/xeno
 	mob_type_allowed_typecache = list(/mob/living/carbon/xenomorph)
-	mob_type_blacklist_typecache = list(/mob/living/carbon/xenomorph/hellhound)
+	mob_type_blacklist_typecache = list(/mob/living/carbon/xenomorph/hellhound, /mob/living/carbon/xenomorph/facehugger, /mob/living/carbon/xenomorph/larva)
 	keybind_category = CATEGORY_XENO_EMOTE
 	var/predalien_sound
+	var/larva_sound
 
 /datum/emote/living/carbon/xeno/get_sound(mob/living/user)
 	. = ..()
 
-	if(ispredalien(user))
+	if(ispredalien(user) && predalien_sound)
 		. = predalien_sound
+
+	if(islarva(user) && larva_sound)
+		. = larva_sound
 
 /datum/emote/living/carbon/xeno/growl
 	key = "growl"
@@ -29,10 +33,13 @@
 	message = "needs help!"
 
 /datum/emote/living/carbon/xeno/roar
+	mob_type_blacklist_typecache = list()
+
 	key = "roar"
 	message = "roars!"
 	sound = "alien_roar"
 	predalien_sound = 'sound/voice/predalien_roar.ogg'
+	larva_sound = "alien_roar_larva"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
 /datum/emote/living/carbon/xeno/tail

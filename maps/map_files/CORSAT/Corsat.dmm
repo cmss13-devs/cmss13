@@ -21926,8 +21926,8 @@
 /area/corsat/emergency_access)
 "bgy" = (
 /obj/structure/surface/table/almayer,
-/obj/item/explosive/grenade/HE,
-/obj/item/explosive/grenade/HE,
+/obj/item/explosive/grenade/high_explosive,
+/obj/item/explosive/grenade/high_explosive,
 /turf/open/floor{
 	icon_state = "asteroidplating";
 	tag = "icon-asteroidplating"
@@ -23721,7 +23721,7 @@
 /area/corsat/sigma/biodome/gunrange)
 "blh" = (
 /obj/structure/surface/table/almayer,
-/obj/item/explosive/grenade/HE/training,
+/obj/item/explosive/grenade/high_explosive/training,
 /turf/open/floor{
 	icon_state = "asteroidplating";
 	tag = "icon-asteroidplating"
@@ -34548,10 +34548,10 @@
 	},
 /area/corsat/sigma/biodome/testgrounds)
 "bTB" = (
-/obj/item/explosive/grenade/HE/frag,
-/obj/item/explosive/grenade/HE/frag,
-/obj/item/explosive/grenade/HE/frag,
-/obj/item/explosive/grenade/HE/PMC,
+/obj/item/explosive/grenade/high_explosive/frag,
+/obj/item/explosive/grenade/high_explosive/frag,
+/obj/item/explosive/grenade/high_explosive/frag,
+/obj/item/explosive/grenade/high_explosive/pmc,
 /obj/structure/closet/secure_closet/guncabinet{
 	name = "explosives cabinet";
 	req_access_txt = "100"
@@ -39555,8 +39555,8 @@
 /area/corsat/sigma/hangar)
 "ejL" = (
 /obj/structure/surface/table/almayer,
-/obj/item/explosive/grenade/HE/frag,
-/obj/item/explosive/grenade/HE/frag,
+/obj/item/explosive/grenade/high_explosive/frag,
+/obj/item/explosive/grenade/high_explosive/frag,
 /turf/open/floor{
 	icon_state = "asteroidplating";
 	tag = "icon-asteroidplating"
@@ -57375,7 +57375,6 @@
 /area/corsat/gamma/engineering)
 "roj" = (
 /obj/structure/safe,
-/obj/item/storage/pill_bottle/ultrazine/skillless,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "squareswood"
@@ -58919,8 +58918,8 @@
 /area/corsat/sigma/dorms)
 "sos" = (
 /obj/structure/surface/table/almayer,
-/obj/item/explosive/grenade/HE/training,
-/obj/item/explosive/grenade/HE/training,
+/obj/item/explosive/grenade/high_explosive/training,
+/obj/item/explosive/grenade/high_explosive/training,
 /turf/open/floor{
 	icon_state = "asteroidplating";
 	tag = "icon-asteroidplating"

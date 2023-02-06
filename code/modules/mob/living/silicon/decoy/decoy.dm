@@ -29,7 +29,7 @@
 /mob/living/silicon/decoy/updatehealth()
 	if(status_flags & GODMODE)
 		health = 100
-		stat = CONSCIOUS
+		set_stat(CONSCIOUS)
 	else
 		health = 100 - getOxyLoss() - getToxLoss() - getFireLoss() - getBruteLoss()
 
@@ -37,7 +37,7 @@
 	if(stat == DEAD)
 		return FALSE
 	icon_state = "hydra-off"
-	addtimer(CALLBACK(GLOBAL_PROC, PROC_REF(explosion), loc, -1, 0, 8, 12), 2 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(explosion), loc, -1, 0, 8, 12), 2 SECONDS)
 	return ..()
 
 /mob/living/silicon/decoy/say(message) //General communication across the ship.

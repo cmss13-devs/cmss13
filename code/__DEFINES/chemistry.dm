@@ -77,7 +77,7 @@
 /// Randomly generated chemicals
 #define CHEM_CLASS_ULTRA 6
 
-//chem effect flags, used to quickly check if the mob has a chem that provides a special effect
+//chem_effect_flags, used to quickly check if the mob has a chem that provides a special effect
 #define CHEM_EFFECT_RESIST_FRACTURE (1<<0)
 #define CHEM_EFFECT_RESIST_NEURO (1<<1)
 #define CHEM_EFFECT_HYPER_THROTTLE (1<<2) //universal understand but not speech

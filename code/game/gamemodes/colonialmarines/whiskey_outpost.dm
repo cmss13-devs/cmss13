@@ -13,28 +13,28 @@
 	xeno_bypass_timer = 1
 	flags_round_type = MODE_NEW_SPAWN
 	role_mappings = list(
-					/datum/job/command/commander/whiskey = JOB_CO,
-					/datum/job/command/executive/whiskey = JOB_XO,
-					/datum/job/civilian/synthetic/whiskey = JOB_SYNTH,
-					/datum/job/command/warrant/whiskey = JOB_CHIEF_POLICE,
-					/datum/job/command/bridge/whiskey = JOB_SO,
-					/datum/job/command/tank_crew/whiskey = JOB_CREWMAN,
-					/datum/job/command/police/whiskey = JOB_POLICE,
-					/datum/job/command/pilot/whiskey = JOB_PILOT,
-					/datum/job/logistics/requisition/whiskey = JOB_CHIEF_REQUISITION,
-					/datum/job/civilian/professor/whiskey = JOB_CMO,
-					/datum/job/civilian/doctor/whiskey = JOB_DOCTOR,
-					/datum/job/civilian/researcher/whiskey = JOB_RESEARCHER,
-					/datum/job/logistics/engineering/whiskey = JOB_CHIEF_ENGINEER,
-					/datum/job/logistics/tech/maint/whiskey = JOB_MAINT_TECH,
-					/datum/job/logistics/cargo/whiskey = JOB_CARGO_TECH,
-					/datum/job/civilian/liaison/whiskey = JOB_CORPORATE_LIAISON,
-					/datum/job/marine/leader/whiskey = JOB_SQUAD_LEADER,
-					/datum/job/marine/specialist/whiskey = JOB_SQUAD_SPECIALIST,
-					/datum/job/marine/smartgunner/whiskey = JOB_SQUAD_SMARTGUN,
-					/datum/job/marine/medic/whiskey = JOB_SQUAD_MEDIC,
-					/datum/job/marine/engineer/whiskey = JOB_SQUAD_ENGI,
-					/datum/job/marine/standard/whiskey = JOB_SQUAD_MARINE
+		/datum/job/command/commander/whiskey = JOB_CO,
+		/datum/job/command/executive/whiskey = JOB_XO,
+		/datum/job/civilian/synthetic/whiskey = JOB_SYNTH,
+		/datum/job/command/warrant/whiskey = JOB_CHIEF_POLICE,
+		/datum/job/command/bridge/whiskey = JOB_SO,
+		/datum/job/command/tank_crew/whiskey = JOB_CREWMAN,
+		/datum/job/command/police/whiskey = JOB_POLICE,
+		/datum/job/command/pilot/whiskey = JOB_PILOT,
+		/datum/job/logistics/requisition/whiskey = JOB_CHIEF_REQUISITION,
+		/datum/job/civilian/professor/whiskey = JOB_CMO,
+		/datum/job/civilian/doctor/whiskey = JOB_DOCTOR,
+		/datum/job/civilian/researcher/whiskey = JOB_RESEARCHER,
+		/datum/job/logistics/engineering/whiskey = JOB_CHIEF_ENGINEER,
+		/datum/job/logistics/tech/maint/whiskey = JOB_MAINT_TECH,
+		/datum/job/logistics/cargo/whiskey = JOB_CARGO_TECH,
+		/datum/job/civilian/liaison/whiskey = JOB_CORPORATE_LIAISON,
+		/datum/job/marine/leader/whiskey = JOB_SQUAD_LEADER,
+		/datum/job/marine/specialist/whiskey = JOB_SQUAD_SPECIALIST,
+		/datum/job/marine/smartgunner/whiskey = JOB_SQUAD_SMARTGUN,
+		/datum/job/marine/medic/whiskey = JOB_SQUAD_MEDIC,
+		/datum/job/marine/engineer/whiskey = JOB_SQUAD_ENGI,
+		/datum/job/marine/standard/whiskey = JOB_SQUAD_MARINE,
 	)
 
 
@@ -128,7 +128,7 @@
 	addtimer(CALLBACK(src, PROC_REF(story_announce), 0), 3 MINUTES)
 	return ..()
 
-/datum/game_mode/whiskey_outpost/proc/story_announce(var/time)
+/datum/game_mode/whiskey_outpost/proc/story_announce(time)
 	switch(time)
 		if(0)
 			marine_announcement("This is Captain Hans Naiche, Commander of the 3rd Bataillion, 'Dust Raiders' forces on LV-624. As you already know, several of our patrols have gone missing and likely wiped out by hostile local creatures as we've attempted to set our base up.", "Captain Naiche, 3rd Battalion Command, LV-624 Garrison")
@@ -145,7 +145,7 @@
 	if(SSitem_cleanup)
 		//Cleaning stuff more aggressively
 		SSitem_cleanup.start_processing_time = 0
-		SSitem_cleanup.percentage_of_garbage_to_delete = 1.0
+		SSitem_cleanup.percentage_of_garbage_to_delete = 1
 		SSitem_cleanup.wait = 1 MINUTES
 		SSitem_cleanup.next_fire = 1 MINUTES
 		spawn(0)
@@ -196,7 +196,7 @@
 	xeno_wave = min(xeno_wave + 1, WO_MAX_WAVE)
 
 
-/datum/game_mode/whiskey_outpost/proc/announce_xeno_wave(var/datum/whiskey_outpost_wave/wave_data)
+/datum/game_mode/whiskey_outpost/proc/announce_xeno_wave(datum/whiskey_outpost_wave/wave_data)
 	if(!istype(wave_data))
 		return
 	if(wave_data.command_announcement.len > 0)
@@ -308,7 +308,7 @@
 /datum/game_mode/proc/auto_declare_completion_whiskey_outpost()
 	return
 
-/datum/game_mode/whiskey_outpost/proc/place_whiskey_outpost_drop(var/OT = "sup") //Art revamping spawns 13JAN17
+/datum/game_mode/whiskey_outpost/proc/place_whiskey_outpost_drop(OT = "sup") //Art revamping spawns 13JAN17
 	var/turf/T = pick(supply_spawns)
 	var/randpick
 	var/list/randomitems = list()
@@ -397,9 +397,9 @@
 				choosemax = rand(1,5)
 				randomitems = list(/obj/item/storage/box/explosive_mines,
 								/obj/item/storage/box/explosive_mines,
-								/obj/item/explosive/grenade/HE/m15,
-								/obj/item/explosive/grenade/HE/m15,
-								/obj/item/explosive/grenade/HE,
+								/obj/item/explosive/grenade/high_explosive/m15,
+								/obj/item/explosive/grenade/high_explosive/m15,
+								/obj/item/explosive/grenade/high_explosive,
 								/obj/item/storage/box/nade_box
 								)
 			if(36 to 40) // Junk
@@ -615,7 +615,7 @@
 	qdel(src)
 	return
 
-/obj/item/device/whiskey_supply_beacon/proc/drop_supplies(var/turf/T,var/SD)
+/obj/item/device/whiskey_supply_beacon/proc/drop_supplies(turf/T, SD)
 	if(!istype(T)) return
 	var/list/spawnitems = list()
 	var/obj/structure/closet/crate/crate
@@ -727,5 +727,5 @@
 			new /obj/item/paper/crumpled(T)
 		qdel(src)
 
-/datum/game_mode/whiskey_outpost/announce_bioscans(var/delta = 2)
+/datum/game_mode/whiskey_outpost/announce_bioscans(delta = 2)
 	return // No bioscans needed in WO

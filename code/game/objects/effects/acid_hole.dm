@@ -35,7 +35,7 @@
 	if (!holed_wall)
 		return
 
-	if(M == user && isXeno(user))
+	if(M == user && isxeno(user))
 		use_wall_hole(user)
 
 

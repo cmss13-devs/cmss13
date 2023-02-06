@@ -37,6 +37,7 @@
 	var/repair_form_cooldown = 180
 
 	var/saved_melee_allowed = TRUE
+	var/saved_throw_allowed = TRUE
 	var/saved_gun_allowed = TRUE
 
 /obj/item/storage/backpack/marine/smartpack/verb/toggle_exoskeleton()
@@ -44,7 +45,7 @@
 	set category = "Object"
 	set src in usr
 
-	if(!isSynth(usr))
+	if(!issynth(usr))
 		to_chat(usr, SPAN_WARNING("You have no idea how to do that!"))
 		return
 
@@ -93,7 +94,7 @@
 	for(var/datum/action/A in actions)
 		A.update_button_icon()
 
-	if(isSynth(user))
+	if(issynth(user))
 		var/mob/living/M = user
 		for(var/datum/action/A in M.actions)
 			A.update_button_icon()
@@ -123,8 +124,8 @@
 
 	return ret
 
-/obj/item/storage/backpack/marine/smartpack/pickup(var/mob/living/M)
-	if(isSynth(M))
+/obj/item/storage/backpack/marine/smartpack/pickup(mob/living/M)
+	if(issynth(M))
 		for(var/action_type in subtypesof(/datum/action/human_action/smartpack))
 			if(locate(action_type) in M.actions)
 				continue
@@ -138,7 +139,7 @@
 		SetLuminosity(0)
 	..()
 
-/obj/item/storage/backpack/marine/smartpack/dropped(var/mob/living/M)
+/obj/item/storage/backpack/marine/smartpack/dropped(mob/living/M)
 	for(var/datum/action/human_action/smartpack/S in M.actions)
 		S.remove_from(M)
 
@@ -208,8 +209,10 @@
 	LAZYSET(user.burn_mod_override, src, 0.2)
 	saved_melee_allowed = user.melee_allowed
 	saved_gun_allowed = user.allow_gun_usage
+	saved_throw_allowed = user.throw_allowed
 	user.melee_allowed = FALSE
 	user.allow_gun_usage = FALSE
+	user.throw_allowed = FALSE
 	to_chat(user, SPAN_DANGER("[name] beeps, \"You are now protected, but unable to attack.\""))
 	battery_charge -= PROTECTIVE_COST
 	playsound(loc, 'sound/mecha/mechmove04.ogg', 25, TRUE)
@@ -224,11 +227,12 @@
 
 	addtimer(CALLBACK(src, PROC_REF(protective_form_cooldown), user), protective_form_cooldown)
 
-/obj/item/storage/backpack/marine/smartpack/proc/protective_form_cooldown(var/mob/living/carbon/human/user)
+/obj/item/storage/backpack/marine/smartpack/proc/protective_form_cooldown(mob/living/carbon/human/user)
 	activated_form = FALSE
 	flags_item &= ~NODROP
 	flags_inventory &= ~CANTSTRIP
 	user.melee_allowed = saved_melee_allowed
+	user.throw_allowed = saved_throw_allowed
 	user.allow_gun_usage = saved_gun_allowed
 	LAZYREMOVE(user.brute_mod_override, src)
 	LAZYREMOVE(user.burn_mod_override, src)

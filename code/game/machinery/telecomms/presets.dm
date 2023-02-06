@@ -46,6 +46,10 @@
 	tcomms_machine = TRUE
 	freq_listening = DEPT_FREQS
 
+/obj/structure/machinery/telecomms/relay/preset/tower/Initialize()
+	. = ..()
+	SSminimaps.add_marker(src, z, MINIMAP_FLAG_USCM, "supply")
+
 // doesn't need power, instead uses health
 /obj/structure/machinery/telecomms/relay/preset/tower/inoperable(additional_flags)
 	if(stat & (additional_flags|BROKEN))
@@ -70,7 +74,7 @@
 	if(!on)
 		msg_admin_niche("Portable communication relay shut down for Z-Level [src.z] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[src.x];Y=[src.y];Z=[src.z]'>JMP</a>)")
 
-/obj/structure/machinery/telecomms/relay/preset/tower/bullet_act(var/obj/item/projectile/P)
+/obj/structure/machinery/telecomms/relay/preset/tower/bullet_act(obj/item/projectile/P)
 	..()
 	if(istype(P.ammo, /datum/ammo/xeno/boiler_gas))
 		update_health(50)

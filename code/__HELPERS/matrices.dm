@@ -107,6 +107,20 @@ list(0.393,0.349,0.272,0, 0.769,0.686,0.534,0, 0.189,0.168,0.131,0, 0,0,0,1, 0,0
 /proc/color_matrix_identity()
 	return list(1,0,0,0, 0,1,0,0, 0,0,1,0, 0,0,0,1, 0,0,0,0)
 
+//word of warning: using a matrix like this as a color value will simplify it back to a string after being set
+/proc/color_hex2color_matrix(string)
+	var/length = length(string)
+	if((length != 7 && length != 9) || length != length_char(string))
+		return color_matrix_identity()
+	var/r = hex2num(copytext(string, 2, 4))/255
+	var/g = hex2num(copytext(string, 4, 6))/255
+	var/b = hex2num(copytext(string, 6, 8))/255
+	var/a = 1
+	if(length == 9)
+		a = hex2num(copytext(string, 8, 10))/255
+	if(!isnum(r) || !isnum(g) || !isnum(b) || !isnum(a))
+		return color_matrix_identity()
+	return list(r,0,0,0, 0,g,0,0, 0,0,b,0, 0,0,0,a, 0,0,0,0)
 
 ///Converts a hex colour string to a colour matrix.
 /proc/color_matrix_from_string(string)

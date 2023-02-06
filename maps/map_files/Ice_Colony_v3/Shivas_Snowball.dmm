@@ -5815,7 +5815,6 @@
 /obj/item/spacecash/c1000,
 /obj/item/spacecash/c500,
 /obj/effect/landmark/good_item,
-/obj/item/storage/pill_bottle/ultrazine/skillless,
 /turf/open/floor/shiva{
 	dir = 8;
 	icon_state = "redfull"
@@ -11935,7 +11934,7 @@
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/caves/medseceng_caves)
 "gtx" = (
-/obj/item/explosive/grenade/HE/m15,
+/obj/item/explosive/grenade/high_explosive/m15,
 /turf/open/auto_turf/snow/layer0,
 /area/shiva/interior/warehouse)
 "gty" = (
@@ -14824,7 +14823,7 @@
 /area/shiva/exterior/lz1_valley)
 "jqT" = (
 /obj/structure/closet/firecloset,
-/obj/item/explosive/grenade/HE/PMC,
+/obj/item/explosive/grenade/high_explosive/pmc,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/shiva{
 	icon_state = "redfull"
@@ -17944,7 +17943,7 @@
 "mEJ" = (
 /obj/structure/prop/souto_land/pole{
 	dir = 1;
-	layer = 4.0
+	layer = 4
 	},
 /obj/structure/prop/souto_land/streamer{
 	dir = 9

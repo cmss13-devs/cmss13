@@ -1,5 +1,5 @@
 // Notify all preds with the bracer icon
-/proc/message_all_yautja(var/msg, var/soundeffect = TRUE)
+/proc/message_all_yautja(msg, soundeffect = TRUE)
 	for(var/mob/living/carbon/human/Y in GLOB.yautja_mob_list)
 		// Send message to the bracer; appear multiple times if we have more bracers
 		for(var/obj/item/clothing/gloves/yautja/hunter/G in Y.contents)
@@ -7,7 +7,7 @@
 			if(G.notification_sound)
 				playsound(Y.loc, 'sound/items/pred_bracer.ogg', 75, 1)
 
-/mob/living/carbon/human/proc/message_thrall(var/msg)
+/mob/living/carbon/human/proc/message_thrall(msg)
 	if(!hunter_data.thrall)
 		return
 
@@ -19,7 +19,7 @@
 			playsound(T.loc, 'sound/items/pred_bracer.ogg', 75, 1)
 
 //Update the power display thing. This is called in Life()
-/mob/living/carbon/human/proc/update_power_display(var/perc)
+/mob/living/carbon/human/proc/update_power_display(perc)
 	if(hud_used?.pred_power_icon)
 		switch(perc)
 			if(91 to INFINITY)
@@ -56,7 +56,7 @@
 		if(Adjacent(M) && M.stat == DEAD)
 			if(ishuman(M))
 				var/mob/living/carbon/human/Q = M
-				if(Q.species && isSameSpecies(Q, src))
+				if(Q.species && issamespecies(Q, src))
 					continue
 			choices += M
 
@@ -73,18 +73,18 @@
 		to_chat(src, SPAN_WARNING("You have to be next to your target."))
 		return
 
-	if(isXenoLarva(T) || isXenoFacehugger(T))
+	if(islarva(T) || isfacehugger(T))
 		to_chat(src, SPAN_WARNING("This tiny worm is not even worth using your tools on."))
 		return
 
 	if(is_mob_incapacitated() || lying || buckled)
 		return
 
-	if(isSynth(T))
+	if(issynth(T))
 		to_chat(src, SPAN_WARNING("You would break your tools if you did this!"))
 		return
 
-	if(isXeno(T))
+	if(isxeno(T))
 		xeno_victim = T
 
 	var/static/list/procedure_choices = list(
@@ -109,7 +109,7 @@
 		if(!procedure)
 			return
 
-	if(isXeno(T) || procedure == "Skin")
+	if(isxeno(T) || procedure == "Skin")
 		if(T.butchery_progress)
 			playsound(loc, 'sound/weapons/pierce.ogg', 25)
 			visible_message(SPAN_DANGER("[src] goes back to butchering \the [T]."), SPAN_NOTICE("You get back to butchering \the [T]."))
@@ -238,7 +238,7 @@
 		to_chat(src, SPAN_WARNING("You're not able to do that right now."))
 		return
 
-	if(!isYautja(src))
+	if(!isyautja(src))
 		to_chat(src, SPAN_WARNING("How did you get this verb?"))
 		return
 

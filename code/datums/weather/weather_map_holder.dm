@@ -19,7 +19,7 @@
 	min_time_between_checks += rand(min_check_variance * -0.5, min_check_variance * 0.5)
 
 // Should the weather for this map include the passed area?
-/datum/weather_ss_map_holder/proc/should_affect_area(var/area/A)
+/datum/weather_ss_map_holder/proc/should_affect_area(area/A)
 	log_debug("Weather subsystem map holder [src] is improperly configured. Code: WSSMH01")
 	return FALSE
 
@@ -42,7 +42,7 @@
 // Called whenever the weather SS decides to start an event, but
 // warn_time deciseconds before it actually starts
 // (think weather sirens on sorokyne)
-/datum/weather_ss_map_holder/proc/weather_warning(var/event_type)
+/datum/weather_ss_map_holder/proc/weather_warning(event_type)
 	var/datum/weather_event/incoming_event = event_type
 	var/weather_name = initial(incoming_event.display_name)
 	var/list/ground_levels = SSmapping.levels_by_any_trait(list(ZTRAIT_GROUND))

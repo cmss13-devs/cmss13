@@ -16,7 +16,7 @@
 		/datum/action/xeno_action/activable/boiler_trap,
 		/datum/action/xeno_action/activable/acid_mine,
 		/datum/action/xeno_action/activable/acid_shotgun,
-		/datum/action/xeno_action/onclick/toggle_long_range/trapper
+		/datum/action/xeno_action/onclick/toggle_long_range/trapper,
 	)
 	keystone = TRUE
 
@@ -63,7 +63,7 @@
 		temp_movespeed_time_used = world.time
 		temp_movespeed_usable = FALSE
 
-		if (isXeno(bound_xeno))
+		if (isxeno(bound_xeno))
 			var/mob/living/carbon/xenomorph/xeno = bound_xeno
 			xeno.speed_modifier -= temp_movespeed_amount
 			xeno.recalculate_speed()
@@ -107,7 +107,7 @@
 		return
 
 /datum/behavior_delegate/boiler_trapper/proc/remove_speed_buff()
-	if (isXeno(bound_xeno))
+	if (isxeno(bound_xeno))
 		var/mob/living/carbon/xenomorph/xeno = bound_xeno
 		xeno.speed_modifier += temp_movespeed_amount
 		xeno.recalculate_speed()

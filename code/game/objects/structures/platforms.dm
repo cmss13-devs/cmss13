@@ -41,7 +41,7 @@
 			layer = ABOVE_MOB_LAYER+0.1
 	overlays += I
 
-/obj/structure/platform/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/obj/structure/platform/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_can_pass_all = PASS_OVER
@@ -103,7 +103,7 @@
 		if (SOUTHWEST)
 			layer = ABOVE_MOB_LAYER+0.2
 
-/obj/structure/platform_decoration/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/obj/structure/platform_decoration/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_can_pass_all = PASS_OVER

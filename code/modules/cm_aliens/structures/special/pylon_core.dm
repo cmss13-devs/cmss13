@@ -40,7 +40,7 @@
 	. = ..()
 
 /obj/effect/alien/resin/special/pylon/attack_alien(mob/living/carbon/xenomorph/M)
-	if(isXenoBuilder(M) && M.a_intent == INTENT_HELP && M.hivenumber == linked_hive.hivenumber)
+	if(isxeno_builder(M) && M.a_intent == INTENT_HELP && M.hivenumber == linked_hive.hivenumber)
 		do_repair(M) //This handles the delay itself.
 		return XENO_NO_DELAY_ACTION
 	else
@@ -111,15 +111,22 @@
 	protection_level = TURF_PROTECTION_OB
 
 
-/obj/effect/alien/resin/special/pylon/core/Initialize(mapload, var/datum/hive_status/hive_ref)
+/obj/effect/alien/resin/special/pylon/core/Initialize(mapload, datum/hive_status/hive_ref)
 	. = ..()
 
 	// Pick the closest xeno resource activator
 
+	update_minimap_icon()
+
 	if(hive_ref)
 		hive_ref.set_hive_location(src, linked_hive.hivenumber)
 
+/obj/effect/alien/resin/special/pylon/core/proc/update_minimap_icon()
+	SSminimaps.remove_marker(src)
+	SSminimaps.add_marker(src, z, MINIMAP_FLAG_XENO, "core[health < (initial(health) * 0.5) ? "_warn" : "_passive"]")
+
 /obj/effect/alien/resin/special/pylon/core/process()
+	update_minimap_icon()
 	if(health >= maxhealth || last_healed > world.time) return
 
 	health += min(heal_amount, maxhealth)
@@ -179,6 +186,7 @@
 
 			if(linked_hive.spawn_pool)
 				qdel(linked_hive.spawn_pool)
+	SSminimaps.remove_marker(src)
 	. = ..()
 
 /obj/effect/alien/resin/special/pylon/core/proc/startDestroying(mob/living/carbon/xenomorph/M)
@@ -190,11 +198,11 @@
 		visible_message(SPAN_WARNING("[M] stops destroying \the [src]."))
 		last_attempt = world.time // update the spam check
 		return XENO_NO_DELAY_ACTION
-	Destroy()
+	qdel(src)
 
 
 
-/obj/effect/alien/resin/special/pylon/core/proc/cooldownFinish(var/datum/hive_status/linked_hive)
+/obj/effect/alien/resin/special/pylon/core/proc/cooldownFinish(datum/hive_status/linked_hive)
 	sleep(HIVECORE_COOLDOWN)
 	if(linked_hive.hivecore_cooldown) // check if its true so we don't double set it.
 		linked_hive.hivecore_cooldown = FALSE

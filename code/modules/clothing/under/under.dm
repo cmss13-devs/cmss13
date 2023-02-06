@@ -183,7 +183,7 @@
 	set src in usr
 	set_sensors(usr)
 
-/obj/item/clothing/under/proc/roll_suit_sleeves(var/show_message = TRUE, mob/user)
+/obj/item/clothing/under/proc/roll_suit_sleeves(show_message = TRUE, mob/user)
 	update_rollsuit_status()
 	if(flags_jumpsuit & UNIFORM_SLEEVE_ROLLABLE)
 		flags_jumpsuit ^= UNIFORM_SLEEVE_ROLLED
@@ -199,7 +199,7 @@
 	else if(show_message)
 		to_chat(user, SPAN_WARNING("You cannot roll your sleeves!"))
 
-/obj/item/clothing/under/proc/roll_suit_jacket(var/show_message = TRUE, mob/user)
+/obj/item/clothing/under/proc/roll_suit_jacket(show_message = TRUE, mob/user)
 	update_removejacket_status()
 	if(flags_jumpsuit & UNIFORM_JACKET_REMOVABLE)
 		flags_jumpsuit ^= UNIFORM_JACKET_REMOVED
@@ -219,7 +219,7 @@
 		to_chat(user, SPAN_WARNING("\The [src] doesn't have a removable jacket!"))
 
 
-/obj/item/clothing/under/proc/cut_suit_jacket(var/show_message = TRUE, mob/user, var/obj/item/item_using)
+/obj/item/clothing/under/proc/cut_suit_jacket(show_message = TRUE, mob/user, obj/item/item_using)
 	if(!(flags_jumpsuit & UNIFORM_SLEEVE_CUTTABLE))
 		if(show_message)
 			to_chat(user, SPAN_NOTICE("You can't cut up [src]."))

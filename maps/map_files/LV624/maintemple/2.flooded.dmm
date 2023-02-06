@@ -258,7 +258,7 @@
 /area/lv624/ground/caves/sand_temple)
 "gI" = (
 /obj/structure/flora/bush/ausbushes/var3/sunnybush{
-	desc = "The oranges aren't done yet.. this sucks.";
+	desc = "The oranges aren't done yet... this sucks.";
 	name = "orange tree"
 	},
 /turf/open/gm/grass,

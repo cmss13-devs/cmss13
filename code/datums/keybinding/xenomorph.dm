@@ -3,11 +3,11 @@
 	weight = WEIGHT_XENO
 
 /datum/keybinding/xenomorph/can_use(client/user)
-	return isXeno(user.mob)
+	return isxeno(user.mob)
 
 /datum/keybinding/xenomorph/primary_attack_one
 	hotkey_keys = list("C")
-	classic_keys = list()
+	classic_keys = list("Unbound")
 	name = "primary_attack_one"
 	full_name = "Primary Attack One"
 	keybind_signal = COMSIG_KB_XENO_PRIMARY_ATTACK_ONE
@@ -22,7 +22,7 @@
 
 /datum/keybinding/xenomorph/primary_attack_two
 	hotkey_keys = list("V")
-	classic_keys = list()
+	classic_keys = list("Unbound")
 	name = "primary_attack_two"
 	full_name = "Primary Attack Two"
 	keybind_signal = COMSIG_KB_XENO_PRIMARY_ATTACK_TWO
@@ -37,7 +37,7 @@
 
 /datum/keybinding/xenomorph/primary_attack_three
 	hotkey_keys = list("G")
-	classic_keys = list()
+	classic_keys = list("Unbound")
 	name = "primary_attack_three"
 	full_name = "Primary Attack Three"
 	keybind_signal = COMSIG_KB_XENO_PRIMARY_ATTACK_THREE
@@ -52,7 +52,7 @@
 
 /datum/keybinding/xenomorph/primary_attack_four
 	hotkey_keys = list("B")
-	classic_keys = list()
+	classic_keys = list("Unbound")
 	name = "primary_attack_four"
 	full_name = "Primary Attack Four"
 	keybind_signal = COMSIG_KB_XENO_PRIMARY_ATTACK_FOUR
@@ -67,7 +67,7 @@
 
 /datum/keybinding/xenomorph/primary_attack_five
 	hotkey_keys = list("N")
-	classic_keys = list()
+	classic_keys = list("Unbound")
 	name = "primary_attack_five"
 	full_name = "Primary Attack Five"
 	keybind_signal = COMSIG_KB_XENO_PRIMARY_ATTACK_FIVE
@@ -81,8 +81,8 @@
 	return TRUE
 
 /datum/keybinding/xenomorph/emit_pheromones
-	hotkey_keys = list()
-	classic_keys = list()
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
 	name = "emit_pheromones"
 	full_name = "Emit Pheromones"
 	description = "Select a pheromone to emit or cease emitting pheromones."
@@ -120,7 +120,7 @@
 
 /datum/keybinding/xenomorph/corrosive_acid
 	hotkey_keys = list("Shift+C")
-	classic_keys = list()
+	classic_keys = list("Unbound")
 	name = "corrosive_acid"
 	full_name = "Corrosive Acid"
 	keybind_signal = COMSIG_KB_XENO_CORROSIVE_ACID
@@ -135,7 +135,7 @@
 
 /datum/keybinding/xenomorph/tech_secrete_resin
 	hotkey_keys = list("Shift+B")
-	classic_keys = list()
+	classic_keys = list("Unbound")
 	name = "tech_secrete_resin"
 	full_name = "Secrete Resin (Tech)"
 	keybind_signal = COMSIG_KB_XENO_TECH_SECRETE_RESIN
@@ -149,8 +149,8 @@
 	return TRUE
 
 /datum/keybinding/xenomorph/screech
-	hotkey_keys = list()
-	classic_keys = list()
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
 	name = "screech"
 	full_name = "Screech"
 	keybind_signal = COMSIG_KB_XENO_SCREECH
@@ -164,8 +164,8 @@
 	return TRUE
 
 /datum/keybinding/xenomorph/tail_stab
-	hotkey_keys = list()
-	classic_keys = list()
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
 	name = "tail_stab"
 	full_name = "Tail Stab"
 	keybind_signal = COMSIG_KB_TAIL_STAB

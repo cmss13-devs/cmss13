@@ -1,0 +1,4 @@
+author: "BeagleGaming1"
+delete-after: True
+changes:
+  - bugfix: "Crew Monitoring computers can now be deconstructed the same way as any computer"

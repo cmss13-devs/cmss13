@@ -15,7 +15,7 @@
 	idle_power_usage = 2
 	active_power_usage = 500
 
-/obj/structure/machinery/gibber/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/obj/structure/machinery/gibber/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_can_pass_all = PASS_HIGH_OVER_ONLY|PASS_AROUND|PASS_OVER_THROW_ITEM
@@ -39,7 +39,7 @@
 			log_misc("a [src] didn't find an input plate.")
 			return
 
-/obj/structure/machinery/gibber/autogibber/Collided(var/atom/A)
+/obj/structure/machinery/gibber/autogibber/Collided(atom/A)
 	if(!input_plate) return
 
 	if(ismob(A))

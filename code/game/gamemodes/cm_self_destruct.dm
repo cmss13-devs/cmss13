@@ -299,17 +299,17 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 	sister_panel.update_icon()
 
 //TIMED TO MATCH EXPLOSION, for best effect
-//Using Sleep is concerning, I can't remember why I didn't call Async on this
 /obj/structure/machinery/lifeboat_bolt/target/proc/detonate_animation()
 	stage = LAUNCHING
 	update_icon()
 	sister_panel.update_icon()
-	sleep(30)
+	addtimer(CALLBACK(src, PROC_REF(detonate_animation_2)), 30)
+
+/obj/structure/machinery/lifeboat_bolt/target/proc/detonate_animation_2()
 	flick("releasing",src)
 	stage = LAUNCHED
 	update_icon()
-	sleep(10)
-	sister_panel.update_icon()
+	addtimer(CALLBACK(sister_panel, TYPE_PROC_REF(/obj/structure/machinery/lifeboat_bolt/id_panel,update_icon)), 10)
 
 /obj/structure/machinery/lifeboat_bolt/target/proc/detonate()
 	if(stage >= LAUNCHING)

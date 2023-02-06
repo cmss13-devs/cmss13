@@ -384,6 +384,9 @@ var/datum/controller/supply/supply_controller = new()
 	/// If the players killed him by sending a live hostile below.. this goes false and they can't order any more contraband.
 	var/mendoza_status = TRUE
 
+	//Animal event
+	var/handle_animal_event = FALSE
+
 	var/base_random_crate_interval = 10 //Every how many processing intervals do we get a random crates.
 
 	var/crate_iteration = 0
@@ -544,6 +547,8 @@ var/datum/controller/supply/supply_controller = new()
 
 		// Delete everything else.
 		else qdel(movable_atom)
+	if(handle_animal_event)
+		handle_animal_event()
 
 /proc/maul_human(mob/living/carbon/human/mauled_human)
 
@@ -1232,6 +1237,35 @@ var/datum/controller/supply/supply_controller = new()
 /datum/controller/supply/proc/play_sound_handler(sound_to_play, timer)
 	/// For code readability.
 	addtimer(CALLBACK(GLOBAL_PROC, /proc/playsound, get_rand_sound_tile(), sound_to_play, 25, FALSE), timer)
+
+
+/datum/controller/supply/proc/init_animal_event()
+	to_chat(world,"init")
+	handle_animal_event = TRUE
+
+/datum/controller/supply/proc/handle_animal_event()
+	var/monkey_mobs = list(/mob/living/carbon/human/monkey, /mob/living/carbon/human/farwa, /mob/living/carbon/human/stok, /mob/living/carbon/human/yiren, /mob/living/carbon/human/neaera)
+	var/other_animals = list(/mob/living/simple_animal/bat,/mob/living/simple_animal/mouse)
+	var/choice = pick(monkey_mobs,other_animals, "special")
+	var/mob/living/animal = pick(choice)
+	to_chat(world,"run spawn")
+	if(choice == "special")
+		to_chat(world,"spec spawntick")
+		animal = pick(/mob/living/simple_animal/cat,/mob/living/simple_animal/corgi)
+	else
+		for(var/i=0,i < rand(1,5),i++)
+			to_chat(world,"spawntick")
+			var/list/turf/open/clear_turfs = list()
+			var/area/area_shuttle = shuttle?.get_location_area()
+			if(!area_shuttle)
+				return
+			for(var/turf/elevator_turfs in area_shuttle)
+				if(elevator_turfs.density || elevator_turfs.contents?.len)
+					continue
+				clear_turfs |= elevator_turfs
+			var/turf/chosen_turf = pick(clear_turfs)
+			new animal(chosen_turf)
+	handle_animal_event = FALSE
 
 /obj/structure/machinery/computer/supplycomp/proc/is_buyable(datum/supply_packs/supply_pack)
 

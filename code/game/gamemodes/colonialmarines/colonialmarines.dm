@@ -397,7 +397,7 @@
 				else
 					counted_humans["Non-Standard Humans"]++
 			else if(isxeno(player_client.mob))
-				var/mob/living/carbon/Xenomorph/xeno = player_client.mob
+				var/mob/living/carbon/xenomorph/xeno = player_client.mob
 				counted_xenos[xeno.hivenumber][xeno.caste_type]++
 
 	var/list/total_data = list("special round status" = special_round_status, "round time" = duration2text(), "counted humans" = counted_humans, "counted xenos" = counted_xenos)

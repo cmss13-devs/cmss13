@@ -8,13 +8,13 @@
 		/datum/action/xeno_action/activable/tail_stab,
 		/datum/action/xeno_action/activable/warrior_punch,
 		/datum/action/xeno_action/activable/lunge,
-		/datum/action/xeno_action/activable/fling
+		/datum/action/xeno_action/activable/fling,
 	)
 	mutator_actions_to_add = list(
 		/datum/action/xeno_action/activable/tail_stab/tail_trip,
 		/datum/action/xeno_action/activable/pike,
 		/datum/action/xeno_action/onclick/bulwark,
-		/datum/action/xeno_action/activable/pounce/leap
+		/datum/action/xeno_action/activable/pounce/leap,
 	)
 	behavior_delegate_type = /datum/behavior_delegate/warrior_knight
 	keystone = TRUE

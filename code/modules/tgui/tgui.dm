@@ -259,7 +259,7 @@
 			"observer" = isobserver(user),
 		),
 	)
-	/// sanity...
+	// sanity...
 	if(!src_object && !custom_data)
 		return
 

@@ -670,13 +670,13 @@
 	switch(aura)
 		if(-INFINITY to 0.9)
 			return "Very Weak"
-		if(1.0 to 1.9)
+		if(1 to 1.9)
 			return "Weak"
-		if(2.0 to 2.9)
+		if(2 to 2.9)
 			return "Moderate"
-		if(3.0 to 3.9)
+		if(3 to 3.9)
 			return "Strong"
-		if(4.0 to INFINITY)
+		if(4 to INFINITY)
 			return "Very Strong"
 
 /mob/living/carbon/xenomorph/proc/start_tracking_resin_mark(obj/effect/alien/resin/marker/target)
@@ -699,3 +699,10 @@
 	if(tracked_marker)
 		tracked_marker.xenos_tracking -= src
 	tracked_marker = null
+
+/mob/living/carbon/xenomorph/proc/update_minimap_icon()
+	if(istype(caste, /datum/caste_datum/queen))
+		return
+
+	SSminimaps.remove_marker(src)
+	add_minimap_marker()

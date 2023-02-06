@@ -136,7 +136,7 @@
 	w_class = SIZE_MEDIUM
 	throw_speed = SPEED_SLOW
 	throw_range = 10
-	force = 4.0
+	force = 4
 
 	current_mag = /obj/item/ammo_magazine/internal/pillgun
 

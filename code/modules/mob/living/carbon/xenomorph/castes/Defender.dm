@@ -25,6 +25,8 @@
 
 	minimum_evolve_time = 4 MINUTES
 
+	minimap_icon = "defender"
+
 /mob/living/carbon/xenomorph/defender
 	caste_type = XENO_CASTE_DEFENDER
 	name = XENO_CASTE_DEFENDER

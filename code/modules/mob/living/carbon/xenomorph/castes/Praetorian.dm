@@ -30,6 +30,8 @@
 
 	minimum_evolve_time = 15 MINUTES
 
+	minimap_icon = "praetorian"
+
 /mob/living/carbon/xenomorph/praetorian
 	caste_type = XENO_CASTE_PRAETORIAN
 	name = XENO_CASTE_PRAETORIAN

@@ -39,3 +39,15 @@
 	if(!findtext(name_to_check, "A.W. "))
 		name_to_check = generate_human_name(gender)
 	return name_to_check
+
+/datum/origin/uscm/convict/minor
+	name = ORIGIN_USCM_CONVICT_MINOR
+	desc = "Where you were born is irrelevant, as far as anyone is concerned you are were convicted for numerous minor crimes and offered a way out: the USCM."
+
+/datum/origin/uscm/convict/gang
+	name = ORIGIN_USCM_CONVICT_GANG
+	desc = "Where you were born is irrelevant, as far as anyone is concerned you are were convicted for gang related crimes and offered a way out: the USCM."
+
+/datum/origin/uscm/convict/smuggling
+	name = ORIGIN_USCM_CONVICT_SMUGGLING
+	desc = "Where you were born is irrelevant, as far as anyone is concerned you are were convicted for smuggling (and likely some piracy) and offered a way out: the USCM."

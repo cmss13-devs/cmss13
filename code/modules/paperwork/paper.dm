@@ -136,7 +136,7 @@
 					H.lip_style = null
 					H.update_body()
 
-/obj/item/paper/get_vv_options()
+/obj/item/paper/vv_get_dropdown()
 	. = ..()
 	. += "<option value>-----PAPER-----</option>"
 	. += "<option value='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];customise_paper=\ref[src]'>Customise content</option>"
@@ -502,7 +502,7 @@
 /obj/item/paper/photograph
 	name = "photo"
 	icon_state = "photo"
-	var/photo_id = 0.0
+	var/photo_id = 0
 	item_state = "paper"
 
 /obj/item/paper/sop

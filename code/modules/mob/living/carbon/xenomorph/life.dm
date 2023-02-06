@@ -177,7 +177,7 @@
 
 		if(knocked_out) //If they're down, make sure they are actually down.
 			blinded = TRUE
-			stat = UNCONSCIOUS
+			set_stat(UNCONSCIOUS)
 			if(regular_update && halloss > 0)
 				apply_damage(-3, HALLOSS)
 		else if(sleeping)
@@ -187,10 +187,10 @@
 				if((mind.active && client != null) || immune_to_ssd)
 					sleeping = max(sleeping - 1, 0)
 			blinded = TRUE
-			stat = UNCONSCIOUS
+			set_stat(UNCONSCIOUS)
 		else
 			blinded = FALSE
-			stat = CONSCIOUS
+			set_stat(CONSCIOUS)
 			if(regular_update && halloss > 0)
 				if(resting)
 					apply_damage(-3, HALLOSS)
@@ -467,7 +467,7 @@ Make sure their actual health updates immediately.*/
 /mob/living/carbon/xenomorph/updatehealth()
 	if(status_flags & GODMODE)
 		health = maxHealth
-		stat = CONSCIOUS
+		set_stat(CONSCIOUS)
 	else if(xeno_shields.len != 0)
 		overlay_shields()
 		health = maxHealth - getFireLoss() - getBruteLoss()
@@ -501,7 +501,7 @@ Make sure their actual health updates immediately.*/
 		return
 
 	sound_environment_override = SOUND_ENVIRONMENT_NONE
-	stat = UNCONSCIOUS
+	set_stat(UNCONSCIOUS)
 	blinded = TRUE
 	see_in_dark = 5
 	if(layer != initial(layer)) //Unhide

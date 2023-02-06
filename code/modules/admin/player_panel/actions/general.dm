@@ -98,7 +98,7 @@
 /datum/player_action/force_emote/act(client/user, mob/target, list/params)
 	if(!params["to_emote"]) return
 
-	target.custom_emote(1, params["to_emote"], TRUE)
+	target.manual_emote(params["to_emote"])
 
 	message_staff("[key_name_admin(user)] forced [key_name_admin(target)] to emote: [sanitize(params["to_emote"])]")
 	return TRUE

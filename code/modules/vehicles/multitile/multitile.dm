@@ -137,7 +137,7 @@
 	var/list/misc_multipliers = list(
 		"move" = 1.0,
 		"accuracy" = 1.0,
-		"cooldown" = 1.0
+		"cooldown" = 1
 	)
 
 	//Changes how much damage the vehicle takes

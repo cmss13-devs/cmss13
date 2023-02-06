@@ -30,6 +30,8 @@
 
 	minimum_evolve_time = 15 MINUTES
 
+	minimap_icon = "ravager"
+
 /mob/living/carbon/xenomorph/ravager
 	caste_type = XENO_CASTE_RAVAGER
 	name = XENO_CASTE_RAVAGER

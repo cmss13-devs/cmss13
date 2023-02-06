@@ -17,7 +17,7 @@
 
 /datum/keybinding/client/communication/looc
 	hotkey_keys = list("L")
-	classic_keys = list()
+	classic_keys = list("Unbound")
 	name = LOOC_CHANNEL
 	full_name = "Local Out Of Character Say (OOC)"
 	keybind_signal = COMSIG_KB_CLIENT_LOOC_DOWN
@@ -30,8 +30,8 @@
 	keybind_signal = COMSIG_KB_CLIENT_ME_DOWN
 
 /datum/keybinding/client/communication/whisper
-	hotkey_keys = list()
-	classic_keys = list()
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
 	name = "Whisper"
 	full_name = "IC Whisper"
 	keybind_signal = COMSIG_KB_CLIENT_WHISPER_DOWN

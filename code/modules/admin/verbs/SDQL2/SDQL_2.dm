@@ -101,7 +101,7 @@
 
 	Writing "#null" in front of the "=" will call the proc and discard the return value.
 
-	A quick recommendation: before you run something like a DELETE or another query.. Run it through SELECT
+	A quick recommendation: before you run something like a DELETE or another query... Run it through SELECT
 	first.
 	You'd rather not gib every player on accident.
 	Or crash the server.
@@ -1051,8 +1051,6 @@ GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/effect/statclick/sdql2_vv_all, new(null
 			if("marked")
 				if(usr?.client?.admin_holder?.marked_datum)
 					v = usr?.client?.admin_holder?.marked_datum
-				else if(length(usr?.client?.admin_holder?.marked_datums))
-					v = usr?.client?.admin_holder?.marked_datums[1] // in this case, take the first marked datum
 				else
 					return null
 			if("world")

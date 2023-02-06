@@ -29,6 +29,8 @@
 
 	minimum_evolve_time = 8 MINUTES
 
+	minimap_icon = "warrior"
+
 /mob/living/carbon/xenomorph/warrior
 	caste_type = XENO_CASTE_WARRIOR
 	name = XENO_CASTE_WARRIOR
@@ -40,7 +42,7 @@
 	pixel_x = -16
 	old_x = -16
 	tier = 2
-	pull_speed = 2.0 // about what it was before, slightly faster
+	pull_speed = 2 // about what it was before, slightly faster
 
 	base_actions = list(
 		/datum/action/xeno_action/onclick/xeno_resting,

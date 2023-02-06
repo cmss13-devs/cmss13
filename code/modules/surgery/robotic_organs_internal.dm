@@ -30,8 +30,8 @@ and organ transplant code which may come in handy in future but haven't been edi
 	//Tools used to fix damaged organs. Predator herbs may be herbal and organic, but are not as good for surgery.
 	tools = list(
 		/obj/item/stack/nanopaste = SURGERY_TOOL_MULT_IDEAL,
-		/obj/item/stack/cable_coil = SURGERY_TOOL_MULT_SUBSTITUTE
-		)
+		/obj/item/stack/cable_coil = SURGERY_TOOL_MULT_SUBSTITUTE,
+	)
 	time = 3 SECONDS
 	repeat_step = TRUE
 

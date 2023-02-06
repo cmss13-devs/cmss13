@@ -49,7 +49,7 @@
 
 /obj/item/hoverpack/attack_self(mob/user)
 	..()
-	to_chat(user, SPAN_NOTICE("You start dumping the contents of [src]'s reservoir.."))
+	to_chat(user, SPAN_NOTICE("You start dumping the contents of [src]'s reservoir..."))
 	if(!do_after(user, 5 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 		return
 	to_chat(user, SPAN_NOTICE("You dump the contents of [src]'s reservoir."))
@@ -112,7 +112,7 @@
 					OP = P
 
 	if(prob(boom_chance))
-		to_chat(user, SPAN_DANGER("Something feels wrong.."))
+		to_chat(user, SPAN_DANGER("Something feels wrong..."))
 		return KABOOM
 
 	if(!OP)

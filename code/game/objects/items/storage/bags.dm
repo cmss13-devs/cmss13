@@ -100,7 +100,7 @@
 	can_hold = list(
 		/obj/item/reagent_container/food/snacks/grown,
 		/obj/item/seeds,
-		/obj/item/grown
+		/obj/item/grown,
 	)
 
 

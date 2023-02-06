@@ -95,6 +95,11 @@
 	key_third_person = "frowns"
 	message = "frowns."
 
+/datum/emote/living/carbon/human/gasp
+	key = "gasp"
+	key_third_person = "gasps"
+	message = "gasps!"
+
 /datum/emote/living/carbon/human/giggle
 	key = "giggle"
 	key_third_person = "giggles"

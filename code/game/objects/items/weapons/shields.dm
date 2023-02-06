@@ -66,7 +66,7 @@
 	passive_block = 20
 	readied_block = 40
 	readied_slowdown = SLOWDOWN_ARMOR_LIGHT
-	throwforce = 5.0
+	throwforce = 5
 	throw_speed = SPEED_FAST
 	throw_range = 4
 	w_class = SIZE_LARGE
@@ -79,7 +79,7 @@
 /obj/item/weapon/shield/riot/IsShield()
 	return 1
 
-/obj/item/weapon/shield/riot/attack_self(var/mob/user)
+/obj/item/weapon/shield/riot/attack_self(mob/user)
 	..()
 	toggle_shield(user)
 
@@ -101,7 +101,7 @@
 	force = 3
 	passive_block = 50 // Shield activation takes over functionality, and no slowdown.
 	readied_block = 50
-	throwforce = 5.0
+	throwforce = 5
 	throw_speed = SPEED_FAST
 	throw_range = 4
 	w_class = SIZE_SMALL

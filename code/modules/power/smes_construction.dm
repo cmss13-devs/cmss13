@@ -53,7 +53,7 @@
 	// Light Overload - X% chance to overload each lighting circuit in connected powernet. APC based.
 	// APC Failure - X% chance to destroy APC causing very weak explosion too. Won't cause hull breach or serious harm.
 	// SMES Explosion - X% chance to destroy the SMES, in moderate explosion. May cause small hull breach.
-/obj/structure/machinery/power/smes/buildable/proc/total_system_failure(var/intensity = 0, var/mob/user as mob)
+/obj/structure/machinery/power/smes/buildable/proc/total_system_failure(intensity = 0, mob/user as mob)
 	if (!intensity)
 		return
 
@@ -130,7 +130,7 @@
 			s.set_up(10,1,src)
 			s.start()
 			to_chat(h_user, "Massive electrical arc sparks between you and [src]. Last thing you can think about is \"Oh shit...\"")
-			// Remember, we have few gigajoules of electricity here.. Turn them into crispy toast.
+			// Remember, we have few gigajoules of electricity here... Turn them into crispy toast.
 			h_user.apply_damage(rand(150,195), BURN)
 			h_user.apply_effect(25, PARALYZE)
 			spawn(0)
@@ -159,7 +159,7 @@
 
 
 	// Gets powernet APCs and overloads lights or breaks the APC completely, depending on percentages.
-/obj/structure/machinery/power/smes/buildable/proc/apcs_overload(var/failure_chance, var/overload_chance)
+/obj/structure/machinery/power/smes/buildable/proc/apcs_overload(failure_chance, overload_chance)
 	if (!src.powernet)
 		return
 
@@ -179,7 +179,7 @@
 	else
 		..()
 
-/obj/structure/machinery/power/smes/buildable/attackby(var/obj/item/W as obj, var/mob/user as mob)
+/obj/structure/machinery/power/smes/buildable/attackby(obj/item/W as obj, mob/user as mob)
 	// No more disassembling of overloaded SMESs. You broke it, now enjoy the consequences.
 	if (failing)
 		to_chat(user, SPAN_WARNING("The [src]'s screen is flashing with alerts. It seems to be overloaded! Touching it now is probably not a good idea."))

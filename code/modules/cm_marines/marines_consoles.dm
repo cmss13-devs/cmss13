@@ -413,7 +413,7 @@
 	else
 		..()
 
-/obj/structure/machinery/computer/card/attack_remote(var/mob/user as mob)
+/obj/structure/machinery/computer/card/attack_remote(mob/user as mob)
 	return attack_hand(user)
 
 /obj/structure/machinery/computer/card/bullet_act()
@@ -453,7 +453,7 @@
 		to_chat(usr, "There is nothing to remove from the console.")
 	return
 
-/obj/structure/machinery/computer/card/attack_hand(var/mob/user as mob)
+/obj/structure/machinery/computer/card/attack_hand(mob/user as mob)
 	if(..())
 		return
 	if(inoperable())
@@ -619,24 +619,24 @@
 				if(!operable())
 					to_chat(usr, SPAN_NOTICE("You place [G.grabbed_thing]'s hand on scanner but \the [src] remains silent."))
 					return
-				var/isXenos = isXeno(G.grabbed_thing)
-				H.visible_message(SPAN_NOTICE("You hear a beep as [G.grabbed_thing]'s [isXenos ? "limb" : "hand"] is scanned to \the [name]."))
-				visible_message("<span class='bold'>[src]</span> states, \"SCAN ENTRY: [isXenos ? "Unknown lifeform detected! Forbidden operation!" : "Scanned, please stay close until operation's end."]\"")
+				var/isxenos = isxeno(G.grabbed_thing)
+				H.visible_message(SPAN_NOTICE("You hear a beep as [G.grabbed_thing]'s [isxenos ? "limb" : "hand"] is scanned to \the [name]."))
+				visible_message("<span class='bold'>[src]</span> states, \"SCAN ENTRY: [isxenos ? "Unknown lifeform detected! Forbidden operation!" : "Scanned, please stay close until operation's end."]\"")
 				playsound(H.loc, 'sound/machines/screen_output1.ogg', 25, 1)
 				// No Xeno Squads, please!
-				if(!isXenos)
+				if(!isxenos)
 					person_to_modify = G.grabbed_thing
 	else
 		..()
 
 
-/obj/structure/machinery/computer/squad_changer/attack_remote(var/mob/user as mob)
+/obj/structure/machinery/computer/squad_changer/attack_remote(mob/user as mob)
 	return attack_hand(user)
 
 /obj/structure/machinery/computer/squad_changer/bullet_act()
 	return 0
 
-/obj/structure/machinery/computer/squad_changer/attack_hand(var/mob/user as mob)
+/obj/structure/machinery/computer/squad_changer/attack_hand(mob/user as mob)
 	if(..())
 		return
 	if(user)
@@ -648,12 +648,12 @@
 	if(allowed(user))
 		tgui_interact(user)
 	else
-		var/isXenos = isXeno(user)
-		user.visible_message(SPAN_NOTICE("You hear a beep as [user]'s [isXenos ? "limb" : "hand"] is scanned to \the [name]."))
-		visible_message("<span class='bold'>[src]</span> states, \"SCAN ENTRY: [isXenos ? "Unknown lifeform detected! Forbidden operation!" : "Scanned, please stay close until operation's end."]\"")
+		var/isxenos = isxeno(user)
+		user.visible_message(SPAN_NOTICE("You hear a beep as [user]'s [isxenos ? "limb" : "hand"] is scanned to \the [name]."))
+		visible_message("<span class='bold'>[src]</span> states, \"SCAN ENTRY: [isxenos ? "Unknown lifeform detected! Forbidden operation!" : "Scanned, please stay close until operation's end."]\"")
 		playsound(user.loc, 'sound/machines/screen_output1.ogg', 25, 1)
 		// No Xeno Squads, please!
-		if(!isXenos)
+		if(!isxenos)
 			person_to_modify = user
 
 /// How often the sensor data is updated
@@ -665,6 +665,7 @@
 	name = "crew monitoring computer"
 	desc = "Used to monitor active health sensors built into the wearer's uniform.  You can see that the console highlights ship areas with BLUE and remote locations with RED."
 	icon_state = "crew"
+	circuit = /obj/item/circuitboard/computer/crew
 	density = TRUE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 250
@@ -737,7 +738,7 @@ GLOBAL_LIST_EMPTY_TYPED(crewmonitor, /datum/crewmonitor)
 	var/list/jobs
 	var/faction = FACTION_MARINE
 
-/datum/crewmonitor/New(var/set_faction = FACTION_MARINE)
+/datum/crewmonitor/New(set_faction = FACTION_MARINE)
 	..()
 	faction = set_faction
 	setup_for_faction(faction)
@@ -784,7 +785,7 @@ GLOBAL_LIST_EMPTY_TYPED(crewmonitor, /datum/crewmonitor)
 	var/list/results = list()
 	for(var/mob/living/carbon/human/H in GLOB.human_mob_list)
 		// Predators
-		if(isYautja(H))
+		if(isyautja(H))
 			continue
 		// Check for a uniform
 		var/obj/item/clothing/under/C = H.w_uniform
@@ -868,7 +869,7 @@ GLOBAL_LIST_EMPTY_TYPED(crewmonitor, /datum/crewmonitor)
 				// We do not care is there camera or no - we just know his location
 				AI.ai_actual_track(H)
 
-/datum/crewmonitor/proc/setup_for_faction(var/set_faction = FACTION_MARINE)
+/datum/crewmonitor/proc/setup_for_faction(set_faction = FACTION_MARINE)
 	switch(set_faction)
 		if(FACTION_MARINE)
 			jobs = list(
@@ -882,7 +883,6 @@ GLOBAL_LIST_EMPTY_TYPED(crewmonitor, /datum/crewmonitor)
 				JOB_SYNTH = 10,
 				JOB_PILOT = 11,
 				JOB_DROPSHIP_CREW_CHIEF = 12,
-				JOB_CREWMAN = 13,
 				JOB_INTEL = 14,
 				// 20-29: Security
 				JOB_CHIEF_POLICE = 20,

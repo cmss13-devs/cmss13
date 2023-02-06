@@ -91,7 +91,7 @@
 	update_icon()
 	return TRUE
 
-/obj/item/weapon/gun/energy/delete_bullet(var/obj/item/projectile/projectile_to_fire, refund = 0)
+/obj/item/weapon/gun/energy/delete_bullet(obj/item/projectile/projectile_to_fire, refund = 0)
 	qdel(projectile_to_fire)
 	if(refund) cell.charge += charge_cost
 	return TRUE
@@ -200,6 +200,7 @@
 	charge_cost = 625 // approx 16 shots.
 	has_charge_meter = TRUE
 	charge_icon = "+taser"
+	black_market_value = 20
 	var/precision = TRUE
 	var/skilllock = SKILL_POLICE_SKILLED
 

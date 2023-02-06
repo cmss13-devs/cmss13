@@ -1,4 +1,4 @@
-/mob/living/silicon/say_quote(var/text)
+/mob/living/silicon/say_quote(text)
 	var/ending = copytext(text, length(text))
 
 	if (ending == "?")
@@ -11,7 +11,7 @@
 #define IS_AI 1
 #define IS_ROBOT 2
 
-/mob/living/silicon/say_understands(var/mob/other,var/datum/language/speaking = null)
+/mob/living/silicon/say_understands(mob/other, datum/language/speaking = null)
 	//These only pertain to common. Languages are handled by mob/say_understands()
 	if (!speaking)
 		if (istype(other, /mob/living/carbon))
@@ -22,7 +22,7 @@
 			return 1
 	return ..()
 
-/mob/living/silicon/say(var/message)
+/mob/living/silicon/say(message)
 	if (!message)
 		return
 
@@ -39,7 +39,8 @@
 		return say_dead(message)
 
 	if(copytext(message,1,2) == "*")
-		return emote(copytext(message,2))
+		if(!findtext(message, "*", 2)) //Second asterisk means it is markup for *bold*, not an *emote.
+			return emote(lowertext(copytext(message,2)))
 
 	var/bot_type = 0 //Let's not do a fuck ton of type checks, thanks.
 	if(isAI(src))
@@ -136,7 +137,7 @@
 	return ..(message,speaking,verb)
 
 //For holopads only. Usable by AI.
-/mob/living/silicon/ai/proc/holopad_talk(var/message)
+/mob/living/silicon/ai/proc/holopad_talk(message)
 
 	log_say("[key_name(src)] : [message]")
 

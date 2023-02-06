@@ -1,6 +1,6 @@
 // BLOCKING PROC, RUN ASYNC
 
-/proc/stickyban_internal(var/ckey, var/address, var/cid, var/reason, var/linked_stickyban, var/datum/entity/player/banning_admin)
+/proc/stickyban_internal(ckey, address, cid, reason, linked_stickyban, datum/entity/player/banning_admin)
 
 	if(!ckey || !address || !cid)
 		CRASH("Incorrect data passed to stickyban_internal ([ckey], [address], [cid])")
@@ -40,7 +40,7 @@
 
 	PSB.save()
 
-/datum/entity/player/proc/process_stickyban(var/address, var/computer_id, var/source_id, var/reason, var/datum/entity/player/banning_admin, var/list/PSB)
+/datum/entity/player/proc/process_stickyban(address, computer_id, source_id, reason, datum/entity/player/banning_admin, list/PSB)
 	if(length(PSB) > 0) // sticky ban with identical data already exists, no need for another copy
 		if(banning_admin)
 			to_chat(banning_admin, SPAN_WARNING("Failed to add stickyban to [ckey]. Reason: Stickyban already exists."))
@@ -49,7 +49,7 @@
 	stickyban_internal(ckey, address, computer_id, reason, source_id, banning_admin)
 
 
-/datum/entity/player/proc/check_for_sticky_ban(var/address, var/computer_id)
+/datum/entity/player/proc/check_for_sticky_ban(address, computer_id)
 	var/list/datum/view_record/stickyban_list_view/SBLW = DB_VIEW(/datum/view_record/stickyban_list_view,
 		DB_OR(
 			DB_COMP("ckey", DB_EQUALS, ckey),

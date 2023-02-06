@@ -13,7 +13,7 @@
 		ACCESS_CIVILIAN_BRIG,
 		ACCESS_CIVILIAN_MEDBAY,
 		ACCESS_CIVILIAN_COMMAND,
-		ACCESS_MARINE_MAINT
+		ACCESS_MARINE_MAINT,
 	)
 	assignment = JOB_STOWAWAY
 	rank = JOB_STOWAWAY
@@ -62,7 +62,7 @@
 		ACCESS_CIVILIAN_BRIG,
 		ACCESS_CIVILIAN_MEDBAY,
 		ACCESS_CIVILIAN_COMMAND,
-		ACCESS_MARINE_MAINT
+		ACCESS_MARINE_MAINT,
 	)
 	assignment = JOB_UPP_REPRESENTATIVE
 	rank = JOB_UPP_REPRESENTATIVE
@@ -77,11 +77,11 @@
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/gimmick/jason(H), WEAR_JACKET)
 
-/datum/equipment_preset/ress/representative
-	name = "RESS Representative"
+/datum/equipment_preset/twe/representative
+	name = "TWE Representative"
 	flags = EQUIPMENT_PRESET_EXTRA
-	faction = FACTION_RESS
-	faction_group = FACTION_LIST_MARINE_RESS
+	faction = FACTION_TWE
+	faction_group = FACTION_LIST_MARINE_TWE
 
 	idtype = /obj/item/card/id/silver/cl
 	access = list(
@@ -95,15 +95,15 @@
 		ACCESS_CIVILIAN_BRIG,
 		ACCESS_CIVILIAN_MEDBAY,
 		ACCESS_CIVILIAN_COMMAND,
-		ACCESS_MARINE_MAINT
+		ACCESS_MARINE_MAINT,
 	)
-	assignment = JOB_RESS_REPRESENTATIVE
-	rank = JOB_RESS_REPRESENTATIVE
+	assignment = JOB_TWE_REPRESENTATIVE
+	rank = JOB_TWE_REPRESENTATIVE
 	paygrade = "CR"
-	role_comm_title = "RESS Rep."
+	role_comm_title = "TWE Rep."
 	skills = /datum/skills/civilian/survivor
 
-/datum/equipment_preset/ress/representative/load_name(mob/living/carbon/human/H, var/randomise)
+/datum/equipment_preset/twe/representative/load_name(mob/living/carbon/human/H, randomise)
 	H.gender = MALE
 	var/datum/preferences/A = new()
 	A.randomize_appearance(H)
@@ -122,9 +122,9 @@
 	H.g_eyes = 62
 	H.b_eyes = 19
 
-/datum/equipment_preset/ress/representative/load_gear(mob/living/carbon/human/H)
+/datum/equipment_preset/twe/representative/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/rep(H), WEAR_L_EAR)
-	H.equip_to_slot_or_del(new /obj/item/clothing/under/ress_suit(H), WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/twe_suit(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/laceup(H), WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/latex(H), WEAR_HANDS)

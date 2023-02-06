@@ -24,7 +24,7 @@
 			flick("shutterc0", src)
 			icon_state = "shutter0"
 			sleep(15)
-			density = 0
+			density = FALSE
 			SetOpacity(0)
 			operating = 0
 			return
@@ -39,7 +39,7 @@
 	icon_state = "shutter0"
 	playsound(loc, 'sound/machines/blastdoor.ogg', 25)
 	sleep(10)
-	density = 0
+	density = FALSE
 	layer = open_layer
 	SetOpacity(0)
 
@@ -56,7 +56,7 @@
 	flick("shutterc1", src)
 	icon_state = "shutter1"
 	layer = closed_layer
-	density = 1
+	density = TRUE
 	if(visible)
 		SetOpacity(1)
 	playsound(loc, 'sound/machines/blastdoor.ogg', 25)
@@ -70,7 +70,8 @@
 	openspeed = 4 //shorter open animation.
 	tiles_with = list(
 		/obj/structure/window/framed/almayer,
-		/obj/structure/machinery/door/airlock)
+		/obj/structure/machinery/door/airlock,
+	)
 
 /obj/structure/machinery/door/poddoor/shutters/almayer/open
 	density = FALSE
@@ -82,14 +83,14 @@
 /obj/structure/machinery/door/poddoor/shutters/almayer/containment
 	unacidable = TRUE
 
-/obj/structure/machinery/door/poddoor/shutters/almayer/containment/attack_alien(mob/living/carbon/Xenomorph/M)
-	if(isXenoQueen(M) && density && !operating)
+/obj/structure/machinery/door/poddoor/shutters/almayer/containment/attack_alien(mob/living/carbon/xenomorph/M)
+	if(isqueen(M) && density && !operating)
 		INVOKE_ASYNC(src, PROC_REF(pry_open), M)
 		return XENO_ATTACK_ACTION
 	else
 		. = ..(M)
 
-/obj/structure/machinery/door/poddoor/shutters/almayer/containment/pry_open(var/mob/living/carbon/Xenomorph/X, var/time = 4 SECONDS)
+/obj/structure/machinery/door/poddoor/shutters/almayer/containment/pry_open(mob/living/carbon/xenomorph/X, time = 4 SECONDS)
 	. = ..()
 	if(. && !(stat & BROKEN))
 		stat |= BROKEN
@@ -113,8 +114,8 @@
 
 /obj/structure/machinery/door/poddoor/shutters/almayer/pressure
 	name = "pressure shutters"
-	density = 0
-	opacity = 0
+	density = FALSE
+	opacity = FALSE
 	unacidable = TRUE
 	icon_state = "shutter0"
 	open_layer = PODDOOR_CLOSED_LAYER

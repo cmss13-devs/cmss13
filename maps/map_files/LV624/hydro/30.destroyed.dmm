@@ -68,7 +68,7 @@
 	},
 /area/lv624/ground/colony/south_medbay_road)
 "ft" = (
-/obj/item/clothing/gloves/marine/veteran/PMC{
+/obj/item/clothing/gloves/marine/veteran/pmc{
 	name = "damaged WY PMC gloves";
 	armor_bio = 10;
 	armor_bomb = 10;
@@ -168,10 +168,9 @@
 /turf/open/floor/plating,
 /area/lv624/lazarus/hydroponics)
 "mK" = (
-/obj/item/clothing/suit/storage/marine/veteran/PMC/light/synth{
+/obj/item/clothing/suit/storage/marine/veteran/pmc/light/synth{
 	desc = "A modification of the standard Armat Systems M3 armor. This variant was designed for PMC Support Units in the field, offering protection and storage while not restricting movement. This set seems damaged...";
 	name = "damaged M4 synthetic PMC armor";
-	slowdown = 1;
 	pixel_x = -5;
 	pixel_y = -5
 	},
@@ -234,7 +233,7 @@
 	},
 /obj/effect/decal/cleanable/blood,
 /obj/item/weapon/gun/smg/fp9000,
-/obj/item/clothing/under/marine/veteran/PMC/leader{
+/obj/item/clothing/under/marine/veteran/pmc/leader{
 	pixel_x = -7
 	},
 /turf/open/floor/plating{
@@ -249,7 +248,7 @@
 	current_rounds = 13
 	},
 /obj/effect/spawner/gibspawner/human,
-/obj/item/clothing/head/helmet/marine/veteran/PMC{
+/obj/item/clothing/head/helmet/marine/veteran/pmc{
 	pixel_x = -6;
 	pixel_y = 8
 	},
@@ -263,7 +262,7 @@
 	current_rounds = 2
 	},
 /obj/effect/spawner/gibspawner/human,
-/obj/item/clothing/under/marine/veteran/PMC{
+/obj/item/clothing/under/marine/veteran/pmc{
 	pixel_x = 6;
 	pixel_y = 8
 	},
@@ -278,7 +277,7 @@
 /area/lv624/lazarus/hydroponics)
 "xF" = (
 /obj/effect/decal/cleanable/blood,
-/obj/item/clothing/under/marine/veteran/PMC{
+/obj/item/clothing/under/marine/veteran/pmc{
 	pixel_x = -7;
 	pixel_y = 9
 	},
@@ -312,7 +311,7 @@
 	current_rounds = 17
 	},
 /obj/effect/spawner/gibspawner/human,
-/obj/item/clothing/head/helmet/marine/veteran/PMC/leader,
+/obj/item/clothing/head/helmet/marine/veteran/pmc/leader,
 /turf/open/floor/plating,
 /area/lv624/lazarus/hydroponics)
 "zL" = (
@@ -385,7 +384,7 @@
 	},
 /area/lv624/lazarus/hydroponics)
 "Fk" = (
-/obj/item/clothing/head/helmet/marine/veteran/PMC{
+/obj/item/clothing/head/helmet/marine/veteran/pmc{
 	pixel_x = -13;
 	pixel_y = 11
 	},
@@ -576,7 +575,7 @@
 /obj/item/ammo_magazine/smg/fp9000,
 /obj/item/ammo_magazine/smg/fp9000,
 /obj/item/ammo_magazine/smg/fp9000,
-/obj/item/clothing/gloves/marine/veteran/PMC{
+/obj/item/clothing/gloves/marine/veteran/pmc{
 	name = "damaged WY PMC gloves";
 	armor_bio = 10;
 	armor_bomb = 10;
@@ -596,7 +595,7 @@
 	},
 /area/lv624/lazarus/hydroponics)
 "RT" = (
-/obj/item/clothing/shoes/veteran/PMC{
+/obj/item/clothing/shoes/veteran/pmc{
 	slowdown = 0.5;
 	name = "scuffed shoes";
 	armor_bio = 15;
@@ -668,7 +667,7 @@
 /area/lv624/ground/jungle/north_jungle)
 "YJ" = (
 /obj/item/storage/firstaid,
-/obj/item/explosive/grenade/HE/PMC{
+/obj/item/explosive/grenade/high_explosive/pmc{
 	pixel_x = 6
 	},
 /turf/open/floor/plating{

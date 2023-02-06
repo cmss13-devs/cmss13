@@ -23,7 +23,7 @@
 	maptext_x = 4
 	maptext_y = 3
 
-/obj/item/stack/Initialize(mapload, var/amount = null)
+/obj/item/stack/Initialize(mapload, amount = null)
 	. = ..()
 	if(amount)
 		src.amount = amount
@@ -241,7 +241,7 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 	if(src && usr.interactee == src) //do not reopen closed window
 		INVOKE_ASYNC(src, PROC_REF(interact), usr)
 
-/obj/item/stack/proc/check_one_per_turf(var/datum/stack_recipe/R, var/mob/user)
+/obj/item/stack/proc/check_one_per_turf(datum/stack_recipe/R, mob/user)
 	switch(R.one_per_turf)
 
 		if(ONE_TYPE_PER_TURF)
@@ -262,16 +262,16 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 
 /obj/item/stack/proc/use(used)
 	if(used > amount) //If it's larger than what we have, no go.
-		return 0
+		return FALSE
 	amount -= used
 	update_icon()
 	if(amount <= 0)
 		if(usr && loc == usr)
 			usr.temp_drop_inv_item(src)
 		qdel(src)
-	return 1
+	return TRUE
 
-/obj/item/stack/proc/add(var/extra)
+/obj/item/stack/proc/add(extra)
 	if(amount + extra > max_amount)
 		return FALSE
 	amount += extra
@@ -296,6 +296,26 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 		if(!oldsrc)
 			break
 
+/obj/item/stack/clicked(mob/user, list/mods)
+	if(mods["alt"])
+		if(!CAN_PICKUP(user, src))
+			return
+		var/desired = tgui_input_number(user, "How much would you like to split off from this stack?", "How much?", 1, amount-1, 1)
+		if(!desired)
+			return
+		if(!use(desired))
+			return
+		var/obj/item/stack/newstack = new src.type(user, desired)
+		transfer_fingerprints_to(newstack)
+		user.put_in_hands(newstack)
+		src.add_fingerprint(user)
+		newstack.add_fingerprint(user)
+		if(src && usr.interactee==src)
+			INVOKE_ASYNC(src, TYPE_PROC_REF(/obj/item/stack, interact), usr)
+		return TRUE
+	else
+		return ..()
+
 /obj/item/stack/attack_hand(mob/user as mob)
 	if (user.get_inactive_hand() == src)
 		var/obj/item/stack/F = new src.type(user, 1)
@@ -311,20 +331,13 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 	return
 
 /obj/item/stack/attackby(obj/item/W as obj, mob/user as mob)
-	if (istype(W, /obj/item/stack))
+	if(istype(W, /obj/item/stack))
 		var/obj/item/stack/S = W
 		if(S.stack_id == stack_id) //same stack type
 			if(S.amount >= max_amount)
-				to_chat(user, SPAN_NOTICE("The stack is full!"))
+				to_chat(user, SPAN_WARNING("The stack is full!"))
 				return TRUE
-			var/to_transfer
-			if(user.get_inactive_hand() == src)
-				var/desired = tgui_input_number(user, "How much would you like to transfer from this stack?", "How much?", 1, amount, 1)
-				if(!desired)
-					return
-				to_transfer = Clamp(desired, 0, min(amount, S.max_amount-S.amount))
-			else
-				to_transfer = min(src.amount, S.max_amount-S.amount)
+			var/to_transfer = min(src.amount, S.max_amount-S.amount)
 			if(to_transfer <= 0)
 				return
 			to_chat(user, SPAN_INFO("You transfer [to_transfer] between the stacks."))

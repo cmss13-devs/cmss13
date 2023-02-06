@@ -8,9 +8,9 @@
 	icon = 'icons/obj/structures/machinery/status_display.dmi' // For AI friend secret shh :o
 	var/list/visibleCameraChunks = list()
 	var/mob/living/silicon/ai/ai = null
-	density = 0
+	density = FALSE
 	status_flags = GODMODE  // You can't damage it.
-	mouse_opacity = 0
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	see_in_dark = 7
 
 // Movement code. Returns 0 to stop air movement from moving it.
@@ -19,7 +19,7 @@
 
 // Use this when setting the aiEye's location.
 // It will also stream the chunk that the new loc is in.
-/mob/aiEye/proc/setLoc(var/T, var/cancel_tracking = 1)
+/mob/aiEye/proc/setLoc(T, cancel_tracking = 1)
 
 	if(ai)
 		if(!isturf(ai.loc))

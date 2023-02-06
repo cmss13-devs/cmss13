@@ -15,15 +15,16 @@
 	fire_sound = "m4a3"
 	firesound_volume = 25
 	attachable_allowed = list(
-						/obj/item/attachable/suppressor,
-						/obj/item/attachable/reddot,
-						/obj/item/attachable/reflex,
-						/obj/item/attachable/flashlight,
-						/obj/item/attachable/compensator,
-						/obj/item/attachable/lasersight,
-						/obj/item/attachable/extended_barrel,
-						/obj/item/attachable/heavy_barrel,
-						/obj/item/attachable/burstfire_assembly)
+		/obj/item/attachable/suppressor,
+		/obj/item/attachable/reddot,
+		/obj/item/attachable/reflex,
+		/obj/item/attachable/flashlight,
+		/obj/item/attachable/compensator,
+		/obj/item/attachable/lasersight,
+		/obj/item/attachable/extended_barrel,
+		/obj/item/attachable/heavy_barrel,
+		/obj/item/attachable/burstfire_assembly,
+	)
 
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED //For easy reference.
 	gun_category = GUN_CATEGORY_HANDGUN
@@ -52,15 +53,16 @@
 	current_mag = /obj/item/ammo_magazine/pistol
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_AMMO_COUNTER
 	attachable_allowed = list(
-						/obj/item/attachable/suppressor,
-						/obj/item/attachable/reddot,
-						/obj/item/attachable/reflex,
-						/obj/item/attachable/flashlight,
-						/obj/item/attachable/compensator,
-						/obj/item/attachable/lasersight,
-						/obj/item/attachable/extended_barrel,
-						/obj/item/attachable/heavy_barrel,
-						/obj/item/attachable/burstfire_assembly)
+		/obj/item/attachable/suppressor,
+		/obj/item/attachable/reddot,
+		/obj/item/attachable/reflex,
+		/obj/item/attachable/flashlight,
+		/obj/item/attachable/compensator,
+		/obj/item/attachable/lasersight,
+		/obj/item/attachable/extended_barrel,
+		/obj/item/attachable/heavy_barrel,
+		/obj/item/attachable/burstfire_assembly,
+	)
 
 /obj/item/weapon/gun/pistol/m4a3/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 28, "muzzle_y" = 20,"rail_x" = 10, "rail_y" = 21, "under_x" = 21, "under_y" = 17, "stock_x" = 21, "stock_y" = 17)
@@ -194,13 +196,14 @@
 	force = 13
 
 	attachable_allowed = list(
-						/obj/item/attachable/reddot,
-						/obj/item/attachable/reflex,
-						/obj/item/attachable/flashlight,
-						/obj/item/attachable/extended_barrel,
-						/obj/item/attachable/heavy_barrel,
-						/obj/item/attachable/lasersight,
-						/obj/item/attachable/compensator)
+		/obj/item/attachable/reddot,
+		/obj/item/attachable/reflex,
+		/obj/item/attachable/flashlight,
+		/obj/item/attachable/extended_barrel,
+		/obj/item/attachable/heavy_barrel,
+		/obj/item/attachable/lasersight,
+		/obj/item/attachable/compensator,
+	)
 
 
 /obj/item/weapon/gun/pistol/heavy/set_gun_attachment_offsets()
@@ -228,6 +231,7 @@
 	item_state = "c_deagle"
 	base_gun_icon = "c_deagle"
 	current_mag = /obj/item/ammo_magazine/pistol/heavy/super/highimpact
+	black_market_value = 100
 
 /obj/item/weapon/gun/pistol/heavy/co/set_gun_config_values()
 	..()
@@ -261,12 +265,12 @@
 	current_mag = /obj/item/ammo_magazine/pistol/c99
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED
 	attachable_allowed = list(
-						/obj/item/attachable/reddot,
-						/obj/item/attachable/reflex,
-						/obj/item/attachable/flashlight,
-						/obj/item/attachable/lasersight,
-						/obj/item/attachable/burstfire_assembly
-						)
+		/obj/item/attachable/reddot,
+		/obj/item/attachable/reflex,
+		/obj/item/attachable/flashlight,
+		/obj/item/attachable/lasersight,
+		/obj/item/attachable/burstfire_assembly,
+	)
 
 /obj/item/weapon/gun/pistol/c99/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 30, "muzzle_y" = 19,"rail_x" = 10, "rail_y" = 22, "under_x" = 21, "under_y" = 18, "stock_x" = 21, "stock_y" = 18)
@@ -346,11 +350,12 @@
 	w_class = SIZE_TINY
 	force = 2
 	attachable_allowed = list(
-						/obj/item/attachable/suppressor,
-						/obj/item/attachable/flashlight,
-						/obj/item/attachable/heavy_barrel,
-						/obj/item/attachable/lasersight,
-						/obj/item/attachable/burstfire_assembly)
+		/obj/item/attachable/suppressor,
+		/obj/item/attachable/flashlight,
+		/obj/item/attachable/heavy_barrel,
+		/obj/item/attachable/lasersight,
+		/obj/item/attachable/burstfire_assembly,
+	)
 
 
 /obj/item/weapon/gun/pistol/holdout/set_gun_attachment_offsets()
@@ -385,8 +390,9 @@
 	w_class = SIZE_TINY
 	force = 5
 	attachable_allowed = list(
-						/obj/item/attachable/suppressor,
-						/obj/item/attachable/flashlight)
+		/obj/item/attachable/suppressor,
+		/obj/item/attachable/flashlight,
+	)
 
 /obj/item/weapon/gun/pistol/m43pistol/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 28, "muzzle_y" = 20,"rail_x" = 10, "rail_y" = 21, "under_x" = 21, "under_y" = 17, "stock_x" = 21, "stock_y" = 17)
@@ -405,36 +411,33 @@
 //-------------------------------------------------------
 //.45 MARSHALS PISTOL //Inspired by the Browning Hipower
 // rebalanced - singlefire, very strong bullets but slow to fire and heavy recoil
-// redesigned - now rejected USCM sidearm model, utilized by marshalls and other stray groups.
+// redesigned - now rejected USCM sidearm model, utilized by Colonial Marshals and other stray groups.
 
 /obj/item/weapon/gun/pistol/highpower
 	name = "\improper MK-45 'High-Power' Automagnum"
-	desc = "Originally designed as a replacement for the USCM's M44 combat revolver, it was rejected at the last minute by a committee, citing its need to be cocked after every loaded magazine to be too cumbersone and antiquated. The design has recently been purchased by the Henjin-Garcia company, refitted for .45 ACP, and sold to the Colonial Marshalls and other various unscrupulous armed groups."
+	desc = "Originally designed as a replacement for the USCM's M44 combat revolver, it was rejected at the last minute by a committee, citing its need to be cocked after every loaded magazine to be too cumbersone and antiquated. The design has recently been purchased by the Henjin-Garcia company, refitted for .45 ACP, and sold to the Colonial Marshals and other various unscrupulous armed groups."
 	icon_state = "highpower"
 	item_state = "highpower"
 	fire_sound = 'sound/weapons/gun_kt42.ogg'
 	current_mag = /obj/item/ammo_magazine/pistol/highpower
 	force = 15
 	attachable_allowed = list(
-						//Barrel
-						/obj/item/attachable/suppressor,
-						/obj/item/attachable/bayonet,
-						/obj/item/attachable/bayonet/upp_replica,
-						/obj/item/attachable/bayonet/upp,
-						/obj/item/attachable/extended_barrel,
-						/obj/item/attachable/heavy_barrel,
-						/obj/item/attachable/compensator,
-						//Rail
-						/obj/item/attachable/reddot,
-						/obj/item/attachable/reflex,
-						/obj/item/attachable/flashlight,
-						/obj/item/attachable/magnetic_harness,
-						/obj/item/attachable/scope,
-						/obj/item/attachable/scope/mini,
-						//Under
-						/obj/item/attachable/gyro,
-						/obj/item/attachable/lasersight,
-						/obj/item/attachable/burstfire_assembly
+		/obj/item/attachable/suppressor, // Barrel
+		/obj/item/attachable/bayonet,
+		/obj/item/attachable/bayonet/upp_replica,
+		/obj/item/attachable/bayonet/upp,
+		/obj/item/attachable/extended_barrel,
+		/obj/item/attachable/heavy_barrel,
+		/obj/item/attachable/compensator,
+		/obj/item/attachable/reddot, // Rail
+		/obj/item/attachable/reflex,
+		/obj/item/attachable/flashlight,
+		/obj/item/attachable/magnetic_harness,
+		/obj/item/attachable/scope,
+		/obj/item/attachable/scope/mini,
+		/obj/item/attachable/gyro, // Under
+		/obj/item/attachable/lasersight,
+		/obj/item/attachable/burstfire_assembly,
 	)
 	/// This weapon needs to be manually racked every time a new magazine is loaded. I tried and failed to touch gun shitcode so this will do.
 	var/manually_slided = FALSE
@@ -458,7 +461,7 @@
 		return
 	..()
 
-/obj/item/weapon/gun/pistol/highpower/cock_gun(mob/user, var/manual = FALSE)
+/obj/item/weapon/gun/pistol/highpower/cock_gun(mob/user, manual = FALSE)
 	if(manual)
 		..()
 	else return
@@ -483,7 +486,7 @@
 	recoil_unwielded = RECOIL_AMOUNT_TIER_4
 
 //also comes in.... BLAPCK
-//the parent has a blueish tint, making it look best for civilian usage (colonies, marshalls). this one has a black tint on its metal, making it best for military groups like VAIPO, elite mercs, etc.
+//the parent has a blueish tint, making it look best for civilian usage (colonies, marshals). this one has a black tint on its metal, making it best for military groups like VAIPO, elite mercs, etc.
 // black tinted magazines also included
 /obj/item/weapon/gun/pistol/highpower/black
 	current_mag = /obj/item/ammo_magazine/pistol/highpower/black
@@ -493,7 +496,7 @@
 //unimplemented
 /obj/item/weapon/gun/pistol/highpower/tactical
 	name = "\improper MK-44 SOCOM Automagnum"
-	desc = "Originally designed as a replacement for the USCM's M44 combat revolver, it was rejected at the last minute by a committee, citing its need to be cocked after every loaded magazine to be too cumbersone and antiquated. The design has recently been purchased by the Henjin-Garcia company and sold to the Colonial Marshalls and other various unscrupulous armed groups. This one has a sleek, dark design."
+	desc = "Originally designed as a replacement for the USCM's M44 combat revolver, it was rejected at the last minute by a committee, citing its need to be cocked after every loaded magazine to be too cumbersone and antiquated. The design has recently been purchased by the Henjin-Garcia company and sold to the Colonial Marshals and other various unscrupulous armed groups. This one has a sleek, dark design."
 	current_mag = /obj/item/ammo_magazine/pistol/highpower/black
 	icon_state = "highpower_tac"
 	item_state = "highpower_tac"
@@ -516,18 +519,19 @@
 	force = 8
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_AMMO_COUNTER
 	attachable_allowed = list(
-						/obj/item/attachable/suppressor,
-						/obj/item/attachable/extended_barrel,
-						/obj/item/attachable/heavy_barrel,
-						/obj/item/attachable/compensator,
-						/obj/item/attachable/flashlight,
-						/obj/item/attachable/reflex,
-						/obj/item/attachable/reddot,
-						/obj/item/attachable/burstfire_assembly,
-						/obj/item/attachable/lasersight,
-						/obj/item/attachable/flashlight/grip,
-						/obj/item/attachable/magnetic_harness,
-						/obj/item/attachable/stock/mod88)
+		/obj/item/attachable/suppressor,
+		/obj/item/attachable/extended_barrel,
+		/obj/item/attachable/heavy_barrel,
+		/obj/item/attachable/compensator,
+		/obj/item/attachable/flashlight,
+		/obj/item/attachable/reflex,
+		/obj/item/attachable/reddot,
+		/obj/item/attachable/burstfire_assembly,
+		/obj/item/attachable/lasersight,
+		/obj/item/attachable/flashlight/grip,
+		/obj/item/attachable/magnetic_harness,
+		/obj/item/attachable/stock/mod88,
+	)
 
 /obj/item/weapon/gun/pistol/mod88/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 27, "muzzle_y" = 21,"rail_x" = 8, "rail_y" = 22, "under_x" = 21, "under_y" = 18, "stock_x" = 18, "stock_y" = 15)
@@ -572,14 +576,15 @@
 	force = 8
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_AMMO_COUNTER
 	attachable_allowed = list(
-						/obj/item/attachable/suppressor,
-						/obj/item/attachable/reddot,
-						/obj/item/attachable/reflex,
-						/obj/item/attachable/flashlight,
-						/obj/item/attachable/compensator,
-						/obj/item/attachable/lasersight,
-						/obj/item/attachable/extended_barrel,
-						/obj/item/attachable/heavy_barrel)
+		/obj/item/attachable/suppressor,
+		/obj/item/attachable/reddot,
+		/obj/item/attachable/reflex,
+		/obj/item/attachable/flashlight,
+		/obj/item/attachable/compensator,
+		/obj/item/attachable/lasersight,
+		/obj/item/attachable/extended_barrel,
+		/obj/item/attachable/heavy_barrel,
+	)
 
 /obj/item/weapon/gun/pistol/vp78/handle_starting_attachment()
 	..()
@@ -718,19 +723,16 @@ It is a modified Beretta 93R, and can fire three-round burst or single fire. Whe
 	current_mag = /obj/item/ammo_magazine/pistol/skorpion
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_HAS_FULL_AUTO|GUN_FULL_AUTO_ON|GUN_FULL_AUTO_ONLY
 	attachable_allowed = list(
-						//Rail
-						/obj/item/attachable/reddot,
-						/obj/item/attachable/reflex,
-						/obj/item/attachable/flashlight,
-						//Muzzle
-						/obj/item/attachable/suppressor,
-						/obj/item/attachable/compensator,
-						/obj/item/attachable/extended_barrel,
-						/obj/item/attachable/heavy_barrel,
-						//Underbarrel
-						/obj/item/attachable/lasersight,
-						/obj/item/attachable/burstfire_assembly,
-						)
+		/obj/item/attachable/reddot, //Rail
+		/obj/item/attachable/reflex,
+		/obj/item/attachable/flashlight,
+		/obj/item/attachable/suppressor, //Muzzle
+		/obj/item/attachable/compensator,
+		/obj/item/attachable/extended_barrel,
+		/obj/item/attachable/heavy_barrel,
+		/obj/item/attachable/lasersight, //Underbarrel
+		/obj/item/attachable/burstfire_assembly,
+		)
 
 /obj/item/weapon/gun/pistol/skorpion/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 29, "muzzle_y" = 18,"rail_x" = 16, "rail_y" = 21, "under_x" = 23, "under_y" = 15, "stock_x" = 23, "stock_y" = 15)
@@ -754,17 +756,17 @@ It is a modified Beretta 93R, and can fire three-round burst or single fire. Whe
 	random_spawn_chance = 100
 	random_rail_chance = 70
 	random_spawn_rail = list(
-							/obj/item/attachable/reflex,
-							/obj/item/attachable/flashlight,
-							)
+		/obj/item/attachable/reflex,
+		/obj/item/attachable/flashlight,
+	)
 	random_muzzle_chance = 50
 	random_spawn_muzzle = list(
-							/obj/item/attachable/suppressor,
-							)
+		/obj/item/attachable/suppressor,
+	)
 	random_under_chance = 60
 	random_spawn_under = list(
-							/obj/item/attachable/lasersight,
-							)
+		/obj/item/attachable/lasersight,
+	)
 
 /obj/item/weapon/gun/pistol/skorpion/set_gun_config_values()
 	..()

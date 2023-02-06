@@ -28,7 +28,7 @@
 	var/buckling_sound = 'sound/effects/buckle.ogg'
 	surgery_duration_multiplier = SURGERY_SURFACE_MULT_UNSUITED
 
-/obj/structure/bed/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/obj/structure/bed/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_can_pass_all = PASS_OVER|PASS_AROUND|PASS_UNDER
@@ -45,7 +45,7 @@
 		unbuckle()
 	. = ..()
 
-/obj/structure/bed/ex_act(var/power)
+/obj/structure/bed/ex_act(power)
 	if(power >= EXPLOSION_THRESHOLD_VLOW)
 		deconstruct(FALSE)
 
@@ -61,12 +61,12 @@
 		M.pixel_y = buckling_y
 		M.old_y = buckling_y
 		if(base_bed_icon)
-			density = 1
+			density = TRUE
 	else
 		M.pixel_y = initial(buckled_mob.pixel_y)
 		M.old_y = initial(buckled_mob.pixel_y)
 		if(base_bed_icon)
-			density = 0
+			density = FALSE
 
 	update_icon()
 
@@ -77,7 +77,7 @@
 	B.forceMove(loc)
 	B.setDir(dir)
 	buckled_bodybag = B
-	density = 1
+	density = TRUE
 	update_icon()
 	if(buckling_y)
 		buckled_bodybag.pixel_y = buckled_bodybag.buckle_offset + buckling_y
@@ -88,7 +88,7 @@
 		buckled_bodybag.pixel_y = initial(buckled_bodybag.pixel_y)
 		buckled_bodybag.roller_buckled = null
 		buckled_bodybag = null
-		density = 0
+		density = FALSE
 		update_icon()
 	else
 		..()

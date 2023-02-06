@@ -165,7 +165,7 @@
 /obj/item/spec_kit/asrs
 	allowed_roles_list = list(JOB_SQUAD_MARINE, JOB_WO_SQUAD_MARINE)
 
-/obj/item/spec_kit/get_examine_text(var/mob/user)
+/obj/item/spec_kit/get_examine_text(mob/user)
 	. = ..()
 	if(!ishuman(user) && !isobserver(user))
 		return
@@ -181,7 +181,7 @@
 		allowed_roles = SPAN_HELPFUL("anyone")
 	. += SPAN_INFO("This [name] can be used by [allowed_roles] if they didn't use one of these yet.")
 
-/obj/item/spec_kit/attack_self(var/mob/living/carbon/human/user)
+/obj/item/spec_kit/attack_self(mob/living/carbon/human/user)
 	..()
 	if(!ishuman(user))
 		to_chat(user, SPAN_WARNING("You can't use \the [src]!"))
@@ -195,7 +195,7 @@
 		to_chat(user, SPAN_WARNING("You can't use this [name]!"))
 	return
 
-/obj/item/spec_kit/proc/can_use(var/mob/living/carbon/human/user)
+/obj/item/spec_kit/proc/can_use(mob/living/carbon/human/user)
 	if(!length(allowed_roles_list))
 		return TRUE
 

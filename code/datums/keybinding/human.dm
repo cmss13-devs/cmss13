@@ -57,10 +57,10 @@
 	var/mob/living/carbon/human/H = user.mob
 	H.holster_verb(QUICK_EQUIP_TERTIARY)
 	return TRUE
-	
+
 /datum/keybinding/human/quick_equip_quaternary
-	hotkey_keys = list()
-	classic_keys = list()
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
 	name = "quick_equip_quaternary"
 	full_name = "Unholster quaternary"
 	description = "Take out your quaternary item."
@@ -75,8 +75,8 @@
 	return TRUE
 
 /datum/keybinding/human/quick_equip_inventory
-	hotkey_keys = list()
-	classic_keys = list()
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
 	name = "quick_equip_inventory"
 	full_name = "Quick equip inventory"
 	description = "Quickly puts an item in the best slot available"
@@ -91,8 +91,8 @@
 	return TRUE
 
 /datum/keybinding/human/issue_order
-	hotkey_keys = list()
-	classic_keys = list()
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
 	name = "issue_order"
 	full_name = "Issue Order"
 	description = "Select an order to issue."
@@ -129,8 +129,8 @@
 	order = COMMAND_ORDER_FOCUS
 
 /datum/keybinding/human/specialist_one
-	hotkey_keys = list()
-	classic_keys = list()
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
 	name = "specialist_activation_one"
 	full_name = "Specialist Activation One"
 	keybind_signal = COMSIG_KB_HUMAN_SPECIALIST_ACTIVATION_ONE
@@ -144,8 +144,8 @@
 	return TRUE
 
 /datum/keybinding/human/specialist_two
-	hotkey_keys = list()
-	classic_keys = list()
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
 	name = "specialist_activation_two"
 	full_name = "Specialist Activation Two"
 	keybind_signal = COMSIG_KB_HUMAN_SPECIALIST_ACTIVATION_TWO
@@ -157,7 +157,23 @@
 	var/mob/living/carbon/human/H = user.mob
 	H.spec_activation_two()
 	return TRUE
-	
+
+/datum/keybinding/human/pick_up
+	hotkey_keys = list("F")
+	classic_keys = list()
+	name = "pick_up"
+	full_name = "Pick Up Dropped Items"
+	keybind_signal = COMSIG_KG_HUMAN_PICK_UP
+
+/datum/keybinding/human/pick_up/down(client/user)
+	. = ..()
+	if(.)
+		return
+
+	var/mob/living/carbon/human/human_user = user.mob
+	human_user.pickup_recent()
+	return TRUE
+
 #undef QUICK_EQUIP_PRIMARY
 #undef QUICK_EQUIP_SECONDARY
 #undef QUICK_EQUIP_TERTIARY

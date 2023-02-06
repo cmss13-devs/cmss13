@@ -97,7 +97,7 @@
 	var/list/L = s_info[info_tag]
 	info_datums = L.Copy()
 
-/datum/shuttle/ferry/marine/proc/launch_crash(var/user)
+/datum/shuttle/ferry/marine/proc/launch_crash(user)
 	if(!can_launch()) return //There's another computer trying to launch something
 
 	in_use = user
@@ -253,7 +253,7 @@
 
 	if(!queen_locked)
 		for(var/turf/T in turfs_src)
-			var/mob/living/carbon/Xenomorph/X = locate(/mob/living/carbon/Xenomorph) in T
+			var/mob/living/carbon/xenomorph/X = locate(/mob/living/carbon/xenomorph) in T
 			if(X && X.stat != DEAD)
 				var/name = "Unidentified Lifesigns"
 				var/input = "Unidentified lifesigns detected onboard. Recommendation: lockdown of exterior access ports, including ducting and ventilation."
@@ -540,16 +540,16 @@
 				break
 		sleep(1)
 
-	for(var/i in GLOB.alive_human_list) //knock down mobs
-		var/mob/living/carbon/human/M = i
-		if(M.z != T_trg.z) continue
-		if(M.buckled)
-			to_chat(M, SPAN_WARNING("You are jolted against [M.buckled]!"))
-			shake_camera(M, 3, 1)
+	for(var/mob/living/carbon/affected_mob in (GLOB.alive_human_list + GLOB.living_xeno_list)) //knock down mobs
+		if(affected_mob.z != T_trg.z)
+			continue
+		if(affected_mob.buckled)
+			to_chat(affected_mob, SPAN_WARNING("You are jolted against [affected_mob.buckled]!"))
+			shake_camera(affected_mob, 3, 1)
 		else
-			to_chat(M, SPAN_WARNING("The floor jolts under your feet!"))
-			shake_camera(M, 10, 1)
-			M.apply_effect(3, WEAKEN)
+			to_chat(affected_mob, SPAN_WARNING("The floor jolts under your feet!"))
+			shake_camera(affected_mob, 10, 1)
+			affected_mob.apply_effect(3, WEAKEN)
 
 	addtimer(CALLBACK(src, PROC_REF(disable_latejoin)), 3 MINUTES) // latejoin cryorines have 3 minutes to get the hell out
 
@@ -651,7 +651,7 @@
 
 	location = !location
 
-/datum/shuttle/ferry/marine/close_doors(var/list/turf/L)
+/datum/shuttle/ferry/marine/close_doors(list/turf/L)
 	for(var/turf/T in L) // For every turf
 		for(var/obj/structure/machinery/door/D in T) // For every relevant door there
 			if(!D.density && istype(D, /obj/structure/machinery/door/poddoor/shutters/transit))
@@ -661,7 +661,7 @@
 			else if(istype(D, /obj/structure/machinery/door/airlock/dropship_hatch) || istype(D, /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear))
 				INVOKE_ASYNC(src, PROC_REF(force_close_launch), D) // The whole shabang
 
-/datum/shuttle/ferry/marine/force_close_launch(var/obj/structure/machinery/door/AL)
+/datum/shuttle/ferry/marine/force_close_launch(obj/structure/machinery/door/AL)
 	if(!iselevator)
 		for(var/mob/M in AL.loc) // Bump all mobs outta the way for outside airlocks of shuttles
 			if(isliving(M))
@@ -673,7 +673,7 @@
 						break
 	return ..() // Sleeps
 
-/datum/shuttle/ferry/marine/open_doors(var/list/L)
+/datum/shuttle/ferry/marine/open_doors(list/L)
 	var/i //iterator
 	var/turf/T
 
@@ -705,7 +705,7 @@
 
 
 
-/datum/shuttle/ferry/marine/proc/open_doors_crashed(var/list/L)
+/datum/shuttle/ferry/marine/proc/open_doors_crashed(list/L)
 
 	var/i //iterator
 	var/turf/T
@@ -739,7 +739,7 @@
 		for(var/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/D in T)
 			qdel(D)
 
-/datum/shuttle/ferry/marine/proc/shake_cameras(var/list/L)
+/datum/shuttle/ferry/marine/proc/shake_cameras(list/L)
 
 	var/i //iterator
 	var/j

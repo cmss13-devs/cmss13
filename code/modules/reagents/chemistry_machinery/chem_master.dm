@@ -1,7 +1,7 @@
 /obj/structure/machinery/chem_master
 	name = "ChemMaster 3000"
-	density = 1
-	anchored = 1
+	density = TRUE
+	anchored = TRUE
 	icon = 'icons/obj/structures/machinery/science_machines.dmi'
 	icon_state = "mixer0"
 	var/base_state = "mixer"
@@ -27,7 +27,7 @@
 
 /obj/structure/machinery/chem_master/Initialize()
 	. = ..()
-	create_reagents(240)
+	create_reagents(300)
 	connect_smartfridge()
 
 /obj/structure/machinery/chem_master/Destroy()
@@ -90,7 +90,7 @@
 		updateUsrDialog()
 	return
 
-/obj/structure/machinery/chem_master/proc/transfer_chemicals(var/obj/dest, var/obj/source, var/amount, var/reagent_id)
+/obj/structure/machinery/chem_master/proc/transfer_chemicals(obj/dest, obj/source, amount, reagent_id)
 	if(istype(source))
 		if(amount > 0 && source.reagents && amount <= source.reagents.maximum_volume)
 			if(!istype(dest))

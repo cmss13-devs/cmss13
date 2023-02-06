@@ -32,23 +32,31 @@
 #define EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL  1
 #define EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL_HALF 2
 
+#define EXPLOSION_MAX_POWER 5000
+
 //area flags
 
-#define AREA_AVOID_BIOSCAN (1<<0) //used to make mobs skip bioscans
-#define AREA_NOTUNNEL (1<<1) //makes it so the area can not be tunneled to
-#define AREA_ALLOW_XENO_JOIN (1<<2) //xenos can join whilst in this area (for admin zlevel)
-#define AREA_CONTAINMENT (1<<3) // Flags the area as a containment area
-
-// Default number of ticks for do_after
+/// used to make mobs skip bioscans
+#define AREA_AVOID_BIOSCAN (1<<0)
+/// makes it so the area can not be tunneled to
+#define AREA_NOTUNNEL (1<<1)
+/// xenos can join whilst in this area (for admin zlevel)
+#define AREA_ALLOW_XENO_JOIN (1<<2)
+/// Flags the area as a containment area
+#define AREA_CONTAINMENT (1<<3)
+/// Default number of ticks for do_after
 #define DA_DEFAULT_NUM_TICKS 5
 
 //construction flags
+
 #define CONSTRUCTION_STATE_BEGIN 0
 #define CONSTRUCTION_STATE_PROGRESS 1
 #define CONSTRUCTION_STATE_FINISHED 2
 
-#define CELLS 8 //Amount of cells per row/column in grid
-#define CELLSIZE (world.icon_size/CELLS) //Size of a cell in pixel
+/// Amount of cells per row/column in grid
+#define CELLS 8
+/// Size of a cell in pixel
+#define CELLSIZE (world.icon_size/CELLS)
 
 // *************************************** //
 // DO_AFTER FLAGS
@@ -57,26 +65,39 @@
 
 // INTERRUPT FLAGS
 // These flags define whether specific actions will be interrupted by a given timed action
-#define INTERRUPT_NONE   0
-#define INTERRUPT_DIFF_LOC   (1<<0)
-#define INTERRUPT_DIFF_TURF  (1<<1)  // Might want to consider adding a separate flag for DIFF_COORDS
-#define INTERRUPT_UNCONSCIOUS    (1<<2)  // Relevant to stat var for mobs
-#define INTERRUPT_KNOCKED_DOWN   (1<<3)
-#define INTERRUPT_STUNNED    (1<<4)
-#define INTERRUPT_NEEDHAND   (1<<5)
-#define INTERRUPT_RESIST (1<<6)  // Allows timed actions to be cancelled upon hitting resist, on by default
-#define INTERRUPT_DIFF_SELECT_ZONE  (1<<7)  // By default not in INTERRUPT_ALL (too niche)
-#define INTERRUPT_OUT_OF_RANGE   (1<<8)  // By default not in INTERRUPT_ALL, should not be used in conjunction with INTERRUPT_DIFF_TURF
-#define INTERRUPT_DIFF_INTENT    (1<<9)  // By default not in INTERRUPT_ALL (too niche) (Doesn't actually exist.)
-#define INTERRUPT_LCLICK (1<<10)  // Mainly for boiler globs
+
+#define INTERRUPT_NONE 0
+#define INTERRUPT_DIFF_LOC (1<<0)
+
+/// Might want to consider adding a separate flag for DIFF_COORDS
+#define INTERRUPT_DIFF_TURF (1<<1)
+/// Relevant to stat var for mobs
+#define INTERRUPT_UNCONSCIOUS (1<<2)
+
+#define INTERRUPT_KNOCKED_DOWN (1<<3)
+#define INTERRUPT_STUNNED (1<<4)
+#define INTERRUPT_NEEDHAND (1<<5)
+
+/// Allows timed actions to be cancelled upon hitting resist, on by default
+#define INTERRUPT_RESIST (1<<6)
+/// By default not in INTERRUPT_ALL (too niche)
+#define INTERRUPT_DIFF_SELECT_ZONE (1<<7)
+/// By default not in INTERRUPT_ALL, should not be used in conjunction with INTERRUPT_DIFF_TURF
+#define INTERRUPT_OUT_OF_RANGE (1<<8)
+/// By default not in INTERRUPT_ALL (too niche) (Doesn't actually exist.)
+#define INTERRUPT_DIFF_INTENT (1<<9)
+/// Mainly for boiler globs
+#define INTERRUPT_LCLICK (1<<10)
+
 #define INTERRUPT_RCLICK (1<<11)
 #define INTERRUPT_SHIFTCLICK (1<<12)
-#define INTERRUPT_ALTCLICK   (1<<13)
-#define INTERRUPT_CTRLCLICK  (1<<14)
-#define INTERRUPT_MIDDLECLICK    (1<<15)
-#define INTERRUPT_DAZED  (1<<16)
-#define INTERRUPT_EMOTE  (1<<17)
-#define INTERRUPT_CHANGED_LYING  (1<<18)  // By default not in INTERRUPT_ALL (too niche)
+#define INTERRUPT_ALTCLICK (1<<13)
+#define INTERRUPT_CTRLCLICK (1<<14)
+#define INTERRUPT_MIDDLECLICK (1<<15)
+#define INTERRUPT_DAZED (1<<16)
+#define INTERRUPT_EMOTE (1<<17)
+// By default not in INTERRUPT_ALL (too niche)
+#define INTERRUPT_CHANGED_LYING (1<<18)
 
 #define INTERRUPT_ALL    (INTERRUPT_DIFF_LOC|INTERRUPT_DIFF_TURF|INTERRUPT_UNCONSCIOUS|INTERRUPT_KNOCKED_DOWN|INTERRUPT_STUNNED|INTERRUPT_NEEDHAND|INTERRUPT_RESIST)
 #define INTERRUPT_ALL_OUT_OF_RANGE  (INTERRUPT_ALL & (~INTERRUPT_DIFF_TURF)|INTERRUPT_OUT_OF_RANGE)
@@ -88,24 +109,34 @@
 // BEHAVIOR FLAGS
 // These flags describe behaviors related to a given timed action.
 // These behaviors are either of the person performing the action or any targets.
-#define BEHAVIOR_IMMOBILE    (1<<18) // You cannot move the person while this action is being performed
+
+/// You cannot move the person while this action is being performed
+#define BEHAVIOR_IMMOBILE (1<<18)
 
 // *************************************** //
 //    END DO_AFTER FLAGS //
 // *************************************** //
 
 // MATERIALS
-#define MATERIAL_METAL  "metal"
-#define MATERIAL_PLASTEEL  "plasteel"
-#define MATERIAL_WOOD   "wood plank"
-#define MATERIAL_CRYSTAL   "plasmagas"
+
+#define MATERIAL_METAL "metal"
+#define MATERIAL_PLASTEEL "plasteel"
+#define MATERIAL_WOOD "wood plank"
+#define MATERIAL_CRYSTAL "plasmagas"
 
 // SIZES FOR ITEMS, use it for w_class
-#define SIZE_TINY    1    // Helmets
-#define SIZE_SMALL   2    // Armour, pouch slots/pockets
-#define SIZE_MEDIUM  3    // Backpacks, belts. Size of pistols, general magazines
-#define SIZE_LARGE   4    // Size of rifles, SMGs
-#define SIZE_HUGE    5    // Using Large does the same job
+
+/// Helmets
+#define SIZE_TINY 1
+/// Armour, pouch slots/pockets
+#define SIZE_SMALL 2
+/// Backpacks, belts. Size of pistols, general magazines
+#define SIZE_MEDIUM 3
+/// Size of rifles, SMGs
+#define SIZE_LARGE 4
+/// Using Large does the same job
+#define SIZE_HUGE 5
+
 #define SIZE_MASSIVE 6
 
 // Stack amounts

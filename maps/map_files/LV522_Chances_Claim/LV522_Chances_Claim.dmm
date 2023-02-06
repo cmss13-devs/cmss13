@@ -2316,8 +2316,6 @@
 /obj/structure/machinery/door/airlock/almayer/medical/glass{
 	dir = 1;
 	name = "\improper Chunk 'N Dump";
-	req_access = null;
-	req_one_access = null
 	},
 /turf/open/floor/strata{
 	icon_state = "white_cyan1"
@@ -2650,7 +2648,7 @@
 	},
 /area/lv522/indoors/c_block/cargo)
 "bDR" = (
-/obj/item/explosive/grenade/HE,
+/obj/item/explosive/grenade/high_explosive,
 /turf/open/floor/prison,
 /area/lv522/indoors/a_block/kitchen)
 "bDS" = (
@@ -3677,6 +3675,7 @@
 /area/lv522/outdoors/colony_streets/east_central_street)
 "cfd" = (
 /obj/structure/surface/table/almayer,
+/obj/structure/machinery/recharger,
 /obj/effect/spawner/random/powercell,
 /turf/open/floor/prison,
 /area/lv522/indoors/lone_buildings/engineering)
@@ -4014,7 +4013,7 @@
 /obj/structure/barricade/deployable{
 	dir = 8
 	},
-/obj/item/ammo_magazine/rifle/explosive{
+/obj/item/ammo_magazine/rifle/heap{
 	current_rounds = 0
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -8426,7 +8425,7 @@
 	},
 /area/lv522/outdoors/colony_streets/central_streets)
 "ejy" = (
-/obj/item/ammo_magazine/rifle/explosive{
+/obj/item/ammo_magazine/rifle/heap{
 	current_rounds = 0
 	},
 /turf/open/floor/prison{
@@ -9654,7 +9653,6 @@
 "eLZ" = (
 /obj/structure/machinery/door/airlock/almayer/engineering{
 	name = "\improper Cargo Bay Quartermaster";
-	req_one_access = null
 	},
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -12358,12 +12356,12 @@
 /area/lv522/indoors/c_block/mining)
 "gbk" = (
 /obj/structure/surface/table/almayer,
-/obj/item/ammo_magazine/rifle/explosive{
+/obj/item/ammo_magazine/rifle/heap{
 	current_rounds = 0;
 	pixel_x = -3;
 	pixel_y = 5
 	},
-/obj/item/ammo_magazine/rifle/explosive{
+/obj/item/ammo_magazine/rifle/heap{
 	current_rounds = 0;
 	pixel_x = 11;
 	pixel_y = -4
@@ -13271,10 +13269,8 @@
 /area/lv522/indoors/c_block/cargo)
 "gwR" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass{
-	icon_state = "door_locked";
-	locked = 1;
+	locked = 0;
 	name = "\improper Marshal Office Holding Cell";
-	req_access = null
 	},
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -13553,9 +13549,8 @@
 "gEA" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	dir = 8;
-	locked = 1;
+	locked = 0;
 	name = "\improper Marshall Head Office";
-	req_access = null
 	},
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -15501,7 +15496,7 @@
 "how" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	dir = 1;
-	name = "\improper Marshall Office";
+	name = "\improper Marshals Office";
 	req_access = null
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -16472,6 +16467,7 @@
 "hMd" = (
 /obj/structure/machinery/light,
 /obj/structure/surface/table/almayer,
+/obj/structure/machinery/recharger,
 /obj/item/clothing/glasses/kutjevo,
 /turf/open/floor/prison{
 	dir = 4;
@@ -17137,9 +17133,9 @@
 	name = "Display synthetic"
 	},
 /obj/structure/window/reinforced,
-/obj/item/clothing/under/marine/veteran/PMC,
-/obj/item/clothing/mask/gas/PMC,
-/obj/item/clothing/head/helmet/marine/veteran/PMC/leader{
+/obj/item/clothing/under/marine/veteran/pmc,
+/obj/item/clothing/mask/gas/pmc,
+/obj/item/clothing/head/helmet/marine/veteran/pmc/leader{
 	layer = 3.1;
 	pixel_y = 10
 	},
@@ -24841,7 +24837,7 @@
 	},
 /area/lv522/indoors/a_block/admin)
 "kVV" = (
-/obj/item/ammo_magazine/rifle/explosive{
+/obj/item/ammo_magazine/rifle/heap{
 	current_rounds = 0
 	},
 /turf/open/floor/prison,
@@ -25293,6 +25289,13 @@
 	icon_state = "cement2"
 	},
 /area/lv522/outdoors/p_w_rockies)
+"lfU" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/recharger,
+/turf/open/floor/plating{
+	icon_state = "platebot"
+	},
+/area/lv522/indoors/c_block/cargo)
 "lgf" = (
 /obj/structure/pipes/vents/pump,
 /turf/open/floor/corsat{
@@ -25469,7 +25472,7 @@
 	},
 /area/lv522/indoors/c_block/casino)
 "lkH" = (
-/obj/item/ammo_magazine/rifle/explosive{
+/obj/item/ammo_magazine/rifle/heap{
 	current_rounds = 0
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
@@ -26780,7 +26783,7 @@
 "lNb" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	dir = 8;
-	locked = 1;
+	locked = 0;
 	name = "\improper Wildcatters Office";
 	panel_open = 1
 	},
@@ -27694,7 +27697,7 @@
 /area/lv522/outdoors/colony_streets/south_east_street)
 "mji" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
-	locked = 1;
+	locked = 0;
 	name = "\improper Corporation Dome";
 	req_access_txt = "100"
 	},
@@ -29160,7 +29163,7 @@
 /area/lv522/indoors/a_block/dorms)
 "mPQ" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
-	locked = 1;
+	locked = 0;
 	welded = 1
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -30887,7 +30890,7 @@
 /turf/open/auto_turf/shale/layer0,
 /area/lv522/outdoors/w_rockies)
 "nCM" = (
-/obj/item/ammo_magazine/rifle/explosive{
+/obj/item/ammo_magazine/rifle/heap{
 	current_rounds = 0
 	},
 /turf/open/auto_turf/shale/layer0,
@@ -33309,7 +33312,7 @@
 /obj/structure/barricade/deployable{
 	dir = 8
 	},
-/obj/item/ammo_magazine/rifle/explosive{
+/obj/item/ammo_magazine/rifle/heap{
 	current_rounds = 0
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -36637,9 +36640,8 @@
 "pLN" = (
 /obj/structure/machinery/door/airlock/almayer/medical{
 	dir = 2;
-	locked = 1;
+	locked = 0;
 	name = "Medical Airlock";
-	req_one_access = null
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/corsat{
@@ -36706,9 +36708,8 @@
 "pMt" = (
 /obj/structure/machinery/door/airlock/almayer/medical{
 	dir = 2;
-	locked = 1;
+	locked = 0;
 	name = "Medical Airlock";
-	req_one_access = null
 	},
 /turf/open/floor/corsat{
 	icon_state = "marked"
@@ -37313,8 +37314,9 @@
 /area/lv522/indoors/a_block/admin)
 "pXk" = (
 /obj/structure/surface/table/almayer,
-/obj/effect/spawner/random/powercell,
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random/powercell,
+/obj/structure/machinery/cell_charger,
 /turf/open/floor/prison{
 	dir = 4;
 	icon_state = "darkyellowfull2";
@@ -37767,6 +37769,7 @@
 	pixel_y = 4
 	},
 /obj/structure/machinery/light,
+/obj/structure/machinery/recharger,
 /turf/open/floor/prison{
 	dir = 4;
 	icon_state = "darkyellowfull2";
@@ -38236,6 +38239,12 @@
 	},
 /turf/open/floor/prison,
 /area/lv522/indoors/a_block/dorm_north)
+"qsr" = (
+/obj/structure/surface/table/almayer,
+/obj/item/reagent_container/glass/beaker/vial,
+/obj/structure/machinery/cell_charger,
+/turf/open/floor/plating,
+/area/lv522/indoors/c_block/cargo)
 "qst" = (
 /obj/structure/girder/displaced,
 /turf/open/floor/plating,
@@ -38585,7 +38594,7 @@
 "qzp" = (
 /obj/structure/machinery/door/airlock/dropship_hatch/two{
 	dir = 8;
-	locked = 1
+	locked = 0
 	},
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin3";
@@ -38875,7 +38884,7 @@
 	},
 /area/lv522/indoors/a_block/hallway)
 "qDr" = (
-/obj/item/ammo_magazine/rifle/explosive{
+/obj/item/ammo_magazine/rifle/heap{
 	current_rounds = 0
 	},
 /turf/open/floor/prison,
@@ -39593,7 +39602,7 @@
 "qPS" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 1;
-	locked = 1
+	locked = 0
 	},
 /turf/open/floor/corsat{
 	icon_state = "marked"
@@ -39778,7 +39787,7 @@
 	},
 /area/lv522/indoors/c_block/casino)
 "qSw" = (
-/obj/item/ammo_magazine/rifle/explosive{
+/obj/item/ammo_magazine/rifle/heap{
 	current_rounds = 0
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -39998,7 +40007,7 @@
 /obj/item/weapon/gun/rifle/m41a{
 	current_mag = null
 	},
-/obj/item/ammo_magazine/rifle/explosive{
+/obj/item/ammo_magazine/rifle/heap{
 	current_rounds = 0
 	},
 /turf/open/auto_turf/shale/layer0,
@@ -40254,7 +40263,7 @@
 "qZY" = (
 /obj/structure/machinery/door/airlock/dropship_hatch/two{
 	dir = 8;
-	locked = 1
+	locked = 0
 	},
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	dir = 4;
@@ -40769,7 +40778,7 @@
 	},
 /area/lv522/indoors/a_block/bridges/op_centre)
 "rig" = (
-/obj/item/ammo_magazine/rifle/explosive{
+/obj/item/ammo_magazine/rifle/heap{
 	current_rounds = 0
 	},
 /turf/open/shuttle/dropship{
@@ -43041,7 +43050,7 @@
 	},
 /area/lv522/landing_zone_forecon/UD6_Typhoon)
 "scw" = (
-/obj/item/ammo_magazine/rifle/explosive{
+/obj/item/ammo_magazine/rifle/heap{
 	current_rounds = 0
 	},
 /turf/open/shuttle/dropship{
@@ -44828,7 +44837,7 @@
 "sPp" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	dir = 1;
-	name = "\improper Marshall Office Armory";
+	name = "\improper Marshals Office Armory";
 	req_access = null
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -46519,7 +46528,7 @@
 /obj/structure/barricade/deployable{
 	dir = 8
 	},
-/obj/item/ammo_magazine/rifle/explosive{
+/obj/item/ammo_magazine/rifle/heap{
 	current_rounds = 0
 	},
 /turf/open/auto_turf/shale/layer0,
@@ -46764,7 +46773,7 @@
 	spawnkey = 0
 	},
 /obj/item/storage/fancy/cigar,
-/obj/item/clothing/head/helmet/marine/veteran/PMC,
+/obj/item/clothing/head/helmet/marine/veteran/pmc,
 /obj/item/m_gift,
 /obj/item/coin/diamond,
 /turf/open/floor/strata{
@@ -46853,7 +46862,7 @@
 /area/lv522/outdoors/colony_streets/north_street)
 "tGm" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
-	locked = 1;
+	locked = 0;
 	name = "\improper Corporate Liason"
 	},
 /turf/open/floor/corsat{
@@ -48488,7 +48497,7 @@
 "unE" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 2;
-	locked = 1
+	locked = 0
 	},
 /turf/open/floor/corsat{
 	icon_state = "marked"
@@ -50928,7 +50937,7 @@
 /turf/open/floor/prison,
 /area/lv522/indoors/a_block/dorms)
 "vjC" = (
-/obj/item/ammo_magazine/rifle/explosive{
+/obj/item/ammo_magazine/rifle/heap{
 	current_rounds = 0
 	},
 /turf/open/auto_turf/shale/layer0,
@@ -51080,7 +51089,7 @@
 /area/lv522/indoors/a_block/fitness)
 "vmp" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
-	locked = 1
+	locked = 0
 	},
 /turf/open/floor/corsat{
 	icon_state = "marked"
@@ -53825,7 +53834,7 @@
 "wmg" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	dir = 1;
-	locked = 1
+	locked = 0
 	},
 /turf/open/floor/corsat{
 	icon_state = "marked"
@@ -54951,7 +54960,7 @@
 	},
 /area/lv522/indoors/lone_buildings/spaceport)
 "wHz" = (
-/obj/item/clothing/shoes/veteran/PMC{
+/obj/item/clothing/shoes/veteran/pmc{
 	name = "steel toe boots"
 	},
 /obj/structure/machinery/light,
@@ -58457,10 +58466,8 @@
 /area/lv522/landing_zone_2/ceiling)
 "yat" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass{
-	icon_state = "door_locked";
-	locked = 1;
+	locked = 0;
 	name = "\improper Marshall Office Armory";
-	req_access = null
 	},
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -78996,7 +79003,7 @@ tUg
 vVS
 afI
 oCi
-wFT
+lfU
 qvN
 eHF
 hOB
@@ -79212,7 +79219,7 @@ izz
 fwT
 ild
 jwM
-mgB
+qsr
 jmG
 vVS
 ild

@@ -67,19 +67,20 @@
 
 /obj/item/clothing/mask/balaclava
 	name = "balaclava"
-	desc = "LOADSAMONEY"
+	desc = "A basic single eye-hole balaclava, available in almost every sporting goods, outdoor supply, or military surplus store in existance, protects your face from the cold almost as well as it conceals it. This one is in a standard black color."
 	icon_state = "balaclava"
 	item_state = "balaclava"
-	flags_inv_hide = HIDEFACE|HIDEALLHAIR
-	flags_armor_protection = BODY_FLAG_FACE
+	flags_inventory = COVERMOUTH|ALLOWREBREATH|ALLOWCPR
+	flags_inv_hide = HIDEFACE|HIDEALLHAIR|HIDEEARS
+	flags_cold_protection = BODY_FLAG_HEAD
+	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
 	w_class = SIZE_SMALL
 
 /obj/item/clothing/mask/balaclava/tactical
 	name = "green balaclava"
-	desc = "Designed to both hide identities and keep your face comfy and warm."
+	desc = "A basic single eye-hole balaclava, available in almost every sporting goods, outdoor supply, or military surplus store in existance, protects your face from the cold almost as well as it conceals it. This one is in a non-standard green color."
 	icon_state = "swatclava"
-	item_state = "balaclava"
-	w_class = SIZE_SMALL
+	item_state = "swatclava"
 
 /obj/item/clothing/mask/luchador
 	name = "Luchador Mask"
@@ -89,7 +90,7 @@
 	flags_inv_hide = HIDEFACE|HIDEALLHAIR
 	flags_armor_protection = BODY_FLAG_HEAD|BODY_FLAG_FACE
 	w_class = SIZE_SMALL
-	siemens_coefficient = 3.0
+	siemens_coefficient = 3
 
 /obj/item/clothing/mask/luchador/tecnicos
 	name = "Tecnicos Mask"

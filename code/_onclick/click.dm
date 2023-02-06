@@ -102,8 +102,8 @@
 		mode()
 		return
 
-	//Self-harm preference. isXeno check because xeno clicks on self are redirected to the turf below the pointer.
-	if(A == src && client.prefs && client.prefs.toggle_prefs & TOGGLE_IGNORE_SELF && src.a_intent != INTENT_HELP && !isXeno(src))
+	//Self-harm preference. isxeno check because xeno clicks on self are redirected to the turf below the pointer.
+	if(A == src && client.prefs && client.prefs.toggle_prefs & TOGGLE_IGNORE_SELF && src.a_intent != INTENT_HELP && !isxeno(src))
 		if(W)
 			if(W.force && (!W || !(W.flags_item & (NOBLUDGEON|ITEM_ABSTRACT))))
 				if(world.time % 3)
@@ -137,7 +137,7 @@
 	SEND_SIGNAL(src, COMSIG_MOB_POST_CLICK, A, mods)
 	return
 
-/mob/proc/click_adjacent(atom/A, var/obj/item/W, mods)
+/mob/proc/click_adjacent(atom/A, obj/item/W, mods)
 	if(W)
 		if(W.attack_speed && !src.contains(A)) //Not being worn or carried in the user's inventory somewhere, including internal storages.
 			next_move += W.attack_speed
@@ -181,10 +181,10 @@
 	* mob/RangedAttack(atom,params) - used only ranged, only used for tk and laser eyes but could be changed
 */
 
-/mob/proc/click(var/atom/A, var/list/mods)
+/mob/proc/click(atom/A, list/mods)
 	return FALSE
 
-/atom/proc/clicked(var/mob/user, var/list/mods)
+/atom/proc/clicked(mob/user, list/mods)
 	if (mods["shift"] && !mods["middle"])
 		if(can_examine(user))
 			examine(user)
@@ -198,7 +198,7 @@
 		return TRUE
 	return FALSE
 
-/atom/movable/clicked(var/mob/user, var/list/mods)
+/atom/movable/clicked(mob/user, list/mods)
 	if (..())
 		return TRUE
 
@@ -218,7 +218,7 @@
 	proximity_flag is not currently passed to attack_hand, and is instead used
 	in human click code to allow glove touches only at melee range.
 */
-/mob/proc/UnarmedAttack(var/atom/A, var/proximity_flag, click_parameters)
+/mob/proc/UnarmedAttack(atom/A, proximity_flag, click_parameters)
 	return
 
 /*
@@ -229,7 +229,7 @@
 	for things like ranged glove touches, spitting alien acid/neurotoxin,
 	animals lunging, etc.
 */
-/mob/proc/RangedAttack(var/atom/A, var/params)
+/mob/proc/RangedAttack(atom/A, params)
 	return
 
 /*
@@ -238,7 +238,7 @@
 	Used when you are handcuffed and click things.
 	Not currently used by anything but could easily be.
 */
-/mob/proc/RestrainedClickOn(var/atom/A)
+/mob/proc/RestrainedClickOn(atom/A)
 	return
 
 /*
@@ -248,7 +248,7 @@
 */
 
 // Simple helper to face what you clicked on, in case it should be needed in more than one place
-/mob/proc/face_atom(var/atom/A)
+/mob/proc/face_atom(atom/A)
 
 	if( !A || !x || !y || !A.x || !A.y ) return
 	var/dx = A.x - x
@@ -280,7 +280,7 @@
 	if(!specific_direction)
 		specific_direction = direction
 
-	facedir(direction, specific_direction)
+	face_dir(direction, specific_direction)
 
 
 
@@ -295,7 +295,7 @@
 	icon_state = "catcher"
 	layer = 0
 	plane = -99
-	mouse_opacity = 2
+	mouse_opacity = MOUSE_OPACITY_OPAQUE
 	screen_loc = "CENTER-7,CENTER-7"
 	flags_atom = NOINTERACT
 
@@ -317,7 +317,7 @@
 
 
 
-/client/proc/change_view(new_size, var/atom/source)
+/client/proc/change_view(new_size, atom/source)
 	if(SEND_SIGNAL(mob, COMSIG_MOB_CHANGE_VIEW, new_size) & COMPONENT_OVERRIDE_VIEW)
 		return TRUE
 	view = mob.check_view_change(new_size, source)

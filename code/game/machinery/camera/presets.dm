@@ -26,7 +26,7 @@
 	name = "laser camera"
 	invuln = TRUE
 	icon_state = ""
-	mouse_opacity = 0
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	network = list(CAMERA_NET_LASER_TARGETS)
 	unslashable = TRUE
 	unacidable = TRUE
@@ -61,7 +61,7 @@
 	icon_state = "vehicle_camera"
 	network = list(CAMERA_NET_VEHICLE)
 
-/obj/structure/machinery/camera/vehicle/toggle_cam_status(var/on = FALSE)
+/obj/structure/machinery/camera/vehicle/toggle_cam_status(on = FALSE)
 	if(on)
 		status = TRUE
 	else
@@ -104,7 +104,7 @@
 	unacidable = TRUE
 	network = list(CAMERA_NET_RESEARCH, CAMERA_NET_CONTAINMENT)
 
-/obj/structure/machinery/camera/autoname/almayer/containment/attack_alien(mob/living/carbon/Xenomorph/M)
+/obj/structure/machinery/camera/autoname/almayer/containment/attack_alien(mob/living/carbon/xenomorph/M)
 	return
 
 /obj/structure/machinery/camera/autoname/almayer/containment/hidden
@@ -116,7 +116,7 @@
 	name = "landing zone camera"
 	invuln = TRUE
 	icon_state = "editor_icon"//for the map editor
-	mouse_opacity = 0
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	network = list(CAMERA_NET_LANDING_ZONES)
 	invisibility = 101 //fuck you init()
 

@@ -3,7 +3,7 @@
 	desc = "What could have done this?"
 	icon = 'icons/effects/new_acid.dmi'
 	icon_state = "hole_0"
-	anchored = 1
+	anchored = TRUE
 	unacidable = TRUE
 	layer = LOWER_ITEM_LAYER
 	var/turf/closed/wall/holed_wall
@@ -14,7 +14,7 @@
 		var/turf/closed/wall/W = loc
 		W.acided_hole = src
 		holed_wall = W
-		holed_wall.opacity = 0
+		holed_wall.opacity = FALSE
 		setDir(W.acided_hole_dir)
 
 /obj/effect/acid_hole/Destroy()
@@ -35,11 +35,11 @@
 	if (!holed_wall)
 		return
 
-	if(M == user && isXeno(user))
+	if(M == user && isxeno(user))
 		use_wall_hole(user)
 
 
-/obj/effect/acid_hole/attack_alien(mob/living/carbon/Xenomorph/user)
+/obj/effect/acid_hole/attack_alien(mob/living/carbon/xenomorph/user)
 	if (!holed_wall)
 		qdel(src) //no wall?! then cease existence...
 		return
@@ -49,7 +49,7 @@
 			expand_hole(user)
 			return XENO_NO_DELAY_ACTION
 
-/obj/effect/acid_hole/proc/expand_hole(mob/living/carbon/Xenomorph/user)
+/obj/effect/acid_hole/proc/expand_hole(mob/living/carbon/xenomorph/user)
 	if(user.action_busy || user.lying)
 		return
 
@@ -106,7 +106,12 @@
 				to_chat(user, SPAN_WARNING("You release what you're pulling to fit into the tunnel!"))
 			user.forceMove(T)
 
+			// If the wall is on fire, ignite the xeno.
+			var/turf/wall = get_turf(src)
+			var/obj/flamer_fire/fire = locate(/obj/flamer_fire) in wall
 
+			if (fire)
+				user.handle_flamer_fire_crossed(fire)
 
 
 //Throwing Shiet

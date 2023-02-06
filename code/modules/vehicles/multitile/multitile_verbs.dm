@@ -135,48 +135,63 @@
 	if(!seat)
 		return
 
-	var/dat = "[V]<br>"
-	dat += "Current armor resistances:<br>"
+	V.tgui_interact(user)
+
+// BEGIN TGUI \\
+
+/obj/vehicle/multitile/tgui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "VehicleStatus", "[name]")
+		ui.open()
+
+/obj/vehicle/multitile/ui_data(mob/user)
+	var/list/data = list()
+
 	var/list/resist_name = list("Bio" = "acid", "Slash" = "slash", "Bullet" = "bullet", "Expl" = "explosive", "Blunt" = "blunt")
+	var/list/resist_data_list = list()
 
 	for(var/i in resist_name)
-		var/resist = 1 - LAZYACCESS(V.dmg_multipliers, LAZYACCESS(resist_name, i))
-		if(resist > 0)
-			dat += SPAN_HELPFUL("[resist * 100]% [i] ")
-		else
-			dat += "<font color=\"red\">[resist * 100]% [i] </font>"
+		var/resist = 1 - LAZYACCESS(dmg_multipliers, LAZYACCESS(resist_name, i))
+		resist_data_list += list(list(
+			"name" = i,
+			"pct" = resist
+		))
 
-	dat += "<br>"
+	data["resistance_data"] = resist_data_list
+	data["integrity"] = round(100 * health / initial(health))
+	data["door_locked"] = door_locked
+	data["total_passenger_slots"] = interior.passengers_slots
+	data["total_taken_slots"] = interior.passengers_taken_slots
 
-	if(V.health <= 0)
-		dat += "Hull integrity: <font color=\"red\">\[CRITICAL FAILURE\]</font>"
-	else
-		dat += "Hull integrity: [round(100.0 * V.health / initial(V.health))]%"
+	var/list/passenger_category_data_list = list()
 
-	var/list/hps = V.hardpoints.Copy()
+	for(var/datum/role_reserved_slots/RRS in interior.role_reserved_slots)
+		passenger_category_data_list += list(list(
+			"name" = RRS.category_name,
+			"taken" = RRS.taken,
+			"total" = RRS.total
+		))
+
+	data["passenger_categories_data"] = passenger_category_data_list
+
+	var/list/hps = hardpoints.Copy()
+	var/list/hardpoint_data_list = list()
 
 	for(var/obj/item/hardpoint/holder/H in hps)
-		dat += H.get_hardpoint_info()
+		hardpoint_data_list += H.get_tgui_info()
 		LAZYREMOVE(hps, H)
 	for(var/obj/item/hardpoint/H in hps)
-		dat += H.get_hardpoint_info()
+		hardpoint_data_list += list(H.get_tgui_info())
 
-	dat += "<hr>"
+	data["hardpoint_data"] = hardpoint_data_list
 
-	if(V.health <= 0)
-		dat += "Doors locks: <font color=\"red\">BROKEN</font>.<br>"
-	else
-		dat += "Doors locks: [V.door_locked ? "<font color=\"green\">Enabled</font>" : "<font color=\"red\">Disabled</font>"].<br>"
+	return data
 
-	V.interior.update_passenger_count()
-	dat += "Common passengers capacity: [V.interior.passengers_taken_slots]/[V.interior.passengers_slots].<br>"
+/obj/vehicle/multitile/ui_state(mob/user)
+	return GLOB.not_incapacitated_state
 
-	for(var/datum/role_reserved_slots/RRS in V.interior.role_reserved_slots)
-		dat += "[RRS.category_name] passengers capacity: [RRS.taken]/[RRS.total].<br>"
-
-	show_browser(user, dat, "Vehicle Status Info", "vehicle_info")
-	onclose(user, "vehicle_info")
-	return
+// END TGUI \\
 
 //opens vehicle controls guide, that contains description of all verbs and shortcuts in it
 /obj/vehicle/multitile/proc/open_controls_guide()

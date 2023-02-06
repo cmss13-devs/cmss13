@@ -10,7 +10,7 @@
 	Note that AI have no need for the adjacency proc, and so this proc is a lot cleaner.
 */
 
-/mob/click(var/atom/A, var/list/mods)
+/mob/click(atom/A, list/mods)
 	..()
 
 	if(!client || !client.remote_control)

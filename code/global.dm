@@ -24,7 +24,9 @@
 #define R_NOLOCK (1<<17)
 #define R_EVENT (1<<18)
 
-#define R_EVERYTHING ((1<<19)-1) //the sum of all other rank permissions
+/// The sum of all other rank permissions.
+#define R_EVERYTHING ((1<<19)-1)
+
 // 512.1430 increases maximum bit flags from 16 to 24, so the following flags should be available for future changes:
 //=================================================
 
@@ -44,6 +46,7 @@ var/list/paper_tag_whitelist = list("center","p","div","span","h1","h2","h3","h4
 ///////////////
 
 var/diary = null
+var/tgui_diary = null
 var/round_stats = null
 var/round_scheduler_stats = null
 var/mutator_logs = null
@@ -51,11 +54,13 @@ var/href_logfile = null
 var/command_name = "Central Command"
 var/station_name = "[MAIN_SHIP_NAME]"
 var/game_version = "Colonial Marines"
-var/game_year = "2182"
+var/game_year = 2182
 
-var/going = 1.0
+var/going = 1
 var/master_mode = "Distress Signal"
-var/secret_force_mode = "secret" // if this is anything but "secret", the secret rotation will forceably choose this mode
+
+/// If this is anything but "secret", the secret rotation will forceably choose this mode.
+var/secret_force_mode = "secret"
 
 var/host = null
 var/ooc_allowed = 1
@@ -83,6 +88,8 @@ var/VehicleGearConsole
 
 //Spawnpoints.
 var/list/fallen_list = list()
+/// This is for dogtags placed on crosses- they will show up at the end-round memorial.
+var/list/fallen_list_cross = list()
 var/list/cardinal = list(NORTH, SOUTH, EAST, WEST)
 var/list/diagonals = list(NORTHEAST, NORTHWEST, SOUTHEAST, SOUTHWEST)
 var/list/alldirs = list(NORTH, SOUTH, EAST, WEST, NORTHEAST, NORTHWEST, SOUTHEAST, SOUTHWEST)
@@ -119,8 +126,10 @@ var/list/AAlarmWireColorToIndex
 #define MAX_BOOK_MESSAGE_LEN 9216
 #define MAX_NAME_LEN 26
 
-#define shuttle_time_in_station 3 MINUTES // 3 minutes in the station
-#define shuttle_time_to_arrive 10 MINUTES // 10 minutes to arrive
+/// 3 minutes in the station.
+#define shuttle_time_in_station 3 MINUTES
+/// 10 minutes to arrive.
+#define shuttle_time_to_arrive 10 MINUTES
 
 	// MySQL configuration
 
@@ -151,8 +160,11 @@ var/destroy_cancel = 0
 
 //Coordinate obsfucator
 //Used by the rangefinders and linked systems to prevent coords collection/prefiring
-var/global/obfs_x = 0 //A number between -500 and 500
-var/global/obfs_y = 0 //A number between -500 and 500
+
+/// A number between -500 and 500.
+var/global/obfs_x = 0
+/// A number between -500 and 500.
+var/global/obfs_y = 0
 
 // Which lobby art is on display
 // This is updated by the lobby art turf when it initializes

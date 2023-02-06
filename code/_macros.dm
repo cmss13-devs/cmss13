@@ -1,5 +1,7 @@
 #define to_world_log(message)    world.log << (message)
-#define debug_msg(message)   to_world(message) // A message define designed to be easily found and deleted
+
+/// A message define designed to be easily found and deleted
+#define debug_msg(message)   to_world(message)
 #define debug_log(message)   to_world_log(message)
 #define sound_to(target, sound)  target << (sound)
 #define to_file(file_entry, source_var)  file_entry << (source_var)
@@ -31,12 +33,14 @@
 // Ensures L is initailized after this point
 #define LAZYINITLIST(L) if (!L) L = list()
 // Sets a L back to null iff it is empty
-#define UNSETEMPTY(L) if (L && !L.len) L = null
+#define UNSETEMPTY(L) if (L && !length(L)) L = null
 // Removes I from list L, and sets I to null if it is now empty
 #define LAZYREMOVE(L, I) if(L) { L -= I; if(!length(L)) { L = null; } }
 // Adds I to L, initializing L if necessary
 #define LAZYADD(L, I) if(!L) { L = list(); } L += I;
 #define LAZYOR(L, I) if(!L) { L = list(); } L |= I;
+///Returns the key of the submitted item in the list
+#define LAZYFIND(L, V) (L ? L.Find(V) : 0)
 // Insert I into L at position X, initializing L if necessary
 #define LAZYINSERT(L, I, X) if(!L) { L = list(); } L.Insert(X, I);
 // Adds I to L, initializing L if necessary, if I is not already in L

@@ -159,6 +159,10 @@
 #define TRAIT_SPOTTER_LAZED "t_spotter_lazed"
 /// If the mob has ear protection. Protects from external ear damage effects. Includes explosions, firing the RPG, screeching DEAFNESS only, and flashbangs.
 #define TRAIT_EAR_PROTECTION "t_ear_protection"
+/// If the mob is Santa. Enough said.
+#define TRAIT_SANTA "t_santa"
+/// If the mob is wearing bimex glasses. Used for badass laser deflection flavor text.
+#define TRAIT_BIMEX "t_bimex"
 
 // -- ability traits --
 /// Xenos with this trait cannot have plasma transfered to them
@@ -182,8 +186,14 @@
 // GUN TRAITS
 #define TRAIT_GUN_SILENCED "t_gun_silenced"
 
+// Miscellaneous item traits.
+// Do NOT bloat this category, if needed make a new category (like shoe traits, xeno item traits...)
+
 //If an item with this trait is in an ear slot, no other item with this trait can fit in the other ear slot
 #define TRAIT_ITEM_EAR_EXCLUSIVE "t_item_ear_exclusive"
+
+//This item will force clickdrag to work even if the preference to disable is enabled. (Full-auto items)
+#define TRAIT_OVERRIDE_CLICKDRAG "t_override_clickdrag"
 
 //List of all traits
 GLOBAL_LIST_INIT(mob_traits, list(
@@ -199,6 +209,70 @@ GLOBAL_LIST_INIT(mob_traits, list(
 	TRAIT_DEXTROUS,
 	TRAIT_REAGENT_SCANNER
 ))
+
+/*
+	FUN ZONE OF ADMIN LISTINGS
+	Try to keep this in sync with __DEFINES/traits.dm
+	quirks have it's own panel so we don't need them here.
+*/
+GLOBAL_LIST_INIT(traits_by_type, list(
+	/mob = list(
+		"TRAIT_YAUTJA_TECH" = TRAIT_YAUTJA_TECH,
+		"TRAIT_SUPER_STRONG" = TRAIT_SUPER_STRONG,
+		"TRAIT_FOREIGN_BIO" = TRAIT_FOREIGN_BIO,
+		"TRAIT_INTENT_EYES" = TRAIT_INTENT_EYES,
+		"TRAIT_INFILTRATOR_SYNTH" = TRAIT_INFILTRATOR_SYNTH,
+		"TRAIT_NESTED" = TRAIT_NESTED,
+		"TRAIT_CRAWLER" = TRAIT_CRAWLER,
+		"TRAIT_SIMPLE_DESC" = TRAIT_SIMPLE_DESC,
+		"TRAIT_TWOBORE_TRAINING" = TRAIT_TWOBORE_TRAINING,
+		"TRAIT_NEARSIGHTED_EQUIPMENT" = TRAIT_NEARSIGHTED_EQUIPMENT,
+		"TRAIT_DEXTROUS" = TRAIT_DEXTROUS,
+		"TRAIT_CHARGING" = TRAIT_CHARGING,
+		"TRAIT_LEADERSHIP" = TRAIT_LEADERSHIP,
+		"TRAIT_REAGENT_SCANNER" = TRAIT_REAGENT_SCANNER,
+		"TRAIT_SPOTTER_LAZED" = TRAIT_SPOTTER_LAZED,
+		"TRAIT_EAR_PROTECTION" = TRAIT_EAR_PROTECTION,
+		"TRAIT_SANTA" = TRAIT_SANTA,
+		"TRAIT_BIMEX" = TRAIT_BIMEX,
+	),
+	/mob/living/carbon/xenomorph = list(
+		"TRAIT_ABILITY_NO_PLASMA_TRANSFER" = TRAIT_ABILITY_NO_PLASMA_TRANSFER,
+		"TRAIT_ABILITY_OVIPOSITOR" = TRAIT_ABILITY_OVIPOSITOR,
+	),
+	/datum/hive_status = list(
+		"TRAIT_XENONID" = TRAIT_XENONID,
+		"TRAIT_NO_HIVE_DELAY" = TRAIT_NO_HIVE_DELAY,
+		"TRAIT_NO_COLOR" = TRAIT_NO_COLOR,
+	),
+	/obj/item = list(
+		"TRAIT_TOOL_SCREWDRIVER" = TRAIT_TOOL_SCREWDRIVER,
+		"TRAIT_TOOL_CROWBAR" = TRAIT_TOOL_CROWBAR,
+		"TRAIT_TOOL_WIRECUTTERS" = TRAIT_TOOL_WIRECUTTERS,
+		"TRAIT_TOOL_WRENCH" = TRAIT_TOOL_WRENCH,
+		"TRAIT_TOOL_MULTITOOL" = TRAIT_TOOL_MULTITOOL,
+		"TRAIT_TOOL_BLOWTORCH" = TRAIT_TOOL_BLOWTORCH,
+		"TRAIT_TOOL_SIMPLE_BLOWTORCH" = TRAIT_TOOL_SIMPLE_BLOWTORCH,
+		"TRAIT_TOOL_PEN" = TRAIT_TOOL_PEN,
+		"TRAIT_ITEM_EAR_EXCLUSIVE" = TRAIT_ITEM_EAR_EXCLUSIVE,
+		"TRAIT_OVERRIDE_CLICKDRAG" = TRAIT_OVERRIDE_CLICKDRAG,
+	),
+	/obj/item/weapon/gun = list(
+		"TRAIT_GUN_SILENCED" = TRAIT_GUN_SILENCED,
+	),
+))
+
+/// value -> trait name, generated on use from trait_by_type global
+GLOBAL_LIST(trait_name_map)
+
+/proc/generate_trait_name_map()
+	. = list()
+	for(var/key in GLOB.traits_by_type)
+		for(var/tname in GLOB.traits_by_type[key])
+			var/val = GLOB.traits_by_type[key][tname]
+			.[val] = tname
+
+
 
 //trait SOURCES
 /// Example trait source
@@ -227,3 +301,6 @@ GLOBAL_LIST_INIT(mob_traits, list(
 #define TRAIT_SOURCE_ABILITY(ability) "t_s_ability_[ability]"
 ///Status trait forced by the xeno action charge
 #define TRAIT_SOURCE_XENO_ACTION_CHARGE "t_s_xeno_action_charge"
+
+///Status trait from weapons?? buh
+#define TRAIT_SOURCE_WEAPON "t_s_weapon"

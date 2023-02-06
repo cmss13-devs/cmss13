@@ -3,16 +3,16 @@
 	icon = 'icons/obj/structures/props/stationobjs.dmi'
 	icon_state = "showcase_1"
 	desc = "A stand with the empty body of a cyborg bolted to it."
-	density = 1
-	anchored = 1
+	density = TRUE
+	anchored = TRUE
 	health = 250
 
-/obj/structure/showcase/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/obj/structure/showcase/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_can_pass_all = PASS_HIGH_OVER_ONLY
 
-/obj/structure/showcase/bullet_act(var/obj/item/projectile/P)
+/obj/structure/showcase/bullet_act(obj/item/projectile/P)
 	var/damage = P.damage
 	health -= damage
 	..()
@@ -48,11 +48,11 @@
 
 /obj/structure/target
 	name = "shooting target"
-	anchored = 0
+	anchored = FALSE
 	desc = "A shooting target."
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "target_a"
-	density = 0
+	density = FALSE
 	health = 5000
 
 /obj/structure/target/syndicate
@@ -69,8 +69,8 @@
 	name = "monorail track"
 	icon = 'icons/obj/structures/structures.dmi'
 	icon_state = "monorail"
-	density = 0
-	anchored = 1
+	density = FALSE
+	anchored = TRUE
 	layer = ATMOS_PIPE_LAYER + 0.01
 
 
@@ -139,13 +139,14 @@
 	icon = 'icons/obj/structures/structures.dmi'
 	desc = "Stairs.  You walk up and down them."
 	icon_state = "rampbottom"
+	gender = PLURAL
 	unslashable = TRUE
 	unacidable = TRUE
 	health = null
 	layer = TURF_LAYER
 	plane = FLOOR_PLANE
-	density = 0
-	opacity = 0
+	density = FALSE
+	opacity = FALSE
 
 /obj/structure/stairs/perspective //instance these for the required icons
 	icon = 'icons/obj/structures/stairs/perspective_stairs.dmi'
@@ -164,17 +165,17 @@
 	icon_state = "orebox0"
 	name = "ore box"
 	desc = "A heavy box used for storing ore."
-	density = 1
-	anchored = 0
+	density = TRUE
+	anchored = FALSE
 
-/obj/structure/ore_box/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/obj/structure/ore_box/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_can_pass_all = PASS_HIGH_OVER_ONLY|PASS_OVER_THROW_ITEM
 
 /obj/structure/computer3frame
-	density = 1
-	anchored = 0
+	density = TRUE
+	anchored = FALSE
 	name = "computer frame"
 	icon = 'icons/obj/structures/machinery/stock_parts.dmi'
 	icon_state = "0"

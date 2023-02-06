@@ -1,4 +1,4 @@
-/mob/proc/add_language(var/language)
+/mob/proc/add_language(language)
 	var/datum/language/new_language = GLOB.all_languages[language]
 
 	if(!istype(new_language) || (new_language in languages))
@@ -7,13 +7,13 @@
 	languages.Add(new_language)
 	return 1
 
-/mob/proc/set_languages(var/list/new_languages)
+/mob/proc/set_languages(list/new_languages)
 	languages = list()
 	for(var/language in new_languages)
 		add_language(language)
 
 
-/mob/proc/remove_language(var/rem_language)
+/mob/proc/remove_language(rem_language)
 	languages.Remove(GLOB.all_languages[rem_language])
 	return 0
 
@@ -31,27 +31,65 @@
 	set category = "IC"
 	set src = usr
 
-	var/dat
+	if(!mob_language_menu)
+		create_language_menu()
 
-	var/index = 1
-	for(var/datum/language/L as anything in languages)
-		dat += "<b>[L.name] (:[L.key])</b> ([index  == 1 ? "<b>Default Language</b>" : "<A href='?src=\ref[src];set_default_language=[L.key]'>Set As Default</A>"])<br/>[L.desc]<br/><br/>"
-		index++
+	mob_language_menu.tgui_interact(src)
 
-	show_browser(src, dat, "Known Languages", "checklanguage")
+/datum/language_menu
+	var/mob/target_mob
 
-/mob/Topic(href, href_list)
+/datum/language_menu/New(mob/target)
+	. = ..()
+	target_mob = target
+
+/datum/language_menu/Destroy(force, ...)
+	target_mob = null
+
+	SStgui.close_uis(src)
+	return ..()
+
+/datum/language_menu/tgui_interact(mob/user, datum/tgui/ui)
+	if(!target_mob)
+		return
+
+	ui = SStgui.try_update_ui(user, src, ui)
+	if (!ui)
+		ui = new(user, src, "LanguageMenu", "Language Menu")
+		ui.open()
+
+/datum/language_menu/ui_data(mob/user)
+	var/list/data = list()
+
+	var/list/languagedata = list()
+
+	for(var/datum/language/L as anything in target_mob.languages)
+		languagedata += list(list(
+			"name" = L.name,
+			"desc" = L.desc,
+			"key" = L.key
+		))
+
+	data["languages"] = languagedata
+
+	return data
+
+/datum/language_menu/ui_state(mob/user)
+	return GLOB.always_state
+
+/datum/language_menu/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 	if(.)
 		return
-	if(href_list["set_default_language"])
-		var/index = 1
-		for(var/datum/language/L as anything in languages)
-			if(L.key == href_list["set_default_language"])
-				var/language_holder = languages[1]
-				languages[1] = L
-				languages[index] = language_holder
-				break
-			index++
-		to_chat(src, SPAN_NOTICE("Your default language is now: <b>[languages[1].name]</b>"))
-		check_languages()
+
+	switch(action)
+		if("set_default_language")
+			var/index = 1
+			for(var/datum/language/L as anything in target_mob.languages)
+				if(L.key == params["key"])
+					var/language_holder = target_mob.languages[1]
+					target_mob.languages[1] = L
+					target_mob.languages[index] = language_holder
+					break
+				index++
+			. = TRUE

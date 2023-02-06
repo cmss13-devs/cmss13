@@ -45,7 +45,7 @@
 	projectile_target.IgniteMob(TRUE)
 	to_chat(projectile_target, SPAN_HIGHDANGER("You burst into flames!! Stop drop and roll!"))
 
-/datum/element/bullet_trait_incendiary/proc/ignite_xeno(datum/target, mob/living/carbon/Xenomorph/projectile_target, damage, damage_actual)
+/datum/element/bullet_trait_incendiary/proc/ignite_xeno(datum/target, mob/living/carbon/xenomorph/projectile_target, damage, damage_actual)
 	SIGNAL_HANDLER
 
 	if(projectile_target.caste.fire_immunity & FIRE_IMMUNITY_NO_IGNITE)

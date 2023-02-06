@@ -92,7 +92,7 @@
 
 
 /*
-/obj/limb/proc/get_icon(var/icon/race_icon, var/icon/deform_icon)
+/obj/limb/proc/get_icon(icon/race_icon, icon/deform_icon)
 	return icon('icons/mob/human.dmi',"blank")
 */
 
@@ -140,7 +140,7 @@
 		O.trace_chemicals[A.name] = 100
 
 //Adds autopsy data for used_weapon.
-/obj/limb/proc/add_autopsy_data(var/used_weapon, var/damage)
+/obj/limb/proc/add_autopsy_data(used_weapon, damage)
 	var/datum/autopsy_data/W = autopsy_data[used_weapon]
 	if(!W)
 		W = new()
@@ -249,9 +249,9 @@
  */
 /obj/limb/proc/take_damage(brute, burn, sharp, edge, used_weapon = null,\
 							list/forbidden_limbs = list(),
-							no_limb_loss, var/damage_source = "dismemberment",\
-							var/mob/attack_source = null,\
-							var/brute_reduced_by = -1, var/burn_reduced_by = -1)
+							no_limb_loss, damage_source = "dismemberment",\
+							mob/attack_source = null,\
+							brute_reduced_by = -1, burn_reduced_by = -1)
 	if((brute <= 0) && (burn <= 0))
 		return 0
 
@@ -353,7 +353,7 @@
 	var/no_perma_damage = owner.status_flags & NO_PERMANENT_DAMAGE
 	if(previous_brute > 0 && !is_ff && body_part != BODY_FLAG_CHEST && body_part != BODY_FLAG_GROIN && !no_limb_loss && !no_perma_damage)
 		var/obj/item/clothing/head/helmet/H = owner.head
-		if(!(body_part == BODY_FLAG_HEAD && istype(H) && !isSynth(owner))\
+		if(!(body_part == BODY_FLAG_HEAD && istype(H) && !issynth(owner))\
 			&& CONFIG_GET(flag/limbs_can_break)\
 			&& brute_dam >= max_damage * CONFIG_GET(number/organ_health_multiplier)\
 		)
@@ -448,7 +448,7 @@ This function completely restores a damaged organ to perfect condition.
 		wounds += I
 		owner.custom_pain("You feel something rip in your [display_name]!", 1)
 
-/obj/limb/proc/createwound(var/type = CUT, var/damage, var/is_ff = FALSE)
+/obj/limb/proc/createwound(type = CUT, damage, is_ff = FALSE)
 	if(!damage)
 		return
 
@@ -505,7 +505,7 @@ This function completely restores a damaged organ to perfect condition.
 			wounds += W
 
 ///Adds bleeding to the limb. Damage_amount lets you apply an amount worth of bleeding, otherwise it uses the given wound's damage.
-/obj/limb/proc/add_bleeding(var/datum/wound/W, var/internal = FALSE, damage_amount)
+/obj/limb/proc/add_bleeding(datum/wound/W, internal = FALSE, damage_amount)
 	if(!(SSticker.current_state >= GAME_STATE_PLAYING)) //If the game hasnt started, don't add bleed. Hacky fix to avoid having 100 bleed effect from roundstart.
 		return
 
@@ -530,7 +530,7 @@ This function completely restores a damaged organ to perfect condition.
 	bleeding_effects_list += bleeding_status
 
 
-/obj/limb/proc/remove_all_bleeding(var/external = FALSE, var/internal = FALSE)
+/obj/limb/proc/remove_all_bleeding(external = FALSE, internal = FALSE)
 	if(external)
 		for(var/datum/effects/bleeding/external/B in bleeding_effects_list)
 			qdel(B)
@@ -709,7 +709,7 @@ This function completely restores a damaged organ to perfect condition.
 	else
 		b_icon = B.icon_name
 
-	if(isSpeciesYautja(owner))
+	if(isspeciesyautja(owner))
 		e_icon = owner.ethnicity
 		b_icon = owner.body_type
 
@@ -774,7 +774,7 @@ This function completely restores a damaged organ to perfect condition.
 	for(var/obj/limb/O as anything in children)
 		O.setAmputatedTree()
 
-/mob/living/carbon/human/proc/remove_random_limb(var/delete_limb = 0)
+/mob/living/carbon/human/proc/remove_random_limb(delete_limb = 0)
 	var/list/limbs_to_remove = list()
 	for(var/obj/limb/E in limbs)
 		if(istype(E, /obj/limb/chest) || istype(E, /obj/limb/groin) || istype(E, /obj/limb/head))
@@ -795,7 +795,7 @@ This function completely restores a damaged organ to perfect condition.
 	owner.limbs_to_process -= src
 
 //Handles dismemberment
-/obj/limb/proc/droplimb(amputation, var/delete_limb = 0, var/cause, surgery_in_progress)
+/obj/limb/proc/droplimb(amputation, delete_limb = 0, cause, surgery_in_progress)
 	if(!owner)
 		return
 	if(status & LIMB_DESTROYED)
@@ -1050,7 +1050,7 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 		else
 			return FALSE
 
-/obj/limb/proc/fracture(var/bonebreak_probability)
+/obj/limb/proc/fracture(bonebreak_probability)
 	if(status & (LIMB_BROKEN|LIMB_DESTROYED|LIMB_ROBOT|LIMB_SYNTHSKIN))
 		if (knitting_time != -1)
 			knitting_time = -1
@@ -1095,7 +1095,7 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 			SPAN_WARNING("[owner] seems to withstand the blow!"),
 			SPAN_WARNING("Your [display_name] manages to withstand the blow!"))
 
-/obj/limb/proc/robotize(surgery_in_progress, uncalibrated, var/synth_skin)
+/obj/limb/proc/robotize(surgery_in_progress, uncalibrated, synth_skin)
 	if(synth_skin)
 		status = LIMB_SYNTHSKIN
 	else if(uncalibrated) //Newly-attached prosthetics need to be calibrated to function.
@@ -1145,7 +1145,7 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 		return prob(brute_dam + burn_dam)
 
 //for arms and hands
-/obj/limb/proc/process_grasp(var/obj/item/c_hand, var/hand_name)
+/obj/limb/proc/process_grasp(obj/item/c_hand, hand_name)
 	if (!c_hand)
 		return
 
@@ -1164,7 +1164,7 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 			spark_system.start()
 			QDEL_IN(spark_system, 1 SECONDS)
 
-/obj/limb/proc/embed(var/obj/item/W, var/silent = 0)
+/obj/limb/proc/embed(obj/item/W, silent = 0)
 	if(!W || QDELETED(W) || (W.flags_item & (NODROP|DELONDROP)) || W.embeddable == FALSE)
 		return
 	if(!silent)
@@ -1185,7 +1185,7 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 	if(W)
 		W.forceMove(owner)
 
-/obj/limb/proc/apply_splints(obj/item/stack/medical/splint/S, mob/living/user, mob/living/carbon/human/target, var/indestructible_splints = FALSE)
+/obj/limb/proc/apply_splints(obj/item/stack/medical/splint/S, mob/living/user, mob/living/carbon/human/target, indestructible_splints = FALSE)
 	if(!(status & LIMB_DESTROYED) && !(status & LIMB_SPLINTED))
 		var/time_to_take = 5 SECONDS
 		if (target == user)
@@ -1275,7 +1275,7 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 	body_part = BODY_FLAG_ARM_LEFT
 	has_stump_icon = TRUE
 
-/obj/limb/hand/l_hand/process()
+/obj/limb/arm/l_arm/process()
 	..()
 	process_grasp(owner.l_hand, "left hand")
 
@@ -1294,7 +1294,7 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 	body_part = BODY_FLAG_ARM_RIGHT
 	has_stump_icon = TRUE
 
-/obj/limb/hand/l_hand/process()
+/obj/limb/arm/r_arm/process()
 	..()
 	process_grasp(owner.r_hand, "right hand")
 
@@ -1329,7 +1329,7 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 	body_part = BODY_FLAG_HAND_RIGHT
 	has_stump_icon = TRUE
 
-/obj/limb/hand/l_hand/process()
+/obj/limb/hand/r_hand/process()
 	..()
 	process_grasp(owner.r_hand, "right hand")
 
@@ -1373,8 +1373,8 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 
 /obj/limb/head/take_damage(brute, burn, sharp, edge, used_weapon = null,\
 							list/forbidden_limbs = list(), no_limb_loss,\
-							var/mob/attack_source = null,\
-							var/brute_reduced_by = -1, var/burn_reduced_by = -1)
+							mob/attack_source = null,\
+							brute_reduced_by = -1, burn_reduced_by = -1)
 	. = ..()
 	if (!disfigured)
 		if (brute_dam > 50 || brute_dam > 40 && prob(50))
@@ -1382,7 +1382,7 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 		if (burn_dam > 40)
 			disfigure("burn")
 
-/obj/limb/head/proc/disfigure(var/type = "brute")
+/obj/limb/head/proc/disfigure(type = "brute")
 	if (disfigured)
 		return
 	if(type == "brute")

@@ -122,7 +122,7 @@
 
 	if(damage_to_nullify)
 		playsound(user, armor_hitsound, 25, TRUE)
-		P.play_damage_effect(user)
+		P.play_hit_effect(user)
 		return COMPONENT_CANCEL_BULLET_ACT
 
 /obj/item/clothing/accessory/health/proc/take_slash_damage(mob/living/user, list/slashdata)
@@ -167,7 +167,7 @@
 
 	armor_shattersound = 'sound/effects/ceramic_shatter.ogg'
 
-/obj/item/clothing/accessory/health/ceramic_plate/take_bullet_damage(var/mob/living/user, damage, ammo_flags)
+/obj/item/clothing/accessory/health/ceramic_plate/take_bullet_damage(mob/living/user, damage, ammo_flags)
 	if(ammo_flags & AMMO_ACIDIC)
 		return
 
@@ -180,7 +180,7 @@
 	icon_state = "scrap"
 	health_states = list(
 		0,
-		100
+		100,
 	)
 
 	scrappable = FALSE

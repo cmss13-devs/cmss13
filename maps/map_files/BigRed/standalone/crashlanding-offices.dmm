@@ -1488,7 +1488,7 @@
 /obj/structure/bed/chair/dropship/passenger{
 	dir = 8
 	},
-/obj/item/device/radio/headset/distress/PMC,
+/obj/item/device/radio/headset/distress/pmc/hvh,
 /turf/open/shuttle/dropship{
 	tag = "icon-rasputin15";
 	icon_state = "rasputin15"
@@ -1509,7 +1509,7 @@
 /obj/structure/bed/chair/dropship/passenger{
 	dir = 4
 	},
-/obj/item/clothing/gloves/marine/veteran/PMC,
+/obj/item/clothing/gloves/marine/veteran/pmc,
 /turf/open/shuttle/dropship{
 	tag = "icon-rasputin15";
 	icon_state = "rasputin15"
@@ -1519,7 +1519,7 @@
 /obj/structure/bed/chair/dropship/passenger{
 	dir = 4
 	},
-/obj/item/clothing/under/marine/veteran/PMC,
+/obj/item/clothing/under/marine/veteran/pmc,
 /turf/open/shuttle/dropship{
 	tag = "icon-rasputin15";
 	icon_state = "rasputin15"
@@ -1540,9 +1540,9 @@
 	},
 /obj/effect/decal/cleanable/blood,
 /obj/effect/spawner/gibspawner/human,
-/obj/item/clothing/head/helmet/marine/veteran/PMC,
-/obj/item/clothing/under/marine/veteran/PMC,
-/obj/item/clothing/head/helmet/marine/veteran/PMC,
+/obj/item/clothing/head/helmet/marine/veteran/pmc,
+/obj/item/clothing/under/marine/veteran/pmc,
+/obj/item/clothing/head/helmet/marine/veteran/pmc,
 /turf/open/shuttle/dropship{
 	tag = "icon-rasputin15";
 	icon_state = "rasputin15"
@@ -1560,7 +1560,7 @@
 	},
 /area/bigredv2/outside/office_complex)
 "si" = (
-/obj/item/clothing/head/helmet/marine/veteran/PMC,
+/obj/item/clothing/head/helmet/marine/veteran/pmc,
 /turf/open/shuttle/dropship{
 	tag = "icon-rasputin3";
 	icon_state = "rasputin3"
@@ -1579,7 +1579,7 @@
 	current_mag = /obj/item/ammo_magazine/rifle/rubber;
 	name = "battered M41A pulse rifle MK2";
 	pixel_x = 4;
-	desc = "A Weyland-Yutani creation, this M41A MK2 comes equipped in corporate white. Uses 10x24mm caseless ammunition. It seems to be pretty battered and broken up.."
+	desc = "A Weyland-Yutani creation, this M41A MK2 comes equipped in corporate white. Uses 10x24mm caseless ammunition. It seems to be pretty battered and broken up."
 	},
 /turf/open/shuttle/dropship{
 	tag = "icon-rasputin3";
@@ -1651,7 +1651,7 @@
 	current_mag = /obj/item/ammo_magazine/rifle/rubber;
 	name = "battered M41A pulse rifle MK2";
 	pixel_x = 4;
-	desc = "A Weyland-Yutani creation, this M41A MK2 comes equipped in corporate white. Uses 10x24mm caseless ammunition. It seems to be pretty battered and broken up.."
+	desc = "A Weyland-Yutani creation, this M41A MK2 comes equipped in corporate white. Uses 10x24mm caseless ammunition. It seems to be pretty battered and broken up."
 	},
 /turf/open/shuttle/dropship{
 	tag = "icon-rasputin3";
@@ -1670,7 +1670,7 @@
 /obj/structure/bed/chair/dropship/passenger{
 	dir = 4
 	},
-/obj/item/device/radio/headset/distress/PMC,
+/obj/item/device/radio/headset/distress/pmc/hvh,
 /turf/open/shuttle/dropship{
 	tag = "icon-rasputin15";
 	icon_state = "rasputin15"
@@ -1707,7 +1707,7 @@
 /obj/structure/bed/chair/dropship/passenger{
 	dir = 8
 	},
-/obj/item/clothing/gloves/marine/veteran/PMC,
+/obj/item/clothing/gloves/marine/veteran/pmc,
 /turf/open/shuttle/dropship{
 	tag = "icon-rasputin15";
 	icon_state = "rasputin15"

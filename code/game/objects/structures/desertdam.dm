@@ -4,8 +4,8 @@
 /obj/structure/desertdam/decals
 	name = "desert foliage"
 	icon = 'icons/turf/floors/desertdam_map.dmi'
-	density = 0
-	anchored = 1
+	density = FALSE
+	anchored = TRUE
 	unslashable = TRUE
 	unacidable = TRUE // can toggle it off anyway
 	layer = ABOVE_MOB_LAYER

@@ -8,12 +8,12 @@
 	icon_opened = "open_basic"
 	icon_closed = "closed_basic"
 	climbable = 1
-	anchored = 0
+	anchored = FALSE
 	throwpass = 1 //prevents moving crates by hurling things at them
 	store_mobs = FALSE
 	var/rigged = 0
 
-/obj/structure/closet/crate/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/obj/structure/closet/crate/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_can_pass_all = PASS_OVER|PASS_AROUND
@@ -402,7 +402,7 @@
 /obj/structure/closet/crate/weapon/training/grenade
 	name = "rubber pellet M15 grenades crate"
 	desc = "A crate with multiple nonlethal M15 grenades. Intended for use in combat exercises and riot control."
-	ammo_type = /obj/item/explosive/grenade/HE/m15/rubber
+	ammo_type = /obj/item/explosive/grenade/high_explosive/m15/rubber
 	ammo_count = 6
 
 
@@ -410,7 +410,7 @@
 	name = "\improper minecart"
 	desc = "Essentially a big metal bucket on wheels. This one has a modern plastic shroud."
 	icon_state = "closed_mcart"
-	density = 1
+	density = TRUE
 	icon_opened = "open_mcart"
 	icon_closed = "closed_mcart"
 
@@ -418,7 +418,7 @@
 	name = "\improper minecart"
 	desc = "Essentially a big metal bucket on wheels. This one has a modern plastic shroud."
 	icon_state = "closed_mcart_y"
-	density = 1
+	density = TRUE
 	icon_opened = "open_mcart_y"
 	icon_closed = "closed_mcart_y"
 

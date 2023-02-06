@@ -23,7 +23,7 @@
 		ACCESS_MARINE_DELTA,
 		ACCESS_MARINE_ENGINEERING,
 		ACCESS_MARINE_MAINT,
-		ACCESS_MARINE_OT
+		ACCESS_MARINE_OT,
 	)
 	assignment = JOB_POLICE
 	rank = JOB_POLICE
@@ -31,8 +31,10 @@
 	role_comm_title = "MP"
 	skills = /datum/skills/MP
 
+	minimap_icon = "mp"
+
 	utility_under = list(/obj/item/clothing/under/marine/mp)
-	utility_hat = list(/obj/item/clothing/head/helmet/beret/marine/mp)
+	utility_hat = list(/obj/item/clothing/head/beret/marine/mp)
 	utility_extra = list(/obj/item/clothing/head/cmcap, /obj/item/clothing/head/beret/cm, /obj/item/clothing/head/beret/cm/tan)
 
 	service_over = list(/obj/item/clothing/suit/storage/jacket/marine/service/mp)
@@ -52,7 +54,7 @@
 		H.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/sechud/prescription(H), WEAR_EYES)
 	else
 		H.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/sechud(H), WEAR_EYES)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/beret/marine/mp(H), WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/beret/marine/mp(H), WEAR_HEAD)
 	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/device/taperecorder(H), WEAR_L_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/medium(H), WEAR_R_STORE)
@@ -85,7 +87,7 @@
 		ACCESS_MARINE_DELTA,
 		ACCESS_MARINE_ENGINEERING,
 		ACCESS_MARINE_MAINT,
-		ACCESS_MARINE_OT
+		ACCESS_MARINE_OT,
 	)
 	assignment = JOB_WARDEN
 	rank = JOB_WARDEN
@@ -93,8 +95,10 @@
 	role_comm_title = "MW"
 	skills = /datum/skills/MW
 
+	minimap_icon = "warden"
+
 	utility_under = list(/obj/item/clothing/under/marine/warden)
-	utility_hat = list(/obj/item/clothing/head/helmet/beret/marine/mp/warden)
+	utility_hat = list(/obj/item/clothing/head/beret/marine/mp/warden)
 	utility_extra = list(/obj/item/clothing/head/cmcap, /obj/item/clothing/head/beret/cm, /obj/item/clothing/head/beret/cm/tan)
 
 	service_over = list(/obj/item/clothing/suit/storage/jacket/marine/service/warden)
@@ -114,7 +118,7 @@
 		H.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/sechud/prescription(H), WEAR_EYES)
 	else
 		H.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/sechud(H), WEAR_EYES)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/beret/marine/mp/warden(H), WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/beret/marine/mp/warden(H), WEAR_HEAD)
 	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/device/taperecorder(H), WEAR_L_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(H), WEAR_R_STORE)
@@ -143,7 +147,7 @@
 		ACCESS_MARINE_ENGINEERING,
 		ACCESS_MARINE_MAINT,
 		ACCESS_MARINE_OT,
-		ACCESS_MARINE_SYNTH
+		ACCESS_MARINE_SYNTH,
 	)
 	assignment = JOB_CHIEF_POLICE
 	rank = JOB_CHIEF_POLICE
@@ -151,8 +155,11 @@
 	role_comm_title = "CMP"
 	skills = /datum/skills/CMP
 
+	minimap_icon = list("mp" = MINIMAP_ICON_COLOR_HEAD)
+	minimap_background = MINIMAP_ICON_BACKGROUND_CIC
+
 	utility_under = list(/obj/item/clothing/under/marine/officer/warrant)
-	utility_hat = list(/obj/item/clothing/head/helmet/beret/marine/mp/cmp)
+	utility_hat = list(/obj/item/clothing/head/beret/marine/mp/cmp)
 	utility_extra = list(/obj/item/clothing/head/cmcap, /obj/item/clothing/head/beret/cm, /obj/item/clothing/head/beret/cm/tan)
 
 	service_over = list(/obj/item/clothing/suit/storage/jacket/marine/service/cmp)
@@ -172,7 +179,7 @@
 		H.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/sechud/prescription(H), WEAR_EYES)
 	else
 		H.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/sechud(H), WEAR_EYES)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/beret/marine/mp/cmp(H), WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/beret/marine/mp/cmp(H), WEAR_HEAD)
 	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/device/taperecorder(H), WEAR_L_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(H), WEAR_R_STORE)
@@ -185,14 +192,14 @@
 
 	idtype = /obj/item/card/id/silver
 	access = list()
-	assignment = "Riot Control"
-	rank = "Riot"
+	assignment = JOB_RIOT
+	rank = JOB_RIOT
 	paygrade = "ME5"
 	role_comm_title = "RMP"
 	skills = /datum/skills/CMP
 
 	utility_under = list(/obj/item/clothing/under/marine/officer/warrant)
-	utility_hat = list(/obj/item/clothing/head/helmet/beret/marine/mp/cmp)
+	utility_hat = list(/obj/item/clothing/head/beret/marine/mp/cmp)
 	utility_extra = list(/obj/item/clothing/head/cmcap, /obj/item/clothing/head/beret/cm, /obj/item/clothing/head/beret/cm/tan)
 
 /datum/equipment_preset/uscm_ship/uscm_police/riot_mp/New()
@@ -233,8 +240,8 @@
 	name = "USCM Riot Chief MP (RCMP)"
 	flags = EQUIPMENT_PRESET_EXTRA
 
-	assignment = "Chief Riot Control"
-	rank = "CRMP"
+	assignment = JOB_RIOT_CHIEF
+	rank = JOB_RIOT_CHIEF
 	paygrade = "MO1"
 	role_comm_title = "CRMP"
 	skills = /datum/skills/CMP

@@ -48,18 +48,22 @@ GLOBAL_DATUM(railgun_eye_location, /datum/coords)
 
 /obj/structure/machinery/computer/railgun/Initialize()
 	. = ..()
+
+	if(is_admin_level(SSmapping.ground_start) || is_mainship_level(SSmapping.ground_start))
+		return
+
 	if(!GLOB.railgun_eye_location)
 		stack_trace("Railgun eye location is not initialised! There is no landmark for it on [SSmapping.configs[GROUND_MAP].map_name]")
 		return INITIALIZE_HINT_QDEL
 	target_z = GLOB.railgun_eye_location.z_pos
 
-/obj/structure/machinery/computer/railgun/attackby(var/obj/I as obj, var/mob/user as mob)  //Can't break or disassemble.
+/obj/structure/machinery/computer/railgun/attackby(obj/I as obj, mob/user as mob)  //Can't break or disassemble.
 	return
 
-/obj/structure/machinery/computer/railgun/bullet_act(var/obj/item/projectile/Proj) //Can't shoot it
+/obj/structure/machinery/computer/railgun/bullet_act(obj/item/projectile/Proj) //Can't shoot it
 	return FALSE
 
-/obj/structure/machinery/computer/railgun/proc/set_operator(var/mob/living/carbon/human/H)
+/obj/structure/machinery/computer/railgun/proc/set_operator(mob/living/carbon/human/H)
 	if(!istype(H))
 		return
 	remove_current_operator()
@@ -81,7 +85,7 @@ GLOBAL_DATUM(railgun_eye_location, /datum/coords)
 	RegisterSignal(eye, COMSIG_MOVABLE_PRE_MOVE, PROC_REF(check_and_set_zlevel))
 	RegisterSignal(eye, COMSIG_PARENT_QDELETING, PROC_REF(remove_current_operator))
 
-/obj/structure/machinery/computer/railgun/proc/check_and_set_zlevel(var/mob/hologram/railgun/H, var/turf/NewLoc, var/direction)
+/obj/structure/machinery/computer/railgun/proc/check_and_set_zlevel(mob/hologram/railgun/H, turf/NewLoc, direction)
 	SIGNAL_HANDLER
 	if(!start_location)
 		start_location = GLOB.railgun_eye_location.get_turf_from_coord()
@@ -90,7 +94,7 @@ GLOBAL_DATUM(railgun_eye_location, /datum/coords)
 		H.loc = start_location
 		return COMPONENT_OVERRIDE_MOVE
 
-/obj/structure/machinery/computer/railgun/proc/can_fire(var/mob/living/carbon/human/H, var/turf/T)
+/obj/structure/machinery/computer/railgun/proc/can_fire(mob/living/carbon/human/H, turf/T)
 	if(T.z != target_z)
 		return FALSE
 
@@ -127,7 +131,7 @@ GLOBAL_DATUM(railgun_eye_location, /datum/coords)
 /obj/effect/warning/railgun
 	color = "#0000ff"
 
-/obj/structure/machinery/computer/railgun/proc/fire_gun(var/mob/living/carbon/human/H, var/atom/A, var/mods)
+/obj/structure/machinery/computer/railgun/proc/fire_gun(mob/living/carbon/human/H, atom/A, mods)
 	SIGNAL_HANDLER
 
 	if(!H.client)
@@ -157,7 +161,7 @@ GLOBAL_DATUM(railgun_eye_location, /datum/coords)
 
 	addtimer(CALLBACK(src, PROC_REF(land_shot), T, H.client, warning_zone, I), 10 SECONDS)
 
-/obj/structure/machinery/computer/railgun/proc/land_shot(var/turf/T, var/client/firer, var/obj/effect/warning/droppod/warning_zone, var/image/to_remove)
+/obj/structure/machinery/computer/railgun/proc/land_shot(turf/T, client/firer, obj/effect/warning/droppod/warning_zone, image/to_remove)
 	if(warning_zone)
 		qdel(warning_zone)
 
@@ -185,7 +189,7 @@ GLOBAL_DATUM(railgun_eye_location, /datum/coords)
 	operator.update_sight()
 	operator = null
 
-/obj/structure/machinery/computer/railgun/attack_hand(var/mob/living/carbon/human/H)
+/obj/structure/machinery/computer/railgun/attack_hand(mob/living/carbon/human/H)
 	if(..())
 		return
 
@@ -236,7 +240,7 @@ GLOBAL_DATUM(railgun_eye_location, /datum/coords)
 
 	return ..()
 
-/mob/hologram/railgun/proc/see_only_turf(var/mob/living/carbon/human/H)
+/mob/hologram/railgun/proc/see_only_turf(mob/living/carbon/human/H)
 	SIGNAL_HANDLER
 
 	H.see_in_dark = 50
@@ -244,7 +248,7 @@ GLOBAL_DATUM(railgun_eye_location, /datum/coords)
 	H.see_invisible = SEE_INVISIBLE_MINIMUM
 	return COMPONENT_OVERRIDE_UPDATE_SIGHT
 
-/mob/hologram/railgun/proc/allow_turf_entry(var/mob/self, var/turf/to_enter)
+/mob/hologram/railgun/proc/allow_turf_entry(mob/self, turf/to_enter)
 	SIGNAL_HANDLER
 
 	if(protected_by_pylon(TURF_PROTECTION_OB, to_enter))

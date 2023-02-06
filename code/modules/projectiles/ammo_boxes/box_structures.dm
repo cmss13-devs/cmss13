@@ -50,7 +50,7 @@
 			overlays += image(icon, icon_state = "[item_box.handful][item_box.overlay_content]_1")
 
 //handles assigning offsets for stacked boxes
-/obj/structure/magazine_box/proc/assign_offsets(var/turf/T)
+/obj/structure/magazine_box/proc/assign_offsets(turf/T)
 	if(limit_per_tile == 2) //you can deploy 2 mag boxes per tile
 		for(var/obj/structure/magazine_box/found_MB in T.contents)
 			if(found_MB != src)
@@ -149,6 +149,11 @@
 				if(mre_pack.isopened)
 					to_chat(user, SPAN_WARNING("\The [W] was already opened and isn't suitable for storing in \the [src]."))
 					return
+			else if(istype(W, /obj/item/cell/high))
+				var/obj/item/cell/high/cell = W
+				if(cell.charge != cell.maxcharge)
+					to_chat(user, SPAN_WARNING("\The [W] needs to be fully charged before it can be stored in \the [src]."))
+					return
 			if(item_box.contents.len < item_box.num_of_magazines)
 				user.drop_inv_item_to_loc(W, src)
 				item_box.contents += W
@@ -190,14 +195,14 @@
 			update_icon()
 
 //---------------------FIRE HANDLING PROCS
-/obj/structure/magazine_box/flamer_fire_act(var/damage, var/datum/cause_data/flame_cause_data)
+/obj/structure/magazine_box/flamer_fire_act(damage, datum/cause_data/flame_cause_data)
 	if(burning || !item_box)
 		return
 	burning = TRUE
 	item_box.flamer_fire_act(damage, flame_cause_data)
 	return
 
-/obj/structure/magazine_box/proc/apply_fire_overlay(var/will_explode = FALSE)
+/obj/structure/magazine_box/proc/apply_fire_overlay(will_explode = FALSE)
 	//original fire overlay is made for standard mag boxes, so they don't need additional offsetting
 	var/offset_x = 0
 	var/offset_y = 0

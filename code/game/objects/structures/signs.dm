@@ -1,8 +1,8 @@
 /obj/structure/sign
 	icon = 'icons/obj/structures/props/decals.dmi'
-	anchored = 1
-	opacity = 0
-	density = 0
+	anchored = TRUE
+	opacity = FALSE
+	density = FALSE
 	layer = WALL_OBJ_LAYER
 
 /obj/structure/sign/ex_act(severity)
@@ -113,9 +113,9 @@
 	name = "sign"
 	icon = 'icons/obj/structures/props/semiotic_standard.dmi'
 	desc = "A sign denoting Semiotic Standard. The Interstellar Commerce Commission requires that these symbols be placed pretty much everywhere for your safety."
-	anchored = 1
-	opacity = 0
-	density = 0
+	anchored = TRUE
+	opacity = FALSE
+	density = FALSE
 
 /obj/structure/sign/safety/airlock
 	name = "airlock semiotic"

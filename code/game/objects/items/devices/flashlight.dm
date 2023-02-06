@@ -38,7 +38,7 @@
 			SetLuminosity(0)
 	. = ..()
 
-/obj/item/device/flashlight/proc/update_brightness(var/mob/user = null)
+/obj/item/device/flashlight/proc/update_brightness(mob/user = null)
 	if(on)
 		update_icon()
 		if(loc && loc == user)
@@ -135,7 +135,7 @@
 	else
 		return ..()
 
-/obj/item/device/flashlight/attack_alien(mob/living/carbon/Xenomorph/M)
+/obj/item/device/flashlight/attack_alien(mob/living/carbon/xenomorph/M)
 	. = ..()
 
 	if(on && can_be_broken)
@@ -247,7 +247,7 @@
 	set category = "Object"
 	set src in oview(1)
 
-	if(istype(usr, /mob/living/carbon/Xenomorph)) //Sneaky xenos turning off the lights
+	if(istype(usr, /mob/living/carbon/xenomorph)) //Sneaky xenos turning off the lights
 		attack_alien(usr)
 		return
 
@@ -409,7 +409,7 @@
 	desc = "It's really bright, and unreachable."
 	icon_state = "" //No sprite
 	invisibility = 101 //Can't be seen or found, it's "up in the sky"
-	mouse_opacity = 0
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	brightness_on = 7 //Way brighter than most lights
 	show_flame = FALSE
 
@@ -432,7 +432,7 @@
 	desc = "Bright burning ash from a Star Shell 40mm. Don't touch, oh it'll burn ya'."
 	icon_state = "starshell_ash"
 	brightness_on = 7
-	anchored = 1//can't be picked up
+	anchored = TRUE//can't be picked up
 	ammo_datum = /datum/ammo/flare/starshell
 	show_flame = FALSE
 
@@ -446,7 +446,7 @@
 	name = "chemical light"
 	brightness_on = 0
 
-/obj/item/device/flashlight/flare/on/illumination/chemical/Initialize(mapload, var/amount)
+/obj/item/device/flashlight/flare/on/illumination/chemical/Initialize(mapload, amount)
 	. = ..()
 	brightness_on = round(amount * 0.04)
 	if(!brightness_on)

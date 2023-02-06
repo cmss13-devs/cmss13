@@ -3,12 +3,12 @@
 	desc = "Looks unstable. Best to test it with the clown."
 	icon = 'icons/obj/structures/props/stationobjs.dmi'
 	icon_state = "portal"
-	density = 1
+	density = TRUE
 	unacidable = TRUE//Can't destroy energy portals.
 	var/failchance = 5
 	var/obj/item/target = null
 	var/creator = null
-	anchored = 1.0
+	anchored = TRUE
 
 /obj/effect/portal/Collided(atom/movable/AM)
 	spawn(0)

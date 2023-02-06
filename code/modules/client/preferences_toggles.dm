@@ -274,7 +274,7 @@
 		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_vend_item_to_hand'>Toggle Vendors Vending to Hands</a><br>",
 		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/switch_item_animations'>Toggle Item Animations</a><br>",
 		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_admin_sound_types'>Toggle Admin Sound Types</a><br>",
-		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/set_eye_blur_type'>Set Eye Blur Type</a><br>"
+		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/set_eye_blur_type'>Set Eye Blur Type</a><br>",
 	)
 
 	var/dat = ""
@@ -445,6 +445,42 @@
 	if(result == "Legacy")
 		prefs.pain_overlay_pref_level = PAIN_OVERLAY_LEGACY
 		to_chat(src, SPAN_NOTICE("Your vision will now have a legacy blurring effect. This is not recommended!"))
+	prefs.save_preferences()
+
+/client/verb/toggle_tgui_say()
+	set name = "Toggle Say Input Style"
+	set category = "Preferences.UI"
+	set desc = "Toggle your Input Style"
+
+	var/result = tgui_alert(src, "Which input style do you want?", "Input Style", list("Modern", "Legacy"))
+	if(!result)
+		return
+
+	if(result == "Legacy")
+		prefs.tgui_say = FALSE
+		to_chat(src, SPAN_NOTICE("You're now using the old interface."))
+	else
+		prefs.tgui_say = TRUE
+		to_chat(src, SPAN_NOTICE("You're now using the new interface."))
+	prefs.save_preferences()
+	update_special_keybinds()
+
+/client/verb/toggle_tgui_say_light_mode()
+	set name = "Toggle Say Input Color"
+	set category = "Preferences.UI"
+	set desc = "Toggle your Input Color"
+
+	var/result = tgui_alert(src, "Which input color do you want?", "Input Style", list("Darkmode", "Lightmode"))
+	if(!result)
+		return
+	if(result == "Lightmode")
+		prefs.tgui_say_light_mode = TRUE
+		to_chat(src, SPAN_NOTICE("You're now using the say interface whitemode."))
+	else
+		prefs.tgui_say_light_mode = FALSE
+		to_chat(src, SPAN_NOTICE("You're now using the say interface whitemode."))
+	tgui_say?.load()
+	prefs.save_preferences()
 
 //------------ GHOST PREFERENCES ---------------------------------
 
@@ -538,8 +574,8 @@
 			H = huds[MOB_HUD_FACTION_UPP]
 		if("Faction Wey-Yu HUD")
 			H = huds[MOB_HUD_FACTION_WY]
-		if("Faction RESS HUD")
-			H = huds[MOB_HUD_FACTION_RESS]
+		if("Faction TWE HUD")
+			H = huds[MOB_HUD_FACTION_TWE]
 		if("Faction CLF HUD")
 			H = huds[MOB_HUD_FACTION_CLF]
 

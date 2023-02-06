@@ -12,7 +12,7 @@
 	desc = "A device that uses station power to create points of magnetic energy."
 	level = 1 // underfloor
 	layer = UNDERFLOOR_OBJ_LAYER
-	anchored = 1
+	anchored = TRUE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 50
 
@@ -41,7 +41,7 @@
 	INVOKE_ASYNC(src, PROC_REF(magnetic_process))
 
 	// update the invisibility and icon
-/obj/structure/machinery/magnetic_module/hide(var/intact)
+/obj/structure/machinery/magnetic_module/hide(intact)
 	invisibility = intact ? 101 : 0
 	updateicon()
 
@@ -69,7 +69,7 @@
 
 
 
-/obj/structure/machinery/magnetic_module/proc/Cmd(var/command, var/modifier)
+/obj/structure/machinery/magnetic_module/proc/Cmd(command, modifier)
 
 	if(command)
 		switch(command)
@@ -190,8 +190,8 @@
 	name = "Magnetic Control Console"
 	icon = 'icons/obj/structures/machinery/airlock_machines.dmi' // uses an airlock machine icon, THINK GREEN HELP THE ENVIRONMENT - RECYCLING!
 	icon_state = "airlock_control_standby"
-	density = 1
-	anchored = 1.0
+	density = TRUE
+	anchored = TRUE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 45
 	var/frequency = 1449

@@ -1,19 +1,19 @@
-/datum/round_event_control/asrs_spiders
+/datum/round_event_control/asrs_animal
 	name = "ASRS animal"
-	typepath = /datum/round_event/asrs_spiders
-	weight = 10
+	typepath = /datum/round_event/asrs_animal
+	weight = 7
 	earliest_start = 10 MINUTES // don't want it happening roundstart
 	min_players = 75 // Probably not good for deadpop rounds where there might not even be dedicated req staff
-	max_occurrences = 3 // any more and it'd get tiresome
+	max_occurrences = 2 // any more and it'd get tiresome
 	alert_observers = TRUE
 	gamemode_blacklist = list("Whiskey Outpost", "Hive Wars")
 
-/datum/round_event/asrs_spiders
+/datum/round_event/asrs_animal
 	announce_when = 1
 	startWhen = 10
 	endWhen = 15
 
-/datum/round_event/asrs_spiders/setup()
+/datum/round_event/asrs_animal/setup()
 	. = ..()
 	var/msg
 	msg = "An ASRS animal event has been triggered!"
@@ -22,7 +22,7 @@
 	supply_controller.init_animal_event()
 	to_chat(world,"ebent start")
 
-/datum/round_event/asrs_spiders/announce()
+/datum/round_event/asrs_animal/announce()
 	var/input
 	input = "Unidentified lifesigns detected inside Automated Supply Retrieval System."
 	ai_announcement(input)

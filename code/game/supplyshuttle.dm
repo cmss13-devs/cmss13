@@ -1253,7 +1253,7 @@ var/datum/controller/supply/supply_controller = new()
 		to_chat(world,"spec spawntick")
 		animal = pick(/mob/living/simple_animal/cat,/mob/living/simple_animal/corgi)
 	else
-		for(var/i=0,i < rand(1,5),i++)
+		for(var/i=0,i < rand(1,2),i++)
 			to_chat(world,"spawntick")
 			var/list/turf/open/clear_turfs = list()
 			var/area/area_shuttle = shuttle?.get_location_area()

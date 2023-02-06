@@ -1,5 +1,0 @@
-author: "harryob"
-delete-after: True
-changes:
-  - qol: "you can now keybind every emote"
-  - refactor: "emotes are now datums"

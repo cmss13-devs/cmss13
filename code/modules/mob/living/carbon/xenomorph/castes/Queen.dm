@@ -227,7 +227,6 @@
 
 	return COMPONENT_OVERRIDE_VIEW
 
-
 /mob/hologram/queen/Destroy()
 	if(linked_mob)
 		var/mob/living/carbon/xenomorph/queen/Q = linked_mob

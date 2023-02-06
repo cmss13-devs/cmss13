@@ -57,8 +57,18 @@
 		new /atom/movable/screen/escape_menu/home_button(
 			null,
 			src,
-			"AGhost",
+			"Admin Panels",
 			/* offset = */ 6,
+			CALLBACK(src, PROC_REF(view_admin_buttons)),
+		)
+	)
+
+	page_holder.give_screen_object(
+		new /atom/movable/screen/escape_menu/home_button(
+			null,
+			src,
+			"AGhost",
+			/* offset = */ 7,
 			CALLBACK(src, PROC_REF(home_aghost)),
 		)
 	)
@@ -68,7 +78,7 @@
 			null,
 			src,
 			"Open STUI",
-			/* offset = */ 7,
+			/* offset = */ 8,
 			CALLBACK(src, PROC_REF(home_open_stui)),
 		)
 	)
@@ -78,7 +88,7 @@
 			null,
 			src,
 			"Open Player Panel",
-			/* offset = */ 8,
+			/* offset = */ 9,
 			CALLBACK(src, PROC_REF(home_open_player_panel)),
 		)
 	)
@@ -109,7 +119,6 @@
 /datum/escape_menu/proc/home_mentor_help()
 	client?.execute_mentorhelp()
 	qdel(src)
-
 /atom/movable/screen/escape_menu/home_button
 	mouse_opacity = MOUSE_OPACITY_OPAQUE
 

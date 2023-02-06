@@ -1556,6 +1556,7 @@
 #include "code\modules\economy\EFTPOS.dm"
 #include "code\modules\economy\TradeDestinations.dm"
 #include "code\modules\emoji\emoji_parse.dm"
+#include "code\modules\escape_menu\admin_buttons.dm"
 #include "code\modules\escape_menu\details.dm"
 #include "code\modules\escape_menu\dimmer.dm"
 #include "code\modules\escape_menu\escape_menu.dm"

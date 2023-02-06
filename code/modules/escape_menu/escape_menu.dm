@@ -20,6 +20,7 @@ GLOBAL_LIST_EMPTY(escape_menus)
 
 #define PAGE_HOME "PAGE_HOME"
 #define PAGE_LEAVE_BODY "PAGE_LEAVE_BODY"
+#define PAGE_ADMIN_BUTTONS "PAGE_ADMIN_BUTTONS"
 
 /datum/escape_menu
 	/// The client that owns this escape menu
@@ -80,13 +81,23 @@ GLOBAL_LIST_EMPTY(escape_menus)
 
 	page_holder.clear()
 
-	switch (menu_page)
-		if (PAGE_HOME)
+	switch(menu_page)
+		if(PAGE_HOME)
 			show_home_page()
-		if (PAGE_LEAVE_BODY)
+		if(PAGE_LEAVE_BODY)
 			show_leave_body_page()
+		if(PAGE_ADMIN_BUTTONS)
+			show_admin_buttons()
 		else
 			CRASH("Unknown escape menu page: [menu_page]")
+
+/datum/escape_menu/proc/view_admin_buttons()
+	menu_page = PAGE_ADMIN_BUTTONS
+	show_page()
+
+/datum/escape_menu/proc/home_main_page()
+	menu_page = PAGE_HOME
+	show_page()
 
 /datum/escape_menu/proc/populate_base_ui()
 	PRIVATE_PROC(TRUE)

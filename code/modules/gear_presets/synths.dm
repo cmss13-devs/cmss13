@@ -5,6 +5,8 @@
 	skills = /datum/skills/synthetic
 	paygrade = "SYN"
 
+	minimap_icon = "synth"
+
 /datum/equipment_preset/synth/New()
 	. = ..()
 	access = get_all_accesses()

@@ -20,7 +20,7 @@
 	layer = 3.3;
 	name = "\improper Science Wing Blast Door"
 	},
-/obj/structure/machinery/door/airlock/almayer/research{
+/obj/structure/machinery/door/airlock/almayer/research/colony{
 	dir = 1;
 	locked = 1;
 	name = "\improper Research Dome"
@@ -155,7 +155,7 @@
 	},
 /area/lv624/lazarus/research)
 "ay" = (
-/obj/structure/machinery/door/airlock/almayer/research{
+/obj/structure/machinery/door/airlock/almayer/research/colony{
 	locked = 1;
 	name = "\improper Research Dome"
 	},
@@ -188,7 +188,7 @@
 /obj/structure/transmitter/colony_net{
 	pixel_y = 24;
 	phone_category = "Lazarus Landing";
-	phone_id = "Research"
+	phone_id = "Research Dome"
 	},
 /turf/open/floor{
 	dir = 5;
@@ -220,7 +220,7 @@
 	},
 /area/lv624/lazarus/research)
 "aG" = (
-/obj/structure/machinery/door/airlock/almayer/research{
+/obj/structure/machinery/door/airlock/almayer/research/colony{
 	dir = 1;
 	locked = 1;
 	name = "\improper Research Dome"
@@ -231,7 +231,7 @@
 	},
 /area/lv624/lazarus/research)
 "aH" = (
-/obj/structure/machinery/door/airlock/almayer/research{
+/obj/structure/machinery/door/airlock/almayer/research/colony{
 	dir = 1;
 	locked = 1;
 	name = "\improper Research Dome"
@@ -306,7 +306,7 @@
 	layer = 3.3;
 	name = "\improper Science Wing Blast Door"
 	},
-/obj/structure/machinery/door/airlock/almayer/research{
+/obj/structure/machinery/door/airlock/almayer/research/colony{
 	locked = 1;
 	name = "\improper Research Dome"
 	},
@@ -323,7 +323,7 @@
 	},
 /area/lv624/lazarus/research)
 "aP" = (
-/obj/structure/machinery/door/airlock/almayer/research{
+/obj/structure/machinery/door/airlock/almayer/research/colony{
 	locked = 1;
 	name = "\improper Research Dome"
 	},

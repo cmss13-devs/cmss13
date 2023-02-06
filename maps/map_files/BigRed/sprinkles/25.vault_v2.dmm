@@ -145,11 +145,10 @@
 	dir = 4;
 	layer = 2.4
 	},
-/obj/structure/machinery/door/airlock/almayer/secure{
+/obj/structure/machinery/door/airlock/almayer/secure/colony{
 	icon_state = "door_locked";
-	locked = 1;
+	locked = 0;
 	name = "\improper Emergency Vault";
-	req_access = null
 	},
 /turf/open/floor,
 /area/bigredv2/outside/storage)

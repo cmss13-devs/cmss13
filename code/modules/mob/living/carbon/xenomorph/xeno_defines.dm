@@ -107,6 +107,11 @@
 	var/list/resin_build_order
 	var/minimum_xeno_playtime = 0
 
+	/// Iconstate for the xeno on the minimap
+	var/minimap_icon = "xeno"
+	///The iconstate for leadered xenos on the minimap, added as overlay
+	var/minimap_leadered_overlay = "xenoleader"
+
 
 /datum/caste_datum/can_vv_modify()
 	return FALSE
@@ -191,6 +196,17 @@
 /datum/caste_datum/proc/get_caste_requirement(client/client)
 	return minimum_xeno_playtime - client.get_total_xeno_playtime()
 
+/datum/caste_datum/proc/get_minimap_icon()
+	var/image/background = mutable_appearance('icons/ui_icons/map_blips.dmi', "background")
+	background.color = MINIMAP_ICON_BACKGROUND_XENO
+
+	var/iconstate = minimap_icon ? minimap_icon : "unknown"
+	var/mutable_appearance/icon = image('icons/ui_icons/map_blips.dmi', icon_state = iconstate)
+	icon.appearance_flags = RESET_COLOR
+	background.overlays += icon
+
+	return background
+
 /datum/hive_status
 	var/name = "Normal Hive"
 
@@ -233,9 +249,9 @@
 	var/xenocon_points = 0 //Xeno version of DEFCON
 
 	var/datum/mutator_set/hive_mutators/mutators = new
-	var/tier_slot_multiplier = 1.0
-	var/larva_gestation_multiplier = 1.0
-	var/bonus_larva_spawn_chance = 1.0
+	var/tier_slot_multiplier = 1
+	var/larva_gestation_multiplier = 1
+	var/bonus_larva_spawn_chance = 1
 	var/hijack_pooled_surge = FALSE //at hijack, start spawning lots of pooled
 
 	var/ignore_slots = FALSE
@@ -297,11 +313,15 @@
 	/// How many huggers can the hive support
 	var/playable_hugger_limit = 0
 
+	var/datum/tacmap/tacmap
+	var/minimap_type = MINIMAP_FLAG_XENO
+
 /datum/hive_status/New()
 	mutators.hive = src
 	hive_ui = new(src)
 	mark_ui = new(src)
 	faction_ui = new(src)
+	tacmap = new(src, minimap_type)
 	if(!internal_faction)
 		internal_faction = name
 
@@ -432,6 +452,8 @@
 	xeno.hud_update() // To add leader star
 	open_xeno_leader_positions -= leader_num
 
+	xeno.update_minimap_icon()
+
 	give_action(xeno, /datum/action/xeno_action/activable/info_marker)
 
 	hive_ui.update_xeno_keys()
@@ -462,6 +484,8 @@
 	for(var/obj/effect/alien/resin/marker/leaderless_mark in resin_marks) //no resin_mark limit abuse
 		if(leaderless_mark.createdby == xeno.nicknumber)
 			qdel(leaderless_mark)
+
+	xeno.update_minimap_icon()
 
 	remove_action(xeno, /datum/action/xeno_action/activable/info_marker)
 

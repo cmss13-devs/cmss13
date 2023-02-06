@@ -24,6 +24,8 @@
 	heal_knocked_out = 1.25
 	innate_healing = TRUE
 
+	minimap_icon = "hellhound"
+
 /mob/living/carbon/xenomorph/hellhound
 	caste_type = XENO_CASTE_HELLHOUND
 	name = XENO_CASTE_HELLHOUND

@@ -200,6 +200,7 @@
 	charge_cost = 625 // approx 16 shots.
 	has_charge_meter = TRUE
 	charge_icon = "+taser"
+	black_market_value = 20
 	var/precision = TRUE
 	var/skilllock = SKILL_POLICE_SKILLED
 

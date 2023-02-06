@@ -1,0 +1,4 @@
+author: "realforest2001"
+delete-after: True
+changes:
+  - server: "TGUI logs are now in a unique file to reduce clutter."

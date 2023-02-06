@@ -321,6 +321,7 @@ var/global/list/datum/stack_recipe/aluminum_recipes = list ( \
 	singular_name = "aluminum sheet"
 	icon_state = "sheet-aluminum"
 	sheettype = "aluminum"
+	black_market_value = 10
 
 /*
  * Copper
@@ -335,4 +336,5 @@ var/global/list/datum/stack_recipe/copper_recipes = list ( \
 	singular_name = "copper sheet"
 	icon_state = "sheet-copper"
 	sheettype = "copper"
+	black_market_value = 10
 

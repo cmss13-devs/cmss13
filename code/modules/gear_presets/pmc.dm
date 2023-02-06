@@ -196,11 +196,6 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 		list("Drop Pouch", 10, /obj/item/clothing/accessory/storage/droppouch, null, VENDOR_ITEM_REGULAR),
 	)
 
-/datum/equipment_preset/pmc/pmc_standard/hvh
-	name = "Weyland-Yutani PMC (Standard) | HvH"
-	human_versus_human = TRUE
-	headset_type = /obj/item/device/radio/headset/distress/pmc/hvh
-
 //*****************************************************************************************************/
 /datum/equipment_preset/pmc/pmc_detainer
 	name = "Weyland-Yutani PMC (Detainer)"
@@ -329,11 +324,6 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 		list("Webbing", 10, /obj/item/clothing/accessory/storage/webbing, null, VENDOR_ITEM_REGULAR),
 		list("Drop Pouch", 10, /obj/item/clothing/accessory/storage/droppouch, null, VENDOR_ITEM_REGULAR),
 	)
-
-/datum/equipment_preset/pmc/pmc_detainer/hvh
-	name = "Weyland-Yutani PMC (Detainer) | HvH"
-	human_versus_human = TRUE
-	headset_type = /obj/item/device/radio/headset/distress/pmc/hvh
 
 //*****************************************************************************************************/
 /datum/equipment_preset/pmc/pmc_medic
@@ -511,11 +501,6 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 		list("Webbing", 10, /obj/item/clothing/accessory/storage/webbing, null, VENDOR_ITEM_REGULAR),
 		list("Drop Pouch", 10, /obj/item/clothing/accessory/storage/droppouch, null, VENDOR_ITEM_REGULAR),
 	)
-
-/datum/equipment_preset/pmc/pmc_medic/hvh
-	name = "Weyland-Yutani PMC (Corporate Medic) | HvH"
-	human_versus_human = TRUE
-	headset_type = /obj/item/device/radio/headset/distress/pmc/medic/hvh
 
 //*****************************************************************************************************/
 /datum/equipment_preset/pmc/pmc_med_investigator
@@ -849,11 +834,6 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 		list("Drop Pouch", 10, /obj/item/clothing/accessory/storage/droppouch, null, VENDOR_ITEM_REGULAR),
 	)
 
-/datum/equipment_preset/pmc/pmc_leader/hvh
-	name = "Weyland-Yutani PMC (Leader) | HvH"
-	human_versus_human = TRUE
-	headset_type = /obj/item/device/radio/headset/distress/pmc/command/hvh
-
 //*****************************************************************************************************/
 
 /datum/equipment_preset/pmc/pmc_lead_investigator
@@ -1099,11 +1079,6 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 		list("Drop Pouch", 10, /obj/item/clothing/accessory/storage/droppouch, null, VENDOR_ITEM_REGULAR),
 	)
 
-/datum/equipment_preset/pmc/pmc_gunner/hvh
-	name = "Weyland-Yutani PMC (Gunner) | HvH"
-	human_versus_human = TRUE
-	headset_type = /obj/item/device/radio/headset/distress/pmc/hvh
-
 //*****************************************************************************************************/
 
 /datum/equipment_preset/pmc/pmc_sniper
@@ -1226,15 +1201,6 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 		list("Webbing", 10, /obj/item/clothing/accessory/storage/webbing, null, VENDOR_ITEM_REGULAR),
 		list("Drop Pouch", 10, /obj/item/clothing/accessory/storage/droppouch, null, VENDOR_ITEM_REGULAR),
 	)
-
-/datum/equipment_preset/pmc/pmc_sniper/hvh
-	name = "Weyland-Yutani PMC (Sniper) | HvH"
-	human_versus_human = TRUE
-	headset_type = /obj/item/device/radio/headset/distress/pmc/cct/hvh
-
-/datum/equipment_preset/pmc/pmc_sniper/hvh/load_gear(mob/living/carbon/human/H)
-	..()
-	H.equip_to_slot_or_del(new /obj/item/device/binoculars/range, WEAR_IN_BACK)
 
 //*****************************************************************************************************/
 /datum/equipment_preset/pmc/pmc_crewman
@@ -1360,11 +1326,6 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 		list("Webbing", 10, /obj/item/clothing/accessory/storage/webbing, null, VENDOR_ITEM_REGULAR),
 		list("Drop Pouch", 10, /obj/item/clothing/accessory/storage/droppouch, null, VENDOR_ITEM_REGULAR),
 	)
-
-/datum/equipment_preset/pmc/pmc_crewman/hvh
-	name = "Weyland-Yutani PMC (Crewman) | HvH"
-	human_versus_human = TRUE
-	headset_type = /obj/item/device/radio/headset/distress/pmc/cct/hvh
 
 /*****************************************************************************************************/
 
@@ -1513,12 +1474,6 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 		list("Webbing", 10, /obj/item/clothing/accessory/storage/webbing, null, VENDOR_ITEM_REGULAR),
 		list("Drop Pouch", 10, /obj/item/clothing/accessory/storage/droppouch, null, VENDOR_ITEM_REGULAR),
 	)
-
-/datum/equipment_preset/pmc/xeno_handler/hvh
-	name = "Weyland-Yutani PMC (Xeno Handler) | HvH"
-	faction_group = FACTION_LIST_WY
-	human_versus_human = TRUE
-	headset_type = /obj/item/device/radio/headset/distress/pmc/command/hvh
 
 /*****************************************************************************************************/
 
@@ -1696,11 +1651,6 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 		list("Drop Pouch", 10, /obj/item/clothing/accessory/storage/droppouch, null, VENDOR_ITEM_REGULAR),
 	)
 
-/datum/equipment_preset/pmc/doctor/hvh
-	name = "Weyland-Yutani PMC (Trauma Surgeon) | HvH"
-	human_versus_human = TRUE
-	headset_type = /obj/item/device/radio/headset/distress/pmc/medic/hvh
-
 /*****************************************************************************************************/
 
 /datum/equipment_preset/pmc/technician
@@ -1848,11 +1798,6 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 		list("Drop Pouch", 10, /obj/item/clothing/accessory/storage/droppouch, null, VENDOR_ITEM_REGULAR),
 	)
 
-/datum/equipment_preset/pmc/technician/hvh
-	name = "Weyland-Yutani PMC (Corporate Technician) | HvH"
-	human_versus_human = TRUE
-	headset_type = /obj/item/device/radio/headset/distress/pmc/cct/hvh
-
 /*****************************************************************************************************/
 
 /datum/equipment_preset/pmc/director
@@ -1889,11 +1834,6 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 	var/obj/item/device/radio/headset/R = H.wear_l_ear
 	if(istype(R))
 		R.volume = RADIO_VOLUME_CRITICAL
-
-/datum/equipment_preset/pmc/director/hvh
-	name = "Weyland-Yutani PMC (Site Director) | HvH"
-	human_versus_human = TRUE
-	headset_type = /obj/item/device/radio/headset/distress/pmc/command/director/hvh
 
 //*****************************************************************************************************/
 
@@ -2106,7 +2046,3 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 		list("Drop Pouch", 10, /obj/item/clothing/accessory/storage/droppouch, null, VENDOR_ITEM_REGULAR),
 	)
 
-/datum/equipment_preset/pmc/synth/hvh
-		name = "Weyland-Yutani PMC (Support Synthetic) | HvH"
-		human_versus_human = TRUE
-		headset_type = /obj/item/device/radio/headset/distress/pmc/command/hvh

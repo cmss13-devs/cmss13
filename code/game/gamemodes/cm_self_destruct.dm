@@ -193,17 +193,17 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 		bolt.unlock()
 
 ////BOLT CONTROLS/// for lifeboat manual launch
-#define LOCKED		0
-#define UNLOCKED	1
-#define LAUNCHING	2
-#define LAUNCHED	3
+#define LOCKED 0
+#define UNLOCKED 1
+#define LAUNCHING 2
+#define LAUNCHED 3
 
-#define AIMING	1
-#define AIMED	2
-#define FIRING	3
+#define AIMING 1
+#define AIMED 2
+#define FIRING 3
 
-#define PRIMED_TEMP		1
-#define PRIMED_PERMA	2
+#define PRIMED_TEMP 1
+#define PRIMED_PERMA 2
 
 /obj/structure/machinery/lifeboat_bolt
 	name = "Bolt Controller"
@@ -255,7 +255,8 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 
 
 /obj/structure/machinery/lifeboat_bolt/target/LateInitialize()
-	if(sister_panel) return
+	if(sister_panel)
+		return
 
 	for(var/obj/structure/machinery/lifeboat_bolt/id_panel/M in machines)
 		if(M.id == id)
@@ -263,7 +264,8 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 			sister_panel = M
 			break
 
-	if(!sister_panel) stat |= BROKEN
+	if(!sister_panel)
+		stat |= BROKEN
 
 //ANIMATION & SOUNDFX
 /obj/structure/machinery/lifeboat_bolt/target/proc/targeting_overlay()
@@ -321,7 +323,7 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 	operator.apply_effect(3,STUN)
 	shake_camera(operator, 15, 1, 2)
 
-	for(var/obj/docking_port/stationary/lifeboat_dock/lifeboat_dock in GLOB.lifeboat_almayer_docks)
+	for(var/obj/docking_port/stationary/lifeboat_dock/lifeboat_dock as anything in GLOB.lifeboat_almayer_docks)
 		if(lifeboat_dock.id != id) continue
 		var/obj/docking_port/mobile/lifeboat/lifeboat = lifeboat_dock.get_docked()
 		if(lifeboat && lifeboat.available)
@@ -339,7 +341,8 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 	aim_status = null
 
 /obj/structure/machinery/lifeboat_bolt/target/attackby(obj/item/weapon/gun/G, mob/user)
-	if(!istype(G) || !(sister_panel.primed) || stage >= LAUNCHING) return
+	if(!istype(G) || !(sister_panel.primed) || stage >= LAUNCHING)
+		return
 
 	if(aim_status == AIMED && sister_panel.operator != user && operator == user)//Fires gun when properly aimed
 		remove_target_overlay()
@@ -400,7 +403,8 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 			icon_state = "green"
 
 /obj/structure/machinery/lifeboat_bolt/id_panel/LateInitialize()
-	if(sister_target) return
+	if(sister_target)
+		return
 
 	for(var/obj/structure/machinery/lifeboat_bolt/target/M in machines)
 		if(M.id == id)
@@ -408,7 +412,8 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 			sister_target = M
 			break
 
-	if(!sister_target) stat |= BROKEN
+	if(!sister_target)
+		stat |= BROKEN
 
 /obj/structure/machinery/lifeboat_bolt/id_panel/proc/id_unlock(mob/user)
 	if(primed == PRIMED_PERMA)
@@ -423,7 +428,7 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 	update_icon()
 	sister_target.update_icon()
 
-/obj/structure/machinery/lifeboat_bolt/id_panel/attack_hand(var/mob/user)
+/obj/structure/machinery/lifeboat_bolt/id_panel/attack_hand(mob/user)
 	if((. = ..()) || sister_target.stage != UNLOCKED)
 		return
 

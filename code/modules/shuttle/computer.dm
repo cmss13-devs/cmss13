@@ -58,7 +58,7 @@
 	if(href_list["move"])
 		var/obj/docking_port/mobile/M = SSshuttle.getShuttle(shuttleId)
 // if(!(M.shuttle_flags & GAMEMODE_IMMUNE) && world.time < SSticker.round_start_time + SSticker.mode.deploy_time_lock)
-// to_chat(usr, "<span class='warning'>The engines are still refueling.</span>")
+// to_chat(usr, SPAN_WARNING("The engines are still refueling."))
 // return TRUE
 		if(!M.can_move_topic(usr))
 			return TRUE
@@ -75,7 +75,7 @@
 				else
 					visible_message("<span class='notice'>Shuttle departing. Please stand away from the doors.</span>")
 			if(DOCKING_NULL_SOURCE)
-				to_chat(usr, "<span class='warning'>Invalid shuttle requested.</span>")
+				to_chat(usr, SPAN_WARNING("Invalid shuttle requested."))
 				return TRUE
 			else
 				to_chat(usr, "<span class='notice'>Unable to comply.</span>")

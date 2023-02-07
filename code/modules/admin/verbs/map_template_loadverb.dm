@@ -43,7 +43,7 @@
 	if(!map)
 		return
 	if(copytext("[map]", -4) != ".dmm")//4 == length(".dmm")
-		to_chat(src, "<span class='warning'>Filename must end in '.dmm': [map]</span>", confidential = TRUE)
+		to_chat(src, SPAN_WARNING("Filename must end in '.dmm': [map]"), confidential = TRUE)
 		return
 	var/datum/map_template/M
 	switch(alert(src, "What kind of map is this?", "Map type", "Normal", "Cancel")) // TODO: shuttle
@@ -54,7 +54,7 @@
 		else
 			return
 	if(!M.cached_map)
-		to_chat(src, "<span class='warning'>Map template '[map]' failed to parse properly.</span>", confidential = TRUE)
+		to_chat(src, SPAN_WARNING("Map template '[map]' failed to parse properly."), confidential = TRUE)
 		return
 
 	var/datum/map_report/report = M.cached_map.check_for_errors()
@@ -62,7 +62,7 @@
 	if(report)
 		report.show_to(src)
 		report_link = " - <a href='?src=[REF(report)];show=1'>validation report</a>" // TODO: hreftoken
-		to_chat(src, "<span class='warning'>Map template '[map]' <a href='?src=[REF(report)];show=1'>failed validation</a>.</span>", confidential = TRUE) // TODO: hreftoken
+		to_chat(src, SPAN_WARNING("Map template '[map]' <a href='?src=[REF(report)];show=1'>failed validation</a>."), confidential = TRUE) // TODO: hreftoken
 		if(report.loadable)
 			var/response = alert(src, "The map failed validation, would you like to load it anyways?", "Map Errors", "Cancel", "Upload Anyways")
 			if(response != "Upload Anyways")

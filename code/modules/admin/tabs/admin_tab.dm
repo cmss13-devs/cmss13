@@ -8,7 +8,7 @@
 	if(alert("Confirm deadmin? This procedure can be reverted at any time and will not carry over to next round, but you will lose all your admin powers in the meantime.", , "Yes", "No") != "Yes")
 		return
 
-	message_staff("[src] de-admined themselves.")
+	message_admins("[src] de-admined themselves.")
 	add_verb(src, /client/proc/readmin_self)
 	deadmin()
 	to_chat(src, "<br><br><span class='centerbold'><big>You are now a normal player. You can ascend back to adminhood at any time using the 'Re-admin Self' verb in your Admin panel.</big></span><br>")
@@ -20,7 +20,7 @@
 	remove_verb(src, /client/proc/readmin_self)
 	readmin()
 	to_chat(src, "<br><br><span class='centerbold'><big>You have ascended back to adminhood. All your verbs should be back where you left them.</big></span><br>")
-	message_staff("[src] re-admined themselves.")
+	message_admins("[src] re-admined themselves.")
 
 /client/proc/becomelarva()
 	set name = "Lose Larva Protection"
@@ -200,7 +200,7 @@
 		M.sleeping = 9999999 //if they're not, sleep them and add the sleep icon, so other marines nearby know not to mess with them.
 		M.AddSleepingIcon()
 
-	message_staff("[key_name(usr)] used Toggle Sleep In View.")
+	message_admins("[key_name(usr)] used Toggle Sleep In View.")
 
 /datum/admins/proc/wakeall()
 	set name = "Wake All"
@@ -216,7 +216,7 @@
 		M.sleeping = 0 //set their sleep to zero and remove their icon
 		M.RemoveSleepingIcon()
 
-	message_staff("[key_name(usr)] used Toggle Wake In View.")
+	message_admins("[key_name(usr)] used Toggle Wake In View.")
 
 /client/proc/cmd_admin_say(msg as text)
 	set name = "Asay" //Gave this shit a shorter name so you only have to time out "asay" rather than "admin say" to use it --NeoFite
@@ -258,7 +258,7 @@
 	for(var/mob/living/mob in view(usr.client))
 		show_blurb(mob, 15, message, null, "center", "center", color, null, null, 1)
 	log_admin("[key_name(src)] sent an In View admin alert with custom message [message].")
-	message_staff("[key_name(src)] sent an In View admin alert with custom message [message].")
+	message_admins("[key_name(src)] sent an In View admin alert with custom message [message].")
 
 /datum/admins/proc/directnarrateall()
 	set name = "Direct Narrate All"
@@ -275,7 +275,7 @@
 	for(var/mob/living/mob in view(usr.client))
 		to_chat(mob, SPAN_ANNOUNCEMENT_HEADER_BLUE(message))
 	log_admin("[key_name(usr)] sent a Direct Narrate in View with custom message \"[message]\".")
-	message_staff("[key_name(usr)] sent a Direct Narrate in View with custom message \"[message]\".")
+	message_admins("[key_name(usr)] sent a Direct Narrate in View with custom message \"[message]\".")
 
 #define SUBTLE_MESSAGE_IN_HEAD "Voice in Head"
 #define SUBTLE_MESSAGE_WEYLAND "Weyland-Yutani"
@@ -316,7 +316,7 @@
 		else
 			if(mob.get_type_in_ears(/obj/item/device/radio/headset))
 				to_chat(mob, message)
-	message_staff("[key_name(usr)] used Subtle Message All In View from [message_option], saying \"[input]\".")
+	message_admins("[key_name(usr)] used Subtle Message All In View from [message_option], saying \"[input]\".")
 
 #undef SUBTLE_MESSAGE_IN_HEAD
 #undef SUBTLE_MESSAGE_WEYLAND
@@ -433,7 +433,7 @@
 	for(var/mob/living/M in view())
 		M.rejuvenate(FALSE)
 
-	message_staff(WRAP_STAFF_LOG(usr, "ahealed everyone in [get_area(usr)] ([usr.x],[usr.y],[usr.z])."), usr.x, usr.y, usr.z)
+	message_admins(WRAP_STAFF_LOG(usr, "ahealed everyone in [get_area(usr)] ([usr.x],[usr.y],[usr.z])."), usr.x, usr.y, usr.z)
 
 
 /client/proc/rejuvenate_all_humans_in_view()
@@ -451,7 +451,7 @@
 	for(var/mob/living/carbon/human/M in view())
 		M.rejuvenate(FALSE)
 
-	message_staff(WRAP_STAFF_LOG(usr, "ahealed all humans in [get_area(usr)] ([usr.x],[usr.y],[usr.z])"), usr.x, usr.y, usr.z)
+	message_admins(WRAP_STAFF_LOG(usr, "ahealed all humans in [get_area(usr)] ([usr.x],[usr.y],[usr.z])"), usr.x, usr.y, usr.z)
 
 /client/proc/rejuvenate_all_revivable_humans_in_view()
 	set name = "Rejuvenate Revivable Human"
@@ -477,7 +477,7 @@
 			M.rejuvenate(FALSE)
 			continue
 
-	message_staff(WRAP_STAFF_LOG(usr, "ahealed all revivable humans in [get_area(usr)] ([usr.x],[usr.y],[usr.z])"), usr.x, usr.y, usr.z)
+	message_admins(WRAP_STAFF_LOG(usr, "ahealed all revivable humans in [get_area(usr)] ([usr.x],[usr.y],[usr.z])"), usr.x, usr.y, usr.z)
 
 /client/proc/rejuvenate_all_xenos_in_view()
 	set name = "Rejuvenate Xenos"
@@ -494,7 +494,7 @@
 	for(var/mob/living/carbon/xenomorph/X in view())
 		X.rejuvenate(FALSE)
 
-	message_staff(WRAP_STAFF_LOG(usr, "ahealed all xenos in [get_area(usr)] ([usr.x],[usr.y],[usr.z])"), usr.x, usr.y, usr.z)
+	message_admins(WRAP_STAFF_LOG(usr, "ahealed all xenos in [get_area(usr)] ([usr.x],[usr.y],[usr.z])"), usr.x, usr.y, usr.z)
 
 // ----------------------------
 // PANELS
@@ -594,7 +594,7 @@
 		return
 
 	set_lz_resin_allowed(!GLOB.resin_lz_allowed)
-	message_staff("[src] has [GLOB.resin_lz_allowed ? "allowed xenos to weed" : "disallowed from weeding"] near the LZ.")
+	message_admins("[src] has [GLOB.resin_lz_allowed ? "allowed xenos to weed" : "disallowed from weeding"] near the LZ.")
 
 /proc/set_lz_resin_allowed(allowed = TRUE)
 	if(allowed)
@@ -615,7 +615,7 @@
 		return
 
 	GLOB.spawn_ob = !GLOB.spawn_ob
-	message_staff("[src] has [GLOB.spawn_ob ? "allowed OBs to spawn" : "prevented OBs from spawning"] at roundstart.")
+	message_admins("[src] has [GLOB.spawn_ob ? "allowed OBs to spawn" : "prevented OBs from spawning"] at roundstart.")
 
 /client/proc/toggle_sniper_upgrade()
 	set name = "Toggle Engi Sniper Upgrade"
@@ -629,7 +629,7 @@
 		return
 
 	SSticker.mode.toggleable_flags ^= MODE_NO_SNIPER_SENTRY
-	message_staff("[src] has [MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_SNIPER_SENTRY) ? "disallowed engineers from picking" : "allowed engineers to pick"] long-range sentry upgrades.")
+	message_admins("[src] has [MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_SNIPER_SENTRY) ? "disallowed engineers from picking" : "allowed engineers to pick"] long-range sentry upgrades.")
 
 /client/proc/toggle_attack_dead()
 	set name = "Toggle Attack Dead"
@@ -643,7 +643,7 @@
 		return
 
 	SSticker.mode.toggleable_flags ^= MODE_NO_ATTACK_DEAD
-	message_staff("[src] has [MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_ATTACK_DEAD) ? "prevented dead mobs from being" : "allowed dead mobs to be"] attacked.")
+	message_admins("[src] has [MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_ATTACK_DEAD) ? "prevented dead mobs from being" : "allowed dead mobs to be"] attacked.")
 
 /client/proc/toggle_strip_drag()
 	set name = "Toggle Strip/Drag Dead"
@@ -657,7 +657,7 @@
 		return
 
 	SSticker.mode.toggleable_flags ^= MODE_NO_STRIPDRAG_ENEMY
-	message_staff("[src] has [MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_STRIPDRAG_ENEMY) ? "prevented dead humans from being" : "allowed dead humans to be"] stripped and dragged around by non-matching IFF players.")
+	message_admins("[src] has [MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_STRIPDRAG_ENEMY) ? "prevented dead humans from being" : "allowed dead humans to be"] stripped and dragged around by non-matching IFF players.")
 
 /client/proc/toggle_uniform_strip()
 	set name = "Toggle Uniform Strip Dead"
@@ -671,9 +671,9 @@
 		return
 
 	SSticker.mode.toggleable_flags ^= MODE_STRIP_NONUNIFORM_ENEMY
-	message_staff("[src] has [MODE_HAS_TOGGLEABLE_FLAG(MODE_STRIP_NONUNIFORM_ENEMY) ? "allowed dead humans to be stripped of everything but their uniform, boots, armor, helmet, and ID" : "prevented dead humans from being stripped of anything"].")
+	message_admins("[src] has [MODE_HAS_TOGGLEABLE_FLAG(MODE_STRIP_NONUNIFORM_ENEMY) ? "allowed dead humans to be stripped of everything but their uniform, boots, armor, helmet, and ID" : "prevented dead humans from being stripped of anything"].")
 	if(!MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_STRIPDRAG_ENEMY))
-		message_staff("WARNING: Dead enemy players can still be stripped of everything, as the Strip/Drag toggle flag isn't active.")
+		message_admins("WARNING: Dead enemy players can still be stripped of everything, as the Strip/Drag toggle flag isn't active.")
 
 /client/proc/toggle_strong_defibs()
 	set name = "Toggle Strong Defibs"
@@ -687,7 +687,7 @@
 		return
 
 	SSticker.mode.toggleable_flags ^= MODE_STRONG_DEFIBS
-	message_staff("[src] has [MODE_HAS_TOGGLEABLE_FLAG(MODE_STRONG_DEFIBS) ? "allowed defibs to ignore armor" : "made defibs operate normally"].")
+	message_admins("[src] has [MODE_HAS_TOGGLEABLE_FLAG(MODE_STRONG_DEFIBS) ? "allowed defibs to ignore armor" : "made defibs operate normally"].")
 
 /client/proc/toggle_blood_optimization()
 	set name = "Toggle Blood Optimization"
@@ -701,7 +701,7 @@
 		return
 
 	SSticker.mode.toggleable_flags ^= MODE_BLOOD_OPTIMIZATION
-	message_staff("[src] has [MODE_HAS_TOGGLEABLE_FLAG(MODE_BLOOD_OPTIMIZATION) ? "toggled blood optimization on" : "toggled blood optimization off"].")
+	message_admins("[src] has [MODE_HAS_TOGGLEABLE_FLAG(MODE_BLOOD_OPTIMIZATION) ? "toggled blood optimization on" : "toggled blood optimization off"].")
 
 /client/proc/toggle_combat_cas()
 	set name = "Toggle Combat CAS Equipment"
@@ -715,7 +715,7 @@
 		return
 
 	SSticker.mode.toggleable_flags ^= MODE_NO_COMBAT_CAS
-	message_staff("[src] has [MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_COMBAT_CAS) ? "toggled combat CAS off" : "toggled combat CAS on"].")
+	message_admins("[src] has [MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_COMBAT_CAS) ? "toggled combat CAS off" : "toggled combat CAS on"].")
 
 /client/proc/toggle_lz_protection()
 	set name = "Toggle LZ Mortar Protection"
@@ -729,7 +729,7 @@
 		return
 
 	SSticker.mode.toggleable_flags ^= MODE_LZ_PROTECTION
-	message_staff("[src] has [MODE_HAS_TOGGLEABLE_FLAG(MODE_LZ_PROTECTION) ? "toggled LZ protection on, mortars can no longer fire there" : "toggled LZ protection off, mortars can now fire there"].")
+	message_admins("[src] has [MODE_HAS_TOGGLEABLE_FLAG(MODE_LZ_PROTECTION) ? "toggled LZ protection on, mortars can no longer fire there" : "toggled LZ protection off, mortars can now fire there"].")
 
 /client/proc/toggle_shipside_sd()
 	set name = "Toggle Shipside SD Protection"
@@ -743,4 +743,4 @@
 		return
 
 	SSticker.mode.toggleable_flags ^= MODE_SHIPSIDE_SD
-	message_staff("[src] has [MODE_HAS_TOGGLEABLE_FLAG(MODE_SHIPSIDE_SD) ? "toggled SD protection off, Yautja can now big self destruct anywhere" : "toggled SD protection on, Yautja can now only big self destruct on the hunting grounds"].")
+	message_admins("[src] has [MODE_HAS_TOGGLEABLE_FLAG(MODE_SHIPSIDE_SD) ? "toggled SD protection off, Yautja can now big self destruct anywhere" : "toggled SD protection on, Yautja can now only big self destruct on the hunting grounds"].")

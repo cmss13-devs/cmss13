@@ -92,7 +92,7 @@
 
 /datum/shuttle/ferry/marine/proc/load_datums()
 	if(!(info_tag in s_info))
-		message_staff(SPAN_WARNING("Error with shuttles: Shuttle tag does not exist. Code: MSD10.\n WARNING: DROPSHIP LAUNCH WILL PROBABLY FAIL"))
+		message_admins(SPAN_WARNING("Error with shuttles: Shuttle tag does not exist. Code: MSD10.\n WARNING: DROPSHIP LAUNCH WILL PROBABLY FAIL"))
 
 	var/list/L = s_info[info_tag]
 	info_datums = L.Copy()
@@ -209,7 +209,7 @@
 		T_trg = pick(locs_land)
 		trg_rot = locs_land[T_trg]
 	if(!istype(T_src) || !istype(T_int) || !istype(T_trg))
-		message_staff(SPAN_WARNING("Error with shuttles: Reference turfs not correctly instantiated. Code: MSD02.\n <font size=10>WARNING: DROPSHIP LAUNCH WILL FAIL</font>"))
+		message_admins(SPAN_WARNING("Error with shuttles: Reference turfs not correctly instantiated. Code: MSD02.\n <font size=10>WARNING: DROPSHIP LAUNCH WILL FAIL</font>"))
 
 	//Switch the landmarks, to swap docking and landing locs, so we can move back and forth.
 	if(!transit_gun_mission) //gun mission makes you land back where you started. no need to swap dock and land turfs.
@@ -403,11 +403,11 @@
 				if(istype(get_area(TU), /area/almayer/hallways/hangar))
 					crash_turfs += TU
 			if(crash_turfs.len) T_trg = pick(crash_turfs)
-			else message_staff("no crash turf found in Almayer Hangar, contact coders.")
+			else message_admins("no crash turf found in Almayer Hangar, contact coders.")
 			break
 
 	if(!istype(T_src) || !istype(T_int) || !istype(T_trg))
-		message_staff(SPAN_WARNING("Error with shuttles: Reference turfs not correctly instantiated. Code: MSD04.\n WARNING: DROPSHIP LAUNCH WILL FAIL"))
+		message_admins(SPAN_WARNING("Error with shuttles: Reference turfs not correctly instantiated. Code: MSD04.\n WARNING: DROPSHIP LAUNCH WILL FAIL"))
 
 	shuttle_controller.locs_crash[target_section] -= T_trg
 
@@ -614,7 +614,7 @@
 
 	//Switch the landmarks so we can do this again
 	if(!istype(T_src) || !istype(T_trg))
-		message_staff(SPAN_WARNING("Error with shuttles: Ref turfs are null. Code: MSD15.\n WARNING: DROPSHIPS MAY NO LONGER BE OPERABLE"))
+		message_admins(SPAN_WARNING("Error with shuttles: Ref turfs are null. Code: MSD15.\n WARNING: DROPSHIPS MAY NO LONGER BE OPERABLE"))
 		return FALSE
 
 	locs_dock -= T_src

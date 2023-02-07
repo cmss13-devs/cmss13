@@ -1,4 +1,3 @@
-import { CHANNELS, ADMIN_CHANNELS } from '../constants';
 import { Modal } from '../types';
 
 /**
@@ -8,18 +7,16 @@ import { Modal } from '../types';
  */
 export const handleIncrementChannel = function (this: Modal) {
   const { channel } = this.state;
-  const { radioPrefix, admin } = this.fields;
-
-  const userChannels = admin ? ADMIN_CHANNELS : CHANNELS;
+  const { radioPrefix, availableChannels } = this.fields;
 
   if (radioPrefix === ':b ') {
     this.timers.channelDebounce({ mode: true });
   }
   this.fields.radioPrefix = '';
-  if (channel === userChannels.length - 1) {
+  if (channel === availableChannels.length - 1) {
     this.timers.channelDebounce({ mode: true });
     this.setState({
-      buttonContent: userChannels[0],
+      buttonContent: availableChannels[0],
       channel: 0,
     });
   } else {
@@ -28,7 +25,7 @@ export const handleIncrementChannel = function (this: Modal) {
       this.timers.channelDebounce({ mode: false });
     }
     this.setState({
-      buttonContent: userChannels[channel + 1],
+      buttonContent: availableChannels[channel + 1],
       channel: channel + 1,
     });
   }

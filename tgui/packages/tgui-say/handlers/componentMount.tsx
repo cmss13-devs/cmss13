@@ -7,20 +7,22 @@ export const handleComponentMount = function (this: Modal) {
   Byond.subscribeTo('props', (data) => {
     this.fields.maxLength = data.maxLength;
     this.fields.lightMode = !!data.lightMode;
-    this.fields.admin = !!data.admin;
+    this.fields.availableChannels = data.admin ? ADMIN_CHANNELS : CHANNELS;
   });
   Byond.subscribeTo('force', () => {
     this.events.onForce();
   });
   Byond.subscribeTo('open', (data) => {
-    const usedChannels = this.fields.admin ? ADMIN_CHANNELS : CHANNELS;
-    const channel = usedChannels.indexOf(data.channel) || 0;
+    const channel = this.fields.availableChannels.indexOf(data.channel) || 0;
 
-    this.setState({ buttonContent: usedChannels[channel], channel });
+    this.setState({
+      buttonContent: this.fields.availableChannels[channel],
+      channel,
+    });
     setTimeout(() => {
       this.fields.innerRef.current?.focus();
     }, 1);
-    windowOpen(usedChannels[channel]);
+    windowOpen(this.fields.availableChannels[channel]);
   });
   windowLoad();
 };

@@ -124,6 +124,7 @@ export const getCss = (
  * lightMode - boolean. If true, returns the light mode selector.
  * radioPrefix - string. If not empty, returns the radio prefix selector.
  * channel - number. The channel to use.
+ * availableChannels - the channels that the modal can use
  */
 export const getTheme = (
   lightMode: boolean,

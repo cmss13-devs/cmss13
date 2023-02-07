@@ -30,7 +30,7 @@ type Fields = {
   historyCounter: number;
   innerRef: RefObject<HTMLInputElement>;
   lightMode: boolean;
-  admin: boolean;
+  availableChannels: ReadonlyArray<string>;
   maxLength: number;
   radioPrefix: string;
   tempHistory: string;

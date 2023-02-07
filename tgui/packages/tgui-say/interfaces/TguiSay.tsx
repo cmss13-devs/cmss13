@@ -1,5 +1,5 @@
 import { TextArea } from 'tgui/components';
-import { ADMIN_CHANNELS, CHANNELS, WINDOW_SIZES } from '../constants';
+import { CHANNELS, WINDOW_SIZES } from '../constants';
 import { Dragzone } from '../components/dragzone';
 import { eventHandlerMap } from '../handlers';
 import { getCss, getTheme, timers } from '../helpers';
@@ -13,7 +13,7 @@ export class TguiSay extends Component<{}, State> {
     historyCounter: 0,
     innerRef: createRef(),
     lightMode: false,
-    admin: false,
+    availableChannels: CHANNELS,
     maxLength: 1024,
     radioPrefix: '',
     tempHistory: '',
@@ -39,11 +39,15 @@ export class TguiSay extends Component<{}, State> {
 
   render() {
     const { onClick, onEnter, onEscape, onKeyDown, onInput } = this.events;
-    const { innerRef, lightMode, maxLength, radioPrefix, value, admin } =
-      this.fields;
+    const {
+      innerRef,
+      lightMode,
+      maxLength,
+      radioPrefix,
+      value,
+      availableChannels,
+    } = this.fields;
     const { buttonContent, channel, edited, size } = this.state;
-
-    const availableChannels = admin ? ADMIN_CHANNELS : CHANNELS;
 
     const theme = getTheme(lightMode, radioPrefix, channel, availableChannels);
 

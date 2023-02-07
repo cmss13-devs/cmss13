@@ -9,7 +9,8 @@
 	var/language = LANGUAGE_XENOMORPH
 	var/melee_damage_lower = 10
 	var/melee_damage_upper = 20
-	var/melee_vehicle_damage = 10 //allows fine tuning melee damage to vehicles per caste.
+	///allows fine tuning melee damage to vehicles per caste.
+	var/melee_vehicle_damage = 10
 	var/evasion = XENO_EVASION_NONE
 
 	var/speed = XENO_SPEED_TIER_10
@@ -20,14 +21,18 @@
 	var/crystal_max = 0
 
 	var/max_health = XENO_UNIVERSAL_HPMULT * 100
-
-	var/evolution_allowed = 1 //Are they allowed to evolve (and have their evolution progress group)
-	var/evolution_threshold = 0 //Threshold to next evolution
-	var/evolve_without_queen = FALSE // whether they can get evo points without needing an ovi queen
-
-	var/list/evolves_to = list() //This is where you add castes to evolve into. "Separated", "by", "commas"
-	var/list/deevolves_to = list()  // what caste or castes to de-evolve to.
-	var/is_intelligent = 0 //If they can use consoles, etc. Set on Queen
+	///Are they allowed to evolve (and have their evolution progress group)
+	var/evolution_allowed = 1
+	///Threshold to next evolution
+	var/evolution_threshold = 0
+	/// whether they can get evo points without needing an ovi queen
+	var/evolve_without_queen = FALSE
+	///This is where you add castes to evolve into. "Separated", "by", "commas"
+	var/list/evolves_to = list()
+	/// what caste or castes to de-evolve to.
+	var/list/deevolves_to = list()
+	///If they can use consoles, etc. Set on Queen
+	var/is_intelligent = 0
 	var/caste_desc = null
 
 	// Tackles
@@ -37,20 +42,29 @@
 	var/tacklestrength_min = 2
 	var/tacklestrength_max = 3
 
-	var/armor_deflection = 0 //Chance of deflecting projectiles.
+	///Chance of deflecting projectiles.
+	var/armor_deflection = 0
 	var/fire_immunity = FIRE_IMMUNITY_NONE
 	var/fire_intensity_resistance = 0
 
-	var/spit_delay = 60 //Delay timer for spitting
+	///Delay timer for spitting
+	var/spit_delay = 60
 
-	var/spit_windup = FALSE // Windup for spits
+	/// Windup for spits
+	var/spit_windup = FALSE
 
-	var/aura_strength = 0 //The strength of our aura. Zero means we can't emit one
-	var/aura_allowed = list("frenzy", "warding", "recovery") //"Evolving" removed for the time being
+	///The strength of our aura. Zero means we can't emit one
+	var/aura_strength = 0
 
-	var/adjust_size_x = 1 //Adjust pixel size. 0.x is smaller, 1.x is bigger, percentage based.
+	///"Evolving" removed for the time being
+	var/aura_allowed = list("frenzy", "warding", "recovery")
+
+	 ///Adjust pixel size. 0.x is smaller, 1.x is bigger, percentage based.
+	var/adjust_size_x = 1
 	var/adjust_size_y = 1
-	var/list/spit_types //list of datum projectile types the xeno can use.
+
+	///list of datum projectile types the xeno can use.
+	var/list/spit_types
 
 	var/attack_delay = 0 //Bonus or pen to time in between attacks. + makes slashes slower.
 
@@ -61,7 +75,8 @@
 	var/behavior_delegate_type = /datum/behavior_delegate
 
 	// Resin building-related vars
-	var/build_time_mult = BUILD_TIME_MULT_XENO // Default build time and build distance
+	/// Default build time and build distance
+	var/build_time_mult = BUILD_TIME_MULT_XENO
 	var/max_build_dist = 0
 
 	// Carrier vars //
@@ -73,8 +88,8 @@
 	var/hugger_delay = 0
 	var/eggs_max = 0
 	var/egg_cooldown = 30
-
-	var/xeno_explosion_resistance = 0 //Armor but for explosions
+	///Armor but for explosions
+	var/xeno_explosion_resistance = 0
 
 	//Queen vars
 	var/can_hold_facehuggers = 0
@@ -90,14 +105,15 @@
 	var/burrow_cooldown = 5 SECONDS
 	var/tunnel_cooldown = 100
 	var/widen_cooldown = 10 SECONDS
-	var/tremor_cooldown = 30 SECONDS //Big strong ability, big cooldown.
-
-	var/innate_healing = FALSE //whether the xeno heals even outside weeds.
+	 ///Big strong ability, big cooldown.
+	var/tremor_cooldown = 30 SECONDS
+	///whether the xeno heals even outside weeds.
+	var/innate_healing = FALSE
 
 	var/acid_level = 0
 	var/weed_level = WEED_LEVEL_STANDARD
-
-	var/acid_splash_cooldown = 3 SECONDS //Time it takes between acid splash retaliate procs. Variable per caste, for if we want future castes that are acid bombs
+	///Time it takes between acid splash retaliate procs. Variable per caste, for if we want future castes that are acid bombs
+	var/acid_splash_cooldown = 3 SECONDS
 
 	// regen vars
 

@@ -232,7 +232,9 @@
 	var/datum/action/xeno_action/activable/queued_action // Action to perform on the next click.
 	var/is_zoomed = FALSE
 	var/list/spit_types
-	var/spit_windup = 0
+	/// Caste-based spit windup
+	var/spit_windup = FALSE
+	/// Caste-based spit windup duration (if applicable)
 	var/spit_delay = 0
 	var/tileoffset = 0 	// How much your view will be offset in the direction that you zoom?
 	var/viewsize = 0	//What size your view will be changed to when you zoom?

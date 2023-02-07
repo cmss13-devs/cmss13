@@ -64,14 +64,18 @@
 	ability_primacy = XENO_PRIMARY_ACTION_4
 	plasma_cost = 10
 	macro_path = /datum/action/xeno_action/verb/verb_acid_shroud
+
+	/// These are actions that will be placed on cooldown for the cooldown_duration when activates
 	var/action_types_to_cd = list(
 		/datum/action/xeno_action/activable/xeno_spit/bombard,
 		/datum/action/xeno_action/onclick/acid_shroud,
 		/datum/action/xeno_action/onclick/toggle_long_range/boiler,
 		/datum/action/xeno_action/activable/spray_acid/boiler)
 
-	xeno_cooldown = 340
-	var/cooldown_duration = 300
+	xeno_cooldown = 34 SECONDS
+
+	// Duration for the cooldown of abilities affected by acid shroud
+	var/cooldown_duration = 30 SECONDS
 
 /datum/action/xeno_action/onclick/dump_acid
 	name = "Dump Acid"
@@ -81,16 +85,15 @@
 	macro_path = /datum/action/xeno_action/verb/verb_dump_acid
 	action_type = XENO_ACTION_ACTIVATE
 	ability_primacy = XENO_PRIMARY_ACTION_4
-	xeno_cooldown = 340
+	xeno_cooldown = 34 SECONDS
 
-	var/buffs_duration = 60
-	var/cooldown_duration = 300
+	var/buffs_duration = 6 SECONDS
+	var/cooldown_duration = 30 SECONDS
 
 	var/speed_buff_amount = 0.5
 	var/movespeed_buff_applied = FALSE
 
-	// List of types of actions to place on 20-second CD
-	// if you ever want to subtype this for a strain or whatever, just change this var on the subtype
+	/// List of types of actions to place on 20-second CD,if you ever want to subtype this for a strain or whatever, just change this var on the subtype
 	var/action_types_to_cd = list(
 		/datum/action/xeno_action/activable/xeno_spit/bombard,
 		/datum/action/xeno_action/onclick/dump_acid,

@@ -128,8 +128,8 @@
 	..()
 	return
 
-/datum/action/xeno_action/onclick/acid_shroud/use_ability(atom/Atom)
-	var/datum/effect_system/smoke_spread/xeno_acid/Smok
+/datum/action/xeno_action/onclick/acid_shroud/use_ability(atom/atom)
+	var/datum/effect_system/smoke_spread/xeno_acid/spicy_gas
 	var/mob/living/carbon/xenomorph/Xeno = owner
 	if (!isxeno(owner))
 		return
@@ -146,13 +146,13 @@
 		return
 	playsound(Xeno,"acid_sizzle", 50, 1)
 	if(Xeno.ammo == GLOB.ammo_list[/datum/ammo/xeno/boiler_gas/acid])
-		Smok = new /datum/effect_system/smoke_spread/xeno_acid
+		spicy_gas = new /datum/effect_system/smoke_spread/xeno_acid
 	else if(Xeno.ammo == GLOB.ammo_list[/datum/ammo/xeno/boiler_gas])
-		Smok = new /datum/effect_system/smoke_spread/xeno_weaken
+		spicy_gas = new /datum/effect_system/smoke_spread/xeno_weaken
 	else
 		CRASH("Globber has unknown ammo [Xeno.ammo]! Oh no!")
-	Smok.set_up(1, 0, get_turf(Xeno), null, 6)
-	Smok.start()
+	spicy_gas.set_up(1, 0, get_turf(Xeno), null, 6)
+	spicy_gas.start()
 	to_chat(Xeno, SPAN_XENOHIGHDANGER("You dump your acid through your pores, creating a shroud of gas!"))
 	for (var/action_type in action_types_to_cd)
 		var/datum/action/xeno_action/XenoAction = get_xeno_action_by_type(Xeno, action_type)

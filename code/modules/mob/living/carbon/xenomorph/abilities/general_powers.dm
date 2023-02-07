@@ -708,7 +708,7 @@
 			return FALSE
 	return TRUE
 
-/datum/action/xeno_action/activable/xeno_spit/use_ability(atom/Atom)
+/datum/action/xeno_action/activable/xeno_spit/use_ability(atom/atom)
 	var/mob/living/carbon/xenomorph/Xeno = owner
 	var/spit_location
 	if(!Xeno.check_state())
@@ -727,7 +727,7 @@
 		return
 
 	if(aim_turf)
-		spit_location = get_turf(Atom)
+		spit_location = get_turf(atom)
 
 	var/turf/current_turf = get_turf(Xeno)
 
@@ -755,9 +755,9 @@
 		return
 
 	xeno_cooldown = Xeno.caste.spit_delay + Xeno.ammo.added_spit_delay
-	Xeno.visible_message(SPAN_XENOWARNING("[Xeno] spits at [Atom]!"), \
+	Xeno.visible_message(SPAN_XENOWARNING("[Xeno] spits at [atom]!"), \
 
-	SPAN_XENOWARNING("You spit a [Xeno.ammo.name] at [Atom]!") )
+	SPAN_XENOWARNING("You spit a [Xeno.ammo.name] at [atom]!") )
 	playsound(Xeno.loc, sound_to_play, 25, 1)
 
 

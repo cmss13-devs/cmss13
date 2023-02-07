@@ -4,6 +4,8 @@
 // in case you wanted a vent to always smoke north for example
 /////////////////////////////////////////////
 
+/// Chance that cades block the gas. Smoke ticks are calculated very quickly so this has to be high to have an effect.
+#define	BOILER_GAS_CADE_BLOCK_CHANCE 20
 /obj/effect/particle_effect/smoke
 	name = "smoke"
 	icon_state = "smoke"
@@ -101,7 +103,7 @@
 		return FALSE
 	if(T.density)
 		return TRUE
-	if(prob(20))
+	if(prob(BOILER_GAS_CADE_BLOCK_CHANCE))
 		var/move_dir = 0
 		for(var/obj/structure/obstacle in T)
 			move_dir = get_dir(src, T)
@@ -339,7 +341,8 @@
 	spread_speed = 10
 	amount = 1 //Amount depends on Boiler upgrade!
 	smokeranking = SMOKE_RANK_BOILER
-	var/neuro_dose = 5 // How much neuro is dosed per tick
+	/// How much neuro is dosed per tick
+	var/neuro_dose = 5
 	var/msg = "Your skin tingles as the gas consumes you!" // Message given per tick. Changes depending on which species is hit.
 
 //No effect when merely entering the smoke turf, for balance reasons

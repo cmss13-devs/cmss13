@@ -66,7 +66,7 @@
 	window.send_message("props", list(
 		lightMode = client.prefs?.tgui_say_light_mode,
 		maxLength = max_length,
-		admin = client.admin_holder.check_for_rights(R_MOD),
+		admin = client.admin_holder?.check_for_rights(R_MOD),
 	))
 	stop_thinking()
 	return TRUE
@@ -83,7 +83,7 @@
 	if(!payload?["channel"])
 		CRASH("No channel provided to an open TGUI-Say")
 	window_open = TRUE
-	if(payload["channel"] != OOC_CHANNEL && payload["channel"] != LOOC_CHANNEL)
+	if(payload["channel"] != OOC_CHANNEL && payload["channel"] != LOOC_CHANNEL && payload["channel"] != MOD_CHANNEL)
 		start_thinking()
 	return TRUE
 

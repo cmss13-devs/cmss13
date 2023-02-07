@@ -1,4 +1,4 @@
-import { CHANNELS } from '../constants';
+import { ADMIN_CHANNELS, CHANNELS } from '../constants';
 import { storeChat, windowClose } from '../helpers';
 import { Modal } from '../types';
 
@@ -9,12 +9,15 @@ export const handleEnter = function (
   value: string
 ) {
   const { channel } = this.state;
-  const { maxLength, radioPrefix } = this.fields;
+  const { maxLength, radioPrefix, admin } = this.fields;
+
+  const usedChannels = admin ? ADMIN_CHANNELS : CHANNELS;
+
   event.preventDefault();
   if (value && value.length < maxLength) {
     storeChat(value);
     Byond.sendMessage('entry', {
-      channel: CHANNELS[channel],
+      channel: usedChannels[channel],
       entry: channel === 0 ? radioPrefix + value : value,
     });
   }

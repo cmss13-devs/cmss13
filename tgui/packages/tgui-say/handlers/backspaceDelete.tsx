@@ -1,4 +1,4 @@
-import { CHANNELS } from '../constants';
+import { ADMIN_CHANNELS, CHANNELS } from '../constants';
 import { Modal } from '../types';
 
 /**
@@ -8,15 +8,18 @@ import { Modal } from '../types';
  */
 export const handleBackspaceDelete = function (this: Modal) {
   const { buttonContent, channel } = this.state;
-  const { radioPrefix, value } = this.fields;
+  const { radioPrefix, value, admin } = this.fields;
+
+  const usedChannels = admin ? ADMIN_CHANNELS : CHANNELS;
+
   // User is on a chat history message
   if (typeof buttonContent === 'number') {
     this.fields.historyCounter = 0;
-    this.setState({ buttonContent: CHANNELS[channel] });
+    this.setState({ buttonContent: usedChannels[channel] });
   }
   if (!value?.length && radioPrefix) {
     this.fields.radioPrefix = '';
-    this.setState({ buttonContent: CHANNELS[channel] });
+    this.setState({ buttonContent: usedChannels[channel] });
   }
   this.events.onSetSize(value?.length);
 };

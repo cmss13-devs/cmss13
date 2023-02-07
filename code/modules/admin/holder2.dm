@@ -47,6 +47,7 @@ GLOBAL_PROTECT(href_token)
 		owner.add_admin_verbs()
 		owner.add_admin_whitelists()
 		owner.tgui_say.load()
+		owner.update_special_keybinds()
 		GLOB.admins |= C
 		if(owner.admin_holder.rights & R_PROFILER)
 			if(!world.GetConfig("admin", C.ckey))
@@ -58,6 +59,7 @@ GLOBAL_PROTECT(href_token)
 		owner.remove_admin_verbs()
 		owner.admin_holder = null
 		owner.tgui_say.load()
+		owner.update_special_keybinds()
 		owner = null
 
 /*

@@ -1,4 +1,4 @@
-import { CHANNELS } from '../constants';
+import { ADMIN_CHANNELS, CHANNELS } from '../constants';
 import { windowLoad, windowOpen } from '../helpers';
 import { Modal } from '../types';
 
@@ -13,12 +13,14 @@ export const handleComponentMount = function (this: Modal) {
     this.events.onForce();
   });
   Byond.subscribeTo('open', (data) => {
-    const channel = CHANNELS.indexOf(data.channel) || 0;
-    this.setState({ buttonContent: CHANNELS[channel], channel });
+    const usedChannels = this.fields.admin ? ADMIN_CHANNELS : CHANNELS;
+    const channel = usedChannels.indexOf(data.channel) || 0;
+
+    this.setState({ buttonContent: usedChannels[channel], channel });
     setTimeout(() => {
       this.fields.innerRef.current?.focus();
     }, 1);
-    windowOpen(CHANNELS[channel]);
+    windowOpen(usedChannels[channel]);
   });
   windowLoad();
 };

@@ -1,4 +1,4 @@
-import { CHANNELS, RADIO_PREFIXES, WINDOW_SIZES } from '../constants';
+import { RADIO_PREFIXES, WINDOW_SIZES } from '../constants';
 import { KEY_0, KEY_Z } from 'common/keycodes';
 import { classes } from 'common/react';
 import { debounce, throttle } from 'common/timer';
@@ -128,12 +128,13 @@ export const getCss = (
 export const getTheme = (
   lightMode: boolean,
   radioPrefix: string,
-  channel: number
+  channel: number,
+  availableChannels: ReadonlyArray<string>
 ): string => {
   return (
     (lightMode && 'lightMode') ||
     RADIO_PREFIXES[radioPrefix]?.id ||
-    CHANNELS[channel]?.toLowerCase()
+    availableChannels[channel]?.toLowerCase()
   );
 };
 

@@ -1,5 +1,5 @@
 import { TextArea } from 'tgui/components';
-import { WINDOW_SIZES } from '../constants';
+import { ADMIN_CHANNELS, CHANNELS, WINDOW_SIZES } from '../constants';
 import { Dragzone } from '../components/dragzone';
 import { eventHandlerMap } from '../handlers';
 import { getCss, getTheme, timers } from '../helpers';
@@ -39,9 +39,13 @@ export class TguiSay extends Component<{}, State> {
 
   render() {
     const { onClick, onEnter, onEscape, onKeyDown, onInput } = this.events;
-    const { innerRef, lightMode, maxLength, radioPrefix, value } = this.fields;
+    const { innerRef, lightMode, maxLength, radioPrefix, value, admin } =
+      this.fields;
     const { buttonContent, channel, edited, size } = this.state;
-    const theme = getTheme(lightMode, radioPrefix, channel);
+
+    const availableChannels = admin ? ADMIN_CHANNELS : CHANNELS;
+
+    const theme = getTheme(lightMode, radioPrefix, channel, availableChannels);
 
     return (
       <div className={getCss('modal', theme, size)} $HasKeyedChildren>

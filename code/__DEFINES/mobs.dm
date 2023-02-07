@@ -60,9 +60,9 @@
 //=================================================
 
 //mob/var/stat things
-#define CONSCIOUS (1<<0)
-#define UNCONSCIOUS (1<<1)
-#define DEAD (1<<2)
+#define CONSCIOUS 0
+#define UNCONSCIOUS 1
+#define DEAD 2
 
 //Damage things
 //Way to waste perfectly good damagetype names (BRUTE) on this... If you were really worried about case sensitivity, you could have just used lowertext(damagetype) in the proc...
@@ -152,16 +152,16 @@
 //=================================================
 
 /*   MOVE DEFINES   */
-#define MOVE_INTENT_WALK (1<<0)
-#define MOVE_INTENT_RUN  (1<<1)
+#define MOVE_INTENT_WALK 1
+#define MOVE_INTENT_RUN  2
 
 /*   INTERNAL ORGAN DEFINES   */
-#define ORGAN_ASSISTED (1<<0)
-#define ORGAN_ROBOT (1<<1)
+#define ORGAN_ASSISTED 1
+#define ORGAN_ROBOT 2
 
-#define ORGAN_HEALTHY (1<<0)
-#define ORGAN_BRUISED (1<<1)
-#define ORGAN_BROKEN (1<<2)
+#define ORGAN_HEALTHY 0
+#define ORGAN_BRUISED 1
+#define ORGAN_BROKEN 2
 
 //=================================================
 

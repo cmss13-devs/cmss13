@@ -13,7 +13,7 @@
 	var/min_bruised_damage = 10
 	var/min_broken_damage = 30
 	var/parent_limb = "chest"
-	var/robotic = 0 //1 for 'assisted' organs (e.g. pacemaker), 2 for actual cyber organ.
+	var/robotic = 1 //2 for 'assisted' organs (e.g. pacemaker), 4 for actual cyber organ.
 	var/cut_away = FALSE //internal organ has its links to the body severed, organ is ready to be removed.
 	var/removed_type //When removed, forms this object.
 	var/robotic_type //robotic version of removed_type, used in mechanize().

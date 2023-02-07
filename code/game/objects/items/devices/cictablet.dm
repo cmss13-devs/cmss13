@@ -9,7 +9,6 @@
 	indestructible = TRUE
 	req_access = list(ACCESS_MARINE_COMMANDER)
 	var/on = TRUE // 0 for off
-	var/mob/living/carbon/human/current_mapviewer
 	var/cooldown_between_messages = COOLDOWN_COMM_MESSAGE
 
 	var/tablet_name = "Commanding Officer's Tablet"
@@ -18,14 +17,14 @@
 	var/announcement_faction = FACTION_MARINE
 	var/add_pmcs = TRUE
 
-	var/tacmap_type = TACMAP_DEFAULT
-	var/tacmap_base_type = TACMAP_BASE_OCCLUDED
-	var/tacmap_additional_parameter = null
-	var/minimap_name = "Marine Minimap"
+	var/datum/tacmap/tacmap
+	var/minimap_type = MINIMAP_FLAG_USCM
+
 	COOLDOWN_DECLARE(announcement_cooldown)
 	COOLDOWN_DECLARE(distress_cooldown)
 
 /obj/item/device/cotablet/Initialize()
+	tacmap = new(src, minimap_type)
 	if(SSticker.mode && MODE_HAS_FLAG(MODE_FACTION_CLASH))
 		add_pmcs = FALSE
 	else if(SSticker.current_state < GAME_STATE_PLAYING)
@@ -81,13 +80,6 @@
 		ui = new(user, src, "CommandTablet", "Command Tablet")
 		ui.open()
 
-/obj/item/device/cotablet/ui_close(mob/user)
-	. = ..()
-	if(current_mapviewer)
-		close_browser(current_mapviewer, "marineminimap")
-		current_mapviewer = null
-		return
-
 /obj/item/device/cotablet/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 	if(.)
@@ -124,12 +116,7 @@
 			. = TRUE
 
 		if("mapview")
-			if(current_mapviewer)
-				update_mapview(TRUE)
-				. = TRUE
-				return
-			current_mapviewer = usr
-			update_mapview()
+			tacmap.tgui_interact(usr)
 			. = TRUE
 
 		if("evacuation_start")
@@ -168,17 +155,6 @@
 			COOLDOWN_START(src, distress_cooldown, COOLDOWN_COMM_REQUEST)
 			return TRUE
 
-/obj/item/device/cotablet/proc/update_mapview(close = 0)
-	if (close || !current_mapviewer || !Adjacent(current_mapviewer))
-		close_browser(current_mapviewer, "marineminimap")
-		current_mapviewer = null
-		return
-
-	var/icon/O = overlay_tacmap(tacmap_type, tacmap_base_type, tacmap_additional_parameter)
-	if(O)
-		current_mapviewer << browse_rsc(O, "marine_minimap.png")
-		show_browser(current_mapviewer, "<img src=marine_minimap.png>", minimap_name, "marineminimap", "size=[(map_sizes[1]*2)+50]x[(map_sizes[2]*2)+50]", closeref = src)
-
 /obj/item/device/cotablet/pmc
 	desc = "A special device used by corporate PMC directors."
 
@@ -187,7 +163,4 @@
 	announcement_title = PMC_COMMAND_ANNOUNCE
 	announcement_faction = FACTION_PMC
 
-	tacmap_type = TACMAP_FACTION
-	tacmap_base_type = TACMAP_BASE_OPEN
-	tacmap_additional_parameter = FACTION_PMC
-	minimap_name = "PMC Minimap"
+	minimap_type = MINIMAP_FLAG_PMC

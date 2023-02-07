@@ -1638,24 +1638,6 @@ var/list/WALLITEMS = list(
 	if(turfs.len)
 		return pick(turfs)
 
-/proc/input_marked_datum(list/marked_datums)
-	if(!marked_datums.len)
-		return null
-
-	var/list/options = list()
-	for(var/datum/D in marked_datums)
-		options += "Marked datum ([D] - \ref[D])"
-	var/choice = tgui_input_list(usr, "Select marked datum", "Marked datums", options)
-
-	if(!choice)
-		return null
-
-	for(var/datum/D in marked_datums)
-		if(findtext(choice, "\ref[D]"))
-			return D
-
-	return null
-
 // Returns true if arming a given explosive might be considered grief
 // Explosives are considered "griefy" if they are primed when all the following are true:
 // * The explosive is on the Almayer/dropship transit z levels

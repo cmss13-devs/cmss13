@@ -7,6 +7,7 @@ export const handleComponentMount = function (this: Modal) {
   Byond.subscribeTo('props', (data) => {
     this.fields.maxLength = data.maxLength;
     this.fields.lightMode = !!data.lightMode;
+    this.fields.admin = !!data.admin;
   });
   Byond.subscribeTo('force', () => {
     this.events.onForce();

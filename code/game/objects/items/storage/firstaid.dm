@@ -285,7 +285,7 @@
 		overlays += "pills_closed"
 
 	if((isstorage(loc) || ismob(loc)) && display_maptext)
-		maptext = "<span class='langchat'>[maptext_label]</span>"
+		maptext = SPAN_LANGCHAT("[maptext_label]")
 	else
 		maptext = ""
 

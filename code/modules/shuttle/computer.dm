@@ -52,7 +52,7 @@
 		return
 
 	if(!isqueen(usr) && !allowed(usr))
-		to_chat(usr, "<span class='danger'>Access denied.</span>")
+		to_chat(usr, SPAN_DANGER("Access denied."))
 		return TRUE
 
 	if(href_list["move"])
@@ -71,14 +71,14 @@
 		switch(SSshuttle.moveShuttle(shuttleId, href_list["move"], 1))
 			if(DOCKING_SUCCESS)
 				if(previous_status != SHUTTLE_IDLE)
-					visible_message("<span class='notice'>Destination updated, recalculating route.</span>")
+					visible_message(SPAN_NOTICE("Destination updated, recalculating route."))
 				else
-					visible_message("<span class='notice'>Shuttle departing. Please stand away from the doors.</span>")
+					visible_message(SPAN_NOTICE("Shuttle departing. Please stand away from the doors."))
 			if(DOCKING_NULL_SOURCE)
 				to_chat(usr, SPAN_WARNING("Invalid shuttle requested."))
 				return TRUE
 			else
-				to_chat(usr, "<span class='notice'>Unable to comply.</span>")
+				to_chat(usr, SPAN_NOTICE("Unable to comply."))
 				return TRUE
 
 /obj/structure/machinery/computer/shuttle/connect_to_shuttle(obj/docking_port/mobile/port, obj/docking_port/stationary/dock, idnum, override=FALSE)

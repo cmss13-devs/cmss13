@@ -119,6 +119,6 @@
 				if(M.client) M.client.images -= speech_bubble
 
 	if (watching.len)
-		var/rendered = "<span class='game say'><span class='name'>[src.name]</span> whispers something.</span>"
+		var/rendered = SPAN_GAME SAY'><SPAN CLASS='NAME("[src.name]</span> whispers something.")
 		for (var/mob/M in watching)
 			M.show_message(rendered, SHOW_MESSAGE_AUDIBLE)

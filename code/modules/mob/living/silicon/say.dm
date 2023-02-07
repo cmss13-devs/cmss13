@@ -151,11 +151,11 @@
 		var/verb = say_quote(message)
 
 		//Human-like, sorta, heard by those who understand humans.
-		var/rendered_a = "<span class='game say'><span class='name'>[name]</span> [verb], <span class='message'>\"[message]\"</span></span>"
+		var/rendered_a = SPAN_GAME SAY'><SPAN CLASS='NAME'>[NAME]</SPAN> [VERB], <SPAN CLASS='MESSAGE("\"[message]\"</span>")
 
 		//Speach distorted, heard by those who do not understand AIs.
 		var/message_stars = stars(message)
-		var/rendered_b = "<span class='game say'><span class='name'>[voice_name]</span> [verb], <span class='message'>\"[message_stars]\"</span></span>"
+		var/rendered_b = SPAN_GAME SAY'><SPAN CLASS='NAME'>[VOICE_NAME]</SPAN> [VERB], <SPAN CLASS='MESSAGE("\"[message_stars]\"</span>")
 
 		to_chat(src, "<i><span class='game say'>Holopad transmitted, <span class='name'>[real_name]</span> [verb], <span class='message'>[message]</span></span></i>")//The AI can "hear" its own message.
 		for(var/mob/M in hearers(T.loc))//The location is the object, default distance.

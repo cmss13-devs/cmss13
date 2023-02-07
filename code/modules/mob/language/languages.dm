@@ -168,7 +168,7 @@
 	GLOB.STUI.processing |= STUI_LOG_GAME_CHAT
 	for (var/mob/dead in GLOB.dead_mob_list)
 		if(!istype(dead,/mob/new_player) && !istype(dead,/mob/living/brain)) //No meta-evesdropping
-			dead.show_message("<span class='[colour]'>[message_start] [message_body]</span>", SHOW_MESSAGE_VISIBLE)
+			dead.show_message(SPAN_[COLOUR]("[message_start] [message_body]"), SHOW_MESSAGE_VISIBLE)
 
 	for (var/mob/living/listener in GLOB.alive_mob_list)
 
@@ -177,7 +177,7 @@
 		else if(isAI(listener))
 			message_start = "<i><span class='game say'>[name], <a href='byond://?src=\ref[listener];track2=\ref[listener];track=\ref[speaker];trackname=[html_encode(speaker.name)]'><span class='name'>[speaker.name]</span></a>"
 
-		listener.show_message("<span class='[colour]'>[message_start] [message_body]</span>", SHOW_MESSAGE_VISIBLE)
+		listener.show_message(SPAN_[COLOUR]("[message_start] [message_body]"), SHOW_MESSAGE_VISIBLE)
 
 	var/list/listening = hearers(1, src)
 	listening -= src

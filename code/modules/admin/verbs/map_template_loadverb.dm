@@ -30,7 +30,7 @@
 					if(istype(P, /obj/docking_port/mobile))
 						template.post_load(P)
 						break*/
-			message_admins("<span class='adminnotice'>[key_name_admin(src)] has placed a map template ([template.name]) at [key_name_admin(T)]</span>")
+			message_admins(SPAN_ADMINNOTICE("[key_name_admin(src)] has placed a map template ([template.name]) at [key_name_admin(T)]"))
 		else
 			to_chat(src, "Failed to place map", confidential = TRUE)
 	images -= preview
@@ -72,5 +72,5 @@
 			return
 
 	SSmapping.map_templates[M.name] = M
-	message_admins("<span class='adminnotice'>[key_name_admin(src)] has uploaded a map template '[map]' ([M.width]x[M.height])[report_link].</span>")
-	to_chat(src, "<span class='notice'>Map template '[map]' ready to place ([M.width]x[M.height])</span>", confidential = TRUE)
+	message_admins(SPAN_ADMINNOTICE("[key_name_admin(src)] has uploaded a map template '[map]' ([M.width]x[M.height])[report_link]."))
+	to_chat(src, SPAN_NOTICE("Map template '[map]' ready to place ([M.width]x[M.height])"), confidential = TRUE)

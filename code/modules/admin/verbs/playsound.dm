@@ -6,7 +6,7 @@
 
 	var/ytdl = CONFIG_GET(string/invoke_youtubedl)
 	if(!ytdl)
-		to_chat(src, "<span class='boldwarning'>Youtube-dl was not configured, action unavailable</span>", confidential = TRUE) //Check config.txt for the INVOKE_YOUTUBEDL value
+		to_chat(src, SPAN_BOLDWARNING("Youtube-dl was not configured, action unavailable"), confidential = TRUE) //Check config.txt for the INVOKE_YOUTUBEDL value
 		return
 
 	var/web_sound_input = input("Enter content URL (supported sites only)", "Play Internet Sound via youtube-dl") as text|null
@@ -49,7 +49,7 @@
 		music_extra_data["end"] = data["end_time"]
 
 	if(web_sound_url && !findtext(web_sound_url, GLOB.is_http_protocol))
-		to_chat(src, "<span class='boldwarning'>BLOCKED: Content URL not using http(s) protocol</span>", confidential = TRUE)
+		to_chat(src, SPAN_BOLDWARNING("BLOCKED: Content URL not using http(s) protocol"), confidential = TRUE)
 		to_chat(src, SPAN_WARNING("The media provider returned a content URL that isn't using the HTTP or HTTPS protocol"), confidential = TRUE)
 		return
 
@@ -170,7 +170,7 @@
 			SEND_SOUND(Mob, admin_sound)
 			admin_sound.volume = vol
 			if(showtitle)
-				to_chat(client, "<span class='boldannounce'>An admin played: [S]</span>", confidential = TRUE)
+				to_chat(client, SPAN_BOLDANNOUNCE("An admin played: [S]"), confidential = TRUE)
 
 	log_admin("[key_name(src)] played midi sound [S] - [style]")
 	message_admins("[key_name_admin(src)] played midi sound [S] - [style]")

@@ -144,6 +144,17 @@ you will have to do something like if(client.admin_holder.rights & R_ADMIN) your
 		return FALSE
 	return TRUE
 
+/// gets the role dependant data for tgui-say
+/datum/admins/proc/get_tgui_say_roles()
+	var/roles = list()
+	if(check_for_rights(R_ADMIN))
+		roles += "Admin"
+	if(check_for_rights(R_MOD))
+		roles += "Mod"
+	if(check_for_rights(R_MENTOR))
+		roles += "Mentor"
+	return roles
+
 /datum/proc/CanProcCall(procname)
 	return TRUE
 

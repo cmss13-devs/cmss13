@@ -1,13 +1,5 @@
 /** Radio channels */
 export const CHANNELS = ['Say', 'Comms', 'Me', 'OOC', 'LOOC'] as const;
-export const ADMIN_CHANNELS = [
-  'Say',
-  'Comms',
-  'Me',
-  'OOC',
-  'LOOC',
-  'MSAY',
-] as const;
 
 /** Window sizes in pixels */
 export enum WINDOW_SIZES {

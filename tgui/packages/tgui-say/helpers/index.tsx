@@ -1,4 +1,4 @@
-import { RADIO_PREFIXES, WINDOW_SIZES } from '../constants';
+import { CHANNELS, RADIO_PREFIXES, WINDOW_SIZES } from '../constants';
 import { KEY_0, KEY_Z } from 'common/keycodes';
 import { classes } from 'common/react';
 import { debounce, throttle } from 'common/timer';
@@ -157,3 +157,24 @@ export const timers = {
 /** Checks if a parameter is null or undefined. Returns bool */
 export const valueExists = (param: any): boolean =>
   param !== null && param !== undefined;
+
+export const getAvailableChannels = (
+  roles: Array<String>
+): ReadonlyArray<string> => {
+  const availableChannels: Array<string> = [...CHANNELS];
+  if (!roles) {
+    return availableChannels;
+  }
+
+  if (roles.includes('Mod')) {
+    availableChannels.push('MSAY');
+  }
+  if (roles.includes('Mentor')) {
+    availableChannels.push('Mentor');
+  }
+  if (roles.includes('Admin')) {
+    availableChannels.push('ASAY');
+  }
+
+  return availableChannels;
+};

@@ -1,5 +1,4 @@
-import { ADMIN_CHANNELS, CHANNELS } from '../constants';
-import { windowLoad, windowOpen } from '../helpers';
+import { getAvailableChannels, windowLoad, windowOpen } from '../helpers';
 import { Modal } from '../types';
 
 /** Attach listeners, sets window size just in case */
@@ -7,7 +6,7 @@ export const handleComponentMount = function (this: Modal) {
   Byond.subscribeTo('props', (data) => {
     this.fields.maxLength = data.maxLength;
     this.fields.lightMode = !!data.lightMode;
-    this.fields.availableChannels = data.admin ? ADMIN_CHANNELS : CHANNELS;
+    this.fields.availableChannels = getAvailableChannels(data.roles);
   });
   Byond.subscribeTo('force', () => {
     this.events.onForce();

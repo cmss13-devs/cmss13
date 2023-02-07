@@ -693,7 +693,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 					else
 						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=looc")
 				if(MOD_CHANNEL)
-					if(admin_holder.check_for_rights(R_MOD))
+					if(admin_holder?.check_for_rights(R_MOD))
 						if(prefs.tgui_say)
 							var/msay = tgui_say_create_open_command(MOD_CHANNEL)
 							winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=[msay]")

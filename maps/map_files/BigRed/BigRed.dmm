@@ -1572,7 +1572,9 @@
 	},
 /area/bigredv2/outside/telecomm)
 "aec" = (
-/obj/structure/machinery/door/airlock/maintenance,
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
+	name = "\improper Telecommunications";
+	},
 /turf/open/floor{
 	icon_state = "dark"
 	},

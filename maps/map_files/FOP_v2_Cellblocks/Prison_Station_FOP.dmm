@@ -35554,8 +35554,7 @@
 "car" = (
 /obj/structure/machinery/door/poddoor/almayer/open{
 	id = "";
-	name = ";emergency lockdown";
-	 = None;
+	name = "emergency lockdown";
 	use_power = 0
 	},
 /turf/open/floor/prison{
@@ -44584,8 +44583,7 @@
 "hdc" = (
 /obj/structure/machinery/door/poddoor/almayer/open{
 	id = "";
-	name = ";emergency lockdown";
-	 = None;
+	name = "emergency lockdown";
 	use_power = 0
 	},
 /obj/effect/decal/cleanable/blood,
@@ -48349,8 +48347,7 @@
 "teg" = (
 /obj/structure/machinery/door/poddoor/almayer/open{
 	id = "";
-	name = ";emergency lockdown";
-	 = None;
+	name = "emergency lockdown";
 	use_power = 0
 	},
 /obj/structure/pipes/standard/simple/hidden/supply,
@@ -49155,8 +49152,7 @@
 "vDC" = (
 /obj/structure/machinery/door/poddoor/almayer/open{
 	id = "";
-	name = ";emergency lockdown";
-	 = None;
+	name = "emergency lockdown";
 	use_power = 0
 	},
 /obj/structure/pipes/standard/simple/hidden/supply,

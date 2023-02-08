@@ -990,8 +990,7 @@
 "adD" = (
 /obj/structure/machinery/door_control{
 	id = "";
-	name = ";Storage Unit Control";
-	 = None;
+	name = "Storage Unit Control";
 	pixel_x = 24
 	},
 /turf/open/floor/plating/icefloor,
@@ -1002,8 +1001,7 @@
 	},
 /obj/structure/machinery/door_control{
 	id = "";
-	name = ";Storage Unit Control";
-	 = None;
+	name = "Storage Unit Control";
 	pixel_x = -24
 	},
 /turf/open/floor/plating/icefloor{
@@ -1046,8 +1044,7 @@
 	},
 /obj/structure/machinery/door_control{
 	id = "";
-	name = ";Storage Unit Control";
-	 = None;
+	name = "Storage Unit Control";
 	pixel_x = 24
 	},
 /turf/open/floor/plating/icefloor{
@@ -1058,8 +1055,7 @@
 "adK" = (
 /obj/structure/machinery/door_control{
 	id = "";
-	name = ";Storage Unit Control";
-	 = None;
+	name = "Storage Unit Control";
 	pixel_x = -24
 	},
 /obj/effect/landmark/hunter_primary,
@@ -1546,8 +1542,7 @@
 "afb" = (
 /obj/structure/machinery/door_control{
 	id = "";
-	name = ";Storage Unit Control";
-	 = None;
+	name = "Storage Unit Control";
 	pixel_x = -24
 	},
 /turf/open/floor/plating/icefloor,
@@ -10962,7 +10957,7 @@
 /obj/structure/window_frame/colony/reinforced,
 /obj/structure/machinery/door/poddoor/almayer/open{
 	id = "";
-	name = ";\improper Forced Blast Door" = None
+	name = "\improper Forced Blast Door" = None
 	},
 /turf/open/floor/plating,
 /area/ice_colony/surface/command/control/office)
@@ -11168,7 +11163,7 @@
 /obj/structure/machinery/door/poddoor/almayer/open{
 	dir = 4;
 	id = "";
-	name = ";\improper Forced Blast Door" = None
+	name = "\improper Forced Blast Door" = None
 	},
 /turf/open/floor/plating,
 /area/ice_colony/surface/command/control)
@@ -11897,7 +11892,7 @@
 "aGN" = (
 /obj/structure/machinery/door/poddoor/almayer/open{
 	id = "";
-	name = ";\improper Forced Blast Door" = None
+	name = "\improper Forced Blast Door" = None
 	},
 /obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/colony{
 	name = "\improper Colony Crisis Room"
@@ -11912,7 +11907,7 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/poddoor/almayer/open{
 	id = "";
-	name = ";\improper Forced Blast Door" = None
+	name = "\improper Forced Blast Door" = None
 	},
 /turf/open/floor/wood,
 /area/ice_colony/surface/command/crisis)
@@ -11920,7 +11915,7 @@
 /obj/structure/window_frame/colony/reinforced,
 /obj/structure/machinery/door/poddoor/almayer/open{
 	id = "";
-	name = ";\improper Forced Blast Door" = None
+	name = "\improper Forced Blast Door" = None
 	},
 /turf/open/floor/plating,
 /area/ice_colony/surface/command/crisis)

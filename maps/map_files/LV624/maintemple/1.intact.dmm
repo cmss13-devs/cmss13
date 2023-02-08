@@ -1847,12 +1847,6 @@
 	},
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
-"Xb" = (
-/obj/structure/stairs/perspective{
-	color = "#b29082"
-	},
-/turf/open/floor/sandstone/runed,
-/area/lv624/ground/caves/sand_temple)
 "Xg" = (
 /obj/structure/barricade/handrail/strata{
 	dir = 1
@@ -2708,7 +2702,7 @@ mv
 mv
 kO
 PA
-Xb
+UP
 mv
 mv
 mv
@@ -2792,7 +2786,7 @@ mv
 mv
 kO
 PA
-Xb
+UP
 mv
 mv
 mv

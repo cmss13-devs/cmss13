@@ -26111,13 +26111,6 @@
 	icon_state = "yellow"
 	},
 /area/shiva/interior/colony/medseceng)
-"vhH" = (
-/obj/structure/machinery/door/airlock/almayer/engineering/colony{
-	dir = 1;
-	name = "\improper Colony Engineering"
-	},
-/turf/open/floor/plating,
-/area/shiva/interior/colony/medseceng)
 "vhL" = (
 /turf/open/floor/shiva{
 	dir = 6;
@@ -56270,7 +56263,7 @@ uSn
 uSn
 uSn
 uSn
-vhH
+fkb
 sYu
 sYu
 sYu

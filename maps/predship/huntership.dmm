@@ -1009,12 +1009,6 @@
 /obj/structure/machinery/chem_dispenser/soda,
 /turf/open/shuttle/predship,
 /area/yautja)
-"cs" = (
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
-/area/yautja)
 "ct" = (
 /obj/structure/machinery/door/airlock/strata/autoname{
 	dir = 1;
@@ -6330,7 +6324,7 @@ bL
 cP
 bL
 bj
-cs
+bL
 cP
 bL
 bj

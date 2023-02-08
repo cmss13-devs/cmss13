@@ -39763,12 +39763,6 @@
 	},
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_civilian)
-"cpS" = (
-/obj/structure/machinery/door/airlock/almayer/engineering/colony{
-	name = "\improper Telecommunications"
-	},
-/turf/open/floor/prison,
-/area/desert_dam/building/substation/west)
 "cpT" = (
 /obj/structure/flora/grass/desert{
 	icon_state = "lightgrass_6"
@@ -72245,7 +72239,7 @@ cjg
 cgm
 cgm
 cmm
-cpS
+cnl
 cmm
 cgm
 cgm

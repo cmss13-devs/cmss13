@@ -28800,7 +28800,7 @@
 "bAI" = (
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited{
 	name = "Emergency NanoMed";
-	pixel_x = 30;
+	pixel_x = 30
 	},
 /turf/open/floor/corsat{
 	dir = 4;
@@ -59089,7 +59089,7 @@
 "sxB" = (
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited{
 	name = "Emergency NanoMed";
-	pixel_y = 30;
+	pixel_y = 30
 	},
 /turf/open/floor/corsat{
 	dir = 1;

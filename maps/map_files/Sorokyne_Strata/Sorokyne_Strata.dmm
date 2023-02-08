@@ -909,6 +909,7 @@
 /area/strata/ug/interior/jungle/deep/structures/res)
 "acI" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
+	
 	},
 /turf/open/floor/strata{
 	dir = 10;
@@ -1779,6 +1780,7 @@
 /area/strata/ag/exterior)
 "afg" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
+	
 	},
 /turf/open/floor/strata{
 	icon_state = "multi_tiles"
@@ -2381,6 +2383,7 @@
 	dir = 4
 	},
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
+	
 	},
 /turf/open/floor/strata{
 	icon_state = "multi_tiles"
@@ -3225,6 +3228,7 @@
 /area/strata/ug/interior/jungle/deep/south_dorms)
 "ajg" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
+	
 	},
 /turf/open/floor/strata{
 	icon_state = "multi_tiles"
@@ -3238,6 +3242,7 @@
 /area/strata/ag/exterior/paths/cabin_area)
 "aji" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
+	
 	},
 /turf/open/floor/strata{
 	icon_state = "multi_tiles"
@@ -6244,6 +6249,7 @@
 	dir = 4
 	},
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
+	
 	},
 /turf/open/floor/strata{
 	icon_state = "multi_tiles"
@@ -6628,6 +6634,7 @@
 /area/strata/ug/interior/jungle/deep/structures/res)
 "ath" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
+	
 	},
 /turf/open/floor/strata{
 	dir = 8;
@@ -7099,6 +7106,7 @@
 /area/strata/ag/interior/outpost/engi)
 "auF" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
+	
 	},
 /turf/open/floor/strata{
 	dir = 10;
@@ -7371,6 +7379,7 @@
 /area/strata/ag/interior/dorms)
 "avv" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
+	
 	},
 /turf/open/floor/prison{
 	icon_state = "darkredfull2"
@@ -8344,6 +8353,7 @@
 /area/strata/ug/interior/jungle/deep/structures/res)
 "ayf" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass/colony{
+	
 	},
 /turf/open/floor/strata{
 	dir = 10;
@@ -8583,6 +8593,7 @@
 /area/strata/ag/interior/outpost/engi)
 "ayS" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
+	
 	},
 /turf/open/floor/strata{
 	dir = 8;
@@ -9821,6 +9832,7 @@
 /area/strata/ag/exterior/research_decks)
 "aCU" = (
 /obj/structure/machinery/door/airlock/almayer/engineering/colony{
+	
 	},
 /turf/open/floor/strata{
 	dir = 8;
@@ -10852,6 +10864,7 @@
 	dir = 4
 	},
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
+	
 	},
 /turf/open/floor/strata{
 	icon_state = "multi_tiles"
@@ -11357,6 +11370,7 @@
 	dir = 4
 	},
 /obj/structure/machinery/door/airlock/almayer/engineering/colony{
+	
 	},
 /turf/open/floor/strata{
 	dir = 8;
@@ -11517,6 +11531,7 @@
 /area/strata/ag/interior/outpost/canteen/lower_cafeteria)
 "aHO" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
+	
 	},
 /turf/open/floor/strata{
 	dir = 8;
@@ -11552,6 +11567,7 @@
 /area/strata/ag/interior/outpost/maint/canteen_e_1)
 "aHV" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
+	
 	},
 /turf/open/floor/strata{
 	dir = 6;
@@ -11981,6 +11997,7 @@
 /area/strata/ag/interior/outpost/canteen/lower_cafeteria)
 "aJG" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
+	
 	},
 /turf/open/floor/strata{
 	dir = 10;
@@ -11989,6 +12006,7 @@
 /area/strata/ag/interior/outpost/canteen)
 "aJH" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
+	
 	},
 /turf/open/floor/strata{
 	dir = 10;
@@ -14587,6 +14605,7 @@
 /area/strata/ag/interior/outpost/canteen/lower_cafeteria)
 "aRr" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
+	
 	},
 /turf/open/floor/strata{
 	dir = 8;
@@ -15235,6 +15254,7 @@
 	dir = 4
 	},
 /obj/structure/machinery/door/airlock/almayer/engineering/colony{
+	
 	},
 /turf/open/floor/strata{
 	dir = 8;
@@ -16305,6 +16325,7 @@
 /area/strata/ug/interior/jungle/deep/north_carp)
 "aXs" = (
 /obj/structure/machinery/door/airlock/almayer/engineering/colony{
+	
 	},
 /turf/open/floor/strata{
 	dir = 8;
@@ -19559,6 +19580,7 @@
 	dir = 4
 	},
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
+	
 	},
 /turf/open/floor/strata{
 	dir = 10;
@@ -19592,6 +19614,7 @@
 	dir = 4
 	},
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
+	
 	},
 /turf/open/floor/strata{
 	dir = 8;
@@ -20125,6 +20148,7 @@
 /area/strata/ag/exterior)
 "bkV" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
+	
 	},
 /turf/open/floor/strata{
 	dir = 6;
@@ -20455,6 +20479,7 @@
 /area/strata/ag/exterior/marsh/center)
 "bmf" = (
 /obj/structure/machinery/door/airlock/almayer/engineering/colony{
+	
 	},
 /turf/open/floor/strata{
 	dir = 10;
@@ -21940,6 +21965,7 @@
 /area/strata/ag/exterior/paths/southresearch)
 "brD" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
+	
 	},
 /turf/open/floor/strata{
 	dir = 10;
@@ -22138,6 +22164,7 @@
 "bst" = (
 /obj/effect/decal/cleanable/blood/splatter,
 /obj/structure/machinery/door/airlock/almayer/medical/colony{
+	
 	},
 /turf/open/floor/strata{
 	dir = 8;
@@ -23999,6 +24026,7 @@
 	dir = 4
 	},
 /obj/structure/machinery/door/airlock/almayer/engineering/colony{
+	
 	},
 /turf/open/floor/strata{
 	dir = 8;
@@ -24160,6 +24188,7 @@
 /area/strata/ag/interior/administration)
 "bAF" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass/colony{
+	
 	},
 /turf/open/floor/strata{
 	dir = 8;
@@ -27629,6 +27658,7 @@
 "cct" = (
 /obj/effect/decal/cleanable/blood,
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
+	
 	},
 /turf/open/floor/strata{
 	dir = 10;
@@ -28384,6 +28414,7 @@
 /area/strata/ag/interior/dorms)
 "cht" = (
 /obj/structure/machinery/door/airlock/almayer/engineering/colony{
+	
 	},
 /turf/open/floor/strata{
 	dir = 8;
@@ -28876,6 +28907,7 @@
 	dir = 4
 	},
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
+	
 	},
 /turf/open/floor/strata{
 	dir = 8;
@@ -30477,6 +30509,7 @@
 /area/strata/ug/interior/outpost/jung/dorms/sec2)
 "cyi" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
+	
 	},
 /turf/open/floor/strata{
 	dir = 8;
@@ -30697,6 +30730,7 @@
 /area/strata/ag/exterior/research_decks)
 "cRB" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
+	
 	},
 /turf/open/floor/strata{
 	dir = 8;
@@ -33603,6 +33637,7 @@
 /area/strata/ug/exterior/jungle/deep/carplake_center)
 "hOw" = (
 /obj/structure/machinery/door/airlock/almayer/engineering/colony{
+	
 	},
 /turf/open/floor/strata{
 	dir = 8;
@@ -34007,6 +34042,7 @@
 /area/strata/ag/interior/outpost/med)
 "ixS" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass/colony{
+	
 	},
 /turf/open/floor/strata{
 	dir = 8;
@@ -36317,6 +36353,7 @@
 	dir = 4
 	},
 /obj/structure/machinery/door/airlock/almayer/medical/colony{
+	
 	},
 /turf/open/floor/strata{
 	dir = 8;
@@ -37259,6 +37296,7 @@
 	dir = 4
 	},
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
+	
 	},
 /turf/open/floor/strata{
 	dir = 8;
@@ -37314,6 +37352,7 @@
 /area/strata/ag/interior/outpost/gen/bball/nest)
 "odr" = (
 /obj/structure/machinery/door/airlock/almayer/engineering/colony{
+	
 	},
 /turf/open/floor/strata{
 	dir = 10;
@@ -38591,6 +38630,7 @@
 /area/strata/ag/interior/tcomms)
 "qfM" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
+	
 	},
 /turf/open/floor/strata{
 	dir = 8;
@@ -41068,6 +41108,7 @@
 /area/strata/ug/interior/outpost/jung/dorms/med1)
 "unE" = (
 /obj/structure/machinery/door/airlock/almayer/engineering/colony{
+	
 	},
 /turf/open/floor/strata{
 	dir = 8;
@@ -42279,17 +42320,6 @@
 	},
 /turf/open/gm/river,
 /area/strata/ag/exterior/marsh/center)
-"wpb" = (
-/obj/structure/pipes/standard/simple/hidden/cyan,
-/obj/structure/machinery/door/airlock/almayer/medical/colony{
-	dir = 2;
-	name = "Medical Airlock"
-	},
-/turf/open/floor/strata{
-	dir = 6;
-	icon_state = "multi_tiles"
-	},
-/area/strata/ag/interior/outpost/med)
 "wqm" = (
 /obj/effect/blocker/sorokyne_cold_water,
 /obj/effect/blocker/sorokyne_cold_water,
@@ -43096,6 +43126,7 @@
 	dir = 4
 	},
 /obj/structure/machinery/door/airlock/almayer/engineering/colony{
+	
 	},
 /turf/open/floor/strata{
 	dir = 8;
@@ -67321,7 +67352,7 @@ kbS
 vCN
 vCN
 mfv
-wpb
+cyH
 mqs
 maP
 mqs

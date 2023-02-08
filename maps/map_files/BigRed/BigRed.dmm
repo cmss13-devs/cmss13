@@ -4998,6 +4998,7 @@
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited{
 	name = "Emergency NanoMed";
 	pixel_x = 30;
+	
 	},
 /turf/open/floor{
 	dir = 6;

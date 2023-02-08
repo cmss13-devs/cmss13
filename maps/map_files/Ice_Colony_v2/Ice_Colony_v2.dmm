@@ -5005,7 +5005,7 @@
 	},
 /obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
 	name = "\improper Hydroponics North Wing Technical Storage";
-	req_access_txt = "100";
+	req_access_txt = "100"
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -20254,9 +20254,6 @@
 	tag = "icon-warnplate (WEST)"
 	},
 /area/ice_colony/exterior/surface/landing_pad)
-"baY" = (
-/turf/open/floor/plating,
-/area/shuttle/drop1/ice_colony)
 "baZ" = (
 /obj/structure/ice/thin/corner{
 	dir = 8;
@@ -22976,7 +22973,7 @@
 	dir = 1;
 	locked = 0;
 	name = "\improper Underground Maintenance";
-	req_access_txt = "100";
+	req_access_txt = "100"
 	},
 /turf/open/floor/plating,
 /area/ice_colony/underground/hangar)
@@ -93341,7 +93338,7 @@ aWq
 aWq
 aWp
 aWQ
-baY
+aWq
 bbl
 aUP
 aUP

@@ -904,7 +904,7 @@
 	density = 0;
 	icon_state = "door_open";
 	name = "Cell";
-	opacity = 0;
+	opacity = 0
 	},
 /turf/open/floor/prison{
 	dir = 10;
@@ -2397,8 +2397,7 @@
 	dir = 4;
 	tag = "icon-intact-supply (EAST)"
 	},
-/obj/structure/machinery/door/airlock/almayer/maint/colony{
-	},
+/obj/structure/machinery/door/airlock/almayer/maint/colony,
 /turf/open/floor/prison{
 	icon_state = "whitepurplefull"
 	},
@@ -5344,7 +5343,7 @@
 	dir = 2;
 	icon_state = "door_open";
 	name = "Solitary Confinement";
-	opacity = 0;
+	opacity = 0
 	},
 /turf/open/floor/plating,
 /area/prison/cellblock/highsec/north/north)
@@ -5724,8 +5723,7 @@
 	dir = 4;
 	tag = "icon-intact-supply (EAST)"
 	},
-/obj/structure/machinery/door/airlock/almayer/maint/colony{
-	},
+/obj/structure/machinery/door/airlock/almayer/maint/colony,
 /turf/open/floor/plating,
 /area/prison/cellblock/maxsec/south)
 "aoi" = (
@@ -13504,7 +13502,7 @@
 	dir = 2;
 	icon_state = "door_open";
 	name = "Research Director's Quarters";
-	opacity = 0;
+	opacity = 0
 	},
 /turf/open/floor/wood,
 /area/prison/quarters/research)
@@ -16108,8 +16106,7 @@
 	},
 /area/prison/security/checkpoint/highsec/n)
 "aQf" = (
-/obj/structure/machinery/door/airlock/almayer/maint/colony{
-	},
+/obj/structure/machinery/door/airlock/almayer/maint/colony,
 /turf/open/floor/plating,
 /area/prison/cellblock/lowsec/nw)
 "aQg" = (
@@ -17173,8 +17170,7 @@
 	},
 /area/prison/security/monitoring/lowsec/ne)
 "aTf" = (
-/obj/structure/machinery/door/airlock/almayer/maint/colony{
-	},
+/obj/structure/machinery/door/airlock/almayer/maint/colony,
 /turf/open/floor/plating,
 /area/prison/security/monitoring/lowsec/ne)
 "aTh" = (
@@ -17760,7 +17756,7 @@
 	dir = 2;
 	icon_state = "door_open";
 	name = "Solitary Confinement";
-	opacity = 0;
+	opacity = 0
 	},
 /turf/open/floor/plating,
 /area/prison/cellblock/lowsec/ne)
@@ -17891,7 +17887,7 @@
 	density = 0;
 	icon_state = "door_open";
 	name = "Solitary Confinement";
-	opacity = 0;
+	opacity = 0
 	},
 /turf/open/floor/plating,
 /area/prison/cellblock/highsec/north/south)
@@ -23794,7 +23790,7 @@
 	density = 0;
 	icon_state = "door_open";
 	name = "Solitary Confinement";
-	opacity = 0;
+	opacity = 0
 	},
 /turf/open/floor/plating,
 /area/prison/hallway/central/east)
@@ -28737,7 +28733,7 @@
 	dir = 2;
 	icon_state = "door_open";
 	name = "Solitary Confinement";
-	opacity = 0;
+	opacity = 0
 	},
 /turf/open/floor/plating,
 /area/prison/cellblock/lowsec/sw)
@@ -29545,8 +29541,7 @@
 /turf/open/floor/prison,
 /area/prison/hallway/central/west)
 "bBH" = (
-/obj/structure/machinery/door/airlock/almayer/maint/colony{
-	},
+/obj/structure/machinery/door/airlock/almayer/maint/colony,
 /turf/open/floor/plating,
 /area/prison/security/monitoring/lowsec/sw)
 "bBI" = (
@@ -30668,8 +30663,7 @@
 	},
 /area/prison/cellblock/lowsec/se)
 "bEu" = (
-/obj/structure/machinery/door/airlock/almayer/maint/colony{
-	},
+/obj/structure/machinery/door/airlock/almayer/maint/colony,
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4;
 	tag = "icon-intact-supply (EAST)"
@@ -31890,8 +31884,7 @@
 "bHO" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/disposalpipe/segment,
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/colony{
-	},
+/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/colony,
 /turf/open/floor/prison,
 /area/prison/hallway/east)
 "bHQ" = (
@@ -34273,7 +34266,7 @@
 	density = 0;
 	icon_state = "door_open";
 	name = "Solitary Confinement";
-	opacity = 0;
+	opacity = 0
 	},
 /turf/open/floor/prison{
 	icon_state = "redfull"
@@ -36545,8 +36538,7 @@
 	},
 /area/prison/laundry)
 "bVu" = (
-/obj/structure/machinery/door/airlock/almayer/maint/colony{
-	},
+/obj/structure/machinery/door/airlock/almayer/maint/colony,
 /turf/open/floor/plating,
 /area/prison/security/checkpoint/medsec)
 "bVv" = (
@@ -36564,7 +36556,7 @@
 	density = 0;
 	icon_state = "door_open";
 	name = "Solitary Confinement";
-	opacity = 0;
+	opacity = 0
 	},
 /turf/open/floor/plating,
 /area/prison/cellblock/highsec/south/north)
@@ -38684,8 +38676,7 @@
 	},
 /area/prison/cellblock/mediumsec/north)
 "cbC" = (
-/obj/structure/machinery/door/airlock/almayer/maint/colony{
-	},
+/obj/structure/machinery/door/airlock/almayer/maint/colony,
 /turf/open/floor/plating,
 /area/prison/library)
 "cbE" = (
@@ -38770,7 +38761,7 @@
 	density = 0;
 	icon_state = "door_open";
 	name = "Solitary Confinement";
-	opacity = 0;
+	opacity = 0
 	},
 /turf/open/floor/plating,
 /area/prison/cellblock/mediumsec/north)
@@ -39130,8 +39121,7 @@
 	},
 /area/prison/cellblock/highsec/south/south)
 "cdr" = (
-/obj/structure/machinery/door/airlock/almayer/maint/colony{
-	},
+/obj/structure/machinery/door/airlock/almayer/maint/colony,
 /turf/open/floor/plating,
 /area/prison/cellblock/highsec/south/south)
 "cds" = (
@@ -40638,7 +40628,7 @@
 	dir = 2;
 	icon_state = "door_open";
 	name = "Solitary Confinement";
-	opacity = 0;
+	opacity = 0
 	},
 /turf/open/floor/prison{
 	icon_state = "bluefull"
@@ -42085,7 +42075,7 @@
 	dir = 2;
 	icon_state = "door_open";
 	name = "Solitary Confinement";
-	opacity = 0;
+	opacity = 0
 	},
 /turf/open/floor/plating,
 /area/prison/cellblock/highsec/south/south)
@@ -44121,7 +44111,7 @@
 	density = 0;
 	icon_state = "door_open";
 	name = "Solitary Confinement";
-	opacity = 0;
+	opacity = 0
 	},
 /turf/open/floor/plating,
 /area/prison/cellblock/mediumsec/east)
@@ -45695,8 +45685,7 @@
 	dir = 4;
 	tag = "icon-intact-supply (EAST)"
 	},
-/obj/structure/machinery/door/airlock/almayer/maint/colony{
-	},
+/obj/structure/machinery/door/airlock/almayer/maint/colony,
 /turf/open/floor/plating,
 /area/prison/cellblock/mediumsec/south)
 "cxO" = (
@@ -46361,7 +46350,7 @@
 	density = 0;
 	icon_state = "door_open";
 	name = "Solitary Confinement";
-	opacity = 0;
+	opacity = 0
 	},
 /turf/open/floor/plating,
 /area/prison/cellblock/mediumsec/south)
@@ -47263,12 +47252,6 @@
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/plating,
 /area/prison/cellblock/mediumsec/east)
-"fFE" = (
-/obj/structure/machinery/door/airlock/almayer/maint/colony{
-	dir = 1
-	},
-/turf/open/floor/plating,
-/area/prison/residential/north)
 "fGf" = (
 /obj/effect/landmark/xeno_hive_spawn,
 /turf/open/floor/prison{
@@ -47418,8 +47401,7 @@
 /turf/open/floor/plating,
 /area/prison/cellblock/mediumsec/west)
 "gfe" = (
-/obj/structure/machinery/door/airlock/almayer/maint/colony{
-	},
+/obj/structure/machinery/door/airlock/almayer/maint/colony,
 /turf/open/floor/plating,
 /area/prison/cellblock/mediumsec/south)
 "gfl" = (
@@ -62190,7 +62172,7 @@ awo
 awo
 awo
 awo
-fFE
+avS
 azI
 azI
 azI

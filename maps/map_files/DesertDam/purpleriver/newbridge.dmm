@@ -540,12 +540,6 @@
 	icon_state = "tile"
 	},
 /area/desert_dam/exterior/valley/valley_cargo)
-"bx" = (
-
-/turf/open/asphalt{
-	icon_state = "tile"
-	},
-/area/desert_dam/exterior/valley/valley_cargo)
 "by" = (
 /obj/structure/largecrate/random/barrel/blue,
 /turf/open/asphalt{
@@ -664,7 +658,7 @@ bj
 bm
 bq
 bt
-bx
+bw
 "}
 (5,1,1) = {"
 ac

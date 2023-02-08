@@ -1,52 +1,55 @@
 //Not using datum.vv_do_topic for very basic/low level debug things, incase the datum's vv_do_topic is runtiming/whatnot.
 /client/proc/vv_do_basic(datum/target, href_list)
 	var/target_var = GET_VV_VAR_TARGET
-	if(check_rights(R_VAREDIT))
-		if(target_var)
-			if(href_list[VV_HK_BASIC_EDIT])
-				if(!modify_variables(target, target_var, 1))
-					return
-				switch(target_var)
-					if("name")
-						vv_update_display(target, "name", "[target]")
-					if("dir")
-						var/atom/A = target
-						if(istype(A))
-							vv_update_display(target, "dir", dir2text(A.dir) || A.dir)
-					if("ckey")
-						var/mob/living/L = target
-						if(istype(L))
-							vv_update_display(target, "ckey", L.ckey || "No ckey")
-					if("real_name")
-						var/mob/living/L = target
-						if(istype(L))
-							vv_update_display(target, "real_name", L.real_name || "No real name")
+	if(target_var)
+		if(!check_rights(R_VAREDIT))
+			return
+		if(href_list[VV_HK_BASIC_EDIT])
+			if(!modify_variables(target, target_var, 1))
+				return
+			switch(target_var)
+				if("name")
+					vv_update_display(target, "name", "[target]")
+				if("dir")
+					var/atom/A = target
+					if(istype(A))
+						vv_update_display(target, "dir", dir2text(A.dir) || A.dir)
+				if("ckey")
+					var/mob/living/L = target
+					if(istype(L))
+						vv_update_display(target, "ckey", L.ckey || "No ckey")
+				if("real_name")
+					var/mob/living/L = target
+					if(istype(L))
+						vv_update_display(target, "real_name", L.real_name || "No real name")
+		if(href_list[VV_HK_BASIC_CHANGE])
+			modify_variables(target, target_var, 0)
+		if(href_list[VV_HK_BASIC_MASSEDIT])
+			cmd_mass_modify_object_variables(target, target_var)
+	if(href_list[VV_HK_EXPOSE])
+		if(!check_rights(R_ADMIN))
+			return
+		var/value = vv_get_value(VV_CLIENT)
+		if (value["class"] != VV_CLIENT)
+			return
+		var/client/C = value["value"]
+		if (!C)
+			return
+		if(!target)
+			to_chat(usr, SPAN_WARNING("The object you tried to expose to [C] no longer exists (nulled or hard-deled)"), confidential = TRUE)
+			return
+		message_admins("[key_name_admin(usr)] showed [key_name_admin(C)] a <a href='?_src_=vars;[HrefToken(forceGlobal = TRUE)];Vars=[REF(target)]'>VV window</a>")
+		log_admin("Admin [key_name(usr)] showed [key_name(C)] a VV window of a [target]")
+		to_chat(C, "[admin_holder.fakekey ? "an Administrator" : "[usr.client.key]"] has granted you access to view a View Variables window", confidential = TRUE)
+		C.debug_variables(target)
+	if(href_list[VV_HK_DELETE])
+		if(!check_rights(R_DEBUG))
+			return
 
-			if(href_list[VV_HK_BASIC_CHANGE])
-				modify_variables(target, target_var, 0)
-			if(href_list[VV_HK_BASIC_MASSEDIT])
-				cmd_mass_modify_object_variables(target, target_var)
-	if(check_rights(R_ADMIN, FALSE))
-		if(href_list[VV_HK_EXPOSE])
-			var/value = vv_get_value(VV_CLIENT)
-			if (value["class"] != VV_CLIENT)
-				return
-			var/client/C = value["value"]
-			if (!C)
-				return
-			if(!target)
-				to_chat(usr, SPAN_WARNING("The object you tried to expose to [C] no longer exists (nulled or hard-deled)"), confidential = TRUE)
-				return
-			message_admins("[key_name_admin(usr)] showed [key_name_admin(C)] a <a href='?_src_=vars;[HrefToken(forceGlobal = TRUE)];Vars=[REF(target)]'>VV window</a>")
-			log_admin("Admin [key_name(usr)] showed [key_name(C)] a VV window of a [target]")
-			to_chat(C, "[admin_holder.fakekey ? "an Administrator" : "[usr.client.key]"] has granted you access to view a View Variables window", confidential = TRUE)
-			C.debug_variables(target)
-	if(check_rights(R_DEBUG))
-		if(href_list[VV_HK_DELETE])
-			usr.client.admin_delete(target)
-			if (isturf(target)) // show the turf that took its place
-				usr.client.debug_variables(target)
-				return
+		usr.client.admin_delete(target)
+		if (isturf(target)) // show the turf that took its place
+			usr.client.debug_variables(target)
+			return
 
 	if(href_list[VV_HK_MARK])
 		usr.client.mark_datum(target)

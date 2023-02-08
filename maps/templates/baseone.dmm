@@ -328,7 +328,7 @@
 /area/adminlevel/bunker01/caves)
 "aI" = (
 /obj/structure/machinery/power/apc/antag{
-	dir = 2;
+	dir = 2
 	},
 /turf/open/floor/almayer{
 	dir = 8;

@@ -1801,7 +1801,7 @@
 	tag = "icon-N"
 	},
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
-	dir = 2;
+	dir = 2
 	},
 /turf/open/floor/plating,
 /area/prison/research/secret/containment)
@@ -13288,7 +13288,7 @@
 "aHQ" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
-	dir = 2;
+	dir = 2
 	},
 /turf/open/floor/wood,
 /area/prison/storage/highsec/n)
@@ -17349,7 +17349,7 @@
 "aTG" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
-	dir = 2;
+	dir = 2
 	},
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/prison,
@@ -19847,7 +19847,7 @@
 /area/prison/cellblock/vip)
 "bax" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
-	dir = 2;
+	dir = 2
 	},
 /turf/open/floor/prison{
 	dir = 10;
@@ -21632,7 +21632,7 @@
 /area/prison/security/checkpoint/vip)
 "bfq" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
-	dir = 2;
+	dir = 2
 	},
 /turf/open/floor/plating,
 /area/prison/storage/vip)
@@ -25848,7 +25848,7 @@
 /area/prison/cellblock/lowsec/se)
 "bqE" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
-	dir = 2;
+	dir = 2
 	},
 /turf/open/floor/plating,
 /area/prison/canteen)
@@ -27496,7 +27496,7 @@
 /area/prison/hallway/central/east)
 "buX" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
-	dir = 2;
+	dir = 2
 	},
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/plating,
@@ -33424,7 +33424,7 @@
 "bMj" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
-	dir = 2;
+	dir = 2
 	},
 /turf/open/floor/plating,
 /area/prison/laundry)
@@ -37054,7 +37054,7 @@
 /area/prison/cellblock/highsec/south/north)
 "bWQ" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
-	dir = 2;
+	dir = 2
 	},
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/prison,
@@ -43414,7 +43414,7 @@
 /area/prison/cellblock/mediumsec/east)
 "cqp" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
-	dir = 2;
+	dir = 2
 	},
 /turf/open/floor/plating,
 /area/prison/cellblock/mediumsec/east)
@@ -44088,7 +44088,7 @@
 /area/prison/cellblock/mediumsec/west)
 "csD" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
-	dir = 2;
+	dir = 2
 	},
 /turf/open/floor/plating,
 /area/prison/cellblock/mediumsec/west)
@@ -46473,7 +46473,7 @@
 /area/prison/hallway/central/west)
 "cWg" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
-	dir = 2;
+	dir = 2
 	},
 /turf/open/floor/prison,
 /area/prison/canteen)
@@ -47127,7 +47127,7 @@
 /area/prison/maintenance/residential/access/south)
 "fbk" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
-	dir = 2;
+	dir = 2
 	},
 /turf/open/floor/prison,
 /area/prison/laundry)
@@ -47192,7 +47192,7 @@
 /area/prison/telecomms)
 "ftk" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
-	dir = 2;
+	dir = 2
 	},
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/plating,
@@ -47265,7 +47265,7 @@
 /area/prison/cellblock/mediumsec/east)
 "fFE" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
-	dir = 1;
+	dir = 1
 	},
 /turf/open/floor/plating,
 /area/prison/residential/north)
@@ -49080,7 +49080,7 @@
 /area/prison/cellblock/lowsec/nw)
 "knf" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
-	dir = 2;
+	dir = 2
 	},
 /turf/open/floor/prison{
 	icon_state = "floor_plate";
@@ -50893,7 +50893,7 @@
 /area/prison/library)
 "pvE" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
-	dir = 2;
+	dir = 2
 	},
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/plating,
@@ -51878,7 +51878,7 @@
 /area/prison/cellblock/protective)
 "tfd" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
-	dir = 2;
+	dir = 2
 	},
 /turf/open/floor/plating,
 /area/prison/residential/central)

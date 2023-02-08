@@ -1,5 +1,0 @@
-author: "stanalbatross"
-delete-after: True
-changes:
-  - rscdel: "removed the MP timelock requirement from XO, CE, and RO"
-  - rscdel: "removed the RTO timelock requirement from SL, instead you now need 10 hours of squad roles"

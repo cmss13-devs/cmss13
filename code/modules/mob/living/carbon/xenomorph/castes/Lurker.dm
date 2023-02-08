@@ -75,25 +75,15 @@
 		return original_damage
 
 	if (next_slash_buffed)
-		to_chat(bound_xeno, SPAN_XENOHIGHDANGER("You significantly strengthen your attack, slowing [target_carbon]!"))
-		to_chat(target_carbon, SPAN_XENOHIGHDANGER("You feel a sharp pain as [bound_xeno] slashes you, slowing you down!"))
+		to_chat(bound_xeno, SPAN_XENOHIGHDANGER("You significantly strengthen your attack, slashing [target_carbon]!"))
+		to_chat(target_carbon, SPAN_XENOHIGHDANGER("You feel a sharp pain as [bound_xeno] slashes you!"))
 		original_damage *= buffed_slash_damage_ratio
-		target_carbon.set_effect(get_xeno_stun_duration(target_carbon, 3), SUPERSLOW)
 		next_slash_buffed = FALSE
 		var/datum/action/xeno_action/onclick/lurker_assassinate/ability = get_xeno_action_by_type(bound_xeno, /datum/action/xeno_action/onclick/lurker_assassinate)
 		if (ability && istype(ability))
 			ability.button.icon_state = "template"
 
 	return original_damage
-
-/datum/behavior_delegate/lurker_base/melee_attack_additional_effects_target(mob/living/carbon/target_carbon)
-	if (!isxeno_human(target_carbon))
-		return
-
-	if (target_carbon.knocked_down)
-		new /datum/effects/xeno_slow(target_carbon, bound_xeno, null, null, get_xeno_stun_duration(target_carbon, slash_slow_duration))
-
-	return
 
 /datum/behavior_delegate/lurker_base/melee_attack_additional_effects_self()
 	..()

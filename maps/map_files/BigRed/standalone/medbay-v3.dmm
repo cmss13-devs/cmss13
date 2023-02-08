@@ -18,7 +18,7 @@
 	icon_state = "gib6"
 	},
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony{
-	name = "\improper Medical Clinic";
+	name = "\improper Medical Clinic"
 	},
 /turf/open/floor{
 	icon_state = "warnwhite";
@@ -448,7 +448,7 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
 	dir = 1;
-	name = "\improper Medical Clinic";
+	name = "\improper Medical Clinic"
 	},
 /turf/open/floor{
 	icon_state = "white"
@@ -674,7 +674,7 @@
 /area/bigredv2/outside/medical)
 "bS" = (
 /obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
-	name = "\improper Medical Clinic Scanner Room";
+	name = "\improper Medical Clinic Scanner Room"
 	},
 /turf/open/floor{
 	icon_state = "white"
@@ -736,7 +736,7 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
 	dir = 1;
-	name = "\improper Medical Clinic CMO's Office";
+	name = "\improper Medical Clinic CMO's Office"
 	},
 /turf/open/floor{
 	icon_state = "platingdmg1"
@@ -1605,7 +1605,7 @@
 	dir = 4
 	},
 /obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
-	name = "\improper Medical Clinic Storage";
+	name = "\improper Medical Clinic Storage"
 	},
 /turf/open/floor{
 	icon_state = "platingdmg1"
@@ -1632,7 +1632,7 @@
 /area/bigredv2/outside/medical)
 "en" = (
 /obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
-	name = "\improper Medical Clinic Storage";
+	name = "\improper Medical Clinic Storage"
 	},
 /turf/open/floor{
 	icon_state = "platingdmg1"
@@ -1915,7 +1915,7 @@
 "eV" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony{
-	name = "\improper Medical Clinic";
+	name = "\improper Medical Clinic"
 	},
 /turf/open/floor{
 	icon_state = "white"
@@ -1960,7 +1960,7 @@
 	dir = 4
 	},
 /obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
-	name = "\improper Medical Clinic Operating Theatre";
+	name = "\improper Medical Clinic Operating Theatre"
 	},
 /turf/open/floor{
 	icon_state = "damaged2";

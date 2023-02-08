@@ -459,7 +459,7 @@
 	dir = 4
 	},
 /obj/structure/machinery/door/airlock/almayer/command/colony{
-	name = "\improper Operations Office";
+	name = "\improper Operations Office"
 	},
 /turf/open/floor{
 	icon_state = "wood"
@@ -500,7 +500,7 @@
 	dir = 4
 	},
 /obj/structure/machinery/door/airlock/almayer/command/colony{
-	name = "\improper Operations Meeting Room";
+	name = "\improper Operations Meeting Room"
 	},
 /turf/open/floor,
 /area/bigredv2/outside/admin_building)

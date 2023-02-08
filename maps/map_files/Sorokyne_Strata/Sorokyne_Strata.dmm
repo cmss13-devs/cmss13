@@ -3118,7 +3118,7 @@
 /area/strata/ag/interior/outpost/canteen/personal_storage)
 "aiN" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/colony{
-	name = "\improper Airlock";
+	name = "\improper Airlock"
 	},
 /turf/open/floor/strata{
 	dir = 6;
@@ -3319,7 +3319,7 @@
 "ajs" = (
 /obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
 	dir = 2;
-	name = "\improper Airlock";
+	name = "\improper Airlock"
 	},
 /turf/open/floor/strata{
 	dir = 4;
@@ -4013,7 +4013,7 @@
 /area/strata/ag/interior/outpost/canteen/personal_storage)
 "alp" = (
 /obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
-	name = "\improper Chunkeez Diner door";
+	name = "\improper Chunkeez Diner door"
 	},
 /turf/open/floor/strata{
 	icon_state = "white_cyan1"
@@ -6061,7 +6061,7 @@
 "arH" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/colony{
-	name = "\improper Airlock";
+	name = "\improper Airlock"
 	},
 /turf/open/floor/strata{
 	dir = 6;
@@ -7426,7 +7426,7 @@
 "avD" = (
 /obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
 	dir = 8;
-	name = "\improper Airlock";
+	name = "\improper Airlock"
 	},
 /turf/open/floor/strata{
 	dir = 8;
@@ -7880,7 +7880,7 @@
 	},
 /obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
 	dir = 8;
-	name = "\improper Airlock";
+	name = "\improper Airlock"
 	},
 /turf/open/floor/strata{
 	dir = 8;
@@ -8593,7 +8593,7 @@
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /obj/structure/machinery/door/airlock/almayer/security/colony{
 	dir = 2;
-	name = "Security Barracks";
+	name = "Security Barracks"
 	},
 /turf/open/floor/strata,
 /area/strata/ag/interior/outpost/security)
@@ -9335,7 +9335,7 @@
 /obj/structure/machinery/holosign/surgery,
 /obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
 	dir = 8;
-	name = "\improper Airlock";
+	name = "\improper Airlock"
 	},
 /turf/open/floor/strata{
 	icon_state = "red1"
@@ -11938,7 +11938,7 @@
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
 	dir = 2;
-	name = "\improper Airlock";
+	name = "\improper Airlock"
 	},
 /turf/open/floor/strata{
 	dir = 6;
@@ -14706,7 +14706,7 @@
 	},
 /obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
 	dir = 8;
-	name = "\improper Airlock";
+	name = "\improper Airlock"
 	},
 /turf/open/floor/strata{
 	dir = 8;
@@ -14749,7 +14749,7 @@
 "aRX" = (
 /obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
 	dir = 2;
-	name = "\improper Airlock";
+	name = "\improper Airlock"
 	},
 /turf/open/floor/strata{
 	dir = 6;
@@ -15027,7 +15027,7 @@
 "aSQ" = (
 /obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
 	dir = 2;
-	name = "\improper Airlock";
+	name = "\improper Airlock"
 	},
 /turf/open/floor/strata{
 	dir = 6;
@@ -15586,7 +15586,7 @@
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
 	dir = 2;
-	name = "\improper Airlock";
+	name = "\improper Airlock"
 	},
 /turf/open/floor/strata{
 	dir = 6;
@@ -16877,7 +16877,7 @@
 /area/strata/ag/exterior/north_lz_caves)
 "aZD" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/colony{
-	name = "\improper Airlock";
+	name = "\improper Airlock"
 	},
 /turf/open/floor/strata{
 	dir = 10;
@@ -17091,7 +17091,7 @@
 	},
 /obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/colony{
 	dir = 1;
-	name = "\improper Airlock";
+	name = "\improper Airlock"
 	},
 /turf/open/floor/strata{
 	dir = 8;
@@ -17852,7 +17852,7 @@
 "bda" = (
 /obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
 	dir = 2;
-	name = "\improper Airlock";
+	name = "\improper Airlock"
 	},
 /turf/open/floor/strata{
 	dir = 6;
@@ -18227,7 +18227,7 @@
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
 	dir = 2;
-	name = "\improper Airlock";
+	name = "\improper Airlock"
 	},
 /turf/open/floor/strata{
 	dir = 6;
@@ -18634,7 +18634,7 @@
 "bfM" = (
 /obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
 	dir = 2;
-	name = "\improper Airlock";
+	name = "\improper Airlock"
 	},
 /turf/open/floor/strata{
 	dir = 6;
@@ -18679,7 +18679,7 @@
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
 	dir = 2;
-	name = "\improper Airlock";
+	name = "\improper Airlock"
 	},
 /turf/open/floor/strata{
 	dir = 6;
@@ -19084,7 +19084,7 @@
 "bhq" = (
 /obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
 	dir = 8;
-	name = "\improper Airlock";
+	name = "\improper Airlock"
 	},
 /turf/open/floor/strata{
 	dir = 8;
@@ -19725,7 +19725,7 @@
 "bjp" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/colony{
 	dir = 1;
-	name = "\improper Airlock";
+	name = "\improper Airlock"
 	},
 /turf/open/floor/strata{
 	dir = 4;
@@ -24431,7 +24431,7 @@
 /obj/structure/machinery/door/airlock/almayer/medical/colony{
 	dir = 1;
 	id_tag = "bunker_or1";
-	name = "\improper Operating Room 1";
+	name = "\improper Operating Room 1"
 	},
 /turf/open/floor/strata{
 	icon_state = "white_cyan1"
@@ -25999,7 +25999,7 @@
 /area/strata/ag/interior/outpost/med)
 "bOV" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/colony{
-	name = "\improper Airlock";
+	name = "\improper Airlock"
 	},
 /turf/open/floor/strata{
 	icon_state = "floor3"
@@ -26721,7 +26721,7 @@
 /area/strata/ag/interior/outpost/security)
 "bVr" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/colony{
-	name = "\improper Airlock";
+	name = "\improper Airlock"
 	},
 /turf/open/floor/strata{
 	dir = 6;
@@ -26814,7 +26814,7 @@
 "bWd" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/colony{
 	dir = 1;
-	name = "\improper Airlock";
+	name = "\improper Airlock"
 	},
 /turf/open/floor/strata{
 	dir = 10;
@@ -27189,7 +27189,7 @@
 /area/strata/ag/interior/outpost/canteen)
 "bYV" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/colony{
-	name = "\improper Airlock";
+	name = "\improper Airlock"
 	},
 /turf/open/floor/interior/plastic,
 /area/strata/ag/interior/outpost/canteen)
@@ -27511,7 +27511,7 @@
 "cbR" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/colony{
-	name = "\improper Airlock";
+	name = "\improper Airlock"
 	},
 /turf/open/floor/strata{
 	dir = 6;
@@ -28021,7 +28021,7 @@
 /obj/structure/machinery/door/airlock/almayer/medical/colony{
 	dir = 1;
 	id_tag = "bunker_or1";
-	name = "\improper Operating Room 1";
+	name = "\improper Operating Room 1"
 	},
 /turf/open/floor/strata{
 	dir = 6;
@@ -28354,7 +28354,7 @@
 "chi" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/colony{
 	dir = 1;
-	name = "\improper Airlock";
+	name = "\improper Airlock"
 	},
 /turf/open/floor/interior/plastic,
 /area/strata/ag/interior/outpost/canteen)
@@ -29341,7 +29341,7 @@
 "cnC" = (
 /obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
 	dir = 2;
-	name = "\improper Airlock";
+	name = "\improper Airlock"
 	},
 /turf/open/floor/strata{
 	dir = 6;
@@ -29734,7 +29734,7 @@
 /area/strata/ag/exterior/north_lz_caves)
 "crp" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/colony{
-	name = "\improper Airlock";
+	name = "\improper Airlock"
 	},
 /turf/open/floor/strata{
 	dir = 6;
@@ -30491,7 +30491,7 @@
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /obj/structure/machinery/door/airlock/almayer/medical/colony{
 	dir = 2;
-	name = "Medical Airlock";
+	name = "Medical Airlock"
 	},
 /turf/open/floor/strata{
 	dir = 6;
@@ -36388,7 +36388,7 @@
 /area/strata/ag/interior/outpost/med)
 "mqQ" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/colony{
-	name = "\improper Airlock";
+	name = "\improper Airlock"
 	},
 /turf/open/floor/strata{
 	dir = 6;
@@ -38029,7 +38029,7 @@
 	},
 /obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/colony{
 	dir = 1;
-	name = "\improper Airlock";
+	name = "\improper Airlock"
 	},
 /turf/open/floor/strata{
 	dir = 8;
@@ -38252,7 +38252,7 @@
 "pEF" = (
 /obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
 	dir = 2;
-	name = "\improper Airlock";
+	name = "\improper Airlock"
 	},
 /turf/open/floor/strata{
 	dir = 6;
@@ -38322,7 +38322,7 @@
 "pJu" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/colony{
 	dir = 1;
-	name = "\improper Airlock";
+	name = "\improper Airlock"
 	},
 /turf/open/floor/strata{
 	dir = 8;
@@ -39261,7 +39261,7 @@
 "riS" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/colony{
 	dir = 1;
-	name = "\improper Airlock";
+	name = "\improper Airlock"
 	},
 /turf/open/floor/strata{
 	dir = 8;
@@ -39333,7 +39333,7 @@
 "rpA" = (
 /obj/structure/machinery/door/airlock/almayer/medical/colony{
 	dir = 2;
-	name = "Medical Airlock";
+	name = "Medical Airlock"
 	},
 /turf/open/floor/strata{
 	dir = 6;
@@ -39785,7 +39785,7 @@
 /area/strata/ag/interior/outpost/engi/drome)
 "skl" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/colony{
-	name = "\improper Airlock";
+	name = "\improper Airlock"
 	},
 /turf/open/floor/strata{
 	dir = 6;
@@ -42162,7 +42162,7 @@
 "wbK" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/colony{
 	dir = 1;
-	name = "\improper Airlock";
+	name = "\improper Airlock"
 	},
 /turf/open/floor/strata{
 	dir = 8;
@@ -42283,7 +42283,7 @@
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /obj/structure/machinery/door/airlock/almayer/medical/colony{
 	dir = 2;
-	name = "Medical Airlock";
+	name = "Medical Airlock"
 	},
 /turf/open/floor/strata{
 	dir = 6;
@@ -42353,7 +42353,7 @@
 "wto" = (
 /obj/structure/machinery/door/airlock/almayer/security/colony{
 	dir = 2;
-	name = "Security Barracks";
+	name = "Security Barracks"
 	},
 /turf/open/floor/strata,
 /area/strata/ag/interior/outpost/security)

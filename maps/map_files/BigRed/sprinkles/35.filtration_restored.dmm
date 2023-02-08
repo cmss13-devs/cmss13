@@ -126,14 +126,14 @@
 	dir = 4
 	},
 /obj/structure/machinery/door/airlock/almayer/engineering/colony{
-	name = "\improper Atmospherics Condenser Storage";
+	name = "\improper Atmospherics Condenser Storage"
 	},
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
 "aB" = (
 /obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	dir = 1;
-	name = "\improper Atmospherics Condenser";
+	name = "\improper Atmospherics Condenser"
 	},
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
@@ -147,7 +147,7 @@
 "aD" = (
 /obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	dir = 1;
-	name = "\improper Atmospherics Condenser";
+	name = "\improper Atmospherics Condenser"
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor,
@@ -335,14 +335,14 @@
 "bl" = (
 /obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	dir = 1;
-	name = "\improper Filtration Facility";
+	name = "\improper Filtration Facility"
 	},
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
 "bm" = (
 /obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	dir = 1;
-	name = "\improper Filtration Facility";
+	name = "\improper Filtration Facility"
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor,
@@ -374,7 +374,7 @@
 /area/bigredv2/outside/filtration_plant)
 "br" = (
 /obj/structure/machinery/door/airlock/almayer/engineering/colony{
-	name = "\improper Filtration Facility";
+	name = "\improper Filtration Facility"
 	},
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4

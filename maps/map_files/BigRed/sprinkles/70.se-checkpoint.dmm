@@ -22,7 +22,7 @@
 /obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	icon_state = "door_locked";
 	locked = 0;
-	name = "\improper Checkpoint Office";
+	name = "\improper Checkpoint Office"
 	},
 /turf/open/floor{
 	icon_state = "dark"
@@ -66,7 +66,7 @@
 "hz" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	dir = 1;
-	name = "\improper Checkpoint Office";
+	name = "\improper Checkpoint Office"
 	},
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor{
@@ -197,7 +197,7 @@
 "ve" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	dir = 1;
-	name = "\improper Checkpoint Office";
+	name = "\improper Checkpoint Office"
 	},
 /turf/open/floor{
 	icon_state = "dark"

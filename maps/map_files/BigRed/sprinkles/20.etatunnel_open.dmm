@@ -333,7 +333,7 @@
 /area/bigredv2/caves/mining)
 "Be" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass/colony{
-	name = "\improper Marshals Mining Security Post";
+	name = "\improper Marshals Mining Security Post"
 	},
 /turf/open/floor/plating{
 	dir = 8;

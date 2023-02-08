@@ -314,7 +314,7 @@
 	dir = 4
 	},
 /obj/structure/machinery/door/airlock/almayer/security/glass/colony{
-	name = "\improper Cargo Bay Security";
+	name = "\improper Cargo Bay Security"
 	},
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
@@ -570,7 +570,7 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	dir = 1;
-	name = "\improper Cargo Bay Quartermaster";
+	name = "\improper Cargo Bay Quartermaster"
 	},
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
@@ -666,7 +666,7 @@
 /area/bigredv2/outside/cargo)
 "ce" = (
 /obj/structure/machinery/door/airlock/almayer/engineering/colony{
-	name = "\improper Cargo Bay Quartermaster";
+	name = "\improper Cargo Bay Quartermaster"
 	},
 /turf/open/floor,
 /area/bigredv2/outside/cargo)

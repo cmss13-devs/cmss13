@@ -2337,7 +2337,7 @@
 "agJ" = (
 /obj/structure/machinery/door/airlock/almayer/command/colony{
 	dir = 1;
-	name = "Airlock Control";
+	name = "Airlock Control"
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/corsat{
@@ -13062,7 +13062,7 @@
 "aJL" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
 	dir = 2;
-	name = "Sigma Dome Control";
+	name = "Sigma Dome Control"
 	},
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -13522,7 +13522,7 @@
 "aLf" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
-	name = "Hangar Office";
+	name = "Hangar Office"
 	},
 /turf/open/floor/corsat{
 	icon_state = "officesquares"
@@ -14245,7 +14245,7 @@
 /area/corsat/gamma/hangar/flightcontrol)
 "aNb" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
-	name = "Administration Office";
+	name = "Administration Office"
 	},
 /turf/open/floor/corsat{
 	dir = 8;
@@ -19555,7 +19555,7 @@
 "bao" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
 	dir = 2;
-	name = "Omega Dome Control";
+	name = "Omega Dome Control"
 	},
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -19655,7 +19655,7 @@
 "bay" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
 	dir = 2;
-	name = "Omega Dome Control";
+	name = "Omega Dome Control"
 	},
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -19949,7 +19949,7 @@
 /area/corsat/sigma/airlock/control)
 "bbh" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
-	name = "Theta Dome Control";
+	name = "Theta Dome Control"
 	},
 /turf/open/floor/corsat{
 	dir = 8;
@@ -20596,7 +20596,7 @@
 "bcA" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
 	dir = 2;
-	name = "Gamma Dome Control";
+	name = "Gamma Dome Control"
 	},
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -23405,7 +23405,7 @@
 /area/corsat/gamma/hangar/monorail/control)
 "bku" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
-	name = "Hangar Office";
+	name = "Hangar Office"
 	},
 /turf/open/floor/corsat{
 	icon_state = "officesquares"
@@ -23413,7 +23413,7 @@
 /area/corsat/gamma/hangar/office)
 "bkv" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
-	name = "Flight Control";
+	name = "Flight Control"
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/corsat{
@@ -24154,7 +24154,7 @@
 /area/corsat/sigma/hangar/monorail/control)
 "bmH" = (
 /obj/structure/machinery/door/airlock/almayer/command/colony{
-	name = "Flight Control";
+	name = "Flight Control"
 	},
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -24173,7 +24173,7 @@
 /area/corsat/gamma/hangar/arrivals)
 "bmJ" = (
 /obj/structure/machinery/door/airlock/almayer/command/colony{
-	name = "Hangar Office";
+	name = "Hangar Office"
 	},
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -49382,7 +49382,7 @@
 "lug" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
 	dir = 1;
-	name = "Administration Office";
+	name = "Administration Office"
 	},
 /obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	dir = 4;
@@ -51124,7 +51124,7 @@
 	dir = 4
 	},
 /obj/structure/machinery/door/airlock/almayer/security/glass/colony{
-	name = "Interrogation";
+	name = "Interrogation"
 	},
 /turf/open/floor/corsat{
 	icon_state = "squares"

@@ -162,7 +162,7 @@
 "v" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
 	dir = 1;
-	name = "\improper Mining Operations";
+	name = "\improper Mining Operations"
 	},
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port)

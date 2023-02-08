@@ -20384,7 +20384,7 @@
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
 	dir = 1;
 	locked = 0;
-	name = "\improper Null Hatch REPLACE ME";
+	name = "\improper Null Hatch REPLACE ME"
 	},
 /turf/open/floor/plating/prison,
 /area/fiorina/oob)

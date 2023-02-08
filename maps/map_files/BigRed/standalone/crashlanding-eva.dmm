@@ -246,7 +246,7 @@
 /area/bigredv2/outside/general_offices)
 "bm" = (
 /obj/structure/machinery/door/airlock/almayer/engineering/colony{
-	name = "\improper Dormitories EVA";
+	name = "\improper Dormitories EVA"
 	},
 /turf/open/floor{
 	icon_state = "dark";

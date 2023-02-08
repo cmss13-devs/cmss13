@@ -39,6 +39,7 @@ jobs:
             ${{ runner.os }}-
       - name: Install Tools
         run: |
+          pip3 install setuptools
           bash tools/ci/install_node.sh
           bash tools/ci/install_spaceman_dmm.sh dreamchecker
           cargo install ripgrep --features pcre2

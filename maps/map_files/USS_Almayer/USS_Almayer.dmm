@@ -16302,7 +16302,7 @@
 "beZ" = (
 /obj/structure/platform_decoration{
 	dir = 8;
-	
+
 	},
 /turf/open/floor/almayer,
 /area/almayer/living/chapel)
@@ -32025,6 +32025,7 @@
 	pixel_x = 8;
 	pixel_y = 32
 	},
+/obj/effect/spawner/random/facepaint,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	},
@@ -46800,7 +46801,6 @@
 	req_access = null
 	},
 /obj/item/clothing/mask/rebreather/scarf/tacticalmask/red,
-/obj/item/clothing/mask/rebreather/skull/black,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	},
@@ -55969,6 +55969,9 @@
 	req_access = null
 	},
 /obj/item/clothing/mask/rebreather/scarf,
+/obj/structure/closet/secure_closet/personal/cabinet{
+	req_access = null
+	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	},
@@ -57829,7 +57832,6 @@
 	},
 /obj/item/clothing/suit/chef/classic,
 /obj/item/tool/kitchen/knife/butcher,
-/obj/item/facepaint/black,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	},
@@ -59629,6 +59631,7 @@
 	pixel_x = -5;
 	pixel_y = 14
 	},
+/obj/effect/spawner/random/balaclavas,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	},
@@ -64937,6 +64940,7 @@
 /area/almayer/shipboard/navigation)
 "sti" = (
 /obj/structure/closet/crate/trashcart,
+/obj/effect/spawner/random/balaclavas,
 /turf/open/floor/plating,
 /area/almayer/hull/lower_hull/l_f_p)
 "str" = (
@@ -68880,6 +68884,13 @@
 	icon_state = "test_floor4";
 	},
 /area/almayer/shipboard/brig/evidence_storage)
+"uli" = (
+/obj/structure/surface/rack,
+/obj/effect/spawner/random/facepaint,
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	},
+/area/almayer/hull/upper_hull/u_m_s)
 "uly" = (
 /obj/structure/bed/stool,
 /turf/open/floor/almayer{
@@ -110757,7 +110768,7 @@ uaZ
 aar
 arI
 aaQ
-aao
+uli
 aar
 aap
 aar

@@ -138,11 +138,10 @@
 /turf/open/ice,
 /area/corsat/sigma/biodome/scrapyard)
 "ci" = (
-/obj/structure/machinery/door/airlock/almayer/maint{
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
 	damage_cap = 4000;
 	dir = 1;
-	icon_state = "door_locked";
-	locked = 1;
+	locked = 0;
 	name = "\improper Emergency Access";
 	req_access_txt = "100";
 	req_one_access = list()
@@ -416,10 +415,9 @@
 	},
 /area/corsat/sigma/biodome/ice)
 "hR" = (
-/obj/structure/machinery/door/airlock/almayer/maint{
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
 	damage_cap = 4000;
-	icon_state = "door_locked";
-	locked = 1;
+	locked = 0;
 	name = "\improper Emergency Access";
 	req_access_txt = "100";
 	req_one_access = list()
@@ -634,7 +632,7 @@
 /turf/open/ice,
 /area/corsat/sigma/biodome/ice)
 "lP" = (
-/obj/structure/machinery/door/airlock/almayer/engineering{
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	dir = 1;
 	name = "Sigma Dome Control";
 	req_one_access = list(102)
@@ -980,7 +978,7 @@
 	},
 /area/corsat/sigma/airlock/control)
 "uk" = (
-/obj/structure/machinery/door/airlock/almayer/maint{
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
 	name = "Maintainence";
 	req_one_access = list()
 	},
@@ -1129,7 +1127,7 @@
 	},
 /area/corsat/sigma/airlock/control)
 "xM" = (
-/obj/structure/machinery/door/airlock/almayer/maint{
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
 	dir = 2;
 	name = "Maintainance";
 	req_one_access = list()
@@ -1175,7 +1173,7 @@
 	},
 /area/corsat/emergency_access)
 "yj" = (
-/obj/structure/machinery/door/airlock/almayer/maint{
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
 	name = "Maintainence";
 	req_one_access = list()
 	},
@@ -1628,7 +1626,7 @@
 	},
 /area/corsat/sigma/airlock/control)
 "DX" = (
-/obj/structure/machinery/door/airlock/almayer/engineering{
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	dir = 1;
 	name = "Sigma Dome Control";
 	req_one_access = list(102)
@@ -2622,7 +2620,7 @@
 	},
 /area/corsat/emergency_access)
 "Vh" = (
-/obj/structure/machinery/door/airlock/almayer/security/glass{
+/obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	dir = 1;
 	name = "ID Checkpoint";
 	req_access_txt = "101"
@@ -2633,7 +2631,7 @@
 	},
 /area/corsat/sigma/airlock/control)
 "Vi" = (
-/obj/structure/machinery/door/airlock/almayer/security/glass{
+/obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	dir = 1;
 	name = "ID Checkpoint";
 	req_access_txt = "101"

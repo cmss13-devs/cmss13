@@ -2237,8 +2237,6 @@
 /obj/structure/machinery/door/airlock/almayer/medical/glass{
 	dir = 1;
 	name = "\improper Chunk 'N Dump";
-	req_access = null;
-	req_one_access = null
 	},
 /turf/open/floor/strata{
 	icon_state = "white_cyan1"
@@ -9365,7 +9363,6 @@
 "eLZ" = (
 /obj/structure/machinery/door/airlock/almayer/engineering{
 	name = "\improper Cargo Bay Quartermaster";
-	req_one_access = null
 	},
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -12876,10 +12873,8 @@
 /area/lv522/indoors/c_block/cargo)
 "gwR" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass{
-	icon_state = "door_locked";
-	locked = 1;
+	locked = 0;
 	name = "\improper Marshal Office Holding Cell";
-	req_access = null
 	},
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -13151,9 +13146,8 @@
 "gEA" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	dir = 8;
-	locked = 1;
-	name = "\improper Marshals Head Office";
-	req_access = null
+	locked = 0;
+	name = "\improper Marshall Head Office";
 	},
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -24409,7 +24403,7 @@
 /area/lv522/outdoors/colony_streets/north_west_street)
 "lea" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass{
-	name = "\improper Marshals Office Interrogation";
+	name = "\improper Marshall Office Interrogation";
 	req_access = null
 	},
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -25951,7 +25945,7 @@
 "lNb" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	dir = 8;
-	locked = 1;
+	locked = 0;
 	name = "\improper Wildcatters Office";
 	panel_open = 1
 	},
@@ -26848,7 +26842,7 @@
 /area/lv522/outdoors/colony_streets/south_east_street)
 "mji" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
-	locked = 1;
+	locked = 0;
 	name = "\improper Corporation Dome";
 	req_access_txt = "100"
 	},
@@ -28263,7 +28257,7 @@
 /area/lv522/indoors/a_block/dorms)
 "mPQ" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
-	locked = 1;
+	locked = 0;
 	welded = 1
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -35441,9 +35435,8 @@
 "pLN" = (
 /obj/structure/machinery/door/airlock/almayer/medical{
 	dir = 2;
-	locked = 1;
+	locked = 0;
 	name = "Medical Airlock";
-	req_one_access = null
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/corsat{
@@ -35510,9 +35503,8 @@
 "pMt" = (
 /obj/structure/machinery/door/airlock/almayer/medical{
 	dir = 2;
-	locked = 1;
+	locked = 0;
 	name = "Medical Airlock";
-	req_one_access = null
 	},
 /turf/open/floor/corsat{
 	icon_state = "marked"
@@ -37311,7 +37303,7 @@
 "qzp" = (
 /obj/structure/machinery/door/airlock/dropship_hatch/two{
 	dir = 8;
-	locked = 1
+	locked = 0
 	},
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin3";
@@ -38283,7 +38275,7 @@
 "qPS" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 1;
-	locked = 1
+	locked = 0
 	},
 /turf/open/floor/corsat{
 	icon_state = "marked"
@@ -38916,7 +38908,7 @@
 "qZY" = (
 /obj/structure/machinery/door/airlock/dropship_hatch/two{
 	dir = 8;
-	locked = 1
+	locked = 0
 	},
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	dir = 4;
@@ -45243,7 +45235,7 @@
 /area/lv522/outdoors/colony_streets/north_street)
 "tGm" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
-	locked = 1;
+	locked = 0;
 	name = "\improper Corporate Liason"
 	},
 /turf/open/floor/corsat{
@@ -46830,7 +46822,7 @@
 "unE" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 2;
-	locked = 1
+	locked = 0
 	},
 /turf/open/floor/corsat{
 	icon_state = "marked"
@@ -49334,7 +49326,7 @@
 /area/lv522/indoors/a_block/fitness)
 "vmp" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
-	locked = 1
+	locked = 0
 	},
 /turf/open/floor/corsat{
 	icon_state = "marked"
@@ -51980,7 +51972,7 @@
 "wmg" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	dir = 1;
-	locked = 1
+	locked = 0
 	},
 /turf/open/floor/corsat{
 	icon_state = "marked"
@@ -56418,10 +56410,8 @@
 /area/lv522/landing_zone_2/ceiling)
 "yat" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass{
-	icon_state = "door_locked";
-	locked = 1;
-	name = "\improper Marshals Office Armory";
-	req_access = null
+	locked = 0;
+	name = "\improper Marshall Office Armory";
 	},
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4

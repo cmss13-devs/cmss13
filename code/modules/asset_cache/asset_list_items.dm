@@ -407,3 +407,26 @@
 		"disabled_single.png" = 'html/images/disabled_single.png',
 	)
 
+
+/datum/asset/simple/particle_editor
+	assets = list(
+		"motion" = 'icons/images/ui_images/particle_editor/motion.png',
+
+		"uniform" = 'icons/images/ui_images/particle_editor/uniform_rand.png',
+		"normal" ='icons/images/ui_images/particle_editor/normal_rand.png',
+		"linear" = 'icons/images/ui_images/particle_editor/linear_rand.png',
+		"square_rand" = 'icons/images/ui_images/particle_editor/square_rand.png',
+
+		"num" = 'icons/images/ui_images/particle_editor/num_gen.png',
+		"vector" = 'icons/images/ui_images/particle_editor/vector_gen.png',
+		"box" = 'icons/images/ui_images/particle_editor/box_gen.png',
+		"circle" = 'icons/images/ui_images/particle_editor/circle_gen.png',
+		"sphere" = 'icons/images/ui_images/particle_editor/sphere_gen.png',
+		"square" = 'icons/images/ui_images/particle_editor/square_gen.png',
+		"cube" = 'icons/images/ui_images/particle_editor/cube_gen.png',
+	)
+
+/datum/asset/simple/vv
+	assets = list(
+		"view_variables.css" = 'html/admin/view_variables.css'
+	)

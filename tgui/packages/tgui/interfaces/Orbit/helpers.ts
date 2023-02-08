@@ -31,7 +31,7 @@ export const getDisplayName = (full_name: string, nickname?: string) => {
 };
 
 /** Returns the display color for certain health percentages */
-const getHealthColor = (health: number) => {
+export const getHealthColor = (health: number) => {
   switch (true) {
     case health > HEALTH.Good:
       return 'good';

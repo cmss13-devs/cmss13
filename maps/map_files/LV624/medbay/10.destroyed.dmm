@@ -549,7 +549,7 @@
 	},
 /area/lv624/lazarus/medbay)
 "RO" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony{
 	dir = 2;
 	name = "\improper Medical Bay"
 	},
@@ -601,7 +601,7 @@
 	},
 /area/lv624/lazarus/medbay)
 "UH" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony,
 /turf/open/floor{
 	icon_state = "white"
 	},

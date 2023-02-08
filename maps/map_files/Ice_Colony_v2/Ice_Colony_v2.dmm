@@ -868,11 +868,9 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/almayer/secure{
-	icon_state = "door_locked";
-	locked = 1;
+/obj/structure/machinery/door/airlock/almayer/secure/colony{
+	locked = 0;
 	name = "Colony Requesitions Storage Pod";
-	req_access_txt = "100"
 	},
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/surface/requesitions)
@@ -1186,7 +1184,7 @@
 /area/ice_colony/surface/engineering/electric)
 "aef" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/machinery/door/airlock/almayer/engineering{
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	dir = 1;
 	name = "\improper Colony Engineering Electric Storage";
 	req_access_txt = "100"
@@ -1358,9 +1356,8 @@
 /area/ice_colony/exterior/surface/valley/northeast)
 "aeC" = (
 /obj/structure/machinery/door/airlock{
-	icon_state = "door_locked";
 	id_tag = "st_5";
-	locked = 1;
+	locked = 0;
 	name = "Storage Unit";
 	req_one_access_txt = "100;101;102;103"
 	},
@@ -1650,9 +1647,8 @@
 	},
 /area/ice_colony/surface/engineering)
 "afp" = (
-/obj/structure/machinery/door/airlock/almayer/engineering{
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	name = "\improper Colony Engineering Generator Room";
-	req_access_txt = "100"
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -1742,10 +1738,9 @@
 /area/ice_colony/surface/engineering)
 "afC" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/machinery/door/airlock/almayer/engineering{
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	dir = 1;
 	name = "\improper Colony Engineering Tool Storage";
-	req_access_txt = "100"
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -1874,9 +1869,8 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/almayer/engineering{
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	name = "\improper Colony Engineering Material Storage";
-	req_access_txt = "100"
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -2543,9 +2537,8 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/almayer/engineering{
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	name = "\improper Colony Engineering Locker Room";
-	req_access_txt = "100"
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -2997,10 +2990,9 @@
 "aiT" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/machinery/door/airlock/almayer/engineering{
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	dir = 1;
 	name = "\improper Colony Engineering";
-	req_access_txt = "100"
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -3016,10 +3008,9 @@
 /area/ice_colony/exterior/surface/clearing/north)
 "aiV" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/machinery/door/airlock/almayer/engineering{
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	dir = 1;
 	name = "\improper Colony Engineering Backup Power Storage";
-	req_access_txt = "100"
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -3106,10 +3097,8 @@
 /turf/open/auto_turf/snow/layer3,
 /area/ice_colony/exterior/surface/valley/northeast)
 "ajl" = (
-/obj/structure/machinery/door/airlock/almayer/medical/glass{
+/obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
 	name = "\improper Hydroponics North Wing Dome";
-	req_access_txt = "100";
-	req_one_access = null
 	},
 /turf/open/floor{
 	dir = 8;
@@ -3278,10 +3267,9 @@
 /area/ice_colony/surface/substation/smes)
 "ajE" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/machinery/door/airlock/almayer/engineering{
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	dir = 1;
 	name = "\improper Colony Power Substation SMES";
-	req_access_txt = "100"
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -3861,10 +3849,9 @@
 "alh" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment,
-/obj/structure/machinery/door/airlock/almayer/engineering{
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	dir = 1;
 	name = "\improper Colony Power Substation";
-	req_access_txt = "100"
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -4558,10 +4545,9 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/almayer/medical/glass{
+/obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
 	name = "\improper Hydroponics North Wing Technical Storage";
 	req_access_txt = "100";
-	req_one_access = null
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -4809,7 +4795,6 @@
 "anQ" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	name = "\improper Toilet Unit";
-	req_access_txt = "100"
 	},
 /turf/open/floor{
 	icon_state = "freezerfloor";
@@ -4861,7 +4846,6 @@
 "anY" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	name = "\improper Toilet Unit";
-	req_access_txt = "100"
 	},
 /turf/open/floor{
 	icon_state = "freezerfloor";
@@ -4912,10 +4896,9 @@
 "aoe" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment,
-/obj/structure/machinery/door/airlock/almayer/engineering{
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	dir = 1;
 	name = "\improper Colony Power Substation";
-	req_access_txt = "100"
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -5112,9 +5095,8 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/almayer/engineering{
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	name = "\improper Colony Mining Station";
-	req_access_txt = "100"
 	},
 /turf/open/floor/plating,
 /area/ice_colony/surface/mining)
@@ -5197,10 +5179,8 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/almayer/medical/glass{
+/obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
 	name = "\improper Aurora Medical Clinic Recovery Room";
-	req_access_txt = "100";
-	req_one_access = null
 	},
 /turf/open/floor{
 	icon_state = "cafeteria"
@@ -5226,10 +5206,8 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/almayer/medical/glass{
+/obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
 	name = "\improper Aurora Medical Clinic Scanning Unit";
-	req_access_txt = "100";
-	req_one_access = null
 	},
 /turf/open/floor{
 	icon_state = "cafeteria"
@@ -5685,10 +5663,8 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/almayer/medical/glass{
+/obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
 	name = "\improper Aurora Medical Clinic Storage";
-	req_access_txt = "100";
-	req_one_access = null
 	},
 /turf/open/floor{
 	icon_state = "cafeteria"
@@ -5766,7 +5742,6 @@
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 1;
 	name = "\improper Dormitories Men's Restroom";
-	req_access_txt = "100"
 	},
 /turf/open/floor{
 	icon_state = "freezerfloor";
@@ -5805,7 +5780,6 @@
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 1;
 	name = "\improper Dormitories Women's Restroom";
-	req_access_txt = "100"
 	},
 /turf/open/floor{
 	icon_state = "freezerfloor";
@@ -6269,7 +6243,6 @@
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 1;
 	name = "\improper Colony Dormitory Unit";
-	req_access_txt = "100"
 	},
 /turf/open/floor/wood,
 /area/ice_colony/surface/dorms)
@@ -6296,7 +6269,6 @@
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 1;
 	name = "\improper Colony Dormitory Custodial Closet";
-	req_access_txt = "100"
 	},
 /turf/open/floor/plating,
 /area/ice_colony/surface/dorms)
@@ -6463,7 +6435,7 @@
 /turf/open/auto_turf/snow/layer3,
 /area/ice_colony/exterior/surface/valley/southwest)
 "asj" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony{
 	name = "\improper Aurora Medical Clinic Treatment";
 	req_access_txt = "100"
 	},
@@ -6481,11 +6453,9 @@
 	},
 /area/ice_colony/surface/clinic/treatment)
 "asl" = (
-/obj/structure/machinery/door/airlock/almayer/medical/glass{
+/obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
 	dir = 1;
 	name = "\improper Aurora Medical Clinic Storage";
-	req_access_txt = "100";
-	req_one_access = null
 	},
 /turf/open/floor{
 	icon_state = "cafeteria"
@@ -7110,7 +7080,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony{
 	dir = 1;
 	name = "\improper Aurora Medical Clinic";
 	req_access_txt = "100"
@@ -7424,7 +7394,6 @@
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 1;
 	name = "\improper Colony Dormitory Unit";
-	req_access_txt = "100"
 	},
 /turf/open/floor/wood,
 /area/ice_colony/surface/dorms)
@@ -7750,7 +7719,6 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	dir = 1;
 	name = "\improper Hydroponics Zoo Dome";
-	req_access_txt = "100"
 	},
 /turf/open/floor{
 	icon_state = "darkgreen2";
@@ -7793,7 +7761,6 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	dir = 1;
 	name = "\improper Hydroponics Dome";
-	req_access_txt = "100"
 	},
 /turf/open/floor{
 	icon_state = "darkgreen2";
@@ -7897,7 +7864,6 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	dir = 1;
 	name = "\improper Hydroponics Dome";
-	req_access_txt = "100"
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -7922,7 +7888,6 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	dir = 1;
 	name = "\improper Colony Dormitories";
-	req_access_txt = "100"
 	},
 /turf/open/floor{
 	dir = 10;
@@ -7986,7 +7951,6 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	dir = 1;
 	name = "\improper Colony Dormitories";
-	req_access_txt = "100"
 	},
 /turf/open/floor{
 	dir = 6;
@@ -8771,7 +8735,6 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	name = "\improper Hydroponics Dome South Wing";
-	req_access_txt = "100"
 	},
 /turf/open/floor{
 	dir = 8;
@@ -8958,9 +8921,8 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/almayer/engineering{
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	name = "\improper Colony Disposals";
-	req_access_txt = "100"
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -9183,7 +9145,6 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	name = "\improper Colony Dormitories Lavatory";
-	req_access_txt = "100"
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -9200,7 +9161,6 @@
 /obj/structure/disposalpipe/segment,
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	name = "\improper Colony Dormitories Canteen";
-	req_access_txt = "100"
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -9268,10 +9228,8 @@
 /turf/open/gm/grass,
 /area/ice_colony/surface/hydroponics/south)
 "azM" = (
-/obj/structure/machinery/door/airlock/almayer/medical/glass{
+/obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
 	name = "\improper Colony Dormitories";
-	req_access_txt = "100";
-	req_one_access = null
 	},
 /turf/open/floor{
 	dir = 9;
@@ -9505,10 +9463,8 @@
 	},
 /area/ice_colony/surface/disposals)
 "aAr" = (
-/obj/structure/machinery/door/airlock/almayer/medical/glass{
+/obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
 	name = "\improper Hydroponics South Wing Dome";
-	req_access_txt = "100";
-	req_one_access = null
 	},
 /turf/open/floor{
 	dir = 8;
@@ -9781,9 +9737,8 @@
 "aBf" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/colony{
 	name = "\improper Colony Administration";
-	req_access_txt = "100"
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -10206,9 +10161,8 @@
 /turf/open/auto_turf/snow/layer0,
 /area/ice_colony/exterior/surface/valley/south/excavation)
 "aCj" = (
-/obj/structure/machinery/door/airlock/almayer/security/glass{
+/obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	name = "\improper Colony Security Checkpoint";
-	req_access_txt = "100"
 	},
 /turf/open/floor{
 	dir = 8;
@@ -10630,7 +10584,6 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	dir = 1;
 	name = "\improper Colony Garage";
-	req_access_txt = "100"
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -10926,9 +10879,8 @@
 /obj/structure/disposalpipe/segment{
 	dir = 8;
 	},
-/obj/structure/machinery/door/airlock/almayer/secure{
+/obj/structure/machinery/door/airlock/almayer/secure/colony{
 	name = "Colony Garage";
-	req_access_txt = "100"
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -11028,9 +10980,8 @@
 	id = "colony_admin_top";
 	name = "\improper Colony Administration Blast Door"
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/colony{
 	name = "\improper Colony Offices";
-	req_access_txt = "100"
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -11314,10 +11265,9 @@
 /area/ice_colony/surface/garage/repair)
 "aEX" = (
 /obj/structure/disposalpipe/segment,
-/obj/structure/machinery/door/airlock/almayer/engineering{
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	dir = 1;
 	name = "\improper Colony Garage Repair Station";
-	req_access_txt = "100"
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -11407,10 +11357,8 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/almayer/medical/glass{
+/obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
 	name = "\improper Hydroponics South Wing Technical Storage";
-	req_access_txt = "100";
-	req_one_access = null
 	},
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -11634,10 +11582,9 @@
 	id = "colony_admin_top";
 	name = "\improper Colony Administration Blast Door"
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/colony{
 	dir = 1;
 	name = "\improper Colony Control Center";
-	req_access_txt = "100"
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -11697,10 +11644,9 @@
 "aFY" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment,
-/obj/structure/machinery/door/airlock/almayer/secure{
+/obj/structure/machinery/door/airlock/almayer/secure/colony{
 	dir = 2;
 	name = "Colony Garage";
-	req_access_txt = "100"
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -11717,10 +11663,9 @@
 	},
 /area/ice_colony/surface/garage/one)
 "aGb" = (
-/obj/structure/machinery/door/airlock/almayer/secure{
+/obj/structure/machinery/door/airlock/almayer/secure/colony{
 	dir = 2;
 	name = "Colony Garage";
-	req_access_txt = "100"
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -11963,9 +11908,8 @@
 	id = "";
 	name = "\improper Forced Blast Door"
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/colony{
 	name = "\improper Colony Crisis Room";
-	req_access_txt = "100"
 	},
 /turf/open/floor/wood,
 /area/ice_colony/surface/command/crisis)
@@ -12003,10 +11947,9 @@
 "aGS" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/machinery/door/airlock/almayer/command{
+/obj/structure/machinery/door/airlock/almayer/command/colony{
 	dir = 1;
 	name = "\improper Colony Administration Office";
-	req_access_txt = "100"
 	},
 /turf/open/floor/wood,
 /area/ice_colony/surface/command/control/pv1)
@@ -12016,10 +11959,9 @@
 "aGU" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/machinery/door/airlock/almayer/command{
+/obj/structure/machinery/door/airlock/almayer/command/colony{
 	dir = 1;
 	name = "\improper Colony Administration Office";
-	req_access_txt = "100"
 	},
 /turf/open/floor/wood,
 /area/ice_colony/surface/command/control/pv2)
@@ -12205,12 +12147,10 @@
 	},
 /area/ice_colony/surface/clinic/lobby)
 "aHB" = (
-/obj/structure/machinery/door/airlock/almayer/secure{
-	icon_state = "door_locked";
+/obj/structure/machinery/door/airlock/almayer/secure/colony{
 	id = "st_17";
-	locked = 1;
+	locked = 0;
 	name = "Power Storage Unit";
-	req_access_txt = "100"
 	},
 /turf/open/floor{
 	dir = 8;
@@ -12651,13 +12591,11 @@
 /turf/closed/wall/r_wall,
 /area/ice_colony/surface/storage_unit/telecomms)
 "aJe" = (
-/obj/structure/machinery/door/airlock/almayer/secure{
+/obj/structure/machinery/door/airlock/almayer/secure/colony{
 	dir = 2;
-	icon_state = "door_locked";
 	id = "st_18";
-	locked = 1;
+	locked = 0;
 	name = "Disposals Storage Unit";
-	req_access_txt = "100"
 	},
 /turf/open/floor{
 	dir = 8;
@@ -12965,7 +12903,6 @@
 	},
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	name = "\improper Anti-Freeze Bar";
-	req_access_txt = "100"
 	},
 /turf/open/floor/wood,
 /area/ice_colony/surface/bar/bar)
@@ -13162,9 +13099,8 @@
 	},
 /area/ice_colony/surface/hangar/checkpoint)
 "aLo" = (
-/obj/structure/machinery/door/airlock/almayer/security/glass{
+/obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	name = "\improper Colony Security Checkpoint";
-	req_access_txt = "100"
 	},
 /turf/open/floor{
 	dir = 8;
@@ -13324,7 +13260,6 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	dir = 1;
 	name = "\improper Anti-Freeze Canteen";
-	req_access_txt = "100"
 	},
 /turf/open/floor/wood,
 /area/ice_colony/surface/bar/canteen)
@@ -13947,13 +13882,11 @@
 /turf/open/floor/plating,
 /area/ice_colony/surface/research)
 "aNV" = (
-/obj/structure/machinery/door/airlock/almayer/secure{
+/obj/structure/machinery/door/airlock/almayer/secure/colony{
 	dir = 2;
-	icon_state = "door_locked";
 	id = "st_19";
-	locked = 1;
+	locked = 0;
 	name = "Research Storage Unit";
-	req_access_txt = "100"
 	},
 /turf/open/floor{
 	dir = 8;
@@ -14012,7 +13945,6 @@
 /obj/structure/disposalpipe/segment,
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	name = "\improper Security Checkpoint";
-	req_access_txt = "100"
 	},
 /turf/open/floor{
 	dir = 9;
@@ -14057,10 +13989,9 @@
 /turf/closed/wall,
 /area/ice_colony/surface/research)
 "aOp" = (
-/obj/structure/machinery/door/airlock/almayer/engineering{
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	dir = 1;
 	name = "\improper Omicron Custodial Storage";
-	req_access_txt = "100"
 	},
 /turf/open/floor/plating,
 /area/ice_colony/surface/research)
@@ -14725,10 +14656,9 @@
 	},
 /area/ice_colony/surface/research/field_gear)
 "aQd" = (
-/obj/structure/machinery/door/airlock/almayer/engineering{
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	dir = 8;
 	name = "\improper Omicron Field Gear Storage";
-	req_access_txt = "100";
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 8;
@@ -14801,12 +14731,10 @@
 	},
 /area/ice_colony/surface/research)
 "aQm" = (
-/obj/structure/machinery/door/airlock/almayer/secure{
-	icon_state = "door_locked";
+/obj/structure/machinery/door/airlock/almayer/secure/colony{
 	id = "research_entrance";
-	locked = 1;
+	locked = 0;
 	name = "Omicron Research Dome";
-	req_access_txt = "100"
 	},
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -14823,7 +14751,6 @@
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 1;
 	name = "\improper Anti-Freeze Canteen Freezer";
-	req_access_txt = "100"
 	},
 /turf/open/floor{
 	icon_state = "freezerfloor";
@@ -14837,7 +14764,6 @@
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 1;
 	name = "\improper Anti-Freeze Bar Freezer";
-	req_access_txt = "100"
 	},
 /turf/open/floor{
 	icon_state = "freezerfloor";
@@ -14925,9 +14851,8 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/almayer/engineering{
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	name = "\improper Aerodrome Hangar Alpha";
-	req_access_txt = "100"
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -16098,9 +16023,8 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/almayer/engineering{
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	name = "\improper Omicron Temporary Sample Storage";
-	req_access_txt = "100"
 	},
 /turf/open/floor{
 	dir = 4;
@@ -16371,9 +16295,8 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/almayer/engineering{
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	name = "\improper Aerodrome Hangar Beta";
-	req_access_txt = "100"
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -16467,10 +16390,9 @@
 "aUY" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/machinery/door/airlock/almayer/engineering{
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	dir = 1;
 	name = "\improper Omicron Technical Storage";
-	req_access_txt = "100"
 	},
 /turf/open/floor{
 	icon_state = "darkyellow2";
@@ -17479,7 +17401,6 @@
 "aXR" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	name = "\improper Aerodrome Hangar";
-	req_access_txt = "100"
 	},
 /turf/open/floor{
 	dir = 10;
@@ -18474,10 +18395,9 @@
 /turf/closed/wall,
 /area/ice_colony/surface/tcomms)
 "bbw" = (
-/obj/structure/machinery/door/airlock/almayer/engineering{
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	dir = 1;
 	name = "\improper Colony Storeroom";
-	req_access_txt = "100"
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -18637,9 +18557,8 @@
 /turf/closed/wall,
 /area/ice_colony/surface/excavation)
 "bcj" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony{
 	name = "\improper Colony Xenoarcheology Outpost";
-	req_access_txt = "100"
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -19786,7 +19705,6 @@
 	},
 /obj/structure/machinery/door/airlock/almayer/generic{
 	name = "\improper Underground Requesitions Freezer";
-	req_access_txt = "100"
 	},
 /turf/open/floor{
 	icon_state = "freezerfloor";
@@ -19908,11 +19826,9 @@
 	},
 /area/ice_colony/underground/requesition)
 "bgt" = (
-/obj/structure/machinery/door/airlock/almayer/maint{
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
 	dir = 1;
 	name = "\improper Underground Maintenance";
-	req_access_txt = "100";
-	req_one_access = null
 	},
 /turf/open/floor/plating,
 /area/ice_colony/underground/requesition)
@@ -20049,12 +19965,9 @@
 /turf/open/floor/plating,
 /area/ice_colony/underground/maintenance/north)
 "bgR" = (
-/obj/structure/machinery/door/airlock/almayer/maint{
-	icon_state = "door_locked";
-	locked = 1;
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
+	locked = 0;
 	name = "\improper Underground Maintenance";
-	req_access_txt = "100";
-	req_one_access = null
 	},
 /turf/open/floor/plating,
 /area/ice_colony/underground/hangar)
@@ -20187,11 +20100,9 @@
 /turf/closed/wall/r_wall,
 /area/ice_colony/underground/maintenance/north)
 "bhk" = (
-/obj/structure/machinery/door/airlock/almayer/maint{
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
 	dir = 1;
 	name = "\improper Underground Maintenance";
-	req_access_txt = "100";
-	req_one_access = null
 	},
 /turf/open/floor/plating,
 /area/ice_colony/underground/maintenance/north)
@@ -20214,11 +20125,9 @@
 /area/ice_colony/underground/requesition/lobby)
 "bhp" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/machinery/door/airlock/almayer/medical/glass{
+/obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
 	dir = 1;
 	name = "\improper Underground Requesitions Office";
-	req_access_txt = "100";
-	req_one_access = null
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -20425,10 +20334,9 @@
 /turf/closed/wall/r_wall,
 /area/ice_colony/underground/hangar)
 "big" = (
-/obj/structure/machinery/door/airlock/almayer/secure{
+/obj/structure/machinery/door/airlock/almayer/secure/colony{
 	dir = 2;
 	name = "Underground Hangar Power Substation";
-	req_access_txt = "100"
 	},
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/underground/hangar)
@@ -20526,7 +20434,6 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	name = "\improper Underground Requesitions Bay";
-	req_access_txt = "100"
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -20790,21 +20697,17 @@
 	},
 /area/ice_colony/underground/requesition/lobby)
 "bjx" = (
-/obj/structure/machinery/door/airlock/almayer/maint{
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
 	name = "\improper Underground Maintenance";
-	req_access_txt = "100";
-	req_one_access = null
 	},
 /turf/open/floor/plating,
 /area/ice_colony/underground/requesition/lobby)
 "bjz" = (
-/obj/structure/machinery/door/airlock/almayer/maint{
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
 	dir = 1;
-	icon_state = "door_locked";
-	locked = 1;
+	locked = 0;
 	name = "\improper Underground Maintenance";
 	req_access_txt = "100";
-	req_one_access = null
 	},
 /turf/open/floor/plating,
 /area/ice_colony/underground/hangar)
@@ -21043,7 +20946,6 @@
 "bkn" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	name = "\improper Underground Requesitions Lobby";
-	req_access_txt = "100"
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -21054,10 +20956,8 @@
 /turf/open/floor/plating,
 /area/ice_colony/underground/maintenance/north)
 "bkp" = (
-/obj/structure/machinery/door/airlock/almayer/maint{
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
 	name = "\improper Underground Maintenance";
-	req_access_txt = "100";
-	req_one_access = null
 	},
 /turf/open/floor/plating,
 /area/ice_colony/underground/hallway/north_west)
@@ -21142,11 +21042,9 @@
 /turf/closed/wall/r_wall,
 /area/ice_colony/underground/crew/chapel)
 "bkD" = (
-/obj/structure/machinery/door/airlock/almayer/maint{
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
 	dir = 1;
 	name = "\improper Underground Maintenance";
-	req_access_txt = "100";
-	req_one_access = null
 	},
 /turf/open/floor/plating,
 /area/ice_colony/underground/crew/chapel)
@@ -21154,11 +21052,9 @@
 /turf/closed/wall/r_wall,
 /area/ice_colony/underground/crew/morgue)
 "bkF" = (
-/obj/structure/machinery/door/airlock/almayer/maint{
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
 	dir = 1;
 	name = "\improper Underground Maintenance";
-	req_access_txt = "100";
-	req_one_access = null
 	},
 /turf/open/floor/plating,
 /area/ice_colony/underground/crew/morgue)
@@ -21181,11 +21077,9 @@
 /turf/closed/wall/r_wall,
 /area/ice_colony/underground/maintenance/research)
 "bkK" = (
-/obj/structure/machinery/door/airlock/almayer/maint{
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
 	dir = 1;
 	name = "\improper Underground Maintenance";
-	req_access_txt = "100";
-	req_one_access = null
 	},
 /turf/open/floor/plating,
 /area/ice_colony/underground/requesition/sec_storage)
@@ -21359,10 +21253,8 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/almayer/maint{
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
 	name = "\improper Underground Maintenance";
-	req_access_txt = "100";
-	req_one_access = null
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -21714,7 +21606,6 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	dir = 1;
 	name = "\improper Underground Chapel";
-	req_access_txt = "100"
 	},
 /turf/open/floor{
 	icon_state = "wood"
@@ -21999,9 +21890,8 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/almayer/secure{
+/obj/structure/machinery/door/airlock/almayer/secure/colony{
 	name = "Underground Morgue";
-	req_access_txt = "100"
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -22051,11 +21941,9 @@
 	},
 /area/ice_colony/underground/hallway/north_west)
 "bnA" = (
-/obj/structure/machinery/door/airlock/almayer/maint{
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
 	dir = 1;
 	name = "\improper Underground Maintenance";
-	req_access_txt = "100";
-	req_one_access = null
 	},
 /turf/open/floor/plating,
 /area/ice_colony/underground/hallway/north_west)
@@ -22405,9 +22293,8 @@
 	},
 /area/ice_colony/underground/engineering/locker)
 "bow" = (
-/obj/structure/machinery/door/airlock/almayer/engineering{
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	name = "\improper Underground Engineering Locker Room";
-	req_access_txt = "100"
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -22445,10 +22332,9 @@
 /area/ice_colony/exterior/underground/caves/open)
 "boE" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/machinery/door/airlock/almayer/secure{
+/obj/structure/machinery/door/airlock/almayer/secure/colony{
 	dir = 2;
 	name = "Underground Morgue";
-	req_access_txt = "100"
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -22473,11 +22359,9 @@
 /area/ice_colony/underground/crew/library)
 "boI" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/machinery/door/airlock/almayer/medical/glass{
+/obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
 	dir = 1;
 	name = "\improper Underground Library";
-	req_access_txt = "100";
-	req_one_access = null
 	},
 /turf/open/floor{
 	icon_state = "wood"
@@ -22487,11 +22371,9 @@
 /turf/closed/wall/r_wall,
 /area/ice_colony/underground/hallway/south_east)
 "boK" = (
-/obj/structure/machinery/door/airlock/almayer/maint{
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
 	dir = 1;
 	name = "\improper Underground Maintenance";
-	req_access_txt = "100";
-	req_one_access = null
 	},
 /turf/open/floor/plating,
 /area/ice_colony/underground/hallway/south_east)
@@ -22501,10 +22383,9 @@
 /area/ice_colony/underground/engineering/locker)
 "boN" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/machinery/door/airlock/almayer/engineering{
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	dir = 1;
 	name = "\improper Underground Engineering Locker Room";
-	req_access_txt = "100"
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -22810,7 +22691,6 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	dir = 1;
 	name = "\improper Underground Main Hallway";
-	req_access_txt = "100"
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -22846,7 +22726,6 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	dir = 1;
 	name = "\improper Underground Power Substation";
-	req_access_txt = "100"
 	},
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -22883,7 +22762,6 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	dir = 1;
 	name = "\improper Underground Power Substation";
-	req_access_txt = "100"
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -23192,7 +23070,7 @@
 /area/ice_colony/underground/medical/lobby)
 "bqV" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony{
 	name = "\improper Underground Medical Laboratory";
 	req_access_txt = "100"
 	},
@@ -23281,7 +23159,6 @@
 "brm" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	name = "\improper Underground Sports Center";
-	req_access_txt = "100"
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -23295,11 +23172,9 @@
 /area/ice_colony/underground/hallway/south_east)
 "bro" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/machinery/door/airlock/almayer/maint{
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
 	dir = 1;
 	name = "\improper Underground Maintenance";
-	req_access_txt = "100";
-	req_one_access = null
 	},
 /turf/open/floor/plating,
 /area/ice_colony/underground/engineering)
@@ -23334,10 +23209,8 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/almayer/maint{
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
 	name = "\improper Underground Maintenance";
-	req_access_txt = "100";
-	req_one_access = null
 	},
 /turf/open/floor/plating,
 /area/ice_colony/underground/engineering)
@@ -23480,11 +23353,9 @@
 /area/ice_colony/underground/medical/or)
 "brL" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/machinery/door/airlock/almayer/maint{
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
 	dir = 1;
 	name = "\improper Underground Maintenance";
-	req_access_txt = "100";
-	req_one_access = null
 	},
 /turf/open/floor/plating,
 /area/ice_colony/underground/hallway/north_west)
@@ -23517,10 +23388,9 @@
 	},
 /area/ice_colony/underground/reception/checkpoint_north)
 "brP" = (
-/obj/structure/machinery/door/airlock/almayer/security/glass{
+/obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	dir = 1;
 	name = "\improper Underground Security Checkpoint";
-	req_access_txt = "100"
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -23944,10 +23814,9 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony{
 	dir = 1;
 	name = "\improper Underground Medical Laboratory";
-	req_access_txt = "100"
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -24042,10 +23911,8 @@
 /turf/open/floor/plating,
 /area/ice_colony/underground/maintenance/central)
 "btn" = (
-/obj/structure/machinery/door/airlock/almayer/maint{
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
 	name = "\improper Underground Maintenance";
-	req_access_txt = "100";
-	req_one_access = null
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -24173,23 +24040,20 @@
 /area/ice_colony/underground/engineering/substation)
 "btB" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/machinery/door/airlock/almayer/secure{
+/obj/structure/machinery/door/airlock/almayer/secure/colony{
 	dir = 2;
-	icon_state = "door_locked";
 	id = "engine_electrical_maintenance";
-	locked = 1;
+	locked = 0;
 	name = "Underground Power Substation";
-	req_access_txt = "100"
 	},
 /turf/open/floor{
 	icon_state = "dark2";
 	},
 /area/ice_colony/underground/engineering/substation)
 "btC" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony{
 	dir = 1;
 	name = "\improper Underground Medical Laboratory";
-	req_access_txt = "100"
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -24518,10 +24382,8 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/almayer/medical/glass{
+/obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
 	name = "\improper Underground Medical Laboratory Treatment";
-	req_access_txt = "100";
-	req_one_access = null
 	},
 /turf/open/floor{
 	icon_state = "white"
@@ -24611,10 +24473,8 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/almayer/maint{
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
 	name = "\improper Underground Maintenance";
-	req_access_txt = "100";
-	req_one_access = null
 	},
 /turf/open/floor/plating,
 /area/ice_colony/underground/medical/or)
@@ -24708,10 +24568,8 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/almayer/medical/glass{
+/obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
 	name = "\improper Underground Sports Center";
-	req_access_txt = "100";
-	req_one_access = null
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -25050,8 +24908,6 @@
 /obj/structure/machinery/door/airlock/almayer/medical{
 	dir = 1;
 	name = "Underground Medical Laboratory Operating Theatre";
-	req_access_txt = "100";
-	req_one_access = null
 	},
 /turf/open/floor{
 	icon_state = "white"
@@ -25191,10 +25047,8 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/almayer/medical/glass{
+/obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
 	name = "\improper Underground Medical Laboratory Lobby";
-	req_access_txt = "100";
-	req_one_access = null
 	},
 /turf/open/floor{
 	icon_state = "white"
@@ -25377,19 +25231,15 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/almayer/maint{
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
 	name = "\improper Underground Maintenance";
-	req_access_txt = "100";
-	req_one_access = null
 	},
 /turf/open/floor/plating,
 /area/ice_colony/underground/medical/treatment)
 "bwU" = (
-/obj/structure/machinery/door/airlock/almayer/maint{
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
 	dir = 1;
 	name = "\improper Underground Maintenance";
-	req_access_txt = "100";
-	req_one_access = null
 	},
 /turf/open/floor/plating,
 /area/ice_colony/underground/maintenance/central/construction)
@@ -25429,13 +25279,11 @@
 /area/ice_colony/underground/crew/bball)
 "bwZ" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/machinery/door/airlock/almayer/secure{
+/obj/structure/machinery/door/airlock/almayer/secure/colony{
 	dir = 2;
-	icon_state = "door_locked";
 	id = "engine_electrical_maintenance";
-	locked = 1;
+	locked = 0;
 	name = "Underground Power Substation";
-	req_access_txt = "100"
 	},
 /turf/open/floor/plating,
 /area/ice_colony/underground/engineering/substation)
@@ -25580,11 +25428,9 @@
 /turf/open/floor/plating,
 /area/ice_colony/underground/maintenance/central)
 "bxx" = (
-/obj/structure/machinery/door/airlock/almayer/maint{
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
 	dir = 1;
 	name = "\improper Underground Maintenance";
-	req_access_txt = "100";
-	req_one_access = null
 	},
 /turf/open/floor/plating,
 /area/ice_colony/underground/crew/bball)
@@ -25653,11 +25499,9 @@
 /area/ice_colony/underground/maintenance/research)
 "bxL" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/machinery/door/airlock/almayer/medical/glass{
+/obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
 	dir = 1;
 	name = "\improper Underground Medical Laboratory";
-	req_access_txt = "100";
-	req_one_access = null
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -25949,11 +25793,9 @@
 /area/ice_colony/underground/medical/storage)
 "byQ" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/machinery/door/airlock/almayer/medical/glass{
+/obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
 	dir = 1;
 	name = "\improper Underground Medical Laboratory Storage";
-	req_access_txt = "100";
-	req_one_access = null
 	},
 /turf/open/floor{
 	icon_state = "white"
@@ -26142,11 +25984,9 @@
 /area/ice_colony/underground/command/center)
 "bzq" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/machinery/door/airlock/almayer/maint{
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
 	dir = 1;
 	name = "\improper Underground Maintenance";
-	req_access_txt = "100";
-	req_one_access = null
 	},
 /turf/open/floor/plating,
 /area/ice_colony/underground/command/center)
@@ -26361,10 +26201,8 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/almayer/maint{
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
 	name = "\improper Underground Maintenance";
-	req_access_txt = "100";
-	req_one_access = null
 	},
 /turf/open/floor/plating,
 /area/ice_colony/underground/hallway/north_west)
@@ -26503,7 +26341,6 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	dir = 1;
 	name = "\improper Underground Staff Canteen";
-	req_access_txt = "100"
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -26590,11 +26427,9 @@
 /area/ice_colony/underground/hallway/north_west)
 "bAE" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/machinery/door/airlock/almayer/maint{
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
 	dir = 1;
 	name = "\improper Underground Maintenance";
-	req_access_txt = "100";
-	req_one_access = null
 	},
 /turf/open/floor/plating,
 /area/ice_colony/underground/medical/storage)
@@ -26654,10 +26489,8 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/almayer/maint{
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
 	name = "\improper Underground Maintenance";
-	req_access_txt = "100";
-	req_one_access = null
 	},
 /turf/open/floor/plating,
 /area/ice_colony/underground/crew/canteen)
@@ -26785,11 +26618,9 @@
 /area/ice_colony/underground/research)
 "bBe" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/machinery/door/airlock/almayer/maint{
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
 	dir = 1;
 	name = "\improper Underground Maintenance";
-	req_access_txt = "100";
-	req_one_access = null
 	},
 /turf/open/floor/plating,
 /area/ice_colony/underground/research)
@@ -26801,11 +26632,9 @@
 /area/ice_colony/underground/research/storage)
 "bBh" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/machinery/door/airlock/almayer/maint{
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
 	dir = 1;
 	name = "\improper Underground Maintenance";
-	req_access_txt = "100";
-	req_one_access = null
 	},
 /turf/open/floor/plating,
 /area/ice_colony/underground/research/storage)
@@ -27162,11 +26991,9 @@
 /area/ice_colony/underground/security/marshal)
 "bCf" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/machinery/door/airlock/almayer/maint{
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
 	dir = 1;
 	name = "\improper Underground Maintenance";
-	req_access_txt = "100";
-	req_one_access = null
 	},
 /turf/open/floor/plating,
 /area/ice_colony/underground/maintenance/engineering)
@@ -27189,10 +27016,8 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/almayer/maint{
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
 	name = "\improper Underground Maintenance";
-	req_access_txt = "100";
-	req_one_access = null
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -27279,19 +27104,17 @@
 /area/ice_colony/underground/crew/canteen)
 "bCG" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/machinery/door/airlock/almayer/security/glass{
+/obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	dir = 1;
 	name = "\improper Underground Security Detective's Office";
-	req_access_txt = "100"
 	},
 /turf/open/floor/wood,
 /area/ice_colony/underground/security/detective)
 "bCH" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/machinery/door/airlock/almayer/security/glass{
+/obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	dir = 1;
 	name = "\improper Underground Security Marshal's Office";
-	req_access_txt = "100"
 	},
 /turf/open/floor/wood,
 /area/ice_colony/underground/security/marshal)
@@ -27498,9 +27321,8 @@
 	},
 /area/ice_colony/underground/crew/canteen)
 "bDm" = (
-/obj/structure/machinery/door/airlock/almayer/security/glass{
+/obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	name = "\improper Underground Security";
-	req_access_txt = "100"
 	},
 /turf/open/floor{
 	dir = 9;
@@ -27650,10 +27472,9 @@
 /turf/open/floor/plating,
 /area/ice_colony/underground/command/center)
 "bDI" = (
-/obj/structure/machinery/door/airlock/almayer/command{
+/obj/structure/machinery/door/airlock/almayer/command/colony{
 	dir = 1;
 	name = "\improper Underground Command Center";
-	req_access_txt = "100"
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -27788,10 +27609,8 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/almayer/maint{
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
 	name = "\improper Underground Maintenance";
-	req_access_txt = "100";
-	req_one_access = null
 	},
 /turf/open/floor/plating,
 /area/ice_colony/underground/security/hallway)
@@ -27889,10 +27708,8 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/almayer/medical/glass{
+/obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
 	name = "\improper Theta-V Research Laboratory Storage";
-	req_access_txt = "100";
-	req_one_access = null
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -28001,11 +27818,9 @@
 /turf/closed/wall/r_wall,
 /area/ice_colony/underground/command/pv1)
 "bEG" = (
-/obj/structure/machinery/door/airlock/almayer/maint{
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
 	dir = 1;
 	name = "\improper Underground Maintenance";
-	req_access_txt = "100";
-	req_one_access = null
 	},
 /turf/open/floor/plating,
 /area/ice_colony/underground/command/pv1)
@@ -28013,11 +27828,9 @@
 /turf/closed/wall/r_wall,
 /area/ice_colony/underground/command/pv2)
 "bEI" = (
-/obj/structure/machinery/door/airlock/almayer/maint{
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
 	dir = 1;
 	name = "\improper Underground Maintenance";
-	req_access_txt = "100";
-	req_one_access = null
 	},
 /turf/open/floor/plating,
 /area/ice_colony/underground/command/pv2)
@@ -28056,9 +27869,8 @@
 /obj/structure/disposalpipe/segment{
 	dir = 8;
 	},
-/obj/structure/machinery/door/airlock/almayer/security/glass{
+/obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	name = "\improper Underground Security";
-	req_access_txt = "100"
 	},
 /turf/open/floor{
 	dir = 10;
@@ -28151,10 +27963,8 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/almayer/medical/glass{
+/obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
 	name = "\improper Theta-V Research Laboratory Sample Isolation";
-	req_access_txt = "100";
-	req_one_access = null
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -28636,12 +28446,10 @@
 /area/ice_colony/underground/research)
 "bGA" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/machinery/door/airlock/almayer/secure{
+/obj/structure/machinery/door/airlock/almayer/secure/colony{
 	dir = 2;
-	icon_state = "door_locked";
-	locked = 1;
+	locked = 0;
 	name = "Underground Secure Technical Storage";
-	req_access_txt = "100"
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -28651,10 +28459,9 @@
 /turf/closed/wall/r_wall,
 /area/ice_colony/underground/command/checkpoint)
 "bGC" = (
-/obj/structure/machinery/door/airlock/almayer/security/glass{
+/obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	dir = 1;
 	name = "\improper Underground Security Checkpoint";
-	req_access_txt = "100"
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -28666,9 +28473,8 @@
 /area/ice_colony/underground/command/checkpoint)
 "bGE" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/colony{
 	name = "\improper Colony Administration";
-	req_access_txt = "100"
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -29093,9 +28899,8 @@
 	},
 /area/ice_colony/underground/security/interrogation)
 "bHP" = (
-/obj/structure/machinery/door/airlock/almayer/security{
+/obj/structure/machinery/door/airlock/almayer/security/colony{
 	name = "\improper Underground Security Evidence Storage";
-	req_access_txt = "100"
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -29125,9 +28930,8 @@
 	},
 /area/ice_colony/underground/security/interrogation)
 "bHT" = (
-/obj/structure/machinery/door/airlock/almayer/security/glass{
+/obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	name = "\improper Underground Security Interrogation";
-	req_access_txt = "100"
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -29277,20 +29081,18 @@
 "bIq" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment,
-/obj/structure/machinery/door/airlock/almayer/command{
+/obj/structure/machinery/door/airlock/almayer/command/colony{
 	dir = 1;
 	name = "\improper Underground Administration Office";
-	req_access_txt = "100"
 	},
 /turf/open/floor/wood,
 /area/ice_colony/underground/command/pv1)
 "bIr" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment,
-/obj/structure/machinery/door/airlock/almayer/command{
+/obj/structure/machinery/door/airlock/almayer/command/colony{
 	dir = 1;
 	name = "\improper Underground Administration Office";
-	req_access_txt = "100"
 	},
 /turf/open/floor/wood,
 /area/ice_colony/underground/command/pv2)
@@ -29396,10 +29198,8 @@
 	},
 /area/ice_colony/underground/storage)
 "bIL" = (
-/obj/structure/machinery/door/airlock/almayer/maint{
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
 	name = "\improper Underground Maintenance";
-	req_access_txt = "100";
-	req_one_access = null
 	},
 /turf/open/floor/plating,
 /area/ice_colony/underground/storage)
@@ -29549,7 +29349,6 @@
 "bJe" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	name = "\improper Underground Security Checkpoint";
-	req_access_txt = "100"
 	},
 /turf/open/floor{
 	dir = 8;
@@ -29585,10 +29384,9 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony{
 	dir = 1;
 	name = "\improper Theta-V Research Laboratory";
-	req_access_txt = "100"
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -29850,10 +29648,9 @@
 	},
 /area/ice_colony/underground/research)
 "bJO" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony{
 	dir = 1;
 	name = "\improper Theta-V Research Laboratory";
-	req_access_txt = "100"
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -29958,10 +29755,9 @@
 	},
 /area/ice_colony/underground/command/checkpoint)
 "bKf" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/colony{
 	dir = 1;
 	name = "\improper Colony Offices";
-	req_access_txt = "100"
 	},
 /turf/open/floor{
 	icon_state = "darkblue2";
@@ -30240,10 +30036,9 @@
 	},
 /area/ice_colony/underground/hallway/north_west)
 "bKO" = (
-/obj/structure/machinery/door/airlock/almayer/engineering{
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	dir = 1;
 	name = "\improper Underground Technical Storage";
-	req_access_txt = "100"
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -30256,10 +30051,9 @@
 /area/ice_colony/underground/storage)
 "bKQ" = (
 /obj/structure/disposalpipe/segment,
-/obj/structure/machinery/door/airlock/almayer/engineering{
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	dir = 1;
 	name = "\improper Underground Technical Storage";
-	req_access_txt = "100"
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -30268,9 +30062,8 @@
 "bKR" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment,
-/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/colony{
 	name = "\improper Colony Administration";
-	req_access_txt = "100"
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -30281,7 +30074,6 @@
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 1;
 	name = "\improper Underground Men's Barracks";
-	req_access_txt = "100"
 	},
 /turf/open/floor/wood,
 /area/ice_colony/underground/crew/dorm_l)
@@ -30290,7 +30082,6 @@
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 1;
 	name = "\improper Underground Women's Barracks";
-	req_access_txt = "100"
 	},
 /turf/open/floor/wood,
 /area/ice_colony/underground/crew/dorm_r)
@@ -30298,10 +30089,8 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/almayer/maint{
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
 	name = "\improper Underground Maintenance";
-	req_access_txt = "100";
-	req_one_access = null
 	},
 /turf/open/floor/plating,
 /area/ice_colony/underground/hallway/south_east)
@@ -30802,10 +30591,9 @@
 /area/ice_colony/underground/maintenance/security)
 "bMr" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/machinery/door/airlock/almayer/security{
+/obj/structure/machinery/door/airlock/almayer/security/colony{
 	dir = 1;
 	name = "\improper Underground Security Interrogation Observation";
-	req_access_txt = "100"
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -30817,7 +30605,6 @@
 "bMt" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	name = "\improper Underground Security Checkpoint";
-	req_access_txt = "100"
 	},
 /turf/open/floor{
 	dir = 8;
@@ -30834,10 +30621,9 @@
 /area/ice_colony/underground/security)
 "bMv" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/machinery/door/airlock/almayer/security/glass{
+/obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	dir = 1;
 	name = "\improper Underground Security Lobby";
-	req_access_txt = "100"
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -30845,11 +30631,9 @@
 /area/ice_colony/underground/security)
 "bMw" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/machinery/door/airlock/almayer/maint{
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
 	dir = 1;
 	name = "\improper Underground Maintenance";
-	req_access_txt = "100";
-	req_one_access = null
 	},
 /turf/open/floor/plating,
 /area/ice_colony/underground/security)
@@ -30864,7 +30648,6 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	dir = 1;
 	name = "\improper Underground Main Hallway";
-	req_access_txt = "100"
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -31160,10 +30943,9 @@
 "bNu" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment,
-/obj/structure/machinery/door/airlock/almayer/engineering{
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	dir = 1;
 	name = "\improper Underground Disposals";
-	req_access_txt = "100"
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -31178,7 +30960,6 @@
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 1;
 	name = "\improper Underground Lavatory";
-	req_access_txt = "100"
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -31186,11 +30967,9 @@
 /area/ice_colony/underground/crew/lavatory)
 "bNx" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/machinery/door/airlock/almayer/maint{
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
 	dir = 1;
 	name = "\improper Underground Maintenance";
-	req_access_txt = "100";
-	req_one_access = null
 	},
 /turf/open/floor/plating,
 /area/ice_colony/underground/hallway/south_east)
@@ -31245,10 +31024,8 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/almayer/maint{
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
 	name = "\improper Underground Maintenance";
-	req_access_txt = "100";
-	req_one_access = null
 	},
 /turf/open/floor/plating,
 /area/ice_colony/underground/security/backroom)
@@ -31262,9 +31039,8 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/almayer/security{
+/obj/structure/machinery/door/airlock/almayer/security/colony{
 	name = "\improper Underground Security Custodial Closet";
-	req_access_txt = "100"
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -31697,10 +31473,9 @@
 /area/ice_colony/underground/security/armory)
 "bOW" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/machinery/door/airlock/almayer/security/glass{
+/obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	dir = 1;
 	name = "\improper Underground Security Armory";
-	req_access_txt = "100"
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -31712,7 +31487,6 @@
 "bOY" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	name = "\improper Underground Security Brig";
-	req_access_txt = "100"
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -32133,9 +31907,8 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/almayer/security{
+/obj/structure/machinery/door/airlock/almayer/security/colony{
 	name = "\improper Underground Security Showers";
-	req_access_txt = "100"
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -32504,11 +32277,9 @@
 /area/ice_colony/underground/crew/lavatory)
 "bRh" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/machinery/door/airlock/almayer/maint{
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
 	dir = 1;
 	name = "\improper Underground Maintenance";
-	req_access_txt = "100";
-	req_one_access = null
 	},
 /turf/open/floor/plating,
 /area/ice_colony/underground/crew/leisure)
@@ -32575,20 +32346,16 @@
 /area/ice_colony/exterior/underground/caves)
 "bRq" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/machinery/door/airlock/almayer/maint{
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
 	dir = 1;
 	name = "\improper Underground Maintenance";
-	req_access_txt = "100";
-	req_one_access = null
 	},
 /turf/open/floor/plating,
 /area/ice_colony/underground/crew/disposals)
 "bRr" = (
-/obj/structure/machinery/door/airlock/almayer/maint{
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
 	dir = 1;
 	name = "\improper Underground Maintenance";
-	req_access_txt = "100";
-	req_one_access = null
 	},
 /turf/open/floor/plating,
 /area/ice_colony/underground/crew/lavatory)
@@ -32606,21 +32373,17 @@
 /turf/closed/wall/r_wall,
 /area/ice_colony/underground/reception)
 "bRv" = (
-/obj/structure/machinery/door/airlock/almayer/maint{
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
 	dir = 1;
 	name = "\improper Underground Maintenance";
-	req_access_txt = "100";
-	req_one_access = null
 	},
 /turf/open/floor/plating,
 /area/ice_colony/underground/reception)
 "bRw" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/machinery/door/airlock/almayer/maint{
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
 	dir = 1;
 	name = "\improper Underground Maintenance";
-	req_access_txt = "100";
-	req_one_access = null
 	},
 /turf/open/floor/plating,
 /area/ice_colony/underground/maintenance/security)
@@ -33188,10 +32951,8 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/almayer/maint{
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
 	name = "\improper Underground Maintenance";
-	req_access_txt = "100";
-	req_one_access = null
 	},
 /turf/open/floor/plating,
 /area/ice_colony/underground/maintenance/security)
@@ -33281,7 +33042,6 @@
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 1;
 	name = "\improper Underground Reception Archives";
-	req_access_txt = "100"
 	},
 /turf/open/floor/wood,
 /area/ice_colony/underground/reception)
@@ -33303,7 +33063,6 @@
 "bTd" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	name = "\improper Underground Main Hallway";
-	req_access_txt = "100"
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -33455,11 +33214,9 @@
 /area/ice_colony/underground/reception)
 "bTG" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/machinery/door/airlock/almayer/medical/glass{
+/obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
 	dir = 1;
 	name = "\improper Underground Reception";
-	req_access_txt = "100";
-	req_one_access = null
 	},
 /turf/open/floor/wood,
 /area/ice_colony/underground/reception)
@@ -33606,7 +33363,6 @@
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 1;
 	name = "\improper Toilet Unit";
-	req_access_txt = "100"
 	},
 /turf/open/floor{
 	icon_state = "white"
@@ -33699,7 +33455,6 @@
 "bUq" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	name = "\improper Underground Visitor Entrance";
-	req_access_txt = "100"
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -33719,7 +33474,6 @@
 	},
 /obj/structure/machinery/door/airlock/almayer/generic{
 	name = "\improper Underground Men's Restroom";
-	req_access_txt = "100"
 	},
 /turf/open/floor{
 	icon_state = "white"
@@ -33774,10 +33528,8 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/almayer/maint{
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
 	name = "\improper Underground Maintenance";
-	req_access_txt = "100";
-	req_one_access = null
 	},
 /turf/open/floor/plating,
 /area/ice_colony/underground/reception/toilet_men)
@@ -34052,9 +33804,8 @@
 	},
 /area/ice_colony/underground/reception/checkpoint_south)
 "bVr" = (
-/obj/structure/machinery/door/airlock/almayer/security/glass{
+/obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	name = "\improper Underground Security Checkpoint";
-	req_access_txt = "100"
 	},
 /turf/open/floor{
 	dir = 8;
@@ -34075,7 +33826,6 @@
 	},
 /obj/structure/machinery/door/airlock/almayer/generic{
 	name = "\improper Underground Women's Restroom";
-	req_access_txt = "100"
 	},
 /turf/open/floor{
 	icon_state = "white"
@@ -34111,10 +33861,8 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/almayer/maint{
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
 	name = "\improper Underground Maintenance";
-	req_access_txt = "100";
-	req_one_access = null
 	},
 /turf/open/floor/plating,
 /area/ice_colony/underground/reception/toilet_women)
@@ -34221,7 +33969,6 @@
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 1;
 	name = "\improper Toilet Unit";
-	req_access_txt = "100"
 	},
 /turf/open/floor{
 	icon_state = "white"
@@ -34332,10 +34079,8 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/almayer/maint{
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
 	name = "\improper Underground Maintenance";
-	req_access_txt = "100";
-	req_one_access = null
 	},
 /turf/open/floor/plating,
 /area/ice_colony/underground/maintenance/east)
@@ -35385,10 +35130,8 @@
 	},
 /area/ice_colony/surface/hangar/beta)
 "neZ" = (
-/obj/structure/machinery/door/airlock/almayer/medical/glass{
+/obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
 	name = "\improper Colony Dormitories";
-	req_access_txt = "100";
-	req_one_access = null
 	},
 /turf/open/floor{
 	dir = 10;
@@ -35570,10 +35313,8 @@
 /turf/open/ice,
 /area/ice_colony/exterior/underground/caves/open)
 "tFy" = (
-/obj/structure/machinery/door/airlock/almayer/medical/glass{
+/obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
 	name = "\improper Colony Dormitories";
-	req_access_txt = "100";
-	req_one_access = null
 	},
 /turf/open/floor{
 	dir = 6;
@@ -35590,10 +35331,8 @@
 	},
 /area/ice_colony/surface/hydroponics/south)
 "umI" = (
-/obj/structure/machinery/door/airlock/almayer/medical/glass{
+/obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
 	name = "\improper Colony Dormitories";
-	req_access_txt = "100";
-	req_one_access = null
 	},
 /turf/open/floor{
 	dir = 5;

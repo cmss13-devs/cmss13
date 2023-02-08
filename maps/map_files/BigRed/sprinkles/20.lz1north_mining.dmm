@@ -142,10 +142,9 @@
 /turf/closed/wall/solaris/reinforced,
 /area/bigredv2/outside/space_port)
 "v" = (
-/obj/structure/machinery/door/airlock/almayer/maint{
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
 	dir = 1;
 	name = "\improper Mining Operations";
-	req_one_access = null
 	},
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port)

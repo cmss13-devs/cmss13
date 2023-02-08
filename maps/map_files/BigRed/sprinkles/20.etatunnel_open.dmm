@@ -294,9 +294,8 @@
 	},
 /area/bigredv2/caves/mining)
 "Be" = (
-/obj/structure/machinery/door/airlock/almayer/security/glass{
+/obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	name = "\improper Marshals Mining Security Post";
-	req_access = null
 	},
 /turf/open/floor/plating{
 	dir = 8;

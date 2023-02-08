@@ -307,9 +307,8 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/almayer/security/glass{
+/obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	name = "\improper Cargo Bay Security";
-	req_access = null
 	},
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
@@ -553,10 +552,9 @@
 /area/bigredv2/outside/cargo)
 "bR" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/machinery/door/airlock/almayer/engineering{
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	dir = 1;
 	name = "\improper Cargo Bay Quartermaster";
-	req_one_access = null
 	},
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
@@ -647,9 +645,8 @@
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "ce" = (
-/obj/structure/machinery/door/airlock/almayer/engineering{
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	name = "\improper Cargo Bay Quartermaster";
-	req_one_access = null
 	},
 /turf/open/floor,
 /area/bigredv2/outside/cargo)

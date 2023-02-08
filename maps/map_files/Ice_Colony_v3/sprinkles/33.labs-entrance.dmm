@@ -64,7 +64,7 @@
 	},
 /area/shiva/interior/colony/research_hab)
 "jW" = (
-/obj/structure/machinery/door/airlock/almayer/maint/autoname{
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
 	dir = 1;
 	name = "\improper Null Hatch REPLACE ME";
 	req_access = null;
@@ -107,7 +107,7 @@
 	},
 /area/shiva/interior/colony/research_hab)
 "mj" = (
-/obj/structure/machinery/door/airlock/almayer/maint/autoname,
+/obj/structure/machinery/door/airlock/almayer/maint/colony,
 /turf/open/floor/shiva,
 /area/shiva/interior/colony/research_hab)
 "ni" = (
@@ -197,7 +197,7 @@
 /turf/open/floor/shiva,
 /area/shiva/interior/colony/research_hab)
 "sj" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor/glass/autoname{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor/glass/colony{
 	req_access_txt = "100";
 	name = "\improper Omicron Field Gear Storage"
 	},
@@ -412,7 +412,7 @@
 /turf/closed/wall/shiva/ice,
 /area/shiva/interior/colony/research_hab)
 "Qz" = (
-/obj/structure/machinery/door/airlock/almayer/engineering{
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	dir = 8;
 	name = "\improper Omicron Field Gear Storage";
 	req_access_txt = "100";
@@ -495,7 +495,7 @@
 /area/shiva/interior/caves/cp_camp)
 "YI" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor/glass/autoname{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor/glass/colony{
 	dir = 1;
 	req_access_txt = "100";
 	name = "\improper Omicron Field Gear Storage"

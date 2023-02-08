@@ -227,16 +227,15 @@
 	},
 /area/bigredv2/outside/general_offices)
 "bm" = (
-/obj/structure/machinery/door/airlock/almayer/engineering{
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	name = "\improper Dormitories EVA";
-	req_one_access = null
 	},
 /turf/open/floor{
 	icon_state = "dark";
 	},
 /area/bigredv2/outside/general_offices)
 "bo" = (
-/obj/structure/machinery/door/airlock/almayer/medical/glass{
+/obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
 	name = "\improper Dormitories Lavatory"
 	},
 /turf/open/floor{

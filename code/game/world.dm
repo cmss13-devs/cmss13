@@ -31,6 +31,7 @@ var/list/reboot_sfx = file2list("config/reboot_sfx.txt")
 	var/year_string = time2text(world.realtime, "YYYY")
 	href_logfile = file("data/logs/[date_string] hrefs.htm")
 	diary = file("data/logs/[date_string].log")
+	tgui_diary = file("data/logs/[date_string]_tgui.log")
 	diary << "[log_end]\n[log_end]\nStarting up. [time2text(world.timeofday, "hh:mm.ss")][log_end]\n---------------------[log_end]"
 	round_stats = file("data/logs/[year_string]/round_stats.log")
 	round_stats << "[log_end]\nStarting up - [time2text(world.realtime,"YYYY-MM-DD (hh:mm:ss)")][log_end]\n---------------------[log_end]"
@@ -67,7 +68,7 @@ var/list/reboot_sfx = file2list("config/reboot_sfx.txt")
 	//Emergency Fix
 	//end-emergency fix
 
-	. = ..()
+	init_global_referenced_datums()
 
 	var/testing_locally = (world.params && world.params["local_test"])
 	var/running_tests = (world.params && world.params["run_tests"])
@@ -82,6 +83,8 @@ var/list/reboot_sfx = file2list("config/reboot_sfx.txt")
 		to_world(SPAN_DANGER("\b Job setup complete"))
 
 	if(!EvacuationAuthority) EvacuationAuthority = new
+
+	initiate_minimap_icons()
 
 	change_tick_lag(CONFIG_GET(number/ticklag))
 	GLOB.timezoneOffset = text2num(time2text(0,"hh")) * 36000

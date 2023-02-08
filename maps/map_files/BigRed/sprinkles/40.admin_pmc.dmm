@@ -417,9 +417,8 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/almayer/command{
+/obj/structure/machinery/door/airlock/almayer/command/colony{
 	name = "\improper Operations Office";
-	req_access = null
 	},
 /turf/open/floor{
 	icon_state = "wood"
@@ -456,9 +455,8 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/almayer/command{
+/obj/structure/machinery/door/airlock/almayer/command/colony{
 	name = "\improper Operations Meeting Room";
-	req_access = null
 	},
 /turf/open/floor,
 /area/bigredv2/outside/admin_building)

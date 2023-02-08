@@ -10,7 +10,7 @@ jobs:
   run_linters:
     if: "!contains(github.event.head_commit.message, '[ci skip]')"
     name: Run Linters
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v3
       - name: Restore SpacemanDMM cache
@@ -38,8 +38,8 @@ jobs:
         run: |
           pip3 install setuptools
           bash tools/ci/install_node.sh
-          cargo install ripgrep --features pcre2
           bash tools/ci/install_spaceman_dmm.sh dreamchecker
+          cargo install ripgrep --features pcre2
           tools/bootstrap/python -c ''
       - name: Run Linters
         run: |

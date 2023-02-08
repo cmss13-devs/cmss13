@@ -1983,11 +1983,6 @@
 	dir = 8
 	},
 /area/kutjevo/exterior/runoff_dunes)
-"cKq" = (
-/obj/structure/lattice,
-/obj/structure/lattice,
-/turf/open/floor/plating/kutjevo,
-/area/kutjevo/interior/construction)
 "cKH" = (
 /obj/structure/platform_decoration/kutjevo{
 	dir = 8
@@ -6156,10 +6151,6 @@
 	dir = 8
 	},
 /area/kutjevo/interior/colony_South/power2)
-"ifW" = (
-/obj/structure/window/framed/kutjevo/reinforced/hull,
-/turf/closed/wall/kutjevo/colony/reinforced/hull,
-/area/kutjevo/interior/oob)
 "ige" = (
 /obj/structure/blocker/invisible_wall,
 /obj/structure/surface/table/reinforced/prison,
@@ -7448,7 +7439,6 @@
 "khW" = (
 /obj/structure/surface/table/almayer,
 /obj/item/device/flash,
-/obj/structure/surface/table/almayer,
 /obj/structure/machinery/light{
 	dir = 1
 	},
@@ -34991,12 +34981,12 @@ wWy
 wWy
 wWy
 wWy
-ifW
+kVJ
 wff
 wff
 wff
 wff
-ifW
+kVJ
 wWy
 wWy
 wWy
@@ -35158,12 +35148,12 @@ wWy
 wWy
 hdF
 wWy
-ifW
+kVJ
 nnf
 wff
 wff
 wff
-ifW
+kVJ
 wWy
 wWy
 hdF
@@ -35325,12 +35315,12 @@ wWy
 wWy
 wWy
 wWy
-ifW
+kVJ
 nnf
 wff
 wff
 wff
-ifW
+kVJ
 wWy
 wWy
 wWy
@@ -35492,12 +35482,12 @@ wWy
 wWy
 wWy
 wWy
-ifW
+kVJ
 nnf
 nnf
 nnf
 wff
-ifW
+kVJ
 wWy
 wWy
 wWy
@@ -39465,7 +39455,7 @@ mSm
 fyF
 fyF
 sTU
-cKq
+sTU
 fyF
 cUm
 oUP

@@ -11664,11 +11664,6 @@
 	},
 /turf/open/floor/wood,
 /area/shiva/interior/colony/s_admin)
-"gdW" = (
-/obj/structure/girder/reinforced,
-/obj/structure/girder/reinforced,
-/turf/open/floor/plating,
-/area/shiva/interior/colony/central)
 "geh" = (
 /obj/structure/surface/table,
 /obj/item/folder/white,
@@ -46786,7 +46781,7 @@ jqY
 ndR
 aAi
 aaY
-gdW
+jVx
 naN
 ngz
 aaX

@@ -611,7 +611,11 @@
 /area/bigredv2/caves/mining)
 "Wy" = (
 /obj/structure/window/framed/solaris/reinforced,
-/turf/closed/wall/solaris/reinforced,
+/turf/open/floor/plating{
+	dir = 8;
+	icon_state = "platingdmg3";
+	tag = "icon-platingdmg3 (WEST)"
+	},
 /area/bigredv2/caves/mining)
 "WV" = (
 /turf/open/mars_cave{

@@ -24735,7 +24735,6 @@
 	},
 /area/strata/ag/interior/outpost/engi/drome)
 "bDs" = (
-/obj/structure/surface/table/reinforced/prison,
 /obj/item/paper_bin,
 /obj/item/tool/pen/blue,
 /obj/structure/surface/table/reinforced/prison,

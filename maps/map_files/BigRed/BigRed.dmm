@@ -1259,7 +1259,6 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 9
 	},
-/turf/open/floor/plating,
 /turf/open/floor/plating{
 	dir = 8;
 	icon_state = "platingdmg2";
@@ -2241,13 +2240,14 @@
 	},
 /area/bigredv2/outside/space_port)
 "afN" = (
-/turf/open/floor/plating,
-/turf/open/floor/plating{
-	dir = 8;
-	icon_state = "platingdmg2";
-	tag = "icon-platingdmg2 (WEST)"
+/obj/effect/decal/warning_stripes{
+	icon_state = "E-corner";
+	tag = "icon-E-corner"
 	},
-/area/bigredv2/outside/space_port)
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/bigredv2/outside/telecomm/security)
 "afO" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
@@ -9654,7 +9654,6 @@
 	},
 /area/bigredv2/outside/medical)
 "ayT" = (
-/obj/structure/surface/table,
 /obj/structure/surface/table,
 /obj/item/bodybag/cryobag,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -23271,6 +23270,10 @@
 	id = "Marshal Offices";
 	name = "Storm Shutters";
 	pixel_x = -32
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S-corner";
+	tag = "icon-NW-in"
 	},
 /turf/open/floor{
 	icon_state = "dark"
@@ -38667,11 +38670,12 @@
 	},
 /area/bigredv2/caves/mining)
 "sXQ" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S-corner";
+	tag = "icon-NW-in"
+	},
 /turf/open/floor{
 	icon_state = "dark"
-	},
-/turf/open/floor/plating{
-	icon_state = "warnplate"
 	},
 /area/bigredv2/outside/telecomm/security)
 "sYL" = (
@@ -41399,6 +41403,15 @@
 	tag = "icon-mars_dirt_4"
 	},
 /area/bigredv2/caves/mining)
+"xRm" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "NW-in";
+	tag = "icon-NW-in"
+	},
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/bigredv2/outside/telecomm/security)
 "xSa" = (
 /obj/structure/prop/dam/crane,
 /turf/open/mars_cave{
@@ -52602,7 +52615,7 @@ aah
 aah
 aah
 aah
-afN
+agv
 afh
 agv
 ahZ
@@ -58683,11 +58696,11 @@ agz
 ahm
 aib
 bNy
-sXQ
-sXQ
-sXQ
-sXQ
-sXQ
+afN
+afN
+afN
+afN
+xRm
 amg
 aic
 aer

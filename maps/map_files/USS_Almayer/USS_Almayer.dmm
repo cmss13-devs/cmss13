@@ -60,7 +60,6 @@
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 1
 	},
-/turf/open/space/basic,
 /turf/open/floor/almayer,
 /area/almayer/engineering/engineering_workshop)
 "aak" = (
@@ -18099,7 +18098,7 @@
 /area/almayer/medical/lower_medical_lobby)
 "beZ" = (
 /obj/structure/platform_decoration{
-	dir = 8;
+	dir = 8
 	},
 /turf/open/floor/almayer,
 /area/almayer/living/chapel)
@@ -69896,7 +69895,6 @@
 	},
 /area/almayer/hallways/port_umbilical)
 "rBx" = (
-/obj/structure/surface/table/reinforced/almayer_B,
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/item/tool/stamp/ro{
 	name = "spare requisitions officer's rubber stamp";

@@ -31773,7 +31773,6 @@
 /area/prison/residential/south)
 "bHd" = (
 /obj/structure/lattice,
-/obj/structure/lattice,
 /turf/open/space,
 /area/space)
 "bHf" = (
@@ -39068,7 +39067,6 @@
 /turf/open/floor/wood,
 /area/prison/residential/south)
 "ccz" = (
-/obj/structure/lattice,
 /obj/structure/monorail,
 /obj/structure/lattice,
 /turf/open/space,
@@ -50612,9 +50610,10 @@
 /turf/open/floor/wood,
 /area/prison/security/monitoring/highsec)
 "oog" = (
-/obj/structure/window/framed/prison/cell,
-/turf/closed/wall/r_wall/prison,
-/area/prison/medbay/morgue)
+/obj/structure/lattice,
+/obj/structure/monorail,
+/turf/open/space,
+/area/space)
 "ooE" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -66507,8 +66506,8 @@ bUZ
 bWG
 bXM
 bTL
-bHd
-bHd
+acL
+acL
 acL
 bTL
 bUZ
@@ -66719,7 +66718,7 @@ bVa
 bWH
 bXN
 bYJ
-ccz
+oog
 ccz
 btd
 bTP
@@ -66931,7 +66930,7 @@ bUZ
 bWG
 bXM
 bTO
-bHd
+acL
 acL
 acL
 bTO
@@ -87831,7 +87830,7 @@ alf
 arf
 aoJ
 apG
-oog
+atf
 atJ
 arC
 arZ
@@ -88467,7 +88466,7 @@ alf
 anP
 arN
 asy
-oog
+atf
 atJ
 arE
 asa

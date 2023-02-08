@@ -1,3 +1,4 @@
 /obj/structure/stairs:
   banned_neighbors:
-  - /obj/structure/stairs
+    /obj/structure/stairs:
+      identical: true

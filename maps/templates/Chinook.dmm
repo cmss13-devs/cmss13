@@ -8,7 +8,6 @@
 	},
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/medical)
 "af" = (
@@ -20,21 +19,18 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook)
 "ah" = (
 /obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep/training,
 /turf/open/floor/almayer{
 	icon_state = "redfull";
-	tag = "icon-redfull"
 	},
 /area/adminlevel/chinook)
 "ai" = (
 /turf/open/floor/almayer_hull{
 	dir = 10;
 	icon_state = "outerhull_dir";
-	tag = "icon-outerhull_dir (SOUTHWEST)"
 	},
 /area/space)
 "aj" = (
@@ -43,7 +39,6 @@
 	},
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15";
-	tag = "icon-rasputin15"
 	},
 /area/adminlevel/chinook/shuttle/unpowered)
 "al" = (
@@ -63,7 +58,6 @@
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/offices)
 "aq" = (
@@ -77,32 +71,27 @@
 	},
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_side";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/medical)
 "au" = (
 /turf/open/floor/almayer_hull{
 	dir = 4;
 	icon_state = "outerhull_dir";
-	tag = "icon-outerhull_dir (EAST)"
 	},
 /area/space)
 "av" = (
 /obj/structure/machinery/cm_vending/sorted/boozeomat,
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/offices)
 "ax" = (
 /obj/structure/machinery/light{
 	dir = 1;
-	tag = "icon-tube1 (NORTH)"
 	},
 /obj/structure/machinery/vending/cola,
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/offices)
 "aA" = (
@@ -114,7 +103,6 @@
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "red";
-	tag = "icon-red"
 	},
 /area/adminlevel/chinook/sec)
 "aD" = (
@@ -137,12 +125,10 @@
 "aF" = (
 /obj/structure/machinery/light{
 	dir = 8;
-	tag = "icon-tube1 (EAST)"
 	},
 /turf/open/floor/almayer{
 	dir = 10;
 	icon_state = "silver";
-	tag = "icon-silver (SOUTHWEST)"
 	},
 /area/adminlevel/chinook)
 "aG" = (
@@ -152,11 +138,9 @@
 	},
 /obj/structure/machinery/light{
 	dir = 1;
-	tag = "icon-tube1 (NORTH)"
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/cargo)
 "aH" = (
@@ -181,7 +165,6 @@
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "sterile_green_corner";
-	tag = "icon-sterile_green_corner (WEST)"
 	},
 /area/adminlevel/chinook/medical)
 "aJ" = (
@@ -198,12 +181,10 @@
 "aK" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_10";
-	tag = "icon-plant-10"
 	},
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/sec)
 "aM" = (
@@ -214,7 +195,6 @@
 /obj/structure/machinery/vending/cola,
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/cargo)
 "aQ" = (
@@ -222,7 +202,6 @@
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (EAST)"
 	},
 /area/adminlevel/chinook/medical)
 "aR" = (
@@ -235,7 +214,6 @@
 	},
 /turf/open/floor/almayer{
 	icon_state = "red";
-	tag = "icon-red"
 	},
 /area/adminlevel/chinook/sec)
 "aT" = (
@@ -284,7 +262,6 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/sec)
 "aZ" = (
@@ -314,7 +291,6 @@
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "red";
-	tag = "icon-red (WEST)"
 	},
 /area/adminlevel/chinook/sec)
 "bc" = (
@@ -332,13 +308,11 @@
 /turf/open/floor/almayer{
 	dir = 6;
 	icon_state = "red";
-	tag = "icon-red (SOUTHEAST)"
 	},
 /area/adminlevel/chinook/sec)
 "bf" = (
 /obj/structure/bed/chair/comfy{
 	dir = 1;
-	tag = "icon-comfychair (NORTH)"
 	},
 /turf/open/floor/carpet{
 	desc = "Plush, waterproof carpet. Apparently it's fire resistant while remaining quite soft.";
@@ -360,7 +334,6 @@
 "bh" = (
 /obj/structure/machinery/light{
 	dir = 4;
-	tag = "icon-tube1 (EAST)"
 	},
 /obj/structure/bed/chair/comfy,
 /turf/open/floor/almayer,
@@ -374,7 +347,6 @@
 /obj/structure/machinery/light,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_side";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/medical)
 "bk" = (
@@ -384,7 +356,6 @@
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "silver";
-	tag = "icon-silver (NORTH)"
 	},
 /area/adminlevel/chinook)
 "bl" = (
@@ -466,7 +437,6 @@
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "orange";
-	tag = "icon-orange (NORTH)"
 	},
 /area/adminlevel/chinook/engineering)
 "bA" = (
@@ -539,7 +509,6 @@
 "bJ" = (
 /obj/structure/machinery/light{
 	dir = 1;
-	tag = "icon-tube1 (NORTH)"
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/chinook/engineering)
@@ -549,7 +518,6 @@
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "sterile_green_corner";
-	tag = "icon-sterile_green_corner (NORTH)"
 	},
 /area/adminlevel/chinook/medical)
 "bL" = (
@@ -562,12 +530,10 @@
 /obj/item/device/radio/marine,
 /obj/structure/machinery/light{
 	dir = 4;
-	tag = "icon-tube1 (EAST)"
 	},
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (EAST)"
 	},
 /area/adminlevel/chinook/medical)
 "bP" = (
@@ -607,13 +573,11 @@
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "sterile_green_corner";
-	tag = "icon-sterile_green_corner (WEST)"
 	},
 /area/adminlevel/chinook/medical)
 "bZ" = (
 /obj/structure/machinery/light{
 	dir = 1;
-	tag = "icon-tube1 (NORTH)"
 	},
 /turf/open/floor/almayer,
 /area/adminlevel/chinook/offices)
@@ -628,19 +592,16 @@
 /turf/open/floor/almayer{
 	dir = 6;
 	icon_state = "green";
-	tag = "icon-green (SOUTHEAST)"
 	},
 /area/adminlevel/chinook/cargo)
 "cf" = (
 /obj/structure/machinery/light{
 	dir = 1;
-	tag = "icon-tube1 (NORTH)"
 	},
 /obj/structure/machinery/cm_vending/sorted/medical/blood,
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (NORTH)"
 	},
 /area/adminlevel/chinook/offices)
 "cg" = (
@@ -648,7 +609,6 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/cargo)
 "ci" = (
@@ -663,7 +623,6 @@
 /obj/item/storage/surgical_tray,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_corner";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/offices)
 "ck" = (
@@ -682,7 +641,6 @@
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (WEST)"
 	},
 /area/adminlevel/chinook/offices)
 "cm" = (
@@ -695,7 +653,6 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/engineering)
 "cp" = (
@@ -705,7 +662,6 @@
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (EAST)"
 	},
 /area/adminlevel/chinook/offices)
 "cr" = (
@@ -720,14 +676,12 @@
 "cs" = (
 /obj/structure/machinery/light{
 	dir = 1;
-	tag = "icon-tube1 (NORTH)"
 	},
 /turf/open/floor/almayer,
 /area/adminlevel/chinook/cargo)
 "ct" = (
 /obj/structure/machinery/light{
 	dir = 4;
-	tag = "icon-tube1 (EAST)"
 	},
 /turf/open/floor/almayer,
 /area/adminlevel/chinook/offices)
@@ -756,7 +710,6 @@
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "orange";
-	tag = "icon-orange (NORTH)"
 	},
 /area/adminlevel/chinook/engineering)
 "cz" = (
@@ -782,7 +735,6 @@
 /obj/structure/surface/table/reinforced/almayer_blend,
 /turf/open/floor/almayer{
 	icon_state = "test_floor4";
-	tag = "icon-test_floor4"
 	},
 /area/adminlevel/chinook/cargo)
 "cE" = (
@@ -812,7 +764,6 @@
 /obj/structure/bed/chair/comfy{
 	dir = 1;
 	name = "defense chair";
-	tag = "icon-comfychair (NORTH)"
 	},
 /turf/open/floor/strata{
 	desc = "Faux wooden floor boards, certified fire resistant. Begrudgingly put in place of actual wood due to concerns about 'fire safety'. Whatever that means.";
@@ -826,7 +777,6 @@
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
-	tag = "icon-W"
 	},
 /turf/open/floor/almayer,
 /area/adminlevel/chinook/engineering)
@@ -851,13 +801,11 @@
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "blue";
-	tag = "icon-blue (WEST)"
 	},
 /area/adminlevel/chinook/offices)
 "cS" = (
 /turf/open/floor/almayer{
 	icon_state = "plating_striped";
-	tag = "icon-emerald (NORTH)"
 	},
 /area/adminlevel/chinook/sec)
 "cT" = (
@@ -902,7 +850,6 @@
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "sterile_green_corner";
-	tag = "icon-sterile_green_corner (NORTH)"
 	},
 /area/adminlevel/chinook/medical)
 "cX" = (
@@ -915,7 +862,6 @@
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "sterile_green_corner";
-	tag = "icon-sterile_green_corner (WEST)"
 	},
 /area/adminlevel/chinook/medical)
 "cZ" = (
@@ -924,7 +870,6 @@
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (EAST)"
 	},
 /area/adminlevel/chinook/offices)
 "db" = (
@@ -971,7 +916,6 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/cargo)
 "dh" = (
@@ -995,20 +939,17 @@
 /obj/structure/machinery/autodoc_console,
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/offices)
 "dk" = (
 /obj/structure/machinery/light{
 	dir = 4;
-	tag = "icon-tube1 (EAST)"
 	},
 /obj/structure/bed,
 /obj/item/bedsheet/medical,
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (EAST)"
 	},
 /area/adminlevel/chinook/offices)
 "dl" = (
@@ -1024,7 +965,6 @@
 /obj/structure/closet/crate,
 /turf/open/floor/almayer{
 	icon_state = "cargo";
-	tag = "icon-bluecorner (NORTH)"
 	},
 /area/adminlevel/chinook/cargo)
 "dp" = (
@@ -1067,7 +1007,6 @@
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "red";
-	tag = "icon-red (NORTH)"
 	},
 /area/adminlevel/chinook/sec)
 "du" = (
@@ -1084,7 +1023,6 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (NORTHEAST)"
 	},
 /area/adminlevel/chinook/medical)
 "dy" = (
@@ -1124,39 +1062,33 @@
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "sterile_green_corner";
-	tag = "icon-sterile_green_corner (WEST)"
 	},
 /area/adminlevel/chinook/offices)
 "dH" = (
 /obj/structure/machinery/light,
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/medical)
 "dJ" = (
 /obj/structure/bed/stool,
 /obj/structure/machinery/light/small{
 	dir = 1;
-	tag = "icon-bulb1 (NORTH)"
 	},
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "blue";
-	tag = "icon-blue (NORTH)"
 	},
 /area/adminlevel/chinook)
 "dM" = (
 /turf/open/floor/almayer{
 	dir = 9;
 	icon_state = "red";
-	tag = "icon-red"
 	},
 /area/adminlevel/chinook/sec)
 "dN" = (
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_side";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/offices)
 "dO" = (
@@ -1164,33 +1096,28 @@
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (WEST)"
 	},
 /area/adminlevel/chinook/offices)
 "dR" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "NW-out";
 	layer = 2.5;
-	tag = "icon-NW-out"
 	},
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/engineering)
 "dS" = (
 /obj/structure/bed,
 /turf/open/floor/almayer{
 	icon_state = "red";
-	tag = "icon-red"
 	},
 /area/adminlevel/chinook/sec)
 "dT" = (
 /obj/structure/machinery/cm_vending/sorted/cargo_ammo,
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/cargo)
 "dU" = (
@@ -1205,17 +1132,14 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/cargo)
 "dY" = (
 /obj/structure/machinery/light{
 	dir = 1;
-	tag = "icon-tube1 (NORTH)"
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook)
 "dZ" = (
@@ -1262,7 +1186,6 @@
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "sterile_green_corner";
-	tag = "icon-sterile_green_corner (EAST)"
 	},
 /area/adminlevel/chinook/offices)
 "ep" = (
@@ -1274,38 +1197,32 @@
 	},
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/offices)
 "es" = (
 /obj/structure/machinery/light{
 	dir = 4;
-	tag = "icon-tube1 (EAST)"
 	},
 /obj/structure/bed,
 /obj/item/bedsheet/medical,
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (EAST)"
 	},
 /area/adminlevel/chinook/medical)
 "et" = (
 /obj/structure/closet/secure_closet/engineering_electrical,
 /turf/open/floor/almayer{
 	icon_state = "test_floor5";
-	tag = "icon-test_floor5"
 	},
 /area/adminlevel/chinook/cryo)
 "eu" = (
 /obj/structure/machinery/light{
 	dir = 1;
-	tag = "icon-tube1 (NORTH)"
 	},
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "blue";
-	tag = "icon-blue (NORTH)"
 	},
 /area/adminlevel/chinook/offices)
 "ew" = (
@@ -1315,7 +1232,6 @@
 	},
 /turf/open/floor/almayer{
 	icon_state = "cargo";
-	tag = "icon-bluecorner (NORTH)"
 	},
 /area/adminlevel/chinook/sec)
 "ex" = (
@@ -1325,7 +1241,6 @@
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "blue";
-	tag = "icon-blue (NORTH)"
 	},
 /area/adminlevel/chinook/offices)
 "ey" = (
@@ -1336,7 +1251,6 @@
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "blue";
-	tag = "icon-blue (NORTH)"
 	},
 /area/adminlevel/chinook/offices)
 "ez" = (
@@ -1351,7 +1265,6 @@
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "blue";
-	tag = "icon-blue (NORTH)"
 	},
 /area/adminlevel/chinook/offices)
 "eA" = (
@@ -1365,7 +1278,6 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/engineering)
 "eB" = (
@@ -1375,14 +1287,12 @@
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "blue";
-	tag = "icon-blue (NORTH)"
 	},
 /area/adminlevel/chinook/offices)
 "eC" = (
 /obj/structure/machinery/iv_drip,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/sec)
 "eD" = (
@@ -1397,7 +1307,6 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/sec)
 "eF" = (
@@ -1405,7 +1314,6 @@
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "sterile_green_corner";
-	tag = "icon-sterile_green_corner (EAST)"
 	},
 /area/adminlevel/chinook/medical)
 "eG" = (
@@ -1416,7 +1324,6 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/engineering)
 "eH" = (
@@ -1425,12 +1332,10 @@
 	},
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_22";
-	tag = "icon-plant-10"
 	},
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "blue";
-	tag = "icon-blue (NORTH)"
 	},
 /area/adminlevel/chinook/offices)
 "eJ" = (
@@ -1441,7 +1346,6 @@
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (WEST)"
 	},
 /area/adminlevel/chinook/sec)
 "eK" = (
@@ -1455,7 +1359,6 @@
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "blue";
-	tag = "icon-blue (NORTH)"
 	},
 /area/adminlevel/chinook/offices)
 "eL" = (
@@ -1465,14 +1368,12 @@
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "blue";
-	tag = "icon-blue (NORTH)"
 	},
 /area/adminlevel/chinook/offices)
 "eN" = (
 /obj/structure/machinery/light,
 /turf/open/floor/almayer{
 	icon_state = "blue";
-	tag = "icon-blue"
 	},
 /area/adminlevel/chinook/offices)
 "eP" = (
@@ -1481,7 +1382,6 @@
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook)
 "eQ" = (
@@ -1492,14 +1392,12 @@
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "bluecorner";
-	tag = "icon-bluecorner (NORTH)"
 	},
 /area/adminlevel/chinook/offices)
 "eS" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /turf/open/floor/almayer{
 	icon_state = "blue";
-	tag = "icon-blue"
 	},
 /area/adminlevel/chinook/offices)
 "eT" = (
@@ -1510,18 +1408,15 @@
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "red";
-	tag = "icon-red"
 	},
 /area/adminlevel/chinook/sec)
 "eU" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
-	tag = "icon-SW-out"
 	},
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "orange";
-	tag = "icon-orange (WEST)"
 	},
 /area/adminlevel/chinook/engineering)
 "eV" = (
@@ -1531,13 +1426,11 @@
 "fd" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
-	tag = "icon-N"
 	},
 /obj/effect/decal/cleanable/liquid_fuel,
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/engineering)
 "fg" = (
@@ -1546,7 +1439,6 @@
 	},
 /turf/open/floor/almayer{
 	icon_state = "blue";
-	tag = "icon-blue"
 	},
 /area/adminlevel/chinook/offices)
 "fi" = (
@@ -1554,13 +1446,11 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/cargo)
 "fk" = (
 /turf/open/floor/almayer{
 	icon_state = "orange";
-	tag = "icon-orange (NORTH)"
 	},
 /area/adminlevel/chinook/offices)
 "fm" = (
@@ -1570,7 +1460,6 @@
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "blue";
-	tag = "icon-blue (NORTH)"
 	},
 /area/adminlevel/chinook/offices)
 "fn" = (
@@ -1578,18 +1467,15 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/sec)
 "fp" = (
 /obj/structure/bed/chair/comfy{
 	dir = 1;
-	tag = "icon-comfychair (NORTH)"
 	},
 /turf/open/floor/almayer{
 	dir = 6;
 	icon_state = "blue";
-	tag = "icon-blue (SOUTHEAST)"
 	},
 /area/adminlevel/chinook/offices)
 "fq" = (
@@ -1619,7 +1505,6 @@
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (NORTH)"
 	},
 /area/adminlevel/chinook/medical)
 "fw" = (
@@ -1628,7 +1513,6 @@
 	},
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15";
-	tag = "icon-rasputin15"
 	},
 /area/adminlevel/chinook/shuttle/unpowered)
 "fx" = (
@@ -1744,7 +1628,6 @@
 /obj/item/trash/cigbutt,
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/sec)
 "fH" = (
@@ -1754,7 +1637,6 @@
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (NORTH)"
 	},
 /area/adminlevel/chinook/medical)
 "fI" = (
@@ -1776,7 +1658,6 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/engineering)
 "fK" = (
@@ -1793,7 +1674,6 @@
 /obj/structure/machinery/body_scanconsole,
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/sec)
 "fO" = (
@@ -1813,12 +1693,10 @@
 "fQ" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
-	tag = "icon-N"
 	},
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/engineering)
 "fR" = (
@@ -1854,7 +1732,6 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/offices)
 "fV" = (
@@ -1868,7 +1745,6 @@
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "silver";
-	tag = "icon-silver (NORTH)"
 	},
 /area/adminlevel/chinook)
 "fW" = (
@@ -1876,7 +1752,6 @@
 /turf/open/floor/almayer{
 	dir = 9;
 	icon_state = "orange";
-	tag = "icon-orange (NORTHWEST)"
 	},
 /area/adminlevel/chinook/offices)
 "fX" = (
@@ -1885,39 +1760,33 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "orange";
-	tag = "icon-orange (NORTHEAST)"
 	},
 /area/adminlevel/chinook/offices)
 "fY" = (
 /obj/structure/largecrate/random/case/double,
 /turf/open/floor/almayer{
 	icon_state = "cargo";
-	tag = "icon-bluecorner (NORTH)"
 	},
 /area/adminlevel/chinook)
 "fZ" = (
 /obj/structure/machinery/cm_vending/gear/synth,
 /turf/open/floor/almayer{
 	icon_state = "cargo";
-	tag = "icon-bluecorner (NORTH)"
 	},
 /area/adminlevel/chinook)
 "ga" = (
 /obj/structure/machinery/cm_vending/clothing/synth,
 /turf/open/floor/almayer{
 	icon_state = "cargo";
-	tag = "icon-bluecorner (NORTH)"
 	},
 /area/adminlevel/chinook)
 "gb" = (
 /obj/structure/machinery/cm_vending/clothing/synth/snowflake,
 /obj/structure/machinery/light{
 	dir = 1;
-	tag = "icon-tube1 (NORTH)"
 	},
 /turf/open/floor/almayer{
 	icon_state = "cargo";
-	tag = "icon-bluecorner (NORTH)"
 	},
 /area/adminlevel/chinook)
 "gc" = (
@@ -1937,21 +1806,18 @@
 /obj/structure/machinery/recharge_station,
 /turf/open/floor/almayer{
 	icon_state = "cargo";
-	tag = "icon-bluecorner (NORTH)"
 	},
 /area/adminlevel/chinook)
 "gh" = (
 /obj/structure/closet/firecloset,
 /turf/open/floor/almayer{
 	icon_state = "cargo";
-	tag = "icon-bluecorner (NORTH)"
 	},
 /area/adminlevel/chinook)
 "gi" = (
 /obj/structure/reagent_dispensers/water_cooler/stacks,
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook)
 "gj" = (
@@ -1979,17 +1845,14 @@
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook)
 "gl" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_21";
-	tag = "icon-plant-10"
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook)
 "gm" = (
@@ -1999,7 +1862,6 @@
 "go" = (
 /obj/structure/machinery/shower{
 	dir = 4;
-	tag = "icon-shower (EAST)"
 	},
 /obj/structure/machinery/door/window/westright{
 	dir = 4
@@ -2014,19 +1876,16 @@
 "gs" = (
 /obj/structure/toilet{
 	dir = 8;
-	tag = "icon-toilet00 (WEST)"
 	},
 /turf/open/floor/almayer,
 /area/adminlevel/chinook/offices)
 "gu" = (
 /obj/structure/machinery/light{
 	dir = 1;
-	tag = "icon-tube1 (NORTH)"
 	},
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "orange";
-	tag = "icon-orange (NORTH)"
 	},
 /area/adminlevel/chinook/engineering)
 "gv" = (
@@ -2034,7 +1893,6 @@
 /obj/structure/machinery/chem_dispenser/beer,
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/event)
 "gw" = (
@@ -2059,14 +1917,12 @@
 /obj/item/reagent_container/food/snacks/grilledcheese,
 /turf/open/floor/prison{
 	icon_state = "kitchen";
-	tag = "icon-kitchen"
 	},
 /area/space)
 "gA" = (
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "orange";
-	tag = "icon-orange (EAST)"
 	},
 /area/adminlevel/chinook/offices)
 "gB" = (
@@ -2074,13 +1930,11 @@
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "orange";
-	tag = "icon-orange (EAST)"
 	},
 /area/adminlevel/chinook/offices)
 "gC" = (
 /obj/structure/bed/chair{
 	dir = 4;
-	tag = "icon-chair (WEST)"
 	},
 /turf/open/floor/almayer,
 /area/adminlevel/chinook)
@@ -2116,7 +1970,6 @@
 /turf/open/floor/almayer{
 	dir = 9;
 	icon_state = "red";
-	tag = "icon-red (NORTHWEST)"
 	},
 /area/adminlevel/chinook)
 "gN" = (
@@ -2124,14 +1977,12 @@
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "red";
-	tag = "icon-red"
 	},
 /area/adminlevel/chinook/sec)
 "gP" = (
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "orange";
-	tag = "icon-orange (NORTHEAST)"
 	},
 /area/adminlevel/chinook)
 "gQ" = (
@@ -2139,7 +1990,6 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/offices)
 "gS" = (
@@ -2148,7 +1998,6 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/engineering)
 "gT" = (
@@ -2162,7 +2011,6 @@
 /turf/open/floor/almayer{
 	dir = 10;
 	icon_state = "orange";
-	tag = "icon-orange (SOUTHWEST)"
 	},
 /area/adminlevel/chinook/offices)
 "gW" = (
@@ -2184,7 +2032,6 @@
 /obj/structure/machinery/light,
 /turf/open/floor/almayer{
 	icon_state = "orange";
-	tag = "icon-orange (EAST)"
 	},
 /area/adminlevel/chinook/offices)
 "gZ" = (
@@ -2196,20 +2043,17 @@
 /turf/open/floor/almayer{
 	dir = 6;
 	icon_state = "orange";
-	tag = "icon-orange (SOUTHEAST)"
 	},
 /area/adminlevel/chinook/offices)
 "hc" = (
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin6";
-	tag = "icon-rasputin6"
 	},
 /area/adminlevel/chinook/shuttle/unpowered)
 "hd" = (
 /obj/structure/largecrate/random,
 /turf/open/floor/almayer{
 	icon_state = "orange";
-	tag = "icon-orange (NORTH)"
 	},
 /area/adminlevel/chinook/engineering)
 "he" = (
@@ -2227,7 +2071,6 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/cargo)
 "hk" = (
@@ -2267,7 +2110,6 @@
 /obj/item/clothing/under/shorts/grey,
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook)
 "hp" = (
@@ -2275,18 +2117,15 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/offices)
 "hq" = (
 /obj/structure/machinery/light{
 	dir = 1;
-	tag = "icon-tube1 (NORTH)"
 	},
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/offices)
 "hr" = (
@@ -2295,7 +2134,6 @@
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook)
 "hw" = (
@@ -2307,7 +2145,6 @@
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/sec)
 "hA" = (
@@ -2329,7 +2166,6 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/offices)
 "hC" = (
@@ -2337,7 +2173,6 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/offices)
 "hD" = (
@@ -2346,7 +2181,6 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/offices)
 "hE" = (
@@ -2356,13 +2190,11 @@
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "blue";
-	tag = "icon-blue (NORTH)"
 	},
 /area/adminlevel/chinook/offices)
 "hG" = (
 /obj/structure/machinery/light{
 	dir = 1;
-	tag = "icon-tube1 (NORTH)"
 	},
 /obj/structure/machinery/chem_dispenser/soda{
 	pixel_y = 5
@@ -2371,7 +2203,6 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/offices)
 "hI" = (
@@ -2380,7 +2211,6 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/offices)
 "hJ" = (
@@ -2390,7 +2220,6 @@
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "blue";
-	tag = "icon-blue (WEST)"
 	},
 /area/adminlevel/chinook/offices)
 "hK" = (
@@ -2436,14 +2265,12 @@
 /turf/open/floor/almayer{
 	dir = 10;
 	icon_state = "blue";
-	tag = "icon-blue (SOUTHWEST)"
 	},
 /area/adminlevel/chinook)
 "hQ" = (
 /obj/structure/closet/firecloset,
 /turf/open/floor/almayer{
 	icon_state = "test_floor5";
-	tag = "icon-test_floor5"
 	},
 /area/adminlevel/chinook/cryo)
 "hS" = (
@@ -2452,7 +2279,6 @@
 /obj/effect/spawner/random/attachment,
 /turf/open/floor/almayer{
 	icon_state = "cargo";
-	tag = "icon-bluecorner (NORTH)"
 	},
 /area/adminlevel/chinook/cargo)
 "hT" = (
@@ -2471,20 +2297,17 @@
 	},
 /turf/open/floor/almayer{
 	icon_state = "cargo";
-	tag = "icon-bluecorner (NORTH)"
 	},
 /area/adminlevel/chinook/offices)
 "hW" = (
 /turf/open/floor/almayer{
 	dir = 6;
 	icon_state = "emerald";
-	tag = "icon-emerald (SOUTHEAST)"
 	},
 /area/adminlevel/chinook)
 "hX" = (
 /obj/structure/machinery/light{
 	dir = 8;
-	tag = "icon-tube1 (EAST)"
 	},
 /turf/open/floor/almayer,
 /area/adminlevel/chinook/shuttle)
@@ -2501,7 +2324,6 @@
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (WEST)"
 	},
 /area/adminlevel/chinook/medical)
 "hZ" = (
@@ -2515,12 +2337,10 @@
 /obj/structure/machinery/cm_vending/gear/commanding_officer,
 /obj/structure/machinery/light{
 	dir = 1;
-	tag = "icon-tube1 (NORTH)"
 	},
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/offices)
 "ib" = (
@@ -2531,7 +2351,6 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/sec)
 "ic" = (
@@ -2539,7 +2358,6 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/offices)
 "ie" = (
@@ -2554,7 +2372,6 @@
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook)
 "ik" = (
@@ -2564,7 +2381,6 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/cargo)
 "il" = (
@@ -2596,33 +2412,27 @@
 "ir" = (
 /obj/structure/toilet{
 	dir = 4;
-	tag = "icon-toilet00 (WEST)"
 	},
 /obj/structure/machinery/light{
 	dir = 1;
-	tag = "icon-tube1 (NORTH)"
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook)
 "is" = (
 /obj/structure/machinery/disposal,
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/sec)
 "it" = (
 /obj/structure/machinery/light{
 	dir = 1;
-	tag = "icon-tube1 (NORTH)"
 	},
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "silver";
-	tag = "icon-silver (NORTH)"
 	},
 /area/adminlevel/chinook)
 "iu" = (
@@ -2646,30 +2456,25 @@
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
-	tag = "icon-N"
 	},
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/offices)
 "iy" = (
 /obj/structure/closet/secure_closet/engineering_electrical,
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/engineering)
 "iA" = (
 /obj/structure/machinery/light{
 	dir = 1;
-	tag = "icon-tube1 (WEST)"
 	},
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "silver";
-	tag = "icon-silver (NORTH)"
 	},
 /area/adminlevel/chinook)
 "iC" = (
@@ -2678,7 +2483,6 @@
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook)
 "iD" = (
@@ -2709,7 +2513,6 @@
 "iN" = (
 /obj/structure/platform_decoration{
 	dir = 1;
-	tag = "icon-platform_deco (NORTH)"
 	},
 /turf/open/floor/kutjevo,
 /area/adminlevel/chinook/event)
@@ -2728,11 +2531,9 @@
 "iP" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
-	tag = "icon-S"
 	},
 /turf/open/floor/almayer{
 	icon_state = "plating_striped";
-	tag = "icon-emerald (NORTH)"
 	},
 /area/adminlevel/chinook/engineering)
 "iS" = (
@@ -2748,7 +2549,6 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/sec)
 "iT" = (
@@ -2783,13 +2583,11 @@
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "silver";
-	tag = "icon-silver (NORTH)"
 	},
 /area/adminlevel/chinook)
 "iZ" = (
 /turf/open/floor/almayer{
 	icon_state = "orangecorner";
-	tag = "icon-orangecorner"
 	},
 /area/adminlevel/chinook/engineering)
 "ja" = (
@@ -2800,7 +2598,6 @@
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (EAST)"
 	},
 /area/adminlevel/chinook/medical)
 "jb" = (
@@ -2813,7 +2610,6 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/cargo)
 "jc" = (
@@ -2857,7 +2653,6 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/offices)
 "jj" = (
@@ -2866,7 +2661,6 @@
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "orange";
-	tag = "icon-orange (NORTH)"
 	},
 /area/adminlevel/chinook/engineering)
 "jk" = (
@@ -2878,16 +2672,13 @@
 "jl" = (
 /obj/structure/machinery/light{
 	dir = 4;
-	tag = "icon-tube1 (EAST)"
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
-	tag = "icon-S"
 	},
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/offices)
 "jm" = (
@@ -2895,7 +2686,6 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/offices)
 "jo" = (
@@ -2905,7 +2695,6 @@
 /obj/item/roller,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/sec)
 "jp" = (
@@ -2919,7 +2708,6 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/engineering)
 "jq" = (
@@ -2930,7 +2718,6 @@
 /obj/structure/machinery/medical_pod/bodyscanner,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_side";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/medical)
 "ju" = (
@@ -2943,7 +2730,6 @@
 /obj/structure/closet/secure_closet/freezer/meat,
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/event)
 "jw" = (
@@ -2959,7 +2745,6 @@
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/event)
 "jz" = (
@@ -2972,7 +2757,6 @@
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/event)
 "jC" = (
@@ -2983,14 +2767,12 @@
 /obj/structure/surface/table/reinforced/prison,
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/event)
 "jE" = (
 /obj/structure/machinery/vending/dinnerware,
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/event)
 "jF" = (
@@ -3001,7 +2783,6 @@
 /obj/item/reagent_container/spray/cleaner,
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/event)
 "jI" = (
@@ -3019,7 +2800,6 @@
 /obj/item/device/lightreplacer,
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/event)
 "jK" = (
@@ -3054,7 +2834,6 @@
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "silver";
-	tag = "icon-silver (NORTH)"
 	},
 /area/adminlevel/chinook)
 "jR" = (
@@ -3073,7 +2852,6 @@
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "blue";
-	tag = "icon-blue (NORTH)"
 	},
 /area/adminlevel/chinook/offices)
 "jT" = (
@@ -3088,7 +2866,6 @@
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "blue";
-	tag = "icon-blue (EAST)"
 	},
 /area/adminlevel/chinook/offices)
 "jU" = (
@@ -3096,7 +2873,6 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/offices)
 "jV" = (
@@ -3107,7 +2883,6 @@
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (WEST)"
 	},
 /area/adminlevel/chinook/medical)
 "jW" = (
@@ -3116,34 +2891,29 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/offices)
 "jY" = (
 /turf/open/floor/almayer{
 	icon_state = "silvercorner";
-	tag = "icon-silvercorner"
 	},
 /area/adminlevel/chinook)
 "jZ" = (
 /turf/open/floor/almayer{
 	dir = 6;
 	icon_state = "silver";
-	tag = "icon-silver (WEST)"
 	},
 /area/adminlevel/chinook)
 "ka" = (
 /obj/structure/machinery/cm_vending/sorted/cargo_guns,
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/cargo)
 "kd" = (
 /obj/structure/machinery/vending/cola,
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook)
 "kf" = (
@@ -3156,7 +2926,6 @@
 /obj/structure/machinery/cm_vending/sorted/medical,
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook)
 "ki" = (
@@ -3169,7 +2938,6 @@
 "kj" = (
 /obj/structure/machinery/shower{
 	dir = 4;
-	tag = "icon-shower (EAST)"
 	},
 /obj/structure/machinery/door/window/westright{
 	dir = 4
@@ -3181,7 +2949,6 @@
 /obj/structure/machinery/cm_vending/sorted/attachments,
 /turf/open/floor/almayer{
 	icon_state = "cargo";
-	tag = "icon-bluecorner (NORTH)"
 	},
 /area/adminlevel/chinook/sec)
 "kl" = (
@@ -3189,30 +2956,25 @@
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (NORTH)"
 	},
 /area/adminlevel/chinook/offices)
 "km" = (
 /obj/structure/machinery/light{
 	dir = 1;
-	tag = "icon-tube1 (NORTH)"
 	},
 /obj/structure/machinery/disposal,
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "green";
-	tag = "icon-green (NORTH)"
 	},
 /area/adminlevel/chinook/cargo)
 "kn" = (
 /obj/structure/machinery/light{
 	dir = 4;
-	tag = "icon-tube1 (EAST)"
 	},
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "orange";
-	tag = "icon-orange (EAST)"
 	},
 /area/adminlevel/chinook/engineering)
 "ko" = (
@@ -3220,7 +2982,6 @@
 /obj/structure/machinery/light,
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook)
 "kp" = (
@@ -3236,14 +2997,12 @@
 /obj/structure/surface/table/reinforced/black,
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook)
 "kq" = (
 /obj/structure/machinery/disposal,
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook)
 "kr" = (
@@ -3253,14 +3012,12 @@
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (EAST)"
 	},
 /area/adminlevel/chinook/sec)
 "ks" = (
 /obj/structure/machinery/disposal,
 /turf/open/floor/almayer{
 	icon_state = "blue";
-	tag = "icon-blue"
 	},
 /area/adminlevel/chinook/offices)
 "ku" = (
@@ -3268,7 +3025,6 @@
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "sterile_green_corner";
-	tag = "icon-sterile_green_corner (NORTH)"
 	},
 /area/adminlevel/chinook/offices)
 "kv" = (
@@ -3277,7 +3033,6 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/cargo)
 "kw" = (
@@ -3293,7 +3048,6 @@
 "kx" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_22";
-	tag = "icon-plant-10"
 	},
 /turf/open/floor/kutjevo,
 /area/adminlevel/chinook/event)
@@ -3339,12 +3093,10 @@
 	},
 /obj/structure/morgue{
 	dir = 8;
-	tag = "icon-morgue1 (WEST)"
 	},
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (EAST)"
 	},
 /area/adminlevel/chinook/sec)
 "kG" = (
@@ -3361,7 +3113,6 @@
 "kI" = (
 /obj/structure/machinery/light{
 	dir = 4;
-	tag = "icon-tube1 (EAST)"
 	},
 /turf/open/floor/kutjevo,
 /area/adminlevel/chinook/event)
@@ -3386,21 +3137,18 @@
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "blue";
-	tag = "icon-blue (NORTH)"
 	},
 /area/adminlevel/chinook/offices)
 "kM" = (
 /obj/structure/machinery/cm_vending/sorted/boozeomat,
 /turf/open/floor/almayer{
 	icon_state = "blue";
-	tag = "icon-blue"
 	},
 /area/adminlevel/chinook/offices)
 "kN" = (
 /obj/structure/machinery/vending/cigarette/colony,
 /turf/open/floor/almayer{
 	icon_state = "blue";
-	tag = "icon-blue"
 	},
 /area/adminlevel/chinook/offices)
 "kP" = (
@@ -3410,7 +3158,6 @@
 /turf/open/floor/almayer{
 	dir = 10;
 	icon_state = "blue";
-	tag = "icon-blue (SOUTHWEST)"
 	},
 /area/adminlevel/chinook/offices)
 "kQ" = (
@@ -3418,11 +3165,9 @@
 /obj/structure/machinery/recharger,
 /obj/structure/machinery/light{
 	dir = 1;
-	tag = "icon-tube1 (NORTH)"
 	},
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_corner";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/medical)
 "kR" = (
@@ -3468,14 +3213,12 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/sec)
 "kY" = (
 /obj/structure/closet/secure_closet/freezer/fridge/full,
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/event)
 "kZ" = (
@@ -3485,14 +3228,12 @@
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "green";
-	tag = "icon-green (WEST)"
 	},
 /area/adminlevel/chinook/cargo)
 "la" = (
 /turf/open/floor/almayer{
 	dir = 6;
 	icon_state = "orange";
-	tag = "icon-orange (SOUTHEAST)"
 	},
 /area/adminlevel/chinook/engineering)
 "lb" = (
@@ -3503,7 +3244,6 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/cargo)
 "ld" = (
@@ -3536,7 +3276,6 @@
 	},
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/medical)
 "ll" = (
@@ -3544,14 +3283,12 @@
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "sterile_green_corner";
-	tag = "icon-sterile_green_corner (NORTH)"
 	},
 /area/adminlevel/chinook/medical)
 "lm" = (
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "red";
-	tag = "icon-red (NORTH)"
 	},
 /area/adminlevel/chinook/offices)
 "ln" = (
@@ -3569,7 +3306,6 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/cargo)
 "lu" = (
@@ -3579,7 +3315,6 @@
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "red";
-	tag = "icon-red (NORTH)"
 	},
 /area/adminlevel/chinook/offices)
 "lv" = (
@@ -3587,7 +3322,6 @@
 /obj/structure/largecrate/random/case,
 /turf/open/floor/almayer{
 	icon_state = "orange";
-	tag = "icon-orange (NORTH)"
 	},
 /area/adminlevel/chinook/engineering)
 "lw" = (
@@ -3603,7 +3337,6 @@
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "red";
-	tag = "icon-red (NORTH)"
 	},
 /area/adminlevel/chinook/offices)
 "lC" = (
@@ -3638,7 +3371,6 @@
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "plating_striped";
-	tag = "icon-plating_striped (EAST)"
 	},
 /area/adminlevel/chinook/cargo)
 "lK" = (
@@ -3648,7 +3380,6 @@
 /obj/structure/machinery/processor,
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/event)
 "lM" = (
@@ -3667,7 +3398,6 @@
 "lO" = (
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook)
 "lP" = (
@@ -3683,7 +3413,6 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/cargo)
 "lR" = (
@@ -3696,19 +3425,16 @@
 	},
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/medical)
 "lV" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
-	tag = "icon-W"
 	},
 /obj/item/storage/toolbox/electrical,
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "plating_striped";
-	tag = "icon-plating_striped (WEST)"
 	},
 /area/adminlevel/chinook/engineering)
 "lW" = (
@@ -3722,7 +3448,6 @@
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (WEST)"
 	},
 /area/adminlevel/chinook/medical)
 "me" = (
@@ -3732,7 +3457,6 @@
 /obj/effect/spawner/random/attachment,
 /turf/open/floor/almayer{
 	icon_state = "cargo";
-	tag = "icon-bluecorner (NORTH)"
 	},
 /area/adminlevel/chinook/cargo)
 "mg" = (
@@ -3750,7 +3474,6 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/sec)
 "mi" = (
@@ -3769,39 +3492,33 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "orange";
-	tag = "icon-orange (NORTHEAST)"
 	},
 /area/adminlevel/chinook/engineering)
 "mm" = (
 /obj/structure/target,
 /turf/open/floor/almayer{
 	icon_state = "plating_striped";
-	tag = "icon-emerald (NORTH)"
 	},
 /area/adminlevel/chinook/sec)
 "mn" = (
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "plating_striped";
-	tag = "icon-plating_striped (WEST)"
 	},
 /area/adminlevel/chinook)
 "mo" = (
 /turf/open/floor/almayer{
 	icon_state = "redfull";
-	tag = "icon-redfull"
 	},
 /area/adminlevel/chinook)
 "mp" = (
 /obj/structure/machinery/portable_atmospherics/canister/air,
 /obj/structure/machinery/light{
 	dir = 4;
-	tag = "icon-tube1 (EAST)"
 	},
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/engineering)
 "mr" = (
@@ -3820,7 +3537,6 @@
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "red";
-	tag = "icon-red (NORTH)"
 	},
 /area/adminlevel/chinook/offices)
 "mt" = (
@@ -3831,21 +3547,18 @@
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (WEST)"
 	},
 /area/adminlevel/chinook/medical)
 "mu" = (
 /obj/structure/machinery/vending/security,
 /turf/open/floor/almayer{
 	icon_state = "cargo";
-	tag = "icon-bluecorner (NORTH)"
 	},
 /area/adminlevel/chinook/sec)
 "mv" = (
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "plating_striped";
-	tag = "icon-plating_striped (EAST)"
 	},
 /area/adminlevel/chinook)
 "mz" = (
@@ -3857,12 +3570,10 @@
 "mA" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
-	tag = "icon-E"
 	},
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "plating_striped";
-	tag = "icon-plating_striped (EAST)"
 	},
 /area/adminlevel/chinook/engineering)
 "mB" = (
@@ -3870,7 +3581,6 @@
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (NORTH)"
 	},
 /area/adminlevel/chinook/medical)
 "mF" = (
@@ -3880,14 +3590,12 @@
 	},
 /obj/structure/machinery/light{
 	dir = 1;
-	tag = "icon-tube1 (NORTH)"
 	},
 /turf/open/floor/almayer,
 /area/adminlevel/chinook/offices)
 "mG" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "SE-out";
-	tag = "icon-SE-out"
 	},
 /turf/open/floor/almayer,
 /area/adminlevel/chinook)
@@ -3920,7 +3628,6 @@
 "mK" = (
 /turf/open/floor/almayer{
 	icon_state = "orange";
-	tag = "icon-orange (NORTH)"
 	},
 /area/adminlevel/chinook)
 "mN" = (
@@ -3951,7 +3658,6 @@
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (WEST)"
 	},
 /area/adminlevel/chinook/medical)
 "mU" = (
@@ -3977,7 +3683,6 @@
 "mX" = (
 /turf/open/shuttle/dropship{
 	icon_state = "floor8";
-	tag = "icon-rasputin7"
 	},
 /area/adminlevel/chinook/shuttle/unpowered)
 "mY" = (
@@ -3988,7 +3693,6 @@
 	},
 /obj/structure/machinery/light{
 	dir = 1;
-	tag = "icon-tube1 (NORTH)"
 	},
 /turf/open/floor/strata{
 	desc = "Faux wooden floor boards, certified fire resistant. Begrudgingly put in place of actual wood due to concerns about 'fire safety'. Whatever that means.";
@@ -4001,7 +3705,6 @@
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "emerald";
-	tag = "icon-emerald (NORTH)"
 	},
 /area/adminlevel/chinook/shuttle)
 "nd" = (
@@ -4018,13 +3721,11 @@
 /obj/structure/bed/sofa/south/grey/left,
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/offices)
 "nf" = (
 /turf/open/floor/almayer{
 	icon_state = "test_floor4";
-	tag = "icon-test_floor4"
 	},
 /area/adminlevel/chinook/shuttle)
 "ng" = (
@@ -4034,14 +3735,12 @@
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "red";
-	tag = "icon-red"
 	},
 /area/adminlevel/chinook/sec)
 "ni" = (
 /obj/structure/bed/sofa/south/grey/right,
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/offices)
 "nj" = (
@@ -4053,7 +3752,6 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/engineering)
 "nl" = (
@@ -4082,7 +3780,6 @@
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "red";
-	tag = "icon-red"
 	},
 /area/adminlevel/chinook/offices)
 "nn" = (
@@ -4092,23 +3789,19 @@
 "no" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
-	tag = "icon-W"
 	},
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "plating_striped";
-	tag = "icon-plating_striped (WEST)"
 	},
 /area/adminlevel/chinook/engineering)
 "np" = (
 /obj/structure/machinery/light{
 	dir = 4;
-	tag = "icon-tube1 (EAST)"
 	},
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "red";
-	tag = "icon-red"
 	},
 /area/adminlevel/chinook/offices)
 "nr" = (
@@ -4116,7 +3809,6 @@
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (NORTH)"
 	},
 /area/adminlevel/chinook/medical)
 "ns" = (
@@ -4125,7 +3817,6 @@
 /obj/item/reagent_container/food/condiment/enzyme,
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/event)
 "nt" = (
@@ -4166,12 +3857,10 @@
 "nx" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
-	tag = "icon-E"
 	},
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "emerald";
-	tag = "icon-emerald (EAST)"
 	},
 /area/adminlevel/chinook/shuttle)
 "ny" = (
@@ -4200,7 +3889,6 @@
 	},
 /turf/open/floor/almayer{
 	icon_state = "cargo";
-	tag = "icon-bluecorner (NORTH)"
 	},
 /area/adminlevel/chinook/sec)
 "nC" = (
@@ -4210,7 +3898,6 @@
 /obj/structure/machinery/vending/coffee,
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/offices)
 "nD" = (
@@ -4221,7 +3908,6 @@
 /obj/structure/surface/table/reinforced/black,
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/offices)
 "nE" = (
@@ -4230,7 +3916,6 @@
 	},
 /obj/structure/machinery/light{
 	dir = 4;
-	tag = "icon-tube1 (EAST)"
 	},
 /turf/open/floor/almayer,
 /area/adminlevel/chinook/sec)
@@ -4242,7 +3927,6 @@
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/offices)
 "nH" = (
@@ -4269,7 +3953,6 @@
 	},
 /turf/open/floor/almayer{
 	icon_state = "red";
-	tag = "icon-red"
 	},
 /area/adminlevel/chinook/offices)
 "nO" = (
@@ -4304,7 +3987,6 @@
 	},
 /turf/open/floor/almayer{
 	icon_state = "redfull";
-	tag = "icon-redfull"
 	},
 /area/adminlevel/chinook/offices)
 "nU" = (
@@ -4328,7 +4010,6 @@
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "silver";
-	tag = "icon-silver (WEST)"
 	},
 /area/adminlevel/chinook)
 "nX" = (
@@ -4367,7 +4048,6 @@
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "plating_striped";
-	tag = "icon-plating_striped (WEST)"
 	},
 /area/adminlevel/chinook)
 "oa" = (
@@ -4377,7 +4057,6 @@
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "plating_striped";
-	tag = "icon-plating_striped (EAST)"
 	},
 /area/adminlevel/chinook)
 "od" = (
@@ -4466,7 +4145,6 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/offices)
 "op" = (
@@ -4474,7 +4152,6 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/cargo)
 "oq" = (
@@ -4483,7 +4160,6 @@
 	},
 /turf/open/floor/almayer{
 	icon_state = "sterile_green";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/medical)
 "or" = (
@@ -4508,7 +4184,6 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/cargo)
 "ot" = (
@@ -4518,7 +4193,6 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/engineering)
 "ou" = (
@@ -4556,7 +4230,6 @@
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (EAST)"
 	},
 /area/adminlevel/chinook/medical)
 "oB" = (
@@ -4581,7 +4254,6 @@
 	},
 /turf/open/floor/almayer{
 	icon_state = "red";
-	tag = "icon-red"
 	},
 /area/adminlevel/chinook/sec)
 "oD" = (
@@ -4604,7 +4276,6 @@
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "red";
-	tag = "icon-red"
 	},
 /area/adminlevel/chinook/sec)
 "oH" = (
@@ -4619,7 +4290,6 @@
 /obj/structure/surface/table/almayer,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/sec)
 "oM" = (
@@ -4634,7 +4304,6 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook)
 "oN" = (
@@ -4650,7 +4319,6 @@
 	},
 /turf/open/floor/almayer{
 	icon_state = "red";
-	tag = "icon-red"
 	},
 /area/adminlevel/chinook/offices)
 "oQ" = (
@@ -4665,7 +4333,6 @@
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (WEST)"
 	},
 /area/adminlevel/chinook/offices)
 "oV" = (
@@ -4682,7 +4349,6 @@
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (WEST)"
 	},
 /area/adminlevel/chinook/medical)
 "oW" = (
@@ -4709,21 +4375,18 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/sec)
 "pe" = (
 /obj/structure/machinery/disposal,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_side";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/medical)
 "pf" = (
 /obj/structure/bed/chair/comfy{
 	dir = 1;
 	name = "prosecution chair";
-	tag = "icon-comfychair (NORTH)"
 	},
 /turf/open/floor/strata{
 	desc = "Faux wooden floor boards, certified fire resistant. Begrudgingly put in place of actual wood due to concerns about 'fire safety'. Whatever that means.";
@@ -4740,13 +4403,11 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/engineering)
 "ph" = (
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_side";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/medical)
 "pi" = (
@@ -4762,7 +4423,6 @@
 /obj/structure/target,
 /turf/open/floor/almayer{
 	icon_state = "redfull";
-	tag = "icon-redfull"
 	},
 /area/adminlevel/chinook)
 "pl" = (
@@ -4776,7 +4436,6 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/cargo)
 "pm" = (
@@ -4791,7 +4450,6 @@
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "red";
-	tag = "icon-red"
 	},
 /area/adminlevel/chinook/sec)
 "pp" = (
@@ -4806,7 +4464,6 @@
 	},
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_side";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/medical)
 "pr" = (
@@ -4828,7 +4485,6 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/cargo)
 "px" = (
@@ -4837,7 +4493,6 @@
 /obj/item/device/defibrillator,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_side";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/medical)
 "py" = (
@@ -4904,7 +4559,6 @@
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "red";
-	tag = "icon-red (NORTH)"
 	},
 /area/adminlevel/chinook/sec)
 "pG" = (
@@ -4913,7 +4567,6 @@
 	},
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15";
-	tag = "icon-rasputin15"
 	},
 /area/adminlevel/chinook/shuttle/unpowered)
 "pH" = (
@@ -4922,7 +4575,6 @@
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/offices)
 "pJ" = (
@@ -4948,7 +4600,6 @@
 "pM" = (
 /obj/structure/machinery/light{
 	dir = 1;
-	tag = "icon-tube1 (NORTH)"
 	},
 /turf/open/floor/carpet{
 	desc = "Plush, waterproof carpet. Apparently it's fire resistant while remaining quite soft.";
@@ -4959,13 +4610,11 @@
 /obj/structure/machinery/computer/telecomms/traffic,
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/engineering)
 "pO" = (
 /obj/structure/platform_decoration{
 	dir = 8;
-	tag = "icon-platform_deco (EAST)"
 	},
 /turf/open/floor/kutjevo,
 /area/adminlevel/chinook/event)
@@ -4992,7 +4641,6 @@
 /obj/structure/machinery/power/fusion_engine,
 /obj/structure/machinery/light{
 	dir = 4;
-	tag = "icon-tube1 (EAST)"
 	},
 /obj/structure/platform{
 	dir = 4
@@ -5000,7 +4648,6 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/engineering)
 "pU" = (
@@ -5017,7 +4664,6 @@
 "pV" = (
 /obj/structure/machinery/light{
 	dir = 1;
-	tag = "icon-tube1 (NORTH)"
 	},
 /turf/open/floor/kutjevo,
 /area/adminlevel/chinook/event)
@@ -5034,13 +4680,11 @@
 "pX" = (
 /obj/structure/machinery/light{
 	dir = 4;
-	tag = "icon-tube1 (EAST)"
 	},
 /obj/structure/machinery/cm_vending/sorted/medical,
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (EAST)"
 	},
 /area/adminlevel/chinook/medical)
 "pY" = (
@@ -5050,7 +4694,6 @@
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "red";
-	tag = "icon-red"
 	},
 /area/adminlevel/chinook/sec)
 "pZ" = (
@@ -5081,13 +4724,11 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook)
 "qc" = (
 /obj/structure/machinery/light{
 	dir = 4;
-	tag = "icon-tube1 (EAST)"
 	},
 /turf/open/floor/strata{
 	desc = "Faux wooden floor boards, certified fire resistant. Begrudgingly put in place of actual wood due to concerns about 'fire safety'. Whatever that means.";
@@ -5108,7 +4749,6 @@
 	},
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_side";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/medical)
 "qj" = (
@@ -5130,7 +4770,6 @@
 /turf/open/floor/almayer{
 	dir = 10;
 	icon_state = "red";
-	tag = "icon-red (SOUTHWEST)"
 	},
 /area/adminlevel/chinook/sec)
 "qo" = (
@@ -5173,7 +4812,6 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/sec)
 "qy" = (
@@ -5207,7 +4845,6 @@
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (EAST)"
 	},
 /area/adminlevel/chinook/medical)
 "qC" = (
@@ -5259,7 +4896,6 @@
 /obj/structure/machinery/vending/snack,
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook)
 "qJ" = (
@@ -5274,14 +4910,12 @@
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/sec)
 "qL" = (
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "orange";
-	tag = "icon-orange (EAST)"
 	},
 /area/adminlevel/chinook/engineering)
 "qM" = (
@@ -5306,7 +4940,6 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/cargo)
 "qT" = (
@@ -5319,7 +4952,6 @@
 /obj/structure/machinery/light,
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/engineering)
 "qV" = (
@@ -5327,19 +4959,16 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/engineering)
 "qX" = (
 /turf/open/floor/almayer{
 	icon_state = "redcorner";
-	tag = "icon-redcorner"
 	},
 /area/adminlevel/chinook/sec)
 "qY" = (
 /obj/structure/machinery/light{
 	dir = 4;
-	tag = "icon-tube1 (EAST)"
 	},
 /turf/open/floor/almayer,
 /area/adminlevel/chinook/sec)
@@ -5359,7 +4988,6 @@
 /obj/item/storage/briefcase/inflatable,
 /turf/open/floor/almayer{
 	icon_state = "cargo";
-	tag = "icon-bluecorner (NORTH)"
 	},
 /area/adminlevel/chinook/engineering)
 "rd" = (
@@ -5367,7 +4995,6 @@
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (WEST)"
 	},
 /area/adminlevel/chinook/medical)
 "rf" = (
@@ -5382,14 +5009,12 @@
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "silver";
-	tag = "icon-silver (WEST)"
 	},
 /area/adminlevel/chinook)
 "rh" = (
 /obj/structure/machinery/cm_vending/sorted/medical/chemistry,
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/medical)
 "ri" = (
@@ -5416,7 +5041,6 @@
 	},
 /turf/open/floor/almayer{
 	icon_state = "sterile_green";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/medical)
 "rl" = (
@@ -5426,7 +5050,6 @@
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "red";
-	tag = "icon-red (NORTH)"
 	},
 /area/adminlevel/chinook/sec)
 "rm" = (
@@ -5446,7 +5069,6 @@
 "rq" = (
 /obj/structure/machinery/light{
 	dir = 1;
-	tag = "icon-tube1 (NORTH)"
 	},
 /turf/open/floor/kutjevo/tan/plate,
 /area/adminlevel/chinook/event)
@@ -5457,7 +5079,6 @@
 "ru" = (
 /obj/structure/machinery/light{
 	dir = 1;
-	tag = "icon-tube1 (NORTH)"
 	},
 /obj/structure/surface/table/almayer,
 /obj/item/roller{
@@ -5472,25 +5093,21 @@
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (NORTH)"
 	},
 /area/adminlevel/chinook/medical)
 "rw" = (
 /obj/structure/platform_decoration{
 	dir = 1;
-	tag = "icon-platform_deco (NORTH)"
 	},
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/cargo)
 "rx" = (
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (NORTH)"
 	},
 /area/adminlevel/chinook/medical)
 "rA" = (
@@ -5498,14 +5115,12 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/cargo)
 "rD" = (
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "bluecorner";
-	tag = "icon-bluecorner (EAST)"
 	},
 /area/adminlevel/chinook/offices)
 "rE" = (
@@ -5513,14 +5128,12 @@
 /obj/item/bedsheet/medical,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/medical)
 "rG" = (
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "bluecorner";
-	tag = "icon-bluecorner (NORTH)"
 	},
 /area/adminlevel/chinook/offices)
 "rH" = (
@@ -5530,7 +5143,6 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/engineering)
 "rI" = (
@@ -5539,7 +5151,6 @@
 	},
 /obj/structure/machinery/light{
 	dir = 1;
-	tag = "icon-tube1 (NORTH)"
 	},
 /obj/structure/surface/table/reinforced/black,
 /turf/open/floor/kutjevo/tan/plate,
@@ -5556,7 +5167,6 @@
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "silvercorner";
-	tag = "icon-silvercorner (NORTH)"
 	},
 /area/adminlevel/chinook)
 "rO" = (
@@ -5569,7 +5179,6 @@
 "rT" = (
 /obj/structure/machinery/light{
 	dir = 4;
-	tag = "icon-tube1 (EAST)"
 	},
 /turf/open/floor/kutjevo/tan/plate,
 /area/adminlevel/chinook/event)
@@ -5577,7 +5186,6 @@
 /turf/open/floor/almayer{
 	dir = 9;
 	icon_state = "blue";
-	tag = "icon-blue (NORTHWEST)"
 	},
 /area/adminlevel/chinook/offices)
 "rV" = (
@@ -5601,7 +5209,6 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/engineering)
 "sa" = (
@@ -5612,7 +5219,6 @@
 "sb" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_21";
-	tag = "icon-plant-10"
 	},
 /turf/open/floor/kutjevo/plate,
 /area/adminlevel/chinook/event)
@@ -5628,7 +5234,6 @@
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "green";
-	tag = "icon-green (NORTH)"
 	},
 /area/adminlevel/chinook/cargo)
 "si" = (
@@ -5642,7 +5247,6 @@
 /obj/structure/machinery/cm_vending/sorted/boozeomat,
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/event)
 "sl" = (
@@ -5650,7 +5254,6 @@
 /turf/open/floor/almayer{
 	dir = 10;
 	icon_state = "orange";
-	tag = "icon-orange (SOUTHWEST)"
 	},
 /area/adminlevel/chinook/engineering)
 "sm" = (
@@ -5675,7 +5278,6 @@
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "plating_striped";
-	tag = "icon-plating_striped (WEST)"
 	},
 /area/adminlevel/chinook)
 "sp" = (
@@ -5683,14 +5285,12 @@
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "plating_striped";
-	tag = "icon-plating_striped (EAST)"
 	},
 /area/adminlevel/chinook)
 "sr" = (
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "blue";
-	tag = "icon-blue (NORTH)"
 	},
 /area/adminlevel/chinook/offices)
 "ss" = (
@@ -5706,14 +5306,12 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/engineering)
 "sx" = (
 /obj/structure/machinery/vending/snack,
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/cargo)
 "sz" = (
@@ -5721,7 +5319,6 @@
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "plating_striped";
-	tag = "icon-plating_striped (WEST)"
 	},
 /area/adminlevel/chinook)
 "sA" = (
@@ -5736,7 +5333,6 @@
 	},
 /turf/open/floor/almayer{
 	icon_state = "blue";
-	tag = "icon-blue"
 	},
 /area/adminlevel/chinook/offices)
 "sE" = (
@@ -5749,7 +5345,6 @@
 /turf/open/floor/almayer{
 	dir = 6;
 	icon_state = "blue";
-	tag = "icon-blue (SOUTHEAST)"
 	},
 /area/adminlevel/chinook/offices)
 "sF" = (
@@ -5760,7 +5355,6 @@
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4";
-	tag = "icon-test_floor4"
 	},
 /area/adminlevel/chinook/shuttle)
 "sG" = (
@@ -5774,7 +5368,6 @@
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "green";
-	tag = "icon-green (WEST)"
 	},
 /area/adminlevel/chinook/cargo)
 "sJ" = (
@@ -5784,7 +5377,6 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/engineering)
 "sK" = (
@@ -5794,7 +5386,6 @@
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (WEST)"
 	},
 /area/adminlevel/chinook/medical)
 "sL" = (
@@ -5804,19 +5395,16 @@
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "blue";
-	tag = "icon-blue (NORTH)"
 	},
 /area/adminlevel/chinook/offices)
 "sM" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
-	tag = "icon-E-corner"
 	},
 /obj/structure/surface/rack,
 /obj/item/clothing/head/welding,
 /turf/open/floor/almayer{
 	icon_state = "orange";
-	tag = "icon-orange (NORTH)"
 	},
 /area/adminlevel/chinook/engineering)
 "sQ" = (
@@ -5860,7 +5448,6 @@
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "orange";
-	tag = "icon-orange (WEST)"
 	},
 /area/adminlevel/chinook/engineering)
 "sU" = (
@@ -5873,7 +5460,6 @@
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "plating_striped";
-	tag = "icon-plating_striped (EAST)"
 	},
 /area/adminlevel/chinook/cargo)
 "sV" = (
@@ -5899,32 +5485,27 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/engineering)
 "sX" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /turf/open/floor/almayer{
 	icon_state = "cargo";
-	tag = "icon-bluecorner (NORTH)"
 	},
 /area/adminlevel/chinook/sec)
 "sY" = (
 /turf/open/floor/almayer{
 	dir = 6;
 	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (SOUTHEAST)"
 	},
 /area/adminlevel/chinook/medical)
 "sZ" = (
 /obj/structure/bed/chair/comfy{
 	dir = 1;
-	tag = "icon-comfychair (NORTH)"
 	},
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook)
 "tb" = (
@@ -5955,7 +5536,6 @@
 /obj/item/storage/fancy/cigarettes/lucky_strikes,
 /turf/open/floor/almayer{
 	icon_state = "cargo";
-	tag = "icon-bluecorner (NORTH)"
 	},
 /area/adminlevel/chinook/cargo)
 "tf" = (
@@ -5995,7 +5575,6 @@
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/offices)
 "tr" = (
@@ -6008,7 +5587,6 @@
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (WEST)"
 	},
 /area/adminlevel/chinook/medical)
 "tu" = (
@@ -6024,7 +5602,6 @@
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (WEST)"
 	},
 /area/adminlevel/chinook/medical)
 "tv" = (
@@ -6035,7 +5612,6 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/cargo)
 "tw" = (
@@ -6055,7 +5631,6 @@
 /obj/structure/machinery/disposal,
 /turf/open/floor/almayer{
 	icon_state = "orange";
-	tag = "icon-orange (NORTH)"
 	},
 /area/adminlevel/chinook/engineering)
 "tz" = (
@@ -6076,12 +5651,10 @@
 "tB" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
-	tag = "icon-S"
 	},
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "cargo_arrow";
-	tag = "icon-cargo_arrow (NORTH)"
 	},
 /area/adminlevel/chinook/shuttle)
 "tC" = (
@@ -6098,13 +5671,11 @@
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (EAST)"
 	},
 /area/adminlevel/chinook/medical)
 "tG" = (
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/event)
 "tH" = (
@@ -6115,14 +5686,12 @@
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (WEST)"
 	},
 /area/adminlevel/chinook/sec)
 "tJ" = (
 /obj/structure/closet/boxinggloves,
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook)
 "tK" = (
@@ -6153,7 +5722,6 @@
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook)
 "tN" = (
@@ -6165,13 +5733,11 @@
 /obj/structure/target/syndicate,
 /turf/open/floor/almayer{
 	icon_state = "redfull";
-	tag = "icon-redfull"
 	},
 /area/adminlevel/chinook)
 "tP" = (
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/cargo)
 "tQ" = (
@@ -6184,21 +5750,18 @@
 "tS" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
-	tag = "icon-W"
 	},
 /obj/effect/decal/cleanable/blood/oil/streak,
 /obj/item/tool/wrench,
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "plating_striped";
-	tag = "icon-plating_striped (WEST)"
 	},
 /area/adminlevel/chinook/engineering)
 "tU" = (
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "silvercorner";
-	tag = "icon-greencorner (WEST)"
 	},
 /area/adminlevel/chinook)
 "tV" = (
@@ -6235,7 +5798,6 @@
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "silver";
-	tag = "icon-silver (WEST)"
 	},
 /area/adminlevel/chinook)
 "tZ" = (
@@ -6252,7 +5814,6 @@
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/event)
 "ue" = (
@@ -6265,7 +5826,6 @@
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/event)
 "uf" = (
@@ -6274,7 +5834,6 @@
 /turf/open/floor/almayer{
 	dir = 10;
 	icon_state = "emerald";
-	tag = "icon-emerald (NORTHWEST)"
 	},
 /area/adminlevel/chinook/shuttle)
 "ug" = (
@@ -6284,12 +5843,10 @@
 "uh" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_21";
-	tag = "icon-plant-10"
 	},
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/sec)
 "ui" = (
@@ -6306,13 +5863,11 @@
 /obj/effect/spawner/random/toolbox,
 /turf/open/floor/almayer{
 	icon_state = "cargo";
-	tag = "icon-bluecorner (NORTH)"
 	},
 /area/adminlevel/chinook/cargo)
 "uk" = (
 /obj/structure/bed/chair{
 	dir = 1;
-	tag = "icon-chair (NORTH)"
 	},
 /turf/open/floor/almayer,
 /area/adminlevel/chinook/cargo)
@@ -6350,14 +5905,12 @@
 /obj/structure/bed/sofa/south/grey/left,
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/sec)
 "us" = (
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (EAST)"
 	},
 /area/adminlevel/chinook/medical)
 "ut" = (
@@ -6414,17 +5967,14 @@
 /obj/item/weapon/gun/pistol/m4a3,
 /turf/open/floor/almayer{
 	icon_state = "cargo";
-	tag = "icon-bluecorner (NORTH)"
 	},
 /area/adminlevel/chinook/sec)
 "uz" = (
 /obj/structure/machinery/light{
 	dir = 8;
-	tag = "icon-tube1 (EAST)"
 	},
 /turf/open/floor/almayer{
 	icon_state = "redfull";
-	tag = "icon-redfull"
 	},
 /area/adminlevel/chinook)
 "uB" = (
@@ -6442,7 +5992,6 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/cargo)
 "uD" = (
@@ -6459,13 +6008,11 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook)
 "uF" = (
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/medical)
 "uG" = (
@@ -6485,7 +6032,6 @@
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "red";
-	tag = "icon-red (NORTH)"
 	},
 /area/adminlevel/chinook/sec)
 "uJ" = (
@@ -6497,7 +6043,6 @@
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "red";
-	tag = "icon-red (NORTH)"
 	},
 /area/adminlevel/chinook/sec)
 "uK" = (
@@ -6505,19 +6050,16 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "blue";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/offices)
 "uM" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "NW-out";
 	layer = 2.5;
-	tag = "icon-NW-out"
 	},
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "orange";
-	tag = "icon-orange (WEST)"
 	},
 /area/adminlevel/chinook/engineering)
 "uN" = (
@@ -6527,7 +6069,6 @@
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "blue";
-	tag = "icon-blue (EAST)"
 	},
 /area/adminlevel/chinook/offices)
 "uO" = (
@@ -6550,7 +6091,6 @@
 /obj/item/weapon/gun/shotgun/combat,
 /turf/open/floor/almayer{
 	icon_state = "cargo";
-	tag = "icon-bluecorner (NORTH)"
 	},
 /area/adminlevel/chinook/offices)
 "uR" = (
@@ -6560,12 +6100,10 @@
 "uS" = (
 /obj/structure/cargo_container{
 	icon_state = "WY 0,0";
-	tag = "icon-WY 0,0"
 	},
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/cargo)
 "uT" = (
@@ -6575,7 +6113,6 @@
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "sterile_green_corner";
-	tag = "icon-sterile_green_corner (EAST)"
 	},
 /area/adminlevel/chinook/medical)
 "uU" = (
@@ -6590,12 +6127,10 @@
 "uV" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
-	tag = "icon-E"
 	},
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "emerald";
-	tag = "icon-emerald (NORTHWEST)"
 	},
 /area/adminlevel/chinook/shuttle)
 "uW" = (
@@ -6610,7 +6145,6 @@
 /obj/structure/machinery/light,
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/cargo)
 "uY" = (
@@ -6632,14 +6166,12 @@
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook)
 "vb" = (
 /turf/open/floor/almayer{
 	dir = 9;
 	icon_state = "silver";
-	tag = "icon-silver (NORTHWEST)"
 	},
 /area/adminlevel/chinook)
 "vc" = (
@@ -6660,14 +6192,12 @@
 	},
 /turf/open/floor/almayer{
 	icon_state = "silver";
-	tag = "icon-silver"
 	},
 /area/adminlevel/chinook)
 "ve" = (
 /obj/structure/machinery/cryopod/right,
 /turf/open/floor/almayer{
 	icon_state = "cargo";
-	tag = "icon-bluecorner (NORTH)"
 	},
 /area/adminlevel/chinook/cryo)
 "vf" = (
@@ -6687,14 +6217,12 @@
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "silver";
-	tag = "icon-silver (WEST)"
 	},
 /area/adminlevel/chinook)
 "vi" = (
 /turf/open/floor/almayer{
 	dir = 9;
 	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (NORTHWEST)"
 	},
 /area/adminlevel/chinook/medical)
 "vk" = (
@@ -6714,7 +6242,6 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook)
 "vo" = (
@@ -6734,7 +6261,6 @@
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "orange";
-	tag = "icon-orange (NORTH)"
 	},
 /area/adminlevel/chinook/engineering)
 "vs" = (
@@ -6744,7 +6270,6 @@
 /obj/item/clothing/head/beret/marine/commander/council,
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/offices)
 "vu" = (
@@ -6757,26 +6282,22 @@
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (NORTH)"
 	},
 /area/adminlevel/chinook/medical)
 "vx" = (
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/offices)
 "vz" = (
 /obj/structure/closet/secure_closet/military_police,
 /obj/structure/machinery/light{
 	dir = 1;
-	tag = "icon-tube1 (NORTH)"
 	},
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "red";
-	tag = "icon-red"
 	},
 /area/adminlevel/chinook/sec)
 "vA" = (
@@ -6784,7 +6305,6 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook)
 "vB" = (
@@ -6797,13 +6317,11 @@
 	},
 /turf/open/floor/almayer{
 	icon_state = "emerald";
-	tag = "icon-emerald"
 	},
 /area/adminlevel/chinook/shuttle)
 "vC" = (
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin7";
-	tag = "icon-rasputin7"
 	},
 /area/adminlevel/chinook/shuttle/unpowered)
 "vD" = (
@@ -6824,7 +6342,6 @@
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "red";
-	tag = "icon-red"
 	},
 /area/adminlevel/chinook/sec)
 "vG" = (
@@ -6833,7 +6350,6 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/sec)
 "vH" = (
@@ -6858,11 +6374,9 @@
 "vJ" = (
 /obj/structure/machinery/light{
 	dir = 8;
-	tag = "icon-tube1 (EAST)"
 	},
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_21";
-	tag = "icon-plant-10"
 	},
 /turf/open/floor/strata{
 	desc = "Faux wooden floor boards, certified fire resistant. Begrudgingly put in place of actual wood due to concerns about 'fire safety'. Whatever that means.";
@@ -6906,13 +6420,11 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/cargo)
 "vR" = (
 /obj/structure/bed/chair{
 	dir = 1;
-	tag = "icon-chair (NORTH)"
 	},
 /turf/open/floor/almayer,
 /area/adminlevel/chinook)
@@ -6923,13 +6435,11 @@
 "vU" = (
 /obj/structure/machinery/light{
 	dir = 1;
-	tag = "icon-tube1 (NORTH)"
 	},
 /obj/structure/largecrate/random/barrel/blue,
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/cargo)
 "vW" = (
@@ -6947,18 +6457,15 @@
 /obj/structure/machinery/light,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_side";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/medical)
 "vZ" = (
 /obj/structure/cargo_container{
 	icon_state = "green 1,0";
-	tag = "icon-green 1,0"
 	},
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/cargo)
 "wc" = (
@@ -6967,7 +6474,6 @@
 /obj/structure/machinery/light,
 /turf/open/floor/almayer{
 	icon_state = "red";
-	tag = "icon-red"
 	},
 /area/adminlevel/chinook/sec)
 "wd" = (
@@ -6978,7 +6484,6 @@
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (WEST)"
 	},
 /area/adminlevel/chinook/medical)
 "we" = (
@@ -6995,14 +6500,12 @@
 "wj" = (
 /obj/structure/bed/chair/comfy{
 	dir = 1;
-	tag = "icon-comfychair (NORTH)"
 	},
 /turf/open/floor/kutjevo/tan,
 /area/adminlevel/chinook/event)
 "wk" = (
 /obj/structure/machinery/light{
 	dir = 4;
-	tag = "icon-tube1 (EAST)"
 	},
 /obj/structure/surface/table/reinforced/black,
 /turf/open/floor/kutjevo/tan/plate,
@@ -7017,18 +6520,15 @@
 /obj/item/explosive/grenade/high_explosive/training,
 /turf/open/floor/almayer{
 	icon_state = "redfull";
-	tag = "icon-redfull"
 	},
 /area/adminlevel/chinook)
 "wo" = (
 /obj/structure/bed/sofa/south/grey,
 /obj/structure/machinery/light{
 	dir = 1;
-	tag = "icon-tube1 (NORTH)"
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/sec)
 "wp" = (
@@ -7039,13 +6539,11 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook)
 "wq" = (
 /obj/structure/machinery/light{
 	dir = 8;
-	tag = "icon-tube1 (EAST)"
 	},
 /turf/open/floor/strata{
 	desc = "Faux wooden floor boards, certified fire resistant. Begrudgingly put in place of actual wood due to concerns about 'fire safety'. Whatever that means.";
@@ -7056,12 +6554,10 @@
 "wr" = (
 /obj/structure/machinery/light{
 	dir = 8;
-	tag = "icon-tube1 (EAST)"
 	},
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "silver";
-	tag = "icon-silver (WEST)"
 	},
 /area/adminlevel/chinook)
 "wt" = (
@@ -7076,7 +6572,6 @@
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "silver";
-	tag = "icon-silver (WEST)"
 	},
 /area/adminlevel/chinook)
 "wu" = (
@@ -7143,7 +6638,6 @@
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "blue";
-	tag = "icon-blue (NORTH)"
 	},
 /area/adminlevel/chinook/offices)
 "wF" = (
@@ -7151,7 +6645,6 @@
 /obj/structure/machinery/computer/research,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/medical)
 "wG" = (
@@ -7184,13 +6677,11 @@
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (WEST)"
 	},
 /area/adminlevel/chinook/sec)
 "wN" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
-	tag = "icon-E-corner"
 	},
 /turf/open/floor/almayer,
 /area/adminlevel/chinook/engineering)
@@ -7198,14 +6689,12 @@
 /obj/structure/machinery/cm_vending/sorted/marine_food,
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/cargo)
 "wQ" = (
 /obj/structure/machinery/autolathe/full,
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/engineering)
 "wT" = (
@@ -7213,14 +6702,12 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/sec)
 "wU" = (
 /obj/structure/closet/crate/freezer,
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/event)
 "wV" = (
@@ -7235,7 +6722,6 @@
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "sterile_green_corner";
-	tag = "icon-sterile_green_corner (NORTH)"
 	},
 /area/adminlevel/chinook/medical)
 "wY" = (
@@ -7247,12 +6733,10 @@
 "xa" = (
 /obj/structure/machinery/light{
 	dir = 4;
-	tag = "icon-tube1 (EAST)"
 	},
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "blue";
-	tag = "icon-blue (EAST)"
 	},
 /area/adminlevel/chinook/offices)
 "xd" = (
@@ -7268,7 +6752,6 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/sec)
 "xe" = (
@@ -7286,7 +6769,6 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/engineering)
 "xi" = (
@@ -7310,7 +6792,6 @@
 	},
 /turf/open/floor/almayer{
 	icon_state = "cargo";
-	tag = "icon-bluecorner (NORTH)"
 	},
 /area/adminlevel/chinook/sec)
 "xr" = (
@@ -7347,7 +6828,6 @@
 /obj/structure/machinery/autodoc_console,
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/sec)
 "xC" = (
@@ -7355,7 +6835,6 @@
 /obj/item/folder/black,
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/engineering)
 "xE" = (
@@ -7363,7 +6842,6 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/offices)
 "xF" = (
@@ -7373,7 +6851,6 @@
 "xG" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_10";
-	tag = "icon-plant-10"
 	},
 /turf/open/floor/kutjevo/plate,
 /area/adminlevel/chinook/event)
@@ -7392,12 +6869,10 @@
 "xL" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_18";
-	tag = "icon-plant-10"
 	},
 /turf/open/floor/almayer{
 	dir = 9;
 	icon_state = "red";
-	tag = "icon-red"
 	},
 /area/adminlevel/chinook/sec)
 "xN" = (
@@ -7407,7 +6882,6 @@
 "xO" = (
 /obj/structure/toilet{
 	dir = 4;
-	tag = "icon-toilet00 (WEST)"
 	},
 /turf/open/floor/almayer,
 /area/adminlevel/chinook/engineering)
@@ -7418,24 +6892,20 @@
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "red";
-	tag = "icon-red (NORTH)"
 	},
 /area/adminlevel/chinook/offices)
 "xQ" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
-	tag = "icon-E-corner"
 	},
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "plating_striped";
-	tag = "icon-plating_striped (EAST)"
 	},
 /area/adminlevel/chinook/engineering)
 "xR" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_21";
-	tag = "icon-plant-10"
 	},
 /turf/open/floor/almayer,
 /area/adminlevel/chinook/offices)
@@ -7443,13 +6913,11 @@
 /obj/structure/machinery/autolathe/full,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/medical)
 "xW" = (
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin4";
-	tag = "icon-rasputin7"
 	},
 /area/adminlevel/chinook/shuttle/unpowered)
 "xY" = (
@@ -7464,7 +6932,6 @@
 /obj/structure/machinery/body_scanconsole,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_side";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/medical)
 "ya" = (
@@ -7479,7 +6946,6 @@
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (WEST)"
 	},
 /area/adminlevel/chinook/medical)
 "yf" = (
@@ -7488,17 +6954,14 @@
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "orange";
-	tag = "icon-orange (WEST)"
 	},
 /area/adminlevel/chinook/engineering)
 "yg" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_21";
-	tag = "icon-plant-10"
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/event)
 "yh" = (
@@ -7517,13 +6980,11 @@
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "red";
-	tag = "icon-red"
 	},
 /area/adminlevel/chinook/event)
 "yo" = (
 /obj/structure/bed/chair/comfy{
 	dir = 1;
-	tag = "icon-comfychair (NORTH)"
 	},
 /turf/open/floor/kutjevo/tan/plate,
 /area/adminlevel/chinook/event)
@@ -7531,7 +6992,6 @@
 /obj/structure/machinery/medical_pod/autodoc,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/medical)
 "yu" = (
@@ -7555,7 +7015,6 @@
 /obj/item/storage/box/flashbangs,
 /turf/open/floor/almayer{
 	icon_state = "cargo";
-	tag = "icon-bluecorner (NORTH)"
 	},
 /area/adminlevel/chinook/sec)
 "yx" = (
@@ -7569,13 +7028,11 @@
 /obj/item/stack/sheet/metal/large_stack,
 /turf/open/floor/almayer{
 	icon_state = "orange";
-	tag = "icon-orange (NORTH)"
 	},
 /area/adminlevel/chinook/engineering)
 "yA" = (
 /obj/structure/machinery/light{
 	dir = 1;
-	tag = "icon-tube1 (NORTH)"
 	},
 /turf/open/floor/carpet{
 	desc = "Plush, waterproof carpet. Apparently it's fire resistant while remaining quite soft.";
@@ -7598,13 +7055,11 @@
 	},
 /turf/open/floor/almayer{
 	icon_state = "cargo";
-	tag = "icon-bluecorner (NORTH)"
 	},
 /area/adminlevel/chinook)
 "yN" = (
 /turf/open/floor/almayer{
 	icon_state = "cargo";
-	tag = "icon-bluecorner (NORTH)"
 	},
 /area/adminlevel/chinook)
 "yO" = (
@@ -7619,7 +7074,6 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/engineering)
 "yP" = (
@@ -7629,13 +7083,11 @@
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/offices)
 "yR" = (
 /obj/structure/machinery/light{
 	dir = 1;
-	tag = "icon-tube1 (NORTH)"
 	},
 /turf/open/floor/almayer,
 /area/adminlevel/chinook)
@@ -7664,13 +7116,11 @@
 	},
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_corner";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/medical)
 "yY" = (
 /obj/structure/machinery/light{
 	dir = 8;
-	tag = "icon-tube1 (EAST)"
 	},
 /obj/structure/machinery/telecomms/broadcaster/preset_cent{
 	autolinkers = list("chinook");
@@ -7686,14 +7136,12 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "green";
-	tag = "icon-green (NORTHEAST)"
 	},
 /area/adminlevel/chinook/cargo)
 "zb" = (
 /obj/structure/bed/sofa/vert/grey,
 /turf/open/floor/almayer{
 	icon_state = "emeraldfull";
-	tag = "icon-emeraldfull"
 	},
 /area/adminlevel/chinook/shuttle)
 "zc" = (
@@ -7702,7 +7150,6 @@
 	},
 /turf/open/floor/almayer{
 	icon_state = "cargo";
-	tag = "icon-bluecorner (NORTH)"
 	},
 /area/adminlevel/chinook)
 "zd" = (
@@ -7720,7 +7167,6 @@
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (WEST)"
 	},
 /area/adminlevel/chinook/medical)
 "zj" = (
@@ -7730,7 +7176,6 @@
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "red";
-	tag = "icon-red (NORTH)"
 	},
 /area/adminlevel/chinook/sec)
 "zm" = (
@@ -7743,7 +7188,6 @@
 	},
 /turf/open/floor/almayer{
 	icon_state = "red";
-	tag = "icon-red"
 	},
 /area/adminlevel/chinook/sec)
 "zp" = (
@@ -7762,7 +7206,6 @@
 "zq" = (
 /obj/structure/bed/chair/comfy{
 	dir = 1;
-	tag = "icon-comfychair (NORTH)"
 	},
 /turf/open/floor/carpet{
 	desc = "Plush, waterproof carpet. Apparently it's fire resistant while remaining quite soft.";
@@ -7796,7 +7239,6 @@
 /obj/structure/bed/sofa/south/grey,
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/sec)
 "zE" = (
@@ -7829,7 +7271,6 @@
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "silver";
-	tag = "icon-green (EAST)"
 	},
 /area/adminlevel/chinook)
 "zI" = (
@@ -7842,7 +7283,6 @@
 "zJ" = (
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/offices)
 "zL" = (
@@ -7854,7 +7294,6 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/cargo)
 "zO" = (
@@ -7866,14 +7305,12 @@
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/engineering)
 "zP" = (
 /obj/structure/machinery/disposal,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/sec)
 "zR" = (
@@ -7883,7 +7320,6 @@
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "sterile_green_corner";
-	tag = "icon-sterile_green_corner (EAST)"
 	},
 /area/adminlevel/chinook/medical)
 "zS" = (
@@ -7893,7 +7329,6 @@
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "red";
-	tag = "icon-red"
 	},
 /area/adminlevel/chinook/sec)
 "zT" = (
@@ -7901,7 +7336,6 @@
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (WEST)"
 	},
 /area/adminlevel/chinook/medical)
 "zU" = (
@@ -7916,7 +7350,6 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/engineering)
 "zW" = (
@@ -7928,7 +7361,6 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/engineering)
 "zY" = (
@@ -7938,7 +7370,6 @@
 /turf/open/floor/almayer{
 	dir = 10;
 	icon_state = "red";
-	tag = "icon-red (SOUTHWEST)"
 	},
 /area/adminlevel/chinook/offices)
 "Ac" = (
@@ -7950,7 +7381,6 @@
 	},
 /turf/open/floor/almayer{
 	icon_state = "red";
-	tag = "icon-red"
 	},
 /area/adminlevel/chinook/offices)
 "Ad" = (
@@ -7962,13 +7392,11 @@
 /obj/structure/machinery/computer/crew,
 /turf/open/floor/almayer{
 	icon_state = "red";
-	tag = "icon-red"
 	},
 /area/adminlevel/chinook/offices)
 "Af" = (
 /obj/structure/machinery/light{
 	dir = 1;
-	tag = "icon-tube1 (NORTH)"
 	},
 /obj/structure/sign/nosmoking_1{
 	pixel_y = 30
@@ -7976,7 +7404,6 @@
 /turf/open/floor/almayer{
 	dir = 9;
 	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (NORTHWEST)"
 	},
 /area/adminlevel/chinook/medical)
 "Ag" = (
@@ -7985,7 +7412,6 @@
 /obj/item/clothing/mask/breath/medical,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/sec)
 "Ah" = (
@@ -8005,7 +7431,6 @@
 /obj/structure/bed/sofa/vert/grey/top,
 /turf/open/floor/almayer{
 	icon_state = "emeraldfull";
-	tag = "icon-emeraldfull"
 	},
 /area/adminlevel/chinook/shuttle)
 "Al" = (
@@ -8013,7 +7438,6 @@
 /turf/open/floor/almayer{
 	dir = 6;
 	icon_state = "red";
-	tag = "icon-red"
 	},
 /area/adminlevel/chinook/offices)
 "Am" = (
@@ -8033,7 +7457,6 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/cargo)
 "Ap" = (
@@ -8041,7 +7464,6 @@
 /obj/item/device/flashlight/lamp,
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/engineering)
 "As" = (
@@ -8060,7 +7482,6 @@
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/engineering)
 "Ax" = (
@@ -8072,7 +7493,6 @@
 /obj/structure/machinery/light,
 /turf/open/floor/almayer{
 	icon_state = "blue";
-	tag = "icon-blue"
 	},
 /area/adminlevel/chinook/offices)
 "Ay" = (
@@ -8102,7 +7522,6 @@
 /obj/structure/machinery/optable,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/medical)
 "AE" = (
@@ -8149,7 +7568,6 @@
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "red";
-	tag = "icon-red"
 	},
 /area/adminlevel/chinook/event)
 "AJ" = (
@@ -8163,7 +7581,6 @@
 "AL" = (
 /obj/structure/machinery/light{
 	dir = 1;
-	tag = "icon-tube1 (NORTH)"
 	},
 /obj/structure/sign/nosmoking_1{
 	pixel_y = 30
@@ -8171,14 +7588,12 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (NORTHEAST)"
 	},
 /area/adminlevel/chinook/medical)
 "AM" = (
 /obj/structure/surface/rack,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/medical)
 "AP" = (
@@ -8190,14 +7605,12 @@
 	},
 /turf/open/floor/almayer{
 	icon_state = "redfull";
-	tag = "icon-redfull"
 	},
 /area/adminlevel/chinook)
 "AS" = (
 /obj/structure/bed/sofa/south/grey/right,
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/sec)
 "AU" = (
@@ -8213,7 +7626,6 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/engineering)
 "AX" = (
@@ -8221,13 +7633,11 @@
 /obj/effect/spawner/random/tool,
 /turf/open/floor/almayer{
 	icon_state = "cargo";
-	tag = "icon-bluecorner (NORTH)"
 	},
 /area/adminlevel/chinook/cargo)
 "AZ" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
-	tag = "icon-N"
 	},
 /obj/structure/sign/nosmoking_1{
 	pixel_x = -25
@@ -8244,7 +7654,6 @@
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "silver";
-	tag = "icon-silver (NORTH)"
 	},
 /area/adminlevel/chinook)
 "Bc" = (
@@ -8253,7 +7662,6 @@
 "Be" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
-	tag = "icon-N"
 	},
 /turf/open/floor/almayer,
 /area/adminlevel/chinook)
@@ -8309,7 +7717,6 @@
 /turf/open/floor/almayer{
 	dir = 9;
 	icon_state = "orange";
-	tag = "icon-orange (NORTHWEST)"
 	},
 /area/adminlevel/chinook/engineering)
 "Bp" = (
@@ -8331,7 +7738,6 @@
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "orange";
-	tag = "icon-orange (NORTH)"
 	},
 /area/adminlevel/chinook/engineering)
 "Bu" = (
@@ -8358,12 +7764,10 @@
 "By" = (
 /obj/structure/machinery/light{
 	dir = 1;
-	tag = "icon-tube1 (NORTH)"
 	},
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "sterile_green_corner";
-	tag = "icon-sterile_green_corner (NORTH)"
 	},
 /area/adminlevel/chinook/medical)
 "Bz" = (
@@ -8376,7 +7780,6 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "orange";
-	tag = "icon-orange (NORTHEAST)"
 	},
 /area/adminlevel/chinook/engineering)
 "BA" = (
@@ -8385,19 +7788,16 @@
 	},
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_10";
-	tag = "icon-plant-10"
 	},
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "emerald";
-	tag = "icon-emerald (WEST)"
 	},
 /area/adminlevel/chinook/shuttle)
 "BB" = (
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (WEST)"
 	},
 /area/adminlevel/chinook/medical)
 "BC" = (
@@ -8405,13 +7805,11 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/cargo)
 "BE" = (
 /obj/structure/machinery/light{
 	dir = 1;
-	tag = "icon-tube1 (NORTH)"
 	},
 /turf/open/floor/kutjevo/plate,
 /area/adminlevel/chinook/event)
@@ -8419,7 +7817,6 @@
 /obj/structure/machinery/photocopier,
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/engineering)
 "BG" = (
@@ -8429,7 +7826,6 @@
 /turf/open/floor/almayer{
 	dir = 9;
 	icon_state = "orange";
-	tag = "icon-orange (NORTHWEST)"
 	},
 /area/adminlevel/chinook/engineering)
 "BH" = (
@@ -8454,7 +7850,6 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "orange";
-	tag = "icon-orange (NORTHEAST)"
 	},
 /area/adminlevel/chinook/engineering)
 "BN" = (
@@ -8463,7 +7858,6 @@
 	},
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/medical)
 "BO" = (
@@ -8471,7 +7865,6 @@
 /turf/open/floor/almayer{
 	dir = 9;
 	icon_state = "green";
-	tag = "icon-green (NORTHWEST)"
 	},
 /area/adminlevel/chinook/cargo)
 "BP" = (
@@ -8493,7 +7886,6 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/cargo)
 "BV" = (
@@ -8505,12 +7897,10 @@
 "BW" = (
 /obj/structure/machinery/light{
 	dir = 4;
-	tag = "icon-tube1 (EAST)"
 	},
 /turf/open/floor/almayer{
 	dir = 6;
 	icon_state = "red";
-	tag = "icon-red (SOUTHEAST)"
 	},
 /area/adminlevel/chinook/sec)
 "BX" = (
@@ -8529,19 +7919,16 @@
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "orange";
-	tag = "icon-orange (EAST)"
 	},
 /area/adminlevel/chinook/engineering)
 "BZ" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
-	tag = "icon-W"
 	},
 /obj/item/fuelCell,
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "plating_striped";
-	tag = "icon-plating_striped (WEST)"
 	},
 /area/adminlevel/chinook/engineering)
 "Cb" = (
@@ -8562,14 +7949,12 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook)
 "Cf" = (
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "red";
-	tag = "icon-red"
 	},
 /area/adminlevel/chinook/sec)
 "Cg" = (
@@ -8585,7 +7970,6 @@
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "silver";
-	tag = "icon-silver (WEST)"
 	},
 /area/adminlevel/chinook)
 "Ck" = (
@@ -8610,7 +7994,6 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/cargo)
 "Co" = (
@@ -8629,7 +8012,6 @@
 /obj/item/tool/pen,
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/cargo)
 "Ct" = (
@@ -8639,7 +8021,6 @@
 "Cw" = (
 /obj/structure/machinery/light{
 	dir = 4;
-	tag = "icon-tube1 (EAST)"
 	},
 /turf/open/floor/carpet{
 	desc = "Plush, waterproof carpet. Apparently it's fire resistant while remaining quite soft.";
@@ -8650,14 +8031,12 @@
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "emeraldcorner";
-	tag = "icon-emerald (NORTH)"
 	},
 /area/adminlevel/chinook/shuttle)
 "Cz" = (
 /obj/structure/bed/sofa/south/grey,
 /obj/structure/machinery/light{
 	dir = 1;
-	tag = "icon-tube1 (NORTH)"
 	},
 /turf/open/floor/kutjevo/plate,
 /area/adminlevel/chinook)
@@ -8676,7 +8055,6 @@
 /obj/structure/machinery/light,
 /obj/structure/bed/chair/comfy{
 	dir = 1;
-	tag = "icon-comfychair (NORTH)"
 	},
 /turf/open/floor/kutjevo/tan,
 /area/adminlevel/chinook/event)
@@ -8687,19 +8065,16 @@
 "CJ" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
-	tag = "icon-S"
 	},
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/engineering)
 "CK" = (
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "silver";
-	tag = "icon-silver (NORTH)"
 	},
 /area/adminlevel/chinook/cryo)
 "CM" = (
@@ -8709,7 +8084,6 @@
 	},
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_side";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/medical)
 "CN" = (
@@ -8721,7 +8095,6 @@
 "CP" = (
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin8";
-	tag = "icon-rasputin7"
 	},
 /area/adminlevel/chinook/shuttle/unpowered)
 "CQ" = (
@@ -8729,7 +8102,6 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/engineering)
 "CU" = (
@@ -8747,7 +8119,6 @@
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "red";
-	tag = "icon-red"
 	},
 /area/adminlevel/chinook/sec)
 "CX" = (
@@ -8759,7 +8130,6 @@
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook)
 "Da" = (
@@ -8767,7 +8137,6 @@
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "red";
-	tag = "icon-red"
 	},
 /area/adminlevel/chinook/event)
 "Db" = (
@@ -8775,13 +8144,11 @@
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "sterile_green_corner";
-	tag = "icon-sterile_green_corner (NORTH)"
 	},
 /area/adminlevel/chinook/medical)
 "Dc" = (
 /obj/structure/toilet{
 	dir = 4;
-	tag = "icon-toilet00 (WEST)"
 	},
 /turf/open/floor/almayer,
 /area/adminlevel/chinook/cargo)
@@ -8840,14 +8207,12 @@
 /obj/item/weapon/gun/shotgun/combat,
 /turf/open/floor/almayer{
 	icon_state = "cargo";
-	tag = "icon-bluecorner (NORTH)"
 	},
 /area/adminlevel/chinook/sec)
 "Dp" = (
 /obj/structure/machinery/vending/cigarette/colony,
 /obj/structure/machinery/light{
 	dir = 4;
-	tag = "icon-tube1 (EAST)"
 	},
 /turf/open/floor/kutjevo/tan/plate,
 /area/adminlevel/chinook/event)
@@ -8859,12 +8224,10 @@
 /obj/item/reagent_container/ld50_syringe,
 /obj/structure/machinery/light/small{
 	dir = 1;
-	tag = "icon-bulb1 (NORTH)"
 	},
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/sec)
 "Ds" = (
@@ -8911,7 +8274,6 @@
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "emerald";
-	tag = "icon-emerald (WEST)"
 	},
 /area/adminlevel/chinook/shuttle)
 "DD" = (
@@ -8926,7 +8288,6 @@
 "DE" = (
 /obj/structure/bed/chair/comfy{
 	dir = 1;
-	tag = "icon-comfychair (NORTH)"
 	},
 /turf/open/floor/carpet{
 	desc = "Plush, waterproof carpet. Apparently it's fire resistant while remaining quite soft.";
@@ -8936,7 +8297,6 @@
 "DH" = (
 /obj/structure/bed/chair/comfy{
 	dir = 1;
-	tag = "icon-comfychair (NORTH)"
 	},
 /obj/structure/machinery/light{
 	dir = 4
@@ -8958,14 +8318,12 @@
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "orange";
-	tag = "icon-orange (EAST)"
 	},
 /area/adminlevel/chinook/engineering)
 "DO" = (
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/sec)
 "DP" = (
@@ -8981,7 +8339,6 @@
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "orange";
-	tag = "icon-orange (EAST)"
 	},
 /area/adminlevel/chinook/engineering)
 "DT" = (
@@ -8991,7 +8348,6 @@
 	},
 /turf/open/floor/almayer{
 	icon_state = "cargo";
-	tag = "icon-bluecorner (NORTH)"
 	},
 /area/adminlevel/chinook/cryo)
 "DV" = (
@@ -9002,14 +8358,12 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/offices)
 "DY" = (
 /obj/structure/bed/sofa/vert/grey/bot,
 /turf/open/floor/almayer{
 	icon_state = "emeraldfull";
-	tag = "icon-emeraldfull"
 	},
 /area/adminlevel/chinook/shuttle)
 "DZ" = (
@@ -9019,7 +8373,6 @@
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "red";
-	tag = "icon-red (NORTH)"
 	},
 /area/adminlevel/chinook/sec)
 "Ed" = (
@@ -9027,7 +8380,6 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/offices)
 "Eg" = (
@@ -9035,7 +8387,6 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/sec)
 "Eh" = (
@@ -9044,19 +8395,16 @@
 	},
 /obj/structure/machinery/light{
 	dir = 4;
-	tag = "icon-tube1 (EAST)"
 	},
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "red";
-	tag = "icon-red"
 	},
 /area/adminlevel/chinook/sec)
 "Ei" = (
 /obj/structure/filingcabinet,
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/engineering)
 "Ej" = (
@@ -9069,14 +8417,12 @@
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/sec)
 "El" = (
 /obj/structure/bed/chair/dropship/passenger,
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15";
-	tag = "icon-rasputin15"
 	},
 /area/adminlevel/chinook/shuttle/unpowered)
 "En" = (
@@ -9088,7 +8434,6 @@
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (NORTH)"
 	},
 /area/adminlevel/chinook/medical)
 "Eo" = (
@@ -9118,7 +8463,6 @@
 /obj/structure/barricade/handrail,
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook)
 "Ew" = (
@@ -9139,7 +8483,6 @@
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "silver";
-	tag = "icon-silver (WEST)"
 	},
 /area/adminlevel/chinook)
 "EB" = (
@@ -9178,12 +8521,10 @@
 "EM" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_21";
-	tag = "icon-plant-10"
 	},
 /turf/open/floor/almayer{
 	dir = 9;
 	icon_state = "emerald";
-	tag = "icon-emerald (NORTHWEST)"
 	},
 /area/adminlevel/chinook/shuttle)
 "EQ" = (
@@ -9202,7 +8543,6 @@
 /obj/structure/surface/table/reinforced/prison,
 /turf/open/floor/prison{
 	icon_state = "kitchen";
-	tag = "icon-kitchen"
 	},
 /area/space)
 "ET" = (
@@ -9213,7 +8553,6 @@
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "red";
-	tag = "icon-red"
 	},
 /area/adminlevel/chinook/sec)
 "EU" = (
@@ -9227,7 +8566,6 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook)
 "Fb" = (
@@ -9239,7 +8577,6 @@
 "Fc" = (
 /obj/structure/bed/chair/comfy{
 	dir = 1;
-	tag = "icon-comfychair (NORTH)"
 	},
 /turf/open/floor/kutjevo/plate,
 /area/adminlevel/chinook/event)
@@ -9249,20 +8586,17 @@
 	},
 /turf/open/floor/almayer{
 	icon_state = "red";
-	tag = "icon-red"
 	},
 /area/adminlevel/chinook)
 "Ff" = (
 /turf/open/floor/almayer{
 	icon_state = "red";
-	tag = "icon-red"
 	},
 /area/adminlevel/chinook)
 "Fg" = (
 /obj/structure/machinery/light,
 /turf/open/floor/almayer{
 	icon_state = "red";
-	tag = "icon-red"
 	},
 /area/adminlevel/chinook)
 "Fk" = (
@@ -9273,7 +8607,6 @@
 	},
 /turf/open/floor/almayer{
 	icon_state = "red";
-	tag = "icon-red"
 	},
 /area/adminlevel/chinook)
 "Fl" = (
@@ -9281,21 +8614,18 @@
 /obj/item/bedsheet/medical,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/sec)
 "Fm" = (
 /obj/structure/machinery/disposal,
 /turf/open/floor/almayer{
 	icon_state = "red";
-	tag = "icon-red"
 	},
 /area/adminlevel/chinook)
 "Fq" = (
 /obj/structure/surface/table/reinforced/black,
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/offices)
 "Fr" = (
@@ -9310,19 +8640,16 @@
 "Ft" = (
 /obj/structure/machinery/light{
 	dir = 4;
-	tag = "icon-tube1 (EAST)"
 	},
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "silver";
-	tag = "icon-green (EAST)"
 	},
 /area/adminlevel/chinook)
 "Fu" = (
 /obj/structure/closet/toolcloset,
 /turf/open/floor/almayer{
 	icon_state = "cargo";
-	tag = "icon-bluecorner (NORTH)"
 	},
 /area/adminlevel/chinook/engineering)
 "Fv" = (
@@ -9332,7 +8659,6 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/engineering)
 "Fy" = (
@@ -9342,13 +8668,11 @@
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "orange";
-	tag = "icon-orange (EAST)"
 	},
 /area/adminlevel/chinook/engineering)
 "Fz" = (
 /obj/structure/machinery/light{
 	dir = 4;
-	tag = "icon-tube1 (EAST)"
 	},
 /turf/open/floor/carpet{
 	desc = "Plush, waterproof carpet. Apparently it's fire resistant while remaining quite soft.";
@@ -9358,25 +8682,21 @@
 "FB" = (
 /obj/structure/cargo_container{
 	icon_state = "red 2,0";
-	tag = "icon-red 2,0"
 	},
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/cargo)
 "FD" = (
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "emerald";
-	tag = "icon-emerald (NORTH)"
 	},
 /area/adminlevel/chinook/shuttle)
 "FE" = (
 /turf/open/floor/almayer{
 	icon_state = "sterile_green";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/sec)
 "FF" = (
@@ -9386,7 +8706,6 @@
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "red";
-	tag = "icon-red (NORTH)"
 	},
 /area/adminlevel/chinook/sec)
 "FG" = (
@@ -9400,7 +8719,6 @@
 /obj/structure/machinery/cm_vending/sorted/tech/tool_storage,
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/engineering)
 "FL" = (
@@ -9409,7 +8727,6 @@
 	},
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_side";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/medical)
 "FM" = (
@@ -9425,7 +8742,6 @@
 /obj/item/storage/box/ids,
 /turf/open/floor/almayer{
 	icon_state = "cargo";
-	tag = "icon-bluecorner (NORTH)"
 	},
 /area/adminlevel/chinook/sec)
 "FP" = (
@@ -9454,7 +8770,6 @@
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/engineering)
 "FU" = (
@@ -9481,7 +8796,6 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/cargo)
 "FY" = (
@@ -9500,7 +8814,6 @@
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "red";
-	tag = "icon-red (NORTH)"
 	},
 /area/adminlevel/chinook/sec)
 "Ga" = (
@@ -9513,7 +8826,6 @@
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "redcorner";
-	tag = "icon-redcorner (WEST)"
 	},
 /area/adminlevel/chinook/sec)
 "Gf" = (
@@ -9534,7 +8846,6 @@
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "silver";
-	tag = "icon-silver (NORTH)"
 	},
 /area/adminlevel/chinook)
 "Gi" = (
@@ -9547,7 +8858,6 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/engineering)
 "Gk" = (
@@ -9565,7 +8875,6 @@
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "silver";
-	tag = "icon-silver (NORTH)"
 	},
 /area/adminlevel/chinook)
 "Go" = (
@@ -9578,7 +8887,6 @@
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "silver";
-	tag = "icon-silver (NORTH)"
 	},
 /area/adminlevel/chinook)
 "Gt" = (
@@ -9588,18 +8896,15 @@
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "silver";
-	tag = "icon-silver (NORTH)"
 	},
 /area/adminlevel/chinook)
 "Gu" = (
 /obj/structure/cargo_container{
 	icon_state = "WY 1,0";
-	tag = "icon-WY 1,0"
 	},
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/cargo)
 "Gv" = (
@@ -9612,19 +8917,16 @@
 /obj/item/device/binoculars,
 /obj/structure/machinery/light{
 	dir = 4;
-	tag = "icon-tube1 (EAST)"
 	},
 /turf/open/floor/kutjevo/plate,
 /area/adminlevel/chinook/event)
 "Gw" = (
 /obj/structure/machinery/light{
 	dir = 1;
-	tag = "icon-tube1 (NORTH)"
 	},
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "red";
-	tag = "icon-red (NORTH)"
 	},
 /area/adminlevel/chinook)
 "Gx" = (
@@ -9632,24 +8934,20 @@
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "red";
-	tag = "icon-red"
 	},
 /area/adminlevel/chinook/sec)
 "Gz" = (
 /obj/structure/machinery/light{
 	dir = 8;
-	tag = "icon-tube1 (EAST)"
 	},
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/cargo)
 "GA" = (
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/sec)
 "GB" = (
@@ -9659,7 +8957,6 @@
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "sterile_green_corner";
-	tag = "icon-sterile_green_corner (WEST)"
 	},
 /area/adminlevel/chinook/medical)
 "GC" = (
@@ -9672,7 +8969,6 @@
 /obj/structure/machinery/door/airlock/almayer/generic,
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin3";
-	tag = "icon-rasputin3"
 	},
 /area/adminlevel/chinook/shuttle/unpowered)
 "GF" = (
@@ -9682,7 +8978,6 @@
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "silver";
-	tag = "icon-silver (NORTH)"
 	},
 /area/adminlevel/chinook)
 "GG" = (
@@ -9702,18 +8997,15 @@
 /obj/structure/machinery/vending/snack,
 /obj/structure/machinery/light{
 	dir = 1;
-	tag = "icon-tube1 (NORTH)"
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/offices)
 "GJ" = (
 /obj/structure/machinery/vending/coffee,
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/offices)
 "GK" = (
@@ -9732,7 +9024,6 @@
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "orange";
-	tag = "icon-orange (EAST)"
 	},
 /area/adminlevel/chinook/engineering)
 "GM" = (
@@ -9741,7 +9032,6 @@
 /obj/effect/spawner/random/tool,
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/engineering)
 "GN" = (
@@ -9754,7 +9044,6 @@
 /turf/open/floor/almayer{
 	dir = 10;
 	icon_state = "orange";
-	tag = "icon-orange (SOUTHWEST)"
 	},
 /area/adminlevel/chinook/engineering)
 "GQ" = (
@@ -9762,7 +9051,6 @@
 /turf/open/floor/almayer{
 	dir = 6;
 	icon_state = "orange";
-	tag = "icon-orange (SOUTHEAST)"
 	},
 /area/adminlevel/chinook/engineering)
 "GR" = (
@@ -9770,7 +9058,6 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/sec)
 "GS" = (
@@ -9780,7 +9067,6 @@
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "orange";
-	tag = "icon-orange (EAST)"
 	},
 /area/adminlevel/chinook/engineering)
 "GT" = (
@@ -9801,7 +9087,6 @@
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (NORTH)"
 	},
 /area/adminlevel/chinook/medical)
 "GV" = (
@@ -9810,7 +9095,6 @@
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook)
 "GW" = (
@@ -9818,7 +9102,6 @@
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "orange";
-	tag = "icon-orange (EAST)"
 	},
 /area/adminlevel/chinook/engineering)
 "GX" = (
@@ -9836,7 +9119,6 @@
 	},
 /turf/open/floor/almayer{
 	icon_state = "silver";
-	tag = "icon-silver"
 	},
 /area/adminlevel/chinook)
 "Ha" = (
@@ -9848,7 +9130,6 @@
 /turf/open/floor/almayer{
 	dir = 10;
 	icon_state = "orange";
-	tag = "icon-orange (SOUTHWEST)"
 	},
 /area/adminlevel/chinook/engineering)
 "Hf" = (
@@ -9874,7 +9155,6 @@
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
-	tag = "icon-W"
 	},
 /turf/open/floor/almayer,
 /area/adminlevel/chinook/engineering)
@@ -9884,7 +9164,6 @@
 /obj/item/device/lightreplacer,
 /turf/open/floor/almayer{
 	icon_state = "orange";
-	tag = "icon-orange (NORTH)"
 	},
 /area/adminlevel/chinook/engineering)
 "Hj" = (
@@ -9892,7 +9171,6 @@
 /obj/effect/spawner/random/tool,
 /turf/open/floor/almayer{
 	icon_state = "orange";
-	tag = "icon-orange (NORTH)"
 	},
 /area/adminlevel/chinook/engineering)
 "Hl" = (
@@ -9900,17 +9178,14 @@
 /turf/open/floor/almayer{
 	dir = 9;
 	icon_state = "orange";
-	tag = "icon-orange (NORTHWEST)"
 	},
 /area/adminlevel/chinook/engineering)
 "Hm" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
-	tag = "icon-W"
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/engineering)
 "Hn" = (
@@ -9918,20 +9193,17 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/engineering)
 "Ho" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "NE-out";
-	tag = "icon-NE-out"
 	},
 /turf/open/floor/almayer,
 /area/adminlevel/chinook)
 "Hp" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "NW-out";
-	tag = "icon-NW-out"
 	},
 /turf/open/floor/almayer,
 /area/adminlevel/chinook)
@@ -9940,7 +9212,6 @@
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "green";
-	tag = "icon-green (NORTH)"
 	},
 /area/adminlevel/chinook/cargo)
 "Hs" = (
@@ -9971,7 +9242,6 @@
 "Hy" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
-	tag = "icon-W"
 	},
 /obj/item/tool/weldingtool/largetank{
 	pixel_x = 14;
@@ -9980,7 +9250,6 @@
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "plating_striped";
-	tag = "icon-plating_striped (WEST)"
 	},
 /area/adminlevel/chinook/engineering)
 "Hz" = (
@@ -10000,7 +9269,6 @@
 /obj/structure/machinery/vending/coffee,
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook)
 "HG" = (
@@ -10029,7 +9297,6 @@
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "red";
-	tag = "icon-red"
 	},
 /area/adminlevel/chinook/sec)
 "HN" = (
@@ -10051,14 +9318,12 @@
 /turf/open/floor/almayer{
 	dir = 6;
 	icon_state = "silver";
-	tag = "icon-silver (WEST)"
 	},
 /area/adminlevel/chinook)
 "HP" = (
 /obj/structure/machinery/vending/snack,
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/engineering)
 "HQ" = (
@@ -10073,7 +9338,6 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/cargo)
 "HR" = (
@@ -10081,7 +9345,6 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/cargo)
 "HU" = (
@@ -10094,7 +9357,6 @@
 	},
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_side";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/medical)
 "HV" = (
@@ -10104,14 +9366,12 @@
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/engineering)
 "HW" = (
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "orange";
-	tag = "icon-orange (WEST)"
 	},
 /area/adminlevel/chinook/engineering)
 "HX" = (
@@ -10123,7 +9383,6 @@
 "HY" = (
 /obj/structure/bed/chair{
 	dir = 1;
-	tag = "icon-chair (NORTH)"
 	},
 /turf/open/floor/almayer,
 /area/adminlevel/chinook/sec)
@@ -10138,7 +9397,6 @@
 /turf/open/floor/almayer{
 	dir = 6;
 	icon_state = "red";
-	tag = "icon-red"
 	},
 /area/adminlevel/chinook/sec)
 "Ie" = (
@@ -10159,13 +9417,11 @@
 /obj/structure/machinery/disposal,
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/cargo)
 "Ij" = (
 /obj/structure/bed/chair{
 	dir = 4;
-	tag = "icon-chair (EAST)"
 	},
 /turf/open/floor/almayer,
 /area/adminlevel/chinook/sec)
@@ -10176,7 +9432,6 @@
 	},
 /obj/structure/machinery/light{
 	dir = 1;
-	tag = "icon-tube1 (NORTH)"
 	},
 /turf/open/floor/almayer,
 /area/adminlevel/chinook/sec)
@@ -10187,7 +9442,6 @@
 "Io" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
-	tag = "icon-E"
 	},
 /obj/structure/machinery/door_control{
 	id = "chinookarmory3";
@@ -10197,7 +9451,6 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/sec)
 "Ip" = (
@@ -10215,13 +9468,11 @@
 /obj/structure/machinery/light,
 /turf/open/floor/almayer{
 	icon_state = "red";
-	tag = "icon-red"
 	},
 /area/adminlevel/chinook/sec)
 "Ir" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
-	tag = "icon-E"
 	},
 /turf/open/floor/almayer,
 /area/adminlevel/chinook)
@@ -10240,7 +9491,6 @@
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook)
 "Iv" = (
@@ -10252,7 +9502,6 @@
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook)
 "Ix" = (
@@ -10277,7 +9526,6 @@
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "red";
-	tag = "icon-red"
 	},
 /area/adminlevel/chinook/event)
 "IE" = (
@@ -10292,7 +9540,6 @@
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (NORTH)"
 	},
 /area/adminlevel/chinook/medical)
 "IJ" = (
@@ -10303,7 +9550,6 @@
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "orange";
-	tag = "icon-orange (EAST)"
 	},
 /area/adminlevel/chinook/engineering)
 "IK" = (
@@ -10315,7 +9561,6 @@
 /obj/structure/bed/chair/comfy{
 	dir = 1;
 	name = "witness chair";
-	tag = "icon-comfychair (NORTH)"
 	},
 /turf/open/floor/carpet{
 	desc = "Plush, waterproof carpet. Apparently it's fire resistant while remaining quite soft.";
@@ -10342,7 +9587,6 @@
 /turf/open/floor/almayer{
 	dir = 10;
 	icon_state = "silver";
-	tag = "icon-silver (SOUTHWEST)"
 	},
 /area/adminlevel/chinook)
 "IS" = (
@@ -10365,30 +9609,25 @@
 "IW" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
-	tag = "icon-E"
 	},
 /turf/open/floor/almayer{
 	dir = 6;
 	icon_state = "emerald";
-	tag = "icon-emerald (SOUTHEAST)"
 	},
 /area/adminlevel/chinook/shuttle)
 "IX" = (
 /obj/structure/machinery/light{
 	dir = 1;
-	tag = "icon-tube1 (NORTH)"
 	},
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/sec)
 "Jc" = (
 /turf/open/floor/almayer_hull{
 	dir = 9;
 	icon_state = "outerhull_dir";
-	tag = "icon-outerhull_dir (NORTHWEST)"
 	},
 /area/space)
 "Jd" = (
@@ -10410,14 +9649,12 @@
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "silver";
-	tag = "icon-silver (WEST)"
 	},
 /area/adminlevel/chinook)
 "Jg" = (
 /obj/structure/bed/stool,
 /obj/structure/machinery/light/small{
 	dir = 1;
-	tag = "icon-bulb1 (NORTH)"
 	},
 /obj/structure/sign/poster{
 	pixel_y = 32
@@ -10425,18 +9662,15 @@
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "blue";
-	tag = "icon-blue (NORTH)"
 	},
 /area/adminlevel/chinook)
 "Jl" = (
 /obj/structure/cargo_container{
 	icon_state = "red 0,0";
-	tag = "icon-red 0,0"
 	},
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/cargo)
 "Jm" = (
@@ -10447,12 +9681,10 @@
 /obj/structure/bed/stool,
 /obj/structure/machinery/light/small{
 	dir = 1;
-	tag = "icon-bulb1 (NORTH)"
 	},
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "red";
-	tag = "icon-red (NORTH)"
 	},
 /area/adminlevel/chinook)
 "Jr" = (
@@ -10470,7 +9702,6 @@
 /turf/open/floor/almayer{
 	dir = 9;
 	icon_state = "red";
-	tag = "icon-red"
 	},
 /area/adminlevel/chinook/sec)
 "Ju" = (
@@ -10479,7 +9710,6 @@
 	},
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_side";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/offices)
 "Jx" = (
@@ -10487,7 +9717,6 @@
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "red";
-	tag = "icon-red (NORTH)"
 	},
 /area/adminlevel/chinook/sec)
 "Jy" = (
@@ -10495,7 +9724,6 @@
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "sterile_green_corner";
-	tag = "icon-sterile_green_corner (NORTH)"
 	},
 /area/adminlevel/chinook/medical)
 "Jz" = (
@@ -10513,7 +9741,6 @@
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "blue";
-	tag = "icon-blue (NORTH)"
 	},
 /area/adminlevel/chinook/offices)
 "JB" = (
@@ -10523,7 +9750,6 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/cargo)
 "JG" = (
@@ -10547,7 +9773,6 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "red";
-	tag = "icon-red"
 	},
 /area/adminlevel/chinook/sec)
 "JK" = (
@@ -10562,7 +9787,6 @@
 	},
 /turf/open/floor/almayer{
 	icon_state = "cargo";
-	tag = "icon-bluecorner (NORTH)"
 	},
 /area/adminlevel/chinook/sec)
 "JR" = (
@@ -10573,24 +9797,20 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/engineering)
 "JV" = (
 /obj/structure/surface/rack,
 /turf/open/floor/almayer{
 	icon_state = "cargo";
-	tag = "icon-bluecorner (NORTH)"
 	},
 /area/adminlevel/chinook/sec)
 "JW" = (
 /obj/structure/toilet{
 	dir = 4;
-	tag = "icon-toilet00 (WEST)"
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/sec)
 "JX" = (
@@ -10602,7 +9822,6 @@
 /obj/structure/closet/emcloset,
 /turf/open/floor/almayer{
 	icon_state = "cargo";
-	tag = "icon-bluecorner (NORTH)"
 	},
 /area/adminlevel/chinook)
 "Kd" = (
@@ -10625,12 +9844,10 @@
 "Kl" = (
 /obj/structure/platform_decoration{
 	dir = 1;
-	tag = "icon-platform_deco (NORTH)"
 	},
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/engineering)
 "Km" = (
@@ -10639,13 +9856,11 @@
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (EAST)"
 	},
 /area/adminlevel/chinook/sec)
 "Kn" = (
 /obj/structure/machinery/light{
 	dir = 1;
-	tag = "icon-tube1 (NORTH)"
 	},
 /obj/structure/machinery/disposal,
 /turf/open/floor/almayer,
@@ -10662,13 +9877,11 @@
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (WEST)"
 	},
 /area/adminlevel/chinook/medical)
 "Kq" = (
 /turf/open/floor/almayer{
 	icon_state = "cargo";
-	tag = "icon-bluecorner (NORTH)"
 	},
 /area/adminlevel/chinook/sec)
 "Ks" = (
@@ -10686,7 +9899,6 @@
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "silver";
-	tag = "icon-silver (WEST)"
 	},
 /area/adminlevel/chinook)
 "Ku" = (
@@ -10702,14 +9914,12 @@
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (WEST)"
 	},
 /area/adminlevel/chinook/medical)
 "Kw" = (
 /obj/structure/machinery/floodlight,
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/engineering)
 "Kx" = (
@@ -10737,17 +9947,14 @@
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "orange";
-	tag = "icon-orange (WEST)"
 	},
 /area/adminlevel/chinook/engineering)
 "Kz" = (
 /obj/structure/toilet{
 	dir = 8;
-	tag = "icon-toilet00 (WEST)"
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/sec)
 "KD" = (
@@ -10759,7 +9966,6 @@
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "sterile_green_corner";
-	tag = "icon-sterile_green_corner (EAST)"
 	},
 /area/adminlevel/chinook/medical)
 "KJ" = (
@@ -10769,7 +9975,6 @@
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook)
 "KK" = (
@@ -10780,11 +9985,9 @@
 	},
 /obj/structure/platform_decoration{
 	dir = 1;
-	tag = "icon-platform_deco (NORTH)"
 	},
 /turf/open/floor/almayer{
 	icon_state = "cargo";
-	tag = "icon-bluecorner (NORTH)"
 	},
 /area/adminlevel/chinook/cargo)
 "KL" = (
@@ -10794,17 +9997,14 @@
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "red";
-	tag = "icon-red"
 	},
 /area/adminlevel/chinook/sec)
 "KM" = (
 /obj/structure/machinery/light{
 	dir = 8;
-	tag = "icon-tube1 (EAST)"
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook)
 "KN" = (
@@ -10815,7 +10015,6 @@
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (WEST)"
 	},
 /area/adminlevel/chinook/medical)
 "KO" = (
@@ -10825,14 +10024,12 @@
 /obj/structure/machinery/light,
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook)
 "KP" = (
 /obj/structure/bed/chair,
 /obj/structure/machinery/light{
 	dir = 1;
-	tag = "icon-tube1 (NORTH)"
 	},
 /turf/open/floor/almayer,
 /area/adminlevel/chinook/cargo)
@@ -10840,21 +10037,18 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "silver";
-	tag = "icon-silver (NORTHEAST)"
 	},
 /area/adminlevel/chinook)
 "KW" = (
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "green";
-	tag = "icon-green (EAST)"
 	},
 /area/adminlevel/chinook/cargo)
 "KY" = (
 /obj/structure/machinery/light,
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook)
 "KZ" = (
@@ -10869,7 +10063,6 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/sec)
 "La" = (
@@ -10880,13 +10073,11 @@
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/engineering)
 "Lc" = (
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/engineering)
 "Ld" = (
@@ -10900,18 +10091,15 @@
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/engineering)
 "Le" = (
 /obj/structure/machinery/light{
 	dir = 4;
-	tag = "icon-tube1 (EAST)"
 	},
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/sec)
 "Lf" = (
@@ -10923,7 +10111,6 @@
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/engineering)
 "Li" = (
@@ -10933,18 +10120,15 @@
 /obj/structure/machinery/cm_vending/sorted/medical,
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/sec)
 "Lk" = (
 /obj/structure/machinery/vending/cola,
 /obj/structure/machinery/light{
 	dir = 1;
-	tag = "icon-tube1 (NORTH)"
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/sec)
 "Ll" = (
@@ -10965,7 +10149,6 @@
 "Ln" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_22";
-	tag = "icon-plant-10"
 	},
 /turf/open/floor/kutjevo/plate,
 /area/adminlevel/chinook)
@@ -10973,14 +10156,12 @@
 /obj/structure/machinery/vending/coffee,
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/engineering)
 "Ls" = (
 /obj/structure/machinery/iv_drip,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_corner";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/medical)
 "Lu" = (
@@ -10992,7 +10173,6 @@
 "Lv" = (
 /obj/structure/bed/chair{
 	dir = 1;
-	tag = "icon-chair (NORTH)"
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/chinook/engineering)
@@ -11008,7 +10188,6 @@
 "Ly" = (
 /obj/structure/machinery/light{
 	dir = 1;
-	tag = "icon-tube1 (NORTH)"
 	},
 /obj/structure/surface/table/reinforced/black,
 /obj/item/storage/fancy/cigar,
@@ -11039,7 +10218,6 @@
 /turf/open/floor/almayer{
 	dir = 10;
 	icon_state = "red";
-	tag = "icon-red"
 	},
 /area/adminlevel/chinook/sec)
 "LD" = (
@@ -11083,19 +10261,16 @@
 /obj/structure/machinery/computer/telecomms/server,
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/engineering)
 "LI" = (
 /obj/structure/machinery/light{
 	dir = 4;
-	tag = "icon-tube1 (EAST)"
 	},
 /obj/structure/machinery/cm_vending/sorted/marine_food,
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "orange";
-	tag = "icon-orange (EAST)"
 	},
 /area/adminlevel/chinook/engineering)
 "LK" = (
@@ -11103,18 +10278,15 @@
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (EAST)"
 	},
 /area/adminlevel/chinook/medical)
 "LN" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_22";
-	tag = "icon-plant-10"
 	},
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook)
 "LP" = (
@@ -11123,11 +10295,9 @@
 	},
 /obj/structure/machinery/light{
 	dir = 1;
-	tag = "icon-tube1 (NORTH)"
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook)
 "LQ" = (
@@ -11136,7 +10306,6 @@
 /obj/item/storage/backpack/marine,
 /turf/open/floor/almayer{
 	icon_state = "cargo";
-	tag = "icon-bluecorner (NORTH)"
 	},
 /area/adminlevel/chinook/cargo)
 "LR" = (
@@ -11159,18 +10328,15 @@
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "red";
-	tag = "icon-red"
 	},
 /area/adminlevel/chinook/event)
 "LU" = (
 /obj/structure/machinery/light{
 	dir = 4;
-	tag = "icon-tube1 (EAST)"
 	},
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "red";
-	tag = "icon-red (EAST)"
 	},
 /area/adminlevel/chinook)
 "LV" = (
@@ -11186,7 +10352,6 @@
 /obj/structure/machinery/computer/card,
 /obj/structure/machinery/light{
 	dir = 1;
-	tag = "icon-tube1 (NORTH)"
 	},
 /obj/structure/surface/table/reinforced/black,
 /turf/open/floor/carpet{
@@ -11197,11 +10362,9 @@
 "Mf" = (
 /obj/structure/machinery/light{
 	dir = 8;
-	tag = "icon-tube1 (EAST)"
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/engineering)
 "Mg" = (
@@ -11212,25 +10375,21 @@
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "red";
-	tag = "icon-red"
 	},
 /area/adminlevel/chinook/sec)
 "Mh" = (
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "red";
-	tag = "icon-red (EAST)"
 	},
 /area/adminlevel/chinook/sec)
 "Mi" = (
 /obj/structure/machinery/light{
 	dir = 4;
-	tag = "icon-tube1 (EAST)"
 	},
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (EAST)"
 	},
 /area/adminlevel/chinook/medical)
 "Mj" = (
@@ -11239,18 +10398,15 @@
 	},
 /obj/structure/bed/chair/comfy{
 	dir = 1;
-	tag = "icon-comfychair (NORTH)"
 	},
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook)
 "Ml" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
-	tag = "icon-S"
 	},
 /turf/open/floor/almayer,
 /area/adminlevel/chinook)
@@ -11258,7 +10414,6 @@
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "orange";
-	tag = "icon-orange (EAST)"
 	},
 /area/adminlevel/chinook/engineering)
 "Mp" = (
@@ -11273,7 +10428,6 @@
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (WEST)"
 	},
 /area/adminlevel/chinook/medical)
 "Mr" = (
@@ -11316,7 +10470,6 @@
 	},
 /turf/open/floor/almayer{
 	icon_state = "red";
-	tag = "icon-red"
 	},
 /area/adminlevel/chinook/sec)
 "Mx" = (
@@ -11341,7 +10494,6 @@
 /turf/open/floor/almayer{
 	dir = 10;
 	icon_state = "red";
-	tag = "icon-red"
 	},
 /area/adminlevel/chinook/sec)
 "MA" = (
@@ -11355,7 +10507,6 @@
 /obj/effect/decal/cleanable/blood/oil,
 /obj/structure/machinery/light{
 	dir = 1;
-	tag = "icon-tube1 (NORTH)"
 	},
 /turf/open/floor/almayer,
 /area/adminlevel/chinook/cargo)
@@ -11365,18 +10516,15 @@
 	},
 /turf/open/floor/almayer{
 	icon_state = "red";
-	tag = "icon-red"
 	},
 /area/adminlevel/chinook/sec)
 "MD" = (
 /obj/structure/platform_decoration{
 	dir = 8;
-	tag = "icon-platform_deco (EAST)"
 	},
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/engineering)
 "MG" = (
@@ -11384,14 +10532,12 @@
 /obj/effect/spawner/random/tool,
 /turf/open/floor/almayer{
 	icon_state = "cargo";
-	tag = "icon-bluecorner (NORTH)"
 	},
 /area/adminlevel/chinook/sec)
 "MH" = (
 /obj/structure/reagent_dispensers/fueltank,
 /turf/open/floor/almayer{
 	icon_state = "cargo";
-	tag = "icon-bluecorner (NORTH)"
 	},
 /area/adminlevel/chinook/sec)
 "MI" = (
@@ -11402,7 +10548,6 @@
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "emerald";
-	tag = "icon-emerald (WEST)"
 	},
 /area/adminlevel/chinook/shuttle)
 "MK" = (
@@ -11410,7 +10555,6 @@
 /obj/item/storage/toolbox/mechanical,
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/sec)
 "ML" = (
@@ -11434,7 +10578,6 @@
 /obj/structure/machinery/iv_drip,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_side";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/medical)
 "MR" = (
@@ -11443,7 +10586,6 @@
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/engineering)
 "MS" = (
@@ -11452,7 +10594,6 @@
 /obj/item/reagent_container/glass/bucket/mopbucket,
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/engineering)
 "MT" = (
@@ -11469,7 +10610,6 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/sec)
 "MX" = (
@@ -11477,7 +10617,6 @@
 /obj/structure/machinery/light,
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/engineering)
 "Nc" = (
@@ -11485,14 +10624,12 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/cargo)
 "Ne" = (
 /obj/structure/bed/chair/comfy/black,
 /turf/open/floor/almayer{
 	icon_state = "red";
-	tag = "icon-red"
 	},
 /area/adminlevel/chinook/sec)
 "Nf" = (
@@ -11501,7 +10638,6 @@
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook)
 "Ng" = (
@@ -11520,7 +10656,6 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/offices)
 "Nl" = (
@@ -11534,7 +10669,6 @@
 /turf/open/floor/almayer{
 	dir = 10;
 	icon_state = "green";
-	tag = "icon-green (SOUTHEAST)"
 	},
 /area/adminlevel/chinook/cargo)
 "Nn" = (
@@ -11544,7 +10678,6 @@
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "silver";
-	tag = "icon-silver (NORTH)"
 	},
 /area/adminlevel/chinook)
 "No" = (
@@ -11559,12 +10692,10 @@
 /obj/structure/cargo_container{
 	icon_state = "green 2,0";
 	indestructible = 1;
-	tag = "icon-green 2,0"
 	},
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/cargo)
 "Nq" = (
@@ -11575,20 +10706,17 @@
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "orange";
-	tag = "icon-orange (WEST)"
 	},
 /area/adminlevel/chinook/engineering)
 "Nr" = (
 /obj/structure/bed/chair{
 	dir = 1;
-	tag = "icon-chair (NORTH)"
 	},
 /turf/open/floor/almayer,
 /area/adminlevel/chinook/engineering)
 "Ns" = (
 /obj/structure/bed/chair/comfy{
 	dir = 1;
-	tag = "icon-comfychair (NORTH)"
 	},
 /turf/open/floor/strata{
 	desc = "Faux wooden floor boards, certified fire resistant. Begrudgingly put in place of actual wood due to concerns about 'fire safety'. Whatever that means.";
@@ -11602,21 +10730,18 @@
 /obj/item/stack/sheet/metal/medium_stack,
 /turf/open/floor/almayer{
 	icon_state = "cargo";
-	tag = "icon-bluecorner (NORTH)"
 	},
 /area/adminlevel/chinook/cargo)
 "Nu" = (
 /obj/structure/surface/table/almayer,
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook)
 "Nv" = (
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "orangecorner";
-	tag = "icon-orangecorner (EAST)"
 	},
 /area/adminlevel/chinook/engineering)
 "Nw" = (
@@ -11639,19 +10764,16 @@
 "Ny" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_22";
-	tag = "icon-plant-10"
 	},
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "blue";
-	tag = "icon-blue (NORTH)"
 	},
 /area/adminlevel/chinook/offices)
 "Nz" = (
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "silver";
-	tag = "icon-silver (NORTHEAST)"
 	},
 /area/adminlevel/chinook/cryo)
 "NA" = (
@@ -11659,7 +10781,6 @@
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "orange";
-	tag = "icon-orange (WEST)"
 	},
 /area/adminlevel/chinook/engineering)
 "NC" = (
@@ -11667,7 +10788,6 @@
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (WEST)"
 	},
 /area/adminlevel/chinook/medical)
 "ND" = (
@@ -11693,7 +10813,6 @@
 	},
 /turf/open/floor/almayer{
 	icon_state = "sterile_green";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/medical)
 "NJ" = (
@@ -11713,7 +10832,6 @@
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "red";
-	tag = "icon-red (EAST)"
 	},
 /area/adminlevel/chinook)
 "NP" = (
@@ -11738,17 +10856,14 @@
 /obj/structure/machinery/chem_storage/misc,
 /obj/structure/machinery/light{
 	dir = 1;
-	tag = "icon-tube1 (NORTH)"
 	},
 /turf/open/floor/almayer{
 	icon_state = "sterile_green";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/medical)
 "NU" = (
 /obj/structure/machinery/light{
 	dir = 1;
-	tag = "icon-tube1 (WEST)"
 	},
 /turf/open/floor/kutjevo/plate,
 /area/adminlevel/chinook/event)
@@ -11761,7 +10876,6 @@
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "red";
-	tag = "icon-red"
 	},
 /area/adminlevel/chinook/sec)
 "Ob" = (
@@ -11776,7 +10890,6 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/sec)
 "Od" = (
@@ -11793,7 +10906,6 @@
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (EAST)"
 	},
 /area/adminlevel/chinook/medical)
 "Oe" = (
@@ -11810,7 +10922,6 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/sec)
 "Og" = (
@@ -11818,17 +10929,14 @@
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "red";
-	tag = "icon-red (EAST)"
 	},
 /area/adminlevel/chinook/sec)
 "Oi" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
-	tag = "icon-S"
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/sec)
 "Oj" = (
@@ -11839,7 +10947,6 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/cargo)
 "On" = (
@@ -11849,13 +10956,11 @@
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (WEST)"
 	},
 /area/adminlevel/chinook/medical)
 "Oq" = (
 /obj/structure/bed/chair{
 	dir = 4;
-	tag = "icon-chair (EAST)"
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/chinook/sec)
@@ -11870,7 +10975,6 @@
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/sec)
 "Ot" = (
@@ -11878,7 +10982,6 @@
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (WEST)"
 	},
 /area/adminlevel/chinook/medical)
 "Ou" = (
@@ -11886,7 +10989,6 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook)
 "Ow" = (
@@ -11906,7 +11008,6 @@
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/event)
 "Oz" = (
@@ -11915,7 +11016,6 @@
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (EAST)"
 	},
 /area/adminlevel/chinook/medical)
 "OA" = (
@@ -11929,7 +11029,6 @@
 /obj/structure/machinery/cryopod,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_corner";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/medical)
 "OD" = (
@@ -11944,19 +11043,16 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/cargo)
 "OE" = (
 /obj/structure/machinery/vending/coffee,
 /obj/structure/machinery/light{
 	dir = 1;
-	tag = "icon-tube1 (NORTH)"
 	},
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook)
 "OF" = (
@@ -11964,7 +11060,6 @@
 /turf/open/floor/almayer{
 	dir = 9;
 	icon_state = "green";
-	tag = "icon-green (NORTHWEST)"
 	},
 /area/adminlevel/chinook)
 "OG" = (
@@ -11972,7 +11067,6 @@
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "green";
-	tag = "icon-green (NORTH)"
 	},
 /area/adminlevel/chinook)
 "OH" = (
@@ -11983,7 +11077,6 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/cargo)
 "OL" = (
@@ -11991,12 +11084,10 @@
 /obj/item/reagent_container/glass/bucket,
 /obj/structure/machinery/light{
 	dir = 1;
-	tag = "icon-tube1 (NORTH)"
 	},
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "green";
-	tag = "icon-green (NORTH)"
 	},
 /area/adminlevel/chinook)
 "OM" = (
@@ -12004,7 +11095,6 @@
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "green";
-	tag = "icon-green (NORTH)"
 	},
 /area/adminlevel/chinook)
 "ON" = (
@@ -12014,7 +11104,6 @@
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "green";
-	tag = "icon-green (NORTH)"
 	},
 /area/adminlevel/chinook)
 "OP" = (
@@ -12024,14 +11113,12 @@
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "silver";
-	tag = "icon-silver (NORTH)"
 	},
 /area/adminlevel/chinook)
 "OR" = (
 /obj/structure/machinery/vending/snack,
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/offices)
 "OS" = (
@@ -12044,7 +11131,6 @@
 	},
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15";
-	tag = "icon-rasputin15"
 	},
 /area/adminlevel/chinook/shuttle/unpowered)
 "OU" = (
@@ -12054,7 +11140,6 @@
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "silver";
-	tag = "icon-silver (WEST)"
 	},
 /area/adminlevel/chinook)
 "OV" = (
@@ -12071,7 +11156,6 @@
 "OW" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
-	tag = "icon-W"
 	},
 /turf/open/floor/almayer,
 /area/adminlevel/chinook)
@@ -12085,7 +11169,6 @@
 	},
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/medical)
 "OY" = (
@@ -12102,7 +11185,6 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/engineering)
 "Pa" = (
@@ -12113,7 +11195,6 @@
 /obj/structure/machinery/vending/coffee,
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/sec)
 "Pc" = (
@@ -12128,7 +11209,6 @@
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "red";
-	tag = "icon-red (NORTH)"
 	},
 /area/adminlevel/chinook/sec)
 "Pf" = (
@@ -12141,23 +11221,19 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "green";
-	tag = "icon-green (NORTHEAST)"
 	},
 /area/adminlevel/chinook)
 "Pi" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_22";
-	tag = "icon-plant-10"
 	},
 /turf/open/floor/almayer{
 	icon_state = "blue";
-	tag = "icon-blue"
 	},
 /area/adminlevel/chinook/offices)
 "Pj" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
-	tag = "icon-SW-out"
 	},
 /turf/open/floor/almayer,
 /area/adminlevel/chinook)
@@ -12184,21 +11260,18 @@
 /obj/item/trash/uscm_mre,
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/engineering)
 "Pp" = (
 /obj/item/reagent_container/glass/bucket/janibucket,
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/engineering)
 "Pq" = (
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "orangecorner";
-	tag = "icon-orangecorner (WEST)"
 	},
 /area/adminlevel/chinook/engineering)
 "Pr" = (
@@ -12218,14 +11291,12 @@
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "red";
-	tag = "icon-red"
 	},
 /area/adminlevel/chinook/sec)
 "Pu" = (
 /obj/structure/surface/table/almayer,
 /turf/open/floor/almayer{
 	icon_state = "orange";
-	tag = "icon-orange (NORTH)"
 	},
 /area/adminlevel/chinook/engineering)
 "Pv" = (
@@ -12234,7 +11305,6 @@
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "red";
-	tag = "icon-red (EAST)"
 	},
 /area/adminlevel/chinook/sec)
 "Pw" = (
@@ -12246,7 +11316,6 @@
 "Pz" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_22";
-	tag = "icon-plant-10"
 	},
 /turf/open/floor/almayer,
 /area/adminlevel/chinook/sec)
@@ -12261,7 +11330,6 @@
 /obj/item/weapon/gun/rifle/mar40,
 /turf/open/floor/almayer{
 	icon_state = "cargo";
-	tag = "icon-bluecorner (NORTH)"
 	},
 /area/adminlevel/chinook/sec)
 "PB" = (
@@ -12278,11 +11346,9 @@
 	},
 /obj/structure/machinery/light{
 	dir = 4;
-	tag = "icon-tube1 (EAST)"
 	},
 /turf/open/floor/almayer{
 	icon_state = "cargo";
-	tag = "icon-bluecorner (NORTH)"
 	},
 /area/adminlevel/chinook/sec)
 "PE" = (
@@ -12296,14 +11362,12 @@
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/sec)
 "PG" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/sec)
 "PI" = (
@@ -12312,7 +11376,6 @@
 	},
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/sec)
 "PK" = (
@@ -12321,7 +11384,6 @@
 /obj/item/reagent_container/glass/bucket/mopbucket,
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/sec)
 "PL" = (
@@ -12333,14 +11395,12 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/shuttle/unpowered)
 "PM" = (
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "green";
-	tag = "icon-green (WEST)"
 	},
 /area/adminlevel/chinook)
 "PO" = (
@@ -12350,13 +11410,11 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/engineering)
 "PP" = (
 /turf/open/floor/almayer{
 	icon_state = "green";
-	tag = "icon-green"
 	},
 /area/adminlevel/chinook)
 "PR" = (
@@ -12373,7 +11431,6 @@
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "green";
-	tag = "icon-green (EAST)"
 	},
 /area/adminlevel/chinook)
 "PU" = (
@@ -12404,7 +11461,6 @@
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/engineering)
 "PZ" = (
@@ -12415,7 +11471,6 @@
 /obj/item/tool/pen,
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/engineering)
 "Qa" = (
@@ -12431,7 +11486,6 @@
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/engineering)
 "Qc" = (
@@ -12439,7 +11493,6 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/cargo)
 "Qd" = (
@@ -12447,7 +11500,6 @@
 /obj/item/storage/bag/trash,
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/engineering)
 "Qe" = (
@@ -12458,18 +11510,15 @@
 /obj/item/storage/box/pillbottles,
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/medical)
 "Qf" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
-	tag = "icon-N"
 	},
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/offices)
 "Qh" = (
@@ -12477,7 +11526,6 @@
 /turf/open/floor/almayer{
 	dir = 6;
 	icon_state = "orange";
-	tag = "icon-orange (SOUTHEAST)"
 	},
 /area/adminlevel/chinook/engineering)
 "Qi" = (
@@ -12490,7 +11538,6 @@
 /obj/item/tool/soap,
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/engineering)
 "Qk" = (
@@ -12502,14 +11549,12 @@
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "blue";
-	tag = "icon-blue (WEST)"
 	},
 /area/adminlevel/chinook/offices)
 "Qn" = (
 /obj/structure/closet/secure_closet/engineering_personal,
 /turf/open/floor/almayer{
 	icon_state = "test_floor5";
-	tag = "icon-test_floor5"
 	},
 /area/adminlevel/chinook/engineering)
 "Qp" = (
@@ -12529,14 +11574,12 @@
 /obj/structure/machinery/light,
 /turf/open/floor/almayer{
 	icon_state = "test_floor5";
-	tag = "icon-test_floor5"
 	},
 /area/adminlevel/chinook/engineering)
 "Qr" = (
 /obj/structure/closet/toolcloset,
 /turf/open/floor/almayer{
 	icon_state = "test_floor5";
-	tag = "icon-test_floor5"
 	},
 /area/adminlevel/chinook/engineering)
 "Qs" = (
@@ -12569,12 +11612,10 @@
 "Qw" = (
 /obj/structure/toilet{
 	dir = 8;
-	tag = "icon-toilet00 (WEST)"
 	},
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "red";
-	tag = "icon-red (EAST)"
 	},
 /area/adminlevel/chinook)
 "Qx" = (
@@ -12586,7 +11627,6 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/sec)
 "Qz" = (
@@ -12598,12 +11638,10 @@
 "QB" = (
 /obj/structure/cargo_container{
 	icon_state = "WY 2,0";
-	tag = "icon-WY 2,0"
 	},
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/cargo)
 "QD" = (
@@ -12614,7 +11652,6 @@
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "red";
-	tag = "icon-red"
 	},
 /area/adminlevel/chinook/sec)
 "QE" = (
@@ -12628,7 +11665,6 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/sec)
 "QG" = (
@@ -12637,7 +11673,6 @@
 	},
 /turf/open/floor/almayer{
 	icon_state = "silver";
-	tag = "icon-silver"
 	},
 /area/adminlevel/chinook)
 "QH" = (
@@ -12655,7 +11690,6 @@
 /obj/item/tool/pen,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_side";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/medical)
 "QL" = (
@@ -12665,7 +11699,6 @@
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "red";
-	tag = "icon-red (EAST)"
 	},
 /area/adminlevel/chinook/sec)
 "QO" = (
@@ -12677,7 +11710,6 @@
 /obj/item/weapon/gun/rifle/mar40,
 /turf/open/floor/almayer{
 	icon_state = "cargo";
-	tag = "icon-bluecorner (NORTH)"
 	},
 /area/adminlevel/chinook/sec)
 "QP" = (
@@ -12687,7 +11719,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer{
 	icon_state = "red";
-	tag = "icon-red"
 	},
 /area/adminlevel/chinook/sec)
 "QQ" = (
@@ -12702,7 +11733,6 @@
 /obj/structure/surface/rack,
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook)
 "QT" = (
@@ -12716,7 +11746,6 @@
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "green";
-	tag = "icon-green (EAST)"
 	},
 /area/adminlevel/chinook)
 "Rd" = (
@@ -12734,7 +11763,6 @@
 "Rf" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
-	tag = "icon-E"
 	},
 /turf/open/floor/almayer,
 /area/adminlevel/chinook/cargo)
@@ -12745,7 +11773,6 @@
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "orange";
-	tag = "icon-orange (WEST)"
 	},
 /area/adminlevel/chinook/engineering)
 "Ri" = (
@@ -12753,7 +11780,6 @@
 /obj/item/fuelCell,
 /turf/open/floor/almayer{
 	icon_state = "orange";
-	tag = "icon-orange (NORTH)"
 	},
 /area/adminlevel/chinook/engineering)
 "Rj" = (
@@ -12797,7 +11823,6 @@
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "plating_striped";
-	tag = "icon-plating_striped (EAST)"
 	},
 /area/adminlevel/chinook/cargo)
 "Rq" = (
@@ -12807,7 +11832,6 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/sec)
 "Rt" = (
@@ -12826,18 +11850,15 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/engineering)
 "Ru" = (
 /obj/structure/machinery/light{
 	dir = 4;
-	tag = "icon-tube1 (EAST)"
 	},
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "red";
-	tag = "icon-red (EAST)"
 	},
 /area/adminlevel/chinook/sec)
 "Rw" = (
@@ -12851,14 +11872,12 @@
 	},
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/medical)
 "Rx" = (
 /obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep,
 /turf/open/floor/almayer{
 	icon_state = "cargo";
-	tag = "icon-bluecorner (NORTH)"
 	},
 /area/adminlevel/chinook/sec)
 "RA" = (
@@ -12875,7 +11894,6 @@
 /turf/open/floor/almayer{
 	dir = 9;
 	icon_state = "red";
-	tag = "icon-red (NORTHWEST)"
 	},
 /area/adminlevel/chinook/sec)
 "RD" = (
@@ -12885,27 +11903,23 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/engineering)
 "RH" = (
 /obj/structure/toilet{
 	dir = 8;
-	tag = "icon-toilet00 (WEST)"
 	},
 /turf/open/floor/almayer,
 /area/adminlevel/chinook/sec)
 "RI" = (
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/sec)
 "RJ" = (
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "red";
-	tag = "icon-red"
 	},
 /area/adminlevel/chinook/sec)
 "RK" = (
@@ -12918,7 +11932,6 @@
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "red";
-	tag = "icon-red"
 	},
 /area/adminlevel/chinook/sec)
 "RL" = (
@@ -12937,7 +11950,6 @@
 "RM" = (
 /turf/open/floor/almayer{
 	icon_state = "orange";
-	tag = "icon-orange (NORTH)"
 	},
 /area/adminlevel/chinook/engineering)
 "RN" = (
@@ -12955,28 +11967,24 @@
 /obj/structure/machinery/disposal,
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/sec)
 "RS" = (
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "red";
-	tag = "icon-red"
 	},
 /area/adminlevel/chinook/offices)
 "RT" = (
 /obj/structure/bed/chair,
 /turf/open/floor/almayer{
 	icon_state = "cargo";
-	tag = "icon-bluecorner (NORTH)"
 	},
 /area/adminlevel/chinook/sec)
 "RU" = (
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "blue";
-	tag = "icon-blue (EAST)"
 	},
 /area/adminlevel/chinook/offices)
 "RX" = (
@@ -12989,7 +11997,6 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/sec)
 "RZ" = (
@@ -13008,7 +12015,6 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/sec)
 "Sc" = (
@@ -13016,7 +12022,6 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/cargo)
 "Se" = (
@@ -13038,11 +12043,9 @@
 /obj/item/weapon/gun/pistol/m4a3,
 /obj/structure/machinery/light{
 	dir = 4;
-	tag = "icon-tube1 (EAST)"
 	},
 /turf/open/floor/almayer{
 	icon_state = "cargo";
-	tag = "icon-bluecorner (NORTH)"
 	},
 /area/adminlevel/chinook/sec)
 "Sg" = (
@@ -13055,19 +12058,16 @@
 "Si" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
-	tag = "icon-S"
 	},
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/offices)
 "Sj" = (
 /obj/structure/reagent_dispensers/water_cooler/stacks,
 /turf/open/floor/almayer{
 	icon_state = "blue";
-	tag = "icon-blue"
 	},
 /area/adminlevel/chinook/offices)
 "Sk" = (
@@ -13084,13 +12084,11 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/engineering)
 "Sn" = (
 /obj/structure/bed/chair{
 	dir = 1;
-	tag = "icon-chair (NORTH)"
 	},
 /obj/structure/machinery/light,
 /turf/open/floor/almayer,
@@ -13112,7 +12110,6 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/engineering)
 "Ss" = (
@@ -13120,14 +12117,12 @@
 /obj/structure/machinery/light,
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/engineering)
 "Su" = (
 /obj/structure/closet/emcloset,
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook)
 "Sv" = (
@@ -13142,14 +12137,12 @@
 /obj/structure/bed/chair,
 /turf/open/floor/almayer{
 	icon_state = "cargo";
-	tag = "icon-bluecorner (NORTH)"
 	},
 /area/adminlevel/chinook/sec)
 "Sx" = (
 /obj/structure/closet/firecloset,
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook)
 "Sy" = (
@@ -13159,7 +12152,6 @@
 /obj/item/clothing/glasses/sunglasses/blindfold,
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/sec)
 "Sz" = (
@@ -13172,7 +12164,6 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/sec)
 "SC" = (
@@ -13186,14 +12177,12 @@
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "greencorner";
-	tag = "icon-greencorner (EAST)"
 	},
 /area/adminlevel/chinook)
 "SE" = (
 /obj/structure/closet/secure_closet/brig,
 /turf/open/floor/almayer{
 	icon_state = "cargo";
-	tag = "icon-bluecorner (NORTH)"
 	},
 /area/adminlevel/chinook/sec)
 "SF" = (
@@ -13202,7 +12191,6 @@
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "green";
-	tag = "icon-green (NORTH)"
 	},
 /area/adminlevel/chinook)
 "SH" = (
@@ -13222,7 +12210,6 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "green";
-	tag = "icon-green (NORTHEAST)"
 	},
 /area/adminlevel/chinook)
 "SK" = (
@@ -13259,7 +12246,6 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/cargo)
 "SU" = (
@@ -13275,7 +12261,6 @@
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook)
 "SV" = (
@@ -13289,14 +12274,12 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/engineering)
 "SX" = (
 /obj/structure/machinery/suit_storage_unit/compression_suit/uscm,
 /turf/open/floor/almayer{
 	icon_state = "test_floor5";
-	tag = "icon-test_floor5"
 	},
 /area/adminlevel/chinook/engineering)
 "Ta" = (
@@ -13304,7 +12287,6 @@
 /obj/item/folder/white,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/medical)
 "Tb" = (
@@ -13314,7 +12296,6 @@
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "red";
-	tag = "icon-red (NORTH)"
 	},
 /area/adminlevel/chinook/sec)
 "Td" = (
@@ -13326,24 +12307,20 @@
 /obj/structure/machinery/recharger,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_side";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/medical)
 "Th" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
-	tag = "icon-W"
 	},
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/engineering)
 "Ti" = (
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15";
-	tag = "icon-rasputin15"
 	},
 /area/adminlevel/chinook/shuttle/unpowered)
 "Tl" = (
@@ -13359,7 +12336,6 @@
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (WEST)"
 	},
 /area/adminlevel/chinook/medical)
 "Tp" = (
@@ -13370,68 +12346,57 @@
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (WEST)"
 	},
 /area/adminlevel/chinook/sec)
 "Tq" = (
 /obj/structure/machinery/light{
 	dir = 4;
-	tag = "icon-tube1 (EAST)"
 	},
 /turf/open/floor/almayer,
 /area/adminlevel/chinook/engineering)
 "Ts" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
-	tag = "icon-E"
 	},
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/engineering)
 "Tt" = (
 /obj/structure/machinery/power/port_gen/pacman,
 /turf/open/floor/almayer{
 	icon_state = "cargo";
-	tag = "icon-bluecorner (NORTH)"
 	},
 /area/adminlevel/chinook/engineering)
 "Tu" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
-	tag = "icon-E"
 	},
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "red";
-	tag = "icon-red"
 	},
 /area/adminlevel/chinook/sec)
 "Tx" = (
 /obj/structure/closet/firecloset,
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/sec)
 "TA" = (
 /obj/structure/cargo_container{
 	icon_state = "green 0,0";
-	tag = "icon-green 0,0"
 	},
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/cargo)
 "TC" = (
 /obj/structure/closet/crate,
 /turf/open/floor/almayer{
 	icon_state = "cargo";
-	tag = "icon-bluecorner (NORTH)"
 	},
 /area/adminlevel/chinook/engineering)
 "TD" = (
@@ -13441,7 +12406,6 @@
 	},
 /turf/open/floor/almayer{
 	icon_state = "cargo";
-	tag = "icon-bluecorner (NORTH)"
 	},
 /area/adminlevel/chinook/cryo)
 "TE" = (
@@ -13451,7 +12415,6 @@
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/engineering)
 "TG" = (
@@ -13463,30 +12426,25 @@
 "TH" = (
 /obj/structure/machinery/light{
 	dir = 8;
-	tag = "icon-tube1 (EAST)"
 	},
 /turf/open/floor/almayer{
 	icon_state = "plating_striped";
-	tag = "icon-emerald (NORTH)"
 	},
 /area/adminlevel/chinook/sec)
 "TL" = (
 /obj/structure/closet/crate,
 /obj/structure/machinery/light{
 	dir = 1;
-	tag = "icon-tube1 (NORTH)"
 	},
 /obj/item/stack/sheet/mineral/uranium,
 /turf/open/floor/almayer{
 	icon_state = "cargo";
-	tag = "icon-bluecorner (NORTH)"
 	},
 /area/adminlevel/chinook/engineering)
 "TM" = (
 /obj/structure/closet/emcloset,
 /turf/open/floor/almayer{
 	icon_state = "emerald";
-	tag = "icon-emerald"
 	},
 /area/adminlevel/chinook/shuttle)
 "TO" = (
@@ -13515,7 +12473,6 @@
 	},
 /turf/open/floor/almayer{
 	icon_state = "red";
-	tag = "icon-red"
 	},
 /area/adminlevel/chinook/sec)
 "TY" = (
@@ -13529,7 +12486,6 @@
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "red";
-	tag = "icon-red (EAST)"
 	},
 /area/adminlevel/chinook)
 "TZ" = (
@@ -13537,7 +12493,6 @@
 /turf/open/floor/almayer{
 	dir = 6;
 	icon_state = "red";
-	tag = "icon-red"
 	},
 /area/adminlevel/chinook/sec)
 "Ua" = (
@@ -13566,7 +12521,6 @@
 	},
 /turf/open/floor/almayer{
 	icon_state = "cargo";
-	tag = "icon-bluecorner (NORTH)"
 	},
 /area/adminlevel/chinook/engineering)
 "Ud" = (
@@ -13578,14 +12532,12 @@
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "red";
-	tag = "icon-red (NORTH)"
 	},
 /area/adminlevel/chinook/sec)
 "Ue" = (
 /turf/open/floor/almayer{
 	dir = 10;
 	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (SOUTHWEST)"
 	},
 /area/adminlevel/chinook/medical)
 "Uf" = (
@@ -13593,14 +12545,12 @@
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "sterile_green_corner";
-	tag = "icon-sterile_green_corner (WEST)"
 	},
 /area/adminlevel/chinook/medical)
 "Ug" = (
 /obj/structure/machinery/computer/telecomms/monitor,
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/engineering)
 "Uh" = (
@@ -13609,14 +12559,12 @@
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "red";
-	tag = "icon-red (NORTH)"
 	},
 /area/adminlevel/chinook/sec)
 "Uj" = (
 /obj/structure/machinery/light,
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
-	tag = "icon-E"
 	},
 /obj/structure/machinery/door_control{
 	id = "chinookcargo";
@@ -13637,30 +12585,25 @@
 "Um" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
-	tag = "icon-W"
 	},
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "red";
-	tag = "icon-red"
 	},
 /area/adminlevel/chinook/sec)
 "Up" = (
 /obj/structure/closet/secure_closet/brig,
 /obj/structure/machinery/light{
 	dir = 1;
-	tag = "icon-tube1 (NORTH)"
 	},
 /turf/open/floor/almayer{
 	icon_state = "cargo";
-	tag = "icon-bluecorner (NORTH)"
 	},
 /area/adminlevel/chinook/sec)
 "Us" = (
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "green";
-	tag = "icon-green (EAST)"
 	},
 /area/adminlevel/chinook)
 "Ut" = (
@@ -13686,18 +12629,15 @@
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook)
 "Uu" = (
 /obj/structure/machinery/suit_storage_unit/compression_suit/uscm,
 /obj/structure/machinery/light{
 	dir = 8;
-	tag = "icon-tube1 (EAST)"
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor5";
-	tag = "icon-test_floor5"
 	},
 /area/adminlevel/chinook/engineering)
 "Uw" = (
@@ -13705,13 +12645,11 @@
 /obj/item/reagent_container/glass/beaker/bluespace,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_corner";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/medical)
 "Ux" = (
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/cryo)
 "Uz" = (
@@ -13719,7 +12657,6 @@
 /obj/item/clothing/suit/storage/hazardvest,
 /turf/open/floor/almayer{
 	icon_state = "cargo";
-	tag = "icon-bluecorner (NORTH)"
 	},
 /area/adminlevel/chinook/sec)
 "UA" = (
@@ -13735,42 +12672,35 @@
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "silver";
-	tag = "icon-silver (WEST)"
 	},
 /area/adminlevel/chinook)
 "UD" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
-	tag = "icon-N"
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
-	tag = "icon-S"
 	},
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/engineering)
 "UE" = (
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/engineering)
 "UF" = (
 /obj/structure/machinery/light{
 	dir = 1;
-	tag = "icon-tube1 (NORTH)"
 	},
 /obj/structure/surface/rack,
 /obj/item/device/flashlight,
 /obj/item/clothing/head/welding,
 /turf/open/floor/almayer{
 	icon_state = "test_floor5";
-	tag = "icon-test_floor5"
 	},
 /area/adminlevel/chinook/cryo)
 "UH" = (
@@ -13778,7 +12708,6 @@
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "orange";
-	tag = "icon-orange (EAST)"
 	},
 /area/adminlevel/chinook/engineering)
 "UI" = (
@@ -13807,7 +12736,6 @@
 /obj/structure/filingcabinet,
 /turf/open/floor/almayer{
 	icon_state = "cargo";
-	tag = "icon-bluecorner (NORTH)"
 	},
 /area/adminlevel/chinook/sec)
 "UQ" = (
@@ -13815,7 +12743,6 @@
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (NORTH)"
 	},
 /area/adminlevel/chinook/offices)
 "UR" = (
@@ -13824,7 +12751,6 @@
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "red";
-	tag = "icon-red (NORTH)"
 	},
 /area/adminlevel/chinook/sec)
 "UU" = (
@@ -13843,7 +12769,6 @@
 /obj/item/clothing/glasses/sunglasses/blindfold,
 /turf/open/floor/almayer{
 	icon_state = "cargo";
-	tag = "icon-bluecorner (NORTH)"
 	},
 /area/adminlevel/chinook/sec)
 "UV" = (
@@ -13859,7 +12784,6 @@
 /obj/item/ammo_magazine/rifle/hunting,
 /turf/open/floor/almayer{
 	icon_state = "cargo";
-	tag = "icon-bluecorner (NORTH)"
 	},
 /area/adminlevel/chinook/sec)
 "UX" = (
@@ -13868,7 +12792,6 @@
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "sterile_green_corner";
-	tag = "icon-sterile_green_corner (WEST)"
 	},
 /area/adminlevel/chinook/medical)
 "UY" = (
@@ -13881,7 +12804,6 @@
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4";
-	tag = "icon-test_floor4"
 	},
 /area/adminlevel/chinook/cargo)
 "UZ" = (
@@ -13891,33 +12813,28 @@
 /obj/structure/closet/secure_closet/brig,
 /turf/open/floor/almayer{
 	icon_state = "cargo";
-	tag = "icon-bluecorner (NORTH)"
 	},
 /area/adminlevel/chinook/sec)
 "Va" = (
 /obj/structure/surface/rack,
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15";
-	tag = "icon-rasputin15"
 	},
 /area/adminlevel/chinook/shuttle/unpowered)
 "Vb" = (
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "blue";
-	tag = "icon-blue (WEST)"
 	},
 /area/adminlevel/chinook)
 "Vc" = (
 /obj/structure/machinery/light{
 	dir = 4;
-	tag = "icon-tube1 (EAST)"
 	},
 /obj/structure/machinery/disposal,
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "sterile_green_corner";
-	tag = "icon-sterile_green_corner (EAST)"
 	},
 /area/adminlevel/chinook/medical)
 "Ve" = (
@@ -13925,19 +12842,16 @@
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "blue";
-	tag = "icon-blue (EAST)"
 	},
 /area/adminlevel/chinook/offices)
 "Vg" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
-	tag = "icon-W"
 	},
 /obj/effect/decal/cleanable/ash,
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "plating_striped";
-	tag = "icon-plating_striped (WEST)"
 	},
 /area/adminlevel/chinook/engineering)
 "Vh" = (
@@ -13951,7 +12865,6 @@
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "silver";
-	tag = "icon-silver (WEST)"
 	},
 /area/adminlevel/chinook)
 "Vk" = (
@@ -13970,7 +12883,6 @@
 "Vm" = (
 /obj/structure/bed/chair/comfy{
 	dir = 1;
-	tag = "icon-comfychair (NORTH)"
 	},
 /turf/open/floor/almayer,
 /area/adminlevel/chinook/offices)
@@ -13999,14 +12911,12 @@
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "red";
-	tag = "icon-red (NORTH)"
 	},
 /area/adminlevel/chinook/sec)
 "Vv" = (
 /obj/structure/closet/emcloset,
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/sec)
 "Vw" = (
@@ -14016,44 +12926,37 @@
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "red";
-	tag = "icon-red (NORTH)"
 	},
 /area/adminlevel/chinook/sec)
 "Vz" = (
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "silver";
-	tag = "icon-silver (WEST)"
 	},
 /area/adminlevel/chinook)
 "VA" = (
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "redcorner";
-	tag = "icon-redcorner (EAST)"
 	},
 /area/adminlevel/chinook/sec)
 "VB" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "SE-out";
-	tag = "icon-SE-out"
 	},
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "red";
-	tag = "icon-red"
 	},
 /area/adminlevel/chinook/sec)
 "VE" = (
 /obj/structure/machinery/light{
 	dir = 1;
-	tag = "icon-tube1 (NORTH)"
 	},
 /obj/structure/machinery/disposal,
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook)
 "VH" = (
@@ -14068,18 +12971,15 @@
 /turf/open/floor/almayer{
 	dir = 9;
 	icon_state = "red";
-	tag = "icon-red (NORTHWEST)"
 	},
 /area/adminlevel/chinook/sec)
 "VJ" = (
 /obj/structure/machinery/light{
 	dir = 4;
-	tag = "icon-tube1 (EAST)"
 	},
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "red";
-	tag = "icon-red"
 	},
 /area/adminlevel/chinook/sec)
 "VK" = (
@@ -14090,7 +12990,6 @@
 	},
 /obj/structure/machinery/light{
 	dir = 8;
-	tag = "icon-tube1 (EAST)"
 	},
 /turf/open/floor/almayer{
 	icon_state = "tcomms"
@@ -14104,20 +13003,17 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/cargo)
 "VQ" = (
 /obj/structure/machinery/light,
 /turf/open/floor/almayer{
 	icon_state = "emerald";
-	tag = "icon-emerald"
 	},
 /area/adminlevel/chinook/shuttle)
 "VR" = (
 /obj/structure/toilet{
 	dir = 4;
-	tag = "icon-toilet00 (WEST)"
 	},
 /obj/item/trash/cigbutt{
 	pixel_x = -10;
@@ -14126,7 +13022,6 @@
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "blue";
-	tag = "icon-blue (WEST)"
 	},
 /area/adminlevel/chinook)
 "VS" = (
@@ -14147,23 +13042,19 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/sec)
 "VW" = (
 /obj/structure/bed/chair{
 	dir = 1;
-	tag = "icon-chair (NORTH)"
 	},
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_side";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/medical)
 "VY" = (
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/offices)
 "Wb" = (
@@ -14176,7 +13067,6 @@
 	},
 /turf/open/floor/almayer{
 	icon_state = "sterile_green";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/medical)
 "Wd" = (
@@ -14185,7 +13075,6 @@
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
-	tag = "icon-E"
 	},
 /turf/open/floor/almayer,
 /area/adminlevel/chinook/cargo)
@@ -14195,12 +13084,10 @@
 "Wg" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
-	tag = "icon-E"
 	},
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/sec)
 "Wi" = (
@@ -14210,7 +13097,6 @@
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "emerald";
-	tag = "icon-emerald (WEST)"
 	},
 /area/adminlevel/chinook/shuttle)
 "Wl" = (
@@ -14221,13 +13107,11 @@
 "Wn" = (
 /obj/structure/machinery/light{
 	dir = 4;
-	tag = "icon-tube1 (EAST)"
 	},
 /obj/structure/machinery/power/smes,
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/engineering)
 "Wo" = (
@@ -14244,7 +13128,6 @@
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "silver";
-	tag = "icon-silver (NORTH)"
 	},
 /area/adminlevel/chinook)
 "Wr" = (
@@ -14256,7 +13139,6 @@
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "red";
-	tag = "icon-red (NORTH)"
 	},
 /area/adminlevel/chinook/sec)
 "Ws" = (
@@ -14278,7 +13160,6 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/sec)
 "Ww" = (
@@ -14292,39 +13173,33 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook)
 "Wy" = (
 /obj/structure/machinery/light,
 /turf/open/floor/almayer{
 	icon_state = "green";
-	tag = "icon-green"
 	},
 /area/adminlevel/chinook)
 "Wz" = (
 /turf/open/floor/almayer{
 	dir = 6;
 	icon_state = "green";
-	tag = "icon-green (SOUTHEAST)"
 	},
 /area/adminlevel/chinook)
 "WB" = (
 /obj/structure/machinery/cryopod,
 /turf/open/floor/almayer{
 	icon_state = "cargo";
-	tag = "icon-bluecorner (NORTH)"
 	},
 /area/adminlevel/chinook/cryo)
 "WC" = (
 /obj/structure/machinery/light{
 	dir = 4;
-	tag = "icon-tube1 (EAST)"
 	},
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "silver";
-	tag = "icon-silver (WEST)"
 	},
 /area/adminlevel/chinook)
 "WD" = (
@@ -14356,7 +13231,6 @@
 /obj/item/tool/wirecutters/clippers,
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook)
 "WF" = (
@@ -14369,7 +13243,6 @@
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor5";
-	tag = "icon-test_floor5"
 	},
 /area/adminlevel/chinook/engineering)
 "WI" = (
@@ -14378,7 +13251,6 @@
 /obj/item/storage/firstaid/adv,
 /turf/open/floor/almayer{
 	icon_state = "cargo";
-	tag = "icon-bluecorner (NORTH)"
 	},
 /area/adminlevel/chinook/sec)
 "WJ" = (
@@ -14390,14 +13262,12 @@
 /obj/item/storage/box/masks,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/sec)
 "WK" = (
 /obj/structure/reagent_dispensers/fueltank,
 /turf/open/floor/almayer{
 	icon_state = "cargo";
-	tag = "icon-bluecorner (NORTH)"
 	},
 /area/adminlevel/chinook/engineering)
 "WL" = (
@@ -14408,7 +13278,6 @@
 /obj/structure/machinery/iv_drip,
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/medical)
 "WO" = (
@@ -14416,7 +13285,6 @@
 /obj/effect/spawner/random/tool,
 /turf/open/floor/almayer{
 	icon_state = "cargo";
-	tag = "icon-bluecorner (NORTH)"
 	},
 /area/adminlevel/chinook/engineering)
 "WP" = (
@@ -14424,7 +13292,6 @@
 /obj/structure/machinery/light,
 /turf/open/floor/almayer{
 	icon_state = "cargo";
-	tag = "icon-bluecorner (NORTH)"
 	},
 /area/adminlevel/chinook/engineering)
 "WQ" = (
@@ -14438,7 +13305,6 @@
 /obj/structure/machinery/floodlight,
 /turf/open/floor/almayer{
 	icon_state = "cargo";
-	tag = "icon-bluecorner (NORTH)"
 	},
 /area/adminlevel/chinook/engineering)
 "WT" = (
@@ -14450,7 +13316,6 @@
 /obj/item/clothing/glasses/hud/health,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_corner";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/medical)
 "WU" = (
@@ -14481,14 +13346,12 @@
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "silver";
-	tag = "icon-silver (NORTH)"
 	},
 /area/adminlevel/chinook)
 "WY" = (
 /turf/open/floor/almayer_hull{
 	dir = 6;
 	icon_state = "outerhull_dir";
-	tag = "icon-outerhull_dir (SOUTHEAST)"
 	},
 /area/space)
 "Xa" = (
@@ -14500,14 +13363,12 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/sec)
 "Xc" = (
 /obj/structure/machinery/portable_atmospherics/powered/pump,
 /turf/open/floor/almayer{
 	icon_state = "cargo";
-	tag = "icon-bluecorner (NORTH)"
 	},
 /area/adminlevel/chinook/engineering)
 "Xd" = (
@@ -14522,13 +13383,11 @@
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "orange";
-	tag = "icon-orange (WEST)"
 	},
 /area/adminlevel/chinook/engineering)
 "Xe" = (
 /obj/structure/machinery/light{
 	dir = 4;
-	tag = "icon-tube1 (EAST)"
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/chinook/engineering)
@@ -14549,7 +13408,6 @@
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "silver";
-	tag = "icon-silver (NORTH)"
 	},
 /area/adminlevel/chinook)
 "Xh" = (
@@ -14566,12 +13424,10 @@
 "Xi" = (
 /obj/structure/machinery/light{
 	dir = 1;
-	tag = "icon-tube1 (NORTH)"
 	},
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "emerald";
-	tag = "icon-emerald (NORTH)"
 	},
 /area/adminlevel/chinook/shuttle)
 "Xj" = (
@@ -14581,7 +13437,6 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/sec)
 "Xk" = (
@@ -14589,7 +13444,6 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "silver";
-	tag = "icon-silver (NORTHEAST)"
 	},
 /area/adminlevel/chinook)
 "Xl" = (
@@ -14623,24 +13477,20 @@
 	},
 /turf/open/floor/almayer{
 	icon_state = "sterile_green";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/medical)
 "Xq" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
-	tag = "icon-E-corner"
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/sec)
 "Xr" = (
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "red";
-	tag = "icon-red (WEST)"
 	},
 /area/adminlevel/chinook/sec)
 "Xs" = (
@@ -14650,7 +13500,6 @@
 /turf/open/floor/almayer{
 	dir = 6;
 	icon_state = "red";
-	tag = "icon-red"
 	},
 /area/adminlevel/chinook/sec)
 "Xt" = (
@@ -14660,41 +13509,34 @@
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "red";
-	tag = "icon-red (EAST)"
 	},
 /area/adminlevel/chinook/sec)
 "Xu" = (
 /obj/structure/toilet{
 	dir = 8;
-	tag = "icon-toilet00 (WEST)"
 	},
 /obj/structure/machinery/light{
 	dir = 1;
-	tag = "icon-tube1 (NORTH)"
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook)
 "Xv" = (
 /obj/structure/machinery/light,
 /turf/open/floor/almayer{
 	icon_state = "silver";
-	tag = "icon-silver"
 	},
 /area/adminlevel/chinook)
 "Xw" = (
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "silvercorner";
-	tag = "icon-silvercorner (EAST)"
 	},
 /area/adminlevel/chinook)
 "Xx" = (
 /turf/open/floor/almayer{
 	icon_state = "blue";
-	tag = "icon-blue"
 	},
 /area/adminlevel/chinook/offices)
 "Xz" = (
@@ -14702,7 +13544,6 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/sec)
 "XB" = (
@@ -14716,7 +13557,6 @@
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/cargo)
 "XE" = (
@@ -14724,7 +13564,6 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/sec)
 "XH" = (
@@ -14733,7 +13572,6 @@
 "XI" = (
 /turf/open/floor/almayer{
 	icon_state = "bluecorner";
-	tag = "icon-bluecorner"
 	},
 /area/adminlevel/chinook/offices)
 "XJ" = (
@@ -14744,7 +13582,6 @@
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "orange";
-	tag = "icon-orange (WEST)"
 	},
 /area/adminlevel/chinook/engineering)
 "XK" = (
@@ -14758,7 +13595,6 @@
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/almayer{
 	icon_state = "test_floor4";
-	tag = "icon-test_floor4"
 	},
 /area/adminlevel/chinook/cargo)
 "XL" = (
@@ -14769,7 +13605,6 @@
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "red";
-	tag = "icon-red"
 	},
 /area/adminlevel/chinook/sec)
 "XM" = (
@@ -14815,14 +13650,12 @@
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook)
 "XQ" = (
 /turf/open/floor/almayer{
 	dir = 6;
 	icon_state = "silver";
-	tag = "icon-silver (WEST)"
 	},
 /area/adminlevel/chinook/cryo)
 "XR" = (
@@ -14846,18 +13679,15 @@
 	},
 /turf/open/floor/almayer{
 	icon_state = "red";
-	tag = "icon-red"
 	},
 /area/adminlevel/chinook/sec)
 "XT" = (
 /obj/structure/machinery/light{
 	dir = 1;
-	tag = "icon-tube1 (NORTH)"
 	},
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "red";
-	tag = "icon-red (NORTH)"
 	},
 /area/adminlevel/chinook/sec)
 "XU" = (
@@ -14869,21 +13699,18 @@
 	},
 /turf/open/floor/almayer{
 	icon_state = "red";
-	tag = "icon-red"
 	},
 /area/adminlevel/chinook/sec)
 "XV" = (
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "red";
-	tag = "icon-red"
 	},
 /area/adminlevel/chinook/sec)
 "XY" = (
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "red";
-	tag = "icon-red"
 	},
 /area/adminlevel/chinook)
 "XZ" = (
@@ -14891,7 +13718,6 @@
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (EAST)"
 	},
 /area/adminlevel/chinook/medical)
 "Ya" = (
@@ -14900,19 +13726,16 @@
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "NE-out";
-	tag = "icon-NE-out"
 	},
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "red";
-	tag = "icon-red"
 	},
 /area/adminlevel/chinook/sec)
 "Yb" = (
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "red";
-	tag = "icon-red (NORTH)"
 	},
 /area/adminlevel/chinook/sec)
 "Yc" = (
@@ -14932,13 +13755,11 @@
 "Ye" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
-	tag = "icon-E"
 	},
 /obj/structure/machinery/light,
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/sec)
 "Yf" = (
@@ -14960,7 +13781,6 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/engineering)
 "Yh" = (
@@ -14985,7 +13805,6 @@
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/engineering)
 "Yj" = (
@@ -14998,7 +13817,6 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/cargo)
 "Ym" = (
@@ -15006,7 +13824,6 @@
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "sterile_green_corner";
-	tag = "icon-sterile_green_corner (EAST)"
 	},
 /area/adminlevel/chinook/medical)
 "Yo" = (
@@ -15028,7 +13845,6 @@
 /turf/open/floor/almayer_hull{
 	dir = 5;
 	icon_state = "outerhull_dir";
-	tag = "icon-outerhull_dir (NORTHEAST)"
 	},
 /area/space)
 "Ys" = (
@@ -15038,7 +13854,6 @@
 /turf/open/floor/almayer_hull{
 	dir = 8;
 	icon_state = "outerhull_dir";
-	tag = "icon-outerhull_dir (WEST)"
 	},
 /area/space)
 "Yu" = (
@@ -15050,26 +13865,22 @@
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/engineering)
 "Yw" = (
 /obj/structure/machinery/light{
 	dir = 1;
-	tag = "icon-tube1 (NORTH)"
 	},
 /obj/structure/reagent_dispensers/water_cooler/stacks,
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "sterile_green_corner";
-	tag = "icon-sterile_green_corner (NORTH)"
 	},
 /area/adminlevel/chinook/medical)
 "Yx" = (
 /obj/structure/machinery/smartfridge/chemistry,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/medical)
 "Yy" = (
@@ -15085,13 +13896,11 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/sec)
 "Yz" = (
 /obj/structure/machinery/light{
 	dir = 4;
-	tag = "icon-tube1 (EAST)"
 	},
 /turf/open/floor/kutjevo/multi_tiles,
 /area/adminlevel/chinook/event)
@@ -15105,18 +13914,15 @@
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/engineering)
 "YB" = (
 /obj/structure/machinery/light{
 	dir = 4;
-	tag = "icon-tube1 (EAST)"
 	},
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (EAST)"
 	},
 /area/adminlevel/chinook/sec)
 "YC" = (
@@ -15126,11 +13932,9 @@
 /obj/structure/closet/radiation,
 /obj/structure/machinery/light{
 	dir = 1;
-	tag = "icon-tube1 (NORTH)"
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor5";
-	tag = "icon-test_floor5"
 	},
 /area/adminlevel/chinook/engineering)
 "YF" = (
@@ -15145,7 +13949,6 @@
 /obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/almayer{
 	icon_state = "test_floor5";
-	tag = "icon-test_floor5"
 	},
 /area/adminlevel/chinook/engineering)
 "YH" = (
@@ -15161,7 +13964,6 @@
 /obj/effect/spawner/random/toolbox,
 /turf/open/floor/almayer{
 	icon_state = "test_floor5";
-	tag = "icon-test_floor5"
 	},
 /area/adminlevel/chinook/cryo)
 "YK" = (
@@ -15171,13 +13973,11 @@
 /obj/structure/closet/emcloset,
 /turf/open/floor/almayer{
 	icon_state = "test_floor5";
-	tag = "icon-test_floor5"
 	},
 /area/adminlevel/chinook/cryo)
 "YL" = (
 /turf/open/floor/almayer{
 	icon_state = "red";
-	tag = "icon-red"
 	},
 /area/adminlevel/chinook/sec)
 "YM" = (
@@ -15188,7 +13988,6 @@
 /obj/structure/machinery/recharge_station,
 /turf/open/floor/almayer{
 	icon_state = "test_floor5";
-	tag = "icon-test_floor5"
 	},
 /area/adminlevel/chinook/cryo)
 "YO" = (
@@ -15204,7 +14003,6 @@
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "red";
-	tag = "icon-red"
 	},
 /area/adminlevel/chinook/sec)
 "YR" = (
@@ -15215,25 +14013,21 @@
 	},
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/medical)
 "YS" = (
 /obj/structure/bed/chair{
 	dir = 1;
-	tag = "icon-chair (NORTH)"
 	},
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "red";
-	tag = "icon-red (NORTH)"
 	},
 /area/adminlevel/chinook/sec)
 "YT" = (
 /obj/structure/machinery/body_scanconsole,
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/medical)
 "YU" = (
@@ -15250,19 +14044,16 @@
 "YV" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_10";
-	tag = "icon-plant-10"
 	},
 /turf/open/floor/almayer{
 	dir = 10;
 	icon_state = "silver";
-	tag = "icon-silver (SOUTHWEST)"
 	},
 /area/adminlevel/chinook)
 "YW" = (
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "silvercorner";
-	tag = "icon-silvercorner"
 	},
 /area/adminlevel/chinook)
 "YX" = (
@@ -15279,7 +14070,6 @@
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/sec)
 "YZ" = (
@@ -15287,7 +14077,6 @@
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (NORTH)"
 	},
 /area/adminlevel/chinook/medical)
 "Za" = (
@@ -15301,7 +14090,6 @@
 /obj/structure/filingcabinet,
 /obj/structure/machinery/light{
 	dir = 4;
-	tag = "icon-tube1 (EAST)"
 	},
 /turf/open/floor/carpet{
 	desc = "Plush, waterproof carpet. Apparently it's fire resistant while remaining quite soft.";
@@ -15318,18 +14106,15 @@
 	},
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/medical)
 "Ze" = (
 /obj/structure/machinery/light{
 	dir = 4;
-	tag = "icon-tube1 (EAST)"
 	},
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "red";
-	tag = "icon-red"
 	},
 /area/adminlevel/chinook/sec)
 "Zf" = (
@@ -15338,7 +14123,6 @@
 	},
 /turf/open/floor/almayer{
 	icon_state = "silver";
-	tag = "icon-silver"
 	},
 /area/adminlevel/chinook/cryo)
 "Zg" = (
@@ -15351,7 +14135,6 @@
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (NORTH)"
 	},
 /area/adminlevel/chinook/medical)
 "Zh" = (
@@ -15370,7 +14153,6 @@
 	},
 /turf/open/floor/almayer{
 	icon_state = "cargo";
-	tag = "icon-bluecorner (NORTH)"
 	},
 /area/adminlevel/chinook/sec)
 "Zk" = (
@@ -15378,7 +14160,6 @@
 	desc = "There's a hatch above it, presumably to allow pods to drop in.";
 	icon_state = "test_floor4";
 	name = "pod landing floor";
-	tag = "icon-test_floor4"
 	},
 /area/adminlevel/chinook)
 "Zl" = (
@@ -15386,7 +14167,6 @@
 /obj/structure/closet/secure_closet/brig,
 /turf/open/floor/almayer{
 	icon_state = "cargo";
-	tag = "icon-bluecorner (NORTH)"
 	},
 /area/adminlevel/chinook/sec)
 "Zm" = (
@@ -15410,7 +14190,6 @@
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (EAST)"
 	},
 /area/adminlevel/chinook/medical)
 "Zp" = (
@@ -15421,7 +14200,6 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/engineering)
 "Zq" = (
@@ -15429,18 +14207,15 @@
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (EAST)"
 	},
 /area/adminlevel/chinook/medical)
 "Zr" = (
 /obj/structure/machinery/light/small{
 	dir = 1;
-	tag = "icon-bulb1 (NORTH)"
 	},
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/engineering)
 "Zs" = (
@@ -15450,21 +14225,18 @@
 "Zt" = (
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin3";
-	tag = "icon-rasputin3"
 	},
 /area/adminlevel/chinook/shuttle/unpowered)
 "Zu" = (
 /turf/open/floor/almayer_hull{
 	dir = 1;
 	icon_state = "outerhull_dir";
-	tag = "icon-outerhull_dir (NORTH)"
 	},
 /area/space)
 "Zv" = (
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "emeraldcorner";
-	tag = "icon-emeraldcorner (EAST)"
 	},
 /area/adminlevel/chinook/shuttle)
 "Zw" = (
@@ -15472,18 +14244,15 @@
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "red";
-	tag = "icon-red"
 	},
 /area/adminlevel/chinook/sec)
 "Zx" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
-	tag = "icon-W"
 	},
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "orange";
-	tag = "icon-orange (NORTH)"
 	},
 /area/adminlevel/chinook/engineering)
 "Zy" = (
@@ -15498,7 +14267,6 @@
 /obj/structure/machinery/light,
 /turf/open/floor/almayer{
 	icon_state = "orange";
-	tag = "icon-orange (NORTH)"
 	},
 /area/adminlevel/chinook/engineering)
 "ZA" = (
@@ -15508,21 +14276,18 @@
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "orange";
-	tag = "icon-orange (NORTH)"
 	},
 /area/adminlevel/chinook/engineering)
 "ZB" = (
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "orangecorner";
-	tag = "icon-orangecorner (NORTH)"
 	},
 /area/adminlevel/chinook/engineering)
 "ZE" = (
 /obj/structure/bed/chair/office/dark,
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/medical)
 "ZH" = (
@@ -15538,20 +14303,17 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/engineering)
 "ZI" = (
 /turf/open/floor/almayer{
 	icon_state = "silver";
-	tag = "icon-silver"
 	},
 /area/adminlevel/chinook)
 "ZJ" = (
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "redcorner";
-	tag = "icon-redcorner (NORTH)"
 	},
 /area/adminlevel/chinook/sec)
 "ZK" = (
@@ -15559,19 +14321,16 @@
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (NORTH)"
 	},
 /area/adminlevel/chinook/medical)
 "ZL" = (
 /obj/structure/machinery/light{
 	dir = 1;
-	tag = "icon-tube1 (NORTH)"
 	},
 /obj/structure/machinery/cm_vending/sorted/tech/tool_storage,
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "orange";
-	tag = "icon-orange (NORTH)"
 	},
 /area/adminlevel/chinook/engineering)
 "ZM" = (
@@ -15579,30 +14338,25 @@
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/engineering)
 "ZN" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
-	tag = "icon-W"
 	},
 /obj/structure/reagent_dispensers/fueltank/custom,
 /obj/structure/machinery/light{
 	dir = 1;
-	tag = "icon-tube1 (NORTH)"
 	},
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/engineering)
 "ZP" = (
 /obj/structure/machinery/vending/snack,
 /turf/open/floor/almayer{
 	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/sec)
 "ZQ" = (
@@ -15611,7 +14365,6 @@
 "ZR" = (
 /turf/open/floor/almayer{
 	icon_state = "sterile_green";
-	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/medical)
 "ZS" = (
@@ -15619,19 +14372,16 @@
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "blue";
-	tag = "icon-blue (NORTH)"
 	},
 /area/adminlevel/chinook/offices)
 "ZT" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
-	tag = "icon-E-corner"
 	},
 /obj/structure/reagent_dispensers/fueltank/custom,
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "plating_striped";
-	tag = "icon-plating_striped (EAST)"
 	},
 /area/adminlevel/chinook/engineering)
 "ZV" = (
@@ -15658,7 +14408,6 @@
 "ZY" = (
 /turf/open/floor/almayer{
 	icon_state = "redfull";
-	tag = "icon-redfull"
 	},
 /area/adminlevel/chinook/sec)
 "ZZ" = (

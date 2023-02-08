@@ -2,31 +2,26 @@
 "a" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
-	tag = "icon-S"
 	},
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "floor_plate";
-	tag = "icon-floor_plate (SOUTHWEST)"
 	},
 /area/template_noop)
 "h" = (
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "floor_plate";
-	tag = "icon-floor_plate (SOUTHWEST)"
 	},
 /area/template_noop)
 "i" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
-	tag = "icon-S"
 	},
 /obj/structure/largecrate/supply/floodlights,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "floor_plate";
-	tag = "icon-floor_plate (SOUTHWEST)"
 	},
 /area/template_noop)
 "j" = (
@@ -34,7 +29,6 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "floor_plate";
-	tag = "icon-floor_plate (SOUTHWEST)"
 	},
 /area/template_noop)
 "u" = (
@@ -42,7 +36,6 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "floor_plate";
-	tag = "icon-floor_plate (SOUTHWEST)"
 	},
 /area/template_noop)
 "x" = (
@@ -50,7 +43,6 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "floor_plate";
-	tag = "icon-floor_plate (SOUTHWEST)"
 	},
 /area/template_noop)
 "D" = (
@@ -59,24 +51,20 @@
 "F" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
-	tag = "icon-S"
 	},
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/prison{
 	dir = 4;
 	icon_state = "cell_stripe";
-	tag = "icon-cell_stripe (EAST)"
 	},
 /area/template_noop)
 "K" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
-	tag = "icon-S"
 	},
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "cell_stripe";
-	tag = "icon-cell_stripe (WEST)"
 	},
 /area/template_noop)
 "L" = (
@@ -84,14 +72,12 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "floor_plate";
-	tag = "icon-floor_plate (SOUTHWEST)"
 	},
 /area/template_noop)
 "O" = (
 /turf/open/floor/prison{
 	dir = 4;
 	icon_state = "cell_stripe";
-	tag = "icon-cell_stripe (EAST)"
 	},
 /area/template_noop)
 "R" = (
@@ -116,7 +102,6 @@
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "cell_stripe";
-	tag = "icon-cell_stripe (WEST)"
 	},
 /area/template_noop)
 "Z" = (

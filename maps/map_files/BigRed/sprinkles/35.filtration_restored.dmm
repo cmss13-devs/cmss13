@@ -48,7 +48,6 @@
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/bigredv2/outside/se)
 "an" = (
@@ -97,21 +96,18 @@
 /turf/open/floor{
 	dir = 9;
 	icon_state = "asteroidwarning";
-	tag = "icon-asteroidwarning (NORTHWEST)"
 	},
 /area/bigredv2/outside/se)
 "aw" = (
 /turf/open/floor{
 	dir = 8;
 	icon_state = "asteroidwarning";
-	tag = "icon-asteroidwarning (WEST)"
 	},
 /area/bigredv2/outside/se)
 "ax" = (
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidwarning";
-	tag = "icon-asteroidwarning (NORTH)"
 	},
 /area/bigredv2/outside/se)
 "ay" = (
@@ -167,7 +163,6 @@
 "aG" = (
 /turf/open/mars{
 	icon_state = "mars_dirt_13";
-	tag = "icon-mars_dirt_13"
 	},
 /area/bigredv2/outside/se)
 "aH" = (
@@ -181,19 +176,16 @@
 /turf/open/floor{
 	dir = 4;
 	icon_state = "asteroidwarning";
-	tag = "icon-asteroidwarning (EAST)"
 	},
 /area/bigredv2/outside/se)
 "aJ" = (
 /turf/open/floor{
 	icon_state = "asteroidwarning";
-	tag = "icon-asteroidwarning"
 	},
 /area/bigredv2/outside/se)
 "aK" = (
 /turf/open/mars{
 	icon_state = "mars_dirt_10";
-	tag = "icon-mars_dirt_10"
 	},
 /area/bigredv2/outside/se)
 "aL" = (
@@ -248,7 +240,6 @@
 "aV" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "U-N";
-	tag = "icon-U-N"
 	},
 /obj/structure/machinery/computer3/server/rack,
 /turf/open/floor,
@@ -304,14 +295,12 @@
 /obj/structure/machinery/computer3/server/rack,
 /obj/effect/decal/warning_stripes{
 	icon_state = "U-S";
-	tag = "icon-U-S"
 	},
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
 "bh" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "U-S";
-	tag = "icon-U-S"
 	},
 /obj/structure/machinery/computer3/server/rack,
 /turf/open/floor,
@@ -319,7 +308,6 @@
 "bi" = (
 /obj/structure/machinery/light{
 	dir = 1;
-	tag = "icon-tube1 (NORTH)"
 	},
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
@@ -443,14 +431,12 @@
 	},
 /turf/open/floor/bluegrid{
 	icon_state = "bcircuitoff";
-	tag = "icon-bcircuitoff"
 	},
 /area/bigredv2/outside/filtration_plant)
 "bF" = (
 /obj/structure/cryofeed,
 /turf/open/floor/bluegrid{
 	icon_state = "bcircuitoff";
-	tag = "icon-bcircuitoff"
 	},
 /area/bigredv2/outside/filtration_plant)
 "bG" = (
@@ -465,7 +451,6 @@
 /obj/structure/window_frame/solaris/reinforced,
 /obj/item/shard{
 	icon_state = "small";
-	tag = "icon-small"
 	},
 /turf/open/floor/plating,
 /area/bigredv2/outside/filtration_plant)
@@ -484,14 +469,12 @@
 "bO" = (
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2";
-	tag = "icon-mars_cave_2"
 	},
 /area/bigredv2/outside/filtration_cave_cas)
 "bP" = (
 /obj/item/tank/air,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2";
-	tag = "icon-mars_cave_2"
 	},
 /area/bigredv2/outside/filtration_cave_cas)
 "bQ" = (
@@ -533,14 +516,12 @@
 /turf/open/floor{
 	dir = 4;
 	icon_state = "asteroidwarning";
-	tag = "icon-asteroidwarning (EAST)"
 	},
 /area/bigredv2/outside/filtration_plant)
 "bZ" = (
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/bigredv2/outside/filtration_plant)
 "cb" = (
@@ -560,7 +541,6 @@
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/bigredv2/outside/filtration_plant)
 "cf" = (
@@ -584,14 +564,12 @@
 /obj/structure/dispenser/oxygen,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2";
-	tag = "icon-mars_cave_2"
 	},
 /area/bigredv2/outside/filtration_cave_cas)
 "ci" = (
 /obj/item/tool/warning_cone,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2";
-	tag = "icon-mars_cave_2"
 	},
 /area/bigredv2/outside/filtration_cave_cas)
 "cj" = (
@@ -601,18 +579,15 @@
 "ck" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E-corner";
-	tag = "icon-E-corner"
 	},
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2";
-	tag = "icon-mars_cave_2"
 	},
 /area/bigredv2/outside/filtration_cave_cas)
 "cl" = (
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/bigredv2/outside/s)
 "cm" = (
@@ -623,7 +598,6 @@
 /turf/open/floor{
 	dir = 4;
 	icon_state = "asteroidwarning";
-	tag = "icon-asteroidwarning (EAST)"
 	},
 /area/bigredv2/outside/filtration_plant)
 "jh" = (
@@ -646,20 +620,17 @@
 /obj/effect/landmark/crap_item,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2";
-	tag = "icon-mars_cave_2"
 	},
 /area/bigredv2/outside/filtration_cave_cas)
 "zu" = (
 /turf/open/mars_cave{
 	icon_state = "mars_cave_7";
-	tag = "icon-mars_cave_7"
 	},
 /area/bigredv2/outside/filtration_cave_cas)
 "Ms" = (
 /obj/structure/machinery/computer3/server/rack,
 /obj/effect/decal/warning_stripes{
 	icon_state = "U-N";
-	tag = "icon-U-N"
 	},
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
@@ -669,7 +640,6 @@
 /turf/open/floor{
 	dir = 4;
 	icon_state = "asteroidwarning";
-	tag = "icon-asteroidwarning (EAST)"
 	},
 /area/bigredv2/outside/filtration_plant)
 "Rv" = (
@@ -677,7 +647,6 @@
 /turf/open/floor{
 	dir = 4;
 	icon_state = "asteroidwarning";
-	tag = "icon-asteroidwarning (EAST)"
 	},
 /area/bigredv2/outside/filtration_plant)
 "TX" = (
@@ -689,24 +658,20 @@
 "UH" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E-corner";
-	tag = "icon-E-corner"
 	},
 /turf/open/mars_cave{
 	icon_state = "mars_cave_7";
-	tag = "icon-mars_cave_7"
 	},
 /area/bigredv2/outside/filtration_cave_cas)
 "US" = (
 /turf/open/floor{
 	dir = 8;
 	icon_state = "asteroidwarning";
-	tag = "icon-asteroidwarning (WEST)"
 	},
 /area/bigredv2/outside/filtration_plant)
 "VW" = (
 /obj/structure/cargo_container{
 	icon_state = "red 0,0";
-	tag = "icon-red 0,0"
 	},
 /turf/open/floor{
 	dir = 1;
@@ -717,13 +682,11 @@
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2";
-	tag = "icon-mars_cave_2"
 	},
 /area/bigredv2/outside/filtration_cave_cas)
 "XC" = (
 /obj/structure/cargo_container{
 	icon_state = "red 2,0";
-	tag = "icon-red 2,0"
 	},
 /turf/open/floor{
 	dir = 1;
@@ -733,7 +696,6 @@
 "Yg" = (
 /obj/structure/cargo_container{
 	icon_state = "red 1,0";
-	tag = "icon-red 1,0"
 	},
 /turf/open/floor{
 	dir = 1;

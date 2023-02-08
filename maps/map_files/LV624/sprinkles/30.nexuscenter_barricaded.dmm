@@ -58,7 +58,6 @@
 /turf/open/floor{
 	dir = 5;
 	icon_state = "whiteblue";
-	tag = "icon-whiteblue (NORTHEAST)"
 	},
 /area/lv624/lazarus/main_hall)
 "ai" = (
@@ -904,7 +903,6 @@
 /turf/open/floor{
 	dir = 9;
 	icon_state = "whiteblue";
-	tag = "icon-whiteblue (NORTHWEST)"
 	},
 /area/lv624/lazarus/main_hall)
 "Hf" = (
@@ -1023,7 +1021,6 @@
 /turf/open/floor{
 	dir = 10;
 	icon_state = "whiteblue";
-	tag = "icon-whiteblue (SOUTHWEST)"
 	},
 /area/lv624/lazarus/main_hall)
 "Mf" = (
@@ -1038,7 +1035,6 @@
 /turf/open/floor{
 	dir = 6;
 	icon_state = "whiteblue";
-	tag = "icon-whitehall (WEST)"
 	},
 /area/lv624/lazarus/main_hall)
 "Nk" = (

@@ -23,7 +23,6 @@
 /obj/structure/machinery/medical_pod/sleeper,
 /turf/open/floor{
 	icon_state = "whitebluefull";
-	tag = "icon-whitebluefull"
 	},
 /area/lv624/lazarus/medbay)
 "cQ" = (
@@ -33,7 +32,6 @@
 	},
 /turf/open/floor{
 	icon_state = "whitebluefull";
-	tag = "icon-whitebluefull"
 	},
 /area/lv624/lazarus/medbay)
 "fX" = (
@@ -44,7 +42,6 @@
 "gp" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_10";
-	tag = "icon-plant-10"
 	},
 /turf/open/floor/plating{
 	icon_state = "platingdmg3"
@@ -71,7 +68,6 @@
 	},
 /turf/open/floor{
 	icon_state = "whitebluefull";
-	tag = "icon-whitebluefull"
 	},
 /area/lv624/lazarus/medbay)
 "iq" = (
@@ -92,7 +88,6 @@
 /obj/structure/machinery/body_scanconsole,
 /turf/open/floor{
 	icon_state = "whitebluefull";
-	tag = "icon-whitebluefull"
 	},
 /area/lv624/lazarus/medbay)
 "jW" = (
@@ -127,7 +122,6 @@
 /obj/structure/machinery/cm_vending/sorted/medical/no_access,
 /turf/open/floor{
 	icon_state = "whitebluefull";
-	tag = "icon-whitebluefull"
 	},
 /area/lv624/lazarus/medbay)
 "lD" = (
@@ -164,7 +158,6 @@
 /turf/open/floor{
 	dir = 4;
 	icon_state = "whitebluecorner";
-	tag = "icon-whiteblue (SOUTHWEST)"
 	},
 /area/lv624/lazarus/medbay)
 "nG" = (
@@ -178,7 +171,6 @@
 /turf/open/floor{
 	dir = 1;
 	icon_state = "whiteblue";
-	tag = "icon-whiteblue (NORTH)"
 	},
 /area/lv624/lazarus/medbay)
 "ot" = (
@@ -231,7 +223,6 @@
 /turf/open/floor{
 	dir = 5;
 	icon_state = "whiteblue";
-	tag = "icon-whiteblue (NORTHEAST)"
 	},
 /area/lv624/lazarus/medbay)
 "uV" = (
@@ -261,7 +252,6 @@
 	},
 /turf/open/floor{
 	icon_state = "whitebluefull";
-	tag = "icon-whitebluefull"
 	},
 /area/lv624/lazarus/medbay)
 "xM" = (
@@ -306,7 +296,6 @@
 /turf/open/floor{
 	dir = 4;
 	icon_state = "whiteblue";
-	tag = "icon-whiteblue (EAST)"
 	},
 /area/lv624/lazarus/medbay)
 "zS" = (
@@ -317,7 +306,6 @@
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
 	icon_state = "whitebluefull";
-	tag = "icon-whitebluefull"
 	},
 /area/lv624/lazarus/medbay)
 "Be" = (
@@ -341,7 +329,6 @@
 /obj/item/tank/anesthetic,
 /turf/open/floor{
 	icon_state = "whitebluefull";
-	tag = "icon-whitebluefull"
 	},
 /area/lv624/lazarus/medbay)
 "Df" = (
@@ -400,7 +387,6 @@
 /obj/structure/machinery/bioprinter,
 /turf/open/floor{
 	icon_state = "whitebluefull";
-	tag = "icon-whitebluefull"
 	},
 /area/lv624/lazarus/medbay)
 "Iy" = (
@@ -415,7 +401,6 @@
 /turf/open/floor{
 	dir = 6;
 	icon_state = "whiteblue";
-	tag = "icon-whitehall (WEST)"
 	},
 /area/lv624/lazarus/medbay)
 "Jc" = (
@@ -481,11 +466,9 @@
 "MW" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_10";
-	tag = "icon-plant-10"
 	},
 /turf/open/floor{
 	icon_state = "whitebluefull";
-	tag = "icon-whitebluefull"
 	},
 /area/lv624/lazarus/medbay)
 "Ny" = (
@@ -638,7 +621,6 @@
 "YJ" = (
 /turf/open/floor{
 	icon_state = "whitebluefull";
-	tag = "icon-whitebluefull"
 	},
 /area/lv624/lazarus/medbay)
 "YV" = (

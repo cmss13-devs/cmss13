@@ -167,7 +167,6 @@
 "aF" = (
 /obj/structure/cargo_container{
 	icon_state = "green 0,0";
-	tag = "icon-green 0,0"
 	},
 /turf/open/floor{
 	dir = 1;
@@ -180,7 +179,6 @@
 	},
 /obj/structure/cargo_container{
 	icon_state = "green 1,0";
-	tag = "icon-green 1,0"
 	},
 /turf/open/floor{
 	dir = 1;
@@ -193,7 +191,6 @@
 	},
 /obj/structure/cargo_container{
 	icon_state = "green 2,0";
-	tag = "icon-green 2,0"
 	},
 /turf/open/floor{
 	dir = 1;
@@ -275,7 +272,6 @@
 "aS" = (
 /obj/structure/cargo_container{
 	icon_state = "red 0,0";
-	tag = "icon-red 0,0"
 	},
 /turf/open/floor{
 	dir = 1;
@@ -285,7 +281,6 @@
 "aT" = (
 /obj/structure/cargo_container{
 	icon_state = "red 1,0";
-	tag = "icon-red 1,0"
 	},
 /turf/open/floor{
 	dir = 1;
@@ -295,7 +290,6 @@
 "aU" = (
 /obj/structure/cargo_container{
 	icon_state = "red 2,0";
-	tag = "icon-red 2,0"
 	},
 /turf/open/floor{
 	dir = 1;
@@ -328,7 +322,6 @@
 "aY" = (
 /obj/structure/cargo_container{
 	icon_state = "WY 0,0";
-	tag = "icon-WY 0,0"
 	},
 /turf/open/floor{
 	dir = 1;
@@ -338,7 +331,6 @@
 "aZ" = (
 /obj/structure/cargo_container{
 	icon_state = "WY 1,0";
-	tag = "icon-WY 1,0"
 	},
 /turf/open/floor{
 	dir = 1;
@@ -348,7 +340,6 @@
 "ba" = (
 /obj/structure/cargo_container{
 	icon_state = "WY 2,0";
-	tag = "icon-WY 2,0"
 	},
 /turf/open/floor{
 	dir = 1;
@@ -364,7 +355,6 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/cargo_container{
 	icon_state = "blue 0,0";
-	tag = "icon-blue 0,0"
 	},
 /turf/open/floor{
 	dir = 1;
@@ -374,7 +364,6 @@
 "bd" = (
 /obj/structure/cargo_container{
 	icon_state = "blue 1,0";
-	tag = "icon-blue 1,0"
 	},
 /turf/open/floor{
 	dir = 1;
@@ -384,7 +373,6 @@
 "be" = (
 /obj/structure/cargo_container{
 	icon_state = "blue 2,0";
-	tag = "icon-blue 2,0"
 	},
 /turf/open/floor{
 	dir = 1;
@@ -394,7 +382,6 @@
 "bf" = (
 /obj/structure/cargo_container{
 	icon_state = "gorg 0,0";
-	tag = "icon-WY 0,0"
 	},
 /turf/open/floor{
 	dir = 1;
@@ -404,7 +391,6 @@
 "bg" = (
 /obj/structure/cargo_container{
 	icon_state = "gorg 2,0";
-	tag = "icon-WY 0,0"
 	},
 /turf/open/floor{
 	dir = 1;
@@ -479,7 +465,6 @@
 /obj/effect/landmark/corpsespawner/security,
 /obj/structure/machinery/light{
 	dir = 4;
-	tag = "icon-tube1 (EAST)"
 	},
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
@@ -507,7 +492,6 @@
 /obj/effect/spawner/random/tool,
 /obj/structure/machinery/light{
 	dir = 4;
-	tag = "icon-tube1 (EAST)"
 	},
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
@@ -597,7 +581,6 @@
 	},
 /obj/structure/cargo_container{
 	icon_state = "gorg 0,0";
-	tag = "icon-WY 0,0"
 	},
 /turf/open/floor{
 	dir = 1;
@@ -611,7 +594,6 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/cargo_container{
 	icon_state = "gorg 2,0";
-	tag = "icon-WY 0,0"
 	},
 /turf/open/floor{
 	dir = 1;
@@ -625,7 +607,6 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/cargo_container{
 	icon_state = "gorg 0,0";
-	tag = "icon-WY 0,0"
 	},
 /turf/open/floor{
 	dir = 1;
@@ -638,7 +619,6 @@
 	},
 /obj/structure/cargo_container{
 	icon_state = "gorg 2,0";
-	tag = "icon-WY 0,0"
 	},
 /turf/open/floor{
 	dir = 1;
@@ -766,7 +746,6 @@
 /obj/structure/reagent_dispensers/fueltank,
 /obj/structure/machinery/light{
 	dir = 4;
-	tag = "icon-tube1 (EAST)"
 	},
 /turf/open/floor,
 /area/bigredv2/outside/cargo)

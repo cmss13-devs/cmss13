@@ -81,7 +81,6 @@
 "afg" = (
 /turf/closed/wall/r_wall/elevator{
 	dir = 8;
-	tag = "icon-wall (WEST)"
 	},
 /area/varadero/interior/hall_N)
 "afi" = (
@@ -114,7 +113,6 @@
 "afR" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
-	tag = "icon-W"
 	},
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -157,12 +155,10 @@
 "ahK" = (
 /obj/structure/machinery/landinglight/ds2/delaytwo{
 	dir = 4;
-	tag = "icon-landingstripe (EAST)"
 	},
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/varadero/exterior/lz1_near)
 "aii" = (
@@ -185,7 +181,6 @@
 	},
 /turf/open/floor/plating/icefloor{
 	icon_state = "warnplate";
-	tag = "icon-warnplate"
 	},
 /area/varadero/exterior/lz1_near)
 "akd" = (
@@ -196,7 +191,6 @@
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor{
 	icon_state = "freezerfloor";
-	tag = "icon-freezerfloor"
 	},
 /area/varadero/interior/cargo)
 "akf" = (
@@ -279,7 +273,6 @@
 	},
 /obj/structure/machinery/light/small{
 	dir = 1;
-	tag = "icon-bulb1 (NORTH)"
 	},
 /turf/open/floor/plating/icefloor{
 	icon_state = "asteroidplating"
@@ -365,7 +358,6 @@
 "aqb" = (
 /obj/structure/machinery/light{
 	dir = 4;
-	tag = "icon-tube1 (EAST)"
 	},
 /turf/open/floor/shiva{
 	dir = 4;
@@ -570,7 +562,6 @@
 	},
 /turf/open/floor{
 	icon_state = "freezerfloor";
-	tag = "icon-freezerfloor"
 	},
 /area/varadero/interior/cargo)
 "aBB" = (
@@ -642,7 +633,6 @@
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/varadero/exterior/lz1_near)
 "aDu" = (
@@ -775,7 +765,6 @@
 	dir = 4;
 	icon_state = "leftsecure";
 	id = "brg";
-	tag = "icon-leftsecure (EAST)"
 	},
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -788,7 +777,6 @@
 /obj/structure/closet/firecloset/full,
 /obj/structure/machinery/light{
 	dir = 8;
-	tag = "icon-tube1 (WEST)"
 	},
 /obj/structure/machinery/alarm{
 	dir = 4;
@@ -817,7 +805,6 @@
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/varadero/exterior/lz1_near)
 "aHM" = (
@@ -936,7 +923,6 @@
 "aLV" = (
 /obj/structure/machinery/light{
 	dir = 4;
-	tag = "icon-tube1 (EAST)"
 	},
 /turf/open/floor/shiva{
 	dir = 8;
@@ -983,7 +969,6 @@
 /obj/structure/closet/crate/freezer,
 /turf/open/floor{
 	icon_state = "freezerfloor";
-	tag = "icon-freezerfloor"
 	},
 /area/varadero/interior/cargo)
 "aPU" = (
@@ -1044,7 +1029,6 @@
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/varadero/exterior/lz1_near)
 "aTc" = (
@@ -1084,7 +1068,6 @@
 "aTS" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
-	tag = "icon-W"
 	},
 /obj/effect/landmark/survivor_spawner,
 /turf/open/floor/shiva{
@@ -1151,7 +1134,6 @@
 /turf/open/floor{
 	dir = 8;
 	icon_state = "darkgreencorners2";
-	tag = "icon-darkgreencorners2 (WEST)"
 	},
 /area/varadero/interior/hall_SE)
 "aXm" = (
@@ -1290,7 +1272,6 @@
 	},
 /obj/structure/machinery/light{
 	dir = 8;
-	tag = "icon-tube1 (WEST)"
 	},
 /obj/effect/decal/strata_decals/grime/grime3{
 	dir = 4
@@ -1516,7 +1497,6 @@
 	},
 /turf/open/floor{
 	icon_state = "dark2";
-	tag = "icon-dark2"
 	},
 /area/varadero/interior/morgue)
 "bkG" = (
@@ -1539,7 +1519,6 @@
 /turf/open/floor/plating/icefloor{
 	dir = 8;
 	icon_state = "warnplate";
-	tag = "icon-warnplate (WEST)"
 	},
 /area/varadero/exterior/lz1_near)
 "bmt" = (
@@ -1768,12 +1747,10 @@
 "bwP" = (
 /obj/structure/machinery/landinglight/ds2{
 	dir = 1;
-	tag = "icon-landingstripe (NORTH)"
 	},
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/varadero/exterior/lz1_near)
 "bxc" = (
@@ -1827,7 +1804,6 @@
 "bzn" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
-	tag = "icon-E"
 	},
 /turf/open/floor/shiva{
 	dir = 1;
@@ -1844,7 +1820,6 @@
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/varadero/interior/comms3)
 "bBt" = (
@@ -1854,15 +1829,12 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
 	pixel_y = 1;
-	tag = "icon-N"
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
-	tag = "icon-W"
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
-	tag = "icon-S"
 	},
 /turf/open/floor/plating,
 /area/varadero/interior_protected/caves/digsite)
@@ -1978,7 +1950,6 @@
 "bGR" = (
 /obj/structure/machinery/light{
 	dir = 4;
-	tag = "icon-tube1 (EAST)"
 	},
 /turf/open/floor/shiva{
 	dir = 4;
@@ -2075,7 +2046,6 @@
 /obj/item/tool/warning_cone,
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
-	tag = "icon-S"
 	},
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior_protected/caves/digsite)
@@ -2176,13 +2146,11 @@
 "bNN" = (
 /obj/structure/machinery/landinglight/ds2/delayone{
 	dir = 4;
-	tag = "icon-landingstripe (EAST)"
 	},
 /obj/item/prop/almayer/comp_open,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/varadero/exterior/lz1_near)
 "bOZ" = (
@@ -2260,7 +2228,6 @@
 /obj/structure/reagent_dispensers/beerkeg/alt_dark,
 /turf/open/floor{
 	icon_state = "freezerfloor";
-	tag = "icon-freezerfloor"
 	},
 /area/varadero/interior/cargo)
 "bRp" = (
@@ -2352,7 +2319,6 @@
 "bVu" = (
 /obj/structure/pipes/standard/simple/visible{
 	dir = 5;
-	tag = "icon-intact (NORTHEAST)"
 	},
 /turf/open/floor/shiva{
 	icon_state = "red"
@@ -2379,7 +2345,6 @@
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/varadero/interior/maintenance/north)
 "bZD" = (
@@ -2470,7 +2435,6 @@
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/varadero/interior/comms3)
 "ccf" = (
@@ -2492,7 +2456,6 @@
 	},
 /obj/structure/bed/chair/office/dark{
 	dir = 4;
-	tag = "icon-officechair_dark (EAST)"
 	},
 /turf/open/floor/plating/icefloor{
 	icon_state = "asteroidplating"
@@ -2554,7 +2517,6 @@
 "cgA" = (
 /obj/structure/machinery/landinglight/ds2/delayone{
 	dir = 4;
-	tag = "icon-landingstripe (EAST)"
 	},
 /obj/structure/machinery/floodlight/landing/floor{
 	pixel_x = -1
@@ -2562,7 +2524,6 @@
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/varadero/exterior/lz1_near)
 "cgB" = (
@@ -2591,7 +2552,6 @@
 "chU" = (
 /obj/structure/shuttle/engine/propulsion/burst{
 	dir = 4;
-	tag = "icon-propulsion (EAST)"
 	},
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior_protected/vessel)
@@ -2717,7 +2677,6 @@
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/varadero/exterior/lz1_near)
 "cmU" = (
@@ -2728,7 +2687,6 @@
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/varadero/exterior/lz1_near)
 "cnW" = (
@@ -2833,7 +2791,6 @@
 /obj/structure/toilet,
 /obj/structure/machinery/light/small{
 	dir = 1;
-	tag = "icon-bulb1 (NORTH)"
 	},
 /obj/effect/landmark/corpsespawner/miner,
 /obj/effect/decal/cleanable/blood,
@@ -3032,7 +2989,6 @@
 /obj/structure/filingcabinet,
 /obj/structure/machinery/light/small{
 	dir = 8;
-	tag = "icon-bulb1 (WEST)"
 	},
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/shiva{
@@ -3155,14 +3111,12 @@
 "cGV" = (
 /turf/closed/wall/r_wall/elevator{
 	dir = 10;
-	tag = "icon-wall (SOUTHWEST)"
 	},
 /area/varadero/interior/records)
 "cHf" = (
 /obj/structure/filingcabinet,
 /obj/structure/machinery/light/small{
 	dir = 8;
-	tag = "icon-bulb1 (WEST)"
 	},
 /turf/open/floor/shiva{
 	dir = 8;
@@ -3176,11 +3130,9 @@
 	},
 /obj/structure/shuttle/engine/heater{
 	dir = 4;
-	tag = "icon-heater (EAST)"
 	},
 /obj/structure/shuttle/engine/heater{
 	dir = 8;
-	tag = "icon-heater (WEST)"
 	},
 /obj/item/device/flashlight/slime,
 /obj/structure/window/phoronreinforced{
@@ -3194,7 +3146,6 @@
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/varadero/exterior/lz1_near)
 "cIB" = (
@@ -3269,7 +3220,6 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 4;
 	icon_state = "chair";
-	tag = "icon-chair (EAST)"
 	},
 /obj/structure/machinery/light{
 	dir = 8
@@ -3367,7 +3317,6 @@
 "cNF" = (
 /obj/structure/machinery/light{
 	dir = 4;
-	tag = "icon-tube1 (EAST)"
 	},
 /turf/open/floor/shiva{
 	icon_state = "floor3"
@@ -3615,13 +3564,11 @@
 "cYr" = (
 /obj/structure/machinery/landinglight/ds2/delaytwo{
 	dir = 4;
-	tag = "icon-landingstripe (EAST)"
 	},
 /obj/item/stack/cable_coil/cut,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/varadero/exterior/lz1_near)
 "cYB" = (
@@ -3639,12 +3586,10 @@
 /area/varadero/interior/court)
 "cYZ" = (
 /obj/structure/machinery/landinglight/ds2{
-	tag = "icon-landingstripe"
 	},
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/varadero/exterior/lz1_near)
 "cZN" = (
@@ -3877,7 +3822,6 @@
 "dmN" = (
 /turf/closed/wall/r_wall/elevator{
 	dir = 5;
-	tag = "icon-wall (NORTHEAST)"
 	},
 /area/varadero/interior/records)
 "dmS" = (
@@ -3922,7 +3866,6 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
 	pixel_y = 1;
-	tag = "icon-N"
 	},
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior_protected/caves/digsite)
@@ -3960,7 +3903,6 @@
 "dpZ" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
-	tag = "icon-S"
 	},
 /turf/open/floor/shiva{
 	dir = 8;
@@ -3988,7 +3930,6 @@
 	},
 /turf/open/floor{
 	icon_state = "freezerfloor";
-	tag = "icon-freezerfloor"
 	},
 /area/varadero/interior/cargo)
 "drK" = (
@@ -4239,14 +4180,12 @@
 	},
 /obj/structure/holohoop{
 	dir = 4;
-	tag = "icon-hoop (NORTH)"
 	},
 /turf/open/floor/wood,
 /area/varadero/interior/court)
 "dIk" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "NW-out";
-	tag = "icon-NW-out"
 	},
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior_protected/caves/digsite)
@@ -4469,7 +4408,6 @@
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/varadero/interior/comms1)
 "dQT" = (
@@ -4570,7 +4508,6 @@
 "dXd" = (
 /turf/closed/wall/r_wall/elevator{
 	dir = 5;
-	tag = "icon-wall (NORTHEAST)"
 	},
 /area/varadero/interior/hall_N)
 "dXJ" = (
@@ -4739,12 +4676,10 @@
 "efU" = (
 /obj/structure/machinery/landinglight/ds2{
 	dir = 4;
-	tag = "icon-landingstripe (EAST)"
 	},
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/varadero/exterior/lz1_near)
 "egj" = (
@@ -4909,7 +4844,6 @@
 "eqB" = (
 /obj/structure/bed/chair{
 	dir = 8;
-	tag = "icon-chair (WEST)"
 	},
 /turf/open/floor/shiva{
 	icon_state = "floor3"
@@ -4971,7 +4905,6 @@
 "esO" = (
 /obj/structure/machinery/light{
 	dir = 1;
-	tag = "icon-tube1 (NORTH)"
 	},
 /turf/open/floor{
 	icon_state = "wood"
@@ -5012,7 +4945,6 @@
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/varadero/exterior/lz1_near)
 "euM" = (
@@ -5036,12 +4968,10 @@
 "evX" = (
 /obj/structure/machinery/landinglight/ds2/delaytwo{
 	dir = 1;
-	tag = "icon-landingstripe (NORTH)"
 	},
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/varadero/exterior/lz1_near)
 "ewn" = (
@@ -5167,7 +5097,6 @@
 /obj/structure/disposalpipe/segment{
 	dir = 1;
 	icon_state = "pipe-c";
-	tag = "icon-pipe-c (NORTH)"
 	},
 /obj/structure/pipes/standard/manifold/hidden/green,
 /turf/open/floor/shiva{
@@ -5216,13 +5145,11 @@
 "eBs" = (
 /turf/closed/wall/r_wall/elevator{
 	dir = 9;
-	tag = "icon-wall (NORTHWEST)"
 	},
 /area/varadero/interior/records)
 "eBG" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
-	tag = "icon-S"
 	},
 /turf/open/floor/shiva{
 	icon_state = "floor3"
@@ -5231,7 +5158,6 @@
 "eBL" = (
 /turf/open/floor{
 	icon_state = "freezerfloor";
-	tag = "icon-freezerfloor"
 	},
 /area/varadero/interior/cargo)
 "eBS" = (
@@ -5482,7 +5408,6 @@
 "ePb" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
-	tag = "icon-E"
 	},
 /turf/open/floor/shiva{
 	dir = 1
@@ -5724,7 +5649,6 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
 	pixel_y = 1;
-	tag = "icon-N"
 	},
 /turf/open/floor/shiva{
 	icon_state = "floor3"
@@ -5898,7 +5822,6 @@
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/varadero/exterior/lz1_near)
 "ffx" = (
@@ -6170,7 +6093,6 @@
 "fqY" = (
 /obj/structure/disposalpipe/segment{
 	dir = 8;
-	tag = "icon-pipe-s (WEST)"
 	},
 /obj/structure/machinery/light,
 /turf/open/floor/shiva{
@@ -6198,7 +6120,6 @@
 /obj/structure/fence,
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
-	tag = "icon-W"
 	},
 /turf/open/floor/plating,
 /area/varadero/interior_protected/caves/digsite)
@@ -6389,7 +6310,6 @@
 "fEu" = (
 /turf/open/floor{
 	icon_state = "bcircuit";
-	tag = "icon-bcircuit"
 	},
 /area/varadero/interior/electrical)
 "fEI" = (
@@ -6406,7 +6326,6 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/light{
 	dir = 4;
-	tag = "icon-tube1 (EAST)"
 	},
 /turf/open/floor/shiva{
 	dir = 4;
@@ -6455,7 +6374,6 @@
 "fFI" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 8;
-	tag = "icon-officechair_dark (WEST)"
 	},
 /turf/open/floor/shiva{
 	icon_state = "floor3"
@@ -6519,7 +6437,6 @@
 /obj/structure/disposalpipe/segment{
 	dir = 1;
 	icon_state = "pipe-c";
-	tag = "icon-pipe-c (NORTH)"
 	},
 /turf/open/floor/shiva{
 	icon_state = "multi_tiles"
@@ -6597,7 +6514,6 @@
 	dir = 1;
 	icon_state = "leftsecure";
 	id = "brg";
-	tag = "icon-leftsecure (NORTH)"
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/shiva{
@@ -6635,7 +6551,6 @@
 "fLY" = (
 /turf/open/gm/coast{
 	dir = 6;
-	tag = "icon-beach (SOUTHEAST)"
 	},
 /area/varadero/exterior/pontoon_beach)
 "fMq" = (
@@ -6758,12 +6673,10 @@
 "fUF" = (
 /obj/structure/machinery/landinglight/ds2/delaythree{
 	dir = 8;
-	tag = "icon-landingstripe (WEST)"
 	},
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/varadero/exterior/lz1_near)
 "fUJ" = (
@@ -6788,7 +6701,6 @@
 "fVw" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
-	tag = "icon-S"
 	},
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior_protected/vessel)
@@ -6870,12 +6782,10 @@
 /area/varadero/interior/hall_SE)
 "fXH" = (
 /obj/structure/machinery/landinglight/ds2/delaythree{
-	tag = "icon-landingstripe"
 	},
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/varadero/exterior/lz1_near)
 "fXR" = (
@@ -7029,7 +6939,6 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 1;
 	icon_state = "chair";
-	tag = "icon-chair (NORTH)"
 	},
 /turf/open/floor/shiva{
 	dir = 8;
@@ -7137,7 +7046,6 @@
 "ggk" = (
 /turf/closed/wall/r_wall/elevator{
 	dir = 8;
-	tag = "icon-wall (WEST)"
 	},
 /area/varadero/interior/records)
 "ghb" = (
@@ -7736,14 +7644,12 @@
 "gFY" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
-	tag = "icon-SW-out"
 	},
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior_protected/caves/digsite)
 "gHH" = (
 /obj/structure/machinery/light{
 	dir = 4;
-	tag = "icon-tube1 (EAST)"
 	},
 /turf/open/floor/shiva{
 	dir = 8;
@@ -7933,7 +7839,6 @@
 "gPZ" = (
 /obj/structure/bed/chair/office/light{
 	dir = 4;
-	tag = "icon-officechair_white (EAST)"
 	},
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -7983,7 +7888,6 @@
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/varadero/exterior/lz1_near)
 "gTe" = (
@@ -8144,7 +8048,6 @@
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/varadero/exterior/lz1_near)
 "hcT" = (
@@ -8306,7 +8209,6 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "NW-out";
 	pixel_y = 1;
-	tag = "icon-NW-out"
 	},
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior_protected/caves/digsite)
@@ -8409,7 +8311,6 @@
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/varadero/interior/maintenance/north)
 "hst" = (
@@ -8465,7 +8366,6 @@
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/varadero/exterior/lz1_near)
 "huz" = (
@@ -8528,7 +8428,6 @@
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/varadero/interior/comms1)
 "hwN" = (
@@ -8705,7 +8604,6 @@
 	},
 /turf/open/floor{
 	icon_state = "dark2";
-	tag = "icon-dark2"
 	},
 /area/varadero/interior/hall_N)
 "hGm" = (
@@ -8806,7 +8704,6 @@
 "hKe" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 1;
-	tag = "icon-officechair_dark (NORTH)"
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/shiva{
@@ -9021,11 +8918,9 @@
 "hTO" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
-	tag = "icon-W"
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
-	tag = "icon-S"
 	},
 /turf/open/floor/plating,
 /area/varadero/interior_protected/vessel)
@@ -9086,7 +8981,6 @@
 "hUU" = (
 /obj/structure/machinery/requests_console{
 	icon_state = "req_comp_open";
-	tag = "icon-req_comp_open"
 	},
 /turf/closed/wall,
 /area/varadero/interior/cargo)
@@ -9142,7 +9036,6 @@
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/varadero/interior/comms3)
 "hYf" = (
@@ -9217,7 +9110,6 @@
 "iaO" = (
 /turf/closed/wall/r_wall/elevator{
 	dir = 9;
-	tag = "icon-wall (NORTHWEST)"
 	},
 /area/varadero/interior/hall_N)
 "ibo" = (
@@ -9234,7 +9126,6 @@
 "iby" = (
 /obj/structure/machinery/light{
 	dir = 4;
-	tag = "icon-tube1 (EAST)"
 	},
 /obj/structure/machinery/chem_dispenser,
 /turf/open/floor/shiva{
@@ -9277,7 +9168,6 @@
 "icM" = (
 /obj/structure/bed/chair{
 	dir = 8;
-	tag = "icon-chair (WEST)"
 	},
 /turf/open/floor/shiva{
 	dir = 4;
@@ -9426,7 +9316,6 @@
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/varadero/interior/comms1)
 "ihG" = (
@@ -9518,7 +9407,6 @@
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/varadero/exterior/lz1_near)
 "ioc" = (
@@ -9631,12 +9519,10 @@
 /area/varadero/interior/security)
 "irk" = (
 /obj/structure/machinery/landinglight/ds2/delayone{
-	tag = "icon-landingstripe"
 	},
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/varadero/exterior/lz1_near)
 "irw" = (
@@ -9670,7 +9556,6 @@
 "itP" = (
 /turf/closed/wall/r_wall/elevator{
 	dir = 6;
-	tag = "icon-wall (SOUTHEAST)"
 	},
 /area/varadero/interior/hall_N)
 "itT" = (
@@ -9718,7 +9603,6 @@
 	},
 /obj/structure/disposalpipe/junction{
 	dir = 8;
-	tag = "icon-pipe-j1 (WEST)"
 	},
 /turf/open/floor/shiva{
 	icon_state = "multi_tiles"
@@ -9836,17 +9720,14 @@
 /turf/open/floor{
 	dir = 9;
 	icon_state = "asteroidwarning";
-	tag = "icon-asteroidwarning (NORTHWEST)"
 	},
 /area/varadero/exterior/lz1_near)
 "iyk" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
-	tag = "icon-S"
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
-	tag = "icon-W"
 	},
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior_protected/vessel)
@@ -10208,7 +10089,6 @@
 "iLL" = (
 /turf/open/gm/coast{
 	dir = 6;
-	tag = "icon-beach (SOUTHEAST)"
 	},
 /area/varadero/exterior/eastbeach)
 "iLN" = (
@@ -10228,7 +10108,6 @@
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/varadero/interior/comms1)
 "iMi" = (
@@ -10354,7 +10233,6 @@
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/varadero/exterior/lz1_near)
 "iQN" = (
@@ -10446,7 +10324,6 @@
 "iTd" = (
 /obj/structure/morgue{
 	dir = 8;
-	tag = "icon-morgue1 (WEST)"
 	},
 /turf/open/floor/shiva{
 	icon_state = "floor3"
@@ -10462,7 +10339,6 @@
 "iTO" = (
 /obj/structure/disposalpipe/segment{
 	dir = 8;
-	tag = "icon-pipe-s (WEST)"
 	},
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	name = "\improper Underground Security";
@@ -10484,7 +10360,6 @@
 	},
 /obj/structure/machinery/light{
 	dir = 8;
-	tag = "icon-tube1 (WEST)"
 	},
 /obj/item/storage/pill_bottle/bicaridine/skillless{
 	pixel_x = 6
@@ -10499,7 +10374,6 @@
 /obj/structure/machinery/constructable_frame,
 /obj/structure/machinery/light{
 	dir = 8;
-	tag = "icon-tube1 (WEST)"
 	},
 /turf/open/floor/shiva{
 	dir = 8;
@@ -10538,7 +10412,6 @@
 /obj/structure/disposalpipe/segment{
 	dir = 1;
 	icon_state = "pipe-c";
-	tag = "icon-pipe-c (NORTH)"
 	},
 /turf/open/floor/shiva{
 	icon_state = "floor3"
@@ -10549,7 +10422,6 @@
 	dir = 8;
 	pixel_x = -13;
 	pixel_y = 11;
-	tag = "icon-officechair_dark (WEST)"
 	},
 /turf/open/floor/plating/icefloor{
 	icon_state = "asteroidplating"
@@ -10567,7 +10439,6 @@
 "iYb" = (
 /obj/structure/machinery/light{
 	dir = 1;
-	tag = "icon-tube1 (NORTH)"
 	},
 /obj/structure/largecrate/random/mini/med{
 	pixel_x = -10;
@@ -10581,7 +10452,6 @@
 "iYi" = (
 /turf/closed/wall/r_wall/elevator{
 	dir = 1;
-	tag = "icon-wall (NORTH)"
 	},
 /area/varadero/interior/records)
 "iYE" = (
@@ -10683,7 +10553,6 @@
 	dir = 8;
 	pixel_x = -6;
 	pixel_y = 3;
-	tag = "icon-officechair_dark (WEST)"
 	},
 /turf/open/floor/plating/icefloor{
 	icon_state = "asteroidplating"
@@ -10728,13 +10597,11 @@
 /turf/open/floor{
 	dir = 6;
 	icon_state = "asteroidwarning";
-	tag = "icon-asteroidwarning (NORTHWEST)"
 	},
 /area/varadero/exterior/lz1_near)
 "jgQ" = (
 /obj/structure/bed/chair/office/light{
 	dir = 8;
-	tag = "icon-officechair_white (EAST)"
 	},
 /turf/open/floor/shiva{
 	icon_state = "wredfull"
@@ -10863,11 +10730,9 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "NW-out";
 	pixel_y = 1;
-	tag = "icon-NW-out"
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
-	tag = "icon-SW-out"
 	},
 /turf/open/floor/plating,
 /area/varadero/interior_protected/caves/digsite)
@@ -10900,7 +10765,6 @@
 /turf/open/floor/plating/icefloor{
 	dir = 1;
 	icon_state = "warnplate";
-	tag = "icon-warnplate (NORTH)"
 	},
 /area/varadero/exterior/lz1_near)
 "joO" = (
@@ -11059,12 +10923,10 @@
 "jyq" = (
 /obj/structure/machinery/landinglight/ds2/delaytwo{
 	dir = 8;
-	tag = "icon-landingstripe (WEST)"
 	},
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/varadero/exterior/lz1_near)
 "jyw" = (
@@ -11161,7 +11023,6 @@
 "jBY" = (
 /obj/structure/machinery/light{
 	dir = 1;
-	tag = "icon-tube1 (NORTH)"
 	},
 /turf/open/floor/shiva{
 	icon_state = "green"
@@ -11271,7 +11132,6 @@
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/varadero/exterior/lz1_near)
 "jKg" = (
@@ -11403,7 +11263,6 @@
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/varadero/interior/comms1)
 "jPC" = (
@@ -11504,7 +11363,6 @@
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/varadero/interior/comms1)
 "jSX" = (
@@ -11644,7 +11502,6 @@
 "jZw" = (
 /obj/structure/machinery/light/small{
 	dir = 8;
-	tag = "icon-bulb1 (WEST)"
 	},
 /obj/structure/pipes/vents/pump,
 /obj/structure/flora/pottedplant{
@@ -11745,12 +11602,10 @@
 "kdV" = (
 /obj/structure/machinery/light{
 	dir = 4;
-	tag = "icon-tube1 (EAST)"
 	},
 /turf/open/floor/plating/icefloor{
 	dir = 1;
 	icon_state = "warnplate";
-	tag = "icon-warnplate (NORTH)"
 	},
 /area/varadero/exterior/lz1_near)
 "keo" = (
@@ -11784,7 +11639,6 @@
 "kfj" = (
 /obj/structure/pipes/standard/simple/visible{
 	dir = 5;
-	tag = "icon-intact (NORTHEAST)"
 	},
 /turf/open/floor/shiva{
 	icon_state = "multi_tiles"
@@ -12029,7 +11883,6 @@
 "krP" = (
 /obj/structure/disposalpipe/segment{
 	dir = 8;
-	tag = "icon-pipe-s (WEST)"
 	},
 /turf/open/floor/shiva{
 	icon_state = "red"
@@ -12144,7 +11997,6 @@
 "kvQ" = (
 /obj/structure/machinery/landinglight/ds2/delaythree{
 	dir = 8;
-	tag = "icon-landingstripe (WEST)"
 	},
 /obj/structure/machinery/floodlight/landing/floor{
 	pixel_x = 1
@@ -12152,7 +12004,6 @@
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/varadero/exterior/lz1_near)
 "kvS" = (
@@ -12506,7 +12357,6 @@
 	},
 /obj/structure/machinery/light{
 	dir = 8;
-	tag = "icon-tube1 (WEST)"
 	},
 /turf/open/floor/wood,
 /area/varadero/interior/bunks)
@@ -12514,7 +12364,6 @@
 /turf/open/floor{
 	dir = 10;
 	icon_state = "asteroidwarning";
-	tag = "icon-asteroidwarning (NORTHWEST)"
 	},
 /area/varadero/exterior/lz1_near)
 "kIK" = (
@@ -12589,7 +12438,6 @@
 "kMi" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
-	tag = "icon-E"
 	},
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -12605,7 +12453,6 @@
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/varadero/exterior/lz1_near)
 "kMN" = (
@@ -12701,7 +12548,6 @@
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/varadero/exterior/lz1_near)
 "kSJ" = (
@@ -12785,7 +12631,6 @@
 /obj/structure/disposalpipe/segment{
 	dir = 1;
 	icon_state = "pipe-c";
-	tag = "icon-pipe-c (NORTH)"
 	},
 /turf/open/floor/shiva{
 	icon_state = "blue"
@@ -12927,7 +12772,6 @@
 /turf/open/floor{
 	dir = 8;
 	icon_state = "asteroidwarning";
-	tag = "icon-asteroidwarning (WEST)"
 	},
 /area/varadero/exterior/lz1_near)
 "leU" = (
@@ -13153,7 +12997,6 @@
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/varadero/exterior/lz1_near)
 "loW" = (
@@ -13176,14 +13019,12 @@
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
-	tag = "icon-S"
 	},
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior_protected/caves/digsite)
 "lqM" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
-	tag = "icon-W"
 	},
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior_protected/caves/digsite)
@@ -13261,7 +13102,6 @@
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
-	tag = "icon-SW-out"
 	},
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior_protected/caves/digsite)
@@ -13654,7 +13494,6 @@
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/varadero/interior/comms1)
 "lMP" = (
@@ -13667,7 +13506,6 @@
 "lMY" = (
 /obj/structure/shuttle/engine/router{
 	dir = 4;
-	tag = "icon-router (EAST)"
 	},
 /turf/open/floor/strata{
 	color = "#5e5d5d";
@@ -13777,7 +13615,6 @@
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/varadero/exterior/lz1_near)
 "lSD" = (
@@ -13807,14 +13644,12 @@
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
-	tag = "icon-W"
 	},
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior_protected/caves/digsite)
 "lUe" = (
 /obj/structure/machinery/light/small{
 	dir = 1;
-	tag = "icon-bulb1 (NORTH)"
 	},
 /turf/open/floor/plating/icefloor{
 	icon_state = "asteroidplating"
@@ -13853,7 +13688,6 @@
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
-	tag = "icon-SW-out"
 	},
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior_protected/caves/digsite)
@@ -14095,7 +13929,6 @@
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/varadero/exterior/lz1_near)
 "mcX" = (
@@ -14187,12 +14020,10 @@
 "miF" = (
 /obj/structure/machinery/landinglight/ds2/delayone{
 	dir = 1;
-	tag = "icon-landingstripe (NORTH)"
 	},
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/varadero/exterior/lz1_near)
 "miP" = (
@@ -14215,7 +14046,6 @@
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/varadero/exterior/lz1_near)
 "miU" = (
@@ -14342,7 +14172,6 @@
 /obj/structure/fence,
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
-	tag = "icon-S"
 	},
 /turf/open/floor/plating,
 /area/varadero/interior_protected/caves/digsite)
@@ -14492,7 +14321,6 @@
 "mrC" = (
 /turf/open/floor{
 	icon_state = "asteroidwarning";
-	tag = "icon-asteroidwarning (WEST)"
 	},
 /area/varadero/exterior/lz1_near)
 "mrF" = (
@@ -14503,7 +14331,6 @@
 /obj/structure/disposalpipe/segment{
 	dir = 1;
 	icon_state = "pipe-c";
-	tag = "icon-pipe-c (NORTH)"
 	},
 /turf/open/floor/shiva{
 	icon_state = "multi_tiles"
@@ -14536,7 +14363,6 @@
 /obj/structure/machinery/disposal,
 /obj/structure/disposalpipe/trunk{
 	dir = 8;
-	tag = "icon-pipe-t (WEST)"
 	},
 /turf/open/floor/shiva{
 	dir = 6;
@@ -14668,7 +14494,6 @@
 "myo" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
-	tag = "icon-N"
 	},
 /turf/open/floor/shiva{
 	dir = 1;
@@ -14746,7 +14571,6 @@
 	},
 /turf/open/floor{
 	icon_state = "freezerfloor";
-	tag = "icon-freezerfloor"
 	},
 /area/varadero/interior/cargo)
 "mAi" = (
@@ -14759,7 +14583,6 @@
 /obj/structure/filingcabinet,
 /obj/structure/machinery/light{
 	dir = 4;
-	tag = "icon-tube1 (EAST)"
 	},
 /turf/open/floor/shiva{
 	dir = 4;
@@ -15125,7 +14948,6 @@
 "mVN" = (
 /obj/structure/machinery/light{
 	dir = 4;
-	tag = "icon-tube1 (EAST)"
 	},
 /turf/open/floor/shiva{
 	dir = 8;
@@ -15219,14 +15041,12 @@
 "mZC" = (
 /obj/structure/surface/table/woodentable{
 	icon_state = "reinf_table";
-	tag = "icon-reinf_table"
 	},
 /obj/structure/machinery/door/window/brigdoor/westleft{
 	dir = 1;
 	icon_state = "leftsecure";
 	id = null;
 	name = "Requesitions Desk";
-	tag = "icon-leftsecure (NORTH)"
 	},
 /obj/structure/machinery/door/window/northright{
 	dir = 2;
@@ -15295,7 +15115,6 @@
 /obj/structure/machinery/light,
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_22";
-	tag = "icon-pottedplant_10"
 	},
 /turf/open/floor/shiva{
 	dir = 8;
@@ -15309,11 +15128,9 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
 	pixel_y = 1;
-	tag = "icon-N"
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
-	tag = "icon-S"
 	},
 /turf/open/floor/plating,
 /area/varadero/interior_protected/caves/digsite)
@@ -15356,7 +15173,6 @@
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/varadero/exterior/lz1_near)
 "neC" = (
@@ -15382,7 +15198,6 @@
 /obj/structure/fence,
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
-	tag = "icon-W"
 	},
 /obj/structure/sign/safety/electronics{
 	pixel_x = 12
@@ -15420,7 +15235,6 @@
 /obj/structure/machinery/conveyor_switch,
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
-	tag = "icon-E"
 	},
 /turf/open/floor/shiva{
 	dir = 1
@@ -15536,12 +15350,10 @@
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
-	tag = "icon-W"
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
 	pixel_y = 1;
-	tag = "icon-N"
 	},
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior_protected/caves/digsite)
@@ -15623,7 +15435,6 @@
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
-	tag = "icon-SW-out"
 	},
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior_protected/vessel)
@@ -15813,7 +15624,6 @@
 "nAQ" = (
 /turf/open/floor{
 	icon_state = "bcircuit";
-	tag = "icon-bcircuit"
 	},
 /area/varadero/exterior/lz1_near)
 "nBj" = (
@@ -15891,7 +15701,6 @@
 "nEY" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "SE-out";
-	tag = "icon-SE-out"
 	},
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior_protected/caves/digsite)
@@ -16378,12 +16187,10 @@
 "nXR" = (
 /obj/structure/machinery/landinglight/ds2{
 	dir = 8;
-	tag = "icon-landingstripe (WEST)"
 	},
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/varadero/exterior/lz1_near)
 "nXY" = (
@@ -16407,7 +16214,6 @@
 "nYL" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
-	tag = "icon-N"
 	},
 /turf/open/floor/shiva{
 	dir = 1
@@ -16465,7 +16271,6 @@
 /obj/structure/disposalpipe/segment{
 	dir = 1;
 	icon_state = "pipe-c";
-	tag = "icon-pipe-c (NORTH)"
 	},
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 8
@@ -16724,7 +16529,6 @@
 /turf/open/floor{
 	dir = 4;
 	icon_state = "asteroidwarning";
-	tag = "icon-asteroidwarning (WEST)"
 	},
 /area/varadero/exterior/lz1_near)
 "olU" = (
@@ -16744,12 +16548,10 @@
 "onr" = (
 /obj/structure/machinery/landinglight/ds2/delayone{
 	dir = 4;
-	tag = "icon-landingstripe (EAST)"
 	},
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/varadero/exterior/lz1_near)
 "ooe" = (
@@ -16794,7 +16596,6 @@
 "opW" = (
 /obj/structure/machinery/light{
 	dir = 1;
-	tag = "icon-tube1 (NORTH)"
 	},
 /obj/structure/surface/table/woodentable/fancy,
 /obj/item/stack/sheet/wood{
@@ -16984,7 +16785,6 @@
 	dir = 4;
 	icon_state = "leftsecure";
 	id = "brg";
-	tag = "icon-leftsecure (EAST)"
 	},
 /obj/structure/machinery/door/window/brigdoor/westleft{
 	id = "brg"
@@ -17011,7 +16811,6 @@
 "oAm" = (
 /obj/structure/toilet{
 	dir = 1;
-	tag = "icon-toilet00 (NORTH)"
 	},
 /obj/structure/machinery/light/small,
 /turf/open/floor{
@@ -17109,7 +16908,6 @@
 	},
 /obj/structure/window/reinforced/tinted{
 	dir = 8;
-	tag = "icon-twindow (WEST)"
 	},
 /obj/structure/surface/table/reinforced/prison,
 /turf/open/floor/shiva{
@@ -17195,7 +16993,6 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 4;
 	icon_state = "chair";
-	tag = "icon-chair (EAST)"
 	},
 /turf/open/floor/shiva{
 	dir = 8;
@@ -17258,7 +17055,6 @@
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/varadero/exterior/lz1_near)
 "oKo" = (
@@ -17304,7 +17100,6 @@
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/varadero/exterior/lz1_near)
 "oLM" = (
@@ -17473,11 +17268,9 @@
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
-	tag = "icon-E"
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
-	tag = "icon-W"
 	},
 /turf/open/floor/plating,
 /area/varadero/interior_protected/caves/digsite)
@@ -17518,7 +17311,6 @@
 "oVr" = (
 /obj/structure/disposalpipe/segment{
 	dir = 8;
-	tag = "icon-pipe-s (WEST)"
 	},
 /turf/open/floor/shiva{
 	dir = 8;
@@ -17691,7 +17483,6 @@
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidwarning";
-	tag = "icon-asteroidwarning (WEST)"
 	},
 /area/varadero/exterior/lz1_near)
 "pbt" = (
@@ -17717,7 +17508,6 @@
 	},
 /obj/structure/machinery/power/terminal{
 	dir = 8;
-	tag = "icon-term (WEST)"
 	},
 /turf/open/floor/plating/icefloor{
 	icon_state = "asteroidplating"
@@ -17826,7 +17616,6 @@
 /obj/structure/reagent_dispensers/beerkeg/alt,
 /turf/open/floor{
 	icon_state = "freezerfloor";
-	tag = "icon-freezerfloor"
 	},
 /area/varadero/interior/cargo)
 "phd" = (
@@ -17897,7 +17686,6 @@
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/tool/stamp{
 	icon_state = "stamp-ce";
-	tag = "icon-stamp-ce"
 	},
 /obj/structure/machinery/firealarm{
 	dir = 4;
@@ -17943,7 +17731,6 @@
 /obj/structure/machinery/power/port_gen/pacman,
 /turf/open/floor{
 	icon_state = "bcircuit";
-	tag = "icon-bcircuit"
 	},
 /area/varadero/interior/electrical)
 "pkX" = (
@@ -17969,7 +17756,6 @@
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/varadero/interior/comms1)
 "plN" = (
@@ -18071,7 +17857,6 @@
 "poU" = (
 /obj/structure/disposalpipe/segment{
 	dir = 8;
-	tag = "icon-pipe-s (WEST)"
 	},
 /turf/open/floor/shiva{
 	icon_state = "floor3"
@@ -18241,7 +18026,6 @@
 "pxg" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
-	tag = "icon-S"
 	},
 /turf/open/floor/shiva{
 	dir = 1
@@ -18279,7 +18063,6 @@
 /turf/open/floor/plating/icefloor{
 	dir = 1;
 	icon_state = "warnplate";
-	tag = "icon-warnplate (NORTH)"
 	},
 /area/varadero/exterior/lz1_near)
 "pAu" = (
@@ -18296,7 +18079,6 @@
 	},
 /turf/open/floor{
 	icon_state = "bcircuit";
-	tag = "icon-bcircuit"
 	},
 /area/varadero/interior/electrical)
 "pBb" = (
@@ -18368,7 +18150,6 @@
 /obj/item/stack/sheet/mineral/phoron/medium_stack,
 /turf/open/floor{
 	icon_state = "bcircuit";
-	tag = "icon-bcircuit"
 	},
 /area/varadero/interior/electrical)
 "pCV" = (
@@ -18542,7 +18323,6 @@
 	},
 /obj/structure/machinery/light{
 	dir = 8;
-	tag = "icon-tube1 (WEST)"
 	},
 /turf/open/floor/shiva{
 	dir = 4;
@@ -18703,7 +18483,6 @@
 "pTO" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
-	tag = "icon-S"
 	},
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior_protected/caves/digsite)
@@ -19142,7 +18921,6 @@
 /turf/open/floor{
 	dir = 5;
 	icon_state = "asteroidwarning";
-	tag = "icon-asteroidwarning (NORTHWEST)"
 	},
 /area/varadero/exterior/lz1_near)
 "qoS" = (
@@ -19197,7 +18975,6 @@
 "qsc" = (
 /obj/structure/shuttle/engine/heater{
 	dir = 8;
-	tag = "icon-heater (WEST)"
 	},
 /obj/structure/window/phoronreinforced{
 	dir = 4;
@@ -19213,7 +18990,6 @@
 /obj/structure/closet/secure_closet/security,
 /obj/structure/machinery/light{
 	dir = 4;
-	tag = "icon-tube1 (EAST)"
 	},
 /obj/structure/machinery/firealarm{
 	dir = 4;
@@ -19336,7 +19112,6 @@
 "qye" = (
 /obj/structure/machinery/light/small{
 	dir = 4;
-	tag = "icon-bulb1 (EAST)"
 	},
 /turf/open/floor/plating/icefloor{
 	icon_state = "asteroidplating"
@@ -19577,7 +19352,6 @@
 /turf/open/floor{
 	dir = 8;
 	icon_state = "asteroidwarning";
-	tag = "icon-asteroidwarning (WEST)"
 	},
 /area/varadero/exterior/lz1_near)
 "qFO" = (
@@ -19699,7 +19473,6 @@
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/varadero/interior/comms1)
 "qMr" = (
@@ -20037,7 +19810,6 @@
 "qXM" = (
 /obj/structure/machinery/light{
 	dir = 4;
-	tag = "icon-tube1 (EAST)"
 	},
 /obj/structure/sink{
 	dir = 1;
@@ -20087,7 +19859,6 @@
 /obj/structure/machinery/conveyor_switch,
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
-	tag = "icon-W"
 	},
 /turf/open/floor/shiva{
 	dir = 8;
@@ -20143,7 +19914,6 @@
 "rcA" = (
 /obj/structure/bed/chair/office/light{
 	dir = 4;
-	tag = "icon-officechair_white (EAST)"
 	},
 /turf/open/floor/shiva{
 	dir = 6;
@@ -20194,7 +19964,6 @@
 "reG" = (
 /turf/closed/wall/r_wall/elevator{
 	dir = 10;
-	tag = "icon-wall (SOUTHWEST)"
 	},
 /area/varadero/interior/hall_N)
 "rfn" = (
@@ -20253,7 +20022,6 @@
 /turf/open/floor{
 	dir = 4;
 	icon_state = "asteroidwarning";
-	tag = "icon-asteroidwarning (WEST)"
 	},
 /area/varadero/exterior/lz1_near)
 "ria" = (
@@ -20287,7 +20055,6 @@
 "rjn" = (
 /turf/closed/wall/r_wall/elevator{
 	dir = 6;
-	tag = "icon-wall (SOUTHEAST)"
 	},
 /area/varadero/interior/records)
 "rjo" = (
@@ -20493,19 +20260,16 @@
 /obj/item/paper_bin,
 /obj/item/tool/stamp{
 	icon_state = "stamp-ce";
-	tag = "icon-stamp-ce"
 	},
 /obj/structure/surface/table/reinforced/prison,
 /obj/structure/window/reinforced/tinted{
 	dir = 8;
-	tag = "icon-twindow (WEST)"
 	},
 /turf/open/floor/wood,
 /area/varadero/interior/records)
 "rrr" = (
 /obj/structure/machinery/power/terminal{
 	dir = 4;
-	tag = "icon-term (EAST)"
 	},
 /turf/open/floor/plating/icefloor{
 	icon_state = "asteroidplating"
@@ -20514,7 +20278,6 @@
 "rrA" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
-	tag = "icon-W"
 	},
 /turf/open/floor/shiva{
 	dir = 1;
@@ -20667,11 +20430,9 @@
 "rwh" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 4;
-	tag = "icon-officechair_dark (EAST)"
 	},
 /obj/structure/window/reinforced/tinted{
 	dir = 8;
-	tag = "icon-twindow (WEST)"
 	},
 /obj/structure/machinery/light,
 /turf/open/floor/shiva{
@@ -20941,7 +20702,6 @@
 "rHQ" = (
 /obj/structure/machinery/light{
 	dir = 8;
-	tag = "icon-tube1 (WEST)"
 	},
 /turf/open/floor/shiva{
 	dir = 8;
@@ -21182,7 +20942,6 @@
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/varadero/exterior/lz1_near)
 "rSI" = (
@@ -21252,7 +21011,6 @@
 "rTT" = (
 /obj/structure/disposaloutlet{
 	dir = 4;
-	tag = "icon-outlet (EAST)"
 	},
 /obj/structure/disposalpipe/trunk{
 	dir = 1
@@ -21591,12 +21349,10 @@
 /obj/structure/fence,
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
-	tag = "icon-W"
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
 	pixel_y = 1;
-	tag = "icon-N"
 	},
 /turf/open/floor/plating,
 /area/varadero/interior_protected/caves/digsite)
@@ -21772,7 +21528,6 @@
 /obj/structure/filingcabinet,
 /obj/structure/machinery/light/small{
 	dir = 8;
-	tag = "icon-bulb1 (WEST)"
 	},
 /turf/open/floor/shiva{
 	icon_state = "floor3"
@@ -21809,7 +21564,6 @@
 "srW" = (
 /turf/closed/wall/r_wall/elevator{
 	dir = 4;
-	tag = "icon-wall (EAST)"
 	},
 /area/varadero/interior/hall_N)
 "srX" = (
@@ -21853,12 +21607,10 @@
 /obj/effect/landmark/hunter_secondary,
 /obj/structure/machinery/landinglight/ds2/delaythree{
 	dir = 4;
-	tag = "icon-landingstripe (EAST)"
 	},
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/varadero/exterior/lz1_near)
 "stv" = (
@@ -21873,7 +21625,6 @@
 /obj/structure/bigDelivery,
 /turf/open/floor{
 	icon_state = "freezerfloor";
-	tag = "icon-freezerfloor"
 	},
 /area/varadero/interior/cargo)
 "stV" = (
@@ -22007,7 +21758,6 @@
 "szh" = (
 /turf/closed/wall/r_wall/elevator{
 	dir = 4;
-	tag = "icon-wall (EAST)"
 	},
 /area/varadero/interior/records)
 "szw" = (
@@ -22199,12 +21949,10 @@
 /area/varadero/interior/maintenance)
 "sHV" = (
 /obj/structure/machinery/landinglight/ds2/delaytwo{
-	tag = "icon-landingstripe"
 	},
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/varadero/exterior/lz1_near)
 "sIf" = (
@@ -22297,7 +22045,6 @@
 /turf/open/floor{
 	dir = 1;
 	icon_state = "darkgreencorners2";
-	tag = "icon-darkgreencorners2 (NORTH)"
 	},
 /area/varadero/interior/hall_SE)
 "sJZ" = (
@@ -22468,7 +22215,6 @@
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/varadero/exterior/lz1_near)
 "sSZ" = (
@@ -22568,7 +22314,6 @@
 /obj/structure/reagent_dispensers/water_cooler,
 /obj/structure/machinery/light{
 	dir = 1;
-	tag = "icon-tube1 (NORTH)"
 	},
 /turf/open/floor/shiva{
 	dir = 1;
@@ -22597,7 +22342,6 @@
 "tcS" = (
 /obj/structure/machinery/light{
 	dir = 4;
-	tag = "icon-tube1 (EAST)"
 	},
 /obj/structure/pipes/vents/pump,
 /turf/open/floor{
@@ -22609,7 +22353,6 @@
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/varadero/interior/comms3)
 "tdy" = (
@@ -22705,7 +22448,6 @@
 /obj/structure/fence,
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
-	tag = "icon-W"
 	},
 /obj/structure/sign/safety/high_voltage{
 	pixel_x = 11
@@ -22932,7 +22674,6 @@
 /obj/structure/disposalpipe/segment{
 	dir = 1;
 	icon_state = "pipe-c";
-	tag = "icon-pipe-c (NORTH)"
 	},
 /turf/open/floor/shiva{
 	icon_state = "multi_tiles"
@@ -23025,7 +22766,6 @@
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/varadero/exterior/lz1_near)
 "tBC" = (
@@ -23076,7 +22816,6 @@
 	},
 /turf/open/floor{
 	icon_state = "asteroidwarning";
-	tag = "icon-asteroidwarning (WEST)"
 	},
 /area/varadero/interior/comms1)
 "tEH" = (
@@ -23116,7 +22855,6 @@
 "tGV" = (
 /turf/closed/wall/r_wall/elevator{
 	dir = 1;
-	tag = "icon-wall (NORTH)"
 	},
 /area/varadero/interior/hall_N)
 "tIT" = (
@@ -23135,7 +22873,6 @@
 	icon_state = "leftsecure";
 	id = "brg";
 	name = "Security Desk";
-	tag = "icon-leftsecure (NORTH)"
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/window/northright{
@@ -23161,11 +22898,9 @@
 /obj/structure/machinery/light,
 /obj/structure/bed/chair/office/dark{
 	dir = 4;
-	tag = "icon-officechair_dark (EAST)"
 	},
 /obj/structure/window/reinforced/tinted{
 	dir = 8;
-	tag = "icon-twindow (WEST)"
 	},
 /turf/open/floor/shiva{
 	dir = 8;
@@ -23241,7 +22976,6 @@
 	},
 /obj/structure/machinery/light{
 	dir = 8;
-	tag = "icon-tube1 (WEST)"
 	},
 /obj/effect/decal/strata_decals/grime/grime3{
 	dir = 4
@@ -23306,7 +23040,6 @@
 /obj/structure/disposalpipe/segment{
 	dir = 1;
 	icon_state = "pipe-c";
-	tag = "icon-pipe-c (NORTH)"
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/shiva{
@@ -23423,7 +23156,6 @@
 "tUd" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 8;
-	tag = "icon-officechair_dark (WEST)"
 	},
 /obj/structure/window/reinforced/tinted{
 	dir = 4
@@ -23479,7 +23211,6 @@
 "tXg" = (
 /obj/structure/disposalpipe/trunk{
 	dir = 8;
-	tag = "icon-pipe-t (WEST)"
 	},
 /obj/structure/machinery/disposal,
 /obj/structure/machinery/light{
@@ -23506,11 +23237,9 @@
 /obj/structure/fence,
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
-	tag = "icon-W"
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
-	tag = "icon-S"
 	},
 /turf/open/floor/plating,
 /area/varadero/interior_protected/caves/digsite)
@@ -23541,7 +23270,6 @@
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/varadero/exterior/lz1_near)
 "tZE" = (
@@ -23555,19 +23283,16 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "NE-out";
 	pixel_y = 1;
-	tag = "icon-NE-out"
 	},
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior_protected/caves/digsite)
 "uaV" = (
 /obj/structure/machinery/landinglight/ds2/delayone{
 	dir = 8;
-	tag = "icon-landingstripe (WEST)"
 	},
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/varadero/exterior/lz1_near)
 "ubn" = (
@@ -23608,7 +23333,6 @@
 /obj/structure/machinery/disposal,
 /obj/structure/disposalpipe/trunk{
 	dir = 8;
-	tag = "icon-pipe-t (WEST)"
 	},
 /obj/structure/machinery/firealarm{
 	pixel_y = 24
@@ -23690,7 +23414,6 @@
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/varadero/exterior/lz1_near)
 "ufH" = (
@@ -23743,7 +23466,6 @@
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/varadero/exterior/lz1_near)
 "uhW" = (
@@ -24045,7 +23767,6 @@
 	},
 /turf/open/floor{
 	icon_state = "dark2";
-	tag = "icon-dark2"
 	},
 /area/varadero/interior/morgue)
 "uvB" = (
@@ -24231,7 +23952,6 @@
 "uDQ" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
-	tag = "icon-W"
 	},
 /turf/open/floor/shiva{
 	icon_state = "multi_tiles"
@@ -24288,12 +24008,10 @@
 /obj/effect/decal/cleanable/blood/oil,
 /obj/structure/machinery/landinglight/ds2/delaythree{
 	dir = 4;
-	tag = "icon-landingstripe (EAST)"
 	},
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/varadero/exterior/lz1_near)
 "uFI" = (
@@ -24312,7 +24030,6 @@
 "uGf" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
-	tag = "icon-N"
 	},
 /turf/open/floor/shiva{
 	dir = 4;
@@ -24510,7 +24227,6 @@
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/varadero/exterior/lz1_near)
 "uNJ" = (
@@ -24637,7 +24353,6 @@
 "uTZ" = (
 /obj/structure/pipes/standard/manifold/visible{
 	dir = 1;
-	tag = "icon-map (NORTH)"
 	},
 /turf/open/floor/shiva{
 	icon_state = "multi_tiles"
@@ -24709,7 +24424,6 @@
 /obj/structure/disposalpipe/segment{
 	dir = 1;
 	icon_state = "pipe-c";
-	tag = "icon-pipe-c (NORTH)"
 	},
 /turf/open/floor/carpet,
 /area/varadero/interior/hall_SE)
@@ -24796,7 +24510,6 @@
 "uZa" = (
 /obj/structure/machinery/light{
 	dir = 4;
-	tag = "icon-tube1 (EAST)"
 	},
 /turf/open/floor/plating/icefloor{
 	icon_state = "asteroidplating"
@@ -24966,7 +24679,6 @@
 	},
 /obj/structure/holohoop{
 	dir = 8;
-	tag = "icon-hoop (NORTH)"
 	},
 /obj/structure/desertdam/decals/road_edge{
 	pixel_x = 16
@@ -24981,7 +24693,6 @@
 /turf/open/floor{
 	dir = 8;
 	icon_state = "asteroidwarning";
-	tag = "icon-asteroidwarning (WEST)"
 	},
 /area/varadero/exterior/lz1_near)
 "vfS" = (
@@ -25028,7 +24739,6 @@
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/varadero/exterior/lz1_near)
 "vio" = (
@@ -25076,7 +24786,6 @@
 /obj/structure/closet/crate/freezer/rations,
 /turf/open/floor{
 	icon_state = "freezerfloor";
-	tag = "icon-freezerfloor"
 	},
 /area/varadero/interior/cargo)
 "vjA" = (
@@ -25086,7 +24795,6 @@
 	},
 /turf/open/floor{
 	icon_state = "freezerfloor";
-	tag = "icon-freezerfloor"
 	},
 /area/varadero/interior/cargo)
 "vku" = (
@@ -25193,7 +24901,6 @@
 "vqw" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 1;
-	tag = "icon-officechair_dark (NORTH)"
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/shiva{
@@ -25295,7 +25002,6 @@
 "vui" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
-	tag = "icon-W"
 	},
 /obj/effect/landmark/corpsespawner/colonist/random/burst,
 /turf/open/floor/shiva{
@@ -25507,11 +25213,9 @@
 "vBZ" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
-	tag = "icon-W"
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
-	tag = "icon-S"
 	},
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior_protected/caves/digsite)
@@ -25544,7 +25248,6 @@
 /obj/structure/surface/table/reinforced/prison,
 /obj/structure/machinery/light/small{
 	dir = 4;
-	tag = "icon-bulb1 (EAST)"
 	},
 /turf/open/floor/plating/icefloor{
 	icon_state = "asteroidplating"
@@ -25678,7 +25381,6 @@
 /obj/structure/disposalpipe/segment{
 	dir = 1;
 	icon_state = "pipe-c";
-	tag = "icon-pipe-c (NORTH)"
 	},
 /turf/open/floor/shiva{
 	icon_state = "multi_tiles"
@@ -25771,7 +25473,6 @@
 /obj/item/storage/large_holster/m37/full,
 /obj/structure/machinery/light{
 	dir = 4;
-	tag = "icon-tube1 (EAST)"
 	},
 /turf/open/floor/wood,
 /area/varadero/interior/security)
@@ -25847,7 +25548,6 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "NW-out";
 	pixel_y = 1;
-	tag = "icon-NW-out"
 	},
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior_protected/caves/digsite)
@@ -25905,7 +25605,6 @@
 "vTq" = (
 /turf/open/floor/plating/icefloor{
 	icon_state = "warnplate";
-	tag = "icon-warnplate"
 	},
 /area/varadero/exterior/lz1_near)
 "vUi" = (
@@ -25937,7 +25636,6 @@
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/varadero/exterior/lz1_near)
 "vUZ" = (
@@ -26023,7 +25721,6 @@
 /obj/structure/toilet,
 /obj/structure/machinery/light/small{
 	dir = 1;
-	tag = "icon-bulb1 (NORTH)"
 	},
 /turf/open/floor{
 	icon_state = "white"
@@ -26057,7 +25754,6 @@
 /turf/open/floor/plating/icefloor{
 	dir = 4;
 	icon_state = "warnplate";
-	tag = "icon-warnplate (EAST)"
 	},
 /area/varadero/exterior/lz1_near)
 "wba" = (
@@ -26139,7 +25835,6 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/bed/chair/office/light{
 	dir = 4;
-	tag = "icon-officechair_white (EAST)"
 	},
 /turf/open/floor/shiva{
 	dir = 1;
@@ -26248,7 +25943,6 @@
 "wjB" = (
 /turf/open/floor{
 	icon_state = "asteroidwarning";
-	tag = "icon-asteroidwarning (WEST)"
 	},
 /area/varadero/interior/comms1)
 "wjG" = (
@@ -26446,7 +26140,6 @@
 "wpi" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 8;
-	tag = "icon-officechair_dark (WEST)"
 	},
 /turf/open/floor/shiva{
 	icon_state = "floor3"
@@ -26559,11 +26252,9 @@
 	},
 /obj/structure/shuttle/engine/heater{
 	dir = 4;
-	tag = "icon-heater (EAST)"
 	},
 /obj/structure/shuttle/engine/heater{
 	dir = 8;
-	tag = "icon-heater (WEST)"
 	},
 /obj/item/device/flashlight/slime,
 /obj/structure/window/phoronreinforced{
@@ -26635,7 +26326,6 @@
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor{
 	icon_state = "freezerfloor";
-	tag = "icon-freezerfloor"
 	},
 /area/varadero/interior/cargo)
 "wwd" = (
@@ -26709,7 +26399,6 @@
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/varadero/exterior/lz1_near)
 "wCE" = (
@@ -26740,7 +26429,6 @@
 "wDG" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
-	tag = "icon-W"
 	},
 /turf/open/floor/shiva{
 	dir = 1
@@ -26790,7 +26478,6 @@
 "wGV" = (
 /obj/structure/machinery/light/small{
 	dir = 8;
-	tag = "icon-bulb1 (WEST)"
 	},
 /turf/open/floor/shiva{
 	icon_state = "floor3"
@@ -26894,7 +26581,6 @@
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/varadero/exterior/lz1_near)
 "wMx" = (
@@ -27104,7 +26790,6 @@
 	icon_state = "leftsecure";
 	id = "brg";
 	name = "Security Desk";
-	tag = "icon-leftsecure (NORTH)"
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/window/northright{
@@ -27204,7 +26889,6 @@
 	},
 /obj/structure/window/reinforced/tinted{
 	dir = 8;
-	tag = "icon-twindow (WEST)"
 	},
 /turf/open/floor/shiva{
 	icon_state = "multi_tiles"
@@ -27359,7 +27043,6 @@
 "xhs" = (
 /obj/structure/machinery/light/small{
 	dir = 8;
-	tag = "icon-bulb1 (WEST)"
 	},
 /turf/open/floor/shiva{
 	dir = 8;
@@ -27521,7 +27204,6 @@
 /obj/structure/disposalpipe/segment{
 	dir = 1;
 	icon_state = "pipe-c";
-	tag = "icon-pipe-c (NORTH)"
 	},
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_22"
@@ -27565,12 +27247,10 @@
 "xsH" = (
 /obj/structure/machinery/landinglight/ds2/delaythree{
 	dir = 1;
-	tag = "icon-landingstripe (NORTH)"
 	},
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/varadero/exterior/lz1_near)
 "xtD" = (
@@ -27602,7 +27282,6 @@
 "xuN" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
-	tag = "icon-S"
 	},
 /turf/open/floor/shiva{
 	icon_state = "yellowcorners"
@@ -27808,7 +27487,6 @@
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/varadero/exterior/lz1_near)
 "xCn" = (
@@ -27951,7 +27629,6 @@
 /obj/structure/machinery/photocopier,
 /obj/structure/machinery/light{
 	dir = 1;
-	tag = "icon-tube1 (NORTH)"
 	},
 /turf/open/floor/shiva{
 	dir = 1;
@@ -28132,7 +27809,6 @@
 "xPj" = (
 /obj/structure/machinery/light{
 	dir = 8;
-	tag = "icon-tube1 (WEST)"
 	},
 /turf/open/floor/shiva{
 	dir = 8;
@@ -28250,7 +27926,6 @@
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/varadero/interior/maintenance/north)
 "xWj" = (
@@ -28548,17 +28223,14 @@
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
-	tag = "icon-S"
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "NW-out";
 	pixel_y = 1;
-	tag = "icon-NW-out"
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "NE-out";
 	pixel_y = 1;
-	tag = "icon-NE-out"
 	},
 /turf/open/floor/plating,
 /area/varadero/interior_protected/caves/digsite)
@@ -28583,18 +28255,15 @@
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/varadero/exterior/lz1_near)
 "ygZ" = (
 /obj/structure/machinery/landinglight/ds2/delaythree{
 	dir = 4;
-	tag = "icon-landingstripe (EAST)"
 	},
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/varadero/exterior/lz1_near)
 "yhy" = (
@@ -28625,7 +28294,6 @@
 /obj/structure/disposalpipe/segment{
 	dir = 1;
 	icon_state = "pipe-c";
-	tag = "icon-pipe-c (NORTH)"
 	},
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 8
@@ -28647,7 +28315,6 @@
 /obj/structure/disposalpipe/segment{
 	dir = 1;
 	icon_state = "pipe-c";
-	tag = "icon-pipe-c (NORTH)"
 	},
 /turf/open/floor/shiva{
 	dir = 1;

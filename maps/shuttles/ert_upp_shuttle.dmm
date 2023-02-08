@@ -7,7 +7,6 @@
 "c" = (
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin7";
-	tag = "icon-rasputin7"
 	},
 /area/shuttle/ert)
 "e" = (
@@ -29,13 +28,11 @@
 /obj/effect/landmark/ert_spawns/distress_upp,
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15";
-	tag = "icon-rasputin15"
 	},
 /area/shuttle/ert)
 "i" = (
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin4";
-	tag = "icon-rasputin7"
 	},
 /area/shuttle/ert)
 "j" = (
@@ -46,7 +43,6 @@
 "k" = (
 /turf/open/shuttle/dropship{
 	icon_state = "floor8";
-	tag = "icon-rasputin7"
 	},
 /area/shuttle/ert)
 "l" = (
@@ -68,7 +64,6 @@
 /obj/item/device/healthanalyzer,
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15";
-	tag = "icon-rasputin15"
 	},
 /area/shuttle/ert)
 "p" = (
@@ -90,7 +85,6 @@
 "s" = (
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin6";
-	tag = "icon-rasputin6"
 	},
 /area/shuttle/ert)
 "u" = (
@@ -135,7 +129,6 @@
 /obj/effect/landmark/ert_spawns/distress_upp,
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15";
-	tag = "icon-rasputin15"
 	},
 /area/shuttle/ert)
 "C" = (
@@ -144,7 +137,6 @@
 /obj/item/storage/toolbox/syndicate,
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15";
-	tag = "icon-rasputin15"
 	},
 /area/shuttle/ert)
 "E" = (
@@ -162,7 +154,6 @@
 /obj/structure/machinery/door/airlock/almayer/generic,
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin3";
-	tag = "icon-rasputin3"
 	},
 /area/shuttle/ert)
 "I" = (
@@ -179,7 +170,6 @@
 /obj/effect/landmark/ert_spawns/distress_upp/item,
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15";
-	tag = "icon-rasputin15"
 	},
 /area/shuttle/ert)
 "K" = (
@@ -188,13 +178,11 @@
 "N" = (
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin8";
-	tag = "icon-rasputin7"
 	},
 /area/shuttle/ert)
 "O" = (
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin3";
-	tag = "icon-rasputin3"
 	},
 /area/shuttle/ert)
 "P" = (
@@ -212,7 +200,6 @@
 /obj/effect/landmark/ert_spawns/distress_upp,
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin3";
-	tag = "icon-rasputin3"
 	},
 /area/shuttle/ert)
 "S" = (
@@ -220,13 +207,11 @@
 /obj/effect/landmark/ert_spawns/distress_upp,
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15";
-	tag = "icon-rasputin15"
 	},
 /area/shuttle/ert)
 "T" = (
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15";
-	tag = "icon-rasputin15"
 	},
 /area/shuttle/ert)
 "V" = (
@@ -240,7 +225,6 @@
 /obj/structure/machinery/computer/shuttle/ert,
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15";
-	tag = "icon-rasputin15"
 	},
 /area/shuttle/ert)
 "Y" = (
@@ -249,7 +233,6 @@
 	},
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15";
-	tag = "icon-rasputin15"
 	},
 /area/shuttle/ert)
 "Z" = (
@@ -260,7 +243,6 @@
 /obj/item/device/healthanalyzer,
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15";
-	tag = "icon-rasputin15"
 	},
 /area/shuttle/ert)
 

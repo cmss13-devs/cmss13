@@ -5,7 +5,6 @@
 "c" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
-	tag = "icon-N"
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
@@ -30,7 +29,6 @@
 "y" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
-	tag = "icon-N"
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt/cement,
@@ -43,7 +41,6 @@
 "G" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
-	tag = "icon-S"
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -62,7 +59,6 @@
 "O" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
-	tag = "icon-S"
 	},
 /obj/structure/disposalpipe/broken{
 	dir = 8;

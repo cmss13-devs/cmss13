@@ -4,7 +4,6 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor{
 	icon_state = "dark";
-	tag = "icon-dark"
 	},
 /area/bigredv2/caves/eta/xenobiology)
 "b" = (
@@ -17,14 +16,12 @@
 /turf/open/floor{
 	dir = 8;
 	icon_state = "darkredcorners2";
-	tag = "icon-darkredcorners2 (WEST)"
 	},
 /area/bigredv2/caves/eta/xenobiology)
 "e" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor{
 	icon_state = "dark";
-	tag = "icon-dark"
 	},
 /area/bigredv2/caves/eta/xenobiology)
 "f" = (
@@ -34,7 +31,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
 	icon_state = "darkredcorners2";
-	tag = "icon-darkredcorners2"
 	},
 /area/bigredv2/caves/eta/xenobiology)
 "g" = (
@@ -55,21 +51,18 @@
 /turf/open/floor{
 	dir = 8;
 	icon_state = "darkred2";
-	tag = "icon-darkred2 (WEST)"
 	},
 /area/bigredv2/caves/eta/xenobiology)
 "k" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
 	icon_state = "dark";
-	tag = "icon-dark"
 	},
 /area/bigredv2/caves/eta/xenobiology)
 "l" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
 	icon_state = "darkredcorners2";
-	tag = "icon-darkredcorners2"
 	},
 /area/bigredv2/caves/eta/xenobiology)
 "m" = (
@@ -79,7 +72,6 @@
 /turf/open/floor{
 	dir = 4;
 	icon_state = "darkred2";
-	tag = "icon-darkred2 (EAST)"
 	},
 /area/bigredv2/caves/eta/xenobiology)
 "n" = (
@@ -102,20 +94,17 @@
 	},
 /turf/open/floor{
 	icon_state = "dark";
-	tag = "icon-dark"
 	},
 /area/bigredv2/caves/eta/xenobiology)
 "r" = (
 /turf/open/floor{
 	icon_state = "dark";
-	tag = "icon-dark"
 	},
 /area/bigredv2/caves/eta/xenobiology)
 "s" = (
 /obj/effect/landmark/monkey_spawn,
 /turf/open/floor{
 	icon_state = "dark";
-	tag = "icon-dark"
 	},
 /area/bigredv2/caves/eta/xenobiology)
 "t" = (
@@ -139,7 +128,6 @@
 /turf/open/floor{
 	dir = 8;
 	icon_state = "darkredcorners2";
-	tag = "icon-darkredcorners2 (WEST)"
 	},
 /area/bigredv2/caves/eta/xenobiology)
 "w" = (
@@ -158,19 +146,16 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor{
 	icon_state = "darkredcorners2";
-	tag = "icon-darkredcorners2"
 	},
 /area/bigredv2/caves/eta/xenobiology)
 "z" = (
 /turf/open/mars{
 	icon_state = "mars_dirt_12";
-	tag = "icon-mars_dirt_12"
 	},
 /area/bigredv2/caves/eta/xenobiology)
 "A" = (
 /turf/open/floor{
 	icon_state = "darkredcorners2";
-	tag = "icon-darkredcorners2"
 	},
 /area/bigredv2/caves/eta/xenobiology)
 "B" = (
@@ -179,7 +164,6 @@
 	},
 /turf/open/mars_cave{
 	icon_state = "mars_dirt_7";
-	tag = "icon-mars_dirt_7"
 	},
 /area/bigredv2/caves/eta/xenobiology)
 "C" = (
@@ -187,37 +171,31 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/mars{
 	icon_state = "mars_dirt_10";
-	tag = "icon-mars_dirt_10"
 	},
 /area/bigredv2/caves/eta/xenobiology)
 "D" = (
 /turf/open/mars{
 	icon_state = "mars_dirt_10";
-	tag = "icon-mars_dirt_10"
 	},
 /area/bigredv2/caves/eta/xenobiology)
 "E" = (
 /turf/open/mars_cave{
 	icon_state = "mars_dirt_6";
-	tag = "icon-mars_dirt_6"
 	},
 /area/bigredv2/caves/eta/xenobiology)
 "F" = (
 /turf/open/mars_cave{
 	icon_state = "mars_dirt_5";
-	tag = "icon-mars_dirt_5"
 	},
 /area/bigredv2/caves/eta/xenobiology)
 "G" = (
 /turf/open/mars_cave{
 	icon_state = "mars_cave_22";
-	tag = "icon-mars_cave_22"
 	},
 /area/bigredv2/caves/eta/xenobiology)
 "H" = (
 /turf/open/mars_cave{
 	icon_state = "mars_cave_7";
-	tag = "icon-mars_cave_7"
 	},
 /area/bigredv2/caves/eta/xenobiology)
 "O" = (

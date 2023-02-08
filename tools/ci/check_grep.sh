@@ -199,7 +199,7 @@ fi;
 
 section "515 Proc Syntax"
 part "proc ref syntax"
-if $grep '\.proc/' $code_x_515 ; then
+if $grep '\.proc/' $code_x_515; then
     echo
     echo -e "${RED}ERROR: Outdated proc reference use detected in code, please use proc reference helpers.${NC}"
     st=1
@@ -208,30 +208,48 @@ fi;
 if [ "$pcre2_support" -eq 1 ]; then
 	section "regexes requiring PCRE2"
 	part "long list formatting"
-	if $grep -PU '^(\t)[\w_]+ = list\(\n\1\t{2,}' code/**/*.dm; then
+	if $grep -PU '^(\t)[\w_]+ = list\(\n\1\t{2,}' $code_files; then
 		echo -e "${RED}ERROR: Long list overindented, should be two tabs.${NC}"
 		st=1
 	fi;
-	if $grep -PU '^(\t)[\w_]+ = list\(\n\1\S' code/**/*.dm; then
+	if $grep -PU '^(\t)[\w_]+ = list\(\n\1\S' $code_files; then
 		echo -e "${RED}ERROR: Long list underindented, should be two tabs.${NC}"
 		st=1
 	fi;
-	if $grep -PU '^(\t)[\w_]+ = list\([^\s)]+( ?= ?[\w\d]+)?,\n' code/**/*.dm; then
+	if $grep -PU '^(\t)[\w_]+ = list\([^\s)]+( ?= ?[\w\d]+)?,\n' $code_files; then
 		echo -e "${RED}ERROR: First item in a long list should be on the next line.${NC}"
 		st=1
 	fi;
-	if $grep -PU '^(\t)[\w_]+ = list\(\n(\1\t\S+( ?= ?[\w\d]+)?,\n)*\1\t[^\s,)]+( ?= ?[\w\d]+)?\n' code/**/*.dm; then
+	if $grep -PU '^(\t)[\w_]+ = list\(\n(\1\t\S+( ?= ?[\w\d]+)?,\n)*\1\t[^\s,)]+( ?= ?[\w\d]+)?\n' $code_files; then
 		echo -e "${RED}ERROR: Last item in a long list should still have a comma.${NC}"
 		st=1
 	fi;
-	if $grep -PU '^(\t)[\w_]+ = list\(\n(\1\t[^\s)]+( ?= ?[\w\d]+)?,\n)*\1\t[^\s)]+( ?= ?[\w\d]+)?\)' code/**/*.dm; then
+	if $grep -PU '^(\t)[\w_]+ = list\(\n(\1\t[^\s)]+( ?= ?[\w\d]+)?,\n)*\1\t[^\s)]+( ?= ?[\w\d]+)?\)' $code_files; then
 		echo -e "${RED}ERROR: The ) in a long list should be on a new line.${NC}"
 		st=1
 	fi;
-	if $grep -PU '^(\t)[\w_]+ = list\(\n(\1\t[^\s)]+( ?= ?[\w\d]+)?,\n)+\1\t\)' code/**/*.dm; then
+	if $grep -PU '^(\t)[\w_]+ = list\(\n(\1\t[^\s)]+( ?= ?[\w\d]+)?,\n)+\1\t\)' $code_files; then
 		echo -e "${RED}ERROR: The ) in a long list should match identation of the opening list line.${NC}"
 		st=1
 	fi;
+	part "to_chat sanity"
+	if $grep -P 'to_chat\((?!.*,).*\)' $code_files; then
+		echo
+		echo -e "${RED}ERROR: to_chat() missing arguments.${NC}"
+		st=1
+	fi;
+	part "timer flag sanity"
+	if $grep -P 'addtimer\((?=.*TIMER_OVERRIDE)(?!.*TIMER_UNIQUE).*\)' $code_files; then
+		echo
+		echo -e "${RED}ERROR: TIMER_OVERRIDE used without TIMER_UNIQUE.${NC}"
+		st=1
+	fi
+	part "trailing newlines"
+	if $grep -PU '[^\n]$(?!\n)' $code_files; then
+		echo
+		echo -e "${RED}ERROR: File(s) with no trailing newline detected, please add one.${NC}"
+		st=1
+	fi
 else
 	echo -e "${RED}pcre2 not supported, skipping checks requiring pcre2"
 	echo -e "if you want to run these checks install ripgrep with pcre2 support.${NC}"

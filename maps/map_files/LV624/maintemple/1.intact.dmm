@@ -57,7 +57,6 @@
 "aO" = (
 /obj/structure/bed/chair/comfy/black{
 	dir = 1;
-	tag = "icon-comfychair (EAST)"
 	},
 /turf/open/floor/corsat{
 	dir = 1;
@@ -1534,7 +1533,6 @@
 "MB" = (
 /obj/structure/bed/chair/comfy/black{
 	dir = 4;
-	tag = "icon-comfychair (EAST)"
 	},
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
@@ -1704,7 +1702,6 @@
 "Rx" = (
 /obj/structure/bed/chair/comfy/black{
 	dir = 8;
-	tag = "icon-comfychair (EAST)"
 	},
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
@@ -1817,7 +1814,6 @@
 "Wl" = (
 /obj/structure/bed/chair/comfy/black{
 	dir = 1;
-	tag = "icon-comfychair (EAST)"
 	},
 /turf/open/floor/strata{
 	color = "#5e5d5d";
@@ -1874,7 +1870,6 @@
 "XV" = (
 /obj/structure/bed/chair/comfy/black{
 	dir = 1;
-	tag = "icon-comfychair (EAST)"
 	},
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple/powered)

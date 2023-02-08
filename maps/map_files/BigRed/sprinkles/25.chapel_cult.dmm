@@ -17,13 +17,11 @@
 	},
 /turf/open/floor{
 	icon_state = "darkish";
-	tag = "icon-darkish"
 	},
 /area/bigredv2/outside/chapel)
 "ae" = (
 /turf/open/floor{
 	icon_state = "darkish";
-	tag = "icon-darkish"
 	},
 /area/bigredv2/outside/chapel)
 "af" = (
@@ -36,13 +34,11 @@
 /obj/item/tool/candle,
 /turf/open/floor{
 	icon_state = "darkish";
-	tag = "icon-darkish"
 	},
 /area/bigredv2/outside/chapel)
 "ah" = (
 /obj/effect/decal/cleanable/blood{
 	icon_state = "gib6";
-	tag = "icon-gib6"
 	},
 /turf/open/floor{
 	dir = 1;
@@ -53,14 +49,12 @@
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor{
 	icon_state = "darkish";
-	tag = "icon-darkish"
 	},
 /area/bigredv2/outside/chapel)
 "aj" = (
 /obj/item/changestone,
 /turf/open/floor{
 	icon_state = "darkish";
-	tag = "icon-darkish"
 	},
 /area/bigredv2/outside/chapel)
 "ak" = (
@@ -69,7 +63,6 @@
 	},
 /turf/open/floor{
 	icon_state = "darkish";
-	tag = "icon-darkish"
 	},
 /area/bigredv2/outside/chapel)
 "al" = (
@@ -79,7 +72,6 @@
 /obj/item/tool/candle,
 /turf/open/floor{
 	icon_state = "darkish";
-	tag = "icon-darkish"
 	},
 /area/bigredv2/outside/chapel)
 "an" = (
@@ -92,7 +84,6 @@
 	},
 /turf/open/floor{
 	icon_state = "darkish";
-	tag = "icon-darkish"
 	},
 /area/bigredv2/outside/chapel)
 "ao" = (
@@ -113,13 +104,11 @@
 /turf/open/floor{
 	dir = 1;
 	icon_state = "rampbottom";
-	tag = "icon-rampbottom"
 	},
 /area/bigredv2/outside/chapel)
 "as" = (
 /obj/effect/decal/cleanable/blood{
 	icon_state = "gib6";
-	tag = "icon-gib6"
 	},
 /turf/open/floor{
 	dir = 8;
@@ -203,7 +192,6 @@
 /obj/item/tool/candle,
 /turf/open/floor{
 	icon_state = "darkish";
-	tag = "icon-darkish"
 	},
 /area/bigredv2/outside/chapel)
 "aC" = (
@@ -212,7 +200,6 @@
 	},
 /turf/open/floor{
 	icon_state = "darkish";
-	tag = "icon-darkish"
 	},
 /area/bigredv2/outside/chapel)
 "aD" = (
@@ -228,11 +215,9 @@
 	},
 /obj/effect/decal/cleanable/blood{
 	icon_state = "gib6";
-	tag = "icon-gib6"
 	},
 /turf/open/floor{
 	icon_state = "darkish";
-	tag = "icon-darkish"
 	},
 /area/bigredv2/outside/chapel)
 "aF" = (
@@ -341,11 +326,9 @@
 /obj/effect/decal/cleanable/blood{
 	dir = 4;
 	icon_state = "gib6";
-	tag = "icon-gib6"
 	},
 /turf/open/floor{
 	icon_state = "darkish";
-	tag = "icon-darkish"
 	},
 /area/bigredv2/outside/chapel)
 "aT" = (
@@ -357,7 +340,6 @@
 	},
 /turf/open/floor{
 	icon_state = "darkish";
-	tag = "icon-darkish"
 	},
 /area/bigredv2/outside/chapel)
 "aU" = (
@@ -365,7 +347,6 @@
 /obj/item/tool/candle,
 /turf/open/floor{
 	icon_state = "darkish";
-	tag = "icon-darkish"
 	},
 /area/bigredv2/outside/chapel)
 "aW" = (
@@ -374,7 +355,6 @@
 	},
 /turf/open/floor{
 	icon_state = "darkish";
-	tag = "icon-darkish"
 	},
 /area/bigredv2/outside/chapel)
 "aX" = (
@@ -383,7 +363,6 @@
 	},
 /turf/open/floor{
 	icon_state = "darkish";
-	tag = "icon-darkish"
 	},
 /area/bigredv2/outside/chapel)
 "aZ" = (
@@ -416,7 +395,6 @@
 "be" = (
 /turf/open/floor{
 	icon_state = "rampbottom";
-	tag = "icon-rampbottom"
 	},
 /area/bigredv2/outside/chapel)
 "bh" = (
@@ -437,7 +415,6 @@
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor{
 	icon_state = "darkish";
-	tag = "icon-darkish"
 	},
 /area/bigredv2/outside/chapel)
 "bk" = (
@@ -455,29 +432,24 @@
 /obj/structure/machinery/light,
 /turf/open/floor{
 	icon_state = "darkish";
-	tag = "icon-darkish"
 	},
 /area/bigredv2/outside/chapel)
 "bm" = (
 /obj/structure/machinery/power/apc,
 /obj/effect/decal/cleanable/blood{
 	icon_state = "gib6";
-	tag = "icon-gib6"
 	},
 /turf/open/floor{
 	icon_state = "darkish";
-	tag = "icon-darkish"
 	},
 /area/bigredv2/outside/chapel)
 "bp" = (
 /obj/structure/machinery/alarm{
 	dir = 1;
 	pixel_y = -30;
-	tag = "icon-alarm0 (NORTH)"
 	},
 /turf/open/floor{
 	icon_state = "darkish";
-	tag = "icon-darkish"
 	},
 /area/bigredv2/outside/chapel)
 "bq" = (

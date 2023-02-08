@@ -2,7 +2,6 @@
 "c" = (
 /obj/structure/bed/chair/comfy{
 	dir = 1;
-	tag = "icon-comfychair (NORTH)"
 	},
 /obj/effect/landmark/interior/spawn/entrance{
 	dir = 8;
@@ -31,7 +30,6 @@
 "h" = (
 /obj/structure/bed/chair/comfy{
 	dir = 1;
-	tag = "icon-comfychair (NORTH)"
 	},
 /obj/effect/landmark/interior/spawn/interior_viewport/simple{
 	alpha = 100;
@@ -179,7 +177,6 @@
 "G" = (
 /obj/structure/bed/chair/comfy{
 	dir = 1;
-	tag = "icon-comfychair (NORTH)"
 	},
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_1_9"

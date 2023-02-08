@@ -221,7 +221,7 @@ GLOBAL_LIST_INIT(droppod_target_mode, list(
 
 	custom_dropoff = TRUE
 	temp_pod.dropoff_point = get_turf(target)
-	to_chat(SPAN_NOTICE("You have selected [temp_pod.dropoff_point] as your dropoff location."))
+	to_chat(C, SPAN_NOTICE("You have selected [temp_pod.dropoff_point] as your dropoff location."))
 	SStgui.update_uis(src)
 	return COMPONENT_INTERRUPT_CLICK
 

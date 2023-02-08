@@ -8,7 +8,6 @@
 "ac" = (
 /obj/structure/machinery/light{
 	dir = 1;
-	tag = "icon-tube1 (NORTH)"
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor,
@@ -32,7 +31,6 @@
 "ag" = (
 /obj/structure/machinery/light{
 	dir = 1;
-	tag = "icon-tube1 (NORTH)"
 	},
 /turf/open/floor,
 /area/bigredv2/outside/dorms)
@@ -137,7 +135,6 @@
 "aA" = (
 /obj/effect/decal/cleanable/blood{
 	icon_state = "xgib4";
-	tag = "icon-xgib4"
 	},
 /obj/effect/landmark/corpsespawner/colonist/random,
 /turf/open/floor{
@@ -393,7 +390,6 @@
 /obj/structure/machinery/alarm{
 	dir = 1;
 	pixel_y = -30;
-	tag = "icon-alarm0 (NORTH)"
 	},
 /turf/open/floor,
 /area/bigredv2/outside/dorms)

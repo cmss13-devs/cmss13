@@ -322,7 +322,6 @@
 "hO" = (
 /obj/structure/bed/chair/comfy/black{
 	dir = 8;
-	tag = "icon-comfychair (EAST)"
 	},
 /obj/structure/flora/jungle/vines{
 	icon_state = "light_3"
@@ -1391,7 +1390,6 @@
 /obj/structure/flora/jungle/vines/heavy,
 /obj/structure/bed/chair/comfy/black{
 	dir = 1;
-	tag = "icon-comfychair (EAST)"
 	},
 /turf/open/gm/dirtgrassborder{
 	dir = 4
@@ -1831,7 +1829,6 @@
 "QX" = (
 /obj/structure/bed/chair/comfy/black{
 	dir = 4;
-	tag = "icon-comfychair (EAST)"
 	},
 /obj/structure/flora/jungle/vines{
 	icon_state = "light_3"
@@ -1851,7 +1848,6 @@
 "Rx" = (
 /obj/structure/bed/chair/comfy/black{
 	dir = 8;
-	tag = "icon-comfychair (EAST)"
 	},
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
@@ -1996,7 +1992,6 @@
 "XV" = (
 /obj/structure/bed/chair/comfy/black{
 	dir = 1;
-	tag = "icon-comfychair (EAST)"
 	},
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/sand_temple)

@@ -11,7 +11,6 @@
 "aB" = (
 /obj/structure/cargo_container{
 	icon_state = "green 2,0";
-	tag = "icon-green 2,0"
 	},
 /turf/open/ice,
 /area/corsat/sigma/biodome/scrapyard)
@@ -22,11 +21,9 @@
 "aL" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
-	tag = "icon-S"
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
-	tag = "icon-N"
 	},
 /turf/open/floor/wood,
 /area/corsat/sigma/biodome/ice)
@@ -40,7 +37,6 @@
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
-	tag = "icon-N"
 	},
 /obj/structure/machinery/door/window/brigdoor/eastleft{
 	dir = 8
@@ -67,7 +63,6 @@
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
-	tag = "icon-N"
 	},
 /obj/structure/machinery/door/window/brigdoor/eastleft,
 /turf/open/ice,
@@ -84,7 +79,6 @@
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/corsat/sigma/biodome/ice)
 "bo" = (
@@ -129,7 +123,6 @@
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/corsat/sigma/biodome/gunrange)
 "bT" = (
@@ -162,14 +155,12 @@
 /turf/open/floor{
 	dir = 8;
 	icon_state = "asteroidwarning";
-	tag = "icon-asteroidwarning (WEST)"
 	},
 /area/corsat/sigma/biodome/gunrange)
 "cv" = (
 /turf/open/floor{
 	dir = 4;
 	icon_state = "asteroidwarning";
-	tag = "icon-asteroidwarning (EAST)"
 	},
 /area/corsat/sigma/biodome/gunrange)
 "cA" = (
@@ -178,7 +169,6 @@
 "cH" = (
 /obj/structure/cargo_container{
 	icon_state = "red 1,0";
-	tag = "icon-red 1,0"
 	},
 /turf/open/auto_turf/snow/layer2,
 /area/corsat/sigma/biodome/scrapyard)
@@ -193,7 +183,6 @@
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/corsat/sigma/biodome/gunrange)
 "db" = (
@@ -204,7 +193,6 @@
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/corsat/sigma/biodome/gunrange)
 "dn" = (
@@ -222,7 +210,6 @@
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/corsat/sigma/airlock/control)
 "dr" = (
@@ -232,11 +219,9 @@
 /obj/structure/window/reinforced,
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
-	tag = "icon-S"
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "NS-center";
-	tag = "icon-W"
 	},
 /turf/open/ice,
 /area/corsat/sigma/biodome/ice)
@@ -266,17 +251,14 @@
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/corsat/sigma/biodome/gunrange)
 "ee" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
-	tag = "icon-N"
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
-	tag = "icon-W"
 	},
 /turf/open/ice,
 /area/corsat/sigma/biodome/ice)
@@ -287,7 +269,6 @@
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/corsat/sigma/biodome/gunrange)
 "ev" = (
@@ -306,7 +287,6 @@
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/corsat/sigma/biodome/ice)
 "fc" = (
@@ -333,7 +313,6 @@
 /turf/open/floor{
 	dir = 8;
 	icon_state = "asteroidwarning";
-	tag = "icon-asteroidwarning (WEST)"
 	},
 /area/corsat/sigma/biodome/ice)
 "fC" = (
@@ -421,14 +400,12 @@
 /turf/open/floor{
 	dir = 8;
 	icon_state = "asteroidwarning";
-	tag = "icon-asteroidwarning (WEST)"
 	},
 /area/corsat/sigma/biodome/ice)
 "hH" = (
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/corsat/sigma/biodome/ice)
 "hQ" = (
@@ -436,7 +413,6 @@
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/corsat/sigma/biodome/ice)
 "hR" = (
@@ -465,7 +441,6 @@
 "hZ" = (
 /obj/structure/cargo_container{
 	icon_state = "red 2,0";
-	tag = "icon-red 2,0"
 	},
 /turf/open/auto_turf/snow/layer2,
 /area/corsat/sigma/biodome/scrapyard)
@@ -474,7 +449,6 @@
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/corsat/sigma/biodome/gunrange)
 "io" = (
@@ -485,7 +459,6 @@
 /turf/open/floor{
 	dir = 8;
 	icon_state = "asteroidwarning";
-	tag = "icon-asteroidwarning (WEST)"
 	},
 /area/corsat/sigma/biodome/scrapyard)
 "iK" = (
@@ -505,7 +478,6 @@
 "iO" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
-	tag = "icon-W"
 	},
 /obj/effect/decal/warning_stripes,
 /obj/structure/window/reinforced{
@@ -526,14 +498,12 @@
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/corsat/sigma/biodome/ice)
 "jv" = (
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidwarning";
-	tag = "icon-asteroidwarning (NORTH)"
 	},
 /area/corsat/sigma/biodome/ice)
 "jy" = (
@@ -541,13 +511,11 @@
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/corsat/sigma/biodome/ice)
 "jL" = (
 /obj/structure/pipes/standard/simple/hidden/universal{
 	dir = 4;
-	tag = "icon-map_universal (EAST)"
 	},
 /turf/open/floor/corsat{
 	icon_state = "yellow"
@@ -564,7 +532,6 @@
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/corsat/sigma/biodome/ice)
 "kl" = (
@@ -574,7 +541,6 @@
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/corsat/sigma/biodome/ice)
 "km" = (
@@ -585,7 +551,6 @@
 /turf/open/floor{
 	dir = 4;
 	icon_state = "asteroidwarning";
-	tag = "icon-asteroidwarning (EAST)"
 	},
 /area/corsat/sigma/biodome/scrapyard)
 "kr" = (
@@ -604,7 +569,6 @@
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/corsat/sigma/biodome/ice)
 "kH" = (
@@ -626,11 +590,9 @@
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
-	tag = "icon-N"
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "NS-center";
-	tag = "icon-W"
 	},
 /turf/open/ice,
 /area/corsat/sigma/biodome/ice)
@@ -697,7 +659,6 @@
 "mo" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E-corner";
-	tag = "icon-E-corner"
 	},
 /turf/open/ice,
 /area/corsat/sigma/biodome/ice)
@@ -708,7 +669,6 @@
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/corsat/sigma/biodome/ice)
 "mX" = (
@@ -718,14 +678,12 @@
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/corsat/sigma/biodome/ice)
 "mY" = (
 /turf/open/floor{
 	dir = 4;
 	icon_state = "asteroidwarning";
-	tag = "icon-asteroidwarning (EAST)"
 	},
 /area/corsat/sigma/biodome/ice)
 "nb" = (
@@ -743,7 +701,6 @@
 /obj/item/ammo_magazine/smg/mp5,
 /turf/open/floor{
 	icon_state = "asteroidplating";
-	tag = "icon-asteroidplating"
 	},
 /area/corsat/sigma/biodome/gunrange)
 "nk" = (
@@ -782,7 +739,6 @@
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/corsat/sigma/biodome/scrapyard)
 "oa" = (
@@ -894,7 +850,6 @@
 	},
 /turf/open/floor{
 	icon_state = "asteroidwarning";
-	tag = "icon-asteroidwarning"
 	},
 /area/corsat/sigma/biodome/gunrange)
 "rP" = (
@@ -914,7 +869,6 @@
 /obj/structure/surface/table/almayer,
 /turf/open/floor{
 	icon_state = "asteroidwarning";
-	tag = "icon-asteroidwarning"
 	},
 /area/corsat/sigma/biodome/gunrange)
 "rW" = (
@@ -933,14 +887,12 @@
 /turf/open/floor{
 	dir = 9;
 	icon_state = "asteroidwarning";
-	tag = "icon-asteroidwarning (NORTHWEST)"
 	},
 /area/corsat/sigma/biodome/gunrange)
 "ss" = (
 /turf/open/floor{
 	dir = 5;
 	icon_state = "asteroidwarning";
-	tag = "icon-asteroidwarning (NORTHEAST)"
 	},
 /area/corsat/sigma/biodome/gunrange)
 "sx" = (
@@ -948,7 +900,6 @@
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/corsat/sigma/biodome/gunrange)
 "sA" = (
@@ -958,11 +909,9 @@
 "sB" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E-corner";
-	tag = "icon-E-corner"
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
-	tag = "icon-N"
 	},
 /turf/open/ice,
 /area/corsat/sigma/biodome/ice)
@@ -974,7 +923,6 @@
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/corsat/sigma/biodome/gunrange)
 "tg" = (
@@ -1001,7 +949,6 @@
 "tM" = (
 /obj/structure/pipes/standard/simple/visible{
 	dir = 5;
-	tag = "icon-intact (NORTHEAST)"
 	},
 /obj/structure/machinery/meter,
 /turf/open/floor/corsat{
@@ -1018,7 +965,6 @@
 "ua" = (
 /obj/structure/pipes/binary/pump/on{
 	dir = 8;
-	tag = "icon-map_on (EAST)"
 	},
 /turf/open/floor/corsat{
 	dir = 1;
@@ -1028,7 +974,6 @@
 "uc" = (
 /obj/structure/pipes/standard/simple/hidden/universal{
 	dir = 4;
-	tag = "icon-map_universal (EAST)"
 	},
 /turf/open/floor/corsat{
 	icon_state = "squares"
@@ -1078,7 +1023,6 @@
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/corsat/sigma/biodome/gunrange)
 "uO" = (
@@ -1091,13 +1035,11 @@
 /turf/open/floor{
 	dir = 4;
 	icon_state = "asteroidwarning";
-	tag = "icon-asteroidwarning (EAST)"
 	},
 /area/corsat/sigma/biodome/ice)
 "ve" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "NS-center";
-	tag = "icon-W"
 	},
 /turf/open/ice,
 /area/corsat/sigma/biodome/ice)
@@ -1112,7 +1054,6 @@
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/corsat/sigma/biodome/gunrange)
 "vO" = (
@@ -1126,7 +1067,6 @@
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/corsat/sigma/biodome/gunrange)
 "vU" = (
@@ -1138,7 +1078,6 @@
 "we" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E-corner";
-	tag = "icon-E-corner"
 	},
 /obj/structure/barricade/wooden{
 	dir = 1;
@@ -1154,7 +1093,6 @@
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/corsat/sigma/biodome/gunrange)
 "wD" = (
@@ -1164,13 +1102,11 @@
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/corsat/sigma/biodome/gunrange)
 "xk" = (
 /obj/structure/cargo_container{
 	icon_state = "blue 1,0";
-	tag = "icon-blue 1,0"
 	},
 /turf/open/ice,
 /area/corsat/sigma/biodome/scrapyard)
@@ -1224,7 +1160,6 @@
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/corsat/sigma/airlock/control)
 "xZ" = (
@@ -1264,11 +1199,9 @@
 /obj/structure/window/reinforced,
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
-	tag = "icon-S"
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "E-corner";
-	tag = "icon-E-corner"
 	},
 /obj/structure/machinery/door/window/brigdoor/eastleft,
 /turf/open/ice,
@@ -1276,7 +1209,6 @@
 "yo" = (
 /obj/structure/pipes/standard/simple/hidden/universal{
 	dir = 4;
-	tag = "icon-map_universal (EAST)"
 	},
 /turf/open/floor/corsat{
 	dir = 1;
@@ -1287,11 +1219,9 @@
 /obj/structure/window/reinforced,
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
-	tag = "icon-S"
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
-	tag = "icon-W"
 	},
 /turf/open/ice,
 /area/corsat/sigma/biodome/ice)
@@ -1334,7 +1264,6 @@
 "yQ" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "NS-center";
-	tag = "icon-W"
 	},
 /obj/effect/decal/warning_stripes,
 /turf/open/ice,
@@ -1366,7 +1295,6 @@
 "yY" = (
 /obj/structure/cargo_container{
 	icon_state = "blue 2,0";
-	tag = "icon-blue 2,0"
 	},
 /turf/open/ice,
 /area/corsat/sigma/biodome/scrapyard)
@@ -1376,7 +1304,6 @@
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/corsat/sigma/biodome/ice)
 "zh" = (
@@ -1407,7 +1334,6 @@
 "zQ" = (
 /obj/structure/pipes/trinary/mixer{
 	dir = 4;
-	tag = "icon-map (EAST)"
 	},
 /turf/open/floor/corsat{
 	dir = 6;
@@ -1459,7 +1385,6 @@
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/corsat/sigma/biodome/gunrange)
 "AJ" = (
@@ -1469,7 +1394,6 @@
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/corsat/sigma/biodome/scrapyard)
 "AS" = (
@@ -1480,7 +1404,6 @@
 	},
 /turf/open/floor{
 	icon_state = "asteroidplating";
-	tag = "icon-asteroidplating"
 	},
 /area/corsat/sigma/biodome/gunrange)
 "AX" = (
@@ -1488,13 +1411,11 @@
 /obj/item/ammo_magazine/shotgun/buckshot,
 /turf/open/floor{
 	icon_state = "asteroidplating";
-	tag = "icon-asteroidplating"
 	},
 /area/corsat/sigma/biodome/gunrange)
 "Ba" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
-	tag = "icon-W"
 	},
 /obj/structure/barricade/wooden,
 /obj/structure/window/reinforced{
@@ -1517,7 +1438,6 @@
 /obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
 /turf/open/floor{
 	icon_state = "asteroidplating";
-	tag = "icon-asteroidplating"
 	},
 /area/corsat/sigma/biodome/gunrange)
 "Bn" = (
@@ -1531,7 +1451,6 @@
 /obj/item/weapon/gun/flamer/M240T,
 /turf/open/floor{
 	icon_state = "asteroidplating";
-	tag = "icon-asteroidplating"
 	},
 /area/corsat/sigma/biodome/gunrange)
 "Bv" = (
@@ -1541,7 +1460,6 @@
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/corsat/sigma/biodome/gunrange)
 "BM" = (
@@ -1561,7 +1479,6 @@
 "BV" = (
 /turf/open/floor{
 	icon_state = "asteroidwarning";
-	tag = "icon-asteroidwarning"
 	},
 /area/corsat/sigma/biodome/ice)
 "Cd" = (
@@ -1579,7 +1496,6 @@
 	},
 /turf/open/floor{
 	icon_state = "asteroidplating";
-	tag = "icon-asteroidplating"
 	},
 /area/corsat/sigma/biodome/gunrange)
 "Ch" = (
@@ -1588,7 +1504,6 @@
 /obj/item/explosive/grenade/incendiary,
 /turf/open/floor{
 	icon_state = "asteroidplating";
-	tag = "icon-asteroidplating"
 	},
 /area/corsat/sigma/biodome/gunrange)
 "CA" = (
@@ -1597,14 +1512,12 @@
 /obj/item/explosive/grenade/smokebomb,
 /turf/open/floor{
 	icon_state = "asteroidplating";
-	tag = "icon-asteroidplating"
 	},
 /area/corsat/sigma/biodome/gunrange)
 "CI" = (
 /obj/structure/window/reinforced,
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
-	tag = "icon-S"
 	},
 /obj/structure/machinery/door/window/brigdoor/eastleft{
 	dir = 8
@@ -1623,7 +1536,6 @@
 /obj/item/weapon/gun/pistol/m4a3,
 /turf/open/floor{
 	icon_state = "asteroidplating";
-	tag = "icon-asteroidplating"
 	},
 /area/corsat/sigma/biodome/gunrange)
 "Db" = (
@@ -1636,7 +1548,6 @@
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/corsat/sigma/biodome/gunrange)
 "Dd" = (
@@ -1645,7 +1556,6 @@
 /obj/item/explosive/grenade/high_explosive,
 /turf/open/floor{
 	icon_state = "asteroidplating";
-	tag = "icon-asteroidplating"
 	},
 /area/corsat/sigma/biodome/gunrange)
 "Df" = (
@@ -1660,7 +1570,6 @@
 /obj/item/explosive/grenade/high_explosive/training,
 /turf/open/floor{
 	icon_state = "asteroidplating";
-	tag = "icon-asteroidplating"
 	},
 /area/corsat/sigma/biodome/gunrange)
 "Dh" = (
@@ -1675,7 +1584,6 @@
 	},
 /turf/open/floor{
 	icon_state = "asteroidplating";
-	tag = "icon-asteroidplating"
 	},
 /area/corsat/sigma/biodome/gunrange)
 "Dp" = (
@@ -1692,7 +1600,6 @@
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/corsat/sigma/biodome/ice)
 "Dw" = (
@@ -1752,7 +1659,6 @@
 	},
 /turf/open/floor{
 	icon_state = "asteroidplating";
-	tag = "icon-asteroidplating"
 	},
 /area/corsat/sigma/biodome/gunrange)
 "EJ" = (
@@ -1760,7 +1666,6 @@
 /obj/item/ammo_magazine/shotgun/slugs,
 /turf/open/floor{
 	icon_state = "asteroidplating";
-	tag = "icon-asteroidplating"
 	},
 /area/corsat/sigma/biodome/gunrange)
 "EM" = (
@@ -1780,7 +1685,6 @@
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
-	tag = "icon-N"
 	},
 /turf/open/ice,
 /area/corsat/sigma/biodome/ice)
@@ -1790,7 +1694,6 @@
 /obj/item/explosive/grenade/flashbang,
 /turf/open/floor{
 	icon_state = "asteroidplating";
-	tag = "icon-asteroidplating"
 	},
 /area/corsat/sigma/biodome/gunrange)
 "Fu" = (
@@ -1798,7 +1701,6 @@
 /obj/item/explosive/grenade/high_explosive/training,
 /turf/open/floor{
 	icon_state = "asteroidplating";
-	tag = "icon-asteroidplating"
 	},
 /area/corsat/sigma/biodome/gunrange)
 "Fx" = (
@@ -1829,13 +1731,11 @@
 /obj/item/weapon/gun/revolver/m44,
 /turf/open/floor{
 	icon_state = "asteroidplating";
-	tag = "icon-asteroidplating"
 	},
 /area/corsat/sigma/biodome/gunrange)
 "FC" = (
 /obj/structure/cargo_container{
 	icon_state = "green 1,0";
-	tag = "icon-green 1,0"
 	},
 /turf/open/ice,
 /area/corsat/sigma/biodome/scrapyard)
@@ -1855,7 +1755,6 @@
 /obj/item/ammo_magazine/flamer_tank,
 /turf/open/floor{
 	icon_state = "asteroidplating";
-	tag = "icon-asteroidplating"
 	},
 /area/corsat/sigma/biodome/gunrange)
 "Gf" = (
@@ -1864,7 +1763,6 @@
 /obj/item/explosive/grenade/high_explosive/frag,
 /turf/open/floor{
 	icon_state = "asteroidplating";
-	tag = "icon-asteroidplating"
 	},
 /area/corsat/sigma/biodome/gunrange)
 "Gj" = (
@@ -1880,7 +1778,6 @@
 	},
 /turf/open/floor{
 	icon_state = "asteroidplating";
-	tag = "icon-asteroidplating"
 	},
 /area/corsat/sigma/biodome/gunrange)
 "GJ" = (
@@ -1922,7 +1819,6 @@
 "Hh" = (
 /obj/structure/pipes/binary/pump/high_power/on{
 	dir = 8;
-	tag = "icon-map_on (WEST)"
 	},
 /turf/open/floor/corsat{
 	dir = 5;
@@ -1932,7 +1828,6 @@
 "HB" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E-corner";
-	tag = "icon-E-corner"
 	},
 /obj/effect/decal/warning_stripes,
 /obj/structure/window/reinforced{
@@ -1951,7 +1846,6 @@
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/corsat/sigma/biodome/gunrange)
 "HV" = (
@@ -2028,7 +1922,6 @@
 "Jm" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E-corner";
-	tag = "icon-E-corner"
 	},
 /obj/structure/barricade/wooden,
 /obj/structure/window/reinforced{
@@ -2074,7 +1967,6 @@
 "JX" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
-	tag = "icon-N"
 	},
 /obj/structure/barricade/wooden,
 /turf/open/ice,
@@ -2084,7 +1976,6 @@
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidwarning";
-	tag = "icon-asteroidwarning (NORTH)"
 	},
 /area/corsat/sigma/biodome/ice)
 "Kq" = (
@@ -2095,7 +1986,6 @@
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidwarning";
-	tag = "icon-asteroidwarning (NORTH)"
 	},
 /area/corsat/sigma/biodome/ice)
 "Kr" = (
@@ -2124,7 +2014,6 @@
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/corsat/sigma/biodome/ice)
 "KF" = (
@@ -2153,7 +2042,6 @@
 "KV" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
-	tag = "icon-W"
 	},
 /obj/structure/window/reinforced{
 	dir = 8
@@ -2209,7 +2097,6 @@
 "LH" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E-corner";
-	tag = "icon-E-corner"
 	},
 /obj/structure/window/reinforced{
 	dir = 4
@@ -2226,7 +2113,6 @@
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/corsat/sigma/biodome/ice)
 "MA" = (
@@ -2279,7 +2165,6 @@
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/corsat/sigma/biodome/ice)
 "NI" = (
@@ -2289,7 +2174,6 @@
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/corsat/sigma/biodome/ice)
 "NQ" = (
@@ -2301,7 +2185,6 @@
 "NS" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "NS-center";
-	tag = "icon-W"
 	},
 /obj/effect/decal/warning_stripes,
 /obj/item/toy/beach_ball/holoball{
@@ -2394,14 +2277,12 @@
 /turf/open/floor{
 	dir = 4;
 	icon_state = "asteroidwarning";
-	tag = "icon-asteroidwarning (EAST)"
 	},
 /area/corsat/sigma/biodome/ice)
 "PE" = (
 /obj/structure/window/reinforced,
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
-	tag = "icon-S"
 	},
 /turf/open/ice,
 /area/corsat/sigma/biodome/ice)
@@ -2478,7 +2359,6 @@
 "QD" = (
 /obj/structure/cargo_container{
 	icon_state = "red 0,0";
-	tag = "icon-red 0,0"
 	},
 /turf/open/auto_turf/snow/layer2,
 /area/corsat/sigma/biodome/scrapyard)
@@ -2600,13 +2480,11 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor{
 	icon_state = "asteroidwarning";
-	tag = "icon-asteroidwarning"
 	},
 /area/corsat/sigma/biodome/ice)
 "Sh" = (
 /obj/structure/cargo_container{
 	icon_state = "green 0,0";
-	tag = "icon-green 0,0"
 	},
 /turf/open/ice,
 /area/corsat/sigma/biodome/scrapyard)
@@ -2650,7 +2528,6 @@
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/corsat/sigma/biodome/ice)
 "To" = (
@@ -2667,18 +2544,15 @@
 "Tw" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
-	tag = "icon-W"
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
-	tag = "icon-N"
 	},
 /turf/open/ice,
 /area/corsat/sigma/biodome/ice)
 "TA" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
-	tag = "icon-W"
 	},
 /obj/structure/barricade/wooden{
 	dir = 1;
@@ -2724,7 +2598,6 @@
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/corsat/sigma/biodome/ice)
 "Uv" = (
@@ -2799,14 +2672,12 @@
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/corsat/sigma/biodome/ice)
 "VJ" = (
 /obj/structure/pipes/vents/pump/siphon/on{
 	dir = 8;
 	id_tag = "mix_sigma_out";
-	tag = "icon-map_vent_in (EAST)"
 	},
 /turf/open/floor/corsat,
 /area/corsat/inaccessible)
@@ -2865,7 +2736,6 @@
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/corsat/sigma/airlock/control)
 "WW" = (
@@ -2888,7 +2758,6 @@
 "Xm" = (
 /turf/open/floor{
 	icon_state = "asteroidplating";
-	tag = "icon-asteroidplating"
 	},
 /area/corsat/sigma/biodome/gunrange)
 "Xv" = (
@@ -2951,7 +2820,6 @@
 "Yn" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
-	tag = "icon-N"
 	},
 /turf/open/ice,
 /area/corsat/sigma/biodome/ice)
@@ -2986,11 +2854,9 @@
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
-	tag = "icon-N"
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
-	tag = "icon-W"
 	},
 /turf/open/ice,
 /area/corsat/sigma/biodome/ice)
@@ -3037,7 +2903,6 @@
 "Zm" = (
 /obj/structure/cargo_container{
 	icon_state = "blue 0,0";
-	tag = "icon-blue 0,0"
 	},
 /turf/open/ice,
 /area/corsat/sigma/biodome/scrapyard)
@@ -3048,13 +2913,11 @@
 /obj/structure/sign/safety/airlock,
 /turf/open/floor{
 	icon_state = "asteroidwarning";
-	tag = "icon-asteroidwarning"
 	},
 /area/corsat/sigma/airlock/control)
 "ZB" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
-	tag = "icon-W"
 	},
 /turf/open/ice,
 /area/corsat/sigma/biodome/ice)
@@ -3091,7 +2954,6 @@
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidwarning";
-	tag = "icon-asteroidwarning (NORTH)"
 	},
 /area/corsat/sigma/biodome/gunrange)
 

@@ -9,19 +9,16 @@
 "c" = (
 /turf/open/mars{
 	icon_state = "mars_dirt_13";
-	tag = "icon-mars_dirt_13"
 	},
 /area/bigredv2/outside/se)
 "d" = (
 /turf/open/mars{
 	icon_state = "mars_dirt_10";
-	tag = "icon-mars_dirt_10"
 	},
 /area/bigredv2/outside/se)
 "e" = (
 /turf/open/mars{
 	icon_state = "mars_dirt_14";
-	tag = "icon-mars_dirt_14"
 	},
 /area/bigredv2/outside/se)
 "f" = (
@@ -31,7 +28,6 @@
 "g" = (
 /turf/open/mars{
 	icon_state = "mars_dirt_11";
-	tag = "icon-mars_dirt_11"
 	},
 /area/bigredv2/outside/se)
 "h" = (
@@ -40,13 +36,11 @@
 	},
 /turf/open/mars{
 	icon_state = "mars_dirt_14";
-	tag = "icon-mars_dirt_14"
 	},
 /area/bigredv2/outside/se)
 "i" = (
 /turf/open/mars{
 	icon_state = "mars_dirt_12";
-	tag = "icon-mars_dirt_12"
 	},
 /area/bigredv2/outside/se)
 "j" = (
@@ -70,19 +64,16 @@
 "l" = (
 /turf/open/mars{
 	icon_state = "mars_dirt_8";
-	tag = "icon-mars_dirt_8"
 	},
 /area/bigredv2/outside/se)
 "m" = (
 /turf/open/mars{
 	icon_state = "mars_dirt_3";
-	tag = "icon-mars_dirt_3"
 	},
 /area/bigredv2/outside/se)
 "n" = (
 /turf/open/mars{
 	icon_state = "mars_dirt_9";
-	tag = "icon-mars_dirt_9"
 	},
 /area/bigredv2/outside/se)
 "o" = (

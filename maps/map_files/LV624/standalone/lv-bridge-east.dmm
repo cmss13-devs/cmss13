@@ -83,7 +83,6 @@
 /turf/open/gm/coast{
 	dir = 6;
 	icon_state = "beach";
-	tag = "icon-beach (SOUTHEAST)"
 	},
 /area/lv624/ground/river/central_river)
 "as" = (
@@ -148,7 +147,6 @@
 /turf/open/gm/coast{
 	dir = 9;
 	icon_state = "beach";
-	tag = "icon-beach (NORTHWEST)"
 	},
 /area/lv624/ground/river/central_river)
 "aH" = (

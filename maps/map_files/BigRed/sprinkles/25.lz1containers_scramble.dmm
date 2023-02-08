@@ -3,7 +3,6 @@
 /turf/open/floor{
 	dir = 4;
 	icon_state = "asteroidwarning";
-	tag = "icon-asteroidwarning (EAST)"
 	},
 /area/bigredv2/outside/space_port)
 "ac" = (
@@ -21,14 +20,12 @@
 /turf/open/floor{
 	dir = 2;
 	icon_state = "dark";
-	tag = "icon-dark"
 	},
 /area/bigredv2/outside/space_port)
 "ah" = (
 /turf/open/floor{
 	dir = 2;
 	icon_state = "dark";
-	tag = "icon-dark"
 	},
 /area/bigredv2/outside/space_port)
 "ai" = (
@@ -36,7 +33,6 @@
 /turf/open/floor{
 	dir = 2;
 	icon_state = "dark";
-	tag = "icon-dark"
 	},
 /area/bigredv2/outside/space_port)
 "aj" = (
@@ -49,7 +45,6 @@
 /turf/open/floor{
 	dir = 2;
 	icon_state = "dark";
-	tag = "icon-dark"
 	},
 /area/bigredv2/outside/space_port)
 "al" = (
@@ -60,7 +55,6 @@
 /obj/structure/machinery/light{
 	dir = 4;
 	icon_state = "tube1";
-	tag = "icon-tube1 (EAST)"
 	},
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
@@ -76,7 +70,6 @@
 /turf/open/floor{
 	dir = 2;
 	icon_state = "dark";
-	tag = "icon-dark"
 	},
 /area/bigredv2/outside/space_port)
 "ap" = (
@@ -84,7 +77,6 @@
 /turf/open/floor{
 	dir = 2;
 	icon_state = "dark";
-	tag = "icon-dark"
 	},
 /area/bigredv2/outside/space_port)
 "aq" = (
@@ -94,7 +86,6 @@
 /turf/open/floor{
 	dir = 2;
 	icon_state = "dark";
-	tag = "icon-dark"
 	},
 /area/bigredv2/outside/space_port)
 "ar" = (
@@ -109,7 +100,6 @@
 /turf/open/floor{
 	dir = 2;
 	icon_state = "dark";
-	tag = "icon-dark"
 	},
 /area/bigredv2/outside/space_port)
 "at" = (
@@ -121,7 +111,6 @@
 /turf/open/floor{
 	dir = 2;
 	icon_state = "dark";
-	tag = "icon-dark"
 	},
 /area/bigredv2/outside/space_port)
 "au" = (
@@ -129,7 +118,6 @@
 /turf/open/floor{
 	dir = 2;
 	icon_state = "dark";
-	tag = "icon-dark"
 	},
 /area/bigredv2/outside/space_port)
 "av" = (
@@ -140,7 +128,6 @@
 /turf/open/floor{
 	dir = 2;
 	icon_state = "dark";
-	tag = "icon-dark"
 	},
 /area/bigredv2/outside/space_port)
 "ax" = (
@@ -160,7 +147,6 @@
 /turf/open/floor{
 	dir = 2;
 	icon_state = "dark";
-	tag = "icon-dark"
 	},
 /area/bigredv2/landing/console)
 "az" = (
@@ -169,27 +155,23 @@
 /turf/open/floor{
 	dir = 2;
 	icon_state = "dark";
-	tag = "icon-dark"
 	},
 /area/bigredv2/outside/space_port)
 "aA" = (
 /obj/structure/cargo_container{
 	icon_state = "blue 0,0";
-	tag = "icon-blue 0,0"
 	},
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
 "aB" = (
 /obj/structure/cargo_container{
 	icon_state = "blue 1,0";
-	tag = "icon-blue 1,0"
 	},
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
 "aC" = (
 /obj/structure/cargo_container{
 	icon_state = "blue 2,0";
-	tag = "icon-blue 2,0"
 	},
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
@@ -200,7 +182,6 @@
 /turf/open/floor{
 	dir = 2;
 	icon_state = "dark";
-	tag = "icon-dark"
 	},
 /area/bigredv2/outside/space_port)
 "aE" = (
@@ -209,7 +190,6 @@
 /turf/open/floor{
 	dir = 2;
 	icon_state = "dark";
-	tag = "icon-dark"
 	},
 /area/bigredv2/outside/space_port)
 "aF" = (
@@ -219,13 +199,11 @@
 /turf/open/floor{
 	dir = 2;
 	icon_state = "dark";
-	tag = "icon-dark"
 	},
 /area/bigredv2/outside/space_port)
 "aG" = (
 /obj/effect/decal/cleanable/blood{
 	icon_state = "gib6";
-	tag = "icon-gib6"
 	},
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
@@ -236,7 +214,6 @@
 /turf/open/floor{
 	dir = 10;
 	icon_state = "darkgreen2";
-	tag = "icon-darkgreen2 (SOUTHWEST)"
 	},
 /area/bigredv2/outside/space_port)
 "aI" = (
@@ -247,7 +224,6 @@
 /turf/open/floor{
 	dir = 2;
 	icon_state = "darkgreen2";
-	tag = "icon-darkgreen2"
 	},
 /area/bigredv2/outside/space_port)
 "aJ" = (
@@ -257,7 +233,6 @@
 /turf/open/floor{
 	dir = 2;
 	icon_state = "darkgreen2";
-	tag = "icon-darkgreen2"
 	},
 /area/bigredv2/outside/space_port)
 "aK" = (
@@ -265,7 +240,6 @@
 /turf/open/floor{
 	dir = 2;
 	icon_state = "darkgreen2";
-	tag = "icon-darkgreen2"
 	},
 /area/bigredv2/outside/space_port)
 "aL" = (
@@ -274,14 +248,12 @@
 /turf/open/floor{
 	dir = 2;
 	icon_state = "darkgreen2";
-	tag = "icon-darkgreen2"
 	},
 /area/bigredv2/outside/space_port)
 "aM" = (
 /turf/open/floor{
 	dir = 2;
 	icon_state = "darkgreen2";
-	tag = "icon-darkgreen2"
 	},
 /area/bigredv2/outside/space_port)
 "aN" = (
@@ -290,7 +262,6 @@
 /turf/open/floor{
 	dir = 6;
 	icon_state = "darkgreen2";
-	tag = "icon-darkgreen2 (SOUTHEAST)"
 	},
 /area/bigredv2/outside/space_port)
 "aP" = (
@@ -304,7 +275,6 @@
 "aQ" = (
 /obj/effect/decal/cleanable/blood{
 	icon_state = "gib6";
-	tag = "icon-gib6"
 	},
 /obj/structure/window_frame/solaris,
 /turf/open/floor/plating,
@@ -318,7 +288,6 @@
 /obj/structure/machinery/light{
 	dir = 1;
 	icon_state = "tube1";
-	tag = "icon-tube1 (NORTH)"
 	},
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
@@ -327,7 +296,6 @@
 /turf/open/floor{
 	dir = 2;
 	icon_state = "asteroidplating";
-	tag = "icon-asteroidplating"
 	},
 /area/bigredv2/outside/space_port)
 "aV" = (
@@ -339,7 +307,6 @@
 "aW" = (
 /obj/structure/cargo_container{
 	icon_state = "green 0,0";
-	tag = "icon-green 0,0"
 	},
 /turf/open/floor/plating{
 	dir = 2;
@@ -349,7 +316,6 @@
 "aX" = (
 /obj/structure/cargo_container{
 	icon_state = "green 1,0";
-	tag = "icon-green 1,0"
 	},
 /turf/open/floor/plating{
 	dir = 2;
@@ -359,7 +325,6 @@
 "aY" = (
 /obj/structure/cargo_container{
 	icon_state = "green 2,0";
-	tag = "icon-green 2,0"
 	},
 /turf/open/floor/plating{
 	dir = 2;
@@ -379,7 +344,6 @@
 /turf/open/floor{
 	dir = 4;
 	icon_state = "asteroidwarning";
-	tag = "icon-asteroidwarning (EAST)"
 	},
 /area/bigredv2/outside/space_port)
 "bg" = (
@@ -393,42 +357,36 @@
 "bi" = (
 /obj/structure/cargo_container{
 	icon_state = "red 0,0";
-	tag = "icon-red 0,0"
 	},
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
 "bj" = (
 /obj/structure/cargo_container{
 	icon_state = "red 1,0";
-	tag = "icon-red 1,0"
 	},
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
 "bk" = (
 /obj/structure/cargo_container{
 	icon_state = "red 2,0";
-	tag = "icon-red 2,0"
 	},
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
 "bl" = (
 /obj/structure/cargo_container{
 	icon_state = "green 0,0";
-	tag = "icon-green 0,0"
 	},
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
 "bm" = (
 /obj/structure/cargo_container{
 	icon_state = "green 1,0";
-	tag = "icon-green 1,0"
 	},
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
 "bn" = (
 /obj/structure/cargo_container{
 	icon_state = "green 2,0";
-	tag = "icon-green 2,0"
 	},
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port)

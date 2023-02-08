@@ -913,7 +913,7 @@
 		return FALSE // can't range plant while not in ovi... but who the fuck cares, we can't plant anyways
 	return get_dist(src, T) <= egg_planting_range
 
-/mob/living/carbon/xenomorph/queen/gib(cause = "gibbing")
+/mob/living/carbon/xenomorph/queen/gib(datum/cause_data/cause = create_cause_data("gibbing", src))
 	death(cause, 1)
 
 /datum/behavior_delegate/queen

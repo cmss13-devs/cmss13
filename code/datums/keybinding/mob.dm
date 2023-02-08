@@ -55,7 +55,7 @@
 
 /datum/keybinding/mob/drop_item
 	hotkey_keys = list("Q")
-	classic_keys = list("Unbound")
+	classic_keys = list()
 	name = "drop_item"
 	full_name = "Drop Item"
 	description = ""

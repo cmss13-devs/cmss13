@@ -2050,8 +2050,7 @@
 	department = "CLF - Cell 42"
 	},
 /obj/item/paper/prison_station/pirate_note{
-	info = "<p>We're hit!</p><p>MAYDAY! MAYDAY! We have been hit by the -... .</p><p>We're on a planet somewhere, seems there is a colony to our south. Might head on over there and see if there is any USCM presence. Our ship is fucking busted beyond normal means of repair, still waiting for a damage assessment tho.</p><p>Coby and Ryan died today from their wounds... \";
-	Fucking USCM.\" I'll have my revenge someday...</p><p>And the colonies will be freed one day from the oppressive regime of Wey-Yu and USCM henchmen."
+	info = "<p>We're hit!</p><p>MAYDAY! MAYDAY! We have been hit by the -... .</p><p>We're on a planet somewhere, seems there is a colony to our south. Might head on over there and see if there is any USCM presence. Our ship is fucking busted beyond normal means of repair, still waiting for a damage assessment tho.</p><p>Coby and Ryan died today from their wounds... \"Fucking USCM.\" I'll have my revenge someday...</p><p>And the colonies will be freed one day from the oppressive regime of Wey-Yu and USCM henchmen."
 	},
 /turf/open/floor/almayer{
 	icon_state = "emerald"

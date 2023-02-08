@@ -364,7 +364,7 @@
 	. = ..()
 	if(!.) return
 	M.make_jittery(5)
-	if(adj_temp > 0)
+	if(adj_temp > 0 && holder)
 		holder.remove_reagent("frostoil", 10*REAGENTS_METABOLISM)
 
 	if(volume > overdose)

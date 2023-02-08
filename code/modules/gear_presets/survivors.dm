@@ -51,7 +51,7 @@
 	skills = /datum/skills/civilian/survivor/scientist
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	idtype = /obj/item/card/id/silver/clearance_badge/scientist
-	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_MEDBAY, ACCESS_CIVILIAN_ENGINEERING)
+	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_MEDBAY)
 
 	survivor_variant = SCIENTIST_SURVIVOR
 
@@ -168,7 +168,7 @@
 	skills = /datum/skills/civilian/survivor/doctor
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	idtype = /obj/item/card/id/silver/clearance_badge
-	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_MEDBAY)
+	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_MEDBAY, ACCESS_CIVILIAN_COMMAND)
 
 	survivor_variant = MEDICAL_SURVIVOR
 
@@ -287,16 +287,7 @@
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	paygrade = "WYC2"
 	idtype = /obj/item/card/id/silver/clearance_badge/cl
-	access = list(
-		ACCESS_CIVILIAN_PUBLIC,
-		ACCESS_CIVILIAN_RESEARCH,
-		ACCESS_CIVILIAN_ENGINEERING,
-		ACCESS_CIVILIAN_LOGISTICS,
-		ACCESS_CIVILIAN_BRIG,
-		ACCESS_CIVILIAN_MEDBAY,
-		ACCESS_WY_CORPORATE,
-		ACCESS_CIVILIAN_COMMAND,
-	)
+	access = list(ACCESS_CIVILIAN_PUBLIC,ACCESS_WY_CORPORATE,ACCESS_CIVILIAN_COMMAND)
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
 
 	survivor_variant = CORPORATE_SURVIVOR
@@ -349,15 +340,7 @@
 	skills = /datum/skills/civilian/survivor/marshal
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	idtype = /obj/item/card/id/data
-	access = list(
-		ACCESS_CIVILIAN_PUBLIC,
-		ACCESS_CIVILIAN_RESEARCH,
-		ACCESS_CIVILIAN_ENGINEERING,
-		ACCESS_CIVILIAN_LOGISTICS,
-		ACCESS_CIVILIAN_BRIG,
-		ACCESS_CIVILIAN_MEDBAY,
-		ACCESS_CIVILIAN_COMMAND,
-	)
+	access = list(ACCESS_CIVILIAN_PUBLIC,ACCESS_CIVILIAN_BRIG,ACCESS_CIVILIAN_COMMAND)
 
 	survivor_variant = SECURITY_SURVIVOR
 
@@ -607,7 +590,7 @@
 	assignment = "Chaplain"
 	skills = /datum/skills/civilian/survivor/chaplain
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
-	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_BRIG, ACCESS_CIVILIAN_COMMAND)
+	access = list(ACCESS_CIVILIAN_PUBLIC)
 
 /datum/equipment_preset/survivor/chaplain/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/chaplain(H), WEAR_BODY)
@@ -671,11 +654,7 @@
 	assignment = "Engineer"
 	skills = /datum/skills/civilian/survivor/engineer
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
-	access = list(
-		ACCESS_CIVILIAN_PUBLIC,
-		ACCESS_CIVILIAN_ENGINEERING,
-		ACCESS_CIVILIAN_LOGISTICS,
-	)
+	access = list(ACCESS_CIVILIAN_PUBLIC,ACCESS_CIVILIAN_ENGINEERING,ACCESS_CIVILIAN_LOGISTICS)
 
 	survivor_variant = ENGINEERING_SURVIVOR
 
@@ -857,11 +836,7 @@
 	assignment = "Trucker"
 	skills = /datum/skills/civilian/survivor/trucker
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
-	access = list(
-		ACCESS_CIVILIAN_PUBLIC,
-		ACCESS_CIVILIAN_ENGINEERING,
-		ACCESS_CIVILIAN_LOGISTICS,
-	)
+	access = list(ACCESS_CIVILIAN_PUBLIC,ACCESS_CIVILIAN_ENGINEERING,ACCESS_CIVILIAN_LOGISTICS)
 
 /datum/equipment_preset/survivor/trucker/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/overalls(H), WEAR_BODY)
@@ -1041,12 +1016,7 @@
 	assignment = "Interstellar Commerce Commission Corporate Liaison"
 	skills = /datum/skills/civilian/survivor
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
-	access = list(
-		ACCESS_CIVILIAN_PUBLIC,
-		ACCESS_CIVILIAN_ENGINEERING,
-		ACCESS_WY_CORPORATE,
-		ACCESS_CIVILIAN_LOGISTICS,
-	)
+	access = list(ACCESS_CIVILIAN_PUBLIC,ACCESS_WY_CORPORATE,ACCESS_CIVILIAN_COMMAND)
 
 	survivor_variant = CORPORATE_SURVIVOR
 
@@ -1085,9 +1055,7 @@
 	assignment = "Roughneck"
 	skills = /datum/skills/civilian/survivor/pmc
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
-	access = list(
-		ACCESS_CIVILIAN_PUBLIC,
-	)
+	access = list(ACCESS_CIVILIAN_PUBLIC)
 
 /datum/equipment_preset/survivor/roughneck/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/color/white(H), WEAR_BODY)
@@ -1109,13 +1077,7 @@
 	assignment = "Interstellar Human Rights Observer"
 	skills = /datum/skills/civilian/survivor
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
-	access = list(
-		ACCESS_CIVILIAN_PUBLIC,
-		ACCESS_CIVILIAN_ENGINEERING,
-		ACCESS_WY_CORPORATE,
-		ACCESS_CIVILIAN_LOGISTICS,
-	)
-	survivor_variant = CORPORATE_SURVIVOR
+	access = list(ACCESS_CIVILIAN_PUBLIC,ACCESS_CIVILIAN_COMMAND)
 
 /datum/equipment_preset/survivor/interstellar_human_rights_observer/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit/suspenders(H), WEAR_BODY)
@@ -1153,12 +1115,7 @@
 	idtype = /obj/item/card/id/silver/cl
 	skills = /datum/skills/civilian/survivor/goon
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
-	access = list(
-		ACCESS_CIVILIAN_PUBLIC,
-		ACCESS_CIVILIAN_ENGINEERING,
-		ACCESS_WY_CORPORATE,
-		ACCESS_CIVILIAN_LOGISTICS,
-	)
+	access = list(ACCESS_CIVILIAN_PUBLIC,ACCESS_WY_CORPORATE,ACCESS_CIVILIAN_COMMAND)
 
 	survivor_variant = SECURITY_SURVIVOR
 
@@ -1195,13 +1152,7 @@
 	idtype = /obj/item/card/id/pmc
 	skills = /datum/skills/civilian/survivor/pmc
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
-	access = list(
-		ACCESS_CIVILIAN_PUBLIC,
-		ACCESS_CIVILIAN_ENGINEERING,
-		ACCESS_WY_CORPORATE,
-		ACCESS_CIVILIAN_LOGISTICS,
-	)
-	survivor_variant = SECURITY_SURVIVOR
+	access = list(ACCESS_CIVILIAN_PUBLIC,ACCESS_WY_CORPORATE,ACCESS_CIVILIAN_COMMAND)
 
 /datum/equipment_preset/survivor/pmc/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/pmc/hvh, WEAR_L_EAR)
@@ -1230,14 +1181,7 @@
 	rank = FACTION_WY
 	idtype = /obj/item/card/id/silver/clearance_badge/manager
 	faction_group = list(FACTION_MARINE, FACTION_WY, FACTION_SURVIVOR)
-	access = list(
-		ACCESS_WY_CORPORATE,
-		ACCESS_ILLEGAL_PIRATE,
-		ACCESS_MARINE_BRIDGE,
-		ACCESS_MARINE_DROPSHIP,
-		ACCESS_MARINE_RESEARCH,
-		ACCESS_MARINE_MEDBAY,
-	)
+	access = list(ACCESS_WY_CORPORATE,ACCESS_ILLEGAL_PIRATE,ACCESS_MARINE_BRIDGE,ACCESS_MARINE_DROPSHIP,ACCESS_MARINE_RESEARCH,ACCESS_CIVILIAN_COMMAND,ACCESS_CIVILIAN_PUBLIC)
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
 
 	survivor_variant = CORPORATE_SURVIVOR
@@ -1267,9 +1211,7 @@
 	assignment = "Mercenary"
 	skills = /datum/skills/civilian/survivor/pmc
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
-	access = list(
-		ACCESS_CIVILIAN_PUBLIC,
-	)
+	access = list(ACCESS_CIVILIAN_PUBLIC)
 
 /datum/equipment_preset/survivor/pmc/miner/one/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/mercenary/miner, WEAR_BODY)
@@ -1283,9 +1225,7 @@
 	assignment = "Freelancer"
 	skills = /datum/skills/civilian/survivor/pmc
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
-	access = list(
-		ACCESS_CIVILIAN_PUBLIC,
-	)
+	access = list(ACCESS_CIVILIAN_PUBLIC)
 
 /datum/equipment_preset/survivor/pmc/freelancer/load_gear(mob/living/carbon/human/H)
 
@@ -1307,6 +1247,7 @@
 	skills = /datum/skills/civilian/survivor/clf
 	faction = FACTION_CLF
 	faction_group = list(FACTION_CLF) //they were not a part of the colony and as such do not have survivor or marine IFF
+	access = list(ACCESS_CIVILIAN_PUBLIC)
 
 /datum/equipment_preset/survivor/clf/load_gear(mob/living/carbon/human/H)
 

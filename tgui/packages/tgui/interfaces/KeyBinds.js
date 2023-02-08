@@ -65,7 +65,7 @@ export const KeyBinds = (props, context) => {
           </Flex.Item>
           <Flex direction="column">
             {filteredKeybinds.map((keybind) => (
-              <Flex.Item key={keybind}>
+              <Flex.Item key={keybind.full_name}>
                 <KeybindElement keybind={keybind} />
                 <Box
                   backgroundColor="rgba(40, 40, 40, 255)"

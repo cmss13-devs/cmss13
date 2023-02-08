@@ -8,7 +8,6 @@
 
 AddTimelock(/datum/job/logistics/requisition, list(
 	JOB_REQUISITION_ROLES = 10 HOURS,
-	JOB_POLICE_ROLES = 1 HOURS
 ))
 
 /obj/effect/landmark/start/requisition

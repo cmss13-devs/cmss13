@@ -1,0 +1,12 @@
+author: "CapCamIII"
+delete-after: True
+changes:
+  - rscadd: "PMCs are now able to use antag vendors."
+  - balance: "Multiple loadout and skill changes to PMCs and Whiteout"
+  - balance: "Buffs whiteout flame damage to blue flame damage."
+  - bugfix: "PMC Investigator Lead now appropriately spawns with a medical pouch in their pocket, instead of nothing."
+  - bugfix: "Maximum skill preset now appropriately also has BE and intel skill, at maximum of course."
+  - bugfix: "PMC Smartgunner now appropriately a VP78 to go along with their VP78 magazines"
+  - bugfix: "Whiteout now appropriately have night vision."
+  - bugfix: "M41A/2 now appropriately comes equipped with a collapsible stock."
+  - spellcheck: "PMC smartgun drum now has a seperate description and name from base SG to match its different appearance."

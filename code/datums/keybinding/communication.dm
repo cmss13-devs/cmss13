@@ -56,6 +56,7 @@
 	full_name = "Admin Say"
 	description = "Talk with other admins."
 	keybind_signal = COMSIG_KB_ADMIN_ASAY_DOWN
+	
 /datum/keybinding/client/communication/mentor_say
 	hotkey_keys = list()
 	classic_keys = list()

@@ -524,9 +524,9 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 			else if(org.status & LIMB_SYNTHSKIN)
 				org_name += " (Synthskin)"
 
-			var/burn_info = org.burn_dam > 0 ? SPAN_SCANNERBURNB'> [ROUND(ORG.BURN_DAM)]</SPAN>" : "<SPAN CLASS='SCANNERBURN("0")
+			var/burn_info = org.burn_dam > 0 ? "<span class='scannerburnb'> [round(org.burn_dam)]</span>" : "<span class='scannerburn'>0</span>"
 			burn_info += "[burn_treated ? "" : "{B}"]"
-			var/brute_info =  org.brute_dam > 0 ? SPAN_SCANNERB'> [ROUND(ORG.BRUTE_DAM)]</SPAN>" : "<SPAN CLASS='SCANNER("0")
+			var/brute_info =  org.brute_dam > 0 ? "<span class='scannerb'> [round(org.brute_dam)]</span>" : "<span class='scanner'>0</span>"
 			brute_info += "[brute_treated ? "" : "{T}"]"
 			var/fracture_info = ""
 			if(org.status & LIMB_BROKEN)

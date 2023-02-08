@@ -33,8 +33,8 @@ GLOBAL_DATUM(escape_menu_details, /atom/movable/screen/escape_menu/details)
 /atom/movable/screen/escape_menu/details/proc/update_text()
 	var/webmap_host = CONFIG_GET(string/webmap_host)
 
-	var/ship_map = "<a href=\"[webmap_host][SSmapping.configs[SHIP_MAP]?.webmap_url]\"><u>[SSmapping.configs[SHIP_MAP].map_name || "Loading..."]</u></a>"
-	var/ground_map = "<a href=\"[webmap_host][SSmapping.configs[GROUND_MAP]?.webmap_url]\"><u>[SSmapping.configs[GROUND_MAP].map_name || "Loading..."]</u></a>"
+	var/ship_map = "<a style='color: #88f;' href=\"[webmap_host][SSmapping.configs[SHIP_MAP]?.webmap_url]\"><u>[SSmapping.configs[SHIP_MAP].map_name || "Loading..."]</u></a>"
+	var/ground_map = "<a style='color: #88f;' href=\"[webmap_host][SSmapping.configs[GROUND_MAP]?.webmap_url]\"><u>[SSmapping.configs[GROUND_MAP].map_name || "Loading..."]</u></a>"
 
 	var/new_maptext = {"
 		<span style='text-align: right; line-height: 0.7'>

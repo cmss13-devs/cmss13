@@ -149,7 +149,8 @@
 /obj/effect/landmark/interior/spawn/entrance{
 	dir = 8;
 	exit_type = /obj/structure/interior_exit/vehicle/apc/rear;
-	pixel_x = -32
+	pixel_x = -32;
+	tag = "rear center"
 	},
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_1_13"
@@ -189,7 +190,8 @@
 	dir = 1;
 	exit_type = /obj/structure/interior_exit/vehicle/apc;
 	name = "Left APC door";
-	pixel_y = 32
+	pixel_y = 32;
+	tag = "left"
 	},
 /obj/effect/landmark/interior/spawn/interior_viewport{
 	dir = 8;
@@ -258,7 +260,8 @@
 /obj/effect/landmark/interior/spawn/entrance{
 	dir = 8;
 	exit_type = /obj/structure/interior_exit/vehicle/apc/rear/right;
-	pixel_x = -32
+	pixel_x = -32;
+	tag = "rear right"
 	},
 /obj/structure/bed/chair/vehicle{
 	dir = 1;
@@ -383,7 +386,8 @@
 /obj/effect/landmark/interior/spawn/entrance{
 	dir = 8;
 	exit_type = /obj/structure/interior_exit/vehicle/apc/rear/left;
-	pixel_x = -32
+	pixel_x = -32;
+	tag = "rear left"
 	},
 /obj/structure/bed/chair/vehicle{
 	pixel_x = -8
@@ -427,7 +431,8 @@
 /obj/effect/landmark/interior/spawn/entrance{
 	alpha = 50;
 	exit_type = /obj/structure/interior_exit/vehicle/apc;
-	name = "Right APC door"
+	name = "Right APC door";
+	tag = "right"
 	},
 /obj/effect/landmark/interior/spawn/interior_viewport{
 	dir = 8;

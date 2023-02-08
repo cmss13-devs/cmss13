@@ -369,9 +369,8 @@
 /turf/open/floor/plating/bare_catwalk,
 /area/supply/dock)
 "ev" = (
-/turf/open/floor/carpet{
+/turf/open/floor/carpet/edge{
 	dir = 9;
-	icon_state = "carpetside";
 	tag = "icon-carpetside (NORTHWEST)"
 	},
 /area/centcom/living)
@@ -398,16 +397,14 @@
 /turf/closed/wall/r_wall/unmeltable,
 /area/adminlevel/ert_station)
 "eE" = (
-/turf/open/floor/carpet{
+/turf/open/floor/carpet/edge{
 	dir = 1;
-	icon_state = "carpetside";
 	tag = "icon-carpetside (NORTH)"
 	},
 /area/centcom/living)
 "eF" = (
-/turf/open/floor/carpet{
+/turf/open/floor/carpet/edge{
 	dir = 5;
-	icon_state = "carpetside";
 	tag = "icon-carpetside (NORTHEAST)"
 	},
 /area/centcom/living)
@@ -427,9 +424,8 @@
 	},
 /area/adminlevel/ert_station/shuttle_dispatch)
 "eU" = (
-/turf/open/floor/carpet{
+/turf/open/floor/carpet/edge{
 	dir = 8;
-	icon_state = "carpetside";
 	tag = "icon-carpetside (WEST)"
 	},
 /area/centcom/living)
@@ -438,9 +434,8 @@
 	icon_state = "pottedplant_10";
 	tag = "icon-plant-10"
 	},
-/turf/open/floor/carpet{
+/turf/open/floor/carpet/edge{
 	dir = 8;
-	icon_state = "carpetside";
 	tag = "icon-carpetside (WEST)"
 	},
 /area/centcom/living)
@@ -452,9 +447,8 @@
 /turf/open/floor/carpet,
 /area/centcom/living)
 "eZ" = (
-/turf/open/floor/carpet{
+/turf/open/floor/carpet/edge{
 	dir = 4;
-	icon_state = "carpetside";
 	tag = "icon-carpetside (EAST)"
 	},
 /area/centcom/living)
@@ -512,9 +506,8 @@
 	},
 /area/centcom/control)
 "fL" = (
-/turf/open/floor/carpet{
+/turf/open/floor/carpet/edge{
 	dir = 10;
-	icon_state = "carpetside";
 	tag = "icon-carpetside (SOUTHWEST)"
 	},
 /area/centcom/living)
@@ -523,30 +516,24 @@
 	icon_state = "pottedplant_10";
 	tag = "icon-plant-10"
 	},
-/turf/open/floor/carpet{
+/turf/open/floor/carpet/edge{
 	dir = 4;
-	icon_state = "carpetside";
 	tag = "icon-carpetside (EAST)"
 	},
 /area/centcom/living)
 "fN" = (
 /obj/effect/step_trigger/message/memorial,
-/turf/open/floor/carpet{
+/turf/open/floor/carpet/edge{
 	dir = 1;
-	icon_state = "carpetside";
 	tag = "icon-carpetside (NORTH)"
 	},
 /area/centcom/living)
 "fO" = (
 /obj/effect/step_trigger/message/memorial,
-/turf/open/floor/carpet{
-	icon_state = "carpetside"
-	},
+/turf/open/floor/carpet/edge,
 /area/centcom/living)
 "fP" = (
-/turf/open/floor/carpet{
-	icon_state = "carpetside"
-	},
+/turf/open/floor/carpet/edge,
 /area/centcom/living)
 "fQ" = (
 /obj/structure/machinery/telecomms/relay/preset/centcom,
@@ -560,9 +547,8 @@
 	},
 /area/centcom/control)
 "fW" = (
-/turf/open/floor/carpet{
+/turf/open/floor/carpet/edge{
 	dir = 6;
-	icon_state = "carpetside";
 	tag = "icon-carpetside (SOUTHEAST)"
 	},
 /area/centcom/living)

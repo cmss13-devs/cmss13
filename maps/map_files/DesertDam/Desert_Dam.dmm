@@ -19330,39 +19330,34 @@
 /area/desert_dam/building/administration/meetingrooom)
 "bee" = (
 /obj/structure/disposalpipe/segment,
-/turf/open/floor/carpet{
+/turf/open/floor/carpet/edge{
 	dir = 9;
-	icon_state = "carpetside";
 	tag = "icon-carpetside (NORTHWEST)"
 	},
 /area/desert_dam/building/administration/meetingrooom)
 "bef" = (
-/turf/open/floor/carpet{
+/turf/open/floor/carpet/edge{
 	dir = 1;
-	icon_state = "carpetside";
 	tag = "icon-carpetside (NORTH)"
 	},
 /area/desert_dam/building/administration/meetingrooom)
 "beg" = (
 /obj/structure/bed/chair/wood/normal,
-/turf/open/floor/carpet{
+/turf/open/floor/carpet/edge{
 	dir = 1;
-	icon_state = "carpetside";
 	tag = "icon-carpetside (NORTH)"
 	},
 /area/desert_dam/building/administration/meetingrooom)
 "beh" = (
 /obj/effect/landmark/survivor_spawner,
-/turf/open/floor/carpet{
+/turf/open/floor/carpet/edge{
 	dir = 1;
-	icon_state = "carpetside";
 	tag = "icon-carpetside (NORTH)"
 	},
 /area/desert_dam/building/administration/meetingrooom)
 "bei" = (
-/turf/open/floor/carpet{
+/turf/open/floor/carpet/edge{
 	dir = 5;
-	icon_state = "carpetside";
 	tag = "icon-carpetside (NORTHEAST)"
 	},
 /area/desert_dam/building/administration/meetingrooom)
@@ -19446,9 +19441,8 @@
 /area/desert_dam/building/administration/meetingrooom)
 "beu" = (
 /obj/structure/disposalpipe/segment,
-/turf/open/floor/carpet{
+/turf/open/floor/carpet/edge{
 	dir = 8;
-	icon_state = "carpetside";
 	tag = "icon-carpetside (WEST)"
 	},
 /area/desert_dam/building/administration/meetingrooom)
@@ -19471,9 +19465,8 @@
 /turf/open/floor/carpet,
 /area/desert_dam/building/administration/meetingrooom)
 "bey" = (
-/turf/open/floor/carpet{
+/turf/open/floor/carpet/edge{
 	dir = 4;
-	icon_state = "carpetside";
 	tag = "icon-carpetside (EAST)"
 	},
 /area/desert_dam/building/administration/meetingrooom)
@@ -19557,9 +19550,8 @@
 	dir = 8;
 	icon_state = "pipe-c"
 	},
-/turf/open/floor/carpet{
+/turf/open/floor/carpet/edge{
 	dir = 8;
-	icon_state = "carpetside";
 	tag = "icon-carpetside (WEST)"
 	},
 /area/desert_dam/building/administration/meetingrooom)
@@ -19667,24 +19659,19 @@
 	},
 /area/desert_dam/building/administration/meetingrooom)
 "bfc" = (
-/turf/open/floor/carpet{
+/turf/open/floor/carpet/edge{
 	dir = 10;
-	icon_state = "carpetside";
 	tag = "icon-carpetside (SOUTHWEST)"
 	},
 /area/desert_dam/building/administration/meetingrooom)
 "bfd" = (
-/turf/open/floor/carpet{
-	icon_state = "carpetside"
-	},
+/turf/open/floor/carpet/edge,
 /area/desert_dam/building/administration/meetingrooom)
 "bfe" = (
 /obj/structure/bed/chair/wood/normal{
 	dir = 1
 	},
-/turf/open/floor/carpet{
-	icon_state = "carpetside"
-	},
+/turf/open/floor/carpet/edge,
 /area/desert_dam/building/administration/meetingrooom)
 "bff" = (
 /obj/structure/machinery/computer/security{
@@ -57659,9 +57646,8 @@
 /area/desert_dam/building/administration/overseer_office)
 "dKd" = (
 /obj/effect/decal/cleanable/blood,
-/turf/open/floor/carpet{
+/turf/open/floor/carpet/edge{
 	dir = 6;
-	icon_state = "carpetside";
 	tag = "icon-carpetside (SOUTHEAST)"
 	},
 /area/desert_dam/building/administration/meetingrooom)

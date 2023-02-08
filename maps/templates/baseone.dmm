@@ -48,25 +48,22 @@
 /area/adminlevel/bunker01/command)
 "aj" = (
 /obj/structure/machinery/cm_vending/gear/antag_guns,
-/turf/open/floor/carpet{
+/turf/open/floor/carpet/edge{
 	dir = 9;
-	icon_state = "carpetside";
 	tag = "icon-carpetside (NORTHWEST)"
 	},
 /area/adminlevel/bunker01/command)
 "ak" = (
 /obj/structure/machinery/cm_vending/clothing/antag,
-/turf/open/floor/carpet{
+/turf/open/floor/carpet/edge{
 	dir = 1;
-	icon_state = "carpetside";
 	tag = "icon-carpetside (NORTH)"
 	},
 /area/adminlevel/bunker01/command)
 "al" = (
 /obj/structure/safe,
-/turf/open/floor/carpet{
+/turf/open/floor/carpet/edge{
 	dir = 5;
-	icon_state = "carpetside";
 	tag = "icon-carpetside (NORTHEAST)"
 	},
 /area/adminlevel/bunker01/bathroom)
@@ -215,9 +212,8 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/open/floor/carpet{
+/turf/open/floor/carpet/edge{
 	dir = 8;
-	icon_state = "carpetside";
 	tag = "icon-carpetside (WEST)"
 	},
 /area/adminlevel/bunker01/command)
@@ -242,9 +238,8 @@
 	dir = 2;
 	icon_state = "pipe-c"
 	},
-/turf/open/floor/carpet{
+/turf/open/floor/carpet/edge{
 	dir = 4;
-	icon_state = "carpetside";
 	tag = "icon-carpetside (EAST)"
 	},
 /area/adminlevel/bunker01/bathroom)
@@ -349,9 +344,8 @@
 /obj/structure/sign/safety/terminal{
 	pixel_x = -32
 	},
-/turf/open/floor/carpet{
+/turf/open/floor/carpet/edge{
 	dir = 8;
-	icon_state = "carpetside";
 	tag = "icon-carpetside (WEST)"
 	},
 /area/adminlevel/bunker01/command)
@@ -367,9 +361,8 @@
 	},
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/disposalpipe/segment,
-/turf/open/floor/carpet{
+/turf/open/floor/carpet/edge{
 	dir = 4;
-	icon_state = "carpetside";
 	tag = "icon-carpetside (EAST)"
 	},
 /area/adminlevel/bunker01/bathroom)
@@ -419,25 +412,21 @@
 /obj/structure/surface/table/holotable/wood,
 /obj/item/clothing/mask/cigarette/cigar/havana,
 /obj/item/ashtray/glass,
-/turf/open/floor/carpet{
+/turf/open/floor/carpet/edge{
 	dir = 10;
-	icon_state = "carpetside";
 	tag = "icon-carpetside (SOUTHWEST)"
 	},
 /area/adminlevel/bunker01/command)
 "aT" = (
 /obj/structure/closet/cabinet,
 /obj/item/storage/box/ids,
-/turf/open/floor/carpet{
-	icon_state = "carpetside"
-	},
+/turf/open/floor/carpet/edge,
 /area/adminlevel/bunker01/command)
 "aU" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/disposalpipe/segment,
-/turf/open/floor/carpet{
+/turf/open/floor/carpet/edge{
 	dir = 6;
-	icon_state = "carpetside";
 	tag = "icon-carpetside (SOUTHEAST)"
 	},
 /area/adminlevel/bunker01/bathroom)

@@ -1,5 +1,4 @@
-/turf/open/floor/carpet{icon_state = "carpet_side"} : /turf/open/floor/carpet/edge{@OLD;icon_state@SKIP}
+/turf : /turf{@OLD;tag=@SKIP}
+/obj : /obj{@OLD;tag=@SKIP}
 
-/turf : /turf{@OLD}
-
-/obj : /obj{@OLD}
+/turf/open/floor/carpet{icon_state = "carpetside"} : /turf/open/floor/carpet/edge{@OLD;icon_state=@SKIP}

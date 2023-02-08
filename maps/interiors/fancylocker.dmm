@@ -14,25 +14,21 @@
 /area/vehicle/apc)
 "d" = (
 /turf/open/floor/carpet/edge{
-	tag = "icon-carpetside (NORTHWEST)";
 	dir = 9
 	},
 /area/vehicle/apc)
 "e" = (
 /turf/open/floor/carpet/edge{
-	tag = "icon-carpetside (NORTH)";
 	dir = 1
 	},
 /area/vehicle/apc)
 "f" = (
 /turf/open/floor/carpet/edge{
-	tag = "icon-carpetside (NORTHEAST)";
 	dir = 5
 	},
 /area/vehicle/apc)
 "g" = (
 /turf/open/floor/carpet/edge{
-	tag = "icon-carpetside (WEST)";
 	dir = 8
 	},
 /area/vehicle/apc)
@@ -50,7 +46,6 @@
 /area/vehicle/apc)
 "k" = (
 /turf/open/floor/carpet/edge{
-	tag = "icon-carpetside (EAST)";
 	dir = 4
 	},
 /area/vehicle/apc)
@@ -61,7 +56,6 @@
 /area/vehicle/apc)
 "m" = (
 /turf/open/floor/carpet/edge{
-	tag = "icon-carpetside (SOUTHWEST)";
 	dir = 10
 	},
 /area/vehicle/apc)
@@ -70,7 +64,6 @@
 /area/vehicle/apc)
 "o" = (
 /turf/open/floor/carpet/edge{
-	tag = "icon-carpetside (SOUTHEAST)";
 	dir = 6
 	},
 /area/vehicle/apc)
@@ -80,8 +73,7 @@
 /area/vehicle/apc)
 "q" = (
 /obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_10";
-	tag = "icon-plant-10"
+	icon_state = "pottedplant_10"
 	},
 /turf/open/floor/wood,
 /area/vehicle/apc)
@@ -108,8 +100,7 @@
 	pixel_y = -2
 	},
 /obj/structure/machinery/light{
-	dir = 1;
-	tag = "icon-tube1 (NORTH)"
+	dir = 1
 	},
 /turf/open/floor/wood,
 /area/vehicle/apc)
@@ -147,7 +138,6 @@
 /area/vehicle/apc)
 "z" = (
 /obj/structure/bed/chair/wood/wings{
-	tag = "icon-wooden_chair_wings (EAST)";
 	icon_state = "wooden_chair_wings";
 	dir = 4
 	},

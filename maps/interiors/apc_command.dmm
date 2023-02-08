@@ -228,8 +228,7 @@
 	dir = 1;
 	exit_type = /obj/structure/interior_exit/vehicle/apc;
 	name = "Left APC door";
-	pixel_y = 32;
-	tag = "left"
+	pixel_y = 32
 	},
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_1_11"
@@ -265,8 +264,7 @@
 /obj/effect/landmark/interior/spawn/entrance{
 	alpha = 50;
 	exit_type = /obj/structure/interior_exit/vehicle/apc;
-	name = "Right APC door";
-	tag = "right"
+	name = "Right APC door"
 	},
 /obj/effect/landmark/interior/spawn/interior_viewport{
 	dir = 8;

@@ -1,15 +1,13 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "c" = (
 /obj/structure/bed/chair/comfy{
-	dir = 1;
-	tag = "icon-comfychair (NORTH)"
+	dir = 1
 	},
 /obj/effect/landmark/interior/spawn/entrance{
 	dir = 8;
 	exit_type = /obj/structure/interior_exit/vehicle/van/backright;
 	name = "back right entrance marker";
-	pixel_x = -32;
-	tag = "back_right"
+	pixel_x = -32
 	},
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_1_10"
@@ -30,8 +28,7 @@
 /area/space)
 "h" = (
 /obj/structure/bed/chair/comfy{
-	dir = 1;
-	tag = "icon-comfychair (NORTH)"
+	dir = 1
 	},
 /obj/effect/landmark/interior/spawn/interior_viewport/simple{
 	alpha = 100;
@@ -90,8 +87,7 @@
 	dir = 8;
 	exit_type = /obj/structure/interior_exit/vehicle/van/backleft;
 	name = "back left entrance marker";
-	pixel_x = -32;
-	tag = "back_left"
+	pixel_x = -32
 	},
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_1_7"
@@ -102,8 +98,7 @@
 	dir = 1;
 	exit_type = /obj/structure/interior_exit/vehicle/van/left;
 	name = "left entrance marker";
-	pixel_y = 32;
-	tag = "left"
+	pixel_y = 32
 	},
 /obj/effect/landmark/interior/spawn/vehicle_driver_seat{
 	dir = 4
@@ -144,8 +139,7 @@
 /obj/effect/landmark/interior/spawn/entrance{
 	alpha = 50;
 	exit_type = /obj/structure/interior_exit/vehicle/van/right;
-	name = "right entrance marker";
-	tag = "right"
+	name = "right entrance marker"
 	},
 /obj/structure/bed/chair/comfy{
 	dir = 4;
@@ -178,8 +172,7 @@
 /area/space)
 "G" = (
 /obj/structure/bed/chair/comfy{
-	dir = 1;
-	tag = "icon-comfychair (NORTH)"
+	dir = 1
 	},
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_1_9"

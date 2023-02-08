@@ -166,8 +166,7 @@
 /area/bigredv2/outside/cargo)
 "aF" = (
 /obj/structure/cargo_container{
-	icon_state = "green 0,0";
-	tag = "icon-green 0,0"
+	icon_state = "green 0,0"
 	},
 /turf/open/floor{
 	dir = 1;
@@ -179,8 +178,7 @@
 	dir = 5
 	},
 /obj/structure/cargo_container{
-	icon_state = "green 1,0";
-	tag = "icon-green 1,0"
+	icon_state = "green 1,0"
 	},
 /turf/open/floor{
 	dir = 1;
@@ -192,8 +190,7 @@
 	dir = 4
 	},
 /obj/structure/cargo_container{
-	icon_state = "green 2,0";
-	tag = "icon-green 2,0"
+	icon_state = "green 2,0"
 	},
 /turf/open/floor{
 	dir = 1;
@@ -274,8 +271,7 @@
 /area/bigredv2/outside/cargo)
 "aS" = (
 /obj/structure/cargo_container{
-	icon_state = "red 0,0";
-	tag = "icon-red 0,0"
+	icon_state = "red 0,0"
 	},
 /turf/open/floor{
 	dir = 1;
@@ -284,8 +280,7 @@
 /area/bigredv2/outside/cargo)
 "aT" = (
 /obj/structure/cargo_container{
-	icon_state = "red 1,0";
-	tag = "icon-red 1,0"
+	icon_state = "red 1,0"
 	},
 /turf/open/floor{
 	dir = 1;
@@ -294,8 +289,7 @@
 /area/bigredv2/outside/cargo)
 "aU" = (
 /obj/structure/cargo_container{
-	icon_state = "red 2,0";
-	tag = "icon-red 2,0"
+	icon_state = "red 2,0"
 	},
 /turf/open/floor{
 	dir = 1;
@@ -326,8 +320,7 @@
 /area/bigredv2/outside/cargo)
 "aY" = (
 /obj/structure/cargo_container{
-	icon_state = "WY 0,0";
-	tag = "icon-WY 0,0"
+	icon_state = "WY 0,0"
 	},
 /turf/open/floor{
 	dir = 1;
@@ -336,8 +329,7 @@
 /area/bigredv2/outside/cargo)
 "aZ" = (
 /obj/structure/cargo_container{
-	icon_state = "WY 1,0";
-	tag = "icon-WY 1,0"
+	icon_state = "WY 1,0"
 	},
 /turf/open/floor{
 	dir = 1;
@@ -346,8 +338,7 @@
 /area/bigredv2/outside/cargo)
 "ba" = (
 /obj/structure/cargo_container{
-	icon_state = "WY 2,0";
-	tag = "icon-WY 2,0"
+	icon_state = "WY 2,0"
 	},
 /turf/open/floor{
 	dir = 1;
@@ -362,8 +353,7 @@
 "bc" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/cargo_container{
-	icon_state = "blue 0,0";
-	tag = "icon-blue 0,0"
+	icon_state = "blue 0,0"
 	},
 /turf/open/floor{
 	dir = 1;
@@ -372,8 +362,7 @@
 /area/bigredv2/outside/cargo)
 "bd" = (
 /obj/structure/cargo_container{
-	icon_state = "blue 1,0";
-	tag = "icon-blue 1,0"
+	icon_state = "blue 1,0"
 	},
 /turf/open/floor{
 	dir = 1;
@@ -382,8 +371,7 @@
 /area/bigredv2/outside/cargo)
 "be" = (
 /obj/structure/cargo_container{
-	icon_state = "blue 2,0";
-	tag = "icon-blue 2,0"
+	icon_state = "blue 2,0"
 	},
 /turf/open/floor{
 	dir = 1;
@@ -392,8 +380,7 @@
 /area/bigredv2/outside/cargo)
 "bf" = (
 /obj/structure/cargo_container{
-	icon_state = "gorg 0,0";
-	tag = "icon-WY 0,0"
+	icon_state = "gorg 0,0"
 	},
 /turf/open/floor{
 	dir = 1;
@@ -402,8 +389,7 @@
 /area/bigredv2/outside/cargo)
 "bg" = (
 /obj/structure/cargo_container{
-	icon_state = "gorg 2,0";
-	tag = "icon-WY 0,0"
+	icon_state = "gorg 2,0"
 	},
 /turf/open/floor{
 	dir = 1;
@@ -477,8 +463,7 @@
 "bz" = (
 /obj/effect/landmark/corpsespawner/security,
 /obj/structure/machinery/light{
-	dir = 4;
-	tag = "icon-tube1 (EAST)"
+	dir = 4
 	},
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
@@ -505,8 +490,7 @@
 /obj/effect/spawner/random/tool,
 /obj/effect/spawner/random/tool,
 /obj/structure/machinery/light{
-	dir = 4;
-	tag = "icon-tube1 (EAST)"
+	dir = 4
 	},
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
@@ -594,8 +578,7 @@
 	dir = 4
 	},
 /obj/structure/cargo_container{
-	icon_state = "gorg 0,0";
-	tag = "icon-WY 0,0"
+	icon_state = "gorg 0,0"
 	},
 /turf/open/floor{
 	dir = 1;
@@ -608,8 +591,7 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/cargo_container{
-	icon_state = "gorg 2,0";
-	tag = "icon-WY 0,0"
+	icon_state = "gorg 2,0"
 	},
 /turf/open/floor{
 	dir = 1;
@@ -622,8 +604,7 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/cargo_container{
-	icon_state = "gorg 0,0";
-	tag = "icon-WY 0,0"
+	icon_state = "gorg 0,0"
 	},
 /turf/open/floor{
 	dir = 1;
@@ -635,8 +616,7 @@
 	dir = 9
 	},
 /obj/structure/cargo_container{
-	icon_state = "gorg 2,0";
-	tag = "icon-WY 0,0"
+	icon_state = "gorg 2,0"
 	},
 /turf/open/floor{
 	dir = 1;
@@ -762,8 +742,7 @@
 "ct" = (
 /obj/structure/reagent_dispensers/fueltank,
 /obj/structure/machinery/light{
-	dir = 4;
-	tag = "icon-tube1 (EAST)"
+	dir = 4
 	},
 /turf/open/floor,
 /area/bigredv2/outside/cargo)

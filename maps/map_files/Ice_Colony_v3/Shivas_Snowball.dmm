@@ -354,8 +354,7 @@
 /area/shiva/exterior/junkyard/cp_bar)
 "abh" = (
 /turf/closed/shuttle/elevator{
-	dir = 9;
-	tag = "icon-wall (NORTHWEST)"
+	dir = 9
 	},
 /area/shiva/interior/colony/central)
 "abi" = (
@@ -404,8 +403,7 @@
 /area/shiva/interior/oob/dev_room)
 "abn" = (
 /turf/closed/shuttle/elevator{
-	dir = 9;
-	tag = "icon-wall (NORTHWEST)"
+	dir = 9
 	},
 /area/shiva/interior/colony/research_hab)
 "abo" = (
@@ -472,8 +470,7 @@
 /area/shiva/interior/caves/cp_camp)
 "abx" = (
 /turf/closed/shuttle/elevator{
-	dir = 5;
-	tag = "icon-wall (NORTHEAST)"
+	dir = 5
 	},
 /area/shiva/interior/colony/research_hab)
 "aby" = (
@@ -549,8 +546,7 @@
 /area/shiva/interior/caves/left_spiders)
 "abM" = (
 /turf/closed/shuttle/elevator{
-	dir = 1;
-	tag = "icon-wall (NORTH)"
+	dir = 1
 	},
 /area/shiva/interior/colony/research_hab)
 "abN" = (
@@ -683,14 +679,12 @@
 /area/shiva/interior/caves/right_spiders)
 "acg" = (
 /turf/closed/shuttle/elevator{
-	dir = 10;
-	tag = "icon-wall (SOUTHWEST)"
+	dir = 10
 	},
 /area/shiva/interior/colony/research_hab)
 "ach" = (
 /turf/closed/shuttle/elevator{
-	dir = 8;
-	tag = "icon-wall (WEST)"
+	dir = 8
 	},
 /area/shiva/interior/colony/research_hab)
 "aci" = (
@@ -703,14 +697,12 @@
 /area/shiva/exterior/cp_lz2)
 "acj" = (
 /turf/closed/shuttle/elevator{
-	dir = 4;
-	tag = "icon-wall (EAST)"
+	dir = 4
 	},
 /area/shiva/interior/colony/research_hab)
 "ack" = (
 /turf/closed/shuttle/elevator{
-	dir = 6;
-	tag = "icon-wall (SOUTHEAST)"
+	dir = 6
 	},
 /area/shiva/interior/colony/research_hab)
 "acl" = (
@@ -803,8 +795,7 @@
 "acC" = (
 /turf/open/floor/plating/icefloor{
 	dir = 4;
-	icon_state = "warnplate";
-	tag = "icon-warnplate (EAST)"
+	icon_state = "warnplate"
 	},
 /area/shiva/exterior/junkyard/fortbiceps)
 "acD" = (
@@ -864,14 +855,12 @@
 /area/shiva/interior/colony/research_hab)
 "acW" = (
 /turf/open/floor/plating/icefloor{
-	icon_state = "warnplate";
-	tag = "icon-warnplate"
+	icon_state = "warnplate"
 	},
 /area/shiva/exterior/junkyard/fortbiceps)
 "acY" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	tag = "icon-N"
+	icon_state = "N"
 	},
 /obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/shiva{
@@ -891,8 +880,7 @@
 /area/shiva/exterior/cp_colony_grounds)
 "adf" = (
 /turf/open/floor{
-	icon_state = "dark2";
-	tag = "icon-dark2"
+	icon_state = "dark2"
 	},
 /area/shiva/interior/colony/central)
 "adi" = (
@@ -1560,8 +1548,7 @@
 /area/shiva/interior/colony/medseceng)
 "agw" = (
 /obj/structure/bed/chair{
-	dir = 8;
-	tag = "icon-chair (WEST)"
+	dir = 8
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva,
@@ -1584,8 +1571,7 @@
 "agz" = (
 /obj/structure/reagent_dispensers/fueltank,
 /turf/open/floor{
-	icon_state = "platebot";
-	tag = "icon-platebot"
+	icon_state = "platebot"
 	},
 /area/shiva/interior/colony/research_hab)
 "agA" = (
@@ -1788,8 +1774,7 @@
 /area/shiva/interior/colony/medseceng)
 "ahR" = (
 /obj/structure/machinery/power/terminal{
-	dir = 1;
-	tag = "icon-term (NORTH)"
+	dir = 1
 	},
 /turf/open/floor/shiva{
 	dir = 8;
@@ -1812,12 +1797,10 @@
 /area/shiva/interior/colony/research_hab)
 "ahU" = (
 /obj/structure/bed/chair/office/dark{
-	dir = 4;
-	tag = "icon-officechair_dark (EAST)"
+	dir = 4
 	},
 /obj/structure/window/reinforced/tinted{
-	dir = 8;
-	tag = "icon-twindow (WEST)"
+	dir = 8
 	},
 /obj/structure/machinery/light/double,
 /turf/open/floor/shiva{
@@ -1850,8 +1833,7 @@
 /area/shiva/interior/colony/research_hab)
 "aia" = (
 /obj/structure/machinery/power/terminal{
-	dir = 4;
-	tag = "icon-term (EAST)"
+	dir = 4
 	},
 /turf/open/floor/shiva{
 	dir = 8;
@@ -2025,8 +2007,7 @@
 /obj/structure/machinery/door/window/brigdoor/westleft{
 	dir = 4;
 	icon_state = "leftsecure";
-	id = "brg";
-	tag = "icon-leftsecure (EAST)"
+	id = "brg"
 	},
 /turf/open/floor/plating,
 /area/shiva/interior/colony/medseceng)
@@ -2275,8 +2256,7 @@
 "aki" = (
 /turf/open/floor{
 	dir = 5;
-	icon_state = "darkgreen2";
-	tag = "icon-darkgreen2 (NORTHEAST)"
+	icon_state = "darkgreen2"
 	},
 /area/shiva/interior/colony/botany)
 "akj" = (
@@ -2332,8 +2312,7 @@
 	req_access_txt = "100"
 	},
 /turf/open/floor{
-	icon_state = "dark2";
-	tag = "icon-dark2"
+	icon_state = "dark2"
 	},
 /area/shiva/interior/colony/central)
 "akF" = (
@@ -2564,8 +2543,7 @@
 /area/shiva/interior/warehouse)
 "alZ" = (
 /obj/structure/bed/chair/office/light{
-	dir = 4;
-	tag = "icon-officechair_white (EAST)"
+	dir = 4
 	},
 /turf/open/floor/shiva{
 	icon_state = "wredfull"
@@ -2918,12 +2896,10 @@
 /area/shiva/interior/colony/medseceng)
 "anV" = (
 /obj/effect/decal/cleanable/blood{
-	icon_state = "gibarm_flesh";
-	tag = "icon-gibarm_flesh"
+	icon_state = "gibarm_flesh"
 	},
 /obj/effect/decal/cleanable/blood{
-	icon_state = "gib6";
-	tag = "icon-gib6"
+	icon_state = "gib6"
 	},
 /turf/open/floor/shiva{
 	dir = 1;
@@ -3073,12 +3049,10 @@
 /area/shiva/interior/colony/medseceng)
 "aoX" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	tag = "icon-W"
+	icon_state = "W"
 	},
 /obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	tag = "icon-N"
+	icon_state = "N"
 	},
 /obj/structure/window/reinforced{
 	dir = 8
@@ -3094,12 +3068,10 @@
 /area/shiva/exterior/junkyard/cp_bar)
 "apa" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	tag = "icon-N"
+	icon_state = "N"
 	},
 /obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	tag = "icon-W"
+	icon_state = "W"
 	},
 /obj/structure/window/reinforced{
 	dir = 1
@@ -3108,8 +3080,7 @@
 /area/shiva/interior/colony/central)
 "apc" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	tag = "icon-N"
+	icon_state = "N"
 	},
 /obj/structure/window/reinforced{
 	dir = 1
@@ -3118,12 +3089,10 @@
 /area/shiva/interior/colony/central)
 "apd" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "NS-center";
-	tag = "icon-W"
+	icon_state = "NS-center"
 	},
 /obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	tag = "icon-N"
+	icon_state = "N"
 	},
 /obj/structure/window/reinforced{
 	dir = 1
@@ -3132,12 +3101,10 @@
 /area/shiva/interior/colony/central)
 "ape" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	tag = "icon-N"
+	icon_state = "N"
 	},
 /obj/effect/decal/warning_stripes{
-	icon_state = "E-corner";
-	tag = "icon-E-corner"
+	icon_state = "E-corner"
 	},
 /obj/structure/window/reinforced{
 	dir = 1
@@ -3146,12 +3113,10 @@
 /area/shiva/interior/colony/central)
 "apf" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "E-corner";
-	tag = "icon-E-corner"
+	icon_state = "E-corner"
 	},
 /obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	tag = "icon-N"
+	icon_state = "N"
 	},
 /obj/structure/window/reinforced{
 	dir = 4
@@ -3184,8 +3149,7 @@
 /area/shiva/interior/colony/research_hab)
 "apm" = (
 /obj/effect/decal/cleanable/blood/drip{
-	icon_state = "3";
-	tag = "icon-3"
+	icon_state = "3"
 	},
 /obj/structure/prop/invuln/minecart_tracks{
 	dir = 8
@@ -3200,8 +3164,7 @@
 /area/shiva/interior/colony/medseceng)
 "apz" = (
 /obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_21";
-	tag = "icon-pottedplant_10"
+	icon_state = "pottedplant_21"
 	},
 /turf/open/floor/prison{
 	icon_state = "kitchen"
@@ -3229,8 +3192,7 @@
 /area/shiva/interior/colony/medseceng)
 "apF" = (
 /obj/effect/decal/cleanable/blood{
-	icon_state = "xgibdown1";
-	tag = "icon-xgibdown1"
+	icon_state = "xgibdown1"
 	},
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/colony/central)
@@ -3299,8 +3261,7 @@
 	pixel_y = 5
 	},
 /turf/open/floor/prison{
-	icon_state = "kitchen";
-	tag = "icon-kitchen"
+	icon_state = "kitchen"
 	},
 /area/shiva/interior/bar)
 "aqb" = (
@@ -3333,8 +3294,7 @@
 /area/shiva/exterior/cp_lz2)
 "aqC" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	tag = "icon-W"
+	icon_state = "W"
 	},
 /obj/structure/machinery/door/window/westright{
 	name = "Basketball Court"
@@ -3389,44 +3349,37 @@
 /area/shiva/interior/colony/research_hab)
 "arh" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	tag = "icon-N"
+	icon_state = "N"
 	},
 /turf/open/floor/wood,
 /area/shiva/interior/colony/central)
 "arq" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "E-corner";
-	tag = "icon-E-corner"
+	icon_state = "E-corner"
 	},
 /obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	tag = "icon-N"
+	icon_state = "N"
 	},
 /turf/open/floor/wood,
 /area/shiva/interior/colony/central)
 "arx" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "NS-center";
-	tag = "icon-W"
+	icon_state = "NS-center"
 	},
 /turf/open/floor/wood,
 /area/shiva/interior/colony/central)
 "ary" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	tag = "icon-N"
+	icon_state = "N"
 	},
 /obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	tag = "icon-W"
+	icon_state = "W"
 	},
 /turf/open/floor/wood,
 /area/shiva/interior/colony/central)
 "arz" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "E-corner";
-	tag = "icon-E-corner"
+	icon_state = "E-corner"
 	},
 /obj/structure/machinery/door/window/eastleft{
 	name = "Basketball Court"
@@ -3634,8 +3587,7 @@
 /area/shiva/interior/colony/botany)
 "asK" = (
 /obj/structure/disposaloutlet{
-	dir = 4;
-	tag = "icon-outlet (EAST)"
+	dir = 4
 	},
 /turf/open/floor/plating,
 /area/shiva/interior/valley_huts/disposals)
@@ -3647,8 +3599,7 @@
 "asO" = (
 /obj/item/evidencebag,
 /obj/structure/machinery/light/small{
-	dir = 1;
-	tag = "icon-bulb1 (NORTH)"
+	dir = 1
 	},
 /obj/item/trash/popcorn,
 /obj/item/trash/candy,
@@ -3680,8 +3631,7 @@
 /area/shiva/exterior/cp_lz2)
 "ata" = (
 /turf/closed/shuttle/elevator{
-	dir = 5;
-	tag = "icon-wall (NORTHEAST)"
+	dir = 5
 	},
 /area/shiva/interior/colony/central)
 "atb" = (
@@ -3839,8 +3789,7 @@
 "auf" = (
 /turf/open/floor{
 	dir = 8;
-	icon_state = "darkbrown2";
-	tag = "icon-darkbrown2 (WEST)"
+	icon_state = "darkbrown2"
 	},
 /area/shiva/interior/valley_huts/disposals)
 "aug" = (
@@ -3916,32 +3865,27 @@
 /area/shiva/interior/colony/botany)
 "auU" = (
 /obj/structure/window/reinforced{
-	dir = 1;
-	tag = "icon-rwindow (NORTH)"
+	dir = 1
 	},
 /turf/open/floor{
 	dir = 9;
-	icon_state = "darkbrown2";
-	tag = "icon-darkbrown2"
+	icon_state = "darkbrown2"
 	},
 /area/shiva/interior/valley_huts/disposals)
 "auV" = (
 /obj/structure/window/reinforced{
-	dir = 1;
-	tag = "icon-rwindow (NORTH)"
+	dir = 1
 	},
 /turf/open/floor{
 	dir = 1;
-	icon_state = "darkbrown2";
-	tag = "icon-darkbrown2 (NORTH)"
+	icon_state = "darkbrown2"
 	},
 /area/shiva/interior/valley_huts/disposals)
 "auZ" = (
 /obj/structure/machinery/door/window/northright,
 /turf/open/floor{
 	dir = 5;
-	icon_state = "darkbrown2";
-	tag = "icon-darkbrown2"
+	icon_state = "darkbrown2"
 	},
 /area/shiva/interior/valley_huts/disposals)
 "ava" = (
@@ -4002,8 +3946,7 @@
 "awc" = (
 /turf/open/floor{
 	dir = 4;
-	icon_state = "darkbrown2";
-	tag = "icon-darkbrown2 (EAST)"
+	icon_state = "darkbrown2"
 	},
 /area/shiva/interior/valley_huts/disposals)
 "awj" = (
@@ -4017,8 +3960,7 @@
 	name = "\improper Colony Disposals"
 	},
 /turf/open/floor{
-	icon_state = "dark2";
-	tag = "icon-dark2"
+	icon_state = "dark2"
 	},
 /area/shiva/interior/valley_huts/disposals)
 "awr" = (
@@ -4098,28 +4040,24 @@
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor{
 	dir = 8;
-	icon_state = "darkbrown2";
-	tag = "icon-darkbrown2 (WEST)"
+	icon_state = "darkbrown2"
 	},
 /area/shiva/interior/valley_huts/disposals)
 "axv" = (
 /turf/open/floor{
-	icon_state = "darkbrowncorners2";
-	tag = "icon-darkbrowncorners2"
+	icon_state = "darkbrowncorners2"
 	},
 /area/shiva/interior/valley_huts/disposals)
 "axw" = (
 /obj/structure/machinery/space_heater,
 /turf/open/floor{
 	dir = 6;
-	icon_state = "darkbrown2";
-	tag = "icon-darkbrown2"
+	icon_state = "darkbrown2"
 	},
 /area/shiva/interior/valley_huts/disposals)
 "axx" = (
 /obj/structure/ice/ice_rock/cornerOverlay{
-	dir = 1;
-	tag = "icon-corner_overlay (NORTH)"
+	dir = 1
 	},
 /turf/closed/wall/shiva/ice,
 /area/shiva/interior/caves/right_spiders)
@@ -4235,8 +4173,7 @@
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor{
 	dir = 10;
-	icon_state = "darkbrown2";
-	tag = "icon-darkbrown2"
+	icon_state = "darkbrown2"
 	},
 /area/shiva/interior/valley_huts/disposals)
 "axT" = (
@@ -4245,21 +4182,18 @@
 /obj/item/clothing/mask/rebreather,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor{
-	icon_state = "darkbrown2";
-	tag = "icon-darkbrown2"
+	icon_state = "darkbrown2"
 	},
 /area/shiva/interior/valley_huts/disposals)
 "axU" = (
 /turf/open/floor{
-	icon_state = "darkbrown2";
-	tag = "icon-darkbrown2"
+	icon_state = "darkbrown2"
 	},
 /area/shiva/interior/valley_huts/disposals)
 "axV" = (
 /obj/structure/machinery/light/double,
 /turf/open/floor{
-	icon_state = "darkbrown2";
-	tag = "icon-darkbrown2"
+	icon_state = "darkbrown2"
 	},
 /area/shiva/interior/valley_huts/disposals)
 "axZ" = (
@@ -4267,8 +4201,7 @@
 /obj/item/tool/shovel/snow,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor{
-	icon_state = "darkbrown2";
-	tag = "icon-darkbrown2"
+	icon_state = "darkbrown2"
 	},
 /area/shiva/interior/valley_huts/disposals)
 "ayb" = (
@@ -4278,8 +4211,7 @@
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor{
 	dir = 6;
-	icon_state = "darkbrown2";
-	tag = "icon-darkbrown2"
+	icon_state = "darkbrown2"
 	},
 /area/shiva/interior/valley_huts/disposals)
 "ayc" = (
@@ -4378,13 +4310,11 @@
 /area/shiva/exterior/cp_lz2)
 "ayY" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	tag = "icon-W"
+	icon_state = "W"
 	},
 /obj/effect/decal/warning_stripes,
 /obj/structure/holohoop{
-	dir = 4;
-	tag = "icon-hoop (NORTH)"
+	dir = 4
 	},
 /obj/structure/window/reinforced{
 	dir = 8
@@ -4398,8 +4328,7 @@
 /area/shiva/interior/warehouse)
 "azc" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "NS-center";
-	tag = "icon-W"
+	icon_state = "NS-center"
 	},
 /obj/effect/decal/warning_stripes,
 /turf/open/floor/wood,
@@ -4462,8 +4391,7 @@
 "azp" = (
 /obj/vehicle/train/cargo/engine,
 /obj/effect/decal/warning_stripes{
-	icon_state = "SE-out";
-	tag = "icon-SE-out"
+	icon_state = "SE-out"
 	},
 /turf/open/floor/shiva{
 	dir = 1
@@ -4514,8 +4442,7 @@
 /area/shiva/interior/colony/research_hab)
 "azI" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "N-corner";
-	tag = "icon-N-corner"
+	icon_state = "N-corner"
 	},
 /turf/open/floor/shiva{
 	dir = 1;
@@ -4524,8 +4451,7 @@
 /area/shiva/interior/garage)
 "azK" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	tag = "icon-N"
+	icon_state = "N"
 	},
 /turf/open/floor/shiva{
 	dir = 1;
@@ -4544,8 +4470,7 @@
 /obj/item/clipboard,
 /obj/item/tool/stamp,
 /obj/structure/window/reinforced/tinted{
-	dir = 8;
-	tag = "icon-twindow (WEST)"
+	dir = 8
 	},
 /turf/open/floor/shiva{
 	icon_state = "bluefull"
@@ -4680,8 +4605,7 @@
 "aBm" = (
 /obj/effect/decal/cleanable/blood{
 	dir = 4;
-	icon_state = "gib6";
-	tag = "icon-gib6"
+	icon_state = "gib6"
 	},
 /turf/open/floor/shiva{
 	dir = 1
@@ -4719,8 +4643,7 @@
 /area/shiva/interior/lz2_habs)
 "aBE" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "NS-center";
-	tag = "icon-W"
+	icon_state = "NS-center"
 	},
 /obj/effect/decal/warning_stripes,
 /obj/item/toy/beach_ball/holoball,
@@ -4747,8 +4670,7 @@
 /area/shiva/interior/garage)
 "aBZ" = (
 /obj/effect/decal/cleanable/blood{
-	icon_state = "gib6";
-	tag = "icon-gib6"
+	icon_state = "gib6"
 	},
 /turf/open/floor/shiva{
 	dir = 1
@@ -4809,8 +4731,7 @@
 /obj/structure/machinery/light/double,
 /obj/effect/decal/cleanable/blood{
 	dir = 4;
-	icon_state = "gib6";
-	tag = "icon-gib6"
+	icon_state = "gib6"
 	},
 /turf/open/floor/shiva{
 	icon_state = "yellow"
@@ -4940,8 +4861,7 @@
 /obj/structure/largecrate/random,
 /obj/effect/landmark/crap_item,
 /obj/structure/machinery/light/small{
-	dir = 8;
-	tag = "icon-bulb1 (WEST)"
+	dir = 8
 	},
 /turf/open/floor/shiva{
 	icon_state = "floor3"
@@ -5285,14 +5205,12 @@
 /area/shiva/interior/aerodrome)
 "aHr" = (
 /obj/structure/cargo_container/horizontal{
-	icon_state = "0,1";
-	tag = "icon-0,1"
+	icon_state = "0,1"
 	},
 /obj/structure/cargo_container/horizontal{
 	density = 0;
 	icon_state = "0,2";
-	pixel_y = 12;
-	tag = "icon-0,2"
+	pixel_y = 12
 	},
 /obj/structure/largecrate/random/mini/ammo{
 	pixel_x = -3;
@@ -5606,24 +5524,21 @@
 "aLZ" = (
 /obj/effect/decal/cleanable/blood{
 	dir = 4;
-	icon_state = "gib6";
-	tag = "icon-gib6"
+	icon_state = "gib6"
 	},
 /turf/open/auto_turf/snow/layer1,
 /area/shiva/exterior/junkyard/cp_bar)
 "aMj" = (
 /obj/effect/decal/cleanable/blood{
 	dir = 4;
-	icon_state = "gib6";
-	tag = "icon-gib6"
+	icon_state = "gib6"
 	},
 /turf/open/auto_turf/snow/layer0,
 /area/shiva/exterior/junkyard/cp_bar)
 "aMk" = (
 /obj/effect/decal/cleanable/blood{
 	dir = 4;
-	icon_state = "gib6";
-	tag = "icon-gib6"
+	icon_state = "gib6"
 	},
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/junkyard/cp_bar)
@@ -5675,8 +5590,7 @@
 "aMy" = (
 /obj/structure/machinery/space_heater,
 /obj/structure/machinery/light/small{
-	dir = 8;
-	tag = "icon-bulb1 (WEST)"
+	dir = 8
 	},
 /turf/open/floor/shiva{
 	dir = 8;
@@ -5719,8 +5633,7 @@
 "aME" = (
 /obj/effect/decal/cleanable/blood{
 	dir = 4;
-	icon_state = "gib6";
-	tag = "icon-gib6"
+	icon_state = "gib6"
 	},
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/junkyard/cp_bar)
@@ -5775,8 +5688,7 @@
 "aMZ" = (
 /obj/structure/machinery/power/port_gen/pacman,
 /obj/structure/machinery/light/small{
-	dir = 4;
-	tag = "icon-bulb1 (EAST)"
+	dir = 4
 	},
 /turf/open/auto_turf/snow/layer1,
 /area/shiva/exterior/cp_s_research)
@@ -6188,13 +6100,11 @@
 /area/shiva/interior/caves/cp_camp)
 "aRS" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "E-corner";
-	tag = "icon-E-corner"
+	icon_state = "E-corner"
 	},
 /obj/effect/decal/warning_stripes,
 /obj/structure/holohoop{
-	dir = 8;
-	tag = "icon-hoop (NORTH)"
+	dir = 8
 	},
 /obj/structure/window/reinforced{
 	dir = 4
@@ -6414,8 +6324,7 @@
 "aTQ" = (
 /obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	dir = 8;
-	name = "\improper Omicron Field Gear Storage";
-	tag = "icon-door_closed (WEST)"
+	name = "\improper Omicron Field Gear Storage"
 	},
 /turf/open/floor/shiva,
 /area/shiva/interior/colony/research_hab)
@@ -6484,8 +6393,7 @@
 	pixel_y = 24
 	},
 /obj/structure/bed/chair/dropship/pilot{
-	dir = 1;
-	tag = "icon-pilot_chair (NORTH)"
+	dir = 1
 	},
 /turf/open/shuttle{
 	icon_state = "floor7"
@@ -6547,8 +6455,7 @@
 	pixel_y = 9
 	},
 /obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	tag = "icon-W"
+	icon_state = "W"
 	},
 /turf/open/floor/shiva{
 	dir = 8;
@@ -6557,8 +6464,7 @@
 /area/shiva/interior/colony/research_hab)
 "aUX" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	tag = "icon-W"
+	icon_state = "W"
 	},
 /turf/open/floor/shiva{
 	icon_state = "floor3"
@@ -6570,8 +6476,7 @@
 	pixel_y = 9
 	},
 /obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	tag = "icon-W"
+	icon_state = "E"
 	},
 /turf/open/floor/shiva{
 	dir = 8;
@@ -6683,8 +6588,7 @@
 /obj/item/tool/stamp{
 	icon_state = "stamp-ce";
 	pixel_x = -6;
-	pixel_y = 9;
-	tag = "icon-stamp-ce"
+	pixel_y = 9
 	},
 /obj/item/reagent_container/food/drinks/cans/waterbottle{
 	pixel_x = 7;
@@ -6694,8 +6598,7 @@
 /area/shiva/interior/colony/medseceng)
 "aVR" = (
 /obj/structure/bed/chair{
-	dir = 8;
-	tag = "icon-chair (WEST)"
+	dir = 8
 	},
 /turf/open/floor/wood,
 /area/shiva/interior/colony/medseceng)
@@ -6734,8 +6637,7 @@
 /area/shiva/exterior/lz2_fortress)
 "aWs" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "NE-out";
-	tag = "icon-NE-out"
+	icon_state = "NE-out"
 	},
 /turf/open/floor/shiva{
 	icon_state = "floor3"
@@ -6743,8 +6645,7 @@
 /area/shiva/interior/colony/research_hab)
 "aWB" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "NW-out";
-	tag = "icon-NW-out"
+	icon_state = "NW-out"
 	},
 /turf/open/floor/shiva{
 	icon_state = "floor3"
@@ -6752,8 +6653,7 @@
 /area/shiva/interior/colony/research_hab)
 "aWC" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	tag = "icon-W"
+	icon_state = "E"
 	},
 /turf/open/floor/shiva{
 	icon_state = "floor3"
@@ -6862,8 +6762,7 @@
 /area/shiva/interior/colony/research_hab)
 "aXh" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	tag = "icon-W"
+	icon_state = "W"
 	},
 /turf/open/floor/shiva{
 	dir = 4;
@@ -6899,8 +6798,7 @@
 "aXw" = (
 /obj/vehicle/train/cargo/engine,
 /obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	tag = "icon-W"
+	icon_state = "E"
 	},
 /turf/open/floor/shiva{
 	dir = 4;
@@ -6909,8 +6807,7 @@
 /area/shiva/interior/colony/research_hab)
 "aXH" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "S";
-	tag = "icon-S"
+	icon_state = "S"
 	},
 /turf/open/floor/shiva{
 	dir = 1;
@@ -6952,8 +6849,7 @@
 /area/shiva/interior/aerodrome)
 "aYf" = (
 /obj/structure/machinery/light{
-	dir = 8;
-	tag = "icon-tube1 (WEST)"
+	dir = 8
 	},
 /obj/structure/bed/chair/dropship/passenger{
 	dir = 4
@@ -6964,8 +6860,7 @@
 /area/shiva/interior/aerodrome)
 "aYg" = (
 /obj/structure/machinery/light{
-	dir = 4;
-	tag = "icon-tube1 (EAST)"
+	dir = 4
 	},
 /obj/structure/bed/chair/dropship/passenger{
 	dir = 8
@@ -7045,8 +6940,7 @@
 	},
 /turf/open/floor{
 	dir = 6;
-	icon_state = "darkgreen2";
-	tag = "icon-darkgreen2 (SOUTHEAST)"
+	icon_state = "darkgreen2"
 	},
 /area/shiva/interior/colony/botany)
 "bag" = (
@@ -7076,8 +6970,7 @@
 "bai" = (
 /turf/open/floor/plating/icefloor{
 	dir = 1;
-	icon_state = "warnplate";
-	tag = "icon-warnplate (NORTH)"
+	icon_state = "warnplate"
 	},
 /area/shiva/exterior/junkyard/fortbiceps)
 "bar" = (
@@ -7244,8 +7137,7 @@
 	dir = 4
 	},
 /obj/structure/machinery/light{
-	dir = 8;
-	tag = "icon-tube1 (WEST)"
+	dir = 8
 	},
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15"
@@ -7261,8 +7153,7 @@
 	dir = 8
 	},
 /obj/structure/machinery/light{
-	dir = 4;
-	tag = "icon-tube1 (EAST)"
+	dir = 4
 	},
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15"
@@ -7762,8 +7653,7 @@
 /area/shiva/interior/colony/research_hab)
 "bFb" = (
 /obj/effect/decal/cleanable/blood{
-	icon_state = "xtracks";
-	tag = "icon-xtracks"
+	icon_state = "xtracks"
 	},
 /turf/open/floor/wood,
 /area/shiva/interior/bar)
@@ -7867,12 +7757,10 @@
 /area/shiva/exterior/junkyard/cp_bar)
 "bJf" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "S";
-	tag = "icon-S"
+	icon_state = "S"
 	},
 /obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	tag = "icon-W"
+	icon_state = "W"
 	},
 /turf/open/floor/shiva{
 	dir = 8;
@@ -7889,8 +7777,7 @@
 /area/shiva/interior/caves/research_caves)
 "bJz" = (
 /turf/closed/shuttle/elevator{
-	dir = 1;
-	tag = "icon-wall (NORTH)"
+	dir = 1
 	},
 /area/shiva/interior/colony/central)
 "bJF" = (
@@ -7990,8 +7877,7 @@
 /area/shiva/exterior/junkyard/cp_bar)
 "bQx" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "S";
-	tag = "icon-S"
+	icon_state = "S"
 	},
 /obj/structure/machinery/light/double,
 /turf/open/floor/shiva{
@@ -8002,8 +7888,7 @@
 "bQR" = (
 /obj/structure/surface/table,
 /obj/item/tool/stamp{
-	icon_state = "stamp-ce";
-	tag = "icon-stamp-ce"
+	icon_state = "stamp-ce"
 	},
 /turf/open/floor/shiva{
 	dir = 1
@@ -8090,8 +7975,7 @@
 /area/shiva/interior/colony/botany)
 "bVb" = (
 /obj/effect/decal/cleanable/blood{
-	icon_state = "gib6";
-	tag = "icon-gib6"
+	icon_state = "gib6"
 	},
 /turf/open/floor/shiva{
 	icon_state = "bluefull"
@@ -8099,8 +7983,7 @@
 /area/shiva/interior/colony/s_admin)
 "bVr" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	tag = "icon-W"
+	icon_state = "W"
 	},
 /obj/item/weapon/gun/rifle/m41aMK1,
 /turf/open/floor/shiva{
@@ -8182,8 +8065,7 @@
 	name = "shuttle attachment point"
 	},
 /obj/structure/machinery/light{
-	dir = 8;
-	tag = "icon-tube1 (WEST)"
+	dir = 8
 	},
 /turf/open/shuttle{
 	icon_state = "floor7"
@@ -8212,8 +8094,7 @@
 	name = "shuttle attachment point"
 	},
 /obj/structure/machinery/light{
-	dir = 4;
-	tag = "icon-tube1 (EAST)"
+	dir = 4
 	},
 /turf/open/shuttle{
 	icon_state = "floor7"
@@ -8273,8 +8154,7 @@
 /area/shiva/exterior/cp_lz2)
 "ceS" = (
 /obj/structure/bed/chair{
-	dir = 1;
-	tag = "icon-chair (NORTH)"
+	dir = 1
 	},
 /turf/open/floor/shiva{
 	dir = 1
@@ -8467,8 +8347,7 @@
 /area/shiva/interior/colony/medseceng)
 "cse" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "E-corner";
-	tag = "icon-E-corner"
+	icon_state = "E-corner"
 	},
 /obj/structure/machinery/door/window/eastright{
 	name = "Basketball Court"
@@ -8477,8 +8356,7 @@
 /area/shiva/interior/colony/central)
 "cso" = (
 /turf/open/floor{
-	icon_state = "bcircuit";
-	tag = "icon-bcircuit"
+	icon_state = "bcircuit"
 	},
 /area/shiva/interior/colony/medseceng)
 "csu" = (
@@ -8573,8 +8451,7 @@
 "czI" = (
 /obj/structure/girder,
 /turf/open/floor{
-	icon_state = "dark2";
-	tag = "icon-dark2"
+	icon_state = "dark2"
 	},
 /area/shiva/interior/caves/research_caves)
 "cAH" = (
@@ -8827,15 +8704,13 @@
 /area/shiva/exterior/cp_colony_grounds)
 "cMs" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	tag = "icon-W"
+	icon_state = "W"
 	},
 /turf/open/floor/wood,
 /area/shiva/interior/colony/central)
 "cOa" = (
 /obj/structure/bed/chair/office/light{
-	dir = 8;
-	tag = "icon-officechair_white (EAST)"
+	dir = 8
 	},
 /turf/open/floor/shiva{
 	dir = 8;
@@ -9017,12 +8892,10 @@
 /area/shiva/interior/colony/central)
 "cXM" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	tag = "icon-W"
+	icon_state = "W"
 	},
 /obj/effect/decal/warning_stripes{
-	icon_state = "S";
-	tag = "icon-S"
+	icon_state = "S"
 	},
 /obj/structure/window/reinforced{
 	dir = 8
@@ -9042,8 +8915,7 @@
 /area/shiva/interior/colony/medseceng)
 "cYc" = (
 /obj/structure/window/reinforced/tinted{
-	dir = 8;
-	tag = "icon-twindow (WEST)"
+	dir = 8
 	},
 /obj/structure/machinery/computer/communications{
 	dir = 4
@@ -9112,8 +8984,7 @@
 "cZZ" = (
 /obj/structure/bed/chair/wood/normal,
 /obj/effect/decal/cleanable/blood{
-	icon_state = "xtracks";
-	tag = "icon-xtracks"
+	icon_state = "xtracks"
 	},
 /turf/open/floor/wood,
 /area/shiva/interior/bar)
@@ -9127,8 +8998,7 @@
 /area/shiva/interior/aerodrome)
 "dbQ" = (
 /obj/structure/bed/chair/office/light{
-	dir = 8;
-	tag = "icon-officechair_white (EAST)"
+	dir = 8
 	},
 /turf/open/floor/shiva{
 	icon_state = "wredfull"
@@ -9278,12 +9148,10 @@
 /area/shiva/exterior/lz2_fortress)
 "dlk" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "E-corner";
-	tag = "icon-E-corner"
+	icon_state = "E-corner"
 	},
 /obj/effect/decal/warning_stripes{
-	icon_state = "S";
-	tag = "icon-S"
+	icon_state = "S"
 	},
 /obj/structure/window/reinforced{
 	dir = 4
@@ -9365,8 +9233,7 @@
 /area/shiva/interior/aerodrome)
 "dsx" = (
 /turf/closed/shuttle/elevator{
-	dir = 1;
-	tag = "icon-wall (NORTH)"
+	dir = 1
 	},
 /area/shiva/interior/aerodrome)
 "dsD" = (
@@ -9395,8 +9262,7 @@
 /area/shiva/interior/aerodrome)
 "dtE" = (
 /obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_18";
-	tag = "icon-pottedplant_10"
+	icon_state = "pottedplant_18"
 	},
 /turf/open/floor/shiva{
 	icon_state = "yellowfull"
@@ -9515,8 +9381,7 @@
 /area/shiva/interior/colony/n_admin)
 "dCo" = (
 /obj/structure/cargo_container/horizontal{
-	icon_state = "0,0";
-	tag = "icon-0,0"
+	icon_state = "0,0"
 	},
 /turf/open/floor/shiva{
 	icon_state = "floor3"
@@ -9631,8 +9496,7 @@
 /area/shiva/interior/aerodrome)
 "dMy" = (
 /obj/structure/bed/chair/office/light{
-	dir = 8;
-	tag = "icon-officechair_white (EAST)"
+	dir = 8
 	},
 /turf/open/floor/strata{
 	dir = 4;
@@ -9690,8 +9554,7 @@
 /area/shiva/interior/colony/central)
 "dQZ" = (
 /obj/structure/window/reinforced/tinted{
-	dir = 8;
-	tag = "icon-twindow (WEST)"
+	dir = 8
 	},
 /obj/structure/machinery/computer/communications{
 	dir = 4
@@ -9972,8 +9835,7 @@
 /area/shiva/interior/colony/research_hab)
 "eiT" = (
 /obj/structure/machinery/light/small{
-	dir = 1;
-	tag = "icon-bulb1 (NORTH)"
+	dir = 1
 	},
 /turf/open/floor/shiva{
 	icon_state = "floor3"
@@ -10062,8 +9924,7 @@
 /obj/effect/landmark/corpsespawner/miner,
 /obj/effect/decal/cleanable/blood,
 /obj/structure/machinery/light/small{
-	dir = 4;
-	tag = "icon-bulb1 (EAST)"
+	dir = 4
 	},
 /turf/open/floor/wood,
 /area/shiva/interior/colony/botany)
@@ -10251,8 +10112,7 @@
 /area/shiva/exterior/cp_lz2)
 "eBp" = (
 /obj/structure/bed/chair{
-	dir = 8;
-	tag = "icon-chair (WEST)"
+	dir = 8
 	},
 /turf/open/floor/shiva{
 	dir = 8;
@@ -10748,8 +10608,7 @@
 /area/shiva/interior/colony/medseceng)
 "ffj" = (
 /turf/closed/shuttle/elevator{
-	dir = 10;
-	tag = "icon-wall (SOUTHWEST)"
+	dir = 10
 	},
 /area/shiva/interior/colony/central)
 "ffn" = (
@@ -10787,8 +10646,7 @@
 "fhh" = (
 /obj/effect/decal/cleanable/blood/drip,
 /obj/effect/decal/cleanable/blood/drip{
-	icon_state = "3";
-	tag = "icon-3"
+	icon_state = "3"
 	},
 /turf/open/floor/shiva{
 	icon_state = "floor3"
@@ -10913,12 +10771,6 @@
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/wood,
 /area/shiva/interior/colony/botany)
-"fmZ" = (
-/turf/open/floor/prison{
-	icon_state = "kitchen";
-	tag = "icon-kitchen"
-	},
-/area/shiva/interior/bar)
 "fnw" = (
 /obj/structure/stairs/perspective/ice{
 	dir = 1;
@@ -11190,16 +11042,13 @@
 /area/shiva/exterior/cp_lz2)
 "fFG" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "S";
-	tag = "icon-S"
+	icon_state = "S"
 	},
 /obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	tag = "icon-W"
+	icon_state = "W"
 	},
 /obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	tag = "icon-N"
+	icon_state = "N"
 	},
 /obj/structure/window/reinforced,
 /turf/open/floor/wood,
@@ -11673,13 +11522,11 @@
 /area/shiva/interior/caves/cp_camp)
 "ggC" = (
 /obj/structure/bed/chair{
-	dir = 4;
-	tag = "icon-chair (EAST)"
+	dir = 4
 	},
 /obj/structure/bed/chair{
 	dir = 4;
-	pixel_y = 4;
-	tag = "icon-chair (EAST)"
+	pixel_y = 4
 	},
 /turf/open/floor/shiva{
 	dir = 4;
@@ -11781,14 +11628,12 @@
 /area/shiva/interior/colony/research_hab)
 "gnZ" = (
 /turf/closed/shuttle/elevator{
-	dir = 8;
-	tag = "icon-wall (WEST)"
+	dir = 8
 	},
 /area/shiva/interior/colony/central)
 "goh" = (
 /obj/effect/decal/cleanable/blood{
-	icon_state = "gib6";
-	tag = "icon-gib6"
+	icon_state = "gib6"
 	},
 /obj/effect/decal/cleanable/blood/drip,
 /turf/open/floor/shiva{
@@ -11827,8 +11672,7 @@
 /area/shiva/exterior/junkyard)
 "gpT" = (
 /turf/closed/shuttle/elevator{
-	dir = 4;
-	tag = "icon-wall (EAST)"
+	dir = 4
 	},
 /area/shiva/interior/colony/central)
 "gqe" = (
@@ -11976,8 +11820,7 @@
 /area/shiva/interior/aerodrome)
 "gxN" = (
 /turf/open/floor{
-	icon_state = "dark2";
-	tag = "icon-dark2"
+	icon_state = "dark2"
 	},
 /area/shiva/interior/valley_huts/disposals)
 "gxW" = (
@@ -12117,8 +11960,7 @@
 /area/shiva/interior/colony/research_hab)
 "gGB" = (
 /obj/effect/decal/cleanable/blood{
-	icon_state = "xgibdown1";
-	tag = "icon-xgibdown1"
+	icon_state = "xgibdown1"
 	},
 /obj/structure/machinery/light/double,
 /turf/open/floor/shiva{
@@ -12145,8 +11987,7 @@
 /obj/item/paper_bin,
 /obj/item/tool/pen/blue,
 /obj/structure/window/reinforced/tinted{
-	dir = 8;
-	tag = "icon-twindow (WEST)"
+	dir = 8
 	},
 /turf/open/floor/shiva{
 	icon_state = "bluefull"
@@ -12223,8 +12064,7 @@
 /area/shiva/interior/colony/research_hab)
 "gKQ" = (
 /obj/structure/machinery/light/small{
-	dir = 4;
-	tag = "icon-bulb1 (EAST)"
+	dir = 4
 	},
 /turf/open/floor/wood,
 /area/shiva/interior/colony/botany)
@@ -12240,8 +12080,7 @@
 /area/shiva/interior/colony/research_hab)
 "gMv" = (
 /turf/closed/shuttle/elevator{
-	dir = 6;
-	tag = "icon-wall (SOUTHEAST)"
+	dir = 6
 	},
 /area/shiva/interior/colony/central)
 "gMP" = (
@@ -12323,8 +12162,7 @@
 /area/shiva/exterior/junkyard)
 "gQJ" = (
 /turf/closed/shuttle/elevator{
-	dir = 10;
-	tag = "icon-wall (SOUTHWEST)"
+	dir = 10
 	},
 /area/shiva/interior/aerodrome)
 "gQL" = (
@@ -12426,8 +12264,7 @@
 /area/shiva/interior/colony/research_hab)
 "gUc" = (
 /turf/closed/shuttle/elevator{
-	dir = 9;
-	tag = "icon-wall (NORTHWEST)"
+	dir = 9
 	},
 /area/shiva/interior/aerodrome)
 "gVh" = (
@@ -12519,8 +12356,7 @@
 	pixel_y = 7
 	},
 /turf/open/floor/prison{
-	icon_state = "kitchen";
-	tag = "icon-kitchen"
+	icon_state = "kitchen"
 	},
 /area/shiva/interior/bar)
 "hbB" = (
@@ -12569,8 +12405,7 @@
 /area/shiva/interior/telecomm/lz1_biceps)
 "hif" = (
 /obj/structure/bed/chair/office/dark{
-	dir = 8;
-	tag = "icon-officechair_dark (WEST)"
+	dir = 8
 	},
 /obj/structure/window/reinforced/tinted{
 	dir = 4
@@ -12661,8 +12496,7 @@
 /area/shiva/exterior/junkyard)
 "hmX" = (
 /obj/structure/cargo_container/horizontal{
-	icon_state = "0,2";
-	tag = "icon-0,2"
+	icon_state = "0,2"
 	},
 /obj/structure/largecrate/random/mini/ammo{
 	pixel_x = -3;
@@ -12679,8 +12513,7 @@
 "hnf" = (
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/blood/drip{
-	icon_state = "3";
-	tag = "icon-3"
+	icon_state = "3"
 	},
 /obj/effect/landmark/corpsespawner/engineer,
 /turf/open/floor/shiva{
@@ -12742,8 +12575,7 @@
 /area/shiva/interior/colony/botany)
 "hqC" = (
 /obj/structure/bed/chair{
-	dir = 4;
-	tag = "icon-chair (EAST)"
+	dir = 4
 	},
 /turf/open/floor/shiva{
 	dir = 1
@@ -12849,8 +12681,7 @@
 /area/shiva/interior/aerodrome)
 "hwg" = (
 /obj/structure/bed/chair/office/light{
-	dir = 8;
-	tag = "icon-officechair_white (EAST)"
+	dir = 8
 	},
 /turf/open/floor/shiva{
 	dir = 1
@@ -13228,13 +13059,11 @@
 /area/shiva/interior/colony/research_hab)
 "hQU" = (
 /obj/structure/bed/chair/office/dark{
-	dir = 8;
-	tag = "icon-officechair_dark (WEST)"
+	dir = 8
 	},
 /obj/effect/decal/cleanable/blood/drip,
 /obj/effect/decal/cleanable/blood/drip{
-	icon_state = "3";
-	tag = "icon-3"
+	icon_state = "3"
 	},
 /turf/open/floor/shiva{
 	dir = 1;
@@ -13266,8 +13095,7 @@
 /area/shiva/exterior/research_alley)
 "hRK" = (
 /obj/effect/decal/cleanable/blood/drip{
-	icon_state = "3";
-	tag = "icon-3"
+	icon_state = "3"
 	},
 /turf/open/floor/shiva{
 	dir = 8;
@@ -13286,8 +13114,7 @@
 /area/shiva/caves/telecomm/lz2_south)
 "hSm" = (
 /obj/structure/cargo_container/horizontal{
-	icon_state = "0,2";
-	tag = "icon-0,2"
+	icon_state = "0,2"
 	},
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/junkyard)
@@ -13393,7 +13220,6 @@
 /obj/structure/cargo_container{
 	health = 5000;
 	icon_state = "green 0,0";
-	tag = "icon-green 0,0";
 	unacidable = 1
 	},
 /turf/open/auto_turf/snow/layer2,
@@ -13510,8 +13336,7 @@
 /area/shiva/interior/caves/research_caves)
 "ieo" = (
 /obj/structure/bed/chair/office/light{
-	dir = 4;
-	tag = "icon-officechair_white (EAST)"
+	dir = 4
 	},
 /turf/open/floor/shiva{
 	dir = 4;
@@ -13603,7 +13428,6 @@
 /obj/structure/cargo_container{
 	health = 5000;
 	icon_state = "green 2,0";
-	tag = "icon-green 2,0";
 	unacidable = 1
 	},
 /turf/open/auto_turf/snow/layer1,
@@ -13730,8 +13554,7 @@
 /area/shiva/interior/colony/research_hab)
 "iqA" = (
 /obj/effect/decal/cleanable/blood{
-	icon_state = "xgib6";
-	tag = "icon-xgib6"
+	icon_state = "xgib6"
 	},
 /turf/open/floor/wood,
 /area/shiva/interior/bar)
@@ -13787,8 +13610,7 @@
 /area/shiva/exterior/cp_lz2)
 "isr" = (
 /obj/structure/bed/chair/office/light{
-	dir = 4;
-	tag = "icon-officechair_white (EAST)"
+	dir = 4
 	},
 /turf/open/floor/shiva{
 	icon_state = "redfull"
@@ -13893,8 +13715,7 @@
 /area/shiva/interior/colony/central)
 "ivy" = (
 /obj/structure/bed/chair/office/dark{
-	dir = 1;
-	tag = "icon-officechair_dark (NORTH)"
+	dir = 1
 	},
 /turf/open/floor/shiva{
 	dir = 1;
@@ -13955,8 +13776,7 @@
 	pixel_y = 10
 	},
 /turf/open/floor/prison{
-	icon_state = "kitchen";
-	tag = "icon-kitchen"
+	icon_state = "kitchen"
 	},
 /area/shiva/interior/bar)
 "iyP" = (
@@ -14005,8 +13825,7 @@
 /area/shiva/interior/colony/botany)
 "iAG" = (
 /obj/structure/cargo_container/horizontal{
-	icon_state = "0,1";
-	tag = "icon-0,1"
+	icon_state = "0,1"
 	},
 /turf/open/auto_turf/snow/layer0,
 /area/shiva/exterior/junkyard)
@@ -14160,8 +13979,7 @@
 /area/shiva/interior/caves/s_lz2)
 "iJr" = (
 /obj/effect/decal/cleanable/blood{
-	icon_state = "gib6";
-	tag = "icon-gib6"
+	icon_state = "gib6"
 	},
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 1;
@@ -14215,8 +14033,7 @@
 "iNS" = (
 /obj/effect/decal/cleanable/blood{
 	dir = 4;
-	icon_state = "gib6";
-	tag = "icon-gib6"
+	icon_state = "gib6"
 	},
 /turf/open/floor/shiva{
 	icon_state = "wredfull"
@@ -14458,8 +14275,7 @@
 /area/shiva/exterior/cp_colony_grounds)
 "iXZ" = (
 /obj/effect/decal/cleanable/blood{
-	icon_state = "xgibdown1";
-	tag = "icon-xgibdown1"
+	icon_state = "xgibdown1"
 	},
 /turf/open/floor/shiva{
 	icon_state = "bluefull"
@@ -14648,8 +14464,7 @@
 "jlv" = (
 /obj/item/stack/sheet/wood,
 /obj/effect/decal/cleanable/blood{
-	icon_state = "xtracks";
-	tag = "icon-xtracks"
+	icon_state = "xtracks"
 	},
 /turf/open/floor/shiva,
 /area/shiva/interior/bar)
@@ -14686,8 +14501,7 @@
 	name = "shuttle attachment point"
 	},
 /obj/structure/machinery/light{
-	dir = 8;
-	tag = "icon-tube1 (WEST)"
+	dir = 8
 	},
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/shuttle{
@@ -14839,8 +14653,7 @@
 /area/shiva/interior/lz2_habs)
 "jwk" = (
 /obj/structure/bed/chair{
-	dir = 1;
-	tag = "icon-chair (NORTH)"
+	dir = 1
 	},
 /turf/open/floor/shiva{
 	dir = 1
@@ -14946,8 +14759,7 @@
 /area/shiva/interior/colony/medseceng)
 "jEa" = (
 /obj/structure/bed/chair{
-	dir = 1;
-	tag = "icon-chair (NORTH)"
+	dir = 1
 	},
 /turf/open/floor/shiva{
 	icon_state = "wred"
@@ -14979,8 +14791,7 @@
 /area/shiva/interior/colony/central)
 "jGW" = (
 /obj/structure/cargo_container/horizontal{
-	icon_state = "0,1";
-	tag = "icon-0,1"
+	icon_state = "0,1"
 	},
 /obj/structure/largecrate/random/mini/small_case/b{
 	pixel_x = 3;
@@ -15095,15 +14906,13 @@
 /area/shiva/interior/telecomm/lz1_flight)
 "jOP" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "E-corner";
-	tag = "icon-E-corner"
+	icon_state = "E-corner"
 	},
 /turf/open/floor/wood,
 /area/shiva/interior/colony/central)
 "jOX" = (
 /obj/structure/cargo_container/horizontal{
-	icon_state = "0,0";
-	tag = "icon-0,0"
+	icon_state = "0,0"
 	},
 /turf/open/auto_turf/snow/layer0,
 /area/shiva/exterior/junkyard)
@@ -15288,8 +15097,7 @@
 /area/shiva/interior/aerodrome)
 "kaL" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "NE-out";
-	tag = "icon-NE-out"
+	icon_state = "NE-out"
 	},
 /turf/open/floor/shiva{
 	dir = 8;
@@ -15387,8 +15195,7 @@
 /area/shiva/interior/colony/research_hab)
 "kdK" = (
 /obj/effect/decal/cleanable/blood{
-	icon_state = "gib6";
-	tag = "icon-gib6"
+	icon_state = "gib6"
 	},
 /turf/open/floor/shiva{
 	icon_state = "floor3"
@@ -15417,8 +15224,7 @@
 /area/shiva/interior/colony/medseceng)
 "kec" = (
 /obj/structure/window/reinforced/tinted{
-	dir = 8;
-	tag = "icon-twindow (WEST)"
+	dir = 8
 	},
 /obj/structure/window/reinforced/tinted,
 /obj/structure/surface/table/reinforced/prison,
@@ -15431,8 +15237,7 @@
 /area/shiva/interior/colony/s_admin)
 "kee" = (
 /obj/structure/cargo_container/horizontal{
-	icon_state = "0,0";
-	tag = "icon-0,0"
+	icon_state = "0,0"
 	},
 /turf/open/auto_turf/snow/layer1,
 /area/shiva/exterior/junkyard)
@@ -15833,8 +15638,7 @@
 /area/shiva/exterior/junkyard)
 "kyG" = (
 /obj/structure/window/reinforced/tinted{
-	dir = 8;
-	tag = "icon-twindow (WEST)"
+	dir = 8
 	},
 /obj/structure/window/reinforced/tinted,
 /obj/structure/surface/table/reinforced/prison,
@@ -15960,8 +15764,7 @@
 /area/shiva/interior/bar)
 "kFd" = (
 /obj/structure/machinery/power/terminal{
-	dir = 8;
-	tag = "icon-term (WEST)"
+	dir = 8
 	},
 /turf/open/floor/shiva{
 	dir = 1
@@ -16132,8 +15935,7 @@
 "kMO" = (
 /obj/structure/machinery/space_heater,
 /turf/open/floor/prison{
-	icon_state = "kitchen";
-	tag = "icon-kitchen"
+	icon_state = "kitchen"
 	},
 /area/shiva/interior/bar)
 "kNf" = (
@@ -16454,8 +16256,7 @@
 	pixel_y = 6
 	},
 /turf/open/floor/prison{
-	icon_state = "kitchen";
-	tag = "icon-kitchen"
+	icon_state = "kitchen"
 	},
 /area/shiva/interior/bar)
 "lcv" = (
@@ -16642,8 +16443,7 @@
 /area/shiva/exterior/cp_s_research)
 "lok" = (
 /obj/structure/cargo_container{
-	icon_state = "ferret_l";
-	tag = "icon-red 0,0"
+	icon_state = "ferret_l"
 	},
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/junkyard)
@@ -16685,22 +16485,19 @@
 /area/shiva/interior/colony/research_hab)
 "lpD" = (
 /obj/effect/decal/cleanable/blood{
-	icon_state = "xtracks";
-	tag = "icon-xtracks"
+	icon_state = "xtracks"
 	},
 /turf/open/auto_turf/snow/layer0,
 /area/shiva/exterior/junkyard/cp_bar)
 "lpK" = (
 /obj/structure/cargo_container{
-	icon_state = "ferret_m";
-	tag = "icon-red 1,0"
+	icon_state = "ferret_m"
 	},
 /turf/open/auto_turf/snow/layer1,
 /area/shiva/exterior/junkyard)
 "lpR" = (
 /obj/structure/cargo_container{
-	icon_state = "ferret_r";
-	tag = "icon-red 2,0"
+	icon_state = "ferret_r"
 	},
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/junkyard)
@@ -16838,12 +16635,10 @@
 /area/shiva/exterior/lz1_valley)
 "lzQ" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "NS-center";
-	tag = "icon-W"
+	icon_state = "NS-center"
 	},
 /obj/effect/decal/warning_stripes{
-	icon_state = "S";
-	tag = "icon-S"
+	icon_state = "S"
 	},
 /obj/structure/window/reinforced,
 /turf/open/floor/wood,
@@ -16944,8 +16739,7 @@
 /area/shiva/interior/colony/research_hab)
 "lGZ" = (
 /obj/structure/window/reinforced/tinted{
-	dir = 8;
-	tag = "icon-twindow (WEST)"
+	dir = 8
 	},
 /obj/structure/machinery/computer/station_alert{
 	dir = 4
@@ -17187,8 +16981,7 @@
 	},
 /turf/open/floor{
 	dir = 4;
-	icon_state = "darkbrown2";
-	tag = "icon-darkbrown2 (EAST)"
+	icon_state = "darkbrown2"
 	},
 /area/shiva/interior/valley_huts/disposals)
 "lUF" = (
@@ -17524,8 +17317,7 @@
 /area/shiva/exterior/lz2_fortress)
 "mhS" = (
 /turf/closed/shuttle/elevator{
-	dir = 8;
-	tag = "icon-wall (WEST)"
+	dir = 8
 	},
 /area/shiva/interior/aerodrome)
 "mib" = (
@@ -17862,15 +17654,13 @@
 /area/shiva/interior/colony/botany)
 "mEw" = (
 /obj/structure/cargo_container{
-	icon_state = "WY 0,0";
-	tag = "icon-WY 0,0"
+	icon_state = "WY 0,0"
 	},
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/junkyard)
 "mEG" = (
 /obj/structure/cargo_container{
-	icon_state = "WY 1,0";
-	tag = "icon-WY 1,0"
+	icon_state = "WY 1,0"
 	},
 /turf/open/auto_turf/snow/layer0,
 /area/shiva/exterior/junkyard)
@@ -17898,8 +17688,7 @@
 /area/shiva/exterior/lz2_fortress)
 "mFo" = (
 /obj/structure/cargo_container{
-	icon_state = "WY 2,0";
-	tag = "icon-WY 2,0"
+	icon_state = "WY 2,0"
 	},
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/junkyard)
@@ -18127,8 +17916,7 @@
 "mQL" = (
 /turf/open/floor{
 	dir = 9;
-	icon_state = "darkgreen2";
-	tag = "icon-darkgreen2 (NORTHWEST)"
+	icon_state = "darkgreen2"
 	},
 /area/shiva/interior/colony/botany)
 "mRc" = (
@@ -18282,8 +18070,7 @@
 /area/shiva/interior/colony/n_admin)
 "mXz" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "S-corner";
-	tag = "icon-S-corner"
+	icon_state = "S-corner"
 	},
 /obj/item/lightstick/red/spoke/planted{
 	pixel_x = -11;
@@ -18317,8 +18104,7 @@
 /area/shiva/exterior/cp_colony_grounds)
 "mYX" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	tag = "icon-W"
+	icon_state = "W"
 	},
 /obj/item/ammo_magazine/rifle/m41aMK1,
 /turf/open/floor/shiva{
@@ -18346,8 +18132,7 @@
 /area/shiva/interior/colony/central)
 "naR" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "S-corner";
-	tag = "icon-S-corner"
+	icon_state = "S-corner"
 	},
 /turf/open/auto_turf/snow/layer0,
 /area/shiva/exterior/junkyard)
@@ -18388,8 +18173,7 @@
 /obj/structure/machinery/door/window/brigdoor/westleft{
 	dir = 1;
 	icon_state = "leftsecure";
-	id = "brg";
-	tag = "icon-leftsecure (NORTH)"
+	id = "brg"
 	},
 /turf/open/floor/plating,
 /area/shiva/interior/colony/medseceng)
@@ -18418,8 +18202,7 @@
 /area/shiva/interior/colony/research_hab)
 "neZ" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "S-corner";
-	tag = "icon-S-corner"
+	icon_state = "S-corner"
 	},
 /obj/item/lightstick/red/spoke/planted{
 	pixel_x = 11;
@@ -18725,8 +18508,7 @@
 /area/shiva/exterior/junkyard)
 "nAp" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "S";
-	tag = "icon-S"
+	icon_state = "S"
 	},
 /obj/structure/desertdam/decals/road_stop{
 	icon_state = "road_edge_decal8"
@@ -18848,8 +18630,7 @@
 /area/shiva/exterior/cp_lz2)
 "nHj" = (
 /obj/structure/bed/chair/office/light{
-	dir = 8;
-	tag = "icon-officechair_white (EAST)"
+	dir = 8
 	},
 /turf/open/floor/shiva{
 	dir = 1
@@ -18894,8 +18675,7 @@
 /area/shiva/interior/colony/medseceng)
 "nIN" = (
 /obj/effect/decal/cleanable/blood{
-	icon_state = "xgib4";
-	tag = "icon-xgib4"
+	icon_state = "xgib4"
 	},
 /turf/open/floor/wood,
 /area/shiva/interior/bar)
@@ -19052,8 +18832,7 @@
 /area/shiva/interior/colony/central)
 "nRy" = (
 /obj/structure/window/reinforced/tinted{
-	dir = 8;
-	tag = "icon-twindow (WEST)"
+	dir = 8
 	},
 /obj/structure/window/reinforced/tinted,
 /obj/structure/surface/table/reinforced/prison,
@@ -19100,8 +18879,7 @@
 /area/shiva/interior/lz2_habs)
 "nUa" = (
 /obj/structure/bed/chair{
-	dir = 8;
-	tag = "icon-chair (WEST)"
+	dir = 8
 	},
 /turf/open/floor/wood,
 /area/shiva/interior/aerodrome)
@@ -19459,12 +19237,10 @@
 /area/shiva/interior/colony/central)
 "oqy" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "S";
-	tag = "icon-S"
+	icon_state = "S"
 	},
 /obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	tag = "icon-N"
+	icon_state = "N"
 	},
 /obj/structure/window/reinforced,
 /turf/open/floor/wood,
@@ -19770,8 +19546,7 @@
 /area/shiva/exterior/cp_lz2)
 "oHF" = (
 /obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_22";
-	tag = "icon-pottedplant_10"
+	icon_state = "pottedplant_22"
 	},
 /turf/open/floor/shiva{
 	dir = 1;
@@ -19813,16 +19588,13 @@
 /area/shiva/interior/colony/medseceng)
 "oKc" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "S";
-	tag = "icon-S"
+	icon_state = "S"
 	},
 /obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	tag = "icon-N"
+	icon_state = "N"
 	},
 /obj/effect/decal/warning_stripes{
-	icon_state = "E-corner";
-	tag = "icon-E-corner"
+	icon_state = "E-corner"
 	},
 /obj/structure/window/reinforced,
 /turf/open/floor/wood,
@@ -19885,8 +19657,7 @@
 /area/shiva/interior/bar)
 "oOw" = (
 /obj/effect/decal/cleanable/blood{
-	icon_state = "xgibdown1";
-	tag = "icon-xgibdown1"
+	icon_state = "xgibdown1"
 	},
 /turf/open/auto_turf/snow/layer0,
 /area/shiva/exterior/junkyard/cp_bar)
@@ -19992,8 +19763,7 @@
 /area/shiva/exterior/junkyard)
 "oZs" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	tag = "icon-N"
+	icon_state = "N"
 	},
 /turf/open/floor/shiva{
 	icon_state = "floor3"
@@ -20015,8 +19785,7 @@
 	},
 /obj/structure/surface/table/reinforced/prison,
 /obj/structure/window/reinforced/tinted{
-	dir = 8;
-	tag = "icon-twindow (WEST)"
+	dir = 8
 	},
 /turf/open/floor/shiva{
 	icon_state = "bluefull"
@@ -20033,8 +19802,7 @@
 /area/shiva/interior/colony/medseceng)
 "pbY" = (
 /obj/effect/decal/cleanable/blood{
-	icon_state = "gib6";
-	tag = "icon-gib6"
+	icon_state = "gib6"
 	},
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	name = "\improper Panic Room Shutters"
@@ -20195,8 +19963,7 @@
 /area/shiva/interior/caves/cp_camp)
 "plm" = (
 /obj/structure/bed/chair/office/dark{
-	dir = 1;
-	tag = "icon-officechair_dark (NORTH)"
+	dir = 1
 	},
 /turf/open/floor/shiva{
 	dir = 1;
@@ -20458,8 +20225,7 @@
 /area/shiva/interior/caves/cp_camp)
 "pyI" = (
 /obj/structure/machinery/light/small{
-	dir = 8;
-	tag = "icon-bulb1 (WEST)"
+	dir = 8
 	},
 /turf/open/floor/shiva{
 	dir = 8;
@@ -20480,8 +20246,7 @@
 /area/shiva/interior/oob)
 "pyV" = (
 /obj/structure/bed/chair{
-	dir = 8;
-	tag = "icon-chair (WEST)"
+	dir = 8
 	},
 /turf/open/floor/shiva{
 	dir = 1
@@ -20746,8 +20511,7 @@
 /area/shiva/interior/warehouse)
 "pKb" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "SE-out";
-	tag = "icon-SE-out"
+	icon_state = "SE-out"
 	},
 /turf/open/floor/shiva{
 	dir = 1
@@ -20884,8 +20648,7 @@
 /area/shiva/exterior/cp_lz2)
 "pNx" = (
 /obj/structure/bed/chair{
-	dir = 8;
-	tag = "icon-chair (WEST)"
+	dir = 8
 	},
 /obj/structure/machinery/light/double{
 	dir = 4;
@@ -21157,8 +20920,7 @@
 /area/shiva/interior/colony/n_admin)
 "qfh" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	tag = "icon-W"
+	icon_state = "W"
 	},
 /obj/structure/machinery/door/window/westleft{
 	name = "Basketball Court"
@@ -21174,8 +20936,7 @@
 /area/shiva/interior/garage)
 "qfI" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	tag = "icon-N"
+	icon_state = "N"
 	},
 /obj/structure/desertdam/decals/road_stop{
 	icon_state = "road_edge_decal5"
@@ -21726,22 +21487,18 @@
 /area/shiva/interior/colony/medseceng)
 "qKn" = (
 /obj/structure/bed/chair{
-	dir = 4;
-	tag = "icon-chair (EAST)"
+	dir = 4
 	},
 /obj/structure/bed/chair{
 	dir = 4;
-	pixel_y = 4;
-	tag = "icon-chair (EAST)"
+	pixel_y = 4
 	},
 /obj/structure/bed/chair{
 	dir = 4;
-	pixel_y = 8;
-	tag = "icon-chair (EAST)"
+	pixel_y = 8
 	},
 /obj/structure/machinery/light/small{
-	dir = 8;
-	tag = "icon-bulb1 (WEST)"
+	dir = 8
 	},
 /turf/open/floor/shiva{
 	dir = 4;
@@ -22075,8 +21832,7 @@
 /area/shiva/interior/caves/research_caves)
 "rbA" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "S-corner";
-	tag = "icon-S-corner"
+	icon_state = "S-corner"
 	},
 /obj/structure/barricade/metal,
 /turf/open/floor/plating,
@@ -22262,8 +22018,7 @@
 	},
 /turf/open/floor/plating/icefloor{
 	dir = 9;
-	icon_state = "warnplate";
-	tag = "icon-warnplate (NORTHWEST)"
+	icon_state = "warnplate"
 	},
 /area/shiva/exterior/junkyard/fortbiceps)
 "rli" = (
@@ -22290,8 +22045,7 @@
 /area/shiva/exterior/cp_colony_grounds)
 "rnO" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "S-corner";
-	tag = "icon-S-corner"
+	icon_state = "S-corner"
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "W-corner"
@@ -22407,8 +22161,7 @@
 /area/shiva/interior/bar)
 "ryI" = (
 /obj/structure/bed/chair{
-	dir = 1;
-	tag = "icon-chair (NORTH)"
+	dir = 1
 	},
 /obj/structure/machinery/light/double,
 /turf/open/floor/shiva{
@@ -22458,14 +22211,12 @@
 	},
 /turf/open/floor/plating/icefloor{
 	dir = 5;
-	icon_state = "warnplate";
-	tag = "icon-warnplate (NORTHEAST)"
+	icon_state = "warnplate"
 	},
 /area/shiva/exterior/junkyard/fortbiceps)
 "rAq" = (
 /obj/structure/bed/chair/office/light{
-	dir = 4;
-	tag = "icon-officechair_white (EAST)"
+	dir = 4
 	},
 /turf/open/floor/wood,
 /area/shiva/interior/colony/s_admin)
@@ -22790,8 +22541,7 @@
 	},
 /turf/open/floor/plating/icefloor{
 	dir = 8;
-	icon_state = "warnplate";
-	tag = "icon-warnplate (WEST)"
+	icon_state = "warnplate"
 	},
 /area/shiva/exterior/junkyard/fortbiceps)
 "rWj" = (
@@ -22800,8 +22550,7 @@
 /area/shiva/exterior/telecomm/lz2_northeast)
 "rWt" = (
 /obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_22";
-	tag = "icon-pottedplant_10"
+	icon_state = "pottedplant_22"
 	},
 /turf/open/floor/plating,
 /area/shiva/interior/colony/central)
@@ -22820,8 +22569,7 @@
 /area/shiva/interior/colony/research_hab)
 "rXn" = (
 /turf/closed/shuttle/elevator{
-	dir = 5;
-	tag = "icon-wall (NORTHEAST)"
+	dir = 5
 	},
 /area/shiva/interior/aerodrome)
 "rXt" = (
@@ -23007,8 +22755,7 @@
 /area/shiva/interior/caves/s_lz2)
 "shO" = (
 /obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_18";
-	tag = "icon-pottedplant_10"
+	icon_state = "pottedplant_18"
 	},
 /turf/open/floor/shiva{
 	dir = 1;
@@ -23443,8 +23190,7 @@
 	},
 /turf/open/floor/plating/icefloor{
 	dir = 10;
-	icon_state = "warnplate";
-	tag = "icon-warnplate (SOUTHWEST)"
+	icon_state = "warnplate"
 	},
 /area/shiva/exterior/junkyard/fortbiceps)
 "sHc" = (
@@ -23512,12 +23258,10 @@
 "sJP" = (
 /obj/structure/machinery/light/double,
 /obj/structure/bed/chair/office/dark{
-	dir = 4;
-	tag = "icon-officechair_dark (EAST)"
+	dir = 4
 	},
 /obj/structure/window/reinforced/tinted{
-	dir = 8;
-	tag = "icon-twindow (WEST)"
+	dir = 8
 	},
 /turf/open/floor/shiva{
 	icon_state = "red"
@@ -23546,8 +23290,7 @@
 	},
 /turf/open/floor/plating/icefloor{
 	dir = 6;
-	icon_state = "warnplate";
-	tag = "icon-warnplate (SOUTHEAST)"
+	icon_state = "warnplate"
 	},
 /area/shiva/exterior/junkyard/fortbiceps)
 "sKO" = (
@@ -23650,8 +23393,7 @@
 /area/shiva/interior/colony/research_hab)
 "sRV" = (
 /obj/effect/decal/cleanable/blood{
-	icon_state = "xgibdown1";
-	tag = "icon-xgibdown1"
+	icon_state = "xgibdown1"
 	},
 /turf/open/floor/wood,
 /area/shiva/interior/bar)
@@ -23711,8 +23453,7 @@
 /area/shiva/exterior/lz2_fortress)
 "sXP" = (
 /obj/structure/bed/chair{
-	dir = 4;
-	tag = "icon-chair (EAST)"
+	dir = 4
 	},
 /turf/open/floor/shiva{
 	icon_state = "floor3"
@@ -23766,8 +23507,7 @@
 /obj/structure/surface/table/reinforced/prison,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/prison{
-	icon_state = "kitchen";
-	tag = "icon-kitchen"
+	icon_state = "kitchen"
 	},
 /area/shiva/interior/bar)
 "tbR" = (
@@ -23809,8 +23549,7 @@
 /area/shiva/interior/warehouse)
 "tds" = (
 /obj/structure/bed/chair{
-	dir = 1;
-	tag = "icon-chair (NORTH)"
+	dir = 1
 	},
 /turf/open/floor/shiva{
 	icon_state = "bluefull"
@@ -23888,8 +23627,7 @@
 /area/shiva/interior/colony/research_hab)
 "thB" = (
 /obj/structure/window/reinforced/tinted{
-	dir = 8;
-	tag = "icon-twindow (WEST)"
+	dir = 8
 	},
 /obj/structure/window/reinforced/tinted{
 	dir = 1
@@ -24060,8 +23798,7 @@
 /area/shiva/exterior/lz1_valley)
 "tpL" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "NW-out";
-	tag = "icon-NW-out"
+	icon_state = "NW-out"
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva{
@@ -24377,8 +24114,7 @@
 /area/shiva/interior/caves/cp_camp)
 "tGv" = (
 /turf/closed/shuttle/elevator{
-	dir = 4;
-	tag = "icon-wall (EAST)"
+	dir = 4
 	},
 /area/shiva/interior/aerodrome)
 "tGS" = (
@@ -24615,8 +24351,7 @@
 	name = "\improper Colony Storeroom"
 	},
 /turf/open/floor{
-	icon_state = "dark2";
-	tag = "icon-dark2"
+	icon_state = "dark2"
 	},
 /area/shiva/interior/telecomm/lz1_biceps)
 "tQK" = (
@@ -24925,8 +24660,7 @@
 /area/shiva/exterior/cp_lz2)
 "ueu" = (
 /obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_21";
-	tag = "icon-pottedplant_10"
+	icon_state = "pottedplant_21"
 	},
 /turf/open/floor/shiva{
 	dir = 8;
@@ -24980,8 +24714,7 @@
 	dir = 2;
 	icon_state = "leftsecure";
 	id = "brg";
-	name = "Security Desk";
-	tag = "icon-leftsecure (NORTH)"
+	name = "Security Desk"
 	},
 /obj/structure/machinery/door/window/northright{
 	name = "Security Desk"
@@ -25099,8 +24832,7 @@
 /area/shiva/exterior/cp_lz2)
 "ujm" = (
 /obj/structure/machinery/light/small{
-	dir = 8;
-	tag = "icon-bulb1 (WEST)"
+	dir = 8
 	},
 /turf/open/floor/shiva{
 	dir = 8;
@@ -25411,8 +25143,7 @@
 /area/shiva/interior/lz2_habs)
 "uCp" = (
 /obj/structure/machinery/light/small{
-	dir = 8;
-	tag = "icon-bulb1 (WEST)"
+	dir = 8
 	},
 /turf/open/floor/wood,
 /area/shiva/interior/colony/botany)
@@ -25448,8 +25179,7 @@
 /area/shiva/exterior/cp_lz2)
 "uEx" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	tag = "icon-N"
+	icon_state = "N"
 	},
 /turf/open/floor/shiva{
 	dir = 1;
@@ -25609,8 +25339,7 @@
 /area/shiva/interior/caves/s_lz2)
 "uKN" = (
 /obj/structure/bed/chair{
-	dir = 4;
-	tag = "icon-chair (EAST)"
+	dir = 4
 	},
 /turf/open/floor/shiva{
 	icon_state = "bluefull"
@@ -25850,8 +25579,7 @@
 /area/shiva/interior/colony/n_admin)
 "uVa" = (
 /obj/structure/machinery/power/terminal{
-	dir = 1;
-	tag = "icon-term (NORTH)"
+	dir = 1
 	},
 /obj/structure/machinery/light/double{
 	dir = 8;
@@ -25878,15 +25606,6 @@
 /obj/structure/flora/tree/dead,
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/cp_colony_grounds)
-"uWs" = (
-/obj/structure/bed/chair{
-	dir = 8;
-	tag = "icon-chair (WEST)"
-	},
-/turf/open/floor/shiva{
-	icon_state = "bluefull"
-	},
-/area/shiva/interior/colony/s_admin)
 "uWA" = (
 /obj/structure/bed/chair/comfy/beige{
 	dir = 1
@@ -25953,8 +25672,7 @@
 /area/shiva/interior/caves/cp_camp)
 "uZJ" = (
 /obj/structure/bed/chair{
-	dir = 8;
-	tag = "icon-chair (WEST)"
+	dir = 8
 	},
 /turf/open/floor/shiva{
 	dir = 1
@@ -26153,8 +25871,7 @@
 /area/shiva/interior/caves/cp_camp)
 "vjs" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	tag = "icon-W"
+	icon_state = "E"
 	},
 /turf/open/floor/shiva{
 	dir = 4;
@@ -26299,8 +26016,7 @@
 /area/shiva/exterior/lz1_valley)
 "vrm" = (
 /obj/structure/bed/chair/office/light{
-	dir = 4;
-	tag = "icon-officechair_white (EAST)"
+	dir = 4
 	},
 /turf/open/floor/shiva{
 	dir = 1
@@ -26830,8 +26546,7 @@
 /area/shiva/exterior/cp_lz2)
 "waS" = (
 /turf/closed/shuttle/elevator{
-	dir = 6;
-	tag = "icon-wall (SOUTHEAST)"
+	dir = 6
 	},
 /area/shiva/interior/aerodrome)
 "wck" = (
@@ -27145,8 +26860,7 @@
 	pixel_x = -7
 	},
 /turf/open/floor/prison{
-	icon_state = "kitchen";
-	tag = "icon-kitchen"
+	icon_state = "kitchen"
 	},
 /area/shiva/interior/bar)
 "wxu" = (
@@ -27282,8 +26996,7 @@
 	dir = 4
 	},
 /obj/structure/window/reinforced/tinted{
-	dir = 8;
-	tag = "icon-twindow (WEST)"
+	dir = 8
 	},
 /obj/structure/surface/table/reinforced/prison,
 /turf/open/floor/shiva{
@@ -27319,8 +27032,7 @@
 	pixel_y = 5
 	},
 /turf/open/floor/prison{
-	icon_state = "kitchen";
-	tag = "icon-kitchen"
+	icon_state = "kitchen"
 	},
 /area/shiva/interior/bar)
 "wJd" = (
@@ -27413,8 +27125,7 @@
 /area/shiva/interior/colony/research_hab)
 "wPz" = (
 /obj/effect/decal/cleanable/blood/drip{
-	icon_state = "3";
-	tag = "icon-3"
+	icon_state = "3"
 	},
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/cp_colony_grounds)
@@ -27539,8 +27250,7 @@
 /area/shiva/interior/colony/medseceng)
 "wWY" = (
 /obj/structure/bed/chair/office/light{
-	dir = 4;
-	tag = "icon-officechair_white (EAST)"
+	dir = 4
 	},
 /turf/open/floor/shiva{
 	dir = 1
@@ -27612,8 +27322,7 @@
 /area/shiva/interior/colony/medseceng)
 "xaw" = (
 /obj/structure/window/reinforced/tinted{
-	dir = 8;
-	tag = "icon-twindow (WEST)"
+	dir = 8
 	},
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/paper_bin,
@@ -27690,8 +27399,7 @@
 /area/shiva/interior/caves/cp_camp)
 "xeE" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "S";
-	tag = "icon-S"
+	icon_state = "S"
 	},
 /obj/structure/window/reinforced,
 /turf/open/floor/wood,
@@ -27895,8 +27603,7 @@
 "xvQ" = (
 /obj/structure/machinery/conveyor{
 	dir = 4;
-	icon_state = "conveyor-1";
-	tag = "icon-conveyor-1 (EAST)"
+	icon_state = "conveyor-1"
 	},
 /obj/structure/largecrate/random{
 	pixel_y = 9
@@ -28004,8 +27711,7 @@
 /area/shiva/interior/colony/medseceng)
 "xCj" = (
 /obj/structure/machinery/power/terminal{
-	dir = 8;
-	tag = "icon-term (WEST)"
+	dir = 8
 	},
 /obj/structure/machinery/light/double{
 	dir = 1;
@@ -28325,8 +28031,7 @@
 	pixel_y = 8
 	},
 /turf/open/floor/prison{
-	icon_state = "kitchen";
-	tag = "icon-kitchen"
+	icon_state = "kitchen"
 	},
 /area/shiva/interior/bar)
 "xXM" = (
@@ -45466,7 +45171,7 @@ aRb
 uhL
 hyu
 hyu
-uWs
+tWn
 hyu
 uhL
 nOd
@@ -47422,7 +47127,7 @@ bFg
 cZk
 gWk
 xXv
-fmZ
+aLG
 hbu
 fYW
 lWR
@@ -47584,7 +47289,7 @@ bFg
 cZk
 gWk
 xXv
-fmZ
+aLG
 iyk
 xZW
 aLG
@@ -47746,7 +47451,7 @@ bIV
 cZk
 gWk
 lbF
-fmZ
+aLG
 kMO
 lDI
 aLG
@@ -47908,8 +47613,8 @@ bIV
 sbj
 gWk
 wIS
-fmZ
-fmZ
+aLG
+aLG
 aLG
 tZM
 aLG

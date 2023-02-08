@@ -203,8 +203,7 @@
 /area/yautja)
 "as" = (
 /obj/structure/pipes/standard/simple/hidden{
-	dir = 6;
-	tag = "icon-intact (SOUTHEAST)"
+	dir = 6
 	},
 /turf/open/floor/corsat{
 	dir = 1;
@@ -363,8 +362,7 @@
 /area/yautja)
 "aI" = (
 /obj/structure/shuttle/engine/heater{
-	dir = 1;
-	tag = "icon-heater (NORTH)"
+	dir = 1
 	},
 /obj/item/device/flashlight/slime,
 /obj/structure/window/phoronreinforced,
@@ -379,8 +377,7 @@
 /area/yautja)
 "aK" = (
 /obj/structure/shuttle/engine/heater{
-	dir = 1;
-	tag = "icon-heater (NORTH)"
+	dir = 1
 	},
 /obj/item/device/flashlight/slime,
 /obj/structure/window/phoronreinforced,
@@ -395,8 +392,7 @@
 /area/yautja)
 "aL" = (
 /obj/structure/machinery/power/terminal{
-	dir = 1;
-	tag = "icon-term (NORTH)"
+	dir = 1
 	},
 /turf/open/floor/corsat{
 	dir = 1;
@@ -797,8 +793,7 @@
 /area/yautja)
 "bS" = (
 /obj/structure/pipes/standard/simple/hidden{
-	dir = 9;
-	tag = "icon-intact (NORTHEAST)"
+	dir = 9
 	},
 /turf/open/shuttle/predship,
 /area/yautja)
@@ -994,8 +989,7 @@
 /area/yautja)
 "cq" = (
 /obj/structure/bed/chair/comfy/black{
-	dir = 4;
-	tag = "icon-comfychair (EAST)"
+	dir = 4
 	},
 /turf/open/floor/corsat{
 	dir = 1;
@@ -1998,8 +1992,7 @@
 /area/yautja)
 "nW" = (
 /obj/structure/pipes/standard/simple/hidden{
-	dir = 6;
-	tag = "icon-intact (SOUTHEAST)"
+	dir = 6
 	},
 /turf/open/shuttle/predship,
 /area/yautja)
@@ -2243,8 +2236,7 @@
 /area/yautja)
 "vO" = (
 /obj/structure/machinery/shower{
-	dir = 4;
-	tag = "icon-shower (EAST)"
+	dir = 4
 	},
 /obj/structure/machinery/door/window/tinted,
 /obj/structure/window/reinforced/tinted,
@@ -2906,8 +2898,7 @@
 /area/yautja)
 "OZ" = (
 /obj/structure/bed/chair/comfy/black{
-	dir = 1;
-	tag = "icon-comfychair (EAST)"
+	dir = 1
 	},
 /turf/open/floor/corsat{
 	dir = 1;

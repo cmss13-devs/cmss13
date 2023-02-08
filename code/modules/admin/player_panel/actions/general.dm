@@ -24,7 +24,7 @@
 	permissions_required = R_ADMIN
 
 /datum/player_action/gib/act(client/user, mob/target, list/params)
-	target.gib(create_cause_data(user.key))
+	target.gib(create_cause_data("gibbing", user.key))
 	message_staff("[key_name_admin(user)] gibbed [key_name_admin(target)].")
 	return TRUE
 

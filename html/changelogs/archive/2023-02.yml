@@ -104,3 +104,20 @@
   realforest2001:
   - server: TGUI logs are now in a unique file to reduce clutter.
   - server: Temporarily increases maximum bantime due to system issues.
+2023-02-07:
+  Morrow:
+  - balance: Removes slight randomness in armor and critical armor pierce chance
+  NewyearnewmeUwu:
+  - spellcheck: you will no longer be struck by Tail Sweep's Tail Sweep.
+  Zonespace27:
+  - admin: You no longer need to stay adminned to get newbie popups as SEA
+  stanalbatross:
+  - bugfix: fixed being able to use the pickup keybind while incapacitated
+2023-02-08:
+  Zonespace27:
+  - bugfix: Fixed uniforms causing excessive server lag
+  stanalbatross:
+  - rscdel: removed the MP timelock requirement from XO, CE, and RO
+  - rscdel: removed the RTO timelock requirement from SL, instead you now need 10
+      hours of squad roles
+  - bugfix: fixed some small or uncommon runtimes

@@ -63,6 +63,7 @@
 	var/invis_recharge_time = 150   // 15 seconds to recharge invisibility.
 	var/invis_start_time = -1 // Special value for when we're not invisible
 	var/invis_duration = 300  // so we can display how long the lurker is invisible to it
+	var/slash_slow_duration = 35
 	var/buffed_slash_damage_ratio = 1.4
 
 	// State
@@ -83,6 +84,15 @@
 			ability.button.icon_state = "template"
 
 	return original_damage
+
+/datum/behavior_delegate/lurker_base/melee_attack_additional_effects_target(mob/living/carbon/target_carbon)
+	if (!isxeno_human(target_carbon))
+		return
+
+	if (target_carbon.knocked_down)
+		new /datum/effects/xeno_slow(target_carbon, bound_xeno, null, null, get_xeno_stun_duration(target_carbon, slash_slow_duration))
+
+	return
 
 /datum/behavior_delegate/lurker_base/melee_attack_additional_effects_self()
 	..()

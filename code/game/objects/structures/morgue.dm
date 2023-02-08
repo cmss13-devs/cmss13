@@ -114,7 +114,7 @@
 /obj/structure/morgue/relaymove(mob/user)
 	if(user.is_mob_incapacitated())
 		return
-	if(!(exit_stun == 0))
+	if(exit_stun)
 		user.stunned = max(user.stunned, exit_stun) //Action delay when going out of a closet (or morgue in this case)
 		user.update_canmove() //Force the delay to go in action immediately
 		if(!user.lying)

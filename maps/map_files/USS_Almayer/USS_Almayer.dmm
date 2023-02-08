@@ -18100,7 +18100,6 @@
 "beZ" = (
 /obj/structure/platform_decoration{
 	dir = 8;
-	
 	},
 /turf/open/floor/almayer,
 /area/almayer/living/chapel)

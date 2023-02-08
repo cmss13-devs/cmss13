@@ -541,7 +541,6 @@
 	},
 /area/desert_dam/exterior/valley/valley_cargo)
 "bx" = (
-
 /turf/open/asphalt{
 	icon_state = "tile"
 	},

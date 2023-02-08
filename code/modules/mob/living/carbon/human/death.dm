@@ -1,4 +1,4 @@
-/mob/living/carbon/human/gib(cause = "gibbing")
+/mob/living/carbon/human/gib(datum/cause_data/cause = create_cause_data("gibbing", src))
 	var/is_a_synth = issynth(src)
 	for(var/obj/limb/E in limbs)
 		if(istype(E, /obj/limb/chest))

@@ -17,6 +17,9 @@
 	glass = 1
 	assembly_type = /obj/structure/airlock_assembly/multi_tile
 
+/obj/structure/machinery/door/airlock/multi_tile/glass
+	req_access = null
+	req_one_access = list(ACCESS_CIVILIAN_PUBLIC)
 
 /obj/structure/machinery/door/airlock/multi_tile/security
 	name = "Security Airlock"
@@ -24,6 +27,9 @@
 	opacity = FALSE
 	glass = 1
 
+/obj/structure/machinery/door/airlock/multi_tile/security/colony
+	req_access = null
+	req_one_access = list(ACCESS_CIVILIAN_BRIG, ACCESS_CIVILIAN_COMMAND)
 
 /obj/structure/machinery/door/airlock/multi_tile/command
 	name = "Command Airlock"
@@ -31,11 +37,19 @@
 	opacity = FALSE
 	glass = 1
 
+/obj/structure/machinery/door/airlock/multi_tile/command/colony
+	req_access = null
+	req_one_access = list(ACCESS_CIVILIAN_BRIG, ACCESS_CIVILIAN_COMMAND, ACCESS_WY_CORPORATE)
+
 /obj/structure/machinery/door/airlock/multi_tile/medical
 	name = "Medical Airlock"
 	icon = 'icons/obj/structures/doors/Door2x1medbay.dmi'
 	opacity = FALSE
 	glass = 1
+
+/obj/structure/machinery/door/airlock/multi_tile/medical
+	req_access = null
+	req_one_access = list(ACCESS_CIVILIAN_MEDBAY, ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_COMMAND, ACCESS_CIVILIAN_PUBLIC)
 
 /obj/structure/machinery/door/airlock/multi_tile/engineering
 	name = "Engineering Airlock"
@@ -43,6 +57,9 @@
 	opacity = FALSE
 	glass = 1
 
+/obj/structure/machinery/door/airlock/multi_tile/engineering/colony
+	req_access = null
+	req_one_access = list(ACCESS_CIVILIAN_COMMAND, ACCESS_CIVILIAN_ENGINEERING, ACCESS_CIVILIAN_LOGISTICS)
 
 /obj/structure/machinery/door/airlock/multi_tile/research
 	name = "Research Airlock"
@@ -50,20 +67,36 @@
 	opacity = FALSE
 	glass = 1
 
+/obj/structure/machinery/door/airlock/multi_tile/research/colony
+	req_access = null
+	req_one_access = list(ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_COMMAND, ACCESS_WY_CORPORATE)
+
 /obj/structure/machinery/door/airlock/multi_tile/research/reinforced
 	name = "Reinforced Research Airlock"
 	masterkey_resist = TRUE
+
+/obj/structure/machinery/door/airlock/multi_tile/research/reinforced/colony
+	req_access = null
+	req_one_access = list(ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_COMMAND, ACCESS_WY_CORPORATE)
 
 /obj/structure/machinery/door/airlock/multi_tile/secure
 	name = "Secure Airlock"
 	icon = 'icons/obj/structures/doors/Door2x1_secure.dmi'
 	openspeed = 34
+/obj/structure/machinery/door/airlock/multi_tile/secure/colony
+	req_access = null
+	req_one_access = list(ACCESS_CIVILIAN_PUBLIC)
 
 /obj/structure/machinery/door/airlock/multi_tile/secure2
 	name = "Secure Airlock"
 	icon = 'icons/obj/structures/doors/Door2x1_secure2.dmi'
 	openspeed = 31
 	req_access = null
+
+/obj/structure/machinery/door/airlock/multi_tile/secure2/colony
+	req_access = null
+	req_one_access = list(ACCESS_CIVILIAN_PUBLIC)
+
 
 /obj/structure/machinery/door/airlock/multi_tile/secure2_glass
 	name = "Secure Airlock"
@@ -72,6 +105,10 @@
 	glass = 1
 	openspeed = 31
 	req_access = null
+
+/obj/structure/machinery/door/airlock/multi_tile/secure2_glass/colony
+	req_access = null
+	req_one_access = list(ACCESS_CIVILIAN_PUBLIC)
 
 /obj/structure/machinery/door/airlock/multi_tile/shuttle
 	name = "Shuttle Podlock"
@@ -126,15 +163,27 @@
 	req_access = list()
 	req_one_access = list(ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_MEDBAY, ACCESS_MARINE_BRIDGE)
 
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony
+	req_access = null
+	req_one_access = list(ACCESS_CIVILIAN_MEDBAY, ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_COMMAND, ACCESS_CIVILIAN_PUBLIC)
+
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/solid
 	icon = 'icons/obj/structures/doors/2x1medidoor_solid.dmi'
 	opacity = TRUE
 	glass = FALSE
 
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/solid/colony
+	req_access = null
+	req_one_access = list(ACCESS_CIVILIAN_MEDBAY, ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_COMMAND, ACCESS_CIVILIAN_PUBLIC)
+
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/research
 	name = "\improper Research Airlock"
 	req_one_access = list(ACCESS_MARINE_RESEARCH)
 	masterkey_resist = TRUE
+
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/research/colony
+	req_access = null
+	req_one_access = list(ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_COMMAND, ACCESS_WY_CORPORATE)
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor
 	name = "\improper Command Airlock"
@@ -143,19 +192,34 @@
 	glass = TRUE
 	req_access = list(ACCESS_MARINE_BRIDGE)
 
+/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/colony
+	req_access = null
+	req_one_access = list(ACCESS_CIVILIAN_BRIG, ACCESS_CIVILIAN_COMMAND, ACCESS_WY_CORPORATE)
+
 /obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/reinforced
 	name = "\improper Reinforced Command Airlock"
 	masterkey_resist = TRUE
+
+/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/reinforced/colony
+	req_access = null
+	req_one_access = list(ACCESS_CIVILIAN_BRIG, ACCESS_CIVILIAN_COMMAND, ACCESS_WY_CORPORATE)
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/solid
 	icon = 'icons/obj/structures/doors/2x1comdoor_solid.dmi'
 	opacity = TRUE
 	glass = FALSE
 
+/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/solid/colony
+	req_access = null
+	req_one_access = list(ACCESS_CIVILIAN_BRIG, ACCESS_CIVILIAN_COMMAND, ACCESS_WY_CORPORATE)
+
 /obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/solid/reinforced
 	name = "\improper Reinforced Command Airlock"
 	masterkey_resist = TRUE
 
+/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/solid/reinforced/colony
+	req_access = null
+	req_one_access = list(ACCESS_CIVILIAN_BRIG, ACCESS_CIVILIAN_COMMAND, ACCESS_WY_CORPORATE)
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/handle_multidoor()
 	if(!(width > 1)) return //Bubblewrap
@@ -360,8 +424,16 @@
 	icon = 'icons/obj/structures/doors/2x1secdoor.dmi'
 	req_access = list(ACCESS_MARINE_BRIG)
 
+/obj/structure/machinery/door/airlock/multi_tile/almayer/secdoor/colony
+	req_access = null
+	req_one_access = list(ACCESS_CIVILIAN_BRIG, ACCESS_CIVILIAN_COMMAND)
+
 /obj/structure/machinery/door/airlock/multi_tile/almayer/secdoor/reinforced
 	masterkey_resist = TRUE
+
+/obj/structure/machinery/door/airlock/multi_tile/almayer/secdoor/reinforced/colony
+	req_access = null
+	req_one_access = list(ACCESS_CIVILIAN_BRIG, ACCESS_CIVILIAN_COMMAND)
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/secdoor/reinforced/autoname
 	autoname = TRUE
@@ -373,12 +445,19 @@
 	icon = 'icons/obj/structures/doors/2x1secdoor_glass.dmi'
 	opacity = FALSE
 	glass = TRUE
+/obj/structure/machinery/door/airlock/multi_tile/almayer/secdoor/glass/colony
+	req_access = null
+	req_one_access = list(ACCESS_CIVILIAN_BRIG, ACCESS_CIVILIAN_COMMAND)
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/secdoor/glass/autoname
 	autoname = TRUE
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/secdoor/glass/reinforced
 	masterkey_resist = TRUE
+
+/obj/structure/machinery/door/airlock/multi_tile/almayer/secdoor/glass/reinforced/colony
+	req_access = null
+	req_one_access = list(ACCESS_CIVILIAN_BRIG, ACCESS_CIVILIAN_COMMAND)
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/secdoor/glass/reinforced/autoname
 	autoname = TRUE
@@ -389,6 +468,14 @@
 	req_access = list()
 	req_one_access = list(ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_ENGINEERING)
 
+/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor/colony
+	req_access = null
+	req_one_access = list(ACCESS_CIVILIAN_COMMAND, ACCESS_CIVILIAN_ENGINEERING, ACCESS_CIVILIAN_LOGISTICS)
+
+/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor
+	req_access = null
+	req_one_access = list(ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_ENGINEERING)
+
 /obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor/autoname
 	autoname = TRUE
 
@@ -397,6 +484,14 @@
 	opacity = FALSE
 	glass = TRUE
 
+/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor/glass/colony
+	req_access = null
+	req_one_access = list(ACCESS_CIVILIAN_COMMAND, ACCESS_CIVILIAN_ENGINEERING, ACCESS_CIVILIAN_LOGISTICS)
+
+/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor/glass
+	req_access = null
+	req_one_access = list(ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_ENGINEERING)
+
 /obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor/glass/autoname
 	autoname = TRUE
 
@@ -404,6 +499,10 @@
 	icon = 'icons/obj/structures/doors/2x1prepdoor.dmi'
 	opacity = FALSE
 	glass = TRUE
+
+/obj/structure/machinery/door/airlock/multi_tile/almayer/marine/colony
+	req_access = null
+	req_one_access = list(ACCESS_CIVILIAN_PUBLIC)
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/marine/alpha
 	name = "\improper Alpha Squad Preparations"

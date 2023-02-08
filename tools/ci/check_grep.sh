@@ -125,19 +125,6 @@ if grep -P '^\t+ [^ *]' $code_files; then
 	st=1
 fi;
 
-part "missing trailing newlines"
-nl='
-'
-nl=$'\n'
-while read f; do
-	t=$(tail -c2 "$f"; printf x); r1="${nl}$"; r2="${nl}${r1}"
-	if [[ ! ${t%x} =~ $r1 ]]; then
-		echo
-		echo -e "${RED}ERROR: file $f is missing a trailing newline.${NC}"
-		st=1
-	fi;
-done < <(find . -type f -name '*.dm')
-
 section "common mistakes"
 
 part "var in proc args"

@@ -195,10 +195,10 @@
 		T.ScrapeAway()
 
 	for(var/mob/living/carbon/bug in destination)
-		bug.gib(create_cause_data(initial(origin.name)))
+		bug.gib(create_cause_data("squashing", initial(origin.name)))
 
 	for(var/mob/living/simple_animal/pest in destination)
-		pest.gib(create_cause_data(initial(origin.name)))
+		pest.gib(create_cause_data("squashing", initial(origin.name)))
 
 	origin.move_contents_to(destination, direction=direction)
 

@@ -113,3 +113,11 @@
   - admin: You no longer need to stay adminned to get newbie popups as SEA
   stanalbatross:
   - bugfix: fixed being able to use the pickup keybind while incapacitated
+2023-02-08:
+  Zonespace27:
+  - bugfix: Fixed uniforms causing excessive server lag
+  stanalbatross:
+  - rscdel: removed the MP timelock requirement from XO, CE, and RO
+  - rscdel: removed the RTO timelock requirement from SL, instead you now need 10
+      hours of squad roles
+  - bugfix: fixed some small or uncommon runtimes

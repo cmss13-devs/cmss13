@@ -13202,7 +13202,7 @@
 "aKV" = (
 /obj/structure/prop/almayer/particle_cannon{
 	desc = "";
-	name = ";\improper CORSAT-PROTO-QUANTUM-CALCULATOR" = None
+	name = "\improper CORSAT-PROTO-QUANTUM-CALCULATOR"
 	},
 /turf/open/floor/corsat{
 	icon_state = "plate"

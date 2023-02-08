@@ -65,6 +65,7 @@
 		/obj/item/attachable/stock/rifle/collapsible,
 		/obj/item/attachable/attached_gun/grenade,
 		/obj/item/attachable/attached_gun/flamer,
+		/obj/item/attachable/attached_gun/flamer/advanced,
 		/obj/item/attachable/attached_gun/shotgun,
 		/obj/item/attachable/attached_gun/extinguisher,
 		/obj/item/attachable/scope,
@@ -130,14 +131,21 @@
 		/obj/item/attachable/extended_barrel,
 		/obj/item/attachable/stock/nsg23,
 		/obj/item/attachable/attached_gun/flamer,
+		/obj/item/attachable/attached_gun/flamer/advanced,
 		/obj/item/attachable/attached_gun/grenade,
 		/obj/item/attachable/scope/mini/nsg23,
 	)
 
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER|GUN_BURST_ON|GUN_BURST_ONLY|GUN_WY_RESTRICTED
+
+	random_spawn_muzzle = list(
+		/obj/item/attachable/suppressor,
+		/obj/item/attachable/bayonet,
+		/obj/item/attachable/extended_barrel,
+	)
 	starting_attachment_types = list(
 		/obj/item/attachable/scope/mini/nsg23,
-		/obj/item/attachable/attached_gun/flamer,
+		/obj/item/attachable/attached_gun/flamer/advanced,
 	)
 
 /obj/item/weapon/gun/rifle/nsg23/Initialize(mapload, spawn_empty)
@@ -174,6 +182,10 @@
 
 /obj/item/weapon/gun/rifle/nsg23/no_lock
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER|GUN_BURST_ON|GUN_BURST_ONLY
+	starting_attachment_types = list(
+		/obj/item/attachable/scope/mini/nsg23,
+		/obj/item/attachable/attached_gun/flamer,//non-op flamer for normal spawns
+	)
 
 /obj/item/weapon/gun/rifle/nsg23/no_lock/stripped
 	starting_attachment_types = list() //starts with the stock anyways due to handle_starting_attachment()
@@ -192,7 +204,7 @@
 	aim_slowdown = SLOWDOWN_ADS_QUICK
 	wield_delay = WIELD_DELAY_FAST
 	map_specific_decoration = FALSE
-	starting_attachment_types = list()
+	starting_attachment_types = list(/obj/item/attachable/stock/rifle/collapsible)
 
 	random_spawn_chance = 100
 	random_spawn_rail = list(
@@ -202,7 +214,16 @@
 		/obj/item/attachable/magnetic_harness,
 	)
 	random_spawn_under = list(
+		/obj/item/attachable/angledgrip,
+		/obj/item/attachable/attached_gun/shotgun,
 		/obj/item/attachable/lasersight,
+		/obj/item/attachable/attached_gun/flamer/advanced,
+	)
+	random_spawn_muzzle = list(
+		/obj/item/attachable/suppressor,
+		/obj/item/attachable/bayonet,
+		/obj/item/attachable/extended_barrel,
+		/obj/item/attachable/heavy_barrel,
 	)
 
 
@@ -218,8 +239,9 @@
 	scatter_unwielded = SCATTER_AMOUNT_TIER_4
 	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_5
 
-/obj/item/weapon/gun/rifle/m41a/elite/whiteout
-	current_mag = /obj/item/ammo_magazine/rifle/heap //special version for whiteout that has the HEAP mag, nothing else changed
+/obj/item/weapon/gun/rifle/m41a/elite/whiteout //special version for whiteout, has preset attachments and HEAP mag loaded.
+	current_mag = /obj/item/ammo_magazine/rifle/heap
+	starting_attachment_types = list(/obj/item/attachable/stock/rifle/collapsible, /obj/item/attachable/magnetic_harness, /obj/item/attachable/angledgrip, /obj/item/attachable/suppressor)
 
 /obj/item/weapon/gun/rifle/m41a/corporate
 	desc = "A Weyland-Yutani creation, this M41A MK2 comes equipped in corporate white. Uses 10x24mm caseless ammunition."
@@ -233,6 +255,22 @@
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER|GUN_WY_RESTRICTED
 	map_specific_decoration = FALSE
 	starting_attachment_types = list(/obj/item/attachable/stock/rifle/collapsible)
+
+/obj/item/weapon/gun/rifle/m41a/corporate/detainer //for chem ert
+	current_mag = /obj/item/ammo_magazine/rifle/ap
+	random_spawn_rail = list(
+		/obj/item/attachable/reddot,
+		/obj/item/attachable/reflex,
+		/obj/item/attachable/flashlight,
+		/obj/item/attachable/magnetic_harness,
+	)
+	random_spawn_muzzle = list(
+		/obj/item/attachable/suppressor,
+		/obj/item/attachable/bayonet,
+		/obj/item/attachable/extended_barrel,
+	)
+
+	starting_attachment_types = list(/obj/item/attachable/stock/rifle/collapsible, /obj/item/attachable/attached_gun/flamer/advanced)
 
 //-------------------------------------------------------
 //M40-SD AKA SOF RIFLE FROM HELL (It's actually an M41A, don't tell!)
@@ -275,6 +313,7 @@
 		/obj/item/attachable/magnetic_harness,
 		/obj/item/attachable/attached_gun/grenade,
 		/obj/item/attachable/attached_gun/flamer,
+		/obj/item/attachable/attached_gun/flamer/advanced,
 		/obj/item/attachable/attached_gun/shotgun,
 		/obj/item/attachable/attached_gun/extinguisher,
 		)
@@ -404,6 +443,7 @@
 		/obj/item/attachable/stock/rifle/collapsible,
 		/obj/item/attachable/attached_gun/grenade,
 		/obj/item/attachable/attached_gun/flamer,
+		/obj/item/attachable/attached_gun/flamer/advanced,
 		/obj/item/attachable/attached_gun/extinguisher,
 		/obj/item/attachable/attached_gun/shotgun,
 	)
@@ -626,6 +666,7 @@
 		/obj/item/attachable/magnetic_harness,
 		/obj/item/attachable/attached_gun/grenade,
 		/obj/item/attachable/attached_gun/flamer,
+		/obj/item/attachable/attached_gun/flamer/advanced,
 		/obj/item/attachable/attached_gun/extinguisher,
 		/obj/item/attachable/attached_gun/shotgun,
 		/obj/item/attachable/scope/slavic,
@@ -706,6 +747,7 @@
 		/obj/item/attachable/magnetic_harness,
 		/obj/item/attachable/attached_gun/grenade,
 		/obj/item/attachable/attached_gun/flamer,
+		/obj/item/attachable/attached_gun/flamer/advanced,
 		/obj/item/attachable/attached_gun/extinguisher,
 		/obj/item/attachable/attached_gun/shotgun,
 		/obj/item/attachable/scope,
@@ -828,6 +870,7 @@
 		/obj/item/attachable/burstfire_assembly,
 		/obj/item/attachable/attached_gun/grenade,
 		/obj/item/attachable/attached_gun/flamer,
+		/obj/item/attachable/attached_gun/flamer/advanced,
 		/obj/item/attachable/attached_gun/extinguisher,
 		/obj/item/attachable/attached_gun/shotgun,
 		/obj/item/attachable/lasersight,
@@ -986,6 +1029,7 @@
 		/obj/item/attachable/burstfire_assembly,
 		/obj/item/attachable/attached_gun/grenade,
 		/obj/item/attachable/attached_gun/flamer,
+		/obj/item/attachable/attached_gun/flamer/advanced,
 		/obj/item/attachable/attached_gun/extinguisher,
 		/obj/item/attachable/attached_gun/shotgun,
 	)
@@ -1085,6 +1129,7 @@
 		/obj/item/attachable/bipod,
 		/obj/item/attachable/burstfire_assembly,
 		/obj/item/attachable/attached_gun/flamer,
+		/obj/item/attachable/attached_gun/flamer/advanced,
 		/obj/item/attachable/attached_gun/extinguisher,
 		)
 
@@ -1176,7 +1221,7 @@
 
 /obj/item/weapon/gun/rifle/type71/flamer/handle_starting_attachment()
 	..()
-	var/obj/item/attachable/attached_gun/flamer/integrated/S = new(src)
+	var/obj/item/attachable/attached_gun/flamer/advanced/integrated/S = new(src)
 	S.flags_attach_features &= ~ATTACH_REMOVABLE
 	S.Attach(src)
 	update_attachable(S.slot)

@@ -12272,7 +12272,7 @@
 	},
 /area/bigredv2/outside/medical)
 "aFK" = (
-/obj/structure/machinery/door/airlock/almayer/medical/glass/colony{}
+/obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
 	id_tag = "mbayexit";
 	name = "Medbay Reception";
 	req_one_access_txt = "2;8;19"

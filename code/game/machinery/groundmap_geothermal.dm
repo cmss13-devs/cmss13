@@ -225,6 +225,13 @@
 		F.fswitch = src
 	start_processing()
 
+/obj/structure/machinery/colony_floodlight_switch/Destroy()
+	for(var/obj/structure/machinery/colony_floodlight/floodlight as anything in floodlist)
+		QDEL_NULL(floodlight.fswitch)
+	QDEL_NULL_LIST(floodlist)
+	..()
+
+
 /obj/structure/machinery/colony_floodlight_switch/update_icon()
 	if(!ispowered)
 		icon_state = "panelnopower"

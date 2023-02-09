@@ -349,10 +349,9 @@
 /area/bigredv2/outside/virology)
 "be" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/machinery/door/airlock/almayer/research{
+/obj/structure/machinery/door/airlock/almayer/research/colony{
 	dir = 1;
 	name = "\improper Virology Lab Decontamination";
-	req_access = null
 	},
 /turf/open/floor{
 	icon_state = "warnwhite";

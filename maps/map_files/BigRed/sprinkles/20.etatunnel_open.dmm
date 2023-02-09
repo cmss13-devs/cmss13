@@ -146,11 +146,11 @@
 	pixel_x = 9;
 	pixel_y = -4
 	},
-/obj/item/explosive/grenade/HE/airburst/hornet_shell{
+/obj/item/explosive/grenade/high_explosive/airburst/hornet_shell{
 	pixel_x = -6;
 	pixel_y = 6
 	},
-/obj/item/explosive/grenade/HE/airburst{
+/obj/item/explosive/grenade/high_explosive/airburst{
 	pixel_y = 8
 	},
 /obj/item/storage/box/packet/baton_slug{
@@ -278,7 +278,7 @@
 	pixel_x = -3;
 	pixel_y = 12
 	},
-/obj/item/explosive/grenade/HE/airburst/starshell{
+/obj/item/explosive/grenade/high_explosive/airburst/starshell{
 	pixel_x = -11;
 	pixel_y = 1
 	},
@@ -332,9 +332,8 @@
 	},
 /area/bigredv2/caves/mining)
 "Be" = (
-/obj/structure/machinery/door/airlock/almayer/security/glass{
+/obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	name = "\improper Marshals Mining Security Post";
-	req_access = null
 	},
 /turf/open/floor/plating{
 	dir = 8;

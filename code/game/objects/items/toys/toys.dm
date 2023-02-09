@@ -131,7 +131,7 @@
 	w_class = SIZE_TINY
 	attack_verb = list("attacked", "coloured")
 	black_market_value = 5
-	var/colour = "#FF0000" //RGB
+	var/crayon_color = "#FF0000" //RGB
 	var/shadeColour = "#220000" //RGB
 	var/uses = 30 //0 for unlimited uses
 	var/instant = 0

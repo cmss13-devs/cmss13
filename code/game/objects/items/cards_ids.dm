@@ -219,12 +219,12 @@
 	icon_state = "ds"
 
 /obj/item/card/id/marshal
-	name = "CMB marshal gold badge"
+	name = "\improper CMB marshal gold badge"
 	desc = "A coveted gold badge signifying that the wearer is one of the few CMB Marshals patroling the outer rim. It is a sign of justice, authority, and protection. Protecting those who can't. This badge represents a commitment to a sworn oath always kept."
 	icon_state = "cmbmar"
 
 /obj/item/card/id/deputy
-	name = "CMB deputy silver badge"
+	name = "\improper CMB deputy silver badge"
 	desc = "The silver badge which represents that the wearer is a CMB Deputy. It is a sign of justice, authority, and protection. Protecting those who can't. This badge represents a commitment to a sworn oath always kept."
 	icon_state = "cmbdep"
 

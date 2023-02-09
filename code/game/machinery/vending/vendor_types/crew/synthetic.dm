@@ -249,15 +249,15 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth_snowflake, list(
 
 	list("BACKPACK", 0, null, null, null),
 	list("Backpack, Industrial", 12, /obj/item/storage/backpack/industrial, null, VENDOR_ITEM_REGULAR),
-	list("Backpack, USCM Medicical", 12, /obj/item/storage/backpack/marine/medic, null, VENDOR_ITEM_REGULAR),
 	list("Backpack, USCM IMB", 12, /obj/item/storage/backpack/marine, null, VENDOR_ITEM_REGULAR),
+	list("Backpack, USCM Medicical", 12, /obj/item/storage/backpack/marine/medic, null, VENDOR_ITEM_REGULAR),
 	list("Backpack, USCM Technician", 12, /obj/item/storage/backpack/marine/tech, null, VENDOR_ITEM_REGULAR),
 	list("Satchel, USCM", 12, /obj/item/storage/backpack/marine/satchel, null, VENDOR_ITEM_REGULAR),
-	list("Satchel, Medical", 12, /obj/item/storage/backpack/satchel/med, null, VENDOR_ITEM_REGULAR),
 	list("Satchel, Leather", 12, /obj/item/storage/backpack/satchel, null, VENDOR_ITEM_REGULAR),
-	list("USCM Weldersatchel", 12, /obj/item/storage/backpack/marine/engineerpack/satchel, VENDOR_ITEM_REGULAR),
+	list("Satchel, Medical", 12, /obj/item/storage/backpack/satchel/med, null, VENDOR_ITEM_REGULAR),
+	list("USCM Mini-RTO Pack", 12, /obj/item/storage/backpack/marine/satchel/rto/small,null, VENDOR_ITEM_REGULAR),
 	list("USCM Welderpack", 12, /obj/item/storage/backpack/marine/engineerpack, null, VENDOR_ITEM_REGULAR),
-	list("Small Radio Telephone Backpack", 12, /obj/item/storage/backpack/marine/satchel/rto/small,null, VENDOR_ITEM_REGULAR),
+	list("USCM Weldersatchel", 12, /obj/item/storage/backpack/marine/engineerpack/satchel, VENDOR_ITEM_REGULAR),
 ))
 
 /obj/structure/machinery/cm_vending/clothing/synth/snowflake

@@ -953,7 +953,7 @@
 
 //CMB Headsets
 /obj/item/device/radio/headset/distress/CMB
-	name = "CMB Earpiece"
+	name = "\improper CMB Earpiece"
 	desc = "A sleek headset used by The Colonial Marshal Bureau, crafted in Sol. Low profile and comfortable. No one is above the law. Featured channels include: ; - CMB, :g - public, :v - marine command, :m - medbay, :t - intel."
 	frequency = CMB_FREQ
 	icon_state = "cmb_headset"
@@ -961,7 +961,7 @@
 	has_hud = TRUE
 
 /obj/item/device/radio/headset/distress/CMB/ICC
-	name = "ICC Liaison Headset"
+	name = "\improper ICC Liaison Headset"
 	desc = "An expensive headset used by The Interstellar Commerce Commission. This one in particular has a liaison chip with the CMB. Featured channels include: ; - CMB, :g - public, :v - marine command, :m - medbay, :t - intel, :y - Weyland-Yutani."
 	frequency = CMB_FREQ
 	icon_state = "wy_headset"

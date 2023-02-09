@@ -21,7 +21,7 @@
 	if(.)
 		return
 	var/mob/living/carbon/human/H = user.mob
-	if(!isYautja(H))
+	if(!isyautja(H))
 		return
 	H.butcher()
 
@@ -37,7 +37,7 @@
 	if(.)
 		return
 	var/mob/living/carbon/human/H = user.mob
-	if(!isYautja(H))
+	if(!isyautja(H))
 		return
 	H.pred_buy()
 
@@ -53,7 +53,7 @@
 	if(.)
 		return
 	var/mob/living/carbon/human/H = user.mob
-	if(!isYautja(H))
+	if(!isyautja(H))
 		return
 	H.mark_panel()
 
@@ -69,7 +69,7 @@
 	if(.)
 		return
 	var/mob/living/carbon/human/H = user.mob
-	if(!isYautja(H))
+	if(!isyautja(H))
 		return
 	H.mark_for_hunt()
 
@@ -85,7 +85,7 @@
 	if(.)
 		return
 	var/mob/living/carbon/human/H = user.mob
-	if(!isYautja(H))
+	if(!isyautja(H))
 		return
 	H.remove_from_hunt()
 

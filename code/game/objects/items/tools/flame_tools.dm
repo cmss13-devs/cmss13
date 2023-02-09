@@ -378,7 +378,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		go_out(user)
 	return ..()
 
-/obj/item/clothing/mask/cigarette/proc/go_out(mob/user, var/silent = FALSE)
+/obj/item/clothing/mask/cigarette/proc/go_out(mob/user, silent = FALSE)
 	var/mob/living/M
 	if(ismob(loc))
 		M = loc
@@ -478,6 +478,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	item_state = "cigar_off"
 	smoketime = 50 MINUTES
 	chem_volume = 20
+	black_market_value = 15
 
 /obj/item/clothing/mask/cigarette/cigar/classic
 	name = "classic cigar"
@@ -486,6 +487,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	icon_on = "cigar2_on"
 	icon_off = "cigar2_off"
 	smoketime = 120 MINUTES
+	black_market_value = 30
 
 /obj/item/clothing/mask/cigarette/cigar/tarbacks
 	name = "\improper Tarback cigar"
@@ -712,6 +714,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	item_state = "goldzippo"
 	icon_on = "goldzippoon"
 	icon_off = "goldzippo"
+	black_market_value = 30
 
 /obj/item/tool/lighter/random
 
@@ -759,7 +762,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		return ..()
 	return
 
-/obj/item/tool/lighter/proc/turn_off(mob/living/bearer, var/silent = 1)
+/obj/item/tool/lighter/proc/turn_off(mob/living/bearer, silent = 1)
 	if(heat_source)
 		heat_source = 0
 		icon_state = icon_off

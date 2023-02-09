@@ -6,13 +6,13 @@
 	total_positions = 1
 	spawn_positions = 1
 
-/datum/job/antag/xenos/queen/set_spawn_positions(var/count)
+/datum/job/antag/xenos/queen/set_spawn_positions(count)
 	return spawn_positions
 
-/datum/job/antag/xenos/queen/transform_to_xeno(var/mob/new_player/NP, var/hive_index)
+/datum/job/antag/xenos/queen/transform_to_xeno(mob/new_player/NP, hive_index)
 	SSticker.mode.pick_queen_spawn(NP.mind, hive_index)
 
-/datum/job/antag/xenos/queen/announce_entry_message(var/mob/new_queen, var/account, var/whitelist_status)
+/datum/job/antag/xenos/queen/announce_entry_message(mob/new_queen, account, whitelist_status)
 	to_chat(new_queen, "<B>You are now the alien queen!</B>")
 	to_chat(new_queen, "<B>Your job is to spread the hive.</B>")
 	to_chat(new_queen, "<B>You should start by building a hive core.</B>")

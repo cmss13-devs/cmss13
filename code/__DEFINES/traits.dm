@@ -237,6 +237,8 @@ GLOBAL_LIST_INIT(mob_traits, list(
 #define TRAIT_SOURCE_ABILITY(ability) "t_s_ability_[ability]"
 ///Status trait forced by the xeno action charge
 #define TRAIT_SOURCE_XENO_ACTION_CHARGE "t_s_xeno_action_charge"
+/// status trait given by a round trait
+#define TRAIT_SOURCE_ROUND "t_s_round_trait"
 
 ///Status trait from weapons?? buh
 #define TRAIT_SOURCE_WEAPON "t_s_weapon"

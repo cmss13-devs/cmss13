@@ -530,6 +530,8 @@ This maintains a list of ip addresses that are able to bypass topic filtering.
 /// logs all timers in buckets on automatic bucket reset (Useful for timer debugging)
 /datum/config_entry/flag/log_timers_on_bucket_reset
 
+/datum/config_entry/flag/forbid_round_traits
+
 /datum/config_entry/number/hard_deletes_overrun_threshold
 	integer = FALSE
 	min_val = 0

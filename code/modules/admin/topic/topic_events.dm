@@ -1,4 +1,4 @@
-/datum/admins/proc/topic_events(var/href)
+/datum/admins/proc/topic_events(href)
 	switch(href)
 		if("securitylevel")
 			owner.change_security_level()
@@ -37,6 +37,11 @@
 			else
 				communications_blackout(1)
 			message_staff("[key_name_admin(usr)] triggered a communications blackout.")
+		if("destructible_terrain")
+			if(tgui_alert(usr, "Are you sure you want to toggle all ground-level terrain destructible?", "Confirmation", list("Yes", "No"), 20 SECONDS) != "Yes")
+				return
+			toggle_destructible_terrain()
+			message_staff("[key_name_admin(usr)] toggled destructible terrain.")
 		if("blackout")
 			if(alert(usr, "Are you sure you want to do this?", "Confirmation", "Yes", "No") != "Yes")
 				return
@@ -86,7 +91,7 @@
 				message_staff("[key_name_admin(usr)] added [amount] research credits.")
 				chemical_data.update_credits(amount)
 
-/datum/admins/proc/create_humans_list(var/href_list)
+/datum/admins/proc/create_humans_list(href_list)
 	if(SSticker?.current_state < GAME_STATE_PLAYING)
 		alert("Please wait until the game has started before spawning humans")
 		return
@@ -156,7 +161,7 @@
 
 		message_staff("[key_name_admin(usr)] created [humans_to_spawn] humans as [job_name] at [get_area(initial_spot)]")
 
-/datum/admins/proc/create_xenos_list(var/href_list)
+/datum/admins/proc/create_xenos_list(href_list)
 	if(SSticker?.current_state < GAME_STATE_PLAYING)
 		alert("Please wait until the game has started before spawning xenos")
 		return
@@ -208,7 +213,7 @@
 		var/caste_type = RoleAuthority.get_caste_by_text(xeno_caste)
 
 		var/list/xenos = list()
-		var/mob/living/carbon/Xenomorph/X
+		var/mob/living/carbon/xenomorph/X
 		for(var/i = 0 to xenos_to_spawn - 1)
 			var/turf/to_spawn_at = pick(turfs)
 			X = new caste_type(to_spawn_at, null, xeno_hive)

@@ -12,7 +12,7 @@
 
 	ert_message = "Several characters have been offered up to be played by the admins"
 
-/datum/emergency_call/custom/create_member(datum/mind/M, var/turf/override_spawn_loc)
+/datum/emergency_call/custom/create_member(datum/mind/M, turf/override_spawn_loc)
 	set waitfor = 0
 	var/turf/spawn_loc = override_spawn_loc ? override_spawn_loc : get_spawn_point()
 

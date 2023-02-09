@@ -9,7 +9,7 @@
 		var/mob/living/carbon/human/H = M
 		//if they are holding or wearing a card that has access, that works
 		if(check_access(H.get_active_hand()) || check_access(H.wear_id)) return TRUE
-	else if(istype(M, /mob/living/carbon/Xenomorph))
+	else if(istype(M, /mob/living/carbon/xenomorph))
 		var/mob/living/carbon/C = M
 		if(check_access(C.get_active_hand())) return TRUE
 	return FALSE
@@ -152,7 +152,7 @@
 /proc/get_freelancer_access()
 	return list(ACCESS_MARINE_BRIDGE, ACCESS_MARINE_CARGO, ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_ENGINEERING, ACCESS_CIVILIAN_LOGISTICS)
 
-/proc/get_region_accesses(var/code)
+/proc/get_region_accesses(code)
 	switch(code)
 		if(0)
 			return get_all_accesses()

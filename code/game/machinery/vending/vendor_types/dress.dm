@@ -29,7 +29,7 @@
 					list(name, 0, uniform_path, NO_FLAGS, VENDOR_ITEM_REGULAR)
 				)
 
-/obj/structure/machinery/cm_vending/clothing/dress/proc/get_products_preset(var/list/presets)
+/obj/structure/machinery/cm_vending/clothing/dress/proc/get_products_preset(list/presets)
 	. = list()
 	for(var/preset in presets)
 		var/datum/equipment_preset/pre = new preset()
@@ -209,13 +209,22 @@
 
 	return chosen
 
-/obj/structure/machinery/cm_vending/clothing/super_snowflake/proc/add_items(var/obj/item/item_type)
+/obj/structure/machinery/cm_vending/clothing/super_snowflake/proc/add_items(obj/item/item_type)
 	for(var/obj/item/I as anything in typesof(item_type))
 		items += list(list(initial(I.name), 0, I, null, VENDOR_ITEM_REGULAR))
 
-/obj/structure/machinery/cm_vending/clothing/super_snowflake/get_vv_options()
+/obj/structure/machinery/cm_vending/clothing/super_snowflake/vv_get_dropdown()
 	. = ..()
-	. += "<option value='?_src_=vars;add_items_to_vendor=\ref[src]'>Add Items To Vendor</option>"
+	VV_DROPDOWN_OPTION("", "----SNOWFLAKE VENDOR-----")
+	VV_DROPDOWN_OPTION(VV_HK_ADD_ITEMS_TO_VENDOR, "Add Items to Vendor")
+
+/obj/structure/machinery/cm_vending/clothing/super_snowflake/vv_do_topic(list/href_list)
+	. = ..()
+	if(href_list[VV_HK_ADD_ITEMS_TO_VENDOR])
+		var/obj/structure/machinery/cm_vending/clothing/super_snowflake/vendor = locate(href_list["add_items_to_vendor"])
+		if(!istype(vendor))
+			return
+		vendor.add_items_to_vendor()
 
 /obj/structure/machinery/cm_vending/clothing/super_snowflake/proc/add_items_to_vendor()
 	if(!check_rights(R_MOD))

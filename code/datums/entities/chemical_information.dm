@@ -37,14 +37,15 @@
 		"burncolor" = DB_FIELDTYPE_STRING_SMALL,
 		"burncolormod" = DB_FIELDTYPE_INT,
 		"properties_text" = DB_FIELDTYPE_STRING_MAX,
-		"spent_chemical" = DB_FIELDTYPE_INT)
+		"spent_chemical" = DB_FIELDTYPE_INT,
+	)
 
-/datum/entity_meta/chemical_information/map(var/datum/entity/chemical_information/ET, var/list/values)
+/datum/entity_meta/chemical_information/map(datum/entity/chemical_information/ET, list/values)
 	..()
 	if(values["properties_text"])
 		ET.properties = json_decode(values["properties_text"])
 
-/datum/entity_meta/chemical_information/unmap(var/datum/entity/chemical_information/ET)
+/datum/entity_meta/chemical_information/unmap(datum/entity/chemical_information/ET)
 	. = ..()
 	if(length(ET.properties))
 		.["properties_text"] = json_encode(ET.properties)

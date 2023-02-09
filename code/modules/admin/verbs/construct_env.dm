@@ -10,7 +10,7 @@
 	===
 	g=/obj/item/weapon/gun/rifle/m41a,/turf/open/floor/almayer
 	m=/mob/living/carbon/human,/turf/open/floor/almayer
-	d=/mob/living/carbon/Xenomorph/Drone,/turf/open/floor/almayer
+	d=/mob/living/carbon/xenomorph/drone,/turf/open/floor/almayer
 
 	SSSSSWwwwWSSSSS
 	SSSSSWFFFWSSSSS

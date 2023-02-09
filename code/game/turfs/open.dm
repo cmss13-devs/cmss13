@@ -3,6 +3,7 @@
 
 /turf/open
 	plane = FLOOR_PLANE
+	minimap_color = MINIMAP_AREA_COLONY
 	var/is_groundmap_turf = FALSE //whether this a turf used as main turf type for the 'outside' of a map.
 	var/allow_construction = TRUE //whether you can build things like barricades on this turf.
 	var/bleed_layer = 0 //snow layer
@@ -94,7 +95,7 @@
 				edge_overlay.SwapColor(rgb(255, 0, 255, 255), rgb(0, 0, 0, 0))
 				overlays += edge_overlay
 
-/turf/open/proc/scorch(var/heat_level)
+/turf/open/proc/scorch(heat_level)
 	// All scorched icons should be in the dmi that their unscorched bases are
 	// "name_scorched#" where # is the scorchedness level 0 - 1 - 2 - 3
 	// 0 being no scorch, and 3 the most scorched
@@ -176,6 +177,7 @@
 	icon = 'icons/turf/floors/bigred.dmi'
 	icon_state = "mars_sand_1"
 	is_groundmap_turf = TRUE
+	minimap_color = MINIMAP_MARS_DIRT
 
 
 /turf/open/mars_cave
@@ -196,6 +198,7 @@
 	name = "dirt"
 	icon = 'icons/turf/floors/bigred.dmi'
 	icon_state = "mars_dirt_1"
+	minimap_color = MINIMAP_DIRT
 
 
 /turf/open/mars_dirt/Initialize(mapload, ...)
@@ -280,7 +283,7 @@
 	icon = 'icons/turf/ground_map.dmi'
 	icon_state = "desert"
 
-/turf/open/gm/attackby(var/obj/item/I, var/mob/user)
+/turf/open/gm/attackby(obj/item/I, mob/user)
 
 	//Light Stick
 	if(istype(I, /obj/item/lightstick))
@@ -294,7 +297,7 @@
 			return
 
 		user.visible_message("\blue[user.name] planted \the [L] into [src].")
-		L.anchored = 1
+		L.anchored = TRUE
 		L.icon_state = "lightstick_[L.s_color][L.anchored]"
 		user.drop_held_item()
 		L.forceMove(src)
@@ -314,6 +317,7 @@
 	name = "dirt"
 	icon_state = "desert"
 	baseturfs = /turf/open/gm/dirt
+	minimap_color = MINIMAP_DIRT
 
 /turf/open/gm/dirt/Initialize(mapload, ...)
 	. = ..()
@@ -344,6 +348,7 @@
 	name = "dirt"
 	icon_state = "dirt"
 	baseturfs = /turf/open/gm/dirt2
+	minimap_color = MINIMAP_DIRT
 
 /turf/open/gm/dirtgrassborder
 	name = "grass"
@@ -382,6 +387,7 @@
 	var/base_river_slowdown = 1.75
 	baseturfs = /turf/open/gm/river
 	supports_surgery = FALSE
+	minimap_color = MINIMAP_WATER
 
 /turf/open/gm/river/Initialize(mapload, ...)
 	. = ..()
@@ -439,9 +445,9 @@
 						to_chat(H, SPAN_WARNING(" Your bracers hiss and spark as they short out!"))
 						Y.decloak(H, TRUE)
 
-		else if(isXeno(C))
+		else if(isxeno(C))
 			river_slowdown -= 0.7
-			if(isXenoBoiler(C))
+			if(isboiler(C))
 				river_slowdown -= 1
 
 		var/new_slowdown = C.next_move_slowdown + river_slowdown
@@ -453,7 +459,7 @@
 			SEND_SIGNAL(H, COMSIG_HUMAN_CLEAR_BLOODY_FEET)
 
 
-/turf/open/gm/river/proc/cleanup(var/mob/living/carbon/human/M)
+/turf/open/gm/river/proc/cleanup(mob/living/carbon/human/M)
 	if(!M || !istype(M)) return
 
 	if(M.back)
@@ -527,6 +533,7 @@
 	can_bloody = FALSE
 	baseturfs = /turf/open/gm/riverdeep
 	supports_surgery = FALSE
+	minimap_color = MINIMAP_WATER
 
 
 /turf/open/gm/riverdeep/Initialize(mapload, ...)
@@ -643,7 +650,7 @@
 
 
 
-/turf/open/jungle/proc/Spread(var/probability, var/prob_loss = 50)
+/turf/open/jungle/proc/Spread(probability, prob_loss = 50)
 	if(probability <= 0)
 		return
 	for(var/turf/open/jungle/J in orange(1, src))
@@ -659,7 +666,7 @@
 		if(P && prob(probability))
 			P.Spread(probability - prob_loss)
 
-/turf/open/jungle/attackby(var/obj/item/I, var/mob/user)
+/turf/open/jungle/attackby(obj/item/I, mob/user)
 	//Light Stick
 	if(istype(I, /obj/item/lightstick))
 		var/obj/item/lightstick/L = I
@@ -672,7 +679,7 @@
 			return
 
 		user.visible_message("\blue[user.name] planted \the [L] into [src].")
-		L.anchored = 1
+		L.anchored = TRUE
 		L.icon_state = "lightstick_[L.s_color][L.anchored]"
 		user.drop_held_item()
 		L.forceMove(src)
@@ -695,6 +702,7 @@
 	icon = 'icons/turf/floors/jungle.dmi'
 	icon_state = "grass_path"
 	icon_spawn_state = "dirt"
+	minimap_color = MINIMAP_DIRT
 
 /turf/open/jungle/path/Initialize(mapload, ...)
 	. = ..()

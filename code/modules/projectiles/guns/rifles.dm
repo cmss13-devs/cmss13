@@ -403,8 +403,8 @@
 //Special gun for the CO to replace the smartgun
 
 /obj/item/weapon/gun/rifle/m46c
-	name = "\improper XM46E3 pulse rifle"
-	desc = "A prototype XM46E3, an experimental rifle platform built to outperform the standard M41A. Back issue only. Uses standard MK1 & MK2 rifle magazines."
+	name = "\improper M46C pulse rifle"
+	desc = "A prototype M46C, an experimental rifle platform built to outperform the standard M41A. Back issue only. Uses standard MK1 & MK2 rifle magazines."
 	icon_state = "m46c"
 	item_state = "m46c"
 	fire_sound = "gun_pulse"

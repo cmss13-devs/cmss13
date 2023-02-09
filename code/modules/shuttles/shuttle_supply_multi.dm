@@ -146,7 +146,7 @@
 /datum/shuttle/ferry/supply/multi/at_station()
 	return fake_zlevel
 
-/datum/shuttle/ferry/supply/multi/short_jump(var/area/origin,var/area/destination)
+/datum/shuttle/ferry/supply/multi/short_jump(area/origin, area/destination)
 	if(moving_status != SHUTTLE_IDLE)
 		return
 
@@ -630,7 +630,7 @@
 	else
 		m_shuttle.launch()
 
-/obj/item/elevator_contoller/proc/attach_to(var/obj/structure/elevator_control_mount/to_attach)
+/obj/item/elevator_contoller/proc/attach_to(obj/structure/elevator_control_mount/to_attach)
 	if(!istype(to_attach))
 		return
 
@@ -687,7 +687,7 @@
 	tether_effect = tether_effects["tetherer_tether"]
 	RegisterSignal(tether_effect, COMSIG_PARENT_QDELETING, .proc/reset_tether)
 
-/obj/item/elevator_contoller/dropped(var/mob/user)
+/obj/item/elevator_contoller/dropped(mob/user)
 	. = ..()
 	UnregisterSignal(user, COMSIG_LIVING_SPEAK)
 
@@ -802,7 +802,7 @@
 	recall_phone()
 	return COMPONENT_ABORT_QDEL
 
-/obj/structure/elevator_control_mount/proc/set_tether_holder(var/atom/A)
+/obj/structure/elevator_control_mount/proc/set_tether_holder(atom/A)
 	tether_holder = A
 
 	if(attached_to)

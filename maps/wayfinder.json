@@ -1,9 +1,0 @@
-{
-    "map_name": "USS Wayfinder",
-    "map_path": "map_files/USS_Wayfinder",
-    "map_file": "USS_Wayfinder.dmm",
-    "traits": [{"Marine Main Ship": true}],
-    "nightmare_path": "maps/Nightmare/maps/USS_Wayfinder/",
-    "shuttles": {"supply": "/datum/shuttle/ferry/supply/multi"}
-}
-

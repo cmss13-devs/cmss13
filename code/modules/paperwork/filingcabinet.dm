@@ -17,7 +17,7 @@
 	density = TRUE
 	anchored = TRUE
 	wrenchable = TRUE
-	var/list/allowed_types = list(/obj/item/paper, /obj/item/folder, /obj/item/clipboard, /obj/item/photo, /obj/item/paper_bundle, /obj/item/pamphlet)
+	var/list/allowed_types = list(/obj/item/paper, /obj/item/folder, /obj/item/clipboard, /obj/item/photo, /obj/item/paper_bundle, /obj/item/pamphlet, /obj/item/map)
 
 /obj/structure/filingcabinet/proc/dump_contents()
 	for(var/obj/I in src)

@@ -615,7 +615,7 @@
 #include "code\game\area\Sulaco.dm"
 #include "code\game\area\techtree.dm"
 #include "code\game\area\varadero.dm"
-#include "code\game\area\wayfinder.dm"
+#include "code\game\area\westerneye.dm"
 #include "code\game\area\WhiskeyOutpost.dm"
 #include "code\game\cas_manager\datums\cas_fire_envelope.dm"
 #include "code\game\cas_manager\datums\cas_fire_mission.dm"

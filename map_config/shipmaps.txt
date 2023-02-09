@@ -16,5 +16,5 @@ map almayer
 	default
 endmap
 
-map wayfinder
+map westerneye
 endmap

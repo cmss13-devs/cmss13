@@ -245,7 +245,8 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 				s.transit_gun_mission = 1
 		if(shuttle.moving_status == SHUTTLE_IDLE) //Multi consoles, hopefully this will work
 
-			if(shuttle.locked) return
+			if(shuttle.locked)
+				return
 			var/mob/M = usr
 
 			//Alert code is the Queen is the one calling it, the shuttle is on the ground and the shuttle still allows alerts

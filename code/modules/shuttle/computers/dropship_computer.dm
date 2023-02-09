@@ -59,6 +59,8 @@
 
 /obj/structure/machinery/computer/shuttle/dropship/flight/proc/update_equipment(optimised=FALSE)
 	var/obj/docking_port/mobile/marine_dropship/dropship = SSshuttle.getShuttle(shuttleId)
+	if(!dropship)
+		return
 
 	// initial flight time
 	var/flight_duration = DROPSHIP_TRANSIT_DURATION
